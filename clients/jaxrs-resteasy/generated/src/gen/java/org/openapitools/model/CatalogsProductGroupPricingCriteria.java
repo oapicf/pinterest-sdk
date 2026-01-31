@@ -11,12 +11,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupPricingCriteria   {
   
   private Boolean inclusion = true;
-  private BigDecimal values;
   private Boolean negated = false;
+  private BigDecimal values;
 
   /**
    **/
@@ -28,6 +28,18 @@ public class CatalogsProductGroupPricingCriteria   {
   }
   public void setInclusion(Boolean inclusion) {
     this.inclusion = inclusion;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
   }
 
   /**
@@ -45,18 +57,6 @@ public class CatalogsProductGroupPricingCriteria   {
     this.values = values;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class CatalogsProductGroupPricingCriteria   {
     }
     CatalogsProductGroupPricingCriteria catalogsProductGroupPricingCriteria = (CatalogsProductGroupPricingCriteria) o;
     return Objects.equals(this.inclusion, catalogsProductGroupPricingCriteria.inclusion) &&
-        Objects.equals(this.values, catalogsProductGroupPricingCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupPricingCriteria.negated);
+        Objects.equals(this.negated, catalogsProductGroupPricingCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupPricingCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inclusion, values, negated);
+    return Objects.hash(inclusion, negated, values);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class CatalogsProductGroupPricingCriteria   {
     sb.append("class CatalogsProductGroupPricingCriteria {\n");
     
     sb.append("    inclusion: ").append(toIndentedString(inclusion)).append("\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

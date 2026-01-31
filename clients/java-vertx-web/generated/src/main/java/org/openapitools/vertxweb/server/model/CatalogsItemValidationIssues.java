@@ -9,29 +9,29 @@ import org.openapitools.vertxweb.server.model.CatalogsItemValidationWarnings;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsItemValidationIssues   {
   
-  private Integer itemNumber;
-  private String itemId;
   private CatalogsItemValidationErrors errors;
+  private String itemId;
+  private Integer itemNumber;
   private CatalogsItemValidationWarnings warnings;
 
   public CatalogsItemValidationIssues () {
 
   }
 
-  public CatalogsItemValidationIssues (Integer itemNumber, String itemId, CatalogsItemValidationErrors errors, CatalogsItemValidationWarnings warnings) {
-    this.itemNumber = itemNumber;
-    this.itemId = itemId;
+  public CatalogsItemValidationIssues (CatalogsItemValidationErrors errors, String itemId, Integer itemNumber, CatalogsItemValidationWarnings warnings) {
     this.errors = errors;
+    this.itemId = itemId;
+    this.itemNumber = itemNumber;
     this.warnings = warnings;
   }
 
     
-  @JsonProperty("item_number")
-  public Integer getItemNumber() {
-    return itemNumber;
+  @JsonProperty("errors")
+  public CatalogsItemValidationErrors getErrors() {
+    return errors;
   }
-  public void setItemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public void setErrors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
   }
 
     
@@ -44,12 +44,12 @@ public class CatalogsItemValidationIssues   {
   }
 
     
-  @JsonProperty("errors")
-  public CatalogsItemValidationErrors getErrors() {
-    return errors;
+  @JsonProperty("item_number")
+  public Integer getItemNumber() {
+    return itemNumber;
   }
-  public void setErrors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public void setItemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
   }
 
     
@@ -71,15 +71,15 @@ public class CatalogsItemValidationIssues   {
       return false;
     }
     CatalogsItemValidationIssues catalogsItemValidationIssues = (CatalogsItemValidationIssues) o;
-    return Objects.equals(itemNumber, catalogsItemValidationIssues.itemNumber) &&
+    return Objects.equals(errors, catalogsItemValidationIssues.errors) &&
         Objects.equals(itemId, catalogsItemValidationIssues.itemId) &&
-        Objects.equals(errors, catalogsItemValidationIssues.errors) &&
+        Objects.equals(itemNumber, catalogsItemValidationIssues.itemNumber) &&
         Objects.equals(warnings, catalogsItemValidationIssues.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemNumber, itemId, errors, warnings);
+    return Objects.hash(errors, itemId, itemNumber, warnings);
   }
 
   @Override
@@ -87,9 +87,9 @@ public class CatalogsItemValidationIssues   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemValidationIssues {\n");
     
-    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();

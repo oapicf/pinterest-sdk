@@ -1,39 +1,39 @@
 #' Create a new PinMediaSourceImagesURL
 #'
 #' @description
-#' Multiple images urls-based media source
+#' Multiple URL-based images media source
 #'
 #' @docType class
 #' @title PinMediaSourceImagesURL
 #' @description PinMediaSourceImagesURL Class
 #' @format An \code{R6Class} generator object
-#' @field source_type  character [optional]
-#' @field items Array with image objects. list(\link{PinMediaSourceImagesURLItemsInner})
 #' @field index  integer [optional]
+#' @field items Array with image objects. list(\link{PinMediaSourceImagesURLItem})
+#' @field source_type The source type of the media. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PinMediaSourceImagesURL <- R6::R6Class(
   "PinMediaSourceImagesURL",
   public = list(
-    `source_type` = NULL,
-    `items` = NULL,
     `index` = NULL,
+    `items` = NULL,
+    `source_type` = NULL,
 
     #' @description
     #' Initialize a new PinMediaSourceImagesURL class.
     #'
     #' @param items Array with image objects.
-    #' @param source_type source_type
+    #' @param source_type The source type of the media.
     #' @param index index
     #' @param ... Other optional arguments.
-    initialize = function(`items`, `source_type` = NULL, `index` = NULL, ...) {
+    initialize = function(`items`, `source_type`, `index` = NULL, ...) {
       if (!missing(`items`)) {
         stopifnot(is.vector(`items`), length(`items`) != 0)
         sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
         self$`items` <- `items`
       }
-      if (!is.null(`source_type`)) {
+      if (!missing(`source_type`)) {
         if (!(`source_type` %in% c("multiple_image_urls"))) {
           stop(paste("Error! \"", `source_type`, "\" cannot be assigned to `source_type`. Must be \"multiple_image_urls\".", sep = ""))
         }
@@ -81,17 +81,17 @@ PinMediaSourceImagesURL <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinMediaSourceImagesURLObject <- list()
-      if (!is.null(self$`source_type`)) {
-        PinMediaSourceImagesURLObject[["source_type"]] <-
-          self$`source_type`
+      if (!is.null(self$`index`)) {
+        PinMediaSourceImagesURLObject[["index"]] <-
+          self$`index`
       }
       if (!is.null(self$`items`)) {
         PinMediaSourceImagesURLObject[["items"]] <-
           lapply(self$`items`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`index`)) {
-        PinMediaSourceImagesURLObject[["index"]] <-
-          self$`index`
+      if (!is.null(self$`source_type`)) {
+        PinMediaSourceImagesURLObject[["source_type"]] <-
+          self$`source_type`
       }
       return(PinMediaSourceImagesURLObject)
     },
@@ -103,17 +103,17 @@ PinMediaSourceImagesURL <- R6::R6Class(
     #' @return the instance of PinMediaSourceImagesURL
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`index`)) {
+        self$`index` <- this_object$`index`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PinMediaSourceImagesURLItem]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`source_type`)) {
         if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("multiple_image_urls"))) {
           stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"multiple_image_urls\".", sep = ""))
         }
         self$`source_type` <- this_object$`source_type`
-      }
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PinMediaSourceImagesURLItemsInner]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`index`)) {
-        self$`index` <- this_object$`index`
       }
       self
     },
@@ -136,12 +136,12 @@ PinMediaSourceImagesURL <- R6::R6Class(
     #' @return the instance of PinMediaSourceImagesURL
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`index` <- this_object$`index`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PinMediaSourceImagesURLItem]", loadNamespace("openapi"))
       if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("multiple_image_urls"))) {
         stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"multiple_image_urls\".", sep = ""))
       }
       self$`source_type` <- this_object$`source_type`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PinMediaSourceImagesURLItemsInner]", loadNamespace("openapi"))
-      self$`index` <- this_object$`index`
       self
     },
 
@@ -158,6 +158,14 @@ PinMediaSourceImagesURL <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for PinMediaSourceImagesURL: the required field `items` is missing."))
       }
+      # check the required field `source_type`
+      if (!is.null(input_json$`source_type`)) {
+        if (!(is.character(input_json$`source_type`) && length(input_json$`source_type`) == 1)) {
+          stop(paste("Error! Invalid data for `source_type`. Must be a string:", input_json$`source_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PinMediaSourceImagesURL: the required field `source_type` is missing."))
+      }
     },
 
     #' @description
@@ -173,6 +181,10 @@ PinMediaSourceImagesURL <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (self$`index` < 0) {
+        return(FALSE)
+      }
+
       # check if the required `items` is null
       if (is.null(self$`items`)) {
         return(FALSE)
@@ -185,7 +197,8 @@ PinMediaSourceImagesURL <- R6::R6Class(
         return(FALSE)
       }
 
-      if (self$`index` < 0) {
+      # check if the required `source_type` is null
+      if (is.null(self$`source_type`)) {
         return(FALSE)
       }
 
@@ -198,6 +211,10 @@ PinMediaSourceImagesURL <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (self$`index` < 0) {
+        invalid_fields["index"] <- "Invalid value for `index`, must be bigger than or equal to 0."
+      }
+
       # check if the required `items` is null
       if (is.null(self$`items`)) {
         invalid_fields["items"] <- "Non-nullable required field `items` cannot be null."
@@ -210,8 +227,9 @@ PinMediaSourceImagesURL <- R6::R6Class(
         invalid_fields["items"] <- "Invalid length for ``, number of items must be greater than or equal to 2."
       }
 
-      if (self$`index` < 0) {
-        invalid_fields["index"] <- "Invalid value for `index`, must be bigger than or equal to 0."
+      # check if the required `source_type` is null
+      if (is.null(self$`source_type`)) {
+        invalid_fields["source_type"] <- "Non-nullable required field `source_type` cannot be null."
       }
 
       invalid_fields

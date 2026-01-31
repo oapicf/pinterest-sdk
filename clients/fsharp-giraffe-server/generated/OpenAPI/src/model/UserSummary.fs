@@ -9,7 +9,7 @@ module UserSummary =
 
 
   type UserSummary = {
-    Username : string;
     Type : string;
+    Username : string;
   }
   //#endregion

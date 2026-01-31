@@ -20,19 +20,19 @@ test_that("filters", {
   #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })
 
-test_that("catalog_type", {
-  # tests for the property `catalog_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
-})
-
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
   # Catalog id pertaining to the creative assets product group.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
 test_that("country", {

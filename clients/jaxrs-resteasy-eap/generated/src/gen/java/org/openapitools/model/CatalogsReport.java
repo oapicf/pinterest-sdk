@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReport   {
   
 
@@ -38,8 +38,8 @@ public class CatalogsReport   {
   }
 
   private ReportStatusEnum reportStatus;
-  private String url;
   private BigDecimal size;
+  private String url;
 
   /**
    **/
@@ -51,19 +51,6 @@ public class CatalogsReport   {
   }
   public void setReportStatus(ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
-  }
-
-  /**
-   * URL to download the report
-   **/
-  
-  @ApiModelProperty(value = "URL to download the report")
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
   }
 
   /**
@@ -79,6 +66,19 @@ public class CatalogsReport   {
     this.size = size;
   }
 
+  /**
+   * URL to download the report
+   **/
+  
+  @ApiModelProperty(value = "URL to download the report")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,13 +90,13 @@ public class CatalogsReport   {
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(this.reportStatus, catalogsReport.reportStatus) &&
-        Objects.equals(this.url, catalogsReport.url) &&
-        Objects.equals(this.size, catalogsReport.size);
+        Objects.equals(this.size, catalogsReport.size) &&
+        Objects.equals(this.url, catalogsReport.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -105,8 +105,8 @@ public class CatalogsReport   {
     sb.append("class CatalogsReport {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

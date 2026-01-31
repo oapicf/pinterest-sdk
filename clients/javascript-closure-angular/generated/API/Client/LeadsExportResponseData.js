@@ -6,14 +6,14 @@ goog.provide('API.Client.LeadsExportResponseData');
 API.Client.LeadsExportResponseData = function() {}
 
 /**
- * @type {!API.Client.LeadsExportStatus}
- * @export
- */
-API.Client.LeadsExportResponseData.prototype.exportStatus;
-
-/**
  * @type {!string}
  * @export
  */
 API.Client.LeadsExportResponseData.prototype.downloadUrl;
+
+/**
+ * @type {!API.Client.LeadsExportStatus}
+ * @export
+ */
+API.Client.LeadsExportResponseData.prototype.exportStatus;
 

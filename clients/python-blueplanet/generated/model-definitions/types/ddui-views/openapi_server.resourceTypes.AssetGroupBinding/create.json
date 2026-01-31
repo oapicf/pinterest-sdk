@@ -1,0 +1,27 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_accounts_ids" },
+      {"model": "asset_group_description" },
+      {"model": "asset_group_name" },
+      {"model": "asset_group_types" },
+      {"model": "catalogs_ids" },
+      {"model": "created_by" },
+      {"model": "created_time" },
+      {"model": "id" },
+      {"model": "owner" },
+      {"model": "profiles_ids" },
+      {"model": "updated_time" },
+    ]
+  }]
+}

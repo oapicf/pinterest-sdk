@@ -5,13 +5,13 @@
 -export_type([openapi_ad_account_owner/0]).
 
 -type openapi_ad_account_owner() ::
-    #{ 'username' => binary(),
-       'id' => binary()
+    #{ 'id' => binary(),
+       'username' => binary()
      }.
 
-encode(#{ 'username' := Username,
-          'id' := Id
+encode(#{ 'id' := Id,
+          'username' := Username
         }) ->
-    #{ 'username' => Username,
-       'id' => Id
+    #{ 'id' => Id,
+       'username' => Username
      }.

@@ -81,7 +81,7 @@ public class BusinessAccessAssetsControllerTest {
     void assetGroupCreateMethodTest() {
         // given
         String businessId = "729090764583391194";
-        CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody("Canada Ad Accounts", "Asset groups that has ad accounts shared in Canada", Arrays.asList());
+        CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
 
         // when
         CreateAssetGroupResponse result = controller.assetGroupCreate(businessId, createAssetGroupBody).block();
@@ -100,13 +100,13 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupCreateClientApiTest() throws IOException {
         // given
-        CreateAssetGroupBody body = new CreateAssetGroupBody("Canada Ad Accounts", "Asset groups that has ad accounts shared in Canada", Arrays.asList());
+        CreateAssetGroupBody body = new CreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/asset_groups").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@35873792");
+            .accept("[Ljava.lang.String;@2b737de9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CreateAssetGroupResponse.class);
@@ -154,7 +154,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@4a2a67d");
+            .accept("[Ljava.lang.String;@2cb7feef");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeleteAssetGroupResponse.class);
@@ -202,7 +202,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@a3c0a21");
+            .accept("[Ljava.lang.String;@13efea9b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdateAssetGroupResponse.class);
@@ -226,12 +226,13 @@ public class BusinessAccessAssetsControllerTest {
         // given
         String businessId = "729090764583391194";
         String assetId = "729090764583391194";
+        Boolean fetchSystemUsers = false;
         String bookmark = "example";
         Integer pageSize = 25;
         Integer startIndex = 0;
 
         // when
-        BusinessAssetMembersGet200Response result = controller.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex).block();
+        BusinessAssetMembersGet200Response result = controller.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex).block();
 
         // then
         Assertions.assertTrue(true);
@@ -253,8 +254,9 @@ public class BusinessAccessAssetsControllerTest {
             put("asset_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4baf4479");
+            .accept("[Ljava.lang.String;@af9c11e");
         request.getParameters()
+            .add("fetch_system_users", String.valueOf(false)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("start_index", String.valueOf(0)); // The query parameter format should be 
@@ -308,7 +310,7 @@ public class BusinessAccessAssetsControllerTest {
             put("asset_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4718c139");
+            .accept("[Ljava.lang.String;@3a55699d");
         request.getParameters()
             .add("start_index", String.valueOf(0)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -365,7 +367,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@561816e9");
+            .accept("[Ljava.lang.String;@2986a8be");
         request.getParameters()
             .add("permissions", Arrays.asList()) // The query format should be multi
             .add("child_asset_id", "549764894835") // The query parameter format should be 
@@ -425,7 +427,7 @@ public class BusinessAccessAssetsControllerTest {
             put("member_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3c1f6309");
+            .accept("[Ljava.lang.String;@45513427");
         request.getParameters()
             .add("asset_type", "AD_ACCOUNT") // The query parameter format should be 
             .add("start_index", String.valueOf(0)) // The query parameter format should be 
@@ -478,7 +480,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@d22747f");
+            .accept("[Ljava.lang.String;@164eca2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeleteMemberAccessResultsResponseArray.class);
@@ -526,7 +528,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@cb26deb");
+            .accept("[Ljava.lang.String;@10ec7492");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdateMemberAssetsResultsResponseArray.class);
@@ -579,7 +581,7 @@ public class BusinessAccessAssetsControllerTest {
             put("partner_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1a0b8dca");
+            .accept("[Ljava.lang.String;@cb3fd69");
         request.getParameters()
             .add("partner_type", String.valueOf(PartnerType.fromValue("INTERNAL"))) // The query parameter format should be 
             .add("asset_type", "AD_ACCOUNT") // The query parameter format should be 
@@ -633,7 +635,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@5d4bb2a9");
+            .accept("[Ljava.lang.String;@400f00d4");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeletePartnerAssetsResultsResponseArray.class);
@@ -681,7 +683,7 @@ public class BusinessAccessAssetsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@43d4a4f3");
+            .accept("[Ljava.lang.String;@6628f58b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdatePartnerAssetsResultsResponseArray.class);

@@ -1,0 +1,49 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingSpecOperationShoppingRetargeting"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingSpecOperationShoppingRetargeting"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingSpecShoppingRetargeting = openapi_server.resourceTypes.TargetingSpecShoppingRetargeting
+}
+resourceTypes {
+
+  TargetingSpecOperationShoppingRetargeting {
+    title = TargetingSpecOperationShoppingRetargeting
+    description = TargetingSpecOperationShoppingRetargeting
+    derivedFrom = Root
+    properties {
+        _field {
+          type =  string
+          description = ""
+          enum = ["SHOPPING_RETARGETING"]
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["SET"]
+          optional = true
+        }
+        values {
+          type = array
+          items.type = TargetingSpecShoppingRetargeting
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingSpecOperationShoppingRetargeting {
+    title = TargetingSpecOperationShoppingRetargeting
+    description = TargetingSpecOperationShoppingRetargeting
+    implements = openapi_server.resourceTypes.TargetingSpecOperationShoppingRetargeting
+
+  }
+}

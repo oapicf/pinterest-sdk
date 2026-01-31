@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,13 +24,30 @@ import org.openapitools.model.Language;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItem   {
   
-  private String itemId;
   private Country country;
+  private String itemId;
   private Language language;
   private AdvancedAuctionBidOptions bidOptions;
+
+  /**
+   */
+  public AdvancedAuctionItem country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
+  }
+  public void setCountry(Country country) {
+    this.country = country;
+  }
 
   /**
    * The catalog retail item id in the merchant namespace
@@ -48,23 +65,6 @@ public class AdvancedAuctionItem   {
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
-  }
-
-  /**
-   */
-  public AdvancedAuctionItem country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
   }
 
   /**
@@ -111,15 +111,15 @@ public class AdvancedAuctionItem   {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(country, advancedAuctionItem.country) &&
+    return Objects.equals(country, advancedAuctionItem.country) &&
+        Objects.equals(itemId, advancedAuctionItem.itemId) &&
         Objects.equals(language, advancedAuctionItem.language) &&
         Objects.equals(bidOptions, advancedAuctionItem.bidOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, bidOptions);
+    return Objects.hash(country, itemId, language, bidOptions);
   }
 
   @Override
@@ -127,8 +127,8 @@ public class AdvancedAuctionItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");

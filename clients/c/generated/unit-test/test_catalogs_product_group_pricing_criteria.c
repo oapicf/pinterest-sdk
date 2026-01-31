@@ -23,14 +23,14 @@ catalogs_product_group_pricing_criteria_t* instantiate_catalogs_product_group_pr
   if (include_optional) {
     catalogs_product_group_pricing_criteria = catalogs_product_group_pricing_criteria_create(
       1,
-      0,
-      1
+      1,
+      0
     );
   } else {
     catalogs_product_group_pricing_criteria = catalogs_product_group_pricing_criteria_create(
       1,
-      0,
-      1
+      1,
+      0
     );
   }
 

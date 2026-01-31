@@ -6,8 +6,8 @@ HTTP request details included in the log sent by the client.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **string** |  | [default to undefined]
 **host** | **string** | HTTP request host from host header. | [default to undefined]
+**method** | **string** |  | [default to undefined]
 **path** | **string** | HTTP request path. | [default to undefined]
 **request_headers** | **{ [key: string]: string; }** | HTTP request headers as key-value pairs. | [optional] [default to undefined]
 **response_headers** | **{ [key: string]: string; }** | HTTP response headers as key-value pairs. | [optional] [default to undefined]
@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 import { IntegrationLogClientRequest } from './api';
 
 const instance: IntegrationLogClientRequest = {
-    method,
     host,
+    method,
     path,
     request_headers,
     response_headers,

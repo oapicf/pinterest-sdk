@@ -7,11 +7,11 @@
 Name | Type
 ------------ | -------------
 `id` | string
+`itemBrand` | string
+`itemCategory` | string
+`itemName` | string
 `itemPrice` | string
 `quantity` | number
-`itemName` | string
-`itemCategory` | string
-`itemBrand` | string
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { ConversionEventsDataInnerCustomDataContentsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": red-pinterest-shirt-logo-1,
-  "itemPrice": 1325.12,
-  "quantity": 5,
-  "itemName": pinterest-clothing-shirt,
-  "itemCategory": pinterest-entertainment,
-  "itemBrand": pinterest,
+  "id": null,
+  "itemBrand": null,
+  "itemCategory": null,
+  "itemName": null,
+  "itemPrice": null,
+  "quantity": null,
 } satisfies ConversionEventsDataInnerCustomDataContentsInner
 
 console.log(example)

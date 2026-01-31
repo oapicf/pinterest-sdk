@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;ProductGroupPromotionResponseItem&gt;**](ProductGroupPromotionResponseItem.md) |  |  |
+| **items** | [**kotlin.collections.List&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**report_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] [default to undefined]
-**token** | **string** |  | [optional] [default to undefined]
 **message** | **string** |  | [optional] [default to undefined]
+**report_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] [default to undefined]
 **status** | **string** |  | [optional] [default to undefined]
+**token** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { CreateMMMReportResponseData } from './api';
 
 const instance: CreateMMMReportResponseData = {
-    report_status,
-    token,
     message,
+    report_status,
     status,
+    token,
 };
 ```
 

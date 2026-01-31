@@ -9,15 +9,15 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param id 
- * @param name 
  * @param childUnderscoreinterests 
+ * @param id 
  * @param level 
+ * @param name 
  */
-case class SingleInterestTargetingOptionResponse(id: Option[String],
-                name: Option[String],
-                childUnderscoreinterests: Option[Seq[String]],
-                level: Option[Int]
+case class SingleInterestTargetingOptionResponse(childUnderscoreinterests: Option[Seq[String]],
+                id: Option[String],
+                level: Option[Int],
+                name: Option[String]
                 )
 
 object SingleInterestTargetingOptionResponse {

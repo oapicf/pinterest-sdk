@@ -2,6 +2,7 @@
 
 # Error
 
+Default error response
 
 ## Properties
 

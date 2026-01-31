@@ -6,18 +6,18 @@
 
 
 static catalogs_item_validation_issues_t *catalogs_item_validation_issues_create_internal(
-    int item_number,
-    char *item_id,
     catalogs_item_validation_errors_t *errors,
+    char *item_id,
+    int item_number,
     catalogs_item_validation_warnings_t *warnings
     ) {
     catalogs_item_validation_issues_t *catalogs_item_validation_issues_local_var = malloc(sizeof(catalogs_item_validation_issues_t));
     if (!catalogs_item_validation_issues_local_var) {
         return NULL;
     }
-    catalogs_item_validation_issues_local_var->item_number = item_number;
-    catalogs_item_validation_issues_local_var->item_id = item_id;
     catalogs_item_validation_issues_local_var->errors = errors;
+    catalogs_item_validation_issues_local_var->item_id = item_id;
+    catalogs_item_validation_issues_local_var->item_number = item_number;
     catalogs_item_validation_issues_local_var->warnings = warnings;
 
     catalogs_item_validation_issues_local_var->_library_owned = 1;
@@ -25,15 +25,15 @@ static catalogs_item_validation_issues_t *catalogs_item_validation_issues_create
 }
 
 __attribute__((deprecated)) catalogs_item_validation_issues_t *catalogs_item_validation_issues_create(
-    int item_number,
-    char *item_id,
     catalogs_item_validation_errors_t *errors,
+    char *item_id,
+    int item_number,
     catalogs_item_validation_warnings_t *warnings
     ) {
     return catalogs_item_validation_issues_create_internal (
-        item_number,
-        item_id,
         errors,
+        item_id,
+        item_number,
         warnings
         );
 }
@@ -47,13 +47,13 @@ void catalogs_item_validation_issues_free(catalogs_item_validation_issues_t *cat
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_item_validation_issues->item_id) {
-        free(catalogs_item_validation_issues->item_id);
-        catalogs_item_validation_issues->item_id = NULL;
-    }
     if (catalogs_item_validation_issues->errors) {
         catalogs_item_validation_errors_free(catalogs_item_validation_issues->errors);
         catalogs_item_validation_issues->errors = NULL;
+    }
+    if (catalogs_item_validation_issues->item_id) {
+        free(catalogs_item_validation_issues->item_id);
+        catalogs_item_validation_issues->item_id = NULL;
     }
     if (catalogs_item_validation_issues->warnings) {
         catalogs_item_validation_warnings_free(catalogs_item_validation_issues->warnings);
@@ -64,24 +64,6 @@ void catalogs_item_validation_issues_free(catalogs_item_validation_issues_t *cat
 
 cJSON *catalogs_item_validation_issues_convertToJSON(catalogs_item_validation_issues_t *catalogs_item_validation_issues) {
     cJSON *item = cJSON_CreateObject();
-
-    // catalogs_item_validation_issues->item_number
-    if (!catalogs_item_validation_issues->item_number) {
-        goto fail;
-    }
-    if(cJSON_AddNumberToObject(item, "item_number", catalogs_item_validation_issues->item_number) == NULL) {
-    goto fail; //Numeric
-    }
-
-
-    // catalogs_item_validation_issues->item_id
-    if (!catalogs_item_validation_issues->item_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "item_id", catalogs_item_validation_issues->item_id) == NULL) {
-    goto fail; //String
-    }
-
 
     // catalogs_item_validation_issues->errors
     if (!catalogs_item_validation_issues->errors) {
@@ -94,6 +76,24 @@ cJSON *catalogs_item_validation_issues_convertToJSON(catalogs_item_validation_is
     cJSON_AddItemToObject(item, "errors", errors_local_JSON);
     if(item->child == NULL) {
     goto fail;
+    }
+
+
+    // catalogs_item_validation_issues->item_id
+    if (!catalogs_item_validation_issues->item_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "item_id", catalogs_item_validation_issues->item_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // catalogs_item_validation_issues->item_number
+    if (!catalogs_item_validation_issues->item_number) {
+        goto fail;
+    }
+    if(cJSON_AddNumberToObject(item, "item_number", catalogs_item_validation_issues->item_number) == NULL) {
+    goto fail; //Numeric
     }
 
 
@@ -128,20 +128,17 @@ catalogs_item_validation_issues_t *catalogs_item_validation_issues_parseFromJSON
     // define the local variable for catalogs_item_validation_issues->warnings
     catalogs_item_validation_warnings_t *warnings_local_nonprim = NULL;
 
-    // catalogs_item_validation_issues->item_number
-    cJSON *item_number = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_issuesJSON, "item_number");
-    if (cJSON_IsNull(item_number)) {
-        item_number = NULL;
+    // catalogs_item_validation_issues->errors
+    cJSON *errors = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_issuesJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
     }
-    if (!item_number) {
+    if (!errors) {
         goto end;
     }
 
     
-    if(!cJSON_IsNumber(item_number))
-    {
-    goto end; //Numeric
-    }
+    errors_local_nonprim = catalogs_item_validation_errors_parseFromJSON(errors); //nonprimitive
 
     // catalogs_item_validation_issues->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_issuesJSON, "item_id");
@@ -158,17 +155,20 @@ catalogs_item_validation_issues_t *catalogs_item_validation_issues_parseFromJSON
     goto end; //String
     }
 
-    // catalogs_item_validation_issues->errors
-    cJSON *errors = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_issuesJSON, "errors");
-    if (cJSON_IsNull(errors)) {
-        errors = NULL;
+    // catalogs_item_validation_issues->item_number
+    cJSON *item_number = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_issuesJSON, "item_number");
+    if (cJSON_IsNull(item_number)) {
+        item_number = NULL;
     }
-    if (!errors) {
+    if (!item_number) {
         goto end;
     }
 
     
-    errors_local_nonprim = catalogs_item_validation_errors_parseFromJSON(errors); //nonprimitive
+    if(!cJSON_IsNumber(item_number))
+    {
+    goto end; //Numeric
+    }
 
     // catalogs_item_validation_issues->warnings
     cJSON *warnings = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_issuesJSON, "warnings");
@@ -184,9 +184,9 @@ catalogs_item_validation_issues_t *catalogs_item_validation_issues_parseFromJSON
 
 
     catalogs_item_validation_issues_local_var = catalogs_item_validation_issues_create_internal (
-        item_number->valuedouble,
-        strdup(item_id->valuestring),
         errors_local_nonprim,
+        strdup(item_id->valuestring),
+        item_number->valuedouble,
         warnings_local_nonprim
         );
 

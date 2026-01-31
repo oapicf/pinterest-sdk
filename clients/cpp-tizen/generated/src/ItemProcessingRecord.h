@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The catalog item id in the merchant namespace
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The catalog item id in the merchant namespace
-	 */
-	void setItemId(std::string  item_id);
 	/*! \brief Get Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	 */
 	std::list<ItemValidationEvent> getErrors();
@@ -62,13 +55,13 @@ public:
 	/*! \brief Set Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	 */
 	void setErrors(std::list <ItemValidationEvent> errors);
-	/*! \brief Get Array with the validation warnings for the item processing record
+	/*! \brief Get The catalog item id in the merchant namespace
 	 */
-	std::list<ItemValidationEvent> getWarnings();
+	std::string getItemId();
 
-	/*! \brief Set Array with the validation warnings for the item processing record
+	/*! \brief Set The catalog item id in the merchant namespace
 	 */
-	void setWarnings(std::list <ItemValidationEvent> warnings);
+	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
 	ItemProcessingStatus getStatus();
@@ -76,12 +69,19 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(ItemProcessingStatus  status);
+	/*! \brief Get Array with the validation warnings for the item processing record
+	 */
+	std::list<ItemValidationEvent> getWarnings();
+
+	/*! \brief Set Array with the validation warnings for the item processing record
+	 */
+	void setWarnings(std::list <ItemValidationEvent> warnings);
 
 private:
-	std::string item_id;
 	std::list <ItemValidationEvent>errors;
-	std::list <ItemValidationEvent>warnings;
+	std::string item_id;
 	ItemProcessingStatus status;
+	std::list <ItemValidationEvent>warnings;
 	void __init();
 	void __cleanup();
 

@@ -14,19 +14,28 @@ import org.openapitools.vertxweb.server.model.AssetGroupBinding;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetPartnerAssetsResponse   {
   
+  private AssetGroupBinding assetGroupInfo;
   private String assetId;
   private String assetType;
   private List<String> permissions = new ArrayList<>();
-  private AssetGroupBinding assetGroupInfo;
 
   public GetPartnerAssetsResponse () {
 
   }
 
-  public GetPartnerAssetsResponse (String assetId, String assetType, List<String> permissions, AssetGroupBinding assetGroupInfo) {
+  public GetPartnerAssetsResponse (AssetGroupBinding assetGroupInfo, String assetId, String assetType, List<String> permissions) {
+    this.assetGroupInfo = assetGroupInfo;
     this.assetId = assetId;
     this.assetType = assetType;
     this.permissions = permissions;
+  }
+
+    
+  @JsonProperty("asset_group_info")
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
   }
 
@@ -57,15 +66,6 @@ public class GetPartnerAssetsResponse   {
     this.permissions = permissions;
   }
 
-    
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
-  }
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -76,15 +76,15 @@ public class GetPartnerAssetsResponse   {
       return false;
     }
     GetPartnerAssetsResponse getPartnerAssetsResponse = (GetPartnerAssetsResponse) o;
-    return Objects.equals(assetId, getPartnerAssetsResponse.assetId) &&
+    return Objects.equals(assetGroupInfo, getPartnerAssetsResponse.assetGroupInfo) &&
+        Objects.equals(assetId, getPartnerAssetsResponse.assetId) &&
         Objects.equals(assetType, getPartnerAssetsResponse.assetType) &&
-        Objects.equals(permissions, getPartnerAssetsResponse.permissions) &&
-        Objects.equals(assetGroupInfo, getPartnerAssetsResponse.assetGroupInfo);
+        Objects.equals(permissions, getPartnerAssetsResponse.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, permissions);
   }
 
   @Override
@@ -92,10 +92,10 @@ public class GetPartnerAssetsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetPartnerAssetsResponse {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

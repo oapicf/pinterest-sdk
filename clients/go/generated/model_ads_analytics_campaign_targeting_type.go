@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -35,6 +35,7 @@ const (
 	REGION AdsAnalyticsCampaignTargetingType = "REGION"
 	CREATIVE_TYPE AdsAnalyticsCampaignTargetingType = "CREATIVE_TYPE"
 	AGE_BUCKET_AND_GENDER AdsAnalyticsCampaignTargetingType = "AGE_BUCKET_AND_GENDER"
+	AUDIENCE_MULTIPLIER AdsAnalyticsCampaignTargetingType = "AUDIENCE_MULTIPLIER"
 )
 
 // All allowed values of AdsAnalyticsCampaignTargetingType enum
@@ -53,6 +54,7 @@ var AllowedAdsAnalyticsCampaignTargetingTypeEnumValues = []AdsAnalyticsCampaignT
 	"REGION",
 	"CREATIVE_TYPE",
 	"AGE_BUCKET_AND_GENDER",
+	"AUDIENCE_MULTIPLIER",
 }
 
 func (v *AdsAnalyticsCampaignTargetingType) UnmarshalJSON(src []byte) error {

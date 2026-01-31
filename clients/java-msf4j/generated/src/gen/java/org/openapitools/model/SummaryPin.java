@@ -12,31 +12,25 @@ import org.openapitools.model.PinMedia;
  * Summarized pin information
  */
 @ApiModel(description = "Summarized pin information")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SummaryPin   {
-  @JsonProperty("media")
-  private PinMedia media;
-
   @JsonProperty("alt_text")
   private String altText;
-
-  @JsonProperty("link")
-  private String link;
-
-  @JsonProperty("title")
-  private String title;
 
   @JsonProperty("description")
   private String description;
 
-   /**
-   * Get media
-   * @return media
-  **/
-  @ApiModelProperty(value = "")
-  public PinMedia getMedia() {
-    return media;
-  }
+  @JsonProperty("id")
+  private String id;
+
+  @JsonProperty("link")
+  private String link;
+
+  @JsonProperty("media")
+  private PinMedia media;
+
+  @JsonProperty("title")
+  private String title;
 
   public SummaryPin altText(String altText) {
     this.altText = altText;
@@ -54,42 +48,6 @@ public class SummaryPin   {
 
   public void setAltText(String altText) {
     this.altText = altText;
-  }
-
-  public SummaryPin link(String link) {
-    this.link = link;
-    return this;
-  }
-
-   /**
-   * Get link
-   * @return link
-  **/
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
-  public String getLink() {
-    return link;
-  }
-
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-  public SummaryPin title(String title) {
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @ApiModelProperty(value = "")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
   }
 
   public SummaryPin description(String description) {
@@ -110,6 +68,69 @@ public class SummaryPin   {
     this.description = description;
   }
 
+  public SummaryPin id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = "")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public SummaryPin link(String link) {
+    this.link = link;
+    return this;
+  }
+
+   /**
+   * Get link
+   * @return link
+  **/
+  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+   /**
+   * Get media
+   * @return media
+  **/
+  @ApiModelProperty(value = "")
+  public PinMedia getMedia() {
+    return media;
+  }
+
+  public SummaryPin title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @ApiModelProperty(value = "")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -120,16 +141,17 @@ public class SummaryPin   {
       return false;
     }
     SummaryPin summaryPin = (SummaryPin) o;
-    return Objects.equals(this.media, summaryPin.media) &&
-        Objects.equals(this.altText, summaryPin.altText) &&
+    return Objects.equals(this.altText, summaryPin.altText) &&
+        Objects.equals(this.description, summaryPin.description) &&
+        Objects.equals(this.id, summaryPin.id) &&
         Objects.equals(this.link, summaryPin.link) &&
-        Objects.equals(this.title, summaryPin.title) &&
-        Objects.equals(this.description, summaryPin.description);
+        Objects.equals(this.media, summaryPin.media) &&
+        Objects.equals(this.title, summaryPin.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(media, altText, link, title, description);
+    return Objects.hash(altText, description, id, link, media, title);
   }
 
   @Override
@@ -137,11 +159,12 @@ public class SummaryPin   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SummaryPin {\n");
     
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

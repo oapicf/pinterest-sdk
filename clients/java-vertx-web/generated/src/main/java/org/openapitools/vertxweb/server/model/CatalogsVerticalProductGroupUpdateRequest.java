@@ -37,23 +37,23 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String name;
+  private Country country;
   private String description;
   private CatalogsCreativeAssetsProductGroupFilters filters;
-  private Country country;
   private CatalogsLocale locale;
+  private String name;
 
   public CatalogsVerticalProductGroupUpdateRequest () {
 
   }
 
-  public CatalogsVerticalProductGroupUpdateRequest (CatalogTypeEnum catalogType, String name, String description, CatalogsCreativeAssetsProductGroupFilters filters, Country country, CatalogsLocale locale) {
+  public CatalogsVerticalProductGroupUpdateRequest (CatalogTypeEnum catalogType, Country country, String description, CatalogsCreativeAssetsProductGroupFilters filters, CatalogsLocale locale, String name) {
     this.catalogType = catalogType;
-    this.name = name;
+    this.country = country;
     this.description = description;
     this.filters = filters;
-    this.country = country;
     this.locale = locale;
+    this.name = name;
   }
 
     
@@ -66,12 +66,12 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
     
@@ -93,21 +93,21 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
   }
 
     
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-    
   @JsonProperty("locale")
   public CatalogsLocale getLocale() {
     return locale;
   }
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -121,16 +121,16 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
     }
     CatalogsVerticalProductGroupUpdateRequest catalogsVerticalProductGroupUpdateRequest = (CatalogsVerticalProductGroupUpdateRequest) o;
     return Objects.equals(catalogType, catalogsVerticalProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(name, catalogsVerticalProductGroupUpdateRequest.name) &&
+        Objects.equals(country, catalogsVerticalProductGroupUpdateRequest.country) &&
         Objects.equals(description, catalogsVerticalProductGroupUpdateRequest.description) &&
         Objects.equals(filters, catalogsVerticalProductGroupUpdateRequest.filters) &&
-        Objects.equals(country, catalogsVerticalProductGroupUpdateRequest.country) &&
-        Objects.equals(locale, catalogsVerticalProductGroupUpdateRequest.locale);
+        Objects.equals(locale, catalogsVerticalProductGroupUpdateRequest.locale) &&
+        Objects.equals(name, catalogsVerticalProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, country, locale);
+    return Objects.hash(catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -139,11 +139,11 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
     sb.append("class CatalogsVerticalProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

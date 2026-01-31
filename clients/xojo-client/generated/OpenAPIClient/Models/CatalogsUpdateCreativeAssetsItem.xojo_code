@@ -2,6 +2,11 @@
 Protected Class CatalogsUpdateCreativeAssetsItem
 
 	#tag Property, Flags = &h0
+		Escapedattributes As OpenAPIClient.Models.CatalogsUpdatableCreativeAssetsAttributes
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			The catalog creative assets item id in the merchant namespace
 		#tag EndNote
@@ -11,11 +16,6 @@ Protected Class CatalogsUpdateCreativeAssetsItem
 
 	#tag Property, Flags = &h0
 		operation As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.CatalogsUpdatableCreativeAssetsAttributes
 	#tag EndProperty
 
 
@@ -73,19 +73,19 @@ Protected Class CatalogsUpdateCreativeAssetsItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="creative_assets_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Escapedattributes"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsUpdatableCreativeAssetsAttributes"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="creative_assets_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

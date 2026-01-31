@@ -12,10 +12,10 @@ module CreateAssetAccessRequestBodyAssetRequestsInner =
 
   [<CLIMutable>]
   type CreateAssetAccessRequestBodyAssetRequestsInner = {
-    [<JsonProperty(PropertyName = "partner_id")>]
-    PartnerId : string;
     [<JsonProperty(PropertyName = "asset_id_to_permissions")>]
     AssetIdToPermissions : IDictionary<string, Permissions[]>;
+    [<JsonProperty(PropertyName = "partner_id")>]
+    PartnerId : string;
   }
 
   //#endregion

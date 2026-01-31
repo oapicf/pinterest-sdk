@@ -12,21 +12,21 @@ import AnyCodable
 
 public struct LineItem: Codable, JSONEncodable, Hashable {
 
-    /** Product brand. For example, \"Parker\". */
+    /** Product brand. For example, 'Parker'. */
     public var productBrand: String?
-    /** Product category. For example, \"Shoes\". */
+    /** Product category. For example, 'Shoes'. */
     public var productCategory: String?
     /** Product ID. For example, 1414. */
     public var productId: Int?
-    /** Product name. For example, \"Parker Boots\". */
+    /** Product name. For example, 'Parker Boots'. */
     public var productName: String?
-    /** Product price. For example, \"99.99\". */
+    /** Product price. For example, '99.99'. */
     public var productPrice: String?
     /** Product quantity. For example, 2. */
     public var productQuantity: Int?
-    /** Product variant. For example, \"Red\". */
+    /** Product variant. For example, 'Red'. */
     public var productVariant: String?
-    /** Product variant ID. For example, \"1414-34832\". */
+    /** Product variant ID. For example, '1414-34832'. */
     public var productVariantId: String?
 
     public init(productBrand: String? = nil, productCategory: String? = nil, productId: Int? = nil, productName: String? = nil, productPrice: String? = nil, productQuantity: Int? = nil, productVariant: String? = nil, productVariantId: String? = nil) {

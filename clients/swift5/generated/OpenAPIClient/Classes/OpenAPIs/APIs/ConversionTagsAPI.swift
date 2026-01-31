@@ -16,12 +16,12 @@ open class ConversionTagsAPI {
      Create conversion tag
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter conversionTagCreate: (body) Conversion Tag to create 
+     - parameter conversionTagCreate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversionTagResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversionTag?, _ error: Error?) -> Void)) -> RequestTask {
         return conversionTagsCreateWithRequestBuilder(adAccountId: adAccountId, conversionTagCreate: conversionTagCreate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -35,15 +35,15 @@ open class ConversionTagsAPI {
     /**
      Create conversion tag
      - POST /ad_accounts/{ad_account_id}/conversion_tags
-     - Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+     - Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter conversionTagCreate: (body) Conversion Tag to create 
-     - returns: RequestBuilder<ConversionTagResponse> 
+     - parameter conversionTagCreate: (body)  
+     - returns: RequestBuilder<ConversionTag> 
      */
-    open class func conversionTagsCreateWithRequestBuilder(adAccountId: String, conversionTagCreate: ConversionTagCreate) -> RequestBuilder<ConversionTagResponse> {
+    open class func conversionTagsCreateWithRequestBuilder(adAccountId: String, conversionTagCreate: ConversionTagCreate) -> RequestBuilder<ConversionTag> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/conversion_tags"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -59,7 +59,7 @@ open class ConversionTagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ConversionTagResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ConversionTag>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -73,7 +73,7 @@ open class ConversionTagsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func conversionTagsGet(adAccountId: String, conversionTagId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversionTagResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func conversionTagsGet(adAccountId: String, conversionTagId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversionTag?, _ error: Error?) -> Void)) -> RequestTask {
         return conversionTagsGetWithRequestBuilder(adAccountId: adAccountId, conversionTagId: conversionTagId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -91,11 +91,14 @@ open class ConversionTagsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter conversionTagId: (path) Id of the conversion tag. 
-     - returns: RequestBuilder<ConversionTagResponse> 
+     - returns: RequestBuilder<ConversionTag> 
      */
-    open class func conversionTagsGetWithRequestBuilder(adAccountId: String, conversionTagId: String) -> RequestBuilder<ConversionTagResponse> {
+    open class func conversionTagsGetWithRequestBuilder(adAccountId: String, conversionTagId: String) -> RequestBuilder<ConversionTag> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -114,21 +117,21 @@ open class ConversionTagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ConversionTagResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ConversionTag>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
-     Get conversion tags
+     List conversion tags
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter filterDeleted: (query) Filter out deleted tags. (optional, default to false)
+     - parameter filterDeleted: (query) Filter by deleted status (optional, default to false)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func conversionTagsList(adAccountId: String, filterDeleted: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversionTagListResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func conversionTagsList(adAccountId: String, filterDeleted: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversionTagsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return conversionTagsListWithRequestBuilder(adAccountId: adAccountId, filterDeleted: filterDeleted).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,17 +143,20 @@ open class ConversionTagsAPI {
     }
 
     /**
-     Get conversion tags
+     List conversion tags
      - GET /ad_accounts/{ad_account_id}/conversion_tags
      - List conversion tags associated with an ad account.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter filterDeleted: (query) Filter out deleted tags. (optional, default to false)
-     - returns: RequestBuilder<ConversionTagListResponse> 
+     - parameter filterDeleted: (query) Filter by deleted status (optional, default to false)
+     - returns: RequestBuilder<ConversionTagsList200Response> 
      */
-    open class func conversionTagsListWithRequestBuilder(adAccountId: String, filterDeleted: Bool? = nil) -> RequestBuilder<ConversionTagListResponse> {
+    open class func conversionTagsListWithRequestBuilder(adAccountId: String, filterDeleted: Bool? = nil) -> RequestBuilder<ConversionTagsList200Response> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/conversion_tags"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -169,7 +175,7 @@ open class ConversionTagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ConversionTagListResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ConversionTagsList200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -200,6 +206,9 @@ open class ConversionTagsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - returns: RequestBuilder<[String: [ConversionEventResponse]]> 
      */
@@ -261,6 +270,9 @@ open class ConversionTagsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)

@@ -11,7 +11,7 @@ The class is defined in **[UpdatePartnerAssetsResult.java](../../src/main/java/o
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **assetId** | `String` | Unique identifier of a business asset. |  [optional property]
-**assetType** | `String` | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. |  [optional property]
+**assetType** | `String` | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. |  [optional property]
 **partnerId** | `String` | Unique identifier of a business partner. |  [optional property]
 **permissions** | `List&lt;String&gt;` | Permission levels member or partner has on an asset. |  [optional property]
 

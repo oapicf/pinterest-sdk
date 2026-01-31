@@ -48,11 +48,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getId();
+	std::string getCreatedAt();
 
 	/*! \brief Set 
 	 */
-	void setId(std::string  id);
+	void setCreatedAt(std::string  created_at);
 	/*! \brief Get 
 	 */
 	std::string getFeedId();
@@ -62,11 +62,11 @@ public:
 	void setFeedId(std::string  feed_id);
 	/*! \brief Get 
 	 */
-	std::string getCreatedAt();
+	std::string getId();
 
 	/*! \brief Set 
 	 */
-	void setCreatedAt(std::string  created_at);
+	void setId(std::string  id);
 	/*! \brief Get 
 	 */
 	CatalogsFeedProcessingStatus getStatus();
@@ -76,9 +76,9 @@ public:
 	void setStatus(CatalogsFeedProcessingStatus  status);
 
 private:
-	std::string id;
-	std::string feed_id;
 	std::string created_at;
+	std::string feed_id;
+	std::string id;
 	CatalogsFeedProcessingStatus status;
 	void __init();
 	void __cleanup();

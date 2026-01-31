@@ -21,6 +21,10 @@
     }
 
     Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"ALL_ITEMS"]) {
+        class = NSClassFromString(@"OAICatalogsReportAllItemsFilter");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"DISTRIBUTION_ISSUES"]) {
         class = NSClassFromString(@"OAICatalogsReportDistributionIssueFilter");
     }

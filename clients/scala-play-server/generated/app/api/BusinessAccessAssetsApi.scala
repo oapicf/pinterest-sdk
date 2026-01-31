@@ -24,7 +24,7 @@ import model.UpdateMemberAssetsResultsResponseArray
 import model.UpdatePartnerAssetAccessBody
 import model.UpdatePartnerAssetsResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait BusinessAccessAssetsApi {
   /**
     * Create a new asset group.
@@ -52,11 +52,12 @@ trait BusinessAccessAssetsApi {
     * Get all the members the requesting business has granted access to on the given asset.
     * @param businessId Unique identifier of the requesting business.
     * @param assetId Unique identifier of a business asset.
+    * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
     * @param bookmark Cursor used to fetch the next page of items
     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
     */
-  def businessAssetMembersGet(businessId: String, assetId: String, bookmark: Option[String], pageSize: Option[Int], startIndex: Option[Int]): BusinessAssetMembersGet200Response
+  def businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Option[Boolean], bookmark: Option[String], pageSize: Option[Int], startIndex: Option[Int]): BusinessAssetMembersGet200Response
 
   /**
     * Get partners with access to asset

@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;MediaUploadDetails&gt;**](MediaUploadDetails.md) | Media | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;Media&gt;**](Media.md) |  | 
 
 
 

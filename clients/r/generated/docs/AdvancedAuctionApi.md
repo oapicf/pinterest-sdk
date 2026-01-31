@@ -22,7 +22,7 @@ library(openapi)
 # Get item bid options (POST)
 #
 # prepare function argument(s)
-var_advanced_auction_items_get_request <- AdvancedAuctionItemsGetRequest$new("catalog_id_example", c(AdvancedAuctionItemsGetRecord$new("item_id_example", Country$new(), Language$new()))) # AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
+var_advanced_auction_items_get_request <- AdvancedAuctionItemsGetRequest$new("catalog_id_example", c(AdvancedAuctionItemsGetRecord$new(Country$new(), "item_id_example", Language$new()))) # AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- AdvancedAuctionApi$new()
@@ -78,7 +78,7 @@ library(openapi)
 # Operate on item level bid options
 #
 # prepare function argument(s)
-var_advanced_auction_items_submit_request <- AdvancedAuctionItemsSubmitRequest$new("catalog_id_example", c(AdvancedAuctionItemsSubmitRecord$new(AdvancedAuctionOperation$new(), "item_id_example", Country$new(), Language$new(), AdvancedAuctionBidOptions$new(123, AppTypeMultipliers$new(TargetingSpecAppType$new()), PlacementMultipliers$new("SEARCH")), c(UpdateMaskBidOptionField$new())))) # AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
+var_advanced_auction_items_submit_request <- AdvancedAuctionItemsSubmitRequest$new("catalog_id_example", c(AdvancedAuctionItemsSubmitRecord$new(AdvancedAuctionOperation$new(), Country$new(), "item_id_example", Language$new(), AdvancedAuctionBidOptions$new(AppTypeMultipliers$new("android_mobile"), 123, PlacementMultipliers$new("SEARCH")), c(UpdateMaskBidOptionField$new()), c(AdvancedAuctionOperationError$new(123, "message_example"))))) # AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- AdvancedAuctionApi$new()
@@ -114,6 +114,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Response containing the results of the item bid options operations |  -  |
+| **206** | Response containing the results of the item bid options operations (where some/all operation results have errors) |  -  |
 | **400** | Invalid request parameters. |  -  |
 | **401** | Not authenticated to post item bid options |  -  |
 | **403** | Not authorized to post item bid options |  -  |

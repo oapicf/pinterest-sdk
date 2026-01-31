@@ -8,8 +8,8 @@
 
 (def ad-accounts-list-200-response-data
   {
-   (ds/req :items) (s/coll-of ad-account-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of ad-account-spec)
    })
 
 (def ad-accounts-list-200-response-spec

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupCurrencyCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupCurrencyCriteria  -Values null `
- -Negated null
+$CatalogsProductGroupCurrencyCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupCurrencyCriteria  -Negated null `
+ -Values null
 ```
 
 - Convert the resource to JSON

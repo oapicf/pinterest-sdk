@@ -11,8 +11,11 @@ import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.AdsCreditRedeemRequest
 import org.openapitools.server.model.AdsCreditRedeemResponse
 import org.openapitools.server.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.server.model.BillingInvoiceDownloadResponse
+import org.openapitools.server.model.BillingInvoicesGet200Response
 import org.openapitools.server.model.BillingProfilesGet200Response
 import org.openapitools.server.model.Error
+import java.time.LocalDate
 import org.openapitools.server.model.SSIOAccountResponse
 import org.openapitools.server.model.SSIOCreateInsertionOrderRequest
 import org.openapitools.server.model.SSIOCreateInsertionOrderResponse
@@ -28,7 +31,8 @@ class BillingApi(
     billingMarshaller: BillingApiMarshaller
 ) {
 
-  import BillingApiPatterns.adAccountIdPattern
+  import BillingApiPatterns.billingInvoiceIdPattern
+import BillingApiPatterns.adAccountIdPattern
 
   import billingMarshaller._
 
@@ -44,6 +48,18 @@ class BillingApi(
       get { 
         parameters("bookmark".as[String].?, "page_size".as[Int].?(25)) { (bookmark, pageSize) => 
             billingService.adsCreditsDiscountsGet(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
+        }
+      }
+    } ~
+    path("ad_accounts" / adAccountIdPattern / "billing_invoice" / billingInvoiceIdPattern / "download") { (adAccountId, billingInvoiceId) => 
+      get {  
+            billingService.billingInvoiceDownloadGet(adAccountId = adAccountId, billingInvoiceId = billingInvoiceId)
+      }
+    } ~
+    path("ad_accounts" / adAccountIdPattern / "billing_invoices") { (adAccountId) => 
+      get { 
+        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "sort".as[String].?("DUE_DATE"), "order".as[String].?, "status".as[String].?, "document_type".as[String].?, "start_due_date".as[String].?, "end_due_date".as[String].?) { (bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate) => 
+            billingService.billingInvoicesGet(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, sort = sort, order = order, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
         }
       }
     } ~
@@ -96,7 +112,8 @@ class BillingApi(
 
 object BillingApiPatterns {
 
-    val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val billingInvoiceIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
 }
 
 trait BillingApiService {
@@ -125,6 +142,34 @@ trait BillingApiService {
    */
   def adsCreditsDiscountsGet(adAccountId: String, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerAdsCreditsDiscountsGet200Response: ToEntityMarshaller[AdsCreditsDiscountsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def billingInvoiceDownloadGet200(responseBillingInvoiceDownloadResponse: BillingInvoiceDownloadResponse)(implicit toEntityMarshallerBillingInvoiceDownloadResponse: ToEntityMarshaller[BillingInvoiceDownloadResponse]): Route =
+    complete((200, responseBillingInvoiceDownloadResponse))
+  def billingInvoiceDownloadGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def billingInvoiceDownloadGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Successfully fetched Billing invoice information for a given ad account, DataType: BillingInvoiceDownloadResponse
+   * Code: 400, Message: Invalid request parameter., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String)
+      (implicit toEntityMarshallerBillingInvoiceDownloadResponse: ToEntityMarshaller[BillingInvoiceDownloadResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def billingInvoicesGet200(responseBillingInvoicesGet200Response: BillingInvoicesGet200Response)(implicit toEntityMarshallerBillingInvoicesGet200Response: ToEntityMarshaller[BillingInvoicesGet200Response]): Route =
+    complete((200, responseBillingInvoicesGet200Response))
+  def billingInvoicesGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def billingInvoicesGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Success, DataType: BillingInvoicesGet200Response
+   * Code: 400, Message: Invalid request parameter., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def billingInvoicesGet(adAccountId: String, bookmark: Option[String], pageSize: Int, sort: String, order: Option[String], status: Option[String], documentType: Option[String], startDueDate: Option[String], endDueDate: Option[String])
+      (implicit toEntityMarshallerBillingInvoicesGet200Response: ToEntityMarshaller[BillingInvoicesGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def billingProfilesGet200(responseBillingProfilesGet200Response: BillingProfilesGet200Response)(implicit toEntityMarshallerBillingProfilesGet200Response: ToEntityMarshaller[BillingProfilesGet200Response]): Route =
     complete((200, responseBillingProfilesGet200Response))
@@ -245,6 +290,10 @@ trait BillingApiMarshaller {
   implicit def toEntityMarshallerSSIOCreateInsertionOrderResponse: ToEntityMarshaller[SSIOCreateInsertionOrderResponse]
 
   implicit def toEntityMarshallerSSIOInsertionOrderStatusResponse: ToEntityMarshaller[SSIOInsertionOrderStatusResponse]
+
+  implicit def toEntityMarshallerBillingInvoicesGet200Response: ToEntityMarshaller[BillingInvoicesGet200Response]
+
+  implicit def toEntityMarshallerBillingInvoiceDownloadResponse: ToEntityMarshaller[BillingInvoiceDownloadResponse]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 

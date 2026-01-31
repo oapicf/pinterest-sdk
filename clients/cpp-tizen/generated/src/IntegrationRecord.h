@@ -47,32 +47,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getId();
+	std::string getAdditionalId1();
 
 	/*! \brief Set 
 	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getExternalBusinessId();
-
-	/*! \brief Set 
-	 */
-	void setExternalBusinessId(std::string  external_business_id);
-	/*! \brief Get 
-	 */
-	std::string getConnectedMerchantId();
-
-	/*! \brief Set 
-	 */
-	void setConnectedMerchantId(std::string  connected_merchant_id);
-	/*! \brief Get 
-	 */
-	std::string getConnectedUserId();
-
-	/*! \brief Set 
-	 */
-	void setConnectedUserId(std::string  connected_user_id);
+	void setAdditionalId1(std::string  additional_id_1);
 	/*! \brief Get 
 	 */
 	std::string getConnectedAdvertiserId();
@@ -89,11 +68,46 @@ public:
 	void setConnectedLbaId(std::string  connected_lba_id);
 	/*! \brief Get 
 	 */
+	std::string getConnectedMerchantId();
+
+	/*! \brief Set 
+	 */
+	void setConnectedMerchantId(std::string  connected_merchant_id);
+	/*! \brief Get 
+	 */
 	std::string getConnectedTagId();
 
 	/*! \brief Set 
 	 */
 	void setConnectedTagId(std::string  connected_tag_id);
+	/*! \brief Get 
+	 */
+	std::string getConnectedUserId();
+
+	/*! \brief Set 
+	 */
+	void setConnectedUserId(std::string  connected_user_id);
+	/*! \brief Get 
+	 */
+	int getCreatedTime();
+
+	/*! \brief Set 
+	 */
+	void setCreatedTime(int  created_time);
+	/*! \brief Get 
+	 */
+	std::string getExternalBusinessId();
+
+	/*! \brief Set 
+	 */
+	void setExternalBusinessId(std::string  external_business_id);
+	/*! \brief Get 
+	 */
+	std::string getId();
+
+	/*! \brief Set 
+	 */
+	void setId(std::string  id);
 	/*! \brief Get 
 	 */
 	std::string getPartnerAccessToken();
@@ -103,11 +117,18 @@ public:
 	void setPartnerAccessToken(std::string  partner_access_token);
 	/*! \brief Get 
 	 */
-	std::string getPartnerRefreshToken();
+	int getPartnerAccessTokenExpiry();
 
 	/*! \brief Set 
 	 */
-	void setPartnerRefreshToken(std::string  partner_refresh_token);
+	void setPartnerAccessTokenExpiry(int  partner_access_token_expiry);
+	/*! \brief Get 
+	 */
+	std::string getPartnerMetadata();
+
+	/*! \brief Set 
+	 */
+	void setPartnerMetadata(std::string  partner_metadata);
 	/*! \brief Get 
 	 */
 	std::string getPartnerPrimaryEmail();
@@ -117,11 +138,11 @@ public:
 	void setPartnerPrimaryEmail(std::string  partner_primary_email);
 	/*! \brief Get 
 	 */
-	int getPartnerAccessTokenExpiry();
+	std::string getPartnerRefreshToken();
 
 	/*! \brief Set 
 	 */
-	void setPartnerAccessTokenExpiry(int  partner_access_token_expiry);
+	void setPartnerRefreshToken(std::string  partner_refresh_token);
 	/*! \brief Get 
 	 */
 	int getPartnerRefreshTokenExpiry();
@@ -138,27 +159,6 @@ public:
 	void setScopes(std::string  scopes);
 	/*! \brief Get 
 	 */
-	std::string getPartnerMetadata();
-
-	/*! \brief Set 
-	 */
-	void setPartnerMetadata(std::string  partner_metadata);
-	/*! \brief Get 
-	 */
-	std::string getAdditionalId1();
-
-	/*! \brief Set 
-	 */
-	void setAdditionalId1(std::string  additional_id_1);
-	/*! \brief Get 
-	 */
-	int getCreatedTime();
-
-	/*! \brief Set 
-	 */
-	void setCreatedTime(int  created_time);
-	/*! \brief Get 
-	 */
 	int getUpdatedTime();
 
 	/*! \brief Set 
@@ -166,22 +166,22 @@ public:
 	void setUpdatedTime(int  updated_time);
 
 private:
-	std::string id;
-	std::string external_business_id;
-	std::string connected_merchant_id;
-	std::string connected_user_id;
+	std::string additional_id_1;
 	std::string connected_advertiser_id;
 	std::string connected_lba_id;
+	std::string connected_merchant_id;
 	std::string connected_tag_id;
+	std::string connected_user_id;
+	int created_time;
+	std::string external_business_id;
+	std::string id;
 	std::string partner_access_token;
-	std::string partner_refresh_token;
-	std::string partner_primary_email;
 	int partner_access_token_expiry;
+	std::string partner_metadata;
+	std::string partner_primary_email;
+	std::string partner_refresh_token;
 	int partner_refresh_token_expiry;
 	std::string scopes;
-	std::string partner_metadata;
-	std::string additional_id_1;
-	int created_time;
 	int updated_time;
 	void __init();
 	void __cleanup();

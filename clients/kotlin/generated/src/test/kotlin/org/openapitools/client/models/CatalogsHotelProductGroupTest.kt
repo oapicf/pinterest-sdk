@@ -20,22 +20,23 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsHotelProductGroup
 import org.openapitools.client.models.CatalogsHotelProductGroupFilters
+import org.openapitools.client.models.CatalogsHotelProductGroupType
 
 class CatalogsHotelProductGroupTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of CatalogsHotelProductGroup
         //val modelInstance = CatalogsHotelProductGroup()
 
+        // to test the property `catalogId` - Catalog id pertaining to the hotel product group.
+        should("test catalogId") {
+            // uncomment below to test the property
+            //modelInstance.catalogId shouldBe ("TODO")
+        }
+
         // to test the property `catalogType`
         should("test catalogType") {
             // uncomment below to test the property
             //modelInstance.catalogType shouldBe ("TODO")
-        }
-
-        // to test the property `id` - ID of the hotel product group.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `filters`
@@ -44,16 +45,22 @@ class CatalogsHotelProductGroupTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `catalogId` - Catalog id pertaining to the hotel product group.
-        should("test catalogId") {
+        // to test the property `id` - ID of the hotel product group.
+        should("test id") {
             // uncomment below to test the property
-            //modelInstance.catalogId shouldBe ("TODO")
+            //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `name` - Name of hotel product group
-        should("test name") {
+        // to test the property `type`
+        should("test type") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.type shouldBe ("TODO")
+        }
+
+        // to test the property `createdAt` - Unix timestamp in seconds of when catalog product group was created.
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
         }
 
         // to test the property `description`
@@ -62,10 +69,10 @@ class CatalogsHotelProductGroupTest : ShouldSpec() {
             //modelInstance.description shouldBe ("TODO")
         }
 
-        // to test the property `createdAt` - Unix timestamp in seconds of when catalog product group was created.
-        should("test createdAt") {
+        // to test the property `name` - Name of hotel product group
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `updatedAt` - Unix timestamp in seconds of last time catalog product group was updated.

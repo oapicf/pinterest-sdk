@@ -79,7 +79,7 @@ private class OASAdvancedAuctionProcessedItemsTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASAdvancedAuctionProcessedItems advancedAuctionProcessedItems = new OASAdvancedAuctionProcessedItems();
-        System.assertEquals(new List<OASAdvancedAuctionProcessedItem>(), advancedAuctionProcessedItems.items);
+        System.assertEquals(new List<OASAdvancedAuctionItemsSubmitRecord>(), advancedAuctionProcessedItems.items);
         System.assertEquals(null, advancedAuctionProcessedItems.catalogId);
     }
 }

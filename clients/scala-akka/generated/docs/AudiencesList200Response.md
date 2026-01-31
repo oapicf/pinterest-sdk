@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;Audience&gt;**](Audience.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;Audience&gt;**](Audience.md) |  | 
 
 
 

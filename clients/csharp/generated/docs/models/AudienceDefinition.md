@@ -6,8 +6,8 @@ Queryable audience representation.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Date** | **string** | Generation date | [optional] 
-**Type** | **string** | Generated audience type to request. | [optional] 
-**Scope** | **string** | Generated audience scope to request. | [optional] 
+**Scope** | **string** |  | [optional] 
+**Type** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

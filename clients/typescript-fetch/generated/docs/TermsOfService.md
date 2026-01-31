@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`html` | string
-`hasAccepted` | boolean
 `adAccountId` | string
+`hasAccepted` | boolean
+`html` | string
+`id` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { TermsOfService } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 2650449554526,
-  "html": example test,
-  "hasAccepted": true,
   "adAccountId": 549755885175,
+  "hasAccepted": true,
+  "html": example test,
+  "id": 2650449554526,
 } satisfies TermsOfService
 
 console.log(example)

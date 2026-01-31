@@ -17,6 +17,7 @@ import org.openapitools.vertxweb.server.model.UpdateMaskFieldType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsUpdateRetailItem   {
   
+  private UpdatableItemAttributes attributes;
   private String itemId;
 
 
@@ -37,18 +38,26 @@ public class CatalogsUpdateRetailItem   {
   }
 
   private OperationEnum operation;
-  private UpdatableItemAttributes attributes;
   private List<UpdateMaskFieldType> updateMask;
 
   public CatalogsUpdateRetailItem () {
 
   }
 
-  public CatalogsUpdateRetailItem (String itemId, OperationEnum operation, UpdatableItemAttributes attributes, List<UpdateMaskFieldType> updateMask) {
+  public CatalogsUpdateRetailItem (UpdatableItemAttributes attributes, String itemId, OperationEnum operation, List<UpdateMaskFieldType> updateMask) {
+    this.attributes = attributes;
     this.itemId = itemId;
     this.operation = operation;
-    this.attributes = attributes;
     this.updateMask = updateMask;
+  }
+
+    
+  @JsonProperty("attributes")
+  public UpdatableItemAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(UpdatableItemAttributes attributes) {
+    this.attributes = attributes;
   }
 
     
@@ -70,15 +79,6 @@ public class CatalogsUpdateRetailItem   {
   }
 
     
-  @JsonProperty("attributes")
-  public UpdatableItemAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-    
   @JsonProperty("update_mask")
   public List<UpdateMaskFieldType> getUpdateMask() {
     return updateMask;
@@ -97,15 +97,15 @@ public class CatalogsUpdateRetailItem   {
       return false;
     }
     CatalogsUpdateRetailItem catalogsUpdateRetailItem = (CatalogsUpdateRetailItem) o;
-    return Objects.equals(itemId, catalogsUpdateRetailItem.itemId) &&
+    return Objects.equals(attributes, catalogsUpdateRetailItem.attributes) &&
+        Objects.equals(itemId, catalogsUpdateRetailItem.itemId) &&
         Objects.equals(operation, catalogsUpdateRetailItem.operation) &&
-        Objects.equals(attributes, catalogsUpdateRetailItem.attributes) &&
         Objects.equals(updateMask, catalogsUpdateRetailItem.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, updateMask);
+    return Objects.hash(attributes, itemId, operation, updateMask);
   }
 
   @Override
@@ -113,9 +113,9 @@ public class CatalogsUpdateRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

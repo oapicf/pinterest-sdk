@@ -18,6 +18,7 @@ import org.openapitools.vertxweb.server.model.ItemDeleteDiscontinuedBatchRecord;
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   
   private Country country;
+  private List<ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -144,17 +145,16 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   private LanguageEnum language;
   private BatchOperation operation;
-  private List<ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
   public CatalogsItemsDeleteDiscontinuedBatchRequest () {
 
   }
 
-  public CatalogsItemsDeleteDiscontinuedBatchRequest (Country country, LanguageEnum language, BatchOperation operation, List<ItemDeleteDiscontinuedBatchRecord> items) {
+  public CatalogsItemsDeleteDiscontinuedBatchRequest (Country country, List<ItemDeleteDiscontinuedBatchRecord> items, LanguageEnum language, BatchOperation operation) {
     this.country = country;
+    this.items = items;
     this.language = language;
     this.operation = operation;
-    this.items = items;
   }
 
     
@@ -164,6 +164,15 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+    
+  @JsonProperty("items")
+  public List<ItemDeleteDiscontinuedBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
   }
 
     
@@ -184,15 +193,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("items")
-  public List<ItemDeleteDiscontinuedBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -204,14 +204,14 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     }
     CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest = (CatalogsItemsDeleteDiscontinuedBatchRequest) o;
     return Objects.equals(country, catalogsItemsDeleteDiscontinuedBatchRequest.country) &&
+        Objects.equals(items, catalogsItemsDeleteDiscontinuedBatchRequest.items) &&
         Objects.equals(language, catalogsItemsDeleteDiscontinuedBatchRequest.language) &&
-        Objects.equals(operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation) &&
-        Objects.equals(items, catalogsItemsDeleteDiscontinuedBatchRequest.items);
+        Objects.equals(operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -220,9 +220,9 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     sb.append("class CatalogsItemsDeleteDiscontinuedBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

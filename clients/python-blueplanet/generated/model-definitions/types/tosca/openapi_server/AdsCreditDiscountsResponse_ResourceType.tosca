@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsCreditDiscountsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsCreditDiscountsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdsCreditDiscountsResponse {
+    title = AdsCreditDiscountsResponse
+    description = AdsCreditDiscountsResponse
+    derivedFrom = Root
+    properties {
+        active {
+          type =  boolean
+          description = "True if the offer code is currently active."
+          optional = false
+        }
+        advertiser_id {
+          type =  string
+          description = "Advertiser ID the offer was applied to."
+          optional = false
+        }
+        discount_currency {
+          type =  string
+          description = "Currency value for the discount."
+          optional = false
+        }
+        discount_in_micro_currency {
+          type =  
+          description = "The discount applied in the offer’s currency value."
+          optional = false
+        }
+        discount_type {
+          type =  string
+          description = "The type of discount of this credit"
+          enum = ["COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", ""]
+          optional = false
+        }
+        remaining_discount_in_micro_currency {
+          type =  
+          description = "The credits left to spend."
+          optional = false
+        }
+        title {
+          type =  string
+          description = "Human readable title of the offer code."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsCreditDiscountsResponse {
+    title = AdsCreditDiscountsResponse
+    description = AdsCreditDiscountsResponse
+    implements = openapi_server.resourceTypes.AdsCreditDiscountsResponse
+
+  }
+}

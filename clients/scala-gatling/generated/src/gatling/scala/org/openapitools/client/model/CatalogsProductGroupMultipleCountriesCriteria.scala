@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupMultipleCountriesCriteria (
-    _values: List[Country],
-    _negated: Option[Boolean]
+    _negated: Option[Boolean],
+    _values: List[Country]
 )
 object CatalogsProductGroupMultipleCountriesCriteria {
-    def toStringBody(var_values: Object, var_negated: Object) =
+    def toStringBody(var_negated: Object, var_values: Object) =
         s"""
         | {
-        | "values":$var_values,"negated":$var_negated
+        | "negated":$var_negated,"values":$var_values
         | }
         """.stripMargin
 }

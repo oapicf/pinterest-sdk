@@ -5,13 +5,13 @@
   "name": "QuizPinResult",
   "fields": [
     {
-      "name": "organic_pin_id",
+      "name": "android_deep_link",
       "type": ["null", "string"],
       "doc": "",
       "default": null
     },
     {
-      "name": "android_deep_link",
+      "name": "destination_url",
       "type": ["null", "string"],
       "doc": "",
       "default": null
@@ -23,7 +23,7 @@
       "default": null
     },
     {
-      "name": "destination_url",
+      "name": "organic_pin_id",
       "type": ["null", "string"],
       "doc": "",
       "default": null

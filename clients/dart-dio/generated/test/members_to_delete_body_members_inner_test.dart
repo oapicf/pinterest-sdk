@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MembersToDeleteBodyMembersInner, () {
-    // Unique identifier of the member
-    // String memberId
-    test('to test the property `memberId`', () async {
+    // BusinessRoleForMembers businessRole
+    test('to test the property `businessRole`', () async {
       // TODO
     });
 
-    // BusinessRoleForMembers businessRole
-    test('to test the property `businessRole`', () async {
+    // Unique identifier of the member
+    // String memberId
+    test('to test the property `memberId`', () async {
       // TODO
     });
 

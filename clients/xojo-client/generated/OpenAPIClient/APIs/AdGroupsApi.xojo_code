@@ -1,7 +1,7 @@
 #tag Class
 Protected Class AdGroupsApi
 	#tag Method, Flags = &h0
-		Sub AdGroupsAnalytics(, adAccountId As String, startDate As Date, endDate As Date, adGroupIds() As String, columns() As ColumnsEnum_AdGroupsAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdGroupsAnalytics, engagementWindowDays As Engagement_window_daysEnum_AdGroupsAnalytics, viewWindowDays As View_window_daysEnum_AdGroupsAnalytics, conversionReportTime As Conversion_report_timeEnum_AdGroupsAnalytics)
+		Sub AdGroupsAnalytics(, adAccountId As String, startDate As Date, endDate As Date, adGroupIds() As String, columns() As ColumnsEnum_AdGroupsAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdGroupsAnalytics, engagementWindowDays As Engagement_window_daysEnum_AdGroupsAnalytics, viewWindowDays As View_window_daysEnum_AdGroupsAnalytics, conversionReportTime As Conversion_report_timeEnum_AdGroupsAnalytics, Optional aggregateReportRows As Xoson.O.OptionalBoolean, reportingTimezone As OpenAPIClient.Models.ReportingTimeZoneOptional)
 		  // Operation ad_groups/analytics
 		  // Get ad group analytics
 		  // - 
@@ -12,19 +12,24 @@ Protected Class AdGroupsApi
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
 		  // - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
 		  // - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+		  // - parameter aggregateReportRows: (query) Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
+		  // - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional, default to Nil)
 		  //
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsAnalyticsCallback(AdGroupsAnalyticsResponseInner) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ad_groups/analytics
-		  // - Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+		  // - Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -82,7 +87,12 @@ Protected Class AdGroupsApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("conversion_report_time") + "=" + EncodeURLComponent(Conversion_report_timeEnum_AdGroupsAnalyticsToString(conversionReportTime))
 		  
+		  If aggregateReportRows <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("aggregate_report_rows") + "=" + EncodeURLComponent(aggregateReportRows.ToString)
+		  
+		  If reportingTimezone <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("reporting_timezone") + "=" + EncodeURLComponent(Xoson.toJSON(reportingTimezone))
+		  
 
+		  
 		  
 		  
 
@@ -210,8 +220,12 @@ Protected Class AdGroupsApi
 		      Return "CTR"
 		    Case ColumnsEnum_AdGroupsAnalytics.Ectr
 		      Return "ECTR"
+		    Case ColumnsEnum_AdGroupsAnalytics.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ColumnsEnum_AdGroupsAnalytics.CampaignName
 		      Return "CAMPAIGN_NAME"
+		    Case ColumnsEnum_AdGroupsAnalytics.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
 		    Case ColumnsEnum_AdGroupsAnalytics.PinId
 		      Return "PIN_ID"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalEngagement
@@ -252,8 +266,20 @@ Protected Class AdGroupsApi
 		      Return "CPM_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdGroupsAnalytics.CpmInDollar
 		      Return "CPM_IN_DOLLAR"
+		    Case ColumnsEnum_AdGroupsAnalytics.AdGroupName
+		      Return "AD_GROUP_NAME"
+		    Case ColumnsEnum_AdGroupsAnalytics.AdGroupBudgetType
+		      Return "AD_GROUP_BUDGET_TYPE"
+		    Case ColumnsEnum_AdGroupsAnalytics.AdGroupBudgetInLocalCurrency
+		      Return "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
 		    Case ColumnsEnum_AdGroupsAnalytics.AdGroupEntityStatus
 		      Return "AD_GROUP_ENTITY_STATUS"
+		    Case ColumnsEnum_AdGroupsAnalytics.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
+		    Case ColumnsEnum_AdGroupsAnalytics.PromoId
+		      Return "PROMO_ID"
+		    Case ColumnsEnum_AdGroupsAnalytics.PromoName
+		      Return "PROMO_NAME"
 		    Case ColumnsEnum_AdGroupsAnalytics.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ColumnsEnum_AdGroupsAnalytics.OrderLineName
@@ -288,6 +314,8 @@ Protected Class AdGroupsApi
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
 		    Case ColumnsEnum_AdGroupsAnalytics.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ColumnsEnum_AdGroupsAnalytics.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalEngagementSignup
 		      Return "TOTAL_ENGAGEMENT_SIGNUP"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalEngagementCheckout
@@ -330,10 +358,18 @@ Protected Class AdGroupsApi
 		      Return "WEB_SESSIONS_1"
 		    Case ColumnsEnum_AdGroupsAnalytics.WebSessions2
 		      Return "WEB_SESSIONS_2"
+		    Case ColumnsEnum_AdGroupsAnalytics.AdName
+		      Return "AD_NAME"
 		    Case ColumnsEnum_AdGroupsAnalytics.CampaignLifetimeSpendCap
 		      Return "CAMPAIGN_LIFETIME_SPEND_CAP"
+		    Case ColumnsEnum_AdGroupsAnalytics.AdGroupOptimization
+		      Return "AD_GROUP_OPTIMIZATION"
 		    Case ColumnsEnum_AdGroupsAnalytics.CampaignDailySpendCap
 		      Return "CAMPAIGN_DAILY_SPEND_CAP"
+		    Case ColumnsEnum_AdGroupsAnalytics.CampaignBudgetOptimization
+		      Return "CAMPAIGN_BUDGET_OPTIMIZATION"
+		    Case ColumnsEnum_AdGroupsAnalytics.IsPremiereCampaign
+		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalPageVisit
 		      Return "TOTAL_PAGE_VISIT"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalSignup
@@ -344,6 +380,10 @@ Protected Class AdGroupsApi
 		      Return "TOTAL_CUSTOM"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalLead
 		      Return "TOTAL_LEAD"
+		    Case ColumnsEnum_AdGroupsAnalytics.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ColumnsEnum_AdGroupsAnalytics.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalSignupValueInMicroDollar
 		      Return "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalCheckoutValueInMicroDollar
@@ -358,10 +398,20 @@ Protected Class AdGroupsApi
 		      Return "CHECKOUT_ROAS"
 		    Case ColumnsEnum_AdGroupsAnalytics.CustomRoas
 		      Return "CUSTOM_ROAS"
+		    Case ColumnsEnum_AdGroupsAnalytics.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ColumnsEnum_AdGroupsAnalytics.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
+		    Case ColumnsEnum_AdGroupsAnalytics.Video3secViews1
+		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ColumnsEnum_AdGroupsAnalytics.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ColumnsEnum_AdGroupsAnalytics.VideoMrcViews1
 		      Return "VIDEO_MRC_VIEWS_1"
 		    Case ColumnsEnum_AdGroupsAnalytics.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ColumnsEnum_AdGroupsAnalytics.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ColumnsEnum_AdGroupsAnalytics.VideoP100Complete2
 		      Return "VIDEO_P100_COMPLETE_2"
 		    Case ColumnsEnum_AdGroupsAnalytics.VideoP0Combined2
@@ -380,6 +430,8 @@ Protected Class AdGroupsApi
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdGroupsAnalytics.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ColumnsEnum_AdGroupsAnalytics.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum_AdGroupsAnalytics.EcpvInDollar
 		      Return "ECPV_IN_DOLLAR"
 		    Case ColumnsEnum_AdGroupsAnalytics.EcpcvInDollar
@@ -388,6 +440,8 @@ Protected Class AdGroupsApi
 		      Return "ECPCV_P95_IN_DOLLAR"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ColumnsEnum_AdGroupsAnalytics.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalVideoP100Complete
 		      Return "TOTAL_VIDEO_P100_COMPLETE"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalVideoP0Combined
@@ -430,6 +484,10 @@ Protected Class AdGroupsApi
 		      Return "INAPP_CHECKOUT_COST_PER_ACTION"
 		    Case ColumnsEnum_AdGroupsAnalytics.TotalOfflineCheckout
 		      Return "TOTAL_OFFLINE_CHECKOUT"
+		    Case ColumnsEnum_AdGroupsAnalytics.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum_AdGroupsAnalytics.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
 		    Case ColumnsEnum_AdGroupsAnalytics.IdeaPinProductTagVisit1
 		      Return "IDEA_PIN_PRODUCT_TAG_VISIT_1"
 		    Case ColumnsEnum_AdGroupsAnalytics.IdeaPinProductTagVisit2
@@ -516,12 +574,12 @@ Protected Class AdGroupsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdGroupsAudienceSizing(, adAccountId As String, Optional adGroupAudienceSizingRequest As OpenAPIClient.Models.AdGroupAudienceSizingRequest)
+		Sub AdGroupsAudienceSizing(, adAccountId As String, adGroupAudienceSizingRequest As OpenAPIClient.Models.AdGroupAudienceSizingRequest)
 		  // Operation ad_groups/audience_sizing
 		  // Get audience sizing
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter adGroupAudienceSizingRequest: (body)  (optional)
+		  // - parameter adGroupAudienceSizingRequest: (body)  
 		  //
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsAudienceSizingCallback(AdGroupAudienceSizingResponse) on completion. 
 		  //
@@ -532,11 +590,15 @@ Protected Class AdGroupsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adGroupAudienceSizingRequest), "application/json")
+		  
 		  
 		  
 		  
@@ -659,17 +721,21 @@ Protected Class AdGroupsApi
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsBidFloorGetCallback(BidFloor) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/bid_floor
-		  // - List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
+		  // - List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(bidFloorRequest), "application/json")
+		  
 		  
 		  
 		  
@@ -792,7 +858,7 @@ Protected Class AdGroupsApi
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsCreateCallback(AdGroupArrayResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/ad_groups
-		  // - Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href="https://help.pinterest.com/en/business/article/campaign-structure" target="_blank"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+		  // - Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href="https://help.pinterest.com/en/business/article/campaign-structure" target="_blank"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -925,16 +991,20 @@ Protected Class AdGroupsApi
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsGetCallback(AdGroupResponse) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}
-		  // - Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
+		  // - Get a specific ad group given the ad group ID.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -1073,6 +1143,9 @@ Protected Class AdGroupsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1142,6 +1215,7 @@ Protected Class AdGroupsApi
 		  If translateInterestsToNames <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("translate_interests_to_names") + "=" + EncodeURLComponent(translateInterestsToNames.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -1285,7 +1359,7 @@ Protected Class AdGroupsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdGroupsTargetingAnalyticsGet(, adAccountId As String, adGroupIds() As String, startDate As Date, endDate As Date, targetingTypes() As AdsAnalyticsTargetingType, columns() As ColumnsEnum_AdGroupsTargetingAnalyticsGet, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdGroupsTargetingAnalyticsGet, engagementWindowDays As Engagement_window_daysEnum_AdGroupsTargetingAnalyticsGet, viewWindowDays As View_window_daysEnum_AdGroupsTargetingAnalyticsGet, conversionReportTime As Conversion_report_timeEnum_AdGroupsTargetingAnalyticsGet, attributionTypes As OpenAPIClient.Models.ConversionReportAttributionTypeOptional)
+		Sub AdGroupsTargetingAnalyticsGet(, adAccountId As String, adGroupIds() As String, startDate As Date, endDate As Date, targetingTypes() As AdsAnalyticsAdGroupTargetingType, columns() As ColumnsEnum_AdGroupsTargetingAnalyticsGet, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdGroupsTargetingAnalyticsGet, engagementWindowDays As Engagement_window_daysEnum_AdGroupsTargetingAnalyticsGet, viewWindowDays As View_window_daysEnum_AdGroupsTargetingAnalyticsGet, conversionReportTime As Conversion_report_timeEnum_AdGroupsTargetingAnalyticsGet, attributionTypes() As ConversionReportAttributionType, reportingTimezone As OpenAPIClient.Models.ReportingTimeZoneOptional)
 		  // Operation ad_groups_targeting_analytics/get
 		  // Get targeting analytics for ad groups
 		  // - 
@@ -1293,24 +1367,28 @@ Protected Class AdGroupsApi
 		  // - parameter adGroupIds: (query) List of Ad group Ids to use to filter the results. 
 		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-		  // - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;AGE_BUCKET_AND_GENDER&quot;] is in BETA and not yet available to all users. 
+		  // - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;AGE_BUCKET_AND_GENDER&quot;, &quot;CREATIVE_ENHANCEMENTS&quot;] are in BETA and not yet available to all users. 
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
 		  // - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
 		  // - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
 		  // - parameter attributionTypes: (query) List of types of attribution for the conversion report (optional, default to Nil)
+		  // - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional, default to Nil)
 		  //
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsTargetingAnalyticsGetCallback(MetricsResponse) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ad_groups/targeting_analytics
-		  // - Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+		  // - Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1341,7 +1419,7 @@ Protected Class AdGroupsApi
 		  
 		  
 		  Dim localVarQueryStringstargetingTypes() As String
-		  For Each localVarItemtargetingTypes As AdsAnalyticsTargetingType in targetingTypes
+		  For Each localVarItemtargetingTypes As AdsAnalyticsAdGroupTargetingType in targetingTypes
 		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemtargetingTypes))
 		    localVarQueryStringstargetingTypes.Append(encodedParameter)
 		  Next
@@ -1387,9 +1465,29 @@ Protected Class AdGroupsApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("conversion_report_time") + "=" + EncodeURLComponent(Conversion_report_timeEnum_AdGroupsTargetingAnalyticsGetToString(conversionReportTime))
 		  
-		  If attributionTypes <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("attribution_types") + "=" + EncodeURLComponent(Xoson.toJSON(attributionTypes))
+		  
+		  Dim localVarQueryStringsattributionTypes() As String
+		  For Each localVarItemattributionTypes As ConversionReportAttributionType in attributionTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemattributionTypes))
+		    localVarQueryStringsattributionTypes.Append(encodedParameter)
+		  Next
+		  
+		  Dim localVarQueryStringattributionTypes As String
+		  Select Case "form"
+		    Case "form"
+			  localVarQueryStringattributionTypes = "inner=" + Join(localVarQueryStringsattributionTypes, ",")
+		    Case "spaceDelimited"
+		      localVarQueryStringattributionTypes = "inner=" + Join(localVarQueryStringsattributionTypes, " ")
+		    Case "pipeDelimited"
+		      localVarQueryStringattributionTypes = "inner=" + Join(localVarQueryStringsattributionTypes, "|")
+		    Case "deepObject"
+		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		  End Select
+		  If localVarQueryStringsattributionTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringattributionTypes)
+		  If reportingTimezone <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("reporting_timezone") + "=" + EncodeURLComponent(Xoson.toJSON(reportingTimezone))
 		  
 
+		  
 		  
 		  
 
@@ -1519,8 +1617,12 @@ Protected Class AdGroupsApi
 		      Return "CTR"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.Ectr
 		      Return "ECTR"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CampaignName
 		      Return "CAMPAIGN_NAME"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.PinId
 		      Return "PIN_ID"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalEngagement
@@ -1561,8 +1663,20 @@ Protected Class AdGroupsApi
 		      Return "CPM_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CpmInDollar
 		      Return "CPM_IN_DOLLAR"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdGroupName
+		      Return "AD_GROUP_NAME"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdGroupBudgetType
+		      Return "AD_GROUP_BUDGET_TYPE"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdGroupBudgetInLocalCurrency
+		      Return "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdGroupEntityStatus
 		      Return "AD_GROUP_ENTITY_STATUS"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.PromoId
+		      Return "PROMO_ID"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.PromoName
+		      Return "PROMO_NAME"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.OrderLineName
@@ -1597,6 +1711,8 @@ Protected Class AdGroupsApi
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalEngagementSignup
 		      Return "TOTAL_ENGAGEMENT_SIGNUP"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalEngagementCheckout
@@ -1639,10 +1755,18 @@ Protected Class AdGroupsApi
 		      Return "WEB_SESSIONS_1"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.WebSessions2
 		      Return "WEB_SESSIONS_2"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdName
+		      Return "AD_NAME"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CampaignLifetimeSpendCap
 		      Return "CAMPAIGN_LIFETIME_SPEND_CAP"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.AdGroupOptimization
+		      Return "AD_GROUP_OPTIMIZATION"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CampaignDailySpendCap
 		      Return "CAMPAIGN_DAILY_SPEND_CAP"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CampaignBudgetOptimization
+		      Return "CAMPAIGN_BUDGET_OPTIMIZATION"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.IsPremiereCampaign
+		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalPageVisit
 		      Return "TOTAL_PAGE_VISIT"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalSignup
@@ -1653,6 +1777,10 @@ Protected Class AdGroupsApi
 		      Return "TOTAL_CUSTOM"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalLead
 		      Return "TOTAL_LEAD"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalSignupValueInMicroDollar
 		      Return "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalCheckoutValueInMicroDollar
@@ -1667,10 +1795,20 @@ Protected Class AdGroupsApi
 		      Return "CHECKOUT_ROAS"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.CustomRoas
 		      Return "CUSTOM_ROAS"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.Video3secViews1
+		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoMrcViews1
 		      Return "VIDEO_MRC_VIEWS_1"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoP100Complete2
 		      Return "VIDEO_P100_COMPLETE_2"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoP0Combined2
@@ -1689,6 +1827,8 @@ Protected Class AdGroupsApi
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.EcpvInDollar
 		      Return "ECPV_IN_DOLLAR"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.EcpcvInDollar
@@ -1697,6 +1837,8 @@ Protected Class AdGroupsApi
 		      Return "ECPCV_P95_IN_DOLLAR"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalVideoP100Complete
 		      Return "TOTAL_VIDEO_P100_COMPLETE"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalVideoP0Combined
@@ -1739,6 +1881,10 @@ Protected Class AdGroupsApi
 		      Return "INAPP_CHECKOUT_COST_PER_ACTION"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalOfflineCheckout
 		      Return "TOTAL_OFFLINE_CHECKOUT"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.IdeaPinProductTagVisit1
 		      Return "IDEA_PIN_PRODUCT_TAG_VISIT_1"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.IdeaPinProductTagVisit2
@@ -2043,7 +2189,9 @@ Protected Class AdGroupsApi
         EcpcInDollar
         Ctr
         Ectr
+        OutboundCtr1
         CampaignName
+        CampaignBrandLabel
         PinId
         TotalEngagement
         Engagement1
@@ -2064,7 +2212,13 @@ Protected Class AdGroupsApi
         CampaignObjectiveType
         CpmInMicroDollar
         CpmInDollar
+        AdGroupName
+        AdGroupBudgetType
+        AdGroupBudgetInLocalCurrency
         AdGroupEntityStatus
+        AdGroupBidMultiplier
+        PromoId
+        PromoName
         OrderLineId
         OrderLineName
         Clickthrough1
@@ -2082,6 +2236,7 @@ Protected Class AdGroupsApi
         TotalImpressionUser
         TotalImpressionFrequency
         CostPerOutboundClickInDollar
+        CostPerOutboundClickInDollar1
         TotalEngagementSignup
         TotalEngagementCheckout
         TotalEngagementLead
@@ -2103,13 +2258,19 @@ Protected Class AdGroupsApi
         TotalWebSessions
         WebSessions1
         WebSessions2
+        AdName
         CampaignLifetimeSpendCap
+        AdGroupOptimization
         CampaignDailySpendCap
+        CampaignBudgetOptimization
+        IsPremiereCampaign
         TotalPageVisit
         TotalSignup
         TotalCheckout
         TotalCustom
         TotalLead
+        TotalAddToWishlist
+        TotalSubscribe
         TotalSignupValueInMicroDollar
         TotalCheckoutValueInMicroDollar
         TotalCustomValueInMicroDollar
@@ -2117,8 +2278,13 @@ Protected Class AdGroupsApi
         PageVisitRoas
         CheckoutRoas
         CustomRoas
+        ProductGroupAdImageTag
+        ProductGroupAdVideoTag
+        Video3secViews1
+        Video15secUniqueViews1
         VideoMrcViews1
         Video3secViews2
+        Video15secUniqueViews2
         VideoP100Complete2
         VideoP0Combined2
         VideoP25Combined2
@@ -2128,10 +2294,12 @@ Protected Class AdGroupsApi
         VideoMrcViews2
         PaidVideoViewableRate
         VideoLength
+        VideoSpendInDollar
         EcpvInDollar
         EcpcvInDollar
         EcpcvP95InDollar
         TotalVideo3secViews
+        TotalVideo15secUniqueViews
         TotalVideoP100Complete
         TotalVideoP0Combined
         TotalVideoP25Combined
@@ -2153,6 +2321,8 @@ Protected Class AdGroupsApi
         TotalWebViewCheckoutValueInMicroDollar
         InappCheckoutCostPerAction
         TotalOfflineCheckout
+        TotalAppInstallConversionRate
+        TotalInappAppInstallConversionRate
         IdeaPinProductTagVisit1
         IdeaPinProductTagVisit2
         TotalIdeaPinProductTagVisit
@@ -2256,7 +2426,9 @@ Protected Class AdGroupsApi
         EcpcInDollar
         Ctr
         Ectr
+        OutboundCtr1
         CampaignName
+        CampaignBrandLabel
         PinId
         TotalEngagement
         Engagement1
@@ -2277,7 +2449,13 @@ Protected Class AdGroupsApi
         CampaignObjectiveType
         CpmInMicroDollar
         CpmInDollar
+        AdGroupName
+        AdGroupBudgetType
+        AdGroupBudgetInLocalCurrency
         AdGroupEntityStatus
+        AdGroupBidMultiplier
+        PromoId
+        PromoName
         OrderLineId
         OrderLineName
         Clickthrough1
@@ -2295,6 +2473,7 @@ Protected Class AdGroupsApi
         TotalImpressionUser
         TotalImpressionFrequency
         CostPerOutboundClickInDollar
+        CostPerOutboundClickInDollar1
         TotalEngagementSignup
         TotalEngagementCheckout
         TotalEngagementLead
@@ -2316,13 +2495,19 @@ Protected Class AdGroupsApi
         TotalWebSessions
         WebSessions1
         WebSessions2
+        AdName
         CampaignLifetimeSpendCap
+        AdGroupOptimization
         CampaignDailySpendCap
+        CampaignBudgetOptimization
+        IsPremiereCampaign
         TotalPageVisit
         TotalSignup
         TotalCheckout
         TotalCustom
         TotalLead
+        TotalAddToWishlist
+        TotalSubscribe
         TotalSignupValueInMicroDollar
         TotalCheckoutValueInMicroDollar
         TotalCustomValueInMicroDollar
@@ -2330,8 +2515,13 @@ Protected Class AdGroupsApi
         PageVisitRoas
         CheckoutRoas
         CustomRoas
+        ProductGroupAdImageTag
+        ProductGroupAdVideoTag
+        Video3secViews1
+        Video15secUniqueViews1
         VideoMrcViews1
         Video3secViews2
+        Video15secUniqueViews2
         VideoP100Complete2
         VideoP0Combined2
         VideoP25Combined2
@@ -2341,10 +2531,12 @@ Protected Class AdGroupsApi
         VideoMrcViews2
         PaidVideoViewableRate
         VideoLength
+        VideoSpendInDollar
         EcpvInDollar
         EcpcvInDollar
         EcpcvP95InDollar
         TotalVideo3secViews
+        TotalVideo15secUniqueViews
         TotalVideoP100Complete
         TotalVideoP0Combined
         TotalVideoP25Combined
@@ -2366,6 +2558,8 @@ Protected Class AdGroupsApi
         TotalWebViewCheckoutValueInMicroDollar
         InappCheckoutCostPerAction
         TotalOfflineCheckout
+        TotalAppInstallConversionRate
+        TotalInappAppInstallConversionRate
         IdeaPinProductTagVisit1
         IdeaPinProductTagVisit2
         TotalIdeaPinProductTagVisit

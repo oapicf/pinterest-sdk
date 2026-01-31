@@ -14,27 +14,18 @@ import org.openapitools.vertxweb.server.model.PinAnalyticsMetricsResponseDailyMe
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinAnalyticsMetricsResponse   {
   
-  private Map<String, Integer> lifetimeMetrics = new HashMap<>();
   private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  private Map<String, Integer> lifetimeMetrics = new HashMap<>();
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public PinAnalyticsMetricsResponse () {
 
   }
 
-  public PinAnalyticsMetricsResponse (Map<String, Integer> lifetimeMetrics, List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics, Map<String, BigDecimal> summaryMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
+  public PinAnalyticsMetricsResponse (List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics, Map<String, Integer> lifetimeMetrics, Map<String, BigDecimal> summaryMetrics) {
     this.dailyMetrics = dailyMetrics;
-    this.summaryMetrics = summaryMetrics;
-  }
-
-    
-  @JsonProperty("lifetime_metrics")
-  public Map<String, Integer> getLifetimeMetrics() {
-    return lifetimeMetrics;
-  }
-  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
     this.lifetimeMetrics = lifetimeMetrics;
+    this.summaryMetrics = summaryMetrics;
   }
 
     
@@ -44,6 +35,15 @@ public class PinAnalyticsMetricsResponse   {
   }
   public void setDailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
+  }
+
+    
+  @JsonProperty("lifetime_metrics")
+  public Map<String, Integer> getLifetimeMetrics() {
+    return lifetimeMetrics;
+  }
+  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
   }
 
     
@@ -65,14 +65,14 @@ public class PinAnalyticsMetricsResponse   {
       return false;
     }
     PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = (PinAnalyticsMetricsResponse) o;
-    return Objects.equals(lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
-        Objects.equals(dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+    return Objects.equals(dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
         Objects.equals(summaryMetrics, pinAnalyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lifetimeMetrics, dailyMetrics, summaryMetrics);
+    return Objects.hash(dailyMetrics, lifetimeMetrics, summaryMetrics);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class PinAnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinAnalyticsMetricsResponse {\n");
     
-    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();

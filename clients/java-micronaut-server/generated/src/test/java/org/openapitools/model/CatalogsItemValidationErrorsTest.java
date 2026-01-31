@@ -101,19 +101,19 @@ public class CatalogsItemValidationErrorsTest {
     }
 
     /**
-     * Test the property 'ITEMID_MISSING'
-     */
-    @Test
-    public void ITEMID_MISSINGTest() {
-        // TODO: test ITEMID_MISSING
-    }
-
-    /**
      * Test the property 'ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE'
      */
     @Test
     public void ITEM_MAIN_IMAGE_DOWNLOAD_FAILURETest() {
         // TODO: test ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+    }
+
+    /**
+     * Test the property 'ITEMID_MISSING'
+     */
+    @Test
+    public void ITEMID_MISSINGTest() {
+        // TODO: test ITEMID_MISSING
     }
 
     /**

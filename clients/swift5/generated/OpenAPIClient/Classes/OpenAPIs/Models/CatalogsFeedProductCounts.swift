@@ -13,27 +13,27 @@ import AnyCodable
 /** The counts can be null early in the process. */
 public struct CatalogsFeedProductCounts: Codable, JSONEncodable, Hashable {
 
-    /** The number of products in the feed file. */
-    public var original: Int?
     /** The number of products successfully ingested from the feed file. */
     public var ingested: Int?
+    /** The number of products in the feed file. */
+    public var original: Int?
 
-    public init(original: Int? = nil, ingested: Int? = nil) {
-        self.original = original
+    public init(ingested: Int? = nil, original: Int? = nil) {
         self.ingested = ingested
+        self.original = original
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case original
         case ingested
+        case original
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(original, forKey: .original)
         try container.encodeIfPresent(ingested, forKey: .ingested)
+        try container.encodeIfPresent(original, forKey: .original)
     }
 }
 

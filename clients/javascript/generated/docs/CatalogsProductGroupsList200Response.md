@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[CatalogsVerticalProductGroup]**](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[CatalogsVerticalProductGroup]**](CatalogsVerticalProductGroup.md) |  | 
 
 

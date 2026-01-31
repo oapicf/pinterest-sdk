@@ -22,14 +22,14 @@ advanced_auction_items_get_record_t* instantiate_advanced_auction_items_get_reco
   advanced_auction_items_get_record_t* advanced_auction_items_get_record = NULL;
   if (include_optional) {
     advanced_auction_items_get_record = advanced_auction_items_get_record_create(
+      pinterest_rest_api_advanced_auction_items_get_record__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_items_get_record__"US",
       pinterest_rest_api_advanced_auction_items_get_record__"EN"
     );
   } else {
     advanced_auction_items_get_record = advanced_auction_items_get_record_create(
+      pinterest_rest_api_advanced_auction_items_get_record__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_items_get_record__"US",
       pinterest_rest_api_advanced_auction_items_get_record__"EN"
     );
   }

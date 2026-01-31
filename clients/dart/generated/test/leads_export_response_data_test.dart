@@ -16,13 +16,13 @@ void main() {
   // final instance = LeadsExportResponseData();
 
   group('test LeadsExportResponseData', () {
-    // LeadsExportStatus exportStatus
-    test('to test the property `exportStatus`', () async {
+    // String downloadUrl
+    test('to test the property `downloadUrl`', () async {
       // TODO
     });
 
-    // String downloadUrl
-    test('to test the property `downloadUrl`', () async {
+    // LeadsExportStatus exportStatus
+    test('to test the property `exportStatus`', () async {
       // TODO
     });
 

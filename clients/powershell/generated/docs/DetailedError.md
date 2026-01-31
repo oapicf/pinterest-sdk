@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **Int32** |  | 
-**Message** | **String** |  | 
 **Details** | [**SystemCollectionsHashtable**](.md) |  | 
+**Message** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $DetailedError = Initialize-PSOpenAPIToolsDetailedError  -Code null `
- -Message null `
- -Details null
+ -Details null `
+ -Message null
 ```
 
 - Convert the resource to JSON

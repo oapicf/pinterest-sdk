@@ -6,27 +6,27 @@
 
 
 static ad_account_owner_t *ad_account_owner_create_internal(
-    char *username,
-    char *id
+    char *id,
+    char *username
     ) {
     ad_account_owner_t *ad_account_owner_local_var = malloc(sizeof(ad_account_owner_t));
     if (!ad_account_owner_local_var) {
         return NULL;
     }
-    ad_account_owner_local_var->username = username;
     ad_account_owner_local_var->id = id;
+    ad_account_owner_local_var->username = username;
 
     ad_account_owner_local_var->_library_owned = 1;
     return ad_account_owner_local_var;
 }
 
 __attribute__((deprecated)) ad_account_owner_t *ad_account_owner_create(
-    char *username,
-    char *id
+    char *id,
+    char *username
     ) {
     return ad_account_owner_create_internal (
-        username,
-        id
+        id,
+        username
         );
 }
 
@@ -39,13 +39,13 @@ void ad_account_owner_free(ad_account_owner_t *ad_account_owner) {
         return ;
     }
     listEntry_t *listEntry;
-    if (ad_account_owner->username) {
-        free(ad_account_owner->username);
-        ad_account_owner->username = NULL;
-    }
     if (ad_account_owner->id) {
         free(ad_account_owner->id);
         ad_account_owner->id = NULL;
+    }
+    if (ad_account_owner->username) {
+        free(ad_account_owner->username);
+        ad_account_owner->username = NULL;
     }
     free(ad_account_owner);
 }
@@ -53,17 +53,17 @@ void ad_account_owner_free(ad_account_owner_t *ad_account_owner) {
 cJSON *ad_account_owner_convertToJSON(ad_account_owner_t *ad_account_owner) {
     cJSON *item = cJSON_CreateObject();
 
-    // ad_account_owner->username
-    if(ad_account_owner->username) {
-    if(cJSON_AddStringToObject(item, "username", ad_account_owner->username) == NULL) {
+    // ad_account_owner->id
+    if(ad_account_owner->id) {
+    if(cJSON_AddStringToObject(item, "id", ad_account_owner->id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // ad_account_owner->id
-    if(ad_account_owner->id) {
-    if(cJSON_AddStringToObject(item, "id", ad_account_owner->id) == NULL) {
+    // ad_account_owner->username
+    if(ad_account_owner->username) {
+    if(cJSON_AddStringToObject(item, "username", ad_account_owner->username) == NULL) {
     goto fail; //String
     }
     }
@@ -80,18 +80,6 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
 
     ad_account_owner_t *ad_account_owner_local_var = NULL;
 
-    // ad_account_owner->username
-    cJSON *username = cJSON_GetObjectItemCaseSensitive(ad_account_ownerJSON, "username");
-    if (cJSON_IsNull(username)) {
-        username = NULL;
-    }
-    if (username) { 
-    if(!cJSON_IsString(username) && !cJSON_IsNull(username))
-    {
-    goto end; //String
-    }
-    }
-
     // ad_account_owner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ad_account_ownerJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -104,10 +92,22 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
     }
     }
 
+    // ad_account_owner->username
+    cJSON *username = cJSON_GetObjectItemCaseSensitive(ad_account_ownerJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
+    if (username) { 
+    if(!cJSON_IsString(username) && !cJSON_IsNull(username))
+    {
+    goto end; //String
+    }
+    }
+
 
     ad_account_owner_local_var = ad_account_owner_create_internal (
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL
         );
 
     return ad_account_owner_local_var;

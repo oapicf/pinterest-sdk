@@ -1,0 +1,69 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendingTopic"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendingTopic"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TrendingPin = openapi_server.resourceTypes.TrendingPin
+}
+resourceTypes {
+
+  TrendingTopic {
+    title = TrendingTopic
+    description = TrendingTopic
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = "Description of the trending topic"
+          optional = true
+        }
+        percent_growth_mom {
+          type =  integer
+          description = "Month-over-month growth percentage"
+          optional = true
+        }
+        pins {
+          type = array
+          items.type = TrendingPin
+          description = "Array of pin images related to this trend (up to 6)"
+          optional = true
+        }
+        related_interests {
+          type = array
+          items.type =  string
+          description = "List of related interest categories"
+          optional = true
+        }
+        related_searches {
+          type = array
+          items.type =  string
+          description = "List of related search terms"
+          optional = true
+        }
+        time_series {
+          # TODO
+          description = "Time series data showing trend values over time, with dates as keys and values as numeric"
+          optional = true
+        }
+        title {
+          type =  string
+          description = "Title of the trending topic"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendingTopic {
+    title = TrendingTopic
+    description = TrendingTopic
+    implements = openapi_server.resourceTypes.TrendingTopic
+
+  }
+}

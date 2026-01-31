@@ -7,30 +7,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserWebsiteVerificationCode   {
   
-  private String verificationCode;
   private String dnsTxtRecord;
-  private String metatag;
-  private String filename;
   private String fileContent;
+  private String filename;
+  private String metatag;
+  private String verificationCode;
 
   public UserWebsiteVerificationCode () {
 
   }
 
-  public UserWebsiteVerificationCode (String verificationCode, String dnsTxtRecord, String metatag, String filename, String fileContent) {
-    this.verificationCode = verificationCode;
+  public UserWebsiteVerificationCode (String dnsTxtRecord, String fileContent, String filename, String metatag, String verificationCode) {
     this.dnsTxtRecord = dnsTxtRecord;
-    this.metatag = metatag;
-    this.filename = filename;
     this.fileContent = fileContent;
-  }
-
-    
-  @JsonProperty("verification_code")
-  public String getVerificationCode() {
-    return verificationCode;
-  }
-  public void setVerificationCode(String verificationCode) {
+    this.filename = filename;
+    this.metatag = metatag;
     this.verificationCode = verificationCode;
   }
 
@@ -44,12 +35,12 @@ public class UserWebsiteVerificationCode   {
   }
 
     
-  @JsonProperty("metatag")
-  public String getMetatag() {
-    return metatag;
+  @JsonProperty("file_content")
+  public String getFileContent() {
+    return fileContent;
   }
-  public void setMetatag(String metatag) {
-    this.metatag = metatag;
+  public void setFileContent(String fileContent) {
+    this.fileContent = fileContent;
   }
 
     
@@ -62,12 +53,21 @@ public class UserWebsiteVerificationCode   {
   }
 
     
-  @JsonProperty("file_content")
-  public String getFileContent() {
-    return fileContent;
+  @JsonProperty("metatag")
+  public String getMetatag() {
+    return metatag;
   }
-  public void setFileContent(String fileContent) {
-    this.fileContent = fileContent;
+  public void setMetatag(String metatag) {
+    this.metatag = metatag;
+  }
+
+    
+  @JsonProperty("verification_code")
+  public String getVerificationCode() {
+    return verificationCode;
+  }
+  public void setVerificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
   }
 
 
@@ -80,16 +80,16 @@ public class UserWebsiteVerificationCode   {
       return false;
     }
     UserWebsiteVerificationCode userWebsiteVerificationCode = (UserWebsiteVerificationCode) o;
-    return Objects.equals(verificationCode, userWebsiteVerificationCode.verificationCode) &&
-        Objects.equals(dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
-        Objects.equals(metatag, userWebsiteVerificationCode.metatag) &&
+    return Objects.equals(dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
+        Objects.equals(fileContent, userWebsiteVerificationCode.fileContent) &&
         Objects.equals(filename, userWebsiteVerificationCode.filename) &&
-        Objects.equals(fileContent, userWebsiteVerificationCode.fileContent);
+        Objects.equals(metatag, userWebsiteVerificationCode.metatag) &&
+        Objects.equals(verificationCode, userWebsiteVerificationCode.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verificationCode, dnsTxtRecord, metatag, filename, fileContent);
+    return Objects.hash(dnsTxtRecord, fileContent, filename, metatag, verificationCode);
   }
 
   @Override
@@ -97,11 +97,11 @@ public class UserWebsiteVerificationCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerificationCode {\n");
     
-    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("    dnsTxtRecord: ").append(toIndentedString(dnsTxtRecord)).append("\n");
-    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
-    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
     sb.append("    fileContent: ").append(toIndentedString(fileContent)).append("\n");
+    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
+    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
+    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

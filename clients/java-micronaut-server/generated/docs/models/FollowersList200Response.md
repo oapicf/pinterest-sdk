@@ -8,8 +8,8 @@ The class is defined in **[FollowersList200Response.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;UserSummary&gt;`](UserSummary.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;UserSummary&gt;`](UserSummary.md) |  | 
 
 
 

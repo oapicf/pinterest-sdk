@@ -10,6 +10,14 @@
       "doc": ""
     },
     {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.ItemUpsertBatchRecord"
+      },
+      "doc": "Array with catalogs items"
+    },
+    {
       "name": "language",
       "type": {
         "type": "enum",
@@ -130,14 +138,6 @@
       "name": "operation",
       "type": "model.BatchOperation",
       "doc": ""
-    },
-    {
-      "name": "items",
-      "type": {
-        "type": "array",
-        "items": "model.ItemUpsertBatchRecord"
-      },
-      "doc": "Array with catalogs items"
     }
   ]
 

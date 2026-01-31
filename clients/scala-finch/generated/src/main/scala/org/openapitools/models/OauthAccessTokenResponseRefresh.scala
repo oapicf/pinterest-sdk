@@ -8,17 +8,23 @@ import org.openapitools._
 
 /**
  * A successful OAuth access token response for the refresh token flow.
- * @param responseUnderscoretype 
  * @param accessUnderscoretoken 
- * @param tokenUnderscoretype 
  * @param expiresUnderscorein 
+ * @param responseUnderscoretype 
  * @param scope 
+ * @param tokenUnderscoretype 
+ * @param refreshUnderscoretoken 
+ * @param refreshUnderscoretokenUnderscoreexpiresUnderscoreat 
+ * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
  */
-case class OauthAccessTokenResponseRefresh(responseUnderscoretype: Option[String],
-                accessUnderscoretoken: String,
-                tokenUnderscoretype: String,
+case class OauthAccessTokenResponseRefresh(accessUnderscoretoken: String,
                 expiresUnderscorein: Int,
-                scope: String
+                responseUnderscoretype: Option[String],
+                scope: String,
+                tokenUnderscoretype: String,
+                refreshUnderscoretoken: String,
+                refreshUnderscoretokenUnderscoreexpiresUnderscoreat: Int,
+                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int
                 )
 
 object OauthAccessTokenResponseRefresh {

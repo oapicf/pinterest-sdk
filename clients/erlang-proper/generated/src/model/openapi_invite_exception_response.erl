@@ -9,8 +9,8 @@
 -export_type([openapi_invite_exception_response/0]).
 
 -type openapi_invite_exception_response() ::
-  [ {'invite_or_request_id', binary() }
-  | {'code', integer() }
+  [ {'code', integer() }
+  | {'invite_or_request_id', binary() }
   | {'message', binary() }
   | {'users_or_partner_ids', list(binary()) }
   ].
@@ -20,8 +20,8 @@ openapi_invite_exception_response() ->
     openapi_invite_exception_response([]).
 
 openapi_invite_exception_response(Fields) ->
-  Default = [ {'invite_or_request_id', binary() }
-            , {'code', integer() }
+  Default = [ {'code', integer() }
+            , {'invite_or_request_id', binary() }
             , {'message', binary() }
             , {'users_or_partner_ids', list(binary()) }
             ],

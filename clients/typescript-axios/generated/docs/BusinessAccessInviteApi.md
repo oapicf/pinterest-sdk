@@ -84,7 +84,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new BusinessAccessInviteApi(configuration);
 
-let businessId: string; //Business id (default to undefined)
+let businessId: string; //Unique identifier of the requesting business. (default to undefined)
 let cancelInvitesBody: CancelInvitesBody; //A list with invite ids
 
 const { status, data } = await apiInstance.cancelInvitesOrRequests(
@@ -98,7 +98,7 @@ const { status, data } = await apiInstance.cancelInvitesOrRequests(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **cancelInvitesBody** | **CancelInvitesBody**| A list with invite ids | |
-| **businessId** | [**string**] | Business id | defaults to undefined|
+| **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined|
 
 
 ### Return type
@@ -196,7 +196,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new BusinessAccessInviteApi(configuration);
 
-let businessId: string; //Business id (default to undefined)
+let businessId: string; //Unique identifier of the requesting business. (default to undefined)
 let createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody; //An object with the properties: invite_type, partners, members, business_role
 
 const { status, data } = await apiInstance.createMembershipOrPartnershipInvites(
@@ -210,7 +210,7 @@ const { status, data } = await apiInstance.createMembershipOrPartnershipInvites(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **createMembershipOrPartnershipInvitesBody** | **CreateMembershipOrPartnershipInvitesBody**| An object with the properties: invite_type, partners, members, business_role | |
-| **businessId** | [**string**] | Business id | defaults to undefined|
+| **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined|
 
 
 ### Return type

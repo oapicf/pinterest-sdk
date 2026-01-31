@@ -60,11 +60,11 @@ public:
 	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
-	std::string getName();
+	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setName(std::string  name);
+	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
@@ -81,26 +81,26 @@ public:
 	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
 	/*! \brief Get 
 	 */
-	Country getCountry();
-
-	/*! \brief Set 
-	 */
-	void setCountry(Country  country);
-	/*! \brief Get 
-	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
 	 */
 	void setLocale(CatalogsLocale  locale);
+	/*! \brief Get 
+	 */
+	std::string getName();
+
+	/*! \brief Set 
+	 */
+	void setName(std::string  name);
 
 private:
 	std::string catalog_type;
-	std::string name;
+	Country country;
 	std::string description;
 	CatalogsCreativeAssetsProductGroupFilters filters;
-	Country country;
 	CatalogsLocale locale;
+	std::string name;
 	void __init();
 	void __cleanup();
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,10 +24,14 @@ const (
 	ADMIN Permissions = "ADMIN"
 	ANALYST Permissions = "ANALYST"
 	FINANCE_MANAGER Permissions = "FINANCE_MANAGER"
+	FINANCE_EDIT Permissions = "FINANCE_EDIT"
+	FINANCE_VIEW Permissions = "FINANCE_VIEW"
 	AUDIENCE_MANAGER Permissions = "AUDIENCE_MANAGER"
 	CAMPAIGN_MANAGER Permissions = "CAMPAIGN_MANAGER"
 	CATALOGS_MANAGER Permissions = "CATALOGS_MANAGER"
+	CATALOGS_VIEWER Permissions = "CATALOGS_VIEWER"
 	PROFILE_PUBLISHER Permissions = "PROFILE_PUBLISHER"
+	CONSUMER_USER Permissions = "CONSUMER_USER"
 )
 
 // All allowed values of Permissions enum
@@ -35,10 +39,14 @@ var AllowedPermissionsEnumValues = []Permissions{
 	"ADMIN",
 	"ANALYST",
 	"FINANCE_MANAGER",
+	"FINANCE_EDIT",
+	"FINANCE_VIEW",
 	"AUDIENCE_MANAGER",
 	"CAMPAIGN_MANAGER",
 	"CATALOGS_MANAGER",
+	"CATALOGS_VIEWER",
 	"PROFILE_PUBLISHER",
+	"CONSUMER_USER",
 }
 
 func (v *Permissions) UnmarshalJSON(src []byte) error {

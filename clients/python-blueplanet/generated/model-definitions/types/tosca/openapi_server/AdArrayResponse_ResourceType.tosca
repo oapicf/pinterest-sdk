@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdArrayResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdArrayResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdArrayResponseElement = openapi_server.resourceTypes.AdArrayResponseElement
+}
+resourceTypes {
+
+  AdArrayResponse {
+    title = AdArrayResponse
+    description = AdArrayResponse
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AdArrayResponseElement
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdArrayResponse {
+    title = AdArrayResponse
+    description = AdArrayResponse
+    implements = openapi_server.resourceTypes.AdArrayResponse
+
+  }
+}

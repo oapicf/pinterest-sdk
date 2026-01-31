@@ -5,7 +5,7 @@
 -export_type([openapi_app_type_multipliers/0]).
 
 -type openapi_app_type_multipliers() ::
-    #{ 'APP_TYPE' => openapi_targeting_spec_app_type:openapi_targeting_spec_app_type()
+    #{ 'APP_TYPE' => binary()
      }.
 
 encode(#{ 'APP_TYPE' := APPTYPE

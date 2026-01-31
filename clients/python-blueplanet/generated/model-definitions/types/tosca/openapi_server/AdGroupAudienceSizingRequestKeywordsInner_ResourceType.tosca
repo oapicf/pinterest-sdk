@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupAudienceSizingRequestKeywordsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupAudienceSizingRequestKeywordsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MatchTypeResponse = openapi_server.resourceTypes.MatchTypeResponse
+}
+resourceTypes {
+
+  AdGroupAudienceSizingRequestKeywordsInner {
+    title = AdGroupAudienceSizingRequestKeywordsInner
+    description = AdGroupAudienceSizingRequestKeywordsInner
+    derivedFrom = Root
+    properties {
+        match_type {
+          type = MatchTypeResponse
+          description = ""
+          optional = true
+        }
+        value {
+          type =  string
+          description = "Keyword value (120 chars max)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupAudienceSizingRequestKeywordsInner {
+    title = AdGroupAudienceSizingRequestKeywordsInner
+    description = AdGroupAudienceSizingRequestKeywordsInner
+    implements = openapi_server.resourceTypes.AdGroupAudienceSizingRequestKeywordsInner
+
+  }
+}

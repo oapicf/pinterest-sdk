@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.TargetingSpec
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,30 +23,35 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param operationType 
  * @param id Targeting template ID
+ * @param operationType 
+ * @param targetingAttributes 
  */
 
 
 data class TargetingTemplateUpdateRequest (
 
+    /* Targeting template ID */
+    @Json(name = "id")
+    val id: kotlin.String,
+
     @Json(name = "operation_type")
     val operationType: TargetingTemplateUpdateRequest.OperationType,
 
-    /* Targeting template ID */
-    @Json(name = "id")
-    val id: kotlin.String
+    @Json(name = "targeting_attributes")
+    val targetingAttributes: TargetingSpec? = null
 
 ) {
 
     /**
      * 
      *
-     * Values: REMOVE
+     * Values: REMOVE,UPDATE
      */
     @JsonClass(generateAdapter = false)
     enum class OperationType(val value: kotlin.String) {
-        @Json(name = "REMOVE") REMOVE("REMOVE");
+        @Json(name = "REMOVE") REMOVE("REMOVE"),
+        @Json(name = "UPDATE") UPDATE("UPDATE");
     }
 
 }

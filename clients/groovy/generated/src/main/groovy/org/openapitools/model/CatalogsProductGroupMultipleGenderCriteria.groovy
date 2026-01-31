@@ -10,7 +10,7 @@ import org.openapitools.model.Gender;
 @Canonical
 class CatalogsProductGroupMultipleGenderCriteria {
     
-    List<Gender> values = new ArrayList<>()
-    
     Boolean negated = false
+    
+    List<Gender> values = new ArrayList<>()
 }

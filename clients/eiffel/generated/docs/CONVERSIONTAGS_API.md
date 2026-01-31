@@ -6,18 +6,18 @@ Feature | HTTP request | Description
 ------------- | ------------- | -------------
 [**conversion_tags_create**](CONVERSIONTAGS_API.md#conversion_tags_create) | **Post** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**conversion_tags_get**](CONVERSIONTAGS_API.md#conversion_tags_get) | **Get** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**conversion_tags_list**](CONVERSIONTAGS_API.md#conversion_tags_list) | **Get** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**conversion_tags_list**](CONVERSIONTAGS_API.md#conversion_tags_list) | **Get** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**ocpm_eligible_conversion_tags_get**](CONVERSIONTAGS_API.md#ocpm_eligible_conversion_tags_get) | **Get** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**page_visit_conversion_tags_get**](CONVERSIONTAGS_API.md#page_visit_conversion_tags_get) | **Get** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
 
 # **conversion_tags_create**
-> conversion_tags_create (ad_account_id: STRING_32 ; conversion_tag_create: CONVERSION_TAG_CREATE ): detachable CONVERSION_TAG_RESPONSE
+> conversion_tags_create (ad_account_id: STRING_32 ; conversion_tag_create: CONVERSION_TAG_CREATE ): detachable CONVERSION_TAG
 
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 
 ### Parameters
@@ -25,11 +25,11 @@ Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/b
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **conversion_tag_create** | [**CONVERSION_TAG_CREATE**](CONVERSION_TAG_CREATE.md)| Conversion Tag to create | 
+ **conversion_tag_create** | [**CONVERSION_TAG_CREATE**](CONVERSION_TAG_CREATE.md)|  | 
 
 ### Return type
 
-[**CONVERSION_TAG_RESPONSE**](ConversionTagResponse.md)
+[**CONVERSION_TAG**](ConversionTag.md)
 
 ### Authorization
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **conversion_tags_get**
-> conversion_tags_get (ad_account_id: STRING_32 ; conversion_tag_id: STRING_32 ): detachable CONVERSION_TAG_RESPONSE
+> conversion_tags_get (ad_account_id: STRING_32 ; conversion_tag_id: STRING_32 ): detachable CONVERSION_TAG
 
 
 Get conversion tag
@@ -60,11 +60,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CONVERSION_TAG_RESPONSE**](ConversionTagResponse.md)
+[**CONVERSION_TAG**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -74,10 +74,10 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **conversion_tags_list**
-> conversion_tags_list (ad_account_id: STRING_32 ; filter_deleted:  detachable BOOLEAN ): detachable CONVERSION_TAG_LIST_RESPONSE
+> conversion_tags_list (ad_account_id: STRING_32 ; filter_deleted:  detachable BOOLEAN ): detachable CONVERSION_TAGS_LIST_200_RESPONSE
 
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -87,15 +87,15 @@ List conversion tags associated with an ad account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **filter_deleted** | **BOOLEAN**| Filter out deleted tags. | [optional] [default to false]
+ **filter_deleted** | **BOOLEAN**| Filter by deleted status | [optional] [default to false]
 
 ### Return type
 
-[**CONVERSION_TAG_LIST_RESPONSE**](ConversionTagListResponse.md)
+[**CONVERSION_TAGS_LIST_200_RESPONSE**](conversion_tags_list_200_response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

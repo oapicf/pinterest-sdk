@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.model.Exception;
 import org.openapitools.model.UserListOperationType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -22,14 +21,6 @@ public class CustomerListUpdateRequestTest {
     }
 
     /**
-     * Test the property 'records'
-     */
-    @Test
-    public void recordsTest() {
-        // TODO: test records
-    }
-
-    /**
      * Test the property 'operationType'
      */
     @Test
@@ -38,11 +29,11 @@ public class CustomerListUpdateRequestTest {
     }
 
     /**
-     * Test the property 'exceptions'
+     * Test the property 'records'
      */
     @Test
-    public void exceptionsTest() {
-        // TODO: test exceptions
+    public void recordsTest() {
+        // TODO: test records
     }
 
 }

@@ -6,18 +6,18 @@
 
 -type openapi_catalogs_items_delete_batch_request() ::
     #{ 'country' := openapi_country:openapi_country(),
+       'items' := list(),
        'language' := binary(),
-       'operation' := openapi_batch_operation:openapi_batch_operation(),
-       'items' := list()
+       'operation' := openapi_batch_operation:openapi_batch_operation()
      }.
 
 encode(#{ 'country' := Country,
+          'items' := Items,
           'language' := Language,
-          'operation' := Operation,
-          'items' := Items
+          'operation' := Operation
         }) ->
     #{ 'country' => Country,
+       'items' => Items,
        'language' => Language,
-       'operation' => Operation,
-       'items' => Items
+       'operation' => Operation
      }.

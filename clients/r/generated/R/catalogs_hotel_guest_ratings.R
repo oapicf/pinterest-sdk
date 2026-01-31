@@ -7,32 +7,32 @@
 #' @title CatalogsHotelGuestRatings
 #' @description CatalogsHotelGuestRatings Class
 #' @format An \code{R6Class} generator object
-#' @field score Your hotel's rating. numeric [optional]
-#' @field number_of_reviewers Total number of people who have rated this hotel. integer [optional]
 #' @field max_score Max value for the hotel rating score. numeric [optional]
+#' @field number_of_reviewers Total number of people who have rated this hotel. integer [optional]
 #' @field rating_system System you use for guest reviews. character [optional]
+#' @field score Your hotel's rating. numeric [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsHotelGuestRatings <- R6::R6Class(
   "CatalogsHotelGuestRatings",
   public = list(
-    `score` = NULL,
-    `number_of_reviewers` = NULL,
     `max_score` = NULL,
+    `number_of_reviewers` = NULL,
     `rating_system` = NULL,
+    `score` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelGuestRatings class.
     #'
-    #' @param score Your hotel's rating.
-    #' @param number_of_reviewers Total number of people who have rated this hotel.
     #' @param max_score Max value for the hotel rating score.
+    #' @param number_of_reviewers Total number of people who have rated this hotel.
     #' @param rating_system System you use for guest reviews.
+    #' @param score Your hotel's rating.
     #' @param ... Other optional arguments.
-    initialize = function(`score` = NULL, `number_of_reviewers` = NULL, `max_score` = NULL, `rating_system` = NULL, ...) {
-      if (!is.null(`score`)) {
-        self$`score` <- `score`
+    initialize = function(`max_score` = NULL, `number_of_reviewers` = NULL, `rating_system` = NULL, `score` = NULL, ...) {
+      if (!is.null(`max_score`)) {
+        self$`max_score` <- `max_score`
       }
       if (!is.null(`number_of_reviewers`)) {
         if (!(is.numeric(`number_of_reviewers`) && length(`number_of_reviewers`) == 1)) {
@@ -40,14 +40,14 @@ CatalogsHotelGuestRatings <- R6::R6Class(
         }
         self$`number_of_reviewers` <- `number_of_reviewers`
       }
-      if (!is.null(`max_score`)) {
-        self$`max_score` <- `max_score`
-      }
       if (!is.null(`rating_system`)) {
         if (!(is.character(`rating_system`) && length(`rating_system`) == 1)) {
           stop(paste("Error! Invalid data for `rating_system`. Must be a string:", `rating_system`))
         }
         self$`rating_system` <- `rating_system`
+      }
+      if (!is.null(`score`)) {
+        self$`score` <- `score`
       }
     },
 
@@ -82,21 +82,21 @@ CatalogsHotelGuestRatings <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsHotelGuestRatingsObject <- list()
-      if (!is.null(self$`score`)) {
-        CatalogsHotelGuestRatingsObject[["score"]] <-
-          self$`score`
+      if (!is.null(self$`max_score`)) {
+        CatalogsHotelGuestRatingsObject[["max_score"]] <-
+          self$`max_score`
       }
       if (!is.null(self$`number_of_reviewers`)) {
         CatalogsHotelGuestRatingsObject[["number_of_reviewers"]] <-
           self$`number_of_reviewers`
       }
-      if (!is.null(self$`max_score`)) {
-        CatalogsHotelGuestRatingsObject[["max_score"]] <-
-          self$`max_score`
-      }
       if (!is.null(self$`rating_system`)) {
         CatalogsHotelGuestRatingsObject[["rating_system"]] <-
           self$`rating_system`
+      }
+      if (!is.null(self$`score`)) {
+        CatalogsHotelGuestRatingsObject[["score"]] <-
+          self$`score`
       }
       return(CatalogsHotelGuestRatingsObject)
     },
@@ -108,17 +108,17 @@ CatalogsHotelGuestRatings <- R6::R6Class(
     #' @return the instance of CatalogsHotelGuestRatings
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`score`)) {
-        self$`score` <- this_object$`score`
+      if (!is.null(this_object$`max_score`)) {
+        self$`max_score` <- this_object$`max_score`
       }
       if (!is.null(this_object$`number_of_reviewers`)) {
         self$`number_of_reviewers` <- this_object$`number_of_reviewers`
       }
-      if (!is.null(this_object$`max_score`)) {
-        self$`max_score` <- this_object$`max_score`
-      }
       if (!is.null(this_object$`rating_system`)) {
         self$`rating_system` <- this_object$`rating_system`
+      }
+      if (!is.null(this_object$`score`)) {
+        self$`score` <- this_object$`score`
       }
       self
     },
@@ -141,10 +141,10 @@ CatalogsHotelGuestRatings <- R6::R6Class(
     #' @return the instance of CatalogsHotelGuestRatings
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`score` <- this_object$`score`
-      self$`number_of_reviewers` <- this_object$`number_of_reviewers`
       self$`max_score` <- this_object$`max_score`
+      self$`number_of_reviewers` <- this_object$`number_of_reviewers`
       self$`rating_system` <- this_object$`rating_system`
+      self$`score` <- this_object$`score`
       self
     },
 

@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server InnerProductCategoriesMetricsHighlights"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a InnerProductCategoriesMetricsHighlights"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  InnerProductCategoriesMetricsHighlights {
+    title = InnerProductCategoriesMetricsHighlights
+    description = InnerProductCategoriesMetricsHighlights
+    derivedFrom = Root
+    properties {
+        pct_change_mom {
+          type =  
+          description = "Month-over-month percentage change"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  InnerProductCategoriesMetricsHighlights {
+    title = InnerProductCategoriesMetricsHighlights
+    description = InnerProductCategoriesMetricsHighlights
+    implements = openapi_server.resourceTypes.InnerProductCategoriesMetricsHighlights
+
+  }
+}

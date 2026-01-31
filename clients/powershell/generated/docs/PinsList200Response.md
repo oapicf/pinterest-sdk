@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**Pin[]**](Pin.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Pin[]**](Pin.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinsList200Response = Initialize-PSOpenAPIToolsPinsList200Response  -Items null `
- -Bookmark null
+$PinsList200Response = Initialize-PSOpenAPIToolsPinsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

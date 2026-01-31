@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &TargetingTypeFilter{}
 
 // TargetingTypeFilter struct for TargetingTypeFilter
 type TargetingTypeFilter struct {
-	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-	TargetingTypes []AdsAnalyticsTargetingType `json:"targeting_types,omitempty"`
+	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+	TargetingTypes []string `json:"targeting_types,omitempty"`
 }
 
 // NewTargetingTypeFilter instantiates a new TargetingTypeFilter object
@@ -42,9 +42,9 @@ func NewTargetingTypeFilterWithDefaults() *TargetingTypeFilter {
 }
 
 // GetTargetingTypes returns the TargetingTypes field value if set, zero value otherwise.
-func (o *TargetingTypeFilter) GetTargetingTypes() []AdsAnalyticsTargetingType {
+func (o *TargetingTypeFilter) GetTargetingTypes() []string {
 	if o == nil || IsNil(o.TargetingTypes) {
-		var ret []AdsAnalyticsTargetingType
+		var ret []string
 		return ret
 	}
 	return o.TargetingTypes
@@ -52,7 +52,7 @@ func (o *TargetingTypeFilter) GetTargetingTypes() []AdsAnalyticsTargetingType {
 
 // GetTargetingTypesOk returns a tuple with the TargetingTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetingTypeFilter) GetTargetingTypesOk() ([]AdsAnalyticsTargetingType, bool) {
+func (o *TargetingTypeFilter) GetTargetingTypesOk() ([]string, bool) {
 	if o == nil || IsNil(o.TargetingTypes) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *TargetingTypeFilter) HasTargetingTypes() bool {
 	return false
 }
 
-// SetTargetingTypes gets a reference to the given []AdsAnalyticsTargetingType and assigns it to the TargetingTypes field.
-func (o *TargetingTypeFilter) SetTargetingTypes(v []AdsAnalyticsTargetingType) {
+// SetTargetingTypes gets a reference to the given []string and assigns it to the TargetingTypes field.
+func (o *TargetingTypeFilter) SetTargetingTypes(v []string) {
 	o.TargetingTypes = v
 }
 

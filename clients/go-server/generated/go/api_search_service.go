@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -47,8 +47,8 @@ func (s *SearchAPIService) SearchUserPinsList(ctx context.Context, query string,
 	// TODO - update SearchUserPinsList with the required logic for this service method.
 	// Add api_search_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, PinsList200Response{}) or use other options such as http.Ok ...
-	// return Response(200, PinsList200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, SearchUserPinsList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, SearchUserPinsList200Response{}), nil
 
 	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
 	// return Response(404, Error{}), nil

@@ -1,0 +1,32 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "daily_spend_cap" },
+      {"model": "end_time" },
+      {"model": "is_automated_campaign" },
+      {"model": "is_flexible_daily_budgets" },
+      {"model": "lifetime_spend_cap" },
+      {"model": "name" },
+      {"model": "order_line_id" },
+      {"model": "start_time" },
+      {"model": "status" },
+      {"model": "tracking_urls" },
+      {"model": "default_ad_group_budget_in_micro_currency" },
+      {"model": "is_campaign_budget_optimization" },
+      {"model": "bid_options" },
+      {"model": "is_performance_plus" },
+      {"model": "objective_type" },
+    ]
+  }]
+}

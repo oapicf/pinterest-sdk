@@ -5,40 +5,40 @@
 -export_type([openapi_order_lines/0]).
 
 -type openapi_order_lines() ::
-    #{ 'id' => binary(),
-       'type' => binary(),
-       'ad_account_id' => binary(),
+    #{ 'ad_account_id' => binary(),
+       'budget' => integer(),
+       'end_time' => integer(),
+       'id' => binary(),
+       'name' => binary(),
+       'paid_budget' => integer(),
+       'paid_type' => openapi_order_line_paid_type:openapi_order_line_paid_type(),
        'purchase_order_id' => binary(),
        'start_time' => integer(),
-       'end_time' => integer(),
-       'budget' => integer(),
-       'paid_budget' => integer(),
        'status' => openapi_order_line_status:openapi_order_line_status(),
-       'name' => binary(),
-       'paid_type' => openapi_order_line_paid_type:openapi_order_line_paid_type()
+       'type' => binary()
      }.
 
-encode(#{ 'id' := Id,
-          'type' := Type,
-          'ad_account_id' := AdAccountId,
+encode(#{ 'ad_account_id' := AdAccountId,
+          'budget' := Budget,
+          'end_time' := EndTime,
+          'id' := Id,
+          'name' := Name,
+          'paid_budget' := PaidBudget,
+          'paid_type' := PaidType,
           'purchase_order_id' := PurchaseOrderId,
           'start_time' := StartTime,
-          'end_time' := EndTime,
-          'budget' := Budget,
-          'paid_budget' := PaidBudget,
           'status' := Status,
-          'name' := Name,
-          'paid_type' := PaidType
+          'type' := Type
         }) ->
-    #{ 'id' => Id,
-       'type' => Type,
-       'ad_account_id' => AdAccountId,
+    #{ 'ad_account_id' => AdAccountId,
+       'budget' => Budget,
+       'end_time' => EndTime,
+       'id' => Id,
+       'name' => Name,
+       'paid_budget' => PaidBudget,
+       'paid_type' => PaidType,
        'purchase_order_id' => PurchaseOrderId,
        'start_time' => StartTime,
-       'end_time' => EndTime,
-       'budget' => Budget,
-       'paid_budget' => PaidBudget,
        'status' => Status,
-       'name' => Name,
-       'paid_type' => PaidType
+       'type' => Type
      }.

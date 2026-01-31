@@ -7,8 +7,8 @@ Object describing a hotel item error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
+**errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [default to undefined]
 **hotel_id** | **string** | The catalog hotel id in the merchant namespace | [optional] [default to undefined]
-**errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] [default to undefined]
 
 ## Example
 
@@ -17,8 +17,8 @@ import { CatalogsHotelItemErrorResponse } from './api';
 
 const instance: CatalogsHotelItemErrorResponse = {
     catalog_type,
-    hotel_id,
     errors,
+    hotel_id,
 };
 ```
 

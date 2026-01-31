@@ -1,0 +1,40 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_group_id" },
+      {"model": "bid_in_micro_currency" },
+      {"model": "catalog_product_group_id" },
+      {"model": "catalog_product_group_name" },
+      {"model": "collections_header_type" },
+      {"model": "collections_hero_destination_url" },
+      {"model": "collections_hero_pin_id" },
+      {"model": "creative_type" },
+      {"model": "customizable_cta_type" },
+      {"model": "definition" },
+      {"model": "grid_click_type" },
+      {"model": "id" },
+      {"model": "included" },
+      {"model": "is_generate_background" },
+      {"model": "is_mdl" },
+      {"model": "parent_id" },
+      {"model": "preferred_media_type" },
+      {"model": "relative_definition" },
+      {"model": "selected_image_tag" },
+      {"model": "selected_video_tag" },
+      {"model": "slideshow_collections_description" },
+      {"model": "slideshow_collections_title" },
+      {"model": "status" },
+      {"model": "tracking_url" },
+    ]
+  }]
+}

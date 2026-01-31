@@ -1,0 +1,70 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MediaUploadParameters"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MediaUploadParameters"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MediaUploadParameters {
+    title = MediaUploadParameters
+    description = MediaUploadParameters
+    derivedFrom = Root
+    properties {
+        content_type {
+          type =  string
+          description = ""
+          optional = false
+        }
+        key {
+          type =  string
+          description = ""
+          optional = false
+        }
+        policy {
+          type =  string
+          description = ""
+          optional = false
+        }
+        x_amz_algorithm {
+          type =  string
+          description = ""
+          optional = false
+        }
+        x_amz_credential {
+          type =  string
+          description = ""
+          optional = false
+        }
+        x_amz_date {
+          type =  string
+          description = ""
+          optional = false
+        }
+        x_amz_security_token {
+          type =  string
+          description = ""
+          optional = false
+        }
+        x_amz_signature {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MediaUploadParameters {
+    title = MediaUploadParameters
+    description = MediaUploadParameters
+    implements = openapi_server.resourceTypes.MediaUploadParameters
+
+  }
+}

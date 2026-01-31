@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PromotionTemplateValue",
+  "fields": [
+    {
+      "name": "amount",
+      "type": ["null", "double"],
+      "doc": "Numeric value.",
+      "default": null
+    },
+    {
+      "name": "currency_code",
+      "type": ["null", "model.Currency"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "custom_text",
+      "type": ["null", "string"],
+      "doc": "Custom text.",
+      "default": null
+    },
+    {
+      "name": "percent",
+      "type": ["null", "double"],
+      "doc": "Percent value.",
+      "default": null
+    }
+  ]
+
+}

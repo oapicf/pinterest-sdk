@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelProductGroupFiltersAnyOf"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelProductGroupFiltersAnyOf"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsHotelProductGroupFilterKeys = openapi_server.resourceTypes.CatalogsHotelProductGroupFilterKeys
+}
+resourceTypes {
+
+  CatalogsHotelProductGroupFiltersAnyOf {
+    title = CatalogsHotelProductGroupFiltersAnyOf
+    description = CatalogsHotelProductGroupFiltersAnyOf
+    derivedFrom = Root
+    properties {
+        any_of {
+          type = array
+          items.type = CatalogsHotelProductGroupFilterKeys
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelProductGroupFiltersAnyOf {
+    title = CatalogsHotelProductGroupFiltersAnyOf
+    description = CatalogsHotelProductGroupFiltersAnyOf
+    implements = openapi_server.resourceTypes.CatalogsHotelProductGroupFiltersAnyOf
+
+  }
+}

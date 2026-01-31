@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**Errors** | [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | 
 **ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
-**Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
 
 ## Methods
 
 ### NewCatalogsRetailItemErrorResponse
 
-`func NewCatalogsRetailItemErrorResponse(catalogType CatalogsType, ) *CatalogsRetailItemErrorResponse`
+`func NewCatalogsRetailItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent, ) *CatalogsRetailItemErrorResponse`
 
 NewCatalogsRetailItemErrorResponse instantiates a new CatalogsRetailItemErrorResponse object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,26 @@ and a boolean to check if the value has been set.
 SetCatalogType sets CatalogType field to given value.
 
 
+### GetErrors
+
+`func (o *CatalogsRetailItemErrorResponse) GetErrors() []ItemValidationEvent`
+
+GetErrors returns the Errors field if non-nil, zero value otherwise.
+
+### GetErrorsOk
+
+`func (o *CatalogsRetailItemErrorResponse) GetErrorsOk() (*[]ItemValidationEvent, bool)`
+
+GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrors
+
+`func (o *CatalogsRetailItemErrorResponse) SetErrors(v []ItemValidationEvent)`
+
+SetErrors sets Errors field to given value.
+
+
 ### GetItemId
 
 `func (o *CatalogsRetailItemErrorResponse) GetItemId() string`
@@ -71,31 +91,6 @@ SetItemId sets ItemId field to given value.
 `func (o *CatalogsRetailItemErrorResponse) HasItemId() bool`
 
 HasItemId returns a boolean if a field has been set.
-
-### GetErrors
-
-`func (o *CatalogsRetailItemErrorResponse) GetErrors() []ItemValidationEvent`
-
-GetErrors returns the Errors field if non-nil, zero value otherwise.
-
-### GetErrorsOk
-
-`func (o *CatalogsRetailItemErrorResponse) GetErrorsOk() (*[]ItemValidationEvent, bool)`
-
-GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrors
-
-`func (o *CatalogsRetailItemErrorResponse) SetErrors(v []ItemValidationEvent)`
-
-SetErrors sets Errors field to given value.
-
-### HasErrors
-
-`func (o *CatalogsRetailItemErrorResponse) HasErrors() bool`
-
-HasErrors returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -13,34 +13,16 @@ import org.openapitools.model.Language;
  * Object uniquely identifying a retail catalog item
  */
 @ApiModel(description = "Object uniquely identifying a retail catalog item")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsGetRecord   {
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("country")
   private Country country;
 
+  @JsonProperty("item_id")
+  private String itemId;
+
   @JsonProperty("language")
   private Language language;
-
-  public AdvancedAuctionItemsGetRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-  **/
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
 
   public AdvancedAuctionItemsGetRecord country(Country country) {
     this.country = country;
@@ -58,6 +40,24 @@ public class AdvancedAuctionItemsGetRecord   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdvancedAuctionItemsGetRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+  **/
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public AdvancedAuctionItemsGetRecord language(Language language) {
@@ -88,14 +88,14 @@ public class AdvancedAuctionItemsGetRecord   {
       return false;
     }
     AdvancedAuctionItemsGetRecord advancedAuctionItemsGetRecord = (AdvancedAuctionItemsGetRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsGetRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsGetRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsGetRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsGetRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsGetRecord.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @Override
@@ -103,8 +103,8 @@ public class AdvancedAuctionItemsGetRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsGetRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

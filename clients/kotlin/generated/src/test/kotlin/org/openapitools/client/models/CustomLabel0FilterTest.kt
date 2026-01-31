@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CustomLabel0Filter
-import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 
 class CustomLabel0FilterTest : ShouldSpec() {
     init {

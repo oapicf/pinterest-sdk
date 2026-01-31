@@ -12,10 +12,10 @@ module DetailedError =
   type DetailedError = {
     [<JsonProperty(PropertyName = "code")>]
     Code : int;
-    [<JsonProperty(PropertyName = "message")>]
-    Message : string;
     [<JsonProperty(PropertyName = "details")>]
     Details : obj;
+    [<JsonProperty(PropertyName = "message")>]
+    Message : string;
   }
 
   //#endregion

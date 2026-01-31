@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;ConversionTagResponse&gt;**](ConversionTagResponse.md) |  | [optional] [default to undefined]
+**items** | [**Array&lt;ConversionTag&gt;**](ConversionTag.md) |  | [optional] [default to undefined]
 
 ## Example
 

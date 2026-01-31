@@ -23,40 +23,40 @@ module BusinessAccessInviteApiHandlerTestsHelper =
 
   AssetAccessRequestsCreateBody <- WebUtility.HtmlDecode "{
   &quot;asset_requests&quot; : [ {
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;partner_id&quot; : &quot;809944451643622187&quot;
   }, {
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;partner_id&quot; : &quot;809944451643622187&quot;
   }, {
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;partner_id&quot; : &quot;809944451643622187&quot;
   }, {
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;partner_id&quot; : &quot;809944451643622187&quot;
   }, {
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;partner_id&quot; : &quot;809944451643622187&quot;
   } ]
 }"
   AssetAccessRequestsCreateExamples <- AssetAccessRequestsCreateExamples.Add("application/json", AssetAccessRequestsCreateBody)

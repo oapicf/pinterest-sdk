@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct CustomLabel4Filter: Codable, JSONEncodable, Hashable {
 
-    public var cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria
+    public var cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria
 
-    public init(cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria) {
+    public init(cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria) {
         self.cUSTOMLABEL4 = cUSTOMLABEL4
     }
 

@@ -12,16 +12,16 @@ module CatalogsHotelProductGroupCreateRequest =
 
   [<CLIMutable>]
   type CatalogsHotelProductGroupCreateRequest = {
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "description")>]
     Description : string option;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsHotelProductGroupFilters;
-    [<JsonProperty(PropertyName = "catalog_id")>]
-    CatalogId : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

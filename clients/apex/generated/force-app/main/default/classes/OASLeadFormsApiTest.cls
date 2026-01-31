@@ -61,7 +61,7 @@ private class OASLeadFormsApiTest {
     /**
      * Create lead form test data
      *
-     * Create lead form test data based on the list of answers provided as part of the body.\n- List of answers should follow the questions creation order.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create lead form test data based on the list of answers provided as part of the body.\n- List of answers should follow the questions creation order.
      */
     @isTest
     private static void leadFormTestCreateTest() {
@@ -120,7 +120,7 @@ private class OASLeadFormsApiTest {
     /**
      * Create lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n\nCreate lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.\n\nFor more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/lead-ads&quot;&gt;Lead ads&lt;/a&gt;.
+     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n\nCreate lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.\n\nFor more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/lead-ads&quot;&gt;Lead ads&lt;/a&gt;.
      */
     @isTest
     private static void leadFormsCreateTest() {

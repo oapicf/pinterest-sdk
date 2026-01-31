@@ -90,7 +90,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Business id
+NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
 OAICancelInvitesBody* cancelInvitesBody = [[OAICancelInvitesBody alloc] init]; // A list with invite ids
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
@@ -112,7 +112,7 @@ OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] ini
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **NSString***| Business id | 
+ **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **cancelInvitesBody** | [**OAICancelInvitesBody***](OAICancelInvitesBody.md)| A list with invite ids | 
 
 ### Return type
@@ -208,7 +208,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Business id
+NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
 OAICreateMembershipOrPartnershipInvitesBody* createMembershipOrPartnershipInvitesBody = [[OAICreateMembershipOrPartnershipInvitesBody alloc] init]; // An object with the properties: invite_type, partners, members, business_role
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
@@ -230,7 +230,7 @@ OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] ini
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **NSString***| Business id | 
+ **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **createMembershipOrPartnershipInvitesBody** | [**OAICreateMembershipOrPartnershipInvitesBody***](OAICreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

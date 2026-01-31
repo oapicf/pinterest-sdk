@@ -52,32 +52,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getName();
-
-	/*! \brief Set 
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
-	/*! \brief Get boolean indicator of whether the product group is being featured or not
-	 */
-	bool getIsFeatured();
-
-	/*! \brief Set boolean indicator of whether the product group is being featured or not
-	 */
-	void setIsFeatured(bool  is_featured);
-	/*! \brief Get 
-	 */
-	CatalogsCreativeAssetsProductGroupFilters getFilters();
-
-	/*! \brief Set 
-	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
 	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
 	 */
 	std::string getFeedId();
@@ -87,11 +66,25 @@ public:
 	void setFeedId(std::string  feed_id);
 	/*! \brief Get 
 	 */
-	std::string getCatalogType();
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	/*! \brief Get boolean indicator of whether the product group is being featured or not
+	 */
+	bool getIsFeatured();
+
+	/*! \brief Set boolean indicator of whether the product group is being featured or not
+	 */
+	void setIsFeatured(bool  is_featured);
+	/*! \brief Get 
+	 */
+	std::string getName();
+
+	/*! \brief Set 
+	 */
+	void setName(std::string  name);
 	/*! \brief Get Catalog id pertaining to the creative assets product group.
 	 */
 	std::string getCatalogId();
@@ -99,6 +92,13 @@ public:
 	/*! \brief Set Catalog id pertaining to the creative assets product group.
 	 */
 	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -115,13 +115,13 @@ public:
 	void setLocale(CatalogsLocale  locale);
 
 private:
-	std::string name;
 	std::string description;
-	bool is_featured;
-	CatalogsCreativeAssetsProductGroupFilters filters;
 	std::string feed_id;
-	std::string catalog_type;
+	CatalogsCreativeAssetsProductGroupFilters filters;
+	bool is_featured;
+	std::string name;
 	std::string catalog_id;
+	std::string catalog_type;
 	Country country;
 	CatalogsLocale locale;
 	void __init();

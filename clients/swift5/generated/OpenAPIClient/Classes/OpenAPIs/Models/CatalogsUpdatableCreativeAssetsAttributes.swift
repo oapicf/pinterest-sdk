@@ -12,18 +12,8 @@ import AnyCodable
 
 public struct CatalogsUpdatableCreativeAssetsAttributes: Codable, JSONEncodable, Hashable {
 
-    /** The name of the creative assets. */
-    public var title: String?
-    /** Brief description of the creative assets. */
-    public var description: String?
-    /** Link to the creative assets page. */
-    public var link: String?
-    /** IOS deep link to the creative assets page. */
-    public var iosDeepLink: String?
     /** Link to the creative assets page. */
     public var androidDeepLink: String?
-    /** The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
-    public var googleProductCategory: String?
     /** Custom grouping of creative assets. */
     public var customLabel0: String?
     /** Custom grouping of creative assets. */
@@ -34,36 +24,46 @@ public struct CatalogsUpdatableCreativeAssetsAttributes: Codable, JSONEncodable,
     public var customLabel3: String?
     /** Custom grouping of creative assets. */
     public var customLabel4: String?
+    /** Brief description of the creative assets. */
+    public var description: String?
+    /** The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
+    public var googleProductCategory: String?
+    /** IOS deep link to the creative assets page. */
+    public var iosDeepLink: String?
+    /** Link to the creative assets page. */
+    public var link: String?
+    /** The name of the creative assets. */
+    public var title: String?
     /** Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
     public var visibility: String?
 
-    public init(title: String? = nil, description: String? = nil, link: String? = nil, iosDeepLink: String? = nil, androidDeepLink: String? = nil, googleProductCategory: String? = nil, customLabel0: String? = nil, customLabel1: String? = nil, customLabel2: String? = nil, customLabel3: String? = nil, customLabel4: String? = nil, visibility: String? = nil) {
-        self.title = title
-        self.description = description
-        self.link = link
-        self.iosDeepLink = iosDeepLink
+    public init(androidDeepLink: String? = nil, customLabel0: String? = nil, customLabel1: String? = nil, customLabel2: String? = nil, customLabel3: String? = nil, customLabel4: String? = nil, description: String? = nil, googleProductCategory: String? = nil, iosDeepLink: String? = nil, link: String? = nil, title: String? = nil, visibility: String? = nil) {
         self.androidDeepLink = androidDeepLink
-        self.googleProductCategory = googleProductCategory
         self.customLabel0 = customLabel0
         self.customLabel1 = customLabel1
         self.customLabel2 = customLabel2
         self.customLabel3 = customLabel3
         self.customLabel4 = customLabel4
+        self.description = description
+        self.googleProductCategory = googleProductCategory
+        self.iosDeepLink = iosDeepLink
+        self.link = link
+        self.title = title
         self.visibility = visibility
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case title
-        case description
-        case link
-        case iosDeepLink = "ios_deep_link"
         case androidDeepLink = "android_deep_link"
-        case googleProductCategory = "google_product_category"
         case customLabel0 = "custom_label_0"
         case customLabel1 = "custom_label_1"
         case customLabel2 = "custom_label_2"
         case customLabel3 = "custom_label_3"
         case customLabel4 = "custom_label_4"
+        case description
+        case googleProductCategory = "google_product_category"
+        case iosDeepLink = "ios_deep_link"
+        case link
+        case title
         case visibility
     }
 
@@ -71,17 +71,17 @@ public struct CatalogsUpdatableCreativeAssetsAttributes: Codable, JSONEncodable,
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(link, forKey: .link)
-        try container.encodeIfPresent(iosDeepLink, forKey: .iosDeepLink)
         try container.encodeIfPresent(androidDeepLink, forKey: .androidDeepLink)
-        try container.encodeIfPresent(googleProductCategory, forKey: .googleProductCategory)
         try container.encodeIfPresent(customLabel0, forKey: .customLabel0)
         try container.encodeIfPresent(customLabel1, forKey: .customLabel1)
         try container.encodeIfPresent(customLabel2, forKey: .customLabel2)
         try container.encodeIfPresent(customLabel3, forKey: .customLabel3)
         try container.encodeIfPresent(customLabel4, forKey: .customLabel4)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(googleProductCategory, forKey: .googleProductCategory)
+        try container.encodeIfPresent(iosDeepLink, forKey: .iosDeepLink)
+        try container.encodeIfPresent(link, forKey: .link)
+        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(visibility, forKey: .visibility)
     }
 }

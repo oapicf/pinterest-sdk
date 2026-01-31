@@ -11,8 +11,8 @@
 
 export interface GetMMMReportResponseData { 
     report_status?: GetMMMReportResponseData.ReportStatusEnum;
-    url?: string | null;
     size?: number | null;
+    url?: string | null;
 }
 export namespace GetMMMReportResponseData {
     export const ReportStatusEnum = {

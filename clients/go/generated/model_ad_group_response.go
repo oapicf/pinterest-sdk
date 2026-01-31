@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,56 +20,64 @@ var _ MappedNullable = &AdGroupResponse{}
 
 // AdGroupResponse struct for AdGroupResponse
 type AdGroupResponse struct {
-	// Ad group name.
-	Name *string `json:"name,omitempty"`
-	// Ad group/entity status.
-	Status *EntityStatus `json:"status,omitempty"`
+	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
+	AutoTargetingEnabled NullableBool `json:"auto_targeting_enabled,omitempty"`
+	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
+	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
+	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+	BidStrategyType NullableString `json:"bid_strategy_type,omitempty"`
+	BillableEvent *ActionType `json:"billable_event,omitempty"`
 	// Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 	BudgetInMicroCurrency NullableInt32 `json:"budget_in_micro_currency,omitempty"`
-	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
-	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-	OptimizationGoalMetadata NullableOptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
 	BudgetType *BudgetType `json:"budget_type,omitempty"`
-	// Ad group start time. Unix timestamp in seconds. Defaults to current time.
-	StartTime NullableInt32 `json:"start_time,omitempty"`
-	// Ad group end time. Unix timestamp in seconds.
-	EndTime NullableInt32 `json:"end_time,omitempty"`
-	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
-	// Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-	LifetimeFrequencyCap *int32 `json:"lifetime_frequency_cap,omitempty"`
-	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
-	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-	AutoTargetingEnabled NullableBool `json:"auto_targeting_enabled,omitempty"`
-	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
-	PacingDeliveryType *PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
 	// Campaign ID of the ad group.
 	CampaignId *string `json:"campaign_id,omitempty" validate:"regexp=^[C]?\\\\d+$"`
-	BillableEvent *ActionType `json:"billable_event,omitempty"`
-	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
-	BidStrategyType NullableString `json:"bid_strategy_type,omitempty"`
+	// Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+	EndTime NullableInt32 `json:"end_time,omitempty"`
+	// Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
+	IsCreativeOptimization NullableBool `json:"is_creative_optimization,omitempty"`
+	// Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+	LifetimeFrequencyCap *int32 `json:"lifetime_frequency_cap,omitempty"`
+	// Ad group name.
+	Name *string `json:"name,omitempty"`
+	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+	OptimizationGoalMetadata NullableOptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
+	PacingDeliveryType *PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
+	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
+	// Specify if the promotion is applied at ad group or item level
+	PromotionApplicationLevel NullableString `json:"promotion_application_level,omitempty"`
+	// Promotion ID. To clear this field, set to null.
+	PromotionId NullableString `json:"promotion_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+	StartTime NullableInt32 `json:"start_time,omitempty"`
+	// Ad group/entity status.
+	Status *EntityStatus `json:"status,omitempty"`
+	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
 	// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 	TargetingTemplateIds []string `json:"targeting_template_ids,omitempty"`
-	// Ad group ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 	// Advertiser ID.
 	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Ad group creation time. Unix timestamp in seconds.
-	CreatedTime *int32 `json:"created_time,omitempty"`
-	// Ad group last update time. Unix timestamp in seconds.
-	UpdatedTime *int32 `json:"updated_time,omitempty"`
-	// Always \"adgroup\".
-	Type *string `json:"type,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	BidMultiplier NullableFloat32 `json:"bid_multiplier,omitempty"`
 	// oCPM learn mode
 	ConversionLearningModeType NullableString `json:"conversion_learning_mode_type,omitempty"`
-	// Ad group summary status.
-	SummaryStatus *AdGroupSummaryStatus `json:"summary_status,omitempty"`
-	// Feed Profile ID associated to the adgroup.
-	FeedProfileId *string `json:"feed_profile_id,omitempty"`
+	// Ad group creation time. Unix timestamp in seconds.
+	CreatedTime *int32 `json:"created_time,omitempty"`
 	// [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.
 	DcaAssets interface{} `json:"dca_assets,omitempty"`
+	// Feed Profile ID associated to the adgroup.
+	FeedProfileId *string `json:"feed_profile_id,omitempty"`
+	// Ad group ID.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Ad group summary status.
+	SummaryStatus *AdGroupSummaryStatus `json:"summary_status,omitempty"`
+	// Always \"adgroup\".
+	Type *string `json:"type,omitempty"`
+	// Ad group last update time. Unix timestamp in seconds.
+	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }
 
 // NewAdGroupResponse instantiates a new AdGroupResponse object
@@ -78,6 +86,8 @@ type AdGroupResponse struct {
 // will change when the set of required properties is changed
 func NewAdGroupResponse() *AdGroupResponse {
 	this := AdGroupResponse{}
+	var promotionId string = "0"
+	this.PromotionId = *NewNullableString(&promotionId)
 	var type_ string = "adgroup"
 	this.Type = &type_
 	return &this
@@ -88,421 +98,11 @@ func NewAdGroupResponse() *AdGroupResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewAdGroupResponseWithDefaults() *AdGroupResponse {
 	this := AdGroupResponse{}
+	var promotionId string = "0"
+	this.PromotionId = *NewNullableString(&promotionId)
 	var type_ string = "adgroup"
 	this.Type = &type_
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *AdGroupResponse) SetName(v string) {
-	o.Name = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetStatus() EntityStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret EntityStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetStatusOk() (*EntityStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given EntityStatus and assigns it to the Status field.
-func (o *AdGroupResponse) SetStatus(v EntityStatus) {
-	o.Status = &v
-}
-
-// GetBudgetInMicroCurrency returns the BudgetInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupResponse) GetBudgetInMicroCurrency() int32 {
-	if o == nil || IsNil(o.BudgetInMicroCurrency.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.BudgetInMicroCurrency.Get()
-}
-
-// GetBudgetInMicroCurrencyOk returns a tuple with the BudgetInMicroCurrency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupResponse) GetBudgetInMicroCurrencyOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BudgetInMicroCurrency.Get(), o.BudgetInMicroCurrency.IsSet()
-}
-
-// HasBudgetInMicroCurrency returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasBudgetInMicroCurrency() bool {
-	if o != nil && o.BudgetInMicroCurrency.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBudgetInMicroCurrency gets a reference to the given NullableInt32 and assigns it to the BudgetInMicroCurrency field.
-func (o *AdGroupResponse) SetBudgetInMicroCurrency(v int32) {
-	o.BudgetInMicroCurrency.Set(&v)
-}
-// SetBudgetInMicroCurrencyNil sets the value for BudgetInMicroCurrency to be an explicit nil
-func (o *AdGroupResponse) SetBudgetInMicroCurrencyNil() {
-	o.BudgetInMicroCurrency.Set(nil)
-}
-
-// UnsetBudgetInMicroCurrency ensures that no value is present for BudgetInMicroCurrency, not even an explicit nil
-func (o *AdGroupResponse) UnsetBudgetInMicroCurrency() {
-	o.BudgetInMicroCurrency.Unset()
-}
-
-// GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupResponse) GetBidInMicroCurrency() int32 {
-	if o == nil || IsNil(o.BidInMicroCurrency.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.BidInMicroCurrency.Get()
-}
-
-// GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupResponse) GetBidInMicroCurrencyOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BidInMicroCurrency.Get(), o.BidInMicroCurrency.IsSet()
-}
-
-// HasBidInMicroCurrency returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasBidInMicroCurrency() bool {
-	if o != nil && o.BidInMicroCurrency.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBidInMicroCurrency gets a reference to the given NullableInt32 and assigns it to the BidInMicroCurrency field.
-func (o *AdGroupResponse) SetBidInMicroCurrency(v int32) {
-	o.BidInMicroCurrency.Set(&v)
-}
-// SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
-func (o *AdGroupResponse) SetBidInMicroCurrencyNil() {
-	o.BidInMicroCurrency.Set(nil)
-}
-
-// UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
-func (o *AdGroupResponse) UnsetBidInMicroCurrency() {
-	o.BidInMicroCurrency.Unset()
-}
-
-// GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupResponse) GetOptimizationGoalMetadata() OptimizationGoalMetadata {
-	if o == nil || IsNil(o.OptimizationGoalMetadata.Get()) {
-		var ret OptimizationGoalMetadata
-		return ret
-	}
-	return *o.OptimizationGoalMetadata.Get()
-}
-
-// GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupResponse) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OptimizationGoalMetadata.Get(), o.OptimizationGoalMetadata.IsSet()
-}
-
-// HasOptimizationGoalMetadata returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasOptimizationGoalMetadata() bool {
-	if o != nil && o.OptimizationGoalMetadata.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOptimizationGoalMetadata gets a reference to the given NullableOptimizationGoalMetadata and assigns it to the OptimizationGoalMetadata field.
-func (o *AdGroupResponse) SetOptimizationGoalMetadata(v OptimizationGoalMetadata) {
-	o.OptimizationGoalMetadata.Set(&v)
-}
-// SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
-func (o *AdGroupResponse) SetOptimizationGoalMetadataNil() {
-	o.OptimizationGoalMetadata.Set(nil)
-}
-
-// UnsetOptimizationGoalMetadata ensures that no value is present for OptimizationGoalMetadata, not even an explicit nil
-func (o *AdGroupResponse) UnsetOptimizationGoalMetadata() {
-	o.OptimizationGoalMetadata.Unset()
-}
-
-// GetBudgetType returns the BudgetType field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetBudgetType() BudgetType {
-	if o == nil || IsNil(o.BudgetType) {
-		var ret BudgetType
-		return ret
-	}
-	return *o.BudgetType
-}
-
-// GetBudgetTypeOk returns a tuple with the BudgetType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetBudgetTypeOk() (*BudgetType, bool) {
-	if o == nil || IsNil(o.BudgetType) {
-		return nil, false
-	}
-	return o.BudgetType, true
-}
-
-// HasBudgetType returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasBudgetType() bool {
-	if o != nil && !IsNil(o.BudgetType) {
-		return true
-	}
-
-	return false
-}
-
-// SetBudgetType gets a reference to the given BudgetType and assigns it to the BudgetType field.
-func (o *AdGroupResponse) SetBudgetType(v BudgetType) {
-	o.BudgetType = &v
-}
-
-// GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupResponse) GetStartTime() int32 {
-	if o == nil || IsNil(o.StartTime.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.StartTime.Get()
-}
-
-// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupResponse) GetStartTimeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.StartTime.Get(), o.StartTime.IsSet()
-}
-
-// HasStartTime returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasStartTime() bool {
-	if o != nil && o.StartTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStartTime gets a reference to the given NullableInt32 and assigns it to the StartTime field.
-func (o *AdGroupResponse) SetStartTime(v int32) {
-	o.StartTime.Set(&v)
-}
-// SetStartTimeNil sets the value for StartTime to be an explicit nil
-func (o *AdGroupResponse) SetStartTimeNil() {
-	o.StartTime.Set(nil)
-}
-
-// UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
-func (o *AdGroupResponse) UnsetStartTime() {
-	o.StartTime.Unset()
-}
-
-// GetEndTime returns the EndTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupResponse) GetEndTime() int32 {
-	if o == nil || IsNil(o.EndTime.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.EndTime.Get()
-}
-
-// GetEndTimeOk returns a tuple with the EndTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupResponse) GetEndTimeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EndTime.Get(), o.EndTime.IsSet()
-}
-
-// HasEndTime returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasEndTime() bool {
-	if o != nil && o.EndTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndTime gets a reference to the given NullableInt32 and assigns it to the EndTime field.
-func (o *AdGroupResponse) SetEndTime(v int32) {
-	o.EndTime.Set(&v)
-}
-// SetEndTimeNil sets the value for EndTime to be an explicit nil
-func (o *AdGroupResponse) SetEndTimeNil() {
-	o.EndTime.Set(nil)
-}
-
-// UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-func (o *AdGroupResponse) UnsetEndTime() {
-	o.EndTime.Unset()
-}
-
-// GetTargetingSpec returns the TargetingSpec field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetTargetingSpec() TargetingSpec {
-	if o == nil || IsNil(o.TargetingSpec) {
-		var ret TargetingSpec
-		return ret
-	}
-	return *o.TargetingSpec
-}
-
-// GetTargetingSpecOk returns a tuple with the TargetingSpec field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetTargetingSpecOk() (*TargetingSpec, bool) {
-	if o == nil || IsNil(o.TargetingSpec) {
-		return nil, false
-	}
-	return o.TargetingSpec, true
-}
-
-// HasTargetingSpec returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasTargetingSpec() bool {
-	if o != nil && !IsNil(o.TargetingSpec) {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetingSpec gets a reference to the given TargetingSpec and assigns it to the TargetingSpec field.
-func (o *AdGroupResponse) SetTargetingSpec(v TargetingSpec) {
-	o.TargetingSpec = &v
-}
-
-// GetLifetimeFrequencyCap returns the LifetimeFrequencyCap field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetLifetimeFrequencyCap() int32 {
-	if o == nil || IsNil(o.LifetimeFrequencyCap) {
-		var ret int32
-		return ret
-	}
-	return *o.LifetimeFrequencyCap
-}
-
-// GetLifetimeFrequencyCapOk returns a tuple with the LifetimeFrequencyCap field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetLifetimeFrequencyCapOk() (*int32, bool) {
-	if o == nil || IsNil(o.LifetimeFrequencyCap) {
-		return nil, false
-	}
-	return o.LifetimeFrequencyCap, true
-}
-
-// HasLifetimeFrequencyCap returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasLifetimeFrequencyCap() bool {
-	if o != nil && !IsNil(o.LifetimeFrequencyCap) {
-		return true
-	}
-
-	return false
-}
-
-// SetLifetimeFrequencyCap gets a reference to the given int32 and assigns it to the LifetimeFrequencyCap field.
-func (o *AdGroupResponse) SetLifetimeFrequencyCap(v int32) {
-	o.LifetimeFrequencyCap = &v
-}
-
-// GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupResponse) GetTrackingUrls() TrackingUrls {
-	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret TrackingUrls
-		return ret
-	}
-	return *o.TrackingUrls.Get()
-}
-
-// GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupResponse) GetTrackingUrlsOk() (*TrackingUrls, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TrackingUrls.Get(), o.TrackingUrls.IsSet()
-}
-
-// HasTrackingUrls returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasTrackingUrls() bool {
-	if o != nil && o.TrackingUrls.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
-func (o *AdGroupResponse) SetTrackingUrls(v TrackingUrls) {
-	o.TrackingUrls.Set(&v)
-}
-// SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
-func (o *AdGroupResponse) SetTrackingUrlsNil() {
-	o.TrackingUrls.Set(nil)
-}
-
-// UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-func (o *AdGroupResponse) UnsetTrackingUrls() {
-	o.TrackingUrls.Unset()
 }
 
 // GetAutoTargetingEnabled returns the AutoTargetingEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -547,132 +147,46 @@ func (o *AdGroupResponse) UnsetAutoTargetingEnabled() {
 	o.AutoTargetingEnabled.Unset()
 }
 
-// GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetPlacementGroup() PlacementGroupType {
-	if o == nil || IsNil(o.PlacementGroup) {
-		var ret PlacementGroupType
+// GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetBidInMicroCurrency() int32 {
+	if o == nil || IsNil(o.BidInMicroCurrency.Get()) {
+		var ret int32
 		return ret
 	}
-	return *o.PlacementGroup
+	return *o.BidInMicroCurrency.Get()
 }
 
-// GetPlacementGroupOk returns a tuple with the PlacementGroup field value if set, nil otherwise
+// GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetPlacementGroupOk() (*PlacementGroupType, bool) {
-	if o == nil || IsNil(o.PlacementGroup) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetBidInMicroCurrencyOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PlacementGroup, true
+	return o.BidInMicroCurrency.Get(), o.BidInMicroCurrency.IsSet()
 }
 
-// HasPlacementGroup returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasPlacementGroup() bool {
-	if o != nil && !IsNil(o.PlacementGroup) {
+// HasBidInMicroCurrency returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasBidInMicroCurrency() bool {
+	if o != nil && o.BidInMicroCurrency.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPlacementGroup gets a reference to the given PlacementGroupType and assigns it to the PlacementGroup field.
-func (o *AdGroupResponse) SetPlacementGroup(v PlacementGroupType) {
-	o.PlacementGroup = &v
+// SetBidInMicroCurrency gets a reference to the given NullableInt32 and assigns it to the BidInMicroCurrency field.
+func (o *AdGroupResponse) SetBidInMicroCurrency(v int32) {
+	o.BidInMicroCurrency.Set(&v)
+}
+// SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
+func (o *AdGroupResponse) SetBidInMicroCurrencyNil() {
+	o.BidInMicroCurrency.Set(nil)
 }
 
-// GetPacingDeliveryType returns the PacingDeliveryType field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetPacingDeliveryType() PacingDeliveryType {
-	if o == nil || IsNil(o.PacingDeliveryType) {
-		var ret PacingDeliveryType
-		return ret
-	}
-	return *o.PacingDeliveryType
-}
-
-// GetPacingDeliveryTypeOk returns a tuple with the PacingDeliveryType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetPacingDeliveryTypeOk() (*PacingDeliveryType, bool) {
-	if o == nil || IsNil(o.PacingDeliveryType) {
-		return nil, false
-	}
-	return o.PacingDeliveryType, true
-}
-
-// HasPacingDeliveryType returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasPacingDeliveryType() bool {
-	if o != nil && !IsNil(o.PacingDeliveryType) {
-		return true
-	}
-
-	return false
-}
-
-// SetPacingDeliveryType gets a reference to the given PacingDeliveryType and assigns it to the PacingDeliveryType field.
-func (o *AdGroupResponse) SetPacingDeliveryType(v PacingDeliveryType) {
-	o.PacingDeliveryType = &v
-}
-
-// GetCampaignId returns the CampaignId field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetCampaignId() string {
-	if o == nil || IsNil(o.CampaignId) {
-		var ret string
-		return ret
-	}
-	return *o.CampaignId
-}
-
-// GetCampaignIdOk returns a tuple with the CampaignId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetCampaignIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CampaignId) {
-		return nil, false
-	}
-	return o.CampaignId, true
-}
-
-// HasCampaignId returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasCampaignId() bool {
-	if o != nil && !IsNil(o.CampaignId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCampaignId gets a reference to the given string and assigns it to the CampaignId field.
-func (o *AdGroupResponse) SetCampaignId(v string) {
-	o.CampaignId = &v
-}
-
-// GetBillableEvent returns the BillableEvent field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetBillableEvent() ActionType {
-	if o == nil || IsNil(o.BillableEvent) {
-		var ret ActionType
-		return ret
-	}
-	return *o.BillableEvent
-}
-
-// GetBillableEventOk returns a tuple with the BillableEvent field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetBillableEventOk() (*ActionType, bool) {
-	if o == nil || IsNil(o.BillableEvent) {
-		return nil, false
-	}
-	return o.BillableEvent, true
-}
-
-// HasBillableEvent returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasBillableEvent() bool {
-	if o != nil && !IsNil(o.BillableEvent) {
-		return true
-	}
-
-	return false
-}
-
-// SetBillableEvent gets a reference to the given ActionType and assigns it to the BillableEvent field.
-func (o *AdGroupResponse) SetBillableEvent(v ActionType) {
-	o.BillableEvent = &v
+// UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
+func (o *AdGroupResponse) UnsetBidInMicroCurrency() {
+	o.BidInMicroCurrency.Unset()
 }
 
 // GetBidStrategyType returns the BidStrategyType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -717,6 +231,588 @@ func (o *AdGroupResponse) UnsetBidStrategyType() {
 	o.BidStrategyType.Unset()
 }
 
+// GetBillableEvent returns the BillableEvent field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetBillableEvent() ActionType {
+	if o == nil || IsNil(o.BillableEvent) {
+		var ret ActionType
+		return ret
+	}
+	return *o.BillableEvent
+}
+
+// GetBillableEventOk returns a tuple with the BillableEvent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetBillableEventOk() (*ActionType, bool) {
+	if o == nil || IsNil(o.BillableEvent) {
+		return nil, false
+	}
+	return o.BillableEvent, true
+}
+
+// HasBillableEvent returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasBillableEvent() bool {
+	if o != nil && !IsNil(o.BillableEvent) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillableEvent gets a reference to the given ActionType and assigns it to the BillableEvent field.
+func (o *AdGroupResponse) SetBillableEvent(v ActionType) {
+	o.BillableEvent = &v
+}
+
+// GetBudgetInMicroCurrency returns the BudgetInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetBudgetInMicroCurrency() int32 {
+	if o == nil || IsNil(o.BudgetInMicroCurrency.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.BudgetInMicroCurrency.Get()
+}
+
+// GetBudgetInMicroCurrencyOk returns a tuple with the BudgetInMicroCurrency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetBudgetInMicroCurrencyOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BudgetInMicroCurrency.Get(), o.BudgetInMicroCurrency.IsSet()
+}
+
+// HasBudgetInMicroCurrency returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasBudgetInMicroCurrency() bool {
+	if o != nil && o.BudgetInMicroCurrency.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBudgetInMicroCurrency gets a reference to the given NullableInt32 and assigns it to the BudgetInMicroCurrency field.
+func (o *AdGroupResponse) SetBudgetInMicroCurrency(v int32) {
+	o.BudgetInMicroCurrency.Set(&v)
+}
+// SetBudgetInMicroCurrencyNil sets the value for BudgetInMicroCurrency to be an explicit nil
+func (o *AdGroupResponse) SetBudgetInMicroCurrencyNil() {
+	o.BudgetInMicroCurrency.Set(nil)
+}
+
+// UnsetBudgetInMicroCurrency ensures that no value is present for BudgetInMicroCurrency, not even an explicit nil
+func (o *AdGroupResponse) UnsetBudgetInMicroCurrency() {
+	o.BudgetInMicroCurrency.Unset()
+}
+
+// GetBudgetType returns the BudgetType field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetBudgetType() BudgetType {
+	if o == nil || IsNil(o.BudgetType) {
+		var ret BudgetType
+		return ret
+	}
+	return *o.BudgetType
+}
+
+// GetBudgetTypeOk returns a tuple with the BudgetType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetBudgetTypeOk() (*BudgetType, bool) {
+	if o == nil || IsNil(o.BudgetType) {
+		return nil, false
+	}
+	return o.BudgetType, true
+}
+
+// HasBudgetType returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasBudgetType() bool {
+	if o != nil && !IsNil(o.BudgetType) {
+		return true
+	}
+
+	return false
+}
+
+// SetBudgetType gets a reference to the given BudgetType and assigns it to the BudgetType field.
+func (o *AdGroupResponse) SetBudgetType(v BudgetType) {
+	o.BudgetType = &v
+}
+
+// GetCampaignId returns the CampaignId field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetCampaignId() string {
+	if o == nil || IsNil(o.CampaignId) {
+		var ret string
+		return ret
+	}
+	return *o.CampaignId
+}
+
+// GetCampaignIdOk returns a tuple with the CampaignId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetCampaignIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CampaignId) {
+		return nil, false
+	}
+	return o.CampaignId, true
+}
+
+// HasCampaignId returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasCampaignId() bool {
+	if o != nil && !IsNil(o.CampaignId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCampaignId gets a reference to the given string and assigns it to the CampaignId field.
+func (o *AdGroupResponse) SetCampaignId(v string) {
+	o.CampaignId = &v
+}
+
+// GetEndTime returns the EndTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetEndTime() int32 {
+	if o == nil || IsNil(o.EndTime.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.EndTime.Get()
+}
+
+// GetEndTimeOk returns a tuple with the EndTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetEndTimeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EndTime.Get(), o.EndTime.IsSet()
+}
+
+// HasEndTime returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasEndTime() bool {
+	if o != nil && o.EndTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEndTime gets a reference to the given NullableInt32 and assigns it to the EndTime field.
+func (o *AdGroupResponse) SetEndTime(v int32) {
+	o.EndTime.Set(&v)
+}
+// SetEndTimeNil sets the value for EndTime to be an explicit nil
+func (o *AdGroupResponse) SetEndTimeNil() {
+	o.EndTime.Set(nil)
+}
+
+// UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
+func (o *AdGroupResponse) UnsetEndTime() {
+	o.EndTime.Unset()
+}
+
+// GetIsCreativeOptimization returns the IsCreativeOptimization field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetIsCreativeOptimization() bool {
+	if o == nil || IsNil(o.IsCreativeOptimization.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCreativeOptimization.Get()
+}
+
+// GetIsCreativeOptimizationOk returns a tuple with the IsCreativeOptimization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetIsCreativeOptimizationOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsCreativeOptimization.Get(), o.IsCreativeOptimization.IsSet()
+}
+
+// HasIsCreativeOptimization returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasIsCreativeOptimization() bool {
+	if o != nil && o.IsCreativeOptimization.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCreativeOptimization gets a reference to the given NullableBool and assigns it to the IsCreativeOptimization field.
+func (o *AdGroupResponse) SetIsCreativeOptimization(v bool) {
+	o.IsCreativeOptimization.Set(&v)
+}
+// SetIsCreativeOptimizationNil sets the value for IsCreativeOptimization to be an explicit nil
+func (o *AdGroupResponse) SetIsCreativeOptimizationNil() {
+	o.IsCreativeOptimization.Set(nil)
+}
+
+// UnsetIsCreativeOptimization ensures that no value is present for IsCreativeOptimization, not even an explicit nil
+func (o *AdGroupResponse) UnsetIsCreativeOptimization() {
+	o.IsCreativeOptimization.Unset()
+}
+
+// GetLifetimeFrequencyCap returns the LifetimeFrequencyCap field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetLifetimeFrequencyCap() int32 {
+	if o == nil || IsNil(o.LifetimeFrequencyCap) {
+		var ret int32
+		return ret
+	}
+	return *o.LifetimeFrequencyCap
+}
+
+// GetLifetimeFrequencyCapOk returns a tuple with the LifetimeFrequencyCap field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetLifetimeFrequencyCapOk() (*int32, bool) {
+	if o == nil || IsNil(o.LifetimeFrequencyCap) {
+		return nil, false
+	}
+	return o.LifetimeFrequencyCap, true
+}
+
+// HasLifetimeFrequencyCap returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasLifetimeFrequencyCap() bool {
+	if o != nil && !IsNil(o.LifetimeFrequencyCap) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifetimeFrequencyCap gets a reference to the given int32 and assigns it to the LifetimeFrequencyCap field.
+func (o *AdGroupResponse) SetLifetimeFrequencyCap(v int32) {
+	o.LifetimeFrequencyCap = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *AdGroupResponse) SetName(v string) {
+	o.Name = &v
+}
+
+// GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetOptimizationGoalMetadata() OptimizationGoalMetadata {
+	if o == nil || IsNil(o.OptimizationGoalMetadata.Get()) {
+		var ret OptimizationGoalMetadata
+		return ret
+	}
+	return *o.OptimizationGoalMetadata.Get()
+}
+
+// GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OptimizationGoalMetadata.Get(), o.OptimizationGoalMetadata.IsSet()
+}
+
+// HasOptimizationGoalMetadata returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasOptimizationGoalMetadata() bool {
+	if o != nil && o.OptimizationGoalMetadata.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOptimizationGoalMetadata gets a reference to the given NullableOptimizationGoalMetadata and assigns it to the OptimizationGoalMetadata field.
+func (o *AdGroupResponse) SetOptimizationGoalMetadata(v OptimizationGoalMetadata) {
+	o.OptimizationGoalMetadata.Set(&v)
+}
+// SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
+func (o *AdGroupResponse) SetOptimizationGoalMetadataNil() {
+	o.OptimizationGoalMetadata.Set(nil)
+}
+
+// UnsetOptimizationGoalMetadata ensures that no value is present for OptimizationGoalMetadata, not even an explicit nil
+func (o *AdGroupResponse) UnsetOptimizationGoalMetadata() {
+	o.OptimizationGoalMetadata.Unset()
+}
+
+// GetPacingDeliveryType returns the PacingDeliveryType field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetPacingDeliveryType() PacingDeliveryType {
+	if o == nil || IsNil(o.PacingDeliveryType) {
+		var ret PacingDeliveryType
+		return ret
+	}
+	return *o.PacingDeliveryType
+}
+
+// GetPacingDeliveryTypeOk returns a tuple with the PacingDeliveryType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetPacingDeliveryTypeOk() (*PacingDeliveryType, bool) {
+	if o == nil || IsNil(o.PacingDeliveryType) {
+		return nil, false
+	}
+	return o.PacingDeliveryType, true
+}
+
+// HasPacingDeliveryType returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasPacingDeliveryType() bool {
+	if o != nil && !IsNil(o.PacingDeliveryType) {
+		return true
+	}
+
+	return false
+}
+
+// SetPacingDeliveryType gets a reference to the given PacingDeliveryType and assigns it to the PacingDeliveryType field.
+func (o *AdGroupResponse) SetPacingDeliveryType(v PacingDeliveryType) {
+	o.PacingDeliveryType = &v
+}
+
+// GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetPlacementGroup() PlacementGroupType {
+	if o == nil || IsNil(o.PlacementGroup) {
+		var ret PlacementGroupType
+		return ret
+	}
+	return *o.PlacementGroup
+}
+
+// GetPlacementGroupOk returns a tuple with the PlacementGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetPlacementGroupOk() (*PlacementGroupType, bool) {
+	if o == nil || IsNil(o.PlacementGroup) {
+		return nil, false
+	}
+	return o.PlacementGroup, true
+}
+
+// HasPlacementGroup returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasPlacementGroup() bool {
+	if o != nil && !IsNil(o.PlacementGroup) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlacementGroup gets a reference to the given PlacementGroupType and assigns it to the PlacementGroup field.
+func (o *AdGroupResponse) SetPlacementGroup(v PlacementGroupType) {
+	o.PlacementGroup = &v
+}
+
+// GetPromotionApplicationLevel returns the PromotionApplicationLevel field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetPromotionApplicationLevel() string {
+	if o == nil || IsNil(o.PromotionApplicationLevel.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PromotionApplicationLevel.Get()
+}
+
+// GetPromotionApplicationLevelOk returns a tuple with the PromotionApplicationLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetPromotionApplicationLevelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PromotionApplicationLevel.Get(), o.PromotionApplicationLevel.IsSet()
+}
+
+// HasPromotionApplicationLevel returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasPromotionApplicationLevel() bool {
+	if o != nil && o.PromotionApplicationLevel.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPromotionApplicationLevel gets a reference to the given NullableString and assigns it to the PromotionApplicationLevel field.
+func (o *AdGroupResponse) SetPromotionApplicationLevel(v string) {
+	o.PromotionApplicationLevel.Set(&v)
+}
+// SetPromotionApplicationLevelNil sets the value for PromotionApplicationLevel to be an explicit nil
+func (o *AdGroupResponse) SetPromotionApplicationLevelNil() {
+	o.PromotionApplicationLevel.Set(nil)
+}
+
+// UnsetPromotionApplicationLevel ensures that no value is present for PromotionApplicationLevel, not even an explicit nil
+func (o *AdGroupResponse) UnsetPromotionApplicationLevel() {
+	o.PromotionApplicationLevel.Unset()
+}
+
+// GetPromotionId returns the PromotionId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetPromotionId() string {
+	if o == nil || IsNil(o.PromotionId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PromotionId.Get()
+}
+
+// GetPromotionIdOk returns a tuple with the PromotionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetPromotionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PromotionId.Get(), o.PromotionId.IsSet()
+}
+
+// HasPromotionId returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasPromotionId() bool {
+	if o != nil && o.PromotionId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPromotionId gets a reference to the given NullableString and assigns it to the PromotionId field.
+func (o *AdGroupResponse) SetPromotionId(v string) {
+	o.PromotionId.Set(&v)
+}
+// SetPromotionIdNil sets the value for PromotionId to be an explicit nil
+func (o *AdGroupResponse) SetPromotionIdNil() {
+	o.PromotionId.Set(nil)
+}
+
+// UnsetPromotionId ensures that no value is present for PromotionId, not even an explicit nil
+func (o *AdGroupResponse) UnsetPromotionId() {
+	o.PromotionId.Unset()
+}
+
+// GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetStartTime() int32 {
+	if o == nil || IsNil(o.StartTime.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.StartTime.Get()
+}
+
+// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetStartTimeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartTime.Get(), o.StartTime.IsSet()
+}
+
+// HasStartTime returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasStartTime() bool {
+	if o != nil && o.StartTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartTime gets a reference to the given NullableInt32 and assigns it to the StartTime field.
+func (o *AdGroupResponse) SetStartTime(v int32) {
+	o.StartTime.Set(&v)
+}
+// SetStartTimeNil sets the value for StartTime to be an explicit nil
+func (o *AdGroupResponse) SetStartTimeNil() {
+	o.StartTime.Set(nil)
+}
+
+// UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
+func (o *AdGroupResponse) UnsetStartTime() {
+	o.StartTime.Unset()
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetStatus() EntityStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret EntityStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetStatusOk() (*EntityStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given EntityStatus and assigns it to the Status field.
+func (o *AdGroupResponse) SetStatus(v EntityStatus) {
+	o.Status = &v
+}
+
+// GetTargetingSpec returns the TargetingSpec field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetTargetingSpec() TargetingSpec {
+	if o == nil || IsNil(o.TargetingSpec) {
+		var ret TargetingSpec
+		return ret
+	}
+	return *o.TargetingSpec
+}
+
+// GetTargetingSpecOk returns a tuple with the TargetingSpec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetTargetingSpecOk() (*TargetingSpec, bool) {
+	if o == nil || IsNil(o.TargetingSpec) {
+		return nil, false
+	}
+	return o.TargetingSpec, true
+}
+
+// HasTargetingSpec returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasTargetingSpec() bool {
+	if o != nil && !IsNil(o.TargetingSpec) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetingSpec gets a reference to the given TargetingSpec and assigns it to the TargetingSpec field.
+func (o *AdGroupResponse) SetTargetingSpec(v TargetingSpec) {
+	o.TargetingSpec = &v
+}
+
 // GetTargetingTemplateIds returns the TargetingTemplateIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdGroupResponse) GetTargetingTemplateIds() []string {
 	if o == nil {
@@ -750,36 +846,46 @@ func (o *AdGroupResponse) SetTargetingTemplateIds(v []string) {
 	o.TargetingTemplateIds = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
+// GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetTrackingUrls() TrackingUrls {
+	if o == nil || IsNil(o.TrackingUrls.Get()) {
+		var ret TrackingUrls
 		return ret
 	}
-	return *o.Id
+	return *o.TrackingUrls.Get()
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetTrackingUrlsOk() (*TrackingUrls, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.TrackingUrls.Get(), o.TrackingUrls.IsSet()
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasTrackingUrls returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasTrackingUrls() bool {
+	if o != nil && o.TrackingUrls.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AdGroupResponse) SetId(v string) {
-	o.Id = &v
+// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
+func (o *AdGroupResponse) SetTrackingUrls(v TrackingUrls) {
+	o.TrackingUrls.Set(&v)
+}
+// SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
+func (o *AdGroupResponse) SetTrackingUrlsNil() {
+	o.TrackingUrls.Set(nil)
+}
+
+// UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
+func (o *AdGroupResponse) UnsetTrackingUrls() {
+	o.TrackingUrls.Unset()
 }
 
 // GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
@@ -814,100 +920,46 @@ func (o *AdGroupResponse) SetAdAccountId(v string) {
 	o.AdAccountId = &v
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetCreatedTime() int32 {
-	if o == nil || IsNil(o.CreatedTime) {
-		var ret int32
+// GetBidMultiplier returns the BidMultiplier field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupResponse) GetBidMultiplier() float32 {
+	if o == nil || IsNil(o.BidMultiplier.Get()) {
+		var ret float32
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.BidMultiplier.Get()
 }
 
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// GetBidMultiplierOk returns a tuple with the BidMultiplier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetCreatedTimeOk() (*int32, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupResponse) GetBidMultiplierOk() (*float32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.BidMultiplier.Get(), o.BidMultiplier.IsSet()
 }
 
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+// HasBidMultiplier returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasBidMultiplier() bool {
+	if o != nil && o.BidMultiplier.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given int32 and assigns it to the CreatedTime field.
-func (o *AdGroupResponse) SetCreatedTime(v int32) {
-	o.CreatedTime = &v
+// SetBidMultiplier gets a reference to the given NullableFloat32 and assigns it to the BidMultiplier field.
+func (o *AdGroupResponse) SetBidMultiplier(v float32) {
+	o.BidMultiplier.Set(&v)
+}
+// SetBidMultiplierNil sets the value for BidMultiplier to be an explicit nil
+func (o *AdGroupResponse) SetBidMultiplierNil() {
+	o.BidMultiplier.Set(nil)
 }
 
-// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetUpdatedTime() int32 {
-	if o == nil || IsNil(o.UpdatedTime) {
-		var ret int32
-		return ret
-	}
-	return *o.UpdatedTime
-}
-
-// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetUpdatedTimeOk() (*int32, bool) {
-	if o == nil || IsNil(o.UpdatedTime) {
-		return nil, false
-	}
-	return o.UpdatedTime, true
-}
-
-// HasUpdatedTime returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasUpdatedTime() bool {
-	if o != nil && !IsNil(o.UpdatedTime) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedTime gets a reference to the given int32 and assigns it to the UpdatedTime field.
-func (o *AdGroupResponse) SetUpdatedTime(v int32) {
-	o.UpdatedTime = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *AdGroupResponse) SetType(v string) {
-	o.Type = &v
+// UnsetBidMultiplier ensures that no value is present for BidMultiplier, not even an explicit nil
+func (o *AdGroupResponse) UnsetBidMultiplier() {
+	o.BidMultiplier.Unset()
 }
 
 // GetConversionLearningModeType returns the ConversionLearningModeType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -952,68 +1004,36 @@ func (o *AdGroupResponse) UnsetConversionLearningModeType() {
 	o.ConversionLearningModeType.Unset()
 }
 
-// GetSummaryStatus returns the SummaryStatus field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetSummaryStatus() AdGroupSummaryStatus {
-	if o == nil || IsNil(o.SummaryStatus) {
-		var ret AdGroupSummaryStatus
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetCreatedTime() int32 {
+	if o == nil || IsNil(o.CreatedTime) {
+		var ret int32
 		return ret
 	}
-	return *o.SummaryStatus
+	return *o.CreatedTime
 }
 
-// GetSummaryStatusOk returns a tuple with the SummaryStatus field value if set, nil otherwise
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetSummaryStatusOk() (*AdGroupSummaryStatus, bool) {
-	if o == nil || IsNil(o.SummaryStatus) {
+func (o *AdGroupResponse) GetCreatedTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.CreatedTime) {
 		return nil, false
 	}
-	return o.SummaryStatus, true
+	return o.CreatedTime, true
 }
 
-// HasSummaryStatus returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasSummaryStatus() bool {
-	if o != nil && !IsNil(o.SummaryStatus) {
+// HasCreatedTime returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasCreatedTime() bool {
+	if o != nil && !IsNil(o.CreatedTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetSummaryStatus gets a reference to the given AdGroupSummaryStatus and assigns it to the SummaryStatus field.
-func (o *AdGroupResponse) SetSummaryStatus(v AdGroupSummaryStatus) {
-	o.SummaryStatus = &v
-}
-
-// GetFeedProfileId returns the FeedProfileId field value if set, zero value otherwise.
-func (o *AdGroupResponse) GetFeedProfileId() string {
-	if o == nil || IsNil(o.FeedProfileId) {
-		var ret string
-		return ret
-	}
-	return *o.FeedProfileId
-}
-
-// GetFeedProfileIdOk returns a tuple with the FeedProfileId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupResponse) GetFeedProfileIdOk() (*string, bool) {
-	if o == nil || IsNil(o.FeedProfileId) {
-		return nil, false
-	}
-	return o.FeedProfileId, true
-}
-
-// HasFeedProfileId returns a boolean if a field has been set.
-func (o *AdGroupResponse) HasFeedProfileId() bool {
-	if o != nil && !IsNil(o.FeedProfileId) {
-		return true
-	}
-
-	return false
-}
-
-// SetFeedProfileId gets a reference to the given string and assigns it to the FeedProfileId field.
-func (o *AdGroupResponse) SetFeedProfileId(v string) {
-	o.FeedProfileId = &v
+// SetCreatedTime gets a reference to the given int32 and assigns it to the CreatedTime field.
+func (o *AdGroupResponse) SetCreatedTime(v int32) {
+	o.CreatedTime = &v
 }
 
 // GetDcaAssets returns the DcaAssets field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1049,6 +1069,166 @@ func (o *AdGroupResponse) SetDcaAssets(v interface{}) {
 	o.DcaAssets = v
 }
 
+// GetFeedProfileId returns the FeedProfileId field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetFeedProfileId() string {
+	if o == nil || IsNil(o.FeedProfileId) {
+		var ret string
+		return ret
+	}
+	return *o.FeedProfileId
+}
+
+// GetFeedProfileIdOk returns a tuple with the FeedProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetFeedProfileIdOk() (*string, bool) {
+	if o == nil || IsNil(o.FeedProfileId) {
+		return nil, false
+	}
+	return o.FeedProfileId, true
+}
+
+// HasFeedProfileId returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasFeedProfileId() bool {
+	if o != nil && !IsNil(o.FeedProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeedProfileId gets a reference to the given string and assigns it to the FeedProfileId field.
+func (o *AdGroupResponse) SetFeedProfileId(v string) {
+	o.FeedProfileId = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AdGroupResponse) SetId(v string) {
+	o.Id = &v
+}
+
+// GetSummaryStatus returns the SummaryStatus field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetSummaryStatus() AdGroupSummaryStatus {
+	if o == nil || IsNil(o.SummaryStatus) {
+		var ret AdGroupSummaryStatus
+		return ret
+	}
+	return *o.SummaryStatus
+}
+
+// GetSummaryStatusOk returns a tuple with the SummaryStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetSummaryStatusOk() (*AdGroupSummaryStatus, bool) {
+	if o == nil || IsNil(o.SummaryStatus) {
+		return nil, false
+	}
+	return o.SummaryStatus, true
+}
+
+// HasSummaryStatus returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasSummaryStatus() bool {
+	if o != nil && !IsNil(o.SummaryStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetSummaryStatus gets a reference to the given AdGroupSummaryStatus and assigns it to the SummaryStatus field.
+func (o *AdGroupResponse) SetSummaryStatus(v AdGroupSummaryStatus) {
+	o.SummaryStatus = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AdGroupResponse) SetType(v string) {
+	o.Type = &v
+}
+
+// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
+func (o *AdGroupResponse) GetUpdatedTime() int32 {
+	if o == nil || IsNil(o.UpdatedTime) {
+		var ret int32
+		return ret
+	}
+	return *o.UpdatedTime
+}
+
+// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupResponse) GetUpdatedTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.UpdatedTime) {
+		return nil, false
+	}
+	return o.UpdatedTime, true
+}
+
+// HasUpdatedTime returns a boolean if a field has been set.
+func (o *AdGroupResponse) HasUpdatedTime() bool {
+	if o != nil && !IsNil(o.UpdatedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedTime gets a reference to the given int32 and assigns it to the UpdatedTime field.
+func (o *AdGroupResponse) SetUpdatedTime(v int32) {
+	o.UpdatedTime = &v
+}
+
 func (o AdGroupResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1059,86 +1239,98 @@ func (o AdGroupResponse) MarshalJSON() ([]byte, error) {
 
 func (o AdGroupResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if o.BudgetInMicroCurrency.IsSet() {
-		toSerialize["budget_in_micro_currency"] = o.BudgetInMicroCurrency.Get()
+	if o.AutoTargetingEnabled.IsSet() {
+		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled.Get()
 	}
 	if o.BidInMicroCurrency.IsSet() {
 		toSerialize["bid_in_micro_currency"] = o.BidInMicroCurrency.Get()
 	}
-	if o.OptimizationGoalMetadata.IsSet() {
-		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata.Get()
-	}
-	if !IsNil(o.BudgetType) {
-		toSerialize["budget_type"] = o.BudgetType
-	}
-	if o.StartTime.IsSet() {
-		toSerialize["start_time"] = o.StartTime.Get()
-	}
-	if o.EndTime.IsSet() {
-		toSerialize["end_time"] = o.EndTime.Get()
-	}
-	if !IsNil(o.TargetingSpec) {
-		toSerialize["targeting_spec"] = o.TargetingSpec
-	}
-	if !IsNil(o.LifetimeFrequencyCap) {
-		toSerialize["lifetime_frequency_cap"] = o.LifetimeFrequencyCap
-	}
-	if o.TrackingUrls.IsSet() {
-		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
-	}
-	if o.AutoTargetingEnabled.IsSet() {
-		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled.Get()
-	}
-	if !IsNil(o.PlacementGroup) {
-		toSerialize["placement_group"] = o.PlacementGroup
-	}
-	if !IsNil(o.PacingDeliveryType) {
-		toSerialize["pacing_delivery_type"] = o.PacingDeliveryType
-	}
-	if !IsNil(o.CampaignId) {
-		toSerialize["campaign_id"] = o.CampaignId
+	if o.BidStrategyType.IsSet() {
+		toSerialize["bid_strategy_type"] = o.BidStrategyType.Get()
 	}
 	if !IsNil(o.BillableEvent) {
 		toSerialize["billable_event"] = o.BillableEvent
 	}
-	if o.BidStrategyType.IsSet() {
-		toSerialize["bid_strategy_type"] = o.BidStrategyType.Get()
+	if o.BudgetInMicroCurrency.IsSet() {
+		toSerialize["budget_in_micro_currency"] = o.BudgetInMicroCurrency.Get()
+	}
+	if !IsNil(o.BudgetType) {
+		toSerialize["budget_type"] = o.BudgetType
+	}
+	if !IsNil(o.CampaignId) {
+		toSerialize["campaign_id"] = o.CampaignId
+	}
+	if o.EndTime.IsSet() {
+		toSerialize["end_time"] = o.EndTime.Get()
+	}
+	if o.IsCreativeOptimization.IsSet() {
+		toSerialize["is_creative_optimization"] = o.IsCreativeOptimization.Get()
+	}
+	if !IsNil(o.LifetimeFrequencyCap) {
+		toSerialize["lifetime_frequency_cap"] = o.LifetimeFrequencyCap
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if o.OptimizationGoalMetadata.IsSet() {
+		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata.Get()
+	}
+	if !IsNil(o.PacingDeliveryType) {
+		toSerialize["pacing_delivery_type"] = o.PacingDeliveryType
+	}
+	if !IsNil(o.PlacementGroup) {
+		toSerialize["placement_group"] = o.PlacementGroup
+	}
+	if o.PromotionApplicationLevel.IsSet() {
+		toSerialize["promotion_application_level"] = o.PromotionApplicationLevel.Get()
+	}
+	if o.PromotionId.IsSet() {
+		toSerialize["promotion_id"] = o.PromotionId.Get()
+	}
+	if o.StartTime.IsSet() {
+		toSerialize["start_time"] = o.StartTime.Get()
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.TargetingSpec) {
+		toSerialize["targeting_spec"] = o.TargetingSpec
 	}
 	if o.TargetingTemplateIds != nil {
 		toSerialize["targeting_template_ids"] = o.TargetingTemplateIds
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.TrackingUrls.IsSet() {
+		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
 	}
 	if !IsNil(o.AdAccountId) {
 		toSerialize["ad_account_id"] = o.AdAccountId
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
-	}
-	if !IsNil(o.UpdatedTime) {
-		toSerialize["updated_time"] = o.UpdatedTime
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.BidMultiplier.IsSet() {
+		toSerialize["bid_multiplier"] = o.BidMultiplier.Get()
 	}
 	if o.ConversionLearningModeType.IsSet() {
 		toSerialize["conversion_learning_mode_type"] = o.ConversionLearningModeType.Get()
 	}
-	if !IsNil(o.SummaryStatus) {
-		toSerialize["summary_status"] = o.SummaryStatus
+	if !IsNil(o.CreatedTime) {
+		toSerialize["created_time"] = o.CreatedTime
+	}
+	if o.DcaAssets != nil {
+		toSerialize["dca_assets"] = o.DcaAssets
 	}
 	if !IsNil(o.FeedProfileId) {
 		toSerialize["feed_profile_id"] = o.FeedProfileId
 	}
-	if o.DcaAssets != nil {
-		toSerialize["dca_assets"] = o.DcaAssets
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.SummaryStatus) {
+		toSerialize["summary_status"] = o.SummaryStatus
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.UpdatedTime) {
+		toSerialize["updated_time"] = o.UpdatedTime
 	}
 	return toSerialize, nil
 }

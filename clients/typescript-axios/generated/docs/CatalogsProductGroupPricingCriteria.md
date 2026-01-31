@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **boolean** |  | [optional] [default to true]
-**values** | **number** |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**values** | **number** |  | [default to undefined]
 
 ## Example
 
@@ -16,8 +16,8 @@ import { CatalogsProductGroupPricingCriteria } from './api';
 
 const instance: CatalogsProductGroupPricingCriteria = {
     inclusion,
-    values,
     negated,
+    values,
 };
 ```
 

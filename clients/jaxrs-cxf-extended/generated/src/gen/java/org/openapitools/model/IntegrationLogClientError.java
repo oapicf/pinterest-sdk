@@ -169,7 +169,7 @@ public class IntegrationLogClientError  {
   * @return message
   */
   @JsonProperty("message")
- @Size(max=512)  public String getMessage() {
+ @Size(max=8192)  public String getMessage() {
     return message;
   }
 

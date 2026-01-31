@@ -3,27 +3,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 **CatalogType** | **String** |  | 
-**Id** | **String** | ID of the creative assets product group. | 
-**Name** | **String** | Name of creative assets product group | [optional] 
+**CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**Id** | **String** | ID of the creative assets product group. | 
+**Name** | **String** | Name of creative assets product group | [optional] 
 **UpdatedAt** | **Int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsProductGroup = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroup  -CatalogType null `
- -Id 443727193917 `
- -Name Most Popular `
+$CatalogsCreativeAssetsProductGroup = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroup  -CatalogId null `
+ -CatalogType null `
+ -CreatedAt 1621350033000 `
  -Description null `
  -Filters null `
- -CreatedAt 1621350033000 `
- -UpdatedAt 1622742155000 `
- -CatalogId null
+ -Id 443727193917 `
+ -Name Most Popular `
+ -UpdatedAt 1622742155000
 ```
 
 - Convert the resource to JSON

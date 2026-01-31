@@ -8,18 +8,18 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
+import org.openapitools.model.ProductGroupPromotion;
 
 /**
  * ProductGroupPromotionCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionCreateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
 
   @JsonProperty("product_group_promotion")
-  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionCreateRequest adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
@@ -39,12 +39,12 @@ public class ProductGroupPromotionCreateRequest   {
     this.adGroupId = adGroupId;
   }
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
     this.productGroupPromotion.add(productGroupPromotionItem);
     return this;
   }
@@ -54,11 +54,11 @@ public class ProductGroupPromotionCreateRequest   {
    * @return productGroupPromotion
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

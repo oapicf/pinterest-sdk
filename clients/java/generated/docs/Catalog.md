@@ -11,8 +11,8 @@ Catalog entity
 |**createdAt** | **OffsetDateTime** |  |  |
 |**id** | **String** | ID of the catalog entity. |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
-|**name** | **String** | A human-friendly name associated to a catalog entity. |  |
 |**catalogType** | **CatalogsType** |  |  |
+|**name** | **String** | A human-friendly name associated to a catalog entity. |  |
 
 
 

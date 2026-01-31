@@ -16,9 +16,8 @@ void main() {
   // final instance = BulkDownloadRequestCampaignFilter();
 
   group('test BulkDownloadRequestCampaignFilter', () {
-    // Unix UTC timestamp.
-    // String startTime
-    test('to test the property `startTime`', () async {
+    // List<CampaignSummaryStatus> campaignStatus (default value: const [])
+    test('to test the property `campaignStatus`', () async {
       // TODO
     });
 
@@ -34,13 +33,14 @@ void main() {
       // TODO
     });
 
-    // List<CampaignSummaryStatus> campaignStatus (default value: const [])
-    test('to test the property `campaignStatus`', () async {
+    // List<ObjectiveType> objectiveType (default value: const [])
+    test('to test the property `objectiveType`', () async {
       // TODO
     });
 
-    // List<ObjectiveType> objectiveType (default value: const [])
-    test('to test the property `objectiveType`', () async {
+    // Unix UTC timestamp.
+    // String startTime
+    test('to test the property `startTime`', () async {
       // TODO
     });
 

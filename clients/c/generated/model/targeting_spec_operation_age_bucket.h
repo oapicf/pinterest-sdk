@@ -1,0 +1,67 @@
+/*
+ * targeting_spec_operation_age_bucket.h
+ *
+ * 
+ */
+
+#ifndef _targeting_spec_operation_age_bucket_H_
+#define _targeting_spec_operation_age_bucket_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct targeting_spec_operation_age_bucket_t targeting_spec_operation_age_bucket_t;
+
+#include "targeting_spec_age_bucket.h"
+
+// Enum FIELD for targeting_spec_operation_age_bucket
+
+typedef enum  { pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_NULL = 0, pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_AGE_BUCKET } pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_e;
+
+char* targeting_spec_operation_age_bucket_field_ToString(pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_e field);
+
+pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_e targeting_spec_operation_age_bucket_field_FromString(char* field);
+
+// Enum OPERATION for targeting_spec_operation_age_bucket
+
+typedef enum  { pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_NULL = 0, pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_SET } pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_e;
+
+char* targeting_spec_operation_age_bucket_operation_ToString(pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_e operation);
+
+pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_e targeting_spec_operation_age_bucket_operation_FromString(char* operation);
+
+// Enum  for targeting_spec_operation_age_bucket
+
+typedef enum  { pinterest_rest_api_targeting_spec_operation_age_bucket__NULL = 0, pinterest_rest_api_targeting_spec_operation_age_bucket___18_24, pinterest_rest_api_targeting_spec_operation_age_bucket___19+, pinterest_rest_api_targeting_spec_operation_age_bucket___20+, pinterest_rest_api_targeting_spec_operation_age_bucket___21+, pinterest_rest_api_targeting_spec_operation_age_bucket___25_34, pinterest_rest_api_targeting_spec_operation_age_bucket___35_44, pinterest_rest_api_targeting_spec_operation_age_bucket___45_49, pinterest_rest_api_targeting_spec_operation_age_bucket___50_54, pinterest_rest_api_targeting_spec_operation_age_bucket___55_64, pinterest_rest_api_targeting_spec_operation_age_bucket___65+ } pinterest_rest_api_targeting_spec_operation_age_bucket__e;
+
+char* targeting_spec_operation_age_bucket_values_ToString(pinterest_rest_api_targeting_spec_operation_age_bucket__e values);
+
+pinterest_rest_api_targeting_spec_operation_age_bucket__e targeting_spec_operation_age_bucket_values_FromString(char* values);
+
+
+
+typedef struct targeting_spec_operation_age_bucket_t {
+    pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_e field; //enum
+    pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_e operation; //enum
+    list_t *values; //nonprimitive container
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} targeting_spec_operation_age_bucket_t;
+
+__attribute__((deprecated)) targeting_spec_operation_age_bucket_t *targeting_spec_operation_age_bucket_create(
+    pinterest_rest_api_targeting_spec_operation_age_bucket_FIELD_e field,
+    pinterest_rest_api_targeting_spec_operation_age_bucket_OPERATION_e operation,
+    list_t *values
+);
+
+void targeting_spec_operation_age_bucket_free(targeting_spec_operation_age_bucket_t *targeting_spec_operation_age_bucket);
+
+targeting_spec_operation_age_bucket_t *targeting_spec_operation_age_bucket_parseFromJSON(cJSON *targeting_spec_operation_age_bucketJSON);
+
+cJSON *targeting_spec_operation_age_bucket_convertToJSON(targeting_spec_operation_age_bucket_t *targeting_spec_operation_age_bucket);
+
+#endif /* _targeting_spec_operation_age_bucket_H_ */
+

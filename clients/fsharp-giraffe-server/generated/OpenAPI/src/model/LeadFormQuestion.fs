@@ -12,9 +12,9 @@ module LeadFormQuestion =
 
 
   type LeadFormQuestion = {
-    QuestionType : LeadFormQuestionType;
     CustomQuestionFieldType : LeadFormQuestionFieldType;
     CustomQuestionLabel : string option;
     CustomQuestionOptions : string[];
+    QuestionType : LeadFormQuestionType;
   }
   //#endregion

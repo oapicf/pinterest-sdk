@@ -26,47 +26,39 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkDownloadRequest", description = "Ad entities to get in bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequest {
 
-  @Valid
-  private List<BulkEntityType> entityTypes = new ArrayList<>();
+  private BulkDownloadRequestCampaignFilter campaignFilter;
 
   @Valid
   private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
 
-  private String updatedSince;
-
-  private BulkDownloadRequestCampaignFilter campaignFilter;
+  @Valid
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
 
   private BulkOutputFormat outputFormat = "JSON";
 
-  public BulkDownloadRequest entityTypes(List<BulkEntityType> entityTypes) {
-    this.entityTypes = entityTypes;
-    return this;
-  }
+  private String updatedSince;
 
-  public BulkDownloadRequest addEntityTypesItem(BulkEntityType entityTypesItem) {
-    if (this.entityTypes == null) {
-      this.entityTypes = new ArrayList<>();
-    }
-    this.entityTypes.add(entityTypesItem);
+  public BulkDownloadRequest campaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+    this.campaignFilter = campaignFilter;
     return this;
   }
 
   /**
-   * All entity types specified will be downloaded. Fewer types result in faster downloads.
-   * @return entityTypes
+   * Get campaignFilter
+   * @return campaignFilter
    */
-  @Valid @Size(min = 1, max = 5) 
-  @Schema(name = "entity_types", example = "[\"CAMPAIGN\",\"AD_GROUP\"]", description = "All entity types specified will be downloaded. Fewer types result in faster downloads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("entity_types")
-  public List<BulkEntityType> getEntityTypes() {
-    return entityTypes;
+  @Valid 
+  @Schema(name = "campaign_filter", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("campaign_filter")
+  public BulkDownloadRequestCampaignFilter getCampaignFilter() {
+    return campaignFilter;
   }
 
-  public void setEntityTypes(List<BulkEntityType> entityTypes) {
-    this.entityTypes = entityTypes;
+  public void setCampaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+    this.campaignFilter = campaignFilter;
   }
 
   public BulkDownloadRequest entityIds(List<@Pattern(regexp = "^\\d+$")String> entityIds) {
@@ -97,44 +89,32 @@ public class BulkDownloadRequest {
     this.entityIds = entityIds;
   }
 
-  public BulkDownloadRequest updatedSince(String updatedSince) {
-    this.updatedSince = updatedSince;
+  public BulkDownloadRequest entityTypes(List<BulkEntityType> entityTypes) {
+    this.entityTypes = entityTypes;
+    return this;
+  }
+
+  public BulkDownloadRequest addEntityTypesItem(BulkEntityType entityTypesItem) {
+    if (this.entityTypes == null) {
+      this.entityTypes = new ArrayList<>();
+    }
+    this.entityTypes.add(entityTypesItem);
     return this;
   }
 
   /**
-   * Unix UTC timestamp to retrieve all entities that have changed since this time.
-   * @return updatedSince
+   * All entity types specified will be downloaded. Fewer types result in faster downloads.
+   * @return entityTypes
    */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "updated_since", example = "1622848072", description = "Unix UTC timestamp to retrieve all entities that have changed since this time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("updated_since")
-  public String getUpdatedSince() {
-    return updatedSince;
+  @Valid @Size(min = 1, max = 6) 
+  @Schema(name = "entity_types", example = "[\"CAMPAIGN\",\"AD_GROUP\"]", description = "All entity types specified will be downloaded. Fewer types result in faster downloads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("entity_types")
+  public List<BulkEntityType> getEntityTypes() {
+    return entityTypes;
   }
 
-  public void setUpdatedSince(String updatedSince) {
-    this.updatedSince = updatedSince;
-  }
-
-  public BulkDownloadRequest campaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
-    this.campaignFilter = campaignFilter;
-    return this;
-  }
-
-  /**
-   * Get campaignFilter
-   * @return campaignFilter
-   */
-  @Valid 
-  @Schema(name = "campaign_filter", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("campaign_filter")
-  public BulkDownloadRequestCampaignFilter getCampaignFilter() {
-    return campaignFilter;
-  }
-
-  public void setCampaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
-    this.campaignFilter = campaignFilter;
+  public void setEntityTypes(List<BulkEntityType> entityTypes) {
+    this.entityTypes = entityTypes;
   }
 
   public BulkDownloadRequest outputFormat(BulkOutputFormat outputFormat) {
@@ -157,6 +137,26 @@ public class BulkDownloadRequest {
     this.outputFormat = outputFormat;
   }
 
+  public BulkDownloadRequest updatedSince(String updatedSince) {
+    this.updatedSince = updatedSince;
+    return this;
+  }
+
+  /**
+   * Unix UTC timestamp to retrieve all entities that have changed since this time.
+   * @return updatedSince
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "updated_since", example = "1622848072", description = "Unix UTC timestamp to retrieve all entities that have changed since this time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updated_since")
+  public String getUpdatedSince() {
+    return updatedSince;
+  }
+
+  public void setUpdatedSince(String updatedSince) {
+    this.updatedSince = updatedSince;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -166,27 +166,27 @@ public class BulkDownloadRequest {
       return false;
     }
     BulkDownloadRequest bulkDownloadRequest = (BulkDownloadRequest) o;
-    return Objects.equals(this.entityTypes, bulkDownloadRequest.entityTypes) &&
+    return Objects.equals(this.campaignFilter, bulkDownloadRequest.campaignFilter) &&
         Objects.equals(this.entityIds, bulkDownloadRequest.entityIds) &&
-        Objects.equals(this.updatedSince, bulkDownloadRequest.updatedSince) &&
-        Objects.equals(this.campaignFilter, bulkDownloadRequest.campaignFilter) &&
-        Objects.equals(this.outputFormat, bulkDownloadRequest.outputFormat);
+        Objects.equals(this.entityTypes, bulkDownloadRequest.entityTypes) &&
+        Objects.equals(this.outputFormat, bulkDownloadRequest.outputFormat) &&
+        Objects.equals(this.updatedSince, bulkDownloadRequest.updatedSince);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityTypes, entityIds, updatedSince, campaignFilter, outputFormat);
+    return Objects.hash(campaignFilter, entityIds, entityTypes, outputFormat, updatedSince);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequest {\n");
-    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
-    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
-    sb.append("    updatedSince: ").append(toIndentedString(updatedSince)).append("\n");
     sb.append("    campaignFilter: ").append(toIndentedString(campaignFilter)).append("\n");
+    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
+    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
     sb.append("    outputFormat: ").append(toIndentedString(outputFormat)).append("\n");
+    sb.append("    updatedSince: ").append(toIndentedString(updatedSince)).append("\n");
     sb.append("}");
     return sb.toString();
   }

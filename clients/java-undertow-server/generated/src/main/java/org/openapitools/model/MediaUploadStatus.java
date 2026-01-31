@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -11,17 +11,13 @@
 package org.openapitools.model;
 
 import java.util.Objects;
-import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
 
-/**
- * Media upload status
- */
 
 /**
- * Media upload status
+ * Gets or Sets MediaUploadStatus
  */
 public enum MediaUploadStatus {
     

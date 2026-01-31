@@ -12,10 +12,10 @@ module GetBusinessPartners200Response =
 
   [<CLIMutable>]
   type GetBusinessPartners200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : UserBusinessRoleBinding[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : UserBusinessRoleBinding[];
   }
 
   //#endregion

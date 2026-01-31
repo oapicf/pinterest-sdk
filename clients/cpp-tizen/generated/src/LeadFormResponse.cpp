@@ -23,67 +23,62 @@ LeadFormResponse::~LeadFormResponse()
 void
 LeadFormResponse::__init()
 {
-	//name = std::string();
-	//privacy_policy_link = std::string();
-	//has_accepted_terms = bool(false);
 	//completion_message = std::string();
-	//status = new LeadFormStatus();
 	//disclosure_language = std::string();
-	//new std::list()std::list> questions;
+	//has_accepted_terms = bool(false);
+	//name = std::string();
 	//new std::list()std::list> policy_links;
-	//id = std::string();
+	//privacy_policy_link = std::string();
+	//new std::list()std::list> questions;
+	//status = new LeadFormStatus();
 	//ad_account_id = std::string();
 	//created_time = int(0);
+	//id = std::string();
 	//updated_time = int(0);
 }
 
 void
 LeadFormResponse::__cleanup()
 {
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
-	//if(privacy_policy_link != NULL) {
-	//
-	//delete privacy_policy_link;
-	//privacy_policy_link = NULL;
-	//}
-	//if(has_accepted_terms != NULL) {
-	//
-	//delete has_accepted_terms;
-	//has_accepted_terms = NULL;
-	//}
 	//if(completion_message != NULL) {
 	//
 	//delete completion_message;
 	//completion_message = NULL;
-	//}
-	//if(status != NULL) {
-	//
-	//delete status;
-	//status = NULL;
 	//}
 	//if(disclosure_language != NULL) {
 	//
 	//delete disclosure_language;
 	//disclosure_language = NULL;
 	//}
-	//if(questions != NULL) {
-	//questions.RemoveAll(true);
-	//delete questions;
-	//questions = NULL;
+	//if(has_accepted_terms != NULL) {
+	//
+	//delete has_accepted_terms;
+	//has_accepted_terms = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
 	//}
 	//if(policy_links != NULL) {
 	//policy_links.RemoveAll(true);
 	//delete policy_links;
 	//policy_links = NULL;
 	//}
-	//if(id != NULL) {
+	//if(privacy_policy_link != NULL) {
 	//
-	//delete id;
-	//id = NULL;
+	//delete privacy_policy_link;
+	//privacy_policy_link = NULL;
+	//}
+	//if(questions != NULL) {
+	//questions.RemoveAll(true);
+	//delete questions;
+	//questions = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//if(ad_account_id != NULL) {
 	//
@@ -94,6 +89,11 @@ LeadFormResponse::__cleanup()
 	//
 	//delete created_time;
 	//created_time = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
 	//}
 	//if(updated_time != NULL) {
 	//
@@ -108,24 +108,24 @@ LeadFormResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
+	const gchar *completion_messageKey = "completion_message";
+	node = json_object_get_member(pJsonObject, completion_messageKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
+			jsonToValue(&completion_message, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *privacy_policy_linkKey = "privacy_policy_link";
-	node = json_object_get_member(pJsonObject, privacy_policy_linkKey);
+	const gchar *disclosure_languageKey = "disclosure_language";
+	node = json_object_get_member(pJsonObject, disclosure_languageKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&privacy_policy_link, node, "std::string", "");
+			jsonToValue(&disclosure_language, node, "std::string", "");
 		} else {
 			
 		}
@@ -141,38 +141,48 @@ LeadFormResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *completion_messageKey = "completion_message";
-	node = json_object_get_member(pJsonObject, completion_messageKey);
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&completion_message, node, "std::string", "");
+			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
+	const gchar *policy_linksKey = "policy_links";
+	node = json_object_get_member(pJsonObject, policy_linksKey);
 	if (node !=NULL) {
 	
-
-		if (isprimitive("LeadFormStatus")) {
-			jsonToValue(&status, node, "LeadFormStatus", "LeadFormStatus");
-		} else {
-			
-			LeadFormStatus* obj = static_cast<LeadFormStatus*> (&status);
-			obj->fromJson(json_to_string(node, false));
-			
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<LeadFormCommon_policy_links_inner> new_list;
+			LeadFormCommon_policy_links_inner inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("LeadFormCommon_policy_links_inner")) {
+					jsonToValue(&inst, temp_json, "LeadFormCommon_policy_links_inner", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			policy_links = new_list;
 		}
+		
 	}
-	const gchar *disclosure_languageKey = "disclosure_language";
-	node = json_object_get_member(pJsonObject, disclosure_languageKey);
+	const gchar *privacy_policy_linkKey = "privacy_policy_link";
+	node = json_object_get_member(pJsonObject, privacy_policy_linkKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&disclosure_language, node, "std::string", "");
+			jsonToValue(&privacy_policy_link, node, "std::string", "");
 		} else {
 			
 		}
@@ -201,38 +211,17 @@ LeadFormResponse::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *policy_linksKey = "policy_links";
-	node = json_object_get_member(pJsonObject, policy_linksKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<LeadFormCommon_policy_links_inner> new_list;
-			LeadFormCommon_policy_links_inner inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("LeadFormCommon_policy_links_inner")) {
-					jsonToValue(&inst, temp_json, "LeadFormCommon_policy_links_inner", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			policy_links = new_list;
-		}
-		
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
+		if (isprimitive("LeadFormStatus")) {
+			jsonToValue(&status, node, "LeadFormStatus", "LeadFormStatus");
 		} else {
+			
+			LeadFormStatus* obj = static_cast<LeadFormStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -254,6 +243,17 @@ LeadFormResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&created_time, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
@@ -282,23 +282,23 @@ LeadFormResponse::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getName();
+		std::string obj = getCompletionMessage();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
+	const gchar *completion_messageKey = "completion_message";
+	json_object_set_member(pJsonObject, completion_messageKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getPrivacyPolicyLink();
+		std::string obj = getDisclosureLanguage();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *privacy_policy_linkKey = "privacy_policy_link";
-	json_object_set_member(pJsonObject, privacy_policy_linkKey, node);
+	const gchar *disclosure_languageKey = "disclosure_language";
+	json_object_set_member(pJsonObject, disclosure_languageKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getHasAcceptedTerms();
 		node = converttoJson(&obj, "bool", "");
@@ -309,62 +309,14 @@ LeadFormResponse::toJson()
 	const gchar *has_accepted_termsKey = "has_accepted_terms";
 	json_object_set_member(pJsonObject, has_accepted_termsKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCompletionMessage();
+		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *completion_messageKey = "completion_message";
-	json_object_set_member(pJsonObject, completion_messageKey, node);
-	if (isprimitive("LeadFormStatus")) {
-		LeadFormStatus obj = getStatus();
-		node = converttoJson(&obj, "LeadFormStatus", "");
-	}
-	else {
-		
-		LeadFormStatus obj = static_cast<LeadFormStatus> (getStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDisclosureLanguage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *disclosure_languageKey = "disclosure_language";
-	json_object_set_member(pJsonObject, disclosure_languageKey, node);
-	if (isprimitive("LeadFormQuestion")) {
-		list<LeadFormQuestion> new_list = static_cast<list <LeadFormQuestion> > (getQuestions());
-		node = converttoJson(&new_list, "LeadFormQuestion", "array");
-	} else {
-		node = json_node_alloc();
-		list<LeadFormQuestion> new_list = static_cast<list <LeadFormQuestion> > (getQuestions());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-		for (list<LeadFormQuestion>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			LeadFormQuestion obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
-		
-	}
-
-
-	
-	const gchar *questionsKey = "questions";
-	json_object_set_member(pJsonObject, questionsKey, node);
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("LeadFormCommon_policy_links_inner")) {
 		list<LeadFormCommon_policy_links_inner> new_list = static_cast<list <LeadFormCommon_policy_links_inner> > (getPolicyLinks());
 		node = converttoJson(&new_list, "LeadFormCommon_policy_links_inner", "array");
@@ -391,14 +343,53 @@ LeadFormResponse::toJson()
 	const gchar *policy_linksKey = "policy_links";
 	json_object_set_member(pJsonObject, policy_linksKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getId();
+		std::string obj = getPrivacyPolicyLink();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
+	const gchar *privacy_policy_linkKey = "privacy_policy_link";
+	json_object_set_member(pJsonObject, privacy_policy_linkKey, node);
+	if (isprimitive("LeadFormQuestion")) {
+		list<LeadFormQuestion> new_list = static_cast<list <LeadFormQuestion> > (getQuestions());
+		node = converttoJson(&new_list, "LeadFormQuestion", "array");
+	} else {
+		node = json_node_alloc();
+		list<LeadFormQuestion> new_list = static_cast<list <LeadFormQuestion> > (getQuestions());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<LeadFormQuestion>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			LeadFormQuestion obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *questionsKey = "questions";
+	json_object_set_member(pJsonObject, questionsKey, node);
+	if (isprimitive("LeadFormStatus")) {
+		LeadFormStatus obj = getStatus();
+		node = converttoJson(&obj, "LeadFormStatus", "");
+	}
+	else {
+		
+		LeadFormStatus obj = static_cast<LeadFormStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAdAccountId();
 		node = converttoJson(&obj, "std::string", "");
@@ -417,6 +408,15 @@ LeadFormResponse::toJson()
 	}
 	const gchar *created_timeKey = "created_time";
 	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("int")) {
 		int obj = getUpdatedTime();
 		node = converttoJson(&obj, "int", "");
@@ -435,27 +435,27 @@ LeadFormResponse::toJson()
 }
 
 std::string
-LeadFormResponse::getName()
+LeadFormResponse::getCompletionMessage()
 {
-	return name;
+	return completion_message;
 }
 
 void
-LeadFormResponse::setName(std::string  name)
+LeadFormResponse::setCompletionMessage(std::string  completion_message)
 {
-	this->name = name;
+	this->completion_message = completion_message;
 }
 
 std::string
-LeadFormResponse::getPrivacyPolicyLink()
+LeadFormResponse::getDisclosureLanguage()
 {
-	return privacy_policy_link;
+	return disclosure_language;
 }
 
 void
-LeadFormResponse::setPrivacyPolicyLink(std::string  privacy_policy_link)
+LeadFormResponse::setDisclosureLanguage(std::string  disclosure_language)
 {
-	this->privacy_policy_link = privacy_policy_link;
+	this->disclosure_language = disclosure_language;
 }
 
 bool
@@ -471,51 +471,15 @@ LeadFormResponse::setHasAcceptedTerms(bool  has_accepted_terms)
 }
 
 std::string
-LeadFormResponse::getCompletionMessage()
+LeadFormResponse::getName()
 {
-	return completion_message;
+	return name;
 }
 
 void
-LeadFormResponse::setCompletionMessage(std::string  completion_message)
+LeadFormResponse::setName(std::string  name)
 {
-	this->completion_message = completion_message;
-}
-
-LeadFormStatus
-LeadFormResponse::getStatus()
-{
-	return status;
-}
-
-void
-LeadFormResponse::setStatus(LeadFormStatus  status)
-{
-	this->status = status;
-}
-
-std::string
-LeadFormResponse::getDisclosureLanguage()
-{
-	return disclosure_language;
-}
-
-void
-LeadFormResponse::setDisclosureLanguage(std::string  disclosure_language)
-{
-	this->disclosure_language = disclosure_language;
-}
-
-std::list<LeadFormQuestion>
-LeadFormResponse::getQuestions()
-{
-	return questions;
-}
-
-void
-LeadFormResponse::setQuestions(std::list <LeadFormQuestion> questions)
-{
-	this->questions = questions;
+	this->name = name;
 }
 
 std::list<LeadFormCommon_policy_links_inner>
@@ -531,15 +495,39 @@ LeadFormResponse::setPolicyLinks(std::list <LeadFormCommon_policy_links_inner> p
 }
 
 std::string
-LeadFormResponse::getId()
+LeadFormResponse::getPrivacyPolicyLink()
 {
-	return id;
+	return privacy_policy_link;
 }
 
 void
-LeadFormResponse::setId(std::string  id)
+LeadFormResponse::setPrivacyPolicyLink(std::string  privacy_policy_link)
 {
-	this->id = id;
+	this->privacy_policy_link = privacy_policy_link;
+}
+
+std::list<LeadFormQuestion>
+LeadFormResponse::getQuestions()
+{
+	return questions;
+}
+
+void
+LeadFormResponse::setQuestions(std::list <LeadFormQuestion> questions)
+{
+	this->questions = questions;
+}
+
+LeadFormStatus
+LeadFormResponse::getStatus()
+{
+	return status;
+}
+
+void
+LeadFormResponse::setStatus(LeadFormStatus  status)
+{
+	this->status = status;
 }
 
 std::string
@@ -564,6 +552,18 @@ void
 LeadFormResponse::setCreatedTime(int  created_time)
 {
 	this->created_time = created_time;
+}
+
+std::string
+LeadFormResponse::getId()
+{
+	return id;
+}
+
+void
+LeadFormResponse::setId(std::string  id)
+{
+	this->id = id;
 }
 
 int

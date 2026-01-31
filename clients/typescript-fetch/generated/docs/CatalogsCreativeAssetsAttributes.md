@@ -6,17 +6,17 @@
 
 Name | Type
 ------------ | -------------
-`title` | string
-`description` | string
-`link` | string
-`iosDeepLink` | string
 `androidDeepLink` | string
-`googleProductCategory` | string
 `customLabel0` | string
 `customLabel1` | string
 `customLabel2` | string
 `customLabel3` | string
 `customLabel4` | string
+`description` | string
+`googleProductCategory` | string
+`iosDeepLink` | string
+`link` | string
+`title` | string
 `visibility` | string
 `imageLink` | string
 `videoLink` | string
@@ -28,17 +28,17 @@ import type { CatalogsCreativeAssetsAttributes } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "title": null,
-  "description": null,
-  "link": null,
-  "iosDeepLink": null,
   "androidDeepLink": null,
-  "googleProductCategory": null,
   "customLabel0": null,
   "customLabel1": null,
   "customLabel2": null,
   "customLabel3": null,
   "customLabel4": null,
+  "description": null,
+  "googleProductCategory": null,
+  "iosDeepLink": null,
+  "link": null,
+  "title": null,
   "visibility": null,
   "imageLink": https://scene.example.com/image/image_v2.jpg,
   "videoLink": https://scene.example.com/image/image_v2.mp4,

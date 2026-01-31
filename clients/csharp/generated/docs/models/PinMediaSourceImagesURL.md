@@ -1,12 +1,12 @@
 # Org.OpenAPITools.Model.PinMediaSourceImagesURL
-Multiple images urls-based media source
+Multiple URL-based images media source
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**List&lt;PinMediaSourceImagesURLItemsInner&gt;**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | 
-**SourceType** | **string** |  | [optional] 
+**Items** | [**List&lt;PinMediaSourceImagesURLItem&gt;**](PinMediaSourceImagesURLItem.md) | Array with image objects. | 
+**SourceType** | **string** | The source type of the media. | 
 **Index** | **int** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

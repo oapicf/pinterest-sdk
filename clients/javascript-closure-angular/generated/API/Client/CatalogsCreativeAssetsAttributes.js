@@ -6,46 +6,11 @@ goog.provide('API.Client.CatalogsCreativeAssetsAttributes');
 API.Client.CatalogsCreativeAssetsAttributes = function() {}
 
 /**
- * The name of the creative assets.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsAttributes.prototype.title;
-
-/**
- * Brief description of the creative assets.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsAttributes.prototype.description;
-
-/**
- * Link to the creative assets page.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsAttributes.prototype.link;
-
-/**
- * IOS deep link to the creative assets page.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsAttributes.prototype.iosDeepLink;
-
-/**
  * Link to the creative assets page.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsAttributes.prototype.androidDeepLink;
-
-/**
- * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsAttributes.prototype.googleProductCategory;
 
 /**
  * Custom grouping of creative assets.
@@ -81,6 +46,41 @@ API.Client.CatalogsCreativeAssetsAttributes.prototype.customLabel3;
  * @export
  */
 API.Client.CatalogsCreativeAssetsAttributes.prototype.customLabel4;
+
+/**
+ * Brief description of the creative assets.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsAttributes.prototype.description;
+
+/**
+ * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsAttributes.prototype.googleProductCategory;
+
+/**
+ * IOS deep link to the creative assets page.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsAttributes.prototype.iosDeepLink;
+
+/**
+ * Link to the creative assets page.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsAttributes.prototype.link;
+
+/**
+ * The name of the creative assets.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsAttributes.prototype.title;
 
 /**
  * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.

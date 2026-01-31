@@ -1,0 +1,146 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsItemValidationErrors"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsItemValidationErrors"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsItemValidationDetails = openapi_server.resourceTypes.CatalogsItemValidationDetails
+}
+resourceTypes {
+
+  CatalogsItemValidationErrors {
+    title = CatalogsItemValidationErrors
+    description = CatalogsItemValidationErrors
+    derivedFrom = Root
+    properties {
+        adult_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        adwords_format_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        availability_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        blocklisted_image_signature {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        description_missing {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        duplicate_products {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        image_link_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        image_link_length_too_long {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        image_link_missing {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        invalid_domain {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        item_main_image_download_failure {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        itemid_missing {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        link_format_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        link_length_too_long {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        list_price_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        max_items_per_item_group_exceeded {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        parse_line_error {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        pinjoin_content_unsafe {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        price_cannot_be_determined {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        price_missing {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        product_link_missing {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        product_price_invalid {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+        title_missing {
+          type = CatalogsItemValidationDetails
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsItemValidationErrors {
+    title = CatalogsItemValidationErrors
+    description = CatalogsItemValidationErrors
+    implements = openapi_server.resourceTypes.CatalogsItemValidationErrors
+
+  }
+}

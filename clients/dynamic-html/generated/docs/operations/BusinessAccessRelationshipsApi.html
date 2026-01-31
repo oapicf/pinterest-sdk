@@ -2,6 +2,87 @@
   <h2><a name=""></a></h2>
   <p>This is the  API</p>
 
+  <h2><a name="brandAccounts/create"></a>brandAccounts/create</h2>
+  <hr>
+  <p></p>
+  <p>Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="brand_accounts_create_200_response"><a href="">brand_accounts_create_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_hierarchy_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">business hierarchy node id</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">BrandAccountsCreateRequest</span>
+      <span class="param-type">BrandAccountsCreateRequest(BrandAccountsCreateRequest)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="brandAccounts/update"></a>brandAccounts/update</h2>
+  <hr>
+  <p></p>
+  <p>Update an existing Brand Account</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="brand_accounts_create_200_response"><a href="">brand_accounts_create_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_hierarchy_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">business hierarchy node id</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">brand_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a brand account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">BrandAccountsUpdateRequest</span>
+      <span class="param-type">BrandAccountsUpdateRequest(BrandAccountsUpdateRequest)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
   <h2><a name="deleteBusinessMembership"></a>deleteBusinessMembership</h2>
   <hr>
   <p></p>
@@ -129,6 +210,17 @@
       <span class="param-type">String</span>
       
       <p class="param-description">Unique identifier of the requesting business.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">fetch_system_users</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Fetches system users if True. Fetches regular user employees if False.</p>
       </li>
       <li class="parameter">
       
@@ -285,6 +377,52 @@
       <span class="param-type">String</span>
       
       <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+  </ul>
+  <h2><a name="systemUser/update"></a>systemUser/update</h2>
+  <hr>
+  <p></p>
+  <p>Update a system user information such as name.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/{business_id}/system_users/{system_user_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of the requesting business.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">system_user_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a system user.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">SystemUserUpdateRequest</span>
+      <span class="param-type">SystemUserUpdateRequest(SystemUserUpdateRequest)</span>
+      
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="update/businessMemberships"></a>update/businessMemberships</h2>

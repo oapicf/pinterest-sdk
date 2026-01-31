@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotionResponseElement;
+import org.openapitools.model.ProductGroupPromotion;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,15 +25,15 @@ import javax.annotation.Generated;
  * ProductGroupPromotionResponseItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionResponseItem {
 
-  private ProductGroupPromotionResponseElement data;
+  private ProductGroupPromotion data;
 
   @Valid
   private JsonNullable<List<@Valid Exception>> exceptions = JsonNullable.<List<@Valid Exception>>undefined();
 
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
     this.data = data;
     return this;
   }
@@ -45,11 +45,11 @@ public class ProductGroupPromotionResponseItem {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public ProductGroupPromotionResponseElement getData() {
+  public ProductGroupPromotion getData() {
     return data;
   }
 
-  public void setData(ProductGroupPromotionResponseElement data) {
+  public void setData(ProductGroupPromotion data) {
     this.data = data;
   }
 

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**values** | **List&lt;Gender&gt;** |  |  |
 |**negated** | **Boolean** |  |  [optional] |
+|**values** | **List&lt;Gender&gt;** |  |  |
 
 
 

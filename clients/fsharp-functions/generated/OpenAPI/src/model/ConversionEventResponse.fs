@@ -11,12 +11,12 @@ module ConversionEventResponse =
 
   [<CLIMutable>]
   type ConversionEventResponse = {
+    [<JsonProperty(PropertyName = "ad_account_id")>]
+    AdAccountId : string;
     [<JsonProperty(PropertyName = "conversion_event")>]
     ConversionEvent : ConversionTagType;
     [<JsonProperty(PropertyName = "conversion_tag_id")>]
     ConversionTagId : string;
-    [<JsonProperty(PropertyName = "ad_account_id")>]
-    AdAccountId : string;
     [<JsonProperty(PropertyName = "created_time")>]
     CreatedTime : int;
   }

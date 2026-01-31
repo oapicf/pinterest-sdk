@@ -7,10 +7,10 @@ An object containing the permissions a business member has on the asset.
 
 Name | Type
 ------------ | -------------
+`assetGroupInfo` | [AssetGroupBinding](AssetGroupBinding.md)
 `assetId` | string
 `assetType` | string
 `permissions` | Array&lt;string&gt;
-`assetGroupInfo` | [AssetGroupBinding](AssetGroupBinding.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { AssetIdPermissions } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "assetGroupInfo": null,
   "assetId": 549755885175,
   "assetType": AD_ACCOUNT,
   "permissions": ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
-  "assetGroupInfo": null,
 } satisfies AssetIdPermissions
 
 console.log(example)

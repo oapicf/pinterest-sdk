@@ -10,54 +10,30 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Object describing an item record */
-public struct ItemResponse: Codable, JSONEncodable, Hashable {
-
-    public static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
-    public var catalogType: CatalogsType
-    /** The catalog item id in the merchant namespace */
-    public var itemId: String?
-    /** The pins mapped to the item */
-    public var pins: [Pin]?
-    public var attributes: CatalogsCreativeAssetsAttributes?
-    /** The catalog hotel id in the merchant namespace */
-    public var hotelId: String?
-    /** The catalog creative assets id in the merchant namespace */
-    public var creativeAssetsId: String?
-    /** Array with the errors for the item id requested */
-    public var errors: [ItemValidationEvent]?
-
-    public init(catalogType: CatalogsType, itemId: String? = nil, pins: [Pin]? = nil, attributes: CatalogsCreativeAssetsAttributes? = nil, hotelId: String? = nil, creativeAssetsId: String? = nil, errors: [ItemValidationEvent]? = nil) {
-        self.catalogType = catalogType
-        self.itemId = itemId
-        self.pins = pins
-        self.attributes = attributes
-        self.hotelId = hotelId
-        self.creativeAssetsId = creativeAssetsId
-        self.errors = errors
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable {
-        case catalogType = "catalog_type"
-        case itemId = "item_id"
-        case pins
-        case attributes
-        case hotelId = "hotel_id"
-        case creativeAssetsId = "creative_assets_id"
-        case errors
-    }
-
-    // Encodable protocol methods
+/** Object describing an item record or error */
+public enum ItemResponse: Codable, JSONEncodable, Hashable {
+    case typeItemResponseOneOf(ItemResponseOneOf)
+    case typeItemResponseOneOf1(ItemResponseOneOf1)
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(catalogType, forKey: .catalogType)
-        try container.encodeIfPresent(itemId, forKey: .itemId)
-        try container.encodeIfPresent(pins, forKey: .pins)
-        try container.encodeIfPresent(attributes, forKey: .attributes)
-        try container.encodeIfPresent(hotelId, forKey: .hotelId)
-        try container.encodeIfPresent(creativeAssetsId, forKey: .creativeAssetsId)
-        try container.encodeIfPresent(errors, forKey: .errors)
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .typeItemResponseOneOf(let value):
+            try container.encode(value)
+        case .typeItemResponseOneOf1(let value):
+            try container.encode(value)
+        }
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(ItemResponseOneOf.self) {
+            self = .typeItemResponseOneOf(value)
+        } else if let value = try? container.decode(ItemResponseOneOf1.self) {
+            self = .typeItemResponseOneOf1(value)
+        } else {
+            throw DecodingError.typeMismatch(Self.Type.self, .init(codingPath: decoder.codingPath, debugDescription: "Unable to decode instance of ItemResponse"))
+        }
     }
 }
 

@@ -15,7 +15,7 @@
 
 typedef struct advanced_auction_processed_items_t advanced_auction_processed_items_t;
 
-#include "advanced_auction_processed_item.h"
+#include "advanced_auction_items_submit_record.h"
 
 
 

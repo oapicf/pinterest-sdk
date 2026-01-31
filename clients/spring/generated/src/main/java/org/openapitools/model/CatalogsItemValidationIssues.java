@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  * CatalogsItemValidationIssues
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationIssues {
 
-  private Integer itemNumber;
+  private CatalogsItemValidationErrors errors;
 
   private JsonNullable<String> itemId = JsonNullable.<String>undefined();
 
-  private CatalogsItemValidationErrors errors;
+  private Integer itemNumber;
 
   private CatalogsItemValidationWarnings warnings;
 
@@ -39,31 +39,31 @@ public class CatalogsItemValidationIssues {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsItemValidationIssues(Integer itemNumber, String itemId, CatalogsItemValidationErrors errors, CatalogsItemValidationWarnings warnings) {
-    this.itemNumber = itemNumber;
-    this.itemId = JsonNullable.of(itemId);
+  public CatalogsItemValidationIssues(CatalogsItemValidationErrors errors, String itemId, Integer itemNumber, CatalogsItemValidationWarnings warnings) {
     this.errors = errors;
+    this.itemId = JsonNullable.of(itemId);
+    this.itemNumber = itemNumber;
     this.warnings = warnings;
   }
 
-  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
     return this;
   }
 
   /**
-   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-   * @return itemNumber
+   * Get errors
+   * @return errors
    */
-  @NotNull 
-  @Schema(name = "item_number", example = "0", description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("item_number")
-  public Integer getItemNumber() {
-    return itemNumber;
+  @NotNull @Valid 
+  @Schema(name = "errors", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("errors")
+  public CatalogsItemValidationErrors getErrors() {
+    return errors;
   }
 
-  public void setItemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public void setErrors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
   }
 
   public CatalogsItemValidationIssues itemId(String itemId) {
@@ -86,24 +86,24 @@ public class CatalogsItemValidationIssues {
     this.itemId = itemId;
   }
 
-  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
     return this;
   }
 
   /**
-   * Get errors
-   * @return errors
+   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+   * @return itemNumber
    */
-  @NotNull @Valid 
-  @Schema(name = "errors", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("errors")
-  public CatalogsItemValidationErrors getErrors() {
-    return errors;
+  @NotNull 
+  @Schema(name = "item_number", example = "0", description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_number")
+  public Integer getItemNumber() {
+    return itemNumber;
   }
 
-  public void setErrors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public void setItemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
   }
 
   public CatalogsItemValidationIssues warnings(CatalogsItemValidationWarnings warnings) {
@@ -135,24 +135,24 @@ public class CatalogsItemValidationIssues {
       return false;
     }
     CatalogsItemValidationIssues catalogsItemValidationIssues = (CatalogsItemValidationIssues) o;
-    return Objects.equals(this.itemNumber, catalogsItemValidationIssues.itemNumber) &&
+    return Objects.equals(this.errors, catalogsItemValidationIssues.errors) &&
         Objects.equals(this.itemId, catalogsItemValidationIssues.itemId) &&
-        Objects.equals(this.errors, catalogsItemValidationIssues.errors) &&
+        Objects.equals(this.itemNumber, catalogsItemValidationIssues.itemNumber) &&
         Objects.equals(this.warnings, catalogsItemValidationIssues.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemNumber, itemId, errors, warnings);
+    return Objects.hash(errors, itemId, itemNumber, warnings);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemValidationIssues {\n");
-    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();

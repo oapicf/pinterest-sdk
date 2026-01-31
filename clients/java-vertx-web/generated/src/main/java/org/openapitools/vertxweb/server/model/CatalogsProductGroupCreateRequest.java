@@ -12,30 +12,21 @@ import org.openapitools.vertxweb.server.model.CatalogsProductGroupFiltersRequest
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupCreateRequest   {
   
-  private String name;
   private String description;
-  private Boolean isFeatured = false;
-  private CatalogsProductGroupFiltersRequest filters;
   private String feedId;
+  private CatalogsProductGroupFiltersRequest filters;
+  private Boolean isFeatured = false;
+  private String name;
 
   public CatalogsProductGroupCreateRequest () {
 
   }
 
-  public CatalogsProductGroupCreateRequest (String name, String description, Boolean isFeatured, CatalogsProductGroupFiltersRequest filters, String feedId) {
-    this.name = name;
+  public CatalogsProductGroupCreateRequest (String description, String feedId, CatalogsProductGroupFiltersRequest filters, Boolean isFeatured, String name) {
     this.description = description;
-    this.isFeatured = isFeatured;
-    this.filters = filters;
     this.feedId = feedId;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
+    this.filters = filters;
+    this.isFeatured = isFeatured;
     this.name = name;
   }
 
@@ -49,12 +40,12 @@ public class CatalogsProductGroupCreateRequest   {
   }
 
     
-  @JsonProperty("is_featured")
-  public Boolean getIsFeatured() {
-    return isFeatured;
+  @JsonProperty("feed_id")
+  public String getFeedId() {
+    return feedId;
   }
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
   }
 
     
@@ -67,12 +58,21 @@ public class CatalogsProductGroupCreateRequest   {
   }
 
     
-  @JsonProperty("feed_id")
-  public String getFeedId() {
-    return feedId;
+  @JsonProperty("is_featured")
+  public Boolean getIsFeatured() {
+    return isFeatured;
   }
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -85,16 +85,16 @@ public class CatalogsProductGroupCreateRequest   {
       return false;
     }
     CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest = (CatalogsProductGroupCreateRequest) o;
-    return Objects.equals(name, catalogsProductGroupCreateRequest.name) &&
-        Objects.equals(description, catalogsProductGroupCreateRequest.description) &&
-        Objects.equals(isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+    return Objects.equals(description, catalogsProductGroupCreateRequest.description) &&
+        Objects.equals(feedId, catalogsProductGroupCreateRequest.feedId) &&
         Objects.equals(filters, catalogsProductGroupCreateRequest.filters) &&
-        Objects.equals(feedId, catalogsProductGroupCreateRequest.feedId);
+        Objects.equals(isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+        Objects.equals(name, catalogsProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -102,11 +102,11 @@ public class CatalogsProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCreateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

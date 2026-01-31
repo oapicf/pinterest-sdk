@@ -37,6 +37,9 @@ open class ResourcesAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - returns: RequestBuilder<AdAccountsCountryResponse> 
      */
     open class func adAccountCountriesGetWithRequestBuilder() -> RequestBuilder<AdAccountsCountryResponse> {
@@ -91,6 +94,9 @@ open class ResourcesAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter reportType: (query) Report type. (optional)
      - returns: RequestBuilder<DeliveryMetricsResponse> 
      */
@@ -141,6 +147,9 @@ open class ResourcesAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter interestId: (path) Unique identifier of an interest. 
      - returns: RequestBuilder<SingleInterestTargetingOptionResponse> 
      */
@@ -186,7 +195,7 @@ open class ResourcesAPI {
     /**
      Get lead form questions
      - GET /resources/lead_form_questions
-     - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -306,6 +315,9 @@ open class ResourcesAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter targetingType: (path) Public targeting type. 
      - parameter clientId: (query) Client ID. (optional)
      - parameter oauthSignature: (query) Oauth signature (optional)

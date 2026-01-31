@@ -5,16 +5,16 @@
 -export_type([openapi_pin_analytics_metrics_response/0]).
 
 -type openapi_pin_analytics_metrics_response() ::
-    #{ 'lifetime_metrics' => maps:map(),
-       'daily_metrics' => list(),
+    #{ 'daily_metrics' => list(),
+       'lifetime_metrics' => maps:map(),
        'summary_metrics' => maps:map()
      }.
 
-encode(#{ 'lifetime_metrics' := LifetimeMetrics,
-          'daily_metrics' := DailyMetrics,
+encode(#{ 'daily_metrics' := DailyMetrics,
+          'lifetime_metrics' := LifetimeMetrics,
           'summary_metrics' := SummaryMetrics
         }) ->
-    #{ 'lifetime_metrics' => LifetimeMetrics,
-       'daily_metrics' => DailyMetrics,
+    #{ 'daily_metrics' => DailyMetrics,
+       'lifetime_metrics' => LifetimeMetrics,
        'summary_metrics' => SummaryMetrics
      }.

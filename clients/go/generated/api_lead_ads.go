@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -39,9 +39,7 @@ func (r ApiAdAccountsSubscriptionsDelByIdRequest) Execute() (*http.Response, err
 AdAccountsSubscriptionsDelById Delete lead ads subscription
 
 Delete an existing lead ads webhook subscription by ID.
-- Only requests for the OWNER or ADMIN of the ad_account will be allowed.
-
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -121,7 +119,18 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsDelByIdExecute(r ApiAdAccount
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -132,7 +141,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsDelByIdExecute(r ApiAdAccount
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +152,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsDelByIdExecute(r ApiAdAccount
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +162,18 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsDelByIdExecute(r ApiAdAccount
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,17 +194,15 @@ type ApiAdAccountsSubscriptionsGetByIdRequest struct {
 	subscriptionId string
 }
 
-func (r ApiAdAccountsSubscriptionsGetByIdRequest) Execute() (*AdAccountGetSubscriptionResponse, *http.Response, error) {
+func (r ApiAdAccountsSubscriptionsGetByIdRequest) Execute() (*LeadSubscription, *http.Response, error) {
 	return r.ApiService.AdAccountsSubscriptionsGetByIdExecute(r)
 }
 
 /*
-AdAccountsSubscriptionsGetById Get lead ads subscription
+AdAccountsSubscriptionsGetById Get lead ads subscription by ID
 
-Get a specific lead ads subscription record.
-- Only requests for the OWNER or ADMIN of the ad_account will be allowed.
-
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get an existing lead ads webhook subscription by ID.
+  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -201,13 +219,13 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetById(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return AdAccountGetSubscriptionResponse
-func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetByIdExecute(r ApiAdAccountsSubscriptionsGetByIdRequest) (*AdAccountGetSubscriptionResponse, *http.Response, error) {
+//  @return LeadSubscription
+func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetByIdExecute(r ApiAdAccountsSubscriptionsGetByIdRequest) (*LeadSubscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AdAccountGetSubscriptionResponse
+		localVarReturnValue  *LeadSubscription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadAdsAPIService.AdAccountsSubscriptionsGetById")
@@ -266,7 +284,18 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetByIdExecute(r ApiAdAccount
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -277,7 +306,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetByIdExecute(r ApiAdAccount
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -288,7 +317,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetByIdExecute(r ApiAdAccount
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -298,7 +327,18 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetByIdExecute(r ApiAdAccount
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,19 +365,19 @@ type ApiAdAccountsSubscriptionsGetListRequest struct {
 	ctx context.Context
 	ApiService *LeadAdsAPIService
 	adAccountId string
-	pageSize *int32
 	bookmark *string
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiAdAccountsSubscriptionsGetListRequest) PageSize(pageSize int32) ApiAdAccountsSubscriptionsGetListRequest {
-	r.pageSize = &pageSize
-	return r
+	pageSize *int32
 }
 
 // Cursor used to fetch the next page of items
 func (r ApiAdAccountsSubscriptionsGetListRequest) Bookmark(bookmark string) ApiAdAccountsSubscriptionsGetListRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiAdAccountsSubscriptionsGetListRequest) PageSize(pageSize int32) ApiAdAccountsSubscriptionsGetListRequest {
+	r.pageSize = &pageSize
 	return r
 }
 
@@ -348,10 +388,7 @@ func (r ApiAdAccountsSubscriptionsGetListRequest) Execute() (*AdAccountsSubscrip
 /*
 AdAccountsSubscriptionsGetList Get lead ads subscriptions
 
-Get the advertiser's list of lead ads subscriptions.
-- Only requests for the OWNER or ADMIN of the ad_account will be allowed.
-
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -390,15 +427,15 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetListExecute(r ApiAdAccount
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
         var defaultValue int32 = 25
         parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
         r.pageSize = &defaultValue
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -439,8 +476,8 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetListExecute(r ApiAdAccount
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -450,7 +487,51 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetListExecute(r ApiAdAccount
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -477,16 +558,15 @@ type ApiAdAccountsSubscriptionsPostRequest struct {
 	ctx context.Context
 	ApiService *LeadAdsAPIService
 	adAccountId string
-	adAccountCreateSubscriptionRequest *AdAccountCreateSubscriptionRequest
+	leadSubscriptionPostParamsCreate *LeadSubscriptionPostParamsCreate
 }
 
-// Subscription to create.
-func (r ApiAdAccountsSubscriptionsPostRequest) AdAccountCreateSubscriptionRequest(adAccountCreateSubscriptionRequest AdAccountCreateSubscriptionRequest) ApiAdAccountsSubscriptionsPostRequest {
-	r.adAccountCreateSubscriptionRequest = &adAccountCreateSubscriptionRequest
+func (r ApiAdAccountsSubscriptionsPostRequest) LeadSubscriptionPostParamsCreate(leadSubscriptionPostParamsCreate LeadSubscriptionPostParamsCreate) ApiAdAccountsSubscriptionsPostRequest {
+	r.leadSubscriptionPostParamsCreate = &leadSubscriptionPostParamsCreate
 	return r
 }
 
-func (r ApiAdAccountsSubscriptionsPostRequest) Execute() (*AdAccountCreateSubscriptionResponse, *http.Response, error) {
+func (r ApiAdAccountsSubscriptionsPostRequest) Execute() (*LeadSubscription, *http.Response, error) {
 	return r.ApiService.AdAccountsSubscriptionsPostExecute(r)
 }
 
@@ -495,11 +575,9 @@ AdAccountsSubscriptionsPost Create lead ads subscription
 
 Create a lead ads webhook subscription.
 Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.
-- Only requests for the OWNER or ADMIN of the ad_account will be allowed.
-- Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.
-- For data security, egress lead data is encrypted with AES-256-GCM.
-
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
+  - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.
+  - For data security, egress lead data is encrypted with AES-256-GCM.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -514,13 +592,13 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsPost(ctx context.Context, adA
 }
 
 // Execute executes the request
-//  @return AdAccountCreateSubscriptionResponse
-func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSubscriptionsPostRequest) (*AdAccountCreateSubscriptionResponse, *http.Response, error) {
+//  @return LeadSubscription
+func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSubscriptionsPostRequest) (*LeadSubscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AdAccountCreateSubscriptionResponse
+		localVarReturnValue  *LeadSubscription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadAdsAPIService.AdAccountsSubscriptionsPost")
@@ -537,8 +615,8 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSu
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.adAccountCreateSubscriptionRequest == nil {
-		return localVarReturnValue, nil, reportError("adAccountCreateSubscriptionRequest is required and must be specified")
+	if r.leadSubscriptionPostParamsCreate == nil {
+		return localVarReturnValue, nil, reportError("leadSubscriptionPostParamsCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -559,7 +637,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.adAccountCreateSubscriptionRequest
+	localVarPostBody = r.leadSubscriptionPostParamsCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -583,7 +661,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -594,7 +672,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -604,7 +682,7 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsPostExecute(r ApiAdAccountsSu
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

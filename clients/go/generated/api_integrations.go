@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -315,6 +315,9 @@ func (a *IntegrationsAPIService) IntegrationsCommercePatchExecute(r ApiIntegrati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.integrationRequestPatch == nil {
+		return localVarReturnValue, nil, reportError("integrationRequestPatch is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -454,6 +457,9 @@ func (a *IntegrationsAPIService) IntegrationsCommercePostExecute(r ApiIntegratio
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.integrationRequest == nil {
+		return localVarReturnValue, nil, reportError("integrationRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -894,7 +900,7 @@ func (a *IntegrationsAPIService) IntegrationsLogsPostExecute(r ApiIntegrationsLo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v DetailedError
+			var v IntegrationsLogsPost400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -8,8 +8,8 @@
 
 (def audiences-list-200-response-data
   {
-   (ds/req :items) (s/coll-of audience-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of audience-spec)
    })
 
 (def audiences-list-200-response-spec

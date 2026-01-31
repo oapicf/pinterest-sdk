@@ -6,13 +6,14 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.ConversionEventResponse;
+import com.prokarma.pkmst.model.ConversionTag;
 import com.prokarma.pkmst.model.ConversionTagCreate;
-import com.prokarma.pkmst.model.ConversionTagListResponse;
-import com.prokarma.pkmst.model.ConversionTagResponse;
+import com.prokarma.pkmst.model.ConversionTagsList200Response;
 import com.prokarma.pkmst.model.Error;
 import java.util.List;
 import java.util.Map;
 import com.prokarma.pkmst.model.PageVisitConversionTagsGet200Response;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -26,58 +27,75 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "ConversionTags", description = "the ConversionTags API")
 public interface ConversionTagsApi {
 
-    @ApiOperation(value = "Create conversion tag", notes = "Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>", response = ConversionTagResponse.class, authorizations = {
+    @ApiOperation(value = "Create conversion tag", notes = "Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)", response = ConversionTag.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTagResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionTag.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = ConversionTag.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/ad_accounts/{ad_account_id}/conversion_tags",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<ConversionTagResponse> conversionTagsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Conversion Tag to create" ,required=true )   @RequestBody ConversionTagCreate conversionTagCreate, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<ConversionTag> conversionTagsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true )   @RequestBody ConversionTagCreate conversionTagCreate, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get conversion tag", notes = "Get information about an existing conversion tag.", response = ConversionTagResponse.class, authorizations = {
+    @ApiOperation(value = "Get conversion tag", notes = "Get information about an existing conversion tag.", response = ConversionTag.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTagResponse.class),
+        @ApiResponse(code = 200, message = "Success", response = ConversionTag.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}",
         produces = { "application/json" }
     )
-    ResponseEntity<ConversionTagResponse> conversionTagsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Id of the conversion tag.",required=true ) @PathVariable("conversion_tag_id") String conversionTagId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<ConversionTag> conversionTagsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Id of the conversion tag.",required=true ) @PathVariable("conversion_tag_id") String conversionTagId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get conversion tags", notes = "List conversion tags associated with an ad account.", response = ConversionTagListResponse.class, authorizations = {
+    @ApiOperation(value = "List conversion tags", notes = "List conversion tags associated with an ad account.", response = ConversionTagsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTagListResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionTagsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/ad_accounts/{ad_account_id}/conversion_tags",
         produces = { "application/json" }
     )
-    ResponseEntity<ConversionTagListResponse> conversionTagsList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Filter out deleted tags.", defaultValue = "false")  @RequestParam(value = "filter_deleted", required = false, defaultValue="false") Boolean filterDeleted, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<ConversionTagsList200Response> conversionTagsList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Filter by deleted status", defaultValue = "false")  @RequestParam(value = "filter_deleted", required = false, defaultValue="false") Boolean filterDeleted, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Get Ocpm eligible conversion tags", notes = "Get Ocpm eligible conversion tag events for an ad account.", response = List<ConversionEventResponse>.class, responseContainer = "Map", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags", })
     @ApiResponses(value = { 
@@ -93,6 +111,8 @@ public interface ConversionTagsApi {
 
     @ApiOperation(value = "Get page visit conversion tags", notes = "Get all page visit conversion tag events for an ad account.", response = PageVisitConversionTagsGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags", })
     @ApiResponses(value = { 

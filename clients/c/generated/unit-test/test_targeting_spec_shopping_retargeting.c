@@ -22,15 +22,15 @@ targeting_spec_shopping_retargeting_t* instantiate_targeting_spec_shopping_retar
   targeting_spec_shopping_retargeting_t* targeting_spec_shopping_retargeting = NULL;
   if (include_optional) {
     targeting_spec_shopping_retargeting = targeting_spec_shopping_retargeting_create(
+      14,
       30,
-      [0,6],
-      14
+      [0,6]
     );
   } else {
     targeting_spec_shopping_retargeting = targeting_spec_shopping_retargeting_create(
+      14,
       30,
-      [0,6],
-      14
+      [0,6]
     );
   }
 

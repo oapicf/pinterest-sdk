@@ -1,9 +1,9 @@
 package controllers;
 
 import apimodels.Error;
-import apimodels.PinsList200Response;
 import apimodels.SearchPartnerPins200Response;
 import apimodels.SearchUserBoardsGet200Response;
+import apimodels.SearchUserPinsList200Response;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -27,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SearchApiController extends Controller {
     private final SearchApiControllerImpInterface imp;
     private final ObjectMapper mapper;

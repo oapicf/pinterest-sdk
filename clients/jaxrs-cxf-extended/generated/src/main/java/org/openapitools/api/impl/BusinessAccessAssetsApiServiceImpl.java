@@ -87,7 +87,7 @@ public class BusinessAccessAssetsApiServiceImpl implements BusinessAccessAssetsA
      *
      */
     @Override
-    public BusinessAssetMembersGet200Response businessAssetMembersGet(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex) {
+    public BusinessAssetMembersGet200Response businessAssetMembersGet(String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex) {
         // TODO: Implement...
         return null;
     }

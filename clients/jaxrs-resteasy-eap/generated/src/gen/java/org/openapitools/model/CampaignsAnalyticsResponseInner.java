@@ -14,19 +14,18 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignsAnalyticsResponseInner extends HashMap<String, Object>  {
   
   private String CAMPAIGN_ID;
   private Date DATE;
 
   /**
-   * The ID of the campaing that this metrics belongs to.
+   * The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    **/
   
-  @ApiModelProperty(required = true, value = "The ID of the campaing that this metrics belongs to.")
+  @ApiModelProperty(value = "The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
   @JsonProperty("CAMPAIGN_ID")
-  @NotNull
  @Pattern(regexp="^\\d+$")  public String getCAMPAIGNID() {
     return CAMPAIGN_ID;
   }

@@ -199,6 +199,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) businessAssetMembersGetWithBusinessId: (NSString*) businessId
     assetId: (NSString*) assetId
+    fetchSystemUsers: (NSNumber*) fetchSystemUsers
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
     startIndex: (NSNumber*) startIndex
@@ -219,6 +220,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
 NSString* assetId = 729090764583391194; // Unique identifier of a business asset.
+NSNumber* fetchSystemUsers = @(NO); // Fetches system users if True. Fetches regular user employees if False. (optional) (default to @(NO))
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
 NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
@@ -228,6 +230,7 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 // Get members with access to asset
 [apiInstance businessAssetMembersGetWithBusinessId:businessId
               assetId:assetId
+              fetchSystemUsers:fetchSystemUsers
               bookmark:bookmark
               pageSize:pageSize
               startIndex:startIndex
@@ -247,6 +250,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **assetId** | **NSString***| Unique identifier of a business asset. | 
+ **fetchSystemUsers** | **NSNumber***| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to @(NO)]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
  **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]

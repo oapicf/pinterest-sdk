@@ -11,12 +11,12 @@ module KeywordUpdate =
 
   [<CLIMutable>]
   type KeywordUpdate = {
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
     [<JsonProperty(PropertyName = "archived")>]
     Archived : bool;
     [<JsonProperty(PropertyName = "bid")>]
     Bid : int option;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
   }
 
   //#endregion

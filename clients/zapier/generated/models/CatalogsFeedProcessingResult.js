@@ -3,6 +3,7 @@ const CatalogsFeedIngestionDetails = require('../models/CatalogsFeedIngestionDet
 const CatalogsFeedProcessingStatus = require('../models/CatalogsFeedProcessingStatus');
 const CatalogsFeedProductCounts = require('../models/CatalogsFeedProductCounts');
 const CatalogsFeedValidationDetails = require('../models/CatalogsFeedValidationDetails');
+const CatalogsFeedVideoCounts = require('../models/CatalogsFeedVideoCounts');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -27,12 +28,13 @@ module.exports = {
                 type: 'string',
             },
             ...CatalogsFeedIngestionDetails.fields(`${keyPrefix}ingestion_details`, isInput),
+            ...CatalogsFeedProductCounts.fields(`${keyPrefix}product_counts`, isInput),
             {
                 key: `${keyPrefix}status`,
                 ...CatalogsFeedProcessingStatus.fields(`${keyPrefix}status`, isInput),
             },
-            ...CatalogsFeedProductCounts.fields(`${keyPrefix}product_counts`, isInput),
             ...CatalogsFeedValidationDetails.fields(`${keyPrefix}validation_details`, isInput),
+            ...CatalogsFeedVideoCounts.fields(`${keyPrefix}video_counts`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -42,9 +44,10 @@ module.exports = {
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
             'ingestion_details': utils.removeIfEmpty(CatalogsFeedIngestionDetails.mapping(bundle, `${keyPrefix}ingestion_details`)),
-            'status': bundle.inputData?.[`${keyPrefix}status`],
             'product_counts': utils.removeIfEmpty(CatalogsFeedProductCounts.mapping(bundle, `${keyPrefix}product_counts`)),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
             'validation_details': utils.removeIfEmpty(CatalogsFeedValidationDetails.mapping(bundle, `${keyPrefix}validation_details`)),
+            'video_counts': utils.removeIfEmpty(CatalogsFeedVideoCounts.mapping(bundle, `${keyPrefix}video_counts`)),
         }
     },
 }

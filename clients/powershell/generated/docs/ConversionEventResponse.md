@@ -3,18 +3,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdAccountId** | **String** | Id of the ad account. | [optional] 
 **ConversionEvent** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] 
 **ConversionTagId** | **String** | Id of the tag. | [optional] 
-**AdAccountId** | **String** | Id of the ad account. | [optional] 
 **CreatedTime** | **Int32** | Creation date in epoch format. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ConversionEventResponse = Initialize-PSOpenAPIToolsConversionEventResponse  -ConversionEvent null `
+$ConversionEventResponse = Initialize-PSOpenAPIToolsConversionEventResponse  -AdAccountId 549757463328 `
+ -ConversionEvent null `
  -ConversionTagId 2614324385652 `
- -AdAccountId 549757463328 `
  -CreatedTime 1564768710
 ```
 

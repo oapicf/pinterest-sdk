@@ -20,71 +20,57 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object for creating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object for creating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest   {
   
-  private NullableCurrency defaultCurrency;
-  private String name;
-  private CatalogsFormat format;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
-  private Country defaultCountry;
-  private CatalogsFeedCredentials credentials;
-  private String location;
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsType catalogType;
   private String catalogId;
+  private CatalogsType catalogType;
+  private CatalogsFeedCredentials credentials;
+  private Country defaultCountry;
+  private NullableCurrency defaultCurrency;
+  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsFormat format;
+  private String location;
+  private String name;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status = "ACTIVE";
+
+  /**
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+   **/
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
   
   @ApiModelProperty(value = "")
-  @JsonProperty("default_currency")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
   }
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  /**
-   * A human-friendly name associated to a given feed.
-   **/
-  
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("format")
-  @NotNull
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("default_locale")
-  @NotNull
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
-    return defaultLocale;
-  }
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
-    this.defaultLocale = defaultLocale;
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
   }
 
   /**
@@ -104,12 +90,38 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
    **/
   
   @ApiModelProperty(value = "")
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
+  @JsonProperty("default_currency")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
   }
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("default_locale")
+  @NotNull
+  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+    return defaultLocale;
+  }
+  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+    this.defaultLocale = defaultLocale;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("format")
+  @NotNull
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
   }
 
   /**
@@ -127,6 +139,20 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   }
 
   /**
+   * A human-friendly name associated to a given feed.
+   **/
+  
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+  @JsonProperty("name")
+  @NotNull
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
    **/
   
   @ApiModelProperty(value = "")
@@ -136,32 +162,6 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   }
   public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
-   **/
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
   }
 
   /**
@@ -186,22 +186,22 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
       return false;
     }
     CatalogsCreativeAssetsFeedsCreateRequest catalogsCreativeAssetsFeedsCreateRequest = (CatalogsCreativeAssetsFeedsCreateRequest) o;
-    return Objects.equals(this.defaultCurrency, catalogsCreativeAssetsFeedsCreateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsCreativeAssetsFeedsCreateRequest.name) &&
-        Objects.equals(this.format, catalogsCreativeAssetsFeedsCreateRequest.format) &&
-        Objects.equals(this.defaultLocale, catalogsCreativeAssetsFeedsCreateRequest.defaultLocale) &&
-        Objects.equals(this.defaultCountry, catalogsCreativeAssetsFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.credentials, catalogsCreativeAssetsFeedsCreateRequest.credentials) &&
-        Objects.equals(this.location, catalogsCreativeAssetsFeedsCreateRequest.location) &&
-        Objects.equals(this.preferredProcessingSchedule, catalogsCreativeAssetsFeedsCreateRequest.preferredProcessingSchedule) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsFeedsCreateRequest.catalogId) &&
         Objects.equals(this.catalogType, catalogsCreativeAssetsFeedsCreateRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsFeedsCreateRequest.catalogId) &&
+        Objects.equals(this.credentials, catalogsCreativeAssetsFeedsCreateRequest.credentials) &&
+        Objects.equals(this.defaultCountry, catalogsCreativeAssetsFeedsCreateRequest.defaultCountry) &&
+        Objects.equals(this.defaultCurrency, catalogsCreativeAssetsFeedsCreateRequest.defaultCurrency) &&
+        Objects.equals(this.defaultLocale, catalogsCreativeAssetsFeedsCreateRequest.defaultLocale) &&
+        Objects.equals(this.format, catalogsCreativeAssetsFeedsCreateRequest.format) &&
+        Objects.equals(this.location, catalogsCreativeAssetsFeedsCreateRequest.location) &&
+        Objects.equals(this.name, catalogsCreativeAssetsFeedsCreateRequest.name) &&
+        Objects.equals(this.preferredProcessingSchedule, catalogsCreativeAssetsFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.status, catalogsCreativeAssetsFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, defaultCountry, credentials, location, preferredProcessingSchedule, catalogType, catalogId, status);
+    return Objects.hash(catalogId, catalogType, credentials, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -209,16 +209,16 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsFeedsCreateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

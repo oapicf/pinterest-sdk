@@ -1,8 +1,8 @@
 const samples = require('../samples/SearchApi');
 const Error = require('../models/Error');
-const pins_list_200_response = require('../models/pins_list_200_response');
 const search_partner_pins_200_response = require('../models/search_partner_pins_200_response');
 const search_user_boards_get_200_response = require('../models/search_user_boards_get_200_response');
+const search_user_pins_list_200_response = require('../models/search_user_pins_list_200_response');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
         noun: 'search',
         display: {
             label: 'Search pins by a given search term',
-            description: '&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.',
+            description: '&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.',
             hidden: false,
         },
         operation: {
@@ -164,7 +164,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...pins_list_200_response.fields('', false),
+                ...search_user_pins_list_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -189,7 +189,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['pins_list_200_responseSample']
+            sample: samples['search_user_pins_list_200_responseSample']
         }
     },
 }

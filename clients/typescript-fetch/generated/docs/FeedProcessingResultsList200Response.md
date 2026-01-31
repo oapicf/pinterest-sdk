@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;CatalogsFeedProcessingResult&gt;](CatalogsFeedProcessingResult.md)
 `bookmark` | string
+`items` | [Array&lt;CatalogsFeedProcessingResult&gt;](CatalogsFeedProcessingResult.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { FeedProcessingResultsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies FeedProcessingResultsList200Response
 
 console.log(example)

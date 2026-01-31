@@ -12,24 +12,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="The absolute date range of the template")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="The absolute date range of the template")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeAbsoluteDateRange   {
   
-  private String type;
-  private BigDecimal startDate;
   private BigDecimal endDate;
+  private BigDecimal startDate;
+  private String type;
 
   /**
-   * The date range type
+   * The end date of the date range
    **/
   
-  @ApiModelProperty(example = "absolute", value = "The date range type")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
+  @JsonProperty("end_date")
+  @Valid
+  public BigDecimal getEndDate() {
+    return endDate;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setEndDate(BigDecimal endDate) {
+    this.endDate = endDate;
   }
 
   /**
@@ -47,17 +48,16 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
   }
 
   /**
-   * The end date of the date range
+   * The date range type
    **/
   
-  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
-  @JsonProperty("end_date")
-  @Valid
-  public BigDecimal getEndDate() {
-    return endDate;
+  @ApiModelProperty(example = "absolute", value = "The date range type")
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
-  public void setEndDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -70,14 +70,14 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
       return false;
     }
     TemplateResponseDateRangeAbsoluteDateRange templateResponseDateRangeAbsoluteDateRange = (TemplateResponseDateRangeAbsoluteDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type) &&
+    return Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate) &&
         Objects.equals(this.startDate, templateResponseDateRangeAbsoluteDateRange.startDate) &&
-        Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate);
+        Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDate, endDate);
+    return Objects.hash(endDate, startDate, type);
   }
 
   @Override
@@ -85,9 +85,9 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeAbsoluteDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

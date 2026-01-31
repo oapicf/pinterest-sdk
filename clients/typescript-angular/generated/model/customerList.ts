@@ -19,6 +19,10 @@ export interface CustomerList {
      */
     created_time?: number;
     /**
+     * Customer list errors
+     */
+    exceptions?: object;
+    /**
      * Customer list ID.
      */
     id?: string;
@@ -50,10 +54,6 @@ export interface CustomerList {
      * Last update time. Unix timestamp in seconds.
      */
     updated_time?: number;
-    /**
-     * Customer list errors
-     */
-    exceptions?: object;
 }
 export namespace CustomerList {
     export const StatusEnum = {

@@ -19,6 +19,7 @@ import org.openapitools.client.models.AdvancedAuctionBidOptions
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitDeleteRecord
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitUpsertRecord
 import org.openapitools.client.models.AdvancedAuctionOperation
+import org.openapitools.client.models.AdvancedAuctionOperationError
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.Language
 import org.openapitools.client.models.UpdateMaskBidOptionField
@@ -29,11 +30,12 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing an item bid option operation
  *
- * @param itemId The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
  * @param bidOptions 
  * @param updateMask The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
+ * @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
  */
 
 
@@ -41,11 +43,11 @@ interface AdvancedAuctionItemsSubmitRecord {
 
     @Json(name = "operation")
     val operation: AdvancedAuctionOperation
+    @Json(name = "country")
+    val country: Country
     /* The catalog retail item id in the merchant namespace */
     @Json(name = "item_id")
     val itemId: kotlin.String
-    @Json(name = "country")
-    val country: Country
     @Json(name = "language")
     val language: Language
     @Json(name = "bid_options")
@@ -53,6 +55,9 @@ interface AdvancedAuctionItemsSubmitRecord {
     /* The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`. */
     @Json(name = "update_mask")
     val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>?
+    /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
+    @Json(name = "errors")
+    val errors: kotlin.collections.List<AdvancedAuctionOperationError>?
 
 }
 

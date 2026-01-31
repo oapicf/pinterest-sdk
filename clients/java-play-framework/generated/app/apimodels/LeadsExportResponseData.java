@@ -11,34 +11,17 @@ import javax.validation.Valid;
 /**
  * LeadsExportResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LeadsExportResponseData   {
-  @JsonProperty("export_status")
-  @Valid
-
-  private LeadsExportStatus exportStatus;
-
   @JsonProperty("download_url")
   
   private String downloadUrl;
 
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-    return this;
-  }
+  @JsonProperty("export_status")
+  @Valid
 
-   /**
-   * Get exportStatus
-   * @return exportStatus
-  **/
-  public LeadsExportStatus getExportStatus() {
-    return exportStatus;
-  }
-
-  public void setExportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-  }
+  private LeadsExportStatus exportStatus;
 
   public LeadsExportResponseData downloadUrl(String downloadUrl) {
     this.downloadUrl = downloadUrl;
@@ -57,6 +40,23 @@ public class LeadsExportResponseData   {
     this.downloadUrl = downloadUrl;
   }
 
+  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+    return this;
+  }
+
+   /**
+   * Get exportStatus
+   * @return exportStatus
+  **/
+  public LeadsExportStatus getExportStatus() {
+    return exportStatus;
+  }
+
+  public void setExportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -67,13 +67,13 @@ public class LeadsExportResponseData   {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(exportStatus, leadsExportResponseData.exportStatus) &&
-        Objects.equals(downloadUrl, leadsExportResponseData.downloadUrl);
+    return Objects.equals(downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(exportStatus, leadsExportResponseData.exportStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, downloadUrl);
+    return Objects.hash(downloadUrl, exportStatus);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -82,8 +82,8 @@ public class LeadsExportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
     
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,18 +12,18 @@ import org.joda.time.DateTime
 import IntegrationRequestPatch._
 
 case class IntegrationRequestPatch (
-  connectedMerchantId: Option[String],
+  additionalId1: Option[String],
 connectedAdvertiserId: Option[String],
 connectedLbaId: Option[String],
+connectedMerchantId: Option[String],
 connectedTagId: Option[String],
 partnerAccessToken: Option[String],
-partnerRefreshToken: Option[String],
-partnerPrimaryEmail: Option[String],
 partnerAccessTokenExpiry: Option[BigDecimal],
+partnerMetadata: Option[String],
+partnerPrimaryEmail: Option[String],
+partnerRefreshToken: Option[String],
 partnerRefreshTokenExpiry: Option[BigDecimal],
-scopes: Option[String],
-additionalId1: Option[String],
-partnerMetadata: Option[String])
+scopes: Option[String])
 
 object IntegrationRequestPatch {
   import DateTimeCodecs._

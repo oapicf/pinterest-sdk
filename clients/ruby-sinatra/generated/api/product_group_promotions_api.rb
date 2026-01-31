@@ -33,7 +33,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/product_group_promotions
   "resourcePath" => "/ProductGroupPromotions",
   "summary" => "Get a product group promotion by id",
   "nickname" => "product_group_promotions/get",
-  "responseClass" => "ProductGroupPromotionResponse",
+  "responseClass" => "ProductGroupPromotion",
   "endpoint" => "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}",
   "notes" => "Get a product group promotion by id",
   "parameters" => [
@@ -156,7 +156,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/product_groups/analytics
   "nickname" => "product_groups/analytics",
   "responseClass" => "Array<ProductGroupAnalyticsResponse_inner>",
   "endpoint" => "/ad_accounts/{ad_account_id}/product_groups/analytics",
-  "notes" => "Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+  "notes" => "Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
   "parameters" => [
     {
       "name" => "start_date",
@@ -203,7 +203,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/product_groups/analytics
     },
     {
       "name" => "engagement_window_days",
-      "description" => "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.",
+      "description" => "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.",
       "dataType" => "Integer",
       "allowableValues" => "[0, 1, 7, 14, 30, 60]",
       "defaultValue" => "30",
@@ -223,6 +223,13 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/product_groups/analytics
       "dataType" => "String",
       "allowableValues" => "[TIME_OF_AD_ACTION, TIME_OF_CONVERSION]",
       "defaultValue" => "'TIME_OF_AD_ACTION'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "reporting_timezone",
+      "description" => "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.",
+      "dataType" => "ReportingTimeZone",
+      "allowableValues" => "[PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE]",
       "paramType" => "query",
     },
     {

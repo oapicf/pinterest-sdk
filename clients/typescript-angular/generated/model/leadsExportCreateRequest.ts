@@ -11,16 +11,16 @@
 
 export interface LeadsExportCreateRequest { 
     /**
-     * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+     * ID for the ad collecting leads
      */
-    start_date: string;
+    ad_id: string;
     /**
      * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
      */
     end_date: string;
     /**
-     * ID for the ad collecting leads
+     * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
      */
-    ad_id: string;
+    start_date: string;
 }
 

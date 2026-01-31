@@ -5,6 +5,12 @@
   "name": "CatalogsRetailBatchRequest",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog",
+      "default": null
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -19,6 +25,14 @@
       "name": "country",
       "type": "model.Country",
       "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsRetailBatchRequestItemsInner"
+      },
+      "doc": "Array with catalogs item operations"
     },
     {
       "name": "language",
@@ -136,14 +150,6 @@
         ]
       },
       "doc": "We recommend using the CatalogsLocale values."
-    },
-    {
-      "name": "items",
-      "type": {
-        "type": "array",
-        "items": "model.CatalogsRetailBatchRequestItemsInner"
-      },
-      "doc": "Array with catalogs item operations"
     }
   ]
 

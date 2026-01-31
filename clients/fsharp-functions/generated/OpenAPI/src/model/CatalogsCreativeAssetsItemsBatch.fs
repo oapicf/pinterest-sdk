@@ -15,16 +15,16 @@ module CatalogsCreativeAssetsItemsBatch =
   type CatalogsCreativeAssetsItemsBatch = {
     [<JsonProperty(PropertyName = "batch_id")>]
     BatchId : string;
-    [<JsonProperty(PropertyName = "created_time")>]
-    CreatedTime : Nullable<DateTime>;
-    [<JsonProperty(PropertyName = "completed_time")>]
-    CompletedTime : Nullable<DateTime>;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : BatchOperationStatus;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
+    [<JsonProperty(PropertyName = "completed_time")>]
+    CompletedTime : Nullable<DateTime>;
+    [<JsonProperty(PropertyName = "created_time")>]
+    CreatedTime : Nullable<DateTime>;
     [<JsonProperty(PropertyName = "items")>]
     Items : CreativeAssetsProcessingRecord[];
+    [<JsonProperty(PropertyName = "status")>]
+    Status : BatchOperationStatus;
   }
 
   //#endregion

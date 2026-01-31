@@ -29,11 +29,11 @@ pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e ads_credit_disco
 typedef struct ads_credit_discounts_response_t {
     int active; //boolean
     char *advertiser_id; // string
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type; //enum
-    double discount_in_micro_currency; //numeric
     char *discount_currency; // string
-    char *title; // string
+    double discount_in_micro_currency; //numeric
+    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type; //enum
     double remaining_discount_in_micro_currency; //numeric
+    char *title; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ads_credit_discounts_response_t;
@@ -41,11 +41,11 @@ typedef struct ads_credit_discounts_response_t {
 __attribute__((deprecated)) ads_credit_discounts_response_t *ads_credit_discounts_response_create(
     int active,
     char *advertiser_id,
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
-    double discount_in_micro_currency,
     char *discount_currency,
-    char *title,
-    double remaining_discount_in_micro_currency
+    double discount_in_micro_currency,
+    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
+    double remaining_discount_in_micro_currency,
+    char *title
 );
 
 void ads_credit_discounts_response_free(ads_credit_discounts_response_t *ads_credit_discounts_response);

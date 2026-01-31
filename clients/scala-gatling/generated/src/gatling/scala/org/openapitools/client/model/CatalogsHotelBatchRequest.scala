@@ -3,20 +3,20 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelBatchRequest (
+    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+    _catalogId: Option[String],
     _catalogType: String,
     _country: Country,
-    /* We recommend using the CatalogsLocale values. */
-    _language: String,
     /* Array with catalogs item operations */
     _items: List[CatalogsHotelBatchItem],
-    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
-    _catalogId: Option[String]
+    /* We recommend using the CatalogsLocale values. */
+    _language: String
 )
 object CatalogsHotelBatchRequest {
-    def toStringBody(var_catalogType: Object, var_country: Object, var_language: Object, var_items: Object, var_catalogId: Object) =
+    def toStringBody(var_catalogId: Object, var_catalogType: Object, var_country: Object, var_items: Object, var_language: Object) =
         s"""
         | {
-        | "catalogType":$var_catalogType,"country":$var_country,"language":$var_language,"items":$var_items,"catalogId":$var_catalogId
+        | "catalogId":$var_catalogId,"catalogType":$var_catalogType,"country":$var_country,"items":$var_items,"language":$var_language
         | }
         """.stripMargin
 }

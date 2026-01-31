@@ -7,8 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Integer** |  | 
-**message** | **String** |  | 
 **details** | **Object** |  | 
+**message** | **String** |  | 
 
 
 

@@ -6,12 +6,12 @@ Retail product metadata entity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_id** | **string** | The user-created unique ID that represents the product. | [default to undefined]
-**item_group_id** | **string** | The parent ID of the product. | [default to undefined]
 **availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | [default to undefined]
+**currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | [default to undefined]
+**item_group_id** | **string** | The parent ID of the product. | [default to undefined]
+**item_id** | **string** | The user-created unique ID that represents the product. | [default to undefined]
 **price** | **number** | The price of the product. | [default to undefined]
 **sale_price** | **number** | The discounted price of the product. | [default to undefined]
-**currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | [default to undefined]
 
 ## Example
 
@@ -19,12 +19,12 @@ Name | Type | Description | Notes
 import { CatalogsRetailProductMetadata } from './api';
 
 const instance: CatalogsRetailProductMetadata = {
-    item_id,
-    item_group_id,
     availability,
+    currency,
+    item_group_id,
+    item_id,
     price,
     sale_price,
-    currency,
 };
 ```
 

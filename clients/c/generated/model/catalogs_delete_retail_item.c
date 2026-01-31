@@ -24,6 +24,7 @@ pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e catalogs_delete_retai
 
 static catalogs_delete_retail_item_t *catalogs_delete_retail_item_create_internal(
     char *item_id,
+    long last_updated_time,
     pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e operation
     ) {
     catalogs_delete_retail_item_t *catalogs_delete_retail_item_local_var = malloc(sizeof(catalogs_delete_retail_item_t));
@@ -31,6 +32,7 @@ static catalogs_delete_retail_item_t *catalogs_delete_retail_item_create_interna
         return NULL;
     }
     catalogs_delete_retail_item_local_var->item_id = item_id;
+    catalogs_delete_retail_item_local_var->last_updated_time = last_updated_time;
     catalogs_delete_retail_item_local_var->operation = operation;
 
     catalogs_delete_retail_item_local_var->_library_owned = 1;
@@ -39,10 +41,12 @@ static catalogs_delete_retail_item_t *catalogs_delete_retail_item_create_interna
 
 __attribute__((deprecated)) catalogs_delete_retail_item_t *catalogs_delete_retail_item_create(
     char *item_id,
+    long last_updated_time,
     pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e operation
     ) {
     return catalogs_delete_retail_item_create_internal (
         item_id,
+        last_updated_time,
         operation
         );
 }
@@ -72,6 +76,14 @@ cJSON *catalogs_delete_retail_item_convertToJSON(catalogs_delete_retail_item_t *
     }
     if(cJSON_AddStringToObject(item, "item_id", catalogs_delete_retail_item->item_id) == NULL) {
     goto fail; //String
+    }
+
+
+    // catalogs_delete_retail_item->last_updated_time
+    if(catalogs_delete_retail_item->last_updated_time) {
+    if(cJSON_AddNumberToObject(item, "last_updated_time", catalogs_delete_retail_item->last_updated_time) == NULL) {
+    goto fail; //Numeric
+    }
     }
 
 
@@ -111,6 +123,18 @@ catalogs_delete_retail_item_t *catalogs_delete_retail_item_parseFromJSON(cJSON *
     goto end; //String
     }
 
+    // catalogs_delete_retail_item->last_updated_time
+    cJSON *last_updated_time = cJSON_GetObjectItemCaseSensitive(catalogs_delete_retail_itemJSON, "last_updated_time");
+    if (cJSON_IsNull(last_updated_time)) {
+        last_updated_time = NULL;
+    }
+    if (last_updated_time) { 
+    if(!cJSON_IsNumber(last_updated_time))
+    {
+    goto end; //Numeric
+    }
+    }
+
     // catalogs_delete_retail_item->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_delete_retail_itemJSON, "operation");
     if (cJSON_IsNull(operation)) {
@@ -131,6 +155,7 @@ catalogs_delete_retail_item_t *catalogs_delete_retail_item_parseFromJSON(cJSON *
 
     catalogs_delete_retail_item_local_var = catalogs_delete_retail_item_create_internal (
         strdup(item_id->valuestring),
+        last_updated_time ? last_updated_time->valuedouble : 0,
         operationVariable
         );
 

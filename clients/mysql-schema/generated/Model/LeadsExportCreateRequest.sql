@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `LeadsExportCreateRequest`
 --
-SELECT `start_date`, `end_date`, `ad_id` FROM `LeadsExportCreateRequest` WHERE 1;
+SELECT `ad_id`, `end_date`, `start_date` FROM `LeadsExportCreateRequest` WHERE 1;
 
 --
 -- INSERT template for table `LeadsExportCreateRequest`
 --
-INSERT INTO `LeadsExportCreateRequest`(`start_date`, `end_date`, `ad_id`) VALUES (?, ?, ?);
+INSERT INTO `LeadsExportCreateRequest`(`ad_id`, `end_date`, `start_date`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `LeadsExportCreateRequest`
 --
-UPDATE `LeadsExportCreateRequest` SET `start_date` = ?, `end_date` = ?, `ad_id` = ? WHERE 1;
+UPDATE `LeadsExportCreateRequest` SET `ad_id` = ?, `end_date` = ?, `start_date` = ? WHERE 1;
 
 --
 -- DELETE template for table `LeadsExportCreateRequest`

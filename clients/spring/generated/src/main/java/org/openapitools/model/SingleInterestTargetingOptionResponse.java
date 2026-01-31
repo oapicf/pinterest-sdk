@@ -22,57 +22,17 @@ import javax.annotation.Generated;
  * SingleInterestTargetingOptionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SingleInterestTargetingOptionResponse {
-
-  private @Nullable String id;
-
-  private @Nullable String name;
 
   @Valid
   private List<String> childInterests = new ArrayList<>();
 
+  private @Nullable String id;
+
   private @Nullable Integer level;
 
-  public SingleInterestTargetingOptionResponse id(@Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @Pattern(regexp = "\\d+") 
-  @Schema(name = "id", example = "945391946569", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
-  }
-
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
-
-  public SingleInterestTargetingOptionResponse name(@Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  
-  @Schema(name = "name", example = "Dress", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public @Nullable String getName() {
-    return name;
-  }
-
-  public void setName(@Nullable String name) {
-    this.name = name;
-  }
+  private @Nullable String name;
 
   public SingleInterestTargetingOptionResponse childInterests(List<String> childInterests) {
     this.childInterests = childInterests;
@@ -102,6 +62,26 @@ public class SingleInterestTargetingOptionResponse {
     this.childInterests = childInterests;
   }
 
+  public SingleInterestTargetingOptionResponse id(@Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @Pattern(regexp = "\\d+") 
+  @Schema(name = "id", example = "945391946569", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
+  }
+
+  public void setId(@Nullable String id) {
+    this.id = id;
+  }
+
   public SingleInterestTargetingOptionResponse level(@Nullable Integer level) {
     this.level = level;
     return this;
@@ -122,6 +102,26 @@ public class SingleInterestTargetingOptionResponse {
     this.level = level;
   }
 
+  public SingleInterestTargetingOptionResponse name(@Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  
+  @Schema(name = "name", example = "Dress", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
+  }
+
+  public void setName(@Nullable String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -131,25 +131,25 @@ public class SingleInterestTargetingOptionResponse {
       return false;
     }
     SingleInterestTargetingOptionResponse singleInterestTargetingOptionResponse = (SingleInterestTargetingOptionResponse) o;
-    return Objects.equals(this.id, singleInterestTargetingOptionResponse.id) &&
-        Objects.equals(this.name, singleInterestTargetingOptionResponse.name) &&
-        Objects.equals(this.childInterests, singleInterestTargetingOptionResponse.childInterests) &&
-        Objects.equals(this.level, singleInterestTargetingOptionResponse.level);
+    return Objects.equals(this.childInterests, singleInterestTargetingOptionResponse.childInterests) &&
+        Objects.equals(this.id, singleInterestTargetingOptionResponse.id) &&
+        Objects.equals(this.level, singleInterestTargetingOptionResponse.level) &&
+        Objects.equals(this.name, singleInterestTargetingOptionResponse.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, childInterests, level);
+    return Objects.hash(childInterests, id, level, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SingleInterestTargetingOptionResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    childInterests: ").append(toIndentedString(childInterests)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

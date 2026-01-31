@@ -15,32 +15,32 @@ public struct CatalogsCreativeAssetsItemsFilter: Codable, JSONEncodable, Hashabl
     public enum CatalogType: String, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    public static let creativeAssetsIdsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogType
-    public var creativeAssetsIds: [String]
+    public static let creativeAssetsIdsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     /** Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     public var catalogId: String?
+    public var catalogType: CatalogType
+    public var creativeAssetsIds: [String]
 
-    public init(catalogType: CatalogType, creativeAssetsIds: [String], catalogId: String? = nil) {
+    public init(catalogId: String? = nil, catalogType: CatalogType, creativeAssetsIds: [String]) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
         self.creativeAssetsIds = creativeAssetsIds
-        self.catalogId = catalogId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
         case creativeAssetsIds = "creative_assets_ids"
-        case catalogId = "catalog_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encode(creativeAssetsIds, forKey: .creativeAssetsIds)
-        try container.encodeIfPresent(catalogId, forKey: .catalogId)
     }
 }
 

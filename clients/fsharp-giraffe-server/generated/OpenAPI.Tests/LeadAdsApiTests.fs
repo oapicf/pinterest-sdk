@@ -16,11 +16,10 @@ open TestHelper
 open LeadAdsApiHandlerTestsHelper
 open OpenAPI.LeadAdsApiHandler
 open OpenAPI.LeadAdsApiHandlerParams
-open OpenAPI.Model.AdAccountCreateSubscriptionRequest
-open OpenAPI.Model.AdAccountCreateSubscriptionResponse
-open OpenAPI.Model.AdAccountGetSubscriptionResponse
 open OpenAPI.Model.AdAccountsSubscriptionsGetList200Response
-open OpenAPI.Model.Error
+open OpenAPI.Model.LeadSubscription
+open OpenAPI.Model.LeadSubscriptionPostParamsCreate
+open OpenAPI.Model.PinterestLibError
 
 module LeadAdsApiHandlerTests =
 
@@ -29,7 +28,7 @@ module LeadAdsApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 204 where Subscription deleted successfully`` () =
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 204 where Resource deleted successfully.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -46,7 +45,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 400 where Invalid input parameters.`` () =
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -63,7 +62,24 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 403 where You are not authorized to delete this subscription.`` () =
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".Replace("adAccountId", "ADDME").Replace("subscriptionId", "ADDME")
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -80,7 +96,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 404 where Subscription not found.`` () =
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -97,7 +113,24 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 0 where Unexpected error.`` () =
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".Replace("adAccountId", "ADDME").Replace("subscriptionId", "ADDME")
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -114,7 +147,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription returns 200 where Success`` () =
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -131,7 +164,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription returns 400 where Invalid input parameters.`` () =
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -148,7 +181,24 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription returns 403 where Can&#39;t access this subscription.`` () =
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".Replace("adAccountId", "ADDME").Replace("subscriptionId", "ADDME")
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -165,7 +215,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription returns 404 where Subscription not found.`` () =
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -182,7 +232,24 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription returns 0 where Unexpected error.`` () =
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".Replace("adAccountId", "ADDME").Replace("subscriptionId", "ADDME")
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsGetById - Get lead ads subscription by ID returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -199,14 +266,14 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 200 where Success`` () =
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?pageSize=ADDME&bookmark=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -216,14 +283,48 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 403 where Can&#39;t access this subscription.`` () =
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?pageSize=ADDME&bookmark=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(403))
@@ -233,14 +334,48 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 0 where Unexpected error.`` () =
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?pageSize=ADDME&bookmark=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdAccountsSubscriptionsGetList - Get lead ads subscriptions returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -250,7 +385,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 200 where Success`` () =
+  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -261,8 +396,8 @@ module LeadAdsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getAdAccountsSubscriptionsPostExample "application/json")
-      // or pass a body of type AdAccountCreateSubscriptionRequest
-      let body = obj() :?> AdAccountCreateSubscriptionRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type LeadSubscriptionPostParamsCreate
+      let body = obj() :?> LeadSubscriptionPostParamsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -272,7 +407,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 400 where Invalid input parameters.`` () =
+  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -283,8 +418,8 @@ module LeadAdsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getAdAccountsSubscriptionsPostExample "application/json")
-      // or pass a body of type AdAccountCreateSubscriptionRequest
-      let body = obj() :?> AdAccountCreateSubscriptionRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type LeadSubscriptionPostParamsCreate
+      let body = obj() :?> LeadSubscriptionPostParamsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -294,7 +429,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 403 where Can&#39;t access this subscription.`` () =
+  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -305,8 +440,8 @@ module LeadAdsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getAdAccountsSubscriptionsPostExample "application/json")
-      // or pass a body of type AdAccountCreateSubscriptionRequest
-      let body = obj() :?> AdAccountCreateSubscriptionRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type LeadSubscriptionPostParamsCreate
+      let body = obj() :?> LeadSubscriptionPostParamsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -316,7 +451,7 @@ module LeadAdsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 0 where Unexpected error.`` () =
+  let ``AdAccountsSubscriptionsPost - Create lead ads subscription returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -327,8 +462,8 @@ module LeadAdsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getAdAccountsSubscriptionsPostExample "application/json")
-      // or pass a body of type AdAccountCreateSubscriptionRequest
-      let body = obj() :?> AdAccountCreateSubscriptionRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type LeadSubscriptionPostParamsCreate
+      let body = obj() :?> LeadSubscriptionPostParamsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path

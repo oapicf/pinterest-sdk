@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Base64-encoded image media source",
+  "name": "ImageBase64",
+  "fields": [
+    {
+      "name": "content_type",
+      "type": {
+        "type": "enum",
+        "name": "ImageBase64_contentUnderscoretype",
+        "symbols": [
+          "image_jpeg",
+          "image_png"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "data",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

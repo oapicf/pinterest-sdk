@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **organic_pin_id** | **String** |  | [optional] |
 | **android_deep_link** | **String** |  | [optional] |
-| **ios_deep_link** | **String** |  | [optional] |
 | **destination_url** | **String** |  | [optional] |
+| **ios_deep_link** | **String** |  | [optional] |
+| **organic_pin_id** | **String** |  | [optional] |
 | **result_id** | **Float** |  | [optional] |
 
 ## Example
@@ -16,10 +16,10 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::QuizPinResult.new(
-  organic_pin_id: null,
   android_deep_link: null,
-  ios_deep_link: null,
   destination_url: null,
+  ios_deep_link: null,
+  organic_pin_id: null,
   result_id: null
 )
 ```

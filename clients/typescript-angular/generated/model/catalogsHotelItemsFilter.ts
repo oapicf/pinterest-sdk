@@ -10,12 +10,12 @@
 
 
 export interface CatalogsHotelItemsFilter { 
-    catalog_type: CatalogsHotelItemsFilter.CatalogTypeEnum;
-    hotel_ids: Array<string>;
     /**
      * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
      */
     catalog_id?: string;
+    catalog_type: CatalogsHotelItemsFilter.CatalogTypeEnum;
+    hotel_ids: Array<string>;
 }
 export namespace CatalogsHotelItemsFilter {
     export const CatalogTypeEnum = {

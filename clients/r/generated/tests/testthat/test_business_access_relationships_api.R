@@ -5,6 +5,33 @@ context("Test BusinessAccessRelationshipsApi")
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 
+test_that("BrandAccountsCreate", {
+  # tests for BrandAccountsCreate
+  # base path: https://api.pinterest.com/v5
+  # Create a Brand Account
+  # Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+  # @param business_hierarchy_id character business hierarchy node id
+  # @param brand_accounts_create_request BrandAccountsCreateRequest 
+  # @return [BrandAccountsCreate200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("BrandAccountsUpdate", {
+  # tests for BrandAccountsUpdate
+  # base path: https://api.pinterest.com/v5
+  # Update a Brand Account
+  # Update an existing Brand Account
+  # @param business_hierarchy_id character business hierarchy node id
+  # @param brand_account_id character Unique identifier of a brand account.
+  # @param brand_accounts_update_request BrandAccountsUpdateRequest 
+  # @return [BrandAccountsCreate200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("DeleteBusinessMembership", {
   # tests for DeleteBusinessMembership
   # base path: https://api.pinterest.com/v5
@@ -50,6 +77,7 @@ test_that("GetBusinessMembers", {
   # Get business members
   # Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
   # @param business_id character Unique identifier of the requesting business.
+  # @param fetch_system_users character Fetches system users if True. Fetches regular user employees if False. (optional)
   # @param assets_summary character Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
   # @param business_roles array[MemberBusinessRole] A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
   # @param member_ids character A list of business members ids separated by comma. (optional)
@@ -75,6 +103,20 @@ test_that("GetBusinessPartners", {
   # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @return [GetBusinessPartners200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("SystemUserUpdate", {
+  # tests for SystemUserUpdate
+  # base path: https://api.pinterest.com/v5
+  # Update a system user information.
+  # Update a system user information such as name.
+  # @param business_id character Unique identifier of the requesting business.
+  # @param system_user_id character Unique identifier of a system user.
+  # @param system_user_update_request SystemUserUpdateRequest 
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

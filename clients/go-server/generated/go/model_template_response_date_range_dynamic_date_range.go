@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,11 +17,11 @@ package openapi
 // TemplateResponseDateRangeDynamicDateRange - The dynamic date range of the template
 type TemplateResponseDateRangeDynamicDateRange struct {
 
-	// The date range type
-	Type string `json:"type,omitempty"`
-
 	// The dynamic range type
 	Range string `json:"range,omitempty"`
+
+	// The date range type
+	Type string `json:"type,omitempty"`
 }
 
 // AssertTemplateResponseDateRangeDynamicDateRangeRequired checks if the required fields are not zero-ed

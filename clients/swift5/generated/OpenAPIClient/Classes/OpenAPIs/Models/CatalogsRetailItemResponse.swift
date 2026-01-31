@@ -14,35 +14,35 @@ import AnyCodable
 public struct CatalogsRetailItemResponse: Codable, JSONEncodable, Hashable {
 
     public static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
+    public var attributes: ItemAttributes?
     public var catalogType: CatalogsType
     /** The catalog retail item id in the merchant namespace */
     public var itemId: String?
     /** The pins mapped to the item */
     public var pins: [Pin]?
-    public var attributes: ItemAttributes?
 
-    public init(catalogType: CatalogsType, itemId: String? = nil, pins: [Pin]? = nil, attributes: ItemAttributes? = nil) {
+    public init(attributes: ItemAttributes? = nil, catalogType: CatalogsType, itemId: String? = nil, pins: [Pin]? = nil) {
+        self.attributes = attributes
         self.catalogType = catalogType
         self.itemId = itemId
         self.pins = pins
-        self.attributes = attributes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case attributes
         case catalogType = "catalog_type"
         case itemId = "item_id"
         case pins
-        case attributes
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(attributes, forKey: .attributes)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(pins, forKey: .pins)
-        try container.encodeIfPresent(attributes, forKey: .attributes)
     }
 }
 

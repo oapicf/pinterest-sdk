@@ -40,6 +40,9 @@ module AdvancedAuctionApiServiceImplementation =
             let content = "Response containing the results of the item bid options operations" :> obj :?> AdvancedAuctionProcessedItems // this cast is obviously wrong, and is only intended to allow generated project to compile   
             AdvancedAuctionItemsSubmitPostStatusCode200 { content = content }
           else if true then
+            let content = "Response containing the results of the item bid options operations (where some/all operation results have errors)" :> obj :?> AdvancedAuctionProcessedItems // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            AdvancedAuctionItemsSubmitPostStatusCode206 { content = content }
+          else if true then
             let content = "Invalid request parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             AdvancedAuctionItemsSubmitPostStatusCode400 { content = content }
           else if true then

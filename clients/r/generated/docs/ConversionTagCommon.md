@@ -4,14 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_account_id** | **character** | Ad account ID. | [optional] 
-**code_snippet** | **character** | Tag code snippet. | [optional] 
-**enhanced_match_status** | [**EnhancedMatchStatusType**](EnhancedMatchStatusType.md) |  | [optional] [Enum: ] 
-**id** | **character** | Tag ID. | [optional] 
-**last_fired_time_ms** | **numeric** | Time for the last event fired. | [optional] 
-**name** | **character** | Conversion tag name. | [optional] 
-**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [Enum: ] 
-**version** | **character** | Version number. | [optional] 
-**configs** | [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] 
+**code_snippet** | **character** | Tag code snippet. | [optional] [readonly] 
+**configs** | [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] [readonly] 
+**enhanced_match_status** | [**EnhancedMatchStatusType**](EnhancedMatchStatusType.md) | The enhanced match status of the tag | [optional] [readonly] [Enum: ] 
+**id** | **character** | Tag ID. | [optional] [readonly] 
+**last_fired_time_ms** | **numeric** | Time for the last event fired. | [optional] [readonly] 
+**name** | **character** | Conversion tag name. | 
+**version** | **character** | Version number. | [optional] [readonly] 
 
 

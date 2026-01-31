@@ -53,20 +53,13 @@ public:
 	/*! \brief Set Unique identifier of a business asset.
 	 */
 	void setAssetId(std::string  asset_id);
-	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	 */
 	std::string getAssetType();
 
-	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	 */
 	void setAssetType(std::string  asset_type);
-	/*! \brief Get Permission levels member or partner has on an asset.
-	 */
-	std::list<std::string> getPermissions();
-
-	/*! \brief Set Permission levels member or partner has on an asset.
-	 */
-	void setPermissions(std::list <std::string> permissions);
 	/*! \brief Get If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
 	 */
 	bool getIsSharedPartner();
@@ -81,13 +74,20 @@ public:
 	/*! \brief Set Unique identifier of a business partner.
 	 */
 	void setPartnerId(std::string  partner_id);
+	/*! \brief Get Permission levels member or partner has on an asset.
+	 */
+	std::list<std::string> getPermissions();
+
+	/*! \brief Set Permission levels member or partner has on an asset.
+	 */
+	void setPermissions(std::list <std::string> permissions);
 
 private:
 	std::string asset_id;
 	std::string asset_type;
-	std::list <std::string>permissions;
 	bool is_shared_partner;
 	std::string partner_id;
+	std::list <std::string>permissions;
 	void __init();
 	void __cleanup();
 

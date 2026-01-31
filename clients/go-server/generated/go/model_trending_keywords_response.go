@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,13 +17,13 @@ package openapi
 type TrendingKeywordsResponse struct {
 
 	// The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
-	Trends []TrendingKeywordsResponseTrendsInner `json:"trends,omitempty"`
+	Trends []TrendingKeyword `json:"trends,omitempty"`
 }
 
 // AssertTrendingKeywordsResponseRequired checks if the required fields are not zero-ed
 func AssertTrendingKeywordsResponseRequired(obj TrendingKeywordsResponse) error {
 	for _, el := range obj.Trends {
-		if err := AssertTrendingKeywordsResponseTrendsInnerRequired(el); err != nil {
+		if err := AssertTrendingKeywordRequired(el); err != nil {
 			return err
 		}
 	}
@@ -33,7 +33,7 @@ func AssertTrendingKeywordsResponseRequired(obj TrendingKeywordsResponse) error 
 // AssertTrendingKeywordsResponseConstraints checks if the values respects the defined constraints
 func AssertTrendingKeywordsResponseConstraints(obj TrendingKeywordsResponse) error {
 	for _, el := range obj.Trends {
-		if err := AssertTrendingKeywordsResponseTrendsInnerConstraints(el); err != nil {
+		if err := AssertTrendingKeywordConstraints(el); err != nil {
 			return err
 		}
 	}

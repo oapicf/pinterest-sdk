@@ -8,6 +8,7 @@
  * Do not edit the class manually.
  */
 import { CatalogsReportFeedIngestionFilter } from './catalogsReportFeedIngestionFilter';
+import { CatalogsReportAllItemsFilter } from './catalogsReportAllItemsFilter';
 import { CatalogsReportDistributionIssueFilter } from './catalogsReportDistributionIssueFilter';
 
 
@@ -15,5 +16,5 @@ import { CatalogsReportDistributionIssueFilter } from './catalogsReportDistribut
  * @type CatalogsHotelReportParametersReport
  * @export
  */
-export type CatalogsHotelReportParametersReport = CatalogsReportDistributionIssueFilter | CatalogsReportFeedIngestionFilter;
+export type CatalogsHotelReportParametersReport = CatalogsReportAllItemsFilter | CatalogsReportDistributionIssueFilter | CatalogsReportFeedIngestionFilter;
 

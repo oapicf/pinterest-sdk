@@ -24,23 +24,23 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceDemographics", description = "Audience demographics")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDemographics {
 
   @Valid
   private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
   @Valid
   private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
 
   public AudienceDemographics ages(List<@Valid AudienceDemographicValue> ages) {
     this.ages = ages;
@@ -68,90 +68,6 @@ public class AudienceDemographics {
 
   public void setAges(List<@Valid AudienceDemographicValue> ages) {
     this.ages = ages;
-  }
-
-  public AudienceDemographics genders(List<@Valid AudienceDemographicValue> genders) {
-    this.genders = genders;
-    return this;
-  }
-
-  public AudienceDemographics addGendersItem(AudienceDemographicValue gendersItem) {
-    if (this.genders == null) {
-      this.genders = new ArrayList<>();
-    }
-    this.genders.add(gendersItem);
-    return this;
-  }
-
-  /**
-   * Gender distribution.
-   * @return genders
-   */
-  @Valid 
-  @Schema(name = "genders", description = "Gender distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("genders")
-  public List<@Valid AudienceDemographicValue> getGenders() {
-    return genders;
-  }
-
-  public void setGenders(List<@Valid AudienceDemographicValue> genders) {
-    this.genders = genders;
-  }
-
-  public AudienceDemographics devices(List<@Valid AudienceDemographicValue> devices) {
-    this.devices = devices;
-    return this;
-  }
-
-  public AudienceDemographics addDevicesItem(AudienceDemographicValue devicesItem) {
-    if (this.devices == null) {
-      this.devices = new ArrayList<>();
-    }
-    this.devices.add(devicesItem);
-    return this;
-  }
-
-  /**
-   * Device usage distribution.
-   * @return devices
-   */
-  @Valid 
-  @Schema(name = "devices", description = "Device usage distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("devices")
-  public List<@Valid AudienceDemographicValue> getDevices() {
-    return devices;
-  }
-
-  public void setDevices(List<@Valid AudienceDemographicValue> devices) {
-    this.devices = devices;
-  }
-
-  public AudienceDemographics metros(List<@Valid AudienceDemographicValue> metros) {
-    this.metros = metros;
-    return this;
-  }
-
-  public AudienceDemographics addMetrosItem(AudienceDemographicValue metrosItem) {
-    if (this.metros == null) {
-      this.metros = new ArrayList<>();
-    }
-    this.metros.add(metrosItem);
-    return this;
-  }
-
-  /**
-   * Geographic metro area distribution.
-   * @return metros
-   */
-  @Valid 
-  @Schema(name = "metros", description = "Geographic metro area distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("metros")
-  public List<@Valid AudienceDemographicValue> getMetros() {
-    return metros;
-  }
-
-  public void setMetros(List<@Valid AudienceDemographicValue> metros) {
-    this.metros = metros;
   }
 
   public AudienceDemographics countries(List<@Valid AudienceDemographicValue> countries) {
@@ -182,6 +98,90 @@ public class AudienceDemographics {
     this.countries = countries;
   }
 
+  public AudienceDemographics devices(List<@Valid AudienceDemographicValue> devices) {
+    this.devices = devices;
+    return this;
+  }
+
+  public AudienceDemographics addDevicesItem(AudienceDemographicValue devicesItem) {
+    if (this.devices == null) {
+      this.devices = new ArrayList<>();
+    }
+    this.devices.add(devicesItem);
+    return this;
+  }
+
+  /**
+   * Device usage distribution.
+   * @return devices
+   */
+  @Valid 
+  @Schema(name = "devices", description = "Device usage distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("devices")
+  public List<@Valid AudienceDemographicValue> getDevices() {
+    return devices;
+  }
+
+  public void setDevices(List<@Valid AudienceDemographicValue> devices) {
+    this.devices = devices;
+  }
+
+  public AudienceDemographics genders(List<@Valid AudienceDemographicValue> genders) {
+    this.genders = genders;
+    return this;
+  }
+
+  public AudienceDemographics addGendersItem(AudienceDemographicValue gendersItem) {
+    if (this.genders == null) {
+      this.genders = new ArrayList<>();
+    }
+    this.genders.add(gendersItem);
+    return this;
+  }
+
+  /**
+   * Gender distribution.
+   * @return genders
+   */
+  @Valid 
+  @Schema(name = "genders", description = "Gender distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("genders")
+  public List<@Valid AudienceDemographicValue> getGenders() {
+    return genders;
+  }
+
+  public void setGenders(List<@Valid AudienceDemographicValue> genders) {
+    this.genders = genders;
+  }
+
+  public AudienceDemographics metros(List<@Valid AudienceDemographicValue> metros) {
+    this.metros = metros;
+    return this;
+  }
+
+  public AudienceDemographics addMetrosItem(AudienceDemographicValue metrosItem) {
+    if (this.metros == null) {
+      this.metros = new ArrayList<>();
+    }
+    this.metros.add(metrosItem);
+    return this;
+  }
+
+  /**
+   * Geographic metro area distribution.
+   * @return metros
+   */
+  @Valid 
+  @Schema(name = "metros", description = "Geographic metro area distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("metros")
+  public List<@Valid AudienceDemographicValue> getMetros() {
+    return metros;
+  }
+
+  public void setMetros(List<@Valid AudienceDemographicValue> metros) {
+    this.metros = metros;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -192,15 +192,15 @@ public class AudienceDemographics {
     }
     AudienceDemographics audienceDemographics = (AudienceDemographics) o;
     return Objects.equals(this.ages, audienceDemographics.ages) &&
-        Objects.equals(this.genders, audienceDemographics.genders) &&
+        Objects.equals(this.countries, audienceDemographics.countries) &&
         Objects.equals(this.devices, audienceDemographics.devices) &&
-        Objects.equals(this.metros, audienceDemographics.metros) &&
-        Objects.equals(this.countries, audienceDemographics.countries);
+        Objects.equals(this.genders, audienceDemographics.genders) &&
+        Objects.equals(this.metros, audienceDemographics.metros);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ages, genders, devices, metros, countries);
+    return Objects.hash(ages, countries, devices, genders, metros);
   }
 
   @Override
@@ -208,10 +208,10 @@ public class AudienceDemographics {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceDemographics {\n");
     sb.append("    ages: ").append(toIndentedString(ages)).append("\n");
-    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
-    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
-    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
+    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
+    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
+    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("}");
     return sb.toString();
   }

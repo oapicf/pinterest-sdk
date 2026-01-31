@@ -9,14 +9,14 @@ import org.openapitools.models.ConversionTagType
 
 /**
  * 
+ * @param adUnderscoreaccountUnderscoreid Id of the ad account.
  * @param conversionUnderscoreevent 
  * @param conversionUnderscoretagUnderscoreid Id of the tag.
- * @param adUnderscoreaccountUnderscoreid Id of the ad account.
  * @param createdUnderscoretime Creation date in epoch format.
  */
-case class ConversionEventResponse(conversionUnderscoreevent: Option[ConversionTagType],
+case class ConversionEventResponse(adUnderscoreaccountUnderscoreid: Option[String],
+                conversionUnderscoreevent: Option[ConversionTagType],
                 conversionUnderscoretagUnderscoreid: Option[String],
-                adUnderscoreaccountUnderscoreid: Option[String],
                 createdUnderscoretime: Option[Int]
                 )
 

@@ -16,8 +16,13 @@ void main() {
   // final instance = TrackingUrls();
 
   group('test TrackingUrls', () {
-    // List<String> impression (default value: const [])
-    test('to test the property `impression`', () async {
+    // List<String> audienceVerification (default value: const [])
+    test('to test the property `audienceVerification`', () async {
+      // TODO
+    });
+
+    // List<String> buyableButton (default value: const [])
+    test('to test the property `buyableButton`', () async {
       // TODO
     });
 
@@ -31,13 +36,8 @@ void main() {
       // TODO
     });
 
-    // List<String> buyableButton (default value: const [])
-    test('to test the property `buyableButton`', () async {
-      // TODO
-    });
-
-    // List<String> audienceVerification (default value: const [])
-    test('to test the property `audienceVerification`', () async {
+    // List<String> impression (default value: const [])
+    test('to test the property `impression`', () async {
       // TODO
     });
 

@@ -7,35 +7,35 @@
 #' @title AdAccountOwner
 #' @description AdAccountOwner Class
 #' @format An \code{R6Class} generator object
-#' @field username Public username for the user account character [optional]
 #' @field id The owning account's user ID. character [optional]
+#' @field username Public username for the user account character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdAccountOwner <- R6::R6Class(
   "AdAccountOwner",
   public = list(
-    `username` = NULL,
     `id` = NULL,
+    `username` = NULL,
 
     #' @description
     #' Initialize a new AdAccountOwner class.
     #'
-    #' @param username Public username for the user account
     #' @param id The owning account's user ID.
+    #' @param username Public username for the user account
     #' @param ... Other optional arguments.
-    initialize = function(`username` = NULL, `id` = NULL, ...) {
-      if (!is.null(`username`)) {
-        if (!(is.character(`username`) && length(`username`) == 1)) {
-          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
-        }
-        self$`username` <- `username`
-      }
+    initialize = function(`id` = NULL, `username` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
+      }
+      if (!is.null(`username`)) {
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
+        }
+        self$`username` <- `username`
       }
     },
 
@@ -70,13 +70,13 @@ AdAccountOwner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdAccountOwnerObject <- list()
-      if (!is.null(self$`username`)) {
-        AdAccountOwnerObject[["username"]] <-
-          self$`username`
-      }
       if (!is.null(self$`id`)) {
         AdAccountOwnerObject[["id"]] <-
           self$`id`
+      }
+      if (!is.null(self$`username`)) {
+        AdAccountOwnerObject[["username"]] <-
+          self$`username`
       }
       return(AdAccountOwnerObject)
     },
@@ -88,11 +88,11 @@ AdAccountOwner <- R6::R6Class(
     #' @return the instance of AdAccountOwner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`username`)) {
-        self$`username` <- this_object$`username`
-      }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`username`)) {
+        self$`username` <- this_object$`username`
       }
       self
     },
@@ -115,8 +115,8 @@ AdAccountOwner <- R6::R6Class(
     #' @return the instance of AdAccountOwner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`username` <- this_object$`username`
       self$`id` <- this_object$`id`
+      self$`username` <- this_object$`username`
       self
     },
 

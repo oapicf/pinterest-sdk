@@ -23,22 +23,22 @@ MembersToDeleteBody_members_inner::~MembersToDeleteBody_members_inner()
 void
 MembersToDeleteBody_members_inner::__init()
 {
-	//member_id = std::string();
 	//business_role = new BusinessRoleForMembers();
+	//member_id = std::string();
 }
 
 void
 MembersToDeleteBody_members_inner::__cleanup()
 {
-	//if(member_id != NULL) {
-	//
-	//delete member_id;
-	//member_id = NULL;
-	//}
 	//if(business_role != NULL) {
 	//
 	//delete business_role;
 	//business_role = NULL;
+	//}
+	//if(member_id != NULL) {
+	//
+	//delete member_id;
+	//member_id = NULL;
 	//}
 	//
 }
@@ -48,17 +48,6 @@ MembersToDeleteBody_members_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *member_idKey = "member_id";
-	node = json_object_get_member(pJsonObject, member_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&member_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *business_roleKey = "business_role";
 	node = json_object_get_member(pJsonObject, business_roleKey);
 	if (node !=NULL) {
@@ -70,6 +59,17 @@ MembersToDeleteBody_members_inner::fromJson(char* jsonStr)
 			
 			BusinessRoleForMembers* obj = static_cast<BusinessRoleForMembers*> (&business_role);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *member_idKey = "member_id";
+	node = json_object_get_member(pJsonObject, member_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&member_id, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -85,15 +85,6 @@ MembersToDeleteBody_members_inner::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getMemberId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *member_idKey = "member_id";
-	json_object_set_member(pJsonObject, member_idKey, node);
 	if (isprimitive("BusinessRoleForMembers")) {
 		BusinessRoleForMembers obj = getBusinessRole();
 		node = converttoJson(&obj, "BusinessRoleForMembers", "");
@@ -108,24 +99,21 @@ MembersToDeleteBody_members_inner::toJson()
 	}
 	const gchar *business_roleKey = "business_role";
 	json_object_set_member(pJsonObject, business_roleKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMemberId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *member_idKey = "member_id";
+	json_object_set_member(pJsonObject, member_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-MembersToDeleteBody_members_inner::getMemberId()
-{
-	return member_id;
-}
-
-void
-MembersToDeleteBody_members_inner::setMemberId(std::string  member_id)
-{
-	this->member_id = member_id;
 }
 
 BusinessRoleForMembers
@@ -138,6 +126,18 @@ void
 MembersToDeleteBody_members_inner::setBusinessRole(BusinessRoleForMembers  business_role)
 {
 	this->business_role = business_role;
+}
+
+std::string
+MembersToDeleteBody_members_inner::getMemberId()
+{
+	return member_id;
+}
+
+void
+MembersToDeleteBody_members_inner::setMemberId(std::string  member_id)
+{
+	this->member_id = member_id;
 }
 
 

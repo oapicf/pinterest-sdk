@@ -6,12 +6,12 @@ Protected Class ConversionTagsApi
 		  // Create conversion tag
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter conversionTagCreate: (body) Conversion Tag to create 
+		  // - parameter conversionTagCreate: (body)  
 		  //
-		  // Invokes ConversionTagsApiCallbackHandler.ConversionTagsCreateCallback(ConversionTagResponse) on completion. 
+		  // Invokes ConversionTagsApiCallbackHandler.ConversionTagsCreateCallback(ConversionTag) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/conversion_tags
-		  // - Create a conversion tag, also known as <a href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag" target="_blank">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class="reference external" href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag">Set up the Pinterest tag</a><p/> <a class="reference external" href="/docs/api-features/pinterest-tag/">Pinterest Tag</a><p/> <a class="reference external" href="/docs/api-features/pinterest-tag/#enhanced-match">Enhanced match</a>
+		  // - Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -48,7 +48,7 @@ Protected Class ConversionTagsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ConversionTagsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionTagResponse) As Boolean
+		Private Function ConversionTagsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionTag) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class ConversionTagsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.ConversionTagResponse
+			  outData = New OpenAPIClient.Models.ConversionTag
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class ConversionTagsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.ConversionTagResponse
+		  Dim data As OpenAPIClient.Models.ConversionTag
 		  CallbackHandler.ConversionTagsCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class ConversionTagsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.ConversionTagResponse
+		  Dim data As OpenAPIClient.Models.ConversionTag
 		  Call ConversionTagsCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.ConversionTagsCreateCallback(error, data)
@@ -141,7 +141,7 @@ Protected Class ConversionTagsApi
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter conversionTagId: (path) Id of the conversion tag. 
 		  //
-		  // Invokes ConversionTagsApiCallbackHandler.ConversionTagsGetCallback(ConversionTagResponse) on completion. 
+		  // Invokes ConversionTagsApiCallbackHandler.ConversionTagsGetCallback(ConversionTag) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}
 		  // - Get information about an existing conversion tag.
@@ -150,10 +150,14 @@ Protected Class ConversionTagsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -184,7 +188,7 @@ Protected Class ConversionTagsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ConversionTagsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionTagResponse) As Boolean
+		Private Function ConversionTagsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionTag) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -192,7 +196,7 @@ Protected Class ConversionTagsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.ConversionTagResponse
+			  outData = New OpenAPIClient.Models.ConversionTag
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -245,7 +249,7 @@ Protected Class ConversionTagsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.ConversionTagResponse
+		  Dim data As OpenAPIClient.Models.ConversionTag
 		  CallbackHandler.ConversionTagsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -259,7 +263,7 @@ Protected Class ConversionTagsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.ConversionTagResponse
+		  Dim data As OpenAPIClient.Models.ConversionTag
 		  Call ConversionTagsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.ConversionTagsGetCallback(error, data)
@@ -272,12 +276,12 @@ Protected Class ConversionTagsApi
 	#tag Method, Flags = &h0
 		Sub ConversionTagsList(, adAccountId As String, Optional filterDeleted As Xoson.O.OptionalBoolean)
 		  // Operation conversion_tags/list
-		  // Get conversion tags
+		  // List conversion tags
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter filterDeleted: (query) Filter out deleted tags. (optional, default to false)
+		  // - parameter filterDeleted: (query) Filter by deleted status (optional, default to false)
 		  //
-		  // Invokes ConversionTagsApiCallbackHandler.ConversionTagsListCallback(ConversionTagListResponse) on completion. 
+		  // Invokes ConversionTagsApiCallbackHandler.ConversionTagsListCallback(ConversionTagsList200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/conversion_tags
 		  // - List conversion tags associated with an ad account.
@@ -286,6 +290,9 @@ Protected Class ConversionTagsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -295,6 +302,7 @@ Protected Class ConversionTagsApi
 		  If filterDeleted <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("filter_deleted") + "=" + EncodeURLComponent(filterDeleted.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -320,7 +328,7 @@ Protected Class ConversionTagsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ConversionTagsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionTagListResponse) As Boolean
+		Private Function ConversionTagsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionTagsList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -328,7 +336,7 @@ Protected Class ConversionTagsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.ConversionTagListResponse
+			  outData = New OpenAPIClient.Models.ConversionTagsList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -381,7 +389,7 @@ Protected Class ConversionTagsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.ConversionTagListResponse
+		  Dim data As OpenAPIClient.Models.ConversionTagsList200Response
 		  CallbackHandler.ConversionTagsListCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -395,7 +403,7 @@ Protected Class ConversionTagsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.ConversionTagListResponse
+		  Dim data As OpenAPIClient.Models.ConversionTagsList200Response
 		  Call ConversionTagsListPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.ConversionTagsListCallback(error, data)
@@ -421,10 +429,14 @@ Protected Class ConversionTagsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -556,6 +568,9 @@ Protected Class ConversionTagsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -569,6 +584,7 @@ Protected Class ConversionTagsApi
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 
+		  
 		  
 		  
 

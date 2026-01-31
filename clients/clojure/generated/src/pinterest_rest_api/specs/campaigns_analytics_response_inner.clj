@@ -7,7 +7,7 @@
 
 (def campaigns-analytics-response-inner-data
   {
-   (ds/req :CAMPAIGN_ID) string?
+   (ds/opt :CAMPAIGN_ID) string?
    (ds/opt :DATE) inst?
    })
 

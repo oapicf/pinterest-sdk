@@ -10,15 +10,13 @@
 
 
 /**
- * Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
+ * Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
  */
 export const ObjectiveType = {
     Awareness: 'AWARENESS',
     Consideration: 'CONSIDERATION',
-    VideoView: 'VIDEO_VIEW',
     WebConversion: 'WEB_CONVERSION',
     CatalogSales: 'CATALOG_SALES',
-    WebSessions: 'WEB_SESSIONS',
     VideoCompletion: 'VIDEO_COMPLETION'
 } as const;
 export type ObjectiveType = typeof ObjectiveType[keyof typeof ObjectiveType];

@@ -12,8 +12,7 @@ import org.joda.time.DateTime
 import CatalogsReportFeedIngestionStats._
 
 case class CatalogsReportFeedIngestionStats (
-  reportType: Option[ReportType],
-/* ID of the catalog entity. */
+  /* ID of the catalog entity. */
   catalogId: Option[String],
 /* The event code that a diagnostics aggregated number references */
   code: Option[Integer],
@@ -23,6 +22,7 @@ case class CatalogsReportFeedIngestionStats (
   message: Option[String],
 /* Number of occurrences of the issue */
   occurrences: Option[Integer],
+reportType: Option[ReportType],
 /* An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue */
   severity: Option[Severity])
 

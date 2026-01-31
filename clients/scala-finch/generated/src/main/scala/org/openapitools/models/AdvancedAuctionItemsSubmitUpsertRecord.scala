@@ -6,6 +6,7 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.AdvancedAuctionBidOptions
+import org.openapitools.models.AdvancedAuctionOperationError
 import org.openapitools.models.Country
 import org.openapitools.models.Language
 import org.openapitools.models.UpdateMaskBidOptionField
@@ -13,16 +14,18 @@ import scala.collection.immutable.Seq
 
 /**
  * Object describing an item bid option upsert operation
- * @param itemUnderscoreid The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemUnderscoreid The catalog retail item id in the merchant namespace
  * @param language 
  * @param bidUnderscoreoptions 
+ * @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
  * @param updateUnderscoremask The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
  */
-case class AdvancedAuctionItemsSubmitUpsertRecord(itemUnderscoreid: String,
-                country: Country,
+case class AdvancedAuctionItemsSubmitUpsertRecord(country: Country,
+                itemUnderscoreid: String,
                 language: Language,
                 bidUnderscoreoptions: AdvancedAuctionBidOptions,
+                errors: Option[Seq[AdvancedAuctionOperationError]],
                 updateUnderscoremask: Seq[UpdateMaskBidOptionField]
                 )
 

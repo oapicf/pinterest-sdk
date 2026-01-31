@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[SharedAudienceAccount]**](SharedAudienceAccount.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[SharedAudienceAccount]**](SharedAudienceAccount.md) |  | 
 
 

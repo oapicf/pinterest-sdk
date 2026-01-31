@@ -4,20 +4,20 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for AdGroupAudienceSizingRequest.
-  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  * @param autoTargetingEnabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
   * @param creativeTypes Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-  * @param productGroupIds Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
   * @param keywords Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+  * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  * @param productGroupIds Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AdGroupAudienceSizingRequest(
   autoTargetingEnabled: Option[Boolean],
-  placementGroup: Option[PlacementGroupType],
   creativeTypes: Option[AdGroupAudienceSizingRequest.CreativeTypes.Value],
-  targetingSpec: Option[TargetingSpec],
+  keywords: Option[List[AdGroupAudienceSizingRequestKeywordsInner]],
+  placementGroup: Option[PlacementGroupType],
   productGroupIds: Option[List[String]],
-  keywords: Option[List[AdGroupAudienceSizingRequestKeywordsInner]]
+  targetingSpec: Option[TargetingSpec]
 )
 
 object AdGroupAudienceSizingRequest {

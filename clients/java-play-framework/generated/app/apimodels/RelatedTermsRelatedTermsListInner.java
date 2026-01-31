@@ -13,33 +13,16 @@ import javax.validation.Valid;
 /**
  * RelatedTermsRelatedTermsListInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class RelatedTermsRelatedTermsListInner   {
-  @JsonProperty("term")
-  
-  private String term;
-
   @JsonProperty("related_terms")
   
   private List<String> relatedTerms = null;
 
-  public RelatedTermsRelatedTermsListInner term(String term) {
-    this.term = term;
-    return this;
-  }
-
-   /**
-   * Get term
-   * @return term
-  **/
-  public String getTerm() {
-    return term;
-  }
-
-  public void setTerm(String term) {
-    this.term = term;
-  }
+  @JsonProperty("term")
+  
+  private String term;
 
   public RelatedTermsRelatedTermsListInner relatedTerms(List<String> relatedTerms) {
     this.relatedTerms = relatedTerms;
@@ -66,6 +49,23 @@ public class RelatedTermsRelatedTermsListInner   {
     this.relatedTerms = relatedTerms;
   }
 
+  public RelatedTermsRelatedTermsListInner term(String term) {
+    this.term = term;
+    return this;
+  }
+
+   /**
+   * Get term
+   * @return term
+  **/
+  public String getTerm() {
+    return term;
+  }
+
+  public void setTerm(String term) {
+    this.term = term;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -76,13 +76,13 @@ public class RelatedTermsRelatedTermsListInner   {
       return false;
     }
     RelatedTermsRelatedTermsListInner relatedTermsRelatedTermsListInner = (RelatedTermsRelatedTermsListInner) o;
-    return Objects.equals(term, relatedTermsRelatedTermsListInner.term) &&
-        Objects.equals(relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms);
+    return Objects.equals(relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms) &&
+        Objects.equals(term, relatedTermsRelatedTermsListInner.term);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(term, relatedTerms);
+    return Objects.hash(relatedTerms, term);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -91,8 +91,8 @@ public class RelatedTermsRelatedTermsListInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class RelatedTermsRelatedTermsListInner {\n");
     
-    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("    relatedTerms: ").append(toIndentedString(relatedTerms)).append("\n");
+    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,15 +6,15 @@ goog.provide('API.Client.business_member_assets_get_200_response');
 API.Client.BusinessMemberAssetsGet200Response = function() {}
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.BusinessMemberAssetsGet200Response.prototype.bookmark;
+
+/**
  * List asset permissions the given member was granted.
  * @type {!Array<!API.Client.AssetIdPermissions>}
  * @export
  */
 API.Client.BusinessMemberAssetsGet200Response.prototype.items;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.BusinessMemberAssetsGet200Response.prototype.bookmark;
 

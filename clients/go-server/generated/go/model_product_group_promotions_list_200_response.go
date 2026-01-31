@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,9 +16,9 @@ package openapi
 
 type ProductGroupPromotionsList200Response struct {
 
-	Items []ProductGroupPromotionResponseItem `json:"items"`
-
 	Bookmark *string `json:"bookmark,omitempty"`
+
+	Items []ProductGroupPromotion `json:"items"`
 }
 
 // AssertProductGroupPromotionsList200ResponseRequired checks if the required fields are not zero-ed
@@ -33,7 +33,7 @@ func AssertProductGroupPromotionsList200ResponseRequired(obj ProductGroupPromoti
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertProductGroupPromotionResponseItemRequired(el); err != nil {
+		if err := AssertProductGroupPromotionRequired(el); err != nil {
 			return err
 		}
 	}
@@ -43,7 +43,7 @@ func AssertProductGroupPromotionsList200ResponseRequired(obj ProductGroupPromoti
 // AssertProductGroupPromotionsList200ResponseConstraints checks if the values respects the defined constraints
 func AssertProductGroupPromotionsList200ResponseConstraints(obj ProductGroupPromotionsList200Response) error {
 	for _, el := range obj.Items {
-		if err := AssertProductGroupPromotionResponseItemConstraints(el); err != nil {
+		if err := AssertProductGroupPromotionConstraints(el); err != nil {
 			return err
 		}
 	}

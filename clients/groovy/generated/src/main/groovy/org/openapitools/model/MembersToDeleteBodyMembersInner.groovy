@@ -7,8 +7,8 @@ import org.openapitools.model.BusinessRoleForMembers;
 
 @Canonical
 class MembersToDeleteBodyMembersInner {
-    /* Unique identifier of the member */
-    String memberId
     
     BusinessRoleForMembers businessRole
+    /* Unique identifier of the member */
+    String memberId
 }

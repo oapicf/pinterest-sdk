@@ -25,39 +25,39 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+ * @param autoTargetingEnabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
  * @param creativeTypes Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
- * @param targetingSpec 
- * @param productGroupIds Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
  * @param keywords Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+ * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+ * @param productGroupIds Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
+ * @param targetingSpec 
  */
 
 
 data class AdGroupAudienceSizingRequest (
 
-    /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+    /* Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
     @Json(name = "auto_targeting_enabled")
     val autoTargetingEnabled: kotlin.Boolean? = true,
-
-    /* <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
-    @Json(name = "placement_group")
-    val placementGroup: PlacementGroupType? = "ALL",
 
     /* Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. */
     @Json(name = "creative_types")
     val creativeTypes: kotlin.collections.List<AdGroupAudienceSizingRequest.CreativeTypes>? = null,
 
-    @Json(name = "targeting_spec")
-    val targetingSpec: TargetingSpec? = null,
+    /* Array of keyword objects. If the keywords field is missing, all keywords will be targeted. */
+    @Json(name = "keywords")
+    val keywords: kotlin.collections.List<AdGroupAudienceSizingRequestKeywordsInner>? = null,
+
+    /* <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
+    @Json(name = "placement_group")
+    val placementGroup: PlacementGroupType? = "ALL",
 
     /* Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. */
     @Json(name = "product_group_ids")
     val productGroupIds: kotlin.collections.List<kotlin.String>? = null,
 
-    /* Array of keyword objects. If the keywords field is missing, all keywords will be targeted. */
-    @Json(name = "keywords")
-    val keywords: kotlin.collections.List<AdGroupAudienceSizingRequestKeywordsInner>? = null
+    @Json(name = "targeting_spec")
+    val targetingSpec: TargetingSpec? = null
 
 ) {
 

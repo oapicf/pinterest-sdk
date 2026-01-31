@@ -11,5 +11,7 @@ public enum BulkEntityType {
   AD_GROUP,
   PRODUCT_GROUP,
   AD,
-  KEYWORD;
+  KEYWORD,
+  LABEL,
+  SCHEDULE;
 }

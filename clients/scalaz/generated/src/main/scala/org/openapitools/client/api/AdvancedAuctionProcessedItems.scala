@@ -15,7 +15,7 @@ case class AdvancedAuctionProcessedItems (
   /* Catalog id pertaining to all items */
   catalogId: Option[String],
 /* Array of advanced auction processed items */
-  items: Option[List[AdvancedAuctionProcessedItem]])
+  items: Option[List[AdvancedAuctionItemsSubmitRecord]])
 
 object AdvancedAuctionProcessedItems {
   import DateTimeCodecs._

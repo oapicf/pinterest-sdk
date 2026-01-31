@@ -11,8 +11,8 @@ module AdvancedAuctionBidOptions =
 
 
   type AdvancedAuctionBidOptions = {
-    BidInMicroCurrency : int64;
     AppTypeMultipliers : AppTypeMultipliers;
+    BidInMicroCurrency : int64;
     PlacementMultipliers : PlacementMultipliers;
   }
   //#endregion

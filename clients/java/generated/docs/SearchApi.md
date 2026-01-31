@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 ### Example
 ```java
@@ -166,7 +166,7 @@ public class Example {
 
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
-> PinsList200Response searchUserPinsList(query, adAccountId, bookmark)
+> SearchUserPinsList200Response searchUserPinsList(query, adAccountId, bookmark)
 
 Search user&#39;s Pins
 
@@ -196,7 +196,7 @@ public class Example {
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
     try {
-      PinsList200Response result = apiInstance.searchUserPinsList(query, adAccountId, bookmark);
+      SearchUserPinsList200Response result = apiInstance.searchUserPinsList(query, adAccountId, bookmark);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#searchUserPinsList");
@@ -219,7 +219,7 @@ public class Example {
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 

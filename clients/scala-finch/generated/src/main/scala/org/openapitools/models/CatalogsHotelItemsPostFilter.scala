@@ -9,13 +9,13 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  * @param catalogUnderscoretype 
  * @param hotelUnderscoreids 
- * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  */
-case class CatalogsHotelItemsPostFilter(catalogUnderscoretype: String,
-                hotelUnderscoreids: Seq[String],
-                catalogUnderscoreid: Option[String]
+case class CatalogsHotelItemsPostFilter(catalogUnderscoreid: Option[String],
+                catalogUnderscoretype: String,
+                hotelUnderscoreids: Seq[String]
                 )
 
 object CatalogsHotelItemsPostFilter {

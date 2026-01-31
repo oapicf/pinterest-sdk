@@ -12,8 +12,8 @@ module CatalogsCreativeAssetsItemsFilter =
   //#endregion
 
   type CatalogsCreativeAssetsItemsFilter = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     CreativeAssetsIds : string[];
-    CatalogId : string;
   }
   //#endregion

@@ -48,22 +48,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	BulkUpsertStatus getStatus();
-
-	/*! \brief Set 
-	 */
-	void setStatus(BulkUpsertStatus  status);
-	/*! \brief Get 
-	 */
 	std::string getResultUrl();
 
 	/*! \brief Set 
 	 */
 	void setResultUrl(std::string  result_url);
+	/*! \brief Get 
+	 */
+	BulkUpsertStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(BulkUpsertStatus  status);
 
 private:
-	BulkUpsertStatus status;
 	std::string result_url;
+	BulkUpsertStatus status;
 	void __init();
 	void __cleanup();
 

@@ -7,11 +7,11 @@ goog.provide('API.Client.CatalogsHotelGuestRatings');
 API.Client.CatalogsHotelGuestRatings = function() {}
 
 /**
- * Your hotel's rating.
+ * Max value for the hotel rating score.
  * @type {!number}
  * @export
  */
-API.Client.CatalogsHotelGuestRatings.prototype.score;
+API.Client.CatalogsHotelGuestRatings.prototype.maxScore;
 
 /**
  * Total number of people who have rated this hotel.
@@ -21,16 +21,16 @@ API.Client.CatalogsHotelGuestRatings.prototype.score;
 API.Client.CatalogsHotelGuestRatings.prototype.numberOfReviewers;
 
 /**
- * Max value for the hotel rating score.
- * @type {!number}
- * @export
- */
-API.Client.CatalogsHotelGuestRatings.prototype.maxScore;
-
-/**
  * System you use for guest reviews.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelGuestRatings.prototype.ratingSystem;
+
+/**
+ * Your hotel's rating.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsHotelGuestRatings.prototype.score;
 

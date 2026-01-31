@@ -27,8 +27,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupCreateRequest", description = "Request object for creating a hotel product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalProductGroupCreateRequest {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -65,13 +67,11 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
-
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsHotelProductGroupFilters filters;
 
-  private String catalogId;
+  private String name;
 
   public CatalogsHotelProductGroupCreateRequest() {
     super();
@@ -80,10 +80,30 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelProductGroupCreateRequest(CatalogTypeEnum catalogType, String name, CatalogsHotelProductGroupFilters filters, String catalogId) {
+  public CatalogsHotelProductGroupCreateRequest(String catalogId, CatalogTypeEnum catalogType, CatalogsHotelProductGroupFilters filters, String name) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.name = name;
     this.filters = filters;
+    this.name = name;
+  }
+
+  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the hotel product group.
+   * @return catalogId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -105,26 +125,6 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsHotelProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public CatalogsHotelProductGroupCreateRequest description(String description) {
@@ -167,24 +167,24 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
     this.filters = filters;
   }
 
-  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Catalog id pertaining to the hotel product group.
-   * @return catalogId
+   * Get name
+   * @return name
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
@@ -196,11 +196,11 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         equalsNullable(this.description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -209,7 +209,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, hashCodeNullable(description), filters, catalogId);
+    return Objects.hash(catalogId, catalogType, hashCodeNullable(description), filters, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,11 +223,11 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

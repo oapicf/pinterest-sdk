@@ -73,8 +73,8 @@ private class OASCatalogsHotelGuestRatingsTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelGuestRatings catalogsHotelGuestRatings = new OASCatalogsHotelGuestRatings();
         Map<String, String> x-property-mappings = catalogsHotelGuestRatings.getx-property-mappings();
-        System.assertEquals('numberOfReviewers', x-property-mappings.get('number_of_reviewers'));
         System.assertEquals('maxScore', x-property-mappings.get('max_score'));
+        System.assertEquals('numberOfReviewers', x-property-mappings.get('number_of_reviewers'));
         System.assertEquals('ratingSystem', x-property-mappings.get('rating_system'));
     }
 }

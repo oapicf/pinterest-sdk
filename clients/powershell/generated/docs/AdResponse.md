@@ -10,18 +10,20 @@ Name | Type | Description | Notes
 **CarouselIosDeepLinks** | **String[]** | Comma-separated deep links for the carousel pin on iOS. | [optional] 
 **ClickTrackingUrl** | **String** | Tracking url for the ad clicks. | [optional] 
 **CreativeType** | [**CreativeType**](CreativeType.md) |  | [optional] 
+**CustomizableCtaType** | [**CustomizableCTAType**](CustomizableCTAType.md) |  | [optional] 
 **DestinationUrl** | **String** | Destination URL. | [optional] 
+**DisclosureType** | [**DisclosureType**](DisclosureType.md) |  | [optional] 
+**DisclosureUrl** | **String** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
+**GridClickType** | [**GridClickType**](GridClickType.md) |  | [optional] 
 **IosDeepLink** | **String** | Deep link URL for iOS devices. | [optional] 
 **IsPinDeleted** | **Boolean** | Is original pin deleted? | [optional] 
 **IsRemovable** | **Boolean** | Is pin repinnable? | [optional] 
+**LeadFormId** | **String** | Lead form ID for lead ad generation. | [optional] 
 **Name** | **String** | Name of the ad - 255 chars max. | [optional] 
+**QuizPinData** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **Status** | [**EntityStatus**](EntityStatus.md) |  | [optional] 
 **TrackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
 **ViewTrackingUrl** | **String** | Tracking URL for ad impressions. | [optional] 
-**LeadFormId** | **String** | Lead form ID for lead ad generation. | [optional] 
-**GridClickType** | [**GridClickType**](GridClickType.md) |  | [optional] 
-**CustomizableCtaType** | **String** | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) | [optional] 
-**QuizPinData** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **PinId** | **String** | Pin ID. | [optional] 
 **AdAccountId** | **String** | The ID of the advertiser that this ad belongs to. | [optional] 
 **CampaignId** | **String** | ID of the ad campaign that contains this ad. | [optional] 
@@ -31,9 +33,9 @@ Name | Type | Description | Notes
 **RejectedReasons** | **String[]** | Enum reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is &quot;&quot;REJECTED&quot;&quot;. | [optional] 
 **RejectionLabels** | **String[]** | Text reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is &quot;&quot;REJECTED&quot;&quot;. | [optional] 
 **ReviewStatus** | **String** | Ad review status | [optional] 
+**SummaryStatus** | [**PinPromotionSummaryStatus**](PinPromotionSummaryStatus.md) | Ad summary status | [optional] 
 **Type** | **String** | Always &quot;&quot;ad&quot;&quot;. | [optional] 
 **UpdatedTime** | **Int32** | Last update time. Unix timestamp in seconds. | [optional] 
-**SummaryStatus** | [**PinPromotionSummaryStatus**](PinPromotionSummaryStatus.md) | Ad summary status | [optional] 
 
 ## Examples
 
@@ -46,18 +48,20 @@ $AdResponse = Initialize-PSOpenAPIToolsAdResponse  -AdGroupId 2680059592705 `
  -CarouselIosDeepLinks null `
  -ClickTrackingUrl null `
  -CreativeType null `
+ -CustomizableCtaType null `
  -DestinationUrl null `
+ -DisclosureType null `
+ -DisclosureUrl null `
+ -GridClickType null `
  -IosDeepLink null `
  -IsPinDeleted false `
  -IsRemovable false `
+ -LeadFormId null `
  -Name null `
+ -QuizPinData null `
  -Status null `
  -TrackingUrls null `
  -ViewTrackingUrl null `
- -LeadFormId null `
- -GridClickType null `
- -CustomizableCtaType LEARN_MORE `
- -QuizPinData null `
  -PinId 394205773611545468 `
  -AdAccountId 549755885175 `
  -CampaignId 626735565838 `
@@ -67,9 +71,9 @@ $AdResponse = Initialize-PSOpenAPIToolsAdResponse  -AdGroupId 2680059592705 `
  -RejectedReasons null `
  -RejectionLabels null `
  -ReviewStatus PENDING `
+ -SummaryStatus null `
  -Type pinpromotion `
- -UpdatedTime 1451431341 `
- -SummaryStatus null
+ -UpdatedTime 1451431341
 ```
 
 - Convert the resource to JSON

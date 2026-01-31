@@ -1,47 +1,10 @@
 goog.provide('API.Client.PinCreate');
 
 /**
- * Pin
+ * Resource create operation model.
  * @record
  */
 API.Client.PinCreate = function() {}
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.PinCreate.prototype.id;
-
-/**
- * @type {!Date}
- * @export
- */
-API.Client.PinCreate.prototype.createdAt;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.PinCreate.prototype.link;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.PinCreate.prototype.title;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.PinCreate.prototype.description;
-
-/**
- * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
- * @type {!string}
- * @export
- */
-API.Client.PinCreate.prototype.dominantColor;
 
 /**
  * @type {!string}
@@ -64,16 +27,23 @@ API.Client.PinCreate.prototype.boardId;
 API.Client.PinCreate.prototype.boardSectionId;
 
 /**
- * @type {!API.Client.BoardOwner}
+ * @type {!string}
  * @export
  */
-API.Client.PinCreate.prototype.boardOwner;
+API.Client.PinCreate.prototype.description;
 
 /**
- * @type {!API.Client.PinMedia}
+ * Dominant pin color. Hex number, e.g. `#6E7874`.
+ * @type {!string}
  * @export
  */
-API.Client.PinCreate.prototype.media;
+API.Client.PinCreate.prototype.dominantColor;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.PinCreate.prototype.link;
 
 /**
  * @type {!API.Client.PinMediaSource}
@@ -82,16 +52,22 @@ API.Client.PinCreate.prototype.media;
 API.Client.PinCreate.prototype.mediaSource;
 
 /**
- * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+ * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
  * @type {!string}
  * @export
  */
 API.Client.PinCreate.prototype.parentPinId;
 
 /**
- * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+ * The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
  * @type {!string}
  * @export
  */
-API.Client.PinCreate.prototype.note;
+API.Client.PinCreate.prototype.sponsorId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.PinCreate.prototype.title;
 

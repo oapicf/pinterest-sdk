@@ -27,35 +27,11 @@ public class MultipleProductGroupsInnerTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
     public void descriptionTest() {
         // TODO: test description
-    }
-
-    /**
-     * Test the property 'isFeatured'
-     */
-    @Test
-    public void isFeaturedTest() {
-        // TODO: test isFeatured
-    }
-
-    /**
-     * Test the property 'filters'
-     */
-    @Test
-    public void filtersTest() {
-        // TODO: test filters
     }
 
     /**
@@ -67,11 +43,27 @@ public class MultipleProductGroupsInnerTest {
     }
 
     /**
-     * Test the property 'catalogType'
+     * Test the property 'filters'
      */
     @Test
-    public void catalogTypeTest() {
-        // TODO: test catalogType
+    public void filtersTest() {
+        // TODO: test filters
+    }
+
+    /**
+     * Test the property 'isFeatured'
+     */
+    @Test
+    public void isFeaturedTest() {
+        // TODO: test isFeatured
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
@@ -80,6 +72,14 @@ public class MultipleProductGroupsInnerTest {
     @Test
     public void catalogIdTest() {
         // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'catalogType'
+     */
+    @Test
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
+**items** | [**[ItemCreateBatchRecord]**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 **language** | **String** | We recommend using the CatalogsLocale values. | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
-**items** | [**[ItemCreateBatchRecord]**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 
 
 

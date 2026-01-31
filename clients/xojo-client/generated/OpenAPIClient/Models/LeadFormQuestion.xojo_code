@@ -2,11 +2,6 @@
 Protected Class LeadFormQuestion
 
 	#tag Property, Flags = &h0
-		question_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		custom_question_field_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -24,6 +19,11 @@ Protected Class LeadFormQuestion
 			Question options for a custom question.
 		#tag EndNote
 		custom_question_options() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		question_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -64,14 +64,6 @@ Protected Class LeadFormQuestion
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="question_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="LeadFormQuestionType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="custom_question_field_type"
 			Visible=false
 			Group="Behavior"
@@ -93,6 +85,14 @@ Protected Class LeadFormQuestion
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="question_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="LeadFormQuestionType"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

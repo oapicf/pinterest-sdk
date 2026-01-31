@@ -6,24 +6,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PinUpdateCarouselSlotsInner;
+import org.openapitools.model.CarouselSlot;
 
 @Canonical
 class PinUpdate {
-    /* Pin's alternative text. */
+    
     String altText
-    /* The id of the board to move the Pin onto. */
+    /* The board to which this Pin belongs. */
     String boardId
-    /* <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID. */
+    /* The board section to which this Pin belongs. */
     String boardSectionId
-    /* Pin description - 800 characters maximum. */
-    String description
-    /* URL viewer is taken to when they click pin. */
-    String link
-    /* The native pin title that creators explicitly prefer to display. */
-    String title
     /* Carousel Pin slots data. */
-    List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>()
-    /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    String note
+    List<CarouselSlot> carouselSlots = new ArrayList<>()
+    
+    String description
+    
+    String link
+    
+    String title
 }

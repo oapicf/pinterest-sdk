@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The date range type | [optional] 
 **range** | **String** | The dynamic range type | [optional] 
+**type** | **String** | The date range type | [optional] 
 
 
 
@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 * `MONTH_TO_DATE` (value: `"MONTH_TO_DATE"`)
 
 * `LAST_MONTH` (value: `"LAST_MONTH"`)
+
+* `LAST_QUARTER` (value: `"LAST_QUARTER"`)
 
 
 

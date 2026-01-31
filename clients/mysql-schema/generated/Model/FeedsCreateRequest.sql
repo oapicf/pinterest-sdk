@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `feeds_create_request`
 --
-SELECT `default_currency`, `name`, `format`, `default_locale`, `credentials`, `location`, `preferred_processing_schedule`, `catalog_type`, `default_country`, `default_availability`, `status`, `catalog_id` FROM `feeds_create_request` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status` FROM `feeds_create_request` WHERE 1;
 
 --
 -- INSERT template for table `feeds_create_request`
 --
-INSERT INTO `feeds_create_request`(`default_currency`, `name`, `format`, `default_locale`, `credentials`, `location`, `preferred_processing_schedule`, `catalog_type`, `default_country`, `default_availability`, `status`, `catalog_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `feeds_create_request`(`catalog_id`, `catalog_type`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `feeds_create_request`
 --
-UPDATE `feeds_create_request` SET `default_currency` = ?, `name` = ?, `format` = ?, `default_locale` = ?, `credentials` = ?, `location` = ?, `preferred_processing_schedule` = ?, `catalog_type` = ?, `default_country` = ?, `default_availability` = ?, `status` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `feeds_create_request` SET `catalog_id` = ?, `catalog_type` = ?, `credentials` = ?, `default_availability` = ?, `default_country` = ?, `default_currency` = ?, `default_locale` = ?, `format` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `feeds_create_request`

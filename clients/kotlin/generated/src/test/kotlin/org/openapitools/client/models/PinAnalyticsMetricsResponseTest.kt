@@ -26,16 +26,16 @@ class PinAnalyticsMetricsResponseTest : ShouldSpec() {
         // uncomment below to create an instance of PinAnalyticsMetricsResponse
         //val modelInstance = PinAnalyticsMetricsResponse()
 
-        // to test the property `lifetimeMetrics` - The lifetime metric name and value.
-        should("test lifetimeMetrics") {
-            // uncomment below to test the property
-            //modelInstance.lifetimeMetrics shouldBe ("TODO")
-        }
-
         // to test the property `dailyMetrics` - Array with the requested daily metric records
         should("test dailyMetrics") {
             // uncomment below to test the property
             //modelInstance.dailyMetrics shouldBe ("TODO")
+        }
+
+        // to test the property `lifetimeMetrics` - The lifetime metric name and value.
+        should("test lifetimeMetrics") {
+            // uncomment below to test the property
+            //modelInstance.lifetimeMetrics shouldBe ("TODO")
         }
 
         // to test the property `summaryMetrics` - The metric name and value over the requested period for each requested metric

@@ -20,14 +20,32 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * TemplatesList200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplatesList200Response   {
+  @JsonProperty("bookmark")
+  private String bookmark;
+
   @JsonProperty("items")
   
   private List<TemplateResponse> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  private String bookmark;
+  public TemplatesList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  @ApiModelProperty(value = "")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public TemplatesList200Response items(List<TemplateResponse> items) {
     this.items = items;
@@ -55,24 +73,6 @@ public class TemplatesList200Response   {
     this.items = items;
   }
 
-  public TemplatesList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  @ApiModelProperty(value = "")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -83,13 +83,13 @@ public class TemplatesList200Response   {
       return false;
     }
     TemplatesList200Response templatesList200Response = (TemplatesList200Response) o;
-    return Objects.equals(this.items, templatesList200Response.items) &&
-        Objects.equals(this.bookmark, templatesList200Response.bookmark);
+    return Objects.equals(this.bookmark, templatesList200Response.bookmark) &&
+        Objects.equals(this.items, templatesList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -97,8 +97,8 @@ public class TemplatesList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplatesList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

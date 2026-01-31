@@ -138,7 +138,7 @@ Protected Class BusinessAccessInviteApi
 		  // Operation cancel_invites_or_requests
 		  // Cancel invites/requests
 		  // - 
-		  // - parameter businessId: (path) Business id 
+		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter cancelInvitesBody: (body) A list with invite ids 
 		  //
 		  // Invokes BusinessAccessInviteApiCallbackHandler.CancelInvitesOrRequestsCallback(DeleteInvitesResultsResponseArray) on completion. 
@@ -404,7 +404,7 @@ Protected Class BusinessAccessInviteApi
 		  // Operation create_membership_or_partnership_invites
 		  // Create invites or requests
 		  // - 
-		  // - parameter businessId: (path) Business id 
+		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter createMembershipOrPartnershipInvitesBody: (body) An object with the properties: invite_type, partners, members, business_role 
 		  //
 		  // Invokes BusinessAccessInviteApiCallbackHandler.CreateMembershipOrPartnershipInvitesCallback(CreateInvitesResultsResponseArray) on completion. 

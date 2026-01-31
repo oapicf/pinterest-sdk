@@ -8,8 +8,8 @@
 
 (def catalogs-hotel-list-products-by-catalog-based-filter-request-data
   {
-   (ds/req :catalog_type) string?
    (ds/req :catalog_id) string?
+   (ds/req :catalog_type) string?
    (ds/req :filters) catalogs-hotel-product-group-filters-spec
    })
 

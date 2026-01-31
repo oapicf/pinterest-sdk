@@ -7,33 +7,42 @@
 #' @title AudienceInsightCategoryCommon
 #' @description AudienceInsightCategoryCommon Class
 #' @format An \code{R6Class} generator object
+#' @field id  character [optional]
+#' @field index  numeric [optional]
 #' @field key  character [optional]
 #' @field name  character [optional]
 #' @field ratio  numeric [optional]
-#' @field index  numeric [optional]
-#' @field id  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AudienceInsightCategoryCommon <- R6::R6Class(
   "AudienceInsightCategoryCommon",
   public = list(
+    `id` = NULL,
+    `index` = NULL,
     `key` = NULL,
     `name` = NULL,
     `ratio` = NULL,
-    `index` = NULL,
-    `id` = NULL,
 
     #' @description
     #' Initialize a new AudienceInsightCategoryCommon class.
     #'
+    #' @param id id
+    #' @param index index
     #' @param key key
     #' @param name name
     #' @param ratio ratio
-    #' @param index index
-    #' @param id id
     #' @param ... Other optional arguments.
-    initialize = function(`key` = NULL, `name` = NULL, `ratio` = NULL, `index` = NULL, `id` = NULL, ...) {
+    initialize = function(`id` = NULL, `index` = NULL, `key` = NULL, `name` = NULL, `ratio` = NULL, ...) {
+      if (!is.null(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!is.null(`index`)) {
+        self$`index` <- `index`
+      }
       if (!is.null(`key`)) {
         if (!(is.character(`key`) && length(`key`) == 1)) {
           stop(paste("Error! Invalid data for `key`. Must be a string:", `key`))
@@ -48,15 +57,6 @@ AudienceInsightCategoryCommon <- R6::R6Class(
       }
       if (!is.null(`ratio`)) {
         self$`ratio` <- `ratio`
-      }
-      if (!is.null(`index`)) {
-        self$`index` <- `index`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
       }
     },
 
@@ -91,6 +91,14 @@ AudienceInsightCategoryCommon <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AudienceInsightCategoryCommonObject <- list()
+      if (!is.null(self$`id`)) {
+        AudienceInsightCategoryCommonObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`index`)) {
+        AudienceInsightCategoryCommonObject[["index"]] <-
+          self$`index`
+      }
       if (!is.null(self$`key`)) {
         AudienceInsightCategoryCommonObject[["key"]] <-
           self$`key`
@@ -103,14 +111,6 @@ AudienceInsightCategoryCommon <- R6::R6Class(
         AudienceInsightCategoryCommonObject[["ratio"]] <-
           self$`ratio`
       }
-      if (!is.null(self$`index`)) {
-        AudienceInsightCategoryCommonObject[["index"]] <-
-          self$`index`
-      }
-      if (!is.null(self$`id`)) {
-        AudienceInsightCategoryCommonObject[["id"]] <-
-          self$`id`
-      }
       return(AudienceInsightCategoryCommonObject)
     },
 
@@ -121,6 +121,12 @@ AudienceInsightCategoryCommon <- R6::R6Class(
     #' @return the instance of AudienceInsightCategoryCommon
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`index`)) {
+        self$`index` <- this_object$`index`
+      }
       if (!is.null(this_object$`key`)) {
         self$`key` <- this_object$`key`
       }
@@ -129,12 +135,6 @@ AudienceInsightCategoryCommon <- R6::R6Class(
       }
       if (!is.null(this_object$`ratio`)) {
         self$`ratio` <- this_object$`ratio`
-      }
-      if (!is.null(this_object$`index`)) {
-        self$`index` <- this_object$`index`
-      }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
       }
       self
     },
@@ -157,11 +157,11 @@ AudienceInsightCategoryCommon <- R6::R6Class(
     #' @return the instance of AudienceInsightCategoryCommon
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`id` <- this_object$`id`
+      self$`index` <- this_object$`index`
       self$`key` <- this_object$`key`
       self$`name` <- this_object$`name`
       self$`ratio` <- this_object$`ratio`
-      self$`index` <- this_object$`index`
-      self$`id` <- this_object$`id`
       self
     },
 

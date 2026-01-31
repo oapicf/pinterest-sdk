@@ -48,6 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -62,13 +69,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get We recommend using the CatalogsLocale values.
-	 */
-	std::string getLanguage();
-
-	/*! \brief Set We recommend using the CatalogsLocale values.
-	 */
-	void setLanguage(std::string  language);
 	/*! \brief Get Array with creative assets item operations
 	 */
 	std::list<CatalogsCreativeAssetsBatchItem> getItems();
@@ -76,20 +76,20 @@ public:
 	/*! \brief Set Array with creative assets item operations
 	 */
 	void setItems(std::list <CatalogsCreativeAssetsBatchItem> items);
-	/*! \brief Get Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	std::string getCatalogId();
+	std::string getLanguage();
 
-	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setLanguage(std::string  language);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
 	Country country;
-	std::string language;
 	std::list <CatalogsCreativeAssetsBatchItem>items;
-	std::string catalog_id;
+	std::string language;
 	void __init();
 	void __cleanup();
 

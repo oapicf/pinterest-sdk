@@ -7,18 +7,18 @@ import play.api.libs.json._
   * @param creativeAssetsId The catalog creative assets id in the merchant namespace
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsCreativeAssetsBatchItem(
+  attributes: CatalogsUpdatableCreativeAssetsAttributes,
   creativeAssetsId: String,
-  operation: CatalogsCreativeAssetsBatchItem.Operation.Value,
-  attributes: CatalogsUpdatableCreativeAssetsAttributes
+  operation: CatalogsCreativeAssetsBatchItem.Operation.Value
   additionalProperties: 
 )
 
 object CatalogsCreativeAssetsBatchItem {
   implicit lazy val catalogsCreativeAssetsBatchItemJsonFormat: Format[CatalogsCreativeAssetsBatchItem] = {
     val realJsonFormat = Json.format[CatalogsCreativeAssetsBatchItem]
-    val declaredPropNames = Set("creativeAssetsId", "operation", "attributes")
+    val declaredPropNames = Set("attributes", "creativeAssetsId", "operation")
     
     Format(
       Reads {

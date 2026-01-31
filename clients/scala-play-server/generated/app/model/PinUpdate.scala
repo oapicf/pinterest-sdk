@@ -3,26 +3,20 @@ package model
 import play.api.libs.json._
 
 /**
-  * Pin fields for updates
-  * @param altText Pin's alternative text.
-  * @param boardId The id of the board to move the Pin onto.
-  * @param boardSectionId <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
-  * @param description Pin description - 800 characters maximum.
-  * @param link URL viewer is taken to when they click pin.
-  * @param title The native pin title that creators explicitly prefer to display.
+  * Resource create or update operation model.
+  * @param boardId The board to which this Pin belongs.
+  * @param boardSectionId The board section to which this Pin belongs.
   * @param carouselSlots Carousel Pin slots data.
-  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinUpdate(
   altText: Option[String],
   boardId: Option[String],
   boardSectionId: Option[String],
+  carouselSlots: Option[List[CarouselSlot]],
   description: Option[String],
   link: Option[String],
-  title: Option[String],
-  carouselSlots: Option[List[PinUpdateCarouselSlotsInner]],
-  note: Option[String]
+  title: Option[String]
 )
 
 object PinUpdate {

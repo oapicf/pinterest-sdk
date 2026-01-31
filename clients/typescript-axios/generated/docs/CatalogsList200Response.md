@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;Catalog&gt;**](Catalog.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;Catalog&gt;**](Catalog.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsList200Response } from './api';
 
 const instance: CatalogsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

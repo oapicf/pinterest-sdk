@@ -16,7 +16,6 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.DetailedError
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.IntegrationLogsRequest
 import org.openapitools.server.api.model.IntegrationLogsSuccessResponse
@@ -25,6 +24,7 @@ import org.openapitools.server.api.model.IntegrationRecord
 import org.openapitools.server.api.model.IntegrationRequest
 import org.openapitools.server.api.model.IntegrationRequestPatch
 import org.openapitools.server.api.model.IntegrationsGetList200Response
+import org.openapitools.server.api.model.IntegrationsLogsPost400Response
 
 class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val service: IntegrationsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -111,7 +111,10 @@ class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                         throw IllegalArgumentException("externalBusinessId is required")
                     }
                     val integrationRequestPatchParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    val integrationRequestPatch = if(integrationRequestPatchParam ==null) null else Gson().fromJson(integrationRequestPatchParam.encode(), IntegrationRequestPatch::class.java)
+                    if (integrationRequestPatchParam == null) {
+                        throw IllegalArgumentException("integrationRequestPatch is required")
+                    }
+                    val integrationRequestPatch = Gson().fromJson(integrationRequestPatchParam.encode(), IntegrationRequestPatch::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.integrationsCommercePatch(externalBusinessId,integrationRequestPatch,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
@@ -125,7 +128,10 @@ class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                 "integrationsCommercePost" -> {
                     val params = context.params
                     val integrationRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    val integrationRequest = if(integrationRequestParam ==null) null else Gson().fromJson(integrationRequestParam.encode(), IntegrationRequest::class.java)
+                    if (integrationRequestParam == null) {
+                        throw IllegalArgumentException("integrationRequest is required")
+                    }
+                    val integrationRequest = Gson().fromJson(integrationRequestParam.encode(), IntegrationRequest::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.integrationsCommercePost(integrationRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()

@@ -28,16 +28,16 @@ pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e get_mmm_report_re
 
 typedef struct get_mmm_report_response_data_t {
     pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e report_status; //enum
-    char *url; // string
     double size; //numeric
+    char *url; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } get_mmm_report_response_data_t;
 
 __attribute__((deprecated)) get_mmm_report_response_data_t *get_mmm_report_response_data_create(
     pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e report_status,
-    char *url,
-    double size
+    double size,
+    char *url
 );
 
 void get_mmm_report_response_data_free(get_mmm_report_response_data_t *get_mmm_report_response_data);

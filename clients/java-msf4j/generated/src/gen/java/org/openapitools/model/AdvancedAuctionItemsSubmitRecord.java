@@ -16,6 +16,7 @@ import org.openapitools.model.AdvancedAuctionBidOptions;
 import org.openapitools.model.AdvancedAuctionItemsSubmitDeleteRecord;
 import org.openapitools.model.AdvancedAuctionItemsSubmitUpsertRecord;
 import org.openapitools.model.AdvancedAuctionOperation;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import org.openapitools.model.UpdateMaskBidOptionField;
@@ -24,22 +25,25 @@ import org.openapitools.model.UpdateMaskBidOptionField;
  * Object describing an item bid option operation
  */
 @ApiModel(description = "Object describing an item bid option operation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsSubmitRecord   {
   @JsonProperty("operation")
   private AdvancedAuctionOperation operation;
 
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("country")
   private Country country;
+
+  @JsonProperty("item_id")
+  private String itemId;
 
   @JsonProperty("language")
   private Language language;
 
   @JsonProperty("bid_options")
   private AdvancedAuctionBidOptions bidOptions;
+
+  @JsonProperty("errors")
+  private List<@Valid AdvancedAuctionOperationError> errors = null;
 
   @JsonProperty("update_mask")
   private List<UpdateMaskBidOptionField> updateMask = ;
@@ -62,24 +66,6 @@ public class AdvancedAuctionItemsSubmitRecord   {
     this.operation = operation;
   }
 
-  public AdvancedAuctionItemsSubmitRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-  **/
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
   public AdvancedAuctionItemsSubmitRecord country(Country country) {
     this.country = country;
     return this;
@@ -96,6 +82,24 @@ public class AdvancedAuctionItemsSubmitRecord   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdvancedAuctionItemsSubmitRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+  **/
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public AdvancedAuctionItemsSubmitRecord language(Language language) {
@@ -134,6 +138,32 @@ public class AdvancedAuctionItemsSubmitRecord   {
     this.bidOptions = bidOptions;
   }
 
+  public AdvancedAuctionItemsSubmitRecord errors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public AdvancedAuctionItemsSubmitRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+   /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   * @return errors
+  **/
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+  public List<@Valid AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+  }
+
   public AdvancedAuctionItemsSubmitRecord updateMask(List<UpdateMaskBidOptionField> updateMask) {
     this.updateMask = updateMask;
     return this;
@@ -168,16 +198,17 @@ public class AdvancedAuctionItemsSubmitRecord   {
     }
     AdvancedAuctionItemsSubmitRecord advancedAuctionItemsSubmitRecord = (AdvancedAuctionItemsSubmitRecord) o;
     return Objects.equals(this.operation, advancedAuctionItemsSubmitRecord.operation) &&
-        Objects.equals(this.itemId, advancedAuctionItemsSubmitRecord.itemId) &&
         Objects.equals(this.country, advancedAuctionItemsSubmitRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsSubmitRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitRecord.language) &&
         Objects.equals(this.bidOptions, advancedAuctionItemsSubmitRecord.bidOptions) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitRecord.errors) &&
         Objects.equals(this.updateMask, advancedAuctionItemsSubmitRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, itemId, country, language, bidOptions, updateMask);
+    return Objects.hash(operation, country, itemId, language, bidOptions, errors, updateMask);
   }
 
   @Override
@@ -186,10 +217,11 @@ public class AdvancedAuctionItemsSubmitRecord   {
     sb.append("class AdvancedAuctionItemsSubmitRecord {\n");
     
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -18,7 +18,9 @@ package org.openapitools.client.models
 import org.openapitools.client.models.AdGroupUpdateRequest
 import org.openapitools.client.models.AdUpdateRequest
 import org.openapitools.client.models.CampaignUpdateRequest
+import org.openapitools.client.models.CatalogsProductGroupsUpdateRequest
 import org.openapitools.client.models.KeywordUpdate
+import org.openapitools.client.models.LabelBulkUpdateRequest
 import org.openapitools.client.models.ProductGroupPromotionUpdateRequest
 
 import com.squareup.moshi.Json
@@ -27,18 +29,17 @@ import com.squareup.moshi.JsonClass
 /**
  * Request for creation of entities in bulk.
  *
- * @param campaigns 
  * @param adGroups 
  * @param ads 
- * @param productGroups 
+ * @param campaigns 
+ * @param catalogProductGroups 
  * @param keywords 
+ * @param labels 
+ * @param productGroups 
  */
 
 
 data class BulkUpsertRequestUpdate (
-
-    @Json(name = "campaigns")
-    val campaigns: kotlin.collections.List<CampaignUpdateRequest>? = null,
 
     @Json(name = "ad_groups")
     val adGroups: kotlin.collections.List<AdGroupUpdateRequest>? = null,
@@ -46,11 +47,20 @@ data class BulkUpsertRequestUpdate (
     @Json(name = "ads")
     val ads: kotlin.collections.List<AdUpdateRequest>? = null,
 
-    @Json(name = "product_groups")
-    val productGroups: kotlin.collections.List<ProductGroupPromotionUpdateRequest>? = null,
+    @Json(name = "campaigns")
+    val campaigns: kotlin.collections.List<CampaignUpdateRequest>? = null,
+
+    @Json(name = "catalog_product_groups")
+    val catalogProductGroups: kotlin.collections.List<CatalogsProductGroupsUpdateRequest>? = null,
 
     @Json(name = "keywords")
-    val keywords: kotlin.collections.List<KeywordUpdate>? = null
+    val keywords: kotlin.collections.List<KeywordUpdate>? = null,
+
+    @Json(name = "labels")
+    val labels: kotlin.collections.List<LabelBulkUpdateRequest>? = null,
+
+    @Json(name = "product_groups")
+    val productGroups: kotlin.collections.List<ProductGroupPromotionUpdateRequest>? = null
 
 ) {
 

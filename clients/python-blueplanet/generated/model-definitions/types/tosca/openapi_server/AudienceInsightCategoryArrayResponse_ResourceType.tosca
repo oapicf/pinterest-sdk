@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceInsightCategoryArrayResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceInsightCategoryArrayResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceInsightCategoryCommon = openapi_server.resourceTypes.AudienceInsightCategoryCommon
+}
+resourceTypes {
+
+  AudienceInsightCategoryArrayResponse {
+    title = AudienceInsightCategoryArrayResponse
+    description = AudienceInsightCategoryArrayResponse
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AudienceInsightCategoryCommon
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceInsightCategoryArrayResponse {
+    title = AudienceInsightCategoryArrayResponse
+    description = AudienceInsightCategoryArrayResponse
+    implements = openapi_server.resourceTypes.AudienceInsightCategoryArrayResponse
+
+  }
+}

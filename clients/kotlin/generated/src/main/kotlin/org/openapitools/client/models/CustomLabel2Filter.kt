@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 data class CustomLabel2Filter (
 
     @Json(name = "CUSTOM_LABEL_2")
-    val CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+    val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria
 
 ) {
 

@@ -2,11 +2,6 @@
 Protected Class PinMediaSourceImageBase64
 
 	#tag Property, Flags = &h0
-		source_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		content_type As String
 	#tag EndProperty
 
@@ -24,16 +19,17 @@ Protected Class PinMediaSourceImageBase64
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			The source type of the media.
+		#tag EndNote
+		source_type As String
+	#tag EndProperty
+
+
     #tag Enum, Name = Source_typeEnum, Type = Integer, Flags = &h0
         
         ImageBase64
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Content_typeEnum, Type = Integer, Flags = &h0
-        
-        ImageSlashJpeg
-        ImageSlashPng
         
     #tag EndEnum
 
@@ -44,19 +40,6 @@ Protected Class PinMediaSourceImageBase64
 		    
 		    Case Source_typeEnum.ImageBase64
 		      Return "image_base64"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Content_typeEnumToString(value As Content_typeEnum) As String
-		  Select Case value
-		    
-		    Case Content_typeEnum.ImageSlashJpeg
-		      Return "image/jpeg"
-		    Case Content_typeEnum.ImageSlashPng
-		      Return "image/png"
 		    
 		  End Select
 		  Return ""
@@ -95,6 +78,14 @@ Protected Class PinMediaSourceImageBase64
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="content_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ContentType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

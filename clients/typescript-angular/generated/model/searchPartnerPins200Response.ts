@@ -11,7 +11,7 @@ import { SummaryPin } from './summaryPin';
 
 
 export interface SearchPartnerPins200Response { 
-    items: Array<SummaryPin>;
     bookmark?: string | null;
+    items: Array<SummaryPin>;
 }
 

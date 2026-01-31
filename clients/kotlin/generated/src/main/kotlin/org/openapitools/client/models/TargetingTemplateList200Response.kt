@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.TargetingTemplateResponseData
+import org.openapitools.client.models.TargetingTemplateGetResponseData
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 data class TargetingTemplateList200Response (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<TargetingTemplateResponseData>,
+    val items: kotlin.collections.List<TargetingTemplateGetResponseData>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

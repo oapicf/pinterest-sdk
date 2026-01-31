@@ -14,24 +14,15 @@ import org.openapitools.vertxweb.server.model.AnalyticsDailyMetrics;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AnalyticsMetricsResponse   {
   
-  private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
   private List<AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
+  private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public AnalyticsMetricsResponse () {
 
   }
 
-  public AnalyticsMetricsResponse (Map<String, BigDecimal> summaryMetrics, List<AnalyticsDailyMetrics> dailyMetrics) {
-    this.summaryMetrics = summaryMetrics;
+  public AnalyticsMetricsResponse (List<AnalyticsDailyMetrics> dailyMetrics, Map<String, BigDecimal> summaryMetrics) {
     this.dailyMetrics = dailyMetrics;
-  }
-
-    
-  @JsonProperty("summary_metrics")
-  public Map<String, BigDecimal> getSummaryMetrics() {
-    return summaryMetrics;
-  }
-  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
   }
 
@@ -44,6 +35,15 @@ public class AnalyticsMetricsResponse   {
     this.dailyMetrics = dailyMetrics;
   }
 
+    
+  @JsonProperty("summary_metrics")
+  public Map<String, BigDecimal> getSummaryMetrics() {
+    return summaryMetrics;
+  }
+  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -54,13 +54,13 @@ public class AnalyticsMetricsResponse   {
       return false;
     }
     AnalyticsMetricsResponse analyticsMetricsResponse = (AnalyticsMetricsResponse) o;
-    return Objects.equals(summaryMetrics, analyticsMetricsResponse.summaryMetrics) &&
-        Objects.equals(dailyMetrics, analyticsMetricsResponse.dailyMetrics);
+    return Objects.equals(dailyMetrics, analyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(summaryMetrics, analyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(summaryMetrics, dailyMetrics);
+    return Objects.hash(dailyMetrics, summaryMetrics);
   }
 
   @Override
@@ -68,8 +68,8 @@ public class AnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AnalyticsMetricsResponse {\n");
     
-    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();
   }

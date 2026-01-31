@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;BoardSection&gt;](BoardSection.md)
 `bookmark` | string
+`items` | [Array&lt;BoardSection&gt;](BoardSection.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { BoardSectionsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies BoardSectionsList200Response
 
 console.log(example)

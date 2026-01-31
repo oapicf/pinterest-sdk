@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsRetailProductMetadata`
 --
-SELECT `item_id`, `item_group_id`, `availability`, `price`, `sale_price`, `currency` FROM `CatalogsRetailProductMetadata` WHERE 1;
+SELECT `availability`, `currency`, `item_group_id`, `item_id`, `price`, `sale_price` FROM `CatalogsRetailProductMetadata` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsRetailProductMetadata`
 --
-INSERT INTO `CatalogsRetailProductMetadata`(`item_id`, `item_group_id`, `availability`, `price`, `sale_price`, `currency`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsRetailProductMetadata`(`availability`, `currency`, `item_group_id`, `item_id`, `price`, `sale_price`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsRetailProductMetadata`
 --
-UPDATE `CatalogsRetailProductMetadata` SET `item_id` = ?, `item_group_id` = ?, `availability` = ?, `price` = ?, `sale_price` = ?, `currency` = ? WHERE 1;
+UPDATE `CatalogsRetailProductMetadata` SET `availability` = ?, `currency` = ?, `item_group_id` = ?, `item_id` = ?, `price` = ?, `sale_price` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsRetailProductMetadata`

@@ -7,9 +7,9 @@
 
 (def catalogs-retail-items-filter-data
   {
+   (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :item_ids) (s/coll-of string?)
-   (ds/opt :catalog_id) string?
    })
 
 (def catalogs-retail-items-filter-spec

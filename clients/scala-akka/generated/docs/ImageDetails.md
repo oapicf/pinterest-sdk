@@ -7,9 +7,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **Int** |  | 
 **height** | **Int** |  | 
 **url** | **String** |  | 
+**width** | **Int** |  | 
 
 
 

@@ -94,7 +94,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@cbaa846");
+            .accept("[Ljava.lang.String;@2040505e");
         request.getParameters()
             .add("country_code", "US") // The query parameter format should be 
             .add("keywords", String.valueOf(Arrays.asList("example"))); // The query parameter format should be csv
@@ -145,7 +145,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1a823633");
+            .accept("[Ljava.lang.String;@1d596a9c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsResponse.class);
@@ -170,12 +170,13 @@ public class KeywordsControllerTest {
         String adAccountId = "example";
         String campaignId = "example";
         String adGroupId = "123123123";
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = Arrays.asList("example");
         List<MatchType> matchTypes = Arrays.asList();
         Integer pageSize = 25;
         String bookmark = "example";
 
         // when
-        KeywordsGet200Response result = controller.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark).block();
+        KeywordsGet200Response result = controller.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark).block();
 
         // then
         Assertions.assertTrue(true);
@@ -196,10 +197,11 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3779df1c");
+            .accept("[Ljava.lang.String;@49da24e3");
         request.getParameters()
             .add("campaign_id", "example") // The query parameter format should be 
             .add("ad_group_id", "123123123") // The query parameter format should be 
+            .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
             .add("match_types", Arrays.asList()) // The query format should be multi
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("bookmark", "example"); // The query parameter format should be 
@@ -250,7 +252,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@69764b66");
+            .accept("[Ljava.lang.String;@3bbd17be");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsResponse.class);
@@ -280,9 +282,11 @@ public class KeywordsControllerTest {
         List<@Size(min = 1, max = 100)String> includeKeywords = Arrays.asList("example");
         Boolean normalizeAgainstGroup = false;
         Integer limit = 50;
+        Boolean includePrediction = false;
+        Boolean includeDemographics = false;
 
         // when
-        TrendingKeywordsResponse result = controller.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit).block();
+        TrendingKeywordsResponse result = controller.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics).block();
 
         // then
         Assertions.assertTrue(true);
@@ -304,14 +308,16 @@ public class KeywordsControllerTest {
             put("trend_type", TrendType.fromValue("growing"));
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@30572696");
+            .accept("[Ljava.lang.String;@19dd6237");
         request.getParameters()
             .add("interests", Arrays.asList("example")) // The query format should be multi
             .add("genders", Arrays.asList("example")) // The query format should be multi
             .add("ages", Arrays.asList("example")) // The query format should be multi
             .add("include_keywords", Arrays.asList("example")) // The query format should be multi
             .add("normalize_against_group", String.valueOf(false)) // The query parameter format should be 
-            .add("limit", String.valueOf(50)); // The query parameter format should be 
+            .add("limit", String.valueOf(50)) // The query parameter format should be 
+            .add("include_prediction", String.valueOf(false)) // The query parameter format should be 
+            .add("include_demographics", String.valueOf(false)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, TrendingKeywordsResponse.class);

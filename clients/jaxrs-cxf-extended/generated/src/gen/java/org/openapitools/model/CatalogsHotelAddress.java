@@ -23,12 +23,6 @@ public class CatalogsHotelAddress  {
   private String city;
 
  /**
-  * State, county, province, where the hotel is located.
-  */
-  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
-  private String region;
-
- /**
   * Country where the hotel is located.
   */
   @ApiModelProperty(value = "Country where the hotel is located.")
@@ -39,6 +33,12 @@ public class CatalogsHotelAddress  {
   */
   @ApiModelProperty(value = "Required for countries with a postal code system. Postal or zip code of the hotel.")
   private String postalCode;
+
+ /**
+  * State, county, province, where the hotel is located.
+  */
+  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
+  private String region;
  /**
   * Primary street address of hotel.
   * @return addr1
@@ -84,30 +84,6 @@ public class CatalogsHotelAddress  {
    */
   public CatalogsHotelAddress city(String city) {
     this.city = city;
-    return this;
-  }
-
- /**
-  * State, county, province, where the hotel is located.
-  * @return region
-  */
-  @JsonProperty("region")
-  public String getRegion() {
-    return region;
-  }
-
-  /**
-   * Sets the <code>region</code> property.
-   */
- public void setRegion(String region) {
-    this.region = region;
-  }
-
-  /**
-   * Sets the <code>region</code> property.
-   */
-  public CatalogsHotelAddress region(String region) {
-    this.region = region;
     return this;
   }
 
@@ -159,6 +135,30 @@ public class CatalogsHotelAddress  {
     return this;
   }
 
+ /**
+  * State, county, province, where the hotel is located.
+  * @return region
+  */
+  @JsonProperty("region")
+  public String getRegion() {
+    return region;
+  }
+
+  /**
+   * Sets the <code>region</code> property.
+   */
+ public void setRegion(String region) {
+    this.region = region;
+  }
+
+  /**
+   * Sets the <code>region</code> property.
+   */
+  public CatalogsHotelAddress region(String region) {
+    this.region = region;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,14 +171,14 @@ public class CatalogsHotelAddress  {
     CatalogsHotelAddress catalogsHotelAddress = (CatalogsHotelAddress) o;
     return Objects.equals(this.addr1, catalogsHotelAddress.addr1) &&
         Objects.equals(this.city, catalogsHotelAddress.city) &&
-        Objects.equals(this.region, catalogsHotelAddress.region) &&
         Objects.equals(this.country, catalogsHotelAddress.country) &&
-        Objects.equals(this.postalCode, catalogsHotelAddress.postalCode);
+        Objects.equals(this.postalCode, catalogsHotelAddress.postalCode) &&
+        Objects.equals(this.region, catalogsHotelAddress.region);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addr1, city, region, country, postalCode);
+    return Objects.hash(addr1, city, country, postalCode, region);
   }
 
   @Override
@@ -188,9 +188,9 @@ public class CatalogsHotelAddress  {
     
     sb.append("    addr1: ").append(toIndentedString(addr1)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
-    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("}");
     return sb.toString();
   }

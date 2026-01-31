@@ -1,8 +1,7 @@
 const samples = require('../samples/LeadAdsApi');
-const AdAccountCreateSubscriptionRequest = require('../models/AdAccountCreateSubscriptionRequest');
-const AdAccountCreateSubscriptionResponse = require('../models/AdAccountCreateSubscriptionResponse');
-const AdAccountGetSubscriptionResponse = require('../models/AdAccountGetSubscriptionResponse');
-const Error = require('../models/Error');
+const LeadSubscription = require('../models/LeadSubscription');
+const LeadSubscriptionPostParamsCreate = require('../models/LeadSubscriptionPostParamsCreate');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const ad_accounts_subscriptions_get_list_200_response = require('../models/ad_accounts_subscriptions_get_list_200_response');
 const utils = require('../utils/utils');
 
@@ -12,7 +11,7 @@ module.exports = {
         noun: 'lead_ads',
         display: {
             label: 'Delete lead ads subscription',
-            description: 'Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;',
             hidden: false,
         },
         operation: {
@@ -59,8 +58,8 @@ module.exports = {
         key: 'adAccountsSubscriptions/getById',
         noun: 'lead_ads',
         display: {
-            label: 'Get lead ads subscription',
-            description: 'Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            label: 'Get lead ads subscription by ID',
+            description: 'Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;',
             hidden: false,
         },
         operation: {
@@ -79,7 +78,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...AdAccountGetSubscriptionResponse.fields('', false),
+                ...LeadSubscription.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -101,7 +100,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdAccountGetSubscriptionResponseSample']
+            sample: samples['LeadSubscriptionSample']
         }
     },
     adAccountsSubscriptions/getList: {
@@ -109,7 +108,7 @@ module.exports = {
         noun: 'lead_ads',
         display: {
             label: 'Get lead ads subscriptions',
-            description: 'Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Get the advertiser&#39;s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.',
             hidden: false,
         },
         operation: {
@@ -121,14 +120,14 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
@@ -144,8 +143,8 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
-                        'page_size': bundle.inputData?.['page_size'],
                         'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },
@@ -164,7 +163,7 @@ module.exports = {
         noun: 'lead_ads',
         display: {
             label: 'Create lead ads subscription',
-            description: 'Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.',
             hidden: false,
         },
         operation: {
@@ -175,10 +174,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...AdAccountCreateSubscriptionRequest.fields(),
+                ...LeadSubscriptionPostParamsCreate.fields(),
             ],
             outputFields: [
-                ...AdAccountCreateSubscriptionResponse.fields('', false),
+                ...LeadSubscription.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -192,7 +191,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AdAccountCreateSubscriptionRequest.mapping(bundle),
+                        ...LeadSubscriptionPostParamsCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -201,7 +200,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdAccountCreateSubscriptionResponseSample']
+            sample: samples['LeadSubscriptionSample']
         }
     },
 }

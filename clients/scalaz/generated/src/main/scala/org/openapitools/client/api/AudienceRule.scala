@@ -12,7 +12,13 @@ import org.joda.time.DateTime
 import AudienceRule._
 
 case class AudienceRule (
-  /* Valid countries include: \"US\", \"CA\", and \"GB\". */
+  /* Ad account ID. */
+  adAccountId: Option[String],
+/* Ad ID for engagement audience filter. */
+  adId: Option[List[String]],
+/* Campaign ID for engagement audience filter. */
+  campaignId: Option[List[String]],
+/* Valid countries include: \"US\", \"CA\", and \"GB\". */
   country: Option[String],
 /* Customer list ID. For CUSTOMER_LIST `audience_type`. */
   customerListId: Option[String],
@@ -20,9 +26,17 @@ case class AudienceRule (
   engagementDomain: Option[List[String]],
 /* Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.  */
   engagementType: Option[String],
+/* Optional for ENGAGEMENT. Engager type value should be 1-2. */
+  engagerType: Option[Integer],
 /* A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event. */
   event: Option[String],
-eventData: Option[PinterestTagEventData],
+eventData: Option[EventData],
+/* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline */
+  eventSource: Option[Any],
+/* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api */
+  ingestionSource: Option[Any],
+/* Objective for engagement audience filter. */
+  objectiveType: Option[List[ObjectiveType]],
 /* Percentage should be 1-10. The targeted audience should be this % size across Pinterest. */
   percentage: Option[Integer],
 /* IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"] */
@@ -36,21 +50,7 @@ eventData: Option[PinterestTagEventData],
 /* Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} */
   url: Option[List[String]],
 /* The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`. */
-  visitorSourceId: Option[String],
-/* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline */
-  eventSource: Option[Any],
-/* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api */
-  ingestionSource: Option[Any],
-/* Optional for ENGAGEMENT. Engager type value should be 1-2. */
-  engagerType: Option[Integer],
-/* Campaign ID for engagement audience filter. */
-  campaignId: Option[List[String]],
-/* Ad ID for engagement audience filter. */
-  adId: Option[List[String]],
-/* Objective for engagement audience filter. */
-  objectiveType: Option[List[ObjectiveType]],
-/* Ad account ID. */
-  adAccountId: Option[String])
+  visitorSourceId: Option[String])
 
 object AudienceRule {
   import DateTimeCodecs._

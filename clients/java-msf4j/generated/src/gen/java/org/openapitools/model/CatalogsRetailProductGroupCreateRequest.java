@@ -15,8 +15,11 @@ import org.openapitools.model.Country;
  * Request object for creating a product group.
  */
 @ApiModel(description = "Request object for creating a product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupCreateRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
    */
@@ -49,8 +52,8 @@ public class CatalogsRetailProductGroupCreateRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("country")
+  private Country country;
 
   @JsonProperty("description")
   private String description;
@@ -58,14 +61,29 @@ public class CatalogsRetailProductGroupCreateRequest   {
   @JsonProperty("filters")
   private CatalogsProductGroupFiltersRequest filters;
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
-  @JsonProperty("country")
-  private Country country;
-
   @JsonProperty("locale")
   private CatalogsLocale locale;
+
+  @JsonProperty("name")
+  private String name;
+
+  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+   /**
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+  **/
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsRetailProductGroupCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -85,22 +103,22 @@ public class CatalogsRetailProductGroupCreateRequest   {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailProductGroupCreateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupCreateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
   **/
-  @ApiModelProperty(required = true, value = "")
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   public CatalogsRetailProductGroupCreateRequest description(String description) {
@@ -139,42 +157,6 @@ public class CatalogsRetailProductGroupCreateRequest   {
     this.filters = filters;
   }
 
-  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Catalog id pertaining to the retail product group.
-   * @return catalogId
-  **/
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsRetailProductGroupCreateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-   /**
-   * Get country
-   * @return country
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
   public CatalogsRetailProductGroupCreateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
     return this;
@@ -184,13 +166,31 @@ public class CatalogsRetailProductGroupCreateRequest   {
    * Get locale
    * @return locale
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public CatalogsLocale getLocale() {
     return locale;
   }
 
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+  public CatalogsRetailProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -203,18 +203,18 @@ public class CatalogsRetailProductGroupCreateRequest   {
       return false;
     }
     CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest = (CatalogsRetailProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
+        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
         Objects.equals(this.description, catalogsRetailProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
-        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -222,13 +222,13 @@ public class CatalogsRetailProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

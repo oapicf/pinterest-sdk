@@ -10,15 +10,18 @@
 
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  */
 export interface PinMediaSourceImageURL { 
-    source_type: PinMediaSourceImageURL.SourceTypeEnum;
-    url: string;
     /**
      * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
      */
     is_standard?: boolean;
+    /**
+     * The source type of the media.
+     */
+    source_type: PinMediaSourceImageURL.SourceTypeEnum;
+    url: string;
 }
 export namespace PinMediaSourceImageURL {
     export const SourceTypeEnum = {

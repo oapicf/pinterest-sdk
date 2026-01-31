@@ -29,6 +29,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 
 OAIResourcesApi*apiInstance = [[OAIResourcesApi alloc] init];
@@ -54,7 +57,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -78,6 +81,9 @@ Get the definitions for ads and organic metrics available across both synchronou
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -109,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -133,6 +139,9 @@ Get interest details
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -164,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -181,7 +190,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -297,6 +306,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* targetingType = APPTYPE; // Public targeting type.
 NSString* clientId = 1094834; // Client ID. (optional)
@@ -338,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

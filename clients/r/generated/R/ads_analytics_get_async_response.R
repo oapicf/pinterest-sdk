@@ -8,8 +8,8 @@
 #' @description AdsAnalyticsGetAsyncResponse Class
 #' @format An \code{R6Class} generator object
 #' @field report_status  \link{BulkReportingJobStatus} [optional]
-#' @field url  character [optional]
 #' @field size  numeric [optional]
+#' @field url  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,17 +17,17 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
   "AdsAnalyticsGetAsyncResponse",
   public = list(
     `report_status` = NULL,
-    `url` = NULL,
     `size` = NULL,
+    `url` = NULL,
 
     #' @description
     #' Initialize a new AdsAnalyticsGetAsyncResponse class.
     #'
     #' @param report_status report_status
-    #' @param url url
     #' @param size size
+    #' @param url url
     #' @param ... Other optional arguments.
-    initialize = function(`report_status` = NULL, `url` = NULL, `size` = NULL, ...) {
+    initialize = function(`report_status` = NULL, `size` = NULL, `url` = NULL, ...) {
       if (!is.null(`report_status`)) {
         if (!(`report_status` %in% c())) {
           stop(paste("Error! \"", `report_status`, "\" cannot be assigned to `report_status`. Must be .", sep = ""))
@@ -35,14 +35,14 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
         stopifnot(R6::is.R6(`report_status`))
         self$`report_status` <- `report_status`
       }
+      if (!is.null(`size`)) {
+        self$`size` <- `size`
+      }
       if (!is.null(`url`)) {
         if (!(is.character(`url`) && length(`url`) == 1)) {
           stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
         }
         self$`url` <- `url`
-      }
-      if (!is.null(`size`)) {
-        self$`size` <- `size`
       }
     },
 
@@ -81,13 +81,13 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
         AdsAnalyticsGetAsyncResponseObject[["report_status"]] <-
           self$`report_status`$toSimpleType()
       }
-      if (!is.null(self$`url`)) {
-        AdsAnalyticsGetAsyncResponseObject[["url"]] <-
-          self$`url`
-      }
       if (!is.null(self$`size`)) {
         AdsAnalyticsGetAsyncResponseObject[["size"]] <-
           self$`size`
+      }
+      if (!is.null(self$`url`)) {
+        AdsAnalyticsGetAsyncResponseObject[["url"]] <-
+          self$`url`
       }
       return(AdsAnalyticsGetAsyncResponseObject)
     },
@@ -104,11 +104,11 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
         `report_status_object`$fromJSON(jsonlite::toJSON(this_object$`report_status`, auto_unbox = TRUE, digits = NA))
         self$`report_status` <- `report_status_object`
       }
-      if (!is.null(this_object$`url`)) {
-        self$`url` <- this_object$`url`
-      }
       if (!is.null(this_object$`size`)) {
         self$`size` <- this_object$`size`
+      }
+      if (!is.null(this_object$`url`)) {
+        self$`url` <- this_object$`url`
       }
       self
     },
@@ -132,8 +132,8 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`report_status` <- BulkReportingJobStatus$new()$fromJSON(jsonlite::toJSON(this_object$`report_status`, auto_unbox = TRUE, digits = NA))
-      self$`url` <- this_object$`url`
       self$`size` <- this_object$`size`
+      self$`url` <- this_object$`url`
       self
     },
 

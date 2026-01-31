@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = OauthAccessTokenResponseCode.class, name = "authorization_code"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials.class, name = "client_credentials"),
-  @JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh.class, name = "everlasting_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh.class, name = "integration_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh.class, name = "refresh_token"),
 })
@@ -28,6 +27,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OauthAccessTokenResponse  {
   
+  @ApiModelProperty(required = true, value = "")
+  private String accessToken;
+
+  @ApiModelProperty(required = true, value = "")
+  private Integer expiresIn;
+
 public enum ResponseTypeEnum {
 
     @JsonProperty("authorization_code") AUTHORIZATION_CODE(String.valueOf("authorization_code")),
@@ -63,40 +68,10 @@ public enum ResponseTypeEnum {
   private ResponseTypeEnum responseType;
 
   @ApiModelProperty(required = true, value = "")
-  private String accessToken;
+  private String scope;
 
   @ApiModelProperty(required = true, value = "")
   private String tokenType = "bearer";
-
-  @ApiModelProperty(required = true, value = "")
-  private Integer expiresIn;
-
-  @ApiModelProperty(required = true, value = "")
-  private String scope;
- /**
-  * Get responseType
-  * @return responseType
-  */
-  @JsonProperty("response_type")
-  public String getResponseType() {
-    return responseType == null ? null : responseType.value();
-  }
-
-  /**
-   * Sets the <code>responseType</code> property.
-   */
- public void setResponseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-  }
-
-  /**
-   * Sets the <code>responseType</code> property.
-   */
-  public OauthAccessTokenResponse responseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-    return this;
-  }
-
  /**
   * Get accessToken
   * @return accessToken
@@ -119,31 +94,6 @@ public enum ResponseTypeEnum {
    */
   public OauthAccessTokenResponse accessToken(String accessToken) {
     this.accessToken = accessToken;
-    return this;
-  }
-
- /**
-  * Get tokenType
-  * @return tokenType
-  */
-  @JsonProperty("token_type")
-  @NotNull
-  public String getTokenType() {
-    return tokenType;
-  }
-
-  /**
-   * Sets the <code>tokenType</code> property.
-   */
- public void setTokenType(String tokenType) {
-    this.tokenType = tokenType;
-  }
-
-  /**
-   * Sets the <code>tokenType</code> property.
-   */
-  public OauthAccessTokenResponse tokenType(String tokenType) {
-    this.tokenType = tokenType;
     return this;
   }
 
@@ -173,6 +123,30 @@ public enum ResponseTypeEnum {
   }
 
  /**
+  * Get responseType
+  * @return responseType
+  */
+  @JsonProperty("response_type")
+  public String getResponseType() {
+    return responseType == null ? null : responseType.value();
+  }
+
+  /**
+   * Sets the <code>responseType</code> property.
+   */
+ public void setResponseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+  }
+
+  /**
+   * Sets the <code>responseType</code> property.
+   */
+  public OauthAccessTokenResponse responseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+    return this;
+  }
+
+ /**
   * Get scope
   * @return scope
   */
@@ -197,6 +171,31 @@ public enum ResponseTypeEnum {
     return this;
   }
 
+ /**
+  * Get tokenType
+  * @return tokenType
+  */
+  @JsonProperty("token_type")
+  @NotNull
+  public String getTokenType() {
+    return tokenType;
+  }
+
+  /**
+   * Sets the <code>tokenType</code> property.
+   */
+ public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
+
+  /**
+   * Sets the <code>tokenType</code> property.
+   */
+  public OauthAccessTokenResponse tokenType(String tokenType) {
+    this.tokenType = tokenType;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -207,16 +206,16 @@ public enum ResponseTypeEnum {
       return false;
     }
     OauthAccessTokenResponse oauthAccessTokenResponse = (OauthAccessTokenResponse) o;
-    return Objects.equals(this.responseType, oauthAccessTokenResponse.responseType) &&
-        Objects.equals(this.accessToken, oauthAccessTokenResponse.accessToken) &&
-        Objects.equals(this.tokenType, oauthAccessTokenResponse.tokenType) &&
+    return Objects.equals(this.accessToken, oauthAccessTokenResponse.accessToken) &&
         Objects.equals(this.expiresIn, oauthAccessTokenResponse.expiresIn) &&
-        Objects.equals(this.scope, oauthAccessTokenResponse.scope);
+        Objects.equals(this.responseType, oauthAccessTokenResponse.responseType) &&
+        Objects.equals(this.scope, oauthAccessTokenResponse.scope) &&
+        Objects.equals(this.tokenType, oauthAccessTokenResponse.tokenType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseType, accessToken, tokenType, expiresIn, scope);
+    return Objects.hash(accessToken, expiresIn, responseType, scope, tokenType);
   }
 
   @Override
@@ -224,11 +223,11 @@ public enum ResponseTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponse {\n");
     
-    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-    &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+    &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 ### Parameters
 
@@ -72,7 +72,7 @@ Search user&#39;s boards
 
 <a name="searchUserPins/list"></a>
 # **searchUserPins/list**
-> pins_list_200_response searchUserPins/list(query, ad\_account\_id, bookmark)
+> search_user_pins_list_200_response searchUserPins/list(query, ad\_account\_id, bookmark)
 
 Search user&#39;s Pins
 
@@ -88,7 +88,7 @@ Search user&#39;s Pins
 
 ### Return type
 
-[**pins_list_200_response**](../Models/pins_list_200_response.md)
+[**search_user_pins_list_200_response**](../Models/search_user_pins_list_200_response.md)
 
 ### Authorization
 

@@ -1,5 +1,6 @@
 package org.openapitools.api
 
+import org.openapitools.model.CreativeType
 import org.openapitools.model.Error
 import org.openapitools.model.Pin
 import org.openapitools.model.PinAnalyticsMetricsResponse
@@ -7,6 +8,7 @@ import org.openapitools.model.PinCreate
 import org.openapitools.model.PinUpdate
 import org.openapitools.model.PinsList200Response
 import org.openapitools.model.PinsSaveRequest
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -96,10 +98,10 @@ class PinsApiTest {
     @Test
     fun pinsGetTest() {
         val pinId: kotlin.String = TODO()
-        val pinMetrics: kotlin.Boolean = TODO()
         val adAccountId: kotlin.String? = TODO()
+        val pinMetrics: kotlin.Boolean = TODO()
         
-        val response: ResponseEntity<Pin> = api.pinsGet(pinId, pinMetrics, adAccountId)
+        val response: ResponseEntity<Pin> = api.pinsGet(pinId, adAccountId, pinMetrics)
 
         // TODO: test validations
     }
@@ -112,16 +114,16 @@ class PinsApiTest {
      */
     @Test
     fun pinsListTest() {
-        val bookmark: kotlin.String? = TODO()
-        val pageSize: kotlin.Int = TODO()
         val pinFilter: kotlin.String? = TODO()
+        val pinMetrics: kotlin.Boolean = TODO()
         val includeProtectedPins: kotlin.Boolean = TODO()
         val pinType: kotlin.String? = TODO()
-        val creativeTypes: kotlin.collections.List<kotlin.String>? = TODO()
+        val creativeTypes: kotlin.collections.List<CreativeType>? = TODO()
         val adAccountId: kotlin.String? = TODO()
-        val pinMetrics: kotlin.Boolean = TODO()
+        val bookmark: kotlin.String? = TODO()
+        val pageSize: kotlin.Int = TODO()
         
-        val response: ResponseEntity<PinsList200Response> = api.pinsList(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics)
+        val response: ResponseEntity<PinsList200Response> = api.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize)
 
         // TODO: test validations
     }

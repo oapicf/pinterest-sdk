@@ -16,7 +16,8 @@ private class OASAdsAnalyticsCampaignTargetingTypeTest {
             OASAdsAnalyticsCampaignTargetingType.AGE_BUCKET,
             OASAdsAnalyticsCampaignTargetingType.REGION,
             OASAdsAnalyticsCampaignTargetingType.CREATIVE_TYPE,
-            OASAdsAnalyticsCampaignTargetingType.AGE_BUCKET_AND_GENDER
+            OASAdsAnalyticsCampaignTargetingType.AGE_BUCKET_AND_GENDER,
+            OASAdsAnalyticsCampaignTargetingType.AUDIENCE_MULTIPLIER
         };
         Set<OASAdsAnalyticsCampaignTargetingType> actual  = new Set<OASAdsAnalyticsCampaignTargetingType>(OASAdsAnalyticsCampaignTargetingType.values());
         System.assertEquals(expected, actual);

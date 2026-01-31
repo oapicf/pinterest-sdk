@@ -22,7 +22,6 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Audience
-import org.openapitools.client.api.AudienceCreateCustomRequest
 import org.openapitools.client.api.AudienceCreateRequest
 import org.openapitools.client.api.AudienceUpdateRequest
 import org.openapitools.client.api.AudiencesList200Response
@@ -50,27 +49,6 @@ object AudiencesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(audienceCreateRequest)
-      resp          <- client.expect[Audience](req)
-
-    } yield resp
-  }
-
-  def audiencesCreateCustom(host: String, adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest): Task[Audience] = {
-    implicit val returnTypeDecoder: EntityDecoder[Audience] = jsonOf[Audience]
-
-    val path = "/ad_accounts/{ad_account_id}/audiences/custom".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(audienceCreateCustomRequest)
       resp          <- client.expect[Audience](req)
 
     } yield resp
@@ -162,27 +140,6 @@ class HttpServiceAudiencesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(audienceCreateRequest)
-      resp          <- client.expect[Audience](req)
-
-    } yield resp
-  }
-
-  def audiencesCreateCustom(adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest): Task[Audience] = {
-    implicit val returnTypeDecoder: EntityDecoder[Audience] = jsonOf[Audience]
-
-    val path = "/ad_accounts/{ad_account_id}/audiences/custom".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(audienceCreateCustomRequest)
       resp          <- client.expect[Audience](req)
 
     } yield resp

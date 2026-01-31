@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **item_type** | **String** |  | [optional] |
-| **title** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
+| **images** | [**ImageSize**](ImageSize.md) |  | [optional] |
+| **item_type** | **String** |  | [optional] |
 | **link** | **String** |  | [optional] |
-| **images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] |
+| **title** | **String** |  | [optional] |
 
 ## Example
 
@@ -16,11 +16,11 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ImageMetadata.new(
-  item_type: null,
-  title: null,
   description: null,
+  images: null,
+  item_type: null,
   link: null,
-  images: null
+  title: null
 )
 ```
 

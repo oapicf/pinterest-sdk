@@ -22,6 +22,7 @@ module AdsAnalyticsCampaignTargetingType =
   let REGIONEnum = "REGION"
   let CREATIVETYPEEnum = "CREATIVE_TYPE"
   let AGEBUCKETANDGENDEREnum = "AGE_BUCKET_AND_GENDER"
+  let AUDIENCEMULTIPLIEREnum = "AUDIENCE_MULTIPLIER"
   type AdsAnalyticsCampaignTargetingType = string
 
   //#endregion

@@ -5,18 +5,25 @@ context("Test SummaryPin")
 
 model_instance <- SummaryPin$new()
 
-test_that("media", {
-  # tests for the property `media` (PinMedia)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
-})
-
 test_that("alt_text", {
   # tests for the property `alt_text` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`alt_text`, "EXPECTED_RESULT")
+})
+
+test_that("description", {
+  # tests for the property `description` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
+test_that("id", {
+  # tests for the property `id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("link", {
@@ -26,16 +33,16 @@ test_that("link", {
   #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
 })
 
+test_that("media", {
+  # tests for the property `media` (PinMedia)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
+})
+
 test_that("title", {
   # tests for the property `title` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
-test_that("description", {
-  # tests for the property `description` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })

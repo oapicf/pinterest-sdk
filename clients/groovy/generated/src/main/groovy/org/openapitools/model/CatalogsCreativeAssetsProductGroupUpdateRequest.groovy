@@ -32,9 +32,9 @@ class CatalogsCreativeAssetsProductGroupUpdateRequest {
     
     CatalogTypeEnum catalogType
     
-    String name
-    
     String description
     
     CatalogsCreativeAssetsProductGroupFilters filters
+    
+    String name
 }

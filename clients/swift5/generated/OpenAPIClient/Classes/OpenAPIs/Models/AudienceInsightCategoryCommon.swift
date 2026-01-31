@@ -13,37 +13,37 @@ import AnyCodable
 @available(*, deprecated, message: "This schema is deprecated.")
 public struct AudienceInsightCategoryCommon: Codable, JSONEncodable, Hashable {
 
+    public var id: String?
+    public var index: Double?
     public var key: String?
     public var name: String?
     public var ratio: Double?
-    public var index: Double?
-    public var id: String?
 
-    public init(key: String? = nil, name: String? = nil, ratio: Double? = nil, index: Double? = nil, id: String? = nil) {
+    public init(id: String? = nil, index: Double? = nil, key: String? = nil, name: String? = nil, ratio: Double? = nil) {
+        self.id = id
+        self.index = index
         self.key = key
         self.name = name
         self.ratio = ratio
-        self.index = index
-        self.id = id
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case index
         case key
         case name
         case ratio
-        case index
-        case id
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(index, forKey: .index)
         try container.encodeIfPresent(key, forKey: .key)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(ratio, forKey: .ratio)
-        try container.encodeIfPresent(index, forKey: .index)
-        try container.encodeIfPresent(id, forKey: .id)
     }
 }
 

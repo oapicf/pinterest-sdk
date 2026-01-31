@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
+import org.openapitools.model.ProductGroupPromotion;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,7 +25,7 @@ public class ProductGroupPromotionCreateRequest  {
 
   @Valid
 
-  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
  /**
    * ID of the Ad Group the Product Group Promotion belongs to.
    * @return adGroupId
@@ -51,20 +51,20 @@ public class ProductGroupPromotionCreateRequest  {
   **/
   @JsonProperty("product_group_promotion")
   @NotNull
-  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
     this.productGroupPromotion.add(productGroupPromotionItem);
     return this;
   }

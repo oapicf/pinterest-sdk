@@ -8,8 +8,8 @@ Object uniquely identifying a retail catalog item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**itemId** | **String** | The catalog retail item id in the merchant namespace |  |
 |**country** | **Country** |  |  |
+|**itemId** | **String** | The catalog retail item id in the merchant namespace |  |
 |**language** | **Language** |  |  |
 
 

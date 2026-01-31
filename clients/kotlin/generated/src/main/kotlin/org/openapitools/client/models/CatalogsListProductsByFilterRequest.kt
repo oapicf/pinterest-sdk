@@ -29,8 +29,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param feedId Catalog Feed id pertaining to the catalog product group filter.
  * @param filters 
- * @param catalogType 
  * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogType 
  * @param country 
  * @param locale 
  */
@@ -45,12 +45,12 @@ data class CatalogsListProductsByFilterRequest (
     @Json(name = "filters")
     val filters: CatalogsProductGroupFilters,
 
-    @Json(name = "catalog_type")
-    override val catalogType: CatalogsListProductsByFilterRequest.CatalogType,
-
     /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     override val catalogId: kotlin.String,
+
+    @Json(name = "catalog_type")
+    override val catalogType: CatalogsListProductsByFilterRequest.CatalogType,
 
     @Json(name = "country")
     override val country: Country,

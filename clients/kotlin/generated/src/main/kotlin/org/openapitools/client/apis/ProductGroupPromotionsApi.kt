@@ -22,10 +22,12 @@ import okhttp3.HttpUrl
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.Granularity
 import org.openapitools.client.models.ProductGroupAnalyticsResponseInner
+import org.openapitools.client.models.ProductGroupPromotion
 import org.openapitools.client.models.ProductGroupPromotionCreateRequest
 import org.openapitools.client.models.ProductGroupPromotionResponse
 import org.openapitools.client.models.ProductGroupPromotionUpdateRequest
 import org.openapitools.client.models.ProductGroupPromotionsList200Response
+import org.openapitools.client.models.ReportingTimeZone
 
 import com.squareup.moshi.Json
 
@@ -134,7 +136,7 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      * Get a product group promotion by id
      * @param adAccountId Unique identifier of an ad account.
      * @param productGroupPromotionId Unique identifier of a product group promotion
-     * @return ProductGroupPromotionResponse
+     * @return ProductGroupPromotion
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -143,11 +145,11 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun productGroupPromotionsGet(adAccountId: kotlin.String, productGroupPromotionId: kotlin.String) : ProductGroupPromotionResponse {
+    fun productGroupPromotionsGet(adAccountId: kotlin.String, productGroupPromotionId: kotlin.String) : ProductGroupPromotion {
         val localVarResponse = productGroupPromotionsGetWithHttpInfo(adAccountId = adAccountId, productGroupPromotionId = productGroupPromotionId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ProductGroupPromotionResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ProductGroupPromotion
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -167,16 +169,16 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      * Get a product group promotion by id
      * @param adAccountId Unique identifier of an ad account.
      * @param productGroupPromotionId Unique identifier of a product group promotion
-     * @return ApiResponse<ProductGroupPromotionResponse?>
+     * @return ApiResponse<ProductGroupPromotion?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun productGroupPromotionsGetWithHttpInfo(adAccountId: kotlin.String, productGroupPromotionId: kotlin.String) : ApiResponse<ProductGroupPromotionResponse?> {
+    fun productGroupPromotionsGetWithHttpInfo(adAccountId: kotlin.String, productGroupPromotionId: kotlin.String) : ApiResponse<ProductGroupPromotion?> {
         val localVariableConfig = productGroupPromotionsGetRequestConfig(adAccountId = adAccountId, productGroupPromotionId = productGroupPromotionId)
 
-        return request<Unit, ProductGroupPromotionResponse>(
+        return request<Unit, ProductGroupPromotion>(
             localVariableConfig
         )
     }
@@ -441,7 +443,9 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "ECPC_IN_DOLLAR") ECPC_IN_DOLLAR("ECPC_IN_DOLLAR"),
          @Json(name = "CTR") CTR("CTR"),
          @Json(name = "ECTR") ECTR("ECTR"),
+         @Json(name = "OUTBOUND_CTR_1") OUTBOUND_CTR_1("OUTBOUND_CTR_1"),
          @Json(name = "CAMPAIGN_NAME") CAMPAIGN_NAME("CAMPAIGN_NAME"),
+         @Json(name = "CAMPAIGN_BRAND_LABEL") CAMPAIGN_BRAND_LABEL("CAMPAIGN_BRAND_LABEL"),
          @Json(name = "PIN_ID") PIN_ID("PIN_ID"),
          @Json(name = "TOTAL_ENGAGEMENT") TOTAL_ENGAGEMENT("TOTAL_ENGAGEMENT"),
          @Json(name = "ENGAGEMENT_1") ENGAGEMENT_1("ENGAGEMENT_1"),
@@ -462,7 +466,13 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "CAMPAIGN_OBJECTIVE_TYPE") CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
          @Json(name = "CPM_IN_MICRO_DOLLAR") CPM_IN_MICRO_DOLLAR("CPM_IN_MICRO_DOLLAR"),
          @Json(name = "CPM_IN_DOLLAR") CPM_IN_DOLLAR("CPM_IN_DOLLAR"),
+         @Json(name = "AD_GROUP_NAME") AD_GROUP_NAME("AD_GROUP_NAME"),
+         @Json(name = "AD_GROUP_BUDGET_TYPE") AD_GROUP_BUDGET_TYPE("AD_GROUP_BUDGET_TYPE"),
+         @Json(name = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY") AD_GROUP_BUDGET_IN_LOCAL_CURRENCY("AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"),
          @Json(name = "AD_GROUP_ENTITY_STATUS") AD_GROUP_ENTITY_STATUS("AD_GROUP_ENTITY_STATUS"),
+         @Json(name = "AD_GROUP_BID_MULTIPLIER") AD_GROUP_BID_MULTIPLIER("AD_GROUP_BID_MULTIPLIER"),
+         @Json(name = "PROMO_ID") PROMO_ID("PROMO_ID"),
+         @Json(name = "PROMO_NAME") PROMO_NAME("PROMO_NAME"),
          @Json(name = "ORDER_LINE_ID") ORDER_LINE_ID("ORDER_LINE_ID"),
          @Json(name = "ORDER_LINE_NAME") ORDER_LINE_NAME("ORDER_LINE_NAME"),
          @Json(name = "CLICKTHROUGH_1") CLICKTHROUGH_1("CLICKTHROUGH_1"),
@@ -480,6 +490,7 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "TOTAL_IMPRESSION_USER") TOTAL_IMPRESSION_USER("TOTAL_IMPRESSION_USER"),
          @Json(name = "TOTAL_IMPRESSION_FREQUENCY") TOTAL_IMPRESSION_FREQUENCY("TOTAL_IMPRESSION_FREQUENCY"),
          @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR") COST_PER_OUTBOUND_CLICK_IN_DOLLAR("COST_PER_OUTBOUND_CLICK_IN_DOLLAR"),
+         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1") COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1("COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"),
          @Json(name = "TOTAL_ENGAGEMENT_SIGNUP") TOTAL_ENGAGEMENT_SIGNUP("TOTAL_ENGAGEMENT_SIGNUP"),
          @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT") TOTAL_ENGAGEMENT_CHECKOUT("TOTAL_ENGAGEMENT_CHECKOUT"),
          @Json(name = "TOTAL_ENGAGEMENT_LEAD") TOTAL_ENGAGEMENT_LEAD("TOTAL_ENGAGEMENT_LEAD"),
@@ -501,13 +512,19 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "TOTAL_WEB_SESSIONS") TOTAL_WEB_SESSIONS("TOTAL_WEB_SESSIONS"),
          @Json(name = "WEB_SESSIONS_1") WEB_SESSIONS_1("WEB_SESSIONS_1"),
          @Json(name = "WEB_SESSIONS_2") WEB_SESSIONS_2("WEB_SESSIONS_2"),
+         @Json(name = "AD_NAME") AD_NAME("AD_NAME"),
          @Json(name = "CAMPAIGN_LIFETIME_SPEND_CAP") CAMPAIGN_LIFETIME_SPEND_CAP("CAMPAIGN_LIFETIME_SPEND_CAP"),
+         @Json(name = "AD_GROUP_OPTIMIZATION") AD_GROUP_OPTIMIZATION("AD_GROUP_OPTIMIZATION"),
          @Json(name = "CAMPAIGN_DAILY_SPEND_CAP") CAMPAIGN_DAILY_SPEND_CAP("CAMPAIGN_DAILY_SPEND_CAP"),
+         @Json(name = "CAMPAIGN_BUDGET_OPTIMIZATION") CAMPAIGN_BUDGET_OPTIMIZATION("CAMPAIGN_BUDGET_OPTIMIZATION"),
+         @Json(name = "IS_PREMIERE_CAMPAIGN") IS_PREMIERE_CAMPAIGN("IS_PREMIERE_CAMPAIGN"),
          @Json(name = "TOTAL_PAGE_VISIT") TOTAL_PAGE_VISIT("TOTAL_PAGE_VISIT"),
          @Json(name = "TOTAL_SIGNUP") TOTAL_SIGNUP("TOTAL_SIGNUP"),
          @Json(name = "TOTAL_CHECKOUT") TOTAL_CHECKOUT("TOTAL_CHECKOUT"),
          @Json(name = "TOTAL_CUSTOM") TOTAL_CUSTOM("TOTAL_CUSTOM"),
          @Json(name = "TOTAL_LEAD") TOTAL_LEAD("TOTAL_LEAD"),
+         @Json(name = "TOTAL_ADD_TO_WISHLIST") TOTAL_ADD_TO_WISHLIST("TOTAL_ADD_TO_WISHLIST"),
+         @Json(name = "TOTAL_SUBSCRIBE") TOTAL_SUBSCRIBE("TOTAL_SUBSCRIBE"),
          @Json(name = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
          @Json(name = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
          @Json(name = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR") TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR("TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"),
@@ -515,8 +532,13 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "PAGE_VISIT_ROAS") PAGE_VISIT_ROAS("PAGE_VISIT_ROAS"),
          @Json(name = "CHECKOUT_ROAS") CHECKOUT_ROAS("CHECKOUT_ROAS"),
          @Json(name = "CUSTOM_ROAS") CUSTOM_ROAS("CUSTOM_ROAS"),
+         @Json(name = "PRODUCT_GROUP_AD_IMAGE_TAG") PRODUCT_GROUP_AD_IMAGE_TAG("PRODUCT_GROUP_AD_IMAGE_TAG"),
+         @Json(name = "PRODUCT_GROUP_AD_VIDEO_TAG") PRODUCT_GROUP_AD_VIDEO_TAG("PRODUCT_GROUP_AD_VIDEO_TAG"),
+         @Json(name = "VIDEO_3SEC_VIEWS_1") VIDEO_3SEC_VIEWS_1("VIDEO_3SEC_VIEWS_1"),
+         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_1") VIDEO_15SEC_UNIQUE_VIEWS_1("VIDEO_15SEC_UNIQUE_VIEWS_1"),
          @Json(name = "VIDEO_MRC_VIEWS_1") VIDEO_MRC_VIEWS_1("VIDEO_MRC_VIEWS_1"),
          @Json(name = "VIDEO_3SEC_VIEWS_2") VIDEO_3SEC_VIEWS_2("VIDEO_3SEC_VIEWS_2"),
+         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_2") VIDEO_15SEC_UNIQUE_VIEWS_2("VIDEO_15SEC_UNIQUE_VIEWS_2"),
          @Json(name = "VIDEO_P100_COMPLETE_2") VIDEO_P100_COMPLETE_2("VIDEO_P100_COMPLETE_2"),
          @Json(name = "VIDEO_P0_COMBINED_2") VIDEO_P0_COMBINED_2("VIDEO_P0_COMBINED_2"),
          @Json(name = "VIDEO_P25_COMBINED_2") VIDEO_P25_COMBINED_2("VIDEO_P25_COMBINED_2"),
@@ -526,10 +548,12 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
          @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
+         @Json(name = "VIDEO_SPEND_IN_DOLLAR") VIDEO_SPEND_IN_DOLLAR("VIDEO_SPEND_IN_DOLLAR"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
          @Json(name = "ECPCV_P95_IN_DOLLAR") ECPCV_P95_IN_DOLLAR("ECPCV_P95_IN_DOLLAR"),
          @Json(name = "TOTAL_VIDEO_3SEC_VIEWS") TOTAL_VIDEO_3SEC_VIEWS("TOTAL_VIDEO_3SEC_VIEWS"),
+         @Json(name = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS") TOTAL_VIDEO_15SEC_UNIQUE_VIEWS("TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"),
          @Json(name = "TOTAL_VIDEO_P100_COMPLETE") TOTAL_VIDEO_P100_COMPLETE("TOTAL_VIDEO_P100_COMPLETE"),
          @Json(name = "TOTAL_VIDEO_P0_COMBINED") TOTAL_VIDEO_P0_COMBINED("TOTAL_VIDEO_P0_COMBINED"),
          @Json(name = "TOTAL_VIDEO_P25_COMBINED") TOTAL_VIDEO_P25_COMBINED("TOTAL_VIDEO_P25_COMBINED"),
@@ -551,6 +575,8 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
          @Json(name = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
          @Json(name = "INAPP_CHECKOUT_COST_PER_ACTION") INAPP_CHECKOUT_COST_PER_ACTION("INAPP_CHECKOUT_COST_PER_ACTION"),
          @Json(name = "TOTAL_OFFLINE_CHECKOUT") TOTAL_OFFLINE_CHECKOUT("TOTAL_OFFLINE_CHECKOUT"),
+         @Json(name = "TOTAL_APP_INSTALL_CONVERSION_RATE") TOTAL_APP_INSTALL_CONVERSION_RATE("TOTAL_APP_INSTALL_CONVERSION_RATE"),
+         @Json(name = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE") TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE("TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"),
          @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_1") IDEA_PIN_PRODUCT_TAG_VISIT_1("IDEA_PIN_PRODUCT_TAG_VISIT_1"),
          @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_2") IDEA_PIN_PRODUCT_TAG_VISIT_2("IDEA_PIN_PRODUCT_TAG_VISIT_2"),
          @Json(name = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT") TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT("TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"),
@@ -678,7 +704,7 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
     /**
      * GET /ad_accounts/{ad_account_id}/product_groups/analytics
      * Get product group analytics
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -686,9 +712,10 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return kotlin.collections.List<ProductGroupAnalyticsResponseInner>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -698,8 +725,8 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun productGroupsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, productGroupIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsProductGroupsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysProductGroupsAnalytics? = ClickWindowDaysProductGroupsAnalytics._30, engagementWindowDays: EngagementWindowDaysProductGroupsAnalytics? = EngagementWindowDaysProductGroupsAnalytics._30, viewWindowDays: ViewWindowDaysProductGroupsAnalytics? = ViewWindowDaysProductGroupsAnalytics._1, conversionReportTime: ConversionReportTimeProductGroupsAnalytics? = ConversionReportTimeProductGroupsAnalytics.TIME_OF_AD_ACTION) : kotlin.collections.List<ProductGroupAnalyticsResponseInner> {
-        val localVarResponse = productGroupsAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, productGroupIds = productGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+    fun productGroupsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, productGroupIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsProductGroupsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysProductGroupsAnalytics? = ClickWindowDaysProductGroupsAnalytics._30, engagementWindowDays: EngagementWindowDaysProductGroupsAnalytics? = EngagementWindowDaysProductGroupsAnalytics._30, viewWindowDays: ViewWindowDaysProductGroupsAnalytics? = ViewWindowDaysProductGroupsAnalytics._1, conversionReportTime: ConversionReportTimeProductGroupsAnalytics? = ConversionReportTimeProductGroupsAnalytics.TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone? = null) : kotlin.collections.List<ProductGroupAnalyticsResponseInner> {
+        val localVarResponse = productGroupsAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, productGroupIds = productGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, reportingTimezone = reportingTimezone)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<ProductGroupAnalyticsResponseInner>
@@ -719,7 +746,7 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
     /**
      * GET /ad_accounts/{ad_account_id}/product_groups/analytics
      * Get product group analytics
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -727,17 +754,18 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return ApiResponse<kotlin.collections.List<ProductGroupAnalyticsResponseInner>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun productGroupsAnalyticsWithHttpInfo(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, productGroupIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsProductGroupsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysProductGroupsAnalytics?, engagementWindowDays: EngagementWindowDaysProductGroupsAnalytics?, viewWindowDays: ViewWindowDaysProductGroupsAnalytics?, conversionReportTime: ConversionReportTimeProductGroupsAnalytics?) : ApiResponse<kotlin.collections.List<ProductGroupAnalyticsResponseInner>?> {
-        val localVariableConfig = productGroupsAnalyticsRequestConfig(adAccountId = adAccountId, startDate = startDate, endDate = endDate, productGroupIds = productGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+    fun productGroupsAnalyticsWithHttpInfo(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, productGroupIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsProductGroupsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysProductGroupsAnalytics?, engagementWindowDays: EngagementWindowDaysProductGroupsAnalytics?, viewWindowDays: ViewWindowDaysProductGroupsAnalytics?, conversionReportTime: ConversionReportTimeProductGroupsAnalytics?, reportingTimezone: ReportingTimeZone?) : ApiResponse<kotlin.collections.List<ProductGroupAnalyticsResponseInner>?> {
+        val localVariableConfig = productGroupsAnalyticsRequestConfig(adAccountId = adAccountId, startDate = startDate, endDate = endDate, productGroupIds = productGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, reportingTimezone = reportingTimezone)
 
         return request<Unit, kotlin.collections.List<ProductGroupAnalyticsResponseInner>>(
             localVariableConfig
@@ -754,12 +782,13 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return RequestConfig
      */
-    fun productGroupsAnalyticsRequestConfig(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, productGroupIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsProductGroupsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysProductGroupsAnalytics?, engagementWindowDays: EngagementWindowDaysProductGroupsAnalytics?, viewWindowDays: ViewWindowDaysProductGroupsAnalytics?, conversionReportTime: ConversionReportTimeProductGroupsAnalytics?) : RequestConfig<Unit> {
+    fun productGroupsAnalyticsRequestConfig(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, productGroupIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsProductGroupsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysProductGroupsAnalytics?, engagementWindowDays: EngagementWindowDaysProductGroupsAnalytics?, viewWindowDays: ViewWindowDaysProductGroupsAnalytics?, conversionReportTime: ConversionReportTimeProductGroupsAnalytics?, reportingTimezone: ReportingTimeZone?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -779,6 +808,9 @@ open class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, 
                 }
                 if (conversionReportTime != null) {
                     put("conversion_report_time", listOf(conversionReportTime.value))
+                }
+                if (reportingTimezone != null) {
+                    put("reporting_timezone", listOf(reportingTimezone.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

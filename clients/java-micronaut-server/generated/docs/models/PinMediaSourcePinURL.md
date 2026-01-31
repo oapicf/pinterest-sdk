@@ -10,14 +10,14 @@ The class is defined in **[PinMediaSourcePinURL.java](../../src/main/java/org/op
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  | 
 **isAffiliateLink** | `Boolean` | This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. |  [optional property]
+**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  | 
+
 
 ## SourceTypeEnum
 
 Name | Value
 ---- | -----
 PIN_URL | `"pin_url"`
-
 
 

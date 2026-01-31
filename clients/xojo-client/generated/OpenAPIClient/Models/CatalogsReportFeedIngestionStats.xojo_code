@@ -2,11 +2,6 @@
 Protected Class CatalogsReportFeedIngestionStats
 
 	#tag Property, Flags = &h0
-		report_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			ID of the catalog entity.
 		#tag EndNote
@@ -43,6 +38,11 @@ Protected Class CatalogsReportFeedIngestionStats
 			Number of occurrences of the issue
 		#tag EndNote
 		occurrences As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		report_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 

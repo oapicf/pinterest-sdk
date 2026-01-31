@@ -8,38 +8,57 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdAccountCreateSubscriptionResponse   {
   
-  private String id;
-  private String cryptographicKey;
-  private String cryptographicAlgorithm;
+  private String adAccountId;
+  private String apiVersion;
   private Integer createdTime;
+  private String cryptographicAlgorithm;
+  private String cryptographicKey;
+  private String id;
+  private String leadFormId;
+  private String userAccountId;
+  private String webhookUrl;
 
   public AdAccountCreateSubscriptionResponse () {
 
   }
 
-  public AdAccountCreateSubscriptionResponse (String id, String cryptographicKey, String cryptographicAlgorithm, Integer createdTime) {
-    this.id = id;
-    this.cryptographicKey = cryptographicKey;
-    this.cryptographicAlgorithm = cryptographicAlgorithm;
+  public AdAccountCreateSubscriptionResponse (String adAccountId, String apiVersion, Integer createdTime, String cryptographicAlgorithm, String cryptographicKey, String id, String leadFormId, String userAccountId, String webhookUrl) {
+    this.adAccountId = adAccountId;
+    this.apiVersion = apiVersion;
     this.createdTime = createdTime;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-    
-  @JsonProperty("cryptographic_key")
-  public String getCryptographicKey() {
-    return cryptographicKey;
-  }
-  public void setCryptographicKey(String cryptographicKey) {
+    this.cryptographicAlgorithm = cryptographicAlgorithm;
     this.cryptographicKey = cryptographicKey;
+    this.id = id;
+    this.leadFormId = leadFormId;
+    this.userAccountId = userAccountId;
+    this.webhookUrl = webhookUrl;
+  }
+
+    
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
+
+    
+  @JsonProperty("api_version")
+  public String getApiVersion() {
+    return apiVersion;
+  }
+  public void setApiVersion(String apiVersion) {
+    this.apiVersion = apiVersion;
+  }
+
+    
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
   }
 
     
@@ -52,12 +71,48 @@ public class AdAccountCreateSubscriptionResponse   {
   }
 
     
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
+  @JsonProperty("cryptographic_key")
+  public String getCryptographicKey() {
+    return cryptographicKey;
   }
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
+  public void setCryptographicKey(String cryptographicKey) {
+    this.cryptographicKey = cryptographicKey;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
+  @JsonProperty("lead_form_id")
+  public String getLeadFormId() {
+    return leadFormId;
+  }
+  public void setLeadFormId(String leadFormId) {
+    this.leadFormId = leadFormId;
+  }
+
+    
+  @JsonProperty("user_account_id")
+  public String getUserAccountId() {
+    return userAccountId;
+  }
+  public void setUserAccountId(String userAccountId) {
+    this.userAccountId = userAccountId;
+  }
+
+    
+  @JsonProperty("webhook_url")
+  public String getWebhookUrl() {
+    return webhookUrl;
+  }
+  public void setWebhookUrl(String webhookUrl) {
+    this.webhookUrl = webhookUrl;
   }
 
 
@@ -70,15 +125,20 @@ public class AdAccountCreateSubscriptionResponse   {
       return false;
     }
     AdAccountCreateSubscriptionResponse adAccountCreateSubscriptionResponse = (AdAccountCreateSubscriptionResponse) o;
-    return Objects.equals(id, adAccountCreateSubscriptionResponse.id) &&
-        Objects.equals(cryptographicKey, adAccountCreateSubscriptionResponse.cryptographicKey) &&
+    return Objects.equals(adAccountId, adAccountCreateSubscriptionResponse.adAccountId) &&
+        Objects.equals(apiVersion, adAccountCreateSubscriptionResponse.apiVersion) &&
+        Objects.equals(createdTime, adAccountCreateSubscriptionResponse.createdTime) &&
         Objects.equals(cryptographicAlgorithm, adAccountCreateSubscriptionResponse.cryptographicAlgorithm) &&
-        Objects.equals(createdTime, adAccountCreateSubscriptionResponse.createdTime);
+        Objects.equals(cryptographicKey, adAccountCreateSubscriptionResponse.cryptographicKey) &&
+        Objects.equals(id, adAccountCreateSubscriptionResponse.id) &&
+        Objects.equals(leadFormId, adAccountCreateSubscriptionResponse.leadFormId) &&
+        Objects.equals(userAccountId, adAccountCreateSubscriptionResponse.userAccountId) &&
+        Objects.equals(webhookUrl, adAccountCreateSubscriptionResponse.webhookUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cryptographicKey, cryptographicAlgorithm, createdTime);
+    return Objects.hash(adAccountId, apiVersion, createdTime, cryptographicAlgorithm, cryptographicKey, id, leadFormId, userAccountId, webhookUrl);
   }
 
   @Override
@@ -86,10 +146,15 @@ public class AdAccountCreateSubscriptionResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountCreateSubscriptionResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    cryptographicKey: ").append(toIndentedString(cryptographicKey)).append("\n");
-    sb.append("    cryptographicAlgorithm: ").append(toIndentedString(cryptographicAlgorithm)).append("\n");
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    cryptographicAlgorithm: ").append(toIndentedString(cryptographicAlgorithm)).append("\n");
+    sb.append("    cryptographicKey: ").append(toIndentedString(cryptographicKey)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
+    sb.append("    userAccountId: ").append(toIndentedString(userAccountId)).append("\n");
+    sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

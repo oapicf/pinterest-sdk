@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;BillingProfilesResponse&gt;**](BillingProfilesResponse.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;BillingProfilesResponse&gt;**](BillingProfilesResponse.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::BillingProfilesGet200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

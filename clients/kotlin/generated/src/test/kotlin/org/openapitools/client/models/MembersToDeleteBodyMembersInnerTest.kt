@@ -26,16 +26,16 @@ class MembersToDeleteBodyMembersInnerTest : ShouldSpec() {
         // uncomment below to create an instance of MembersToDeleteBodyMembersInner
         //val modelInstance = MembersToDeleteBodyMembersInner()
 
-        // to test the property `memberId` - Unique identifier of the member
-        should("test memberId") {
-            // uncomment below to test the property
-            //modelInstance.memberId shouldBe ("TODO")
-        }
-
         // to test the property `businessRole`
         should("test businessRole") {
             // uncomment below to test the property
             //modelInstance.businessRole shouldBe ("TODO")
+        }
+
+        // to test the property `memberId` - Unique identifier of the member
+        should("test memberId") {
+            // uncomment below to test the property
+            //modelInstance.memberId shouldBe ("TODO")
         }
 
     }

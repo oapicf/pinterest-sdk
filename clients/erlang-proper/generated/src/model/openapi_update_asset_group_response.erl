@@ -9,8 +9,8 @@
 -export_type([openapi_update_asset_group_response/0]).
 
 -type openapi_update_asset_group_response() ::
-  [ {'updated_asset_groups', list(openapi_asset_group_binding:openapi_asset_group_binding()) }
-  | {'exceptions', list(openapi_update_asset_group_response_exceptions_inner:openapi_update_asset_group_response_exceptions_inner()) }
+  [ {'exceptions', list(openapi_update_asset_group_response_exceptions_inner:openapi_update_asset_group_response_exceptions_inner()) }
+  | {'updated_asset_groups', list(openapi_asset_group_binding:openapi_asset_group_binding()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_update_asset_group_response() ->
     openapi_update_asset_group_response([]).
 
 openapi_update_asset_group_response(Fields) ->
-  Default = [ {'updated_asset_groups', list(openapi_asset_group_binding:openapi_asset_group_binding()) }
-            , {'exceptions', list(openapi_update_asset_group_response_exceptions_inner:openapi_update_asset_group_response_exceptions_inner()) }
+  Default = [ {'exceptions', list(openapi_update_asset_group_response_exceptions_inner:openapi_update_asset_group_response_exceptions_inner()) }
+            , {'updated_asset_groups', list(openapi_asset_group_binding:openapi_asset_group_binding()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -37,5 +37,11 @@ class CatalogsDeleteRetailItemTest : ShouldSpec() {
             //modelInstance.operation shouldBe ("TODO")
         }
 
+        // to test the property `lastUpdatedTime` - The millisecond timestamp when the item was lastly modified by the merchant.
+        should("test lastUpdatedTime") {
+            // uncomment below to test the property
+            //modelInstance.lastUpdatedTime shouldBe ("TODO")
+        }
+
     }
 }

@@ -16,7 +16,6 @@ open TestHelper
 open IntegrationsApiHandlerTestsHelper
 open OpenAPI.IntegrationsApiHandler
 open OpenAPI.IntegrationsApiHandlerParams
-open OpenAPI.Model.DetailedError
 open OpenAPI.Model.Error
 open OpenAPI.Model.IntegrationLogsRequest
 open OpenAPI.Model.IntegrationLogsSuccessResponse
@@ -25,6 +24,7 @@ open OpenAPI.Model.IntegrationRecord
 open OpenAPI.Model.IntegrationRequest
 open OpenAPI.Model.IntegrationRequestPatch
 open OpenAPI.Model.IntegrationsGetList200Response
+open OpenAPI.Model.IntegrationsLogsPost400Response
 
 module IntegrationsApiHandlerTests =
 

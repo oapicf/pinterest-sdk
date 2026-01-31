@@ -4,13 +4,138 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](OAIBusinessAccessRelationshipsApi.md#brandaccountscreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](OAIBusinessAccessRelationshipsApi.md#brandaccountsupdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](OAIBusinessAccessRelationshipsApi.md#deletebusinessmembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](OAIBusinessAccessRelationshipsApi.md#deletebusinesspartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](OAIBusinessAccessRelationshipsApi.md#getbusinessemployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](OAIBusinessAccessRelationshipsApi.md#getbusinessmembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](OAIBusinessAccessRelationshipsApi.md#getbusinesspartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](OAIBusinessAccessRelationshipsApi.md#systemuserupdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](OAIBusinessAccessRelationshipsApi.md#updatebusinessmemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+# **brandAccountsCreate**
+```objc
+-(NSURLSessionTask*) brandAccountsCreateWithBusinessHierarchyId: (NSString*) businessHierarchyId
+    brandAccountsCreateRequest: (OAIBrandAccountsCreateRequest*) brandAccountsCreateRequest
+        completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler;
+```
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSString* businessHierarchyId = 7009386637860; // business hierarchy node id
+OAIBrandAccountsCreateRequest* brandAccountsCreateRequest = [[OAIBrandAccountsCreateRequest alloc] init]; // 
+
+OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
+
+// Create a Brand Account
+[apiInstance brandAccountsCreateWithBusinessHierarchyId:businessHierarchyId
+              brandAccountsCreateRequest:brandAccountsCreateRequest
+          completionHandler: ^(OAIBrandAccountsCreate200Response* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIBusinessAccessRelationshipsApi->brandAccountsCreate: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **NSString***| business hierarchy node id | 
+ **brandAccountsCreateRequest** | [**OAIBrandAccountsCreateRequest***](OAIBrandAccountsCreateRequest.md)|  | 
+
+### Return type
+
+[**OAIBrandAccountsCreate200Response***](OAIBrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **brandAccountsUpdate**
+```objc
+-(NSURLSessionTask*) brandAccountsUpdateWithBusinessHierarchyId: (NSString*) businessHierarchyId
+    brandAccountId: (NSString*) brandAccountId
+    brandAccountsUpdateRequest: (OAIBrandAccountsUpdateRequest*) brandAccountsUpdateRequest
+        completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler;
+```
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSString* businessHierarchyId = 7009386637860; // business hierarchy node id
+NSString* brandAccountId = 729090764583391194; // Unique identifier of a brand account.
+OAIBrandAccountsUpdateRequest* brandAccountsUpdateRequest = [[OAIBrandAccountsUpdateRequest alloc] init]; // 
+
+OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
+
+// Update a Brand Account
+[apiInstance brandAccountsUpdateWithBusinessHierarchyId:businessHierarchyId
+              brandAccountId:brandAccountId
+              brandAccountsUpdateRequest:brandAccountsUpdateRequest
+          completionHandler: ^(OAIBrandAccountsCreate200Response* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIBusinessAccessRelationshipsApi->brandAccountsUpdate: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **NSString***| business hierarchy node id | 
+ **brandAccountId** | **NSString***| Unique identifier of a brand account. | 
+ **brandAccountsUpdateRequest** | [**OAIBrandAccountsUpdateRequest***](OAIBrandAccountsUpdateRequest.md)|  | 
+
+### Return type
+
+[**OAIBrandAccountsCreate200Response***](OAIBrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteBusinessMembership**
 ```objc
@@ -192,6 +317,7 @@ Name | Type | Description  | Notes
 # **getBusinessMembers**
 ```objc
 -(NSURLSessionTask*) getBusinessMembersWithBusinessId: (NSString*) businessId
+    fetchSystemUsers: (NSNumber*) fetchSystemUsers
     assetsSummary: (NSNumber*) assetsSummary
     businessRoles: (NSArray<OAIMemberBusinessRole>*) businessRoles
     memberIds: (NSString*) memberIds
@@ -214,6 +340,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSNumber* fetchSystemUsers = @(NO); // Fetches system users if True. Fetches regular user employees if False. (optional) (default to @(NO))
 NSNumber* assetsSummary = @(NO); // Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to @(NO))
 NSArray<OAIMemberBusinessRole>* businessRoles = @[[[OAIMemberBusinessRole alloc] init]]; // A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
 NSString* memberIds = 00101010101,2222220101; // A list of business members ids separated by comma. (optional)
@@ -225,6 +352,7 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 
 // Get business members
 [apiInstance getBusinessMembersWithBusinessId:businessId
+              fetchSystemUsers:fetchSystemUsers
               assetsSummary:assetsSummary
               businessRoles:businessRoles
               memberIds:memberIds
@@ -246,6 +374,7 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
+ **fetchSystemUsers** | **NSNumber***| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to @(NO)]
  **assetsSummary** | **NSNumber***| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to @(NO)]
  **businessRoles** | [**NSArray&lt;OAIMemberBusinessRole&gt;***](OAIMemberBusinessRole*.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
  **memberIds** | **NSString***| A list of business members ids separated by comma. | [optional] 
@@ -343,6 +472,66 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **systemUserUpdate**
+```objc
+-(NSURLSessionTask*) systemUserUpdateWithBusinessId: (NSString*) businessId
+    systemUserId: (NSString*) systemUserId
+    systemUserUpdateRequest: (OAISystemUserUpdateRequest*) systemUserUpdateRequest
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* systemUserId = 729090764583391194; // Unique identifier of a system user.
+OAISystemUserUpdateRequest* systemUserUpdateRequest = [[OAISystemUserUpdateRequest alloc] init]; // 
+
+OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
+
+// Update a system user information.
+[apiInstance systemUserUpdateWithBusinessId:businessId
+              systemUserId:systemUserId
+              systemUserUpdateRequest:systemUserUpdateRequest
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAIBusinessAccessRelationshipsApi->systemUserUpdate: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessId** | **NSString***| Unique identifier of the requesting business. | 
+ **systemUserId** | **NSString***| Unique identifier of a system user. | 
+ **systemUserUpdateRequest** | [**OAISystemUserUpdateRequest***](OAISystemUserUpdateRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

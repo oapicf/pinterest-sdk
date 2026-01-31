@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,15 +30,15 @@ type CatalogsProductGroupFilterKeys struct {
 
 	CONDITION CatalogsProductGroupMultipleStringCriteria `json:"CONDITION"`
 
-	CUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_0"`
+	CUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_0"`
 
-	CUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_1"`
+	CUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_1"`
 
-	CUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_2"`
+	CUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_2"`
 
-	CUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_3"`
+	CUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_3"`
 
-	CUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_4"`
+	CUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_4"`
 
 	ITEM_GROUP_ID CatalogsProductGroupMultipleStringCriteria `json:"ITEM_GROUP_ID"`
 
@@ -71,6 +71,18 @@ type CatalogsProductGroupFilterKeys struct {
 	GOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_0"`
 
 	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
+
+	CUSTOMNUMBER0 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_0"`
+
+	CUSTOMNUMBER1 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_1"`
+
+	CUSTOMNUMBER2 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_2"`
+
+	CUSTOMNUMBER3 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_3"`
+
+	CUSTOMNUMBER4 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_4"`
+
+	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
 }
 
 // AssertCatalogsProductGroupFilterKeysRequired checks if the required fields are not zero-ed
@@ -104,6 +116,12 @@ func AssertCatalogsProductGroupFilterKeysRequired(obj CatalogsProductGroupFilter
 		"GOOGLE_PRODUCT_CATEGORY_1": obj.GOOGLEPRODUCTCATEGORY1,
 		"GOOGLE_PRODUCT_CATEGORY_0": obj.GOOGLEPRODUCTCATEGORY0,
 		"PRODUCT_GROUP": obj.PRODUCT_GROUP,
+		"CUSTOM_NUMBER_0": obj.CUSTOMNUMBER0,
+		"CUSTOM_NUMBER_1": obj.CUSTOMNUMBER1,
+		"CUSTOM_NUMBER_2": obj.CUSTOMNUMBER2,
+		"CUSTOM_NUMBER_3": obj.CUSTOMNUMBER3,
+		"CUSTOM_NUMBER_4": obj.CUSTOMNUMBER4,
+		"TITLE_KEYWORDS": obj.TITLE_KEYWORDS,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

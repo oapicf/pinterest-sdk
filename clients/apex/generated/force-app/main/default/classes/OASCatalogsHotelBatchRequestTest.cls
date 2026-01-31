@@ -73,17 +73,17 @@ private class OASCatalogsHotelBatchRequestTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelBatchRequest catalogsHotelBatchRequest = new OASCatalogsHotelBatchRequest();
         Map<String, String> x-property-mappings = catalogsHotelBatchRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsHotelBatchRequest catalogsHotelBatchRequest = new OASCatalogsHotelBatchRequest();
         System.assertEquals(new List<OASCatalogsHotelBatchItem>(), catalogsHotelBatchRequest.items);
+        System.assertEquals(null, catalogsHotelBatchRequest.catalogId);
         System.assertEquals(null, catalogsHotelBatchRequest.catalogType);
         System.assertEquals(null, catalogsHotelBatchRequest.country);
         System.assertEquals(null, catalogsHotelBatchRequest.language);
-        System.assertEquals(null, catalogsHotelBatchRequest.catalogId);
     }
 }

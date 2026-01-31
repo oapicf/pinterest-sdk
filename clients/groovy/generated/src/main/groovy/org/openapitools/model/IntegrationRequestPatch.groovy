@@ -8,27 +8,27 @@ import java.math.BigDecimal;
 @Canonical
 class IntegrationRequestPatch {
     
-    String connectedMerchantId
+    String additionalId1
     
     String connectedAdvertiserId
     
     String connectedLbaId
     
+    String connectedMerchantId
+    
     String connectedTagId
     
     String partnerAccessToken
     
-    String partnerRefreshToken
+    BigDecimal partnerAccessTokenExpiry
+    
+    String partnerMetadata
     
     String partnerPrimaryEmail
     
-    BigDecimal partnerAccessTokenExpiry
+    String partnerRefreshToken
     
     BigDecimal partnerRefreshTokenExpiry
     
     String scopes
-    
-    String additionalId1
-    
-    String partnerMetadata
 }

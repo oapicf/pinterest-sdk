@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * HTTP request details included in the log sent by the client.
- * @param method 
  * @param host HTTP request host from host header.
+ * @param method 
  * @param path HTTP request path.
  * @param requestHeaders HTTP request headers as key-value pairs.
  * @param responseHeaders HTTP response headers as key-value pairs.
@@ -26,11 +26,11 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class IntegrationLogClientRequest(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("method", required = true) val method: IntegrationLogClientRequest.Method,
-
     @Schema(example = "null", required = true, description = "HTTP request host from host header.")
     @get:JsonProperty("host", required = true) val host: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("method", required = true) val method: IntegrationLogClientRequest.Method,
 
     @Schema(example = "null", required = true, description = "HTTP request path.")
     @get:JsonProperty("path", required = true) val path: kotlin.String,

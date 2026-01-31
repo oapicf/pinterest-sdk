@@ -8,11 +8,11 @@ Request object to update catalogs hotel items
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional]
 **catalogType** | [**CatalogType**](#CatalogType) |  | 
 **country** | **Country** |  | 
-**language** | [**Language**](#Language) | We recommend using the CatalogsLocale values. | 
 **items** | [**Seq&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**catalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional]
+**language** | [**Language**](#Language) | We recommend using the CatalogsLocale values. | 
 
 
 ## Enum: CatalogType

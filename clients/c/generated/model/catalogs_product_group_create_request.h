@@ -20,21 +20,21 @@ typedef struct catalogs_product_group_create_request_t catalogs_product_group_cr
 
 
 typedef struct catalogs_product_group_create_request_t {
-    char *name; // string
     char *description; // string
-    int is_featured; //boolean
-    struct catalogs_product_group_filters_request_t *filters; //model
     char *feed_id; // string
+    struct catalogs_product_group_filters_request_t *filters; //model
+    int is_featured; //boolean
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_create_request_t;
 
 __attribute__((deprecated)) catalogs_product_group_create_request_t *catalogs_product_group_create_request_create(
-    char *name,
     char *description,
-    int is_featured,
+    char *feed_id,
     catalogs_product_group_filters_request_t *filters,
-    char *feed_id
+    int is_featured,
+    char *name
 );
 
 void catalogs_product_group_create_request_free(catalogs_product_group_create_request_t *catalogs_product_group_create_request);

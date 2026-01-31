@@ -10,6 +10,60 @@ use crate::{models, types::*};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
+pub enum BrandAccountsSlashCreateResponse {
+    /// Success
+    Status200_Success
+    (models::BrandAccountsCreate200Response)
+    ,
+    /// Invalid parameters.
+    Status400_InvalidParameters
+    (models::Error)
+    ,
+    /// Unexpected error
+    Status0_UnexpectedError
+    (models::Error)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
+pub enum BrandAccountsSlashUpdateResponse {
+    /// Success
+    Status200_Success
+    (models::BrandAccountsCreate200Response)
+    ,
+    /// Invalid parameters.
+    Status400_InvalidParameters
+    (models::Error)
+    ,
+    /// Not authenticated to update Brand Account
+    Status401_NotAuthenticatedToUpdateBrandAccount
+    (models::Error)
+    ,
+    /// Not authorized to update Brand Account
+    Status403_NotAuthorizedToUpdateBrandAccount
+    (models::Error)
+    ,
+    /// Brand account not found
+    Status404_BrandAccountNotFound
+    (models::Error)
+    ,
+    /// This account is not a brand account.
+    Status409_ThisAccountIsNotABrandAccount
+    (models::Error)
+    ,
+    /// This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.
+    Status429_ThisRequestExceededARateLimit
+    (models::Error)
+    ,
+    /// Unexpected error
+    Status0_UnexpectedError
+    (models::Error)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
 pub enum DeleteBusinessMembershipResponse {
     /// Success
     Status200_Success
@@ -79,6 +133,22 @@ pub enum GetSlashBusinessPartnersResponse {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
+pub enum SystemUserSlashUpdateResponse {
+    /// System user updated successfully.
+    Status200_SystemUserUpdatedSuccessfully
+    ,
+    /// Invalid parameters.
+    Status400_InvalidParameters
+    (models::Error)
+    ,
+    /// Unexpected error
+    Status0_UnexpectedError
+    (models::Error)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
 pub enum UpdateSlashBusinessMembershipsResponse {
     /// response
     Status200_Response
@@ -96,6 +166,32 @@ pub enum UpdateSlashBusinessMembershipsResponse {
 #[async_trait]
 #[allow(clippy::ptr_arg)]
 pub trait BusinessAccessRelationships<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
+    /// Create a Brand Account.
+    ///
+    /// BrandAccountsSlashCreate - POST /v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+    async fn brand_accounts_slash_create(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BrandAccountsSlashCreatePathParams,
+            body: &models::BrandAccountsCreateRequest,
+    ) -> Result<BrandAccountsSlashCreateResponse, E>;
+
+    /// Update a Brand Account.
+    ///
+    /// BrandAccountsSlashUpdate - PATCH /v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+    async fn brand_accounts_slash_update(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BrandAccountsSlashUpdatePathParams,
+            body: &models::BrandAccountsUpdateRequest,
+    ) -> Result<BrandAccountsSlashUpdateResponse, E>;
+
     /// Terminate business memberships.
     ///
     /// DeleteBusinessMembership - DELETE /v5/businesses/{business_id}/members
@@ -159,6 +255,19 @@ pub trait BusinessAccessRelationships<E: std::fmt::Debug + Send + Sync + 'static
       path_params: &models::GetSlashBusinessPartnersPathParams,
       query_params: &models::GetSlashBusinessPartnersQueryParams,
     ) -> Result<GetSlashBusinessPartnersResponse, E>;
+
+    /// Update a system user information..
+    ///
+    /// SystemUserSlashUpdate - PATCH /v5/businesses/{business_id}/system_users/{system_user_id}
+    async fn system_user_slash_update(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::SystemUserSlashUpdatePathParams,
+            body: &models::SystemUserUpdateRequest,
+    ) -> Result<SystemUserSlashUpdateResponse, E>;
 
     /// Update member's business role.
     ///

@@ -1,9 +1,10 @@
 const utils = require('../utils/utils');
+const ContentType = require('../models/ContentType');
 const PinMediaSourceImageBase64 = require('../models/PinMediaSourceImageBase64');
 const PinMediaSourceImageURL = require('../models/PinMediaSourceImageURL');
 const PinMediaSourceImagesBase64 = require('../models/PinMediaSourceImagesBase64');
 const PinMediaSourceImagesURL = require('../models/PinMediaSourceImagesURL');
-const PinMediaSourceImagesURL_items_inner = require('../models/PinMediaSourceImagesURL_items_inner');
+const PinMediaSourceImagesURLItem = require('../models/PinMediaSourceImagesURLItem');
 const PinMediaSourcePinURL = require('../models/PinMediaSourcePinURL');
 const PinMediaSourceVideoID = require('../models/PinMediaSourceVideoID');
 
@@ -12,23 +13,8 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}source_type`,
-                label: `[${labelPrefix}source_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'pin_url',
-                ],
-            },
-            {
                 key: `${keyPrefix}content_type`,
-                label: `[${labelPrefix}content_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'image/jpeg',
-                    'image/png',
-                ],
+                ...ContentType.fields(`${keyPrefix}content_type`, isInput),
             },
             {
                 key: `${keyPrefix}data`,
@@ -42,28 +28,37 @@ module.exports = {
                 type: 'boolean',
             },
             {
+                key: `${keyPrefix}source_type`,
+                label: `[${labelPrefix}source_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'pin_url',
+                ],
+            },
+            {
                 key: `${keyPrefix}url`,
                 label: `[${labelPrefix}url]`,
                 required: true,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}cover_image_url`,
-                label: `Cover image url. - [${labelPrefix}cover_image_url]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}cover_image_content_type`,
-                label: `Content type for cover image Base64. - [${labelPrefix}cover_image_content_type]`,
-                type: 'string',
-                choices: [
-                    'image/jpeg',
-                    'image/png',
-                ],
+                ...ContentType.fields(`${keyPrefix}cover_image_content_type`, isInput),
             },
             {
                 key: `${keyPrefix}cover_image_data`,
                 label: `Cover image Base64. - [${labelPrefix}cover_image_data]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}cover_image_key_frame_time`,
+                label: `Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. - [${labelPrefix}cover_image_key_frame_time]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}cover_image_url`,
+                label: `Cover image URL. - [${labelPrefix}cover_image_url]`,
                 type: 'string',
             },
             {
@@ -73,14 +68,14 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}items`,
-                label: `[${labelPrefix}items]`,
-                children: PinMediaSourceImagesURL_items_inner.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
-            },
-            {
                 key: `${keyPrefix}index`,
                 label: `[${labelPrefix}index]`,
                 type: 'integer',
+            },
+            {
+                key: `${keyPrefix}items`,
+                label: `[${labelPrefix}items]`,
+                children: PinMediaSourceImagesURLItem.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}is_affiliate_link`,
@@ -92,17 +87,18 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
             'content_type': bundle.inputData?.[`${keyPrefix}content_type`],
             'data': bundle.inputData?.[`${keyPrefix}data`],
             'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
+            'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
             'url': bundle.inputData?.[`${keyPrefix}url`],
-            'cover_image_url': bundle.inputData?.[`${keyPrefix}cover_image_url`],
             'cover_image_content_type': bundle.inputData?.[`${keyPrefix}cover_image_content_type`],
             'cover_image_data': bundle.inputData?.[`${keyPrefix}cover_image_data`],
+            'cover_image_key_frame_time': bundle.inputData?.[`${keyPrefix}cover_image_key_frame_time`],
+            'cover_image_url': bundle.inputData?.[`${keyPrefix}cover_image_url`],
             'media_id': bundle.inputData?.[`${keyPrefix}media_id`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, PinMediaSourceImagesURL_items_inner),
             'index': bundle.inputData?.[`${keyPrefix}index`],
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, PinMediaSourceImagesURLItem),
             'is_affiliate_link': bundle.inputData?.[`${keyPrefix}is_affiliate_link`],
         }
     },

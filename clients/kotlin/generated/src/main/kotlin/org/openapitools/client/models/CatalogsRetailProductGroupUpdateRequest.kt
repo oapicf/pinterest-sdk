@@ -26,11 +26,11 @@ import com.squareup.moshi.JsonClass
  * Request object for updating a retail product group.
  *
  * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
- * @param name 
+ * @param country 
  * @param description 
  * @param filters 
- * @param country 
  * @param locale 
+ * @param name 
  */
 
 
@@ -40,8 +40,8 @@ data class CatalogsRetailProductGroupUpdateRequest (
     @Json(name = "catalog_type")
     val catalogType: CatalogsRetailProductGroupUpdateRequest.CatalogType? = null,
 
-    @Json(name = "name")
-    val name: kotlin.String? = null,
+    @Json(name = "country")
+    val country: Country? = null,
 
     @Json(name = "description")
     val description: kotlin.String? = null,
@@ -49,11 +49,11 @@ data class CatalogsRetailProductGroupUpdateRequest (
     @Json(name = "filters")
     val filters: CatalogsProductGroupFiltersRequest? = null,
 
-    @Json(name = "country")
-    val country: Country? = null,
-
     @Json(name = "locale")
-    val locale: CatalogsLocale? = null
+    val locale: CatalogsLocale? = null,
+
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

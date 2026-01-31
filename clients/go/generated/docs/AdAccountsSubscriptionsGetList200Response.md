@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]AdAccountGetSubscriptionResponse**](AdAccountGetSubscriptionResponse.md) |  | 
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
+**Items** | [**[]LeadSubscription**](LeadSubscription.md) |  | 
 
 ## Methods
 
 ### NewAdAccountsSubscriptionsGetList200Response
 
-`func NewAdAccountsSubscriptionsGetList200Response(items []AdAccountGetSubscriptionResponse, ) *AdAccountsSubscriptionsGetList200Response`
+`func NewAdAccountsSubscriptionsGetList200Response(items []LeadSubscription, ) *AdAccountsSubscriptionsGetList200Response`
 
 NewAdAccountsSubscriptionsGetList200Response instantiates a new AdAccountsSubscriptionsGetList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewAdAccountsSubscriptionsGetList200ResponseWithDefaults instantiates a new AdAccountsSubscriptionsGetList200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItems
-
-`func (o *AdAccountsSubscriptionsGetList200Response) GetItems() []AdAccountGetSubscriptionResponse`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *AdAccountsSubscriptionsGetList200Response) GetItemsOk() (*[]AdAccountGetSubscriptionResponse, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *AdAccountsSubscriptionsGetList200Response) SetItems(v []AdAccountGetSubscriptionResponse)`
-
-SetItems sets Items field to given value.
-
 
 ### GetBookmark
 
@@ -81,6 +61,26 @@ HasBookmark returns a boolean if a field has been set.
 `func (o *AdAccountsSubscriptionsGetList200Response) UnsetBookmark()`
 
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
+### GetItems
+
+`func (o *AdAccountsSubscriptionsGetList200Response) GetItems() []LeadSubscription`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *AdAccountsSubscriptionsGetList200Response) GetItemsOk() (*[]LeadSubscription, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *AdAccountsSubscriptionsGetList200Response) SetItems(v []LeadSubscription)`
+
+SetItems sets Items field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

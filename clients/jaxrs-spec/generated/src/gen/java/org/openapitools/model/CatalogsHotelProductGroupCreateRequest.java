@@ -20,8 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a hotel product group.")
 @JsonTypeName("CatalogsHotelProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupCreateRequest   {
+  private String catalogId;
   public enum CatalogTypeEnum {
 
     HOTEL(String.valueOf("HOTEL"));
@@ -70,24 +71,43 @@ public class CatalogsHotelProductGroupCreateRequest   {
 }
 
   private CatalogTypeEnum catalogType;
-  private String name;
   private String description;
   private CatalogsHotelProductGroupFilters filters;
-  private String catalogId;
+  private String name;
 
   public CatalogsHotelProductGroupCreateRequest() {
   }
 
   @JsonCreator
   public CatalogsHotelProductGroupCreateRequest(
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
     @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
-    @JsonProperty(required = true, value = "name") String name,
     @JsonProperty(required = true, value = "filters") CatalogsHotelProductGroupFilters filters,
-    @JsonProperty(required = true, value = "catalog_id") String catalogId
+    @JsonProperty(required = true, value = "name") String name
   ) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.name = name;
     this.filters = filters;
+    this.name = name;
+  }
+
+  /**
+   * Catalog id pertaining to the hotel product group.
+   **/
+  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  @JsonProperty(required = true, value = "catalog_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty(required = true, value = "catalog_id")
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -108,25 +128,6 @@ public class CatalogsHotelProductGroupCreateRequest   {
   @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  /**
-   **/
-  public CatalogsHotelProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "name")
-  @NotNull public String getName() {
-    return name;
-  }
-
-  @JsonProperty(required = true, value = "name")
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -168,23 +169,22 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
 
   /**
-   * Catalog id pertaining to the hotel product group.
    **/
-  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-  @JsonProperty(required = true, value = "catalog_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "name")
+  @NotNull public String getName() {
+    return name;
   }
 
-  @JsonProperty(required = true, value = "catalog_id")
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  @JsonProperty(required = true, value = "name")
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -197,16 +197,16 @@ public class CatalogsHotelProductGroupCreateRequest   {
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         Objects.equals(this.description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -214,11 +214,11 @@ public class CatalogsHotelProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

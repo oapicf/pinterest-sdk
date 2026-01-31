@@ -7,27 +7,33 @@
 #' @title AdsAnalyticsCreateAsyncResponse
 #' @description AdsAnalyticsCreateAsyncResponse Class
 #' @format An \code{R6Class} generator object
+#' @field message  character [optional]
 #' @field report_status  \link{BulkReportingJobStatus} [optional]
 #' @field token  character [optional]
-#' @field message  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
   "AdsAnalyticsCreateAsyncResponse",
   public = list(
+    `message` = NULL,
     `report_status` = NULL,
     `token` = NULL,
-    `message` = NULL,
 
     #' @description
     #' Initialize a new AdsAnalyticsCreateAsyncResponse class.
     #'
+    #' @param message message
     #' @param report_status report_status
     #' @param token token
-    #' @param message message
     #' @param ... Other optional arguments.
-    initialize = function(`report_status` = NULL, `token` = NULL, `message` = NULL, ...) {
+    initialize = function(`message` = NULL, `report_status` = NULL, `token` = NULL, ...) {
+      if (!is.null(`message`)) {
+        if (!(is.character(`message`) && length(`message`) == 1)) {
+          stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
+        }
+        self$`message` <- `message`
+      }
       if (!is.null(`report_status`)) {
         if (!(`report_status` %in% c())) {
           stop(paste("Error! \"", `report_status`, "\" cannot be assigned to `report_status`. Must be .", sep = ""))
@@ -40,12 +46,6 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
           stop(paste("Error! Invalid data for `token`. Must be a string:", `token`))
         }
         self$`token` <- `token`
-      }
-      if (!is.null(`message`)) {
-        if (!(is.character(`message`) && length(`message`) == 1)) {
-          stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
-        }
-        self$`message` <- `message`
       }
     },
 
@@ -80,6 +80,10 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdsAnalyticsCreateAsyncResponseObject <- list()
+      if (!is.null(self$`message`)) {
+        AdsAnalyticsCreateAsyncResponseObject[["message"]] <-
+          self$`message`
+      }
       if (!is.null(self$`report_status`)) {
         AdsAnalyticsCreateAsyncResponseObject[["report_status"]] <-
           self$`report_status`$toSimpleType()
@@ -87,10 +91,6 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
       if (!is.null(self$`token`)) {
         AdsAnalyticsCreateAsyncResponseObject[["token"]] <-
           self$`token`
-      }
-      if (!is.null(self$`message`)) {
-        AdsAnalyticsCreateAsyncResponseObject[["message"]] <-
-          self$`message`
       }
       return(AdsAnalyticsCreateAsyncResponseObject)
     },
@@ -102,6 +102,9 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
     #' @return the instance of AdsAnalyticsCreateAsyncResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`message`)) {
+        self$`message` <- this_object$`message`
+      }
       if (!is.null(this_object$`report_status`)) {
         `report_status_object` <- BulkReportingJobStatus$new()
         `report_status_object`$fromJSON(jsonlite::toJSON(this_object$`report_status`, auto_unbox = TRUE, digits = NA))
@@ -109,9 +112,6 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
       }
       if (!is.null(this_object$`token`)) {
         self$`token` <- this_object$`token`
-      }
-      if (!is.null(this_object$`message`)) {
-        self$`message` <- this_object$`message`
       }
       self
     },
@@ -134,9 +134,9 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
     #' @return the instance of AdsAnalyticsCreateAsyncResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`message` <- this_object$`message`
       self$`report_status` <- BulkReportingJobStatus$new()$fromJSON(jsonlite::toJSON(this_object$`report_status`, auto_unbox = TRUE, digits = NA))
       self$`token` <- this_object$`token`
-      self$`message` <- this_object$`message`
       self
     },
 

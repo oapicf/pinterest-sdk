@@ -22,15 +22,15 @@ user_website_summary_t* instantiate_user_website_summary(int include_optional) {
   user_website_summary_t* user_website_summary = NULL;
   if (include_optional) {
     user_website_summary = user_website_summary_create(
-      "mysite.test",
       "success",
-      "2022-12-14T21:03:01.602000"
+      "2022-12-14T21:03:01.602000",
+      "mysite.test"
     );
   } else {
     user_website_summary = user_website_summary_create(
-      "mysite.test",
       "success",
-      "2022-12-14T21:03:01.602000"
+      "2022-12-14T21:03:01.602000",
+      "mysite.test"
     );
   }
 

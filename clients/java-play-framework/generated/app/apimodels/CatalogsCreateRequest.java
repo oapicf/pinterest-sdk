@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.CatalogsType;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -9,62 +10,34 @@ import javax.validation.Valid;
 /**
  * Request object for creating a catalog.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreateRequest   {
-  /**
-   * Type of the catalog entity.
-   */
-  public enum CatalogTypeEnum {
-    HOTEL("HOTEL");
-
-    private final String value;
-
-    CatalogTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CatalogTypeEnum fromValue(String value) {
-      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("catalog_type")
   @NotNull
+@Valid
 
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
 
   @JsonProperty("name")
   @NotNull
 
   private String name;
 
-  public CatalogsCreateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreateRequest catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Type of the catalog entity.
+   * Get catalogType
    * @return catalogType
   **/
-  public CatalogTypeEnum getCatalogType() {
+  public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 

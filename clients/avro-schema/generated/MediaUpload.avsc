@@ -6,26 +6,24 @@
   "fields": [
     {
       "name": "media_id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.",
-      "default": null
+      "type": "string",
+      "doc": "Unique identifier for this media upload. Used to track status and for attaching during Pin creation."
     },
     {
       "name": "media_type",
-      "type": ["null", "model.MediaUploadType"],
-      "doc": "",
+      "type": "model.MediaUploadType",
+      "doc": ""
+    },
+    {
+      "name": "upload_parameters",
+      "type": ["null", "model.MediaUploadParameters"],
+      "doc": "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.",
       "default": null
     },
     {
       "name": "upload_url",
       "type": ["null", "string"],
       "doc": "The URL where you will POST your media file.",
-      "default": null
-    },
-    {
-      "name": "upload_parameters",
-      "type": ["null", "model.MediaUploadAllOfUploadParameters"],
-      "doc": "",
       "default": null
     }
   ]

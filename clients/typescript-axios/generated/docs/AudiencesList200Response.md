@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;Audience&gt;**](Audience.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;Audience&gt;**](Audience.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AudiencesList200Response } from './api';
 
 const instance: AudiencesList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

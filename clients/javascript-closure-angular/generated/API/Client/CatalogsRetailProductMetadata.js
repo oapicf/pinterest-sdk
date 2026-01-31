@@ -7,11 +7,16 @@ goog.provide('API.Client.CatalogsRetailProductMetadata');
 API.Client.CatalogsRetailProductMetadata = function() {}
 
 /**
- * The user-created unique ID that represents the product.
- * @type {!string}
+ * @type {!API.Client.NonNullableProductAvailabilityType}
  * @export
  */
-API.Client.CatalogsRetailProductMetadata.prototype.itemId;
+API.Client.CatalogsRetailProductMetadata.prototype.availability;
+
+/**
+ * @type {!API.Client.NonNullableCatalogsCurrency}
+ * @export
+ */
+API.Client.CatalogsRetailProductMetadata.prototype.currency;
 
 /**
  * The parent ID of the product.
@@ -21,10 +26,11 @@ API.Client.CatalogsRetailProductMetadata.prototype.itemId;
 API.Client.CatalogsRetailProductMetadata.prototype.itemGroupId;
 
 /**
- * @type {!API.Client.NonNullableProductAvailabilityType}
+ * The user-created unique ID that represents the product.
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsRetailProductMetadata.prototype.availability;
+API.Client.CatalogsRetailProductMetadata.prototype.itemId;
 
 /**
  * The price of the product.
@@ -39,10 +45,4 @@ API.Client.CatalogsRetailProductMetadata.prototype.price;
  * @export
  */
 API.Client.CatalogsRetailProductMetadata.prototype.salePrice;
-
-/**
- * @type {!API.Client.NonNullableCatalogsCurrency}
- * @export
- */
-API.Client.CatalogsRetailProductMetadata.prototype.currency;
 

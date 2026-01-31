@@ -3,14 +3,6 @@ Protected Class IntegrationLogsInvalidLogResponseRejectedLogsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Index of the log in the batch.
-		#tag EndNote
-		log_index As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			The field name containing an invalid value.
 		#tag EndNote
 		field As String
@@ -19,9 +11,9 @@ Protected Class IntegrationLogsInvalidLogResponseRejectedLogsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The value that is invalid.
+			Index of the log in the batch.
 		#tag EndNote
-		value As String
+		log_index As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -30,6 +22,14 @@ Protected Class IntegrationLogsInvalidLogResponseRejectedLogsInner
 			The reason the value is invalid.
 		#tag EndNote
 		reason As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The value that is invalid.
+		#tag EndNote
+		value As String
 	#tag EndProperty
 
 
@@ -70,14 +70,6 @@ Protected Class IntegrationLogsInvalidLogResponseRejectedLogsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="log_index"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="field"
 			Visible=false
 			Group="Behavior"
@@ -86,7 +78,15 @@ Protected Class IntegrationLogsInvalidLogResponseRejectedLogsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="value"
+			Name="log_index"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="reason"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -94,7 +94,7 @@ Protected Class IntegrationLogsInvalidLogResponseRejectedLogsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="reason"
+			Name="value"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

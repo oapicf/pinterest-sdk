@@ -6,11 +6,12 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`cardType` | string
-`status` | string
 `advertiserId` | string
+`billingType` | string
+`cardType` | string
+`id` | string
 `paymentMethodBrand` | string
+`status` | string
 
 ## Example
 
@@ -19,11 +20,12 @@ import type { BillingProfilesResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 12312451231,
-  "cardType": VISA,
-  "status": INVALID,
   "advertiserId": 12312451231,
+  "billingType": CREDIT_CARD,
+  "cardType": VISA,
+  "id": 12312451231,
   "paymentMethodBrand": VISA,
+  "status": INVALID,
 } satisfies BillingProfilesResponse
 
 console.log(example)

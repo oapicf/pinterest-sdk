@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`username` | string
 `id` | string
+`username` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { AdAccountOwner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "username": null,
   "id": null,
+  "username": null,
 } satisfies AdAccountOwner
 
 console.log(example)

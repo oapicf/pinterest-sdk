@@ -23,6 +23,14 @@ public class CatalogsCreativeAssetsItemsFilterTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -36,14 +44,6 @@ public class CatalogsCreativeAssetsItemsFilterTest {
     @Test
     public void creativeAssetsIdsTest() {
         // TODO: test creativeAssetsIds
-    }
-
-    /**
-     * Test the property 'catalogId'
-     */
-    @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
     }
 
 }

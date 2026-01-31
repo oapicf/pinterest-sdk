@@ -7,9 +7,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**message** | **String** |  |  [optional]
 **reportStatus** | **BulkReportingJobStatus** |  |  [optional]
 **token** | **String** |  |  [optional]
-**message** | **String** |  |  [optional]
 
 
 

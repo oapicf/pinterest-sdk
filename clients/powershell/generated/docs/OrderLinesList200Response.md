@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**OrderLine[]**](OrderLine.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**OrderLine[]**](OrderLine.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$OrderLinesList200Response = Initialize-PSOpenAPIToolsOrderLinesList200Response  -Items null `
- -Bookmark null
+$OrderLinesList200Response = Initialize-PSOpenAPIToolsOrderLinesList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

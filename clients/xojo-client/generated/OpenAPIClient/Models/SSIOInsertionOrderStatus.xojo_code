@@ -3,6 +3,14 @@ Protected Class SSIOInsertionOrderStatus
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Salesforce insertion order creation time
+		#tag EndNote
+		creation_time As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Salesforce order id
 		#tag EndNote
 		pin_order_id As Xoson.O.OptionalString
@@ -14,14 +22,6 @@ Protected Class SSIOInsertionOrderStatus
 			Salesforce insertion order status
 		#tag EndNote
 		status As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Salesforce insertion order creation time
-		#tag EndNote
-		creation_time As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -62,6 +62,14 @@ Protected Class SSIOInsertionOrderStatus
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="creation_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="pin_order_id"
 			Visible=false
 			Group="Behavior"
@@ -71,14 +79,6 @@ Protected Class SSIOInsertionOrderStatus
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="creation_time"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

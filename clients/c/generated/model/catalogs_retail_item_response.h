@@ -22,19 +22,19 @@ typedef struct catalogs_retail_item_response_t catalogs_retail_item_response_t;
 
 
 typedef struct catalogs_retail_item_response_t {
+    struct item_attributes_t *attributes; //model
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *item_id; // string
     list_t *pins; //nonprimitive container
-    struct item_attributes_t *attributes; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_item_response_t;
 
 __attribute__((deprecated)) catalogs_retail_item_response_t *catalogs_retail_item_response_create(
+    item_attributes_t *attributes,
     pinterest_rest_api_catalogs_type__e catalog_type,
     char *item_id,
-    list_t *pins,
-    item_attributes_t *attributes
+    list_t *pins
 );
 
 void catalogs_retail_item_response_free(catalogs_retail_item_response_t *catalogs_retail_item_response);

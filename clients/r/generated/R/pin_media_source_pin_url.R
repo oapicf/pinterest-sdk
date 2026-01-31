@@ -7,16 +7,16 @@
 #' @title PinMediaSourcePinURL
 #' @description PinMediaSourcePinURL Class
 #' @format An \code{R6Class} generator object
-#' @field source_type  character
 #' @field is_affiliate_link This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. character [optional]
+#' @field source_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PinMediaSourcePinURL <- R6::R6Class(
   "PinMediaSourcePinURL",
   public = list(
-    `source_type` = NULL,
     `is_affiliate_link` = NULL,
+    `source_type` = NULL,
 
     #' @description
     #' Initialize a new PinMediaSourcePinURL class.
@@ -73,13 +73,13 @@ PinMediaSourcePinURL <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinMediaSourcePinURLObject <- list()
-      if (!is.null(self$`source_type`)) {
-        PinMediaSourcePinURLObject[["source_type"]] <-
-          self$`source_type`
-      }
       if (!is.null(self$`is_affiliate_link`)) {
         PinMediaSourcePinURLObject[["is_affiliate_link"]] <-
           self$`is_affiliate_link`
+      }
+      if (!is.null(self$`source_type`)) {
+        PinMediaSourcePinURLObject[["source_type"]] <-
+          self$`source_type`
       }
       return(PinMediaSourcePinURLObject)
     },
@@ -91,14 +91,14 @@ PinMediaSourcePinURL <- R6::R6Class(
     #' @return the instance of PinMediaSourcePinURL
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`is_affiliate_link`)) {
+        self$`is_affiliate_link` <- this_object$`is_affiliate_link`
+      }
       if (!is.null(this_object$`source_type`)) {
         if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("pin_url"))) {
           stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"pin_url\".", sep = ""))
         }
         self$`source_type` <- this_object$`source_type`
-      }
-      if (!is.null(this_object$`is_affiliate_link`)) {
-        self$`is_affiliate_link` <- this_object$`is_affiliate_link`
       }
       self
     },
@@ -121,11 +121,11 @@ PinMediaSourcePinURL <- R6::R6Class(
     #' @return the instance of PinMediaSourcePinURL
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`is_affiliate_link` <- this_object$`is_affiliate_link`
       if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("pin_url"))) {
         stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"pin_url\".", sep = ""))
       }
       self$`source_type` <- this_object$`source_type`
-      self$`is_affiliate_link` <- this_object$`is_affiliate_link`
       self
     },
 

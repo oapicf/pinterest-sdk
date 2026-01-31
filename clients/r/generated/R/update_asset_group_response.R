@@ -7,33 +7,33 @@
 #' @title UpdateAssetGroupResponse
 #' @description UpdateAssetGroupResponse Class
 #' @format An \code{R6Class} generator object
-#' @field updated_asset_groups A list of successfully edited asset groups. list(\link{AssetGroupBinding}) [optional]
 #' @field exceptions A list of errors associated with the asset groups. Will be returned if there is an error. list(\link{UpdateAssetGroupResponseExceptionsInner}) [optional]
+#' @field updated_asset_groups A list of successfully edited asset groups. list(\link{AssetGroupBinding}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UpdateAssetGroupResponse <- R6::R6Class(
   "UpdateAssetGroupResponse",
   public = list(
-    `updated_asset_groups` = NULL,
     `exceptions` = NULL,
+    `updated_asset_groups` = NULL,
 
     #' @description
     #' Initialize a new UpdateAssetGroupResponse class.
     #'
-    #' @param updated_asset_groups A list of successfully edited asset groups.
     #' @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
+    #' @param updated_asset_groups A list of successfully edited asset groups.
     #' @param ... Other optional arguments.
-    initialize = function(`updated_asset_groups` = NULL, `exceptions` = NULL, ...) {
-      if (!is.null(`updated_asset_groups`)) {
-        stopifnot(is.vector(`updated_asset_groups`), length(`updated_asset_groups`) != 0)
-        sapply(`updated_asset_groups`, function(x) stopifnot(R6::is.R6(x)))
-        self$`updated_asset_groups` <- `updated_asset_groups`
-      }
+    initialize = function(`exceptions` = NULL, `updated_asset_groups` = NULL, ...) {
       if (!is.null(`exceptions`)) {
         stopifnot(is.vector(`exceptions`), length(`exceptions`) != 0)
         sapply(`exceptions`, function(x) stopifnot(R6::is.R6(x)))
         self$`exceptions` <- `exceptions`
+      }
+      if (!is.null(`updated_asset_groups`)) {
+        stopifnot(is.vector(`updated_asset_groups`), length(`updated_asset_groups`) != 0)
+        sapply(`updated_asset_groups`, function(x) stopifnot(R6::is.R6(x)))
+        self$`updated_asset_groups` <- `updated_asset_groups`
       }
     },
 
@@ -68,13 +68,13 @@ UpdateAssetGroupResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       UpdateAssetGroupResponseObject <- list()
-      if (!is.null(self$`updated_asset_groups`)) {
-        UpdateAssetGroupResponseObject[["updated_asset_groups"]] <-
-          lapply(self$`updated_asset_groups`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`exceptions`)) {
         UpdateAssetGroupResponseObject[["exceptions"]] <-
           lapply(self$`exceptions`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`updated_asset_groups`)) {
+        UpdateAssetGroupResponseObject[["updated_asset_groups"]] <-
+          lapply(self$`updated_asset_groups`, function(x) x$toSimpleType())
       }
       return(UpdateAssetGroupResponseObject)
     },
@@ -86,11 +86,11 @@ UpdateAssetGroupResponse <- R6::R6Class(
     #' @return the instance of UpdateAssetGroupResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`updated_asset_groups`)) {
-        self$`updated_asset_groups` <- ApiClient$new()$deserializeObj(this_object$`updated_asset_groups`, "array[AssetGroupBinding]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`exceptions`)) {
         self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[UpdateAssetGroupResponseExceptionsInner]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`updated_asset_groups`)) {
+        self$`updated_asset_groups` <- ApiClient$new()$deserializeObj(this_object$`updated_asset_groups`, "array[AssetGroupBinding]", loadNamespace("openapi"))
       }
       self
     },
@@ -113,8 +113,8 @@ UpdateAssetGroupResponse <- R6::R6Class(
     #' @return the instance of UpdateAssetGroupResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`updated_asset_groups` <- ApiClient$new()$deserializeObj(this_object$`updated_asset_groups`, "array[AssetGroupBinding]", loadNamespace("openapi"))
       self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[UpdateAssetGroupResponseExceptionsInner]", loadNamespace("openapi"))
+      self$`updated_asset_groups` <- ApiClient$new()$deserializeObj(this_object$`updated_asset_groups`, "array[AssetGroupBinding]", loadNamespace("openapi"))
       self
     },
 

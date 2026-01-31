@@ -10,7 +10,7 @@ module BulkUpsertStatusResponse =
 
 
   type BulkUpsertStatusResponse = {
-    Status : BulkUpsertStatus;
     ResultUrl : string;
+    Status : BulkUpsertStatus;
   }
   //#endregion

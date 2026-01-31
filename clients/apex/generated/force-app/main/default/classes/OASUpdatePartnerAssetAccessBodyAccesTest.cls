@@ -73,15 +73,15 @@ private class OASUpdatePartnerAssetAccessBodyAccesTest {
     private static void maintainRenamedProperties() {
         OASUpdatePartnerAssetAccessBodyAcces updatePartnerAssetAccessBodyAccessesInner = new OASUpdatePartnerAssetAccessBodyAcces();
         Map<String, String> x-property-mappings = updatePartnerAssetAccessBodyAccessesInner.getx-property-mappings();
-        System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
         System.assertEquals('assetId', x-property-mappings.get('asset_id'));
+        System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASUpdatePartnerAssetAccessBodyAcces updatePartnerAssetAccessBodyAccessesInner = new OASUpdatePartnerAssetAccessBodyAcces();
         System.assertEquals(new List<OASPermissions>(), updatePartnerAssetAccessBodyAccessesInner.permissions);
-        System.assertEquals(null, updatePartnerAssetAccessBodyAccessesInner.partnerId);
         System.assertEquals(null, updatePartnerAssetAccessBodyAccessesInner.assetId);
+        System.assertEquals(null, updatePartnerAssetAccessBodyAccessesInner.partnerId);
     }
 }

@@ -1,0 +1,27 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "currency" },
+      {"model": "lead_type" },
+      {"model": "line_items" },
+      {"model": "order_id" },
+      {"model": "order_quantity" },
+      {"model": "page_name" },
+      {"model": "promo_code" },
+      {"model": "_property" },
+      {"model": "search_query" },
+      {"model": "value" },
+      {"model": "video_title" },
+    ]
+  }]
+}

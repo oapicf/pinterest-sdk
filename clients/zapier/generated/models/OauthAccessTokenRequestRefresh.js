@@ -16,11 +16,6 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}refresh_on`,
-                label: `Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". - [${labelPrefix}refresh_on]`,
-                type: 'boolean',
-            },
-            {
                 key: `${keyPrefix}grant_type`,
                 label: `[${labelPrefix}grant_type]`,
                 required: true,
@@ -38,7 +33,6 @@ module.exports = {
         return {
             'refresh_token': bundle.inputData?.[`${keyPrefix}refresh_token`],
             'scope': bundle.inputData?.[`${keyPrefix}scope`],
-            'refresh_on': bundle.inputData?.[`${keyPrefix}refresh_on`],
             'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
         }
     },

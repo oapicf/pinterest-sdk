@@ -21,35 +21,11 @@ public class IntegrationMetadataTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'additionalId1'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'externalBusinessId'
-     */
-    @Test
-    public void externalBusinessIdTest() {
-        // TODO: test externalBusinessId
-    }
-
-    /**
-     * Test the property 'connectedMerchantId'
-     */
-    @Test
-    public void connectedMerchantIdTest() {
-        // TODO: test connectedMerchantId
-    }
-
-    /**
-     * Test the property 'connectedUserId'
-     */
-    @Test
-    public void connectedUserIdTest() {
-        // TODO: test connectedUserId
+    public void additionalId1Test() {
+        // TODO: test additionalId1
     }
 
     /**
@@ -69,6 +45,14 @@ public class IntegrationMetadataTest {
     }
 
     /**
+     * Test the property 'connectedMerchantId'
+     */
+    @Test
+    public void connectedMerchantIdTest() {
+        // TODO: test connectedMerchantId
+    }
+
+    /**
      * Test the property 'connectedTagId'
      */
     @Test
@@ -77,11 +61,51 @@ public class IntegrationMetadataTest {
     }
 
     /**
+     * Test the property 'connectedUserId'
+     */
+    @Test
+    public void connectedUserIdTest() {
+        // TODO: test connectedUserId
+    }
+
+    /**
+     * Test the property 'createdTimestamp'
+     */
+    @Test
+    public void createdTimestampTest() {
+        // TODO: test createdTimestamp
+    }
+
+    /**
+     * Test the property 'externalBusinessId'
+     */
+    @Test
+    public void externalBusinessIdTest() {
+        // TODO: test externalBusinessId
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
      * Test the property 'partnerAccessTokenExpiry'
      */
     @Test
     public void partnerAccessTokenExpiryTest() {
         // TODO: test partnerAccessTokenExpiry
+    }
+
+    /**
+     * Test the property 'partnerMetadata'
+     */
+    @Test
+    public void partnerMetadataTest() {
+        // TODO: test partnerMetadata
     }
 
     /**
@@ -101,35 +125,11 @@ public class IntegrationMetadataTest {
     }
 
     /**
-     * Test the property 'createdTimestamp'
-     */
-    @Test
-    public void createdTimestampTest() {
-        // TODO: test createdTimestamp
-    }
-
-    /**
      * Test the property 'updatedTimestamp'
      */
     @Test
     public void updatedTimestampTest() {
         // TODO: test updatedTimestamp
-    }
-
-    /**
-     * Test the property 'additionalId1'
-     */
-    @Test
-    public void additionalId1Test() {
-        // TODO: test additionalId1
-    }
-
-    /**
-     * Test the property 'partnerMetadata'
-     */
-    @Test
-    public void partnerMetadataTest() {
-        // TODO: test partnerMetadata
     }
 
 }

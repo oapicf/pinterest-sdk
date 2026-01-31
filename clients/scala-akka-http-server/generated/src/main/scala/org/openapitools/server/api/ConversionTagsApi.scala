@@ -9,9 +9,9 @@ import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.ConversionEventResponse
+import org.openapitools.server.model.ConversionTag
 import org.openapitools.server.model.ConversionTagCreate
-import org.openapitools.server.model.ConversionTagListResponse
-import org.openapitools.server.model.ConversionTagResponse
+import org.openapitools.server.model.ConversionTagsList200Response
 import org.openapitools.server.model.Error
 import org.openapitools.server.model.PageVisitConversionTagsGet200Response
 
@@ -68,38 +68,71 @@ val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
 
 trait ConversionTagsApiService {
 
-  def conversionTagsCreate200(responseConversionTagResponse: ConversionTagResponse)(implicit toEntityMarshallerConversionTagResponse: ToEntityMarshaller[ConversionTagResponse]): Route =
-    complete((200, responseConversionTagResponse))
+  def conversionTagsCreate200(responseConversionTag: ConversionTag)(implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag]): Route =
+    complete((200, responseConversionTag))
+  def conversionTagsCreate201(responseConversionTag: ConversionTag)(implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag]): Route =
+    complete((201, responseConversionTag))
+  def conversionTagsCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def conversionTagsCreate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def conversionTagsCreate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def conversionTagsCreate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def conversionTagsCreate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def conversionTagsCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: ConversionTagResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ConversionTag
+   * Code: 201, Message: Resource create operation completed successfully., DataType: ConversionTag
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate)
-      (implicit toEntityMarshallerConversionTagResponse: ToEntityMarshaller[ConversionTagResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def conversionTagsGet200(responseConversionTagResponse: ConversionTagResponse)(implicit toEntityMarshallerConversionTagResponse: ToEntityMarshaller[ConversionTagResponse]): Route =
-    complete((200, responseConversionTagResponse))
+  def conversionTagsGet200(responseConversionTag: ConversionTag)(implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag]): Route =
+    complete((200, responseConversionTag))
   def conversionTagsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: ConversionTagResponse
+   * Code: 200, Message: Success, DataType: ConversionTag
    * Code: 0, Message: Unexpected error, DataType: Error
    */
   def conversionTagsGet(adAccountId: String, conversionTagId: String)
-      (implicit toEntityMarshallerConversionTagResponse: ToEntityMarshaller[ConversionTagResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def conversionTagsList200(responseConversionTagListResponse: ConversionTagListResponse)(implicit toEntityMarshallerConversionTagListResponse: ToEntityMarshaller[ConversionTagListResponse]): Route =
-    complete((200, responseConversionTagListResponse))
+  def conversionTagsList200(responseConversionTagsList200Response: ConversionTagsList200Response)(implicit toEntityMarshallerConversionTagsList200Response: ToEntityMarshaller[ConversionTagsList200Response]): Route =
+    complete((200, responseConversionTagsList200Response))
+  def conversionTagsList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def conversionTagsList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def conversionTagsList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def conversionTagsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def conversionTagsList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def conversionTagsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: ConversionTagListResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ConversionTagsList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def conversionTagsList(adAccountId: String, filterDeleted: Boolean)
-      (implicit toEntityMarshallerConversionTagListResponse: ToEntityMarshaller[ConversionTagListResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerConversionTagsList200Response: ToEntityMarshaller[ConversionTagsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def ocpmEligibleConversionTagsGet200(responseMapmap: Map[String, Seq[ConversionEventResponse]])(implicit toEntityMarshallerMapmap: ToEntityMarshaller[Map[String, Seq[ConversionEventResponse]]]): Route =
     complete((200, responseMapmap))
@@ -130,11 +163,11 @@ trait ConversionTagsApiMarshaller {
 
 
 
-  implicit def toEntityMarshallerConversionTagResponse: ToEntityMarshaller[ConversionTagResponse]
+  implicit def toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag]
+
+  implicit def toEntityMarshallerConversionTagsList200Response: ToEntityMarshaller[ConversionTagsList200Response]
 
   implicit def toEntityMarshallerPageVisitConversionTagsGet200Response: ToEntityMarshaller[PageVisitConversionTagsGet200Response]
-
-  implicit def toEntityMarshallerConversionTagListResponse: ToEntityMarshaller[ConversionTagListResponse]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 

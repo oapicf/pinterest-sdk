@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CreateAssetGroupBody._
 
 case class CreateAssetGroupBody (
-  /* Asset Group name */
-  assetGroupName: String,
-/* Asset group description */
+  /* Asset group description */
   assetGroupDescription: String,
+/* Asset Group name */
+  assetGroupName: String,
 /* Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. */
   assetGroupTypes: List[AssetGroupType])
 

@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsCreativeAssetsBatchRequest, () {
+    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -17,21 +23,15 @@ void main() {
       // TODO
     });
 
-    // We recommend using the CatalogsLocale values.
-    // String language
-    test('to test the property `language`', () async {
-      // TODO
-    });
-
     // Array with creative assets item operations
     // BuiltList<CatalogsCreativeAssetsBatchItem> items
     test('to test the property `items`', () async {
       // TODO
     });
 
-    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-    // String catalogId
-    test('to test the property `catalogId`', () async {
+    // We recommend using the CatalogsLocale values.
+    // String language
+    test('to test the property `language`', () async {
       // TODO
     });
 

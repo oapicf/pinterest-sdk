@@ -21,6 +21,14 @@ public class SSIOInsertionOrderStatusResponseTest {
     }
 
     /**
+     * Test the property 'creationTime'
+     */
+    @Test
+    public void creationTimeTest() {
+        // TODO: test creationTime
+    }
+
+    /**
      * Test the property 'pinOrderId'
      */
     @Test
@@ -34,14 +42,6 @@ public class SSIOInsertionOrderStatusResponseTest {
     @Test
     public void statusTest() {
         // TODO: test status
-    }
-
-    /**
-     * Test the property 'creationTime'
-     */
-    @Test
-    public void creationTimeTest() {
-        // TODO: test creationTime
     }
 
 }

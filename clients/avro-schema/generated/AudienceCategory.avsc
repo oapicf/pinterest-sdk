@@ -5,6 +5,18 @@
   "name": "AudienceCategory",
   "fields": [
     {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Interest ID.",
+      "default": null
+    },
+    {
+      "name": "index",
+      "type": ["null", "double"],
+      "doc": "Interest affinity index.",
+      "default": null
+    },
+    {
       "name": "key",
       "type": ["null", "string"],
       "doc": "Interest unique key (same as ID).",
@@ -20,18 +32,6 @@
       "name": "ratio",
       "type": ["null", "double"],
       "doc": "Interest's percent of category's total audience.",
-      "default": null
-    },
-    {
-      "name": "index",
-      "type": ["null", "double"],
-      "doc": "Interest affinity index.",
-      "default": null
-    },
-    {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "Interest ID.",
       "default": null
     },
     {

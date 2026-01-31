@@ -1,15 +1,15 @@
 
 # PinMediaSourceImagesBase64
 
-Multiple Base64-encoded images media source
+Multiple Base64-based images media source
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`sourceType` | string
-`items` | [Array&lt;PinMediaSourceImagesBase64ItemsInner&gt;](PinMediaSourceImagesBase64ItemsInner.md)
 `index` | number
+`items` | [Array&lt;PinMediaSourceImagesBase64Item&gt;](PinMediaSourceImagesBase64Item.md)
+`sourceType` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { PinMediaSourceImagesBase64 } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceType": null,
-  "items": null,
   "index": null,
+  "items": null,
+  "sourceType": null,
 } satisfies PinMediaSourceImagesBase64
 
 console.log(example)

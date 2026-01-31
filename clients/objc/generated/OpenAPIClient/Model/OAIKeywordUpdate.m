@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"archived": @"archived", @"bid": @"bid" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"archived": @"archived", @"bid": @"bid", @"_id": @"id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"archived", @"bid"];
+  NSArray *optionalProperties = @[@"archived", @"bid", ];
   return [optionalProperties containsObject:propertyName];
 }
 

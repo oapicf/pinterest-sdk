@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins | 
 
 
 

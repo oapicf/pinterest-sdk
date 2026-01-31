@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingTemplateKeyword"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingTemplateKeyword"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MatchType = openapi_server.resourceTypes.MatchType
+}
+resourceTypes {
+
+  TargetingTemplateKeyword {
+    title = TargetingTemplateKeyword
+    description = TargetingTemplateKeyword
+    derivedFrom = Root
+    properties {
+        match_type {
+          type = MatchType
+          description = ""
+          optional = false
+        }
+        value {
+          type =  string
+          description = "The keyword targeting (120 chars max)."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingTemplateKeyword {
+    title = TargetingTemplateKeyword
+    description = TargetingTemplateKeyword
+    implements = openapi_server.resourceTypes.TargetingTemplateKeyword
+
+  }
+}

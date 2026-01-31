@@ -6,23 +6,30 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
 `adGroupId` | string
 `bidInMicroCurrency` | number
-`included` | boolean
-`definition` | string
-`relativeDefinition` | string
-`parentId` | string
-`slideshowCollectionsTitle` | string
-`slideshowCollectionsDescription` | string
-`isMdl` | boolean
-`status` | [EntityStatus](EntityStatus.md)
-`trackingUrl` | string
 `catalogProductGroupId` | string
 `catalogProductGroupName` | string
-`collectionsHeroPinId` | string
+`collectionsHeaderType` | string
 `collectionsHeroDestinationUrl` | string
+`collectionsHeroPinId` | string
+`creativeType` | [CreativeType](CreativeType.md)
+`customizableCtaType` | string
+`definition` | string
 `gridClickType` | [GridClickType](GridClickType.md)
+`id` | string
+`included` | boolean
+`isGenerateBackground` | boolean
+`isMdl` | boolean
+`parentId` | string
+`preferredMediaType` | string
+`relativeDefinition` | string
+`selectedImageTag` | string
+`selectedVideoTag` | string
+`slideshowCollectionsDescription` | string
+`slideshowCollectionsTitle` | string
+`status` | [EntityStatus](EntityStatus.md)
+`trackingUrl` | string
 
 ## Example
 
@@ -31,23 +38,30 @@ import type { ProductGroupPromotion } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 2680059592705,
   "adGroupId": 2680059592705,
   "bidInMicroCurrency": 14000000,
-  "included": true,
-  "definition": */product_type_0='kitchen'/product_type_1='beverage appliances',
-  "relativeDefinition": product_type_1='beverage appliances',
-  "parentId": 1231234,
-  "slideshowCollectionsTitle": slideshow title,
-  "slideshowCollectionsDescription": slideshow description,
-  "isMdl": true,
-  "status": null,
-  "trackingUrl": https://www.pinterest.com,
   "catalogProductGroupId": 1231235,
   "catalogProductGroupName": catalogProductGroupName,
-  "collectionsHeroPinId": 123123,
+  "collectionsHeaderType": SHOP_THIS_COLLECTION,
   "collectionsHeroDestinationUrl": http://www.pinterest.com,
+  "collectionsHeroPinId": 123123,
+  "creativeType": null,
+  "customizableCtaType": SHOP_NOW,
+  "definition": */product_type_0='kitchen'/product_type_1='beverage appliances',
   "gridClickType": null,
+  "id": 2680059592705,
+  "included": true,
+  "isGenerateBackground": true,
+  "isMdl": true,
+  "parentId": 1231234,
+  "preferredMediaType": VIDEO,
+  "relativeDefinition": product_type_1='beverage appliances',
+  "selectedImageTag": holiday_sale,
+  "selectedVideoTag": holiday_sale,
+  "slideshowCollectionsDescription": slideshow description,
+  "slideshowCollectionsTitle": slideshow title,
+  "status": null,
+  "trackingUrl": https://www.pinterest.com,
 } satisfies ProductGroupPromotion
 
 console.log(example)

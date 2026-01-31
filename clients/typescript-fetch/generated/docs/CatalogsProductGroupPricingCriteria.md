@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `inclusion` | boolean
-`values` | number
 `negated` | boolean
+`values` | number
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { CatalogsProductGroupPricingCriteria } from ''
 // TODO: Update the object below with actual values
 const example = {
   "inclusion": null,
-  "values": null,
   "negated": null,
+  "values": null,
 } satisfies CatalogsProductGroupPricingCriteria
 
 console.log(example)

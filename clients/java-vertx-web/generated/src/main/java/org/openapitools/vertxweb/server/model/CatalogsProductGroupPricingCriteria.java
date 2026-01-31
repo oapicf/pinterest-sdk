@@ -9,17 +9,17 @@ import java.math.BigDecimal;
 public class CatalogsProductGroupPricingCriteria   {
   
   private Boolean inclusion = true;
-  private BigDecimal values;
   private Boolean negated = false;
+  private BigDecimal values;
 
   public CatalogsProductGroupPricingCriteria () {
 
   }
 
-  public CatalogsProductGroupPricingCriteria (Boolean inclusion, BigDecimal values, Boolean negated) {
+  public CatalogsProductGroupPricingCriteria (Boolean inclusion, Boolean negated, BigDecimal values) {
     this.inclusion = inclusion;
-    this.values = values;
     this.negated = negated;
+    this.values = values;
   }
 
     
@@ -32,21 +32,21 @@ public class CatalogsProductGroupPricingCriteria   {
   }
 
     
-  @JsonProperty("values")
-  public BigDecimal getValues() {
-    return values;
-  }
-  public void setValues(BigDecimal values) {
-    this.values = values;
-  }
-
-    
   @JsonProperty("negated")
   public Boolean getNegated() {
     return negated;
   }
   public void setNegated(Boolean negated) {
     this.negated = negated;
+  }
+
+    
+  @JsonProperty("values")
+  public BigDecimal getValues() {
+    return values;
+  }
+  public void setValues(BigDecimal values) {
+    this.values = values;
   }
 
 
@@ -60,13 +60,13 @@ public class CatalogsProductGroupPricingCriteria   {
     }
     CatalogsProductGroupPricingCriteria catalogsProductGroupPricingCriteria = (CatalogsProductGroupPricingCriteria) o;
     return Objects.equals(inclusion, catalogsProductGroupPricingCriteria.inclusion) &&
-        Objects.equals(values, catalogsProductGroupPricingCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupPricingCriteria.negated);
+        Objects.equals(negated, catalogsProductGroupPricingCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupPricingCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inclusion, values, negated);
+    return Objects.hash(inclusion, negated, values);
   }
 
   @Override
@@ -75,8 +75,8 @@ public class CatalogsProductGroupPricingCriteria   {
     sb.append("class CatalogsProductGroupPricingCriteria {\n");
     
     sb.append("    inclusion: ").append(toIndentedString(inclusion)).append("\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

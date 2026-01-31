@@ -3,6 +3,7 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.CatalogsReportAllItemsFilter;
 import org.openapitools.model.CatalogsReportDistributionIssueFilter;
 import org.openapitools.model.CatalogsReportFeedIngestionFilter;
 
@@ -13,7 +14,9 @@ class CatalogsHotelReportParametersReport {
     
         FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
         
-        DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES")
+        DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
+        
+        ALL_ITEMS("ALL_ITEMS")
     
         private final String value
     

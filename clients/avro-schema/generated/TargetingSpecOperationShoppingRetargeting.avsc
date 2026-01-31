@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationShoppingRetargeting",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationShoppingRetargeting_field",
+        "symbols": [
+          "SHOPPING_RETARGETING"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationShoppingRetargeting_operation",
+        "symbols": [
+          "SET"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.TargetingSpecShoppingRetargeting"
+      },
+      "doc": ""
+    }
+  ]
+
+}

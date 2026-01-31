@@ -8,8 +8,8 @@ The class is defined in **[LeadFormsList200Response.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;LeadFormResponse&gt;`](LeadFormResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;LeadFormResponse&gt;`](LeadFormResponse.md) |  | 
 
 
 

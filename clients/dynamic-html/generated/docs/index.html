@@ -39,9 +39,11 @@
             <li><a href="#!/AdAccountsApi#adAccounts/create">adAccounts/create</a></li>
             <li><a href="#!/AdAccountsApi#adAccounts/get">adAccounts/get</a></li>
             <li><a href="#!/AdAccountsApi#adAccounts/list">adAccounts/list</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/createConversionProductReport">analytics/createConversionProductReport</a></li>
             <li><a href="#!/AdAccountsApi#analytics/createMmmReport">analytics/createMmmReport</a></li>
             <li><a href="#!/AdAccountsApi#analytics/createReport">analytics/createReport</a></li>
             <li><a href="#!/AdAccountsApi#analytics/createTemplateReport">analytics/createTemplateReport</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/getConversionProductReport">analytics/getConversionProductReport</a></li>
             <li><a href="#!/AdAccountsApi#analytics/getMmmReport">analytics/getMmmReport</a></li>
             <li><a href="#!/AdAccountsApi#analytics/getReport">analytics/getReport</a></li>
             <li><a href="#!/AdAccountsApi#sandbox/delete">sandbox/delete</a></li>
@@ -115,7 +117,6 @@
           </div>
           <ul>
             <li><a href="#!/AudiencesApi#audiences/create">audiences/create</a></li>
-            <li><a href="#!/AudiencesApi#audiences/createCustom">audiences/createCustom</a></li>
             <li><a href="#!/AudiencesApi#audiences/get">audiences/get</a></li>
             <li><a href="#!/AudiencesApi#audiences/list">audiences/list</a></li>
             <li><a href="#!/AudiencesApi#audiences/update">audiences/update</a></li>
@@ -128,6 +129,8 @@
           <ul>
             <li><a href="#!/BillingApi#adsCredit/redeem">adsCredit/redeem</a></li>
             <li><a href="#!/BillingApi#adsCreditsDiscounts/get">adsCreditsDiscounts/get</a></li>
+            <li><a href="#!/BillingApi#billingInvoiceDownload/get">billingInvoiceDownload/get</a></li>
+            <li><a href="#!/BillingApi#billingInvoices/get">billingInvoices/get</a></li>
             <li><a href="#!/BillingApi#billingProfiles/get">billingProfiles/get</a></li>
             <li><a href="#!/BillingApi#ssioAccounts/get">ssioAccounts/get</a></li>
             <li><a href="#!/BillingApi#ssioInsertionOrder/create">ssioInsertionOrder/create</a></li>
@@ -202,11 +205,14 @@
             <a href="#!/BusinessAccessRelationshipsApi">BusinessAccessRelationshipsApi</a>
           </div>
           <ul>
+            <li><a href="#!/BusinessAccessRelationshipsApi#brandAccounts/create">brandAccounts/create</a></li>
+            <li><a href="#!/BusinessAccessRelationshipsApi#brandAccounts/update">brandAccounts/update</a></li>
             <li><a href="#!/BusinessAccessRelationshipsApi#deleteBusinessMembership">deleteBusinessMembership</a></li>
             <li><a href="#!/BusinessAccessRelationshipsApi#deleteBusinessPartners">deleteBusinessPartners</a></li>
             <li><a href="#!/BusinessAccessRelationshipsApi#get/businessEmployers">get/businessEmployers</a></li>
             <li><a href="#!/BusinessAccessRelationshipsApi#get/businessMembers">get/businessMembers</a></li>
             <li><a href="#!/BusinessAccessRelationshipsApi#get/businessPartners">get/businessPartners</a></li>
+            <li><a href="#!/BusinessAccessRelationshipsApi#systemUser/update">systemUser/update</a></li>
             <li><a href="#!/BusinessAccessRelationshipsApi#update/businessMemberships">update/businessMemberships</a></li>
           </ul>
         </div>
@@ -215,6 +221,7 @@
             <a href="#!/CampaignsApi">CampaignsApi</a>
           </div>
           <ul>
+            <li><a href="#!/CampaignsApi#adPins/analytics">adPins/analytics</a></li>
             <li><a href="#!/CampaignsApi#campaignTargetingAnalytics/get">campaignTargetingAnalytics/get</a></li>
             <li><a href="#!/CampaignsApi#campaigns/analytics">campaigns/analytics</a></li>
             <li><a href="#!/CampaignsApi#campaigns/create">campaigns/create</a></li>
@@ -225,36 +232,72 @@
         </div>
         <div class="section-box">
           <div class="section-header">
+            <a href="#!/CatalogFeedsApi">CatalogFeedsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CatalogFeedsApi#feedProcessingResults/list">feedProcessingResults/list</a></li>
+            <li><a href="#!/CatalogFeedsApi#feeds/create">feeds/create</a></li>
+            <li><a href="#!/CatalogFeedsApi#feeds/delete">feeds/delete</a></li>
+            <li><a href="#!/CatalogFeedsApi#feeds/get">feeds/get</a></li>
+            <li><a href="#!/CatalogFeedsApi#feeds/ingest">feeds/ingest</a></li>
+            <li><a href="#!/CatalogFeedsApi#feeds/list">feeds/list</a></li>
+            <li><a href="#!/CatalogFeedsApi#feeds/update">feeds/update</a></li>
+            <li><a href="#!/CatalogFeedsApi#itemsIssues/list">itemsIssues/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CatalogItemsApi">CatalogItemsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CatalogItemsApi#items/post">items/post</a></li>
+            <li><a href="#!/CatalogItemsApi#itemsBatch/get">itemsBatch/get</a></li>
+            <li><a href="#!/CatalogItemsApi#itemsBatch/post">itemsBatch/post</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CatalogProductGroupsApi">CatalogProductGroupsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroupPins/list">catalogsProductGroupPins/list</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/create">catalogsProductGroups/create</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/createMany">catalogsProductGroups/createMany</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/delete">catalogsProductGroups/delete</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/deleteMany">catalogsProductGroups/deleteMany</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/get">catalogsProductGroups/get</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/list">catalogsProductGroups/list</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/productCountsGet">catalogsProductGroups/productCountsGet</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#catalogsProductGroups/update">catalogsProductGroups/update</a></li>
+            <li><a href="#!/CatalogProductGroupsApi#productsByProductGroupFilter/list">productsByProductGroupFilter/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CatalogReportsApi">CatalogReportsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CatalogReportsApi#reports/create">reports/create</a></li>
+            <li><a href="#!/CatalogReportsApi#reports/get">reports/get</a></li>
+            <li><a href="#!/CatalogReportsApi#reports/stats">reports/stats</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
             <a href="#!/CatalogsApi">CatalogsApi</a>
           </div>
           <ul>
+            <li><a href="#!/CatalogsApi#catalogs/availableFilterValues">catalogs/availableFilterValues</a></li>
             <li><a href="#!/CatalogsApi#catalogs/create">catalogs/create</a></li>
             <li><a href="#!/CatalogsApi#catalogs/list">catalogs/list</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroupPins/list">catalogsProductGroupPins/list</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/create">catalogsProductGroups/create</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/createMany">catalogsProductGroups/createMany</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/delete">catalogsProductGroups/delete</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/deleteMany">catalogsProductGroups/deleteMany</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/get">catalogsProductGroups/get</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/list">catalogsProductGroups/list</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/productCountsGet">catalogsProductGroups/productCountsGet</a></li>
-            <li><a href="#!/CatalogsApi#catalogsProductGroups/update">catalogsProductGroups/update</a></li>
-            <li><a href="#!/CatalogsApi#feedProcessingResults/list">feedProcessingResults/list</a></li>
-            <li><a href="#!/CatalogsApi#feeds/create">feeds/create</a></li>
-            <li><a href="#!/CatalogsApi#feeds/delete">feeds/delete</a></li>
-            <li><a href="#!/CatalogsApi#feeds/get">feeds/get</a></li>
-            <li><a href="#!/CatalogsApi#feeds/ingest">feeds/ingest</a></li>
-            <li><a href="#!/CatalogsApi#feeds/list">feeds/list</a></li>
-            <li><a href="#!/CatalogsApi#feeds/update">feeds/update</a></li>
-            <li><a href="#!/CatalogsApi#items/get">items/get</a></li>
-            <li><a href="#!/CatalogsApi#items/post">items/post</a></li>
-            <li><a href="#!/CatalogsApi#itemsBatch/get">itemsBatch/get</a></li>
-            <li><a href="#!/CatalogsApi#itemsBatch/post">itemsBatch/post</a></li>
-            <li><a href="#!/CatalogsApi#itemsIssues/list">itemsIssues/list</a></li>
-            <li><a href="#!/CatalogsApi#productsByProductGroupFilter/list">productsByProductGroupFilter/list</a></li>
-            <li><a href="#!/CatalogsApi#reports/create">reports/create</a></li>
-            <li><a href="#!/CatalogsApi#reports/get">reports/get</a></li>
-            <li><a href="#!/CatalogsApi#reports/stats">reports/stats</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ConversionEqsApi">ConversionEqsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ConversionEqsApi#conversionEqs/list">conversionEqs/list</a></li>
           </ul>
         </div>
         <div class="section-box">
@@ -275,6 +318,24 @@
             <li><a href="#!/ConversionTagsApi#conversionTags/list">conversionTags/list</a></li>
             <li><a href="#!/ConversionTagsApi#ocpmEligibleConversionTags/get">ocpmEligibleConversionTags/get</a></li>
             <li><a href="#!/ConversionTagsApi#pageVisitConversionTags/get">pageVisitConversionTags/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ConversionsApi">ConversionsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ConversionsApi#advertiserDefinedEvents/get">advertiserDefinedEvents/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CustomerListUploadsApi">CustomerListUploadsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CustomerListUploadsApi#customerListUploads/create">customerListUploads/create</a></li>
+            <li><a href="#!/CustomerListUploadsApi#customerListUploads/get">customerListUploads/get</a></li>
+            <li><a href="#!/CustomerListUploadsApi#customerListUploads/run">customerListUploads/run</a></li>
           </ul>
         </div>
         <div class="section-box">
@@ -312,6 +373,16 @@
             <li><a href="#!/KeywordsApi#keywords/get">keywords/get</a></li>
             <li><a href="#!/KeywordsApi#keywords/update">keywords/update</a></li>
             <li><a href="#!/KeywordsApi#trendingKeywords/list">trendingKeywords/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/LabelsApi">LabelsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/LabelsApi#labels/create">labels/create</a></li>
+            <li><a href="#!/LabelsApi#labels/list">labels/list</a></li>
+            <li><a href="#!/LabelsApi#labels/update">labels/update</a></li>
           </ul>
         </div>
         <div class="section-box">
@@ -358,10 +429,28 @@
         </div>
         <div class="section-box">
           <div class="section-header">
+            <a href="#!/MsotEventsApi">MsotEventsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/MsotEventsApi#msotEvents/create">msotEvents/create</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/NotificationApi">NotificationApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/NotificationApi#notification/post">notification/post</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
             <a href="#!/OauthApi">OauthApi</a>
           </div>
           <ul>
+            <li><a href="#!/OauthApi#oauth/conversionToken">oauth/conversionToken</a></li>
             <li><a href="#!/OauthApi#oauth/token">oauth/token</a></li>
+            <li><a href="#!/OauthApi#token/revoke">token/revoke</a></li>
           </ul>
         </div>
         <div class="section-box">
@@ -390,6 +479,16 @@
         </div>
         <div class="section-box">
           <div class="section-header">
+            <a href="#!/ProductCategoriesApi">ProductCategoriesApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ProductCategoriesApi#trendsFeaturedTopics/list">trendsFeaturedTopics/list</a></li>
+            <li><a href="#!/ProductCategoriesApi#trendsProductCategoriesDetails/list">trendsProductCategoriesDetails/list</a></li>
+            <li><a href="#!/ProductCategoriesApi#trendsProductCategoriesTrending/list">trendsProductCategoriesTrending/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
             <a href="#!/ProductGroupPromotionsApi">ProductGroupPromotionsApi</a>
           </div>
           <ul>
@@ -398,6 +497,18 @@
             <li><a href="#!/ProductGroupPromotionsApi#productGroupPromotions/list">productGroupPromotions/list</a></li>
             <li><a href="#!/ProductGroupPromotionsApi#productGroupPromotions/update">productGroupPromotions/update</a></li>
             <li><a href="#!/ProductGroupPromotionsApi#productGroups/analytics">productGroups/analytics</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/PromotionsApi">PromotionsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/PromotionsApi#promotions/create">promotions/create</a></li>
+            <li><a href="#!/PromotionsApi#promotions/delete">promotions/delete</a></li>
+            <li><a href="#!/PromotionsApi#promotions/get">promotions/get</a></li>
+            <li><a href="#!/PromotionsApi#promotions/list">promotions/list</a></li>
+            <li><a href="#!/PromotionsApi#promotions/update">promotions/update</a></li>
           </ul>
         </div>
         <div class="section-box">

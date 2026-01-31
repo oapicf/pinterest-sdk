@@ -8,8 +8,8 @@ The class is defined in **[UserAccountFollowedInterests200Response.java](../../s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Interest&gt;`](Interest.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Interest&gt;`](Interest.md) |  | 
 
 
 

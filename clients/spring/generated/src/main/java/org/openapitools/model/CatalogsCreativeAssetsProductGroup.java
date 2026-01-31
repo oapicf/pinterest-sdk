@@ -27,8 +27,10 @@ import javax.annotation.Generated;
  * CatalogsCreativeAssetsProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProductGroup {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -65,19 +67,17 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
 
   private CatalogTypeEnum catalogType;
 
-  private String id;
-
-  private @Nullable String name;
+  private @Nullable Integer createdAt;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  private @Nullable Integer createdAt;
+  private String id;
+
+  private @Nullable String name;
 
   private @Nullable Integer updatedAt;
-
-  private String catalogId;
 
   public CatalogsCreativeAssetsProductGroup() {
     super();
@@ -86,10 +86,30 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsProductGroup(CatalogTypeEnum catalogType, String id, CatalogsCreativeAssetsProductGroupFilters filters, String catalogId) {
+  public CatalogsCreativeAssetsProductGroup(String catalogId, CatalogTypeEnum catalogType, CatalogsCreativeAssetsProductGroupFilters filters, String id) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.id = id;
     this.filters = filters;
+    this.id = id;
+  }
+
+  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -113,44 +133,24 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsProductGroup id(String id) {
-    this.id = id;
+  public CatalogsCreativeAssetsProductGroup createdAt(@Nullable Integer createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * ID of the creative assets product group.
-   * @return id
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "443727193917", description = "ID of the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CatalogsCreativeAssetsProductGroup name(@Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Name of creative assets product group
-   * @return name
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
    */
   
-  @Schema(name = "name", example = "Most Popular", description = "Name of creative assets product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public @Nullable String getName() {
-    return name;
+  @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_at")
+  public @Nullable Integer getCreatedAt() {
+    return createdAt;
   }
 
-  public void setName(@Nullable String name) {
-    this.name = name;
+  public void setCreatedAt(@Nullable Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
   public CatalogsCreativeAssetsProductGroup description(String description) {
@@ -193,24 +193,44 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     this.filters = filters;
   }
 
-  public CatalogsCreativeAssetsProductGroup createdAt(@Nullable Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsCreativeAssetsProductGroup id(String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
+   * ID of the creative assets product group.
+   * @return id
    */
-  
-  @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_at")
-  public @Nullable Integer getCreatedAt() {
-    return createdAt;
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "443727193917", description = "ID of the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(@Nullable Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public CatalogsCreativeAssetsProductGroup name(@Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name of creative assets product group
+   * @return name
+   */
+  
+  @Schema(name = "name", example = "Most Popular", description = "Name of creative assets product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
+  }
+
+  public void setName(@Nullable String name) {
+    this.name = name;
   }
 
   public CatalogsCreativeAssetsProductGroup updatedAt(@Nullable Integer updatedAt) {
@@ -233,26 +253,6 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the creative assets product group.
-   * @return catalogId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -262,14 +262,14 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
       return false;
     }
     CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup = (CatalogsCreativeAssetsProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsCreativeAssetsProductGroup.id) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroup.name) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
+        Objects.equals(this.createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
         equalsNullable(this.description, catalogsCreativeAssetsProductGroup.description) &&
         Objects.equals(this.filters, catalogsCreativeAssetsProductGroup.filters) &&
-        Objects.equals(this.createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsCreativeAssetsProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroup.catalogId);
+        Objects.equals(this.id, catalogsCreativeAssetsProductGroup.id) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroup.name) &&
+        Objects.equals(this.updatedAt, catalogsCreativeAssetsProductGroup.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -278,7 +278,7 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, hashCodeNullable(description), filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, hashCodeNullable(description), filters, id, name, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -292,14 +292,14 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroup {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

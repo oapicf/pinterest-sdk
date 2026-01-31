@@ -1,7 +1,6 @@
 
 # MediaUploadStatus
 
-Media upload status
 
 ## Properties
 

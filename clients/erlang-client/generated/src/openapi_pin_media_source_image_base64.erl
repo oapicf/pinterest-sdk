@@ -5,19 +5,19 @@
 -export_type([openapi_pin_media_source_image_base64/0]).
 
 -type openapi_pin_media_source_image_base64() ::
-    #{ 'source_type' := binary(),
-       'content_type' := binary(),
+    #{ 'content_type' := openapi_content_type:openapi_content_type(),
        'data' := binary(),
-       'is_standard' => boolean()
+       'is_standard' => boolean(),
+       'source_type' := binary()
      }.
 
-encode(#{ 'source_type' := SourceType,
-          'content_type' := ContentType,
+encode(#{ 'content_type' := ContentType,
           'data' := Data,
-          'is_standard' := IsStandard
+          'is_standard' := IsStandard,
+          'source_type' := SourceType
         }) ->
-    #{ 'source_type' => SourceType,
-       'content_type' => ContentType,
+    #{ 'content_type' => ContentType,
        'data' => Data,
-       'is_standard' => IsStandard
+       'is_standard' => IsStandard,
+       'source_type' => SourceType
      }.

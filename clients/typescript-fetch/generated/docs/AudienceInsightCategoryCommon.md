@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
+`id` | string
+`index` | number
 `key` | string
 `name` | string
 `ratio` | number
-`index` | number
-`id` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { AudienceInsightCategoryCommon } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "id": 549755885175,
+  "index": 1.2,
   "key": 549755885175,
   "name": travel,
   "ratio": 0.551,
-  "index": 1.2,
-  "id": 549755885175,
 } satisfies AudienceInsightCategoryCommon
 
 console.log(example)

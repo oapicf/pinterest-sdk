@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Interest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Interest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  Interest {
+    title = Interest
+    description = Interest
+    derivedFrom = Root
+    properties {
+        canonical_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        key {
+          type =  string
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Interest {
+    title = Interest
+    description = Interest
+    implements = openapi_server.resourceTypes.Interest
+
+  }
+}

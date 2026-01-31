@@ -18,12 +18,12 @@ module FeedsUpdateRequest =
 
 
   type feeds_update_request = {
+    Credentials : CatalogsFeedCredentials;
     DefaultAvailability : ProductAvailabilityType;
     DefaultCurrency : NullableCurrency;
-    Name : string;
     Format : CatalogsFormat;
-    Credentials : CatalogsFeedCredentials;
     Location : string;
+    Name : string;
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
   }

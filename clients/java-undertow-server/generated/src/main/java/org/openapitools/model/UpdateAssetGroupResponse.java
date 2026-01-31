@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,29 +26,11 @@ import org.openapitools.model.UpdateAssetGroupResponseExceptionsInner;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupResponse   {
   
-  private List<AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
   private List<UpdateAssetGroupResponseExceptionsInner> exceptions;
-
-  /**
-   * A list of successfully edited asset groups.
-   */
-  public UpdateAssetGroupResponse updatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
-    this.updatedAssetGroups = updatedAssetGroups;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A list of successfully edited asset groups.")
-  @JsonProperty("updated_asset_groups")
-  public List<AssetGroupBinding> getUpdatedAssetGroups() {
-    return updatedAssetGroups;
-  }
-  public void setUpdatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
-    this.updatedAssetGroups = updatedAssetGroups;
-  }
+  private List<AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   /**
    * A list of errors associated with the asset groups. Will be returned if there is an error.
@@ -68,6 +50,24 @@ public class UpdateAssetGroupResponse   {
     this.exceptions = exceptions;
   }
 
+  /**
+   * A list of successfully edited asset groups.
+   */
+  public UpdateAssetGroupResponse updatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A list of successfully edited asset groups.")
+  @JsonProperty("updated_asset_groups")
+  public List<AssetGroupBinding> getUpdatedAssetGroups() {
+    return updatedAssetGroups;
+  }
+  public void setUpdatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -78,13 +78,13 @@ public class UpdateAssetGroupResponse   {
       return false;
     }
     UpdateAssetGroupResponse updateAssetGroupResponse = (UpdateAssetGroupResponse) o;
-    return Objects.equals(updatedAssetGroups, updateAssetGroupResponse.updatedAssetGroups) &&
-        Objects.equals(exceptions, updateAssetGroupResponse.exceptions);
+    return Objects.equals(exceptions, updateAssetGroupResponse.exceptions) &&
+        Objects.equals(updatedAssetGroups, updateAssetGroupResponse.updatedAssetGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(updatedAssetGroups, exceptions);
+    return Objects.hash(exceptions, updatedAssetGroups);
   }
 
   @Override
@@ -92,8 +92,8 @@ public class UpdateAssetGroupResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponse {\n");
     
-    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server NotificationPostRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a NotificationPostRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  NotificationPostRequest {
+    title = NotificationPostRequest
+    description = NotificationPostRequest
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  NotificationPostRequest {
+    title = NotificationPostRequest
+    description = NotificationPostRequest
+    implements = openapi_server.resourceTypes.NotificationPostRequest
+
+  }
+}

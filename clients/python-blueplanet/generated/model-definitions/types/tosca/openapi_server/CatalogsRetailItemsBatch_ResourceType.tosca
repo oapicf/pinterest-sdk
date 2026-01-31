@@ -1,0 +1,64 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailItemsBatch"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailItemsBatch"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BatchOperationStatus = openapi_server.resourceTypes.BatchOperationStatus
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  ItemProcessingRecord = openapi_server.resourceTypes.ItemProcessingRecord
+}
+resourceTypes {
+
+  CatalogsRetailItemsBatch {
+    title = CatalogsRetailItemsBatch
+    description = CatalogsRetailItemsBatch
+    derivedFrom = Root
+    properties {
+        batch_id {
+          type =  string
+          description = "Id of the catalogs items batch"
+          optional = false
+        }
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        completed_time {
+          type =  string
+          description = "Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss"
+          optional = false
+        }
+        created_time {
+          type =  string
+          description = "Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion."
+          optional = true
+        }
+        items {
+          type = array
+          items.type = ItemProcessingRecord
+          description = "Array with the catalogs items processing records part of the catalogs items batch"
+          optional = false
+        }
+        status {
+          type = BatchOperationStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailItemsBatch {
+    title = CatalogsRetailItemsBatch
+    description = CatalogsRetailItemsBatch
+    implements = openapi_server.resourceTypes.CatalogsRetailItemsBatch
+
+  }
+}

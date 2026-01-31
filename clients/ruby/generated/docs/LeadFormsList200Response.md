@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::LeadFormsList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

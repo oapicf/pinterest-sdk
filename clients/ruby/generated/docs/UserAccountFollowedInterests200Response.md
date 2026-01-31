@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;Interest&gt;**](Interest.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;Interest&gt;**](Interest.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::UserAccountFollowedInterests200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

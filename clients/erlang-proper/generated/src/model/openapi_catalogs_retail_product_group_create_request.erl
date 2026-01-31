@@ -9,13 +9,13 @@
 -export_type([openapi_catalogs_retail_product_group_create_request/0]).
 
 -type openapi_catalogs_retail_product_group_create_request() ::
-  [ {'catalog_type', binary() }
-  | {'name', binary() }
+  [ {'catalog_id', binary() }
+  | {'catalog_type', binary() }
+  | {'country', openapi_country:openapi_country() }
   | {'description', binary() }
   | {'filters', openapi_catalogs_product_group_filters_request:openapi_catalogs_product_group_filters_request() }
-  | {'catalog_id', binary() }
-  | {'country', openapi_country:openapi_country() }
   | {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
+  | {'name', binary() }
   ].
 
 
@@ -23,13 +23,13 @@ openapi_catalogs_retail_product_group_create_request() ->
     openapi_catalogs_retail_product_group_create_request([]).
 
 openapi_catalogs_retail_product_group_create_request(Fields) ->
-  Default = [ {'catalog_type', elements([<<"RETAIL">>]) }
-            , {'name', binary() }
+  Default = [ {'catalog_id', binary() }
+            , {'catalog_type', elements([<<"RETAIL">>]) }
+            , {'country', openapi_country:openapi_country() }
             , {'description', binary() }
             , {'filters', openapi_catalogs_product_group_filters_request:openapi_catalogs_product_group_filters_request() }
-            , {'catalog_id', binary() }
-            , {'country', openapi_country:openapi_country() }
             , {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -3,17 +3,17 @@ Protected Class ConversionApiResponseEventsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether the event was processed successfully.
+			Error message containing more information about why the event failed to be processed.
 		#tag EndNote
-		status As String
+		error_message As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Error message containing more information about why the event failed to be processed.
+			Whether the event was processed successfully.
 		#tag EndNote
-		error_message As Xoson.O.OptionalString
+		status As String
 	#tag EndProperty
 
 

@@ -6,9 +6,9 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.Error;
-import com.prokarma.pkmst.model.PinsList200Response;
 import com.prokarma.pkmst.model.SearchPartnerPins200Response;
 import com.prokarma.pkmst.model.SearchUserBoardsGet200Response;
+import com.prokarma.pkmst.model.SearchUserPinsList200Response;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +22,11 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "Search", description = "the Search API")
 public interface SearchApi {
 
-    @ApiOperation(value = "Search pins by a given search term", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.", response = SearchPartnerPins200Response.class, authorizations = {
+    @ApiOperation(value = "Search pins by a given search term", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.", response = SearchPartnerPins200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
@@ -62,7 +62,7 @@ public interface SearchApi {
     ResponseEntity<SearchUserBoardsGet200Response> searchUserBoardsGet(@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.")  @RequestParam(value = "query", required = false) String query, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Search user's Pins", notes = "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.", response = PinsList200Response.class, authorizations = {
+    @ApiOperation(value = "Search user's Pins", notes = "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.", response = SearchUserPinsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "boards:read_secret", description = "See your secret boards"),
@@ -70,7 +70,7 @@ public interface SearchApi {
             @AuthorizationScope(scope = "pins:read_secret", description = "See your secret Pins") })
          }, tags={ "search", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PinsList200Response.class),
+        @ApiResponse(code = 200, message = "Success", response = SearchUserPinsList200Response.class),
         @ApiResponse(code = 404, message = "User not found", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     @RequestMapping(
@@ -78,6 +78,6 @@ public interface SearchApi {
         value = "/search/pins",
         produces = { "application/json" }
     )
-    ResponseEntity<PinsList200Response> searchUserPinsList(@ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true)  @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<SearchUserPinsList200Response> searchUserPinsList(@ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true)  @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 }

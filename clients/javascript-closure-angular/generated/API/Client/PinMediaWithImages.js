@@ -7,14 +7,18 @@ goog.provide('API.Client.PinMediaWithImages');
 API.Client.PinMediaWithImages = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.PinMediaWithImages.prototype.mediaType;
-
-/**
  * @type {!Array<!API.Client.ImageMetadata>}
  * @export
  */
 API.Client.PinMediaWithImages.prototype.items;
 
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.PinMediaWithImages.prototype.mediaType;
+
+/** @enum {string} */
+API.Client.PinMediaWithImages.MediaTypeEnum = { 
+  multiple_images: 'multiple_images',
+}

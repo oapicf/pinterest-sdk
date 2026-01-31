@@ -12,42 +12,42 @@ import AnyCodable
 
 public struct UserWebsiteVerificationCode: Codable, JSONEncodable, Hashable {
 
-    /** Code to check against the user claiming the website */
-    public var verificationCode: String?
     /** DNS TXT record to check against for the website to be claimed */
     public var dnsTxtRecord: String?
-    /** Metatag the verification process searchs for the website to be claimed */
-    public var metatag: String?
-    /** File expected to find on the website being claimed */
-    public var filename: String?
     /** A full html file to upload to the website in order for it to be claimed */
     public var fileContent: String?
+    /** File expected to find on the website being claimed */
+    public var filename: String?
+    /** Metatag the verification process searchs for the website to be claimed */
+    public var metatag: String?
+    /** Code to check against the user claiming the website */
+    public var verificationCode: String?
 
-    public init(verificationCode: String? = nil, dnsTxtRecord: String? = nil, metatag: String? = nil, filename: String? = nil, fileContent: String? = nil) {
-        self.verificationCode = verificationCode
+    public init(dnsTxtRecord: String? = nil, fileContent: String? = nil, filename: String? = nil, metatag: String? = nil, verificationCode: String? = nil) {
         self.dnsTxtRecord = dnsTxtRecord
-        self.metatag = metatag
-        self.filename = filename
         self.fileContent = fileContent
+        self.filename = filename
+        self.metatag = metatag
+        self.verificationCode = verificationCode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case verificationCode = "verification_code"
         case dnsTxtRecord = "dns_txt_record"
-        case metatag
-        case filename
         case fileContent = "file_content"
+        case filename
+        case metatag
+        case verificationCode = "verification_code"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(verificationCode, forKey: .verificationCode)
         try container.encodeIfPresent(dnsTxtRecord, forKey: .dnsTxtRecord)
-        try container.encodeIfPresent(metatag, forKey: .metatag)
-        try container.encodeIfPresent(filename, forKey: .filename)
         try container.encodeIfPresent(fileContent, forKey: .fileContent)
+        try container.encodeIfPresent(filename, forKey: .filename)
+        try container.encodeIfPresent(metatag, forKey: .metatag)
+        try container.encodeIfPresent(verificationCode, forKey: .verificationCode)
     }
 }
 

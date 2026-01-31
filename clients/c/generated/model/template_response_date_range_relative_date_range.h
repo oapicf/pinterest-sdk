@@ -19,17 +19,17 @@ typedef struct template_response_date_range_relative_date_range_t template_respo
 
 
 typedef struct template_response_date_range_relative_date_range_t {
-    char *type; // string
-    double start_days_in_past; //numeric
     double end_days_in_past; //numeric
+    double start_days_in_past; //numeric
+    char *type; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } template_response_date_range_relative_date_range_t;
 
 __attribute__((deprecated)) template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range_create(
-    char *type,
+    double end_days_in_past,
     double start_days_in_past,
-    double end_days_in_past
+    char *type
 );
 
 void template_response_date_range_relative_date_range_free(template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range);

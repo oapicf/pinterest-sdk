@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvertiserDefinedEventsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvertiserDefinedEventsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdvertiserDefinedEvent = openapi_server.resourceTypes.AdvertiserDefinedEvent
+}
+resourceTypes {
+
+  AdvertiserDefinedEventsResponse {
+    title = AdvertiserDefinedEventsResponse
+    description = AdvertiserDefinedEventsResponse
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AdvertiserDefinedEvent
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvertiserDefinedEventsResponse {
+    title = AdvertiserDefinedEventsResponse
+    description = AdvertiserDefinedEventsResponse
+    implements = openapi_server.resourceTypes.AdvertiserDefinedEventsResponse
+
+  }
+}

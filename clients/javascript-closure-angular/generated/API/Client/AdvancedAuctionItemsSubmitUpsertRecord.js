@@ -7,17 +7,17 @@ goog.provide('API.Client.AdvancedAuctionItemsSubmitUpsertRecord');
 API.Client.AdvancedAuctionItemsSubmitUpsertRecord = function() {}
 
 /**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.AdvancedAuctionItemsSubmitUpsertRecord.prototype.country;
+
+/**
  * The catalog retail item id in the merchant namespace
  * @type {!string}
  * @export
  */
 API.Client.AdvancedAuctionItemsSubmitUpsertRecord.prototype.itemId;
-
-/**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.AdvancedAuctionItemsSubmitUpsertRecord.prototype.country;
 
 /**
  * @type {!API.Client.Language}
@@ -30,6 +30,13 @@ API.Client.AdvancedAuctionItemsSubmitUpsertRecord.prototype.language;
  * @export
  */
 API.Client.AdvancedAuctionItemsSubmitUpsertRecord.prototype.bidOptions;
+
+/**
+ * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+ * @type {!Array<!API.Client.AdvancedAuctionOperationError>}
+ * @export
+ */
+API.Client.AdvancedAuctionItemsSubmitUpsertRecord.prototype.errors;
 
 /**
  * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.

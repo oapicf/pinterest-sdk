@@ -10,8 +10,8 @@ import org.openapitools.model.AssetIdPermissions;
 
 @Canonical
 class BusinessMemberAssetsGet200Response {
-    /* List asset permissions the given member was granted. */
-    List<AssetIdPermissions> items = new ArrayList<>()
     
     String bookmark
+    /* List asset permissions the given member was granted. */
+    List<AssetIdPermissions> items = new ArrayList<>()
 }

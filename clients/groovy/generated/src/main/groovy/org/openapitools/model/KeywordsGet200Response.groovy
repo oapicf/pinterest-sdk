@@ -11,7 +11,7 @@ import org.openapitools.model.Keyword;
 @Canonical
 class KeywordsGet200Response {
     
-    List<Keyword> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Keyword> items = new ArrayList<>()
 }

@@ -48,20 +48,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getROperator();
-
-	/*! \brief Set 
-	 */
-	void setROperator(std::string  r_operator);
-	/*! \brief Get 
-	 */
-	long long getValue();
-
-	/*! \brief Set 
-	 */
-	void setValue(long long  value);
-	/*! \brief Get 
-	 */
 	NonNullableCatalogsCurrency getCurrency();
 
 	/*! \brief Set 
@@ -74,12 +60,26 @@ public:
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	std::string getROperator();
+
+	/*! \brief Set 
+	 */
+	void setROperator(std::string  r_operator);
+	/*! \brief Get 
+	 */
+	long long getValue();
+
+	/*! \brief Set 
+	 */
+	void setValue(long long  value);
 
 private:
-	std::string r_operator;
-	long long value;
 	NonNullableCatalogsCurrency currency;
 	bool negated;
+	std::string r_operator;
+	long long value;
 	void __init();
 	void __cleanup();
 

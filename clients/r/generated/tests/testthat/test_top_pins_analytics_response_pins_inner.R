@@ -5,19 +5,19 @@ context("Test TopPinsAnalyticsResponsePinsInner")
 
 model_instance <- TopPinsAnalyticsResponsePinsInner$new()
 
+test_that("data_status", {
+  # tests for the property `data_status` (map(DataStatus))
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`data_status`, "EXPECTED_RESULT")
+})
+
 test_that("metrics", {
   # tests for the property `metrics` (map(numeric))
   # The metric name and daily value for each requested metric
 
   # uncomment below to test the property
   #expect_equal(model.instance$`metrics`, "EXPECTED_RESULT")
-})
-
-test_that("data_status", {
-  # tests for the property `data_status` (map(DataStatus))
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`data_status`, "EXPECTED_RESULT")
 })
 
 test_that("pin_id", {

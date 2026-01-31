@@ -6,17 +6,17 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ConversionTagsCreate**](ConversionTagsApi.md#ConversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**ConversionTagsGet**](ConversionTagsApi.md#ConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**ConversionTagsList**](ConversionTagsApi.md#ConversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**ConversionTagsList**](ConversionTagsApi.md#ConversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**OcpmEligibleConversionTagsGet**](ConversionTagsApi.md#OcpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**PageVisitConversionTagsGet**](ConversionTagsApi.md#PageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
 
 # **ConversionTagsCreate**
-> ConversionTagResponse ConversionTagsCreate(ad_account_id, conversion_tag_create)
+> ConversionTag ConversionTagsCreate(ad_account_id, conversion_tag_create)
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 ```R
@@ -26,7 +26,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_conversion_tag_create <- ConversionTagCreate$new("name_example", "aem_enabled_example", 123, "aem_fnln_enabled_example", "aem_ph_enabled_example", "aem_ge_enabled_example", "aem_db_enabled_example", "aem_loc_enabled_example") # ConversionTagCreate | Conversion Tag to create
+var_conversion_tag_create <- ConversionTagCreate$new("name_example", "aem_db_enabled_example", "aem_enabled_example", "aem_external_id_enabled_example", "aem_fnln_enabled_example", "aem_ge_enabled_example", "aem_loc_enabled_example", "aem_ph_enabled_example", 123) # ConversionTagCreate | 
 
 api_instance <- ConversionTagsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -42,11 +42,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **conversion_tag_create** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create | 
+ **conversion_tag_create** | [**ConversionTagCreate**](ConversionTagCreate.md)|  | 
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -60,11 +60,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **ConversionTagsGet**
-> ConversionTagResponse ConversionTagsGet(ad_account_id, conversion_tag_id)
+> ConversionTag ConversionTagsGet(ad_account_id, conversion_tag_id)
 
 Get conversion tag
 
@@ -83,6 +89,8 @@ var_conversion_tag_id <- "2617998078212" # character | Id of the conversion tag.
 api_instance <- ConversionTagsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$ConversionTagsGet(var_ad_account_id, var_conversion_tag_iddata_file = "result.txt")
 result <- api_instance$ConversionTagsGet(var_ad_account_id, var_conversion_tag_id)
@@ -98,11 +106,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -116,9 +124,9 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **ConversionTagsList**
-> ConversionTagListResponse ConversionTagsList(ad_account_id, filter_deleted = FALSE)
+> ConversionTagsList200Response ConversionTagsList(ad_account_id, filter_deleted = FALSE)
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -126,15 +134,17 @@ List conversion tags associated with an ad account.
 ```R
 library(openapi)
 
-# Get conversion tags
+# List conversion tags
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_filter_deleted <- FALSE # character | Filter out deleted tags. (Optional)
+var_filter_deleted <- FALSE # character | Filter by deleted status (Optional)
 
 api_instance <- ConversionTagsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$ConversionTagsList(var_ad_account_id, filter_deleted = var_filter_deleteddata_file = "result.txt")
 result <- api_instance$ConversionTagsList(var_ad_account_id, filter_deleted = var_filter_deleted)
@@ -146,15 +156,15 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **filter_deleted** | **character**| Filter out deleted tags. | [optional] [default to FALSE]
+ **filter_deleted** | **character**| Filter by deleted status | [optional] [default to FALSE]
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](conversion_tags_list_200_response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -164,8 +174,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **OcpmEligibleConversionTagsGet**
 > map(array[ConversionEventResponse]) OcpmEligibleConversionTagsGet(ad_account_id)
@@ -186,6 +201,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- ConversionTagsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$OcpmEligibleConversionTagsGet(var_ad_account_iddata_file = "result.txt")
 result <- api_instance$OcpmEligibleConversionTagsGet(var_ad_account_id)
@@ -204,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -239,6 +256,8 @@ var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next p
 api_instance <- ConversionTagsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$PageVisitConversionTagsGet(var_ad_account_id, page_size = var_page_size, order = var_order, bookmark = var_bookmarkdata_file = "result.txt")
 result <- api_instance$PageVisitConversionTagsGet(var_ad_account_id, page_size = var_page_size, order = var_order, bookmark = var_bookmark)
@@ -260,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

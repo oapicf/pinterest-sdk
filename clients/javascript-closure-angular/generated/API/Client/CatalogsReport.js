@@ -12,18 +12,18 @@ API.Client.CatalogsReport = function() {}
 API.Client.CatalogsReport.prototype.reportStatus;
 
 /**
- * URL to download the report
- * @type {!string}
- * @export
- */
-API.Client.CatalogsReport.prototype.url;
-
-/**
  * Size of the report in bytes
  * @type {!number}
  * @export
  */
 API.Client.CatalogsReport.prototype.size;
+
+/**
+ * URL to download the report
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsReport.prototype.url;
 
 /** @enum {string} */
 API.Client.CatalogsReport.ReportStatusEnum = { 

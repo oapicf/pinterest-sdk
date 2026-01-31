@@ -48,17 +48,17 @@ public enum ReportStatusEnum {
   private ReportStatusEnum reportStatus;
 
  /**
-  * URL to download the report
-  */
-  @ApiModelProperty(value = "URL to download the report")
-  private String url;
-
- /**
   * Size of the report in bytes
   */
   @ApiModelProperty(value = "Size of the report in bytes")
   @Valid
   private BigDecimal size;
+
+ /**
+  * URL to download the report
+  */
+  @ApiModelProperty(value = "URL to download the report")
+  private String url;
  /**
   * Get reportStatus
   * @return reportStatus
@@ -80,30 +80,6 @@ public enum ReportStatusEnum {
    */
   public CatalogsReport reportStatus(ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
-    return this;
-  }
-
- /**
-  * URL to download the report
-  * @return url
-  */
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-
-  /**
-   * Sets the <code>url</code> property.
-   */
- public void setUrl(String url) {
-    this.url = url;
-  }
-
-  /**
-   * Sets the <code>url</code> property.
-   */
-  public CatalogsReport url(String url) {
-    this.url = url;
     return this;
   }
 
@@ -131,6 +107,30 @@ public enum ReportStatusEnum {
     return this;
   }
 
+ /**
+  * URL to download the report
+  * @return url
+  */
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+
+  /**
+   * Sets the <code>url</code> property.
+   */
+ public void setUrl(String url) {
+    this.url = url;
+  }
+
+  /**
+   * Sets the <code>url</code> property.
+   */
+  public CatalogsReport url(String url) {
+    this.url = url;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,13 +142,13 @@ public enum ReportStatusEnum {
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(this.reportStatus, catalogsReport.reportStatus) &&
-        Objects.equals(this.url, catalogsReport.url) &&
-        Objects.equals(this.size, catalogsReport.size);
+        Objects.equals(this.size, catalogsReport.size) &&
+        Objects.equals(this.url, catalogsReport.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -157,8 +157,8 @@ public enum ReportStatusEnum {
     sb.append("class CatalogsReport {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

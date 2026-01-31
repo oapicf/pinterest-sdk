@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `LeadFormQuestion`
 --
-SELECT `question_type`, `custom_question_field_type`, `custom_question_label`, `custom_question_options` FROM `LeadFormQuestion` WHERE 1;
+SELECT `custom_question_field_type`, `custom_question_label`, `custom_question_options`, `question_type` FROM `LeadFormQuestion` WHERE 1;
 
 --
 -- INSERT template for table `LeadFormQuestion`
 --
-INSERT INTO `LeadFormQuestion`(`question_type`, `custom_question_field_type`, `custom_question_label`, `custom_question_options`) VALUES (?, ?, ?, ?);
+INSERT INTO `LeadFormQuestion`(`custom_question_field_type`, `custom_question_label`, `custom_question_options`, `question_type`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `LeadFormQuestion`
 --
-UPDATE `LeadFormQuestion` SET `question_type` = ?, `custom_question_field_type` = ?, `custom_question_label` = ?, `custom_question_options` = ? WHERE 1;
+UPDATE `LeadFormQuestion` SET `custom_question_field_type` = ?, `custom_question_label` = ?, `custom_question_options` = ?, `question_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `LeadFormQuestion`

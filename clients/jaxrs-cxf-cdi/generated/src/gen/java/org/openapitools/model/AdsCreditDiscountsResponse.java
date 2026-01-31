@@ -21,6 +21,10 @@ public class AdsCreditDiscountsResponse   {
 
   private String advertiserId;
 
+  private String discountCurrency;
+
+  private BigDecimal discountInMicroCurrency;
+
 
 public enum DiscountTypeEnum {
 
@@ -54,13 +58,9 @@ public enum DiscountTypeEnum {
 
   private DiscountTypeEnum discountType;
 
-  private BigDecimal discountInMicroCurrency;
-
-  private String discountCurrency;
+  private BigDecimal remainingDiscountInMicroCurrency;
 
   private String title;
-
-  private BigDecimal remainingDiscountInMicroCurrency;
 
   /**
    * True if the offer code is currently active.
@@ -101,21 +101,21 @@ public enum DiscountTypeEnum {
 
 
   /**
-   * The type of discount of this credit
+   * Currency value for the discount.
    **/
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
-    this.discountType = discountType;
+  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
+    this.discountCurrency = discountCurrency;
     return this;
   }
 
   
-  @ApiModelProperty(value = "The type of discount of this credit")
-  @JsonProperty("discountType")
-  public DiscountTypeEnum getDiscountType() {
-    return discountType;
+  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
+  @JsonProperty("discountCurrency")
+  public String getDiscountCurrency() {
+    return discountCurrency;
   }
-  public void setDiscountType(DiscountTypeEnum discountType) {
-    this.discountType = discountType;
+  public void setDiscountCurrency(String discountCurrency) {
+    this.discountCurrency = discountCurrency;
   }
 
 
@@ -139,40 +139,21 @@ public enum DiscountTypeEnum {
 
 
   /**
-   * Currency value for the discount.
+   * The type of discount of this credit
    **/
-  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
-    this.discountCurrency = discountCurrency;
+  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+    this.discountType = discountType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
-  @JsonProperty("discountCurrency")
-  public String getDiscountCurrency() {
-    return discountCurrency;
+  @ApiModelProperty(value = "The type of discount of this credit")
+  @JsonProperty("discountType")
+  public DiscountTypeEnum getDiscountType() {
+    return discountType;
   }
-  public void setDiscountCurrency(String discountCurrency) {
-    this.discountCurrency = discountCurrency;
-  }
-
-
-  /**
-   * Human readable title of the offer code.
-   **/
-  public AdsCreditDiscountsResponse title(String title) {
-    this.title = title;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
+  public void setDiscountType(DiscountTypeEnum discountType) {
+    this.discountType = discountType;
   }
 
 
@@ -195,6 +176,25 @@ public enum DiscountTypeEnum {
   }
 
 
+  /**
+   * Human readable title of the offer code.
+   **/
+  public AdsCreditDiscountsResponse title(String title) {
+    this.title = title;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -207,16 +207,16 @@ public enum DiscountTypeEnum {
     AdsCreditDiscountsResponse adsCreditDiscountsResponse = (AdsCreditDiscountsResponse) o;
     return Objects.equals(this.active, adsCreditDiscountsResponse.active) &&
         Objects.equals(this.advertiserId, adsCreditDiscountsResponse.advertiserId) &&
-        Objects.equals(this.discountType, adsCreditDiscountsResponse.discountType) &&
-        Objects.equals(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
         Objects.equals(this.discountCurrency, adsCreditDiscountsResponse.discountCurrency) &&
-        Objects.equals(this.title, adsCreditDiscountsResponse.title) &&
-        Objects.equals(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency);
+        Objects.equals(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
+        Objects.equals(this.discountType, adsCreditDiscountsResponse.discountType) &&
+        Objects.equals(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency) &&
+        Objects.equals(this.title, adsCreditDiscountsResponse.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, advertiserId, discountType, discountInMicroCurrency, discountCurrency, title, remainingDiscountInMicroCurrency);
+    return Objects.hash(active, advertiserId, discountCurrency, discountInMicroCurrency, discountType, remainingDiscountInMicroCurrency, title);
   }
 
   @Override
@@ -226,11 +226,11 @@ public enum DiscountTypeEnum {
     
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
-    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
     sb.append("    discountCurrency: ").append(toIndentedString(discountCurrency)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
+    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    remainingDiscountInMicroCurrency: ").append(toIndentedString(remainingDiscountInMicroCurrency)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

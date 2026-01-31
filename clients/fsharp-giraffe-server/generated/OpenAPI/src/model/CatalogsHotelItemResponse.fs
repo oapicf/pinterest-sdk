@@ -12,9 +12,9 @@ module CatalogsHotelItemResponse =
 
 
   type CatalogsHotelItemResponse = {
+    Attributes : CatalogsHotelAttributes;
     CatalogType : CatalogsType;
     HotelId : string;
     Pins : Pin[];
-    Attributes : CatalogsHotelAttributes;
   }
   //#endregion

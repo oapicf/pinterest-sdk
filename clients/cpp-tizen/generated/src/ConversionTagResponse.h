@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Ad account ID.
-	 */
-	std::string getAdAccountId();
-
-	/*! \brief Set Ad account ID.
-	 */
-	void setAdAccountId(std::string  ad_account_id);
 	/*! \brief Get Tag code snippet.
 	 */
 	std::string getCodeSnippet();
@@ -64,9 +57,16 @@ public:
 	void setCodeSnippet(std::string  code_snippet);
 	/*! \brief Get 
 	 */
-	EnhancedMatchStatusType getEnhancedMatchStatus();
+	ConversionTagConfigs getConfigs();
 
 	/*! \brief Set 
+	 */
+	void setConfigs(ConversionTagConfigs  configs);
+	/*! \brief Get The enhanced match status of the tag
+	 */
+	EnhancedMatchStatusType getEnhancedMatchStatus();
+
+	/*! \brief Set The enhanced match status of the tag
 	 */
 	void setEnhancedMatchStatus(EnhancedMatchStatusType  enhanced_match_status);
 	/*! \brief Get Tag ID.
@@ -90,13 +90,6 @@ public:
 	/*! \brief Set Conversion tag name.
 	 */
 	void setName(std::string  name);
-	/*! \brief Get 
-	 */
-	EntityStatus getStatus();
-
-	/*! \brief Set 
-	 */
-	void setStatus(EntityStatus  status);
 	/*! \brief Get Version number.
 	 */
 	std::string getVersion();
@@ -104,24 +97,31 @@ public:
 	/*! \brief Set Version number.
 	 */
 	void setVersion(std::string  version);
+	/*! \brief Get Ad account ID.
+	 */
+	std::string getAdAccountId();
+
+	/*! \brief Set Ad account ID.
+	 */
+	void setAdAccountId(std::string  ad_account_id);
 	/*! \brief Get 
 	 */
-	ConversionTagConfigs getConfigs();
+	EntityStatus getStatus();
 
 	/*! \brief Set 
 	 */
-	void setConfigs(ConversionTagConfigs  configs);
+	void setStatus(EntityStatus  status);
 
 private:
-	std::string ad_account_id;
 	std::string code_snippet;
+	ConversionTagConfigs configs;
 	EnhancedMatchStatusType enhanced_match_status;
 	std::string id;
 	long long last_fired_time_ms;
 	std::string name;
-	EntityStatus status;
 	std::string version;
-	ConversionTagConfigs configs;
+	std::string ad_account_id;
+	EntityStatus status;
 	void __init();
 	void __cleanup();
 

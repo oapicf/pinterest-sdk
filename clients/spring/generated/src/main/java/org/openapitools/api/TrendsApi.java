@@ -5,11 +5,23 @@
  */
 package org.openapitools.api;
 
+import org.openapitools.model.AgeTrendsBucket;
 import org.openapitools.model.Error;
+import org.openapitools.model.FeaturedTrend;
+import org.openapitools.model.GenderBucket;
+import org.openapitools.model.InterestsEnum;
 import org.springframework.lang.Nullable;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.ProductCategoriesEngagementType;
+import org.openapitools.model.ProductCategoryDetailLookbackWindow;
+import org.openapitools.model.ProductCategoryDetails;
+import org.openapitools.model.ProductCategoryEnum;
+import org.openapitools.model.ProductCategoryRegion;
 import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendingKeywordsResponse;
+import org.openapitools.model.TrendingProductCategory;
 import org.openapitools.model.TrendsSupportedRegion;
+import org.openapitools.model.VerticalProductCategory;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -37,7 +49,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "keywords", description = "View, create or update keywords.")
 public interface TrendsApi {
@@ -59,6 +71,8 @@ public interface TrendsApi {
      * @param includeKeywords If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional)
      * @param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      * @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+     * @param includePrediction &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+     * @param includeDemographics &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
      * @return Success (status code 200)
      *         or Invalid trending keywords request parameters (status code 400)
      *         or Unexpected error (status code 200)
@@ -96,12 +110,14 @@ public interface TrendsApi {
         @Parameter(name = "ages", description = "If set, filters the results to trends among users in the specified age range(s).<br /> If unset, trends among all age groups will be returned.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ages", required = false) @Nullable List<String> ages,
         @Size(min = 1, max = 50) @Parameter(name = "include_keywords", description = "If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_keywords", required = false) @Nullable List<@Size(min = 1, max = 100)String> includeKeywords,
         @Parameter(name = "normalize_against_group", description = "Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "normalize_against_group", required = false, defaultValue = "false") Boolean normalizeAgainstGroup,
-        @Min(value = 1) @Max(value = 50) @Parameter(name = "limit", description = "The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "limit", required = false, defaultValue = "50") Integer limit
+        @Min(value = 1) @Max(value = 50) @Parameter(name = "limit", description = "The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "limit", required = false, defaultValue = "50") Integer limit,
+        @Parameter(name = "include_prediction", description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_prediction", required = false, defaultValue = "false") Boolean includePrediction,
+        @Parameter(name = "include_demographics", description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_demographics", required = false, defaultValue = "false") Boolean includeDemographics
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"trends\" : [ { \"pct_growth_wow\" : 50, \"time_series\" : { \"2023-10-10\" : 31, \"2023-10-17\" : 54, \"2023-10-24\" : 77, \"2023-10-31\" : 100 }, \"pct_growth_mom\" : 400, \"keyword\" : \"couples halloween costumes\", \"pct_growth_yoy\" : -5 }, { \"pct_growth_wow\" : 50, \"time_series\" : { \"2023-10-10\" : 31, \"2023-10-17\" : 54, \"2023-10-24\" : 77, \"2023-10-31\" : 100 }, \"pct_growth_mom\" : 400, \"keyword\" : \"couples halloween costumes\", \"pct_growth_yoy\" : -5 } ] }";
+                    String exampleString = "{ \"trends\" : [ { \"pct_growth_wow\" : 50, \"time_series\" : { \"2023-10-10\" : 31, \"2023-10-17\" : 54, \"2023-10-24\" : 77, \"2023-10-31\" : 100 }, \"has_prediction\" : false, \"pct_growth_mom\" : 400, \"predicted_time_series\" : { \"2024-01-07\" : 45, \"2024-01-14\" : 62, \"2024-01-21\" : 78, \"2024-01-28\" : 85 }, \"keyword\" : \"couples halloween costumes\", \"pct_growth_yoy\" : -5, \"demographics\" : { \"age_distribution\" : { \"18-24\" : 0.36, \"25-34\" : 0.38, \"35-44\" : 0.16, \"45-49\" : 0.04, \"50-54\" : 0.04, \"55-64\" : 0.04, \"65+\" : 0.04 }, \"gender_distribution\" : { \"female\" : 0.85, \"male\" : 0.09, \"unspecified\" : 0.06 } } }, { \"pct_growth_wow\" : 50, \"time_series\" : { \"2023-10-10\" : 31, \"2023-10-17\" : 54, \"2023-10-24\" : 77, \"2023-10-31\" : 100 }, \"has_prediction\" : false, \"pct_growth_mom\" : 400, \"predicted_time_series\" : { \"2024-01-07\" : 45, \"2024-01-14\" : 62, \"2024-01-21\" : 78, \"2024-01-28\" : 85 }, \"keyword\" : \"couples halloween costumes\", \"pct_growth_yoy\" : -5, \"demographics\" : { \"age_distribution\" : { \"18-24\" : 0.36, \"25-34\" : 0.38, \"35-44\" : 0.16, \"45-49\" : 0.04, \"50-54\" : 0.04, \"55-64\" : 0.04, \"65+\" : 0.04 }, \"gender_distribution\" : { \"female\" : 0.85, \"male\" : 0.09, \"unspecified\" : 0.06 } } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -112,6 +128,319 @@ public interface TrendsApi {
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_TRENDS_FEATURED_TOPICS_LIST = "/trends/topics/featured";
+    /**
+     * GET /trends/topics/featured : Get featured topics
+     *   Enables advertisers to pull top five trending topics by interest and market, at full parity with the Pinterest Trends UI.
+     *
+     * @param region       The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada (required)
+     * @param interest Interest to filter by (optional)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
+     */
+    @Operation(
+        operationId = "trendsFeaturedTopicsList",
+        summary = "Get featured topics",
+        description = "  Enables advertisers to pull top five trending topics by interest and market, at full parity with the Pinterest Trends UI.",
+        tags = { "product_categories" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FeaturedTrend.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "user_accounts:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "user_accounts:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = TrendsApi.PATH_TRENDS_FEATURED_TOPICS_LIST,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<FeaturedTrend>> trendsFeaturedTopicsList(
+        @NotNull @Parameter(name = "region", description = "      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "region", required = true) ProductCategoryRegion region,
+        @Parameter(name = "interest", description = "Interest to filter by", in = ParameterIn.QUERY) @Valid @RequestParam(value = "interest", required = false) @Nullable InterestsEnum interest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"market\" : \"\", \"interest\" : \"\", \"trends\" : [ { \"time_series\" : { \"key\" : 5.962133916683182 }, \"related_searches\" : [ \"related_searches\", \"related_searches\" ], \"description\" : \"description\", \"related_interests\" : [ \"related_interests\", \"related_interests\" ], \"percent_growth_mom\" : 0, \"pins\" : [ { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 } ], \"title\" : \"title\" }, { \"time_series\" : { \"key\" : 5.962133916683182 }, \"related_searches\" : [ \"related_searches\", \"related_searches\" ], \"description\" : \"description\", \"related_interests\" : [ \"related_interests\", \"related_interests\" ], \"percent_growth_mom\" : 0, \"pins\" : [ { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 } ], \"title\" : \"title\" } ] }, { \"market\" : \"\", \"interest\" : \"\", \"trends\" : [ { \"time_series\" : { \"key\" : 5.962133916683182 }, \"related_searches\" : [ \"related_searches\", \"related_searches\" ], \"description\" : \"description\", \"related_interests\" : [ \"related_interests\", \"related_interests\" ], \"percent_growth_mom\" : 0, \"pins\" : [ { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 } ], \"title\" : \"title\" }, { \"time_series\" : { \"key\" : 5.962133916683182 }, \"related_searches\" : [ \"related_searches\", \"related_searches\" ], \"description\" : \"description\", \"related_interests\" : [ \"related_interests\", \"related_interests\" ], \"percent_growth_mom\" : 0, \"pins\" : [ { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 }, { \"src\" : \"src\", \"width\" : 1, \"id\" : \"id\", \"height\" : 6 } ], \"title\" : \"title\" } ] } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_TRENDS_PRODUCT_CATEGORIES_DETAILS_LIST = "/trends/product_categories/details";
+    /**
+     * GET /trends/product_categories/details : Get product category details
+     *   Enables advertisers to retrieve demographic information, related pins, and trend lines for specified product categories
+     *
+     * @param productCategories List of product categories (required)
+     * @param region       The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada (required)
+     * @param lookbackWindow    Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.   - &#x60;90&#x60; - Last 90 days (3 months)   - &#x60;180&#x60; - Last 180 days (6 months)   - &#x60;365&#x60; - Last 365 days (1 year)   - &#x60;730&#x60; - Last 730 days (2 years) (optional)
+     * @param engagementType      Type of engagement metric to analyze. - &#x60;ENGAGEMENT&#x60; - Overall engagement metric - &#x60;OUTBOUND_CLICK&#x60; - Number of outbound clicks - &#x60;SAVE&#x60; - Number of pin saves (optional)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
+     */
+    @Operation(
+        operationId = "trendsProductCategoriesDetailsList",
+        summary = "Get product category details",
+        description = "  Enables advertisers to retrieve demographic information, related pins, and trend lines for specified product categories",
+        tags = { "product_categories" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ProductCategoryDetails.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "user_accounts:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "user_accounts:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = TrendsApi.PATH_TRENDS_PRODUCT_CATEGORIES_DETAILS_LIST,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<ProductCategoryDetails>> trendsProductCategoriesDetailsList(
+        @NotNull @Size(min = 1, max = 20) @Parameter(name = "product_categories", description = "List of product categories", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "product_categories", required = true) List<ProductCategoryEnum> productCategories,
+        @NotNull @Parameter(name = "region", description = "      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "region", required = true) ProductCategoryRegion region,
+        @Parameter(name = "lookback_window", description = "   Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.   - `90` - Last 90 days (3 months)   - `180` - Last 180 days (6 months)   - `365` - Last 365 days (1 year)   - `730` - Last 730 days (2 years)", in = ParameterIn.QUERY) @Valid @RequestParam(value = "lookback_window", required = false) @Nullable ProductCategoryDetailLookbackWindow lookbackWindow,
+        @Parameter(name = "engagement_type", description = "     Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_type", required = false) @Nullable ProductCategoriesEngagementType engagementType
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"metrics_highlights\" : { \"outbound_clicks\" : \"\", \"engagement\" : \"\", \"pin_saves\" : \"\" }, \"time_series\" : { \"key\" : 2.3021358869347655 }, \"has_prediction\" : true, \"predicted_time_series\" : { \"key\" : 5.637376656633329 }, \"related_searches\" : [ \"related_searches\", \"related_searches\" ], \"product_category\" : \"ACCENT_TABLES\", \"demographics\" : { \"gender\" : { \"unspecified\" : 5.962133916683182, \"female\" : 6.027456183070403, \"male\" : 1.4658129805029452 }, \"age\" : { \"key\" : 0.8008281904610115 } } }, { \"metrics_highlights\" : { \"outbound_clicks\" : \"\", \"engagement\" : \"\", \"pin_saves\" : \"\" }, \"time_series\" : { \"key\" : 2.3021358869347655 }, \"has_prediction\" : true, \"predicted_time_series\" : { \"key\" : 5.637376656633329 }, \"related_searches\" : [ \"related_searches\", \"related_searches\" ], \"product_category\" : \"ACCENT_TABLES\", \"demographics\" : { \"gender\" : { \"unspecified\" : 5.962133916683182, \"female\" : 6.027456183070403, \"male\" : 1.4658129805029452 }, \"age\" : { \"key\" : 0.8008281904610115 } } } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_TRENDS_PRODUCT_CATEGORIES_TRENDING_LIST = "/trends/product_categories/trending";
+    /**
+     * GET /trends/product_categories/trending : Get a list of growing Shopping Product Categories
+     *   Get a list of growing Shopping Product Categories in ranked order allowing filtering by engagement type, vertical, age, and gender.
+     *
+     * @param region       The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada (required)
+     * @param verticals List of verticals to filter by (optional)
+     * @param ages Age to filter by. If not provided, the results will be filtered by all ages. (optional)
+     * @param genders Gender to filter by, If not provided, the results will be filtered by all genders. (optional)
+     * @param engagementType      Type of engagement metric to analyze. - &#x60;ENGAGEMENT&#x60; - Overall engagement metric - &#x60;OUTBOUND_CLICK&#x60; - Number of outbound clicks - &#x60;SAVE&#x60; - Number of pin saves (optional)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
+     */
+    @Operation(
+        operationId = "trendsProductCategoriesTrendingList",
+        summary = "Get a list of growing Shopping Product Categories",
+        description = "  Get a list of growing Shopping Product Categories in ranked order allowing filtering by engagement type, vertical, age, and gender.",
+        tags = { "product_categories" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TrendingProductCategory.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "user_accounts:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "user_accounts:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = TrendsApi.PATH_TRENDS_PRODUCT_CATEGORIES_TRENDING_LIST,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<TrendingProductCategory>> trendsProductCategoriesTrendingList(
+        @NotNull @Parameter(name = "region", description = "      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "region", required = true) ProductCategoryRegion region,
+        @Parameter(name = "verticals", description = "List of verticals to filter by", in = ParameterIn.QUERY) @Valid @RequestParam(value = "verticals", required = false) @Nullable List<VerticalProductCategory> verticals,
+        @Parameter(name = "ages", description = "Age to filter by. If not provided, the results will be filtered by all ages.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ages", required = false) @Nullable List<AgeTrendsBucket> ages,
+        @Parameter(name = "genders", description = "Gender to filter by, If not provided, the results will be filtered by all genders.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "genders", required = false) @Nullable List<GenderBucket> genders,
+        @Parameter(name = "engagement_type", description = "     Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_type", required = false) @Nullable ProductCategoriesEngagementType engagementType
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"percent_relative_volume\" : 6, \"engagement_type\" : \"\", \"pct_change_mom\" : 0, \"verticals\" : [ \"FASHION\", \"FASHION\" ], \"product_category\" : \"product_category\" }, { \"percent_relative_volume\" : 6, \"engagement_type\" : \"\", \"pct_change_mom\" : 0, \"verticals\" : [ \"FASHION\", \"FASHION\" ], \"product_category\" : \"product_category\" } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

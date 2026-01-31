@@ -26,16 +26,16 @@ class CreateAssetAccessRequestBodyAssetRequestsInnerTest : ShouldSpec() {
         // uncomment below to create an instance of CreateAssetAccessRequestBodyAssetRequestsInner
         //val modelInstance = CreateAssetAccessRequestBodyAssetRequestsInner()
 
-        // to test the property `partnerId` - Unique identifier of a business partner to request asset access to.
-        should("test partnerId") {
-            // uncomment below to test the property
-            //modelInstance.partnerId shouldBe ("TODO")
-        }
-
         // to test the property `assetIdToPermissions` - An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
         should("test assetIdToPermissions") {
             // uncomment below to test the property
             //modelInstance.assetIdToPermissions shouldBe ("TODO")
+        }
+
+        // to test the property `partnerId` - Unique identifier of a business partner to request asset access to.
+        should("test partnerId") {
+            // uncomment below to test the property
+            //modelInstance.partnerId shouldBe ("TODO")
         }
 
     }

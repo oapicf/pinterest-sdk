@@ -23,23 +23,23 @@ CreateAssetGroupBody::~CreateAssetGroupBody()
 void
 CreateAssetGroupBody::__init()
 {
-	//asset_group_name = std::string();
 	//asset_group_description = std::string();
+	//asset_group_name = std::string();
 	//new std::list()std::list> asset_group_types;
 }
 
 void
 CreateAssetGroupBody::__cleanup()
 {
-	//if(asset_group_name != NULL) {
-	//
-	//delete asset_group_name;
-	//asset_group_name = NULL;
-	//}
 	//if(asset_group_description != NULL) {
 	//
 	//delete asset_group_description;
 	//asset_group_description = NULL;
+	//}
+	//if(asset_group_name != NULL) {
+	//
+	//delete asset_group_name;
+	//asset_group_name = NULL;
 	//}
 	//if(asset_group_types != NULL) {
 	//asset_group_types.RemoveAll(true);
@@ -54,17 +54,6 @@ CreateAssetGroupBody::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *asset_group_nameKey = "asset_group_name";
-	node = json_object_get_member(pJsonObject, asset_group_nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&asset_group_name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *asset_group_descriptionKey = "asset_group_description";
 	node = json_object_get_member(pJsonObject, asset_group_descriptionKey);
 	if (node !=NULL) {
@@ -72,6 +61,17 @@ CreateAssetGroupBody::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&asset_group_description, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *asset_group_nameKey = "asset_group_name";
+	node = json_object_get_member(pJsonObject, asset_group_nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&asset_group_name, node, "std::string", "");
 		} else {
 			
 		}
@@ -113,15 +113,6 @@ CreateAssetGroupBody::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getAssetGroupName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *asset_group_nameKey = "asset_group_name";
-	json_object_set_member(pJsonObject, asset_group_nameKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getAssetGroupDescription();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -130,6 +121,15 @@ CreateAssetGroupBody::toJson()
 	}
 	const gchar *asset_group_descriptionKey = "asset_group_description";
 	json_object_set_member(pJsonObject, asset_group_descriptionKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAssetGroupName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *asset_group_nameKey = "asset_group_name";
+	json_object_set_member(pJsonObject, asset_group_nameKey, node);
 	if (isprimitive("AssetGroupType")) {
 		list<AssetGroupType> new_list = static_cast<list <AssetGroupType> > (getAssetGroupTypes());
 		node = converttoJson(&new_list, "AssetGroupType", "array");
@@ -164,18 +164,6 @@ CreateAssetGroupBody::toJson()
 }
 
 std::string
-CreateAssetGroupBody::getAssetGroupName()
-{
-	return asset_group_name;
-}
-
-void
-CreateAssetGroupBody::setAssetGroupName(std::string  asset_group_name)
-{
-	this->asset_group_name = asset_group_name;
-}
-
-std::string
 CreateAssetGroupBody::getAssetGroupDescription()
 {
 	return asset_group_description;
@@ -185,6 +173,18 @@ void
 CreateAssetGroupBody::setAssetGroupDescription(std::string  asset_group_description)
 {
 	this->asset_group_description = asset_group_description;
+}
+
+std::string
+CreateAssetGroupBody::getAssetGroupName()
+{
+	return asset_group_name;
+}
+
+void
+CreateAssetGroupBody::setAssetGroupName(std::string  asset_group_name)
+{
+	this->asset_group_name = asset_group_name;
 }
 
 std::list<AssetGroupType>

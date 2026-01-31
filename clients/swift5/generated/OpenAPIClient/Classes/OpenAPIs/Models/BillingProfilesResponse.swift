@@ -12,6 +12,13 @@ import AnyCodable
 
 public struct BillingProfilesResponse: Codable, JSONEncodable, Hashable {
 
+    public enum BillingType: String, Codable, CaseIterable {
+        case creditCard = "CREDIT_CARD"
+        case invoice = "INVOICE"
+        case _internal = "INTERNAL"
+        case recurring = "RECURRING"
+        case prepaid = "PREPAID"
+    }
     public enum CardType: String, Codable, CaseIterable {
         case unknown = "UNKNOWN"
         case visa = "VISA"
@@ -19,15 +26,6 @@ public struct BillingProfilesResponse: Codable, JSONEncodable, Hashable {
         case americanExpress = "AMERICAN_EXPRESS"
         case discover = "DISCOVER"
         case elo = "ELO"
-    }
-    public enum Status: String, Codable, CaseIterable {
-        case unspecified = "UNSPECIFIED"
-        case valid = "VALID"
-        case invalid = "INVALID"
-        case pending = "PENDING"
-        case deleted = "DELETED"
-        case secondary = "SECONDARY"
-        case pendingSecondary = "PENDING_SECONDARY"
     }
     public enum PaymentMethodBrand: String, Codable, CaseIterable {
         case unknown = "UNKNOWN"
@@ -40,44 +38,58 @@ public struct BillingProfilesResponse: Codable, JSONEncodable, Hashable {
         case elo = "ELO"
         case carteBancaire = "CARTE_BANCAIRE"
     }
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public enum Status: String, Codable, CaseIterable {
+        case unspecified = "UNSPECIFIED"
+        case valid = "VALID"
+        case invalid = "INVALID"
+        case pending = "PENDING"
+        case deleted = "DELETED"
+        case secondary = "SECONDARY"
+        case pendingSecondary = "PENDING_SECONDARY"
+    }
     public static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Billing ID. */
-    public var id: String?
-    /** Type of the card. */
-    public var cardType: CardType?
-    /** Status of the billing. */
-    public var status: Status?
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Advertiser ID of the billing. */
     public var advertiserId: String?
+    /** Billing type of the advertiser */
+    public var billingType: BillingType?
+    /** Type of the card. */
+    public var cardType: CardType?
+    /** Billing ID. */
+    public var id: String?
     /** Brand of the payment method. */
     public var paymentMethodBrand: PaymentMethodBrand?
+    /** Status of the billing. */
+    public var status: Status?
 
-    public init(id: String? = nil, cardType: CardType? = nil, status: Status? = nil, advertiserId: String? = nil, paymentMethodBrand: PaymentMethodBrand? = nil) {
-        self.id = id
-        self.cardType = cardType
-        self.status = status
+    public init(advertiserId: String? = nil, billingType: BillingType? = nil, cardType: CardType? = nil, id: String? = nil, paymentMethodBrand: PaymentMethodBrand? = nil, status: Status? = nil) {
         self.advertiserId = advertiserId
+        self.billingType = billingType
+        self.cardType = cardType
+        self.id = id
         self.paymentMethodBrand = paymentMethodBrand
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case cardType = "card_type"
-        case status
         case advertiserId = "advertiser_id"
+        case billingType = "billing_type"
+        case cardType = "card_type"
+        case id
         case paymentMethodBrand = "payment_method_brand"
+        case status
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(cardType, forKey: .cardType)
-        try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(advertiserId, forKey: .advertiserId)
+        try container.encodeIfPresent(billingType, forKey: .billingType)
+        try container.encodeIfPresent(cardType, forKey: .cardType)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(paymentMethodBrand, forKey: .paymentMethodBrand)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

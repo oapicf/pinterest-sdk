@@ -11,7 +11,7 @@ module PinsList200Response =
 
 
   type pins_list_200_response = {
-    Items : Pin[];
     Bookmark : string option;
+    Items : Pin[];
   }
   //#endregion

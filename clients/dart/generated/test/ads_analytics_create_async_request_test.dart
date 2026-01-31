@@ -16,21 +16,9 @@ void main() {
   // final instance = AdsAnalyticsCreateAsyncRequest();
 
   group('test AdsAnalyticsCreateAsyncRequest', () {
-    // Metric report start date (UTC). Format: YYYY-MM-DD
-    // String startDate
-    test('to test the property `startDate`', () async {
-      // TODO
-    });
-
-    // Metric report end date (UTC). Format: YYYY-MM-DD
-    // String endDate
-    test('to test the property `endDate`', () async {
-      // TODO
-    });
-
-    // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    // Granularity granularity
-    test('to test the property `granularity`', () async {
+    // List of types of attribution for the conversion report
+    // List<ConversionReportAttributionType> attributionTypes (default value: const [])
+    test('to test the property `attributionTypes`', () async {
       // TODO
     });
 
@@ -40,27 +28,39 @@ void main() {
       // TODO
     });
 
-    // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    // ConversionAttributionWindowDays engagementWindowDays (default value: ConversionAttributionWindowDays.number30)
-    test('to test the property `engagementWindowDays`', () async {
-      // TODO
-    });
-
-    // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-    // ConversionAttributionWindowDays viewWindowDays (default value: ConversionAttributionWindowDays.number1)
-    test('to test the property `viewWindowDays`', () async {
-      // TODO
-    });
-
     // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
     // ConversionReportTimeType conversionReportTime (default value: 'TIME_OF_AD_ACTION')
     test('to test the property `conversionReportTime`', () async {
       // TODO
     });
 
-    // List of types of attribution for the conversion report
-    // List<ConversionReportAttributionType> attributionTypes (default value: const [])
-    test('to test the property `attributionTypes`', () async {
+    // Metric report end date (UTC). Format: YYYY-MM-DD
+    // String endDate
+    test('to test the property `endDate`', () async {
+      // TODO
+    });
+
+    // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+    // ConversionAttributionWindowDays engagementWindowDays (default value: ConversionAttributionWindowDays.number30)
+    test('to test the property `engagementWindowDays`', () async {
+      // TODO
+    });
+
+    // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+    // Granularity granularity
+    test('to test the property `granularity`', () async {
+      // TODO
+    });
+
+    // Metric report start date (UTC). Format: YYYY-MM-DD
+    // String startDate
+    test('to test the property `startDate`', () async {
+      // TODO
+    });
+
+    // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+    // ConversionAttributionWindowDays viewWindowDays (default value: ConversionAttributionWindowDays.number1)
+    test('to test the property `viewWindowDays`', () async {
       // TODO
     });
 
@@ -79,6 +79,12 @@ void main() {
     // List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
     // List<ObjectiveType> campaignObjectiveTypes (default value: const [])
     test('to test the property `campaignObjectiveTypes`', () async {
+      // TODO
+    });
+
+    // Campaign brand label for filtering.
+    // String campaignBrandLabel
+    test('to test the property `campaignBrandLabel`', () async {
       // TODO
     });
 
@@ -124,8 +130,8 @@ void main() {
       // TODO
     });
 
-    // List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-    // List<AdsAnalyticsTargetingType> targetingTypes (default value: const [])
+    // List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+    // List<String> targetingTypes (default value: const [])
     test('to test the property `targetingTypes`', () async {
       // TODO
     });
@@ -142,15 +148,27 @@ void main() {
       // TODO
     });
 
-    // Level of the report
-    // MetricsReportingLevel level
-    test('to test the property `level`', () async {
+    // Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.
+    // bool combineTargetingTypes (default value: false)
+    test('to test the property `combineTargetingTypes`', () async {
       // TODO
     });
 
-    // Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-    // DataOutputFormat reportFormat (default value: 'JSON')
-    test('to test the property `reportFormat`', () async {
+    // List of advertiser-defined custom conversion event metrics to include in the report
+    // List<AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics> customConversionEventMetrics (default value: const [])
+    test('to test the property `customConversionEventMetrics`', () async {
+      // TODO
+    });
+
+    // Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+    // int endHour
+    test('to test the property `endHour`', () async {
+      // TODO
+    });
+
+    // Level of the report
+    // MetricsReportingLevel level
+    test('to test the property `level`', () async {
       // TODO
     });
 
@@ -160,15 +178,21 @@ void main() {
       // TODO
     });
 
-    // Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
-    // int startHour
-    test('to test the property `startHour`', () async {
+    // Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+    // DataOutputFormat reportFormat (default value: 'JSON')
+    test('to test the property `reportFormat`', () async {
       // TODO
     });
 
-    // Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
-    // int endHour
-    test('to test the property `endHour`', () async {
+    // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+    // ReportingTimeZone reportingTimezone
+    test('to test the property `reportingTimezone`', () async {
+      // TODO
+    });
+
+    // Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+    // int startHour
+    test('to test the property `startHour`', () async {
       // TODO
     });
 

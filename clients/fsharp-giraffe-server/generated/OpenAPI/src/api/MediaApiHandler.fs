@@ -7,11 +7,11 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open MediaApiHandlerParams
 open MediaApiServiceInterface
 open MediaApiServiceImplementation
-open OpenAPI.Model.Error
+open OpenAPI.Model.Media
 open OpenAPI.Model.MediaList200Response
 open OpenAPI.Model.MediaUpload
-open OpenAPI.Model.MediaUploadDetails
-open OpenAPI.Model.MediaUploadRequest
+open OpenAPI.Model.MediaUploadCreate
+open OpenAPI.Model.PinterestLibError
 
 module MediaApiHandler =
 
@@ -32,8 +32,20 @@ module MediaApiHandler =
           let serviceArgs = {     bodyParams=bodyParams } : MediaCreateArgs
           let result = MediaApiService.MediaCreate ctx serviceArgs
           return! (match result with
+                      | MediaCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | MediaCreateStatusCode201 resolved ->
                             setStatusCode 201 >=> json resolved.content
+                      | MediaCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | MediaCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | MediaCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | MediaCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | MediaCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | MediaCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -53,8 +65,16 @@ module MediaApiHandler =
           return! (match result with
                       | MediaGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | MediaGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | MediaGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | MediaGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | MediaGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | MediaGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | MediaGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -75,6 +95,16 @@ module MediaApiHandler =
           return! (match result with
                       | MediaListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | MediaListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | MediaListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | MediaListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | MediaListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | MediaListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | MediaListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

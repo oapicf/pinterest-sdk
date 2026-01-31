@@ -16,15 +16,9 @@ void main() {
   // final instance = TermsOfService();
 
   group('test TermsOfService', () {
-    // The ID of the terms of service
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // The terms of service content
-    // String html
-    test('to test the property `html`', () async {
+    // The ID of the ad account.
+    // String adAccountId
+    test('to test the property `adAccountId`', () async {
       // TODO
     });
 
@@ -34,9 +28,15 @@ void main() {
       // TODO
     });
 
-    // The ID of the ad account.
-    // String adAccountId
-    test('to test the property `adAccountId`', () async {
+    // The terms of service content
+    // String html
+    test('to test the property `html`', () async {
+      // TODO
+    });
+
+    // The ID of the terms of service
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 

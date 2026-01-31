@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceInsightType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceInsightType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AudienceInsightType {
+    title = AudienceInsightType
+    description = AudienceInsightType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceInsightType {
+    title = AudienceInsightType
+    description = AudienceInsightType
+    implements = openapi_server.resourceTypes.AudienceInsightType
+
+  }
+}

@@ -7,11 +7,11 @@ A successful OAuth access token response.
 
 Name | Type
 ------------ | -------------
-`responseType` | string
 `accessToken` | string
-`tokenType` | string
 `expiresIn` | number
+`responseType` | string
 `scope` | string
+`tokenType` | string
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { OauthAccessTokenResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "responseType": null,
   "accessToken": null,
-  "tokenType": null,
   "expiresIn": null,
+  "responseType": null,
   "scope": null,
+  "tokenType": null,
 } satisfies OauthAccessTokenResponse
 
 console.log(example)

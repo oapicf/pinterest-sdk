@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,12 +17,23 @@ package openapi
 // PinMediaWithImage - Pin with image.
 type PinMediaWithImage struct {
 
-	Images PinMediaWithImageAllOfImages `json:"images,omitempty"`
+	Images ImageSize `json:"images,omitempty"`
+
+	MediaType string `json:"media_type"`
 }
 
 // AssertPinMediaWithImageRequired checks if the required fields are not zero-ed
 func AssertPinMediaWithImageRequired(obj PinMediaWithImage) error {
-	if err := AssertPinMediaWithImageAllOfImagesRequired(obj.Images); err != nil {
+	elements := map[string]interface{}{
+		"media_type": obj.MediaType,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
+	if err := AssertImageSizeRequired(obj.Images); err != nil {
 		return err
 	}
 	return nil
@@ -30,7 +41,7 @@ func AssertPinMediaWithImageRequired(obj PinMediaWithImage) error {
 
 // AssertPinMediaWithImageConstraints checks if the values respects the defined constraints
 func AssertPinMediaWithImageConstraints(obj PinMediaWithImage) error {
-	if err := AssertPinMediaWithImageAllOfImagesConstraints(obj.Images); err != nil {
+	if err := AssertImageSizeConstraints(obj.Images); err != nil {
 		return err
 	}
 	return nil

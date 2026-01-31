@@ -6,5 +6,5 @@ type CatalogsHotelProduct struct {
 
 	Metadata CatalogsHotelProductMetadata `json:"metadata"`
 
-	Pin *Pin `json:"pin"`
+	Pin Pin `json:"pin"`
 }

@@ -13,35 +13,38 @@ import AnyCodable
 /** Pin with video. */
 public struct PinMediaWithVideo: Codable, JSONEncodable, Hashable {
 
-    public var mediaType: String?
-    public var images: PinMediaWithImageAllOfImages?
+    public enum MediaType: String, Codable, CaseIterable {
+        case video = "video"
+    }
     public var coverImageUrl: String?
-    /** Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-    public var videoUrl: String?
-    /** Duration (in milliseconds) */
+    /** Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     public var duration: Double?
-    /** Height (in pixels) */
+    /** Height (in pixels). Field maybe null after creation due to video processing time. */
     public var height: Int?
-    /** Width (in pixels) */
+    public var images: ImageSize?
+    public var mediaType: MediaType
+    /** Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    public var videoUrl: String?
+    /** Width (in pixels). Field maybe null after creation due to video processing time. */
     public var width: Int?
 
-    public init(mediaType: String? = nil, images: PinMediaWithImageAllOfImages? = nil, coverImageUrl: String? = nil, videoUrl: String? = nil, duration: Double? = nil, height: Int? = nil, width: Int? = nil) {
-        self.mediaType = mediaType
-        self.images = images
+    public init(coverImageUrl: String? = nil, duration: Double? = nil, height: Int? = nil, images: ImageSize? = nil, mediaType: MediaType, videoUrl: String? = nil, width: Int? = nil) {
         self.coverImageUrl = coverImageUrl
-        self.videoUrl = videoUrl
         self.duration = duration
         self.height = height
+        self.images = images
+        self.mediaType = mediaType
+        self.videoUrl = videoUrl
         self.width = width
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mediaType = "media_type"
-        case images
         case coverImageUrl = "cover_image_url"
-        case videoUrl = "video_url"
         case duration
         case height
+        case images
+        case mediaType = "media_type"
+        case videoUrl = "video_url"
         case width
     }
 
@@ -49,12 +52,12 @@ public struct PinMediaWithVideo: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(mediaType, forKey: .mediaType)
-        try container.encodeIfPresent(images, forKey: .images)
         try container.encodeIfPresent(coverImageUrl, forKey: .coverImageUrl)
-        try container.encodeIfPresent(videoUrl, forKey: .videoUrl)
         try container.encodeIfPresent(duration, forKey: .duration)
         try container.encodeIfPresent(height, forKey: .height)
+        try container.encodeIfPresent(images, forKey: .images)
+        try container.encode(mediaType, forKey: .mediaType)
+        try container.encodeIfPresent(videoUrl, forKey: .videoUrl)
         try container.encodeIfPresent(width, forKey: .width)
     }
 }

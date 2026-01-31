@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdvancedAuctionBidOptions;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import org.openapitools.model.UpdateMaskBidOptionField;
@@ -20,16 +21,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdvancedAuctionItemsSubmitUpsertRecord  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private Country country;
+
  /**
   * The catalog retail item id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
 
   private String itemId;
-
-  @ApiModelProperty(required = true, value = "")
-
-  private Country country;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -40,29 +41,18 @@ public class AdvancedAuctionItemsSubmitUpsertRecord  {
   private AdvancedAuctionBidOptions bidOptions;
 
  /**
+  * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+  */
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+
+  private List<AdvancedAuctionOperationError> errors = new ArrayList<>();
+
+ /**
   * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
   */
   @ApiModelProperty(example = "[\"BID\",\"APP_TYPE_BID_MULTIPLIER_SET\"]", required = true, value = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.")
 
   private List<UpdateMaskBidOptionField> updateMask;
- /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-  **/
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public AdvancedAuctionItemsSubmitUpsertRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
  /**
    * Get country
    * @return country
@@ -78,6 +68,24 @@ public class AdvancedAuctionItemsSubmitUpsertRecord  {
 
   public AdvancedAuctionItemsSubmitUpsertRecord country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+  **/
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public AdvancedAuctionItemsSubmitUpsertRecord itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
@@ -118,6 +126,29 @@ public class AdvancedAuctionItemsSubmitUpsertRecord  {
   }
 
  /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   * @return errors
+  **/
+  @JsonProperty("errors")
+  public List<AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+  }
+
+  public AdvancedAuctionItemsSubmitUpsertRecord errors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public AdvancedAuctionItemsSubmitUpsertRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+ /**
    * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;.
    * @return updateMask
   **/
@@ -149,16 +180,17 @@ public class AdvancedAuctionItemsSubmitUpsertRecord  {
       return false;
     }
     AdvancedAuctionItemsSubmitUpsertRecord advancedAuctionItemsSubmitUpsertRecord = (AdvancedAuctionItemsSubmitUpsertRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsSubmitUpsertRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsSubmitUpsertRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsSubmitUpsertRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsSubmitUpsertRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitUpsertRecord.language) &&
         Objects.equals(this.bidOptions, advancedAuctionItemsSubmitUpsertRecord.bidOptions) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitUpsertRecord.errors) &&
         Objects.equals(this.updateMask, advancedAuctionItemsSubmitUpsertRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, bidOptions, updateMask);
+    return Objects.hash(country, itemId, language, bidOptions, errors, updateMask);
   }
 
   @Override
@@ -166,10 +198,11 @@ public class AdvancedAuctionItemsSubmitUpsertRecord  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsSubmitUpsertRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -17,6 +17,8 @@ import java.util.Objects;
 
 public class ConversionApiResponseEventsInner   {
   
+  private String errorMessage;
+
 
 public enum StatusEnum {
 
@@ -50,9 +52,26 @@ public enum StatusEnum {
 
   private StatusEnum status;
 
-  private String errorMessage;
-
   private String warningMessage;
+
+  /**
+   * Error message containing more information about why the event failed to be processed.
+   **/
+  public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
+  @JsonProperty("error_message")
+  public String getErrorMessage() {
+    return errorMessage;
+  }
+  public void setErrorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+  }
+
 
   /**
    * Whether the event was processed successfully.
@@ -71,25 +90,6 @@ public enum StatusEnum {
   }
   public void setStatus(StatusEnum status) {
     this.status = status;
-  }
-
-
-  /**
-   * Error message containing more information about why the event failed to be processed.
-   **/
-  public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
-  @JsonProperty("error_message")
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
   }
 
 
@@ -122,14 +122,14 @@ public enum StatusEnum {
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
-        Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
         Objects.equals(this.warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, warningMessage);
+    return Objects.hash(errorMessage, status, warningMessage);
   }
 
   @Override
@@ -137,8 +137,8 @@ public enum StatusEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

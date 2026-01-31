@@ -37,12 +37,6 @@ class CatalogsHotelAddressTest : ShouldSpec() {
             //modelInstance.city shouldBe ("TODO")
         }
 
-        // to test the property `region` - State, county, province, where the hotel is located.
-        should("test region") {
-            // uncomment below to test the property
-            //modelInstance.region shouldBe ("TODO")
-        }
-
         // to test the property `country` - Country where the hotel is located.
         should("test country") {
             // uncomment below to test the property
@@ -53,6 +47,12 @@ class CatalogsHotelAddressTest : ShouldSpec() {
         should("test postalCode") {
             // uncomment below to test the property
             //modelInstance.postalCode shouldBe ("TODO")
+        }
+
+        // to test the property `region` - State, county, province, where the hotel is located.
+        should("test region") {
+            // uncomment below to test the property
+            //modelInstance.region shouldBe ("TODO")
         }
 
     }

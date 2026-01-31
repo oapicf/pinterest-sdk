@@ -1,6 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.MediaUploadAllOfUploadParameters;
+import org.openapitools.model.MediaUploadParameters;
 import org.openapitools.model.MediaUploadType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -38,19 +38,19 @@ public class MediaUploadTest {
     }
 
     /**
-     * Test the property 'uploadUrl'
-     */
-    @Test
-    public void uploadUrlTest() {
-        // TODO: test uploadUrl
-    }
-
-    /**
      * Test the property 'uploadParameters'
      */
     @Test
     public void uploadParametersTest() {
         // TODO: test uploadParameters
+    }
+
+    /**
+     * Test the property 'uploadUrl'
+     */
+    @Test
+    public void uploadUrlTest() {
+        // TODO: test uploadUrl
     }
 
 }

@@ -27,12 +27,13 @@ data class PlacementMultipliers(
 
     /**
     * 
-    * Values: SEARCH,BROWSE
+    * Values: SEARCH,BROWSE,RELATED_PINS
     */
     enum class PLACEMENT(@get:JsonValue val value: kotlin.String) {
 
         SEARCH("SEARCH"),
-        BROWSE("BROWSE");
+        BROWSE("BROWSE"),
+        RELATED_PINS("RELATED_PINS");
 
         companion object {
             @JvmStatic

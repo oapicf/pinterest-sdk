@@ -6,31 +6,31 @@
 
 
 static template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_create_internal(
-    char *type,
+    double end_date,
     double start_date,
-    double end_date
+    char *type
     ) {
     template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_local_var = malloc(sizeof(template_response_date_range_absolute_date_range_t));
     if (!template_response_date_range_absolute_date_range_local_var) {
         return NULL;
     }
-    template_response_date_range_absolute_date_range_local_var->type = type;
-    template_response_date_range_absolute_date_range_local_var->start_date = start_date;
     template_response_date_range_absolute_date_range_local_var->end_date = end_date;
+    template_response_date_range_absolute_date_range_local_var->start_date = start_date;
+    template_response_date_range_absolute_date_range_local_var->type = type;
 
     template_response_date_range_absolute_date_range_local_var->_library_owned = 1;
     return template_response_date_range_absolute_date_range_local_var;
 }
 
 __attribute__((deprecated)) template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_create(
-    char *type,
+    double end_date,
     double start_date,
-    double end_date
+    char *type
     ) {
     return template_response_date_range_absolute_date_range_create_internal (
-        type,
+        end_date,
         start_date,
-        end_date
+        type
         );
 }
 
@@ -53,10 +53,10 @@ void template_response_date_range_absolute_date_range_free(template_response_dat
 cJSON *template_response_date_range_absolute_date_range_convertToJSON(template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range) {
     cJSON *item = cJSON_CreateObject();
 
-    // template_response_date_range_absolute_date_range->type
-    if(template_response_date_range_absolute_date_range->type) {
-    if(cJSON_AddStringToObject(item, "type", template_response_date_range_absolute_date_range->type) == NULL) {
-    goto fail; //String
+    // template_response_date_range_absolute_date_range->end_date
+    if(template_response_date_range_absolute_date_range->end_date) {
+    if(cJSON_AddNumberToObject(item, "end_date", template_response_date_range_absolute_date_range->end_date) == NULL) {
+    goto fail; //Numeric
     }
     }
 
@@ -69,10 +69,10 @@ cJSON *template_response_date_range_absolute_date_range_convertToJSON(template_r
     }
 
 
-    // template_response_date_range_absolute_date_range->end_date
-    if(template_response_date_range_absolute_date_range->end_date) {
-    if(cJSON_AddNumberToObject(item, "end_date", template_response_date_range_absolute_date_range->end_date) == NULL) {
-    goto fail; //Numeric
+    // template_response_date_range_absolute_date_range->type
+    if(template_response_date_range_absolute_date_range->type) {
+    if(cJSON_AddStringToObject(item, "type", template_response_date_range_absolute_date_range->type) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -88,15 +88,15 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
 
     template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_local_var = NULL;
 
-    // template_response_date_range_absolute_date_range->type
-    cJSON *type = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "type");
-    if (cJSON_IsNull(type)) {
-        type = NULL;
+    // template_response_date_range_absolute_date_range->end_date
+    cJSON *end_date = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "end_date");
+    if (cJSON_IsNull(end_date)) {
+        end_date = NULL;
     }
-    if (type) { 
-    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    if (end_date) { 
+    if(!cJSON_IsNumber(end_date))
     {
-    goto end; //String
+    goto end; //Numeric
     }
     }
 
@@ -112,23 +112,23 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
     }
     }
 
-    // template_response_date_range_absolute_date_range->end_date
-    cJSON *end_date = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "end_date");
-    if (cJSON_IsNull(end_date)) {
-        end_date = NULL;
+    // template_response_date_range_absolute_date_range->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
     }
-    if (end_date) { 
-    if(!cJSON_IsNumber(end_date))
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
-    goto end; //Numeric
+    goto end; //String
     }
     }
 
 
     template_response_date_range_absolute_date_range_local_var = template_response_date_range_absolute_date_range_create_internal (
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
+        end_date ? end_date->valuedouble : 0,
         start_date ? start_date->valuedouble : 0,
-        end_date ? end_date->valuedouble : 0
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );
 
     return template_response_date_range_absolute_date_range_local_var;

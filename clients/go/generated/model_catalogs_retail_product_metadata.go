@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,16 +22,16 @@ var _ MappedNullable = &CatalogsRetailProductMetadata{}
 
 // CatalogsRetailProductMetadata Retail product metadata entity
 type CatalogsRetailProductMetadata struct {
-	// The user-created unique ID that represents the product.
-	ItemId string `json:"item_id"`
+	Availability NonNullableProductAvailabilityType `json:"availability"`
+	Currency NonNullableCatalogsCurrency `json:"currency"`
 	// The parent ID of the product.
 	ItemGroupId NullableString `json:"item_group_id"`
-	Availability NonNullableProductAvailabilityType `json:"availability"`
+	// The user-created unique ID that represents the product.
+	ItemId string `json:"item_id"`
 	// The price of the product.
 	Price float32 `json:"price"`
 	// The discounted price of the product.
 	SalePrice NullableFloat32 `json:"sale_price"`
-	Currency NonNullableCatalogsCurrency `json:"currency"`
 }
 
 type _CatalogsRetailProductMetadata CatalogsRetailProductMetadata
@@ -40,14 +40,14 @@ type _CatalogsRetailProductMetadata CatalogsRetailProductMetadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailProductMetadata(itemId string, itemGroupId NullableString, availability NonNullableProductAvailabilityType, price float32, salePrice NullableFloat32, currency NonNullableCatalogsCurrency) *CatalogsRetailProductMetadata {
+func NewCatalogsRetailProductMetadata(availability NonNullableProductAvailabilityType, currency NonNullableCatalogsCurrency, itemGroupId NullableString, itemId string, price float32, salePrice NullableFloat32) *CatalogsRetailProductMetadata {
 	this := CatalogsRetailProductMetadata{}
-	this.ItemId = itemId
-	this.ItemGroupId = itemGroupId
 	this.Availability = availability
+	this.Currency = currency
+	this.ItemGroupId = itemGroupId
+	this.ItemId = itemId
 	this.Price = price
 	this.SalePrice = salePrice
-	this.Currency = currency
 	return &this
 }
 
@@ -59,28 +59,52 @@ func NewCatalogsRetailProductMetadataWithDefaults() *CatalogsRetailProductMetada
 	return &this
 }
 
-// GetItemId returns the ItemId field value
-func (o *CatalogsRetailProductMetadata) GetItemId() string {
+// GetAvailability returns the Availability field value
+func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvailabilityType {
 	if o == nil {
-		var ret string
+		var ret NonNullableProductAvailabilityType
 		return ret
 	}
 
-	return o.ItemId
+	return o.Availability
 }
 
-// GetItemIdOk returns a tuple with the ItemId field value
+// GetAvailabilityOk returns a tuple with the Availability field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductMetadata) GetItemIdOk() (*string, bool) {
+func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProductAvailabilityType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ItemId, true
+	return &o.Availability, true
 }
 
-// SetItemId sets field value
-func (o *CatalogsRetailProductMetadata) SetItemId(v string) {
-	o.ItemId = v
+// SetAvailability sets field value
+func (o *CatalogsRetailProductMetadata) SetAvailability(v NonNullableProductAvailabilityType) {
+	o.Availability = v
+}
+
+// GetCurrency returns the Currency field value
+func (o *CatalogsRetailProductMetadata) GetCurrency() NonNullableCatalogsCurrency {
+	if o == nil {
+		var ret NonNullableCatalogsCurrency
+		return ret
+	}
+
+	return o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductMetadata) GetCurrencyOk() (*NonNullableCatalogsCurrency, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Currency, true
+}
+
+// SetCurrency sets field value
+func (o *CatalogsRetailProductMetadata) SetCurrency(v NonNullableCatalogsCurrency) {
+	o.Currency = v
 }
 
 // GetItemGroupId returns the ItemGroupId field value
@@ -109,28 +133,28 @@ func (o *CatalogsRetailProductMetadata) SetItemGroupId(v string) {
 	o.ItemGroupId.Set(&v)
 }
 
-// GetAvailability returns the Availability field value
-func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvailabilityType {
+// GetItemId returns the ItemId field value
+func (o *CatalogsRetailProductMetadata) GetItemId() string {
 	if o == nil {
-		var ret NonNullableProductAvailabilityType
+		var ret string
 		return ret
 	}
 
-	return o.Availability
+	return o.ItemId
 }
 
-// GetAvailabilityOk returns a tuple with the Availability field value
+// GetItemIdOk returns a tuple with the ItemId field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProductAvailabilityType, bool) {
+func (o *CatalogsRetailProductMetadata) GetItemIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Availability, true
+	return &o.ItemId, true
 }
 
-// SetAvailability sets field value
-func (o *CatalogsRetailProductMetadata) SetAvailability(v NonNullableProductAvailabilityType) {
-	o.Availability = v
+// SetItemId sets field value
+func (o *CatalogsRetailProductMetadata) SetItemId(v string) {
+	o.ItemId = v
 }
 
 // GetPrice returns the Price field value
@@ -183,30 +207,6 @@ func (o *CatalogsRetailProductMetadata) SetSalePrice(v float32) {
 	o.SalePrice.Set(&v)
 }
 
-// GetCurrency returns the Currency field value
-func (o *CatalogsRetailProductMetadata) GetCurrency() NonNullableCatalogsCurrency {
-	if o == nil {
-		var ret NonNullableCatalogsCurrency
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductMetadata) GetCurrencyOk() (*NonNullableCatalogsCurrency, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *CatalogsRetailProductMetadata) SetCurrency(v NonNullableCatalogsCurrency) {
-	o.Currency = v
-}
-
 func (o CatalogsRetailProductMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -217,12 +217,12 @@ func (o CatalogsRetailProductMetadata) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsRetailProductMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["item_id"] = o.ItemId
-	toSerialize["item_group_id"] = o.ItemGroupId.Get()
 	toSerialize["availability"] = o.Availability
+	toSerialize["currency"] = o.Currency
+	toSerialize["item_group_id"] = o.ItemGroupId.Get()
+	toSerialize["item_id"] = o.ItemId
 	toSerialize["price"] = o.Price
 	toSerialize["sale_price"] = o.SalePrice.Get()
-	toSerialize["currency"] = o.Currency
 	return toSerialize, nil
 }
 
@@ -231,12 +231,12 @@ func (o *CatalogsRetailProductMetadata) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"item_id",
-		"item_group_id",
 		"availability",
+		"currency",
+		"item_group_id",
+		"item_id",
 		"price",
 		"sale_price",
-		"currency",
 	}
 
 	allProperties := make(map[string]interface{})

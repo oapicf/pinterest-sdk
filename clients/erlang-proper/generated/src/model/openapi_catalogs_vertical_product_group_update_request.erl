@@ -10,11 +10,11 @@
 
 -type openapi_catalogs_vertical_product_group_update_request() ::
   [ {'catalog_type', binary() }
-  | {'name', binary() }
+  | {'country', openapi_country:openapi_country() }
   | {'description', binary() }
   | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
-  | {'country', openapi_country:openapi_country() }
   | {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
+  | {'name', binary() }
   ].
 
 
@@ -23,11 +23,11 @@ openapi_catalogs_vertical_product_group_update_request() ->
 
 openapi_catalogs_vertical_product_group_update_request(Fields) ->
   Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
-            , {'name', binary() }
+            , {'country', openapi_country:openapi_country() }
             , {'description', binary() }
             , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
-            , {'country', openapi_country:openapi_country() }
             , {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

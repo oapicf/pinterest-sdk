@@ -12,13 +12,13 @@ import org.joda.time.DateTime
 import GetPartnerAssetsResponse._
 
 case class GetPartnerAssetsResponse (
-  /* Unique identifier of a business asset. */
+  assetGroupInfo: Option[AssetGroupBinding],
+/* Unique identifier of a business asset. */
   assetId: Option[String],
-/* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+/* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
   assetType: Option[String],
 /* The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset. */
-  permissions: Option[List[String]],
-assetGroupInfo: Option[AssetGroupBinding])
+  permissions: Option[List[String]])
 
 object GetPartnerAssetsResponse {
   import DateTimeCodecs._

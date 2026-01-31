@@ -8,19 +8,19 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
-// Functions for enum PRIVACY for BoardsAPI_boardsList
+// Functions for enum  for BoardsAPI_boardsList
 
-static char* boardsList_PRIVACY_ToString(pinterest_rest_api_boardsList_privacy_e PRIVACY){
-    char *PRIVACYArray[] =  { "NULL", "ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET" };
-    return PRIVACYArray[PRIVACY];
+static char* boardsList__ToString(pinterest_rest_api_boardsList_privacy_e ){
+    char *Array[] =  { "NULL", "ALL", "PUBLIC", "PROTECTED", "SECRET", "PUBLIC_AND_SECRET" };
+    return Array[];
 }
 
-static pinterest_rest_api_boardsList_privacy_e boardsList_PRIVACY_FromString(char* PRIVACY){
+static pinterest_rest_api_boardsList_privacy_e boardsList__FromString(char* ){
     int stringToReturn = 0;
-    char *PRIVACYArray[] =  { "NULL", "ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET" };
-    size_t sizeofArray = sizeof(PRIVACYArray) / sizeof(PRIVACYArray[0]);
+    char *Array[] =  { "NULL", "ALL", "PUBLIC", "PROTECTED", "SECRET", "PUBLIC_AND_SECRET" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(PRIVACY, PRIVACYArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,32 +29,23 @@ static pinterest_rest_api_boardsList_privacy_e boardsList_PRIVACY_FromString(cha
 }
 
 /*
-// Function boardsList_PRIVACY_convertToJSON is not currently used,
+// Function boardsList__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *boardsList_PRIVACY_convertToJSON(pinterest_rest_api_boardsList_privacy_e PRIVACY) {
+static cJSON *boardsList__convertToJSON(pinterest_rest_api_boardsList_privacy_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "privacy", boardsList_PRIVACY_ToString(PRIVACY)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function boardsList_PRIVACY_parseFromJSON is not currently used,
+// Function boardsList__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_boardsList_privacy_e boardsList_PRIVACY_parseFromJSON(cJSON* PRIVACYJSON) {
-    pinterest_rest_api_boardsList_privacy_e PRIVACYVariable = 0;
-    cJSON *PRIVACYVar = cJSON_GetObjectItemCaseSensitive(PRIVACYJSON, "privacy");
-    if(!cJSON_IsString(PRIVACYVar) || (PRIVACYVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    PRIVACYVariable = boardsList_PRIVACY_FromString(PRIVACYVar->valuestring);
-    return PRIVACYVariable;
+static pinterest_rest_api_boardsList_privacy_e boardsList__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_boardsList_privacy_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -63,13 +54,13 @@ end:
 // Functions for enum CREATIVETYPES for BoardsAPI_boardsListPins
 
 static char* boardsListPins_CREATIVETYPES_ToString(pinterest_rest_api_boardsListPins_creative_types_e CREATIVETYPES){
-    char *CREATIVETYPESArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA" };
+    char *CREATIVETYPESArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ", "COLLAGE", "MAX_WIDTH_REGULAR_COLLECTION", "MAX_WIDTH_VIDEO_COLLECTION" };
     return CREATIVETYPESArray[CREATIVETYPES];
 }
 
 static pinterest_rest_api_boardsListPins_creative_types_e boardsListPins_CREATIVETYPES_FromString(char* CREATIVETYPES){
     int stringToReturn = 0;
-    char *CREATIVETYPESArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA" };
+    char *CREATIVETYPESArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ", "COLLAGE", "MAX_WIDTH_REGULAR_COLLECTION", "MAX_WIDTH_VIDEO_COLLECTION" };
     size_t sizeofArray = sizeof(CREATIVETYPESArray) / sizeof(CREATIVETYPESArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(CREATIVETYPES, CREATIVETYPESArray[stringToReturn]) == 0) {
@@ -876,10 +867,10 @@ end:
 
 // Create board
 //
-// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
 board_t*
-BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_id)
+BoardsAPI_boardsCreate(apiClient_t *apiClient, board_create_t *board_create, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -912,12 +903,12 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_board = NULL;
-    if (board != NULL)
+    cJSON *localVarSingleItemJSON_board_create = NULL;
+    if (board_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_board = board_convertToJSON(board);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board);
+        localVarSingleItemJSON_board_create = board_create_convertToJSON(board_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -934,16 +925,36 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 201) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","The board name is invalid or duplicated.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     board_t *elementToReturn = NULL;
@@ -968,9 +979,9 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_board) {
-        cJSON_Delete(localVarSingleItemJSON_board);
-        localVarSingleItemJSON_board = NULL;
+    if (localVarSingleItemJSON_board_create) {
+        cJSON_Delete(localVarSingleItemJSON_board_create);
+        localVarSingleItemJSON_board_create = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -994,7 +1005,7 @@ end:
 
 // Delete board
 //
-// Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
 void
 BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_id)
@@ -1054,27 +1065,31 @@ BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Board deleted successfully");
+    //    printf("%s\n","Resource deleted successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to delete the board.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Board not found.");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Could not get exclusive access to delete the board.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 429) {
-    //    printf("%s\n","This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.");
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //No return type
 end:
@@ -1115,7 +1130,7 @@ end:
 
 // Get board
 //
-// Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
 board_t*
 BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_account_id)
@@ -1175,15 +1190,31 @@ BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_account_id)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Board not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     board_t *elementToReturn = NULL;
@@ -1230,10 +1261,10 @@ end:
 
 // List boards
 //
-// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 //
 boards_list_200_response_t*
-BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_rest_api_boardsList_privacy_e privacy)
+BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, board_privacy_filter_e privacy, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1266,6 +1297,19 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
     }
 
     // query parameters
+    char *keyQuery_privacy = NULL;
+    board_privacy_filter_e valueQuery_privacy ;
+    keyValuePair_t *keyPairQuery_privacy = 0;
+    if (privacy)
+    {
+        keyQuery_privacy = strdup("privacy");
+        valueQuery_privacy = (privacy);
+        keyPairQuery_privacy = keyValuePair_create(keyQuery_privacy, strdup(boardsList__ToString(
+        &valueQuery_privacy)));
+        list_addElement(localVarQueryParameters,keyPairQuery_privacy);
+    }
+
+    // query parameters
     char *keyQuery_bookmark = NULL;
     char * valueQuery_bookmark = NULL;
     keyValuePair_t *keyPairQuery_bookmark = 0;
@@ -1289,19 +1333,6 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_privacy = NULL;
-    pinterest_rest_api_boardsList_privacy_e valueQuery_privacy ;
-    keyValuePair_t *keyPairQuery_privacy = 0;
-    if (privacy)
-    {
-        keyQuery_privacy = strdup("privacy");
-        valueQuery_privacy = (privacy);
-        keyPairQuery_privacy = keyValuePair_create(keyQuery_privacy, strdup(boardsList_PRIVACY_ToString(
-        valueQuery_privacy)));
-        list_addElement(localVarQueryParameters,keyPairQuery_privacy);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -1316,11 +1347,31 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     boards_list_200_response_t *elementToReturn = NULL;
@@ -1357,6 +1408,14 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
+    if(keyQuery_privacy){
+        free(keyQuery_privacy);
+        keyQuery_privacy = NULL;
+    }
+    if(keyPairQuery_privacy){
+        keyValuePair_free(keyPairQuery_privacy);
+        keyPairQuery_privacy = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -1380,14 +1439,6 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
     if(keyPairQuery_page_size){
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
-    }
-    if(keyQuery_privacy){
-        free(keyQuery_privacy);
-        keyQuery_privacy = NULL;
-    }
-    if(keyPairQuery_privacy){
-        keyValuePair_free(keyPairQuery_privacy);
-        keyPairQuery_privacy = NULL;
     }
     return elementToReturn;
 end:
@@ -1593,10 +1644,10 @@ end:
 
 // Update board
 //
-// Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
-board_t*
-BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *board_update, char *ad_account_id)
+board_with_update_privacy_t*
+BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_with_update_privacy_update_t *board_with_update_privacy_update, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1641,12 +1692,12 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_board_update = NULL;
-    if (board_update != NULL)
+    cJSON *localVarSingleItemJSON_board_with_update_privacy_update = NULL;
+    if (board_with_update_privacy_update != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_board_update = board_update_convertToJSON(board_update);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board_update);
+        localVarSingleItemJSON_board_with_update_privacy_update = board_with_update_privacy_update_convertToJSON(board_with_update_privacy_update);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board_with_update_privacy_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1664,29 +1715,37 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid board parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to update the board.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 429) {
-    //    printf("%s\n","This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.");
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    board_t *elementToReturn = NULL;
+    board_with_update_privacy_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
+        elementToReturn = board_with_update_privacy_parseFromJSON(BoardsAPIlocalVarJSON);
         cJSON_Delete(BoardsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1706,9 +1765,9 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_board_id);
-    if (localVarSingleItemJSON_board_update) {
-        cJSON_Delete(localVarSingleItemJSON_board_update);
-        localVarSingleItemJSON_board_update = NULL;
+    if (localVarSingleItemJSON_board_with_update_privacy_update) {
+        cJSON_Delete(localVarSingleItemJSON_board_with_update_privacy_update);
+        localVarSingleItemJSON_board_with_update_privacy_update = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){

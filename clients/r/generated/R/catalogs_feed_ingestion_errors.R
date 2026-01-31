@@ -7,80 +7,62 @@
 #' @title CatalogsFeedIngestionErrors
 #' @description CatalogsFeedIngestionErrors Class
 #' @format An \code{R6Class} generator object
-#' @field LINE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. integer [optional]
-#' @field LARGE_PRODUCT_COUNT_DECREASE The product count has decreased by more than 99\% compared to the last successful ingestion. integer [optional]
 #' @field ACCOUNT_FLAGGED We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information. integer [optional]
-#' @field IMAGE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours. integer [optional]
+#' @field FETCH_GOOGLE_SHEET_NOT_SHARED Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file. integer [optional]
 #' @field IMAGE_FILE_NOT_ACCESSIBLE Image files are unreadable. Please upload new files to continue. integer [optional]
-#' @field IMAGE_MALFORMED_URL Image files are unreadable. Please check your link and upload new files to continue. integer [optional]
 #' @field IMAGE_FILE_NOT_FOUND Image files are unreadable. Please upload new files to continue. integer [optional]
 #' @field IMAGE_INVALID_FILE Image files are unreadable. Please upload new files to continue. integer [optional]
+#' @field IMAGE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours. integer [optional]
+#' @field IMAGE_MALFORMED_URL Image files are unreadable. Please check your link and upload new files to continue. integer [optional]
+#' @field LARGE_PRODUCT_COUNT_DECREASE The product count has decreased by more than 99\% compared to the last successful ingestion. integer [optional]
+#' @field LINE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsFeedIngestionErrors <- R6::R6Class(
   "CatalogsFeedIngestionErrors",
   public = list(
-    `LINE_LEVEL_INTERNAL_ERROR` = NULL,
-    `LARGE_PRODUCT_COUNT_DECREASE` = NULL,
     `ACCOUNT_FLAGGED` = NULL,
-    `IMAGE_LEVEL_INTERNAL_ERROR` = NULL,
+    `FETCH_GOOGLE_SHEET_NOT_SHARED` = NULL,
     `IMAGE_FILE_NOT_ACCESSIBLE` = NULL,
-    `IMAGE_MALFORMED_URL` = NULL,
     `IMAGE_FILE_NOT_FOUND` = NULL,
     `IMAGE_INVALID_FILE` = NULL,
+    `IMAGE_LEVEL_INTERNAL_ERROR` = NULL,
+    `IMAGE_MALFORMED_URL` = NULL,
+    `LARGE_PRODUCT_COUNT_DECREASE` = NULL,
+    `LINE_LEVEL_INTERNAL_ERROR` = NULL,
 
     #' @description
     #' Initialize a new CatalogsFeedIngestionErrors class.
     #'
-    #' @param LINE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-    #' @param LARGE_PRODUCT_COUNT_DECREASE The product count has decreased by more than 99\% compared to the last successful ingestion.
     #' @param ACCOUNT_FLAGGED We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
-    #' @param IMAGE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+    #' @param FETCH_GOOGLE_SHEET_NOT_SHARED Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.
     #' @param IMAGE_FILE_NOT_ACCESSIBLE Image files are unreadable. Please upload new files to continue.
-    #' @param IMAGE_MALFORMED_URL Image files are unreadable. Please check your link and upload new files to continue.
     #' @param IMAGE_FILE_NOT_FOUND Image files are unreadable. Please upload new files to continue.
     #' @param IMAGE_INVALID_FILE Image files are unreadable. Please upload new files to continue.
+    #' @param IMAGE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+    #' @param IMAGE_MALFORMED_URL Image files are unreadable. Please check your link and upload new files to continue.
+    #' @param LARGE_PRODUCT_COUNT_DECREASE The product count has decreased by more than 99\% compared to the last successful ingestion.
+    #' @param LINE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
     #' @param ... Other optional arguments.
-    initialize = function(`LINE_LEVEL_INTERNAL_ERROR` = NULL, `LARGE_PRODUCT_COUNT_DECREASE` = NULL, `ACCOUNT_FLAGGED` = NULL, `IMAGE_LEVEL_INTERNAL_ERROR` = NULL, `IMAGE_FILE_NOT_ACCESSIBLE` = NULL, `IMAGE_MALFORMED_URL` = NULL, `IMAGE_FILE_NOT_FOUND` = NULL, `IMAGE_INVALID_FILE` = NULL, ...) {
-      if (!is.null(`LINE_LEVEL_INTERNAL_ERROR`)) {
-        if (!(is.numeric(`LINE_LEVEL_INTERNAL_ERROR`) && length(`LINE_LEVEL_INTERNAL_ERROR`) == 1)) {
-          stop(paste("Error! Invalid data for `LINE_LEVEL_INTERNAL_ERROR`. Must be an integer:", `LINE_LEVEL_INTERNAL_ERROR`))
-        }
-        self$`LINE_LEVEL_INTERNAL_ERROR` <- `LINE_LEVEL_INTERNAL_ERROR`
-      }
-      if (!is.null(`LARGE_PRODUCT_COUNT_DECREASE`)) {
-        if (!(`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
-          stop(paste("Error! \"", `LARGE_PRODUCT_COUNT_DECREASE`, "\" cannot be assigned to `LARGE_PRODUCT_COUNT_DECREASE`. Must be \"1\".", sep = ""))
-        }
-        if (!(is.numeric(`LARGE_PRODUCT_COUNT_DECREASE`) && length(`LARGE_PRODUCT_COUNT_DECREASE`) == 1)) {
-          stop(paste("Error! Invalid data for `LARGE_PRODUCT_COUNT_DECREASE`. Must be an integer:", `LARGE_PRODUCT_COUNT_DECREASE`))
-        }
-        self$`LARGE_PRODUCT_COUNT_DECREASE` <- `LARGE_PRODUCT_COUNT_DECREASE`
-      }
+    initialize = function(`ACCOUNT_FLAGGED` = NULL, `FETCH_GOOGLE_SHEET_NOT_SHARED` = NULL, `IMAGE_FILE_NOT_ACCESSIBLE` = NULL, `IMAGE_FILE_NOT_FOUND` = NULL, `IMAGE_INVALID_FILE` = NULL, `IMAGE_LEVEL_INTERNAL_ERROR` = NULL, `IMAGE_MALFORMED_URL` = NULL, `LARGE_PRODUCT_COUNT_DECREASE` = NULL, `LINE_LEVEL_INTERNAL_ERROR` = NULL, ...) {
       if (!is.null(`ACCOUNT_FLAGGED`)) {
         if (!(is.numeric(`ACCOUNT_FLAGGED`) && length(`ACCOUNT_FLAGGED`) == 1)) {
           stop(paste("Error! Invalid data for `ACCOUNT_FLAGGED`. Must be an integer:", `ACCOUNT_FLAGGED`))
         }
         self$`ACCOUNT_FLAGGED` <- `ACCOUNT_FLAGGED`
       }
-      if (!is.null(`IMAGE_LEVEL_INTERNAL_ERROR`)) {
-        if (!(is.numeric(`IMAGE_LEVEL_INTERNAL_ERROR`) && length(`IMAGE_LEVEL_INTERNAL_ERROR`) == 1)) {
-          stop(paste("Error! Invalid data for `IMAGE_LEVEL_INTERNAL_ERROR`. Must be an integer:", `IMAGE_LEVEL_INTERNAL_ERROR`))
+      if (!is.null(`FETCH_GOOGLE_SHEET_NOT_SHARED`)) {
+        if (!(is.numeric(`FETCH_GOOGLE_SHEET_NOT_SHARED`) && length(`FETCH_GOOGLE_SHEET_NOT_SHARED`) == 1)) {
+          stop(paste("Error! Invalid data for `FETCH_GOOGLE_SHEET_NOT_SHARED`. Must be an integer:", `FETCH_GOOGLE_SHEET_NOT_SHARED`))
         }
-        self$`IMAGE_LEVEL_INTERNAL_ERROR` <- `IMAGE_LEVEL_INTERNAL_ERROR`
+        self$`FETCH_GOOGLE_SHEET_NOT_SHARED` <- `FETCH_GOOGLE_SHEET_NOT_SHARED`
       }
       if (!is.null(`IMAGE_FILE_NOT_ACCESSIBLE`)) {
         if (!(is.numeric(`IMAGE_FILE_NOT_ACCESSIBLE`) && length(`IMAGE_FILE_NOT_ACCESSIBLE`) == 1)) {
           stop(paste("Error! Invalid data for `IMAGE_FILE_NOT_ACCESSIBLE`. Must be an integer:", `IMAGE_FILE_NOT_ACCESSIBLE`))
         }
         self$`IMAGE_FILE_NOT_ACCESSIBLE` <- `IMAGE_FILE_NOT_ACCESSIBLE`
-      }
-      if (!is.null(`IMAGE_MALFORMED_URL`)) {
-        if (!(is.numeric(`IMAGE_MALFORMED_URL`) && length(`IMAGE_MALFORMED_URL`) == 1)) {
-          stop(paste("Error! Invalid data for `IMAGE_MALFORMED_URL`. Must be an integer:", `IMAGE_MALFORMED_URL`))
-        }
-        self$`IMAGE_MALFORMED_URL` <- `IMAGE_MALFORMED_URL`
       }
       if (!is.null(`IMAGE_FILE_NOT_FOUND`)) {
         if (!(is.numeric(`IMAGE_FILE_NOT_FOUND`) && length(`IMAGE_FILE_NOT_FOUND`) == 1)) {
@@ -93,6 +75,33 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
           stop(paste("Error! Invalid data for `IMAGE_INVALID_FILE`. Must be an integer:", `IMAGE_INVALID_FILE`))
         }
         self$`IMAGE_INVALID_FILE` <- `IMAGE_INVALID_FILE`
+      }
+      if (!is.null(`IMAGE_LEVEL_INTERNAL_ERROR`)) {
+        if (!(is.numeric(`IMAGE_LEVEL_INTERNAL_ERROR`) && length(`IMAGE_LEVEL_INTERNAL_ERROR`) == 1)) {
+          stop(paste("Error! Invalid data for `IMAGE_LEVEL_INTERNAL_ERROR`. Must be an integer:", `IMAGE_LEVEL_INTERNAL_ERROR`))
+        }
+        self$`IMAGE_LEVEL_INTERNAL_ERROR` <- `IMAGE_LEVEL_INTERNAL_ERROR`
+      }
+      if (!is.null(`IMAGE_MALFORMED_URL`)) {
+        if (!(is.numeric(`IMAGE_MALFORMED_URL`) && length(`IMAGE_MALFORMED_URL`) == 1)) {
+          stop(paste("Error! Invalid data for `IMAGE_MALFORMED_URL`. Must be an integer:", `IMAGE_MALFORMED_URL`))
+        }
+        self$`IMAGE_MALFORMED_URL` <- `IMAGE_MALFORMED_URL`
+      }
+      if (!is.null(`LARGE_PRODUCT_COUNT_DECREASE`)) {
+        if (!(`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
+          stop(paste("Error! \"", `LARGE_PRODUCT_COUNT_DECREASE`, "\" cannot be assigned to `LARGE_PRODUCT_COUNT_DECREASE`. Must be \"1\".", sep = ""))
+        }
+        if (!(is.numeric(`LARGE_PRODUCT_COUNT_DECREASE`) && length(`LARGE_PRODUCT_COUNT_DECREASE`) == 1)) {
+          stop(paste("Error! Invalid data for `LARGE_PRODUCT_COUNT_DECREASE`. Must be an integer:", `LARGE_PRODUCT_COUNT_DECREASE`))
+        }
+        self$`LARGE_PRODUCT_COUNT_DECREASE` <- `LARGE_PRODUCT_COUNT_DECREASE`
+      }
+      if (!is.null(`LINE_LEVEL_INTERNAL_ERROR`)) {
+        if (!(is.numeric(`LINE_LEVEL_INTERNAL_ERROR`) && length(`LINE_LEVEL_INTERNAL_ERROR`) == 1)) {
+          stop(paste("Error! Invalid data for `LINE_LEVEL_INTERNAL_ERROR`. Must be an integer:", `LINE_LEVEL_INTERNAL_ERROR`))
+        }
+        self$`LINE_LEVEL_INTERNAL_ERROR` <- `LINE_LEVEL_INTERNAL_ERROR`
       }
     },
 
@@ -127,29 +136,17 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsFeedIngestionErrorsObject <- list()
-      if (!is.null(self$`LINE_LEVEL_INTERNAL_ERROR`)) {
-        CatalogsFeedIngestionErrorsObject[["LINE_LEVEL_INTERNAL_ERROR"]] <-
-          self$`LINE_LEVEL_INTERNAL_ERROR`
-      }
-      if (!is.null(self$`LARGE_PRODUCT_COUNT_DECREASE`)) {
-        CatalogsFeedIngestionErrorsObject[["LARGE_PRODUCT_COUNT_DECREASE"]] <-
-          self$`LARGE_PRODUCT_COUNT_DECREASE`
-      }
       if (!is.null(self$`ACCOUNT_FLAGGED`)) {
         CatalogsFeedIngestionErrorsObject[["ACCOUNT_FLAGGED"]] <-
           self$`ACCOUNT_FLAGGED`
       }
-      if (!is.null(self$`IMAGE_LEVEL_INTERNAL_ERROR`)) {
-        CatalogsFeedIngestionErrorsObject[["IMAGE_LEVEL_INTERNAL_ERROR"]] <-
-          self$`IMAGE_LEVEL_INTERNAL_ERROR`
+      if (!is.null(self$`FETCH_GOOGLE_SHEET_NOT_SHARED`)) {
+        CatalogsFeedIngestionErrorsObject[["FETCH_GOOGLE_SHEET_NOT_SHARED"]] <-
+          self$`FETCH_GOOGLE_SHEET_NOT_SHARED`
       }
       if (!is.null(self$`IMAGE_FILE_NOT_ACCESSIBLE`)) {
         CatalogsFeedIngestionErrorsObject[["IMAGE_FILE_NOT_ACCESSIBLE"]] <-
           self$`IMAGE_FILE_NOT_ACCESSIBLE`
-      }
-      if (!is.null(self$`IMAGE_MALFORMED_URL`)) {
-        CatalogsFeedIngestionErrorsObject[["IMAGE_MALFORMED_URL"]] <-
-          self$`IMAGE_MALFORMED_URL`
       }
       if (!is.null(self$`IMAGE_FILE_NOT_FOUND`)) {
         CatalogsFeedIngestionErrorsObject[["IMAGE_FILE_NOT_FOUND"]] <-
@@ -158,6 +155,22 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
       if (!is.null(self$`IMAGE_INVALID_FILE`)) {
         CatalogsFeedIngestionErrorsObject[["IMAGE_INVALID_FILE"]] <-
           self$`IMAGE_INVALID_FILE`
+      }
+      if (!is.null(self$`IMAGE_LEVEL_INTERNAL_ERROR`)) {
+        CatalogsFeedIngestionErrorsObject[["IMAGE_LEVEL_INTERNAL_ERROR"]] <-
+          self$`IMAGE_LEVEL_INTERNAL_ERROR`
+      }
+      if (!is.null(self$`IMAGE_MALFORMED_URL`)) {
+        CatalogsFeedIngestionErrorsObject[["IMAGE_MALFORMED_URL"]] <-
+          self$`IMAGE_MALFORMED_URL`
+      }
+      if (!is.null(self$`LARGE_PRODUCT_COUNT_DECREASE`)) {
+        CatalogsFeedIngestionErrorsObject[["LARGE_PRODUCT_COUNT_DECREASE"]] <-
+          self$`LARGE_PRODUCT_COUNT_DECREASE`
+      }
+      if (!is.null(self$`LINE_LEVEL_INTERNAL_ERROR`)) {
+        CatalogsFeedIngestionErrorsObject[["LINE_LEVEL_INTERNAL_ERROR"]] <-
+          self$`LINE_LEVEL_INTERNAL_ERROR`
       }
       return(CatalogsFeedIngestionErrorsObject)
     },
@@ -169,8 +182,26 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
     #' @return the instance of CatalogsFeedIngestionErrors
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`LINE_LEVEL_INTERNAL_ERROR`)) {
-        self$`LINE_LEVEL_INTERNAL_ERROR` <- this_object$`LINE_LEVEL_INTERNAL_ERROR`
+      if (!is.null(this_object$`ACCOUNT_FLAGGED`)) {
+        self$`ACCOUNT_FLAGGED` <- this_object$`ACCOUNT_FLAGGED`
+      }
+      if (!is.null(this_object$`FETCH_GOOGLE_SHEET_NOT_SHARED`)) {
+        self$`FETCH_GOOGLE_SHEET_NOT_SHARED` <- this_object$`FETCH_GOOGLE_SHEET_NOT_SHARED`
+      }
+      if (!is.null(this_object$`IMAGE_FILE_NOT_ACCESSIBLE`)) {
+        self$`IMAGE_FILE_NOT_ACCESSIBLE` <- this_object$`IMAGE_FILE_NOT_ACCESSIBLE`
+      }
+      if (!is.null(this_object$`IMAGE_FILE_NOT_FOUND`)) {
+        self$`IMAGE_FILE_NOT_FOUND` <- this_object$`IMAGE_FILE_NOT_FOUND`
+      }
+      if (!is.null(this_object$`IMAGE_INVALID_FILE`)) {
+        self$`IMAGE_INVALID_FILE` <- this_object$`IMAGE_INVALID_FILE`
+      }
+      if (!is.null(this_object$`IMAGE_LEVEL_INTERNAL_ERROR`)) {
+        self$`IMAGE_LEVEL_INTERNAL_ERROR` <- this_object$`IMAGE_LEVEL_INTERNAL_ERROR`
+      }
+      if (!is.null(this_object$`IMAGE_MALFORMED_URL`)) {
+        self$`IMAGE_MALFORMED_URL` <- this_object$`IMAGE_MALFORMED_URL`
       }
       if (!is.null(this_object$`LARGE_PRODUCT_COUNT_DECREASE`)) {
         if (!is.null(this_object$`LARGE_PRODUCT_COUNT_DECREASE`) && !(this_object$`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
@@ -178,23 +209,8 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
         }
         self$`LARGE_PRODUCT_COUNT_DECREASE` <- this_object$`LARGE_PRODUCT_COUNT_DECREASE`
       }
-      if (!is.null(this_object$`ACCOUNT_FLAGGED`)) {
-        self$`ACCOUNT_FLAGGED` <- this_object$`ACCOUNT_FLAGGED`
-      }
-      if (!is.null(this_object$`IMAGE_LEVEL_INTERNAL_ERROR`)) {
-        self$`IMAGE_LEVEL_INTERNAL_ERROR` <- this_object$`IMAGE_LEVEL_INTERNAL_ERROR`
-      }
-      if (!is.null(this_object$`IMAGE_FILE_NOT_ACCESSIBLE`)) {
-        self$`IMAGE_FILE_NOT_ACCESSIBLE` <- this_object$`IMAGE_FILE_NOT_ACCESSIBLE`
-      }
-      if (!is.null(this_object$`IMAGE_MALFORMED_URL`)) {
-        self$`IMAGE_MALFORMED_URL` <- this_object$`IMAGE_MALFORMED_URL`
-      }
-      if (!is.null(this_object$`IMAGE_FILE_NOT_FOUND`)) {
-        self$`IMAGE_FILE_NOT_FOUND` <- this_object$`IMAGE_FILE_NOT_FOUND`
-      }
-      if (!is.null(this_object$`IMAGE_INVALID_FILE`)) {
-        self$`IMAGE_INVALID_FILE` <- this_object$`IMAGE_INVALID_FILE`
+      if (!is.null(this_object$`LINE_LEVEL_INTERNAL_ERROR`)) {
+        self$`LINE_LEVEL_INTERNAL_ERROR` <- this_object$`LINE_LEVEL_INTERNAL_ERROR`
       }
       self
     },
@@ -217,17 +233,18 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
     #' @return the instance of CatalogsFeedIngestionErrors
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`LINE_LEVEL_INTERNAL_ERROR` <- this_object$`LINE_LEVEL_INTERNAL_ERROR`
+      self$`ACCOUNT_FLAGGED` <- this_object$`ACCOUNT_FLAGGED`
+      self$`FETCH_GOOGLE_SHEET_NOT_SHARED` <- this_object$`FETCH_GOOGLE_SHEET_NOT_SHARED`
+      self$`IMAGE_FILE_NOT_ACCESSIBLE` <- this_object$`IMAGE_FILE_NOT_ACCESSIBLE`
+      self$`IMAGE_FILE_NOT_FOUND` <- this_object$`IMAGE_FILE_NOT_FOUND`
+      self$`IMAGE_INVALID_FILE` <- this_object$`IMAGE_INVALID_FILE`
+      self$`IMAGE_LEVEL_INTERNAL_ERROR` <- this_object$`IMAGE_LEVEL_INTERNAL_ERROR`
+      self$`IMAGE_MALFORMED_URL` <- this_object$`IMAGE_MALFORMED_URL`
       if (!is.null(this_object$`LARGE_PRODUCT_COUNT_DECREASE`) && !(this_object$`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
         stop(paste("Error! \"", this_object$`LARGE_PRODUCT_COUNT_DECREASE`, "\" cannot be assigned to `LARGE_PRODUCT_COUNT_DECREASE`. Must be \"1\".", sep = ""))
       }
       self$`LARGE_PRODUCT_COUNT_DECREASE` <- this_object$`LARGE_PRODUCT_COUNT_DECREASE`
-      self$`ACCOUNT_FLAGGED` <- this_object$`ACCOUNT_FLAGGED`
-      self$`IMAGE_LEVEL_INTERNAL_ERROR` <- this_object$`IMAGE_LEVEL_INTERNAL_ERROR`
-      self$`IMAGE_FILE_NOT_ACCESSIBLE` <- this_object$`IMAGE_FILE_NOT_ACCESSIBLE`
-      self$`IMAGE_MALFORMED_URL` <- this_object$`IMAGE_MALFORMED_URL`
-      self$`IMAGE_FILE_NOT_FOUND` <- this_object$`IMAGE_FILE_NOT_FOUND`
-      self$`IMAGE_INVALID_FILE` <- this_object$`IMAGE_INVALID_FILE`
+      self$`LINE_LEVEL_INTERNAL_ERROR` <- this_object$`LINE_LEVEL_INTERNAL_ERROR`
       self
     },
 

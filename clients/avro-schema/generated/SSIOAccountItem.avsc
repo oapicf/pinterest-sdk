@@ -5,15 +5,18 @@
   "name": "SSIOAccountItem",
   "fields": [
     {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "Salesforce id for billto_info",
+      "name": "addresses",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SSIOAccountAddress"
+      }],
+      "doc": "Address information that is associated with this account.",
       "default": null
     },
     {
-      "name": "io_terms_id",
+      "name": "id",
       "type": ["null", "string"],
-      "doc": "Salesforce id for IO Terms and Conditions",
+      "doc": "Salesforce id for billto_info",
       "default": null
     },
     {
@@ -23,27 +26,9 @@
       "default": null
     },
     {
-      "name": "us_terms_id",
+      "name": "io_terms_id",
       "type": ["null", "string"],
-      "doc": "Salesforce id for US Terms and Conditions",
-      "default": null
-    },
-    {
-      "name": "us_terms",
-      "type": ["null", "string"],
-      "doc": "Salesforce text for US Terms and Conditions",
-      "default": null
-    },
-    {
-      "name": "row_terms_id",
-      "type": ["null", "string"],
-      "doc": "Salesforce id for Rest of the World Terms and Conditions",
-      "default": null
-    },
-    {
-      "name": "row_terms",
-      "type": ["null", "string"],
-      "doc": "Salesforce text for Rest of the World Terms and Conditions",
+      "doc": "Salesforce id for IO Terms and Conditions",
       "default": null
     },
     {
@@ -53,12 +38,27 @@
       "default": null
     },
     {
-      "name": "addresses",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.SSIOAccountAddress"
-      }],
-      "doc": "Address information that is associated with this account.",
+      "name": "row_terms",
+      "type": ["null", "string"],
+      "doc": "Salesforce text for Rest of the World Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "row_terms_id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for Rest of the World Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "us_terms",
+      "type": ["null", "string"],
+      "doc": "Salesforce text for US Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "us_terms_id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for US Terms and Conditions",
       "default": null
     }
   ]

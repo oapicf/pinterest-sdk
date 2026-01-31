@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,15 +19,15 @@ type CatalogsVerticalProductGroupUpdateRequest struct {
 
 	CatalogType string `json:"catalog_type,omitempty"`
 
-	Name string `json:"name,omitempty"`
+	Country Country `json:"country,omitempty"`
 
 	Description *string `json:"description,omitempty"`
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters,omitempty"`
 
-	Country Country `json:"country,omitempty"`
-
 	Locale CatalogsLocale `json:"locale,omitempty"`
+
+	Name string `json:"name,omitempty"`
 }
 
 // AssertCatalogsVerticalProductGroupUpdateRequestRequired checks if the required fields are not zero-ed

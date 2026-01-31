@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomNumber4Filter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomNumber4Filter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupUint32Criteria = openapi_server.resourceTypes.CatalogsProductGroupUint32Criteria
+}
+resourceTypes {
+
+  CustomNumber4Filter {
+    title = CustomNumber4Filter
+    description = CustomNumber4Filter
+    derivedFrom = Root
+    properties {
+        custom_number_4 {
+          type = CatalogsProductGroupUint32Criteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomNumber4Filter {
+    title = CustomNumber4Filter
+    description = CustomNumber4Filter
+    implements = openapi_server.resourceTypes.CustomNumber4Filter
+
+  }
+}

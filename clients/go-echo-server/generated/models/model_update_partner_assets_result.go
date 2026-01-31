@@ -6,7 +6,7 @@ type UpdatePartnerAssetsResult struct {
 	// Unique identifier of a business asset.
 	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	// Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	AssetType string `json:"asset_type,omitempty"`
 
 	// Unique identifier of a business partner.

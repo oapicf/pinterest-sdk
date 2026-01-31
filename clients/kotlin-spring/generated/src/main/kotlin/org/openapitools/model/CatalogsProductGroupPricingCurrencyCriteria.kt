@@ -18,12 +18,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param currency 
  * @param &#x60;operator&#x60; 
  * @param &#x60;value&#x60; 
- * @param currency 
  * @param negated 
  */
 data class CatalogsProductGroupPricingCurrencyCriteria(
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("currency", required = true) val currency: NonNullableCatalogsCurrency,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("operator", required = true) val `operator`: CatalogsProductGroupPricingCurrencyCriteria.`Operator`,
@@ -31,10 +35,6 @@ data class CatalogsProductGroupPricingCurrencyCriteria(
     @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("value", required = true) val `value`: java.math.BigDecimal,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("currency", required = true) val currency: NonNullableCatalogsCurrency,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = false

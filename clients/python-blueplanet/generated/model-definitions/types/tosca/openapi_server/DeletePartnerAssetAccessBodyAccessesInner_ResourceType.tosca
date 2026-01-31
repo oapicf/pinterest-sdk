@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeletePartnerAssetAccessBodyAccessesInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeletePartnerAssetAccessBodyAccessesInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  DeletePartnerAssetAccessBodyAccessesInner {
+    title = DeletePartnerAssetAccessBodyAccessesInner
+    description = DeletePartnerAssetAccessBodyAccessesInner
+    derivedFrom = Root
+    properties {
+        asset_id {
+          type =  string
+          description = "Unique identifier of the business asset."
+          optional = true
+        }
+        partner_id {
+          type =  string
+          description = "Unique identifier of a business partner to update asset access to."
+          optional = true
+        }
+        partner_type {
+          type =  string
+          description = "If partner_type&#x3D;INTERNAL, the deleted asset access is for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the deleted asset access is for the access you have to the partner&#39;s business asset."
+          enum = ["INTERNAL", "EXTERNAL"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeletePartnerAssetAccessBodyAccessesInner {
+    title = DeletePartnerAssetAccessBodyAccessesInner
+    description = DeletePartnerAssetAccessBodyAccessesInner
+    implements = openapi_server.resourceTypes.DeletePartnerAssetAccessBodyAccessesInner
+
+  }
+}

@@ -10,6 +10,10 @@
 
     * `FINANCE_MANAGER` (value: `"FINANCE_MANAGER"`)
 
+    * `FINANCE_EDIT` (value: `"FINANCE_EDIT"`)
+
+    * `FINANCE_VIEW` (value: `"FINANCE_VIEW"`)
+
     * `AUDIENCE_MANAGER` (value: `"AUDIENCE_MANAGER"`)
 
     * `CAMPAIGN_MANAGER` (value: `"CAMPAIGN_MANAGER"`)

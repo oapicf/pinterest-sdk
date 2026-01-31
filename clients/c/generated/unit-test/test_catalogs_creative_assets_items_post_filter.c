@@ -22,15 +22,15 @@ catalogs_creative_assets_items_post_filter_t* instantiate_catalogs_creative_asse
   catalogs_creative_assets_items_post_filter_t* catalogs_creative_assets_items_post_filter = NULL;
   if (include_optional) {
     catalogs_creative_assets_items_post_filter = catalogs_creative_assets_items_post_filter_create(
+      "a",
       pinterest_rest_api_catalogs_creative_assets_items_post_filter_CATALOGTYPE_CREATIVE_ASSETS,
-      list_createList(),
-      "a"
+      list_createList()
     );
   } else {
     catalogs_creative_assets_items_post_filter = catalogs_creative_assets_items_post_filter_create(
+      "a",
       pinterest_rest_api_catalogs_creative_assets_items_post_filter_CATALOGTYPE_CREATIVE_ASSETS,
-      list_createList(),
-      "a"
+      list_createList()
     );
   }
 

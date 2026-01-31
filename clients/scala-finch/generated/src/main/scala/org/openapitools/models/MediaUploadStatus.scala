@@ -7,7 +7,7 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * Media upload status
+ * 
  */
 case class MediaUploadStatus()
 

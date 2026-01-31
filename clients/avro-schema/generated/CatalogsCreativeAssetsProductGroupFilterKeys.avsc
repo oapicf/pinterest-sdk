@@ -11,27 +11,27 @@
     },
     {
       "name": "CUSTOM_LABEL_0",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_1",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_2",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_3",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_4",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
@@ -72,6 +72,11 @@
     {
       "name": "MEDIA_TYPE",
       "type": "model.CatalogsProductGroupMultipleMediaTypesCriteria",
+      "doc": ""
+    },
+    {
+      "name": "TITLE_KEYWORDS",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
       "doc": ""
     }
   ]

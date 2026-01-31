@@ -446,7 +446,7 @@ static bool keywordsGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool keywordsGetHelper(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -477,6 +477,15 @@ static bool keywordsGetHelper(char * accessToken,
 		queryParams.erase("ad_group_id");
 	}
 
+	for (std::list
+	<std::string>::iterator queryIter = adGroupIds.begin(); queryIter != adGroupIds.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("adGroupIds", itemAt));
+	}
+	
 	for (std::list
 	<MatchType>::iterator queryIter = matchTypes.begin(); queryIter != matchTypes.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "MatchType");
@@ -560,22 +569,22 @@ static bool keywordsGetHelper(char * accessToken,
 
 
 bool KeywordsManager::keywordsGetAsync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData)
 {
 	return keywordsGetHelper(accessToken,
-	adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, 
+	adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::keywordsGetSync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData)
 {
 	return keywordsGetHelper(accessToken,
-	adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, 
+	adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark, 
 	handler, userData, false);
 }
 
@@ -815,7 +824,7 @@ static bool trendingKeywordsListProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool trendingKeywordsListHelper(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -880,6 +889,20 @@ static bool trendingKeywordsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("limit", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("limit");
+	}
+
+
+	itemAtq = stringify(&includePrediction, "bool");
+	queryParams.insert(pair<string, string>("include_prediction", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("include_prediction");
+	}
+
+
+	itemAtq = stringify(&includeDemographics, "bool");
+	queryParams.insert(pair<string, string>("include_demographics", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("include_demographics");
 	}
 
 	string mBody = "";
@@ -948,22 +971,22 @@ static bool trendingKeywordsListHelper(char * accessToken,
 
 
 bool KeywordsManager::trendingKeywordsListAsync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData)
 {
 	return trendingKeywordsListHelper(accessToken,
-	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, 
+	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::trendingKeywordsListSync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData)
 {
 	return trendingKeywordsListHelper(accessToken,
-	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, 
+	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics, 
 	handler, userData, false);
 }
 

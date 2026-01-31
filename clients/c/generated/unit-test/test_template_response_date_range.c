@@ -16,24 +16,24 @@
 #include "../model/template_response_date_range.h"
 template_response_date_range_t* instantiate_template_response_date_range(int include_optional);
 
+#include "test_template_response_date_range_absolute_date_range.c"
 #include "test_template_response_date_range_dynamic_date_range.c"
 #include "test_template_response_date_range_relative_date_range.c"
-#include "test_template_response_date_range_absolute_date_range.c"
 
 
 template_response_date_range_t* instantiate_template_response_date_range(int include_optional) {
   template_response_date_range_t* template_response_date_range = NULL;
   if (include_optional) {
     template_response_date_range = template_response_date_range_create(
+      {"end_date":6.027456183070403,"type":"absolute","start_date":0.8008281904610115},
       {"range":"YEAR_TO_DATE","type":"dynamic"},
-      {"end_days_in_past":7,"type":"relative","start_days_in_past":14},
-      {"end_date":6.027456183070403,"type":"absolute","start_date":0.8008281904610115}
+      {"end_days_in_past":7,"type":"relative","start_days_in_past":14}
     );
   } else {
     template_response_date_range = template_response_date_range_create(
+      {"end_date":6.027456183070403,"type":"absolute","start_date":0.8008281904610115},
       {"range":"YEAR_TO_DATE","type":"dynamic"},
-      {"end_days_in_past":7,"type":"relative","start_days_in_past":14},
-      {"end_date":6.027456183070403,"type":"absolute","start_date":0.8008281904610115}
+      {"end_days_in_past":7,"type":"relative","start_days_in_past":14}
     );
   }
 

@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdAccountGetSubscriptionResponse } from './adAccountGetSubscriptionResponse';
+import { LeadSubscription } from './leadSubscription';
 
 
 export interface AdAccountsSubscriptionsGetList200Response { 
-    items: Array<AdAccountGetSubscriptionResponse>;
     bookmark?: string | null;
+    items: Array<LeadSubscription>;
 }
 

@@ -52,7 +52,7 @@ const { status, data } = await apiInstance.countryKeywordsMetricsGet(
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -143,14 +143,16 @@ const apiInstance = new KeywordsApi(configuration);
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let campaignId: string; //Campaign Id to use to filter the results. (optional) (default to undefined)
 let adGroupId: string; //Ad group Id. (optional) (default to undefined)
+let adGroupIds: Array<string>; //List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional) (default to undefined)
 let matchTypes: Array<MatchType>; //Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize: number; //Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
 
 const { status, data } = await apiInstance.keywordsGet(
     adAccountId,
     campaignId,
     adGroupId,
+    adGroupIds,
     matchTypes,
     pageSize,
     bookmark
@@ -164,8 +166,9 @@ const { status, data } = await apiInstance.keywordsGet(
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **campaignId** | [**string**] | Campaign Id to use to filter the results. | (optional) defaults to undefined|
 | **adGroupId** | [**string**] | Ad group Id. | (optional) defaults to undefined|
+| **adGroupIds** | **Array&lt;string&gt;** | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | (optional) defaults to undefined|
 | **matchTypes** | **Array&lt;MatchType&gt;** | Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
 
 
@@ -175,7 +178,7 @@ const { status, data } = await apiInstance.keywordsGet(
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -271,6 +274,8 @@ let ages: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+
 let includeKeywords: Array<string>; //If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied. (optional) (default to undefined)
 let normalizeAgainstGroup: boolean; //Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword\'s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional) (default to false)
 let limit: number; //The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (optional) (default to 50)
+let includePrediction: boolean; //<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (optional) (default to false)
+let includeDemographics: boolean; //<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional) (default to false)
 
 const { status, data } = await apiInstance.trendingKeywordsList(
     region,
@@ -280,7 +285,9 @@ const { status, data } = await apiInstance.trendingKeywordsList(
     ages,
     includeKeywords,
     normalizeAgainstGroup,
-    limit
+    limit,
+    includePrediction,
+    includeDemographics
 );
 ```
 
@@ -296,6 +303,8 @@ const { status, data } = await apiInstance.trendingKeywordsList(
 | **includeKeywords** | **Array&lt;string&gt;** | If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | (optional) defaults to undefined|
 | **normalizeAgainstGroup** | [**boolean**] | Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword\&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | (optional) defaults to false|
 | **limit** | [**number**] | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | (optional) defaults to 50|
+| **includePrediction** | [**boolean**] | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | (optional) defaults to false|
+| **includeDemographics** | [**boolean**] | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | (optional) defaults to false|
 
 
 ### Return type

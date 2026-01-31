@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,9 +17,9 @@ package openapi
 // UserWebsiteVerifyRequest - User website verification request
 type UserWebsiteVerifyRequest struct {
 
-	Website string `json:"website,omitempty"`
-
 	VerificationMethod string `json:"verification_method,omitempty"`
+
+	Website string `json:"website,omitempty"`
 }
 
 // AssertUserWebsiteVerifyRequestRequired checks if the required fields are not zero-ed

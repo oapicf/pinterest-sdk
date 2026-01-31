@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[Audience]**](Audience.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[Audience]**](Audience.md) |  | 
 
 

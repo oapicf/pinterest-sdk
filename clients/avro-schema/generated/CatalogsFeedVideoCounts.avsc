@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.",
+  "name": "CatalogsFeedVideoCounts",
+  "fields": [
+    {
+      "name": "ingested_videos",
+      "type": ["null", "int"],
+      "doc": "The number of videos successfully ingested from the feed file.",
+      "default": null
+    },
+    {
+      "name": "not_ingested_videos",
+      "type": ["null", "int"],
+      "doc": "The number of videos that were not ingested from the feed file.",
+      "default": null
+    },
+    {
+      "name": "total_videos",
+      "type": ["null", "int"],
+      "doc": "The number of videos in the feed file.",
+      "default": null
+    }
+  ]
+
+}

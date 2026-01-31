@@ -7,15 +7,21 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AdAccountCreateSubscriptionResponse, () {
-    // Subscription ID.
-    // String id
-    test('to test the property `id`', () async {
+    // The Ad Account ID that this lead form belongs to.
+    // String adAccountId
+    test('to test the property `adAccountId`', () async {
       // TODO
     });
 
-    // Base64 encoded key for client to decrypt lead data.
-    // String cryptographicKey
-    test('to test the property `cryptographicKey`', () async {
+    // API version.
+    // String apiVersion
+    test('to test the property `apiVersion`', () async {
+      // TODO
+    });
+
+    // Subscription creation time. Unix timestamp in milliseconds.
+    // int createdTime
+    test('to test the property `createdTime`', () async {
       // TODO
     });
 
@@ -25,9 +31,33 @@ void main() {
       // TODO
     });
 
-    // Subscription creation time. Unix timestamp in milliseconds.
-    // int createdTime
-    test('to test the property `createdTime`', () async {
+    // Base64 encoded key for client to decrypt lead data.
+    // String cryptographicKey
+    test('to test the property `cryptographicKey`', () async {
+      // TODO
+    });
+
+    // Subscription ID.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // Lead form ID.
+    // String leadFormId
+    test('to test the property `leadFormId`', () async {
+      // TODO
+    });
+
+    // User account used to subscribe lead data.
+    // String userAccountId
+    test('to test the property `userAccountId`', () async {
+      // TODO
+    });
+
+    // Standard HTTPS webhook URL.
+    // String webhookUrl
+    test('to test the property `webhookUrl`', () async {
       // TODO
     });
 

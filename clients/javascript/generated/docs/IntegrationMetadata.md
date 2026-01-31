@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**externalBusinessId** | **String** |  | [optional] 
-**connectedMerchantId** | **String** |  | [optional] 
-**connectedUserId** | **String** |  | [optional] [readonly] 
+**additionalId1** | **String** |  | [optional] 
 **connectedAdvertiserId** | **String** |  | [optional] [readonly] 
 **connectedLbaId** | **String** |  | [optional] 
+**connectedMerchantId** | **String** |  | [optional] 
 **connectedTagId** | **String** |  | [optional] 
+**connectedUserId** | **String** |  | [optional] [readonly] 
+**createdTimestamp** | **Number** |  | [optional] 
+**externalBusinessId** | **String** |  | [optional] 
+**id** | **String** |  | [optional] 
 **partnerAccessTokenExpiry** | **Number** |  | [optional] 
+**partnerMetadata** | **String** |  | [optional] 
 **partnerRefreshTokenExpiry** | **Number** |  | [optional] 
 **scopes** | **String** |  | [optional] 
-**createdTimestamp** | **Number** |  | [optional] 
 **updatedTimestamp** | **Number** |  | [optional] 
-**additionalId1** | **String** |  | [optional] 
-**partnerMetadata** | **String** |  | [optional] 
 
 

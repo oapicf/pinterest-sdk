@@ -5,6 +5,17 @@
   "name": "CatalogsProductGroupPricingCurrencyCriteria",
   "fields": [
     {
+      "name": "currency",
+      "type": "model.NonNullableCatalogsCurrency",
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": ["boolean", "null"],
+      "doc": "",
+      "default": false
+    },
+    {
       "name": "operator",
       "type": {
         "type": "enum",
@@ -22,17 +33,6 @@
       "name": "value",
       "type": "double",
       "doc": ""
-    },
-    {
-      "name": "currency",
-      "type": "model.NonNullableCatalogsCurrency",
-      "doc": ""
-    },
-    {
-      "name": "negated",
-      "type": ["boolean", "null"],
-      "doc": "",
-      "default": false
     }
   ]
 

@@ -1,0 +1,33 @@
+-module(openapi_item_response_one_of).
+
+-include("openapi.hrl").
+
+-export([openapi_item_response_one_of/0]).
+
+-export([openapi_item_response_one_of/1]).
+
+-export_type([openapi_item_response_one_of/0]).
+
+-type openapi_item_response_one_of() ::
+  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  | {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
+  | {'item_id', binary() }
+  | {'pins', list(openapi_pin:openapi_pin()) }
+  | {'hotel_id', binary() }
+  | {'creative_assets_id', binary() }
+  ].
+
+
+openapi_item_response_one_of() ->
+    openapi_item_response_one_of([]).
+
+openapi_item_response_one_of(Fields) ->
+  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+            , {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
+            , {'item_id', binary() }
+            , {'pins', list(openapi_pin:openapi_pin()) }
+            , {'hotel_id', binary() }
+            , {'creative_assets_id', binary() }
+            ],
+  lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
+

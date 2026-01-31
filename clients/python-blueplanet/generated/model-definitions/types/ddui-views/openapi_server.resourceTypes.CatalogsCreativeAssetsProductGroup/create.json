@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "catalog_id" },
+      {"model": "catalog_type" },
+      {"model": "created_at" },
+      {"model": "description" },
+      {"model": "filters" },
+      {"model": "id" },
+      {"model": "name" },
+      {"model": "updated_at" },
+    ]
+  }]
+}

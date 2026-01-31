@@ -11,6 +11,8 @@ class CustomerList {
     String adAccountId
     /* Creation time. Unix timestamp in seconds. */
     BigDecimal createdTime
+    /* Customer list errors */
+    Object exceptions
     /* Customer list ID. */
     String id
     /* Customer list name. */
@@ -54,6 +56,4 @@ class CustomerList {
     String type
     /* Last update time. Unix timestamp in seconds. */
     BigDecimal updatedTime
-    /* Customer list errors */
-    Object exceptions
 }

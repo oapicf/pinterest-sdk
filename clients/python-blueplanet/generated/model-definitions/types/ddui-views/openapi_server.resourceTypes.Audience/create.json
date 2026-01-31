@@ -1,0 +1,28 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "audience_type" },
+      {"model": "created_by_company_name" },
+      {"model": "created_timestamp" },
+      {"model": "description" },
+      {"model": "id" },
+      {"model": "name" },
+      {"model": "rule" },
+      {"model": "size" },
+      {"model": "status" },
+      {"model": "type" },
+      {"model": "updated_timestamp" },
+    ]
+  }]
+}

@@ -12,17 +12,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 public class AudienceDefinition   {
   
   private String date;
-  private String type;
   private String scope;
+  private String type;
 
   public AudienceDefinition () {
 
   }
 
-  public AudienceDefinition (String date, String type, String scope) {
+  public AudienceDefinition (String date, String scope, String type) {
     this.date = date;
-    this.type = type;
     this.scope = scope;
+    this.type = type;
   }
 
     
@@ -35,21 +35,21 @@ public class AudienceDefinition   {
   }
 
     
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
-
-    
   @JsonProperty("scope")
   public String getScope() {
     return scope;
   }
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+    
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -63,13 +63,13 @@ public class AudienceDefinition   {
     }
     AudienceDefinition audienceDefinition = (AudienceDefinition) o;
     return Objects.equals(date, audienceDefinition.date) &&
-        Objects.equals(type, audienceDefinition.type) &&
-        Objects.equals(scope, audienceDefinition.scope);
+        Objects.equals(scope, audienceDefinition.scope) &&
+        Objects.equals(type, audienceDefinition.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, type, scope);
+    return Objects.hash(date, scope, type);
   }
 
   @Override
@@ -78,8 +78,8 @@ public class AudienceDefinition   {
     sb.append("class AudienceDefinition {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

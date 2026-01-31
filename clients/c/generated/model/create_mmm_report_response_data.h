@@ -20,19 +20,19 @@ typedef struct create_mmm_report_response_data_t create_mmm_report_response_data
 
 
 typedef struct create_mmm_report_response_data_t {
-    bulk_reporting_job_status_t *report_status; // custom
-    char *token; // string
     char *message; // string
+    bulk_reporting_job_status_t *report_status; // custom
     char *status; // string
+    char *token; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } create_mmm_report_response_data_t;
 
 __attribute__((deprecated)) create_mmm_report_response_data_t *create_mmm_report_response_data_create(
-    bulk_reporting_job_status_t *report_status,
-    char *token,
     char *message,
-    char *status
+    bulk_reporting_job_status_t *report_status,
+    char *status,
+    char *token
 );
 
 void create_mmm_report_response_data_free(create_mmm_report_response_data_t *create_mmm_report_response_data);

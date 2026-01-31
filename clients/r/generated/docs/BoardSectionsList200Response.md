@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[BoardSection]**](BoardSection.md) | Board sections | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[BoardSection]**](BoardSection.md) | Board sections | 
 
 

@@ -3,22 +3,25 @@ package org.openapitools.configuration
 import org.openapitools.model.ActionType
 import org.openapitools.model.AdCountry
 import org.openapitools.model.AdGroupSummaryStatus
+import org.openapitools.model.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.model.AdsAnalyticsAdTargetingType
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.model.AdsAnalyticsFilterColumn
 import org.openapitools.model.AdsAnalyticsFilterOperator
 import org.openapitools.model.AdsAnalyticsTargetingType
 import org.openapitools.model.AdvancedAuctionOperation
+import org.openapitools.model.AgeTrendsBucket
 import org.openapitools.model.AssetGroupType
 import org.openapitools.model.AudienceAccountType
-import org.openapitools.model.AudienceDataParty
 import org.openapitools.model.AudienceInsightType
 import org.openapitools.model.AudienceShareType
-import org.openapitools.model.AudienceSharingType
 import org.openapitools.model.AudienceType
 import org.openapitools.model.AudienceUpdateOperationType
 import org.openapitools.model.BatchOperation
 import org.openapitools.model.BatchOperationStatus
+import org.openapitools.model.BoardPrivacy
+import org.openapitools.model.BoardPrivacyFilter
+import org.openapitools.model.BoardUpdatePrivacy
 import org.openapitools.model.BudgetType
 import org.openapitools.model.BulkEntityType
 import org.openapitools.model.BulkOutputFormat
@@ -31,13 +34,16 @@ import org.openapitools.model.BusinessRoleForMembers
 import org.openapitools.model.CampaignSummaryStatus
 import org.openapitools.model.CatalogsFeedProcessingStatus
 import org.openapitools.model.CatalogsFormat
+import org.openapitools.model.CatalogsHotelProductGroupType
 import org.openapitools.model.CatalogsItemValidationIssue
 import org.openapitools.model.CatalogsLocale
 import org.openapitools.model.CatalogsProductGroupStatus
 import org.openapitools.model.CatalogsProductGroupType
 import org.openapitools.model.CatalogsStatus
 import org.openapitools.model.CatalogsType
+import org.openapitools.model.ContentType
 import org.openapitools.model.ConversionAttributionWindowDays
+import org.openapitools.model.ConversionProductReportingColumn
 import org.openapitools.model.ConversionReportAttributionType
 import org.openapitools.model.ConversionReportTimeType
 import org.openapitools.model.ConversionTagType
@@ -45,23 +51,32 @@ import org.openapitools.model.Country
 import org.openapitools.model.CreativeAssetsVisibilityType
 import org.openapitools.model.CreativeType
 import org.openapitools.model.Currency
+import org.openapitools.model.CustomizableCTAType
 import org.openapitools.model.DataOutputFormat
 import org.openapitools.model.DataStatus
+import org.openapitools.model.DisclosureType
 import org.openapitools.model.EnhancedMatchStatusType
 import org.openapitools.model.EntityStatus
 import org.openapitools.model.Gender
+import org.openapitools.model.GenderBucket
 import org.openapitools.model.GetAudiencesOrderBy
 import org.openapitools.model.GetBusinessAssetTypeResponse
 import org.openapitools.model.Granularity
 import org.openapitools.model.GridClickType
+import org.openapitools.model.IngestionSourceOptions
+import org.openapitools.model.InterestsEnum
 import org.openapitools.model.InviteStatus
 import org.openapitools.model.InviteType
 import org.openapitools.model.ItemProcessingStatus
+import org.openapitools.model.LabelParentType
+import org.openapitools.model.LabelStatus
+import org.openapitools.model.LabelType
 import org.openapitools.model.Language
 import org.openapitools.model.LeadFormQuestionFieldType
 import org.openapitools.model.LeadFormQuestionType
 import org.openapitools.model.LeadFormStatus
 import org.openapitools.model.LeadsExportStatus
+import org.openapitools.model.LookbackPeriodOptions
 import org.openapitools.model.MMMReportingColumn
 import org.openapitools.model.MMMReportingTargetingType
 import org.openapitools.model.MatchType
@@ -71,6 +86,7 @@ import org.openapitools.model.MediaUploadStatus
 import org.openapitools.model.MediaUploadType
 import org.openapitools.model.MemberBusinessRole
 import org.openapitools.model.MetricsReportingLevel
+import org.openapitools.model.NonDraftEntityStatus
 import org.openapitools.model.NonNullableCatalogsCurrency
 import org.openapitools.model.NonNullableProductAvailabilityType
 import org.openapitools.model.NullableCatalogsItemFieldType
@@ -79,18 +95,29 @@ import org.openapitools.model.ObjectiveType
 import org.openapitools.model.OperationType
 import org.openapitools.model.OrderLinePaidType
 import org.openapitools.model.OrderLineStatus
+import org.openapitools.model.OverallStatusOptions
 import org.openapitools.model.PacingDeliveryType
 import org.openapitools.model.PartnerType
 import org.openapitools.model.Permissions
 import org.openapitools.model.PermissionsWithOwner
 import org.openapitools.model.PinPromotionSummaryStatus
+import org.openapitools.model.PinterestLibPaginationOrder
 import org.openapitools.model.PlacementGroupType
 import org.openapitools.model.ProductAvailabilityType
+import org.openapitools.model.ProductCategoriesEngagementType
+import org.openapitools.model.ProductCategoryDetailLookbackWindow
+import org.openapitools.model.ProductCategoryEnum
+import org.openapitools.model.ProductCategoryRegion
 import org.openapitools.model.ProductGroupSummaryStatus
+import org.openapitools.model.PromotionType
 import org.openapitools.model.ReportingColumnAsync
+import org.openapitools.model.ReportingTimeZone
 import org.openapitools.model.Role
+import org.openapitools.model.SourcePlatformOptions
 import org.openapitools.model.TargetingAdvertiserCountry
+import org.openapitools.model.TargetingSpecAgeBucket
 import org.openapitools.model.TargetingSpecAppType
+import org.openapitools.model.TargetingSpecGender
 import org.openapitools.model.TrendType
 import org.openapitools.model.TrendsSupportedRegion
 import org.openapitools.model.UpdateMaskBidOptionField
@@ -98,6 +125,7 @@ import org.openapitools.model.UpdateMaskFieldType
 import org.openapitools.model.UserFollowingFeedType
 import org.openapitools.model.UserListOperationType
 import org.openapitools.model.UserListType
+import org.openapitools.model.VerticalProductCategory
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -129,6 +157,12 @@ class EnumConverterConfiguration {
     fun adGroupSummaryStatusConverter(): Converter<kotlin.String, AdGroupSummaryStatus> {
         return object: Converter<kotlin.String, AdGroupSummaryStatus> {
             override fun convert(source: kotlin.String): AdGroupSummaryStatus = AdGroupSummaryStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.adsAnalyticsAdGroupTargetingTypeConverter"])
+    fun adsAnalyticsAdGroupTargetingTypeConverter(): Converter<kotlin.String, AdsAnalyticsAdGroupTargetingType> {
+        return object: Converter<kotlin.String, AdsAnalyticsAdGroupTargetingType> {
+            override fun convert(source: kotlin.String): AdsAnalyticsAdGroupTargetingType = AdsAnalyticsAdGroupTargetingType.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.adsAnalyticsAdTargetingTypeConverter"])
@@ -167,6 +201,12 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): AdvancedAuctionOperation = AdvancedAuctionOperation.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.ageTrendsBucketConverter"])
+    fun ageTrendsBucketConverter(): Converter<kotlin.String, AgeTrendsBucket> {
+        return object: Converter<kotlin.String, AgeTrendsBucket> {
+            override fun convert(source: kotlin.String): AgeTrendsBucket = AgeTrendsBucket.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.assetGroupTypeConverter"])
     fun assetGroupTypeConverter(): Converter<kotlin.String, AssetGroupType> {
         return object: Converter<kotlin.String, AssetGroupType> {
@@ -179,12 +219,6 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): AudienceAccountType = AudienceAccountType.forValue(source)
         }
     }
-    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.audienceDataPartyConverter"])
-    fun audienceDataPartyConverter(): Converter<kotlin.String, AudienceDataParty> {
-        return object: Converter<kotlin.String, AudienceDataParty> {
-            override fun convert(source: kotlin.String): AudienceDataParty = AudienceDataParty.forValue(source)
-        }
-    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.audienceInsightTypeConverter"])
     fun audienceInsightTypeConverter(): Converter<kotlin.String, AudienceInsightType> {
         return object: Converter<kotlin.String, AudienceInsightType> {
@@ -195,12 +229,6 @@ class EnumConverterConfiguration {
     fun audienceShareTypeConverter(): Converter<kotlin.String, AudienceShareType> {
         return object: Converter<kotlin.String, AudienceShareType> {
             override fun convert(source: kotlin.String): AudienceShareType = AudienceShareType.forValue(source)
-        }
-    }
-    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.audienceSharingTypeConverter"])
-    fun audienceSharingTypeConverter(): Converter<kotlin.String, AudienceSharingType> {
-        return object: Converter<kotlin.String, AudienceSharingType> {
-            override fun convert(source: kotlin.String): AudienceSharingType = AudienceSharingType.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.audienceTypeConverter"])
@@ -225,6 +253,24 @@ class EnumConverterConfiguration {
     fun batchOperationStatusConverter(): Converter<kotlin.String, BatchOperationStatus> {
         return object: Converter<kotlin.String, BatchOperationStatus> {
             override fun convert(source: kotlin.String): BatchOperationStatus = BatchOperationStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.boardPrivacyConverter"])
+    fun boardPrivacyConverter(): Converter<kotlin.String, BoardPrivacy> {
+        return object: Converter<kotlin.String, BoardPrivacy> {
+            override fun convert(source: kotlin.String): BoardPrivacy = BoardPrivacy.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.boardPrivacyFilterConverter"])
+    fun boardPrivacyFilterConverter(): Converter<kotlin.String, BoardPrivacyFilter> {
+        return object: Converter<kotlin.String, BoardPrivacyFilter> {
+            override fun convert(source: kotlin.String): BoardPrivacyFilter = BoardPrivacyFilter.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.boardUpdatePrivacyConverter"])
+    fun boardUpdatePrivacyConverter(): Converter<kotlin.String, BoardUpdatePrivacy> {
+        return object: Converter<kotlin.String, BoardUpdatePrivacy> {
+            override fun convert(source: kotlin.String): BoardUpdatePrivacy = BoardUpdatePrivacy.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.budgetTypeConverter"])
@@ -299,6 +345,12 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): CatalogsFormat = CatalogsFormat.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.catalogsHotelProductGroupTypeConverter"])
+    fun catalogsHotelProductGroupTypeConverter(): Converter<kotlin.String, CatalogsHotelProductGroupType> {
+        return object: Converter<kotlin.String, CatalogsHotelProductGroupType> {
+            override fun convert(source: kotlin.String): CatalogsHotelProductGroupType = CatalogsHotelProductGroupType.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.catalogsItemValidationIssueConverter"])
     fun catalogsItemValidationIssueConverter(): Converter<kotlin.String, CatalogsItemValidationIssue> {
         return object: Converter<kotlin.String, CatalogsItemValidationIssue> {
@@ -335,10 +387,22 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): CatalogsType = CatalogsType.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.contentTypeConverter"])
+    fun contentTypeConverter(): Converter<kotlin.String, ContentType> {
+        return object: Converter<kotlin.String, ContentType> {
+            override fun convert(source: kotlin.String): ContentType = ContentType.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.conversionAttributionWindowDaysConverter"])
     fun conversionAttributionWindowDaysConverter(): Converter<kotlin.Int, ConversionAttributionWindowDays> {
         return object: Converter<kotlin.Int, ConversionAttributionWindowDays> {
             override fun convert(source: kotlin.Int): ConversionAttributionWindowDays = ConversionAttributionWindowDays.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.conversionProductReportingColumnConverter"])
+    fun conversionProductReportingColumnConverter(): Converter<kotlin.String, ConversionProductReportingColumn> {
+        return object: Converter<kotlin.String, ConversionProductReportingColumn> {
+            override fun convert(source: kotlin.String): ConversionProductReportingColumn = ConversionProductReportingColumn.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.conversionReportAttributionTypeConverter"])
@@ -383,6 +447,12 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): Currency = Currency.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.customizableCTATypeConverter"])
+    fun customizableCTATypeConverter(): Converter<kotlin.String, CustomizableCTAType> {
+        return object: Converter<kotlin.String, CustomizableCTAType> {
+            override fun convert(source: kotlin.String): CustomizableCTAType = CustomizableCTAType.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.dataOutputFormatConverter"])
     fun dataOutputFormatConverter(): Converter<kotlin.String, DataOutputFormat> {
         return object: Converter<kotlin.String, DataOutputFormat> {
@@ -393,6 +463,12 @@ class EnumConverterConfiguration {
     fun dataStatusConverter(): Converter<kotlin.String, DataStatus> {
         return object: Converter<kotlin.String, DataStatus> {
             override fun convert(source: kotlin.String): DataStatus = DataStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.disclosureTypeConverter"])
+    fun disclosureTypeConverter(): Converter<kotlin.String, DisclosureType> {
+        return object: Converter<kotlin.String, DisclosureType> {
+            override fun convert(source: kotlin.String): DisclosureType = DisclosureType.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.enhancedMatchStatusTypeConverter"])
@@ -411,6 +487,12 @@ class EnumConverterConfiguration {
     fun genderConverter(): Converter<kotlin.String, Gender> {
         return object: Converter<kotlin.String, Gender> {
             override fun convert(source: kotlin.String): Gender = Gender.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.genderBucketConverter"])
+    fun genderBucketConverter(): Converter<kotlin.String, GenderBucket> {
+        return object: Converter<kotlin.String, GenderBucket> {
+            override fun convert(source: kotlin.String): GenderBucket = GenderBucket.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.getAudiencesOrderByConverter"])
@@ -437,6 +519,18 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): GridClickType = GridClickType.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.ingestionSourceOptionsConverter"])
+    fun ingestionSourceOptionsConverter(): Converter<kotlin.String, IngestionSourceOptions> {
+        return object: Converter<kotlin.String, IngestionSourceOptions> {
+            override fun convert(source: kotlin.String): IngestionSourceOptions = IngestionSourceOptions.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.interestsEnumConverter"])
+    fun interestsEnumConverter(): Converter<kotlin.String, InterestsEnum> {
+        return object: Converter<kotlin.String, InterestsEnum> {
+            override fun convert(source: kotlin.String): InterestsEnum = InterestsEnum.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.inviteStatusConverter"])
     fun inviteStatusConverter(): Converter<kotlin.String, InviteStatus> {
         return object: Converter<kotlin.String, InviteStatus> {
@@ -453,6 +547,24 @@ class EnumConverterConfiguration {
     fun itemProcessingStatusConverter(): Converter<kotlin.String, ItemProcessingStatus> {
         return object: Converter<kotlin.String, ItemProcessingStatus> {
             override fun convert(source: kotlin.String): ItemProcessingStatus = ItemProcessingStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.labelParentTypeConverter"])
+    fun labelParentTypeConverter(): Converter<kotlin.String, LabelParentType> {
+        return object: Converter<kotlin.String, LabelParentType> {
+            override fun convert(source: kotlin.String): LabelParentType = LabelParentType.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.labelStatusConverter"])
+    fun labelStatusConverter(): Converter<kotlin.String, LabelStatus> {
+        return object: Converter<kotlin.String, LabelStatus> {
+            override fun convert(source: kotlin.String): LabelStatus = LabelStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.labelTypeConverter"])
+    fun labelTypeConverter(): Converter<kotlin.String, LabelType> {
+        return object: Converter<kotlin.String, LabelType> {
+            override fun convert(source: kotlin.String): LabelType = LabelType.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.languageConverter"])
@@ -483,6 +595,12 @@ class EnumConverterConfiguration {
     fun leadsExportStatusConverter(): Converter<kotlin.String, LeadsExportStatus> {
         return object: Converter<kotlin.String, LeadsExportStatus> {
             override fun convert(source: kotlin.String): LeadsExportStatus = LeadsExportStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.lookbackPeriodOptionsConverter"])
+    fun lookbackPeriodOptionsConverter(): Converter<kotlin.String, LookbackPeriodOptions> {
+        return object: Converter<kotlin.String, LookbackPeriodOptions> {
+            override fun convert(source: kotlin.String): LookbackPeriodOptions = LookbackPeriodOptions.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.mmMReportingColumnConverter"])
@@ -539,6 +657,12 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): MetricsReportingLevel = MetricsReportingLevel.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.nonDraftEntityStatusConverter"])
+    fun nonDraftEntityStatusConverter(): Converter<kotlin.String, NonDraftEntityStatus> {
+        return object: Converter<kotlin.String, NonDraftEntityStatus> {
+            override fun convert(source: kotlin.String): NonDraftEntityStatus = NonDraftEntityStatus.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.nonNullableCatalogsCurrencyConverter"])
     fun nonNullableCatalogsCurrencyConverter(): Converter<kotlin.String, NonNullableCatalogsCurrency> {
         return object: Converter<kotlin.String, NonNullableCatalogsCurrency> {
@@ -587,6 +711,12 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): OrderLineStatus = OrderLineStatus.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.overallStatusOptionsConverter"])
+    fun overallStatusOptionsConverter(): Converter<kotlin.String, OverallStatusOptions> {
+        return object: Converter<kotlin.String, OverallStatusOptions> {
+            override fun convert(source: kotlin.String): OverallStatusOptions = OverallStatusOptions.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.pacingDeliveryTypeConverter"])
     fun pacingDeliveryTypeConverter(): Converter<kotlin.String, PacingDeliveryType> {
         return object: Converter<kotlin.String, PacingDeliveryType> {
@@ -617,6 +747,12 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): PinPromotionSummaryStatus = PinPromotionSummaryStatus.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.pinterestLibPaginationOrderConverter"])
+    fun pinterestLibPaginationOrderConverter(): Converter<kotlin.String, PinterestLibPaginationOrder> {
+        return object: Converter<kotlin.String, PinterestLibPaginationOrder> {
+            override fun convert(source: kotlin.String): PinterestLibPaginationOrder = PinterestLibPaginationOrder.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.placementGroupTypeConverter"])
     fun placementGroupTypeConverter(): Converter<kotlin.String, PlacementGroupType> {
         return object: Converter<kotlin.String, PlacementGroupType> {
@@ -629,10 +765,40 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): ProductAvailabilityType = ProductAvailabilityType.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.productCategoriesEngagementTypeConverter"])
+    fun productCategoriesEngagementTypeConverter(): Converter<kotlin.String, ProductCategoriesEngagementType> {
+        return object: Converter<kotlin.String, ProductCategoriesEngagementType> {
+            override fun convert(source: kotlin.String): ProductCategoriesEngagementType = ProductCategoriesEngagementType.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.productCategoryDetailLookbackWindowConverter"])
+    fun productCategoryDetailLookbackWindowConverter(): Converter<java.math.BigDecimal, ProductCategoryDetailLookbackWindow> {
+        return object: Converter<java.math.BigDecimal, ProductCategoryDetailLookbackWindow> {
+            override fun convert(source: java.math.BigDecimal): ProductCategoryDetailLookbackWindow = ProductCategoryDetailLookbackWindow.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.productCategoryEnumConverter"])
+    fun productCategoryEnumConverter(): Converter<kotlin.String, ProductCategoryEnum> {
+        return object: Converter<kotlin.String, ProductCategoryEnum> {
+            override fun convert(source: kotlin.String): ProductCategoryEnum = ProductCategoryEnum.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.productCategoryRegionConverter"])
+    fun productCategoryRegionConverter(): Converter<kotlin.String, ProductCategoryRegion> {
+        return object: Converter<kotlin.String, ProductCategoryRegion> {
+            override fun convert(source: kotlin.String): ProductCategoryRegion = ProductCategoryRegion.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.productGroupSummaryStatusConverter"])
     fun productGroupSummaryStatusConverter(): Converter<kotlin.String, ProductGroupSummaryStatus> {
         return object: Converter<kotlin.String, ProductGroupSummaryStatus> {
             override fun convert(source: kotlin.String): ProductGroupSummaryStatus = ProductGroupSummaryStatus.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.promotionTypeConverter"])
+    fun promotionTypeConverter(): Converter<kotlin.String, PromotionType> {
+        return object: Converter<kotlin.String, PromotionType> {
+            override fun convert(source: kotlin.String): PromotionType = PromotionType.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.reportingColumnAsyncConverter"])
@@ -641,10 +807,22 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): ReportingColumnAsync = ReportingColumnAsync.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.reportingTimeZoneConverter"])
+    fun reportingTimeZoneConverter(): Converter<kotlin.String, ReportingTimeZone> {
+        return object: Converter<kotlin.String, ReportingTimeZone> {
+            override fun convert(source: kotlin.String): ReportingTimeZone = ReportingTimeZone.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.roleConverter"])
     fun roleConverter(): Converter<kotlin.String, Role> {
         return object: Converter<kotlin.String, Role> {
             override fun convert(source: kotlin.String): Role = Role.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.sourcePlatformOptionsConverter"])
+    fun sourcePlatformOptionsConverter(): Converter<kotlin.String, SourcePlatformOptions> {
+        return object: Converter<kotlin.String, SourcePlatformOptions> {
+            override fun convert(source: kotlin.String): SourcePlatformOptions = SourcePlatformOptions.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.targetingAdvertiserCountryConverter"])
@@ -653,10 +831,22 @@ class EnumConverterConfiguration {
             override fun convert(source: kotlin.String): TargetingAdvertiserCountry = TargetingAdvertiserCountry.forValue(source)
         }
     }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.targetingSpecAgeBucketConverter"])
+    fun targetingSpecAgeBucketConverter(): Converter<kotlin.String, TargetingSpecAgeBucket> {
+        return object: Converter<kotlin.String, TargetingSpecAgeBucket> {
+            override fun convert(source: kotlin.String): TargetingSpecAgeBucket = TargetingSpecAgeBucket.forValue(source)
+        }
+    }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.targetingSpecAppTypeConverter"])
     fun targetingSpecAppTypeConverter(): Converter<kotlin.String, TargetingSpecAppType> {
         return object: Converter<kotlin.String, TargetingSpecAppType> {
             override fun convert(source: kotlin.String): TargetingSpecAppType = TargetingSpecAppType.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.targetingSpecGenderConverter"])
+    fun targetingSpecGenderConverter(): Converter<kotlin.String, TargetingSpecGender> {
+        return object: Converter<kotlin.String, TargetingSpecGender> {
+            override fun convert(source: kotlin.String): TargetingSpecGender = TargetingSpecGender.forValue(source)
         }
     }
     @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.trendTypeConverter"])
@@ -699,6 +889,12 @@ class EnumConverterConfiguration {
     fun userListTypeConverter(): Converter<kotlin.String, UserListType> {
         return object: Converter<kotlin.String, UserListType> {
             override fun convert(source: kotlin.String): UserListType = UserListType.forValue(source)
+        }
+    }
+    @Bean(name = ["org.openapitools.configuration.EnumConverterConfiguration.verticalProductCategoryConverter"])
+    fun verticalProductCategoryConverter(): Converter<kotlin.String, VerticalProductCategory> {
+        return object: Converter<kotlin.String, VerticalProductCategory> {
+            override fun convert(source: kotlin.String): VerticalProductCategory = VerticalProductCategory.forValue(source)
         }
     }
 

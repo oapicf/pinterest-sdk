@@ -1,5 +1,6 @@
 package controllers;
 
+import apimodels.AdPinAnalytics;
 import apimodels.AdsAnalyticsCampaignTargetingType;
 import apimodels.CampaignCreateRequest;
 import apimodels.CampaignCreateResponse;
@@ -13,6 +14,7 @@ import apimodels.Error;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.MetricsResponse;
+import apimodels.ReportingTimeZone;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -36,7 +38,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignsApiController extends Controller {
     private final CampaignsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -47,6 +49,91 @@ public class CampaignsApiController extends Controller {
         this.imp = imp;
         mapper = new ObjectMapper();
         this.configuration = configuration;
+    }
+
+    @ApiAction
+    public Result adPinsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuecampaignId = request.getQueryString("campaign_id");
+        String campaignId;
+        if (valuecampaignId != null) {
+            campaignId = valuecampaignId;
+        } else {
+            throw new IllegalArgumentException("'campaign_id' parameter is required");
+        }
+        String[] pinIdsArray = request.queryString().get("pin_ids");
+        if (pinIdsArray == null) {
+            throw new IllegalArgumentException("'pin_ids' parameter is required");
+        }
+        List<String> pinIdsList = OpenAPIUtils.parametersToList("multi", pinIdsArray);
+        List<@Pattern(regexp = "^\\d+$")String> pinIds = new ArrayList<>();
+        for (String curParam : pinIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                pinIds.add(curParam);
+            }
+        }
+        String valuestartDate = request.getQueryString("start_date");
+        LocalDate startDate;
+        if (valuestartDate != null) {
+            startDate = LocalDate.parse(valuestartDate);
+        } else {
+            throw new IllegalArgumentException("'start_date' parameter is required");
+        }
+        String valueendDate = request.getQueryString("end_date");
+        LocalDate endDate;
+        if (valueendDate != null) {
+            endDate = LocalDate.parse(valueendDate);
+        } else {
+            throw new IllegalArgumentException("'end_date' parameter is required");
+        }
+        String[] columnsArray = request.queryString().get("columns");
+        if (columnsArray == null) {
+            throw new IllegalArgumentException("'columns' parameter is required");
+        }
+        List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
+        List<String> columns = new ArrayList<>();
+        for (String curParam : columnsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                columns.add(curParam);
+            }
+        }
+        String valuegranularity = request.getQueryString("granularity");
+        Granularity granularity;
+        if (valuegranularity != null) {
+            granularity = valuegranularity;
+        } else {
+            throw new IllegalArgumentException("'granularity' parameter is required");
+        }
+        String valueclickWindowDays = request.getQueryString("click_window_days");
+        Integer clickWindowDays;
+        if (valueclickWindowDays != null) {
+            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+        } else {
+            clickWindowDays = 30;
+        }
+        String valueengagementWindowDays = request.getQueryString("engagement_window_days");
+        Integer engagementWindowDays;
+        if (valueengagementWindowDays != null) {
+            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+        } else {
+            engagementWindowDays = 30;
+        }
+        String valueviewWindowDays = request.getQueryString("view_window_days");
+        Integer viewWindowDays;
+        if (valueviewWindowDays != null) {
+            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+        } else {
+            viewWindowDays = 1;
+        }
+        String valueconversionReportTime = request.getQueryString("conversion_report_time");
+        String conversionReportTime;
+        if (valueconversionReportTime != null) {
+            conversionReportTime = valueconversionReportTime;
+        } else {
+            conversionReportTime = "TIME_OF_AD_ACTION";
+        }
+        return imp.adPinsAnalyticsHttp(request, adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
     }
 
     @ApiAction
@@ -136,14 +223,23 @@ public class CampaignsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        String valueattributionTypes = request.getQueryString("attribution_types");
-        ConversionReportAttributionType attributionTypes;
-        if (valueattributionTypes != null) {
-            attributionTypes = valueattributionTypes;
-        } else {
-            attributionTypes = null;
+        String[] attributionTypesArray = request.queryString().get("attribution_types");
+        List<String> attributionTypesList = OpenAPIUtils.parametersToList("csv", attributionTypesArray);
+        List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+        for (String curParam : attributionTypesList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                attributionTypes.add(curParam);
+            }
         }
-        return imp.campaignTargetingAnalyticsGetHttp(request, adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes);
+        String valuereportingTimezone = request.getQueryString("reporting_timezone");
+        ReportingTimeZone reportingTimezone;
+        if (valuereportingTimezone != null) {
+            reportingTimezone = valuereportingTimezone;
+        } else {
+            reportingTimezone = null;
+        }
+        return imp.campaignTargetingAnalyticsGetHttp(request, adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone);
     }
 
     @ApiAction
@@ -221,7 +317,21 @@ public class CampaignsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        return imp.campaignsAnalyticsHttp(request, adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
+        String valueaggregateReportRows = request.getQueryString("aggregate_report_rows");
+        Boolean aggregateReportRows;
+        if (valueaggregateReportRows != null) {
+            aggregateReportRows = Boolean.valueOf(valueaggregateReportRows);
+        } else {
+            aggregateReportRows = false;
+        }
+        String valuereportingTimezone = request.getQueryString("reporting_timezone");
+        ReportingTimeZone reportingTimezone;
+        if (valuereportingTimezone != null) {
+            reportingTimezone = valuereportingTimezone;
+        } else {
+            reportingTimezone = null;
+        }
+        return imp.campaignsAnalyticsHttp(request, adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone);
     }
 
     @ApiAction

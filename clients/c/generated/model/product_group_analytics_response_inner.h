@@ -20,15 +20,15 @@ typedef struct product_group_analytics_response_inner_t product_group_analytics_
 
 
 typedef struct product_group_analytics_response_inner_t {
-    char *product_group_id; // string
     char *date; //date
+    char *product_group_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } product_group_analytics_response_inner_t;
 
 __attribute__((deprecated)) product_group_analytics_response_inner_t *product_group_analytics_response_inner_create(
-    char *product_group_id,
-    char *date
+    char *date,
+    char *product_group_id
 );
 
 void product_group_analytics_response_inner_free(product_group_analytics_response_inner_t *product_group_analytics_response_inner);

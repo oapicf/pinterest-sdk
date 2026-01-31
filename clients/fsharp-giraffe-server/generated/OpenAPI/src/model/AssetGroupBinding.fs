@@ -12,15 +12,16 @@ module AssetGroupBinding =
 
 
   type AssetGroupBinding = {
-    Id : string;
-    AssetGroupName : string option;
-    AssetGroupDescription : string option;
-    AssetGroupTypes : string[];
     AdAccountsIds : string[];
-    ProfilesIds : string[];
-    CreatedTime : int option;
-    UpdatedTime : int option;
-    Owner : BusinessAccessUserSummary;
+    AssetGroupDescription : string option;
+    AssetGroupName : string option;
+    AssetGroupTypes : string[];
+    CatalogsIds : string[];
     CreatedBy : BusinessAccessUserSummary;
+    CreatedTime : int option;
+    Id : string;
+    Owner : BusinessAccessUserSummary;
+    ProfilesIds : string[];
+    UpdatedTime : int option;
   }
   //#endregion

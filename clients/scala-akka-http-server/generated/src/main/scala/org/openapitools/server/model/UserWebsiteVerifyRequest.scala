@@ -6,11 +6,11 @@ package org.openapitools.server.model
  *
  * User website verification request
  *
- * @param website  for example: ''pintest-website-12345678.test/test_1''
  * @param verificationMethod  for example: ''null''
+ * @param website  for example: ''pintest-website-12345678.test/test_1''
 */
 final case class UserWebsiteVerifyRequest (
-  website: Option[String] = None,
-  verificationMethod: Option[String] = None
+  verificationMethod: Option[String] = None,
+  website: Option[String] = None
 )
 

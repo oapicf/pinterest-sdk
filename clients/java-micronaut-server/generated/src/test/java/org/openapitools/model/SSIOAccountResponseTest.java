@@ -25,11 +25,11 @@ public class SSIOAccountResponseTest {
     }
 
     /**
-     * Test the property 'eligible'
+     * Test the property 'billtoInfos'
      */
     @Test
-    public void eligibleTest() {
-        // TODO: test eligible
+    public void billtoInfosTest() {
+        // TODO: test billtoInfos
     }
 
     /**
@@ -41,14 +41,6 @@ public class SSIOAccountResponseTest {
     }
 
     /**
-     * Test the property 'billtoInfos'
-     */
-    @Test
-    public void billtoInfosTest() {
-        // TODO: test billtoInfos
-    }
-
-    /**
      * Test the property 'currency'
      */
     @Test
@@ -57,11 +49,11 @@ public class SSIOAccountResponseTest {
     }
 
     /**
-     * Test the property 'pmpNames'
+     * Test the property 'eligible'
      */
     @Test
-    public void pmpNamesTest() {
-        // TODO: test pmpNames
+    public void eligibleTest() {
+        // TODO: test eligible
     }
 
     /**
@@ -70,6 +62,14 @@ public class SSIOAccountResponseTest {
     @Test
     public void errorTest() {
         // TODO: test error
+    }
+
+    /**
+     * Test the property 'pmpNames'
+     */
+    @Test
+    public void pmpNamesTest() {
+        // TODO: test pmpNames
     }
 
 }

@@ -31,7 +31,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadsExportCreateRequest := *openapiclient.NewLeadsExportCreateRequest("2020-12-20", "2020-12-20", "687201361754") // LeadsExportCreateRequest | 
+	leadsExportCreateRequest := *openapiclient.NewLeadsExportCreateRequest("687201361754", "2020-12-20", "2020-12-20") // LeadsExportCreateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

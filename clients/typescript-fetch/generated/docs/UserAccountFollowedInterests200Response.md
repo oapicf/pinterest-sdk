@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;Interest&gt;](Interest.md)
 `bookmark` | string
+`items` | [Array&lt;Interest&gt;](Interest.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { UserAccountFollowedInterests200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies UserAccountFollowedInterests200Response
 
 console.log(example)

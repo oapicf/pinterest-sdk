@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import UserWebsiteVerifyRequest._
 
 case class UserWebsiteVerifyRequest (
-  website: Option[String],
-verificationMethod: Option[VerificationMethod])
+  verificationMethod: Option[VerificationMethod],
+website: Option[String])
 
 object UserWebsiteVerifyRequest {
   import DateTimeCodecs._

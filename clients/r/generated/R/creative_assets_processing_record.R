@@ -9,8 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field creative_assets_id The catalog creative assets id in the merchant namespace character [optional]
 #' @field errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. list(\link{ItemValidationEvent}) [optional]
-#' @field warnings Array with the validation warnings for the item processing record list(\link{ItemValidationEvent}) [optional]
 #' @field status  \link{ItemProcessingStatus} [optional]
+#' @field warnings Array with the validation warnings for the item processing record list(\link{ItemValidationEvent}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,18 +19,18 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
   public = list(
     `creative_assets_id` = NULL,
     `errors` = NULL,
-    `warnings` = NULL,
     `status` = NULL,
+    `warnings` = NULL,
 
     #' @description
     #' Initialize a new CreativeAssetsProcessingRecord class.
     #'
     #' @param creative_assets_id The catalog creative assets id in the merchant namespace
     #' @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-    #' @param warnings Array with the validation warnings for the item processing record
     #' @param status status
+    #' @param warnings Array with the validation warnings for the item processing record
     #' @param ... Other optional arguments.
-    initialize = function(`creative_assets_id` = NULL, `errors` = NULL, `warnings` = NULL, `status` = NULL, ...) {
+    initialize = function(`creative_assets_id` = NULL, `errors` = NULL, `status` = NULL, `warnings` = NULL, ...) {
       if (!is.null(`creative_assets_id`)) {
         if (!(is.character(`creative_assets_id`) && length(`creative_assets_id`) == 1)) {
           stop(paste("Error! Invalid data for `creative_assets_id`. Must be a string:", `creative_assets_id`))
@@ -42,17 +42,17 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
         sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
         self$`errors` <- `errors`
       }
-      if (!is.null(`warnings`)) {
-        stopifnot(is.vector(`warnings`), length(`warnings`) != 0)
-        sapply(`warnings`, function(x) stopifnot(R6::is.R6(x)))
-        self$`warnings` <- `warnings`
-      }
       if (!is.null(`status`)) {
         if (!(`status` %in% c())) {
           stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
+      }
+      if (!is.null(`warnings`)) {
+        stopifnot(is.vector(`warnings`), length(`warnings`) != 0)
+        sapply(`warnings`, function(x) stopifnot(R6::is.R6(x)))
+        self$`warnings` <- `warnings`
       }
     },
 
@@ -95,13 +95,13 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
         CreativeAssetsProcessingRecordObject[["errors"]] <-
           lapply(self$`errors`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`warnings`)) {
-        CreativeAssetsProcessingRecordObject[["warnings"]] <-
-          lapply(self$`warnings`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`status`)) {
         CreativeAssetsProcessingRecordObject[["status"]] <-
           self$`status`$toSimpleType()
+      }
+      if (!is.null(self$`warnings`)) {
+        CreativeAssetsProcessingRecordObject[["warnings"]] <-
+          lapply(self$`warnings`, function(x) x$toSimpleType())
       }
       return(CreativeAssetsProcessingRecordObject)
     },
@@ -119,13 +119,13 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
       if (!is.null(this_object$`errors`)) {
         self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`warnings`)) {
-        self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`status`)) {
         `status_object` <- ItemProcessingStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
+      }
+      if (!is.null(this_object$`warnings`)) {
+        self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       }
       self
     },
@@ -150,8 +150,8 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`creative_assets_id` <- this_object$`creative_assets_id`
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
-      self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       self$`status` <- ItemProcessingStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       self
     },
 

@@ -7,19 +7,20 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(PinMediaSourceImagesBase64, () {
-    // String sourceType
-    test('to test the property `sourceType`', () async {
+    // int index
+    test('to test the property `index`', () async {
       // TODO
     });
 
     // Array with image objects.
-    // BuiltList<PinMediaSourceImagesBase64ItemsInner> items
+    // BuiltList<PinMediaSourceImagesBase64Item> items
     test('to test the property `items`', () async {
       // TODO
     });
 
-    // int index
-    test('to test the property `index`', () async {
+    // The source type of the media.
+    // String sourceType
+    test('to test the property `sourceType`', () async {
       // TODO
     });
 

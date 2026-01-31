@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardPrivacy"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardPrivacy"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BoardPrivacy {
+    title = BoardPrivacy
+    description = BoardPrivacy
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardPrivacy {
+    title = BoardPrivacy
+    description = BoardPrivacy
+    implements = openapi_server.resourceTypes.BoardPrivacy
+
+  }
+}

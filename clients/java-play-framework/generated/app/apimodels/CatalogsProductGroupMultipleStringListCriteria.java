@@ -12,18 +12,35 @@ import javax.validation.Valid;
 /**
  * CatalogsProductGroupMultipleStringListCriteria
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupMultipleStringListCriteria   {
+  @JsonProperty("negated")
+  
+  private Boolean negated = false;
+
   @JsonProperty("values")
   @NotNull
 @Valid
 
   private List<List<String>> values = new ArrayList<>();
 
-  @JsonProperty("negated")
-  
-  private Boolean negated = false;
+  public CatalogsProductGroupMultipleStringListCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+   /**
+   * Get negated
+   * @return negated
+  **/
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
 
   public CatalogsProductGroupMultipleStringListCriteria values(List<List<String>> values) {
     this.values = values;
@@ -50,23 +67,6 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
     this.values = values;
   }
 
-  public CatalogsProductGroupMultipleStringListCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-   /**
-   * Get negated
-   * @return negated
-  **/
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -77,13 +77,13 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleStringListCriteria catalogsProductGroupMultipleStringListCriteria = (CatalogsProductGroupMultipleStringListCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleStringListCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleStringListCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleStringListCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleStringListCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -92,8 +92,8 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleStringListCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

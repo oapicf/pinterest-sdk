@@ -7,7 +7,6 @@
 
 (def keyword-metrics-data
   {
-   (ds/opt :avg_cpc_in_micro_currency) float?
    (ds/opt :keyword_query_volume) string?
    })
 

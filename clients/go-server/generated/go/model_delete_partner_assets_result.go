@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,17 +20,17 @@ type DeletePartnerAssetsResult struct {
 	// Unique identifier of a business asset.
 	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	// Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	AssetType string `json:"asset_type,omitempty"`
-
-	// Permission levels member or partner has on an asset.
-	Permissions []string `json:"permissions,omitempty"`
 
 	// If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
 	IsSharedPartner bool `json:"is_shared_partner,omitempty"`
 
 	// Unique identifier of a business partner.
 	PartnerId string `json:"partner_id,omitempty" validate:"regexp=^\\\\d+$"`
+
+	// Permission levels member or partner has on an asset.
+	Permissions []string `json:"permissions,omitempty"`
 }
 
 // AssertDeletePartnerAssetsResultRequired checks if the required fields are not zero-ed

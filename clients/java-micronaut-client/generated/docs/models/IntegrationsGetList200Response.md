@@ -8,8 +8,8 @@ The class is defined in **[IntegrationsGetList200Response.java](../../src/main/j
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;IntegrationRecord&gt;`](IntegrationRecord.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;IntegrationRecord&gt;`](IntegrationRecord.md) |  | 
 
 
 

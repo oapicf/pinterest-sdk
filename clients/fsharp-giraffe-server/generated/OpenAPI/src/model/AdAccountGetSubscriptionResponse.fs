@@ -12,12 +12,12 @@ module AdAccountGetSubscriptionResponse =
   type AdAccountGetSubscriptionResponse = {
     LeadFormId : string option;
     WebhookUrl : string;
-    Id : string;
-    UserAccountId : string;
     AdAccountId : string;
     ApiVersion : string;
-    CryptographicKey : string option;
-    CryptographicAlgorithm : string option;
     CreatedTime : int;
+    CryptographicAlgorithm : string option;
+    CryptographicKey : string option;
+    Id : string;
+    UserAccountId : string;
   }
   //#endregion

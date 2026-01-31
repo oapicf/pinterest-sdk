@@ -13,31 +13,40 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TrackingUrls   {
   
-  private List<String> impression = new ArrayList<>();
+  private List<String> audienceVerification = new ArrayList<>();
+  private List<String> buyableButton = new ArrayList<>();
   private List<String> click = new ArrayList<>();
   private List<String> engagement = new ArrayList<>();
-  private List<String> buyableButton = new ArrayList<>();
-  private List<String> audienceVerification = new ArrayList<>();
+  private List<String> impression = new ArrayList<>();
 
   public TrackingUrls () {
 
   }
 
-  public TrackingUrls (List<String> impression, List<String> click, List<String> engagement, List<String> buyableButton, List<String> audienceVerification) {
-    this.impression = impression;
+  public TrackingUrls (List<String> audienceVerification, List<String> buyableButton, List<String> click, List<String> engagement, List<String> impression) {
+    this.audienceVerification = audienceVerification;
+    this.buyableButton = buyableButton;
     this.click = click;
     this.engagement = engagement;
-    this.buyableButton = buyableButton;
+    this.impression = impression;
+  }
+
+    
+  @JsonProperty("audience_verification")
+  public List<String> getAudienceVerification() {
+    return audienceVerification;
+  }
+  public void setAudienceVerification(List<String> audienceVerification) {
     this.audienceVerification = audienceVerification;
   }
 
     
-  @JsonProperty("impression")
-  public List<String> getImpression() {
-    return impression;
+  @JsonProperty("buyable_button")
+  public List<String> getBuyableButton() {
+    return buyableButton;
   }
-  public void setImpression(List<String> impression) {
-    this.impression = impression;
+  public void setBuyableButton(List<String> buyableButton) {
+    this.buyableButton = buyableButton;
   }
 
     
@@ -59,21 +68,12 @@ public class TrackingUrls   {
   }
 
     
-  @JsonProperty("buyable_button")
-  public List<String> getBuyableButton() {
-    return buyableButton;
+  @JsonProperty("impression")
+  public List<String> getImpression() {
+    return impression;
   }
-  public void setBuyableButton(List<String> buyableButton) {
-    this.buyableButton = buyableButton;
-  }
-
-    
-  @JsonProperty("audience_verification")
-  public List<String> getAudienceVerification() {
-    return audienceVerification;
-  }
-  public void setAudienceVerification(List<String> audienceVerification) {
-    this.audienceVerification = audienceVerification;
+  public void setImpression(List<String> impression) {
+    this.impression = impression;
   }
 
 
@@ -86,16 +86,16 @@ public class TrackingUrls   {
       return false;
     }
     TrackingUrls trackingUrls = (TrackingUrls) o;
-    return Objects.equals(impression, trackingUrls.impression) &&
+    return Objects.equals(audienceVerification, trackingUrls.audienceVerification) &&
+        Objects.equals(buyableButton, trackingUrls.buyableButton) &&
         Objects.equals(click, trackingUrls.click) &&
         Objects.equals(engagement, trackingUrls.engagement) &&
-        Objects.equals(buyableButton, trackingUrls.buyableButton) &&
-        Objects.equals(audienceVerification, trackingUrls.audienceVerification);
+        Objects.equals(impression, trackingUrls.impression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(impression, click, engagement, buyableButton, audienceVerification);
+    return Objects.hash(audienceVerification, buyableButton, click, engagement, impression);
   }
 
   @Override
@@ -103,11 +103,11 @@ public class TrackingUrls   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrackingUrls {\n");
     
-    sb.append("    impression: ").append(toIndentedString(impression)).append("\n");
+    sb.append("    audienceVerification: ").append(toIndentedString(audienceVerification)).append("\n");
+    sb.append("    buyableButton: ").append(toIndentedString(buyableButton)).append("\n");
     sb.append("    click: ").append(toIndentedString(click)).append("\n");
     sb.append("    engagement: ").append(toIndentedString(engagement)).append("\n");
-    sb.append("    buyableButton: ").append(toIndentedString(buyableButton)).append("\n");
-    sb.append("    audienceVerification: ").append(toIndentedString(audienceVerification)).append("\n");
+    sb.append("    impression: ").append(toIndentedString(impression)).append("\n");
     sb.append("}");
     return sb.toString();
   }

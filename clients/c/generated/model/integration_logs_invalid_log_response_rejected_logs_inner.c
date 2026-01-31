@@ -6,35 +6,35 @@
 
 
 static integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_create_internal(
-    int log_index,
     char *field,
-    char *value,
-    char *reason
+    int log_index,
+    char *reason,
+    char *value
     ) {
     integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_local_var = malloc(sizeof(integration_logs_invalid_log_response_rejected_logs_inner_t));
     if (!integration_logs_invalid_log_response_rejected_logs_inner_local_var) {
         return NULL;
     }
-    integration_logs_invalid_log_response_rejected_logs_inner_local_var->log_index = log_index;
     integration_logs_invalid_log_response_rejected_logs_inner_local_var->field = field;
-    integration_logs_invalid_log_response_rejected_logs_inner_local_var->value = value;
+    integration_logs_invalid_log_response_rejected_logs_inner_local_var->log_index = log_index;
     integration_logs_invalid_log_response_rejected_logs_inner_local_var->reason = reason;
+    integration_logs_invalid_log_response_rejected_logs_inner_local_var->value = value;
 
     integration_logs_invalid_log_response_rejected_logs_inner_local_var->_library_owned = 1;
     return integration_logs_invalid_log_response_rejected_logs_inner_local_var;
 }
 
 __attribute__((deprecated)) integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_create(
-    int log_index,
     char *field,
-    char *value,
-    char *reason
+    int log_index,
+    char *reason,
+    char *value
     ) {
     return integration_logs_invalid_log_response_rejected_logs_inner_create_internal (
-        log_index,
         field,
-        value,
-        reason
+        log_index,
+        reason,
+        value
         );
 }
 
@@ -51,27 +51,19 @@ void integration_logs_invalid_log_response_rejected_logs_inner_free(integration_
         free(integration_logs_invalid_log_response_rejected_logs_inner->field);
         integration_logs_invalid_log_response_rejected_logs_inner->field = NULL;
     }
-    if (integration_logs_invalid_log_response_rejected_logs_inner->value) {
-        free(integration_logs_invalid_log_response_rejected_logs_inner->value);
-        integration_logs_invalid_log_response_rejected_logs_inner->value = NULL;
-    }
     if (integration_logs_invalid_log_response_rejected_logs_inner->reason) {
         free(integration_logs_invalid_log_response_rejected_logs_inner->reason);
         integration_logs_invalid_log_response_rejected_logs_inner->reason = NULL;
+    }
+    if (integration_logs_invalid_log_response_rejected_logs_inner->value) {
+        free(integration_logs_invalid_log_response_rejected_logs_inner->value);
+        integration_logs_invalid_log_response_rejected_logs_inner->value = NULL;
     }
     free(integration_logs_invalid_log_response_rejected_logs_inner);
 }
 
 cJSON *integration_logs_invalid_log_response_rejected_logs_inner_convertToJSON(integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner) {
     cJSON *item = cJSON_CreateObject();
-
-    // integration_logs_invalid_log_response_rejected_logs_inner->log_index
-    if(integration_logs_invalid_log_response_rejected_logs_inner->log_index) {
-    if(cJSON_AddNumberToObject(item, "log_index", integration_logs_invalid_log_response_rejected_logs_inner->log_index) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
 
     // integration_logs_invalid_log_response_rejected_logs_inner->field
     if (!integration_logs_invalid_log_response_rejected_logs_inner->field) {
@@ -82,12 +74,11 @@ cJSON *integration_logs_invalid_log_response_rejected_logs_inner_convertToJSON(i
     }
 
 
-    // integration_logs_invalid_log_response_rejected_logs_inner->value
-    if (!integration_logs_invalid_log_response_rejected_logs_inner->value) {
-        goto fail;
+    // integration_logs_invalid_log_response_rejected_logs_inner->log_index
+    if(integration_logs_invalid_log_response_rejected_logs_inner->log_index) {
+    if(cJSON_AddNumberToObject(item, "log_index", integration_logs_invalid_log_response_rejected_logs_inner->log_index) == NULL) {
+    goto fail; //Numeric
     }
-    if(cJSON_AddStringToObject(item, "value", integration_logs_invalid_log_response_rejected_logs_inner->value) == NULL) {
-    goto fail; //String
     }
 
 
@@ -96,6 +87,15 @@ cJSON *integration_logs_invalid_log_response_rejected_logs_inner_convertToJSON(i
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "reason", integration_logs_invalid_log_response_rejected_logs_inner->reason) == NULL) {
+    goto fail; //String
+    }
+
+
+    // integration_logs_invalid_log_response_rejected_logs_inner->value
+    if (!integration_logs_invalid_log_response_rejected_logs_inner->value) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "value", integration_logs_invalid_log_response_rejected_logs_inner->value) == NULL) {
     goto fail; //String
     }
 
@@ -111,6 +111,21 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
 
     integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_local_var = NULL;
 
+    // integration_logs_invalid_log_response_rejected_logs_inner->field
+    cJSON *field = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "field");
+    if (cJSON_IsNull(field)) {
+        field = NULL;
+    }
+    if (!field) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(field))
+    {
+    goto end; //String
+    }
+
     // integration_logs_invalid_log_response_rejected_logs_inner->log_index
     cJSON *log_index = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "log_index");
     if (cJSON_IsNull(log_index)) {
@@ -123,17 +138,17 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
     }
     }
 
-    // integration_logs_invalid_log_response_rejected_logs_inner->field
-    cJSON *field = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "field");
-    if (cJSON_IsNull(field)) {
-        field = NULL;
+    // integration_logs_invalid_log_response_rejected_logs_inner->reason
+    cJSON *reason = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "reason");
+    if (cJSON_IsNull(reason)) {
+        reason = NULL;
     }
-    if (!field) {
+    if (!reason) {
         goto end;
     }
 
     
-    if(!cJSON_IsString(field))
+    if(!cJSON_IsString(reason))
     {
     goto end; //String
     }
@@ -153,27 +168,12 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
     goto end; //String
     }
 
-    // integration_logs_invalid_log_response_rejected_logs_inner->reason
-    cJSON *reason = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "reason");
-    if (cJSON_IsNull(reason)) {
-        reason = NULL;
-    }
-    if (!reason) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(reason))
-    {
-    goto end; //String
-    }
-
 
     integration_logs_invalid_log_response_rejected_logs_inner_local_var = integration_logs_invalid_log_response_rejected_logs_inner_create_internal (
-        log_index ? log_index->valuedouble : 0,
         strdup(field->valuestring),
-        strdup(value->valuestring),
-        strdup(reason->valuestring)
+        log_index ? log_index->valuedouble : 0,
+        strdup(reason->valuestring),
+        strdup(value->valuestring)
         );
 
     return integration_logs_invalid_log_response_rejected_logs_inner_local_var;

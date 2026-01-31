@@ -1,36 +1,12 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Video ID-based media source",
+  "doc": "Video ID-based media source.",
   "name": "PinMediaSourceVideoID",
   "fields": [
     {
-      "name": "source_type",
-      "type": {
-        "type": "enum",
-        "name": "PinMediaSourceVideoID_sourceUnderscoretype",
-        "symbols": [
-          "video_id"
-        ]
-      },
-      "doc": ""
-    },
-    {
-      "name": "cover_image_url",
-      "type": ["null", "string"],
-      "doc": "Cover image url.",
-      "default": null
-    },
-    {
       "name": "cover_image_content_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "PinMediaSourceVideoID_coverUnderscoreimageUnderscorecontentUnderscoretype",
-        "symbols": [
-          "image_jpeg",
-          "image_png"
-        ]
-      }],
+      "type": ["null", "model.ContentType"],
       "doc": "Content type for cover image Base64.",
       "default": null
     },
@@ -41,15 +17,38 @@
       "default": null
     },
     {
-      "name": "media_id",
-      "type": "string",
-      "doc": ""
+      "name": "cover_image_key_frame_time",
+      "type": ["null", "int"],
+      "doc": "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.",
+      "default": null
+    },
+    {
+      "name": "cover_image_url",
+      "type": ["null", "string"],
+      "doc": "Cover image URL.",
+      "default": null
     },
     {
       "name": "is_standard",
       "type": ["boolean", "null"],
       "doc": "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.",
       "default": true
+    },
+    {
+      "name": "media_id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourceVideoID_sourceUnderscoretype",
+        "symbols": [
+          "video_id"
+        ]
+      },
+      "doc": ""
     }
   ]
 

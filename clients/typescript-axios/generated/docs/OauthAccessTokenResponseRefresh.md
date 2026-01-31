@@ -6,11 +6,14 @@ A successful OAuth access token response for the refresh token flow.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response_type** | **string** |  | [optional] [default to undefined]
 **access_token** | **string** |  | [default to undefined]
-**token_type** | **string** |  | [default to 'bearer']
 **expires_in** | **number** |  | [default to undefined]
+**response_type** | **string** |  | [optional] [default to undefined]
 **scope** | **string** |  | [default to undefined]
+**token_type** | **string** |  | [default to 'bearer']
+**refresh_token** | **string** |  | [default to undefined]
+**refresh_token_expires_at** | **number** |  | [default to undefined]
+**refresh_token_expires_in** | **number** |  | [default to undefined]
 
 ## Example
 
@@ -18,11 +21,14 @@ Name | Type | Description | Notes
 import { OauthAccessTokenResponseRefresh } from './api';
 
 const instance: OauthAccessTokenResponseRefresh = {
-    response_type,
     access_token,
-    token_type,
     expires_in,
+    response_type,
     scope,
+    token_type,
+    refresh_token,
+    refresh_token_expires_at,
+    refresh_token_expires_in,
 };
 ```
 

@@ -7,8 +7,8 @@
 
 (def template-response-date-range-dynamic-date-range-data
   {
-   (ds/opt :type) string?
    (ds/opt :range) string?
+   (ds/opt :type) string?
    })
 
 (def template-response-date-range-dynamic-date-range-spec

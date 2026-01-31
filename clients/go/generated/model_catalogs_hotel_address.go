@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,12 +24,12 @@ type CatalogsHotelAddress struct {
 	Addr1 *string `json:"addr1,omitempty"`
 	// City where the hotel is located.
 	City *string `json:"city,omitempty"`
-	// State, county, province, where the hotel is located.
-	Region *string `json:"region,omitempty"`
 	// Country where the hotel is located.
 	Country *string `json:"country,omitempty"`
 	// Required for countries with a postal code system. Postal or zip code of the hotel.
 	PostalCode *string `json:"postal_code,omitempty"`
+	// State, county, province, where the hotel is located.
+	Region *string `json:"region,omitempty"`
 }
 
 // NewCatalogsHotelAddress instantiates a new CatalogsHotelAddress object
@@ -113,38 +113,6 @@ func (o *CatalogsHotelAddress) SetCity(v string) {
 	o.City = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
-func (o *CatalogsHotelAddress) GetRegion() string {
-	if o == nil || IsNil(o.Region) {
-		var ret string
-		return ret
-	}
-	return *o.Region
-}
-
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelAddress) GetRegionOk() (*string, bool) {
-	if o == nil || IsNil(o.Region) {
-		return nil, false
-	}
-	return o.Region, true
-}
-
-// HasRegion returns a boolean if a field has been set.
-func (o *CatalogsHotelAddress) HasRegion() bool {
-	if o != nil && !IsNil(o.Region) {
-		return true
-	}
-
-	return false
-}
-
-// SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *CatalogsHotelAddress) SetRegion(v string) {
-	o.Region = &v
-}
-
 // GetCountry returns the Country field value if set, zero value otherwise.
 func (o *CatalogsHotelAddress) GetCountry() string {
 	if o == nil || IsNil(o.Country) {
@@ -209,6 +177,38 @@ func (o *CatalogsHotelAddress) SetPostalCode(v string) {
 	o.PostalCode = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *CatalogsHotelAddress) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelAddress) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *CatalogsHotelAddress) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *CatalogsHotelAddress) SetRegion(v string) {
+	o.Region = &v
+}
+
 func (o CatalogsHotelAddress) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -225,14 +225,14 @@ func (o CatalogsHotelAddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.City) {
 		toSerialize["city"] = o.City
 	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}
 	if !IsNil(o.PostalCode) {
 		toSerialize["postal_code"] = o.PostalCode
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	return toSerialize, nil
 }

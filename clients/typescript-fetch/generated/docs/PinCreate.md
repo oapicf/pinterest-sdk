@@ -1,26 +1,22 @@
 
 # PinCreate
 
-Pin
+Resource create operation model.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`id` | string
-`createdAt` | Date
-`link` | string
-`title` | string
-`description` | string
-`dominantColor` | string
 `altText` | string
 `boardId` | string
 `boardSectionId` | string
-`boardOwner` | [BoardOwner](BoardOwner.md)
-`media` | [PinMedia](PinMedia.md)
+`description` | string
+`dominantColor` | string
+`link` | string
 `mediaSource` | [PinMediaSource](PinMediaSource.md)
 `parentPinId` | string
-`note` | string
+`sponsorId` | string
+`title` | string
 
 ## Example
 
@@ -29,20 +25,16 @@ import type { PinCreate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 813744226420795884,
-  "createdAt": 2020-01-01T20:10:40Z,
-  "link": https://www.pinterest.com/,
-  "title": null,
-  "description": null,
-  "dominantColor": #6E7874,
   "altText": null,
   "boardId": null,
   "boardSectionId": null,
-  "boardOwner": null,
-  "media": null,
+  "description": null,
+  "dominantColor": null,
+  "link": null,
   "mediaSource": null,
   "parentPinId": null,
-  "note": null,
+  "sponsorId": null,
+  "title": null,
 } satisfies PinCreate
 
 console.log(example)

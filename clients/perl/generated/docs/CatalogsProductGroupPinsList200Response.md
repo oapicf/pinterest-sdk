@@ -8,8 +8,8 @@ use WWW::OpenAPIClient::Object::CatalogsProductGroupPinsList200Response;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**ARRAY[CatalogsProduct]**](CatalogsProduct.md) | Pins | 
 **bookmark** | **string** |  | [optional] 
+**items** | [**ARRAY[CatalogsProduct]**](CatalogsProduct.md) | Pins | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

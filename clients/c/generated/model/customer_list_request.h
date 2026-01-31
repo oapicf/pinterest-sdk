@@ -15,25 +15,22 @@
 
 typedef struct customer_list_request_t customer_list_request_t;
 
-#include "object.h"
 #include "user_list_type.h"
 
 
 
 typedef struct customer_list_request_t {
+    user_list_type_t *list_type; // custom
     char *name; // string
     char *records; // string
-    user_list_type_t *list_type; // custom
-    object_t *exceptions; //object
 
     int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_request_t;
 
 __attribute__((deprecated)) customer_list_request_t *customer_list_request_create(
-    char *name,
-    char *records,
     user_list_type_t *list_type,
-    object_t *exceptions
+    char *name,
+    char *records
 );
 
 void customer_list_request_free(customer_list_request_t *customer_list_request);

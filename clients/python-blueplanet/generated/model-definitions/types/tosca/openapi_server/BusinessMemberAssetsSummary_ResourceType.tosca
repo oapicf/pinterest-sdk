@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessMemberAssetsSummary"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessMemberAssetsSummary"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BusinessMemberAssetsSummaryAdAccountsInner = openapi_server.resourceTypes.BusinessMemberAssetsSummaryAdAccountsInner
+  BusinessMemberAssetsSummaryProfilesInner = openapi_server.resourceTypes.BusinessMemberAssetsSummaryProfilesInner
+}
+resourceTypes {
+
+  BusinessMemberAssetsSummary {
+    title = BusinessMemberAssetsSummary
+    description = BusinessMemberAssetsSummary
+    derivedFrom = Root
+    properties {
+        ad_accounts {
+          type = array
+          items.type = BusinessMemberAssetsSummaryAdAccountsInner
+          description = "List of ad account IDs and respective permission levels."
+          optional = false
+        }
+        profiles {
+          type = array
+          items.type = BusinessMemberAssetsSummaryProfilesInner
+          description = "List of profile IDs and respective permission levels."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessMemberAssetsSummary {
+    title = BusinessMemberAssetsSummary
+    description = BusinessMemberAssetsSummary
+    implements = openapi_server.resourceTypes.BusinessMemberAssetsSummary
+
+  }
+}

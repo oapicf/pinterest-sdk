@@ -12,10 +12,12 @@ import org.joda.time.DateTime
 import AdvancedAuctionItemsSubmitDeleteRecord._
 
 case class AdvancedAuctionItemsSubmitDeleteRecord (
-  /* The catalog retail item id in the merchant namespace */
+  country: Country,
+/* The catalog retail item id in the merchant namespace */
   itemId: String,
-country: Country,
-language: Language)
+language: Language,
+/* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
+  errors: Option[List[AdvancedAuctionOperationError]])
 
 object AdvancedAuctionItemsSubmitDeleteRecord {
   import DateTimeCodecs._

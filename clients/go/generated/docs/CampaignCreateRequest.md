@@ -5,17 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdAccountId** | **string** | Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. | 
-**Name** | **string** | Campaign name. | 
-**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] [default to ACTIVE]
-**LifetimeSpendCap** | Pointer to **NullableInt32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **DailySpendCap** | Pointer to **NullableInt32** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] 
+**EndTime** | Pointer to **NullableInt32** | Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. | [optional] 
+**IsAutomatedCampaign** | Pointer to **bool** | Specifies whether the campaign was created in the automated campaign flow | [optional] [default to false]
+**IsFlexibleDailyBudgets** | Pointer to **bool** | Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;. | [optional] [default to false]
+**LifetimeSpendCap** | Pointer to **NullableInt32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
+**Name** | **string** | Campaign name. | 
 **OrderLineId** | Pointer to **NullableString** | Order line ID that appears on the invoice. | [optional] 
+**StartTime** | Pointer to **NullableInt32** | Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. | [optional] 
+**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] [default to ACTIVE]
 **TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
-**StartTime** | Pointer to **NullableInt32** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**EndTime** | Pointer to **NullableInt32** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**IsFlexibleDailyBudgets** | Pointer to **NullableBool** | Determine if a campaign has flexible daily budgets setup. | [optional] [default to false]
 **DefaultAdGroupBudgetInMicroCurrency** | Pointer to **NullableInt32** | When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. | [optional] 
-**IsAutomatedCampaign** | Pointer to **NullableBool** | Specifies whether the campaign was created in the automated campaign flow | [optional] [default to false]
+**IsCampaignBudgetOptimization** | Pointer to **NullableBool** | Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. | [optional] 
+**BidOptions** | Pointer to [**CampaignBidOptionsCreate**](CampaignBidOptionsCreate.md) |  | [optional] 
+**IsPerformancePlus** | Pointer to **bool** | Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;. | [optional] [default to false]
 **ObjectiveType** | [**ObjectiveType**](ObjectiveType.md) |  | 
 
 ## Methods
@@ -57,50 +60,125 @@ and a boolean to check if the value has been set.
 SetAdAccountId sets AdAccountId field to given value.
 
 
-### GetName
+### GetDailySpendCap
 
-`func (o *CampaignCreateRequest) GetName() string`
+`func (o *CampaignCreateRequest) GetDailySpendCap() int32`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetDailySpendCap returns the DailySpendCap field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetDailySpendCapOk
 
-`func (o *CampaignCreateRequest) GetNameOk() (*string, bool)`
+`func (o *CampaignCreateRequest) GetDailySpendCapOk() (*int32, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetDailySpendCapOk returns a tuple with the DailySpendCap field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetDailySpendCap
 
-`func (o *CampaignCreateRequest) SetName(v string)`
+`func (o *CampaignCreateRequest) SetDailySpendCap(v int32)`
 
-SetName sets Name field to given value.
+SetDailySpendCap sets DailySpendCap field to given value.
 
+### HasDailySpendCap
 
-### GetStatus
+`func (o *CampaignCreateRequest) HasDailySpendCap() bool`
 
-`func (o *CampaignCreateRequest) GetStatus() EntityStatus`
+HasDailySpendCap returns a boolean if a field has been set.
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+### SetDailySpendCapNil
 
-### GetStatusOk
+`func (o *CampaignCreateRequest) SetDailySpendCapNil(b bool)`
 
-`func (o *CampaignCreateRequest) GetStatusOk() (*EntityStatus, bool)`
+ SetDailySpendCapNil sets the value for DailySpendCap to be an explicit nil
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+### UnsetDailySpendCap
+`func (o *CampaignCreateRequest) UnsetDailySpendCap()`
+
+UnsetDailySpendCap ensures that no value is present for DailySpendCap, not even an explicit nil
+### GetEndTime
+
+`func (o *CampaignCreateRequest) GetEndTime() int32`
+
+GetEndTime returns the EndTime field if non-nil, zero value otherwise.
+
+### GetEndTimeOk
+
+`func (o *CampaignCreateRequest) GetEndTimeOk() (*int32, bool)`
+
+GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetEndTime
 
-`func (o *CampaignCreateRequest) SetStatus(v EntityStatus)`
+`func (o *CampaignCreateRequest) SetEndTime(v int32)`
 
-SetStatus sets Status field to given value.
+SetEndTime sets EndTime field to given value.
 
-### HasStatus
+### HasEndTime
 
-`func (o *CampaignCreateRequest) HasStatus() bool`
+`func (o *CampaignCreateRequest) HasEndTime() bool`
 
-HasStatus returns a boolean if a field has been set.
+HasEndTime returns a boolean if a field has been set.
+
+### SetEndTimeNil
+
+`func (o *CampaignCreateRequest) SetEndTimeNil(b bool)`
+
+ SetEndTimeNil sets the value for EndTime to be an explicit nil
+
+### UnsetEndTime
+`func (o *CampaignCreateRequest) UnsetEndTime()`
+
+UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
+### GetIsAutomatedCampaign
+
+`func (o *CampaignCreateRequest) GetIsAutomatedCampaign() bool`
+
+GetIsAutomatedCampaign returns the IsAutomatedCampaign field if non-nil, zero value otherwise.
+
+### GetIsAutomatedCampaignOk
+
+`func (o *CampaignCreateRequest) GetIsAutomatedCampaignOk() (*bool, bool)`
+
+GetIsAutomatedCampaignOk returns a tuple with the IsAutomatedCampaign field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAutomatedCampaign
+
+`func (o *CampaignCreateRequest) SetIsAutomatedCampaign(v bool)`
+
+SetIsAutomatedCampaign sets IsAutomatedCampaign field to given value.
+
+### HasIsAutomatedCampaign
+
+`func (o *CampaignCreateRequest) HasIsAutomatedCampaign() bool`
+
+HasIsAutomatedCampaign returns a boolean if a field has been set.
+
+### GetIsFlexibleDailyBudgets
+
+`func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgets() bool`
+
+GetIsFlexibleDailyBudgets returns the IsFlexibleDailyBudgets field if non-nil, zero value otherwise.
+
+### GetIsFlexibleDailyBudgetsOk
+
+`func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgetsOk() (*bool, bool)`
+
+GetIsFlexibleDailyBudgetsOk returns a tuple with the IsFlexibleDailyBudgets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFlexibleDailyBudgets
+
+`func (o *CampaignCreateRequest) SetIsFlexibleDailyBudgets(v bool)`
+
+SetIsFlexibleDailyBudgets sets IsFlexibleDailyBudgets field to given value.
+
+### HasIsFlexibleDailyBudgets
+
+`func (o *CampaignCreateRequest) HasIsFlexibleDailyBudgets() bool`
+
+HasIsFlexibleDailyBudgets returns a boolean if a field has been set.
 
 ### GetLifetimeSpendCap
 
@@ -137,41 +215,26 @@ HasLifetimeSpendCap returns a boolean if a field has been set.
 `func (o *CampaignCreateRequest) UnsetLifetimeSpendCap()`
 
 UnsetLifetimeSpendCap ensures that no value is present for LifetimeSpendCap, not even an explicit nil
-### GetDailySpendCap
+### GetName
 
-`func (o *CampaignCreateRequest) GetDailySpendCap() int32`
+`func (o *CampaignCreateRequest) GetName() string`
 
-GetDailySpendCap returns the DailySpendCap field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetDailySpendCapOk
+### GetNameOk
 
-`func (o *CampaignCreateRequest) GetDailySpendCapOk() (*int32, bool)`
+`func (o *CampaignCreateRequest) GetNameOk() (*string, bool)`
 
-GetDailySpendCapOk returns a tuple with the DailySpendCap field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDailySpendCap
+### SetName
 
-`func (o *CampaignCreateRequest) SetDailySpendCap(v int32)`
+`func (o *CampaignCreateRequest) SetName(v string)`
 
-SetDailySpendCap sets DailySpendCap field to given value.
+SetName sets Name field to given value.
 
-### HasDailySpendCap
 
-`func (o *CampaignCreateRequest) HasDailySpendCap() bool`
-
-HasDailySpendCap returns a boolean if a field has been set.
-
-### SetDailySpendCapNil
-
-`func (o *CampaignCreateRequest) SetDailySpendCapNil(b bool)`
-
- SetDailySpendCapNil sets the value for DailySpendCap to be an explicit nil
-
-### UnsetDailySpendCap
-`func (o *CampaignCreateRequest) UnsetDailySpendCap()`
-
-UnsetDailySpendCap ensures that no value is present for DailySpendCap, not even an explicit nil
 ### GetOrderLineId
 
 `func (o *CampaignCreateRequest) GetOrderLineId() string`
@@ -207,41 +270,6 @@ HasOrderLineId returns a boolean if a field has been set.
 `func (o *CampaignCreateRequest) UnsetOrderLineId()`
 
 UnsetOrderLineId ensures that no value is present for OrderLineId, not even an explicit nil
-### GetTrackingUrls
-
-`func (o *CampaignCreateRequest) GetTrackingUrls() TrackingUrls`
-
-GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
-
-### GetTrackingUrlsOk
-
-`func (o *CampaignCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
-
-GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTrackingUrls
-
-`func (o *CampaignCreateRequest) SetTrackingUrls(v TrackingUrls)`
-
-SetTrackingUrls sets TrackingUrls field to given value.
-
-### HasTrackingUrls
-
-`func (o *CampaignCreateRequest) HasTrackingUrls() bool`
-
-HasTrackingUrls returns a boolean if a field has been set.
-
-### SetTrackingUrlsNil
-
-`func (o *CampaignCreateRequest) SetTrackingUrlsNil(b bool)`
-
- SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
-
-### UnsetTrackingUrls
-`func (o *CampaignCreateRequest) UnsetTrackingUrls()`
-
-UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
 ### GetStartTime
 
 `func (o *CampaignCreateRequest) GetStartTime() int32`
@@ -277,76 +305,66 @@ HasStartTime returns a boolean if a field has been set.
 `func (o *CampaignCreateRequest) UnsetStartTime()`
 
 UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
-### GetEndTime
+### GetStatus
 
-`func (o *CampaignCreateRequest) GetEndTime() int32`
+`func (o *CampaignCreateRequest) GetStatus() EntityStatus`
 
-GetEndTime returns the EndTime field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetEndTimeOk
+### GetStatusOk
 
-`func (o *CampaignCreateRequest) GetEndTimeOk() (*int32, bool)`
+`func (o *CampaignCreateRequest) GetStatusOk() (*EntityStatus, bool)`
 
-GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndTime
+### SetStatus
 
-`func (o *CampaignCreateRequest) SetEndTime(v int32)`
+`func (o *CampaignCreateRequest) SetStatus(v EntityStatus)`
 
-SetEndTime sets EndTime field to given value.
+SetStatus sets Status field to given value.
 
-### HasEndTime
+### HasStatus
 
-`func (o *CampaignCreateRequest) HasEndTime() bool`
+`func (o *CampaignCreateRequest) HasStatus() bool`
 
-HasEndTime returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
-### SetEndTimeNil
+### GetTrackingUrls
 
-`func (o *CampaignCreateRequest) SetEndTimeNil(b bool)`
+`func (o *CampaignCreateRequest) GetTrackingUrls() TrackingUrls`
 
- SetEndTimeNil sets the value for EndTime to be an explicit nil
+GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
-### UnsetEndTime
-`func (o *CampaignCreateRequest) UnsetEndTime()`
+### GetTrackingUrlsOk
 
-UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-### GetIsFlexibleDailyBudgets
+`func (o *CampaignCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
 
-`func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgets() bool`
-
-GetIsFlexibleDailyBudgets returns the IsFlexibleDailyBudgets field if non-nil, zero value otherwise.
-
-### GetIsFlexibleDailyBudgetsOk
-
-`func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgetsOk() (*bool, bool)`
-
-GetIsFlexibleDailyBudgetsOk returns a tuple with the IsFlexibleDailyBudgets field if it's non-nil, zero value otherwise
+GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsFlexibleDailyBudgets
+### SetTrackingUrls
 
-`func (o *CampaignCreateRequest) SetIsFlexibleDailyBudgets(v bool)`
+`func (o *CampaignCreateRequest) SetTrackingUrls(v TrackingUrls)`
 
-SetIsFlexibleDailyBudgets sets IsFlexibleDailyBudgets field to given value.
+SetTrackingUrls sets TrackingUrls field to given value.
 
-### HasIsFlexibleDailyBudgets
+### HasTrackingUrls
 
-`func (o *CampaignCreateRequest) HasIsFlexibleDailyBudgets() bool`
+`func (o *CampaignCreateRequest) HasTrackingUrls() bool`
 
-HasIsFlexibleDailyBudgets returns a boolean if a field has been set.
+HasTrackingUrls returns a boolean if a field has been set.
 
-### SetIsFlexibleDailyBudgetsNil
+### SetTrackingUrlsNil
 
-`func (o *CampaignCreateRequest) SetIsFlexibleDailyBudgetsNil(b bool)`
+`func (o *CampaignCreateRequest) SetTrackingUrlsNil(b bool)`
 
- SetIsFlexibleDailyBudgetsNil sets the value for IsFlexibleDailyBudgets to be an explicit nil
+ SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
 
-### UnsetIsFlexibleDailyBudgets
-`func (o *CampaignCreateRequest) UnsetIsFlexibleDailyBudgets()`
+### UnsetTrackingUrls
+`func (o *CampaignCreateRequest) UnsetTrackingUrls()`
 
-UnsetIsFlexibleDailyBudgets ensures that no value is present for IsFlexibleDailyBudgets, not even an explicit nil
+UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
 ### GetDefaultAdGroupBudgetInMicroCurrency
 
 `func (o *CampaignCreateRequest) GetDefaultAdGroupBudgetInMicroCurrency() int32`
@@ -382,41 +400,91 @@ HasDefaultAdGroupBudgetInMicroCurrency returns a boolean if a field has been set
 `func (o *CampaignCreateRequest) UnsetDefaultAdGroupBudgetInMicroCurrency()`
 
 UnsetDefaultAdGroupBudgetInMicroCurrency ensures that no value is present for DefaultAdGroupBudgetInMicroCurrency, not even an explicit nil
-### GetIsAutomatedCampaign
+### GetIsCampaignBudgetOptimization
 
-`func (o *CampaignCreateRequest) GetIsAutomatedCampaign() bool`
+`func (o *CampaignCreateRequest) GetIsCampaignBudgetOptimization() bool`
 
-GetIsAutomatedCampaign returns the IsAutomatedCampaign field if non-nil, zero value otherwise.
+GetIsCampaignBudgetOptimization returns the IsCampaignBudgetOptimization field if non-nil, zero value otherwise.
 
-### GetIsAutomatedCampaignOk
+### GetIsCampaignBudgetOptimizationOk
 
-`func (o *CampaignCreateRequest) GetIsAutomatedCampaignOk() (*bool, bool)`
+`func (o *CampaignCreateRequest) GetIsCampaignBudgetOptimizationOk() (*bool, bool)`
 
-GetIsAutomatedCampaignOk returns a tuple with the IsAutomatedCampaign field if it's non-nil, zero value otherwise
+GetIsCampaignBudgetOptimizationOk returns a tuple with the IsCampaignBudgetOptimization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsAutomatedCampaign
+### SetIsCampaignBudgetOptimization
 
-`func (o *CampaignCreateRequest) SetIsAutomatedCampaign(v bool)`
+`func (o *CampaignCreateRequest) SetIsCampaignBudgetOptimization(v bool)`
 
-SetIsAutomatedCampaign sets IsAutomatedCampaign field to given value.
+SetIsCampaignBudgetOptimization sets IsCampaignBudgetOptimization field to given value.
 
-### HasIsAutomatedCampaign
+### HasIsCampaignBudgetOptimization
 
-`func (o *CampaignCreateRequest) HasIsAutomatedCampaign() bool`
+`func (o *CampaignCreateRequest) HasIsCampaignBudgetOptimization() bool`
 
-HasIsAutomatedCampaign returns a boolean if a field has been set.
+HasIsCampaignBudgetOptimization returns a boolean if a field has been set.
 
-### SetIsAutomatedCampaignNil
+### SetIsCampaignBudgetOptimizationNil
 
-`func (o *CampaignCreateRequest) SetIsAutomatedCampaignNil(b bool)`
+`func (o *CampaignCreateRequest) SetIsCampaignBudgetOptimizationNil(b bool)`
 
- SetIsAutomatedCampaignNil sets the value for IsAutomatedCampaign to be an explicit nil
+ SetIsCampaignBudgetOptimizationNil sets the value for IsCampaignBudgetOptimization to be an explicit nil
 
-### UnsetIsAutomatedCampaign
-`func (o *CampaignCreateRequest) UnsetIsAutomatedCampaign()`
+### UnsetIsCampaignBudgetOptimization
+`func (o *CampaignCreateRequest) UnsetIsCampaignBudgetOptimization()`
 
-UnsetIsAutomatedCampaign ensures that no value is present for IsAutomatedCampaign, not even an explicit nil
+UnsetIsCampaignBudgetOptimization ensures that no value is present for IsCampaignBudgetOptimization, not even an explicit nil
+### GetBidOptions
+
+`func (o *CampaignCreateRequest) GetBidOptions() CampaignBidOptionsCreate`
+
+GetBidOptions returns the BidOptions field if non-nil, zero value otherwise.
+
+### GetBidOptionsOk
+
+`func (o *CampaignCreateRequest) GetBidOptionsOk() (*CampaignBidOptionsCreate, bool)`
+
+GetBidOptionsOk returns a tuple with the BidOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBidOptions
+
+`func (o *CampaignCreateRequest) SetBidOptions(v CampaignBidOptionsCreate)`
+
+SetBidOptions sets BidOptions field to given value.
+
+### HasBidOptions
+
+`func (o *CampaignCreateRequest) HasBidOptions() bool`
+
+HasBidOptions returns a boolean if a field has been set.
+
+### GetIsPerformancePlus
+
+`func (o *CampaignCreateRequest) GetIsPerformancePlus() bool`
+
+GetIsPerformancePlus returns the IsPerformancePlus field if non-nil, zero value otherwise.
+
+### GetIsPerformancePlusOk
+
+`func (o *CampaignCreateRequest) GetIsPerformancePlusOk() (*bool, bool)`
+
+GetIsPerformancePlusOk returns a tuple with the IsPerformancePlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPerformancePlus
+
+`func (o *CampaignCreateRequest) SetIsPerformancePlus(v bool)`
+
+SetIsPerformancePlus sets IsPerformancePlus field to given value.
+
+### HasIsPerformancePlus
+
+`func (o *CampaignCreateRequest) HasIsPerformancePlus() bool`
+
+HasIsPerformancePlus returns a boolean if a field has been set.
+
 ### GetObjectiveType
 
 `func (o *CampaignCreateRequest) GetObjectiveType() ObjectiveType`

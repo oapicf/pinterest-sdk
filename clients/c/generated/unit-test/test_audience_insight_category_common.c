@@ -23,18 +23,18 @@ audience_insight_category_common_t* instantiate_audience_insight_category_common
   if (include_optional) {
     audience_insight_category_common = audience_insight_category_common_create(
       "549755885175",
-      "travel",
-      0.551,
       1.2,
-      "549755885175"
+      "549755885175",
+      "travel",
+      0.551
     );
   } else {
     audience_insight_category_common = audience_insight_category_common_create(
       "549755885175",
-      "travel",
-      0.551,
       1.2,
-      "549755885175"
+      "549755885175",
+      "travel",
+      0.551
     );
   }
 

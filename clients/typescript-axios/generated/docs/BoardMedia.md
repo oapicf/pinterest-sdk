@@ -1,12 +1,11 @@
 # BoardMedia
 
-Board media.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_cover_url** | **string** | Board cover image. | [optional] [default to undefined]
+**image_cover_url** | **string** | Board cover image | [optional] [default to undefined]
 **pin_thumbnail_urls** | **Array&lt;string&gt;** | Board pin thumbnail urls. | [optional] [default to undefined]
 
 ## Example

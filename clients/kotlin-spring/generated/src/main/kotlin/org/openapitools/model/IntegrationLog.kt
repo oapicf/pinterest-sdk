@@ -22,16 +22,16 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param clientTimestamp Timestamp in milliseconds of when the log was executed at the client.
  * @param eventType Log event type
  * @param logLevel Log level type
- * @param externalBusinessId 
  * @param advertiserId 
- * @param merchantId 
- * @param tagId 
- * @param feedProfileId 
- * @param message Explanation of the event that occured.
  * @param appVersionNumber Version number of the integration application.
- * @param platformVersionNumber Version number of the platform the integration application is running on.
  * @param error 
+ * @param externalBusinessId 
+ * @param feedProfileId 
+ * @param merchantId 
+ * @param message Explanation of the event that occured.
+ * @param platformVersionNumber Version number of the platform the integration application is running on.
  * @param request 
+ * @param tagId 
  */
 data class IntegrationLog(
 
@@ -44,33 +44,33 @@ data class IntegrationLog(
     @Schema(example = "null", required = true, description = "Log level type")
     @get:JsonProperty("log_level", required = true) val logLevel: IntegrationLog.LogLevel,
 
+    @get:Size(max=128)
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("advertiser_id") val advertiserId: kotlin.String? = null,
+
+    @get:Size(max=20)
+    @Schema(example = "null", description = "Version number of the integration application.")
+    @get:JsonProperty("app_version_number") val appVersionNumber: kotlin.String? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("error") val error: IntegrationLogClientError? = null,
+
     @get:Size(max=2048)
     @Schema(example = "null", description = "")
     @get:JsonProperty("external_business_id") val externalBusinessId: kotlin.String? = null,
 
     @get:Size(max=128)
     @Schema(example = "null", description = "")
-    @get:JsonProperty("advertiser_id") val advertiserId: kotlin.String? = null,
+    @get:JsonProperty("feed_profile_id") val feedProfileId: kotlin.String? = null,
 
     @get:Size(max=128)
     @Schema(example = "null", description = "")
     @get:JsonProperty("merchant_id") val merchantId: kotlin.String? = null,
 
-    @get:Size(max=128)
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("tag_id") val tagId: kotlin.String? = null,
-
-    @get:Size(max=128)
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("feed_profile_id") val feedProfileId: kotlin.String? = null,
-
-    @get:Size(max=2048)
+    @get:Size(max=8192)
     @Schema(example = "null", description = "Explanation of the event that occured.")
     @get:JsonProperty("message") val message: kotlin.String? = null,
-
-    @get:Size(max=20)
-    @Schema(example = "null", description = "Version number of the integration application.")
-    @get:JsonProperty("app_version_number") val appVersionNumber: kotlin.String? = null,
 
     @get:Size(max=20)
     @Schema(example = "null", description = "Version number of the platform the integration application is running on.")
@@ -78,11 +78,11 @@ data class IntegrationLog(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("error") val error: IntegrationLogClientError? = null,
+    @get:JsonProperty("request") val request: IntegrationLogClientRequest? = null,
 
-    @field:Valid
+    @get:Size(max=128)
     @Schema(example = "null", description = "")
-    @get:JsonProperty("request") val request: IntegrationLogClientRequest? = null
+    @get:JsonProperty("tag_id") val tagId: kotlin.String? = null
 ) {
 
     /**

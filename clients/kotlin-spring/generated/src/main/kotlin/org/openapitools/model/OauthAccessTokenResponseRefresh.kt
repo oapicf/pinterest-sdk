@@ -18,9 +18,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * A successful OAuth access token response for the refresh token flow.
  * @param accessToken 
- * @param tokenType 
  * @param expiresIn 
  * @param scope 
+ * @param tokenType 
+ * @param refreshToken 
+ * @param refreshTokenExpiresAt 
+ * @param refreshTokenExpiresIn 
  * @param responseType 
  */
 data class OauthAccessTokenResponseRefresh(
@@ -29,13 +32,22 @@ data class OauthAccessTokenResponseRefresh(
     @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
-
-    @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("expires_in", required = true) val expiresIn: kotlin.Int,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("scope", required = true) val scope: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token_expires_at", required = true) val refreshTokenExpiresAt: kotlin.Int,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token_expires_in", required = true) val refreshTokenExpiresIn: kotlin.Int,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseRefresh.ResponseType? = null

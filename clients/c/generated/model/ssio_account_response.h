@@ -21,23 +21,23 @@ typedef struct ssio_account_response_t ssio_account_response_t;
 
 
 typedef struct ssio_account_response_t {
-    int eligible; //boolean
-    int can_edit; //boolean
     list_t *billto_infos; //nonprimitive container
+    int can_edit; //boolean
     char *currency; // string
-    list_t *pmp_names; //nonprimitive container
+    int eligible; //boolean
     char *error; // string
+    list_t *pmp_names; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_response_t;
 
 __attribute__((deprecated)) ssio_account_response_t *ssio_account_response_create(
-    int eligible,
-    int can_edit,
     list_t *billto_infos,
+    int can_edit,
     char *currency,
-    list_t *pmp_names,
-    char *error
+    int eligible,
+    char *error,
+    list_t *pmp_names
 );
 
 void ssio_account_response_free(ssio_account_response_t *ssio_account_response);

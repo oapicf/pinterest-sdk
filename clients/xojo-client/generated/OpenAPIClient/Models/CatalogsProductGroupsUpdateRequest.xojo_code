@@ -2,12 +2,12 @@
 Protected Class CatalogsProductGroupsUpdateRequest
 
 	#tag Property, Flags = &h0
-		name As Xoson.O.OptionalString
+		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
 	#tag EndProperty
 
 
@@ -20,7 +20,7 @@ Protected Class CatalogsProductGroupsUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -93,7 +93,7 @@ Protected Class CatalogsProductGroupsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="description"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -101,11 +101,11 @@ Protected Class CatalogsProductGroupsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="description"
+			Name="filters"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="CatalogsCreativeAssetsProductGroupFilters"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -117,11 +117,11 @@ Protected Class CatalogsProductGroupsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="filters"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsCreativeAssetsProductGroupFilters"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

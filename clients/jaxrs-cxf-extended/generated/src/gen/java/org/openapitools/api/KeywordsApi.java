@@ -82,7 +82,7 @@ public interface KeywordsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = KeywordsGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public KeywordsGet200Response keywordsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("campaign_id") @Pattern(regexp="^\\d+$") @Size(max=18) String campaignId, @QueryParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adGroupId, @QueryParam("match_types") @Size(min=1,max=5) List<MatchType> matchTypes, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("bookmark") String bookmark);
+    public KeywordsGet200Response keywordsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("campaign_id") @Pattern(regexp="^\\d+$") @Size(max=18) String campaignId, @QueryParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adGroupId, @QueryParam("ad_group_ids") @Size(min=1,max=250) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, @QueryParam("match_types") @Size(min=1,max=5) List<MatchType> matchTypes, @QueryParam("page_size") @Min(1) @DefaultValue("25") Integer pageSize, @QueryParam("bookmark") String bookmark);
 
     /**
      * Update keywords
@@ -114,5 +114,5 @@ public interface KeywordsApi  {
         @ApiResponse(code = 200, message = "Success", response = TrendingKeywordsResponse.class),
         @ApiResponse(code = 400, message = "Invalid trending keywords request parameters", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public TrendingKeywordsResponse trendingKeywordsList(@PathParam("region") TrendsSupportedRegion region, @PathParam("trend_type") TrendType trendType, @QueryParam("interests") List<String> interests, @QueryParam("genders") List<String> genders, @QueryParam("ages") List<String> ages, @QueryParam("include_keywords") @Size(min=1,max=50) List<@Size(min = 1, max = 100)String> includeKeywords, @QueryParam("normalize_against_group") @DefaultValue("false") Boolean normalizeAgainstGroup, @QueryParam("limit") @Min(1) @Max(50) @DefaultValue("50") Integer limit);
+    public TrendingKeywordsResponse trendingKeywordsList(@PathParam("region") TrendsSupportedRegion region, @PathParam("trend_type") TrendType trendType, @QueryParam("interests") List<String> interests, @QueryParam("genders") List<String> genders, @QueryParam("ages") List<String> ages, @QueryParam("include_keywords") @Size(min=1,max=50) List<@Size(min = 1, max = 100)String> includeKeywords, @QueryParam("normalize_against_group") @DefaultValue("false") Boolean normalizeAgainstGroup, @QueryParam("limit") @Min(1) @Max(50) @DefaultValue("50") Integer limit, @QueryParam("include_prediction") @DefaultValue("false") Boolean includePrediction, @QueryParam("include_demographics") @DefaultValue("false") Boolean includeDemographics);
 }

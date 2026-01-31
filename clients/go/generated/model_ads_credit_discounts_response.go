@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,16 +24,16 @@ type AdsCreditDiscountsResponse struct {
 	Active *bool `json:"active,omitempty"`
 	// Advertiser ID the offer was applied to.
 	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// The type of discount of this credit
-	DiscountType NullableString `json:"discountType,omitempty"`
-	// The discount applied in the offer’s currency value.
-	DiscountInMicroCurrency NullableFloat32 `json:"discountInMicroCurrency,omitempty"`
 	// Currency value for the discount.
 	DiscountCurrency NullableString `json:"discountCurrency,omitempty"`
-	// Human readable title of the offer code.
-	Title NullableString `json:"title,omitempty"`
+	// The discount applied in the offer’s currency value.
+	DiscountInMicroCurrency NullableFloat32 `json:"discountInMicroCurrency,omitempty"`
+	// The type of discount of this credit
+	DiscountType NullableString `json:"discountType,omitempty"`
 	// The credits left to spend.
 	RemainingDiscountInMicroCurrency NullableFloat32 `json:"remainingDiscountInMicroCurrency,omitempty"`
+	// Human readable title of the offer code.
+	Title NullableString `json:"title,omitempty"`
 }
 
 // NewAdsCreditDiscountsResponse instantiates a new AdsCreditDiscountsResponse object
@@ -117,46 +117,46 @@ func (o *AdsCreditDiscountsResponse) SetAdvertiserId(v string) {
 	o.AdvertiserId = &v
 }
 
-// GetDiscountType returns the DiscountType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdsCreditDiscountsResponse) GetDiscountType() string {
-	if o == nil || IsNil(o.DiscountType.Get()) {
+// GetDiscountCurrency returns the DiscountCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdsCreditDiscountsResponse) GetDiscountCurrency() string {
+	if o == nil || IsNil(o.DiscountCurrency.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DiscountType.Get()
+	return *o.DiscountCurrency.Get()
 }
 
-// GetDiscountTypeOk returns a tuple with the DiscountType field value if set, nil otherwise
+// GetDiscountCurrencyOk returns a tuple with the DiscountCurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*string, bool) {
+func (o *AdsCreditDiscountsResponse) GetDiscountCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DiscountType.Get(), o.DiscountType.IsSet()
+	return o.DiscountCurrency.Get(), o.DiscountCurrency.IsSet()
 }
 
-// HasDiscountType returns a boolean if a field has been set.
-func (o *AdsCreditDiscountsResponse) HasDiscountType() bool {
-	if o != nil && o.DiscountType.IsSet() {
+// HasDiscountCurrency returns a boolean if a field has been set.
+func (o *AdsCreditDiscountsResponse) HasDiscountCurrency() bool {
+	if o != nil && o.DiscountCurrency.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiscountType gets a reference to the given NullableString and assigns it to the DiscountType field.
-func (o *AdsCreditDiscountsResponse) SetDiscountType(v string) {
-	o.DiscountType.Set(&v)
+// SetDiscountCurrency gets a reference to the given NullableString and assigns it to the DiscountCurrency field.
+func (o *AdsCreditDiscountsResponse) SetDiscountCurrency(v string) {
+	o.DiscountCurrency.Set(&v)
 }
-// SetDiscountTypeNil sets the value for DiscountType to be an explicit nil
-func (o *AdsCreditDiscountsResponse) SetDiscountTypeNil() {
-	o.DiscountType.Set(nil)
+// SetDiscountCurrencyNil sets the value for DiscountCurrency to be an explicit nil
+func (o *AdsCreditDiscountsResponse) SetDiscountCurrencyNil() {
+	o.DiscountCurrency.Set(nil)
 }
 
-// UnsetDiscountType ensures that no value is present for DiscountType, not even an explicit nil
-func (o *AdsCreditDiscountsResponse) UnsetDiscountType() {
-	o.DiscountType.Unset()
+// UnsetDiscountCurrency ensures that no value is present for DiscountCurrency, not even an explicit nil
+func (o *AdsCreditDiscountsResponse) UnsetDiscountCurrency() {
+	o.DiscountCurrency.Unset()
 }
 
 // GetDiscountInMicroCurrency returns the DiscountInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -201,88 +201,46 @@ func (o *AdsCreditDiscountsResponse) UnsetDiscountInMicroCurrency() {
 	o.DiscountInMicroCurrency.Unset()
 }
 
-// GetDiscountCurrency returns the DiscountCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdsCreditDiscountsResponse) GetDiscountCurrency() string {
-	if o == nil || IsNil(o.DiscountCurrency.Get()) {
+// GetDiscountType returns the DiscountType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdsCreditDiscountsResponse) GetDiscountType() string {
+	if o == nil || IsNil(o.DiscountType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DiscountCurrency.Get()
+	return *o.DiscountType.Get()
 }
 
-// GetDiscountCurrencyOk returns a tuple with the DiscountCurrency field value if set, nil otherwise
+// GetDiscountTypeOk returns a tuple with the DiscountType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdsCreditDiscountsResponse) GetDiscountCurrencyOk() (*string, bool) {
+func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DiscountCurrency.Get(), o.DiscountCurrency.IsSet()
+	return o.DiscountType.Get(), o.DiscountType.IsSet()
 }
 
-// HasDiscountCurrency returns a boolean if a field has been set.
-func (o *AdsCreditDiscountsResponse) HasDiscountCurrency() bool {
-	if o != nil && o.DiscountCurrency.IsSet() {
+// HasDiscountType returns a boolean if a field has been set.
+func (o *AdsCreditDiscountsResponse) HasDiscountType() bool {
+	if o != nil && o.DiscountType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiscountCurrency gets a reference to the given NullableString and assigns it to the DiscountCurrency field.
-func (o *AdsCreditDiscountsResponse) SetDiscountCurrency(v string) {
-	o.DiscountCurrency.Set(&v)
+// SetDiscountType gets a reference to the given NullableString and assigns it to the DiscountType field.
+func (o *AdsCreditDiscountsResponse) SetDiscountType(v string) {
+	o.DiscountType.Set(&v)
 }
-// SetDiscountCurrencyNil sets the value for DiscountCurrency to be an explicit nil
-func (o *AdsCreditDiscountsResponse) SetDiscountCurrencyNil() {
-	o.DiscountCurrency.Set(nil)
-}
-
-// UnsetDiscountCurrency ensures that no value is present for DiscountCurrency, not even an explicit nil
-func (o *AdsCreditDiscountsResponse) UnsetDiscountCurrency() {
-	o.DiscountCurrency.Unset()
+// SetDiscountTypeNil sets the value for DiscountType to be an explicit nil
+func (o *AdsCreditDiscountsResponse) SetDiscountTypeNil() {
+	o.DiscountType.Set(nil)
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdsCreditDiscountsResponse) GetTitle() string {
-	if o == nil || IsNil(o.Title.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Title.Get()
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdsCreditDiscountsResponse) GetTitleOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Title.Get(), o.Title.IsSet()
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *AdsCreditDiscountsResponse) HasTitle() bool {
-	if o != nil && o.Title.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
-func (o *AdsCreditDiscountsResponse) SetTitle(v string) {
-	o.Title.Set(&v)
-}
-// SetTitleNil sets the value for Title to be an explicit nil
-func (o *AdsCreditDiscountsResponse) SetTitleNil() {
-	o.Title.Set(nil)
-}
-
-// UnsetTitle ensures that no value is present for Title, not even an explicit nil
-func (o *AdsCreditDiscountsResponse) UnsetTitle() {
-	o.Title.Unset()
+// UnsetDiscountType ensures that no value is present for DiscountType, not even an explicit nil
+func (o *AdsCreditDiscountsResponse) UnsetDiscountType() {
+	o.DiscountType.Unset()
 }
 
 // GetRemainingDiscountInMicroCurrency returns the RemainingDiscountInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -327,6 +285,48 @@ func (o *AdsCreditDiscountsResponse) UnsetRemainingDiscountInMicroCurrency() {
 	o.RemainingDiscountInMicroCurrency.Unset()
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdsCreditDiscountsResponse) GetTitle() string {
+	if o == nil || IsNil(o.Title.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Title.Get()
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdsCreditDiscountsResponse) GetTitleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Title.Get(), o.Title.IsSet()
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *AdsCreditDiscountsResponse) HasTitle() bool {
+	if o != nil && o.Title.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
+func (o *AdsCreditDiscountsResponse) SetTitle(v string) {
+	o.Title.Set(&v)
+}
+// SetTitleNil sets the value for Title to be an explicit nil
+func (o *AdsCreditDiscountsResponse) SetTitleNil() {
+	o.Title.Set(nil)
+}
+
+// UnsetTitle ensures that no value is present for Title, not even an explicit nil
+func (o *AdsCreditDiscountsResponse) UnsetTitle() {
+	o.Title.Unset()
+}
+
 func (o AdsCreditDiscountsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -343,20 +343,20 @@ func (o AdsCreditDiscountsResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdvertiserId) {
 		toSerialize["advertiser_id"] = o.AdvertiserId
 	}
-	if o.DiscountType.IsSet() {
-		toSerialize["discountType"] = o.DiscountType.Get()
+	if o.DiscountCurrency.IsSet() {
+		toSerialize["discountCurrency"] = o.DiscountCurrency.Get()
 	}
 	if o.DiscountInMicroCurrency.IsSet() {
 		toSerialize["discountInMicroCurrency"] = o.DiscountInMicroCurrency.Get()
 	}
-	if o.DiscountCurrency.IsSet() {
-		toSerialize["discountCurrency"] = o.DiscountCurrency.Get()
-	}
-	if o.Title.IsSet() {
-		toSerialize["title"] = o.Title.Get()
+	if o.DiscountType.IsSet() {
+		toSerialize["discountType"] = o.DiscountType.Get()
 	}
 	if o.RemainingDiscountInMicroCurrency.IsSet() {
 		toSerialize["remainingDiscountInMicroCurrency"] = o.RemainingDiscountInMicroCurrency.Get()
+	}
+	if o.Title.IsSet() {
+		toSerialize["title"] = o.Title.Get()
 	}
 	return toSerialize, nil
 }

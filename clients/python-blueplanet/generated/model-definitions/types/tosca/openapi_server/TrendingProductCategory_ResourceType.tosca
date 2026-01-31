@@ -1,0 +1,58 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendingProductCategory"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendingProductCategory"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ProductCategoriesEngagementType = openapi_server.resourceTypes.ProductCategoriesEngagementType
+  VerticalProductCategory = openapi_server.resourceTypes.VerticalProductCategory
+}
+resourceTypes {
+
+  TrendingProductCategory {
+    title = TrendingProductCategory
+    description = TrendingProductCategory
+    derivedFrom = Root
+    properties {
+        engagement_type {
+          type = ProductCategoriesEngagementType
+          description = "Engagement type"
+          optional = true
+        }
+        pct_change_mom {
+          type =  integer
+          description = "Month-over-month change percentage"
+          optional = true
+        }
+        percent_relative_volume {
+          type =  integer
+          description = "Relative volume percentage"
+          optional = true
+        }
+        product_category {
+          type =  string
+          description = "Product Category Name"
+          optional = true
+        }
+        verticals {
+          type = array
+          items.type = VerticalProductCategory
+          description = "Vertical name associated with the product category"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendingProductCategory {
+    title = TrendingProductCategory
+    description = TrendingProductCategory
+    implements = openapi_server.resourceTypes.TrendingProductCategory
+
+  }
+}

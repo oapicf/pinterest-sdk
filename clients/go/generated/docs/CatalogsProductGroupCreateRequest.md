@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
-**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
 **FeedId** | **string** | Catalog Feed id pertaining to the catalog product group. | 
+**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
+**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewCatalogsProductGroupCreateRequest
 
-`func NewCatalogsProductGroupCreateRequest(name string, filters CatalogsProductGroupFiltersRequest, feedId string, ) *CatalogsProductGroupCreateRequest`
+`func NewCatalogsProductGroupCreateRequest(feedId string, filters CatalogsProductGroupFiltersRequest, name string, ) *CatalogsProductGroupCreateRequest`
 
 NewCatalogsProductGroupCreateRequest instantiates a new CatalogsProductGroupCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +28,6 @@ will change when the set of required properties is changed
 NewCatalogsProductGroupCreateRequestWithDefaults instantiates a new CatalogsProductGroupCreateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *CatalogsProductGroupCreateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsProductGroupCreateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsProductGroupCreateRequest) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -84,6 +64,46 @@ HasDescription returns a boolean if a field has been set.
 `func (o *CatalogsProductGroupCreateRequest) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetFeedId
+
+`func (o *CatalogsProductGroupCreateRequest) GetFeedId() string`
+
+GetFeedId returns the FeedId field if non-nil, zero value otherwise.
+
+### GetFeedIdOk
+
+`func (o *CatalogsProductGroupCreateRequest) GetFeedIdOk() (*string, bool)`
+
+GetFeedIdOk returns a tuple with the FeedId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeedId
+
+`func (o *CatalogsProductGroupCreateRequest) SetFeedId(v string)`
+
+SetFeedId sets FeedId field to given value.
+
+
+### GetFilters
+
+`func (o *CatalogsProductGroupCreateRequest) GetFilters() CatalogsProductGroupFiltersRequest`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *CatalogsProductGroupCreateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *CatalogsProductGroupCreateRequest) SetFilters(v CatalogsProductGroupFiltersRequest)`
+
+SetFilters sets Filters field to given value.
+
+
 ### GetIsFeatured
 
 `func (o *CatalogsProductGroupCreateRequest) GetIsFeatured() bool`
@@ -109,44 +129,24 @@ SetIsFeatured sets IsFeatured field to given value.
 
 HasIsFeatured returns a boolean if a field has been set.
 
-### GetFilters
+### GetName
 
-`func (o *CatalogsProductGroupCreateRequest) GetFilters() CatalogsProductGroupFiltersRequest`
+`func (o *CatalogsProductGroupCreateRequest) GetName() string`
 
-GetFilters returns the Filters field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetFiltersOk
+### GetNameOk
 
-`func (o *CatalogsProductGroupCreateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool)`
+`func (o *CatalogsProductGroupCreateRequest) GetNameOk() (*string, bool)`
 
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilters
+### SetName
 
-`func (o *CatalogsProductGroupCreateRequest) SetFilters(v CatalogsProductGroupFiltersRequest)`
+`func (o *CatalogsProductGroupCreateRequest) SetName(v string)`
 
-SetFilters sets Filters field to given value.
-
-
-### GetFeedId
-
-`func (o *CatalogsProductGroupCreateRequest) GetFeedId() string`
-
-GetFeedId returns the FeedId field if non-nil, zero value otherwise.
-
-### GetFeedIdOk
-
-`func (o *CatalogsProductGroupCreateRequest) GetFeedIdOk() (*string, bool)`
-
-GetFeedIdOk returns a tuple with the FeedId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeedId
-
-`func (o *CatalogsProductGroupCreateRequest) SetFeedId(v string)`
-
-SetFeedId sets FeedId field to given value.
+SetName sets Name field to given value.
 
 
 

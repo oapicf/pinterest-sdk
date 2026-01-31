@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionProductReportingColumn"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionProductReportingColumn"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionProductReportingColumn {
+    title = ConversionProductReportingColumn
+    description = ConversionProductReportingColumn
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionProductReportingColumn {
+    title = ConversionProductReportingColumn
+    description = ConversionProductReportingColumn
+    implements = openapi_server.resourceTypes.ConversionProductReportingColumn
+
+  }
+}

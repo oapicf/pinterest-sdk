@@ -11,11 +11,11 @@ import { BusinessRoleForMembers } from './businessRoleForMembers';
 
 
 export interface MembersToDeleteBodyMembersInner { 
+    business_role: BusinessRoleForMembers;
     /**
      * Unique identifier of the member
      */
     member_id: string;
-    business_role: BusinessRoleForMembers;
 }
 export namespace MembersToDeleteBodyMembersInner {
 }

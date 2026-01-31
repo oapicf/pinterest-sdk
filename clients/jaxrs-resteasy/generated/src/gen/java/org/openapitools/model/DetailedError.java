@@ -10,12 +10,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Used for including extra details to a base error")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Used for including extra details to a base error")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DetailedError   {
   
   private Integer code;
-  private String message;
   private Object details;
+  private String message;
 
   /**
    **/
@@ -34,19 +34,6 @@ public class DetailedError   {
    **/
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("message")
-  @NotNull
-  public String getMessage() {
-    return message;
-  }
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("details")
   @NotNull
   public Object getDetails() {
@@ -54,6 +41,19 @@ public class DetailedError   {
   }
   public void setDetails(Object details) {
     this.details = details;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("message")
+  @NotNull
+  public String getMessage() {
+    return message;
+  }
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -67,13 +67,13 @@ public class DetailedError   {
     }
     DetailedError detailedError = (DetailedError) o;
     return Objects.equals(this.code, detailedError.code) &&
-        Objects.equals(this.message, detailedError.message) &&
-        Objects.equals(this.details, detailedError.details);
+        Objects.equals(this.details, detailedError.details) &&
+        Objects.equals(this.message, detailedError.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, details);
+    return Objects.hash(code, details, message);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class DetailedError   {
     sb.append("class DetailedError {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

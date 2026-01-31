@@ -3,17 +3,17 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupUpdateRequest (
-    _name: Option[String],
     _description: Option[String],
+    _filters: Option[CatalogsProductGroupFiltersRequest],
     /* boolean indicator of whether the product group is being featured or not */
     _isFeatured: Option[Boolean],
-    _filters: Option[CatalogsProductGroupFiltersRequest]
+    _name: Option[String]
 )
 object CatalogsProductGroupUpdateRequest {
-    def toStringBody(var_name: Object, var_description: Object, var_isFeatured: Object, var_filters: Object) =
+    def toStringBody(var_description: Object, var_filters: Object, var_isFeatured: Object, var_name: Object) =
         s"""
         | {
-        | "name":$var_name,"description":$var_description,"isFeatured":$var_isFeatured,"filters":$var_filters
+        | "description":$var_description,"filters":$var_filters,"isFeatured":$var_isFeatured,"name":$var_name
         | }
         """.stripMargin
 }

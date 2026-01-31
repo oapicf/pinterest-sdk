@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,8 +28,8 @@ func AssertCatalogsListProductsByFilterRequestRequired(obj CatalogsListProductsB
 	elements := map[string]interface{}{
 		"feed_id": obj.FeedId,
 		"filters": obj.Filters,
-		"catalog_type": obj.CatalogType,
 		"catalog_id": obj.CatalogId,
+		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
 		"locale": obj.Locale,
 	}

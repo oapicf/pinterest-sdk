@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;AdAccountGetSubscriptionResponse&gt;**](AdAccountGetSubscriptionResponse.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;LeadSubscription&gt;**](LeadSubscription.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::AdAccountsSubscriptionsGetList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

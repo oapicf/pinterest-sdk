@@ -407,11 +407,11 @@ end
 
 ## boards_create
 
-> <Board> boards_create(board, opts)
+> <Board> boards_create(board_create, opts)
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Examples
 
@@ -422,17 +422,20 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
-board = PinterestSdkClient::Board.new({name: 'Summer Recipes'}) # Board | Create a board using a single board json object.
+board_create = PinterestSdkClient::BoardCreate.new({name: 'Summer recipes'}) # BoardCreate | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Create board
-  result = api_instance.boards_create(board, opts)
+  result = api_instance.boards_create(board_create, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->boards_create: #{e}"
@@ -443,12 +446,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Board>, Integer, Hash)> boards_create_with_http_info(board, opts)
+> <Array(<Board>, Integer, Hash)> boards_create_with_http_info(board_create, opts)
 
 ```ruby
 begin
   # Create board
-  data, status_code, headers = api_instance.boards_create_with_http_info(board, opts)
+  data, status_code, headers = api_instance.boards_create_with_http_info(board_create, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Board>
@@ -461,7 +464,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **board** | [**Board**](Board.md) | Create a board using a single board json object. |  |
+| **board_create** | [**BoardCreate**](BoardCreate.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -470,7 +473,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -484,7 +487,7 @@ end
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Examples
 
@@ -498,7 +501,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
-board_id = 'board_id_example' # String | Unique identifier of a board.
+board_id = 'board_id_example' # String | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -533,7 +536,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **board_id** | **String** | Unique identifier of a board. |  |
+| **board_id** | **String** |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -556,7 +559,7 @@ nil (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Examples
 
@@ -573,7 +576,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
-board_id = 'board_id_example' # String | Unique identifier of a board.
+board_id = 'board_id_example' # String | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -609,7 +612,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **board_id** | **String** | Unique identifier of a board. |  |
+| **board_id** | **String** |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -632,7 +635,7 @@ end
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Examples
 
@@ -651,9 +654,9 @@ end
 api_instance = PinterestSdkClient::BoardsApi.new
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
+  privacy: PinterestSdkClient::BoardPrivacyFilter::ALL, # BoardPrivacyFilter | The privacy level of the board
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  privacy: 'ALL' # String | Privacy setting for a board.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -688,9 +691,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
+| **privacy** | [**BoardPrivacyFilter**](.md) | The privacy level of the board | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **privacy** | **String** | Privacy setting for a board. | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -733,9 +736,9 @@ board_id = 'board_id_example' # String | Unique identifier of a board.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
   page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  creative_types: ['REGULAR'], # Array<String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+  creative_types: [PinterestSdkClient::CreativeType::REGULAR], # Array<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
-  pin_metrics: true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  pin_metrics: true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 }
 
 begin
@@ -772,9 +775,9 @@ end
 | **board_id** | **String** | Unique identifier of a board. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
 | **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **creative_types** | [**Array&lt;String&gt;**](String.md) | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
+| **creative_types** | [**Array&lt;CreativeType&gt;**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
-| **pin_metrics** | **Boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional][default to false] |
+| **pin_metrics** | **Boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional][default to false] |
 
 ### Return type
 
@@ -792,11 +795,11 @@ end
 
 ## boards_update
 
-> <Board> boards_update(board_id, board_update, opts)
+> <BoardWithUpdatePrivacy> boards_update(board_id, board_with_update_privacy_update, opts)
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Examples
 
@@ -807,18 +810,21 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
-board_id = 'board_id_example' # String | Unique identifier of a board.
-board_update = PinterestSdkClient::BoardUpdate.new # BoardUpdate | Update a board.
+board_id = 'board_id_example' # String | 
+board_with_update_privacy_update = PinterestSdkClient::BoardWithUpdatePrivacyUpdate.new # BoardWithUpdatePrivacyUpdate | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Update board
-  result = api_instance.boards_update(board_id, board_update, opts)
+  result = api_instance.boards_update(board_id, board_with_update_privacy_update, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->boards_update: #{e}"
@@ -829,15 +835,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Board>, Integer, Hash)> boards_update_with_http_info(board_id, board_update, opts)
+> <Array(<BoardWithUpdatePrivacy>, Integer, Hash)> boards_update_with_http_info(board_id, board_with_update_privacy_update, opts)
 
 ```ruby
 begin
   # Update board
-  data, status_code, headers = api_instance.boards_update_with_http_info(board_id, board_update, opts)
+  data, status_code, headers = api_instance.boards_update_with_http_info(board_id, board_with_update_privacy_update, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Board>
+  p data # => <BoardWithUpdatePrivacy>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->boards_update_with_http_info: #{e}"
 end
@@ -847,17 +853,17 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **board_id** | **String** | Unique identifier of a board. |  |
-| **board_update** | [**BoardUpdate**](BoardUpdate.md) | Update a board. |  |
+| **board_id** | **String** |  |  |
+| **board_with_update_privacy_update** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

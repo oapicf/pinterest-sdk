@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ImageDetails`
 --
-SELECT `width`, `height`, `url` FROM `ImageDetails` WHERE 1;
+SELECT `height`, `url`, `width` FROM `ImageDetails` WHERE 1;
 
 --
 -- INSERT template for table `ImageDetails`
 --
-INSERT INTO `ImageDetails`(`width`, `height`, `url`) VALUES (?, ?, ?);
+INSERT INTO `ImageDetails`(`height`, `url`, `width`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `ImageDetails`
 --
-UPDATE `ImageDetails` SET `width` = ?, `height` = ?, `url` = ? WHERE 1;
+UPDATE `ImageDetails` SET `height` = ?, `url` = ?, `width` = ? WHERE 1;
 
 --
 -- DELETE template for table `ImageDetails`

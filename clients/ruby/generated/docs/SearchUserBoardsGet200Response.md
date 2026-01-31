@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;Board&gt;**](Board.md) | items |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;Board&gt;**](Board.md) | items |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::SearchUserBoardsGet200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

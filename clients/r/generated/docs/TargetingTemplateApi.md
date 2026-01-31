@@ -24,7 +24,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_targeting_template_create <- TargetingTemplateCreate$new("name_example", TargetingSpec$new(c("18-24"), c("android_mobile"), c("AUDIENCE_EXCLUDE_example"), c("AUDIENCE_INCLUDE_example"), c("unknown"), c("GEO_example"), c("INTEREST_example"), c("LOCALE_example"), c("LOCATION_example"), c(TargetingSpec_SHOPPING_RETARGETING$new(123, c(123), 123)), c("CHOOSE_YOUR_OWN")), "auto_targeting_enabled_example", PlacementGroupType$new(), c(TargetingTemplateKeyword$new(MatchType$new(), "value_example")), TrackingUrls$new(c("impression_example"), c("click_example"), c("engagement_example"), c("buyable_button_example"), c("audience_verification_example"))) # TargetingTemplateCreate | targeting template creation entity
+var_targeting_template_create <- TargetingTemplateCreate$new("name_example", TargetingSpec$new(c(TargetingSpecAgeBucket$new()), c(TargetingSpecAppType$new()), c("AUDIENCE_EXCLUDE_example"), c("AUDIENCE_INCLUDE_example"), c(TargetingSpecGender$new()), c("GEO_example"), c("INTEREST_example"), c("LOCALE_example"), c("LOCATION_example"), "MAXIMUM_AGE_example", "MINIMUM_AGE_example", c(TargetingSpecShoppingRetargeting$new(123, 123, c(123))), c("CHOOSE_YOUR_OWN")), "auto_targeting_enabled_example", c(TargetingTemplateKeyword$new(MatchType$new(), "value_example")), PlacementGroupType$new(), TrackingUrls$new(c("audience_verification_example"), c("buyable_button_example"), c("click_example"), c("engagement_example"), c("impression_example"))) # TargetingTemplateCreate | targeting template creation entity
 
 api_instance <- TargetingTemplateApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -86,6 +86,8 @@ var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next p
 api_instance <- TargetingTemplateApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$TargetingTemplateList(var_ad_account_id, order = var_order, include_sizing = var_include_sizing, search_query = var_search_query, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
 result <- api_instance$TargetingTemplateList(var_ad_account_id, order = var_order, include_sizing = var_include_sizing, search_query = var_search_query, page_size = var_page_size, bookmark = var_bookmark)
@@ -109,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -138,7 +140,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_targeting_template_update_request <- TargetingTemplateUpdateRequest$new("REMOVE", "id_example") # TargetingTemplateUpdateRequest | Operation type and targeting template ID
+var_targeting_template_update_request <- TargetingTemplateUpdateRequest$new("id_example", "REMOVE", TargetingSpec$new(c(TargetingSpecAgeBucket$new()), c(TargetingSpecAppType$new()), c("AUDIENCE_EXCLUDE_example"), c("AUDIENCE_INCLUDE_example"), c(TargetingSpecGender$new()), c("GEO_example"), c("INTEREST_example"), c("LOCALE_example"), c("LOCATION_example"), "MAXIMUM_AGE_example", "MINIMUM_AGE_example", c(TargetingSpecShoppingRetargeting$new(123, 123, c(123))), c("CHOOSE_YOUR_OWN"))) # TargetingTemplateUpdateRequest | Operation type and targeting template ID
 
 api_instance <- TargetingTemplateApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

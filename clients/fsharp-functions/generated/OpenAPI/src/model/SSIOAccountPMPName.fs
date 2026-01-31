@@ -10,10 +10,10 @@ module SSIOAccountPMPName =
 
   [<CLIMutable>]
   type SSIOAccountPMPName = {
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

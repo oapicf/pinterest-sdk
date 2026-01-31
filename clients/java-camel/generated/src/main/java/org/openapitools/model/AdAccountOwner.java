@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,33 +18,12 @@ import javax.annotation.Generated;
  * AdAccountOwner
  */
 
-@JsonTypeName("Ad_account_owner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountOwner {
-
-  private String username;
 
   private String id;
 
-  public AdAccountOwner username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  /**
-   * Public username for the user account
-   * @return username
-   */
-  
-  @Schema(name = "username", description = "Public username for the user account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  private String username;
 
   public AdAccountOwner id(String id) {
     this.id = id;
@@ -67,6 +45,26 @@ public class AdAccountOwner {
     this.id = id;
   }
 
+  public AdAccountOwner username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * Public username for the user account
+   * @return username
+   */
+  
+  @Schema(name = "username", description = "Public username for the user account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -76,21 +74,21 @@ public class AdAccountOwner {
       return false;
     }
     AdAccountOwner adAccountOwner = (AdAccountOwner) o;
-    return Objects.equals(this.username, adAccountOwner.username) &&
-        Objects.equals(this.id, adAccountOwner.id);
+    return Objects.equals(this.id, adAccountOwner.id) &&
+        Objects.equals(this.username, adAccountOwner.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, id);
+    return Objects.hash(id, username);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountOwner {\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

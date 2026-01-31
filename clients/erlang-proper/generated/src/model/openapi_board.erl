@@ -9,17 +9,18 @@
 -export_type([openapi_board/0]).
 
 -type openapi_board() ::
-  [ {'id', binary() }
-  | {'created_at', datetime() }
-  | {'board_pins_modified_at', datetime() }
-  | {'name', binary() }
-  | {'description', binary() }
+  [ {'board_pins_modified_at', datetime() }
   | {'collaborator_count', integer() }
-  | {'pin_count', integer() }
+  | {'created_at', datetime() }
+  | {'description', binary() }
   | {'follower_count', integer() }
+  | {'id', binary() }
+  | {'is_ads_only', boolean() }
   | {'media', openapi_board_media:openapi_board_media() }
+  | {'name', binary() }
   | {'owner', openapi_board_owner:openapi_board_owner() }
-  | {'privacy', binary() }
+  | {'pin_count', integer() }
+  | {'privacy', openapi_board_privacy:openapi_board_privacy() }
   ].
 
 
@@ -27,17 +28,18 @@ openapi_board() ->
     openapi_board([]).
 
 openapi_board(Fields) ->
-  Default = [ {'id', binary() }
-            , {'created_at', datetime() }
-            , {'board_pins_modified_at', datetime() }
-            , {'name', binary() }
-            , {'description', binary() }
+  Default = [ {'board_pins_modified_at', datetime() }
             , {'collaborator_count', integer(0) }
-            , {'pin_count', integer(0) }
+            , {'created_at', datetime() }
+            , {'description', binary() }
             , {'follower_count', integer(0) }
+            , {'id', binary() }
+            , {'is_ads_only', boolean() }
             , {'media', openapi_board_media:openapi_board_media() }
+            , {'name', binary() }
             , {'owner', openapi_board_owner:openapi_board_owner() }
-            , {'privacy', elements([<<"PUBLIC">>, <<"PROTECTED">>, <<"SECRET">>]) }
+            , {'pin_count', integer(0) }
+            , {'privacy', openapi_board_privacy:openapi_board_privacy() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

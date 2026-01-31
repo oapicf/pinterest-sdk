@@ -16,32 +16,13 @@ import java.util.Objects;
 
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   
-  private Integer logIndex;
-
   private String field;
 
-  private String value;
+  private Integer logIndex;
 
   private String reason;
 
-  /**
-   * Index of the log in the batch.
-   **/
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
-    this.logIndex = logIndex;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Index of the log in the batch.")
-  @JsonProperty("log_index")
-  public Integer getLogIndex() {
-    return logIndex;
-  }
-  public void setLogIndex(Integer logIndex) {
-    this.logIndex = logIndex;
-  }
-
+  private String value;
 
   /**
    * The field name containing an invalid value.
@@ -64,22 +45,21 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
 
 
   /**
-   * The value that is invalid.
+   * Index of the log in the batch.
    **/
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
-    this.value = value;
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
+    this.logIndex = logIndex;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "The value that is invalid.")
-  @JsonProperty("value")
-  @NotNull
-  public String getValue() {
-    return value;
+  @ApiModelProperty(value = "Index of the log in the batch.")
+  @JsonProperty("log_index")
+  public Integer getLogIndex() {
+    return logIndex;
   }
-  public void setValue(String value) {
-    this.value = value;
+  public void setLogIndex(Integer logIndex) {
+    this.logIndex = logIndex;
   }
 
 
@@ -103,6 +83,26 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   }
 
 
+  /**
+   * The value that is invalid.
+   **/
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
+    this.value = value;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The value that is invalid.")
+  @JsonProperty("value")
+  @NotNull
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,15 +113,15 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
       return false;
     }
     IntegrationLogsInvalidLogResponseRejectedLogsInner integrationLogsInvalidLogResponseRejectedLogsInner = (IntegrationLogsInvalidLogResponseRejectedLogsInner) o;
-    return Objects.equals(this.logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
-        Objects.equals(this.field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
-        Objects.equals(this.value, integrationLogsInvalidLogResponseRejectedLogsInner.value) &&
-        Objects.equals(this.reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason);
+    return Objects.equals(this.field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
+        Objects.equals(this.logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
+        Objects.equals(this.reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason) &&
+        Objects.equals(this.value, integrationLogsInvalidLogResponseRejectedLogsInner.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logIndex, field, value, reason);
+    return Objects.hash(field, logIndex, reason, value);
   }
 
   @Override
@@ -129,10 +129,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogsInvalidLogResponseRejectedLogsInner {\n");
     
-    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

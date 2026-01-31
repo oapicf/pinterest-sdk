@@ -17,6 +17,7 @@
 campaign_create_request_t* instantiate_campaign_create_request(int include_optional);
 
 #include "test_tracking_urls.c"
+#include "test_campaign_bid_options_create.c"
 
 
 campaign_create_request_t* instantiate_campaign_create_request(int include_optional) {
@@ -24,32 +25,39 @@ campaign_create_request_t* instantiate_campaign_create_request(int include_optio
   if (include_optional) {
     campaign_create_request = campaign_create_request_create(
       "549755885175",
-      "ACME Tools",
-      "ACTIVE",
       1432744744,
-      1432744744,
-      "549755885175",
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      1580865126,
       1644023526,
       true,
+      true,
+      1432744744,
+      "ACME Tools",
+      "549755885175",
+      1580865126,
+      "ACTIVE",
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       0,
+      true,
+       // false, not to have infinite recursion
+      instantiate_campaign_bid_options_create(0),
       true,
       pinterest_rest_api_campaign_create_request__AWARENESS
     );
   } else {
     campaign_create_request = campaign_create_request_create(
       "549755885175",
-      "ACME Tools",
-      "ACTIVE",
       1432744744,
-      1432744744,
-      "549755885175",
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      1580865126,
       1644023526,
       true,
+      true,
+      1432744744,
+      "ACME Tools",
+      "549755885175",
+      1580865126,
+      "ACTIVE",
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       0,
+      true,
+      NULL,
       true,
       pinterest_rest_api_campaign_create_request__AWARENESS
     );

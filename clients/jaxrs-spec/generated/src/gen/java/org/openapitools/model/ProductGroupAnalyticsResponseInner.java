@@ -20,10 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ProductGroupAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object>  {
-  private String PRODUCT_GROUP_ID;
   private LocalDate DATE;
+  private String PRODUCT_GROUP_ID;
 
   public ProductGroupAnalyticsResponseInner() {
   }
@@ -34,26 +34,6 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
   ) {
     super(
     );
-    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
-  }
-
-  /**
-   * The ID of the product group that this metrics belongs to.
-   **/
-  public ProductGroupAnalyticsResponseInner PRODUCT_GROUP_ID(String PRODUCT_GROUP_ID) {
-    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The ID of the product group that this metrics belongs to.")
-  @JsonProperty(required = true, value = "PRODUCT_GROUP_ID")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getPRODUCTGROUPID() {
-    return PRODUCT_GROUP_ID;
-  }
-
-  @JsonProperty(required = true, value = "PRODUCT_GROUP_ID")
-  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }
 
@@ -77,6 +57,26 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
     this.DATE = DATE;
   }
 
+  /**
+   * The ID of the product group that this metrics belongs to.
+   **/
+  public ProductGroupAnalyticsResponseInner PRODUCT_GROUP_ID(String PRODUCT_GROUP_ID) {
+    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The ID of the product group that this metrics belongs to.")
+  @JsonProperty(required = true, value = "PRODUCT_GROUP_ID")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getPRODUCTGROUPID() {
+    return PRODUCT_GROUP_ID;
+  }
+
+  @JsonProperty(required = true, value = "PRODUCT_GROUP_ID")
+  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
+    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,14 +87,14 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
       return false;
     }
     ProductGroupAnalyticsResponseInner productGroupAnalyticsResponseInner = (ProductGroupAnalyticsResponseInner) o;
-    return Objects.equals(this.PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID) &&
-        Objects.equals(this.DATE, productGroupAnalyticsResponseInner.DATE) &&
+    return Objects.equals(this.DATE, productGroupAnalyticsResponseInner.DATE) &&
+        Objects.equals(this.PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(PRODUCT_GROUP_ID, DATE, super.hashCode());
+    return Objects.hash(DATE, PRODUCT_GROUP_ID, super.hashCode());
   }
 
   @Override
@@ -102,8 +102,8 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductGroupAnalyticsResponseInner {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
+    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,16 +26,16 @@ class CatalogsProductGroupUpdateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsProductGroupUpdateRequest
         //val modelInstance = CatalogsProductGroupUpdateRequest()
 
-        // to test the property `name`
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `description`
         should("test description") {
             // uncomment below to test the property
             //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `filters`
+        should("test filters") {
+            // uncomment below to test the property
+            //modelInstance.filters shouldBe ("TODO")
         }
 
         // to test the property `isFeatured` - boolean indicator of whether the product group is being featured or not
@@ -44,10 +44,10 @@ class CatalogsProductGroupUpdateRequestTest : ShouldSpec() {
             //modelInstance.isFeatured shouldBe ("TODO")
         }
 
-        // to test the property `filters`
-        should("test filters") {
+        // to test the property `name`
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.filters shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

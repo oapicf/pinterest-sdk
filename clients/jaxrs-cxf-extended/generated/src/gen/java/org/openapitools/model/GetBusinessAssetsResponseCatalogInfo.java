@@ -1,0 +1,151 @@
+package org.openapitools.model;
+
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+/**
+ * An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.
+ */
+@ApiModel(description="An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.")
+
+public class GetBusinessAssetsResponseCatalogInfo  {
+  
+ /**
+  * Catalog type
+  */
+  @ApiModelProperty(example = "PRODUCT", value = "Catalog type")
+  private String catalogType;
+
+ /**
+  * Catalog ID.
+  */
+  @ApiModelProperty(example = "4836859046874", value = "Catalog ID.")
+  private String id;
+
+ /**
+  * Catalog name
+  */
+  @ApiModelProperty(example = "Canada Catalog", value = "Catalog name")
+  private String name;
+ /**
+  * Catalog type
+  * @return catalogType
+  */
+  @JsonProperty("catalog_type")
+  public String getCatalogType() {
+    return catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+ public void setCatalogType(String catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+  public GetBusinessAssetsResponseCatalogInfo catalogType(String catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+ /**
+  * Catalog ID.
+  * @return id
+  */
+  @JsonProperty("id")
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public GetBusinessAssetsResponseCatalogInfo id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+  * Catalog name
+  * @return name
+  */
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+ public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+  public GetBusinessAssetsResponseCatalogInfo name(String name) {
+    this.name = name;
+    return this;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    GetBusinessAssetsResponseCatalogInfo getBusinessAssetsResponseCatalogInfo = (GetBusinessAssetsResponseCatalogInfo) o;
+    return Objects.equals(this.catalogType, getBusinessAssetsResponseCatalogInfo.catalogType) &&
+        Objects.equals(this.id, getBusinessAssetsResponseCatalogInfo.id) &&
+        Objects.equals(this.name, getBusinessAssetsResponseCatalogInfo.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(catalogType, id, name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class GetBusinessAssetsResponseCatalogInfo {\n");
+    
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

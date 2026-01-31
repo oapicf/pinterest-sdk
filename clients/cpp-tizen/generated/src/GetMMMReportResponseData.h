@@ -54,23 +54,23 @@ public:
 	void setReportStatus(std::string  report_status);
 	/*! \brief Get 
 	 */
-	std::string getUrl();
-
-	/*! \brief Set 
-	 */
-	void setUrl(std::string  url);
-	/*! \brief Get 
-	 */
 	long long getSize();
 
 	/*! \brief Set 
 	 */
 	void setSize(long long  size);
+	/*! \brief Get 
+	 */
+	std::string getUrl();
+
+	/*! \brief Set 
+	 */
+	void setUrl(std::string  url);
 
 private:
 	std::string report_status;
-	std::string url;
 	long long size;
+	std::string url;
 	void __init();
 	void __cleanup();
 

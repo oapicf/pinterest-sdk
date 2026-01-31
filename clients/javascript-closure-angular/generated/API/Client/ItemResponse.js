@@ -1,7 +1,7 @@
 goog.provide('API.Client.ItemResponse');
 
 /**
- * Object describing an item record
+ * Object describing an item record or error
  * @record
  */
 API.Client.ItemResponse = function() {}
@@ -11,6 +11,12 @@ API.Client.ItemResponse = function() {}
  * @export
  */
 API.Client.ItemResponse.prototype.catalogType;
+
+/**
+ * @type {!API.Client.CatalogsCreativeAssetsAttributes}
+ * @export
+ */
+API.Client.ItemResponse.prototype.attributes;
 
 /**
  * The catalog item id in the merchant namespace
@@ -25,12 +31,6 @@ API.Client.ItemResponse.prototype.itemId;
  * @export
  */
 API.Client.ItemResponse.prototype.pins;
-
-/**
- * @type {!API.Client.CatalogsCreativeAssetsAttributes}
- * @export
- */
-API.Client.ItemResponse.prototype.attributes;
 
 /**
  * The catalog hotel id in the merchant namespace

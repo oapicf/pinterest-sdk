@@ -2,6 +2,14 @@
 Protected Class CatalogsRetailBatchRequest
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+		#tag EndNote
+		catalog_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
@@ -13,17 +21,17 @@ Protected Class CatalogsRetailBatchRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			We recommend using the CatalogsLocale values.
+			Array with catalogs item operations
 		#tag EndNote
-		language As OpenAPIClient.Models.String
+		items() As OpenAPIClient.Models.CatalogsRetailBatchRequestItemsInner
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Array with catalogs item operations
+			We recommend using the CatalogsLocale values.
 		#tag EndNote
-		items() As OpenAPIClient.Models.CatalogsRetailBatchRequestItemsInner
+		language As OpenAPIClient.Models.String
 	#tag EndProperty
 
 
@@ -413,6 +421,14 @@ Protected Class CatalogsRetailBatchRequest
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="catalog_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

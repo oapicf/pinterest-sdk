@@ -12,52 +12,52 @@ import org.joda.time.DateTime
 import TemplateResponse._
 
 case class TemplateResponse (
-  /* Template ID */
-  id: Option[String],
-/* ID of the Ad Account that owns the template */
+  /* ID of the Ad Account that owns the template */
   adAccountId: Option[String],
 /* IDs of the Ad Accounts that have access to this template */
   adAccountIds: Option[List[String]],
-/* ID of the user who created the template */
-  userId: Option[String],
-/* Template Name */
-  name: Option[String],
-/* The number of days prior to the day the report will be delivered at which the report will start */
-  reportStartRelativeDaysInPast: Option[BigDecimal],
-/* The number of days prior to the day the report will be delivered at which the report will end */
-  reportEndRelativeDaysInPast: Option[BigDecimal],
-dateRange: Option[TemplateResponseDateRange],
-reportLevel: Option[MetricsReportingLevel],
-reportFormat: Option[DataOutputFormat],
-/* A list of columns to be included in the report */
-  columns: Option[List[Columns]],
-granularity: Option[Granularity],
-/* The length of the sliding window over which view conversions will be attributed */
-  viewWindowDays: Option[BigDecimal],
 /* The length of the sliding window over which click conversions will be attributed */
   clickWindowDays: Option[BigDecimal],
-/* The length of the sliding window over which engagement conversions will be attributed */
-  engagementWindowDays: Option[BigDecimal],
+/* A list of columns to be included in the report */
+  columns: Option[List[Columns]],
 /* Conversion report time type */
   conversionReportTimeType: Option[ConversionReportTimeType],
+/* The surface used to create this template */
+  creationSource: Option[CreationSource],
+/* A list of custom column IDs */
+  customColumnIds: Option[List[String]],
+dateRange: Option[TemplateResponseDateRange],
+/* The length of the sliding window over which engagement conversions will be attributed */
+  engagementWindowDays: Option[BigDecimal],
 /* A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values */
   filtersJson: Option[String],
+granularity: Option[Granularity],
+/* Template ID */
+  id: Option[String],
+/* The filter on the conversion ingestion source method for conversion metrics */
+  ingestionSources: Option[List[IngestionSources]],
+/* A boolean that indicates if the template has been deleted */
+  isDeleted: Option[Boolean],
 /* A boolean value that indicates if the user owns the template */
   isOwnedByUser: Option[Boolean],
 /* A boolean value that indicates if this template has been used to create a scheduled report */
   isScheduled: Option[Boolean],
-/* The surface used to create this template */
-  creationSource: Option[CreationSource],
-/* A boolean that indicates if the template has been deleted */
-  isDeleted: Option[Boolean],
-/* Time of last update in seconds since Unix epoch */
-  updatedTime: Option[BigDecimal],
-/* A list of custom column IDs */
-  customColumnIds: Option[List[String]],
+/* Template Name */
+  name: Option[String],
+/* The number of days prior to the day the report will be delivered at which the report will end */
+  reportEndRelativeDaysInPast: Option[BigDecimal],
+reportFormat: Option[DataOutputFormat],
+reportLevel: Option[MetricsReportingLevel],
+/* The number of days prior to the day the report will be delivered at which the report will start */
+  reportStartRelativeDaysInPast: Option[BigDecimal],
 /* Reporting template type */
   `type`: Option[`Type`],
-/* The filter on the conversion ingestion source method for conversion metrics */
-  ingestionSources: Option[List[IngestionSources]])
+/* Time of last update in seconds since Unix epoch */
+  updatedTime: Option[BigDecimal],
+/* ID of the user who created the template */
+  userId: Option[String],
+/* The length of the sliding window over which view conversions will be attributed */
+  viewWindowDays: Option[BigDecimal])
 
 object TemplateResponse {
   import DateTimeCodecs._
@@ -124,6 +124,22 @@ object TemplateResponse {
 
   implicit val CreationSourceEnumDecoder: DecodeJson[CreationSource] =
     DecodeJson.optionDecoder[CreationSource](n => n.string.flatMap(jStr => CreationSource.toCreationSource(jStr)), "CreationSource failed to de-serialize")
+  sealed trait List[IngestionSources]
+
+  object List[IngestionSources] {
+    def toList[IngestionSources](s: String): Option[List[IngestionSources]] = s match {
+      case _ => None
+    }
+
+    def fromList[IngestionSources](x: List[IngestionSources]): String = x match {
+    }
+  }
+
+  implicit val List[IngestionSources]EnumEncoder: EncodeJson[List[IngestionSources]] =
+    EncodeJson[List[IngestionSources]](is => StringEncodeJson(List[IngestionSources].fromList[IngestionSources](is)))
+
+  implicit val List[IngestionSources]EnumDecoder: DecodeJson[List[IngestionSources]] =
+    DecodeJson.optionDecoder[List[IngestionSources]](n => n.string.flatMap(jStr => List[IngestionSources].toList[IngestionSources](jStr)), "List[IngestionSources] failed to de-serialize")
   sealed trait `Type`
   case object UNSPECIFIED extends `Type`
   case object BULK extends `Type`
@@ -152,22 +168,6 @@ object TemplateResponse {
 
   implicit val `Type`EnumDecoder: DecodeJson[`Type`] =
     DecodeJson.optionDecoder[`Type`](n => n.string.flatMap(jStr => `Type`.to`Type`(jStr)), "`Type` failed to de-serialize")
-  sealed trait List[IngestionSources]
-
-  object List[IngestionSources] {
-    def toList[IngestionSources](s: String): Option[List[IngestionSources]] = s match {
-      case _ => None
-    }
-
-    def fromList[IngestionSources](x: List[IngestionSources]): String = x match {
-    }
-  }
-
-  implicit val List[IngestionSources]EnumEncoder: EncodeJson[List[IngestionSources]] =
-    EncodeJson[List[IngestionSources]](is => StringEncodeJson(List[IngestionSources].fromList[IngestionSources](is)))
-
-  implicit val List[IngestionSources]EnumDecoder: DecodeJson[List[IngestionSources]] =
-    DecodeJson.optionDecoder[List[IngestionSources]](n => n.string.flatMap(jStr => List[IngestionSources].toList[IngestionSources](jStr)), "List[IngestionSources] failed to de-serialize")
 
   implicit val TemplateResponseCodecJson: CodecJson[TemplateResponse] = CodecJson.derive[TemplateResponse]
   implicit val TemplateResponseDecoder: EntityDecoder[TemplateResponse] = jsonOf[TemplateResponse]

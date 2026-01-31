@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **reportStatus** | [**inline**](#ReportStatus) |  |  [optional] |
-| **url** | **kotlin.String** | URL to download the report |  [optional] |
 | **propertySize** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Size of the report in bytes |  [optional] |
+| **url** | **kotlin.String** | URL to download the report |  [optional] |
 
 
 <a id="ReportStatus"></a>

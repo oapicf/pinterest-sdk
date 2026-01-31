@@ -3,8 +3,10 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.ImageMetadata
-open OpenAPI.Model.ImageMetadataImages
-open OpenAPI.Model.VideoMetadata
+open OpenAPI.Model.ImageSize
+open OpenAPI.Model.VideoMetadataWithItemType
+open OpenAPI.Model.decimal option
+open OpenAPI.Model.int option
 open OpenAPI.Model.string option
 
 module PinMediaMetadata =
@@ -13,15 +15,15 @@ module PinMediaMetadata =
 
 
   type PinMediaMetadata = {
-    ItemType : string;
-    Title : string option;
     Description : string option;
+    Images : ImageSize;
+    ItemType : string;
     Link : string option;
-    Images : ImageMetadataImages;
+    Title : string option;
     CoverImageUrl : string;
+    Duration : decimal option;
+    Height : int option;
     VideoUrl : string option;
-    Duration : decimal;
-    Height : int;
-    Width : int;
+    Width : int option;
   }
   //#endregion

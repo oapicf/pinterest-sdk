@@ -15,43 +15,18 @@ import javax.validation.Valid;
 /**
  * AdAccountsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdAccountsList200Response   {
+  @JsonProperty("bookmark")
+  
+  private String bookmark;
+
   @JsonProperty("items")
   @NotNull
 @Valid
 
   private List<@Valid AdAccount> items = new ArrayList<>();
-
-  @JsonProperty("bookmark")
-  
-  private String bookmark;
-
-  public AdAccountsList200Response items(List<@Valid AdAccount> items) {
-    this.items = items;
-    return this;
-  }
-
-  public AdAccountsList200Response addItemsItem(AdAccount itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Ad accounts
-   * @return items
-  **/
-  public List<@Valid AdAccount> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid AdAccount> items) {
-    this.items = items;
-  }
 
   public AdAccountsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -70,6 +45,31 @@ public class AdAccountsList200Response   {
     this.bookmark = bookmark;
   }
 
+  public AdAccountsList200Response items(List<@Valid AdAccount> items) {
+    this.items = items;
+    return this;
+  }
+
+  public AdAccountsList200Response addItemsItem(AdAccount itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  public List<@Valid AdAccount> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid AdAccount> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class AdAccountsList200Response   {
       return false;
     }
     AdAccountsList200Response adAccountsList200Response = (AdAccountsList200Response) o;
-    return Objects.equals(items, adAccountsList200Response.items) &&
-        Objects.equals(bookmark, adAccountsList200Response.bookmark);
+    return Objects.equals(bookmark, adAccountsList200Response.bookmark) &&
+        Objects.equals(items, adAccountsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class AdAccountsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

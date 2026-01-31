@@ -7,9 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ConversionApiResponse, () {
-    // Total number of events received in the request.
-    // int numEventsReceived
-    test('to test the property `numEventsReceived`', () async {
+    // Specific messages for each event received. The order will match the order in which the events were received in the request.
+    // BuiltList<ConversionApiResponseEventsInner> events
+    test('to test the property `events`', () async {
       // TODO
     });
 
@@ -19,9 +19,9 @@ void main() {
       // TODO
     });
 
-    // Specific messages for each event received. The order will match the order in which the events were received in the request.
-    // BuiltList<ConversionApiResponseEventsInner> events
-    test('to test the property `events`', () async {
+    // Total number of events received in the request.
+    // int numEventsReceived
+    test('to test the property `numEventsReceived`', () async {
       // TODO
     });
 

@@ -21,14 +21,6 @@ public class DeliveryMetricsResponseItemsInnerTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'category'
      */
     @Test
@@ -50,6 +42,14 @@ public class DeliveryMetricsResponseItemsInnerTest {
     @Test
     public void displayNameTest() {
         // TODO: test displayName
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
 }

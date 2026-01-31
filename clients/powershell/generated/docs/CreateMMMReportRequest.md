@@ -4,26 +4,26 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Countries** | [**TargetingAdvertiserCountry[]**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] 
-**ReportName** | **String** | Name of the Marketing Mix Modeling (MMM) report | 
-**StartDate** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD | 
+**Columns** | [**MMMReportingColumn[]**](MMMReportingColumn.md) | Metric and entity columns | 
 **EndDate** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD | 
 **Granularity** | **String** | DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly. | 
 **Level** | **String** | Level of the report | 
+**ReportName** | **String** | Name of the Marketing Mix Modeling (MMM) report | 
+**StartDate** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD | 
 **TargetingTypes** | [**MMMReportingTargetingType[]**](MMMReportingTargetingType.md) | List of targeting types | 
-**Columns** | [**MMMReportingColumn[]**](MMMReportingColumn.md) | Metric and entity columns | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CreateMMMReportRequest = Initialize-PSOpenAPIToolsCreateMMMReportRequest  -Countries null `
- -ReportName null `
- -StartDate 2020-12-20 `
+ -Columns null `
  -EndDate 2020-12-20 `
  -Granularity null `
  -Level null `
- -TargetingTypes [&quot;GENDER&quot;] `
- -Columns null
+ -ReportName null `
+ -StartDate 2020-12-20 `
+ -TargetingTypes [&quot;GENDER&quot;]
 ```
 
 - Convert the resource to JSON

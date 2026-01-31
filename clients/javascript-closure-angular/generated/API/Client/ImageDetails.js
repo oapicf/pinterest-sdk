@@ -9,12 +9,6 @@ API.Client.ImageDetails = function() {}
  * @type {!number}
  * @export
  */
-API.Client.ImageDetails.prototype.width;
-
-/**
- * @type {!number}
- * @export
- */
 API.Client.ImageDetails.prototype.height;
 
 /**
@@ -22,4 +16,10 @@ API.Client.ImageDetails.prototype.height;
  * @export
  */
 API.Client.ImageDetails.prototype.url;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.ImageDetails.prototype.width;
 

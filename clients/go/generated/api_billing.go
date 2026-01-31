@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -46,7 +46,7 @@ AdsCreditRedeem Redeem ad credits
 
 Redeem ads credit on behalf of the ad account id and apply it towards billing.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -192,7 +192,7 @@ AdsCreditsDiscountsGet Get ads credit discounts
 
 Returns the list of discounts applied to the account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -303,6 +303,351 @@ func (a *BillingAPIService) AdsCreditsDiscountsGetExecute(r ApiAdsCreditsDiscoun
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiBillingInvoiceDownloadGetRequest struct {
+	ctx context.Context
+	ApiService *BillingAPIService
+	adAccountId string
+	billingInvoiceId string
+}
+
+func (r ApiBillingInvoiceDownloadGetRequest) Execute() (*BillingInvoiceDownloadResponse, *http.Response, error) {
+	return r.ApiService.BillingInvoiceDownloadGetExecute(r)
+}
+
+/*
+BillingInvoiceDownloadGet Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @param billingInvoiceId Unique identifier of a billing invoice.
+ @return ApiBillingInvoiceDownloadGetRequest
+*/
+func (a *BillingAPIService) BillingInvoiceDownloadGet(ctx context.Context, adAccountId string, billingInvoiceId string) ApiBillingInvoiceDownloadGetRequest {
+	return ApiBillingInvoiceDownloadGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+		billingInvoiceId: billingInvoiceId,
+	}
+}
+
+// Execute executes the request
+//  @return BillingInvoiceDownloadResponse
+func (a *BillingAPIService) BillingInvoiceDownloadGetExecute(r ApiBillingInvoiceDownloadGetRequest) (*BillingInvoiceDownloadResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoiceDownloadResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.BillingInvoiceDownloadGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"billing_invoice_id"+"}", url.PathEscape(parameterValueToString(r.billingInvoiceId, "billingInvoiceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if strlen(r.billingInvoiceId) > 18 {
+		return localVarReturnValue, nil, reportError("billingInvoiceId must have less than 18 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiBillingInvoicesGetRequest struct {
+	ctx context.Context
+	ApiService *BillingAPIService
+	adAccountId string
+	bookmark *string
+	pageSize *int32
+	sort *string
+	order *string
+	status *string
+	documentType *string
+	startDueDate *string
+	endDueDate *string
+}
+
+// Cursor used to fetch the next page of items
+func (r ApiBillingInvoicesGetRequest) Bookmark(bookmark string) ApiBillingInvoicesGetRequest {
+	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+func (r ApiBillingInvoicesGetRequest) PageSize(pageSize int32) ApiBillingInvoicesGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Field of which to sort billing invoices
+func (r ApiBillingInvoicesGetRequest) Sort(sort string) ApiBillingInvoicesGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiBillingInvoicesGetRequest) Order(order string) ApiBillingInvoicesGetRequest {
+	r.order = &order
+	return r
+}
+
+// Status of billing invoices to filter by
+func (r ApiBillingInvoicesGetRequest) Status(status string) ApiBillingInvoicesGetRequest {
+	r.status = &status
+	return r
+}
+
+// Document type of billing invoices to filter by
+func (r ApiBillingInvoicesGetRequest) DocumentType(documentType string) ApiBillingInvoicesGetRequest {
+	r.documentType = &documentType
+	return r
+}
+
+// Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+func (r ApiBillingInvoicesGetRequest) StartDueDate(startDueDate string) ApiBillingInvoicesGetRequest {
+	r.startDueDate = &startDueDate
+	return r
+}
+
+// Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+func (r ApiBillingInvoicesGetRequest) EndDueDate(endDueDate string) ApiBillingInvoicesGetRequest {
+	r.endDueDate = &endDueDate
+	return r
+}
+
+func (r ApiBillingInvoicesGetRequest) Execute() (*BillingInvoicesGet200Response, *http.Response, error) {
+	return r.ApiService.BillingInvoicesGetExecute(r)
+}
+
+/*
+BillingInvoicesGet Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiBillingInvoicesGetRequest
+*/
+func (a *BillingAPIService) BillingInvoicesGet(ctx context.Context, adAccountId string) ApiBillingInvoicesGetRequest {
+	return ApiBillingInvoicesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return BillingInvoicesGet200Response
+func (a *BillingAPIService) BillingInvoicesGetExecute(r ApiBillingInvoicesGetRequest) (*BillingInvoicesGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoicesGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.BillingInvoicesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/billing_invoices"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+	} else {
+        var defaultValue string = "DUE_DATE"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
+        r.sort = &defaultValue
+	}
+	if r.order != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.documentType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "document_type", r.documentType, "form", "")
+	}
+	if r.startDueDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start_due_date", r.startDueDate, "form", "")
+	}
+	if r.endDueDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "end_due_date", r.endDueDate, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiBillingProfilesGetRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
@@ -339,7 +684,7 @@ BillingProfilesGet Get billing profiles
 
 Get billing profiles in the advertiser account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.

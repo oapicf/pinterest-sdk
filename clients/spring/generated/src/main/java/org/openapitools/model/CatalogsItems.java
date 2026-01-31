@@ -24,13 +24,13 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItems", description = "Response object of catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItems {
 
   @Valid
-  private List<@Valid ItemResponse> items = new ArrayList<>();
+  private List<ItemResponse> items = new ArrayList<>();
 
-  public CatalogsItems items(List<@Valid ItemResponse> items) {
+  public CatalogsItems items(List<ItemResponse> items) {
     this.items = items;
     return this;
   }
@@ -50,11 +50,11 @@ public class CatalogsItems {
   @Valid 
   @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
-  public List<@Valid ItemResponse> getItems() {
+  public List<ItemResponse> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid ItemResponse> items) {
+  public void setItems(List<ItemResponse> items) {
     this.items = items;
   }
 

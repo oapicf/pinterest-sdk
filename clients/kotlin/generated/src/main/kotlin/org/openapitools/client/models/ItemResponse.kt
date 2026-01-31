@@ -17,8 +17,8 @@ package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsCreativeAssetsAttributes
 import org.openapitools.client.models.CatalogsType
-import org.openapitools.client.models.ItemResponseAnyOf
-import org.openapitools.client.models.ItemResponseAnyOf1
+import org.openapitools.client.models.ItemResponseOneOf
+import org.openapitools.client.models.ItemResponseOneOf1
 import org.openapitools.client.models.ItemValidationEvent
 import org.openapitools.client.models.Pin
 
@@ -26,15 +26,15 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Object describing an item record
+ * Object describing an item record or error
  *
  * @param catalogType 
+ * @param errors Array with the errors for the item id requested
+ * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
  * @param pins The pins mapped to the item
- * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
- * @param errors Array with the errors for the item id requested
  */
 
 
@@ -42,6 +42,13 @@ data class ItemResponse (
 
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
+
+    /* Array with the errors for the item id requested */
+    @Json(name = "errors")
+    val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    @Json(name = "attributes")
+    val attributes: CatalogsCreativeAssetsAttributes? = null,
 
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
@@ -51,20 +58,13 @@ data class ItemResponse (
     @Json(name = "pins")
     val pins: kotlin.collections.List<Pin>? = null,
 
-    @Json(name = "attributes")
-    val attributes: CatalogsCreativeAssetsAttributes? = null,
-
     /* The catalog hotel id in the merchant namespace */
     @Json(name = "hotel_id")
     val hotelId: kotlin.String? = null,
 
     /* The catalog creative assets id in the merchant namespace */
     @Json(name = "creative_assets_id")
-    val creativeAssetsId: kotlin.String? = null,
-
-    /* Array with the errors for the item id requested */
-    @Json(name = "errors")
-    val errors: kotlin.collections.List<ItemValidationEvent>? = null
+    val creativeAssetsId: kotlin.String? = null
 
 ) {
 

@@ -21,19 +21,19 @@ typedef struct item_processing_record_t item_processing_record_t;
 
 
 typedef struct item_processing_record_t {
-    char *item_id; // string
     list_t *errors; //nonprimitive container
-    list_t *warnings; //nonprimitive container
+    char *item_id; // string
     pinterest_rest_api_item_processing_status__e status; //referenced enum
+    list_t *warnings; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } item_processing_record_t;
 
 __attribute__((deprecated)) item_processing_record_t *item_processing_record_create(
-    char *item_id,
     list_t *errors,
-    list_t *warnings,
-    pinterest_rest_api_item_processing_status__e status
+    char *item_id,
+    pinterest_rest_api_item_processing_status__e status,
+    list_t *warnings
 );
 
 void item_processing_record_free(item_processing_record_t *item_processing_record);

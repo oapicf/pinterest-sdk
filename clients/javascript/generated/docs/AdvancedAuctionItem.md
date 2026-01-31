@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemId** | **String** | The catalog retail item id in the merchant namespace | 
 **country** | [**Country**](Country.md) |  | 
+**itemId** | **String** | The catalog retail item id in the merchant namespace | 
 **language** | [**Language**](Language.md) |  | 
 **bidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 

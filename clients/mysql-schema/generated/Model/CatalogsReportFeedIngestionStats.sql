@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsReportFeedIngestionStats`
 --
-SELECT `report_type`, `catalog_id`, `code`, `code_label`, `message`, `occurrences`, `severity` FROM `CatalogsReportFeedIngestionStats` WHERE 1;
+SELECT `catalog_id`, `code`, `code_label`, `message`, `occurrences`, `report_type`, `severity` FROM `CatalogsReportFeedIngestionStats` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsReportFeedIngestionStats`
 --
-INSERT INTO `CatalogsReportFeedIngestionStats`(`report_type`, `catalog_id`, `code`, `code_label`, `message`, `occurrences`, `severity`) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsReportFeedIngestionStats`(`catalog_id`, `code`, `code_label`, `message`, `occurrences`, `report_type`, `severity`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsReportFeedIngestionStats`
 --
-UPDATE `CatalogsReportFeedIngestionStats` SET `report_type` = ?, `catalog_id` = ?, `code` = ?, `code_label` = ?, `message` = ?, `occurrences` = ?, `severity` = ? WHERE 1;
+UPDATE `CatalogsReportFeedIngestionStats` SET `catalog_id` = ?, `code` = ?, `code_label` = ?, `message` = ?, `occurrences` = ?, `report_type` = ?, `severity` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsReportFeedIngestionStats`

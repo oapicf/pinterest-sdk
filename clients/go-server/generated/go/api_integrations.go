@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,8 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"errors"
-	"io"
 	"net/http"
 	"strings"
 
@@ -154,7 +152,7 @@ func (c *IntegrationsAPIController) IntegrationsCommercePost(w http.ResponseWrit
 	var integrationRequestParam IntegrationRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&integrationRequestParam); err != nil && !errors.Is(err, io.EOF) {
+	if err := d.Decode(&integrationRequestParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -223,7 +221,7 @@ func (c *IntegrationsAPIController) IntegrationsCommercePatch(w http.ResponseWri
 	var integrationRequestPatchParam IntegrationRequestPatch
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&integrationRequestPatchParam); err != nil && !errors.Is(err, io.EOF) {
+	if err := d.Decode(&integrationRequestPatchParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}

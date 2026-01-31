@@ -13,8 +13,8 @@ module IntegrationLogClientRequest =
   //#endregion
 
   type IntegrationLogClientRequest = {
-    Method : MethodEnum;
     Host : string;
+    Method : MethodEnum;
     Path : string;
     RequestHeaders : IDictionary<string, string>;
     ResponseHeaders : IDictionary<string, string>;

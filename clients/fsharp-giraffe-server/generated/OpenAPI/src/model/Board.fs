@@ -4,27 +4,26 @@ open System
 open System.Collections.Generic
 open OpenAPI.Model.BoardMedia
 open OpenAPI.Model.BoardOwner
+open OpenAPI.Model.BoardPrivacy
 open OpenAPI.Model.string option
 
 module Board =
 
   //#region Board
 
-  //#region enums
-  type PrivacyEnum = PUBLICEnum of string  |  PROTECTEDEnum of string  |  SECRETEnum of string  
-  //#endregion
 
   type Board = {
-    Id : string;
-    CreatedAt : Nullable<DateTime>;
     BoardPinsModifiedAt : Nullable<DateTime>;
-    Name : string;
-    Description : string option;
     CollaboratorCount : int;
-    PinCount : int;
+    CreatedAt : Nullable<DateTime>;
+    Description : string option;
     FollowerCount : int;
+    Id : string;
+    IsAdsOnly : bool;
     Media : BoardMedia;
+    Name : string;
     Owner : BoardOwner;
-    Privacy : PrivacyEnum;
+    PinCount : int;
+    Privacy : BoardPrivacy;
   }
   //#endregion

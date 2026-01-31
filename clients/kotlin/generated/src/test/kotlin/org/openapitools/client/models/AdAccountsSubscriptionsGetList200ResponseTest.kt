@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdAccountsSubscriptionsGetList200Response
-import org.openapitools.client.models.AdAccountGetSubscriptionResponse
+import org.openapitools.client.models.LeadSubscription
 
 class AdAccountsSubscriptionsGetList200ResponseTest : ShouldSpec() {
     init {

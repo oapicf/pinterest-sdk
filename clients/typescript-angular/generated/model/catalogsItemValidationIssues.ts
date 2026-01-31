@@ -12,15 +12,15 @@ import { CatalogsItemValidationErrors } from './catalogsItemValidationErrors';
 
 
 export interface CatalogsItemValidationIssues { 
-    /**
-     * Item number based on order of appearance in the Catalogs Feed. For example, \'0\' refers to first item found in a feed that was downloaded from a \'location\' specified during feed creation.
-     */
-    item_number: number;
+    errors: CatalogsItemValidationErrors;
     /**
      * The merchant-created unique ID that represents the product.
      */
     item_id: string | null;
-    errors: CatalogsItemValidationErrors;
+    /**
+     * Item number based on order of appearance in the Catalogs Feed. For example, \'0\' refers to first item found in a feed that was downloaded from a \'location\' specified during feed creation.
+     */
+    item_number: number;
     warnings: CatalogsItemValidationWarnings;
 }
 

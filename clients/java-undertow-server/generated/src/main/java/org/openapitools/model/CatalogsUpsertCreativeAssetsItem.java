@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,9 +25,10 @@ import org.openapitools.model.CatalogsCreativeAssetsAttributes;
  */
 
 @ApiModel(description = "A creative assets item to be upserted.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpsertCreativeAssetsItem   {
   
+  private CatalogsCreativeAssetsAttributes attributes;
   private String creativeAssetsId;
 
 
@@ -48,7 +49,23 @@ public class CatalogsUpsertCreativeAssetsItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsCreativeAssetsAttributes attributes;
+
+  /**
+   */
+  public CatalogsUpsertCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog creative assets id in the merchant namespace
@@ -85,23 +102,6 @@ public class CatalogsUpsertCreativeAssetsItem   {
     this.operation = operation;
   }
 
-  /**
-   */
-  public CatalogsUpsertCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -112,14 +112,14 @@ public class CatalogsUpsertCreativeAssetsItem   {
       return false;
     }
     CatalogsUpsertCreativeAssetsItem catalogsUpsertCreativeAssetsItem = (CatalogsUpsertCreativeAssetsItem) o;
-    return Objects.equals(creativeAssetsId, catalogsUpsertCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(operation, catalogsUpsertCreativeAssetsItem.operation) &&
-        Objects.equals(attributes, catalogsUpsertCreativeAssetsItem.attributes);
+    return Objects.equals(attributes, catalogsUpsertCreativeAssetsItem.attributes) &&
+        Objects.equals(creativeAssetsId, catalogsUpsertCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(operation, catalogsUpsertCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -127,9 +127,9 @@ public class CatalogsUpsertCreativeAssetsItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

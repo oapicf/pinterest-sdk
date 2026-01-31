@@ -21,19 +21,19 @@ public struct GetMMMReportResponseData: Codable, JSONEncodable, Hashable {
         case cancelled = "CANCELLED"
     }
     public var reportStatus: ReportStatus?
-    public var url: String?
     public var size: Double?
+    public var url: String?
 
-    public init(reportStatus: ReportStatus? = nil, url: String? = nil, size: Double? = nil) {
+    public init(reportStatus: ReportStatus? = nil, size: Double? = nil, url: String? = nil) {
         self.reportStatus = reportStatus
-        self.url = url
         self.size = size
+        self.url = url
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case reportStatus = "report_status"
-        case url
         case size
+        case url
     }
 
     // Encodable protocol methods
@@ -41,8 +41,8 @@ public struct GetMMMReportResponseData: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(reportStatus, forKey: .reportStatus)
-        try container.encodeIfPresent(url, forKey: .url)
         try container.encodeIfPresent(size, forKey: .size)
+        try container.encodeIfPresent(url, forKey: .url)
     }
 }
 

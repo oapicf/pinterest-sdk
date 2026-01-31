@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,11 +16,11 @@ import java.util.Objects;
 
 public class CustomLabel2Filter   {
   
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
 
   /**
    **/
-  public CustomLabel2Filter CUSTOM_LABEL_2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public CustomLabel2Filter CUSTOM_LABEL_2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
     return this;
   }
@@ -29,10 +29,10 @@ public class CustomLabel2Filter   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_2")
   @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
   }
-  public void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 

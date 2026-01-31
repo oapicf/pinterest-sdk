@@ -19,8 +19,8 @@ import org.openapitools.models.CatalogsItemValidationDetails
  * @param IMAGEUnderscoreLINKUnderscoreLENGTHUnderscoreTOOUnderscoreLONG 
  * @param IMAGEUnderscoreLINKUnderscoreMISSING 
  * @param INVALIDUnderscoreDOMAIN 
- * @param ITEMIDUnderscoreMISSING 
  * @param ITEMUnderscoreMAINUnderscoreIMAGEUnderscoreDOWNLOADUnderscoreFAILURE 
+ * @param ITEMIDUnderscoreMISSING 
  * @param LINKUnderscoreFORMATUnderscoreINVALID 
  * @param LINKUnderscoreLENGTHUnderscoreTOOUnderscoreLONG 
  * @param LISTUnderscorePRICEUnderscoreINVALID 
@@ -43,8 +43,8 @@ case class CatalogsItemValidationErrors(ADULTUnderscoreINVALID: Option[CatalogsI
                 IMAGEUnderscoreLINKUnderscoreLENGTHUnderscoreTOOUnderscoreLONG: Option[CatalogsItemValidationDetails],
                 IMAGEUnderscoreLINKUnderscoreMISSING: Option[CatalogsItemValidationDetails],
                 INVALIDUnderscoreDOMAIN: Option[CatalogsItemValidationDetails],
-                ITEMIDUnderscoreMISSING: Option[CatalogsItemValidationDetails],
                 ITEMUnderscoreMAINUnderscoreIMAGEUnderscoreDOWNLOADUnderscoreFAILURE: Option[CatalogsItemValidationDetails],
+                ITEMIDUnderscoreMISSING: Option[CatalogsItemValidationDetails],
                 LINKUnderscoreFORMATUnderscoreINVALID: Option[CatalogsItemValidationDetails],
                 LINKUnderscoreLENGTHUnderscoreTOOUnderscoreLONG: Option[CatalogsItemValidationDetails],
                 LISTUnderscorePRICEUnderscoreINVALID: Option[CatalogsItemValidationDetails],

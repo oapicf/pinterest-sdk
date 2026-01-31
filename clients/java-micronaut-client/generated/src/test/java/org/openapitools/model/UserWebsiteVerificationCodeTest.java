@@ -20,14 +20,6 @@ public class UserWebsiteVerificationCodeTest {
     }
 
     /**
-     * Test the property 'verificationCode'
-     */
-    @Test
-    public void verificationCodeTest() {
-        // TODO: test verificationCode
-    }
-
-    /**
      * Test the property 'dnsTxtRecord'
      */
     @Test
@@ -36,11 +28,11 @@ public class UserWebsiteVerificationCodeTest {
     }
 
     /**
-     * Test the property 'metatag'
+     * Test the property 'fileContent'
      */
     @Test
-    public void metatagTest() {
-        // TODO: test metatag
+    public void fileContentTest() {
+        // TODO: test fileContent
     }
 
     /**
@@ -52,11 +44,19 @@ public class UserWebsiteVerificationCodeTest {
     }
 
     /**
-     * Test the property 'fileContent'
+     * Test the property 'metatag'
      */
     @Test
-    public void fileContentTest() {
-        // TODO: test fileContent
+    public void metatagTest() {
+        // TODO: test metatag
+    }
+
+    /**
+     * Test the property 'verificationCode'
+     */
+    @Test
+    public void verificationCodeTest() {
+        // TODO: test verificationCode
     }
 
 }

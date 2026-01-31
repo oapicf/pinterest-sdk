@@ -11,7 +11,7 @@ import org.openapitools.model.Interest;
 @Canonical
 class UserAccountFollowedInterests200Response {
     
-    List<Interest> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Interest> items = new ArrayList<>()
 }

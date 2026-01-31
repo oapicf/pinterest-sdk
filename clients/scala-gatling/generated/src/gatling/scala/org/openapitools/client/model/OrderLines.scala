@@ -3,34 +3,34 @@ package org.openapitools.client.model
 
 
 case class OrderLines (
-    /* Order line ID. */
-    _id: Option[String],
-    /* Always \"orderline\". */
-    _type: Option[String],
     /* Ad account ID. */
     _adAccountId: Option[String],
+    /* Order line budget in micro currency. */
+    _budget: Option[Number],
+    /* End time. Unix timestamp. */
+    _endTime: Option[Number],
+    /* Order line ID. */
+    _id: Option[String],
+    /* Order line name. */
+    _name: Option[String],
+    /* Order line paid budget in micro currency. */
+    _paidBudget: Option[Number],
+    /* Order line paid type. */
+    _paidType: Option[OrderLinePaidType],
     /* Purchase order ID. */
     _purchaseOrderId: Option[String],
     /* Start time. Unix timestamp. */
     _startTime: Option[Number],
-    /* End time. Unix timestamp. */
-    _endTime: Option[Number],
-    /* Order line budget in micro currency. */
-    _budget: Option[Number],
-    /* Order line paid budget in micro currency. */
-    _paidBudget: Option[Number],
     /* Order line status. */
     _status: Option[OrderLineStatus],
-    /* Order line name. */
-    _name: Option[String],
-    /* Order line paid type. */
-    _paidType: Option[OrderLinePaidType]
+    /* Always \"orderline\". */
+    _type: Option[String]
 )
 object OrderLines {
-    def toStringBody(var_id: Object, var_type: Object, var_adAccountId: Object, var_purchaseOrderId: Object, var_startTime: Object, var_endTime: Object, var_budget: Object, var_paidBudget: Object, var_status: Object, var_name: Object, var_paidType: Object) =
+    def toStringBody(var_adAccountId: Object, var_budget: Object, var_endTime: Object, var_id: Object, var_name: Object, var_paidBudget: Object, var_paidType: Object, var_purchaseOrderId: Object, var_startTime: Object, var_status: Object, var_type: Object) =
         s"""
         | {
-        | "id":$var_id,"type":$var_type,"adAccountId":$var_adAccountId,"purchaseOrderId":$var_purchaseOrderId,"startTime":$var_startTime,"endTime":$var_endTime,"budget":$var_budget,"paidBudget":$var_paidBudget,"status":$var_status,"name":$var_name,"paidType":$var_paidType
+        | "adAccountId":$var_adAccountId,"budget":$var_budget,"endTime":$var_endTime,"id":$var_id,"name":$var_name,"paidBudget":$var_paidBudget,"paidType":$var_paidType,"purchaseOrderId":$var_purchaseOrderId,"startTime":$var_startTime,"status":$var_status,"type":$var_type
         | }
         """.stripMargin
 }

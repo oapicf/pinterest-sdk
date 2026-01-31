@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TemplateResponseDateRange"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TemplateResponseDateRange"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TemplateResponseDateRangeAbsoluteDateRange = openapi_server.resourceTypes.TemplateResponseDateRangeAbsoluteDateRange
+  TemplateResponseDateRangeDynamicDateRange = openapi_server.resourceTypes.TemplateResponseDateRangeDynamicDateRange
+  TemplateResponseDateRangeRelativeDateRange = openapi_server.resourceTypes.TemplateResponseDateRangeRelativeDateRange
+}
+resourceTypes {
+
+  TemplateResponseDateRange {
+    title = TemplateResponseDateRange
+    description = TemplateResponseDateRange
+    derivedFrom = Root
+    properties {
+        absolute_date_range {
+          type = TemplateResponseDateRangeAbsoluteDateRange
+          description = ""
+          optional = false
+        }
+        dynamic_date_range {
+          type = TemplateResponseDateRangeDynamicDateRange
+          description = ""
+          optional = false
+        }
+        relative_date_range {
+          type = TemplateResponseDateRangeRelativeDateRange
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TemplateResponseDateRange {
+    title = TemplateResponseDateRange
+    description = TemplateResponseDateRange
+    implements = openapi_server.resourceTypes.TemplateResponseDateRange
+
+  }
+}

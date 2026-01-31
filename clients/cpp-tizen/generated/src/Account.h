@@ -45,41 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Type of account
-	 */
-	std::string getAccountType();
-
-	/*! \brief Set Type of account
-	 */
-	void setAccountType(std::string  account_type);
-	/*! \brief Get User account ID.
-	 */
-	std::string getId();
-
-	/*! \brief Set User account ID.
-	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getProfileImage();
-
-	/*! \brief Set 
-	 */
-	void setProfileImage(std::string  profile_image);
-	/*! \brief Get 
-	 */
-	std::string getWebsiteUrl();
-
-	/*! \brief Set 
-	 */
-	void setWebsiteUrl(std::string  website_url);
-	/*! \brief Get 
-	 */
-	std::string getUsername();
-
-	/*! \brief Set 
-	 */
-	void setUsername(std::string  username);
 	/*! \brief Get Profile about description.
 	 */
 	std::string getAbout();
@@ -87,13 +52,13 @@ public:
 	/*! \brief Set Profile about description.
 	 */
 	void setAbout(std::string  about);
-	/*! \brief Get 
+	/*! \brief Get Type of account
 	 */
-	std::string getBusinessName();
+	std::string getAccountType();
 
-	/*! \brief Set 
+	/*! \brief Set Type of account
 	 */
-	void setBusinessName(std::string  business_name);
+	void setAccountType(std::string  account_type);
 	/*! \brief Get User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	 */
 	int getBoardCount();
@@ -101,13 +66,13 @@ public:
 	/*! \brief Set User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	 */
 	void setBoardCount(int  board_count);
-	/*! \brief Get User account pin count. This includes both created and saved pins.
+	/*! \brief Get 
 	 */
-	int getPinCount();
+	std::string getBusinessName();
 
-	/*! \brief Set User account pin count. This includes both created and saved pins.
+	/*! \brief Set 
 	 */
-	void setPinCount(int  pin_count);
+	void setBusinessName(std::string  business_name);
 	/*! \brief Get User account follower count.
 	 */
 	int getFollowerCount();
@@ -122,6 +87,13 @@ public:
 	/*! \brief Set User account following count.
 	 */
 	void setFollowingCount(int  following_count);
+	/*! \brief Get User account ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set User account ID.
+	 */
+	void setId(std::string  id);
 	/*! \brief Get User account monthly views.
 	 */
 	int getMonthlyViews();
@@ -129,20 +101,48 @@ public:
 	/*! \brief Set User account monthly views.
 	 */
 	void setMonthlyViews(int  monthly_views);
+	/*! \brief Get User account pin count. This includes both created and saved pins.
+	 */
+	int getPinCount();
+
+	/*! \brief Set User account pin count. This includes both created and saved pins.
+	 */
+	void setPinCount(int  pin_count);
+	/*! \brief Get 
+	 */
+	std::string getProfileImage();
+
+	/*! \brief Set 
+	 */
+	void setProfileImage(std::string  profile_image);
+	/*! \brief Get 
+	 */
+	std::string getUsername();
+
+	/*! \brief Set 
+	 */
+	void setUsername(std::string  username);
+	/*! \brief Get 
+	 */
+	std::string getWebsiteUrl();
+
+	/*! \brief Set 
+	 */
+	void setWebsiteUrl(std::string  website_url);
 
 private:
-	std::string account_type;
-	std::string id;
-	std::string profile_image;
-	std::string website_url;
-	std::string username;
 	std::string about;
-	std::string business_name;
+	std::string account_type;
 	int board_count;
-	int pin_count;
+	std::string business_name;
 	int follower_count;
 	int following_count;
+	std::string id;
 	int monthly_views;
+	int pin_count;
+	std::string profile_image;
+	std::string username;
+	std::string website_url;
 	void __init();
 	void __cleanup();
 

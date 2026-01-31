@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRODUCT_GROUP_ID** | **string** | The ID of the product group that this metrics belongs to. | 
 **DATE** | Pointer to **string** | Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;) | [optional] 
+**PRODUCT_GROUP_ID** | **string** | The ID of the product group that this metrics belongs to. | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewProductGroupAnalyticsResponseInnerWithDefaults instantiates a new ProductGroupAnalyticsResponseInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPRODUCT_GROUP_ID
-
-`func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_ID() string`
-
-GetPRODUCT_GROUP_ID returns the PRODUCT_GROUP_ID field if non-nil, zero value otherwise.
-
-### GetPRODUCT_GROUP_IDOk
-
-`func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_IDOk() (*string, bool)`
-
-GetPRODUCT_GROUP_IDOk returns a tuple with the PRODUCT_GROUP_ID field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPRODUCT_GROUP_ID
-
-`func (o *ProductGroupAnalyticsResponseInner) SetPRODUCT_GROUP_ID(v string)`
-
-SetPRODUCT_GROUP_ID sets PRODUCT_GROUP_ID field to given value.
-
 
 ### GetDATE
 
@@ -70,6 +50,26 @@ SetDATE sets DATE field to given value.
 `func (o *ProductGroupAnalyticsResponseInner) HasDATE() bool`
 
 HasDATE returns a boolean if a field has been set.
+
+### GetPRODUCT_GROUP_ID
+
+`func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_ID() string`
+
+GetPRODUCT_GROUP_ID returns the PRODUCT_GROUP_ID field if non-nil, zero value otherwise.
+
+### GetPRODUCT_GROUP_IDOk
+
+`func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_IDOk() (*string, bool)`
+
+GetPRODUCT_GROUP_IDOk returns a tuple with the PRODUCT_GROUP_ID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPRODUCT_GROUP_ID
+
+`func (o *ProductGroupAnalyticsResponseInner) SetPRODUCT_GROUP_ID(v string)`
+
+SetPRODUCT_GROUP_ID sets PRODUCT_GROUP_ID field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

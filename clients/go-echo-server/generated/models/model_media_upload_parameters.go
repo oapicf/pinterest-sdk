@@ -1,0 +1,20 @@
+package models
+
+type MediaUploadParameters struct {
+
+	ContentType string `json:"Content-Type,omitempty"`
+
+	Key string `json:"key,omitempty"`
+
+	Policy string `json:"policy,omitempty"`
+
+	XAmzAlgorithm string `json:"x-amz-algorithm,omitempty"`
+
+	XAmzCredential string `json:"x-amz-credential,omitempty"`
+
+	XAmzDate string `json:"x-amz-date,omitempty"`
+
+	XAmzSecurityToken string `json:"x-amz-security-token,omitempty"`
+
+	XAmzSignature string `json:"x-amz-signature,omitempty"`
+}

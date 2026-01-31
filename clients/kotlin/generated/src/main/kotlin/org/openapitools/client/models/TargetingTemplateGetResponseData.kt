@@ -27,66 +27,66 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name targeting template name
  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param targetingAttributes 
- * @param placementGroup 
  * @param keywords 
+ * @param name targeting template name
+ * @param placementGroup 
+ * @param targetingAttributes 
  * @param trackingUrls 
- * @param id Targeting template ID.
- * @param createdTime Targeting template created time. Unix timestamp in seconds.
- * @param updatedTime Targeting template updated time.Unix timestamp in seconds.
  * @param adAccountId The ID of the advertiser that this targeting template belongs to.
- * @param status Indicate targeting template is active or Deleted
+ * @param createdTime Targeting template created time. Unix timestamp in seconds.
+ * @param id Targeting template ID.
  * @param sizing 
+ * @param status Indicate targeting template is active or Deleted
+ * @param updatedTime Targeting template updated time.Unix timestamp in seconds.
  * @param valid Inform if the targeting template is valid (ex. would be false if has revoked audience)
  */
 
 
 data class TargetingTemplateGetResponseData (
 
-    /* targeting template name */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
     @Json(name = "auto_targeting_enabled")
     val autoTargetingEnabled: kotlin.Boolean? = true,
 
-    @Json(name = "targeting_attributes")
-    val targetingAttributes: TargetingSpec? = null,
+    @Json(name = "keywords")
+    val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
+
+    /* targeting template name */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
 
     @Json(name = "placement_group")
     val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
 
-    @Json(name = "keywords")
-    val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
+    @Json(name = "targeting_attributes")
+    val targetingAttributes: TargetingSpec? = null,
 
     @Json(name = "tracking_urls")
     val trackingUrls: TrackingUrls? = null,
-
-    /* Targeting template ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    /* Targeting template created time. Unix timestamp in seconds. */
-    @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null,
-
-    /* Targeting template updated time.Unix timestamp in seconds. */
-    @Json(name = "updated_time")
-    val updatedTime: kotlin.Int? = null,
 
     /* The ID of the advertiser that this targeting template belongs to. */
     @Json(name = "ad_account_id")
     val adAccountId: kotlin.String? = null,
 
+    /* Targeting template created time. Unix timestamp in seconds. */
+    @Json(name = "created_time")
+    val createdTime: kotlin.Int? = null,
+
+    /* Targeting template ID. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    @Json(name = "sizing")
+    val sizing: TargetingTemplateAudienceSizing? = null,
+
     /* Indicate targeting template is active or Deleted */
     @Json(name = "status")
     val status: TargetingTemplateGetResponseData.Status? = Status.ACTIVE,
 
-    @Json(name = "sizing")
-    val sizing: TargetingTemplateAudienceSizing? = null,
+    /* Targeting template updated time.Unix timestamp in seconds. */
+    @Json(name = "updated_time")
+    val updatedTime: kotlin.Int? = null,
 
     /* Inform if the targeting template is valid (ex. would be false if has revoked audience) */
     @Json(name = "valid")

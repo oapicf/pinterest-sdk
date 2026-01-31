@@ -16,15 +16,15 @@ void main() {
   // final instance = UpdatePartnerAssetAccessBodyAccessesInner();
 
   group('test UpdatePartnerAssetAccessBodyAccessesInner', () {
-    // Unique identifier of a business partner to update asset access to.
-    // String partnerId
-    test('to test the property `partnerId`', () async {
-      // TODO
-    });
-
     // Unique identifier of the business asset.
     // String assetId
     test('to test the property `assetId`', () async {
+      // TODO
+    });
+
+    // Unique identifier of a business partner to update asset access to.
+    // String partnerId
+    test('to test the property `partnerId`', () async {
       // TODO
     });
 

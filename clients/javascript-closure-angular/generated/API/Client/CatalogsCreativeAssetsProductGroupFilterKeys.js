@@ -12,31 +12,31 @@ API.Client.CatalogsCreativeAssetsProductGroupFilterKeys = function() {}
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.CREATIVE_ASSETS_ID;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.cUSTOMLABEL0;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.cUSTOMLABEL1;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.cUSTOMLABEL2;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.cUSTOMLABEL3;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.cUSTOMLABEL4;
@@ -88,4 +88,10 @@ API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.gOOGLEPRODUCTC
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.MEDIA_TYPE;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.TITLE_KEYWORDS;
 

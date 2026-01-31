@@ -5,21 +5,21 @@
   "name": "ConversionTagResponse",
   "fields": [
     {
-      "name": "ad_account_id",
-      "type": ["null", "string"],
-      "doc": "Ad account ID.",
-      "default": null
-    },
-    {
       "name": "code_snippet",
       "type": ["null", "string"],
       "doc": "Tag code snippet.",
       "default": null
     },
     {
+      "name": "configs",
+      "type": ["null", "model.ConversionTagConfigs"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "enhanced_match_status",
       "type": ["null", "model.EnhancedMatchStatusType"],
-      "doc": "",
+      "doc": "The enhanced match status of the tag",
       "default": null
     },
     {
@@ -36,15 +36,8 @@
     },
     {
       "name": "name",
-      "type": ["null", "string"],
-      "doc": "Conversion tag name.",
-      "default": null
-    },
-    {
-      "name": "status",
-      "type": ["null", "model.EntityStatus"],
-      "doc": "",
-      "default": null
+      "type": "string",
+      "doc": "Conversion tag name."
     },
     {
       "name": "version",
@@ -53,8 +46,13 @@
       "default": null
     },
     {
-      "name": "configs",
-      "type": ["null", "model.ConversionTagConfigs"],
+      "name": "ad_account_id",
+      "type": "string",
+      "doc": "Ad account ID."
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityStatus"],
       "doc": "",
       "default": null
     }

@@ -7,31 +7,38 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinMedia } from './pinMedia';
-import { PinMediaWithImageAllOfImages } from './pinMediaWithImageAllOfImages';
+import { ImageSize } from './imageSize';
 
 
 /**
  * Pin with video.
  */
-export interface PinMediaWithVideo extends PinMedia { 
-    images?: PinMediaWithImageAllOfImages;
+export interface PinMediaWithVideo { 
     cover_image_url?: string;
     /**
-     * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+     * Duration (in miliseconds). Field maybe null after creation due to video processing time.
+     */
+    duration?: number | null;
+    /**
+     * Height (in pixels). Field maybe null after creation due to video processing time.
+     */
+    height?: number | null;
+    images?: ImageSize;
+    media_type: PinMediaWithVideo.MediaTypeEnum;
+    /**
+     * Video url (720p).  **Note:** This field is limited and not available to all apps.
      */
     video_url?: string | null;
     /**
-     * Duration (in milliseconds)
+     * Width (in pixels). Field maybe null after creation due to video processing time.
      */
-    duration?: number;
-    /**
-     * Height (in pixels)
-     */
-    height?: number;
-    /**
-     * Width (in pixels)
-     */
-    width?: number;
+    width?: number | null;
 }
+export namespace PinMediaWithVideo {
+    export const MediaTypeEnum = {
+        Video: 'video'
+    } as const;
+    export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
+}
+
 

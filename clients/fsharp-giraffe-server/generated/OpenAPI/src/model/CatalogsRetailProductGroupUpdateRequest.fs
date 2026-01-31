@@ -17,10 +17,10 @@ module CatalogsRetailProductGroupUpdateRequest =
 
   type CatalogsRetailProductGroupUpdateRequest = {
     CatalogType : CatalogTypeEnum;
-    Name : string;
+    Country : Country;
     Description : string option;
     Filters : CatalogsProductGroupFiltersRequest;
-    Country : Country;
     Locale : CatalogsLocale;
+    Name : string;
   }
   //#endregion

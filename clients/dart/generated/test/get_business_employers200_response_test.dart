@@ -16,14 +16,14 @@ void main() {
   // final instance = GetBusinessEmployers200Response();
 
   group('test GetBusinessEmployers200Response', () {
-    // List of employers.
-    // List<UserBusinessRoleBinding> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List of employers.
+    // List<UserBusinessRoleBinding> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

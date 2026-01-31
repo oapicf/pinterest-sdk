@@ -2,12 +2,17 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIBoard.h"
+#import "OAIBoardCreate.h"
+#import "OAIBoardPrivacyFilter.h"
 #import "OAIBoardSection.h"
 #import "OAIBoardSectionsList200Response.h"
-#import "OAIBoardUpdate.h"
+#import "OAIBoardWithUpdatePrivacy.h"
+#import "OAIBoardWithUpdatePrivacyUpdate.h"
 #import "OAIBoardsList200Response.h"
 #import "OAIBoardsListPins200Response.h"
+#import "OAICreativeType.h"
 #import "OAIError.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAIBoardsApi ()
@@ -532,21 +537,21 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create board
-/// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
-///  @param board Create a board using a single board json object. 
+/// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
+///  @param boardCreate  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAIBoard*
 ///
--(NSURLSessionTask*) boardsCreateWithBoard: (OAIBoard*) board
+-(NSURLSessionTask*) boardsCreateWithBoardCreate: (OAIBoardCreate*) boardCreate
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(OAIBoard* output, NSError* error)) handler {
-    // verify the required parameter 'board' is set
-    if (board == nil) {
-        NSParameterAssert(board);
+    // verify the required parameter 'boardCreate' is set
+    if (boardCreate == nil) {
+        NSParameterAssert(boardCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"board"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -576,12 +581,12 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = board;
+    bodyParam = boardCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -604,8 +609,8 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 
 ///
 /// Delete board
-/// Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
-///  @param boardId Unique identifier of a board. 
+/// Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
+///  @param boardId  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
@@ -678,8 +683,8 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get board
-/// Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
-///  @param boardId Unique identifier of a board. 
+/// Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
+///  @param boardId  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
@@ -752,21 +757,21 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 
 ///
 /// List boards
-/// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+/// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 ///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @param privacy The privacy level of the board (optional)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param privacy Privacy setting for a board. (optional)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIBoardsList200Response*
 ///
 -(NSURLSessionTask*) boardsListWithAdAccountId: (NSString*) adAccountId
+    privacy: (OAIBoardPrivacyFilter) privacy
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    privacy: (NSString*) privacy
     completionHandler: (void (^)(OAIBoardsList200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/boards"];
 
@@ -776,14 +781,14 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     if (adAccountId != nil) {
         queryParams[@"ad_account_id"] = adAccountId;
     }
+    if (privacy != nil) {
+        queryParams[@"privacy"] = privacy;
+    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
-    }
-    if (privacy != nil) {
-        queryParams[@"privacy"] = privacy;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -834,18 +839,18 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
-///  @param creativeTypes Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+///  @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to @(NO))
+///  @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to @(NO))
 ///
 ///  @returns OAIBoardsListPins200Response*
 ///
 -(NSURLSessionTask*) boardsListPinsWithBoardId: (NSString*) boardId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    creativeTypes: (NSArray<NSString*>*) creativeTypes
+    creativeTypes: (NSArray<OAICreativeType>*) creativeTypes
     adAccountId: (NSString*) adAccountId
     pinMetrics: (NSNumber*) pinMetrics
     completionHandler: (void (^)(OAIBoardsListPins200Response* output, NSError* error)) handler {
@@ -925,19 +930,19 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 
 ///
 /// Update board
-/// Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
-///  @param boardId Unique identifier of a board. 
+/// Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
+///  @param boardId  
 ///
-///  @param boardUpdate Update a board. 
+///  @param boardWithUpdatePrivacyUpdate  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAIBoard*
+///  @returns OAIBoardWithUpdatePrivacy*
 ///
 -(NSURLSessionTask*) boardsUpdateWithBoardId: (NSString*) boardId
-    boardUpdate: (OAIBoardUpdate*) boardUpdate
+    boardWithUpdatePrivacyUpdate: (OAIBoardWithUpdatePrivacyUpdate*) boardWithUpdatePrivacyUpdate
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAIBoard* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIBoardWithUpdatePrivacy* output, NSError* error)) handler {
     // verify the required parameter 'boardId' is set
     if (boardId == nil) {
         NSParameterAssert(boardId);
@@ -949,11 +954,11 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'boardUpdate' is set
-    if (boardUpdate == nil) {
-        NSParameterAssert(boardUpdate);
+    // verify the required parameter 'boardWithUpdatePrivacyUpdate' is set
+    if (boardWithUpdatePrivacyUpdate == nil) {
+        NSParameterAssert(boardWithUpdatePrivacyUpdate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardUpdate"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardWithUpdatePrivacyUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -986,12 +991,12 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = boardUpdate;
+    bodyParam = boardWithUpdatePrivacyUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -1004,10 +1009,10 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBoard*"
+                              responseType: @"OAIBoardWithUpdatePrivacy*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBoard*)data, error);
+                                    handler((OAIBoardWithUpdatePrivacy*)data, error);
                                 }
                             }];
 }

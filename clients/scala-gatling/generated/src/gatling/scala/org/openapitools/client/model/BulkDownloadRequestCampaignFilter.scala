@@ -3,20 +3,20 @@ package org.openapitools.client.model
 
 
 case class BulkDownloadRequestCampaignFilter (
-    /* Unix UTC timestamp. */
-    _startTime: Option[String],
+    _campaignStatus: Option[List[CampaignSummaryStatus]],
     /* Unix UTC timestamp. */
     _endTime: Option[String],
     /* Campaign name */
     _name: Option[String],
-    _campaignStatus: Option[List[CampaignSummaryStatus]],
-    _objectiveType: Option[List[ObjectiveType]]
+    _objectiveType: Option[List[ObjectiveType]],
+    /* Unix UTC timestamp. */
+    _startTime: Option[String]
 )
 object BulkDownloadRequestCampaignFilter {
-    def toStringBody(var_startTime: Object, var_endTime: Object, var_name: Object, var_campaignStatus: Object, var_objectiveType: Object) =
+    def toStringBody(var_campaignStatus: Object, var_endTime: Object, var_name: Object, var_objectiveType: Object, var_startTime: Object) =
         s"""
         | {
-        | "startTime":$var_startTime,"endTime":$var_endTime,"name":$var_name,"campaignStatus":$var_campaignStatus,"objectiveType":$var_objectiveType
+        | "campaignStatus":$var_campaignStatus,"endTime":$var_endTime,"name":$var_name,"objectiveType":$var_objectiveType,"startTime":$var_startTime
         | }
         """.stripMargin
 }

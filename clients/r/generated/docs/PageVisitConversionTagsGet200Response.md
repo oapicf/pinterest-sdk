@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[ConversionEventResponse]**](ConversionEventResponse.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[ConversionEventResponse]**](ConversionEventResponse.md) |  | 
 
 

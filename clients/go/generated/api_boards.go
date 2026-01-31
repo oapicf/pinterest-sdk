@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -859,13 +859,12 @@ func (a *BoardsAPIService) BoardSectionsUpdateExecute(r ApiBoardSectionsUpdateRe
 type ApiBoardsCreateRequest struct {
 	ctx context.Context
 	ApiService *BoardsAPIService
-	board *Board
+	boardCreate *BoardCreate
 	adAccountId *string
 }
 
-// Create a board using a single board json object.
-func (r ApiBoardsCreateRequest) Board(board Board) ApiBoardsCreateRequest {
-	r.board = &board
+func (r ApiBoardsCreateRequest) BoardCreate(boardCreate BoardCreate) ApiBoardsCreateRequest {
+	r.boardCreate = &boardCreate
 	return r
 }
 
@@ -884,7 +883,7 @@ BoardsCreate Create board
 
 Create a board owned by the "operation user_account".
 Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
-- By default, the "operation user_account" is the token user_account.
+* By default, the "operation user_account" is the token user_account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBoardsCreateRequest
@@ -916,8 +915,8 @@ func (a *BoardsAPIService) BoardsCreateExecute(r ApiBoardsCreateRequest) (*Board
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.board == nil {
-		return localVarReturnValue, nil, reportError("board is required and must be specified")
+	if r.boardCreate == nil {
+		return localVarReturnValue, nil, reportError("boardCreate is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -941,7 +940,7 @@ func (a *BoardsAPIService) BoardsCreateExecute(r ApiBoardsCreateRequest) (*Board
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.board
+	localVarPostBody = r.boardCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -965,7 +964,7 @@ func (a *BoardsAPIService) BoardsCreateExecute(r ApiBoardsCreateRequest) (*Board
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -975,7 +974,51 @@ func (a *BoardsAPIService) BoardsCreateExecute(r ApiBoardsCreateRequest) (*Board
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1019,11 +1062,11 @@ func (r ApiBoardsDeleteRequest) Execute() (*http.Response, error) {
 BoardsDelete Delete board
 
 Delete a board owned by the "operation user_account".
-- Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
-- By default, the "operation user_account" is the token user_account.
+* Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
+* By default, the "operation user_account" is the token user_account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param boardId Unique identifier of a board.
+ @param boardId
  @return ApiBoardsDeleteRequest
 */
 func (a *BoardsAPIService) BoardsDelete(ctx context.Context, boardId string) ApiBoardsDeleteRequest {
@@ -1096,8 +1139,30 @@ func (a *BoardsAPIService) BoardsDeleteExecute(r ApiBoardsDeleteRequest) (*http.
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1108,18 +1173,7 @@ func (a *BoardsAPIService) BoardsDeleteExecute(r ApiBoardsDeleteRequest) (*http.
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1130,7 +1184,7 @@ func (a *BoardsAPIService) BoardsDeleteExecute(r ApiBoardsDeleteRequest) (*http.
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1140,7 +1194,7 @@ func (a *BoardsAPIService) BoardsDeleteExecute(r ApiBoardsDeleteRequest) (*http.
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1175,11 +1229,11 @@ func (r ApiBoardsGetRequest) Execute() (*Board, *http.Response, error) {
 BoardsGet Get board
 
 Get a board owned by the operation user_account - or a group board that has been shared with this account.
-- Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
-- By default, the "operation user_account" is the token user_account.
+* Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
+* By default, the "operation user_account" is the token user_account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param boardId Unique identifier of a board.
+ @param boardId
  @return ApiBoardsGetRequest
 */
 func (a *BoardsAPIService) BoardsGet(ctx context.Context, boardId string) ApiBoardsGetRequest {
@@ -1254,8 +1308,8 @@ func (a *BoardsAPIService) BoardsGetExecute(r ApiBoardsGetRequest) (*Board, *htt
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1265,7 +1319,51 @@ func (a *BoardsAPIService) BoardsGetExecute(r ApiBoardsGetRequest) (*Board, *htt
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1292,14 +1390,20 @@ type ApiBoardsListRequest struct {
 	ctx context.Context
 	ApiService *BoardsAPIService
 	adAccountId *string
+	privacy *BoardPrivacyFilter
 	bookmark *string
 	pageSize *int32
-	privacy *string
 }
 
 // Unique identifier of an ad account.
 func (r ApiBoardsListRequest) AdAccountId(adAccountId string) ApiBoardsListRequest {
 	r.adAccountId = &adAccountId
+	return r
+}
+
+// The privacy level of the board
+func (r ApiBoardsListRequest) Privacy(privacy BoardPrivacyFilter) ApiBoardsListRequest {
+	r.privacy = &privacy
 	return r
 }
 
@@ -1309,15 +1413,9 @@ func (r ApiBoardsListRequest) Bookmark(bookmark string) ApiBoardsListRequest {
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiBoardsListRequest) PageSize(pageSize int32) ApiBoardsListRequest {
 	r.pageSize = &pageSize
-	return r
-}
-
-// Privacy setting for a board.
-func (r ApiBoardsListRequest) Privacy(privacy string) ApiBoardsListRequest {
-	r.privacy = &privacy
 	return r
 }
 
@@ -1331,7 +1429,7 @@ BoardsList List boards
 Get a list of the boards owned by the "operation user_account" + group boards where this account is a collaborator
 Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
 Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return.
-- If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+* If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBoardsListRequest
@@ -1367,6 +1465,9 @@ func (a *BoardsAPIService) BoardsListExecute(r ApiBoardsListRequest) (*BoardsLis
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
+	if r.privacy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "privacy", r.privacy, "form", "")
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
@@ -1376,9 +1477,6 @@ func (a *BoardsAPIService) BoardsListExecute(r ApiBoardsListRequest) (*BoardsLis
         var defaultValue int32 = 25
         parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
         r.pageSize = &defaultValue
-	}
-	if r.privacy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "privacy", r.privacy, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1419,7 +1517,62 @@ func (a *BoardsAPIService) BoardsListExecute(r ApiBoardsListRequest) (*BoardsLis
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1448,7 +1601,7 @@ type ApiBoardsListPinsRequest struct {
 	boardId string
 	bookmark *string
 	pageSize *int32
-	creativeTypes *[]string
+	creativeTypes *[]CreativeType
 	adAccountId *string
 	pinMetrics *bool
 }
@@ -1465,8 +1618,8 @@ func (r ApiBoardsListPinsRequest) PageSize(pageSize int32) ApiBoardsListPinsRequ
 	return r
 }
 
-// Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-func (r ApiBoardsListPinsRequest) CreativeTypes(creativeTypes []string) ApiBoardsListPinsRequest {
+// Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+func (r ApiBoardsListPinsRequest) CreativeTypes(creativeTypes []CreativeType) ApiBoardsListPinsRequest {
 	r.creativeTypes = &creativeTypes
 	return r
 }
@@ -1477,7 +1630,7 @@ func (r ApiBoardsListPinsRequest) AdAccountId(adAccountId string) ApiBoardsListP
 	return r
 }
 
-// Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+// Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 func (r ApiBoardsListPinsRequest) PinMetrics(pinMetrics bool) ApiBoardsListPinsRequest {
 	r.pinMetrics = &pinMetrics
 	return r
@@ -1636,13 +1789,12 @@ type ApiBoardsUpdateRequest struct {
 	ctx context.Context
 	ApiService *BoardsAPIService
 	boardId string
-	boardUpdate *BoardUpdate
+	boardWithUpdatePrivacyUpdate *BoardWithUpdatePrivacyUpdate
 	adAccountId *string
 }
 
-// Update a board.
-func (r ApiBoardsUpdateRequest) BoardUpdate(boardUpdate BoardUpdate) ApiBoardsUpdateRequest {
-	r.boardUpdate = &boardUpdate
+func (r ApiBoardsUpdateRequest) BoardWithUpdatePrivacyUpdate(boardWithUpdatePrivacyUpdate BoardWithUpdatePrivacyUpdate) ApiBoardsUpdateRequest {
+	r.boardWithUpdatePrivacyUpdate = &boardWithUpdatePrivacyUpdate
 	return r
 }
 
@@ -1652,7 +1804,7 @@ func (r ApiBoardsUpdateRequest) AdAccountId(adAccountId string) ApiBoardsUpdateR
 	return r
 }
 
-func (r ApiBoardsUpdateRequest) Execute() (*Board, *http.Response, error) {
+func (r ApiBoardsUpdateRequest) Execute() (*BoardWithUpdatePrivacy, *http.Response, error) {
 	return r.ApiService.BoardsUpdateExecute(r)
 }
 
@@ -1660,11 +1812,11 @@ func (r ApiBoardsUpdateRequest) Execute() (*Board, *http.Response, error) {
 BoardsUpdate Update board
 
 Update a board owned by the "operating user_account".
-- Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
-- By default, the "operation user_account" is the token user_account.
+* Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
+* By default, the "operation user_account" is the token user_account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param boardId Unique identifier of a board.
+ @param boardId
  @return ApiBoardsUpdateRequest
 */
 func (a *BoardsAPIService) BoardsUpdate(ctx context.Context, boardId string) ApiBoardsUpdateRequest {
@@ -1676,13 +1828,13 @@ func (a *BoardsAPIService) BoardsUpdate(ctx context.Context, boardId string) Api
 }
 
 // Execute executes the request
-//  @return Board
-func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board, *http.Response, error) {
+//  @return BoardWithUpdatePrivacy
+func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*BoardWithUpdatePrivacy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Board
+		localVarReturnValue  *BoardWithUpdatePrivacy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BoardsAPIService.BoardsUpdate")
@@ -1696,8 +1848,8 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.boardUpdate == nil {
-		return localVarReturnValue, nil, reportError("boardUpdate is required and must be specified")
+	if r.boardWithUpdatePrivacyUpdate == nil {
+		return localVarReturnValue, nil, reportError("boardWithUpdatePrivacyUpdate is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -1721,7 +1873,7 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.boardUpdate
+	localVarPostBody = r.boardWithUpdatePrivacyUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1745,7 +1897,18 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1756,7 +1919,18 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1767,7 +1941,7 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1777,7 +1951,7 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

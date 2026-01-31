@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**UserSummary[]**](UserSummary.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**UserSummary[]**](UserSummary.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$FollowersList200Response = Initialize-PSOpenAPIToolsFollowersList200Response  -Items null `
- -Bookmark null
+$FollowersList200Response = Initialize-PSOpenAPIToolsFollowersList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

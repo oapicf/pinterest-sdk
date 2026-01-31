@@ -4,9 +4,9 @@ import java.io._
 import org.openapitools._
 import org.openapitools.models._
 import org.openapitools.models.Error
-import org.openapitools.models.PinsList200Response
 import org.openapitools.models.SearchPartnerPins200Response
 import org.openapitools.models.SearchUserBoardsGet200Response
+import org.openapitools.models.SearchUserPinsList200Response
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import com.twitter.concurrent.AsyncStream
@@ -82,9 +82,9 @@ object SearchApi {
 
         /**
         * 
-        * @return An endpoint representing a PinsList200Response
+        * @return An endpoint representing a SearchUserPinsList200Response
         */
-        private def searchUserPins/list(da: DataAccessor): Endpoint[PinsList200Response] =
+        private def searchUserPins/list(da: DataAccessor): Endpoint[SearchUserPinsList200Response] =
         get("search" :: "pins" :: param("query") :: paramOption("ad_account_id") :: paramOption("bookmark")) { (query: String, adAccountId: Option[String], bookmark: Option[String]) =>
           da.Search_searchUserPins/list(query, adAccountId, bookmark) match {
             case Left(error) => checkError(error)

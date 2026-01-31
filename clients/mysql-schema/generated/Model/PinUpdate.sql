@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinUpdate`
 --
-SELECT `alt_text`, `board_id`, `board_section_id`, `description`, `link`, `title`, `carousel_slots`, `note` FROM `PinUpdate` WHERE 1;
+SELECT `alt_text`, `board_id`, `board_section_id`, `carousel_slots`, `description`, `link`, `title` FROM `PinUpdate` WHERE 1;
 
 --
 -- INSERT template for table `PinUpdate`
 --
-INSERT INTO `PinUpdate`(`alt_text`, `board_id`, `board_section_id`, `description`, `link`, `title`, `carousel_slots`, `note`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `PinUpdate`(`alt_text`, `board_id`, `board_section_id`, `carousel_slots`, `description`, `link`, `title`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `PinUpdate`
 --
-UPDATE `PinUpdate` SET `alt_text` = ?, `board_id` = ?, `board_section_id` = ?, `description` = ?, `link` = ?, `title` = ?, `carousel_slots` = ?, `note` = ? WHERE 1;
+UPDATE `PinUpdate` SET `alt_text` = ?, `board_id` = ?, `board_section_id` = ?, `carousel_slots` = ?, `description` = ?, `link` = ?, `title` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinUpdate`

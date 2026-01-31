@@ -1,0 +1,108 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsVerticalProductGroup"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsVerticalProductGroup"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroup = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroup
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  CatalogsHotelProductGroup = openapi_server.resourceTypes.CatalogsHotelProductGroup
+  CatalogsHotelProductGroupType = openapi_server.resourceTypes.CatalogsHotelProductGroupType
+  CatalogsProductGroupStatus = openapi_server.resourceTypes.CatalogsProductGroupStatus
+  CatalogsRetailProductGroup = openapi_server.resourceTypes.CatalogsRetailProductGroup
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsVerticalProductGroup {
+    title = CatalogsVerticalProductGroup
+    description = CatalogsVerticalProductGroup
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        country {
+          type =  string
+          description = ""
+          optional = false
+        }
+        created_at {
+          type =  integer
+          description = "Unix timestamp in seconds of when catalog product group was created."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        feed_id {
+          type =  string
+          description = "id of the catalogs feed belonging to this catalog product group"
+          optional = true
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = "ID of the creative assets product group."
+          optional = true
+        }
+        is_featured {
+          type =  boolean
+          description = "boolean indicator of whether the product group is being featured or not"
+          optional = false
+        }
+        locale {
+          type =  string
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Name of creative assets product group"
+          optional = false
+        }
+        status {
+          type = CatalogsProductGroupStatus
+          description = ""
+          optional = false
+        }
+        type {
+          type = CatalogsHotelProductGroupType
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  integer
+          description = "Unix timestamp in seconds of last time catalog product group was updated."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsVerticalProductGroup {
+    title = CatalogsVerticalProductGroup
+    description = CatalogsVerticalProductGroup
+    implements = openapi_server.resourceTypes.CatalogsVerticalProductGroup
+
+  }
+}

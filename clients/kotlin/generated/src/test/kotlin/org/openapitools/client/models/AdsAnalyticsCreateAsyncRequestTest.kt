@@ -20,8 +20,8 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.client.models.AdGroupSummaryStatus
+import org.openapitools.client.models.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
 import org.openapitools.client.models.AdsAnalyticsMetricsFilter
-import org.openapitools.client.models.AdsAnalyticsTargetingType
 import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.ConversionAttributionWindowDays
 import org.openapitools.client.models.ConversionReportAttributionType
@@ -33,17 +33,12 @@ import org.openapitools.client.models.ObjectiveType
 import org.openapitools.client.models.PinPromotionSummaryStatus
 import org.openapitools.client.models.ProductGroupSummaryStatus
 import org.openapitools.client.models.ReportingColumnAsync
+import org.openapitools.client.models.ReportingTimeZone
 
 class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of AdsAnalyticsCreateAsyncRequest
         //val modelInstance = AdsAnalyticsCreateAsyncRequest()
-
-        // to test the property `startDate` - Metric report start date (UTC). Format: YYYY-MM-DD
-        should("test startDate") {
-            // uncomment below to test the property
-            //modelInstance.startDate shouldBe ("TODO")
-        }
 
         // to test the property `endDate` - Metric report end date (UTC). Format: YYYY-MM-DD
         should("test endDate") {
@@ -55,6 +50,12 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
         should("test granularity") {
             // uncomment below to test the property
             //modelInstance.granularity shouldBe ("TODO")
+        }
+
+        // to test the property `startDate` - Metric report start date (UTC). Format: YYYY-MM-DD
+        should("test startDate") {
+            // uncomment below to test the property
+            //modelInstance.startDate shouldBe ("TODO")
         }
 
         // to test the property `columns` - Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
@@ -69,10 +70,22 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
             //modelInstance.level shouldBe ("TODO")
         }
 
+        // to test the property `attributionTypes` - List of types of attribution for the conversion report
+        should("test attributionTypes") {
+            // uncomment below to test the property
+            //modelInstance.attributionTypes shouldBe ("TODO")
+        }
+
         // to test the property `clickWindowDays` - Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
         should("test clickWindowDays") {
             // uncomment below to test the property
             //modelInstance.clickWindowDays shouldBe ("TODO")
+        }
+
+        // to test the property `conversionReportTime` - The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+        should("test conversionReportTime") {
+            // uncomment below to test the property
+            //modelInstance.conversionReportTime shouldBe ("TODO")
         }
 
         // to test the property `engagementWindowDays` - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
@@ -85,18 +98,6 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
         should("test viewWindowDays") {
             // uncomment below to test the property
             //modelInstance.viewWindowDays shouldBe ("TODO")
-        }
-
-        // to test the property `conversionReportTime` - The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-        should("test conversionReportTime") {
-            // uncomment below to test the property
-            //modelInstance.conversionReportTime shouldBe ("TODO")
-        }
-
-        // to test the property `attributionTypes` - List of types of attribution for the conversion report
-        should("test attributionTypes") {
-            // uncomment below to test the property
-            //modelInstance.attributionTypes shouldBe ("TODO")
         }
 
         // to test the property `campaignIds` - List of campaign ids
@@ -115,6 +116,12 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
         should("test campaignObjectiveTypes") {
             // uncomment below to test the property
             //modelInstance.campaignObjectiveTypes shouldBe ("TODO")
+        }
+
+        // to test the property `campaignBrandLabel` - Campaign brand label for filtering.
+        should("test campaignBrandLabel") {
+            // uncomment below to test the property
+            //modelInstance.campaignBrandLabel shouldBe ("TODO")
         }
 
         // to test the property `adGroupIds` - List of ad group ids
@@ -159,7 +166,7 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
             //modelInstance.productItemIds shouldBe ("TODO")
         }
 
-        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
         should("test targetingTypes") {
             // uncomment below to test the property
             //modelInstance.targetingTypes shouldBe ("TODO")
@@ -171,10 +178,22 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
             //modelInstance.metricsFilters shouldBe ("TODO")
         }
 
-        // to test the property `reportFormat` - Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-        should("test reportFormat") {
+        // to test the property `combineTargetingTypes` - Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.
+        should("test combineTargetingTypes") {
             // uncomment below to test the property
-            //modelInstance.reportFormat shouldBe ("TODO")
+            //modelInstance.combineTargetingTypes shouldBe ("TODO")
+        }
+
+        // to test the property `customConversionEventMetrics` - List of advertiser-defined custom conversion event metrics to include in the report
+        should("test customConversionEventMetrics") {
+            // uncomment below to test the property
+            //modelInstance.customConversionEventMetrics shouldBe ("TODO")
+        }
+
+        // to test the property `endHour` - Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+        should("test endHour") {
+            // uncomment below to test the property
+            //modelInstance.endHour shouldBe ("TODO")
         }
 
         // to test the property `primarySort` - Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
@@ -183,16 +202,22 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
             //modelInstance.primarySort shouldBe ("TODO")
         }
 
+        // to test the property `reportFormat` - Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+        should("test reportFormat") {
+            // uncomment below to test the property
+            //modelInstance.reportFormat shouldBe ("TODO")
+        }
+
+        // to test the property `reportingTimezone` - Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+        should("test reportingTimezone") {
+            // uncomment below to test the property
+            //modelInstance.reportingTimezone shouldBe ("TODO")
+        }
+
         // to test the property `startHour` - Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
         should("test startHour") {
             // uncomment below to test the property
             //modelInstance.startHour shouldBe ("TODO")
-        }
-
-        // to test the property `endHour` - Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
-        should("test endHour") {
-            // uncomment below to test the property
-            //modelInstance.endHour shouldBe ("TODO")
         }
 
     }

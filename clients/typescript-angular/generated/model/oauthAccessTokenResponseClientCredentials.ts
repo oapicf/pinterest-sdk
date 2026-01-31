@@ -13,11 +13,11 @@
  * A successful OAuth client token response for the client token flow.
  */
 export interface OauthAccessTokenResponseClientCredentials { 
-    response_type?: OauthAccessTokenResponseClientCredentials.ResponseTypeEnum;
     access_token: string;
-    token_type: string;
     expires_in: number;
+    response_type?: OauthAccessTokenResponseClientCredentials.ResponseTypeEnum;
     scope: string;
+    token_type: string;
 }
 export namespace OauthAccessTokenResponseClientCredentials {
     export const ResponseTypeEnum = {

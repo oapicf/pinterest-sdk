@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,7 +16,7 @@ package openapi
 
 type CustomLabel1Filter struct {
 
-	CUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_1"`
+	CUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_1"`
 }
 
 // AssertCustomLabel1FilterRequired checks if the required fields are not zero-ed

@@ -16,14 +16,8 @@ void main() {
   // final instance = IntegrationRequest();
 
   group('test IntegrationRequest', () {
-    // External business ID for the integration.
-    // String externalBusinessId
-    test('to test the property `externalBusinessId`', () async {
-      // TODO
-    });
-
-    // String connectedMerchantId
-    test('to test the property `connectedMerchantId`', () async {
+    // String additionalId1
+    test('to test the property `additionalId1`', () async {
       // TODO
     });
 
@@ -37,8 +31,19 @@ void main() {
       // TODO
     });
 
+    // String connectedMerchantId
+    test('to test the property `connectedMerchantId`', () async {
+      // TODO
+    });
+
     // String connectedTagId
     test('to test the property `connectedTagId`', () async {
+      // TODO
+    });
+
+    // External business ID for the integration.
+    // String externalBusinessId
+    test('to test the property `externalBusinessId`', () async {
       // TODO
     });
 
@@ -47,8 +52,13 @@ void main() {
       // TODO
     });
 
-    // String partnerRefreshToken
-    test('to test the property `partnerRefreshToken`', () async {
+    // int partnerAccessTokenExpiry
+    test('to test the property `partnerAccessTokenExpiry`', () async {
+      // TODO
+    });
+
+    // String partnerMetadata
+    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 
@@ -57,8 +67,8 @@ void main() {
       // TODO
     });
 
-    // int partnerAccessTokenExpiry
-    test('to test the property `partnerAccessTokenExpiry`', () async {
+    // String partnerRefreshToken
+    test('to test the property `partnerRefreshToken`', () async {
       // TODO
     });
 
@@ -69,16 +79,6 @@ void main() {
 
     // String scopes
     test('to test the property `scopes`', () async {
-      // TODO
-    });
-
-    // String additionalId1
-    test('to test the property `additionalId1`', () async {
-      // TODO
-    });
-
-    // String partnerMetadata
-    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 

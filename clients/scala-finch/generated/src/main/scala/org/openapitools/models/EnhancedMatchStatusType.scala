@@ -7,7 +7,7 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * The enhanced match status of the tag
+ * 
  */
 case class EnhancedMatchStatusType()
 

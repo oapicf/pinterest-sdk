@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **ConversionEvent** | Pointer to **string** |  | [optional] 
 **ConversionTagId** | Pointer to **string** |  | [optional] 
 **CpaGoalValueInMicroCurrency** | Pointer to **string** |  | [optional] 
-**IsRoasOptimized** | Pointer to **NullableBool** | ROAS optimization is not supported | [optional] 
+**IsRoasOptimized** | Pointer to **NullableBool** | Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when &#x60;conversion_event&#x60; is set to &#x60;\&quot;CHECKOUT\&quot;&#x60; and &#x60;bid_strategy_type&#x60; is set to &#x60;\&quot;AUTOMATIC_BID\&quot;&#x60;. &lt;br&gt;This parameter is not enabled for all advertisers. &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
 **LearningModeType** | Pointer to **NullableString** | Conversion learning model type | [optional] 
+**ReportingEvent** | Pointer to **string** | Event name for custom or standard events mapped to an oCPM model | [optional] 
 
 ## Methods
 
@@ -200,6 +201,31 @@ HasLearningModeType returns a boolean if a field has been set.
 `func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) UnsetLearningModeType()`
 
 UnsetLearningModeType ensures that no value is present for LearningModeType, not even an explicit nil
+### GetReportingEvent
+
+`func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) GetReportingEvent() string`
+
+GetReportingEvent returns the ReportingEvent field if non-nil, zero value otherwise.
+
+### GetReportingEventOk
+
+`func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) GetReportingEventOk() (*string, bool)`
+
+GetReportingEventOk returns a tuple with the ReportingEvent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportingEvent
+
+`func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) SetReportingEvent(v string)`
+
+SetReportingEvent sets ReportingEvent field to given value.
+
+### HasReportingEvent
+
+`func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) HasReportingEvent() bool`
+
+HasReportingEvent returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

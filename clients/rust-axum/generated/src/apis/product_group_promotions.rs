@@ -26,7 +26,7 @@ pub enum ProductGroupPromotionsSlashCreateResponse {
 pub enum ProductGroupPromotionsSlashGetResponse {
     /// Success
     Status200_Success
-    (models::ProductGroupPromotionResponse)
+    (models::ProductGroupPromotion)
     ,
     /// Unexpected error
     Status0_UnexpectedError

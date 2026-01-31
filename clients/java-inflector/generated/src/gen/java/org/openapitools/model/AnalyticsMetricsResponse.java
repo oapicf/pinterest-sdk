@@ -17,31 +17,13 @@ import org.openapitools.model.AnalyticsDailyMetrics;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AnalyticsMetricsResponse   {
-  @JsonProperty("summary_metrics")
-  private Map<String, BigDecimal> summaryMetrics = null;
-
   @JsonProperty("daily_metrics")
   private List<AnalyticsDailyMetrics> dailyMetrics = null;
 
-  /**
-   * The metric name and value over the requested period for each requested metric
-   **/
-  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
-    this.summaryMetrics = summaryMetrics;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"PROFILE_VISIT\":0,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and value over the requested period for each requested metric")
   @JsonProperty("summary_metrics")
-  public Map<String, BigDecimal> getSummaryMetrics() {
-    return summaryMetrics;
-  }
-  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
-    this.summaryMetrics = summaryMetrics;
-  }
+  private Map<String, BigDecimal> summaryMetrics = null;
 
   /**
    * Array with the requested daily metric records
@@ -61,6 +43,24 @@ public class AnalyticsMetricsResponse   {
     this.dailyMetrics = dailyMetrics;
   }
 
+  /**
+   * The metric name and value over the requested period for each requested metric
+   **/
+  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"PROFILE_VISIT\":0,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and value over the requested period for each requested metric")
+  @JsonProperty("summary_metrics")
+  public Map<String, BigDecimal> getSummaryMetrics() {
+    return summaryMetrics;
+  }
+  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -71,13 +71,13 @@ public class AnalyticsMetricsResponse   {
       return false;
     }
     AnalyticsMetricsResponse analyticsMetricsResponse = (AnalyticsMetricsResponse) o;
-    return Objects.equals(summaryMetrics, analyticsMetricsResponse.summaryMetrics) &&
-        Objects.equals(dailyMetrics, analyticsMetricsResponse.dailyMetrics);
+    return Objects.equals(dailyMetrics, analyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(summaryMetrics, analyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(summaryMetrics, dailyMetrics);
+    return Objects.hash(dailyMetrics, summaryMetrics);
   }
 
   @Override
@@ -85,8 +85,8 @@ public class AnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AnalyticsMetricsResponse {\n");
     
-    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();
   }

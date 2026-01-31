@@ -9,12 +9,12 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Create conversion tag
-%% Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
--spec conversion_tags/create(ctx:ctx(), binary(), openapi_conversion_tag_create:openapi_conversion_tag_create()) -> {ok, openapi_conversion_tag_response:openapi_conversion_tag_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+%% Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
+-spec conversion_tags/create(ctx:ctx(), binary(), openapi_conversion_tag_create:openapi_conversion_tag_create()) -> {ok, openapi_conversion_tag:openapi_conversion_tag(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 conversion_tags/create(Ctx, AdAccountId, OpenapiConversionTagCreate) ->
     conversion_tags/create(Ctx, AdAccountId, OpenapiConversionTagCreate, #{}).
 
--spec conversion_tags/create(ctx:ctx(), binary(), openapi_conversion_tag_create:openapi_conversion_tag_create(), maps:map()) -> {ok, openapi_conversion_tag_response:openapi_conversion_tag_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec conversion_tags/create(ctx:ctx(), binary(), openapi_conversion_tag_create:openapi_conversion_tag_create(), maps:map()) -> {ok, openapi_conversion_tag:openapi_conversion_tag(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 conversion_tags/create(Ctx, AdAccountId, OpenapiConversionTagCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -31,11 +31,11 @@ conversion_tags/create(Ctx, AdAccountId, OpenapiConversionTagCreate, Optional) -
 
 %% @doc Get conversion tag
 %% Get information about an existing conversion tag.
--spec conversion_tags/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_conversion_tag_response:openapi_conversion_tag_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec conversion_tags/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_conversion_tag:openapi_conversion_tag(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 conversion_tags/get(Ctx, AdAccountId, ConversionTagId) ->
     conversion_tags/get(Ctx, AdAccountId, ConversionTagId, #{}).
 
--spec conversion_tags/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_conversion_tag_response:openapi_conversion_tag_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec conversion_tags/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_conversion_tag:openapi_conversion_tag(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 conversion_tags/get(Ctx, AdAccountId, ConversionTagId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -50,13 +50,13 @@ conversion_tags/get(Ctx, AdAccountId, ConversionTagId, Optional) ->
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
-%% @doc Get conversion tags
+%% @doc List conversion tags
 %% List conversion tags associated with an ad account.
--spec conversion_tags/list(ctx:ctx(), binary()) -> {ok, openapi_conversion_tag_list_response:openapi_conversion_tag_list_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec conversion_tags/list(ctx:ctx(), binary()) -> {ok, openapi_conversion_tags_list_200_response:openapi_conversion_tags_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 conversion_tags/list(Ctx, AdAccountId) ->
     conversion_tags/list(Ctx, AdAccountId, #{}).
 
--spec conversion_tags/list(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_conversion_tag_list_response:openapi_conversion_tag_list_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec conversion_tags/list(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_conversion_tags_list_200_response:openapi_conversion_tags_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 conversion_tags/list(Ctx, AdAccountId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

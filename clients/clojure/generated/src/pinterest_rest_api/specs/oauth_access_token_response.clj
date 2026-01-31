@@ -7,11 +7,11 @@
 
 (def oauth-access-token-response-data
   {
-   (ds/opt :response_type) string?
    (ds/req :access_token) string?
-   (ds/req :token_type) string?
    (ds/req :expires_in) int?
+   (ds/opt :response_type) string?
    (ds/req :scope) string?
+   (ds/req :token_type) string?
    })
 
 (def oauth-access-token-response-spec

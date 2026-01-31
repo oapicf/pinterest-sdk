@@ -10,7 +10,6 @@
 
 #include <string>
 #include "ImageMetadata.h"
-#include "PinMedia.h"
 #include <list>
 #include "Object.h"
 
@@ -50,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getMediaType();
-
-	/*! \brief Set 
-	 */
-	void setMediaType(std::string  media_type);
-	/*! \brief Get 
-	 */
 	std::list<ImageMetadata> getItems();
 
 	/*! \brief Set 
 	 */
 	void setItems(std::list <ImageMetadata> items);
+	/*! \brief Get 
+	 */
+	std::string getMediaType();
+
+	/*! \brief Set 
+	 */
+	void setMediaType(std::string  media_type);
 
 private:
-	std::string media_type;
 	std::list <ImageMetadata>items;
+	std::string media_type;
 	void __init();
 	void __cleanup();
 

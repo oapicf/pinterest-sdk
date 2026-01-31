@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The number of products in the feed file.
-	 */
-	int getOriginal();
-
-	/*! \brief Set The number of products in the feed file.
-	 */
-	void setOriginal(int  original);
 	/*! \brief Get The number of products successfully ingested from the feed file.
 	 */
 	int getIngested();
@@ -59,10 +52,17 @@ public:
 	/*! \brief Set The number of products successfully ingested from the feed file.
 	 */
 	void setIngested(int  ingested);
+	/*! \brief Get The number of products in the feed file.
+	 */
+	int getOriginal();
+
+	/*! \brief Set The number of products in the feed file.
+	 */
+	void setOriginal(int  original);
 
 private:
-	int original;
 	int ingested;
+	int original;
 	void __init();
 	void __cleanup();
 

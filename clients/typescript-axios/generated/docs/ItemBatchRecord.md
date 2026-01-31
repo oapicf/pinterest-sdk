@@ -6,8 +6,8 @@ Object describing an item batch record
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_id** | **string** | The catalog item id in the merchant namespace | [optional] [default to undefined]
 **attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [optional] [default to undefined]
+**item_id** | **string** | The catalog item id in the merchant namespace | [optional] [default to undefined]
 **update_mask** | [**Array&lt;UpdateMaskFieldType&gt;**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] [default to undefined]
 
 ## Example
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { ItemBatchRecord } from './api';
 
 const instance: ItemBatchRecord = {
-    item_id,
     attributes,
+    item_id,
     update_mask,
 };
 ```

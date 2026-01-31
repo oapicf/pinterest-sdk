@@ -3,19 +3,19 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupCreateRequest (
-    _name: String,
     _description: Option[String],
+    /* Catalog Feed id pertaining to the catalog product group. */
+    _feedId: String,
+    _filters: CatalogsProductGroupFiltersRequest,
     /* boolean indicator of whether the product group is being featured or not */
     _isFeatured: Option[Boolean],
-    _filters: CatalogsProductGroupFiltersRequest,
-    /* Catalog Feed id pertaining to the catalog product group. */
-    _feedId: String
+    _name: String
 )
 object CatalogsProductGroupCreateRequest {
-    def toStringBody(var_name: Object, var_description: Object, var_isFeatured: Object, var_filters: Object, var_feedId: Object) =
+    def toStringBody(var_description: Object, var_feedId: Object, var_filters: Object, var_isFeatured: Object, var_name: Object) =
         s"""
         | {
-        | "name":$var_name,"description":$var_description,"isFeatured":$var_isFeatured,"filters":$var_filters,"feedId":$var_feedId
+        | "description":$var_description,"feedId":$var_feedId,"filters":$var_filters,"isFeatured":$var_isFeatured,"name":$var_name
         | }
         """.stripMargin
 }

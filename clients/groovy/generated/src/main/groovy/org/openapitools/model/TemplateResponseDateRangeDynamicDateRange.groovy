@@ -6,8 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class TemplateResponseDateRangeDynamicDateRange {
-    /* The date range type */
-    String type
 
     enum RangeEnum {
     
@@ -17,7 +15,9 @@ class TemplateResponseDateRangeDynamicDateRange {
         
         MONTH_TO_DATE("MONTH_TO_DATE"),
         
-        LAST_MONTH("LAST_MONTH")
+        LAST_MONTH("LAST_MONTH"),
+        
+        LAST_QUARTER("LAST_QUARTER")
     
         private final String value
     
@@ -37,4 +37,6 @@ class TemplateResponseDateRangeDynamicDateRange {
 
     /* The dynamic range type */
     RangeEnum range
+    /* The date range type */
+    String type
 }

@@ -28,17 +28,17 @@ pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e catalogs_upsert_retai
 
 
 typedef struct catalogs_upsert_retail_item_t {
+    struct item_attributes_request_t *attributes; //model
     char *item_id; // string
     pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e operation; //enum
-    struct item_attributes_request_t *attributes; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_upsert_retail_item_t;
 
 __attribute__((deprecated)) catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_create(
+    item_attributes_request_t *attributes,
     char *item_id,
-    pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e operation,
-    item_attributes_request_t *attributes
+    pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e operation
 );
 
 void catalogs_upsert_retail_item_free(catalogs_upsert_retail_item_t *catalogs_upsert_retail_item);

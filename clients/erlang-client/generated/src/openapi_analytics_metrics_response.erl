@@ -5,13 +5,13 @@
 -export_type([openapi_analytics_metrics_response/0]).
 
 -type openapi_analytics_metrics_response() ::
-    #{ 'summary_metrics' => maps:map(),
-       'daily_metrics' => list()
+    #{ 'daily_metrics' => list(),
+       'summary_metrics' => maps:map()
      }.
 
-encode(#{ 'summary_metrics' := SummaryMetrics,
-          'daily_metrics' := DailyMetrics
+encode(#{ 'daily_metrics' := DailyMetrics,
+          'summary_metrics' := SummaryMetrics
         }) ->
-    #{ 'summary_metrics' => SummaryMetrics,
-       'daily_metrics' => DailyMetrics
+    #{ 'daily_metrics' => DailyMetrics,
+       'summary_metrics' => SummaryMetrics
      }.

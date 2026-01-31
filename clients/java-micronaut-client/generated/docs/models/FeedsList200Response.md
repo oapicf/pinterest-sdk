@@ -8,8 +8,8 @@ The class is defined in **[FeedsList200Response.java](../../src/main/java/org/op
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CatalogsFeed&gt;`](CatalogsFeed.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;CatalogsFeed&gt;`](CatalogsFeed.md) |  | 
 
 
 

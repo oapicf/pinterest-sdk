@@ -7,9 +7,9 @@ Request object to discontinue catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | [default to undefined]
+**items** | [**Array&lt;ItemDeleteDiscontinuedBatchRecord&gt;**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | [default to undefined]
 **language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
 **operation** | [**BatchOperation**](BatchOperation.md) |  | [default to undefined]
-**items** | [**Array&lt;ItemDeleteDiscontinuedBatchRecord&gt;**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | [default to undefined]
 
 ## Example
 
@@ -18,9 +18,9 @@ import { CatalogsItemsDeleteDiscontinuedBatchRequest } from './api';
 
 const instance: CatalogsItemsDeleteDiscontinuedBatchRequest = {
     country,
+    items,
     language,
     operation,
-    items,
 };
 ```
 

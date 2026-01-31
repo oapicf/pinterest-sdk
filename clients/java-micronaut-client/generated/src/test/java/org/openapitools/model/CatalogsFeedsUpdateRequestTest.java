@@ -27,6 +27,14 @@ public class CatalogsFeedsUpdateRequestTest {
     }
 
     /**
+     * Test the property 'credentials'
+     */
+    @Test
+    public void credentialsTest() {
+        // TODO: test credentials
+    }
+
+    /**
      * Test the property 'defaultAvailability'
      */
     @Test
@@ -43,14 +51,6 @@ public class CatalogsFeedsUpdateRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property '_format'
      */
     @Test
@@ -59,19 +59,19 @@ public class CatalogsFeedsUpdateRequestTest {
     }
 
     /**
-     * Test the property 'credentials'
-     */
-    @Test
-    public void credentialsTest() {
-        // TODO: test credentials
-    }
-
-    /**
      * Test the property 'location'
      */
     @Test
     public void locationTest() {
         // TODO: test location
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**

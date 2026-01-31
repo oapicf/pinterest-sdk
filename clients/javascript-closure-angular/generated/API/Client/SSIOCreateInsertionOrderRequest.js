@@ -6,32 +6,18 @@ goog.provide('API.Client.SSIOCreateInsertionOrderRequest');
 API.Client.SSIOCreateInsertionOrderRequest = function() {}
 
 /**
- * Starting date of time period. Format: YYYY-MM-DD
+ * URL link for agency
  * @type {!string}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.startDate;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.agencyLink;
 
 /**
- * End date of time period. Format: YYYY-MM-DD
+ * The billing contact email
  * @type {!string}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.endDate;
-
-/**
- * The po number
- * @type {!string}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.poNumber;
-
-/**
- * If Budget order line, the budget amount.
- * @type {!number}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.budgetAmount;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.billingContactEmail;
 
 /**
  * The billing contact first name
@@ -48,11 +34,25 @@ API.Client.SSIOCreateInsertionOrderRequest.prototype.billingContactFirstname;
 API.Client.SSIOCreateInsertionOrderRequest.prototype.billingContactLastname;
 
 /**
- * The billing contact email
+ * If Budget order line, the budget amount.
+ * @type {!number}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.budgetAmount;
+
+/**
+ * End date of time period. Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.billingContactEmail;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.endDate;
+
+/**
+ * The media contact email
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.mediaContactEmail;
 
 /**
  * The media contact first name
@@ -69,18 +69,18 @@ API.Client.SSIOCreateInsertionOrderRequest.prototype.mediaContactFirstname;
 API.Client.SSIOCreateInsertionOrderRequest.prototype.mediaContactLastname;
 
 /**
- * The media contact email
+ * The po number
  * @type {!string}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.mediaContactEmail;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.poNumber;
 
 /**
- * URL link for agency
+ * Starting date of time period. Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.agencyLink;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.startDate;
 
 /**
  * The email of user submitting the insertion order
@@ -90,34 +90,6 @@ API.Client.SSIOCreateInsertionOrderRequest.prototype.agencyLink;
 API.Client.SSIOCreateInsertionOrderRequest.prototype.userEmail;
 
 /**
- * The UTC timestamp (to the nearest sec) of when terms were accepted
- * @type {!number}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.acceptedTermsTime;
-
-/**
- * The pmp id
- * @type {!string}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.pmpId;
-
-/**
- * The order name
- * @type {!string}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.orderName;
-
-/**
- * Type can be Budget or Perpetual
- * @type {!string}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.orderLineType;
-
-/**
  * The SFDC id for the terms
  * @type {!string}
  * @export
@@ -125,18 +97,11 @@ API.Client.SSIOCreateInsertionOrderRequest.prototype.orderLineType;
 API.Client.SSIOCreateInsertionOrderRequest.prototype.acceptedTermsId;
 
 /**
- * The bill-to company id
- * @type {!string}
+ * The UTC timestamp (to the nearest sec) of when terms were accepted
+ * @type {!number}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoCompanyId;
-
-/**
- * The bill-to business address id
- * @type {!string}
- * @export
- */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoBusinessAddressId;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.acceptedTermsTime;
 
 /**
  * The bill-to billing address id
@@ -146,6 +111,26 @@ API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoBusinessAddressId;
 API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoBillingAddressId;
 
 /**
+ * The bill-to business address id
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoBusinessAddressId;
+
+/**
+ * The bill-to company id
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoCompanyId;
+
+/**
+ * @type {!API.Client.Currency}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.currencyInfo;
+
+/**
  * If Ongoing (perpetual) order line, the estimated monthly spend
  * @type {!number}
  * @export
@@ -153,10 +138,25 @@ API.Client.SSIOCreateInsertionOrderRequest.prototype.billtoBillingAddressId;
 API.Client.SSIOCreateInsertionOrderRequest.prototype.estimatedMonthlySpend;
 
 /**
- * @type {!API.Client.Currency}
+ * Type can be Budget or Perpetual
+ * @type {!string}
  * @export
  */
-API.Client.SSIOCreateInsertionOrderRequest.prototype.currencyInfo;
+API.Client.SSIOCreateInsertionOrderRequest.prototype.orderLineType;
+
+/**
+ * The order name
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.orderName;
+
+/**
+ * The pmp id
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOCreateInsertionOrderRequest.prototype.pmpId;
 
 /** @enum {string} */
 API.Client.SSIOCreateInsertionOrderRequest.OrderLineTypeEnum = { 

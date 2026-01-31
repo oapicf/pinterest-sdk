@@ -11,16 +11,16 @@ import scala.collection.immutable.Seq
 /**
  * Audience demographics
  * @param ages Ages distribution.
- * @param genders Gender distribution.
- * @param devices Device usage distribution.
- * @param metros Geographic metro area distribution.
  * @param countries Country area distribution.
+ * @param devices Device usage distribution.
+ * @param genders Gender distribution.
+ * @param metros Geographic metro area distribution.
  */
 case class AudienceDemographics(ages: Option[Seq[AudienceDemographicValue]],
-                genders: Option[Seq[AudienceDemographicValue]],
+                countries: Option[Seq[AudienceDemographicValue]],
                 devices: Option[Seq[AudienceDemographicValue]],
-                metros: Option[Seq[AudienceDemographicValue]],
-                countries: Option[Seq[AudienceDemographicValue]]
+                genders: Option[Seq[AudienceDemographicValue]],
+                metros: Option[Seq[AudienceDemographicValue]]
                 )
 
 object AudienceDemographics {

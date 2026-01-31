@@ -7,9 +7,9 @@ An item to be created
 
 Name | Type
 ------------ | -------------
+`attributes` | [ItemAttributesRequest](ItemAttributesRequest.md)
 `itemId` | string
 `operation` | string
-`attributes` | [ItemAttributesRequest](ItemAttributesRequest.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CatalogsCreateRetailItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "itemId": DS0294-M,
   "operation": null,
-  "attributes": null,
 } satisfies CatalogsCreateRetailItem
 
 console.log(example)

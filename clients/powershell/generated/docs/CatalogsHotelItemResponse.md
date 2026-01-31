@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **HotelId** | **String** | The catalog hotel id in the merchant namespace | [optional] 
 **Pins** | [**Pin[]**](Pin.md) | The pins mapped to the item | [optional] 
-**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelItemResponse = Initialize-PSOpenAPIToolsCatalogsHotelItemResponse  -CatalogType null `
+$CatalogsHotelItemResponse = Initialize-PSOpenAPIToolsCatalogsHotelItemResponse  -Attributes null `
+ -CatalogType null `
  -HotelId DS0294-M `
- -Pins null `
- -Attributes null
+ -Pins null
 ```
 
 - Convert the resource to JSON

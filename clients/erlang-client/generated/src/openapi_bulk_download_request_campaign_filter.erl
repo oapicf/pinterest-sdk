@@ -5,22 +5,22 @@
 -export_type([openapi_bulk_download_request_campaign_filter/0]).
 
 -type openapi_bulk_download_request_campaign_filter() ::
-    #{ 'start_time' => binary(),
+    #{ 'campaign_status' => list(),
        'end_time' => binary(),
        'name' => binary(),
-       'campaign_status' => list(),
-       'objective_type' => list()
+       'objective_type' => list(),
+       'start_time' => binary()
      }.
 
-encode(#{ 'start_time' := StartTime,
+encode(#{ 'campaign_status' := CampaignStatus,
           'end_time' := EndTime,
           'name' := Name,
-          'campaign_status' := CampaignStatus,
-          'objective_type' := ObjectiveType
+          'objective_type' := ObjectiveType,
+          'start_time' := StartTime
         }) ->
-    #{ 'start_time' => StartTime,
+    #{ 'campaign_status' => CampaignStatus,
        'end_time' => EndTime,
        'name' => Name,
-       'campaign_status' => CampaignStatus,
-       'objective_type' => ObjectiveType
+       'objective_type' => ObjectiveType,
+       'start_time' => StartTime
      }.

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **String** |  | 
 **host** | **String** | HTTP request host from host header. | 
+**method** | **String** |  | 
 **path** | **String** | HTTP request path. | 
 **requestHeaders** | **{String: String}** | HTTP request headers as key-value pairs. | [optional] 
 **responseHeaders** | **{String: String}** | HTTP response headers as key-value pairs. | [optional] 

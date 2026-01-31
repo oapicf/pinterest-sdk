@@ -7,8 +7,8 @@
 
 (def catalogs-product-group-multiple-string-criteria-data
   {
-   (ds/req :values) (s/coll-of string?)
    (ds/opt :negated) boolean?
+   (ds/req :values) (s/coll-of string?)
    })
 
 (def catalogs-product-group-multiple-string-criteria-spec

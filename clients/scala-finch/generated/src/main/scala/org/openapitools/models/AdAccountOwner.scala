@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * 
- * @param username Public username for the user account
  * @param id The owning account's user ID.
+ * @param username Public username for the user account
  */
-case class AdAccountOwner(username: Option[String],
-                id: Option[String]
+case class AdAccountOwner(id: Option[String],
+                username: Option[String]
                 )
 
 object AdAccountOwner {

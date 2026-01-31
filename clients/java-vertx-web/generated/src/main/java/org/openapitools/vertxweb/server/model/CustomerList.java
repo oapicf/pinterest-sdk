@@ -11,6 +11,7 @@ public class CustomerList   {
   
   private String adAccountId;
   private BigDecimal createdTime;
+  private Object exceptions;
   private String id;
   private String name;
   private BigDecimal numBatches;
@@ -40,15 +41,15 @@ public class CustomerList   {
   private StatusEnum status;
   private String type;
   private BigDecimal updatedTime;
-  private Object exceptions;
 
   public CustomerList () {
 
   }
 
-  public CustomerList (String adAccountId, BigDecimal createdTime, String id, String name, BigDecimal numBatches, BigDecimal numRemovedUserRecords, BigDecimal numUploadedUserRecords, StatusEnum status, String type, BigDecimal updatedTime, Object exceptions) {
+  public CustomerList (String adAccountId, BigDecimal createdTime, Object exceptions, String id, String name, BigDecimal numBatches, BigDecimal numRemovedUserRecords, BigDecimal numUploadedUserRecords, StatusEnum status, String type, BigDecimal updatedTime) {
     this.adAccountId = adAccountId;
     this.createdTime = createdTime;
+    this.exceptions = exceptions;
     this.id = id;
     this.name = name;
     this.numBatches = numBatches;
@@ -57,7 +58,6 @@ public class CustomerList   {
     this.status = status;
     this.type = type;
     this.updatedTime = updatedTime;
-    this.exceptions = exceptions;
   }
 
     
@@ -76,6 +76,15 @@ public class CustomerList   {
   }
   public void setCreatedTime(BigDecimal createdTime) {
     this.createdTime = createdTime;
+  }
+
+    
+  @JsonProperty("exceptions")
+  public Object getExceptions() {
+    return exceptions;
+  }
+  public void setExceptions(Object exceptions) {
+    this.exceptions = exceptions;
   }
 
     
@@ -150,15 +159,6 @@ public class CustomerList   {
     this.updatedTime = updatedTime;
   }
 
-    
-  @JsonProperty("exceptions")
-  public Object getExceptions() {
-    return exceptions;
-  }
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -171,6 +171,7 @@ public class CustomerList   {
     CustomerList customerList = (CustomerList) o;
     return Objects.equals(adAccountId, customerList.adAccountId) &&
         Objects.equals(createdTime, customerList.createdTime) &&
+        Objects.equals(exceptions, customerList.exceptions) &&
         Objects.equals(id, customerList.id) &&
         Objects.equals(name, customerList.name) &&
         Objects.equals(numBatches, customerList.numBatches) &&
@@ -178,13 +179,12 @@ public class CustomerList   {
         Objects.equals(numUploadedUserRecords, customerList.numUploadedUserRecords) &&
         Objects.equals(status, customerList.status) &&
         Objects.equals(type, customerList.type) &&
-        Objects.equals(updatedTime, customerList.updatedTime) &&
-        Objects.equals(exceptions, customerList.exceptions);
+        Objects.equals(updatedTime, customerList.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, createdTime, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime, exceptions);
+    return Objects.hash(adAccountId, createdTime, exceptions, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
   }
 
   @Override
@@ -194,6 +194,7 @@ public class CustomerList   {
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    numBatches: ").append(toIndentedString(numBatches)).append("\n");
@@ -202,7 +203,6 @@ public class CustomerList   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

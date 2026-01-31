@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **string** |  | 
-**Id** | **string** | ID of the catalog product group. | 
-**Name** | Pointer to **string** | Name of catalog product group | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
-**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
-**Type** | Pointer to [**CatalogsProductGroupType**](CatalogsProductGroupType.md) |  | [optional] 
-**Status** | Pointer to [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
-**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
-**UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 **CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
-**FeedId** | **NullableString** | id of the catalogs feed belonging to this catalog product group | 
+**CatalogType** | **string** |  | 
 **Country** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**FeedId** | **NullableString** | id of the catalogs feed belonging to this catalog product group | 
+**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
+**Id** | **string** | ID of the catalog product group. | 
+**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Locale** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **string** | Name of catalog product group | [optional] 
+**Status** | Pointer to [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
+**Type** | [**CatalogsProductGroupType**](CatalogsProductGroupType.md) |  | 
+**UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 
 ## Methods
 
 ### NewCatalogsRetailProductGroup
 
-`func NewCatalogsRetailProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, catalogId string, feedId NullableString, ) *CatalogsRetailProductGroup`
+`func NewCatalogsRetailProductGroup(catalogId string, catalogType string, feedId NullableString, filters CatalogsProductGroupFilters, id string, type_ CatalogsProductGroupType, ) *CatalogsRetailProductGroup`
 
 NewCatalogsRetailProductGroup instantiates a new CatalogsRetailProductGroup object
 This constructor will assign default values to properties that have it defined,
@@ -37,6 +37,26 @@ will change when the set of required properties is changed
 NewCatalogsRetailProductGroupWithDefaults instantiates a new CatalogsRetailProductGroup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsRetailProductGroup) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsRetailProductGroup) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsRetailProductGroup) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
 
 ### GetCatalogType
 
@@ -58,50 +78,65 @@ and a boolean to check if the value has been set.
 SetCatalogType sets CatalogType field to given value.
 
 
-### GetId
+### GetCountry
 
-`func (o *CatalogsRetailProductGroup) GetId() string`
+`func (o *CatalogsRetailProductGroup) GetCountry() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetCountry returns the Country field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetCountryOk
 
-`func (o *CatalogsRetailProductGroup) GetIdOk() (*string, bool)`
+`func (o *CatalogsRetailProductGroup) GetCountryOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetCountry
 
-`func (o *CatalogsRetailProductGroup) SetId(v string)`
+`func (o *CatalogsRetailProductGroup) SetCountry(v string)`
 
-SetId sets Id field to given value.
+SetCountry sets Country field to given value.
 
+### HasCountry
 
-### GetName
+`func (o *CatalogsRetailProductGroup) HasCountry() bool`
 
-`func (o *CatalogsRetailProductGroup) GetName() string`
+HasCountry returns a boolean if a field has been set.
 
-GetName returns the Name field if non-nil, zero value otherwise.
+### SetCountryNil
 
-### GetNameOk
+`func (o *CatalogsRetailProductGroup) SetCountryNil(b bool)`
 
-`func (o *CatalogsRetailProductGroup) GetNameOk() (*string, bool)`
+ SetCountryNil sets the value for Country to be an explicit nil
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+### UnsetCountry
+`func (o *CatalogsRetailProductGroup) UnsetCountry()`
+
+UnsetCountry ensures that no value is present for Country, not even an explicit nil
+### GetCreatedAt
+
+`func (o *CatalogsRetailProductGroup) GetCreatedAt() int32`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *CatalogsRetailProductGroup) GetCreatedAtOk() (*int32, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCreatedAt
 
-`func (o *CatalogsRetailProductGroup) SetName(v string)`
+`func (o *CatalogsRetailProductGroup) SetCreatedAt(v int32)`
 
-SetName sets Name field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
-### HasName
+### HasCreatedAt
 
-`func (o *CatalogsRetailProductGroup) HasName() bool`
+`func (o *CatalogsRetailProductGroup) HasCreatedAt() bool`
 
-HasName returns a boolean if a field has been set.
+HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -138,171 +173,6 @@ HasDescription returns a boolean if a field has been set.
 `func (o *CatalogsRetailProductGroup) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetFilters
-
-`func (o *CatalogsRetailProductGroup) GetFilters() CatalogsProductGroupFilters`
-
-GetFilters returns the Filters field if non-nil, zero value otherwise.
-
-### GetFiltersOk
-
-`func (o *CatalogsRetailProductGroup) GetFiltersOk() (*CatalogsProductGroupFilters, bool)`
-
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilters
-
-`func (o *CatalogsRetailProductGroup) SetFilters(v CatalogsProductGroupFilters)`
-
-SetFilters sets Filters field to given value.
-
-
-### GetIsFeatured
-
-`func (o *CatalogsRetailProductGroup) GetIsFeatured() bool`
-
-GetIsFeatured returns the IsFeatured field if non-nil, zero value otherwise.
-
-### GetIsFeaturedOk
-
-`func (o *CatalogsRetailProductGroup) GetIsFeaturedOk() (*bool, bool)`
-
-GetIsFeaturedOk returns a tuple with the IsFeatured field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsFeatured
-
-`func (o *CatalogsRetailProductGroup) SetIsFeatured(v bool)`
-
-SetIsFeatured sets IsFeatured field to given value.
-
-### HasIsFeatured
-
-`func (o *CatalogsRetailProductGroup) HasIsFeatured() bool`
-
-HasIsFeatured returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *CatalogsRetailProductGroup) GetType() CatalogsProductGroupType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *CatalogsRetailProductGroup) GetTypeOk() (*CatalogsProductGroupType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *CatalogsRetailProductGroup) SetType(v CatalogsProductGroupType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *CatalogsRetailProductGroup) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *CatalogsRetailProductGroup) GetStatus() CatalogsProductGroupStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *CatalogsRetailProductGroup) GetStatusOk() (*CatalogsProductGroupStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *CatalogsRetailProductGroup) SetStatus(v CatalogsProductGroupStatus)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *CatalogsRetailProductGroup) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
-### GetCreatedAt
-
-`func (o *CatalogsRetailProductGroup) GetCreatedAt() int32`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *CatalogsRetailProductGroup) GetCreatedAtOk() (*int32, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *CatalogsRetailProductGroup) SetCreatedAt(v int32)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-### HasCreatedAt
-
-`func (o *CatalogsRetailProductGroup) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
-
-### GetUpdatedAt
-
-`func (o *CatalogsRetailProductGroup) GetUpdatedAt() int32`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *CatalogsRetailProductGroup) GetUpdatedAtOk() (*int32, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *CatalogsRetailProductGroup) SetUpdatedAt(v int32)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
-### HasUpdatedAt
-
-`func (o *CatalogsRetailProductGroup) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
-
-### GetCatalogId
-
-`func (o *CatalogsRetailProductGroup) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsRetailProductGroup) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsRetailProductGroup) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
-
-
 ### GetFeedId
 
 `func (o *CatalogsRetailProductGroup) GetFeedId() string`
@@ -333,41 +203,71 @@ SetFeedId sets FeedId field to given value.
 `func (o *CatalogsRetailProductGroup) UnsetFeedId()`
 
 UnsetFeedId ensures that no value is present for FeedId, not even an explicit nil
-### GetCountry
+### GetFilters
 
-`func (o *CatalogsRetailProductGroup) GetCountry() string`
+`func (o *CatalogsRetailProductGroup) GetFilters() CatalogsProductGroupFilters`
 
-GetCountry returns the Country field if non-nil, zero value otherwise.
+GetFilters returns the Filters field if non-nil, zero value otherwise.
 
-### GetCountryOk
+### GetFiltersOk
 
-`func (o *CatalogsRetailProductGroup) GetCountryOk() (*string, bool)`
+`func (o *CatalogsRetailProductGroup) GetFiltersOk() (*CatalogsProductGroupFilters, bool)`
 
-GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCountry
+### SetFilters
 
-`func (o *CatalogsRetailProductGroup) SetCountry(v string)`
+`func (o *CatalogsRetailProductGroup) SetFilters(v CatalogsProductGroupFilters)`
 
-SetCountry sets Country field to given value.
+SetFilters sets Filters field to given value.
 
-### HasCountry
 
-`func (o *CatalogsRetailProductGroup) HasCountry() bool`
+### GetId
 
-HasCountry returns a boolean if a field has been set.
+`func (o *CatalogsRetailProductGroup) GetId() string`
 
-### SetCountryNil
+GetId returns the Id field if non-nil, zero value otherwise.
 
-`func (o *CatalogsRetailProductGroup) SetCountryNil(b bool)`
+### GetIdOk
 
- SetCountryNil sets the value for Country to be an explicit nil
+`func (o *CatalogsRetailProductGroup) GetIdOk() (*string, bool)`
 
-### UnsetCountry
-`func (o *CatalogsRetailProductGroup) UnsetCountry()`
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
 
-UnsetCountry ensures that no value is present for Country, not even an explicit nil
+### SetId
+
+`func (o *CatalogsRetailProductGroup) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetIsFeatured
+
+`func (o *CatalogsRetailProductGroup) GetIsFeatured() bool`
+
+GetIsFeatured returns the IsFeatured field if non-nil, zero value otherwise.
+
+### GetIsFeaturedOk
+
+`func (o *CatalogsRetailProductGroup) GetIsFeaturedOk() (*bool, bool)`
+
+GetIsFeaturedOk returns a tuple with the IsFeatured field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFeatured
+
+`func (o *CatalogsRetailProductGroup) SetIsFeatured(v bool)`
+
+SetIsFeatured sets IsFeatured field to given value.
+
+### HasIsFeatured
+
+`func (o *CatalogsRetailProductGroup) HasIsFeatured() bool`
+
+HasIsFeatured returns a boolean if a field has been set.
+
 ### GetLocale
 
 `func (o *CatalogsRetailProductGroup) GetLocale() string`
@@ -403,6 +303,101 @@ HasLocale returns a boolean if a field has been set.
 `func (o *CatalogsRetailProductGroup) UnsetLocale()`
 
 UnsetLocale ensures that no value is present for Locale, not even an explicit nil
+### GetName
+
+`func (o *CatalogsRetailProductGroup) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsRetailProductGroup) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsRetailProductGroup) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CatalogsRetailProductGroup) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *CatalogsRetailProductGroup) GetStatus() CatalogsProductGroupStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsRetailProductGroup) GetStatusOk() (*CatalogsProductGroupStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsRetailProductGroup) SetStatus(v CatalogsProductGroupStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CatalogsRetailProductGroup) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *CatalogsRetailProductGroup) GetType() CatalogsProductGroupType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CatalogsRetailProductGroup) GetTypeOk() (*CatalogsProductGroupType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CatalogsRetailProductGroup) SetType(v CatalogsProductGroupType)`
+
+SetType sets Type field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *CatalogsRetailProductGroup) GetUpdatedAt() int32`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *CatalogsRetailProductGroup) GetUpdatedAtOk() (*int32, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *CatalogsRetailProductGroup) SetUpdatedAt(v int32)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *CatalogsRetailProductGroup) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

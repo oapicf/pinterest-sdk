@@ -5,25 +5,25 @@
   "name": "IntegrationLogsInvalidLogResponseRejectedLogsInner",
   "fields": [
     {
+      "name": "field",
+      "type": "string",
+      "doc": "The field name containing an invalid value."
+    },
+    {
       "name": "log_index",
       "type": ["null", "int"],
       "doc": "Index of the log in the batch.",
       "default": null
     },
     {
-      "name": "field",
+      "name": "reason",
       "type": "string",
-      "doc": "The field name containing an invalid value."
+      "doc": "The reason the value is invalid."
     },
     {
       "name": "value",
       "type": "string",
       "doc": "The value that is invalid."
-    },
-    {
-      "name": "reason",
-      "type": "string",
-      "doc": "The reason the value is invalid."
     }
   ]
 

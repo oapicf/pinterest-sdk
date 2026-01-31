@@ -26,8 +26,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailListProductsByCatalogBasedFilterRequest", description = "Request object to list products for a given retail catalog_id and product group filter.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
+
+  private String catalogId;
 
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -64,11 +66,9 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
 
   private CatalogTypeEnum catalogType;
 
-  private String catalogId;
+  private Country country;
 
   private CatalogsProductGroupFilters filters;
-
-  private Country country;
 
   private CatalogsLocale locale;
 
@@ -79,32 +79,12 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest(CatalogTypeEnum catalogType, String catalogId, CatalogsProductGroupFilters filters, Country country, CatalogsLocale locale) {
-    this.catalogType = catalogType;
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest(String catalogId, CatalogTypeEnum catalogType, Country country, CatalogsProductGroupFilters filters, CatalogsLocale locale) {
     this.catalogId = catalogId;
-    this.filters = filters;
+    this.catalogType = catalogType;
     this.country = country;
+    this.filters = filters;
     this.locale = locale;
-  }
-
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  /**
-   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-   * @return catalogType
-   */
-  @NotNull 
-  @Schema(name = "catalog_type", description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
   }
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
@@ -127,24 +107,24 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
     this.catalogId = catalogId;
   }
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   /**
-   * Get filters
-   * @return filters
+   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+   * @return catalogType
    */
-  @NotNull @Valid 
-  @Schema(name = "filters", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("filters")
-  public CatalogsProductGroupFilters getFilters() {
-    return filters;
+  @NotNull 
+  @Schema(name = "catalog_type", description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
   }
 
-  public void setFilters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest country(Country country) {
@@ -165,6 +145,26 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  /**
+   * Get filters
+   * @return filters
+   */
+  @NotNull @Valid 
+  @Schema(name = "filters", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("filters")
+  public CatalogsProductGroupFilters getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
   }
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest locale(CatalogsLocale locale) {
@@ -196,26 +196,26 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
       return false;
     }
     CatalogsRetailListProductsByCatalogBasedFilterRequest catalogsRetailListProductsByCatalogBasedFilterRequest = (CatalogsRetailListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
-        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
+    return Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailListProductsByCatalogBasedFilterRequest.country) &&
+        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
         Objects.equals(this.locale, catalogsRetailListProductsByCatalogBasedFilterRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters, country, locale);
+    return Objects.hash(catalogId, catalogType, country, filters, locale);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailListProductsByCatalogBasedFilterRequest {\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();

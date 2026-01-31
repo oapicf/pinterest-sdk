@@ -5,13 +5,13 @@
 -export_type([openapi_item_create_batch_record/0]).
 
 -type openapi_item_create_batch_record() ::
-    #{ 'item_id' => binary(),
-       'attributes' => openapi_item_attributes_request:openapi_item_attributes_request()
+    #{ 'attributes' => openapi_item_attributes_request:openapi_item_attributes_request(),
+       'item_id' => binary()
      }.
 
-encode(#{ 'item_id' := ItemId,
-          'attributes' := Attributes
+encode(#{ 'attributes' := Attributes,
+          'item_id' := ItemId
         }) ->
-    #{ 'item_id' => ItemId,
-       'attributes' => Attributes
+    #{ 'attributes' => Attributes,
+       'item_id' => ItemId
      }.

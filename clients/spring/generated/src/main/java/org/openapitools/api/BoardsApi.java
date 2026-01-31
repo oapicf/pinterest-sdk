@@ -6,13 +6,18 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Board;
+import org.openapitools.model.BoardCreate;
+import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
 import org.openapitools.model.BoardSectionsList200Response;
-import org.openapitools.model.BoardUpdate;
+import org.openapitools.model.BoardWithUpdatePrivacy;
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.Error;
 import org.springframework.lang.Nullable;
+import org.openapitools.model.PinterestLibError;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -40,7 +45,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "boards", description = "View, create, update, or delete information about boards.")
 public interface BoardsApi {
@@ -338,7 +343,7 @@ public interface BoardsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }, { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }, { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -459,32 +464,53 @@ public interface BoardsApi {
     String PATH_BOARDS_CREATE = "/boards";
     /**
      * POST /boards : Create board
-     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
-     * @param board Create a board using a single board json object. (required)
+     * @param boardCreate  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return response (status code 201)
-     *         or The board name is invalid or duplicated. (status code 400)
-     *         or Unexpected error (status code 200)
+     * @return The request has succeeded. (status code 200)
+     *         or Resource create operation completed successfully. (status code 201)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "boardsCreate",
         summary = "Create board",
-        description = "Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+        description = "Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
         tags = { "boards" },
         responses = {
-            @ApiResponse(responseCode = "201", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Board.class))
             }),
-            @ApiResponse(responseCode = "400", description = "The board name is invalid or duplicated.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Board.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "boards:read", "boards:write" })
         }
     )
     @RequestMapping(
@@ -494,23 +520,48 @@ public interface BoardsApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Board> boardsCreate(
-        @Parameter(name = "Board", description = "Create a board using a single board json object.", required = true) @Valid @RequestBody Board board,
+        @Parameter(name = "BoardCreate", description = "", required = true) @Valid @RequestBody BoardCreate boardCreate,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 }";
+                    String exampleString = "{ \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -524,38 +575,42 @@ public interface BoardsApi {
     String PATH_BOARDS_DELETE = "/boards/{board_id}";
     /**
      * DELETE /boards/{board_id} : Delete board
-     * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
-     * @param boardId Unique identifier of a board. (required)
+     * @param boardId  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return Board deleted successfully (status code 204)
-     *         or Not authorized to delete the board. (status code 403)
-     *         or Board not found. (status code 404)
-     *         or Could not get exclusive access to delete the board. (status code 409)
-     *         or This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. (status code 429)
-     *         or Unexpected error (status code 200)
+     * @return Resource deleted successfully. (status code 204)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "boardsDelete",
         summary = "Delete board",
-        description = "Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+        description = "Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
         tags = { "boards" },
         responses = {
-            @ApiResponse(responseCode = "204", description = "Board deleted successfully"),
-            @ApiResponse(responseCode = "403", description = "Not authorized to delete the board.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "204", description = "Resource deleted successfully."),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Board not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "409", description = "Could not get exclusive access to delete the board.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "429", description = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -568,33 +623,38 @@ public interface BoardsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<Void> boardsDelete(
-        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "Unique identifier of a board.", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -608,28 +668,44 @@ public interface BoardsApi {
     String PATH_BOARDS_GET = "/boards/{board_id}";
     /**
      * GET /boards/{board_id} : Get board
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
-     * @param boardId Unique identifier of a board. (required)
+     * @param boardId  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return response (status code 200)
-     *         or Board not found. (status code 404)
-     *         or Unexpected error (status code 200)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "boardsGet",
         summary = "Get board",
-        description = "Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+        description = "Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
         tags = { "boards" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Board.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Board not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -643,23 +719,43 @@ public interface BoardsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<Board> boardsGet(
-        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "Unique identifier of a board.", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 }";
+                    String exampleString = "{ \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -673,26 +769,46 @@ public interface BoardsApi {
     String PATH_BOARDS_LIST = "/boards";
     /**
      * GET /boards : List boards
-     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      *
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param privacy The privacy level of the board (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param privacy Privacy setting for a board. (optional)
-     * @return response (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "boardsList",
         summary = "List boards",
-        description = "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.",
+        description = "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.",
         tags = { "boards" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BoardsList200Response.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -707,19 +823,44 @@ public interface BoardsApi {
     )
     default ResponseEntity<BoardsList200Response> boardsList(
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId,
+        @Parameter(name = "privacy", description = "The privacy level of the board", in = ParameterIn.QUERY) @Valid @RequestParam(value = "privacy", required = false) @Nullable BoardPrivacyFilter privacy,
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
-        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
-        @Parameter(name = "privacy", description = "Privacy setting for a board.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "privacy", required = false) @Nullable String privacy
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 }, { \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }, { \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -738,9 +879,9 @@ public interface BoardsApi {
      * @param boardId Unique identifier of a board. (required)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return response (status code 200)
      *         or Board not found. (status code 404)
      *         or Unexpected error (status code 200)
@@ -775,14 +916,14 @@ public interface BoardsApi {
         @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "Unique identifier of a board.", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
         @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
-        @Parameter(name = "creative_types", description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "creative_types", required = false) @Nullable List<String> creativeTypes,
+        @Parameter(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "creative_types", required = false) @Nullable List<CreativeType> creativeTypes,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId,
-        @Parameter(name = "pin_metrics", description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") Boolean pinMetrics
+        @Parameter(name = "pin_metrics", description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") Boolean pinMetrics
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }, { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }, { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -806,41 +947,50 @@ public interface BoardsApi {
     String PATH_BOARDS_UPDATE = "/boards/{board_id}";
     /**
      * PATCH /boards/{board_id} : Update board
-     * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
-     * @param boardId Unique identifier of a board. (required)
-     * @param boardUpdate Update a board. (required)
+     * @param boardId  (required)
+     * @param boardWithUpdatePrivacyUpdate  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return response (status code 200)
-     *         or Invalid board parameters. (status code 400)
-     *         or Not authorized to update the board. (status code 403)
-     *         or This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. (status code 429)
-     *         or Unexpected error (status code 200)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "boardsUpdate",
         summary = "Update board",
-        description = "Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+        description = "Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
         tags = { "boards" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Board.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = BoardWithUpdatePrivacy.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid board parameters.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "403", description = "Not authorized to update the board.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "429", description = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "boards:read", "boards:write" })
         }
     )
     @RequestMapping(
@@ -849,35 +999,45 @@ public interface BoardsApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Board> boardsUpdate(
-        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "Unique identifier of a board.", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
-        @Parameter(name = "BoardUpdate", description = "Update a board.", required = true) @Valid @RequestBody BoardUpdate boardUpdate,
+    default ResponseEntity<BoardWithUpdatePrivacy> boardsUpdate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "board_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("board_id") String boardId,
+        @Parameter(name = "BoardWithUpdatePrivacyUpdate", description = "", required = true) @Valid @RequestBody BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 }";
+                    String exampleString = "{ \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

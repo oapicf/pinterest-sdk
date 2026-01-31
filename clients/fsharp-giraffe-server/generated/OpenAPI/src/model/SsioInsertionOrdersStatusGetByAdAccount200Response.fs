@@ -11,7 +11,7 @@ module SsioInsertionOrdersStatusGetByAdAccount200Response =
 
 
   type ssio_insertion_orders_status_get_by_ad_account_200_response = {
-    Items : SSIOInsertionOrderStatus[];
     Bookmark : string option;
+    Items : SSIOInsertionOrderStatus[];
   }
   //#endregion

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,6 +24,349 @@ import (
 
 // BusinessAccessRelationshipsAPIService BusinessAccessRelationshipsAPI service
 type BusinessAccessRelationshipsAPIService service
+
+type ApiBrandAccountsCreateRequest struct {
+	ctx context.Context
+	ApiService *BusinessAccessRelationshipsAPIService
+	businessHierarchyId string
+	brandAccountsCreateRequest *BrandAccountsCreateRequest
+}
+
+func (r ApiBrandAccountsCreateRequest) BrandAccountsCreateRequest(brandAccountsCreateRequest BrandAccountsCreateRequest) ApiBrandAccountsCreateRequest {
+	r.brandAccountsCreateRequest = &brandAccountsCreateRequest
+	return r
+}
+
+func (r ApiBrandAccountsCreateRequest) Execute() (*BrandAccountsCreate200Response, *http.Response, error) {
+	return r.ApiService.BrandAccountsCreateExecute(r)
+}
+
+/*
+BrandAccountsCreate Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param businessHierarchyId business hierarchy node id
+ @return ApiBrandAccountsCreateRequest
+*/
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreate(ctx context.Context, businessHierarchyId string) ApiBrandAccountsCreateRequest {
+	return ApiBrandAccountsCreateRequest{
+		ApiService: a,
+		ctx: ctx,
+		businessHierarchyId: businessHierarchyId,
+	}
+}
+
+// Execute executes the request
+//  @return BrandAccountsCreate200Response
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r ApiBrandAccountsCreateRequest) (*BrandAccountsCreate200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BrandAccountsCreate200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.BrandAccountsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"business_hierarchy_id"+"}", url.PathEscape(parameterValueToString(r.businessHierarchyId, "businessHierarchyId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.businessHierarchyId) < 1 {
+		return localVarReturnValue, nil, reportError("businessHierarchyId must have at least 1 elements")
+	}
+	if strlen(r.businessHierarchyId) > 20 {
+		return localVarReturnValue, nil, reportError("businessHierarchyId must have less than 20 elements")
+	}
+	if r.brandAccountsCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("brandAccountsCreateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.brandAccountsCreateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiBrandAccountsUpdateRequest struct {
+	ctx context.Context
+	ApiService *BusinessAccessRelationshipsAPIService
+	businessHierarchyId string
+	brandAccountId string
+	brandAccountsUpdateRequest *BrandAccountsUpdateRequest
+}
+
+func (r ApiBrandAccountsUpdateRequest) BrandAccountsUpdateRequest(brandAccountsUpdateRequest BrandAccountsUpdateRequest) ApiBrandAccountsUpdateRequest {
+	r.brandAccountsUpdateRequest = &brandAccountsUpdateRequest
+	return r
+}
+
+func (r ApiBrandAccountsUpdateRequest) Execute() (*BrandAccountsCreate200Response, *http.Response, error) {
+	return r.ApiService.BrandAccountsUpdateExecute(r)
+}
+
+/*
+BrandAccountsUpdate Update a Brand Account
+
+Update an existing Brand Account
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param businessHierarchyId business hierarchy node id
+ @param brandAccountId Unique identifier of a brand account.
+ @return ApiBrandAccountsUpdateRequest
+*/
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdate(ctx context.Context, businessHierarchyId string, brandAccountId string) ApiBrandAccountsUpdateRequest {
+	return ApiBrandAccountsUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		businessHierarchyId: businessHierarchyId,
+		brandAccountId: brandAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return BrandAccountsCreate200Response
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r ApiBrandAccountsUpdateRequest) (*BrandAccountsCreate200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BrandAccountsCreate200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.BrandAccountsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"business_hierarchy_id"+"}", url.PathEscape(parameterValueToString(r.businessHierarchyId, "businessHierarchyId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"brand_account_id"+"}", url.PathEscape(parameterValueToString(r.brandAccountId, "brandAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.businessHierarchyId) < 1 {
+		return localVarReturnValue, nil, reportError("businessHierarchyId must have at least 1 elements")
+	}
+	if strlen(r.businessHierarchyId) > 20 {
+		return localVarReturnValue, nil, reportError("businessHierarchyId must have less than 20 elements")
+	}
+	if strlen(r.brandAccountId) < 1 {
+		return localVarReturnValue, nil, reportError("brandAccountId must have at least 1 elements")
+	}
+	if strlen(r.brandAccountId) > 20 {
+		return localVarReturnValue, nil, reportError("brandAccountId must have less than 20 elements")
+	}
+	if r.brandAccountsUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("brandAccountsUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.brandAccountsUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiDeleteBusinessMembershipRequest struct {
 	ctx context.Context
@@ -430,12 +773,19 @@ type ApiGetBusinessMembersRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
 	businessId string
+	fetchSystemUsers *bool
 	assetsSummary *bool
 	businessRoles *[]MemberBusinessRole
 	memberIds *string
 	startIndex *int32
 	bookmark *string
 	pageSize *int32
+}
+
+// Fetches system users if True. Fetches regular user employees if False.
+func (r ApiGetBusinessMembersRequest) FetchSystemUsers(fetchSystemUsers bool) ApiGetBusinessMembersRequest {
+	r.fetchSystemUsers = &fetchSystemUsers
+	return r
 }
 
 // Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
@@ -524,6 +874,13 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiG
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
 
+	if r.fetchSystemUsers != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", r.fetchSystemUsers, "form", "")
+	} else {
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", defaultValue, "form", "")
+        r.fetchSystemUsers = &defaultValue
+	}
 	if r.assetsSummary != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", r.assetsSummary, "form", "")
 	} else {
@@ -816,6 +1173,144 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartnersExecute(r Api
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSystemUserUpdateRequest struct {
+	ctx context.Context
+	ApiService *BusinessAccessRelationshipsAPIService
+	businessId string
+	systemUserId string
+	systemUserUpdateRequest *SystemUserUpdateRequest
+}
+
+func (r ApiSystemUserUpdateRequest) SystemUserUpdateRequest(systemUserUpdateRequest SystemUserUpdateRequest) ApiSystemUserUpdateRequest {
+	r.systemUserUpdateRequest = &systemUserUpdateRequest
+	return r
+}
+
+func (r ApiSystemUserUpdateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SystemUserUpdateExecute(r)
+}
+
+/*
+SystemUserUpdate Update a system user information.
+
+Update a system user information such as name.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param businessId Unique identifier of the requesting business.
+ @param systemUserId Unique identifier of a system user.
+ @return ApiSystemUserUpdateRequest
+*/
+func (a *BusinessAccessRelationshipsAPIService) SystemUserUpdate(ctx context.Context, businessId string, systemUserId string) ApiSystemUserUpdateRequest {
+	return ApiSystemUserUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		businessId: businessId,
+		systemUserId: systemUserId,
+	}
+}
+
+// Execute executes the request
+func (a *BusinessAccessRelationshipsAPIService) SystemUserUpdateExecute(r ApiSystemUserUpdateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.SystemUserUpdate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/businesses/{business_id}/system_users/{system_user_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"business_id"+"}", url.PathEscape(parameterValueToString(r.businessId, "businessId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"system_user_id"+"}", url.PathEscape(parameterValueToString(r.systemUserId, "systemUserId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.businessId) < 1 {
+		return nil, reportError("businessId must have at least 1 elements")
+	}
+	if strlen(r.businessId) > 20 {
+		return nil, reportError("businessId must have less than 20 elements")
+	}
+	if strlen(r.systemUserId) < 1 {
+		return nil, reportError("systemUserId must have at least 1 elements")
+	}
+	if strlen(r.systemUserId) > 20 {
+		return nil, reportError("systemUserId must have less than 20 elements")
+	}
+	if r.systemUserUpdateRequest == nil {
+		return nil, reportError("systemUserUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.systemUserUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdateBusinessMembershipsRequest struct {

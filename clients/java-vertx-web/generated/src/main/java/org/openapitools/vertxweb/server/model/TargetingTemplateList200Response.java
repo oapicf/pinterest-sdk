@@ -7,29 +7,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.TargetingTemplateResponseData;
+import org.openapitools.vertxweb.server.model.TargetingTemplateGetResponseData;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingTemplateList200Response   {
   
-  private List<TargetingTemplateResponseData> items = new ArrayList<>();
   private String bookmark;
+  private List<TargetingTemplateGetResponseData> items = new ArrayList<>();
 
   public TargetingTemplateList200Response () {
 
   }
 
-  public TargetingTemplateList200Response (List<TargetingTemplateResponseData> items, String bookmark) {
-    this.items = items;
+  public TargetingTemplateList200Response (String bookmark, List<TargetingTemplateGetResponseData> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<TargetingTemplateResponseData> getItems() {
-    return items;
-  }
-  public void setItems(List<TargetingTemplateResponseData> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class TargetingTemplateList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<TargetingTemplateGetResponseData> getItems() {
+    return items;
+  }
+  public void setItems(List<TargetingTemplateGetResponseData> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class TargetingTemplateList200Response   {
       return false;
     }
     TargetingTemplateList200Response targetingTemplateList200Response = (TargetingTemplateList200Response) o;
-    return Objects.equals(items, targetingTemplateList200Response.items) &&
-        Objects.equals(bookmark, targetingTemplateList200Response.bookmark);
+    return Objects.equals(bookmark, targetingTemplateList200Response.bookmark) &&
+        Objects.equals(items, targetingTemplateList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class TargetingTemplateList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

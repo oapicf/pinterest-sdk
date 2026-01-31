@@ -19,6 +19,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IntegrationLogClientRequest  {
   
+ /**
+  * HTTP request host from host header.
+  */
+  @ApiModelProperty(required = true, value = "HTTP request host from host header.")
+  private String host;
+
 public enum MethodEnum {
 
     @JsonProperty("GET") GET(String.valueOf("GET")),
@@ -60,12 +66,6 @@ public enum MethodEnum {
   private MethodEnum method;
 
  /**
-  * HTTP request host from host header.
-  */
-  @ApiModelProperty(required = true, value = "HTTP request host from host header.")
-  private String host;
-
- /**
   * HTTP request path.
   */
   @ApiModelProperty(required = true, value = "HTTP request path.")
@@ -85,31 +85,6 @@ public enum MethodEnum {
 
   @ApiModelProperty(value = "")
   private Integer responseStatusCode;
- /**
-  * Get method
-  * @return method
-  */
-  @JsonProperty("method")
-  @NotNull
-  public String getMethod() {
-    return method == null ? null : method.value();
-  }
-
-  /**
-   * Sets the <code>method</code> property.
-   */
- public void setMethod(MethodEnum method) {
-    this.method = method;
-  }
-
-  /**
-   * Sets the <code>method</code> property.
-   */
-  public IntegrationLogClientRequest method(MethodEnum method) {
-    this.method = method;
-    return this;
-  }
-
  /**
   * HTTP request host from host header.
   * @return host
@@ -132,6 +107,31 @@ public enum MethodEnum {
    */
   public IntegrationLogClientRequest host(String host) {
     this.host = host;
+    return this;
+  }
+
+ /**
+  * Get method
+  * @return method
+  */
+  @JsonProperty("method")
+  @NotNull
+  public String getMethod() {
+    return method == null ? null : method.value();
+  }
+
+  /**
+   * Sets the <code>method</code> property.
+   */
+ public void setMethod(MethodEnum method) {
+    this.method = method;
+  }
+
+  /**
+   * Sets the <code>method</code> property.
+   */
+  public IntegrationLogClientRequest method(MethodEnum method) {
+    this.method = method;
     return this;
   }
 
@@ -258,8 +258,8 @@ public enum MethodEnum {
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(this.method, integrationLogClientRequest.method) &&
-        Objects.equals(this.host, integrationLogClientRequest.host) &&
+    return Objects.equals(this.host, integrationLogClientRequest.host) &&
+        Objects.equals(this.method, integrationLogClientRequest.method) &&
         Objects.equals(this.path, integrationLogClientRequest.path) &&
         Objects.equals(this.requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(this.responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -268,7 +268,7 @@ public enum MethodEnum {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
@@ -276,8 +276,8 @@ public enum MethodEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
     
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

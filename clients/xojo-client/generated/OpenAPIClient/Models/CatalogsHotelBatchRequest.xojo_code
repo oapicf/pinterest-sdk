@@ -2,20 +2,20 @@
 Protected Class CatalogsHotelBatchRequest
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+		#tag EndNote
+		catalog_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		country As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			We recommend using the CatalogsLocale values.
-		#tag EndNote
-		language As OpenAPIClient.Models.String
 	#tag EndProperty
 
 
@@ -29,9 +29,9 @@ Protected Class CatalogsHotelBatchRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+			We recommend using the CatalogsLocale values.
 		#tag EndNote
-		catalog_id As Xoson.O.OptionalString
+		language As OpenAPIClient.Models.String
 	#tag EndProperty
 
 
@@ -424,6 +424,14 @@ Protected Class CatalogsHotelBatchRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="catalog_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
@@ -437,14 +445,6 @@ Protected Class CatalogsHotelBatchRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsHotelBatchItem"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

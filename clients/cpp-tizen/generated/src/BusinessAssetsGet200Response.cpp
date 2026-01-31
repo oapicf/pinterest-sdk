@@ -23,22 +23,22 @@ Business_assets_get_200_response::~Business_assets_get_200_response()
 void
 Business_assets_get_200_response::__init()
 {
-	//new std::list()std::list> items;
 	//bookmark = std::string();
+	//new std::list()std::list> items;
 }
 
 void
 Business_assets_get_200_response::__cleanup()
 {
-	//if(items != NULL) {
-	//items.RemoveAll(true);
-	//delete items;
-	//items = NULL;
-	//}
 	//if(bookmark != NULL) {
 	//
 	//delete bookmark;
 	//bookmark = NULL;
+	//}
+	//if(items != NULL) {
+	//items.RemoveAll(true);
+	//delete items;
+	//items = NULL;
 	//}
 	//
 }
@@ -48,6 +48,17 @@ Business_assets_get_200_response::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *bookmarkKey = "bookmark";
+	node = json_object_get_member(pJsonObject, bookmarkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&bookmark, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *itemsKey = "items";
 	node = json_object_get_member(pJsonObject, itemsKey);
 	if (node !=NULL) {
@@ -72,17 +83,6 @@ Business_assets_get_200_response::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *bookmarkKey = "bookmark";
-	node = json_object_get_member(pJsonObject, bookmarkKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&bookmark, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 Business_assets_get_200_response::Business_assets_get_200_response(char* json)
@@ -95,6 +95,15 @@ Business_assets_get_200_response::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getBookmark();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *bookmarkKey = "bookmark";
+	json_object_set_member(pJsonObject, bookmarkKey, node);
 	if (isprimitive("GetBusinessAssetsResponse")) {
 		list<GetBusinessAssetsResponse> new_list = static_cast<list <GetBusinessAssetsResponse> > (getItems());
 		node = converttoJson(&new_list, "GetBusinessAssetsResponse", "array");
@@ -120,33 +129,12 @@ Business_assets_get_200_response::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBookmark();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *bookmarkKey = "bookmark";
-	json_object_set_member(pJsonObject, bookmarkKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::list<GetBusinessAssetsResponse>
-Business_assets_get_200_response::getItems()
-{
-	return items;
-}
-
-void
-Business_assets_get_200_response::setItems(std::list <GetBusinessAssetsResponse> items)
-{
-	this->items = items;
 }
 
 std::string
@@ -159,6 +147,18 @@ void
 Business_assets_get_200_response::setBookmark(std::string  bookmark)
 {
 	this->bookmark = bookmark;
+}
+
+std::list<GetBusinessAssetsResponse>
+Business_assets_get_200_response::getItems()
+{
+	return items;
+}
+
+void
+Business_assets_get_200_response::setItems(std::list <GetBusinessAssetsResponse> items)
+{
+	this->items = items;
 }
 
 

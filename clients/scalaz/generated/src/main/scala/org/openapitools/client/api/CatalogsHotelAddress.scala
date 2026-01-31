@@ -16,12 +16,12 @@ case class CatalogsHotelAddress (
   addr1: Option[String],
 /* City where the hotel is located. */
   city: Option[String],
-/* State, county, province, where the hotel is located. */
-  region: Option[String],
 /* Country where the hotel is located. */
   country: Option[String],
 /* Required for countries with a postal code system. Postal or zip code of the hotel. */
-  postalCode: Option[String])
+  postalCode: Option[String],
+/* State, county, province, where the hotel is located. */
+  region: Option[String])
 
 object CatalogsHotelAddress {
   import DateTimeCodecs._

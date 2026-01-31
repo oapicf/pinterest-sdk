@@ -6,9 +6,56 @@
 
 
 static item_attributes_t *item_attributes_create_internal(
+    char *ad_image_0_link,
+    char *ad_image_0_tag,
+    char *ad_image_10_link,
+    char *ad_image_10_tag,
+    char *ad_image_11_link,
+    char *ad_image_11_tag,
+    char *ad_image_12_link,
+    char *ad_image_12_tag,
+    char *ad_image_13_link,
+    char *ad_image_13_tag,
+    char *ad_image_14_link,
+    char *ad_image_14_tag,
+    char *ad_image_15_link,
+    char *ad_image_15_tag,
+    char *ad_image_16_link,
+    char *ad_image_16_tag,
+    char *ad_image_17_link,
+    char *ad_image_17_tag,
+    char *ad_image_18_link,
+    char *ad_image_18_tag,
+    char *ad_image_19_link,
+    char *ad_image_19_tag,
+    char *ad_image_1_link,
+    char *ad_image_1_tag,
+    char *ad_image_2_link,
+    char *ad_image_2_tag,
+    char *ad_image_3_link,
+    char *ad_image_3_tag,
+    char *ad_image_4_link,
+    char *ad_image_4_tag,
+    char *ad_image_5_link,
+    char *ad_image_5_tag,
+    char *ad_image_6_link,
+    char *ad_image_6_tag,
+    char *ad_image_7_link,
+    char *ad_image_7_tag,
+    char *ad_image_8_link,
+    char *ad_image_8_tag,
+    char *ad_image_9_link,
+    char *ad_image_9_tag,
     char *ad_link,
+    char *ad_video_0_link,
+    char *ad_video_0_tag,
+    char *ad_video_1_link,
+    char *ad_video_1_tag,
+    char *ad_video_2_link,
+    char *ad_video_2_tag,
     int adult,
     char *age_group,
+    char *android_deep_link,
     char *availability,
     double average_review_rating,
     char *brand,
@@ -20,13 +67,20 @@ static item_attributes_t *item_attributes_create_internal(
     char *custom_label_2,
     char *custom_label_3,
     char *custom_label_4,
+    int custom_number_0,
+    int custom_number_1,
+    int custom_number_2,
+    int custom_number_3,
+    int custom_number_4,
     char *description,
     int free_shipping_label,
     char *free_shipping_limit,
     char *gender,
     char *google_product_category,
-    int gtin,
+    updatable_item_attributes_gtin_t *gtin,
     char *id,
+    char *installment_price,
+    char *ios_deep_link,
     char *item_group_id,
     long last_updated_time,
     char *link,
@@ -39,7 +93,9 @@ static item_attributes_t *item_attributes_create_internal(
     char *pattern,
     char *price,
     char *product_type,
+    char *promotion_id,
     char *sale_price,
+    char *sale_price_effective_date,
     char *shipping,
     char *shipping_height,
     char *shipping_weight,
@@ -49,6 +105,8 @@ static item_attributes_t *item_attributes_create_internal(
     char *size_type,
     char *tax,
     char *title,
+    char *unit_pricing_base_measure,
+    char *unit_pricing_measure,
     list_t *variant_names,
     list_t *variant_values,
     list_t *additional_image_link,
@@ -59,9 +117,56 @@ static item_attributes_t *item_attributes_create_internal(
     if (!item_attributes_local_var) {
         return NULL;
     }
+    item_attributes_local_var->ad_image_0_link = ad_image_0_link;
+    item_attributes_local_var->ad_image_0_tag = ad_image_0_tag;
+    item_attributes_local_var->ad_image_10_link = ad_image_10_link;
+    item_attributes_local_var->ad_image_10_tag = ad_image_10_tag;
+    item_attributes_local_var->ad_image_11_link = ad_image_11_link;
+    item_attributes_local_var->ad_image_11_tag = ad_image_11_tag;
+    item_attributes_local_var->ad_image_12_link = ad_image_12_link;
+    item_attributes_local_var->ad_image_12_tag = ad_image_12_tag;
+    item_attributes_local_var->ad_image_13_link = ad_image_13_link;
+    item_attributes_local_var->ad_image_13_tag = ad_image_13_tag;
+    item_attributes_local_var->ad_image_14_link = ad_image_14_link;
+    item_attributes_local_var->ad_image_14_tag = ad_image_14_tag;
+    item_attributes_local_var->ad_image_15_link = ad_image_15_link;
+    item_attributes_local_var->ad_image_15_tag = ad_image_15_tag;
+    item_attributes_local_var->ad_image_16_link = ad_image_16_link;
+    item_attributes_local_var->ad_image_16_tag = ad_image_16_tag;
+    item_attributes_local_var->ad_image_17_link = ad_image_17_link;
+    item_attributes_local_var->ad_image_17_tag = ad_image_17_tag;
+    item_attributes_local_var->ad_image_18_link = ad_image_18_link;
+    item_attributes_local_var->ad_image_18_tag = ad_image_18_tag;
+    item_attributes_local_var->ad_image_19_link = ad_image_19_link;
+    item_attributes_local_var->ad_image_19_tag = ad_image_19_tag;
+    item_attributes_local_var->ad_image_1_link = ad_image_1_link;
+    item_attributes_local_var->ad_image_1_tag = ad_image_1_tag;
+    item_attributes_local_var->ad_image_2_link = ad_image_2_link;
+    item_attributes_local_var->ad_image_2_tag = ad_image_2_tag;
+    item_attributes_local_var->ad_image_3_link = ad_image_3_link;
+    item_attributes_local_var->ad_image_3_tag = ad_image_3_tag;
+    item_attributes_local_var->ad_image_4_link = ad_image_4_link;
+    item_attributes_local_var->ad_image_4_tag = ad_image_4_tag;
+    item_attributes_local_var->ad_image_5_link = ad_image_5_link;
+    item_attributes_local_var->ad_image_5_tag = ad_image_5_tag;
+    item_attributes_local_var->ad_image_6_link = ad_image_6_link;
+    item_attributes_local_var->ad_image_6_tag = ad_image_6_tag;
+    item_attributes_local_var->ad_image_7_link = ad_image_7_link;
+    item_attributes_local_var->ad_image_7_tag = ad_image_7_tag;
+    item_attributes_local_var->ad_image_8_link = ad_image_8_link;
+    item_attributes_local_var->ad_image_8_tag = ad_image_8_tag;
+    item_attributes_local_var->ad_image_9_link = ad_image_9_link;
+    item_attributes_local_var->ad_image_9_tag = ad_image_9_tag;
     item_attributes_local_var->ad_link = ad_link;
+    item_attributes_local_var->ad_video_0_link = ad_video_0_link;
+    item_attributes_local_var->ad_video_0_tag = ad_video_0_tag;
+    item_attributes_local_var->ad_video_1_link = ad_video_1_link;
+    item_attributes_local_var->ad_video_1_tag = ad_video_1_tag;
+    item_attributes_local_var->ad_video_2_link = ad_video_2_link;
+    item_attributes_local_var->ad_video_2_tag = ad_video_2_tag;
     item_attributes_local_var->adult = adult;
     item_attributes_local_var->age_group = age_group;
+    item_attributes_local_var->android_deep_link = android_deep_link;
     item_attributes_local_var->availability = availability;
     item_attributes_local_var->average_review_rating = average_review_rating;
     item_attributes_local_var->brand = brand;
@@ -73,6 +178,11 @@ static item_attributes_t *item_attributes_create_internal(
     item_attributes_local_var->custom_label_2 = custom_label_2;
     item_attributes_local_var->custom_label_3 = custom_label_3;
     item_attributes_local_var->custom_label_4 = custom_label_4;
+    item_attributes_local_var->custom_number_0 = custom_number_0;
+    item_attributes_local_var->custom_number_1 = custom_number_1;
+    item_attributes_local_var->custom_number_2 = custom_number_2;
+    item_attributes_local_var->custom_number_3 = custom_number_3;
+    item_attributes_local_var->custom_number_4 = custom_number_4;
     item_attributes_local_var->description = description;
     item_attributes_local_var->free_shipping_label = free_shipping_label;
     item_attributes_local_var->free_shipping_limit = free_shipping_limit;
@@ -80,6 +190,8 @@ static item_attributes_t *item_attributes_create_internal(
     item_attributes_local_var->google_product_category = google_product_category;
     item_attributes_local_var->gtin = gtin;
     item_attributes_local_var->id = id;
+    item_attributes_local_var->installment_price = installment_price;
+    item_attributes_local_var->ios_deep_link = ios_deep_link;
     item_attributes_local_var->item_group_id = item_group_id;
     item_attributes_local_var->last_updated_time = last_updated_time;
     item_attributes_local_var->link = link;
@@ -92,7 +204,9 @@ static item_attributes_t *item_attributes_create_internal(
     item_attributes_local_var->pattern = pattern;
     item_attributes_local_var->price = price;
     item_attributes_local_var->product_type = product_type;
+    item_attributes_local_var->promotion_id = promotion_id;
     item_attributes_local_var->sale_price = sale_price;
+    item_attributes_local_var->sale_price_effective_date = sale_price_effective_date;
     item_attributes_local_var->shipping = shipping;
     item_attributes_local_var->shipping_height = shipping_height;
     item_attributes_local_var->shipping_weight = shipping_weight;
@@ -102,6 +216,8 @@ static item_attributes_t *item_attributes_create_internal(
     item_attributes_local_var->size_type = size_type;
     item_attributes_local_var->tax = tax;
     item_attributes_local_var->title = title;
+    item_attributes_local_var->unit_pricing_base_measure = unit_pricing_base_measure;
+    item_attributes_local_var->unit_pricing_measure = unit_pricing_measure;
     item_attributes_local_var->variant_names = variant_names;
     item_attributes_local_var->variant_values = variant_values;
     item_attributes_local_var->additional_image_link = additional_image_link;
@@ -113,9 +229,56 @@ static item_attributes_t *item_attributes_create_internal(
 }
 
 __attribute__((deprecated)) item_attributes_t *item_attributes_create(
+    char *ad_image_0_link,
+    char *ad_image_0_tag,
+    char *ad_image_10_link,
+    char *ad_image_10_tag,
+    char *ad_image_11_link,
+    char *ad_image_11_tag,
+    char *ad_image_12_link,
+    char *ad_image_12_tag,
+    char *ad_image_13_link,
+    char *ad_image_13_tag,
+    char *ad_image_14_link,
+    char *ad_image_14_tag,
+    char *ad_image_15_link,
+    char *ad_image_15_tag,
+    char *ad_image_16_link,
+    char *ad_image_16_tag,
+    char *ad_image_17_link,
+    char *ad_image_17_tag,
+    char *ad_image_18_link,
+    char *ad_image_18_tag,
+    char *ad_image_19_link,
+    char *ad_image_19_tag,
+    char *ad_image_1_link,
+    char *ad_image_1_tag,
+    char *ad_image_2_link,
+    char *ad_image_2_tag,
+    char *ad_image_3_link,
+    char *ad_image_3_tag,
+    char *ad_image_4_link,
+    char *ad_image_4_tag,
+    char *ad_image_5_link,
+    char *ad_image_5_tag,
+    char *ad_image_6_link,
+    char *ad_image_6_tag,
+    char *ad_image_7_link,
+    char *ad_image_7_tag,
+    char *ad_image_8_link,
+    char *ad_image_8_tag,
+    char *ad_image_9_link,
+    char *ad_image_9_tag,
     char *ad_link,
+    char *ad_video_0_link,
+    char *ad_video_0_tag,
+    char *ad_video_1_link,
+    char *ad_video_1_tag,
+    char *ad_video_2_link,
+    char *ad_video_2_tag,
     int adult,
     char *age_group,
+    char *android_deep_link,
     char *availability,
     double average_review_rating,
     char *brand,
@@ -127,13 +290,20 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *custom_label_2,
     char *custom_label_3,
     char *custom_label_4,
+    int custom_number_0,
+    int custom_number_1,
+    int custom_number_2,
+    int custom_number_3,
+    int custom_number_4,
     char *description,
     int free_shipping_label,
     char *free_shipping_limit,
     char *gender,
     char *google_product_category,
-    int gtin,
+    updatable_item_attributes_gtin_t *gtin,
     char *id,
+    char *installment_price,
+    char *ios_deep_link,
     char *item_group_id,
     long last_updated_time,
     char *link,
@@ -146,7 +316,9 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *pattern,
     char *price,
     char *product_type,
+    char *promotion_id,
     char *sale_price,
+    char *sale_price_effective_date,
     char *shipping,
     char *shipping_height,
     char *shipping_weight,
@@ -156,6 +328,8 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *size_type,
     char *tax,
     char *title,
+    char *unit_pricing_base_measure,
+    char *unit_pricing_measure,
     list_t *variant_names,
     list_t *variant_values,
     list_t *additional_image_link,
@@ -163,9 +337,56 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *video_link
     ) {
     return item_attributes_create_internal (
+        ad_image_0_link,
+        ad_image_0_tag,
+        ad_image_10_link,
+        ad_image_10_tag,
+        ad_image_11_link,
+        ad_image_11_tag,
+        ad_image_12_link,
+        ad_image_12_tag,
+        ad_image_13_link,
+        ad_image_13_tag,
+        ad_image_14_link,
+        ad_image_14_tag,
+        ad_image_15_link,
+        ad_image_15_tag,
+        ad_image_16_link,
+        ad_image_16_tag,
+        ad_image_17_link,
+        ad_image_17_tag,
+        ad_image_18_link,
+        ad_image_18_tag,
+        ad_image_19_link,
+        ad_image_19_tag,
+        ad_image_1_link,
+        ad_image_1_tag,
+        ad_image_2_link,
+        ad_image_2_tag,
+        ad_image_3_link,
+        ad_image_3_tag,
+        ad_image_4_link,
+        ad_image_4_tag,
+        ad_image_5_link,
+        ad_image_5_tag,
+        ad_image_6_link,
+        ad_image_6_tag,
+        ad_image_7_link,
+        ad_image_7_tag,
+        ad_image_8_link,
+        ad_image_8_tag,
+        ad_image_9_link,
+        ad_image_9_tag,
         ad_link,
+        ad_video_0_link,
+        ad_video_0_tag,
+        ad_video_1_link,
+        ad_video_1_tag,
+        ad_video_2_link,
+        ad_video_2_tag,
         adult,
         age_group,
+        android_deep_link,
         availability,
         average_review_rating,
         brand,
@@ -177,6 +398,11 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
         custom_label_2,
         custom_label_3,
         custom_label_4,
+        custom_number_0,
+        custom_number_1,
+        custom_number_2,
+        custom_number_3,
+        custom_number_4,
         description,
         free_shipping_label,
         free_shipping_limit,
@@ -184,6 +410,8 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
         google_product_category,
         gtin,
         id,
+        installment_price,
+        ios_deep_link,
         item_group_id,
         last_updated_time,
         link,
@@ -196,7 +424,9 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
         pattern,
         price,
         product_type,
+        promotion_id,
         sale_price,
+        sale_price_effective_date,
         shipping,
         shipping_height,
         shipping_weight,
@@ -206,6 +436,8 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
         size_type,
         tax,
         title,
+        unit_pricing_base_measure,
+        unit_pricing_measure,
         variant_names,
         variant_values,
         additional_image_link,
@@ -223,13 +455,201 @@ void item_attributes_free(item_attributes_t *item_attributes) {
         return ;
     }
     listEntry_t *listEntry;
+    if (item_attributes->ad_image_0_link) {
+        free(item_attributes->ad_image_0_link);
+        item_attributes->ad_image_0_link = NULL;
+    }
+    if (item_attributes->ad_image_0_tag) {
+        free(item_attributes->ad_image_0_tag);
+        item_attributes->ad_image_0_tag = NULL;
+    }
+    if (item_attributes->ad_image_10_link) {
+        free(item_attributes->ad_image_10_link);
+        item_attributes->ad_image_10_link = NULL;
+    }
+    if (item_attributes->ad_image_10_tag) {
+        free(item_attributes->ad_image_10_tag);
+        item_attributes->ad_image_10_tag = NULL;
+    }
+    if (item_attributes->ad_image_11_link) {
+        free(item_attributes->ad_image_11_link);
+        item_attributes->ad_image_11_link = NULL;
+    }
+    if (item_attributes->ad_image_11_tag) {
+        free(item_attributes->ad_image_11_tag);
+        item_attributes->ad_image_11_tag = NULL;
+    }
+    if (item_attributes->ad_image_12_link) {
+        free(item_attributes->ad_image_12_link);
+        item_attributes->ad_image_12_link = NULL;
+    }
+    if (item_attributes->ad_image_12_tag) {
+        free(item_attributes->ad_image_12_tag);
+        item_attributes->ad_image_12_tag = NULL;
+    }
+    if (item_attributes->ad_image_13_link) {
+        free(item_attributes->ad_image_13_link);
+        item_attributes->ad_image_13_link = NULL;
+    }
+    if (item_attributes->ad_image_13_tag) {
+        free(item_attributes->ad_image_13_tag);
+        item_attributes->ad_image_13_tag = NULL;
+    }
+    if (item_attributes->ad_image_14_link) {
+        free(item_attributes->ad_image_14_link);
+        item_attributes->ad_image_14_link = NULL;
+    }
+    if (item_attributes->ad_image_14_tag) {
+        free(item_attributes->ad_image_14_tag);
+        item_attributes->ad_image_14_tag = NULL;
+    }
+    if (item_attributes->ad_image_15_link) {
+        free(item_attributes->ad_image_15_link);
+        item_attributes->ad_image_15_link = NULL;
+    }
+    if (item_attributes->ad_image_15_tag) {
+        free(item_attributes->ad_image_15_tag);
+        item_attributes->ad_image_15_tag = NULL;
+    }
+    if (item_attributes->ad_image_16_link) {
+        free(item_attributes->ad_image_16_link);
+        item_attributes->ad_image_16_link = NULL;
+    }
+    if (item_attributes->ad_image_16_tag) {
+        free(item_attributes->ad_image_16_tag);
+        item_attributes->ad_image_16_tag = NULL;
+    }
+    if (item_attributes->ad_image_17_link) {
+        free(item_attributes->ad_image_17_link);
+        item_attributes->ad_image_17_link = NULL;
+    }
+    if (item_attributes->ad_image_17_tag) {
+        free(item_attributes->ad_image_17_tag);
+        item_attributes->ad_image_17_tag = NULL;
+    }
+    if (item_attributes->ad_image_18_link) {
+        free(item_attributes->ad_image_18_link);
+        item_attributes->ad_image_18_link = NULL;
+    }
+    if (item_attributes->ad_image_18_tag) {
+        free(item_attributes->ad_image_18_tag);
+        item_attributes->ad_image_18_tag = NULL;
+    }
+    if (item_attributes->ad_image_19_link) {
+        free(item_attributes->ad_image_19_link);
+        item_attributes->ad_image_19_link = NULL;
+    }
+    if (item_attributes->ad_image_19_tag) {
+        free(item_attributes->ad_image_19_tag);
+        item_attributes->ad_image_19_tag = NULL;
+    }
+    if (item_attributes->ad_image_1_link) {
+        free(item_attributes->ad_image_1_link);
+        item_attributes->ad_image_1_link = NULL;
+    }
+    if (item_attributes->ad_image_1_tag) {
+        free(item_attributes->ad_image_1_tag);
+        item_attributes->ad_image_1_tag = NULL;
+    }
+    if (item_attributes->ad_image_2_link) {
+        free(item_attributes->ad_image_2_link);
+        item_attributes->ad_image_2_link = NULL;
+    }
+    if (item_attributes->ad_image_2_tag) {
+        free(item_attributes->ad_image_2_tag);
+        item_attributes->ad_image_2_tag = NULL;
+    }
+    if (item_attributes->ad_image_3_link) {
+        free(item_attributes->ad_image_3_link);
+        item_attributes->ad_image_3_link = NULL;
+    }
+    if (item_attributes->ad_image_3_tag) {
+        free(item_attributes->ad_image_3_tag);
+        item_attributes->ad_image_3_tag = NULL;
+    }
+    if (item_attributes->ad_image_4_link) {
+        free(item_attributes->ad_image_4_link);
+        item_attributes->ad_image_4_link = NULL;
+    }
+    if (item_attributes->ad_image_4_tag) {
+        free(item_attributes->ad_image_4_tag);
+        item_attributes->ad_image_4_tag = NULL;
+    }
+    if (item_attributes->ad_image_5_link) {
+        free(item_attributes->ad_image_5_link);
+        item_attributes->ad_image_5_link = NULL;
+    }
+    if (item_attributes->ad_image_5_tag) {
+        free(item_attributes->ad_image_5_tag);
+        item_attributes->ad_image_5_tag = NULL;
+    }
+    if (item_attributes->ad_image_6_link) {
+        free(item_attributes->ad_image_6_link);
+        item_attributes->ad_image_6_link = NULL;
+    }
+    if (item_attributes->ad_image_6_tag) {
+        free(item_attributes->ad_image_6_tag);
+        item_attributes->ad_image_6_tag = NULL;
+    }
+    if (item_attributes->ad_image_7_link) {
+        free(item_attributes->ad_image_7_link);
+        item_attributes->ad_image_7_link = NULL;
+    }
+    if (item_attributes->ad_image_7_tag) {
+        free(item_attributes->ad_image_7_tag);
+        item_attributes->ad_image_7_tag = NULL;
+    }
+    if (item_attributes->ad_image_8_link) {
+        free(item_attributes->ad_image_8_link);
+        item_attributes->ad_image_8_link = NULL;
+    }
+    if (item_attributes->ad_image_8_tag) {
+        free(item_attributes->ad_image_8_tag);
+        item_attributes->ad_image_8_tag = NULL;
+    }
+    if (item_attributes->ad_image_9_link) {
+        free(item_attributes->ad_image_9_link);
+        item_attributes->ad_image_9_link = NULL;
+    }
+    if (item_attributes->ad_image_9_tag) {
+        free(item_attributes->ad_image_9_tag);
+        item_attributes->ad_image_9_tag = NULL;
+    }
     if (item_attributes->ad_link) {
         free(item_attributes->ad_link);
         item_attributes->ad_link = NULL;
     }
+    if (item_attributes->ad_video_0_link) {
+        free(item_attributes->ad_video_0_link);
+        item_attributes->ad_video_0_link = NULL;
+    }
+    if (item_attributes->ad_video_0_tag) {
+        free(item_attributes->ad_video_0_tag);
+        item_attributes->ad_video_0_tag = NULL;
+    }
+    if (item_attributes->ad_video_1_link) {
+        free(item_attributes->ad_video_1_link);
+        item_attributes->ad_video_1_link = NULL;
+    }
+    if (item_attributes->ad_video_1_tag) {
+        free(item_attributes->ad_video_1_tag);
+        item_attributes->ad_video_1_tag = NULL;
+    }
+    if (item_attributes->ad_video_2_link) {
+        free(item_attributes->ad_video_2_link);
+        item_attributes->ad_video_2_link = NULL;
+    }
+    if (item_attributes->ad_video_2_tag) {
+        free(item_attributes->ad_video_2_tag);
+        item_attributes->ad_video_2_tag = NULL;
+    }
     if (item_attributes->age_group) {
         free(item_attributes->age_group);
         item_attributes->age_group = NULL;
+    }
+    if (item_attributes->android_deep_link) {
+        free(item_attributes->android_deep_link);
+        item_attributes->android_deep_link = NULL;
     }
     if (item_attributes->availability) {
         free(item_attributes->availability);
@@ -283,9 +703,21 @@ void item_attributes_free(item_attributes_t *item_attributes) {
         free(item_attributes->google_product_category);
         item_attributes->google_product_category = NULL;
     }
+    if (item_attributes->gtin) {
+        updatable_item_attributes_gtin_free(item_attributes->gtin);
+        item_attributes->gtin = NULL;
+    }
     if (item_attributes->id) {
         free(item_attributes->id);
         item_attributes->id = NULL;
+    }
+    if (item_attributes->installment_price) {
+        free(item_attributes->installment_price);
+        item_attributes->installment_price = NULL;
+    }
+    if (item_attributes->ios_deep_link) {
+        free(item_attributes->ios_deep_link);
+        item_attributes->ios_deep_link = NULL;
     }
     if (item_attributes->item_group_id) {
         free(item_attributes->item_group_id);
@@ -323,9 +755,17 @@ void item_attributes_free(item_attributes_t *item_attributes) {
         free(item_attributes->product_type);
         item_attributes->product_type = NULL;
     }
+    if (item_attributes->promotion_id) {
+        free(item_attributes->promotion_id);
+        item_attributes->promotion_id = NULL;
+    }
     if (item_attributes->sale_price) {
         free(item_attributes->sale_price);
         item_attributes->sale_price = NULL;
+    }
+    if (item_attributes->sale_price_effective_date) {
+        free(item_attributes->sale_price_effective_date);
+        item_attributes->sale_price_effective_date = NULL;
     }
     if (item_attributes->shipping) {
         free(item_attributes->shipping);
@@ -362,6 +802,14 @@ void item_attributes_free(item_attributes_t *item_attributes) {
     if (item_attributes->title) {
         free(item_attributes->title);
         item_attributes->title = NULL;
+    }
+    if (item_attributes->unit_pricing_base_measure) {
+        free(item_attributes->unit_pricing_base_measure);
+        item_attributes->unit_pricing_base_measure = NULL;
+    }
+    if (item_attributes->unit_pricing_measure) {
+        free(item_attributes->unit_pricing_measure);
+        item_attributes->unit_pricing_measure = NULL;
     }
     if (item_attributes->variant_names) {
         list_ForEach(listEntry, item_attributes->variant_names) {
@@ -401,9 +849,377 @@ void item_attributes_free(item_attributes_t *item_attributes) {
 cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     cJSON *item = cJSON_CreateObject();
 
+    // item_attributes->ad_image_0_link
+    if(item_attributes->ad_image_0_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_0_link", item_attributes->ad_image_0_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_0_tag
+    if(item_attributes->ad_image_0_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_0_tag", item_attributes->ad_image_0_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_10_link
+    if(item_attributes->ad_image_10_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_10_link", item_attributes->ad_image_10_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_10_tag
+    if(item_attributes->ad_image_10_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_10_tag", item_attributes->ad_image_10_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_11_link
+    if(item_attributes->ad_image_11_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_11_link", item_attributes->ad_image_11_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_11_tag
+    if(item_attributes->ad_image_11_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_11_tag", item_attributes->ad_image_11_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_12_link
+    if(item_attributes->ad_image_12_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_12_link", item_attributes->ad_image_12_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_12_tag
+    if(item_attributes->ad_image_12_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_12_tag", item_attributes->ad_image_12_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_13_link
+    if(item_attributes->ad_image_13_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_13_link", item_attributes->ad_image_13_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_13_tag
+    if(item_attributes->ad_image_13_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_13_tag", item_attributes->ad_image_13_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_14_link
+    if(item_attributes->ad_image_14_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_14_link", item_attributes->ad_image_14_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_14_tag
+    if(item_attributes->ad_image_14_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_14_tag", item_attributes->ad_image_14_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_15_link
+    if(item_attributes->ad_image_15_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_15_link", item_attributes->ad_image_15_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_15_tag
+    if(item_attributes->ad_image_15_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_15_tag", item_attributes->ad_image_15_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_16_link
+    if(item_attributes->ad_image_16_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_16_link", item_attributes->ad_image_16_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_16_tag
+    if(item_attributes->ad_image_16_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_16_tag", item_attributes->ad_image_16_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_17_link
+    if(item_attributes->ad_image_17_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_17_link", item_attributes->ad_image_17_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_17_tag
+    if(item_attributes->ad_image_17_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_17_tag", item_attributes->ad_image_17_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_18_link
+    if(item_attributes->ad_image_18_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_18_link", item_attributes->ad_image_18_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_18_tag
+    if(item_attributes->ad_image_18_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_18_tag", item_attributes->ad_image_18_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_19_link
+    if(item_attributes->ad_image_19_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_19_link", item_attributes->ad_image_19_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_19_tag
+    if(item_attributes->ad_image_19_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_19_tag", item_attributes->ad_image_19_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_1_link
+    if(item_attributes->ad_image_1_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_1_link", item_attributes->ad_image_1_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_1_tag
+    if(item_attributes->ad_image_1_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_1_tag", item_attributes->ad_image_1_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_2_link
+    if(item_attributes->ad_image_2_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_2_link", item_attributes->ad_image_2_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_2_tag
+    if(item_attributes->ad_image_2_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_2_tag", item_attributes->ad_image_2_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_3_link
+    if(item_attributes->ad_image_3_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_3_link", item_attributes->ad_image_3_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_3_tag
+    if(item_attributes->ad_image_3_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_3_tag", item_attributes->ad_image_3_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_4_link
+    if(item_attributes->ad_image_4_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_4_link", item_attributes->ad_image_4_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_4_tag
+    if(item_attributes->ad_image_4_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_4_tag", item_attributes->ad_image_4_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_5_link
+    if(item_attributes->ad_image_5_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_5_link", item_attributes->ad_image_5_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_5_tag
+    if(item_attributes->ad_image_5_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_5_tag", item_attributes->ad_image_5_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_6_link
+    if(item_attributes->ad_image_6_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_6_link", item_attributes->ad_image_6_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_6_tag
+    if(item_attributes->ad_image_6_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_6_tag", item_attributes->ad_image_6_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_7_link
+    if(item_attributes->ad_image_7_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_7_link", item_attributes->ad_image_7_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_7_tag
+    if(item_attributes->ad_image_7_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_7_tag", item_attributes->ad_image_7_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_8_link
+    if(item_attributes->ad_image_8_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_8_link", item_attributes->ad_image_8_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_8_tag
+    if(item_attributes->ad_image_8_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_8_tag", item_attributes->ad_image_8_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_9_link
+    if(item_attributes->ad_image_9_link) {
+    if(cJSON_AddStringToObject(item, "ad_image_9_link", item_attributes->ad_image_9_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_image_9_tag
+    if(item_attributes->ad_image_9_tag) {
+    if(cJSON_AddStringToObject(item, "ad_image_9_tag", item_attributes->ad_image_9_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // item_attributes->ad_link
     if(item_attributes->ad_link) {
     if(cJSON_AddStringToObject(item, "ad_link", item_attributes->ad_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_video_0_link
+    if(item_attributes->ad_video_0_link) {
+    if(cJSON_AddStringToObject(item, "ad_video_0_link", item_attributes->ad_video_0_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_video_0_tag
+    if(item_attributes->ad_video_0_tag) {
+    if(cJSON_AddStringToObject(item, "ad_video_0_tag", item_attributes->ad_video_0_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_video_1_link
+    if(item_attributes->ad_video_1_link) {
+    if(cJSON_AddStringToObject(item, "ad_video_1_link", item_attributes->ad_video_1_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_video_1_tag
+    if(item_attributes->ad_video_1_tag) {
+    if(cJSON_AddStringToObject(item, "ad_video_1_tag", item_attributes->ad_video_1_tag) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_video_2_link
+    if(item_attributes->ad_video_2_link) {
+    if(cJSON_AddStringToObject(item, "ad_video_2_link", item_attributes->ad_video_2_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ad_video_2_tag
+    if(item_attributes->ad_video_2_tag) {
+    if(cJSON_AddStringToObject(item, "ad_video_2_tag", item_attributes->ad_video_2_tag) == NULL) {
     goto fail; //String
     }
     }
@@ -420,6 +1236,14 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     // item_attributes->age_group
     if(item_attributes->age_group) {
     if(cJSON_AddStringToObject(item, "age_group", item_attributes->age_group) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->android_deep_link
+    if(item_attributes->android_deep_link) {
+    if(cJSON_AddStringToObject(item, "android_deep_link", item_attributes->android_deep_link) == NULL) {
     goto fail; //String
     }
     }
@@ -513,6 +1337,46 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     }
 
 
+    // item_attributes->custom_number_0
+    if(item_attributes->custom_number_0) {
+    if(cJSON_AddNumberToObject(item, "custom_number_0", item_attributes->custom_number_0) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // item_attributes->custom_number_1
+    if(item_attributes->custom_number_1) {
+    if(cJSON_AddNumberToObject(item, "custom_number_1", item_attributes->custom_number_1) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // item_attributes->custom_number_2
+    if(item_attributes->custom_number_2) {
+    if(cJSON_AddNumberToObject(item, "custom_number_2", item_attributes->custom_number_2) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // item_attributes->custom_number_3
+    if(item_attributes->custom_number_3) {
+    if(cJSON_AddNumberToObject(item, "custom_number_3", item_attributes->custom_number_3) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // item_attributes->custom_number_4
+    if(item_attributes->custom_number_4) {
+    if(cJSON_AddNumberToObject(item, "custom_number_4", item_attributes->custom_number_4) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
     // item_attributes->description
     if(item_attributes->description) {
     if(cJSON_AddStringToObject(item, "description", item_attributes->description) == NULL) {
@@ -555,8 +1419,13 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
 
     // item_attributes->gtin
     if(item_attributes->gtin) {
-    if(cJSON_AddNumberToObject(item, "gtin", item_attributes->gtin) == NULL) {
-    goto fail; //Numeric
+    cJSON *gtin_local_JSON = updatable_item_attributes_gtin_convertToJSON(item_attributes->gtin);
+    if(gtin_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "gtin", gtin_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -564,6 +1433,22 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     // item_attributes->id
     if(item_attributes->id) {
     if(cJSON_AddStringToObject(item, "id", item_attributes->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->installment_price
+    if(item_attributes->installment_price) {
+    if(cJSON_AddStringToObject(item, "installment_price", item_attributes->installment_price) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->ios_deep_link
+    if(item_attributes->ios_deep_link) {
+    if(cJSON_AddStringToObject(item, "ios_deep_link", item_attributes->ios_deep_link) == NULL) {
     goto fail; //String
     }
     }
@@ -665,9 +1550,25 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     }
 
 
+    // item_attributes->promotion_id
+    if(item_attributes->promotion_id) {
+    if(cJSON_AddStringToObject(item, "promotion_id", item_attributes->promotion_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // item_attributes->sale_price
     if(item_attributes->sale_price) {
     if(cJSON_AddStringToObject(item, "sale_price", item_attributes->sale_price) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->sale_price_effective_date
+    if(item_attributes->sale_price_effective_date) {
+    if(cJSON_AddStringToObject(item, "sale_price_effective_date", item_attributes->sale_price_effective_date) == NULL) {
     goto fail; //String
     }
     }
@@ -740,6 +1641,22 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     // item_attributes->title
     if(item_attributes->title) {
     if(cJSON_AddStringToObject(item, "title", item_attributes->title) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->unit_pricing_base_measure
+    if(item_attributes->unit_pricing_base_measure) {
+    if(cJSON_AddStringToObject(item, "unit_pricing_base_measure", item_attributes->unit_pricing_base_measure) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attributes->unit_pricing_measure
+    if(item_attributes->unit_pricing_measure) {
+    if(cJSON_AddStringToObject(item, "unit_pricing_measure", item_attributes->unit_pricing_measure) == NULL) {
     goto fail; //String
     }
     }
@@ -832,6 +1749,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     item_attributes_t *item_attributes_local_var = NULL;
 
+    // define the local variable for item_attributes->gtin
+    updatable_item_attributes_gtin_t *gtin_local_nonprim = NULL;
+
     // define the local list for item_attributes->variant_names
     list_t *variant_namesList = NULL;
 
@@ -844,6 +1764,486 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     // define the local list for item_attributes->image_link
     list_t *image_linkList = NULL;
 
+    // item_attributes->ad_image_0_link
+    cJSON *ad_image_0_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_0_link");
+    if (cJSON_IsNull(ad_image_0_link)) {
+        ad_image_0_link = NULL;
+    }
+    if (ad_image_0_link) { 
+    if(!cJSON_IsString(ad_image_0_link) && !cJSON_IsNull(ad_image_0_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_0_tag
+    cJSON *ad_image_0_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_0_tag");
+    if (cJSON_IsNull(ad_image_0_tag)) {
+        ad_image_0_tag = NULL;
+    }
+    if (ad_image_0_tag) { 
+    if(!cJSON_IsString(ad_image_0_tag) && !cJSON_IsNull(ad_image_0_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_10_link
+    cJSON *ad_image_10_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_10_link");
+    if (cJSON_IsNull(ad_image_10_link)) {
+        ad_image_10_link = NULL;
+    }
+    if (ad_image_10_link) { 
+    if(!cJSON_IsString(ad_image_10_link) && !cJSON_IsNull(ad_image_10_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_10_tag
+    cJSON *ad_image_10_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_10_tag");
+    if (cJSON_IsNull(ad_image_10_tag)) {
+        ad_image_10_tag = NULL;
+    }
+    if (ad_image_10_tag) { 
+    if(!cJSON_IsString(ad_image_10_tag) && !cJSON_IsNull(ad_image_10_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_11_link
+    cJSON *ad_image_11_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_11_link");
+    if (cJSON_IsNull(ad_image_11_link)) {
+        ad_image_11_link = NULL;
+    }
+    if (ad_image_11_link) { 
+    if(!cJSON_IsString(ad_image_11_link) && !cJSON_IsNull(ad_image_11_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_11_tag
+    cJSON *ad_image_11_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_11_tag");
+    if (cJSON_IsNull(ad_image_11_tag)) {
+        ad_image_11_tag = NULL;
+    }
+    if (ad_image_11_tag) { 
+    if(!cJSON_IsString(ad_image_11_tag) && !cJSON_IsNull(ad_image_11_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_12_link
+    cJSON *ad_image_12_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_12_link");
+    if (cJSON_IsNull(ad_image_12_link)) {
+        ad_image_12_link = NULL;
+    }
+    if (ad_image_12_link) { 
+    if(!cJSON_IsString(ad_image_12_link) && !cJSON_IsNull(ad_image_12_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_12_tag
+    cJSON *ad_image_12_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_12_tag");
+    if (cJSON_IsNull(ad_image_12_tag)) {
+        ad_image_12_tag = NULL;
+    }
+    if (ad_image_12_tag) { 
+    if(!cJSON_IsString(ad_image_12_tag) && !cJSON_IsNull(ad_image_12_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_13_link
+    cJSON *ad_image_13_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_13_link");
+    if (cJSON_IsNull(ad_image_13_link)) {
+        ad_image_13_link = NULL;
+    }
+    if (ad_image_13_link) { 
+    if(!cJSON_IsString(ad_image_13_link) && !cJSON_IsNull(ad_image_13_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_13_tag
+    cJSON *ad_image_13_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_13_tag");
+    if (cJSON_IsNull(ad_image_13_tag)) {
+        ad_image_13_tag = NULL;
+    }
+    if (ad_image_13_tag) { 
+    if(!cJSON_IsString(ad_image_13_tag) && !cJSON_IsNull(ad_image_13_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_14_link
+    cJSON *ad_image_14_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_14_link");
+    if (cJSON_IsNull(ad_image_14_link)) {
+        ad_image_14_link = NULL;
+    }
+    if (ad_image_14_link) { 
+    if(!cJSON_IsString(ad_image_14_link) && !cJSON_IsNull(ad_image_14_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_14_tag
+    cJSON *ad_image_14_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_14_tag");
+    if (cJSON_IsNull(ad_image_14_tag)) {
+        ad_image_14_tag = NULL;
+    }
+    if (ad_image_14_tag) { 
+    if(!cJSON_IsString(ad_image_14_tag) && !cJSON_IsNull(ad_image_14_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_15_link
+    cJSON *ad_image_15_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_15_link");
+    if (cJSON_IsNull(ad_image_15_link)) {
+        ad_image_15_link = NULL;
+    }
+    if (ad_image_15_link) { 
+    if(!cJSON_IsString(ad_image_15_link) && !cJSON_IsNull(ad_image_15_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_15_tag
+    cJSON *ad_image_15_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_15_tag");
+    if (cJSON_IsNull(ad_image_15_tag)) {
+        ad_image_15_tag = NULL;
+    }
+    if (ad_image_15_tag) { 
+    if(!cJSON_IsString(ad_image_15_tag) && !cJSON_IsNull(ad_image_15_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_16_link
+    cJSON *ad_image_16_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_16_link");
+    if (cJSON_IsNull(ad_image_16_link)) {
+        ad_image_16_link = NULL;
+    }
+    if (ad_image_16_link) { 
+    if(!cJSON_IsString(ad_image_16_link) && !cJSON_IsNull(ad_image_16_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_16_tag
+    cJSON *ad_image_16_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_16_tag");
+    if (cJSON_IsNull(ad_image_16_tag)) {
+        ad_image_16_tag = NULL;
+    }
+    if (ad_image_16_tag) { 
+    if(!cJSON_IsString(ad_image_16_tag) && !cJSON_IsNull(ad_image_16_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_17_link
+    cJSON *ad_image_17_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_17_link");
+    if (cJSON_IsNull(ad_image_17_link)) {
+        ad_image_17_link = NULL;
+    }
+    if (ad_image_17_link) { 
+    if(!cJSON_IsString(ad_image_17_link) && !cJSON_IsNull(ad_image_17_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_17_tag
+    cJSON *ad_image_17_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_17_tag");
+    if (cJSON_IsNull(ad_image_17_tag)) {
+        ad_image_17_tag = NULL;
+    }
+    if (ad_image_17_tag) { 
+    if(!cJSON_IsString(ad_image_17_tag) && !cJSON_IsNull(ad_image_17_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_18_link
+    cJSON *ad_image_18_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_18_link");
+    if (cJSON_IsNull(ad_image_18_link)) {
+        ad_image_18_link = NULL;
+    }
+    if (ad_image_18_link) { 
+    if(!cJSON_IsString(ad_image_18_link) && !cJSON_IsNull(ad_image_18_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_18_tag
+    cJSON *ad_image_18_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_18_tag");
+    if (cJSON_IsNull(ad_image_18_tag)) {
+        ad_image_18_tag = NULL;
+    }
+    if (ad_image_18_tag) { 
+    if(!cJSON_IsString(ad_image_18_tag) && !cJSON_IsNull(ad_image_18_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_19_link
+    cJSON *ad_image_19_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_19_link");
+    if (cJSON_IsNull(ad_image_19_link)) {
+        ad_image_19_link = NULL;
+    }
+    if (ad_image_19_link) { 
+    if(!cJSON_IsString(ad_image_19_link) && !cJSON_IsNull(ad_image_19_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_19_tag
+    cJSON *ad_image_19_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_19_tag");
+    if (cJSON_IsNull(ad_image_19_tag)) {
+        ad_image_19_tag = NULL;
+    }
+    if (ad_image_19_tag) { 
+    if(!cJSON_IsString(ad_image_19_tag) && !cJSON_IsNull(ad_image_19_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_1_link
+    cJSON *ad_image_1_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_1_link");
+    if (cJSON_IsNull(ad_image_1_link)) {
+        ad_image_1_link = NULL;
+    }
+    if (ad_image_1_link) { 
+    if(!cJSON_IsString(ad_image_1_link) && !cJSON_IsNull(ad_image_1_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_1_tag
+    cJSON *ad_image_1_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_1_tag");
+    if (cJSON_IsNull(ad_image_1_tag)) {
+        ad_image_1_tag = NULL;
+    }
+    if (ad_image_1_tag) { 
+    if(!cJSON_IsString(ad_image_1_tag) && !cJSON_IsNull(ad_image_1_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_2_link
+    cJSON *ad_image_2_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_2_link");
+    if (cJSON_IsNull(ad_image_2_link)) {
+        ad_image_2_link = NULL;
+    }
+    if (ad_image_2_link) { 
+    if(!cJSON_IsString(ad_image_2_link) && !cJSON_IsNull(ad_image_2_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_2_tag
+    cJSON *ad_image_2_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_2_tag");
+    if (cJSON_IsNull(ad_image_2_tag)) {
+        ad_image_2_tag = NULL;
+    }
+    if (ad_image_2_tag) { 
+    if(!cJSON_IsString(ad_image_2_tag) && !cJSON_IsNull(ad_image_2_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_3_link
+    cJSON *ad_image_3_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_3_link");
+    if (cJSON_IsNull(ad_image_3_link)) {
+        ad_image_3_link = NULL;
+    }
+    if (ad_image_3_link) { 
+    if(!cJSON_IsString(ad_image_3_link) && !cJSON_IsNull(ad_image_3_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_3_tag
+    cJSON *ad_image_3_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_3_tag");
+    if (cJSON_IsNull(ad_image_3_tag)) {
+        ad_image_3_tag = NULL;
+    }
+    if (ad_image_3_tag) { 
+    if(!cJSON_IsString(ad_image_3_tag) && !cJSON_IsNull(ad_image_3_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_4_link
+    cJSON *ad_image_4_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_4_link");
+    if (cJSON_IsNull(ad_image_4_link)) {
+        ad_image_4_link = NULL;
+    }
+    if (ad_image_4_link) { 
+    if(!cJSON_IsString(ad_image_4_link) && !cJSON_IsNull(ad_image_4_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_4_tag
+    cJSON *ad_image_4_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_4_tag");
+    if (cJSON_IsNull(ad_image_4_tag)) {
+        ad_image_4_tag = NULL;
+    }
+    if (ad_image_4_tag) { 
+    if(!cJSON_IsString(ad_image_4_tag) && !cJSON_IsNull(ad_image_4_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_5_link
+    cJSON *ad_image_5_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_5_link");
+    if (cJSON_IsNull(ad_image_5_link)) {
+        ad_image_5_link = NULL;
+    }
+    if (ad_image_5_link) { 
+    if(!cJSON_IsString(ad_image_5_link) && !cJSON_IsNull(ad_image_5_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_5_tag
+    cJSON *ad_image_5_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_5_tag");
+    if (cJSON_IsNull(ad_image_5_tag)) {
+        ad_image_5_tag = NULL;
+    }
+    if (ad_image_5_tag) { 
+    if(!cJSON_IsString(ad_image_5_tag) && !cJSON_IsNull(ad_image_5_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_6_link
+    cJSON *ad_image_6_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_6_link");
+    if (cJSON_IsNull(ad_image_6_link)) {
+        ad_image_6_link = NULL;
+    }
+    if (ad_image_6_link) { 
+    if(!cJSON_IsString(ad_image_6_link) && !cJSON_IsNull(ad_image_6_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_6_tag
+    cJSON *ad_image_6_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_6_tag");
+    if (cJSON_IsNull(ad_image_6_tag)) {
+        ad_image_6_tag = NULL;
+    }
+    if (ad_image_6_tag) { 
+    if(!cJSON_IsString(ad_image_6_tag) && !cJSON_IsNull(ad_image_6_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_7_link
+    cJSON *ad_image_7_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_7_link");
+    if (cJSON_IsNull(ad_image_7_link)) {
+        ad_image_7_link = NULL;
+    }
+    if (ad_image_7_link) { 
+    if(!cJSON_IsString(ad_image_7_link) && !cJSON_IsNull(ad_image_7_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_7_tag
+    cJSON *ad_image_7_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_7_tag");
+    if (cJSON_IsNull(ad_image_7_tag)) {
+        ad_image_7_tag = NULL;
+    }
+    if (ad_image_7_tag) { 
+    if(!cJSON_IsString(ad_image_7_tag) && !cJSON_IsNull(ad_image_7_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_8_link
+    cJSON *ad_image_8_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_8_link");
+    if (cJSON_IsNull(ad_image_8_link)) {
+        ad_image_8_link = NULL;
+    }
+    if (ad_image_8_link) { 
+    if(!cJSON_IsString(ad_image_8_link) && !cJSON_IsNull(ad_image_8_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_8_tag
+    cJSON *ad_image_8_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_8_tag");
+    if (cJSON_IsNull(ad_image_8_tag)) {
+        ad_image_8_tag = NULL;
+    }
+    if (ad_image_8_tag) { 
+    if(!cJSON_IsString(ad_image_8_tag) && !cJSON_IsNull(ad_image_8_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_9_link
+    cJSON *ad_image_9_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_9_link");
+    if (cJSON_IsNull(ad_image_9_link)) {
+        ad_image_9_link = NULL;
+    }
+    if (ad_image_9_link) { 
+    if(!cJSON_IsString(ad_image_9_link) && !cJSON_IsNull(ad_image_9_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_image_9_tag
+    cJSON *ad_image_9_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_image_9_tag");
+    if (cJSON_IsNull(ad_image_9_tag)) {
+        ad_image_9_tag = NULL;
+    }
+    if (ad_image_9_tag) { 
+    if(!cJSON_IsString(ad_image_9_tag) && !cJSON_IsNull(ad_image_9_tag))
+    {
+    goto end; //String
+    }
+    }
+
     // item_attributes->ad_link
     cJSON *ad_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_link");
     if (cJSON_IsNull(ad_link)) {
@@ -851,6 +2251,78 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     if (ad_link) { 
     if(!cJSON_IsString(ad_link) && !cJSON_IsNull(ad_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_video_0_link
+    cJSON *ad_video_0_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_video_0_link");
+    if (cJSON_IsNull(ad_video_0_link)) {
+        ad_video_0_link = NULL;
+    }
+    if (ad_video_0_link) { 
+    if(!cJSON_IsString(ad_video_0_link) && !cJSON_IsNull(ad_video_0_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_video_0_tag
+    cJSON *ad_video_0_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_video_0_tag");
+    if (cJSON_IsNull(ad_video_0_tag)) {
+        ad_video_0_tag = NULL;
+    }
+    if (ad_video_0_tag) { 
+    if(!cJSON_IsString(ad_video_0_tag) && !cJSON_IsNull(ad_video_0_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_video_1_link
+    cJSON *ad_video_1_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_video_1_link");
+    if (cJSON_IsNull(ad_video_1_link)) {
+        ad_video_1_link = NULL;
+    }
+    if (ad_video_1_link) { 
+    if(!cJSON_IsString(ad_video_1_link) && !cJSON_IsNull(ad_video_1_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_video_1_tag
+    cJSON *ad_video_1_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_video_1_tag");
+    if (cJSON_IsNull(ad_video_1_tag)) {
+        ad_video_1_tag = NULL;
+    }
+    if (ad_video_1_tag) { 
+    if(!cJSON_IsString(ad_video_1_tag) && !cJSON_IsNull(ad_video_1_tag))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_video_2_link
+    cJSON *ad_video_2_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_video_2_link");
+    if (cJSON_IsNull(ad_video_2_link)) {
+        ad_video_2_link = NULL;
+    }
+    if (ad_video_2_link) { 
+    if(!cJSON_IsString(ad_video_2_link) && !cJSON_IsNull(ad_video_2_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ad_video_2_tag
+    cJSON *ad_video_2_tag = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_video_2_tag");
+    if (cJSON_IsNull(ad_video_2_tag)) {
+        ad_video_2_tag = NULL;
+    }
+    if (ad_video_2_tag) { 
+    if(!cJSON_IsString(ad_video_2_tag) && !cJSON_IsNull(ad_video_2_tag))
     {
     goto end; //String
     }
@@ -875,6 +2347,18 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     if (age_group) { 
     if(!cJSON_IsString(age_group) && !cJSON_IsNull(age_group))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->android_deep_link
+    cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "android_deep_link");
+    if (cJSON_IsNull(android_deep_link)) {
+        android_deep_link = NULL;
+    }
+    if (android_deep_link) { 
+    if(!cJSON_IsString(android_deep_link) && !cJSON_IsNull(android_deep_link))
     {
     goto end; //String
     }
@@ -1012,6 +2496,66 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     }
 
+    // item_attributes->custom_number_0
+    cJSON *custom_number_0 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_number_0");
+    if (cJSON_IsNull(custom_number_0)) {
+        custom_number_0 = NULL;
+    }
+    if (custom_number_0) { 
+    if(!cJSON_IsNumber(custom_number_0))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // item_attributes->custom_number_1
+    cJSON *custom_number_1 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_number_1");
+    if (cJSON_IsNull(custom_number_1)) {
+        custom_number_1 = NULL;
+    }
+    if (custom_number_1) { 
+    if(!cJSON_IsNumber(custom_number_1))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // item_attributes->custom_number_2
+    cJSON *custom_number_2 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_number_2");
+    if (cJSON_IsNull(custom_number_2)) {
+        custom_number_2 = NULL;
+    }
+    if (custom_number_2) { 
+    if(!cJSON_IsNumber(custom_number_2))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // item_attributes->custom_number_3
+    cJSON *custom_number_3 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_number_3");
+    if (cJSON_IsNull(custom_number_3)) {
+        custom_number_3 = NULL;
+    }
+    if (custom_number_3) { 
+    if(!cJSON_IsNumber(custom_number_3))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // item_attributes->custom_number_4
+    cJSON *custom_number_4 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_number_4");
+    if (cJSON_IsNull(custom_number_4)) {
+        custom_number_4 = NULL;
+    }
+    if (custom_number_4) { 
+    if(!cJSON_IsNumber(custom_number_4))
+    {
+    goto end; //Numeric
+    }
+    }
+
     // item_attributes->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "description");
     if (cJSON_IsNull(description)) {
@@ -1078,10 +2622,7 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
         gtin = NULL;
     }
     if (gtin) { 
-    if(!cJSON_IsNumber(gtin))
-    {
-    goto end; //Numeric
-    }
+    gtin_local_nonprim = updatable_item_attributes_gtin_parseFromJSON(gtin); //nonprimitive
     }
 
     // item_attributes->id
@@ -1091,6 +2632,30 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->installment_price
+    cJSON *installment_price = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "installment_price");
+    if (cJSON_IsNull(installment_price)) {
+        installment_price = NULL;
+    }
+    if (installment_price) { 
+    if(!cJSON_IsString(installment_price) && !cJSON_IsNull(installment_price))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->ios_deep_link
+    cJSON *ios_deep_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ios_deep_link");
+    if (cJSON_IsNull(ios_deep_link)) {
+        ios_deep_link = NULL;
+    }
+    if (ios_deep_link) { 
+    if(!cJSON_IsString(ios_deep_link) && !cJSON_IsNull(ios_deep_link))
     {
     goto end; //String
     }
@@ -1240,6 +2805,18 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     }
 
+    // item_attributes->promotion_id
+    cJSON *promotion_id = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "promotion_id");
+    if (cJSON_IsNull(promotion_id)) {
+        promotion_id = NULL;
+    }
+    if (promotion_id) { 
+    if(!cJSON_IsString(promotion_id) && !cJSON_IsNull(promotion_id))
+    {
+    goto end; //String
+    }
+    }
+
     // item_attributes->sale_price
     cJSON *sale_price = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "sale_price");
     if (cJSON_IsNull(sale_price)) {
@@ -1247,6 +2824,18 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     if (sale_price) { 
     if(!cJSON_IsString(sale_price) && !cJSON_IsNull(sale_price))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->sale_price_effective_date
+    cJSON *sale_price_effective_date = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "sale_price_effective_date");
+    if (cJSON_IsNull(sale_price_effective_date)) {
+        sale_price_effective_date = NULL;
+    }
+    if (sale_price_effective_date) { 
+    if(!cJSON_IsString(sale_price_effective_date) && !cJSON_IsNull(sale_price_effective_date))
     {
     goto end; //String
     }
@@ -1360,6 +2949,30 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     }
 
+    // item_attributes->unit_pricing_base_measure
+    cJSON *unit_pricing_base_measure = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "unit_pricing_base_measure");
+    if (cJSON_IsNull(unit_pricing_base_measure)) {
+        unit_pricing_base_measure = NULL;
+    }
+    if (unit_pricing_base_measure) { 
+    if(!cJSON_IsString(unit_pricing_base_measure) && !cJSON_IsNull(unit_pricing_base_measure))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_attributes->unit_pricing_measure
+    cJSON *unit_pricing_measure = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "unit_pricing_measure");
+    if (cJSON_IsNull(unit_pricing_measure)) {
+        unit_pricing_measure = NULL;
+    }
+    if (unit_pricing_measure) { 
+    if(!cJSON_IsString(unit_pricing_measure) && !cJSON_IsNull(unit_pricing_measure))
+    {
+    goto end; //String
+    }
+    }
+
     // item_attributes->variant_names
     cJSON *variant_names = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "variant_names");
     if (cJSON_IsNull(variant_names)) {
@@ -1462,9 +3075,56 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
 
     item_attributes_local_var = item_attributes_create_internal (
+        ad_image_0_link && !cJSON_IsNull(ad_image_0_link) ? strdup(ad_image_0_link->valuestring) : NULL,
+        ad_image_0_tag && !cJSON_IsNull(ad_image_0_tag) ? strdup(ad_image_0_tag->valuestring) : NULL,
+        ad_image_10_link && !cJSON_IsNull(ad_image_10_link) ? strdup(ad_image_10_link->valuestring) : NULL,
+        ad_image_10_tag && !cJSON_IsNull(ad_image_10_tag) ? strdup(ad_image_10_tag->valuestring) : NULL,
+        ad_image_11_link && !cJSON_IsNull(ad_image_11_link) ? strdup(ad_image_11_link->valuestring) : NULL,
+        ad_image_11_tag && !cJSON_IsNull(ad_image_11_tag) ? strdup(ad_image_11_tag->valuestring) : NULL,
+        ad_image_12_link && !cJSON_IsNull(ad_image_12_link) ? strdup(ad_image_12_link->valuestring) : NULL,
+        ad_image_12_tag && !cJSON_IsNull(ad_image_12_tag) ? strdup(ad_image_12_tag->valuestring) : NULL,
+        ad_image_13_link && !cJSON_IsNull(ad_image_13_link) ? strdup(ad_image_13_link->valuestring) : NULL,
+        ad_image_13_tag && !cJSON_IsNull(ad_image_13_tag) ? strdup(ad_image_13_tag->valuestring) : NULL,
+        ad_image_14_link && !cJSON_IsNull(ad_image_14_link) ? strdup(ad_image_14_link->valuestring) : NULL,
+        ad_image_14_tag && !cJSON_IsNull(ad_image_14_tag) ? strdup(ad_image_14_tag->valuestring) : NULL,
+        ad_image_15_link && !cJSON_IsNull(ad_image_15_link) ? strdup(ad_image_15_link->valuestring) : NULL,
+        ad_image_15_tag && !cJSON_IsNull(ad_image_15_tag) ? strdup(ad_image_15_tag->valuestring) : NULL,
+        ad_image_16_link && !cJSON_IsNull(ad_image_16_link) ? strdup(ad_image_16_link->valuestring) : NULL,
+        ad_image_16_tag && !cJSON_IsNull(ad_image_16_tag) ? strdup(ad_image_16_tag->valuestring) : NULL,
+        ad_image_17_link && !cJSON_IsNull(ad_image_17_link) ? strdup(ad_image_17_link->valuestring) : NULL,
+        ad_image_17_tag && !cJSON_IsNull(ad_image_17_tag) ? strdup(ad_image_17_tag->valuestring) : NULL,
+        ad_image_18_link && !cJSON_IsNull(ad_image_18_link) ? strdup(ad_image_18_link->valuestring) : NULL,
+        ad_image_18_tag && !cJSON_IsNull(ad_image_18_tag) ? strdup(ad_image_18_tag->valuestring) : NULL,
+        ad_image_19_link && !cJSON_IsNull(ad_image_19_link) ? strdup(ad_image_19_link->valuestring) : NULL,
+        ad_image_19_tag && !cJSON_IsNull(ad_image_19_tag) ? strdup(ad_image_19_tag->valuestring) : NULL,
+        ad_image_1_link && !cJSON_IsNull(ad_image_1_link) ? strdup(ad_image_1_link->valuestring) : NULL,
+        ad_image_1_tag && !cJSON_IsNull(ad_image_1_tag) ? strdup(ad_image_1_tag->valuestring) : NULL,
+        ad_image_2_link && !cJSON_IsNull(ad_image_2_link) ? strdup(ad_image_2_link->valuestring) : NULL,
+        ad_image_2_tag && !cJSON_IsNull(ad_image_2_tag) ? strdup(ad_image_2_tag->valuestring) : NULL,
+        ad_image_3_link && !cJSON_IsNull(ad_image_3_link) ? strdup(ad_image_3_link->valuestring) : NULL,
+        ad_image_3_tag && !cJSON_IsNull(ad_image_3_tag) ? strdup(ad_image_3_tag->valuestring) : NULL,
+        ad_image_4_link && !cJSON_IsNull(ad_image_4_link) ? strdup(ad_image_4_link->valuestring) : NULL,
+        ad_image_4_tag && !cJSON_IsNull(ad_image_4_tag) ? strdup(ad_image_4_tag->valuestring) : NULL,
+        ad_image_5_link && !cJSON_IsNull(ad_image_5_link) ? strdup(ad_image_5_link->valuestring) : NULL,
+        ad_image_5_tag && !cJSON_IsNull(ad_image_5_tag) ? strdup(ad_image_5_tag->valuestring) : NULL,
+        ad_image_6_link && !cJSON_IsNull(ad_image_6_link) ? strdup(ad_image_6_link->valuestring) : NULL,
+        ad_image_6_tag && !cJSON_IsNull(ad_image_6_tag) ? strdup(ad_image_6_tag->valuestring) : NULL,
+        ad_image_7_link && !cJSON_IsNull(ad_image_7_link) ? strdup(ad_image_7_link->valuestring) : NULL,
+        ad_image_7_tag && !cJSON_IsNull(ad_image_7_tag) ? strdup(ad_image_7_tag->valuestring) : NULL,
+        ad_image_8_link && !cJSON_IsNull(ad_image_8_link) ? strdup(ad_image_8_link->valuestring) : NULL,
+        ad_image_8_tag && !cJSON_IsNull(ad_image_8_tag) ? strdup(ad_image_8_tag->valuestring) : NULL,
+        ad_image_9_link && !cJSON_IsNull(ad_image_9_link) ? strdup(ad_image_9_link->valuestring) : NULL,
+        ad_image_9_tag && !cJSON_IsNull(ad_image_9_tag) ? strdup(ad_image_9_tag->valuestring) : NULL,
         ad_link && !cJSON_IsNull(ad_link) ? strdup(ad_link->valuestring) : NULL,
+        ad_video_0_link && !cJSON_IsNull(ad_video_0_link) ? strdup(ad_video_0_link->valuestring) : NULL,
+        ad_video_0_tag && !cJSON_IsNull(ad_video_0_tag) ? strdup(ad_video_0_tag->valuestring) : NULL,
+        ad_video_1_link && !cJSON_IsNull(ad_video_1_link) ? strdup(ad_video_1_link->valuestring) : NULL,
+        ad_video_1_tag && !cJSON_IsNull(ad_video_1_tag) ? strdup(ad_video_1_tag->valuestring) : NULL,
+        ad_video_2_link && !cJSON_IsNull(ad_video_2_link) ? strdup(ad_video_2_link->valuestring) : NULL,
+        ad_video_2_tag && !cJSON_IsNull(ad_video_2_tag) ? strdup(ad_video_2_tag->valuestring) : NULL,
         adult ? adult->valueint : 0,
         age_group && !cJSON_IsNull(age_group) ? strdup(age_group->valuestring) : NULL,
+        android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
         availability && !cJSON_IsNull(availability) ? strdup(availability->valuestring) : NULL,
         average_review_rating ? average_review_rating->valuedouble : 0,
         brand && !cJSON_IsNull(brand) ? strdup(brand->valuestring) : NULL,
@@ -1476,13 +3136,20 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
         custom_label_2 && !cJSON_IsNull(custom_label_2) ? strdup(custom_label_2->valuestring) : NULL,
         custom_label_3 && !cJSON_IsNull(custom_label_3) ? strdup(custom_label_3->valuestring) : NULL,
         custom_label_4 && !cJSON_IsNull(custom_label_4) ? strdup(custom_label_4->valuestring) : NULL,
+        custom_number_0 ? custom_number_0->valuedouble : 0,
+        custom_number_1 ? custom_number_1->valuedouble : 0,
+        custom_number_2 ? custom_number_2->valuedouble : 0,
+        custom_number_3 ? custom_number_3->valuedouble : 0,
+        custom_number_4 ? custom_number_4->valuedouble : 0,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         free_shipping_label ? free_shipping_label->valueint : 0,
         free_shipping_limit && !cJSON_IsNull(free_shipping_limit) ? strdup(free_shipping_limit->valuestring) : NULL,
         gender && !cJSON_IsNull(gender) ? strdup(gender->valuestring) : NULL,
         google_product_category && !cJSON_IsNull(google_product_category) ? strdup(google_product_category->valuestring) : NULL,
-        gtin ? gtin->valuedouble : 0,
+        gtin ? gtin_local_nonprim : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        installment_price && !cJSON_IsNull(installment_price) ? strdup(installment_price->valuestring) : NULL,
+        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
         item_group_id && !cJSON_IsNull(item_group_id) ? strdup(item_group_id->valuestring) : NULL,
         last_updated_time ? last_updated_time->valuedouble : 0,
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
@@ -1495,7 +3162,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
         pattern && !cJSON_IsNull(pattern) ? strdup(pattern->valuestring) : NULL,
         price && !cJSON_IsNull(price) ? strdup(price->valuestring) : NULL,
         product_type && !cJSON_IsNull(product_type) ? strdup(product_type->valuestring) : NULL,
+        promotion_id && !cJSON_IsNull(promotion_id) ? strdup(promotion_id->valuestring) : NULL,
         sale_price && !cJSON_IsNull(sale_price) ? strdup(sale_price->valuestring) : NULL,
+        sale_price_effective_date && !cJSON_IsNull(sale_price_effective_date) ? strdup(sale_price_effective_date->valuestring) : NULL,
         shipping && !cJSON_IsNull(shipping) ? strdup(shipping->valuestring) : NULL,
         shipping_height && !cJSON_IsNull(shipping_height) ? strdup(shipping_height->valuestring) : NULL,
         shipping_weight && !cJSON_IsNull(shipping_weight) ? strdup(shipping_weight->valuestring) : NULL,
@@ -1505,6 +3174,8 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
         size_type && !cJSON_IsNull(size_type) ? strdup(size_type->valuestring) : NULL,
         tax && !cJSON_IsNull(tax) ? strdup(tax->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        unit_pricing_base_measure && !cJSON_IsNull(unit_pricing_base_measure) ? strdup(unit_pricing_base_measure->valuestring) : NULL,
+        unit_pricing_measure && !cJSON_IsNull(unit_pricing_measure) ? strdup(unit_pricing_measure->valuestring) : NULL,
         variant_names ? variant_namesList : NULL,
         variant_values ? variant_valuesList : NULL,
         additional_image_link ? additional_image_linkList : NULL,
@@ -1514,6 +3185,10 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     return item_attributes_local_var;
 end:
+    if (gtin_local_nonprim) {
+        updatable_item_attributes_gtin_free(gtin_local_nonprim);
+        gtin_local_nonprim = NULL;
+    }
     if (variant_namesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, variant_namesList) {

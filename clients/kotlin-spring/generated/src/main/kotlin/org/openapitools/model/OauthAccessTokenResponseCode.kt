@@ -17,33 +17,37 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param refreshToken 
- * @param refreshTokenExpiresIn 
  * @param accessToken 
- * @param tokenType 
  * @param expiresIn 
  * @param scope 
+ * @param tokenType 
+ * @param refreshToken 
+ * @param refreshTokenExpiresAt 
+ * @param refreshTokenExpiresIn 
  * @param responseType 
  */
 data class OauthAccessTokenResponseCode(
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token_expires_in", required = true) val refreshTokenExpiresIn: kotlin.Int,
-
-    @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("expires_in", required = true) val expiresIn: kotlin.Int,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("scope", required = true) val scope: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("refresh_token") val refreshToken: kotlin.String? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("refresh_token_expires_at") val refreshTokenExpiresAt: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("refresh_token_expires_in") val refreshTokenExpiresIn: kotlin.Int? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseCode.ResponseType? = null

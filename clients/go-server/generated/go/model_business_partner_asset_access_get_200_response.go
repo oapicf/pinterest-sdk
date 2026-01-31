@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,10 +16,10 @@ package openapi
 
 type BusinessPartnerAssetAccessGet200Response struct {
 
+	Bookmark *string `json:"bookmark,omitempty"`
+
 	// List assets on which you granted access to your partner or assets on which your partner has granted you access.
 	Items []GetPartnerAssetsResponse `json:"items"`
-
-	Bookmark *string `json:"bookmark,omitempty"`
 }
 
 // AssertBusinessPartnerAssetAccessGet200ResponseRequired checks if the required fields are not zero-ed

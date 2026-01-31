@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupIdFilter",
+  "fields": [
+    {
+      "name": "ad_group_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of ad group ids",
+      "default": null
+    }
+  ]
+
+}

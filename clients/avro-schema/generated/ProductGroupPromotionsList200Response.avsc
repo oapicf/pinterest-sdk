@@ -5,18 +5,18 @@
   "name": "ProductGroupPromotionsList200Response",
   "fields": [
     {
-      "name": "items",
-      "type": {
-        "type": "array",
-        "items": "model.ProductGroupPromotionResponseItem"
-      },
-      "doc": ""
-    },
-    {
       "name": "bookmark",
       "type": ["null", "string"],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.ProductGroupPromotion"
+      },
+      "doc": ""
     }
   ]
 

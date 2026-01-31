@@ -10,29 +10,29 @@ import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsFeedIngestion   {
   
-  private String id;
-  private String feedId;
   private OffsetDateTime createdAt;
+  private String feedId;
+  private String id;
   private CatalogsFeedProcessingStatus status;
 
   public CatalogsFeedIngestion () {
 
   }
 
-  public CatalogsFeedIngestion (String id, String feedId, OffsetDateTime createdAt, CatalogsFeedProcessingStatus status) {
-    this.id = id;
-    this.feedId = feedId;
+  public CatalogsFeedIngestion (OffsetDateTime createdAt, String feedId, String id, CatalogsFeedProcessingStatus status) {
     this.createdAt = createdAt;
+    this.feedId = feedId;
+    this.id = id;
     this.status = status;
   }
 
     
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("created_at")
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
     
@@ -45,12 +45,12 @@ public class CatalogsFeedIngestion   {
   }
 
     
-  @JsonProperty("created_at")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
     
@@ -72,15 +72,15 @@ public class CatalogsFeedIngestion   {
       return false;
     }
     CatalogsFeedIngestion catalogsFeedIngestion = (CatalogsFeedIngestion) o;
-    return Objects.equals(id, catalogsFeedIngestion.id) &&
+    return Objects.equals(createdAt, catalogsFeedIngestion.createdAt) &&
         Objects.equals(feedId, catalogsFeedIngestion.feedId) &&
-        Objects.equals(createdAt, catalogsFeedIngestion.createdAt) &&
+        Objects.equals(id, catalogsFeedIngestion.id) &&
         Objects.equals(status, catalogsFeedIngestion.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, feedId, createdAt, status);
+    return Objects.hash(createdAt, feedId, id, status);
   }
 
   @Override
@@ -88,9 +88,9 @@ public class CatalogsFeedIngestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedIngestion {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

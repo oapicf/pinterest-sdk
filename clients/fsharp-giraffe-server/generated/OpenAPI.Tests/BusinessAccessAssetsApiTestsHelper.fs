@@ -52,15 +52,15 @@ module BusinessAccessAssetsApiHandlerTestsHelper =
     &quot;asset_group_id&quot; : &quot;666791336903426391&quot;,
     &quot;assets_to_add&quot; : [ &quot;549755885175&quot;, &quot;549755885175&quot; ],
     &quot;asset_group_types&quot; : [ &quot;BRAND&quot;, &quot;LOCATION_OR_LANGUAGE&quot;, &quot;PRODUCT_LINE&quot;, &quot;OTHER&quot; ],
-    &quot;name&quot; : &quot;Canada Ad Accounts&quot;,
     &quot;assets_to_remove&quot; : [ &quot;549755885175&quot;, &quot;549755885175&quot; ],
+    &quot;name&quot; : &quot;Canada Ad Accounts&quot;,
     &quot;description&quot; : &quot;Asset groups that has ad accounts shared in Canada&quot;
   }, {
     &quot;asset_group_id&quot; : &quot;666791336903426391&quot;,
     &quot;assets_to_add&quot; : [ &quot;549755885175&quot;, &quot;549755885175&quot; ],
     &quot;asset_group_types&quot; : [ &quot;BRAND&quot;, &quot;LOCATION_OR_LANGUAGE&quot;, &quot;PRODUCT_LINE&quot;, &quot;OTHER&quot; ],
-    &quot;name&quot; : &quot;Canada Ad Accounts&quot;,
     &quot;assets_to_remove&quot; : [ &quot;549755885175&quot;, &quot;549755885175&quot; ],
+    &quot;name&quot; : &quot;Canada Ad Accounts&quot;,
     &quot;description&quot; : &quot;Asset groups that has ad accounts shared in Canada&quot;
   } ]
 }"

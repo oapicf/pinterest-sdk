@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;CatalogsItemValidationIssues&gt;**](CatalogsItemValidationIssues.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;CatalogsItemValidationIssues&gt;**](CatalogsItemValidationIssues.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ItemsIssuesList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

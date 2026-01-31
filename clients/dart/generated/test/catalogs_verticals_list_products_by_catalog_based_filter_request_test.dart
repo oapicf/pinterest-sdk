@@ -16,24 +16,24 @@ void main() {
   // final instance = CatalogsVerticalsListProductsByCatalogBasedFilterRequest();
 
   group('test CatalogsVerticalsListProductsByCatalogBasedFilterRequest', () {
-    // String catalogType
-    test('to test the property `catalogType`', () async {
-      // TODO
-    });
-
     // Catalog id pertaining to the creative assets product group.
     // String catalogId
     test('to test the property `catalogId`', () async {
       // TODO
     });
 
-    // CatalogsCreativeAssetsProductGroupFilters filters
-    test('to test the property `filters`', () async {
+    // String catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 
     // Country country
     test('to test the property `country`', () async {
+      // TODO
+    });
+
+    // CatalogsCreativeAssetsProductGroupFilters filters
+    test('to test the property `filters`', () async {
       // TODO
     });
 

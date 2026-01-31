@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
-**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
+**CatalogType** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **Country** | [**Country**](Country.md) |  | 
+**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 
 ## Methods
 
 ### NewCatalogsRetailListProductsByCatalogBasedFilterRequest
 
-`func NewCatalogsRetailListProductsByCatalogBasedFilterRequest(catalogType string, catalogId string, filters CatalogsProductGroupFilters, country Country, locale CatalogsLocale, ) *CatalogsRetailListProductsByCatalogBasedFilterRequest`
+`func NewCatalogsRetailListProductsByCatalogBasedFilterRequest(catalogId string, catalogType string, country Country, filters CatalogsProductGroupFilters, locale CatalogsLocale, ) *CatalogsRetailListProductsByCatalogBasedFilterRequest`
 
 NewCatalogsRetailListProductsByCatalogBasedFilterRequest instantiates a new CatalogsRetailListProductsByCatalogBasedFilterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +28,6 @@ will change when the set of required properties is changed
 NewCatalogsRetailListProductsByCatalogBasedFilterRequestWithDefaults instantiates a new CatalogsRetailListProductsByCatalogBasedFilterRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCatalogType
-
-`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogType() string`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCatalogType(v string)`
-
-SetCatalogType sets CatalogType field to given value.
-
 
 ### GetCatalogId
 
@@ -69,24 +49,24 @@ and a boolean to check if the value has been set.
 SetCatalogId sets CatalogId field to given value.
 
 
-### GetFilters
+### GetCatalogType
 
-`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFilters() CatalogsProductGroupFilters`
+`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogType() string`
 
-GetFilters returns the Filters field if non-nil, zero value otherwise.
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
-### GetFiltersOk
+### GetCatalogTypeOk
 
-`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFiltersOk() (*CatalogsProductGroupFilters, bool)`
+`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool)`
 
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilters
+### SetCatalogType
 
-`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetFilters(v CatalogsProductGroupFilters)`
+`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCatalogType(v string)`
 
-SetFilters sets Filters field to given value.
+SetCatalogType sets CatalogType field to given value.
 
 
 ### GetCountry
@@ -107,6 +87,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCountry(v Country)`
 
 SetCountry sets Country field to given value.
+
+
+### GetFilters
+
+`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFilters() CatalogsProductGroupFilters`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFiltersOk() (*CatalogsProductGroupFilters, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetFilters(v CatalogsProductGroupFilters)`
+
+SetFilters sets Filters field to given value.
 
 
 ### GetLocale

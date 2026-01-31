@@ -22,13 +22,13 @@ create_asset_access_request_body_asset_requests_inner_t* instantiate_create_asse
   create_asset_access_request_body_asset_requests_inner_t* create_asset_access_request_body_asset_requests_inner = NULL;
   if (include_optional) {
     create_asset_access_request_body_asset_requests_inner = create_asset_access_request_body_asset_requests_inner_create(
-      "809944451643622187",
-      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]}
+      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
+      "809944451643622187"
     );
   } else {
     create_asset_access_request_body_asset_requests_inner = create_asset_access_request_body_asset_requests_inner_create(
-      "809944451643622187",
-      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]}
+      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
+      "809944451643622187"
     );
   }
 

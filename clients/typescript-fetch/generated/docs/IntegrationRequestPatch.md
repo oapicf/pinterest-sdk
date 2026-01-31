@@ -7,18 +7,18 @@ Schema used for updating the integration metadata.
 
 Name | Type
 ------------ | -------------
-`connectedMerchantId` | string
+`additionalId1` | string
 `connectedAdvertiserId` | string
 `connectedLbaId` | string
+`connectedMerchantId` | string
 `connectedTagId` | string
 `partnerAccessToken` | string
-`partnerRefreshToken` | string
-`partnerPrimaryEmail` | string
 `partnerAccessTokenExpiry` | number
+`partnerMetadata` | string
+`partnerPrimaryEmail` | string
+`partnerRefreshToken` | string
 `partnerRefreshTokenExpiry` | number
 `scopes` | string
-`additionalId1` | string
-`partnerMetadata` | string
 
 ## Example
 
@@ -27,18 +27,18 @@ import type { IntegrationRequestPatch } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "connectedMerchantId": null,
+  "additionalId1": null,
   "connectedAdvertiserId": null,
   "connectedLbaId": null,
+  "connectedMerchantId": null,
   "connectedTagId": null,
   "partnerAccessToken": null,
-  "partnerRefreshToken": null,
-  "partnerPrimaryEmail": null,
   "partnerAccessTokenExpiry": null,
+  "partnerMetadata": null,
+  "partnerPrimaryEmail": null,
+  "partnerRefreshToken": null,
   "partnerRefreshTokenExpiry": null,
   "scopes": null,
-  "additionalId1": null,
-  "partnerMetadata": null,
 } satisfies IntegrationRequestPatch
 
 console.log(example)

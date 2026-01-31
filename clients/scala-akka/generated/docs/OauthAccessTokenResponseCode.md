@@ -7,13 +7,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**refreshToken** | **String** |  | 
-**refreshTokenExpiresIn** | **Int** |  | 
-**responseType** | [**ResponseType**](#ResponseType) |  |  [optional]
+**refreshToken** | **String** |  |  [optional]
+**refreshTokenExpiresAt** | **Int** |  |  [optional]
+**refreshTokenExpiresIn** | **Int** |  |  [optional]
 **accessToken** | **String** |  | 
-**tokenType** | **String** |  | 
 **expiresIn** | **Int** |  | 
+**responseType** | [**ResponseType**](#ResponseType) |  |  [optional]
 **scope** | **String** |  | 
+**tokenType** | **String** |  | 
 
 
 ## Enum: ResponseType

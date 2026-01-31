@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```powershell
@@ -761,7 +761,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$UserWebsiteVerifyRequest = Initialize-UserWebsiteVerifyRequest -Website "pintest-website-12345678.test/test_1" -VerificationMethod "FILENAME" # UserWebsiteVerifyRequest | Verify a website.
+$UserWebsiteVerifyRequest = Initialize-UserWebsiteVerifyRequest -VerificationMethod "FILENAME" -Website "pintest-website-12345678.test/test_1" # UserWebsiteVerifyRequest | Verify a website.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Verify website

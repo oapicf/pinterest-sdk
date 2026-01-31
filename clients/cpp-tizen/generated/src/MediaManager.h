@@ -5,11 +5,11 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Error.h"
+#include "Media.h"
 #include "MediaUpload.h"
-#include "MediaUploadDetails.h"
-#include "MediaUploadRequest.h"
+#include "MediaUploadCreate.h"
 #include "Media_list_200_response.h"
+#include "Pinterest.Lib.Error.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -30,63 +30,63 @@ public:
 
 /*! \brief Register media upload. *Synchronous*
  *
- * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
- * \param mediaUploadRequest Create a media upload request *Required*
+ * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+ * \param mediaUploadCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool mediaCreateSync(char * accessToken,
-	std::shared_ptr<MediaUploadRequest> mediaUploadRequest, 
+	std::shared_ptr<MediaUploadCreate> mediaUploadCreate, 
 	void(* handler)(MediaUpload, Error, void* )
 	, void* userData);
 
 /*! \brief Register media upload. *Asynchronous*
  *
- * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
- * \param mediaUploadRequest Create a media upload request *Required*
+ * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+ * \param mediaUploadCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool mediaCreateAsync(char * accessToken,
-	std::shared_ptr<MediaUploadRequest> mediaUploadRequest, 
+	std::shared_ptr<MediaUploadCreate> mediaUploadCreate, 
 	void(* handler)(MediaUpload, Error, void* )
 	, void* userData);
 
 
 /*! \brief Get media upload details. *Synchronous*
  *
- * Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
- * \param mediaId Media identifier *Required*
+ * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+ * \param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool mediaGetSync(char * accessToken,
 	std::string mediaId, 
-	void(* handler)(MediaUploadDetails, Error, void* )
+	void(* handler)(Media, Error, void* )
 	, void* userData);
 
 /*! \brief Get media upload details. *Asynchronous*
  *
- * Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
- * \param mediaId Media identifier *Required*
+ * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+ * \param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool mediaGetAsync(char * accessToken,
 	std::string mediaId, 
-	void(* handler)(MediaUploadDetails, Error, void* )
+	void(* handler)(Media, Error, void* )
 	, void* userData);
 
 
 /*! \brief List media uploads. *Synchronous*
  *
- * List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+ * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -98,9 +98,9 @@ bool mediaListSync(char * accessToken,
 
 /*! \brief List media uploads. *Asynchronous*
  *
- * List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+ * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

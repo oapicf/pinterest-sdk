@@ -19,6 +19,10 @@ public class OauthAccessTokenResponseIntegrationRefresh   {
 
   private Integer refreshTokenExpiresIn;
 
+  private String accessToken;
+
+  private Integer expiresIn;
+
 
 public enum ResponseTypeEnum {
 
@@ -52,13 +56,9 @@ public enum ResponseTypeEnum {
 
   private ResponseTypeEnum responseType;
 
-  private String accessToken;
+  private String scope;
 
   private String tokenType = "bearer";
-
-  private Integer expiresIn;
-
-  private String scope;
 
   /**
    **/
@@ -100,24 +100,6 @@ public enum ResponseTypeEnum {
 
   /**
    **/
-  public OauthAccessTokenResponseIntegrationRefresh responseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("response_type")
-  public ResponseTypeEnum getResponseType() {
-    return responseType;
-  }
-  public void setResponseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-  }
-
-
-  /**
-   **/
   public OauthAccessTokenResponseIntegrationRefresh accessToken(String accessToken) {
     this.accessToken = accessToken;
     return this;
@@ -132,25 +114,6 @@ public enum ResponseTypeEnum {
   }
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
-  }
-
-
-  /**
-   **/
-  public OauthAccessTokenResponseIntegrationRefresh tokenType(String tokenType) {
-    this.tokenType = tokenType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("token_type")
-  @NotNull
-  public String getTokenType() {
-    return tokenType;
-  }
-  public void setTokenType(String tokenType) {
-    this.tokenType = tokenType;
   }
 
 
@@ -175,6 +138,24 @@ public enum ResponseTypeEnum {
 
   /**
    **/
+  public OauthAccessTokenResponseIntegrationRefresh responseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("response_type")
+  public ResponseTypeEnum getResponseType() {
+    return responseType;
+  }
+  public void setResponseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+  }
+
+
+  /**
+   **/
   public OauthAccessTokenResponseIntegrationRefresh scope(String scope) {
     this.scope = scope;
     return this;
@@ -192,6 +173,25 @@ public enum ResponseTypeEnum {
   }
 
 
+  /**
+   **/
+  public OauthAccessTokenResponseIntegrationRefresh tokenType(String tokenType) {
+    this.tokenType = tokenType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("token_type")
+  @NotNull
+  public String getTokenType() {
+    return tokenType;
+  }
+  public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -204,16 +204,16 @@ public enum ResponseTypeEnum {
     OauthAccessTokenResponseIntegrationRefresh oauthAccessTokenResponseIntegrationRefresh = (OauthAccessTokenResponseIntegrationRefresh) o;
     return Objects.equals(this.refreshToken, oauthAccessTokenResponseIntegrationRefresh.refreshToken) &&
         Objects.equals(this.refreshTokenExpiresIn, oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn) &&
-        Objects.equals(this.responseType, oauthAccessTokenResponseIntegrationRefresh.responseType) &&
         Objects.equals(this.accessToken, oauthAccessTokenResponseIntegrationRefresh.accessToken) &&
-        Objects.equals(this.tokenType, oauthAccessTokenResponseIntegrationRefresh.tokenType) &&
         Objects.equals(this.expiresIn, oauthAccessTokenResponseIntegrationRefresh.expiresIn) &&
-        Objects.equals(this.scope, oauthAccessTokenResponseIntegrationRefresh.scope);
+        Objects.equals(this.responseType, oauthAccessTokenResponseIntegrationRefresh.responseType) &&
+        Objects.equals(this.scope, oauthAccessTokenResponseIntegrationRefresh.scope) &&
+        Objects.equals(this.tokenType, oauthAccessTokenResponseIntegrationRefresh.tokenType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, refreshTokenExpiresIn, responseType, accessToken, tokenType, expiresIn, scope);
+    return Objects.hash(refreshToken, refreshTokenExpiresIn, accessToken, expiresIn, responseType, scope, tokenType);
   }
 
   @Override
@@ -223,11 +223,11 @@ public enum ResponseTypeEnum {
     
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
-    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

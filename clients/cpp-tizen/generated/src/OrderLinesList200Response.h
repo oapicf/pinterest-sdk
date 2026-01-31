@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<OrderLine> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <OrderLine> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<OrderLine> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <OrderLine> items);
 
 private:
-	std::list <OrderLine>items;
 	std::string bookmark;
+	std::list <OrderLine>items;
 	void __init();
 	void __cleanup();
 

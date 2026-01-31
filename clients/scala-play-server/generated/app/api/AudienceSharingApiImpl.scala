@@ -12,7 +12,7 @@ import model.SharedAudienceResponse
 /**
   * Provides a default implementation for [[AudienceSharingApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class AudienceSharingApiImpl extends AudienceSharingApi {
   /**
     * @inheritdoc
@@ -20,7 +20,7 @@ class AudienceSharingApiImpl extends AudienceSharingApi {
   override def adAccountsAudiencesSharedAccountsList(adAccountId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Option[Int], bookmark: Option[String]): AdAccountsAudiencesSharedAccountsList200Response = {
     // TODO: Implement better logic
 
-    AdAccountsAudiencesSharedAccountsList200Response(List.empty[SharedAudienceAccount], None)
+    AdAccountsAudiencesSharedAccountsList200Response(None, List.empty[SharedAudienceAccount])
   }
 
   /**
@@ -29,7 +29,7 @@ class AudienceSharingApiImpl extends AudienceSharingApi {
   override def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Option[Int], bookmark: Option[String]): AdAccountsAudiencesSharedAccountsList200Response = {
     // TODO: Implement better logic
 
-    AdAccountsAudiencesSharedAccountsList200Response(List.empty[SharedAudienceAccount], None)
+    AdAccountsAudiencesSharedAccountsList200Response(None, List.empty[SharedAudienceAccount])
   }
 
   /**
@@ -38,7 +38,7 @@ class AudienceSharingApiImpl extends AudienceSharingApi {
   override def sharedAudiencesForBusinessList(businessId: String, bookmark: Option[String], order: Option[String], pageSize: Option[Int]): AudiencesList200Response = {
     // TODO: Implement better logic
 
-    AudiencesList200Response(List.empty[Audience], None)
+    AudiencesList200Response(None, List.empty[Audience])
   }
 
   /**

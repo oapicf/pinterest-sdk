@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **refreshToken** | `String` |  | 
 **refreshTokenExpiresIn** | `Integer` |  | 
-**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional property]
 **accessToken** | `String` |  | 
-**tokenType** | `String` |  | 
 **expiresIn** | `Integer` |  | 
+**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional property]
 **scope** | `String` |  | 
+**tokenType** | `String` |  | 
+
+
 
 
 
@@ -25,8 +27,6 @@ Name | Value
 AUTHORIZATION_CODE | `"authorization_code"`
 REFRESH_TOKEN | `"refresh_token"`
 CLIENT_CREDENTIALS | `"client_credentials"`
-
-
 
 
 

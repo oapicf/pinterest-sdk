@@ -50,7 +50,7 @@ class BusinessAccessInviteApiTest : ShouldSpec() {
         // to test cancelInvitesOrRequests
         should("test cancelInvitesOrRequests") {
             // uncomment below to test cancelInvitesOrRequests
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Business id
+            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
             //val cancelInvitesBody : CancelInvitesBody =  // CancelInvitesBody | A list with invite ids
             //val result : DeleteInvitesResultsResponseArray = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody)
             //result shouldBe ("TODO")
@@ -68,7 +68,7 @@ class BusinessAccessInviteApiTest : ShouldSpec() {
         // to test createMembershipOrPartnershipInvites
         should("test createMembershipOrPartnershipInvites") {
             // uncomment below to test createMembershipOrPartnershipInvites
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Business id
+            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
             //val createMembershipOrPartnershipInvitesBody : CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
             //val result : CreateInvitesResultsResponseArray = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
             //result shouldBe ("TODO")

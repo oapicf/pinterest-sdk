@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;Catalog&gt;**](Catalog.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;Catalog&gt;**](Catalog.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

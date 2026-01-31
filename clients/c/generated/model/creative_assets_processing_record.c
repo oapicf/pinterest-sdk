@@ -8,8 +8,8 @@
 static creative_assets_processing_record_t *creative_assets_processing_record_create_internal(
     char *creative_assets_id,
     list_t *errors,
-    list_t *warnings,
-    pinterest_rest_api_item_processing_status__e status
+    pinterest_rest_api_item_processing_status__e status,
+    list_t *warnings
     ) {
     creative_assets_processing_record_t *creative_assets_processing_record_local_var = malloc(sizeof(creative_assets_processing_record_t));
     if (!creative_assets_processing_record_local_var) {
@@ -17,8 +17,8 @@ static creative_assets_processing_record_t *creative_assets_processing_record_cr
     }
     creative_assets_processing_record_local_var->creative_assets_id = creative_assets_id;
     creative_assets_processing_record_local_var->errors = errors;
-    creative_assets_processing_record_local_var->warnings = warnings;
     creative_assets_processing_record_local_var->status = status;
+    creative_assets_processing_record_local_var->warnings = warnings;
 
     creative_assets_processing_record_local_var->_library_owned = 1;
     return creative_assets_processing_record_local_var;
@@ -27,14 +27,14 @@ static creative_assets_processing_record_t *creative_assets_processing_record_cr
 __attribute__((deprecated)) creative_assets_processing_record_t *creative_assets_processing_record_create(
     char *creative_assets_id,
     list_t *errors,
-    list_t *warnings,
-    pinterest_rest_api_item_processing_status__e status
+    pinterest_rest_api_item_processing_status__e status,
+    list_t *warnings
     ) {
     return creative_assets_processing_record_create_internal (
         creative_assets_id,
         errors,
-        warnings,
-        status
+        status,
+        warnings
         );
 }
 
@@ -99,6 +99,19 @@ cJSON *creative_assets_processing_record_convertToJSON(creative_assets_processin
     }
 
 
+    // creative_assets_processing_record->status
+    if(creative_assets_processing_record->status != pinterest_rest_api_item_processing_status__NULL) {
+    cJSON *status_local_JSON = item_processing_status_convertToJSON(creative_assets_processing_record->status);
+    if(status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
+
     // creative_assets_processing_record->warnings
     if(creative_assets_processing_record->warnings) {
     cJSON *warnings = cJSON_AddArrayToObject(item, "warnings");
@@ -118,19 +131,6 @@ cJSON *creative_assets_processing_record_convertToJSON(creative_assets_processin
     }
     }
 
-
-    // creative_assets_processing_record->status
-    if(creative_assets_processing_record->status != pinterest_rest_api_item_processing_status__NULL) {
-    cJSON *status_local_JSON = item_processing_status_convertToJSON(creative_assets_processing_record->status);
-    if(status_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "status", status_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -146,11 +146,11 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
     // define the local list for creative_assets_processing_record->errors
     list_t *errorsList = NULL;
 
-    // define the local list for creative_assets_processing_record->warnings
-    list_t *warningsList = NULL;
-
     // define the local variable for creative_assets_processing_record->status
     pinterest_rest_api_item_processing_status__e status_local_nonprim = 0;
+
+    // define the local list for creative_assets_processing_record->warnings
+    list_t *warningsList = NULL;
 
     // creative_assets_processing_record->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "creative_assets_id");
@@ -188,6 +188,15 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
     }
     }
 
+    // creative_assets_processing_record->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
+    if (status) { 
+    status_local_nonprim = item_processing_status_parseFromJSON(status); //custom
+    }
+
     // creative_assets_processing_record->warnings
     cJSON *warnings = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "warnings");
     if (cJSON_IsNull(warnings)) {
@@ -212,21 +221,12 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
     }
     }
 
-    // creative_assets_processing_record->status
-    cJSON *status = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "status");
-    if (cJSON_IsNull(status)) {
-        status = NULL;
-    }
-    if (status) { 
-    status_local_nonprim = item_processing_status_parseFromJSON(status); //custom
-    }
-
 
     creative_assets_processing_record_local_var = creative_assets_processing_record_create_internal (
         creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL,
         errors ? errorsList : NULL,
-        warnings ? warningsList : NULL,
-        status ? status_local_nonprim : 0
+        status ? status_local_nonprim : 0,
+        warnings ? warningsList : NULL
         );
 
     return creative_assets_processing_record_local_var;
@@ -240,6 +240,9 @@ end:
         list_freeList(errorsList);
         errorsList = NULL;
     }
+    if (status_local_nonprim) {
+        status_local_nonprim = 0;
+    }
     if (warningsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, warningsList) {
@@ -248,9 +251,6 @@ end:
         }
         list_freeList(warningsList);
         warningsList = NULL;
-    }
-    if (status_local_nonprim) {
-        status_local_nonprim = 0;
     }
     return NULL;
 

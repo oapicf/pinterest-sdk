@@ -19,18 +19,17 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaWithVideo
-import org.openapitools.client.models.PinMedia
-import org.openapitools.client.models.PinMediaWithImageAllOfImages
+import org.openapitools.client.models.ImageSize
 
 class PinMediaWithVideoTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinMediaWithVideo
         //val modelInstance = PinMediaWithVideo()
 
-        // to test the property `images`
-        should("test images") {
+        // to test the property `mediaType`
+        should("test mediaType") {
             // uncomment below to test the property
-            //modelInstance.images shouldBe ("TODO")
+            //modelInstance.mediaType shouldBe ("TODO")
         }
 
         // to test the property `coverImageUrl`
@@ -39,25 +38,31 @@ class PinMediaWithVideoTest : ShouldSpec() {
             //modelInstance.coverImageUrl shouldBe ("TODO")
         }
 
-        // to test the property `videoUrl` - Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-        should("test videoUrl") {
-            // uncomment below to test the property
-            //modelInstance.videoUrl shouldBe ("TODO")
-        }
-
-        // to test the property `duration` - Duration (in milliseconds)
+        // to test the property `duration` - Duration (in miliseconds). Field maybe null after creation due to video processing time.
         should("test duration") {
             // uncomment below to test the property
             //modelInstance.duration shouldBe ("TODO")
         }
 
-        // to test the property `height` - Height (in pixels)
+        // to test the property `height` - Height (in pixels). Field maybe null after creation due to video processing time.
         should("test height") {
             // uncomment below to test the property
             //modelInstance.height shouldBe ("TODO")
         }
 
-        // to test the property `width` - Width (in pixels)
+        // to test the property `images`
+        should("test images") {
+            // uncomment below to test the property
+            //modelInstance.images shouldBe ("TODO")
+        }
+
+        // to test the property `videoUrl` - Video url (720p).  **Note:** This field is limited and not available to all apps.
+        should("test videoUrl") {
+            // uncomment below to test the property
+            //modelInstance.videoUrl shouldBe ("TODO")
+        }
+
+        // to test the property `width` - Width (in pixels). Field maybe null after creation due to video processing time.
         should("test width") {
             // uncomment below to test the property
             //modelInstance.width shouldBe ("TODO")

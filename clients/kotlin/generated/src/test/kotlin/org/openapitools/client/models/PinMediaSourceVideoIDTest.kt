@@ -19,17 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaSourceVideoID
+import org.openapitools.client.models.ContentType
 
 class PinMediaSourceVideoIDTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinMediaSourceVideoID
         //val modelInstance = PinMediaSourceVideoID()
-
-        // to test the property `sourceType`
-        should("test sourceType") {
-            // uncomment below to test the property
-            //modelInstance.sourceType shouldBe ("TODO")
-        }
 
         // to test the property `mediaId`
         should("test mediaId") {
@@ -37,10 +32,10 @@ class PinMediaSourceVideoIDTest : ShouldSpec() {
             //modelInstance.mediaId shouldBe ("TODO")
         }
 
-        // to test the property `coverImageUrl` - Cover image url.
-        should("test coverImageUrl") {
+        // to test the property `sourceType`
+        should("test sourceType") {
             // uncomment below to test the property
-            //modelInstance.coverImageUrl shouldBe ("TODO")
+            //modelInstance.sourceType shouldBe ("TODO")
         }
 
         // to test the property `coverImageContentType` - Content type for cover image Base64.
@@ -53,6 +48,18 @@ class PinMediaSourceVideoIDTest : ShouldSpec() {
         should("test coverImageData") {
             // uncomment below to test the property
             //modelInstance.coverImageData shouldBe ("TODO")
+        }
+
+        // to test the property `coverImageKeyFrameTime` - Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+        should("test coverImageKeyFrameTime") {
+            // uncomment below to test the property
+            //modelInstance.coverImageKeyFrameTime shouldBe ("TODO")
+        }
+
+        // to test the property `coverImageUrl` - Cover image URL.
+        should("test coverImageUrl") {
+            // uncomment below to test the property
+            //modelInstance.coverImageUrl shouldBe ("TODO")
         }
 
         // to test the property `isStandard` - Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.

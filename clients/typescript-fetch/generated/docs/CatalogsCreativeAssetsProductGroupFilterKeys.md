@@ -7,11 +7,11 @@
 Name | Type
 ------------ | -------------
 `cREATIVEASSETSID` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL0` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL1` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL2` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL3` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL4` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`cUSTOMLABEL0` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL1` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL3` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL4` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
 `gOOGLEPRODUCTCATEGORY6` | [CatalogsProductGroupMultipleStringListCriteria](.md)
 `gOOGLEPRODUCTCATEGORY5` | [CatalogsProductGroupMultipleStringListCriteria](.md)
 `gOOGLEPRODUCTCATEGORY4` | [CatalogsProductGroupMultipleStringListCriteria](.md)
@@ -20,6 +20,7 @@ Name | Type
 `gOOGLEPRODUCTCATEGORY1` | [CatalogsProductGroupMultipleStringListCriteria](.md)
 `gOOGLEPRODUCTCATEGORY0` | [CatalogsProductGroupMultipleStringListCriteria](.md)
 `mEDIATYPE` | [CatalogsProductGroupMultipleMediaTypesCriteria](.md)
+`tITLEKEYWORDS` | [CatalogsProductGroupMultipleStringCriteria](.md)
 
 ## Example
 
@@ -42,6 +43,7 @@ const example = {
   "gOOGLEPRODUCTCATEGORY1": null,
   "gOOGLEPRODUCTCATEGORY0": null,
   "mEDIATYPE": null,
+  "tITLEKEYWORDS": null,
 } satisfies CatalogsCreativeAssetsProductGroupFilterKeys
 
 console.log(example)

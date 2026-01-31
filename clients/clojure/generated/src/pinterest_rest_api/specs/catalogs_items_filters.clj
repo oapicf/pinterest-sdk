@@ -9,8 +9,8 @@
 (def catalogs-items-filters-data
   {
    (ds/req :catalog_type) catalogs-type-spec
-   (ds/req :item_ids) (s/coll-of string?)
    (ds/opt :catalog_id) string?
+   (ds/req :item_ids) (s/coll-of string?)
    (ds/req :hotel_ids) (s/coll-of string?)
    (ds/req :creative_assets_ids) (s/coll-of string?)
    })

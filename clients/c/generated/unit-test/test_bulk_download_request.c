@@ -23,20 +23,20 @@ bulk_download_request_t* instantiate_bulk_download_request(int include_optional)
   bulk_download_request_t* bulk_download_request = NULL;
   if (include_optional) {
     bulk_download_request = bulk_download_request_create(
-      ["CAMPAIGN","AD_GROUP"],
-      list_createList(),
-      "1622848072",
        // false, not to have infinite recursion
       instantiate_bulk_download_request_campaign_filter(0),
-      CSV
+      list_createList(),
+      ["CAMPAIGN","AD_GROUP"],
+      CSV,
+      "1622848072"
     );
   } else {
     bulk_download_request = bulk_download_request_create(
-      ["CAMPAIGN","AD_GROUP"],
-      list_createList(),
-      "1622848072",
       NULL,
-      CSV
+      list_createList(),
+      ["CAMPAIGN","AD_GROUP"],
+      CSV,
+      "1622848072"
     );
   }
 

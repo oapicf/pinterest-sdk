@@ -1,11 +1,12 @@
 package org.openapitools.controller;
 
 import org.openapitools.model.ConversionEventResponse;
+import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
-import org.openapitools.model.ConversionTagListResponse;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTagsList200Response;
 import org.openapitools.model.Error;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -56,7 +57,7 @@ public class ConversionTagsControllerTest {
      *
      * The method should: Create conversion tag
      *
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -65,10 +66,10 @@ public class ConversionTagsControllerTest {
     void conversionTagsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        ConversionTagCreate conversionTagCreate = new ConversionTagCreate();
+        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("ACME Checkout Test Tag");
 
         // when
-        ConversionTagResponse result = controller.conversionTagsCreate(adAccountId, conversionTagCreate).block();
+        ConversionTag result = controller.conversionTagsCreate(adAccountId, conversionTagCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -84,16 +85,16 @@ public class ConversionTagsControllerTest {
     @Disabled("Not Implemented")
     void conversionTagsCreateClientApiTest() throws IOException {
         // given
-        ConversionTagCreate body = new ConversionTagCreate();
+        ConversionTagCreate body = new ConversionTagCreate("ACME Checkout Test Tag");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/conversion_tags").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@ca10f2a");
+            .accept("[Ljava.lang.String;@63e72528");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTagResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTag.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -116,7 +117,7 @@ public class ConversionTagsControllerTest {
         String conversionTagId = "2617998078212";
 
         // when
-        ConversionTagResponse result = controller.conversionTagsGet(adAccountId, conversionTagId).block();
+        ConversionTag result = controller.conversionTagsGet(adAccountId, conversionTagId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -138,10 +139,10 @@ public class ConversionTagsControllerTest {
             put("conversion_tag_id", "2617998078212");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7f95a76a");
+            .accept("[Ljava.lang.String;@4cd52ceb");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTagResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTag.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -150,7 +151,7 @@ public class ConversionTagsControllerTest {
     /**
      * This test is used to validate the implementation of conversionTagsList() method
      *
-     * The method should: Get conversion tags
+     * The method should: List conversion tags
      *
      * List conversion tags associated with an ad account.
      *
@@ -164,7 +165,7 @@ public class ConversionTagsControllerTest {
         Boolean filterDeleted = false;
 
         // when
-        ConversionTagListResponse result = controller.conversionTagsList(adAccountId, filterDeleted).block();
+        ConversionTagsList200Response result = controller.conversionTagsList(adAccountId, filterDeleted).block();
 
         // then
         Assertions.assertTrue(true);
@@ -185,12 +186,12 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2d045adb");
+            .accept("[Ljava.lang.String;@42f71036");
         request.getParameters()
             .add("filter_deleted", String.valueOf(false)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTagListResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTagsList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -233,7 +234,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4dda06f0");
+            .accept("[Ljava.lang.String;@775ba5e");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(Map.class, String.class, List.class));
@@ -282,7 +283,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4986983e");
+            .accept("[Ljava.lang.String;@5de111fd");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 

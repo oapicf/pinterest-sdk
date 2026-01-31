@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object to list products for a given product group filter.")
 @JsonTypeName("CatalogsListProductsByFilterRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsListProductsByFilterRequest   {
   private String feedId;
   private CatalogsProductGroupFilters filters;
@@ -35,8 +35,8 @@ public class CatalogsListProductsByFilterRequest   {
   public CatalogsListProductsByFilterRequest(
     @JsonProperty(required = true, value = "feed_id") String feedId,
     @JsonProperty(required = true, value = "filters") CatalogsProductGroupFilters filters,
-    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
     @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
     @JsonProperty(required = true, value = "country") Country country,
     @JsonProperty(required = true, value = "locale") CatalogsLocale locale
   ) {

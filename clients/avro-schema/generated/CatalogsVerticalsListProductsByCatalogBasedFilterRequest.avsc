@@ -5,6 +5,11 @@
   "name": "CatalogsVerticalsListProductsByCatalogBasedFilterRequest",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -16,18 +21,13 @@
       "doc": ""
     },
     {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the creative assets product group."
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
     },
     {
       "name": "filters",
       "type": "model.CatalogsCreativeAssetsProductGroupFilters",
-      "doc": ""
-    },
-    {
-      "name": "country",
-      "type": "model.Country",
       "doc": ""
     },
     {

@@ -8,8 +8,8 @@
 
 (def ssio-order-lines-get-by-ad-account-200-response-data
   {
-   (ds/req :items) (s/coll-of ssio-order-line-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of ssio-order-line-spec)
    })
 
 (def ssio-order-lines-get-by-ad-account-200-response-spec

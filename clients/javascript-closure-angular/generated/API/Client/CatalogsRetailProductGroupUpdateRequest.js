@@ -14,10 +14,10 @@ API.Client.CatalogsRetailProductGroupUpdateRequest = function() {}
 API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.catalogType;
 
 /**
- * @type {!string}
+ * @type {!API.Client.Country}
  * @export
  */
-API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.name;
+API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.country;
 
 /**
  * @type {!string}
@@ -32,16 +32,16 @@ API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.description;
 API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.filters;
 
 /**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.country;
-
-/**
  * @type {!API.Client.CatalogsLocale}
  * @export
  */
 API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.locale;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnum = { 

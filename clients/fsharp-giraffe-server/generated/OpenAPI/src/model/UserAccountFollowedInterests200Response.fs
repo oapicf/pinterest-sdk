@@ -11,7 +11,7 @@ module UserAccountFollowedInterests200Response =
 
 
   type user_account_followed_interests_200_response = {
-    Items : Interest[];
     Bookmark : string option;
+    Items : Interest[];
   }
   //#endregion

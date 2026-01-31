@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsProductGroupPricingCurrencyCriteria{}
 
 // CatalogsProductGroupPricingCurrencyCriteria struct for CatalogsProductGroupPricingCurrencyCriteria
 type CatalogsProductGroupPricingCurrencyCriteria struct {
-	Operator string `json:"operator"`
-	Value float32 `json:"value"`
 	Currency NonNullableCatalogsCurrency `json:"currency"`
 	Negated *bool `json:"negated,omitempty"`
+	Operator string `json:"operator"`
+	Value float32 `json:"value"`
 }
 
 type _CatalogsProductGroupPricingCurrencyCriteria CatalogsProductGroupPricingCurrencyCriteria
@@ -34,13 +34,13 @@ type _CatalogsProductGroupPricingCurrencyCriteria CatalogsProductGroupPricingCur
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsProductGroupPricingCurrencyCriteria(operator string, value float32, currency NonNullableCatalogsCurrency) *CatalogsProductGroupPricingCurrencyCriteria {
+func NewCatalogsProductGroupPricingCurrencyCriteria(currency NonNullableCatalogsCurrency, operator string, value float32) *CatalogsProductGroupPricingCurrencyCriteria {
 	this := CatalogsProductGroupPricingCurrencyCriteria{}
-	this.Operator = operator
-	this.Value = value
 	this.Currency = currency
 	var negated bool = false
 	this.Negated = &negated
+	this.Operator = operator
+	this.Value = value
 	return &this
 }
 
@@ -52,54 +52,6 @@ func NewCatalogsProductGroupPricingCurrencyCriteriaWithDefaults() *CatalogsProdu
 	var negated bool = false
 	this.Negated = &negated
 	return &this
-}
-
-// GetOperator returns the Operator field value
-func (o *CatalogsProductGroupPricingCurrencyCriteria) GetOperator() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Operator
-}
-
-// GetOperatorOk returns a tuple with the Operator field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupPricingCurrencyCriteria) GetOperatorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Operator, true
-}
-
-// SetOperator sets field value
-func (o *CatalogsProductGroupPricingCurrencyCriteria) SetOperator(v string) {
-	o.Operator = v
-}
-
-// GetValue returns the Value field value
-func (o *CatalogsProductGroupPricingCurrencyCriteria) GetValue() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.Value
-}
-
-// GetValueOk returns a tuple with the Value field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupPricingCurrencyCriteria) GetValueOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Value, true
-}
-
-// SetValue sets field value
-func (o *CatalogsProductGroupPricingCurrencyCriteria) SetValue(v float32) {
-	o.Value = v
 }
 
 // GetCurrency returns the Currency field value
@@ -158,6 +110,54 @@ func (o *CatalogsProductGroupPricingCurrencyCriteria) SetNegated(v bool) {
 	o.Negated = &v
 }
 
+// GetOperator returns the Operator field value
+func (o *CatalogsProductGroupPricingCurrencyCriteria) GetOperator() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Operator
+}
+
+// GetOperatorOk returns a tuple with the Operator field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupPricingCurrencyCriteria) GetOperatorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Operator, true
+}
+
+// SetOperator sets field value
+func (o *CatalogsProductGroupPricingCurrencyCriteria) SetOperator(v string) {
+	o.Operator = v
+}
+
+// GetValue returns the Value field value
+func (o *CatalogsProductGroupPricingCurrencyCriteria) GetValue() float32 {
+	if o == nil {
+		var ret float32
+		return ret
+	}
+
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupPricingCurrencyCriteria) GetValueOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Value, true
+}
+
+// SetValue sets field value
+func (o *CatalogsProductGroupPricingCurrencyCriteria) SetValue(v float32) {
+	o.Value = v
+}
+
 func (o CatalogsProductGroupPricingCurrencyCriteria) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -168,12 +168,12 @@ func (o CatalogsProductGroupPricingCurrencyCriteria) MarshalJSON() ([]byte, erro
 
 func (o CatalogsProductGroupPricingCurrencyCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["operator"] = o.Operator
-	toSerialize["value"] = o.Value
 	toSerialize["currency"] = o.Currency
 	if !IsNil(o.Negated) {
 		toSerialize["negated"] = o.Negated
 	}
+	toSerialize["operator"] = o.Operator
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 
@@ -182,9 +182,9 @@ func (o *CatalogsProductGroupPricingCurrencyCriteria) UnmarshalJSON(data []byte)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"currency",
 		"operator",
 		"value",
-		"currency",
 	}
 
 	allProperties := make(map[string]interface{})

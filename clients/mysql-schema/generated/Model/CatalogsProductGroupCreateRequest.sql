@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsProductGroupCreateRequest`
 --
-SELECT `name`, `description`, `is_featured`, `filters`, `feed_id` FROM `CatalogsProductGroupCreateRequest` WHERE 1;
+SELECT `description`, `feed_id`, `filters`, `is_featured`, `name` FROM `CatalogsProductGroupCreateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsProductGroupCreateRequest`
 --
-INSERT INTO `CatalogsProductGroupCreateRequest`(`name`, `description`, `is_featured`, `filters`, `feed_id`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `CatalogsProductGroupCreateRequest`(`description`, `feed_id`, `filters`, `is_featured`, `name`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsProductGroupCreateRequest`
 --
-UPDATE `CatalogsProductGroupCreateRequest` SET `name` = ?, `description` = ?, `is_featured` = ?, `filters` = ?, `feed_id` = ? WHERE 1;
+UPDATE `CatalogsProductGroupCreateRequest` SET `description` = ?, `feed_id` = ?, `filters` = ?, `is_featured` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsProductGroupCreateRequest`

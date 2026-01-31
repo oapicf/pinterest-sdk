@@ -8,8 +8,8 @@
 
 (def user-websites-get-200-response-data
   {
-   (ds/req :items) (s/coll-of user-website-summary-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of user-website-summary-spec)
    })
 
 (def user-websites-get-200-response-spec

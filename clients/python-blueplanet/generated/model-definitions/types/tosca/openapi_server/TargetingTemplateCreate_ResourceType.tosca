@@ -1,0 +1,65 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingTemplateCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingTemplateCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PlacementGroupType = openapi_server.resourceTypes.PlacementGroupType
+  TargetingSpec = openapi_server.resourceTypes.TargetingSpec
+  TargetingTemplateKeyword = openapi_server.resourceTypes.TargetingTemplateKeyword
+  TrackingUrls = openapi_server.resourceTypes.TrackingUrls
+}
+resourceTypes {
+
+  TargetingTemplateCreate {
+    title = TargetingTemplateCreate
+    description = TargetingTemplateCreate
+    derivedFrom = Root
+    properties {
+        auto_targeting_enabled {
+          type =  boolean
+          description = "Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;."
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = TargetingTemplateKeyword
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Name of targeting template."
+          optional = true
+        }
+        placement_group {
+          type = PlacementGroupType
+          description = ""
+          optional = false
+        }
+        targeting_attributes {
+          type = TargetingSpec
+          description = ""
+          optional = true
+        }
+        tracking_urls {
+          type = TrackingUrls
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingTemplateCreate {
+    title = TargetingTemplateCreate
+    description = TargetingTemplateCreate
+    implements = openapi_server.resourceTypes.TargetingTemplateCreate
+
+  }
+}

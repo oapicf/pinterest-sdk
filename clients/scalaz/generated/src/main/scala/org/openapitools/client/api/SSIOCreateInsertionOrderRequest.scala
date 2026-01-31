@@ -12,49 +12,49 @@ import org.joda.time.DateTime
 import SSIOCreateInsertionOrderRequest._
 
 case class SSIOCreateInsertionOrderRequest (
-  /* Starting date of time period. Format: YYYY-MM-DD */
-  startDate: String,
-/* End date of time period. Format: YYYY-MM-DD */
-  endDate: Option[String],
-/* The po number */
-  poNumber: String,
-/* If Budget order line, the budget amount. */
-  budgetAmount: Option[BigDecimal],
+  /* URL link for agency */
+  agencyLink: Option[String],
+/* The billing contact email */
+  billingContactEmail: String,
 /* The billing contact first name */
   billingContactFirstname: String,
 /* The billing contact last name */
   billingContactLastname: String,
-/* The billing contact email */
-  billingContactEmail: String,
+/* If Budget order line, the budget amount. */
+  budgetAmount: Option[BigDecimal],
+/* End date of time period. Format: YYYY-MM-DD */
+  endDate: Option[String],
+/* The media contact email */
+  mediaContactEmail: String,
 /* The media contact first name */
   mediaContactFirstname: String,
 /* The media contact last name */
   mediaContactLastname: String,
-/* The media contact email */
-  mediaContactEmail: String,
-/* URL link for agency */
-  agencyLink: Option[String],
+/* The po number */
+  poNumber: String,
+/* Starting date of time period. Format: YYYY-MM-DD */
+  startDate: String,
 /* The email of user submitting the insertion order */
   userEmail: Option[String],
-/* The UTC timestamp (to the nearest sec) of when terms were accepted */
-  acceptedTermsTime: Option[Integer],
-/* The pmp id */
-  pmpId: String,
-/* The order name */
-  orderName: String,
-/* Type can be Budget or Perpetual */
-  orderLineType: OrderLineType,
 /* The SFDC id for the terms */
   acceptedTermsId: String,
-/* The bill-to company id */
-  billtoCompanyId: String,
-/* The bill-to business address id */
-  billtoBusinessAddressId: String,
+/* The UTC timestamp (to the nearest sec) of when terms were accepted */
+  acceptedTermsTime: Option[Integer],
 /* The bill-to billing address id */
   billtoBillingAddressId: String,
+/* The bill-to business address id */
+  billtoBusinessAddressId: String,
+/* The bill-to company id */
+  billtoCompanyId: String,
+currencyInfo: Currency,
 /* If Ongoing (perpetual) order line, the estimated monthly spend */
   estimatedMonthlySpend: Option[BigDecimal],
-currencyInfo: Currency)
+/* Type can be Budget or Perpetual */
+  orderLineType: OrderLineType,
+/* The order name */
+  orderName: String,
+/* The pmp id */
+  pmpId: String)
 
 object SSIOCreateInsertionOrderRequest {
   import DateTimeCodecs._

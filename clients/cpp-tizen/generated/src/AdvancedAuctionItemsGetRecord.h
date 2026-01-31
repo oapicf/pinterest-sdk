@@ -47,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	Country getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(Country  country);
 	/*! \brief Get The catalog retail item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -56,13 +63,6 @@ public:
 	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	Country getCountry();
-
-	/*! \brief Set 
-	 */
-	void setCountry(Country  country);
-	/*! \brief Get 
-	 */
 	Language getLanguage();
 
 	/*! \brief Set 
@@ -70,8 +70,8 @@ public:
 	void setLanguage(Language  language);
 
 private:
-	std::string item_id;
 	Country country;
+	std::string item_id;
 	Language language;
 	void __init();
 	void __cleanup();

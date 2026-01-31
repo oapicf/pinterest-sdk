@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CatalogsProductGroupMultipleStringCriteria{}
 
 // CatalogsProductGroupMultipleStringCriteria struct for CatalogsProductGroupMultipleStringCriteria
 type CatalogsProductGroupMultipleStringCriteria struct {
-	Values []string `json:"values"`
 	Negated *bool `json:"negated,omitempty"`
+	Values []string `json:"values"`
 }
 
 type _CatalogsProductGroupMultipleStringCriteria CatalogsProductGroupMultipleStringCriteria
@@ -34,9 +34,9 @@ type _CatalogsProductGroupMultipleStringCriteria CatalogsProductGroupMultipleStr
 // will change when the set of required properties is changed
 func NewCatalogsProductGroupMultipleStringCriteria(values []string) *CatalogsProductGroupMultipleStringCriteria {
 	this := CatalogsProductGroupMultipleStringCriteria{}
-	this.Values = values
 	var negated bool = false
 	this.Negated = &negated
+	this.Values = values
 	return &this
 }
 
@@ -48,30 +48,6 @@ func NewCatalogsProductGroupMultipleStringCriteriaWithDefaults() *CatalogsProduc
 	var negated bool = false
 	this.Negated = &negated
 	return &this
-}
-
-// GetValues returns the Values field value
-func (o *CatalogsProductGroupMultipleStringCriteria) GetValues() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.Values
-}
-
-// GetValuesOk returns a tuple with the Values field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupMultipleStringCriteria) GetValuesOk() ([]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Values, true
-}
-
-// SetValues sets field value
-func (o *CatalogsProductGroupMultipleStringCriteria) SetValues(v []string) {
-	o.Values = v
 }
 
 // GetNegated returns the Negated field value if set, zero value otherwise.
@@ -106,6 +82,30 @@ func (o *CatalogsProductGroupMultipleStringCriteria) SetNegated(v bool) {
 	o.Negated = &v
 }
 
+// GetValues returns the Values field value
+func (o *CatalogsProductGroupMultipleStringCriteria) GetValues() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Values
+}
+
+// GetValuesOk returns a tuple with the Values field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupMultipleStringCriteria) GetValuesOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Values, true
+}
+
+// SetValues sets field value
+func (o *CatalogsProductGroupMultipleStringCriteria) SetValues(v []string) {
+	o.Values = v
+}
+
 func (o CatalogsProductGroupMultipleStringCriteria) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,10 +116,10 @@ func (o CatalogsProductGroupMultipleStringCriteria) MarshalJSON() ([]byte, error
 
 func (o CatalogsProductGroupMultipleStringCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["values"] = o.Values
 	if !IsNil(o.Negated) {
 		toSerialize["negated"] = o.Negated
 	}
+	toSerialize["values"] = o.Values
 	return toSerialize, nil
 }
 

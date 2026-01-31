@@ -5,13 +5,12 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Audience
-import model.AudienceCreateCustomRequest
 import model.AudienceCreateRequest
 import model.AudienceUpdateRequest
 import model.AudiencesList200Response
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesApi) extends AbstractController(cc) {
   /**
@@ -24,23 +23,6 @@ class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesA
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "audienceCreateRequest")
       }
       api.audiencesCreate(adAccountId, audienceCreateRequest)
-    }
-
-    val result = executeApi()
-    val json = Json.toJson(result)
-    Ok(json)
-  }
-
-  /**
-    * POST /v5/ad_accounts/:adAccountId/audiences/custom
-    * @param adAccountId Unique identifier of an ad account.
-    */
-  def audiencesCreateCustom(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Audience = {
-      val audienceCreateCustomRequest = request.body.asJson.map(_.as[AudienceCreateCustomRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "audienceCreateCustomRequest")
-      }
-      api.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
     }
 
     val result = executeApi()
@@ -93,7 +75,9 @@ class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesA
     */
   def audiencesUpdate(adAccountId: String, audienceId: String): Action[AnyContent] = Action { request =>
     def executeApi(): Audience = {
-      val audienceUpdateRequest = request.body.asJson.map(_.as[AudienceUpdateRequest])
+      val audienceUpdateRequest = request.body.asJson.map(_.as[AudienceUpdateRequest]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "audienceUpdateRequest")
+      }
       api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
     }
 

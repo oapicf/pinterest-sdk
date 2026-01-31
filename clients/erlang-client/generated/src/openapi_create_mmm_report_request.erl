@@ -6,30 +6,30 @@
 
 -type openapi_create_mmm_report_request() ::
     #{ 'countries' => list(),
-       'report_name' := binary(),
-       'start_date' := binary(),
+       'columns' := list(),
        'end_date' := binary(),
        'granularity' := binary(),
        'level' := binary(),
-       'targeting_types' := list(),
-       'columns' := list()
+       'report_name' := binary(),
+       'start_date' := binary(),
+       'targeting_types' := list()
      }.
 
 encode(#{ 'countries' := Countries,
-          'report_name' := ReportName,
-          'start_date' := StartDate,
+          'columns' := Columns,
           'end_date' := EndDate,
           'granularity' := Granularity,
           'level' := Level,
-          'targeting_types' := TargetingTypes,
-          'columns' := Columns
+          'report_name' := ReportName,
+          'start_date' := StartDate,
+          'targeting_types' := TargetingTypes
         }) ->
     #{ 'countries' => Countries,
-       'report_name' => ReportName,
-       'start_date' => StartDate,
+       'columns' => Columns,
        'end_date' => EndDate,
        'granularity' => Granularity,
        'level' => Level,
-       'targeting_types' => TargetingTypes,
-       'columns' => Columns
+       'report_name' => ReportName,
+       'start_date' => StartDate,
+       'targeting_types' => TargetingTypes
      }.

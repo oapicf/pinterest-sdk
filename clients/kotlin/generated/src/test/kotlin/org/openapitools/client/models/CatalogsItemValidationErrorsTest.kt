@@ -86,16 +86,16 @@ class CatalogsItemValidationErrorsTest : ShouldSpec() {
             //modelInstance.INVALID_DOMAIN shouldBe ("TODO")
         }
 
-        // to test the property `ITEMID_MISSING`
-        should("test ITEMID_MISSING") {
-            // uncomment below to test the property
-            //modelInstance.ITEMID_MISSING shouldBe ("TODO")
-        }
-
         // to test the property `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`
         should("test ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE") {
             // uncomment below to test the property
             //modelInstance.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE shouldBe ("TODO")
+        }
+
+        // to test the property `ITEMID_MISSING`
+        should("test ITEMID_MISSING") {
+            // uncomment below to test the property
+            //modelInstance.ITEMID_MISSING shouldBe ("TODO")
         }
 
         // to test the property `LINK_FORMAT_INVALID`

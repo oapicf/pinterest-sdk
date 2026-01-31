@@ -10,11 +10,11 @@
 
 
 export interface CatalogsReportDistributionIssueFilter { 
-    report_type: CatalogsReportDistributionIssueFilter.ReportTypeEnum;
     /**
      * Unique identifier of a catalog. If not given, oldest catalog will be used
      */
     catalog_id?: string;
+    report_type: CatalogsReportDistributionIssueFilter.ReportTypeEnum;
 }
 export namespace CatalogsReportDistributionIssueFilter {
     export const ReportTypeEnum = {

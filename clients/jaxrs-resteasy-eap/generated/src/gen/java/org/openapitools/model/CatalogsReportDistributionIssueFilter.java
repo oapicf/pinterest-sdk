@@ -11,9 +11,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionIssueFilter   {
   
+  private String catalogId;
 
   /**
    * Gets or Sets reportType
@@ -34,20 +35,6 @@ public class CatalogsReportDistributionIssueFilter   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  @NotNull
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * Unique identifier of a catalog. If not given, oldest catalog will be used
@@ -62,6 +49,19 @@ public class CatalogsReportDistributionIssueFilter   {
     this.catalogId = catalogId;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("report_type")
+  @NotNull
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -72,13 +72,13 @@ public class CatalogsReportDistributionIssueFilter   {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
@@ -86,8 +86,8 @@ public class CatalogsReportDistributionIssueFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

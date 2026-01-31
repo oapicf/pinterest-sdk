@@ -51,18 +51,6 @@ class CatalogsRetailFeedTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
-        // to test the property `name` - A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `format`
-        should("test format") {
-            // uncomment below to test the property
-            //modelInstance.format shouldBe ("TODO")
-        }
-
         // to test the property `catalogType`
         should("test catalogType") {
             // uncomment below to test the property
@@ -75,22 +63,16 @@ class CatalogsRetailFeedTest : ShouldSpec() {
             //modelInstance.credentials shouldBe ("TODO")
         }
 
-        // to test the property `location` - The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-        should("test location") {
+        // to test the property `defaultAvailability`
+        should("test defaultAvailability") {
             // uncomment below to test the property
-            //modelInstance.location shouldBe ("TODO")
+            //modelInstance.defaultAvailability shouldBe ("TODO")
         }
 
-        // to test the property `preferredProcessingSchedule`
-        should("test preferredProcessingSchedule") {
+        // to test the property `defaultCountry`
+        should("test defaultCountry") {
             // uncomment below to test the property
-            //modelInstance.preferredProcessingSchedule shouldBe ("TODO")
-        }
-
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
+            //modelInstance.defaultCountry shouldBe ("TODO")
         }
 
         // to test the property `defaultCurrency`
@@ -105,16 +87,34 @@ class CatalogsRetailFeedTest : ShouldSpec() {
             //modelInstance.defaultLocale shouldBe ("TODO")
         }
 
-        // to test the property `defaultCountry`
-        should("test defaultCountry") {
+        // to test the property `format`
+        should("test format") {
             // uncomment below to test the property
-            //modelInstance.defaultCountry shouldBe ("TODO")
+            //modelInstance.format shouldBe ("TODO")
         }
 
-        // to test the property `defaultAvailability`
-        should("test defaultAvailability") {
+        // to test the property `location` - The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+        should("test location") {
             // uncomment below to test the property
-            //modelInstance.defaultAvailability shouldBe ("TODO")
+            //modelInstance.location shouldBe ("TODO")
+        }
+
+        // to test the property `name` - A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `preferredProcessingSchedule`
+        should("test preferredProcessingSchedule") {
+            // uncomment below to test the property
+            //modelInstance.preferredProcessingSchedule shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

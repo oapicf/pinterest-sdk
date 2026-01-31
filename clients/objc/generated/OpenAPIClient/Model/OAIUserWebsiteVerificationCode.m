@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"verificationCode": @"verification_code", @"dnsTxtRecord": @"dns_txt_record", @"metatag": @"metatag", @"filename": @"filename", @"fileContent": @"file_content" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"dnsTxtRecord": @"dns_txt_record", @"fileContent": @"file_content", @"filename": @"filename", @"metatag": @"metatag", @"verificationCode": @"verification_code" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"verificationCode", @"dnsTxtRecord", @"metatag", @"filename", @"fileContent"];
+  NSArray *optionalProperties = @[@"dnsTxtRecord", @"fileContent", @"filename", @"metatag", @"verificationCode"];
   return [optionalProperties containsObject:propertyName];
 }
 

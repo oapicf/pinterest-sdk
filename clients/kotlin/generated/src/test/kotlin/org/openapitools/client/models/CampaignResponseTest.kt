@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CampaignResponse
+import org.openapitools.client.models.CampaignBidOptions
 import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.ObjectiveType
@@ -41,16 +42,28 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.adAccountId shouldBe ("TODO")
         }
 
-        // to test the property `name` - Campaign name.
-        should("test name") {
+        // to test the property `dailySpendCap` - Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+        should("test dailySpendCap") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.dailySpendCap shouldBe ("TODO")
         }
 
-        // to test the property `status`
-        should("test status") {
+        // to test the property `endTime` - Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+        should("test endTime") {
             // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
+            //modelInstance.endTime shouldBe ("TODO")
+        }
+
+        // to test the property `isAutomatedCampaign` - Specifies whether the campaign was created in the automated campaign flow
+        should("test isAutomatedCampaign") {
+            // uncomment below to test the property
+            //modelInstance.isAutomatedCampaign shouldBe ("TODO")
+        }
+
+        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+        should("test isFlexibleDailyBudgets") {
+            // uncomment below to test the property
+            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
         }
 
         // to test the property `lifetimeSpendCap` - Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
@@ -59,10 +72,10 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.lifetimeSpendCap shouldBe ("TODO")
         }
 
-        // to test the property `dailySpendCap` - Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-        should("test dailySpendCap") {
+        // to test the property `name` - Campaign name.
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.dailySpendCap shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `orderLineId` - Order line ID that appears on the invoice.
@@ -71,34 +84,28 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.orderLineId shouldBe ("TODO")
         }
 
+        // to test the property `startTime` - Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+        should("test startTime") {
+            // uncomment below to test the property
+            //modelInstance.startTime shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
         // to test the property `trackingUrls`
         should("test trackingUrls") {
             // uncomment below to test the property
             //modelInstance.trackingUrls shouldBe ("TODO")
         }
 
-        // to test the property `startTime` - Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-        should("test startTime") {
+        // to test the property `bidOptions`
+        should("test bidOptions") {
             // uncomment below to test the property
-            //modelInstance.startTime shouldBe ("TODO")
-        }
-
-        // to test the property `endTime` - Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-        should("test endTime") {
-            // uncomment below to test the property
-            //modelInstance.endTime shouldBe ("TODO")
-        }
-
-        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has flexible daily budgets setup.
-        should("test isFlexibleDailyBudgets") {
-            // uncomment below to test the property
-            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
-        }
-
-        // to test the property `objectiveType`
-        should("test objectiveType") {
-            // uncomment below to test the property
-            //modelInstance.objectiveType shouldBe ("TODO")
+            //modelInstance.bidOptions shouldBe ("TODO")
         }
 
         // to test the property `createdTime` - Campaign creation time. Unix timestamp in seconds.
@@ -107,10 +114,28 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.createdTime shouldBe ("TODO")
         }
 
-        // to test the property `updatedTime` - UTC timestamp. Last update time.
-        should("test updatedTime") {
+        // to test the property `isCampaignBudgetOptimization` - Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+        should("test isCampaignBudgetOptimization") {
             // uncomment below to test the property
-            //modelInstance.updatedTime shouldBe ("TODO")
+            //modelInstance.isCampaignBudgetOptimization shouldBe ("TODO")
+        }
+
+        // to test the property `isPerformancePlus` - Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.
+        should("test isPerformancePlus") {
+            // uncomment below to test the property
+            //modelInstance.isPerformancePlus shouldBe ("TODO")
+        }
+
+        // to test the property `objectiveType`
+        should("test objectiveType") {
+            // uncomment below to test the property
+            //modelInstance.objectiveType shouldBe ("TODO")
+        }
+
+        // to test the property `summaryStatus`
+        should("test summaryStatus") {
+            // uncomment below to test the property
+            //modelInstance.summaryStatus shouldBe ("TODO")
         }
 
         // to test the property `type` - Always \"campaign\".
@@ -119,16 +144,10 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `isCampaignBudgetOptimization` - Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
-        should("test isCampaignBudgetOptimization") {
+        // to test the property `updatedTime` - UTC timestamp. Last update time.
+        should("test updatedTime") {
             // uncomment below to test the property
-            //modelInstance.isCampaignBudgetOptimization shouldBe ("TODO")
-        }
-
-        // to test the property `summaryStatus`
-        should("test summaryStatus") {
-            // uncomment below to test the property
-            //modelInstance.summaryStatus shouldBe ("TODO")
+            //modelInstance.updatedTime shouldBe ("TODO")
         }
 
     }

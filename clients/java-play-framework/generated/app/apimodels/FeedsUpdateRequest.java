@@ -20,9 +20,14 @@ import javax.validation.Valid;
 /**
  * FeedsUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class FeedsUpdateRequest   {
+  @JsonProperty("credentials")
+  @Valid
+
+  private CatalogsFeedCredentials credentials;
+
   @JsonProperty("default_availability")
   @Valid
 
@@ -33,24 +38,19 @@ public class FeedsUpdateRequest   {
 
   private NullableCurrency defaultCurrency;
 
-  @JsonProperty("name")
-  
-  private String name;
-
   @JsonProperty("format")
   @Valid
 
   private CatalogsFormat format;
 
-  @JsonProperty("credentials")
-  @Valid
-
-  private CatalogsFeedCredentials credentials;
-
   @JsonProperty("location")
   @Pattern(regexp="^(http|https|ftp|sftp)://")
 
   private String location;
+
+  @JsonProperty("name")
+  
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   @Valid
@@ -61,6 +61,23 @@ public class FeedsUpdateRequest   {
   @Valid
 
   private CatalogsStatus status;
+
+  public FeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+   /**
+   * Get credentials
+   * @return credentials
+  **/
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
 
   public FeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = defaultAvailability;
@@ -96,23 +113,6 @@ public class FeedsUpdateRequest   {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public FeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public FeedsUpdateRequest format(CatalogsFormat format) {
     this.format = format;
     return this;
@@ -130,23 +130,6 @@ public class FeedsUpdateRequest   {
     this.format = format;
   }
 
-  public FeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-   /**
-   * Get credentials
-   * @return credentials
-  **/
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
   public FeedsUpdateRequest location(String location) {
     this.location = location;
     return this;
@@ -162,6 +145,23 @@ public class FeedsUpdateRequest   {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public FeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public FeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -208,19 +208,19 @@ public class FeedsUpdateRequest   {
       return false;
     }
     FeedsUpdateRequest feedsUpdateRequest = (FeedsUpdateRequest) o;
-    return Objects.equals(defaultAvailability, feedsUpdateRequest.defaultAvailability) &&
+    return Objects.equals(credentials, feedsUpdateRequest.credentials) &&
+        Objects.equals(defaultAvailability, feedsUpdateRequest.defaultAvailability) &&
         Objects.equals(defaultCurrency, feedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(name, feedsUpdateRequest.name) &&
         Objects.equals(format, feedsUpdateRequest.format) &&
-        Objects.equals(credentials, feedsUpdateRequest.credentials) &&
         Objects.equals(location, feedsUpdateRequest.location) &&
+        Objects.equals(name, feedsUpdateRequest.name) &&
         Objects.equals(preferredProcessingSchedule, feedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(status, feedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultAvailability, defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -229,12 +229,12 @@ public class FeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeedsUpdateRequest {\n");
     
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

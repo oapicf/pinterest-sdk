@@ -20,17 +20,43 @@ import java.util.List;
  */
 @ApiModel(description = "A specific quiz inquiry.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinQuestion   {
+  @JsonProperty("options")
+  
+  private List<QuizPinOption> options = null;
+
   @JsonProperty("question_id")
   private BigDecimal questionId;
 
   @JsonProperty("question_text")
   private String questionText;
 
-  @JsonProperty("options")
-  
-  private List<QuizPinOption> options = null;
+  public QuizPinQuestion options(List<QuizPinOption> options) {
+    this.options = options;
+    return this;
+  }
+
+  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
+    if (this.options == null) {
+      this.options = new ArrayList<>();
+    }
+    this.options.add(optionsItem);
+    return this;
+  }
+
+  /**
+   * Get options
+   * @return options
+   */
+  @ApiModelProperty(value = "")
+  public List<QuizPinOption> getOptions() {
+    return options;
+  }
+
+  public void setOptions(List<QuizPinOption> options) {
+    this.options = options;
+  }
 
   public QuizPinQuestion questionId(BigDecimal questionId) {
     this.questionId = questionId;
@@ -68,32 +94,6 @@ public class QuizPinQuestion   {
     this.questionText = questionText;
   }
 
-  public QuizPinQuestion options(List<QuizPinOption> options) {
-    this.options = options;
-    return this;
-  }
-
-  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
-    if (this.options == null) {
-      this.options = new ArrayList<>();
-    }
-    this.options.add(optionsItem);
-    return this;
-  }
-
-  /**
-   * Get options
-   * @return options
-   */
-  @ApiModelProperty(value = "")
-  public List<QuizPinOption> getOptions() {
-    return options;
-  }
-
-  public void setOptions(List<QuizPinOption> options) {
-    this.options = options;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -104,14 +104,14 @@ public class QuizPinQuestion   {
       return false;
     }
     QuizPinQuestion quizPinQuestion = (QuizPinQuestion) o;
-    return Objects.equals(this.questionId, quizPinQuestion.questionId) &&
-        Objects.equals(this.questionText, quizPinQuestion.questionText) &&
-        Objects.equals(this.options, quizPinQuestion.options);
+    return Objects.equals(this.options, quizPinQuestion.options) &&
+        Objects.equals(this.questionId, quizPinQuestion.questionId) &&
+        Objects.equals(this.questionText, quizPinQuestion.questionText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionId, questionText, options);
+    return Objects.hash(options, questionId, questionText);
   }
 
   @Override
@@ -119,9 +119,9 @@ public class QuizPinQuestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinQuestion {\n");
     
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    questionId: ").append(toIndentedString(questionId)).append("\n");
     sb.append("    questionText: ").append(toIndentedString(questionText)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

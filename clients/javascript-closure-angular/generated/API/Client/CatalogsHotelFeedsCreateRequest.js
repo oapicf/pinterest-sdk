@@ -7,23 +7,29 @@ goog.provide('API.Client.CatalogsHotelFeedsCreateRequest');
 API.Client.CatalogsHotelFeedsCreateRequest = function() {}
 
 /**
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogId;
+
+/**
+ * @type {!API.Client.CatalogsType}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogType;
+
+/**
+ * @type {!API.Client.CatalogsFeedCredentials}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsCreateRequest.prototype.credentials;
+
+/**
  * @type {!API.Client.NullableCurrency}
  * @export
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.defaultCurrency;
-
-/**
- * A human-friendly name associated to a given feed.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelFeedsCreateRequest.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsHotelFeedsCreateRequest.prototype.format;
 
 /**
  * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
@@ -32,10 +38,10 @@ API.Client.CatalogsHotelFeedsCreateRequest.prototype.format;
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.defaultLocale;
 
 /**
- * @type {!API.Client.CatalogsFeedCredentials}
+ * @type {!API.Client.CatalogsFormat}
  * @export
  */
-API.Client.CatalogsHotelFeedsCreateRequest.prototype.credentials;
+API.Client.CatalogsHotelFeedsCreateRequest.prototype.format;
 
 /**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
@@ -45,23 +51,17 @@ API.Client.CatalogsHotelFeedsCreateRequest.prototype.credentials;
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.location;
 
 /**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsCreateRequest.prototype.name;
+
+/**
  * @type {!API.Client.CatalogsFeedProcessingSchedule}
  * @export
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.preferredProcessingSchedule;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogType;
-
-/**
- * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogId;
 
 /**
  * @type {!API.Client.CatalogsStatus}

@@ -5,6 +5,13 @@ context("Test CatalogsCreativeAssetsItemResponse")
 
 model_instance <- CatalogsCreativeAssetsItemResponse$new()
 
+test_that("attributes", {
+  # tests for the property `attributes` (CatalogsCreativeAssetsAttributes)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
+})
+
 test_that("catalog_type", {
   # tests for the property `catalog_type` (CatalogsType)
 
@@ -26,11 +33,4 @@ test_that("pins", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`pins`, "EXPECTED_RESULT")
-})
-
-test_that("attributes", {
-  # tests for the property `attributes` (CatalogsCreativeAssetsAttributes)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
 })

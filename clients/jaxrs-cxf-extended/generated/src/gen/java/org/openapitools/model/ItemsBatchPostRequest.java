@@ -21,6 +21,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ItemsBatchPostRequest  {
   
+ /**
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  */
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -56,6 +62,13 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private Country country;
+
+ /**
+  * Array with catalogs items
+  */
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @Valid
+  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
 public enum LanguageEnum {
 
@@ -198,22 +211,33 @@ public enum LanguageEnum {
   @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
   private LanguageEnum language;
 
- /**
-  * Array with catalogs items
-  */
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @Valid
-  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
-
- /**
-  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  */
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  private String catalogId;
-
   @ApiModelProperty(required = true, value = "")
   @Valid
   private BatchOperation operation;
+ /**
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  * @return catalogId
+  */
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public ItemsBatchPostRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -265,31 +289,6 @@ public enum LanguageEnum {
   }
 
  /**
-  * We recommend using the CatalogsLocale values.
-  * @return language
-  */
-  @JsonProperty("language")
-  @NotNull
-  public String getLanguage() {
-    return language == null ? null : language.value();
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
- public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
-  public ItemsBatchPostRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
- /**
   * Array with catalogs items
   * @return items
   */
@@ -323,26 +322,27 @@ public enum LanguageEnum {
   }
 
  /**
-  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  * @return catalogId
+  * We recommend using the CatalogsLocale values.
+  * @return language
   */
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("language")
+  @NotNull
+  public String getLanguage() {
+    return language == null ? null : language.value();
   }
 
   /**
-   * Sets the <code>catalogId</code> property.
+   * Sets the <code>language</code> property.
    */
- public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+ public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
   /**
-   * Sets the <code>catalogId</code> property.
+   * Sets the <code>language</code> property.
    */
-  public ItemsBatchPostRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public ItemsBatchPostRequest language(LanguageEnum language) {
+    this.language = language;
     return this;
   }
 
@@ -381,17 +381,17 @@ public enum LanguageEnum {
       return false;
     }
     ItemsBatchPostRequest itemsBatchPostRequest = (ItemsBatchPostRequest) o;
-    return Objects.equals(this.catalogType, itemsBatchPostRequest.catalogType) &&
+    return Objects.equals(this.catalogId, itemsBatchPostRequest.catalogId) &&
+        Objects.equals(this.catalogType, itemsBatchPostRequest.catalogType) &&
         Objects.equals(this.country, itemsBatchPostRequest.country) &&
-        Objects.equals(this.language, itemsBatchPostRequest.language) &&
         Objects.equals(this.items, itemsBatchPostRequest.items) &&
-        Objects.equals(this.catalogId, itemsBatchPostRequest.catalogId) &&
+        Objects.equals(this.language, itemsBatchPostRequest.language) &&
         Objects.equals(this.operation, itemsBatchPostRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId, operation);
+    return Objects.hash(catalogId, catalogType, country, items, language, operation);
   }
 
   @Override
@@ -399,11 +399,11 @@ public enum LanguageEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemsBatchPostRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

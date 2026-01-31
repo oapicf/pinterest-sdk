@@ -10,14 +10,14 @@ import org.openapitools.models.CatalogsCreativeAssetsProductGroupFilters
 /**
  * Request object for updating a creative assets product group.
  * @param catalogUnderscoretype 
- * @param name 
  * @param description 
  * @param filters 
+ * @param name 
  */
 case class CatalogsCreativeAssetsProductGroupUpdateRequest(catalogUnderscoretype: Option[String],
-                name: Option[String],
                 description: Option[String],
-                filters: Option[CatalogsCreativeAssetsProductGroupFilters]
+                filters: Option[CatalogsCreativeAssetsProductGroupFilters],
+                name: Option[String]
                 )
 
 object CatalogsCreativeAssetsProductGroupUpdateRequest {

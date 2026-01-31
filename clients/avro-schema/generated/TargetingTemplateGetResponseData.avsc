@@ -5,28 +5,10 @@
   "name": "TargetingTemplateGetResponseData",
   "fields": [
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "targeting template name",
-      "default": null
-    },
-    {
       "name": "auto_targeting_enabled",
       "type": ["boolean", "null"],
       "doc": "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
       "default": true
-    },
-    {
-      "name": "targeting_attributes",
-      "type": ["null", "model.TargetingSpec"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "placement_group",
-      "type": ["null", "model.PlacementGroupType"],
-      "doc": "",
-      "default": null
     },
     {
       "name": "keywords",
@@ -38,15 +20,33 @@
       "default": null
     },
     {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "targeting template name",
+      "default": null
+    },
+    {
+      "name": "placement_group",
+      "type": ["null", "model.PlacementGroupType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "targeting_attributes",
+      "type": ["null", "model.TargetingSpec"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "tracking_urls",
       "type": ["null", "model.TrackingUrls"],
       "doc": "",
       "default": null
     },
     {
-      "name": "id",
+      "name": "ad_account_id",
       "type": ["null", "string"],
-      "doc": "Targeting template ID.",
+      "doc": "The ID of the advertiser that this targeting template belongs to.",
       "default": null
     },
     {
@@ -56,15 +56,15 @@
       "default": null
     },
     {
-      "name": "updated_time",
-      "type": ["null", "int"],
-      "doc": "Targeting template updated time.Unix timestamp in seconds.",
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Targeting template ID.",
       "default": null
     },
     {
-      "name": "ad_account_id",
-      "type": ["null", "string"],
-      "doc": "The ID of the advertiser that this targeting template belongs to.",
+      "name": "sizing",
+      "type": ["null", "model.TargetingTemplateAudienceSizing"],
+      "doc": "",
       "default": null
     },
     {
@@ -81,9 +81,9 @@
       "default": StatusEnum.ACTIVE
     },
     {
-      "name": "sizing",
-      "type": ["null", "model.TargetingTemplateAudienceSizing"],
-      "doc": "",
+      "name": "updated_time",
+      "type": ["null", "int"],
+      "doc": "Targeting template updated time.Unix timestamp in seconds.",
       "default": null
     },
     {

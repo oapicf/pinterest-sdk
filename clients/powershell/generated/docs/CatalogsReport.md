@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReportStatus** | **String** |  | [optional] 
-**Url** | **String** | URL to download the report | [optional] 
 **Size** | **Decimal** | Size of the report in bytes | [optional] 
+**Url** | **String** | URL to download the report | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsReport = Initialize-PSOpenAPIToolsCatalogsReport  -ReportStatus null `
- -Url null `
- -Size null
+ -Size null `
+ -Url null
 ```
 
 - Convert the resource to JSON

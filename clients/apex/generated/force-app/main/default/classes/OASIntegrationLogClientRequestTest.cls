@@ -83,8 +83,8 @@ private class OASIntegrationLogClientRequestTest {
         OASIntegrationLogClientRequest integrationLogClientRequest = new OASIntegrationLogClientRequest();
         System.assertEquals(new Map<String, String>(), integrationLogClientRequest.requestHeaders);
         System.assertEquals(new Map<String, String>(), integrationLogClientRequest.responseHeaders);
-        System.assertEquals(null, integrationLogClientRequest.method);
         System.assertEquals(null, integrationLogClientRequest.host);
+        System.assertEquals(null, integrationLogClientRequest.method);
         System.assertEquals(null, integrationLogClientRequest.path);
         System.assertEquals(null, integrationLogClientRequest.responseStatusCode);
     }

@@ -6,27 +6,27 @@
 
 
 static search_user_boards_get_200_response_t *search_user_boards_get_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     search_user_boards_get_200_response_t *search_user_boards_get_200_response_local_var = malloc(sizeof(search_user_boards_get_200_response_t));
     if (!search_user_boards_get_200_response_local_var) {
         return NULL;
     }
-    search_user_boards_get_200_response_local_var->items = items;
     search_user_boards_get_200_response_local_var->bookmark = bookmark;
+    search_user_boards_get_200_response_local_var->items = items;
 
     search_user_boards_get_200_response_local_var->_library_owned = 1;
     return search_user_boards_get_200_response_local_var;
 }
 
 __attribute__((deprecated)) search_user_boards_get_200_response_t *search_user_boards_get_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return search_user_boards_get_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void search_user_boards_get_200_response_free(search_user_boards_get_200_respons
         return ;
     }
     listEntry_t *listEntry;
+    if (search_user_boards_get_200_response->bookmark) {
+        free(search_user_boards_get_200_response->bookmark);
+        search_user_boards_get_200_response->bookmark = NULL;
+    }
     if (search_user_boards_get_200_response->items) {
         list_ForEach(listEntry, search_user_boards_get_200_response->items) {
             board_free(listEntry->data);
@@ -46,15 +50,19 @@ void search_user_boards_get_200_response_free(search_user_boards_get_200_respons
         list_freeList(search_user_boards_get_200_response->items);
         search_user_boards_get_200_response->items = NULL;
     }
-    if (search_user_boards_get_200_response->bookmark) {
-        free(search_user_boards_get_200_response->bookmark);
-        search_user_boards_get_200_response->bookmark = NULL;
-    }
     free(search_user_boards_get_200_response);
 }
 
 cJSON *search_user_boards_get_200_response_convertToJSON(search_user_boards_get_200_response_t *search_user_boards_get_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // search_user_boards_get_200_response->bookmark
+    if(search_user_boards_get_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", search_user_boards_get_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // search_user_boards_get_200_response->items
     if (!search_user_boards_get_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *search_user_boards_get_200_response_convertToJSON(search_user_boards_get_
     }
     }
 
-
-    // search_user_boards_get_200_response->bookmark
-    if(search_user_boards_get_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", search_user_boards_get_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ search_user_boards_get_200_response_t *search_user_boards_get_200_response_parse
 
     // define the local list for search_user_boards_get_200_response->items
     list_t *itemsList = NULL;
+
+    // search_user_boards_get_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(search_user_boards_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // search_user_boards_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(search_user_boards_get_200_responseJSON, "items");
@@ -126,22 +138,10 @@ search_user_boards_get_200_response_t *search_user_boards_get_200_response_parse
         list_addElement(itemsList, itemsItem);
     }
 
-    // search_user_boards_get_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(search_user_boards_get_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     search_user_boards_get_200_response_local_var = search_user_boards_get_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return search_user_boards_get_200_response_local_var;

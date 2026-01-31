@@ -4,15 +4,15 @@ package org.openapitools.server.model
 /**
  * = SingleInterestTargetingOptionData =
  *
- * @param id  for example: ''945391946569''
- * @param name  for example: ''Dress''
  * @param childInterests  for example: ''null''
+ * @param id  for example: ''945391946569''
  * @param level  for example: ''2''
+ * @param name  for example: ''Dress''
 */
 final case class SingleInterestTargetingOptionResponse (
-  id: Option[String] = None,
-  name: Option[String] = None,
   childInterests: Option[Seq[String]] = None,
-  level: Option[Int] = None
+  id: Option[String] = None,
+  level: Option[Int] = None,
+  name: Option[String] = None
 )
 

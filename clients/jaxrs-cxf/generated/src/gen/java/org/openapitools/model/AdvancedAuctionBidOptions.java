@@ -18,6 +18,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdvancedAuctionBidOptions  {
   
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private AppTypeMultipliers appTypeMultipliers;
+
  /**
   * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
   */
@@ -29,31 +35,7 @@ public class AdvancedAuctionBidOptions  {
 
   @Valid
 
-  private AppTypeMultipliers appTypeMultipliers;
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
   private PlacementMultipliers placementMultipliers;
- /**
-   * Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.
-   * @return bidInMicroCurrency
-  **/
-  @JsonProperty("bid_in_micro_currency")
-  public Long getBidInMicroCurrency() {
-    return bidInMicroCurrency;
-  }
-
-  public void setBidInMicroCurrency(Long bidInMicroCurrency) {
-    this.bidInMicroCurrency = bidInMicroCurrency;
-  }
-
-  public AdvancedAuctionBidOptions bidInMicroCurrency(Long bidInMicroCurrency) {
-    this.bidInMicroCurrency = bidInMicroCurrency;
-    return this;
-  }
-
  /**
    * Get appTypeMultipliers
    * @return appTypeMultipliers
@@ -69,6 +51,24 @@ public class AdvancedAuctionBidOptions  {
 
   public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
     this.appTypeMultipliers = appTypeMultipliers;
+    return this;
+  }
+
+ /**
+   * Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.
+   * @return bidInMicroCurrency
+  **/
+  @JsonProperty("bid_in_micro_currency")
+  public Long getBidInMicroCurrency() {
+    return bidInMicroCurrency;
+  }
+
+  public void setBidInMicroCurrency(Long bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
+  }
+
+  public AdvancedAuctionBidOptions bidInMicroCurrency(Long bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
     return this;
   }
 
@@ -99,14 +99,14 @@ public class AdvancedAuctionBidOptions  {
       return false;
     }
     AdvancedAuctionBidOptions advancedAuctionBidOptions = (AdvancedAuctionBidOptions) o;
-    return Objects.equals(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
-        Objects.equals(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+    return Objects.equals(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+        Objects.equals(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
         Objects.equals(this.placementMultipliers, advancedAuctionBidOptions.placementMultipliers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidInMicroCurrency, appTypeMultipliers, placementMultipliers);
+    return Objects.hash(appTypeMultipliers, bidInMicroCurrency, placementMultipliers);
   }
 
   @Override
@@ -114,8 +114,8 @@ public class AdvancedAuctionBidOptions  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionBidOptions {\n");
     
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();

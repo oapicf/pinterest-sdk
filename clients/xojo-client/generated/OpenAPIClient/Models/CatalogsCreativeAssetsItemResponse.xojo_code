@@ -2,6 +2,11 @@
 Protected Class CatalogsCreativeAssetsItemResponse
 
 	#tag Property, Flags = &h0
+		Escapedattributes As OpenAPIClient.Models.CatalogsCreativeAssetsAttributes
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
@@ -19,11 +24,6 @@ Protected Class CatalogsCreativeAssetsItemResponse
 			The pins mapped to the item
 		#tag EndNote
 		pins() As OpenAPIClient.Models.Pin
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.CatalogsCreativeAssetsAttributes
 	#tag EndProperty
 
 
@@ -64,6 +64,14 @@ Protected Class CatalogsCreativeAssetsItemResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Escapedattributes"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsCreativeAssetsAttributes"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="catalog_type"
 			Visible=false
 			Group="Behavior"
@@ -85,14 +93,6 @@ Protected Class CatalogsCreativeAssetsItemResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Pin"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Escapedattributes"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsCreativeAssetsAttributes"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

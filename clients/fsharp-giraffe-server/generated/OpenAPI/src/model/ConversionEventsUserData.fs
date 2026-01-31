@@ -2,9 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ConversionEventsUserDataAnyOf
-open OpenAPI.Model.ConversionEventsUserDataAnyOf1
-open OpenAPI.Model.ConversionEventsUserDataAnyOf2
+open OpenAPI.Model.ConversionEventsUserDataProperties
 open OpenAPI.Model.string option
 
 module ConversionEventsUserData =
@@ -13,21 +11,21 @@ module ConversionEventsUserData =
 
 
   type ConversionEventsUserData = {
-    Ph : string[];
-    Ge : string[];
-    Db : string[];
-    Ln : string[];
-    Fn : string[];
-    Ct : string[];
-    St : string[];
-    Zp : string[];
-    Country : string[];
-    ExternalId : string[];
     ClickId : string option;
-    PartnerId : string option;
-    Em : string[];
-    HashedMaids : string[];
     ClientIpAddress : string;
     ClientUserAgent : string;
+    Country : string[];
+    Ct : string[];
+    Db : string[];
+    Em : string[];
+    ExternalId : string[];
+    Fn : string[];
+    Ge : string[];
+    HashedMaids : string[];
+    Ln : string[];
+    PartnerId : string option;
+    Ph : string[];
+    St : string[];
+    Zp : string[];
   }
   //#endregion

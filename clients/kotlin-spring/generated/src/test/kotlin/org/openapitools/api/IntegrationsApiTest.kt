@@ -1,6 +1,5 @@
 package org.openapitools.api
 
-import org.openapitools.model.DetailedError
 import org.openapitools.model.Error
 import org.openapitools.model.IntegrationLogsRequest
 import org.openapitools.model.IntegrationLogsSuccessResponse
@@ -9,6 +8,7 @@ import org.openapitools.model.IntegrationRecord
 import org.openapitools.model.IntegrationRequest
 import org.openapitools.model.IntegrationRequestPatch
 import org.openapitools.model.IntegrationsGetList200Response
+import org.openapitools.model.IntegrationsLogsPost400Response
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -55,7 +55,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsCommercePatchTest() {
         val externalBusinessId: kotlin.String = TODO()
-        val integrationRequestPatch: IntegrationRequestPatch? = TODO()
+        val integrationRequestPatch: IntegrationRequestPatch = TODO()
         
         val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
 
@@ -70,7 +70,7 @@ class IntegrationsApiTest {
      */
     @Test
     fun integrationsCommercePostTest() {
-        val integrationRequest: IntegrationRequest? = TODO()
+        val integrationRequest: IntegrationRequest = TODO()
         
         val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePost(integrationRequest)
 

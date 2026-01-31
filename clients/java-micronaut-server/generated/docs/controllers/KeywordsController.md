@@ -34,6 +34,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
+* **client_credentials**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 <a id="keywordsGet"></a>
 # **keywordsGet**
 ```java
-Mono<KeywordsGet200Response> KeywordsController.keywordsGet(adAccountIdcampaignIdadGroupIdmatchTypespageSizebookmark)
+Mono<KeywordsGet200Response> KeywordsController.keywordsGet(adAccountIdcampaignIdadGroupIdadGroupIdsmatchTypespageSizebookmark)
 ```
 
 Get keywords
@@ -81,8 +82,9 @@ Name | Type | Description  | Notes
 **adAccountId** | `String` | Unique identifier of an ad account. |
 **campaignId** | `String` | Campaign Id to use to filter the results. | [optional parameter]
 **adGroupId** | `String` | Ad group Id. | [optional parameter]
+**adGroupIds** | [**List&lt;@Pattern(regexp &#x3D; &quot;^\\d+$&quot;)@Size(max &#x3D; 18)String&gt;**](../../docs/models/String.md) | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional parameter]
 **matchTypes** | [**List&lt;MatchType&gt;**](../../docs/models/MatchType.md) | Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
 
 ### Return type
@@ -90,6 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
+* **client_credentials**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -124,7 +127,7 @@ Name | Type | Description  | Notes
 <a id="trendingKeywordsList"></a>
 # **trendingKeywordsList**
 ```java
-Mono<TrendingKeywordsResponse> KeywordsController.trendingKeywordsList(regiontrendTypeinterestsgendersagesincludeKeywordsnormalizeAgainstGrouplimit)
+Mono<TrendingKeywordsResponse> KeywordsController.trendingKeywordsList(regiontrendTypeinterestsgendersagesincludeKeywordsnormalizeAgainstGrouplimitincludePredictionincludeDemographics)
 ```
 
 List trending keywords
@@ -142,6 +145,8 @@ Name | Type | Description  | Notes
 **includeKeywords** | [**List&lt;@Size(min &#x3D; 1, max &#x3D; 100)String&gt;**](../../docs/models/String.md) | If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [optional parameter]
 **normalizeAgainstGroup** | `Boolean` | Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional parameter] [default to `false`]
 **limit** | `Integer` | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [optional parameter] [default to `50`]
+**includePrediction** | `Boolean` | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [optional parameter] [default to `false`]
+**includeDemographics** | `Boolean` | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [optional parameter] [default to `false`]
 
 ### Return type
 [**TrendingKeywordsResponse**](../../docs/models/TrendingKeywordsResponse.md)

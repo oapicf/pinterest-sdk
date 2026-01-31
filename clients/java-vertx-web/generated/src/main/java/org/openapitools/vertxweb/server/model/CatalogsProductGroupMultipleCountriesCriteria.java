@@ -11,24 +11,15 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleCountriesCriteria   {
   
-  private List<Country> values = new ArrayList<>();
   private Boolean negated = false;
+  private List<Country> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleCountriesCriteria () {
 
   }
 
-  public CatalogsProductGroupMultipleCountriesCriteria (List<Country> values, Boolean negated) {
-    this.values = values;
+  public CatalogsProductGroupMultipleCountriesCriteria (Boolean negated, List<Country> values) {
     this.negated = negated;
-  }
-
-    
-  @JsonProperty("values")
-  public List<Country> getValues() {
-    return values;
-  }
-  public void setValues(List<Country> values) {
     this.values = values;
   }
 
@@ -41,6 +32,15 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     this.negated = negated;
   }
 
+    
+  @JsonProperty("values")
+  public List<Country> getValues() {
+    return values;
+  }
+  public void setValues(List<Country> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -51,13 +51,13 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleCountriesCriteria catalogsProductGroupMultipleCountriesCriteria = (CatalogsProductGroupMultipleCountriesCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleCountriesCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleCountriesCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleCountriesCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleCountriesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -65,8 +65,8 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleCountriesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

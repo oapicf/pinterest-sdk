@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * OptimizationGoalMetadataConversionTagV3GoalMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   @JsonProperty("attribution_windows")
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
@@ -116,6 +116,9 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   @JsonProperty("learning_mode_type")
   private LearningModeTypeEnum learningModeType;
 
+  @JsonProperty("reporting_event")
+  private String reportingEvent;
+
   public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
     this.attributionWindows = attributionWindows;
     return this;
@@ -194,10 +197,10 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   /**
-   * ROAS optimization is not supported
+   * Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
    * @return isRoasOptimized
    */
-  @ApiModelProperty(value = "ROAS optimization is not supported")
+  @ApiModelProperty(value = "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.")
   public Boolean getIsRoasOptimized() {
     return isRoasOptimized;
   }
@@ -224,6 +227,24 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     this.learningModeType = learningModeType;
   }
 
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata reportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+    return this;
+  }
+
+  /**
+   * Event name for custom or standard events mapped to an oCPM model
+   * @return reportingEvent
+   */
+  @ApiModelProperty(example = "INITIATE_CHECKOUT", value = "Event name for custom or standard events mapped to an oCPM model")
+  public String getReportingEvent() {
+    return reportingEvent;
+  }
+
+  public void setReportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -239,12 +260,13 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
         Objects.equals(this.conversionTagId, optimizationGoalMetadataConversionTagV3GoalMetadata.conversionTagId) &&
         Objects.equals(this.cpaGoalValueInMicroCurrency, optimizationGoalMetadataConversionTagV3GoalMetadata.cpaGoalValueInMicroCurrency) &&
         Objects.equals(this.isRoasOptimized, optimizationGoalMetadataConversionTagV3GoalMetadata.isRoasOptimized) &&
-        Objects.equals(this.learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType);
+        Objects.equals(this.learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType) &&
+        Objects.equals(this.reportingEvent, optimizationGoalMetadataConversionTagV3GoalMetadata.reportingEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType);
+    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType, reportingEvent);
   }
 
   @Override
@@ -258,6 +280,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     sb.append("    cpaGoalValueInMicroCurrency: ").append(toIndentedString(cpaGoalValueInMicroCurrency)).append("\n");
     sb.append("    isRoasOptimized: ").append(toIndentedString(isRoasOptimized)).append("\n");
     sb.append("    learningModeType: ").append(toIndentedString(learningModeType)).append("\n");
+    sb.append("    reportingEvent: ").append(toIndentedString(reportingEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,20 +1,19 @@
 #' Create a new PinUpdate
 #'
 #' @description
-#' Pin fields for updates
+#' Resource create or update operation model.
 #'
 #' @docType class
 #' @title PinUpdate
 #' @description PinUpdate Class
 #' @format An \code{R6Class} generator object
-#' @field alt_text Pin's alternative text. character [optional]
-#' @field board_id The id of the board to move the Pin onto. character [optional]
-#' @field board_section_id <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID. character [optional]
-#' @field description Pin description - 800 characters maximum. character [optional]
-#' @field link URL viewer is taken to when they click pin. character [optional]
-#' @field title The native pin title that creators explicitly prefer to display. character [optional]
-#' @field carousel_slots Carousel Pin slots data. list(\link{PinUpdateCarouselSlotsInner}) [optional]
-#' @field note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. character [optional]
+#' @field alt_text  character [optional]
+#' @field board_id The board to which this Pin belongs. character [optional]
+#' @field board_section_id The board section to which this Pin belongs. character [optional]
+#' @field carousel_slots Carousel Pin slots data. list(\link{CarouselSlot}) [optional]
+#' @field description  character [optional]
+#' @field link  character [optional]
+#' @field title  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,25 +23,23 @@ PinUpdate <- R6::R6Class(
     `alt_text` = NULL,
     `board_id` = NULL,
     `board_section_id` = NULL,
+    `carousel_slots` = NULL,
     `description` = NULL,
     `link` = NULL,
     `title` = NULL,
-    `carousel_slots` = NULL,
-    `note` = NULL,
 
     #' @description
     #' Initialize a new PinUpdate class.
     #'
-    #' @param alt_text Pin's alternative text.
-    #' @param board_id The id of the board to move the Pin onto.
-    #' @param board_section_id <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
-    #' @param description Pin description - 800 characters maximum.
-    #' @param link URL viewer is taken to when they click pin.
-    #' @param title The native pin title that creators explicitly prefer to display.
+    #' @param alt_text alt_text
+    #' @param board_id The board to which this Pin belongs.
+    #' @param board_section_id The board section to which this Pin belongs.
     #' @param carousel_slots Carousel Pin slots data.
-    #' @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+    #' @param description description
+    #' @param link link
+    #' @param title title
     #' @param ... Other optional arguments.
-    initialize = function(`alt_text` = NULL, `board_id` = NULL, `board_section_id` = NULL, `description` = NULL, `link` = NULL, `title` = NULL, `carousel_slots` = NULL, `note` = NULL, ...) {
+    initialize = function(`alt_text` = NULL, `board_id` = NULL, `board_section_id` = NULL, `carousel_slots` = NULL, `description` = NULL, `link` = NULL, `title` = NULL, ...) {
       if (!is.null(`alt_text`)) {
         if (!(is.character(`alt_text`) && length(`alt_text`) == 1)) {
           stop(paste("Error! Invalid data for `alt_text`. Must be a string:", `alt_text`))
@@ -61,6 +58,11 @@ PinUpdate <- R6::R6Class(
         }
         self$`board_section_id` <- `board_section_id`
       }
+      if (!is.null(`carousel_slots`)) {
+        stopifnot(is.vector(`carousel_slots`), length(`carousel_slots`) != 0)
+        sapply(`carousel_slots`, function(x) stopifnot(R6::is.R6(x)))
+        self$`carousel_slots` <- `carousel_slots`
+      }
       if (!is.null(`description`)) {
         if (!(is.character(`description`) && length(`description`) == 1)) {
           stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
@@ -78,17 +80,6 @@ PinUpdate <- R6::R6Class(
           stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
         }
         self$`title` <- `title`
-      }
-      if (!is.null(`carousel_slots`)) {
-        stopifnot(is.vector(`carousel_slots`), length(`carousel_slots`) != 0)
-        sapply(`carousel_slots`, function(x) stopifnot(R6::is.R6(x)))
-        self$`carousel_slots` <- `carousel_slots`
-      }
-      if (!is.null(`note`)) {
-        if (!(is.character(`note`) && length(`note`) == 1)) {
-          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
-        }
-        self$`note` <- `note`
       }
     },
 
@@ -135,6 +126,10 @@ PinUpdate <- R6::R6Class(
         PinUpdateObject[["board_section_id"]] <-
           self$`board_section_id`
       }
+      if (!is.null(self$`carousel_slots`)) {
+        PinUpdateObject[["carousel_slots"]] <-
+          lapply(self$`carousel_slots`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`description`)) {
         PinUpdateObject[["description"]] <-
           self$`description`
@@ -146,14 +141,6 @@ PinUpdate <- R6::R6Class(
       if (!is.null(self$`title`)) {
         PinUpdateObject[["title"]] <-
           self$`title`
-      }
-      if (!is.null(self$`carousel_slots`)) {
-        PinUpdateObject[["carousel_slots"]] <-
-          lapply(self$`carousel_slots`, function(x) x$toSimpleType())
-      }
-      if (!is.null(self$`note`)) {
-        PinUpdateObject[["note"]] <-
-          self$`note`
       }
       return(PinUpdateObject)
     },
@@ -174,6 +161,9 @@ PinUpdate <- R6::R6Class(
       if (!is.null(this_object$`board_section_id`)) {
         self$`board_section_id` <- this_object$`board_section_id`
       }
+      if (!is.null(this_object$`carousel_slots`)) {
+        self$`carousel_slots` <- ApiClient$new()$deserializeObj(this_object$`carousel_slots`, "array[CarouselSlot]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`description`)) {
         self$`description` <- this_object$`description`
       }
@@ -182,12 +172,6 @@ PinUpdate <- R6::R6Class(
       }
       if (!is.null(this_object$`title`)) {
         self$`title` <- this_object$`title`
-      }
-      if (!is.null(this_object$`carousel_slots`)) {
-        self$`carousel_slots` <- ApiClient$new()$deserializeObj(this_object$`carousel_slots`, "array[PinUpdateCarouselSlotsInner]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`note`)) {
-        self$`note` <- this_object$`note`
       }
       self
     },
@@ -213,11 +197,10 @@ PinUpdate <- R6::R6Class(
       self$`alt_text` <- this_object$`alt_text`
       self$`board_id` <- this_object$`board_id`
       self$`board_section_id` <- this_object$`board_section_id`
+      self$`carousel_slots` <- ApiClient$new()$deserializeObj(this_object$`carousel_slots`, "array[CarouselSlot]", loadNamespace("openapi"))
       self$`description` <- this_object$`description`
       self$`link` <- this_object$`link`
       self$`title` <- this_object$`title`
-      self$`carousel_slots` <- ApiClient$new()$deserializeObj(this_object$`carousel_slots`, "array[PinUpdateCarouselSlotsInner]", loadNamespace("openapi"))
-      self$`note` <- this_object$`note`
       self
     },
 

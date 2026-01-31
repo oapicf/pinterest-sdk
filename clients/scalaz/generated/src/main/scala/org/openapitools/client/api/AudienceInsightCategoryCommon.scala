@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import AudienceInsightCategoryCommon._
 
 case class AudienceInsightCategoryCommon (
-  key: Option[String],
-name: Option[String],
-ratio: Option[BigDecimal],
+  id: Option[String],
 index: Option[BigDecimal],
-id: Option[String])
+key: Option[String],
+name: Option[String],
+ratio: Option[BigDecimal])
 
 object AudienceInsightCategoryCommon {
   import DateTimeCodecs._

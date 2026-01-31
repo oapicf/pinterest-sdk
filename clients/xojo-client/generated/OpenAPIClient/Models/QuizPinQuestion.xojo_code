@@ -2,17 +2,17 @@
 Protected Class QuizPinQuestion
 
 	#tag Property, Flags = &h0
+		options() As OpenAPIClient.Models.QuizPinOption
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		question_id As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		question_text As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		options() As OpenAPIClient.Models.QuizPinOption
 	#tag EndProperty
 
 
@@ -53,6 +53,14 @@ Protected Class QuizPinQuestion
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="options"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="QuizPinOption"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="question_id"
 			Visible=false
 			Group="Behavior"
@@ -66,14 +74,6 @@ Protected Class QuizPinQuestion
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="options"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="QuizPinOption"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

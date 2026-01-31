@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`values` | [Array&lt;MediaType&gt;](MediaType.md)
 `negated` | boolean
+`values` | [Array&lt;MediaType&gt;](MediaType.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsProductGroupMultipleMediaTypesCriteria } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "values": null,
   "negated": null,
+  "values": null,
 } satisfies CatalogsProductGroupMultipleMediaTypesCriteria
 
 console.log(example)

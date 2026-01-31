@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;IntegrationRecord&gt;](IntegrationRecord.md)
 `bookmark` | string
+`items` | [Array&lt;IntegrationRecord&gt;](IntegrationRecord.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { IntegrationsGetList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies IntegrationsGetList200Response
 
 console.log(example)

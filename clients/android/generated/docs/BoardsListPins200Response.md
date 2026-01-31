@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;Pin&gt;**](Pin.md) | Pins | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;Pin&gt;**](Pin.md) | Pins | 
 
 
 

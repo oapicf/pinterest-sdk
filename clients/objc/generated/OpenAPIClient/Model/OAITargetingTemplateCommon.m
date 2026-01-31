@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"autoTargetingEnabled": @"auto_targeting_enabled", @"targetingAttributes": @"targeting_attributes", @"placementGroup": @"placement_group", @"keywords": @"keywords", @"trackingUrls": @"tracking_urls" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"autoTargetingEnabled": @"auto_targeting_enabled", @"keywords": @"keywords", @"name": @"name", @"placementGroup": @"placement_group", @"targetingAttributes": @"targeting_attributes", @"trackingUrls": @"tracking_urls" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"autoTargetingEnabled", @"targetingAttributes", @"placementGroup", @"keywords", @"trackingUrls"];
+  NSArray *optionalProperties = @[@"autoTargetingEnabled", @"keywords", @"name", @"placementGroup", @"targetingAttributes", @"trackingUrls"];
   return [optionalProperties containsObject:propertyName];
 }
 

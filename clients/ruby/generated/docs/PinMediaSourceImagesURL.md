@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **source_type** | **String** |  | [optional] |
-| **items** | [**Array&lt;PinMediaSourceImagesURLItemsInner&gt;**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. |  |
 | **index** | **Integer** |  | [optional] |
+| **items** | [**Array&lt;PinMediaSourceImagesURLItem&gt;**](PinMediaSourceImagesURLItem.md) | Array with image objects. |  |
+| **source_type** | **String** | The source type of the media. |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::PinMediaSourceImagesURL.new(
-  source_type: null,
+  index: null,
   items: null,
-  index: null
+  source_type: null
 )
 ```
 

@@ -22,17 +22,17 @@ hotel_processing_record_t* instantiate_hotel_processing_record(int include_optio
   hotel_processing_record_t* hotel_processing_record = NULL;
   if (include_optional) {
     hotel_processing_record = hotel_processing_record_create(
+      list_createList(),
       "DS0294-M",
-      list_createList(),
-      list_createList(),
-      pinterest_rest_api_hotel_processing_record__"SUCCESS"
+      pinterest_rest_api_hotel_processing_record__"SUCCESS",
+      list_createList()
     );
   } else {
     hotel_processing_record = hotel_processing_record_create(
+      list_createList(),
       "DS0294-M",
-      list_createList(),
-      list_createList(),
-      pinterest_rest_api_hotel_processing_record__"SUCCESS"
+      pinterest_rest_api_hotel_processing_record__"SUCCESS",
+      list_createList()
     );
   }
 

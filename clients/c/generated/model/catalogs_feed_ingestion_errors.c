@@ -23,51 +23,55 @@ pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_e ca
 }
 
 static catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create_internal(
-    int line_level_internal_error,
-    int large_product_count_decrease,
     int account_flagged,
-    int image_level_internal_error,
+    int fetch_google_sheet_not_shared,
     int image_file_not_accessible,
-    int image_malformed_url,
     int image_file_not_found,
-    int image_invalid_file
+    int image_invalid_file,
+    int image_level_internal_error,
+    int image_malformed_url,
+    int large_product_count_decrease,
+    int line_level_internal_error
     ) {
     catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_local_var = malloc(sizeof(catalogs_feed_ingestion_errors_t));
     if (!catalogs_feed_ingestion_errors_local_var) {
         return NULL;
     }
-    catalogs_feed_ingestion_errors_local_var->line_level_internal_error = line_level_internal_error;
-    catalogs_feed_ingestion_errors_local_var->large_product_count_decrease = large_product_count_decrease;
     catalogs_feed_ingestion_errors_local_var->account_flagged = account_flagged;
-    catalogs_feed_ingestion_errors_local_var->image_level_internal_error = image_level_internal_error;
+    catalogs_feed_ingestion_errors_local_var->fetch_google_sheet_not_shared = fetch_google_sheet_not_shared;
     catalogs_feed_ingestion_errors_local_var->image_file_not_accessible = image_file_not_accessible;
-    catalogs_feed_ingestion_errors_local_var->image_malformed_url = image_malformed_url;
     catalogs_feed_ingestion_errors_local_var->image_file_not_found = image_file_not_found;
     catalogs_feed_ingestion_errors_local_var->image_invalid_file = image_invalid_file;
+    catalogs_feed_ingestion_errors_local_var->image_level_internal_error = image_level_internal_error;
+    catalogs_feed_ingestion_errors_local_var->image_malformed_url = image_malformed_url;
+    catalogs_feed_ingestion_errors_local_var->large_product_count_decrease = large_product_count_decrease;
+    catalogs_feed_ingestion_errors_local_var->line_level_internal_error = line_level_internal_error;
 
     catalogs_feed_ingestion_errors_local_var->_library_owned = 1;
     return catalogs_feed_ingestion_errors_local_var;
 }
 
 __attribute__((deprecated)) catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
-    int line_level_internal_error,
-    int large_product_count_decrease,
     int account_flagged,
-    int image_level_internal_error,
+    int fetch_google_sheet_not_shared,
     int image_file_not_accessible,
-    int image_malformed_url,
     int image_file_not_found,
-    int image_invalid_file
+    int image_invalid_file,
+    int image_level_internal_error,
+    int image_malformed_url,
+    int large_product_count_decrease,
+    int line_level_internal_error
     ) {
     return catalogs_feed_ingestion_errors_create_internal (
-        line_level_internal_error,
-        large_product_count_decrease,
         account_flagged,
-        image_level_internal_error,
+        fetch_google_sheet_not_shared,
         image_file_not_accessible,
-        image_malformed_url,
         image_file_not_found,
-        image_invalid_file
+        image_invalid_file,
+        image_level_internal_error,
+        image_malformed_url,
+        large_product_count_decrease,
+        line_level_internal_error
         );
 }
 
@@ -86,22 +90,6 @@ void catalogs_feed_ingestion_errors_free(catalogs_feed_ingestion_errors_t *catal
 cJSON *catalogs_feed_ingestion_errors_convertToJSON(catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_feed_ingestion_errors->line_level_internal_error
-    if(catalogs_feed_ingestion_errors->line_level_internal_error) {
-    if(cJSON_AddNumberToObject(item, "LINE_LEVEL_INTERNAL_ERROR", catalogs_feed_ingestion_errors->line_level_internal_error) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // catalogs_feed_ingestion_errors->large_product_count_decrease
-    if(catalogs_feed_ingestion_errors->large_product_count_decrease != pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_NULL) {
-    if(cJSON_AddNumberToObject(item, "LARGE_PRODUCT_COUNT_DECREASE", catalogs_feed_ingestion_errors->large_product_count_decrease) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
     // catalogs_feed_ingestion_errors->account_flagged
     if(catalogs_feed_ingestion_errors->account_flagged) {
     if(cJSON_AddNumberToObject(item, "ACCOUNT_FLAGGED", catalogs_feed_ingestion_errors->account_flagged) == NULL) {
@@ -110,9 +98,9 @@ cJSON *catalogs_feed_ingestion_errors_convertToJSON(catalogs_feed_ingestion_erro
     }
 
 
-    // catalogs_feed_ingestion_errors->image_level_internal_error
-    if(catalogs_feed_ingestion_errors->image_level_internal_error) {
-    if(cJSON_AddNumberToObject(item, "IMAGE_LEVEL_INTERNAL_ERROR", catalogs_feed_ingestion_errors->image_level_internal_error) == NULL) {
+    // catalogs_feed_ingestion_errors->fetch_google_sheet_not_shared
+    if(catalogs_feed_ingestion_errors->fetch_google_sheet_not_shared) {
+    if(cJSON_AddNumberToObject(item, "FETCH_GOOGLE_SHEET_NOT_SHARED", catalogs_feed_ingestion_errors->fetch_google_sheet_not_shared) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -121,14 +109,6 @@ cJSON *catalogs_feed_ingestion_errors_convertToJSON(catalogs_feed_ingestion_erro
     // catalogs_feed_ingestion_errors->image_file_not_accessible
     if(catalogs_feed_ingestion_errors->image_file_not_accessible) {
     if(cJSON_AddNumberToObject(item, "IMAGE_FILE_NOT_ACCESSIBLE", catalogs_feed_ingestion_errors->image_file_not_accessible) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // catalogs_feed_ingestion_errors->image_malformed_url
-    if(catalogs_feed_ingestion_errors->image_malformed_url) {
-    if(cJSON_AddNumberToObject(item, "IMAGE_MALFORMED_URL", catalogs_feed_ingestion_errors->image_malformed_url) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -149,6 +129,38 @@ cJSON *catalogs_feed_ingestion_errors_convertToJSON(catalogs_feed_ingestion_erro
     }
     }
 
+
+    // catalogs_feed_ingestion_errors->image_level_internal_error
+    if(catalogs_feed_ingestion_errors->image_level_internal_error) {
+    if(cJSON_AddNumberToObject(item, "IMAGE_LEVEL_INTERNAL_ERROR", catalogs_feed_ingestion_errors->image_level_internal_error) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // catalogs_feed_ingestion_errors->image_malformed_url
+    if(catalogs_feed_ingestion_errors->image_malformed_url) {
+    if(cJSON_AddNumberToObject(item, "IMAGE_MALFORMED_URL", catalogs_feed_ingestion_errors->image_malformed_url) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // catalogs_feed_ingestion_errors->large_product_count_decrease
+    if(catalogs_feed_ingestion_errors->large_product_count_decrease != pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_NULL) {
+    if(cJSON_AddNumberToObject(item, "LARGE_PRODUCT_COUNT_DECREASE", catalogs_feed_ingestion_errors->large_product_count_decrease) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // catalogs_feed_ingestion_errors->line_level_internal_error
+    if(catalogs_feed_ingestion_errors->line_level_internal_error) {
+    if(cJSON_AddNumberToObject(item, "LINE_LEVEL_INTERNAL_ERROR", catalogs_feed_ingestion_errors->line_level_internal_error) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -160,30 +172,6 @@ fail:
 catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(cJSON *catalogs_feed_ingestion_errorsJSON){
 
     catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_local_var = NULL;
-
-    // catalogs_feed_ingestion_errors->line_level_internal_error
-    cJSON *line_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "LINE_LEVEL_INTERNAL_ERROR");
-    if (cJSON_IsNull(line_level_internal_error)) {
-        line_level_internal_error = NULL;
-    }
-    if (line_level_internal_error) { 
-    if(!cJSON_IsNumber(line_level_internal_error))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // catalogs_feed_ingestion_errors->large_product_count_decrease
-    cJSON *large_product_count_decrease = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "LARGE_PRODUCT_COUNT_DECREASE");
-    if (cJSON_IsNull(large_product_count_decrease)) {
-        large_product_count_decrease = NULL;
-    }
-    if (large_product_count_decrease) { 
-    if(!cJSON_IsNumber(large_product_count_decrease))
-    {
-    goto end; //Numeric
-    }
-    }
 
     // catalogs_feed_ingestion_errors->account_flagged
     cJSON *account_flagged = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "ACCOUNT_FLAGGED");
@@ -197,13 +185,13 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
     }
     }
 
-    // catalogs_feed_ingestion_errors->image_level_internal_error
-    cJSON *image_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_LEVEL_INTERNAL_ERROR");
-    if (cJSON_IsNull(image_level_internal_error)) {
-        image_level_internal_error = NULL;
+    // catalogs_feed_ingestion_errors->fetch_google_sheet_not_shared
+    cJSON *fetch_google_sheet_not_shared = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "FETCH_GOOGLE_SHEET_NOT_SHARED");
+    if (cJSON_IsNull(fetch_google_sheet_not_shared)) {
+        fetch_google_sheet_not_shared = NULL;
     }
-    if (image_level_internal_error) { 
-    if(!cJSON_IsNumber(image_level_internal_error))
+    if (fetch_google_sheet_not_shared) { 
+    if(!cJSON_IsNumber(fetch_google_sheet_not_shared))
     {
     goto end; //Numeric
     }
@@ -216,18 +204,6 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
     }
     if (image_file_not_accessible) { 
     if(!cJSON_IsNumber(image_file_not_accessible))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // catalogs_feed_ingestion_errors->image_malformed_url
-    cJSON *image_malformed_url = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_MALFORMED_URL");
-    if (cJSON_IsNull(image_malformed_url)) {
-        image_malformed_url = NULL;
-    }
-    if (image_malformed_url) { 
-    if(!cJSON_IsNumber(image_malformed_url))
     {
     goto end; //Numeric
     }
@@ -257,16 +233,65 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
     }
     }
 
+    // catalogs_feed_ingestion_errors->image_level_internal_error
+    cJSON *image_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_LEVEL_INTERNAL_ERROR");
+    if (cJSON_IsNull(image_level_internal_error)) {
+        image_level_internal_error = NULL;
+    }
+    if (image_level_internal_error) { 
+    if(!cJSON_IsNumber(image_level_internal_error))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // catalogs_feed_ingestion_errors->image_malformed_url
+    cJSON *image_malformed_url = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_MALFORMED_URL");
+    if (cJSON_IsNull(image_malformed_url)) {
+        image_malformed_url = NULL;
+    }
+    if (image_malformed_url) { 
+    if(!cJSON_IsNumber(image_malformed_url))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // catalogs_feed_ingestion_errors->large_product_count_decrease
+    cJSON *large_product_count_decrease = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "LARGE_PRODUCT_COUNT_DECREASE");
+    if (cJSON_IsNull(large_product_count_decrease)) {
+        large_product_count_decrease = NULL;
+    }
+    if (large_product_count_decrease) { 
+    if(!cJSON_IsNumber(large_product_count_decrease))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // catalogs_feed_ingestion_errors->line_level_internal_error
+    cJSON *line_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "LINE_LEVEL_INTERNAL_ERROR");
+    if (cJSON_IsNull(line_level_internal_error)) {
+        line_level_internal_error = NULL;
+    }
+    if (line_level_internal_error) { 
+    if(!cJSON_IsNumber(line_level_internal_error))
+    {
+    goto end; //Numeric
+    }
+    }
+
 
     catalogs_feed_ingestion_errors_local_var = catalogs_feed_ingestion_errors_create_internal (
-        line_level_internal_error ? line_level_internal_error->valuedouble : 0,
-        large_product_count_decrease ? large_product_count_decrease->valuedouble : 0,
         account_flagged ? account_flagged->valuedouble : 0,
-        image_level_internal_error ? image_level_internal_error->valuedouble : 0,
+        fetch_google_sheet_not_shared ? fetch_google_sheet_not_shared->valuedouble : 0,
         image_file_not_accessible ? image_file_not_accessible->valuedouble : 0,
-        image_malformed_url ? image_malformed_url->valuedouble : 0,
         image_file_not_found ? image_file_not_found->valuedouble : 0,
-        image_invalid_file ? image_invalid_file->valuedouble : 0
+        image_invalid_file ? image_invalid_file->valuedouble : 0,
+        image_level_internal_error ? image_level_internal_error->valuedouble : 0,
+        image_malformed_url ? image_malformed_url->valuedouble : 0,
+        large_product_count_decrease ? large_product_count_decrease->valuedouble : 0,
+        line_level_internal_error ? line_level_internal_error->valuedouble : 0
         );
 
     return catalogs_feed_ingestion_errors_local_var;

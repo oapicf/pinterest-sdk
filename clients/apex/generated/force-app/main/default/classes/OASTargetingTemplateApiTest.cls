@@ -102,6 +102,31 @@ private class OASTargetingTemplateApiTest {
         expectedResponse = OASTargetingTemplateList200Response.getExample();
         response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASTargetingTemplateApi(client);
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**

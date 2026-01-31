@@ -4,26 +4,43 @@
 #include "pin_media_with_video.h"
 
 
+char* pin_media_with_video_media_type_ToString(pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type) {
+    char* media_typeArray[] =  { "NULL", "video" };
+    return media_typeArray[media_type];
+}
+
+pinterest_rest_api_pin_media_with_video_MEDIATYPE_e pin_media_with_video_media_type_FromString(char* media_type){
+    int stringToReturn = 0;
+    char *media_typeArray[] =  { "NULL", "video" };
+    size_t sizeofArray = sizeof(media_typeArray) / sizeof(media_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(media_type, media_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static pin_media_with_video_t *pin_media_with_video_create_internal(
-    char *media_type,
-    pin_media_with_image_all_of_images_t *images,
     char *cover_image_url,
-    char *video_url,
     double duration,
     int height,
+    image_size_t *images,
+    pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type,
+    char *video_url,
     int width
     ) {
     pin_media_with_video_t *pin_media_with_video_local_var = malloc(sizeof(pin_media_with_video_t));
     if (!pin_media_with_video_local_var) {
         return NULL;
     }
-    pin_media_with_video_local_var->media_type = media_type;
-    pin_media_with_video_local_var->images = images;
     pin_media_with_video_local_var->cover_image_url = cover_image_url;
-    pin_media_with_video_local_var->video_url = video_url;
     pin_media_with_video_local_var->duration = duration;
     pin_media_with_video_local_var->height = height;
+    pin_media_with_video_local_var->images = images;
+    pin_media_with_video_local_var->media_type = media_type;
+    pin_media_with_video_local_var->video_url = video_url;
     pin_media_with_video_local_var->width = width;
 
     pin_media_with_video_local_var->_library_owned = 1;
@@ -31,21 +48,21 @@ static pin_media_with_video_t *pin_media_with_video_create_internal(
 }
 
 __attribute__((deprecated)) pin_media_with_video_t *pin_media_with_video_create(
-    char *media_type,
-    pin_media_with_image_all_of_images_t *images,
     char *cover_image_url,
-    char *video_url,
     double duration,
     int height,
+    image_size_t *images,
+    pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type,
+    char *video_url,
     int width
     ) {
     return pin_media_with_video_create_internal (
-        media_type,
-        images,
         cover_image_url,
-        video_url,
         duration,
         height,
+        images,
+        media_type,
+        video_url,
         width
         );
 }
@@ -59,17 +76,13 @@ void pin_media_with_video_free(pin_media_with_video_t *pin_media_with_video) {
         return ;
     }
     listEntry_t *listEntry;
-    if (pin_media_with_video->media_type) {
-        free(pin_media_with_video->media_type);
-        pin_media_with_video->media_type = NULL;
-    }
-    if (pin_media_with_video->images) {
-        pin_media_with_image_all_of_images_free(pin_media_with_video->images);
-        pin_media_with_video->images = NULL;
-    }
     if (pin_media_with_video->cover_image_url) {
         free(pin_media_with_video->cover_image_url);
         pin_media_with_video->cover_image_url = NULL;
+    }
+    if (pin_media_with_video->images) {
+        image_size_free(pin_media_with_video->images);
+        pin_media_with_video->images = NULL;
     }
     if (pin_media_with_video->video_url) {
         free(pin_media_with_video->video_url);
@@ -81,38 +94,9 @@ void pin_media_with_video_free(pin_media_with_video_t *pin_media_with_video) {
 cJSON *pin_media_with_video_convertToJSON(pin_media_with_video_t *pin_media_with_video) {
     cJSON *item = cJSON_CreateObject();
 
-    // pin_media_with_video->media_type
-    if(pin_media_with_video->media_type) {
-    if(cJSON_AddStringToObject(item, "media_type", pin_media_with_video->media_type) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // pin_media_with_video->images
-    if(pin_media_with_video->images) {
-    cJSON *images_local_JSON = pin_media_with_image_all_of_images_convertToJSON(pin_media_with_video->images);
-    if(images_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "images", images_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
     // pin_media_with_video->cover_image_url
     if(pin_media_with_video->cover_image_url) {
     if(cJSON_AddStringToObject(item, "cover_image_url", pin_media_with_video->cover_image_url) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // pin_media_with_video->video_url
-    if(pin_media_with_video->video_url) {
-    if(cJSON_AddStringToObject(item, "video_url", pin_media_with_video->video_url) == NULL) {
     goto fail; //String
     }
     }
@@ -130,6 +114,37 @@ cJSON *pin_media_with_video_convertToJSON(pin_media_with_video_t *pin_media_with
     if(pin_media_with_video->height) {
     if(cJSON_AddNumberToObject(item, "height", pin_media_with_video->height) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // pin_media_with_video->images
+    if(pin_media_with_video->images) {
+    cJSON *images_local_JSON = image_size_convertToJSON(pin_media_with_video->images);
+    if(images_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "images", images_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // pin_media_with_video->media_type
+    if (pinterest_rest_api_pin_media_with_video_MEDIATYPE_NULL == pin_media_with_video->media_type) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "media_type", pin_media_with_video_media_type_ToString(pin_media_with_video->media_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
+
+    // pin_media_with_video->video_url
+    if(pin_media_with_video->video_url) {
+    if(cJSON_AddStringToObject(item, "video_url", pin_media_with_video->video_url) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -154,28 +169,7 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
     pin_media_with_video_t *pin_media_with_video_local_var = NULL;
 
     // define the local variable for pin_media_with_video->images
-    pin_media_with_image_all_of_images_t *images_local_nonprim = NULL;
-
-    // pin_media_with_video->media_type
-    cJSON *media_type = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "media_type");
-    if (cJSON_IsNull(media_type)) {
-        media_type = NULL;
-    }
-    if (media_type) { 
-    if(!cJSON_IsString(media_type) && !cJSON_IsNull(media_type))
-    {
-    goto end; //String
-    }
-    }
-
-    // pin_media_with_video->images
-    cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "images");
-    if (cJSON_IsNull(images)) {
-        images = NULL;
-    }
-    if (images) { 
-    images_local_nonprim = pin_media_with_image_all_of_images_parseFromJSON(images); //nonprimitive
-    }
+    image_size_t *images_local_nonprim = NULL;
 
     // pin_media_with_video->cover_image_url
     cJSON *cover_image_url = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "cover_image_url");
@@ -184,18 +178,6 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
     }
     if (cover_image_url) { 
     if(!cJSON_IsString(cover_image_url) && !cJSON_IsNull(cover_image_url))
-    {
-    goto end; //String
-    }
-    }
-
-    // pin_media_with_video->video_url
-    cJSON *video_url = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "video_url");
-    if (cJSON_IsNull(video_url)) {
-        video_url = NULL;
-    }
-    if (video_url) { 
-    if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
     {
     goto end; //String
     }
@@ -225,6 +207,44 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
     }
     }
 
+    // pin_media_with_video->images
+    cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "images");
+    if (cJSON_IsNull(images)) {
+        images = NULL;
+    }
+    if (images) { 
+    images_local_nonprim = image_size_parseFromJSON(images); //nonprimitive
+    }
+
+    // pin_media_with_video->media_type
+    cJSON *media_type = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
+    if (!media_type) {
+        goto end;
+    }
+
+    pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_typeVariable;
+    
+    if(!cJSON_IsString(media_type))
+    {
+    goto end; //Enum
+    }
+    media_typeVariable = pin_media_with_video_media_type_FromString(media_type->valuestring);
+
+    // pin_media_with_video->video_url
+    cJSON *video_url = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "video_url");
+    if (cJSON_IsNull(video_url)) {
+        video_url = NULL;
+    }
+    if (video_url) { 
+    if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
+    {
+    goto end; //String
+    }
+    }
+
     // pin_media_with_video->width
     cJSON *width = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "width");
     if (cJSON_IsNull(width)) {
@@ -239,19 +259,19 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
 
     pin_media_with_video_local_var = pin_media_with_video_create_internal (
-        media_type && !cJSON_IsNull(media_type) ? strdup(media_type->valuestring) : NULL,
-        images ? images_local_nonprim : NULL,
         cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,
-        video_url && !cJSON_IsNull(video_url) ? strdup(video_url->valuestring) : NULL,
         duration ? duration->valuedouble : 0,
         height ? height->valuedouble : 0,
+        images ? images_local_nonprim : NULL,
+        media_typeVariable,
+        video_url && !cJSON_IsNull(video_url) ? strdup(video_url->valuestring) : NULL,
         width ? width->valuedouble : 0
         );
 
     return pin_media_with_video_local_var;
 end:
     if (images_local_nonprim) {
-        pin_media_with_image_all_of_images_free(images_local_nonprim);
+        image_size_free(images_local_nonprim);
         images_local_nonprim = NULL;
     }
     return NULL;

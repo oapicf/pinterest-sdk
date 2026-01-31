@@ -5,7 +5,16 @@
   "name": "TrackingUrls",
   "fields": [
     {
-      "name": "impression",
+      "name": "audience_verification",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "buyable_button",
       "type": ["null", {
         "type": "array",
         "items": "string"
@@ -32,16 +41,7 @@
       "default": null
     },
     {
-      "name": "buyable_button",
-      "type": ["null", {
-        "type": "array",
-        "items": "string"
-      }],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "audience_verification",
+      "name": "impression",
       "type": ["null", {
         "type": "array",
         "items": "string"

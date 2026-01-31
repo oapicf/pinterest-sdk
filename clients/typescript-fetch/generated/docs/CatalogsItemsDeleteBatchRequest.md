@@ -8,9 +8,9 @@ Request object to delete catalogs items
 Name | Type
 ------------ | -------------
 `country` | [Country](Country.md)
+`items` | [Array&lt;ItemDeleteBatchRecord&gt;](ItemDeleteBatchRecord.md)
 `language` | string
 `operation` | [BatchOperation](BatchOperation.md)
-`items` | [Array&lt;ItemDeleteBatchRecord&gt;](ItemDeleteBatchRecord.md)
 
 ## Example
 
@@ -20,9 +20,9 @@ import type { CatalogsItemsDeleteBatchRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "country": null,
+  "items": null,
   "language": null,
   "operation": null,
-  "items": null,
 } satisfies CatalogsItemsDeleteBatchRequest
 
 console.log(example)

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server NonDraftEntityStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a NonDraftEntityStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  NonDraftEntityStatus {
+    title = NonDraftEntityStatus
+    description = NonDraftEntityStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  NonDraftEntityStatus {
+    title = NonDraftEntityStatus
+    description = NonDraftEntityStatus
+    implements = openapi_server.resourceTypes.NonDraftEntityStatus
+
+  }
+}

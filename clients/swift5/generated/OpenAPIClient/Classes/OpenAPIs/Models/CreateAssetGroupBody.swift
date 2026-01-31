@@ -12,22 +12,22 @@ import AnyCodable
 
 public struct CreateAssetGroupBody: Codable, JSONEncodable, Hashable {
 
-    /** Asset Group name */
-    public var assetGroupName: String
     /** Asset group description */
     public var assetGroupDescription: String
+    /** Asset Group name */
+    public var assetGroupName: String
     /** Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. */
     public var assetGroupTypes: [AssetGroupType]
 
-    public init(assetGroupName: String, assetGroupDescription: String, assetGroupTypes: [AssetGroupType]) {
-        self.assetGroupName = assetGroupName
+    public init(assetGroupDescription: String, assetGroupName: String, assetGroupTypes: [AssetGroupType]) {
         self.assetGroupDescription = assetGroupDescription
+        self.assetGroupName = assetGroupName
         self.assetGroupTypes = assetGroupTypes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case assetGroupName = "asset_group_name"
         case assetGroupDescription = "asset_group_description"
+        case assetGroupName = "asset_group_name"
         case assetGroupTypes = "asset_group_types"
     }
 
@@ -35,8 +35,8 @@ public struct CreateAssetGroupBody: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(assetGroupName, forKey: .assetGroupName)
         try container.encode(assetGroupDescription, forKey: .assetGroupDescription)
+        try container.encode(assetGroupName, forKey: .assetGroupName)
         try container.encode(assetGroupTypes, forKey: .assetGroupTypes)
     }
 }

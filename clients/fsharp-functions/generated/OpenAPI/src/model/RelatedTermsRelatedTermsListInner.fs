@@ -10,10 +10,10 @@ module RelatedTermsRelatedTermsListInner =
 
   [<CLIMutable>]
   type RelatedTermsRelatedTermsListInner = {
-    [<JsonProperty(PropertyName = "term")>]
-    Term : string;
     [<JsonProperty(PropertyName = "related_terms")>]
     RelatedTerms : string[];
+    [<JsonProperty(PropertyName = "term")>]
+    Term : string;
   }
 
   //#endregion

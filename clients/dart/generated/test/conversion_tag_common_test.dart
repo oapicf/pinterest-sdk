@@ -16,18 +16,18 @@ void main() {
   // final instance = ConversionTagCommon();
 
   group('test ConversionTagCommon', () {
-    // Ad account ID.
-    // String adAccountId
-    test('to test the property `adAccountId`', () async {
-      // TODO
-    });
-
     // Tag code snippet.
     // String codeSnippet
     test('to test the property `codeSnippet`', () async {
       // TODO
     });
 
+    // ConversionTagConfigs configs
+    test('to test the property `configs`', () async {
+      // TODO
+    });
+
+    // The enhanced match status of the tag
     // EnhancedMatchStatusType enhancedMatchStatus
     test('to test the property `enhancedMatchStatus`', () async {
       // TODO
@@ -51,19 +51,9 @@ void main() {
       // TODO
     });
 
-    // EntityStatus status
-    test('to test the property `status`', () async {
-      // TODO
-    });
-
     // Version number.
     // String version
     test('to test the property `version`', () async {
-      // TODO
-    });
-
-    // ConversionTagConfigs configs
-    test('to test the property `configs`', () async {
       // TODO
     });
 

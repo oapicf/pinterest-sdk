@@ -119,7 +119,7 @@ class BusinessAccessAssetsApi {
 
     }
 
-    def businessAssetMembersGet ( String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex, Closure onSuccess, Closure onFailure)  {
+    def businessAssetMembersGet ( String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/assets/${asset_id}/members"
 
         // params
@@ -137,6 +137,9 @@ class BusinessAccessAssetsApi {
             throw new RuntimeException("missing required params assetId")
         }
 
+        if (fetchSystemUsers != null) {
+            queryParams.put("fetch_system_users", fetchSystemUsers)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }

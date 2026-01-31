@@ -2,6 +2,8 @@ namespace OpenAPI
 open OpenAPI.Model.AdsCreditRedeemRequest
 open OpenAPI.Model.AdsCreditRedeemResponse
 open OpenAPI.Model.AdsCreditsDiscountsGet200Response
+open OpenAPI.Model.BillingInvoiceDownloadResponse
+open OpenAPI.Model.BillingInvoicesGet200Response
 open OpenAPI.Model.BillingProfilesGet200Response
 open OpenAPI.Model.Error
 open OpenAPI.Model.SSIOAccountResponse
@@ -42,6 +44,28 @@ module BillingApiServiceImplementation =
           else
             let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             AdsCreditsDiscountsGetDefaultStatusCode { content = content }
+
+        member this.BillingInvoiceDownloadGet ctx args =
+          if true then
+            let content = "Successfully fetched Billing invoice information for a given ad account" :> obj :?> BillingInvoiceDownloadResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BillingInvoiceDownloadGetStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid request parameter." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BillingInvoiceDownloadGetStatusCode400 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BillingInvoiceDownloadGetDefaultStatusCode { content = content }
+
+        member this.BillingInvoicesGet ctx args =
+          if true then
+            let content = "Success" :> obj :?> BillingInvoicesGet200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BillingInvoicesGetStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid request parameter." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BillingInvoicesGetStatusCode400 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BillingInvoicesGetDefaultStatusCode { content = content }
 
         member this.BillingProfilesGet ctx args =
           if true then

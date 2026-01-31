@@ -12,22 +12,16 @@ import org.joda.time.DateTime
 import PinUpdate._
 
 case class PinUpdate (
-  /* Pin's alternative text. */
   altText: Option[String],
-/* The id of the board to move the Pin onto. */
+/* The board to which this Pin belongs. */
   boardId: Option[String],
-/* <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID. */
+/* The board section to which this Pin belongs. */
   boardSectionId: Option[String],
-/* Pin description - 800 characters maximum. */
-  description: Option[String],
-/* URL viewer is taken to when they click pin. */
-  link: Option[String],
-/* The native pin title that creators explicitly prefer to display. */
-  title: Option[String],
 /* Carousel Pin slots data. */
-  carouselSlots: Option[List[PinUpdateCarouselSlotsInner]],
-/* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-  note: Option[String])
+  carouselSlots: Option[List[CarouselSlot]],
+description: Option[String],
+link: Option[String],
+title: Option[String])
 
 object PinUpdate {
   import DateTimeCodecs._

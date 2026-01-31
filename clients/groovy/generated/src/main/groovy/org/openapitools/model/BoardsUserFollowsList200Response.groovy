@@ -11,7 +11,7 @@ import org.openapitools.model.Board;
 @Canonical
 class BoardsUserFollowsList200Response {
     
-    List<Board> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Board> items = new ArrayList<>()
 }

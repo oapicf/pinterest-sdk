@@ -79,7 +79,7 @@ private class OASPinMediaWithVideosTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASPinMediaWithVideos pinMediaWithVideos = new OASPinMediaWithVideos();
-        System.assertEquals(new List<OASVideoMetadata>(), pinMediaWithVideos.items);
+        System.assertEquals(new List<OASVideoMetadataWithItemType>(), pinMediaWithVideos.items);
         System.assertEquals(null, pinMediaWithVideos.mediaType);
     }
 }

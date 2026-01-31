@@ -18,14 +18,9 @@ Protected Class CatalogsHotelFeed
 
 	#tag Property, Flags = &h0
 		#tag Note
-			A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 		#tag EndNote
-		name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		format As String
+		catalog_id As String
 	#tag EndProperty
 
 
@@ -36,24 +31,6 @@ Protected Class CatalogsHotelFeed
 
 	#tag Property, Flags = &h0
 		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-		#tag EndNote
-		location As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		status As String
 	#tag EndProperty
 
 
@@ -71,10 +48,33 @@ Protected Class CatalogsHotelFeed
 
 
 	#tag Property, Flags = &h0
+		format As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+			The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 		#tag EndNote
-		catalog_id As String
+		location As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+		#tag EndNote
+		name As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		status As String
 	#tag EndProperty
 
 
@@ -139,19 +139,11 @@ Protected Class CatalogsHotelFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="format"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsFormat"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -171,7 +163,39 @@ Protected Class CatalogsHotelFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="default_currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NullableCurrency"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="format"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="location"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -192,30 +216,6 @@ Protected Class CatalogsHotelFeed
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="NullableCurrency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_locale"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

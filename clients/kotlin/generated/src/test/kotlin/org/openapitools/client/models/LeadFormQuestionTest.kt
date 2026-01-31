@@ -27,12 +27,6 @@ class LeadFormQuestionTest : ShouldSpec() {
         // uncomment below to create an instance of LeadFormQuestion
         //val modelInstance = LeadFormQuestion()
 
-        // to test the property `questionType`
-        should("test questionType") {
-            // uncomment below to test the property
-            //modelInstance.questionType shouldBe ("TODO")
-        }
-
         // to test the property `customQuestionFieldType`
         should("test customQuestionFieldType") {
             // uncomment below to test the property
@@ -49,6 +43,12 @@ class LeadFormQuestionTest : ShouldSpec() {
         should("test customQuestionOptions") {
             // uncomment below to test the property
             //modelInstance.customQuestionOptions shouldBe ("TODO")
+        }
+
+        // to test the property `questionType`
+        should("test questionType") {
+            // uncomment below to test the property
+            //modelInstance.questionType shouldBe ("TODO")
         }
 
     }

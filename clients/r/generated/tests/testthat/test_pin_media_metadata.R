@@ -5,25 +5,25 @@ context("Test PinMediaMetadata")
 
 model_instance <- PinMediaMetadata$new()
 
-test_that("item_type", {
-  # tests for the property `item_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`item_type`, "EXPECTED_RESULT")
-})
-
-test_that("title", {
-  # tests for the property `title` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
 test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
+test_that("images", {
+  # tests for the property `images` (ImageSize)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`images`, "EXPECTED_RESULT")
+})
+
+test_that("item_type", {
+  # tests for the property `item_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`item_type`, "EXPECTED_RESULT")
 })
 
 test_that("link", {
@@ -33,11 +33,11 @@ test_that("link", {
   #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
 })
 
-test_that("images", {
-  # tests for the property `images` (ImageMetadataImages)
+test_that("title", {
+  # tests for the property `title` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`images`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })
 
 test_that("cover_image_url", {
@@ -47,17 +47,9 @@ test_that("cover_image_url", {
   #expect_equal(model.instance$`cover_image_url`, "EXPECTED_RESULT")
 })
 
-test_that("video_url", {
-  # tests for the property `video_url` (character)
-  # Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`video_url`, "EXPECTED_RESULT")
-})
-
 test_that("duration", {
   # tests for the property `duration` (numeric)
-  # Duration (in milliseconds)
+  # Duration (in miliseconds). Field maybe null after creation due to video processing time.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`duration`, "EXPECTED_RESULT")
@@ -65,15 +57,23 @@ test_that("duration", {
 
 test_that("height", {
   # tests for the property `height` (integer)
-  # Height (in pixels)
+  # Height (in pixels). Field maybe null after creation due to video processing time.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`height`, "EXPECTED_RESULT")
 })
 
+test_that("video_url", {
+  # tests for the property `video_url` (character)
+  # Video url (720p).  **Note:** This field is limited and not available to all apps.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`video_url`, "EXPECTED_RESULT")
+})
+
 test_that("width", {
   # tests for the property `width` (integer)
-  # Width (in pixels)
+  # Width (in pixels). Field maybe null after creation due to video processing time.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`width`, "EXPECTED_RESULT")

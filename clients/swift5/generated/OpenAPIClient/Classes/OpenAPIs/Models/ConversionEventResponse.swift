@@ -12,27 +12,27 @@ import AnyCodable
 
 public struct ConversionEventResponse: Codable, JSONEncodable, Hashable {
 
-    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    /** Id of the ad account. */
+    public var adAccountId: String?
     public var conversionEvent: ConversionTagType?
     /** Id of the tag. */
     public var conversionTagId: String?
-    /** Id of the ad account. */
-    public var adAccountId: String?
     /** Creation date in epoch format. */
     public var createdTime: Int?
 
-    public init(conversionEvent: ConversionTagType? = nil, conversionTagId: String? = nil, adAccountId: String? = nil, createdTime: Int? = nil) {
+    public init(adAccountId: String? = nil, conversionEvent: ConversionTagType? = nil, conversionTagId: String? = nil, createdTime: Int? = nil) {
+        self.adAccountId = adAccountId
         self.conversionEvent = conversionEvent
         self.conversionTagId = conversionTagId
-        self.adAccountId = adAccountId
         self.createdTime = createdTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case adAccountId = "ad_account_id"
         case conversionEvent = "conversion_event"
         case conversionTagId = "conversion_tag_id"
-        case adAccountId = "ad_account_id"
         case createdTime = "created_time"
     }
 
@@ -40,9 +40,9 @@ public struct ConversionEventResponse: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(conversionEvent, forKey: .conversionEvent)
         try container.encodeIfPresent(conversionTagId, forKey: .conversionTagId)
-        try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)
     }
 }

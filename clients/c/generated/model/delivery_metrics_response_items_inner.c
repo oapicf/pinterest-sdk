@@ -23,35 +23,35 @@ pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e delivery_met
 }
 
 static delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_create_internal(
-    char *name,
     pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e category,
     char *definition,
-    char *display_name
+    char *display_name,
+    char *name
     ) {
     delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_local_var = malloc(sizeof(delivery_metrics_response_items_inner_t));
     if (!delivery_metrics_response_items_inner_local_var) {
         return NULL;
     }
-    delivery_metrics_response_items_inner_local_var->name = name;
     delivery_metrics_response_items_inner_local_var->category = category;
     delivery_metrics_response_items_inner_local_var->definition = definition;
     delivery_metrics_response_items_inner_local_var->display_name = display_name;
+    delivery_metrics_response_items_inner_local_var->name = name;
 
     delivery_metrics_response_items_inner_local_var->_library_owned = 1;
     return delivery_metrics_response_items_inner_local_var;
 }
 
 __attribute__((deprecated)) delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_create(
-    char *name,
     pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e category,
     char *definition,
-    char *display_name
+    char *display_name,
+    char *name
     ) {
     return delivery_metrics_response_items_inner_create_internal (
-        name,
         category,
         definition,
-        display_name
+        display_name,
+        name
         );
 }
 
@@ -64,10 +64,6 @@ void delivery_metrics_response_items_inner_free(delivery_metrics_response_items_
         return ;
     }
     listEntry_t *listEntry;
-    if (delivery_metrics_response_items_inner->name) {
-        free(delivery_metrics_response_items_inner->name);
-        delivery_metrics_response_items_inner->name = NULL;
-    }
     if (delivery_metrics_response_items_inner->definition) {
         free(delivery_metrics_response_items_inner->definition);
         delivery_metrics_response_items_inner->definition = NULL;
@@ -76,19 +72,15 @@ void delivery_metrics_response_items_inner_free(delivery_metrics_response_items_
         free(delivery_metrics_response_items_inner->display_name);
         delivery_metrics_response_items_inner->display_name = NULL;
     }
+    if (delivery_metrics_response_items_inner->name) {
+        free(delivery_metrics_response_items_inner->name);
+        delivery_metrics_response_items_inner->name = NULL;
+    }
     free(delivery_metrics_response_items_inner);
 }
 
 cJSON *delivery_metrics_response_items_inner_convertToJSON(delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner) {
     cJSON *item = cJSON_CreateObject();
-
-    // delivery_metrics_response_items_inner->name
-    if(delivery_metrics_response_items_inner->name) {
-    if(cJSON_AddStringToObject(item, "name", delivery_metrics_response_items_inner->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // delivery_metrics_response_items_inner->category
     if(delivery_metrics_response_items_inner->category != pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_NULL) {
@@ -114,6 +106,14 @@ cJSON *delivery_metrics_response_items_inner_convertToJSON(delivery_metrics_resp
     }
     }
 
+
+    // delivery_metrics_response_items_inner->name
+    if(delivery_metrics_response_items_inner->name) {
+    if(cJSON_AddStringToObject(item, "name", delivery_metrics_response_items_inner->name) == NULL) {
+    goto fail; //String
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -125,18 +125,6 @@ fail:
 delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_parseFromJSON(cJSON *delivery_metrics_response_items_innerJSON){
 
     delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_local_var = NULL;
-
-    // delivery_metrics_response_items_inner->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(delivery_metrics_response_items_innerJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
-    }
 
     // delivery_metrics_response_items_inner->category
     cJSON *category = cJSON_GetObjectItemCaseSensitive(delivery_metrics_response_items_innerJSON, "category");
@@ -176,12 +164,24 @@ delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_p
     }
     }
 
+    // delivery_metrics_response_items_inner->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(delivery_metrics_response_items_innerJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
+    if (name) { 
+    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
+    {
+    goto end; //String
+    }
+    }
+
 
     delivery_metrics_response_items_inner_local_var = delivery_metrics_response_items_inner_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         category ? categoryVariable : pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_NULL,
         definition && !cJSON_IsNull(definition) ? strdup(definition->valuestring) : NULL,
-        display_name && !cJSON_IsNull(display_name) ? strdup(display_name->valuestring) : NULL
+        display_name && !cJSON_IsNull(display_name) ? strdup(display_name->valuestring) : NULL,
+        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL
         );
 
     return delivery_metrics_response_items_inner_local_var;

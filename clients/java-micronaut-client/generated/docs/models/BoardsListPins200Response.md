@@ -8,8 +8,8 @@ The class is defined in **[BoardsListPins200Response.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Pin&gt;`](Pin.md) | Pins | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Pin&gt;`](Pin.md) | Pins | 
 
 
 

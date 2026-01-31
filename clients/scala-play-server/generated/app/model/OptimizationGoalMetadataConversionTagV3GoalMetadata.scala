@@ -4,17 +4,19 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for OptimizationGoalMetadata_conversion_tag_v3_goal_metadata.
-  * @param isRoasOptimized ROAS optimization is not supported
+  * @param isRoasOptimized Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
   * @param learningModeType Conversion learning model type
+  * @param reportingEvent Event name for custom or standard events mapped to an oCPM model
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class OptimizationGoalMetadataConversionTagV3GoalMetadata(
   attributionWindows: Option[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows],
   conversionEvent: Option[OptimizationGoalMetadataConversionTagV3GoalMetadata.ConversionEvent.Value],
   conversionTagId: Option[String],
   cpaGoalValueInMicroCurrency: Option[String],
   isRoasOptimized: Option[Boolean],
-  learningModeType: Option[OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType.Value]
+  learningModeType: Option[OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType.Value],
+  reportingEvent: Option[String]
 )
 
 object OptimizationGoalMetadataConversionTagV3GoalMetadata {

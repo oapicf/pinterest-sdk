@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkDownloadRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkDownloadRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkDownloadRequestCampaignFilter = openapi_server.resourceTypes.BulkDownloadRequestCampaignFilter
+  BulkEntityType = openapi_server.resourceTypes.BulkEntityType
+  BulkOutputFormat = openapi_server.resourceTypes.BulkOutputFormat
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BulkDownloadRequest {
+    title = BulkDownloadRequest
+    description = BulkDownloadRequest
+    derivedFrom = Root
+    properties {
+        campaign_filter {
+          type = BulkDownloadRequestCampaignFilter
+          description = ""
+          optional = false
+        }
+        entity_ids {
+          type = array
+          items.type =  string
+          description = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded."
+          optional = false
+        }
+        entity_types {
+          type = array
+          items.type = BulkEntityType
+          description = "All entity types specified will be downloaded. Fewer types result in faster downloads."
+          optional = false
+        }
+        output_format {
+          type = BulkOutputFormat
+          description = ""
+          optional = false
+        }
+        updated_since {
+          type =  string
+          description = "Unix UTC timestamp to retrieve all entities that have changed since this time."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkDownloadRequest {
+    title = BulkDownloadRequest
+    description = BulkDownloadRequest
+    implements = openapi_server.resourceTypes.BulkDownloadRequest
+
+  }
+}

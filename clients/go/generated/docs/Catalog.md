@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | 
 **Id** | **string** | ID of the catalog entity. | 
 **UpdatedAt** | **time.Time** |  | 
-**Name** | **NullableString** | A human-friendly name associated to a catalog entity. | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**Name** | **NullableString** | A human-friendly name associated to a catalog entity. | 
 
 ## Methods
 
 ### NewCatalog
 
-`func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, name NullableString, catalogType CatalogsType, ) *Catalog`
+`func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, catalogType CatalogsType, name NullableString, ) *Catalog`
 
 NewCatalog instantiates a new Catalog object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +89,26 @@ and a boolean to check if the value has been set.
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
+### GetCatalogType
+
+`func (o *Catalog) GetCatalogType() CatalogsType`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *Catalog) SetCatalogType(v CatalogsType)`
+
+SetCatalogType sets CatalogType field to given value.
+
+
 ### GetName
 
 `func (o *Catalog) GetName() string`
@@ -119,26 +139,6 @@ SetName sets Name field to given value.
 `func (o *Catalog) UnsetName()`
 
 UnsetName ensures that no value is present for Name, not even an explicit nil
-### GetCatalogType
-
-`func (o *Catalog) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *Catalog) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

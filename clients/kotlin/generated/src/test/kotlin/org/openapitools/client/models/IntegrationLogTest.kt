@@ -45,40 +45,10 @@ class IntegrationLogTest : ShouldSpec() {
             //modelInstance.logLevel shouldBe ("TODO")
         }
 
-        // to test the property `externalBusinessId`
-        should("test externalBusinessId") {
-            // uncomment below to test the property
-            //modelInstance.externalBusinessId shouldBe ("TODO")
-        }
-
         // to test the property `advertiserId`
         should("test advertiserId") {
             // uncomment below to test the property
             //modelInstance.advertiserId shouldBe ("TODO")
-        }
-
-        // to test the property `merchantId`
-        should("test merchantId") {
-            // uncomment below to test the property
-            //modelInstance.merchantId shouldBe ("TODO")
-        }
-
-        // to test the property `tagId`
-        should("test tagId") {
-            // uncomment below to test the property
-            //modelInstance.tagId shouldBe ("TODO")
-        }
-
-        // to test the property `feedProfileId`
-        should("test feedProfileId") {
-            // uncomment below to test the property
-            //modelInstance.feedProfileId shouldBe ("TODO")
-        }
-
-        // to test the property `message` - Explanation of the event that occured.
-        should("test message") {
-            // uncomment below to test the property
-            //modelInstance.message shouldBe ("TODO")
         }
 
         // to test the property `appVersionNumber` - Version number of the integration application.
@@ -87,22 +57,52 @@ class IntegrationLogTest : ShouldSpec() {
             //modelInstance.appVersionNumber shouldBe ("TODO")
         }
 
-        // to test the property `platformVersionNumber` - Version number of the platform the integration application is running on.
-        should("test platformVersionNumber") {
-            // uncomment below to test the property
-            //modelInstance.platformVersionNumber shouldBe ("TODO")
-        }
-
         // to test the property `error`
         should("test error") {
             // uncomment below to test the property
             //modelInstance.error shouldBe ("TODO")
         }
 
+        // to test the property `externalBusinessId`
+        should("test externalBusinessId") {
+            // uncomment below to test the property
+            //modelInstance.externalBusinessId shouldBe ("TODO")
+        }
+
+        // to test the property `feedProfileId`
+        should("test feedProfileId") {
+            // uncomment below to test the property
+            //modelInstance.feedProfileId shouldBe ("TODO")
+        }
+
+        // to test the property `merchantId`
+        should("test merchantId") {
+            // uncomment below to test the property
+            //modelInstance.merchantId shouldBe ("TODO")
+        }
+
+        // to test the property `message` - Explanation of the event that occured.
+        should("test message") {
+            // uncomment below to test the property
+            //modelInstance.message shouldBe ("TODO")
+        }
+
+        // to test the property `platformVersionNumber` - Version number of the platform the integration application is running on.
+        should("test platformVersionNumber") {
+            // uncomment below to test the property
+            //modelInstance.platformVersionNumber shouldBe ("TODO")
+        }
+
         // to test the property `request`
         should("test request") {
             // uncomment below to test the property
             //modelInstance.request shouldBe ("TODO")
+        }
+
+        // to test the property `tagId`
+        should("test tagId") {
+            // uncomment below to test the property
+            //modelInstance.tagId shouldBe ("TODO")
         }
 
     }

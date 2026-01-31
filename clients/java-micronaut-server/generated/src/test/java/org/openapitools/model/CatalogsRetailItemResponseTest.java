@@ -27,6 +27,14 @@ public class CatalogsRetailItemResponseTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -48,14 +56,6 @@ public class CatalogsRetailItemResponseTest {
     @Test
     public void pinsTest() {
         // TODO: test pins
-    }
-
-    /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
     }
 
 }

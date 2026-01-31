@@ -9,20 +9,20 @@ import org.http4s.argonaut._
 import org.joda.time.DateTime
 
 
-import TargetingSpecSHOPPINGRETARGETING._
+import TargetingSpecShoppingRetargeting._
 
-case class TargetingSpecSHOPPINGRETARGETING (
-  /* Number of days ago to start lookback timeframe for dynamic retargeting */
+case class TargetingSpecShoppingRetargeting (
+  /* Number of days ago to stop lookback timeframe for dynamic retargeting */
+  exclusionWindow: Option[Integer],
+/* Number of days ago to start lookback timeframe for dynamic retargeting */
   lookbackWindow: Option[Integer],
 /* Event types to target for dynamic retargeting */
-  tagTypes: Option[List[Integer]],
-/* Number of days ago to stop lookback timeframe for dynamic retargeting */
-  exclusionWindow: Option[Integer])
+  tagTypes: Option[List[Integer]])
 
-object TargetingSpecSHOPPINGRETARGETING {
+object TargetingSpecShoppingRetargeting {
   import DateTimeCodecs._
 
-  implicit val TargetingSpecSHOPPINGRETARGETINGCodecJson: CodecJson[TargetingSpecSHOPPINGRETARGETING] = CodecJson.derive[TargetingSpecSHOPPINGRETARGETING]
-  implicit val TargetingSpecSHOPPINGRETARGETINGDecoder: EntityDecoder[TargetingSpecSHOPPINGRETARGETING] = jsonOf[TargetingSpecSHOPPINGRETARGETING]
-  implicit val TargetingSpecSHOPPINGRETARGETINGEncoder: EntityEncoder[TargetingSpecSHOPPINGRETARGETING] = jsonEncoderOf[TargetingSpecSHOPPINGRETARGETING]
+  implicit val TargetingSpecShoppingRetargetingCodecJson: CodecJson[TargetingSpecShoppingRetargeting] = CodecJson.derive[TargetingSpecShoppingRetargeting]
+  implicit val TargetingSpecShoppingRetargetingDecoder: EntityDecoder[TargetingSpecShoppingRetargeting] = jsonOf[TargetingSpecShoppingRetargeting]
+  implicit val TargetingSpecShoppingRetargetingEncoder: EntityEncoder[TargetingSpecShoppingRetargeting] = jsonEncoderOf[TargetingSpecShoppingRetargeting]
 }

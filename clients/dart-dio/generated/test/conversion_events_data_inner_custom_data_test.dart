@@ -7,15 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ConversionEventsDataInnerCustomData, () {
-    // The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
-    // String currency
-    test('to test the property `currency`', () async {
+    // The brand of the content associated with the event.
+    // String contentBrand
+    test('to test the property `contentBrand`', () async {
       // TODO
     });
 
-    // Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
-    // String value
-    test('to test the property `value`', () async {
+    // The category of the content associated with the event.
+    // String contentCategory
+    test('to test the property `contentCategory`', () async {
       // TODO
     });
 
@@ -31,21 +31,33 @@ void main() {
       // TODO
     });
 
-    // The category of the content associated with the event.
-    // String contentCategory
-    test('to test the property `contentCategory`', () async {
-      // TODO
-    });
-
-    // The brand of the content associated with the event.
-    // String contentBrand
-    test('to test the property `contentBrand`', () async {
-      // TODO
-    });
-
     // A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
     // BuiltList<ConversionEventsDataInnerCustomDataContentsInner> contents
     test('to test the property `contents`', () async {
+      // TODO
+    });
+
+    // The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+    // String currency
+    test('to test the property `currency`', () async {
+      // TODO
+    });
+
+    // Only use when instructed.
+    // String externalMeasurementId
+    test('to test the property `externalMeasurementId`', () async {
+      // TODO
+    });
+
+    // Only use when instructed.
+    // int externalMeasurementVendorId
+    test('to test the property `externalMeasurementVendorId`', () async {
+      // TODO
+    });
+
+    // Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+    // String np
+    test('to test the property `np`', () async {
       // TODO
     });
 
@@ -55,9 +67,21 @@ void main() {
       // TODO
     });
 
+    // Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer's guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter.
+    // String optOutType
+    test('to test the property `optOutType`', () async {
+      // TODO
+    });
+
     // The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
     // String orderId
     test('to test the property `orderId`', () async {
+      // TODO
+    });
+
+    // Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+    // String predictedLtv
+    test('to test the property `predictedLtv`', () async {
       // TODO
     });
 
@@ -67,15 +91,9 @@ void main() {
       // TODO
     });
 
-    // Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
-    // String optOutType
-    test('to test the property `optOutType`', () async {
-      // TODO
-    });
-
-    // Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
-    // String np
-    test('to test the property `np`', () async {
+    // Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+    // String value
+    test('to test the property `value`', () async {
       // TODO
     });
 

@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ad_accounts_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsList200Response   {
-  private @Valid List<@Valid AdAccount> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid AdAccount> items = new ArrayList<>();
 
   public AdAccountsList200Response() {
   }
@@ -38,7 +38,25 @@ public class AdAccountsList200Response   {
   }
 
   /**
-   * Ad accounts
+   **/
+  public AdAccountsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  @JsonProperty("bookmark")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  /**
    **/
   public AdAccountsList200Response items(List<@Valid AdAccount> items) {
     this.items = items;
@@ -46,7 +64,7 @@ public class AdAccountsList200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "Ad accounts")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid AdAccount> getItems() {
     return items;
@@ -73,25 +91,6 @@ public class AdAccountsList200Response   {
 
     return this;
   }
-  /**
-   **/
-  public AdAccountsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  @JsonProperty("bookmark")
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -102,13 +101,13 @@ public class AdAccountsList200Response   {
       return false;
     }
     AdAccountsList200Response adAccountsList200Response = (AdAccountsList200Response) o;
-    return Objects.equals(this.items, adAccountsList200Response.items) &&
-        Objects.equals(this.bookmark, adAccountsList200Response.bookmark);
+    return Objects.equals(this.bookmark, adAccountsList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -116,8 +115,8 @@ public class AdAccountsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

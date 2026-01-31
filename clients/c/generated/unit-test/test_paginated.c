@@ -22,13 +22,13 @@ paginated_t* instantiate_paginated(int include_optional) {
   paginated_t* paginated = NULL;
   if (include_optional) {
     paginated = paginated_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     paginated = paginated_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

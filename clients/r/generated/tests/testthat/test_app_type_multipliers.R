@@ -6,7 +6,7 @@ context("Test AppTypeMultipliers")
 model_instance <- AppTypeMultipliers$new()
 
 test_that("APP_TYPE", {
-  # tests for the property `APP_TYPE` (TargetingSpecAppType)
+  # tests for the property `APP_TYPE` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`APP_TYPE`, "EXPECTED_RESULT")

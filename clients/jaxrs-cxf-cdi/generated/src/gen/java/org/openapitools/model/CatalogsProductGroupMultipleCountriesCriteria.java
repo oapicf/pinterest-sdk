@@ -19,9 +19,27 @@ import java.util.Objects;
 
 public class CatalogsProductGroupMultipleCountriesCriteria   {
   
+  private Boolean negated = false;
+
   private List<Country> values = new ArrayList<>();
 
-  private Boolean negated = false;
+  /**
+   **/
+  public CatalogsProductGroupMultipleCountriesCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
 
   /**
    **/
@@ -50,24 +68,6 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
   }
 
 
-  /**
-   **/
-  public CatalogsProductGroupMultipleCountriesCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -78,13 +78,13 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleCountriesCriteria catalogsProductGroupMultipleCountriesCriteria = (CatalogsProductGroupMultipleCountriesCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleCountriesCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleCountriesCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleCountriesCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleCountriesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -92,8 +92,8 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleCountriesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

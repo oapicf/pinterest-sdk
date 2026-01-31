@@ -268,7 +268,7 @@ IntegrationLogClientError <- R6::R6Class(
         return(FALSE)
       }
 
-      if (nchar(self$`message`) > 512) {
+      if (nchar(self$`message`) > 8192) {
         return(FALSE)
       }
 
@@ -297,8 +297,8 @@ IntegrationLogClientError <- R6::R6Class(
         invalid_fields["file_name"] <- "Invalid length for `file_name`, must be smaller than or equal to 256."
       }
 
-      if (nchar(self$`message`) > 512) {
-        invalid_fields["message"] <- "Invalid length for `message`, must be smaller than or equal to 512."
+      if (nchar(self$`message`) > 8192) {
+        invalid_fields["message"] <- "Invalid length for `message`, must be smaller than or equal to 8192."
       }
 
       if (nchar(self$`message_detail`) > 1024) {

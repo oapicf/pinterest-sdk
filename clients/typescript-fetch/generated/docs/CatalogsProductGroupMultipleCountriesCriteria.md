@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`values` | [Array&lt;Country&gt;](Country.md)
 `negated` | boolean
+`values` | [Array&lt;Country&gt;](Country.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsProductGroupMultipleCountriesCriteria } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "values": null,
   "negated": null,
+  "values": null,
 } satisfies CatalogsProductGroupMultipleCountriesCriteria
 
 console.log(example)

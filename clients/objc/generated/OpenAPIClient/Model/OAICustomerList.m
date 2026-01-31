@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"createdTime": @"created_time", @"_id": @"id", @"name": @"name", @"numBatches": @"num_batches", @"numRemovedUserRecords": @"num_removed_user_records", @"numUploadedUserRecords": @"num_uploaded_user_records", @"status": @"status", @"type": @"type", @"updatedTime": @"updated_time", @"exceptions": @"exceptions" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"createdTime": @"created_time", @"exceptions": @"exceptions", @"_id": @"id", @"name": @"name", @"numBatches": @"num_batches", @"numRemovedUserRecords": @"num_removed_user_records", @"numUploadedUserRecords": @"num_uploaded_user_records", @"status": @"status", @"type": @"type", @"updatedTime": @"updated_time" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"adAccountId", @"createdTime", @"_id", @"name", @"numBatches", @"numRemovedUserRecords", @"numUploadedUserRecords", @"status", @"type", @"updatedTime", @"exceptions"];
+  NSArray *optionalProperties = @[@"adAccountId", @"createdTime", @"exceptions", @"_id", @"name", @"numBatches", @"numRemovedUserRecords", @"numUploadedUserRecords", @"status", @"type", @"updatedTime"];
   return [optionalProperties containsObject:propertyName];
 }
 

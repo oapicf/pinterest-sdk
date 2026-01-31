@@ -14,22 +14,22 @@ module LeadFormUpdateRequest =
 
   [<CLIMutable>]
   type LeadFormUpdateRequest = {
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string option;
-    [<JsonProperty(PropertyName = "privacy_policy_link")>]
-    PrivacyPolicyLink : string option;
-    [<JsonProperty(PropertyName = "has_accepted_terms")>]
-    HasAcceptedTerms : bool;
     [<JsonProperty(PropertyName = "completion_message")>]
     CompletionMessage : string option;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : LeadFormStatus;
     [<JsonProperty(PropertyName = "disclosure_language")>]
     DisclosureLanguage : string option;
-    [<JsonProperty(PropertyName = "questions")>]
-    Questions : LeadFormQuestion[];
+    [<JsonProperty(PropertyName = "has_accepted_terms")>]
+    HasAcceptedTerms : bool;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string option;
     [<JsonProperty(PropertyName = "policy_links")>]
     PolicyLinks : LeadFormCommonPolicyLinksInner[];
+    [<JsonProperty(PropertyName = "privacy_policy_link")>]
+    PrivacyPolicyLink : string option;
+    [<JsonProperty(PropertyName = "questions")>]
+    Questions : LeadFormQuestion[];
+    [<JsonProperty(PropertyName = "status")>]
+    Status : LeadFormStatus;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
   }

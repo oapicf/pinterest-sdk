@@ -14,11 +14,11 @@ import { DataStatus } from './dataStatus';
  * Array with metrics, status, and pin id for the requested metric
  */
 export interface TopPinsAnalyticsResponsePinsInner { 
+    data_status?: { [key: string]: DataStatus; };
     /**
      * The metric name and daily value for each requested metric
      */
     metrics?: { [key: string]: number; };
-    data_status?: { [key: string]: DataStatus; };
     /**
      * The pin id
      */

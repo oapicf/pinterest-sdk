@@ -34,17 +34,17 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param createdAt 
  * @param id 
  * @param updatedAt 
- * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
- * @param format 
  * @param catalogType 
  * @param credentials 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param preferredProcessingSchedule 
- * @param status 
+ * @param defaultAvailability 
+ * @param defaultCountry 
  * @param defaultCurrency 
  * @param defaultLocale The locale used within a feed for product descriptions.
- * @param defaultCountry 
- * @param defaultAvailability 
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @param preferredProcessingSchedule 
+ * @param status 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  */
 @JsonIgnoreProperties(
@@ -68,26 +68,17 @@ interface CatalogsFeed {
                 @get:Schema(example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val updatedAt: java.time.OffsetDateTime
 
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
-        val name: kotlin.String
-
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val format: CatalogsFormat
-
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val catalogType: CatalogsType
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val credentials: CatalogsFeedCredentials
 
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-        val location: kotlin.String
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val defaultAvailability: ProductAvailabilityType
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val preferredProcessingSchedule: CatalogsFeedProcessingSchedule
-
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val status: CatalogsStatus
+        val defaultCountry: Country
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val defaultCurrency: NullableCurrency
@@ -96,10 +87,19 @@ interface CatalogsFeed {
         val defaultLocale: kotlin.String
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val defaultCountry: Country
+        val format: CatalogsFormat
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+        val location: kotlin.String
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
+        val name: kotlin.String
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val defaultAvailability: ProductAvailabilityType
+        val preferredProcessingSchedule: CatalogsFeedProcessingSchedule
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val status: CatalogsStatus
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
         val catalogId: kotlin.String

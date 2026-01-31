@@ -4,6 +4,8 @@
 #import "OAIAdsCreditRedeemRequest.h"
 #import "OAIAdsCreditRedeemResponse.h"
 #import "OAIAdsCreditsDiscountsGet200Response.h"
+#import "OAIBillingInvoiceDownloadResponse.h"
+#import "OAIBillingInvoicesGet200Response.h"
 #import "OAIBillingProfilesGet200Response.h"
 #import "OAIError.h"
 #import "OAISSIOAccountResponse.h"
@@ -63,7 +65,7 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 
 ///
 /// Redeem ad credits
-/// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param adsCreditRedeemRequest Redeem ad credits request. 
@@ -146,7 +148,7 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 
 ///
 /// Get ads credit discounts
-/// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
@@ -225,8 +227,209 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 }
 
 ///
+/// Get download url for a billing invoice
+/// Get download url for a billing invoice.
+///  @param adAccountId Unique identifier of an ad account. 
+///
+///  @param billingInvoiceId Unique identifier of a billing invoice. 
+///
+///  @returns OAIBillingInvoiceDownloadResponse*
+///
+-(NSURLSessionTask*) billingInvoiceDownloadGetWithAdAccountId: (NSString*) adAccountId
+    billingInvoiceId: (NSString*) billingInvoiceId
+    completionHandler: (void (^)(OAIBillingInvoiceDownloadResponse* output, NSError* error)) handler {
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBillingApiErrorDomain code:kOAIBillingApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'billingInvoiceId' is set
+    if (billingInvoiceId == nil) {
+        NSParameterAssert(billingInvoiceId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"billingInvoiceId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBillingApiErrorDomain code:kOAIBillingApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
+    }
+    if (billingInvoiceId != nil) {
+        pathParams[@"billing_invoice_id"] = billingInvoiceId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIBillingInvoiceDownloadResponse*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIBillingInvoiceDownloadResponse*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Get billing invoices
+/// Get billing invoices in the advertiser account.
+///  @param adAccountId Unique identifier of an ad account. 
+///
+///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///
+///  @param sort Field of which to sort billing invoices (optional, default to @"DUE_DATE")
+///
+///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+///
+///  @param status Status of billing invoices to filter by (optional)
+///
+///  @param documentType Document type of billing invoices to filter by (optional)
+///
+///  @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+///
+///  @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+///
+///  @returns OAIBillingInvoicesGet200Response*
+///
+-(NSURLSessionTask*) billingInvoicesGetWithAdAccountId: (NSString*) adAccountId
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    sort: (NSString*) sort
+    order: (NSString*) order
+    status: (NSString*) status
+    documentType: (NSString*) documentType
+    startDueDate: (NSDate*) startDueDate
+    endDueDate: (NSDate*) endDueDate
+    completionHandler: (void (^)(OAIBillingInvoicesGet200Response* output, NSError* error)) handler {
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBillingApiErrorDomain code:kOAIBillingApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/billing_invoices"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
+    }
+    if (sort != nil) {
+        queryParams[@"sort"] = sort;
+    }
+    if (order != nil) {
+        queryParams[@"order"] = order;
+    }
+    if (status != nil) {
+        queryParams[@"status"] = status;
+    }
+    if (documentType != nil) {
+        queryParams[@"document_type"] = documentType;
+    }
+    if (startDueDate != nil) {
+        queryParams[@"start_due_date"] = startDueDate;
+    }
+    if (endDueDate != nil) {
+        queryParams[@"end_due_date"] = endDueDate;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIBillingInvoicesGet200Response*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIBillingInvoicesGet200Response*)data, error);
+                                }
+                            }];
+}
+
+///
 /// Get billing profiles
-/// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param isActive Return active billing profiles, if false return all billing profiles. 

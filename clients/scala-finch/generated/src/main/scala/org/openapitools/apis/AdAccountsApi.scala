@@ -5,12 +5,13 @@ import org.openapitools._
 import org.openapitools.models._
 import org.openapitools.models.AdAccount
 import org.openapitools.models.AdAccountAnalyticsResponseInner
-import org.openapitools.models.AdAccountCreateRequest
+import org.openapitools.models.AdAccountCreate
 import org.openapitools.models.AdAccountsList200Response
 import org.openapitools.models.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.models.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.models.AdsAnalyticsGetAsyncResponse
 import org.openapitools.models.AdsAnalyticsTargetingType
+import org.openapitools.models.ConversionProductReportRequest
 import org.openapitools.models.ConversionReportAttributionType
 import org.openapitools.models.CreateMMMReportRequest
 import org.openapitools.models.CreateMMMReportResponse
@@ -19,7 +20,10 @@ import org.openapitools.models.GetMMMReportResponse
 import org.openapitools.models.Granularity
 import java.time.LocalDateTime
 import org.openapitools.models.MetricsResponse
+import org.openapitools.models.PinterestLibError
+import org.openapitools.models.ReportingTimeZone
 import scala.collection.immutable.Seq
+import org.openapitools.models.TemplateBasedReport
 import org.openapitools.models.TemplatesList200Response
 import io.finch.circe._
 import io.circe.generic.semiauto._
@@ -46,9 +50,11 @@ object AdAccountsApi {
         adAccounts/create(da) :+:
         adAccounts/get(da) :+:
         adAccounts/list(da) :+:
+        analytics/createConversionProductReport(da) :+:
         analytics/createMmmReport(da) :+:
         analytics/createReport(da) :+:
         analytics/createTemplateReport(da) :+:
+        analytics/getConversionProductReport(da) :+:
         analytics/getMmmReport(da) :+:
         analytics/getReport(da) :+:
         sandbox/delete(da) :+:
@@ -80,8 +86,8 @@ object AdAccountsApi {
         * @return An endpoint representing a Seq[AdAccountAnalyticsResponseInner]
         */
         private def adAccount/analytics(da: DataAccessor): Endpoint[Seq[AdAccountAnalyticsResponseInner]] =
-        get("ad_accounts" :: string :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time")) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String]) =>
-          da.AdAccounts_adAccount/analytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) match {
+        get("ad_accounts" :: string :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("reporting_timezone").map(_.map(_.toReportingTimeZone))) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], reportingTimezone: Option[ReportingTimeZone]) =>
+          da.AdAccounts_adAccount/analytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -94,8 +100,8 @@ object AdAccountsApi {
         * @return An endpoint representing a MetricsResponse
         */
         private def adAccountTargetingAnalytics/get(da: DataAccessor): Endpoint[MetricsResponse] =
-        get("ad_accounts" :: string :: "targeting_analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("attribution_types").map(_.map(_.toConversionReportAttributionType))) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]) =>
-          da.AdAccounts_adAccountTargetingAnalytics/get(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes) match {
+        get("ad_accounts" :: string :: "targeting_analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: params("attribution_types") :: paramOption("reporting_timezone").map(_.map(_.toReportingTimeZone))) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Seq[ConversionReportAttributionType], reportingTimezone: Option[ReportingTimeZone]) =>
+          da.AdAccounts_adAccountTargetingAnalytics/get(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -108,8 +114,8 @@ object AdAccountsApi {
         * @return An endpoint representing a AdAccount
         */
         private def adAccounts/create(da: DataAccessor): Endpoint[AdAccount] =
-        post("ad_accounts" :: jsonBody[AdAccountCreateRequest]) { (adAccountCreateRequest: AdAccountCreateRequest) =>
-          da.AdAccounts_adAccounts/create(adAccountCreateRequest) match {
+        post("ad_accounts" :: jsonBody[AdAccountCreate]) { (adAccountCreate: AdAccountCreate) =>
+          da.AdAccounts_adAccounts/create(adAccountCreate) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -136,8 +142,22 @@ object AdAccountsApi {
         * @return An endpoint representing a AdAccountsList200Response
         */
         private def adAccounts/list(da: DataAccessor): Endpoint[AdAccountsList200Response] =
-        get("ad_accounts" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("include_shared_accounts").map(_.map(_.toBoolean))) { (bookmark: Option[String], pageSize: Option[Int], includeSharedAccounts: Option[Boolean]) =>
-          da.AdAccounts_adAccounts/list(bookmark, pageSize, includeSharedAccounts) match {
+        get("ad_accounts" :: paramOption("include_shared_accounts").map(_.map(_.toBoolean)) :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (includeSharedAccounts: Option[Boolean], bookmark: Option[String], pageSize: Option[Int]) =>
+          da.AdAccounts_adAccounts/list(includeSharedAccounts, bookmark, pageSize) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a AdsAnalyticsCreateAsyncResponse
+        */
+        private def analytics/createConversionProductReport(da: DataAccessor): Endpoint[AdsAnalyticsCreateAsyncResponse] =
+        post("ad_accounts" :: string :: "reports" :: "brand_category_sku" :: jsonBody[ConversionProductReportRequest]) { (adAccountId: String, conversionProductReportRequest: ConversionProductReportRequest) =>
+          da.AdAccounts_analytics/createConversionProductReport(adAccountId, conversionProductReportRequest) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -175,11 +195,25 @@ object AdAccountsApi {
 
         /**
         * 
-        * @return An endpoint representing a AdsAnalyticsCreateAsyncResponse
+        * @return An endpoint representing a TemplateBasedReport
         */
-        private def analytics/createTemplateReport(da: DataAccessor): Endpoint[AdsAnalyticsCreateAsyncResponse] =
+        private def analytics/createTemplateReport(da: DataAccessor): Endpoint[TemplateBasedReport] =
         post("ad_accounts" :: string :: "templates" :: string :: "reports" :: paramOption("start_date").map(_.map(_.toLocalDateTime)) :: paramOption("end_date").map(_.map(_.toLocalDateTime)) :: paramOption("granularity").map(_.map(_.toGranularity))) { (adAccountId: String, templateId: String, startDate: Option[LocalDateTime], endDate: Option[LocalDateTime], granularity: Option[Granularity]) =>
           da.AdAccounts_analytics/createTemplateReport(adAccountId, templateId, startDate, endDate, granularity) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a AdsAnalyticsGetAsyncResponse
+        */
+        private def analytics/getConversionProductReport(da: DataAccessor): Endpoint[AdsAnalyticsGetAsyncResponse] =
+        get("ad_accounts" :: string :: "reports" :: "brand_category_sku" :: param("token")) { (adAccountId: String, token: String) =>
+          da.AdAccounts_analytics/getConversionProductReport(adAccountId, token) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

@@ -17,22 +17,22 @@ public struct CatalogsCreativeAssetsProductGroupUpdateRequest: Codable, JSONEnco
         case creativeAssets = "CREATIVE_ASSETS"
     }
     public var catalogType: CatalogType?
-    public var name: String?
     public var description: String?
     public var filters: CatalogsCreativeAssetsProductGroupFilters?
+    public var name: String?
 
-    public init(catalogType: CatalogType? = nil, name: String? = nil, description: String? = nil, filters: CatalogsCreativeAssetsProductGroupFilters? = nil) {
+    public init(catalogType: CatalogType? = nil, description: String? = nil, filters: CatalogsCreativeAssetsProductGroupFilters? = nil, name: String? = nil) {
         self.catalogType = catalogType
-        self.name = name
         self.description = description
         self.filters = filters
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case catalogType = "catalog_type"
-        case name
         case description
         case filters
+        case name
     }
 
     // Encodable protocol methods
@@ -40,9 +40,9 @@ public struct CatalogsCreativeAssetsProductGroupUpdateRequest: Codable, JSONEnco
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(catalogType, forKey: .catalogType)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(filters, forKey: .filters)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

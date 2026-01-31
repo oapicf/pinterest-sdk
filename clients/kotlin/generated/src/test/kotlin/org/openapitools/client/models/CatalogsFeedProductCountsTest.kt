@@ -25,16 +25,16 @@ class CatalogsFeedProductCountsTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsFeedProductCounts
         //val modelInstance = CatalogsFeedProductCounts()
 
-        // to test the property `original` - The number of products in the feed file.
-        should("test original") {
-            // uncomment below to test the property
-            //modelInstance.original shouldBe ("TODO")
-        }
-
         // to test the property `ingested` - The number of products successfully ingested from the feed file.
         should("test ingested") {
             // uncomment below to test the property
             //modelInstance.ingested shouldBe ("TODO")
+        }
+
+        // to test the property `original` - The number of products in the feed file.
+        should("test original") {
+            // uncomment below to test the property
+            //modelInstance.original shouldBe ("TODO")
         }
 
     }

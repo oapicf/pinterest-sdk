@@ -7,53 +7,53 @@
 #' @title SSIOAccountAddress
 #' @description SSIOAccountAddress Class
 #' @format An \code{R6Class} generator object
-#' @field display Address display character [optional]
-#' @field purpose Purpose for which the address is used, usually Billing or Businness character [optional]
 #' @field address_id Salesforce id for address character [optional]
+#' @field display Address display character [optional]
 #' @field order_legal_entity Legal entity for this insertion order character [optional]
+#' @field purpose Purpose for which the address is used, usually Billing or Businness character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SSIOAccountAddress <- R6::R6Class(
   "SSIOAccountAddress",
   public = list(
-    `display` = NULL,
-    `purpose` = NULL,
     `address_id` = NULL,
+    `display` = NULL,
     `order_legal_entity` = NULL,
+    `purpose` = NULL,
 
     #' @description
     #' Initialize a new SSIOAccountAddress class.
     #'
-    #' @param display Address display
-    #' @param purpose Purpose for which the address is used, usually Billing or Businness
     #' @param address_id Salesforce id for address
+    #' @param display Address display
     #' @param order_legal_entity Legal entity for this insertion order
+    #' @param purpose Purpose for which the address is used, usually Billing or Businness
     #' @param ... Other optional arguments.
-    initialize = function(`display` = NULL, `purpose` = NULL, `address_id` = NULL, `order_legal_entity` = NULL, ...) {
-      if (!is.null(`display`)) {
-        if (!(is.character(`display`) && length(`display`) == 1)) {
-          stop(paste("Error! Invalid data for `display`. Must be a string:", `display`))
-        }
-        self$`display` <- `display`
-      }
-      if (!is.null(`purpose`)) {
-        if (!(is.character(`purpose`) && length(`purpose`) == 1)) {
-          stop(paste("Error! Invalid data for `purpose`. Must be a string:", `purpose`))
-        }
-        self$`purpose` <- `purpose`
-      }
+    initialize = function(`address_id` = NULL, `display` = NULL, `order_legal_entity` = NULL, `purpose` = NULL, ...) {
       if (!is.null(`address_id`)) {
         if (!(is.character(`address_id`) && length(`address_id`) == 1)) {
           stop(paste("Error! Invalid data for `address_id`. Must be a string:", `address_id`))
         }
         self$`address_id` <- `address_id`
       }
+      if (!is.null(`display`)) {
+        if (!(is.character(`display`) && length(`display`) == 1)) {
+          stop(paste("Error! Invalid data for `display`. Must be a string:", `display`))
+        }
+        self$`display` <- `display`
+      }
       if (!is.null(`order_legal_entity`)) {
         if (!(is.character(`order_legal_entity`) && length(`order_legal_entity`) == 1)) {
           stop(paste("Error! Invalid data for `order_legal_entity`. Must be a string:", `order_legal_entity`))
         }
         self$`order_legal_entity` <- `order_legal_entity`
+      }
+      if (!is.null(`purpose`)) {
+        if (!(is.character(`purpose`) && length(`purpose`) == 1)) {
+          stop(paste("Error! Invalid data for `purpose`. Must be a string:", `purpose`))
+        }
+        self$`purpose` <- `purpose`
       }
     },
 
@@ -88,21 +88,21 @@ SSIOAccountAddress <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SSIOAccountAddressObject <- list()
-      if (!is.null(self$`display`)) {
-        SSIOAccountAddressObject[["display"]] <-
-          self$`display`
-      }
-      if (!is.null(self$`purpose`)) {
-        SSIOAccountAddressObject[["purpose"]] <-
-          self$`purpose`
-      }
       if (!is.null(self$`address_id`)) {
         SSIOAccountAddressObject[["address_id"]] <-
           self$`address_id`
       }
+      if (!is.null(self$`display`)) {
+        SSIOAccountAddressObject[["display"]] <-
+          self$`display`
+      }
       if (!is.null(self$`order_legal_entity`)) {
         SSIOAccountAddressObject[["order_legal_entity"]] <-
           self$`order_legal_entity`
+      }
+      if (!is.null(self$`purpose`)) {
+        SSIOAccountAddressObject[["purpose"]] <-
+          self$`purpose`
       }
       return(SSIOAccountAddressObject)
     },
@@ -114,17 +114,17 @@ SSIOAccountAddress <- R6::R6Class(
     #' @return the instance of SSIOAccountAddress
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`display`)) {
-        self$`display` <- this_object$`display`
-      }
-      if (!is.null(this_object$`purpose`)) {
-        self$`purpose` <- this_object$`purpose`
-      }
       if (!is.null(this_object$`address_id`)) {
         self$`address_id` <- this_object$`address_id`
       }
+      if (!is.null(this_object$`display`)) {
+        self$`display` <- this_object$`display`
+      }
       if (!is.null(this_object$`order_legal_entity`)) {
         self$`order_legal_entity` <- this_object$`order_legal_entity`
+      }
+      if (!is.null(this_object$`purpose`)) {
+        self$`purpose` <- this_object$`purpose`
       }
       self
     },
@@ -147,10 +147,10 @@ SSIOAccountAddress <- R6::R6Class(
     #' @return the instance of SSIOAccountAddress
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`display` <- this_object$`display`
-      self$`purpose` <- this_object$`purpose`
       self$`address_id` <- this_object$`address_id`
+      self$`display` <- this_object$`display`
       self$`order_legal_entity` <- this_object$`order_legal_entity`
+      self$`purpose` <- this_object$`purpose`
       self
     },
 

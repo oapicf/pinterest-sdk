@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.Pin;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinsList200Response   {
   
-  private List<Pin> items = new ArrayList<>();
   private String bookmark;
+  private List<Pin> items = new ArrayList<>();
 
   public PinsList200Response () {
 
   }
 
-  public PinsList200Response (List<Pin> items, String bookmark) {
-    this.items = items;
+  public PinsList200Response (String bookmark, List<Pin> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<Pin> getItems() {
-    return items;
-  }
-  public void setItems(List<Pin> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class PinsList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<Pin> getItems() {
+    return items;
+  }
+  public void setItems(List<Pin> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class PinsList200Response   {
       return false;
     }
     PinsList200Response pinsList200Response = (PinsList200Response) o;
-    return Objects.equals(items, pinsList200Response.items) &&
-        Objects.equals(bookmark, pinsList200Response.bookmark);
+    return Objects.equals(bookmark, pinsList200Response.bookmark) &&
+        Objects.equals(items, pinsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class PinsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

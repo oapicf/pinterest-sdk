@@ -8,8 +8,8 @@ The class is defined in **[CatalogsProductGroupMultipleCountriesCriteria.java](.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | `List&lt;Country&gt;` |  | 
 **negated** | `Boolean` |  |  [optional property]
+**values** | `List&lt;Country&gt;` |  | 
 
 
 

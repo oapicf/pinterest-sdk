@@ -11,8 +11,8 @@ import org.openapitools.model.UpdateAssetGroupResponseExceptionsInner;
 
 @Canonical
 class UpdateAssetGroupResponse {
-    /* A list of successfully edited asset groups. */
-    List<AssetGroupBinding> updatedAssetGroups = new ArrayList<>()
     /* A list of errors associated with the asset groups. Will be returned if there is an error. */
     List<UpdateAssetGroupResponseExceptionsInner> exceptions
+    /* A list of successfully edited asset groups. */
+    List<AssetGroupBinding> updatedAssetGroups = new ArrayList<>()
 }

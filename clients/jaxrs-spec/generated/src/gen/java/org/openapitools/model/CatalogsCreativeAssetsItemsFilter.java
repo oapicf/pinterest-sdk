@@ -19,8 +19,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsCreativeAssetsItemsFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemsFilter   {
+  private String catalogId;
   public enum CatalogTypeEnum {
 
     CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -70,7 +71,6 @@ public class CatalogsCreativeAssetsItemsFilter   {
 
   private CatalogTypeEnum catalogType;
   private @Valid List<String> creativeAssetsIds = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsCreativeAssetsItemsFilter() {
   }
@@ -82,6 +82,26 @@ public class CatalogsCreativeAssetsItemsFilter   {
   ) {
     this.catalogType = catalogType;
     this.creativeAssetsIds = creativeAssetsIds;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   **/
+  public CatalogsCreativeAssetsItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  @JsonProperty("catalog_id")
+   @Pattern(regexp="^\\d+$")public String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty("catalog_id")
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   /**
@@ -138,26 +158,6 @@ public class CatalogsCreativeAssetsItemsFilter   {
 
     return this;
   }
-  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   **/
-  public CatalogsCreativeAssetsItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  @JsonProperty("catalog_id")
-   @Pattern(regexp="^\\d+$")public String getCatalogId() {
-    return catalogId;
-  }
-
-  @JsonProperty("catalog_id")
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -168,14 +168,14 @@ public class CatalogsCreativeAssetsItemsFilter   {
       return false;
     }
     CatalogsCreativeAssetsItemsFilter catalogsCreativeAssetsItemsFilter = (CatalogsCreativeAssetsItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
-        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
+        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @Override
@@ -183,9 +183,9 @@ public class CatalogsCreativeAssetsItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

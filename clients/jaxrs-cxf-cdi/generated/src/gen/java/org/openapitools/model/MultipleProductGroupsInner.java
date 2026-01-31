@@ -22,34 +22,15 @@ import java.util.Objects;
 
 public class MultipleProductGroupsInner   {
   
-  private String name;
-
   private String description;
-
-  private Boolean isFeatured = false;
-
-  private CatalogsProductGroupFiltersRequest filters;
 
   private String feedId;
 
-  /**
-   **/
-  public MultipleProductGroupsInner name(String name) {
-    this.name = name;
-    return this;
-  }
+  private CatalogsProductGroupFiltersRequest filters;
 
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private Boolean isFeatured = false;
 
+  private String name;
 
   /**
    **/
@@ -66,6 +47,45 @@ public class MultipleProductGroupsInner   {
   }
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  /**
+   * Catalog Feed id pertaining to the catalog product group.
+   **/
+  public MultipleProductGroupsInner feedId(String feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+  @JsonProperty("feed_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getFeedId() {
+    return feedId;
+  }
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
+  }
+
+
+  /**
+   **/
+  public MultipleProductGroupsInner filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("filters")
+  @NotNull
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
 
@@ -90,40 +110,20 @@ public class MultipleProductGroupsInner   {
 
   /**
    **/
-  public MultipleProductGroupsInner filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public MultipleProductGroupsInner name(String name) {
+    this.name = name;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty("name")
   @NotNull
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  public String getName() {
+    return name;
   }
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
-  }
-
-
-  /**
-   * Catalog Feed id pertaining to the catalog product group.
-   **/
-  public MultipleProductGroupsInner feedId(String feedId) {
-    this.feedId = feedId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
-  @JsonProperty("feed_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getFeedId() {
-    return feedId;
-  }
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -137,16 +137,16 @@ public class MultipleProductGroupsInner   {
       return false;
     }
     MultipleProductGroupsInner multipleProductGroupsInner = (MultipleProductGroupsInner) o;
-    return Objects.equals(this.name, multipleProductGroupsInner.name) &&
-        Objects.equals(this.description, multipleProductGroupsInner.description) &&
-        Objects.equals(this.isFeatured, multipleProductGroupsInner.isFeatured) &&
+    return Objects.equals(this.description, multipleProductGroupsInner.description) &&
+        Objects.equals(this.feedId, multipleProductGroupsInner.feedId) &&
         Objects.equals(this.filters, multipleProductGroupsInner.filters) &&
-        Objects.equals(this.feedId, multipleProductGroupsInner.feedId);
+        Objects.equals(this.isFeatured, multipleProductGroupsInner.isFeatured) &&
+        Objects.equals(this.name, multipleProductGroupsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -154,11 +154,11 @@ public class MultipleProductGroupsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MultipleProductGroupsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

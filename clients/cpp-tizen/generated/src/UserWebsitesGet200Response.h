@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<UserWebsiteSummary> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <UserWebsiteSummary> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<UserWebsiteSummary> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <UserWebsiteSummary> items);
 
 private:
-	std::list <UserWebsiteSummary>items;
 	std::string bookmark;
+	std::list <UserWebsiteSummary>items;
 	void __init();
 	void __cleanup();
 

@@ -15,6 +15,7 @@
 
 typedef struct campaign_update_request_t campaign_update_request_t;
 
+#include "campaign_bid_options_update.h"
 #include "entity_status.h"
 #include "objective_type.h"
 #include "tracking_urls.h"
@@ -24,18 +25,20 @@ typedef struct campaign_update_request_t campaign_update_request_t;
 typedef struct campaign_update_request_t {
     char *id; // string
     char *ad_account_id; // string
-    char *name; // string
-    entity_status_t *status; // custom
-    int lifetime_spend_cap; //numeric
     int daily_spend_cap; //numeric
-    char *order_line_id; // string
-    struct tracking_urls_t *tracking_urls; //model
-    int start_time; //numeric
     int end_time; //numeric
-    int is_flexible_daily_budgets; //boolean
-    int default_ad_group_budget_in_micro_currency; //numeric
     int is_automated_campaign; //boolean
+    int is_flexible_daily_budgets; //boolean
+    int lifetime_spend_cap; //numeric
+    char *name; // string
+    char *order_line_id; // string
+    int start_time; //numeric
+    entity_status_t *status; // custom
+    struct tracking_urls_t *tracking_urls; //model
+    int default_ad_group_budget_in_micro_currency; //numeric
     int is_campaign_budget_optimization; //boolean
+    struct campaign_bid_options_update_t *bid_options; //model
+    int is_performance_plus; //boolean
     objective_type_t *objective_type; // custom
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -44,18 +47,20 @@ typedef struct campaign_update_request_t {
 __attribute__((deprecated)) campaign_update_request_t *campaign_update_request_create(
     char *id,
     char *ad_account_id,
-    char *name,
-    entity_status_t *status,
-    int lifetime_spend_cap,
     int daily_spend_cap,
-    char *order_line_id,
-    tracking_urls_t *tracking_urls,
-    int start_time,
     int end_time,
-    int is_flexible_daily_budgets,
-    int default_ad_group_budget_in_micro_currency,
     int is_automated_campaign,
+    int is_flexible_daily_budgets,
+    int lifetime_spend_cap,
+    char *name,
+    char *order_line_id,
+    int start_time,
+    entity_status_t *status,
+    tracking_urls_t *tracking_urls,
+    int default_ad_group_budget_in_micro_currency,
     int is_campaign_budget_optimization,
+    campaign_bid_options_update_t *bid_options,
+    int is_performance_plus,
     objective_type_t *objective_type
 );
 

@@ -9,8 +9,8 @@ The class is defined in **[AdsAnalyticsGetAsyncResponse.java](../../src/main/jav
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportStatus** | `BulkReportingJobStatus` |  |  [optional property]
-**url** | `String` |  |  [optional property]
 **size** | `BigDecimal` |  |  [optional property]
+**url** | `String` |  |  [optional property]
 
 
 

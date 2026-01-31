@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import QuizPinQuestion._
 
 case class QuizPinQuestion (
-  questionId: Option[BigDecimal],
-questionText: Option[String],
-options: Option[List[QuizPinOption]])
+  options: Option[List[QuizPinOption]],
+questionId: Option[BigDecimal],
+questionText: Option[String])
 
 object QuizPinQuestion {
   import DateTimeCodecs._

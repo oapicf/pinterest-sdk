@@ -30,10 +30,13 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsUpsertBatchRequest", description = "Request object to upsert catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
+
+  @Valid
+  private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -284,9 +287,6 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
 
   private BatchOperation operation;
 
-  @Valid
-  private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsUpsertBatchRequest() {
     super();
   }
@@ -294,11 +294,11 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
   /**
    * Constructor with only required parameters
    */
-  public CatalogsItemsUpsertBatchRequest(Country country, LanguageEnum language, BatchOperation operation, List<@Valid ItemUpsertBatchRecord> items) {
+  public CatalogsItemsUpsertBatchRequest(Country country, List<@Valid ItemUpsertBatchRecord> items, LanguageEnum language, BatchOperation operation) {
     this.country = country;
+    this.items = items;
     this.language = language;
     this.operation = operation;
-    this.items = items;
   }
 
   public CatalogsItemsUpsertBatchRequest country(Country country) {
@@ -319,6 +319,34 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsUpsertBatchRequest items(List<@Valid ItemUpsertBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsUpsertBatchRequest addItemsItem(ItemUpsertBatchRecord itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Array with catalogs items
+   * @return items
+   */
+  @NotNull @Valid @Size(min = 1, max = 1000) 
+  @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid ItemUpsertBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsUpsertBatchRequest language(LanguageEnum language) {
@@ -361,34 +389,6 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     this.operation = operation;
   }
 
-  public CatalogsItemsUpsertBatchRequest items(List<@Valid ItemUpsertBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsUpsertBatchRequest addItemsItem(ItemUpsertBatchRecord itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Array with catalogs items
-   * @return items
-   */
-  @NotNull @Valid @Size(min = 1, max = 1000) 
-  @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("items")
-  public List<@Valid ItemUpsertBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
-    this.items = items;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -399,14 +399,14 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     }
     CatalogsItemsUpsertBatchRequest catalogsItemsUpsertBatchRequest = (CatalogsItemsUpsertBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsUpsertBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsUpsertBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsUpsertBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsUpsertBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsUpsertBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsUpsertBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -414,9 +414,9 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsUpsertBatchRequest {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -17,9 +17,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserWebsiteVerifyRequest  {
   
-  @ApiModelProperty(example = "pintest-website-12345678.test/test_1", value = "")
-  private String website;
-
 public enum VerificationMethodEnum {
 
     @JsonProperty("FILENAME") FILENAME(String.valueOf("FILENAME")),
@@ -53,30 +50,9 @@ public enum VerificationMethodEnum {
 
   @ApiModelProperty(value = "")
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
- /**
-  * Get website
-  * @return website
-  */
-  @JsonProperty("website")
-  public String getWebsite() {
-    return website;
-  }
 
-  /**
-   * Sets the <code>website</code> property.
-   */
- public void setWebsite(String website) {
-    this.website = website;
-  }
-
-  /**
-   * Sets the <code>website</code> property.
-   */
-  public UserWebsiteVerifyRequest website(String website) {
-    this.website = website;
-    return this;
-  }
-
+  @ApiModelProperty(example = "pintest-website-12345678.test/test_1", value = "")
+  private String website;
  /**
   * Get verificationMethod
   * @return verificationMethod
@@ -101,6 +77,30 @@ public enum VerificationMethodEnum {
     return this;
   }
 
+ /**
+  * Get website
+  * @return website
+  */
+  @JsonProperty("website")
+  public String getWebsite() {
+    return website;
+  }
+
+  /**
+   * Sets the <code>website</code> property.
+   */
+ public void setWebsite(String website) {
+    this.website = website;
+  }
+
+  /**
+   * Sets the <code>website</code> property.
+   */
+  public UserWebsiteVerifyRequest website(String website) {
+    this.website = website;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -111,13 +111,13 @@ public enum VerificationMethodEnum {
       return false;
     }
     UserWebsiteVerifyRequest userWebsiteVerifyRequest = (UserWebsiteVerifyRequest) o;
-    return Objects.equals(this.website, userWebsiteVerifyRequest.website) &&
-        Objects.equals(this.verificationMethod, userWebsiteVerifyRequest.verificationMethod);
+    return Objects.equals(this.verificationMethod, userWebsiteVerifyRequest.verificationMethod) &&
+        Objects.equals(this.website, userWebsiteVerifyRequest.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, verificationMethod);
+    return Objects.hash(verificationMethod, website);
   }
 
   @Override
@@ -125,8 +125,8 @@ public enum VerificationMethodEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerifyRequest {\n");
     
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

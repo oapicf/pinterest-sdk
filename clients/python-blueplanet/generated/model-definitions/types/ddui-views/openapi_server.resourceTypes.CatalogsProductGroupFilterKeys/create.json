@@ -1,0 +1,50 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "min_price" },
+      {"model": "max_price" },
+      {"model": "currency" },
+      {"model": "item_id" },
+      {"model": "availability" },
+      {"model": "brand" },
+      {"model": "condition" },
+      {"model": "custom_label_0" },
+      {"model": "custom_label_1" },
+      {"model": "custom_label_2" },
+      {"model": "custom_label_3" },
+      {"model": "custom_label_4" },
+      {"model": "item_group_id" },
+      {"model": "gender" },
+      {"model": "media_type" },
+      {"model": "product_type_4" },
+      {"model": "product_type_3" },
+      {"model": "product_type_2" },
+      {"model": "product_type_1" },
+      {"model": "product_type_0" },
+      {"model": "google_product_category_6" },
+      {"model": "google_product_category_5" },
+      {"model": "google_product_category_4" },
+      {"model": "google_product_category_3" },
+      {"model": "google_product_category_2" },
+      {"model": "google_product_category_1" },
+      {"model": "google_product_category_0" },
+      {"model": "product_group" },
+      {"model": "custom_number_0" },
+      {"model": "custom_number_1" },
+      {"model": "custom_number_2" },
+      {"model": "custom_number_3" },
+      {"model": "custom_number_4" },
+      {"model": "title_keywords" },
+    ]
+  }]
+}

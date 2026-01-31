@@ -13,37 +13,37 @@ import AnyCodable
 /** If specified, you must provide all properties */
 public struct CatalogsHotelGuestRatings: Codable, JSONEncodable, Hashable {
 
-    /** Your hotel's rating. */
-    public var score: Double?
-    /** Total number of people who have rated this hotel. */
-    public var numberOfReviewers: Int?
     /** Max value for the hotel rating score. */
     public var maxScore: Double?
+    /** Total number of people who have rated this hotel. */
+    public var numberOfReviewers: Int?
     /** System you use for guest reviews. */
     public var ratingSystem: String?
+    /** Your hotel's rating. */
+    public var score: Double?
 
-    public init(score: Double? = nil, numberOfReviewers: Int? = nil, maxScore: Double? = nil, ratingSystem: String? = nil) {
-        self.score = score
-        self.numberOfReviewers = numberOfReviewers
+    public init(maxScore: Double? = nil, numberOfReviewers: Int? = nil, ratingSystem: String? = nil, score: Double? = nil) {
         self.maxScore = maxScore
+        self.numberOfReviewers = numberOfReviewers
         self.ratingSystem = ratingSystem
+        self.score = score
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case score
-        case numberOfReviewers = "number_of_reviewers"
         case maxScore = "max_score"
+        case numberOfReviewers = "number_of_reviewers"
         case ratingSystem = "rating_system"
+        case score
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(score, forKey: .score)
-        try container.encodeIfPresent(numberOfReviewers, forKey: .numberOfReviewers)
         try container.encodeIfPresent(maxScore, forKey: .maxScore)
+        try container.encodeIfPresent(numberOfReviewers, forKey: .numberOfReviewers)
         try container.encodeIfPresent(ratingSystem, forKey: .ratingSystem)
+        try container.encodeIfPresent(score, forKey: .score)
     }
 }
 

@@ -1,36 +1,13 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Board",
+  "doc": "",
   "name": "Board",
   "fields": [
-    {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "created_at",
-      "type": ["null", "string"],
-      "doc": "Date and time of board creation.",
-      "default": null
-    },
     {
       "name": "board_pins_modified_at",
       "type": ["null", "string"],
       "doc": "Date and time of last board pins modified.",
-      "default": null
-    },
-    {
-      "name": "name",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "",
       "default": null
     },
     {
@@ -40,9 +17,15 @@
       "default": null
     },
     {
-      "name": "pin_count",
-      "type": ["null", "int"],
-      "doc": "Count of pins on the board.",
+      "name": "created_at",
+      "type": ["null", "string"],
+      "doc": "Date and time of board creation.",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     },
     {
@@ -52,10 +35,26 @@
       "default": null
     },
     {
+      "name": "id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "is_ads_only",
+      "type": ["boolean", "null"],
+      "doc": "If set to `true`, the board will be ad-only and can store ad-only Pins.",
+      "default": false
+    },
+    {
       "name": "media",
       "type": ["null", "model.BoardMedia"],
-      "doc": "",
+      "doc": "Board media.",
       "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\"."
     },
     {
       "name": "owner",
@@ -64,18 +63,16 @@
       "default": null
     },
     {
+      "name": "pin_count",
+      "type": ["null", "int"],
+      "doc": "Count of Pins on the board.",
+      "default": null
+    },
+    {
       "name": "privacy",
-      "type": [{
-        "type": "enum",
-        "name": "Board_privacy",
-        "symbols": [
-          "PUBLIC",
-          "PROTECTED",
-          "SECRET"
-        ]
-      }, "null"],
-      "doc": "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>",
-      "default": PrivacyEnum.PUBLIC
+      "type": ["model.BoardPrivacy", "null"],
+      "doc": "    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. ",
+      "default": PUBLIC
     }
   ]
 

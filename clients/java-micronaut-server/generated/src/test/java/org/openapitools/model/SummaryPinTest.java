@@ -22,19 +22,27 @@ public class SummaryPinTest {
     }
 
     /**
-     * Test the property 'media'
-     */
-    @Test
-    public void mediaTest() {
-        // TODO: test media
-    }
-
-    /**
      * Test the property 'altText'
      */
     @Test
     public void altTextTest() {
         // TODO: test altText
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -46,19 +54,19 @@ public class SummaryPinTest {
     }
 
     /**
+     * Test the property 'media'
+     */
+    @Test
+    public void mediaTest() {
+        // TODO: test media
+    }
+
+    /**
      * Test the property 'title'
      */
     @Test
     public void titleTest() {
         // TODO: test title
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
     }
 
 }

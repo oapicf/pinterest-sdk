@@ -9,15 +9,15 @@
 -export_type([openapi_pin_media_metadata/0]).
 
 -type openapi_pin_media_metadata() ::
-  [ {'item_type', binary() }
-  | {'title', binary() }
-  | {'description', binary() }
+  [ {'description', binary() }
+  | {'images', openapi_image_size:openapi_image_size() }
+  | {'item_type', binary() }
   | {'link', binary() }
-  | {'images', openapi_image_metadata_images:openapi_image_metadata_images() }
+  | {'title', binary() }
   | {'cover_image_url', binary() }
-  | {'video_url', binary() }
   | {'duration', integer() }
   | {'height', integer() }
+  | {'video_url', binary() }
   | {'width', integer() }
   ].
 
@@ -26,15 +26,15 @@ openapi_pin_media_metadata() ->
     openapi_pin_media_metadata([]).
 
 openapi_pin_media_metadata(Fields) ->
-  Default = [ {'item_type', binary() }
-            , {'title', binary() }
-            , {'description', binary() }
+  Default = [ {'description', binary() }
+            , {'images', openapi_image_size:openapi_image_size() }
+            , {'item_type', binary() }
             , {'link', binary() }
-            , {'images', openapi_image_metadata_images:openapi_image_metadata_images() }
+            , {'title', binary() }
             , {'cover_image_url', binary() }
-            , {'video_url', binary() }
             , {'duration', integer() }
             , {'height', integer() }
+            , {'video_url', binary() }
             , {'width', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

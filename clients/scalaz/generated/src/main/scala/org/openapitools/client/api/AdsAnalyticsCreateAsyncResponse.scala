@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import AdsAnalyticsCreateAsyncResponse._
 
 case class AdsAnalyticsCreateAsyncResponse (
-  reportStatus: Option[BulkReportingJobStatus],
-token: Option[String],
-message: Option[String])
+  message: Option[String],
+reportStatus: Option[BulkReportingJobStatus],
+token: Option[String])
 
 object AdsAnalyticsCreateAsyncResponse {
   import DateTimeCodecs._

@@ -10,8 +10,8 @@ import org.openapitools.model.UserSummary;
 
 @Canonical
 class UserFollowingGet200Response {
-    /* Users */
-    List<UserSummary> items = new ArrayList<>()
     
     String bookmark
+    /* Users */
+    List<UserSummary> items = new ArrayList<>()
 }

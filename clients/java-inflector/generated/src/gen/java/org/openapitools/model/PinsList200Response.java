@@ -16,30 +16,13 @@ import org.openapitools.model.Pin;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsList200Response   {
-  @JsonProperty("items")
-  private List<Pin> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   **/
-  public PinsList200Response items(List<Pin> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<Pin> getItems() {
-    return items;
-  }
-  public void setItems(List<Pin> items) {
-    this.items = items;
-  }
+  private List<Pin> items = new ArrayList<>();
 
   /**
    **/
@@ -58,6 +41,23 @@ public class PinsList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public PinsList200Response items(List<Pin> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<Pin> getItems() {
+    return items;
+  }
+  public void setItems(List<Pin> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class PinsList200Response   {
       return false;
     }
     PinsList200Response pinsList200Response = (PinsList200Response) o;
-    return Objects.equals(items, pinsList200Response.items) &&
-        Objects.equals(bookmark, pinsList200Response.bookmark);
+    return Objects.equals(bookmark, pinsList200Response.bookmark) &&
+        Objects.equals(items, pinsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class PinsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

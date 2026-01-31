@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignsAnalyticsResponseInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignsAnalyticsResponseInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CampaignsAnalyticsResponseInner {
+    title = CampaignsAnalyticsResponseInner
+    description = CampaignsAnalyticsResponseInner
+    derivedFrom = Root
+    properties {
+        campaign_id {
+          type =  string
+          description = "The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true."
+          optional = false
+        }
+        _date {
+          type =  string
+          description = "Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignsAnalyticsResponseInner {
+    title = CampaignsAnalyticsResponseInner
+    description = CampaignsAnalyticsResponseInner
+    implements = openapi_server.resourceTypes.CampaignsAnalyticsResponseInner
+
+  }
+}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,11 @@ var _ MappedNullable = &TrackingUrls{}
 
 // TrackingUrls Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
 type TrackingUrls struct {
-	Impression []string `json:"impression,omitempty"`
+	AudienceVerification []string `json:"audience_verification,omitempty"`
+	BuyableButton []string `json:"buyable_button,omitempty"`
 	Click []string `json:"click,omitempty"`
 	Engagement []string `json:"engagement,omitempty"`
-	BuyableButton []string `json:"buyable_button,omitempty"`
-	AudienceVerification []string `json:"audience_verification,omitempty"`
+	Impression []string `json:"impression,omitempty"`
 }
 
 // NewTrackingUrls instantiates a new TrackingUrls object
@@ -44,36 +44,68 @@ func NewTrackingUrlsWithDefaults() *TrackingUrls {
 	return &this
 }
 
-// GetImpression returns the Impression field value if set, zero value otherwise.
-func (o *TrackingUrls) GetImpression() []string {
-	if o == nil || IsNil(o.Impression) {
+// GetAudienceVerification returns the AudienceVerification field value if set, zero value otherwise.
+func (o *TrackingUrls) GetAudienceVerification() []string {
+	if o == nil || IsNil(o.AudienceVerification) {
 		var ret []string
 		return ret
 	}
-	return o.Impression
+	return o.AudienceVerification
 }
 
-// GetImpressionOk returns a tuple with the Impression field value if set, nil otherwise
+// GetAudienceVerificationOk returns a tuple with the AudienceVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackingUrls) GetImpressionOk() ([]string, bool) {
-	if o == nil || IsNil(o.Impression) {
+func (o *TrackingUrls) GetAudienceVerificationOk() ([]string, bool) {
+	if o == nil || IsNil(o.AudienceVerification) {
 		return nil, false
 	}
-	return o.Impression, true
+	return o.AudienceVerification, true
 }
 
-// HasImpression returns a boolean if a field has been set.
-func (o *TrackingUrls) HasImpression() bool {
-	if o != nil && !IsNil(o.Impression) {
+// HasAudienceVerification returns a boolean if a field has been set.
+func (o *TrackingUrls) HasAudienceVerification() bool {
+	if o != nil && !IsNil(o.AudienceVerification) {
 		return true
 	}
 
 	return false
 }
 
-// SetImpression gets a reference to the given []string and assigns it to the Impression field.
-func (o *TrackingUrls) SetImpression(v []string) {
-	o.Impression = v
+// SetAudienceVerification gets a reference to the given []string and assigns it to the AudienceVerification field.
+func (o *TrackingUrls) SetAudienceVerification(v []string) {
+	o.AudienceVerification = v
+}
+
+// GetBuyableButton returns the BuyableButton field value if set, zero value otherwise.
+func (o *TrackingUrls) GetBuyableButton() []string {
+	if o == nil || IsNil(o.BuyableButton) {
+		var ret []string
+		return ret
+	}
+	return o.BuyableButton
+}
+
+// GetBuyableButtonOk returns a tuple with the BuyableButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TrackingUrls) GetBuyableButtonOk() ([]string, bool) {
+	if o == nil || IsNil(o.BuyableButton) {
+		return nil, false
+	}
+	return o.BuyableButton, true
+}
+
+// HasBuyableButton returns a boolean if a field has been set.
+func (o *TrackingUrls) HasBuyableButton() bool {
+	if o != nil && !IsNil(o.BuyableButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuyableButton gets a reference to the given []string and assigns it to the BuyableButton field.
+func (o *TrackingUrls) SetBuyableButton(v []string) {
+	o.BuyableButton = v
 }
 
 // GetClick returns the Click field value if set, zero value otherwise.
@@ -140,68 +172,36 @@ func (o *TrackingUrls) SetEngagement(v []string) {
 	o.Engagement = v
 }
 
-// GetBuyableButton returns the BuyableButton field value if set, zero value otherwise.
-func (o *TrackingUrls) GetBuyableButton() []string {
-	if o == nil || IsNil(o.BuyableButton) {
+// GetImpression returns the Impression field value if set, zero value otherwise.
+func (o *TrackingUrls) GetImpression() []string {
+	if o == nil || IsNil(o.Impression) {
 		var ret []string
 		return ret
 	}
-	return o.BuyableButton
+	return o.Impression
 }
 
-// GetBuyableButtonOk returns a tuple with the BuyableButton field value if set, nil otherwise
+// GetImpressionOk returns a tuple with the Impression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackingUrls) GetBuyableButtonOk() ([]string, bool) {
-	if o == nil || IsNil(o.BuyableButton) {
+func (o *TrackingUrls) GetImpressionOk() ([]string, bool) {
+	if o == nil || IsNil(o.Impression) {
 		return nil, false
 	}
-	return o.BuyableButton, true
+	return o.Impression, true
 }
 
-// HasBuyableButton returns a boolean if a field has been set.
-func (o *TrackingUrls) HasBuyableButton() bool {
-	if o != nil && !IsNil(o.BuyableButton) {
+// HasImpression returns a boolean if a field has been set.
+func (o *TrackingUrls) HasImpression() bool {
+	if o != nil && !IsNil(o.Impression) {
 		return true
 	}
 
 	return false
 }
 
-// SetBuyableButton gets a reference to the given []string and assigns it to the BuyableButton field.
-func (o *TrackingUrls) SetBuyableButton(v []string) {
-	o.BuyableButton = v
-}
-
-// GetAudienceVerification returns the AudienceVerification field value if set, zero value otherwise.
-func (o *TrackingUrls) GetAudienceVerification() []string {
-	if o == nil || IsNil(o.AudienceVerification) {
-		var ret []string
-		return ret
-	}
-	return o.AudienceVerification
-}
-
-// GetAudienceVerificationOk returns a tuple with the AudienceVerification field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TrackingUrls) GetAudienceVerificationOk() ([]string, bool) {
-	if o == nil || IsNil(o.AudienceVerification) {
-		return nil, false
-	}
-	return o.AudienceVerification, true
-}
-
-// HasAudienceVerification returns a boolean if a field has been set.
-func (o *TrackingUrls) HasAudienceVerification() bool {
-	if o != nil && !IsNil(o.AudienceVerification) {
-		return true
-	}
-
-	return false
-}
-
-// SetAudienceVerification gets a reference to the given []string and assigns it to the AudienceVerification field.
-func (o *TrackingUrls) SetAudienceVerification(v []string) {
-	o.AudienceVerification = v
+// SetImpression gets a reference to the given []string and assigns it to the Impression field.
+func (o *TrackingUrls) SetImpression(v []string) {
+	o.Impression = v
 }
 
 func (o TrackingUrls) MarshalJSON() ([]byte, error) {
@@ -214,8 +214,11 @@ func (o TrackingUrls) MarshalJSON() ([]byte, error) {
 
 func (o TrackingUrls) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Impression) {
-		toSerialize["impression"] = o.Impression
+	if !IsNil(o.AudienceVerification) {
+		toSerialize["audience_verification"] = o.AudienceVerification
+	}
+	if !IsNil(o.BuyableButton) {
+		toSerialize["buyable_button"] = o.BuyableButton
 	}
 	if !IsNil(o.Click) {
 		toSerialize["click"] = o.Click
@@ -223,11 +226,8 @@ func (o TrackingUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Engagement) {
 		toSerialize["engagement"] = o.Engagement
 	}
-	if !IsNil(o.BuyableButton) {
-		toSerialize["buyable_button"] = o.BuyableButton
-	}
-	if !IsNil(o.AudienceVerification) {
-		toSerialize["audience_verification"] = o.AudienceVerification
+	if !IsNil(o.Impression) {
+		toSerialize["impression"] = o.Impression
 	}
 	return toSerialize, nil
 }

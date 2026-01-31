@@ -44,11 +44,5 @@ class CustomerListRequestTest : ShouldSpec() {
             //modelInstance.listType shouldBe ("TODO")
         }
 
-        // to test the property `exceptions` - Customer list errors.
-        should("test exceptions") {
-            // uncomment below to test the property
-            //modelInstance.exceptions shouldBe ("TODO")
-        }
-
     }
 }

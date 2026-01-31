@@ -18,15 +18,19 @@ public struct CatalogsDeleteRetailItem: Codable, JSONEncodable, Hashable {
     }
     /** The catalog item id in the merchant namespace */
     public var itemId: String
+    /** The millisecond timestamp when the item was lastly modified by the merchant. */
+    public var lastUpdatedTime: Int64?
     public var operation: Operation
 
-    public init(itemId: String, operation: Operation) {
+    public init(itemId: String, lastUpdatedTime: Int64? = nil, operation: Operation) {
         self.itemId = itemId
+        self.lastUpdatedTime = lastUpdatedTime
         self.operation = operation
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case itemId = "item_id"
+        case lastUpdatedTime = "last_updated_time"
         case operation
     }
 
@@ -35,6 +39,7 @@ public struct CatalogsDeleteRetailItem: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(itemId, forKey: .itemId)
+        try container.encodeIfPresent(lastUpdatedTime, forKey: .lastUpdatedTime)
         try container.encode(operation, forKey: .operation)
     }
 }

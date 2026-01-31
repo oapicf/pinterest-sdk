@@ -5,9 +5,9 @@ A hotel item to be upserted.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 **HotelId** | **string** | The catalog hotel id in the merchant namespace | 
 **Operation** | **string** |  | 
-**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

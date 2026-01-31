@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `HotelProcessingRecord`
 --
-SELECT `hotel_id`, `errors`, `warnings`, `status` FROM `HotelProcessingRecord` WHERE 1;
+SELECT `errors`, `hotel_id`, `status`, `warnings` FROM `HotelProcessingRecord` WHERE 1;
 
 --
 -- INSERT template for table `HotelProcessingRecord`
 --
-INSERT INTO `HotelProcessingRecord`(`hotel_id`, `errors`, `warnings`, `status`) VALUES (?, ?, ?, ?);
+INSERT INTO `HotelProcessingRecord`(`errors`, `hotel_id`, `status`, `warnings`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `HotelProcessingRecord`
 --
-UPDATE `HotelProcessingRecord` SET `hotel_id` = ?, `errors` = ?, `warnings` = ?, `status` = ? WHERE 1;
+UPDATE `HotelProcessingRecord` SET `errors` = ?, `hotel_id` = ?, `status` = ?, `warnings` = ? WHERE 1;
 
 --
 -- DELETE template for table `HotelProcessingRecord`

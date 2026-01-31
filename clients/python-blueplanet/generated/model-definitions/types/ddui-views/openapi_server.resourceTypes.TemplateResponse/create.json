@@ -1,0 +1,41 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "ad_account_ids" },
+      {"model": "click_window_days" },
+      {"model": "columns" },
+      {"model": "conversion_report_time_type" },
+      {"model": "creation_source" },
+      {"model": "custom_column_ids" },
+      {"model": "date_range" },
+      {"model": "engagement_window_days" },
+      {"model": "filters_json" },
+      {"model": "granularity" },
+      {"model": "id" },
+      {"model": "ingestion_sources" },
+      {"model": "is_deleted" },
+      {"model": "is_owned_by_user" },
+      {"model": "is_scheduled" },
+      {"model": "name" },
+      {"model": "report_end_relative_days_in_past" },
+      {"model": "report_format" },
+      {"model": "report_level" },
+      {"model": "report_start_relative_days_in_past" },
+      {"model": "type" },
+      {"model": "updated_time" },
+      {"model": "user_id" },
+      {"model": "view_window_days" },
+    ]
+  }]
+}

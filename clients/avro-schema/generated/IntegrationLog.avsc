@@ -5,9 +5,27 @@
   "name": "IntegrationLog",
   "fields": [
     {
+      "name": "advertiser_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "app_version_number",
+      "type": ["null", "string"],
+      "doc": "Version number of the integration application.",
+      "default": null
+    },
+    {
       "name": "client_timestamp",
       "type": "int",
       "doc": "Timestamp in milliseconds of when the log was executed at the client."
+    },
+    {
+      "name": "error",
+      "type": ["null", "model.IntegrationLogClientError"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "event_type",
@@ -20,6 +38,18 @@
         ]
       },
       "doc": "Log event type"
+    },
+    {
+      "name": "external_business_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "feed_profile_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "log_level",
@@ -35,31 +65,7 @@
       "doc": "Log level type"
     },
     {
-      "name": "external_business_id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "advertiser_id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "merchant_id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "tag_id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "feed_profile_id",
       "type": ["null", "string"],
       "doc": "",
       "default": null
@@ -71,26 +77,20 @@
       "default": null
     },
     {
-      "name": "app_version_number",
-      "type": ["null", "string"],
-      "doc": "Version number of the integration application.",
-      "default": null
-    },
-    {
       "name": "platform_version_number",
       "type": ["null", "string"],
       "doc": "Version number of the platform the integration application is running on.",
       "default": null
     },
     {
-      "name": "error",
-      "type": ["null", "model.IntegrationLogClientError"],
+      "name": "request",
+      "type": ["null", "model.IntegrationLogClientRequest"],
       "doc": "",
       "default": null
     },
     {
-      "name": "request",
-      "type": ["null", "model.IntegrationLogClientRequest"],
+      "name": "tag_id",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     }

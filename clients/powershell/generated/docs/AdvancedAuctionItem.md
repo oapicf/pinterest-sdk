@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **String** | The catalog retail item id in the merchant namespace | 
 **Country** | [**Country**](Country.md) |  | 
+**ItemId** | **String** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
 **BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 
@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AdvancedAuctionItem = Initialize-PSOpenAPIToolsAdvancedAuctionItem  -ItemId DS0294-M `
- -Country null `
+$AdvancedAuctionItem = Initialize-PSOpenAPIToolsAdvancedAuctionItem  -Country null `
+ -ItemId DS0294-M `
  -Language null `
  -BidOptions null
 ```

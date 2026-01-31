@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -184,7 +184,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	targetingTemplateUpdateRequest := *openapiclient.NewTargetingTemplateUpdateRequest("OperationType_example", "643") // TargetingTemplateUpdateRequest | Operation type and targeting template ID
+	targetingTemplateUpdateRequest := *openapiclient.NewTargetingTemplateUpdateRequest("643", "OperationType_example") // TargetingTemplateUpdateRequest | Operation type and targeting template ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -25,28 +25,10 @@ class IntegrationRecordTest : ShouldSpec() {
         // uncomment below to create an instance of IntegrationRecord
         //val modelInstance = IntegrationRecord()
 
-        // to test the property `id`
-        should("test id") {
+        // to test the property `additionalId1`
+        should("test additionalId1") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `externalBusinessId`
-        should("test externalBusinessId") {
-            // uncomment below to test the property
-            //modelInstance.externalBusinessId shouldBe ("TODO")
-        }
-
-        // to test the property `connectedMerchantId`
-        should("test connectedMerchantId") {
-            // uncomment below to test the property
-            //modelInstance.connectedMerchantId shouldBe ("TODO")
-        }
-
-        // to test the property `connectedUserId`
-        should("test connectedUserId") {
-            // uncomment below to test the property
-            //modelInstance.connectedUserId shouldBe ("TODO")
+            //modelInstance.additionalId1 shouldBe ("TODO")
         }
 
         // to test the property `connectedAdvertiserId`
@@ -61,10 +43,40 @@ class IntegrationRecordTest : ShouldSpec() {
             //modelInstance.connectedLbaId shouldBe ("TODO")
         }
 
+        // to test the property `connectedMerchantId`
+        should("test connectedMerchantId") {
+            // uncomment below to test the property
+            //modelInstance.connectedMerchantId shouldBe ("TODO")
+        }
+
         // to test the property `connectedTagId`
         should("test connectedTagId") {
             // uncomment below to test the property
             //modelInstance.connectedTagId shouldBe ("TODO")
+        }
+
+        // to test the property `connectedUserId`
+        should("test connectedUserId") {
+            // uncomment below to test the property
+            //modelInstance.connectedUserId shouldBe ("TODO")
+        }
+
+        // to test the property `createdTime`
+        should("test createdTime") {
+            // uncomment below to test the property
+            //modelInstance.createdTime shouldBe ("TODO")
+        }
+
+        // to test the property `externalBusinessId`
+        should("test externalBusinessId") {
+            // uncomment below to test the property
+            //modelInstance.externalBusinessId shouldBe ("TODO")
+        }
+
+        // to test the property `id`
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `partnerAccessToken`
@@ -73,10 +85,16 @@ class IntegrationRecordTest : ShouldSpec() {
             //modelInstance.partnerAccessToken shouldBe ("TODO")
         }
 
-        // to test the property `partnerRefreshToken`
-        should("test partnerRefreshToken") {
+        // to test the property `partnerAccessTokenExpiry`
+        should("test partnerAccessTokenExpiry") {
             // uncomment below to test the property
-            //modelInstance.partnerRefreshToken shouldBe ("TODO")
+            //modelInstance.partnerAccessTokenExpiry shouldBe ("TODO")
+        }
+
+        // to test the property `partnerMetadata`
+        should("test partnerMetadata") {
+            // uncomment below to test the property
+            //modelInstance.partnerMetadata shouldBe ("TODO")
         }
 
         // to test the property `partnerPrimaryEmail`
@@ -85,10 +103,10 @@ class IntegrationRecordTest : ShouldSpec() {
             //modelInstance.partnerPrimaryEmail shouldBe ("TODO")
         }
 
-        // to test the property `partnerAccessTokenExpiry`
-        should("test partnerAccessTokenExpiry") {
+        // to test the property `partnerRefreshToken`
+        should("test partnerRefreshToken") {
             // uncomment below to test the property
-            //modelInstance.partnerAccessTokenExpiry shouldBe ("TODO")
+            //modelInstance.partnerRefreshToken shouldBe ("TODO")
         }
 
         // to test the property `partnerRefreshTokenExpiry`
@@ -101,24 +119,6 @@ class IntegrationRecordTest : ShouldSpec() {
         should("test scopes") {
             // uncomment below to test the property
             //modelInstance.scopes shouldBe ("TODO")
-        }
-
-        // to test the property `partnerMetadata`
-        should("test partnerMetadata") {
-            // uncomment below to test the property
-            //modelInstance.partnerMetadata shouldBe ("TODO")
-        }
-
-        // to test the property `additionalId1`
-        should("test additionalId1") {
-            // uncomment below to test the property
-            //modelInstance.additionalId1 shouldBe ("TODO")
-        }
-
-        // to test the property `createdTime`
-        should("test createdTime") {
-            // uncomment below to test the property
-            //modelInstance.createdTime shouldBe ("TODO")
         }
 
         // to test the property `updatedTime`

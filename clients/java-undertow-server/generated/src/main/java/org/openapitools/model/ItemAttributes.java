@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,17 +20,65 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.UpdatableItemAttributesGtin;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemAttributes   {
   
+  private String adImage0Link;
+  private String adImage0Tag;
+  private String adImage10Link;
+  private String adImage10Tag;
+  private String adImage11Link;
+  private String adImage11Tag;
+  private String adImage12Link;
+  private String adImage12Tag;
+  private String adImage13Link;
+  private String adImage13Tag;
+  private String adImage14Link;
+  private String adImage14Tag;
+  private String adImage15Link;
+  private String adImage15Tag;
+  private String adImage16Link;
+  private String adImage16Tag;
+  private String adImage17Link;
+  private String adImage17Tag;
+  private String adImage18Link;
+  private String adImage18Tag;
+  private String adImage19Link;
+  private String adImage19Tag;
+  private String adImage1Link;
+  private String adImage1Tag;
+  private String adImage2Link;
+  private String adImage2Tag;
+  private String adImage3Link;
+  private String adImage3Tag;
+  private String adImage4Link;
+  private String adImage4Tag;
+  private String adImage5Link;
+  private String adImage5Tag;
+  private String adImage6Link;
+  private String adImage6Tag;
+  private String adImage7Link;
+  private String adImage7Tag;
+  private String adImage8Link;
+  private String adImage8Tag;
+  private String adImage9Link;
+  private String adImage9Tag;
   private String adLink;
+  private String adVideo0Link;
+  private String adVideo0Tag;
+  private String adVideo1Link;
+  private String adVideo1Tag;
+  private String adVideo2Link;
+  private String adVideo2Tag;
   private Boolean adult;
   private String ageGroup;
+  private String androidDeepLink;
   private String availability;
   private BigDecimal averageReviewRating;
   private String brand;
@@ -42,13 +90,20 @@ public class ItemAttributes   {
   private String customLabel2;
   private String customLabel3;
   private String customLabel4;
+  private Integer customNumber0;
+  private Integer customNumber1;
+  private Integer customNumber2;
+  private Integer customNumber3;
+  private Integer customNumber4;
   private String description;
   private Boolean freeShippingLabel;
   private String freeShippingLimit;
   private String gender;
   private String googleProductCategory;
-  private Integer gtin;
+  private UpdatableItemAttributesGtin gtin;
   private String id;
+  private String installmentPrice;
+  private String iosDeepLink;
   private String itemGroupId;
   private Long lastUpdatedTime;
   private String link;
@@ -61,7 +116,9 @@ public class ItemAttributes   {
   private String pattern;
   private String price;
   private String productType;
+  private String promotionId;
   private String salePrice;
+  private String salePriceEffectiveDate;
   private String shipping;
   private String shippingHeight;
   private String shippingWeight;
@@ -71,11 +128,733 @@ public class ItemAttributes   {
   private String sizeType;
   private String tax;
   private String title;
+  private String unitPricingBaseMeasure;
+  private String unitPricingMeasure;
   private List<String> variantNames;
   private List<String> variantValues;
   private List<String> additionalImageLink;
   private List<String> imageLink = new ArrayList<>();
   private String videoLink;
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage0Link(String adImage0Link) {
+    this.adImage0Link = adImage0Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_0_link")
+  public String getAdImage0Link() {
+    return adImage0Link;
+  }
+  public void setAdImage0Link(String adImage0Link) {
+    this.adImage0Link = adImage0Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage0Tag(String adImage0Tag) {
+    this.adImage0Tag = adImage0Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_0_tag")
+  public String getAdImage0Tag() {
+    return adImage0Tag;
+  }
+  public void setAdImage0Tag(String adImage0Tag) {
+    this.adImage0Tag = adImage0Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage10Link(String adImage10Link) {
+    this.adImage10Link = adImage10Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_10_link")
+  public String getAdImage10Link() {
+    return adImage10Link;
+  }
+  public void setAdImage10Link(String adImage10Link) {
+    this.adImage10Link = adImage10Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage10Tag(String adImage10Tag) {
+    this.adImage10Tag = adImage10Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_10_tag")
+  public String getAdImage10Tag() {
+    return adImage10Tag;
+  }
+  public void setAdImage10Tag(String adImage10Tag) {
+    this.adImage10Tag = adImage10Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage11Link(String adImage11Link) {
+    this.adImage11Link = adImage11Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_11_link")
+  public String getAdImage11Link() {
+    return adImage11Link;
+  }
+  public void setAdImage11Link(String adImage11Link) {
+    this.adImage11Link = adImage11Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage11Tag(String adImage11Tag) {
+    this.adImage11Tag = adImage11Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_11_tag")
+  public String getAdImage11Tag() {
+    return adImage11Tag;
+  }
+  public void setAdImage11Tag(String adImage11Tag) {
+    this.adImage11Tag = adImage11Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage12Link(String adImage12Link) {
+    this.adImage12Link = adImage12Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_12_link")
+  public String getAdImage12Link() {
+    return adImage12Link;
+  }
+  public void setAdImage12Link(String adImage12Link) {
+    this.adImage12Link = adImage12Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage12Tag(String adImage12Tag) {
+    this.adImage12Tag = adImage12Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_12_tag")
+  public String getAdImage12Tag() {
+    return adImage12Tag;
+  }
+  public void setAdImage12Tag(String adImage12Tag) {
+    this.adImage12Tag = adImage12Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage13Link(String adImage13Link) {
+    this.adImage13Link = adImage13Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_13_link")
+  public String getAdImage13Link() {
+    return adImage13Link;
+  }
+  public void setAdImage13Link(String adImage13Link) {
+    this.adImage13Link = adImage13Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage13Tag(String adImage13Tag) {
+    this.adImage13Tag = adImage13Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_13_tag")
+  public String getAdImage13Tag() {
+    return adImage13Tag;
+  }
+  public void setAdImage13Tag(String adImage13Tag) {
+    this.adImage13Tag = adImage13Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage14Link(String adImage14Link) {
+    this.adImage14Link = adImage14Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_14_link")
+  public String getAdImage14Link() {
+    return adImage14Link;
+  }
+  public void setAdImage14Link(String adImage14Link) {
+    this.adImage14Link = adImage14Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage14Tag(String adImage14Tag) {
+    this.adImage14Tag = adImage14Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_14_tag")
+  public String getAdImage14Tag() {
+    return adImage14Tag;
+  }
+  public void setAdImage14Tag(String adImage14Tag) {
+    this.adImage14Tag = adImage14Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage15Link(String adImage15Link) {
+    this.adImage15Link = adImage15Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_15_link")
+  public String getAdImage15Link() {
+    return adImage15Link;
+  }
+  public void setAdImage15Link(String adImage15Link) {
+    this.adImage15Link = adImage15Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage15Tag(String adImage15Tag) {
+    this.adImage15Tag = adImage15Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_15_tag")
+  public String getAdImage15Tag() {
+    return adImage15Tag;
+  }
+  public void setAdImage15Tag(String adImage15Tag) {
+    this.adImage15Tag = adImage15Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage16Link(String adImage16Link) {
+    this.adImage16Link = adImage16Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_16_link")
+  public String getAdImage16Link() {
+    return adImage16Link;
+  }
+  public void setAdImage16Link(String adImage16Link) {
+    this.adImage16Link = adImage16Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage16Tag(String adImage16Tag) {
+    this.adImage16Tag = adImage16Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_16_tag")
+  public String getAdImage16Tag() {
+    return adImage16Tag;
+  }
+  public void setAdImage16Tag(String adImage16Tag) {
+    this.adImage16Tag = adImage16Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage17Link(String adImage17Link) {
+    this.adImage17Link = adImage17Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_17_link")
+  public String getAdImage17Link() {
+    return adImage17Link;
+  }
+  public void setAdImage17Link(String adImage17Link) {
+    this.adImage17Link = adImage17Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage17Tag(String adImage17Tag) {
+    this.adImage17Tag = adImage17Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_17_tag")
+  public String getAdImage17Tag() {
+    return adImage17Tag;
+  }
+  public void setAdImage17Tag(String adImage17Tag) {
+    this.adImage17Tag = adImage17Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage18Link(String adImage18Link) {
+    this.adImage18Link = adImage18Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_18_link")
+  public String getAdImage18Link() {
+    return adImage18Link;
+  }
+  public void setAdImage18Link(String adImage18Link) {
+    this.adImage18Link = adImage18Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage18Tag(String adImage18Tag) {
+    this.adImage18Tag = adImage18Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_18_tag")
+  public String getAdImage18Tag() {
+    return adImage18Tag;
+  }
+  public void setAdImage18Tag(String adImage18Tag) {
+    this.adImage18Tag = adImage18Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage19Link(String adImage19Link) {
+    this.adImage19Link = adImage19Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_19_link")
+  public String getAdImage19Link() {
+    return adImage19Link;
+  }
+  public void setAdImage19Link(String adImage19Link) {
+    this.adImage19Link = adImage19Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage19Tag(String adImage19Tag) {
+    this.adImage19Tag = adImage19Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_19_tag")
+  public String getAdImage19Tag() {
+    return adImage19Tag;
+  }
+  public void setAdImage19Tag(String adImage19Tag) {
+    this.adImage19Tag = adImage19Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage1Link(String adImage1Link) {
+    this.adImage1Link = adImage1Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_1_link")
+  public String getAdImage1Link() {
+    return adImage1Link;
+  }
+  public void setAdImage1Link(String adImage1Link) {
+    this.adImage1Link = adImage1Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage1Tag(String adImage1Tag) {
+    this.adImage1Tag = adImage1Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_1_tag")
+  public String getAdImage1Tag() {
+    return adImage1Tag;
+  }
+  public void setAdImage1Tag(String adImage1Tag) {
+    this.adImage1Tag = adImage1Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage2Link(String adImage2Link) {
+    this.adImage2Link = adImage2Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_2_link")
+  public String getAdImage2Link() {
+    return adImage2Link;
+  }
+  public void setAdImage2Link(String adImage2Link) {
+    this.adImage2Link = adImage2Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage2Tag(String adImage2Tag) {
+    this.adImage2Tag = adImage2Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_2_tag")
+  public String getAdImage2Tag() {
+    return adImage2Tag;
+  }
+  public void setAdImage2Tag(String adImage2Tag) {
+    this.adImage2Tag = adImage2Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage3Link(String adImage3Link) {
+    this.adImage3Link = adImage3Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_3_link")
+  public String getAdImage3Link() {
+    return adImage3Link;
+  }
+  public void setAdImage3Link(String adImage3Link) {
+    this.adImage3Link = adImage3Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage3Tag(String adImage3Tag) {
+    this.adImage3Tag = adImage3Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_3_tag")
+  public String getAdImage3Tag() {
+    return adImage3Tag;
+  }
+  public void setAdImage3Tag(String adImage3Tag) {
+    this.adImage3Tag = adImage3Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage4Link(String adImage4Link) {
+    this.adImage4Link = adImage4Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_4_link")
+  public String getAdImage4Link() {
+    return adImage4Link;
+  }
+  public void setAdImage4Link(String adImage4Link) {
+    this.adImage4Link = adImage4Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage4Tag(String adImage4Tag) {
+    this.adImage4Tag = adImage4Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_4_tag")
+  public String getAdImage4Tag() {
+    return adImage4Tag;
+  }
+  public void setAdImage4Tag(String adImage4Tag) {
+    this.adImage4Tag = adImage4Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage5Link(String adImage5Link) {
+    this.adImage5Link = adImage5Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_5_link")
+  public String getAdImage5Link() {
+    return adImage5Link;
+  }
+  public void setAdImage5Link(String adImage5Link) {
+    this.adImage5Link = adImage5Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage5Tag(String adImage5Tag) {
+    this.adImage5Tag = adImage5Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_5_tag")
+  public String getAdImage5Tag() {
+    return adImage5Tag;
+  }
+  public void setAdImage5Tag(String adImage5Tag) {
+    this.adImage5Tag = adImage5Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage6Link(String adImage6Link) {
+    this.adImage6Link = adImage6Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_6_link")
+  public String getAdImage6Link() {
+    return adImage6Link;
+  }
+  public void setAdImage6Link(String adImage6Link) {
+    this.adImage6Link = adImage6Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage6Tag(String adImage6Tag) {
+    this.adImage6Tag = adImage6Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_6_tag")
+  public String getAdImage6Tag() {
+    return adImage6Tag;
+  }
+  public void setAdImage6Tag(String adImage6Tag) {
+    this.adImage6Tag = adImage6Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage7Link(String adImage7Link) {
+    this.adImage7Link = adImage7Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_7_link")
+  public String getAdImage7Link() {
+    return adImage7Link;
+  }
+  public void setAdImage7Link(String adImage7Link) {
+    this.adImage7Link = adImage7Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage7Tag(String adImage7Tag) {
+    this.adImage7Tag = adImage7Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_7_tag")
+  public String getAdImage7Tag() {
+    return adImage7Tag;
+  }
+  public void setAdImage7Tag(String adImage7Tag) {
+    this.adImage7Tag = adImage7Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage8Link(String adImage8Link) {
+    this.adImage8Link = adImage8Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_8_link")
+  public String getAdImage8Link() {
+    return adImage8Link;
+  }
+  public void setAdImage8Link(String adImage8Link) {
+    this.adImage8Link = adImage8Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage8Tag(String adImage8Tag) {
+    this.adImage8Tag = adImage8Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_8_tag")
+  public String getAdImage8Tag() {
+    return adImage8Tag;
+  }
+  public void setAdImage8Tag(String adImage8Tag) {
+    this.adImage8Tag = adImage8Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adImage9Link(String adImage9Link) {
+    this.adImage9Link = adImage9Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_image_9_link")
+  public String getAdImage9Link() {
+    return adImage9Link;
+  }
+  public void setAdImage9Link(String adImage9Link) {
+    this.adImage9Link = adImage9Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   */
+  public ItemAttributes adImage9Tag(String adImage9Tag) {
+    this.adImage9Tag = adImage9Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @JsonProperty("ad_image_9_tag")
+  public String getAdImage9Tag() {
+    return adImage9Tag;
+  }
+  public void setAdImage9Tag(String adImage9Tag) {
+    this.adImage9Tag = adImage9Tag;
+  }
 
   /**
    * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
@@ -93,6 +872,114 @@ public class ItemAttributes   {
   }
   public void setAdLink(String adLink) {
     this.adLink = adLink;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adVideo0Link(String adVideo0Link) {
+    this.adVideo0Link = adVideo0Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_video_0_link")
+  public String getAdVideo0Link() {
+    return adVideo0Link;
+  }
+  public void setAdVideo0Link(String adVideo0Link) {
+    this.adVideo0Link = adVideo0Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   */
+  public ItemAttributes adVideo0Tag(String adVideo0Tag) {
+    this.adVideo0Tag = adVideo0Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>")
+  @JsonProperty("ad_video_0_tag")
+  public String getAdVideo0Tag() {
+    return adVideo0Tag;
+  }
+  public void setAdVideo0Tag(String adVideo0Tag) {
+    this.adVideo0Tag = adVideo0Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adVideo1Link(String adVideo1Link) {
+    this.adVideo1Link = adVideo1Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_video_1_link")
+  public String getAdVideo1Link() {
+    return adVideo1Link;
+  }
+  public void setAdVideo1Link(String adVideo1Link) {
+    this.adVideo1Link = adVideo1Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   */
+  public ItemAttributes adVideo1Tag(String adVideo1Tag) {
+    this.adVideo1Tag = adVideo1Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>")
+  @JsonProperty("ad_video_1_tag")
+  public String getAdVideo1Tag() {
+    return adVideo1Tag;
+  }
+  public void setAdVideo1Tag(String adVideo1Tag) {
+    this.adVideo1Tag = adVideo1Tag;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   */
+  public ItemAttributes adVideo2Link(String adVideo2Link) {
+    this.adVideo2Link = adVideo2Link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @JsonProperty("ad_video_2_link")
+  public String getAdVideo2Link() {
+    return adVideo2Link;
+  }
+  public void setAdVideo2Link(String adVideo2Link) {
+    this.adVideo2Link = adVideo2Link;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   */
+  public ItemAttributes adVideo2Tag(String adVideo2Tag) {
+    this.adVideo2Tag = adVideo2Tag;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>")
+  @JsonProperty("ad_video_2_tag")
+  public String getAdVideo2Tag() {
+    return adVideo2Tag;
+  }
+  public void setAdVideo2Tag(String adVideo2Tag) {
+    this.adVideo2Tag = adVideo2Tag;
   }
 
   /**
@@ -114,7 +1001,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
    */
   public ItemAttributes ageGroup(String ageGroup) {
     this.ageGroup = ageGroup;
@@ -122,7 +1009,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
+  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
   @JsonProperty("age_group")
   public String getAgeGroup() {
     return ageGroup;
@@ -132,7 +1019,25 @@ public class ItemAttributes   {
   }
 
   /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+   * The deep link to the product on the Android app.
+   */
+  public ItemAttributes androidDeepLink(String androidDeepLink) {
+    this.androidDeepLink = androidDeepLink;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "pinterest://item/1234567890", value = "The deep link to the product on the Android app.")
+  @JsonProperty("android_deep_link")
+  public String getAndroidDeepLink() {
+    return androidDeepLink;
+  }
+  public void setAndroidDeepLink(String androidDeepLink) {
+    this.androidDeepLink = androidDeepLink;
+  }
+
+  /**
+   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
    */
   public ItemAttributes availability(String availability) {
     this.availability = availability;
@@ -140,7 +1045,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.")
+  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.")
   @JsonProperty("availability")
   public String getAvailability() {
     return availability;
@@ -240,7 +1145,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    */
   public ItemAttributes customLabel0(String customLabel0) {
     this.customLabel0 = customLabel0;
@@ -248,7 +1153,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "Best sellers", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Best sellers", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
   @JsonProperty("custom_label_0")
   public String getCustomLabel0() {
     return customLabel0;
@@ -258,7 +1163,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    */
   public ItemAttributes customLabel1(String customLabel1) {
     this.customLabel1 = customLabel1;
@@ -266,7 +1171,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "Summer promotion", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Summer promotion", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
   @JsonProperty("custom_label_1")
   public String getCustomLabel1() {
     return customLabel1;
@@ -276,7 +1181,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    */
   public ItemAttributes customLabel2(String customLabel2) {
     this.customLabel2 = customLabel2;
@@ -284,7 +1189,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "Winter sales", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Winter sales", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
   @JsonProperty("custom_label_2")
   public String getCustomLabel2() {
     return customLabel2;
@@ -294,7 +1199,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    */
   public ItemAttributes customLabel3(String customLabel3) {
     this.customLabel3 = customLabel3;
@@ -302,7 +1207,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "Woman dress", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Woman dress", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
   @JsonProperty("custom_label_3")
   public String getCustomLabel3() {
     return customLabel3;
@@ -312,7 +1217,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    */
   public ItemAttributes customLabel4(String customLabel4) {
     this.customLabel4 = customLabel4;
@@ -320,13 +1225,103 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "Man hat", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Man hat", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
   @JsonProperty("custom_label_4")
   public String getCustomLabel4() {
     return customLabel4;
   }
   public void setCustomLabel4(String customLabel4) {
     this.customLabel4 = customLabel4;
+  }
+
+  /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  public ItemAttributes customNumber0(Integer customNumber0) {
+    this.customNumber0 = customNumber0;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "10", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @JsonProperty("custom_number_0")
+  public Integer getCustomNumber0() {
+    return customNumber0;
+  }
+  public void setCustomNumber0(Integer customNumber0) {
+    this.customNumber0 = customNumber0;
+  }
+
+  /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  public ItemAttributes customNumber1(Integer customNumber1) {
+    this.customNumber1 = customNumber1;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "0", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @JsonProperty("custom_number_1")
+  public Integer getCustomNumber1() {
+    return customNumber1;
+  }
+  public void setCustomNumber1(Integer customNumber1) {
+    this.customNumber1 = customNumber1;
+  }
+
+  /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  public ItemAttributes customNumber2(Integer customNumber2) {
+    this.customNumber2 = customNumber2;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1520000000", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @JsonProperty("custom_number_2")
+  public Integer getCustomNumber2() {
+    return customNumber2;
+  }
+  public void setCustomNumber2(Integer customNumber2) {
+    this.customNumber2 = customNumber2;
+  }
+
+  /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  public ItemAttributes customNumber3(Integer customNumber3) {
+    this.customNumber3 = customNumber3;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "4294967295", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @JsonProperty("custom_number_3")
+  public Integer getCustomNumber3() {
+    return customNumber3;
+  }
+  public void setCustomNumber3(Integer customNumber3) {
+    this.customNumber3 = customNumber3;
+  }
+
+  /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  public ItemAttributes customNumber4(Integer customNumber4) {
+    this.customNumber4 = customNumber4;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "50", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @JsonProperty("custom_number_4")
+  public Integer getCustomNumber4() {
+    return customNumber4;
+  }
+  public void setCustomNumber4(Integer customNumber4) {
+    this.customNumber4 = customNumber4;
   }
 
   /**
@@ -384,7 +1379,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
    */
   public ItemAttributes gender(String gender) {
     this.gender = gender;
@@ -392,7 +1387,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.")
+  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.")
   @JsonProperty("gender")
   public String getGender() {
     return gender;
@@ -420,20 +1415,19 @@ public class ItemAttributes   {
   }
 
   /**
-   * The unique universal product identifier.
    */
-  public ItemAttributes gtin(Integer gtin) {
+  public ItemAttributes gtin(UpdatableItemAttributesGtin gtin) {
     this.gtin = gtin;
     return this;
   }
 
   
-  @ApiModelProperty(example = "3234567890126", value = "The unique universal product identifier.")
+  @ApiModelProperty(value = "")
   @JsonProperty("gtin")
-  public Integer getGtin() {
+  public UpdatableItemAttributesGtin getGtin() {
     return gtin;
   }
-  public void setGtin(Integer gtin) {
+  public void setGtin(UpdatableItemAttributesGtin gtin) {
     this.gtin = gtin;
   }
 
@@ -453,6 +1447,42 @@ public class ItemAttributes   {
   }
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+   */
+  public ItemAttributes installmentPrice(String installmentPrice) {
+    this.installmentPrice = installmentPrice;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "10:10.00 USD", value = "Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>")
+  @JsonProperty("installment_price")
+  public String getInstallmentPrice() {
+    return installmentPrice;
+  }
+  public void setInstallmentPrice(String installmentPrice) {
+    this.installmentPrice = installmentPrice;
+  }
+
+  /**
+   * The deep link to the product on the iOS app.
+   */
+  public ItemAttributes iosDeepLink(String iosDeepLink) {
+    this.iosDeepLink = iosDeepLink;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "pinterest://item/1234567890", value = "The deep link to the product on the iOS app.")
+  @JsonProperty("ios_deep_link")
+  public String getIosDeepLink() {
+    return iosDeepLink;
+  }
+  public void setIosDeepLink(String iosDeepLink) {
+    this.iosDeepLink = iosDeepLink;
   }
 
   /**
@@ -672,6 +1702,24 @@ public class ItemAttributes   {
   }
 
   /**
+   * A unique identifier referencing the promotion associated with this catalog item.
+   */
+  public ItemAttributes promotionId(String promotionId) {
+    this.promotionId = promotionId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "promotion_1", value = "A unique identifier referencing the promotion associated with this catalog item.")
+  @JsonProperty("promotion_id")
+  public String getPromotionId() {
+    return promotionId;
+  }
+  public void setPromotionId(String promotionId) {
+    this.promotionId = promotionId;
+  }
+
+  /**
    * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
    */
   public ItemAttributes salePrice(String salePrice) {
@@ -687,6 +1735,24 @@ public class ItemAttributes   {
   }
   public void setSalePrice(String salePrice) {
     this.salePrice = salePrice;
+  }
+
+  /**
+   * Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
+   */
+  public ItemAttributes salePriceEffectiveDate(String salePriceEffectiveDate) {
+    this.salePriceEffectiveDate = salePriceEffectiveDate;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2025-01-01T00:00:00.000000Z/2025-01-07T00:00:00.000000Z", value = "Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)")
+  @JsonProperty("sale_price_effective_date")
+  public String getSalePriceEffectiveDate() {
+    return salePriceEffectiveDate;
+  }
+  public void setSalePriceEffectiveDate(String salePriceEffectiveDate) {
+    this.salePriceEffectiveDate = salePriceEffectiveDate;
   }
 
   /**
@@ -780,7 +1846,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
    */
   public ItemAttributes sizeSystem(String sizeSystem) {
     this.sizeSystem = sizeSystem;
@@ -788,7 +1854,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.")
+  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.")
   @JsonProperty("size_system")
   public String getSizeSystem() {
     return sizeSystem;
@@ -798,7 +1864,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
    */
   public ItemAttributes sizeType(String sizeType) {
     this.sizeType = sizeType;
@@ -806,7 +1872,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.")
+  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.")
   @JsonProperty("size_type")
   public String getSizeType() {
     return sizeType;
@@ -849,6 +1915,42 @@ public class ItemAttributes   {
   }
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  /**
+   * Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+   */
+  public ItemAttributes unitPricingBaseMeasure(String unitPricingBaseMeasure) {
+    this.unitPricingBaseMeasure = unitPricingBaseMeasure;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "10 ML", value = "Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>")
+  @JsonProperty("unit_pricing_base_measure")
+  public String getUnitPricingBaseMeasure() {
+    return unitPricingBaseMeasure;
+  }
+  public void setUnitPricingBaseMeasure(String unitPricingBaseMeasure) {
+    this.unitPricingBaseMeasure = unitPricingBaseMeasure;
+  }
+
+  /**
+   * Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+   */
+  public ItemAttributes unitPricingMeasure(String unitPricingMeasure) {
+    this.unitPricingMeasure = unitPricingMeasure;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "10 ML", value = "Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>")
+  @JsonProperty("unit_pricing_measure")
+  public String getUnitPricingMeasure() {
+    return unitPricingMeasure;
+  }
+  public void setUnitPricingMeasure(String unitPricingMeasure) {
+    this.unitPricingMeasure = unitPricingMeasure;
   }
 
   /**
@@ -951,9 +2053,56 @@ public class ItemAttributes   {
       return false;
     }
     ItemAttributes itemAttributes = (ItemAttributes) o;
-    return Objects.equals(adLink, itemAttributes.adLink) &&
+    return Objects.equals(adImage0Link, itemAttributes.adImage0Link) &&
+        Objects.equals(adImage0Tag, itemAttributes.adImage0Tag) &&
+        Objects.equals(adImage10Link, itemAttributes.adImage10Link) &&
+        Objects.equals(adImage10Tag, itemAttributes.adImage10Tag) &&
+        Objects.equals(adImage11Link, itemAttributes.adImage11Link) &&
+        Objects.equals(adImage11Tag, itemAttributes.adImage11Tag) &&
+        Objects.equals(adImage12Link, itemAttributes.adImage12Link) &&
+        Objects.equals(adImage12Tag, itemAttributes.adImage12Tag) &&
+        Objects.equals(adImage13Link, itemAttributes.adImage13Link) &&
+        Objects.equals(adImage13Tag, itemAttributes.adImage13Tag) &&
+        Objects.equals(adImage14Link, itemAttributes.adImage14Link) &&
+        Objects.equals(adImage14Tag, itemAttributes.adImage14Tag) &&
+        Objects.equals(adImage15Link, itemAttributes.adImage15Link) &&
+        Objects.equals(adImage15Tag, itemAttributes.adImage15Tag) &&
+        Objects.equals(adImage16Link, itemAttributes.adImage16Link) &&
+        Objects.equals(adImage16Tag, itemAttributes.adImage16Tag) &&
+        Objects.equals(adImage17Link, itemAttributes.adImage17Link) &&
+        Objects.equals(adImage17Tag, itemAttributes.adImage17Tag) &&
+        Objects.equals(adImage18Link, itemAttributes.adImage18Link) &&
+        Objects.equals(adImage18Tag, itemAttributes.adImage18Tag) &&
+        Objects.equals(adImage19Link, itemAttributes.adImage19Link) &&
+        Objects.equals(adImage19Tag, itemAttributes.adImage19Tag) &&
+        Objects.equals(adImage1Link, itemAttributes.adImage1Link) &&
+        Objects.equals(adImage1Tag, itemAttributes.adImage1Tag) &&
+        Objects.equals(adImage2Link, itemAttributes.adImage2Link) &&
+        Objects.equals(adImage2Tag, itemAttributes.adImage2Tag) &&
+        Objects.equals(adImage3Link, itemAttributes.adImage3Link) &&
+        Objects.equals(adImage3Tag, itemAttributes.adImage3Tag) &&
+        Objects.equals(adImage4Link, itemAttributes.adImage4Link) &&
+        Objects.equals(adImage4Tag, itemAttributes.adImage4Tag) &&
+        Objects.equals(adImage5Link, itemAttributes.adImage5Link) &&
+        Objects.equals(adImage5Tag, itemAttributes.adImage5Tag) &&
+        Objects.equals(adImage6Link, itemAttributes.adImage6Link) &&
+        Objects.equals(adImage6Tag, itemAttributes.adImage6Tag) &&
+        Objects.equals(adImage7Link, itemAttributes.adImage7Link) &&
+        Objects.equals(adImage7Tag, itemAttributes.adImage7Tag) &&
+        Objects.equals(adImage8Link, itemAttributes.adImage8Link) &&
+        Objects.equals(adImage8Tag, itemAttributes.adImage8Tag) &&
+        Objects.equals(adImage9Link, itemAttributes.adImage9Link) &&
+        Objects.equals(adImage9Tag, itemAttributes.adImage9Tag) &&
+        Objects.equals(adLink, itemAttributes.adLink) &&
+        Objects.equals(adVideo0Link, itemAttributes.adVideo0Link) &&
+        Objects.equals(adVideo0Tag, itemAttributes.adVideo0Tag) &&
+        Objects.equals(adVideo1Link, itemAttributes.adVideo1Link) &&
+        Objects.equals(adVideo1Tag, itemAttributes.adVideo1Tag) &&
+        Objects.equals(adVideo2Link, itemAttributes.adVideo2Link) &&
+        Objects.equals(adVideo2Tag, itemAttributes.adVideo2Tag) &&
         Objects.equals(adult, itemAttributes.adult) &&
         Objects.equals(ageGroup, itemAttributes.ageGroup) &&
+        Objects.equals(androidDeepLink, itemAttributes.androidDeepLink) &&
         Objects.equals(availability, itemAttributes.availability) &&
         Objects.equals(averageReviewRating, itemAttributes.averageReviewRating) &&
         Objects.equals(brand, itemAttributes.brand) &&
@@ -965,6 +2114,11 @@ public class ItemAttributes   {
         Objects.equals(customLabel2, itemAttributes.customLabel2) &&
         Objects.equals(customLabel3, itemAttributes.customLabel3) &&
         Objects.equals(customLabel4, itemAttributes.customLabel4) &&
+        Objects.equals(customNumber0, itemAttributes.customNumber0) &&
+        Objects.equals(customNumber1, itemAttributes.customNumber1) &&
+        Objects.equals(customNumber2, itemAttributes.customNumber2) &&
+        Objects.equals(customNumber3, itemAttributes.customNumber3) &&
+        Objects.equals(customNumber4, itemAttributes.customNumber4) &&
         Objects.equals(description, itemAttributes.description) &&
         Objects.equals(freeShippingLabel, itemAttributes.freeShippingLabel) &&
         Objects.equals(freeShippingLimit, itemAttributes.freeShippingLimit) &&
@@ -972,6 +2126,8 @@ public class ItemAttributes   {
         Objects.equals(googleProductCategory, itemAttributes.googleProductCategory) &&
         Objects.equals(gtin, itemAttributes.gtin) &&
         Objects.equals(id, itemAttributes.id) &&
+        Objects.equals(installmentPrice, itemAttributes.installmentPrice) &&
+        Objects.equals(iosDeepLink, itemAttributes.iosDeepLink) &&
         Objects.equals(itemGroupId, itemAttributes.itemGroupId) &&
         Objects.equals(lastUpdatedTime, itemAttributes.lastUpdatedTime) &&
         Objects.equals(link, itemAttributes.link) &&
@@ -984,7 +2140,9 @@ public class ItemAttributes   {
         Objects.equals(pattern, itemAttributes.pattern) &&
         Objects.equals(price, itemAttributes.price) &&
         Objects.equals(productType, itemAttributes.productType) &&
+        Objects.equals(promotionId, itemAttributes.promotionId) &&
         Objects.equals(salePrice, itemAttributes.salePrice) &&
+        Objects.equals(salePriceEffectiveDate, itemAttributes.salePriceEffectiveDate) &&
         Objects.equals(shipping, itemAttributes.shipping) &&
         Objects.equals(shippingHeight, itemAttributes.shippingHeight) &&
         Objects.equals(shippingWeight, itemAttributes.shippingWeight) &&
@@ -994,6 +2152,8 @@ public class ItemAttributes   {
         Objects.equals(sizeType, itemAttributes.sizeType) &&
         Objects.equals(tax, itemAttributes.tax) &&
         Objects.equals(title, itemAttributes.title) &&
+        Objects.equals(unitPricingBaseMeasure, itemAttributes.unitPricingBaseMeasure) &&
+        Objects.equals(unitPricingMeasure, itemAttributes.unitPricingMeasure) &&
         Objects.equals(variantNames, itemAttributes.variantNames) &&
         Objects.equals(variantValues, itemAttributes.variantValues) &&
         Objects.equals(additionalImageLink, itemAttributes.additionalImageLink) &&
@@ -1003,7 +2163,7 @@ public class ItemAttributes   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
+    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
   }
 
   @Override
@@ -1011,9 +2171,56 @@ public class ItemAttributes   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemAttributes {\n");
     
+    sb.append("    adImage0Link: ").append(toIndentedString(adImage0Link)).append("\n");
+    sb.append("    adImage0Tag: ").append(toIndentedString(adImage0Tag)).append("\n");
+    sb.append("    adImage10Link: ").append(toIndentedString(adImage10Link)).append("\n");
+    sb.append("    adImage10Tag: ").append(toIndentedString(adImage10Tag)).append("\n");
+    sb.append("    adImage11Link: ").append(toIndentedString(adImage11Link)).append("\n");
+    sb.append("    adImage11Tag: ").append(toIndentedString(adImage11Tag)).append("\n");
+    sb.append("    adImage12Link: ").append(toIndentedString(adImage12Link)).append("\n");
+    sb.append("    adImage12Tag: ").append(toIndentedString(adImage12Tag)).append("\n");
+    sb.append("    adImage13Link: ").append(toIndentedString(adImage13Link)).append("\n");
+    sb.append("    adImage13Tag: ").append(toIndentedString(adImage13Tag)).append("\n");
+    sb.append("    adImage14Link: ").append(toIndentedString(adImage14Link)).append("\n");
+    sb.append("    adImage14Tag: ").append(toIndentedString(adImage14Tag)).append("\n");
+    sb.append("    adImage15Link: ").append(toIndentedString(adImage15Link)).append("\n");
+    sb.append("    adImage15Tag: ").append(toIndentedString(adImage15Tag)).append("\n");
+    sb.append("    adImage16Link: ").append(toIndentedString(adImage16Link)).append("\n");
+    sb.append("    adImage16Tag: ").append(toIndentedString(adImage16Tag)).append("\n");
+    sb.append("    adImage17Link: ").append(toIndentedString(adImage17Link)).append("\n");
+    sb.append("    adImage17Tag: ").append(toIndentedString(adImage17Tag)).append("\n");
+    sb.append("    adImage18Link: ").append(toIndentedString(adImage18Link)).append("\n");
+    sb.append("    adImage18Tag: ").append(toIndentedString(adImage18Tag)).append("\n");
+    sb.append("    adImage19Link: ").append(toIndentedString(adImage19Link)).append("\n");
+    sb.append("    adImage19Tag: ").append(toIndentedString(adImage19Tag)).append("\n");
+    sb.append("    adImage1Link: ").append(toIndentedString(adImage1Link)).append("\n");
+    sb.append("    adImage1Tag: ").append(toIndentedString(adImage1Tag)).append("\n");
+    sb.append("    adImage2Link: ").append(toIndentedString(adImage2Link)).append("\n");
+    sb.append("    adImage2Tag: ").append(toIndentedString(adImage2Tag)).append("\n");
+    sb.append("    adImage3Link: ").append(toIndentedString(adImage3Link)).append("\n");
+    sb.append("    adImage3Tag: ").append(toIndentedString(adImage3Tag)).append("\n");
+    sb.append("    adImage4Link: ").append(toIndentedString(adImage4Link)).append("\n");
+    sb.append("    adImage4Tag: ").append(toIndentedString(adImage4Tag)).append("\n");
+    sb.append("    adImage5Link: ").append(toIndentedString(adImage5Link)).append("\n");
+    sb.append("    adImage5Tag: ").append(toIndentedString(adImage5Tag)).append("\n");
+    sb.append("    adImage6Link: ").append(toIndentedString(adImage6Link)).append("\n");
+    sb.append("    adImage6Tag: ").append(toIndentedString(adImage6Tag)).append("\n");
+    sb.append("    adImage7Link: ").append(toIndentedString(adImage7Link)).append("\n");
+    sb.append("    adImage7Tag: ").append(toIndentedString(adImage7Tag)).append("\n");
+    sb.append("    adImage8Link: ").append(toIndentedString(adImage8Link)).append("\n");
+    sb.append("    adImage8Tag: ").append(toIndentedString(adImage8Tag)).append("\n");
+    sb.append("    adImage9Link: ").append(toIndentedString(adImage9Link)).append("\n");
+    sb.append("    adImage9Tag: ").append(toIndentedString(adImage9Tag)).append("\n");
     sb.append("    adLink: ").append(toIndentedString(adLink)).append("\n");
+    sb.append("    adVideo0Link: ").append(toIndentedString(adVideo0Link)).append("\n");
+    sb.append("    adVideo0Tag: ").append(toIndentedString(adVideo0Tag)).append("\n");
+    sb.append("    adVideo1Link: ").append(toIndentedString(adVideo1Link)).append("\n");
+    sb.append("    adVideo1Tag: ").append(toIndentedString(adVideo1Tag)).append("\n");
+    sb.append("    adVideo2Link: ").append(toIndentedString(adVideo2Link)).append("\n");
+    sb.append("    adVideo2Tag: ").append(toIndentedString(adVideo2Tag)).append("\n");
     sb.append("    adult: ").append(toIndentedString(adult)).append("\n");
     sb.append("    ageGroup: ").append(toIndentedString(ageGroup)).append("\n");
+    sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
     sb.append("    averageReviewRating: ").append(toIndentedString(averageReviewRating)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
@@ -1025,6 +2232,11 @@ public class ItemAttributes   {
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
+    sb.append("    customNumber0: ").append(toIndentedString(customNumber0)).append("\n");
+    sb.append("    customNumber1: ").append(toIndentedString(customNumber1)).append("\n");
+    sb.append("    customNumber2: ").append(toIndentedString(customNumber2)).append("\n");
+    sb.append("    customNumber3: ").append(toIndentedString(customNumber3)).append("\n");
+    sb.append("    customNumber4: ").append(toIndentedString(customNumber4)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    freeShippingLabel: ").append(toIndentedString(freeShippingLabel)).append("\n");
     sb.append("    freeShippingLimit: ").append(toIndentedString(freeShippingLimit)).append("\n");
@@ -1032,6 +2244,8 @@ public class ItemAttributes   {
     sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    installmentPrice: ").append(toIndentedString(installmentPrice)).append("\n");
+    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
@@ -1044,7 +2258,9 @@ public class ItemAttributes   {
     sb.append("    pattern: ").append(toIndentedString(pattern)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
+    sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
+    sb.append("    salePriceEffectiveDate: ").append(toIndentedString(salePriceEffectiveDate)).append("\n");
     sb.append("    shipping: ").append(toIndentedString(shipping)).append("\n");
     sb.append("    shippingHeight: ").append(toIndentedString(shippingHeight)).append("\n");
     sb.append("    shippingWeight: ").append(toIndentedString(shippingWeight)).append("\n");
@@ -1054,6 +2270,8 @@ public class ItemAttributes   {
     sb.append("    sizeType: ").append(toIndentedString(sizeType)).append("\n");
     sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    unitPricingBaseMeasure: ").append(toIndentedString(unitPricingBaseMeasure)).append("\n");
+    sb.append("    unitPricingMeasure: ").append(toIndentedString(unitPricingMeasure)).append("\n");
     sb.append("    variantNames: ").append(toIndentedString(variantNames)).append("\n");
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");

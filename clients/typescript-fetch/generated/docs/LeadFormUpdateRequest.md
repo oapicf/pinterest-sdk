@@ -6,14 +6,14 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
-`privacyPolicyLink` | string
-`hasAcceptedTerms` | boolean
 `completionMessage` | string
-`status` | [LeadFormStatus](LeadFormStatus.md)
 `disclosureLanguage` | string
-`questions` | [Array&lt;LeadFormQuestion&gt;](LeadFormQuestion.md)
+`hasAcceptedTerms` | boolean
+`name` | string
 `policyLinks` | [Array&lt;LeadFormCommonPolicyLinksInner&gt;](LeadFormCommonPolicyLinksInner.md)
+`privacyPolicyLink` | string
+`questions` | [Array&lt;LeadFormQuestion&gt;](LeadFormQuestion.md)
+`status` | [LeadFormStatus](LeadFormStatus.md)
 `id` | string
 
 ## Example
@@ -23,14 +23,14 @@ import type { LeadFormUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": Lead Form 3/14/2023,
-  "privacyPolicyLink": https://www.advertisername.com/privacy-policy,
-  "hasAcceptedTerms": false,
   "completionMessage": Thank you for submitting. We will contact you soon.,
-  "status": null,
   "disclosureLanguage": By entering your personal information, you agree that your data will be collected and used.,
-  "questions": [{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}],
+  "hasAcceptedTerms": false,
+  "name": Lead Form 3/14/2023,
   "policyLinks": [{label=Copyright, link=https://policy.pinterest.com/en/copyright}],
+  "privacyPolicyLink": https://www.advertisername.com/privacy-policy,
+  "questions": [{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}],
+  "status": null,
   "id": 7765300871171,
 } satisfies LeadFormUpdateRequest
 

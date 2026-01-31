@@ -5,16 +5,16 @@
 -export_type([openapi_catalogs_upsert_creative_assets_item/0]).
 
 -type openapi_catalogs_upsert_creative_assets_item() ::
-    #{ 'creative_assets_id' := binary(),
-       'operation' := binary(),
-       'attributes' := openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes()
+    #{ 'attributes' := openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes(),
+       'creative_assets_id' := binary(),
+       'operation' := binary()
      }.
 
-encode(#{ 'creative_assets_id' := CreativeAssetsId,
-          'operation' := Operation,
-          'attributes' := Attributes
+encode(#{ 'attributes' := Attributes,
+          'creative_assets_id' := CreativeAssetsId,
+          'operation' := Operation
         }) ->
-    #{ 'creative_assets_id' => CreativeAssetsId,
-       'operation' => Operation,
-       'attributes' => Attributes
+    #{ 'attributes' => Attributes,
+       'creative_assets_id' => CreativeAssetsId,
+       'operation' => Operation
      }.

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **username** | **String** | Public username for the user account | [optional] |
 | **id** | **String** | The owning account&#39;s user ID. | [optional] |
+| **username** | **String** | Public username for the user account | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::AdAccountOwner.new(
-  username: null,
-  id: null
+  id: null,
+  username: null
 )
 ```
 

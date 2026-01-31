@@ -8,8 +8,8 @@ Object describing a retail item error
 Name | Type
 ------------ | -------------
 `catalogType` | [CatalogsType](CatalogsType.md)
-`itemId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
+`itemId` | string
 
 ## Example
 
@@ -19,8 +19,8 @@ import type { CatalogsRetailItemErrorResponse } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
-  "itemId": DS0294-M,
   "errors": null,
+  "itemId": DS0294-M,
 } satisfies CatalogsRetailItemErrorResponse
 
 console.log(example)

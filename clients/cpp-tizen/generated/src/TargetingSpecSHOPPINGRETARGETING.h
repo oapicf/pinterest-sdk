@@ -1,11 +1,11 @@
 /*
- * TargetingSpec_SHOPPING_RETARGETING.h
+ * TargetingSpecShoppingRetargeting.h
  *
  * 
  */
 
-#ifndef _TargetingSpec_SHOPPING_RETARGETING_H_
-#define _TargetingSpec_SHOPPING_RETARGETING_H_
+#ifndef _TargetingSpecShoppingRetargeting_H_
+#define _TargetingSpecShoppingRetargeting_H_
 
 
 #include <string>
@@ -27,16 +27,16 @@ namespace ArtikCloud {
  *
  */
 
-class TargetingSpec_SHOPPING_RETARGETING : public Object {
+class TargetingSpecShoppingRetargeting : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	TargetingSpec_SHOPPING_RETARGETING();
-	TargetingSpec_SHOPPING_RETARGETING(char* str);
+	TargetingSpecShoppingRetargeting();
+	TargetingSpecShoppingRetargeting(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~TargetingSpec_SHOPPING_RETARGETING();
+	virtual ~TargetingSpecShoppingRetargeting();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Number of days ago to stop lookback timeframe for dynamic retargeting
+	 */
+	int getExclusionWindow();
+
+	/*! \brief Set Number of days ago to stop lookback timeframe for dynamic retargeting
+	 */
+	void setExclusionWindow(int  exclusion_window);
 	/*! \brief Get Number of days ago to start lookback timeframe for dynamic retargeting
 	 */
 	int getLookbackWindow();
@@ -60,18 +67,11 @@ public:
 	/*! \brief Set Event types to target for dynamic retargeting
 	 */
 	void setTagTypes(std::list <int> tag_types);
-	/*! \brief Get Number of days ago to stop lookback timeframe for dynamic retargeting
-	 */
-	int getExclusionWindow();
-
-	/*! \brief Set Number of days ago to stop lookback timeframe for dynamic retargeting
-	 */
-	void setExclusionWindow(int  exclusion_window);
 
 private:
+	int exclusion_window;
 	int lookback_window;
 	std::list <int>tag_types;
-	int exclusion_window;
 	void __init();
 	void __cleanup();
 
@@ -79,4 +79,4 @@ private:
 }
 }
 
-#endif /* _TargetingSpec_SHOPPING_RETARGETING_H_ */
+#endif /* _TargetingSpecShoppingRetargeting_H_ */

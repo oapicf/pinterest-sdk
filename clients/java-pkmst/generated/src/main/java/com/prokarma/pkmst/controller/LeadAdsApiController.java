@@ -1,10 +1,9 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.AdAccountCreateSubscriptionRequest;
-import com.prokarma.pkmst.model.AdAccountCreateSubscriptionResponse;
-import com.prokarma.pkmst.model.AdAccountGetSubscriptionResponse;
 import com.prokarma.pkmst.model.AdAccountsSubscriptionsGetList200Response;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.LeadSubscription;
+import com.prokarma.pkmst.model.LeadSubscriptionPostParamsCreate;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -27,7 +26,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class LeadAdsApiController implements LeadAdsApi {
     private final ObjectMapper objectMapper;
@@ -60,46 +59,86 @@ public class LeadAdsApiController implements LeadAdsApi {
             return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
         }
 
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdAccountGetSubscriptionResponse> adAccountsSubscriptionsGetById(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+    public ResponseEntity<LeadSubscription> adAccountsSubscriptionsGetById(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @ApiParam(value = "Unique identifier of a subscription.",required=true ) @PathVariable("subscription_id") String subscriptionId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountGetSubscriptionResponse>(objectMapper.readValue("", AdAccountGetSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountGetSubscriptionResponse>(objectMapper.readValue("", AdAccountGetSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountGetSubscriptionResponse>(objectMapper.readValue("", AdAccountGetSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountGetSubscriptionResponse>(objectMapper.readValue("", AdAccountGetSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountGetSubscriptionResponse>(objectMapper.readValue("", AdAccountGetSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdAccountGetSubscriptionResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<LeadSubscription>(HttpStatus.OK);
     }
 
     public ResponseEntity<AdAccountsSubscriptionsGetList200Response> adAccountsSubscriptionsGetList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdAccountsSubscriptionsGetList200Response>(objectMapper.readValue("", AdAccountsSubscriptionsGetList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdAccountsSubscriptionsGetList200Response>(objectMapper.readValue("", AdAccountsSubscriptionsGetList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdAccountsSubscriptionsGetList200Response>(objectMapper.readValue("", AdAccountsSubscriptionsGetList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdAccountsSubscriptionsGetList200Response>(objectMapper.readValue("", AdAccountsSubscriptionsGetList200Response.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<AdAccountsSubscriptionsGetList200Response>(objectMapper.readValue("", AdAccountsSubscriptionsGetList200Response.class), HttpStatus.OK);
@@ -118,31 +157,31 @@ public class LeadAdsApiController implements LeadAdsApi {
         return new ResponseEntity<AdAccountsSubscriptionsGetList200Response>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdAccountCreateSubscriptionResponse> adAccountsSubscriptionsPost(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Subscription to create." ,required=true )   @RequestBody AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest,
+    public ResponseEntity<LeadSubscription> adAccountsSubscriptionsPost(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountCreateSubscriptionResponse>(objectMapper.readValue("", AdAccountCreateSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountCreateSubscriptionResponse>(objectMapper.readValue("", AdAccountCreateSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountCreateSubscriptionResponse>(objectMapper.readValue("", AdAccountCreateSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdAccountCreateSubscriptionResponse>(objectMapper.readValue("", AdAccountCreateSubscriptionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<LeadSubscription>(objectMapper.readValue("", LeadSubscription.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdAccountCreateSubscriptionResponse>(HttpStatus.OK);
+        return new ResponseEntity<LeadSubscription>(HttpStatus.OK);
     }
 
 }

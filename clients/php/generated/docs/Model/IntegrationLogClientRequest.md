@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **string** |  |
 **host** | **string** | HTTP request host from host header. |
+**method** | **string** |  |
 **path** | **string** | HTTP request path. |
 **request_headers** | **array<string,string>** | HTTP request headers as key-value pairs. | [optional]
 **response_headers** | **array<string,string>** | HTTP response headers as key-value pairs. | [optional]

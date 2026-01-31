@@ -92,6 +92,8 @@ public enum LearningModeTypeEnum {
 
   private LearningModeTypeEnum learningModeType;
 
+  private String reportingEvent;
+
   /**
    **/
   public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
@@ -165,7 +167,7 @@ public enum LearningModeTypeEnum {
 
 
   /**
-   * ROAS optimization is not supported
+   * Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when &#x60;conversion_event&#x60; is set to &#x60;\&quot;CHECKOUT\&quot;&#x60; and &#x60;bid_strategy_type&#x60; is set to &#x60;\&quot;AUTOMATIC_BID\&quot;&#x60;. &lt;br&gt;This parameter is not enabled for all advertisers. &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\&quot;&gt;Learn more&lt;/a&gt;.
    **/
   public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
@@ -173,7 +175,7 @@ public enum LearningModeTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "ROAS optimization is not supported")
+  @ApiModelProperty(value = "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.")
   @JsonProperty("is_roas_optimized")
   public Boolean getIsRoasOptimized() {
     return isRoasOptimized;
@@ -202,6 +204,25 @@ public enum LearningModeTypeEnum {
   }
 
 
+  /**
+   * Event name for custom or standard events mapped to an oCPM model
+   **/
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata reportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "INITIATE_CHECKOUT", value = "Event name for custom or standard events mapped to an oCPM model")
+  @JsonProperty("reporting_event")
+  public String getReportingEvent() {
+    return reportingEvent;
+  }
+  public void setReportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -217,12 +238,13 @@ public enum LearningModeTypeEnum {
         Objects.equals(this.conversionTagId, optimizationGoalMetadataConversionTagV3GoalMetadata.conversionTagId) &&
         Objects.equals(this.cpaGoalValueInMicroCurrency, optimizationGoalMetadataConversionTagV3GoalMetadata.cpaGoalValueInMicroCurrency) &&
         Objects.equals(this.isRoasOptimized, optimizationGoalMetadataConversionTagV3GoalMetadata.isRoasOptimized) &&
-        Objects.equals(this.learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType);
+        Objects.equals(this.learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType) &&
+        Objects.equals(this.reportingEvent, optimizationGoalMetadataConversionTagV3GoalMetadata.reportingEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType);
+    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType, reportingEvent);
   }
 
   @Override
@@ -236,6 +258,7 @@ public enum LearningModeTypeEnum {
     sb.append("    cpaGoalValueInMicroCurrency: ").append(toIndentedString(cpaGoalValueInMicroCurrency)).append("\n");
     sb.append("    isRoasOptimized: ").append(toIndentedString(isRoasOptimized)).append("\n");
     sb.append("    learningModeType: ").append(toIndentedString(learningModeType)).append("\n");
+    sb.append("    reportingEvent: ").append(toIndentedString(reportingEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

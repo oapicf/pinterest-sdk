@@ -50,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"_id": @"id", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"isFeatured": @"is_featured", @"type": @"type", @"status": @"status", @"createdAt": @"created_at", @"updatedAt": @"updated_at", @"catalogId": @"catalog_id", @"feedId": @"feed_id", @"country": @"country", @"locale": @"locale" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogId": @"catalog_id", @"catalogType": @"catalog_type", @"country": @"country", @"createdAt": @"created_at", @"_description": @"description", @"feedId": @"feed_id", @"filters": @"filters", @"_id": @"id", @"isFeatured": @"is_featured", @"locale": @"locale", @"name": @"name", @"status": @"status", @"type": @"type", @"updatedAt": @"updated_at" }];
 }
 
 /**
@@ -60,7 +60,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"_description", @"isFeatured", @"type", @"status", @"createdAt", @"updatedAt", @"country", @"locale"];
+  NSArray *optionalProperties = @[@"country", @"createdAt", @"_description", @"isFeatured", @"locale", @"name", @"status", @"updatedAt"];
   return [optionalProperties containsObject:propertyName];
 }
 

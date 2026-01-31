@@ -8,8 +8,8 @@ Object describing a hotel item error
 Name | Type
 ------------ | -------------
 `catalogType` | [CatalogsType](CatalogsType.md)
-`hotelId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
+`hotelId` | string
 
 ## Example
 
@@ -19,8 +19,8 @@ import type { CatalogsHotelItemErrorResponse } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
-  "hotelId": DS0294-M,
   "errors": null,
+  "hotelId": DS0294-M,
 } satisfies CatalogsHotelItemErrorResponse
 
 console.log(example)

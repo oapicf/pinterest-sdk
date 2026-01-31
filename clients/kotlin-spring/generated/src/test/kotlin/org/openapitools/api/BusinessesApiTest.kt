@@ -42,6 +42,7 @@ import org.openapitools.model.PermissionsWithOwner
 import org.openapitools.model.RespondToInvitesResponseArray
 import org.openapitools.model.SharedAudience
 import org.openapitools.model.SharedAudienceResponse
+import org.openapitools.model.SystemUserUpdateRequest
 import org.openapitools.model.UpdateAssetGroupBody
 import org.openapitools.model.UpdateAssetGroupResponse
 import org.openapitools.model.UpdateInvitesResultsResponseArray
@@ -151,11 +152,12 @@ class BusinessesApiTest {
     fun businessAssetMembersGetTest() {
         val businessId: kotlin.String = TODO()
         val assetId: kotlin.String = TODO()
+        val fetchSystemUsers: kotlin.Boolean = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val startIndex: kotlin.Int = TODO()
         
-        val response: ResponseEntity<BusinessAssetMembersGet200Response> = api.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
+        val response: ResponseEntity<BusinessAssetMembersGet200Response> = api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
 
         // TODO: test validations
     }
@@ -395,6 +397,7 @@ class BusinessesApiTest {
     @Test
     fun getBusinessMembersTest() {
         val businessId: kotlin.String = TODO()
+        val fetchSystemUsers: kotlin.Boolean = TODO()
         val assetsSummary: kotlin.Boolean = TODO()
         val businessRoles: kotlin.collections.List<MemberBusinessRole>? = TODO()
         val memberIds: kotlin.String? = TODO()
@@ -402,7 +405,7 @@ class BusinessesApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         
-        val response: ResponseEntity<GetBusinessMembers200Response> = api.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+        val response: ResponseEntity<GetBusinessMembers200Response> = api.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
         // TODO: test validations
     }
@@ -477,6 +480,23 @@ class BusinessesApiTest {
         val pageSize: kotlin.Int = TODO()
         
         val response: ResponseEntity<AudiencesList200Response> = api.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test BusinessesApiController.systemUserUpdate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun systemUserUpdateTest() {
+        val businessId: kotlin.String = TODO()
+        val systemUserId: kotlin.String = TODO()
+        val systemUserUpdateRequest: SystemUserUpdateRequest = TODO()
+        
+        val response: ResponseEntity<Unit> = api.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
 
         // TODO: test validations
     }

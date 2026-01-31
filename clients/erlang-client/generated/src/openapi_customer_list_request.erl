@@ -5,19 +5,16 @@
 -export_type([openapi_customer_list_request/0]).
 
 -type openapi_customer_list_request() ::
-    #{ 'name' := binary(),
-       'records' := binary(),
-       'list_type' => openapi_user_list_type:openapi_user_list_type(),
-       'exceptions' => maps:map()
+    #{ 'list_type' => openapi_user_list_type:openapi_user_list_type(),
+       'name' := binary(),
+       'records' := binary()
      }.
 
-encode(#{ 'name' := Name,
-          'records' := Records,
-          'list_type' := ListType,
-          'exceptions' := Exceptions
+encode(#{ 'list_type' := ListType,
+          'name' := Name,
+          'records' := Records
         }) ->
-    #{ 'name' => Name,
-       'records' => Records,
-       'list_type' => ListType,
-       'exceptions' => Exceptions
+    #{ 'list_type' => ListType,
+       'name' => Name,
+       'records' => Records
      }.

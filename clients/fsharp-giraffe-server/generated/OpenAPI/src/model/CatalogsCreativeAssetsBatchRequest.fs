@@ -17,10 +17,10 @@ module CatalogsCreativeAssetsBatchRequest =
   //#endregion
 
   type CatalogsCreativeAssetsBatchRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     Country : Country;
-    Language : LanguageEnum;
     Items : CatalogsCreativeAssetsBatchItem[];
-    CatalogId : string;
+    Language : LanguageEnum;
   }
   //#endregion

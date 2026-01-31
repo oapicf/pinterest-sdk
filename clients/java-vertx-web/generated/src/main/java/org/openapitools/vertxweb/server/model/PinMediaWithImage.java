@@ -3,32 +3,61 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.PinMedia;
-import org.openapitools.vertxweb.server.model.PinMediaWithImageAllOfImages;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.ImageSize;
 
 /**
  * Pin with image.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PinMediaWithImage extends PinMedia  {
+public class PinMediaWithImage   {
   
-  private PinMediaWithImageAllOfImages images;
+  private ImageSize images;
+
+
+  public enum MediaTypeEnum {
+    IMAGE("image");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private MediaTypeEnum mediaType;
 
   public PinMediaWithImage () {
 
   }
 
-  public PinMediaWithImage (PinMediaWithImageAllOfImages images) {
+  public PinMediaWithImage (ImageSize images, MediaTypeEnum mediaType) {
     this.images = images;
+    this.mediaType = mediaType;
   }
 
     
   @JsonProperty("images")
-  public PinMediaWithImageAllOfImages getImages() {
+  public ImageSize getImages() {
     return images;
   }
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(ImageSize images) {
     this.images = images;
+  }
+
+    
+  @JsonProperty("media_type")
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -41,20 +70,22 @@ public class PinMediaWithImage extends PinMedia  {
       return false;
     }
     PinMediaWithImage pinMediaWithImage = (PinMediaWithImage) o;
-    return super.equals(o) && Objects.equals(images, pinMediaWithImage.images);
+    return Objects.equals(images, pinMediaWithImage.images) &&
+        Objects.equals(mediaType, pinMediaWithImage.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), images);
+    return Objects.hash(images, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImage {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

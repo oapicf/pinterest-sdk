@@ -32,18 +32,6 @@ class UpdateAssetGroupBodyAssetGroupsToUpdateInnerTest : ShouldSpec() {
             //modelInstance.assetGroupId shouldBe ("TODO")
         }
 
-        // to test the property `name` - Asset Group name
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `description` - Asset group description
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
-        }
-
         // to test the property `assetGroupTypes` - Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
         should("test assetGroupTypes") {
             // uncomment below to test the property
@@ -60,6 +48,18 @@ class UpdateAssetGroupBodyAssetGroupsToUpdateInnerTest : ShouldSpec() {
         should("test assetsToRemove") {
             // uncomment below to test the property
             //modelInstance.assetsToRemove shouldBe ("TODO")
+        }
+
+        // to test the property `description` - Asset group description
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `name` - Asset Group name
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

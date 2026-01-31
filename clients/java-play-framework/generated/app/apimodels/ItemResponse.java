@@ -2,8 +2,8 @@ package apimodels;
 
 import apimodels.CatalogsCreativeAssetsAttributes;
 import apimodels.CatalogsType;
-import apimodels.ItemResponseAnyOf;
-import apimodels.ItemResponseAnyOf1;
+import apimodels.ItemResponseOneOf;
+import apimodels.ItemResponseOneOf1;
 import apimodels.ItemValidationEvent;
 import apimodels.Pin;
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * Object describing an item record
+ * Object describing an item record or error
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemResponse   {
   @JsonProperty("catalog_type")
@@ -27,6 +27,11 @@ public class ItemResponse   {
 @Valid
 
   private CatalogsType catalogType;
+
+  @JsonProperty("attributes")
+  @Valid
+
+  private CatalogsCreativeAssetsAttributes attributes;
 
   @JsonProperty("item_id")
   
@@ -38,11 +43,6 @@ public class ItemResponse   {
 
   private List<@Valid Pin> pins = null;
 
-  @JsonProperty("attributes")
-  @Valid
-
-  private CatalogsCreativeAssetsAttributes attributes;
-
   @JsonProperty("hotel_id")
   
   private String hotelId;
@@ -52,9 +52,10 @@ public class ItemResponse   {
   private String creativeAssetsId;
 
   @JsonProperty("errors")
-  @Valid
+  @NotNull
+@Valid
 
-  private List<@Valid ItemValidationEvent> errors = null;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public ItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -71,6 +72,23 @@ public class ItemResponse   {
 
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   public ItemResponse itemId(String itemId) {
@@ -113,23 +131,6 @@ public class ItemResponse   {
 
   public void setPins(List<@Valid Pin> pins) {
     this.pins = pins;
-  }
-
-  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
   }
 
   public ItemResponse hotelId(String hotelId) {
@@ -202,9 +203,9 @@ public class ItemResponse   {
     }
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(catalogType, itemResponse.catalogType) &&
+        Objects.equals(attributes, itemResponse.attributes) &&
         Objects.equals(itemId, itemResponse.itemId) &&
         Objects.equals(pins, itemResponse.pins) &&
-        Objects.equals(attributes, itemResponse.attributes) &&
         Objects.equals(hotelId, itemResponse.hotelId) &&
         Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId) &&
         Objects.equals(errors, itemResponse.errors);
@@ -212,7 +213,7 @@ public class ItemResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
+    return Objects.hash(catalogType, attributes, itemId, pins, hotelId, creativeAssetsId, errors);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -222,9 +223,9 @@ public class ItemResponse   {
     sb.append("class ItemResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");

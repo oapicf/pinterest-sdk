@@ -5,25 +5,25 @@ context("Test ImageMetadata")
 
 model_instance <- ImageMetadata$new()
 
-test_that("item_type", {
-  # tests for the property `item_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`item_type`, "EXPECTED_RESULT")
-})
-
-test_that("title", {
-  # tests for the property `title` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
 test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
+test_that("images", {
+  # tests for the property `images` (ImageSize)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`images`, "EXPECTED_RESULT")
+})
+
+test_that("item_type", {
+  # tests for the property `item_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`item_type`, "EXPECTED_RESULT")
 })
 
 test_that("link", {
@@ -33,9 +33,9 @@ test_that("link", {
   #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
 })
 
-test_that("images", {
-  # tests for the property `images` (ImageMetadataImages)
+test_that("title", {
+  # tests for the property `title` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`images`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })

@@ -11,10 +11,10 @@ module ItemUpsertBatchRecord =
 
   [<CLIMutable>]
   type ItemUpsertBatchRecord = {
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
     [<JsonProperty(PropertyName = "attributes")>]
     Attributes : ItemAttributesRequest;
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
   }
 
   //#endregion

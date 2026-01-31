@@ -8,7 +8,7 @@ import org.openapitools.vertxweb.server.model.AdGroupResponse;
 import org.openapitools.vertxweb.server.model.AdGroupUpdateRequest;
 import org.openapitools.vertxweb.server.model.AdGroupsAnalyticsResponseInner;
 import org.openapitools.vertxweb.server.model.AdGroupsList200Response;
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.vertxweb.server.model.BidFloor;
 import org.openapitools.vertxweb.server.model.BidFloorRequest;
 import org.openapitools.vertxweb.server.model.ConversionReportAttributionType;
@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.MetricsResponse;
+import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -73,6 +74,8 @@ public class AdGroupsApiHandler {
         Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
         Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
+        Boolean aggregateReportRows = requestParameters.queryParameter("aggregate_report_rows") != null ? requestParameters.queryParameter("aggregate_report_rows").getBoolean() : false;
+        ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter startDate is {}", startDate);
@@ -84,8 +87,10 @@ public class AdGroupsApiHandler {
         logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
+        logger.debug("Parameter aggregateReportRows is {}", aggregateReportRows);
+        logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -242,14 +247,15 @@ public class AdGroupsApiHandler {
         List<String> adGroupIds = requestParameters.queryParameter("ad_group_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ad_group_ids").get(), new TypeReference<List<String>>(){}) : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<AdsAnalyticsTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsTargetingType>>(){}) : null;
+        List<AdsAnalyticsAdGroupTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsAdGroupTargetingType>>(){}) : null;
         List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
         Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
         Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
         Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
-        ConversionReportAttributionType attributionTypes = requestParameters.queryParameter("attribution_types") != null ? requestParameters.queryParameter("attribution_types").getConversionReportAttributionType() : null;
+        List<ConversionReportAttributionType> attributionTypes = requestParameters.queryParameter("attribution_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("attribution_types").get(), new TypeReference<List<ConversionReportAttributionType>>(){}) : null;
+        ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter adGroupIds is {}", adGroupIds);
@@ -263,8 +269,9 @@ public class AdGroupsApiHandler {
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
         logger.debug("Parameter attributionTypes is {}", attributionTypes);
+        logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+        api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

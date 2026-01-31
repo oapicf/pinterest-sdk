@@ -9,8 +9,8 @@ Name | Type
 ------------ | -------------
 `mediaId` | string
 `mediaType` | [MediaUploadType](MediaUploadType.md)
+`uploadParameters` | [MediaUploadParameters](MediaUploadParameters.md)
 `uploadUrl` | string
-`uploadParameters` | [MediaUploadAllOfUploadParameters](MediaUploadAllOfUploadParameters.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { MediaUpload } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "mediaId": null,
+  "mediaId": 12345,
   "mediaType": null,
-  "uploadUrl": https://pinterest-media-upload.s3-accelerate.amazonaws.com/,
   "uploadParameters": null,
+  "uploadUrl": https://pinterest-media-upload.s3-accelerate.amazonaws.com/,
 } satisfies MediaUpload
 
 console.log(example)

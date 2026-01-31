@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeletePartnerAssetAccessBodyAccessesInner   {
   
-  private String partnerId;
   private String assetId;
+  private String partnerId;
 
 
   public enum PartnerTypeEnum {
@@ -35,19 +35,10 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
 
   }
 
-  public DeletePartnerAssetAccessBodyAccessesInner (String partnerId, String assetId, PartnerTypeEnum partnerType) {
-    this.partnerId = partnerId;
+  public DeletePartnerAssetAccessBodyAccessesInner (String assetId, String partnerId, PartnerTypeEnum partnerType) {
     this.assetId = assetId;
-    this.partnerType = partnerType;
-  }
-
-    
-  @JsonProperty("partner_id")
-  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
+    this.partnerType = partnerType;
   }
 
     
@@ -57,6 +48,15 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
   }
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+    
+  @JsonProperty("partner_id")
+  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
     
@@ -78,14 +78,14 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
       return false;
     }
     DeletePartnerAssetAccessBodyAccessesInner deletePartnerAssetAccessBodyAccessesInner = (DeletePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(partnerType, deletePartnerAssetAccessBodyAccessesInner.partnerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, partnerType);
+    return Objects.hash(assetId, partnerId, partnerType);
   }
 
   @Override
@@ -93,8 +93,8 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeletePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    partnerType: ").append(toIndentedString(partnerType)).append("\n");
     sb.append("}");
     return sb.toString();

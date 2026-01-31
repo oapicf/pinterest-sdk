@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
+**Items** | [**[]ItemCreateBatchRecord**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 **Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
-**Items** | [**[]ItemCreateBatchRecord**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 
 ## Methods
 
 ### NewCatalogsItemsCreateBatchRequest
 
-`func NewCatalogsItemsCreateBatchRequest(country Country, language string, operation BatchOperation, items []ItemCreateBatchRecord, ) *CatalogsItemsCreateBatchRequest`
+`func NewCatalogsItemsCreateBatchRequest(country Country, items []ItemCreateBatchRecord, language string, operation BatchOperation, ) *CatalogsItemsCreateBatchRequest`
 
 NewCatalogsItemsCreateBatchRequest instantiates a new CatalogsItemsCreateBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsItemsCreateBatchRequest) SetCountry(v Country)`
 
 SetCountry sets Country field to given value.
+
+
+### GetItems
+
+`func (o *CatalogsItemsCreateBatchRequest) GetItems() []ItemCreateBatchRecord`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *CatalogsItemsCreateBatchRequest) GetItemsOk() (*[]ItemCreateBatchRecord, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *CatalogsItemsCreateBatchRequest) SetItems(v []ItemCreateBatchRecord)`
+
+SetItems sets Items field to given value.
 
 
 ### GetLanguage
@@ -86,26 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsItemsCreateBatchRequest) SetOperation(v BatchOperation)`
 
 SetOperation sets Operation field to given value.
-
-
-### GetItems
-
-`func (o *CatalogsItemsCreateBatchRequest) GetItems() []ItemCreateBatchRecord`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *CatalogsItemsCreateBatchRequest) GetItemsOk() (*[]ItemCreateBatchRecord, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *CatalogsItemsCreateBatchRequest) SetItems(v []ItemCreateBatchRecord)`
-
-SetItems sets Items field to given value.
 
 
 

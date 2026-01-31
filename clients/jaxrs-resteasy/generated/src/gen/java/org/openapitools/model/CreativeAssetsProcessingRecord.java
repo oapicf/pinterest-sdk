@@ -16,13 +16,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item processing record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing an item processing record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreativeAssetsProcessingRecord   {
   
   private String creativeAssetsId;
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
-  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
   private ItemProcessingStatus status;
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   /**
    * The catalog creative assets id in the merchant namespace
@@ -52,6 +52,19 @@ public class CreativeAssetsProcessingRecord   {
   }
 
   /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  @Valid
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
+  /**
    * Array with the validation warnings for the item processing record
    **/
   
@@ -63,19 +76,6 @@ public class CreativeAssetsProcessingRecord   {
   }
   public void setWarnings(List<@Valid ItemValidationEvent> warnings) {
     this.warnings = warnings;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  @Valid
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
   }
 
 
@@ -90,13 +90,13 @@ public class CreativeAssetsProcessingRecord   {
     CreativeAssetsProcessingRecord creativeAssetsProcessingRecord = (CreativeAssetsProcessingRecord) o;
     return Objects.equals(this.creativeAssetsId, creativeAssetsProcessingRecord.creativeAssetsId) &&
         Objects.equals(this.errors, creativeAssetsProcessingRecord.errors) &&
-        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings) &&
-        Objects.equals(this.status, creativeAssetsProcessingRecord.status);
+        Objects.equals(this.status, creativeAssetsProcessingRecord.status) &&
+        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, errors, warnings, status);
+    return Objects.hash(creativeAssetsId, errors, status, warnings);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class CreativeAssetsProcessingRecord   {
     
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

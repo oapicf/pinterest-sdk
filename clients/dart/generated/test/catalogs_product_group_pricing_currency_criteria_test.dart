@@ -16,16 +16,6 @@ void main() {
   // final instance = CatalogsProductGroupPricingCurrencyCriteria();
 
   group('test CatalogsProductGroupPricingCurrencyCriteria', () {
-    // String operator_
-    test('to test the property `operator_`', () async {
-      // TODO
-    });
-
-    // num value
-    test('to test the property `value`', () async {
-      // TODO
-    });
-
     // NonNullableCatalogsCurrency currency
     test('to test the property `currency`', () async {
       // TODO
@@ -33,6 +23,16 @@ void main() {
 
     // bool negated (default value: false)
     test('to test the property `negated`', () async {
+      // TODO
+    });
+
+    // String operator_
+    test('to test the property `operator_`', () async {
+      // TODO
+    });
+
+    // num value
+    test('to test the property `value`', () async {
       // TODO
     });
 

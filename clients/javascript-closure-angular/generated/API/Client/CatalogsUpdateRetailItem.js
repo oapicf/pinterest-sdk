@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsUpdateRetailItem');
 API.Client.CatalogsUpdateRetailItem = function() {}
 
 /**
+ * @type {!API.Client.UpdatableItemAttributes}
+ * @export
+ */
+API.Client.CatalogsUpdateRetailItem.prototype.attributes;
+
+/**
  * The catalog item id in the merchant namespace
  * @type {!string}
  * @export
@@ -18,12 +24,6 @@ API.Client.CatalogsUpdateRetailItem.prototype.itemId;
  * @export
  */
 API.Client.CatalogsUpdateRetailItem.prototype.operation;
-
-/**
- * @type {!API.Client.UpdatableItemAttributes}
- * @export
- */
-API.Client.CatalogsUpdateRetailItem.prototype.attributes;
 
 /**
  * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.

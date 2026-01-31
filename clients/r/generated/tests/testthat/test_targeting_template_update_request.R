@@ -5,6 +5,14 @@ context("Test TargetingTemplateUpdateRequest")
 
 model_instance <- TargetingTemplateUpdateRequest$new()
 
+test_that("id", {
+  # tests for the property `id` (character)
+  # Targeting template ID
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
 test_that("operation_type", {
   # tests for the property `operation_type` (character)
 
@@ -12,10 +20,9 @@ test_that("operation_type", {
   #expect_equal(model.instance$`operation_type`, "EXPECTED_RESULT")
 })
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # Targeting template ID
+test_that("targeting_attributes", {
+  # tests for the property `targeting_attributes` (TargetingSpec)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`targeting_attributes`, "EXPECTED_RESULT")
 })

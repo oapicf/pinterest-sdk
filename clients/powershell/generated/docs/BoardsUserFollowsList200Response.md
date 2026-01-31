@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**Board[]**](Board.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Board[]**](Board.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BoardsUserFollowsList200Response = Initialize-PSOpenAPIToolsBoardsUserFollowsList200Response  -Items null `
- -Bookmark null
+$BoardsUserFollowsList200Response = Initialize-PSOpenAPIToolsBoardsUserFollowsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

@@ -8,8 +8,8 @@
 
 (def pins-list-200-response-data
   {
-   (ds/req :items) (s/coll-of pin-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of pin-spec)
    })
 
 (def pins-list-200-response-spec

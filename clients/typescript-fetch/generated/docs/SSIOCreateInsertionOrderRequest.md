@@ -6,28 +6,28 @@
 
 Name | Type
 ------------ | -------------
-`startDate` | string
-`endDate` | string
-`poNumber` | string
-`budgetAmount` | number
+`agencyLink` | string
+`billingContactEmail` | string
 `billingContactFirstname` | string
 `billingContactLastname` | string
-`billingContactEmail` | string
+`budgetAmount` | number
+`endDate` | string
+`mediaContactEmail` | string
 `mediaContactFirstname` | string
 `mediaContactLastname` | string
-`mediaContactEmail` | string
-`agencyLink` | string
+`poNumber` | string
+`startDate` | string
 `userEmail` | string
-`acceptedTermsTime` | number
-`pmpId` | string
-`orderName` | string
-`orderLineType` | string
 `acceptedTermsId` | string
-`billtoCompanyId` | string
-`billtoBusinessAddressId` | string
+`acceptedTermsTime` | number
 `billtoBillingAddressId` | string
-`estimatedMonthlySpend` | number
+`billtoBusinessAddressId` | string
+`billtoCompanyId` | string
 `currencyInfo` | [Currency](Currency.md)
+`estimatedMonthlySpend` | number
+`orderLineType` | string
+`orderName` | string
+`pmpId` | string
 
 ## Example
 
@@ -36,28 +36,28 @@ import type { SSIOCreateInsertionOrderRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "startDate": 2020-12-20,
-  "endDate": 2020-12-20,
-  "poNumber": null,
-  "budgetAmount": 5000000,
+  "agencyLink": null,
+  "billingContactEmail": test@example,
   "billingContactFirstname": null,
   "billingContactLastname": null,
-  "billingContactEmail": test@example,
+  "budgetAmount": 5000000,
+  "endDate": 2020-12-20,
+  "mediaContactEmail": test@example,
   "mediaContactFirstname": null,
   "mediaContactLastname": null,
-  "mediaContactEmail": test@example,
-  "agencyLink": null,
+  "poNumber": null,
+  "startDate": 2020-12-20,
   "userEmail": test@example,
-  "acceptedTermsTime": null,
-  "pmpId": null,
-  "orderName": null,
-  "orderLineType": null,
   "acceptedTermsId": null,
-  "billtoCompanyId": null,
-  "billtoBusinessAddressId": null,
+  "acceptedTermsTime": null,
   "billtoBillingAddressId": null,
-  "estimatedMonthlySpend": null,
+  "billtoBusinessAddressId": null,
+  "billtoCompanyId": null,
   "currencyInfo": null,
+  "estimatedMonthlySpend": null,
+  "orderLineType": null,
+  "orderName": null,
+  "pmpId": null,
 } satisfies SSIOCreateInsertionOrderRequest
 
 console.log(example)

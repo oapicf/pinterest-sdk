@@ -12,11 +12,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerList   {
   
   private String adAccountId;
   private BigDecimal createdTime;
+  private Object exceptions;
   private String id;
   private String name;
   private BigDecimal numBatches;
@@ -50,7 +51,6 @@ public class CustomerList   {
   private StatusEnum status;
   private String type;
   private BigDecimal updatedTime;
-  private Object exceptions;
 
   /**
    * Associated ad account ID.
@@ -76,6 +76,19 @@ public class CustomerList   {
   }
   public void setCreatedTime(BigDecimal createdTime) {
     this.createdTime = createdTime;
+  }
+
+  /**
+   * Customer list errors
+   **/
+  
+  @ApiModelProperty(value = "Customer list errors")
+  @JsonProperty("exceptions")
+  public Object getExceptions() {
+    return exceptions;
+  }
+  public void setExceptions(Object exceptions) {
+    this.exceptions = exceptions;
   }
 
   /**
@@ -182,19 +195,6 @@ public class CustomerList   {
     this.updatedTime = updatedTime;
   }
 
-  /**
-   * Customer list errors
-   **/
-  
-  @ApiModelProperty(value = "Customer list errors")
-  @JsonProperty("exceptions")
-  public Object getExceptions() {
-    return exceptions;
-  }
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -207,6 +207,7 @@ public class CustomerList   {
     CustomerList customerList = (CustomerList) o;
     return Objects.equals(this.adAccountId, customerList.adAccountId) &&
         Objects.equals(this.createdTime, customerList.createdTime) &&
+        Objects.equals(this.exceptions, customerList.exceptions) &&
         Objects.equals(this.id, customerList.id) &&
         Objects.equals(this.name, customerList.name) &&
         Objects.equals(this.numBatches, customerList.numBatches) &&
@@ -214,13 +215,12 @@ public class CustomerList   {
         Objects.equals(this.numUploadedUserRecords, customerList.numUploadedUserRecords) &&
         Objects.equals(this.status, customerList.status) &&
         Objects.equals(this.type, customerList.type) &&
-        Objects.equals(this.updatedTime, customerList.updatedTime) &&
-        Objects.equals(this.exceptions, customerList.exceptions);
+        Objects.equals(this.updatedTime, customerList.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, createdTime, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime, exceptions);
+    return Objects.hash(adAccountId, createdTime, exceptions, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
   }
 
   @Override
@@ -230,6 +230,7 @@ public class CustomerList   {
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    numBatches: ").append(toIndentedString(numBatches)).append("\n");
@@ -238,7 +239,6 @@ public class CustomerList   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

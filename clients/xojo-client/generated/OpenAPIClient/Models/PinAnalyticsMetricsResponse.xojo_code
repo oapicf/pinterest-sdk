@@ -3,17 +3,17 @@ Protected Class PinAnalyticsMetricsResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The lifetime metric name and value.
+			Array with the requested daily metric records
 		#tag EndNote
-		lifetime_metrics As Dictionary
+		daily_metrics() As OpenAPIClient.Models.PinAnalyticsMetricsResponseDailyMetricsInner
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Array with the requested daily metric records
+			The lifetime metric name and value.
 		#tag EndNote
-		daily_metrics() As OpenAPIClient.Models.PinAnalyticsMetricsResponseDailyMetricsInner
+		lifetime_metrics As Dictionary
 	#tag EndProperty
 
 
@@ -62,19 +62,19 @@ Protected Class PinAnalyticsMetricsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="lifetime_metrics"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Dictionary"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="daily_metrics"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="PinAnalyticsMetricsResponseDailyMetricsInner"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="lifetime_metrics"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Dictionary"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

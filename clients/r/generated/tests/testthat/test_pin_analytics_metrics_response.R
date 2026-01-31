@@ -5,20 +5,20 @@ context("Test PinAnalyticsMetricsResponse")
 
 model_instance <- PinAnalyticsMetricsResponse$new()
 
-test_that("lifetime_metrics", {
-  # tests for the property `lifetime_metrics` (map(integer))
-  # The lifetime metric name and value.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`lifetime_metrics`, "EXPECTED_RESULT")
-})
-
 test_that("daily_metrics", {
   # tests for the property `daily_metrics` (array[PinAnalyticsMetricsResponseDailyMetricsInner])
   # Array with the requested daily metric records
 
   # uncomment below to test the property
   #expect_equal(model.instance$`daily_metrics`, "EXPECTED_RESULT")
+})
+
+test_that("lifetime_metrics", {
+  # tests for the property `lifetime_metrics` (map(integer))
+  # The lifetime metric name and value.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`lifetime_metrics`, "EXPECTED_RESULT")
 })
 
 test_that("summary_metrics", {

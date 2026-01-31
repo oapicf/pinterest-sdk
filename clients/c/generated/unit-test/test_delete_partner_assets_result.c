@@ -24,17 +24,17 @@ delete_partner_assets_result_t* instantiate_delete_partner_assets_result(int inc
     delete_partner_assets_result = delete_partner_assets_result_create(
       "549755885175",
       "AD_ACCOUNT",
-      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
       false,
-      "140943737684417"
+      "140943737684417",
+      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"]
     );
   } else {
     delete_partner_assets_result = delete_partner_assets_result_create(
       "549755885175",
       "AD_ACCOUNT",
-      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
       false,
-      "140943737684417"
+      "140943737684417",
+      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"]
     );
   }
 

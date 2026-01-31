@@ -49,15 +49,13 @@ TargetingTypeFilter::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<AdsAnalyticsTargetingType> new_list;
-			AdsAnalyticsTargetingType inst;
+			list<std::string> new_list;
+			std::string inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("AdsAnalyticsTargetingType")) {
-					jsonToValue(&inst, temp_json, "AdsAnalyticsTargetingType", "");
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
 				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
 					
 				}
 				new_list.push_back(inst);
@@ -78,24 +76,14 @@ TargetingTypeFilter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("AdsAnalyticsTargetingType")) {
-		list<AdsAnalyticsTargetingType> new_list = static_cast<list <AdsAnalyticsTargetingType> > (getTargetingTypes());
-		node = converttoJson(&new_list, "AdsAnalyticsTargetingType", "array");
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getTargetingTypes());
+		node = converttoJson(&new_list, "std::string", "array");
 	} else {
 		node = json_node_alloc();
-		list<AdsAnalyticsTargetingType> new_list = static_cast<list <AdsAnalyticsTargetingType> > (getTargetingTypes());
+		list<std::string> new_list = static_cast<list <std::string> > (getTargetingTypes());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
-		
-		for (list<AdsAnalyticsTargetingType>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			AdsAnalyticsTargetingType obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
 		
 	}
 
@@ -111,14 +99,14 @@ TargetingTypeFilter::toJson()
 	return ret;
 }
 
-std::list<AdsAnalyticsTargetingType>
+std::list<std::string>
 TargetingTypeFilter::getTargetingTypes()
 {
 	return targeting_types;
 }
 
 void
-TargetingTypeFilter::setTargetingTypes(std::list <AdsAnalyticsTargetingType> targeting_types)
+TargetingTypeFilter::setTargetingTypes(std::list <std::string> targeting_types)
 {
 	this->targeting_types = targeting_types;
 }

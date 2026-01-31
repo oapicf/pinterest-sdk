@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -36,6 +36,11 @@ const (
 	CUSTOM_LABEL_2 UpdateMaskFieldType = "custom_label_2"
 	CUSTOM_LABEL_3 UpdateMaskFieldType = "custom_label_3"
 	CUSTOM_LABEL_4 UpdateMaskFieldType = "custom_label_4"
+	CUSTOM_NUMBER_0 UpdateMaskFieldType = "custom_number_0"
+	CUSTOM_NUMBER_1 UpdateMaskFieldType = "custom_number_1"
+	CUSTOM_NUMBER_2 UpdateMaskFieldType = "custom_number_2"
+	CUSTOM_NUMBER_3 UpdateMaskFieldType = "custom_number_3"
+	CUSTOM_NUMBER_4 UpdateMaskFieldType = "custom_number_4"
 	DESCRIPTION UpdateMaskFieldType = "description"
 	FREE_SHIPPING_LABEL UpdateMaskFieldType = "free_shipping_label"
 	FREE_SHIPPING_LIMIT UpdateMaskFieldType = "free_shipping_limit"
@@ -65,6 +70,7 @@ const (
 	TITLE UpdateMaskFieldType = "title"
 	VARIANT_NAMES UpdateMaskFieldType = "variant_names"
 	VARIANT_VALUES UpdateMaskFieldType = "variant_values"
+	PROMOTION_ID UpdateMaskFieldType = "promotion_id"
 )
 
 // AllowedUpdateMaskFieldTypeEnumValues is all the allowed values of UpdateMaskFieldType enum
@@ -83,6 +89,11 @@ var AllowedUpdateMaskFieldTypeEnumValues = []UpdateMaskFieldType{
 	"custom_label_2",
 	"custom_label_3",
 	"custom_label_4",
+	"custom_number_0",
+	"custom_number_1",
+	"custom_number_2",
+	"custom_number_3",
+	"custom_number_4",
 	"description",
 	"free_shipping_label",
 	"free_shipping_limit",
@@ -112,6 +123,7 @@ var AllowedUpdateMaskFieldTypeEnumValues = []UpdateMaskFieldType{
 	"title",
 	"variant_names",
 	"variant_values",
+	"promotion_id",
 }
 
 // validUpdateMaskFieldTypeEnumValue provides a map of UpdateMaskFieldTypes for fast verification of use input
@@ -130,6 +142,11 @@ var validUpdateMaskFieldTypeEnumValues = map[UpdateMaskFieldType]struct{}{
 	"custom_label_2": {},
 	"custom_label_3": {},
 	"custom_label_4": {},
+	"custom_number_0": {},
+	"custom_number_1": {},
+	"custom_number_2": {},
+	"custom_number_3": {},
+	"custom_number_4": {},
 	"description": {},
 	"free_shipping_label": {},
 	"free_shipping_limit": {},
@@ -159,6 +176,7 @@ var validUpdateMaskFieldTypeEnumValues = map[UpdateMaskFieldType]struct{}{
 	"title": {},
 	"variant_names": {},
 	"variant_values": {},
+	"promotion_id": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

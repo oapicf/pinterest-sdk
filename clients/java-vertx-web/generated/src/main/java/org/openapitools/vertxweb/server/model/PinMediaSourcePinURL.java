@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaSourcePinURL   {
   
+  private Boolean isAffiliateLink = false;
 
 
   public enum SourceTypeEnum {
@@ -30,23 +31,13 @@ public class PinMediaSourcePinURL   {
   }
 
   private SourceTypeEnum sourceType;
-  private Boolean isAffiliateLink = false;
 
   public PinMediaSourcePinURL () {
 
   }
 
-  public PinMediaSourcePinURL (SourceTypeEnum sourceType, Boolean isAffiliateLink) {
-    this.sourceType = sourceType;
+  public PinMediaSourcePinURL (Boolean isAffiliateLink, SourceTypeEnum sourceType) {
     this.isAffiliateLink = isAffiliateLink;
-  }
-
-    
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-  public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -59,6 +50,15 @@ public class PinMediaSourcePinURL   {
     this.isAffiliateLink = isAffiliateLink;
   }
 
+    
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -69,13 +69,13 @@ public class PinMediaSourcePinURL   {
       return false;
     }
     PinMediaSourcePinURL pinMediaSourcePinURL = (PinMediaSourcePinURL) o;
-    return Objects.equals(sourceType, pinMediaSourcePinURL.sourceType) &&
-        Objects.equals(isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink);
+    return Objects.equals(isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink) &&
+        Objects.equals(sourceType, pinMediaSourcePinURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, isAffiliateLink);
+    return Objects.hash(isAffiliateLink, sourceType);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class PinMediaSourcePinURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourcePinURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,8 +28,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailBatchRequest", description = "A request object that can have multiple operations on a single retail batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -67,6 +69,9 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   private CatalogTypeEnum catalogType;
 
   private Country country;
+
+  @Valid
+  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -315,9 +320,6 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
 
   private LanguageEnum language;
 
-  @Valid
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
-
   public CatalogsRetailBatchRequest() {
     super();
   }
@@ -325,11 +327,31 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, List<CatalogsRetailBatchRequestItemsInner> items, LanguageEnum language) {
     this.catalogType = catalogType;
     this.country = country;
-    this.language = language;
     this.items = items;
+    this.language = language;
+  }
+
+  public CatalogsRetailBatchRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
@@ -372,26 +394,6 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     this.country = country;
   }
 
-  public CatalogsRetailBatchRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-  /**
-   * We recommend using the CatalogsLocale values.
-   * @return language
-   */
-  @NotNull 
-  @Schema(name = "language", description = "We recommend using the CatalogsLocale values.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
   public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsInner> items) {
     this.items = items;
     return this;
@@ -420,6 +422,26 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     this.items = items;
   }
 
+  public CatalogsRetailBatchRequest language(LanguageEnum language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * We recommend using the CatalogsLocale values.
+   * @return language
+   */
+  @NotNull 
+  @Schema(name = "language", description = "We recommend using the CatalogsLocale values.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -429,25 +451,27 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
       return false;
     }
     CatalogsRetailBatchRequest catalogsRetailBatchRequest = (CatalogsRetailBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsRetailBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailBatchRequest.country) &&
-        Objects.equals(this.language, catalogsRetailBatchRequest.language) &&
-        Objects.equals(this.items, catalogsRetailBatchRequest.items);
+        Objects.equals(this.items, catalogsRetailBatchRequest.items) &&
+        Objects.equals(this.language, catalogsRetailBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequest {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

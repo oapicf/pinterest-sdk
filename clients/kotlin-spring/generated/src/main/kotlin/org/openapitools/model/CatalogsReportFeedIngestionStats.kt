@@ -17,18 +17,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param reportType 
  * @param catalogId ID of the catalog entity.
  * @param code The event code that a diagnostics aggregated number references
  * @param codeLabel A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
  * @param message Title message describing the diagnostic issue
  * @param occurrences Number of occurrences of the issue
+ * @param reportType 
  * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
  */
 data class CatalogsReportFeedIngestionStats(
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("report_type") val reportType: CatalogsReportFeedIngestionStats.ReportType? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "ID of the catalog entity.")
@@ -45,6 +42,9 @@ data class CatalogsReportFeedIngestionStats(
 
     @Schema(example = "10", description = "Number of occurrences of the issue")
     @get:JsonProperty("occurrences") val occurrences: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("report_type") val reportType: CatalogsReportFeedIngestionStats.ReportType? = null,
 
     @Schema(example = "null", description = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
     @get:JsonProperty("severity") val severity: CatalogsReportFeedIngestionStats.Severity? = null

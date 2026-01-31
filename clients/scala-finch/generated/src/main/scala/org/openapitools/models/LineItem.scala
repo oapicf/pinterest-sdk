@@ -8,14 +8,14 @@ import org.openapitools._
 
 /**
  * 
- * @param productUnderscorebrand Product brand. For example, \"Parker\".
- * @param productUnderscorecategory Product category. For example, \"Shoes\".
+ * @param productUnderscorebrand Product brand. For example, 'Parker'.
+ * @param productUnderscorecategory Product category. For example, 'Shoes'.
  * @param productUnderscoreid Product ID. For example, 1414.
- * @param productUnderscorename Product name. For example, \"Parker Boots\".
- * @param productUnderscoreprice Product price. For example, \"99.99\".
+ * @param productUnderscorename Product name. For example, 'Parker Boots'.
+ * @param productUnderscoreprice Product price. For example, '99.99'.
  * @param productUnderscorequantity Product quantity. For example, 2.
- * @param productUnderscorevariant Product variant. For example, \"Red\".
- * @param productUnderscorevariantUnderscoreid Product variant ID. For example, \"1414-34832\".
+ * @param productUnderscorevariant Product variant. For example, 'Red'.
+ * @param productUnderscorevariantUnderscoreid Product variant ID. For example, '1414-34832'.
  */
 case class LineItem(productUnderscorebrand: Option[String],
                 productUnderscorecategory: Option[String],

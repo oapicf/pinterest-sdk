@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,10 +24,12 @@ type OptimizationGoalMetadataConversionTagV3GoalMetadata struct {
 	ConversionEvent *string `json:"conversion_event,omitempty"`
 	ConversionTagId *string `json:"conversion_tag_id,omitempty" validate:"regexp=^[0-9]+$"`
 	CpaGoalValueInMicroCurrency *string `json:"cpa_goal_value_in_micro_currency,omitempty" validate:"regexp=^[0-9]+$"`
-	// ROAS optimization is not supported
+	// Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
 	IsRoasOptimized NullableBool `json:"is_roas_optimized,omitempty"`
 	// Conversion learning model type
 	LearningModeType NullableString `json:"learning_mode_type,omitempty"`
+	// Event name for custom or standard events mapped to an oCPM model
+	ReportingEvent *string `json:"reporting_event,omitempty"`
 }
 
 // NewOptimizationGoalMetadataConversionTagV3GoalMetadata instantiates a new OptimizationGoalMetadataConversionTagV3GoalMetadata object
@@ -259,6 +261,38 @@ func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) UnsetLearningModeT
 	o.LearningModeType.Unset()
 }
 
+// GetReportingEvent returns the ReportingEvent field value if set, zero value otherwise.
+func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) GetReportingEvent() string {
+	if o == nil || IsNil(o.ReportingEvent) {
+		var ret string
+		return ret
+	}
+	return *o.ReportingEvent
+}
+
+// GetReportingEventOk returns a tuple with the ReportingEvent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) GetReportingEventOk() (*string, bool) {
+	if o == nil || IsNil(o.ReportingEvent) {
+		return nil, false
+	}
+	return o.ReportingEvent, true
+}
+
+// HasReportingEvent returns a boolean if a field has been set.
+func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) HasReportingEvent() bool {
+	if o != nil && !IsNil(o.ReportingEvent) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportingEvent gets a reference to the given string and assigns it to the ReportingEvent field.
+func (o *OptimizationGoalMetadataConversionTagV3GoalMetadata) SetReportingEvent(v string) {
+	o.ReportingEvent = &v
+}
+
 func (o OptimizationGoalMetadataConversionTagV3GoalMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -286,6 +320,9 @@ func (o OptimizationGoalMetadataConversionTagV3GoalMetadata) ToMap() (map[string
 	}
 	if o.LearningModeType.IsSet() {
 		toSerialize["learning_mode_type"] = o.LearningModeType.Get()
+	}
+	if !IsNil(o.ReportingEvent) {
+		toSerialize["reporting_event"] = o.ReportingEvent
 	}
 	return toSerialize, nil
 }

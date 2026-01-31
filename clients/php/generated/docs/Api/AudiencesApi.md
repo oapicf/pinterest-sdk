@@ -7,7 +7,6 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**audiencesCreate()**](AudiencesApi.md#audiencesCreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
-| [**audiencesCreateCustom()**](AudiencesApi.md#audiencesCreateCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 | [**audiencesGet()**](AudiencesApi.md#audiencesGet) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 | [**audiencesList()**](AudiencesApi.md#audiencesList) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 | [**audiencesUpdate()**](AudiencesApi.md#audiencesUpdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
@@ -21,7 +20,7 @@ audiencesCreate($ad_account_id, $audience_create_request): \OpenAPI\Client\Model
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 
 ### Example
 
@@ -75,68 +74,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `audiencesCreateCustom()`
-
-```php
-audiencesCreateCustom($ad_account_id, $audience_create_custom_request): \OpenAPI\Client\Model\Audience
-```
-
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: pinterest_oauth2
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new OpenAPI\Client\Api\AudiencesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$audience_create_custom_request = new \OpenAPI\Client\Model\AudienceCreateCustomRequest(); // \OpenAPI\Client\Model\AudienceCreateCustomRequest | Custom audience to create.
-
-try {
-    $result = $apiInstance->audiencesCreateCustom($ad_account_id, $audience_create_custom_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AudiencesApi->audiencesCreateCustom: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **audience_create_custom_request** | [**\OpenAPI\Client\Model\AudienceCreateCustomRequest**](../Model/AudienceCreateCustomRequest.md)| Custom audience to create. | |
-
-### Return type
-
-[**\OpenAPI\Client\Model\Audience**](../Model/Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `audiencesGet()`
 
 ```php
@@ -155,6 +92,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -188,7 +128,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -217,6 +157,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -256,7 +199,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -312,7 +255,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **audience_id** | **string**| Unique identifier of an audience | |
-| **audience_update_request** | [**\OpenAPI\Client\Model\AudienceUpdateRequest**](../Model/AudienceUpdateRequest.md)| The audience to be updated. | [optional] |
+| **audience_update_request** | [**\OpenAPI\Client\Model\AudienceUpdateRequest**](../Model/AudienceUpdateRequest.md)| The audience to be updated. | |
 
 ### Return type
 

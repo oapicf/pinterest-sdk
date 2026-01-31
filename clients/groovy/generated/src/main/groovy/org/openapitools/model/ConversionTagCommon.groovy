@@ -7,15 +7,14 @@ import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionTagConfigs;
 import org.openapitools.model.EnhancedMatchStatusType;
-import org.openapitools.model.EntityStatus;
 
 @Canonical
 class ConversionTagCommon {
-    /* Ad account ID. */
-    String adAccountId
     /* Tag code snippet. */
     String codeSnippet
     
+    ConversionTagConfigs configs
+    /* The enhanced match status of the tag */
     EnhancedMatchStatusType enhancedMatchStatus
     /* Tag ID. */
     String id
@@ -23,10 +22,6 @@ class ConversionTagCommon {
     BigDecimal lastFiredTimeMs
     /* Conversion tag name. */
     String name
-    
-    EntityStatus status
     /* Version number. */
     String version
-    
-    ConversionTagConfigs configs
 }

@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
 **Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. | [optional] 
-**Warnings** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the validation warnings for the item processing record | [optional] 
 **Status** | Pointer to [**ItemProcessingStatus**](ItemProcessingStatus.md) |  | [optional] 
+**Warnings** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the validation warnings for the item processing record | [optional] 
 
 ## Methods
 
@@ -78,31 +78,6 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
-### GetWarnings
-
-`func (o *CreativeAssetsProcessingRecord) GetWarnings() []ItemValidationEvent`
-
-GetWarnings returns the Warnings field if non-nil, zero value otherwise.
-
-### GetWarningsOk
-
-`func (o *CreativeAssetsProcessingRecord) GetWarningsOk() (*[]ItemValidationEvent, bool)`
-
-GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWarnings
-
-`func (o *CreativeAssetsProcessingRecord) SetWarnings(v []ItemValidationEvent)`
-
-SetWarnings sets Warnings field to given value.
-
-### HasWarnings
-
-`func (o *CreativeAssetsProcessingRecord) HasWarnings() bool`
-
-HasWarnings returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *CreativeAssetsProcessingRecord) GetStatus() ItemProcessingStatus`
@@ -127,6 +102,31 @@ SetStatus sets Status field to given value.
 `func (o *CreativeAssetsProcessingRecord) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetWarnings
+
+`func (o *CreativeAssetsProcessingRecord) GetWarnings() []ItemValidationEvent`
+
+GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+
+### GetWarningsOk
+
+`func (o *CreativeAssetsProcessingRecord) GetWarningsOk() (*[]ItemValidationEvent, bool)`
+
+GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnings
+
+`func (o *CreativeAssetsProcessingRecord) SetWarnings(v []ItemValidationEvent)`
+
+SetWarnings sets Warnings field to given value.
+
+### HasWarnings
+
+`func (o *CreativeAssetsProcessingRecord) HasWarnings() bool`
+
+HasWarnings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

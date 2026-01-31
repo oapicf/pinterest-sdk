@@ -21,19 +21,19 @@ public class QuizPinResultTest {
     }
 
     /**
-     * Test the property 'organicPinId'
-     */
-    @Test
-    public void organicPinIdTest() {
-        // TODO: test organicPinId
-    }
-
-    /**
      * Test the property 'androidDeepLink'
      */
     @Test
     public void androidDeepLinkTest() {
         // TODO: test androidDeepLink
+    }
+
+    /**
+     * Test the property 'destinationUrl'
+     */
+    @Test
+    public void destinationUrlTest() {
+        // TODO: test destinationUrl
     }
 
     /**
@@ -45,11 +45,11 @@ public class QuizPinResultTest {
     }
 
     /**
-     * Test the property 'destinationUrl'
+     * Test the property 'organicPinId'
      */
     @Test
-    public void destinationUrlTest() {
-        // TODO: test destinationUrl
+    public void organicPinIdTest() {
+        // TODO: test organicPinId
     }
 
     /**

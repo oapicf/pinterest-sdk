@@ -20,20 +20,20 @@ export interface CatalogsRetailItemsBatch {
      * Id of the catalogs items batch
      */
     batch_id?: string;
-    /**
-     * Date and time (UTC) of the batch creation: YYYY-MM-DD\'T\'hh:mm:ss
-     */
-    readonly created_time?: string;
+    catalog_type: CatalogsType;
     /**
      * Date and time (UTC) of the batch completion: YYYY-MM-DD\'T\'hh:mm:ss
      */
     readonly completed_time?: string | null;
-    status?: BatchOperationStatus;
-    catalog_type: CatalogsType;
+    /**
+     * Date and time (UTC) of the batch creation: YYYY-MM-DD\'T\'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+     */
+    readonly created_time: string | null;
     /**
      * Array with the catalogs items processing records part of the catalogs items batch
      */
     items?: Array<ItemProcessingRecord>;
+    status?: BatchOperationStatus;
 }
 export namespace CatalogsRetailItemsBatch {
 }

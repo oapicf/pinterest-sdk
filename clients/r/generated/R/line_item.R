@@ -7,14 +7,14 @@
 #' @title LineItem
 #' @description LineItem Class
 #' @format An \code{R6Class} generator object
-#' @field product_brand Product brand. For example, \"Parker\". character [optional]
-#' @field product_category Product category. For example, \"Shoes\". character [optional]
+#' @field product_brand Product brand. For example, 'Parker'. character [optional]
+#' @field product_category Product category. For example, 'Shoes'. character [optional]
 #' @field product_id Product ID. For example, 1414. integer [optional]
-#' @field product_name Product name. For example, \"Parker Boots\". character [optional]
-#' @field product_price Product price. For example, \"99.99\". character [optional]
+#' @field product_name Product name. For example, 'Parker Boots'. character [optional]
+#' @field product_price Product price. For example, '99.99'. character [optional]
 #' @field product_quantity Product quantity. For example, 2. integer [optional]
-#' @field product_variant Product variant. For example, \"Red\". character [optional]
-#' @field product_variant_id Product variant ID. For example, \"1414-34832\". character [optional]
+#' @field product_variant Product variant. For example, 'Red'. character [optional]
+#' @field product_variant_id Product variant ID. For example, '1414-34832'. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -33,14 +33,14 @@ LineItem <- R6::R6Class(
     #' @description
     #' Initialize a new LineItem class.
     #'
-    #' @param product_brand Product brand. For example, \"Parker\".
-    #' @param product_category Product category. For example, \"Shoes\".
+    #' @param product_brand Product brand. For example, 'Parker'.
+    #' @param product_category Product category. For example, 'Shoes'.
     #' @param product_id Product ID. For example, 1414.
-    #' @param product_name Product name. For example, \"Parker Boots\".
-    #' @param product_price Product price. For example, \"99.99\".
+    #' @param product_name Product name. For example, 'Parker Boots'.
+    #' @param product_price Product price. For example, '99.99'.
     #' @param product_quantity Product quantity. For example, 2.
-    #' @param product_variant Product variant. For example, \"Red\".
-    #' @param product_variant_id Product variant ID. For example, \"1414-34832\".
+    #' @param product_variant Product variant. For example, 'Red'.
+    #' @param product_variant_id Product variant ID. For example, '1414-34832'.
     #' @param ... Other optional arguments.
     initialize = function(`product_brand` = NULL, `product_category` = NULL, `product_id` = NULL, `product_name` = NULL, `product_price` = NULL, `product_quantity` = NULL, `product_variant` = NULL, `product_variant_id` = NULL, ...) {
       if (!is.null(`product_brand`)) {

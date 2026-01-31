@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;BillingProfilesResponse&gt;](BillingProfilesResponse.md)
 `bookmark` | string
+`items` | [Array&lt;BillingProfilesResponse&gt;](BillingProfilesResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { BillingProfilesGet200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies BillingProfilesGet200Response
 
 console.log(example)

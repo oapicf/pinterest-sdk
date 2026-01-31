@@ -3,34 +3,33 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class IntegrationRequest {
-    /* External business ID for the integration. */
-    String externalBusinessId
     
-    String connectedMerchantId
+    String additionalId1
     
     String connectedAdvertiserId
     
     String connectedLbaId
     
+    String connectedMerchantId
+    
     String connectedTagId
+    /* External business ID for the integration. */
+    String externalBusinessId
     
     String partnerAccessToken
     
-    String partnerRefreshToken
+    Integer partnerAccessTokenExpiry
+    
+    String partnerMetadata
     
     String partnerPrimaryEmail
     
-    Integer partnerAccessTokenExpiry
+    String partnerRefreshToken
     
     Integer partnerRefreshTokenExpiry
     
     String scopes
-    
-    String additionalId1
-    
-    String partnerMetadata
 }

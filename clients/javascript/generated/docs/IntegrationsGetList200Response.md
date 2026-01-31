@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[IntegrationRecord]**](IntegrationRecord.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[IntegrationRecord]**](IntegrationRecord.md) |  | 
 
 

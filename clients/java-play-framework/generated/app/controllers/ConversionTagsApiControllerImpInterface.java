@@ -1,12 +1,13 @@
 package controllers;
 
 import apimodels.ConversionEventResponse;
+import apimodels.ConversionTag;
 import apimodels.ConversionTagCreate;
-import apimodels.ConversionTagListResponse;
-import apimodels.ConversionTagResponse;
+import apimodels.ConversionTagsList200Response;
 import apimodels.Error;
 import java.util.Map;
 import apimodels.PageVisitConversionTagsGet200Response;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -38,7 +39,7 @@ public abstract class ConversionTagsApiControllerImpInterface {
             return unauthorized();
         }
 
-        ConversionTagResponse obj = conversionTagsCreate(request, adAccountId, conversionTagCreate);
+        ConversionTag obj = conversionTagsCreate(request, adAccountId, conversionTagCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -50,14 +51,14 @@ public abstract class ConversionTagsApiControllerImpInterface {
 
     }
 
-    public abstract ConversionTagResponse conversionTagsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionTagCreate conversionTagCreate) throws Exception;
+    public abstract ConversionTag conversionTagsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionTagCreate conversionTagCreate) throws Exception;
 
     public Result conversionTagsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String conversionTagId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ConversionTagResponse obj = conversionTagsGet(request, adAccountId, conversionTagId);
+        ConversionTag obj = conversionTagsGet(request, adAccountId, conversionTagId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -69,14 +70,14 @@ public abstract class ConversionTagsApiControllerImpInterface {
 
     }
 
-    public abstract ConversionTagResponse conversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String conversionTagId) throws Exception;
+    public abstract ConversionTag conversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String conversionTagId) throws Exception;
 
     public Result conversionTagsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean filterDeleted) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ConversionTagListResponse obj = conversionTagsList(request, adAccountId, filterDeleted);
+        ConversionTagsList200Response obj = conversionTagsList(request, adAccountId, filterDeleted);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -88,7 +89,7 @@ public abstract class ConversionTagsApiControllerImpInterface {
 
     }
 
-    public abstract ConversionTagListResponse conversionTagsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean filterDeleted) throws Exception;
+    public abstract ConversionTagsList200Response conversionTagsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean filterDeleted) throws Exception;
 
     public Result ocpmEligibleConversionTagsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

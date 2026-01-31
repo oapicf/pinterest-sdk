@@ -1,5 +1,6 @@
 package com.prokarma.pkmst.controller;
 
+import com.prokarma.pkmst.model.ConversionAccessTokenResponse;
 import com.prokarma.pkmst.model.Error;
 import com.prokarma.pkmst.model.OauthAccessTokenResponse;
 
@@ -24,13 +25,28 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class OauthApiController implements OauthApi {
     private final ObjectMapper objectMapper;
 @Autowired
     public OauthApiController(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
+    }
+
+    public ResponseEntity<ConversionAccessTokenResponse> oauthConversionToken(@RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessTokenResponse>(objectMapper.readValue("", ConversionAccessTokenResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessTokenResponse>(objectMapper.readValue("", ConversionAccessTokenResponse.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<ConversionAccessTokenResponse>(HttpStatus.OK);
     }
 
     public ResponseEntity<OauthAccessTokenResponse> oauthToken(@ApiParam(value = "", required=true, allowableValues="authorization_code, refresh_token, client_credentials") @RequestPart(value="grant_type", required=true)  String grantType,
@@ -47,6 +63,28 @@ public class OauthApiController implements OauthApi {
         }
 
         return new ResponseEntity<OauthAccessTokenResponse>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<Void> tokenRevoke(@ApiParam(value = "The token to revoke.", required=true) @RequestPart(value="token", required=true)  String token,
+        @ApiParam(value = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.", allowableValues="access_token, refresh_token") @RequestPart(value="token_type_hint", required=false)  String tokenTypeHint,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 }

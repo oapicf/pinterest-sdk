@@ -1,29 +1,29 @@
 #' Create a new PinMediaSourceImageURL
 #'
 #' @description
-#' Image URL-based media source
+#' Image URL-based media source.
 #'
 #' @docType class
 #' @title PinMediaSourceImageURL
 #' @description PinMediaSourceImageURL Class
 #' @format An \code{R6Class} generator object
-#' @field source_type  character
-#' @field url  character
 #' @field is_standard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. character [optional]
+#' @field source_type The source type of the media. character
+#' @field url  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PinMediaSourceImageURL <- R6::R6Class(
   "PinMediaSourceImageURL",
   public = list(
+    `is_standard` = NULL,
     `source_type` = NULL,
     `url` = NULL,
-    `is_standard` = NULL,
 
     #' @description
     #' Initialize a new PinMediaSourceImageURL class.
     #'
-    #' @param source_type source_type
+    #' @param source_type The source type of the media.
     #' @param url url
     #' @param is_standard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.. Default to TRUE.
     #' @param ... Other optional arguments.
@@ -82,6 +82,10 @@ PinMediaSourceImageURL <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinMediaSourceImageURLObject <- list()
+      if (!is.null(self$`is_standard`)) {
+        PinMediaSourceImageURLObject[["is_standard"]] <-
+          self$`is_standard`
+      }
       if (!is.null(self$`source_type`)) {
         PinMediaSourceImageURLObject[["source_type"]] <-
           self$`source_type`
@@ -89,10 +93,6 @@ PinMediaSourceImageURL <- R6::R6Class(
       if (!is.null(self$`url`)) {
         PinMediaSourceImageURLObject[["url"]] <-
           self$`url`
-      }
-      if (!is.null(self$`is_standard`)) {
-        PinMediaSourceImageURLObject[["is_standard"]] <-
-          self$`is_standard`
       }
       return(PinMediaSourceImageURLObject)
     },
@@ -104,6 +104,9 @@ PinMediaSourceImageURL <- R6::R6Class(
     #' @return the instance of PinMediaSourceImageURL
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`is_standard`)) {
+        self$`is_standard` <- this_object$`is_standard`
+      }
       if (!is.null(this_object$`source_type`)) {
         if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("image_url"))) {
           stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"image_url\".", sep = ""))
@@ -112,9 +115,6 @@ PinMediaSourceImageURL <- R6::R6Class(
       }
       if (!is.null(this_object$`url`)) {
         self$`url` <- this_object$`url`
-      }
-      if (!is.null(this_object$`is_standard`)) {
-        self$`is_standard` <- this_object$`is_standard`
       }
       self
     },
@@ -137,12 +137,12 @@ PinMediaSourceImageURL <- R6::R6Class(
     #' @return the instance of PinMediaSourceImageURL
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`is_standard` <- this_object$`is_standard`
       if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("image_url"))) {
         stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"image_url\".", sep = ""))
       }
       self$`source_type` <- this_object$`source_type`
       self$`url` <- this_object$`url`
-      self$`is_standard` <- this_object$`is_standard`
       self
     },
 

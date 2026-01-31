@@ -26,13 +26,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("boards_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardsList200Response {
+
+  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
   private List<@Valid Board> items = new ArrayList<>();
-
-  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   public BoardsList200Response() {
     super();
@@ -42,34 +42,6 @@ public class BoardsList200Response {
    * Constructor with only required parameters
    */
   public BoardsList200Response(List<@Valid Board> items) {
-    this.items = items;
-  }
-
-  public BoardsList200Response items(List<@Valid Board> items) {
-    this.items = items;
-    return this;
-  }
-
-  public BoardsList200Response addItemsItem(Board itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Boards
-   * @return items
-   */
-  @NotNull @Valid 
-  @Schema(name = "items", description = "Boards", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("items")
-  public List<@Valid Board> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid Board> items) {
     this.items = items;
   }
 
@@ -93,6 +65,34 @@ public class BoardsList200Response {
     this.bookmark = bookmark;
   }
 
+  public BoardsList200Response items(List<@Valid Board> items) {
+    this.items = items;
+    return this;
+  }
+
+  public BoardsList200Response addItemsItem(Board itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Get items
+   * @return items
+   */
+  @NotNull @Valid 
+  @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid Board> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid Board> items) {
+    this.items = items;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -102,8 +102,8 @@ public class BoardsList200Response {
       return false;
     }
     BoardsList200Response boardsList200Response = (BoardsList200Response) o;
-    return Objects.equals(this.items, boardsList200Response.items) &&
-        equalsNullable(this.bookmark, boardsList200Response.bookmark);
+    return equalsNullable(this.bookmark, boardsList200Response.bookmark) &&
+        Objects.equals(this.items, boardsList200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -112,7 +112,7 @@ public class BoardsList200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -126,8 +126,8 @@ public class BoardsList200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardsList200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

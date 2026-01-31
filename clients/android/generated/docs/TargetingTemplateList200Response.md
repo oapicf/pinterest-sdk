@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;TargetingTemplateResponseData&gt;**](TargetingTemplateResponseData.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;TargetingTemplateGetResponseData&gt;**](TargetingTemplateGetResponseData.md) |  | 
 
 
 

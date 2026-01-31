@@ -7,15 +7,15 @@ Protected Class CatalogsItemsRequest
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			We recommend using the CatalogsLocale values.
-		#tag EndNote
-		language As OpenAPIClient.Models.String
+		filters As OpenAPIClient.Models.CatalogsItemsPostFilters
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsItemsPostFilters
+		#tag Note
+			We recommend using the CatalogsLocale values.
+		#tag EndNote
+		language As OpenAPIClient.Models.String
 	#tag EndProperty
 
 

@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Exception"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Exception"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  Exception {
+    title = Exception
+    description = Exception
+    derivedFrom = Root
+    properties {
+        code {
+          type =  integer
+          description = "Exception error code."
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Exception message."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Exception {
+    title = Exception
+    description = Exception
+    implements = openapi_server.resourceTypes.Exception
+
+  }
+}

@@ -27,6 +27,11 @@ export const UpdateMaskFieldType = {
     CustomLabel2: 'custom_label_2',
     CustomLabel3: 'custom_label_3',
     CustomLabel4: 'custom_label_4',
+    CustomNumber0: 'custom_number_0',
+    CustomNumber1: 'custom_number_1',
+    CustomNumber2: 'custom_number_2',
+    CustomNumber3: 'custom_number_3',
+    CustomNumber4: 'custom_number_4',
     Description: 'description',
     FreeShippingLabel: 'free_shipping_label',
     FreeShippingLimit: 'free_shipping_limit',
@@ -55,7 +60,8 @@ export const UpdateMaskFieldType = {
     Tax: 'tax',
     Title: 'title',
     VariantNames: 'variant_names',
-    VariantValues: 'variant_values'
+    VariantValues: 'variant_values',
+    PromotionId: 'promotion_id'
 } as const;
 export type UpdateMaskFieldType = typeof UpdateMaskFieldType[keyof typeof UpdateMaskFieldType];
 

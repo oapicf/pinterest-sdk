@@ -19,11 +19,11 @@ public struct CatalogsProductGroupFilterKeys: Codable, JSONEncodable, Hashable {
     public var AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
     public var BRAND: CatalogsProductGroupMultipleStringCriteria
     public var CONDITION: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL0: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL1: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL2: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL3: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria
+    public var cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria
     public var ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
     public var GENDER: CatalogsProductGroupMultipleGenderCriteria
     public var MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
@@ -40,8 +40,14 @@ public struct CatalogsProductGroupFilterKeys: Codable, JSONEncodable, Hashable {
     public var gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria
     public var gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria
     public var PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
+    public var cUSTOMNUMBER0: CatalogsProductGroupUint32Criteria
+    public var cUSTOMNUMBER1: CatalogsProductGroupUint32Criteria
+    public var cUSTOMNUMBER2: CatalogsProductGroupUint32Criteria
+    public var cUSTOMNUMBER3: CatalogsProductGroupUint32Criteria
+    public var cUSTOMNUMBER4: CatalogsProductGroupUint32Criteria
+    public var TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 
-    public init(MIN_PRICE: CatalogsProductGroupPricingCriteria, MAX_PRICE: CatalogsProductGroupPricingCriteria, CURRENCY: CatalogsProductGroupCurrencyCriteria, ITEM_ID: CatalogsProductGroupMultipleStringCriteria, AVAILABILITY: CatalogsProductGroupMultipleStringCriteria, BRAND: CatalogsProductGroupMultipleStringCriteria, CONDITION: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL1: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL2: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL3: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria, ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria, GENDER: CatalogsProductGroupMultipleGenderCriteria, MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria, PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria) {
+    public init(MIN_PRICE: CatalogsProductGroupPricingCriteria, MAX_PRICE: CatalogsProductGroupPricingCriteria, CURRENCY: CatalogsProductGroupCurrencyCriteria, ITEM_ID: CatalogsProductGroupMultipleStringCriteria, AVAILABILITY: CatalogsProductGroupMultipleStringCriteria, BRAND: CatalogsProductGroupMultipleStringCriteria, CONDITION: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria, ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria, GENDER: CatalogsProductGroupMultipleGenderCriteria, MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1: CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria, PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria, cUSTOMNUMBER0: CatalogsProductGroupUint32Criteria, cUSTOMNUMBER1: CatalogsProductGroupUint32Criteria, cUSTOMNUMBER2: CatalogsProductGroupUint32Criteria, cUSTOMNUMBER3: CatalogsProductGroupUint32Criteria, cUSTOMNUMBER4: CatalogsProductGroupUint32Criteria, TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria) {
         self.MIN_PRICE = MIN_PRICE
         self.MAX_PRICE = MAX_PRICE
         self.CURRENCY = CURRENCY
@@ -70,6 +76,12 @@ public struct CatalogsProductGroupFilterKeys: Codable, JSONEncodable, Hashable {
         self.gOOGLEPRODUCTCATEGORY1 = gOOGLEPRODUCTCATEGORY1
         self.gOOGLEPRODUCTCATEGORY0 = gOOGLEPRODUCTCATEGORY0
         self.PRODUCT_GROUP = PRODUCT_GROUP
+        self.cUSTOMNUMBER0 = cUSTOMNUMBER0
+        self.cUSTOMNUMBER1 = cUSTOMNUMBER1
+        self.cUSTOMNUMBER2 = cUSTOMNUMBER2
+        self.cUSTOMNUMBER3 = cUSTOMNUMBER3
+        self.cUSTOMNUMBER4 = cUSTOMNUMBER4
+        self.TITLE_KEYWORDS = TITLE_KEYWORDS
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -101,6 +113,12 @@ public struct CatalogsProductGroupFilterKeys: Codable, JSONEncodable, Hashable {
         case gOOGLEPRODUCTCATEGORY1 = "GOOGLE_PRODUCT_CATEGORY_1"
         case gOOGLEPRODUCTCATEGORY0 = "GOOGLE_PRODUCT_CATEGORY_0"
         case PRODUCT_GROUP
+        case cUSTOMNUMBER0 = "CUSTOM_NUMBER_0"
+        case cUSTOMNUMBER1 = "CUSTOM_NUMBER_1"
+        case cUSTOMNUMBER2 = "CUSTOM_NUMBER_2"
+        case cUSTOMNUMBER3 = "CUSTOM_NUMBER_3"
+        case cUSTOMNUMBER4 = "CUSTOM_NUMBER_4"
+        case TITLE_KEYWORDS
     }
 
     // Encodable protocol methods
@@ -135,6 +153,12 @@ public struct CatalogsProductGroupFilterKeys: Codable, JSONEncodable, Hashable {
         try container.encode(gOOGLEPRODUCTCATEGORY1, forKey: .gOOGLEPRODUCTCATEGORY1)
         try container.encode(gOOGLEPRODUCTCATEGORY0, forKey: .gOOGLEPRODUCTCATEGORY0)
         try container.encode(PRODUCT_GROUP, forKey: .PRODUCT_GROUP)
+        try container.encode(cUSTOMNUMBER0, forKey: .cUSTOMNUMBER0)
+        try container.encode(cUSTOMNUMBER1, forKey: .cUSTOMNUMBER1)
+        try container.encode(cUSTOMNUMBER2, forKey: .cUSTOMNUMBER2)
+        try container.encode(cUSTOMNUMBER3, forKey: .cUSTOMNUMBER3)
+        try container.encode(cUSTOMNUMBER4, forKey: .cUSTOMNUMBER4)
+        try container.encode(TITLE_KEYWORDS, forKey: .TITLE_KEYWORDS)
     }
 }
 

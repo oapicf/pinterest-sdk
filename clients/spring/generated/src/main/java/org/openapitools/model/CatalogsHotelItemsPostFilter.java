@@ -26,8 +26,10 @@ import javax.annotation.Generated;
  * CatalogsHotelItemsPostFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsPostFilter implements CatalogsItemsPostFilters {
+
+  private @Nullable String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -67,8 +69,6 @@ public class CatalogsHotelItemsPostFilter implements CatalogsItemsPostFilters {
   @Valid
   private List<String> hotelIds = new ArrayList<>();
 
-  private @Nullable String catalogId;
-
   public CatalogsHotelItemsPostFilter() {
     super();
   }
@@ -79,6 +79,26 @@ public class CatalogsHotelItemsPostFilter implements CatalogsItemsPostFilters {
   public CatalogsHotelItemsPostFilter(CatalogTypeEnum catalogType, List<String> hotelIds) {
     this.catalogType = catalogType;
     this.hotelIds = hotelIds;
+  }
+
+  public CatalogsHotelItemsPostFilter catalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public @Nullable String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsHotelItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
@@ -129,26 +149,6 @@ public class CatalogsHotelItemsPostFilter implements CatalogsItemsPostFilters {
     this.hotelIds = hotelIds;
   }
 
-  public CatalogsHotelItemsPostFilter catalogId(@Nullable String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-   * @return catalogId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("catalog_id")
-  public @Nullable String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(@Nullable String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -158,23 +158,23 @@ public class CatalogsHotelItemsPostFilter implements CatalogsItemsPostFilters {
       return false;
     }
     CatalogsHotelItemsPostFilter catalogsHotelItemsPostFilter = (CatalogsHotelItemsPostFilter) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemsPostFilter.catalogType) &&
-        Objects.equals(this.hotelIds, catalogsHotelItemsPostFilter.hotelIds) &&
-        Objects.equals(this.catalogId, catalogsHotelItemsPostFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsHotelItemsPostFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelItemsPostFilter.catalogType) &&
+        Objects.equals(this.hotelIds, catalogsHotelItemsPostFilter.hotelIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelIds, catalogId);
+    return Objects.hash(catalogId, catalogType, hotelIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsPostFilter {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

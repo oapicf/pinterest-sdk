@@ -8,32 +8,35 @@ import org.openapitools._
 import java.time.ZonedDateTime
 import org.openapitools.models.BoardMedia
 import org.openapitools.models.BoardOwner
+import org.openapitools.models.BoardPrivacy
 
 /**
- * Board
- * @param id 
- * @param createdUnderscoreat Date and time of board creation.
+ * 
  * @param boardUnderscorepinsUnderscoremodifiedUnderscoreat Date and time of last board pins modified.
- * @param name 
- * @param description 
  * @param collaboratorUnderscorecount Count of collaborators on the board.
- * @param pinUnderscorecount Count of pins on the board.
+ * @param createdUnderscoreat Date and time of board creation.
+ * @param description 
  * @param followerUnderscorecount Board follower count.
- * @param media 
+ * @param id 
+ * @param isUnderscoreadsUnderscoreonly If set to `true`, the board will be ad-only and can store ad-only Pins.
+ * @param media Board media.
+ * @param name      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
  * @param owner 
- * @param privacy Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+ * @param pinUnderscorecount Count of Pins on the board.
+ * @param privacy     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
  */
-case class Board(id: Option[String],
-                createdUnderscoreat: Option[ZonedDateTime],
-                boardUnderscorepinsUnderscoremodifiedUnderscoreat: Option[ZonedDateTime],
-                name: String,
-                description: Option[String],
+case class Board(boardUnderscorepinsUnderscoremodifiedUnderscoreat: Option[ZonedDateTime],
                 collaboratorUnderscorecount: Option[Int],
-                pinUnderscorecount: Option[Int],
+                createdUnderscoreat: Option[ZonedDateTime],
+                description: Option[String],
                 followerUnderscorecount: Option[Int],
+                id: String,
+                isUnderscoreadsUnderscoreonly: Option[Boolean],
                 media: Option[BoardMedia],
+                name: String,
                 owner: Option[BoardOwner],
-                privacy: Option[String]
+                pinUnderscorecount: Option[Int],
+                privacy: Option[BoardPrivacy]
                 )
 
 object Board {

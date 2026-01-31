@@ -7,15 +7,15 @@ goog.provide('API.Client.ItemCreateBatchRecord');
 API.Client.ItemCreateBatchRecord = function() {}
 
 /**
+ * @type {!API.Client.ItemAttributesRequest}
+ * @export
+ */
+API.Client.ItemCreateBatchRecord.prototype.attributes;
+
+/**
  * The catalog item id in the merchant namespace
  * @type {!string}
  * @export
  */
 API.Client.ItemCreateBatchRecord.prototype.itemId;
-
-/**
- * @type {!API.Client.ItemAttributesRequest}
- * @export
- */
-API.Client.ItemCreateBatchRecord.prototype.attributes;
 

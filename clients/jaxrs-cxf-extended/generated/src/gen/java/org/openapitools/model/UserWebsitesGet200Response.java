@@ -16,12 +16,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserWebsitesGet200Response  {
   
+  @ApiModelProperty(value = "")
+  private String bookmark;
+
   @ApiModelProperty(required = true, value = "")
   @Valid
   private List<@Valid UserWebsiteSummary> items = new ArrayList<>();
+ /**
+  * Get bookmark
+  * @return bookmark
+  */
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
 
-  @ApiModelProperty(value = "")
-  private String bookmark;
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+ public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+  public UserWebsitesGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
   * Get items
   * @return items
@@ -55,30 +79,6 @@ public class UserWebsitesGet200Response  {
     return this;
   }
 
- /**
-  * Get bookmark
-  * @return bookmark
-  */
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
- public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
-  public UserWebsitesGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -89,13 +89,13 @@ public class UserWebsitesGet200Response  {
       return false;
     }
     UserWebsitesGet200Response userWebsitesGet200Response = (UserWebsitesGet200Response) o;
-    return Objects.equals(this.items, userWebsitesGet200Response.items) &&
-        Objects.equals(this.bookmark, userWebsitesGet200Response.bookmark);
+    return Objects.equals(this.bookmark, userWebsitesGet200Response.bookmark) &&
+        Objects.equals(this.items, userWebsitesGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -103,8 +103,8 @@ public class UserWebsitesGet200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsitesGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -46,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Standard HTTPS webhook URL.
-	 */
-	std::string getWebhookUrl();
-
-	/*! \brief Set Standard HTTPS webhook URL.
-	 */
-	void setWebhookUrl(std::string  webhook_url);
 	/*! \brief Get Lead form ID.
 	 */
 	std::string getLeadFormId();
@@ -67,13 +60,6 @@ public:
 	/*! \brief Set Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
 	void setPartnerAccessToken(std::string  partner_access_token);
-	/*! \brief Get Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-	 */
-	std::string getPartnerRefreshToken();
-
-	/*! \brief Set Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-	 */
-	void setPartnerRefreshToken(std::string  partner_refresh_token);
 	/*! \brief Get 
 	 */
 	AdAccountCreateSubscriptionRequest_partner_metadata getPartnerMetadata();
@@ -81,13 +67,27 @@ public:
 	/*! \brief Set 
 	 */
 	void setPartnerMetadata(AdAccountCreateSubscriptionRequest_partner_metadata  partner_metadata);
+	/*! \brief Get Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+	 */
+	std::string getPartnerRefreshToken();
+
+	/*! \brief Set Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+	 */
+	void setPartnerRefreshToken(std::string  partner_refresh_token);
+	/*! \brief Get Standard HTTPS webhook URL.
+	 */
+	std::string getWebhookUrl();
+
+	/*! \brief Set Standard HTTPS webhook URL.
+	 */
+	void setWebhookUrl(std::string  webhook_url);
 
 private:
-	std::string webhook_url;
 	std::string lead_form_id;
 	std::string partner_access_token;
-	std::string partner_refresh_token;
 	AdAccountCreateSubscriptionRequest_partner_metadata partner_metadata;
+	std::string partner_refresh_token;
+	std::string webhook_url;
 	void __init();
 	void __cleanup();
 

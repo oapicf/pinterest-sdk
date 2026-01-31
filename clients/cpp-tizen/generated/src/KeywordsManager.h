@@ -100,15 +100,16 @@ bool keywordsCreateAsync(char * accessToken,
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param campaignId Campaign Id to use to filter the results.
  * \param adGroupId Ad group Id.
+ * \param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
  * \param matchTypes Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param bookmark Cursor used to fetch the next page of items
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool keywordsGetSync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData);
 
@@ -118,15 +119,16 @@ bool keywordsGetSync(char * accessToken,
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param campaignId Campaign Id to use to filter the results.
  * \param adGroupId Ad group Id.
+ * \param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
  * \param matchTypes Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param bookmark Cursor used to fetch the next page of items
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool keywordsGetAsync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData);
 
@@ -171,12 +173,14 @@ bool keywordsUpdateAsync(char * accessToken,
  * \param includeKeywords If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.
  * \param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
  * \param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
+ * \param includePrediction <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.
+ * \param includeDemographics <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool trendingKeywordsListSync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData);
 
@@ -191,12 +195,14 @@ bool trendingKeywordsListSync(char * accessToken,
  * \param includeKeywords If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.
  * \param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
  * \param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
+ * \param includePrediction <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.
+ * \param includeDemographics <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool trendingKeywordsListAsync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData);
 

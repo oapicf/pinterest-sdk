@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.Keyword;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class KeywordsGet200Response   {
   
-  private List<Keyword> items = new ArrayList<>();
   private String bookmark;
+  private List<Keyword> items = new ArrayList<>();
 
   public KeywordsGet200Response () {
 
   }
 
-  public KeywordsGet200Response (List<Keyword> items, String bookmark) {
-    this.items = items;
+  public KeywordsGet200Response (String bookmark, List<Keyword> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<Keyword> getItems() {
-    return items;
-  }
-  public void setItems(List<Keyword> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class KeywordsGet200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<Keyword> getItems() {
+    return items;
+  }
+  public void setItems(List<Keyword> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class KeywordsGet200Response   {
       return false;
     }
     KeywordsGet200Response keywordsGet200Response = (KeywordsGet200Response) o;
-    return Objects.equals(items, keywordsGet200Response.items) &&
-        Objects.equals(bookmark, keywordsGet200Response.bookmark);
+    return Objects.equals(bookmark, keywordsGet200Response.bookmark) &&
+        Objects.equals(items, keywordsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class KeywordsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

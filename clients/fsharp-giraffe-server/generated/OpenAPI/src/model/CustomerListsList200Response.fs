@@ -11,7 +11,7 @@ module CustomerListsList200Response =
 
 
   type customer_lists_list_200_response = {
-    Items : CustomerList[];
     Bookmark : string option;
+    Items : CustomerList[];
   }
   //#endregion

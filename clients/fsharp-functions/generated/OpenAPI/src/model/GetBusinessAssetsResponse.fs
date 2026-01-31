@@ -4,6 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.AssetGroupBinding
+open OpenAPI.Model.GetBusinessAssetsResponseCatalogInfo
 
 module GetBusinessAssetsResponse =
 
@@ -11,12 +12,14 @@ module GetBusinessAssetsResponse =
 
   [<CLIMutable>]
   type GetBusinessAssetsResponse = {
+    [<JsonProperty(PropertyName = "asset_group_info")>]
+    AssetGroupInfo : AssetGroupBinding;
     [<JsonProperty(PropertyName = "asset_id")>]
     AssetId : string;
     [<JsonProperty(PropertyName = "asset_type")>]
     AssetType : string;
-    [<JsonProperty(PropertyName = "asset_group_info")>]
-    AssetGroupInfo : AssetGroupBinding;
+    [<JsonProperty(PropertyName = "catalog_info")>]
+    CatalogInfo : GetBusinessAssetsResponseCatalogInfo;
   }
 
   //#endregion

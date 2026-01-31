@@ -1,0 +1,10 @@
+
+
+# CatalogsHotelProductGroupType
+
+## Enum
+
+
+
+
+

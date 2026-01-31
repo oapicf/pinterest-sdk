@@ -23,19 +23,14 @@ AdsCreditRedeemResponse::~AdsCreditRedeemResponse()
 void
 AdsCreditRedeemResponse::__init()
 {
-	//success = bool(false);
 	//errorCode = int(0);
 	//errorMessage = std::string();
+	//success = bool(false);
 }
 
 void
 AdsCreditRedeemResponse::__cleanup()
 {
-	//if(success != NULL) {
-	//
-	//delete success;
-	//success = NULL;
-	//}
 	//if(errorCode != NULL) {
 	//
 	//delete errorCode;
@@ -46,6 +41,11 @@ AdsCreditRedeemResponse::__cleanup()
 	//delete errorMessage;
 	//errorMessage = NULL;
 	//}
+	//if(success != NULL) {
+	//
+	//delete success;
+	//success = NULL;
+	//}
 	//
 }
 
@@ -54,17 +54,6 @@ AdsCreditRedeemResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *successKey = "success";
-	node = json_object_get_member(pJsonObject, successKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&success, node, "bool", "");
-		} else {
-			
-		}
-	}
 	const gchar *errorCodeKey = "errorCode";
 	node = json_object_get_member(pJsonObject, errorCodeKey);
 	if (node !=NULL) {
@@ -87,6 +76,17 @@ AdsCreditRedeemResponse::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *successKey = "success";
+	node = json_object_get_member(pJsonObject, successKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&success, node, "bool", "");
+		} else {
+			
+		}
+	}
 }
 
 AdsCreditRedeemResponse::AdsCreditRedeemResponse(char* json)
@@ -99,15 +99,6 @@ AdsCreditRedeemResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("bool")) {
-		bool obj = getSuccess();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *successKey = "success";
-	json_object_set_member(pJsonObject, successKey, node);
 	if (isprimitive("int")) {
 		int obj = getErrorCode();
 		node = converttoJson(&obj, "int", "");
@@ -126,24 +117,21 @@ AdsCreditRedeemResponse::toJson()
 	}
 	const gchar *errorMessageKey = "errorMessage";
 	json_object_set_member(pJsonObject, errorMessageKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getSuccess();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *successKey = "success";
+	json_object_set_member(pJsonObject, successKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-bool
-AdsCreditRedeemResponse::getSuccess()
-{
-	return success;
-}
-
-void
-AdsCreditRedeemResponse::setSuccess(bool  success)
-{
-	this->success = success;
 }
 
 int
@@ -168,6 +156,18 @@ void
 AdsCreditRedeemResponse::setErrorMessage(std::string  errorMessage)
 {
 	this->errorMessage = errorMessage;
+}
+
+bool
+AdsCreditRedeemResponse::getSuccess()
+{
+	return success;
+}
+
+void
+AdsCreditRedeemResponse::setSuccess(bool  success)
+{
+	this->success = success;
 }
 
 

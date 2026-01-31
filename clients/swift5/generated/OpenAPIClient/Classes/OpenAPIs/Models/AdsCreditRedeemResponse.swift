@@ -12,32 +12,32 @@ import AnyCodable
 
 public struct AdsCreditRedeemResponse: Codable, JSONEncodable, Hashable {
 
-    /** Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
-    public var success: Bool?
     /** Error code type if error occurs */
     public var errorCode: Int?
     /** Reason for failure */
     public var errorMessage: String?
+    /** Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
+    public var success: Bool?
 
-    public init(success: Bool? = nil, errorCode: Int? = nil, errorMessage: String? = nil) {
-        self.success = success
+    public init(errorCode: Int? = nil, errorMessage: String? = nil, success: Bool? = nil) {
         self.errorCode = errorCode
         self.errorMessage = errorMessage
+        self.success = success
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case success
         case errorCode
         case errorMessage
+        case success
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(success, forKey: .success)
         try container.encodeIfPresent(errorCode, forKey: .errorCode)
         try container.encodeIfPresent(errorMessage, forKey: .errorMessage)
+        try container.encodeIfPresent(success, forKey: .success)
     }
 }
 

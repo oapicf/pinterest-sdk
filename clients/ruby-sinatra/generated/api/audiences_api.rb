@@ -7,7 +7,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/audiences', {
   "nickname" => "audiences/create",
   "responseClass" => "Audience",
   "endpoint" => "/ad_accounts/{ad_account_id}/audiences",
-  "notes" => "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.",
+  "notes" => "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -19,34 +19,6 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/audiences', {
       "name" => "body",
       "description" => "List of ads to create, size limit [1, 30]",
       "dataType" => "AudienceCreateRequest",
-      "paramType" => "body",
-    }
-    ]}) do
-  cross_origin
-  # the guts live here
-
-  {"message" => "yes, it worked"}.to_json
-end
-
-
-MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/audiences/custom', {
-  "resourcePath" => "/Audiences",
-  "summary" => "Create custom audience",
-  "nickname" => "audiences/create_custom",
-  "responseClass" => "Audience",
-  "endpoint" => "/ad_accounts/{ad_account_id}/audiences/custom",
-  "notes" => "Create a custom audience and find the audiences you want your ads to reach.",
-  "parameters" => [
-    {
-      "name" => "ad_account_id",
-      "description" => "Unique identifier of an ad account.",
-      "dataType" => "String",
-      "paramType" => "path",
-    },
-    {
-      "name" => "body",
-      "description" => "Custom audience to create.",
-      "dataType" => "AudienceCreateCustomRequest",
       "paramType" => "body",
     }
     ]}) do

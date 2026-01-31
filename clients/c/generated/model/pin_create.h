@@ -1,7 +1,7 @@
 /*
  * pin_create.h
  *
- * Pin
+ * Resource create operation model.
  */
 
 #ifndef _pin_create_H_
@@ -15,46 +15,36 @@
 
 typedef struct pin_create_t pin_create_t;
 
-#include "board_owner.h"
-#include "pin_media.h"
 #include "pin_media_source.h"
 
 
 
 typedef struct pin_create_t {
-    char *id; // string
-    char *created_at; //date time
-    char *link; // string
-    char *title; // string
-    char *description; // string
-    char *dominant_color; // string
     char *alt_text; // string
     char *board_id; // string
     char *board_section_id; // string
-    struct board_owner_t *board_owner; //model
-    struct pin_media_t *media; //model
+    char *description; // string
+    char *dominant_color; // string
+    char *link; // string
     struct pin_media_source_t *media_source; //model
     char *parent_pin_id; // string
-    char *note; // string
+    char *sponsor_id; // string
+    char *title; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_create_t;
 
 __attribute__((deprecated)) pin_create_t *pin_create_create(
-    char *id,
-    char *created_at,
-    char *link,
-    char *title,
-    char *description,
-    char *dominant_color,
     char *alt_text,
     char *board_id,
     char *board_section_id,
-    board_owner_t *board_owner,
-    pin_media_t *media,
+    char *description,
+    char *dominant_color,
+    char *link,
     pin_media_source_t *media_source,
     char *parent_pin_id,
-    char *note
+    char *sponsor_id,
+    char *title
 );
 
 void pin_create_free(pin_create_t *pin_create);

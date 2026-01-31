@@ -4,10 +4,12 @@ import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionResponse;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionsList200Response;
+import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -170,6 +172,7 @@ public class ProductGroupPromotionsApiHandler {
         Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
         Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
+        ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter startDate is {}", startDate);
@@ -181,8 +184,9 @@ public class ProductGroupPromotionsApiHandler {
         logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
+        logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

@@ -7,6 +7,24 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AudienceRule, () {
+    // Ad account ID.
+    // String adAccountId
+    test('to test the property `adAccountId`', () async {
+      // TODO
+    });
+
+    // Ad ID for engagement audience filter.
+    // BuiltList<String> adId
+    test('to test the property `adId`', () async {
+      // TODO
+    });
+
+    // Campaign ID for engagement audience filter.
+    // BuiltList<String> campaignId
+    test('to test the property `campaignId`', () async {
+      // TODO
+    });
+
     // Valid countries include: \"US\", \"CA\", and \"GB\".
     // String country
     test('to test the property `country`', () async {
@@ -31,14 +49,38 @@ void main() {
       // TODO
     });
 
+    // Optional for ENGAGEMENT. Engager type value should be 1-2.
+    // int engagerType
+    test('to test the property `engagerType`', () async {
+      // TODO
+    });
+
     // A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
     // String event
     test('to test the property `event`', () async {
       // TODO
     });
 
-    // PinterestTagEventData eventData
+    // EventData eventData
     test('to test the property `eventData`', () async {
+      // TODO
+    });
+
+    // Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
+    // JsonObject eventSource
+    test('to test the property `eventSource`', () async {
+      // TODO
+    });
+
+    // Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+    // JsonObject ingestionSource
+    test('to test the property `ingestionSource`', () async {
+      // TODO
+    });
+
+    // Objective for engagement audience filter.
+    // BuiltList<ObjectiveType> objectiveType
+    test('to test the property `objectiveType`', () async {
       // TODO
     });
 
@@ -81,48 +123,6 @@ void main() {
     // The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
     // String visitorSourceId
     test('to test the property `visitorSourceId`', () async {
-      // TODO
-    });
-
-    // Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
-    // JsonObject eventSource
-    test('to test the property `eventSource`', () async {
-      // TODO
-    });
-
-    // Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-    // JsonObject ingestionSource
-    test('to test the property `ingestionSource`', () async {
-      // TODO
-    });
-
-    // Optional for ENGAGEMENT. Engager type value should be 1-2.
-    // int engagerType
-    test('to test the property `engagerType`', () async {
-      // TODO
-    });
-
-    // Campaign ID for engagement audience filter.
-    // BuiltList<String> campaignId
-    test('to test the property `campaignId`', () async {
-      // TODO
-    });
-
-    // Ad ID for engagement audience filter.
-    // BuiltList<String> adId
-    test('to test the property `adId`', () async {
-      // TODO
-    });
-
-    // Objective for engagement audience filter.
-    // BuiltList<ObjectiveType> objectiveType
-    test('to test the property `objectiveType`', () async {
-      // TODO
-    });
-
-    // Ad account ID.
-    // String adAccountId
-    test('to test the property `adAccountId`', () async {
       // TODO
     });
 

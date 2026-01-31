@@ -189,16 +189,16 @@ Name | Type | Description  | Notes
 ```c
 // Create board
 //
-// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
-board_t* BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_id);
+board_t* BoardsAPI_boardsCreate(apiClient_t *apiClient, board_create_t *board_create, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**board** | **[board_t](board.md) \*** | Create a board using a single board json object. | 
+**board_create** | **[board_create_t](board_create.md) \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 ```c
 // Delete board
 //
-// Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
 void BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_id);
 ```
@@ -230,7 +230,7 @@ void BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_acc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**board_id** | **char \*** | Unique identifier of a board. | 
+**board_id** | **char \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -252,7 +252,7 @@ void
 ```c
 // Get board
 //
-// Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
 board_t* BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_account_id);
 ```
@@ -261,7 +261,7 @@ board_t* BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_ac
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**board_id** | **char \*** | Unique identifier of a board. | 
+**board_id** | **char \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -284,9 +284,9 @@ Name | Type | Description  | Notes
 ```c
 // List boards
 //
-// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 //
-boards_list_200_response_t* BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_rest_api_boardsList_privacy_e privacy);
+boards_list_200_response_t* BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, board_privacy_filter_e privacy, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -294,9 +294,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
+**privacy** | **board_privacy_filter_e** | The privacy level of the board | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**privacy** | **pinterest_rest_api_boardsList_privacy_e** | Privacy setting for a board. | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -330,9 +330,9 @@ Name | Type | Description  | Notes
 **board_id** | **char \*** | Unique identifier of a board. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
 **page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**creative_types** | **[list_t](char.md) \*** | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
+**creative_types** | **[list_t](creative_type.md) \*** | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
-**pin_metrics** | **int \*** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+**pin_metrics** | **int \*** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 
 ### Return type
 
@@ -354,27 +354,27 @@ Name | Type | Description  | Notes
 ```c
 // Update board
 //
-// Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+// Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
-board_t* BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *board_update, char *ad_account_id);
+board_with_update_privacy_t* BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_with_update_privacy_update_t *board_with_update_privacy_update, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**board_id** | **char \*** | Unique identifier of a board. | 
-**board_update** | **[board_update_t](board_update.md) \*** | Update a board. | 
+**board_id** | **char \*** |  | 
+**board_with_update_privacy_update** | **[board_with_update_privacy_update_t](board_with_update_privacy_update.md) \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[board_t](board.md) *
+[board_with_update_privacy_t](board_with_update_privacy.md) *
 
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

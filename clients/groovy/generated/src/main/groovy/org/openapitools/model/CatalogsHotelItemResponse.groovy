@@ -13,11 +13,11 @@ import org.openapitools.model.Pin;
 @Canonical
 class CatalogsHotelItemResponse {
     
+    CatalogsHotelAttributes attributes
+    
     CatalogsType catalogType
     /* The catalog hotel id in the merchant namespace */
     String hotelId
     /* The pins mapped to the item */
     List<Pin> pins
-    
-    CatalogsHotelAttributes attributes
 }

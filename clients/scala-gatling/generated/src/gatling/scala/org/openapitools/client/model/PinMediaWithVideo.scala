@@ -3,23 +3,23 @@ package org.openapitools.client.model
 
 
 case class PinMediaWithVideo (
-    _mediaType: Option[String],
-    _images: Option[PinMediaWithImageAllOfImages],
     _coverImageUrl: Option[String],
-    /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-    _videoUrl: Option[String],
-    /* Duration (in milliseconds) */
+    /* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     _duration: Option[Number],
-    /* Height (in pixels) */
+    /* Height (in pixels). Field maybe null after creation due to video processing time. */
     _height: Option[Integer],
-    /* Width (in pixels) */
+    _images: Option[ImageSize],
+    _mediaType: String,
+    /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    _videoUrl: Option[String],
+    /* Width (in pixels). Field maybe null after creation due to video processing time. */
     _width: Option[Integer]
 )
 object PinMediaWithVideo {
-    def toStringBody(var_mediaType: Object, var_images: Object, var_coverImageUrl: Object, var_videoUrl: Object, var_duration: Object, var_height: Object, var_width: Object) =
+    def toStringBody(var_coverImageUrl: Object, var_duration: Object, var_height: Object, var_images: Object, var_mediaType: Object, var_videoUrl: Object, var_width: Object) =
         s"""
         | {
-        | "mediaType":$var_mediaType,"images":$var_images,"coverImageUrl":$var_coverImageUrl,"videoUrl":$var_videoUrl,"duration":$var_duration,"height":$var_height,"width":$var_width
+        | "coverImageUrl":$var_coverImageUrl,"duration":$var_duration,"height":$var_height,"images":$var_images,"mediaType":$var_mediaType,"videoUrl":$var_videoUrl,"width":$var_width
         | }
         """.stripMargin
 }

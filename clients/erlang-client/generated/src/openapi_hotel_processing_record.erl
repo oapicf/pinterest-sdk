@@ -5,19 +5,19 @@
 -export_type([openapi_hotel_processing_record/0]).
 
 -type openapi_hotel_processing_record() ::
-    #{ 'hotel_id' => binary(),
-       'errors' => list(),
-       'warnings' => list(),
-       'status' => openapi_item_processing_status:openapi_item_processing_status()
+    #{ 'errors' => list(),
+       'hotel_id' => binary(),
+       'status' => openapi_item_processing_status:openapi_item_processing_status(),
+       'warnings' => list()
      }.
 
-encode(#{ 'hotel_id' := HotelId,
-          'errors' := Errors,
-          'warnings' := Warnings,
-          'status' := Status
+encode(#{ 'errors' := Errors,
+          'hotel_id' := HotelId,
+          'status' := Status,
+          'warnings' := Warnings
         }) ->
-    #{ 'hotel_id' => HotelId,
-       'errors' => Errors,
-       'warnings' => Warnings,
-       'status' => Status
+    #{ 'errors' => Errors,
+       'hotel_id' => HotelId,
+       'status' => Status,
+       'warnings' => Warnings
      }.

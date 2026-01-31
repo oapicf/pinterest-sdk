@@ -49,12 +49,12 @@ TrendingKeywordsResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<TrendingKeywordsResponse_trends_inner> new_list;
-			TrendingKeywordsResponse_trends_inner inst;
+			list<TrendingKeyword> new_list;
+			TrendingKeyword inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TrendingKeywordsResponse_trends_inner")) {
-					jsonToValue(&inst, temp_json, "TrendingKeywordsResponse_trends_inner", "");
+				if (isprimitive("TrendingKeyword")) {
+					jsonToValue(&inst, temp_json, "TrendingKeyword", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ TrendingKeywordsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("TrendingKeywordsResponse_trends_inner")) {
-		list<TrendingKeywordsResponse_trends_inner> new_list = static_cast<list <TrendingKeywordsResponse_trends_inner> > (getTrends());
-		node = converttoJson(&new_list, "TrendingKeywordsResponse_trends_inner", "array");
+	if (isprimitive("TrendingKeyword")) {
+		list<TrendingKeyword> new_list = static_cast<list <TrendingKeyword> > (getTrends());
+		node = converttoJson(&new_list, "TrendingKeyword", "array");
 	} else {
 		node = json_node_alloc();
-		list<TrendingKeywordsResponse_trends_inner> new_list = static_cast<list <TrendingKeywordsResponse_trends_inner> > (getTrends());
+		list<TrendingKeyword> new_list = static_cast<list <TrendingKeyword> > (getTrends());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<TrendingKeywordsResponse_trends_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<TrendingKeyword>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			TrendingKeywordsResponse_trends_inner obj = *it;
+			TrendingKeyword obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ TrendingKeywordsResponse::toJson()
 	return ret;
 }
 
-std::list<TrendingKeywordsResponse_trends_inner>
+std::list<TrendingKeyword>
 TrendingKeywordsResponse::getTrends()
 {
 	return trends;
 }
 
 void
-TrendingKeywordsResponse::setTrends(std::list <TrendingKeywordsResponse_trends_inner> trends)
+TrendingKeywordsResponse::setTrends(std::list <TrendingKeyword> trends)
 {
 	this->trends = trends;
 }

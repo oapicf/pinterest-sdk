@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.AdvancedAuctionBidOptions;
+import com.prokarma.pkmst.model.AdvancedAuctionOperationError;
 import com.prokarma.pkmst.model.Country;
 import com.prokarma.pkmst.model.Language;
 import com.prokarma.pkmst.model.UpdateMaskBidOptionField;
@@ -23,13 +24,13 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing an item bid option upsert operation")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsSubmitUpsertRecord   {
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("country")
   private Country country;
+
+  @JsonProperty("item_id")
+  private String itemId;
 
   @JsonProperty("language")
   private Language language;
@@ -37,27 +38,13 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
   @JsonProperty("bid_options")
   private AdvancedAuctionBidOptions bidOptions;
 
+  @JsonProperty("errors")
+  
+  private List<AdvancedAuctionOperationError> errors = null;
+
   @JsonProperty("update_mask")
   
   private List<UpdateMaskBidOptionField> updateMask = ;
-
-  public AdvancedAuctionItemsSubmitUpsertRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-   */
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
 
   public AdvancedAuctionItemsSubmitUpsertRecord country(Country country) {
     this.country = country;
@@ -75,6 +62,24 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdvancedAuctionItemsSubmitUpsertRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+   */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public AdvancedAuctionItemsSubmitUpsertRecord language(Language language) {
@@ -113,6 +118,32 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
     this.bidOptions = bidOptions;
   }
 
+  public AdvancedAuctionItemsSubmitUpsertRecord errors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public AdvancedAuctionItemsSubmitUpsertRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   * @return errors
+   */
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+  public List<AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+  }
+
   public AdvancedAuctionItemsSubmitUpsertRecord updateMask(List<UpdateMaskBidOptionField> updateMask) {
     this.updateMask = updateMask;
     return this;
@@ -149,16 +180,17 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
       return false;
     }
     AdvancedAuctionItemsSubmitUpsertRecord advancedAuctionItemsSubmitUpsertRecord = (AdvancedAuctionItemsSubmitUpsertRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsSubmitUpsertRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsSubmitUpsertRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsSubmitUpsertRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsSubmitUpsertRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitUpsertRecord.language) &&
         Objects.equals(this.bidOptions, advancedAuctionItemsSubmitUpsertRecord.bidOptions) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitUpsertRecord.errors) &&
         Objects.equals(this.updateMask, advancedAuctionItemsSubmitUpsertRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, bidOptions, updateMask);
+    return Objects.hash(country, itemId, language, bidOptions, errors, updateMask);
   }
 
   @Override
@@ -166,10 +198,11 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsSubmitUpsertRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

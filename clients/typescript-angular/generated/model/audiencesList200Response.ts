@@ -11,7 +11,7 @@ import { Audience } from './audience';
 
 
 export interface AudiencesList200Response { 
-    items: Array<Audience>;
     bookmark?: string | null;
+    items: Array<Audience>;
 }
 

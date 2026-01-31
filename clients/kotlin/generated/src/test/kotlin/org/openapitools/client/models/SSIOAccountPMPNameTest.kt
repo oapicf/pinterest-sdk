@@ -25,16 +25,16 @@ class SSIOAccountPMPNameTest : ShouldSpec() {
         // uncomment below to create an instance of SSIOAccountPMPName
         //val modelInstance = SSIOAccountPMPName()
 
-        // to test the property `name` - Display name
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `id` - Salesforce id for PMP
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `name` - Display name
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

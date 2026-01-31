@@ -4,20 +4,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ages** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Ages distribution. | [optional] 
-**Genders** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Gender distribution. | [optional] 
-**Devices** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Device usage distribution. | [optional] 
-**Metros** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Geographic metro area distribution. | [optional] 
 **Countries** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Country area distribution. | [optional] 
+**Devices** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Device usage distribution. | [optional] 
+**Genders** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Gender distribution. | [optional] 
+**Metros** | [**AudienceDemographicValue[]**](AudienceDemographicValue.md) | Geographic metro area distribution. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $AudienceDemographics = Initialize-PSOpenAPIToolsAudienceDemographics  -Ages null `
- -Genders null `
+ -Countries null `
  -Devices null `
- -Metros null `
- -Countries null
+ -Genders null `
+ -Metros null
 ```
 
 - Convert the resource to JSON

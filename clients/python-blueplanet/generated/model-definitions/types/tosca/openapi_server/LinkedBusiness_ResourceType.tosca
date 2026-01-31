@@ -1,0 +1,55 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LinkedBusiness"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LinkedBusiness"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LinkedBusiness {
+    title = LinkedBusiness
+    description = LinkedBusiness
+    derivedFrom = Root
+    properties {
+        image_large_url {
+          type =  string
+          description = "image_large_url"
+          optional = false
+        }
+        image_medium_url {
+          type =  string
+          description = "image_medium_url"
+          optional = false
+        }
+        image_small_url {
+          type =  string
+          description = "image_small_url"
+          optional = false
+        }
+        image_xlarge_url {
+          type =  string
+          description = "image_xlarge_url"
+          optional = false
+        }
+        username {
+          type =  string
+          description = "Username"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LinkedBusiness {
+    title = LinkedBusiness
+    description = LinkedBusiness
+    implements = openapi_server.resourceTypes.LinkedBusiness
+
+  }
+}

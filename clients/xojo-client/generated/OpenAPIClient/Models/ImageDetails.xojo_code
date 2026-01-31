@@ -2,17 +2,17 @@
 Protected Class ImageDetails
 
 	#tag Property, Flags = &h0
-		width As Integer
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		height As Integer
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		url As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		width As Integer
 	#tag EndProperty
 
 
@@ -53,14 +53,6 @@ Protected Class ImageDetails
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="width"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="height"
 			Visible=false
 			Group="Behavior"
@@ -74,6 +66,14 @@ Protected Class ImageDetails
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="width"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

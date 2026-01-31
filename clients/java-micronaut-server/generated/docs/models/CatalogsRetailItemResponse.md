@@ -10,10 +10,10 @@ The class is defined in **[CatalogsRetailItemResponse.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [`ItemAttributes`](ItemAttributes.md) |  |  [optional property]
 **catalogType** | `CatalogsType` |  | 
 **itemId** | `String` | The catalog retail item id in the merchant namespace |  [optional property]
 **pins** | [`List&lt;Pin&gt;`](Pin.md) | The pins mapped to the item |  [optional property]
-**attributes** | [`ItemAttributes`](ItemAttributes.md) |  |  [optional property]
 
 
 

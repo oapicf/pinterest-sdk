@@ -9,11 +9,11 @@ import java.util.Arrays;
 @Canonical
 class SingleInterestTargetingOptionResponse {
     
-    String id
-    
-    String name
-    
     List<String> childInterests = new ArrayList<>()
     
+    String id
+    
     Integer level
+    
+    String name
 }

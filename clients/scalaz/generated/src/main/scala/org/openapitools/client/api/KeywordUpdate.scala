@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import KeywordUpdate._
 
 case class KeywordUpdate (
-  /* Keyword ID. */
-  id: String,
-/* Is keyword archived? */
+  /* Is keyword archived? */
   archived: Option[Boolean],
 /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
-  bid: Option[Integer])
+  bid: Option[Integer],
+/* Keyword ID. */
+  id: String)
 
 object KeywordUpdate {
   import DateTimeCodecs._

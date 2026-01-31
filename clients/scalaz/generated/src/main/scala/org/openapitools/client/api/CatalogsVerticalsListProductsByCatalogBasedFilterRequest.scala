@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import CatalogsVerticalsListProductsByCatalogBasedFilterRequest._
 
 case class CatalogsVerticalsListProductsByCatalogBasedFilterRequest (
-  catalogType: CatalogType,
-/* Catalog id pertaining to the creative assets product group. */
+  /* Catalog id pertaining to the creative assets product group. */
   catalogId: String,
-filters: CatalogsCreativeAssetsProductGroupFilters,
+catalogType: CatalogType,
 country: Country,
+filters: CatalogsCreativeAssetsProductGroupFilters,
 locale: CatalogsLocale)
 
 object CatalogsVerticalsListProductsByCatalogBasedFilterRequest {

@@ -11,10 +11,6 @@
 
 export interface UserWebsiteSummary { 
     /**
-     * Website with path or domain only
-     */
-    website?: string;
-    /**
      * Status of the verification process
      */
     status?: string;
@@ -22,5 +18,9 @@ export interface UserWebsiteSummary {
      * UTC timestamp when the verification happened - sometimes missing
      */
     verified_at?: string;
+    /**
+     * Website with path or domain only
+     */
+    website?: string;
 }
 

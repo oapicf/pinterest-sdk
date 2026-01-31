@@ -2,11 +2,6 @@
 Protected Class CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 
 	#tag Property, Flags = &h0
-		catalog_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Catalog id pertaining to the creative assets product group.
 		#tag EndNote
@@ -15,12 +10,17 @@ Protected Class CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
+		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		country As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
 	#tag EndProperty
 
 
@@ -91,19 +91,19 @@ Protected Class CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="filters"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsCreativeAssetsProductGroupFilters"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="filters"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsCreativeAssetsProductGroupFilters"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

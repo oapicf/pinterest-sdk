@@ -17,19 +17,23 @@
 get_business_assets_response_t* instantiate_get_business_assets_response(int include_optional);
 
 #include "test_asset_group_binding.c"
+#include "test_get_business_assets_response_catalog_info.c"
 
 
 get_business_assets_response_t* instantiate_get_business_assets_response(int include_optional) {
   get_business_assets_response_t* get_business_assets_response = NULL;
   if (include_optional) {
     get_business_assets_response = get_business_assets_response_create(
+       // false, not to have infinite recursion
+      instantiate_asset_group_binding(0),
       "549755885175",
       "AD_ACCOUNT",
        // false, not to have infinite recursion
-      instantiate_asset_group_binding(0)
+      instantiate_get_business_assets_response_catalog_info(0)
     );
   } else {
     get_business_assets_response = get_business_assets_response_create(
+      NULL,
       "549755885175",
       "AD_ACCOUNT",
       NULL

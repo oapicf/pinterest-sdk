@@ -9,10 +9,11 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { ConversionEventResponse } from '../models/ConversionEventResponse';
+import { ConversionTag } from '../models/ConversionTag';
 import { ConversionTagCreate } from '../models/ConversionTagCreate';
-import { ConversionTagListResponse } from '../models/ConversionTagListResponse';
-import { ConversionTagResponse } from '../models/ConversionTagResponse';
+import { ConversionTagsList200Response } from '../models/ConversionTagsList200Response';
 import { PageVisitConversionTagsGet200Response } from '../models/PageVisitConversionTagsGet200Response';
+import { PinterestLibError } from '../models/PinterestLibError';
 
 /**
  * no description
@@ -20,10 +21,10 @@ import { PageVisitConversionTagsGet200Response } from '../models/PageVisitConver
 export class ConversionTagsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account\'s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      * Create conversion tag
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionTagCreate Conversion Tag to create
+     * @param conversionTagCreate 
      */
     public async conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -112,6 +113,11 @@ export class ConversionTagsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -123,9 +129,9 @@ export class ConversionTagsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      * List conversion tags associated with an ad account.
-     * Get conversion tags
+     * List conversion tags
      * @param adAccountId Unique identifier of an ad account.
-     * @param filterDeleted Filter out deleted tags.
+     * @param filterDeleted Filter by deleted status
      */
     public async conversionTagsList(adAccountId: string, filterDeleted?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -154,6 +160,11 @@ export class ConversionTagsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -192,6 +203,11 @@ export class ConversionTagsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -254,6 +270,11 @@ export class ConversionTagsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -274,29 +295,71 @@ export class ConversionTagsApiResponseProcessor {
      * @params response Response returned by the server for a request to conversionTagsCreate
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async conversionTagsCreateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ConversionTagResponse >> {
+     public async conversionTagsCreateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ConversionTag >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ConversionTagResponse = ObjectSerializer.deserialize(
+            const body: ConversionTag = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConversionTagResponse", ""
-            ) as ConversionTagResponse;
+                "ConversionTag", ""
+            ) as ConversionTag;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: ConversionTag = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "ConversionTag", ""
+            ) as ConversionTag;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ConversionTagResponse = ObjectSerializer.deserialize(
+            const body: ConversionTag = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConversionTagResponse", ""
-            ) as ConversionTagResponse;
+                "ConversionTag", ""
+            ) as ConversionTag;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -310,13 +373,13 @@ export class ConversionTagsApiResponseProcessor {
      * @params response Response returned by the server for a request to conversionTagsGet
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async conversionTagsGetWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ConversionTagResponse >> {
+     public async conversionTagsGetWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ConversionTag >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ConversionTagResponse = ObjectSerializer.deserialize(
+            const body: ConversionTag = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConversionTagResponse", ""
-            ) as ConversionTagResponse;
+                "ConversionTag", ""
+            ) as ConversionTag;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("0", response.httpStatusCode)) {
@@ -329,10 +392,10 @@ export class ConversionTagsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ConversionTagResponse = ObjectSerializer.deserialize(
+            const body: ConversionTag = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConversionTagResponse", ""
-            ) as ConversionTagResponse;
+                "ConversionTag", ""
+            ) as ConversionTag;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -346,29 +409,64 @@ export class ConversionTagsApiResponseProcessor {
      * @params response Response returned by the server for a request to conversionTagsList
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async conversionTagsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ConversionTagListResponse >> {
+     public async conversionTagsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ConversionTagsList200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ConversionTagListResponse = ObjectSerializer.deserialize(
+            const body: ConversionTagsList200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConversionTagListResponse", ""
-            ) as ConversionTagListResponse;
+                "ConversionTagsList200Response", ""
+            ) as ConversionTagsList200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ConversionTagListResponse = ObjectSerializer.deserialize(
+            const body: ConversionTagsList200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConversionTagListResponse", ""
-            ) as ConversionTagListResponse;
+                "ConversionTagsList200Response", ""
+            ) as ConversionTagsList200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

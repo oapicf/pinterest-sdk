@@ -21,15 +21,15 @@ typedef struct update_asset_group_response_t update_asset_group_response_t;
 
 
 typedef struct update_asset_group_response_t {
-    list_t *updated_asset_groups; //nonprimitive container
     list_t *exceptions; //nonprimitive container
+    list_t *updated_asset_groups; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } update_asset_group_response_t;
 
 __attribute__((deprecated)) update_asset_group_response_t *update_asset_group_response_create(
-    list_t *updated_asset_groups,
-    list_t *exceptions
+    list_t *exceptions,
+    list_t *updated_asset_groups
 );
 
 void update_asset_group_response_free(update_asset_group_response_t *update_asset_group_response);

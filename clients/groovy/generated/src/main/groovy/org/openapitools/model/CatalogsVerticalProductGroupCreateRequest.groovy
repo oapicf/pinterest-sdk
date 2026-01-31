@@ -13,6 +13,8 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsVerticalProductGroupCreateRequest {
+    /* Catalog id pertaining to the creative assets product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -37,15 +39,13 @@ class CatalogsVerticalProductGroupCreateRequest {
     
     CatalogTypeEnum catalogType
     
-    String name
+    Country country
     
     String description
     
     CatalogsCreativeAssetsProductGroupFilters filters
-    /* Catalog id pertaining to the creative assets product group. */
-    String catalogId
-    
-    Country country
     
     CatalogsLocale locale
+    
+    String name
 }

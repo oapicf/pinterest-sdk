@@ -7,9 +7,9 @@
 
 (def update-asset-group-response-exceptions-inner-data
   {
+   (ds/opt :asset_group_id) string?
    (ds/opt :code) int?
    (ds/opt :message) string?
-   (ds/opt :asset_group_id) string?
    })
 
 (def update-asset-group-response-exceptions-inner-spec

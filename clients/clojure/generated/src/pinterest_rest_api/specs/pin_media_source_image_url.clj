@@ -7,9 +7,9 @@
 
 (def pin-media-source-image-url-data
   {
+   (ds/opt :is_standard) boolean?
    (ds/req :source_type) string?
    (ds/req :url) string?
-   (ds/opt :is_standard) boolean?
    })
 
 (def pin-media-source-image-url-spec

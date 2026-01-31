@@ -73,19 +73,19 @@ private class OASOauthAccessTokenResponseClientCreTest {
     private static void maintainRenamedProperties() {
         OASOauthAccessTokenResponseClientCre oauthAccessTokenResponseClientCredentials = new OASOauthAccessTokenResponseClientCre();
         Map<String, String> x-property-mappings = oauthAccessTokenResponseClientCredentials.getx-property-mappings();
-        System.assertEquals('responseType', x-property-mappings.get('response_type'));
         System.assertEquals('accessToken', x-property-mappings.get('access_token'));
-        System.assertEquals('tokenType', x-property-mappings.get('token_type'));
         System.assertEquals('expiresIn', x-property-mappings.get('expires_in'));
+        System.assertEquals('responseType', x-property-mappings.get('response_type'));
+        System.assertEquals('tokenType', x-property-mappings.get('token_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASOauthAccessTokenResponseClientCre oauthAccessTokenResponseClientCredentials = new OASOauthAccessTokenResponseClientCre();
         System.assertEquals('bearer', oauthAccessTokenResponseClientCredentials.tokenType);
-        System.assertEquals(null, oauthAccessTokenResponseClientCredentials.responseType);
         System.assertEquals(null, oauthAccessTokenResponseClientCredentials.accessToken);
         System.assertEquals(null, oauthAccessTokenResponseClientCredentials.expiresIn);
+        System.assertEquals(null, oauthAccessTokenResponseClientCredentials.responseType);
         System.assertEquals(null, oauthAccessTokenResponseClientCredentials.scope);
     }
 }

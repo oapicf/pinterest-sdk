@@ -6,14 +6,15 @@
 
 Name | Type
 ------------ | -------------
-`lINELEVELINTERNALERROR` | number
-`lARGEPRODUCTCOUNTDECREASE` | number
 `aCCOUNTFLAGGED` | number
-`iMAGELEVELINTERNALERROR` | number
+`fETCHGOOGLESHEETNOTSHARED` | number
 `iMAGEFILENOTACCESSIBLE` | number
-`iMAGEMALFORMEDURL` | number
 `iMAGEFILENOTFOUND` | number
 `iMAGEINVALIDFILE` | number
+`iMAGELEVELINTERNALERROR` | number
+`iMAGEMALFORMEDURL` | number
+`lARGEPRODUCTCOUNTDECREASE` | number
+`lINELEVELINTERNALERROR` | number
 
 ## Example
 
@@ -22,14 +23,15 @@ import type { CatalogsFeedIngestionErrors } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "lINELEVELINTERNALERROR": null,
-  "lARGEPRODUCTCOUNTDECREASE": null,
   "aCCOUNTFLAGGED": null,
-  "iMAGELEVELINTERNALERROR": null,
+  "fETCHGOOGLESHEETNOTSHARED": null,
   "iMAGEFILENOTACCESSIBLE": null,
-  "iMAGEMALFORMEDURL": null,
   "iMAGEFILENOTFOUND": null,
   "iMAGEINVALIDFILE": null,
+  "iMAGELEVELINTERNALERROR": null,
+  "iMAGEMALFORMEDURL": null,
+  "lARGEPRODUCTCOUNTDECREASE": null,
+  "lINELEVELINTERNALERROR": null,
 } satisfies CatalogsFeedIngestionErrors
 
 console.log(example)

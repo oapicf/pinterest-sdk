@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,11 +19,8 @@ type CreateMmmReportRequest struct {
 	// A List of countries for filtering
 	Countries []TargetingAdvertiserCountry `json:"countries,omitempty"`
 
-	// Name of the Marketing Mix Modeling (MMM) report
-	ReportName string `json:"report_name"`
-
-	// Metric report start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// Metric and entity columns
+	Columns []MmmReportingColumn `json:"columns"`
 
 	// Metric report end date (UTC). Format: YYYY-MM-DD
 	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
@@ -34,23 +31,26 @@ type CreateMmmReportRequest struct {
 	// Level of the report
 	Level string `json:"level"`
 
+	// Name of the Marketing Mix Modeling (MMM) report
+	ReportName string `json:"report_name"`
+
+	// Metric report start date (UTC). Format: YYYY-MM-DD
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+
 	// List of targeting types
 	TargetingTypes []MmmReportingTargetingType `json:"targeting_types"`
-
-	// Metric and entity columns
-	Columns []MmmReportingColumn `json:"columns"`
 }
 
 // AssertCreateMmmReportRequestRequired checks if the required fields are not zero-ed
 func AssertCreateMmmReportRequestRequired(obj CreateMmmReportRequest) error {
 	elements := map[string]interface{}{
-		"report_name": obj.ReportName,
-		"start_date": obj.StartDate,
+		"columns": obj.Columns,
 		"end_date": obj.EndDate,
 		"granularity": obj.Granularity,
 		"level": obj.Level,
+		"report_name": obj.ReportName,
+		"start_date": obj.StartDate,
 		"targeting_types": obj.TargetingTypes,
-		"columns": obj.Columns,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

@@ -24,7 +24,7 @@ public class CampaignsAnalyticsResponseInner extends HashMap<String, Object>  {
   private LocalDate DATE;
 
   /**
-   * The ID of the campaing that this metrics belongs to.
+   * The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    **/
   public CampaignsAnalyticsResponseInner CAMPAIGN_ID(String CAMPAIGN_ID) {
     this.CAMPAIGN_ID = CAMPAIGN_ID;
@@ -32,9 +32,8 @@ public class CampaignsAnalyticsResponseInner extends HashMap<String, Object>  {
   }
 
   
-  @ApiModelProperty(required = true, value = "The ID of the campaing that this metrics belongs to.")
+  @ApiModelProperty(value = "The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
   @JsonProperty("CAMPAIGN_ID")
-  @NotNull
  @Pattern(regexp="^\\d+$")  public String getCAMPAIGNID() {
     return CAMPAIGN_ID;
   }

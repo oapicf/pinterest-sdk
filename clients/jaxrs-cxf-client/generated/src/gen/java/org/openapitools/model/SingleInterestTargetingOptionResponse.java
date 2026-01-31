@@ -11,57 +11,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SingleInterestTargetingOptionResponse  {
   
-  @ApiModelProperty(example = "945391946569", value = "")
-
-  private String id;
-
-  @ApiModelProperty(example = "Dress", value = "")
-
-  private String name;
-
   @ApiModelProperty(value = "")
 
   private List<String> childInterests = new ArrayList<>();
 
+  @ApiModelProperty(example = "945391946569", value = "")
+
+  private String id;
+
   @ApiModelProperty(example = "2", value = "")
 
   private Integer level;
- /**
-   * Get id
-   * @return id
-  **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
 
-  public void setId(String id) {
-    this.id = id;
-  }
+  @ApiModelProperty(example = "Dress", value = "")
 
-  public SingleInterestTargetingOptionResponse id(String id) {
-    this.id = id;
-    return this;
-  }
-
- /**
-   * Get name
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public SingleInterestTargetingOptionResponse name(String name) {
-    this.name = name;
-    return this;
-  }
-
+  private String name;
  /**
    * Get childInterests
    * @return childInterests
@@ -86,6 +50,24 @@ public class SingleInterestTargetingOptionResponse  {
   }
 
  /**
+   * Get id
+   * @return id
+  **/
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public SingleInterestTargetingOptionResponse id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
    * Get level
    * @return level
   **/
@@ -103,6 +85,24 @@ public class SingleInterestTargetingOptionResponse  {
     return this;
   }
 
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public SingleInterestTargetingOptionResponse name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -112,15 +112,15 @@ public class SingleInterestTargetingOptionResponse  {
       return false;
     }
     SingleInterestTargetingOptionResponse singleInterestTargetingOptionResponse = (SingleInterestTargetingOptionResponse) o;
-    return Objects.equals(this.id, singleInterestTargetingOptionResponse.id) &&
-        Objects.equals(this.name, singleInterestTargetingOptionResponse.name) &&
-        Objects.equals(this.childInterests, singleInterestTargetingOptionResponse.childInterests) &&
-        Objects.equals(this.level, singleInterestTargetingOptionResponse.level);
+    return Objects.equals(this.childInterests, singleInterestTargetingOptionResponse.childInterests) &&
+        Objects.equals(this.id, singleInterestTargetingOptionResponse.id) &&
+        Objects.equals(this.level, singleInterestTargetingOptionResponse.level) &&
+        Objects.equals(this.name, singleInterestTargetingOptionResponse.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, childInterests, level);
+    return Objects.hash(childInterests, id, level, name);
   }
 
   @Override
@@ -128,10 +128,10 @@ public class SingleInterestTargetingOptionResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SingleInterestTargetingOptionResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    childInterests: ").append(toIndentedString(childInterests)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

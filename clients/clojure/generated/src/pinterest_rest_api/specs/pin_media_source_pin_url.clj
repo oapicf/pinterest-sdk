@@ -7,8 +7,8 @@
 
 (def pin-media-source-pin-url-data
   {
-   (ds/req :source_type) string?
    (ds/opt :is_affiliate_link) boolean?
+   (ds/req :source_type) string?
    })
 
 (def pin-media-source-pin-url-spec

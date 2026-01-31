@@ -7,15 +7,15 @@ Request object for creating a feed. Please, be aware that \"default_country\" an
 
 Name | Type
 ------------ | -------------
-`defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`name` | string
-`format` | [CatalogsFormat](CatalogsFormat.md)
-`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
-`credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
-`location` | string
-`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
-`catalogType` | [CatalogsType](CatalogsType.md)
 `catalogId` | string
+`catalogType` | [CatalogsType](CatalogsType.md)
+`credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
+`defaultCurrency` | [NullableCurrency](NullableCurrency.md)
+`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
+`format` | [CatalogsFormat](CatalogsFormat.md)
+`location` | string
+`name` | string
+`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
 `status` | [CatalogsStatus](CatalogsStatus.md)
 
 ## Example
@@ -25,15 +25,15 @@ import type { CatalogsHotelFeedsCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "defaultCurrency": null,
-  "name": null,
-  "format": null,
-  "defaultLocale": null,
-  "credentials": null,
-  "location": null,
-  "preferredProcessingSchedule": null,
-  "catalogType": null,
   "catalogId": null,
+  "catalogType": null,
+  "credentials": null,
+  "defaultCurrency": null,
+  "defaultLocale": null,
+  "format": null,
+  "location": null,
+  "name": null,
+  "preferredProcessingSchedule": null,
   "status": null,
 } satisfies CatalogsHotelFeedsCreateRequest
 

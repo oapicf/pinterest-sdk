@@ -8,8 +8,8 @@ The class is defined in **[LeadsExportResponseData.java](../../src/main/java/org
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**exportStatus** | `LeadsExportStatus` |  |  [optional property]
 **downloadUrl** | `String` |  |  [optional property]
+**exportStatus** | `LeadsExportStatus` |  |  [optional property]
 
 
 

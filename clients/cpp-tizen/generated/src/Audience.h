@@ -53,6 +53,34 @@ public:
 	/*! \brief Set Ad account ID.
 	 */
 	void setAdAccountId(std::string  ad_account_id);
+	/*! \brief Get <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	 */
+	std::string getAudienceType();
+
+	/*! \brief Set <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	 */
+	void setAudienceType(std::string  audience_type);
+	/*! \brief Get The company that created this audience.
+	 */
+	std::string getCreatedByCompanyName();
+
+	/*! \brief Set The company that created this audience.
+	 */
+	void setCreatedByCompanyName(std::string  created_by_company_name);
+	/*! \brief Get Creation time. Unix timestamp in seconds.
+	 */
+	int getCreatedTimestamp();
+
+	/*! \brief Set Creation time. Unix timestamp in seconds.
+	 */
+	void setCreatedTimestamp(int  created_timestamp);
+	/*! \brief Get Audience description.
+	 */
+	std::string getDescription();
+
+	/*! \brief Set Audience description.
+	 */
+	void setDescription(std::string  description);
 	/*! \brief Get Audience ID.
 	 */
 	std::string getId();
@@ -67,20 +95,6 @@ public:
 	/*! \brief Set Audience name.
 	 */
 	void setName(std::string  name);
-	/*! \brief Get <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-	 */
-	std::string getAudienceType();
-
-	/*! \brief Set <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-	 */
-	void setAudienceType(std::string  audience_type);
-	/*! \brief Get Audience description.
-	 */
-	std::string getDescription();
-
-	/*! \brief Set Audience description.
-	 */
-	void setDescription(std::string  description);
 	/*! \brief Get 
 	 */
 	AudienceRule getRule();
@@ -109,13 +123,6 @@ public:
 	/*! \brief Set Always \"audience\".
 	 */
 	void setType(std::string  type);
-	/*! \brief Get Creation time. Unix timestamp in seconds.
-	 */
-	int getCreatedTimestamp();
-
-	/*! \brief Set Creation time. Unix timestamp in seconds.
-	 */
-	void setCreatedTimestamp(int  created_timestamp);
 	/*! \brief Get Last update time. Unix timestamp in seconds.
 	 */
 	int getUpdatedTimestamp();
@@ -126,15 +133,16 @@ public:
 
 private:
 	std::string ad_account_id;
+	std::string audience_type;
+	std::string created_by_company_name;
+	int created_timestamp;
+	std::string description;
 	std::string id;
 	std::string name;
-	std::string audience_type;
-	std::string description;
 	AudienceRule rule;
 	int size;
 	std::string status;
 	std::string type;
-	int created_timestamp;
 	int updated_timestamp;
 	void __init();
 	void __cleanup();

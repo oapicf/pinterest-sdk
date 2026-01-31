@@ -1,7 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Audience;
-import org.openapitools.vertxweb.server.model.AudienceCreateCustomRequest;
 import org.openapitools.vertxweb.server.model.AudienceCreateRequest;
 import org.openapitools.vertxweb.server.model.AudienceUpdateRequest;
 import org.openapitools.vertxweb.server.model.AudiencesList200Response;
@@ -20,10 +19,6 @@ import java.util.Map;
 
 public class AudiencesApiImpl implements AudiencesApi {
     public Future<ApiResponse<Audience>> audiencesCreate(String adAccountId, AudienceCreateRequest audienceCreateRequest) {
-        return Future.failedFuture(new HttpException(501));
-    }
-
-    public Future<ApiResponse<Audience>> audiencesCreateCustom(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest) {
         return Future.failedFuture(new HttpException(501));
     }
 

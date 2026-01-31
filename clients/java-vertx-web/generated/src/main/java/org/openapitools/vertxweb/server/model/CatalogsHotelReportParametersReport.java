@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.CatalogsReportAllItemsFilter;
 import org.openapitools.vertxweb.server.model.CatalogsReportDistributionIssueFilter;
 import org.openapitools.vertxweb.server.model.CatalogsReportFeedIngestionFilter;
 
@@ -14,7 +15,8 @@ public class CatalogsHotelReportParametersReport   {
 
   public enum ReportTypeEnum {
     FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
+    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
+    ALL_ITEMS("ALL_ITEMS");
 
     private String value;
 

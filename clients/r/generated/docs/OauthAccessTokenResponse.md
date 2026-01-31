@@ -5,10 +5,10 @@ A successful OAuth access token response.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response_type** | **character** |  | [optional] [Enum: [authorization_code, refresh_token, client_credentials]] 
 **access_token** | **character** |  | 
-**token_type** | **character** |  | [default to &quot;bearer&quot;] 
 **expires_in** | **integer** |  | 
+**response_type** | **character** |  | [optional] [Enum: [authorization_code, refresh_token, client_credentials]] 
 **scope** | **character** |  | 
+**token_type** | **character** |  | [default to &quot;bearer&quot;] 
 
 

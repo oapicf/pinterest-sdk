@@ -11,9 +11,13 @@ import javax.validation.Valid;
 /**
  * AdsAnalyticsCreateAsyncResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsAnalyticsCreateAsyncResponse   {
+  @JsonProperty("message")
+  
+  private String message;
+
   @JsonProperty("report_status")
   @Valid
 
@@ -23,9 +27,22 @@ public class AdsAnalyticsCreateAsyncResponse   {
   
   private String token;
 
-  @JsonProperty("message")
-  
-  private String message;
+  public AdsAnalyticsCreateAsyncResponse message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
   public AdsAnalyticsCreateAsyncResponse reportStatus(BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
@@ -61,23 +78,6 @@ public class AdsAnalyticsCreateAsyncResponse   {
     this.token = token;
   }
 
-  public AdsAnalyticsCreateAsyncResponse message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Get message
-   * @return message
-  **/
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -88,14 +88,14 @@ public class AdsAnalyticsCreateAsyncResponse   {
       return false;
     }
     AdsAnalyticsCreateAsyncResponse adsAnalyticsCreateAsyncResponse = (AdsAnalyticsCreateAsyncResponse) o;
-    return Objects.equals(reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
-        Objects.equals(token, adsAnalyticsCreateAsyncResponse.token) &&
-        Objects.equals(message, adsAnalyticsCreateAsyncResponse.message);
+    return Objects.equals(message, adsAnalyticsCreateAsyncResponse.message) &&
+        Objects.equals(reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
+        Objects.equals(token, adsAnalyticsCreateAsyncResponse.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, message);
+    return Objects.hash(message, reportStatus, token);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -104,9 +104,9 @@ public class AdsAnalyticsCreateAsyncResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsAnalyticsCreateAsyncResponse {\n");
     
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

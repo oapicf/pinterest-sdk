@@ -81,8 +81,8 @@ private class OASCatalogsHotelItemResponseTest {
     private static void defaultValuesPopulated() {
         OASCatalogsHotelItemResponse catalogsHotelItemResponse = new OASCatalogsHotelItemResponse();
         System.assertEquals(new List<OASPin>(), catalogsHotelItemResponse.pins);
+        System.assertEquals(null, catalogsHotelItemResponse.attributes);
         System.assertEquals(null, catalogsHotelItemResponse.catalogType);
         System.assertEquals(null, catalogsHotelItemResponse.hotelId);
-        System.assertEquals(null, catalogsHotelItemResponse.attributes);
     }
 }

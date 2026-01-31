@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -176,7 +176,7 @@ CancelInvitesOrRequests Cancel invites/requests
 Cancel membership/partnership invites and/or requests.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param businessId Business id
+ @param businessId Unique identifier of the requesting business.
  @return ApiCancelInvitesOrRequestsRequest
 */
 func (a *BusinessAccessInviteAPIService) CancelInvitesOrRequests(ctx context.Context, businessId string) ApiCancelInvitesOrRequestsRequest {
@@ -210,9 +210,6 @@ func (a *BusinessAccessInviteAPIService) CancelInvitesOrRequestsExecute(r ApiCan
 	localVarFormParams := url.Values{}
 	if strlen(r.businessId) < 1 {
 		return localVarReturnValue, nil, reportError("businessId must have at least 1 elements")
-	}
-	if strlen(r.businessId) > 20 {
-		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
 	if r.cancelInvitesBody == nil {
 		return localVarReturnValue, nil, reportError("cancelInvitesBody is required and must be specified")
@@ -461,7 +458,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
     - partners
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param businessId Business id
+ @param businessId Unique identifier of the requesting business.
  @return ApiCreateMembershipOrPartnershipInvitesRequest
 */
 func (a *BusinessAccessInviteAPIService) CreateMembershipOrPartnershipInvites(ctx context.Context, businessId string) ApiCreateMembershipOrPartnershipInvitesRequest {
@@ -495,9 +492,6 @@ func (a *BusinessAccessInviteAPIService) CreateMembershipOrPartnershipInvitesExe
 	localVarFormParams := url.Values{}
 	if strlen(r.businessId) < 1 {
 		return localVarReturnValue, nil, reportError("businessId must have at least 1 elements")
-	}
-	if strlen(r.businessId) > 20 {
-		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
 	if r.createMembershipOrPartnershipInvitesBody == nil {
 		return localVarReturnValue, nil, reportError("createMembershipOrPartnershipInvitesBody is required and must be specified")
@@ -652,9 +646,6 @@ func (a *BusinessAccessInviteAPIService) GetInvitesExecute(r ApiGetInvitesReques
 	localVarFormParams := url.Values{}
 	if strlen(r.businessId) < 1 {
 		return localVarReturnValue, nil, reportError("businessId must have at least 1 elements")
-	}
-	if strlen(r.businessId) > 20 {
-		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
 
 	if r.isMember != nil {

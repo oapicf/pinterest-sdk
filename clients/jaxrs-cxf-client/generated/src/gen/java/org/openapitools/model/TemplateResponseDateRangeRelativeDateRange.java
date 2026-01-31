@@ -15,11 +15,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TemplateResponseDateRangeRelativeDateRange  {
   
  /**
-  * The date range type
+  * The end date of the date range
   */
-  @ApiModelProperty(example = "relative", value = "The date range type")
+  @ApiModelProperty(example = "7", value = "The end date of the date range")
 
-  private String type;
+  private BigDecimal endDaysInPast;
 
  /**
   * The start date of the date range
@@ -29,26 +29,26 @@ public class TemplateResponseDateRangeRelativeDateRange  {
   private BigDecimal startDaysInPast;
 
  /**
-  * The end date of the date range
+  * The date range type
   */
-  @ApiModelProperty(example = "7", value = "The end date of the date range")
+  @ApiModelProperty(example = "relative", value = "The date range type")
 
-  private BigDecimal endDaysInPast;
+  private String type;
  /**
-   * The date range type
-   * @return type
+   * The end date of the date range
+   * @return endDaysInPast
   **/
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @JsonProperty("end_days_in_past")
+  public BigDecimal getEndDaysInPast() {
+    return endDaysInPast;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setEndDaysInPast(BigDecimal endDaysInPast) {
+    this.endDaysInPast = endDaysInPast;
   }
 
-  public TemplateResponseDateRangeRelativeDateRange type(String type) {
-    this.type = type;
+  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(BigDecimal endDaysInPast) {
+    this.endDaysInPast = endDaysInPast;
     return this;
   }
 
@@ -71,20 +71,20 @@ public class TemplateResponseDateRangeRelativeDateRange  {
   }
 
  /**
-   * The end date of the date range
-   * @return endDaysInPast
+   * The date range type
+   * @return type
   **/
-  @JsonProperty("end_days_in_past")
-  public BigDecimal getEndDaysInPast() {
-    return endDaysInPast;
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
 
-  public void setEndDaysInPast(BigDecimal endDaysInPast) {
-    this.endDaysInPast = endDaysInPast;
+  public void setType(String type) {
+    this.type = type;
   }
 
-  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(BigDecimal endDaysInPast) {
-    this.endDaysInPast = endDaysInPast;
+  public TemplateResponseDateRangeRelativeDateRange type(String type) {
+    this.type = type;
     return this;
   }
 
@@ -97,14 +97,14 @@ public class TemplateResponseDateRangeRelativeDateRange  {
       return false;
     }
     TemplateResponseDateRangeRelativeDateRange templateResponseDateRangeRelativeDateRange = (TemplateResponseDateRangeRelativeDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeRelativeDateRange.type) &&
+    return Objects.equals(this.endDaysInPast, templateResponseDateRangeRelativeDateRange.endDaysInPast) &&
         Objects.equals(this.startDaysInPast, templateResponseDateRangeRelativeDateRange.startDaysInPast) &&
-        Objects.equals(this.endDaysInPast, templateResponseDateRangeRelativeDateRange.endDaysInPast);
+        Objects.equals(this.type, templateResponseDateRangeRelativeDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDaysInPast, endDaysInPast);
+    return Objects.hash(endDaysInPast, startDaysInPast, type);
   }
 
   @Override
@@ -112,9 +112,9 @@ public class TemplateResponseDateRangeRelativeDateRange  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeRelativeDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDaysInPast: ").append(toIndentedString(startDaysInPast)).append("\n");
     sb.append("    endDaysInPast: ").append(toIndentedString(endDaysInPast)).append("\n");
+    sb.append("    startDaysInPast: ").append(toIndentedString(startDaysInPast)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,18 +14,13 @@ Method | HTTP request | Description
 
 Register media upload
 
-Register your intent to upload media
+Register your intent to upload media.
 
-The response includes all of the information needed to upload the media
-to Pinterest.
+The response includes all of the information needed to upload the media to Pinterest.
 
-To upload the media, make an HTTP POST request (using <tt>curl</tt>, for
-example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header
-value. Send the media file's contents as the request's <tt>file</tt>
-parameter and also include all of the parameters from
-<tt>upload_parameters</tt>.
+To upload the media, make an HTTP POST request (using 'curl', for example) to 'upload_url' using the 'Content-Type' header value. Send the media file's contents as the request's 'file' parameter and also include all of the parameters from 'upload_parameters'.
 
-<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -38,7 +33,7 @@ parameter and also include all of the parameters from
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaUploadRequest** | [**MediaUploadRequest**](MediaUploadRequest.md) | Create a media upload request |
+ **mediaUploadCreate** | [**MediaUploadCreate**](MediaUploadCreate.md) |  |
 
 ### Return type
 
@@ -62,7 +57,7 @@ Get media upload details
 
 Get details for a registered media upload, including its current status.
 
-<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -75,11 +70,12 @@ Get details for a registered media upload, including its current status.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaId** | **string** | Media identifier | [default to null]
+ **mediaId** | **string** | Unique identifier for this media upload. Used to track status
+and for attaching during Pin creation. | [default to null]
 
 ### Return type
 
-[**MediaUploadDetails**](MediaUploadDetails.md)
+[**Media**](Media.md)
 
 ### Authorization
 
@@ -99,7 +95,7 @@ List media uploads
 
 List media uploads filtered by given parameters.
 
-<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -113,7 +109,8 @@ List media uploads filtered by given parameters.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

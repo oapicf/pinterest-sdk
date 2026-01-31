@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import CatalogsProductGroupMultipleMediaTypesCriteria._
 
 case class CatalogsProductGroupMultipleMediaTypesCriteria (
-  values: List[MediaType],
-negated: Option[Boolean])
+  negated: Option[Boolean],
+values: List[MediaType])
 
 object CatalogsProductGroupMultipleMediaTypesCriteria {
   import DateTimeCodecs._

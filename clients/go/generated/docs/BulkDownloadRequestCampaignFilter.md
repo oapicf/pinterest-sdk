@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartTime** | Pointer to **string** | Unix UTC timestamp. | [optional] 
+**CampaignStatus** | Pointer to [**[]CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
 **EndTime** | Pointer to **string** | Unix UTC timestamp. | [optional] 
 **Name** | Pointer to **string** | Campaign name | [optional] 
-**CampaignStatus** | Pointer to [**[]CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
 **ObjectiveType** | Pointer to [**[]ObjectiveType**](ObjectiveType.md) |  | [optional] 
+**StartTime** | Pointer to **string** | Unix UTC timestamp. | [optional] 
 
 ## Methods
 
@@ -29,30 +29,30 @@ NewBulkDownloadRequestCampaignFilterWithDefaults instantiates a new BulkDownload
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStartTime
+### GetCampaignStatus
 
-`func (o *BulkDownloadRequestCampaignFilter) GetStartTime() string`
+`func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatus() []CampaignSummaryStatus`
 
-GetStartTime returns the StartTime field if non-nil, zero value otherwise.
+GetCampaignStatus returns the CampaignStatus field if non-nil, zero value otherwise.
 
-### GetStartTimeOk
+### GetCampaignStatusOk
 
-`func (o *BulkDownloadRequestCampaignFilter) GetStartTimeOk() (*string, bool)`
+`func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatusOk() (*[]CampaignSummaryStatus, bool)`
 
-GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
+GetCampaignStatusOk returns a tuple with the CampaignStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartTime
+### SetCampaignStatus
 
-`func (o *BulkDownloadRequestCampaignFilter) SetStartTime(v string)`
+`func (o *BulkDownloadRequestCampaignFilter) SetCampaignStatus(v []CampaignSummaryStatus)`
 
-SetStartTime sets StartTime field to given value.
+SetCampaignStatus sets CampaignStatus field to given value.
 
-### HasStartTime
+### HasCampaignStatus
 
-`func (o *BulkDownloadRequestCampaignFilter) HasStartTime() bool`
+`func (o *BulkDownloadRequestCampaignFilter) HasCampaignStatus() bool`
 
-HasStartTime returns a boolean if a field has been set.
+HasCampaignStatus returns a boolean if a field has been set.
 
 ### GetEndTime
 
@@ -104,31 +104,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetCampaignStatus
-
-`func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatus() []CampaignSummaryStatus`
-
-GetCampaignStatus returns the CampaignStatus field if non-nil, zero value otherwise.
-
-### GetCampaignStatusOk
-
-`func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatusOk() (*[]CampaignSummaryStatus, bool)`
-
-GetCampaignStatusOk returns a tuple with the CampaignStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCampaignStatus
-
-`func (o *BulkDownloadRequestCampaignFilter) SetCampaignStatus(v []CampaignSummaryStatus)`
-
-SetCampaignStatus sets CampaignStatus field to given value.
-
-### HasCampaignStatus
-
-`func (o *BulkDownloadRequestCampaignFilter) HasCampaignStatus() bool`
-
-HasCampaignStatus returns a boolean if a field has been set.
-
 ### GetObjectiveType
 
 `func (o *BulkDownloadRequestCampaignFilter) GetObjectiveType() []ObjectiveType`
@@ -153,6 +128,31 @@ SetObjectiveType sets ObjectiveType field to given value.
 `func (o *BulkDownloadRequestCampaignFilter) HasObjectiveType() bool`
 
 HasObjectiveType returns a boolean if a field has been set.
+
+### GetStartTime
+
+`func (o *BulkDownloadRequestCampaignFilter) GetStartTime() string`
+
+GetStartTime returns the StartTime field if non-nil, zero value otherwise.
+
+### GetStartTimeOk
+
+`func (o *BulkDownloadRequestCampaignFilter) GetStartTimeOk() (*string, bool)`
+
+GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartTime
+
+`func (o *BulkDownloadRequestCampaignFilter) SetStartTime(v string)`
+
+SetStartTime sets StartTime field to given value.
+
+### HasStartTime
+
+`func (o *BulkDownloadRequestCampaignFilter) HasStartTime() bool`
+
+HasStartTime returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

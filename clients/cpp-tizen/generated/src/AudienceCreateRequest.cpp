@@ -26,8 +26,8 @@ AudienceCreateRequest::__init()
 	//ad_account_id = std::string();
 	//name = std::string();
 	//rule = new AudienceRule();
-	//description = std::string();
 	//audience_type = std::string();
+	//description = std::string();
 }
 
 void
@@ -48,15 +48,15 @@ AudienceCreateRequest::__cleanup()
 	//delete rule;
 	//rule = NULL;
 	//}
-	//if(description != NULL) {
-	//
-	//delete description;
-	//description = NULL;
-	//}
 	//if(audience_type != NULL) {
 	//
 	//delete audience_type;
 	//audience_type = NULL;
+	//}
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
 	//}
 	//
 }
@@ -102,17 +102,6 @@ AudienceCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *descriptionKey = "description";
-	node = json_object_get_member(pJsonObject, descriptionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&description, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *audience_typeKey = "audience_type";
 	node = json_object_get_member(pJsonObject, audience_typeKey);
 	if (node !=NULL) {
@@ -124,6 +113,17 @@ AudienceCreateRequest::fromJson(char* jsonStr)
 			
 			AudienceType* obj = static_cast<AudienceType*> (&audience_type);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -171,15 +171,6 @@ AudienceCreateRequest::toJson()
 	}
 	const gchar *ruleKey = "rule";
 	json_object_set_member(pJsonObject, ruleKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDescription();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *descriptionKey = "description";
-	json_object_set_member(pJsonObject, descriptionKey, node);
 	if (isprimitive("AudienceType")) {
 		AudienceType obj = getAudienceType();
 		node = converttoJson(&obj, "AudienceType", "");
@@ -194,6 +185,15 @@ AudienceCreateRequest::toJson()
 	}
 	const gchar *audience_typeKey = "audience_type";
 	json_object_set_member(pJsonObject, audience_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -238,18 +238,6 @@ AudienceCreateRequest::setRule(AudienceRule  rule)
 	this->rule = rule;
 }
 
-std::string
-AudienceCreateRequest::getDescription()
-{
-	return description;
-}
-
-void
-AudienceCreateRequest::setDescription(std::string  description)
-{
-	this->description = description;
-}
-
 AudienceType
 AudienceCreateRequest::getAudienceType()
 {
@@ -260,6 +248,18 @@ void
 AudienceCreateRequest::setAudienceType(AudienceType  audience_type)
 {
 	this->audience_type = audience_type;
+}
+
+std::string
+AudienceCreateRequest::getDescription()
+{
+	return description;
+}
+
+void
+AudienceCreateRequest::setDescription(std::string  description)
+{
+	this->description = description;
 }
 
 

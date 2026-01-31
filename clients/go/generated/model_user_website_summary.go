@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &UserWebsiteSummary{}
 
 // UserWebsiteSummary struct for UserWebsiteSummary
 type UserWebsiteSummary struct {
-	// Website with path or domain only
-	Website *string `json:"website,omitempty"`
 	// Status of the verification process
 	Status *string `json:"status,omitempty"`
 	// UTC timestamp when the verification happened - sometimes missing
 	VerifiedAt *string `json:"verified_at,omitempty"`
+	// Website with path or domain only
+	Website *string `json:"website,omitempty"`
 }
 
 // NewUserWebsiteSummary instantiates a new UserWebsiteSummary object
@@ -43,38 +43,6 @@ func NewUserWebsiteSummary() *UserWebsiteSummary {
 func NewUserWebsiteSummaryWithDefaults() *UserWebsiteSummary {
 	this := UserWebsiteSummary{}
 	return &this
-}
-
-// GetWebsite returns the Website field value if set, zero value otherwise.
-func (o *UserWebsiteSummary) GetWebsite() string {
-	if o == nil || IsNil(o.Website) {
-		var ret string
-		return ret
-	}
-	return *o.Website
-}
-
-// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserWebsiteSummary) GetWebsiteOk() (*string, bool) {
-	if o == nil || IsNil(o.Website) {
-		return nil, false
-	}
-	return o.Website, true
-}
-
-// HasWebsite returns a boolean if a field has been set.
-func (o *UserWebsiteSummary) HasWebsite() bool {
-	if o != nil && !IsNil(o.Website) {
-		return true
-	}
-
-	return false
-}
-
-// SetWebsite gets a reference to the given string and assigns it to the Website field.
-func (o *UserWebsiteSummary) SetWebsite(v string) {
-	o.Website = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -141,6 +109,38 @@ func (o *UserWebsiteSummary) SetVerifiedAt(v string) {
 	o.VerifiedAt = &v
 }
 
+// GetWebsite returns the Website field value if set, zero value otherwise.
+func (o *UserWebsiteSummary) GetWebsite() string {
+	if o == nil || IsNil(o.Website) {
+		var ret string
+		return ret
+	}
+	return *o.Website
+}
+
+// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserWebsiteSummary) GetWebsiteOk() (*string, bool) {
+	if o == nil || IsNil(o.Website) {
+		return nil, false
+	}
+	return o.Website, true
+}
+
+// HasWebsite returns a boolean if a field has been set.
+func (o *UserWebsiteSummary) HasWebsite() bool {
+	if o != nil && !IsNil(o.Website) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsite gets a reference to the given string and assigns it to the Website field.
+func (o *UserWebsiteSummary) SetWebsite(v string) {
+	o.Website = &v
+}
+
 func (o UserWebsiteSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -151,14 +151,14 @@ func (o UserWebsiteSummary) MarshalJSON() ([]byte, error) {
 
 func (o UserWebsiteSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Website) {
-		toSerialize["website"] = o.Website
-	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.VerifiedAt) {
 		toSerialize["verified_at"] = o.VerifiedAt
+	}
+	if !IsNil(o.Website) {
+		toSerialize["website"] = o.Website
 	}
 	return toSerialize, nil
 }

@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupMultipleStringCriteria (
-    _values: List[String],
-    _negated: Option[Boolean]
+    _negated: Option[Boolean],
+    _values: List[String]
 )
 object CatalogsProductGroupMultipleStringCriteria {
-    def toStringBody(var_values: Object, var_negated: Object) =
+    def toStringBody(var_negated: Object, var_values: Object) =
         s"""
         | {
-        | "values":$var_values,"negated":$var_negated
+        | "negated":$var_negated,"values":$var_values
         | }
         """.stripMargin
 }

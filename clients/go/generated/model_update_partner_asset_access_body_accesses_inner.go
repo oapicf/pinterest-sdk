@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &UpdatePartnerAssetAccessBodyAccessesInner{}
 
 // UpdatePartnerAssetAccessBodyAccessesInner struct for UpdatePartnerAssetAccessBodyAccessesInner
 type UpdatePartnerAssetAccessBodyAccessesInner struct {
-	// Unique identifier of a business partner to update asset access to.
-	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 	// Unique identifier of the business asset.
 	AssetId string `json:"asset_id" validate:"regexp=^\\\\d+$"`
+	// Unique identifier of a business partner to update asset access to.
+	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 	// A non-empty array of permissions to assign to the partner.
 	Permissions []Permissions `json:"permissions"`
 }
@@ -36,10 +36,10 @@ type _UpdatePartnerAssetAccessBodyAccessesInner UpdatePartnerAssetAccessBodyAcce
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdatePartnerAssetAccessBodyAccessesInner(partnerId string, assetId string, permissions []Permissions) *UpdatePartnerAssetAccessBodyAccessesInner {
+func NewUpdatePartnerAssetAccessBodyAccessesInner(assetId string, partnerId string, permissions []Permissions) *UpdatePartnerAssetAccessBodyAccessesInner {
 	this := UpdatePartnerAssetAccessBodyAccessesInner{}
-	this.PartnerId = partnerId
 	this.AssetId = assetId
+	this.PartnerId = partnerId
 	this.Permissions = permissions
 	return &this
 }
@@ -50,30 +50,6 @@ func NewUpdatePartnerAssetAccessBodyAccessesInner(partnerId string, assetId stri
 func NewUpdatePartnerAssetAccessBodyAccessesInnerWithDefaults() *UpdatePartnerAssetAccessBodyAccessesInner {
 	this := UpdatePartnerAssetAccessBodyAccessesInner{}
 	return &this
-}
-
-// GetPartnerId returns the PartnerId field value
-func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PartnerId
-}
-
-// GetPartnerIdOk returns a tuple with the PartnerId field value
-// and a boolean to check if the value has been set.
-func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PartnerId, true
-}
-
-// SetPartnerId sets field value
-func (o *UpdatePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string) {
-	o.PartnerId = v
 }
 
 // GetAssetId returns the AssetId field value
@@ -98,6 +74,30 @@ func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetAssetIdOk() (*string, boo
 // SetAssetId sets field value
 func (o *UpdatePartnerAssetAccessBodyAccessesInner) SetAssetId(v string) {
 	o.AssetId = v
+}
+
+// GetPartnerId returns the PartnerId field value
+func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value
+// and a boolean to check if the value has been set.
+func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartnerId, true
+}
+
+// SetPartnerId sets field value
+func (o *UpdatePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string) {
+	o.PartnerId = v
 }
 
 // GetPermissions returns the Permissions field value
@@ -134,8 +134,8 @@ func (o UpdatePartnerAssetAccessBodyAccessesInner) MarshalJSON() ([]byte, error)
 
 func (o UpdatePartnerAssetAccessBodyAccessesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["partner_id"] = o.PartnerId
 	toSerialize["asset_id"] = o.AssetId
+	toSerialize["partner_id"] = o.PartnerId
 	toSerialize["permissions"] = o.Permissions
 	return toSerialize, nil
 }
@@ -145,8 +145,8 @@ func (o *UpdatePartnerAssetAccessBodyAccessesInner) UnmarshalJSON(data []byte) (
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"partner_id",
 		"asset_id",
+		"partner_id",
 		"permissions",
 	}
 

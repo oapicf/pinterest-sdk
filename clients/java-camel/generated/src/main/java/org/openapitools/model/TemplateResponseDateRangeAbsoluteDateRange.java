@@ -22,33 +22,33 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_absolute_date_range", description = "The absolute date range of the template")
 @JsonTypeName("TemplateResponse_date_range_absolute_date_range")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeAbsoluteDateRange {
-
-  private String type;
-
-  private BigDecimal startDate;
 
   private BigDecimal endDate;
 
-  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
-    this.type = type;
+  private BigDecimal startDate;
+
+  private String type;
+
+  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
+    this.endDate = endDate;
     return this;
   }
 
   /**
-   * The date range type
-   * @return type
+   * The end date of the date range
+   * @return endDate
    */
-  
-  @Schema(name = "type", example = "absolute", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @Valid 
+  @Schema(name = "end_date", example = "6.027456183070403", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("end_date")
+  public BigDecimal getEndDate() {
+    return endDate;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setEndDate(BigDecimal endDate) {
+    this.endDate = endDate;
   }
 
   public TemplateResponseDateRangeAbsoluteDateRange startDate(BigDecimal startDate) {
@@ -71,24 +71,24 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
     this.startDate = startDate;
   }
 
-  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * The end date of the date range
-   * @return endDate
+   * The date range type
+   * @return type
    */
-  @Valid 
-  @Schema(name = "end_date", example = "6.027456183070403", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("end_date")
-  public BigDecimal getEndDate() {
-    return endDate;
+  
+  @Schema(name = "type", example = "absolute", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
 
-  public void setEndDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public void setType(String type) {
+    this.type = type;
   }
 
   @Override
@@ -100,23 +100,23 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
       return false;
     }
     TemplateResponseDateRangeAbsoluteDateRange templateResponseDateRangeAbsoluteDateRange = (TemplateResponseDateRangeAbsoluteDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type) &&
+    return Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate) &&
         Objects.equals(this.startDate, templateResponseDateRangeAbsoluteDateRange.startDate) &&
-        Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate);
+        Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDate, endDate);
+    return Objects.hash(endDate, startDate, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeAbsoluteDateRange {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

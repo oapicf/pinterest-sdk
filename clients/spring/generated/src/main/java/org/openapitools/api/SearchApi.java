@@ -7,9 +7,9 @@ package org.openapitools.api;
 
 import org.openapitools.model.Error;
 import org.springframework.lang.Nullable;
-import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.SearchPartnerPins200Response;
 import org.openapitools.model.SearchUserBoardsGet200Response;
+import org.openapitools.model.SearchUserPinsList200Response;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -37,7 +37,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "search", description = "Search for Pins and boards owned by the current user.")
 public interface SearchApi {
@@ -49,7 +49,7 @@ public interface SearchApi {
     String PATH_SEARCH_PARTNER_PINS = "/search/partner/pins";
     /**
      * GET /search/partner/pins : Search pins by a given search term
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
      *
      * @param term Search term to look up pins. (required)
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2) (required)
@@ -63,7 +63,7 @@ public interface SearchApi {
     @Operation(
         operationId = "searchPartnerPins",
         summary = "Search pins by a given search term",
-        description = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.",
+        description = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.",
         tags = { "search" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -95,7 +95,7 @@ public interface SearchApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"alt_text\" : \"alt_text\", \"link\" : \"https://www.pinterest.com/\", \"description\" : \"description\", \"media\" : \"{}\", \"title\" : \"title\" }, { \"alt_text\" : \"alt_text\", \"link\" : \"https://www.pinterest.com/\", \"description\" : \"description\", \"media\" : \"{}\", \"title\" : \"title\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"alt_text\" : \"alt_text\", \"link\" : \"https://www.pinterest.com/\", \"description\" : \"description\", \"id\" : \"id\", \"media\" : \"{}\", \"title\" : \"title\" }, { \"alt_text\" : \"alt_text\", \"link\" : \"https://www.pinterest.com/\", \"description\" : \"description\", \"id\" : \"id\", \"media\" : \"{}\", \"title\" : \"title\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -160,7 +160,7 @@ public interface SearchApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 }, { \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }, { \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -195,7 +195,7 @@ public interface SearchApi {
         tags = { "search" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = PinsList200Response.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SearchUserPinsList200Response.class))
             }),
             @ApiResponse(responseCode = "404", description = "User not found", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
@@ -219,7 +219,7 @@ public interface SearchApi {
         value = SearchApi.PATH_SEARCH_USER_PINS_LIST,
         produces = { "application/json" }
     )
-    default ResponseEntity<PinsList200Response> searchUserPinsList(
+    default ResponseEntity<SearchUserPinsList200Response> searchUserPinsList(
         @NotNull @Parameter(name = "query", description = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "query", required = true) String query,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId,
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark
@@ -227,7 +227,7 @@ public interface SearchApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }, { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }, { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

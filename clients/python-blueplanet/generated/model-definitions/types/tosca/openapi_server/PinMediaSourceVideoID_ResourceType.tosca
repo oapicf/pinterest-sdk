@@ -1,0 +1,68 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaSourceVideoID"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaSourceVideoID"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ContentType = openapi_server.resourceTypes.ContentType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  PinMediaSourceVideoID {
+    title = PinMediaSourceVideoID
+    description = PinMediaSourceVideoID
+    derivedFrom = Root
+    properties {
+        cover_image_content_type {
+          type = ContentType
+          description = "Content type for cover image Base64."
+          optional = false
+        }
+        cover_image_data {
+          type =  string
+          description = "Cover image Base64."
+          optional = false
+        }
+        cover_image_key_frame_time {
+          type =  integer
+          description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used."
+          optional = false
+        }
+        cover_image_url {
+          type =  string
+          description = "Cover image URL."
+          optional = false
+        }
+        is_standard {
+          type =  boolean
+          description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users."
+          optional = false
+        }
+        media_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        source_type {
+          type =  string
+          description = ""
+          enum = ["video_id"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaSourceVideoID {
+    title = PinMediaSourceVideoID
+    description = PinMediaSourceVideoID
+    implements = openapi_server.resourceTypes.PinMediaSourceVideoID
+
+  }
+}

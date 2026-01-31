@@ -21,8 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param createdAt 
  * @param id ID of the catalog entity.
  * @param updatedAt 
- * @param name A human-friendly name associated to a catalog entity.
  * @param catalogType 
+ * @param name A human-friendly name associated to a catalog entity.
  */
 data class Catalog(
 
@@ -36,12 +36,12 @@ data class Catalog(
     @Schema(example = "2022-03-14T15:16:34Z", required = true, description = "")
     @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime,
 
-    @Schema(example = "null", required = true, description = "A human-friendly name associated to a catalog entity.")
-    @get:JsonProperty("name", required = true) val name: kotlin.String?,
-
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
+
+    @Schema(example = "null", required = true, description = "A human-friendly name associated to a catalog entity.")
+    @get:JsonProperty("name", required = true) val name: kotlin.String?
 ) {
 
 }

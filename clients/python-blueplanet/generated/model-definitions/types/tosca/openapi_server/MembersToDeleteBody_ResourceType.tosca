@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MembersToDeleteBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MembersToDeleteBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MembersToDeleteBodyMembersInner = openapi_server.resourceTypes.MembersToDeleteBodyMembersInner
+}
+resourceTypes {
+
+  MembersToDeleteBody {
+    title = MembersToDeleteBody
+    description = MembersToDeleteBody
+    derivedFrom = Root
+    properties {
+        members {
+          type = array
+          items.type = MembersToDeleteBodyMembersInner
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MembersToDeleteBody {
+    title = MembersToDeleteBody
+    description = MembersToDeleteBody
+    implements = openapi_server.resourceTypes.MembersToDeleteBody
+
+  }
+}

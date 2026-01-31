@@ -81,8 +81,8 @@ private class OASCatalogsUpdateRetailItemTest {
     private static void defaultValuesPopulated() {
         OASCatalogsUpdateRetailItem catalogsUpdateRetailItem = new OASCatalogsUpdateRetailItem();
         System.assertEquals(new List<OASUpdateMaskFieldType>(), catalogsUpdateRetailItem.updateMask);
+        System.assertEquals(null, catalogsUpdateRetailItem.attributes);
         System.assertEquals(null, catalogsUpdateRetailItem.itemId);
         System.assertEquals(null, catalogsUpdateRetailItem.operation);
-        System.assertEquals(null, catalogsUpdateRetailItem.attributes);
     }
 }

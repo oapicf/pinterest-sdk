@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing the catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@ApiModel(description="Object describing the catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsBatch.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemsBatch.class, name = "HOTEL"),
@@ -36,10 +36,10 @@ public class CatalogsItemsBatch   {
   
   private CatalogsType catalogType;
   private String batchId;
-  private Date createdTime;
   private Date completedTime;
-  private BatchOperationStatus status;
+  private Date createdTime;
   private List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
+  private BatchOperationStatus status;
 
   /**
    **/
@@ -68,19 +68,6 @@ public class CatalogsItemsBatch   {
   }
 
   /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
-   **/
-  
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-  @JsonProperty("created_time")
-  public Date getCreatedTime() {
-    return createdTime;
-  }
-  public void setCreatedTime(Date createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
    * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
   
@@ -94,15 +81,17 @@ public class CatalogsItemsBatch   {
   }
 
   /**
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
+  @ApiModelProperty(required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
+  @JsonProperty("created_time")
+  @NotNull
+  public Date getCreatedTime() {
+    return createdTime;
   }
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
+  public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
   }
 
   /**
@@ -118,6 +107,18 @@ public class CatalogsItemsBatch   {
     this.items = items;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,15 +131,15 @@ public class CatalogsItemsBatch   {
     CatalogsItemsBatch catalogsItemsBatch = (CatalogsItemsBatch) o;
     return Objects.equals(this.catalogType, catalogsItemsBatch.catalogType) &&
         Objects.equals(this.batchId, catalogsItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsItemsBatch.createdTime) &&
         Objects.equals(this.completedTime, catalogsItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsItemsBatch.status) &&
-        Objects.equals(this.items, catalogsItemsBatch.items);
+        Objects.equals(this.createdTime, catalogsItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsItemsBatch.items) &&
+        Objects.equals(this.status, catalogsItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, batchId, createdTime, completedTime, status, items);
+    return Objects.hash(catalogType, batchId, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -148,10 +149,10 @@ public class CatalogsItemsBatch   {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

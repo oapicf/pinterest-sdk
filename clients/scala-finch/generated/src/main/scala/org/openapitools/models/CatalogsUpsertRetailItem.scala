@@ -9,13 +9,13 @@ import org.openapitools.models.ItemAttributesRequest
 
 /**
  * An item to be upserted
+ * @param attributes 
  * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
-case class CatalogsUpsertRetailItem(itemUnderscoreid: String,
-                operation: String,
-                attributes: ItemAttributesRequest
+case class CatalogsUpsertRetailItem(attributes: ItemAttributesRequest,
+                itemUnderscoreid: String,
+                operation: String
                 )
 
 object CatalogsUpsertRetailItem {

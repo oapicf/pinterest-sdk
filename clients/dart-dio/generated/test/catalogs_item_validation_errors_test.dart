@@ -57,13 +57,13 @@ void main() {
       // TODO
     });
 
-    // CatalogsItemValidationDetails ITEMID_MISSING
-    test('to test the property `ITEMID_MISSING`', () async {
+    // CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+    test('to test the property `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`', () async {
       // TODO
     });
 
-    // CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
-    test('to test the property `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`', () async {
+    // CatalogsItemValidationDetails ITEMID_MISSING
+    test('to test the property `ITEMID_MISSING`', () async {
       // TODO
     });
 

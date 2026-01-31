@@ -8,8 +8,8 @@
 
 (def integrations-get-list-200-response-data
   {
-   (ds/req :items) (s/coll-of integration-record-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of integration-record-spec)
    })
 
 (def integrations-get-list-200-response-spec

@@ -1,0 +1,16 @@
+
+
+# AdPinAnalytics
+
+The class is defined in **[AdPinAnalytics.java](../../src/main/java/org/openapitools/model/AdPinAnalytics.java)**
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**DATE** | `LocalDate` | Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;) |  [optional property]
+**PIN_ID** | `String` | The ID of the pin that the metric belongs to. | 
+
+
+
+

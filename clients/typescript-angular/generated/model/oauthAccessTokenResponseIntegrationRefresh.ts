@@ -12,11 +12,11 @@
 export interface OauthAccessTokenResponseIntegrationRefresh { 
     refresh_token: string;
     refresh_token_expires_in: number;
-    response_type?: OauthAccessTokenResponseIntegrationRefresh.ResponseTypeEnum;
     access_token: string;
-    token_type: string;
     expires_in: number;
+    response_type?: OauthAccessTokenResponseIntegrationRefresh.ResponseTypeEnum;
     scope: string;
+    token_type: string;
 }
 export namespace OauthAccessTokenResponseIntegrationRefresh {
     export const ResponseTypeEnum = {

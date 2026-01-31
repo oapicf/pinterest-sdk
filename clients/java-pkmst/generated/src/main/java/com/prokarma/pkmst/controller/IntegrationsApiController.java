@@ -1,6 +1,5 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.DetailedError;
 import com.prokarma.pkmst.model.Error;
 import com.prokarma.pkmst.model.IntegrationLogsRequest;
 import com.prokarma.pkmst.model.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import com.prokarma.pkmst.model.IntegrationRecord;
 import com.prokarma.pkmst.model.IntegrationRequest;
 import com.prokarma.pkmst.model.IntegrationRequestPatch;
 import com.prokarma.pkmst.model.IntegrationsGetList200Response;
+import com.prokarma.pkmst.model.IntegrationsLogsPost400Response;
 
 import io.swagger.annotations.*;
 
@@ -31,7 +31,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class IntegrationsApiController implements IntegrationsApi {
     private final ObjectMapper objectMapper;
@@ -78,7 +78,7 @@ public class IntegrationsApiController implements IntegrationsApi {
     }
 
     public ResponseEntity<IntegrationMetadata> integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true ) @PathVariable("external_business_id") String externalBusinessId,
-        @ApiParam(value = "Parameters to get create/update the Integration Metadata"  )   @RequestBody IntegrationRequestPatch integrationRequestPatch,
+        @ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true )   @RequestBody IntegrationRequestPatch integrationRequestPatch,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
@@ -104,7 +104,7 @@ public class IntegrationsApiController implements IntegrationsApi {
         return new ResponseEntity<IntegrationMetadata>(HttpStatus.OK);
     }
 
-    public ResponseEntity<IntegrationMetadata> integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata"  )   @RequestBody IntegrationRequest integrationRequest,
+    public ResponseEntity<IntegrationMetadata> integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true )   @RequestBody IntegrationRequest integrationRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

@@ -15,8 +15,11 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
  **/
 
 @ApiModel(description = "Request object to list products for a given creative assets catalog_id and product group filter.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -49,28 +52,8 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
   @JsonProperty("filters")
   private CatalogsCreativeAssetsProductGroupFilters filters;
-
-  /**
-   **/
-  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
 
   /**
    * Catalog id pertaining to the creative assets product group.
@@ -88,6 +71,23 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  /**
+   **/
+  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
@@ -117,14 +117,14 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = (CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(filters, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -132,8 +132,8 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

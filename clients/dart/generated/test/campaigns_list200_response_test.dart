@@ -16,13 +16,13 @@ void main() {
   // final instance = CampaignsList200Response();
 
   group('test CampaignsList200Response', () {
-    // List<CampaignResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<CampaignResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

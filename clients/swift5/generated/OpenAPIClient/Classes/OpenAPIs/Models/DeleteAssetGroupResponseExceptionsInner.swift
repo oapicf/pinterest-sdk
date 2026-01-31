@@ -12,32 +12,32 @@ import AnyCodable
 
 public struct DeleteAssetGroupResponseExceptionsInner: Codable, JSONEncodable, Hashable {
 
+    /** Asset group id of the exception. */
+    public var assetGroupId: String?
     /** Error code associated with the error deleting asset group. */
     public var code: Int?
     /** Error message associated with the error deleting asset group. */
     public var message: String?
-    /** Asset group id of the exception. */
-    public var assetGroupId: String?
 
-    public init(code: Int? = nil, message: String? = nil, assetGroupId: String? = nil) {
+    public init(assetGroupId: String? = nil, code: Int? = nil, message: String? = nil) {
+        self.assetGroupId = assetGroupId
         self.code = code
         self.message = message
-        self.assetGroupId = assetGroupId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case assetGroupId = "asset_group_id"
         case code
         case message
-        case assetGroupId = "asset_group_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(assetGroupId, forKey: .assetGroupId)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(message, forKey: .message)
-        try container.encodeIfPresent(assetGroupId, forKey: .assetGroupId)
     }
 }
 

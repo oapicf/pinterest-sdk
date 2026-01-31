@@ -6,14 +6,14 @@
 
 Name | Type
 ------------ | -------------
-`reportType` | string
 `catalogId` | string
 `code` | number
 `codeLabel` | string
-`message` | string
-`occurrences` | number
 `ineligibleForAds` | boolean
 `ineligibleForOrganic` | boolean
+`message` | string
+`occurrences` | number
+`reportType` | string
 
 ## Example
 
@@ -22,14 +22,14 @@ import type { CatalogsReportDistributionStats } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportType": null,
   "catalogId": null,
   "code": null,
   "codeLabel": SPAM,
-  "message": null,
-  "occurrences": 10,
   "ineligibleForAds": true,
   "ineligibleForOrganic": true,
+  "message": null,
+  "occurrences": 10,
+  "reportType": null,
 } satisfies CatalogsReportDistributionStats
 
 console.log(example)

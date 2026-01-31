@@ -20,10 +20,10 @@ module CatalogsVerticalBatchRequest =
   //#endregion
 
   type CatalogsVerticalBatchRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     Country : Country;
-    Language : LanguageEnum;
     Items : CatalogsCreativeAssetsBatchItem[];
-    CatalogId : string;
+    Language : LanguageEnum;
   }
   //#endregion

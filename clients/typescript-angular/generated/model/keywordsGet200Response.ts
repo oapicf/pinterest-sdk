@@ -11,7 +11,7 @@ import { Keyword } from './keyword';
 
 
 export interface KeywordsGet200Response { 
-    items: Array<Keyword>;
     bookmark?: string | null;
+    items: Array<Keyword>;
 }
 

@@ -5,12 +5,20 @@ context("Test BillingProfilesResponse")
 
 model_instance <- BillingProfilesResponse$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # Billing ID.
+test_that("advertiser_id", {
+  # tests for the property `advertiser_id` (character)
+  # Advertiser ID of the billing.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`advertiser_id`, "EXPECTED_RESULT")
+})
+
+test_that("billing_type", {
+  # tests for the property `billing_type` (character)
+  # Billing type of the advertiser
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`billing_type`, "EXPECTED_RESULT")
 })
 
 test_that("card_type", {
@@ -21,20 +29,12 @@ test_that("card_type", {
   #expect_equal(model.instance$`card_type`, "EXPECTED_RESULT")
 })
 
-test_that("status", {
-  # tests for the property `status` (character)
-  # Status of the billing.
+test_that("id", {
+  # tests for the property `id` (character)
+  # Billing ID.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
-test_that("advertiser_id", {
-  # tests for the property `advertiser_id` (character)
-  # Advertiser ID of the billing.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`advertiser_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("payment_method_brand", {
@@ -43,4 +43,12 @@ test_that("payment_method_brand", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`payment_method_brand`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (character)
+  # Status of the billing.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })

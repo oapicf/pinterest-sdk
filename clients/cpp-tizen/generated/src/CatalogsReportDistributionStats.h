@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getReportType();
-
-	/*! \brief Set 
-	 */
-	void setReportType(std::string  report_type);
 	/*! \brief Get ID of the catalog entity.
 	 */
 	std::string getCatalogId();
@@ -73,20 +66,6 @@ public:
 	/*! \brief Set A human-friendly label for the event code (e.g, 'SPAM')
 	 */
 	void setCodeLabel(std::string  code_label);
-	/*! \brief Get Title message describing the diagnostic issue
-	 */
-	std::string getMessage();
-
-	/*! \brief Set Title message describing the diagnostic issue
-	 */
-	void setMessage(std::string  message);
-	/*! \brief Get Number of occurrences of the issue
-	 */
-	int getOccurrences();
-
-	/*! \brief Set Number of occurrences of the issue
-	 */
-	void setOccurrences(int  occurrences);
 	/*! \brief Get Indicates if issue makes items ineligible for ads distribution
 	 */
 	bool getIneligibleForAds();
@@ -101,16 +80,37 @@ public:
 	/*! \brief Set Indicates if issue makes items ineligible for organic distribution
 	 */
 	void setIneligibleForOrganic(bool  ineligible_for_organic);
+	/*! \brief Get Title message describing the diagnostic issue
+	 */
+	std::string getMessage();
+
+	/*! \brief Set Title message describing the diagnostic issue
+	 */
+	void setMessage(std::string  message);
+	/*! \brief Get Number of occurrences of the issue
+	 */
+	int getOccurrences();
+
+	/*! \brief Set Number of occurrences of the issue
+	 */
+	void setOccurrences(int  occurrences);
+	/*! \brief Get 
+	 */
+	std::string getReportType();
+
+	/*! \brief Set 
+	 */
+	void setReportType(std::string  report_type);
 
 private:
-	std::string report_type;
 	std::string catalog_id;
 	int code;
 	std::string code_label;
-	std::string message;
-	int occurrences;
 	bool ineligible_for_ads;
 	bool ineligible_for_organic;
+	std::string message;
+	int occurrences;
+	std::string report_type;
 	void __init();
 	void __cleanup();
 

@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class LeadsExportResponseData (
-    _exportStatus: Option[LeadsExportStatus],
-    _downloadUrl: Option[String]
+    _downloadUrl: Option[String],
+    _exportStatus: Option[LeadsExportStatus]
 )
 object LeadsExportResponseData {
-    def toStringBody(var_exportStatus: Object, var_downloadUrl: Object) =
+    def toStringBody(var_downloadUrl: Object, var_exportStatus: Object) =
         s"""
         | {
-        | "exportStatus":$var_exportStatus,"downloadUrl":$var_downloadUrl
+        | "downloadUrl":$var_downloadUrl,"exportStatus":$var_exportStatus
         | }
         """.stripMargin
 }

@@ -10,8 +10,8 @@
 (def catalogs-items-request-data
   {
    (ds/req :country) country-spec
-   (ds/req :language) string?
    (ds/req :filters) catalogs-items-post-filters-spec
+   (ds/req :language) string?
    })
 
 (def catalogs-items-request-spec

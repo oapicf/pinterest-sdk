@@ -12,10 +12,10 @@ module OauthAccessTokenResponseClientCredentials =
   //#endregion
 
   type OauthAccessTokenResponseClientCredentials = {
-    ResponseType : ResponseTypeEnum;
     AccessToken : string;
-    TokenType : string;
     ExpiresIn : int;
+    ResponseType : ResponseTypeEnum;
     Scope : string;
+    TokenType : string;
   }
   //#endregion

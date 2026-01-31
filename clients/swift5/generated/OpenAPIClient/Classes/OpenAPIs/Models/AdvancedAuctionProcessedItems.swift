@@ -17,9 +17,9 @@ public struct AdvancedAuctionProcessedItems: Codable, JSONEncodable, Hashable {
     /** Catalog id pertaining to all items */
     public var catalogId: String?
     /** Array of advanced auction processed items */
-    public var items: [AdvancedAuctionProcessedItem]?
+    public var items: [AdvancedAuctionItemsSubmitRecord]?
 
-    public init(catalogId: String? = nil, items: [AdvancedAuctionProcessedItem]? = nil) {
+    public init(catalogId: String? = nil, items: [AdvancedAuctionItemsSubmitRecord]? = nil) {
         self.catalogId = catalogId
         self.items = items
     }

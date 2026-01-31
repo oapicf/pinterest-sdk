@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LabelUpdateRequestLabelsInner",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Label ID."
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.LabelStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "value",
+      "type": ["null", "string"],
+      "doc": "Label name. 100-character limit.",
+      "default": null
+    }
+  ]
+
+}

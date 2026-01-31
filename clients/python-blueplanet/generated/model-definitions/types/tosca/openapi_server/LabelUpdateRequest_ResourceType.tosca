@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LabelUpdateRequestLabelsInner = openapi_server.resourceTypes.LabelUpdateRequestLabelsInner
+}
+resourceTypes {
+
+  LabelUpdateRequest {
+    title = LabelUpdateRequest
+    description = LabelUpdateRequest
+    derivedFrom = Root
+    properties {
+        labels {
+          type = array
+          items.type = LabelUpdateRequestLabelsInner
+          description = "Labels that you are applying to the campaign."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelUpdateRequest {
+    title = LabelUpdateRequest
+    description = LabelUpdateRequest
+    implements = openapi_server.resourceTypes.LabelUpdateRequest
+
+  }
+}

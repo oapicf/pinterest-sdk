@@ -3,7 +3,10 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.TargetingSpecSHOPPINGRETARGETING
+open OpenAPI.Model.TargetingSpecAgeBucket
+open OpenAPI.Model.TargetingSpecAppType
+open OpenAPI.Model.TargetingSpecGender
+open OpenAPI.Model.TargetingSpecShoppingRetargeting
 
 module TargetingSpec =
 
@@ -12,15 +15,15 @@ module TargetingSpec =
   [<CLIMutable>]
   type TargetingSpec = {
     [<JsonProperty(PropertyName = "AGE_BUCKET")>]
-    AGE_BUCKET : string[];
+    AGE_BUCKET : TargetingSpecAgeBucket[];
     [<JsonProperty(PropertyName = "APPTYPE")>]
-    APPTYPE : string[];
+    APPTYPE : TargetingSpecAppType[];
     [<JsonProperty(PropertyName = "AUDIENCE_EXCLUDE")>]
     AUDIENCE_EXCLUDE : string[];
     [<JsonProperty(PropertyName = "AUDIENCE_INCLUDE")>]
     AUDIENCE_INCLUDE : string[];
     [<JsonProperty(PropertyName = "GENDER")>]
-    GENDER : string[];
+    GENDER : TargetingSpecGender[];
     [<JsonProperty(PropertyName = "GEO")>]
     GEO : string[];
     [<JsonProperty(PropertyName = "INTEREST")>]
@@ -29,8 +32,12 @@ module TargetingSpec =
     LOCALE : string[];
     [<JsonProperty(PropertyName = "LOCATION")>]
     LOCATION : string[];
+    [<JsonProperty(PropertyName = "MAXIMUM_AGE")>]
+    MAXIMUM_AGE : string;
+    [<JsonProperty(PropertyName = "MINIMUM_AGE")>]
+    MINIMUM_AGE : string;
     [<JsonProperty(PropertyName = "SHOPPING_RETARGETING")>]
-    SHOPPING_RETARGETING : TargetingSpecSHOPPINGRETARGETING[];
+    SHOPPING_RETARGETING : TargetingSpecShoppingRetargeting[];
     [<JsonProperty(PropertyName = "TARGETING_STRATEGY")>]
     TARGETING_STRATEGY : string[];
   }

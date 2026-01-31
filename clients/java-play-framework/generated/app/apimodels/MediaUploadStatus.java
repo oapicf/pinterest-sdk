@@ -6,7 +6,7 @@ import javax.validation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Media upload status
+ * Gets or Sets MediaUploadStatus
  */
 public enum MediaUploadStatus {
   

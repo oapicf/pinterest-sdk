@@ -16,13 +16,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param items Boards
+ * @param items 
  * @param bookmark 
  */
 data class BoardsList200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Boards")
+    @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<Board>,
 
     @Schema(example = "null", description = "")

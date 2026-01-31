@@ -9,19 +9,19 @@
 
 (def integration-log-data
   {
-   (ds/req :client_timestamp) int?
-   (ds/req :event_type) string?
-   (ds/req :log_level) string?
-   (ds/opt :external_business_id) string?
    (ds/opt :advertiser_id) string?
-   (ds/opt :merchant_id) string?
-   (ds/opt :tag_id) string?
-   (ds/opt :feed_profile_id) string?
-   (ds/opt :message) string?
    (ds/opt :app_version_number) string?
-   (ds/opt :platform_version_number) string?
+   (ds/req :client_timestamp) int?
    (ds/opt :error) integration-log-client-error-spec
+   (ds/req :event_type) string?
+   (ds/opt :external_business_id) string?
+   (ds/opt :feed_profile_id) string?
+   (ds/req :log_level) string?
+   (ds/opt :merchant_id) string?
+   (ds/opt :message) string?
+   (ds/opt :platform_version_number) string?
    (ds/opt :request) integration-log-client-request-spec
+   (ds/opt :tag_id) string?
    })
 
 (def integration-log-spec

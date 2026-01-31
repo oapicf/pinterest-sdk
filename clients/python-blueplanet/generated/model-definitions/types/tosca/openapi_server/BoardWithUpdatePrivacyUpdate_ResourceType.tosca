@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardWithUpdatePrivacyUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardWithUpdatePrivacyUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BoardUpdatePrivacy = openapi_server.resourceTypes.BoardUpdatePrivacy
+}
+resourceTypes {
+
+  BoardWithUpdatePrivacyUpdate {
+    title = BoardWithUpdatePrivacyUpdate
+    description = BoardWithUpdatePrivacyUpdate
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;."
+          optional = false
+        }
+        privacy {
+          type = BoardUpdatePrivacy
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardWithUpdatePrivacyUpdate {
+    title = BoardWithUpdatePrivacyUpdate
+    description = BoardWithUpdatePrivacyUpdate
+    implements = openapi_server.resourceTypes.BoardWithUpdatePrivacyUpdate
+
+  }
+}

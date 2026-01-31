@@ -15,21 +15,19 @@ public struct AudienceDefinition: Codable, JSONEncodable, Hashable {
 
     /** Generation date */
     public var date: String?
-    /** Generated audience type to request. */
-    public var type: String?
-    /** Generated audience scope to request. */
     public var scope: String?
+    public var type: String?
 
-    public init(date: String? = nil, type: String? = nil, scope: String? = nil) {
+    public init(date: String? = nil, scope: String? = nil, type: String? = nil) {
         self.date = date
-        self.type = type
         self.scope = scope
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case date
-        case type
         case scope
+        case type
     }
 
     // Encodable protocol methods
@@ -37,8 +35,8 @@ public struct AudienceDefinition: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(date, forKey: .date)
-        try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(scope, forKey: .scope)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

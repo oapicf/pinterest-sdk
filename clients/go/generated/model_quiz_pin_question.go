@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &QuizPinQuestion{}
 
 // QuizPinQuestion A specific quiz inquiry.
 type QuizPinQuestion struct {
+	Options []QuizPinOption `json:"options,omitempty"`
 	QuestionId *float32 `json:"question_id,omitempty"`
 	QuestionText *string `json:"question_text,omitempty"`
-	Options []QuizPinOption `json:"options,omitempty"`
 }
 
 // NewQuizPinQuestion instantiates a new QuizPinQuestion object
@@ -40,6 +40,38 @@ func NewQuizPinQuestion() *QuizPinQuestion {
 func NewQuizPinQuestionWithDefaults() *QuizPinQuestion {
 	this := QuizPinQuestion{}
 	return &this
+}
+
+// GetOptions returns the Options field value if set, zero value otherwise.
+func (o *QuizPinQuestion) GetOptions() []QuizPinOption {
+	if o == nil || IsNil(o.Options) {
+		var ret []QuizPinOption
+		return ret
+	}
+	return o.Options
+}
+
+// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QuizPinQuestion) GetOptionsOk() ([]QuizPinOption, bool) {
+	if o == nil || IsNil(o.Options) {
+		return nil, false
+	}
+	return o.Options, true
+}
+
+// HasOptions returns a boolean if a field has been set.
+func (o *QuizPinQuestion) HasOptions() bool {
+	if o != nil && !IsNil(o.Options) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptions gets a reference to the given []QuizPinOption and assigns it to the Options field.
+func (o *QuizPinQuestion) SetOptions(v []QuizPinOption) {
+	o.Options = v
 }
 
 // GetQuestionId returns the QuestionId field value if set, zero value otherwise.
@@ -106,38 +138,6 @@ func (o *QuizPinQuestion) SetQuestionText(v string) {
 	o.QuestionText = &v
 }
 
-// GetOptions returns the Options field value if set, zero value otherwise.
-func (o *QuizPinQuestion) GetOptions() []QuizPinOption {
-	if o == nil || IsNil(o.Options) {
-		var ret []QuizPinOption
-		return ret
-	}
-	return o.Options
-}
-
-// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *QuizPinQuestion) GetOptionsOk() ([]QuizPinOption, bool) {
-	if o == nil || IsNil(o.Options) {
-		return nil, false
-	}
-	return o.Options, true
-}
-
-// HasOptions returns a boolean if a field has been set.
-func (o *QuizPinQuestion) HasOptions() bool {
-	if o != nil && !IsNil(o.Options) {
-		return true
-	}
-
-	return false
-}
-
-// SetOptions gets a reference to the given []QuizPinOption and assigns it to the Options field.
-func (o *QuizPinQuestion) SetOptions(v []QuizPinOption) {
-	o.Options = v
-}
-
 func (o QuizPinQuestion) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -148,14 +148,14 @@ func (o QuizPinQuestion) MarshalJSON() ([]byte, error) {
 
 func (o QuizPinQuestion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Options) {
+		toSerialize["options"] = o.Options
+	}
 	if !IsNil(o.QuestionId) {
 		toSerialize["question_id"] = o.QuestionId
 	}
 	if !IsNil(o.QuestionText) {
 		toSerialize["question_text"] = o.QuestionText
-	}
-	if !IsNil(o.Options) {
-		toSerialize["options"] = o.Options
 	}
 	return toSerialize, nil
 }

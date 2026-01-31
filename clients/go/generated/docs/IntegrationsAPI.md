@@ -174,7 +174,7 @@ import (
 
 func main() {
 	externalBusinessId := "externalBusinessId_example" // string | External business ID for the integration.
-	integrationRequestPatch := *openapiclient.NewIntegrationRequestPatch() // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata (optional)
+	integrationRequestPatch := *openapiclient.NewIntegrationRequestPatch() // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -245,7 +245,7 @@ import (
 )
 
 func main() {
-	integrationRequest := *openapiclient.NewIntegrationRequest() // IntegrationRequest | Parameters to get create/update the Integration Metadata (optional)
+	integrationRequest := *openapiclient.NewIntegrationRequest() // IntegrationRequest | Parameters to get create/update the Integration Metadata
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

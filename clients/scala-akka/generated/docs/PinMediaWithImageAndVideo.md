@@ -8,8 +8,13 @@ Pin with a mix of images and videos.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mediaType** | **String** |  |  [optional]
 **items** | [**Seq&lt;PinMediaMetadata&gt;**](PinMediaMetadata.md) |  |  [optional]
+**mediaType** | [**MediaType**](#MediaType) |  | 
+
+
+## Enum: MediaType
+Allowed values: [multiple_mixed]
+
 
 
 

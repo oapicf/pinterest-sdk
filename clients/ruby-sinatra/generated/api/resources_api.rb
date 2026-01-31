@@ -68,7 +68,7 @@ MyApp.add_route('GET', '/v5/resources/lead_form_questions', {
   "nickname" => "lead_form_questions/get",
   "responseClass" => "void",
   "endpoint" => "/resources/lead_form_questions",
-  "notes" => "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+  "notes" => "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>",
   "parameters" => [
     ]}) do
   cross_origin

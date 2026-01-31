@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaSourceImagesBase64"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaSourceImagesBase64"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinMediaSourceImagesBase64Item = openapi_server.resourceTypes.PinMediaSourceImagesBase64Item
+}
+resourceTypes {
+
+  PinMediaSourceImagesBase64 {
+    title = PinMediaSourceImagesBase64
+    description = PinMediaSourceImagesBase64
+    derivedFrom = Root
+    properties {
+        index {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = PinMediaSourceImagesBase64Item
+          description = "Array with image objects."
+          optional = true
+        }
+        source_type {
+          type =  string
+          description = "The source type of the media."
+          enum = ["multiple_image_base64"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaSourceImagesBase64 {
+    title = PinMediaSourceImagesBase64
+    description = PinMediaSourceImagesBase64
+    implements = openapi_server.resourceTypes.PinMediaSourceImagesBase64
+
+  }
+}

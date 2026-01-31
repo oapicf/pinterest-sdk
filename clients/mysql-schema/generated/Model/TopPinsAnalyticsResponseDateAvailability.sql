@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TopPinsAnalyticsResponse_date_availability`
 --
-SELECT `latest_available_timestamp`, `is_realtime` FROM `TopPinsAnalyticsResponse_date_availability` WHERE 1;
+SELECT `is_realtime`, `latest_available_timestamp` FROM `TopPinsAnalyticsResponse_date_availability` WHERE 1;
 
 --
 -- INSERT template for table `TopPinsAnalyticsResponse_date_availability`
 --
-INSERT INTO `TopPinsAnalyticsResponse_date_availability`(`latest_available_timestamp`, `is_realtime`) VALUES (?, ?);
+INSERT INTO `TopPinsAnalyticsResponse_date_availability`(`is_realtime`, `latest_available_timestamp`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `TopPinsAnalyticsResponse_date_availability`
 --
-UPDATE `TopPinsAnalyticsResponse_date_availability` SET `latest_available_timestamp` = ?, `is_realtime` = ? WHERE 1;
+UPDATE `TopPinsAnalyticsResponse_date_availability` SET `is_realtime` = ?, `latest_available_timestamp` = ? WHERE 1;
 
 --
 -- DELETE template for table `TopPinsAnalyticsResponse_date_availability`

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &TermsOfService{}
 
 // TermsOfService struct for TermsOfService
 type TermsOfService struct {
-	// The ID of the terms of service
-	Id *string `json:"id,omitempty"`
-	// The terms of service content
-	Html NullableString `json:"html,omitempty"`
-	// Whether the ad account has accepted terms of service.
-	HasAccepted *bool `json:"has_accepted,omitempty"`
 	// The ID of the ad account.
 	AdAccountId *string `json:"ad_account_id,omitempty"`
+	// Whether the ad account has accepted terms of service.
+	HasAccepted *bool `json:"has_accepted,omitempty"`
+	// The terms of service content
+	Html NullableString `json:"html,omitempty"`
+	// The ID of the terms of service
+	Id *string `json:"id,omitempty"`
 }
 
 // NewTermsOfService instantiates a new TermsOfService object
@@ -47,36 +47,68 @@ func NewTermsOfServiceWithDefaults() *TermsOfService {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *TermsOfService) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
+func (o *TermsOfService) GetAdAccountId() string {
+	if o == nil || IsNil(o.AdAccountId) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.AdAccountId
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TermsOfService) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *TermsOfService) GetAdAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AdAccountId) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.AdAccountId, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *TermsOfService) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasAdAccountId returns a boolean if a field has been set.
+func (o *TermsOfService) HasAdAccountId() bool {
+	if o != nil && !IsNil(o.AdAccountId) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *TermsOfService) SetId(v string) {
-	o.Id = &v
+// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
+func (o *TermsOfService) SetAdAccountId(v string) {
+	o.AdAccountId = &v
+}
+
+// GetHasAccepted returns the HasAccepted field value if set, zero value otherwise.
+func (o *TermsOfService) GetHasAccepted() bool {
+	if o == nil || IsNil(o.HasAccepted) {
+		var ret bool
+		return ret
+	}
+	return *o.HasAccepted
+}
+
+// GetHasAcceptedOk returns a tuple with the HasAccepted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TermsOfService) GetHasAcceptedOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasAccepted) {
+		return nil, false
+	}
+	return o.HasAccepted, true
+}
+
+// HasHasAccepted returns a boolean if a field has been set.
+func (o *TermsOfService) HasHasAccepted() bool {
+	if o != nil && !IsNil(o.HasAccepted) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasAccepted gets a reference to the given bool and assigns it to the HasAccepted field.
+func (o *TermsOfService) SetHasAccepted(v bool) {
+	o.HasAccepted = &v
 }
 
 // GetHtml returns the Html field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -121,68 +153,36 @@ func (o *TermsOfService) UnsetHtml() {
 	o.Html.Unset()
 }
 
-// GetHasAccepted returns the HasAccepted field value if set, zero value otherwise.
-func (o *TermsOfService) GetHasAccepted() bool {
-	if o == nil || IsNil(o.HasAccepted) {
-		var ret bool
-		return ret
-	}
-	return *o.HasAccepted
-}
-
-// GetHasAcceptedOk returns a tuple with the HasAccepted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TermsOfService) GetHasAcceptedOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasAccepted) {
-		return nil, false
-	}
-	return o.HasAccepted, true
-}
-
-// HasHasAccepted returns a boolean if a field has been set.
-func (o *TermsOfService) HasHasAccepted() bool {
-	if o != nil && !IsNil(o.HasAccepted) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasAccepted gets a reference to the given bool and assigns it to the HasAccepted field.
-func (o *TermsOfService) SetHasAccepted(v bool) {
-	o.HasAccepted = &v
-}
-
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
-func (o *TermsOfService) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *TermsOfService) GetId() string {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.AdAccountId
+	return *o.Id
 }
 
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TermsOfService) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
+func (o *TermsOfService) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.AdAccountId, true
+	return o.Id, true
 }
 
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *TermsOfService) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
+// HasId returns a boolean if a field has been set.
+func (o *TermsOfService) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
-func (o *TermsOfService) SetAdAccountId(v string) {
-	o.AdAccountId = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *TermsOfService) SetId(v string) {
+	o.Id = &v
 }
 
 func (o TermsOfService) MarshalJSON() ([]byte, error) {
@@ -195,17 +195,17 @@ func (o TermsOfService) MarshalJSON() ([]byte, error) {
 
 func (o TermsOfService) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Html.IsSet() {
-		toSerialize["html"] = o.Html.Get()
+	if !IsNil(o.AdAccountId) {
+		toSerialize["ad_account_id"] = o.AdAccountId
 	}
 	if !IsNil(o.HasAccepted) {
 		toSerialize["has_accepted"] = o.HasAccepted
 	}
-	if !IsNil(o.AdAccountId) {
-		toSerialize["ad_account_id"] = o.AdAccountId
+	if o.Html.IsSet() {
+		toSerialize["html"] = o.Html.Get()
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	return toSerialize, nil
 }

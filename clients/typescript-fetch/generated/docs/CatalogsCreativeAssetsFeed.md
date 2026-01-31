@@ -10,17 +10,17 @@ Name | Type
 `createdAt` | Date
 `id` | string
 `updatedAt` | Date
-`name` | string
-`format` | [CatalogsFormat](CatalogsFormat.md)
+`catalogId` | string
 `catalogType` | [CatalogsType](CatalogsType.md)
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
-`location` | string
-`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
-`status` | [CatalogsStatus](CatalogsStatus.md)
+`defaultCountry` | [Country](Country.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
 `defaultLocale` | string
-`defaultCountry` | [Country](Country.md)
-`catalogId` | string
+`format` | [CatalogsFormat](CatalogsFormat.md)
+`location` | string
+`name` | string
+`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
+`status` | [CatalogsStatus](CatalogsStatus.md)
 
 ## Example
 
@@ -32,17 +32,17 @@ const example = {
   "createdAt": 2022-03-14T15:15:22Z,
   "id": null,
   "updatedAt": 2022-03-14T15:16:34Z,
-  "name": null,
-  "format": null,
+  "catalogId": null,
   "catalogType": null,
   "credentials": null,
-  "location": null,
-  "preferredProcessingSchedule": null,
-  "status": null,
+  "defaultCountry": null,
   "defaultCurrency": null,
   "defaultLocale": en-US,
-  "defaultCountry": null,
-  "catalogId": null,
+  "format": null,
+  "location": null,
+  "name": null,
+  "preferredProcessingSchedule": null,
+  "status": null,
 } satisfies CatalogsCreativeAssetsFeed
 
 console.log(example)

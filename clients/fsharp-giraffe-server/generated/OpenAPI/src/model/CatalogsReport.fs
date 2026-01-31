@@ -15,7 +15,7 @@ module CatalogsReport =
 
   type CatalogsReport = {
     ReportStatus : ReportStatusEnum;
-    Url : string option;
     Size : decimal option;
+    Url : string option;
   }
   //#endregion

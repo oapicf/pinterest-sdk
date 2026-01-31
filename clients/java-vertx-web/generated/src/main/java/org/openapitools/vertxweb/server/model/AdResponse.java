@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.CreativeType;
+import org.openapitools.vertxweb.server.model.CustomizableCTAType;
+import org.openapitools.vertxweb.server.model.DisclosureType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.GridClickType;
 import org.openapitools.vertxweb.server.model.PinPromotionSummaryStatus;
@@ -25,53 +27,20 @@ public class AdResponse   {
   private List<String> carouselIosDeepLinks;
   private String clickTrackingUrl;
   private CreativeType creativeType;
+  private CustomizableCTAType customizableCtaType;
   private String destinationUrl;
+  private DisclosureType disclosureType;
+  private String disclosureUrl;
+  private GridClickType gridClickType;
   private String iosDeepLink;
   private Boolean isPinDeleted;
   private Boolean isRemovable;
+  private String leadFormId;
   private String name;
+  private QuizPinData quizPinData;
   private EntityStatus status;
   private TrackingUrls trackingUrls;
   private String viewTrackingUrl;
-  private String leadFormId;
-  private GridClickType gridClickType;
-
-
-  public enum CustomizableCtaTypeEnum {
-    GET_OFFER("GET_OFFER"),
-    LEARN_MORE("LEARN_MORE"),
-    ORDER_NOW("ORDER_NOW"),
-    SHOP_NOW("SHOP_NOW"),
-    SIGN_UP("SIGN_UP"),
-    SUBSCRIBE("SUBSCRIBE"),
-    BUY_NOW("BUY_NOW"),
-    CONTACT_US("CONTACT_US"),
-    GET_QUOTE("GET_QUOTE"),
-    VISIT_SITE("VISIT_SITE"),
-    APPLY_NOW("APPLY_NOW"),
-    BOOK_NOW("BOOK_NOW"),
-    REQUEST_DEMO("REQUEST_DEMO"),
-    REGISTER_NOW("REGISTER_NOW"),
-    FIND_A_DEALER("FIND_A_DEALER"),
-    ADD_TO_CART("ADD_TO_CART"),
-    WATCH_NOW("WATCH_NOW"),
-    READ_MORE("READ_MORE");
-
-    private String value;
-
-    CustomizableCtaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private CustomizableCtaTypeEnum customizableCtaType;
-  private QuizPinData quizPinData;
   private String pinId;
   private String adAccountId;
   private String campaignId;
@@ -167,15 +136,15 @@ public class AdResponse   {
   }
 
   private ReviewStatusEnum reviewStatus;
+  private PinPromotionSummaryStatus summaryStatus;
   private String type;
   private Integer updatedTime;
-  private PinPromotionSummaryStatus summaryStatus;
 
   public AdResponse () {
 
   }
 
-  public AdResponse (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, String destinationUrl, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String name, EntityStatus status, TrackingUrls trackingUrls, String viewTrackingUrl, String leadFormId, GridClickType gridClickType, CustomizableCtaTypeEnum customizableCtaType, QuizPinData quizPinData, String pinId, String adAccountId, String campaignId, String collectionItemsDestinationUrlTemplate, Integer createdTime, String id, List<RejectedReasonsEnum> rejectedReasons, List<String> rejectionLabels, ReviewStatusEnum reviewStatus, String type, Integer updatedTime, PinPromotionSummaryStatus summaryStatus) {
+  public AdResponse (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, CustomizableCTAType customizableCtaType, String destinationUrl, DisclosureType disclosureType, String disclosureUrl, GridClickType gridClickType, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String leadFormId, String name, QuizPinData quizPinData, EntityStatus status, TrackingUrls trackingUrls, String viewTrackingUrl, String pinId, String adAccountId, String campaignId, String collectionItemsDestinationUrlTemplate, Integer createdTime, String id, List<RejectedReasonsEnum> rejectedReasons, List<String> rejectionLabels, ReviewStatusEnum reviewStatus, PinPromotionSummaryStatus summaryStatus, String type, Integer updatedTime) {
     this.adGroupId = adGroupId;
     this.androidDeepLink = androidDeepLink;
     this.carouselAndroidDeepLinks = carouselAndroidDeepLinks;
@@ -183,18 +152,20 @@ public class AdResponse   {
     this.carouselIosDeepLinks = carouselIosDeepLinks;
     this.clickTrackingUrl = clickTrackingUrl;
     this.creativeType = creativeType;
+    this.customizableCtaType = customizableCtaType;
     this.destinationUrl = destinationUrl;
+    this.disclosureType = disclosureType;
+    this.disclosureUrl = disclosureUrl;
+    this.gridClickType = gridClickType;
     this.iosDeepLink = iosDeepLink;
     this.isPinDeleted = isPinDeleted;
     this.isRemovable = isRemovable;
+    this.leadFormId = leadFormId;
     this.name = name;
+    this.quizPinData = quizPinData;
     this.status = status;
     this.trackingUrls = trackingUrls;
     this.viewTrackingUrl = viewTrackingUrl;
-    this.leadFormId = leadFormId;
-    this.gridClickType = gridClickType;
-    this.customizableCtaType = customizableCtaType;
-    this.quizPinData = quizPinData;
     this.pinId = pinId;
     this.adAccountId = adAccountId;
     this.campaignId = campaignId;
@@ -204,9 +175,9 @@ public class AdResponse   {
     this.rejectedReasons = rejectedReasons;
     this.rejectionLabels = rejectionLabels;
     this.reviewStatus = reviewStatus;
+    this.summaryStatus = summaryStatus;
     this.type = type;
     this.updatedTime = updatedTime;
-    this.summaryStatus = summaryStatus;
   }
 
     
@@ -273,12 +244,48 @@ public class AdResponse   {
   }
 
     
+  @JsonProperty("customizable_cta_type")
+  public CustomizableCTAType getCustomizableCtaType() {
+    return customizableCtaType;
+  }
+  public void setCustomizableCtaType(CustomizableCTAType customizableCtaType) {
+    this.customizableCtaType = customizableCtaType;
+  }
+
+    
   @JsonProperty("destination_url")
   public String getDestinationUrl() {
     return destinationUrl;
   }
   public void setDestinationUrl(String destinationUrl) {
     this.destinationUrl = destinationUrl;
+  }
+
+    
+  @JsonProperty("disclosure_type")
+  public DisclosureType getDisclosureType() {
+    return disclosureType;
+  }
+  public void setDisclosureType(DisclosureType disclosureType) {
+    this.disclosureType = disclosureType;
+  }
+
+    
+  @JsonProperty("disclosure_url")
+  public String getDisclosureUrl() {
+    return disclosureUrl;
+  }
+  public void setDisclosureUrl(String disclosureUrl) {
+    this.disclosureUrl = disclosureUrl;
+  }
+
+    
+  @JsonProperty("grid_click_type")
+  public GridClickType getGridClickType() {
+    return gridClickType;
+  }
+  public void setGridClickType(GridClickType gridClickType) {
+    this.gridClickType = gridClickType;
   }
 
     
@@ -309,12 +316,30 @@ public class AdResponse   {
   }
 
     
+  @JsonProperty("lead_form_id")
+  public String getLeadFormId() {
+    return leadFormId;
+  }
+  public void setLeadFormId(String leadFormId) {
+    this.leadFormId = leadFormId;
+  }
+
+    
   @JsonProperty("name")
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
+  }
+
+    
+  @JsonProperty("quiz_pin_data")
+  public QuizPinData getQuizPinData() {
+    return quizPinData;
+  }
+  public void setQuizPinData(QuizPinData quizPinData) {
+    this.quizPinData = quizPinData;
   }
 
     
@@ -342,42 +367,6 @@ public class AdResponse   {
   }
   public void setViewTrackingUrl(String viewTrackingUrl) {
     this.viewTrackingUrl = viewTrackingUrl;
-  }
-
-    
-  @JsonProperty("lead_form_id")
-  public String getLeadFormId() {
-    return leadFormId;
-  }
-  public void setLeadFormId(String leadFormId) {
-    this.leadFormId = leadFormId;
-  }
-
-    
-  @JsonProperty("grid_click_type")
-  public GridClickType getGridClickType() {
-    return gridClickType;
-  }
-  public void setGridClickType(GridClickType gridClickType) {
-    this.gridClickType = gridClickType;
-  }
-
-    
-  @JsonProperty("customizable_cta_type")
-  public CustomizableCtaTypeEnum getCustomizableCtaType() {
-    return customizableCtaType;
-  }
-  public void setCustomizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
-    this.customizableCtaType = customizableCtaType;
-  }
-
-    
-  @JsonProperty("quiz_pin_data")
-  public QuizPinData getQuizPinData() {
-    return quizPinData;
-  }
-  public void setQuizPinData(QuizPinData quizPinData) {
-    this.quizPinData = quizPinData;
   }
 
     
@@ -462,6 +451,15 @@ public class AdResponse   {
   }
 
     
+  @JsonProperty("summary_status")
+  public PinPromotionSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+  public void setSummaryStatus(PinPromotionSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+  }
+
+    
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -477,15 +475,6 @@ public class AdResponse   {
   }
   public void setUpdatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
-  }
-
-    
-  @JsonProperty("summary_status")
-  public PinPromotionSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-  public void setSummaryStatus(PinPromotionSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
 
@@ -505,18 +494,20 @@ public class AdResponse   {
         Objects.equals(carouselIosDeepLinks, adResponse.carouselIosDeepLinks) &&
         Objects.equals(clickTrackingUrl, adResponse.clickTrackingUrl) &&
         Objects.equals(creativeType, adResponse.creativeType) &&
+        Objects.equals(customizableCtaType, adResponse.customizableCtaType) &&
         Objects.equals(destinationUrl, adResponse.destinationUrl) &&
+        Objects.equals(disclosureType, adResponse.disclosureType) &&
+        Objects.equals(disclosureUrl, adResponse.disclosureUrl) &&
+        Objects.equals(gridClickType, adResponse.gridClickType) &&
         Objects.equals(iosDeepLink, adResponse.iosDeepLink) &&
         Objects.equals(isPinDeleted, adResponse.isPinDeleted) &&
         Objects.equals(isRemovable, adResponse.isRemovable) &&
+        Objects.equals(leadFormId, adResponse.leadFormId) &&
         Objects.equals(name, adResponse.name) &&
+        Objects.equals(quizPinData, adResponse.quizPinData) &&
         Objects.equals(status, adResponse.status) &&
         Objects.equals(trackingUrls, adResponse.trackingUrls) &&
         Objects.equals(viewTrackingUrl, adResponse.viewTrackingUrl) &&
-        Objects.equals(leadFormId, adResponse.leadFormId) &&
-        Objects.equals(gridClickType, adResponse.gridClickType) &&
-        Objects.equals(customizableCtaType, adResponse.customizableCtaType) &&
-        Objects.equals(quizPinData, adResponse.quizPinData) &&
         Objects.equals(pinId, adResponse.pinId) &&
         Objects.equals(adAccountId, adResponse.adAccountId) &&
         Objects.equals(campaignId, adResponse.campaignId) &&
@@ -526,14 +517,14 @@ public class AdResponse   {
         Objects.equals(rejectedReasons, adResponse.rejectedReasons) &&
         Objects.equals(rejectionLabels, adResponse.rejectionLabels) &&
         Objects.equals(reviewStatus, adResponse.reviewStatus) &&
+        Objects.equals(summaryStatus, adResponse.summaryStatus) &&
         Objects.equals(type, adResponse.type) &&
-        Objects.equals(updatedTime, adResponse.updatedTime) &&
-        Objects.equals(summaryStatus, adResponse.summaryStatus);
+        Objects.equals(updatedTime, adResponse.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, destinationUrl, iosDeepLink, isPinDeleted, isRemovable, name, status, trackingUrls, viewTrackingUrl, leadFormId, gridClickType, customizableCtaType, quizPinData, pinId, adAccountId, campaignId, collectionItemsDestinationUrlTemplate, createdTime, id, rejectedReasons, rejectionLabels, reviewStatus, type, updatedTime, summaryStatus);
+    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl, pinId, adAccountId, campaignId, collectionItemsDestinationUrlTemplate, createdTime, id, rejectedReasons, rejectionLabels, reviewStatus, summaryStatus, type, updatedTime);
   }
 
   @Override
@@ -548,18 +539,20 @@ public class AdResponse   {
     sb.append("    carouselIosDeepLinks: ").append(toIndentedString(carouselIosDeepLinks)).append("\n");
     sb.append("    clickTrackingUrl: ").append(toIndentedString(clickTrackingUrl)).append("\n");
     sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
+    sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
     sb.append("    destinationUrl: ").append(toIndentedString(destinationUrl)).append("\n");
+    sb.append("    disclosureType: ").append(toIndentedString(disclosureType)).append("\n");
+    sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
+    sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
+    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
-    sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
-    sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
-    sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
@@ -569,9 +562,9 @@ public class AdResponse   {
     sb.append("    rejectedReasons: ").append(toIndentedString(rejectedReasons)).append("\n");
     sb.append("    rejectionLabels: ").append(toIndentedString(rejectionLabels)).append("\n");
     sb.append("    reviewStatus: ").append(toIndentedString(reviewStatus)).append("\n");
+    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

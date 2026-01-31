@@ -7,17 +7,17 @@ goog.provide('API.Client.CatalogsHotelListProductsByCatalogBasedFilterRequest');
 API.Client.CatalogsHotelListProductsByCatalogBasedFilterRequest = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelListProductsByCatalogBasedFilterRequest.prototype.catalogType;
-
-/**
  * Catalog id pertaining to the hotel product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelListProductsByCatalogBasedFilterRequest.prototype.catalogId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelListProductsByCatalogBasedFilterRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsHotelProductGroupFilters}

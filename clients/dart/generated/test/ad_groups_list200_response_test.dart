@@ -16,13 +16,13 @@ void main() {
   // final instance = AdGroupsList200Response();
 
   group('test AdGroupsList200Response', () {
-    // List<AdGroupResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<AdGroupResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

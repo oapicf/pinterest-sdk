@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ConversionTagsCreate**](ConversionTagsAPI.md#ConversionTagsCreate) | **Post** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**ConversionTagsGet**](ConversionTagsAPI.md#ConversionTagsGet) | **Get** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**ConversionTagsList**](ConversionTagsAPI.md#ConversionTagsList) | **Get** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**ConversionTagsList**](ConversionTagsAPI.md#ConversionTagsList) | **Get** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**OcpmEligibleConversionTagsGet**](ConversionTagsAPI.md#OcpmEligibleConversionTagsGet) | **Get** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**PageVisitConversionTagsGet**](ConversionTagsAPI.md#PageVisitConversionTagsGet) | **Get** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ConversionTagsCreate
 
-> ConversionTagResponse ConversionTagsCreate(ctx, adAccountId).ConversionTagCreate(conversionTagCreate).Execute()
+> ConversionTag ConversionTagsCreate(ctx, adAccountId).ConversionTagCreate(conversionTagCreate).Execute()
 
 Create conversion tag
 
@@ -34,7 +34,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	conversionTagCreate := *openapiclient.NewConversionTagCreate("ACME Tools Tag") // ConversionTagCreate | Conversion Tag to create
+	conversionTagCreate := *openapiclient.NewConversionTagCreate("ACME Checkout Test Tag") // ConversionTagCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConversionTagsAPI.ConversionTagsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ConversionTagsCreate`: ConversionTagResponse
+	// response from `ConversionTagsCreate`: ConversionTag
 	fmt.Fprintf(os.Stdout, "Response from `ConversionTagsAPI.ConversionTagsCreate`: %v\n", resp)
 }
 ```
@@ -64,11 +64,11 @@ Other parameters are passed through a pointer to a apiConversionTagsCreateReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md) | Conversion Tag to create | 
+ **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md) |  | 
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## ConversionTagsGet
 
-> ConversionTagResponse ConversionTagsGet(ctx, adAccountId, conversionTagId).Execute()
+> ConversionTag ConversionTagsGet(ctx, adAccountId, conversionTagId).Execute()
 
 Get conversion tag
 
@@ -115,7 +115,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConversionTagsAPI.ConversionTagsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ConversionTagsGet`: ConversionTagResponse
+	// response from `ConversionTagsGet`: ConversionTag
 	fmt.Fprintf(os.Stdout, "Response from `ConversionTagsAPI.ConversionTagsGet`: %v\n", resp)
 }
 ```
@@ -141,11 +141,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -159,9 +159,9 @@ Name | Type | Description  | Notes
 
 ## ConversionTagsList
 
-> ConversionTagListResponse ConversionTagsList(ctx, adAccountId).FilterDeleted(filterDeleted).Execute()
+> ConversionTagsList200Response ConversionTagsList(ctx, adAccountId).FilterDeleted(filterDeleted).Execute()
 
-Get conversion tags
+List conversion tags
 
 
 
@@ -179,7 +179,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	filterDeleted := true // bool | Filter out deleted tags. (optional) (default to false)
+	filterDeleted := true // bool | Filter by deleted status (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -188,7 +188,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConversionTagsAPI.ConversionTagsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ConversionTagsList`: ConversionTagListResponse
+	// response from `ConversionTagsList`: ConversionTagsList200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConversionTagsAPI.ConversionTagsList`: %v\n", resp)
 }
 ```
@@ -209,15 +209,15 @@ Other parameters are passed through a pointer to a apiConversionTagsListRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **filterDeleted** | **bool** | Filter out deleted tags. | [default to false]
+ **filterDeleted** | **bool** | Filter by deleted status | [default to false]
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

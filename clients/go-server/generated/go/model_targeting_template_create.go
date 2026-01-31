@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,17 +16,17 @@ package openapi
 
 type TargetingTemplateCreate struct {
 
-	// Name of targeting template.
-	Name string `json:"name"`
-
 	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
 
-	TargetingAttributes TargetingSpec `json:"targeting_attributes"`
+	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+
+	// Name of targeting template.
+	Name string `json:"name"`
 
 	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
 
-	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+	TargetingAttributes TargetingSpec `json:"targeting_attributes"`
 
 	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
 }
@@ -43,13 +43,13 @@ func AssertTargetingTemplateCreateRequired(obj TargetingTemplateCreate) error {
 		}
 	}
 
-	if err := AssertTargetingSpecRequired(obj.TargetingAttributes); err != nil {
-		return err
-	}
 	for _, el := range obj.Keywords {
 		if err := AssertTargetingTemplateKeywordRequired(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertTargetingSpecRequired(obj.TargetingAttributes); err != nil {
+		return err
 	}
 	if obj.TrackingUrls != nil {
 		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
@@ -61,13 +61,13 @@ func AssertTargetingTemplateCreateRequired(obj TargetingTemplateCreate) error {
 
 // AssertTargetingTemplateCreateConstraints checks if the values respects the defined constraints
 func AssertTargetingTemplateCreateConstraints(obj TargetingTemplateCreate) error {
-	if err := AssertTargetingSpecConstraints(obj.TargetingAttributes); err != nil {
-		return err
-	}
 	for _, el := range obj.Keywords {
 		if err := AssertTargetingTemplateKeywordConstraints(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertTargetingSpecConstraints(obj.TargetingAttributes); err != nil {
+		return err
 	}
     if obj.TrackingUrls != nil {
      	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {

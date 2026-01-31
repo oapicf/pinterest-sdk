@@ -25,29 +25,29 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object to list products for a given retail catalog_id and product group filter.
  *
- * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
  * @param catalogId Catalog id pertaining to the retail product group.
- * @param filters 
+ * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
  * @param country 
+ * @param filters 
  * @param locale 
  */
 
 
 data class CatalogsRetailListProductsByCatalogBasedFilterRequest (
 
-    /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogType,
-
     /* Catalog id pertaining to the retail product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
 
-    @Json(name = "filters")
-    val filters: CatalogsProductGroupFilters,
+    /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogType,
 
     @Json(name = "country")
     val country: Country,
+
+    @Json(name = "filters")
+    val filters: CatalogsProductGroupFilters,
 
     @Json(name = "locale")
     val locale: CatalogsLocale

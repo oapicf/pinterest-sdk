@@ -10,9 +10,10 @@ Name | Type
 `id` | string
 `updatedAt` | Date
 `ingestionDetails` | [CatalogsFeedIngestionDetails](CatalogsFeedIngestionDetails.md)
-`status` | [CatalogsFeedProcessingStatus](CatalogsFeedProcessingStatus.md)
 `productCounts` | [CatalogsFeedProductCounts](CatalogsFeedProductCounts.md)
+`status` | [CatalogsFeedProcessingStatus](CatalogsFeedProcessingStatus.md)
 `validationDetails` | [CatalogsFeedValidationDetails](CatalogsFeedValidationDetails.md)
+`videoCounts` | [CatalogsFeedVideoCounts](CatalogsFeedVideoCounts.md)
 
 ## Example
 
@@ -25,9 +26,10 @@ const example = {
   "id": null,
   "updatedAt": 2022-03-14T15:16:34Z,
   "ingestionDetails": null,
-  "status": null,
   "productCounts": null,
+  "status": null,
   "validationDetails": null,
+  "videoCounts": null,
 } satisfies CatalogsFeedProcessingResult
 
 console.log(example)

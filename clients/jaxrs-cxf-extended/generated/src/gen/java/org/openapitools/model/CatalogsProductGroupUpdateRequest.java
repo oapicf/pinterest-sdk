@@ -18,10 +18,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupUpdateRequest  {
   
   @ApiModelProperty(value = "")
-  private String name;
+  private String description;
 
   @ApiModelProperty(value = "")
-  private String description;
+  @Valid
+  private CatalogsProductGroupFiltersRequest filters;
 
  /**
   * boolean indicator of whether the product group is being featured or not
@@ -30,32 +31,7 @@ public class CatalogsProductGroupUpdateRequest  {
   private Boolean isFeatured;
 
   @ApiModelProperty(value = "")
-  @Valid
-  private CatalogsProductGroupFiltersRequest filters;
- /**
-  * Get name
-  * @return name
-  */
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public CatalogsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
+  private String name;
  /**
   * Get description
   * @return description
@@ -77,6 +53,30 @@ public class CatalogsProductGroupUpdateRequest  {
    */
   public CatalogsProductGroupUpdateRequest description(String description) {
     this.description = description;
+    return this;
+  }
+
+ /**
+  * Get filters
+  * @return filters
+  */
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  /**
+   * Sets the <code>filters</code> property.
+   */
+ public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+  /**
+   * Sets the <code>filters</code> property.
+   */
+  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
     return this;
   }
 
@@ -105,26 +105,26 @@ public class CatalogsProductGroupUpdateRequest  {
   }
 
  /**
-  * Get filters
-  * @return filters
+  * Get name
+  * @return name
   */
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
   /**
-   * Sets the <code>filters</code> property.
+   * Sets the <code>name</code> property.
    */
- public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+ public void setName(String name) {
+    this.name = name;
   }
 
   /**
-   * Sets the <code>filters</code> property.
+   * Sets the <code>name</code> property.
    */
-  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -138,15 +138,15 @@ public class CatalogsProductGroupUpdateRequest  {
       return false;
     }
     CatalogsProductGroupUpdateRequest catalogsProductGroupUpdateRequest = (CatalogsProductGroupUpdateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupUpdateRequest.name) &&
-        Objects.equals(this.description, catalogsProductGroupUpdateRequest.description) &&
+    return Objects.equals(this.description, catalogsProductGroupUpdateRequest.description) &&
+        Objects.equals(this.filters, catalogsProductGroupUpdateRequest.filters) &&
         Objects.equals(this.isFeatured, catalogsProductGroupUpdateRequest.isFeatured) &&
-        Objects.equals(this.filters, catalogsProductGroupUpdateRequest.filters);
+        Objects.equals(this.name, catalogsProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters);
+    return Objects.hash(description, filters, isFeatured, name);
   }
 
   @Override
@@ -154,10 +154,10 @@ public class CatalogsProductGroupUpdateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilterKeys
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
@@ -36,6 +37,7 @@ import org.openapitools.client.models.GoogleProductCategory4Filter
 import org.openapitools.client.models.GoogleProductCategory5Filter
 import org.openapitools.client.models.GoogleProductCategory6Filter
 import org.openapitools.client.models.MediaTypeFilter
+import org.openapitools.client.models.TitleKeywordsFilter
 
 class CatalogsCreativeAssetsProductGroupFilterKeysTest : ShouldSpec() {
     init {
@@ -124,6 +126,12 @@ class CatalogsCreativeAssetsProductGroupFilterKeysTest : ShouldSpec() {
         should("test MEDIA_TYPE") {
             // uncomment below to test the property
             //modelInstance.MEDIA_TYPE shouldBe ("TODO")
+        }
+
+        // to test the property `TITLE_KEYWORDS`
+        should("test TITLE_KEYWORDS") {
+            // uncomment below to test the property
+            //modelInstance.TITLE_KEYWORDS shouldBe ("TODO")
         }
 
     }

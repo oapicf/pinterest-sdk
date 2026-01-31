@@ -74,19 +74,21 @@ private class OASCampaignCreateResponseDataTest {
         OASCampaignCreateResponseData campaignCreateResponseData = new OASCampaignCreateResponseData();
         Map<String, String> x-property-mappings = campaignCreateResponseData.getx-property-mappings();
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
-        System.assertEquals('lifetimeSpendCap', x-property-mappings.get('lifetime_spend_cap'));
         System.assertEquals('dailySpendCap', x-property-mappings.get('daily_spend_cap'));
-        System.assertEquals('orderLineId', x-property-mappings.get('order_line_id'));
-        System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
-        System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
-        System.assertEquals('defaultAdGroupBudgetInMicroCurrency', x-property-mappings.get('default_ad_group_budget_in_micro_currency'));
         System.assertEquals('isAutomatedCampaign', x-property-mappings.get('is_automated_campaign'));
-        System.assertEquals('objectiveType', x-property-mappings.get('objective_type'));
-        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
-        System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
+        System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
+        System.assertEquals('lifetimeSpendCap', x-property-mappings.get('lifetime_spend_cap'));
+        System.assertEquals('orderLineId', x-property-mappings.get('order_line_id'));
+        System.assertEquals('startTime', x-property-mappings.get('start_time'));
+        System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
+        System.assertEquals('defaultAdGroupBudgetInMicroCurrency', x-property-mappings.get('default_ad_group_budget_in_micro_currency'));
         System.assertEquals('isCampaignBudgetOptimization', x-property-mappings.get('is_campaign_budget_optimization'));
+        System.assertEquals('bidOptions', x-property-mappings.get('bid_options'));
+        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
+        System.assertEquals('isPerformancePlus', x-property-mappings.get('is_performance_plus'));
+        System.assertEquals('objectiveType', x-property-mappings.get('objective_type'));
         System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
+        System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
     }
 }

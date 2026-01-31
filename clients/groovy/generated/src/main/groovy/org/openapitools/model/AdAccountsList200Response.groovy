@@ -10,8 +10,8 @@ import org.openapitools.model.AdAccount;
 
 @Canonical
 class AdAccountsList200Response {
-    /* Ad accounts */
-    List<AdAccount> items = new ArrayList<>()
     
     String bookmark
+    
+    List<AdAccount> items = new ArrayList<>()
 }

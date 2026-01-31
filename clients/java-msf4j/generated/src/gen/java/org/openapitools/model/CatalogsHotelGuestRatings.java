@@ -6,41 +6,42 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * If specified, you must provide all properties
  */
 @ApiModel(description = "If specified, you must provide all properties")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelGuestRatings   {
-  @JsonProperty("score")
-  private BigDecimal score;
+  @JsonProperty("max_score")
+  private BigDecimal maxScore;
 
   @JsonProperty("number_of_reviewers")
   private Integer numberOfReviewers;
 
-  @JsonProperty("max_score")
-  private BigDecimal maxScore;
-
   @JsonProperty("rating_system")
   private String ratingSystem;
 
-  public CatalogsHotelGuestRatings score(BigDecimal score) {
-    this.score = score;
+  @JsonProperty("score")
+  private BigDecimal score;
+
+  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
+    this.maxScore = maxScore;
     return this;
   }
 
    /**
-   * Your hotel's rating.
-   * @return score
+   * Max value for the hotel rating score.
+   * @return maxScore
   **/
-  @ApiModelProperty(value = "Your hotel's rating.")
-  public BigDecimal getScore() {
-    return score;
+  @ApiModelProperty(value = "Max value for the hotel rating score.")
+  public BigDecimal getMaxScore() {
+    return maxScore;
   }
 
-  public void setScore(BigDecimal score) {
-    this.score = score;
+  public void setMaxScore(BigDecimal maxScore) {
+    this.maxScore = maxScore;
   }
 
   public CatalogsHotelGuestRatings numberOfReviewers(Integer numberOfReviewers) {
@@ -61,24 +62,6 @@ public class CatalogsHotelGuestRatings   {
     this.numberOfReviewers = numberOfReviewers;
   }
 
-  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
-    return this;
-  }
-
-   /**
-   * Max value for the hotel rating score.
-   * @return maxScore
-  **/
-  @ApiModelProperty(value = "Max value for the hotel rating score.")
-  public BigDecimal getMaxScore() {
-    return maxScore;
-  }
-
-  public void setMaxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
-  }
-
   public CatalogsHotelGuestRatings ratingSystem(String ratingSystem) {
     this.ratingSystem = ratingSystem;
     return this;
@@ -97,6 +80,24 @@ public class CatalogsHotelGuestRatings   {
     this.ratingSystem = ratingSystem;
   }
 
+  public CatalogsHotelGuestRatings score(BigDecimal score) {
+    this.score = score;
+    return this;
+  }
+
+   /**
+   * Your hotel's rating.
+   * @return score
+  **/
+  @ApiModelProperty(value = "Your hotel's rating.")
+  public BigDecimal getScore() {
+    return score;
+  }
+
+  public void setScore(BigDecimal score) {
+    this.score = score;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -107,15 +108,15 @@ public class CatalogsHotelGuestRatings   {
       return false;
     }
     CatalogsHotelGuestRatings catalogsHotelGuestRatings = (CatalogsHotelGuestRatings) o;
-    return Objects.equals(this.score, catalogsHotelGuestRatings.score) &&
+    return Objects.equals(this.maxScore, catalogsHotelGuestRatings.maxScore) &&
         Objects.equals(this.numberOfReviewers, catalogsHotelGuestRatings.numberOfReviewers) &&
-        Objects.equals(this.maxScore, catalogsHotelGuestRatings.maxScore) &&
-        Objects.equals(this.ratingSystem, catalogsHotelGuestRatings.ratingSystem);
+        Objects.equals(this.ratingSystem, catalogsHotelGuestRatings.ratingSystem) &&
+        Objects.equals(this.score, catalogsHotelGuestRatings.score);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(score, numberOfReviewers, maxScore, ratingSystem);
+    return Objects.hash(maxScore, numberOfReviewers, ratingSystem, score);
   }
 
   @Override
@@ -123,10 +124,10 @@ public class CatalogsHotelGuestRatings   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelGuestRatings {\n");
     
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
-    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    maxScore: ").append(toIndentedString(maxScore)).append("\n");
+    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    ratingSystem: ").append(toIndentedString(ratingSystem)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("}");
     return sb.toString();
   }

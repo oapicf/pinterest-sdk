@@ -10,9 +10,10 @@ The class is defined in **[CatalogsUpsertHotelItem.java](../../src/main/java/org
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [`CatalogsHotelAttributes`](CatalogsHotelAttributes.md) |  | 
 **hotelId** | `String` | The catalog hotel id in the merchant namespace | 
 **operation** | [**OperationEnum**](#OperationEnum) |  | 
-**attributes** | [`CatalogsHotelAttributes`](CatalogsHotelAttributes.md) |  | 
+
 
 
 ## OperationEnum
@@ -20,6 +21,5 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 UPSERT | `"UPSERT"`
-
 
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,11 +20,11 @@ import (
 
 type CatalogsFeedIngestion struct {
 
-	Id string `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
 
 	FeedId string `json:"feed_id"`
 
-	CreatedAt time.Time `json:"created_at"`
+	Id string `json:"id"`
 
 	Status CatalogsFeedProcessingStatus `json:"status"`
 }
@@ -32,9 +32,9 @@ type CatalogsFeedIngestion struct {
 // AssertCatalogsFeedIngestionRequired checks if the required fields are not zero-ed
 func AssertCatalogsFeedIngestionRequired(obj CatalogsFeedIngestion) error {
 	elements := map[string]interface{}{
-		"id": obj.Id,
-		"feed_id": obj.FeedId,
 		"created_at": obj.CreatedAt,
+		"feed_id": obj.FeedId,
+		"id": obj.Id,
 		"status": obj.Status,
 	}
 	for name, el := range elements {

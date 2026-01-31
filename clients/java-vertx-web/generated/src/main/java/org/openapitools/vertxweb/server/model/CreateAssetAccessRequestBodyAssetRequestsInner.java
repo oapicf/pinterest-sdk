@@ -11,24 +11,15 @@ import org.openapitools.vertxweb.server.model.Permissions;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateAssetAccessRequestBodyAssetRequestsInner   {
   
-  private String partnerId;
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+  private String partnerId;
 
   public CreateAssetAccessRequestBodyAssetRequestsInner () {
 
   }
 
-  public CreateAssetAccessRequestBodyAssetRequestsInner (String partnerId, Map<String, List<Permissions>> assetIdToPermissions) {
-    this.partnerId = partnerId;
+  public CreateAssetAccessRequestBodyAssetRequestsInner (Map<String, List<Permissions>> assetIdToPermissions, String partnerId) {
     this.assetIdToPermissions = assetIdToPermissions;
-  }
-
-    
-  @JsonProperty("partner_id")
-  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
   }
 
@@ -41,6 +32,15 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
     this.assetIdToPermissions = assetIdToPermissions;
   }
 
+    
+  @JsonProperty("partner_id")
+  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -51,13 +51,13 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
       return false;
     }
     CreateAssetAccessRequestBodyAssetRequestsInner createAssetAccessRequestBodyAssetRequestsInner = (CreateAssetAccessRequestBodyAssetRequestsInner) o;
-    return Objects.equals(partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId) &&
-        Objects.equals(assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions);
+    return Objects.equals(assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions) &&
+        Objects.equals(partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, partnerId);
   }
 
   @Override
@@ -65,8 +65,8 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetAccessRequestBodyAssetRequestsInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

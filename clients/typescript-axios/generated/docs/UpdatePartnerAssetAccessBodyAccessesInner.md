@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**partner_id** | **string** | Unique identifier of a business partner to update asset access to. | [default to undefined]
 **asset_id** | **string** | Unique identifier of the business asset. | [default to undefined]
+**partner_id** | **string** | Unique identifier of a business partner to update asset access to. | [default to undefined]
 **permissions** | [**Array&lt;Permissions&gt;**](Permissions.md) | A non-empty array of permissions to assign to the partner. | [default to undefined]
 
 ## Example
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { UpdatePartnerAssetAccessBodyAccessesInner } from './api';
 
 const instance: UpdatePartnerAssetAccessBodyAccessesInner = {
-    partner_id,
     asset_id,
+    partner_id,
     permissions,
 };
 ```

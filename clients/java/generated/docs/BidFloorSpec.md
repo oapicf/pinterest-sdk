@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**billableEvent** | **ActionType** |  |  |
 |**countries** | **List&lt;Country&gt;** |  |  [optional] |
+|**creativeType** | **CreativeType** |  |  [optional] |
 |**currency** | **Currency** |  |  |
 |**objectiveType** | **ObjectiveType** |  |  [optional] |
-|**billableEvent** | **ActionType** |  |  |
 |**optimizationGoalMetadata** | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  |  [optional] |
-|**creativeType** | **CreativeType** |  |  [optional] |
 
 
 

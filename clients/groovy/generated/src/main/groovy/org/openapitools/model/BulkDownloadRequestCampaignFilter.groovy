@@ -10,14 +10,14 @@ import org.openapitools.model.ObjectiveType;
 
 @Canonical
 class BulkDownloadRequestCampaignFilter {
-    /* Unix UTC timestamp. */
-    String startTime
+    
+    List<CampaignSummaryStatus> campaignStatus = new ArrayList<>()
     /* Unix UTC timestamp. */
     String endTime
     /* Campaign name */
     String name
     
-    List<CampaignSummaryStatus> campaignStatus = new ArrayList<>()
-    
     List<ObjectiveType> objectiveType = new ArrayList<>()
+    /* Unix UTC timestamp. */
+    String startTime
 }

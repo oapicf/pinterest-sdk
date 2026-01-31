@@ -18,27 +18,27 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object for creating a hotel product group.
- * @param catalogType 
- * @param name 
- * @param filters 
  * @param catalogId Catalog id pertaining to the hotel product group.
+ * @param catalogType 
+ * @param filters 
+ * @param name 
  * @param description 
  */
 data class CatalogsHotelProductGroupCreateRequest(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsHotelProductGroupCreateRequest.CatalogType,
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the hotel product group.")
+    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("name", required = true) val name: kotlin.String,
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsHotelProductGroupCreateRequest.CatalogType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("filters", required = true) val filters: CatalogsHotelProductGroupFilters,
 
-    @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the hotel product group.")
-    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null

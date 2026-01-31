@@ -4,11 +4,11 @@ package org.openapitools.server.model
 /**
  * = UserSummary =
  *
- * @param username Username for example: ''username''
  * @param `type` Always \"user\" for example: ''user''
+ * @param username Username for example: ''username''
 */
 final case class UserSummary (
-  username: Option[String] = None,
-  `type`: Option[String] = None
+  `type`: Option[String] = None,
+  username: Option[String] = None
 )
 

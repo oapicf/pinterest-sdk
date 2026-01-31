@@ -11,7 +11,7 @@ module IntegrationsGetList200Response =
 
 
   type integrations_get_list_200_response = {
-    Items : IntegrationRecord[];
     Bookmark : string option;
+    Items : IntegrationRecord[];
   }
   //#endregion

@@ -81,7 +81,7 @@ public class TargetingTemplateApiTest {
     public void targetingTemplateUpdateTest() {
         // given
         String adAccountId = "example";
-        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest("example", "643");
+        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest("643", "example");
 
         // when
         api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest).block();

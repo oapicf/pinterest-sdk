@@ -1,0 +1,108 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailFeed"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailFeed"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsFeedCredentials = openapi_server.resourceTypes.CatalogsFeedCredentials
+  CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
+  CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
+  CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  Country = openapi_server.resourceTypes.Country
+  NullableCurrency = openapi_server.resourceTypes.NullableCurrency
+  ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
+}
+resourceTypes {
+
+  CatalogsRetailFeed {
+    title = CatalogsRetailFeed
+    description = CatalogsRetailFeed
+    derivedFrom = Root
+    properties {
+        created_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        credentials {
+          type = CatalogsFeedCredentials
+          description = ""
+          optional = true
+        }
+        default_availability {
+          type = ProductAvailabilityType
+          description = ""
+          optional = true
+        }
+        default_country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        default_currency {
+          type = NullableCurrency
+          description = ""
+          optional = true
+        }
+        default_locale {
+          type =  string
+          description = "The locale used within a feed for product descriptions."
+          optional = true
+        }
+        format {
+          type = CatalogsFormat
+          description = ""
+          optional = true
+        }
+        location {
+          type =  string
+          description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
+          optional = true
+        }
+        name {
+          type =  string
+          description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future."
+          optional = true
+        }
+        preferred_processing_schedule {
+          type = CatalogsFeedProcessingSchedule
+          description = ""
+          optional = true
+        }
+        status {
+          type = CatalogsStatus
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailFeed {
+    title = CatalogsRetailFeed
+    description = CatalogsRetailFeed
+    implements = openapi_server.resourceTypes.CatalogsRetailFeed
+
+  }
+}

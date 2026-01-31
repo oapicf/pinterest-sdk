@@ -3,8 +3,8 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.EventData;
 import org.openapitools.model.ObjectiveType;
-import org.openapitools.model.PinterestTagEventData;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +22,30 @@ public class AudienceRuleTest {
     @Test
     public void testAudienceRule() {
         // TODO: test AudienceRule
+    }
+
+    /**
+     * Test the property 'adAccountId'
+     */
+    @Test
+    public void adAccountIdTest() {
+        // TODO: test adAccountId
+    }
+
+    /**
+     * Test the property 'adId'
+     */
+    @Test
+    public void adIdTest() {
+        // TODO: test adId
+    }
+
+    /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
     }
 
     /**
@@ -57,6 +81,14 @@ public class AudienceRuleTest {
     }
 
     /**
+     * Test the property 'engagerType'
+     */
+    @Test
+    public void engagerTypeTest() {
+        // TODO: test engagerType
+    }
+
+    /**
      * Test the property 'event'
      */
     @Test
@@ -70,6 +102,30 @@ public class AudienceRuleTest {
     @Test
     public void eventDataTest() {
         // TODO: test eventData
+    }
+
+    /**
+     * Test the property 'eventSource'
+     */
+    @Test
+    public void eventSourceTest() {
+        // TODO: test eventSource
+    }
+
+    /**
+     * Test the property 'ingestionSource'
+     */
+    @Test
+    public void ingestionSourceTest() {
+        // TODO: test ingestionSource
+    }
+
+    /**
+     * Test the property 'objectiveType'
+     */
+    @Test
+    public void objectiveTypeTest() {
+        // TODO: test objectiveType
     }
 
     /**
@@ -126,62 +182,6 @@ public class AudienceRuleTest {
     @Test
     public void visitorSourceIdTest() {
         // TODO: test visitorSourceId
-    }
-
-    /**
-     * Test the property 'eventSource'
-     */
-    @Test
-    public void eventSourceTest() {
-        // TODO: test eventSource
-    }
-
-    /**
-     * Test the property 'ingestionSource'
-     */
-    @Test
-    public void ingestionSourceTest() {
-        // TODO: test ingestionSource
-    }
-
-    /**
-     * Test the property 'engagerType'
-     */
-    @Test
-    public void engagerTypeTest() {
-        // TODO: test engagerType
-    }
-
-    /**
-     * Test the property 'campaignId'
-     */
-    @Test
-    public void campaignIdTest() {
-        // TODO: test campaignId
-    }
-
-    /**
-     * Test the property 'adId'
-     */
-    @Test
-    public void adIdTest() {
-        // TODO: test adId
-    }
-
-    /**
-     * Test the property 'objectiveType'
-     */
-    @Test
-    public void objectiveTypeTest() {
-        // TODO: test objectiveType
-    }
-
-    /**
-     * Test the property 'adAccountId'
-     */
-    @Test
-    public void adAccountIdTest() {
-        // TODO: test adAccountId
     }
 
 }

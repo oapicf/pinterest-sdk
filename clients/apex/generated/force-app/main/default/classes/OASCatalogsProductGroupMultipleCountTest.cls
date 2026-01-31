@@ -72,7 +72,7 @@ private class OASCatalogsProductGroupMultipleCountTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupMultipleCount catalogsProductGroupMultipleCountriesCriteria = new OASCatalogsProductGroupMultipleCount();
-        System.assertEquals(new List<OASCountry>(), catalogsProductGroupMultipleCountriesCriteria.values);
         System.assertEquals(false, catalogsProductGroupMultipleCountriesCriteria.negated);
+        System.assertEquals(new List<OASCountry>(), catalogsProductGroupMultipleCountriesCriteria.values);
     }
 }

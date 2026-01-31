@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | [**BulkUpsertStatus**](BulkUpsertStatus.md) |  | [optional] 
 **ResultUrl** | **String** |  | [optional] 
+**Status** | [**BulkUpsertStatus**](BulkUpsertStatus.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BulkUpsertStatusResponse = Initialize-PSOpenAPIToolsBulkUpsertStatusResponse  -Status null `
- -ResultUrl https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)
+$BulkUpsertStatusResponse = Initialize-PSOpenAPIToolsBulkUpsertStatusResponse  -ResultUrl https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...) `
+ -Status null
 ```
 
 - Convert the resource to JSON

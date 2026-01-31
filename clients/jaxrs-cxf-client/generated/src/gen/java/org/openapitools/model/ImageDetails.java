@@ -10,37 +10,17 @@ public class ImageDetails  {
   
   @ApiModelProperty(required = true, value = "")
 
-  private Integer width;
-
-  @ApiModelProperty(required = true, value = "")
-
   private Integer height;
 
   @ApiModelProperty(required = true, value = "")
 
   private String url;
- /**
-   * Get width
-   * minimum: 100
-   * @return width
-  **/
-  @JsonProperty("width")
-  public Integer getWidth() {
-    return width;
-  }
 
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
+  @ApiModelProperty(required = true, value = "")
 
-  public ImageDetails width(Integer width) {
-    this.width = width;
-    return this;
-  }
-
+  private Integer width;
  /**
    * Get height
-   * minimum: 100
    * @return height
   **/
   @JsonProperty("height")
@@ -75,6 +55,24 @@ public class ImageDetails  {
     return this;
   }
 
+ /**
+   * Get width
+   * @return width
+  **/
+  @JsonProperty("width")
+  public Integer getWidth() {
+    return width;
+  }
+
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
+  public ImageDetails width(Integer width) {
+    this.width = width;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -84,14 +82,14 @@ public class ImageDetails  {
       return false;
     }
     ImageDetails imageDetails = (ImageDetails) o;
-    return Objects.equals(this.width, imageDetails.width) &&
-        Objects.equals(this.height, imageDetails.height) &&
-        Objects.equals(this.url, imageDetails.url);
+    return Objects.equals(this.height, imageDetails.height) &&
+        Objects.equals(this.url, imageDetails.url) &&
+        Objects.equals(this.width, imageDetails.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, url);
+    return Objects.hash(height, url, width);
   }
 
   @Override
@@ -99,9 +97,9 @@ public class ImageDetails  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageDetails {\n");
     
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

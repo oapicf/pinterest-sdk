@@ -22,8 +22,11 @@ import org.openapitools.model.CatalogsUpsertHotelItem;
  **/
 
 @ApiModel(description = "Hotel batch item")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelBatchItem   {
+  @JsonProperty("attributes")
+  private CatalogsUpdatableHotelAttributes attributes;
+
   @JsonProperty("hotel_id")
   private String hotelId;
 
@@ -59,8 +62,22 @@ public class CatalogsHotelBatchItem   {
   @JsonProperty("operation")
   private OperationEnum operation;
 
+  /**
+   **/
+  public CatalogsHotelBatchItem attributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
-  private CatalogsUpdatableHotelAttributes attributes;
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog hotel id in the merchant namespace
@@ -97,23 +114,6 @@ public class CatalogsHotelBatchItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  public CatalogsHotelBatchItem attributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -124,14 +124,14 @@ public class CatalogsHotelBatchItem   {
       return false;
     }
     CatalogsHotelBatchItem catalogsHotelBatchItem = (CatalogsHotelBatchItem) o;
-    return Objects.equals(hotelId, catalogsHotelBatchItem.hotelId) &&
-        Objects.equals(operation, catalogsHotelBatchItem.operation) &&
-        Objects.equals(attributes, catalogsHotelBatchItem.attributes);
+    return Objects.equals(attributes, catalogsHotelBatchItem.attributes) &&
+        Objects.equals(hotelId, catalogsHotelBatchItem.hotelId) &&
+        Objects.equals(operation, catalogsHotelBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -139,9 +139,9 @@ public class CatalogsHotelBatchItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

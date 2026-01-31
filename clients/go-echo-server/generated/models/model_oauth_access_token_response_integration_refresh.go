@@ -6,13 +6,13 @@ type OauthAccessTokenResponseIntegrationRefresh struct {
 
 	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
 
-	ResponseType string `json:"response_type,omitempty"`
-
 	AccessToken string `json:"access_token"`
-
-	TokenType string `json:"token_type"`
 
 	ExpiresIn int32 `json:"expires_in"`
 
+	ResponseType string `json:"response_type,omitempty"`
+
 	Scope string `json:"scope"`
+
+	TokenType string `json:"token_type"`
 }

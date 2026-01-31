@@ -23,23 +23,23 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id 
- * @param feedId 
  * @param createdAt 
+ * @param feedId 
+ * @param id 
  * @param status 
  */
 
 
 data class CatalogsFeedIngestion (
 
-    @Json(name = "id")
-    val id: kotlin.String,
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime,
 
     @Json(name = "feed_id")
     val feedId: kotlin.String,
 
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime,
+    @Json(name = "id")
+    val id: kotlin.String,
 
     @Json(name = "status")
     val status: CatalogsFeedProcessingStatus

@@ -23,33 +23,34 @@ CatalogsHotelProductGroup::~CatalogsHotelProductGroup()
 void
 CatalogsHotelProductGroup::__init()
 {
+	//catalog_id = std::string();
 	//catalog_type = std::string();
-	//id = std::string();
-	//name = std::string();
+	//created_at = int(0);
 	//description = std::string();
 	//filters = new CatalogsHotelProductGroupFilters();
-	//created_at = int(0);
+	//id = std::string();
+	//name = std::string();
+	//type = new CatalogsHotelProductGroupType();
 	//updated_at = int(0);
-	//catalog_id = std::string();
 }
 
 void
 CatalogsHotelProductGroup::__cleanup()
 {
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
 	//catalog_type = NULL;
 	//}
-	//if(id != NULL) {
+	//if(created_at != NULL) {
 	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
+	//delete created_at;
+	//created_at = NULL;
 	//}
 	//if(description != NULL) {
 	//
@@ -61,20 +62,25 @@ CatalogsHotelProductGroup::__cleanup()
 	//delete filters;
 	//filters = NULL;
 	//}
-	//if(created_at != NULL) {
+	//if(id != NULL) {
 	//
-	//delete created_at;
-	//created_at = NULL;
+	//delete id;
+	//id = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(type != NULL) {
+	//
+	//delete type;
+	//type = NULL;
 	//}
 	//if(updated_at != NULL) {
 	//
 	//delete updated_at;
 	//updated_at = NULL;
-	//}
-	//if(catalog_id != NULL) {
-	//
-	//delete catalog_id;
-	//catalog_id = NULL;
 	//}
 	//
 }
@@ -84,6 +90,17 @@ CatalogsHotelProductGroup::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -95,24 +112,13 @@ CatalogsHotelProductGroup::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
+	const gchar *created_atKey = "created_at";
+	node = json_object_get_member(pJsonObject, created_atKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
+		if (isprimitive("int")) {
+			jsonToValue(&created_at, node, "int", "");
 		} else {
 			
 		}
@@ -142,14 +148,39 @@ CatalogsHotelProductGroup::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_atKey = "created_at";
-	node = json_object_get_member(pJsonObject, created_atKey);
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&created_at, node, "int", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
 		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *typeKey = "type";
+	node = json_object_get_member(pJsonObject, typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsHotelProductGroupType")) {
+			jsonToValue(&type, node, "CatalogsHotelProductGroupType", "CatalogsHotelProductGroupType");
+		} else {
+			
+			CatalogsHotelProductGroupType* obj = static_cast<CatalogsHotelProductGroupType*> (&type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -160,17 +191,6 @@ CatalogsHotelProductGroup::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&updated_at, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -188,6 +208,15 @@ CatalogsHotelProductGroup::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getCatalogType();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -196,24 +225,15 @@ CatalogsHotelProductGroup::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("int")) {
+		int obj = getCreatedAt();
+		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
+	const gchar *created_atKey = "created_at";
+	json_object_set_member(pJsonObject, created_atKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
@@ -237,15 +257,38 @@ CatalogsHotelProductGroup::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
-	if (isprimitive("int")) {
-		int obj = getCreatedAt();
-		node = converttoJson(&obj, "int", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *created_atKey = "created_at";
-	json_object_set_member(pJsonObject, created_atKey, node);
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("CatalogsHotelProductGroupType")) {
+		CatalogsHotelProductGroupType obj = getType();
+		node = converttoJson(&obj, "CatalogsHotelProductGroupType", "");
+	}
+	else {
+		
+		CatalogsHotelProductGroupType obj = static_cast<CatalogsHotelProductGroupType> (getType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
 	if (isprimitive("int")) {
 		int obj = getUpdatedAt();
 		node = converttoJson(&obj, "int", "");
@@ -255,21 +298,24 @@ CatalogsHotelProductGroup::toJson()
 	}
 	const gchar *updated_atKey = "updated_at";
 	json_object_set_member(pJsonObject, updated_atKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+CatalogsHotelProductGroup::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+CatalogsHotelProductGroup::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
 }
 
 std::string
@@ -284,28 +330,16 @@ CatalogsHotelProductGroup::setCatalogType(std::string  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
-std::string
-CatalogsHotelProductGroup::getId()
+int
+CatalogsHotelProductGroup::getCreatedAt()
 {
-	return id;
+	return created_at;
 }
 
 void
-CatalogsHotelProductGroup::setId(std::string  id)
+CatalogsHotelProductGroup::setCreatedAt(int  created_at)
 {
-	this->id = id;
-}
-
-std::string
-CatalogsHotelProductGroup::getName()
-{
-	return name;
-}
-
-void
-CatalogsHotelProductGroup::setName(std::string  name)
-{
-	this->name = name;
+	this->created_at = created_at;
 }
 
 std::string
@@ -332,16 +366,40 @@ CatalogsHotelProductGroup::setFilters(CatalogsHotelProductGroupFilters  filters)
 	this->filters = filters;
 }
 
-int
-CatalogsHotelProductGroup::getCreatedAt()
+std::string
+CatalogsHotelProductGroup::getId()
 {
-	return created_at;
+	return id;
 }
 
 void
-CatalogsHotelProductGroup::setCreatedAt(int  created_at)
+CatalogsHotelProductGroup::setId(std::string  id)
 {
-	this->created_at = created_at;
+	this->id = id;
+}
+
+std::string
+CatalogsHotelProductGroup::getName()
+{
+	return name;
+}
+
+void
+CatalogsHotelProductGroup::setName(std::string  name)
+{
+	this->name = name;
+}
+
+CatalogsHotelProductGroupType
+CatalogsHotelProductGroup::getType()
+{
+	return type;
+}
+
+void
+CatalogsHotelProductGroup::setType(CatalogsHotelProductGroupType  type)
+{
+	this->type = type;
 }
 
 int
@@ -354,18 +412,6 @@ void
 CatalogsHotelProductGroup::setUpdatedAt(int  updated_at)
 {
 	this->updated_at = updated_at;
-}
-
-std::string
-CatalogsHotelProductGroup::getCatalogId()
-{
-	return catalog_id;
-}
-
-void
-CatalogsHotelProductGroup::setCatalogId(std::string  catalog_id)
-{
-	this->catalog_id = catalog_id;
 }
 
 

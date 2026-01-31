@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
+import org.openapitools.model.TrendingKeyword;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,26 +17,26 @@ public class TrendingKeywordsResponse  {
   */
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
 
-  private List<TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
+  private List<TrendingKeyword> trends = new ArrayList<>();
  /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.
    * @return trends
   **/
   @JsonProperty("trends")
-  public List<TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<TrendingKeyword> getTrends() {
     return trends;
   }
 
-  public void setTrends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<TrendingKeyword> trends) {
     this.trends = trends;
   }
 
-  public TrendingKeywordsResponse trends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse trends(List<TrendingKeyword> trends) {
     this.trends = trends;
     return this;
   }
 
-  public TrendingKeywordsResponse addTrendsItem(TrendingKeywordsResponseTrendsInner trendsItem) {
+  public TrendingKeywordsResponse addTrendsItem(TrendingKeyword trendsItem) {
     this.trends.add(trendsItem);
     return this;
   }

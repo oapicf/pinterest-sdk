@@ -25,9 +25,9 @@ public class CatalogsRetailItemErrorResponse   {
   
   private CatalogsType catalogType;
 
-  private String itemId;
-
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
+  private String itemId;
 
   /**
    **/
@@ -45,6 +45,34 @@ public class CatalogsRetailItemErrorResponse   {
   }
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+
+  /**
+   * Array with the errors for the item id requested
+   **/
+  public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  @JsonProperty("errors")
+  @NotNull
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
+  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
   }
 
 
@@ -67,33 +95,6 @@ public class CatalogsRetailItemErrorResponse   {
   }
 
 
-  /**
-   * Array with the errors for the item id requested
-   **/
-  public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @JsonProperty("errors")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
-  }
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
-  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -105,13 +106,13 @@ public class CatalogsRetailItemErrorResponse   {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -120,8 +121,8 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

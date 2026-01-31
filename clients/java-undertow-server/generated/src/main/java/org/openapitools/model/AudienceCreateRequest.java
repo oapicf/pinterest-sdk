@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,14 +23,14 @@ import org.openapitools.model.AudienceType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest   {
   
   private String adAccountId;
   private String name;
   private AudienceRule rule;
-  private String description;
   private AudienceType audienceType;
+  private String description;
 
   /**
    * Ad account ID.
@@ -86,24 +86,6 @@ public class AudienceCreateRequest   {
   }
 
   /**
-   * Audience description.
-   */
-  public AudienceCreateRequest description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "string", value = "Audience description.")
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  /**
    * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    */
   public AudienceCreateRequest audienceType(AudienceType audienceType) {
@@ -121,6 +103,24 @@ public class AudienceCreateRequest   {
     this.audienceType = audienceType;
   }
 
+  /**
+   * Audience description.
+   */
+  public AudienceCreateRequest description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "string", value = "Audience description.")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -134,13 +134,13 @@ public class AudienceCreateRequest   {
     return Objects.equals(adAccountId, audienceCreateRequest.adAccountId) &&
         Objects.equals(name, audienceCreateRequest.name) &&
         Objects.equals(rule, audienceCreateRequest.rule) &&
-        Objects.equals(description, audienceCreateRequest.description) &&
-        Objects.equals(audienceType, audienceCreateRequest.audienceType);
+        Objects.equals(audienceType, audienceCreateRequest.audienceType) &&
+        Objects.equals(description, audienceCreateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, rule, description, audienceType);
+    return Objects.hash(adAccountId, name, rule, audienceType, description);
   }
 
   @Override
@@ -151,8 +151,8 @@ public class AudienceCreateRequest   {
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Display name
-	 */
-	std::string getName();
-
-	/*! \brief Set Display name
-	 */
-	void setName(std::string  name);
 	/*! \brief Get Salesforce id for PMP
 	 */
 	std::string getId();
@@ -59,10 +52,17 @@ public:
 	/*! \brief Set Salesforce id for PMP
 	 */
 	void setId(std::string  id);
+	/*! \brief Get Display name
+	 */
+	std::string getName();
+
+	/*! \brief Set Display name
+	 */
+	void setName(std::string  name);
 
 private:
-	std::string name;
 	std::string id;
+	std::string name;
 	void __init();
 	void __cleanup();
 

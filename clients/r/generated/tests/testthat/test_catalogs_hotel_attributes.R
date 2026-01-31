@@ -5,28 +5,19 @@ context("Test CatalogsHotelAttributes")
 
 model_instance <- CatalogsHotelAttributes$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # The hotel&#39;s name.
+test_that("address", {
+  # tests for the property `address` (CatalogsHotelAddress)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`address`, "EXPECTED_RESULT")
 })
 
-test_that("link", {
-  # tests for the property `link` (character)
-  # Link to the product page
+test_that("base_price", {
+  # tests for the property `base_price` (character)
+  # Base price of the hotel room per night followed by the ISO currency code
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
-})
-
-test_that("description", {
-  # tests for the property `description` (character)
-  # Brief description of the hotel.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`base_price`, "EXPECTED_RESULT")
 })
 
 test_that("brand", {
@@ -37,35 +28,12 @@ test_that("brand", {
   #expect_equal(model.instance$`brand`, "EXPECTED_RESULT")
 })
 
-test_that("latitude", {
-  # tests for the property `latitude` (numeric)
-  # Latitude of the hotel.
+test_that("category", {
+  # tests for the property `category` (character)
+  # The type of property. The category can be any type of internal description desired.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`latitude`, "EXPECTED_RESULT")
-})
-
-test_that("longitude", {
-  # tests for the property `longitude` (numeric)
-  # Longitude of the hotel.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`longitude`, "EXPECTED_RESULT")
-})
-
-test_that("neighborhood", {
-  # tests for the property `neighborhood` (array[character])
-  # A list of neighborhoods where the hotel is located
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`neighborhood`, "EXPECTED_RESULT")
-})
-
-test_that("address", {
-  # tests for the property `address` (CatalogsHotelAddress)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`address`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`category`, "EXPECTED_RESULT")
 })
 
 test_that("custom_label_0", {
@@ -108,20 +76,59 @@ test_that("custom_label_4", {
   #expect_equal(model.instance$`custom_label_4`, "EXPECTED_RESULT")
 })
 
-test_that("category", {
-  # tests for the property `category` (character)
-  # The type of property. The category can be any type of internal description desired.
+test_that("description", {
+  # tests for the property `description` (character)
+  # Brief description of the hotel.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`category`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
-test_that("base_price", {
-  # tests for the property `base_price` (character)
-  # Base price of the hotel room per night followed by the ISO currency code
+test_that("guest_ratings", {
+  # tests for the property `guest_ratings` (CatalogsHotelGuestRatings)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`base_price`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`guest_ratings`, "EXPECTED_RESULT")
+})
+
+test_that("latitude", {
+  # tests for the property `latitude` (numeric)
+  # Latitude of the hotel.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`latitude`, "EXPECTED_RESULT")
+})
+
+test_that("link", {
+  # tests for the property `link` (character)
+  # Link to the product page
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
+})
+
+test_that("longitude", {
+  # tests for the property `longitude` (numeric)
+  # Longitude of the hotel.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`longitude`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # The hotel&#39;s name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
+test_that("neighborhood", {
+  # tests for the property `neighborhood` (array[character])
+  # A list of neighborhoods where the hotel is located
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`neighborhood`, "EXPECTED_RESULT")
 })
 
 test_that("sale_price", {
@@ -132,11 +139,12 @@ test_that("sale_price", {
   #expect_equal(model.instance$`sale_price`, "EXPECTED_RESULT")
 })
 
-test_that("guest_ratings", {
-  # tests for the property `guest_ratings` (CatalogsHotelGuestRatings)
+test_that("additional_image_link", {
+  # tests for the property `additional_image_link` (array[character])
+  # &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt;
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`guest_ratings`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`additional_image_link`, "EXPECTED_RESULT")
 })
 
 test_that("main_image", {
@@ -144,12 +152,4 @@ test_that("main_image", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`main_image`, "EXPECTED_RESULT")
-})
-
-test_that("additional_image_link", {
-  # tests for the property `additional_image_link` (array[character])
-  # &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt;
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`additional_image_link`, "EXPECTED_RESULT")
 })

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[AdAccountGetSubscriptionResponse]**](AdAccountGetSubscriptionResponse.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[LeadSubscription]**](LeadSubscription.md) |  | 
 
 

@@ -12,36 +12,39 @@ import AnyCodable
 
 public struct AdAccount: Codable, JSONEncodable, Hashable {
 
-    public var id: String?
-    public var name: String?
-    public var owner: AdAccountOwner?
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
     public var country: Country?
-    public var currency: Currency?
-    public var permissions: [BusinessAccessRole]?
-    /** Creation time. Unix timestamp in seconds. */
+    /**  Creation time. Unix timestamp in seconds. */
     public var createdTime: Int?
-    /** Last update time. Unix timestamp in seconds. */
+    public var currency: Currency?
+    public var id: String
+    /** Ad account name. */
+    public var name: String?
+    /** Ad account owner */
+    public var owner: AdAccountOwner?
+    public var permissions: [BusinessAccessRole]?
     public var updatedTime: Int?
 
-    public init(id: String? = nil, name: String? = nil, owner: AdAccountOwner? = nil, country: Country? = nil, currency: Currency? = nil, permissions: [BusinessAccessRole]? = nil, createdTime: Int? = nil, updatedTime: Int? = nil) {
+    public init(country: Country? = nil, createdTime: Int? = nil, currency: Currency? = nil, id: String, name: String? = nil, owner: AdAccountOwner? = nil, permissions: [BusinessAccessRole]? = nil, updatedTime: Int? = nil) {
+        self.country = country
+        self.createdTime = createdTime
+        self.currency = currency
         self.id = id
         self.name = name
         self.owner = owner
-        self.country = country
-        self.currency = currency
         self.permissions = permissions
-        self.createdTime = createdTime
         self.updatedTime = updatedTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case country
+        case createdTime = "created_time"
+        case currency
         case id
         case name
         case owner
-        case country
-        case currency
         case permissions
-        case createdTime = "created_time"
         case updatedTime = "updated_time"
     }
 
@@ -49,13 +52,13 @@ public struct AdAccount: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(country, forKey: .country)
+        try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(currency, forKey: .currency)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(owner, forKey: .owner)
-        try container.encodeIfPresent(country, forKey: .country)
-        try container.encodeIfPresent(currency, forKey: .currency)
         try container.encodeIfPresent(permissions, forKey: .permissions)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
         try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
     }
 }

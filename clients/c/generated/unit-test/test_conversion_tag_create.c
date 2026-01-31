@@ -22,25 +22,27 @@ conversion_tag_create_t* instantiate_conversion_tag_create(int include_optional)
   conversion_tag_create_t* conversion_tag_create = NULL;
   if (include_optional) {
     conversion_tag_create = conversion_tag_create_create(
-      true,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       0.6,
-      true,
-      true,
-      true,
-      true,
-      true,
-      "ACME Tools Tag"
+      "ACME Checkout Test Tag"
     );
   } else {
     conversion_tag_create = conversion_tag_create_create(
-      true,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       0.6,
-      true,
-      true,
-      true,
-      true,
-      true,
-      "ACME Tools Tag"
+      "ACME Checkout Test Tag"
     );
   }
 

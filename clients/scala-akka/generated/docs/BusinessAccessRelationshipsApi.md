@@ -4,6 +4,10 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsCreateWithHttpInfo**](BusinessAccessRelationshipsApi.md#brandAccountsCreateWithHttpInfo) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
+[**brandAccountsUpdateWithHttpInfo**](BusinessAccessRelationshipsApi.md#brandAccountsUpdateWithHttpInfo) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessMembershipWithHttpInfo**](BusinessAccessRelationshipsApi.md#deleteBusinessMembershipWithHttpInfo) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
@@ -14,9 +18,193 @@ Method | HTTP request | Description
 [**getBusinessMembersWithHttpInfo**](BusinessAccessRelationshipsApi.md#getBusinessMembersWithHttpInfo) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
 [**getBusinessPartnersWithHttpInfo**](BusinessAccessRelationshipsApi.md#getBusinessPartnersWithHttpInfo) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
+[**systemUserUpdateWithHttpInfo**](BusinessAccessRelationshipsApi.md#systemUserUpdateWithHttpInfo) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 [**updateBusinessMembershipsWithHttpInfo**](BusinessAccessRelationshipsApi.md#updateBusinessMembershipsWithHttpInfo) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+
+## brandAccountsCreate
+
+> brandAccountsCreate(brandAccountsCreateRequest): ApiRequest[BrandAccountsCreate200Response]
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
+    val businessHierarchyId: String = 7009386637860 // String | business hierarchy node id
+
+    val brandAccountsCreateRequest: BrandAccountsCreateRequest =  // BrandAccountsCreateRequest | 
+    
+    val request = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsCreate")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsCreate")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **String**| business hierarchy node id |
+ **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  |
+
+### Return type
+
+ApiRequest[[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid parameters. |  -  |
+| **0** | Unexpected error |  -  |
+
+
+## brandAccountsUpdate
+
+> brandAccountsUpdate(brandAccountsUpdateRequest): ApiRequest[BrandAccountsCreate200Response]
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
+    val businessHierarchyId: String = 7009386637860 // String | business hierarchy node id
+
+    val brandAccountId: String = 729090764583391194 // String | Unique identifier of a brand account.
+
+    val brandAccountsUpdateRequest: BrandAccountsUpdateRequest =  // BrandAccountsUpdateRequest | 
+    
+    val request = apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsUpdate")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsUpdate")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **String**| business hierarchy node id |
+ **brandAccountId** | **String**| Unique identifier of a brand account. |
+ **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  |
+
+### Return type
+
+ApiRequest[[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid parameters. |  -  |
+| **401** | Not authenticated to update Brand Account |  -  |
+| **403** | Not authorized to update Brand Account |  -  |
+| **404** | Brand account not found |  -  |
+| **409** | This account is not a brand account. |  -  |
+| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
+| **0** | Unexpected error |  -  |
 
 
 ## deleteBusinessMembership
@@ -309,6 +497,8 @@ object Example extends App {
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
     val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
 
+    val fetchSystemUsers: Boolean = true // Boolean | Fetches system users if True. Fetches regular user employees if False.
+
     val assetsSummary: Boolean = true // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 
     val businessRoles: Seq[MemberBusinessRole] =  // Seq[MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
@@ -321,7 +511,7 @@ object Example extends App {
 
     val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
-    val request = apiInstance.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+    val request = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -350,6 +540,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
+ **fetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional]
  **assetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional]
  **businessRoles** | [**Seq[MemberBusinessRole]**](MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional]
  **memberIds** | **String**| A list of business members ids separated by comma. | [optional]
@@ -476,6 +667,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
+| **0** | Unexpected error |  -  |
+
+
+## systemUserUpdate
+
+> systemUserUpdate(systemUserUpdateRequest): ApiRequest[Unit]
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
+    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+
+    val systemUserId: String = 729090764583391194 // String | Unique identifier of a system user.
+
+    val systemUserUpdateRequest: SystemUserUpdateRequest =  // SystemUserUpdateRequest | 
+    
+    val request = apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling BusinessAccessRelationshipsApi#systemUserUpdate")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling BusinessAccessRelationshipsApi#systemUserUpdate")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessId** | **String**| Unique identifier of the requesting business. |
+ **systemUserId** | **String**| Unique identifier of a system user. |
+ **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  |
+
+### Return type
+
+
+ApiRequest[Unit] (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | System user updated successfully. |  -  |
+| **400** | Invalid parameters. |  -  |
 | **0** | Unexpected error |  -  |
 
 

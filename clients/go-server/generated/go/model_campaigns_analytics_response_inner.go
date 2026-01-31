@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,8 +16,8 @@ package openapi
 
 type CampaignsAnalyticsResponseInner struct {
 
-	// The ID of the campaing that this metrics belongs to.
-	CAMPAIGN_ID string `json:"CAMPAIGN_ID" validate:"regexp=^\\\\d+$"`
+	// The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
+	CAMPAIGN_ID string `json:"CAMPAIGN_ID,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE string `json:"DATE,omitempty"`
@@ -25,15 +25,6 @@ type CampaignsAnalyticsResponseInner struct {
 
 // AssertCampaignsAnalyticsResponseInnerRequired checks if the required fields are not zero-ed
 func AssertCampaignsAnalyticsResponseInnerRequired(obj CampaignsAnalyticsResponseInner) error {
-	elements := map[string]interface{}{
-		"CAMPAIGN_ID": obj.CAMPAIGN_ID,
-	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
-		}
-	}
-
 	return nil
 }
 

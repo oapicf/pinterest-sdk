@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **IMAGE_LINK_LENGTH_TOO_LONG** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **IMAGE_LINK_MISSING** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **INVALID_DOMAIN** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
-**ITEMID_MISSING** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
+**ITEMID_MISSING** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **LINK_FORMAT_INVALID** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **LINK_LENGTH_TOO_LONG** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **LIST_PRICE_INVALID** | Pointer to [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
@@ -297,31 +297,6 @@ SetINVALID_DOMAIN sets INVALID_DOMAIN field to given value.
 
 HasINVALID_DOMAIN returns a boolean if a field has been set.
 
-### GetITEMID_MISSING
-
-`func (o *CatalogsItemValidationErrors) GetITEMID_MISSING() CatalogsItemValidationDetails`
-
-GetITEMID_MISSING returns the ITEMID_MISSING field if non-nil, zero value otherwise.
-
-### GetITEMID_MISSINGOk
-
-`func (o *CatalogsItemValidationErrors) GetITEMID_MISSINGOk() (*CatalogsItemValidationDetails, bool)`
-
-GetITEMID_MISSINGOk returns a tuple with the ITEMID_MISSING field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetITEMID_MISSING
-
-`func (o *CatalogsItemValidationErrors) SetITEMID_MISSING(v CatalogsItemValidationDetails)`
-
-SetITEMID_MISSING sets ITEMID_MISSING field to given value.
-
-### HasITEMID_MISSING
-
-`func (o *CatalogsItemValidationErrors) HasITEMID_MISSING() bool`
-
-HasITEMID_MISSING returns a boolean if a field has been set.
-
 ### GetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
 
 `func (o *CatalogsItemValidationErrors) GetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE() CatalogsItemValidationDetails`
@@ -346,6 +321,31 @@ SetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE sets ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE field 
 `func (o *CatalogsItemValidationErrors) HasITEM_MAIN_IMAGE_DOWNLOAD_FAILURE() bool`
 
 HasITEM_MAIN_IMAGE_DOWNLOAD_FAILURE returns a boolean if a field has been set.
+
+### GetITEMID_MISSING
+
+`func (o *CatalogsItemValidationErrors) GetITEMID_MISSING() CatalogsItemValidationDetails`
+
+GetITEMID_MISSING returns the ITEMID_MISSING field if non-nil, zero value otherwise.
+
+### GetITEMID_MISSINGOk
+
+`func (o *CatalogsItemValidationErrors) GetITEMID_MISSINGOk() (*CatalogsItemValidationDetails, bool)`
+
+GetITEMID_MISSINGOk returns a tuple with the ITEMID_MISSING field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetITEMID_MISSING
+
+`func (o *CatalogsItemValidationErrors) SetITEMID_MISSING(v CatalogsItemValidationDetails)`
+
+SetITEMID_MISSING sets ITEMID_MISSING field to given value.
+
+### HasITEMID_MISSING
+
+`func (o *CatalogsItemValidationErrors) HasITEMID_MISSING() bool`
+
+HasITEMID_MISSING returns a boolean if a field has been set.
 
 ### GetLINK_FORMAT_INVALID
 

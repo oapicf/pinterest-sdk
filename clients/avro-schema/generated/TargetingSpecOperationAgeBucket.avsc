@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationAgeBucket",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationAgeBucket_field",
+        "symbols": [
+          "AGE_BUCKET"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationAgeBucket_operation",
+        "symbols": [
+          "SET"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.TargetingSpecAgeBucket"
+      },
+      "doc": ""
+    }
+  ]
+
+}

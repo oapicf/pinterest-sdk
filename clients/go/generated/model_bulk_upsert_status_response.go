@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &BulkUpsertStatusResponse{}
 
 // BulkUpsertStatusResponse ID of the bulk request.
 type BulkUpsertStatusResponse struct {
-	Status *BulkUpsertStatus `json:"status,omitempty"`
 	ResultUrl *string `json:"result_url,omitempty"`
+	Status *BulkUpsertStatus `json:"status,omitempty"`
 }
 
 // NewBulkUpsertStatusResponse instantiates a new BulkUpsertStatusResponse object
@@ -39,38 +39,6 @@ func NewBulkUpsertStatusResponse() *BulkUpsertStatusResponse {
 func NewBulkUpsertStatusResponseWithDefaults() *BulkUpsertStatusResponse {
 	this := BulkUpsertStatusResponse{}
 	return &this
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *BulkUpsertStatusResponse) GetStatus() BulkUpsertStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret BulkUpsertStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkUpsertStatusResponse) GetStatusOk() (*BulkUpsertStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *BulkUpsertStatusResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given BulkUpsertStatus and assigns it to the Status field.
-func (o *BulkUpsertStatusResponse) SetStatus(v BulkUpsertStatus) {
-	o.Status = &v
 }
 
 // GetResultUrl returns the ResultUrl field value if set, zero value otherwise.
@@ -105,6 +73,38 @@ func (o *BulkUpsertStatusResponse) SetResultUrl(v string) {
 	o.ResultUrl = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *BulkUpsertStatusResponse) GetStatus() BulkUpsertStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret BulkUpsertStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkUpsertStatusResponse) GetStatusOk() (*BulkUpsertStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *BulkUpsertStatusResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given BulkUpsertStatus and assigns it to the Status field.
+func (o *BulkUpsertStatusResponse) SetStatus(v BulkUpsertStatus) {
+	o.Status = &v
+}
+
 func (o BulkUpsertStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -115,11 +115,11 @@ func (o BulkUpsertStatusResponse) MarshalJSON() ([]byte, error) {
 
 func (o BulkUpsertStatusResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.ResultUrl) {
 		toSerialize["result_url"] = o.ResultUrl
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

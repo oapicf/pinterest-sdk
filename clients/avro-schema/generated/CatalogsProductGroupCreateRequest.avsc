@@ -5,15 +5,20 @@
   "name": "CatalogsProductGroupCreateRequest",
   "fields": [
     {
-      "name": "name",
-      "type": "string",
-      "doc": ""
-    },
-    {
       "name": "description",
       "type": ["null", "string"],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "Catalog Feed id pertaining to the catalog product group."
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsProductGroupFiltersRequest",
+      "doc": ""
     },
     {
       "name": "is_featured",
@@ -22,14 +27,9 @@
       "default": false
     },
     {
-      "name": "filters",
-      "type": "model.CatalogsProductGroupFiltersRequest",
-      "doc": ""
-    },
-    {
-      "name": "feed_id",
+      "name": "name",
       "type": "string",
-      "doc": "Catalog Feed id pertaining to the catalog product group."
+      "doc": ""
     }
   ]
 

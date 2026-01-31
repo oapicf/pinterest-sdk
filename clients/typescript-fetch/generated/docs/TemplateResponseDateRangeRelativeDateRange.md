@@ -7,9 +7,9 @@ The relative date range of the template
 
 Name | Type
 ------------ | -------------
-`type` | string
-`startDaysInPast` | number
 `endDaysInPast` | number
+`startDaysInPast` | number
+`type` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { TemplateResponseDateRangeRelativeDateRange } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "type": relative,
-  "startDaysInPast": 14,
   "endDaysInPast": 7,
+  "startDaysInPast": 14,
+  "type": relative,
 } satisfies TemplateResponseDateRangeRelativeDateRange
 
 console.log(example)

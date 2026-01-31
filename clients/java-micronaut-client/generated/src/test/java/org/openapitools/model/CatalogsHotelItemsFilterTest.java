@@ -23,6 +23,14 @@ public class CatalogsHotelItemsFilterTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -36,14 +44,6 @@ public class CatalogsHotelItemsFilterTest {
     @Test
     public void hotelIdsTest() {
         // TODO: test hotelIds
-    }
-
-    /**
-     * Test the property 'catalogId'
-     */
-    @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
     }
 
 }

@@ -1,0 +1,50 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TermsOfService"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TermsOfService"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TermsOfService {
+    title = TermsOfService
+    description = TermsOfService
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "The ID of the ad account."
+          optional = false
+        }
+        has_accepted {
+          type =  boolean
+          description = "Whether the ad account has accepted terms of service."
+          optional = false
+        }
+        html {
+          type =  string
+          description = "The terms of service content"
+          optional = false
+        }
+        id {
+          type =  string
+          description = "The ID of the terms of service"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TermsOfService {
+    title = TermsOfService
+    description = TermsOfService
+    implements = openapi_server.resourceTypes.TermsOfService
+
+  }
+}

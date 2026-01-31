@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  |  |
 | **negated** | **Boolean** |  | [optional][default to false] |
+| **values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsProductGroupCurrencyCriteria.new(
-  values: null,
-  negated: null
+  negated: null,
+  values: null
 )
 ```
 

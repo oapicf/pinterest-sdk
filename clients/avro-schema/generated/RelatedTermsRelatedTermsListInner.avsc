@@ -5,17 +5,17 @@
   "name": "RelatedTermsRelatedTermsListInner",
   "fields": [
     {
-      "name": "term",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "related_terms",
       "type": ["null", {
         "type": "array",
         "items": "string"
       }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "term",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     }

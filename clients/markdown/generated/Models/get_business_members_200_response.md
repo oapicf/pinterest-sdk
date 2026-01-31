@@ -3,8 +3,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **items** | [**List**](UserBusinessRoleBinding.md) | List of business members. | [default to null] |
 | **bookmark** | **String** |  | [optional] [default to null] |
+| **items** | [**List**](UserBusinessRoleBinding.md) | List of business members. | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

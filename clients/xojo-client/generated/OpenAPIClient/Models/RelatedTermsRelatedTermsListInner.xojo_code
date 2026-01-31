@@ -2,12 +2,12 @@
 Protected Class RelatedTermsRelatedTermsListInner
 
 	#tag Property, Flags = &h0
-		term As Xoson.O.OptionalString
+		related_terms() As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		related_terms() As String
+		term As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -48,7 +48,7 @@ Protected Class RelatedTermsRelatedTermsListInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="term"
+			Name="related_terms"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -56,7 +56,7 @@ Protected Class RelatedTermsRelatedTermsListInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="related_terms"
+			Name="term"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

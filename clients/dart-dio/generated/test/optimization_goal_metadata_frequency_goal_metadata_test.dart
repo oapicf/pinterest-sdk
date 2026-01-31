@@ -7,6 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(OptimizationGoalMetadataFrequencyGoalMetadata, () {
+    // Frequency target can only be between 2 and 20
     // int frequency
     test('to test the property `frequency`', () async {
       // TODO

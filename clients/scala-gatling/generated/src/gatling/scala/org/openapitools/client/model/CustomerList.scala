@@ -7,6 +7,8 @@ case class CustomerList (
     _adAccountId: Option[String],
     /* Creation time. Unix timestamp in seconds. */
     _createdTime: Option[Number],
+    /* Customer list errors */
+    _exceptions: Option[Any],
     /* Customer list ID. */
     _id: Option[String],
     /* Customer list name. */
@@ -22,15 +24,13 @@ case class CustomerList (
     /* Always \"customerlist\". */
     _type: Option[String],
     /* Last update time. Unix timestamp in seconds. */
-    _updatedTime: Option[Number],
-    /* Customer list errors */
-    _exceptions: Option[Any]
+    _updatedTime: Option[Number]
 )
 object CustomerList {
-    def toStringBody(var_adAccountId: Object, var_createdTime: Object, var_id: Object, var_name: Object, var_numBatches: Object, var_numRemovedUserRecords: Object, var_numUploadedUserRecords: Object, var_status: Object, var_type: Object, var_updatedTime: Object, var_exceptions: Object) =
+    def toStringBody(var_adAccountId: Object, var_createdTime: Object, var_exceptions: Object, var_id: Object, var_name: Object, var_numBatches: Object, var_numRemovedUserRecords: Object, var_numUploadedUserRecords: Object, var_status: Object, var_type: Object, var_updatedTime: Object) =
         s"""
         | {
-        | "adAccountId":$var_adAccountId,"createdTime":$var_createdTime,"id":$var_id,"name":$var_name,"numBatches":$var_numBatches,"numRemovedUserRecords":$var_numRemovedUserRecords,"numUploadedUserRecords":$var_numUploadedUserRecords,"status":$var_status,"type":$var_type,"updatedTime":$var_updatedTime,"exceptions":$var_exceptions
+        | "adAccountId":$var_adAccountId,"createdTime":$var_createdTime,"exceptions":$var_exceptions,"id":$var_id,"name":$var_name,"numBatches":$var_numBatches,"numRemovedUserRecords":$var_numRemovedUserRecords,"numUploadedUserRecords":$var_numUploadedUserRecords,"status":$var_status,"type":$var_type,"updatedTime":$var_updatedTime
         | }
         """.stripMargin
 }

@@ -12,10 +12,10 @@ module AdAccountsAudiencesSharedAccountsList200Response =
 
   [<CLIMutable>]
   type AdAccountsAudiencesSharedAccountsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : SharedAudienceAccount[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : SharedAudienceAccount[];
   }
 
   //#endregion

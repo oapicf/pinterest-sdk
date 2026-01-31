@@ -5,14 +5,6 @@ context("Test TemplateResponse")
 
 model_instance <- TemplateResponse$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # Template ID
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
 test_that("ad_account_id", {
   # tests for the property `ad_account_id` (character)
   # ID of the Ad Account that owns the template
@@ -29,57 +21,12 @@ test_that("ad_account_ids", {
   #expect_equal(model.instance$`ad_account_ids`, "EXPECTED_RESULT")
 })
 
-test_that("user_id", {
-  # tests for the property `user_id` (character)
-  # ID of the user who created the template
+test_that("click_window_days", {
+  # tests for the property `click_window_days` (numeric)
+  # The length of the sliding window over which click conversions will be attributed
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
-})
-
-test_that("name", {
-  # tests for the property `name` (character)
-  # Template Name
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("report_start_relative_days_in_past", {
-  # tests for the property `report_start_relative_days_in_past` (numeric)
-  # The number of days prior to the day the report will be delivered at which the report will start
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_start_relative_days_in_past`, "EXPECTED_RESULT")
-})
-
-test_that("report_end_relative_days_in_past", {
-  # tests for the property `report_end_relative_days_in_past` (numeric)
-  # The number of days prior to the day the report will be delivered at which the report will end
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_end_relative_days_in_past`, "EXPECTED_RESULT")
-})
-
-test_that("date_range", {
-  # tests for the property `date_range` (TemplateResponseDateRange)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`date_range`, "EXPECTED_RESULT")
-})
-
-test_that("report_level", {
-  # tests for the property `report_level` (MetricsReportingLevel)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_level`, "EXPECTED_RESULT")
-})
-
-test_that("report_format", {
-  # tests for the property `report_format` (DataOutputFormat)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_format`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`click_window_days`, "EXPECTED_RESULT")
 })
 
 test_that("columns", {
@@ -90,27 +37,35 @@ test_that("columns", {
   #expect_equal(model.instance$`columns`, "EXPECTED_RESULT")
 })
 
-test_that("granularity", {
-  # tests for the property `granularity` (Granularity)
+test_that("conversion_report_time_type", {
+  # tests for the property `conversion_report_time_type` (character)
+  # Conversion report time type
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`granularity`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`conversion_report_time_type`, "EXPECTED_RESULT")
 })
 
-test_that("view_window_days", {
-  # tests for the property `view_window_days` (numeric)
-  # The length of the sliding window over which view conversions will be attributed
+test_that("creation_source", {
+  # tests for the property `creation_source` (character)
+  # The surface used to create this template
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`view_window_days`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`creation_source`, "EXPECTED_RESULT")
 })
 
-test_that("click_window_days", {
-  # tests for the property `click_window_days` (numeric)
-  # The length of the sliding window over which click conversions will be attributed
+test_that("custom_column_ids", {
+  # tests for the property `custom_column_ids` (array[character])
+  # A list of custom column IDs
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`click_window_days`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`custom_column_ids`, "EXPECTED_RESULT")
+})
+
+test_that("date_range", {
+  # tests for the property `date_range` (TemplateResponseDateRange)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`date_range`, "EXPECTED_RESULT")
 })
 
 test_that("engagement_window_days", {
@@ -121,20 +76,43 @@ test_that("engagement_window_days", {
   #expect_equal(model.instance$`engagement_window_days`, "EXPECTED_RESULT")
 })
 
-test_that("conversion_report_time_type", {
-  # tests for the property `conversion_report_time_type` (character)
-  # Conversion report time type
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`conversion_report_time_type`, "EXPECTED_RESULT")
-})
-
 test_that("filters_json", {
   # tests for the property `filters_json` (character)
   # A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:&lt;br&gt; \&quot;field\&quot;: The column name&lt;br&gt; \&quot;operator\&quot;: The operator. Allowed operators: [\&quot;&#x3D;\&quot;, \&quot;!&#x3D;\&quot;, \&quot;in\&quot;, \&quot;not_in\&quot;, \&quot;~\&quot;, \&quot;&gt;\&quot;, \&quot;&lt;\&quot;, \&quot;contains_substring\&quot;]&lt;br&gt; \&quot;value\&quot;: A single value or a list of values
 
   # uncomment below to test the property
   #expect_equal(model.instance$`filters_json`, "EXPECTED_RESULT")
+})
+
+test_that("granularity", {
+  # tests for the property `granularity` (Granularity)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`granularity`, "EXPECTED_RESULT")
+})
+
+test_that("id", {
+  # tests for the property `id` (character)
+  # Template ID
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("ingestion_sources", {
+  # tests for the property `ingestion_sources` (array[character])
+  # The filter on the conversion ingestion source method for conversion metrics
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ingestion_sources`, "EXPECTED_RESULT")
+})
+
+test_that("is_deleted", {
+  # tests for the property `is_deleted` (character)
+  # A boolean that indicates if the template has been deleted
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_deleted`, "EXPECTED_RESULT")
 })
 
 test_that("is_owned_by_user", {
@@ -153,36 +131,42 @@ test_that("is_scheduled", {
   #expect_equal(model.instance$`is_scheduled`, "EXPECTED_RESULT")
 })
 
-test_that("creation_source", {
-  # tests for the property `creation_source` (character)
-  # The surface used to create this template
+test_that("name", {
+  # tests for the property `name` (character)
+  # Template Name
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`creation_source`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("is_deleted", {
-  # tests for the property `is_deleted` (character)
-  # A boolean that indicates if the template has been deleted
+test_that("report_end_relative_days_in_past", {
+  # tests for the property `report_end_relative_days_in_past` (numeric)
+  # The number of days prior to the day the report will be delivered at which the report will end
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`is_deleted`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`report_end_relative_days_in_past`, "EXPECTED_RESULT")
 })
 
-test_that("updated_time", {
-  # tests for the property `updated_time` (numeric)
-  # Time of last update in seconds since Unix epoch
+test_that("report_format", {
+  # tests for the property `report_format` (DataOutputFormat)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`updated_time`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`report_format`, "EXPECTED_RESULT")
 })
 
-test_that("custom_column_ids", {
-  # tests for the property `custom_column_ids` (array[character])
-  # A list of custom column IDs
+test_that("report_level", {
+  # tests for the property `report_level` (MetricsReportingLevel)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`custom_column_ids`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`report_level`, "EXPECTED_RESULT")
+})
+
+test_that("report_start_relative_days_in_past", {
+  # tests for the property `report_start_relative_days_in_past` (numeric)
+  # The number of days prior to the day the report will be delivered at which the report will start
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`report_start_relative_days_in_past`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
@@ -193,10 +177,26 @@ test_that("type", {
   #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })
 
-test_that("ingestion_sources", {
-  # tests for the property `ingestion_sources` (array[character])
-  # The filter on the conversion ingestion source method for conversion metrics
+test_that("updated_time", {
+  # tests for the property `updated_time` (numeric)
+  # Time of last update in seconds since Unix epoch
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ingestion_sources`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`updated_time`, "EXPECTED_RESULT")
+})
+
+test_that("user_id", {
+  # tests for the property `user_id` (character)
+  # ID of the user who created the template
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
+})
+
+test_that("view_window_days", {
+  # tests for the property `view_window_days` (numeric)
+  # The length of the sliding window over which view conversions will be attributed
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`view_window_days`, "EXPECTED_RESULT")
 })

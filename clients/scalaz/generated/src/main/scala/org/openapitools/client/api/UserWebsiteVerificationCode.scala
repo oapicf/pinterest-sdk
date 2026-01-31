@@ -12,16 +12,16 @@ import org.joda.time.DateTime
 import UserWebsiteVerificationCode._
 
 case class UserWebsiteVerificationCode (
-  /* Code to check against the user claiming the website */
-  verificationCode: Option[String],
-/* DNS TXT record to check against for the website to be claimed */
+  /* DNS TXT record to check against for the website to be claimed */
   dnsTxtRecord: Option[String],
-/* Metatag the verification process searchs for the website to be claimed */
-  metatag: Option[String],
+/* A full html file to upload to the website in order for it to be claimed */
+  fileContent: Option[String],
 /* File expected to find on the website being claimed */
   filename: Option[String],
-/* A full html file to upload to the website in order for it to be claimed */
-  fileContent: Option[String])
+/* Metatag the verification process searchs for the website to be claimed */
+  metatag: Option[String],
+/* Code to check against the user claiming the website */
+  verificationCode: Option[String])
 
 object UserWebsiteVerificationCode {
   import DateTimeCodecs._

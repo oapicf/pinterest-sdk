@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,22 +20,24 @@ import (
 // checks if the ConversionTagCreate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ConversionTagCreate{}
 
-// ConversionTagCreate struct for ConversionTagCreate
+// ConversionTagCreate Resource create operation model.
 type ConversionTagCreate struct {
-	// Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+	// Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	AemDbEnabled NullableBool `json:"aem_db_enabled,omitempty"`
+	// Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
 	AemEnabled NullableBool `json:"aem_enabled,omitempty"`
+	// Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	AemExternalIdEnabled NullableBool `json:"aem_external_id_enabled,omitempty"`
+	// Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	AemFnlnEnabled NullableBool `json:"aem_fnln_enabled,omitempty"`
+	// Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	AemGeEnabled NullableBool `json:"aem_ge_enabled,omitempty"`
+	// Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	AemLocEnabled NullableBool `json:"aem_loc_enabled,omitempty"`
+	// Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	AemPhEnabled NullableBool `json:"aem_ph_enabled,omitempty"`
 	// Metadata ingestion frequency.
 	MdFrequency NullableFloat32 `json:"md_frequency,omitempty"`
-	// Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	AemFnlnEnabled NullableBool `json:"aem_fnln_enabled,omitempty"`
-	// Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	AemPhEnabled NullableBool `json:"aem_ph_enabled,omitempty"`
-	// Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	AemGeEnabled NullableBool `json:"aem_ge_enabled,omitempty"`
-	// Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	AemDbEnabled NullableBool `json:"aem_db_enabled,omitempty"`
-	// Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	AemLocEnabled NullableBool `json:"aem_loc_enabled,omitempty"`
 	// Conversion tag name.
 	Name string `json:"name"`
 }
@@ -48,20 +50,22 @@ type _ConversionTagCreate ConversionTagCreate
 // will change when the set of required properties is changed
 func NewConversionTagCreate(name string) *ConversionTagCreate {
 	this := ConversionTagCreate{}
-	var aemEnabled bool = false
-	this.AemEnabled = *NewNullableBool(&aemEnabled)
-	var mdFrequency float32 = 1
-	this.MdFrequency = *NewNullableFloat32(&mdFrequency)
-	var aemFnlnEnabled bool = false
-	this.AemFnlnEnabled = *NewNullableBool(&aemFnlnEnabled)
-	var aemPhEnabled bool = false
-	this.AemPhEnabled = *NewNullableBool(&aemPhEnabled)
-	var aemGeEnabled bool = false
-	this.AemGeEnabled = *NewNullableBool(&aemGeEnabled)
 	var aemDbEnabled bool = false
 	this.AemDbEnabled = *NewNullableBool(&aemDbEnabled)
+	var aemEnabled bool = false
+	this.AemEnabled = *NewNullableBool(&aemEnabled)
+	var aemExternalIdEnabled bool = false
+	this.AemExternalIdEnabled = *NewNullableBool(&aemExternalIdEnabled)
+	var aemFnlnEnabled bool = false
+	this.AemFnlnEnabled = *NewNullableBool(&aemFnlnEnabled)
+	var aemGeEnabled bool = false
+	this.AemGeEnabled = *NewNullableBool(&aemGeEnabled)
 	var aemLocEnabled bool = false
 	this.AemLocEnabled = *NewNullableBool(&aemLocEnabled)
+	var aemPhEnabled bool = false
+	this.AemPhEnabled = *NewNullableBool(&aemPhEnabled)
+	var mdFrequency float32 = 1
+	this.MdFrequency = *NewNullableFloat32(&mdFrequency)
 	this.Name = name
 	return &this
 }
@@ -71,231 +75,23 @@ func NewConversionTagCreate(name string) *ConversionTagCreate {
 // but it doesn't guarantee that properties required by API are set
 func NewConversionTagCreateWithDefaults() *ConversionTagCreate {
 	this := ConversionTagCreate{}
-	var aemEnabled bool = false
-	this.AemEnabled = *NewNullableBool(&aemEnabled)
-	var mdFrequency float32 = 1
-	this.MdFrequency = *NewNullableFloat32(&mdFrequency)
-	var aemFnlnEnabled bool = false
-	this.AemFnlnEnabled = *NewNullableBool(&aemFnlnEnabled)
-	var aemPhEnabled bool = false
-	this.AemPhEnabled = *NewNullableBool(&aemPhEnabled)
-	var aemGeEnabled bool = false
-	this.AemGeEnabled = *NewNullableBool(&aemGeEnabled)
 	var aemDbEnabled bool = false
 	this.AemDbEnabled = *NewNullableBool(&aemDbEnabled)
+	var aemEnabled bool = false
+	this.AemEnabled = *NewNullableBool(&aemEnabled)
+	var aemExternalIdEnabled bool = false
+	this.AemExternalIdEnabled = *NewNullableBool(&aemExternalIdEnabled)
+	var aemFnlnEnabled bool = false
+	this.AemFnlnEnabled = *NewNullableBool(&aemFnlnEnabled)
+	var aemGeEnabled bool = false
+	this.AemGeEnabled = *NewNullableBool(&aemGeEnabled)
 	var aemLocEnabled bool = false
 	this.AemLocEnabled = *NewNullableBool(&aemLocEnabled)
+	var aemPhEnabled bool = false
+	this.AemPhEnabled = *NewNullableBool(&aemPhEnabled)
+	var mdFrequency float32 = 1
+	this.MdFrequency = *NewNullableFloat32(&mdFrequency)
 	return &this
-}
-
-// GetAemEnabled returns the AemEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionTagCreate) GetAemEnabled() bool {
-	if o == nil || IsNil(o.AemEnabled.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.AemEnabled.Get()
-}
-
-// GetAemEnabledOk returns a tuple with the AemEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionTagCreate) GetAemEnabledOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AemEnabled.Get(), o.AemEnabled.IsSet()
-}
-
-// HasAemEnabled returns a boolean if a field has been set.
-func (o *ConversionTagCreate) HasAemEnabled() bool {
-	if o != nil && o.AemEnabled.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAemEnabled gets a reference to the given NullableBool and assigns it to the AemEnabled field.
-func (o *ConversionTagCreate) SetAemEnabled(v bool) {
-	o.AemEnabled.Set(&v)
-}
-// SetAemEnabledNil sets the value for AemEnabled to be an explicit nil
-func (o *ConversionTagCreate) SetAemEnabledNil() {
-	o.AemEnabled.Set(nil)
-}
-
-// UnsetAemEnabled ensures that no value is present for AemEnabled, not even an explicit nil
-func (o *ConversionTagCreate) UnsetAemEnabled() {
-	o.AemEnabled.Unset()
-}
-
-// GetMdFrequency returns the MdFrequency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionTagCreate) GetMdFrequency() float32 {
-	if o == nil || IsNil(o.MdFrequency.Get()) {
-		var ret float32
-		return ret
-	}
-	return *o.MdFrequency.Get()
-}
-
-// GetMdFrequencyOk returns a tuple with the MdFrequency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionTagCreate) GetMdFrequencyOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.MdFrequency.Get(), o.MdFrequency.IsSet()
-}
-
-// HasMdFrequency returns a boolean if a field has been set.
-func (o *ConversionTagCreate) HasMdFrequency() bool {
-	if o != nil && o.MdFrequency.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMdFrequency gets a reference to the given NullableFloat32 and assigns it to the MdFrequency field.
-func (o *ConversionTagCreate) SetMdFrequency(v float32) {
-	o.MdFrequency.Set(&v)
-}
-// SetMdFrequencyNil sets the value for MdFrequency to be an explicit nil
-func (o *ConversionTagCreate) SetMdFrequencyNil() {
-	o.MdFrequency.Set(nil)
-}
-
-// UnsetMdFrequency ensures that no value is present for MdFrequency, not even an explicit nil
-func (o *ConversionTagCreate) UnsetMdFrequency() {
-	o.MdFrequency.Unset()
-}
-
-// GetAemFnlnEnabled returns the AemFnlnEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionTagCreate) GetAemFnlnEnabled() bool {
-	if o == nil || IsNil(o.AemFnlnEnabled.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.AemFnlnEnabled.Get()
-}
-
-// GetAemFnlnEnabledOk returns a tuple with the AemFnlnEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionTagCreate) GetAemFnlnEnabledOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AemFnlnEnabled.Get(), o.AemFnlnEnabled.IsSet()
-}
-
-// HasAemFnlnEnabled returns a boolean if a field has been set.
-func (o *ConversionTagCreate) HasAemFnlnEnabled() bool {
-	if o != nil && o.AemFnlnEnabled.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAemFnlnEnabled gets a reference to the given NullableBool and assigns it to the AemFnlnEnabled field.
-func (o *ConversionTagCreate) SetAemFnlnEnabled(v bool) {
-	o.AemFnlnEnabled.Set(&v)
-}
-// SetAemFnlnEnabledNil sets the value for AemFnlnEnabled to be an explicit nil
-func (o *ConversionTagCreate) SetAemFnlnEnabledNil() {
-	o.AemFnlnEnabled.Set(nil)
-}
-
-// UnsetAemFnlnEnabled ensures that no value is present for AemFnlnEnabled, not even an explicit nil
-func (o *ConversionTagCreate) UnsetAemFnlnEnabled() {
-	o.AemFnlnEnabled.Unset()
-}
-
-// GetAemPhEnabled returns the AemPhEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionTagCreate) GetAemPhEnabled() bool {
-	if o == nil || IsNil(o.AemPhEnabled.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.AemPhEnabled.Get()
-}
-
-// GetAemPhEnabledOk returns a tuple with the AemPhEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionTagCreate) GetAemPhEnabledOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AemPhEnabled.Get(), o.AemPhEnabled.IsSet()
-}
-
-// HasAemPhEnabled returns a boolean if a field has been set.
-func (o *ConversionTagCreate) HasAemPhEnabled() bool {
-	if o != nil && o.AemPhEnabled.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAemPhEnabled gets a reference to the given NullableBool and assigns it to the AemPhEnabled field.
-func (o *ConversionTagCreate) SetAemPhEnabled(v bool) {
-	o.AemPhEnabled.Set(&v)
-}
-// SetAemPhEnabledNil sets the value for AemPhEnabled to be an explicit nil
-func (o *ConversionTagCreate) SetAemPhEnabledNil() {
-	o.AemPhEnabled.Set(nil)
-}
-
-// UnsetAemPhEnabled ensures that no value is present for AemPhEnabled, not even an explicit nil
-func (o *ConversionTagCreate) UnsetAemPhEnabled() {
-	o.AemPhEnabled.Unset()
-}
-
-// GetAemGeEnabled returns the AemGeEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionTagCreate) GetAemGeEnabled() bool {
-	if o == nil || IsNil(o.AemGeEnabled.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.AemGeEnabled.Get()
-}
-
-// GetAemGeEnabledOk returns a tuple with the AemGeEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionTagCreate) GetAemGeEnabledOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AemGeEnabled.Get(), o.AemGeEnabled.IsSet()
-}
-
-// HasAemGeEnabled returns a boolean if a field has been set.
-func (o *ConversionTagCreate) HasAemGeEnabled() bool {
-	if o != nil && o.AemGeEnabled.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAemGeEnabled gets a reference to the given NullableBool and assigns it to the AemGeEnabled field.
-func (o *ConversionTagCreate) SetAemGeEnabled(v bool) {
-	o.AemGeEnabled.Set(&v)
-}
-// SetAemGeEnabledNil sets the value for AemGeEnabled to be an explicit nil
-func (o *ConversionTagCreate) SetAemGeEnabledNil() {
-	o.AemGeEnabled.Set(nil)
-}
-
-// UnsetAemGeEnabled ensures that no value is present for AemGeEnabled, not even an explicit nil
-func (o *ConversionTagCreate) UnsetAemGeEnabled() {
-	o.AemGeEnabled.Unset()
 }
 
 // GetAemDbEnabled returns the AemDbEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -340,6 +136,174 @@ func (o *ConversionTagCreate) UnsetAemDbEnabled() {
 	o.AemDbEnabled.Unset()
 }
 
+// GetAemEnabled returns the AemEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionTagCreate) GetAemEnabled() bool {
+	if o == nil || IsNil(o.AemEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AemEnabled.Get()
+}
+
+// GetAemEnabledOk returns a tuple with the AemEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionTagCreate) GetAemEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AemEnabled.Get(), o.AemEnabled.IsSet()
+}
+
+// HasAemEnabled returns a boolean if a field has been set.
+func (o *ConversionTagCreate) HasAemEnabled() bool {
+	if o != nil && o.AemEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAemEnabled gets a reference to the given NullableBool and assigns it to the AemEnabled field.
+func (o *ConversionTagCreate) SetAemEnabled(v bool) {
+	o.AemEnabled.Set(&v)
+}
+// SetAemEnabledNil sets the value for AemEnabled to be an explicit nil
+func (o *ConversionTagCreate) SetAemEnabledNil() {
+	o.AemEnabled.Set(nil)
+}
+
+// UnsetAemEnabled ensures that no value is present for AemEnabled, not even an explicit nil
+func (o *ConversionTagCreate) UnsetAemEnabled() {
+	o.AemEnabled.Unset()
+}
+
+// GetAemExternalIdEnabled returns the AemExternalIdEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionTagCreate) GetAemExternalIdEnabled() bool {
+	if o == nil || IsNil(o.AemExternalIdEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AemExternalIdEnabled.Get()
+}
+
+// GetAemExternalIdEnabledOk returns a tuple with the AemExternalIdEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionTagCreate) GetAemExternalIdEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AemExternalIdEnabled.Get(), o.AemExternalIdEnabled.IsSet()
+}
+
+// HasAemExternalIdEnabled returns a boolean if a field has been set.
+func (o *ConversionTagCreate) HasAemExternalIdEnabled() bool {
+	if o != nil && o.AemExternalIdEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAemExternalIdEnabled gets a reference to the given NullableBool and assigns it to the AemExternalIdEnabled field.
+func (o *ConversionTagCreate) SetAemExternalIdEnabled(v bool) {
+	o.AemExternalIdEnabled.Set(&v)
+}
+// SetAemExternalIdEnabledNil sets the value for AemExternalIdEnabled to be an explicit nil
+func (o *ConversionTagCreate) SetAemExternalIdEnabledNil() {
+	o.AemExternalIdEnabled.Set(nil)
+}
+
+// UnsetAemExternalIdEnabled ensures that no value is present for AemExternalIdEnabled, not even an explicit nil
+func (o *ConversionTagCreate) UnsetAemExternalIdEnabled() {
+	o.AemExternalIdEnabled.Unset()
+}
+
+// GetAemFnlnEnabled returns the AemFnlnEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionTagCreate) GetAemFnlnEnabled() bool {
+	if o == nil || IsNil(o.AemFnlnEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AemFnlnEnabled.Get()
+}
+
+// GetAemFnlnEnabledOk returns a tuple with the AemFnlnEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionTagCreate) GetAemFnlnEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AemFnlnEnabled.Get(), o.AemFnlnEnabled.IsSet()
+}
+
+// HasAemFnlnEnabled returns a boolean if a field has been set.
+func (o *ConversionTagCreate) HasAemFnlnEnabled() bool {
+	if o != nil && o.AemFnlnEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAemFnlnEnabled gets a reference to the given NullableBool and assigns it to the AemFnlnEnabled field.
+func (o *ConversionTagCreate) SetAemFnlnEnabled(v bool) {
+	o.AemFnlnEnabled.Set(&v)
+}
+// SetAemFnlnEnabledNil sets the value for AemFnlnEnabled to be an explicit nil
+func (o *ConversionTagCreate) SetAemFnlnEnabledNil() {
+	o.AemFnlnEnabled.Set(nil)
+}
+
+// UnsetAemFnlnEnabled ensures that no value is present for AemFnlnEnabled, not even an explicit nil
+func (o *ConversionTagCreate) UnsetAemFnlnEnabled() {
+	o.AemFnlnEnabled.Unset()
+}
+
+// GetAemGeEnabled returns the AemGeEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionTagCreate) GetAemGeEnabled() bool {
+	if o == nil || IsNil(o.AemGeEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AemGeEnabled.Get()
+}
+
+// GetAemGeEnabledOk returns a tuple with the AemGeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionTagCreate) GetAemGeEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AemGeEnabled.Get(), o.AemGeEnabled.IsSet()
+}
+
+// HasAemGeEnabled returns a boolean if a field has been set.
+func (o *ConversionTagCreate) HasAemGeEnabled() bool {
+	if o != nil && o.AemGeEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAemGeEnabled gets a reference to the given NullableBool and assigns it to the AemGeEnabled field.
+func (o *ConversionTagCreate) SetAemGeEnabled(v bool) {
+	o.AemGeEnabled.Set(&v)
+}
+// SetAemGeEnabledNil sets the value for AemGeEnabled to be an explicit nil
+func (o *ConversionTagCreate) SetAemGeEnabledNil() {
+	o.AemGeEnabled.Set(nil)
+}
+
+// UnsetAemGeEnabled ensures that no value is present for AemGeEnabled, not even an explicit nil
+func (o *ConversionTagCreate) UnsetAemGeEnabled() {
+	o.AemGeEnabled.Unset()
+}
+
 // GetAemLocEnabled returns the AemLocEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConversionTagCreate) GetAemLocEnabled() bool {
 	if o == nil || IsNil(o.AemLocEnabled.Get()) {
@@ -382,6 +346,90 @@ func (o *ConversionTagCreate) UnsetAemLocEnabled() {
 	o.AemLocEnabled.Unset()
 }
 
+// GetAemPhEnabled returns the AemPhEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionTagCreate) GetAemPhEnabled() bool {
+	if o == nil || IsNil(o.AemPhEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AemPhEnabled.Get()
+}
+
+// GetAemPhEnabledOk returns a tuple with the AemPhEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionTagCreate) GetAemPhEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AemPhEnabled.Get(), o.AemPhEnabled.IsSet()
+}
+
+// HasAemPhEnabled returns a boolean if a field has been set.
+func (o *ConversionTagCreate) HasAemPhEnabled() bool {
+	if o != nil && o.AemPhEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAemPhEnabled gets a reference to the given NullableBool and assigns it to the AemPhEnabled field.
+func (o *ConversionTagCreate) SetAemPhEnabled(v bool) {
+	o.AemPhEnabled.Set(&v)
+}
+// SetAemPhEnabledNil sets the value for AemPhEnabled to be an explicit nil
+func (o *ConversionTagCreate) SetAemPhEnabledNil() {
+	o.AemPhEnabled.Set(nil)
+}
+
+// UnsetAemPhEnabled ensures that no value is present for AemPhEnabled, not even an explicit nil
+func (o *ConversionTagCreate) UnsetAemPhEnabled() {
+	o.AemPhEnabled.Unset()
+}
+
+// GetMdFrequency returns the MdFrequency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionTagCreate) GetMdFrequency() float32 {
+	if o == nil || IsNil(o.MdFrequency.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.MdFrequency.Get()
+}
+
+// GetMdFrequencyOk returns a tuple with the MdFrequency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionTagCreate) GetMdFrequencyOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MdFrequency.Get(), o.MdFrequency.IsSet()
+}
+
+// HasMdFrequency returns a boolean if a field has been set.
+func (o *ConversionTagCreate) HasMdFrequency() bool {
+	if o != nil && o.MdFrequency.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMdFrequency gets a reference to the given NullableFloat32 and assigns it to the MdFrequency field.
+func (o *ConversionTagCreate) SetMdFrequency(v float32) {
+	o.MdFrequency.Set(&v)
+}
+// SetMdFrequencyNil sets the value for MdFrequency to be an explicit nil
+func (o *ConversionTagCreate) SetMdFrequencyNil() {
+	o.MdFrequency.Set(nil)
+}
+
+// UnsetMdFrequency ensures that no value is present for MdFrequency, not even an explicit nil
+func (o *ConversionTagCreate) UnsetMdFrequency() {
+	o.MdFrequency.Unset()
+}
+
 // GetName returns the Name field value
 func (o *ConversionTagCreate) GetName() string {
 	if o == nil {
@@ -416,26 +464,29 @@ func (o ConversionTagCreate) MarshalJSON() ([]byte, error) {
 
 func (o ConversionTagCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AemDbEnabled.IsSet() {
+		toSerialize["aem_db_enabled"] = o.AemDbEnabled.Get()
+	}
 	if o.AemEnabled.IsSet() {
 		toSerialize["aem_enabled"] = o.AemEnabled.Get()
 	}
-	if o.MdFrequency.IsSet() {
-		toSerialize["md_frequency"] = o.MdFrequency.Get()
+	if o.AemExternalIdEnabled.IsSet() {
+		toSerialize["aem_external_id_enabled"] = o.AemExternalIdEnabled.Get()
 	}
 	if o.AemFnlnEnabled.IsSet() {
 		toSerialize["aem_fnln_enabled"] = o.AemFnlnEnabled.Get()
 	}
-	if o.AemPhEnabled.IsSet() {
-		toSerialize["aem_ph_enabled"] = o.AemPhEnabled.Get()
-	}
 	if o.AemGeEnabled.IsSet() {
 		toSerialize["aem_ge_enabled"] = o.AemGeEnabled.Get()
 	}
-	if o.AemDbEnabled.IsSet() {
-		toSerialize["aem_db_enabled"] = o.AemDbEnabled.Get()
-	}
 	if o.AemLocEnabled.IsSet() {
 		toSerialize["aem_loc_enabled"] = o.AemLocEnabled.Get()
+	}
+	if o.AemPhEnabled.IsSet() {
+		toSerialize["aem_ph_enabled"] = o.AemPhEnabled.Get()
+	}
+	if o.MdFrequency.IsSet() {
+		toSerialize["md_frequency"] = o.MdFrequency.Get()
 	}
 	toSerialize["name"] = o.Name
 	return toSerialize, nil

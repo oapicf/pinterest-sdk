@@ -17,13 +17,15 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
+import { Media } from '../model/media';
+// @ts-ignore
 import { MediaList200Response } from '../model/mediaList200Response';
 // @ts-ignore
 import { MediaUpload } from '../model/mediaUpload';
 // @ts-ignore
-import { MediaUploadDetails } from '../model/mediaUploadDetails';
+import { MediaUploadCreate } from '../model/mediaUploadCreate';
 // @ts-ignore
-import { MediaUploadRequest } from '../model/mediaUploadRequest';
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -43,19 +45,19 @@ export class MediaService extends BaseService {
 
     /**
      * Register media upload
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file\&#39;s contents as the request\&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file\&#39;s contents as the request\&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * @endpoint post /media
-     * @param mediaUploadRequest Create a media upload request
+     * @param mediaUploadCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public mediaCreate(mediaUploadRequest: MediaUploadRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<MediaUpload>;
-    public mediaCreate(mediaUploadRequest: MediaUploadRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<MediaUpload>>;
-    public mediaCreate(mediaUploadRequest: MediaUploadRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<MediaUpload>>;
-    public mediaCreate(mediaUploadRequest: MediaUploadRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (mediaUploadRequest === null || mediaUploadRequest === undefined) {
-            throw new Error('Required parameter mediaUploadRequest was null or undefined when calling mediaCreate.');
+    public mediaCreate(mediaUploadCreate: MediaUploadCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<MediaUpload>;
+    public mediaCreate(mediaUploadCreate: MediaUploadCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<MediaUpload>>;
+    public mediaCreate(mediaUploadCreate: MediaUploadCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<MediaUpload>>;
+    public mediaCreate(mediaUploadCreate: MediaUploadCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (mediaUploadCreate === null || mediaUploadCreate === undefined) {
+            throw new Error('Required parameter mediaUploadCreate was null or undefined when calling mediaCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -100,7 +102,7 @@ export class MediaService extends BaseService {
         return this.httpClient.request<MediaUpload>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: mediaUploadRequest,
+                body: mediaUploadCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -113,16 +115,16 @@ export class MediaService extends BaseService {
 
     /**
      * Get media upload details
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * @endpoint get /media/{media_id}
-     * @param mediaId Media identifier
+     * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public mediaGet(mediaId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<MediaUploadDetails>;
-    public mediaGet(mediaId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<MediaUploadDetails>>;
-    public mediaGet(mediaId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<MediaUploadDetails>>;
+    public mediaGet(mediaId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Media>;
+    public mediaGet(mediaId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Media>>;
+    public mediaGet(mediaId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Media>>;
     public mediaGet(mediaId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (mediaId === null || mediaId === undefined) {
             throw new Error('Required parameter mediaId was null or undefined when calling mediaGet.');
@@ -158,7 +160,7 @@ export class MediaService extends BaseService {
 
         let localVarPath = `/media/${this.configuration.encodeParam({name: "mediaId", value: mediaId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<MediaUploadDetails>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<Media>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -173,10 +175,10 @@ export class MediaService extends BaseService {
 
     /**
      * List media uploads
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * @endpoint get /media
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options

@@ -20,12 +20,12 @@ module CatalogsItemsBatchRequest =
   type CatalogsItemsBatchRequest = {
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : ItemDeleteBatchRecord[];
     [<JsonProperty(PropertyName = "language")>]
     Language : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : BatchOperation;
-    [<JsonProperty(PropertyName = "items")>]
-    Items : ItemDeleteBatchRecord[];
   }
 
   //#endregion

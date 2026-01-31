@@ -11,8 +11,8 @@
 -type openapi_media_upload() ::
   [ {'media_id', binary() }
   | {'media_type', openapi_media_upload_type:openapi_media_upload_type() }
+  | {'upload_parameters', openapi_media_upload_parameters:openapi_media_upload_parameters() }
   | {'upload_url', binary() }
-  | {'upload_parameters', openapi_media_upload_all_of_upload_parameters:openapi_media_upload_all_of_upload_parameters() }
   ].
 
 
@@ -22,8 +22,8 @@ openapi_media_upload() ->
 openapi_media_upload(Fields) ->
   Default = [ {'media_id', binary() }
             , {'media_type', openapi_media_upload_type:openapi_media_upload_type() }
+            , {'upload_parameters', openapi_media_upload_parameters:openapi_media_upload_parameters() }
             , {'upload_url', binary() }
-            , {'upload_parameters', openapi_media_upload_all_of_upload_parameters:openapi_media_upload_all_of_upload_parameters() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

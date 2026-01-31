@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Examples
 
@@ -170,7 +170,7 @@ end
 
 ## search_user_pins_list
 
-> <PinsList200Response> search_user_pins_list(query, opts)
+> <SearchUserPinsList200Response> search_user_pins_list(query, opts)
 
 Search user's Pins
 
@@ -207,7 +207,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PinsList200Response>, Integer, Hash)> search_user_pins_list_with_http_info(query, opts)
+> <Array(<SearchUserPinsList200Response>, Integer, Hash)> search_user_pins_list_with_http_info(query, opts)
 
 ```ruby
 begin
@@ -215,7 +215,7 @@ begin
   data, status_code, headers = api_instance.search_user_pins_list_with_http_info(query, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PinsList200Response>
+  p data # => <SearchUserPinsList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling SearchApi->search_user_pins_list_with_http_info: #{e}"
 end
@@ -231,7 +231,7 @@ end
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 

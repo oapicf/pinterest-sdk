@@ -23,14 +23,19 @@ UpdateAssetGroupResponse_exceptions_inner::~UpdateAssetGroupResponse_exceptions_
 void
 UpdateAssetGroupResponse_exceptions_inner::__init()
 {
+	//asset_group_id = std::string();
 	//code = int(0);
 	//message = std::string();
-	//asset_group_id = std::string();
 }
 
 void
 UpdateAssetGroupResponse_exceptions_inner::__cleanup()
 {
+	//if(asset_group_id != NULL) {
+	//
+	//delete asset_group_id;
+	//asset_group_id = NULL;
+	//}
 	//if(code != NULL) {
 	//
 	//delete code;
@@ -41,11 +46,6 @@ UpdateAssetGroupResponse_exceptions_inner::__cleanup()
 	//delete message;
 	//message = NULL;
 	//}
-	//if(asset_group_id != NULL) {
-	//
-	//delete asset_group_id;
-	//asset_group_id = NULL;
-	//}
 	//
 }
 
@@ -54,6 +54,17 @@ UpdateAssetGroupResponse_exceptions_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *asset_group_idKey = "asset_group_id";
+	node = json_object_get_member(pJsonObject, asset_group_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&asset_group_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *codeKey = "code";
 	node = json_object_get_member(pJsonObject, codeKey);
 	if (node !=NULL) {
@@ -76,17 +87,6 @@ UpdateAssetGroupResponse_exceptions_inner::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *asset_group_idKey = "asset_group_id";
-	node = json_object_get_member(pJsonObject, asset_group_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&asset_group_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 UpdateAssetGroupResponse_exceptions_inner::UpdateAssetGroupResponse_exceptions_inner(char* json)
@@ -99,6 +99,15 @@ UpdateAssetGroupResponse_exceptions_inner::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getAssetGroupId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *asset_group_idKey = "asset_group_id";
+	json_object_set_member(pJsonObject, asset_group_idKey, node);
 	if (isprimitive("int")) {
 		int obj = getCode();
 		node = converttoJson(&obj, "int", "");
@@ -117,21 +126,24 @@ UpdateAssetGroupResponse_exceptions_inner::toJson()
 	}
 	const gchar *messageKey = "message";
 	json_object_set_member(pJsonObject, messageKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAssetGroupId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *asset_group_idKey = "asset_group_id";
-	json_object_set_member(pJsonObject, asset_group_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+UpdateAssetGroupResponse_exceptions_inner::getAssetGroupId()
+{
+	return asset_group_id;
+}
+
+void
+UpdateAssetGroupResponse_exceptions_inner::setAssetGroupId(std::string  asset_group_id)
+{
+	this->asset_group_id = asset_group_id;
 }
 
 int
@@ -156,18 +168,6 @@ void
 UpdateAssetGroupResponse_exceptions_inner::setMessage(std::string  message)
 {
 	this->message = message;
-}
-
-std::string
-UpdateAssetGroupResponse_exceptions_inner::getAssetGroupId()
-{
-	return asset_group_id;
-}
-
-void
-UpdateAssetGroupResponse_exceptions_inner::setAssetGroupId(std::string  asset_group_id)
-{
-	this->asset_group_id = asset_group_id;
 }
 
 

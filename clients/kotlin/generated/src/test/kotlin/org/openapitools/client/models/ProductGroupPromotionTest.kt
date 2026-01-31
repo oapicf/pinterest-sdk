@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ProductGroupPromotion
+import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 
@@ -26,12 +27,6 @@ class ProductGroupPromotionTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of ProductGroupPromotion
         //val modelInstance = ProductGroupPromotion()
-
-        // to test the property `id` - ID of the product group promotion.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
 
         // to test the property `adGroupId` - ID of the ad group the product group belongs to.
         should("test adGroupId") {
@@ -43,60 +38,6 @@ class ProductGroupPromotionTest : ShouldSpec() {
         should("test bidInMicroCurrency") {
             // uncomment below to test the property
             //modelInstance.bidInMicroCurrency shouldBe ("TODO")
-        }
-
-        // to test the property `included` - True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-        should("test included") {
-            // uncomment below to test the property
-            //modelInstance.included shouldBe ("TODO")
-        }
-
-        // to test the property `definition` - The full product group definition path
-        should("test definition") {
-            // uncomment below to test the property
-            //modelInstance.definition shouldBe ("TODO")
-        }
-
-        // to test the property `relativeDefinition` - The definition of the product group, relative to its parent - an attribute name/value pair
-        should("test relativeDefinition") {
-            // uncomment below to test the property
-            //modelInstance.relativeDefinition shouldBe ("TODO")
-        }
-
-        // to test the property `parentId` - The parent Product Group ID of this Product Group
-        should("test parentId") {
-            // uncomment below to test the property
-            //modelInstance.parentId shouldBe ("TODO")
-        }
-
-        // to test the property `slideshowCollectionsTitle` - Slideshow Collections Title
-        should("test slideshowCollectionsTitle") {
-            // uncomment below to test the property
-            //modelInstance.slideshowCollectionsTitle shouldBe ("TODO")
-        }
-
-        // to test the property `slideshowCollectionsDescription` - Slideshow Collections Description
-        should("test slideshowCollectionsDescription") {
-            // uncomment below to test the property
-            //modelInstance.slideshowCollectionsDescription shouldBe ("TODO")
-        }
-
-        // to test the property `isMdl` - If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-        should("test isMdl") {
-            // uncomment below to test the property
-            //modelInstance.isMdl shouldBe ("TODO")
-        }
-
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
-        // to test the property `trackingUrl` - Tracking template for proudct group promotions. 4000 limit
-        should("test trackingUrl") {
-            // uncomment below to test the property
-            //modelInstance.trackingUrl shouldBe ("TODO")
         }
 
         // to test the property `catalogProductGroupId` - ID of the catalogs product group that this product group promotion references
@@ -111,10 +52,10 @@ class ProductGroupPromotionTest : ShouldSpec() {
             //modelInstance.catalogProductGroupName shouldBe ("TODO")
         }
 
-        // to test the property `collectionsHeroPinId` - Hero Pin ID if this PG is promoted as a Collection
-        should("test collectionsHeroPinId") {
+        // to test the property `collectionsHeaderType` - Collections ad header type
+        should("test collectionsHeaderType") {
             // uncomment below to test the property
-            //modelInstance.collectionsHeroPinId shouldBe ("TODO")
+            //modelInstance.collectionsHeaderType shouldBe ("TODO")
         }
 
         // to test the property `collectionsHeroDestinationUrl` - Collections Hero Destination Url
@@ -123,10 +64,112 @@ class ProductGroupPromotionTest : ShouldSpec() {
             //modelInstance.collectionsHeroDestinationUrl shouldBe ("TODO")
         }
 
+        // to test the property `collectionsHeroPinId` - Hero Pin ID if this PG is promoted as a Collection
+        should("test collectionsHeroPinId") {
+            // uncomment below to test the property
+            //modelInstance.collectionsHeroPinId shouldBe ("TODO")
+        }
+
+        // to test the property `creativeType`
+        should("test creativeType") {
+            // uncomment below to test the property
+            //modelInstance.creativeType shouldBe ("TODO")
+        }
+
+        // to test the property `customizableCtaType` - Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+        should("test customizableCtaType") {
+            // uncomment below to test the property
+            //modelInstance.customizableCtaType shouldBe ("TODO")
+        }
+
+        // to test the property `definition` - The full product group definition path
+        should("test definition") {
+            // uncomment below to test the property
+            //modelInstance.definition shouldBe ("TODO")
+        }
+
         // to test the property `gridClickType`
         should("test gridClickType") {
             // uncomment below to test the property
             //modelInstance.gridClickType shouldBe ("TODO")
+        }
+
+        // to test the property `id` - ID of the product group promotion.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `included` - True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+        should("test included") {
+            // uncomment below to test the property
+            //modelInstance.included shouldBe ("TODO")
+        }
+
+        // to test the property `isGenerateBackground` - Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
+        should("test isGenerateBackground") {
+            // uncomment below to test the property
+            //modelInstance.isGenerateBackground shouldBe ("TODO")
+        }
+
+        // to test the property `isMdl` - If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+        should("test isMdl") {
+            // uncomment below to test the property
+            //modelInstance.isMdl shouldBe ("TODO")
+        }
+
+        // to test the property `parentId` - The parent Product Group ID of this Product Group
+        should("test parentId") {
+            // uncomment below to test the property
+            //modelInstance.parentId shouldBe ("TODO")
+        }
+
+        // to test the property `preferredMediaType` - Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
+        should("test preferredMediaType") {
+            // uncomment below to test the property
+            //modelInstance.preferredMediaType shouldBe ("TODO")
+        }
+
+        // to test the property `relativeDefinition` - The definition of the product group, relative to its parent - an attribute name/value pair
+        should("test relativeDefinition") {
+            // uncomment below to test the property
+            //modelInstance.relativeDefinition shouldBe ("TODO")
+        }
+
+        // to test the property `selectedImageTag` - The ad image tag selected for the product group promotion.
+        should("test selectedImageTag") {
+            // uncomment below to test the property
+            //modelInstance.selectedImageTag shouldBe ("TODO")
+        }
+
+        // to test the property `selectedVideoTag` - The ad video tag selected for the product group promotion.
+        should("test selectedVideoTag") {
+            // uncomment below to test the property
+            //modelInstance.selectedVideoTag shouldBe ("TODO")
+        }
+
+        // to test the property `slideshowCollectionsDescription` - Slideshow Collections Description
+        should("test slideshowCollectionsDescription") {
+            // uncomment below to test the property
+            //modelInstance.slideshowCollectionsDescription shouldBe ("TODO")
+        }
+
+        // to test the property `slideshowCollectionsTitle` - Slideshow Collections Title
+        should("test slideshowCollectionsTitle") {
+            // uncomment below to test the property
+            //modelInstance.slideshowCollectionsTitle shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `trackingUrl` - Tracking template for proudct group promotions. 4000 limit
+        should("test trackingUrl") {
+            // uncomment below to test the property
+            //modelInstance.trackingUrl shouldBe ("TODO")
         }
 
     }

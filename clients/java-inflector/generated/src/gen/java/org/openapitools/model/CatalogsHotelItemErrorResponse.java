@@ -19,16 +19,16 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing a hotel item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
+  @JsonProperty("errors")
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+
   @JsonProperty("hotel_id")
   private String hotelId;
-
-  @JsonProperty("errors")
-  private List<ItemValidationEvent> errors = null;
 
   /**
    **/
@@ -45,6 +45,24 @@ public class CatalogsHotelItemErrorResponse   {
   }
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   **/
+  public CatalogsHotelItemErrorResponse errors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  @JsonProperty("errors")
+  public List<ItemValidationEvent> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -65,24 +83,6 @@ public class CatalogsHotelItemErrorResponse   {
     this.hotelId = hotelId;
   }
 
-  /**
-   * Array with the errors for the item id requested
-   **/
-  public CatalogsHotelItemErrorResponse errors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
-    return errors;
-  }
-  public void setErrors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -94,13 +94,13 @@ public class CatalogsHotelItemErrorResponse   {
     }
     CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse = (CatalogsHotelItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsHotelItemErrorResponse.catalogType) &&
-        Objects.equals(hotelId, catalogsHotelItemErrorResponse.hotelId) &&
-        Objects.equals(errors, catalogsHotelItemErrorResponse.errors);
+        Objects.equals(errors, catalogsHotelItemErrorResponse.errors) &&
+        Objects.equals(hotelId, catalogsHotelItemErrorResponse.hotelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, errors);
+    return Objects.hash(catalogType, errors, hotelId);
   }
 
   @Override
@@ -109,8 +109,8 @@ public class CatalogsHotelItemErrorResponse   {
     sb.append("class CatalogsHotelItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

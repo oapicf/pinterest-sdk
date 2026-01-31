@@ -9,13 +9,13 @@ import org.openapitools.models.BigDecimal
 
 /**
  * The relative date range of the template
- * @param _type The date range type
- * @param startUnderscoredaysUnderscoreinUnderscorepast The start date of the date range
  * @param endUnderscoredaysUnderscoreinUnderscorepast The end date of the date range
+ * @param startUnderscoredaysUnderscoreinUnderscorepast The start date of the date range
+ * @param _type The date range type
  */
-case class TemplateResponseDateRangeRelativeDateRange(_type: Option[String],
+case class TemplateResponseDateRangeRelativeDateRange(endUnderscoredaysUnderscoreinUnderscorepast: Option[BigDecimal],
                 startUnderscoredaysUnderscoreinUnderscorepast: Option[BigDecimal],
-                endUnderscoredaysUnderscoreinUnderscorepast: Option[BigDecimal]
+                _type: Option[String]
                 )
 
 object TemplateResponseDateRangeRelativeDateRange {

@@ -21,8 +21,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreateHotelItem", description = "A hotel item to be created.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateHotelItem {
+
+  private CatalogsHotelAttributes attributes;
 
   private String hotelId;
 
@@ -61,8 +63,6 @@ public class CatalogsCreateHotelItem {
 
   private OperationEnum operation;
 
-  private CatalogsHotelAttributes attributes;
-
   public CatalogsCreateHotelItem() {
     super();
   }
@@ -70,9 +70,29 @@ public class CatalogsCreateHotelItem {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreateHotelItem(String hotelId, OperationEnum operation, CatalogsHotelAttributes attributes) {
+  public CatalogsCreateHotelItem(CatalogsHotelAttributes attributes, String hotelId, OperationEnum operation) {
+    this.attributes = attributes;
     this.hotelId = hotelId;
     this.operation = operation;
+  }
+
+  public CatalogsCreateHotelItem attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("attributes")
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsHotelAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -116,26 +136,6 @@ public class CatalogsCreateHotelItem {
     this.operation = operation;
   }
 
-  public CatalogsCreateHotelItem attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("attributes")
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -145,23 +145,23 @@ public class CatalogsCreateHotelItem {
       return false;
     }
     CatalogsCreateHotelItem catalogsCreateHotelItem = (CatalogsCreateHotelItem) o;
-    return Objects.equals(this.hotelId, catalogsCreateHotelItem.hotelId) &&
-        Objects.equals(this.operation, catalogsCreateHotelItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateHotelItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateHotelItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsCreateHotelItem.hotelId) &&
+        Objects.equals(this.operation, catalogsCreateHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateHotelItem {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

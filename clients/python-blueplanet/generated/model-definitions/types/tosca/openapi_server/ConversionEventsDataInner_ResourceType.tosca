@@ -1,0 +1,139 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionEventsDataInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionEventsDataInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionEventAppInfo = openapi_server.resourceTypes.ConversionEventAppInfo
+  ConversionEventDeviceInfo = openapi_server.resourceTypes.ConversionEventDeviceInfo
+  ConversionEventsDataInnerCustomData = openapi_server.resourceTypes.ConversionEventsDataInnerCustomData
+  ConversionEventsUserData = openapi_server.resourceTypes.ConversionEventsUserData
+}
+resourceTypes {
+
+  ConversionEventsDataInner {
+    title = ConversionEventsDataInner
+    description = ConversionEventsDataInner
+    derivedFrom = Root
+    properties {
+        action_source {
+          type =  string
+          description = "&lt;p&gt;The source indicating where the conversion event occurred.&lt;/p&gt; - &#x60;app_android&#x60; - &#x60;app_ios&#x60; - &#x60;web&#x60; - &#x60;offline&#x60;"
+          optional = true
+        }
+        app_id {
+          type =  string
+          description = "The app store app ID."
+          optional = false
+        }
+        app_info {
+          type = ConversionEventAppInfo
+          description = ""
+          optional = false
+        }
+        app_name {
+          type =  string
+          description = "Name of the app."
+          optional = false
+        }
+        app_version {
+          type =  string
+          description = "Version of the app."
+          optional = false
+        }
+        custom_data {
+          type = ConversionEventsDataInnerCustomData
+          description = ""
+          optional = false
+        }
+        device_brand {
+          type =  string
+          description = "Brand of the user device."
+          optional = false
+        }
+        device_carrier {
+          type =  string
+          description = "User device&#39;s mobile carrier."
+          optional = false
+        }
+        device_info {
+          type = ConversionEventDeviceInfo
+          description = ""
+          optional = false
+        }
+        device_model {
+          type =  string
+          description = "Model of the user device."
+          optional = false
+        }
+        device_type {
+          type =  string
+          description = "Type of the user device."
+          optional = false
+        }
+        event_id {
+          type =  string
+          description = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API."
+          optional = true
+        }
+        event_name {
+          type =  string
+          description = "&lt;p&gt;The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.&lt;/p&gt;  - &#x60;add_payment_info&#x60; - &#x60;add_to_cart&#x60; - &#x60;add_to_wishlist&#x60; - &#x60;app_install&#x60; - &#x60;checkout&#x60; - &#x60;custom&#x60; - &#x60;initiate_checkout&#x60; - &#x60;lead&#x60; - &#x60;page_visit&#x60; - &#x60;search&#x60; - &#x60;signup&#x60; - &#x60;subscribe&#x60; - &#x60;view_category&#x60; - &#x60;view_content&#x60; - &#x60;watch_video&#x60;"
+          optional = true
+        }
+        event_source_url {
+          type =  string
+          description = "URL of the web conversion event."
+          optional = false
+        }
+        event_time {
+          type =  integer
+          description = "The time when the event happened. Unix timestamp in seconds."
+          optional = true
+        }
+        language {
+          type =  string
+          description = "Two-character ISO-639-1 language code indicating the user&#39;s language."
+          optional = false
+        }
+        opt_out {
+          type =  boolean
+          description = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device."
+          optional = false
+        }
+        os_version {
+          type =  string
+          description = "Version of the device operating system."
+          optional = false
+        }
+        partner_name {
+          type =  string
+          description = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’"
+          optional = false
+        }
+        user_data {
+          type = ConversionEventsUserData
+          description = ""
+          optional = true
+        }
+        wifi {
+          type =  boolean
+          description = "Whether the event occurred when the user device was connected to wifi."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionEventsDataInner {
+    title = ConversionEventsDataInner
+    description = ConversionEventsDataInner
+    implements = openapi_server.resourceTypes.ConversionEventsDataInner
+
+  }
+}

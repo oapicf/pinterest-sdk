@@ -22,13 +22,31 @@ import java.util.Objects;
 @ApiModel(description = "An object containing the permissions a you/your business partner has on the asset.")
 public class GetPartnerAssetsResponse   {
   
+  private AssetGroupBinding assetGroupInfo;
+
   private String assetId;
 
   private String assetType;
 
   private List<String> permissions = new ArrayList<>();
 
-  private AssetGroupBinding assetGroupInfo;
+  /**
+   **/
+  public GetPartnerAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("asset_group_info")
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
+
 
   /**
    * Unique identifier of a business asset.
@@ -50,7 +68,7 @@ public class GetPartnerAssetsResponse   {
 
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   public GetPartnerAssetsResponse assetType(String assetType) {
     this.assetType = assetType;
@@ -58,7 +76,7 @@ public class GetPartnerAssetsResponse   {
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
@@ -95,24 +113,6 @@ public class GetPartnerAssetsResponse   {
   }
 
 
-  /**
-   **/
-  public GetPartnerAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
-  }
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -123,15 +123,15 @@ public class GetPartnerAssetsResponse   {
       return false;
     }
     GetPartnerAssetsResponse getPartnerAssetsResponse = (GetPartnerAssetsResponse) o;
-    return Objects.equals(this.assetId, getPartnerAssetsResponse.assetId) &&
+    return Objects.equals(this.assetGroupInfo, getPartnerAssetsResponse.assetGroupInfo) &&
+        Objects.equals(this.assetId, getPartnerAssetsResponse.assetId) &&
         Objects.equals(this.assetType, getPartnerAssetsResponse.assetType) &&
-        Objects.equals(this.permissions, getPartnerAssetsResponse.permissions) &&
-        Objects.equals(this.assetGroupInfo, getPartnerAssetsResponse.assetGroupInfo);
+        Objects.equals(this.permissions, getPartnerAssetsResponse.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, permissions);
   }
 
   @Override
@@ -139,10 +139,10 @@ public class GetPartnerAssetsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetPartnerAssetsResponse {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

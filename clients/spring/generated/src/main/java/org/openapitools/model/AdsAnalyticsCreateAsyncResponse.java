@@ -24,14 +24,34 @@ import javax.annotation.Generated;
  * AdsAnalyticsCreateAsyncResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsCreateAsyncResponse {
+
+  private JsonNullable<String> message = JsonNullable.<String>undefined();
 
   private @Nullable BulkReportingJobStatus reportStatus;
 
   private @Nullable String token;
 
-  private JsonNullable<String> message = JsonNullable.<String>undefined();
+  public AdsAnalyticsCreateAsyncResponse message(String message) {
+    this.message = JsonNullable.of(message);
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  
+  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("message")
+  public JsonNullable<String> getMessage() {
+    return message;
+  }
+
+  public void setMessage(JsonNullable<String> message) {
+    this.message = message;
+  }
 
   public AdsAnalyticsCreateAsyncResponse reportStatus(@Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
@@ -73,26 +93,6 @@ public class AdsAnalyticsCreateAsyncResponse {
     this.token = token;
   }
 
-  public AdsAnalyticsCreateAsyncResponse message(String message) {
-    this.message = JsonNullable.of(message);
-    return this;
-  }
-
-  /**
-   * Get message
-   * @return message
-   */
-  
-  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("message")
-  public JsonNullable<String> getMessage() {
-    return message;
-  }
-
-  public void setMessage(JsonNullable<String> message) {
-    this.message = message;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -102,9 +102,9 @@ public class AdsAnalyticsCreateAsyncResponse {
       return false;
     }
     AdsAnalyticsCreateAsyncResponse adsAnalyticsCreateAsyncResponse = (AdsAnalyticsCreateAsyncResponse) o;
-    return Objects.equals(this.reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
-        Objects.equals(this.token, adsAnalyticsCreateAsyncResponse.token) &&
-        equalsNullable(this.message, adsAnalyticsCreateAsyncResponse.message);
+    return equalsNullable(this.message, adsAnalyticsCreateAsyncResponse.message) &&
+        Objects.equals(this.reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
+        Objects.equals(this.token, adsAnalyticsCreateAsyncResponse.token);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -113,7 +113,7 @@ public class AdsAnalyticsCreateAsyncResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, hashCodeNullable(message));
+    return Objects.hash(hashCodeNullable(message), reportStatus, token);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -127,9 +127,9 @@ public class AdsAnalyticsCreateAsyncResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsAnalyticsCreateAsyncResponse {\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

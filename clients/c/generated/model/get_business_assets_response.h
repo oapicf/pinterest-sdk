@@ -16,21 +16,24 @@
 typedef struct get_business_assets_response_t get_business_assets_response_t;
 
 #include "asset_group_binding.h"
+#include "get_business_assets_response_catalog_info.h"
 
 
 
 typedef struct get_business_assets_response_t {
+    struct asset_group_binding_t *asset_group_info; //model
     char *asset_id; // string
     char *asset_type; // string
-    struct asset_group_binding_t *asset_group_info; //model
+    struct get_business_assets_response_catalog_info_t *catalog_info; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } get_business_assets_response_t;
 
 __attribute__((deprecated)) get_business_assets_response_t *get_business_assets_response_create(
+    asset_group_binding_t *asset_group_info,
     char *asset_id,
     char *asset_type,
-    asset_group_binding_t *asset_group_info
+    get_business_assets_response_catalog_info_t *catalog_info
 );
 
 void get_business_assets_response_free(get_business_assets_response_t *get_business_assets_response);

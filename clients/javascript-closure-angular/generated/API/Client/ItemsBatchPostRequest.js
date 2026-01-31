@@ -6,6 +6,13 @@ goog.provide('API.Client.items_batch_post_request');
 API.Client.ItemsBatchPostRequest = function() {}
 
 /**
+ * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * @type {!string}
+ * @export
+ */
+API.Client.ItemsBatchPostRequest.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
@@ -18,13 +25,6 @@ API.Client.ItemsBatchPostRequest.prototype.catalogType;
 API.Client.ItemsBatchPostRequest.prototype.country;
 
 /**
- * We recommend using the CatalogsLocale values.
- * @type {!string}
- * @export
- */
-API.Client.ItemsBatchPostRequest.prototype.language;
-
-/**
  * Array with catalogs items
  * @type {!Array<!API.Client.ItemDeleteBatchRecord>}
  * @export
@@ -32,11 +32,11 @@ API.Client.ItemsBatchPostRequest.prototype.language;
 API.Client.ItemsBatchPostRequest.prototype.items;
 
 /**
- * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
  */
-API.Client.ItemsBatchPostRequest.prototype.catalogId;
+API.Client.ItemsBatchPostRequest.prototype.language;
 
 /**
  * @type {!API.Client.BatchOperation}

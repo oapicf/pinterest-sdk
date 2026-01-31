@@ -26,10 +26,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object to list products for a given catalog_id and product group filter.
- * @param catalogType 
  * @param catalogId Catalog id pertaining to the creative assets product group.
- * @param filters 
+ * @param catalogType 
  * @param country 
+ * @param filters 
  * @param locale 
  */
 @JsonIgnoreProperties(
@@ -44,17 +44,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 )
 
 interface CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType
-
                 @get:Schema(example = "2680059592705", requiredMode = Schema.RequiredMode.REQUIRED, description = "Catalog id pertaining to the creative assets product group.")
         val catalogId: kotlin.String
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val filters: CatalogsCreativeAssetsProductGroupFilters
+        val catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val country: Country
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val filters: CatalogsCreativeAssetsProductGroupFilters
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val locale: CatalogsLocale

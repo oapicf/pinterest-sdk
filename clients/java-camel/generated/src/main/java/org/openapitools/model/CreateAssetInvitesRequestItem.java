@@ -25,15 +25,15 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CreateAssetInvitesRequestItem", description = "Object declaring an asset role update to an invite.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetInvitesRequestItem {
+
+  @Valid
+  private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   private String inviteId;
 
   private InviteType inviteType;
-
-  @Valid
-  private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   public CreateAssetInvitesRequestItem() {
     super();
@@ -42,9 +42,37 @@ public class CreateAssetInvitesRequestItem {
   /**
    * Constructor with only required parameters
    */
-  public CreateAssetInvitesRequestItem(String inviteId, InviteType inviteType, Map<String, List<Permissions>> assetIdToPermissions) {
+  public CreateAssetInvitesRequestItem(Map<String, List<Permissions>> assetIdToPermissions, String inviteId, InviteType inviteType) {
+    this.assetIdToPermissions = assetIdToPermissions;
     this.inviteId = inviteId;
     this.inviteType = inviteType;
+  }
+
+  public CreateAssetInvitesRequestItem assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+    this.assetIdToPermissions = assetIdToPermissions;
+    return this;
+  }
+
+  public CreateAssetInvitesRequestItem putAssetIdToPermissionsItem(String key, List<Permissions> assetIdToPermissionsItem) {
+    if (this.assetIdToPermissions == null) {
+      this.assetIdToPermissions = new HashMap<>();
+    }
+    this.assetIdToPermissions.put(key, assetIdToPermissionsItem);
+    return this;
+  }
+
+  /**
+   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+   * @return assetIdToPermissions
+   */
+  @NotNull @Valid @Size(min = 1) 
+  @Schema(name = "asset_id_to_permissions", example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("asset_id_to_permissions")
+  public Map<String, List<Permissions>> getAssetIdToPermissions() {
+    return assetIdToPermissions;
+  }
+
+  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }
 
@@ -88,34 +116,6 @@ public class CreateAssetInvitesRequestItem {
     this.inviteType = inviteType;
   }
 
-  public CreateAssetInvitesRequestItem assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
-    this.assetIdToPermissions = assetIdToPermissions;
-    return this;
-  }
-
-  public CreateAssetInvitesRequestItem putAssetIdToPermissionsItem(String key, List<Permissions> assetIdToPermissionsItem) {
-    if (this.assetIdToPermissions == null) {
-      this.assetIdToPermissions = new HashMap<>();
-    }
-    this.assetIdToPermissions.put(key, assetIdToPermissionsItem);
-    return this;
-  }
-
-  /**
-   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-   * @return assetIdToPermissions
-   */
-  @NotNull @Valid @Size(min = 1) 
-  @Schema(name = "asset_id_to_permissions", example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("asset_id_to_permissions")
-  public Map<String, List<Permissions>> getAssetIdToPermissions() {
-    return assetIdToPermissions;
-  }
-
-  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
-    this.assetIdToPermissions = assetIdToPermissions;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -125,23 +125,23 @@ public class CreateAssetInvitesRequestItem {
       return false;
     }
     CreateAssetInvitesRequestItem createAssetInvitesRequestItem = (CreateAssetInvitesRequestItem) o;
-    return Objects.equals(this.inviteId, createAssetInvitesRequestItem.inviteId) &&
-        Objects.equals(this.inviteType, createAssetInvitesRequestItem.inviteType) &&
-        Objects.equals(this.assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions);
+    return Objects.equals(this.assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions) &&
+        Objects.equals(this.inviteId, createAssetInvitesRequestItem.inviteId) &&
+        Objects.equals(this.inviteType, createAssetInvitesRequestItem.inviteType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteId, inviteType, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, inviteId, inviteType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetInvitesRequestItem {\n");
+    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
     sb.append("    inviteId: ").append(toIndentedString(inviteId)).append("\n");
     sb.append("    inviteType: ").append(toIndentedString(inviteType)).append("\n");
-    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

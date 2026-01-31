@@ -9,12 +9,12 @@ import org.openapitools.models.CatalogsCreativeAssetsProductGroupFilters
 
 /**
  * Request object to list products for a given creative assets catalog_id and product group filter.
- * @param catalogUnderscoretype 
  * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
+ * @param catalogUnderscoretype 
  * @param filters 
  */
-case class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogUnderscoretype: String,
-                catalogUnderscoreid: String,
+case class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 filters: CatalogsCreativeAssetsProductGroupFilters
                 )
 

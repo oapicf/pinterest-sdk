@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,18 +19,18 @@ type CatalogsItemsRequest struct {
 
 	Country Country `json:"country"`
 
+	Filters CatalogsItemsPostFilters `json:"filters"`
+
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
-
-	Filters CatalogsItemsPostFilters `json:"filters"`
 }
 
 // AssertCatalogsItemsRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsItemsRequestRequired(obj CatalogsItemsRequest) error {
 	elements := map[string]interface{}{
 		"country": obj.Country,
-		"language": obj.Language,
 		"filters": obj.Filters,
+		"language": obj.Language,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -38,10 +38,10 @@ func AssertCatalogsItemsRequestRequired(obj CatalogsItemsRequest) error {
 		}
 	}
 
-	if err := AssertstringRequired(obj.Language); err != nil {
+	if err := AssertCatalogsItemsPostFiltersRequired(obj.Filters); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemsPostFiltersRequired(obj.Filters); err != nil {
+	if err := AssertstringRequired(obj.Language); err != nil {
 		return err
 	}
 	return nil
@@ -49,10 +49,10 @@ func AssertCatalogsItemsRequestRequired(obj CatalogsItemsRequest) error {
 
 // AssertCatalogsItemsRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsItemsRequestConstraints(obj CatalogsItemsRequest) error {
-	if err := AssertstringConstraints(obj.Language); err != nil {
+	if err := AssertCatalogsItemsPostFiltersConstraints(obj.Filters); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemsPostFiltersConstraints(obj.Filters); err != nil {
+	if err := AssertstringConstraints(obj.Language); err != nil {
 		return err
 	}
 	return nil

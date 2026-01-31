@@ -13,32 +13,32 @@ import AnyCodable
 /** Schema describing the object in the response, which contains information about the events that were received and processed. */
 public struct ConversionApiResponse: Codable, JSONEncodable, Hashable {
 
-    /** Total number of events received in the request. */
-    public var numEventsReceived: Int
-    /** Number of events that were successfully processed from the events. */
-    public var numEventsProcessed: Int
     /** Specific messages for each event received. The order will match the order in which the events were received in the request. */
     public var events: [ConversionApiResponseEventsInner]
+    /** Number of events that were successfully processed from the events. */
+    public var numEventsProcessed: Int
+    /** Total number of events received in the request. */
+    public var numEventsReceived: Int
 
-    public init(numEventsReceived: Int, numEventsProcessed: Int, events: [ConversionApiResponseEventsInner]) {
-        self.numEventsReceived = numEventsReceived
-        self.numEventsProcessed = numEventsProcessed
+    public init(events: [ConversionApiResponseEventsInner], numEventsProcessed: Int, numEventsReceived: Int) {
         self.events = events
+        self.numEventsProcessed = numEventsProcessed
+        self.numEventsReceived = numEventsReceived
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case numEventsReceived = "num_events_received"
-        case numEventsProcessed = "num_events_processed"
         case events
+        case numEventsProcessed = "num_events_processed"
+        case numEventsReceived = "num_events_received"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(numEventsReceived, forKey: .numEventsReceived)
-        try container.encode(numEventsProcessed, forKey: .numEventsProcessed)
         try container.encode(events, forKey: .events)
+        try container.encode(numEventsProcessed, forKey: .numEventsProcessed)
+        try container.encode(numEventsReceived, forKey: .numEventsReceived)
     }
 }
 

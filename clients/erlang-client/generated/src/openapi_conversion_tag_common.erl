@@ -5,34 +5,28 @@
 -export_type([openapi_conversion_tag_common/0]).
 
 -type openapi_conversion_tag_common() ::
-    #{ 'ad_account_id' => binary(),
-       'code_snippet' => binary(),
+    #{ 'code_snippet' => binary(),
+       'configs' => openapi_conversion_tag_configs:openapi_conversion_tag_configs(),
        'enhanced_match_status' => openapi_enhanced_match_status_type:openapi_enhanced_match_status_type(),
        'id' => binary(),
        'last_fired_time_ms' => integer(),
-       'name' => binary(),
-       'status' => openapi_entity_status:openapi_entity_status(),
-       'version' => binary(),
-       'configs' => openapi_conversion_tag_configs:openapi_conversion_tag_configs()
+       'name' := binary(),
+       'version' => binary()
      }.
 
-encode(#{ 'ad_account_id' := AdAccountId,
-          'code_snippet' := CodeSnippet,
+encode(#{ 'code_snippet' := CodeSnippet,
+          'configs' := Configs,
           'enhanced_match_status' := EnhancedMatchStatus,
           'id' := Id,
           'last_fired_time_ms' := LastFiredTimeMs,
           'name' := Name,
-          'status' := Status,
-          'version' := Version,
-          'configs' := Configs
+          'version' := Version
         }) ->
-    #{ 'ad_account_id' => AdAccountId,
-       'code_snippet' => CodeSnippet,
+    #{ 'code_snippet' => CodeSnippet,
+       'configs' => Configs,
        'enhanced_match_status' => EnhancedMatchStatus,
        'id' => Id,
        'last_fired_time_ms' => LastFiredTimeMs,
        'name' => Name,
-       'status' => Status,
-       'version' => Version,
-       'configs' => Configs
+       'version' => Version
      }.

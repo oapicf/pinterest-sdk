@@ -28,27 +28,27 @@ pinterest_rest_api_catalogs_creative_assets_product_group_CATALOGTYPE_e catalogs
 
 
 typedef struct catalogs_creative_assets_product_group_t {
+    char *catalog_id; // string
     pinterest_rest_api_catalogs_creative_assets_product_group_CATALOGTYPE_e catalog_type; //enum
-    char *id; // string
-    char *name; // string
+    int created_at; //numeric
     char *description; // string
     struct catalogs_creative_assets_product_group_filters_t *filters; //model
-    int created_at; //numeric
+    char *id; // string
+    char *name; // string
     int updated_at; //numeric
-    char *catalog_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_group_t;
 
 __attribute__((deprecated)) catalogs_creative_assets_product_group_t *catalogs_creative_assets_product_group_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_creative_assets_product_group_CATALOGTYPE_e catalog_type,
-    char *id,
-    char *name,
+    int created_at,
     char *description,
     catalogs_creative_assets_product_group_filters_t *filters,
-    int created_at,
-    int updated_at,
-    char *catalog_id
+    char *id,
+    char *name,
+    int updated_at
 );
 
 void catalogs_creative_assets_product_group_free(catalogs_creative_assets_product_group_t *catalogs_creative_assets_product_group);

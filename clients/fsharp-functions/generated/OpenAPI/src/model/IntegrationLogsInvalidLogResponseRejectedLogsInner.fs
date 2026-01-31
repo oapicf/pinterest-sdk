@@ -10,14 +10,14 @@ module IntegrationLogsInvalidLogResponseRejectedLogsInner =
 
   [<CLIMutable>]
   type IntegrationLogsInvalidLogResponseRejectedLogsInner = {
-    [<JsonProperty(PropertyName = "log_index")>]
-    LogIndex : int;
     [<JsonProperty(PropertyName = "field")>]
     Field : string;
-    [<JsonProperty(PropertyName = "value")>]
-    Value : string;
+    [<JsonProperty(PropertyName = "log_index")>]
+    LogIndex : int;
     [<JsonProperty(PropertyName = "reason")>]
     Reason : string;
+    [<JsonProperty(PropertyName = "value")>]
+    Value : string;
   }
 
   //#endregion

@@ -29,8 +29,8 @@ import com.squareup.moshi.JsonClass
  * @param name Name of targeting template.
  * @param targetingAttributes 
  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param placementGroup 
  * @param keywords 
+ * @param placementGroup 
  * @param trackingUrls 
  */
 
@@ -48,11 +48,11 @@ data class TargetingTemplateCreate (
     @Json(name = "auto_targeting_enabled")
     val autoTargetingEnabled: kotlin.Boolean? = true,
 
-    @Json(name = "placement_group")
-    val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
-
     @Json(name = "keywords")
     val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
+
+    @Json(name = "placement_group")
+    val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
 
     @Json(name = "tracking_urls")
     val trackingUrls: TrackingUrls? = null

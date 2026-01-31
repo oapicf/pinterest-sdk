@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**InviteResponse[]**](InviteResponse.md) | List of invite and request data. | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**InviteResponse[]**](InviteResponse.md) | List of invite and request data. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$GetInvites200Response = Initialize-PSOpenAPIToolsGetInvites200Response  -Items null `
- -Bookmark null
+$GetInvites200Response = Initialize-PSOpenAPIToolsGetInvites200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

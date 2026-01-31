@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemUpdateBatchRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemUpdateBatchRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdatableItemAttributes = openapi_server.resourceTypes.UpdatableItemAttributes
+  UpdateMaskFieldType = openapi_server.resourceTypes.UpdateMaskFieldType
+}
+resourceTypes {
+
+  ItemUpdateBatchRecord {
+    title = ItemUpdateBatchRecord
+    description = ItemUpdateBatchRecord
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = UpdatableItemAttributes
+          description = ""
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = false
+        }
+        update_mask {
+          type = array
+          items.type = UpdateMaskFieldType
+          description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemUpdateBatchRecord {
+    title = ItemUpdateBatchRecord
+    description = ItemUpdateBatchRecord
+    implements = openapi_server.resourceTypes.ItemUpdateBatchRecord
+
+  }
+}

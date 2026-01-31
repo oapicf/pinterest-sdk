@@ -21,6 +21,14 @@ public class CustomerListRequestTest {
     }
 
     /**
+     * Test the property 'listType'
+     */
+    @Test
+    public void listTypeTest() {
+        // TODO: test listType
+    }
+
+    /**
      * Test the property 'name'
      */
     @Test
@@ -34,22 +42,6 @@ public class CustomerListRequestTest {
     @Test
     public void recordsTest() {
         // TODO: test records
-    }
-
-    /**
-     * Test the property 'listType'
-     */
-    @Test
-    public void listTypeTest() {
-        // TODO: test listType
-    }
-
-    /**
-     * Test the property 'exceptions'
-     */
-    @Test
-    public void exceptionsTest() {
-        // TODO: test exceptions
     }
 
 }

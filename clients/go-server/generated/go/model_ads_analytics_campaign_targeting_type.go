@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -36,6 +36,7 @@ const (
 	REGION AdsAnalyticsCampaignTargetingType = "REGION"
 	CREATIVE_TYPE AdsAnalyticsCampaignTargetingType = "CREATIVE_TYPE"
 	AGE_BUCKET_AND_GENDER AdsAnalyticsCampaignTargetingType = "AGE_BUCKET_AND_GENDER"
+	AUDIENCE_MULTIPLIER AdsAnalyticsCampaignTargetingType = "AUDIENCE_MULTIPLIER"
 )
 
 // AllowedAdsAnalyticsCampaignTargetingTypeEnumValues is all the allowed values of AdsAnalyticsCampaignTargetingType enum
@@ -54,6 +55,7 @@ var AllowedAdsAnalyticsCampaignTargetingTypeEnumValues = []AdsAnalyticsCampaignT
 	"REGION",
 	"CREATIVE_TYPE",
 	"AGE_BUCKET_AND_GENDER",
+	"AUDIENCE_MULTIPLIER",
 }
 
 // validAdsAnalyticsCampaignTargetingTypeEnumValue provides a map of AdsAnalyticsCampaignTargetingTypes for fast verification of use input
@@ -72,6 +74,7 @@ var validAdsAnalyticsCampaignTargetingTypeEnumValues = map[AdsAnalyticsCampaignT
 	"REGION": {},
 	"CREATIVE_TYPE": {},
 	"AGE_BUCKET_AND_GENDER": {},
+	"AUDIENCE_MULTIPLIER": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

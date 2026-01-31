@@ -92,7 +92,7 @@ ObjectiveType <- R6::R6Class(
 
 # add to utils.R
 .parse_ObjectiveType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[AWARENESS, CONSIDERATION, VIDEO_VIEW, WEB_CONVERSION, CATALOG_SALES, WEB_SESSIONS, VIDEO_COMPLETION]")
+  res <- gsub("^\\[|\\]$", "", "[AWARENESS, CONSIDERATION, WEB_CONVERSION, CATALOG_SALES, VIDEO_COMPLETION]")
   unlist(strsplit(res, ", "))
 }
 

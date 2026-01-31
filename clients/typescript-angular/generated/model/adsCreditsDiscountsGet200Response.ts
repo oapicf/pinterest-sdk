@@ -11,7 +11,7 @@ import { AdsCreditDiscountsResponse } from './adsCreditDiscountsResponse';
 
 
 export interface AdsCreditsDiscountsGet200Response { 
-    items: Array<AdsCreditDiscountsResponse>;
     bookmark?: string | null;
+    items: Array<AdsCreditDiscountsResponse>;
 }
 

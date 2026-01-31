@@ -21,9 +21,9 @@ typedef struct catalogs_hotel_address_t catalogs_hotel_address_t;
 typedef struct catalogs_hotel_address_t {
     char *addr1; // string
     char *city; // string
-    char *region; // string
     char *country; // string
     char *postal_code; // string
+    char *region; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_address_t;
@@ -31,9 +31,9 @@ typedef struct catalogs_hotel_address_t {
 __attribute__((deprecated)) catalogs_hotel_address_t *catalogs_hotel_address_create(
     char *addr1,
     char *city,
-    char *region,
     char *country,
-    char *postal_code
+    char *postal_code,
+    char *region
 );
 
 void catalogs_hotel_address_free(catalogs_hotel_address_t *catalogs_hotel_address);

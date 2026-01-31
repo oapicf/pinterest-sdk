@@ -24,6 +24,14 @@ public class AssetIdPermissionsTest {
     }
 
     /**
+     * Test the property 'assetGroupInfo'
+     */
+    @Test
+    public void assetGroupInfoTest() {
+        // TODO: test assetGroupInfo
+    }
+
+    /**
      * Test the property 'assetId'
      */
     @Test
@@ -45,14 +53,6 @@ public class AssetIdPermissionsTest {
     @Test
     public void permissionsTest() {
         // TODO: test permissions
-    }
-
-    /**
-     * Test the property 'assetGroupInfo'
-     */
-    @Test
-    public void assetGroupInfoTest() {
-        // TODO: test assetGroupInfo
     }
 
 }

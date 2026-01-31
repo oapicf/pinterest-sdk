@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.MediaUploadAllOfUploadParameters;
+import org.openapitools.model.MediaUploadParameters;
 import org.openapitools.model.MediaUploadType;
 
 /**
  * Media upload that has been registered but not uploaded/processed yet.
  */
 @ApiModel(description = "Media upload that has been registered but not uploaded/processed yet.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaUpload   {
   @JsonProperty("media_id")
   private String mediaId;
@@ -21,28 +21,19 @@ public class MediaUpload   {
   @JsonProperty("media_type")
   private MediaUploadType mediaType;
 
+  @JsonProperty("upload_parameters")
+  private MediaUploadParameters uploadParameters;
+
   @JsonProperty("upload_url")
   private String uploadUrl;
-
-  @JsonProperty("upload_parameters")
-  private MediaUploadAllOfUploadParameters uploadParameters;
-
-  public MediaUpload mediaId(String mediaId) {
-    this.mediaId = mediaId;
-    return this;
-  }
 
    /**
    * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
    * @return mediaId
   **/
-  @ApiModelProperty(value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
+  @ApiModelProperty(example = "12345", required = true, value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
   public String getMediaId() {
     return mediaId;
-  }
-
-  public void setMediaId(String mediaId) {
-    this.mediaId = mediaId;
   }
 
   public MediaUpload mediaType(MediaUploadType mediaType) {
@@ -54,7 +45,7 @@ public class MediaUpload   {
    * Get mediaType
    * @return mediaType
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public MediaUploadType getMediaType() {
     return mediaType;
   }
@@ -63,9 +54,13 @@ public class MediaUpload   {
     this.mediaType = mediaType;
   }
 
-  public MediaUpload uploadUrl(String uploadUrl) {
-    this.uploadUrl = uploadUrl;
-    return this;
+   /**
+   * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+   * @return uploadParameters
+  **/
+  @ApiModelProperty(value = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
+  public MediaUploadParameters getUploadParameters() {
+    return uploadParameters;
   }
 
    /**
@@ -75,28 +70,6 @@ public class MediaUpload   {
   @ApiModelProperty(example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", value = "The URL where you will POST your media file.")
   public String getUploadUrl() {
     return uploadUrl;
-  }
-
-  public void setUploadUrl(String uploadUrl) {
-    this.uploadUrl = uploadUrl;
-  }
-
-  public MediaUpload uploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
-    this.uploadParameters = uploadParameters;
-    return this;
-  }
-
-   /**
-   * Get uploadParameters
-   * @return uploadParameters
-  **/
-  @ApiModelProperty(value = "")
-  public MediaUploadAllOfUploadParameters getUploadParameters() {
-    return uploadParameters;
-  }
-
-  public void setUploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
-    this.uploadParameters = uploadParameters;
   }
 
 
@@ -111,13 +84,13 @@ public class MediaUpload   {
     MediaUpload mediaUpload = (MediaUpload) o;
     return Objects.equals(this.mediaId, mediaUpload.mediaId) &&
         Objects.equals(this.mediaType, mediaUpload.mediaType) &&
-        Objects.equals(this.uploadUrl, mediaUpload.uploadUrl) &&
-        Objects.equals(this.uploadParameters, mediaUpload.uploadParameters);
+        Objects.equals(this.uploadParameters, mediaUpload.uploadParameters) &&
+        Objects.equals(this.uploadUrl, mediaUpload.uploadUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mediaId, mediaType, uploadUrl, uploadParameters);
+    return Objects.hash(mediaId, mediaType, uploadParameters, uploadUrl);
   }
 
   @Override
@@ -127,8 +100,8 @@ public class MediaUpload   {
     
     sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
-    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("    uploadParameters: ").append(toIndentedString(uploadParameters)).append("\n");
+    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

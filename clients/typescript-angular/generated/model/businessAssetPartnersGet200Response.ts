@@ -11,10 +11,10 @@ import { UserSingleAssetBinding } from './userSingleAssetBinding';
 
 
 export interface BusinessAssetPartnersGet200Response { 
+    bookmark?: string | null;
     /**
      * List of partners with permissions to the asset.
      */
     items: Array<UserSingleAssetBinding>;
-    bookmark?: string | null;
 }
 

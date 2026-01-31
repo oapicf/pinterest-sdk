@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -16,18 +16,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.TargetingSpec;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateUpdateRequest   {
   
+  private String id;
 
 
   public enum OperationTypeEnum {
-    REMOVE("REMOVE");
+    REMOVE("REMOVE"),
+    UPDATE("UPDATE");
 
     private String value;
 
@@ -43,24 +46,7 @@ public class TargetingTemplateUpdateRequest   {
   }
 
   private OperationTypeEnum operationType;
-  private String id;
-
-  /**
-   */
-  public TargetingTemplateUpdateRequest operationType(OperationTypeEnum operationType) {
-    this.operationType = operationType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation_type")
-  public OperationTypeEnum getOperationType() {
-    return operationType;
-  }
-  public void setOperationType(OperationTypeEnum operationType) {
-    this.operationType = operationType;
-  }
+  private TargetingSpec targetingAttributes;
 
   /**
    * Targeting template ID
@@ -80,6 +66,40 @@ public class TargetingTemplateUpdateRequest   {
     this.id = id;
   }
 
+  /**
+   */
+  public TargetingTemplateUpdateRequest operationType(OperationTypeEnum operationType) {
+    this.operationType = operationType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("operation_type")
+  public OperationTypeEnum getOperationType() {
+    return operationType;
+  }
+  public void setOperationType(OperationTypeEnum operationType) {
+    this.operationType = operationType;
+  }
+
+  /**
+   */
+  public TargetingTemplateUpdateRequest targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
+  }
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,13 +110,14 @@ public class TargetingTemplateUpdateRequest   {
       return false;
     }
     TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = (TargetingTemplateUpdateRequest) o;
-    return Objects.equals(operationType, targetingTemplateUpdateRequest.operationType) &&
-        Objects.equals(id, targetingTemplateUpdateRequest.id);
+    return Objects.equals(id, targetingTemplateUpdateRequest.id) &&
+        Objects.equals(operationType, targetingTemplateUpdateRequest.operationType) &&
+        Objects.equals(targetingAttributes, targetingTemplateUpdateRequest.targetingAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operationType, id);
+    return Objects.hash(id, operationType, targetingAttributes);
   }
 
   @Override
@@ -104,8 +125,9 @@ public class TargetingTemplateUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateUpdateRequest {\n");
     
-    sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

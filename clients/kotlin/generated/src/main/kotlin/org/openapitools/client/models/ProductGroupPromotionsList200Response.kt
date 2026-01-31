@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ProductGroupPromotionResponseItem
+import org.openapitools.client.models.ProductGroupPromotion
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 data class ProductGroupPromotionsList200Response (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<ProductGroupPromotionResponseItem>,
+    val items: kotlin.collections.List<ProductGroupPromotion>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

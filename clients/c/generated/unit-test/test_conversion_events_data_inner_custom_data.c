@@ -22,33 +22,39 @@ conversion_events_data_inner_custom_data_t* instantiate_conversion_events_data_i
   conversion_events_data_inner_custom_data_t* conversion_events_data_inner_custom_data = NULL;
   if (include_optional) {
     conversion_events_data_inner_custom_data = conversion_events_data_inner_custom_data_create(
-      "USD",
-      "72.39",
-      ["red-pinterest-shirt-logo-1","purple-pinterest-shirt-logo-3"],
-      "pinterest-themed-clothing",
-      "shirts",
       "pinterest-brand",
-      list_createList(),
-      2,
-      "my_order_id",
-      "sample string",
+      "shirts",
+      ["product-id-001","product-id-002"],
+      "pinterest-themed-clothing",
+      [{"id":"product-id-001","item_price":"14.99","quantity":3,"item_name":"pinterest-shirt-girl","item_category":"pinterest-clothing-shirts","item_brand":"pinterest"},{"id":"product-id-002","item_price":"13.71","quantity":2,"item_name":"pinterest-shirt-men","item_category":"pinterest-clothing-shirts","item_brand":"pinterest"}],
+      "USD",
+      "rbos-cb7a9e56-4988-4ca0-801b-05c79b29785f",
+      1,
+      "ss-company",
+      5,
       "LDP",
-      "ss-company"
+      "my_order_id",
+      "2794.82",
+      "sample string",
+      "72.39"
     );
   } else {
     conversion_events_data_inner_custom_data = conversion_events_data_inner_custom_data_create(
-      "USD",
-      "72.39",
-      ["red-pinterest-shirt-logo-1","purple-pinterest-shirt-logo-3"],
-      "pinterest-themed-clothing",
-      "shirts",
       "pinterest-brand",
-      list_createList(),
-      2,
-      "my_order_id",
-      "sample string",
+      "shirts",
+      ["product-id-001","product-id-002"],
+      "pinterest-themed-clothing",
+      [{"id":"product-id-001","item_price":"14.99","quantity":3,"item_name":"pinterest-shirt-girl","item_category":"pinterest-clothing-shirts","item_brand":"pinterest"},{"id":"product-id-002","item_price":"13.71","quantity":2,"item_name":"pinterest-shirt-men","item_category":"pinterest-clothing-shirts","item_brand":"pinterest"}],
+      "USD",
+      "rbos-cb7a9e56-4988-4ca0-801b-05c79b29785f",
+      1,
+      "ss-company",
+      5,
       "LDP",
-      "ss-company"
+      "my_order_id",
+      "2794.82",
+      "sample string",
+      "72.39"
     );
   }
 

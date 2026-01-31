@@ -12,11 +12,12 @@ import org.joda.time.DateTime
 import GetBusinessAssetsResponse._
 
 case class GetBusinessAssetsResponse (
-  /* Unique identifier of a business asset. */
+  assetGroupInfo: Option[AssetGroupBinding],
+/* Unique identifier of a business asset. */
   assetId: Option[String],
-/* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+/* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
   assetType: Option[String],
-assetGroupInfo: Option[AssetGroupBinding])
+catalogInfo: Option[GetBusinessAssetsResponseCatalogInfo])
 
 object GetBusinessAssetsResponse {
   import DateTimeCodecs._

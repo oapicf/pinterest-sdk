@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"name": @"name", @"status": @"status", @"lifetimeSpendCap": @"lifetime_spend_cap", @"dailySpendCap": @"daily_spend_cap", @"orderLineId": @"order_line_id", @"trackingUrls": @"tracking_urls", @"startTime": @"start_time", @"endTime": @"end_time", @"isFlexibleDailyBudgets": @"is_flexible_daily_budgets" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"dailySpendCap": @"daily_spend_cap", @"endTime": @"end_time", @"isAutomatedCampaign": @"is_automated_campaign", @"isFlexibleDailyBudgets": @"is_flexible_daily_budgets", @"lifetimeSpendCap": @"lifetime_spend_cap", @"name": @"name", @"orderLineId": @"order_line_id", @"startTime": @"start_time", @"status": @"status", @"trackingUrls": @"tracking_urls" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"adAccountId", @"name", @"status", @"lifetimeSpendCap", @"dailySpendCap", @"orderLineId", @"trackingUrls", @"startTime", @"endTime", @"isFlexibleDailyBudgets"];
+  NSArray *optionalProperties = @[@"adAccountId", @"dailySpendCap", @"endTime", @"isAutomatedCampaign", @"isFlexibleDailyBudgets", @"lifetimeSpendCap", @"name", @"orderLineId", @"startTime", @"status", @"trackingUrls"];
   return [optionalProperties containsObject:propertyName];
 }
 

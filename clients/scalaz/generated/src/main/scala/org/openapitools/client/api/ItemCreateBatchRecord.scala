@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import ItemCreateBatchRecord._
 
 case class ItemCreateBatchRecord (
-  /* The catalog item id in the merchant namespace */
-  itemId: Option[String],
-attributes: Option[ItemAttributesRequest])
+  attributes: Option[ItemAttributesRequest],
+/* The catalog item id in the merchant namespace */
+  itemId: Option[String])
 
 object ItemCreateBatchRecord {
   import DateTimeCodecs._

@@ -10,24 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsFeedProductCounts   {
   
-  private Integer original;
   private Integer ingested;
+  private Integer original;
 
   public CatalogsFeedProductCounts () {
 
   }
 
-  public CatalogsFeedProductCounts (Integer original, Integer ingested) {
-    this.original = original;
+  public CatalogsFeedProductCounts (Integer ingested, Integer original) {
     this.ingested = ingested;
-  }
-
-    
-  @JsonProperty("original")
-  public Integer getOriginal() {
-    return original;
-  }
-  public void setOriginal(Integer original) {
     this.original = original;
   }
 
@@ -40,6 +31,15 @@ public class CatalogsFeedProductCounts   {
     this.ingested = ingested;
   }
 
+    
+  @JsonProperty("original")
+  public Integer getOriginal() {
+    return original;
+  }
+  public void setOriginal(Integer original) {
+    this.original = original;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -50,13 +50,13 @@ public class CatalogsFeedProductCounts   {
       return false;
     }
     CatalogsFeedProductCounts catalogsFeedProductCounts = (CatalogsFeedProductCounts) o;
-    return Objects.equals(original, catalogsFeedProductCounts.original) &&
-        Objects.equals(ingested, catalogsFeedProductCounts.ingested);
+    return Objects.equals(ingested, catalogsFeedProductCounts.ingested) &&
+        Objects.equals(original, catalogsFeedProductCounts.original);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(original, ingested);
+    return Objects.hash(ingested, original);
   }
 
   @Override
@@ -64,8 +64,8 @@ public class CatalogsFeedProductCounts   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedProductCounts {\n");
     
-    sb.append("    original: ").append(toIndentedString(original)).append("\n");
     sb.append("    ingested: ").append(toIndentedString(ingested)).append("\n");
+    sb.append("    original: ").append(toIndentedString(original)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,6 +5,16 @@
   "name": "OauthAccessTokenResponseRefresh",
   "fields": [
     {
+      "name": "access_token",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "expires_in",
+      "type": "int",
+      "doc": ""
+    },
+    {
       "name": "response_type",
       "type": ["null", {
         "type": "enum",
@@ -19,7 +29,7 @@
       "default": null
     },
     {
-      "name": "access_token",
+      "name": "scope",
       "type": "string",
       "doc": ""
     },
@@ -30,13 +40,18 @@
       "default": "bearer"
     },
     {
-      "name": "expires_in",
+      "name": "refresh_token",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "refresh_token_expires_at",
       "type": "int",
       "doc": ""
     },
     {
-      "name": "scope",
-      "type": "string",
+      "name": "refresh_token_expires_in",
+      "type": "int",
       "doc": ""
     }
   ]

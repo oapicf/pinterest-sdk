@@ -12,11 +12,11 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **AVAILABILITY** | AVAILABILITY | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
 **BRAND** | BRAND | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
 **CONDITION** | CONDITION | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_0** | CUSTOM_LABEL_0 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_1** | CUSTOM_LABEL_1 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_2** | CUSTOM_LABEL_2 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_3** | CUSTOM_LABEL_3 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_4** | CUSTOM_LABEL_4 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_LABEL_0** | CUSTOM_LABEL_0 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_LABEL_1** | CUSTOM_LABEL_1 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_LABEL_2** | CUSTOM_LABEL_2 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_LABEL_3** | CUSTOM_LABEL_3 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_LABEL_4** | CUSTOM_LABEL_4 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
 **ITEM_GROUP_ID** | ITEM_GROUP_ID | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
 **GENDER** | GENDER | long NOT NULL |  | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  |  [foreignkey]
 **MEDIA_TYPE** | MEDIA_TYPE | long NOT NULL |  | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  |  [foreignkey]
@@ -33,6 +33,18 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **GOOGLE_PRODUCT_CATEGORY_1** | GOOGLE_PRODUCT_CATEGORY_1 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  [foreignkey]
 **GOOGLE_PRODUCT_CATEGORY_0** | GOOGLE_PRODUCT_CATEGORY_0 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  [foreignkey]
 **PRODUCT_GROUP** | PRODUCT_GROUP | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_NUMBER_0** | CUSTOM_NUMBER_0 | long NOT NULL |  | [**CatalogsProductGroupUint32Criteria**](.md) |  |  [foreignkey]
+**CUSTOM_NUMBER_1** | CUSTOM_NUMBER_1 | long NOT NULL |  | [**CatalogsProductGroupUint32Criteria**](.md) |  |  [foreignkey]
+**CUSTOM_NUMBER_2** | CUSTOM_NUMBER_2 | long NOT NULL |  | [**CatalogsProductGroupUint32Criteria**](.md) |  |  [foreignkey]
+**CUSTOM_NUMBER_3** | CUSTOM_NUMBER_3 | long NOT NULL |  | [**CatalogsProductGroupUint32Criteria**](.md) |  |  [foreignkey]
+**CUSTOM_NUMBER_4** | CUSTOM_NUMBER_4 | long NOT NULL |  | [**CatalogsProductGroupUint32Criteria**](.md) |  |  [foreignkey]
+**TITLE_KEYWORDS** | TITLE_KEYWORDS | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
+
+
+
+
+
+
 
 
 

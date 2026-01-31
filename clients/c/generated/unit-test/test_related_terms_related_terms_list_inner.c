@@ -22,13 +22,13 @@ related_terms_related_terms_list_inner_t* instantiate_related_terms_related_term
   related_terms_related_terms_list_inner_t* related_terms_related_terms_list_inner = NULL;
   if (include_optional) {
     related_terms_related_terms_list_inner = related_terms_related_terms_list_inner_create(
-      "clothes",
-      ["shoes","cute clothes"]
+      ["shoes","cute clothes"],
+      "clothes"
     );
   } else {
     related_terms_related_terms_list_inner = related_terms_related_terms_list_inner_create(
-      "clothes",
-      ["shoes","cute clothes"]
+      ["shoes","cute clothes"],
+      "clothes"
     );
   }
 

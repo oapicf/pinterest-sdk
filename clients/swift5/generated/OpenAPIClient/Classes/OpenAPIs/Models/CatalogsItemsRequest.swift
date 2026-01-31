@@ -123,20 +123,20 @@ public struct CatalogsItemsRequest: Codable, JSONEncodable, Hashable {
         case zh = "ZH"
     }
     public var country: Country
+    public var filters: CatalogsItemsPostFilters
     /** We recommend using the CatalogsLocale values. */
     public var language: Language
-    public var filters: CatalogsItemsPostFilters
 
-    public init(country: Country, language: Language, filters: CatalogsItemsPostFilters) {
+    public init(country: Country, filters: CatalogsItemsPostFilters, language: Language) {
         self.country = country
-        self.language = language
         self.filters = filters
+        self.language = language
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case country
-        case language
         case filters
+        case language
     }
 
     // Encodable protocol methods
@@ -144,8 +144,8 @@ public struct CatalogsItemsRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(country, forKey: .country)
-        try container.encode(language, forKey: .language)
         try container.encode(filters, forKey: .filters)
+        try container.encode(language, forKey: .language)
     }
 }
 

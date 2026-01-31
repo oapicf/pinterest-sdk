@@ -10,9 +10,18 @@ import javax.validation.Valid;
 /**
  * AudienceSubcategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AudienceSubcategory   {
+  @JsonProperty("id")
+  
+  private String id;
+
+  @JsonProperty("index")
+  @Valid
+
+  private BigDecimal index;
+
   @JsonProperty("key")
   
   private String key;
@@ -26,14 +35,39 @@ public class AudienceSubcategory   {
 
   private BigDecimal ratio;
 
-  @JsonProperty("index")
-  @Valid
+  public AudienceSubcategory id(String id) {
+    this.id = id;
+    return this;
+  }
 
-  private BigDecimal index;
+   /**
+   * Subinterest ID.
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
 
-  @JsonProperty("id")
-  
-  private String id;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AudienceSubcategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
+   /**
+   * Subinterest affinity index.
+   * @return index
+  **/
+  public BigDecimal getIndex() {
+    return index;
+  }
+
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
 
   public AudienceSubcategory key(String key) {
     this.key = key;
@@ -86,40 +120,6 @@ public class AudienceSubcategory   {
     this.ratio = ratio;
   }
 
-  public AudienceSubcategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
-   /**
-   * Subinterest affinity index.
-   * @return index
-  **/
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceSubcategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Subinterest ID.
-   * @return id
-  **/
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -130,16 +130,16 @@ public class AudienceSubcategory   {
       return false;
     }
     AudienceSubcategory audienceSubcategory = (AudienceSubcategory) o;
-    return Objects.equals(key, audienceSubcategory.key) &&
-        Objects.equals(name, audienceSubcategory.name) &&
-        Objects.equals(ratio, audienceSubcategory.ratio) &&
+    return Objects.equals(id, audienceSubcategory.id) &&
         Objects.equals(index, audienceSubcategory.index) &&
-        Objects.equals(id, audienceSubcategory.id);
+        Objects.equals(key, audienceSubcategory.key) &&
+        Objects.equals(name, audienceSubcategory.name) &&
+        Objects.equals(ratio, audienceSubcategory.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -148,11 +148,11 @@ public class AudienceSubcategory   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSubcategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

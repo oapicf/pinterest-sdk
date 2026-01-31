@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,9 +25,10 @@ import org.openapitools.model.CatalogsHotelAttributes;
  */
 
 @ApiModel(description = "A hotel item to be created.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateHotelItem   {
   
+  private CatalogsHotelAttributes attributes;
   private String hotelId;
 
 
@@ -48,7 +49,23 @@ public class CatalogsCreateHotelItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsHotelAttributes attributes;
+
+  /**
+   */
+  public CatalogsCreateHotelItem attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog hotel id in the merchant namespace
@@ -85,23 +102,6 @@ public class CatalogsCreateHotelItem   {
     this.operation = operation;
   }
 
-  /**
-   */
-  public CatalogsCreateHotelItem attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -112,14 +112,14 @@ public class CatalogsCreateHotelItem   {
       return false;
     }
     CatalogsCreateHotelItem catalogsCreateHotelItem = (CatalogsCreateHotelItem) o;
-    return Objects.equals(hotelId, catalogsCreateHotelItem.hotelId) &&
-        Objects.equals(operation, catalogsCreateHotelItem.operation) &&
-        Objects.equals(attributes, catalogsCreateHotelItem.attributes);
+    return Objects.equals(attributes, catalogsCreateHotelItem.attributes) &&
+        Objects.equals(hotelId, catalogsCreateHotelItem.hotelId) &&
+        Objects.equals(operation, catalogsCreateHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -127,9 +127,9 @@ public class CatalogsCreateHotelItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

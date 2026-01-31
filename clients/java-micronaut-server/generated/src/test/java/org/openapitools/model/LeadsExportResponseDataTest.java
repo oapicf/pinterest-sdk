@@ -22,19 +22,19 @@ public class LeadsExportResponseDataTest {
     }
 
     /**
-     * Test the property 'exportStatus'
-     */
-    @Test
-    public void exportStatusTest() {
-        // TODO: test exportStatus
-    }
-
-    /**
      * Test the property 'downloadUrl'
      */
     @Test
     public void downloadUrlTest() {
         // TODO: test downloadUrl
+    }
+
+    /**
+     * Test the property 'exportStatus'
+     */
+    @Test
+    public void exportStatusTest() {
+        // TODO: test exportStatus
     }
 
 }

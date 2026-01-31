@@ -5,11 +5,10 @@
  */
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.AdAccountCreateSubscriptionRequest;
-import com.prokarma.pkmst.model.AdAccountCreateSubscriptionResponse;
-import com.prokarma.pkmst.model.AdAccountGetSubscriptionResponse;
 import com.prokarma.pkmst.model.AdAccountsSubscriptionsGetList200Response;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.LeadSubscription;
+import com.prokarma.pkmst.model.LeadSubscriptionPostParamsCreate;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -23,20 +22,22 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "LeadAds", description = "the LeadAds API")
 public interface LeadAdsApi {
 
-    @ApiOperation(value = "Delete lead ads subscription", notes = "Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
+    @ApiOperation(value = "Delete lead ads subscription", notes = "Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "lead_ads", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Subscription deleted successfully"),
-        @ApiResponse(code = 400, message = "Invalid input parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "You are not authorized to delete this subscription.", response = Error.class),
-        @ApiResponse(code = 404, message = "Subscription not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
+        @ApiResponse(code = 204, message = "Resource deleted successfully."),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.DELETE,
         value = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
@@ -45,55 +46,63 @@ public interface LeadAdsApi {
     ResponseEntity<Void> adAccountsSubscriptionsDelById(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Unique identifier of a subscription.",required=true ) @PathVariable("subscription_id") String subscriptionId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get lead ads subscription", notes = "Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdAccountGetSubscriptionResponse.class, authorizations = {
+    @ApiOperation(value = "Get lead ads subscription by ID", notes = "Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'", response = LeadSubscription.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "lead_ads", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountGetSubscriptionResponse.class),
-        @ApiResponse(code = 400, message = "Invalid input parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "Can't access this subscription.", response = Error.class),
-        @ApiResponse(code = 404, message = "Subscription not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadSubscription.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
         produces = { "application/json" }
     )
-    ResponseEntity<AdAccountGetSubscriptionResponse> adAccountsSubscriptionsGetById(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Unique identifier of a subscription.",required=true ) @PathVariable("subscription_id") String subscriptionId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<LeadSubscription> adAccountsSubscriptionsGetById(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Unique identifier of a subscription.",required=true ) @PathVariable("subscription_id") String subscriptionId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get lead ads subscriptions", notes = "Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdAccountsSubscriptionsGetList200Response.class, authorizations = {
+    @ApiOperation(value = "Get lead ads subscriptions", notes = "Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.", response = AdAccountsSubscriptionsGetList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "lead_ads", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountsSubscriptionsGetList200Response.class),
-        @ApiResponse(code = 403, message = "Can't access this subscription.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsSubscriptionsGetList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/ad_accounts/{ad_account_id}/leads/subscriptions",
         produces = { "application/json" }
     )
-    ResponseEntity<AdAccountsSubscriptionsGetList200Response> adAccountsSubscriptionsGetList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<AdAccountsSubscriptionsGetList200Response> adAccountsSubscriptionsGetList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Create lead ads subscription", notes = "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdAccountCreateSubscriptionResponse.class, authorizations = {
+    @ApiOperation(value = "Create lead ads subscription", notes = "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.", response = LeadSubscription.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "lead_ads", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountCreateSubscriptionResponse.class),
-        @ApiResponse(code = 400, message = "Invalid input parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "Can't access this subscription.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadSubscription.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/ad_accounts/{ad_account_id}/leads/subscriptions",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<AdAccountCreateSubscriptionResponse> adAccountsSubscriptionsPost(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Subscription to create." ,required=true )   @RequestBody AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<LeadSubscription> adAccountsSubscriptionsPost(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true )   @RequestBody LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 }

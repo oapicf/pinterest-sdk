@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OptimizationGoalMetadataFrequencyGoalMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OptimizationGoalMetadataFrequencyGoalMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  OptimizationGoalMetadataFrequencyGoalMetadata {
+    title = OptimizationGoalMetadataFrequencyGoalMetadata
+    description = OptimizationGoalMetadataFrequencyGoalMetadata
+    derivedFrom = Root
+    properties {
+        frequency {
+          type =  integer
+          description = "Frequency target can only be between 2 and 20"
+          optional = false
+        }
+        timerange {
+          type =  string
+          description = "User entity counts time range"
+          enum = ["THIRTY_DAY", "DAY", "SEVEN_DAY", "TWENTY_MINUTE", "TEN_MINUTE", "TWENTY_FOUR_HOUR"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OptimizationGoalMetadataFrequencyGoalMetadata {
+    title = OptimizationGoalMetadataFrequencyGoalMetadata
+    description = OptimizationGoalMetadataFrequencyGoalMetadata
+    implements = openapi_server.resourceTypes.OptimizationGoalMetadataFrequencyGoalMetadata
+
+  }
+}

@@ -10,16 +10,16 @@ module UserWebsiteVerificationCode =
 
   [<CLIMutable>]
   type UserWebsiteVerificationCode = {
-    [<JsonProperty(PropertyName = "verification_code")>]
-    VerificationCode : string;
     [<JsonProperty(PropertyName = "dns_txt_record")>]
     DnsTxtRecord : string;
-    [<JsonProperty(PropertyName = "metatag")>]
-    Metatag : string;
-    [<JsonProperty(PropertyName = "filename")>]
-    Filename : string;
     [<JsonProperty(PropertyName = "file_content")>]
     FileContent : string;
+    [<JsonProperty(PropertyName = "filename")>]
+    Filename : string;
+    [<JsonProperty(PropertyName = "metatag")>]
+    Metatag : string;
+    [<JsonProperty(PropertyName = "verification_code")>]
+    VerificationCode : string;
   }
 
   //#endregion

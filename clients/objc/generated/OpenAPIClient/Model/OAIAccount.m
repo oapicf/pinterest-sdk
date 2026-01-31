@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"accountType": @"account_type", @"_id": @"id", @"profileImage": @"profile_image", @"websiteUrl": @"website_url", @"username": @"username", @"about": @"about", @"businessName": @"business_name", @"boardCount": @"board_count", @"pinCount": @"pin_count", @"followerCount": @"follower_count", @"followingCount": @"following_count", @"monthlyViews": @"monthly_views" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"about": @"about", @"accountType": @"account_type", @"boardCount": @"board_count", @"businessName": @"business_name", @"followerCount": @"follower_count", @"followingCount": @"following_count", @"_id": @"id", @"monthlyViews": @"monthly_views", @"pinCount": @"pin_count", @"profileImage": @"profile_image", @"username": @"username", @"websiteUrl": @"website_url" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"accountType", @"_id", @"profileImage", @"websiteUrl", @"username", @"about", @"businessName", @"boardCount", @"pinCount", @"followerCount", @"followingCount", @"monthlyViews"];
+  NSArray *optionalProperties = @[@"about", @"accountType", @"boardCount", @"businessName", @"followerCount", @"followingCount", @"_id", @"monthlyViews", @"pinCount", @"profileImage", @"username", @"websiteUrl"];
   return [optionalProperties containsObject:propertyName];
 }
 

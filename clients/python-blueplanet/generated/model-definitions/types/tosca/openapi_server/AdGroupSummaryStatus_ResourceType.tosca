@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupSummaryStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupSummaryStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdGroupSummaryStatus {
+    title = AdGroupSummaryStatus
+    description = AdGroupSummaryStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupSummaryStatus {
+    title = AdGroupSummaryStatus
+    description = AdGroupSummaryStatus
+    implements = openapi_server.resourceTypes.AdGroupSummaryStatus
+
+  }
+}

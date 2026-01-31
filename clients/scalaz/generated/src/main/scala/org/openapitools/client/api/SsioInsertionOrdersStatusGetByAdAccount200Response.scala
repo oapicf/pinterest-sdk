@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import SsioInsertionOrdersStatusGetByAdAccount200Response._
 
 case class SsioInsertionOrdersStatusGetByAdAccount200Response (
-  /* Insertion orders status by ad acount id */
-  items: List[SSIOInsertionOrderStatus],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* Insertion orders status by ad acount id */
+  items: List[SSIOInsertionOrderStatus])
 
 object SsioInsertionOrdersStatusGetByAdAccount200Response {
   import DateTimeCodecs._

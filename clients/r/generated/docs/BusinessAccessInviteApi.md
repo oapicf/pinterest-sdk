@@ -27,7 +27,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_create_asset_access_request_body <- CreateAssetAccessRequestBody$new(c(CreateAssetAccessRequestBody_asset_requests_inner$new("partner_id_example", c(key = c(Permissions$new()))))) # CreateAssetAccessRequestBody | 
+var_create_asset_access_request_body <- CreateAssetAccessRequestBody$new(c(CreateAssetAccessRequestBody_asset_requests_inner$new(c(key = c(Permissions$new())), "partner_id_example"))) # CreateAssetAccessRequestBody | 
 
 api_instance <- BusinessAccessInviteApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -78,7 +78,7 @@ library(openapi)
 # Cancel invites/requests
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Business id
+var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
 var_cancel_invites_body <- CancelInvitesBody$new(c("invite_ids_example")) # CancelInvitesBody | A list with invite ids
 
 api_instance <- BusinessAccessInviteApi$new()
@@ -94,7 +94,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business_id** | **character**| Business id | 
+ **business_id** | **character**| Unique identifier of the requesting business. | 
  **cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
 
 ### Return type
@@ -131,7 +131,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_create_asset_invites_request <- CreateAssetInvitesRequest$new(c(CreateAssetInvitesRequestItem$new("invite_id_example", InviteType$new(), c(key = c(Permissions$new()))))) # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+var_create_asset_invites_request <- CreateAssetInvitesRequest$new(c(CreateAssetInvitesRequestItem$new(c(key = c(Permissions$new())), "invite_id_example", InviteType$new()))) # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
 
 api_instance <- BusinessAccessInviteApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -182,7 +182,7 @@ library(openapi)
 # Create invites or requests
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Business id
+var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
 var_create_membership_or_partnership_invites_body <- CreateMembershipOrPartnershipInvitesBody$new("EMPLOYEE", InviteType$new(), c("members_example"), c("partners_example")) # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 
 api_instance <- BusinessAccessInviteApi$new()
@@ -198,7 +198,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business_id** | **character**| Business id | 
+ **business_id** | **character**| Unique identifier of the requesting business. | 
  **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

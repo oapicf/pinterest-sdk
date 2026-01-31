@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import ImageDetails._
 
 case class ImageDetails (
-  width: Integer,
-height: Integer,
-url: String)
+  height: Integer,
+url: String,
+width: Integer)
 
 object ImageDetails {
   import DateTimeCodecs._

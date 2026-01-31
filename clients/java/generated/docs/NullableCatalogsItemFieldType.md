@@ -61,8 +61,6 @@
 
 * `EXPIRATION_DATE` (value: `"EXPIRATION_DATE"`)
 
-* `SALE_PRICE_EFFECTIVE_DATE` (value: `"SALE_PRICE_EFFECTIVE_DATE"`)
-
 * `AVAILABILITY_DATE` (value: `"AVAILABILITY_DATE"`)
 
 * `WEIGHT_UNIT` (value: `"WEIGHT_UNIT"`)
@@ -116,6 +114,106 @@
 * `SHIPPING_WIDTH` (value: `"SHIPPING_WIDTH"`)
 
 * `SHIPPING_HEIGHT` (value: `"SHIPPING_HEIGHT"`)
+
+* `AD_IMAGE_0_LINK` (value: `"AD_IMAGE_0_LINK"`)
+
+* `AD_IMAGE_1_LINK` (value: `"AD_IMAGE_1_LINK"`)
+
+* `AD_IMAGE_2_LINK` (value: `"AD_IMAGE_2_LINK"`)
+
+* `AD_IMAGE_3_LINK` (value: `"AD_IMAGE_3_LINK"`)
+
+* `AD_IMAGE_4_LINK` (value: `"AD_IMAGE_4_LINK"`)
+
+* `AD_IMAGE_5_LINK` (value: `"AD_IMAGE_5_LINK"`)
+
+* `AD_IMAGE_6_LINK` (value: `"AD_IMAGE_6_LINK"`)
+
+* `AD_IMAGE_7_LINK` (value: `"AD_IMAGE_7_LINK"`)
+
+* `AD_IMAGE_8_LINK` (value: `"AD_IMAGE_8_LINK"`)
+
+* `AD_IMAGE_9_LINK` (value: `"AD_IMAGE_9_LINK"`)
+
+* `AD_IMAGE_10_LINK` (value: `"AD_IMAGE_10_LINK"`)
+
+* `AD_IMAGE_11_LINK` (value: `"AD_IMAGE_11_LINK"`)
+
+* `AD_IMAGE_12_LINK` (value: `"AD_IMAGE_12_LINK"`)
+
+* `AD_IMAGE_13_LINK` (value: `"AD_IMAGE_13_LINK"`)
+
+* `AD_IMAGE_14_LINK` (value: `"AD_IMAGE_14_LINK"`)
+
+* `AD_IMAGE_15_LINK` (value: `"AD_IMAGE_15_LINK"`)
+
+* `AD_IMAGE_16_LINK` (value: `"AD_IMAGE_16_LINK"`)
+
+* `AD_IMAGE_17_LINK` (value: `"AD_IMAGE_17_LINK"`)
+
+* `AD_IMAGE_18_LINK` (value: `"AD_IMAGE_18_LINK"`)
+
+* `AD_IMAGE_19_LINK` (value: `"AD_IMAGE_19_LINK"`)
+
+* `AD_IMAGE_0_TAG` (value: `"AD_IMAGE_0_TAG"`)
+
+* `AD_IMAGE_1_TAG` (value: `"AD_IMAGE_1_TAG"`)
+
+* `AD_IMAGE_2_TAG` (value: `"AD_IMAGE_2_TAG"`)
+
+* `AD_IMAGE_3_TAG` (value: `"AD_IMAGE_3_TAG"`)
+
+* `AD_IMAGE_4_TAG` (value: `"AD_IMAGE_4_TAG"`)
+
+* `AD_IMAGE_5_TAG` (value: `"AD_IMAGE_5_TAG"`)
+
+* `AD_IMAGE_6_TAG` (value: `"AD_IMAGE_6_TAG"`)
+
+* `AD_IMAGE_7_TAG` (value: `"AD_IMAGE_7_TAG"`)
+
+* `AD_IMAGE_8_TAG` (value: `"AD_IMAGE_8_TAG"`)
+
+* `AD_IMAGE_9_TAG` (value: `"AD_IMAGE_9_TAG"`)
+
+* `AD_IMAGE_10_TAG` (value: `"AD_IMAGE_10_TAG"`)
+
+* `AD_IMAGE_11_TAG` (value: `"AD_IMAGE_11_TAG"`)
+
+* `AD_IMAGE_12_TAG` (value: `"AD_IMAGE_12_TAG"`)
+
+* `AD_IMAGE_13_TAG` (value: `"AD_IMAGE_13_TAG"`)
+
+* `AD_IMAGE_14_TAG` (value: `"AD_IMAGE_14_TAG"`)
+
+* `AD_IMAGE_15_TAG` (value: `"AD_IMAGE_15_TAG"`)
+
+* `AD_IMAGE_16_TAG` (value: `"AD_IMAGE_16_TAG"`)
+
+* `AD_IMAGE_17_TAG` (value: `"AD_IMAGE_17_TAG"`)
+
+* `AD_IMAGE_18_TAG` (value: `"AD_IMAGE_18_TAG"`)
+
+* `AD_IMAGE_19_TAG` (value: `"AD_IMAGE_19_TAG"`)
+
+* `AD_VIDEO_0_LINK` (value: `"AD_VIDEO_0_LINK"`)
+
+* `AD_VIDEO_1_LINK` (value: `"AD_VIDEO_1_LINK"`)
+
+* `AD_VIDEO_2_LINK` (value: `"AD_VIDEO_2_LINK"`)
+
+* `AD_VIDEO_0_TAG` (value: `"AD_VIDEO_0_TAG"`)
+
+* `AD_VIDEO_1_TAG` (value: `"AD_VIDEO_1_TAG"`)
+
+* `AD_VIDEO_2_TAG` (value: `"AD_VIDEO_2_TAG"`)
+
+* `INSTALLMENT_PRICE` (value: `"INSTALLMENT_PRICE"`)
+
+* `UNIT_PRICE_TOTAL_MEASURE` (value: `"UNIT_PRICE_TOTAL_MEASURE"`)
+
+* `UNIT_PRICE_BASE_MEASURE` (value: `"UNIT_PRICE_BASE_MEASURE"`)
+
+* `SALE_PRICE_EFFECTIVE_DATE` (value: `"SALE_PRICE_EFFECTIVE_DATE"`)
 
 
 

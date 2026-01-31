@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,15 +17,18 @@ package openapi
 // CatalogsRetailBatchRequest - A request object that can have multiple operations on a single retail batch
 type CatalogsRetailBatchRequest struct {
 
+	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-
 	// Array with catalogs item operations
 	Items []CatalogsRetailBatchRequestItemsInner `json:"items"`
+
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 }
 
 // AssertCatalogsRetailBatchRequestRequired checks if the required fields are not zero-ed
@@ -33,8 +36,8 @@ func AssertCatalogsRetailBatchRequestRequired(obj CatalogsRetailBatchRequest) er
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
-		"language": obj.Language,
 		"items": obj.Items,
+		"language": obj.Language,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -42,26 +45,26 @@ func AssertCatalogsRetailBatchRequestRequired(obj CatalogsRetailBatchRequest) er
 		}
 	}
 
-	if err := AssertstringRequired(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsRetailBatchRequestItemsInnerRequired(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringRequired(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }
 
 // AssertCatalogsRetailBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsRetailBatchRequestConstraints(obj CatalogsRetailBatchRequest) error {
-	if err := AssertstringConstraints(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsRetailBatchRequestItemsInnerConstraints(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringConstraints(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }

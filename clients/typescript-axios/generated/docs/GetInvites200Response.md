@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;InviteResponse&gt;**](InviteResponse.md) | List of invite and request data. | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;InviteResponse&gt;**](InviteResponse.md) | List of invite and request data. | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { GetInvites200Response } from './api';
 
 const instance: GetInvites200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

@@ -2,7 +2,6 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIAudience.h"
-#import "OAIAudienceCreateCustomRequest.h"
 #import "OAIAudienceCreateRequest.h"
 #import "OAIAudienceUpdateRequest.h"
 #import "OAIAudiencesList200Response.h"
@@ -56,7 +55,7 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 
 ///
 /// Create audience
-/// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+/// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param audienceCreateRequest List of ads to create, size limit [1, 30] 
@@ -138,89 +137,6 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Create custom audience
-/// Create a custom audience and find the audiences you want your ads to reach.
-///  @param adAccountId Unique identifier of an ad account. 
-///
-///  @param audienceCreateCustomRequest Custom audience to create. 
-///
-///  @returns OAIAudience*
-///
--(NSURLSessionTask*) audiencesCreateCustomWithAdAccountId: (NSString*) adAccountId
-    audienceCreateCustomRequest: (OAIAudienceCreateCustomRequest*) audienceCreateCustomRequest
-    completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'audienceCreateCustomRequest' is set
-    if (audienceCreateCustomRequest == nil) {
-        NSParameterAssert(audienceCreateCustomRequest);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"audienceCreateCustomRequest"] };
-            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/audiences/custom"];
-
-    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
-
-    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
-    [headerParams addEntriesFromDictionary:self.defaultHeaders];
-    // HTTP header `Accept`
-    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
-    if(acceptHeader.length > 0) {
-        headerParams[@"Accept"] = acceptHeader;
-    }
-
-    // response content type
-    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
-
-    // request content type
-    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
-
-    // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
-
-    id bodyParam = nil;
-    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = audienceCreateCustomRequest;
-
-    return [self.apiClient requestWithPath: resourcePath
-                                    method: @"POST"
-                                pathParams: pathParams
-                               queryParams: queryParams
-                                formParams: formParams
-                                     files: localVarFiles
-                                      body: bodyParam
-                              headerParams: headerParams
-                              authSettings: authSettings
-                        requestContentType: requestContentType
-                       responseContentType: responseContentType
-                              responseType: @"OAIAudience*"
-                           completionBlock: ^(id data, NSError *error) {
-                                if(handler) {
-                                    handler((OAIAudience*)data, error);
-                                }
-                            }];
-}
-
-///
 /// Get audience
 /// Get a specific audience given the audience ID.
 ///  @param adAccountId Unique identifier of an ad account. 
@@ -280,7 +196,7 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -372,7 +288,7 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -404,7 +320,7 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 ///
 ///  @param audienceId Unique identifier of an audience 
 ///
-///  @param audienceUpdateRequest The audience to be updated. (optional)
+///  @param audienceUpdateRequest The audience to be updated. 
 ///
 ///  @returns OAIAudience*
 ///
@@ -428,6 +344,17 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
         NSParameterAssert(audienceId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"audienceId"] };
+            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'audienceUpdateRequest' is set
+    if (audienceUpdateRequest == nil) {
+        NSParameterAssert(audienceUpdateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"audienceUpdateRequest"] };
             NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }

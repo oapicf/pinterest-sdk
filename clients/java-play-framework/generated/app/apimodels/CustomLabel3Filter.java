@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.CatalogsProductGroupMultipleStringCriteria;
+import apimodels.CatalogsProductGroupFilterOperatorTypeCriteria;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,16 +10,16 @@ import javax.validation.Valid;
 /**
  * CustomLabel3Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CustomLabel3Filter   {
   @JsonProperty("CUSTOM_LABEL_3")
   @NotNull
 @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3;
 
-  public CustomLabel3Filter CUSTOM_LABEL_3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
+  public CustomLabel3Filter CUSTOM_LABEL_3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
     return this;
   }
@@ -28,11 +28,11 @@ public class CustomLabel3Filter   {
    * Get CUSTOM_LABEL_3
    * @return CUSTOM_LABEL_3
   **/
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
   }
 
-  public void setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
+  public void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
   }
 

@@ -24,8 +24,10 @@ import javax.annotation.Generated;
  * CatalogsReportDistributionIssueFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsReportDistributionIssueFilter implements CatalogsHotelReportParametersReport {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsReportDistributionIssueFilter implements CatalogsHotelReportParametersReport, CatalogsHotelReportStatsParametersReport {
+
+  private @Nullable String catalogId;
 
   /**
    * Gets or Sets reportType
@@ -62,8 +64,6 @@ public class CatalogsReportDistributionIssueFilter implements CatalogsHotelRepor
 
   private ReportTypeEnum reportType;
 
-  private @Nullable String catalogId;
-
   public CatalogsReportDistributionIssueFilter() {
     super();
   }
@@ -72,26 +72,6 @@ public class CatalogsReportDistributionIssueFilter implements CatalogsHotelRepor
    * Constructor with only required parameters
    */
   public CatalogsReportDistributionIssueFilter(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-  public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  /**
-   * Get reportType
-   * @return reportType
-   */
-  @NotNull 
-  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
@@ -115,6 +95,26 @@ public class CatalogsReportDistributionIssueFilter implements CatalogsHotelRepor
     this.catalogId = catalogId;
   }
 
+  public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  /**
+   * Get reportType
+   * @return reportType
+   */
+  @NotNull 
+  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,21 +124,21 @@ public class CatalogsReportDistributionIssueFilter implements CatalogsHotelRepor
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

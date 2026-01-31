@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsProductMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsProductMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CreativeAssetsVisibilityType = openapi_server.resourceTypes.CreativeAssetsVisibilityType
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsProductMetadata {
+    title = CatalogsCreativeAssetsProductMetadata
+    description = CatalogsCreativeAssetsProductMetadata
+    derivedFrom = Root
+    properties {
+        creative_assets_id {
+          type =  string
+          description = "The user-created unique ID that represents the creative assets item."
+          optional = true
+        }
+        visibility {
+          type = CreativeAssetsVisibilityType
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsProductMetadata {
+    title = CatalogsCreativeAssetsProductMetadata
+    description = CatalogsCreativeAssetsProductMetadata
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsProductMetadata
+
+  }
+}

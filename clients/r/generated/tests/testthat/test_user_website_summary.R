@@ -5,14 +5,6 @@ context("Test UserWebsiteSummary")
 
 model_instance <- UserWebsiteSummary$new()
 
-test_that("website", {
-  # tests for the property `website` (character)
-  # Website with path or domain only
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`website`, "EXPECTED_RESULT")
-})
-
 test_that("status", {
   # tests for the property `status` (character)
   # Status of the verification process
@@ -27,4 +19,12 @@ test_that("verified_at", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`verified_at`, "EXPECTED_RESULT")
+})
+
+test_that("website", {
+  # tests for the property `website` (character)
+  # Website with path or domain only
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`website`, "EXPECTED_RESULT")
 })

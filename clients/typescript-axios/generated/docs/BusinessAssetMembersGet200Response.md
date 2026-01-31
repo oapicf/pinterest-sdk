@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;UserSingleAssetBinding&gt;**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;UserSingleAssetBinding&gt;**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { BusinessAssetMembersGet200Response } from './api';
 
 const instance: BusinessAssetMembersGet200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

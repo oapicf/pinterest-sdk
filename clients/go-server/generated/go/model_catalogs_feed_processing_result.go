@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,11 +28,13 @@ type CatalogsFeedProcessingResult struct {
 
 	IngestionDetails CatalogsFeedIngestionDetails `json:"ingestion_details"`
 
-	Status CatalogsFeedProcessingStatus `json:"status"`
-
 	ProductCounts *CatalogsFeedProductCounts `json:"product_counts"`
 
+	Status CatalogsFeedProcessingStatus `json:"status"`
+
 	ValidationDetails CatalogsFeedValidationDetails `json:"validation_details"`
+
+	VideoCounts CatalogsFeedVideoCounts `json:"video_counts,omitempty"`
 }
 
 // AssertCatalogsFeedProcessingResultRequired checks if the required fields are not zero-ed
@@ -42,8 +44,8 @@ func AssertCatalogsFeedProcessingResultRequired(obj CatalogsFeedProcessingResult
 		"id": obj.Id,
 		"updated_at": obj.UpdatedAt,
 		"ingestion_details": obj.IngestionDetails,
-		"status": obj.Status,
 		"product_counts": obj.ProductCounts,
+		"status": obj.Status,
 		"validation_details": obj.ValidationDetails,
 	}
 	for name, el := range elements {
@@ -63,6 +65,9 @@ func AssertCatalogsFeedProcessingResultRequired(obj CatalogsFeedProcessingResult
 	if err := AssertCatalogsFeedValidationDetailsRequired(obj.ValidationDetails); err != nil {
 		return err
 	}
+	if err := AssertCatalogsFeedVideoCountsRequired(obj.VideoCounts); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -77,6 +82,9 @@ func AssertCatalogsFeedProcessingResultConstraints(obj CatalogsFeedProcessingRes
      	}
     }
 	if err := AssertCatalogsFeedValidationDetailsConstraints(obj.ValidationDetails); err != nil {
+		return err
+	}
+	if err := AssertCatalogsFeedVideoCountsConstraints(obj.VideoCounts); err != nil {
 		return err
 	}
 	return nil

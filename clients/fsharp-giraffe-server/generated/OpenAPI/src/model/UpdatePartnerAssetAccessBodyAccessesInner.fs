@@ -10,8 +10,8 @@ module UpdatePartnerAssetAccessBodyAccessesInner =
 
 
   type UpdatePartnerAssetAccessBody_accesses_inner = {
-    PartnerId : string;
     AssetId : string;
+    PartnerId : string;
     Permissions : Permissions[];
   }
   //#endregion

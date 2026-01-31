@@ -73,17 +73,17 @@ private class OASCatalogsVerticalBatchRequestTest {
     private static void maintainRenamedProperties() {
         OASCatalogsVerticalBatchRequest catalogsVerticalBatchRequest = new OASCatalogsVerticalBatchRequest();
         Map<String, String> x-property-mappings = catalogsVerticalBatchRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsVerticalBatchRequest catalogsVerticalBatchRequest = new OASCatalogsVerticalBatchRequest();
         System.assertEquals(new List<OASCatalogsCreativeAssetsBatchItem>(), catalogsVerticalBatchRequest.items);
+        System.assertEquals(null, catalogsVerticalBatchRequest.catalogId);
         System.assertEquals(null, catalogsVerticalBatchRequest.catalogType);
         System.assertEquals(null, catalogsVerticalBatchRequest.country);
         System.assertEquals(null, catalogsVerticalBatchRequest.language);
-        System.assertEquals(null, catalogsVerticalBatchRequest.catalogId);
     }
 }

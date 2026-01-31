@@ -12,18 +12,18 @@ import org.joda.time.DateTime
 import MultipleProductGroupsInner._
 
 case class MultipleProductGroupsInner (
-  name: String,
-description: Option[String],
-/* boolean indicator of whether the product group is being featured or not */
-  isFeatured: Option[Boolean],
-filters: CatalogsCreativeAssetsProductGroupFilters,
+  description: Option[String],
 /* Catalog Feed id pertaining to the catalog product group. */
   feedId: String,
-catalogType: CatalogType,
+filters: CatalogsCreativeAssetsProductGroupFilters,
+/* boolean indicator of whether the product group is being featured or not */
+  isFeatured: Option[Boolean],
+name: String,
 /* Catalog id pertaining to the creative assets product group. */
   catalogId: String,
-country: Country,
-locale: CatalogsLocale)
+catalogType: CatalogType,
+country: Option[Country],
+locale: Option[CatalogsLocale])
 
 object MultipleProductGroupsInner {
   import DateTimeCodecs._

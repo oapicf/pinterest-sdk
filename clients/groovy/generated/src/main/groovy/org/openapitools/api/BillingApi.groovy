@@ -4,6 +4,8 @@ import org.openapitools.api.ApiUtils
 import org.openapitools.model.AdsCreditRedeemRequest
 import org.openapitools.model.AdsCreditRedeemResponse
 import org.openapitools.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.model.BillingInvoiceDownloadResponse
+import org.openapitools.model.BillingInvoicesGet200Response
 import org.openapitools.model.BillingProfilesGet200Response
 import org.openapitools.model.Error
 import org.openapitools.model.SSIOAccountResponse
@@ -77,6 +79,82 @@ class BillingApi {
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
                     AdsCreditsDiscountsGet200Response.class )
+
+    }
+
+    def billingInvoiceDownloadGet ( String adAccountId, String billingInvoiceId, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/billing_invoice/${billing_invoice_id}/download"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (billingInvoiceId == null) {
+            throw new RuntimeException("missing required params billingInvoiceId")
+        }
+
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "",
+                    BillingInvoiceDownloadResponse.class )
+
+    }
+
+    def billingInvoicesGet ( String adAccountId, String bookmark, Integer pageSize, String sort, String order, String status, String documentType, Date startDueDate, Date endDueDate, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/billing_invoices"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
+        if (sort != null) {
+            queryParams.put("sort", sort)
+        }
+        if (order != null) {
+            queryParams.put("order", order)
+        }
+        if (status != null) {
+            queryParams.put("status", status)
+        }
+        if (documentType != null) {
+            queryParams.put("document_type", documentType)
+        }
+        if (startDueDate != null) {
+            queryParams.put("start_due_date", startDueDate)
+        }
+        if (endDueDate != null) {
+            queryParams.put("end_due_date", endDueDate)
+        }
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "",
+                    BillingInvoicesGet200Response.class )
 
     }
 

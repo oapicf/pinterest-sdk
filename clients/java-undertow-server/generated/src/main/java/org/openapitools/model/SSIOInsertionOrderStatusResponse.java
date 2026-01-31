@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,12 +21,30 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOInsertionOrderStatusResponse   {
   
+  private String creationTime;
   private String pinOrderId;
   private String status;
-  private String creationTime;
+
+  /**
+   * Salesforce insertion order creation time
+   */
+  public SSIOInsertionOrderStatusResponse creationTime(String creationTime) {
+    this.creationTime = creationTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
+  @JsonProperty("creation_time")
+  public String getCreationTime() {
+    return creationTime;
+  }
+  public void setCreationTime(String creationTime) {
+    this.creationTime = creationTime;
+  }
 
   /**
    * Salesforce order id
@@ -64,24 +82,6 @@ public class SSIOInsertionOrderStatusResponse   {
     this.status = status;
   }
 
-  /**
-   * Salesforce insertion order creation time
-   */
-  public SSIOInsertionOrderStatusResponse creationTime(String creationTime) {
-    this.creationTime = creationTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
-  @JsonProperty("creation_time")
-  public String getCreationTime() {
-    return creationTime;
-  }
-  public void setCreationTime(String creationTime) {
-    this.creationTime = creationTime;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,14 +92,14 @@ public class SSIOInsertionOrderStatusResponse   {
       return false;
     }
     SSIOInsertionOrderStatusResponse ssIOInsertionOrderStatusResponse = (SSIOInsertionOrderStatusResponse) o;
-    return Objects.equals(pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
-        Objects.equals(status, ssIOInsertionOrderStatusResponse.status) &&
-        Objects.equals(creationTime, ssIOInsertionOrderStatusResponse.creationTime);
+    return Objects.equals(creationTime, ssIOInsertionOrderStatusResponse.creationTime) &&
+        Objects.equals(pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
+        Objects.equals(status, ssIOInsertionOrderStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pinOrderId, status, creationTime);
+    return Objects.hash(creationTime, pinOrderId, status);
   }
 
   @Override
@@ -107,9 +107,9 @@ public class SSIOInsertionOrderStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderStatusResponse {\n");
     
+    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

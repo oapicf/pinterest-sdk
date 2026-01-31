@@ -8,11 +8,11 @@ The class is defined in **[ImageMetadata.java](../../src/main/java/org/openapito
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemType** | `String` |  |  [optional property]
-**title** | `String` |  |  [optional property]
 **description** | `String` |  |  [optional property]
+**images** | [`ImageSize`](ImageSize.md) |  |  [optional property]
+**itemType** | `String` |  |  [optional property]
 **link** | `String` |  |  [optional property]
-**images** | [`ImageMetadataImages`](ImageMetadataImages.md) |  |  [optional property]
+**title** | `String` |  |  [optional property]
 
 
 

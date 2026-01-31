@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**FeedId** | **string** |  | 
 **CreatedAt** | **time.Time** |  | 
+**FeedId** | **string** |  | 
+**Id** | **string** |  | 
 **Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 
 ## Methods
 
 ### NewCatalogsFeedIngestion
 
-`func NewCatalogsFeedIngestion(id string, feedId string, createdAt time.Time, status CatalogsFeedProcessingStatus, ) *CatalogsFeedIngestion`
+`func NewCatalogsFeedIngestion(createdAt time.Time, feedId string, id string, status CatalogsFeedProcessingStatus, ) *CatalogsFeedIngestion`
 
 NewCatalogsFeedIngestion instantiates a new CatalogsFeedIngestion object
 This constructor will assign default values to properties that have it defined,
@@ -28,24 +28,24 @@ NewCatalogsFeedIngestionWithDefaults instantiates a new CatalogsFeedIngestion ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetCreatedAt
 
-`func (o *CatalogsFeedIngestion) GetId() string`
+`func (o *CatalogsFeedIngestion) GetCreatedAt() time.Time`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetCreatedAtOk
 
-`func (o *CatalogsFeedIngestion) GetIdOk() (*string, bool)`
+`func (o *CatalogsFeedIngestion) GetCreatedAtOk() (*time.Time, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetCreatedAt
 
-`func (o *CatalogsFeedIngestion) SetId(v string)`
+`func (o *CatalogsFeedIngestion) SetCreatedAt(v time.Time)`
 
-SetId sets Id field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetFeedId
@@ -68,24 +68,24 @@ and a boolean to check if the value has been set.
 SetFeedId sets FeedId field to given value.
 
 
-### GetCreatedAt
+### GetId
 
-`func (o *CatalogsFeedIngestion) GetCreatedAt() time.Time`
+`func (o *CatalogsFeedIngestion) GetId() string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetIdOk
 
-`func (o *CatalogsFeedIngestion) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *CatalogsFeedIngestion) GetIdOk() (*string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetId
 
-`func (o *CatalogsFeedIngestion) SetCreatedAt(v time.Time)`
+`func (o *CatalogsFeedIngestion) SetId(v string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetId sets Id field to given value.
 
 
 ### GetStatus

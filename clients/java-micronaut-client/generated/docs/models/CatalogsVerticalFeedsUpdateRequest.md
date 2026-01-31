@@ -10,15 +10,15 @@ The class is defined in **[CatalogsVerticalFeedsUpdateRequest.java](../../src/ma
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaultCurrency** | `NullableCurrency` |  |  [optional property]
-**name** | `String` | A human-friendly name associated to a given feed. |  [optional property]
-**_format** | `CatalogsFormat` |  |  [optional property]
+**catalogType** | `CatalogsType` |  | 
 **credentials** | [`CatalogsFeedCredentials`](CatalogsFeedCredentials.md) |  |  [optional property]
+**defaultAvailability** | `ProductAvailabilityType` |  |  [optional property]
+**defaultCurrency** | `NullableCurrency` |  |  [optional property]
+**_format** | `CatalogsFormat` |  |  [optional property]
 **location** | `String` | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. |  [optional property]
+**name** | `String` | A human-friendly name associated to a given feed. |  [optional property]
 **preferredProcessingSchedule** | [`CatalogsFeedProcessingSchedule`](CatalogsFeedProcessingSchedule.md) |  |  [optional property]
 **status** | `CatalogsStatus` |  |  [optional property]
-**catalogType** | `CatalogsType` |  | 
-**defaultAvailability** | `ProductAvailabilityType` |  |  [optional property]
 
 
 

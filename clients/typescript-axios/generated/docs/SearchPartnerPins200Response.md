@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;SummaryPin&gt;**](SummaryPin.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;SummaryPin&gt;**](SummaryPin.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { SearchPartnerPins200Response } from './api';
 
 const instance: SearchPartnerPins200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

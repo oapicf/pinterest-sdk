@@ -50,13 +50,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	LeadFormQuestionType getQuestionType();
-
-	/*! \brief Set 
-	 */
-	void setQuestionType(LeadFormQuestionType  question_type);
-	/*! \brief Get 
-	 */
 	LeadFormQuestionFieldType getCustomQuestionFieldType();
 
 	/*! \brief Set 
@@ -76,12 +69,19 @@ public:
 	/*! \brief Set Question options for a custom question.
 	 */
 	void setCustomQuestionOptions(std::list <std::string> custom_question_options);
+	/*! \brief Get 
+	 */
+	LeadFormQuestionType getQuestionType();
+
+	/*! \brief Set 
+	 */
+	void setQuestionType(LeadFormQuestionType  question_type);
 
 private:
-	LeadFormQuestionType question_type;
 	LeadFormQuestionFieldType custom_question_field_type;
 	std::string custom_question_label;
 	std::list <std::string>custom_question_options;
+	LeadFormQuestionType question_type;
 	void __init();
 	void __cleanup();
 

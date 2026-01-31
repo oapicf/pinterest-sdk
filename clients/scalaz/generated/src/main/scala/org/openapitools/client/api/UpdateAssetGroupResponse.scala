@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import UpdateAssetGroupResponse._
 
 case class UpdateAssetGroupResponse (
-  /* A list of successfully edited asset groups. */
-  updatedAssetGroups: Option[List[AssetGroupBinding]],
-/* A list of errors associated with the asset groups. Will be returned if there is an error. */
-  exceptions: Option[List[UpdateAssetGroupResponseExceptionsInner]])
+  /* A list of errors associated with the asset groups. Will be returned if there is an error. */
+  exceptions: Option[List[UpdateAssetGroupResponseExceptionsInner]],
+/* A list of successfully edited asset groups. */
+  updatedAssetGroups: Option[List[AssetGroupBinding]])
 
 object UpdateAssetGroupResponse {
   import DateTimeCodecs._

@@ -1,0 +1,39 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "auto_targeting_enabled" },
+      {"model": "bid_in_micro_currency" },
+      {"model": "bid_strategy_type" },
+      {"model": "billable_event" },
+      {"model": "budget_in_micro_currency" },
+      {"model": "budget_type" },
+      {"model": "campaign_id" },
+      {"model": "end_time" },
+      {"model": "is_creative_optimization" },
+      {"model": "lifetime_frequency_cap" },
+      {"model": "name" },
+      {"model": "optimization_goal_metadata" },
+      {"model": "pacing_delivery_type" },
+      {"model": "placement_group" },
+      {"model": "promotion_application_level" },
+      {"model": "promotion_id" },
+      {"model": "start_time" },
+      {"model": "status" },
+      {"model": "targeting_spec" },
+      {"model": "targeting_template_ids" },
+      {"model": "tracking_urls" },
+      {"model": "bid_multiplier" },
+      {"model": "id" },
+    ]
+  }]
+}

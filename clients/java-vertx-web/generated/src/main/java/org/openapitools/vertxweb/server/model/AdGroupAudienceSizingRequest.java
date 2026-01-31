@@ -16,7 +16,6 @@ import org.openapitools.vertxweb.server.model.TargetingSpec;
 public class AdGroupAudienceSizingRequest   {
   
   private Boolean autoTargetingEnabled = true;
-  private PlacementGroupType placementGroup = "ALL";
 
 
   public enum CreativeTypesEnum {
@@ -43,21 +42,22 @@ public class AdGroupAudienceSizingRequest   {
   }
 
   private List<CreativeTypesEnum> creativeTypes;
-  private TargetingSpec targetingSpec;
-  private List<String> productGroupIds;
   private List<AdGroupAudienceSizingRequestKeywordsInner> keywords;
+  private PlacementGroupType placementGroup = "ALL";
+  private List<String> productGroupIds;
+  private TargetingSpec targetingSpec;
 
   public AdGroupAudienceSizingRequest () {
 
   }
 
-  public AdGroupAudienceSizingRequest (Boolean autoTargetingEnabled, PlacementGroupType placementGroup, List<CreativeTypesEnum> creativeTypes, TargetingSpec targetingSpec, List<String> productGroupIds, List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+  public AdGroupAudienceSizingRequest (Boolean autoTargetingEnabled, List<CreativeTypesEnum> creativeTypes, List<AdGroupAudienceSizingRequestKeywordsInner> keywords, PlacementGroupType placementGroup, List<String> productGroupIds, TargetingSpec targetingSpec) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-    this.placementGroup = placementGroup;
     this.creativeTypes = creativeTypes;
-    this.targetingSpec = targetingSpec;
-    this.productGroupIds = productGroupIds;
     this.keywords = keywords;
+    this.placementGroup = placementGroup;
+    this.productGroupIds = productGroupIds;
+    this.targetingSpec = targetingSpec;
   }
 
     
@@ -70,15 +70,6 @@ public class AdGroupAudienceSizingRequest   {
   }
 
     
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-  }
-
-    
   @JsonProperty("creative_types")
   public List<CreativeTypesEnum> getCreativeTypes() {
     return creativeTypes;
@@ -88,12 +79,21 @@ public class AdGroupAudienceSizingRequest   {
   }
 
     
-  @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
+  @JsonProperty("keywords")
+  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
+    return keywords;
   }
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
+  }
+
+    
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
   }
 
     
@@ -106,12 +106,12 @@ public class AdGroupAudienceSizingRequest   {
   }
 
     
-  @JsonProperty("keywords")
-  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
-    return keywords;
+  @JsonProperty("targeting_spec")
+  public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
   }
-  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
   }
 
 
@@ -125,16 +125,16 @@ public class AdGroupAudienceSizingRequest   {
     }
     AdGroupAudienceSizingRequest adGroupAudienceSizingRequest = (AdGroupAudienceSizingRequest) o;
     return Objects.equals(autoTargetingEnabled, adGroupAudienceSizingRequest.autoTargetingEnabled) &&
-        Objects.equals(placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(creativeTypes, adGroupAudienceSizingRequest.creativeTypes) &&
-        Objects.equals(targetingSpec, adGroupAudienceSizingRequest.targetingSpec) &&
+        Objects.equals(keywords, adGroupAudienceSizingRequest.keywords) &&
+        Objects.equals(placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(productGroupIds, adGroupAudienceSizingRequest.productGroupIds) &&
-        Objects.equals(keywords, adGroupAudienceSizingRequest.keywords);
+        Objects.equals(targetingSpec, adGroupAudienceSizingRequest.targetingSpec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, placementGroup, creativeTypes, targetingSpec, productGroupIds, keywords);
+    return Objects.hash(autoTargetingEnabled, creativeTypes, keywords, placementGroup, productGroupIds, targetingSpec);
   }
 
   @Override
@@ -143,11 +143,11 @@ public class AdGroupAudienceSizingRequest   {
     sb.append("class AdGroupAudienceSizingRequest {\n");
     
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    creativeTypes: ").append(toIndentedString(creativeTypes)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("}");
     return sb.toString();
   }

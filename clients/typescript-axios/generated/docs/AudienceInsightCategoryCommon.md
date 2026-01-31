@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional] [default to undefined]
+**index** | **number** |  | [optional] [default to undefined]
 **key** | **string** |  | [optional] [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **ratio** | **number** |  | [optional] [default to undefined]
-**index** | **number** |  | [optional] [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 import { AudienceInsightCategoryCommon } from './api';
 
 const instance: AudienceInsightCategoryCommon = {
+    id,
+    index,
     key,
     name,
     ratio,
-    index,
-    id,
 };
 ```
 

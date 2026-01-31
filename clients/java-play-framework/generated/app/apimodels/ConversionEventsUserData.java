@@ -1,8 +1,6 @@
 package apimodels;
 
-import apimodels.ConversionEventsUserDataAnyOf;
-import apimodels.ConversionEventsUserDataAnyOf1;
-import apimodels.ConversionEventsUserDataAnyOf2;
+import apimodels.ConversionEventsUserDataProperties;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,32 +14,64 @@ import javax.validation.Valid;
 /**
  * Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionEventsUserData   {
-  @JsonProperty("ph")
+  @JsonProperty("click_id")
   
-  private List<String> ph = null;
+  private String clickId;
 
-  @JsonProperty("ge")
+  @JsonProperty("client_ip_address")
   
-  private List<String> ge = null;
+  private String clientIpAddress;
+
+  @JsonProperty("client_user_agent")
+  
+  private String clientUserAgent;
+
+  @JsonProperty("country")
+  
+  private List<String> country = null;
+
+  @JsonProperty("ct")
+  
+  private List<String> ct = null;
 
   @JsonProperty("db")
   
   private List<String> db = null;
 
-  @JsonProperty("ln")
+  @JsonProperty("em")
   
-  private List<String> ln = null;
+  private List<String> em = null;
+
+  @JsonProperty("external_id")
+  
+  private List<String> externalId = null;
 
   @JsonProperty("fn")
   
   private List<String> fn = null;
 
-  @JsonProperty("ct")
+  @JsonProperty("ge")
   
-  private List<String> ct = null;
+  private List<String> ge = null;
+
+  @JsonProperty("hashed_maids")
+  
+  private List<String> hashedMaids = null;
+
+  @JsonProperty("ln")
+  
+  private List<String> ln = null;
+
+  @JsonProperty("partner_id")
+  
+  private String partnerId;
+
+  @JsonProperty("ph")
+  
+  private List<String> ph = null;
 
   @JsonProperty("st")
   
@@ -51,90 +81,105 @@ public class ConversionEventsUserData   {
   
   private List<String> zp = null;
 
-  @JsonProperty("country")
-  
-  private List<String> country = null;
-
-  @JsonProperty("external_id")
-  
-  private List<String> externalId = null;
-
-  @JsonProperty("click_id")
-  
-  private String clickId;
-
-  @JsonProperty("partner_id")
-  
-  private String partnerId;
-
-  @JsonProperty("em")
-  @NotNull
-
-  private List<String> em = new ArrayList<>();
-
-  @JsonProperty("hashed_maids")
-  @NotNull
-
-  private List<String> hashedMaids = new ArrayList<>();
-
-  @JsonProperty("client_ip_address")
-  @NotNull
-
-  private String clientIpAddress;
-
-  @JsonProperty("client_user_agent")
-  @NotNull
-
-  private String clientUserAgent;
-
-  public ConversionEventsUserData ph(List<String> ph) {
-    this.ph = ph;
-    return this;
-  }
-
-  public ConversionEventsUserData addPhItem(String phItem) {
-    if (this.ph == null) {
-      this.ph = new ArrayList<>();
-    }
-    this.ph.add(phItem);
+  public ConversionEventsUserData clickId(String clickId) {
+    this.clickId = clickId;
     return this;
   }
 
    /**
-   * Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
-   * @return ph
+   * The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+   * @return clickId
   **/
-  public List<String> getPh() {
-    return ph;
+  public String getClickId() {
+    return clickId;
   }
 
-  public void setPh(List<String> ph) {
-    this.ph = ph;
+  public void setClickId(String clickId) {
+    this.clickId = clickId;
   }
 
-  public ConversionEventsUserData ge(List<String> ge) {
-    this.ge = ge;
-    return this;
-  }
-
-  public ConversionEventsUserData addGeItem(String geItem) {
-    if (this.ge == null) {
-      this.ge = new ArrayList<>();
-    }
-    this.ge.add(geItem);
+  public ConversionEventsUserData clientIpAddress(String clientIpAddress) {
+    this.clientIpAddress = clientIpAddress;
     return this;
   }
 
    /**
-   * Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender. The string should be in the UTF-8 format.
-   * @return ge
+   * The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+   * @return clientIpAddress
   **/
-  public List<String> getGe() {
-    return ge;
+  public String getClientIpAddress() {
+    return clientIpAddress;
   }
 
-  public void setGe(List<String> ge) {
-    this.ge = ge;
+  public void setClientIpAddress(String clientIpAddress) {
+    this.clientIpAddress = clientIpAddress;
+  }
+
+  public ConversionEventsUserData clientUserAgent(String clientUserAgent) {
+    this.clientUserAgent = clientUserAgent;
+    return this;
+  }
+
+   /**
+   * The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+   * @return clientUserAgent
+  **/
+  public String getClientUserAgent() {
+    return clientUserAgent;
+  }
+
+  public void setClientUserAgent(String clientUserAgent) {
+    this.clientUserAgent = clientUserAgent;
+  }
+
+  public ConversionEventsUserData country(List<String> country) {
+    this.country = country;
+    return this;
+  }
+
+  public ConversionEventsUserData addCountryItem(String countryItem) {
+    if (this.country == null) {
+      this.country = new ArrayList<>();
+    }
+    this.country.add(countryItem);
+    return this;
+  }
+
+   /**
+   * Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase. The string should be in the UTF-8 format.
+   * @return country
+  **/
+  public List<String> getCountry() {
+    return country;
+  }
+
+  public void setCountry(List<String> country) {
+    this.country = country;
+  }
+
+  public ConversionEventsUserData ct(List<String> ct) {
+    this.ct = ct;
+    return this;
+  }
+
+  public ConversionEventsUserData addCtItem(String ctItem) {
+    if (this.ct == null) {
+      this.ct = new ArrayList<>();
+    }
+    this.ct.add(ctItem);
+    return this;
+  }
+
+   /**
+   * Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format.
+   * @return ct
+  **/
+  public List<String> getCt() {
+    return ct;
+  }
+
+  public void setCt(List<String> ct) {
+    this.ct = ct;
   }
 
   public ConversionEventsUserData db(List<String> db) {
@@ -162,29 +207,54 @@ public class ConversionEventsUserData   {
     this.db = db;
   }
 
-  public ConversionEventsUserData ln(List<String> ln) {
-    this.ln = ln;
+  public ConversionEventsUserData em(List<String> em) {
+    this.em = em;
     return this;
   }
 
-  public ConversionEventsUserData addLnItem(String lnItem) {
-    if (this.ln == null) {
-      this.ln = new ArrayList<>();
+  public ConversionEventsUserData addEmItem(String emItem) {
+    if (this.em == null) {
+      this.em = new ArrayList<>();
     }
-    this.ln.add(lnItem);
+    this.em.add(emItem);
     return this;
   }
 
    /**
-   * Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
-   * @return ln
+   * Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+   * @return em
   **/
-  public List<String> getLn() {
-    return ln;
+  public List<String> getEm() {
+    return em;
   }
 
-  public void setLn(List<String> ln) {
-    this.ln = ln;
+  public void setEm(List<String> em) {
+    this.em = em;
+  }
+
+  public ConversionEventsUserData externalId(List<String> externalId) {
+    this.externalId = externalId;
+    return this;
+  }
+
+  public ConversionEventsUserData addExternalIdItem(String externalIdItem) {
+    if (this.externalId == null) {
+      this.externalId = new ArrayList<>();
+    }
+    this.externalId.add(externalIdItem);
+    return this;
+  }
+
+   /**
+   * Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+   * @return externalId
+  **/
+  public List<String> getExternalId() {
+    return externalId;
+  }
+
+  public void setExternalId(List<String> externalId) {
+    this.externalId = externalId;
   }
 
   public ConversionEventsUserData fn(List<String> fn) {
@@ -212,29 +282,121 @@ public class ConversionEventsUserData   {
     this.fn = fn;
   }
 
-  public ConversionEventsUserData ct(List<String> ct) {
-    this.ct = ct;
+  public ConversionEventsUserData ge(List<String> ge) {
+    this.ge = ge;
     return this;
   }
 
-  public ConversionEventsUserData addCtItem(String ctItem) {
-    if (this.ct == null) {
-      this.ct = new ArrayList<>();
+  public ConversionEventsUserData addGeItem(String geItem) {
+    if (this.ge == null) {
+      this.ge = new ArrayList<>();
     }
-    this.ct.add(ctItem);
+    this.ge.add(geItem);
     return this;
   }
 
    /**
-   * Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format.
-   * @return ct
+   * Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender. The string should be in the UTF-8 format.
+   * @return ge
   **/
-  public List<String> getCt() {
-    return ct;
+  public List<String> getGe() {
+    return ge;
   }
 
-  public void setCt(List<String> ct) {
-    this.ct = ct;
+  public void setGe(List<String> ge) {
+    this.ge = ge;
+  }
+
+  public ConversionEventsUserData hashedMaids(List<String> hashedMaids) {
+    this.hashedMaids = hashedMaids;
+    return this;
+  }
+
+  public ConversionEventsUserData addHashedMaidsItem(String hashedMaidsItem) {
+    if (this.hashedMaids == null) {
+      this.hashedMaids = new ArrayList<>();
+    }
+    this.hashedMaids.add(hashedMaidsItem);
+    return this;
+  }
+
+   /**
+   * Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+   * @return hashedMaids
+  **/
+  public List<String> getHashedMaids() {
+    return hashedMaids;
+  }
+
+  public void setHashedMaids(List<String> hashedMaids) {
+    this.hashedMaids = hashedMaids;
+  }
+
+  public ConversionEventsUserData ln(List<String> ln) {
+    this.ln = ln;
+    return this;
+  }
+
+  public ConversionEventsUserData addLnItem(String lnItem) {
+    if (this.ln == null) {
+      this.ln = new ArrayList<>();
+    }
+    this.ln.add(lnItem);
+    return this;
+  }
+
+   /**
+   * Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+   * @return ln
+  **/
+  public List<String> getLn() {
+    return ln;
+  }
+
+  public void setLn(List<String> ln) {
+    this.ln = ln;
+  }
+
+  public ConversionEventsUserData partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+   /**
+   * A unique identifier of visitors' information defined by third party partners. e.g RampID
+   * @return partnerId
+  **/
+  public String getPartnerId() {
+    return partnerId;
+  }
+
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
+  public ConversionEventsUserData ph(List<String> ph) {
+    this.ph = ph;
+    return this;
+  }
+
+  public ConversionEventsUserData addPhItem(String phItem) {
+    if (this.ph == null) {
+      this.ph = new ArrayList<>();
+    }
+    this.ph.add(phItem);
+    return this;
+  }
+
+   /**
+   * Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+   * @return ph
+  **/
+  public List<String> getPh() {
+    return ph;
+  }
+
+  public void setPh(List<String> ph) {
+    this.ph = ph;
   }
 
   public ConversionEventsUserData st(List<String> st) {
@@ -287,174 +449,6 @@ public class ConversionEventsUserData   {
     this.zp = zp;
   }
 
-  public ConversionEventsUserData country(List<String> country) {
-    this.country = country;
-    return this;
-  }
-
-  public ConversionEventsUserData addCountryItem(String countryItem) {
-    if (this.country == null) {
-      this.country = new ArrayList<>();
-    }
-    this.country.add(countryItem);
-    return this;
-  }
-
-   /**
-   * Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase. The string should be in the UTF-8 format.
-   * @return country
-  **/
-  public List<String> getCountry() {
-    return country;
-  }
-
-  public void setCountry(List<String> country) {
-    this.country = country;
-  }
-
-  public ConversionEventsUserData externalId(List<String> externalId) {
-    this.externalId = externalId;
-    return this;
-  }
-
-  public ConversionEventsUserData addExternalIdItem(String externalIdItem) {
-    if (this.externalId == null) {
-      this.externalId = new ArrayList<>();
-    }
-    this.externalId.add(externalIdItem);
-    return this;
-  }
-
-   /**
-   * Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
-   * @return externalId
-  **/
-  public List<String> getExternalId() {
-    return externalId;
-  }
-
-  public void setExternalId(List<String> externalId) {
-    this.externalId = externalId;
-  }
-
-  public ConversionEventsUserData clickId(String clickId) {
-    this.clickId = clickId;
-    return this;
-  }
-
-   /**
-   * The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-   * @return clickId
-  **/
-  public String getClickId() {
-    return clickId;
-  }
-
-  public void setClickId(String clickId) {
-    this.clickId = clickId;
-  }
-
-  public ConversionEventsUserData partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-   /**
-   * A unique identifier of visitors' information defined by third party partners. e.g RampID
-   * @return partnerId
-  **/
-  public String getPartnerId() {
-    return partnerId;
-  }
-
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
-  public ConversionEventsUserData em(List<String> em) {
-    this.em = em;
-    return this;
-  }
-
-  public ConversionEventsUserData addEmItem(String emItem) {
-    if (this.em == null) {
-      this.em = new ArrayList<>();
-    }
-    this.em.add(emItem);
-    return this;
-  }
-
-   /**
-   * Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
-   * @return em
-  **/
-  public List<String> getEm() {
-    return em;
-  }
-
-  public void setEm(List<String> em) {
-    this.em = em;
-  }
-
-  public ConversionEventsUserData hashedMaids(List<String> hashedMaids) {
-    this.hashedMaids = hashedMaids;
-    return this;
-  }
-
-  public ConversionEventsUserData addHashedMaidsItem(String hashedMaidsItem) {
-    if (this.hashedMaids == null) {
-      this.hashedMaids = new ArrayList<>();
-    }
-    this.hashedMaids.add(hashedMaidsItem);
-    return this;
-  }
-
-   /**
-   * Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
-   * @return hashedMaids
-  **/
-  public List<String> getHashedMaids() {
-    return hashedMaids;
-  }
-
-  public void setHashedMaids(List<String> hashedMaids) {
-    this.hashedMaids = hashedMaids;
-  }
-
-  public ConversionEventsUserData clientIpAddress(String clientIpAddress) {
-    this.clientIpAddress = clientIpAddress;
-    return this;
-  }
-
-   /**
-   * The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
-   * @return clientIpAddress
-  **/
-  public String getClientIpAddress() {
-    return clientIpAddress;
-  }
-
-  public void setClientIpAddress(String clientIpAddress) {
-    this.clientIpAddress = clientIpAddress;
-  }
-
-  public ConversionEventsUserData clientUserAgent(String clientUserAgent) {
-    this.clientUserAgent = clientUserAgent;
-    return this;
-  }
-
-   /**
-   * The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
-   * @return clientUserAgent
-  **/
-  public String getClientUserAgent() {
-    return clientUserAgent;
-  }
-
-  public void setClientUserAgent(String clientUserAgent) {
-    this.clientUserAgent = clientUserAgent;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -465,27 +459,27 @@ public class ConversionEventsUserData   {
       return false;
     }
     ConversionEventsUserData conversionEventsUserData = (ConversionEventsUserData) o;
-    return Objects.equals(ph, conversionEventsUserData.ph) &&
-        Objects.equals(ge, conversionEventsUserData.ge) &&
-        Objects.equals(db, conversionEventsUserData.db) &&
-        Objects.equals(ln, conversionEventsUserData.ln) &&
-        Objects.equals(fn, conversionEventsUserData.fn) &&
-        Objects.equals(ct, conversionEventsUserData.ct) &&
-        Objects.equals(st, conversionEventsUserData.st) &&
-        Objects.equals(zp, conversionEventsUserData.zp) &&
-        Objects.equals(country, conversionEventsUserData.country) &&
-        Objects.equals(externalId, conversionEventsUserData.externalId) &&
-        Objects.equals(clickId, conversionEventsUserData.clickId) &&
-        Objects.equals(partnerId, conversionEventsUserData.partnerId) &&
-        Objects.equals(em, conversionEventsUserData.em) &&
-        Objects.equals(hashedMaids, conversionEventsUserData.hashedMaids) &&
+    return Objects.equals(clickId, conversionEventsUserData.clickId) &&
         Objects.equals(clientIpAddress, conversionEventsUserData.clientIpAddress) &&
-        Objects.equals(clientUserAgent, conversionEventsUserData.clientUserAgent);
+        Objects.equals(clientUserAgent, conversionEventsUserData.clientUserAgent) &&
+        Objects.equals(country, conversionEventsUserData.country) &&
+        Objects.equals(ct, conversionEventsUserData.ct) &&
+        Objects.equals(db, conversionEventsUserData.db) &&
+        Objects.equals(em, conversionEventsUserData.em) &&
+        Objects.equals(externalId, conversionEventsUserData.externalId) &&
+        Objects.equals(fn, conversionEventsUserData.fn) &&
+        Objects.equals(ge, conversionEventsUserData.ge) &&
+        Objects.equals(hashedMaids, conversionEventsUserData.hashedMaids) &&
+        Objects.equals(ln, conversionEventsUserData.ln) &&
+        Objects.equals(partnerId, conversionEventsUserData.partnerId) &&
+        Objects.equals(ph, conversionEventsUserData.ph) &&
+        Objects.equals(st, conversionEventsUserData.st) &&
+        Objects.equals(zp, conversionEventsUserData.zp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ph, ge, db, ln, fn, ct, st, zp, country, externalId, clickId, partnerId, em, hashedMaids, clientIpAddress, clientUserAgent);
+    return Objects.hash(clickId, clientIpAddress, clientUserAgent, country, ct, db, em, externalId, fn, ge, hashedMaids, ln, partnerId, ph, st, zp);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -494,22 +488,22 @@ public class ConversionEventsUserData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventsUserData {\n");
     
-    sb.append("    ph: ").append(toIndentedString(ph)).append("\n");
-    sb.append("    ge: ").append(toIndentedString(ge)).append("\n");
-    sb.append("    db: ").append(toIndentedString(db)).append("\n");
-    sb.append("    ln: ").append(toIndentedString(ln)).append("\n");
-    sb.append("    fn: ").append(toIndentedString(fn)).append("\n");
-    sb.append("    ct: ").append(toIndentedString(ct)).append("\n");
-    sb.append("    st: ").append(toIndentedString(st)).append("\n");
-    sb.append("    zp: ").append(toIndentedString(zp)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    clickId: ").append(toIndentedString(clickId)).append("\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
-    sb.append("    em: ").append(toIndentedString(em)).append("\n");
-    sb.append("    hashedMaids: ").append(toIndentedString(hashedMaids)).append("\n");
     sb.append("    clientIpAddress: ").append(toIndentedString(clientIpAddress)).append("\n");
     sb.append("    clientUserAgent: ").append(toIndentedString(clientUserAgent)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    ct: ").append(toIndentedString(ct)).append("\n");
+    sb.append("    db: ").append(toIndentedString(db)).append("\n");
+    sb.append("    em: ").append(toIndentedString(em)).append("\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
+    sb.append("    fn: ").append(toIndentedString(fn)).append("\n");
+    sb.append("    ge: ").append(toIndentedString(ge)).append("\n");
+    sb.append("    hashedMaids: ").append(toIndentedString(hashedMaids)).append("\n");
+    sb.append("    ln: ").append(toIndentedString(ln)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    ph: ").append(toIndentedString(ph)).append("\n");
+    sb.append("    st: ").append(toIndentedString(st)).append("\n");
+    sb.append("    zp: ").append(toIndentedString(zp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

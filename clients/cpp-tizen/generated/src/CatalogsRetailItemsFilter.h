@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -60,18 +67,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setItemIds(std::list <std::string> item_ids);
-	/*! \brief Get Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	 */
-	std::string getCatalogId();
-
-	/*! \brief Set Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	 */
-	void setCatalogId(std::string  catalog_id);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
 	std::list <std::string>item_ids;
-	std::string catalog_id;
 	void __init();
 	void __cleanup();
 

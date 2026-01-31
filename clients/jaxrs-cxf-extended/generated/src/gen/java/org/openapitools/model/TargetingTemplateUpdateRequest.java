@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.TargetingSpec;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -12,9 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetingTemplateUpdateRequest  {
   
+ /**
+  * Targeting template ID
+  */
+  @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
+  private String id;
+
 public enum OperationTypeEnum {
 
-    @JsonProperty("REMOVE") REMOVE(String.valueOf("REMOVE"));
+    @JsonProperty("REMOVE") REMOVE(String.valueOf("REMOVE")),
+    @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE"));
 
     private String value;
 
@@ -44,11 +52,34 @@ public enum OperationTypeEnum {
   @ApiModelProperty(required = true, value = "")
   private OperationTypeEnum operationType;
 
+  @ApiModelProperty(value = "")
+  @Valid
+  private TargetingSpec targetingAttributes;
  /**
   * Targeting template ID
+  * @return id
   */
-  @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
-  private String id;
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public TargetingTemplateUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
  /**
   * Get operationType
   * @return operationType
@@ -75,27 +106,26 @@ public enum OperationTypeEnum {
   }
 
  /**
-  * Targeting template ID
-  * @return id
+  * Get targetingAttributes
+  * @return targetingAttributes
   */
-  @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
   }
 
   /**
-   * Sets the <code>id</code> property.
+   * Sets the <code>targetingAttributes</code> property.
    */
- public void setId(String id) {
-    this.id = id;
+ public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
   /**
-   * Sets the <code>id</code> property.
+   * Sets the <code>targetingAttributes</code> property.
    */
-  public TargetingTemplateUpdateRequest id(String id) {
-    this.id = id;
+  public TargetingTemplateUpdateRequest targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
     return this;
   }
 
@@ -109,13 +139,14 @@ public enum OperationTypeEnum {
       return false;
     }
     TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = (TargetingTemplateUpdateRequest) o;
-    return Objects.equals(this.operationType, targetingTemplateUpdateRequest.operationType) &&
-        Objects.equals(this.id, targetingTemplateUpdateRequest.id);
+    return Objects.equals(this.id, targetingTemplateUpdateRequest.id) &&
+        Objects.equals(this.operationType, targetingTemplateUpdateRequest.operationType) &&
+        Objects.equals(this.targetingAttributes, targetingTemplateUpdateRequest.targetingAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operationType, id);
+    return Objects.hash(id, operationType, targetingAttributes);
   }
 
   @Override
@@ -123,8 +154,9 @@ public enum OperationTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateUpdateRequest {\n");
     
-    sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

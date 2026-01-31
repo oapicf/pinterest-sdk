@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,10 +23,10 @@ var _ MappedNullable = &CatalogsRetailItemErrorResponse{}
 // CatalogsRetailItemErrorResponse Object describing a retail item error
 type CatalogsRetailItemErrorResponse struct {
 	CatalogType CatalogsType `json:"catalog_type"`
+	// Array with the errors for the item id requested
+	Errors []ItemValidationEvent `json:"errors"`
 	// The catalog item id in the merchant namespace
 	ItemId *string `json:"item_id,omitempty"`
-	// Array with the errors for the item id requested
-	Errors []ItemValidationEvent `json:"errors,omitempty"`
 }
 
 type _CatalogsRetailItemErrorResponse CatalogsRetailItemErrorResponse
@@ -35,9 +35,10 @@ type _CatalogsRetailItemErrorResponse CatalogsRetailItemErrorResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailItemErrorResponse(catalogType CatalogsType) *CatalogsRetailItemErrorResponse {
+func NewCatalogsRetailItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent) *CatalogsRetailItemErrorResponse {
 	this := CatalogsRetailItemErrorResponse{}
 	this.CatalogType = catalogType
+	this.Errors = errors
 	return &this
 }
 
@@ -73,6 +74,30 @@ func (o *CatalogsRetailItemErrorResponse) SetCatalogType(v CatalogsType) {
 	o.CatalogType = v
 }
 
+// GetErrors returns the Errors field value
+func (o *CatalogsRetailItemErrorResponse) GetErrors() []ItemValidationEvent {
+	if o == nil {
+		var ret []ItemValidationEvent
+		return ret
+	}
+
+	return o.Errors
+}
+
+// GetErrorsOk returns a tuple with the Errors field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailItemErrorResponse) GetErrorsOk() ([]ItemValidationEvent, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Errors, true
+}
+
+// SetErrors sets field value
+func (o *CatalogsRetailItemErrorResponse) SetErrors(v []ItemValidationEvent) {
+	o.Errors = v
+}
+
 // GetItemId returns the ItemId field value if set, zero value otherwise.
 func (o *CatalogsRetailItemErrorResponse) GetItemId() string {
 	if o == nil || IsNil(o.ItemId) {
@@ -105,38 +130,6 @@ func (o *CatalogsRetailItemErrorResponse) SetItemId(v string) {
 	o.ItemId = &v
 }
 
-// GetErrors returns the Errors field value if set, zero value otherwise.
-func (o *CatalogsRetailItemErrorResponse) GetErrors() []ItemValidationEvent {
-	if o == nil || IsNil(o.Errors) {
-		var ret []ItemValidationEvent
-		return ret
-	}
-	return o.Errors
-}
-
-// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemErrorResponse) GetErrorsOk() ([]ItemValidationEvent, bool) {
-	if o == nil || IsNil(o.Errors) {
-		return nil, false
-	}
-	return o.Errors, true
-}
-
-// HasErrors returns a boolean if a field has been set.
-func (o *CatalogsRetailItemErrorResponse) HasErrors() bool {
-	if o != nil && !IsNil(o.Errors) {
-		return true
-	}
-
-	return false
-}
-
-// SetErrors gets a reference to the given []ItemValidationEvent and assigns it to the Errors field.
-func (o *CatalogsRetailItemErrorResponse) SetErrors(v []ItemValidationEvent) {
-	o.Errors = v
-}
-
 func (o CatalogsRetailItemErrorResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -148,11 +141,9 @@ func (o CatalogsRetailItemErrorResponse) MarshalJSON() ([]byte, error) {
 func (o CatalogsRetailItemErrorResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["errors"] = o.Errors
 	if !IsNil(o.ItemId) {
 		toSerialize["item_id"] = o.ItemId
-	}
-	if !IsNil(o.Errors) {
-		toSerialize["errors"] = o.Errors
 	}
 	return toSerialize, nil
 }
@@ -163,6 +154,7 @@ func (o *CatalogsRetailItemErrorResponse) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalog_type",
+		"errors",
 	}
 
 	allProperties := make(map[string]interface{})

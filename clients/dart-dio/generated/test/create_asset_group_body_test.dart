@@ -7,15 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CreateAssetGroupBody, () {
-    // Asset Group name
-    // String assetGroupName
-    test('to test the property `assetGroupName`', () async {
-      // TODO
-    });
-
     // Asset group description
     // String assetGroupDescription
     test('to test the property `assetGroupDescription`', () async {
+      // TODO
+    });
+
+    // Asset Group name
+    // String assetGroupName
+    test('to test the property `assetGroupName`', () async {
       // TODO
     });
 

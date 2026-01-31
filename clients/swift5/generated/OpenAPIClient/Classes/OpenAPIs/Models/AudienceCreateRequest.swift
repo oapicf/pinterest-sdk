@@ -18,25 +18,25 @@ public struct AudienceCreateRequest: Codable, JSONEncodable, Hashable {
     /** Audience name. */
     public var name: String
     public var rule: AudienceRule
-    /** Audience description. */
-    public var description: String?
     /** <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
     public var audienceType: AudienceType
+    /** Audience description. */
+    public var description: String?
 
-    public init(adAccountId: String? = nil, name: String, rule: AudienceRule, description: String? = nil, audienceType: AudienceType) {
+    public init(adAccountId: String? = nil, name: String, rule: AudienceRule, audienceType: AudienceType, description: String? = nil) {
         self.adAccountId = adAccountId
         self.name = name
         self.rule = rule
-        self.description = description
         self.audienceType = audienceType
+        self.description = description
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case adAccountId = "ad_account_id"
         case name
         case rule
-        case description
         case audienceType = "audience_type"
+        case description
     }
 
     // Encodable protocol methods
@@ -46,8 +46,8 @@ public struct AudienceCreateRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encode(name, forKey: .name)
         try container.encode(rule, forKey: .rule)
-        try container.encodeIfPresent(description, forKey: .description)
         try container.encode(audienceType, forKey: .audienceType)
+        try container.encodeIfPresent(description, forKey: .description)
     }
 }
 

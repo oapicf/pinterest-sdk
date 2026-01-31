@@ -6,6 +6,16 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class CatalogsReportFeedIngestionStats {
+    /* ID of the catalog entity. */
+    String catalogId
+    /* The event code that a diagnostics aggregated number references */
+    Integer code
+    /* A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID') */
+    String codeLabel
+    /* Title message describing the diagnostic issue */
+    String message
+    /* Number of occurrences of the issue */
+    Integer occurrences
 
     enum ReportTypeEnum {
     
@@ -29,16 +39,6 @@ class CatalogsReportFeedIngestionStats {
 
     
     ReportTypeEnum reportType
-    /* ID of the catalog entity. */
-    String catalogId
-    /* The event code that a diagnostics aggregated number references */
-    Integer code
-    /* A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID') */
-    String codeLabel
-    /* Title message describing the diagnostic issue */
-    String message
-    /* Number of occurrences of the issue */
-    Integer occurrences
 
     enum SeverityEnum {
     

@@ -5,7 +5,7 @@
 -export_type([openapi_campaigns_analytics_response_inner/0]).
 
 -type openapi_campaigns_analytics_response_inner() ::
-    #{ 'CAMPAIGN_ID' := binary(),
+    #{ 'CAMPAIGN_ID' => binary(),
        'DATE' => calendar:date()
      }.
 

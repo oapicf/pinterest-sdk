@@ -10,8 +10,8 @@ import org.openapitools.model.GetBusinessAssetsResponse;
 
 @Canonical
 class BusinessAssetsGet200Response {
-    /* List of assets the requesting business has access to. */
-    List<GetBusinessAssetsResponse> items = new ArrayList<>()
     
     String bookmark
+    /* List of assets the requesting business has access to. */
+    List<GetBusinessAssetsResponse> items = new ArrayList<>()
 }

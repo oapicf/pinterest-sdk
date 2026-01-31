@@ -9,11 +9,11 @@ import org.openapitools.models.BulkUpsertStatus
 
 /**
  * ID of the bulk request.
- * @param status 
  * @param resultUnderscoreurl 
+ * @param status 
  */
-case class BulkUpsertStatusResponse(status: Option[BulkUpsertStatus],
-                resultUnderscoreurl: Option[String]
+case class BulkUpsertStatusResponse(resultUnderscoreurl: Option[String],
+                status: Option[BulkUpsertStatus]
                 )
 
 object BulkUpsertStatusResponse {

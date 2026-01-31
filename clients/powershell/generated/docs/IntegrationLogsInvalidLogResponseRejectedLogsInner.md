@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LogIndex** | **Int32** | Index of the log in the batch. | [optional] 
 **Field** | **String** | The field name containing an invalid value. | 
-**Value** | **String** | The value that is invalid. | 
+**LogIndex** | **Int32** | Index of the log in the batch. | [optional] 
 **Reason** | **String** | The reason the value is invalid. | 
+**Value** | **String** | The value that is invalid. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IntegrationLogsInvalidLogResponseRejectedLogsInner = Initialize-PSOpenAPIToolsIntegrationLogsInvalidLogResponseRejectedLogsInner  -LogIndex null `
- -Field null `
- -Value null `
- -Reason null
+$IntegrationLogsInvalidLogResponseRejectedLogsInner = Initialize-PSOpenAPIToolsIntegrationLogsInvalidLogResponseRejectedLogsInner  -Field null `
+ -LogIndex null `
+ -Reason null `
+ -Value null
 ```
 
 - Convert the resource to JSON

@@ -59,13 +59,6 @@ public:
 	/*! \brief Set City where the hotel is located.
 	 */
 	void setCity(std::string  city);
-	/*! \brief Get State, county, province, where the hotel is located.
-	 */
-	std::string getRegion();
-
-	/*! \brief Set State, county, province, where the hotel is located.
-	 */
-	void setRegion(std::string  region);
 	/*! \brief Get Country where the hotel is located.
 	 */
 	std::string getCountry();
@@ -80,13 +73,20 @@ public:
 	/*! \brief Set Required for countries with a postal code system. Postal or zip code of the hotel.
 	 */
 	void setPostalCode(std::string  postal_code);
+	/*! \brief Get State, county, province, where the hotel is located.
+	 */
+	std::string getRegion();
+
+	/*! \brief Set State, county, province, where the hotel is located.
+	 */
+	void setRegion(std::string  region);
 
 private:
 	std::string addr1;
 	std::string city;
-	std::string region;
 	std::string country;
 	std::string postal_code;
+	std::string region;
 	void __init();
 	void __cleanup();
 

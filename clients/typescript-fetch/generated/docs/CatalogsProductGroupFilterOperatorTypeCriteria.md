@@ -1,0 +1,38 @@
+
+# CatalogsProductGroupFilterOperatorTypeCriteria
+
+
+## Properties
+
+Name | Type
+------------ | -------------
+`filterOperatorType` | string
+`negated` | boolean
+`values` | Array&lt;string&gt;
+
+## Example
+
+```typescript
+import type { CatalogsProductGroupFilterOperatorTypeCriteria } from ''
+
+// TODO: Update the object below with actual values
+const example = {
+  "filterOperatorType": null,
+  "negated": null,
+  "values": null,
+} satisfies CatalogsProductGroupFilterOperatorTypeCriteria
+
+console.log(example)
+
+// Convert the instance to a JSON string
+const exampleJSON: string = JSON.stringify(example)
+console.log(exampleJSON)
+
+// Parse the JSON string back to an object
+const exampleParsed = JSON.parse(exampleJSON) as CatalogsProductGroupFilterOperatorTypeCriteria
+console.log(exampleParsed)
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+

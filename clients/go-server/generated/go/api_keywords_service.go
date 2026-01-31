@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,7 +30,7 @@ func NewKeywordsAPIService() *KeywordsAPIService {
 }
 
 // KeywordsGet - Get keywords
-func (s *KeywordsAPIService) KeywordsGet(ctx context.Context, adAccountId string, campaignId string, adGroupId string, matchTypes []MatchType, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *KeywordsAPIService) KeywordsGet(ctx context.Context, adAccountId string, campaignId string, adGroupId string, adGroupIds []string, matchTypes []MatchType, pageSize int32, bookmark string) (ImplResponse, error) {
 	// TODO - update KeywordsGet with the required logic for this service method.
 	// Add api_keywords_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -86,7 +86,7 @@ func (s *KeywordsAPIService) CountryKeywordsMetricsGet(ctx context.Context, adAc
 }
 
 // TrendingKeywordsList - List trending keywords
-func (s *KeywordsAPIService) TrendingKeywordsList(ctx context.Context, region TrendsSupportedRegion, trendType TrendType, interests []string, genders []string, ages []string, includeKeywords []string, normalizeAgainstGroup bool, limit int32) (ImplResponse, error) {
+func (s *KeywordsAPIService) TrendingKeywordsList(ctx context.Context, region TrendsSupportedRegion, trendType TrendType, interests []string, genders []string, ages []string, includeKeywords []string, normalizeAgainstGroup bool, limit int32, includePrediction bool, includeDemographics bool) (ImplResponse, error) {
 	// TODO - update TrendingKeywordsList with the required logic for this service method.
 	// Add api_keywords_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

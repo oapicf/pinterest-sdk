@@ -6,11 +6,18 @@ goog.provide('API.Client.SSIOOrderLine');
 API.Client.SSIOOrderLine = function() {}
 
 /**
- * OrderLineId in SFDC
+ * The SFDC id for the terms
  * @type {!string}
  * @export
  */
-API.Client.SSIOOrderLine.prototype.salesforceOrderLineId;
+API.Client.SSIOOrderLine.prototype.acceptedTermsId;
+
+/**
+ * The UTC timestamp (to the nearest sec) of when terms were accepted
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.acceptedTermsTime;
 
 /**
  * Ads manager OrderLineId
@@ -20,32 +27,11 @@ API.Client.SSIOOrderLine.prototype.salesforceOrderLineId;
 API.Client.SSIOOrderLine.prototype.adsManagerOrderLineId;
 
 /**
- * The pin order id associated with the order line in SFDC
+ * Agency link
  * @type {!string}
  * @export
  */
-API.Client.SSIOOrderLine.prototype.pinOrderId;
-
-/**
- * Last modified date.
- * @type {!string}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.lastModifiedDateTime;
-
-/**
- * Start date of the order line.
- * @type {!API.Client.date}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.startDate;
-
-/**
- * End date of the order line.
- * @type {!API.Client.date}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.endDate;
+API.Client.SSIOOrderLine.prototype.agencyLink;
 
 /**
  * Bill To Company name
@@ -53,6 +39,13 @@ API.Client.SSIOOrderLine.prototype.endDate;
  * @export
  */
 API.Client.SSIOOrderLine.prototype.billToCompanyName;
+
+/**
+ * Billing contact email
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.billingContactEmail;
 
 /**
  * Billing contact first name
@@ -69,11 +62,38 @@ API.Client.SSIOOrderLine.prototype.billingContactFirstname;
 API.Client.SSIOOrderLine.prototype.billingContactLastname;
 
 /**
- * Billing contact email
+ * If Budget order line, the budget amount.
+ * @type {!number}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.budgetAmount;
+
+/**
+ * @type {!API.Client.Currency}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.currencyInfo;
+
+/**
+ * End date of the order line.
+ * @type {!API.Client.date}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.endDate;
+
+/**
+ * If Ongoing (perpetual) order line, the estimated monthly spend
+ * @type {!number}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.estimatedMonthlySpend;
+
+/**
+ * Last modified date.
  * @type {!string}
  * @export
  */
-API.Client.SSIOOrderLine.prototype.billingContactEmail;
+API.Client.SSIOOrderLine.prototype.lastModifiedDateTime;
 
 /**
  * Billing media email
@@ -97,31 +117,18 @@ API.Client.SSIOOrderLine.prototype.mediaContactFirstname;
 API.Client.SSIOOrderLine.prototype.mediaContactLastname;
 
 /**
- * @type {!API.Client.Currency}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.currencyInfo;
-
-/**
- * Agency link
- * @type {!string}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.agencyLink;
-
-/**
- * The po number
- * @type {!string}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.poNumber;
-
-/**
  * The order name
  * @type {!string}
  * @export
  */
 API.Client.SSIOOrderLine.prototype.orderName;
+
+/**
+ * The pin order id associated with the order line in SFDC
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOOrderLine.prototype.pinOrderId;
 
 /**
  * The Pinterest marketing partner name
@@ -131,30 +138,23 @@ API.Client.SSIOOrderLine.prototype.orderName;
 API.Client.SSIOOrderLine.prototype.pmpName;
 
 /**
- * The SFDC id for the terms
+ * The po number
  * @type {!string}
  * @export
  */
-API.Client.SSIOOrderLine.prototype.acceptedTermsId;
+API.Client.SSIOOrderLine.prototype.poNumber;
 
 /**
- * The UTC timestamp (to the nearest sec) of when terms were accepted
+ * OrderLineId in SFDC
  * @type {!string}
  * @export
  */
-API.Client.SSIOOrderLine.prototype.acceptedTermsTime;
+API.Client.SSIOOrderLine.prototype.salesforceOrderLineId;
 
 /**
- * If Budget order line, the budget amount.
- * @type {!number}
+ * Start date of the order line.
+ * @type {!API.Client.date}
  * @export
  */
-API.Client.SSIOOrderLine.prototype.budgetAmount;
-
-/**
- * If Ongoing (perpetual) order line, the estimated monthly spend
- * @type {!number}
- * @export
- */
-API.Client.SSIOOrderLine.prototype.estimatedMonthlySpend;
+API.Client.SSIOOrderLine.prototype.startDate;
 

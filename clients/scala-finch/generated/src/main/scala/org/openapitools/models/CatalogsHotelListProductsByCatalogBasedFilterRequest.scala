@@ -9,12 +9,12 @@ import org.openapitools.models.CatalogsHotelProductGroupFilters
 
 /**
  * Request object to list products for a given hotel catalog_id and product group filter.
- * @param catalogUnderscoretype 
  * @param catalogUnderscoreid Catalog id pertaining to the hotel product group.
+ * @param catalogUnderscoretype 
  * @param filters 
  */
-case class CatalogsHotelListProductsByCatalogBasedFilterRequest(catalogUnderscoretype: String,
-                catalogUnderscoreid: String,
+case class CatalogsHotelListProductsByCatalogBasedFilterRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 filters: CatalogsHotelProductGroupFilters
                 )
 

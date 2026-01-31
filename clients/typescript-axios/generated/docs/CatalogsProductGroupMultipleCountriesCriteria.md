@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**Array&lt;Country&gt;**](Country.md) |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**values** | [**Array&lt;Country&gt;**](Country.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupMultipleCountriesCriteria } from './api';
 
 const instance: CatalogsProductGroupMultipleCountriesCriteria = {
-    values,
     negated,
+    values,
 };
 ```
 

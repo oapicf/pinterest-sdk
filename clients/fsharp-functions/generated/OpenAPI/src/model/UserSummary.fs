@@ -10,10 +10,10 @@ module UserSummary =
 
   [<CLIMutable>]
   type UserSummary = {
-    [<JsonProperty(PropertyName = "username")>]
-    Username : string;
     [<JsonProperty(PropertyName = "type")>]
     Type : string;
+    [<JsonProperty(PropertyName = "username")>]
+    Username : string;
   }
 
   //#endregion

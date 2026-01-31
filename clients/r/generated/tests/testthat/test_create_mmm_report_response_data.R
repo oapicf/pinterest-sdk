@@ -5,20 +5,6 @@ context("Test CreateMMMReportResponseData")
 
 model_instance <- CreateMMMReportResponseData$new()
 
-test_that("report_status", {
-  # tests for the property `report_status` (BulkReportingJobStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_status`, "EXPECTED_RESULT")
-})
-
-test_that("token", {
-  # tests for the property `token` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`token`, "EXPECTED_RESULT")
-})
-
 test_that("message", {
   # tests for the property `message` (character)
 
@@ -26,9 +12,23 @@ test_that("message", {
   #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
 
+test_that("report_status", {
+  # tests for the property `report_status` (BulkReportingJobStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`report_status`, "EXPECTED_RESULT")
+})
+
 test_that("status", {
   # tests for the property `status` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
+test_that("token", {
+  # tests for the property `token` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`token`, "EXPECTED_RESULT")
 })

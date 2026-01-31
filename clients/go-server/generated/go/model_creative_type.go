@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// CreativeType : Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+// CreativeType : Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 type CreativeType string
 
 // List of CreativeType
@@ -32,6 +32,9 @@ const (
 	IDEA CreativeType = "IDEA"
 	SHOWCASE CreativeType = "SHOWCASE"
 	QUIZ CreativeType = "QUIZ"
+	COLLAGE CreativeType = "COLLAGE"
+	MAX_WIDTH_REGULAR_COLLECTION CreativeType = "MAX_WIDTH_REGULAR_COLLECTION"
+	MAX_WIDTH_VIDEO_COLLECTION CreativeType = "MAX_WIDTH_VIDEO_COLLECTION"
 )
 
 // AllowedCreativeTypeEnumValues is all the allowed values of CreativeType enum
@@ -46,6 +49,9 @@ var AllowedCreativeTypeEnumValues = []CreativeType{
 	"IDEA",
 	"SHOWCASE",
 	"QUIZ",
+	"COLLAGE",
+	"MAX_WIDTH_REGULAR_COLLECTION",
+	"MAX_WIDTH_VIDEO_COLLECTION",
 }
 
 // validCreativeTypeEnumValue provides a map of CreativeTypes for fast verification of use input
@@ -60,6 +66,9 @@ var validCreativeTypeEnumValues = map[CreativeType]struct{}{
 	"IDEA": {},
 	"SHOWCASE": {},
 	"QUIZ": {},
+	"COLLAGE": {},
+	"MAX_WIDTH_REGULAR_COLLECTION": {},
+	"MAX_WIDTH_VIDEO_COLLECTION": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

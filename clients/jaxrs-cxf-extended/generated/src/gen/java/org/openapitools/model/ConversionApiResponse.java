@@ -20,10 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConversionApiResponse  {
   
  /**
-  * Total number of events received in the request.
+  * Specific messages for each event received. The order will match the order in which the events were received in the request.
   */
-  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
-  private Integer numEventsReceived;
+  @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
+  @Valid
+  private List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
 
  /**
   * Number of events that were successfully processed from the events.
@@ -32,61 +33,10 @@ public class ConversionApiResponse  {
   private Integer numEventsProcessed;
 
  /**
-  * Specific messages for each event received. The order will match the order in which the events were received in the request.
-  */
-  @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
-  @Valid
-  private List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
- /**
   * Total number of events received in the request.
-  * @return numEventsReceived
   */
-  @JsonProperty("num_events_received")
-  @NotNull
-  public Integer getNumEventsReceived() {
-    return numEventsReceived;
-  }
-
-  /**
-   * Sets the <code>numEventsReceived</code> property.
-   */
- public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-  }
-
-  /**
-   * Sets the <code>numEventsReceived</code> property.
-   */
-  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-    return this;
-  }
-
- /**
-  * Number of events that were successfully processed from the events.
-  * @return numEventsProcessed
-  */
-  @JsonProperty("num_events_processed")
-  @NotNull
-  public Integer getNumEventsProcessed() {
-    return numEventsProcessed;
-  }
-
-  /**
-   * Sets the <code>numEventsProcessed</code> property.
-   */
- public void setNumEventsProcessed(Integer numEventsProcessed) {
-    this.numEventsProcessed = numEventsProcessed;
-  }
-
-  /**
-   * Sets the <code>numEventsProcessed</code> property.
-   */
-  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
-    this.numEventsProcessed = numEventsProcessed;
-    return this;
-  }
-
+  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
+  private Integer numEventsReceived;
  /**
   * Specific messages for each event received. The order will match the order in which the events were received in the request.
   * @return events
@@ -120,6 +70,56 @@ public class ConversionApiResponse  {
     return this;
   }
 
+ /**
+  * Number of events that were successfully processed from the events.
+  * @return numEventsProcessed
+  */
+  @JsonProperty("num_events_processed")
+  @NotNull
+  public Integer getNumEventsProcessed() {
+    return numEventsProcessed;
+  }
+
+  /**
+   * Sets the <code>numEventsProcessed</code> property.
+   */
+ public void setNumEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+  }
+
+  /**
+   * Sets the <code>numEventsProcessed</code> property.
+   */
+  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+    return this;
+  }
+
+ /**
+  * Total number of events received in the request.
+  * @return numEventsReceived
+  */
+  @JsonProperty("num_events_received")
+  @NotNull
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
+  }
+
+  /**
+   * Sets the <code>numEventsReceived</code> property.
+   */
+ public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+  }
+
+  /**
+   * Sets the <code>numEventsReceived</code> property.
+   */
+  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,14 +130,14 @@ public class ConversionApiResponse  {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(this.events, conversionApiResponse.events) &&
         Objects.equals(this.numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(this.events, conversionApiResponse.events);
+        Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
@@ -145,9 +145,9 @@ public class ConversionApiResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
     
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

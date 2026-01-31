@@ -11,18 +11,20 @@ Name | Type | Description | Notes
 **CarouselIosDeepLinks** | Pointer to **[]string** | Comma-separated deep links for the carousel pin on iOS. | [optional] 
 **ClickTrackingUrl** | Pointer to **NullableString** | Tracking url for the ad clicks. | [optional] 
 **CreativeType** | [**CreativeType**](CreativeType.md) |  | 
+**CustomizableCtaType** | Pointer to [**NullableCustomizableCTAType**](CustomizableCTAType.md) |  | [optional] 
 **DestinationUrl** | Pointer to **NullableString** | Destination URL. | [optional] 
+**DisclosureType** | Pointer to [**NullableDisclosureType**](DisclosureType.md) |  | [optional] 
+**DisclosureUrl** | Pointer to **NullableString** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
+**GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
 **IosDeepLink** | Pointer to **NullableString** | Deep link URL for iOS devices. | [optional] 
 **IsPinDeleted** | Pointer to **bool** | Is original pin deleted? | [optional] 
 **IsRemovable** | Pointer to **bool** | Is pin repinnable? | [optional] 
+**LeadFormId** | Pointer to **NullableString** | Lead form ID for lead ad generation. | [optional] 
 **Name** | Pointer to **NullableString** | Name of the ad - 255 chars max. | [optional] 
+**QuizPinData** | Pointer to [**NullableQuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
 **TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 **ViewTrackingUrl** | Pointer to **NullableString** | Tracking URL for ad impressions. | [optional] 
-**LeadFormId** | Pointer to **NullableString** | Lead form ID for lead ad generation. | [optional] 
-**GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
-**CustomizableCtaType** | Pointer to **NullableString** | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) | [optional] 
-**QuizPinData** | Pointer to [**NullableQuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **PinId** | **string** | Pin ID. | 
 
 ## Methods
@@ -259,6 +261,41 @@ and a boolean to check if the value has been set.
 SetCreativeType sets CreativeType field to given value.
 
 
+### GetCustomizableCtaType
+
+`func (o *AdCreateRequest) GetCustomizableCtaType() CustomizableCTAType`
+
+GetCustomizableCtaType returns the CustomizableCtaType field if non-nil, zero value otherwise.
+
+### GetCustomizableCtaTypeOk
+
+`func (o *AdCreateRequest) GetCustomizableCtaTypeOk() (*CustomizableCTAType, bool)`
+
+GetCustomizableCtaTypeOk returns a tuple with the CustomizableCtaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomizableCtaType
+
+`func (o *AdCreateRequest) SetCustomizableCtaType(v CustomizableCTAType)`
+
+SetCustomizableCtaType sets CustomizableCtaType field to given value.
+
+### HasCustomizableCtaType
+
+`func (o *AdCreateRequest) HasCustomizableCtaType() bool`
+
+HasCustomizableCtaType returns a boolean if a field has been set.
+
+### SetCustomizableCtaTypeNil
+
+`func (o *AdCreateRequest) SetCustomizableCtaTypeNil(b bool)`
+
+ SetCustomizableCtaTypeNil sets the value for CustomizableCtaType to be an explicit nil
+
+### UnsetCustomizableCtaType
+`func (o *AdCreateRequest) UnsetCustomizableCtaType()`
+
+UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
 ### GetDestinationUrl
 
 `func (o *AdCreateRequest) GetDestinationUrl() string`
@@ -294,6 +331,111 @@ HasDestinationUrl returns a boolean if a field has been set.
 `func (o *AdCreateRequest) UnsetDestinationUrl()`
 
 UnsetDestinationUrl ensures that no value is present for DestinationUrl, not even an explicit nil
+### GetDisclosureType
+
+`func (o *AdCreateRequest) GetDisclosureType() DisclosureType`
+
+GetDisclosureType returns the DisclosureType field if non-nil, zero value otherwise.
+
+### GetDisclosureTypeOk
+
+`func (o *AdCreateRequest) GetDisclosureTypeOk() (*DisclosureType, bool)`
+
+GetDisclosureTypeOk returns a tuple with the DisclosureType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisclosureType
+
+`func (o *AdCreateRequest) SetDisclosureType(v DisclosureType)`
+
+SetDisclosureType sets DisclosureType field to given value.
+
+### HasDisclosureType
+
+`func (o *AdCreateRequest) HasDisclosureType() bool`
+
+HasDisclosureType returns a boolean if a field has been set.
+
+### SetDisclosureTypeNil
+
+`func (o *AdCreateRequest) SetDisclosureTypeNil(b bool)`
+
+ SetDisclosureTypeNil sets the value for DisclosureType to be an explicit nil
+
+### UnsetDisclosureType
+`func (o *AdCreateRequest) UnsetDisclosureType()`
+
+UnsetDisclosureType ensures that no value is present for DisclosureType, not even an explicit nil
+### GetDisclosureUrl
+
+`func (o *AdCreateRequest) GetDisclosureUrl() string`
+
+GetDisclosureUrl returns the DisclosureUrl field if non-nil, zero value otherwise.
+
+### GetDisclosureUrlOk
+
+`func (o *AdCreateRequest) GetDisclosureUrlOk() (*string, bool)`
+
+GetDisclosureUrlOk returns a tuple with the DisclosureUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisclosureUrl
+
+`func (o *AdCreateRequest) SetDisclosureUrl(v string)`
+
+SetDisclosureUrl sets DisclosureUrl field to given value.
+
+### HasDisclosureUrl
+
+`func (o *AdCreateRequest) HasDisclosureUrl() bool`
+
+HasDisclosureUrl returns a boolean if a field has been set.
+
+### SetDisclosureUrlNil
+
+`func (o *AdCreateRequest) SetDisclosureUrlNil(b bool)`
+
+ SetDisclosureUrlNil sets the value for DisclosureUrl to be an explicit nil
+
+### UnsetDisclosureUrl
+`func (o *AdCreateRequest) UnsetDisclosureUrl()`
+
+UnsetDisclosureUrl ensures that no value is present for DisclosureUrl, not even an explicit nil
+### GetGridClickType
+
+`func (o *AdCreateRequest) GetGridClickType() GridClickType`
+
+GetGridClickType returns the GridClickType field if non-nil, zero value otherwise.
+
+### GetGridClickTypeOk
+
+`func (o *AdCreateRequest) GetGridClickTypeOk() (*GridClickType, bool)`
+
+GetGridClickTypeOk returns a tuple with the GridClickType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGridClickType
+
+`func (o *AdCreateRequest) SetGridClickType(v GridClickType)`
+
+SetGridClickType sets GridClickType field to given value.
+
+### HasGridClickType
+
+`func (o *AdCreateRequest) HasGridClickType() bool`
+
+HasGridClickType returns a boolean if a field has been set.
+
+### SetGridClickTypeNil
+
+`func (o *AdCreateRequest) SetGridClickTypeNil(b bool)`
+
+ SetGridClickTypeNil sets the value for GridClickType to be an explicit nil
+
+### UnsetGridClickType
+`func (o *AdCreateRequest) UnsetGridClickType()`
+
+UnsetGridClickType ensures that no value is present for GridClickType, not even an explicit nil
 ### GetIosDeepLink
 
 `func (o *AdCreateRequest) GetIosDeepLink() string`
@@ -379,6 +521,41 @@ SetIsRemovable sets IsRemovable field to given value.
 
 HasIsRemovable returns a boolean if a field has been set.
 
+### GetLeadFormId
+
+`func (o *AdCreateRequest) GetLeadFormId() string`
+
+GetLeadFormId returns the LeadFormId field if non-nil, zero value otherwise.
+
+### GetLeadFormIdOk
+
+`func (o *AdCreateRequest) GetLeadFormIdOk() (*string, bool)`
+
+GetLeadFormIdOk returns a tuple with the LeadFormId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLeadFormId
+
+`func (o *AdCreateRequest) SetLeadFormId(v string)`
+
+SetLeadFormId sets LeadFormId field to given value.
+
+### HasLeadFormId
+
+`func (o *AdCreateRequest) HasLeadFormId() bool`
+
+HasLeadFormId returns a boolean if a field has been set.
+
+### SetLeadFormIdNil
+
+`func (o *AdCreateRequest) SetLeadFormIdNil(b bool)`
+
+ SetLeadFormIdNil sets the value for LeadFormId to be an explicit nil
+
+### UnsetLeadFormId
+`func (o *AdCreateRequest) UnsetLeadFormId()`
+
+UnsetLeadFormId ensures that no value is present for LeadFormId, not even an explicit nil
 ### GetName
 
 `func (o *AdCreateRequest) GetName() string`
@@ -414,6 +591,41 @@ HasName returns a boolean if a field has been set.
 `func (o *AdCreateRequest) UnsetName()`
 
 UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetQuizPinData
+
+`func (o *AdCreateRequest) GetQuizPinData() QuizPinData`
+
+GetQuizPinData returns the QuizPinData field if non-nil, zero value otherwise.
+
+### GetQuizPinDataOk
+
+`func (o *AdCreateRequest) GetQuizPinDataOk() (*QuizPinData, bool)`
+
+GetQuizPinDataOk returns a tuple with the QuizPinData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuizPinData
+
+`func (o *AdCreateRequest) SetQuizPinData(v QuizPinData)`
+
+SetQuizPinData sets QuizPinData field to given value.
+
+### HasQuizPinData
+
+`func (o *AdCreateRequest) HasQuizPinData() bool`
+
+HasQuizPinData returns a boolean if a field has been set.
+
+### SetQuizPinDataNil
+
+`func (o *AdCreateRequest) SetQuizPinDataNil(b bool)`
+
+ SetQuizPinDataNil sets the value for QuizPinData to be an explicit nil
+
+### UnsetQuizPinData
+`func (o *AdCreateRequest) UnsetQuizPinData()`
+
+UnsetQuizPinData ensures that no value is present for QuizPinData, not even an explicit nil
 ### GetStatus
 
 `func (o *AdCreateRequest) GetStatus() EntityStatus`
@@ -509,146 +721,6 @@ HasViewTrackingUrl returns a boolean if a field has been set.
 `func (o *AdCreateRequest) UnsetViewTrackingUrl()`
 
 UnsetViewTrackingUrl ensures that no value is present for ViewTrackingUrl, not even an explicit nil
-### GetLeadFormId
-
-`func (o *AdCreateRequest) GetLeadFormId() string`
-
-GetLeadFormId returns the LeadFormId field if non-nil, zero value otherwise.
-
-### GetLeadFormIdOk
-
-`func (o *AdCreateRequest) GetLeadFormIdOk() (*string, bool)`
-
-GetLeadFormIdOk returns a tuple with the LeadFormId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLeadFormId
-
-`func (o *AdCreateRequest) SetLeadFormId(v string)`
-
-SetLeadFormId sets LeadFormId field to given value.
-
-### HasLeadFormId
-
-`func (o *AdCreateRequest) HasLeadFormId() bool`
-
-HasLeadFormId returns a boolean if a field has been set.
-
-### SetLeadFormIdNil
-
-`func (o *AdCreateRequest) SetLeadFormIdNil(b bool)`
-
- SetLeadFormIdNil sets the value for LeadFormId to be an explicit nil
-
-### UnsetLeadFormId
-`func (o *AdCreateRequest) UnsetLeadFormId()`
-
-UnsetLeadFormId ensures that no value is present for LeadFormId, not even an explicit nil
-### GetGridClickType
-
-`func (o *AdCreateRequest) GetGridClickType() GridClickType`
-
-GetGridClickType returns the GridClickType field if non-nil, zero value otherwise.
-
-### GetGridClickTypeOk
-
-`func (o *AdCreateRequest) GetGridClickTypeOk() (*GridClickType, bool)`
-
-GetGridClickTypeOk returns a tuple with the GridClickType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGridClickType
-
-`func (o *AdCreateRequest) SetGridClickType(v GridClickType)`
-
-SetGridClickType sets GridClickType field to given value.
-
-### HasGridClickType
-
-`func (o *AdCreateRequest) HasGridClickType() bool`
-
-HasGridClickType returns a boolean if a field has been set.
-
-### SetGridClickTypeNil
-
-`func (o *AdCreateRequest) SetGridClickTypeNil(b bool)`
-
- SetGridClickTypeNil sets the value for GridClickType to be an explicit nil
-
-### UnsetGridClickType
-`func (o *AdCreateRequest) UnsetGridClickType()`
-
-UnsetGridClickType ensures that no value is present for GridClickType, not even an explicit nil
-### GetCustomizableCtaType
-
-`func (o *AdCreateRequest) GetCustomizableCtaType() string`
-
-GetCustomizableCtaType returns the CustomizableCtaType field if non-nil, zero value otherwise.
-
-### GetCustomizableCtaTypeOk
-
-`func (o *AdCreateRequest) GetCustomizableCtaTypeOk() (*string, bool)`
-
-GetCustomizableCtaTypeOk returns a tuple with the CustomizableCtaType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomizableCtaType
-
-`func (o *AdCreateRequest) SetCustomizableCtaType(v string)`
-
-SetCustomizableCtaType sets CustomizableCtaType field to given value.
-
-### HasCustomizableCtaType
-
-`func (o *AdCreateRequest) HasCustomizableCtaType() bool`
-
-HasCustomizableCtaType returns a boolean if a field has been set.
-
-### SetCustomizableCtaTypeNil
-
-`func (o *AdCreateRequest) SetCustomizableCtaTypeNil(b bool)`
-
- SetCustomizableCtaTypeNil sets the value for CustomizableCtaType to be an explicit nil
-
-### UnsetCustomizableCtaType
-`func (o *AdCreateRequest) UnsetCustomizableCtaType()`
-
-UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
-### GetQuizPinData
-
-`func (o *AdCreateRequest) GetQuizPinData() QuizPinData`
-
-GetQuizPinData returns the QuizPinData field if non-nil, zero value otherwise.
-
-### GetQuizPinDataOk
-
-`func (o *AdCreateRequest) GetQuizPinDataOk() (*QuizPinData, bool)`
-
-GetQuizPinDataOk returns a tuple with the QuizPinData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQuizPinData
-
-`func (o *AdCreateRequest) SetQuizPinData(v QuizPinData)`
-
-SetQuizPinData sets QuizPinData field to given value.
-
-### HasQuizPinData
-
-`func (o *AdCreateRequest) HasQuizPinData() bool`
-
-HasQuizPinData returns a boolean if a field has been set.
-
-### SetQuizPinDataNil
-
-`func (o *AdCreateRequest) SetQuizPinDataNil(b bool)`
-
- SetQuizPinDataNil sets the value for QuizPinData to be an explicit nil
-
-### UnsetQuizPinData
-`func (o *AdCreateRequest) UnsetQuizPinData()`
-
-UnsetQuizPinData ensures that no value is present for QuizPinData, not even an explicit nil
 ### GetPinId
 
 `func (o *AdCreateRequest) GetPinId() string`

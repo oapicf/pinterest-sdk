@@ -5,22 +5,22 @@
 -export_type([openapi_catalogs_retail_list_products_by_catalog_based_filter_request/0]).
 
 -type openapi_catalogs_retail_list_products_by_catalog_based_filter_request() ::
-    #{ 'catalog_type' := binary(),
-       'catalog_id' := binary(),
-       'filters' := openapi_catalogs_product_group_filters:openapi_catalogs_product_group_filters(),
+    #{ 'catalog_id' := binary(),
+       'catalog_type' := binary(),
        'country' := openapi_country:openapi_country(),
+       'filters' := openapi_catalogs_product_group_filters:openapi_catalogs_product_group_filters(),
        'locale' := openapi_catalogs_locale:openapi_catalogs_locale()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
-          'catalog_id' := CatalogId,
-          'filters' := Filters,
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
           'country' := Country,
+          'filters' := Filters,
           'locale' := Locale
         }) ->
-    #{ 'catalog_type' => CatalogType,
-       'catalog_id' => CatalogId,
-       'filters' => Filters,
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
        'country' => Country,
+       'filters' => Filters,
        'locale' => Locale
      }.

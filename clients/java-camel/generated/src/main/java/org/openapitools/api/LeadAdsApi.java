@@ -52,7 +52,7 @@ public class LeadAdsApi extends RouteBuilder {
         
 
         /**
-        GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} : Get lead ads subscription
+        GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} : Get lead ads subscription by ID
         **/
         rest()
             .securityDefinitions()
@@ -61,13 +61,18 @@ public class LeadAdsApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}")
-                .description("Get lead ads subscription")
+                .description("Get lead ads subscription by ID")
                 .id("adAccountsSubscriptionsGetByIdApi")
                 .produces("application/json")
-                .outType(AdAccountGetSubscriptionResponse.class)
+                .outType(LeadSubscription.class)
                 .param()
                     .name("adAccountId")
                     .type(RestParamType.path)
@@ -107,16 +112,16 @@ public class LeadAdsApi extends RouteBuilder {
                     .description("Unique identifier of an ad account.")
                 .endParam()
                 .param()
-                    .name("pageSize")
-                    .type(RestParamType.query)
-                    .required(false)
-                    .description("Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")
-                .endParam()
-                .param()
                     .name("bookmark")
                     .type(RestParamType.query)
                     .required(false)
                     .description("Cursor used to fetch the next page of items")
+                .endParam()
+                .param()
+                    .name("pageSize")
+                    .type(RestParamType.query)
+                    .required(false)
+                    .description("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")
                 .endParam()
                 .to("direct:adAccountsSubscriptionsGetList");
         
@@ -137,9 +142,9 @@ public class LeadAdsApi extends RouteBuilder {
                 .description("Create lead ads subscription")
                 .id("adAccountsSubscriptionsPostApi")
                 .produces("application/json")
-                .outType(AdAccountCreateSubscriptionResponse.class)
+                .outType(LeadSubscription.class)
                 .consumes("application/json")
-                .type(AdAccountCreateSubscriptionRequest.class)
+                .type(LeadSubscriptionPostParamsCreate.class)
                 
                 .param()
                     .name("adAccountId")
@@ -148,10 +153,9 @@ public class LeadAdsApi extends RouteBuilder {
                     .description("Unique identifier of an ad account.")
                 .endParam()
                 .param()
-                    .name("adAccountCreateSubscriptionRequest")
+                    .name("leadSubscriptionPostParamsCreate")
                     .type(RestParamType.body)
                     .required(true)
-                    .description("Subscription to create.")
                 .endParam()
                 .to("direct:adAccountsSubscriptionsPost");
         

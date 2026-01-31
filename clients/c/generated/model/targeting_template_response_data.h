@@ -32,35 +32,35 @@ pinterest_rest_api_targeting_template_response_data_STATUS_e targeting_template_
 
 
 typedef struct targeting_template_response_data_t {
-    char *name; // string
     int auto_targeting_enabled; //boolean
-    struct targeting_spec_t *targeting_attributes; //model
-    pinterest_rest_api_placement_group_type__e placement_group; //referenced enum
     list_t *keywords; //nonprimitive container
+    char *name; // string
+    pinterest_rest_api_placement_group_type__e placement_group; //referenced enum
+    struct targeting_spec_t *targeting_attributes; //model
     struct tracking_urls_t *tracking_urls; //model
-    char *id; // string
-    int created_time; //numeric
-    int updated_time; //numeric
     char *ad_account_id; // string
-    pinterest_rest_api_targeting_template_response_data_STATUS_e status; //enum
+    int created_time; //numeric
+    char *id; // string
     struct targeting_template_audience_sizing_t *sizing; //model
+    pinterest_rest_api_targeting_template_response_data_STATUS_e status; //enum
+    int updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_response_data_t;
 
 __attribute__((deprecated)) targeting_template_response_data_t *targeting_template_response_data_create(
-    char *name,
     int auto_targeting_enabled,
-    targeting_spec_t *targeting_attributes,
-    pinterest_rest_api_placement_group_type__e placement_group,
     list_t *keywords,
+    char *name,
+    pinterest_rest_api_placement_group_type__e placement_group,
+    targeting_spec_t *targeting_attributes,
     tracking_urls_t *tracking_urls,
-    char *id,
-    int created_time,
-    int updated_time,
     char *ad_account_id,
+    int created_time,
+    char *id,
+    targeting_template_audience_sizing_t *sizing,
     pinterest_rest_api_targeting_template_response_data_STATUS_e status,
-    targeting_template_audience_sizing_t *sizing
+    int updated_time
 );
 
 void targeting_template_response_data_free(targeting_template_response_data_t *targeting_template_response_data);

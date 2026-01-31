@@ -1,0 +1,32 @@
+/*
+ * product_category_detail_lookback_window.h
+ *
+ * 
+ */
+
+#ifndef _product_category_detail_lookback_window_H_
+#define _product_category_detail_lookback_window_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct product_category_detail_lookback_window_t product_category_detail_lookback_window_t;
+
+
+// Enum  for product_category_detail_lookback_window
+
+typedef enum { pinterest_rest_api_product_category_detail_lookback_window__NULL = 0, pinterest_rest_api_product_category_detail_lookback_window___90, pinterest_rest_api_product_category_detail_lookback_window___180, pinterest_rest_api_product_category_detail_lookback_window___365, pinterest_rest_api_product_category_detail_lookback_window___730 } pinterest_rest_api_product_category_detail_lookback_window__e;
+
+char* product_category_detail_lookback_window_product_category_detail_lookback_window_ToString(pinterest_rest_api_product_category_detail_lookback_window__e product_category_detail_lookback_window);
+
+pinterest_rest_api_product_category_detail_lookback_window__e product_category_detail_lookback_window_product_category_detail_lookback_window_FromString(char* product_category_detail_lookback_window);
+
+cJSON *product_category_detail_lookback_window_convertToJSON(pinterest_rest_api_product_category_detail_lookback_window__e product_category_detail_lookback_window);
+
+pinterest_rest_api_product_category_detail_lookback_window__e product_category_detail_lookback_window_parseFromJSON(cJSON *product_category_detail_lookback_windowJSON);
+
+#endif /* _product_category_detail_lookback_window_H_ */
+

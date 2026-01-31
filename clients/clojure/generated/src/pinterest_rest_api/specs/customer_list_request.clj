@@ -2,17 +2,15 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.user-list-type :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
 
 (def customer-list-request-data
   {
+   (ds/opt :list_type) user-list-type-spec
    (ds/req :name) string?
    (ds/req :records) string?
-   (ds/opt :list_type) user-list-type-spec
-   (ds/opt :exceptions) any?
    })
 
 (def customer-list-request-spec

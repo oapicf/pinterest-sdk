@@ -8,6 +8,7 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
+import org.openapitools.server.model.AdPinAnalytics
 import org.openapitools.server.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.server.model.CampaignCreateRequest
 import org.openapitools.server.model.CampaignCreateResponse
@@ -21,6 +22,7 @@ import org.openapitools.server.model.Error
 import org.openapitools.server.model.Granularity
 import java.time.LocalDate
 import org.openapitools.server.model.MetricsResponse
+import org.openapitools.server.model.ReportingTimeZone
 
 
 class CampaignsApi(
@@ -34,17 +36,24 @@ import CampaignsApiPatterns.campaignIdPattern
   import campaignsMarshaller._
 
   lazy val route: Route =
+    path("ad_accounts" / adAccountIdPattern / "pins" / "analytics") { (adAccountId) => 
+      get { 
+        parameters("campaign_id".as[String], "pin_ids".as[String], "start_date".as[String], "end_date".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION")) { (campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) => 
+            campaignsService.adPinsAnalytics(adAccountId = adAccountId, campaignId = campaignId, pinIds = pinIds, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+        }
+      }
+    } ~
     path("ad_accounts" / adAccountIdPattern / "campaigns" / "targeting_analytics") { (adAccountId) => 
       get { 
-        parameters("campaign_ids".as[String], "start_date".as[String], "end_date".as[String], "targeting_types".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "attribution_types".as[String].?) { (campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes) => 
-            campaignsService.campaignTargetingAnalyticsGet(adAccountId = adAccountId, campaignIds = campaignIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
+        parameters("campaign_ids".as[String], "start_date".as[String], "end_date".as[String], "targeting_types".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "attribution_types".as[String].?, "reporting_timezone".as[String].?) { (campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone) => 
+            campaignsService.campaignTargetingAnalyticsGet(adAccountId = adAccountId, campaignIds = campaignIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes, reportingTimezone = reportingTimezone)
         }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "campaigns" / "analytics") { (adAccountId) => 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "campaign_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION")) { (startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) => 
-            campaignsService.campaignsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, campaignIds = campaignIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+        parameters("start_date".as[String], "end_date".as[String], "campaign_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "aggregate_report_rows".as[Boolean].?(false), "reporting_timezone".as[String].?) { (startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone) => 
+            campaignsService.campaignsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, campaignIds = campaignIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, aggregateReportRows = aggregateReportRows, reportingTimezone = reportingTimezone)
         }
       }
     } ~
@@ -84,6 +93,20 @@ val campaignIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
 
 trait CampaignsApiService {
 
+  def adPinsAnalytics200(responseAdPinAnalyticsarray: Seq[AdPinAnalytics])(implicit toEntityMarshallerAdPinAnalyticsarray: ToEntityMarshaller[Seq[AdPinAnalytics]]): Route =
+    complete((200, responseAdPinAnalyticsarray))
+  def adPinsAnalytics400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def adPinsAnalyticsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Success, DataType: Seq[AdPinAnalytics]
+   * Code: 400, Message: Invalid ad account pins analytics parameters., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def adPinsAnalytics(adAccountId: String, campaignId: String, pinIds: String, startDate: String, endDate: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String)
+      (implicit toEntityMarshallerAdPinAnalyticsarray: ToEntityMarshaller[Seq[AdPinAnalytics]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
   def campaignTargetingAnalyticsGet200(responseMetricsResponse: MetricsResponse)(implicit toEntityMarshallerMetricsResponse: ToEntityMarshaller[MetricsResponse]): Route =
     complete((200, responseMetricsResponse))
   def campaignTargetingAnalyticsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -92,7 +115,7 @@ trait CampaignsApiService {
    * Code: 200, Message: Success, DataType: MetricsResponse
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: String, startDate: String, endDate: String, targetingTypes: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, attributionTypes: Option[String])
+  def campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: String, startDate: String, endDate: String, targetingTypes: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, attributionTypes: Option[String], reportingTimezone: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerMetricsResponse: ToEntityMarshaller[MetricsResponse]): Route
 
   def campaignsAnalytics200(responseCampaignsAnalyticsResponseInnerarray: Seq[CampaignsAnalyticsResponseInner])(implicit toEntityMarshallerCampaignsAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[CampaignsAnalyticsResponseInner]]): Route =
@@ -106,7 +129,7 @@ trait CampaignsApiService {
    * Code: 400, Message: Invalid ad account campaign analytics parameters., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def campaignsAnalytics(adAccountId: String, startDate: String, endDate: String, campaignIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String)
+  def campaignsAnalytics(adAccountId: String, startDate: String, endDate: String, campaignIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, aggregateReportRows: Boolean, reportingTimezone: Option[String])
       (implicit toEntityMarshallerCampaignsAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[CampaignsAnalyticsResponseInner]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def campaignsCreate200(responseCampaignCreateResponse: CampaignCreateResponse)(implicit toEntityMarshallerCampaignCreateResponse: ToEntityMarshaller[CampaignCreateResponse]): Route =
@@ -166,6 +189,8 @@ trait CampaignsApiMarshaller {
 
 
   implicit def toEntityMarshallerCampaignResponse: ToEntityMarshaller[CampaignResponse]
+
+  implicit def toEntityMarshallerAdPinAnalyticsarray: ToEntityMarshaller[Seq[AdPinAnalytics]]
 
   implicit def toEntityMarshallerCampaignCreateResponse: ToEntityMarshaller[CampaignCreateResponse]
 

@@ -19,20 +19,20 @@ typedef struct quiz_pin_result_t quiz_pin_result_t;
 
 
 typedef struct quiz_pin_result_t {
-    char *organic_pin_id; // string
     char *android_deep_link; // string
-    char *ios_deep_link; // string
     char *destination_url; // string
+    char *ios_deep_link; // string
+    char *organic_pin_id; // string
     double result_id; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_result_t;
 
 __attribute__((deprecated)) quiz_pin_result_t *quiz_pin_result_create(
-    char *organic_pin_id,
     char *android_deep_link,
-    char *ios_deep_link,
     char *destination_url,
+    char *ios_deep_link,
+    char *organic_pin_id,
     double result_id
 );
 

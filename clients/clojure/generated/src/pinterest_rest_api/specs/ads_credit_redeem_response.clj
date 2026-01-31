@@ -7,9 +7,9 @@
 
 (def ads-credit-redeem-response-data
   {
-   (ds/opt :success) boolean?
    (ds/opt :errorCode) int?
    (ds/opt :errorMessage) string?
+   (ds/opt :success) boolean?
    })
 
 (def ads-credit-redeem-response-spec

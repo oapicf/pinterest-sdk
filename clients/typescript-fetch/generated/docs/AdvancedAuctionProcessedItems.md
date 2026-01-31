@@ -8,7 +8,7 @@ Response object containing the results of an operation on an item bid option
 Name | Type
 ------------ | -------------
 `catalogId` | string
-`items` | [Array&lt;AdvancedAuctionProcessedItem&gt;](AdvancedAuctionProcessedItem.md)
+`items` | [Array&lt;AdvancedAuctionItemsSubmitRecord&gt;](AdvancedAuctionItemsSubmitRecord.md)
 
 ## Example
 

@@ -2,25 +2,22 @@
 Protected Class CatalogsCreativeAssetsFeedsUpdateRequest
 
 	#tag Property, Flags = &h0
-		default_currency As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A human-friendly name associated to a given feed.
-		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		format As Xoson.O.OptionalString
+		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		default_currency As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		format As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -33,17 +30,20 @@ Protected Class CatalogsCreativeAssetsFeedsUpdateRequest
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			A human-friendly name associated to a given feed.
+		#tag EndNote
+		name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		status As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		catalog_type As String
 	#tag EndProperty
 
 
@@ -84,27 +84,11 @@ Protected Class CatalogsCreativeAssetsFeedsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="default_currency"
+			Name="catalog_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="NullableCurrency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="format"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsFormat"
+			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -116,7 +100,31 @@ Protected Class CatalogsCreativeAssetsFeedsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="default_currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NullableCurrency"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="format"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="location"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -137,14 +145,6 @@ Protected Class CatalogsCreativeAssetsFeedsUpdateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

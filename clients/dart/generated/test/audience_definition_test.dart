@@ -22,15 +22,13 @@ void main() {
       // TODO
     });
 
-    // Generated audience type to request.
-    // String type
-    test('to test the property `type`', () async {
+    // String scope
+    test('to test the property `scope`', () async {
       // TODO
     });
 
-    // Generated audience scope to request.
-    // String scope
-    test('to test the property `scope`', () async {
+    // String type
+    test('to test the property `type`', () async {
       // TODO
     });
 

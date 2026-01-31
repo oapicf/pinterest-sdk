@@ -10,11 +10,13 @@ import javax.validation.Valid;
 /**
  * OptimizationGoalMetadataFrequencyGoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   @JsonProperty("frequency")
-  
+  @Min(2)
+@Max(20)
+
   private Integer frequency;
 
   /**
@@ -66,7 +68,9 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   }
 
    /**
-   * Get frequency
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    * @return frequency
   **/
   public Integer getFrequency() {

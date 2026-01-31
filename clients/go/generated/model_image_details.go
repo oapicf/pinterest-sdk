@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &ImageDetails{}
 
 // ImageDetails struct for ImageDetails
 type ImageDetails struct {
-	Width int32 `json:"width"`
 	Height NullableInt32 `json:"height"`
 	Url string `json:"url"`
+	Width NullableInt32 `json:"width"`
 }
 
 type _ImageDetails ImageDetails
@@ -33,11 +33,11 @@ type _ImageDetails ImageDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImageDetails(width int32, height NullableInt32, url string) *ImageDetails {
+func NewImageDetails(height NullableInt32, url string, width NullableInt32) *ImageDetails {
 	this := ImageDetails{}
-	this.Width = width
 	this.Height = height
 	this.Url = url
+	this.Width = width
 	return &this
 }
 
@@ -47,30 +47,6 @@ func NewImageDetails(width int32, height NullableInt32, url string) *ImageDetail
 func NewImageDetailsWithDefaults() *ImageDetails {
 	this := ImageDetails{}
 	return &this
-}
-
-// GetWidth returns the Width field value
-func (o *ImageDetails) GetWidth() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Width
-}
-
-// GetWidthOk returns a tuple with the Width field value
-// and a boolean to check if the value has been set.
-func (o *ImageDetails) GetWidthOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Width, true
-}
-
-// SetWidth sets field value
-func (o *ImageDetails) SetWidth(v int32) {
-	o.Width = v
 }
 
 // GetHeight returns the Height field value
@@ -123,6 +99,32 @@ func (o *ImageDetails) SetUrl(v string) {
 	o.Url = v
 }
 
+// GetWidth returns the Width field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ImageDetails) GetWidth() int32 {
+	if o == nil || o.Width.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.Width.Get()
+}
+
+// GetWidthOk returns a tuple with the Width field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImageDetails) GetWidthOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Width.Get(), o.Width.IsSet()
+}
+
+// SetWidth sets field value
+func (o *ImageDetails) SetWidth(v int32) {
+	o.Width.Set(&v)
+}
+
 func (o ImageDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,9 +135,9 @@ func (o ImageDetails) MarshalJSON() ([]byte, error) {
 
 func (o ImageDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["width"] = o.Width
 	toSerialize["height"] = o.Height.Get()
 	toSerialize["url"] = o.Url
+	toSerialize["width"] = o.Width.Get()
 	return toSerialize, nil
 }
 
@@ -144,9 +146,9 @@ func (o *ImageDetails) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"width",
 		"height",
 		"url",
+		"width",
 	}
 
 	allProperties := make(map[string]interface{})

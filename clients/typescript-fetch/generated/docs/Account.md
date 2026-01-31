@@ -6,18 +6,18 @@
 
 Name | Type
 ------------ | -------------
-`accountType` | string
-`id` | string
-`profileImage` | string
-`websiteUrl` | string
-`username` | string
 `about` | string
-`businessName` | string
+`accountType` | string
 `boardCount` | number
-`pinCount` | number
+`businessName` | string
 `followerCount` | number
 `followingCount` | number
+`id` | string
 `monthlyViews` | number
+`pinCount` | number
+`profileImage` | string
+`username` | string
+`websiteUrl` | string
 
 ## Example
 
@@ -26,18 +26,18 @@ import type { Account } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "accountType": null,
-  "id": 2783136121146311751,
-  "profileImage": null,
-  "websiteUrl": null,
-  "username": null,
   "about": null,
-  "businessName": null,
+  "accountType": null,
   "boardCount": 14,
-  "pinCount": 339,
+  "businessName": null,
   "followerCount": 10,
   "followingCount": 347,
+  "id": 2783136121146311751,
   "monthlyViews": 163,
+  "pinCount": 339,
+  "profileImage": null,
+  "username": null,
+  "websiteUrl": null,
 } satisfies Account
 
 console.log(example)

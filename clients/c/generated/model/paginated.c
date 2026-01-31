@@ -6,27 +6,27 @@
 
 
 static paginated_t *paginated_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     paginated_t *paginated_local_var = malloc(sizeof(paginated_t));
     if (!paginated_local_var) {
         return NULL;
     }
-    paginated_local_var->items = items;
     paginated_local_var->bookmark = bookmark;
+    paginated_local_var->items = items;
 
     paginated_local_var->_library_owned = 1;
     return paginated_local_var;
 }
 
 __attribute__((deprecated)) paginated_t *paginated_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return paginated_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void paginated_free(paginated_t *paginated) {
         return ;
     }
     listEntry_t *listEntry;
+    if (paginated->bookmark) {
+        free(paginated->bookmark);
+        paginated->bookmark = NULL;
+    }
     if (paginated->items) {
         list_ForEach(listEntry, paginated->items) {
             object_free(listEntry->data);
@@ -46,15 +50,19 @@ void paginated_free(paginated_t *paginated) {
         list_freeList(paginated->items);
         paginated->items = NULL;
     }
-    if (paginated->bookmark) {
-        free(paginated->bookmark);
-        paginated->bookmark = NULL;
-    }
     free(paginated);
 }
 
 cJSON *paginated_convertToJSON(paginated_t *paginated) {
     cJSON *item = cJSON_CreateObject();
+
+    // paginated->bookmark
+    if(paginated->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", paginated->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // paginated->items
     if (!paginated->items) {
@@ -76,14 +84,6 @@ cJSON *paginated_convertToJSON(paginated_t *paginated) {
     }
     }
 
-
-    // paginated->bookmark
-    if(paginated->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", paginated->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ paginated_t *paginated_parseFromJSON(cJSON *paginatedJSON){
 
     // define the local list for paginated->items
     list_t *itemsList = NULL;
+
+    // paginated->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(paginatedJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // paginated->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(paginatedJSON, "items");
@@ -126,22 +138,10 @@ paginated_t *paginated_parseFromJSON(cJSON *paginatedJSON){
         list_addElement(itemsList, itemsItem);
     }
 
-    // paginated->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(paginatedJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     paginated_local_var = paginated_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return paginated_local_var;

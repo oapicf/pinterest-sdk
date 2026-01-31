@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"currency": @"currency", @"value": @"value", @"contentIds": @"content_ids", @"contentName": @"content_name", @"contentCategory": @"content_category", @"contentBrand": @"content_brand", @"contents": @"contents", @"numItems": @"num_items", @"orderId": @"order_id", @"searchString": @"search_string", @"optOutType": @"opt_out_type", @"np": @"np" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"contentBrand": @"content_brand", @"contentCategory": @"content_category", @"contentIds": @"content_ids", @"contentName": @"content_name", @"contents": @"contents", @"currency": @"currency", @"externalMeasurementId": @"external_measurement_id", @"externalMeasurementVendorId": @"external_measurement_vendor_id", @"np": @"np", @"numItems": @"num_items", @"optOutType": @"opt_out_type", @"orderId": @"order_id", @"predictedLtv": @"predicted_ltv", @"searchString": @"search_string", @"value": @"value" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"currency", @"value", @"contentIds", @"contentName", @"contentCategory", @"contentBrand", @"contents", @"numItems", @"orderId", @"searchString", @"optOutType", @"np"];
+  NSArray *optionalProperties = @[@"contentBrand", @"contentCategory", @"contentIds", @"contentName", @"contents", @"currency", @"externalMeasurementId", @"externalMeasurementVendorId", @"np", @"numItems", @"optOutType", @"orderId", @"predictedLtv", @"searchString", @"value"];
   return [optionalProperties containsObject:propertyName];
 }
 

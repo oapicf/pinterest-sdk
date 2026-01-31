@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsHotelItemsFilter, () {
+    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -14,12 +20,6 @@ void main() {
 
     // BuiltList<String> hotelIds
     test('to test the property `hotelIds`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

@@ -23,8 +23,8 @@ InviteExceptionResponse::~InviteExceptionResponse()
 void
 InviteExceptionResponse::__init()
 {
-	//invite_or_request_id = std::string();
 	//code = int(0);
+	//invite_or_request_id = std::string();
 	//message = std::string();
 	//new std::list()std::list> users_or_partner_ids;
 }
@@ -32,15 +32,15 @@ InviteExceptionResponse::__init()
 void
 InviteExceptionResponse::__cleanup()
 {
-	//if(invite_or_request_id != NULL) {
-	//
-	//delete invite_or_request_id;
-	//invite_or_request_id = NULL;
-	//}
 	//if(code != NULL) {
 	//
 	//delete code;
 	//code = NULL;
+	//}
+	//if(invite_or_request_id != NULL) {
+	//
+	//delete invite_or_request_id;
+	//invite_or_request_id = NULL;
 	//}
 	//if(message != NULL) {
 	//
@@ -60,17 +60,6 @@ InviteExceptionResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *invite_or_request_idKey = "invite_or_request_id";
-	node = json_object_get_member(pJsonObject, invite_or_request_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&invite_or_request_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *codeKey = "code";
 	node = json_object_get_member(pJsonObject, codeKey);
 	if (node !=NULL) {
@@ -78,6 +67,17 @@ InviteExceptionResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&code, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *invite_or_request_idKey = "invite_or_request_id";
+	node = json_object_get_member(pJsonObject, invite_or_request_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&invite_or_request_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -127,15 +127,6 @@ InviteExceptionResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getInviteOrRequestId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *invite_or_request_idKey = "invite_or_request_id";
-	json_object_set_member(pJsonObject, invite_or_request_idKey, node);
 	if (isprimitive("int")) {
 		int obj = getCode();
 		node = converttoJson(&obj, "int", "");
@@ -145,6 +136,15 @@ InviteExceptionResponse::toJson()
 	}
 	const gchar *codeKey = "code";
 	json_object_set_member(pJsonObject, codeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getInviteOrRequestId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *invite_or_request_idKey = "invite_or_request_id";
+	json_object_set_member(pJsonObject, invite_or_request_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getMessage();
 		node = converttoJson(&obj, "std::string", "");
@@ -177,18 +177,6 @@ InviteExceptionResponse::toJson()
 	return ret;
 }
 
-std::string
-InviteExceptionResponse::getInviteOrRequestId()
-{
-	return invite_or_request_id;
-}
-
-void
-InviteExceptionResponse::setInviteOrRequestId(std::string  invite_or_request_id)
-{
-	this->invite_or_request_id = invite_or_request_id;
-}
-
 int
 InviteExceptionResponse::getCode()
 {
@@ -199,6 +187,18 @@ void
 InviteExceptionResponse::setCode(int  code)
 {
 	this->code = code;
+}
+
+std::string
+InviteExceptionResponse::getInviteOrRequestId()
+{
+	return invite_or_request_id;
+}
+
+void
+InviteExceptionResponse::setInviteOrRequestId(std::string  invite_or_request_id)
+{
+	this->invite_or_request_id = invite_or_request_id;
 }
 
 std::string

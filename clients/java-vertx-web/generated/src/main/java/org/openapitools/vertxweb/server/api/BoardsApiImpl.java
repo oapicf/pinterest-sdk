@@ -1,12 +1,17 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Board;
+import org.openapitools.vertxweb.server.model.BoardCreate;
+import org.openapitools.vertxweb.server.model.BoardPrivacyFilter;
 import org.openapitools.vertxweb.server.model.BoardSection;
 import org.openapitools.vertxweb.server.model.BoardSectionsList200Response;
-import org.openapitools.vertxweb.server.model.BoardUpdate;
+import org.openapitools.vertxweb.server.model.BoardWithUpdatePrivacy;
+import org.openapitools.vertxweb.server.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.vertxweb.server.model.BoardsList200Response;
 import org.openapitools.vertxweb.server.model.BoardsListPins200Response;
+import org.openapitools.vertxweb.server.model.CreativeType;
 import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -40,7 +45,7 @@ public class BoardsApiImpl implements BoardsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<Board>> boardsCreate(Board board, String adAccountId) {
+    public Future<ApiResponse<Board>> boardsCreate(BoardCreate boardCreate, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -52,15 +57,15 @@ public class BoardsApiImpl implements BoardsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BoardsList200Response>> boardsList(String adAccountId, String bookmark, Integer pageSize, String privacy) {
+    public Future<ApiResponse<BoardsList200Response>> boardsList(String adAccountId, BoardPrivacyFilter privacy, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BoardsListPins200Response>> boardsListPins(String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) {
+    public Future<ApiResponse<BoardsListPins200Response>> boardsListPins(String boardId, String bookmark, Integer pageSize, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<Board>> boardsUpdate(String boardId, BoardUpdate boardUpdate, String adAccountId) {
+    public Future<ApiResponse<BoardWithUpdatePrivacy>> boardsUpdate(String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 

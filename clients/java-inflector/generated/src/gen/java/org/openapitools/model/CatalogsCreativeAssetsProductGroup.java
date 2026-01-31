@@ -13,8 +13,11 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroup   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -47,11 +50,8 @@ public class CatalogsCreativeAssetsProductGroup   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("created_at")
+  private Integer createdAt;
 
   @JsonProperty("description")
   private String description;
@@ -59,14 +59,32 @@ public class CatalogsCreativeAssetsProductGroup   {
   @JsonProperty("filters")
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @JsonProperty("created_at")
-  private Integer createdAt;
+  @JsonProperty("id")
+  private String id;
+
+  @JsonProperty("name")
+  private String name;
 
   @JsonProperty("updated_at")
   private Integer updatedAt;
 
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   **/
+  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
   @JsonProperty("catalog_id")
-  private String catalogId;
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -83,6 +101,58 @@ public class CatalogsCreativeAssetsProductGroup   {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   * Unix timestamp in seconds of when catalog product group was created.
+   **/
+  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  /**
+   **/
+  public CatalogsCreativeAssetsProductGroup description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   **/
+  public CatalogsCreativeAssetsProductGroup filters(CatalogsCreativeAssetsProductGroupFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("filters")
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
+    this.filters = filters;
   }
 
   /**
@@ -122,58 +192,6 @@ public class CatalogsCreativeAssetsProductGroup   {
   }
 
   /**
-   **/
-  public CatalogsCreativeAssetsProductGroup description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  /**
-   **/
-  public CatalogsCreativeAssetsProductGroup filters(CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.filters = filters;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
-  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
-    return filters;
-  }
-  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.filters = filters;
-  }
-
-  /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   **/
-  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  /**
    * Unix timestamp in seconds of last time catalog product group was updated.
    **/
   public CatalogsCreativeAssetsProductGroup updatedAt(Integer updatedAt) {
@@ -191,24 +209,6 @@ public class CatalogsCreativeAssetsProductGroup   {
     this.updatedAt = updatedAt;
   }
 
-  /**
-   * Catalog id pertaining to the creative assets product group.
-   **/
-  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -219,19 +219,19 @@ public class CatalogsCreativeAssetsProductGroup   {
       return false;
     }
     CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup = (CatalogsCreativeAssetsProductGroup) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
-        Objects.equals(id, catalogsCreativeAssetsProductGroup.id) &&
-        Objects.equals(name, catalogsCreativeAssetsProductGroup.name) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsProductGroup.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
+        Objects.equals(createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
         Objects.equals(description, catalogsCreativeAssetsProductGroup.description) &&
         Objects.equals(filters, catalogsCreativeAssetsProductGroup.filters) &&
-        Objects.equals(createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
-        Objects.equals(updatedAt, catalogsCreativeAssetsProductGroup.updatedAt) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsProductGroup.catalogId);
+        Objects.equals(id, catalogsCreativeAssetsProductGroup.id) &&
+        Objects.equals(name, catalogsCreativeAssetsProductGroup.name) &&
+        Objects.equals(updatedAt, catalogsCreativeAssetsProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, description, filters, id, name, updatedAt);
   }
 
   @Override
@@ -239,14 +239,14 @@ public class CatalogsCreativeAssetsProductGroup   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroup {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

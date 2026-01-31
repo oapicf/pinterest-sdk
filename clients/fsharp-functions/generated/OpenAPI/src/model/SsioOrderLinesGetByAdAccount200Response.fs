@@ -12,10 +12,10 @@ module SsioOrderLinesGetByAdAccount200Response =
 
   [<CLIMutable>]
   type SsioOrderLinesGetByAdAccount200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : SSIOOrderLine[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : SSIOOrderLine[];
   }
 
   //#endregion

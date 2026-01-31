@@ -1,7 +1,6 @@
 package apimodels;
 
-import apimodels.PinMedia;
-import apimodels.VideoMetadata;
+import apimodels.VideoMetadataWithItemType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,20 +13,54 @@ import javax.validation.Valid;
 /**
  * Pin with multiple videos.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
-public class PinMediaWithVideos extends PinMedia  {
+public class PinMediaWithVideos   {
   @JsonProperty("items")
   @Valid
 
-  private List<@Valid VideoMetadata> items = null;
+  private List<@Valid VideoMetadataWithItemType> items = null;
 
-  public PinMediaWithVideos items(List<@Valid VideoMetadata> items) {
+  /**
+   * Gets or Sets mediaType
+   */
+  public enum MediaTypeEnum {
+    MULTIPLE_VIDEOS("multiple_videos");
+
+    private final String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("media_type")
+  @NotNull
+
+  private MediaTypeEnum mediaType;
+
+  public PinMediaWithVideos items(List<@Valid VideoMetadataWithItemType> items) {
     this.items = items;
     return this;
   }
 
-  public PinMediaWithVideos addItemsItem(VideoMetadata itemsItem) {
+  public PinMediaWithVideos addItemsItem(VideoMetadataWithItemType itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -39,12 +72,29 @@ public class PinMediaWithVideos extends PinMedia  {
    * Get items
    * @return items
   **/
-  public List<@Valid VideoMetadata> getItems() {
+  public List<@Valid VideoMetadataWithItemType> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid VideoMetadata> items) {
+  public void setItems(List<@Valid VideoMetadataWithItemType> items) {
     this.items = items;
+  }
+
+  public PinMediaWithVideos mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Get mediaType
+   * @return mediaType
+  **/
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -58,12 +108,12 @@ public class PinMediaWithVideos extends PinMedia  {
     }
     PinMediaWithVideos pinMediaWithVideos = (PinMediaWithVideos) o;
     return Objects.equals(items, pinMediaWithVideos.items) &&
-        super.equals(o);
+        Objects.equals(mediaType, pinMediaWithVideos.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, super.hashCode());
+    return Objects.hash(items, mediaType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -71,8 +121,9 @@ public class PinMediaWithVideos extends PinMedia  {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithVideos {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

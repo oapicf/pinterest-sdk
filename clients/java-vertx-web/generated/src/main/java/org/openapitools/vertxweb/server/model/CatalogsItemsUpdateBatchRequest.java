@@ -18,6 +18,7 @@ import org.openapitools.vertxweb.server.model.ItemUpdateBatchRecord;
 public class CatalogsItemsUpdateBatchRequest   {
   
   private Country country;
+  private List<ItemUpdateBatchRecord> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -144,17 +145,16 @@ public class CatalogsItemsUpdateBatchRequest   {
 
   private LanguageEnum language;
   private BatchOperation operation;
-  private List<ItemUpdateBatchRecord> items = new ArrayList<>();
 
   public CatalogsItemsUpdateBatchRequest () {
 
   }
 
-  public CatalogsItemsUpdateBatchRequest (Country country, LanguageEnum language, BatchOperation operation, List<ItemUpdateBatchRecord> items) {
+  public CatalogsItemsUpdateBatchRequest (Country country, List<ItemUpdateBatchRecord> items, LanguageEnum language, BatchOperation operation) {
     this.country = country;
+    this.items = items;
     this.language = language;
     this.operation = operation;
-    this.items = items;
   }
 
     
@@ -164,6 +164,15 @@ public class CatalogsItemsUpdateBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+    
+  @JsonProperty("items")
+  public List<ItemUpdateBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<ItemUpdateBatchRecord> items) {
+    this.items = items;
   }
 
     
@@ -184,15 +193,6 @@ public class CatalogsItemsUpdateBatchRequest   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("items")
-  public List<ItemUpdateBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<ItemUpdateBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -204,14 +204,14 @@ public class CatalogsItemsUpdateBatchRequest   {
     }
     CatalogsItemsUpdateBatchRequest catalogsItemsUpdateBatchRequest = (CatalogsItemsUpdateBatchRequest) o;
     return Objects.equals(country, catalogsItemsUpdateBatchRequest.country) &&
+        Objects.equals(items, catalogsItemsUpdateBatchRequest.items) &&
         Objects.equals(language, catalogsItemsUpdateBatchRequest.language) &&
-        Objects.equals(operation, catalogsItemsUpdateBatchRequest.operation) &&
-        Objects.equals(items, catalogsItemsUpdateBatchRequest.items);
+        Objects.equals(operation, catalogsItemsUpdateBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -220,9 +220,9 @@ public class CatalogsItemsUpdateBatchRequest   {
     sb.append("class CatalogsItemsUpdateBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

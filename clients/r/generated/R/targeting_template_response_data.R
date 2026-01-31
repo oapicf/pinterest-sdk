@@ -7,69 +7,70 @@
 #' @title TargetingTemplateResponseData
 #' @description TargetingTemplateResponseData Class
 #' @format An \code{R6Class} generator object
-#' @field name targeting template name character [optional]
 #' @field auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. character [optional]
-#' @field targeting_attributes  \link{TargetingSpec} [optional]
-#' @field placement_group  \link{PlacementGroupType} [optional]
 #' @field keywords  list(\link{TargetingTemplateKeyword}) [optional]
+#' @field name targeting template name character [optional]
+#' @field placement_group  \link{PlacementGroupType} [optional]
+#' @field targeting_attributes  \link{TargetingSpec} [optional]
 #' @field tracking_urls  \link{TrackingUrls} [optional]
-#' @field id Targeting template ID. character [optional]
-#' @field created_time Targeting template created time. Unix timestamp in seconds. integer [optional]
-#' @field updated_time Targeting template updated time.Unix timestamp in seconds. integer [optional]
 #' @field ad_account_id The ID of the advertiser that this targeting template belongs to. character [optional]
-#' @field status Indicate targeting template is active or Deleted character [optional]
+#' @field created_time Targeting template created time. Unix timestamp in seconds. integer [optional]
+#' @field id Targeting template ID. character [optional]
 #' @field sizing  \link{TargetingTemplateAudienceSizing} [optional]
+#' @field status Indicate targeting template is active or Deleted character [optional]
+#' @field updated_time Targeting template updated time.Unix timestamp in seconds. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TargetingTemplateResponseData <- R6::R6Class(
   "TargetingTemplateResponseData",
   public = list(
-    `name` = NULL,
     `auto_targeting_enabled` = NULL,
-    `targeting_attributes` = NULL,
-    `placement_group` = NULL,
     `keywords` = NULL,
+    `name` = NULL,
+    `placement_group` = NULL,
+    `targeting_attributes` = NULL,
     `tracking_urls` = NULL,
-    `id` = NULL,
-    `created_time` = NULL,
-    `updated_time` = NULL,
     `ad_account_id` = NULL,
-    `status` = NULL,
+    `created_time` = NULL,
+    `id` = NULL,
     `sizing` = NULL,
+    `status` = NULL,
+    `updated_time` = NULL,
 
     #' @description
     #' Initialize a new TargetingTemplateResponseData class.
     #'
-    #' @param name targeting template name
     #' @param auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.. Default to TRUE.
-    #' @param targeting_attributes targeting_attributes
-    #' @param placement_group placement_group
     #' @param keywords keywords
+    #' @param name targeting template name
+    #' @param placement_group placement_group
+    #' @param targeting_attributes targeting_attributes
     #' @param tracking_urls tracking_urls
-    #' @param id Targeting template ID.
-    #' @param created_time Targeting template created time. Unix timestamp in seconds.
-    #' @param updated_time Targeting template updated time.Unix timestamp in seconds.
     #' @param ad_account_id The ID of the advertiser that this targeting template belongs to.
-    #' @param status Indicate targeting template is active or Deleted. Default to "ACTIVE".
+    #' @param created_time Targeting template created time. Unix timestamp in seconds.
+    #' @param id Targeting template ID.
     #' @param sizing sizing
+    #' @param status Indicate targeting template is active or Deleted. Default to "ACTIVE".
+    #' @param updated_time Targeting template updated time.Unix timestamp in seconds.
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `auto_targeting_enabled` = TRUE, `targeting_attributes` = NULL, `placement_group` = NULL, `keywords` = NULL, `tracking_urls` = NULL, `id` = NULL, `created_time` = NULL, `updated_time` = NULL, `ad_account_id` = NULL, `status` = "ACTIVE", `sizing` = NULL, ...) {
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
+    initialize = function(`auto_targeting_enabled` = TRUE, `keywords` = NULL, `name` = NULL, `placement_group` = NULL, `targeting_attributes` = NULL, `tracking_urls` = NULL, `ad_account_id` = NULL, `created_time` = NULL, `id` = NULL, `sizing` = NULL, `status` = "ACTIVE", `updated_time` = NULL, ...) {
       if (!is.null(`auto_targeting_enabled`)) {
         if (!(is.logical(`auto_targeting_enabled`) && length(`auto_targeting_enabled`) == 1)) {
           stop(paste("Error! Invalid data for `auto_targeting_enabled`. Must be a boolean:", `auto_targeting_enabled`))
         }
         self$`auto_targeting_enabled` <- `auto_targeting_enabled`
       }
-      if (!is.null(`targeting_attributes`)) {
-        stopifnot(R6::is.R6(`targeting_attributes`))
-        self$`targeting_attributes` <- `targeting_attributes`
+      if (!is.null(`keywords`)) {
+        stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
+        sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
+        self$`keywords` <- `keywords`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
       if (!is.null(`placement_group`)) {
         if (!(`placement_group` %in% c())) {
@@ -78,20 +79,19 @@ TargetingTemplateResponseData <- R6::R6Class(
         stopifnot(R6::is.R6(`placement_group`))
         self$`placement_group` <- `placement_group`
       }
-      if (!is.null(`keywords`)) {
-        stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
-        sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
-        self$`keywords` <- `keywords`
+      if (!is.null(`targeting_attributes`)) {
+        stopifnot(R6::is.R6(`targeting_attributes`))
+        self$`targeting_attributes` <- `targeting_attributes`
       }
       if (!is.null(`tracking_urls`)) {
         stopifnot(R6::is.R6(`tracking_urls`))
         self$`tracking_urls` <- `tracking_urls`
       }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+      if (!is.null(`ad_account_id`)) {
+        if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
+          stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
         }
-        self$`id` <- `id`
+        self$`ad_account_id` <- `ad_account_id`
       }
       if (!is.null(`created_time`)) {
         if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
@@ -99,17 +99,15 @@ TargetingTemplateResponseData <- R6::R6Class(
         }
         self$`created_time` <- `created_time`
       }
-      if (!is.null(`updated_time`)) {
-        if (!(is.numeric(`updated_time`) && length(`updated_time`) == 1)) {
-          stop(paste("Error! Invalid data for `updated_time`. Must be an integer:", `updated_time`))
+      if (!is.null(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
-        self$`updated_time` <- `updated_time`
+        self$`id` <- `id`
       }
-      if (!is.null(`ad_account_id`)) {
-        if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
-          stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
-        }
-        self$`ad_account_id` <- `ad_account_id`
+      if (!is.null(`sizing`)) {
+        stopifnot(R6::is.R6(`sizing`))
+        self$`sizing` <- `sizing`
       }
       if (!is.null(`status`)) {
         if (!(`status` %in% c("ACTIVE", "DELETED"))) {
@@ -120,9 +118,11 @@ TargetingTemplateResponseData <- R6::R6Class(
         }
         self$`status` <- `status`
       }
-      if (!is.null(`sizing`)) {
-        stopifnot(R6::is.R6(`sizing`))
-        self$`sizing` <- `sizing`
+      if (!is.null(`updated_time`)) {
+        if (!(is.numeric(`updated_time`) && length(`updated_time`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_time`. Must be an integer:", `updated_time`))
+        }
+        self$`updated_time` <- `updated_time`
       }
     },
 
@@ -157,53 +157,53 @@ TargetingTemplateResponseData <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TargetingTemplateResponseDataObject <- list()
-      if (!is.null(self$`name`)) {
-        TargetingTemplateResponseDataObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`auto_targeting_enabled`)) {
         TargetingTemplateResponseDataObject[["auto_targeting_enabled"]] <-
           self$`auto_targeting_enabled`
-      }
-      if (!is.null(self$`targeting_attributes`)) {
-        TargetingTemplateResponseDataObject[["targeting_attributes"]] <-
-          self$`targeting_attributes`$toSimpleType()
-      }
-      if (!is.null(self$`placement_group`)) {
-        TargetingTemplateResponseDataObject[["placement_group"]] <-
-          self$`placement_group`$toSimpleType()
       }
       if (!is.null(self$`keywords`)) {
         TargetingTemplateResponseDataObject[["keywords"]] <-
           lapply(self$`keywords`, function(x) x$toSimpleType())
       }
+      if (!is.null(self$`name`)) {
+        TargetingTemplateResponseDataObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`placement_group`)) {
+        TargetingTemplateResponseDataObject[["placement_group"]] <-
+          self$`placement_group`$toSimpleType()
+      }
+      if (!is.null(self$`targeting_attributes`)) {
+        TargetingTemplateResponseDataObject[["targeting_attributes"]] <-
+          self$`targeting_attributes`$toSimpleType()
+      }
       if (!is.null(self$`tracking_urls`)) {
         TargetingTemplateResponseDataObject[["tracking_urls"]] <-
           self$`tracking_urls`$toSimpleType()
-      }
-      if (!is.null(self$`id`)) {
-        TargetingTemplateResponseDataObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`created_time`)) {
-        TargetingTemplateResponseDataObject[["created_time"]] <-
-          self$`created_time`
-      }
-      if (!is.null(self$`updated_time`)) {
-        TargetingTemplateResponseDataObject[["updated_time"]] <-
-          self$`updated_time`
       }
       if (!is.null(self$`ad_account_id`)) {
         TargetingTemplateResponseDataObject[["ad_account_id"]] <-
           self$`ad_account_id`
       }
-      if (!is.null(self$`status`)) {
-        TargetingTemplateResponseDataObject[["status"]] <-
-          self$`status`
+      if (!is.null(self$`created_time`)) {
+        TargetingTemplateResponseDataObject[["created_time"]] <-
+          self$`created_time`
+      }
+      if (!is.null(self$`id`)) {
+        TargetingTemplateResponseDataObject[["id"]] <-
+          self$`id`
       }
       if (!is.null(self$`sizing`)) {
         TargetingTemplateResponseDataObject[["sizing"]] <-
           self$`sizing`$toSimpleType()
+      }
+      if (!is.null(self$`status`)) {
+        TargetingTemplateResponseDataObject[["status"]] <-
+          self$`status`
+      }
+      if (!is.null(self$`updated_time`)) {
+        TargetingTemplateResponseDataObject[["updated_time"]] <-
+          self$`updated_time`
       }
       return(TargetingTemplateResponseDataObject)
     },
@@ -215,41 +215,43 @@ TargetingTemplateResponseData <- R6::R6Class(
     #' @return the instance of TargetingTemplateResponseData
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`auto_targeting_enabled`)) {
         self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
       }
-      if (!is.null(this_object$`targeting_attributes`)) {
-        `targeting_attributes_object` <- TargetingSpec$new()
-        `targeting_attributes_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
-        self$`targeting_attributes` <- `targeting_attributes_object`
+      if (!is.null(this_object$`keywords`)) {
+        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       if (!is.null(this_object$`placement_group`)) {
         `placement_group_object` <- PlacementGroupType$new()
         `placement_group_object`$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
         self$`placement_group` <- `placement_group_object`
       }
-      if (!is.null(this_object$`keywords`)) {
-        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
+      if (!is.null(this_object$`targeting_attributes`)) {
+        `targeting_attributes_object` <- TargetingSpec$new()
+        `targeting_attributes_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
+        self$`targeting_attributes` <- `targeting_attributes_object`
       }
       if (!is.null(this_object$`tracking_urls`)) {
         `tracking_urls_object` <- TrackingUrls$new()
         `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
         self$`tracking_urls` <- `tracking_urls_object`
       }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
+      if (!is.null(this_object$`ad_account_id`)) {
+        self$`ad_account_id` <- this_object$`ad_account_id`
       }
       if (!is.null(this_object$`created_time`)) {
         self$`created_time` <- this_object$`created_time`
       }
-      if (!is.null(this_object$`updated_time`)) {
-        self$`updated_time` <- this_object$`updated_time`
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
       }
-      if (!is.null(this_object$`ad_account_id`)) {
-        self$`ad_account_id` <- this_object$`ad_account_id`
+      if (!is.null(this_object$`sizing`)) {
+        `sizing_object` <- TargetingTemplateAudienceSizing$new()
+        `sizing_object`$fromJSON(jsonlite::toJSON(this_object$`sizing`, auto_unbox = TRUE, digits = NA))
+        self$`sizing` <- `sizing_object`
       }
       if (!is.null(this_object$`status`)) {
         if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("ACTIVE", "DELETED"))) {
@@ -257,10 +259,8 @@ TargetingTemplateResponseData <- R6::R6Class(
         }
         self$`status` <- this_object$`status`
       }
-      if (!is.null(this_object$`sizing`)) {
-        `sizing_object` <- TargetingTemplateAudienceSizing$new()
-        `sizing_object`$fromJSON(jsonlite::toJSON(this_object$`sizing`, auto_unbox = TRUE, digits = NA))
-        self$`sizing` <- `sizing_object`
+      if (!is.null(this_object$`updated_time`)) {
+        self$`updated_time` <- this_object$`updated_time`
       }
       self
     },
@@ -283,21 +283,21 @@ TargetingTemplateResponseData <- R6::R6Class(
     #' @return the instance of TargetingTemplateResponseData
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
       self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
-      self$`targeting_attributes` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
-      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
+      self$`name` <- this_object$`name`
+      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
+      self$`targeting_attributes` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
       self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
-      self$`id` <- this_object$`id`
-      self$`created_time` <- this_object$`created_time`
-      self$`updated_time` <- this_object$`updated_time`
       self$`ad_account_id` <- this_object$`ad_account_id`
+      self$`created_time` <- this_object$`created_time`
+      self$`id` <- this_object$`id`
+      self$`sizing` <- TargetingTemplateAudienceSizing$new()$fromJSON(jsonlite::toJSON(this_object$`sizing`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("ACTIVE", "DELETED"))) {
         stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"ACTIVE\", \"DELETED\".", sep = ""))
       }
       self$`status` <- this_object$`status`
-      self$`sizing` <- TargetingTemplateAudienceSizing$new()$fromJSON(jsonlite::toJSON(this_object$`sizing`, auto_unbox = TRUE, digits = NA))
+      self$`updated_time` <- this_object$`updated_time`
       self
     },
 
@@ -322,11 +322,11 @@ TargetingTemplateResponseData <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (!str_detect(self$`id`, "^\\d+$")) {
+      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
+      if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -339,12 +339,12 @@ TargetingTemplateResponseData <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (!str_detect(self$`id`, "^\\d+$")) {
-        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
-      }
-
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
         invalid_fields["ad_account_id"] <- "Invalid value for `ad_account_id`, must conform to the pattern ^\\d+$."
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

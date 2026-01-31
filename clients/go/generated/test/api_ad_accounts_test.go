@@ -88,6 +88,20 @@ func Test_openapi_AdAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdAccountsAPIService AnalyticsCreateConversionProductReport", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdAccountsAPI.AnalyticsCreateConversionProductReport(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdAccountsAPIService AnalyticsCreateMmmReport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -124,6 +138,20 @@ func Test_openapi_AdAccountsAPIService(t *testing.T) {
 		var templateId string
 
 		resp, httpRes, err := apiClient.AdAccountsAPI.AnalyticsCreateTemplateReport(context.Background(), adAccountId, templateId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdAccountsAPIService AnalyticsGetConversionProductReport", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdAccountsAPI.AnalyticsGetConversionProductReport(context.Background(), adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

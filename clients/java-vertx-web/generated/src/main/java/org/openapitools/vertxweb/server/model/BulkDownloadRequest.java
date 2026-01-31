@@ -17,48 +17,21 @@ import org.openapitools.vertxweb.server.model.BulkOutputFormat;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BulkDownloadRequest   {
   
-  private List<BulkEntityType> entityTypes = new ArrayList<>();
-  private List<String> entityIds = new ArrayList<>();
-  private String updatedSince;
   private BulkDownloadRequestCampaignFilter campaignFilter;
+  private List<String> entityIds = new ArrayList<>();
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
   private BulkOutputFormat outputFormat = "JSON";
+  private String updatedSince;
 
   public BulkDownloadRequest () {
 
   }
 
-  public BulkDownloadRequest (List<BulkEntityType> entityTypes, List<String> entityIds, String updatedSince, BulkDownloadRequestCampaignFilter campaignFilter, BulkOutputFormat outputFormat) {
-    this.entityTypes = entityTypes;
-    this.entityIds = entityIds;
-    this.updatedSince = updatedSince;
+  public BulkDownloadRequest (BulkDownloadRequestCampaignFilter campaignFilter, List<String> entityIds, List<BulkEntityType> entityTypes, BulkOutputFormat outputFormat, String updatedSince) {
     this.campaignFilter = campaignFilter;
-    this.outputFormat = outputFormat;
-  }
-
-    
-  @JsonProperty("entity_types")
-  public List<BulkEntityType> getEntityTypes() {
-    return entityTypes;
-  }
-  public void setEntityTypes(List<BulkEntityType> entityTypes) {
-    this.entityTypes = entityTypes;
-  }
-
-    
-  @JsonProperty("entity_ids")
-  public List<String> getEntityIds() {
-    return entityIds;
-  }
-  public void setEntityIds(List<String> entityIds) {
     this.entityIds = entityIds;
-  }
-
-    
-  @JsonProperty("updated_since")
-  public String getUpdatedSince() {
-    return updatedSince;
-  }
-  public void setUpdatedSince(String updatedSince) {
+    this.entityTypes = entityTypes;
+    this.outputFormat = outputFormat;
     this.updatedSince = updatedSince;
   }
 
@@ -72,12 +45,39 @@ public class BulkDownloadRequest   {
   }
 
     
+  @JsonProperty("entity_ids")
+  public List<String> getEntityIds() {
+    return entityIds;
+  }
+  public void setEntityIds(List<String> entityIds) {
+    this.entityIds = entityIds;
+  }
+
+    
+  @JsonProperty("entity_types")
+  public List<BulkEntityType> getEntityTypes() {
+    return entityTypes;
+  }
+  public void setEntityTypes(List<BulkEntityType> entityTypes) {
+    this.entityTypes = entityTypes;
+  }
+
+    
   @JsonProperty("output_format")
   public BulkOutputFormat getOutputFormat() {
     return outputFormat;
   }
   public void setOutputFormat(BulkOutputFormat outputFormat) {
     this.outputFormat = outputFormat;
+  }
+
+    
+  @JsonProperty("updated_since")
+  public String getUpdatedSince() {
+    return updatedSince;
+  }
+  public void setUpdatedSince(String updatedSince) {
+    this.updatedSince = updatedSince;
   }
 
 
@@ -90,16 +90,16 @@ public class BulkDownloadRequest   {
       return false;
     }
     BulkDownloadRequest bulkDownloadRequest = (BulkDownloadRequest) o;
-    return Objects.equals(entityTypes, bulkDownloadRequest.entityTypes) &&
+    return Objects.equals(campaignFilter, bulkDownloadRequest.campaignFilter) &&
         Objects.equals(entityIds, bulkDownloadRequest.entityIds) &&
-        Objects.equals(updatedSince, bulkDownloadRequest.updatedSince) &&
-        Objects.equals(campaignFilter, bulkDownloadRequest.campaignFilter) &&
-        Objects.equals(outputFormat, bulkDownloadRequest.outputFormat);
+        Objects.equals(entityTypes, bulkDownloadRequest.entityTypes) &&
+        Objects.equals(outputFormat, bulkDownloadRequest.outputFormat) &&
+        Objects.equals(updatedSince, bulkDownloadRequest.updatedSince);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityTypes, entityIds, updatedSince, campaignFilter, outputFormat);
+    return Objects.hash(campaignFilter, entityIds, entityTypes, outputFormat, updatedSince);
   }
 
   @Override
@@ -107,11 +107,11 @@ public class BulkDownloadRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequest {\n");
     
-    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
-    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
-    sb.append("    updatedSince: ").append(toIndentedString(updatedSince)).append("\n");
     sb.append("    campaignFilter: ").append(toIndentedString(campaignFilter)).append("\n");
+    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
+    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
     sb.append("    outputFormat: ").append(toIndentedString(outputFormat)).append("\n");
+    sb.append("    updatedSince: ").append(toIndentedString(updatedSince)).append("\n");
     sb.append("}");
     return sb.toString();
   }

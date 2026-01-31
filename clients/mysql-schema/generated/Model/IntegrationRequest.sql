@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `IntegrationRequest`
 --
-SELECT `external_business_id`, `connected_merchant_id`, `connected_advertiser_id`, `connected_lba_id`, `connected_tag_id`, `partner_access_token`, `partner_refresh_token`, `partner_primary_email`, `partner_access_token_expiry`, `partner_refresh_token_expiry`, `scopes`, `additional_id_1`, `partner_metadata` FROM `IntegrationRequest` WHERE 1;
+SELECT `additional_id_1`, `connected_advertiser_id`, `connected_lba_id`, `connected_merchant_id`, `connected_tag_id`, `external_business_id`, `partner_access_token`, `partner_access_token_expiry`, `partner_metadata`, `partner_primary_email`, `partner_refresh_token`, `partner_refresh_token_expiry`, `scopes` FROM `IntegrationRequest` WHERE 1;
 
 --
 -- INSERT template for table `IntegrationRequest`
 --
-INSERT INTO `IntegrationRequest`(`external_business_id`, `connected_merchant_id`, `connected_advertiser_id`, `connected_lba_id`, `connected_tag_id`, `partner_access_token`, `partner_refresh_token`, `partner_primary_email`, `partner_access_token_expiry`, `partner_refresh_token_expiry`, `scopes`, `additional_id_1`, `partner_metadata`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `IntegrationRequest`(`additional_id_1`, `connected_advertiser_id`, `connected_lba_id`, `connected_merchant_id`, `connected_tag_id`, `external_business_id`, `partner_access_token`, `partner_access_token_expiry`, `partner_metadata`, `partner_primary_email`, `partner_refresh_token`, `partner_refresh_token_expiry`, `scopes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `IntegrationRequest`
 --
-UPDATE `IntegrationRequest` SET `external_business_id` = ?, `connected_merchant_id` = ?, `connected_advertiser_id` = ?, `connected_lba_id` = ?, `connected_tag_id` = ?, `partner_access_token` = ?, `partner_refresh_token` = ?, `partner_primary_email` = ?, `partner_access_token_expiry` = ?, `partner_refresh_token_expiry` = ?, `scopes` = ?, `additional_id_1` = ?, `partner_metadata` = ? WHERE 1;
+UPDATE `IntegrationRequest` SET `additional_id_1` = ?, `connected_advertiser_id` = ?, `connected_lba_id` = ?, `connected_merchant_id` = ?, `connected_tag_id` = ?, `external_business_id` = ?, `partner_access_token` = ?, `partner_access_token_expiry` = ?, `partner_metadata` = ?, `partner_primary_email` = ?, `partner_refresh_token` = ?, `partner_refresh_token_expiry` = ?, `scopes` = ? WHERE 1;
 
 --
 -- DELETE template for table `IntegrationRequest`

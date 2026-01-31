@@ -22,13 +22,13 @@ user_websites_get_200_response_t* instantiate_user_websites_get_200_response(int
   user_websites_get_200_response_t* user_websites_get_200_response = NULL;
   if (include_optional) {
     user_websites_get_200_response = user_websites_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     user_websites_get_200_response = user_websites_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

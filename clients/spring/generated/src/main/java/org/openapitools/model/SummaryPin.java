@@ -24,38 +24,20 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SummaryPin", description = "Summarized pin information")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SummaryPin {
-
-  private @Nullable PinMedia media;
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
-  private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> title = JsonNullable.<String>undefined();
-
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  public SummaryPin media(@Nullable PinMedia media) {
-    this.media = media;
-    return this;
-  }
+  private @Nullable String id;
 
-  /**
-   * Get media
-   * @return media
-   */
-  @Valid 
-  @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("media")
-  public @Nullable PinMedia getMedia() {
-    return media;
-  }
+  private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
 
-  public void setMedia(@Nullable PinMedia media) {
-    this.media = media;
-  }
+  private @Nullable PinMedia media;
+
+  private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   public SummaryPin altText(String altText) {
     this.altText = JsonNullable.of(altText);
@@ -75,46 +57,6 @@ public class SummaryPin {
 
   public void setAltText(JsonNullable<String> altText) {
     this.altText = altText;
-  }
-
-  public SummaryPin link(String link) {
-    this.link = JsonNullable.of(link);
-    return this;
-  }
-
-  /**
-   * Get link
-   * @return link
-   */
-  @Size(max = 2048) 
-  @Schema(name = "link", example = "https://www.pinterest.com/", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("link")
-  public JsonNullable<@Size(max = 2048) String> getLink() {
-    return link;
-  }
-
-  public void setLink(JsonNullable<String> link) {
-    this.link = link;
-  }
-
-  public SummaryPin title(String title) {
-    this.title = JsonNullable.of(title);
-    return this;
-  }
-
-  /**
-   * Get title
-   * @return title
-   */
-  
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("title")
-  public JsonNullable<String> getTitle() {
-    return title;
-  }
-
-  public void setTitle(JsonNullable<String> title) {
-    this.title = title;
   }
 
   public SummaryPin description(String description) {
@@ -137,6 +79,86 @@ public class SummaryPin {
     this.description = description;
   }
 
+  public SummaryPin id(@Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
+  }
+
+  public void setId(@Nullable String id) {
+    this.id = id;
+  }
+
+  public SummaryPin link(String link) {
+    this.link = JsonNullable.of(link);
+    return this;
+  }
+
+  /**
+   * Get link
+   * @return link
+   */
+  @Size(max = 2048) 
+  @Schema(name = "link", example = "https://www.pinterest.com/", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("link")
+  public JsonNullable<@Size(max = 2048) String> getLink() {
+    return link;
+  }
+
+  public void setLink(JsonNullable<String> link) {
+    this.link = link;
+  }
+
+  public SummaryPin media(@Nullable PinMedia media) {
+    this.media = media;
+    return this;
+  }
+
+  /**
+   * Get media
+   * @return media
+   */
+  @Valid 
+  @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("media")
+  public @Nullable PinMedia getMedia() {
+    return media;
+  }
+
+  public void setMedia(@Nullable PinMedia media) {
+    this.media = media;
+  }
+
+  public SummaryPin title(String title) {
+    this.title = JsonNullable.of(title);
+    return this;
+  }
+
+  /**
+   * Get title
+   * @return title
+   */
+  
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
+  public JsonNullable<String> getTitle() {
+    return title;
+  }
+
+  public void setTitle(JsonNullable<String> title) {
+    this.title = title;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -146,11 +168,12 @@ public class SummaryPin {
       return false;
     }
     SummaryPin summaryPin = (SummaryPin) o;
-    return Objects.equals(this.media, summaryPin.media) &&
-        equalsNullable(this.altText, summaryPin.altText) &&
+    return equalsNullable(this.altText, summaryPin.altText) &&
+        equalsNullable(this.description, summaryPin.description) &&
+        Objects.equals(this.id, summaryPin.id) &&
         equalsNullable(this.link, summaryPin.link) &&
-        equalsNullable(this.title, summaryPin.title) &&
-        equalsNullable(this.description, summaryPin.description);
+        Objects.equals(this.media, summaryPin.media) &&
+        equalsNullable(this.title, summaryPin.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -159,7 +182,7 @@ public class SummaryPin {
 
   @Override
   public int hashCode() {
-    return Objects.hash(media, hashCodeNullable(altText), hashCodeNullable(link), hashCodeNullable(title), hashCodeNullable(description));
+    return Objects.hash(hashCodeNullable(altText), hashCodeNullable(description), id, hashCodeNullable(link), media, hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -173,11 +196,12 @@ public class SummaryPin {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SummaryPin {\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

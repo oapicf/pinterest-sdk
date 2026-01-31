@@ -10,7 +10,7 @@ module CatalogsProductGroupMultipleGenderCriteria =
 
 
   type CatalogsProductGroupMultipleGenderCriteria = {
-    Values : Gender[];
     Negated : bool;
+    Values : Gender[];
   }
   //#endregion

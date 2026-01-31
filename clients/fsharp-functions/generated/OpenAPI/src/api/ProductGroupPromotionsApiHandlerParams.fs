@@ -3,10 +3,12 @@ namespace OpenAPI
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.ProductGroupAnalyticsResponseInner
+open OpenAPI.Model.ProductGroupPromotion
 open OpenAPI.Model.ProductGroupPromotionCreateRequest
 open OpenAPI.Model.ProductGroupPromotionResponse
 open OpenAPI.Model.ProductGroupPromotionUpdateRequest
 open OpenAPI.Model.ProductGroupPromotionsList200Response
+open OpenAPI.Model.ReportingTimeZone
 open System.Collections.Generic
 open System
 
@@ -51,7 +53,7 @@ module ProductGroupPromotionsApiHandlerParams =
 
 
     type ProductGroupPromotionsGetStatusCode200Response = {
-      content:ProductGroupPromotionResponse;
+      content:ProductGroupPromotion;
       
     }
 
@@ -173,6 +175,9 @@ module ProductGroupPromotionsApiHandlerParams =
 
 
       conversionReportTime : string option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion

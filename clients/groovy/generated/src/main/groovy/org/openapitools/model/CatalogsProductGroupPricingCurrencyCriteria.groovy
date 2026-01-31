@@ -8,6 +8,10 @@ import org.openapitools.model.NonNullableCatalogsCurrency;
 
 @Canonical
 class CatalogsProductGroupPricingCurrencyCriteria {
+    
+    NonNullableCatalogsCurrency currency
+    
+    Boolean negated = false
 
     enum OperatorEnum {
     
@@ -39,8 +43,4 @@ class CatalogsProductGroupPricingCurrencyCriteria {
     OperatorEnum operator
     
     BigDecimal value
-    
-    NonNullableCatalogsCurrency currency
-    
-    Boolean negated = false
 }

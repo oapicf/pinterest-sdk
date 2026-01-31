@@ -5,6 +5,16 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}id`,
+                label: `Subinterest ID. - [${labelPrefix}id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}index`,
+                label: `Subinterest affinity index. - [${labelPrefix}index]`,
+                type: 'number',
+            },
+            {
                 key: `${keyPrefix}key`,
                 label: `Interest unique key (same as ID). - [${labelPrefix}key]`,
                 type: 'string',
@@ -19,26 +29,16 @@ module.exports = {
                 label: `Subinterest's percent of category's total audience. - [${labelPrefix}ratio]`,
                 type: 'number',
             },
-            {
-                key: `${keyPrefix}index`,
-                label: `Subinterest affinity index. - [${labelPrefix}index]`,
-                type: 'number',
-            },
-            {
-                key: `${keyPrefix}id`,
-                label: `Subinterest ID. - [${labelPrefix}id]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'id': bundle.inputData?.[`${keyPrefix}id`],
+            'index': bundle.inputData?.[`${keyPrefix}index`],
             'key': bundle.inputData?.[`${keyPrefix}key`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'ratio': bundle.inputData?.[`${keyPrefix}ratio`],
-            'index': bundle.inputData?.[`${keyPrefix}index`],
-            'id': bundle.inputData?.[`${keyPrefix}id`],
         }
     },
 }

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Vec<models::ProductGroupPromotionResponseItem>**](ProductGroupPromotionResponseItem.md) |  | 
 **bookmark** | Option<**String**> |  | [optional]
+**items** | [**Vec<models::ProductGroupPromotion>**](ProductGroupPromotion.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

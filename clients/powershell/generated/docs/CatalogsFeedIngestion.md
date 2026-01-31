@@ -3,18 +3,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | 
-**FeedId** | **String** |  | 
 **CreatedAt** | **System.DateTime** |  | 
+**FeedId** | **String** |  | 
+**Id** | **String** |  | 
 **Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsFeedIngestion = Initialize-PSOpenAPIToolsCatalogsFeedIngestion  -Id 01234 `
+$CatalogsFeedIngestion = Initialize-PSOpenAPIToolsCatalogsFeedIngestion  -CreatedAt 2022-03-14T15:16:34Z `
  -FeedId 56789 `
- -CreatedAt 2022-03-14T15:16:34Z `
+ -Id 01234 `
  -Status null
 ```
 

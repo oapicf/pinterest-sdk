@@ -22,20 +22,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param reportType 
  * @param feedId ID of the feed entity.
+ * @param reportType 
  * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
  */
 
 
 data class CatalogsReportFeedIngestionFilter (
 
-    @Json(name = "report_type")
-    val reportType: CatalogsReportFeedIngestionFilter.ReportType,
-
     /* ID of the feed entity. */
     @Json(name = "feed_id")
     val feedId: kotlin.String,
+
+    @Json(name = "report_type")
+    val reportType: CatalogsReportFeedIngestionFilter.ReportType,
 
     /* Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. */
     @Json(name = "processing_result_id")

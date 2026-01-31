@@ -7,11 +7,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional]
-**name** | **String** |  |  [optional]
+**country** | [**Country**](Country.md) |  |  [optional]
 **description** | **String** |  |  [optional]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional]
-**country** | [**Country**](Country.md) |  |  [optional]
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 ## Enum: CatalogTypeEnum

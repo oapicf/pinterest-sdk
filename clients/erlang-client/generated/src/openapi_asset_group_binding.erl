@@ -5,37 +5,40 @@
 -export_type([openapi_asset_group_binding/0]).
 
 -type openapi_asset_group_binding() ::
-    #{ 'id' => binary(),
-       'asset_group_name' => binary(),
+    #{ 'ad_accounts_ids' => list(),
        'asset_group_description' => binary(),
+       'asset_group_name' => binary(),
        'asset_group_types' => list(),
-       'ad_accounts_ids' => list(),
-       'profiles_ids' => list(),
+       'catalogs_ids' => list(),
+       'created_by' => openapi_business_access_user_summary:openapi_business_access_user_summary(),
        'created_time' => integer(),
-       'updated_time' => integer(),
+       'id' => binary(),
        'owner' => openapi_business_access_user_summary:openapi_business_access_user_summary(),
-       'created_by' => openapi_business_access_user_summary:openapi_business_access_user_summary()
+       'profiles_ids' => list(),
+       'updated_time' => integer()
      }.
 
-encode(#{ 'id' := Id,
-          'asset_group_name' := AssetGroupName,
+encode(#{ 'ad_accounts_ids' := AdAccountsIds,
           'asset_group_description' := AssetGroupDescription,
+          'asset_group_name' := AssetGroupName,
           'asset_group_types' := AssetGroupTypes,
-          'ad_accounts_ids' := AdAccountsIds,
-          'profiles_ids' := ProfilesIds,
+          'catalogs_ids' := CatalogsIds,
+          'created_by' := CreatedBy,
           'created_time' := CreatedTime,
-          'updated_time' := UpdatedTime,
+          'id' := Id,
           'owner' := Owner,
-          'created_by' := CreatedBy
+          'profiles_ids' := ProfilesIds,
+          'updated_time' := UpdatedTime
         }) ->
-    #{ 'id' => Id,
-       'asset_group_name' => AssetGroupName,
+    #{ 'ad_accounts_ids' => AdAccountsIds,
        'asset_group_description' => AssetGroupDescription,
+       'asset_group_name' => AssetGroupName,
        'asset_group_types' => AssetGroupTypes,
-       'ad_accounts_ids' => AdAccountsIds,
-       'profiles_ids' => ProfilesIds,
+       'catalogs_ids' => CatalogsIds,
+       'created_by' => CreatedBy,
        'created_time' => CreatedTime,
-       'updated_time' => UpdatedTime,
+       'id' => Id,
        'owner' => Owner,
-       'created_by' => CreatedBy
+       'profiles_ids' => ProfilesIds,
+       'updated_time' => UpdatedTime
      }.

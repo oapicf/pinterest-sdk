@@ -10,9 +10,15 @@ import javax.validation.Valid;
 /**
  * Request object to list products for a given creative assets catalog_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
+  @JsonProperty("catalog_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -47,34 +53,11 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("catalog_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-
-  private String catalogId;
-
   @JsonProperty("filters")
   @NotNull
 @Valid
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
-
-  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
 
   public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -91,6 +74,23 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
 
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+   /**
+   * Get catalogType
+   * @return catalogType
+  **/
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
@@ -120,14 +120,14 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = (CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(filters, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -136,8 +136,8 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

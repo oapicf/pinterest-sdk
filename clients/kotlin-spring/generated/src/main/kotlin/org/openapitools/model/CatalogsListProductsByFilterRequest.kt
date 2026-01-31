@@ -35,12 +35,12 @@ data class CatalogsListProductsByFilterRequest(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsListProductsByFilterRequest.CatalogType,
-
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the creative assets product group.")
     @get:JsonProperty("catalog_id", required = true) override val catalogId: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsListProductsByFilterRequest.CatalogType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")

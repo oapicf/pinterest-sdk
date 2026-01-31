@@ -35,14 +35,6 @@ public class AdGroupAudienceSizingRequestTest {
     }
 
     /**
-     * Test the property 'placementGroup'
-     */
-    @Test
-    public void placementGroupTest() {
-        // TODO: test placementGroup
-    }
-
-    /**
      * Test the property 'creativeTypes'
      */
     @Test
@@ -51,11 +43,19 @@ public class AdGroupAudienceSizingRequestTest {
     }
 
     /**
-     * Test the property 'targetingSpec'
+     * Test the property 'keywords'
      */
     @Test
-    public void targetingSpecTest() {
-        // TODO: test targetingSpec
+    public void keywordsTest() {
+        // TODO: test keywords
+    }
+
+    /**
+     * Test the property 'placementGroup'
+     */
+    @Test
+    public void placementGroupTest() {
+        // TODO: test placementGroup
     }
 
     /**
@@ -67,11 +67,11 @@ public class AdGroupAudienceSizingRequestTest {
     }
 
     /**
-     * Test the property 'keywords'
+     * Test the property 'targetingSpec'
      */
     @Test
-    public void keywordsTest() {
-        // TODO: test keywords
+    public void targetingSpecTest() {
+        // TODO: test targetingSpec
     }
 
 }

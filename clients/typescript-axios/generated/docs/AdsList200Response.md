@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;AdResponse&gt;**](AdResponse.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;AdResponse&gt;**](AdResponse.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AdsList200Response } from './api';
 
 const instance: AdsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

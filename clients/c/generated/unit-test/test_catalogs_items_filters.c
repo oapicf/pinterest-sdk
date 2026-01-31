@@ -23,16 +23,16 @@ catalogs_items_filters_t* instantiate_catalogs_items_filters(int include_optiona
   if (include_optional) {
     catalogs_items_filters = catalogs_items_filters_create(
       pinterest_rest_api_catalogs_items_filters__RETAIL,
-      list_createList(),
       "a",
+      list_createList(),
       list_createList(),
       list_createList()
     );
   } else {
     catalogs_items_filters = catalogs_items_filters_create(
       pinterest_rest_api_catalogs_items_filters__RETAIL,
-      list_createList(),
       "a",
+      list_createList(),
       list_createList(),
       list_createList()
     );

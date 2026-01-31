@@ -6,7 +6,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |------------- | ------------- | -------------|
 | [**conversionTagsCreate**](ConversionTagsApi.md#conversiontagscreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 | [**conversionTagsGet**](ConversionTagsApi.md#conversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-| [**conversionTagsList**](ConversionTagsApi.md#conversiontagslist) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+| [**conversionTagsList**](ConversionTagsApi.md#conversiontagslist) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 | [**ocpmEligibleConversionTagsGet**](ConversionTagsApi.md#ocpmeligibleconversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 | [**pageVisitConversionTagsGet**](ConversionTagsApi.md#pagevisitconversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
 
@@ -14,11 +14,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## conversionTagsCreate
 
-> ConversionTagResponse conversionTagsCreate(adAccountId, conversionTagCreate)
+> ConversionTag conversionTagsCreate(adAccountId, conversionTagCreate)
 
 Create conversion tag
 
-Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account\&#39;s website after they view the ad account\&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 
@@ -40,7 +40,7 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // ConversionTagCreate | Conversion Tag to create
+    // ConversionTagCreate
     conversionTagCreate: ...,
   } satisfies ConversionTagsCreateRequest;
 
@@ -62,11 +62,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **conversionTagCreate** | [ConversionTagCreate](ConversionTagCreate.md) | Conversion Tag to create | |
+| **conversionTagCreate** | [ConversionTagCreate](ConversionTagCreate.md) |  | |
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -81,15 +81,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## conversionTagsGet
 
-> ConversionTagResponse conversionTagsGet(adAccountId, conversionTagId)
+> ConversionTag conversionTagsGet(adAccountId, conversionTagId)
 
 Get conversion tag
 
@@ -108,6 +114,8 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
+    accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
     accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new ConversionTagsApi(config);
@@ -141,11 +149,11 @@ example().catch(console.error);
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -164,9 +172,9 @@ example().catch(console.error);
 
 ## conversionTagsList
 
-> ConversionTagListResponse conversionTagsList(adAccountId, filterDeleted)
+> ConversionTagsList200Response conversionTagsList(adAccountId, filterDeleted)
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -184,13 +192,15 @@ async function example() {
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
     accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
+    accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new ConversionTagsApi(config);
 
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // boolean | Filter out deleted tags. (optional)
+    // boolean | Filter by deleted status (optional)
     filterDeleted: true,
   } satisfies ConversionTagsListRequest;
 
@@ -212,15 +222,15 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **filterDeleted** | `boolean` | Filter out deleted tags. | [Optional] [Defaults to `false`] |
+| **filterDeleted** | `boolean` | Filter by deleted status | [Optional] [Defaults to `false`] |
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -231,8 +241,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -258,6 +273,8 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
+    accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
     accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new ConversionTagsApi(config);
@@ -292,7 +309,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -330,6 +347,8 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
+    accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
     accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new ConversionTagsApi(config);
@@ -373,7 +392,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 

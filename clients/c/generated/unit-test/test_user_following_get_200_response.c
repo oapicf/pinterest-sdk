@@ -22,13 +22,13 @@ user_following_get_200_response_t* instantiate_user_following_get_200_response(i
   user_following_get_200_response_t* user_following_get_200_response = NULL;
   if (include_optional) {
     user_following_get_200_response = user_following_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     user_following_get_200_response = user_following_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

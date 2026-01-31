@@ -19,14 +19,17 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.TargetingSpec
-import org.openapitools.client.models.TargetingSpecSHOPPINGRETARGETING
+import org.openapitools.client.models.TargetingSpecAgeBucket
+import org.openapitools.client.models.TargetingSpecAppType
+import org.openapitools.client.models.TargetingSpecGender
+import org.openapitools.client.models.TargetingSpecShoppingRetargeting
 
 class TargetingSpecTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of TargetingSpec
         //val modelInstance = TargetingSpec()
 
-        // to test the property `AGE_BUCKET` - Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+        // to test the property `AGE_BUCKET` - **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
         should("test AGE_BUCKET") {
             // uncomment below to test the property
             //modelInstance.AGE_BUCKET shouldBe ("TODO")
@@ -68,16 +71,28 @@ class TargetingSpecTest : ShouldSpec() {
             //modelInstance.INTEREST shouldBe ("TODO")
         }
 
-        // to test the property `LOCALE` - 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+        // to test the property `LOCALE` - 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
         should("test LOCALE") {
             // uncomment below to test the property
             //modelInstance.LOCALE shouldBe ("TODO")
         }
 
-        // to test the property `LOCATION` - 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+        // to test the property `LOCATION` - 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
         should("test LOCATION") {
             // uncomment below to test the property
             //modelInstance.LOCATION shouldBe ("TODO")
+        }
+
+        // to test the property `MAXIMUM_AGE` - Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+        should("test MAXIMUM_AGE") {
+            // uncomment below to test the property
+            //modelInstance.MAXIMUM_AGE shouldBe ("TODO")
+        }
+
+        // to test the property `MINIMUM_AGE` - Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+        should("test MINIMUM_AGE") {
+            // uncomment below to test the property
+            //modelInstance.MINIMUM_AGE shouldBe ("TODO")
         }
 
         // to test the property `SHOPPING_RETARGETING` - Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting

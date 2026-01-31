@@ -25,33 +25,33 @@ import com.squareup.moshi.JsonClass
 /**
  * Ad entities to get in bulk request.
  *
- * @param entityTypes All entity types specified will be downloaded. Fewer types result in faster downloads.
- * @param entityIds All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
- * @param updatedSince Unix UTC timestamp to retrieve all entities that have changed since this time.
  * @param campaignFilter 
+ * @param entityIds All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
+ * @param entityTypes All entity types specified will be downloaded. Fewer types result in faster downloads.
  * @param outputFormat 
+ * @param updatedSince Unix UTC timestamp to retrieve all entities that have changed since this time.
  */
 
 
 data class BulkDownloadRequest (
 
-    /* All entity types specified will be downloaded. Fewer types result in faster downloads. */
-    @Json(name = "entity_types")
-    val entityTypes: kotlin.collections.List<BulkEntityType>? = null,
+    @Json(name = "campaign_filter")
+    val campaignFilter: BulkDownloadRequestCampaignFilter? = null,
 
     /* All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded. */
     @Json(name = "entity_ids")
     val entityIds: kotlin.collections.List<kotlin.String>? = null,
 
-    /* Unix UTC timestamp to retrieve all entities that have changed since this time. */
-    @Json(name = "updated_since")
-    val updatedSince: kotlin.String? = null,
-
-    @Json(name = "campaign_filter")
-    val campaignFilter: BulkDownloadRequestCampaignFilter? = null,
+    /* All entity types specified will be downloaded. Fewer types result in faster downloads. */
+    @Json(name = "entity_types")
+    val entityTypes: kotlin.collections.List<BulkEntityType>? = null,
 
     @Json(name = "output_format")
-    val outputFormat: BulkOutputFormat? = "JSON"
+    val outputFormat: BulkOutputFormat? = "JSON",
+
+    /* Unix UTC timestamp to retrieve all entities that have changed since this time. */
+    @Json(name = "updated_since")
+    val updatedSince: kotlin.String? = null
 
 ) {
 

@@ -6,8 +6,8 @@
 
 
 static invite_exception_response_t *invite_exception_response_create_internal(
-    char *invite_or_request_id,
     int code,
+    char *invite_or_request_id,
     char *message,
     list_t *users_or_partner_ids
     ) {
@@ -15,8 +15,8 @@ static invite_exception_response_t *invite_exception_response_create_internal(
     if (!invite_exception_response_local_var) {
         return NULL;
     }
-    invite_exception_response_local_var->invite_or_request_id = invite_or_request_id;
     invite_exception_response_local_var->code = code;
+    invite_exception_response_local_var->invite_or_request_id = invite_or_request_id;
     invite_exception_response_local_var->message = message;
     invite_exception_response_local_var->users_or_partner_ids = users_or_partner_ids;
 
@@ -25,14 +25,14 @@ static invite_exception_response_t *invite_exception_response_create_internal(
 }
 
 __attribute__((deprecated)) invite_exception_response_t *invite_exception_response_create(
-    char *invite_or_request_id,
     int code,
+    char *invite_or_request_id,
     char *message,
     list_t *users_or_partner_ids
     ) {
     return invite_exception_response_create_internal (
-        invite_or_request_id,
         code,
+        invite_or_request_id,
         message,
         users_or_partner_ids
         );
@@ -68,18 +68,18 @@ void invite_exception_response_free(invite_exception_response_t *invite_exceptio
 cJSON *invite_exception_response_convertToJSON(invite_exception_response_t *invite_exception_response) {
     cJSON *item = cJSON_CreateObject();
 
-    // invite_exception_response->invite_or_request_id
-    if(invite_exception_response->invite_or_request_id) {
-    if(cJSON_AddStringToObject(item, "invite_or_request_id", invite_exception_response->invite_or_request_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // invite_exception_response->code
     if(invite_exception_response->code) {
     if(cJSON_AddNumberToObject(item, "code", invite_exception_response->code) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // invite_exception_response->invite_or_request_id
+    if(invite_exception_response->invite_or_request_id) {
+    if(cJSON_AddStringToObject(item, "invite_or_request_id", invite_exception_response->invite_or_request_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -123,18 +123,6 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
     // define the local list for invite_exception_response->users_or_partner_ids
     list_t *users_or_partner_idsList = NULL;
 
-    // invite_exception_response->invite_or_request_id
-    cJSON *invite_or_request_id = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "invite_or_request_id");
-    if (cJSON_IsNull(invite_or_request_id)) {
-        invite_or_request_id = NULL;
-    }
-    if (invite_or_request_id) { 
-    if(!cJSON_IsString(invite_or_request_id) && !cJSON_IsNull(invite_or_request_id))
-    {
-    goto end; //String
-    }
-    }
-
     // invite_exception_response->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "code");
     if (cJSON_IsNull(code)) {
@@ -144,6 +132,18 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
     if(!cJSON_IsNumber(code))
     {
     goto end; //Numeric
+    }
+    }
+
+    // invite_exception_response->invite_or_request_id
+    cJSON *invite_or_request_id = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "invite_or_request_id");
+    if (cJSON_IsNull(invite_or_request_id)) {
+        invite_or_request_id = NULL;
+    }
+    if (invite_or_request_id) { 
+    if(!cJSON_IsString(invite_or_request_id) && !cJSON_IsNull(invite_or_request_id))
+    {
+    goto end; //String
     }
     }
 
@@ -183,8 +183,8 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
 
 
     invite_exception_response_local_var = invite_exception_response_create_internal (
-        invite_or_request_id && !cJSON_IsNull(invite_or_request_id) ? strdup(invite_or_request_id->valuestring) : NULL,
         code ? code->valuedouble : 0,
+        invite_or_request_id && !cJSON_IsNull(invite_or_request_id) ? strdup(invite_or_request_id->valuestring) : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
         users_or_partner_ids ? users_or_partner_idsList : NULL
         );

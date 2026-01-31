@@ -29,10 +29,13 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsDeleteBatchRequest", description = "Request object to delete catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
+
+  @Valid
+  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -283,9 +286,6 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
 
   private BatchOperation operation;
 
-  @Valid
-  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsDeleteBatchRequest() {
     super();
   }
@@ -293,11 +293,11 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
   /**
    * Constructor with only required parameters
    */
-  public CatalogsItemsDeleteBatchRequest(Country country, LanguageEnum language, BatchOperation operation, List<@Valid ItemDeleteBatchRecord> items) {
+  public CatalogsItemsDeleteBatchRequest(Country country, List<@Valid ItemDeleteBatchRecord> items, LanguageEnum language, BatchOperation operation) {
     this.country = country;
+    this.items = items;
     this.language = language;
     this.operation = operation;
-    this.items = items;
   }
 
   public CatalogsItemsDeleteBatchRequest country(Country country) {
@@ -318,6 +318,34 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsDeleteBatchRequest items(List<@Valid ItemDeleteBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsDeleteBatchRequest addItemsItem(ItemDeleteBatchRecord itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Array with catalogs items
+   * @return items
+   */
+  @NotNull @Valid 
+  @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid ItemDeleteBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemDeleteBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsDeleteBatchRequest language(LanguageEnum language) {
@@ -360,34 +388,6 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
     this.operation = operation;
   }
 
-  public CatalogsItemsDeleteBatchRequest items(List<@Valid ItemDeleteBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsDeleteBatchRequest addItemsItem(ItemDeleteBatchRecord itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Array with catalogs items
-   * @return items
-   */
-  @NotNull @Valid 
-  @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("items")
-  public List<@Valid ItemDeleteBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemDeleteBatchRecord> items) {
-    this.items = items;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -398,14 +398,14 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
     }
     CatalogsItemsDeleteBatchRequest catalogsItemsDeleteBatchRequest = (CatalogsItemsDeleteBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsDeleteBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsDeleteBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsDeleteBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsDeleteBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsDeleteBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsDeleteBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -413,9 +413,9 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsDeleteBatchRequest {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

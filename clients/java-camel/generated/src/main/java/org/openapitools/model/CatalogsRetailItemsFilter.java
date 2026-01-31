@@ -25,8 +25,10 @@ import javax.annotation.Generated;
  * CatalogsRetailItemsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -66,8 +68,6 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
   @Valid
   private List<String> itemIds = new ArrayList<>();
 
-  private String catalogId;
-
   public CatalogsRetailItemsFilter() {
     super();
   }
@@ -78,6 +78,26 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
   public CatalogsRetailItemsFilter(CatalogTypeEnum catalogType, List<String> itemIds) {
     this.catalogType = catalogType;
     this.itemIds = itemIds;
+  }
+
+  public CatalogsRetailItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsRetailItemsFilter catalogType(CatalogTypeEnum catalogType) {
@@ -128,26 +148,6 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
     this.itemIds = itemIds;
   }
 
-  public CatalogsRetailItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-   * @return catalogId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -157,23 +157,23 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
       return false;
     }
     CatalogsRetailItemsFilter catalogsRetailItemsFilter = (CatalogsRetailItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsRetailItemsFilter.catalogType) &&
-        Objects.equals(this.itemIds, catalogsRetailItemsFilter.itemIds) &&
-        Objects.equals(this.catalogId, catalogsRetailItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsRetailItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailItemsFilter.catalogType) &&
+        Objects.equals(this.itemIds, catalogsRetailItemsFilter.itemIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId);
+    return Objects.hash(catalogId, catalogType, itemIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemsFilter {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

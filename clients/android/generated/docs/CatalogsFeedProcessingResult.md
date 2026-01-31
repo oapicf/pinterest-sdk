@@ -10,9 +10,10 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **updatedAt** | [**Date**](Date.md) |  | 
 **ingestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
-**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **productCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
+**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **validationDetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
+**videoCounts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  |  [optional]
 
 
 

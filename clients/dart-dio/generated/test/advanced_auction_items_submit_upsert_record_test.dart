@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AdvancedAuctionItemsSubmitUpsertRecord, () {
-    // The catalog retail item id in the merchant namespace
-    // String itemId
-    test('to test the property `itemId`', () async {
+    // Country country
+    test('to test the property `country`', () async {
       // TODO
     });
 
-    // Country country
-    test('to test the property `country`', () async {
+    // The catalog retail item id in the merchant namespace
+    // String itemId
+    test('to test the property `itemId`', () async {
       // TODO
     });
 
@@ -25,6 +25,12 @@ void main() {
 
     // AdvancedAuctionBidOptions bidOptions
     test('to test the property `bidOptions`', () async {
+      // TODO
+    });
+
+    // Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+    // BuiltList<AdvancedAuctionOperationError> errors
+    test('to test the property `errors`', () async {
       // TODO
     });
 

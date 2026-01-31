@@ -16,9 +16,9 @@ import java.util.Objects;
 
 public class DeletePartnerAssetAccessBodyAccessesInner   {
   
-  private String partnerId;
-
   private String assetId;
+
+  private String partnerId;
 
 
 public enum PartnerTypeEnum {
@@ -54,26 +54,6 @@ public enum PartnerTypeEnum {
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
 
   /**
-   * Unique identifier of a business partner to update asset access to.
-   **/
-  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
-  @JsonProperty("partner_id")
-  @NotNull
- @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
-
-  /**
    * Unique identifier of the business asset.
    **/
   public DeletePartnerAssetAccessBodyAccessesInner assetId(String assetId) {
@@ -90,6 +70,26 @@ public enum PartnerTypeEnum {
   }
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+
+  /**
+   * Unique identifier of a business partner to update asset access to.
+   **/
+  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
+  @JsonProperty("partner_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
 
@@ -122,14 +122,14 @@ public enum PartnerTypeEnum {
       return false;
     }
     DeletePartnerAssetAccessBodyAccessesInner deletePartnerAssetAccessBodyAccessesInner = (DeletePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(this.partnerType, deletePartnerAssetAccessBodyAccessesInner.partnerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, partnerType);
+    return Objects.hash(assetId, partnerId, partnerType);
   }
 
   @Override
@@ -137,8 +137,8 @@ public enum PartnerTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeletePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    partnerType: ").append(toIndentedString(partnerType)).append("\n");
     sb.append("}");
     return sb.toString();

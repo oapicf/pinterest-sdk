@@ -8,15 +8,16 @@ case class CatalogsFeedProcessingResult (
     _id: String,
     _updatedAt: OffsetDateTime,
     _ingestionDetails: CatalogsFeedIngestionDetails,
-    _status: CatalogsFeedProcessingStatus,
     _productCounts: CatalogsFeedProductCounts,
-    _validationDetails: CatalogsFeedValidationDetails
+    _status: CatalogsFeedProcessingStatus,
+    _validationDetails: CatalogsFeedValidationDetails,
+    _videoCounts: Option[CatalogsFeedVideoCounts]
 )
 object CatalogsFeedProcessingResult {
-    def toStringBody(var_createdAt: Object, var_id: Object, var_updatedAt: Object, var_ingestionDetails: Object, var_status: Object, var_productCounts: Object, var_validationDetails: Object) =
+    def toStringBody(var_createdAt: Object, var_id: Object, var_updatedAt: Object, var_ingestionDetails: Object, var_productCounts: Object, var_status: Object, var_validationDetails: Object, var_videoCounts: Object) =
         s"""
         | {
-        | "createdAt":$var_createdAt,"id":$var_id,"updatedAt":$var_updatedAt,"ingestionDetails":$var_ingestionDetails,"status":$var_status,"productCounts":$var_productCounts,"validationDetails":$var_validationDetails
+        | "createdAt":$var_createdAt,"id":$var_id,"updatedAt":$var_updatedAt,"ingestionDetails":$var_ingestionDetails,"productCounts":$var_productCounts,"status":$var_status,"validationDetails":$var_validationDetails,"videoCounts":$var_videoCounts
         | }
         """.stripMargin
 }

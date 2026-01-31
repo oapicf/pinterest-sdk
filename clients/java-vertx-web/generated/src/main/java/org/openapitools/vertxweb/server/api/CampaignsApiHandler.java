@@ -1,5 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.AdPinAnalytics;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.vertxweb.server.model.CampaignCreateRequest;
 import org.openapitools.vertxweb.server.model.CampaignCreateResponse;
@@ -13,6 +14,7 @@ import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.MetricsResponse;
+import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -44,12 +46,55 @@ public class CampaignsApiHandler {
     }
 
     public void mount(RouterBuilder builder) {
+        builder.operation("adPinsAnalytics").handler(this::adPinsAnalytics);
         builder.operation("campaignTargetingAnalyticsGet").handler(this::campaignTargetingAnalyticsGet);
         builder.operation("campaignsAnalytics").handler(this::campaignsAnalytics);
         builder.operation("campaignsCreate").handler(this::campaignsCreate);
         builder.operation("campaignsGet").handler(this::campaignsGet);
         builder.operation("campaignsList").handler(this::campaignsList);
         builder.operation("campaignsUpdate").handler(this::campaignsUpdate);
+    }
+
+    private void adPinsAnalytics(RoutingContext routingContext) {
+        logger.info("adPinsAnalytics()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        String campaignId = requestParameters.queryParameter("campaign_id") != null ? requestParameters.queryParameter("campaign_id").getString() : null;
+        List<String> pinIds = requestParameters.queryParameter("pin_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("pin_ids").get(), new TypeReference<List<String>>(){}) : null;
+        LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
+        LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
+        List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
+        Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
+        Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
+        Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
+        Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
+        String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
+
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter campaignId is {}", campaignId);
+        logger.debug("Parameter pinIds is {}", pinIds);
+        logger.debug("Parameter startDate is {}", startDate);
+        logger.debug("Parameter endDate is {}", endDate);
+        logger.debug("Parameter columns is {}", columns);
+        logger.debug("Parameter granularity is {}", granularity);
+        logger.debug("Parameter clickWindowDays is {}", clickWindowDays);
+        logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
+        logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
+        logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
+
+        api.adPinsAnalytics(adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
     }
 
     private void campaignTargetingAnalyticsGet(RoutingContext routingContext) {
@@ -69,7 +114,8 @@ public class CampaignsApiHandler {
         Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
         Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
-        ConversionReportAttributionType attributionTypes = requestParameters.queryParameter("attribution_types") != null ? requestParameters.queryParameter("attribution_types").getConversionReportAttributionType() : null;
+        List<ConversionReportAttributionType> attributionTypes = requestParameters.queryParameter("attribution_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("attribution_types").get(), new TypeReference<List<ConversionReportAttributionType>>(){}) : null;
+        ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter campaignIds is {}", campaignIds);
@@ -83,8 +129,9 @@ public class CampaignsApiHandler {
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
         logger.debug("Parameter attributionTypes is {}", attributionTypes);
+        logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+        api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -112,6 +159,8 @@ public class CampaignsApiHandler {
         Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
         Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
+        Boolean aggregateReportRows = requestParameters.queryParameter("aggregate_report_rows") != null ? requestParameters.queryParameter("aggregate_report_rows").getBoolean() : false;
+        ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter startDate is {}", startDate);
@@ -123,8 +172,10 @@ public class CampaignsApiHandler {
         logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
+        logger.debug("Parameter aggregateReportRows is {}", aggregateReportRows);
+        logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

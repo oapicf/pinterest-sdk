@@ -19,6 +19,14 @@ Protected Class CustomerList
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Customer list errors
+		#tag EndNote
+		exceptions As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Customer list ID.
 		#tag EndNote
 		id As Xoson.O.OptionalString
@@ -78,14 +86,6 @@ Protected Class CustomerList
 			Last update time. Unix timestamp in seconds.
 		#tag EndNote
 		updated_time As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Customer list errors
-		#tag EndNote
-		exceptions As Object
 	#tag EndProperty
 
 
@@ -168,6 +168,14 @@ Protected Class CustomerList
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="exceptions"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
@@ -221,14 +229,6 @@ Protected Class CustomerList
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="exceptions"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

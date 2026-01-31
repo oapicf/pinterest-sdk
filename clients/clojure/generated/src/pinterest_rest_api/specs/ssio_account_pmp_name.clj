@@ -7,8 +7,8 @@
 
 (def ssio-account-pmp-name-data
   {
-   (ds/opt :name) string?
    (ds/opt :id) string?
+   (ds/opt :name) string?
    })
 
 (def ssio-account-pmp-name-spec

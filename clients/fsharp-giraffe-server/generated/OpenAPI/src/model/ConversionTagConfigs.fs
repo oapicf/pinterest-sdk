@@ -11,12 +11,14 @@ module ConversionTagConfigs =
 
 
   type ConversionTagConfigs = {
-    AemEnabled : bool option;
-    MdFrequency : decimal option;
-    AemFnlnEnabled : bool option;
-    AemPhEnabled : bool option;
-    AemGeEnabled : bool option;
     AemDbEnabled : bool option;
+    AemEnabled : bool option;
+    AemExternalIdEnabled : bool option;
+    AemFnlnEnabled : bool option;
+    AemGeEnabled : bool option;
     AemLocEnabled : bool option;
+    AemPhEnabled : bool option;
+    MdFrequency : decimal option;
+    NoCodeCapiDomains : string[];
   }
   //#endregion

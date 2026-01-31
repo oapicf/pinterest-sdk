@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsUpdatableCreativeAssetsAttributes`
 --
-SELECT `title`, `description`, `link`, `ios_deep_link`, `android_deep_link`, `google_product_category`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `visibility` FROM `CatalogsUpdatableCreativeAssetsAttributes` WHERE 1;
+SELECT `android_deep_link`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `description`, `google_product_category`, `ios_deep_link`, `link`, `title`, `visibility` FROM `CatalogsUpdatableCreativeAssetsAttributes` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsUpdatableCreativeAssetsAttributes`
 --
-INSERT INTO `CatalogsUpdatableCreativeAssetsAttributes`(`title`, `description`, `link`, `ios_deep_link`, `android_deep_link`, `google_product_category`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `visibility`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsUpdatableCreativeAssetsAttributes`(`android_deep_link`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `description`, `google_product_category`, `ios_deep_link`, `link`, `title`, `visibility`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsUpdatableCreativeAssetsAttributes`
 --
-UPDATE `CatalogsUpdatableCreativeAssetsAttributes` SET `title` = ?, `description` = ?, `link` = ?, `ios_deep_link` = ?, `android_deep_link` = ?, `google_product_category` = ?, `custom_label_0` = ?, `custom_label_1` = ?, `custom_label_2` = ?, `custom_label_3` = ?, `custom_label_4` = ?, `visibility` = ? WHERE 1;
+UPDATE `CatalogsUpdatableCreativeAssetsAttributes` SET `android_deep_link` = ?, `custom_label_0` = ?, `custom_label_1` = ?, `custom_label_2` = ?, `custom_label_3` = ?, `custom_label_4` = ?, `description` = ?, `google_product_category` = ?, `ios_deep_link` = ?, `link` = ?, `title` = ?, `visibility` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsUpdatableCreativeAssetsAttributes`

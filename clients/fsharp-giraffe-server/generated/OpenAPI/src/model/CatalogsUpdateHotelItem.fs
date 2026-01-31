@@ -13,8 +13,8 @@ module CatalogsUpdateHotelItem =
   //#endregion
 
   type CatalogsUpdateHotelItem = {
+    Attributes : CatalogsUpdatableHotelAttributes;
     HotelId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsUpdatableHotelAttributes;
   }
   //#endregion

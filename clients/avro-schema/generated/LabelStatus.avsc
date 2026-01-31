@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).",
+  "name": "LabelStatus",
+  "symbols": [
+    "ACTIVE",
+    "ARCHIVED"
+  ]
+}

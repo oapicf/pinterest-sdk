@@ -17,10 +17,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Audience demographics
  * @param ages Ages distribution.
- * @param genders Gender distribution.
- * @param devices Device usage distribution.
- * @param metros Geographic metro area distribution.
  * @param countries Country area distribution.
+ * @param devices Device usage distribution.
+ * @param genders Gender distribution.
+ * @param metros Geographic metro area distribution.
  */
 data class AudienceDemographics(
 
@@ -29,20 +29,20 @@ data class AudienceDemographics(
     @get:JsonProperty("ages") val ages: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Gender distribution.")
-    @get:JsonProperty("genders") val genders: kotlin.collections.List<AudienceDemographicValue>? = null,
+    @Schema(example = "null", description = "Country area distribution.")
+    @get:JsonProperty("countries") val countries: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
     @Schema(example = "null", description = "Device usage distribution.")
     @get:JsonProperty("devices") val devices: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Geographic metro area distribution.")
-    @get:JsonProperty("metros") val metros: kotlin.collections.List<AudienceDemographicValue>? = null,
+    @Schema(example = "null", description = "Gender distribution.")
+    @get:JsonProperty("genders") val genders: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Country area distribution.")
-    @get:JsonProperty("countries") val countries: kotlin.collections.List<AudienceDemographicValue>? = null
+    @Schema(example = "null", description = "Geographic metro area distribution.")
+    @get:JsonProperty("metros") val metros: kotlin.collections.List<AudienceDemographicValue>? = null
 ) {
 
 }

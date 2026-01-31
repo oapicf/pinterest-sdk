@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **String** |  | 
 **IsAffiliateLink** | **Boolean** | This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. | [optional] [default to $false]
+**SourceType** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaSourcePinURL = Initialize-PSOpenAPIToolsPinMediaSourcePinURL  -SourceType null `
- -IsAffiliateLink null
+$PinMediaSourcePinURL = Initialize-PSOpenAPIToolsPinMediaSourcePinURL  -IsAffiliateLink null `
+ -SourceType null
 ```
 
 - Convert the resource to JSON

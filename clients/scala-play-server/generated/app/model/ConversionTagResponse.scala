@@ -4,32 +4,33 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for ConversionTagResponse.
-  * @param adAccountId Ad account ID.
   * @param codeSnippet Tag code snippet.
+  * @param enhancedMatchStatus The enhanced match status of the tag
   * @param id Tag ID.
   * @param lastFiredTimeMs Time for the last event fired.
   * @param name Conversion tag name.
   * @param version Version number.
+  * @param adAccountId Ad account ID.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class ConversionTagResponse(
-  adAccountId: Option[String],
   codeSnippet: Option[String],
+  configs: Option[ConversionTagConfigs],
   enhancedMatchStatus: Option[EnhancedMatchStatusType],
   id: Option[String],
   lastFiredTimeMs: Option[BigDecimal],
-  name: Option[String],
-  status: Option[EntityStatus],
+  name: String,
   version: Option[String],
-  configs: Option[ConversionTagConfigs]
+  adAccountId: String,
+  status: Option[EntityStatus]
   additionalProperties: 
 )
 
 object ConversionTagResponse {
   implicit lazy val conversionTagResponseJsonFormat: Format[ConversionTagResponse] = {
     val realJsonFormat = Json.format[ConversionTagResponse]
-    val declaredPropNames = Set("adAccountId", "codeSnippet", "enhancedMatchStatus", "id", "lastFiredTimeMs", "name", "status", "version", "configs")
+    val declaredPropNames = Set("codeSnippet", "configs", "enhancedMatchStatus", "id", "lastFiredTimeMs", "name", "version", "adAccountId", "status")
     
     Format(
       Reads {

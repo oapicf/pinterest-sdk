@@ -22,22 +22,26 @@ import { NullableCurrency } from './nullableCurrency';
  * Request object for creating a retail feed.
  */
 export interface CatalogsRetailFeedsCreateRequest { 
-    default_currency?: NullableCurrency | null;
     /**
-     * A human-friendly name associated to a given feed.
+     * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
      */
-    name: string;
-    format: CatalogsFormat;
-    default_locale: CatalogsFeedsCreateRequestDefaultLocale;
+    catalog_id?: string;
+    catalog_type: CatalogsType;
     credentials?: CatalogsFeedCredentials | null;
+    default_availability?: ProductAvailabilityType | null;
+    default_country: Country;
+    default_currency?: NullableCurrency | null;
+    default_locale: CatalogsFeedsCreateRequestDefaultLocale;
+    format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
      */
     location: string;
+    /**
+     * A human-friendly name associated to a given feed.
+     */
+    name: string;
     preferred_processing_schedule?: CatalogsFeedProcessingSchedule | null;
-    catalog_type: CatalogsType;
-    default_country: Country;
-    default_availability?: ProductAvailabilityType | null;
     status?: CatalogsStatus;
 }
 export namespace CatalogsRetailFeedsCreateRequest {

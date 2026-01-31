@@ -10,9 +10,14 @@ module AdAccountCreateSubscriptionResponse =
 
 
   type AdAccountCreateSubscriptionResponse = {
-    Id : string;
-    CryptographicKey : string option;
-    CryptographicAlgorithm : string option;
+    AdAccountId : string;
+    ApiVersion : string;
     CreatedTime : int;
+    CryptographicAlgorithm : string option;
+    CryptographicKey : string option;
+    Id : string;
+    LeadFormId : string option;
+    UserAccountId : string;
+    WebhookUrl : string;
   }
   //#endregion

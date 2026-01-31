@@ -14,18 +14,20 @@
 #' @field carousel_ios_deep_links Comma-separated deep links for the carousel pin on iOS. list(character) [optional]
 #' @field click_tracking_url Tracking url for the ad clicks. character [optional]
 #' @field creative_type  \link{CreativeType} [optional]
+#' @field customizable_cta_type  \link{CustomizableCTAType} [optional]
 #' @field destination_url Destination URL. character [optional]
+#' @field disclosure_type  \link{DisclosureType} [optional]
+#' @field disclosure_url URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. character [optional]
+#' @field grid_click_type  \link{GridClickType} [optional]
 #' @field ios_deep_link Deep link URL for iOS devices. character [optional]
 #' @field is_pin_deleted Is original pin deleted? character [optional]
 #' @field is_removable Is pin repinnable? character [optional]
+#' @field lead_form_id Lead form ID for lead ad generation. character [optional]
 #' @field name Name of the ad - 255 chars max. character [optional]
+#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. \link{QuizPinData} [optional]
 #' @field status  \link{EntityStatus} [optional]
 #' @field tracking_urls  \link{TrackingUrls} [optional]
 #' @field view_tracking_url Tracking URL for ad impressions. character [optional]
-#' @field lead_form_id Lead form ID for lead ad generation. character [optional]
-#' @field grid_click_type  \link{GridClickType} [optional]
-#' @field customizable_cta_type Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) character [optional]
-#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. \link{QuizPinData} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -39,18 +41,20 @@ AdCommon <- R6::R6Class(
     `carousel_ios_deep_links` = NULL,
     `click_tracking_url` = NULL,
     `creative_type` = NULL,
+    `customizable_cta_type` = NULL,
     `destination_url` = NULL,
+    `disclosure_type` = NULL,
+    `disclosure_url` = NULL,
+    `grid_click_type` = NULL,
     `ios_deep_link` = NULL,
     `is_pin_deleted` = NULL,
     `is_removable` = NULL,
+    `lead_form_id` = NULL,
     `name` = NULL,
+    `quiz_pin_data` = NULL,
     `status` = NULL,
     `tracking_urls` = NULL,
     `view_tracking_url` = NULL,
-    `lead_form_id` = NULL,
-    `grid_click_type` = NULL,
-    `customizable_cta_type` = NULL,
-    `quiz_pin_data` = NULL,
 
     #' @description
     #' Initialize a new AdCommon class.
@@ -62,20 +66,22 @@ AdCommon <- R6::R6Class(
     #' @param carousel_ios_deep_links Comma-separated deep links for the carousel pin on iOS.
     #' @param click_tracking_url Tracking url for the ad clicks.
     #' @param creative_type creative_type
+    #' @param customizable_cta_type customizable_cta_type
     #' @param destination_url Destination URL.
+    #' @param disclosure_type disclosure_type
+    #' @param disclosure_url URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+    #' @param grid_click_type grid_click_type
     #' @param ios_deep_link Deep link URL for iOS devices.
     #' @param is_pin_deleted Is original pin deleted?
     #' @param is_removable Is pin repinnable?
+    #' @param lead_form_id Lead form ID for lead ad generation.
     #' @param name Name of the ad - 255 chars max.
+    #' @param quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
     #' @param status status
     #' @param tracking_urls tracking_urls
     #' @param view_tracking_url Tracking URL for ad impressions.
-    #' @param lead_form_id Lead form ID for lead ad generation.
-    #' @param grid_click_type grid_click_type
-    #' @param customizable_cta_type Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-    #' @param quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
     #' @param ... Other optional arguments.
-    initialize = function(`ad_group_id` = NULL, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `creative_type` = NULL, `destination_url` = NULL, `ios_deep_link` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `name` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, `lead_form_id` = NULL, `grid_click_type` = NULL, `customizable_cta_type` = NULL, `quiz_pin_data` = NULL, ...) {
+    initialize = function(`ad_group_id` = NULL, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `creative_type` = NULL, `customizable_cta_type` = NULL, `destination_url` = NULL, `disclosure_type` = NULL, `disclosure_url` = NULL, `grid_click_type` = NULL, `ios_deep_link` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `lead_form_id` = NULL, `name` = NULL, `quiz_pin_data` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, ...) {
       if (!is.null(`ad_group_id`)) {
         if (!(is.character(`ad_group_id`) && length(`ad_group_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_group_id`. Must be a string:", `ad_group_id`))
@@ -116,11 +122,38 @@ AdCommon <- R6::R6Class(
         stopifnot(R6::is.R6(`creative_type`))
         self$`creative_type` <- `creative_type`
       }
+      if (!is.null(`customizable_cta_type`)) {
+        if (!(`customizable_cta_type` %in% c())) {
+          stop(paste("Error! \"", `customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`customizable_cta_type`))
+        self$`customizable_cta_type` <- `customizable_cta_type`
+      }
       if (!is.null(`destination_url`)) {
         if (!(is.character(`destination_url`) && length(`destination_url`) == 1)) {
           stop(paste("Error! Invalid data for `destination_url`. Must be a string:", `destination_url`))
         }
         self$`destination_url` <- `destination_url`
+      }
+      if (!is.null(`disclosure_type`)) {
+        if (!(`disclosure_type` %in% c())) {
+          stop(paste("Error! \"", `disclosure_type`, "\" cannot be assigned to `disclosure_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`disclosure_type`))
+        self$`disclosure_type` <- `disclosure_type`
+      }
+      if (!is.null(`disclosure_url`)) {
+        if (!(is.character(`disclosure_url`) && length(`disclosure_url`) == 1)) {
+          stop(paste("Error! Invalid data for `disclosure_url`. Must be a string:", `disclosure_url`))
+        }
+        self$`disclosure_url` <- `disclosure_url`
+      }
+      if (!is.null(`grid_click_type`)) {
+        if (!(`grid_click_type` %in% c())) {
+          stop(paste("Error! \"", `grid_click_type`, "\" cannot be assigned to `grid_click_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`grid_click_type`))
+        self$`grid_click_type` <- `grid_click_type`
       }
       if (!is.null(`ios_deep_link`)) {
         if (!(is.character(`ios_deep_link`) && length(`ios_deep_link`) == 1)) {
@@ -140,11 +173,21 @@ AdCommon <- R6::R6Class(
         }
         self$`is_removable` <- `is_removable`
       }
+      if (!is.null(`lead_form_id`)) {
+        if (!(is.character(`lead_form_id`) && length(`lead_form_id`) == 1)) {
+          stop(paste("Error! Invalid data for `lead_form_id`. Must be a string:", `lead_form_id`))
+        }
+        self$`lead_form_id` <- `lead_form_id`
+      }
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
         self$`name` <- `name`
+      }
+      if (!is.null(`quiz_pin_data`)) {
+        stopifnot(R6::is.R6(`quiz_pin_data`))
+        self$`quiz_pin_data` <- `quiz_pin_data`
       }
       if (!is.null(`status`)) {
         if (!(`status` %in% c())) {
@@ -162,32 +205,6 @@ AdCommon <- R6::R6Class(
           stop(paste("Error! Invalid data for `view_tracking_url`. Must be a string:", `view_tracking_url`))
         }
         self$`view_tracking_url` <- `view_tracking_url`
-      }
-      if (!is.null(`lead_form_id`)) {
-        if (!(is.character(`lead_form_id`) && length(`lead_form_id`) == 1)) {
-          stop(paste("Error! Invalid data for `lead_form_id`. Must be a string:", `lead_form_id`))
-        }
-        self$`lead_form_id` <- `lead_form_id`
-      }
-      if (!is.null(`grid_click_type`)) {
-        if (!(`grid_click_type` %in% c())) {
-          stop(paste("Error! \"", `grid_click_type`, "\" cannot be assigned to `grid_click_type`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`grid_click_type`))
-        self$`grid_click_type` <- `grid_click_type`
-      }
-      if (!is.null(`customizable_cta_type`)) {
-        if (!(`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"))) {
-          stop(paste("Error! \"", `customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_SITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\".", sep = ""))
-        }
-        if (!(is.character(`customizable_cta_type`) && length(`customizable_cta_type`) == 1)) {
-          stop(paste("Error! Invalid data for `customizable_cta_type`. Must be a string:", `customizable_cta_type`))
-        }
-        self$`customizable_cta_type` <- `customizable_cta_type`
-      }
-      if (!is.null(`quiz_pin_data`)) {
-        stopifnot(R6::is.R6(`quiz_pin_data`))
-        self$`quiz_pin_data` <- `quiz_pin_data`
       }
     },
 
@@ -250,9 +267,25 @@ AdCommon <- R6::R6Class(
         AdCommonObject[["creative_type"]] <-
           self$`creative_type`$toSimpleType()
       }
+      if (!is.null(self$`customizable_cta_type`)) {
+        AdCommonObject[["customizable_cta_type"]] <-
+          self$`customizable_cta_type`$toSimpleType()
+      }
       if (!is.null(self$`destination_url`)) {
         AdCommonObject[["destination_url"]] <-
           self$`destination_url`
+      }
+      if (!is.null(self$`disclosure_type`)) {
+        AdCommonObject[["disclosure_type"]] <-
+          self$`disclosure_type`$toSimpleType()
+      }
+      if (!is.null(self$`disclosure_url`)) {
+        AdCommonObject[["disclosure_url"]] <-
+          self$`disclosure_url`
+      }
+      if (!is.null(self$`grid_click_type`)) {
+        AdCommonObject[["grid_click_type"]] <-
+          self$`grid_click_type`$toSimpleType()
       }
       if (!is.null(self$`ios_deep_link`)) {
         AdCommonObject[["ios_deep_link"]] <-
@@ -266,9 +299,17 @@ AdCommon <- R6::R6Class(
         AdCommonObject[["is_removable"]] <-
           self$`is_removable`
       }
+      if (!is.null(self$`lead_form_id`)) {
+        AdCommonObject[["lead_form_id"]] <-
+          self$`lead_form_id`
+      }
       if (!is.null(self$`name`)) {
         AdCommonObject[["name"]] <-
           self$`name`
+      }
+      if (!is.null(self$`quiz_pin_data`)) {
+        AdCommonObject[["quiz_pin_data"]] <-
+          self$`quiz_pin_data`$toSimpleType()
       }
       if (!is.null(self$`status`)) {
         AdCommonObject[["status"]] <-
@@ -281,22 +322,6 @@ AdCommon <- R6::R6Class(
       if (!is.null(self$`view_tracking_url`)) {
         AdCommonObject[["view_tracking_url"]] <-
           self$`view_tracking_url`
-      }
-      if (!is.null(self$`lead_form_id`)) {
-        AdCommonObject[["lead_form_id"]] <-
-          self$`lead_form_id`
-      }
-      if (!is.null(self$`grid_click_type`)) {
-        AdCommonObject[["grid_click_type"]] <-
-          self$`grid_click_type`$toSimpleType()
-      }
-      if (!is.null(self$`customizable_cta_type`)) {
-        AdCommonObject[["customizable_cta_type"]] <-
-          self$`customizable_cta_type`
-      }
-      if (!is.null(self$`quiz_pin_data`)) {
-        AdCommonObject[["quiz_pin_data"]] <-
-          self$`quiz_pin_data`$toSimpleType()
       }
       return(AdCommonObject)
     },
@@ -331,8 +356,26 @@ AdCommon <- R6::R6Class(
         `creative_type_object`$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
         self$`creative_type` <- `creative_type_object`
       }
+      if (!is.null(this_object$`customizable_cta_type`)) {
+        `customizable_cta_type_object` <- CustomizableCTAType$new()
+        `customizable_cta_type_object`$fromJSON(jsonlite::toJSON(this_object$`customizable_cta_type`, auto_unbox = TRUE, digits = NA))
+        self$`customizable_cta_type` <- `customizable_cta_type_object`
+      }
       if (!is.null(this_object$`destination_url`)) {
         self$`destination_url` <- this_object$`destination_url`
+      }
+      if (!is.null(this_object$`disclosure_type`)) {
+        `disclosure_type_object` <- DisclosureType$new()
+        `disclosure_type_object`$fromJSON(jsonlite::toJSON(this_object$`disclosure_type`, auto_unbox = TRUE, digits = NA))
+        self$`disclosure_type` <- `disclosure_type_object`
+      }
+      if (!is.null(this_object$`disclosure_url`)) {
+        self$`disclosure_url` <- this_object$`disclosure_url`
+      }
+      if (!is.null(this_object$`grid_click_type`)) {
+        `grid_click_type_object` <- GridClickType$new()
+        `grid_click_type_object`$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
+        self$`grid_click_type` <- `grid_click_type_object`
       }
       if (!is.null(this_object$`ios_deep_link`)) {
         self$`ios_deep_link` <- this_object$`ios_deep_link`
@@ -343,8 +386,16 @@ AdCommon <- R6::R6Class(
       if (!is.null(this_object$`is_removable`)) {
         self$`is_removable` <- this_object$`is_removable`
       }
+      if (!is.null(this_object$`lead_form_id`)) {
+        self$`lead_form_id` <- this_object$`lead_form_id`
+      }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`quiz_pin_data`)) {
+        `quiz_pin_data_object` <- QuizPinData$new()
+        `quiz_pin_data_object`$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
+        self$`quiz_pin_data` <- `quiz_pin_data_object`
       }
       if (!is.null(this_object$`status`)) {
         `status_object` <- EntityStatus$new()
@@ -358,25 +409,6 @@ AdCommon <- R6::R6Class(
       }
       if (!is.null(this_object$`view_tracking_url`)) {
         self$`view_tracking_url` <- this_object$`view_tracking_url`
-      }
-      if (!is.null(this_object$`lead_form_id`)) {
-        self$`lead_form_id` <- this_object$`lead_form_id`
-      }
-      if (!is.null(this_object$`grid_click_type`)) {
-        `grid_click_type_object` <- GridClickType$new()
-        `grid_click_type_object`$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
-        self$`grid_click_type` <- `grid_click_type_object`
-      }
-      if (!is.null(this_object$`customizable_cta_type`)) {
-        if (!is.null(this_object$`customizable_cta_type`) && !(this_object$`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"))) {
-          stop(paste("Error! \"", this_object$`customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_SITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\".", sep = ""))
-        }
-        self$`customizable_cta_type` <- this_object$`customizable_cta_type`
-      }
-      if (!is.null(this_object$`quiz_pin_data`)) {
-        `quiz_pin_data_object` <- QuizPinData$new()
-        `quiz_pin_data_object`$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
-        self$`quiz_pin_data` <- `quiz_pin_data_object`
       }
       self
     },
@@ -406,21 +438,20 @@ AdCommon <- R6::R6Class(
       self$`carousel_ios_deep_links` <- ApiClient$new()$deserializeObj(this_object$`carousel_ios_deep_links`, "array[character]", loadNamespace("openapi"))
       self$`click_tracking_url` <- this_object$`click_tracking_url`
       self$`creative_type` <- CreativeType$new()$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
+      self$`customizable_cta_type` <- CustomizableCTAType$new()$fromJSON(jsonlite::toJSON(this_object$`customizable_cta_type`, auto_unbox = TRUE, digits = NA))
       self$`destination_url` <- this_object$`destination_url`
+      self$`disclosure_type` <- DisclosureType$new()$fromJSON(jsonlite::toJSON(this_object$`disclosure_type`, auto_unbox = TRUE, digits = NA))
+      self$`disclosure_url` <- this_object$`disclosure_url`
+      self$`grid_click_type` <- GridClickType$new()$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
       self$`ios_deep_link` <- this_object$`ios_deep_link`
       self$`is_pin_deleted` <- this_object$`is_pin_deleted`
       self$`is_removable` <- this_object$`is_removable`
+      self$`lead_form_id` <- this_object$`lead_form_id`
       self$`name` <- this_object$`name`
+      self$`quiz_pin_data` <- QuizPinData$new()$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
       self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self$`view_tracking_url` <- this_object$`view_tracking_url`
-      self$`lead_form_id` <- this_object$`lead_form_id`
-      self$`grid_click_type` <- GridClickType$new()$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
-      if (!is.null(this_object$`customizable_cta_type`) && !(this_object$`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"))) {
-        stop(paste("Error! \"", this_object$`customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_SITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\".", sep = ""))
-      }
-      self$`customizable_cta_type` <- this_object$`customizable_cta_type`
-      self$`quiz_pin_data` <- QuizPinData$new()$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
       self
     },
 

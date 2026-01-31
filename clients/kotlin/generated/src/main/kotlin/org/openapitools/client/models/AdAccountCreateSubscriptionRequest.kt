@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  * @param webhookUrl Standard HTTPS webhook URL.
  * @param leadFormId Lead form ID.
  * @param partnerAccessToken Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
- * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
  * @param partnerMetadata 
+ * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
  */
 
 
@@ -45,12 +45,12 @@ data class AdAccountCreateSubscriptionRequest (
     @Json(name = "partner_access_token")
     val partnerAccessToken: kotlin.String? = null,
 
+    @Json(name = "partner_metadata")
+    val partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = null,
+
     /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     @Json(name = "partner_refresh_token")
-    val partnerRefreshToken: kotlin.String? = null,
-
-    @Json(name = "partner_metadata")
-    val partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = null
+    val partnerRefreshToken: kotlin.String? = null
 
 ) {
 

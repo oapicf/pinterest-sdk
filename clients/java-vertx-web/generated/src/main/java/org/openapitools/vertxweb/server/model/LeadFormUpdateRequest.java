@@ -15,57 +15,30 @@ import org.openapitools.vertxweb.server.model.LeadFormStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LeadFormUpdateRequest   {
   
-  private String name;
-  private String privacyPolicyLink;
-  private Boolean hasAcceptedTerms;
   private String completionMessage;
-  private LeadFormStatus status;
   private String disclosureLanguage;
-  private List<LeadFormQuestion> questions = new ArrayList<>();
+  private Boolean hasAcceptedTerms;
+  private String name;
   private List<LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
+  private String privacyPolicyLink;
+  private List<LeadFormQuestion> questions = new ArrayList<>();
+  private LeadFormStatus status;
   private String id;
 
   public LeadFormUpdateRequest () {
 
   }
 
-  public LeadFormUpdateRequest (String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, LeadFormStatus status, String disclosureLanguage, List<LeadFormQuestion> questions, List<LeadFormCommonPolicyLinksInner> policyLinks, String id) {
-    this.name = name;
-    this.privacyPolicyLink = privacyPolicyLink;
-    this.hasAcceptedTerms = hasAcceptedTerms;
+  public LeadFormUpdateRequest (String completionMessage, String disclosureLanguage, Boolean hasAcceptedTerms, String name, List<LeadFormCommonPolicyLinksInner> policyLinks, String privacyPolicyLink, List<LeadFormQuestion> questions, LeadFormStatus status, String id) {
     this.completionMessage = completionMessage;
-    this.status = status;
     this.disclosureLanguage = disclosureLanguage;
-    this.questions = questions;
-    this.policyLinks = policyLinks;
-    this.id = id;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("privacy_policy_link")
-  public String getPrivacyPolicyLink() {
-    return privacyPolicyLink;
-  }
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
-  }
-
-    
-  @JsonProperty("has_accepted_terms")
-  public Boolean getHasAcceptedTerms() {
-    return hasAcceptedTerms;
-  }
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
+    this.name = name;
+    this.policyLinks = policyLinks;
+    this.privacyPolicyLink = privacyPolicyLink;
+    this.questions = questions;
+    this.status = status;
+    this.id = id;
   }
 
     
@@ -78,21 +51,48 @@ public class LeadFormUpdateRequest   {
   }
 
     
-  @JsonProperty("status")
-  public LeadFormStatus getStatus() {
-    return status;
-  }
-  public void setStatus(LeadFormStatus status) {
-    this.status = status;
-  }
-
-    
   @JsonProperty("disclosure_language")
   public String getDisclosureLanguage() {
     return disclosureLanguage;
   }
   public void setDisclosureLanguage(String disclosureLanguage) {
     this.disclosureLanguage = disclosureLanguage;
+  }
+
+    
+  @JsonProperty("has_accepted_terms")
+  public Boolean getHasAcceptedTerms() {
+    return hasAcceptedTerms;
+  }
+  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
+  @JsonProperty("policy_links")
+  public List<LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+  public void setPolicyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
+    
+  @JsonProperty("privacy_policy_link")
+  public String getPrivacyPolicyLink() {
+    return privacyPolicyLink;
+  }
+  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
   }
 
     
@@ -105,12 +105,12 @@ public class LeadFormUpdateRequest   {
   }
 
     
-  @JsonProperty("policy_links")
-  public List<LeadFormCommonPolicyLinksInner> getPolicyLinks() {
-    return policyLinks;
+  @JsonProperty("status")
+  public LeadFormStatus getStatus() {
+    return status;
   }
-  public void setPolicyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
+  public void setStatus(LeadFormStatus status) {
+    this.status = status;
   }
 
     
@@ -132,20 +132,20 @@ public class LeadFormUpdateRequest   {
       return false;
     }
     LeadFormUpdateRequest leadFormUpdateRequest = (LeadFormUpdateRequest) o;
-    return Objects.equals(name, leadFormUpdateRequest.name) &&
-        Objects.equals(privacyPolicyLink, leadFormUpdateRequest.privacyPolicyLink) &&
-        Objects.equals(hasAcceptedTerms, leadFormUpdateRequest.hasAcceptedTerms) &&
-        Objects.equals(completionMessage, leadFormUpdateRequest.completionMessage) &&
-        Objects.equals(status, leadFormUpdateRequest.status) &&
+    return Objects.equals(completionMessage, leadFormUpdateRequest.completionMessage) &&
         Objects.equals(disclosureLanguage, leadFormUpdateRequest.disclosureLanguage) &&
-        Objects.equals(questions, leadFormUpdateRequest.questions) &&
+        Objects.equals(hasAcceptedTerms, leadFormUpdateRequest.hasAcceptedTerms) &&
+        Objects.equals(name, leadFormUpdateRequest.name) &&
         Objects.equals(policyLinks, leadFormUpdateRequest.policyLinks) &&
+        Objects.equals(privacyPolicyLink, leadFormUpdateRequest.privacyPolicyLink) &&
+        Objects.equals(questions, leadFormUpdateRequest.questions) &&
+        Objects.equals(status, leadFormUpdateRequest.status) &&
         Objects.equals(id, leadFormUpdateRequest.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks, id);
+    return Objects.hash(completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status, id);
   }
 
   @Override
@@ -153,14 +153,14 @@ public class LeadFormUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
-    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
     sb.append("    completionMessage: ").append(toIndentedString(completionMessage)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
-    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
+    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
+    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();

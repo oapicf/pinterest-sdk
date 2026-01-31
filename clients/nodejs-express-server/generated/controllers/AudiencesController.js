@@ -12,10 +12,6 @@ const audiences/create = async (request, response) => {
   await Controller.handleRequest(request, response, service.audiences/create);
 };
 
-const audiences/create_custom = async (request, response) => {
-  await Controller.handleRequest(request, response, service.audiences/create_custom);
-};
-
 const audiences/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.audiences/get);
 };
@@ -31,7 +27,6 @@ const audiences/update = async (request, response) => {
 
 module.exports = {
   audiences/create,
-  audiences/create_custom,
   audiences/get,
   audiences/list,
   audiences/update,

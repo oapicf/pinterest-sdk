@@ -16,11 +16,23 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SsioOrderLinesGetByAdAccount200Response   {
   
-  private List<@Valid SSIOOrderLine> items = new ArrayList<>();
   private String bookmark;
+  private List<@Valid SSIOOrderLine> items = new ArrayList<>();
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   /**
    * SSIO order lines by ad acount id
@@ -36,18 +48,6 @@ public class SsioOrderLinesGetByAdAccount200Response   {
     this.items = items;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -58,13 +58,13 @@ public class SsioOrderLinesGetByAdAccount200Response   {
       return false;
     }
     SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount200Response = (SsioOrderLinesGetByAdAccount200Response) o;
-    return Objects.equals(this.items, ssioOrderLinesGetByAdAccount200Response.items) &&
-        Objects.equals(this.bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark);
+    return Objects.equals(this.bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark) &&
+        Objects.equals(this.items, ssioOrderLinesGetByAdAccount200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -72,8 +72,8 @@ public class SsioOrderLinesGetByAdAccount200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SsioOrderLinesGetByAdAccount200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

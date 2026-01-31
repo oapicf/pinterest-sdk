@@ -20,6 +20,14 @@ public class PinMediaSourceImageURLTest {
     }
 
     /**
+     * Test the property 'isStandard'
+     */
+    @Test
+    public void isStandardTest() {
+        // TODO: test isStandard
+    }
+
+    /**
      * Test the property 'sourceType'
      */
     @Test
@@ -33,14 +41,6 @@ public class PinMediaSourceImageURLTest {
     @Test
     public void urlTest() {
         // TODO: test url
-    }
-
-    /**
-     * Test the property 'isStandard'
-     */
-    @Test
-    public void isStandardTest() {
-        // TODO: test isStandard
     }
 
 }

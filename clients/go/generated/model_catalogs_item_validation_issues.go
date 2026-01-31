@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &CatalogsItemValidationIssues{}
 
 // CatalogsItemValidationIssues struct for CatalogsItemValidationIssues
 type CatalogsItemValidationIssues struct {
-	// Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-	ItemNumber int32 `json:"item_number"`
+	Errors CatalogsItemValidationErrors `json:"errors"`
 	// The merchant-created unique ID that represents the product.
 	ItemId NullableString `json:"item_id"`
-	Errors CatalogsItemValidationErrors `json:"errors"`
+	// Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+	ItemNumber int32 `json:"item_number"`
 	Warnings CatalogsItemValidationWarnings `json:"warnings"`
 }
 
@@ -36,11 +36,11 @@ type _CatalogsItemValidationIssues CatalogsItemValidationIssues
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemValidationIssues(itemNumber int32, itemId NullableString, errors CatalogsItemValidationErrors, warnings CatalogsItemValidationWarnings) *CatalogsItemValidationIssues {
+func NewCatalogsItemValidationIssues(errors CatalogsItemValidationErrors, itemId NullableString, itemNumber int32, warnings CatalogsItemValidationWarnings) *CatalogsItemValidationIssues {
 	this := CatalogsItemValidationIssues{}
-	this.ItemNumber = itemNumber
-	this.ItemId = itemId
 	this.Errors = errors
+	this.ItemId = itemId
+	this.ItemNumber = itemNumber
 	this.Warnings = warnings
 	return &this
 }
@@ -53,28 +53,28 @@ func NewCatalogsItemValidationIssuesWithDefaults() *CatalogsItemValidationIssues
 	return &this
 }
 
-// GetItemNumber returns the ItemNumber field value
-func (o *CatalogsItemValidationIssues) GetItemNumber() int32 {
+// GetErrors returns the Errors field value
+func (o *CatalogsItemValidationIssues) GetErrors() CatalogsItemValidationErrors {
 	if o == nil {
-		var ret int32
+		var ret CatalogsItemValidationErrors
 		return ret
 	}
 
-	return o.ItemNumber
+	return o.Errors
 }
 
-// GetItemNumberOk returns a tuple with the ItemNumber field value
+// GetErrorsOk returns a tuple with the Errors field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationIssues) GetItemNumberOk() (*int32, bool) {
+func (o *CatalogsItemValidationIssues) GetErrorsOk() (*CatalogsItemValidationErrors, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ItemNumber, true
+	return &o.Errors, true
 }
 
-// SetItemNumber sets field value
-func (o *CatalogsItemValidationIssues) SetItemNumber(v int32) {
-	o.ItemNumber = v
+// SetErrors sets field value
+func (o *CatalogsItemValidationIssues) SetErrors(v CatalogsItemValidationErrors) {
+	o.Errors = v
 }
 
 // GetItemId returns the ItemId field value
@@ -103,28 +103,28 @@ func (o *CatalogsItemValidationIssues) SetItemId(v string) {
 	o.ItemId.Set(&v)
 }
 
-// GetErrors returns the Errors field value
-func (o *CatalogsItemValidationIssues) GetErrors() CatalogsItemValidationErrors {
+// GetItemNumber returns the ItemNumber field value
+func (o *CatalogsItemValidationIssues) GetItemNumber() int32 {
 	if o == nil {
-		var ret CatalogsItemValidationErrors
+		var ret int32
 		return ret
 	}
 
-	return o.Errors
+	return o.ItemNumber
 }
 
-// GetErrorsOk returns a tuple with the Errors field value
+// GetItemNumberOk returns a tuple with the ItemNumber field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationIssues) GetErrorsOk() (*CatalogsItemValidationErrors, bool) {
+func (o *CatalogsItemValidationIssues) GetItemNumberOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Errors, true
+	return &o.ItemNumber, true
 }
 
-// SetErrors sets field value
-func (o *CatalogsItemValidationIssues) SetErrors(v CatalogsItemValidationErrors) {
-	o.Errors = v
+// SetItemNumber sets field value
+func (o *CatalogsItemValidationIssues) SetItemNumber(v int32) {
+	o.ItemNumber = v
 }
 
 // GetWarnings returns the Warnings field value
@@ -161,9 +161,9 @@ func (o CatalogsItemValidationIssues) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsItemValidationIssues) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["item_number"] = o.ItemNumber
-	toSerialize["item_id"] = o.ItemId.Get()
 	toSerialize["errors"] = o.Errors
+	toSerialize["item_id"] = o.ItemId.Get()
+	toSerialize["item_number"] = o.ItemNumber
 	toSerialize["warnings"] = o.Warnings
 	return toSerialize, nil
 }
@@ -173,9 +173,9 @@ func (o *CatalogsItemValidationIssues) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"item_number",
-		"item_id",
 		"errors",
+		"item_id",
+		"item_number",
 		"warnings",
 	}
 

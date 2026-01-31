@@ -9,19 +9,20 @@
  */
 import { PinMediaSourceImagesBase64 } from './pinMediaSourceImagesBase64';
 import { PinMediaSourceImageBase64 } from './pinMediaSourceImageBase64';
+import { ContentType } from './contentType';
 import { PinMediaSourceVideoID } from './pinMediaSourceVideoID';
-import { PinMediaSourceImagesURLItemsInner } from './pinMediaSourceImagesURLItemsInner';
 import { PinMediaSourceImagesURL } from './pinMediaSourceImagesURL';
 import { PinMediaSourceImageURL } from './pinMediaSourceImageURL';
+import { PinMediaSourceImagesURLItem } from './pinMediaSourceImagesURLItem';
 import { PinMediaSourcePinURL } from './pinMediaSourcePinURL';
 
 
 /**
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  */
 /**
  * @type PinMediaSource
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  * @export
  */
 export type PinMediaSource = PinMediaSourceImageBase64 | PinMediaSourceImageURL | PinMediaSourceImagesBase64 | PinMediaSourceImagesURL | PinMediaSourcePinURL | PinMediaSourceVideoID;

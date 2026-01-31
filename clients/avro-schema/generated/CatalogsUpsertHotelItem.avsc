@@ -5,6 +5,11 @@
   "name": "CatalogsUpsertHotelItem",
   "fields": [
     {
+      "name": "attributes",
+      "type": "model.CatalogsHotelAttributes",
+      "doc": ""
+    },
+    {
       "name": "hotel_id",
       "type": "string",
       "doc": "The catalog hotel id in the merchant namespace"
@@ -18,11 +23,6 @@
           "UPSERT"
         ]
       },
-      "doc": ""
-    },
-    {
-      "name": "attributes",
-      "type": "model.CatalogsHotelAttributes",
       "doc": ""
     }
   ]

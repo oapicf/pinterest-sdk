@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  |  |
 | **hotel_id** | **String** | The catalog hotel id in the merchant namespace |  |
 | **operation** | **String** |  |  |
-| **attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsUpsertHotelItem.new(
+  attributes: null,
   hotel_id: DS0294-M,
-  operation: null,
-  attributes: null
+  operation: null
 )
 ```
 

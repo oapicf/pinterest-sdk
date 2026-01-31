@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Date** | **String** | Generation date | [optional] 
-**Type** | **String** | Generated audience type to request. | [optional] 
-**Scope** | **String** | Generated audience scope to request. | [optional] 
+**Scope** | **String** |  | [optional] 
+**Type** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $AudienceDefinition = Initialize-PSOpenAPIToolsAudienceDefinition  -Date 2022-10-09 `
- -Type null `
- -Scope null
+ -Scope PARTNER `
+ -Type IMPRESSION_PLUS_ENGAGEMENT
 ```
 
 - Convert the resource to JSON

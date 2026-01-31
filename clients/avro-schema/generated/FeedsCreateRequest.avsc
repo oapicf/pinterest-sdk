@@ -5,24 +5,14 @@
   "name": "FeedsCreateRequest",
   "fields": [
     {
-      "name": "default_currency",
-      "type": ["null", "model.NullableCurrency"],
-      "doc": "",
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.",
       "default": null
     },
     {
-      "name": "name",
-      "type": "string",
-      "doc": "A human-friendly name associated to a given feed."
-    },
-    {
-      "name": "format",
-      "type": "model.CatalogsFormat",
-      "doc": ""
-    },
-    {
-      "name": "default_locale",
-      "type": "model.CatalogsFeedsCreateRequestDefaultLocale",
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
       "doc": ""
     },
     {
@@ -32,9 +22,41 @@
       "default": null
     },
     {
+      "name": "default_availability",
+      "type": ["null", "model.ProductAvailabilityType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "default_country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "default_currency",
+      "type": ["null", "model.NullableCurrency"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "default_locale",
+      "type": "model.CatalogsFeedsCreateRequestDefaultLocale",
+      "doc": ""
+    },
+    {
+      "name": "format",
+      "type": "model.CatalogsFormat",
+      "doc": ""
+    },
+    {
       "name": "location",
       "type": "string",
       "doc": "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "A human-friendly name associated to a given feed."
     },
     {
       "name": "preferred_processing_schedule",
@@ -43,32 +65,10 @@
       "default": null
     },
     {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
-    },
-    {
-      "name": "default_country",
-      "type": "model.Country",
-      "doc": ""
-    },
-    {
-      "name": "default_availability",
-      "type": ["null", "model.ProductAvailabilityType"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "status",
       "type": ["model.CatalogsStatus", "null"],
       "doc": "",
       "default": CatalogsStatus.ACTIVE
-    },
-    {
-      "name": "catalog_id",
-      "type": ["null", "string"],
-      "doc": "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.",
-      "default": null
     }
   ]
 

@@ -6,39 +6,39 @@
 
 
 static audience_insight_category_common_t *audience_insight_category_common_create_internal(
+    char *id,
+    double index,
     char *key,
     char *name,
-    double ratio,
-    double index,
-    char *id
+    double ratio
     ) {
     audience_insight_category_common_t *audience_insight_category_common_local_var = malloc(sizeof(audience_insight_category_common_t));
     if (!audience_insight_category_common_local_var) {
         return NULL;
     }
+    audience_insight_category_common_local_var->id = id;
+    audience_insight_category_common_local_var->index = index;
     audience_insight_category_common_local_var->key = key;
     audience_insight_category_common_local_var->name = name;
     audience_insight_category_common_local_var->ratio = ratio;
-    audience_insight_category_common_local_var->index = index;
-    audience_insight_category_common_local_var->id = id;
 
     audience_insight_category_common_local_var->_library_owned = 1;
     return audience_insight_category_common_local_var;
 }
 
 __attribute__((deprecated)) audience_insight_category_common_t *audience_insight_category_common_create(
+    char *id,
+    double index,
     char *key,
     char *name,
-    double ratio,
-    double index,
-    char *id
+    double ratio
     ) {
     return audience_insight_category_common_create_internal (
+        id,
+        index,
         key,
         name,
-        ratio,
-        index,
-        id
+        ratio
         );
 }
 
@@ -51,6 +51,10 @@ void audience_insight_category_common_free(audience_insight_category_common_t *a
         return ;
     }
     listEntry_t *listEntry;
+    if (audience_insight_category_common->id) {
+        free(audience_insight_category_common->id);
+        audience_insight_category_common->id = NULL;
+    }
     if (audience_insight_category_common->key) {
         free(audience_insight_category_common->key);
         audience_insight_category_common->key = NULL;
@@ -59,15 +63,27 @@ void audience_insight_category_common_free(audience_insight_category_common_t *a
         free(audience_insight_category_common->name);
         audience_insight_category_common->name = NULL;
     }
-    if (audience_insight_category_common->id) {
-        free(audience_insight_category_common->id);
-        audience_insight_category_common->id = NULL;
-    }
     free(audience_insight_category_common);
 }
 
 cJSON *audience_insight_category_common_convertToJSON(audience_insight_category_common_t *audience_insight_category_common) {
     cJSON *item = cJSON_CreateObject();
+
+    // audience_insight_category_common->id
+    if(audience_insight_category_common->id) {
+    if(cJSON_AddStringToObject(item, "id", audience_insight_category_common->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // audience_insight_category_common->index
+    if(audience_insight_category_common->index) {
+    if(cJSON_AddNumberToObject(item, "index", audience_insight_category_common->index) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
 
     // audience_insight_category_common->key
     if(audience_insight_category_common->key) {
@@ -92,22 +108,6 @@ cJSON *audience_insight_category_common_convertToJSON(audience_insight_category_
     }
     }
 
-
-    // audience_insight_category_common->index
-    if(audience_insight_category_common->index) {
-    if(cJSON_AddNumberToObject(item, "index", audience_insight_category_common->index) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // audience_insight_category_common->id
-    if(audience_insight_category_common->id) {
-    if(cJSON_AddStringToObject(item, "id", audience_insight_category_common->id) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -119,6 +119,30 @@ fail:
 audience_insight_category_common_t *audience_insight_category_common_parseFromJSON(cJSON *audience_insight_category_commonJSON){
 
     audience_insight_category_common_t *audience_insight_category_common_local_var = NULL;
+
+    // audience_insight_category_common->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_insight_category_commonJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // audience_insight_category_common->index
+    cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_insight_category_commonJSON, "index");
+    if (cJSON_IsNull(index)) {
+        index = NULL;
+    }
+    if (index) { 
+    if(!cJSON_IsNumber(index))
+    {
+    goto end; //Numeric
+    }
+    }
 
     // audience_insight_category_common->key
     cJSON *key = cJSON_GetObjectItemCaseSensitive(audience_insight_category_commonJSON, "key");
@@ -156,37 +180,13 @@ audience_insight_category_common_t *audience_insight_category_common_parseFromJS
     }
     }
 
-    // audience_insight_category_common->index
-    cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_insight_category_commonJSON, "index");
-    if (cJSON_IsNull(index)) {
-        index = NULL;
-    }
-    if (index) { 
-    if(!cJSON_IsNumber(index))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // audience_insight_category_common->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_insight_category_commonJSON, "id");
-    if (cJSON_IsNull(id)) {
-        id = NULL;
-    }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
-
 
     audience_insight_category_common_local_var = audience_insight_category_common_create_internal (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        index ? index->valuedouble : 0,
         key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        ratio ? ratio->valuedouble : 0,
-        index ? index->valuedouble : 0,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
+        ratio ? ratio->valuedouble : 0
         );
 
     return audience_insight_category_common_local_var;

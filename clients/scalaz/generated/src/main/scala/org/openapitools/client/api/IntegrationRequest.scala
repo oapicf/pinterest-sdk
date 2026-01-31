@@ -12,20 +12,20 @@ import org.joda.time.DateTime
 import IntegrationRequest._
 
 case class IntegrationRequest (
-  /* External business ID for the integration. */
-  externalBusinessId: Option[String],
-connectedMerchantId: Option[String],
+  additionalId1: Option[String],
 connectedAdvertiserId: Option[String],
 connectedLbaId: Option[String],
+connectedMerchantId: Option[String],
 connectedTagId: Option[String],
+/* External business ID for the integration. */
+  externalBusinessId: Option[String],
 partnerAccessToken: Option[String],
-partnerRefreshToken: Option[String],
-partnerPrimaryEmail: Option[String],
 partnerAccessTokenExpiry: Option[Integer],
+partnerMetadata: Option[String],
+partnerPrimaryEmail: Option[String],
+partnerRefreshToken: Option[String],
 partnerRefreshTokenExpiry: Option[Integer],
-scopes: Option[String],
-additionalId1: Option[String],
-partnerMetadata: Option[String])
+scopes: Option[String])
 
 object IntegrationRequest {
   import DateTimeCodecs._

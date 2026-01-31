@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,47 +16,47 @@ package openapi
 
 type TargetingTemplateResponseData struct {
 
-	// targeting template name
-	Name string `json:"name,omitempty"`
-
 	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
 
-	TargetingAttributes TargetingSpec `json:"targeting_attributes,omitempty"`
+	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+
+	// targeting template name
+	Name string `json:"name,omitempty"`
 
 	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
 
-	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+	TargetingAttributes TargetingSpec `json:"targeting_attributes,omitempty"`
 
 	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
-
-	// Targeting template ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	// Targeting template created time. Unix timestamp in seconds.
-	CreatedTime int32 `json:"created_time,omitempty"`
-
-	// Targeting template updated time.Unix timestamp in seconds.
-	UpdatedTime int32 `json:"updated_time,omitempty"`
 
 	// The ID of the advertiser that this targeting template belongs to.
 	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 
+	// Targeting template created time. Unix timestamp in seconds.
+	CreatedTime int32 `json:"created_time,omitempty"`
+
+	// Targeting template ID.
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+
+	Sizing *TargetingTemplateAudienceSizing `json:"sizing,omitempty"`
+
 	// Indicate targeting template is active or Deleted
 	Status string `json:"status,omitempty"`
 
-	Sizing *TargetingTemplateAudienceSizing `json:"sizing,omitempty"`
+	// Targeting template updated time.Unix timestamp in seconds.
+	UpdatedTime int32 `json:"updated_time,omitempty"`
 }
 
 // AssertTargetingTemplateResponseDataRequired checks if the required fields are not zero-ed
 func AssertTargetingTemplateResponseDataRequired(obj TargetingTemplateResponseData) error {
-	if err := AssertTargetingSpecRequired(obj.TargetingAttributes); err != nil {
-		return err
-	}
 	for _, el := range obj.Keywords {
 		if err := AssertTargetingTemplateKeywordRequired(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertTargetingSpecRequired(obj.TargetingAttributes); err != nil {
+		return err
 	}
 	if obj.TrackingUrls != nil {
 		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
@@ -73,13 +73,13 @@ func AssertTargetingTemplateResponseDataRequired(obj TargetingTemplateResponseDa
 
 // AssertTargetingTemplateResponseDataConstraints checks if the values respects the defined constraints
 func AssertTargetingTemplateResponseDataConstraints(obj TargetingTemplateResponseData) error {
-	if err := AssertTargetingSpecConstraints(obj.TargetingAttributes); err != nil {
-		return err
-	}
 	for _, el := range obj.Keywords {
 		if err := AssertTargetingTemplateKeywordConstraints(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertTargetingSpecConstraints(obj.TargetingAttributes); err != nil {
+		return err
 	}
     if obj.TrackingUrls != nil {
      	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {

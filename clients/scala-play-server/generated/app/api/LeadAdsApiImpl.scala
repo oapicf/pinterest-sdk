@@ -1,15 +1,14 @@
 package api
 
-import model.AdAccountCreateSubscriptionRequest
-import model.AdAccountCreateSubscriptionResponse
-import model.AdAccountGetSubscriptionResponse
 import model.AdAccountsSubscriptionsGetList200Response
 import model.Error
+import model.LeadSubscription
+import model.LeadSubscriptionPostParamsCreate
 
 /**
   * Provides a default implementation for [[LeadAdsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class LeadAdsApiImpl extends LeadAdsApi {
   /**
     * @inheritdoc
@@ -23,27 +22,27 @@ class LeadAdsApiImpl extends LeadAdsApi {
   /**
     * @inheritdoc
     */
-  override def adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String): AdAccountGetSubscriptionResponse = {
+  override def adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String): LeadSubscription = {
     // TODO: Implement better logic
 
-    AdAccountGetSubscriptionResponse(None, None, None, None, None, None, None, None, None, Map.empty)
+    LeadSubscription(None, None, None, None, None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def adAccountsSubscriptionsGetList(adAccountId: String, pageSize: Option[Int], bookmark: Option[String]): AdAccountsSubscriptionsGetList200Response = {
+  override def adAccountsSubscriptionsGetList(adAccountId: String, bookmark: Option[String], pageSize: Option[Int]): AdAccountsSubscriptionsGetList200Response = {
     // TODO: Implement better logic
 
-    AdAccountsSubscriptionsGetList200Response(List.empty[AdAccountGetSubscriptionResponse], None)
+    AdAccountsSubscriptionsGetList200Response(None, List.empty[LeadSubscription])
   }
 
   /**
     * @inheritdoc
     */
-  override def adAccountsSubscriptionsPost(adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest): AdAccountCreateSubscriptionResponse = {
+  override def adAccountsSubscriptionsPost(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate): LeadSubscription = {
     // TODO: Implement better logic
 
-    AdAccountCreateSubscriptionResponse(None, None, None, None)
+    LeadSubscription(None, None, None, None, None, None, None, None, None)
   }
 }

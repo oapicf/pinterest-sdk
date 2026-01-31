@@ -6,39 +6,39 @@
 
 
 static tracking_urls_t *tracking_urls_create_internal(
-    list_t *impression,
+    list_t *audience_verification,
+    list_t *buyable_button,
     list_t *click,
     list_t *engagement,
-    list_t *buyable_button,
-    list_t *audience_verification
+    list_t *impression
     ) {
     tracking_urls_t *tracking_urls_local_var = malloc(sizeof(tracking_urls_t));
     if (!tracking_urls_local_var) {
         return NULL;
     }
-    tracking_urls_local_var->impression = impression;
+    tracking_urls_local_var->audience_verification = audience_verification;
+    tracking_urls_local_var->buyable_button = buyable_button;
     tracking_urls_local_var->click = click;
     tracking_urls_local_var->engagement = engagement;
-    tracking_urls_local_var->buyable_button = buyable_button;
-    tracking_urls_local_var->audience_verification = audience_verification;
+    tracking_urls_local_var->impression = impression;
 
     tracking_urls_local_var->_library_owned = 1;
     return tracking_urls_local_var;
 }
 
 __attribute__((deprecated)) tracking_urls_t *tracking_urls_create(
-    list_t *impression,
+    list_t *audience_verification,
+    list_t *buyable_button,
     list_t *click,
     list_t *engagement,
-    list_t *buyable_button,
-    list_t *audience_verification
+    list_t *impression
     ) {
     return tracking_urls_create_internal (
-        impression,
+        audience_verification,
+        buyable_button,
         click,
         engagement,
-        buyable_button,
-        audience_verification
+        impression
         );
 }
 
@@ -51,12 +51,19 @@ void tracking_urls_free(tracking_urls_t *tracking_urls) {
         return ;
     }
     listEntry_t *listEntry;
-    if (tracking_urls->impression) {
-        list_ForEach(listEntry, tracking_urls->impression) {
+    if (tracking_urls->audience_verification) {
+        list_ForEach(listEntry, tracking_urls->audience_verification) {
             free(listEntry->data);
         }
-        list_freeList(tracking_urls->impression);
-        tracking_urls->impression = NULL;
+        list_freeList(tracking_urls->audience_verification);
+        tracking_urls->audience_verification = NULL;
+    }
+    if (tracking_urls->buyable_button) {
+        list_ForEach(listEntry, tracking_urls->buyable_button) {
+            free(listEntry->data);
+        }
+        list_freeList(tracking_urls->buyable_button);
+        tracking_urls->buyable_button = NULL;
     }
     if (tracking_urls->click) {
         list_ForEach(listEntry, tracking_urls->click) {
@@ -72,19 +79,12 @@ void tracking_urls_free(tracking_urls_t *tracking_urls) {
         list_freeList(tracking_urls->engagement);
         tracking_urls->engagement = NULL;
     }
-    if (tracking_urls->buyable_button) {
-        list_ForEach(listEntry, tracking_urls->buyable_button) {
+    if (tracking_urls->impression) {
+        list_ForEach(listEntry, tracking_urls->impression) {
             free(listEntry->data);
         }
-        list_freeList(tracking_urls->buyable_button);
-        tracking_urls->buyable_button = NULL;
-    }
-    if (tracking_urls->audience_verification) {
-        list_ForEach(listEntry, tracking_urls->audience_verification) {
-            free(listEntry->data);
-        }
-        list_freeList(tracking_urls->audience_verification);
-        tracking_urls->audience_verification = NULL;
+        list_freeList(tracking_urls->impression);
+        tracking_urls->impression = NULL;
     }
     free(tracking_urls);
 }
@@ -92,16 +92,33 @@ void tracking_urls_free(tracking_urls_t *tracking_urls) {
 cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
     cJSON *item = cJSON_CreateObject();
 
-    // tracking_urls->impression
-    if(tracking_urls->impression) {
-    cJSON *impression = cJSON_AddArrayToObject(item, "impression");
-    if(impression == NULL) {
+    // tracking_urls->audience_verification
+    if(tracking_urls->audience_verification) {
+    cJSON *audience_verification = cJSON_AddArrayToObject(item, "audience_verification");
+    if(audience_verification == NULL) {
         goto fail; //primitive container
     }
 
-    listEntry_t *impressionListEntry;
-    list_ForEach(impressionListEntry, tracking_urls->impression) {
-    if(cJSON_AddStringToObject(impression, "", impressionListEntry->data) == NULL)
+    listEntry_t *audience_verificationListEntry;
+    list_ForEach(audience_verificationListEntry, tracking_urls->audience_verification) {
+    if(cJSON_AddStringToObject(audience_verification, "", audience_verificationListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
+    // tracking_urls->buyable_button
+    if(tracking_urls->buyable_button) {
+    cJSON *buyable_button = cJSON_AddArrayToObject(item, "buyable_button");
+    if(buyable_button == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *buyable_buttonListEntry;
+    list_ForEach(buyable_buttonListEntry, tracking_urls->buyable_button) {
+    if(cJSON_AddStringToObject(buyable_button, "", buyable_buttonListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -143,33 +160,16 @@ cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
     }
 
 
-    // tracking_urls->buyable_button
-    if(tracking_urls->buyable_button) {
-    cJSON *buyable_button = cJSON_AddArrayToObject(item, "buyable_button");
-    if(buyable_button == NULL) {
+    // tracking_urls->impression
+    if(tracking_urls->impression) {
+    cJSON *impression = cJSON_AddArrayToObject(item, "impression");
+    if(impression == NULL) {
         goto fail; //primitive container
     }
 
-    listEntry_t *buyable_buttonListEntry;
-    list_ForEach(buyable_buttonListEntry, tracking_urls->buyable_button) {
-    if(cJSON_AddStringToObject(buyable_button, "", buyable_buttonListEntry->data) == NULL)
-    {
-        goto fail;
-    }
-    }
-    }
-
-
-    // tracking_urls->audience_verification
-    if(tracking_urls->audience_verification) {
-    cJSON *audience_verification = cJSON_AddArrayToObject(item, "audience_verification");
-    if(audience_verification == NULL) {
-        goto fail; //primitive container
-    }
-
-    listEntry_t *audience_verificationListEntry;
-    list_ForEach(audience_verificationListEntry, tracking_urls->audience_verification) {
-    if(cJSON_AddStringToObject(audience_verification, "", audience_verificationListEntry->data) == NULL)
+    listEntry_t *impressionListEntry;
+    list_ForEach(impressionListEntry, tracking_urls->impression) {
+    if(cJSON_AddStringToObject(impression, "", impressionListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -188,8 +188,11 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
 
     tracking_urls_t *tracking_urls_local_var = NULL;
 
-    // define the local list for tracking_urls->impression
-    list_t *impressionList = NULL;
+    // define the local list for tracking_urls->audience_verification
+    list_t *audience_verificationList = NULL;
+
+    // define the local list for tracking_urls->buyable_button
+    list_t *buyable_buttonList = NULL;
 
     // define the local list for tracking_urls->click
     list_t *clickList = NULL;
@@ -197,31 +200,50 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
     // define the local list for tracking_urls->engagement
     list_t *engagementList = NULL;
 
-    // define the local list for tracking_urls->buyable_button
-    list_t *buyable_buttonList = NULL;
+    // define the local list for tracking_urls->impression
+    list_t *impressionList = NULL;
 
-    // define the local list for tracking_urls->audience_verification
-    list_t *audience_verificationList = NULL;
-
-    // tracking_urls->impression
-    cJSON *impression = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "impression");
-    if (cJSON_IsNull(impression)) {
-        impression = NULL;
+    // tracking_urls->audience_verification
+    cJSON *audience_verification = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "audience_verification");
+    if (cJSON_IsNull(audience_verification)) {
+        audience_verification = NULL;
     }
-    if (impression) { 
-    cJSON *impression_local = NULL;
-    if(!cJSON_IsArray(impression)) {
+    if (audience_verification) { 
+    cJSON *audience_verification_local = NULL;
+    if(!cJSON_IsArray(audience_verification)) {
         goto end;//primitive container
     }
-    impressionList = list_createList();
+    audience_verificationList = list_createList();
 
-    cJSON_ArrayForEach(impression_local, impression)
+    cJSON_ArrayForEach(audience_verification_local, audience_verification)
     {
-        if(!cJSON_IsString(impression_local))
+        if(!cJSON_IsString(audience_verification_local))
         {
             goto end;
         }
-        list_addElement(impressionList , strdup(impression_local->valuestring));
+        list_addElement(audience_verificationList , strdup(audience_verification_local->valuestring));
+    }
+    }
+
+    // tracking_urls->buyable_button
+    cJSON *buyable_button = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "buyable_button");
+    if (cJSON_IsNull(buyable_button)) {
+        buyable_button = NULL;
+    }
+    if (buyable_button) { 
+    cJSON *buyable_button_local = NULL;
+    if(!cJSON_IsArray(buyable_button)) {
+        goto end;//primitive container
+    }
+    buyable_buttonList = list_createList();
+
+    cJSON_ArrayForEach(buyable_button_local, buyable_button)
+    {
+        if(!cJSON_IsString(buyable_button_local))
+        {
+            goto end;
+        }
+        list_addElement(buyable_buttonList , strdup(buyable_button_local->valuestring));
     }
     }
 
@@ -269,69 +291,56 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
     }
     }
 
-    // tracking_urls->buyable_button
-    cJSON *buyable_button = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "buyable_button");
-    if (cJSON_IsNull(buyable_button)) {
-        buyable_button = NULL;
+    // tracking_urls->impression
+    cJSON *impression = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "impression");
+    if (cJSON_IsNull(impression)) {
+        impression = NULL;
     }
-    if (buyable_button) { 
-    cJSON *buyable_button_local = NULL;
-    if(!cJSON_IsArray(buyable_button)) {
+    if (impression) { 
+    cJSON *impression_local = NULL;
+    if(!cJSON_IsArray(impression)) {
         goto end;//primitive container
     }
-    buyable_buttonList = list_createList();
+    impressionList = list_createList();
 
-    cJSON_ArrayForEach(buyable_button_local, buyable_button)
+    cJSON_ArrayForEach(impression_local, impression)
     {
-        if(!cJSON_IsString(buyable_button_local))
+        if(!cJSON_IsString(impression_local))
         {
             goto end;
         }
-        list_addElement(buyable_buttonList , strdup(buyable_button_local->valuestring));
-    }
-    }
-
-    // tracking_urls->audience_verification
-    cJSON *audience_verification = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "audience_verification");
-    if (cJSON_IsNull(audience_verification)) {
-        audience_verification = NULL;
-    }
-    if (audience_verification) { 
-    cJSON *audience_verification_local = NULL;
-    if(!cJSON_IsArray(audience_verification)) {
-        goto end;//primitive container
-    }
-    audience_verificationList = list_createList();
-
-    cJSON_ArrayForEach(audience_verification_local, audience_verification)
-    {
-        if(!cJSON_IsString(audience_verification_local))
-        {
-            goto end;
-        }
-        list_addElement(audience_verificationList , strdup(audience_verification_local->valuestring));
+        list_addElement(impressionList , strdup(impression_local->valuestring));
     }
     }
 
 
     tracking_urls_local_var = tracking_urls_create_internal (
-        impression ? impressionList : NULL,
+        audience_verification ? audience_verificationList : NULL,
+        buyable_button ? buyable_buttonList : NULL,
         click ? clickList : NULL,
         engagement ? engagementList : NULL,
-        buyable_button ? buyable_buttonList : NULL,
-        audience_verification ? audience_verificationList : NULL
+        impression ? impressionList : NULL
         );
 
     return tracking_urls_local_var;
 end:
-    if (impressionList) {
+    if (audience_verificationList) {
         listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, impressionList) {
+        list_ForEach(listEntry, audience_verificationList) {
             free(listEntry->data);
             listEntry->data = NULL;
         }
-        list_freeList(impressionList);
-        impressionList = NULL;
+        list_freeList(audience_verificationList);
+        audience_verificationList = NULL;
+    }
+    if (buyable_buttonList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, buyable_buttonList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(buyable_buttonList);
+        buyable_buttonList = NULL;
     }
     if (clickList) {
         listEntry_t *listEntry = NULL;
@@ -351,23 +360,14 @@ end:
         list_freeList(engagementList);
         engagementList = NULL;
     }
-    if (buyable_buttonList) {
+    if (impressionList) {
         listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, buyable_buttonList) {
+        list_ForEach(listEntry, impressionList) {
             free(listEntry->data);
             listEntry->data = NULL;
         }
-        list_freeList(buyable_buttonList);
-        buyable_buttonList = NULL;
-    }
-    if (audience_verificationList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, audience_verificationList) {
-            free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(audience_verificationList);
-        audience_verificationList = NULL;
+        list_freeList(impressionList);
+        impressionList = NULL;
     }
     return NULL;
 

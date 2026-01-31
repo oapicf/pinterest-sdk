@@ -16,14 +16,14 @@ void main() {
   // final instance = TopPinsAnalyticsResponsePinsInner();
 
   group('test TopPinsAnalyticsResponsePinsInner', () {
-    // The metric name and daily value for each requested metric
-    // Map<String, num> metrics (default value: const {})
-    test('to test the property `metrics`', () async {
+    // Map<String, DataStatus> dataStatus (default value: const {})
+    test('to test the property `dataStatus`', () async {
       // TODO
     });
 
-    // Map<String, DataStatus> dataStatus (default value: const {})
-    test('to test the property `dataStatus`', () async {
+    // The metric name and daily value for each requested metric
+    // Map<String, num> metrics (default value: const {})
+    test('to test the property `metrics`', () async {
       // TODO
     });
 

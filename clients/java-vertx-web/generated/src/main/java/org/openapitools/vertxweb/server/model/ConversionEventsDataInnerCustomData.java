@@ -15,54 +15,60 @@ import org.openapitools.vertxweb.server.model.ConversionEventsDataInnerCustomDat
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionEventsDataInnerCustomData   {
   
-  private String currency;
-  private String value;
+  private String contentBrand;
+  private String contentCategory;
   private List<String> contentIds = new ArrayList<>();
   private String contentName;
-  private String contentCategory;
-  private String contentBrand;
   private List<ConversionEventsDataInnerCustomDataContentsInner> contents = new ArrayList<>();
-  private Long numItems;
-  private String orderId;
-  private String searchString;
-  private String optOutType;
+  private String currency;
+  private String externalMeasurementId;
+  private Integer externalMeasurementVendorId;
   private String np;
+  private Long numItems;
+  private String optOutType;
+  private String orderId;
+  private String predictedLtv;
+  private String searchString;
+  private String value;
 
   public ConversionEventsDataInnerCustomData () {
 
   }
 
-  public ConversionEventsDataInnerCustomData (String currency, String value, List<String> contentIds, String contentName, String contentCategory, String contentBrand, List<ConversionEventsDataInnerCustomDataContentsInner> contents, Long numItems, String orderId, String searchString, String optOutType, String np) {
-    this.currency = currency;
-    this.value = value;
+  public ConversionEventsDataInnerCustomData (String contentBrand, String contentCategory, List<String> contentIds, String contentName, List<ConversionEventsDataInnerCustomDataContentsInner> contents, String currency, String externalMeasurementId, Integer externalMeasurementVendorId, String np, Long numItems, String optOutType, String orderId, String predictedLtv, String searchString, String value) {
+    this.contentBrand = contentBrand;
+    this.contentCategory = contentCategory;
     this.contentIds = contentIds;
     this.contentName = contentName;
-    this.contentCategory = contentCategory;
-    this.contentBrand = contentBrand;
     this.contents = contents;
-    this.numItems = numItems;
-    this.orderId = orderId;
-    this.searchString = searchString;
-    this.optOutType = optOutType;
-    this.np = np;
-  }
-
-    
-  @JsonProperty("currency")
-  public String getCurrency() {
-    return currency;
-  }
-  public void setCurrency(String currency) {
     this.currency = currency;
+    this.externalMeasurementId = externalMeasurementId;
+    this.externalMeasurementVendorId = externalMeasurementVendorId;
+    this.np = np;
+    this.numItems = numItems;
+    this.optOutType = optOutType;
+    this.orderId = orderId;
+    this.predictedLtv = predictedLtv;
+    this.searchString = searchString;
+    this.value = value;
   }
 
     
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
+  @JsonProperty("content_brand")
+  public String getContentBrand() {
+    return contentBrand;
   }
-  public void setValue(String value) {
-    this.value = value;
+  public void setContentBrand(String contentBrand) {
+    this.contentBrand = contentBrand;
+  }
+
+    
+  @JsonProperty("content_category")
+  public String getContentCategory() {
+    return contentCategory;
+  }
+  public void setContentCategory(String contentCategory) {
+    this.contentCategory = contentCategory;
   }
 
     
@@ -84,30 +90,48 @@ public class ConversionEventsDataInnerCustomData   {
   }
 
     
-  @JsonProperty("content_category")
-  public String getContentCategory() {
-    return contentCategory;
-  }
-  public void setContentCategory(String contentCategory) {
-    this.contentCategory = contentCategory;
-  }
-
-    
-  @JsonProperty("content_brand")
-  public String getContentBrand() {
-    return contentBrand;
-  }
-  public void setContentBrand(String contentBrand) {
-    this.contentBrand = contentBrand;
-  }
-
-    
   @JsonProperty("contents")
   public List<ConversionEventsDataInnerCustomDataContentsInner> getContents() {
     return contents;
   }
   public void setContents(List<ConversionEventsDataInnerCustomDataContentsInner> contents) {
     this.contents = contents;
+  }
+
+    
+  @JsonProperty("currency")
+  public String getCurrency() {
+    return currency;
+  }
+  public void setCurrency(String currency) {
+    this.currency = currency;
+  }
+
+    
+  @JsonProperty("external_measurement_id")
+  public String getExternalMeasurementId() {
+    return externalMeasurementId;
+  }
+  public void setExternalMeasurementId(String externalMeasurementId) {
+    this.externalMeasurementId = externalMeasurementId;
+  }
+
+    
+  @JsonProperty("external_measurement_vendor_id")
+  public Integer getExternalMeasurementVendorId() {
+    return externalMeasurementVendorId;
+  }
+  public void setExternalMeasurementVendorId(Integer externalMeasurementVendorId) {
+    this.externalMeasurementVendorId = externalMeasurementVendorId;
+  }
+
+    
+  @JsonProperty("np")
+  public String getNp() {
+    return np;
+  }
+  public void setNp(String np) {
+    this.np = np;
   }
 
     
@@ -120,12 +144,30 @@ public class ConversionEventsDataInnerCustomData   {
   }
 
     
+  @JsonProperty("opt_out_type")
+  public String getOptOutType() {
+    return optOutType;
+  }
+  public void setOptOutType(String optOutType) {
+    this.optOutType = optOutType;
+  }
+
+    
   @JsonProperty("order_id")
   public String getOrderId() {
     return orderId;
   }
   public void setOrderId(String orderId) {
     this.orderId = orderId;
+  }
+
+    
+  @JsonProperty("predicted_ltv")
+  public String getPredictedLtv() {
+    return predictedLtv;
+  }
+  public void setPredictedLtv(String predictedLtv) {
+    this.predictedLtv = predictedLtv;
   }
 
     
@@ -138,21 +180,12 @@ public class ConversionEventsDataInnerCustomData   {
   }
 
     
-  @JsonProperty("opt_out_type")
-  public String getOptOutType() {
-    return optOutType;
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
   }
-  public void setOptOutType(String optOutType) {
-    this.optOutType = optOutType;
-  }
-
-    
-  @JsonProperty("np")
-  public String getNp() {
-    return np;
-  }
-  public void setNp(String np) {
-    this.np = np;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -165,23 +198,26 @@ public class ConversionEventsDataInnerCustomData   {
       return false;
     }
     ConversionEventsDataInnerCustomData conversionEventsDataInnerCustomData = (ConversionEventsDataInnerCustomData) o;
-    return Objects.equals(currency, conversionEventsDataInnerCustomData.currency) &&
-        Objects.equals(value, conversionEventsDataInnerCustomData.value) &&
+    return Objects.equals(contentBrand, conversionEventsDataInnerCustomData.contentBrand) &&
+        Objects.equals(contentCategory, conversionEventsDataInnerCustomData.contentCategory) &&
         Objects.equals(contentIds, conversionEventsDataInnerCustomData.contentIds) &&
         Objects.equals(contentName, conversionEventsDataInnerCustomData.contentName) &&
-        Objects.equals(contentCategory, conversionEventsDataInnerCustomData.contentCategory) &&
-        Objects.equals(contentBrand, conversionEventsDataInnerCustomData.contentBrand) &&
         Objects.equals(contents, conversionEventsDataInnerCustomData.contents) &&
+        Objects.equals(currency, conversionEventsDataInnerCustomData.currency) &&
+        Objects.equals(externalMeasurementId, conversionEventsDataInnerCustomData.externalMeasurementId) &&
+        Objects.equals(externalMeasurementVendorId, conversionEventsDataInnerCustomData.externalMeasurementVendorId) &&
+        Objects.equals(np, conversionEventsDataInnerCustomData.np) &&
         Objects.equals(numItems, conversionEventsDataInnerCustomData.numItems) &&
-        Objects.equals(orderId, conversionEventsDataInnerCustomData.orderId) &&
-        Objects.equals(searchString, conversionEventsDataInnerCustomData.searchString) &&
         Objects.equals(optOutType, conversionEventsDataInnerCustomData.optOutType) &&
-        Objects.equals(np, conversionEventsDataInnerCustomData.np);
+        Objects.equals(orderId, conversionEventsDataInnerCustomData.orderId) &&
+        Objects.equals(predictedLtv, conversionEventsDataInnerCustomData.predictedLtv) &&
+        Objects.equals(searchString, conversionEventsDataInnerCustomData.searchString) &&
+        Objects.equals(value, conversionEventsDataInnerCustomData.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, value, contentIds, contentName, contentCategory, contentBrand, contents, numItems, orderId, searchString, optOutType, np);
+    return Objects.hash(contentBrand, contentCategory, contentIds, contentName, contents, currency, externalMeasurementId, externalMeasurementVendorId, np, numItems, optOutType, orderId, predictedLtv, searchString, value);
   }
 
   @Override
@@ -189,18 +225,21 @@ public class ConversionEventsDataInnerCustomData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventsDataInnerCustomData {\n");
     
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    contentBrand: ").append(toIndentedString(contentBrand)).append("\n");
+    sb.append("    contentCategory: ").append(toIndentedString(contentCategory)).append("\n");
     sb.append("    contentIds: ").append(toIndentedString(contentIds)).append("\n");
     sb.append("    contentName: ").append(toIndentedString(contentName)).append("\n");
-    sb.append("    contentCategory: ").append(toIndentedString(contentCategory)).append("\n");
-    sb.append("    contentBrand: ").append(toIndentedString(contentBrand)).append("\n");
     sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
-    sb.append("    numItems: ").append(toIndentedString(numItems)).append("\n");
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
-    sb.append("    optOutType: ").append(toIndentedString(optOutType)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    externalMeasurementId: ").append(toIndentedString(externalMeasurementId)).append("\n");
+    sb.append("    externalMeasurementVendorId: ").append(toIndentedString(externalMeasurementVendorId)).append("\n");
     sb.append("    np: ").append(toIndentedString(np)).append("\n");
+    sb.append("    numItems: ").append(toIndentedString(numItems)).append("\n");
+    sb.append("    optOutType: ").append(toIndentedString(optOutType)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    predictedLtv: ").append(toIndentedString(predictedLtv)).append("\n");
+    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

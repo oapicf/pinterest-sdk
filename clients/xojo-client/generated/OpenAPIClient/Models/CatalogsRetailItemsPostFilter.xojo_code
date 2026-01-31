@@ -2,20 +2,20 @@
 Protected Class CatalogsRetailItemsPostFilter
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+		#tag EndNote
+		catalog_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		item_ids() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-		#tag EndNote
-		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -73,7 +73,7 @@ Protected Class CatalogsRetailItemsPostFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_ids"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -81,7 +81,7 @@ Protected Class CatalogsRetailItemsPostFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_id"
+			Name="item_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

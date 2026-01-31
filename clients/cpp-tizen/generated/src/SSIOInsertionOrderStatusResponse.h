@@ -45,6 +45,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Salesforce insertion order creation time
+	 */
+	std::string getCreationTime();
+
+	/*! \brief Set Salesforce insertion order creation time
+	 */
+	void setCreationTime(std::string  creation_time);
 	/*! \brief Get Salesforce order id
 	 */
 	std::string getPinOrderId();
@@ -59,18 +66,11 @@ public:
 	/*! \brief Set Salesforce insertion order status
 	 */
 	void setStatus(std::string  status);
-	/*! \brief Get Salesforce insertion order creation time
-	 */
-	std::string getCreationTime();
-
-	/*! \brief Set Salesforce insertion order creation time
-	 */
-	void setCreationTime(std::string  creation_time);
 
 private:
+	std::string creation_time;
 	std::string pin_order_id;
 	std::string status;
-	std::string creation_time;
 	void __init();
 	void __cleanup();
 

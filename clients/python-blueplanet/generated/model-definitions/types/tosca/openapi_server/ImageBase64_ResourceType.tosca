@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ImageBase64"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ImageBase64"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ImageBase64 {
+    title = ImageBase64
+    description = ImageBase64
+    derivedFrom = Root
+    properties {
+        content_type {
+          type =  string
+          description = ""
+          enum = ["image/jpeg", "image/png"]
+          optional = true
+        }
+        data {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ImageBase64 {
+    title = ImageBase64
+    description = ImageBase64
+    implements = openapi_server.resourceTypes.ImageBase64
+
+  }
+}

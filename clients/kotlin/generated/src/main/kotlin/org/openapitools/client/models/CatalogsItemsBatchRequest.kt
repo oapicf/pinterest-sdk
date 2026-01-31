@@ -31,9 +31,9 @@ import com.squareup.moshi.JsonClass
  * Request object of catalogs items batch
  *
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 
 
@@ -41,14 +41,14 @@ interface CatalogsItemsBatchRequest {
 
     @Json(name = "country")
     val country: Country
+    /* Array with catalogs items */
+    @Json(name = "items")
+    val items: kotlin.collections.List<ItemDeleteBatchRecord>
     /* We recommend using the CatalogsLocale values. */
     @Json(name = "language")
     val language: CatalogsItemsBatchRequest.Language
     @Json(name = "operation")
     val operation: BatchOperation
-    /* Array with catalogs items */
-    @Json(name = "items")
-    val items: kotlin.collections.List<ItemDeleteBatchRecord>
     /**
      * We recommend using the CatalogsLocale values.
      *

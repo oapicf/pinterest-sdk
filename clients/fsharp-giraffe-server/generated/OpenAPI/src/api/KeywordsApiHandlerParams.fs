@@ -93,6 +93,9 @@ module KeywordsApiHandlerParams =
       adGroupId : string option;
 
 
+      adGroupIds : string[] option;
+
+
       matchTypes : MatchType[] option;
 
 
@@ -176,6 +179,12 @@ module KeywordsApiHandlerParams =
 
 
       limit : int option;
+
+
+      includePrediction : bool option;
+
+
+      includeDemographics : bool option;
 
     }
     //#endregion

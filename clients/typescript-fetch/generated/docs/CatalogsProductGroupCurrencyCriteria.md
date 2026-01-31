@@ -7,8 +7,8 @@ A currency filter. This filter cannot be negated
 
 Name | Type
 ------------ | -------------
-`values` | [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
 `negated` | boolean
+`values` | [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { CatalogsProductGroupCurrencyCriteria } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "values": null,
   "negated": null,
+  "values": null,
 } satisfies CatalogsProductGroupCurrencyCriteria
 
 console.log(example)

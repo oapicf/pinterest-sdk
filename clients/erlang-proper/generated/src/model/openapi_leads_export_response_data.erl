@@ -9,8 +9,8 @@
 -export_type([openapi_leads_export_response_data/0]).
 
 -type openapi_leads_export_response_data() ::
-  [ {'export_status', openapi_leads_export_status:openapi_leads_export_status() }
-  | {'download_url', binary() }
+  [ {'download_url', binary() }
+  | {'export_status', openapi_leads_export_status:openapi_leads_export_status() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_leads_export_response_data() ->
     openapi_leads_export_response_data([]).
 
 openapi_leads_export_response_data(Fields) ->
-  Default = [ {'export_status', openapi_leads_export_status:openapi_leads_export_status() }
-            , {'download_url', binary() }
+  Default = [ {'download_url', binary() }
+            , {'export_status', openapi_leads_export_status:openapi_leads_export_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

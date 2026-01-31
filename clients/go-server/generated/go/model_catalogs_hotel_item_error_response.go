@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,17 +19,18 @@ type CatalogsHotelItemErrorResponse struct {
 
 	CatalogType CatalogsType `json:"catalog_type"`
 
+	// Array with the errors for the item id requested
+	Errors []ItemValidationEvent `json:"errors"`
+
 	// The catalog hotel id in the merchant namespace
 	HotelId string `json:"hotel_id,omitempty"`
-
-	// Array with the errors for the item id requested
-	Errors []ItemValidationEvent `json:"errors,omitempty"`
 }
 
 // AssertCatalogsHotelItemErrorResponseRequired checks if the required fields are not zero-ed
 func AssertCatalogsHotelItemErrorResponseRequired(obj CatalogsHotelItemErrorResponse) error {
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
+		"errors": obj.Errors,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

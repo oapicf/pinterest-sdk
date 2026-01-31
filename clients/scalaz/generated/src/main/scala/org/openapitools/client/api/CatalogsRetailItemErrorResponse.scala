@@ -13,10 +13,10 @@ import CatalogsRetailItemErrorResponse._
 
 case class CatalogsRetailItemErrorResponse (
   catalogType: CatalogsType,
-/* The catalog item id in the merchant namespace */
-  itemId: Option[String],
 /* Array with the errors for the item id requested */
-  errors: Option[List[ItemValidationEvent]])
+  errors: List[ItemValidationEvent],
+/* The catalog item id in the merchant namespace */
+  itemId: Option[String])
 
 object CatalogsRetailItemErrorResponse {
   import DateTimeCodecs._

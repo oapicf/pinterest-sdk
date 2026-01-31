@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | [default to undefined]
 **HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
 **COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  | [default to undefined]
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
 
 ## Example
 
@@ -30,6 +31,7 @@ const instance: CatalogsHotelProductGroupFilterKeys = {
     CUSTOM_LABEL_3,
     CUSTOM_LABEL_4,
     COUNTRY,
+    TITLE_KEYWORDS,
 };
 ```
 

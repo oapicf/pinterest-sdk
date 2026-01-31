@@ -16,13 +16,13 @@ void main() {
   // final instance = PinMediaWithImages();
 
   group('test PinMediaWithImages', () {
-    // String mediaType
-    test('to test the property `mediaType`', () async {
+    // List<ImageMetadata> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 
-    // List<ImageMetadata> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String mediaType
+    test('to test the property `mediaType`', () async {
       // TODO
     });
 

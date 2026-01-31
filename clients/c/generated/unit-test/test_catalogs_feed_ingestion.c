@@ -22,16 +22,16 @@ catalogs_feed_ingestion_t* instantiate_catalogs_feed_ingestion(int include_optio
   catalogs_feed_ingestion_t* catalogs_feed_ingestion = NULL;
   if (include_optional) {
     catalogs_feed_ingestion = catalogs_feed_ingestion_create(
-      "01234",
-      "56789",
       "2022-03-14T15:16:34Z",
+      "56789",
+      "01234",
       pinterest_rest_api_catalogs_feed_ingestion__COMPLETED
     );
   } else {
     catalogs_feed_ingestion = catalogs_feed_ingestion_create(
-      "01234",
-      "56789",
       "2022-03-14T15:16:34Z",
+      "56789",
+      "01234",
       pinterest_rest_api_catalogs_feed_ingestion__COMPLETED
     );
   }

@@ -39,22 +39,22 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Catalogs Feed object")
 @JsonTypeName("CatalogsFeed")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeed   {
   private Date createdAt;
   private String id;
   private Date updatedAt;
-  private String name;
-  private CatalogsFormat format;
   private CatalogsType catalogType;
   private CatalogsFeedCredentials credentials;
-  private String location;
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status;
+  private ProductAvailabilityType defaultAvailability;
+  private Country defaultCountry;
   private NullableCurrency defaultCurrency;
   private String defaultLocale;
-  private Country defaultCountry;
-  private ProductAvailabilityType defaultAvailability;
+  private CatalogsFormat format;
+  private String location;
+  private String name;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+  private CatalogsStatus status;
   private String catalogId;
 
   public CatalogsFeed() {
@@ -65,33 +65,33 @@ public class CatalogsFeed   {
     @JsonProperty(required = true, value = "created_at") Date createdAt,
     @JsonProperty(required = true, value = "id") String id,
     @JsonProperty(required = true, value = "updated_at") Date updatedAt,
-    @JsonProperty(required = true, value = "name") String name,
-    @JsonProperty(required = true, value = "format") CatalogsFormat format,
     @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
     @JsonProperty(required = true, value = "credentials") CatalogsFeedCredentials credentials,
-    @JsonProperty(required = true, value = "location") String location,
-    @JsonProperty(required = true, value = "preferred_processing_schedule") CatalogsFeedProcessingSchedule preferredProcessingSchedule,
-    @JsonProperty(required = true, value = "status") CatalogsStatus status,
+    @JsonProperty(required = true, value = "default_availability") ProductAvailabilityType defaultAvailability,
+    @JsonProperty(required = true, value = "default_country") Country defaultCountry,
     @JsonProperty(required = true, value = "default_currency") NullableCurrency defaultCurrency,
     @JsonProperty(required = true, value = "default_locale") String defaultLocale,
-    @JsonProperty(required = true, value = "default_country") Country defaultCountry,
-    @JsonProperty(required = true, value = "default_availability") ProductAvailabilityType defaultAvailability,
+    @JsonProperty(required = true, value = "format") CatalogsFormat format,
+    @JsonProperty(required = true, value = "location") String location,
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "preferred_processing_schedule") CatalogsFeedProcessingSchedule preferredProcessingSchedule,
+    @JsonProperty(required = true, value = "status") CatalogsStatus status,
     @JsonProperty(required = true, value = "catalog_id") String catalogId
   ) {
     this.createdAt = createdAt;
     this.id = id;
     this.updatedAt = updatedAt;
-    this.name = name;
-    this.format = format;
     this.catalogType = catalogType;
     this.credentials = credentials;
-    this.location = location;
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-    this.status = status;
+    this.defaultAvailability = defaultAvailability;
+    this.defaultCountry = defaultCountry;
     this.defaultCurrency = defaultCurrency;
     this.defaultLocale = defaultLocale;
-    this.defaultCountry = defaultCountry;
-    this.defaultAvailability = defaultAvailability;
+    this.format = format;
+    this.location = location;
+    this.name = name;
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+    this.status = status;
     this.catalogId = catalogId;
   }
 
@@ -153,45 +153,6 @@ public class CatalogsFeed   {
   }
 
   /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-   **/
-  public CatalogsFeed name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
-  @JsonProperty(required = true, value = "name")
-  @NotNull public String getName() {
-    return name;
-  }
-
-  @JsonProperty(required = true, value = "name")
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   **/
-  public CatalogsFeed format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "format")
-  @NotNull public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  @JsonProperty(required = true, value = "format")
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
-  /**
    **/
   public CatalogsFeed catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -230,61 +191,41 @@ public class CatalogsFeed   {
   }
 
   /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    **/
-  public CatalogsFeed location(String location) {
-    this.location = location;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-  @JsonProperty(required = true, value = "location")
-  @NotNull public String getLocation() {
-    return location;
-  }
-
-  @JsonProperty(required = true, value = "location")
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  /**
-   **/
-  public CatalogsFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  public CatalogsFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "preferred_processing_schedule")
-  @NotNull @Valid public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
+  @JsonProperty(required = true, value = "default_availability")
+  @NotNull public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
   }
 
-  @JsonProperty(required = true, value = "preferred_processing_schedule")
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  @JsonProperty(required = true, value = "default_availability")
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
   }
 
   /**
    **/
-  public CatalogsFeed status(CatalogsStatus status) {
-    this.status = status;
+  public CatalogsFeed defaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "status")
-  @NotNull public CatalogsStatus getStatus() {
-    return status;
+  @JsonProperty(required = true, value = "default_country")
+  @NotNull public Country getDefaultCountry() {
+    return defaultCountry;
   }
 
-  @JsonProperty(required = true, value = "status")
-  public void setStatus(CatalogsStatus status) {
-    this.status = status;
+  @JsonProperty(required = true, value = "default_country")
+  public void setDefaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
   }
 
   /**
@@ -328,40 +269,99 @@ public class CatalogsFeed   {
 
   /**
    **/
-  public CatalogsFeed defaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public CatalogsFeed format(CatalogsFormat format) {
+    this.format = format;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "default_country")
-  @NotNull public Country getDefaultCountry() {
-    return defaultCountry;
+  @JsonProperty(required = true, value = "format")
+  @NotNull public CatalogsFormat getFormat() {
+    return format;
   }
 
-  @JsonProperty(required = true, value = "default_country")
-  public void setDefaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  @JsonProperty(required = true, value = "format")
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+  /**
+   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+   **/
+  public CatalogsFeed location(String location) {
+    this.location = location;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+  @JsonProperty(required = true, value = "location")
+  @NotNull public String getLocation() {
+    return location;
+  }
+
+  @JsonProperty(required = true, value = "location")
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+   **/
+  public CatalogsFeed name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
+  @JsonProperty(required = true, value = "name")
+  @NotNull public String getName() {
+    return name;
+  }
+
+  @JsonProperty(required = true, value = "name")
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
    **/
-  public CatalogsFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  public CatalogsFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "default_availability")
-  @NotNull public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
+  @JsonProperty(required = true, value = "preferred_processing_schedule")
+  @NotNull @Valid public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
   }
 
-  @JsonProperty(required = true, value = "default_availability")
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  @JsonProperty(required = true, value = "preferred_processing_schedule")
+  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  }
+
+  /**
+   **/
+  public CatalogsFeed status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "status")
+  @NotNull public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  @JsonProperty(required = true, value = "status")
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
   /**
@@ -397,23 +397,23 @@ public class CatalogsFeed   {
     return Objects.equals(this.createdAt, catalogsFeed.createdAt) &&
         Objects.equals(this.id, catalogsFeed.id) &&
         Objects.equals(this.updatedAt, catalogsFeed.updatedAt) &&
-        Objects.equals(this.name, catalogsFeed.name) &&
-        Objects.equals(this.format, catalogsFeed.format) &&
         Objects.equals(this.catalogType, catalogsFeed.catalogType) &&
         Objects.equals(this.credentials, catalogsFeed.credentials) &&
-        Objects.equals(this.location, catalogsFeed.location) &&
-        Objects.equals(this.preferredProcessingSchedule, catalogsFeed.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsFeed.status) &&
+        Objects.equals(this.defaultAvailability, catalogsFeed.defaultAvailability) &&
+        Objects.equals(this.defaultCountry, catalogsFeed.defaultCountry) &&
         Objects.equals(this.defaultCurrency, catalogsFeed.defaultCurrency) &&
         Objects.equals(this.defaultLocale, catalogsFeed.defaultLocale) &&
-        Objects.equals(this.defaultCountry, catalogsFeed.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsFeed.defaultAvailability) &&
+        Objects.equals(this.format, catalogsFeed.format) &&
+        Objects.equals(this.location, catalogsFeed.location) &&
+        Objects.equals(this.name, catalogsFeed.name) &&
+        Objects.equals(this.preferredProcessingSchedule, catalogsFeed.preferredProcessingSchedule) &&
+        Objects.equals(this.status, catalogsFeed.status) &&
         Objects.equals(this.catalogId, catalogsFeed.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, format, catalogType, credentials, location, preferredProcessingSchedule, status, defaultCurrency, defaultLocale, defaultCountry, defaultAvailability, catalogId);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, credentials, defaultAvailability, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status, catalogId);
   }
 
   @Override
@@ -424,17 +424,17 @@ public class CatalogsFeed   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();

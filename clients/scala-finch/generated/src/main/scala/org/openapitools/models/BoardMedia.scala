@@ -8,8 +8,8 @@ import org.openapitools._
 import scala.collection.immutable.Seq
 
 /**
- * Board media.
- * @param imageUnderscorecoverUnderscoreurl Board cover image.
+ * 
+ * @param imageUnderscorecoverUnderscoreurl Board cover image
  * @param pinUnderscorethumbnailUnderscoreurls Board pin thumbnail urls.
  */
 case class BoardMedia(imageUnderscorecoverUnderscoreurl: Option[String],

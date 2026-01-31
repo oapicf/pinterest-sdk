@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,17 +19,17 @@ type DetailedError struct {
 
 	Code int32 `json:"code"`
 
-	Message string `json:"message"`
-
 	Details map[string]interface{} `json:"details"`
+
+	Message string `json:"message"`
 }
 
 // AssertDetailedErrorRequired checks if the required fields are not zero-ed
 func AssertDetailedErrorRequired(obj DetailedError) error {
 	elements := map[string]interface{}{
 		"code": obj.Code,
-		"message": obj.Message,
 		"details": obj.Details,
+		"message": obj.Message,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

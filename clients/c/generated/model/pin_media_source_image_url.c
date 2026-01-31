@@ -23,31 +23,31 @@ pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e pin_media_source_imag
 }
 
 static pin_media_source_image_url_t *pin_media_source_image_url_create_internal(
+    int is_standard,
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type,
-    char *url,
-    int is_standard
+    char *url
     ) {
     pin_media_source_image_url_t *pin_media_source_image_url_local_var = malloc(sizeof(pin_media_source_image_url_t));
     if (!pin_media_source_image_url_local_var) {
         return NULL;
     }
+    pin_media_source_image_url_local_var->is_standard = is_standard;
     pin_media_source_image_url_local_var->source_type = source_type;
     pin_media_source_image_url_local_var->url = url;
-    pin_media_source_image_url_local_var->is_standard = is_standard;
 
     pin_media_source_image_url_local_var->_library_owned = 1;
     return pin_media_source_image_url_local_var;
 }
 
 __attribute__((deprecated)) pin_media_source_image_url_t *pin_media_source_image_url_create(
+    int is_standard,
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type,
-    char *url,
-    int is_standard
+    char *url
     ) {
     return pin_media_source_image_url_create_internal (
+        is_standard,
         source_type,
-        url,
-        is_standard
+        url
         );
 }
 
@@ -70,6 +70,14 @@ void pin_media_source_image_url_free(pin_media_source_image_url_t *pin_media_sou
 cJSON *pin_media_source_image_url_convertToJSON(pin_media_source_image_url_t *pin_media_source_image_url) {
     cJSON *item = cJSON_CreateObject();
 
+    // pin_media_source_image_url->is_standard
+    if(pin_media_source_image_url->is_standard) {
+    if(cJSON_AddBoolToObject(item, "is_standard", pin_media_source_image_url->is_standard) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // pin_media_source_image_url->source_type
     if (pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_NULL == pin_media_source_image_url->source_type) {
         goto fail;
@@ -88,14 +96,6 @@ cJSON *pin_media_source_image_url_convertToJSON(pin_media_source_image_url_t *pi
     goto fail; //String
     }
 
-
-    // pin_media_source_image_url->is_standard
-    if(pin_media_source_image_url->is_standard) {
-    if(cJSON_AddBoolToObject(item, "is_standard", pin_media_source_image_url->is_standard) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -107,6 +107,18 @@ fail:
 pin_media_source_image_url_t *pin_media_source_image_url_parseFromJSON(cJSON *pin_media_source_image_urlJSON){
 
     pin_media_source_image_url_t *pin_media_source_image_url_local_var = NULL;
+
+    // pin_media_source_image_url->is_standard
+    cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_urlJSON, "is_standard");
+    if (cJSON_IsNull(is_standard)) {
+        is_standard = NULL;
+    }
+    if (is_standard) { 
+    if(!cJSON_IsBool(is_standard))
+    {
+    goto end; //Bool
+    }
+    }
 
     // pin_media_source_image_url->source_type
     cJSON *source_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_urlJSON, "source_type");
@@ -140,23 +152,11 @@ pin_media_source_image_url_t *pin_media_source_image_url_parseFromJSON(cJSON *pi
     goto end; //String
     }
 
-    // pin_media_source_image_url->is_standard
-    cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_urlJSON, "is_standard");
-    if (cJSON_IsNull(is_standard)) {
-        is_standard = NULL;
-    }
-    if (is_standard) { 
-    if(!cJSON_IsBool(is_standard))
-    {
-    goto end; //Bool
-    }
-    }
-
 
     pin_media_source_image_url_local_var = pin_media_source_image_url_create_internal (
+        is_standard ? is_standard->valueint : 0,
         source_typeVariable,
-        strdup(url->valuestring),
-        is_standard ? is_standard->valueint : 0
+        strdup(url->valuestring)
         );
 
     return pin_media_source_image_url_local_var;

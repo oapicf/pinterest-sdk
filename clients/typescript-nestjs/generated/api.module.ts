@@ -16,20 +16,32 @@ import { BusinessAccessAssetsService } from './api/businessAccessAssets.service'
 import { BusinessAccessInviteService } from './api/businessAccessInvite.service';
 import { BusinessAccessRelationshipsService } from './api/businessAccessRelationships.service';
 import { CampaignsService } from './api/campaigns.service';
+import { CatalogFeedsService } from './api/catalogFeeds.service';
+import { CatalogItemsService } from './api/catalogItems.service';
+import { CatalogProductGroupsService } from './api/catalogProductGroups.service';
+import { CatalogReportsService } from './api/catalogReports.service';
 import { CatalogsService } from './api/catalogs.service';
+import { ConversionEqsService } from './api/conversionEqs.service';
 import { ConversionEventsService } from './api/conversionEvents.service';
 import { ConversionTagsService } from './api/conversionTags.service';
+import { ConversionsService } from './api/conversions.service';
+import { CustomerListUploadsService } from './api/customerListUploads.service';
 import { CustomerListsService } from './api/customerLists.service';
 import { IntegrationsService } from './api/integrations.service';
 import { KeywordsService } from './api/keywords.service';
+import { LabelsService } from './api/labels.service';
 import { LeadAdsService } from './api/leadAds.service';
 import { LeadFormsService } from './api/leadForms.service';
 import { LeadsExportService } from './api/leadsExport.service';
 import { MediaService } from './api/media.service';
+import { MsotEventsService } from './api/msotEvents.service';
+import { NotificationService } from './api/notification.service';
 import { OauthService } from './api/oauth.service';
 import { OrderLinesService } from './api/orderLines.service';
 import { PinsService } from './api/pins.service';
+import { ProductCategoriesService } from './api/productCategories.service';
 import { ProductGroupPromotionsService } from './api/productGroupPromotions.service';
+import { PromotionsService } from './api/promotions.service';
 import { ResourcesService } from './api/resources.service';
 import { SearchService } from './api/search.service';
 import { TargetingTemplateService } from './api/targetingTemplate.service';
@@ -55,20 +67,32 @@ import { UserAccountService } from './api/userAccount.service';
     BusinessAccessInviteService,
     BusinessAccessRelationshipsService,
     CampaignsService,
+    CatalogFeedsService,
+    CatalogItemsService,
+    CatalogProductGroupsService,
+    CatalogReportsService,
     CatalogsService,
+    ConversionEqsService,
     ConversionEventsService,
     ConversionTagsService,
+    ConversionsService,
+    CustomerListUploadsService,
     CustomerListsService,
     IntegrationsService,
     KeywordsService,
+    LabelsService,
     LeadAdsService,
     LeadFormsService,
     LeadsExportService,
     MediaService,
+    MsotEventsService,
+    NotificationService,
     OauthService,
     OrderLinesService,
     PinsService,
+    ProductCategoriesService,
     ProductGroupPromotionsService,
+    PromotionsService,
     ResourcesService,
     SearchService,
     TargetingTemplateService,
@@ -91,20 +115,32 @@ import { UserAccountService } from './api/userAccount.service';
     BusinessAccessInviteService,
     BusinessAccessRelationshipsService,
     CampaignsService,
+    CatalogFeedsService,
+    CatalogItemsService,
+    CatalogProductGroupsService,
+    CatalogReportsService,
     CatalogsService,
+    ConversionEqsService,
     ConversionEventsService,
     ConversionTagsService,
+    ConversionsService,
+    CustomerListUploadsService,
     CustomerListsService,
     IntegrationsService,
     KeywordsService,
+    LabelsService,
     LeadAdsService,
     LeadFormsService,
     LeadsExportService,
     MediaService,
+    MsotEventsService,
+    NotificationService,
     OauthService,
     OrderLinesService,
     PinsService,
+    ProductCategoriesService,
     ProductGroupPromotionsService,
+    PromotionsService,
     ResourcesService,
     SearchService,
     TargetingTemplateService,

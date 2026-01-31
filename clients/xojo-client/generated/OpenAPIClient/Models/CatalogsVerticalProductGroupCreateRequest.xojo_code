@@ -2,12 +2,20 @@
 Protected Class CatalogsVerticalProductGroupCreateRequest
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the creative assets product group.
+		#tag EndNote
+		catalog_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		name As String
+		country As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -22,20 +30,12 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Catalog id pertaining to the creative assets product group.
-		#tag EndNote
-		catalog_id As String
+		locale As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		country As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		locale As String
+		name As String
 	#tag EndProperty
 
 
@@ -93,11 +93,19 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -117,27 +125,19 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="country"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Country"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="locale"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsLocale"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

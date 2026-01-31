@@ -37,7 +37,7 @@ void conversion_tag_list_response_free(conversion_tag_list_response_t *conversio
     listEntry_t *listEntry;
     if (conversion_tag_list_response->items) {
         list_ForEach(listEntry, conversion_tag_list_response->items) {
-            conversion_tag_response_free(listEntry->data);
+            conversion_tag_free(listEntry->data);
         }
         list_freeList(conversion_tag_list_response->items);
         conversion_tag_list_response->items = NULL;
@@ -58,7 +58,7 @@ cJSON *conversion_tag_list_response_convertToJSON(conversion_tag_list_response_t
     listEntry_t *itemsListEntry;
     if (conversion_tag_list_response->items) {
     list_ForEach(itemsListEntry, conversion_tag_list_response->items) {
-    cJSON *itemLocal = conversion_tag_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = conversion_tag_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -100,7 +100,7 @@ conversion_tag_list_response_t *conversion_tag_list_response_parseFromJSON(cJSON
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        conversion_tag_response_t *itemsItem = conversion_tag_response_parseFromJSON(items_local_nonprimitive);
+        conversion_tag_t *itemsItem = conversion_tag_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
@@ -116,7 +116,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            conversion_tag_response_free(listEntry->data);
+            conversion_tag_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -15,6 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IntegrationLogClientRequest  {
   
+ /**
+  * HTTP request host from host header.
+  */
+  @ApiModelProperty(required = true, value = "HTTP request host from host header.")
+
+  private String host;
+
 public enum MethodEnum {
 
 GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("POST")), PUT(String.valueOf("PUT")), DELETE(String.valueOf("DELETE")), CONNECT(String.valueOf("CONNECT")), OPTIONS(String.valueOf("OPTIONS")), TRACE(String.valueOf("TRACE")), PATCH(String.valueOf("PATCH"));
@@ -50,13 +57,6 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
   private MethodEnum method;
 
  /**
-  * HTTP request host from host header.
-  */
-  @ApiModelProperty(required = true, value = "HTTP request host from host header.")
-
-  private String host;
-
- /**
   * HTTP request path.
   */
   @ApiModelProperty(required = true, value = "HTTP request path.")
@@ -81,6 +81,24 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
 
   private Integer responseStatusCode;
  /**
+   * HTTP request host from host header.
+   * @return host
+  **/
+  @JsonProperty("host")
+  public String getHost() {
+    return host;
+  }
+
+  public void setHost(String host) {
+    this.host = host;
+  }
+
+  public IntegrationLogClientRequest host(String host) {
+    this.host = host;
+    return this;
+  }
+
+ /**
    * Get method
    * @return method
   **/
@@ -98,24 +116,6 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
 
   public IntegrationLogClientRequest method(MethodEnum method) {
     this.method = method;
-    return this;
-  }
-
- /**
-   * HTTP request host from host header.
-   * @return host
-  **/
-  @JsonProperty("host")
-  public String getHost() {
-    return host;
-  }
-
-  public void setHost(String host) {
-    this.host = host;
-  }
-
-  public IntegrationLogClientRequest host(String host) {
-    this.host = host;
     return this;
   }
 
@@ -210,8 +210,8 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(this.method, integrationLogClientRequest.method) &&
-        Objects.equals(this.host, integrationLogClientRequest.host) &&
+    return Objects.equals(this.host, integrationLogClientRequest.host) &&
+        Objects.equals(this.method, integrationLogClientRequest.method) &&
         Objects.equals(this.path, integrationLogClientRequest.path) &&
         Objects.equals(this.requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(this.responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -220,7 +220,7 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
@@ -228,8 +228,8 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
     
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

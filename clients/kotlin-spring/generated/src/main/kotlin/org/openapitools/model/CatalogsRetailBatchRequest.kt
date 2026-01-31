@@ -21,8 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
  * A request object that can have multiple operations on a single retail batch
  * @param catalogType 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
+ * @param language We recommend using the CatalogsLocale values.
+ * @param catalogId Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
  */
 data class CatalogsRetailBatchRequest(
 
@@ -33,13 +34,17 @@ data class CatalogsRetailBatchRequest(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
 
-    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
-    @get:JsonProperty("language", required = true) val language: CatalogsRetailBatchRequest.Language,
-
     @field:Valid
     @get:Size(min=1,max=1000) 
     @Schema(example = "null", required = true, description = "Array with catalogs item operations")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>,
+
+    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
+    @get:JsonProperty("language", required = true) val language: CatalogsRetailBatchRequest.Language,
+
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "2680059592705", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+    @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
 ) {
 
     /**

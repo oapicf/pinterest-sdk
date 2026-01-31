@@ -1,0 +1,81 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerListUploadResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerListUploadResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ErrorDetail = openapi_server.resourceTypes.ErrorDetail
+  RecordCounts = openapi_server.resourceTypes.RecordCounts
+  UserListOperationType = openapi_server.resourceTypes.UserListOperationType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CustomerListUploadResponse {
+    title = CustomerListUploadResponse
+    description = CustomerListUploadResponse
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Advertiser ID."
+          optional = true
+        }
+        creation_time {
+          type =  integer
+          description = "Customer List Upload creation_time. Epoch (seconds)."
+          optional = true
+        }
+        customer_list_id {
+          type =  string
+          description = "ID of the customer list associated with this upload."
+          optional = true
+        }
+        error_counts {
+          type = array
+          items.type = ErrorDetail
+          description = "Error counts by error code"
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Customer List Upload ID."
+          optional = true
+        }
+        operation {
+          type = UserListOperationType
+          description = ""
+          optional = true
+        }
+        record_counts {
+          type = RecordCounts
+          description = ""
+          optional = false
+        }
+        state {
+          type =  string
+          description = "Workload processing state"
+          enum = ["NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED"]
+          optional = true
+        }
+        updated_time {
+          type =  integer
+          description = "Customer List Upload updated_time. Epoch (seconds)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerListUploadResponse {
+    title = CustomerListUploadResponse
+    description = CustomerListUploadResponse
+    implements = openapi_server.resourceTypes.CustomerListUploadResponse
+
+  }
+}

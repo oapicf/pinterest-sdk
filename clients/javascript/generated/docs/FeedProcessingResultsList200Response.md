@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[CatalogsFeedProcessingResult]**](CatalogsFeedProcessingResult.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[CatalogsFeedProcessingResult]**](CatalogsFeedProcessingResult.md) |  | 
 
 

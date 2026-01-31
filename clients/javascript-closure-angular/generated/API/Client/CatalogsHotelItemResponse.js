@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsHotelItemResponse');
 API.Client.CatalogsHotelItemResponse = function() {}
 
 /**
+ * @type {!API.Client.CatalogsHotelAttributes}
+ * @export
+ */
+API.Client.CatalogsHotelItemResponse.prototype.attributes;
+
+/**
  * @type {!API.Client.CatalogsType}
  * @export
  */
@@ -25,10 +31,4 @@ API.Client.CatalogsHotelItemResponse.prototype.hotelId;
  * @export
  */
 API.Client.CatalogsHotelItemResponse.prototype.pins;
-
-/**
- * @type {!API.Client.CatalogsHotelAttributes}
- * @export
- */
-API.Client.CatalogsHotelItemResponse.prototype.attributes;
 

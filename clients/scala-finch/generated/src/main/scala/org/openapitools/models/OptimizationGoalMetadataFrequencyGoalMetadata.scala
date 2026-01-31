@@ -8,7 +8,7 @@ import org.openapitools._
 
 /**
  * 
- * @param frequency 
+ * @param frequency Frequency target can only be between 2 and 20
  * @param timerange User entity counts time range
  */
 case class OptimizationGoalMetadataFrequencyGoalMetadata(frequency: Option[Int],

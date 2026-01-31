@@ -16,7 +16,7 @@ feature -- Test routines
     test_audiences_create
             -- Create audience
             --
-            -- Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+            -- Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
         local
             l_response: AUDIENCE
             l_ad_account_id: STRING_32
@@ -27,23 +27,6 @@ feature -- Test routines
             -- l_audience_create_request
 
             -- l_response := api.audiences_create(l_ad_account_id, l_audience_create_request)
-            assert ("not_implemented", False)
-        end
-
-    test_audiences_create_custom
-            -- Create custom audience
-            --
-            -- Create a custom audience and find the audiences you want your ads to reach.
-        local
-            l_response: AUDIENCE
-            l_ad_account_id: STRING_32
-            l_audience_create_custom_request: AUDIENCE_CREATE_CUSTOM_REQUEST
-        do
-            -- TODO: Initialize required params.
-            -- l_ad_account_id
-            -- l_audience_create_custom_request
-
-            -- l_response := api.audiences_create_custom(l_ad_account_id, l_audience_create_custom_request)
             assert ("not_implemented", False)
         end
 
@@ -96,6 +79,7 @@ feature -- Test routines
             -- TODO: Initialize required params.
             -- l_ad_account_id
             -- l_audience_id
+            -- l_audience_update_request
 
             -- l_response := api.audiences_update(l_ad_account_id, l_audience_id, l_audience_update_request)
             assert ("not_implemented", False)

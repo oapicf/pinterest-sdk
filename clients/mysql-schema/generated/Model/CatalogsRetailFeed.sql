@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsRetailFeed`
 --
-SELECT `created_at`, `id`, `updated_at`, `name`, `format`, `catalog_type`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `default_currency`, `default_locale`, `default_country`, `default_availability` FROM `CatalogsRetailFeed` WHERE 1;
+SELECT `created_at`, `id`, `updated_at`, `catalog_type`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status` FROM `CatalogsRetailFeed` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsRetailFeed`
 --
-INSERT INTO `CatalogsRetailFeed`(`created_at`, `id`, `updated_at`, `name`, `format`, `catalog_type`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `default_currency`, `default_locale`, `default_country`, `default_availability`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsRetailFeed`(`created_at`, `id`, `updated_at`, `catalog_type`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsRetailFeed`
 --
-UPDATE `CatalogsRetailFeed` SET `created_at` = ?, `id` = ?, `updated_at` = ?, `name` = ?, `format` = ?, `catalog_type` = ?, `credentials` = ?, `location` = ?, `preferred_processing_schedule` = ?, `status` = ?, `default_currency` = ?, `default_locale` = ?, `default_country` = ?, `default_availability` = ? WHERE 1;
+UPDATE `CatalogsRetailFeed` SET `created_at` = ?, `id` = ?, `updated_at` = ?, `catalog_type` = ?, `credentials` = ?, `default_availability` = ?, `default_country` = ?, `default_currency` = ?, `default_locale` = ?, `format` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsRetailFeed`

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PinUpdateCarouselSlotsInner;
+import org.openapitools.model.CarouselSlot;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -49,6 +49,14 @@ public class PinUpdateTest {
     }
 
     /**
+     * Test the property 'carouselSlots'
+     */
+    @Test
+    public void carouselSlotsTest() {
+        // TODO: test carouselSlots
+    }
+
+    /**
      * Test the property 'description'
      */
     @Test
@@ -70,22 +78,6 @@ public class PinUpdateTest {
     @Test
     public void titleTest() {
         // TODO: test title
-    }
-
-    /**
-     * Test the property 'carouselSlots'
-     */
-    @Test
-    public void carouselSlotsTest() {
-        // TODO: test carouselSlots
-    }
-
-    /**
-     * Test the property 'note'
-     */
-    @Test
-    public void noteTest() {
-        // TODO: test note
     }
 
 }

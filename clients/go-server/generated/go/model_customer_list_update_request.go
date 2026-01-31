@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,19 +16,17 @@ package openapi
 
 type CustomerListUpdateRequest struct {
 
-	// Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-	Records string `json:"records"`
-
 	OperationType UserListOperationType `json:"operation_type"`
 
-	Exceptions Exception `json:"exceptions,omitempty"`
+	// Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
+	Records string `json:"records"`
 }
 
 // AssertCustomerListUpdateRequestRequired checks if the required fields are not zero-ed
 func AssertCustomerListUpdateRequestRequired(obj CustomerListUpdateRequest) error {
 	elements := map[string]interface{}{
-		"records": obj.Records,
 		"operation_type": obj.OperationType,
+		"records": obj.Records,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

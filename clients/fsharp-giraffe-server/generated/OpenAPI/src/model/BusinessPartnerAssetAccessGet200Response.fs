@@ -11,7 +11,7 @@ module BusinessPartnerAssetAccessGet200Response =
 
 
   type business_partner_asset_access_get_200_response = {
-    Items : GetPartnerAssetsResponse[];
     Bookmark : string option;
+    Items : GetPartnerAssetsResponse[];
   }
   //#endregion

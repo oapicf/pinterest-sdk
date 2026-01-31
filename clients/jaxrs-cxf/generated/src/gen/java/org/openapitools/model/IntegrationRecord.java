@@ -18,19 +18,7 @@ public class IntegrationRecord  {
   
   @ApiModelProperty(value = "")
 
-  private String id;
-
-  @ApiModelProperty(value = "")
-
-  private String externalBusinessId;
-
-  @ApiModelProperty(value = "")
-
-  private String connectedMerchantId;
-
-  @ApiModelProperty(value = "")
-
-  private String connectedUserId;
+  private String additionalId1;
 
   @ApiModelProperty(value = "")
 
@@ -42,7 +30,27 @@ public class IntegrationRecord  {
 
   @ApiModelProperty(value = "")
 
+  private String connectedMerchantId;
+
+  @ApiModelProperty(value = "")
+
   private String connectedTagId;
+
+  @ApiModelProperty(value = "")
+
+  private String connectedUserId;
+
+  @ApiModelProperty(value = "")
+
+  private Integer createdTime;
+
+  @ApiModelProperty(value = "")
+
+  private String externalBusinessId;
+
+  @ApiModelProperty(value = "")
+
+  private String id;
 
   @ApiModelProperty(value = "")
 
@@ -50,7 +58,11 @@ public class IntegrationRecord  {
 
   @ApiModelProperty(value = "")
 
-  private String partnerRefreshToken;
+  private Integer partnerAccessTokenExpiry;
+
+  @ApiModelProperty(value = "")
+
+  private String partnerMetadata;
 
   @ApiModelProperty(value = "")
 
@@ -58,7 +70,7 @@ public class IntegrationRecord  {
 
   @ApiModelProperty(value = "")
 
-  private Integer partnerAccessTokenExpiry;
+  private String partnerRefreshToken;
 
   @ApiModelProperty(value = "")
 
@@ -70,82 +82,24 @@ public class IntegrationRecord  {
 
   @ApiModelProperty(value = "")
 
-  private String partnerMetadata;
-
-  @ApiModelProperty(value = "")
-
-  private String additionalId1;
-
-  @ApiModelProperty(value = "")
-
-  private Integer createdTime;
-
-  @ApiModelProperty(value = "")
-
   private Integer updatedTime;
  /**
-   * Get id
-   * @return id
+   * Get additionalId1
+   * @return additionalId1
   **/
-  @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
+  @JsonProperty("additional_id_1")
+  public String getAdditionalId1() {
+    return additionalId1;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setAdditionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
   }
 
-  public IntegrationRecord id(String id) {
-    this.id = id;
+  public IntegrationRecord additionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
     return this;
   }
-
- /**
-   * Get externalBusinessId
-   * @return externalBusinessId
-  **/
-  @JsonProperty("external_business_id")
-  public String getExternalBusinessId() {
-    return externalBusinessId;
-  }
-
-  public void setExternalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-  }
-
-  public IntegrationRecord externalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-    return this;
-  }
-
- /**
-   * Get connectedMerchantId
-   * @return connectedMerchantId
-  **/
-  @JsonProperty("connected_merchant_id")
-  public String getConnectedMerchantId() {
-    return connectedMerchantId;
-  }
-
-  public void setConnectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-  }
-
-  public IntegrationRecord connectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-    return this;
-  }
-
- /**
-   * Get connectedUserId
-   * @return connectedUserId
-  **/
-  @JsonProperty("connected_user_id")
-  public String getConnectedUserId() {
-    return connectedUserId;
-  }
-
 
  /**
    * Get connectedAdvertiserId
@@ -176,6 +130,24 @@ public class IntegrationRecord  {
   }
 
  /**
+   * Get connectedMerchantId
+   * @return connectedMerchantId
+  **/
+  @JsonProperty("connected_merchant_id")
+  public String getConnectedMerchantId() {
+    return connectedMerchantId;
+  }
+
+  public void setConnectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+  }
+
+  public IntegrationRecord connectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+    return this;
+  }
+
+ /**
    * Get connectedTagId
    * @return connectedTagId
   **/
@@ -190,6 +162,70 @@ public class IntegrationRecord  {
 
   public IntegrationRecord connectedTagId(String connectedTagId) {
     this.connectedTagId = connectedTagId;
+    return this;
+  }
+
+ /**
+   * Get connectedUserId
+   * @return connectedUserId
+  **/
+  @JsonProperty("connected_user_id")
+  public String getConnectedUserId() {
+    return connectedUserId;
+  }
+
+
+ /**
+   * Get createdTime
+   * @return createdTime
+  **/
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  public IntegrationRecord createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+ /**
+   * Get externalBusinessId
+   * @return externalBusinessId
+  **/
+  @JsonProperty("external_business_id")
+  public String getExternalBusinessId() {
+    return externalBusinessId;
+  }
+
+  public void setExternalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+  }
+
+  public IntegrationRecord externalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+    return this;
+  }
+
+ /**
+   * Get id
+   * @return id
+  **/
+  @JsonProperty("id")
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public IntegrationRecord id(String id) {
+    this.id = id;
     return this;
   }
 
@@ -212,20 +248,38 @@ public class IntegrationRecord  {
   }
 
  /**
-   * Get partnerRefreshToken
-   * @return partnerRefreshToken
+   * Get partnerAccessTokenExpiry
+   * @return partnerAccessTokenExpiry
   **/
-  @JsonProperty("partner_refresh_token")
-  public String getPartnerRefreshToken() {
-    return partnerRefreshToken;
+  @JsonProperty("partner_access_token_expiry")
+  public Integer getPartnerAccessTokenExpiry() {
+    return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
+  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
-  public IntegrationRecord partnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
+  public IntegrationRecord partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+    return this;
+  }
+
+ /**
+   * Get partnerMetadata
+   * @return partnerMetadata
+  **/
+  @JsonProperty("partner_metadata")
+  public String getPartnerMetadata() {
+    return partnerMetadata;
+  }
+
+  public void setPartnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+  }
+
+  public IntegrationRecord partnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
     return this;
   }
 
@@ -248,20 +302,20 @@ public class IntegrationRecord  {
   }
 
  /**
-   * Get partnerAccessTokenExpiry
-   * @return partnerAccessTokenExpiry
+   * Get partnerRefreshToken
+   * @return partnerRefreshToken
   **/
-  @JsonProperty("partner_access_token_expiry")
-  public Integer getPartnerAccessTokenExpiry() {
-    return partnerAccessTokenExpiry;
+  @JsonProperty("partner_refresh_token")
+  public String getPartnerRefreshToken() {
+    return partnerRefreshToken;
   }
 
-  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
-    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  public void setPartnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
   }
 
-  public IntegrationRecord partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
-    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  public IntegrationRecord partnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
 
@@ -302,60 +356,6 @@ public class IntegrationRecord  {
   }
 
  /**
-   * Get partnerMetadata
-   * @return partnerMetadata
-  **/
-  @JsonProperty("partner_metadata")
-  public String getPartnerMetadata() {
-    return partnerMetadata;
-  }
-
-  public void setPartnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-  }
-
-  public IntegrationRecord partnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-    return this;
-  }
-
- /**
-   * Get additionalId1
-   * @return additionalId1
-  **/
-  @JsonProperty("additional_id_1")
-  public String getAdditionalId1() {
-    return additionalId1;
-  }
-
-  public void setAdditionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-  }
-
-  public IntegrationRecord additionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-    return this;
-  }
-
- /**
-   * Get createdTime
-   * @return createdTime
-  **/
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  public IntegrationRecord createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
- /**
    * Get updatedTime
    * @return updatedTime
   **/
@@ -382,28 +382,28 @@ public class IntegrationRecord  {
       return false;
     }
     IntegrationRecord integrationRecord = (IntegrationRecord) o;
-    return Objects.equals(this.id, integrationRecord.id) &&
-        Objects.equals(this.externalBusinessId, integrationRecord.externalBusinessId) &&
-        Objects.equals(this.connectedMerchantId, integrationRecord.connectedMerchantId) &&
-        Objects.equals(this.connectedUserId, integrationRecord.connectedUserId) &&
+    return Objects.equals(this.additionalId1, integrationRecord.additionalId1) &&
         Objects.equals(this.connectedAdvertiserId, integrationRecord.connectedAdvertiserId) &&
         Objects.equals(this.connectedLbaId, integrationRecord.connectedLbaId) &&
+        Objects.equals(this.connectedMerchantId, integrationRecord.connectedMerchantId) &&
         Objects.equals(this.connectedTagId, integrationRecord.connectedTagId) &&
+        Objects.equals(this.connectedUserId, integrationRecord.connectedUserId) &&
+        Objects.equals(this.createdTime, integrationRecord.createdTime) &&
+        Objects.equals(this.externalBusinessId, integrationRecord.externalBusinessId) &&
+        Objects.equals(this.id, integrationRecord.id) &&
         Objects.equals(this.partnerAccessToken, integrationRecord.partnerAccessToken) &&
-        Objects.equals(this.partnerRefreshToken, integrationRecord.partnerRefreshToken) &&
-        Objects.equals(this.partnerPrimaryEmail, integrationRecord.partnerPrimaryEmail) &&
         Objects.equals(this.partnerAccessTokenExpiry, integrationRecord.partnerAccessTokenExpiry) &&
+        Objects.equals(this.partnerMetadata, integrationRecord.partnerMetadata) &&
+        Objects.equals(this.partnerPrimaryEmail, integrationRecord.partnerPrimaryEmail) &&
+        Objects.equals(this.partnerRefreshToken, integrationRecord.partnerRefreshToken) &&
         Objects.equals(this.partnerRefreshTokenExpiry, integrationRecord.partnerRefreshTokenExpiry) &&
         Objects.equals(this.scopes, integrationRecord.scopes) &&
-        Objects.equals(this.partnerMetadata, integrationRecord.partnerMetadata) &&
-        Objects.equals(this.additionalId1, integrationRecord.additionalId1) &&
-        Objects.equals(this.createdTime, integrationRecord.createdTime) &&
         Objects.equals(this.updatedTime, integrationRecord.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, externalBusinessId, connectedMerchantId, connectedUserId, connectedAdvertiserId, connectedLbaId, connectedTagId, partnerAccessToken, partnerRefreshToken, partnerPrimaryEmail, partnerAccessTokenExpiry, partnerRefreshTokenExpiry, scopes, partnerMetadata, additionalId1, createdTime, updatedTime);
+    return Objects.hash(additionalId1, connectedAdvertiserId, connectedLbaId, connectedMerchantId, connectedTagId, connectedUserId, createdTime, externalBusinessId, id, partnerAccessToken, partnerAccessTokenExpiry, partnerMetadata, partnerPrimaryEmail, partnerRefreshToken, partnerRefreshTokenExpiry, scopes, updatedTime);
   }
 
   @Override
@@ -411,22 +411,22 @@ public class IntegrationRecord  {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationRecord {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
-    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
-    sb.append("    connectedUserId: ").append(toIndentedString(connectedUserId)).append("\n");
+    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
     sb.append("    connectedAdvertiserId: ").append(toIndentedString(connectedAdvertiserId)).append("\n");
     sb.append("    connectedLbaId: ").append(toIndentedString(connectedLbaId)).append("\n");
+    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
     sb.append("    connectedTagId: ").append(toIndentedString(connectedTagId)).append("\n");
+    sb.append("    connectedUserId: ").append(toIndentedString(connectedUserId)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
-    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
-    sb.append("    partnerPrimaryEmail: ").append(toIndentedString(partnerPrimaryEmail)).append("\n");
     sb.append("    partnerAccessTokenExpiry: ").append(toIndentedString(partnerAccessTokenExpiry)).append("\n");
+    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
+    sb.append("    partnerPrimaryEmail: ").append(toIndentedString(partnerPrimaryEmail)).append("\n");
+    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
     sb.append("    partnerRefreshTokenExpiry: ").append(toIndentedString(partnerRefreshTokenExpiry)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
-    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
-    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

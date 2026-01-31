@@ -22,14 +22,6 @@ public class CatalogsProductGroupCreateRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
@@ -38,11 +30,11 @@ public class CatalogsProductGroupCreateRequestTest {
     }
 
     /**
-     * Test the property 'isFeatured'
+     * Test the property 'feedId'
      */
     @Test
-    public void isFeaturedTest() {
-        // TODO: test isFeatured
+    public void feedIdTest() {
+        // TODO: test feedId
     }
 
     /**
@@ -54,11 +46,19 @@ public class CatalogsProductGroupCreateRequestTest {
     }
 
     /**
-     * Test the property 'feedId'
+     * Test the property 'isFeatured'
      */
     @Test
-    public void feedIdTest() {
-        // TODO: test feedId
+    public void isFeaturedTest() {
+        // TODO: test isFeatured
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
 }

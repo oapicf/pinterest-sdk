@@ -22,11 +22,13 @@ import org.openapitools.client.models.CatalogsProductGroupFilterKeys
 import org.openapitools.client.models.AvailabilityFilter
 import org.openapitools.client.models.BrandFilter
 import org.openapitools.client.models.CatalogsProductGroupCurrencyCriteria
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleGenderCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCriteria
+import org.openapitools.client.models.CatalogsProductGroupUint32Criteria
 import org.openapitools.client.models.ConditionFilter
 import org.openapitools.client.models.CurrencyFilter
 import org.openapitools.client.models.CustomLabel0Filter
@@ -34,6 +36,11 @@ import org.openapitools.client.models.CustomLabel1Filter
 import org.openapitools.client.models.CustomLabel2Filter
 import org.openapitools.client.models.CustomLabel3Filter
 import org.openapitools.client.models.CustomLabel4Filter
+import org.openapitools.client.models.CustomNumber0Filter
+import org.openapitools.client.models.CustomNumber1Filter
+import org.openapitools.client.models.CustomNumber2Filter
+import org.openapitools.client.models.CustomNumber3Filter
+import org.openapitools.client.models.CustomNumber4Filter
 import org.openapitools.client.models.GenderFilter
 import org.openapitools.client.models.GoogleProductCategory0Filter
 import org.openapitools.client.models.GoogleProductCategory1Filter
@@ -53,6 +60,7 @@ import org.openapitools.client.models.ProductType1Filter
 import org.openapitools.client.models.ProductType2Filter
 import org.openapitools.client.models.ProductType3Filter
 import org.openapitools.client.models.ProductType4Filter
+import org.openapitools.client.models.TitleKeywordsFilter
 
 class CatalogsProductGroupFilterKeysTest : ShouldSpec() {
     init {
@@ -225,6 +233,42 @@ class CatalogsProductGroupFilterKeysTest : ShouldSpec() {
         should("test PRODUCT_GROUP") {
             // uncomment below to test the property
             //modelInstance.PRODUCT_GROUP shouldBe ("TODO")
+        }
+
+        // to test the property `CUSTOM_NUMBER_0`
+        should("test CUSTOM_NUMBER_0") {
+            // uncomment below to test the property
+            //modelInstance.CUSTOM_NUMBER_0 shouldBe ("TODO")
+        }
+
+        // to test the property `CUSTOM_NUMBER_1`
+        should("test CUSTOM_NUMBER_1") {
+            // uncomment below to test the property
+            //modelInstance.CUSTOM_NUMBER_1 shouldBe ("TODO")
+        }
+
+        // to test the property `CUSTOM_NUMBER_2`
+        should("test CUSTOM_NUMBER_2") {
+            // uncomment below to test the property
+            //modelInstance.CUSTOM_NUMBER_2 shouldBe ("TODO")
+        }
+
+        // to test the property `CUSTOM_NUMBER_3`
+        should("test CUSTOM_NUMBER_3") {
+            // uncomment below to test the property
+            //modelInstance.CUSTOM_NUMBER_3 shouldBe ("TODO")
+        }
+
+        // to test the property `CUSTOM_NUMBER_4`
+        should("test CUSTOM_NUMBER_4") {
+            // uncomment below to test the property
+            //modelInstance.CUSTOM_NUMBER_4 shouldBe ("TODO")
+        }
+
+        // to test the property `TITLE_KEYWORDS`
+        should("test TITLE_KEYWORDS") {
+            // uncomment below to test the property
+            //modelInstance.TITLE_KEYWORDS shouldBe ("TODO")
         }
 
     }

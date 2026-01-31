@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemId** | **String!** | The catalog retail item id in the merchant namespace | [default to null]
 **country** | [***Country**](Country.md) |  | [default to null]
+**itemId** | **String!** | The catalog retail item id in the merchant namespace | [default to null]
 **language** | [***Language**](Language.md) |  | [default to null]
 **bidOptions** | [***AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | [default to null]
 

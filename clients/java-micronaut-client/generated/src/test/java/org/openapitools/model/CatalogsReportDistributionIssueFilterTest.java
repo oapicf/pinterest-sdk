@@ -20,19 +20,19 @@ public class CatalogsReportDistributionIssueFilterTest {
     }
 
     /**
-     * Test the property 'reportType'
-     */
-    @Test
-    public void reportTypeTest() {
-        // TODO: test reportType
-    }
-
-    /**
      * Test the property 'catalogId'
      */
     @Test
     public void catalogIdTest() {
         // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'reportType'
+     */
+    @Test
+    public void reportTypeTest() {
+        // TODO: test reportType
     }
 
 }

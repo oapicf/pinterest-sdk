@@ -54,23 +54,23 @@ public:
 	void setInclusion(bool  inclusion);
 	/*! \brief Get 
 	 */
-	long long getValues();
-
-	/*! \brief Set 
-	 */
-	void setValues(long long  values);
-	/*! \brief Get 
-	 */
 	bool getNegated();
 
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	long long getValues();
+
+	/*! \brief Set 
+	 */
+	void setValues(long long  values);
 
 private:
 	bool inclusion;
-	long long values;
 	bool negated;
+	long long values;
 	void __init();
 	void __cleanup();
 

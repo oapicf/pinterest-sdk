@@ -13,6 +13,8 @@ import org.openapitools.model.ItemUpsertBatchRecord;
 class CatalogsItemsUpsertBatchRequest {
     
     Country country
+    /* Array with catalogs items */
+    List<ItemUpsertBatchRecord> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -250,6 +252,4 @@ class CatalogsItemsUpsertBatchRequest {
     LanguageEnum language
     
     BatchOperation operation
-    /* Array with catalogs items */
-    List<ItemUpsertBatchRecord> items = new ArrayList<>()
 }

@@ -25,37 +25,17 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupUpdateRequest", description = "Request object for updating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsUpdateRequest {
 
-  private String name;
-
   private JsonNullable<String> description = JsonNullable.<String>undefined();
+
+  private CatalogsProductGroupFiltersRequest filters;
 
   @Deprecated
   private Boolean isFeatured;
 
-  private CatalogsProductGroupFiltersRequest filters;
-
-  public CatalogsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  private String name;
 
   public CatalogsProductGroupUpdateRequest description(String description) {
     this.description = JsonNullable.of(description);
@@ -75,6 +55,26 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
 
   public void setDescription(JsonNullable<String> description) {
     this.description = description;
+  }
+
+  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  /**
+   * Get filters
+   * @return filters
+   */
+  @Valid 
+  @Schema(name = "filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
   public CatalogsProductGroupUpdateRequest isFeatured(Boolean isFeatured) {
@@ -103,24 +103,24 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
     this.isFeatured = isFeatured;
   }
 
-  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get filters
-   * @return filters
+   * Get name
+   * @return name
    */
-  @Valid 
-  @Schema(name = "filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
@@ -132,10 +132,10 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
       return false;
     }
     CatalogsProductGroupUpdateRequest catalogsProductGroupUpdateRequest = (CatalogsProductGroupUpdateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupUpdateRequest.name) &&
-        equalsNullable(this.description, catalogsProductGroupUpdateRequest.description) &&
+    return equalsNullable(this.description, catalogsProductGroupUpdateRequest.description) &&
+        Objects.equals(this.filters, catalogsProductGroupUpdateRequest.filters) &&
         Objects.equals(this.isFeatured, catalogsProductGroupUpdateRequest.isFeatured) &&
-        Objects.equals(this.filters, catalogsProductGroupUpdateRequest.filters);
+        Objects.equals(this.name, catalogsProductGroupUpdateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -144,7 +144,7 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, hashCodeNullable(description), isFeatured, filters);
+    return Objects.hash(hashCodeNullable(description), filters, isFeatured, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -158,10 +158,10 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupUpdateRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

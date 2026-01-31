@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unique identifier of a business partner to update asset access to.
-	 */
-	std::string getPartnerId();
-
-	/*! \brief Set Unique identifier of a business partner to update asset access to.
-	 */
-	void setPartnerId(std::string  partner_id);
 	/*! \brief Get Unique identifier of the business asset.
 	 */
 	std::string getAssetId();
@@ -59,6 +52,13 @@ public:
 	/*! \brief Set Unique identifier of the business asset.
 	 */
 	void setAssetId(std::string  asset_id);
+	/*! \brief Get Unique identifier of a business partner to update asset access to.
+	 */
+	std::string getPartnerId();
+
+	/*! \brief Set Unique identifier of a business partner to update asset access to.
+	 */
+	void setPartnerId(std::string  partner_id);
 	/*! \brief Get If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
 	 */
 	std::string getPartnerType();
@@ -68,8 +68,8 @@ public:
 	void setPartnerType(std::string  partner_type);
 
 private:
-	std::string partner_id;
 	std::string asset_id;
+	std::string partner_id;
 	std::string partner_type;
 	void __init();
 	void __cleanup();

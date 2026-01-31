@@ -10,33 +10,33 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportCreateRequest   {
-  @JsonProperty("start_date")
-  private String startDate;
+  @JsonProperty("ad_id")
+  private String adId;
 
   @JsonProperty("end_date")
   private String endDate;
 
-  @JsonProperty("ad_id")
-  private String adId;
+  @JsonProperty("start_date")
+  private String startDate;
 
   /**
-   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+   * ID for the ad collecting leads
    **/
-  public LeadsExportCreateRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public LeadsExportCreateRequest adId(String adId) {
+    this.adId = adId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
-  public String getStartDate() {
-    return startDate;
+  @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
+  @JsonProperty("ad_id")
+  public String getAdId() {
+    return adId;
   }
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setAdId(String adId) {
+    this.adId = adId;
   }
 
   /**
@@ -58,21 +58,21 @@ public class LeadsExportCreateRequest   {
   }
 
   /**
-   * ID for the ad collecting leads
+   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
    **/
-  public LeadsExportCreateRequest adId(String adId) {
-    this.adId = adId;
+  public LeadsExportCreateRequest startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
   
-  @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
-  @JsonProperty("ad_id")
-  public String getAdId() {
-    return adId;
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
+  @JsonProperty("start_date")
+  public String getStartDate() {
+    return startDate;
   }
-  public void setAdId(String adId) {
-    this.adId = adId;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -85,14 +85,14 @@ public class LeadsExportCreateRequest   {
       return false;
     }
     LeadsExportCreateRequest leadsExportCreateRequest = (LeadsExportCreateRequest) o;
-    return Objects.equals(startDate, leadsExportCreateRequest.startDate) &&
+    return Objects.equals(adId, leadsExportCreateRequest.adId) &&
         Objects.equals(endDate, leadsExportCreateRequest.endDate) &&
-        Objects.equals(adId, leadsExportCreateRequest.adId);
+        Objects.equals(startDate, leadsExportCreateRequest.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, adId);
+    return Objects.hash(adId, endDate, startDate);
   }
 
   @Override
@@ -100,9 +100,9 @@ public class LeadsExportCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportCreateRequest {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

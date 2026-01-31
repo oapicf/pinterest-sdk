@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**UserWebsiteSummary[]**](UserWebsiteSummary.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**UserWebsiteSummary[]**](UserWebsiteSummary.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UserWebsitesGet200Response = Initialize-PSOpenAPIToolsUserWebsitesGet200Response  -Items null `
- -Bookmark null
+$UserWebsitesGet200Response = Initialize-PSOpenAPIToolsUserWebsitesGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

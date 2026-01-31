@@ -20,11 +20,587 @@ public class CatalogsFeedIngestionWarningsTest {
     }
 
     /**
-     * Test the property 'ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR'
+     * Test the property 'AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR'
      */
     @Test
-    public void ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERRORTest() {
-        // TODO: test ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+    public void AD_IMAGE_DOWNLOAD_CONTENT_READ_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLETest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_FILE_NOT_FOUNDTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_400'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_400Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_400
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_403'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_403Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_403
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_404'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_404Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_404
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_405'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_405Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_405
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_410'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_410Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_410
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_429'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_429Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_429
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_500'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_500Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_500
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_502'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_502Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_502
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_503'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_503Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_503
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_504'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_504Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_504
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_507'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_507Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_507
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_508'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_508Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_508
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_520'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_520Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_520
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_521'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_521Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_521
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_522'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_522Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_522
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_525'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_HTTP_STATUS_525Test() {
+        // TODO: test AD_IMAGE_DOWNLOAD_HTTP_STATUS_525
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INTERNAL_ERROR'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INTERNAL_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INTERNAL_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URLTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITEDTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIREDTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_INVALID_FILE'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_INVALID_FILETest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_INVALID_FILE
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_SITE_ERROR'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_SITE_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_SITE_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_SITE_TIMEOUT'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_SITE_TIMEOUTTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_SITE_TIMEOUT
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_SSL_ERROR'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_SSL_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_SSL_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR'
+     */
+    @Test
+    public void AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERRORTest() {
+        // TODO: test AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_PROCESSING_EMPTY_FILE'
+     */
+    @Test
+    public void AD_IMAGE_PROCESSING_EMPTY_FILETest() {
+        // TODO: test AD_IMAGE_PROCESSING_EMPTY_FILE
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL'
+     */
+    @Test
+    public void AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALLTest() {
+        // TODO: test AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_PROCESSING_TOO_MANY_PIXELS'
+     */
+    @Test
+    public void AD_IMAGE_PROCESSING_TOO_MANY_PIXELSTest() {
+        // TODO: test AD_IMAGE_PROCESSING_TOO_MANY_PIXELS
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_PROCESSING_TYPE_MISMATCH'
+     */
+    @Test
+    public void AD_IMAGE_PROCESSING_TYPE_MISMATCHTest() {
+        // TODO: test AD_IMAGE_PROCESSING_TYPE_MISMATCH
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL'
+     */
+    @Test
+    public void AD_IMAGE_PROCESSING_WIDTH_TOO_SMALLTest() {
+        // TODO: test AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_CONTENT_READ_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLETest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_FILE_NOT_FOUNDTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_400'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_400Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_400
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_403'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_403Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_403
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_404'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_404Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_404
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_405'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_405Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_405
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_410'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_410Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_410
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_429'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_429Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_429
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_500'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_500Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_500
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_502'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_502Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_502
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_503'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_503Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_503
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_504'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_504Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_504
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_507'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_507Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_507
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_508'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_508Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_508
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_520'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_520Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_520
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_521'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_521Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_521
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_522'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_522Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_522
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_525'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_HTTP_STATUS_525Test() {
+        // TODO: test AD_VIDEO_DOWNLOAD_HTTP_STATUS_525
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INTERNAL_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INTERNAL_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INTERNAL_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URLTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITEDTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIREDTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_INVALID_FILE'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_INVALID_FILETest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_INVALID_FILE
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_SITE_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_SITE_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_SITE_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_SITE_TIMEOUT'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_SITE_TIMEOUTTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_SITE_TIMEOUT
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_SSL_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_SSL_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_SSL_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR'
+     */
+    @Test
+    public void AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERRORTest() {
+        // TODO: test AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_LENGTH_TOO_SHORT'
+     */
+    @Test
+    public void AD_VIDEO_LENGTH_TOO_SHORTTest() {
+        // TODO: test AD_VIDEO_LENGTH_TOO_SHORT
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_PROCESSING_EMPTY_FILE'
+     */
+    @Test
+    public void AD_VIDEO_PROCESSING_EMPTY_FILETest() {
+        // TODO: test AD_VIDEO_PROCESSING_EMPTY_FILE
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL'
+     */
+    @Test
+    public void AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALLTest() {
+        // TODO: test AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_PROCESSING_TOO_MANY_PIXELS'
+     */
+    @Test
+    public void AD_VIDEO_PROCESSING_TOO_MANY_PIXELSTest() {
+        // TODO: test AD_VIDEO_PROCESSING_TOO_MANY_PIXELS
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_PROCESSING_TYPE_MISMATCH'
+     */
+    @Test
+    public void AD_VIDEO_PROCESSING_TYPE_MISMATCHTest() {
+        // TODO: test AD_VIDEO_PROCESSING_TYPE_MISMATCH
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL'
+     */
+    @Test
+    public void AD_VIDEO_PROCESSING_WIDTH_TOO_SMALLTest() {
+        // TODO: test AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL
     }
 
     /**
@@ -33,14 +609,6 @@ public class CatalogsFeedIngestionWarningsTest {
     @Test
     public void ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLETest() {
         // TODO: test ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE
-    }
-
-    /**
-     * Test the property 'ADDITIONAL_IMAGE_MALFORMED_URL'
-     */
-    @Test
-    public void ADDITIONAL_IMAGE_MALFORMED_URLTest() {
-        // TODO: test ADDITIONAL_IMAGE_MALFORMED_URL
     }
 
     /**
@@ -60,11 +628,83 @@ public class CatalogsFeedIngestionWarningsTest {
     }
 
     /**
+     * Test the property 'ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR'
+     */
+    @Test
+    public void ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERRORTest() {
+        // TODO: test ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+    }
+
+    /**
+     * Test the property 'ADDITIONAL_IMAGE_MALFORMED_URL'
+     */
+    @Test
+    public void ADDITIONAL_IMAGE_MALFORMED_URLTest() {
+        // TODO: test ADDITIONAL_IMAGE_MALFORMED_URL
+    }
+
+    /**
+     * Test the property 'FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT'
+     */
+    @Test
+    public void FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDITTest() {
+        // TODO: test FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT
+    }
+
+    /**
      * Test the property 'HOTEL_PRICE_HEADER_IS_PRESENT'
      */
     @Test
     public void HOTEL_PRICE_HEADER_IS_PRESENTTest() {
         // TODO: test HOTEL_PRICE_HEADER_IS_PRESENT
+    }
+
+    /**
+     * Test the property 'VIDEO_DOWNLOAD_VIDEO_TOO_SHORT'
+     */
+    @Test
+    public void VIDEO_DOWNLOAD_VIDEO_TOO_SHORTTest() {
+        // TODO: test VIDEO_DOWNLOAD_VIDEO_TOO_SHORT
+    }
+
+    /**
+     * Test the property 'VIDEO_FILE_NOT_ACCESSIBLE'
+     */
+    @Test
+    public void VIDEO_FILE_NOT_ACCESSIBLETest() {
+        // TODO: test VIDEO_FILE_NOT_ACCESSIBLE
+    }
+
+    /**
+     * Test the property 'VIDEO_FILE_NOT_FOUND'
+     */
+    @Test
+    public void VIDEO_FILE_NOT_FOUNDTest() {
+        // TODO: test VIDEO_FILE_NOT_FOUND
+    }
+
+    /**
+     * Test the property 'VIDEO_INVALID_FILE'
+     */
+    @Test
+    public void VIDEO_INVALID_FILETest() {
+        // TODO: test VIDEO_INVALID_FILE
+    }
+
+    /**
+     * Test the property 'VIDEO_LEVEL_INTERNAL_ERROR'
+     */
+    @Test
+    public void VIDEO_LEVEL_INTERNAL_ERRORTest() {
+        // TODO: test VIDEO_LEVEL_INTERNAL_ERROR
+    }
+
+    /**
+     * Test the property 'VIDEO_MALFORMED_URL'
+     */
+    @Test
+    public void VIDEO_MALFORMED_URLTest() {
+        // TODO: test VIDEO_MALFORMED_URL
     }
 
 }

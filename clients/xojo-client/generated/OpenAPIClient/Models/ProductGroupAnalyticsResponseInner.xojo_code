@@ -3,17 +3,17 @@ Protected Class ProductGroupAnalyticsResponseInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The ID of the product group that this metrics belongs to.
+			Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 		#tag EndNote
-		PRODUCT_GROUP_ID As String
+		DATE As Date
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
+			The ID of the product group that this metrics belongs to.
 		#tag EndNote
-		DATE As Date
+		PRODUCT_GROUP_ID As String
 	#tag EndProperty
 
 
@@ -54,19 +54,19 @@ Protected Class ProductGroupAnalyticsResponseInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="PRODUCT_GROUP_ID"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="DATE"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Date"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PRODUCT_GROUP_ID"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

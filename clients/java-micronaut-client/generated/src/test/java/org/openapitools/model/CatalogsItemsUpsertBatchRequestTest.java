@@ -34,6 +34,14 @@ public class CatalogsItemsUpsertBatchRequestTest {
     }
 
     /**
+     * Test the property 'items'
+     */
+    @Test
+    public void itemsTest() {
+        // TODO: test items
+    }
+
+    /**
      * Test the property 'language'
      */
     @Test
@@ -47,14 +55,6 @@ public class CatalogsItemsUpsertBatchRequestTest {
     @Test
     public void operationTest() {
         // TODO: test operation
-    }
-
-    /**
-     * Test the property 'items'
-     */
-    @Test
-    public void itemsTest() {
-        // TODO: test items
     }
 
 }

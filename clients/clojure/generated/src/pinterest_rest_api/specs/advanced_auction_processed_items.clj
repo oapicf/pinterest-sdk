@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.advanced-auction-processed-items
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.advanced-auction-processed-item :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-submit-record :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +9,7 @@
 (def advanced-auction-processed-items-data
   {
    (ds/opt :catalog_id) string?
-   (ds/opt :items) (s/coll-of advanced-auction-processed-item-spec)
+   (ds/opt :items) (s/coll-of advanced-auction-items-submit-record-spec)
    })
 
 (def advanced-auction-processed-items-spec

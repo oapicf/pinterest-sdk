@@ -7,11 +7,11 @@
 Name | Type
 ------------ | -------------
 `autoTargetingEnabled` | boolean
-`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
 `creativeTypes` | Array&lt;string&gt;
-`targetingSpec` | [TargetingSpec](TargetingSpec.md)
-`productGroupIds` | Array&lt;string&gt;
 `keywords` | [Array&lt;AdGroupAudienceSizingRequestKeywordsInner&gt;](AdGroupAudienceSizingRequestKeywordsInner.md)
+`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
+`productGroupIds` | Array&lt;string&gt;
+`targetingSpec` | [TargetingSpec](TargetingSpec.md)
 
 ## Example
 
@@ -21,11 +21,11 @@ import type { AdGroupAudienceSizingRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "autoTargetingEnabled": true,
-  "placementGroup": null,
   "creativeTypes": null,
-  "targetingSpec": null,
-  "productGroupIds": null,
   "keywords": null,
+  "placementGroup": null,
+  "productGroupIds": null,
+  "targetingSpec": null,
 } satisfies AdGroupAudienceSizingRequest
 
 console.log(example)

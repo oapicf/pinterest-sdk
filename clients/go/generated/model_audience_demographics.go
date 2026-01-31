@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &AudienceDemographics{}
 type AudienceDemographics struct {
 	// Ages distribution.
 	Ages []AudienceDemographicValue `json:"ages,omitempty"`
-	// Gender distribution.
-	Genders []AudienceDemographicValue `json:"genders,omitempty"`
-	// Device usage distribution.
-	Devices []AudienceDemographicValue `json:"devices,omitempty"`
-	// Geographic metro area distribution.
-	Metros []AudienceDemographicValue `json:"metros,omitempty"`
 	// Country area distribution.
 	Countries []AudienceDemographicValue `json:"countries,omitempty"`
+	// Device usage distribution.
+	Devices []AudienceDemographicValue `json:"devices,omitempty"`
+	// Gender distribution.
+	Genders []AudienceDemographicValue `json:"genders,omitempty"`
+	// Geographic metro area distribution.
+	Metros []AudienceDemographicValue `json:"metros,omitempty"`
 }
 
 // NewAudienceDemographics instantiates a new AudienceDemographics object
@@ -81,36 +81,36 @@ func (o *AudienceDemographics) SetAges(v []AudienceDemographicValue) {
 	o.Ages = v
 }
 
-// GetGenders returns the Genders field value if set, zero value otherwise.
-func (o *AudienceDemographics) GetGenders() []AudienceDemographicValue {
-	if o == nil || IsNil(o.Genders) {
+// GetCountries returns the Countries field value if set, zero value otherwise.
+func (o *AudienceDemographics) GetCountries() []AudienceDemographicValue {
+	if o == nil || IsNil(o.Countries) {
 		var ret []AudienceDemographicValue
 		return ret
 	}
-	return o.Genders
+	return o.Countries
 }
 
-// GetGendersOk returns a tuple with the Genders field value if set, nil otherwise
+// GetCountriesOk returns a tuple with the Countries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudienceDemographics) GetGendersOk() ([]AudienceDemographicValue, bool) {
-	if o == nil || IsNil(o.Genders) {
+func (o *AudienceDemographics) GetCountriesOk() ([]AudienceDemographicValue, bool) {
+	if o == nil || IsNil(o.Countries) {
 		return nil, false
 	}
-	return o.Genders, true
+	return o.Countries, true
 }
 
-// HasGenders returns a boolean if a field has been set.
-func (o *AudienceDemographics) HasGenders() bool {
-	if o != nil && !IsNil(o.Genders) {
+// HasCountries returns a boolean if a field has been set.
+func (o *AudienceDemographics) HasCountries() bool {
+	if o != nil && !IsNil(o.Countries) {
 		return true
 	}
 
 	return false
 }
 
-// SetGenders gets a reference to the given []AudienceDemographicValue and assigns it to the Genders field.
-func (o *AudienceDemographics) SetGenders(v []AudienceDemographicValue) {
-	o.Genders = v
+// SetCountries gets a reference to the given []AudienceDemographicValue and assigns it to the Countries field.
+func (o *AudienceDemographics) SetCountries(v []AudienceDemographicValue) {
+	o.Countries = v
 }
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
@@ -145,6 +145,38 @@ func (o *AudienceDemographics) SetDevices(v []AudienceDemographicValue) {
 	o.Devices = v
 }
 
+// GetGenders returns the Genders field value if set, zero value otherwise.
+func (o *AudienceDemographics) GetGenders() []AudienceDemographicValue {
+	if o == nil || IsNil(o.Genders) {
+		var ret []AudienceDemographicValue
+		return ret
+	}
+	return o.Genders
+}
+
+// GetGendersOk returns a tuple with the Genders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceDemographics) GetGendersOk() ([]AudienceDemographicValue, bool) {
+	if o == nil || IsNil(o.Genders) {
+		return nil, false
+	}
+	return o.Genders, true
+}
+
+// HasGenders returns a boolean if a field has been set.
+func (o *AudienceDemographics) HasGenders() bool {
+	if o != nil && !IsNil(o.Genders) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenders gets a reference to the given []AudienceDemographicValue and assigns it to the Genders field.
+func (o *AudienceDemographics) SetGenders(v []AudienceDemographicValue) {
+	o.Genders = v
+}
+
 // GetMetros returns the Metros field value if set, zero value otherwise.
 func (o *AudienceDemographics) GetMetros() []AudienceDemographicValue {
 	if o == nil || IsNil(o.Metros) {
@@ -177,38 +209,6 @@ func (o *AudienceDemographics) SetMetros(v []AudienceDemographicValue) {
 	o.Metros = v
 }
 
-// GetCountries returns the Countries field value if set, zero value otherwise.
-func (o *AudienceDemographics) GetCountries() []AudienceDemographicValue {
-	if o == nil || IsNil(o.Countries) {
-		var ret []AudienceDemographicValue
-		return ret
-	}
-	return o.Countries
-}
-
-// GetCountriesOk returns a tuple with the Countries field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceDemographics) GetCountriesOk() ([]AudienceDemographicValue, bool) {
-	if o == nil || IsNil(o.Countries) {
-		return nil, false
-	}
-	return o.Countries, true
-}
-
-// HasCountries returns a boolean if a field has been set.
-func (o *AudienceDemographics) HasCountries() bool {
-	if o != nil && !IsNil(o.Countries) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountries gets a reference to the given []AudienceDemographicValue and assigns it to the Countries field.
-func (o *AudienceDemographics) SetCountries(v []AudienceDemographicValue) {
-	o.Countries = v
-}
-
 func (o AudienceDemographics) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -222,17 +222,17 @@ func (o AudienceDemographics) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ages) {
 		toSerialize["ages"] = o.Ages
 	}
-	if !IsNil(o.Genders) {
-		toSerialize["genders"] = o.Genders
+	if !IsNil(o.Countries) {
+		toSerialize["countries"] = o.Countries
 	}
 	if !IsNil(o.Devices) {
 		toSerialize["devices"] = o.Devices
 	}
+	if !IsNil(o.Genders) {
+		toSerialize["genders"] = o.Genders
+	}
 	if !IsNil(o.Metros) {
 		toSerialize["metros"] = o.Metros
-	}
-	if !IsNil(o.Countries) {
-		toSerialize["countries"] = o.Countries
 	}
 	return toSerialize, nil
 }

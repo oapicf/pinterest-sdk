@@ -18,21 +18,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * A hotel item to be upserted.
+ * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
 data class CatalogsUpsertHotelItem(
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("attributes", required = true) val attributes: CatalogsHotelAttributes,
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog hotel id in the merchant namespace")
     @get:JsonProperty("hotel_id", required = true) val hotelId: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: CatalogsUpsertHotelItem.Operation,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("attributes", required = true) val attributes: CatalogsHotelAttributes
+    @get:JsonProperty("operation", required = true) val operation: CatalogsUpsertHotelItem.Operation
 ) {
 
     /**

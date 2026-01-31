@@ -1,64 +1,53 @@
 goog.provide('API.Client.PinUpdate');
 
 /**
- * Pin fields for updates
+ * Resource create or update operation model.
  * @record
  */
 API.Client.PinUpdate = function() {}
 
 /**
- * Pin's alternative text.
  * @type {!string}
  * @export
  */
 API.Client.PinUpdate.prototype.altText;
 
 /**
- * The id of the board to move the Pin onto.
+ * The board to which this Pin belongs.
  * @type {!string}
  * @export
  */
 API.Client.PinUpdate.prototype.boardId;
 
 /**
- * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+ * The board section to which this Pin belongs.
  * @type {!string}
  * @export
  */
 API.Client.PinUpdate.prototype.boardSectionId;
 
 /**
- * Pin description - 800 characters maximum.
+ * Carousel Pin slots data.
+ * @type {!Array<!API.Client.CarouselSlot>}
+ * @export
+ */
+API.Client.PinUpdate.prototype.carouselSlots;
+
+/**
  * @type {!string}
  * @export
  */
 API.Client.PinUpdate.prototype.description;
 
 /**
- * URL viewer is taken to when they click pin.
  * @type {!string}
  * @export
  */
 API.Client.PinUpdate.prototype.link;
 
 /**
- * The native pin title that creators explicitly prefer to display.
  * @type {!string}
  * @export
  */
 API.Client.PinUpdate.prototype.title;
-
-/**
- * Carousel Pin slots data.
- * @type {!Array<!API.Client.PinUpdate_carousel_slots_inner>}
- * @export
- */
-API.Client.PinUpdate.prototype.carouselSlots;
-
-/**
- * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
- * @type {!string}
- * @export
- */
-API.Client.PinUpdate.prototype.note;
 

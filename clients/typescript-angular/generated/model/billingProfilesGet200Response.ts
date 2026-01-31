@@ -11,7 +11,7 @@ import { BillingProfilesResponse } from './billingProfilesResponse';
 
 
 export interface BillingProfilesGet200Response { 
-    items: Array<BillingProfilesResponse>;
     bookmark?: string | null;
+    items: Array<BillingProfilesResponse>;
 }
 

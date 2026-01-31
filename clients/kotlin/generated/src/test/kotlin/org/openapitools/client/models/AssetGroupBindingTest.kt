@@ -26,16 +26,10 @@ class AssetGroupBindingTest : ShouldSpec() {
         // uncomment below to create an instance of AssetGroupBinding
         //val modelInstance = AssetGroupBinding()
 
-        // to test the property `id` - Asset Group ID.
-        should("test id") {
+        // to test the property `adAccountsIds` - A list of ad account IDs under the asset group
+        should("test adAccountsIds") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `assetGroupName` - Asset Group name
-        should("test assetGroupName") {
-            // uncomment below to test the property
-            //modelInstance.assetGroupName shouldBe ("TODO")
+            //modelInstance.adAccountsIds shouldBe ("TODO")
         }
 
         // to test the property `assetGroupDescription` - Asset group description
@@ -44,22 +38,28 @@ class AssetGroupBindingTest : ShouldSpec() {
             //modelInstance.assetGroupDescription shouldBe ("TODO")
         }
 
+        // to test the property `assetGroupName` - Asset Group name
+        should("test assetGroupName") {
+            // uncomment below to test the property
+            //modelInstance.assetGroupName shouldBe ("TODO")
+        }
+
         // to test the property `assetGroupTypes` - Asset group types
         should("test assetGroupTypes") {
             // uncomment below to test the property
             //modelInstance.assetGroupTypes shouldBe ("TODO")
         }
 
-        // to test the property `adAccountsIds` - A list of ad account IDs under the asset group
-        should("test adAccountsIds") {
+        // to test the property `catalogsIds` - A list of catalog IDs under asset group
+        should("test catalogsIds") {
             // uncomment below to test the property
-            //modelInstance.adAccountsIds shouldBe ("TODO")
+            //modelInstance.catalogsIds shouldBe ("TODO")
         }
 
-        // to test the property `profilesIds` - A list of profile IDs under asset group
-        should("test profilesIds") {
+        // to test the property `createdBy` - The data of the user that created the asset group.
+        should("test createdBy") {
             // uncomment below to test the property
-            //modelInstance.profilesIds shouldBe ("TODO")
+            //modelInstance.createdBy shouldBe ("TODO")
         }
 
         // to test the property `createdTime` - The creation time of the asset group
@@ -68,10 +68,10 @@ class AssetGroupBindingTest : ShouldSpec() {
             //modelInstance.createdTime shouldBe ("TODO")
         }
 
-        // to test the property `updatedTime` - The last update time of the asset group
-        should("test updatedTime") {
+        // to test the property `id` - Asset Group ID.
+        should("test id") {
             // uncomment below to test the property
-            //modelInstance.updatedTime shouldBe ("TODO")
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `owner` - The data of the business that owns the asset group.
@@ -80,10 +80,16 @@ class AssetGroupBindingTest : ShouldSpec() {
             //modelInstance.owner shouldBe ("TODO")
         }
 
-        // to test the property `createdBy` - The data of the user that created the asset group.
-        should("test createdBy") {
+        // to test the property `profilesIds` - A list of profile IDs under asset group
+        should("test profilesIds") {
             // uncomment below to test the property
-            //modelInstance.createdBy shouldBe ("TODO")
+            //modelInstance.profilesIds shouldBe ("TODO")
+        }
+
+        // to test the property `updatedTime` - The last update time of the asset group
+        should("test updatedTime") {
+            // uncomment below to test the property
+            //modelInstance.updatedTime shouldBe ("TODO")
         }
 
     }

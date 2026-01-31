@@ -10,7 +10,9 @@ import java.util.List;
 import org.openapitools.model.AdGroupUpdateRequest;
 import org.openapitools.model.AdUpdateRequest;
 import org.openapitools.model.CampaignUpdateRequest;
+import org.openapitools.model.CatalogsProductGroupsUpdateRequest;
 import org.openapitools.model.KeywordUpdate;
+import org.openapitools.model.LabelBulkUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -28,11 +30,8 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertRequestUpdate", description = "Request for creation of entities in bulk.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertRequestUpdate {
-
-  @Valid
-  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
 
   @Valid
   private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
@@ -41,38 +40,19 @@ public class BulkUpsertRequestUpdate {
   private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
 
   @Valid
-  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
+  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
+
+  @Valid
+  private List<CatalogsProductGroupsUpdateRequest> catalogProductGroups = new ArrayList<>();
 
   @Valid
   private List<@Valid KeywordUpdate> keywords = new ArrayList<>();
 
-  public BulkUpsertRequestUpdate campaigns(List<@Valid CampaignUpdateRequest> campaigns) {
-    this.campaigns = campaigns;
-    return this;
-  }
+  @Valid
+  private List<@Valid LabelBulkUpdateRequest> labels = new ArrayList<>();
 
-  public BulkUpsertRequestUpdate addCampaignsItem(CampaignUpdateRequest campaignsItem) {
-    if (this.campaigns == null) {
-      this.campaigns = new ArrayList<>();
-    }
-    this.campaigns.add(campaignsItem);
-    return this;
-  }
-
-  /**
-   * Get campaigns
-   * @return campaigns
-   */
-  @Valid 
-  @Schema(name = "campaigns", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("campaigns")
-  public List<@Valid CampaignUpdateRequest> getCampaigns() {
-    return campaigns;
-  }
-
-  public void setCampaigns(List<@Valid CampaignUpdateRequest> campaigns) {
-    this.campaigns = campaigns;
-  }
+  @Valid
+  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
 
   public BulkUpsertRequestUpdate adGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
@@ -130,32 +110,60 @@ public class BulkUpsertRequestUpdate {
     this.ads = ads;
   }
 
-  public BulkUpsertRequestUpdate productGroups(List<@Valid ProductGroupPromotionUpdateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public BulkUpsertRequestUpdate campaigns(List<@Valid CampaignUpdateRequest> campaigns) {
+    this.campaigns = campaigns;
     return this;
   }
 
-  public BulkUpsertRequestUpdate addProductGroupsItem(ProductGroupPromotionUpdateRequest productGroupsItem) {
-    if (this.productGroups == null) {
-      this.productGroups = new ArrayList<>();
+  public BulkUpsertRequestUpdate addCampaignsItem(CampaignUpdateRequest campaignsItem) {
+    if (this.campaigns == null) {
+      this.campaigns = new ArrayList<>();
     }
-    this.productGroups.add(productGroupsItem);
+    this.campaigns.add(campaignsItem);
     return this;
   }
 
   /**
-   * Get productGroups
-   * @return productGroups
+   * Get campaigns
+   * @return campaigns
    */
   @Valid 
-  @Schema(name = "product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("product_groups")
-  public List<@Valid ProductGroupPromotionUpdateRequest> getProductGroups() {
-    return productGroups;
+  @Schema(name = "campaigns", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("campaigns")
+  public List<@Valid CampaignUpdateRequest> getCampaigns() {
+    return campaigns;
   }
 
-  public void setProductGroups(List<@Valid ProductGroupPromotionUpdateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public void setCampaigns(List<@Valid CampaignUpdateRequest> campaigns) {
+    this.campaigns = campaigns;
+  }
+
+  public BulkUpsertRequestUpdate catalogProductGroups(List<CatalogsProductGroupsUpdateRequest> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
+    return this;
+  }
+
+  public BulkUpsertRequestUpdate addCatalogProductGroupsItem(CatalogsProductGroupsUpdateRequest catalogProductGroupsItem) {
+    if (this.catalogProductGroups == null) {
+      this.catalogProductGroups = new ArrayList<>();
+    }
+    this.catalogProductGroups.add(catalogProductGroupsItem);
+    return this;
+  }
+
+  /**
+   * Get catalogProductGroups
+   * @return catalogProductGroups
+   */
+  @Valid 
+  @Schema(name = "catalog_product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_product_groups")
+  public List<CatalogsProductGroupsUpdateRequest> getCatalogProductGroups() {
+    return catalogProductGroups;
+  }
+
+  public void setCatalogProductGroups(List<CatalogsProductGroupsUpdateRequest> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
   }
 
   public BulkUpsertRequestUpdate keywords(List<@Valid KeywordUpdate> keywords) {
@@ -186,6 +194,62 @@ public class BulkUpsertRequestUpdate {
     this.keywords = keywords;
   }
 
+  public BulkUpsertRequestUpdate labels(List<@Valid LabelBulkUpdateRequest> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public BulkUpsertRequestUpdate addLabelsItem(LabelBulkUpdateRequest labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+  /**
+   * Get labels
+   * @return labels
+   */
+  @Valid 
+  @Schema(name = "labels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("labels")
+  public List<@Valid LabelBulkUpdateRequest> getLabels() {
+    return labels;
+  }
+
+  public void setLabels(List<@Valid LabelBulkUpdateRequest> labels) {
+    this.labels = labels;
+  }
+
+  public BulkUpsertRequestUpdate productGroups(List<@Valid ProductGroupPromotionUpdateRequest> productGroups) {
+    this.productGroups = productGroups;
+    return this;
+  }
+
+  public BulkUpsertRequestUpdate addProductGroupsItem(ProductGroupPromotionUpdateRequest productGroupsItem) {
+    if (this.productGroups == null) {
+      this.productGroups = new ArrayList<>();
+    }
+    this.productGroups.add(productGroupsItem);
+    return this;
+  }
+
+  /**
+   * Get productGroups
+   * @return productGroups
+   */
+  @Valid 
+  @Schema(name = "product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("product_groups")
+  public List<@Valid ProductGroupPromotionUpdateRequest> getProductGroups() {
+    return productGroups;
+  }
+
+  public void setProductGroups(List<@Valid ProductGroupPromotionUpdateRequest> productGroups) {
+    this.productGroups = productGroups;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -195,27 +259,31 @@ public class BulkUpsertRequestUpdate {
       return false;
     }
     BulkUpsertRequestUpdate bulkUpsertRequestUpdate = (BulkUpsertRequestUpdate) o;
-    return Objects.equals(this.campaigns, bulkUpsertRequestUpdate.campaigns) &&
-        Objects.equals(this.adGroups, bulkUpsertRequestUpdate.adGroups) &&
+    return Objects.equals(this.adGroups, bulkUpsertRequestUpdate.adGroups) &&
         Objects.equals(this.ads, bulkUpsertRequestUpdate.ads) &&
-        Objects.equals(this.productGroups, bulkUpsertRequestUpdate.productGroups) &&
-        Objects.equals(this.keywords, bulkUpsertRequestUpdate.keywords);
+        Objects.equals(this.campaigns, bulkUpsertRequestUpdate.campaigns) &&
+        Objects.equals(this.catalogProductGroups, bulkUpsertRequestUpdate.catalogProductGroups) &&
+        Objects.equals(this.keywords, bulkUpsertRequestUpdate.keywords) &&
+        Objects.equals(this.labels, bulkUpsertRequestUpdate.labels) &&
+        Objects.equals(this.productGroups, bulkUpsertRequestUpdate.productGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns, adGroups, ads, productGroups, keywords);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertRequestUpdate {\n");
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
     sb.append("    adGroups: ").append(toIndentedString(adGroups)).append("\n");
     sb.append("    ads: ").append(toIndentedString(ads)).append("\n");
-    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    catalogProductGroups: ").append(toIndentedString(catalogProductGroups)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

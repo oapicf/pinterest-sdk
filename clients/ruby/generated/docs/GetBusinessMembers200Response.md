@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of business members. |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of business members. |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::GetBusinessMembers200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

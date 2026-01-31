@@ -8,8 +8,8 @@ The class is defined in **[KeywordsGet200Response.java](../../src/main/java/org/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Keyword&gt;`](Keyword.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Keyword&gt;`](Keyword.md) |  | 
 
 
 

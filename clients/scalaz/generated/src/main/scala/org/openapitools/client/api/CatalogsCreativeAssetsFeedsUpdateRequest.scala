@@ -12,16 +12,16 @@ import org.joda.time.DateTime
 import CatalogsCreativeAssetsFeedsUpdateRequest._
 
 case class CatalogsCreativeAssetsFeedsUpdateRequest (
-  defaultCurrency: Option[NullableCurrency],
-/* A human-friendly name associated to a given feed. */
-  name: Option[String],
-format: Option[CatalogsFormat],
+  catalogType: CatalogsType,
 credentials: Option[CatalogsFeedCredentials],
+defaultCurrency: Option[NullableCurrency],
+format: Option[CatalogsFormat],
 /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
   location: Option[String],
+/* A human-friendly name associated to a given feed. */
+  name: Option[String],
 preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
-status: Option[CatalogsStatus],
-catalogType: CatalogsType)
+status: Option[CatalogsStatus])
 
 object CatalogsCreativeAssetsFeedsUpdateRequest {
   import DateTimeCodecs._

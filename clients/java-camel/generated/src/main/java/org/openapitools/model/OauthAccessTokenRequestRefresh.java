@@ -19,14 +19,12 @@ import javax.annotation.Generated;
  * OauthAccessTokenRequestRefresh
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestRefresh {
 
   private String refreshToken;
 
   private String scope;
-
-  private Boolean refreshOn;
 
   /**
    * Gets or Sets grantType
@@ -119,26 +117,6 @@ public class OauthAccessTokenRequestRefresh {
     this.scope = scope;
   }
 
-  public OauthAccessTokenRequestRefresh refreshOn(Boolean refreshOn) {
-    this.refreshOn = refreshOn;
-    return this;
-  }
-
-  /**
-   * Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
-   * @return refreshOn
-   */
-  
-  @Schema(name = "refresh_on", description = "Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("refresh_on")
-  public Boolean getRefreshOn() {
-    return refreshOn;
-  }
-
-  public void setRefreshOn(Boolean refreshOn) {
-    this.refreshOn = refreshOn;
-  }
-
   public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
     return this;
@@ -170,13 +148,12 @@ public class OauthAccessTokenRequestRefresh {
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
     return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
         Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, scope, refreshOn, grantType);
+    return Objects.hash(refreshToken, scope, grantType);
   }
 
   @Override
@@ -185,7 +162,6 @@ public class OauthAccessTokenRequestRefresh {
     sb.append("class OauthAccessTokenRequestRefresh {\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
     sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();

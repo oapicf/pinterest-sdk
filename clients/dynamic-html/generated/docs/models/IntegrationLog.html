@@ -1,8 +1,23 @@
 
 <h2>IntegrationLog</h2>
 <ul class="parameter">
+  <li class="param-required-false">advertiserUnderscoreid : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">appUnderscoreversionUnderscorenumber : String
+    <br/>Version number of the integration application.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">clientUnderscoretimestamp : Integer
     <br/>Timestamp in milliseconds of when the log was executed at the client.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">error : IntegrationLogClientError
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -14,6 +29,16 @@
             <dd>API</dd>
         </dt>
       </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">externalUnderscorebusinessUnderscoreid : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">feedUnderscoreprofileUnderscoreid : String
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -29,27 +54,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">externalUnderscorebusinessUnderscoreid : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">advertiserUnderscoreid : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">merchantUnderscoreid : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">tagUnderscoreid : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">feedUnderscoreprofileUnderscoreid : String
     <br/>
   </li>
 </ul>
@@ -59,22 +64,17 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">appUnderscoreversionUnderscorenumber : String
-    <br/>Version number of the integration application.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">platformUnderscoreversionUnderscorenumber : String
     <br/>Version number of the platform the integration application is running on.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">error : IntegrationLogClientError
+  <li class="param-required-false">request : IntegrationLogClientRequest
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">request : IntegrationLogClientRequest
+  <li class="param-required-false">tagUnderscoreid : String
     <br/>
   </li>
 </ul>

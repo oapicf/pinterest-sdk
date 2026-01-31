@@ -20,7 +20,7 @@ import { BulkUpsertStatusResponse } from '../models/BulkUpsertStatusResponse';
 export class BulkApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * Get advertiser entities in bulk
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkDownloadRequest Parameters to get ad entities in bulk
@@ -119,6 +119,11 @@ export class BulkApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -129,7 +134,7 @@ export class BulkApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
      * Create/update ad entities in bulk
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk

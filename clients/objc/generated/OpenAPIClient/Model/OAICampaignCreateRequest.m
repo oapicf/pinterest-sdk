@@ -6,9 +6,10 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
-    self.status = @"ACTIVE";
-    self.isFlexibleDailyBudgets = @(NO);
     self.isAutomatedCampaign = @(NO);
+    self.isFlexibleDailyBudgets = @(NO);
+    self.status = @"ACTIVE";
+    self.isPerformancePlus = @(NO);
     
   }
   return self;
@@ -20,7 +21,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"name": @"name", @"status": @"status", @"lifetimeSpendCap": @"lifetime_spend_cap", @"dailySpendCap": @"daily_spend_cap", @"orderLineId": @"order_line_id", @"trackingUrls": @"tracking_urls", @"startTime": @"start_time", @"endTime": @"end_time", @"isFlexibleDailyBudgets": @"is_flexible_daily_budgets", @"defaultAdGroupBudgetInMicroCurrency": @"default_ad_group_budget_in_micro_currency", @"isAutomatedCampaign": @"is_automated_campaign", @"objectiveType": @"objective_type" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"dailySpendCap": @"daily_spend_cap", @"endTime": @"end_time", @"isAutomatedCampaign": @"is_automated_campaign", @"isFlexibleDailyBudgets": @"is_flexible_daily_budgets", @"lifetimeSpendCap": @"lifetime_spend_cap", @"name": @"name", @"orderLineId": @"order_line_id", @"startTime": @"start_time", @"status": @"status", @"trackingUrls": @"tracking_urls", @"defaultAdGroupBudgetInMicroCurrency": @"default_ad_group_budget_in_micro_currency", @"isCampaignBudgetOptimization": @"is_campaign_budget_optimization", @"bidOptions": @"bid_options", @"isPerformancePlus": @"is_performance_plus", @"objectiveType": @"objective_type" }];
 }
 
 /**
@@ -30,7 +31,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"status", @"lifetimeSpendCap", @"dailySpendCap", @"orderLineId", @"trackingUrls", @"startTime", @"endTime", @"isFlexibleDailyBudgets", @"defaultAdGroupBudgetInMicroCurrency", @"isAutomatedCampaign", ];
+  NSArray *optionalProperties = @[@"dailySpendCap", @"endTime", @"isAutomatedCampaign", @"isFlexibleDailyBudgets", @"lifetimeSpendCap", @"orderLineId", @"startTime", @"status", @"trackingUrls", @"defaultAdGroupBudgetInMicroCurrency", @"isCampaignBudgetOptimization", @"bidOptions", @"isPerformancePlus", ];
   return [optionalProperties containsObject:propertyName];
 }
 

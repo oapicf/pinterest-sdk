@@ -2,17 +2,17 @@
 Protected Class TemplateResponseDateRange
 
 	#tag Property, Flags = &h0
+		absolute_date_range As OpenAPIClient.Models.TemplateResponseDateRangeAbsoluteDateRange
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		dynamic_date_range As OpenAPIClient.Models.TemplateResponseDateRangeDynamicDateRange
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		relative_date_range As OpenAPIClient.Models.TemplateResponseDateRangeRelativeDateRange
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		absolute_date_range As OpenAPIClient.Models.TemplateResponseDateRangeAbsoluteDateRange
 	#tag EndProperty
 
 
@@ -53,6 +53,14 @@ Protected Class TemplateResponseDateRange
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="absolute_date_range"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TemplateResponseDateRangeAbsoluteDateRange"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="dynamic_date_range"
 			Visible=false
 			Group="Behavior"
@@ -66,14 +74,6 @@ Protected Class TemplateResponseDateRange
 			Group="Behavior"
 			InitialValue=""
 			Type="TemplateResponseDateRangeRelativeDateRange"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="absolute_date_range"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="TemplateResponseDateRangeAbsoluteDateRange"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

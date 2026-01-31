@@ -7,12 +7,12 @@ import play.api.libs.json._
   * @param catalogId Catalog id pertaining to the creative assets product group.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsVerticalsListProductsByCatalogBasedFilterRequest(
-  catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType.Value,
   catalogId: String,
-  filters: CatalogsCreativeAssetsProductGroupFilters,
+  catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType.Value,
   country: Country,
+  filters: CatalogsCreativeAssetsProductGroupFilters,
   locale: CatalogsLocale
   additionalProperties: 
 )
@@ -20,7 +20,7 @@ case class CatalogsVerticalsListProductsByCatalogBasedFilterRequest(
 object CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
   implicit lazy val catalogsVerticalsListProductsByCatalogBasedFilterRequestJsonFormat: Format[CatalogsVerticalsListProductsByCatalogBasedFilterRequest] = {
     val realJsonFormat = Json.format[CatalogsVerticalsListProductsByCatalogBasedFilterRequest]
-    val declaredPropNames = Set("catalogType", "catalogId", "filters", "country", "locale")
+    val declaredPropNames = Set("catalogId", "catalogType", "country", "filters", "locale")
     
     Format(
       Reads {

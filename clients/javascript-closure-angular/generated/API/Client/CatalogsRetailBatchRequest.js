@@ -7,6 +7,13 @@ goog.provide('API.Client.CatalogsRetailBatchRequest');
 API.Client.CatalogsRetailBatchRequest = function() {}
 
 /**
+ * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailBatchRequest.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
@@ -19,18 +26,18 @@ API.Client.CatalogsRetailBatchRequest.prototype.catalogType;
 API.Client.CatalogsRetailBatchRequest.prototype.country;
 
 /**
- * We recommend using the CatalogsLocale values.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsRetailBatchRequest.prototype.language;
-
-/**
  * Array with catalogs item operations
  * @type {!Array<!API.Client.CatalogsRetailBatchRequest_items_inner>}
  * @export
  */
 API.Client.CatalogsRetailBatchRequest.prototype.items;
+
+/**
+ * We recommend using the CatalogsLocale values.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailBatchRequest.prototype.language;
 
 /** @enum {string} */
 API.Client.CatalogsRetailBatchRequest.CatalogTypeEnum = { 

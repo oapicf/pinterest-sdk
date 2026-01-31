@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
- * @param id Keyword ID.
  * @param archived Is keyword archived?
  * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param id Keyword ID.
  */
-case class KeywordUpdate(id: String,
-                archived: Option[Boolean],
-                bid: Option[Int]
+case class KeywordUpdate(archived: Option[Boolean],
+                bid: Option[Int],
+                id: String
                 )
 
 object KeywordUpdate {

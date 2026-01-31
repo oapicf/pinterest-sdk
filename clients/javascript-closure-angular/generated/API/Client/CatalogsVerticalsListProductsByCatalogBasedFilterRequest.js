@@ -7,12 +7,6 @@ goog.provide('API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterReques
 API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.catalogType;
-
-/**
  * Catalog id pertaining to the creative assets product group.
  * @type {!string}
  * @export
@@ -20,16 +14,22 @@ API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.ca
 API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.catalogId;
 
 /**
- * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.filters;
+API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.Country}
  * @export
  */
 API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.country;
+
+/**
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
+ * @export
+ */
+API.Client.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.prototype.filters;
 
 /**
  * @type {!API.Client.CatalogsLocale}

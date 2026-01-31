@@ -2,15 +2,15 @@
 Protected Class ItemBatchRecord
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The catalog item id in the merchant namespace
-		#tag EndNote
-		item_id As Xoson.O.OptionalString
+		Escapedattributes As OpenAPIClient.Models.ItemAttributesRequest
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.ItemAttributesRequest
+		#tag Note
+			The catalog item id in the merchant namespace
+		#tag EndNote
+		item_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -59,19 +59,19 @@ Protected Class ItemBatchRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Escapedattributes"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="ItemAttributesRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

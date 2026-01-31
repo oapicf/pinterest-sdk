@@ -13,10 +13,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsRequest   {
   
   private Country country;
+  private CatalogsItemsPostFilters filters;
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -249,7 +250,6 @@ public class CatalogsItemsRequest   {
   }
 
   private LanguageEnum language;
-  private CatalogsItemsPostFilters filters;
 
   /**
    **/
@@ -262,6 +262,19 @@ public class CatalogsItemsRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("filters")
+  @NotNull
+  public CatalogsItemsPostFilters getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
   }
 
   /**
@@ -278,19 +291,6 @@ public class CatalogsItemsRequest   {
     this.language = language;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
-  @NotNull
-  public CatalogsItemsPostFilters getFilters() {
-    return filters;
-  }
-  public void setFilters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -302,13 +302,13 @@ public class CatalogsItemsRequest   {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(this.country, catalogsItemsRequest.country) &&
-        Objects.equals(this.language, catalogsItemsRequest.language) &&
-        Objects.equals(this.filters, catalogsItemsRequest.filters);
+        Objects.equals(this.filters, catalogsItemsRequest.filters) &&
+        Objects.equals(this.language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -317,8 +317,8 @@ public class CatalogsItemsRequest   {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

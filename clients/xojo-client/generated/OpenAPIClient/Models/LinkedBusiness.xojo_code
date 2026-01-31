@@ -3,17 +3,9 @@ Protected Class LinkedBusiness
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Username
+			image_large_url
 		#tag EndNote
-		username As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			image_small_url
-		#tag EndNote
-		image_small_url As Xoson.O.OptionalString
+		image_large_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -27,9 +19,9 @@ Protected Class LinkedBusiness
 
 	#tag Property, Flags = &h0
 		#tag Note
-			image_large_url
+			image_small_url
 		#tag EndNote
-		image_large_url As Xoson.O.OptionalString
+		image_small_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -38,6 +30,14 @@ Protected Class LinkedBusiness
 			image_xlarge_url
 		#tag EndNote
 		image_xlarge_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Username
+		#tag EndNote
+		username As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -78,15 +78,7 @@ Protected Class LinkedBusiness
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="username"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="image_small_url"
+			Name="image_large_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -102,7 +94,7 @@ Protected Class LinkedBusiness
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="image_large_url"
+			Name="image_small_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -111,6 +103,14 @@ Protected Class LinkedBusiness
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="image_xlarge_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="username"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

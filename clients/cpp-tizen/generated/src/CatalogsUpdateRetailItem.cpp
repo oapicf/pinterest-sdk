@@ -23,15 +23,20 @@ CatalogsUpdateRetailItem::~CatalogsUpdateRetailItem()
 void
 CatalogsUpdateRetailItem::__init()
 {
+	//attributes = new UpdatableItemAttributes();
 	//item_id = std::string();
 	//operation = std::string();
-	//attributes = new UpdatableItemAttributes();
 	//new std::list()std::list> update_mask;
 }
 
 void
 CatalogsUpdateRetailItem::__cleanup()
 {
+	//if(attributes != NULL) {
+	//
+	//delete attributes;
+	//attributes = NULL;
+	//}
 	//if(item_id != NULL) {
 	//
 	//delete item_id;
@@ -41,11 +46,6 @@ CatalogsUpdateRetailItem::__cleanup()
 	//
 	//delete operation;
 	//operation = NULL;
-	//}
-	//if(attributes != NULL) {
-	//
-	//delete attributes;
-	//attributes = NULL;
 	//}
 	//if(update_mask != NULL) {
 	//update_mask.RemoveAll(true);
@@ -60,6 +60,20 @@ CatalogsUpdateRetailItem::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *attributesKey = "attributes";
+	node = json_object_get_member(pJsonObject, attributesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("UpdatableItemAttributes")) {
+			jsonToValue(&attributes, node, "UpdatableItemAttributes", "UpdatableItemAttributes");
+		} else {
+			
+			UpdatableItemAttributes* obj = static_cast<UpdatableItemAttributes*> (&attributes);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *item_idKey = "item_id";
 	node = json_object_get_member(pJsonObject, item_idKey);
 	if (node !=NULL) {
@@ -79,20 +93,6 @@ CatalogsUpdateRetailItem::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&operation, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *attributesKey = "attributes";
-	node = json_object_get_member(pJsonObject, attributesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("UpdatableItemAttributes")) {
-			jsonToValue(&attributes, node, "UpdatableItemAttributes", "UpdatableItemAttributes");
-		} else {
-			
-			UpdatableItemAttributes* obj = static_cast<UpdatableItemAttributes*> (&attributes);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -132,6 +132,20 @@ CatalogsUpdateRetailItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("UpdatableItemAttributes")) {
+		UpdatableItemAttributes obj = getAttributes();
+		node = converttoJson(&obj, "UpdatableItemAttributes", "");
+	}
+	else {
+		
+		UpdatableItemAttributes obj = static_cast<UpdatableItemAttributes> (getAttributes());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *attributesKey = "attributes";
+	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getItemId();
 		node = converttoJson(&obj, "std::string", "");
@@ -150,20 +164,6 @@ CatalogsUpdateRetailItem::toJson()
 	}
 	const gchar *operationKey = "operation";
 	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("UpdatableItemAttributes")) {
-		UpdatableItemAttributes obj = getAttributes();
-		node = converttoJson(&obj, "UpdatableItemAttributes", "");
-	}
-	else {
-		
-		UpdatableItemAttributes obj = static_cast<UpdatableItemAttributes> (getAttributes());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *attributesKey = "attributes";
-	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("UpdateMaskFieldType")) {
 		list<UpdateMaskFieldType> new_list = static_cast<list <UpdateMaskFieldType> > (getUpdateMask());
 		node = converttoJson(&new_list, "UpdateMaskFieldType", "array");
@@ -197,6 +197,18 @@ CatalogsUpdateRetailItem::toJson()
 	return ret;
 }
 
+UpdatableItemAttributes
+CatalogsUpdateRetailItem::getAttributes()
+{
+	return attributes;
+}
+
+void
+CatalogsUpdateRetailItem::setAttributes(UpdatableItemAttributes  attributes)
+{
+	this->attributes = attributes;
+}
+
 std::string
 CatalogsUpdateRetailItem::getItemId()
 {
@@ -219,18 +231,6 @@ void
 CatalogsUpdateRetailItem::setOperation(std::string  operation)
 {
 	this->operation = operation;
-}
-
-UpdatableItemAttributes
-CatalogsUpdateRetailItem::getAttributes()
-{
-	return attributes;
-}
-
-void
-CatalogsUpdateRetailItem::setAttributes(UpdatableItemAttributes  attributes)
-{
-	this->attributes = attributes;
 }
 
 std::list<UpdateMaskFieldType>

@@ -3,16 +3,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **String** | The catalog retail item id in the merchant namespace | 
 **Country** | [**Country**](Country.md) |  | 
+**ItemId** | **String** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdvancedAuctionItemsGetRecord = Initialize-PSOpenAPIToolsAdvancedAuctionItemsGetRecord  -ItemId DS0294-M `
- -Country null `
+$AdvancedAuctionItemsGetRecord = Initialize-PSOpenAPIToolsAdvancedAuctionItemsGetRecord  -Country null `
+ -ItemId DS0294-M `
  -Language null
 ```
 

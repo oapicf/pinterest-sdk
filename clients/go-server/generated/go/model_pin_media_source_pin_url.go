@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,10 +17,10 @@ package openapi
 // PinMediaSourcePinUrl - Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
 type PinMediaSourcePinUrl struct {
 
-	SourceType string `json:"source_type"`
-
 	// This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 	IsAffiliateLink bool `json:"is_affiliate_link,omitempty"`
+
+	SourceType string `json:"source_type"`
 }
 
 // AssertPinMediaSourcePinUrlRequired checks if the required fields are not zero-ed

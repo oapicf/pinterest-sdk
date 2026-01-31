@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &UpdateAssetGroupResponse{}
 
 // UpdateAssetGroupResponse struct for UpdateAssetGroupResponse
 type UpdateAssetGroupResponse struct {
-	// A list of successfully edited asset groups.
-	UpdatedAssetGroups []AssetGroupBinding `json:"updated_asset_groups,omitempty"`
 	// A list of errors associated with the asset groups. Will be returned if there is an error.
 	Exceptions []UpdateAssetGroupResponseExceptionsInner `json:"exceptions,omitempty"`
+	// A list of successfully edited asset groups.
+	UpdatedAssetGroups []AssetGroupBinding `json:"updated_asset_groups,omitempty"`
 }
 
 // NewUpdateAssetGroupResponse instantiates a new UpdateAssetGroupResponse object
@@ -41,38 +41,6 @@ func NewUpdateAssetGroupResponse() *UpdateAssetGroupResponse {
 func NewUpdateAssetGroupResponseWithDefaults() *UpdateAssetGroupResponse {
 	this := UpdateAssetGroupResponse{}
 	return &this
-}
-
-// GetUpdatedAssetGroups returns the UpdatedAssetGroups field value if set, zero value otherwise.
-func (o *UpdateAssetGroupResponse) GetUpdatedAssetGroups() []AssetGroupBinding {
-	if o == nil || IsNil(o.UpdatedAssetGroups) {
-		var ret []AssetGroupBinding
-		return ret
-	}
-	return o.UpdatedAssetGroups
-}
-
-// GetUpdatedAssetGroupsOk returns a tuple with the UpdatedAssetGroups field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAssetGroupResponse) GetUpdatedAssetGroupsOk() ([]AssetGroupBinding, bool) {
-	if o == nil || IsNil(o.UpdatedAssetGroups) {
-		return nil, false
-	}
-	return o.UpdatedAssetGroups, true
-}
-
-// HasUpdatedAssetGroups returns a boolean if a field has been set.
-func (o *UpdateAssetGroupResponse) HasUpdatedAssetGroups() bool {
-	if o != nil && !IsNil(o.UpdatedAssetGroups) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAssetGroups gets a reference to the given []AssetGroupBinding and assigns it to the UpdatedAssetGroups field.
-func (o *UpdateAssetGroupResponse) SetUpdatedAssetGroups(v []AssetGroupBinding) {
-	o.UpdatedAssetGroups = v
 }
 
 // GetExceptions returns the Exceptions field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -108,6 +76,38 @@ func (o *UpdateAssetGroupResponse) SetExceptions(v []UpdateAssetGroupResponseExc
 	o.Exceptions = v
 }
 
+// GetUpdatedAssetGroups returns the UpdatedAssetGroups field value if set, zero value otherwise.
+func (o *UpdateAssetGroupResponse) GetUpdatedAssetGroups() []AssetGroupBinding {
+	if o == nil || IsNil(o.UpdatedAssetGroups) {
+		var ret []AssetGroupBinding
+		return ret
+	}
+	return o.UpdatedAssetGroups
+}
+
+// GetUpdatedAssetGroupsOk returns a tuple with the UpdatedAssetGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAssetGroupResponse) GetUpdatedAssetGroupsOk() ([]AssetGroupBinding, bool) {
+	if o == nil || IsNil(o.UpdatedAssetGroups) {
+		return nil, false
+	}
+	return o.UpdatedAssetGroups, true
+}
+
+// HasUpdatedAssetGroups returns a boolean if a field has been set.
+func (o *UpdateAssetGroupResponse) HasUpdatedAssetGroups() bool {
+	if o != nil && !IsNil(o.UpdatedAssetGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAssetGroups gets a reference to the given []AssetGroupBinding and assigns it to the UpdatedAssetGroups field.
+func (o *UpdateAssetGroupResponse) SetUpdatedAssetGroups(v []AssetGroupBinding) {
+	o.UpdatedAssetGroups = v
+}
+
 func (o UpdateAssetGroupResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -118,11 +118,11 @@ func (o UpdateAssetGroupResponse) MarshalJSON() ([]byte, error) {
 
 func (o UpdateAssetGroupResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.UpdatedAssetGroups) {
-		toSerialize["updated_asset_groups"] = o.UpdatedAssetGroups
-	}
 	if o.Exceptions != nil {
 		toSerialize["exceptions"] = o.Exceptions
+	}
+	if !IsNil(o.UpdatedAssetGroups) {
+		toSerialize["updated_asset_groups"] = o.UpdatedAssetGroups
 	}
 	return toSerialize, nil
 }

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaType** | **String** |  | [optional] 
-**Images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
+**Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**MediaType** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaWithImage = Initialize-PSOpenAPIToolsPinMediaWithImage  -MediaType null `
- -Images null
+$PinMediaWithImage = Initialize-PSOpenAPIToolsPinMediaWithImage  -Images null `
+ -MediaType null
 ```
 
 - Convert the resource to JSON

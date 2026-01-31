@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotionResponseElement;
+import org.openapitools.model.ProductGroupPromotion;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -26,15 +26,15 @@ import javax.annotation.Generated;
  * ProductGroupPromotionResponseItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionResponseItem {
 
-  private @Nullable ProductGroupPromotionResponseElement data;
+  private @Nullable ProductGroupPromotion data;
 
   @Valid
   private JsonNullable<List<@Valid Exception>> exceptions = JsonNullable.<List<@Valid Exception>>undefined();
 
-  public ProductGroupPromotionResponseItem data(@Nullable ProductGroupPromotionResponseElement data) {
+  public ProductGroupPromotionResponseItem data(@Nullable ProductGroupPromotion data) {
     this.data = data;
     return this;
   }
@@ -46,11 +46,11 @@ public class ProductGroupPromotionResponseItem {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public @Nullable ProductGroupPromotionResponseElement getData() {
+  public @Nullable ProductGroupPromotion getData() {
     return data;
   }
 
-  public void setData(@Nullable ProductGroupPromotionResponseElement data) {
+  public void setData(@Nullable ProductGroupPromotion data) {
     this.data = data;
   }
 

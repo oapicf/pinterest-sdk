@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | 
 **CreativeAssetsId** | **string** | The catalog creative assets id in the merchant namespace | 
 **Operation** | **string** |  | 
-**Attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | 
 
 ## Methods
 
 ### NewCatalogsCreateCreativeAssetsItem
 
-`func NewCatalogsCreateCreativeAssetsItem(creativeAssetsId string, operation string, attributes CatalogsCreativeAssetsAttributes, ) *CatalogsCreateCreativeAssetsItem`
+`func NewCatalogsCreateCreativeAssetsItem(attributes CatalogsCreativeAssetsAttributes, creativeAssetsId string, operation string, ) *CatalogsCreateCreativeAssetsItem`
 
 NewCatalogsCreateCreativeAssetsItem instantiates a new CatalogsCreateCreativeAssetsItem object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +26,26 @@ will change when the set of required properties is changed
 NewCatalogsCreateCreativeAssetsItemWithDefaults instantiates a new CatalogsCreateCreativeAssetsItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *CatalogsCreateCreativeAssetsItem) GetAttributes() CatalogsCreativeAssetsAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *CatalogsCreateCreativeAssetsItem) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *CatalogsCreateCreativeAssetsItem) SetAttributes(v CatalogsCreativeAssetsAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
 
 ### GetCreativeAssetsId
 
@@ -65,26 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsCreateCreativeAssetsItem) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
-
-
-### GetAttributes
-
-`func (o *CatalogsCreateCreativeAssetsItem) GetAttributes() CatalogsCreativeAssetsAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *CatalogsCreateCreativeAssetsItem) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *CatalogsCreateCreativeAssetsItem) SetAttributes(v CatalogsCreativeAssetsAttributes)`
-
-SetAttributes sets Attributes field to given value.
 
 
 

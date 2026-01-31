@@ -6,6 +6,8 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | ------------- | ------------- | ------------- |
 | [**adsCreditRedeem**](BillingApi.md#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 | [**adsCreditsDiscountsGet**](BillingApi.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+| [**billingInvoiceDownloadGet**](BillingApi.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
+| [**billingInvoicesGet**](BillingApi.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
 | [**billingProfilesGet**](BillingApi.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
 | [**ssioAccountsGet**](BillingApi.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
 | [**ssioInsertionOrderCreate**](BillingApi.md#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
@@ -21,7 +23,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -71,7 +73,7 @@ Configure pinterest_oauth2:
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -117,13 +119,127 @@ Configure pinterest_oauth2:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a id="billingInvoiceDownloadGet"></a>
+# **billingInvoiceDownloadGet**
+> BillingInvoiceDownloadResponse billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = BillingApi()
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+val billingInvoiceId : kotlin.String = billingInvoiceId_example // kotlin.String | Unique identifier of a billing invoice.
+try {
+    val result : BillingInvoiceDownloadResponse = apiInstance.billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling BillingApi#billingInvoiceDownloadGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling BillingApi#billingInvoiceDownloadGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **billingInvoiceId** | **kotlin.String**| Unique identifier of a billing invoice. | |
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+
+Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="billingInvoicesGet"></a>
+# **billingInvoicesGet**
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = BillingApi()
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val sort : kotlin.String = DUE_DATE // kotlin.String | Field of which to sort billing invoices
+val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+val status : kotlin.String = OPEN // kotlin.String | Status of billing invoices to filter by
+val documentType : kotlin.String = INVOICE // kotlin.String | Document type of billing invoices to filter by
+val startDueDate : java.time.LocalDate = Sun Jan 01 00:00:00 UTC 2023 // java.time.LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+val endDueDate : java.time.LocalDate = Mon Jan 01 00:00:00 UTC 2024 // java.time.LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+try {
+    val result : BillingInvoicesGet200Response = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling BillingApi#billingInvoicesGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling BillingApi#billingInvoicesGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort** | **kotlin.String**| Field of which to sort billing invoices | [optional] [default to Sort.DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
+| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **status** | **kotlin.String**| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED] |
+| **documentType** | **kotlin.String**| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO] |
+| **startDueDate** | **java.time.LocalDate**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **endDueDate** | **java.time.LocalDate**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+
+### Return type
+
+[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md)
+
+### Authorization
+
+
+Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a id="billingProfilesGet"></a>
 # **billingProfilesGet**
 > BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin

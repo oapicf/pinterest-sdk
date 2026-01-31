@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]VideoMetadata**](VideoMetadata.md) |  | [optional] 
+**Items** | Pointer to [**[]VideoMetadataWithItemType**](VideoMetadataWithItemType.md) |  | [optional] 
+**MediaType** | **string** |  | 
 
 ## Methods
 
 ### NewPinMediaWithVideos
 
-`func NewPinMediaWithVideos() *PinMediaWithVideos`
+`func NewPinMediaWithVideos(mediaType string, ) *PinMediaWithVideos`
 
 NewPinMediaWithVideos instantiates a new PinMediaWithVideos object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *PinMediaWithVideos) GetItems() []VideoMetadata`
+`func (o *PinMediaWithVideos) GetItems() []VideoMetadataWithItemType`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *PinMediaWithVideos) GetItemsOk() (*[]VideoMetadata, bool)`
+`func (o *PinMediaWithVideos) GetItemsOk() (*[]VideoMetadataWithItemType, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *PinMediaWithVideos) SetItems(v []VideoMetadata)`
+`func (o *PinMediaWithVideos) SetItems(v []VideoMetadataWithItemType)`
 
 SetItems sets Items field to given value.
 
@@ -49,6 +50,26 @@ SetItems sets Items field to given value.
 `func (o *PinMediaWithVideos) HasItems() bool`
 
 HasItems returns a boolean if a field has been set.
+
+### GetMediaType
+
+`func (o *PinMediaWithVideos) GetMediaType() string`
+
+GetMediaType returns the MediaType field if non-nil, zero value otherwise.
+
+### GetMediaTypeOk
+
+`func (o *PinMediaWithVideos) GetMediaTypeOk() (*string, bool)`
+
+GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaType
+
+`func (o *PinMediaWithVideos) SetMediaType(v string)`
+
+SetMediaType sets MediaType field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,11 +21,11 @@ public class DetailedError  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private String message;
+  private Object details;
 
   @ApiModelProperty(required = true, value = "")
 
-  private Object details;
+  private String message;
  /**
    * Get code
    * @return code
@@ -42,25 +42,6 @@ public class DetailedError  {
 
   public DetailedError code(Integer code) {
     this.code = code;
-    return this;
-  }
-
- /**
-   * Get message
-   * @return message
-  **/
-  @JsonProperty("message")
-  @NotNull
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public DetailedError message(String message) {
-    this.message = message;
     return this;
   }
 
@@ -83,6 +64,25 @@ public class DetailedError  {
     return this;
   }
 
+ /**
+   * Get message
+   * @return message
+  **/
+  @JsonProperty("message")
+  @NotNull
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public DetailedError message(String message) {
+    this.message = message;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -93,13 +93,13 @@ public class DetailedError  {
     }
     DetailedError detailedError = (DetailedError) o;
     return Objects.equals(this.code, detailedError.code) &&
-        Objects.equals(this.message, detailedError.message) &&
-        Objects.equals(this.details, detailedError.details);
+        Objects.equals(this.details, detailedError.details) &&
+        Objects.equals(this.message, detailedError.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, details);
+    return Objects.hash(code, details, message);
   }
 
   @Override
@@ -108,8 +108,8 @@ public class DetailedError  {
     sb.append("class DetailedError {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

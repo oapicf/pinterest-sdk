@@ -13,14 +13,14 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="The terminated asset access.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="The terminated asset access.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnerAssetsResult   {
   
   private String assetId;
   private String assetType;
-  private List<String> permissions = new ArrayList<>();
   private Boolean isSharedPartner;
   private String partnerId;
+  private List<String> permissions = new ArrayList<>();
 
   /**
    * Unique identifier of a business asset.
@@ -36,29 +36,16 @@ public class DeletePartnerAssetsResult   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
   }
   public void setAssetType(String assetType) {
     this.assetType = assetType;
-  }
-
-  /**
-   * Permission levels member or partner has on an asset.
-   **/
-  
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
-  @JsonProperty("permissions")
-  public List<String> getPermissions() {
-    return permissions;
-  }
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
   }
 
   /**
@@ -87,6 +74,19 @@ public class DeletePartnerAssetsResult   {
     this.partnerId = partnerId;
   }
 
+  /**
+   * Permission levels member or partner has on an asset.
+   **/
+  
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
+  @JsonProperty("permissions")
+  public List<String> getPermissions() {
+    return permissions;
+  }
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -99,14 +99,14 @@ public class DeletePartnerAssetsResult   {
     DeletePartnerAssetsResult deletePartnerAssetsResult = (DeletePartnerAssetsResult) o;
     return Objects.equals(this.assetId, deletePartnerAssetsResult.assetId) &&
         Objects.equals(this.assetType, deletePartnerAssetsResult.assetType) &&
-        Objects.equals(this.permissions, deletePartnerAssetsResult.permissions) &&
         Objects.equals(this.isSharedPartner, deletePartnerAssetsResult.isSharedPartner) &&
-        Objects.equals(this.partnerId, deletePartnerAssetsResult.partnerId);
+        Objects.equals(this.partnerId, deletePartnerAssetsResult.partnerId) &&
+        Objects.equals(this.permissions, deletePartnerAssetsResult.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, isSharedPartner, partnerId);
+    return Objects.hash(assetId, assetType, isSharedPartner, partnerId, permissions);
   }
 
   @Override
@@ -116,9 +116,9 @@ public class DeletePartnerAssetsResult   {
     
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    isSharedPartner: ").append(toIndentedString(isSharedPartner)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

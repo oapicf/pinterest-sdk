@@ -11,7 +11,7 @@ module ReportsStats200Response =
 
 
   type reports_stats_200_response = {
-    Items : CatalogsReportStats[];
     Bookmark : string option;
+    Items : CatalogsReportStats[];
   }
   //#endregion

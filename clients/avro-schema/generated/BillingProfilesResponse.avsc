@@ -5,9 +5,25 @@
   "name": "BillingProfilesResponse",
   "fields": [
     {
-      "name": "id",
+      "name": "advertiser_id",
       "type": ["null", "string"],
-      "doc": "Billing ID.",
+      "doc": "Advertiser ID of the billing.",
+      "default": null
+    },
+    {
+      "name": "billing_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "BillingProfilesResponse_billingUnderscoretype",
+        "symbols": [
+          "CREDIT_CARD",
+          "INVOICE",
+          "INTERNAL",
+          "RECURRING",
+          "PREPAID"
+        ]
+      }],
+      "doc": "Billing type of the advertiser",
       "default": null
     },
     {
@@ -28,27 +44,9 @@
       "default": null
     },
     {
-      "name": "status",
-      "type": ["null", {
-        "type": "enum",
-        "name": "BillingProfilesResponse_status",
-        "symbols": [
-          "UNSPECIFIED",
-          "VALID",
-          "INVALID",
-          "PENDING",
-          "DELETED",
-          "SECONDARY",
-          "PENDING_SECONDARY"
-        ]
-      }],
-      "doc": "Status of the billing.",
-      "default": null
-    },
-    {
-      "name": "advertiser_id",
+      "name": "id",
       "type": ["null", "string"],
-      "doc": "Advertiser ID of the billing.",
+      "doc": "Billing ID.",
       "default": null
     },
     {
@@ -69,6 +67,24 @@
         ]
       }],
       "doc": "Brand of the payment method.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", {
+        "type": "enum",
+        "name": "BillingProfilesResponse_status",
+        "symbols": [
+          "UNSPECIFIED",
+          "VALID",
+          "INVALID",
+          "PENDING",
+          "DELETED",
+          "SECONDARY",
+          "PENDING_SECONDARY"
+        ]
+      }],
+      "doc": "Status of the billing.",
       "default": null
     }
   ]

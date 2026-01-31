@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CustomLabel4Filter (
-    _CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+    _CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria
 )
 object CustomLabel4Filter {
     def toStringBody(var_CUSTOM_LABEL_4: Object) =

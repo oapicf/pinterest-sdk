@@ -33,8 +33,8 @@ import com.squareup.moshi.JsonClass
  * @param IMAGE_LINK_LENGTH_TOO_LONG 
  * @param IMAGE_LINK_MISSING 
  * @param INVALID_DOMAIN 
- * @param ITEMID_MISSING 
  * @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE 
+ * @param ITEMID_MISSING 
  * @param LINK_FORMAT_INVALID 
  * @param LINK_LENGTH_TOO_LONG 
  * @param LIST_PRICE_INVALID 
@@ -81,11 +81,11 @@ data class CatalogsItemValidationErrors (
     @Json(name = "INVALID_DOMAIN")
     val INVALID_DOMAIN: CatalogsItemValidationDetails? = null,
 
-    @Json(name = "ITEMID_MISSING")
-    val ITEMID_MISSING: CatalogsItemValidationDetails? = null,
-
     @Json(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
     val ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = null,
+
+    @Json(name = "ITEMID_MISSING")
+    val ITEMID_MISSING: CatalogsItemValidationDetails? = null,
 
     @Json(name = "LINK_FORMAT_INVALID")
     val LINK_FORMAT_INVALID: CatalogsItemValidationDetails? = null,

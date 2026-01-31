@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -123,7 +123,7 @@ func (c *ConversionTagsAPIController) OrderedRoutes() []Route {
 
 
 
-// ConversionTagsList - Get conversion tags
+// ConversionTagsList - List conversion tags
 func (c *ConversionTagsAPIController) ConversionTagsList(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)

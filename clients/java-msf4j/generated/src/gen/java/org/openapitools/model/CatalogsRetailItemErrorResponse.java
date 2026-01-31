@@ -16,16 +16,16 @@ import org.openapitools.model.ItemValidationEvent;
  * Object describing a retail item error
  */
 @ApiModel(description = "Object describing a retail item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
+  @JsonProperty("errors")
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
   @JsonProperty("item_id")
   private String itemId;
-
-  @JsonProperty("errors")
-  private List<@Valid ItemValidationEvent> errors = null;
 
   public CatalogsRetailItemErrorResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -43,6 +43,29 @@ public class CatalogsRetailItemErrorResponse   {
 
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+   /**
+   * Array with the errors for the item id requested
+   * @return errors
+  **/
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
   }
 
   public CatalogsRetailItemErrorResponse itemId(String itemId) {
@@ -63,32 +86,6 @@ public class CatalogsRetailItemErrorResponse   {
     this.itemId = itemId;
   }
 
-  public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-   /**
-   * Array with the errors for the item id requested
-   * @return errors
-  **/
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -100,13 +97,13 @@ public class CatalogsRetailItemErrorResponse   {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -115,8 +112,8 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

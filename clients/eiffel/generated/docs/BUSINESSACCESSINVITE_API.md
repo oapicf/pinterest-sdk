@@ -56,7 +56,7 @@ Cancel membership/partnership invites and/or requests.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business_id** | **STRING_32**| Business id | [default to null]
+ **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
  **cancel_invites_body** | [**CANCEL_INVITES_BODY**](CANCEL_INVITES_BODY.md)| A list with invite ids | 
 
 ### Return type
@@ -118,7 +118,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business_id** | **STRING_32**| Business id | [default to null]
+ **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
  **create_membership_or_partnership_invites_body** | [**CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES_BODY**](CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES_BODY.md)| An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

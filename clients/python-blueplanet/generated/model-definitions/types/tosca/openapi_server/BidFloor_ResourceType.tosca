@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BidFloor"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BidFloor"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BidFloor {
+    title = BidFloor
+    description = BidFloor
+    derivedFrom = Root
+    properties {
+        bid_floors {
+          type = array
+          items.type =  integer
+          description = "A list of bid floors in micro currency. For example, [100000, 200000]"
+          optional = false
+        }
+        type {
+          type =  string
+          description = "Always the string &#39;bidfloor&#39;"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BidFloor {
+    title = BidFloor
+    description = BidFloor
+    implements = openapi_server.resourceTypes.BidFloor
+
+  }
+}

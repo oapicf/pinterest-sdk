@@ -72,7 +72,7 @@ private class OASCatalogsProductGroupMultipleMediaTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupMultipleMedia catalogsProductGroupMultipleMediaTypesCriteria = new OASCatalogsProductGroupMultipleMedia();
-        System.assertEquals(new List<OASMediaType>(), catalogsProductGroupMultipleMediaTypesCriteria.values);
         System.assertEquals(false, catalogsProductGroupMultipleMediaTypesCriteria.negated);
+        System.assertEquals(new List<OASMediaType>(), catalogsProductGroupMultipleMediaTypesCriteria.values);
     }
 }

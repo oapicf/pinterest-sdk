@@ -7,11 +7,12 @@ Summarized pin information
 
 Name | Type
 ------------ | -------------
-`media` | [PinMedia](PinMedia.md)
 `altText` | string
-`link` | string
-`title` | string
 `description` | string
+`id` | string
+`link` | string
+`media` | [PinMedia](PinMedia.md)
+`title` | string
 
 ## Example
 
@@ -20,11 +21,12 @@ import type { SummaryPin } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "media": null,
   "altText": null,
-  "link": https://www.pinterest.com/,
-  "title": null,
   "description": null,
+  "id": null,
+  "link": https://www.pinterest.com/,
+  "media": null,
+  "title": null,
 } satisfies SummaryPin
 
 console.log(example)

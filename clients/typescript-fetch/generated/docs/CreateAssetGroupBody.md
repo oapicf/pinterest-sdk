@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`assetGroupName` | string
 `assetGroupDescription` | string
+`assetGroupName` | string
 `assetGroupTypes` | [Array&lt;AssetGroupType&gt;](AssetGroupType.md)
 
 ## Example
@@ -17,8 +17,8 @@ import type { CreateAssetGroupBody } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "assetGroupName": Canada Ad Accounts,
   "assetGroupDescription": Asset groups that has ad accounts shared in Canada,
+  "assetGroupName": Canada Ad Accounts,
   "assetGroupTypes": ["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"],
 } satisfies CreateAssetGroupBody
 

@@ -9,11 +9,11 @@ import org.openapitools.model.BulkReportingJobStatus;
 @Canonical
 class CreateMMMReportResponseData {
     
-    BulkReportingJobStatus reportStatus
-    
-    String token
-    
     String message
     
+    BulkReportingJobStatus reportStatus
+    
     String status
+    
+    String token
 }

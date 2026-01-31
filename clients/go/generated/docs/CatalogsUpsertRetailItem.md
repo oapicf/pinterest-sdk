@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 **ItemId** | **string** | The catalog item id in the merchant namespace | 
 **Operation** | **string** |  | 
-**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 
 ## Methods
 
 ### NewCatalogsUpsertRetailItem
 
-`func NewCatalogsUpsertRetailItem(itemId string, operation string, attributes ItemAttributesRequest, ) *CatalogsUpsertRetailItem`
+`func NewCatalogsUpsertRetailItem(attributes ItemAttributesRequest, itemId string, operation string, ) *CatalogsUpsertRetailItem`
 
 NewCatalogsUpsertRetailItem instantiates a new CatalogsUpsertRetailItem object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +26,26 @@ will change when the set of required properties is changed
 NewCatalogsUpsertRetailItemWithDefaults instantiates a new CatalogsUpsertRetailItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributesRequest`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributesRequest, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *CatalogsUpsertRetailItem) SetAttributes(v ItemAttributesRequest)`
+
+SetAttributes sets Attributes field to given value.
+
 
 ### GetItemId
 
@@ -65,26 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsUpsertRetailItem) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
-
-
-### GetAttributes
-
-`func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributesRequest`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributesRequest, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *CatalogsUpsertRetailItem) SetAttributes(v ItemAttributesRequest)`
-
-SetAttributes sets Attributes field to given value.
 
 
 

@@ -52,25 +52,25 @@ public:
 	/*! \brief Set Generation date
 	 */
 	void setDate(std::string  date);
-	/*! \brief Get Generated audience type to request.
-	 */
-	std::string getType();
-
-	/*! \brief Set Generated audience type to request.
-	 */
-	void setType(std::string  type);
-	/*! \brief Get Generated audience scope to request.
+	/*! \brief Get 
 	 */
 	std::string getScope();
 
-	/*! \brief Set Generated audience scope to request.
+	/*! \brief Set 
 	 */
 	void setScope(std::string  scope);
+	/*! \brief Get 
+	 */
+	std::string getType();
+
+	/*! \brief Set 
+	 */
+	void setType(std::string  type);
 
 private:
 	std::string date;
-	std::string type;
 	std::string scope;
+	std::string type;
 	void __init();
 	void __cleanup();
 

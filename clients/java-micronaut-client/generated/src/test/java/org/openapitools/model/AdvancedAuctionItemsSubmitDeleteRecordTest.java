@@ -1,5 +1,9 @@
 package org.openapitools.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -22,14 +26,6 @@ public class AdvancedAuctionItemsSubmitDeleteRecordTest {
     }
 
     /**
-     * Test the property 'itemId'
-     */
-    @Test
-    public void itemIdTest() {
-        // TODO: test itemId
-    }
-
-    /**
      * Test the property 'country'
      */
     @Test
@@ -38,11 +34,27 @@ public class AdvancedAuctionItemsSubmitDeleteRecordTest {
     }
 
     /**
+     * Test the property 'itemId'
+     */
+    @Test
+    public void itemIdTest() {
+        // TODO: test itemId
+    }
+
+    /**
      * Test the property 'language'
      */
     @Test
     public void languageTest() {
         // TODO: test language
+    }
+
+    /**
+     * Test the property 'errors'
+     */
+    @Test
+    public void errorsTest() {
+        // TODO: test errors
     }
 
 }

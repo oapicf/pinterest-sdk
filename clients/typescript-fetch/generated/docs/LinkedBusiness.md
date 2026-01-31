@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`username` | string
-`imageSmallUrl` | string
-`imageMediumUrl` | string
 `imageLargeUrl` | string
+`imageMediumUrl` | string
+`imageSmallUrl` | string
 `imageXlargeUrl` | string
+`username` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { LinkedBusiness } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "username": username,
-  "imageSmallUrl": https://www.example.com/dj23454f53dfk2324.jpg,
-  "imageMediumUrl": https://www.example.com/dj23454f53dfk2324.jpg,
   "imageLargeUrl": https://www.example.com/dj23454f53dfk2324.jpg,
+  "imageMediumUrl": https://www.example.com/dj23454f53dfk2324.jpg,
+  "imageSmallUrl": https://www.example.com/dj23454f53dfk2324.jpg,
   "imageXlargeUrl": https://www.example.com/dj23454f53dfk2324.jpg,
+  "username": username,
 } satisfies LinkedBusiness
 
 console.log(example)

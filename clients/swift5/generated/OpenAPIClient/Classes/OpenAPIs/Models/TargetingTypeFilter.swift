@@ -12,11 +12,30 @@ import AnyCodable
 
 public struct TargetingTypeFilter: Codable, JSONEncodable, Hashable {
 
+    public enum TargetingTypes: String, Codable, CaseIterable {
+        case keyword = "KEYWORD"
+        case apptype = "APPTYPE"
+        case gender = "GENDER"
+        case location = "LOCATION"
+        case placement = "PLACEMENT"
+        case country = "COUNTRY"
+        case targetedInterest = "TARGETED_INTEREST"
+        case pinnerInterest = "PINNER_INTEREST"
+        case audienceInclude = "AUDIENCE_INCLUDE"
+        case geo = "GEO"
+        case ageBucket = "AGE_BUCKET"
+        case region = "REGION"
+        case mediaType = "MEDIA_TYPE"
+        case ageBucketAndGender = "AGE_BUCKET_AND_GENDER"
+        case audienceMultiplier = "AUDIENCE_MULTIPLIER"
+        case creativeEnhancements = "CREATIVE_ENHANCEMENTS"
+        case localAdsStoreCode = "LOCAL_ADS_STORE_CODE"
+    }
     public static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
-    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
-    public var targetingTypes: [AdsAnalyticsTargetingType]?
+    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
+    public var targetingTypes: [TargetingTypes]?
 
-    public init(targetingTypes: [AdsAnalyticsTargetingType]? = nil) {
+    public init(targetingTypes: [TargetingTypes]? = nil) {
         self.targetingTypes = targetingTypes
     }
 

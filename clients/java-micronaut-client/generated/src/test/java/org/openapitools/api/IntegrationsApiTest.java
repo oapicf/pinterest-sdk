@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;

@@ -1,0 +1,146 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdCommon"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdCommon"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CreativeType = openapi_server.resourceTypes.CreativeType
+  CustomizableCTAType = openapi_server.resourceTypes.CustomizableCTAType
+  DisclosureType = openapi_server.resourceTypes.DisclosureType
+  EntityStatus = openapi_server.resourceTypes.EntityStatus
+  GridClickType = openapi_server.resourceTypes.GridClickType
+  QuizPinData = openapi_server.resourceTypes.QuizPinData
+  TrackingUrls = openapi_server.resourceTypes.TrackingUrls
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdCommon {
+    title = AdCommon
+    description = AdCommon
+    derivedFrom = Root
+    properties {
+        ad_group_id {
+          type =  string
+          description = "ID of the ad group that contains the ad."
+          optional = false
+        }
+        android_deep_link {
+          type =  string
+          description = "Deep link URL for Android devices."
+          optional = false
+        }
+        carousel_android_deep_links {
+          type = array
+          items.type =  string
+          description = "Comma-separated deep links for the carousel pin on Android."
+          optional = false
+        }
+        carousel_destination_urls {
+          type = array
+          items.type =  string
+          description = "Comma-separated destination URLs for the carousel pin to promote."
+          optional = false
+        }
+        carousel_ios_deep_links {
+          type = array
+          items.type =  string
+          description = "Comma-separated deep links for the carousel pin on iOS."
+          optional = false
+        }
+        click_tracking_url {
+          type =  string
+          description = "Tracking url for the ad clicks."
+          optional = false
+        }
+        creative_type {
+          type = CreativeType
+          description = ""
+          optional = false
+        }
+        customizable_cta_type {
+          type = CustomizableCTAType
+          description = ""
+          optional = false
+        }
+        destination_url {
+          type =  string
+          description = "Destination URL."
+          optional = false
+        }
+        disclosure_type {
+          type = DisclosureType
+          description = ""
+          optional = false
+        }
+        disclosure_url {
+          type =  string
+          description = "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure."
+          optional = false
+        }
+        grid_click_type {
+          type = GridClickType
+          description = ""
+          optional = false
+        }
+        ios_deep_link {
+          type =  string
+          description = "Deep link URL for iOS devices."
+          optional = false
+        }
+        is_pin_deleted {
+          type =  boolean
+          description = "Is original pin deleted?"
+          optional = false
+        }
+        is_removable {
+          type =  boolean
+          description = "Is pin repinnable?"
+          optional = false
+        }
+        lead_form_id {
+          type =  string
+          description = "Lead form ID for lead ad generation."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Name of the ad - 255 chars max."
+          optional = false
+        }
+        quiz_pin_data {
+          type = QuizPinData
+          description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved."
+          optional = false
+        }
+        status {
+          type = EntityStatus
+          description = ""
+          optional = false
+        }
+        tracking_urls {
+          type = TrackingUrls
+          description = ""
+          optional = false
+        }
+        view_tracking_url {
+          type =  string
+          description = "Tracking URL for ad impressions."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdCommon {
+    title = AdCommon
+    description = AdCommon
+    implements = openapi_server.resourceTypes.AdCommon
+
+  }
+}

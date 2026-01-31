@@ -11,10 +11,10 @@ module BulkDownloadRequestCampaignFilter =
 
 
   type BulkDownloadRequest_campaign_filter = {
-    StartTime : string;
+    CampaignStatus : CampaignSummaryStatus[];
     EndTime : string;
     Name : string;
-    CampaignStatus : CampaignSummaryStatus[];
     ObjectiveType : ObjectiveType[];
+    StartTime : string;
   }
   //#endregion

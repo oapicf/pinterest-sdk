@@ -25,16 +25,16 @@ class CatalogsReportFeedIngestionFilterTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsReportFeedIngestionFilter
         //val modelInstance = CatalogsReportFeedIngestionFilter()
 
-        // to test the property `reportType`
-        should("test reportType") {
-            // uncomment below to test the property
-            //modelInstance.reportType shouldBe ("TODO")
-        }
-
         // to test the property `feedId` - ID of the feed entity.
         should("test feedId") {
             // uncomment below to test the property
             //modelInstance.feedId shouldBe ("TODO")
+        }
+
+        // to test the property `reportType`
+        should("test reportType") {
+            // uncomment below to test the property
+            //modelInstance.reportType shouldBe ("TODO")
         }
 
         // to test the property `processingResultId` - Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.

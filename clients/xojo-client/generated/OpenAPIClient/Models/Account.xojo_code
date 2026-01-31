@@ -3,37 +3,6 @@ Protected Class Account
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Type of account
-		#tag EndNote
-		account_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			User account ID.
-		#tag EndNote
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		profile_image As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		website_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		username As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Profile about description.
 		#tag EndNote
 		about As Xoson.O.OptionalString
@@ -41,7 +10,10 @@ Protected Class Account
 
 
 	#tag Property, Flags = &h0
-		business_name As Xoson.O.OptionalString
+		#tag Note
+			Type of account
+		#tag EndNote
+		account_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,10 +26,7 @@ Protected Class Account
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			User account pin count. This includes both created and saved pins.
-		#tag EndNote
-		pin_count As Xoson.O.OptionalInteger
+		business_name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -79,9 +48,40 @@ Protected Class Account
 
 	#tag Property, Flags = &h0
 		#tag Note
+			User account ID.
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			User account monthly views.
 		#tag EndNote
 		monthly_views As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			User account pin count. This includes both created and saved pins.
+		#tag EndNote
+		pin_count As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		profile_image As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		username As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		website_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -142,47 +142,7 @@ Protected Class Account
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="profile_image"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="website_url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="username"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="about"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="business_name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -198,11 +158,11 @@ Protected Class Account
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="pin_count"
+			Name="business_name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -222,11 +182,51 @@ Protected Class Account
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="monthly_views"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="pin_count"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="profile_image"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="username"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="website_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

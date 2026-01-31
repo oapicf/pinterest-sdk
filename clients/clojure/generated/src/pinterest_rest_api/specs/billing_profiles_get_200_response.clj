@@ -8,8 +8,8 @@
 
 (def billing-profiles-get-200-response-data
   {
-   (ds/req :items) (s/coll-of billing-profiles-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of billing-profiles-response-spec)
    })
 
 (def billing-profiles-get-200-response-spec

@@ -22,9 +22,9 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.ConversionEventResponse
+import org.openapitools.client.api.ConversionTag
 import org.openapitools.client.api.ConversionTagCreate
-import org.openapitools.client.api.ConversionTagListResponse
-import org.openapitools.client.api.ConversionTagResponse
+import org.openapitools.client.api.ConversionTagsList200Response
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.PageVisitConversionTagsGet200Response
 
@@ -34,8 +34,8 @@ object ConversionTagsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def conversionTagsCreate(host: String, adAccountId: String, conversionTagCreate: ConversionTagCreate): Task[ConversionTagResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionTagResponse] = jsonOf[ConversionTagResponse]
+  def conversionTagsCreate(host: String, adAccountId: String, conversionTagCreate: ConversionTagCreate): Task[ConversionTag] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionTag] = jsonOf[ConversionTag]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -50,13 +50,13 @@ object ConversionTagsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionTagCreate)
-      resp          <- client.expect[ConversionTagResponse](req)
+      resp          <- client.expect[ConversionTag](req)
 
     } yield resp
   }
 
-  def conversionTagsGet(host: String, adAccountId: String, conversionTagId: String): Task[ConversionTagResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionTagResponse] = jsonOf[ConversionTagResponse]
+  def conversionTagsGet(host: String, adAccountId: String, conversionTagId: String): Task[ConversionTag] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionTag] = jsonOf[ConversionTag]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "conversion_tag_id" + "\\}",escape(conversionTagId.toString))
 
@@ -71,13 +71,13 @@ object ConversionTagsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[ConversionTagResponse](req)
+      resp          <- client.expect[ConversionTag](req)
 
     } yield resp
   }
 
-  def conversionTagsList(host: String, adAccountId: String, filterDeleted: Boolean = false)(implicit filterDeletedQuery: QueryParam[Boolean]): Task[ConversionTagListResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionTagListResponse] = jsonOf[ConversionTagListResponse]
+  def conversionTagsList(host: String, adAccountId: String, filterDeleted: Boolean = false)(implicit filterDeletedQuery: QueryParam[Boolean]): Task[ConversionTagsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionTagsList200Response] = jsonOf[ConversionTagsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -92,7 +92,7 @@ object ConversionTagsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[ConversionTagListResponse](req)
+      resp          <- client.expect[ConversionTagsList200Response](req)
 
     } yield resp
   }
@@ -146,8 +146,8 @@ class HttpServiceConversionTagsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate): Task[ConversionTagResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionTagResponse] = jsonOf[ConversionTagResponse]
+  def conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate): Task[ConversionTag] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionTag] = jsonOf[ConversionTag]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -162,13 +162,13 @@ class HttpServiceConversionTagsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionTagCreate)
-      resp          <- client.expect[ConversionTagResponse](req)
+      resp          <- client.expect[ConversionTag](req)
 
     } yield resp
   }
 
-  def conversionTagsGet(adAccountId: String, conversionTagId: String): Task[ConversionTagResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionTagResponse] = jsonOf[ConversionTagResponse]
+  def conversionTagsGet(adAccountId: String, conversionTagId: String): Task[ConversionTag] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionTag] = jsonOf[ConversionTag]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "conversion_tag_id" + "\\}",escape(conversionTagId.toString))
 
@@ -183,13 +183,13 @@ class HttpServiceConversionTagsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[ConversionTagResponse](req)
+      resp          <- client.expect[ConversionTag](req)
 
     } yield resp
   }
 
-  def conversionTagsList(adAccountId: String, filterDeleted: Boolean = false)(implicit filterDeletedQuery: QueryParam[Boolean]): Task[ConversionTagListResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionTagListResponse] = jsonOf[ConversionTagListResponse]
+  def conversionTagsList(adAccountId: String, filterDeleted: Boolean = false)(implicit filterDeletedQuery: QueryParam[Boolean]): Task[ConversionTagsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionTagsList200Response] = jsonOf[ConversionTagsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -204,7 +204,7 @@ class HttpServiceConversionTagsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[ConversionTagListResponse](req)
+      resp          <- client.expect[ConversionTagsList200Response](req)
 
     } yield resp
   }

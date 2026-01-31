@@ -10,7 +10,7 @@
 
 
 export interface TopPinsAnalyticsResponseDateAvailability { 
-    latest_available_timestamp?: number;
     is_realtime?: boolean;
+    latest_available_timestamp?: number;
 }
 

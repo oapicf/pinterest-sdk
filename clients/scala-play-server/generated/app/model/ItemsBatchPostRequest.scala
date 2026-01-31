@@ -4,17 +4,17 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for items_batch_post_request.
-  * @param language We recommend using the CatalogsLocale values.
-  * @param items Array with catalogs items
   * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  * @param items Array with catalogs items
+  * @param language We recommend using the CatalogsLocale values.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class ItemsBatchPostRequest(
+  catalogId: Option[String],
   catalogType: ItemsBatchPostRequest.CatalogType.Value,
   country: Country,
-  language: ItemsBatchPostRequest.Language.Value,
   items: List[ItemDeleteBatchRecord],
-  catalogId: Option[String],
+  language: ItemsBatchPostRequest.Language.Value,
   operation: BatchOperation
 )
 

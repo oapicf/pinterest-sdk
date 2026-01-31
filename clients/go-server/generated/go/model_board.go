@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,41 +19,46 @@ import (
 
 
 
-// Board - Board
 type Board struct {
-
-	Id string `json:"id,omitempty"`
-
-	// Date and time of board creation.
-	CreatedAt time.Time `json:"created_at,omitempty"`
 
 	// Date and time of last board pins modified.
 	BoardPinsModifiedAt time.Time `json:"board_pins_modified_at,omitempty"`
 
-	Name string `json:"name"`
-
-	Description *string `json:"description,omitempty"`
-
 	// Count of collaborators on the board.
 	CollaboratorCount int32 `json:"collaborator_count,omitempty"`
 
-	// Count of pins on the board.
-	PinCount int32 `json:"pin_count,omitempty"`
+	// Date and time of board creation.
+	CreatedAt time.Time `json:"created_at,omitempty"`
+
+	Description *string `json:"description,omitempty"`
 
 	// Board follower count.
 	FollowerCount int32 `json:"follower_count,omitempty"`
 
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+
+	// If set to `true`, the board will be ad-only and can store ad-only Pins.
+	IsAdsOnly bool `json:"is_ads_only,omitempty"`
+
+	// Board media.
 	Media BoardMedia `json:"media,omitempty"`
+
+	//      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	Name string `json:"name"`
 
 	Owner BoardOwner `json:"owner,omitempty"`
 
-	// Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
-	Privacy string `json:"privacy,omitempty"`
+	// Count of Pins on the board.
+	PinCount int32 `json:"pin_count,omitempty"`
+
+	//     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
+	Privacy BoardPrivacy `json:"privacy,omitempty"`
 }
 
 // AssertBoardRequired checks if the required fields are not zero-ed
 func AssertBoardRequired(obj Board) error {
 	elements := map[string]interface{}{
+		"id": obj.Id,
 		"name": obj.Name,
 	}
 	for name, el := range elements {
@@ -76,9 +81,6 @@ func AssertBoardConstraints(obj Board) error {
 	if obj.CollaboratorCount < 0 {
 		return &ParsingError{Param: "CollaboratorCount", Err: errors.New(errMsgMinValueConstraint)}
 	}
-	if obj.PinCount < 0 {
-		return &ParsingError{Param: "PinCount", Err: errors.New(errMsgMinValueConstraint)}
-	}
 	if obj.FollowerCount < 0 {
 		return &ParsingError{Param: "FollowerCount", Err: errors.New(errMsgMinValueConstraint)}
 	}
@@ -87,6 +89,9 @@ func AssertBoardConstraints(obj Board) error {
 	}
 	if err := AssertBoardOwnerConstraints(obj.Owner); err != nil {
 		return err
+	}
+	if obj.PinCount < 0 {
+		return &ParsingError{Param: "PinCount", Err: errors.New(errMsgMinValueConstraint)}
 	}
 	return nil
 }

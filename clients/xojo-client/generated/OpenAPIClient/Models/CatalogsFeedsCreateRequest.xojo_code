@@ -2,20 +2,22 @@
 Protected Class CatalogsFeedsCreateRequest
 
 	#tag Property, Flags = &h0
+		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		default_availability As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		default_country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		default_currency As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A human-friendly name associated to a given feed.
-		#tag EndNote
-		name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		format As String
 	#tag EndProperty
 
 
@@ -25,7 +27,7 @@ Protected Class CatalogsFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
+		format As String
 	#tag EndProperty
 
 
@@ -38,17 +40,15 @@ Protected Class CatalogsFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			A human-friendly name associated to a given feed.
+		#tag EndNote
+		name As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		default_country As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		default_availability As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -94,27 +94,35 @@ Protected Class CatalogsFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="credentials"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFeedCredentials"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_availability"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductAvailabilityType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="default_currency"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="NullableCurrency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="format"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsFormat"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -126,15 +134,23 @@ Protected Class CatalogsFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="credentials"
+			Name="format"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsFeedCredentials"
+			Type="CatalogsFormat"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="location"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -147,22 +163,6 @@ Protected Class CatalogsFeedsCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsFeedProcessingSchedule"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_country"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Country"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_availability"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ProductAvailabilityType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -14,25 +14,25 @@ import AnyCodable
 public struct InviteExceptionResponse: Codable, JSONEncodable, Hashable {
 
     public static let inviteOrRequestIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Unique identifier of the invite/request. */
-    public var inviteOrRequestId: String?
     /** Error code associated with the error in performing the action on the invite/request. */
     public var code: Int?
+    /** Unique identifier of the invite/request. */
+    public var inviteOrRequestId: String?
     /** Error message associated with the error in performing the action on the invite/request. */
     public var message: String?
     /** A list of users' usernames or emails OR a list of partner ids that caused the error. */
     public var usersOrPartnerIds: [String]?
 
-    public init(inviteOrRequestId: String? = nil, code: Int? = nil, message: String? = nil, usersOrPartnerIds: [String]? = nil) {
-        self.inviteOrRequestId = inviteOrRequestId
+    public init(code: Int? = nil, inviteOrRequestId: String? = nil, message: String? = nil, usersOrPartnerIds: [String]? = nil) {
         self.code = code
+        self.inviteOrRequestId = inviteOrRequestId
         self.message = message
         self.usersOrPartnerIds = usersOrPartnerIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case inviteOrRequestId = "invite_or_request_id"
         case code
+        case inviteOrRequestId = "invite_or_request_id"
         case message
         case usersOrPartnerIds = "users_or_partner_ids"
     }
@@ -41,8 +41,8 @@ public struct InviteExceptionResponse: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(inviteOrRequestId, forKey: .inviteOrRequestId)
         try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(inviteOrRequestId, forKey: .inviteOrRequestId)
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(usersOrPartnerIds, forKey: .usersOrPartnerIds)
     }

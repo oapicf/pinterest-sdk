@@ -20,7 +20,6 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Audience
-import org.openapitools.client.models.AudienceCreateCustomRequest
 import org.openapitools.client.models.AudienceCreateRequest
 import org.openapitools.client.models.AudienceUpdateRequest
 import org.openapitools.client.models.AudiencesList200Response
@@ -53,7 +52,7 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/audiences
      * Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
      * @return Audience
@@ -86,7 +85,7 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/audiences
      * Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
      * @return ApiResponse<Audience?>
@@ -120,83 +119,6 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/ad_accounts/{ad_account_id}/audiences".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * POST /ad_accounts/{ad_account_id}/audiences/custom
-     * Create custom audience
-     * Create a custom audience and find the audiences you want your ads to reach.
-     * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateCustomRequest Custom audience to create.
-     * @return Audience
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audiencesCreateCustom(adAccountId: kotlin.String, audienceCreateCustomRequest: AudienceCreateCustomRequest) : Audience {
-        val localVarResponse = audiencesCreateCustomWithHttpInfo(adAccountId = adAccountId, audienceCreateCustomRequest = audienceCreateCustomRequest)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Audience
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * POST /ad_accounts/{ad_account_id}/audiences/custom
-     * Create custom audience
-     * Create a custom audience and find the audiences you want your ads to reach.
-     * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateCustomRequest Custom audience to create.
-     * @return ApiResponse<Audience?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun audiencesCreateCustomWithHttpInfo(adAccountId: kotlin.String, audienceCreateCustomRequest: AudienceCreateCustomRequest) : ApiResponse<Audience?> {
-        val localVariableConfig = audiencesCreateCustomRequestConfig(adAccountId = adAccountId, audienceCreateCustomRequest = audienceCreateCustomRequest)
-
-        return request<AudienceCreateCustomRequest, Audience>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation audiencesCreateCustom
-     *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateCustomRequest Custom audience to create.
-     * @return RequestConfig
-     */
-    fun audiencesCreateCustomRequestConfig(adAccountId: kotlin.String, audienceCreateCustomRequest: AudienceCreateCustomRequest) : RequestConfig<AudienceCreateCustomRequest> {
-        val localVariableBody = audienceCreateCustomRequest
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/ad_accounts/{ad_account_id}/audiences/custom".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -419,7 +341,7 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Update (edit or remove) an existing targeting audience.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated. (optional)
+     * @param audienceUpdateRequest The audience to be updated.
      * @return Audience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -429,7 +351,7 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audiencesUpdate(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest? = null) : Audience {
+    fun audiencesUpdate(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest) : Audience {
         val localVarResponse = audiencesUpdateWithHttpInfo(adAccountId = adAccountId, audienceId = audienceId, audienceUpdateRequest = audienceUpdateRequest)
 
         return when (localVarResponse.responseType) {
@@ -453,14 +375,14 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Update (edit or remove) an existing targeting audience.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated. (optional)
+     * @param audienceUpdateRequest The audience to be updated.
      * @return ApiResponse<Audience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audiencesUpdateWithHttpInfo(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest?) : ApiResponse<Audience?> {
+    fun audiencesUpdateWithHttpInfo(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest) : ApiResponse<Audience?> {
         val localVariableConfig = audiencesUpdateRequestConfig(adAccountId = adAccountId, audienceId = audienceId, audienceUpdateRequest = audienceUpdateRequest)
 
         return request<AudienceUpdateRequest, Audience>(
@@ -473,10 +395,10 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated. (optional)
+     * @param audienceUpdateRequest The audience to be updated.
      * @return RequestConfig
      */
-    fun audiencesUpdateRequestConfig(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest?) : RequestConfig<AudienceUpdateRequest> {
+    fun audiencesUpdateRequestConfig(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest) : RequestConfig<AudienceUpdateRequest> {
         val localVariableBody = audienceUpdateRequest
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

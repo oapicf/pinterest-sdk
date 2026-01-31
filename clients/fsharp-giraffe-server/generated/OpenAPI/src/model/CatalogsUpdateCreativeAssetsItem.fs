@@ -13,8 +13,8 @@ module CatalogsUpdateCreativeAssetsItem =
   //#endregion
 
   type CatalogsUpdateCreativeAssetsItem = {
+    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
     CreativeAssetsId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
   }
   //#endregion

@@ -1,0 +1,49 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TopPinsAnalyticsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TopPinsAnalyticsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TopPinsAnalyticsResponseDateAvailability = openapi_server.resourceTypes.TopPinsAnalyticsResponseDateAvailability
+  TopPinsAnalyticsResponsePinsInner = openapi_server.resourceTypes.TopPinsAnalyticsResponsePinsInner
+}
+resourceTypes {
+
+  TopPinsAnalyticsResponse {
+    title = TopPinsAnalyticsResponse
+    description = TopPinsAnalyticsResponse
+    derivedFrom = Root
+    properties {
+        date_availability {
+          type = TopPinsAnalyticsResponseDateAvailability
+          description = ""
+          optional = false
+        }
+        pins {
+          type = array
+          items.type = TopPinsAnalyticsResponsePinsInner
+          description = ""
+          optional = false
+        }
+        sort_by {
+          type =  string
+          description = ""
+          enum = ["ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TopPinsAnalyticsResponse {
+    title = TopPinsAnalyticsResponse
+    description = TopPinsAnalyticsResponse
+    implements = openapi_server.resourceTypes.TopPinsAnalyticsResponse
+
+  }
+}

@@ -18,8 +18,11 @@ import java.util.List;
  * CatalogsRetailItemsFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsFilter   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -56,8 +59,23 @@ public class CatalogsRetailItemsFilter   {
   
   private List<String> itemIds = new ArrayList<>();
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
+  public CatalogsRetailItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   * @return catalogId
+   */
+  @ApiModelProperty(value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsRetailItemsFilter catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -103,24 +121,6 @@ public class CatalogsRetailItemsFilter   {
     this.itemIds = itemIds;
   }
 
-  public CatalogsRetailItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-   * @return catalogId
-   */
-  @ApiModelProperty(value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -131,14 +131,14 @@ public class CatalogsRetailItemsFilter   {
       return false;
     }
     CatalogsRetailItemsFilter catalogsRetailItemsFilter = (CatalogsRetailItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsRetailItemsFilter.catalogType) &&
-        Objects.equals(this.itemIds, catalogsRetailItemsFilter.itemIds) &&
-        Objects.equals(this.catalogId, catalogsRetailItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsRetailItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailItemsFilter.catalogType) &&
+        Objects.equals(this.itemIds, catalogsRetailItemsFilter.itemIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId);
+    return Objects.hash(catalogId, catalogType, itemIds);
   }
 
   @Override
@@ -146,9 +146,9 @@ public class CatalogsRetailItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

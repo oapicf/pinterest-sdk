@@ -1,11 +1,10 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.AdAccountCreateSubscriptionRequest
-import org.openapitools.model.AdAccountCreateSubscriptionResponse
-import org.openapitools.model.AdAccountGetSubscriptionResponse
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response
-import org.openapitools.model.Error
+import org.openapitools.model.LeadSubscription
+import org.openapitools.model.LeadSubscriptionPostParamsCreate
+import org.openapitools.model.PinterestLibError
 
 class LeadAdsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -64,11 +63,11 @@ class LeadAdsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
-                    AdAccountGetSubscriptionResponse.class )
+                    LeadSubscription.class )
 
     }
 
-    def adAccountsSubscriptionsGetList ( String adAccountId, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def adAccountsSubscriptionsGetList ( String adAccountId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/leads/subscriptions"
 
         // params
@@ -82,11 +81,11 @@ class LeadAdsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
         }
 
 
@@ -98,7 +97,7 @@ class LeadAdsApi {
 
     }
 
-    def adAccountsSubscriptionsPost ( String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, Closure onSuccess, Closure onFailure)  {
+    def adAccountsSubscriptionsPost ( String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/leads/subscriptions"
 
         // params
@@ -112,19 +111,19 @@ class LeadAdsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (adAccountCreateSubscriptionRequest == null) {
-            throw new RuntimeException("missing required params adAccountCreateSubscriptionRequest")
+        if (leadSubscriptionPostParamsCreate == null) {
+            throw new RuntimeException("missing required params leadSubscriptionPostParamsCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = adAccountCreateSubscriptionRequest
+        bodyParams = leadSubscriptionPostParamsCreate
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "POST", "",
-                    AdAccountCreateSubscriptionResponse.class )
+                    LeadSubscription.class )
 
     }
 

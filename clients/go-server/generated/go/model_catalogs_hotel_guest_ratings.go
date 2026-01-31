@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,17 +17,17 @@ package openapi
 // CatalogsHotelGuestRatings - If specified, you must provide all properties
 type CatalogsHotelGuestRatings struct {
 
-	// Your hotel's rating.
-	Score float32 `json:"score,omitempty"`
+	// Max value for the hotel rating score.
+	MaxScore *float32 `json:"max_score,omitempty"`
 
 	// Total number of people who have rated this hotel.
-	NumberOfReviewers int32 `json:"number_of_reviewers,omitempty"`
-
-	// Max value for the hotel rating score.
-	MaxScore float32 `json:"max_score,omitempty"`
+	NumberOfReviewers *int32 `json:"number_of_reviewers,omitempty"`
 
 	// System you use for guest reviews.
-	RatingSystem string `json:"rating_system,omitempty"`
+	RatingSystem *string `json:"rating_system,omitempty"`
+
+	// Your hotel's rating.
+	Score *float32 `json:"score,omitempty"`
 }
 
 // AssertCatalogsHotelGuestRatingsRequired checks if the required fields are not zero-ed

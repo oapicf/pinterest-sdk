@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionTagListResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionTagListResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionTag = openapi_server.resourceTypes.ConversionTag
+}
+resourceTypes {
+
+  ConversionTagListResponse {
+    title = ConversionTagListResponse
+    description = ConversionTagListResponse
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = ConversionTag
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionTagListResponse {
+    title = ConversionTagListResponse
+    description = ConversionTagListResponse
+    implements = openapi_server.resourceTypes.ConversionTagListResponse
+
+  }
+}

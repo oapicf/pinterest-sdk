@@ -27,42 +27,36 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name 
- * @param filters 
  * @param feedId Catalog Feed id pertaining to the catalog product group.
- * @param catalogType 
+ * @param filters 
+ * @param name 
  * @param catalogId Catalog id pertaining to the creative assets product group.
- * @param country 
- * @param locale 
+ * @param catalogType 
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
+ * @param country 
+ * @param locale 
  */
 
 
 data class MultipleProductGroupsInner (
 
-    @Json(name = "name")
-    val name: kotlin.String,
-
-    @Json(name = "filters")
-    val filters: CatalogsProductGroupFiltersRequest,
-
     /* Catalog Feed id pertaining to the catalog product group. */
     @Json(name = "feed_id")
     val feedId: kotlin.String,
 
-    @Json(name = "catalog_type")
-    override val catalogType: MultipleProductGroupsInner.CatalogType,
+    @Json(name = "filters")
+    val filters: CatalogsProductGroupFiltersRequest,
+
+    @Json(name = "name")
+    val name: kotlin.String,
 
     /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     override val catalogId: kotlin.String,
 
-    @Json(name = "country")
-    override val country: Country,
-
-    @Json(name = "locale")
-    override val locale: CatalogsLocale,
+    @Json(name = "catalog_type")
+    override val catalogType: MultipleProductGroupsInner.CatalogType,
 
     @Json(name = "description")
     val description: kotlin.String? = null,
@@ -70,7 +64,13 @@ data class MultipleProductGroupsInner (
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
     @Deprecated(message = "This property is deprecated.")
-    val isFeatured: kotlin.Boolean? = false
+    val isFeatured: kotlin.Boolean? = false,
+
+    @Json(name = "country")
+    override val country: Country? = null,
+
+    @Json(name = "locale")
+    override val locale: CatalogsLocale? = null
 
 ) {
 

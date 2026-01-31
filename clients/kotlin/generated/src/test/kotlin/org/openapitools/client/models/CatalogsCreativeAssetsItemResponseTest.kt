@@ -34,6 +34,12 @@ class CatalogsCreativeAssetsItemResponseTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
+        }
+
         // to test the property `creativeAssetsId` - The catalog creative assets id in the merchant namespace
         should("test creativeAssetsId") {
             // uncomment below to test the property
@@ -44,12 +50,6 @@ class CatalogsCreativeAssetsItemResponseTest : ShouldSpec() {
         should("test pins") {
             // uncomment below to test the property
             //modelInstance.pins shouldBe ("TODO")
-        }
-
-        // to test the property `attributes`
-        should("test attributes") {
-            // uncomment below to test the property
-            //modelInstance.attributes shouldBe ("TODO")
         }
 
     }

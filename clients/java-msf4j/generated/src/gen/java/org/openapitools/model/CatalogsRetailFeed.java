@@ -20,7 +20,7 @@ import org.openapitools.model.ProductAvailabilityType;
  * Catalogs Retail Feed object
  */
 @ApiModel(description = "Catalogs Retail Feed object")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailFeed   {
   @JsonProperty("created_at")
   private Date createdAt;
@@ -31,26 +31,17 @@ public class CatalogsRetailFeed   {
   @JsonProperty("updated_at")
   private Date updatedAt;
 
-  @JsonProperty("name")
-  private String name;
-
-  @JsonProperty("format")
-  private CatalogsFormat format;
-
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
   @JsonProperty("credentials")
   private CatalogsFeedCredentials credentials;
 
-  @JsonProperty("location")
-  private String location;
+  @JsonProperty("default_availability")
+  private ProductAvailabilityType defaultAvailability;
 
-  @JsonProperty("preferred_processing_schedule")
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-
-  @JsonProperty("status")
-  private CatalogsStatus status;
+  @JsonProperty("default_country")
+  private Country defaultCountry;
 
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -58,11 +49,20 @@ public class CatalogsRetailFeed   {
   @JsonProperty("default_locale")
   private String defaultLocale;
 
-  @JsonProperty("default_country")
-  private Country defaultCountry;
+  @JsonProperty("format")
+  private CatalogsFormat format;
 
-  @JsonProperty("default_availability")
-  private ProductAvailabilityType defaultAvailability;
+  @JsonProperty("location")
+  private String location;
+
+  @JsonProperty("name")
+  private String name;
+
+  @JsonProperty("preferred_processing_schedule")
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+
+  @JsonProperty("status")
+  private CatalogsStatus status;
 
   public CatalogsRetailFeed createdAt(Date createdAt) {
     this.createdAt = createdAt;
@@ -118,42 +118,6 @@ public class CatalogsRetailFeed   {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsRetailFeed name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsRetailFeed format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
   public CatalogsRetailFeed catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
@@ -190,58 +154,40 @@ public class CatalogsRetailFeed   {
     this.credentials = credentials;
   }
 
-  public CatalogsRetailFeed location(String location) {
-    this.location = location;
+  public CatalogsRetailFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
     return this;
   }
 
    /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-   * @return location
-  **/
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public CatalogsRetailFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-    return this;
-  }
-
-   /**
-   * Get preferredProcessingSchedule
-   * @return preferredProcessingSchedule
+   * Get defaultAvailability
+   * @return defaultAvailability
   **/
   @ApiModelProperty(required = true, value = "")
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
   }
 
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
   }
 
-  public CatalogsRetailFeed status(CatalogsStatus status) {
-    this.status = status;
+  public CatalogsRetailFeed defaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get defaultCountry
+   * @return defaultCountry
   **/
   @ApiModelProperty(required = true, value = "")
-  public CatalogsStatus getStatus() {
-    return status;
+  public Country getDefaultCountry() {
+    return defaultCountry;
   }
 
-  public void setStatus(CatalogsStatus status) {
-    this.status = status;
+  public void setDefaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
   }
 
   public CatalogsRetailFeed defaultCurrency(NullableCurrency defaultCurrency) {
@@ -280,40 +226,94 @@ public class CatalogsRetailFeed   {
     this.defaultLocale = defaultLocale;
   }
 
-  public CatalogsRetailFeed defaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public CatalogsRetailFeed format(CatalogsFormat format) {
+    this.format = format;
     return this;
   }
 
    /**
-   * Get defaultCountry
-   * @return defaultCountry
+   * Get format
+   * @return format
   **/
   @ApiModelProperty(required = true, value = "")
-  public Country getDefaultCountry() {
-    return defaultCountry;
+  public CatalogsFormat getFormat() {
+    return format;
   }
 
-  public void setDefaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
   }
 
-  public CatalogsRetailFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  public CatalogsRetailFeed location(String location) {
+    this.location = location;
     return this;
   }
 
    /**
-   * Get defaultAvailability
-   * @return defaultAvailability
+   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+   * @return location
   **/
-  @ApiModelProperty(required = true, value = "")
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+  public String getLocation() {
+    return location;
   }
 
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public CatalogsRetailFeed name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsRetailFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+    return this;
+  }
+
+   /**
+   * Get preferredProcessingSchedule
+   * @return preferredProcessingSchedule
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
+  }
+
+  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  }
+
+  public CatalogsRetailFeed status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
 
@@ -329,22 +329,22 @@ public class CatalogsRetailFeed   {
     return Objects.equals(this.createdAt, catalogsRetailFeed.createdAt) &&
         Objects.equals(this.id, catalogsRetailFeed.id) &&
         Objects.equals(this.updatedAt, catalogsRetailFeed.updatedAt) &&
-        Objects.equals(this.name, catalogsRetailFeed.name) &&
-        Objects.equals(this.format, catalogsRetailFeed.format) &&
         Objects.equals(this.catalogType, catalogsRetailFeed.catalogType) &&
         Objects.equals(this.credentials, catalogsRetailFeed.credentials) &&
-        Objects.equals(this.location, catalogsRetailFeed.location) &&
-        Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeed.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsRetailFeed.status) &&
+        Objects.equals(this.defaultAvailability, catalogsRetailFeed.defaultAvailability) &&
+        Objects.equals(this.defaultCountry, catalogsRetailFeed.defaultCountry) &&
         Objects.equals(this.defaultCurrency, catalogsRetailFeed.defaultCurrency) &&
         Objects.equals(this.defaultLocale, catalogsRetailFeed.defaultLocale) &&
-        Objects.equals(this.defaultCountry, catalogsRetailFeed.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsRetailFeed.defaultAvailability);
+        Objects.equals(this.format, catalogsRetailFeed.format) &&
+        Objects.equals(this.location, catalogsRetailFeed.location) &&
+        Objects.equals(this.name, catalogsRetailFeed.name) &&
+        Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeed.preferredProcessingSchedule) &&
+        Objects.equals(this.status, catalogsRetailFeed.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, format, catalogType, credentials, location, preferredProcessingSchedule, status, defaultCurrency, defaultLocale, defaultCountry, defaultAvailability);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, credentials, defaultAvailability, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -355,17 +355,17 @@ public class CatalogsRetailFeed   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

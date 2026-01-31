@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,18 +20,18 @@ var _ MappedNullable = &IntegrationRequestPatch{}
 
 // IntegrationRequestPatch Schema used for updating the integration metadata.
 type IntegrationRequestPatch struct {
-	ConnectedMerchantId *string `json:"connected_merchant_id,omitempty"`
+	AdditionalId1 *string `json:"additional_id_1,omitempty"`
 	ConnectedAdvertiserId *string `json:"connected_advertiser_id,omitempty"`
 	ConnectedLbaId *string `json:"connected_lba_id,omitempty"`
+	ConnectedMerchantId *string `json:"connected_merchant_id,omitempty"`
 	ConnectedTagId *string `json:"connected_tag_id,omitempty"`
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
-	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
-	PartnerPrimaryEmail *string `json:"partner_primary_email,omitempty"`
 	PartnerAccessTokenExpiry *float32 `json:"partner_access_token_expiry,omitempty"`
+	PartnerMetadata *string `json:"partner_metadata,omitempty"`
+	PartnerPrimaryEmail *string `json:"partner_primary_email,omitempty"`
+	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
 	PartnerRefreshTokenExpiry *float32 `json:"partner_refresh_token_expiry,omitempty"`
 	Scopes *string `json:"scopes,omitempty"`
-	AdditionalId1 *string `json:"additional_id_1,omitempty"`
-	PartnerMetadata *string `json:"partner_metadata,omitempty"`
 }
 
 // NewIntegrationRequestPatch instantiates a new IntegrationRequestPatch object
@@ -51,36 +51,36 @@ func NewIntegrationRequestPatchWithDefaults() *IntegrationRequestPatch {
 	return &this
 }
 
-// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise.
-func (o *IntegrationRequestPatch) GetConnectedMerchantId() string {
-	if o == nil || IsNil(o.ConnectedMerchantId) {
+// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise.
+func (o *IntegrationRequestPatch) GetAdditionalId1() string {
+	if o == nil || IsNil(o.AdditionalId1) {
 		var ret string
 		return ret
 	}
-	return *o.ConnectedMerchantId
+	return *o.AdditionalId1
 }
 
-// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
+// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationRequestPatch) GetConnectedMerchantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectedMerchantId) {
+func (o *IntegrationRequestPatch) GetAdditionalId1Ok() (*string, bool) {
+	if o == nil || IsNil(o.AdditionalId1) {
 		return nil, false
 	}
-	return o.ConnectedMerchantId, true
+	return o.AdditionalId1, true
 }
 
-// HasConnectedMerchantId returns a boolean if a field has been set.
-func (o *IntegrationRequestPatch) HasConnectedMerchantId() bool {
-	if o != nil && !IsNil(o.ConnectedMerchantId) {
+// HasAdditionalId1 returns a boolean if a field has been set.
+func (o *IntegrationRequestPatch) HasAdditionalId1() bool {
+	if o != nil && !IsNil(o.AdditionalId1) {
 		return true
 	}
 
 	return false
 }
 
-// SetConnectedMerchantId gets a reference to the given string and assigns it to the ConnectedMerchantId field.
-func (o *IntegrationRequestPatch) SetConnectedMerchantId(v string) {
-	o.ConnectedMerchantId = &v
+// SetAdditionalId1 gets a reference to the given string and assigns it to the AdditionalId1 field.
+func (o *IntegrationRequestPatch) SetAdditionalId1(v string) {
+	o.AdditionalId1 = &v
 }
 
 // GetConnectedAdvertiserId returns the ConnectedAdvertiserId field value if set, zero value otherwise.
@@ -147,6 +147,38 @@ func (o *IntegrationRequestPatch) SetConnectedLbaId(v string) {
 	o.ConnectedLbaId = &v
 }
 
+// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise.
+func (o *IntegrationRequestPatch) GetConnectedMerchantId() string {
+	if o == nil || IsNil(o.ConnectedMerchantId) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedMerchantId
+}
+
+// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRequestPatch) GetConnectedMerchantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectedMerchantId) {
+		return nil, false
+	}
+	return o.ConnectedMerchantId, true
+}
+
+// HasConnectedMerchantId returns a boolean if a field has been set.
+func (o *IntegrationRequestPatch) HasConnectedMerchantId() bool {
+	if o != nil && !IsNil(o.ConnectedMerchantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedMerchantId gets a reference to the given string and assigns it to the ConnectedMerchantId field.
+func (o *IntegrationRequestPatch) SetConnectedMerchantId(v string) {
+	o.ConnectedMerchantId = &v
+}
+
 // GetConnectedTagId returns the ConnectedTagId field value if set, zero value otherwise.
 func (o *IntegrationRequestPatch) GetConnectedTagId() string {
 	if o == nil || IsNil(o.ConnectedTagId) {
@@ -211,36 +243,68 @@ func (o *IntegrationRequestPatch) SetPartnerAccessToken(v string) {
 	o.PartnerAccessToken = &v
 }
 
-// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise.
-func (o *IntegrationRequestPatch) GetPartnerRefreshToken() string {
-	if o == nil || IsNil(o.PartnerRefreshToken) {
-		var ret string
+// GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise.
+func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiry() float32 {
+	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
+		var ret float32
 		return ret
 	}
-	return *o.PartnerRefreshToken
+	return *o.PartnerAccessTokenExpiry
 }
 
-// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
+// GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationRequestPatch) GetPartnerRefreshTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerRefreshToken) {
+func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiryOk() (*float32, bool) {
+	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
 		return nil, false
 	}
-	return o.PartnerRefreshToken, true
+	return o.PartnerAccessTokenExpiry, true
 }
 
-// HasPartnerRefreshToken returns a boolean if a field has been set.
-func (o *IntegrationRequestPatch) HasPartnerRefreshToken() bool {
-	if o != nil && !IsNil(o.PartnerRefreshToken) {
+// HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
+func (o *IntegrationRequestPatch) HasPartnerAccessTokenExpiry() bool {
+	if o != nil && !IsNil(o.PartnerAccessTokenExpiry) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerRefreshToken gets a reference to the given string and assigns it to the PartnerRefreshToken field.
-func (o *IntegrationRequestPatch) SetPartnerRefreshToken(v string) {
-	o.PartnerRefreshToken = &v
+// SetPartnerAccessTokenExpiry gets a reference to the given float32 and assigns it to the PartnerAccessTokenExpiry field.
+func (o *IntegrationRequestPatch) SetPartnerAccessTokenExpiry(v float32) {
+	o.PartnerAccessTokenExpiry = &v
+}
+
+// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
+func (o *IntegrationRequestPatch) GetPartnerMetadata() string {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerMetadata
+}
+
+// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRequestPatch) GetPartnerMetadataOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		return nil, false
+	}
+	return o.PartnerMetadata, true
+}
+
+// HasPartnerMetadata returns a boolean if a field has been set.
+func (o *IntegrationRequestPatch) HasPartnerMetadata() bool {
+	if o != nil && !IsNil(o.PartnerMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerMetadata gets a reference to the given string and assigns it to the PartnerMetadata field.
+func (o *IntegrationRequestPatch) SetPartnerMetadata(v string) {
+	o.PartnerMetadata = &v
 }
 
 // GetPartnerPrimaryEmail returns the PartnerPrimaryEmail field value if set, zero value otherwise.
@@ -275,36 +339,36 @@ func (o *IntegrationRequestPatch) SetPartnerPrimaryEmail(v string) {
 	o.PartnerPrimaryEmail = &v
 }
 
-// GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise.
-func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiry() float32 {
-	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
-		var ret float32
+// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise.
+func (o *IntegrationRequestPatch) GetPartnerRefreshToken() string {
+	if o == nil || IsNil(o.PartnerRefreshToken) {
+		var ret string
 		return ret
 	}
-	return *o.PartnerAccessTokenExpiry
+	return *o.PartnerRefreshToken
 }
 
-// GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field value if set, nil otherwise
+// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiryOk() (*float32, bool) {
-	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
+func (o *IntegrationRequestPatch) GetPartnerRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerRefreshToken) {
 		return nil, false
 	}
-	return o.PartnerAccessTokenExpiry, true
+	return o.PartnerRefreshToken, true
 }
 
-// HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
-func (o *IntegrationRequestPatch) HasPartnerAccessTokenExpiry() bool {
-	if o != nil && !IsNil(o.PartnerAccessTokenExpiry) {
+// HasPartnerRefreshToken returns a boolean if a field has been set.
+func (o *IntegrationRequestPatch) HasPartnerRefreshToken() bool {
+	if o != nil && !IsNil(o.PartnerRefreshToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerAccessTokenExpiry gets a reference to the given float32 and assigns it to the PartnerAccessTokenExpiry field.
-func (o *IntegrationRequestPatch) SetPartnerAccessTokenExpiry(v float32) {
-	o.PartnerAccessTokenExpiry = &v
+// SetPartnerRefreshToken gets a reference to the given string and assigns it to the PartnerRefreshToken field.
+func (o *IntegrationRequestPatch) SetPartnerRefreshToken(v string) {
+	o.PartnerRefreshToken = &v
 }
 
 // GetPartnerRefreshTokenExpiry returns the PartnerRefreshTokenExpiry field value if set, zero value otherwise.
@@ -371,70 +435,6 @@ func (o *IntegrationRequestPatch) SetScopes(v string) {
 	o.Scopes = &v
 }
 
-// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise.
-func (o *IntegrationRequestPatch) GetAdditionalId1() string {
-	if o == nil || IsNil(o.AdditionalId1) {
-		var ret string
-		return ret
-	}
-	return *o.AdditionalId1
-}
-
-// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRequestPatch) GetAdditionalId1Ok() (*string, bool) {
-	if o == nil || IsNil(o.AdditionalId1) {
-		return nil, false
-	}
-	return o.AdditionalId1, true
-}
-
-// HasAdditionalId1 returns a boolean if a field has been set.
-func (o *IntegrationRequestPatch) HasAdditionalId1() bool {
-	if o != nil && !IsNil(o.AdditionalId1) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdditionalId1 gets a reference to the given string and assigns it to the AdditionalId1 field.
-func (o *IntegrationRequestPatch) SetAdditionalId1(v string) {
-	o.AdditionalId1 = &v
-}
-
-// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
-func (o *IntegrationRequestPatch) GetPartnerMetadata() string {
-	if o == nil || IsNil(o.PartnerMetadata) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerMetadata
-}
-
-// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRequestPatch) GetPartnerMetadataOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerMetadata) {
-		return nil, false
-	}
-	return o.PartnerMetadata, true
-}
-
-// HasPartnerMetadata returns a boolean if a field has been set.
-func (o *IntegrationRequestPatch) HasPartnerMetadata() bool {
-	if o != nil && !IsNil(o.PartnerMetadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerMetadata gets a reference to the given string and assigns it to the PartnerMetadata field.
-func (o *IntegrationRequestPatch) SetPartnerMetadata(v string) {
-	o.PartnerMetadata = &v
-}
-
 func (o IntegrationRequestPatch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -445,8 +445,8 @@ func (o IntegrationRequestPatch) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationRequestPatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ConnectedMerchantId) {
-		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId
+	if !IsNil(o.AdditionalId1) {
+		toSerialize["additional_id_1"] = o.AdditionalId1
 	}
 	if !IsNil(o.ConnectedAdvertiserId) {
 		toSerialize["connected_advertiser_id"] = o.ConnectedAdvertiserId
@@ -454,32 +454,32 @@ func (o IntegrationRequestPatch) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectedLbaId) {
 		toSerialize["connected_lba_id"] = o.ConnectedLbaId
 	}
+	if !IsNil(o.ConnectedMerchantId) {
+		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId
+	}
 	if !IsNil(o.ConnectedTagId) {
 		toSerialize["connected_tag_id"] = o.ConnectedTagId
 	}
 	if !IsNil(o.PartnerAccessToken) {
 		toSerialize["partner_access_token"] = o.PartnerAccessToken
 	}
-	if !IsNil(o.PartnerRefreshToken) {
-		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
+	if !IsNil(o.PartnerAccessTokenExpiry) {
+		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry
+	}
+	if !IsNil(o.PartnerMetadata) {
+		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	if !IsNil(o.PartnerPrimaryEmail) {
 		toSerialize["partner_primary_email"] = o.PartnerPrimaryEmail
 	}
-	if !IsNil(o.PartnerAccessTokenExpiry) {
-		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry
+	if !IsNil(o.PartnerRefreshToken) {
+		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
 	}
 	if !IsNil(o.PartnerRefreshTokenExpiry) {
 		toSerialize["partner_refresh_token_expiry"] = o.PartnerRefreshTokenExpiry
 	}
 	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
-	}
-	if !IsNil(o.AdditionalId1) {
-		toSerialize["additional_id_1"] = o.AdditionalId1
-	}
-	if !IsNil(o.PartnerMetadata) {
-		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	return toSerialize, nil
 }

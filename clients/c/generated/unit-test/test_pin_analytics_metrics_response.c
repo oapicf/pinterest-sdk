@@ -22,14 +22,14 @@ pin_analytics_metrics_response_t* instantiate_pin_analytics_metrics_response(int
   pin_analytics_metrics_response_t* pin_analytics_metrics_response = NULL;
   if (include_optional) {
     pin_analytics_metrics_response = pin_analytics_metrics_response_create(
-      {"TOTAL_COMMENTS":10,"TOTAL_REACTIONS":12},
       list_createList(),
+      {"TOTAL_COMMENTS":10,"TOTAL_REACTIONS":12},
       {"IMPRESSION":240,"OUTBOUND_CLICK":20,"PIN_CLICK":37,"QUARTILE_95_PERCENT_VIEW":8,"SAVE":20,"SAVE_RATE":0.18,"VIDEO_10S_VIEW":2,"VIDEO_AVG_WATCH_TIME":2507.75,"VIDEO_MRC_VIEW":20,"VIDEO_START":29,"VIDEO_V50_WATCH_TIME":10031}
     );
   } else {
     pin_analytics_metrics_response = pin_analytics_metrics_response_create(
-      {"TOTAL_COMMENTS":10,"TOTAL_REACTIONS":12},
       list_createList(),
+      {"TOTAL_COMMENTS":10,"TOTAL_REACTIONS":12},
       {"IMPRESSION":240,"OUTBOUND_CLICK":20,"PIN_CLICK":37,"QUARTILE_95_PERCENT_VIEW":8,"SAVE":20,"SAVE_RATE":0.18,"VIDEO_10S_VIEW":2,"VIDEO_AVG_WATCH_TIME":2507.75,"VIDEO_MRC_VIEW":20,"VIDEO_START":29,"VIDEO_V50_WATCH_TIME":10031}
     );
   }

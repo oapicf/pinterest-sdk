@@ -1,0 +1,86 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsVerticalFeedsUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsVerticalFeedsUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsCreativeAssetsFeedsUpdateRequest
+  CatalogsFeedCredentials = openapi_server.resourceTypes.CatalogsFeedCredentials
+  CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
+  CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
+  CatalogsHotelFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsHotelFeedsUpdateRequest
+  CatalogsRetailFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsRetailFeedsUpdateRequest
+  CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  NullableCurrency = openapi_server.resourceTypes.NullableCurrency
+  ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsVerticalFeedsUpdateRequest {
+    title = CatalogsVerticalFeedsUpdateRequest
+    description = CatalogsVerticalFeedsUpdateRequest
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        credentials {
+          type = CatalogsFeedCredentials
+          description = ""
+          optional = false
+        }
+        default_availability {
+          type = ProductAvailabilityType
+          description = ""
+          optional = false
+        }
+        default_currency {
+          type = NullableCurrency
+          description = ""
+          optional = false
+        }
+        format {
+          type = CatalogsFormat
+          description = ""
+          optional = false
+        }
+        location {
+          type =  string
+          description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "A human-friendly name associated to a given feed."
+          optional = false
+        }
+        preferred_processing_schedule {
+          type = CatalogsFeedProcessingSchedule
+          description = ""
+          optional = false
+        }
+        status {
+          type = CatalogsStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsVerticalFeedsUpdateRequest {
+    title = CatalogsVerticalFeedsUpdateRequest
+    description = CatalogsVerticalFeedsUpdateRequest
+    implements = openapi_server.resourceTypes.CatalogsVerticalFeedsUpdateRequest
+
+  }
+}

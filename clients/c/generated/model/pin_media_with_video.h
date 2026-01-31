@@ -15,30 +15,37 @@
 
 typedef struct pin_media_with_video_t pin_media_with_video_t;
 
-#include "pin_media.h"
-#include "pin_media_with_image_all_of_images.h"
+#include "image_size.h"
+
+// Enum MEDIATYPE for pin_media_with_video
+
+typedef enum  { pinterest_rest_api_pin_media_with_video_MEDIATYPE_NULL = 0, pinterest_rest_api_pin_media_with_video_MEDIATYPE_video } pinterest_rest_api_pin_media_with_video_MEDIATYPE_e;
+
+char* pin_media_with_video_media_type_ToString(pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type);
+
+pinterest_rest_api_pin_media_with_video_MEDIATYPE_e pin_media_with_video_media_type_FromString(char* media_type);
 
 
 
 typedef struct pin_media_with_video_t {
-    char *media_type; // string
-    struct pin_media_with_image_all_of_images_t *images; //model
     char *cover_image_url; // string
-    char *video_url; // string
     double duration; //numeric
     int height; //numeric
+    struct image_size_t *images; //model
+    pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type; //enum
+    char *video_url; // string
     int width; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_video_t;
 
 __attribute__((deprecated)) pin_media_with_video_t *pin_media_with_video_create(
-    char *media_type,
-    pin_media_with_image_all_of_images_t *images,
     char *cover_image_url,
-    char *video_url,
     double duration,
     int height,
+    image_size_t *images,
+    pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type,
+    char *video_url,
     int width
 );
 

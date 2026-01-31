@@ -5,8 +5,8 @@ Object describing an item batch record to update items
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **string** | The catalog item id in the merchant namespace | [optional] 
 **Attributes** | [**UpdatableItemAttributes**](UpdatableItemAttributes.md) |  | [optional] 
+**ItemId** | **string** | The catalog item id in the merchant namespace | [optional] 
 **UpdateMask** | [**List&lt;UpdateMaskFieldType&gt;**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

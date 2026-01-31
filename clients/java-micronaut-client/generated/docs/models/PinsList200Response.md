@@ -8,8 +8,8 @@ The class is defined in **[PinsList200Response.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Pin&gt;`](Pin.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Pin&gt;`](Pin.md) |  | 
 
 
 

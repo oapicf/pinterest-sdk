@@ -16,12 +16,6 @@ API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.catalogType;
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.name;
-
-/**
- * @type {!string}
- * @export
- */
 API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.description;
 
 /**
@@ -29,6 +23,12 @@ API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.description;
  * @export
  */
 API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.filters;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsHotelProductGroupUpdateRequest.CatalogTypeEnum = { 

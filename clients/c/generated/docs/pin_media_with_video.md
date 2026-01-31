@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media_type** | **char \*** |  | [optional] 
-**images** | [**pin_media_with_image_all_of_images_t**](pin_media_with_image_all_of_images.md) \* |  | [optional] 
 **cover_image_url** | **char \*** |  | [optional] 
-**video_url** | **char \*** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**duration** | **double** | Duration (in milliseconds) | [optional] 
-**height** | **int** | Height (in pixels) | [optional] 
-**width** | **int** | Width (in pixels) | [optional] 
+**duration** | **double** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**height** | **int** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**images** | [**image_size_t**](image_size.md) \* |  | [optional] 
+**media_type** | **pinterest_rest_api_pin_media_with_video_MEDIATYPE_e** |  | 
+**video_url** | **char \*** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**width** | **int** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

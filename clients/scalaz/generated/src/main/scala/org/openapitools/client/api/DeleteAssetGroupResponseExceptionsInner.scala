@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import DeleteAssetGroupResponseExceptionsInner._
 
 case class DeleteAssetGroupResponseExceptionsInner (
-  /* Error code associated with the error deleting asset group. */
+  /* Asset group id of the exception. */
+  assetGroupId: Option[String],
+/* Error code associated with the error deleting asset group. */
   code: Option[Integer],
 /* Error message associated with the error deleting asset group. */
-  message: Option[String],
-/* Asset group id of the exception. */
-  assetGroupId: Option[String])
+  message: Option[String])
 
 object DeleteAssetGroupResponseExceptionsInner {
   import DateTimeCodecs._

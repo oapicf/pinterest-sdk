@@ -12,10 +12,10 @@ module CatalogsProductGroupPinsList200Response =
 
   [<CLIMutable>]
   type CatalogsProductGroupPinsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : CatalogsProduct[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : CatalogsProduct[];
   }
 
   //#endregion

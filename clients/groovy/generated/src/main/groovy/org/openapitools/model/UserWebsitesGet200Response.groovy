@@ -11,7 +11,7 @@ import org.openapitools.model.UserWebsiteSummary;
 @Canonical
 class UserWebsitesGet200Response {
     
-    List<UserWebsiteSummary> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<UserWebsiteSummary> items = new ArrayList<>()
 }

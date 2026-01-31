@@ -10,9 +10,9 @@ module ConversionEventResponse =
 
 
   type ConversionEventResponse = {
+    AdAccountId : string;
     ConversionEvent : ConversionTagType;
     ConversionTagId : string;
-    AdAccountId : string;
     CreatedTime : int;
   }
   //#endregion

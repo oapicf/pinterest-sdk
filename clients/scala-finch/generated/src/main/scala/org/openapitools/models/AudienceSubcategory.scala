@@ -9,17 +9,17 @@ import org.openapitools.models.BigDecimal
 
 /**
  * 
+ * @param id Subinterest ID.
+ * @param index Subinterest affinity index.
  * @param key Interest unique key (same as ID).
  * @param name Subinterest name.
  * @param ratio Subinterest's percent of category's total audience.
- * @param index Subinterest affinity index.
- * @param id Subinterest ID.
  */
-case class AudienceSubcategory(key: Option[String],
-                name: Option[String],
-                ratio: Option[BigDecimal],
+case class AudienceSubcategory(id: Option[String],
                 index: Option[BigDecimal],
-                id: Option[String]
+                key: Option[String],
+                name: Option[String],
+                ratio: Option[BigDecimal]
                 )
 
 object AudienceSubcategory {

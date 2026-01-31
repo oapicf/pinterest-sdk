@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &CatalogsProductGroupUpdateRequest{}
 
 // CatalogsProductGroupUpdateRequest Request object for updating a product group.
 type CatalogsProductGroupUpdateRequest struct {
-	Name *string `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
+	Filters *CatalogsProductGroupFiltersRequest `json:"filters,omitempty"`
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured *bool `json:"is_featured,omitempty"`
-	Filters *CatalogsProductGroupFiltersRequest `json:"filters,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewCatalogsProductGroupUpdateRequest instantiates a new CatalogsProductGroupUpdateRequest object
@@ -43,38 +43,6 @@ func NewCatalogsProductGroupUpdateRequest() *CatalogsProductGroupUpdateRequest {
 func NewCatalogsProductGroupUpdateRequestWithDefaults() *CatalogsProductGroupUpdateRequest {
 	this := CatalogsProductGroupUpdateRequest{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CatalogsProductGroupUpdateRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsProductGroupUpdateRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CatalogsProductGroupUpdateRequest) SetName(v string) {
-	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -119,6 +87,38 @@ func (o *CatalogsProductGroupUpdateRequest) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetFilters returns the Filters field value if set, zero value otherwise.
+func (o *CatalogsProductGroupUpdateRequest) GetFilters() CatalogsProductGroupFiltersRequest {
+	if o == nil || IsNil(o.Filters) {
+		var ret CatalogsProductGroupFiltersRequest
+		return ret
+	}
+	return *o.Filters
+}
+
+// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupUpdateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool) {
+	if o == nil || IsNil(o.Filters) {
+		return nil, false
+	}
+	return o.Filters, true
+}
+
+// HasFilters returns a boolean if a field has been set.
+func (o *CatalogsProductGroupUpdateRequest) HasFilters() bool {
+	if o != nil && !IsNil(o.Filters) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilters gets a reference to the given CatalogsProductGroupFiltersRequest and assigns it to the Filters field.
+func (o *CatalogsProductGroupUpdateRequest) SetFilters(v CatalogsProductGroupFiltersRequest) {
+	o.Filters = &v
+}
+
 // GetIsFeatured returns the IsFeatured field value if set, zero value otherwise.
 // Deprecated
 func (o *CatalogsProductGroupUpdateRequest) GetIsFeatured() bool {
@@ -154,36 +154,36 @@ func (o *CatalogsProductGroupUpdateRequest) SetIsFeatured(v bool) {
 	o.IsFeatured = &v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
-func (o *CatalogsProductGroupUpdateRequest) GetFilters() CatalogsProductGroupFiltersRequest {
-	if o == nil || IsNil(o.Filters) {
-		var ret CatalogsProductGroupFiltersRequest
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CatalogsProductGroupUpdateRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
 		return ret
 	}
-	return *o.Filters
+	return *o.Name
 }
 
-// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupUpdateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool) {
-	if o == nil || IsNil(o.Filters) {
+func (o *CatalogsProductGroupUpdateRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Filters, true
+	return o.Name, true
 }
 
-// HasFilters returns a boolean if a field has been set.
-func (o *CatalogsProductGroupUpdateRequest) HasFilters() bool {
-	if o != nil && !IsNil(o.Filters) {
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsProductGroupUpdateRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetFilters gets a reference to the given CatalogsProductGroupFiltersRequest and assigns it to the Filters field.
-func (o *CatalogsProductGroupUpdateRequest) SetFilters(v CatalogsProductGroupFiltersRequest) {
-	o.Filters = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CatalogsProductGroupUpdateRequest) SetName(v string) {
+	o.Name = &v
 }
 
 func (o CatalogsProductGroupUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -196,17 +196,17 @@ func (o CatalogsProductGroupUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsProductGroupUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.Filters) {
+		toSerialize["filters"] = o.Filters
 	}
 	if !IsNil(o.IsFeatured) {
 		toSerialize["is_featured"] = o.IsFeatured
 	}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

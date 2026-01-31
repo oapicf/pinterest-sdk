@@ -33,7 +33,7 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_asset_access_request_body = PinterestSdkClient::CreateAssetAccessRequestBody.new({asset_requests: [PinterestSdkClient::CreateAssetAccessRequestBodyAssetRequestsInner.new({partner_id: '809944451643622187', asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}})]}) # CreateAssetAccessRequestBody | 
+create_asset_access_request_body = PinterestSdkClient::CreateAssetAccessRequestBody.new({asset_requests: [PinterestSdkClient::CreateAssetAccessRequestBodyAssetRequestsInner.new({asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}, partner_id: '809944451643622187'})]}) # CreateAssetAccessRequestBody | 
 
 begin
   # Create a request to access an existing partner's assets.
@@ -103,7 +103,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Business id
+business_id = '729090764583391194' # String | Unique identifier of the requesting business.
 cancel_invites_body = PinterestSdkClient::CancelInvitesBody.new({invite_ids: ["1234567890123456789", "1122334455667788991"]}) # CancelInvitesBody | A list with invite ids
 
 begin
@@ -137,7 +137,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **business_id** | **String** | Business id |  |
+| **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids |  |
 
 ### Return type
@@ -175,7 +175,7 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_asset_invites_request = PinterestSdkClient::CreateAssetInvitesRequest.new({invites: [PinterestSdkClient::CreateAssetInvitesRequestItem.new({invite_id: '1234567890123', invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE, asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}})]}) # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+create_asset_invites_request = PinterestSdkClient::CreateAssetInvitesRequest.new({invites: [PinterestSdkClient::CreateAssetInvitesRequestItem.new({asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}, invite_id: '1234567890123', invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE})]}) # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
 
 begin
   # Update invite/request with an asset permission
@@ -245,7 +245,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Business id
+business_id = '729090764583391194' # String | Unique identifier of the requesting business.
 create_membership_or_partnership_invites_body = PinterestSdkClient::CreateMembershipOrPartnershipInvitesBody.new({business_role: 'EMPLOYEE', invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE}) # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 
 begin
@@ -279,7 +279,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **business_id** | **String** | Business id |  |
+| **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role |  |
 
 ### Return type

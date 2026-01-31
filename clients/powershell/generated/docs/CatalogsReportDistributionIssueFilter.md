@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | **String** |  | 
 **CatalogId** | **String** | Unique identifier of a catalog. If not given, oldest catalog will be used | [optional] 
+**ReportType** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsReportDistributionIssueFilter = Initialize-PSOpenAPIToolsCatalogsReportDistributionIssueFilter  -ReportType null `
- -CatalogId null
+$CatalogsReportDistributionIssueFilter = Initialize-PSOpenAPIToolsCatalogsReportDistributionIssueFilter  -CatalogId null `
+ -ReportType null
 ```
 
 - Convert the resource to JSON

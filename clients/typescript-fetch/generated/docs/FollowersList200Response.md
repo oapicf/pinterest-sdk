@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;UserSummary&gt;](UserSummary.md)
 `bookmark` | string
+`items` | [Array&lt;UserSummary&gt;](UserSummary.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { FollowersList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies FollowersList200Response
 
 console.log(example)

@@ -20,17 +20,17 @@ typedef struct conversion_api_response_t conversion_api_response_t;
 
 
 typedef struct conversion_api_response_t {
-    int num_events_received; //numeric
-    int num_events_processed; //numeric
     list_t *events; //nonprimitive container
+    int num_events_processed; //numeric
+    int num_events_received; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } conversion_api_response_t;
 
 __attribute__((deprecated)) conversion_api_response_t *conversion_api_response_create(
-    int num_events_received,
+    list_t *events,
     int num_events_processed,
-    list_t *events
+    int num_events_received
 );
 
 void conversion_api_response_free(conversion_api_response_t *conversion_api_response);

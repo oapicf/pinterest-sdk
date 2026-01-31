@@ -3,9 +3,57 @@ Protected Class ConversionTagConfigs
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether Automatic Enhanced Match email is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
+			Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+		#tag EndNote
+		aem_db_enabled As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
 		#tag EndNote
 		aem_enabled As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+		#tag EndNote
+		aem_external_id_enabled As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+		#tag EndNote
+		aem_fnln_enabled As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+		#tag EndNote
+		aem_ge_enabled As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+		#tag EndNote
+		aem_loc_enabled As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+		#tag EndNote
+		aem_ph_enabled As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -19,41 +67,9 @@ Protected Class ConversionTagConfigs
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether Automatic Enhanced Match name is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
+			List of advertiser subdomains configured for NoCodeCAPI calls.
 		#tag EndNote
-		aem_fnln_enabled As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Whether Automatic Enhanced Match phone is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
-		#tag EndNote
-		aem_ph_enabled As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Whether Automatic Enhanced Match gender is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
-		#tag EndNote
-		aem_ge_enabled As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Whether Automatic Enhanced Match birthdate is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
-		#tag EndNote
-		aem_db_enabled As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Whether Automatic Enhanced Match location is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
-		#tag EndNote
-		aem_loc_enabled As Xoson.O.OptionalBoolean
+		no_code_capi_domains() As String
 	#tag EndProperty
 
 
@@ -94,6 +110,14 @@ Protected Class ConversionTagConfigs
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="aem_db_enabled"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="aem_enabled"
 			Visible=false
 			Group="Behavior"
@@ -102,15 +126,7 @@ Protected Class ConversionTagConfigs
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="md_frequency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="aem_fnln_enabled"
+			Name="aem_external_id_enabled"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -118,7 +134,7 @@ Protected Class ConversionTagConfigs
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="aem_ph_enabled"
+			Name="aem_fnln_enabled"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -134,7 +150,7 @@ Protected Class ConversionTagConfigs
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="aem_db_enabled"
+			Name="aem_loc_enabled"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -142,11 +158,27 @@ Protected Class ConversionTagConfigs
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="aem_loc_enabled"
+			Name="aem_ph_enabled"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="md_frequency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="no_code_capi_domains"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

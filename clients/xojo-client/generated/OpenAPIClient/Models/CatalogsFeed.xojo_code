@@ -17,19 +17,6 @@ Protected Class CatalogsFeed
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-		#tag EndNote
-		name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		format As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
@@ -40,20 +27,12 @@ Protected Class CatalogsFeed
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-		#tag EndNote
-		location As String
+		default_availability As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		status As String
+		default_country As String
 	#tag EndProperty
 
 
@@ -71,12 +50,33 @@ Protected Class CatalogsFeed
 
 
 	#tag Property, Flags = &h0
-		default_country As String
+		format As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		default_availability As String
+		#tag Note
+			The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+		#tag EndNote
+		location As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+		#tag EndNote
+		name As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		status As String
 	#tag EndProperty
 
 
@@ -149,22 +149,6 @@ Protected Class CatalogsFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="format"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsFormat"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="catalog_type"
 			Visible=false
 			Group="Behavior"
@@ -181,7 +165,55 @@ Protected Class CatalogsFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="default_availability"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductAvailabilityType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NullableCurrency"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="format"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="location"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -202,38 +234,6 @@ Protected Class CatalogsFeed
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="NullableCurrency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_locale"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_country"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Country"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_availability"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ProductAvailabilityType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

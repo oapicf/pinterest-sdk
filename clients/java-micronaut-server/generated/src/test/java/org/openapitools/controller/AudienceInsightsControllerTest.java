@@ -87,7 +87,7 @@ public class AudienceInsightsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@76100385");
+            .accept("[Ljava.lang.String;@67e28340");
         request.getParameters()
             .add("audience_insight_type", String.valueOf(AudienceInsightType.fromValue("YOUR_TOTAL_AUDIENCE"))); // The query parameter format should be 
 
@@ -135,7 +135,7 @@ public class AudienceInsightsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@410ec1ac");
+            .accept("[Ljava.lang.String;@74bc5421");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AudienceDefinitionResponse.class);

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**term** | **string** |  | [optional] [default to undefined]
 **related_terms** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**term** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { RelatedTermsRelatedTermsListInner } from './api';
 
 const instance: RelatedTermsRelatedTermsListInner = {
-    term,
     related_terms,
+    term,
 };
 ```
 

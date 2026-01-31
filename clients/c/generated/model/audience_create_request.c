@@ -9,8 +9,8 @@ static audience_create_request_t *audience_create_request_create_internal(
     char *ad_account_id,
     char *name,
     audience_rule_t *rule,
-    char *description,
-    audience_type_t *audience_type
+    audience_type_t *audience_type,
+    char *description
     ) {
     audience_create_request_t *audience_create_request_local_var = malloc(sizeof(audience_create_request_t));
     if (!audience_create_request_local_var) {
@@ -19,8 +19,8 @@ static audience_create_request_t *audience_create_request_create_internal(
     audience_create_request_local_var->ad_account_id = ad_account_id;
     audience_create_request_local_var->name = name;
     audience_create_request_local_var->rule = rule;
-    audience_create_request_local_var->description = description;
     audience_create_request_local_var->audience_type = audience_type;
+    audience_create_request_local_var->description = description;
 
     audience_create_request_local_var->_library_owned = 1;
     return audience_create_request_local_var;
@@ -30,15 +30,15 @@ __attribute__((deprecated)) audience_create_request_t *audience_create_request_c
     char *ad_account_id,
     char *name,
     audience_rule_t *rule,
-    char *description,
-    audience_type_t *audience_type
+    audience_type_t *audience_type,
+    char *description
     ) {
     return audience_create_request_create_internal (
         ad_account_id,
         name,
         rule,
-        description,
-        audience_type
+        audience_type,
+        description
         );
 }
 
@@ -63,13 +63,13 @@ void audience_create_request_free(audience_create_request_t *audience_create_req
         audience_rule_free(audience_create_request->rule);
         audience_create_request->rule = NULL;
     }
-    if (audience_create_request->description) {
-        free(audience_create_request->description);
-        audience_create_request->description = NULL;
-    }
     if (audience_create_request->audience_type) {
         audience_type_free(audience_create_request->audience_type);
         audience_create_request->audience_type = NULL;
+    }
+    if (audience_create_request->description) {
+        free(audience_create_request->description);
+        audience_create_request->description = NULL;
     }
     free(audience_create_request);
 }
@@ -108,14 +108,6 @@ cJSON *audience_create_request_convertToJSON(audience_create_request_t *audience
     }
 
 
-    // audience_create_request->description
-    if(audience_create_request->description) {
-    if(cJSON_AddStringToObject(item, "description", audience_create_request->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // audience_create_request->audience_type
     if (!audience_create_request->audience_type) {
         goto fail;
@@ -127,6 +119,14 @@ cJSON *audience_create_request_convertToJSON(audience_create_request_t *audience
     cJSON_AddItemToObject(item, "audience_type", audience_type_local_JSON);
     if(item->child == NULL) {
         goto fail;
+    }
+
+
+    // audience_create_request->description
+    if(audience_create_request->description) {
+    if(cJSON_AddStringToObject(item, "description", audience_create_request->description) == NULL) {
+    goto fail; //String
+    }
     }
 
     return item;
@@ -186,18 +186,6 @@ audience_create_request_t *audience_create_request_parseFromJSON(cJSON *audience
     
     rule_local_nonprim = audience_rule_parseFromJSON(rule); //nonprimitive
 
-    // audience_create_request->description
-    cJSON *description = cJSON_GetObjectItemCaseSensitive(audience_create_requestJSON, "description");
-    if (cJSON_IsNull(description)) {
-        description = NULL;
-    }
-    if (description) { 
-    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
-    {
-    goto end; //String
-    }
-    }
-
     // audience_create_request->audience_type
     cJSON *audience_type = cJSON_GetObjectItemCaseSensitive(audience_create_requestJSON, "audience_type");
     if (cJSON_IsNull(audience_type)) {
@@ -210,13 +198,25 @@ audience_create_request_t *audience_create_request_parseFromJSON(cJSON *audience
     
     audience_type_local_nonprim = audience_type_parseFromJSON(audience_type); //custom
 
+    // audience_create_request->description
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(audience_create_requestJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
+    if (description) { 
+    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
 
     audience_create_request_local_var = audience_create_request_create_internal (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         strdup(name->valuestring),
         rule_local_nonprim,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        audience_type_local_nonprim
+        audience_type_local_nonprim,
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );
 
     return audience_create_request_local_var;

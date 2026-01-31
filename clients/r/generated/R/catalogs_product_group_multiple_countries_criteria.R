@@ -7,16 +7,16 @@
 #' @title CatalogsProductGroupMultipleCountriesCriteria
 #' @description CatalogsProductGroupMultipleCountriesCriteria Class
 #' @format An \code{R6Class} generator object
-#' @field values  list(\link{Country})
 #' @field negated  character [optional]
+#' @field values  list(\link{Country})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupMultipleCountriesCriteria <- R6::R6Class(
   "CatalogsProductGroupMultipleCountriesCriteria",
   public = list(
-    `values` = NULL,
     `negated` = NULL,
+    `values` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupMultipleCountriesCriteria class.
@@ -69,13 +69,13 @@ CatalogsProductGroupMultipleCountriesCriteria <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupMultipleCountriesCriteriaObject <- list()
-      if (!is.null(self$`values`)) {
-        CatalogsProductGroupMultipleCountriesCriteriaObject[["values"]] <-
-          lapply(self$`values`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupMultipleCountriesCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`values`)) {
+        CatalogsProductGroupMultipleCountriesCriteriaObject[["values"]] <-
+          lapply(self$`values`, function(x) x$toSimpleType())
       }
       return(CatalogsProductGroupMultipleCountriesCriteriaObject)
     },
@@ -87,11 +87,11 @@ CatalogsProductGroupMultipleCountriesCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleCountriesCriteria
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`values`)) {
-        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Country]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`negated`)) {
         self$`negated` <- this_object$`negated`
+      }
+      if (!is.null(this_object$`values`)) {
+        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Country]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ CatalogsProductGroupMultipleCountriesCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleCountriesCriteria
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Country]", loadNamespace("openapi"))
       self$`negated` <- this_object$`negated`
+      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Country]", loadNamespace("openapi"))
       self
     },
 

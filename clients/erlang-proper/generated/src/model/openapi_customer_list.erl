@@ -11,6 +11,7 @@
 -type openapi_customer_list() ::
   [ {'ad_account_id', binary() }
   | {'created_time', integer() }
+  | {'exceptions', map() }
   | {'id', binary() }
   | {'name', binary() }
   | {'num_batches', integer() }
@@ -19,7 +20,6 @@
   | {'status', binary() }
   | {'type', binary() }
   | {'updated_time', integer() }
-  | {'exceptions', map() }
   ].
 
 
@@ -29,6 +29,7 @@ openapi_customer_list() ->
 openapi_customer_list(Fields) ->
   Default = [ {'ad_account_id', binary() }
             , {'created_time', integer() }
+            , {'exceptions', map() }
             , {'id', binary() }
             , {'name', binary() }
             , {'num_batches', integer() }
@@ -37,7 +38,6 @@ openapi_customer_list(Fields) ->
             , {'status', elements([<<"PROCESSING">>, <<"READY">>, <<"TOO_SMALL">>, <<"UPLOADING">>]) }
             , {'type', binary() }
             , {'updated_time', integer() }
-            , {'exceptions', map() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

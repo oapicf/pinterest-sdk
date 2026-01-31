@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
+**Items** | [**[]ItemDeleteDiscontinuedBatchRecord**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 **Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
-**Items** | [**[]ItemDeleteDiscontinuedBatchRecord**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 
 ## Methods
 
 ### NewCatalogsItemsDeleteDiscontinuedBatchRequest
 
-`func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, language string, operation BatchOperation, items []ItemDeleteDiscontinuedBatchRecord, ) *CatalogsItemsDeleteDiscontinuedBatchRequest`
+`func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, items []ItemDeleteDiscontinuedBatchRecord, language string, operation BatchOperation, ) *CatalogsItemsDeleteDiscontinuedBatchRequest`
 
 NewCatalogsItemsDeleteDiscontinuedBatchRequest instantiates a new CatalogsItemsDeleteDiscontinuedBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetCountry(v Country)`
 
 SetCountry sets Country field to given value.
+
+
+### GetItems
+
+`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItems() []ItemDeleteDiscontinuedBatchRecord`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItemsOk() (*[]ItemDeleteDiscontinuedBatchRecord, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetItems(v []ItemDeleteDiscontinuedBatchRecord)`
+
+SetItems sets Items field to given value.
 
 
 ### GetLanguage
@@ -86,26 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetOperation(v BatchOperation)`
 
 SetOperation sets Operation field to given value.
-
-
-### GetItems
-
-`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItems() []ItemDeleteDiscontinuedBatchRecord`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItemsOk() (*[]ItemDeleteDiscontinuedBatchRecord, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetItems(v []ItemDeleteDiscontinuedBatchRecord)`
-
-SetItems sets Items field to given value.
 
 
 

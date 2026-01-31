@@ -26,13 +26,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("business_partner_asset_access_get_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessPartnerAssetAccessGet200Response {
+
+  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
   private List<@Valid GetPartnerAssetsResponse> items = new ArrayList<>();
-
-  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   public BusinessPartnerAssetAccessGet200Response() {
     super();
@@ -43,6 +43,26 @@ public class BusinessPartnerAssetAccessGet200Response {
    */
   public BusinessPartnerAssetAccessGet200Response(List<@Valid GetPartnerAssetsResponse> items) {
     this.items = items;
+  }
+
+  public BusinessPartnerAssetAccessGet200Response bookmark(String bookmark) {
+    this.bookmark = JsonNullable.of(bookmark);
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  
+  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bookmark")
+  public JsonNullable<String> getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(JsonNullable<String> bookmark) {
+    this.bookmark = bookmark;
   }
 
   public BusinessPartnerAssetAccessGet200Response items(List<@Valid GetPartnerAssetsResponse> items) {
@@ -73,26 +93,6 @@ public class BusinessPartnerAssetAccessGet200Response {
     this.items = items;
   }
 
-  public BusinessPartnerAssetAccessGet200Response bookmark(String bookmark) {
-    this.bookmark = JsonNullable.of(bookmark);
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  
-  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bookmark")
-  public JsonNullable<String> getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(JsonNullable<String> bookmark) {
-    this.bookmark = bookmark;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -102,8 +102,8 @@ public class BusinessPartnerAssetAccessGet200Response {
       return false;
     }
     BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet200Response = (BusinessPartnerAssetAccessGet200Response) o;
-    return Objects.equals(this.items, businessPartnerAssetAccessGet200Response.items) &&
-        equalsNullable(this.bookmark, businessPartnerAssetAccessGet200Response.bookmark);
+    return equalsNullable(this.bookmark, businessPartnerAssetAccessGet200Response.bookmark) &&
+        Objects.equals(this.items, businessPartnerAssetAccessGet200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -112,7 +112,7 @@ public class BusinessPartnerAssetAccessGet200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -126,8 +126,8 @@ public class BusinessPartnerAssetAccessGet200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessPartnerAssetAccessGet200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,55 +28,55 @@ pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_e ssio_crea
 
 
 typedef struct ssio_create_insertion_order_request_t {
-    char *start_date; // string
-    char *end_date; // string
-    char *po_number; // string
-    double budget_amount; //numeric
+    char *agency_link; // string
+    char *billing_contact_email; // string
     char *billing_contact_firstname; // string
     char *billing_contact_lastname; // string
-    char *billing_contact_email; // string
+    double budget_amount; //numeric
+    char *end_date; // string
+    char *media_contact_email; // string
     char *media_contact_firstname; // string
     char *media_contact_lastname; // string
-    char *media_contact_email; // string
-    char *agency_link; // string
+    char *po_number; // string
+    char *start_date; // string
     char *user_email; // string
-    int accepted_terms_time; //numeric
-    char *pmp_id; // string
-    char *order_name; // string
-    pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_e order_line_type; //enum
     char *accepted_terms_id; // string
-    char *billto_company_id; // string
-    char *billto_business_address_id; // string
+    int accepted_terms_time; //numeric
     char *billto_billing_address_id; // string
-    double estimated_monthly_spend; //numeric
+    char *billto_business_address_id; // string
+    char *billto_company_id; // string
     pinterest_rest_api_currency__e currency_info; //referenced enum
+    double estimated_monthly_spend; //numeric
+    pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_e order_line_type; //enum
+    char *order_name; // string
+    char *pmp_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_create_insertion_order_request_t;
 
 __attribute__((deprecated)) ssio_create_insertion_order_request_t *ssio_create_insertion_order_request_create(
-    char *start_date,
-    char *end_date,
-    char *po_number,
-    double budget_amount,
+    char *agency_link,
+    char *billing_contact_email,
     char *billing_contact_firstname,
     char *billing_contact_lastname,
-    char *billing_contact_email,
+    double budget_amount,
+    char *end_date,
+    char *media_contact_email,
     char *media_contact_firstname,
     char *media_contact_lastname,
-    char *media_contact_email,
-    char *agency_link,
+    char *po_number,
+    char *start_date,
     char *user_email,
-    int accepted_terms_time,
-    char *pmp_id,
-    char *order_name,
-    pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_e order_line_type,
     char *accepted_terms_id,
-    char *billto_company_id,
-    char *billto_business_address_id,
+    int accepted_terms_time,
     char *billto_billing_address_id,
+    char *billto_business_address_id,
+    char *billto_company_id,
+    pinterest_rest_api_currency__e currency_info,
     double estimated_monthly_spend,
-    pinterest_rest_api_currency__e currency_info
+    pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_e order_line_type,
+    char *order_name,
+    char *pmp_id
 );
 
 void ssio_create_insertion_order_request_free(ssio_create_insertion_order_request_t *ssio_create_insertion_order_request);

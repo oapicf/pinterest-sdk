@@ -24,8 +24,8 @@ typedef struct catalogs_items_post_filters_t catalogs_items_post_filters_t;
 
 typedef struct catalogs_items_post_filters_t {
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
-    list_t *item_ids; //primitive container
     char *catalog_id; // string
+    list_t *item_ids; //primitive container
     list_t *hotel_ids; //primitive container
     list_t *creative_assets_ids; //primitive container
 
@@ -34,8 +34,8 @@ typedef struct catalogs_items_post_filters_t {
 
 __attribute__((deprecated)) catalogs_items_post_filters_t *catalogs_items_post_filters_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    list_t *item_ids,
     char *catalog_id,
+    list_t *item_ids,
     list_t *hotel_ids,
     list_t *creative_assets_ids
 );

@@ -203,6 +203,10 @@ AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanc
     //    printf("%s\n","Response containing the results of the item bid options operations");
     //}
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 206) {
+    //    printf("%s\n","Response containing the results of the item bid options operations (where some/all operation results have errors)");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
     //    printf("%s\n","Invalid request parameters.");
     //}

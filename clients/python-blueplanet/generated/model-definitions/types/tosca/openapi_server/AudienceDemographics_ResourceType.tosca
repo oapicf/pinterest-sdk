@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceDemographics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceDemographics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceDemographicValue = openapi_server.resourceTypes.AudienceDemographicValue
+}
+resourceTypes {
+
+  AudienceDemographics {
+    title = AudienceDemographics
+    description = AudienceDemographics
+    derivedFrom = Root
+    properties {
+        ages {
+          type = array
+          items.type = AudienceDemographicValue
+          description = "Ages distribution."
+          optional = false
+        }
+        countries {
+          type = array
+          items.type = AudienceDemographicValue
+          description = "Country area distribution."
+          optional = false
+        }
+        devices {
+          type = array
+          items.type = AudienceDemographicValue
+          description = "Device usage distribution."
+          optional = false
+        }
+        genders {
+          type = array
+          items.type = AudienceDemographicValue
+          description = "Gender distribution."
+          optional = false
+        }
+        metros {
+          type = array
+          items.type = AudienceDemographicValue
+          description = "Geographic metro area distribution."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceDemographics {
+    title = AudienceDemographics
+    description = AudienceDemographics
+    implements = openapi_server.resourceTypes.AudienceDemographics
+
+  }
+}

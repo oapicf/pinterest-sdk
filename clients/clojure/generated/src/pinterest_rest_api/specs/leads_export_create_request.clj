@@ -7,9 +7,9 @@
 
 (def leads-export-create-request-data
   {
-   (ds/req :start_date) string?
-   (ds/req :end_date) string?
    (ds/req :ad_id) string?
+   (ds/req :end_date) string?
+   (ds/req :start_date) string?
    })
 
 (def leads-export-create-request-spec

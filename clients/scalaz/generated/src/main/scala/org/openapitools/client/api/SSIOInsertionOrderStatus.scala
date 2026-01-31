@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import SSIOInsertionOrderStatus._
 
 case class SSIOInsertionOrderStatus (
-  /* Salesforce order id */
+  /* Salesforce insertion order creation time */
+  creationTime: Option[String],
+/* Salesforce order id */
   pinOrderId: Option[String],
 /* Salesforce insertion order status */
-  status: Option[String],
-/* Salesforce insertion order creation time */
-  creationTime: Option[String])
+  status: Option[String])
 
 object SSIOInsertionOrderStatus {
   import DateTimeCodecs._

@@ -22,34 +22,34 @@ public struct AdGroupAudienceSizingRequest: Codable, JSONEncodable, Hashable {
         case collection = "COLLECTION"
         case idea = "IDEA"
     }
-    /** Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+    /** Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
     public var autoTargetingEnabled: Bool? = true
-    /** <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
-    public var placementGroup: PlacementGroupType? = "ALL"
     /** Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. */
     public var creativeTypes: [CreativeTypes]?
-    public var targetingSpec: TargetingSpec?
-    /** Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. */
-    public var productGroupIds: [String]?
     /** Array of keyword objects. If the keywords field is missing, all keywords will be targeted. */
     public var keywords: [AdGroupAudienceSizingRequestKeywordsInner]?
+    /** <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
+    public var placementGroup: PlacementGroupType? = "ALL"
+    /** Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. */
+    public var productGroupIds: [String]?
+    public var targetingSpec: TargetingSpec?
 
-    public init(autoTargetingEnabled: Bool? = true, placementGroup: PlacementGroupType? = "ALL", creativeTypes: [CreativeTypes]? = nil, targetingSpec: TargetingSpec? = nil, productGroupIds: [String]? = nil, keywords: [AdGroupAudienceSizingRequestKeywordsInner]? = nil) {
+    public init(autoTargetingEnabled: Bool? = true, creativeTypes: [CreativeTypes]? = nil, keywords: [AdGroupAudienceSizingRequestKeywordsInner]? = nil, placementGroup: PlacementGroupType? = "ALL", productGroupIds: [String]? = nil, targetingSpec: TargetingSpec? = nil) {
         self.autoTargetingEnabled = autoTargetingEnabled
-        self.placementGroup = placementGroup
         self.creativeTypes = creativeTypes
-        self.targetingSpec = targetingSpec
-        self.productGroupIds = productGroupIds
         self.keywords = keywords
+        self.placementGroup = placementGroup
+        self.productGroupIds = productGroupIds
+        self.targetingSpec = targetingSpec
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case autoTargetingEnabled = "auto_targeting_enabled"
-        case placementGroup = "placement_group"
         case creativeTypes = "creative_types"
-        case targetingSpec = "targeting_spec"
-        case productGroupIds = "product_group_ids"
         case keywords
+        case placementGroup = "placement_group"
+        case productGroupIds = "product_group_ids"
+        case targetingSpec = "targeting_spec"
     }
 
     // Encodable protocol methods
@@ -57,11 +57,11 @@ public struct AdGroupAudienceSizingRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(autoTargetingEnabled, forKey: .autoTargetingEnabled)
-        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
         try container.encodeIfPresent(creativeTypes, forKey: .creativeTypes)
-        try container.encodeIfPresent(targetingSpec, forKey: .targetingSpec)
-        try container.encodeIfPresent(productGroupIds, forKey: .productGroupIds)
         try container.encodeIfPresent(keywords, forKey: .keywords)
+        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
+        try container.encodeIfPresent(productGroupIds, forKey: .productGroupIds)
+        try container.encodeIfPresent(targetingSpec, forKey: .targetingSpec)
     }
 }
 

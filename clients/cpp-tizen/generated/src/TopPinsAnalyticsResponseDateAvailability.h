@@ -47,22 +47,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	long long getLatestAvailableTimestamp();
-
-	/*! \brief Set 
-	 */
-	void setLatestAvailableTimestamp(long long  latest_available_timestamp);
-	/*! \brief Get 
-	 */
 	bool getIsRealtime();
 
 	/*! \brief Set 
 	 */
 	void setIsRealtime(bool  is_realtime);
+	/*! \brief Get 
+	 */
+	long long getLatestAvailableTimestamp();
+
+	/*! \brief Set 
+	 */
+	void setLatestAvailableTimestamp(long long  latest_available_timestamp);
 
 private:
-	long long latest_available_timestamp;
 	bool is_realtime;
+	long long latest_available_timestamp;
 	void __init();
 	void __cleanup();
 

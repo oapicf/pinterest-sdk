@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing a creative assets item error")
 @JsonTypeName("CatalogsCreativeAssetsItemErrorResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemErrorResponse   {
   private CatalogsType catalogType;
   private String creativeAssetsId;
@@ -34,9 +34,11 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
 
   @JsonCreator
   public CatalogsCreativeAssetsItemErrorResponse(
-    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
+    @JsonProperty(required = true, value = "errors") List<@Valid ItemValidationEvent> errors
   ) {
     this.catalogType = catalogType;
+    this.errors = errors;
   }
 
   /**
@@ -87,13 +89,13 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
   }
 
   
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @JsonProperty("errors")
-  @Valid public List<@Valid ItemValidationEvent> getErrors() {
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  @JsonProperty(required = true, value = "errors")
+  @NotNull @Valid public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 
-  @JsonProperty("errors")
+  @JsonProperty(required = true, value = "errors")
   public void setErrors(List<@Valid ItemValidationEvent> errors) {
     this.errors = errors;
   }

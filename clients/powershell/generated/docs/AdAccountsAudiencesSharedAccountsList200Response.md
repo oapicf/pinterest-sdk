@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**SharedAudienceAccount[]**](SharedAudienceAccount.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**SharedAudienceAccount[]**](SharedAudienceAccount.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdAccountsAudiencesSharedAccountsList200Response = Initialize-PSOpenAPIToolsAdAccountsAudiencesSharedAccountsList200Response  -Items null `
- -Bookmark null
+$AdAccountsAudiencesSharedAccountsList200Response = Initialize-PSOpenAPIToolsAdAccountsAudiencesSharedAccountsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

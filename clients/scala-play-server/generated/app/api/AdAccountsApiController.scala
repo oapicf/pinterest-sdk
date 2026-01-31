@@ -6,12 +6,13 @@ import play.api.libs.json._
 import play.api.mvc._
 import model.AdAccount
 import model.AdAccountAnalyticsResponseInner
-import model.AdAccountCreateRequest
+import model.AdAccountCreate
 import model.AdAccountsList200Response
 import model.AdsAnalyticsCreateAsyncRequest
 import model.AdsAnalyticsCreateAsyncResponse
 import model.AdsAnalyticsGetAsyncResponse
 import model.AdsAnalyticsTargetingType
+import model.ConversionProductReportRequest
 import model.ConversionReportAttributionType
 import model.CreateMMMReportRequest
 import model.CreateMMMReportResponse
@@ -20,13 +21,15 @@ import model.GetMMMReportResponse
 import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
+import model.ReportingTimeZone
+import model.TemplateBasedReport
 import model.TemplatesList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccountsApi) extends AbstractController(cc) {
   /**
-    * GET /v5/ad_accounts/:adAccountId/analytics?startDate=[value]&endDate=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]
+    * GET /v5/ad_accounts/:adAccountId/analytics?startDate=[value]&endDate=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adAccountAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -66,7 +69,10 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
-      api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+      val reportingTimezone = request.getQueryString("reporting_timezone")
+        .map(value => )
+        
+      api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
     }
 
     val result = executeApi()
@@ -75,7 +81,7 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/targeting_analytics?startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]
+    * GET /v5/ad_accounts/:adAccountId/targeting_analytics?startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adAccountTargetingAnalyticsGet(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -123,9 +129,13 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
       val attributionTypes = request.getQueryString("attribution_types")
+        .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
+        
+      val reportingTimezone = request.getQueryString("reporting_timezone")
         .map(value => )
         
-      api.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+      api.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
     }
 
     val result = executeApi()
@@ -138,10 +148,10 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
     */
   def adAccountsCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): AdAccount = {
-      val adAccountCreateRequest = request.body.asJson.map(_.as[AdAccountCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountCreateRequest")
+      val adAccountCreate = request.body.asJson.map(_.as[AdAccountCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountCreate")
       }
-      api.adAccountsCreate(adAccountCreateRequest)
+      api.adAccountsCreate(adAccountCreate)
     }
 
     val result = executeApi()
@@ -151,7 +161,6 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
 
   /**
     * GET /v5/ad_accounts/:adAccountId
-    * @param adAccountId Unique identifier of an ad account.
     */
   def adAccountsGet(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): AdAccount = {
@@ -164,19 +173,36 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
   }
 
   /**
-    * GET /v5/ad_accounts?bookmark=[value]&pageSize=[value]&includeSharedAccounts=[value]
+    * GET /v5/ad_accounts?includeSharedAccounts=[value]&bookmark=[value]&pageSize=[value]
     */
   def adAccountsList(): Action[AnyContent] = Action { request =>
     def executeApi(): AdAccountsList200Response = {
+      val includeSharedAccounts = request.getQueryString("include_shared_accounts")
+        .map(value => value.toBoolean)
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val includeSharedAccounts = request.getQueryString("include_shared_accounts")
-        .map(value => value.toBoolean)
-        
-      api.adAccountsList(bookmark, pageSize, includeSharedAccounts)
+      api.adAccountsList(includeSharedAccounts, bookmark, pageSize)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * POST /v5/ad_accounts/:adAccountId/reports/brand_category_sku
+    * @param adAccountId Unique identifier of an ad account.
+    */
+  def analyticsCreateConversionProductReport(adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): AdsAnalyticsCreateAsyncResponse = {
+      val conversionProductReportRequest = request.body.asJson.map(_.as[ConversionProductReportRequest]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "conversionProductReportRequest")
+      }
+      api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportRequest)
     }
 
     val result = executeApi()
@@ -220,11 +246,10 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
 
   /**
     * POST /v5/ad_accounts/:adAccountId/templates/:templateId/reports?startDate=[value]&endDate=[value]&granularity=[value]
-    * @param adAccountId Unique identifier of an ad account.
     * @param templateId Unique identifier of a template.
     */
   def analyticsCreateTemplateReport(adAccountId: String, templateId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AdsAnalyticsCreateAsyncResponse = {
+    def executeApi(): TemplateBasedReport = {
       val startDate = request.getQueryString("start_date")
         .map(value => LocalDate.parse(value))
         
@@ -235,6 +260,25 @@ class AdAccountsApiController @Inject()(cc: ControllerComponents, api: AdAccount
         .map(value => )
         
       api.analyticsCreateTemplateReport(adAccountId, templateId, startDate, endDate, granularity)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * GET /v5/ad_accounts/:adAccountId/reports/brand_category_sku?token=[value]
+    * @param adAccountId Unique identifier of an ad account.
+    */
+  def analyticsGetConversionProductReport(adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): AdsAnalyticsGetAsyncResponse = {
+      val token = request.getQueryString("token")
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("token", "query string")
+        }
+        
+      api.analyticsGetConversionProductReport(adAccountId, token)
     }
 
     val result = executeApi()

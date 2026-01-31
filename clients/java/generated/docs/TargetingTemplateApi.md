@@ -107,6 +107,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     TargetingTemplateApi apiInstance = new TargetingTemplateApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String order = "ASCENDING"; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
@@ -145,7 +149,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Creative assets batch item")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@ApiModel(description="Creative assets batch item")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreateCreativeAssetsItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteCreativeAssetsItem.class, name = "DELETE"),
@@ -29,6 +29,7 @@ import io.swagger.annotations.*;
 
 public class CatalogsCreativeAssetsBatchItem   {
   
+  private CatalogsUpdatableCreativeAssetsAttributes attributes;
   private String creativeAssetsId;
 
   /**
@@ -50,7 +51,20 @@ public class CatalogsCreativeAssetsBatchItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  @Valid
+  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog creative assets id in the merchant namespace
@@ -79,20 +93,6 @@ public class CatalogsCreativeAssetsBatchItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  @NotNull
-  @Valid
-  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -103,14 +103,14 @@ public class CatalogsCreativeAssetsBatchItem   {
       return false;
     }
     CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem = (CatalogsCreativeAssetsBatchItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -118,9 +118,9 @@ public class CatalogsCreativeAssetsBatchItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,7 +14,7 @@
  */
 export interface DetailedError { 
     code: number;
-    message: string;
     details: object;
+    message: string;
 }
 

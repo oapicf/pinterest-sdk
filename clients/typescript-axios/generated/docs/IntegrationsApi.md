@@ -119,7 +119,7 @@ const { status, data } = await apiInstance.integrationsCommerceGet(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrationsCommercePatch**
-> IntegrationMetadata integrationsCommercePatch()
+> IntegrationMetadata integrationsCommercePatch(integrationRequestPatch)
 
 Update commerce integration metadata for the given external business ID. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -136,7 +136,7 @@ const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
 let externalBusinessId: string; //External business ID for the integration. (default to undefined)
-let integrationRequestPatch: IntegrationRequestPatch; //Parameters to get create/update the Integration Metadata (optional)
+let integrationRequestPatch: IntegrationRequestPatch; //Parameters to get create/update the Integration Metadata
 
 const { status, data } = await apiInstance.integrationsCommercePatch(
     externalBusinessId,
@@ -177,7 +177,7 @@ const { status, data } = await apiInstance.integrationsCommercePatch(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrationsCommercePost**
-> IntegrationMetadata integrationsCommercePost()
+> IntegrationMetadata integrationsCommercePost(integrationRequest)
 
 Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -193,7 +193,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
-let integrationRequest: IntegrationRequest; //Parameters to get create/update the Integration Metadata (optional)
+let integrationRequest: IntegrationRequest; //Parameters to get create/update the Integration Metadata
 
 const { status, data } = await apiInstance.integrationsCommercePost(
     integrationRequest

@@ -33,7 +33,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordsApiController extends Controller {
     private final KeywordsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -101,6 +101,15 @@ public class KeywordsApiController extends Controller {
         } else {
             adGroupId = null;
         }
+        String[] adGroupIdsArray = request.queryString().get("ad_group_ids");
+        List<String> adGroupIdsList = OpenAPIUtils.parametersToList("multi", adGroupIdsArray);
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = new ArrayList<>();
+        for (String curParam : adGroupIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                adGroupIds.add(curParam);
+            }
+        }
         String[] matchTypesArray = request.queryString().get("match_types");
         List<String> matchTypesList = OpenAPIUtils.parametersToList("multi", matchTypesArray);
         List<MatchType> matchTypes = new ArrayList<>();
@@ -124,7 +133,7 @@ public class KeywordsApiController extends Controller {
         } else {
             bookmark = null;
         }
-        return imp.keywordsGetHttp(request, adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark);
+        return imp.keywordsGetHttp(request, adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark);
     }
 
     @ApiAction
@@ -194,7 +203,21 @@ public class KeywordsApiController extends Controller {
         } else {
             limit = 50;
         }
-        return imp.trendingKeywordsListHttp(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit);
+        String valueincludePrediction = request.getQueryString("include_prediction");
+        Boolean includePrediction;
+        if (valueincludePrediction != null) {
+            includePrediction = Boolean.valueOf(valueincludePrediction);
+        } else {
+            includePrediction = false;
+        }
+        String valueincludeDemographics = request.getQueryString("include_demographics");
+        Boolean includeDemographics;
+        if (valueincludeDemographics != null) {
+            includeDemographics = Boolean.valueOf(valueincludeDemographics);
+        } else {
+            includeDemographics = false;
+        }
+        return imp.trendingKeywordsListHttp(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics);
     }
 
 }

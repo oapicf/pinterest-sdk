@@ -5,21 +5,32 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**impression** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
+**audienceVerification** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
+**buyableButton** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **click** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **engagement** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**buyableButton** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**audienceVerification** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
+**impression** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 
 
-# **Table `TrackingUrlsImpression`**
-(mapped from: TrackingUrlsImpression)
+# **Table `TrackingUrlsAudienceVerification`**
+(mapped from: TrackingUrlsAudienceVerification)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 trackingUrls | trackingUrls | long | | kotlin.Long | Primary Key | *one*
-impression | impression | text | | kotlin.String | Foreign Key | *many*
+audienceVerification | audienceVerification | text | | kotlin.String | Foreign Key | *many*
+
+
+
+# **Table `TrackingUrlsBuyableButton`**
+(mapped from: TrackingUrlsBuyableButton)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+trackingUrls | trackingUrls | long | | kotlin.Long | Primary Key | *one*
+buyableButton | buyableButton | text | | kotlin.String | Foreign Key | *many*
 
 
 
@@ -45,25 +56,14 @@ engagement | engagement | text | | kotlin.String | Foreign Key | *many*
 
 
 
-# **Table `TrackingUrlsBuyableButton`**
-(mapped from: TrackingUrlsBuyableButton)
+# **Table `TrackingUrlsImpression`**
+(mapped from: TrackingUrlsImpression)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 trackingUrls | trackingUrls | long | | kotlin.Long | Primary Key | *one*
-buyableButton | buyableButton | text | | kotlin.String | Foreign Key | *many*
-
-
-
-# **Table `TrackingUrlsAudienceVerification`**
-(mapped from: TrackingUrlsAudienceVerification)
-
-## Properties
-Name | Mapping | SQL Type | Default | Type | Description | Notes
----- | ------- | -------- | ------- | ---- | ----------- | -----
-trackingUrls | trackingUrls | long | | kotlin.Long | Primary Key | *one*
-audienceVerification | audienceVerification | text | | kotlin.String | Foreign Key | *many*
+impression | impression | text | | kotlin.String | Foreign Key | *many*
 
 
 

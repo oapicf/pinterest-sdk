@@ -13,20 +13,20 @@ import AnyCodable
 /** Object uniquely identifying a retail catalog item */
 public struct AdvancedAuctionKey: Codable, JSONEncodable, Hashable {
 
+    public var country: Country
     /** The catalog retail item id in the merchant namespace */
     public var itemId: String
-    public var country: Country
     public var language: Language
 
-    public init(itemId: String, country: Country, language: Language) {
-        self.itemId = itemId
+    public init(country: Country, itemId: String, language: Language) {
         self.country = country
+        self.itemId = itemId
         self.language = language
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
         case country
+        case itemId = "item_id"
         case language
     }
 
@@ -34,8 +34,8 @@ public struct AdvancedAuctionKey: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(itemId, forKey: .itemId)
         try container.encode(country, forKey: .country)
+        try container.encode(itemId, forKey: .itemId)
         try container.encode(language, forKey: .language)
     }
 }

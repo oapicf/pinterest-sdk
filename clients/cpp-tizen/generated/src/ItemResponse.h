@@ -1,7 +1,7 @@
 /*
  * ItemResponse.h
  *
- * Object describing an item record
+ * Object describing an item record or error
  */
 
 #ifndef _ItemResponse_H_
@@ -11,8 +11,8 @@
 #include <string>
 #include "CatalogsCreativeAssetsAttributes.h"
 #include "CatalogsType.h"
-#include "ItemResponse_anyOf.h"
-#include "ItemResponse_anyOf_1.h"
+#include "ItemResponse_oneOf.h"
+#include "ItemResponse_oneOf_1.h"
 #include "ItemValidationEvent.h"
 #include "Pin.h"
 #include <list>
@@ -27,7 +27,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Object describing an item record
+/*! \brief Object describing an item record or error
  *
  *  \ingroup Models
  *
@@ -59,6 +59,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(CatalogsType  catalog_type);
+	/*! \brief Get 
+	 */
+	CatalogsCreativeAssetsAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
 	/*! \brief Get The catalog item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -73,13 +80,6 @@ public:
 	/*! \brief Set The pins mapped to the item
 	 */
 	void setPins(std::list <Pin> pins);
-	/*! \brief Get 
-	 */
-	CatalogsCreativeAssetsAttributes getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
 	/*! \brief Get The catalog hotel id in the merchant namespace
 	 */
 	std::string getHotelId();
@@ -104,9 +104,9 @@ public:
 
 private:
 	CatalogsType catalog_type;
+	CatalogsCreativeAssetsAttributes attributes;
 	std::string item_id;
 	std::list <Pin>pins;
-	CatalogsCreativeAssetsAttributes attributes;
 	std::string hotel_id;
 	std::string creative_assets_id;
 	std::list <ItemValidationEvent>errors;

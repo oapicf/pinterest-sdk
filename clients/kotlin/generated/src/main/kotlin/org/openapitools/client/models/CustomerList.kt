@@ -24,6 +24,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param adAccountId Associated ad account ID.
  * @param createdTime Creation time. Unix timestamp in seconds.
+ * @param exceptions Customer list errors
  * @param id Customer list ID.
  * @param name Customer list name.
  * @param numBatches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
@@ -32,7 +33,6 @@ import com.squareup.moshi.JsonClass
  * @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
  * @param type Always \"customerlist\".
  * @param updatedTime Last update time. Unix timestamp in seconds.
- * @param exceptions Customer list errors
  */
 
 
@@ -45,6 +45,10 @@ data class CustomerList (
     /* Creation time. Unix timestamp in seconds. */
     @Json(name = "created_time")
     val createdTime: java.math.BigDecimal? = null,
+
+    /* Customer list errors */
+    @Json(name = "exceptions")
+    val exceptions: kotlin.Any? = null,
 
     /* Customer list ID. */
     @Json(name = "id")
@@ -76,11 +80,7 @@ data class CustomerList (
 
     /* Last update time. Unix timestamp in seconds. */
     @Json(name = "updated_time")
-    val updatedTime: java.math.BigDecimal? = null,
-
-    /* Customer list errors */
-    @Json(name = "exceptions")
-    val exceptions: kotlin.Any? = null
+    val updatedTime: java.math.BigDecimal? = null
 
 ) {
 

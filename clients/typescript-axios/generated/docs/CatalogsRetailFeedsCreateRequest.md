@@ -6,16 +6,17 @@ Request object for creating a retail feed.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to undefined]
-**name** | **string** | A human-friendly name associated to a given feed. | [default to undefined]
-**format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [default to undefined]
-**default_locale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [default to undefined]
-**credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to undefined]
-**location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [default to undefined]
-**preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] [default to undefined]
+**catalog_id** | **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. | [optional] [default to undefined]
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
-**default_country** | [**Country**](Country.md) |  | [default to undefined]
+**credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to undefined]
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to undefined]
+**default_country** | [**Country**](Country.md) |  | [default to undefined]
+**default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to undefined]
+**default_locale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [default to undefined]
+**format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [default to undefined]
+**location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [default to undefined]
+**name** | **string** | A human-friendly name associated to a given feed. | [default to undefined]
+**preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] [default to undefined]
 **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to CatalogsStatus_Active]
 
 ## Example
@@ -24,16 +25,17 @@ Name | Type | Description | Notes
 import { CatalogsRetailFeedsCreateRequest } from './api';
 
 const instance: CatalogsRetailFeedsCreateRequest = {
-    default_currency,
-    name,
-    format,
-    default_locale,
-    credentials,
-    location,
-    preferred_processing_schedule,
+    catalog_id,
     catalog_type,
-    default_country,
+    credentials,
     default_availability,
+    default_country,
+    default_currency,
+    default_locale,
+    format,
+    location,
+    name,
+    preferred_processing_schedule,
     status,
 };
 ```

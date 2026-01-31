@@ -18,8 +18,8 @@ package org.openapitools.client.models
 import org.openapitools.client.models.CatalogsCreativeAssetsProductGroup
 import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilters
 import org.openapitools.client.models.CatalogsHotelProductGroup
+import org.openapitools.client.models.CatalogsHotelProductGroupType
 import org.openapitools.client.models.CatalogsProductGroupStatus
-import org.openapitools.client.models.CatalogsProductGroupType
 import org.openapitools.client.models.CatalogsRetailProductGroup
 
 import com.squareup.moshi.Json
@@ -28,60 +28,60 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogType 
- * @param id ID of the creative assets product group.
- * @param filters 
  * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogType 
  * @param feedId id of the catalogs feed belonging to this catalog product group
- * @param name Name of creative assets product group
+ * @param filters 
+ * @param id ID of the creative assets product group.
+ * @param type 
+ * @param country 
+ * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
- * @param type 
- * @param status 
- * @param createdAt Unix timestamp in seconds of when catalog product group was created.
- * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
- * @param country 
  * @param locale 
+ * @param name Name of creative assets product group
+ * @param status 
+ * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
 
 
 interface CatalogsVerticalProductGroup {
 
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsVerticalProductGroup.CatalogType
-    /* ID of the creative assets product group. */
-    @Json(name = "id")
-    val id: kotlin.String
-    @Json(name = "filters")
-    val filters: CatalogsCreativeAssetsProductGroupFilters
     /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsVerticalProductGroup.CatalogType
     /* id of the catalogs feed belonging to this catalog product group */
     @Json(name = "feed_id")
     val feedId: kotlin.String?
-    /* Name of creative assets product group */
-    @Json(name = "name")
-    val name: kotlin.String?
+    @Json(name = "filters")
+    val filters: CatalogsCreativeAssetsProductGroupFilters
+    /* ID of the creative assets product group. */
+    @Json(name = "id")
+    val id: kotlin.String
+    @Json(name = "type")
+    val type: CatalogsHotelProductGroupType
+    @Json(name = "country")
+    val country: kotlin.String?
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    @Json(name = "created_at")
+    val createdAt: kotlin.Int?
     @Json(name = "description")
     val description: kotlin.String?
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
     val isFeatured: kotlin.Boolean?
-    @Json(name = "type")
-    val type: CatalogsProductGroupType?
+    @Json(name = "locale")
+    val locale: kotlin.String?
+    /* Name of creative assets product group */
+    @Json(name = "name")
+    val name: kotlin.String?
     @Json(name = "status")
     val status: CatalogsProductGroupStatus?
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    @Json(name = "created_at")
-    val createdAt: kotlin.Int?
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     @Json(name = "updated_at")
     val updatedAt: kotlin.Int?
-    @Json(name = "country")
-    val country: kotlin.String?
-    @Json(name = "locale")
-    val locale: kotlin.String?
     /**
      * 
      *

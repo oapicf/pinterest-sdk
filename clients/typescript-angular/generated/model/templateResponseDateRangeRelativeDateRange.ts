@@ -14,16 +14,16 @@
  */
 export interface TemplateResponseDateRangeRelativeDateRange { 
     /**
-     * The date range type
+     * The end date of the date range
      */
-    type?: string;
+    end_days_in_past?: number;
     /**
      * The start date of the date range
      */
     start_days_in_past?: number;
     /**
-     * The end date of the date range
+     * The date range type
      */
-    end_days_in_past?: number;
+    type?: string;
 }
 

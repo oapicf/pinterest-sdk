@@ -14,10 +14,10 @@ module CatalogsHotelItemErrorResponse =
   type CatalogsHotelItemErrorResponse = {
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
-    [<JsonProperty(PropertyName = "hotel_id")>]
-    HotelId : string;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : ItemValidationEvent[];
+    [<JsonProperty(PropertyName = "hotel_id")>]
+    HotelId : string;
   }
 
   //#endregion

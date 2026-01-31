@@ -1,27 +1,27 @@
 const utils = require('../utils/utils');
-const MediaUploadDetails = require('../models/MediaUploadDetails');
+const Media = require('../models/Media');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}items`,
-                label: `[${labelPrefix}items]`,
-                children: MediaUploadDetails.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
-            },
-            {
                 key: `${keyPrefix}bookmark`,
                 label: `[${labelPrefix}bookmark]`,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}items`,
+                label: `[${labelPrefix}items]`,
+                children: Media.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, MediaUploadDetails),
             'bookmark': bundle.inputData?.[`${keyPrefix}bookmark`],
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, Media),
         }
     },
 }

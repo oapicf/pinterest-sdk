@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsReportAllItemsFilter
 open OpenAPI.Model.CatalogsReportDistributionIssueFilter
 open OpenAPI.Model.CatalogsReportFeedIngestionFilter
 

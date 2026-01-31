@@ -12,12 +12,14 @@ import org.joda.time.DateTime
 import CatalogsRetailBatchRequestItemsInner._
 
 case class CatalogsRetailBatchRequestItemsInner (
-  /* The catalog item id in the merchant namespace */
+  attributes: ItemAttributesRequest,
+/* The catalog item id in the merchant namespace */
   itemId: String,
 operation: Operation,
-attributes: ItemAttributesRequest,
 /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
-  updateMask: Option[List[UpdateMaskFieldType]])
+  updateMask: Option[List[UpdateMaskFieldType]],
+/* The millisecond timestamp when the item was lastly modified by the merchant. */
+  lastUpdatedTime: Option[Long])
 
 object CatalogsRetailBatchRequestItemsInner {
   import DateTimeCodecs._

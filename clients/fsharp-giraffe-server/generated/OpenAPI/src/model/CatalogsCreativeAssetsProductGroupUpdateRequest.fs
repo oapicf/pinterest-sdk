@@ -15,8 +15,8 @@ module CatalogsCreativeAssetsProductGroupUpdateRequest =
 
   type CatalogsCreativeAssetsProductGroupUpdateRequest = {
     CatalogType : CatalogTypeEnum;
-    Name : string;
     Description : string option;
     Filters : CatalogsCreativeAssetsProductGroupFilters;
+    Name : string;
   }
   //#endregion

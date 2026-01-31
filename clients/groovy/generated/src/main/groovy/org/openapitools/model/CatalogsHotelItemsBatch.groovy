@@ -14,14 +14,14 @@ import org.openapitools.model.HotelProcessingRecord;
 class CatalogsHotelItemsBatch {
     /* Id of the catalogs items batch */
     String batchId
-    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
-    Date createdTime
-    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
-    Date completedTime
-    
-    BatchOperationStatus status
     
     CatalogsType catalogType
+    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
+    Date completedTime
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
+    Date createdTime
     /* Array with the catalogs items processing records part of the catalogs items batch */
     List<HotelProcessingRecord> items = new ArrayList<>()
+    
+    BatchOperationStatus status
 }

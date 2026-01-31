@@ -78,5 +78,6 @@ private class OASCatalogsFeedProcessingResultTest {
         System.assertEquals('ingestionDetails', x-property-mappings.get('ingestion_details'));
         System.assertEquals('productCounts', x-property-mappings.get('product_counts'));
         System.assertEquals('validationDetails', x-property-mappings.get('validation_details'));
+        System.assertEquals('videoCounts', x-property-mappings.get('video_counts'));
     }
 }

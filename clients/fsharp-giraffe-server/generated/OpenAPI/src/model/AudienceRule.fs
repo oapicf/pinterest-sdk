@@ -2,8 +2,8 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.EventData
 open OpenAPI.Model.ObjectiveType
-open OpenAPI.Model.PinterestTagEventData
 
 module AudienceRule =
 
@@ -11,12 +11,19 @@ module AudienceRule =
 
 
   type AudienceRule = {
+    AdAccountId : string;
+    AdId : string[];
+    CampaignId : string[];
     Country : string;
     CustomerListId : string;
     EngagementDomain : string[];
     EngagementType : string;
+    EngagerType : int;
     Event : string;
-    EventData : PinterestTagEventData;
+    EventData : EventData;
+    EventSource : obj;
+    IngestionSource : obj;
+    ObjectiveType : ObjectiveType[];
     Percentage : int;
     PinId : string[];
     Prefill : bool;
@@ -24,12 +31,5 @@ module AudienceRule =
     SeedId : string[];
     Url : string[];
     VisitorSourceId : string;
-    EventSource : obj;
-    IngestionSource : obj;
-    EngagerType : int;
-    CampaignId : string[];
-    AdId : string[];
-    ObjectiveType : ObjectiveType[];
-    AdAccountId : string;
   }
   //#endregion

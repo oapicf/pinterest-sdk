@@ -16,19 +16,19 @@ module CatalogsRetailProductGroup =
   //#endregion
 
   type CatalogsRetailProductGroup = {
-    CatalogType : CatalogTypeEnum;
-    Id : string;
-    Name : string;
-    Description : string option;
-    Filters : CatalogsProductGroupFilters;
-    IsFeatured : bool;
-    Type : CatalogsProductGroupType;
-    Status : CatalogsProductGroupStatus;
-    CreatedAt : int;
-    UpdatedAt : int;
     CatalogId : string;
-    FeedId : string option;
+    CatalogType : CatalogTypeEnum;
     Country : string option;
+    CreatedAt : int;
+    Description : string option;
+    FeedId : string option;
+    Filters : CatalogsProductGroupFilters;
+    Id : string;
+    IsFeatured : bool;
     Locale : string option;
+    Name : string;
+    Status : CatalogsProductGroupStatus;
+    Type : CatalogsProductGroupType;
+    UpdatedAt : int;
   }
   //#endregion

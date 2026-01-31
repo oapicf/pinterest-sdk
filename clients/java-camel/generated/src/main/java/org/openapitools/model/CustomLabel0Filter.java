@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,10 +19,10 @@ import javax.annotation.Generated;
  * CustomLabel0Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomLabel0Filter {
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
 
   public CustomLabel0Filter() {
     super();
@@ -31,11 +31,11 @@ public class CustomLabel0Filter {
   /**
    * Constructor with only required parameters
    */
-  public CustomLabel0Filter(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public CustomLabel0Filter(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
   }
 
-  public CustomLabel0Filter CUSTOM_LABEL_0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public CustomLabel0Filter CUSTOM_LABEL_0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
     return this;
   }
@@ -47,11 +47,11 @@ public class CustomLabel0Filter {
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_0", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_0")
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
   }
 
-  public void setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
   }
 

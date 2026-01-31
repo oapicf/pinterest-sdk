@@ -2,10 +2,23 @@
   <h2><a name=""></a></h2>
   <p>This is the  API</p>
 
+  <h2><a name="oauth/conversionToken"></a>oauth/conversionToken</h2>
+  <hr>
+  <p></p>
+  <p>Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/oauth/conversion_token</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ConversionAccessTokenResponse"><a href="">ConversionAccessTokenResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
   <h2><a name="oauth/token"></a>oauth/token</h2>
   <hr>
   <p></p>
-  <p>Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&gt;Authentication&lt;/a&gt; for more.  &lt;strong&gt;Parameter &lt;i&gt;refresh_on&lt;/i&gt; and its corresponding response type &lt;i&gt;everlasting_refresh&lt;/i&gt; are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  &lt;strong&gt;Grant type &lt;i&gt;client_credentials&lt;/i&gt; and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.&lt;/strong&gt;</p>
+  <p>Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/oauth/token</code>
   <h3 class="section">HTTP Method</h3>
@@ -24,6 +37,41 @@
       <span class="param-type">String(string)</span>
       
       <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="token/revoke"></a>token/revoke</h2>
+  <hr>
+  <p></p>
+  <p>Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/oauth/token/revoke</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">token</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">The token to revoke.</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">token_type_hint</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.</p>
       </li>
   </ul>
 </div>

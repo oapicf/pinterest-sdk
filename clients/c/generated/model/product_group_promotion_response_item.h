@@ -16,19 +16,19 @@
 typedef struct product_group_promotion_response_item_t product_group_promotion_response_item_t;
 
 #include "exception.h"
-#include "product_group_promotion_response_element.h"
+#include "product_group_promotion.h"
 
 
 
 typedef struct product_group_promotion_response_item_t {
-    struct product_group_promotion_response_element_t *data; //model
+    struct product_group_promotion_t *data; //model
     list_t *exceptions; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } product_group_promotion_response_item_t;
 
 __attribute__((deprecated)) product_group_promotion_response_item_t *product_group_promotion_response_item_create(
-    product_group_promotion_response_element_t *data,
+    product_group_promotion_t *data,
     list_t *exceptions
 );
 

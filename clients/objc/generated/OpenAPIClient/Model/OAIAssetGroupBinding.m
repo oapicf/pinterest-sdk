@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"assetGroupName": @"asset_group_name", @"assetGroupDescription": @"asset_group_description", @"assetGroupTypes": @"asset_group_types", @"adAccountsIds": @"ad_accounts_ids", @"profilesIds": @"profiles_ids", @"createdTime": @"created_time", @"updatedTime": @"updated_time", @"owner": @"owner", @"createdBy": @"created_by" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountsIds": @"ad_accounts_ids", @"assetGroupDescription": @"asset_group_description", @"assetGroupName": @"asset_group_name", @"assetGroupTypes": @"asset_group_types", @"catalogsIds": @"catalogs_ids", @"createdBy": @"created_by", @"createdTime": @"created_time", @"_id": @"id", @"owner": @"owner", @"profilesIds": @"profiles_ids", @"updatedTime": @"updated_time" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"_id", @"assetGroupName", @"assetGroupDescription", @"assetGroupTypes", @"adAccountsIds", @"profilesIds", @"createdTime", @"updatedTime", @"owner", @"createdBy"];
+  NSArray *optionalProperties = @[@"adAccountsIds", @"assetGroupDescription", @"assetGroupName", @"assetGroupTypes", @"catalogsIds", @"createdBy", @"createdTime", @"_id", @"owner", @"profilesIds", @"updatedTime"];
   return [optionalProperties containsObject:propertyName];
 }
 

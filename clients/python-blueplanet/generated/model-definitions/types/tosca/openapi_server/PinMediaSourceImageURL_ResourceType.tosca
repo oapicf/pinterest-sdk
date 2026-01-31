@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaSourceImageURL"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaSourceImageURL"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinMediaSourceImageURL {
+    title = PinMediaSourceImageURL
+    description = PinMediaSourceImageURL
+    derivedFrom = Root
+    properties {
+        is_standard {
+          type =  boolean
+          description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users."
+          optional = false
+        }
+        source_type {
+          type =  string
+          description = "The source type of the media."
+          enum = ["image_url"]
+          optional = true
+        }
+        url {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaSourceImageURL {
+    title = PinMediaSourceImageURL
+    description = PinMediaSourceImageURL
+    implements = openapi_server.resourceTypes.PinMediaSourceImageURL
+
+  }
+}

@@ -6,8 +6,9 @@
   "fields": [
     {
       "name": "CAMPAIGN_ID",
-      "type": "string",
-      "doc": "The ID of the campaing that this metrics belongs to."
+      "type": ["null", "string"],
+      "doc": "The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.",
+      "default": null
     },
     {
       "name": "DATE",

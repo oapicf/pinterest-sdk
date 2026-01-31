@@ -1,6 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -23,14 +24,6 @@ public class ProductGroupPromotionTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
      * Test the property 'adGroupId'
      */
     @Test
@@ -44,78 +37,6 @@ public class ProductGroupPromotionTest {
     @Test
     public void bidInMicroCurrencyTest() {
         // TODO: test bidInMicroCurrency
-    }
-
-    /**
-     * Test the property 'included'
-     */
-    @Test
-    public void includedTest() {
-        // TODO: test included
-    }
-
-    /**
-     * Test the property 'definition'
-     */
-    @Test
-    public void definitionTest() {
-        // TODO: test definition
-    }
-
-    /**
-     * Test the property 'relativeDefinition'
-     */
-    @Test
-    public void relativeDefinitionTest() {
-        // TODO: test relativeDefinition
-    }
-
-    /**
-     * Test the property 'parentId'
-     */
-    @Test
-    public void parentIdTest() {
-        // TODO: test parentId
-    }
-
-    /**
-     * Test the property 'slideshowCollectionsTitle'
-     */
-    @Test
-    public void slideshowCollectionsTitleTest() {
-        // TODO: test slideshowCollectionsTitle
-    }
-
-    /**
-     * Test the property 'slideshowCollectionsDescription'
-     */
-    @Test
-    public void slideshowCollectionsDescriptionTest() {
-        // TODO: test slideshowCollectionsDescription
-    }
-
-    /**
-     * Test the property 'isMdl'
-     */
-    @Test
-    public void isMdlTest() {
-        // TODO: test isMdl
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'trackingUrl'
-     */
-    @Test
-    public void trackingUrlTest() {
-        // TODO: test trackingUrl
     }
 
     /**
@@ -135,11 +56,11 @@ public class ProductGroupPromotionTest {
     }
 
     /**
-     * Test the property 'collectionsHeroPinId'
+     * Test the property 'collectionsHeaderType'
      */
     @Test
-    public void collectionsHeroPinIdTest() {
-        // TODO: test collectionsHeroPinId
+    public void collectionsHeaderTypeTest() {
+        // TODO: test collectionsHeaderType
     }
 
     /**
@@ -151,11 +72,147 @@ public class ProductGroupPromotionTest {
     }
 
     /**
+     * Test the property 'collectionsHeroPinId'
+     */
+    @Test
+    public void collectionsHeroPinIdTest() {
+        // TODO: test collectionsHeroPinId
+    }
+
+    /**
+     * Test the property 'creativeType'
+     */
+    @Test
+    public void creativeTypeTest() {
+        // TODO: test creativeType
+    }
+
+    /**
+     * Test the property 'customizableCtaType'
+     */
+    @Test
+    public void customizableCtaTypeTest() {
+        // TODO: test customizableCtaType
+    }
+
+    /**
+     * Test the property 'definition'
+     */
+    @Test
+    public void definitionTest() {
+        // TODO: test definition
+    }
+
+    /**
      * Test the property 'gridClickType'
      */
     @Test
     public void gridClickTypeTest() {
         // TODO: test gridClickType
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'included'
+     */
+    @Test
+    public void includedTest() {
+        // TODO: test included
+    }
+
+    /**
+     * Test the property 'isGenerateBackground'
+     */
+    @Test
+    public void isGenerateBackgroundTest() {
+        // TODO: test isGenerateBackground
+    }
+
+    /**
+     * Test the property 'isMdl'
+     */
+    @Test
+    public void isMdlTest() {
+        // TODO: test isMdl
+    }
+
+    /**
+     * Test the property 'parentId'
+     */
+    @Test
+    public void parentIdTest() {
+        // TODO: test parentId
+    }
+
+    /**
+     * Test the property 'preferredMediaType'
+     */
+    @Test
+    public void preferredMediaTypeTest() {
+        // TODO: test preferredMediaType
+    }
+
+    /**
+     * Test the property 'relativeDefinition'
+     */
+    @Test
+    public void relativeDefinitionTest() {
+        // TODO: test relativeDefinition
+    }
+
+    /**
+     * Test the property 'selectedImageTag'
+     */
+    @Test
+    public void selectedImageTagTest() {
+        // TODO: test selectedImageTag
+    }
+
+    /**
+     * Test the property 'selectedVideoTag'
+     */
+    @Test
+    public void selectedVideoTagTest() {
+        // TODO: test selectedVideoTag
+    }
+
+    /**
+     * Test the property 'slideshowCollectionsDescription'
+     */
+    @Test
+    public void slideshowCollectionsDescriptionTest() {
+        // TODO: test slideshowCollectionsDescription
+    }
+
+    /**
+     * Test the property 'slideshowCollectionsTitle'
+     */
+    @Test
+    public void slideshowCollectionsTitleTest() {
+        // TODO: test slideshowCollectionsTitle
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'trackingUrl'
+     */
+    @Test
+    public void trackingUrlTest() {
+        // TODO: test trackingUrl
     }
 
 }

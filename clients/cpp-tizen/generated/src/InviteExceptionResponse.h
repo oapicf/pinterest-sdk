@@ -46,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unique identifier of the invite/request.
-	 */
-	std::string getInviteOrRequestId();
-
-	/*! \brief Set Unique identifier of the invite/request.
-	 */
-	void setInviteOrRequestId(std::string  invite_or_request_id);
 	/*! \brief Get Error code associated with the error in performing the action on the invite/request.
 	 */
 	int getCode();
@@ -60,6 +53,13 @@ public:
 	/*! \brief Set Error code associated with the error in performing the action on the invite/request.
 	 */
 	void setCode(int  code);
+	/*! \brief Get Unique identifier of the invite/request.
+	 */
+	std::string getInviteOrRequestId();
+
+	/*! \brief Set Unique identifier of the invite/request.
+	 */
+	void setInviteOrRequestId(std::string  invite_or_request_id);
 	/*! \brief Get Error message associated with the error in performing the action on the invite/request.
 	 */
 	std::string getMessage();
@@ -76,8 +76,8 @@ public:
 	void setUsersOrPartnerIds(std::list <std::string> users_or_partner_ids);
 
 private:
-	std::string invite_or_request_id;
 	int code;
+	std::string invite_or_request_id;
 	std::string message;
 	std::list <std::string>users_or_partner_ids;
 	void __init();

@@ -6,7 +6,7 @@ context("Test ConversionTagListResponse")
 model_instance <- ConversionTagListResponse$new()
 
 test_that("items", {
-  # tests for the property `items` (array[ConversionTagResponse])
+  # tests for the property `items` (array[ConversionTag])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")

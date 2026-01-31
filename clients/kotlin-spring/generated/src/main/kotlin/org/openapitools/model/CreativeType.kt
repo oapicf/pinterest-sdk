@@ -16,8 +16,8 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-* Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ
+* Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+* Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION
 */
 enum class CreativeType(@get:JsonValue val value: kotlin.String) {
 
@@ -30,7 +30,10 @@ enum class CreativeType(@get:JsonValue val value: kotlin.String) {
     COLLECTION("COLLECTION"),
     IDEA("IDEA"),
     SHOWCASE("SHOWCASE"),
-    QUIZ("QUIZ");
+    QUIZ("QUIZ"),
+    COLLAGE("COLLAGE"),
+    MAX_WIDTH_REGULAR_COLLECTION("MAX_WIDTH_REGULAR_COLLECTION"),
+    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION");
 
     companion object {
         @JvmStatic

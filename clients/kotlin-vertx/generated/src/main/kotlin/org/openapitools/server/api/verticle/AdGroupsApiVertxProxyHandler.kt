@@ -24,13 +24,14 @@ import org.openapitools.server.api.model.AdGroupResponse
 import org.openapitools.server.api.model.AdGroupUpdateRequest
 import org.openapitools.server.api.model.AdGroupsAnalyticsResponseInner
 import org.openapitools.server.api.model.AdGroupsList200Response
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType
+import org.openapitools.server.api.model.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.server.api.model.BidFloor
 import org.openapitools.server.api.model.BidFloorRequest
 import org.openapitools.server.api.model.ConversionReportAttributionType
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.Granularity
 import org.openapitools.server.api.model.MetricsResponse
+import org.openapitools.server.api.model.ReportingTimeZone
 
 class AdGroupsApiVertxProxyHandler(private val vertx: Vertx, private val service: AdGroupsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -113,8 +114,11 @@ class AdGroupsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
                     val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
+                    val aggregateReportRows = ApiHandlerUtils.searchStringInJson(params,"aggregate_report_rows")?.toBoolean()
+                    val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
+                    val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adGroupsAnalytics(adAccountId,startDate,endDate,adGroupIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,context)
+                        val result = service.adGroupsAnalytics(adAccountId,startDate,endDate,adGroupIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,aggregateReportRows,reportingTimezone,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -130,7 +134,10 @@ class AdGroupsApiVertxProxyHandler(private val vertx: Vertx, private val service
                         throw IllegalArgumentException("adAccountId is required")
                     }
                     val adGroupAudienceSizingRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    val adGroupAudienceSizingRequest = if(adGroupAudienceSizingRequestParam ==null) null else Gson().fromJson(adGroupAudienceSizingRequestParam.encode(), AdGroupAudienceSizingRequest::class.java)
+                    if (adGroupAudienceSizingRequestParam == null) {
+                        throw IllegalArgumentException("adGroupAudienceSizingRequest is required")
+                    }
+                    val adGroupAudienceSizingRequest = Gson().fromJson(adGroupAudienceSizingRequestParam.encode(), AdGroupAudienceSizingRequest::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.adGroupsAudienceSizing(adAccountId,adGroupAudienceSizingRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
@@ -260,8 +267,8 @@ class AdGroupsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     if(targetingTypesParam == null){
                          throw IllegalArgumentException("targetingTypes is required")
                     }
-                    val targetingTypes:kotlin.Array<AdsAnalyticsTargetingType> = Gson().fromJson(targetingTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsTargetingType>>(){}.type)
+                    val targetingTypes:kotlin.Array<AdsAnalyticsAdGroupTargetingType> = Gson().fromJson(targetingTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsAdGroupTargetingType>>(){}.type)
                     val columnsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"columns")
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")
@@ -277,10 +284,14 @@ class AdGroupsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
                     val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
-                    val attributionTypesParam = ApiHandlerUtils.searchJsonObjectInJson(params,"attribution_types")
-                    val attributionTypes = if(attributionTypesParam ==null) null else Gson().fromJson(attributionTypesParam.encode(), ConversionReportAttributionType::class.java)
+                    val attributionTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"attribution_types")
+                    val attributionTypes:kotlin.Array<ConversionReportAttributionType>? = if(attributionTypesParam == null) null
+                            else Gson().fromJson(attributionTypesParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<ConversionReportAttributionType>>(){}.type)
+                    val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
+                    val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adGroupsTargetingAnalyticsGet(adAccountId,adGroupIds,startDate,endDate,targetingTypes,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,attributionTypes,context)
+                        val result = service.adGroupsTargetingAnalyticsGet(adAccountId,adGroupIds,startDate,endDate,targetingTypes,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,attributionTypes,reportingTimezone,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

@@ -15,56 +15,60 @@ public struct CatalogsHotelProductGroup: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    /** Catalog id pertaining to the hotel product group. */
+    public var catalogId: String
     public var catalogType: CatalogType
+    /** Unix timestamp in seconds of when catalog product group was created. */
+    public var createdAt: Int?
+    public var description: String?
+    public var filters: CatalogsHotelProductGroupFilters
     /** ID of the hotel product group. */
     public var id: String
     /** Name of hotel product group */
     public var name: String?
-    public var description: String?
-    public var filters: CatalogsHotelProductGroupFilters
-    /** Unix timestamp in seconds of when catalog product group was created. */
-    public var createdAt: Int?
+    public var type: CatalogsHotelProductGroupType
     /** Unix timestamp in seconds of last time catalog product group was updated. */
     public var updatedAt: Int?
-    /** Catalog id pertaining to the hotel product group. */
-    public var catalogId: String
 
-    public init(catalogType: CatalogType, id: String, name: String? = nil, description: String? = nil, filters: CatalogsHotelProductGroupFilters, createdAt: Int? = nil, updatedAt: Int? = nil, catalogId: String) {
+    public init(catalogId: String, catalogType: CatalogType, createdAt: Int? = nil, description: String? = nil, filters: CatalogsHotelProductGroupFilters, id: String, name: String? = nil, type: CatalogsHotelProductGroupType, updatedAt: Int? = nil) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
-        self.id = id
-        self.name = name
+        self.createdAt = createdAt
         self.description = description
         self.filters = filters
-        self.createdAt = createdAt
+        self.id = id
+        self.name = name
+        self.type = type
         self.updatedAt = updatedAt
-        self.catalogId = catalogId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
-        case id
-        case name
+        case createdAt = "created_at"
         case description
         case filters
-        case createdAt = "created_at"
+        case id
+        case name
+        case type
         case updatedAt = "updated_at"
-        case catalogId = "catalog_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
-        try container.encode(id, forKey: .id)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(filters, forKey: .filters)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(type, forKey: .type)
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
-        try container.encode(catalogId, forKey: .catalogId)
     }
 }
 

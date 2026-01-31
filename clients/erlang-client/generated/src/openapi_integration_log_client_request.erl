@@ -5,23 +5,23 @@
 -export_type([openapi_integration_log_client_request/0]).
 
 -type openapi_integration_log_client_request() ::
-    #{ 'method' := binary(),
-       'host' := binary(),
+    #{ 'host' := binary(),
+       'method' := binary(),
        'path' := binary(),
        'request_headers' => maps:map(),
        'response_headers' => maps:map(),
        'response_status_code' => integer()
      }.
 
-encode(#{ 'method' := Method,
-          'host' := Host,
+encode(#{ 'host' := Host,
+          'method' := Method,
           'path' := Path,
           'request_headers' := RequestHeaders,
           'response_headers' := ResponseHeaders,
           'response_status_code' := ResponseStatusCode
         }) ->
-    #{ 'method' => Method,
-       'host' => Host,
+    #{ 'host' => Host,
+       'method' => Method,
        'path' => Path,
        'request_headers' => RequestHeaders,
        'response_headers' => ResponseHeaders,

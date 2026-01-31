@@ -21,14 +21,6 @@ public class AdsCreditRedeemResponseTest {
     }
 
     /**
-     * Test the property 'success'
-     */
-    @Test
-    public void successTest() {
-        // TODO: test success
-    }
-
-    /**
      * Test the property 'errorCode'
      */
     @Test
@@ -42,6 +34,14 @@ public class AdsCreditRedeemResponseTest {
     @Test
     public void errorMessageTest() {
         // TODO: test errorMessage
+    }
+
+    /**
+     * Test the property 'success'
+     */
+    @Test
+    public void successTest() {
+        // TODO: test success
     }
 
 }

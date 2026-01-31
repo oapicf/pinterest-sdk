@@ -38,7 +38,7 @@ open class SearchAPI {
     /**
      Search pins by a given search term
      - GET /search/partner/pins
-     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -146,7 +146,7 @@ open class SearchAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func searchUserPinsList(query: String, adAccountId: String? = nil, bookmark: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func searchUserPinsList(query: String, adAccountId: String? = nil, bookmark: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SearchUserPinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return searchUserPinsListWithRequestBuilder(query: query, adAccountId: adAccountId, bookmark: bookmark).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -167,9 +167,9 @@ open class SearchAPI {
      - parameter query: (query) Search query. Can contain pin description keywords or comma-separated pin IDs. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - returns: RequestBuilder<PinsList200Response> 
+     - returns: RequestBuilder<SearchUserPinsList200Response> 
      */
-    open class func searchUserPinsListWithRequestBuilder(query: String, adAccountId: String? = nil, bookmark: String? = nil) -> RequestBuilder<PinsList200Response> {
+    open class func searchUserPinsListWithRequestBuilder(query: String, adAccountId: String? = nil, bookmark: String? = nil) -> RequestBuilder<SearchUserPinsList200Response> {
         let localVariablePath = "/search/pins"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -187,7 +187,7 @@ open class SearchAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<PinsList200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SearchUserPinsList200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

@@ -22,13 +22,13 @@ customer_lists_list_200_response_t* instantiate_customer_lists_list_200_response
   customer_lists_list_200_response_t* customer_lists_list_200_response = NULL;
   if (include_optional) {
     customer_lists_list_200_response = customer_lists_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     customer_lists_list_200_response = customer_lists_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

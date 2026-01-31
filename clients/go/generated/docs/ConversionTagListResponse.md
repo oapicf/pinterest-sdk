@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]ConversionTagResponse**](ConversionTagResponse.md) |  | [optional] 
+**Items** | Pointer to [**[]ConversionTag**](ConversionTag.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *ConversionTagListResponse) GetItems() []ConversionTagResponse`
+`func (o *ConversionTagListResponse) GetItems() []ConversionTag`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *ConversionTagListResponse) GetItemsOk() (*[]ConversionTagResponse, bool)`
+`func (o *ConversionTagListResponse) GetItemsOk() (*[]ConversionTag, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *ConversionTagListResponse) SetItems(v []ConversionTagResponse)`
+`func (o *ConversionTagListResponse) SetItems(v []ConversionTag)`
 
 SetItems sets Items field to given value.
 

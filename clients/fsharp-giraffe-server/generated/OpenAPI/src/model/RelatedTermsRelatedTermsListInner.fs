@@ -9,7 +9,7 @@ module RelatedTermsRelatedTermsListInner =
 
 
   type RelatedTerms_related_terms_list_inner = {
-    Term : string;
     RelatedTerms : string[];
+    Term : string;
   }
   //#endregion

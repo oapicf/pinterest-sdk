@@ -25,22 +25,448 @@ class CatalogsFeedIngestionWarningsTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsFeedIngestionWarnings
         //val modelInstance = CatalogsFeedIngestionWarnings()
 
-        // to test the property `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-        should("test ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR") {
+        // to test the property `AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR") {
             // uncomment below to test the property
-            //modelInstance.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
+            //modelInstance.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_400` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_400") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_400 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_403` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_403") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_403 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_404` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_404") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_404 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_405` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_405") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_405 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_410` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_410") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_410 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_429` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_429") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_429 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_500` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_500") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_500 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_502` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_502") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_502 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_503` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_503") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_503 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_504` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_504") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_504 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_507` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_507") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_507 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_508` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_508") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_508 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_520` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_520") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_520 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_521` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_521") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_521 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_522` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_522") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_522 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_525` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_HTTP_STATUS_525") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_HTTP_STATUS_525 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_IMAGE_DOWNLOAD_INTERNAL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_INVALID_FILE` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_INVALID_FILE") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_INVALID_FILE shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_SITE_ERROR` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_SITE_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_SITE_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_SITE_TIMEOUT` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_SITE_TIMEOUT") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_SSL_ERROR` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_SSL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_SSL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_PROCESSING_EMPTY_FILE` - Ad image files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_IMAGE_PROCESSING_EMPTY_FILE") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_PROCESSING_EMPTY_FILE shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL` - Ad images must have a height larger than 75 pixels
+        should("test AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_PROCESSING_TOO_MANY_PIXELS` - Ad images must have a maximum area (width x height) of less than 89478485 pixels
+        should("test AD_IMAGE_PROCESSING_TOO_MANY_PIXELS") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_PROCESSING_TYPE_MISMATCH` - Some ad images could not be processed due to a file type mismatch.
+        should("test AD_IMAGE_PROCESSING_TYPE_MISMATCH") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_PROCESSING_TYPE_MISMATCH shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL` - Ad images must have a width larger than 75 pixels
+        should("test AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_400` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_400") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_400 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_403` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_403") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_403 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_404` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_404") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_404 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_405` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_405") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_405 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_410` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_410") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_410 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_429` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_429") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_429 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_500` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_500") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_500 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_502` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_502") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_502 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_503` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_503") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_503 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_504` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_504") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_504 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_507` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_507") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_507 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_508` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_508") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_508 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_520` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_520") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_520 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_521` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_521") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_521 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_522` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_522") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_522 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_525` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_HTTP_STATUS_525") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_HTTP_STATUS_525 shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_VIDEO_DOWNLOAD_INTERNAL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_INVALID_FILE` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_INVALID_FILE") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_INVALID_FILE shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_SITE_ERROR` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_SITE_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_SITE_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_SITE_TIMEOUT` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_SITE_TIMEOUT") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_SSL_ERROR` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_SSL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_SSL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_LENGTH_TOO_SHORT` - Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.
+        should("test AD_VIDEO_LENGTH_TOO_SHORT") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_LENGTH_TOO_SHORT shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_PROCESSING_EMPTY_FILE` - Ad video files are unreadable. Please check your link and upload new files to continue.
+        should("test AD_VIDEO_PROCESSING_EMPTY_FILE") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_PROCESSING_EMPTY_FILE shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL` - Ad videos must have a height larger than 75 pixels
+        should("test AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_PROCESSING_TOO_MANY_PIXELS` - Ad videos must have a maximum area (width x height) of less than 89478485 pixels
+        should("test AD_VIDEO_PROCESSING_TOO_MANY_PIXELS") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_PROCESSING_TYPE_MISMATCH` - Some ad videos could not be processed due to a file type mismatch.
+        should("test AD_VIDEO_PROCESSING_TYPE_MISMATCH") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_PROCESSING_TYPE_MISMATCH shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL` - Ad videos must have a width larger than 75 pixels
+        should("test AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL shouldBe ("TODO")
         }
 
         // to test the property `ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE` - Additional image files are unreadable. Please upload new files to continue.
         should("test ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE") {
             // uncomment below to test the property
             //modelInstance.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE shouldBe ("TODO")
-        }
-
-        // to test the property `ADDITIONAL_IMAGE_MALFORMED_URL` - Additional image files are unreadable. Please check your link and upload new files to continue.
-        should("test ADDITIONAL_IMAGE_MALFORMED_URL") {
-            // uncomment below to test the property
-            //modelInstance.ADDITIONAL_IMAGE_MALFORMED_URL shouldBe ("TODO")
         }
 
         // to test the property `ADDITIONAL_IMAGE_FILE_NOT_FOUND` - Additional image files are unreadable. Please upload new files to continue.
@@ -55,10 +481,64 @@ class CatalogsFeedIngestionWarningsTest : ShouldSpec() {
             //modelInstance.ADDITIONAL_IMAGE_INVALID_FILE shouldBe ("TODO")
         }
 
-        // to test the property `HOTEL_PRICE_HEADER_IS_PRESENT` - price is not a supported column. Use base_price and sale_price instead.
+        // to test the property `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+        should("test ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `ADDITIONAL_IMAGE_MALFORMED_URL` - Additional image files are unreadable. Please check your link and upload new files to continue.
+        should("test ADDITIONAL_IMAGE_MALFORMED_URL") {
+            // uncomment below to test the property
+            //modelInstance.ADDITIONAL_IMAGE_MALFORMED_URL shouldBe ("TODO")
+        }
+
+        // to test the property `FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT` - Update your Google Sheets sharing settings from 'Editor' to 'Viewer'.
+        should("test FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT") {
+            // uncomment below to test the property
+            //modelInstance.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT shouldBe ("TODO")
+        }
+
+        // to test the property `HOTEL_PRICE_HEADER_IS_PRESENT` - Price is not a supported column. Use base_price and sale_price instead.
         should("test HOTEL_PRICE_HEADER_IS_PRESENT") {
             // uncomment below to test the property
             //modelInstance.HOTEL_PRICE_HEADER_IS_PRESENT shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_DOWNLOAD_VIDEO_TOO_SHORT` - Video length is too short. Please ensure that the main video is at least 4 seconds long.
+        should("test VIDEO_DOWNLOAD_VIDEO_TOO_SHORT") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_FILE_NOT_ACCESSIBLE` - Video files are unreadable. Please upload new files to continue.
+        should("test VIDEO_FILE_NOT_ACCESSIBLE") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_FILE_NOT_ACCESSIBLE shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_FILE_NOT_FOUND` - Video files are unreadable. Please upload new files to continue.
+        should("test VIDEO_FILE_NOT_FOUND") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_FILE_NOT_FOUND shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_INVALID_FILE` - Video files are unreadable. Please upload new files to continue.
+        should("test VIDEO_INVALID_FILE") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_INVALID_FILE shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.
+        should("test VIDEO_LEVEL_INTERNAL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_MALFORMED_URL` - Video files are unreadable. Please check your link and upload new files to continue.
+        should("test VIDEO_MALFORMED_URL") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_MALFORMED_URL shouldBe ("TODO")
         }
 
     }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[CatalogsFeed]**](CatalogsFeed.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[CatalogsFeed]**](CatalogsFeed.md) |  | 
 
 

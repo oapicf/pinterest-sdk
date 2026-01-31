@@ -18,33 +18,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BulkUpsertStatusResponse  {
   
+  @ApiModelProperty(example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", value = "")
+
+  private String resultUrl;
+
   @ApiModelProperty(value = "")
 
   @Valid
 
   private BulkUpsertStatus status;
-
-  @ApiModelProperty(example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", value = "")
-
-  private String resultUrl;
- /**
-   * Get status
-   * @return status
-  **/
-  @JsonProperty("status")
-  public BulkUpsertStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(BulkUpsertStatus status) {
-    this.status = status;
-  }
-
-  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
-    this.status = status;
-    return this;
-  }
-
  /**
    * Get resultUrl
    * @return resultUrl
@@ -63,6 +45,24 @@ public class BulkUpsertStatusResponse  {
     return this;
   }
 
+ /**
+   * Get status
+   * @return status
+  **/
+  @JsonProperty("status")
+  public BulkUpsertStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(BulkUpsertStatus status) {
+    this.status = status;
+  }
+
+  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
+    this.status = status;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -72,13 +72,13 @@ public class BulkUpsertStatusResponse  {
       return false;
     }
     BulkUpsertStatusResponse bulkUpsertStatusResponse = (BulkUpsertStatusResponse) o;
-    return Objects.equals(this.status, bulkUpsertStatusResponse.status) &&
-        Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl);
+    return Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl) &&
+        Objects.equals(this.status, bulkUpsertStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, resultUrl);
+    return Objects.hash(resultUrl, status);
   }
 
   @Override
@@ -86,8 +86,8 @@ public class BulkUpsertStatusResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertStatusResponse {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

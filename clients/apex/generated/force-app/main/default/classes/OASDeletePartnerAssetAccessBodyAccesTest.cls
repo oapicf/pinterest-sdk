@@ -73,8 +73,8 @@ private class OASDeletePartnerAssetAccessBodyAccesTest {
     private static void maintainRenamedProperties() {
         OASDeletePartnerAssetAccessBodyAcces deletePartnerAssetAccessBodyAccessesInner = new OASDeletePartnerAssetAccessBodyAcces();
         Map<String, String> x-property-mappings = deletePartnerAssetAccessBodyAccessesInner.getx-property-mappings();
-        System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
         System.assertEquals('assetId', x-property-mappings.get('asset_id'));
+        System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
         System.assertEquals('partnerType', x-property-mappings.get('partner_type'));
     }
 
@@ -82,7 +82,7 @@ private class OASDeletePartnerAssetAccessBodyAccesTest {
     private static void defaultValuesPopulated() {
         OASDeletePartnerAssetAccessBodyAcces deletePartnerAssetAccessBodyAccessesInner = new OASDeletePartnerAssetAccessBodyAcces();
         System.assertEquals(PartnerTypeEnum.INTERNAL, deletePartnerAssetAccessBodyAccessesInner.partnerType);
-        System.assertEquals(null, deletePartnerAssetAccessBodyAccessesInner.partnerId);
         System.assertEquals(null, deletePartnerAssetAccessBodyAccessesInner.assetId);
+        System.assertEquals(null, deletePartnerAssetAccessBodyAccessesInner.partnerId);
     }
 }

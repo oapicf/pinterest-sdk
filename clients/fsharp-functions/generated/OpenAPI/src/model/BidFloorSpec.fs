@@ -16,18 +16,18 @@ module BidFloorSpec =
 
   [<CLIMutable>]
   type BidFloorSpec = {
+    [<JsonProperty(PropertyName = "billable_event")>]
+    BillableEvent : ActionType;
     [<JsonProperty(PropertyName = "countries")>]
     Countries : Country[];
+    [<JsonProperty(PropertyName = "creative_type")>]
+    CreativeType : CreativeType;
     [<JsonProperty(PropertyName = "currency")>]
     Currency : Currency;
     [<JsonProperty(PropertyName = "objective_type")>]
     ObjectiveType : ObjectiveType;
-    [<JsonProperty(PropertyName = "billable_event")>]
-    BillableEvent : ActionType;
     [<JsonProperty(PropertyName = "optimization_goal_metadata")>]
     OptimizationGoalMetadata : OptimizationGoalMetadata;
-    [<JsonProperty(PropertyName = "creative_type")>]
-    CreativeType : CreativeType;
   }
 
   //#endregion

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,32 +17,32 @@ package openapi
 // CatalogsRetailProductMetadata - Retail product metadata entity
 type CatalogsRetailProductMetadata struct {
 
-	// The user-created unique ID that represents the product.
-	ItemId string `json:"item_id"`
+	Availability NonNullableProductAvailabilityType `json:"availability"`
+
+	Currency NonNullableCatalogsCurrency `json:"currency"`
 
 	// The parent ID of the product.
 	ItemGroupId *string `json:"item_group_id"`
 
-	Availability NonNullableProductAvailabilityType `json:"availability"`
+	// The user-created unique ID that represents the product.
+	ItemId string `json:"item_id"`
 
 	// The price of the product.
 	Price float32 `json:"price"`
 
 	// The discounted price of the product.
 	SalePrice *float32 `json:"sale_price"`
-
-	Currency NonNullableCatalogsCurrency `json:"currency"`
 }
 
 // AssertCatalogsRetailProductMetadataRequired checks if the required fields are not zero-ed
 func AssertCatalogsRetailProductMetadataRequired(obj CatalogsRetailProductMetadata) error {
 	elements := map[string]interface{}{
-		"item_id": obj.ItemId,
-		"item_group_id": obj.ItemGroupId,
 		"availability": obj.Availability,
+		"currency": obj.Currency,
+		"item_group_id": obj.ItemGroupId,
+		"item_id": obj.ItemId,
 		"price": obj.Price,
 		"sale_price": obj.SalePrice,
-		"currency": obj.Currency,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

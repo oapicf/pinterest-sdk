@@ -1,10 +1,10 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.Media;
 import apimodels.MediaList200Response;
 import apimodels.MediaUpload;
-import apimodels.MediaUploadDetails;
-import apimodels.MediaUploadRequest;
+import apimodels.MediaUploadCreate;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaApiController extends Controller {
     private final MediaApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,17 +43,17 @@ public class MediaApiController extends Controller {
 
     @ApiAction
     public Result mediaCreate(Http.Request request) throws Exception {
-        JsonNode nodemediaUploadRequest = request.body().asJson();
-        MediaUploadRequest mediaUploadRequest;
-        if (nodemediaUploadRequest != null) {
-            mediaUploadRequest = mapper.readValue(nodemediaUploadRequest.toString(), MediaUploadRequest.class);
+        JsonNode nodemediaUploadCreate = request.body().asJson();
+        MediaUploadCreate mediaUploadCreate;
+        if (nodemediaUploadCreate != null) {
+            mediaUploadCreate = mapper.readValue(nodemediaUploadCreate.toString(), MediaUploadCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(mediaUploadRequest);
+                OpenAPIUtils.validate(mediaUploadCreate);
             }
         } else {
-            throw new IllegalArgumentException("'MediaUploadRequest' parameter is required");
+            throw new IllegalArgumentException("'MediaUploadCreate' parameter is required");
         }
-        return imp.mediaCreateHttp(request, mediaUploadRequest);
+        return imp.mediaCreateHttp(request, mediaUploadCreate);
     }
 
     @ApiAction

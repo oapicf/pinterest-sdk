@@ -9,17 +9,17 @@
 -export_type([openapi_lead_form_response/0]).
 
 -type openapi_lead_form_response() ::
-  [ {'name', binary() }
-  | {'privacy_policy_link', binary() }
-  | {'has_accepted_terms', boolean() }
-  | {'completion_message', binary() }
-  | {'status', openapi_lead_form_status:openapi_lead_form_status() }
+  [ {'completion_message', binary() }
   | {'disclosure_language', binary() }
-  | {'questions', list(openapi_lead_form_question:openapi_lead_form_question()) }
+  | {'has_accepted_terms', boolean() }
+  | {'name', binary() }
   | {'policy_links', list(openapi_lead_form_common_policy_links_inner:openapi_lead_form_common_policy_links_inner()) }
-  | {'id', binary() }
+  | {'privacy_policy_link', binary() }
+  | {'questions', list(openapi_lead_form_question:openapi_lead_form_question()) }
+  | {'status', openapi_lead_form_status:openapi_lead_form_status() }
   | {'ad_account_id', binary() }
   | {'created_time', integer() }
+  | {'id', binary() }
   | {'updated_time', integer() }
   ].
 
@@ -28,17 +28,17 @@ openapi_lead_form_response() ->
     openapi_lead_form_response([]).
 
 openapi_lead_form_response(Fields) ->
-  Default = [ {'name', binary() }
-            , {'privacy_policy_link', binary() }
-            , {'has_accepted_terms', boolean() }
-            , {'completion_message', binary() }
-            , {'status', openapi_lead_form_status:openapi_lead_form_status() }
+  Default = [ {'completion_message', binary() }
             , {'disclosure_language', binary() }
-            , {'questions', list(openapi_lead_form_question:openapi_lead_form_question(), 0, 10) }
+            , {'has_accepted_terms', boolean() }
+            , {'name', binary() }
             , {'policy_links', list(openapi_lead_form_common_policy_links_inner:openapi_lead_form_common_policy_links_inner(), 0, 3) }
-            , {'id', binary() }
+            , {'privacy_policy_link', binary() }
+            , {'questions', list(openapi_lead_form_question:openapi_lead_form_question(), 0, 10) }
+            , {'status', openapi_lead_form_status:openapi_lead_form_status() }
             , {'ad_account_id', binary() }
             , {'created_time', integer() }
+            , {'id', binary() }
             , {'updated_time', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

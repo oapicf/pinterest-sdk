@@ -6,9 +6,9 @@ The relative date range of the template
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | The date range type | [optional] [default to undefined]
-**start_days_in_past** | **number** | The start date of the date range | [optional] [default to undefined]
 **end_days_in_past** | **number** | The end date of the date range | [optional] [default to undefined]
+**start_days_in_past** | **number** | The start date of the date range | [optional] [default to undefined]
+**type** | **string** | The date range type | [optional] [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { TemplateResponseDateRangeRelativeDateRange } from './api';
 
 const instance: TemplateResponseDateRangeRelativeDateRange = {
-    type,
-    start_days_in_past,
     end_days_in_past,
+    start_days_in_past,
+    type,
 };
 ```
 

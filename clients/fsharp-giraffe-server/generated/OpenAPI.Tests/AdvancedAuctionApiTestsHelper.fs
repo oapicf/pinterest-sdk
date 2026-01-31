@@ -24,23 +24,23 @@ module AdvancedAuctionApiHandlerTestsHelper =
   AdvancedAuctionItemsGetPostBody <- WebUtility.HtmlDecode "{
   &quot;catalog_id&quot; : &quot;2680059592705&quot;,
   &quot;items&quot; : [ {
-    &quot;country&quot; : &quot;US&quot;,
+    &quot;country&quot; : &quot;AD&quot;,
     &quot;item_id&quot; : &quot;DS0294-M&quot;,
     &quot;language&quot; : &quot;EN&quot;
   }, {
-    &quot;country&quot; : &quot;US&quot;,
+    &quot;country&quot; : &quot;AD&quot;,
     &quot;item_id&quot; : &quot;DS0294-M&quot;,
     &quot;language&quot; : &quot;EN&quot;
   }, {
-    &quot;country&quot; : &quot;US&quot;,
+    &quot;country&quot; : &quot;AD&quot;,
     &quot;item_id&quot; : &quot;DS0294-M&quot;,
     &quot;language&quot; : &quot;EN&quot;
   }, {
-    &quot;country&quot; : &quot;US&quot;,
+    &quot;country&quot; : &quot;AD&quot;,
     &quot;item_id&quot; : &quot;DS0294-M&quot;,
     &quot;language&quot; : &quot;EN&quot;
   }, {
-    &quot;country&quot; : &quot;US&quot;,
+    &quot;country&quot; : &quot;AD&quot;,
     &quot;item_id&quot; : &quot;DS0294-M&quot;,
     &quot;language&quot; : &quot;EN&quot;
   } ]

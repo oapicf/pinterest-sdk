@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ImageCoverUrl** | Pointer to **NullableString** | Board cover image. | [optional] 
+**ImageCoverUrl** | Pointer to **NullableString** | Board cover image | [optional] 
 **PinThumbnailUrls** | Pointer to **[]string** | Board pin thumbnail urls. | [optional] 
 
 ## Methods

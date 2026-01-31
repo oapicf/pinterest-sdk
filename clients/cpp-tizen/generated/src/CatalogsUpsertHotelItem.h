@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	CatalogsHotelAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsHotelAttributes  attributes);
 	/*! \brief Get The catalog hotel id in the merchant namespace
 	 */
 	std::string getHotelId();
@@ -60,18 +67,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setOperation(std::string  operation);
-	/*! \brief Get 
-	 */
-	CatalogsHotelAttributes getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(CatalogsHotelAttributes  attributes);
 
 private:
+	CatalogsHotelAttributes attributes;
 	std::string hotel_id;
 	std::string operation;
-	CatalogsHotelAttributes attributes;
 	void __init();
 	void __cleanup();
 

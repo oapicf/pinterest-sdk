@@ -22,13 +22,13 @@ ssio_insertion_orders_status_get_by_ad_account_200_response_t* instantiate_ssio_
   ssio_insertion_orders_status_get_by_ad_account_200_response_t* ssio_insertion_orders_status_get_by_ad_account_200_response = NULL;
   if (include_optional) {
     ssio_insertion_orders_status_get_by_ad_account_200_response = ssio_insertion_orders_status_get_by_ad_account_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     ssio_insertion_orders_status_get_by_ad_account_200_response = ssio_insertion_orders_status_get_by_ad_account_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

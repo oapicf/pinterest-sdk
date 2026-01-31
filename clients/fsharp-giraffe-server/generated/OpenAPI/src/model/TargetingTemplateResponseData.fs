@@ -17,17 +17,17 @@ module TargetingTemplateResponseData =
   //#endregion
 
   type TargetingTemplateResponseData = {
-    Name : string;
     AutoTargetingEnabled : bool;
-    TargetingAttributes : TargetingSpec;
-    PlacementGroup : PlacementGroupType;
     Keywords : TargetingTemplateKeyword[];
+    Name : string;
+    PlacementGroup : PlacementGroupType;
+    TargetingAttributes : TargetingSpec;
     TrackingUrls : TrackingUrls;
-    Id : string;
-    CreatedTime : int;
-    UpdatedTime : int;
     AdAccountId : string;
-    Status : StatusEnum;
+    CreatedTime : int;
+    Id : string;
     Sizing : TargetingTemplateAudienceSizing;
+    Status : StatusEnum;
+    UpdatedTime : int;
   }
   //#endregion

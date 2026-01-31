@@ -23,28 +23,28 @@ ConversionApiResponse::~ConversionApiResponse()
 void
 ConversionApiResponse::__init()
 {
-	//num_events_received = int(0);
-	//num_events_processed = int(0);
 	//new std::list()std::list> events;
+	//num_events_processed = int(0);
+	//num_events_received = int(0);
 }
 
 void
 ConversionApiResponse::__cleanup()
 {
-	//if(num_events_received != NULL) {
-	//
-	//delete num_events_received;
-	//num_events_received = NULL;
+	//if(events != NULL) {
+	//events.RemoveAll(true);
+	//delete events;
+	//events = NULL;
 	//}
 	//if(num_events_processed != NULL) {
 	//
 	//delete num_events_processed;
 	//num_events_processed = NULL;
 	//}
-	//if(events != NULL) {
-	//events.RemoveAll(true);
-	//delete events;
-	//events = NULL;
+	//if(num_events_received != NULL) {
+	//
+	//delete num_events_received;
+	//num_events_received = NULL;
 	//}
 	//
 }
@@ -54,28 +54,6 @@ ConversionApiResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *num_events_receivedKey = "num_events_received";
-	node = json_object_get_member(pJsonObject, num_events_receivedKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&num_events_received, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *num_events_processedKey = "num_events_processed";
-	node = json_object_get_member(pJsonObject, num_events_processedKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&num_events_processed, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *eventsKey = "events";
 	node = json_object_get_member(pJsonObject, eventsKey);
 	if (node !=NULL) {
@@ -100,6 +78,28 @@ ConversionApiResponse::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *num_events_processedKey = "num_events_processed";
+	node = json_object_get_member(pJsonObject, num_events_processedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&num_events_processed, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *num_events_receivedKey = "num_events_received";
+	node = json_object_get_member(pJsonObject, num_events_receivedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&num_events_received, node, "int", "");
+		} else {
+			
+		}
+	}
 }
 
 ConversionApiResponse::ConversionApiResponse(char* json)
@@ -112,24 +112,6 @@ ConversionApiResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("int")) {
-		int obj = getNumEventsReceived();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *num_events_receivedKey = "num_events_received";
-	json_object_set_member(pJsonObject, num_events_receivedKey, node);
-	if (isprimitive("int")) {
-		int obj = getNumEventsProcessed();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *num_events_processedKey = "num_events_processed";
-	json_object_set_member(pJsonObject, num_events_processedKey, node);
 	if (isprimitive("ConversionApiResponse_events_inner")) {
 		list<ConversionApiResponse_events_inner> new_list = static_cast<list <ConversionApiResponse_events_inner> > (getEvents());
 		node = converttoJson(&new_list, "ConversionApiResponse_events_inner", "array");
@@ -155,6 +137,24 @@ ConversionApiResponse::toJson()
 	
 	const gchar *eventsKey = "events";
 	json_object_set_member(pJsonObject, eventsKey, node);
+	if (isprimitive("int")) {
+		int obj = getNumEventsProcessed();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *num_events_processedKey = "num_events_processed";
+	json_object_set_member(pJsonObject, num_events_processedKey, node);
+	if (isprimitive("int")) {
+		int obj = getNumEventsReceived();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *num_events_receivedKey = "num_events_received";
+	json_object_set_member(pJsonObject, num_events_receivedKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -163,16 +163,16 @@ ConversionApiResponse::toJson()
 	return ret;
 }
 
-int
-ConversionApiResponse::getNumEventsReceived()
+std::list<ConversionApiResponse_events_inner>
+ConversionApiResponse::getEvents()
 {
-	return num_events_received;
+	return events;
 }
 
 void
-ConversionApiResponse::setNumEventsReceived(int  num_events_received)
+ConversionApiResponse::setEvents(std::list <ConversionApiResponse_events_inner> events)
 {
-	this->num_events_received = num_events_received;
+	this->events = events;
 }
 
 int
@@ -187,16 +187,16 @@ ConversionApiResponse::setNumEventsProcessed(int  num_events_processed)
 	this->num_events_processed = num_events_processed;
 }
 
-std::list<ConversionApiResponse_events_inner>
-ConversionApiResponse::getEvents()
+int
+ConversionApiResponse::getNumEventsReceived()
 {
-	return events;
+	return num_events_received;
 }
 
 void
-ConversionApiResponse::setEvents(std::list <ConversionApiResponse_events_inner> events)
+ConversionApiResponse::setNumEventsReceived(int  num_events_received)
 {
-	this->events = events;
+	this->num_events_received = num_events_received;
 }
 
 

@@ -9,13 +9,13 @@ import java.util.Arrays;
 @Canonical
 class TrackingUrls {
     
-    List<String> impression = new ArrayList<>()
+    List<String> audienceVerification = new ArrayList<>()
+    
+    List<String> buyableButton = new ArrayList<>()
     
     List<String> click = new ArrayList<>()
     
     List<String> engagement = new ArrayList<>()
     
-    List<String> buyableButton = new ArrayList<>()
-    
-    List<String> audienceVerification = new ArrayList<>()
+    List<String> impression = new ArrayList<>()
 }

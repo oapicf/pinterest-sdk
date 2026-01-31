@@ -9,15 +9,16 @@
 (def audience-data
   {
    (ds/opt :ad_account_id) string?
+   (ds/opt :audience_type) string?
+   (ds/opt :created_by_company_name) string?
+   (ds/opt :created_timestamp) int?
+   (ds/opt :description) string?
    (ds/opt :id) string?
    (ds/opt :name) string?
-   (ds/opt :audience_type) string?
-   (ds/opt :description) string?
    (ds/opt :rule) audience-rule-spec
    (ds/opt :size) int?
    (ds/opt :status) string?
    (ds/opt :type) string?
-   (ds/opt :created_timestamp) int?
    (ds/opt :updated_timestamp) int?
    })
 

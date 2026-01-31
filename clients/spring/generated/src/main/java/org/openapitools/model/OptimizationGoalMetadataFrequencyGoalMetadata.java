@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_frequency_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata {
 
   private @Nullable Integer frequency;
@@ -78,11 +78,13 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
   }
 
   /**
-   * Get frequency
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    * @return frequency
    */
-  
-  @Schema(name = "frequency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Min(value = 2) @Max(value = 20) 
+  @Schema(name = "frequency", description = "Frequency target can only be between 2 and 20", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("frequency")
   public @Nullable Integer getFrequency() {
     return frequency;

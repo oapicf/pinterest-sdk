@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailListProductsByCatalogBasedFilterRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailListProductsByCatalogBasedFilterRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsProductGroupFilters = openapi_server.resourceTypes.CatalogsProductGroupFilters
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsRetailListProductsByCatalogBasedFilterRequest {
+    title = CatalogsRetailListProductsByCatalogBasedFilterRequest
+    description = CatalogsRetailListProductsByCatalogBasedFilterRequest
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the retail product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one."
+          enum = ["RETAIL"]
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        filters {
+          type = CatalogsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailListProductsByCatalogBasedFilterRequest {
+    title = CatalogsRetailListProductsByCatalogBasedFilterRequest
+    description = CatalogsRetailListProductsByCatalogBasedFilterRequest
+    implements = openapi_server.resourceTypes.CatalogsRetailListProductsByCatalogBasedFilterRequest
+
+  }
+}

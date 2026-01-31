@@ -17,7 +17,7 @@ Method | HTTP request | Description
 # **adGroupsAnalytics**
 > Array<AdGroupsAnalyticsResponseInner> adGroupsAnalytics()
 
-Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 
@@ -48,12 +48,16 @@ const request: AdGroupsApiAdGroupsAnalyticsRequest = {
   granularity: "DAY",
     // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
   clickWindowDays: 1,
-    // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+    // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional)
   engagementWindowDays: 30,
     // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
   viewWindowDays: 1,
     // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
   conversionReportTime: "TIME_OF_AD_ACTION",
+    // Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional)
+  aggregateReportRows: false,
+    // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
+  reportingTimezone: "PINTEREST_TIME_ZONE",
 };
 
 const data = await apiInstance.adGroupsAnalytics(request);
@@ -69,12 +73,14 @@ Name | Type | Description  | Notes
  **startDate** | [**string**] | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | defaults to undefined
  **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined
  **adGroupIds** | **Array&lt;string&gt;** | List of Ad group Ids to use to filter the results. | defaults to undefined
- **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined
+ **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;OUTBOUND_CTR_1&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;CAMPAIGN_BRAND_LABEL&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_NAME&#39; &#124; &#39;AD_GROUP_BUDGET_TYPE&#39; &#124; &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;AD_GROUP_BID_MULTIPLIER&#39; &#124; &#39;PROMO_ID&#39; &#124; &#39;PROMO_NAME&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;AD_NAME&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;AD_GROUP_OPTIMIZATION&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; &#124; &#39;IS_PREMIERE_CAMPAIGN&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_ADD_TO_WISHLIST&#39; &#124; &#39;TOTAL_SUBSCRIBE&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; &#124; &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; &#124; &#39;VIDEO_3SEC_VIEWS_1&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;VIDEO_SPEND_IN_DOLLAR&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined
  **granularity** | **Granularity** | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | defaults to undefined
  **clickWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30
- **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30
+ **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | (optional) defaults to 30
  **viewWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | (optional) defaults to 1
  **conversionReportTime** | [**&#39;TIME_OF_AD_ACTION&#39; | &#39;TIME_OF_CONVERSION&#39;**]**Array<&#39;TIME_OF_AD_ACTION&#39; &#124; &#39;TIME_OF_CONVERSION&#39;>** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | (optional) defaults to 'TIME_OF_AD_ACTION'
+ **aggregateReportRows** | [**boolean**] | Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. | (optional) defaults to false
+ **reportingTimezone** | **ReportingTimeZone** | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | (optional) defaults to undefined
 
 
 ### Return type
@@ -83,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -101,7 +107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **adGroupsAudienceSizing**
-> AdGroupAudienceSizingResponse adGroupsAudienceSizing()
+> AdGroupAudienceSizingResponse adGroupsAudienceSizing(adGroupAudienceSizingRequest)
 
 Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
 
@@ -121,13 +127,26 @@ const request: AdGroupsApiAdGroupsAudienceSizingRequest = {
   
   adGroupAudienceSizingRequest: {
     autoTargetingEnabled: true,
-    placementGroup: "placementGroup_example",
     creativeTypes: [
       "REGULAR",
     ],
+    keywords: [
+      {
+        matchType: "BROAD",
+        value: "value_example",
+      },
+    ],
+    placementGroup: "placementGroup_example",
+    productGroupIds: [
+      "23423422123",
+    ],
     targetingSpec: {
-      AGE_BUCKET: ["35-44","50-54"],
-      APPTYPE: ["ipad","iphone"],
+      AGE_BUCKET: [
+        "["35-44","50-54"]",
+      ],
+      APPTYPE: [
+        "["ipad","iphone"]",
+      ],
       AUDIENCE_EXCLUDE: [
         "4",
       ],
@@ -149,26 +168,19 @@ const request: AdGroupsApiAdGroupsAudienceSizingRequest = {
       LOCATION: [
         "LOCATION_example",
       ],
+      MAXIMUM_AGE: "65+",
+      MINIMUM_AGE: "18",
       SHOPPING_RETARGETING: [
         {
+          exclusionWindow: 14,
           lookbackWindow: 30,
           tagTypes: [0,6],
-          exclusionWindow: 14,
         },
       ],
       TARGETING_STRATEGY: [
         "CHOOSE_YOUR_OWN",
       ],
     },
-    productGroupIds: [
-      "23423422123",
-    ],
-    keywords: [
-      {
-        matchType: "BROAD",
-        value: "value_example",
-      },
-    ],
   },
 };
 
@@ -191,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -212,7 +224,7 @@ Name | Type | Description  | Notes
 # **adGroupsBidFloorGet**
 > BidFloor adGroupsBidFloorGet(bidFloorRequest)
 
-List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
 
 ### Example
 
@@ -231,12 +243,13 @@ const request: AdGroupsApiAdGroupsBidFloorGetRequest = {
   bidFloorRequest: {
     bidFloorSpecs: [
       {
-        countries: [
-          "US",
-        ],
-        currency: "USD",
-        objectiveType: "AWARENESS",
         billableEvent: "CLICKTHROUGH",
+        countries: [
+          "AD",
+        ],
+        creativeType: "REGULAR",
+        currency: "UNK",
+        objectiveType: "AWARENESS",
         optimizationGoalMetadata: {
           conversionTagV3GoalMetadata: {
             attributionWindows: {
@@ -249,21 +262,25 @@ const request: AdGroupsApiAdGroupsBidFloorGetRequest = {
             cpaGoalValueInMicroCurrency: "4",
             isRoasOptimized: true,
             learningModeType: "ACTIVE",
+            reportingEvent: "INITIATE_CHECKOUT",
           },
           frequencyGoalMetadata: {
-            frequency: 1,
+            frequency: 2,
             timerange: "DAY",
           },
           scrollupGoalMetadata: {
             scrollupGoalValueInMicroCurrency: "4",
           },
         },
-        creativeType: "REGULAR",
       },
     ],
     targetingSpec: {
-      AGE_BUCKET: ["35-44","50-54"],
-      APPTYPE: ["ipad","iphone"],
+      AGE_BUCKET: [
+        "["35-44","50-54"]",
+      ],
+      APPTYPE: [
+        "["ipad","iphone"]",
+      ],
       AUDIENCE_EXCLUDE: [
         "4",
       ],
@@ -285,11 +302,13 @@ const request: AdGroupsApiAdGroupsBidFloorGetRequest = {
       LOCATION: [
         "LOCATION_example",
       ],
+      MAXIMUM_AGE: "65+",
+      MINIMUM_AGE: "18",
       SHOPPING_RETARGETING: [
         {
+          exclusionWindow: 14,
           lookbackWindow: 30,
           tagTypes: [0,6],
-          exclusionWindow: 14,
         },
       ],
       TARGETING_STRATEGY: [
@@ -318,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -337,7 +356,7 @@ Name | Type | Description  | Notes
 # **adGroupsCreate**
 > AdGroupArrayResponse adGroupsCreate(adGroupCreateRequest)
 
-Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - \'bid_in_micro_currency\' and \'budget_in_micro_currency\' should be expressed in microcurrency amounts based on the currency field set in the advertiser\'s profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser\'s profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
 
 ### Example
 
@@ -396,7 +415,7 @@ Name | Type | Description  | Notes
 # **adGroupsGet**
 > AdGroupResponse adGroupsGet()
 
-Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+Get a specific ad group given the ad group ID.
 
 ### Example
 
@@ -434,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -513,7 +532,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -533,7 +552,7 @@ Name | Type | Description  | Notes
 # **adGroupsTargetingAnalyticsGet**
 > MetricsResponse adGroupsTargetingAnalyticsGet()
 
-Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 
@@ -556,7 +575,7 @@ const request: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest = {
   startDate: new Date('1970-01-01').toISOString().split('T')[0];,
     // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   endDate: new Date('1970-01-01').toISOString().split('T')[0];,
-    // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+    // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
   targetingTypes: [
     "APPTYPE",
   ],
@@ -568,14 +587,18 @@ const request: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest = {
   granularity: "DAY",
     // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
   clickWindowDays: 1,
-    // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+    // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional)
   engagementWindowDays: 30,
     // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
   viewWindowDays: 1,
     // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
   conversionReportTime: "TIME_OF_AD_ACTION",
     // List of types of attribution for the conversion report (optional)
-  attributionTypes: "INDIVIDUAL",
+  attributionTypes: [
+    "INDIVIDUAL",
+  ],
+    // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
+  reportingTimezone: "PINTEREST_TIME_ZONE",
 };
 
 const data = await apiInstance.adGroupsTargetingAnalyticsGet(request);
@@ -591,14 +614,15 @@ Name | Type | Description  | Notes
  **adGroupIds** | **Array&lt;string&gt;** | List of Ad group Ids to use to filter the results. | defaults to undefined
  **startDate** | [**string**] | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | defaults to undefined
  **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined
- **targetingTypes** | **Array&lt;AdsAnalyticsTargetingType&gt;** | Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | defaults to undefined
- **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined
+ **targetingTypes** | **Array&lt;AdsAnalyticsAdGroupTargetingType&gt;** | Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users. | defaults to undefined
+ **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;OUTBOUND_CTR_1&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;CAMPAIGN_BRAND_LABEL&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_NAME&#39; &#124; &#39;AD_GROUP_BUDGET_TYPE&#39; &#124; &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;AD_GROUP_BID_MULTIPLIER&#39; &#124; &#39;PROMO_ID&#39; &#124; &#39;PROMO_NAME&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;AD_NAME&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;AD_GROUP_OPTIMIZATION&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; &#124; &#39;IS_PREMIERE_CAMPAIGN&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_ADD_TO_WISHLIST&#39; &#124; &#39;TOTAL_SUBSCRIBE&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; &#124; &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; &#124; &#39;VIDEO_3SEC_VIEWS_1&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;VIDEO_SPEND_IN_DOLLAR&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined
  **granularity** | **Granularity** | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | defaults to undefined
  **clickWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30
- **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30
+ **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | (optional) defaults to 30
  **viewWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | (optional) defaults to 1
  **conversionReportTime** | [**&#39;TIME_OF_AD_ACTION&#39; | &#39;TIME_OF_CONVERSION&#39;**]**Array<&#39;TIME_OF_AD_ACTION&#39; &#124; &#39;TIME_OF_CONVERSION&#39;>** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | (optional) defaults to 'TIME_OF_AD_ACTION'
- **attributionTypes** | **ConversionReportAttributionType** | List of types of attribution for the conversion report | (optional) defaults to undefined
+ **attributionTypes** | **Array&lt;ConversionReportAttributionType&gt;** | List of types of attribution for the conversion report | (optional) defaults to undefined
+ **reportingTimezone** | **ReportingTimeZone** | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | (optional) defaults to undefined
 
 
 ### Return type
@@ -607,7 +631,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 

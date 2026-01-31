@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsUpdatableHotelAttributes`
 --
-SELECT `name`, `link`, `description`, `brand`, `latitude`, `longitude`, `neighborhood`, `address`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `category`, `base_price`, `sale_price`, `guest_ratings` FROM `CatalogsUpdatableHotelAttributes` WHERE 1;
+SELECT `address`, `base_price`, `brand`, `category`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `description`, `guest_ratings`, `latitude`, `link`, `longitude`, `name`, `neighborhood`, `sale_price` FROM `CatalogsUpdatableHotelAttributes` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsUpdatableHotelAttributes`
 --
-INSERT INTO `CatalogsUpdatableHotelAttributes`(`name`, `link`, `description`, `brand`, `latitude`, `longitude`, `neighborhood`, `address`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `category`, `base_price`, `sale_price`, `guest_ratings`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsUpdatableHotelAttributes`(`address`, `base_price`, `brand`, `category`, `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `description`, `guest_ratings`, `latitude`, `link`, `longitude`, `name`, `neighborhood`, `sale_price`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsUpdatableHotelAttributes`
 --
-UPDATE `CatalogsUpdatableHotelAttributes` SET `name` = ?, `link` = ?, `description` = ?, `brand` = ?, `latitude` = ?, `longitude` = ?, `neighborhood` = ?, `address` = ?, `custom_label_0` = ?, `custom_label_1` = ?, `custom_label_2` = ?, `custom_label_3` = ?, `custom_label_4` = ?, `category` = ?, `base_price` = ?, `sale_price` = ?, `guest_ratings` = ? WHERE 1;
+UPDATE `CatalogsUpdatableHotelAttributes` SET `address` = ?, `base_price` = ?, `brand` = ?, `category` = ?, `custom_label_0` = ?, `custom_label_1` = ?, `custom_label_2` = ?, `custom_label_3` = ?, `custom_label_4` = ?, `description` = ?, `guest_ratings` = ?, `latitude` = ?, `link` = ?, `longitude` = ?, `name` = ?, `neighborhood` = ?, `sale_price` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsUpdatableHotelAttributes`

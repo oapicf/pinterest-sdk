@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemProcessingRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemProcessingRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemProcessingStatus = openapi_server.resourceTypes.ItemProcessingStatus
+  ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
+}
+resourceTypes {
+
+  ItemProcessingRecord {
+    title = ItemProcessingRecord
+    description = ItemProcessingRecord
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail."
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = false
+        }
+        status {
+          type = ItemProcessingStatus
+          description = ""
+          optional = false
+        }
+        warnings {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the validation warnings for the item processing record"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemProcessingRecord {
+    title = ItemProcessingRecord
+    description = ItemProcessingRecord
+    implements = openapi_server.resourceTypes.ItemProcessingRecord
+
+  }
+}

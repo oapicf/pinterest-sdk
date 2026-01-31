@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PredictedTimeSeries"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PredictedTimeSeries"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PredictedTimeSeries {
+    title = PredictedTimeSeries
+    description = PredictedTimeSeries
+    derivedFrom = Root
+    properties {
+        _date {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PredictedTimeSeries {
+    title = PredictedTimeSeries
+    description = PredictedTimeSeries
+    implements = openapi_server.resourceTypes.PredictedTimeSeries
+
+  }
+}

@@ -7,17 +7,17 @@ goog.provide('API.Client.PinMediaSourcePinURL');
 API.Client.PinMediaSourcePinURL = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.PinMediaSourcePinURL.prototype.sourceType;
-
-/**
  * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
  * @type {!boolean}
  * @export
  */
 API.Client.PinMediaSourcePinURL.prototype.isAffiliateLink;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.PinMediaSourcePinURL.prototype.sourceType;
 
 /** @enum {string} */
 API.Client.PinMediaSourcePinURL.SourceTypeEnum = { 

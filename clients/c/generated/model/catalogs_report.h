@@ -28,16 +28,16 @@ pinterest_rest_api_catalogs_report_REPORTSTATUS_e catalogs_report_report_status_
 
 typedef struct catalogs_report_t {
     pinterest_rest_api_catalogs_report_REPORTSTATUS_e report_status; //enum
-    char *url; // string
     double size; //numeric
+    char *url; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_t;
 
 __attribute__((deprecated)) catalogs_report_t *catalogs_report_create(
     pinterest_rest_api_catalogs_report_REPORTSTATUS_e report_status,
-    char *url,
-    double size
+    double size,
+    char *url
 );
 
 void catalogs_report_free(catalogs_report_t *catalogs_report);

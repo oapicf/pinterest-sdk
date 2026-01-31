@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
+import org.openapitools.model.ImageSize;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -23,58 +23,18 @@ import javax.annotation.Generated;
  * ImageMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageMetadata {
-
-  private @Nullable String itemType;
-
-  private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  private @Nullable ImageSize images;
+
+  private @Nullable String itemType;
+
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
-  private @Nullable ImageMetadataImages images;
-
-  public ImageMetadata itemType(@Nullable String itemType) {
-    this.itemType = itemType;
-    return this;
-  }
-
-  /**
-   * Get itemType
-   * @return itemType
-   */
-  
-  @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("item_type")
-  public @Nullable String getItemType() {
-    return itemType;
-  }
-
-  public void setItemType(@Nullable String itemType) {
-    this.itemType = itemType;
-  }
-
-  public ImageMetadata title(String title) {
-    this.title = JsonNullable.of(title);
-    return this;
-  }
-
-  /**
-   * Get title
-   * @return title
-   */
-  
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("title")
-  public JsonNullable<String> getTitle() {
-    return title;
-  }
-
-  public void setTitle(JsonNullable<String> title) {
-    this.title = title;
-  }
+  private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   public ImageMetadata description(String description) {
     this.description = JsonNullable.of(description);
@@ -94,6 +54,46 @@ public class ImageMetadata {
 
   public void setDescription(JsonNullable<String> description) {
     this.description = description;
+  }
+
+  public ImageMetadata images(@Nullable ImageSize images) {
+    this.images = images;
+    return this;
+  }
+
+  /**
+   * Get images
+   * @return images
+   */
+  @Valid 
+  @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("images")
+  public @Nullable ImageSize getImages() {
+    return images;
+  }
+
+  public void setImages(@Nullable ImageSize images) {
+    this.images = images;
+  }
+
+  public ImageMetadata itemType(@Nullable String itemType) {
+    this.itemType = itemType;
+    return this;
+  }
+
+  /**
+   * Get itemType
+   * @return itemType
+   */
+  
+  @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("item_type")
+  public @Nullable String getItemType() {
+    return itemType;
+  }
+
+  public void setItemType(@Nullable String itemType) {
+    this.itemType = itemType;
   }
 
   public ImageMetadata link(String link) {
@@ -116,24 +116,24 @@ public class ImageMetadata {
     this.link = link;
   }
 
-  public ImageMetadata images(@Nullable ImageMetadataImages images) {
-    this.images = images;
+  public ImageMetadata title(String title) {
+    this.title = JsonNullable.of(title);
     return this;
   }
 
   /**
-   * Get images
-   * @return images
+   * Get title
+   * @return title
    */
-  @Valid 
-  @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("images")
-  public @Nullable ImageMetadataImages getImages() {
-    return images;
+  
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
+  public JsonNullable<String> getTitle() {
+    return title;
   }
 
-  public void setImages(@Nullable ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(JsonNullable<String> title) {
+    this.title = title;
   }
 
   @Override
@@ -145,11 +145,11 @@ public class ImageMetadata {
       return false;
     }
     ImageMetadata imageMetadata = (ImageMetadata) o;
-    return Objects.equals(this.itemType, imageMetadata.itemType) &&
-        equalsNullable(this.title, imageMetadata.title) &&
-        equalsNullable(this.description, imageMetadata.description) &&
+    return equalsNullable(this.description, imageMetadata.description) &&
+        Objects.equals(this.images, imageMetadata.images) &&
+        Objects.equals(this.itemType, imageMetadata.itemType) &&
         equalsNullable(this.link, imageMetadata.link) &&
-        Objects.equals(this.images, imageMetadata.images);
+        equalsNullable(this.title, imageMetadata.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -158,7 +158,7 @@ public class ImageMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, hashCodeNullable(title), hashCodeNullable(description), hashCodeNullable(link), images);
+    return Objects.hash(hashCodeNullable(description), images, itemType, hashCodeNullable(link), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -172,11 +172,11 @@ public class ImageMetadata {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageMetadata {\n");
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

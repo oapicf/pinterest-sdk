@@ -11,19 +11,19 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param eligible Advertiser eligible to create order lines
- * @param canUnderscoreedit Advertiser eligible to update order lines
  * @param billtoUnderscoreinfos An array of Salesforce account information that includes address, io terms, etc.
+ * @param canUnderscoreedit Advertiser eligible to update order lines
  * @param currency 
- * @param pmpUnderscorenames 
+ * @param eligible Advertiser eligible to create order lines
  * @param error Error indicator from Salesforce which could be \"No Error\"
+ * @param pmpUnderscorenames 
  */
-case class SSIOAccountResponse(eligible: Option[Boolean],
+case class SSIOAccountResponse(billtoUnderscoreinfos: Option[Seq[SSIOAccountItem]],
                 canUnderscoreedit: Option[Boolean],
-                billtoUnderscoreinfos: Option[Seq[SSIOAccountItem]],
                 currency: Option[String],
-                pmpUnderscorenames: Option[Seq[SSIOAccountPMPName]],
-                error: Option[String]
+                eligible: Option[Boolean],
+                error: Option[String],
+                pmpUnderscorenames: Option[Seq[SSIOAccountPMPName]]
                 )
 
 object SSIOAccountResponse {

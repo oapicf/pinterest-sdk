@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,16 +20,16 @@ var _ MappedNullable = &LinkedBusiness{}
 
 // LinkedBusiness struct for LinkedBusiness
 type LinkedBusiness struct {
-	// Username
-	Username *string `json:"username,omitempty"`
-	// image_small_url
-	ImageSmallUrl *string `json:"image_small_url,omitempty"`
-	// image_medium_url
-	ImageMediumUrl *string `json:"image_medium_url,omitempty"`
 	// image_large_url
 	ImageLargeUrl *string `json:"image_large_url,omitempty"`
+	// image_medium_url
+	ImageMediumUrl *string `json:"image_medium_url,omitempty"`
+	// image_small_url
+	ImageSmallUrl *string `json:"image_small_url,omitempty"`
 	// image_xlarge_url
 	ImageXlargeUrl *string `json:"image_xlarge_url,omitempty"`
+	// Username
+	Username *string `json:"username,omitempty"`
 }
 
 // NewLinkedBusiness instantiates a new LinkedBusiness object
@@ -47,102 +47,6 @@ func NewLinkedBusiness() *LinkedBusiness {
 func NewLinkedBusinessWithDefaults() *LinkedBusiness {
 	this := LinkedBusiness{}
 	return &this
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *LinkedBusiness) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LinkedBusiness) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *LinkedBusiness) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *LinkedBusiness) SetUsername(v string) {
-	o.Username = &v
-}
-
-// GetImageSmallUrl returns the ImageSmallUrl field value if set, zero value otherwise.
-func (o *LinkedBusiness) GetImageSmallUrl() string {
-	if o == nil || IsNil(o.ImageSmallUrl) {
-		var ret string
-		return ret
-	}
-	return *o.ImageSmallUrl
-}
-
-// GetImageSmallUrlOk returns a tuple with the ImageSmallUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LinkedBusiness) GetImageSmallUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageSmallUrl) {
-		return nil, false
-	}
-	return o.ImageSmallUrl, true
-}
-
-// HasImageSmallUrl returns a boolean if a field has been set.
-func (o *LinkedBusiness) HasImageSmallUrl() bool {
-	if o != nil && !IsNil(o.ImageSmallUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageSmallUrl gets a reference to the given string and assigns it to the ImageSmallUrl field.
-func (o *LinkedBusiness) SetImageSmallUrl(v string) {
-	o.ImageSmallUrl = &v
-}
-
-// GetImageMediumUrl returns the ImageMediumUrl field value if set, zero value otherwise.
-func (o *LinkedBusiness) GetImageMediumUrl() string {
-	if o == nil || IsNil(o.ImageMediumUrl) {
-		var ret string
-		return ret
-	}
-	return *o.ImageMediumUrl
-}
-
-// GetImageMediumUrlOk returns a tuple with the ImageMediumUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LinkedBusiness) GetImageMediumUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageMediumUrl) {
-		return nil, false
-	}
-	return o.ImageMediumUrl, true
-}
-
-// HasImageMediumUrl returns a boolean if a field has been set.
-func (o *LinkedBusiness) HasImageMediumUrl() bool {
-	if o != nil && !IsNil(o.ImageMediumUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageMediumUrl gets a reference to the given string and assigns it to the ImageMediumUrl field.
-func (o *LinkedBusiness) SetImageMediumUrl(v string) {
-	o.ImageMediumUrl = &v
 }
 
 // GetImageLargeUrl returns the ImageLargeUrl field value if set, zero value otherwise.
@@ -177,6 +81,70 @@ func (o *LinkedBusiness) SetImageLargeUrl(v string) {
 	o.ImageLargeUrl = &v
 }
 
+// GetImageMediumUrl returns the ImageMediumUrl field value if set, zero value otherwise.
+func (o *LinkedBusiness) GetImageMediumUrl() string {
+	if o == nil || IsNil(o.ImageMediumUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ImageMediumUrl
+}
+
+// GetImageMediumUrlOk returns a tuple with the ImageMediumUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LinkedBusiness) GetImageMediumUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageMediumUrl) {
+		return nil, false
+	}
+	return o.ImageMediumUrl, true
+}
+
+// HasImageMediumUrl returns a boolean if a field has been set.
+func (o *LinkedBusiness) HasImageMediumUrl() bool {
+	if o != nil && !IsNil(o.ImageMediumUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageMediumUrl gets a reference to the given string and assigns it to the ImageMediumUrl field.
+func (o *LinkedBusiness) SetImageMediumUrl(v string) {
+	o.ImageMediumUrl = &v
+}
+
+// GetImageSmallUrl returns the ImageSmallUrl field value if set, zero value otherwise.
+func (o *LinkedBusiness) GetImageSmallUrl() string {
+	if o == nil || IsNil(o.ImageSmallUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ImageSmallUrl
+}
+
+// GetImageSmallUrlOk returns a tuple with the ImageSmallUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LinkedBusiness) GetImageSmallUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageSmallUrl) {
+		return nil, false
+	}
+	return o.ImageSmallUrl, true
+}
+
+// HasImageSmallUrl returns a boolean if a field has been set.
+func (o *LinkedBusiness) HasImageSmallUrl() bool {
+	if o != nil && !IsNil(o.ImageSmallUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageSmallUrl gets a reference to the given string and assigns it to the ImageSmallUrl field.
+func (o *LinkedBusiness) SetImageSmallUrl(v string) {
+	o.ImageSmallUrl = &v
+}
+
 // GetImageXlargeUrl returns the ImageXlargeUrl field value if set, zero value otherwise.
 func (o *LinkedBusiness) GetImageXlargeUrl() string {
 	if o == nil || IsNil(o.ImageXlargeUrl) {
@@ -209,6 +177,38 @@ func (o *LinkedBusiness) SetImageXlargeUrl(v string) {
 	o.ImageXlargeUrl = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *LinkedBusiness) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LinkedBusiness) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *LinkedBusiness) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *LinkedBusiness) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o LinkedBusiness) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -219,20 +219,20 @@ func (o LinkedBusiness) MarshalJSON() ([]byte, error) {
 
 func (o LinkedBusiness) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.ImageSmallUrl) {
-		toSerialize["image_small_url"] = o.ImageSmallUrl
+	if !IsNil(o.ImageLargeUrl) {
+		toSerialize["image_large_url"] = o.ImageLargeUrl
 	}
 	if !IsNil(o.ImageMediumUrl) {
 		toSerialize["image_medium_url"] = o.ImageMediumUrl
 	}
-	if !IsNil(o.ImageLargeUrl) {
-		toSerialize["image_large_url"] = o.ImageLargeUrl
+	if !IsNil(o.ImageSmallUrl) {
+		toSerialize["image_small_url"] = o.ImageSmallUrl
 	}
 	if !IsNil(o.ImageXlargeUrl) {
 		toSerialize["image_xlarge_url"] = o.ImageXlargeUrl
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
 }

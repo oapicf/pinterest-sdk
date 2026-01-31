@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { BoardSectionsList200Response } from './api';
 
 const instance: BoardSectionsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

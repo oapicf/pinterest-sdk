@@ -16,10 +16,12 @@ case class OptimizationGoalMetadataConversionTagV3GoalMetadata (
 conversionEvent: Option[ConversionEvent],
 conversionTagId: Option[String],
 cpaGoalValueInMicroCurrency: Option[String],
-/* ROAS optimization is not supported */
+/* Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>. */
   isRoasOptimized: Option[Boolean],
 /* Conversion learning model type */
-  learningModeType: Option[LearningModeType])
+  learningModeType: Option[LearningModeType],
+/* Event name for custom or standard events mapped to an oCPM model */
+  reportingEvent: Option[String])
 
 object OptimizationGoalMetadataConversionTagV3GoalMetadata {
   import DateTimeCodecs._

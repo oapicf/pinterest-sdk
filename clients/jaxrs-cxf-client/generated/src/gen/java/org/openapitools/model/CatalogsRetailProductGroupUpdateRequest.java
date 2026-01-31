@@ -56,7 +56,7 @@ RETAIL(String.valueOf("RETAIL"));
 
   @ApiModelProperty(value = "")
 
-  private String name;
+  private Country country;
 
   @ApiModelProperty(value = "")
 
@@ -68,11 +68,11 @@ RETAIL(String.valueOf("RETAIL"));
 
   @ApiModelProperty(value = "")
 
-  private Country country;
+  private CatalogsLocale locale;
 
   @ApiModelProperty(value = "")
 
-  private CatalogsLocale locale;
+  private String name;
  /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
    * @return catalogType
@@ -95,20 +95,20 @@ RETAIL(String.valueOf("RETAIL"));
   }
 
  /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
   **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
@@ -149,24 +149,6 @@ RETAIL(String.valueOf("RETAIL"));
   }
 
  /**
-   * Get country
-   * @return country
-  **/
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
- /**
    * Get locale
    * @return locale
   **/
@@ -184,6 +166,24 @@ RETAIL(String.valueOf("RETAIL"));
     return this;
   }
 
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsRetailProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -194,16 +194,16 @@ RETAIL(String.valueOf("RETAIL"));
     }
     CatalogsRetailProductGroupUpdateRequest catalogsRetailProductGroupUpdateRequest = (CatalogsRetailProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsRetailProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name) &&
+        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
         Objects.equals(this.description, catalogsRetailProductGroupUpdateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupUpdateRequest.filters) &&
-        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, country, locale);
+    return Objects.hash(catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -212,11 +212,11 @@ RETAIL(String.valueOf("RETAIL"));
     sb.append("class CatalogsRetailProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

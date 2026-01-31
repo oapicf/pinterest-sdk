@@ -9,26 +9,7 @@ API.Client.MultipleProductGroupsInner = function() {}
  * @type {!string}
  * @export
  */
-API.Client.MultipleProductGroupsInner.prototype.name;
-
-/**
- * @type {!string}
- * @export
- */
 API.Client.MultipleProductGroupsInner.prototype.description;
-
-/**
- * boolean indicator of whether the product group is being featured or not
- * @type {!boolean}
- * @export
- */
-API.Client.MultipleProductGroupsInner.prototype.isFeatured;
-
-/**
- * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
- * @export
- */
-API.Client.MultipleProductGroupsInner.prototype.filters;
 
 /**
  * Catalog Feed id pertaining to the catalog product group.
@@ -38,10 +19,23 @@ API.Client.MultipleProductGroupsInner.prototype.filters;
 API.Client.MultipleProductGroupsInner.prototype.feedId;
 
 /**
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
+ * @export
+ */
+API.Client.MultipleProductGroupsInner.prototype.filters;
+
+/**
+ * boolean indicator of whether the product group is being featured or not
+ * @type {!boolean}
+ * @export
+ */
+API.Client.MultipleProductGroupsInner.prototype.isFeatured;
+
+/**
  * @type {!string}
  * @export
  */
-API.Client.MultipleProductGroupsInner.prototype.catalogType;
+API.Client.MultipleProductGroupsInner.prototype.name;
 
 /**
  * Catalog id pertaining to the creative assets product group.
@@ -49,6 +43,12 @@ API.Client.MultipleProductGroupsInner.prototype.catalogType;
  * @export
  */
 API.Client.MultipleProductGroupsInner.prototype.catalogId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.MultipleProductGroupsInner.prototype.catalogType;
 
 /**
  * @type {!API.Client.Country}

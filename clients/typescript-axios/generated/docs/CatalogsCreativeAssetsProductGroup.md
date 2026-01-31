@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
-**id** | **string** | ID of the creative assets product group. | [default to undefined]
-**name** | **string** | Name of creative assets product group | [optional] [default to undefined]
+**created_at** | **number** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to undefined]
-**created_at** | **number** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to undefined]
+**id** | **string** | ID of the creative assets product group. | [default to undefined]
+**name** | **string** | Name of creative assets product group | [optional] [default to undefined]
 **updated_at** | **number** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] [default to undefined]
-**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | [default to undefined]
 
 ## Example
 
@@ -20,14 +20,14 @@ Name | Type | Description | Notes
 import { CatalogsCreativeAssetsProductGroup } from './api';
 
 const instance: CatalogsCreativeAssetsProductGroup = {
+    catalog_id,
     catalog_type,
-    id,
-    name,
+    created_at,
     description,
     filters,
-    created_at,
+    id,
+    name,
     updated_at,
-    catalog_id,
 };
 ```
 

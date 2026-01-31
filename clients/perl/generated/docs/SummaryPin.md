@@ -8,11 +8,12 @@ use WWW::OpenAPIClient::Object::SummaryPin;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **alt_text** | **string** |  | [optional] 
-**link** | **string** |  | [optional] 
-**title** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 
+**id** | **string** |  | [optional] 
+**link** | **string** |  | [optional] 
+**media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
+**title** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

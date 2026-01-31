@@ -1,0 +1,96 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PromotionUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PromotionUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  EntityStatus = openapi_server.resourceTypes.EntityStatus
+  PromotionTemplateValue = openapi_server.resourceTypes.PromotionTemplateValue
+  PromotionType = openapi_server.resourceTypes.PromotionType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  PromotionUpdateRequest {
+    title = PromotionUpdateRequest
+    description = PromotionUpdateRequest
+    derivedFrom = Root
+    properties {
+        discount_status {
+          type =  string
+          description = "Discount status based on the current time and start and end time of discount"
+          enum = ["OTHER", "ACTIVE", "PAUSED", "SCHEDULED", "EXPIRED"]
+          optional = false
+        }
+        end_time {
+          type =  integer
+          description = "Promotion end time. Unix timestamp in seconds. Independent of campaign end time."
+          optional = false
+        }
+        external_id {
+          type =  string
+          description = "Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest."
+          optional = false
+        }
+        platform_type {
+          type =  string
+          description = "The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;."
+          optional = false
+        }
+        promotion_code {
+          type =  string
+          description = "Code that can be used to redeem a promotion."
+          optional = false
+        }
+        promotion_custom_id {
+          type =  string
+          description = "An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one."
+          optional = false
+        }
+        promotion_title {
+          type =  string
+          description = "Internal name for the promotion."
+          optional = false
+        }
+        promotion_type {
+          type = PromotionType
+          description = ""
+          optional = false
+        }
+        start_time {
+          type =  integer
+          description = "Promotion start time. Unix timestamp in seconds. Independent of campaign start time."
+          optional = false
+        }
+        template_values {
+          type = array
+          items.type = PromotionTemplateValue
+          description = "List of values to be inserted in the promotion type-specific template."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Promotion ID"
+          optional = true
+        }
+        status {
+          type = EntityStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PromotionUpdateRequest {
+    title = PromotionUpdateRequest
+    description = PromotionUpdateRequest
+    implements = openapi_server.resourceTypes.PromotionUpdateRequest
+
+  }
+}

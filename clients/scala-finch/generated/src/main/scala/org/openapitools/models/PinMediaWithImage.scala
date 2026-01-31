@@ -5,16 +5,15 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.PinMedia
-import org.openapitools.models.PinMediaWithImageAllOfImages
+import org.openapitools.models.ImageSize
 
 /**
  * Pin with image.
- * @param mediaUnderscoretype 
  * @param images 
+ * @param mediaUnderscoretype 
  */
-case class PinMediaWithImage(mediaUnderscoretype: Option[String],
-                images: Option[PinMediaWithImageAllOfImages]
+case class PinMediaWithImage(images: Option[ImageSize],
+                mediaUnderscoretype: String
                 )
 
 object PinMediaWithImage {

@@ -2,15 +2,15 @@ package org.openapitools.server.model
 
 
 /**
- * = Videos =
+ * = Object containing videos definitions. =
  *
  * Pin with multiple videos.
  *
- * @param mediaType  for example: ''null''
  * @param items  for example: ''null''
+ * @param mediaType  for example: ''null''
 */
 final case class PinMediaWithVideos (
-  mediaType: Option[String] = None,
-  items: Option[Seq[VideoMetadata]] = None
+  items: Option[Seq[VideoMetadataWithItemType]] = None,
+  mediaType: String
 )
 

@@ -8,8 +8,8 @@
 
 (def boards-list-200-response-data
   {
-   (ds/req :items) (s/coll-of board-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of board-spec)
    })
 
 (def boards-list-200-response-spec

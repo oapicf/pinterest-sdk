@@ -16,7 +16,7 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.Exception
-import org.openapitools.client.models.ProductGroupPromotionResponseElement
+import org.openapitools.client.models.ProductGroupPromotion
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
 data class ProductGroupPromotionResponseItem (
 
     @Json(name = "data")
-    val `data`: ProductGroupPromotionResponseElement? = null,
+    val `data`: ProductGroupPromotion? = null,
 
     @Json(name = "exceptions")
     val exceptions: kotlin.collections.List<Exception>? = null

@@ -12,12 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdsCreditRedeemResponse  {
   
  /**
-  * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-  */
-  @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
-  private Boolean success;
-
- /**
   * Error code type if error occurs
   */
   @ApiModelProperty(example = "2708", value = "Error code type if error occurs")
@@ -28,30 +22,12 @@ public class AdsCreditRedeemResponse  {
   */
   @ApiModelProperty(example = "The offer has already been redeemed by this advertiser", value = "Reason for failure")
   private String errorMessage;
+
  /**
-  * Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).
-  * @return success
+  * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
   */
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  /**
-   * Sets the <code>success</code> property.
-   */
- public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  /**
-   * Sets the <code>success</code> property.
-   */
-  public AdsCreditRedeemResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
+  @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
+  private Boolean success;
  /**
   * Error code type if error occurs
   * @return errorCode
@@ -100,6 +76,30 @@ public class AdsCreditRedeemResponse  {
     return this;
   }
 
+ /**
+  * Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).
+  * @return success
+  */
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
+  }
+
+  /**
+   * Sets the <code>success</code> property.
+   */
+ public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  /**
+   * Sets the <code>success</code> property.
+   */
+  public AdsCreditRedeemResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -110,14 +110,14 @@ public class AdsCreditRedeemResponse  {
       return false;
     }
     AdsCreditRedeemResponse adsCreditRedeemResponse = (AdsCreditRedeemResponse) o;
-    return Objects.equals(this.success, adsCreditRedeemResponse.success) &&
-        Objects.equals(this.errorCode, adsCreditRedeemResponse.errorCode) &&
-        Objects.equals(this.errorMessage, adsCreditRedeemResponse.errorMessage);
+    return Objects.equals(this.errorCode, adsCreditRedeemResponse.errorCode) &&
+        Objects.equals(this.errorMessage, adsCreditRedeemResponse.errorMessage) &&
+        Objects.equals(this.success, adsCreditRedeemResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, errorCode, errorMessage);
+    return Objects.hash(errorCode, errorMessage, success);
   }
 
   @Override
@@ -125,9 +125,9 @@ public class AdsCreditRedeemResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditRedeemResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

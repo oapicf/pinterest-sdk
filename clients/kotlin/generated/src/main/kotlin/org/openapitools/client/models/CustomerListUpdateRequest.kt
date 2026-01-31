@@ -15,7 +15,6 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.Exception
 import org.openapitools.client.models.UserListOperationType
 
 import com.squareup.moshi.Json
@@ -24,23 +23,19 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
  * @param operationType 
- * @param exceptions 
+ * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
  */
 
 
 data class CustomerListUpdateRequest (
 
-    /* Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. */
-    @Json(name = "records")
-    val records: kotlin.String,
-
     @Json(name = "operation_type")
     val operationType: UserListOperationType,
 
-    @Json(name = "exceptions")
-    val exceptions: Exception? = null
+    /* Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. */
+    @Json(name = "records")
+    val records: kotlin.String
 
 ) {
 

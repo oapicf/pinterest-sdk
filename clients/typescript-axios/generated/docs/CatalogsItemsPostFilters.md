@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
-**item_ids** | **Array&lt;string&gt;** |  | [default to undefined]
 **catalog_id** | **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] [default to undefined]
+**item_ids** | **Array&lt;string&gt;** |  | [default to undefined]
 **hotel_ids** | **Array&lt;string&gt;** |  | [default to undefined]
 **creative_assets_ids** | **Array&lt;string&gt;** |  | [default to undefined]
 
@@ -18,8 +18,8 @@ import { CatalogsItemsPostFilters } from './api';
 
 const instance: CatalogsItemsPostFilters = {
     catalog_type,
-    item_ids,
     catalog_id,
+    item_ids,
     hotel_ids,
     creative_assets_ids,
 };

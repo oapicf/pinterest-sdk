@@ -20,17 +20,17 @@ API.Client.CatalogsListProductsByFilterRequest.prototype.feedId;
 API.Client.CatalogsListProductsByFilterRequest.prototype.filters;
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsListProductsByFilterRequest.prototype.catalogType;
-
-/**
  * Catalog id pertaining to the creative assets product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsListProductsByFilterRequest.prototype.catalogId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsListProductsByFilterRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.Country}

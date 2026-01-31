@@ -8,10 +8,10 @@
 
 (def create-mmm-report-response-data-data
   {
-   (ds/opt :report_status) bulk-reporting-job-status-spec
-   (ds/opt :token) string?
    (ds/opt :message) string?
+   (ds/opt :report_status) bulk-reporting-job-status-spec
    (ds/opt :status) string?
+   (ds/opt :token) string?
    })
 
 (def create-mmm-report-response-data-spec

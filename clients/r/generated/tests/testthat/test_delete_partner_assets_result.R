@@ -15,18 +15,10 @@ test_that("asset_id", {
 
 test_that("asset_type", {
   # tests for the property `asset_type` (character)
-  # Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  # Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`asset_type`, "EXPECTED_RESULT")
-})
-
-test_that("permissions", {
-  # tests for the property `permissions` (array[character])
-  # Permission levels member or partner has on an asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`permissions`, "EXPECTED_RESULT")
 })
 
 test_that("is_shared_partner", {
@@ -43,4 +35,12 @@ test_that("partner_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`partner_id`, "EXPECTED_RESULT")
+})
+
+test_that("permissions", {
+  # tests for the property `permissions` (array[character])
+  # Permission levels member or partner has on an asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`permissions`, "EXPECTED_RESULT")
 })

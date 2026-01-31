@@ -127,8 +127,8 @@ object BusinessAccessAssetsApi {
         * @return An endpoint representing a BusinessAssetMembersGet200Response
         */
         private def businessAssetMembers/get(da: DataAccessor): Endpoint[BusinessAssetMembersGet200Response] =
-        get("businesses" :: string :: "assets" :: string :: "members" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("start_index").map(_.map(_.toInt))) { (businessId: String, assetId: String, bookmark: Option[String], pageSize: Option[Int], startIndex: Option[Int]) =>
-          da.BusinessAccessAssets_businessAssetMembers/get(businessId, assetId, bookmark, pageSize, startIndex) match {
+        get("businesses" :: string :: "assets" :: string :: "members" :: paramOption("fetch_system_users").map(_.map(_.toBoolean)) :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("start_index").map(_.map(_.toInt))) { (businessId: String, assetId: String, fetchSystemUsers: Option[Boolean], bookmark: Option[String], pageSize: Option[Int], startIndex: Option[Int]) =>
+          da.BusinessAccessAssets_businessAssetMembers/get(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

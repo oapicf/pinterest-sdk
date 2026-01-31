@@ -21,9 +21,27 @@ import java.util.Objects;
 
 public class CampaignsList200Response   {
   
+  private String bookmark;
+
   private List<@Valid CampaignResponse> items = new ArrayList<>();
 
-  private String bookmark;
+  /**
+   **/
+  public CampaignsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
 
   /**
    **/
@@ -52,24 +70,6 @@ public class CampaignsList200Response   {
   }
 
 
-  /**
-   **/
-  public CampaignsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class CampaignsList200Response   {
       return false;
     }
     CampaignsList200Response campaignsList200Response = (CampaignsList200Response) o;
-    return Objects.equals(this.items, campaignsList200Response.items) &&
-        Objects.equals(this.bookmark, campaignsList200Response.bookmark);
+    return Objects.equals(this.bookmark, campaignsList200Response.bookmark) &&
+        Objects.equals(this.items, campaignsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -94,8 +94,8 @@ public class CampaignsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

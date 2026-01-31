@@ -53,7 +53,7 @@ MyApp.add_route('POST', '/v5/user_account/following/{username}', {
   "nickname" => "follow_user/update",
   "responseClass" => "UserSummary",
   "endpoint" => "/user_account/following/{username}",
-  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
+  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
   "parameters" => [
     {
       "name" => "username",

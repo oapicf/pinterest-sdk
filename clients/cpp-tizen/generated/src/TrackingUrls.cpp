@@ -23,20 +23,25 @@ TrackingUrls::~TrackingUrls()
 void
 TrackingUrls::__init()
 {
-	//new std::list()std::list> impression;
+	//new std::list()std::list> audience_verification;
+	//new std::list()std::list> buyable_button;
 	//new std::list()std::list> click;
 	//new std::list()std::list> engagement;
-	//new std::list()std::list> buyable_button;
-	//new std::list()std::list> audience_verification;
+	//new std::list()std::list> impression;
 }
 
 void
 TrackingUrls::__cleanup()
 {
-	//if(impression != NULL) {
-	//impression.RemoveAll(true);
-	//delete impression;
-	//impression = NULL;
+	//if(audience_verification != NULL) {
+	//audience_verification.RemoveAll(true);
+	//delete audience_verification;
+	//audience_verification = NULL;
+	//}
+	//if(buyable_button != NULL) {
+	//buyable_button.RemoveAll(true);
+	//delete buyable_button;
+	//buyable_button = NULL;
 	//}
 	//if(click != NULL) {
 	//click.RemoveAll(true);
@@ -48,15 +53,10 @@ TrackingUrls::__cleanup()
 	//delete engagement;
 	//engagement = NULL;
 	//}
-	//if(buyable_button != NULL) {
-	//buyable_button.RemoveAll(true);
-	//delete buyable_button;
-	//buyable_button = NULL;
-	//}
-	//if(audience_verification != NULL) {
-	//audience_verification.RemoveAll(true);
-	//delete audience_verification;
-	//audience_verification = NULL;
+	//if(impression != NULL) {
+	//impression.RemoveAll(true);
+	//delete impression;
+	//impression = NULL;
 	//}
 	//
 }
@@ -66,8 +66,8 @@ TrackingUrls::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *impressionKey = "impression";
-	node = json_object_get_member(pJsonObject, impressionKey);
+	const gchar *audience_verificationKey = "audience_verification";
+	node = json_object_get_member(pJsonObject, audience_verificationKey);
 	if (node !=NULL) {
 	
 		{
@@ -84,7 +84,29 @@ TrackingUrls::fromJson(char* jsonStr)
 				}
 				new_list.push_back(inst);
 			}
-			impression = new_list;
+			audience_verification = new_list;
+		}
+		
+	}
+	const gchar *buyable_buttonKey = "buyable_button";
+	node = json_object_get_member(pJsonObject, buyable_buttonKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			buyable_button = new_list;
 		}
 		
 	}
@@ -132,8 +154,8 @@ TrackingUrls::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *buyable_buttonKey = "buyable_button";
-	node = json_object_get_member(pJsonObject, buyable_buttonKey);
+	const gchar *impressionKey = "impression";
+	node = json_object_get_member(pJsonObject, impressionKey);
 	if (node !=NULL) {
 	
 		{
@@ -150,29 +172,7 @@ TrackingUrls::fromJson(char* jsonStr)
 				}
 				new_list.push_back(inst);
 			}
-			buyable_button = new_list;
-		}
-		
-	}
-	const gchar *audience_verificationKey = "audience_verification";
-	node = json_object_get_member(pJsonObject, audience_verificationKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			audience_verification = new_list;
+			impression = new_list;
 		}
 		
 	}
@@ -189,11 +189,11 @@ TrackingUrls::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getImpression());
+		list<std::string> new_list = static_cast<list <std::string> > (getAudienceVerification());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getImpression());
+		list<std::string> new_list = static_cast<list <std::string> > (getAudienceVerification());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
@@ -201,8 +201,23 @@ TrackingUrls::toJson()
 
 
 	
-	const gchar *impressionKey = "impression";
-	json_object_set_member(pJsonObject, impressionKey, node);
+	const gchar *audience_verificationKey = "audience_verification";
+	json_object_set_member(pJsonObject, audience_verificationKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getBuyableButton());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getBuyableButton());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *buyable_buttonKey = "buyable_button";
+	json_object_set_member(pJsonObject, buyable_buttonKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getClick());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -234,11 +249,11 @@ TrackingUrls::toJson()
 	const gchar *engagementKey = "engagement";
 	json_object_set_member(pJsonObject, engagementKey, node);
 	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getBuyableButton());
+		list<std::string> new_list = static_cast<list <std::string> > (getImpression());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getBuyableButton());
+		list<std::string> new_list = static_cast<list <std::string> > (getImpression());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
@@ -246,23 +261,8 @@ TrackingUrls::toJson()
 
 
 	
-	const gchar *buyable_buttonKey = "buyable_button";
-	json_object_set_member(pJsonObject, buyable_buttonKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getAudienceVerification());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getAudienceVerification());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *audience_verificationKey = "audience_verification";
-	json_object_set_member(pJsonObject, audience_verificationKey, node);
+	const gchar *impressionKey = "impression";
+	json_object_set_member(pJsonObject, impressionKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -272,15 +272,27 @@ TrackingUrls::toJson()
 }
 
 std::list<std::string>
-TrackingUrls::getImpression()
+TrackingUrls::getAudienceVerification()
 {
-	return impression;
+	return audience_verification;
 }
 
 void
-TrackingUrls::setImpression(std::list <std::string> impression)
+TrackingUrls::setAudienceVerification(std::list <std::string> audience_verification)
 {
-	this->impression = impression;
+	this->audience_verification = audience_verification;
+}
+
+std::list<std::string>
+TrackingUrls::getBuyableButton()
+{
+	return buyable_button;
+}
+
+void
+TrackingUrls::setBuyableButton(std::list <std::string> buyable_button)
+{
+	this->buyable_button = buyable_button;
 }
 
 std::list<std::string>
@@ -308,27 +320,15 @@ TrackingUrls::setEngagement(std::list <std::string> engagement)
 }
 
 std::list<std::string>
-TrackingUrls::getBuyableButton()
+TrackingUrls::getImpression()
 {
-	return buyable_button;
+	return impression;
 }
 
 void
-TrackingUrls::setBuyableButton(std::list <std::string> buyable_button)
+TrackingUrls::setImpression(std::list <std::string> impression)
 {
-	this->buyable_button = buyable_button;
-}
-
-std::list<std::string>
-TrackingUrls::getAudienceVerification()
-{
-	return audience_verification;
-}
-
-void
-TrackingUrls::setAudienceVerification(std::list <std::string> audience_verification)
-{
-	this->audience_verification = audience_verification;
+	this->impression = impression;
 }
 
 

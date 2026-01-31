@@ -25,24 +25,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelFeedsCreateRequest  {
   
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private NullableCurrency defaultCurrency;
-
  /**
-  * A human-friendly name associated to a given feed.
+  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
   */
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
 
-  private String name;
+  private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
 
   @Valid
 
-  private CatalogsFormat format;
+  private CatalogsType catalogType;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private CatalogsFeedCredentials credentials;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private NullableCurrency defaultCurrency;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -50,11 +56,11 @@ public class CatalogsHotelFeedsCreateRequest  {
 
   private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   @Valid
 
-  private CatalogsFeedCredentials credentials;
+  private CatalogsFormat format;
 
  /**
   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
@@ -63,24 +69,18 @@ public class CatalogsHotelFeedsCreateRequest  {
 
   private String location;
 
+ /**
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+
+  private String name;
+
   @ApiModelProperty(value = "")
 
   @Valid
 
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-
-  @ApiModelProperty(required = true, value = "")
-
-  @Valid
-
-  private CatalogsType catalogType;
-
- /**
-  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
-  */
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
-
-  private String catalogId;
 
   @ApiModelProperty(value = "")
 
@@ -88,132 +88,20 @@ public class CatalogsHotelFeedsCreateRequest  {
 
   private CatalogsStatus status = "ACTIVE";
  /**
-   * Get defaultCurrency
-   * @return defaultCurrency
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+   * @return catalogId
   **/
-  @JsonProperty("default_currency")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
   }
 
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
-  public CatalogsHotelFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-    return this;
-  }
-
- /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-  **/
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsHotelFeedsCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
- /**
-   * Get format
-   * @return format
-  **/
-  @JsonProperty("format")
-  @NotNull
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
-  public CatalogsHotelFeedsCreateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
- /**
-   * Get defaultLocale
-   * @return defaultLocale
-  **/
-  @JsonProperty("default_locale")
-  @NotNull
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
-    return defaultLocale;
-  }
-
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
-    this.defaultLocale = defaultLocale;
-  }
-
-  public CatalogsHotelFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
-    this.defaultLocale = defaultLocale;
-    return this;
-  }
-
- /**
-   * Get credentials
-   * @return credentials
-  **/
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
-  public CatalogsHotelFeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
- /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-   * @return location
-  **/
-  @JsonProperty("location")
-  @NotNull
- @Pattern(regexp="^(http|https|ftp|sftp)://")  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public CatalogsHotelFeedsCreateRequest location(String location) {
-    this.location = location;
-    return this;
-  }
-
- /**
-   * Get preferredProcessingSchedule
-   * @return preferredProcessingSchedule
-  **/
-  @JsonProperty("preferred_processing_schedule")
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
-  }
-
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-  }
-
-  public CatalogsHotelFeedsCreateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  public CatalogsHotelFeedsCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
     return this;
   }
 
@@ -237,20 +125,132 @@ public class CatalogsHotelFeedsCreateRequest  {
   }
 
  /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
-   * @return catalogId
+   * Get credentials
+   * @return credentials
   **/
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
   }
 
-  public CatalogsHotelFeedsCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelFeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+ /**
+   * Get defaultCurrency
+   * @return defaultCurrency
+  **/
+  @JsonProperty("default_currency")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  public CatalogsHotelFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+ /**
+   * Get defaultLocale
+   * @return defaultLocale
+  **/
+  @JsonProperty("default_locale")
+  @NotNull
+  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+    return defaultLocale;
+  }
+
+  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+    this.defaultLocale = defaultLocale;
+  }
+
+  public CatalogsHotelFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+    this.defaultLocale = defaultLocale;
+    return this;
+  }
+
+ /**
+   * Get format
+   * @return format
+  **/
+  @JsonProperty("format")
+  @NotNull
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+  public CatalogsHotelFeedsCreateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+ /**
+   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+   * @return location
+  **/
+  @JsonProperty("location")
+  @NotNull
+ @Pattern(regexp="^(http|https|ftp|sftp)://")  public String getLocation() {
+    return location;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public CatalogsHotelFeedsCreateRequest location(String location) {
+    this.location = location;
+    return this;
+  }
+
+ /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+  **/
+  @JsonProperty("name")
+  @NotNull
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsHotelFeedsCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+ /**
+   * Get preferredProcessingSchedule
+   * @return preferredProcessingSchedule
+  **/
+  @JsonProperty("preferred_processing_schedule")
+  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
+  }
+
+  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  }
+
+  public CatalogsHotelFeedsCreateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
     return this;
   }
 
@@ -281,21 +281,21 @@ public class CatalogsHotelFeedsCreateRequest  {
       return false;
     }
     CatalogsHotelFeedsCreateRequest catalogsHotelFeedsCreateRequest = (CatalogsHotelFeedsCreateRequest) o;
-    return Objects.equals(this.defaultCurrency, catalogsHotelFeedsCreateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsHotelFeedsCreateRequest.name) &&
-        Objects.equals(this.format, catalogsHotelFeedsCreateRequest.format) &&
-        Objects.equals(this.defaultLocale, catalogsHotelFeedsCreateRequest.defaultLocale) &&
-        Objects.equals(this.credentials, catalogsHotelFeedsCreateRequest.credentials) &&
-        Objects.equals(this.location, catalogsHotelFeedsCreateRequest.location) &&
-        Objects.equals(this.preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
+    return Objects.equals(this.catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
         Objects.equals(this.catalogType, catalogsHotelFeedsCreateRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
+        Objects.equals(this.credentials, catalogsHotelFeedsCreateRequest.credentials) &&
+        Objects.equals(this.defaultCurrency, catalogsHotelFeedsCreateRequest.defaultCurrency) &&
+        Objects.equals(this.defaultLocale, catalogsHotelFeedsCreateRequest.defaultLocale) &&
+        Objects.equals(this.format, catalogsHotelFeedsCreateRequest.format) &&
+        Objects.equals(this.location, catalogsHotelFeedsCreateRequest.location) &&
+        Objects.equals(this.name, catalogsHotelFeedsCreateRequest.name) &&
+        Objects.equals(this.preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.status, catalogsHotelFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId, status);
+    return Objects.hash(catalogId, catalogType, credentials, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -303,15 +303,15 @@ public class CatalogsHotelFeedsCreateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelFeedsCreateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

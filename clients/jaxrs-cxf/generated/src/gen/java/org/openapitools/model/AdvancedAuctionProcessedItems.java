@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -33,7 +33,7 @@ public class AdvancedAuctionProcessedItems  {
 
   @Valid
 
-  private List<@Valid AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
  /**
    * Catalog id pertaining to all items
    * @return catalogId
@@ -57,20 +57,20 @@ public class AdvancedAuctionProcessedItems  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<@Valid AdvancedAuctionProcessedItem> getItems() {
+  public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 
-  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     this.items.add(itemsItem);
     return this;
   }

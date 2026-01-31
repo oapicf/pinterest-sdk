@@ -23,11 +23,37 @@ import java.util.Objects;
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 public class TopVideoPinsAnalyticsResponsePinsInner   {
   
-  private Map<String, BigDecimal> metrics = new HashMap<>();
-
   private Map<String, DataStatus> dataStatus = new HashMap<>();
 
+  private Map<String, BigDecimal> metrics = new HashMap<>();
+
   private String pinId;
+
+  /**
+   **/
+  public TopVideoPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("data_status")
+  public Map<String, DataStatus> getDataStatus() {
+    return dataStatus;
+  }
+  public void setDataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+  }
+
+
+  public TopVideoPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
+    if (this.dataStatus == null) {
+      this.dataStatus = new HashMap<>();
+    }
+    this.dataStatus.put(key, dataStatusItem);
+    return this;
+  }
 
   /**
    * The metric name and daily value for each requested metric
@@ -53,32 +79,6 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
       this.metrics = new HashMap<>();
     }
     this.metrics.put(key, metricsItem);
-    return this;
-  }
-
-  /**
-   **/
-  public TopVideoPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("data_status")
-  public Map<String, DataStatus> getDataStatus() {
-    return dataStatus;
-  }
-  public void setDataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-  }
-
-
-  public TopVideoPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
-    if (this.dataStatus == null) {
-      this.dataStatus = new HashMap<>();
-    }
-    this.dataStatus.put(key, dataStatusItem);
     return this;
   }
 
@@ -111,14 +111,14 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
       return false;
     }
     TopVideoPinsAnalyticsResponsePinsInner topVideoPinsAnalyticsResponsePinsInner = (TopVideoPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(this.metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(this.dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(this.dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(this.metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(this.pinId, topVideoPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -126,8 +126,8 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopVideoPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

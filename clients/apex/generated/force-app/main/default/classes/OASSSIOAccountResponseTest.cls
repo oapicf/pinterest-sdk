@@ -73,8 +73,8 @@ private class OASSSIOAccountResponseTest {
     private static void maintainRenamedProperties() {
         OASSSIOAccountResponse ssIOAccountResponse = new OASSSIOAccountResponse();
         Map<String, String> x-property-mappings = ssIOAccountResponse.getx-property-mappings();
-        System.assertEquals('canEdit', x-property-mappings.get('can_edit'));
         System.assertEquals('billtoInfos', x-property-mappings.get('billto_infos'));
+        System.assertEquals('canEdit', x-property-mappings.get('can_edit'));
         System.assertEquals('r_currency', x-property-mappings.get('currency'));
         System.assertEquals('pmpNames', x-property-mappings.get('pmp_names'));
     }
@@ -84,9 +84,9 @@ private class OASSSIOAccountResponseTest {
         OASSSIOAccountResponse ssIOAccountResponse = new OASSSIOAccountResponse();
         System.assertEquals(new List<OASSSIOAccountItem>(), ssIOAccountResponse.billtoInfos);
         System.assertEquals(new List<OASSSIOAccountPMPName>(), ssIOAccountResponse.pmpNames);
-        System.assertEquals(null, ssIOAccountResponse.eligible);
         System.assertEquals(null, ssIOAccountResponse.canEdit);
         System.assertEquals(null, ssIOAccountResponse.r_currency);
+        System.assertEquals(null, ssIOAccountResponse.eligible);
         System.assertEquals(null, ssIOAccountResponse.error);
     }
 }

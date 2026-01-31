@@ -21,14 +21,6 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInnerTest {
     }
 
     /**
-     * Test the property 'logIndex'
-     */
-    @Test
-    public void logIndexTest() {
-        // TODO: test logIndex
-    }
-
-    /**
      * Test the property 'field'
      */
     @Test
@@ -37,11 +29,11 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInnerTest {
     }
 
     /**
-     * Test the property 'value'
+     * Test the property 'logIndex'
      */
     @Test
-    public void valueTest() {
-        // TODO: test value
+    public void logIndexTest() {
+        // TODO: test logIndex
     }
 
     /**
@@ -50,6 +42,14 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInnerTest {
     @Test
     public void reasonTest() {
         // TODO: test reason
+    }
+
+    /**
+     * Test the property 'value'
+     */
+    @Test
+    public void valueTest() {
+        // TODO: test value
     }
 
 }

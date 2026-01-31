@@ -14,25 +14,25 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}name`,
-                label: `[${labelPrefix}name]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}description`,
                 label: `[${labelPrefix}description]`,
                 type: 'string',
             },
             ...CatalogsHotelProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
+            {
+                key: `${keyPrefix}name`,
+                label: `[${labelPrefix}name]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'filters': utils.removeIfEmpty(CatalogsHotelProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

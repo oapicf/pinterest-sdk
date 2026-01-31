@@ -8,8 +8,8 @@ The class is defined in **[BoardsUserFollowsList200Response.java](../../src/main
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Board&gt;`](Board.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Board&gt;`](Board.md) |  | 
 
 
 

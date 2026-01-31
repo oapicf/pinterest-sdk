@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import UserWebsiteSummary._
 
 case class UserWebsiteSummary (
-  /* Website with path or domain only */
-  website: Option[String],
-/* Status of the verification process */
+  /* Status of the verification process */
   status: Option[String],
 /* UTC timestamp when the verification happened - sometimes missing */
-  verifiedAt: Option[String])
+  verifiedAt: Option[String],
+/* Website with path or domain only */
+  website: Option[String])
 
 object UserWebsiteSummary {
   import DateTimeCodecs._

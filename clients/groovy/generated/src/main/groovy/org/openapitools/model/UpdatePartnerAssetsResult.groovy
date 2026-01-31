@@ -10,7 +10,7 @@ import java.util.Arrays;
 class UpdatePartnerAssetsResult {
     /* Unique identifier of a business asset. */
     String assetId
-    /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     String assetType
     /* Unique identifier of a business partner. */
     String partnerId

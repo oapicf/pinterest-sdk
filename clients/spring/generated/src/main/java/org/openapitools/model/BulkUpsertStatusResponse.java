@@ -22,32 +22,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertStatusResponse", description = "ID of the bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertStatusResponse {
-
-  private @Nullable BulkUpsertStatus status;
 
   private @Nullable String resultUrl;
 
-  public BulkUpsertStatusResponse status(@Nullable BulkUpsertStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public @Nullable BulkUpsertStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(@Nullable BulkUpsertStatus status) {
-    this.status = status;
-  }
+  private @Nullable BulkUpsertStatus status;
 
   public BulkUpsertStatusResponse resultUrl(@Nullable String resultUrl) {
     this.resultUrl = resultUrl;
@@ -69,6 +49,26 @@ public class BulkUpsertStatusResponse {
     this.resultUrl = resultUrl;
   }
 
+  public BulkUpsertStatusResponse status(@Nullable BulkUpsertStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public @Nullable BulkUpsertStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(@Nullable BulkUpsertStatus status) {
+    this.status = status;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -78,21 +78,21 @@ public class BulkUpsertStatusResponse {
       return false;
     }
     BulkUpsertStatusResponse bulkUpsertStatusResponse = (BulkUpsertStatusResponse) o;
-    return Objects.equals(this.status, bulkUpsertStatusResponse.status) &&
-        Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl);
+    return Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl) &&
+        Objects.equals(this.status, bulkUpsertStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, resultUrl);
+    return Objects.hash(resultUrl, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertStatusResponse {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

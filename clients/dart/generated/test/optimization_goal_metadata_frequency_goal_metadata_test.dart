@@ -16,6 +16,7 @@ void main() {
   // final instance = OptimizationGoalMetadataFrequencyGoalMetadata();
 
   group('test OptimizationGoalMetadataFrequencyGoalMetadata', () {
+    // Frequency target can only be between 2 and 20
     // int frequency
     test('to test the property `frequency`', () async {
       // TODO

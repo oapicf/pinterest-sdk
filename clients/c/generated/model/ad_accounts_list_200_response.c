@@ -6,27 +6,27 @@
 
 
 static ad_accounts_list_200_response_t *ad_accounts_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     ad_accounts_list_200_response_t *ad_accounts_list_200_response_local_var = malloc(sizeof(ad_accounts_list_200_response_t));
     if (!ad_accounts_list_200_response_local_var) {
         return NULL;
     }
-    ad_accounts_list_200_response_local_var->items = items;
     ad_accounts_list_200_response_local_var->bookmark = bookmark;
+    ad_accounts_list_200_response_local_var->items = items;
 
     ad_accounts_list_200_response_local_var->_library_owned = 1;
     return ad_accounts_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) ad_accounts_list_200_response_t *ad_accounts_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return ad_accounts_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void ad_accounts_list_200_response_free(ad_accounts_list_200_response_t *ad_acco
         return ;
     }
     listEntry_t *listEntry;
+    if (ad_accounts_list_200_response->bookmark) {
+        free(ad_accounts_list_200_response->bookmark);
+        ad_accounts_list_200_response->bookmark = NULL;
+    }
     if (ad_accounts_list_200_response->items) {
         list_ForEach(listEntry, ad_accounts_list_200_response->items) {
             ad_account_free(listEntry->data);
@@ -46,15 +50,19 @@ void ad_accounts_list_200_response_free(ad_accounts_list_200_response_t *ad_acco
         list_freeList(ad_accounts_list_200_response->items);
         ad_accounts_list_200_response->items = NULL;
     }
-    if (ad_accounts_list_200_response->bookmark) {
-        free(ad_accounts_list_200_response->bookmark);
-        ad_accounts_list_200_response->bookmark = NULL;
-    }
     free(ad_accounts_list_200_response);
 }
 
 cJSON *ad_accounts_list_200_response_convertToJSON(ad_accounts_list_200_response_t *ad_accounts_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // ad_accounts_list_200_response->bookmark
+    if(ad_accounts_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", ad_accounts_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // ad_accounts_list_200_response->items
     if (!ad_accounts_list_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *ad_accounts_list_200_response_convertToJSON(ad_accounts_list_200_response
     }
     }
 
-
-    // ad_accounts_list_200_response->bookmark
-    if(ad_accounts_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", ad_accounts_list_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ ad_accounts_list_200_response_t *ad_accounts_list_200_response_parseFromJSON(cJS
 
     // define the local list for ad_accounts_list_200_response->items
     list_t *itemsList = NULL;
+
+    // ad_accounts_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ad_accounts_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // ad_accounts_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(ad_accounts_list_200_responseJSON, "items");
@@ -126,22 +138,10 @@ ad_accounts_list_200_response_t *ad_accounts_list_200_response_parseFromJSON(cJS
         list_addElement(itemsList, itemsItem);
     }
 
-    // ad_accounts_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ad_accounts_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     ad_accounts_list_200_response_local_var = ad_accounts_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return ad_accounts_list_200_response_local_var;

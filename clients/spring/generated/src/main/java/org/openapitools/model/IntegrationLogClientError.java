@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientError", description = "System error details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientError {
 
   private @Nullable String cause;
@@ -130,7 +130,7 @@ public class IntegrationLogClientError {
    * Human-readable description of the error.
    * @return message
    */
-  @Size(max = 512) 
+  @Size(max = 8192) 
   @Schema(name = "message", description = "Human-readable description of the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
   public @Nullable String getMessage() {

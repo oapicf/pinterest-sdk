@@ -11,11 +11,11 @@ module SSIOAccountResponse =
 
 
   type SSIOAccountResponse = {
-    Eligible : bool;
-    CanEdit : bool;
     BilltoInfos : SSIOAccountItem[];
+    CanEdit : bool;
     Currency : string;
-    PmpNames : SSIOAccountPMPName[];
+    Eligible : bool;
     Error : string;
+    PmpNames : SSIOAccountPMPName[];
   }
   //#endregion

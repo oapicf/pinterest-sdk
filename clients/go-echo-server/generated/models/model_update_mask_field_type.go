@@ -18,6 +18,11 @@ const (
 	CUSTOM_LABEL_2 UpdateMaskFieldType = "custom_label_2"
 	CUSTOM_LABEL_3 UpdateMaskFieldType = "custom_label_3"
 	CUSTOM_LABEL_4 UpdateMaskFieldType = "custom_label_4"
+	CUSTOM_NUMBER_0 UpdateMaskFieldType = "custom_number_0"
+	CUSTOM_NUMBER_1 UpdateMaskFieldType = "custom_number_1"
+	CUSTOM_NUMBER_2 UpdateMaskFieldType = "custom_number_2"
+	CUSTOM_NUMBER_3 UpdateMaskFieldType = "custom_number_3"
+	CUSTOM_NUMBER_4 UpdateMaskFieldType = "custom_number_4"
 	DESCRIPTION UpdateMaskFieldType = "description"
 	FREE_SHIPPING_LABEL UpdateMaskFieldType = "free_shipping_label"
 	FREE_SHIPPING_LIMIT UpdateMaskFieldType = "free_shipping_limit"
@@ -47,4 +52,5 @@ const (
 	TITLE UpdateMaskFieldType = "title"
 	VARIANT_NAMES UpdateMaskFieldType = "variant_names"
 	VARIANT_VALUES UpdateMaskFieldType = "variant_values"
+	PROMOTION_ID UpdateMaskFieldType = "promotion_id"
 )

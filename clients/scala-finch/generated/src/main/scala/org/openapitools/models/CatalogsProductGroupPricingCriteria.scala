@@ -10,12 +10,12 @@ import org.openapitools.models.BigDecimal
 /**
  * 
  * @param inclusion 
- * @param values 
  * @param negated 
+ * @param values 
  */
 case class CatalogsProductGroupPricingCriteria(inclusion: Option[Boolean],
-                values: BigDecimal,
-                negated: Option[Boolean]
+                negated: Option[Boolean],
+                values: BigDecimal
                 )
 
 object CatalogsProductGroupPricingCriteria {

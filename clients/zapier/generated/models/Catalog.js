@@ -24,14 +24,14 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}catalog_type`,
+                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+            },
+            {
                 key: `${keyPrefix}name`,
                 label: `A human-friendly name associated to a catalog entity. - [${labelPrefix}name]`,
                 required: true,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
             },
         ]
     },
@@ -41,8 +41,8 @@ module.exports = {
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

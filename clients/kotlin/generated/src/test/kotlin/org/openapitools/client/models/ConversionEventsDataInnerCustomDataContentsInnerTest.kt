@@ -31,6 +31,24 @@ class ConversionEventsDataInnerCustomDataContentsInnerTest : ShouldSpec() {
             //modelInstance.id shouldBe ("TODO")
         }
 
+        // to test the property `itemBrand` - The brand of a product.
+        should("test itemBrand") {
+            // uncomment below to test the property
+            //modelInstance.itemBrand shouldBe ("TODO")
+        }
+
+        // to test the property `itemCategory` - The category of a product.
+        should("test itemCategory") {
+            // uncomment below to test the property
+            //modelInstance.itemCategory shouldBe ("TODO")
+        }
+
+        // to test the property `itemName` - The name of a product.
+        should("test itemName") {
+            // uncomment below to test the property
+            //modelInstance.itemName shouldBe ("TODO")
+        }
+
         // to test the property `itemPrice` - The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
         should("test itemPrice") {
             // uncomment below to test the property
@@ -41,24 +59,6 @@ class ConversionEventsDataInnerCustomDataContentsInnerTest : ShouldSpec() {
         should("test quantity") {
             // uncomment below to test the property
             //modelInstance.quantity shouldBe ("TODO")
-        }
-
-        // to test the property `itemName` - The name of a product.
-        should("test itemName") {
-            // uncomment below to test the property
-            //modelInstance.itemName shouldBe ("TODO")
-        }
-
-        // to test the property `itemCategory` - The category of a product.
-        should("test itemCategory") {
-            // uncomment below to test the property
-            //modelInstance.itemCategory shouldBe ("TODO")
-        }
-
-        // to test the property `itemBrand` - The brand of a product.
-        should("test itemBrand") {
-            // uncomment below to test the property
-            //modelInstance.itemBrand shouldBe ("TODO")
         }
 
     }

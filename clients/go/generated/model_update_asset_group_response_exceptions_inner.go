@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &UpdateAssetGroupResponseExceptionsInner{}
 
 // UpdateAssetGroupResponseExceptionsInner struct for UpdateAssetGroupResponseExceptionsInner
 type UpdateAssetGroupResponseExceptionsInner struct {
+	// Asset group id of the exception.
+	AssetGroupId *string `json:"asset_group_id,omitempty"`
 	// Error code associated with the error editing asset group.
 	Code *int32 `json:"code,omitempty"`
 	// Error message associated with the error editing asset group.
 	Message *string `json:"message,omitempty"`
-	// Asset group id of the exception.
-	AssetGroupId *string `json:"asset_group_id,omitempty"`
 }
 
 // NewUpdateAssetGroupResponseExceptionsInner instantiates a new UpdateAssetGroupResponseExceptionsInner object
@@ -43,6 +43,38 @@ func NewUpdateAssetGroupResponseExceptionsInner() *UpdateAssetGroupResponseExcep
 func NewUpdateAssetGroupResponseExceptionsInnerWithDefaults() *UpdateAssetGroupResponseExceptionsInner {
 	this := UpdateAssetGroupResponseExceptionsInner{}
 	return &this
+}
+
+// GetAssetGroupId returns the AssetGroupId field value if set, zero value otherwise.
+func (o *UpdateAssetGroupResponseExceptionsInner) GetAssetGroupId() string {
+	if o == nil || IsNil(o.AssetGroupId) {
+		var ret string
+		return ret
+	}
+	return *o.AssetGroupId
+}
+
+// GetAssetGroupIdOk returns a tuple with the AssetGroupId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAssetGroupResponseExceptionsInner) GetAssetGroupIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AssetGroupId) {
+		return nil, false
+	}
+	return o.AssetGroupId, true
+}
+
+// HasAssetGroupId returns a boolean if a field has been set.
+func (o *UpdateAssetGroupResponseExceptionsInner) HasAssetGroupId() bool {
+	if o != nil && !IsNil(o.AssetGroupId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssetGroupId gets a reference to the given string and assigns it to the AssetGroupId field.
+func (o *UpdateAssetGroupResponseExceptionsInner) SetAssetGroupId(v string) {
+	o.AssetGroupId = &v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
@@ -109,38 +141,6 @@ func (o *UpdateAssetGroupResponseExceptionsInner) SetMessage(v string) {
 	o.Message = &v
 }
 
-// GetAssetGroupId returns the AssetGroupId field value if set, zero value otherwise.
-func (o *UpdateAssetGroupResponseExceptionsInner) GetAssetGroupId() string {
-	if o == nil || IsNil(o.AssetGroupId) {
-		var ret string
-		return ret
-	}
-	return *o.AssetGroupId
-}
-
-// GetAssetGroupIdOk returns a tuple with the AssetGroupId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAssetGroupResponseExceptionsInner) GetAssetGroupIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AssetGroupId) {
-		return nil, false
-	}
-	return o.AssetGroupId, true
-}
-
-// HasAssetGroupId returns a boolean if a field has been set.
-func (o *UpdateAssetGroupResponseExceptionsInner) HasAssetGroupId() bool {
-	if o != nil && !IsNil(o.AssetGroupId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssetGroupId gets a reference to the given string and assigns it to the AssetGroupId field.
-func (o *UpdateAssetGroupResponseExceptionsInner) SetAssetGroupId(v string) {
-	o.AssetGroupId = &v
-}
-
 func (o UpdateAssetGroupResponseExceptionsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -151,14 +151,14 @@ func (o UpdateAssetGroupResponseExceptionsInner) MarshalJSON() ([]byte, error) {
 
 func (o UpdateAssetGroupResponseExceptionsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AssetGroupId) {
+		toSerialize["asset_group_id"] = o.AssetGroupId
+	}
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
-	}
-	if !IsNil(o.AssetGroupId) {
-		toSerialize["asset_group_id"] = o.AssetGroupId
 	}
 	return toSerialize, nil
 }

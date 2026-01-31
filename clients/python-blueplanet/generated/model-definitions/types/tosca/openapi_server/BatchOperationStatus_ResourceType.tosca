@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BatchOperationStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BatchOperationStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BatchOperationStatus {
+    title = BatchOperationStatus
+    description = BatchOperationStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BatchOperationStatus {
+    title = BatchOperationStatus
+    description = BatchOperationStatus
+    implements = openapi_server.resourceTypes.BatchOperationStatus
+
+  }
+}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &SSIOAccountPMPName{}
 
 // SSIOAccountPMPName struct for SSIOAccountPMPName
 type SSIOAccountPMPName struct {
-	// Display name
-	Name *string `json:"name,omitempty"`
 	// Salesforce id for PMP
 	Id *string `json:"id,omitempty"`
+	// Display name
+	Name *string `json:"name,omitempty"`
 }
 
 // NewSSIOAccountPMPName instantiates a new SSIOAccountPMPName object
@@ -41,38 +41,6 @@ func NewSSIOAccountPMPName() *SSIOAccountPMPName {
 func NewSSIOAccountPMPNameWithDefaults() *SSIOAccountPMPName {
 	this := SSIOAccountPMPName{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *SSIOAccountPMPName) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOAccountPMPName) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *SSIOAccountPMPName) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SSIOAccountPMPName) SetName(v string) {
-	o.Name = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *SSIOAccountPMPName) SetId(v string) {
 	o.Id = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *SSIOAccountPMPName) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOAccountPMPName) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *SSIOAccountPMPName) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *SSIOAccountPMPName) SetName(v string) {
+	o.Name = &v
+}
+
 func (o SSIOAccountPMPName) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,11 +117,11 @@ func (o SSIOAccountPMPName) MarshalJSON() ([]byte, error) {
 
 func (o SSIOAccountPMPName) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

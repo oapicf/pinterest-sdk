@@ -26,38 +26,18 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemProcessingRecord {
-
-  private @Nullable String itemId;
 
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
-  @Valid
-  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
+  private @Nullable String itemId;
 
   private @Nullable ItemProcessingStatus status;
 
-  public ItemProcessingRecord itemId(@Nullable String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-   */
-  
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("item_id")
-  public @Nullable String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(@Nullable String itemId) {
-    this.itemId = itemId;
-  }
+  @Valid
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   public ItemProcessingRecord errors(List<@Valid ItemValidationEvent> errors) {
     this.errors = errors;
@@ -85,6 +65,46 @@ public class ItemProcessingRecord {
 
   public void setErrors(List<@Valid ItemValidationEvent> errors) {
     this.errors = errors;
+  }
+
+  public ItemProcessingRecord itemId(@Nullable String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+   */
+  
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("item_id")
+  public @Nullable String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(@Nullable String itemId) {
+    this.itemId = itemId;
+  }
+
+  public ItemProcessingRecord status(@Nullable ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public @Nullable ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(@Nullable ItemProcessingStatus status) {
+    this.status = status;
   }
 
   public ItemProcessingRecord warnings(List<@Valid ItemValidationEvent> warnings) {
@@ -115,26 +135,6 @@ public class ItemProcessingRecord {
     this.warnings = warnings;
   }
 
-  public ItemProcessingRecord status(@Nullable ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public @Nullable ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(@Nullable ItemProcessingStatus status) {
-    this.status = status;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -144,25 +144,25 @@ public class ItemProcessingRecord {
       return false;
     }
     ItemProcessingRecord itemProcessingRecord = (ItemProcessingRecord) o;
-    return Objects.equals(this.itemId, itemProcessingRecord.itemId) &&
-        Objects.equals(this.errors, itemProcessingRecord.errors) &&
-        Objects.equals(this.warnings, itemProcessingRecord.warnings) &&
-        Objects.equals(this.status, itemProcessingRecord.status);
+    return Objects.equals(this.errors, itemProcessingRecord.errors) &&
+        Objects.equals(this.itemId, itemProcessingRecord.itemId) &&
+        Objects.equals(this.status, itemProcessingRecord.status) &&
+        Objects.equals(this.warnings, itemProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, errors, warnings, status);
+    return Objects.hash(errors, itemId, status, warnings);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemProcessingRecord {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdAccountGetSubscriptionResponse;
+import org.openapitools.model.LeadSubscription;
 
 @Canonical
 class AdAccountsSubscriptionsGetList200Response {
     
-    List<AdAccountGetSubscriptionResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<LeadSubscription> items = new ArrayList<>()
 }

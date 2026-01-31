@@ -10,16 +10,16 @@ The class is defined in **[CatalogsCreativeAssetsListProductsByCatalogBasedFilte
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **catalogId** | `String` | Catalog id pertaining to the creative assets product group. | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
-
 
 
 

@@ -16,13 +16,13 @@ void main() {
   // final instance = QuizPinResult();
 
   group('test QuizPinResult', () {
-    // String organicPinId
-    test('to test the property `organicPinId`', () async {
+    // String androidDeepLink
+    test('to test the property `androidDeepLink`', () async {
       // TODO
     });
 
-    // String androidDeepLink
-    test('to test the property `androidDeepLink`', () async {
+    // String destinationUrl
+    test('to test the property `destinationUrl`', () async {
       // TODO
     });
 
@@ -31,8 +31,8 @@ void main() {
       // TODO
     });
 
-    // String destinationUrl
-    test('to test the property `destinationUrl`', () async {
+    // String organicPinId
+    test('to test the property `organicPinId`', () async {
       // TODO
     });
 

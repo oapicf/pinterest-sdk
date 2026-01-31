@@ -17,7 +17,7 @@ import org.openapitools.model.CreateAssetAccessRequestBodyAssetRequestsInner;
  **/
 
 @ApiModel(description = "An object containing a list of all the asset access requests")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetAccessRequestBody   {
   @JsonProperty("asset_requests")
   private List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();

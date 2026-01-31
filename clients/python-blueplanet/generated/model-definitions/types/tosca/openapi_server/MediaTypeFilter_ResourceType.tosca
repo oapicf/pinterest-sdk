@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MediaTypeFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MediaTypeFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleMediaTypesCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleMediaTypesCriteria
+}
+resourceTypes {
+
+  MediaTypeFilter {
+    title = MediaTypeFilter
+    description = MediaTypeFilter
+    derivedFrom = Root
+    properties {
+        media_type {
+          type = CatalogsProductGroupMultipleMediaTypesCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MediaTypeFilter {
+    title = MediaTypeFilter
+    description = MediaTypeFilter
+    implements = openapi_server.resourceTypes.MediaTypeFilter
+
+  }
+}

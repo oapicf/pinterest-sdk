@@ -7,16 +7,16 @@
 #' @title BoardsUserFollowsList200Response
 #' @description BoardsUserFollowsList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{Board})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{Board})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 BoardsUserFollowsList200Response <- R6::R6Class(
   "BoardsUserFollowsList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new BoardsUserFollowsList200Response class.
@@ -69,13 +69,13 @@ BoardsUserFollowsList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       BoardsUserFollowsList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        BoardsUserFollowsList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         BoardsUserFollowsList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        BoardsUserFollowsList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(BoardsUserFollowsList200ResponseObject)
     },
@@ -87,11 +87,11 @@ BoardsUserFollowsList200Response <- R6::R6Class(
     #' @return the instance of BoardsUserFollowsList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Board]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Board]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ BoardsUserFollowsList200Response <- R6::R6Class(
     #' @return the instance of BoardsUserFollowsList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Board]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Board]", loadNamespace("openapi"))
       self
     },
 

@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsCreativeAssetsItemsPostFilter._
 
 case class CatalogsCreativeAssetsItemsPostFilter (
-  catalogType: CatalogType,
-creativeAssetsIds: List[String],
-/* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
-  catalogId: Option[String])
+  /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
+  catalogId: Option[String],
+catalogType: CatalogType,
+creativeAssetsIds: List[String])
 
 object CatalogsCreativeAssetsItemsPostFilter {
   import DateTimeCodecs._

@@ -15,7 +15,7 @@ import org.openapitools.model.DeleteAssetGroupResponseExceptionsInner;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeleteAssetGroupResponse   {
   @JsonProperty("deleted_asset_groups")
   private List<String> deletedAssetGroups = null;

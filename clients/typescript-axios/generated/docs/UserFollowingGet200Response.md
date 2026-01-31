@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;UserSummary&gt;**](UserSummary.md) | Users | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;UserSummary&gt;**](UserSummary.md) | Users | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { UserFollowingGet200Response } from './api';
 
 const instance: UserFollowingGet200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

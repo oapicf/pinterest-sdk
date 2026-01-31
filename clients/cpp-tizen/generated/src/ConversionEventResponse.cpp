@@ -23,15 +23,20 @@ ConversionEventResponse::~ConversionEventResponse()
 void
 ConversionEventResponse::__init()
 {
+	//ad_account_id = std::string();
 	//conversion_event = new ConversionTagType();
 	//conversion_tag_id = std::string();
-	//ad_account_id = std::string();
 	//created_time = int(0);
 }
 
 void
 ConversionEventResponse::__cleanup()
 {
+	//if(ad_account_id != NULL) {
+	//
+	//delete ad_account_id;
+	//ad_account_id = NULL;
+	//}
 	//if(conversion_event != NULL) {
 	//
 	//delete conversion_event;
@@ -41,11 +46,6 @@ ConversionEventResponse::__cleanup()
 	//
 	//delete conversion_tag_id;
 	//conversion_tag_id = NULL;
-	//}
-	//if(ad_account_id != NULL) {
-	//
-	//delete ad_account_id;
-	//ad_account_id = NULL;
 	//}
 	//if(created_time != NULL) {
 	//
@@ -60,6 +60,17 @@ ConversionEventResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *ad_account_idKey = "ad_account_id";
+	node = json_object_get_member(pJsonObject, ad_account_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_account_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *conversion_eventKey = "conversion_event";
 	node = json_object_get_member(pJsonObject, conversion_eventKey);
 	if (node !=NULL) {
@@ -78,17 +89,6 @@ ConversionEventResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&conversion_tag_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *ad_account_idKey = "ad_account_id";
-	node = json_object_get_member(pJsonObject, ad_account_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&ad_account_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -116,6 +116,15 @@ ConversionEventResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getAdAccountId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_account_idKey = "ad_account_id";
+	json_object_set_member(pJsonObject, ad_account_idKey, node);
 	if (isprimitive("ConversionTagType")) {
 		ConversionTagType obj = getConversionEvent();
 		node = converttoJson(&obj, "ConversionTagType", "");
@@ -134,15 +143,6 @@ ConversionEventResponse::toJson()
 	}
 	const gchar *conversion_tag_idKey = "conversion_tag_id";
 	json_object_set_member(pJsonObject, conversion_tag_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAdAccountId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *ad_account_idKey = "ad_account_id";
-	json_object_set_member(pJsonObject, ad_account_idKey, node);
 	if (isprimitive("int")) {
 		int obj = getCreatedTime();
 		node = converttoJson(&obj, "int", "");
@@ -158,6 +158,18 @@ ConversionEventResponse::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+ConversionEventResponse::getAdAccountId()
+{
+	return ad_account_id;
+}
+
+void
+ConversionEventResponse::setAdAccountId(std::string  ad_account_id)
+{
+	this->ad_account_id = ad_account_id;
 }
 
 ConversionTagType
@@ -182,18 +194,6 @@ void
 ConversionEventResponse::setConversionTagId(std::string  conversion_tag_id)
 {
 	this->conversion_tag_id = conversion_tag_id;
-}
-
-std::string
-ConversionEventResponse::getAdAccountId()
-{
-	return ad_account_id;
-}
-
-void
-ConversionEventResponse::setAdAccountId(std::string  ad_account_id)
-{
-	this->ad_account_id = ad_account_id;
 }
 
 int

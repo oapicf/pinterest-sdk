@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -33,19 +33,70 @@ import org.openapitools.model.ProductAvailabilityType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class FeedsCreateRequest   {
   
-  private NullableCurrency defaultCurrency;
-  private String name;
-  private CatalogsFormat format;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
   private CatalogsFeedCredentials credentials;
-  private String location;
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
+  private Country defaultCountry;
+  private NullableCurrency defaultCurrency;
+  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsFormat format;
+  private String location;
+  private String name;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status = "ACTIVE";
+
+  /**
+   */
+  public FeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
+
+  /**
+   */
+  public FeedsCreateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_availability")
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
+  }
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+  }
+
+  /**
+   */
+  public FeedsCreateRequest defaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_country")
+  public Country getDefaultCountry() {
+    return defaultCountry;
+  }
+  public void setDefaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
+  }
 
   /**
    */
@@ -62,6 +113,58 @@ public class FeedsCreateRequest   {
   }
   public void setDefaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
+  }
+
+  /**
+   */
+  public FeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+    this.defaultLocale = defaultLocale;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_locale")
+  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+    return defaultLocale;
+  }
+  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+    this.defaultLocale = defaultLocale;
+  }
+
+  /**
+   */
+  public FeedsCreateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+  /**
+   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+   */
+  public FeedsCreateRequest location(String location) {
+    this.location = location;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+  @JsonProperty("location")
+  public String getLocation() {
+    return location;
+  }
+  public void setLocation(String location) {
+    this.location = location;
   }
 
   /**
@@ -84,75 +187,6 @@ public class FeedsCreateRequest   {
 
   /**
    */
-  public FeedsCreateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
-  /**
-   */
-  public FeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
-    this.defaultLocale = defaultLocale;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_locale")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
-    return defaultLocale;
-  }
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
-    this.defaultLocale = defaultLocale;
-  }
-
-  /**
-   */
-  public FeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
-  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-   */
-  public FeedsCreateRequest location(String location) {
-    this.location = location;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-  @JsonProperty("location")
-  public String getLocation() {
-    return location;
-  }
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  /**
-   */
   public FeedsCreateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
     return this;
@@ -166,40 +200,6 @@ public class FeedsCreateRequest   {
   }
   public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
-  }
-
-  /**
-   */
-  public FeedsCreateRequest defaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_country")
-  public Country getDefaultCountry() {
-    return defaultCountry;
-  }
-  public void setDefaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
-  }
-
-  /**
-   */
-  public FeedsCreateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_availability")
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
-  }
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
   }
 
   /**
@@ -229,21 +229,21 @@ public class FeedsCreateRequest   {
       return false;
     }
     FeedsCreateRequest feedsCreateRequest = (FeedsCreateRequest) o;
-    return Objects.equals(defaultCurrency, feedsCreateRequest.defaultCurrency) &&
-        Objects.equals(name, feedsCreateRequest.name) &&
-        Objects.equals(format, feedsCreateRequest.format) &&
-        Objects.equals(defaultLocale, feedsCreateRequest.defaultLocale) &&
-        Objects.equals(credentials, feedsCreateRequest.credentials) &&
-        Objects.equals(location, feedsCreateRequest.location) &&
-        Objects.equals(preferredProcessingSchedule, feedsCreateRequest.preferredProcessingSchedule) &&
-        Objects.equals(defaultCountry, feedsCreateRequest.defaultCountry) &&
+    return Objects.equals(credentials, feedsCreateRequest.credentials) &&
         Objects.equals(defaultAvailability, feedsCreateRequest.defaultAvailability) &&
+        Objects.equals(defaultCountry, feedsCreateRequest.defaultCountry) &&
+        Objects.equals(defaultCurrency, feedsCreateRequest.defaultCurrency) &&
+        Objects.equals(defaultLocale, feedsCreateRequest.defaultLocale) &&
+        Objects.equals(format, feedsCreateRequest.format) &&
+        Objects.equals(location, feedsCreateRequest.location) &&
+        Objects.equals(name, feedsCreateRequest.name) &&
+        Objects.equals(preferredProcessingSchedule, feedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(status, feedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -251,15 +251,15 @@ public class FeedsCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeedsCreateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

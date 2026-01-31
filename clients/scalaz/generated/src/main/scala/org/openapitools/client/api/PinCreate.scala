@@ -8,30 +8,25 @@ import org.http4s.{EntityDecoder, EntityEncoder}
 import org.http4s.argonaut._
 import org.joda.time.DateTime
 
-import java.time.OffsetDateTime
 
 import PinCreate._
 
 case class PinCreate (
-  id: Option[String],
-createdAt: Option[OffsetDateTime],
-link: Option[String],
-title: Option[String],
-description: Option[String],
-/* Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". */
-  dominantColor: Option[String],
-altText: Option[String],
+  altText: Option[String],
 /* The board to which this Pin belongs. */
   boardId: Option[String],
 /* The board section to which this Pin belongs. */
   boardSectionId: Option[String],
-boardOwner: Option[BoardOwner],
-media: Option[PinMedia],
+description: Option[String],
+/* Dominant pin color. Hex number, e.g. `#6E7874`. */
+  dominantColor: Option[String],
+link: Option[String],
 mediaSource: Option[PinMediaSource],
-/* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
+/* The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
   parentPinId: Option[String],
-/* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-  note: Option[String])
+/* The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. */
+  sponsorId: Option[String],
+title: Option[String])
 
 object PinCreate {
   import DateTimeCodecs._

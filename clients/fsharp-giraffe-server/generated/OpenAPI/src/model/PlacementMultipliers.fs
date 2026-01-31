@@ -9,7 +9,7 @@ module PlacementMultipliers =
   //#region PlacementMultipliers
 
   //#region enums
-  type PLACEMENTEnum = SEARCHEnum of string  |  BROWSEEnum of string  
+  type PLACEMENTEnum = SEARCHEnum of string  |  BROWSEEnum of string  |  RELATEDPINSEnum of string  
   //#endregion
 
   type PlacementMultipliers = {

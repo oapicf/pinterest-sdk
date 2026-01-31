@@ -7,12 +7,12 @@ Retail product metadata entity
 
 Name | Type
 ------------ | -------------
-`itemId` | string
-`itemGroupId` | string
 `availability` | [NonNullableProductAvailabilityType](NonNullableProductAvailabilityType.md)
+`currency` | [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
+`itemGroupId` | string
+`itemId` | string
 `price` | number
 `salePrice` | number
-`currency` | [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
 
 ## Example
 
@@ -21,12 +21,12 @@ import type { CatalogsRetailProductMetadata } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "itemId": DS0294-L,
-  "itemGroupId": DS0294,
   "availability": null,
+  "currency": null,
+  "itemGroupId": DS0294,
+  "itemId": DS0294-L,
   "price": 24.99,
   "salePrice": 14.99,
-  "currency": null,
 } satisfies CatalogsRetailProductMetadata
 
 console.log(example)

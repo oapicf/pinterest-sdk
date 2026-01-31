@@ -21,9 +21,27 @@ import java.util.Objects;
 
 public class KeywordsGet200Response   {
   
+  private String bookmark;
+
   private List<@Valid Keyword> items = new ArrayList<>();
 
-  private String bookmark;
+  /**
+   **/
+  public KeywordsGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
 
   /**
    **/
@@ -52,24 +70,6 @@ public class KeywordsGet200Response   {
   }
 
 
-  /**
-   **/
-  public KeywordsGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class KeywordsGet200Response   {
       return false;
     }
     KeywordsGet200Response keywordsGet200Response = (KeywordsGet200Response) o;
-    return Objects.equals(this.items, keywordsGet200Response.items) &&
-        Objects.equals(this.bookmark, keywordsGet200Response.bookmark);
+    return Objects.equals(this.bookmark, keywordsGet200Response.bookmark) &&
+        Objects.equals(this.items, keywordsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -94,8 +94,8 @@ public class KeywordsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

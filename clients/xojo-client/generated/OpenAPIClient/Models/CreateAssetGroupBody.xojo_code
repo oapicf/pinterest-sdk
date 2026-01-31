@@ -3,17 +3,17 @@ Protected Class CreateAssetGroupBody
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Asset Group name
+			Asset group description
 		#tag EndNote
-		asset_group_name As String
+		asset_group_description As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Asset group description
+			Asset Group name
 		#tag EndNote
-		asset_group_description As String
+		asset_group_name As String
 	#tag EndProperty
 
 
@@ -62,7 +62,7 @@ Protected Class CreateAssetGroupBody
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="asset_group_name"
+			Name="asset_group_description"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -70,7 +70,7 @@ Protected Class CreateAssetGroupBody
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="asset_group_description"
+			Name="asset_group_name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

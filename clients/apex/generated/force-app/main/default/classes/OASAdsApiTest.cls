@@ -3,7 +3,7 @@ private class OASAdsApiTest {
     /**
      * Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt;\nIf you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview&quot; target&#x3D;&quot;_blank&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt;\nYou can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt;\nIf you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview&quot; target&#x3D;&quot;_blank&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt;\nYou can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.\n\nCreating ad preview from catalog product group is currently in BETA and is not available to all users.
      */
     @isTest
     private static void adPreviewsCreateTest() {
@@ -53,7 +53,7 @@ private class OASAdsApiTest {
     /**
      * Get targeting analytics for ads
      *
-     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics,\nthe response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type\n(e.g. &quot;age_bucket&quot;) for applicable values (e.g. &quot;45-49&quot;). &lt;p/&gt;\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one\nof the necessary roles granted to them via\n&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics,\nthe response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type\n(e.g. &quot;age_bucket&quot;) for applicable values (e.g. &quot;45-49&quot;). &lt;p/&gt;\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one\nof the necessary roles granted to them via\n&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void adTargetingAnalyticsGetTest() {
@@ -74,7 +74,8 @@ private class OASAdsApiTest {
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
-            'attributionTypes' => ''
+            'attributionTypes' => new List<OASConversionReportAttributionType>{OASConversionReportAttributionType.getExample()},
+            'reportingTimezone' => ''
         };
 
         OASClient client;
@@ -100,12 +101,29 @@ private class OASAdsApiTest {
         expectedResponse = OASMetricsResponse.getExample();
         response = (OASMetricsResponse) api.adTargetingAnalyticsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASAdsApi(client);
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- The request must contain either ad_ids or both campaign_ids and pin_ids.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- The request must contain either ad_ids or both campaign_ids and pin_ids.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void adsAnalyticsTest() {
@@ -126,7 +144,8 @@ private class OASAdsApiTest {
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
             'pinIds' => new List<String>{''},
-            'campaignIds' => new List<String>{''}
+            'campaignIds' => new List<String>{''},
+            'reportingTimezone' => ''
         };
 
         OASClient client;
@@ -160,12 +179,37 @@ private class OASAdsApiTest {
         expectedResponse = List.getExample();
         response = (List<OASAdsAnalyticsResponseInner>) api.adsAnalytics(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASAdsApi(client);
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASAdsAnalyticsResponseInner>) api.adsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASAdsAnalyticsResponseInner>) api.adsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASAdsAnalyticsResponseInner>) api.adsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create ads
      *
-     * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+     * Create multiple new ads. Request must contain &#x60;ad_group_id&#x60;, &#x60;creative_type&#x60;, and the source Pin &#x60;pin_id&#x60;.
      */
     @isTest
     private static void adsCreateTest() {
@@ -244,6 +288,23 @@ private class OASAdsApiTest {
         expectedResponse = OASAdResponse.getExample();
         response = (OASAdResponse) api.adsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASAdsApi(client);
+
+        js = JSON.serialize(OASAdResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdResponse.getExample();
+        response = (OASAdResponse) api.adsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdResponse.getExample();
+        response = (OASAdResponse) api.adsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -275,6 +336,31 @@ private class OASAdsApiTest {
         OASAdsList200Response expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASAdsApi(client);
+
+        js = JSON.serialize(OASAdsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsList200Response.getExample();
+        response = (OASAdsList200Response) api.adsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsList200Response.getExample();
+        response = (OASAdsList200Response) api.adsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsList200Response.getExample();
+        response = (OASAdsList200Response) api.adsList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAdsApi(client);
 

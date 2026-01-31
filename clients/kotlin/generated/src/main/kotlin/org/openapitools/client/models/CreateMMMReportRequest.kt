@@ -25,26 +25,22 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param reportName Name of the Marketing Mix Modeling (MMM) report
- * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
+ * @param columns Metric and entity columns
  * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD
  * @param granularity DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
  * @param level Level of the report
+ * @param reportName Name of the Marketing Mix Modeling (MMM) report
+ * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
  * @param targetingTypes List of targeting types
- * @param columns Metric and entity columns
  * @param countries A List of countries for filtering
  */
 
 
 data class CreateMMMReportRequest (
 
-    /* Name of the Marketing Mix Modeling (MMM) report */
-    @Json(name = "report_name")
-    val reportName: kotlin.String,
-
-    /* Metric report start date (UTC). Format: YYYY-MM-DD */
-    @Json(name = "start_date")
-    val startDate: kotlin.String,
+    /* Metric and entity columns */
+    @Json(name = "columns")
+    val columns: kotlin.collections.List<MMMReportingColumn>,
 
     /* Metric report end date (UTC). Format: YYYY-MM-DD */
     @Json(name = "end_date")
@@ -58,13 +54,17 @@ data class CreateMMMReportRequest (
     @Json(name = "level")
     val level: CreateMMMReportRequest.Level,
 
+    /* Name of the Marketing Mix Modeling (MMM) report */
+    @Json(name = "report_name")
+    val reportName: kotlin.String,
+
+    /* Metric report start date (UTC). Format: YYYY-MM-DD */
+    @Json(name = "start_date")
+    val startDate: kotlin.String,
+
     /* List of targeting types */
     @Json(name = "targeting_types")
     val targetingTypes: kotlin.collections.List<MMMReportingTargetingType>,
-
-    /* Metric and entity columns */
-    @Json(name = "columns")
-    val columns: kotlin.collections.List<MMMReportingColumn>,
 
     /* A List of countries for filtering */
     @Json(name = "countries")

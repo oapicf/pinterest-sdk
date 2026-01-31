@@ -3,27 +3,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | [optional] 
-**Name** | **String** |  | [optional] 
-**Owner** | [**AdAccountOwner**](AdAccountOwner.md) |  | [optional] 
 **Country** | [**Country**](Country.md) |  | [optional] 
+**CreatedTime** | **Int32** |  Creation time. Unix timestamp in seconds. | [optional] [readonly] 
 **Currency** | [**Currency**](Currency.md) |  | [optional] 
-**Permissions** | [**BusinessAccessRole[]**](BusinessAccessRole.md) |  | [optional] 
-**CreatedTime** | **Int32** | Creation time. Unix timestamp in seconds. | [optional] 
-**UpdatedTime** | **Int32** | Last update time. Unix timestamp in seconds. | [optional] 
+**Id** | **String** |  | 
+**Name** | **String** | Ad account name. | [optional] 
+**Owner** | [**AdAccountOwner**](AdAccountOwner.md) | Ad account owner | [optional] [readonly] 
+**Permissions** | [**BusinessAccessRole[]**](BusinessAccessRole.md) |  | [optional] [readonly] 
+**UpdatedTime** | **Int32** |  | [optional] [readonly] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdAccount = Initialize-PSOpenAPIToolsAdAccount  -Id null `
+$AdAccount = Initialize-PSOpenAPIToolsAdAccount  -Country null `
+ -CreatedTime null `
+ -Currency null `
+ -Id null `
  -Name null `
  -Owner null `
- -Country null `
- -Currency null `
  -Permissions null `
- -CreatedTime 1451431341 `
- -UpdatedTime 1451431341
+ -UpdatedTime null
 ```
 
 - Convert the resource to JSON

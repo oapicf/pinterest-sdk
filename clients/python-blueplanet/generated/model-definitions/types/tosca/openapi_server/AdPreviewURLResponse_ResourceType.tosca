@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPreviewURLResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPreviewURLResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdPreviewURLResponse {
+    title = AdPreviewURLResponse
+    description = AdPreviewURLResponse
+    derivedFrom = Root
+    properties {
+        url {
+          type =  string
+          description = "&#39;Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19&#39;"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPreviewURLResponse {
+    title = AdPreviewURLResponse
+    description = AdPreviewURLResponse
+    implements = openapi_server.resourceTypes.AdPreviewURLResponse
+
+  }
+}

@@ -4,13 +4,122 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](BusinessAccessRelationshipsAPI.md#brandaccountscreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](BusinessAccessRelationshipsAPI.md#brandaccountsupdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](BusinessAccessRelationshipsAPI.md#deletebusinessmembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](BusinessAccessRelationshipsAPI.md#deletebusinesspartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](BusinessAccessRelationshipsAPI.md#getbusinessemployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](BusinessAccessRelationshipsAPI.md#getbusinessmembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](BusinessAccessRelationshipsAPI.md#getbusinesspartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](BusinessAccessRelationshipsAPI.md#systemuserupdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](BusinessAccessRelationshipsAPI.md#updatebusinessmemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+# **brandAccountsCreate**
+```swift
+    open class func brandAccountsCreate(businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest, completion: @escaping (_ data: BrandAccountsCreate200Response?, _ error: Error?) -> Void)
+```
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let businessHierarchyId = "businessHierarchyId_example" // String | business hierarchy node id
+let brandAccountsCreateRequest = brand_accounts_create_request(name: "name_example", username: "username_example", country: Country(), about: "about_example", website: "website_example", profileImage: Image_Base64(contentType: "contentType_example", data: "data_example")) // BrandAccountsCreateRequest | 
+
+// Create a Brand Account
+BusinessAccessRelationshipsAPI.brandAccountsCreate(businessHierarchyId: businessHierarchyId, brandAccountsCreateRequest: brandAccountsCreateRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **String** | business hierarchy node id | 
+ **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **brandAccountsUpdate**
+```swift
+    open class func brandAccountsUpdate(businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, completion: @escaping (_ data: BrandAccountsCreate200Response?, _ error: Error?) -> Void)
+```
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let businessHierarchyId = "businessHierarchyId_example" // String | business hierarchy node id
+let brandAccountId = "brandAccountId_example" // String | Unique identifier of a brand account.
+let brandAccountsUpdateRequest = brand_accounts_update_request(name: "name_example", username: "username_example", country: Country(), about: "about_example", website: "website_example", profileImage: Image_Base64(contentType: "contentType_example", data: "data_example")) // BrandAccountsUpdateRequest | 
+
+// Update a Brand Account
+BusinessAccessRelationshipsAPI.brandAccountsUpdate(businessHierarchyId: businessHierarchyId, brandAccountId: brandAccountId, brandAccountsUpdateRequest: brandAccountsUpdateRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **String** | business hierarchy node id | 
+ **brandAccountId** | **String** | Unique identifier of a brand account. | 
+ **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteBusinessMembership**
 ```swift
@@ -27,7 +136,7 @@ Terminate memberships between the specified members and your business.
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Business id
-let membersToDeleteBody = MembersToDeleteBody(members: [MembersToDeleteBody_members_inner(memberId: "memberId_example", businessRole: BusinessRoleForMembers())]) // MembersToDeleteBody | List of members with role to delete.
+let membersToDeleteBody = MembersToDeleteBody(members: [MembersToDeleteBody_members_inner(businessRole: BusinessRoleForMembers(), memberId: "memberId_example")]) // MembersToDeleteBody | List of members with role to delete.
 
 // Terminate business memberships
 BusinessAccessRelationshipsAPI.deleteBusinessMembership(businessId: businessId, membersToDeleteBody: membersToDeleteBody) { (response, error) in
@@ -170,7 +279,7 @@ Name | Type | Description  | Notes
 
 # **getBusinessMembers**
 ```swift
-    open class func getBusinessMembers(businessId: String, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: GetBusinessMembers200Response?, _ error: Error?) -> Void)
+    open class func getBusinessMembers(businessId: String, fetchSystemUsers: Bool? = nil, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: GetBusinessMembers200Response?, _ error: Error?) -> Void)
 ```
 
 Get business members
@@ -183,6 +292,7 @@ Get all members of the specified business. The return response will include the 
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
+let fetchSystemUsers = true // Bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 let assetsSummary = true // Bool | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to false)
 let businessRoles = [MemberBusinessRole()] // [MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
 let memberIds = "memberIds_example" // String | A list of business members ids separated by comma. (optional)
@@ -191,7 +301,7 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // Get business members
-BusinessAccessRelationshipsAPI.getBusinessMembers(businessId: businessId, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize) { (response, error) in
+BusinessAccessRelationshipsAPI.getBusinessMembers(businessId: businessId, fetchSystemUsers: fetchSystemUsers, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -208,6 +318,7 @@ BusinessAccessRelationshipsAPI.getBusinessMembers(businessId: businessId, assets
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String** | Unique identifier of the requesting business. | 
+ **fetchSystemUsers** | **Bool** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **assetsSummary** | **Bool** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
  **businessRoles** | [**[MemberBusinessRole]**](MemberBusinessRole.md) | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
  **memberIds** | **String** | A list of business members ids separated by comma. | [optional] 
@@ -288,6 +399,60 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **systemUserUpdate**
+```swift
+    open class func systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let businessId = "businessId_example" // String | Unique identifier of the requesting business.
+let systemUserId = "systemUserId_example" // String | Unique identifier of a system user.
+let systemUserUpdateRequest = system_user_update_request(name: "name_example") // SystemUserUpdateRequest | 
+
+// Update a system user information.
+BusinessAccessRelationshipsAPI.systemUserUpdate(businessId: businessId, systemUserId: systemUserId, systemUserUpdateRequest: systemUserUpdateRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessId** | **String** | Unique identifier of the requesting business. | 
+ **systemUserId** | **String** | Unique identifier of a system user. | 
+ **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

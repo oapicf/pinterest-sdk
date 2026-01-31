@@ -23,7 +23,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_leads_export_create_request <- LeadsExportCreateRequest$new("start_date_example", "end_date_example", "ad_id_example") # LeadsExportCreateRequest | 
+var_leads_export_create_request <- LeadsExportCreateRequest$new("ad_id_example", "end_date_example", "start_date_example") # LeadsExportCreateRequest | 
 
 api_instance <- LeadsExportApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

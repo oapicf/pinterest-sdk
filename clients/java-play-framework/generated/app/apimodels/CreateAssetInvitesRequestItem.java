@@ -14,9 +14,16 @@ import javax.validation.Valid;
 /**
  * Object declaring an asset role update to an invite.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreateAssetInvitesRequestItem   {
+  @JsonProperty("asset_id_to_permissions")
+  @NotNull
+@Size(min=1)
+@Valid
+
+  private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+
   @JsonProperty("invite_id")
   @NotNull
 @Pattern(regexp="^\\d+$")
@@ -29,12 +36,30 @@ public class CreateAssetInvitesRequestItem   {
 
   private InviteType inviteType;
 
-  @JsonProperty("asset_id_to_permissions")
-  @NotNull
-@Size(min=1)
-@Valid
+  public CreateAssetInvitesRequestItem assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+    this.assetIdToPermissions = assetIdToPermissions;
+    return this;
+  }
 
-  private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+  public CreateAssetInvitesRequestItem putAssetIdToPermissionsItem(String key, List<Permissions> assetIdToPermissionsItem) {
+    if (this.assetIdToPermissions == null) {
+      this.assetIdToPermissions = new HashMap<>();
+    }
+    this.assetIdToPermissions.put(key, assetIdToPermissionsItem);
+    return this;
+  }
+
+   /**
+   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+   * @return assetIdToPermissions
+  **/
+  public Map<String, List<Permissions>> getAssetIdToPermissions() {
+    return assetIdToPermissions;
+  }
+
+  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+    this.assetIdToPermissions = assetIdToPermissions;
+  }
 
   public CreateAssetInvitesRequestItem inviteId(String inviteId) {
     this.inviteId = inviteId;
@@ -70,31 +95,6 @@ public class CreateAssetInvitesRequestItem   {
     this.inviteType = inviteType;
   }
 
-  public CreateAssetInvitesRequestItem assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
-    this.assetIdToPermissions = assetIdToPermissions;
-    return this;
-  }
-
-  public CreateAssetInvitesRequestItem putAssetIdToPermissionsItem(String key, List<Permissions> assetIdToPermissionsItem) {
-    if (this.assetIdToPermissions == null) {
-      this.assetIdToPermissions = new HashMap<>();
-    }
-    this.assetIdToPermissions.put(key, assetIdToPermissionsItem);
-    return this;
-  }
-
-   /**
-   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-   * @return assetIdToPermissions
-  **/
-  public Map<String, List<Permissions>> getAssetIdToPermissions() {
-    return assetIdToPermissions;
-  }
-
-  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
-    this.assetIdToPermissions = assetIdToPermissions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -105,14 +105,14 @@ public class CreateAssetInvitesRequestItem   {
       return false;
     }
     CreateAssetInvitesRequestItem createAssetInvitesRequestItem = (CreateAssetInvitesRequestItem) o;
-    return Objects.equals(inviteId, createAssetInvitesRequestItem.inviteId) &&
-        Objects.equals(inviteType, createAssetInvitesRequestItem.inviteType) &&
-        Objects.equals(assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions);
+    return Objects.equals(assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions) &&
+        Objects.equals(inviteId, createAssetInvitesRequestItem.inviteId) &&
+        Objects.equals(inviteType, createAssetInvitesRequestItem.inviteType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteId, inviteType, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, inviteId, inviteType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -121,9 +121,9 @@ public class CreateAssetInvitesRequestItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetInvitesRequestItem {\n");
     
+    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
     sb.append("    inviteId: ").append(toIndentedString(inviteId)).append("\n");
     sb.append("    inviteType: ").append(toIndentedString(inviteType)).append("\n");
-    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

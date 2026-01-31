@@ -22,13 +22,13 @@ bulk_upsert_status_response_t* instantiate_bulk_upsert_status_response(int inclu
   bulk_upsert_status_response_t* bulk_upsert_status_response = NULL;
   if (include_optional) {
     bulk_upsert_status_response = bulk_upsert_status_response_create(
-      pinterest_rest_api_bulk_upsert_status_response__"SUCCEEDED",
-      "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)"
+      "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)",
+      pinterest_rest_api_bulk_upsert_status_response__"SUCCEEDED"
     );
   } else {
     bulk_upsert_status_response = bulk_upsert_status_response_create(
-      pinterest_rest_api_bulk_upsert_status_response__"SUCCEEDED",
-      "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)"
+      "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)",
+      pinterest_rest_api_bulk_upsert_status_response__"SUCCEEDED"
     );
   }
 

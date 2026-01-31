@@ -8,8 +8,8 @@
 
 (def catalogs-product-group-multiple-media-types-criteria-data
   {
-   (ds/req :values) (s/coll-of media-type-spec)
    (ds/opt :negated) boolean?
+   (ds/req :values) (s/coll-of media-type-spec)
    })
 
 (def catalogs-product-group-multiple-media-types-criteria-spec

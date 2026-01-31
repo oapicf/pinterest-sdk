@@ -22,13 +22,13 @@ get_invites_200_response_t* instantiate_get_invites_200_response(int include_opt
   get_invites_200_response_t* get_invites_200_response = NULL;
   if (include_optional) {
     get_invites_200_response = get_invites_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     get_invites_200_response = get_invites_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

@@ -1,0 +1,26 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "catalog_product_group_id" },
+      {"model": "creative_type" },
+      {"model": "customizable_cta_type" },
+      {"model": "hero_image_title" },
+      {"model": "hero_image_url" },
+      {"model": "hero_pin_id" },
+      {"model": "image_tag" },
+      {"model": "item_id" },
+      {"model": "preferred_media_type" },
+      {"model": "video_tag" },
+    ]
+  }]
+}

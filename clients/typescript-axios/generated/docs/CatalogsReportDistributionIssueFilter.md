@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**report_type** | **string** |  | [default to undefined]
 **catalog_id** | **string** | Unique identifier of a catalog. If not given, oldest catalog will be used | [optional] [default to undefined]
+**report_type** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsReportDistributionIssueFilter } from './api';
 
 const instance: CatalogsReportDistributionIssueFilter = {
-    report_type,
     catalog_id,
+    report_type,
 };
 ```
 

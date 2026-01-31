@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;Catalog&gt;**](Catalog.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;Catalog&gt;**](Catalog.md) |  | 
 
 
 

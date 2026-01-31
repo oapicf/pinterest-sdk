@@ -8,9 +8,9 @@
 
 (def conversion-api-response-data
   {
-   (ds/req :num_events_received) int?
-   (ds/req :num_events_processed) int?
    (ds/req :events) (s/coll-of conversion-api-response-events-inner-spec)
+   (ds/req :num_events_processed) int?
+   (ds/req :num_events_received) int?
    })
 
 (def conversion-api-response-spec

@@ -5,12 +5,6 @@
   "name": "DeliveryMetricsResponseItemsInner",
   "fields": [
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "Metric's name.",
-      "default": null
-    },
-    {
       "name": "category",
       "type": ["null", {
         "type": "enum",
@@ -33,6 +27,12 @@
       "name": "display_name",
       "type": ["null", "string"],
       "doc": "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Metric's name.",
       "default": null
     }
   ]

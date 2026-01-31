@@ -17,12 +17,11 @@
     },
     {
       "name": "errors",
-      "type": ["null", {
+      "type": {
         "type": "array",
         "items": "model.ItemValidationEvent"
-      }],
-      "doc": "Array with the errors for the item id requested",
-      "default": null
+      },
+      "doc": "Array with the errors for the item id requested"
     }
   ]
 

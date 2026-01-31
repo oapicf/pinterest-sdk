@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkReportingJobStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkReportingJobStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BulkReportingJobStatus {
+    title = BulkReportingJobStatus
+    description = BulkReportingJobStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkReportingJobStatus {
+    title = BulkReportingJobStatus
+    description = BulkReportingJobStatus
+    implements = openapi_server.resourceTypes.BulkReportingJobStatus
+
+  }
+}

@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**audiences_slash_create**](AudiencesApi.md#audiences_slash_create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
-[**audiences_slash_create_custom**](AudiencesApi.md#audiences_slash_create_custom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**audiences_slash_get**](AudiencesApi.md#audiences_slash_get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 [**audiences_slash_list**](AudiencesApi.md#audiences_slash_list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
 [**audiences_slash_update**](AudiencesApi.md#audiences_slash_update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
@@ -17,7 +16,7 @@ Method | HTTP request | Description
 > models::Audience audiences_slash_create(ad_account_id, audience_create_request)
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 
 ### Parameters
 
@@ -26,37 +25,6 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **audience_create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] | [required] |
-
-### Return type
-
-[**models::Audience**](Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## audiences_slash_create_custom
-
-> models::Audience audiences_slash_create_custom(ad_account_id, audience_create_custom_request)
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**audience_create_custom_request** | [**AudienceCreateCustomRequest**](AudienceCreateCustomRequest.md) | Custom audience to create. | [required] |
 
 ### Return type
 
@@ -95,7 +63,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -129,7 +97,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -153,7 +121,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **audience_id** | **String** | Unique identifier of an audience | [required] |
-**audience_update_request** | Option<[**AudienceUpdateRequest**](AudienceUpdateRequest.md)> | The audience to be updated. |  |
+**audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. | [required] |
 
 ### Return type
 

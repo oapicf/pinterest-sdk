@@ -16,20 +16,27 @@
 typedef struct pin_media_with_images_t pin_media_with_images_t;
 
 #include "image_metadata.h"
-#include "pin_media.h"
+
+// Enum MEDIATYPE for pin_media_with_images
+
+typedef enum  { pinterest_rest_api_pin_media_with_images_MEDIATYPE_NULL = 0, pinterest_rest_api_pin_media_with_images_MEDIATYPE_multiple_images } pinterest_rest_api_pin_media_with_images_MEDIATYPE_e;
+
+char* pin_media_with_images_media_type_ToString(pinterest_rest_api_pin_media_with_images_MEDIATYPE_e media_type);
+
+pinterest_rest_api_pin_media_with_images_MEDIATYPE_e pin_media_with_images_media_type_FromString(char* media_type);
 
 
 
 typedef struct pin_media_with_images_t {
-    char *media_type; // string
     list_t *items; //nonprimitive container
+    pinterest_rest_api_pin_media_with_images_MEDIATYPE_e media_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_images_t;
 
 __attribute__((deprecated)) pin_media_with_images_t *pin_media_with_images_create(
-    char *media_type,
-    list_t *items
+    list_t *items,
+    pinterest_rest_api_pin_media_with_images_MEDIATYPE_e media_type
 );
 
 void pin_media_with_images_free(pin_media_with_images_t *pin_media_with_images);

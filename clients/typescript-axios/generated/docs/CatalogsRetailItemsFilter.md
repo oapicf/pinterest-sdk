@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalog_id** | **string** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
 **item_ids** | **Array&lt;string&gt;** |  | [default to undefined]
-**catalog_id** | **string** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { CatalogsRetailItemsFilter } from './api';
 
 const instance: CatalogsRetailItemsFilter = {
+    catalog_id,
     catalog_type,
     item_ids,
-    catalog_id,
 };
 ```
 

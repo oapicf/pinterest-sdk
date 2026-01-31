@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeliveryMetricsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeliveryMetricsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeliveryMetricsResponseItemsInner = openapi_server.resourceTypes.DeliveryMetricsResponseItemsInner
+}
+resourceTypes {
+
+  DeliveryMetricsResponse {
+    title = DeliveryMetricsResponse
+    description = DeliveryMetricsResponse
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = DeliveryMetricsResponseItemsInner
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeliveryMetricsResponse {
+    title = DeliveryMetricsResponse
+    description = DeliveryMetricsResponse
+    implements = openapi_server.resourceTypes.DeliveryMetricsResponse
+
+  }
+}

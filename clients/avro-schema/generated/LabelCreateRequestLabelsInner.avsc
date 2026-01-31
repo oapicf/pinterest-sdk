@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LabelCreateRequestLabelsInner",
+  "fields": [
+    {
+      "name": "label_type",
+      "type": "model.LabelType",
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "Label name. 100-character limit."
+    }
+  ]
+
+}

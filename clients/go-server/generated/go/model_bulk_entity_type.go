@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// BulkEntityType : Refers ads entity type
+// BulkEntityType : Refers ads entity type. Schedule enum is only applicable to beta users
 type BulkEntityType string
 
 // List of BulkEntityType
@@ -27,6 +27,8 @@ const (
 	PRODUCT_GROUP BulkEntityType = "PRODUCT_GROUP"
 	AD BulkEntityType = "AD"
 	KEYWORD BulkEntityType = "KEYWORD"
+	LABEL BulkEntityType = "LABEL"
+	SCHEDULE BulkEntityType = "SCHEDULE"
 )
 
 // AllowedBulkEntityTypeEnumValues is all the allowed values of BulkEntityType enum
@@ -36,6 +38,8 @@ var AllowedBulkEntityTypeEnumValues = []BulkEntityType{
 	"PRODUCT_GROUP",
 	"AD",
 	"KEYWORD",
+	"LABEL",
+	"SCHEDULE",
 }
 
 // validBulkEntityTypeEnumValue provides a map of BulkEntityTypes for fast verification of use input
@@ -45,6 +49,8 @@ var validBulkEntityTypeEnumValues = map[BulkEntityType]struct{}{
 	"PRODUCT_GROUP": {},
 	"AD": {},
 	"KEYWORD": {},
+	"LABEL": {},
+	"SCHEDULE": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

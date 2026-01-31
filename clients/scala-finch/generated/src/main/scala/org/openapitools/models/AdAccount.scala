@@ -13,22 +13,22 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param id 
- * @param name 
- * @param owner 
  * @param country 
+ * @param createdUnderscoretime  Creation time. Unix timestamp in seconds.
  * @param currency 
+ * @param id 
+ * @param name Ad account name.
+ * @param owner Ad account owner
  * @param permissions 
- * @param createdUnderscoretime Creation time. Unix timestamp in seconds.
- * @param updatedUnderscoretime Last update time. Unix timestamp in seconds.
+ * @param updatedUnderscoretime 
  */
-case class AdAccount(id: Option[String],
+case class AdAccount(country: Option[Country],
+                createdUnderscoretime: Option[Int],
+                currency: Option[Currency],
+                id: String,
                 name: Option[String],
                 owner: Option[AdAccountOwner],
-                country: Option[Country],
-                currency: Option[Currency],
                 permissions: Option[Seq[BusinessAccessRole]],
-                createdUnderscoretime: Option[Int],
                 updatedUnderscoretime: Option[Int]
                 )
 

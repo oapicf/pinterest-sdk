@@ -6,8 +6,9 @@
 | ------------ | ------------- | ------------- | ------------- |
 | **catalogType** | [**inline**](#CatalogType) |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **items** | [**kotlin.collections.List&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations |  |
+| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
+| **catalogId** | **kotlin.String** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog |  [optional] |
 
 
 <a id="CatalogType"></a>

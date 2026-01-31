@@ -14,7 +14,7 @@ module AudienceCreateRequest =
     AdAccountId : string;
     Name : string;
     Rule : AudienceRule;
-    Description : string;
     AudienceType : AudienceType;
+    Description : string;
   }
   //#endregion

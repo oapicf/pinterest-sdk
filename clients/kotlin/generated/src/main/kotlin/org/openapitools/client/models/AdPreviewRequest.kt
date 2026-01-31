@@ -17,6 +17,8 @@ package org.openapitools.client.models
 
 import org.openapitools.client.models.AdPreviewCreateFromImage
 import org.openapitools.client.models.AdPreviewCreateFromPin
+import org.openapitools.client.models.AdPreviewShopping
+import org.openapitools.client.models.CustomizableCTAType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -27,6 +29,16 @@ import com.squareup.moshi.JsonClass
  * @param imageUrl Image URL.
  * @param title Title displayed below ad.
  * @param pinId Pin ID.
+ * @param catalogProductGroupId Catalog Product Group Id.
+ * @param creativeType Ad format of the shopping ad preview.
+ * @param customizableCtaType Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
+ * @param heroImageTitle Title displayed below ad.
+ * @param heroImageUrl Hero image URL.
+ * @param heroPinId Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.
+ * @param imageTag Multi image template tag.
+ * @param itemId Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
+ * @param preferredMediaType Preferred media type.
+ * @param videoTag Multi video template tag, image_tag and video_tag are mutual exclusive.
  */
 
 
@@ -42,10 +54,72 @@ data class AdPreviewRequest (
 
     /* Pin ID. */
     @Json(name = "pin_id")
-    val pinId: kotlin.String
+    val pinId: kotlin.String,
+
+    /* Catalog Product Group Id. */
+    @Json(name = "catalog_product_group_id")
+    val catalogProductGroupId: kotlin.String,
+
+    /* Ad format of the shopping ad preview. */
+    @Json(name = "creative_type")
+    val creativeType: AdPreviewRequest.CreativeType,
+
+    /* Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE` */
+    @Json(name = "customizable_cta_type")
+    val customizableCtaType: CustomizableCTAType? = null,
+
+    /* Title displayed below ad. */
+    @Json(name = "hero_image_title")
+    val heroImageTitle: kotlin.String? = null,
+
+    /* Hero image URL. */
+    @Json(name = "hero_image_url")
+    val heroImageUrl: kotlin.String? = null,
+
+    /* Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required. */
+    @Json(name = "hero_pin_id")
+    val heroPinId: kotlin.String? = null,
+
+    /* Multi image template tag. */
+    @Json(name = "image_tag")
+    val imageTag: kotlin.String? = null,
+
+    /* Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING. */
+    @Json(name = "item_id")
+    val itemId: kotlin.String? = null,
+
+    /* Preferred media type. */
+    @Json(name = "preferred_media_type")
+    val preferredMediaType: AdPreviewRequest.PreferredMediaType? = null,
+
+    /* Multi video template tag, image_tag and video_tag are mutual exclusive. */
+    @Json(name = "video_tag")
+    val videoTag: kotlin.String? = null
 
 ) {
 
+    /**
+     * Ad format of the shopping ad preview.
+     *
+     * Values: SHOPPING,CAROUSEL,COLLECTION,REGULAR
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CreativeType(val value: kotlin.String) {
+        @Json(name = "SHOPPING") SHOPPING("SHOPPING"),
+        @Json(name = "CAROUSEL") CAROUSEL("CAROUSEL"),
+        @Json(name = "COLLECTION") COLLECTION("COLLECTION"),
+        @Json(name = "REGULAR") REGULAR("REGULAR");
+    }
+    /**
+     * Preferred media type.
+     *
+     * Values: VIDEO,IMAGE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class PreferredMediaType(val value: kotlin.String) {
+        @Json(name = "VIDEO") VIDEO("VIDEO"),
+        @Json(name = "IMAGE") IMAGE("IMAGE");
+    }
 
 }
 

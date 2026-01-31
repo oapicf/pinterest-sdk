@@ -7,27 +7,31 @@
 #' @title CatalogsCreateRetailItem
 #' @description CatalogsCreateRetailItem Class
 #' @format An \code{R6Class} generator object
+#' @field attributes  \link{ItemAttributesRequest}
 #' @field item_id The catalog item id in the merchant namespace character
 #' @field operation  character
-#' @field attributes  \link{ItemAttributesRequest}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsCreateRetailItem <- R6::R6Class(
   "CatalogsCreateRetailItem",
   public = list(
+    `attributes` = NULL,
     `item_id` = NULL,
     `operation` = NULL,
-    `attributes` = NULL,
 
     #' @description
     #' Initialize a new CatalogsCreateRetailItem class.
     #'
+    #' @param attributes attributes
     #' @param item_id The catalog item id in the merchant namespace
     #' @param operation operation
-    #' @param attributes attributes
     #' @param ... Other optional arguments.
-    initialize = function(`item_id`, `operation`, `attributes`, ...) {
+    initialize = function(`attributes`, `item_id`, `operation`, ...) {
+      if (!missing(`attributes`)) {
+        stopifnot(R6::is.R6(`attributes`))
+        self$`attributes` <- `attributes`
+      }
       if (!missing(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
           stop(paste("Error! Invalid data for `item_id`. Must be a string:", `item_id`))
@@ -42,10 +46,6 @@ CatalogsCreateRetailItem <- R6::R6Class(
           stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
         }
         self$`operation` <- `operation`
-      }
-      if (!missing(`attributes`)) {
-        stopifnot(R6::is.R6(`attributes`))
-        self$`attributes` <- `attributes`
       }
     },
 
@@ -80,6 +80,10 @@ CatalogsCreateRetailItem <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsCreateRetailItemObject <- list()
+      if (!is.null(self$`attributes`)) {
+        CatalogsCreateRetailItemObject[["attributes"]] <-
+          self$`attributes`$toSimpleType()
+      }
       if (!is.null(self$`item_id`)) {
         CatalogsCreateRetailItemObject[["item_id"]] <-
           self$`item_id`
@@ -87,10 +91,6 @@ CatalogsCreateRetailItem <- R6::R6Class(
       if (!is.null(self$`operation`)) {
         CatalogsCreateRetailItemObject[["operation"]] <-
           self$`operation`
-      }
-      if (!is.null(self$`attributes`)) {
-        CatalogsCreateRetailItemObject[["attributes"]] <-
-          self$`attributes`$toSimpleType()
       }
       return(CatalogsCreateRetailItemObject)
     },
@@ -102,6 +102,11 @@ CatalogsCreateRetailItem <- R6::R6Class(
     #' @return the instance of CatalogsCreateRetailItem
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`attributes`)) {
+        `attributes_object` <- ItemAttributesRequest$new()
+        `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
+        self$`attributes` <- `attributes_object`
+      }
       if (!is.null(this_object$`item_id`)) {
         self$`item_id` <- this_object$`item_id`
       }
@@ -110,11 +115,6 @@ CatalogsCreateRetailItem <- R6::R6Class(
           stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"CREATE\".", sep = ""))
         }
         self$`operation` <- this_object$`operation`
-      }
-      if (!is.null(this_object$`attributes`)) {
-        `attributes_object` <- ItemAttributesRequest$new()
-        `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
-        self$`attributes` <- `attributes_object`
       }
       self
     },
@@ -137,12 +137,12 @@ CatalogsCreateRetailItem <- R6::R6Class(
     #' @return the instance of CatalogsCreateRetailItem
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`attributes` <- ItemAttributesRequest$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self$`item_id` <- this_object$`item_id`
       if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("CREATE"))) {
         stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"CREATE\".", sep = ""))
       }
       self$`operation` <- this_object$`operation`
-      self$`attributes` <- ItemAttributesRequest$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -152,6 +152,12 @@ CatalogsCreateRetailItem <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `attributes`
+      if (!is.null(input_json$`attributes`)) {
+        stopifnot(R6::is.R6(input_json$`attributes`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreateRetailItem: the required field `attributes` is missing."))
+      }
       # check the required field `item_id`
       if (!is.null(input_json$`item_id`)) {
         if (!(is.character(input_json$`item_id`) && length(input_json$`item_id`) == 1)) {
@@ -168,12 +174,6 @@ CatalogsCreateRetailItem <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreateRetailItem: the required field `operation` is missing."))
       }
-      # check the required field `attributes`
-      if (!is.null(input_json$`attributes`)) {
-        stopifnot(R6::is.R6(input_json$`attributes`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreateRetailItem: the required field `attributes` is missing."))
-      }
     },
 
     #' @description
@@ -189,6 +189,11 @@ CatalogsCreateRetailItem <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `attributes` is null
+      if (is.null(self$`attributes`)) {
+        return(FALSE)
+      }
+
       # check if the required `item_id` is null
       if (is.null(self$`item_id`)) {
         return(FALSE)
@@ -196,11 +201,6 @@ CatalogsCreateRetailItem <- R6::R6Class(
 
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
-        return(FALSE)
-      }
-
-      # check if the required `attributes` is null
-      if (is.null(self$`attributes`)) {
         return(FALSE)
       }
 
@@ -213,6 +213,11 @@ CatalogsCreateRetailItem <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `attributes` is null
+      if (is.null(self$`attributes`)) {
+        invalid_fields["attributes"] <- "Non-nullable required field `attributes` cannot be null."
+      }
+
       # check if the required `item_id` is null
       if (is.null(self$`item_id`)) {
         invalid_fields["item_id"] <- "Non-nullable required field `item_id` cannot be null."
@@ -221,11 +226,6 @@ CatalogsCreateRetailItem <- R6::R6Class(
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
         invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
-      }
-
-      # check if the required `attributes` is null
-      if (is.null(self$`attributes`)) {
-        invalid_fields["attributes"] <- "Non-nullable required field `attributes` cannot be null."
       }
 
       invalid_fields

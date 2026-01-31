@@ -29,15 +29,15 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemErrorResponse", description = "Object describing a retail item error")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsRetailItemErrorResponse implements ItemResponseOneOf1 {
 
   private CatalogsType catalogType;
 
-  private String itemId;
-
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
+  private String itemId;
 
   public CatalogsRetailItemErrorResponse() {
     super();
@@ -46,8 +46,9 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailItemErrorResponse(CatalogsType catalogType) {
+  public CatalogsRetailItemErrorResponse(CatalogsType catalogType, List<@Valid ItemValidationEvent> errors) {
     this.catalogType = catalogType;
+    this.errors = errors;
   }
 
   public CatalogsRetailItemErrorResponse catalogType(CatalogsType catalogType) {
@@ -70,6 +71,34 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
     this.catalogType = catalogType;
   }
 
+  public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   * @return errors
+   */
+  @NotNull @Valid 
+  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("errors")
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
   public CatalogsRetailItemErrorResponse itemId(String itemId) {
     this.itemId = itemId;
     return this;
@@ -90,34 +119,6 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
     this.itemId = itemId;
   }
 
-  public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Array with the errors for the item id requested
-   * @return errors
-   */
-  @Valid 
-  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("errors")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -128,13 +129,13 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -142,8 +143,8 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

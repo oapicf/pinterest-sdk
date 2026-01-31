@@ -8,9 +8,9 @@
 
 (def catalogs-creative-assets-batch-item-data
   {
+   (ds/req :attributes) catalogs-updatable-creative-assets-attributes-spec
    (ds/req :creative_assets_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) catalogs-updatable-creative-assets-attributes-spec
    })
 
 (def catalogs-creative-assets-batch-item-spec

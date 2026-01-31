@@ -15,20 +15,20 @@
 
 typedef struct media_list_200_response_t media_list_200_response_t;
 
-#include "media_upload_details.h"
+#include "media.h"
 
 
 
 typedef struct media_list_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } media_list_200_response_t;
 
 __attribute__((deprecated)) media_list_200_response_t *media_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void media_list_200_response_free(media_list_200_response_t *media_list_200_response);

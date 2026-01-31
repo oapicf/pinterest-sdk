@@ -5,18 +5,18 @@ context("Test SSIOAccountPMPName")
 
 model_instance <- SSIOAccountPMPName$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Display name
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("id", {
   # tests for the property `id` (character)
   # Salesforce id for PMP
 
   # uncomment below to test the property
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Display name
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })

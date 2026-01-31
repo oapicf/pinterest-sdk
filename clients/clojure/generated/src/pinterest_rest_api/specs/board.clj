@@ -3,23 +3,25 @@
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.board-media :refer :all]
             [pinterest-rest-api.specs.board-owner :refer :all]
+            [pinterest-rest-api.specs.board-privacy :refer :all]
             )
   (:import (java.io File)))
 
 
 (def board-data
   {
-   (ds/opt :id) string?
-   (ds/opt :created_at) inst?
    (ds/opt :board_pins_modified_at) inst?
-   (ds/req :name) string?
-   (ds/opt :description) string?
    (ds/opt :collaborator_count) int?
-   (ds/opt :pin_count) int?
+   (ds/opt :created_at) inst?
+   (ds/opt :description) string?
    (ds/opt :follower_count) int?
+   (ds/req :id) string?
+   (ds/opt :is_ads_only) boolean?
    (ds/opt :media) board-media-spec
+   (ds/req :name) string?
    (ds/opt :owner) board-owner-spec
-   (ds/opt :privacy) string?
+   (ds/opt :pin_count) int?
+   (ds/opt :privacy) board-privacy-spec
    })
 
 (def board-spec

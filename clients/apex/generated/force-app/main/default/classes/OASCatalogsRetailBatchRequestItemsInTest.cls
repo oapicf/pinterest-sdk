@@ -75,14 +75,16 @@ private class OASCatalogsRetailBatchRequestItemsInTest {
         Map<String, String> x-property-mappings = catalogsRetailBatchRequestItemsInner.getx-property-mappings();
         System.assertEquals('itemId', x-property-mappings.get('item_id'));
         System.assertEquals('updateMask', x-property-mappings.get('update_mask'));
+        System.assertEquals('lastUpdatedTime', x-property-mappings.get('last_updated_time'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsRetailBatchRequestItemsIn catalogsRetailBatchRequestItemsInner = new OASCatalogsRetailBatchRequestItemsIn();
         System.assertEquals(new List<OASUpdateMaskFieldType>(), catalogsRetailBatchRequestItemsInner.updateMask);
+        System.assertEquals(null, catalogsRetailBatchRequestItemsInner.attributes);
         System.assertEquals(null, catalogsRetailBatchRequestItemsInner.itemId);
         System.assertEquals(null, catalogsRetailBatchRequestItemsInner.operation);
-        System.assertEquals(null, catalogsRetailBatchRequestItemsInner.attributes);
+        System.assertEquals(null, catalogsRetailBatchRequestItemsInner.lastUpdatedTime);
     }
 }

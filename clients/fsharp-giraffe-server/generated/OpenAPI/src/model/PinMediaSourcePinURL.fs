@@ -12,7 +12,7 @@ module PinMediaSourcePinURL =
   //#endregion
 
   type PinMediaSourcePinURL = {
-    SourceType : SourceTypeEnum;
     IsAffiliateLink : bool;
+    SourceType : SourceTypeEnum;
   }
   //#endregion

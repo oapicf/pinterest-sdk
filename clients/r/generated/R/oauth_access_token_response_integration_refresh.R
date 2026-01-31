@@ -9,11 +9,11 @@
 #' @format An \code{R6Class} generator object
 #' @field refresh_token  character
 #' @field refresh_token_expires_in  integer
-#' @field response_type  character [optional]
 #' @field access_token  character
-#' @field token_type  character
 #' @field expires_in  integer
+#' @field response_type  character [optional]
 #' @field scope  character
+#' @field token_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,11 +22,11 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
   public = list(
     `refresh_token` = NULL,
     `refresh_token_expires_in` = NULL,
-    `response_type` = NULL,
     `access_token` = NULL,
-    `token_type` = NULL,
     `expires_in` = NULL,
+    `response_type` = NULL,
     `scope` = NULL,
+    `token_type` = NULL,
 
     #' @description
     #' Initialize a new OauthAccessTokenResponseIntegrationRefresh class.
@@ -34,12 +34,12 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
     #' @param refresh_token refresh_token
     #' @param refresh_token_expires_in refresh_token_expires_in
     #' @param access_token access_token
-    #' @param token_type token_type
     #' @param expires_in expires_in
     #' @param scope scope
+    #' @param token_type token_type
     #' @param response_type response_type
     #' @param ... Other optional arguments.
-    initialize = function(`refresh_token`, `refresh_token_expires_in`, `access_token`, `token_type`, `expires_in`, `scope`, `response_type` = NULL, ...) {
+    initialize = function(`refresh_token`, `refresh_token_expires_in`, `access_token`, `expires_in`, `scope`, `token_type`, `response_type` = NULL, ...) {
       if (!missing(`refresh_token`)) {
         if (!(is.character(`refresh_token`) && length(`refresh_token`) == 1)) {
           stop(paste("Error! Invalid data for `refresh_token`. Must be a string:", `refresh_token`))
@@ -58,12 +58,6 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
         }
         self$`access_token` <- `access_token`
       }
-      if (!missing(`token_type`)) {
-        if (!(is.character(`token_type`) && length(`token_type`) == 1)) {
-          stop(paste("Error! Invalid data for `token_type`. Must be a string:", `token_type`))
-        }
-        self$`token_type` <- `token_type`
-      }
       if (!missing(`expires_in`)) {
         if (!(is.numeric(`expires_in`) && length(`expires_in`) == 1)) {
           stop(paste("Error! Invalid data for `expires_in`. Must be an integer:", `expires_in`))
@@ -75,6 +69,12 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
           stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
         }
         self$`scope` <- `scope`
+      }
+      if (!missing(`token_type`)) {
+        if (!(is.character(`token_type`) && length(`token_type`) == 1)) {
+          stop(paste("Error! Invalid data for `token_type`. Must be a string:", `token_type`))
+        }
+        self$`token_type` <- `token_type`
       }
       if (!is.null(`response_type`)) {
         if (!(`response_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
@@ -126,25 +126,25 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
         OauthAccessTokenResponseIntegrationRefreshObject[["refresh_token_expires_in"]] <-
           self$`refresh_token_expires_in`
       }
-      if (!is.null(self$`response_type`)) {
-        OauthAccessTokenResponseIntegrationRefreshObject[["response_type"]] <-
-          self$`response_type`
-      }
       if (!is.null(self$`access_token`)) {
         OauthAccessTokenResponseIntegrationRefreshObject[["access_token"]] <-
           self$`access_token`
-      }
-      if (!is.null(self$`token_type`)) {
-        OauthAccessTokenResponseIntegrationRefreshObject[["token_type"]] <-
-          self$`token_type`
       }
       if (!is.null(self$`expires_in`)) {
         OauthAccessTokenResponseIntegrationRefreshObject[["expires_in"]] <-
           self$`expires_in`
       }
+      if (!is.null(self$`response_type`)) {
+        OauthAccessTokenResponseIntegrationRefreshObject[["response_type"]] <-
+          self$`response_type`
+      }
       if (!is.null(self$`scope`)) {
         OauthAccessTokenResponseIntegrationRefreshObject[["scope"]] <-
           self$`scope`
+      }
+      if (!is.null(self$`token_type`)) {
+        OauthAccessTokenResponseIntegrationRefreshObject[["token_type"]] <-
+          self$`token_type`
       }
       return(OauthAccessTokenResponseIntegrationRefreshObject)
     },
@@ -162,23 +162,23 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
       if (!is.null(this_object$`refresh_token_expires_in`)) {
         self$`refresh_token_expires_in` <- this_object$`refresh_token_expires_in`
       }
+      if (!is.null(this_object$`access_token`)) {
+        self$`access_token` <- this_object$`access_token`
+      }
+      if (!is.null(this_object$`expires_in`)) {
+        self$`expires_in` <- this_object$`expires_in`
+      }
       if (!is.null(this_object$`response_type`)) {
         if (!is.null(this_object$`response_type`) && !(this_object$`response_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
           stop(paste("Error! \"", this_object$`response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
         }
         self$`response_type` <- this_object$`response_type`
       }
-      if (!is.null(this_object$`access_token`)) {
-        self$`access_token` <- this_object$`access_token`
+      if (!is.null(this_object$`scope`)) {
+        self$`scope` <- this_object$`scope`
       }
       if (!is.null(this_object$`token_type`)) {
         self$`token_type` <- this_object$`token_type`
-      }
-      if (!is.null(this_object$`expires_in`)) {
-        self$`expires_in` <- this_object$`expires_in`
-      }
-      if (!is.null(this_object$`scope`)) {
-        self$`scope` <- this_object$`scope`
       }
       self
     },
@@ -203,14 +203,14 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`refresh_token` <- this_object$`refresh_token`
       self$`refresh_token_expires_in` <- this_object$`refresh_token_expires_in`
+      self$`access_token` <- this_object$`access_token`
+      self$`expires_in` <- this_object$`expires_in`
       if (!is.null(this_object$`response_type`) && !(this_object$`response_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
         stop(paste("Error! \"", this_object$`response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
       }
       self$`response_type` <- this_object$`response_type`
-      self$`access_token` <- this_object$`access_token`
-      self$`token_type` <- this_object$`token_type`
-      self$`expires_in` <- this_object$`expires_in`
       self$`scope` <- this_object$`scope`
+      self$`token_type` <- this_object$`token_type`
       self
     },
 
@@ -244,14 +244,6 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenResponseIntegrationRefresh: the required field `access_token` is missing."))
       }
-      # check the required field `token_type`
-      if (!is.null(input_json$`token_type`)) {
-        if (!(is.character(input_json$`token_type`) && length(input_json$`token_type`) == 1)) {
-          stop(paste("Error! Invalid data for `token_type`. Must be a string:", input_json$`token_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenResponseIntegrationRefresh: the required field `token_type` is missing."))
-      }
       # check the required field `expires_in`
       if (!is.null(input_json$`expires_in`)) {
         if (!(is.numeric(input_json$`expires_in`) && length(input_json$`expires_in`) == 1)) {
@@ -267,6 +259,14 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenResponseIntegrationRefresh: the required field `scope` is missing."))
+      }
+      # check the required field `token_type`
+      if (!is.null(input_json$`token_type`)) {
+        if (!(is.character(input_json$`token_type`) && length(input_json$`token_type`) == 1)) {
+          stop(paste("Error! Invalid data for `token_type`. Must be a string:", input_json$`token_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenResponseIntegrationRefresh: the required field `token_type` is missing."))
       }
     },
 
@@ -298,11 +298,6 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `token_type` is null
-      if (is.null(self$`token_type`)) {
-        return(FALSE)
-      }
-
       # check if the required `expires_in` is null
       if (is.null(self$`expires_in`)) {
         return(FALSE)
@@ -310,6 +305,11 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
 
       # check if the required `scope` is null
       if (is.null(self$`scope`)) {
+        return(FALSE)
+      }
+
+      # check if the required `token_type` is null
+      if (is.null(self$`token_type`)) {
         return(FALSE)
       }
 
@@ -337,11 +337,6 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
         invalid_fields["access_token"] <- "Non-nullable required field `access_token` cannot be null."
       }
 
-      # check if the required `token_type` is null
-      if (is.null(self$`token_type`)) {
-        invalid_fields["token_type"] <- "Non-nullable required field `token_type` cannot be null."
-      }
-
       # check if the required `expires_in` is null
       if (is.null(self$`expires_in`)) {
         invalid_fields["expires_in"] <- "Non-nullable required field `expires_in` cannot be null."
@@ -350,6 +345,11 @@ OauthAccessTokenResponseIntegrationRefresh <- R6::R6Class(
       # check if the required `scope` is null
       if (is.null(self$`scope`)) {
         invalid_fields["scope"] <- "Non-nullable required field `scope` cannot be null."
+      }
+
+      # check if the required `token_type` is null
+      if (is.null(self$`token_type`)) {
+        invalid_fields["token_type"] <- "Non-nullable required field `token_type` cannot be null."
       }
 
       invalid_fields

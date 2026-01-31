@@ -7,14 +7,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
-**owner** | [**AdAccountOwner**](AdAccountOwner.md) |  |  [optional]
 **country** | **Country** |  |  [optional]
+**createdTime** | **Int** |  Creation time. Unix timestamp in seconds. |  [optional] [readonly]
 **currency** | **Currency** |  |  [optional]
-**permissions** | **Seq&lt;BusinessAccessRole&gt;** |  |  [optional]
-**createdTime** | **Int** | Creation time. Unix timestamp in seconds. |  [optional]
-**updatedTime** | **Int** | Last update time. Unix timestamp in seconds. |  [optional]
+**id** | **String** |  | 
+**name** | **String** | Ad account name. |  [optional]
+**owner** | [**AdAccountOwner**](AdAccountOwner.md) | Ad account owner |  [optional] [readonly]
+**permissions** | **Seq&lt;BusinessAccessRole&gt;** |  |  [optional] [readonly]
+**updatedTime** | **Int** |  |  [optional] [readonly]
 
 
 

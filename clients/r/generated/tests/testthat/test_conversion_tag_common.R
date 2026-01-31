@@ -5,14 +5,6 @@ context("Test ConversionTagCommon")
 
 model_instance <- ConversionTagCommon$new()
 
-test_that("ad_account_id", {
-  # tests for the property `ad_account_id` (character)
-  # Ad account ID.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
-})
-
 test_that("code_snippet", {
   # tests for the property `code_snippet` (character)
   # Tag code snippet.
@@ -21,8 +13,16 @@ test_that("code_snippet", {
   #expect_equal(model.instance$`code_snippet`, "EXPECTED_RESULT")
 })
 
+test_that("configs", {
+  # tests for the property `configs` (ConversionTagConfigs)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`configs`, "EXPECTED_RESULT")
+})
+
 test_that("enhanced_match_status", {
   # tests for the property `enhanced_match_status` (EnhancedMatchStatusType)
+  # The enhanced match status of the tag
 
   # uncomment below to test the property
   #expect_equal(model.instance$`enhanced_match_status`, "EXPECTED_RESULT")
@@ -52,24 +52,10 @@ test_that("name", {
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("status", {
-  # tests for the property `status` (EntityStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
 test_that("version", {
   # tests for the property `version` (character)
   # Version number.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`version`, "EXPECTED_RESULT")
-})
-
-test_that("configs", {
-  # tests for the property `configs` (ConversionTagConfigs)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`configs`, "EXPECTED_RESULT")
 })

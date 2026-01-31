@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaWithVideo"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaWithVideo"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ImageSize = openapi_server.resourceTypes.ImageSize
+}
+resourceTypes {
+
+  PinMediaWithVideo {
+    title = PinMediaWithVideo
+    description = PinMediaWithVideo
+    derivedFrom = Root
+    properties {
+        cover_image_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        duration {
+          type =  
+          description = "Duration (in miliseconds). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        height {
+          type =  integer
+          description = "Height (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        images {
+          type = ImageSize
+          description = ""
+          optional = false
+        }
+        media_type {
+          type =  string
+          description = ""
+          enum = ["video"]
+          optional = true
+        }
+        video_url {
+          type =  string
+          description = "Video url (720p).  **Note:** This field is limited and not available to all apps."
+          optional = false
+        }
+        width {
+          type =  integer
+          description = "Width (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaWithVideo {
+    title = PinMediaWithVideo
+    description = PinMediaWithVideo
+    implements = openapi_server.resourceTypes.PinMediaWithVideo
+
+  }
+}

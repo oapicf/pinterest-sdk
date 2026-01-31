@@ -14,16 +14,16 @@ import org.openapitools.models.Country
 
 /**
  * Request object to list products for a given catalog_id and product group filter.
- * @param catalogUnderscoretype 
  * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
- * @param filters 
+ * @param catalogUnderscoretype 
  * @param country 
+ * @param filters 
  * @param locale 
  */
-case class CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogUnderscoretype: String,
-                catalogUnderscoreid: String,
-                filters: CatalogsCreativeAssetsProductGroupFilters,
+case class CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 country: Country,
+                filters: CatalogsCreativeAssetsProductGroupFilters,
                 locale: CatalogsLocale
                 )
 

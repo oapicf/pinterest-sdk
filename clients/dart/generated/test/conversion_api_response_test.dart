@@ -16,9 +16,9 @@ void main() {
   // final instance = ConversionApiResponse();
 
   group('test ConversionApiResponse', () {
-    // Total number of events received in the request.
-    // int numEventsReceived
-    test('to test the property `numEventsReceived`', () async {
+    // Specific messages for each event received. The order will match the order in which the events were received in the request.
+    // List<ConversionApiResponseEventsInner> events (default value: const [])
+    test('to test the property `events`', () async {
       // TODO
     });
 
@@ -28,9 +28,9 @@ void main() {
       // TODO
     });
 
-    // Specific messages for each event received. The order will match the order in which the events were received in the request.
-    // List<ConversionApiResponseEventsInner> events (default value: const [])
-    test('to test the property `events`', () async {
+    // Total number of events received in the request.
+    // int numEventsReceived
+    test('to test the property `numEventsReceived`', () async {
       // TODO
     });
 

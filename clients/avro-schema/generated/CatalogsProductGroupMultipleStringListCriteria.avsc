@@ -5,18 +5,18 @@
   "name": "CatalogsProductGroupMultipleStringListCriteria",
   "fields": [
     {
+      "name": "negated",
+      "type": ["boolean", "null"],
+      "doc": "",
+      "default": false
+    },
+    {
       "name": "values",
       "type": {
         "type": "array",
         "items": "array"
       },
       "doc": ""
-    },
-    {
-      "name": "negated",
-      "type": ["boolean", "null"],
-      "doc": "",
-      "default": false
     }
   ]
 

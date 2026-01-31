@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * AdGroupsAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   @JsonProperty("AD_GROUP_ID")
   private String AD_GROUP_ID;
@@ -27,10 +27,10 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   }
 
    /**
-   * The ID of the ad group that this metrics belongs to.
+   * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    * @return AD_GROUP_ID
   **/
-  @ApiModelProperty(required = true, value = "The ID of the ad group that this metrics belongs to.")
+  @ApiModelProperty(value = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
   public String getADGROUPID() {
     return AD_GROUP_ID;
   }

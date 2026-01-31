@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdAccountGetSubscriptionResponse;
+import org.openapitools.model.LeadSubscription;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,13 +26,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ad_accounts_subscriptions_get_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsSubscriptionsGetList200Response {
 
-  @Valid
-  private List<@Valid AdAccountGetSubscriptionResponse> items = new ArrayList<>();
-
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
+
+  @Valid
+  private List<@Valid LeadSubscription> items = new ArrayList<>();
 
   public AdAccountsSubscriptionsGetList200Response() {
     super();
@@ -41,35 +41,7 @@ public class AdAccountsSubscriptionsGetList200Response {
   /**
    * Constructor with only required parameters
    */
-  public AdAccountsSubscriptionsGetList200Response(List<@Valid AdAccountGetSubscriptionResponse> items) {
-    this.items = items;
-  }
-
-  public AdAccountsSubscriptionsGetList200Response items(List<@Valid AdAccountGetSubscriptionResponse> items) {
-    this.items = items;
-    return this;
-  }
-
-  public AdAccountsSubscriptionsGetList200Response addItemsItem(AdAccountGetSubscriptionResponse itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Get items
-   * @return items
-   */
-  @NotNull @Valid 
-  @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("items")
-  public List<@Valid AdAccountGetSubscriptionResponse> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid AdAccountGetSubscriptionResponse> items) {
+  public AdAccountsSubscriptionsGetList200Response(List<@Valid LeadSubscription> items) {
     this.items = items;
   }
 
@@ -93,6 +65,34 @@ public class AdAccountsSubscriptionsGetList200Response {
     this.bookmark = bookmark;
   }
 
+  public AdAccountsSubscriptionsGetList200Response items(List<@Valid LeadSubscription> items) {
+    this.items = items;
+    return this;
+  }
+
+  public AdAccountsSubscriptionsGetList200Response addItemsItem(LeadSubscription itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Get items
+   * @return items
+   */
+  @NotNull @Valid 
+  @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid LeadSubscription> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid LeadSubscription> items) {
+    this.items = items;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -102,8 +102,8 @@ public class AdAccountsSubscriptionsGetList200Response {
       return false;
     }
     AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList200Response = (AdAccountsSubscriptionsGetList200Response) o;
-    return Objects.equals(this.items, adAccountsSubscriptionsGetList200Response.items) &&
-        equalsNullable(this.bookmark, adAccountsSubscriptionsGetList200Response.bookmark);
+    return equalsNullable(this.bookmark, adAccountsSubscriptionsGetList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsSubscriptionsGetList200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -112,7 +112,7 @@ public class AdAccountsSubscriptionsGetList200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -126,8 +126,8 @@ public class AdAccountsSubscriptionsGetList200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsSubscriptionsGetList200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

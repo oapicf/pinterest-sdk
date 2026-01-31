@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **IMAGE_LINK_LENGTH_TOO_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
 **IMAGE_LINK_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
 **INVALID_DOMAIN** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
-**ITEMID_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
 **ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
+**ITEMID_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
 **LINK_FORMAT_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
 **LINK_LENGTH_TOO_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
 **LIST_PRICE_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to undefined]
@@ -45,8 +45,8 @@ const instance: CatalogsItemValidationErrors = {
     IMAGE_LINK_LENGTH_TOO_LONG,
     IMAGE_LINK_MISSING,
     INVALID_DOMAIN,
-    ITEMID_MISSING,
     ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE,
+    ITEMID_MISSING,
     LINK_FORMAT_INVALID,
     LINK_LENGTH_TOO_LONG,
     LIST_PRICE_INVALID,

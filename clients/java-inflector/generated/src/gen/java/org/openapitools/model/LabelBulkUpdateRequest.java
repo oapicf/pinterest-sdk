@@ -1,0 +1,151 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+
+
+
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class LabelBulkUpdateRequest   {
+  @JsonProperty("id")
+  private String id;
+
+  /**
+   * Set status to `ARCHIVED` to remove the label from the parent entity.
+   */
+  public enum StatusEnum {
+    ARCHIVED("ARCHIVED");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("status")
+  private StatusEnum status;
+
+  @JsonProperty("value")
+  private String value;
+
+  /**
+   * Label ID.
+   **/
+  public LabelBulkUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1106385754497", required = true, value = "Label ID.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Set status to `ARCHIVED` to remove the label from the parent entity.
+   **/
+  public LabelBulkUpdateRequest status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "ARCHIVED", value = "Set status to `ARCHIVED` to remove the label from the parent entity.")
+  @JsonProperty("status")
+  public StatusEnum getStatus() {
+    return status;
+  }
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+  /**
+   * </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+   **/
+  public LabelBulkUpdateRequest value(String value) {
+    this.value = value;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "</p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.")
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    LabelBulkUpdateRequest labelBulkUpdateRequest = (LabelBulkUpdateRequest) o;
+    return Objects.equals(id, labelBulkUpdateRequest.id) &&
+        Objects.equals(status, labelBulkUpdateRequest.status) &&
+        Objects.equals(value, labelBulkUpdateRequest.value);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, status, value);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class LabelBulkUpdateRequest {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

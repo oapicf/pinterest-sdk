@@ -132,6 +132,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Response containing the results of the item bid options operations |  -  |
+**206** | Response containing the results of the item bid options operations (where some/all operation results have errors) |  -  |
 **400** | Invalid request parameters. |  -  |
 **401** | Not authenticated to post item bid options |  -  |
 **403** | Not authorized to post item bid options |  -  |

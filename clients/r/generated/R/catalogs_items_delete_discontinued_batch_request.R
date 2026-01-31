@@ -8,9 +8,9 @@
 #' @description CatalogsItemsDeleteDiscontinuedBatchRequest Class
 #' @format An \code{R6Class} generator object
 #' @field country  \link{Country}
+#' @field items Array with catalogs items list(\link{ItemDeleteDiscontinuedBatchRecord})
 #' @field language We recommend using the CatalogsLocale values. character
 #' @field operation  \link{BatchOperation}
-#' @field items Array with catalogs items list(\link{ItemDeleteDiscontinuedBatchRecord})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,25 +18,30 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
   "CatalogsItemsDeleteDiscontinuedBatchRequest",
   public = list(
     `country` = NULL,
+    `items` = NULL,
     `language` = NULL,
     `operation` = NULL,
-    `items` = NULL,
 
     #' @description
     #' Initialize a new CatalogsItemsDeleteDiscontinuedBatchRequest class.
     #'
     #' @param country country
+    #' @param items Array with catalogs items
     #' @param language We recommend using the CatalogsLocale values.
     #' @param operation operation
-    #' @param items Array with catalogs items
     #' @param ... Other optional arguments.
-    initialize = function(`country`, `language`, `operation`, `items`, ...) {
+    initialize = function(`country`, `items`, `language`, `operation`, ...) {
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`country`))
         self$`country` <- `country`
+      }
+      if (!missing(`items`)) {
+        stopifnot(is.vector(`items`), length(`items`) != 0)
+        sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
+        self$`items` <- `items`
       }
       if (!missing(`language`)) {
         if (!(`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
@@ -53,11 +58,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`operation`))
         self$`operation` <- `operation`
-      }
-      if (!missing(`items`)) {
-        stopifnot(is.vector(`items`), length(`items`) != 0)
-        sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
-        self$`items` <- `items`
       }
     },
 
@@ -96,6 +96,10 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         CatalogsItemsDeleteDiscontinuedBatchRequestObject[["country"]] <-
           self$`country`$toSimpleType()
       }
+      if (!is.null(self$`items`)) {
+        CatalogsItemsDeleteDiscontinuedBatchRequestObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`language`)) {
         CatalogsItemsDeleteDiscontinuedBatchRequestObject[["language"]] <-
           self$`language`
@@ -103,10 +107,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
       if (!is.null(self$`operation`)) {
         CatalogsItemsDeleteDiscontinuedBatchRequestObject[["operation"]] <-
           self$`operation`$toSimpleType()
-      }
-      if (!is.null(self$`items`)) {
-        CatalogsItemsDeleteDiscontinuedBatchRequestObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(CatalogsItemsDeleteDiscontinuedBatchRequestObject)
     },
@@ -123,6 +123,9 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
         self$`country` <- `country_object`
       }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemDeleteDiscontinuedBatchRecord]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`language`)) {
         if (!is.null(this_object$`language`) && !(this_object$`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
           stop(paste("Error! \"", this_object$`language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
@@ -133,9 +136,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         `operation_object` <- BatchOperation$new()
         `operation_object`$fromJSON(jsonlite::toJSON(this_object$`operation`, auto_unbox = TRUE, digits = NA))
         self$`operation` <- `operation_object`
-      }
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemDeleteDiscontinuedBatchRecord]", loadNamespace("openapi"))
       }
       self
     },
@@ -159,12 +159,12 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemDeleteDiscontinuedBatchRecord]", loadNamespace("openapi"))
       if (!is.null(this_object$`language`) && !(this_object$`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
         stop(paste("Error! \"", this_object$`language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
       }
       self$`language` <- this_object$`language`
       self$`operation` <- BatchOperation$new()$fromJSON(jsonlite::toJSON(this_object$`operation`, auto_unbox = TRUE, digits = NA))
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemDeleteDiscontinuedBatchRecord]", loadNamespace("openapi"))
       self
     },
 
@@ -180,6 +180,13 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsDeleteDiscontinuedBatchRequest: the required field `country` is missing."))
       }
+      # check the required field `items`
+      if (!is.null(input_json$`items`)) {
+        stopifnot(is.vector(input_json$`items`), length(input_json$`items`) != 0)
+        tmp <- sapply(input_json$`items`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsDeleteDiscontinuedBatchRequest: the required field `items` is missing."))
+      }
       # check the required field `language`
       if (!is.null(input_json$`language`)) {
         if (!(is.character(input_json$`language`) && length(input_json$`language`) == 1)) {
@@ -193,13 +200,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`operation`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsDeleteDiscontinuedBatchRequest: the required field `operation` is missing."))
-      }
-      # check the required field `items`
-      if (!is.null(input_json$`items`)) {
-        stopifnot(is.vector(input_json$`items`), length(input_json$`items`) != 0)
-        tmp <- sapply(input_json$`items`, function(x) stopifnot(R6::is.R6(x)))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsDeleteDiscontinuedBatchRequest: the required field `items` is missing."))
       }
     },
 
@@ -221,6 +221,11 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `items` is null
+      if (is.null(self$`items`)) {
+        return(FALSE)
+      }
+
       # check if the required `language` is null
       if (is.null(self$`language`)) {
         return(FALSE)
@@ -228,11 +233,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
 
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
-        return(FALSE)
-      }
-
-      # check if the required `items` is null
-      if (is.null(self$`items`)) {
         return(FALSE)
       }
 
@@ -250,6 +250,11 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
         invalid_fields["country"] <- "Non-nullable required field `country` cannot be null."
       }
 
+      # check if the required `items` is null
+      if (is.null(self$`items`)) {
+        invalid_fields["items"] <- "Non-nullable required field `items` cannot be null."
+      }
+
       # check if the required `language` is null
       if (is.null(self$`language`)) {
         invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
@@ -258,11 +263,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest <- R6::R6Class(
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
         invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
-      }
-
-      # check if the required `items` is null
-      if (is.null(self$`items`)) {
-        invalid_fields["items"] <- "Non-nullable required field `items` cannot be null."
       }
 
       invalid_fields

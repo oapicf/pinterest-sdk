@@ -10,14 +10,14 @@ import org.openapitools.models.CatalogsHotelProductGroupFilters
 /**
  * Request object for updating a hotel product group.
  * @param catalogUnderscoretype 
- * @param name 
  * @param description 
  * @param filters 
+ * @param name 
  */
 case class CatalogsHotelProductGroupUpdateRequest(catalogUnderscoretype: Option[String],
-                name: Option[String],
                 description: Option[String],
-                filters: Option[CatalogsHotelProductGroupFilters]
+                filters: Option[CatalogsHotelProductGroupFilters],
+                name: Option[String]
                 )
 
 object CatalogsHotelProductGroupUpdateRequest {

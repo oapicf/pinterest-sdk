@@ -79,8 +79,8 @@ private class OASPinMediaSourceImagesBase64Test {
     @isTest
     private static void defaultValuesPopulated() {
         OASPinMediaSourceImagesBase64 pinMediaSourceImagesBase64 = new OASPinMediaSourceImagesBase64();
-        System.assertEquals(new List<OASPinMediaSourceImagesBase64ItemsIn>(), pinMediaSourceImagesBase64.items);
-        System.assertEquals(null, pinMediaSourceImagesBase64.sourceType);
+        System.assertEquals(new List<OASPinMediaSourceImagesBase64Item>(), pinMediaSourceImagesBase64.items);
         System.assertEquals(null, pinMediaSourceImagesBase64.index);
+        System.assertEquals(null, pinMediaSourceImagesBase64.sourceType);
     }
 }

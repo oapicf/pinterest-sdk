@@ -16,35 +16,15 @@ import java.util.Objects;
 
 public class AdAccountCreateSubscriptionRequest   {
   
-  private String webhookUrl;
-
   private String leadFormId;
 
   private String partnerAccessToken;
 
-  private String partnerRefreshToken;
-
   private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
 
-  /**
-   * Standard HTTPS webhook URL.
-   **/
-  public AdAccountCreateSubscriptionRequest webhookUrl(String webhookUrl) {
-    this.webhookUrl = webhookUrl;
-    return this;
-  }
+  private String partnerRefreshToken;
 
-  
-  @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
-  @JsonProperty("webhook_url")
-  @NotNull
-  public String getWebhookUrl() {
-    return webhookUrl;
-  }
-  public void setWebhookUrl(String webhookUrl) {
-    this.webhookUrl = webhookUrl;
-  }
-
+  private String webhookUrl;
 
   /**
    * Lead form ID.
@@ -85,6 +65,24 @@ public class AdAccountCreateSubscriptionRequest   {
 
 
   /**
+   **/
+  public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("partner_metadata")
+  public AdAccountCreateSubscriptionRequestPartnerMetadata getPartnerMetadata() {
+    return partnerMetadata;
+  }
+  public void setPartnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+  }
+
+
+  /**
    * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
    **/
   public AdAccountCreateSubscriptionRequest partnerRefreshToken(String partnerRefreshToken) {
@@ -104,20 +102,22 @@ public class AdAccountCreateSubscriptionRequest   {
 
 
   /**
+   * Standard HTTPS webhook URL.
    **/
-  public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
+  public AdAccountCreateSubscriptionRequest webhookUrl(String webhookUrl) {
+    this.webhookUrl = webhookUrl;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("partner_metadata")
-  public AdAccountCreateSubscriptionRequestPartnerMetadata getPartnerMetadata() {
-    return partnerMetadata;
+  @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
+  @JsonProperty("webhook_url")
+  @NotNull
+  public String getWebhookUrl() {
+    return webhookUrl;
   }
-  public void setPartnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
+  public void setWebhookUrl(String webhookUrl) {
+    this.webhookUrl = webhookUrl;
   }
 
 
@@ -131,16 +131,16 @@ public class AdAccountCreateSubscriptionRequest   {
       return false;
     }
     AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest = (AdAccountCreateSubscriptionRequest) o;
-    return Objects.equals(this.webhookUrl, adAccountCreateSubscriptionRequest.webhookUrl) &&
-        Objects.equals(this.leadFormId, adAccountCreateSubscriptionRequest.leadFormId) &&
+    return Objects.equals(this.leadFormId, adAccountCreateSubscriptionRequest.leadFormId) &&
         Objects.equals(this.partnerAccessToken, adAccountCreateSubscriptionRequest.partnerAccessToken) &&
+        Objects.equals(this.partnerMetadata, adAccountCreateSubscriptionRequest.partnerMetadata) &&
         Objects.equals(this.partnerRefreshToken, adAccountCreateSubscriptionRequest.partnerRefreshToken) &&
-        Objects.equals(this.partnerMetadata, adAccountCreateSubscriptionRequest.partnerMetadata);
+        Objects.equals(this.webhookUrl, adAccountCreateSubscriptionRequest.webhookUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhookUrl, leadFormId, partnerAccessToken, partnerRefreshToken, partnerMetadata);
+    return Objects.hash(leadFormId, partnerAccessToken, partnerMetadata, partnerRefreshToken, webhookUrl);
   }
 
   @Override
@@ -148,11 +148,11 @@ public class AdAccountCreateSubscriptionRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountCreateSubscriptionRequest {\n");
     
-    sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
-    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
     sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
+    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
+    sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

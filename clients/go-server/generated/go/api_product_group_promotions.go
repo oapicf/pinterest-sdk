@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -388,7 +388,14 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	result, err := c.service.ProductGroupsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, productGroupIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
+
+		reportingTimezoneParam = param
+	} else {
+	}
+	result, err := c.service.ProductGroupsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, productGroupIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

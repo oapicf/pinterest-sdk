@@ -5,15 +5,15 @@
   "name": "AdAccountOwner",
   "fields": [
     {
-      "name": "username",
-      "type": ["null", "string"],
-      "doc": "Public username for the user account",
-      "default": null
-    },
-    {
       "name": "id",
       "type": ["null", "string"],
       "doc": "The owning account's user ID.",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Public username for the user account",
       "default": null
     }
   ]

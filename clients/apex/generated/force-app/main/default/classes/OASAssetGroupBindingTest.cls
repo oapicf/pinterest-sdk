@@ -73,28 +73,30 @@ private class OASAssetGroupBindingTest {
     private static void maintainRenamedProperties() {
         OASAssetGroupBinding assetGroupBinding = new OASAssetGroupBinding();
         Map<String, String> x-property-mappings = assetGroupBinding.getx-property-mappings();
-        System.assertEquals('assetGroupName', x-property-mappings.get('asset_group_name'));
-        System.assertEquals('assetGroupDescription', x-property-mappings.get('asset_group_description'));
-        System.assertEquals('assetGroupTypes', x-property-mappings.get('asset_group_types'));
         System.assertEquals('adAccountsIds', x-property-mappings.get('ad_accounts_ids'));
-        System.assertEquals('profilesIds', x-property-mappings.get('profiles_ids'));
-        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
-        System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
+        System.assertEquals('assetGroupDescription', x-property-mappings.get('asset_group_description'));
+        System.assertEquals('assetGroupName', x-property-mappings.get('asset_group_name'));
+        System.assertEquals('assetGroupTypes', x-property-mappings.get('asset_group_types'));
+        System.assertEquals('catalogsIds', x-property-mappings.get('catalogs_ids'));
         System.assertEquals('createdBy', x-property-mappings.get('created_by'));
+        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
+        System.assertEquals('profilesIds', x-property-mappings.get('profiles_ids'));
+        System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASAssetGroupBinding assetGroupBinding = new OASAssetGroupBinding();
-        System.assertEquals(new List<String>(), assetGroupBinding.assetGroupTypes);
         System.assertEquals(new List<String>(), assetGroupBinding.adAccountsIds);
+        System.assertEquals(new List<String>(), assetGroupBinding.assetGroupTypes);
+        System.assertEquals(new List<String>(), assetGroupBinding.catalogsIds);
         System.assertEquals(new List<String>(), assetGroupBinding.profilesIds);
-        System.assertEquals(null, assetGroupBinding.id);
-        System.assertEquals(null, assetGroupBinding.assetGroupName);
         System.assertEquals(null, assetGroupBinding.assetGroupDescription);
-        System.assertEquals(null, assetGroupBinding.createdTime);
-        System.assertEquals(null, assetGroupBinding.updatedTime);
-        System.assertEquals(null, assetGroupBinding.owner);
+        System.assertEquals(null, assetGroupBinding.assetGroupName);
         System.assertEquals(null, assetGroupBinding.createdBy);
+        System.assertEquals(null, assetGroupBinding.createdTime);
+        System.assertEquals(null, assetGroupBinding.id);
+        System.assertEquals(null, assetGroupBinding.owner);
+        System.assertEquals(null, assetGroupBinding.updatedTime);
     }
 }

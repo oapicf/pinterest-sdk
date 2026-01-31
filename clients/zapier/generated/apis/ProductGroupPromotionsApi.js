@@ -2,9 +2,11 @@ const samples = require('../samples/ProductGroupPromotionsApi');
 const Error = require('../models/Error');
 const Granularity = require('../models/Granularity');
 const ProductGroupAnalyticsResponse_inner = require('../models/ProductGroupAnalyticsResponse_inner');
+const ProductGroupPromotion = require('../models/ProductGroupPromotion');
 const ProductGroupPromotionCreateRequest = require('../models/ProductGroupPromotionCreateRequest');
 const ProductGroupPromotionResponse = require('../models/ProductGroupPromotionResponse');
 const ProductGroupPromotionUpdateRequest = require('../models/ProductGroupPromotionUpdateRequest');
+const ReportingTimeZone = require('../models/ReportingTimeZone');
 const product_group_promotions_list_200_response = require('../models/product_group_promotions_list_200_response');
 const utils = require('../utils/utils');
 
@@ -78,7 +80,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...ProductGroupPromotionResponse.fields('', false),
+                ...ProductGroupPromotion.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -100,7 +102,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['ProductGroupPromotionResponseSample']
+            sample: samples['ProductGroupPromotionSample']
         }
     },
     productGroupPromotions/list: {
@@ -236,7 +238,7 @@ module.exports = {
         noun: 'product_group_promotions',
         display: {
             label: 'Get product group analytics',
-            description: 'Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.',
+            description: 'Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
             hidden: false,
         },
         operation: {
@@ -285,7 +287,7 @@ module.exports = {
                 },
                 {
                     key: 'engagement_window_days',
-                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
+                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.',
                     type: 'integer',
                     choices: [
                         '0',
@@ -318,6 +320,7 @@ module.exports = {
                         'TIME_OF_CONVERSION',
                     ],
                 },
+                ....fields(),
             ],
             outputFields: [
             ],
@@ -340,6 +343,7 @@ module.exports = {
                         'engagement_window_days': bundle.inputData?.['engagement_window_days'],
                         'view_window_days': bundle.inputData?.['view_window_days'],
                         'conversion_report_time': bundle.inputData?.['conversion_report_time'],
+                        'reporting_timezone': bundle.inputData?.['reporting_timezone'],
                     },
                     body: {
                     },

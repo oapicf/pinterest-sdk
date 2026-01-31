@@ -19,57 +19,37 @@ import javax.annotation.Generated;
  * LinkedBusiness
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LinkedBusiness {
-
-  private @Nullable String username;
-
-  private @Nullable String imageSmallUrl;
-
-  private @Nullable String imageMediumUrl;
 
   private @Nullable String imageLargeUrl;
 
+  private @Nullable String imageMediumUrl;
+
+  private @Nullable String imageSmallUrl;
+
   private @Nullable String imageXlargeUrl;
 
-  public LinkedBusiness username(@Nullable String username) {
-    this.username = username;
+  private @Nullable String username;
+
+  public LinkedBusiness imageLargeUrl(@Nullable String imageLargeUrl) {
+    this.imageLargeUrl = imageLargeUrl;
     return this;
   }
 
   /**
-   * Username
-   * @return username
+   * image_large_url
+   * @return imageLargeUrl
    */
   
-  @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public @Nullable String getUsername() {
-    return username;
+  @Schema(name = "image_large_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_large_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("image_large_url")
+  public @Nullable String getImageLargeUrl() {
+    return imageLargeUrl;
   }
 
-  public void setUsername(@Nullable String username) {
-    this.username = username;
-  }
-
-  public LinkedBusiness imageSmallUrl(@Nullable String imageSmallUrl) {
-    this.imageSmallUrl = imageSmallUrl;
-    return this;
-  }
-
-  /**
-   * image_small_url
-   * @return imageSmallUrl
-   */
-  
-  @Schema(name = "image_small_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_small_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("image_small_url")
-  public @Nullable String getImageSmallUrl() {
-    return imageSmallUrl;
-  }
-
-  public void setImageSmallUrl(@Nullable String imageSmallUrl) {
-    this.imageSmallUrl = imageSmallUrl;
+  public void setImageLargeUrl(@Nullable String imageLargeUrl) {
+    this.imageLargeUrl = imageLargeUrl;
   }
 
   public LinkedBusiness imageMediumUrl(@Nullable String imageMediumUrl) {
@@ -92,24 +72,24 @@ public class LinkedBusiness {
     this.imageMediumUrl = imageMediumUrl;
   }
 
-  public LinkedBusiness imageLargeUrl(@Nullable String imageLargeUrl) {
-    this.imageLargeUrl = imageLargeUrl;
+  public LinkedBusiness imageSmallUrl(@Nullable String imageSmallUrl) {
+    this.imageSmallUrl = imageSmallUrl;
     return this;
   }
 
   /**
-   * image_large_url
-   * @return imageLargeUrl
+   * image_small_url
+   * @return imageSmallUrl
    */
   
-  @Schema(name = "image_large_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_large_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("image_large_url")
-  public @Nullable String getImageLargeUrl() {
-    return imageLargeUrl;
+  @Schema(name = "image_small_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_small_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("image_small_url")
+  public @Nullable String getImageSmallUrl() {
+    return imageSmallUrl;
   }
 
-  public void setImageLargeUrl(@Nullable String imageLargeUrl) {
-    this.imageLargeUrl = imageLargeUrl;
+  public void setImageSmallUrl(@Nullable String imageSmallUrl) {
+    this.imageSmallUrl = imageSmallUrl;
   }
 
   public LinkedBusiness imageXlargeUrl(@Nullable String imageXlargeUrl) {
@@ -132,6 +112,26 @@ public class LinkedBusiness {
     this.imageXlargeUrl = imageXlargeUrl;
   }
 
+  public LinkedBusiness username(@Nullable String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * Username
+   * @return username
+   */
+  
+  @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("username")
+  public @Nullable String getUsername() {
+    return username;
+  }
+
+  public void setUsername(@Nullable String username) {
+    this.username = username;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -141,27 +141,27 @@ public class LinkedBusiness {
       return false;
     }
     LinkedBusiness linkedBusiness = (LinkedBusiness) o;
-    return Objects.equals(this.username, linkedBusiness.username) &&
-        Objects.equals(this.imageSmallUrl, linkedBusiness.imageSmallUrl) &&
+    return Objects.equals(this.imageLargeUrl, linkedBusiness.imageLargeUrl) &&
         Objects.equals(this.imageMediumUrl, linkedBusiness.imageMediumUrl) &&
-        Objects.equals(this.imageLargeUrl, linkedBusiness.imageLargeUrl) &&
-        Objects.equals(this.imageXlargeUrl, linkedBusiness.imageXlargeUrl);
+        Objects.equals(this.imageSmallUrl, linkedBusiness.imageSmallUrl) &&
+        Objects.equals(this.imageXlargeUrl, linkedBusiness.imageXlargeUrl) &&
+        Objects.equals(this.username, linkedBusiness.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, imageSmallUrl, imageMediumUrl, imageLargeUrl, imageXlargeUrl);
+    return Objects.hash(imageLargeUrl, imageMediumUrl, imageSmallUrl, imageXlargeUrl, username);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LinkedBusiness {\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    imageSmallUrl: ").append(toIndentedString(imageSmallUrl)).append("\n");
-    sb.append("    imageMediumUrl: ").append(toIndentedString(imageMediumUrl)).append("\n");
     sb.append("    imageLargeUrl: ").append(toIndentedString(imageLargeUrl)).append("\n");
+    sb.append("    imageMediumUrl: ").append(toIndentedString(imageMediumUrl)).append("\n");
+    sb.append("    imageSmallUrl: ").append(toIndentedString(imageSmallUrl)).append("\n");
     sb.append("    imageXlargeUrl: ").append(toIndentedString(imageXlargeUrl)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

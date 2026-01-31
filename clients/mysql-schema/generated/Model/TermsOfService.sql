@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TermsOfService`
 --
-SELECT `id`, `html`, `has_accepted`, `ad_account_id` FROM `TermsOfService` WHERE 1;
+SELECT `ad_account_id`, `has_accepted`, `html`, `id` FROM `TermsOfService` WHERE 1;
 
 --
 -- INSERT template for table `TermsOfService`
 --
-INSERT INTO `TermsOfService`(`id`, `html`, `has_accepted`, `ad_account_id`) VALUES (?, ?, ?, ?);
+INSERT INTO `TermsOfService`(`ad_account_id`, `has_accepted`, `html`, `id`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `TermsOfService`
 --
-UPDATE `TermsOfService` SET `id` = ?, `html` = ?, `has_accepted` = ?, `ad_account_id` = ? WHERE 1;
+UPDATE `TermsOfService` SET `ad_account_id` = ?, `has_accepted` = ?, `html` = ?, `id` = ? WHERE 1;
 
 --
 -- DELETE template for table `TermsOfService`

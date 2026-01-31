@@ -22,21 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param reportType 
  * @param catalogId ID of the catalog entity.
  * @param code The event code that a diagnostics aggregated number references
  * @param codeLabel A human-friendly label for the event code (e.g, 'SPAM')
- * @param message Title message describing the diagnostic issue
- * @param occurrences Number of occurrences of the issue
  * @param ineligibleForAds Indicates if issue makes items ineligible for ads distribution
  * @param ineligibleForOrganic Indicates if issue makes items ineligible for organic distribution
+ * @param message Title message describing the diagnostic issue
+ * @param occurrences Number of occurrences of the issue
+ * @param reportType 
  */
 
 
 data class CatalogsReportDistributionStats (
-
-    @Json(name = "report_type")
-    val reportType: CatalogsReportDistributionStats.ReportType? = null,
 
     /* ID of the catalog entity. */
     @Json(name = "catalog_id")
@@ -50,6 +47,14 @@ data class CatalogsReportDistributionStats (
     @Json(name = "code_label")
     val codeLabel: kotlin.String? = null,
 
+    /* Indicates if issue makes items ineligible for ads distribution */
+    @Json(name = "ineligible_for_ads")
+    val ineligibleForAds: kotlin.Boolean? = null,
+
+    /* Indicates if issue makes items ineligible for organic distribution */
+    @Json(name = "ineligible_for_organic")
+    val ineligibleForOrganic: kotlin.Boolean? = null,
+
     /* Title message describing the diagnostic issue */
     @Json(name = "message")
     val message: kotlin.String? = null,
@@ -58,13 +63,8 @@ data class CatalogsReportDistributionStats (
     @Json(name = "occurrences")
     val occurrences: kotlin.Int? = null,
 
-    /* Indicates if issue makes items ineligible for ads distribution */
-    @Json(name = "ineligible_for_ads")
-    val ineligibleForAds: kotlin.Boolean? = null,
-
-    /* Indicates if issue makes items ineligible for organic distribution */
-    @Json(name = "ineligible_for_organic")
-    val ineligibleForOrganic: kotlin.Boolean? = null
+    @Json(name = "report_type")
+    val reportType: CatalogsReportDistributionStats.ReportType? = null
 
 ) {
 

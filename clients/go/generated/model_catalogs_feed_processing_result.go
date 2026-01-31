@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,9 +27,10 @@ type CatalogsFeedProcessingResult struct {
 	Id string `json:"id"`
 	UpdatedAt time.Time `json:"updated_at"`
 	IngestionDetails CatalogsFeedIngestionDetails `json:"ingestion_details"`
-	Status CatalogsFeedProcessingStatus `json:"status"`
 	ProductCounts NullableCatalogsFeedProductCounts `json:"product_counts"`
+	Status CatalogsFeedProcessingStatus `json:"status"`
 	ValidationDetails CatalogsFeedValidationDetails `json:"validation_details"`
+	VideoCounts *CatalogsFeedVideoCounts `json:"video_counts,omitempty"`
 }
 
 type _CatalogsFeedProcessingResult CatalogsFeedProcessingResult
@@ -38,14 +39,14 @@ type _CatalogsFeedProcessingResult CatalogsFeedProcessingResult
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, status CatalogsFeedProcessingStatus, productCounts NullableCatalogsFeedProductCounts, validationDetails CatalogsFeedValidationDetails) *CatalogsFeedProcessingResult {
+func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, productCounts NullableCatalogsFeedProductCounts, status CatalogsFeedProcessingStatus, validationDetails CatalogsFeedValidationDetails) *CatalogsFeedProcessingResult {
 	this := CatalogsFeedProcessingResult{}
 	this.CreatedAt = createdAt
 	this.Id = id
 	this.UpdatedAt = updatedAt
 	this.IngestionDetails = ingestionDetails
-	this.Status = status
 	this.ProductCounts = productCounts
+	this.Status = status
 	this.ValidationDetails = validationDetails
 	return &this
 }
@@ -154,30 +155,6 @@ func (o *CatalogsFeedProcessingResult) SetIngestionDetails(v CatalogsFeedIngesti
 	o.IngestionDetails = v
 }
 
-// GetStatus returns the Status field value
-func (o *CatalogsFeedProcessingResult) GetStatus() CatalogsFeedProcessingStatus {
-	if o == nil {
-		var ret CatalogsFeedProcessingStatus
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedProcessingResult) GetStatusOk() (*CatalogsFeedProcessingStatus, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *CatalogsFeedProcessingResult) SetStatus(v CatalogsFeedProcessingStatus) {
-	o.Status = v
-}
-
 // GetProductCounts returns the ProductCounts field value
 // If the value is explicit nil, the zero value for CatalogsFeedProductCounts will be returned
 func (o *CatalogsFeedProcessingResult) GetProductCounts() CatalogsFeedProductCounts {
@@ -204,6 +181,30 @@ func (o *CatalogsFeedProcessingResult) SetProductCounts(v CatalogsFeedProductCou
 	o.ProductCounts.Set(&v)
 }
 
+// GetStatus returns the Status field value
+func (o *CatalogsFeedProcessingResult) GetStatus() CatalogsFeedProcessingStatus {
+	if o == nil {
+		var ret CatalogsFeedProcessingStatus
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedProcessingResult) GetStatusOk() (*CatalogsFeedProcessingStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *CatalogsFeedProcessingResult) SetStatus(v CatalogsFeedProcessingStatus) {
+	o.Status = v
+}
+
 // GetValidationDetails returns the ValidationDetails field value
 func (o *CatalogsFeedProcessingResult) GetValidationDetails() CatalogsFeedValidationDetails {
 	if o == nil {
@@ -228,6 +229,38 @@ func (o *CatalogsFeedProcessingResult) SetValidationDetails(v CatalogsFeedValida
 	o.ValidationDetails = v
 }
 
+// GetVideoCounts returns the VideoCounts field value if set, zero value otherwise.
+func (o *CatalogsFeedProcessingResult) GetVideoCounts() CatalogsFeedVideoCounts {
+	if o == nil || IsNil(o.VideoCounts) {
+		var ret CatalogsFeedVideoCounts
+		return ret
+	}
+	return *o.VideoCounts
+}
+
+// GetVideoCountsOk returns a tuple with the VideoCounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedProcessingResult) GetVideoCountsOk() (*CatalogsFeedVideoCounts, bool) {
+	if o == nil || IsNil(o.VideoCounts) {
+		return nil, false
+	}
+	return o.VideoCounts, true
+}
+
+// HasVideoCounts returns a boolean if a field has been set.
+func (o *CatalogsFeedProcessingResult) HasVideoCounts() bool {
+	if o != nil && !IsNil(o.VideoCounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetVideoCounts gets a reference to the given CatalogsFeedVideoCounts and assigns it to the VideoCounts field.
+func (o *CatalogsFeedProcessingResult) SetVideoCounts(v CatalogsFeedVideoCounts) {
+	o.VideoCounts = &v
+}
+
 func (o CatalogsFeedProcessingResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -242,9 +275,12 @@ func (o CatalogsFeedProcessingResult) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["ingestion_details"] = o.IngestionDetails
-	toSerialize["status"] = o.Status
 	toSerialize["product_counts"] = o.ProductCounts.Get()
+	toSerialize["status"] = o.Status
 	toSerialize["validation_details"] = o.ValidationDetails
+	if !IsNil(o.VideoCounts) {
+		toSerialize["video_counts"] = o.VideoCounts
+	}
 	return toSerialize, nil
 }
 
@@ -257,8 +293,8 @@ func (o *CatalogsFeedProcessingResult) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"updated_at",
 		"ingestion_details",
-		"status",
 		"product_counts",
+		"status",
 		"validation_details",
 	}
 

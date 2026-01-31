@@ -22,16 +22,22 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param id 
+ * @param index 
  * @param key 
  * @param name 
  * @param ratio 
- * @param index 
- * @param id 
  */
 
 @Deprecated(message = "This schema is deprecated.")
 
 data class AudienceInsightCategoryCommon (
+
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    @Json(name = "index")
+    val index: java.math.BigDecimal? = null,
 
     @Json(name = "key")
     val key: kotlin.String? = null,
@@ -40,13 +46,7 @@ data class AudienceInsightCategoryCommon (
     val name: kotlin.String? = null,
 
     @Json(name = "ratio")
-    val ratio: java.math.BigDecimal? = null,
-
-    @Json(name = "index")
-    val index: java.math.BigDecimal? = null,
-
-    @Json(name = "id")
-    val id: kotlin.String? = null
+    val ratio: java.math.BigDecimal? = null
 
 ) {
 

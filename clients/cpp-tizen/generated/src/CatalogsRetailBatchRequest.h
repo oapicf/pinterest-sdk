@@ -48,6 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -62,13 +69,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get We recommend using the CatalogsLocale values.
-	 */
-	std::string getLanguage();
-
-	/*! \brief Set We recommend using the CatalogsLocale values.
-	 */
-	void setLanguage(std::string  language);
 	/*! \brief Get Array with catalogs item operations
 	 */
 	std::list<CatalogsRetailBatchRequest_items_inner> getItems();
@@ -76,12 +76,20 @@ public:
 	/*! \brief Set Array with catalogs item operations
 	 */
 	void setItems(std::list <CatalogsRetailBatchRequest_items_inner> items);
+	/*! \brief Get We recommend using the CatalogsLocale values.
+	 */
+	std::string getLanguage();
+
+	/*! \brief Set We recommend using the CatalogsLocale values.
+	 */
+	void setLanguage(std::string  language);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
 	Country country;
-	std::string language;
 	std::list <CatalogsRetailBatchRequest_items_inner>items;
+	std::string language;
 	void __init();
 	void __cleanup();
 

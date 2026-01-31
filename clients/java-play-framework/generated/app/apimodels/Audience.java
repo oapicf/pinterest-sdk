@@ -11,13 +11,29 @@ import javax.validation.Valid;
 /**
  * Audience
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class Audience   {
   @JsonProperty("ad_account_id")
   @Pattern(regexp="^\\d+$")
 
   private String adAccountId;
+
+  @JsonProperty("audience_type")
+  
+  private String audienceType;
+
+  @JsonProperty("created_by_company_name")
+  
+  private String createdByCompanyName;
+
+  @JsonProperty("created_timestamp")
+  
+  private Integer createdTimestamp;
+
+  @JsonProperty("description")
+  
+  private String description;
 
   @JsonProperty("id")
   @Pattern(regexp="^\\d+$")
@@ -27,14 +43,6 @@ public class Audience   {
   @JsonProperty("name")
   
   private String name;
-
-  @JsonProperty("audience_type")
-  
-  private String audienceType;
-
-  @JsonProperty("description")
-  
-  private String description;
 
   @JsonProperty("rule")
   @Valid
@@ -52,10 +60,6 @@ public class Audience   {
   @JsonProperty("type")
   
   private String type;
-
-  @JsonProperty("created_timestamp")
-  
-  private Integer createdTimestamp;
 
   @JsonProperty("updated_timestamp")
   
@@ -76,6 +80,74 @@ public class Audience   {
 
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
+  }
+
+  public Audience audienceType(String audienceType) {
+    this.audienceType = audienceType;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+   * @return audienceType
+  **/
+  public String getAudienceType() {
+    return audienceType;
+  }
+
+  public void setAudienceType(String audienceType) {
+    this.audienceType = audienceType;
+  }
+
+  public Audience createdByCompanyName(String createdByCompanyName) {
+    this.createdByCompanyName = createdByCompanyName;
+    return this;
+  }
+
+   /**
+   * The company that created this audience.
+   * @return createdByCompanyName
+  **/
+  public String getCreatedByCompanyName() {
+    return createdByCompanyName;
+  }
+
+  public void setCreatedByCompanyName(String createdByCompanyName) {
+    this.createdByCompanyName = createdByCompanyName;
+  }
+
+  public Audience createdTimestamp(Integer createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+    return this;
+  }
+
+   /**
+   * Creation time. Unix timestamp in seconds.
+   * @return createdTimestamp
+  **/
+  public Integer getCreatedTimestamp() {
+    return createdTimestamp;
+  }
+
+  public void setCreatedTimestamp(Integer createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+  }
+
+  public Audience description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Audience description.
+   * @return description
+  **/
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public Audience id(String id) {
@@ -110,40 +182,6 @@ public class Audience   {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public Audience audienceType(String audienceType) {
-    this.audienceType = audienceType;
-    return this;
-  }
-
-   /**
-   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-   * @return audienceType
-  **/
-  public String getAudienceType() {
-    return audienceType;
-  }
-
-  public void setAudienceType(String audienceType) {
-    this.audienceType = audienceType;
-  }
-
-  public Audience description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Audience description.
-   * @return description
-  **/
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public Audience rule(AudienceRule rule) {
@@ -214,23 +252,6 @@ public class Audience   {
     this.type = type;
   }
 
-  public Audience createdTimestamp(Integer createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-    return this;
-  }
-
-   /**
-   * Creation time. Unix timestamp in seconds.
-   * @return createdTimestamp
-  **/
-  public Integer getCreatedTimestamp() {
-    return createdTimestamp;
-  }
-
-  public void setCreatedTimestamp(Integer createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-  }
-
   public Audience updatedTimestamp(Integer updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
@@ -259,21 +280,22 @@ public class Audience   {
     }
     Audience audience = (Audience) o;
     return Objects.equals(adAccountId, audience.adAccountId) &&
+        Objects.equals(audienceType, audience.audienceType) &&
+        Objects.equals(createdByCompanyName, audience.createdByCompanyName) &&
+        Objects.equals(createdTimestamp, audience.createdTimestamp) &&
+        Objects.equals(description, audience.description) &&
         Objects.equals(id, audience.id) &&
         Objects.equals(name, audience.name) &&
-        Objects.equals(audienceType, audience.audienceType) &&
-        Objects.equals(description, audience.description) &&
         Objects.equals(rule, audience.rule) &&
         Objects.equals(size, audience.size) &&
         Objects.equals(status, audience.status) &&
         Objects.equals(type, audience.type) &&
-        Objects.equals(createdTimestamp, audience.createdTimestamp) &&
         Objects.equals(updatedTimestamp, audience.updatedTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, id, name, audienceType, description, rule, size, status, type, createdTimestamp, updatedTimestamp);
+    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, name, rule, size, status, type, updatedTimestamp);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -283,15 +305,16 @@ public class Audience   {
     sb.append("class Audience {\n");
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    createdByCompanyName: ").append(toIndentedString(createdByCompanyName)).append("\n");
+    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();

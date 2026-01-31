@@ -7,86 +7,78 @@
 #' @title CatalogsUpdatableHotelAttributes
 #' @description CatalogsUpdatableHotelAttributes Class
 #' @format An \code{R6Class} generator object
-#' @field name The hotel's name. character [optional]
-#' @field link Link to the product page character [optional]
-#' @field description Brief description of the hotel. character [optional]
-#' @field brand The brand to which this hotel belongs to. character [optional]
-#' @field latitude Latitude of the hotel. numeric [optional]
-#' @field longitude Longitude of the hotel. numeric [optional]
-#' @field neighborhood A list of neighborhoods where the hotel is located list(character) [optional]
 #' @field address  \link{CatalogsHotelAddress} [optional]
+#' @field base_price Base price of the hotel room per night followed by the ISO currency code character [optional]
+#' @field brand The brand to which this hotel belongs to. character [optional]
+#' @field category The type of property. The category can be any type of internal description desired. character [optional]
 #' @field custom_label_0 Custom grouping of hotels character [optional]
 #' @field custom_label_1 Custom grouping of hotels character [optional]
 #' @field custom_label_2 Custom grouping of hotels character [optional]
 #' @field custom_label_3 Custom grouping of hotels character [optional]
 #' @field custom_label_4 Custom grouping of hotels character [optional]
-#' @field category The type of property. The category can be any type of internal description desired. character [optional]
-#' @field base_price Base price of the hotel room per night followed by the ISO currency code character [optional]
-#' @field sale_price Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. character [optional]
+#' @field description Brief description of the hotel. character [optional]
 #' @field guest_ratings  \link{CatalogsHotelGuestRatings} [optional]
+#' @field latitude Latitude of the hotel. numeric [optional]
+#' @field link Link to the product page character [optional]
+#' @field longitude Longitude of the hotel. numeric [optional]
+#' @field name The hotel's name. character [optional]
+#' @field neighborhood A list of neighborhoods where the hotel is located list(character) [optional]
+#' @field sale_price Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsUpdatableHotelAttributes <- R6::R6Class(
   "CatalogsUpdatableHotelAttributes",
   public = list(
-    `name` = NULL,
-    `link` = NULL,
-    `description` = NULL,
-    `brand` = NULL,
-    `latitude` = NULL,
-    `longitude` = NULL,
-    `neighborhood` = NULL,
     `address` = NULL,
+    `base_price` = NULL,
+    `brand` = NULL,
+    `category` = NULL,
     `custom_label_0` = NULL,
     `custom_label_1` = NULL,
     `custom_label_2` = NULL,
     `custom_label_3` = NULL,
     `custom_label_4` = NULL,
-    `category` = NULL,
-    `base_price` = NULL,
-    `sale_price` = NULL,
+    `description` = NULL,
     `guest_ratings` = NULL,
+    `latitude` = NULL,
+    `link` = NULL,
+    `longitude` = NULL,
+    `name` = NULL,
+    `neighborhood` = NULL,
+    `sale_price` = NULL,
 
     #' @description
     #' Initialize a new CatalogsUpdatableHotelAttributes class.
     #'
-    #' @param name The hotel's name.
-    #' @param link Link to the product page
-    #' @param description Brief description of the hotel.
-    #' @param brand The brand to which this hotel belongs to.
-    #' @param latitude Latitude of the hotel.
-    #' @param longitude Longitude of the hotel.
-    #' @param neighborhood A list of neighborhoods where the hotel is located
     #' @param address address
+    #' @param base_price Base price of the hotel room per night followed by the ISO currency code
+    #' @param brand The brand to which this hotel belongs to.
+    #' @param category The type of property. The category can be any type of internal description desired.
     #' @param custom_label_0 Custom grouping of hotels
     #' @param custom_label_1 Custom grouping of hotels
     #' @param custom_label_2 Custom grouping of hotels
     #' @param custom_label_3 Custom grouping of hotels
     #' @param custom_label_4 Custom grouping of hotels
-    #' @param category The type of property. The category can be any type of internal description desired.
-    #' @param base_price Base price of the hotel room per night followed by the ISO currency code
-    #' @param sale_price Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+    #' @param description Brief description of the hotel.
     #' @param guest_ratings guest_ratings
+    #' @param latitude Latitude of the hotel.
+    #' @param link Link to the product page
+    #' @param longitude Longitude of the hotel.
+    #' @param name The hotel's name.
+    #' @param neighborhood A list of neighborhoods where the hotel is located
+    #' @param sale_price Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `link` = NULL, `description` = NULL, `brand` = NULL, `latitude` = NULL, `longitude` = NULL, `neighborhood` = NULL, `address` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `category` = NULL, `base_price` = NULL, `sale_price` = NULL, `guest_ratings` = NULL, ...) {
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
+    initialize = function(`address` = NULL, `base_price` = NULL, `brand` = NULL, `category` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `guest_ratings` = NULL, `latitude` = NULL, `link` = NULL, `longitude` = NULL, `name` = NULL, `neighborhood` = NULL, `sale_price` = NULL, ...) {
+      if (!is.null(`address`)) {
+        stopifnot(R6::is.R6(`address`))
+        self$`address` <- `address`
       }
-      if (!is.null(`link`)) {
-        if (!(is.character(`link`) && length(`link`) == 1)) {
-          stop(paste("Error! Invalid data for `link`. Must be a string:", `link`))
+      if (!is.null(`base_price`)) {
+        if (!(is.character(`base_price`) && length(`base_price`) == 1)) {
+          stop(paste("Error! Invalid data for `base_price`. Must be a string:", `base_price`))
         }
-        self$`link` <- `link`
-      }
-      if (!is.null(`description`)) {
-        if (!(is.character(`description`) && length(`description`) == 1)) {
-          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
-        }
-        self$`description` <- `description`
+        self$`base_price` <- `base_price`
       }
       if (!is.null(`brand`)) {
         if (!(is.character(`brand`) && length(`brand`) == 1)) {
@@ -94,20 +86,11 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
         }
         self$`brand` <- `brand`
       }
-      if (!is.null(`latitude`)) {
-        self$`latitude` <- `latitude`
-      }
-      if (!is.null(`longitude`)) {
-        self$`longitude` <- `longitude`
-      }
-      if (!is.null(`neighborhood`)) {
-        stopifnot(is.vector(`neighborhood`), length(`neighborhood`) != 0)
-        sapply(`neighborhood`, function(x) stopifnot(is.character(x)))
-        self$`neighborhood` <- `neighborhood`
-      }
-      if (!is.null(`address`)) {
-        stopifnot(R6::is.R6(`address`))
-        self$`address` <- `address`
+      if (!is.null(`category`)) {
+        if (!(is.character(`category`) && length(`category`) == 1)) {
+          stop(paste("Error! Invalid data for `category`. Must be a string:", `category`))
+        }
+        self$`category` <- `category`
       }
       if (!is.null(`custom_label_0`)) {
         if (!(is.character(`custom_label_0`) && length(`custom_label_0`) == 1)) {
@@ -139,27 +122,44 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
         }
         self$`custom_label_4` <- `custom_label_4`
       }
-      if (!is.null(`category`)) {
-        if (!(is.character(`category`) && length(`category`) == 1)) {
-          stop(paste("Error! Invalid data for `category`. Must be a string:", `category`))
+      if (!is.null(`description`)) {
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
         }
-        self$`category` <- `category`
+        self$`description` <- `description`
       }
-      if (!is.null(`base_price`)) {
-        if (!(is.character(`base_price`) && length(`base_price`) == 1)) {
-          stop(paste("Error! Invalid data for `base_price`. Must be a string:", `base_price`))
+      if (!is.null(`guest_ratings`)) {
+        stopifnot(R6::is.R6(`guest_ratings`))
+        self$`guest_ratings` <- `guest_ratings`
+      }
+      if (!is.null(`latitude`)) {
+        self$`latitude` <- `latitude`
+      }
+      if (!is.null(`link`)) {
+        if (!(is.character(`link`) && length(`link`) == 1)) {
+          stop(paste("Error! Invalid data for `link`. Must be a string:", `link`))
         }
-        self$`base_price` <- `base_price`
+        self$`link` <- `link`
+      }
+      if (!is.null(`longitude`)) {
+        self$`longitude` <- `longitude`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
+      if (!is.null(`neighborhood`)) {
+        stopifnot(is.vector(`neighborhood`), length(`neighborhood`) != 0)
+        sapply(`neighborhood`, function(x) stopifnot(is.character(x)))
+        self$`neighborhood` <- `neighborhood`
       }
       if (!is.null(`sale_price`)) {
         if (!(is.character(`sale_price`) && length(`sale_price`) == 1)) {
           stop(paste("Error! Invalid data for `sale_price`. Must be a string:", `sale_price`))
         }
         self$`sale_price` <- `sale_price`
-      }
-      if (!is.null(`guest_ratings`)) {
-        stopifnot(R6::is.R6(`guest_ratings`))
-        self$`guest_ratings` <- `guest_ratings`
       }
     },
 
@@ -194,37 +194,21 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsUpdatableHotelAttributesObject <- list()
-      if (!is.null(self$`name`)) {
-        CatalogsUpdatableHotelAttributesObject[["name"]] <-
-          self$`name`
+      if (!is.null(self$`address`)) {
+        CatalogsUpdatableHotelAttributesObject[["address"]] <-
+          self$`address`$toSimpleType()
       }
-      if (!is.null(self$`link`)) {
-        CatalogsUpdatableHotelAttributesObject[["link"]] <-
-          self$`link`
-      }
-      if (!is.null(self$`description`)) {
-        CatalogsUpdatableHotelAttributesObject[["description"]] <-
-          self$`description`
+      if (!is.null(self$`base_price`)) {
+        CatalogsUpdatableHotelAttributesObject[["base_price"]] <-
+          self$`base_price`
       }
       if (!is.null(self$`brand`)) {
         CatalogsUpdatableHotelAttributesObject[["brand"]] <-
           self$`brand`
       }
-      if (!is.null(self$`latitude`)) {
-        CatalogsUpdatableHotelAttributesObject[["latitude"]] <-
-          self$`latitude`
-      }
-      if (!is.null(self$`longitude`)) {
-        CatalogsUpdatableHotelAttributesObject[["longitude"]] <-
-          self$`longitude`
-      }
-      if (!is.null(self$`neighborhood`)) {
-        CatalogsUpdatableHotelAttributesObject[["neighborhood"]] <-
-          self$`neighborhood`
-      }
-      if (!is.null(self$`address`)) {
-        CatalogsUpdatableHotelAttributesObject[["address"]] <-
-          self$`address`$toSimpleType()
+      if (!is.null(self$`category`)) {
+        CatalogsUpdatableHotelAttributesObject[["category"]] <-
+          self$`category`
       }
       if (!is.null(self$`custom_label_0`)) {
         CatalogsUpdatableHotelAttributesObject[["custom_label_0"]] <-
@@ -246,21 +230,37 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
         CatalogsUpdatableHotelAttributesObject[["custom_label_4"]] <-
           self$`custom_label_4`
       }
-      if (!is.null(self$`category`)) {
-        CatalogsUpdatableHotelAttributesObject[["category"]] <-
-          self$`category`
-      }
-      if (!is.null(self$`base_price`)) {
-        CatalogsUpdatableHotelAttributesObject[["base_price"]] <-
-          self$`base_price`
-      }
-      if (!is.null(self$`sale_price`)) {
-        CatalogsUpdatableHotelAttributesObject[["sale_price"]] <-
-          self$`sale_price`
+      if (!is.null(self$`description`)) {
+        CatalogsUpdatableHotelAttributesObject[["description"]] <-
+          self$`description`
       }
       if (!is.null(self$`guest_ratings`)) {
         CatalogsUpdatableHotelAttributesObject[["guest_ratings"]] <-
           self$`guest_ratings`$toSimpleType()
+      }
+      if (!is.null(self$`latitude`)) {
+        CatalogsUpdatableHotelAttributesObject[["latitude"]] <-
+          self$`latitude`
+      }
+      if (!is.null(self$`link`)) {
+        CatalogsUpdatableHotelAttributesObject[["link"]] <-
+          self$`link`
+      }
+      if (!is.null(self$`longitude`)) {
+        CatalogsUpdatableHotelAttributesObject[["longitude"]] <-
+          self$`longitude`
+      }
+      if (!is.null(self$`name`)) {
+        CatalogsUpdatableHotelAttributesObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`neighborhood`)) {
+        CatalogsUpdatableHotelAttributesObject[["neighborhood"]] <-
+          self$`neighborhood`
+      }
+      if (!is.null(self$`sale_price`)) {
+        CatalogsUpdatableHotelAttributesObject[["sale_price"]] <-
+          self$`sale_price`
       }
       return(CatalogsUpdatableHotelAttributesObject)
     },
@@ -272,31 +272,19 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
     #' @return the instance of CatalogsUpdatableHotelAttributes
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
-      if (!is.null(this_object$`link`)) {
-        self$`link` <- this_object$`link`
-      }
-      if (!is.null(this_object$`description`)) {
-        self$`description` <- this_object$`description`
-      }
-      if (!is.null(this_object$`brand`)) {
-        self$`brand` <- this_object$`brand`
-      }
-      if (!is.null(this_object$`latitude`)) {
-        self$`latitude` <- this_object$`latitude`
-      }
-      if (!is.null(this_object$`longitude`)) {
-        self$`longitude` <- this_object$`longitude`
-      }
-      if (!is.null(this_object$`neighborhood`)) {
-        self$`neighborhood` <- ApiClient$new()$deserializeObj(this_object$`neighborhood`, "array[character]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`address`)) {
         `address_object` <- CatalogsHotelAddress$new()
         `address_object`$fromJSON(jsonlite::toJSON(this_object$`address`, auto_unbox = TRUE, digits = NA))
         self$`address` <- `address_object`
+      }
+      if (!is.null(this_object$`base_price`)) {
+        self$`base_price` <- this_object$`base_price`
+      }
+      if (!is.null(this_object$`brand`)) {
+        self$`brand` <- this_object$`brand`
+      }
+      if (!is.null(this_object$`category`)) {
+        self$`category` <- this_object$`category`
       }
       if (!is.null(this_object$`custom_label_0`)) {
         self$`custom_label_0` <- this_object$`custom_label_0`
@@ -313,19 +301,31 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
       if (!is.null(this_object$`custom_label_4`)) {
         self$`custom_label_4` <- this_object$`custom_label_4`
       }
-      if (!is.null(this_object$`category`)) {
-        self$`category` <- this_object$`category`
-      }
-      if (!is.null(this_object$`base_price`)) {
-        self$`base_price` <- this_object$`base_price`
-      }
-      if (!is.null(this_object$`sale_price`)) {
-        self$`sale_price` <- this_object$`sale_price`
+      if (!is.null(this_object$`description`)) {
+        self$`description` <- this_object$`description`
       }
       if (!is.null(this_object$`guest_ratings`)) {
         `guest_ratings_object` <- CatalogsHotelGuestRatings$new()
         `guest_ratings_object`$fromJSON(jsonlite::toJSON(this_object$`guest_ratings`, auto_unbox = TRUE, digits = NA))
         self$`guest_ratings` <- `guest_ratings_object`
+      }
+      if (!is.null(this_object$`latitude`)) {
+        self$`latitude` <- this_object$`latitude`
+      }
+      if (!is.null(this_object$`link`)) {
+        self$`link` <- this_object$`link`
+      }
+      if (!is.null(this_object$`longitude`)) {
+        self$`longitude` <- this_object$`longitude`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`neighborhood`)) {
+        self$`neighborhood` <- ApiClient$new()$deserializeObj(this_object$`neighborhood`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`sale_price`)) {
+        self$`sale_price` <- this_object$`sale_price`
       }
       self
     },
@@ -348,23 +348,23 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
     #' @return the instance of CatalogsUpdatableHotelAttributes
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
-      self$`link` <- this_object$`link`
-      self$`description` <- this_object$`description`
-      self$`brand` <- this_object$`brand`
-      self$`latitude` <- this_object$`latitude`
-      self$`longitude` <- this_object$`longitude`
-      self$`neighborhood` <- ApiClient$new()$deserializeObj(this_object$`neighborhood`, "array[character]", loadNamespace("openapi"))
       self$`address` <- CatalogsHotelAddress$new()$fromJSON(jsonlite::toJSON(this_object$`address`, auto_unbox = TRUE, digits = NA))
+      self$`base_price` <- this_object$`base_price`
+      self$`brand` <- this_object$`brand`
+      self$`category` <- this_object$`category`
       self$`custom_label_0` <- this_object$`custom_label_0`
       self$`custom_label_1` <- this_object$`custom_label_1`
       self$`custom_label_2` <- this_object$`custom_label_2`
       self$`custom_label_3` <- this_object$`custom_label_3`
       self$`custom_label_4` <- this_object$`custom_label_4`
-      self$`category` <- this_object$`category`
-      self$`base_price` <- this_object$`base_price`
-      self$`sale_price` <- this_object$`sale_price`
+      self$`description` <- this_object$`description`
       self$`guest_ratings` <- CatalogsHotelGuestRatings$new()$fromJSON(jsonlite::toJSON(this_object$`guest_ratings`, auto_unbox = TRUE, digits = NA))
+      self$`latitude` <- this_object$`latitude`
+      self$`link` <- this_object$`link`
+      self$`longitude` <- this_object$`longitude`
+      self$`name` <- this_object$`name`
+      self$`neighborhood` <- ApiClient$new()$deserializeObj(this_object$`neighborhood`, "array[character]", loadNamespace("openapi"))
+      self$`sale_price` <- this_object$`sale_price`
       self
     },
 

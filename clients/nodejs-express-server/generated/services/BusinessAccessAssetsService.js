@@ -76,17 +76,19 @@ const asset_group/update = ({ businessUnderscoreid, updateAssetGroupBody }) => n
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
 * assetUnderscoreid String Unique identifier of a business asset.
+* fetchUnderscoresystemUnderscoreusers Boolean Fetches system users if True. Fetches regular user employees if False. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
 * pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
 * returns business_asset_members_get_200_response
 * */
-const business_asset_members/get = ({ businessUnderscoreid, assetUnderscoreid, bookmark, pageUnderscoresize, startUnderscoreindex }) => new Promise(
+const business_asset_members/get = ({ businessUnderscoreid, assetUnderscoreid, fetchUnderscoresystemUnderscoreusers, bookmark, pageUnderscoresize, startUnderscoreindex }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
         assetUnderscoreid,
+        fetchUnderscoresystemUnderscoreusers,
         bookmark,
         pageUnderscoresize,
         startUnderscoreindex,

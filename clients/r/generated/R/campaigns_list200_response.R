@@ -7,16 +7,16 @@
 #' @title CampaignsList200Response
 #' @description CampaignsList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{CampaignResponse})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{CampaignResponse})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CampaignsList200Response <- R6::R6Class(
   "CampaignsList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new CampaignsList200Response class.
@@ -69,13 +69,13 @@ CampaignsList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CampaignsList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        CampaignsList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         CampaignsList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        CampaignsList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(CampaignsList200ResponseObject)
     },
@@ -87,11 +87,11 @@ CampaignsList200Response <- R6::R6Class(
     #' @return the instance of CampaignsList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CampaignResponse]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CampaignResponse]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ CampaignsList200Response <- R6::R6Class(
     #' @return the instance of CampaignsList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CampaignResponse]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CampaignResponse]", loadNamespace("openapi"))
       self
     },
 

@@ -27,16 +27,16 @@ import com.squareup.moshi.JsonClass
  * @param clientTimestamp Timestamp in milliseconds of when the log was executed at the client.
  * @param eventType Log event type
  * @param logLevel Log level type
- * @param externalBusinessId 
  * @param advertiserId 
- * @param merchantId 
- * @param tagId 
- * @param feedProfileId 
- * @param message Explanation of the event that occured.
  * @param appVersionNumber Version number of the integration application.
- * @param platformVersionNumber Version number of the platform the integration application is running on.
  * @param error 
+ * @param externalBusinessId 
+ * @param feedProfileId 
+ * @param merchantId 
+ * @param message Explanation of the event that occured.
+ * @param platformVersionNumber Version number of the platform the integration application is running on.
  * @param request 
+ * @param tagId 
  */
 
 
@@ -54,38 +54,38 @@ data class IntegrationLog (
     @Json(name = "log_level")
     val logLevel: IntegrationLog.LogLevel,
 
-    @Json(name = "external_business_id")
-    val externalBusinessId: kotlin.String? = null,
-
     @Json(name = "advertiser_id")
     val advertiserId: kotlin.String? = null,
-
-    @Json(name = "merchant_id")
-    val merchantId: kotlin.String? = null,
-
-    @Json(name = "tag_id")
-    val tagId: kotlin.String? = null,
-
-    @Json(name = "feed_profile_id")
-    val feedProfileId: kotlin.String? = null,
-
-    /* Explanation of the event that occured. */
-    @Json(name = "message")
-    val message: kotlin.String? = null,
 
     /* Version number of the integration application. */
     @Json(name = "app_version_number")
     val appVersionNumber: kotlin.String? = null,
 
+    @Json(name = "error")
+    val error: IntegrationLogClientError? = null,
+
+    @Json(name = "external_business_id")
+    val externalBusinessId: kotlin.String? = null,
+
+    @Json(name = "feed_profile_id")
+    val feedProfileId: kotlin.String? = null,
+
+    @Json(name = "merchant_id")
+    val merchantId: kotlin.String? = null,
+
+    /* Explanation of the event that occured. */
+    @Json(name = "message")
+    val message: kotlin.String? = null,
+
     /* Version number of the platform the integration application is running on. */
     @Json(name = "platform_version_number")
     val platformVersionNumber: kotlin.String? = null,
 
-    @Json(name = "error")
-    val error: IntegrationLogClientError? = null,
-
     @Json(name = "request")
-    val request: IntegrationLogClientRequest? = null
+    val request: IntegrationLogClientRequest? = null,
+
+    @Json(name = "tag_id")
+    val tagId: kotlin.String? = null
 
 ) {
 

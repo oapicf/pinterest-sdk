@@ -74,12 +74,12 @@ public abstract class KeywordsApiControllerImpInterface {
 
     public abstract KeywordsResponse keywordsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsRequest keywordsRequest) throws Exception;
 
-    public Result keywordsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=5)List<MatchType> matchTypes,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result keywordsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Size(min=1,max=5)List<MatchType> matchTypes,  @Min(1)Integer pageSize, String bookmark) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        KeywordsGet200Response obj = keywordsGet(request, adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark);
+        KeywordsGet200Response obj = keywordsGet(request, adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -91,7 +91,7 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract KeywordsGet200Response keywordsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=5)List<MatchType> matchTypes,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract KeywordsGet200Response keywordsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Size(min=1,max=5)List<MatchType> matchTypes,  @Min(1)Integer pageSize, String bookmark) throws Exception;
 
     public Result keywordsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordUpdateBody keywordUpdateBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -112,12 +112,12 @@ public abstract class KeywordsApiControllerImpInterface {
 
     public abstract KeywordsResponse keywordsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordUpdateBody keywordUpdateBody) throws Exception;
 
-    public Result trendingKeywordsListHttp(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit) throws Exception {
+    public Result trendingKeywordsListHttp(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit, Boolean includePrediction, Boolean includeDemographics) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        TrendingKeywordsResponse obj = trendingKeywordsList(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit);
+        TrendingKeywordsResponse obj = trendingKeywordsList(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -129,6 +129,6 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract TrendingKeywordsResponse trendingKeywordsList(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit) throws Exception;
+    public abstract TrendingKeywordsResponse trendingKeywordsList(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit, Boolean includePrediction, Boolean includeDemographics) throws Exception;
 
 }

@@ -19,17 +19,17 @@ typedef struct template_response_date_range_absolute_date_range_t template_respo
 
 
 typedef struct template_response_date_range_absolute_date_range_t {
-    char *type; // string
-    double start_date; //numeric
     double end_date; //numeric
+    double start_date; //numeric
+    char *type; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } template_response_date_range_absolute_date_range_t;
 
 __attribute__((deprecated)) template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_create(
-    char *type,
+    double end_date,
     double start_date,
-    double end_date
+    char *type
 );
 
 void template_response_date_range_absolute_date_range_free(template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range);

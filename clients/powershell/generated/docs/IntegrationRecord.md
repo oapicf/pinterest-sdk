@@ -3,44 +3,44 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | [optional] 
-**ExternalBusinessId** | **String** |  | [optional] 
-**ConnectedMerchantId** | **String** |  | [optional] 
-**ConnectedUserId** | **String** |  | [optional] [readonly] 
+**AdditionalId1** | **String** |  | [optional] 
 **ConnectedAdvertiserId** | **String** |  | [optional] [readonly] 
 **ConnectedLbaId** | **String** |  | [optional] 
+**ConnectedMerchantId** | **String** |  | [optional] 
 **ConnectedTagId** | **String** |  | [optional] 
+**ConnectedUserId** | **String** |  | [optional] [readonly] 
+**CreatedTime** | **Int32** |  | [optional] 
+**ExternalBusinessId** | **String** |  | [optional] 
+**Id** | **String** |  | [optional] 
 **PartnerAccessToken** | **String** |  | [optional] 
-**PartnerRefreshToken** | **String** |  | [optional] 
-**PartnerPrimaryEmail** | **String** |  | [optional] 
 **PartnerAccessTokenExpiry** | **Int32** |  | [optional] 
+**PartnerMetadata** | **String** |  | [optional] 
+**PartnerPrimaryEmail** | **String** |  | [optional] 
+**PartnerRefreshToken** | **String** |  | [optional] 
 **PartnerRefreshTokenExpiry** | **Int32** |  | [optional] 
 **Scopes** | **String** |  | [optional] 
-**PartnerMetadata** | **String** |  | [optional] 
-**AdditionalId1** | **String** |  | [optional] 
-**CreatedTime** | **Int32** |  | [optional] 
 **UpdatedTime** | **Int32** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IntegrationRecord = Initialize-PSOpenAPIToolsIntegrationRecord  -Id null `
- -ExternalBusinessId null `
- -ConnectedMerchantId null `
- -ConnectedUserId null `
+$IntegrationRecord = Initialize-PSOpenAPIToolsIntegrationRecord  -AdditionalId1 null `
  -ConnectedAdvertiserId null `
  -ConnectedLbaId null `
+ -ConnectedMerchantId null `
  -ConnectedTagId null `
+ -ConnectedUserId null `
+ -CreatedTime null `
+ -ExternalBusinessId null `
+ -Id null `
  -PartnerAccessToken null `
- -PartnerRefreshToken null `
- -PartnerPrimaryEmail null `
  -PartnerAccessTokenExpiry null `
+ -PartnerMetadata null `
+ -PartnerPrimaryEmail null `
+ -PartnerRefreshToken null `
  -PartnerRefreshTokenExpiry null `
  -Scopes null `
- -PartnerMetadata null `
- -AdditionalId1 null `
- -CreatedTime null `
  -UpdatedTime null
 ```
 

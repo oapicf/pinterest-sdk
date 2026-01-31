@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `adAccountId` | string
 `createdTime` | number
+`exceptions` | object
 `id` | string
 `name` | string
 `numBatches` | number
@@ -16,7 +17,6 @@ Name | Type
 `status` | string
 `type` | string
 `updatedTime` | number
-`exceptions` | object
 
 ## Example
 
@@ -27,6 +27,7 @@ import type { CustomerList } from ''
 const example = {
   "adAccountId": 549756359984,
   "createdTime": 1452208622,
+  "exceptions": null,
   "id": 643,
   "name": The Glengarry Glen Ross leads,
   "numBatches": 2,
@@ -35,7 +36,6 @@ const example = {
   "status": PROCESSING,
   "type": customerlist,
   "updatedTime": 1461269616,
-  "exceptions": null,
 } satisfies CustomerList
 
 console.log(example)

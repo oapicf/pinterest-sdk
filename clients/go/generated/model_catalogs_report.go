@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &CatalogsReport{}
 // CatalogsReport struct for CatalogsReport
 type CatalogsReport struct {
 	ReportStatus *string `json:"report_status,omitempty"`
-	// URL to download the report
-	Url NullableString `json:"url,omitempty"`
 	// Size of the report in bytes
 	Size NullableFloat32 `json:"size,omitempty"`
+	// URL to download the report
+	Url NullableString `json:"url,omitempty"`
 }
 
 // NewCatalogsReport instantiates a new CatalogsReport object
@@ -76,48 +76,6 @@ func (o *CatalogsReport) SetReportStatus(v string) {
 	o.ReportStatus = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsReport) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Url.Get()
-}
-
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsReport) GetUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Url.Get(), o.Url.IsSet()
-}
-
-// HasUrl returns a boolean if a field has been set.
-func (o *CatalogsReport) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
-func (o *CatalogsReport) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *CatalogsReport) SetUrlNil() {
-	o.Url.Set(nil)
-}
-
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *CatalogsReport) UnsetUrl() {
-	o.Url.Unset()
-}
-
 // GetSize returns the Size field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsReport) GetSize() float32 {
 	if o == nil || IsNil(o.Size.Get()) {
@@ -160,6 +118,48 @@ func (o *CatalogsReport) UnsetSize() {
 	o.Size.Unset()
 }
 
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsReport) GetUrl() string {
+	if o == nil || IsNil(o.Url.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Url.Get()
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsReport) GetUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Url.Get(), o.Url.IsSet()
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *CatalogsReport) HasUrl() bool {
+	if o != nil && o.Url.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+func (o *CatalogsReport) SetUrl(v string) {
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *CatalogsReport) SetUrlNil() {
+	o.Url.Set(nil)
+}
+
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *CatalogsReport) UnsetUrl() {
+	o.Url.Unset()
+}
+
 func (o CatalogsReport) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -173,11 +173,11 @@ func (o CatalogsReport) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReportStatus) {
 		toSerialize["report_status"] = o.ReportStatus
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
-	}
 	if o.Size.IsSet() {
 		toSerialize["size"] = o.Size.Get()
+	}
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
 	return toSerialize, nil
 }

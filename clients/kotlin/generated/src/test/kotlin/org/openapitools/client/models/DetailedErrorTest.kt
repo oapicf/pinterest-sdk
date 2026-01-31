@@ -31,16 +31,16 @@ class DetailedErrorTest : ShouldSpec() {
             //modelInstance.code shouldBe ("TODO")
         }
 
-        // to test the property `message`
-        should("test message") {
-            // uncomment below to test the property
-            //modelInstance.message shouldBe ("TODO")
-        }
-
         // to test the property `details`
         should("test details") {
             // uncomment below to test the property
             //modelInstance.details shouldBe ("TODO")
+        }
+
+        // to test the property `message`
+        should("test message") {
+            // uncomment below to test the property
+            //modelInstance.message shouldBe ("TODO")
         }
 
     }

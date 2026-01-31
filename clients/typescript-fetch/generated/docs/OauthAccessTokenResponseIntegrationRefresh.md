@@ -8,11 +8,11 @@ Name | Type
 ------------ | -------------
 `refreshToken` | string
 `refreshTokenExpiresIn` | number
-`responseType` | string
 `accessToken` | string
-`tokenType` | string
 `expiresIn` | number
+`responseType` | string
 `scope` | string
+`tokenType` | string
 
 ## Example
 
@@ -23,11 +23,11 @@ import type { OauthAccessTokenResponseIntegrationRefresh } from ''
 const example = {
   "refreshToken": null,
   "refreshTokenExpiresIn": null,
-  "responseType": null,
   "accessToken": null,
-  "tokenType": null,
   "expiresIn": null,
+  "responseType": null,
   "scope": null,
+  "tokenType": null,
 } satisfies OauthAccessTokenResponseIntegrationRefresh
 
 console.log(example)

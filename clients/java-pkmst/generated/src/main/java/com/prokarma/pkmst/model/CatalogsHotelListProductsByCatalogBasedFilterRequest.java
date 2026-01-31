@@ -17,8 +17,11 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Request object to list products for a given hotel catalog_id and product group filter.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -51,29 +54,8 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
   @JsonProperty("filters")
   private CatalogsHotelProductGroupFilters filters;
-
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  /**
-   * Get catalogType
-   * @return catalogType
-   */
-  @ApiModelProperty(required = true, value = "")
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
 
   public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -91,6 +73,24 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
 
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  /**
+   * Get catalogType
+   * @return catalogType
+   */
+  @ApiModelProperty(required = true, value = "")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsHotelListProductsByCatalogBasedFilterRequest filters(CatalogsHotelProductGroupFilters filters) {
@@ -121,14 +121,14 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsHotelListProductsByCatalogBasedFilterRequest catalogsHotelListProductsByCatalogBasedFilterRequest = (CatalogsHotelListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.filters, catalogsHotelListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -136,8 +136,8 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsProductGroupProductCounts"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsProductGroupProductCounts"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsProductGroupProductCounts {
+    title = CatalogsCreativeAssetsProductGroupProductCounts
+    description = CatalogsCreativeAssetsProductGroupProductCounts
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        total {
+          type =  
+          description = ""
+          optional = true
+        }
+        videos {
+          type =  
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsProductGroupProductCounts {
+    title = CatalogsCreativeAssetsProductGroupProductCounts
+    description = CatalogsCreativeAssetsProductGroupProductCounts
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupProductCounts
+
+  }
+}

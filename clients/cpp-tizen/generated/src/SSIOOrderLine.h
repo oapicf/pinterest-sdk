@@ -47,13 +47,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get OrderLineId in SFDC
+	/*! \brief Get The SFDC id for the terms
 	 */
-	std::string getSalesforceOrderLineId();
+	std::string getAcceptedTermsId();
 
-	/*! \brief Set OrderLineId in SFDC
+	/*! \brief Set The SFDC id for the terms
 	 */
-	void setSalesforceOrderLineId(std::string  salesforce_order_line_id);
+	void setAcceptedTermsId(std::string  accepted_terms_id);
+	/*! \brief Get The UTC timestamp (to the nearest sec) of when terms were accepted
+	 */
+	std::string getAcceptedTermsTime();
+
+	/*! \brief Set The UTC timestamp (to the nearest sec) of when terms were accepted
+	 */
+	void setAcceptedTermsTime(std::string  accepted_terms_time);
 	/*! \brief Get Ads manager OrderLineId
 	 */
 	std::string getAdsManagerOrderLineId();
@@ -61,34 +68,13 @@ public:
 	/*! \brief Set Ads manager OrderLineId
 	 */
 	void setAdsManagerOrderLineId(std::string  ads_manager_order_line_id);
-	/*! \brief Get The pin order id associated with the order line in SFDC
+	/*! \brief Get Agency link
 	 */
-	std::string getPinOrderId();
+	std::string getAgencyLink();
 
-	/*! \brief Set The pin order id associated with the order line in SFDC
+	/*! \brief Set Agency link
 	 */
-	void setPinOrderId(std::string  pin_order_id);
-	/*! \brief Get Last modified date.
-	 */
-	std::string getLastModifiedDateTime();
-
-	/*! \brief Set Last modified date.
-	 */
-	void setLastModifiedDateTime(std::string  last_modified_date_time);
-	/*! \brief Get Start date of the order line.
-	 */
-	Date getStartDate();
-
-	/*! \brief Set Start date of the order line.
-	 */
-	void setStartDate(Date  start_date);
-	/*! \brief Get End date of the order line.
-	 */
-	Date getEndDate();
-
-	/*! \brief Set End date of the order line.
-	 */
-	void setEndDate(Date  end_date);
+	void setAgencyLink(std::string  agency_link);
 	/*! \brief Get Bill To Company name
 	 */
 	std::string getBillToCompanyName();
@@ -96,6 +82,13 @@ public:
 	/*! \brief Set Bill To Company name
 	 */
 	void setBillToCompanyName(std::string  bill_to_company_name);
+	/*! \brief Get Billing contact email
+	 */
+	std::string getBillingContactEmail();
+
+	/*! \brief Set Billing contact email
+	 */
+	void setBillingContactEmail(std::string  billing_contact_email);
 	/*! \brief Get Billing contact first name
 	 */
 	std::string getBillingContactFirstname();
@@ -110,13 +103,41 @@ public:
 	/*! \brief Set Billing contact last name
 	 */
 	void setBillingContactLastname(std::string  billing_contact_lastname);
-	/*! \brief Get Billing contact email
+	/*! \brief Get If Budget order line, the budget amount.
 	 */
-	std::string getBillingContactEmail();
+	long long getBudgetAmount();
 
-	/*! \brief Set Billing contact email
+	/*! \brief Set If Budget order line, the budget amount.
 	 */
-	void setBillingContactEmail(std::string  billing_contact_email);
+	void setBudgetAmount(long long  budget_amount);
+	/*! \brief Get 
+	 */
+	Currency getCurrencyInfo();
+
+	/*! \brief Set 
+	 */
+	void setCurrencyInfo(Currency  currency_info);
+	/*! \brief Get End date of the order line.
+	 */
+	Date getEndDate();
+
+	/*! \brief Set End date of the order line.
+	 */
+	void setEndDate(Date  end_date);
+	/*! \brief Get If Ongoing (perpetual) order line, the estimated monthly spend
+	 */
+	long long getEstimatedMonthlySpend();
+
+	/*! \brief Set If Ongoing (perpetual) order line, the estimated monthly spend
+	 */
+	void setEstimatedMonthlySpend(long long  estimated_monthly_spend);
+	/*! \brief Get Last modified date.
+	 */
+	std::string getLastModifiedDateTime();
+
+	/*! \brief Set Last modified date.
+	 */
+	void setLastModifiedDateTime(std::string  last_modified_date_time);
 	/*! \brief Get Billing media email
 	 */
 	std::string getMediaContactEmail();
@@ -138,27 +159,6 @@ public:
 	/*! \brief Set Billing contact first name
 	 */
 	void setMediaContactLastname(std::string  media_contact_lastname);
-	/*! \brief Get 
-	 */
-	Currency getCurrencyInfo();
-
-	/*! \brief Set 
-	 */
-	void setCurrencyInfo(Currency  currency_info);
-	/*! \brief Get Agency link
-	 */
-	std::string getAgencyLink();
-
-	/*! \brief Set Agency link
-	 */
-	void setAgencyLink(std::string  agency_link);
-	/*! \brief Get The po number
-	 */
-	std::string getPoNumber();
-
-	/*! \brief Set The po number
-	 */
-	void setPoNumber(std::string  po_number);
 	/*! \brief Get The order name
 	 */
 	std::string getOrderName();
@@ -166,6 +166,13 @@ public:
 	/*! \brief Set The order name
 	 */
 	void setOrderName(std::string  order_name);
+	/*! \brief Get The pin order id associated with the order line in SFDC
+	 */
+	std::string getPinOrderId();
+
+	/*! \brief Set The pin order id associated with the order line in SFDC
+	 */
+	void setPinOrderId(std::string  pin_order_id);
 	/*! \brief Get The Pinterest marketing partner name
 	 */
 	std::string getPmpName();
@@ -173,58 +180,51 @@ public:
 	/*! \brief Set The Pinterest marketing partner name
 	 */
 	void setPmpName(std::string  pmp_name);
-	/*! \brief Get The SFDC id for the terms
+	/*! \brief Get The po number
 	 */
-	std::string getAcceptedTermsId();
+	std::string getPoNumber();
 
-	/*! \brief Set The SFDC id for the terms
+	/*! \brief Set The po number
 	 */
-	void setAcceptedTermsId(std::string  accepted_terms_id);
-	/*! \brief Get The UTC timestamp (to the nearest sec) of when terms were accepted
+	void setPoNumber(std::string  po_number);
+	/*! \brief Get OrderLineId in SFDC
 	 */
-	std::string getAcceptedTermsTime();
+	std::string getSalesforceOrderLineId();
 
-	/*! \brief Set The UTC timestamp (to the nearest sec) of when terms were accepted
+	/*! \brief Set OrderLineId in SFDC
 	 */
-	void setAcceptedTermsTime(std::string  accepted_terms_time);
-	/*! \brief Get If Budget order line, the budget amount.
+	void setSalesforceOrderLineId(std::string  salesforce_order_line_id);
+	/*! \brief Get Start date of the order line.
 	 */
-	long long getBudgetAmount();
+	Date getStartDate();
 
-	/*! \brief Set If Budget order line, the budget amount.
+	/*! \brief Set Start date of the order line.
 	 */
-	void setBudgetAmount(long long  budget_amount);
-	/*! \brief Get If Ongoing (perpetual) order line, the estimated monthly spend
-	 */
-	long long getEstimatedMonthlySpend();
-
-	/*! \brief Set If Ongoing (perpetual) order line, the estimated monthly spend
-	 */
-	void setEstimatedMonthlySpend(long long  estimated_monthly_spend);
+	void setStartDate(Date  start_date);
 
 private:
-	std::string salesforce_order_line_id;
+	std::string accepted_terms_id;
+	std::string accepted_terms_time;
 	std::string ads_manager_order_line_id;
-	std::string pin_order_id;
-	std::string last_modified_date_time;
-	Date start_date;
-	Date end_date;
+	std::string agency_link;
 	std::string bill_to_company_name;
+	std::string billing_contact_email;
 	std::string billing_contact_firstname;
 	std::string billing_contact_lastname;
-	std::string billing_contact_email;
+	long long budget_amount;
+	Currency currency_info;
+	Date end_date;
+	long long estimated_monthly_spend;
+	std::string last_modified_date_time;
 	std::string media_contact_email;
 	std::string media_contact_firstname;
 	std::string media_contact_lastname;
-	Currency currency_info;
-	std::string agency_link;
-	std::string po_number;
 	std::string order_name;
+	std::string pin_order_id;
 	std::string pmp_name;
-	std::string accepted_terms_id;
-	std::string accepted_terms_time;
-	long long budget_amount;
-	long long estimated_monthly_spend;
+	std::string po_number;
+	std::string salesforce_order_line_id;
+	Date start_date;
 	void __init();
 	void __cleanup();
 

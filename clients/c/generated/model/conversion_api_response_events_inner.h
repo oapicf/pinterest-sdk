@@ -27,16 +27,16 @@ pinterest_rest_api_conversion_api_response_events_inner_STATUS_e conversion_api_
 
 
 typedef struct conversion_api_response_events_inner_t {
-    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status; //enum
     char *error_message; // string
+    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status; //enum
     char *warning_message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } conversion_api_response_events_inner_t;
 
 __attribute__((deprecated)) conversion_api_response_events_inner_t *conversion_api_response_events_inner_create(
-    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *error_message,
+    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *warning_message
 );
 

@@ -73,23 +73,23 @@ private class OASLeadFormCommonTest {
     private static void maintainRenamedProperties() {
         OASLeadFormCommon leadFormCommon = new OASLeadFormCommon();
         Map<String, String> x-property-mappings = leadFormCommon.getx-property-mappings();
-        System.assertEquals('privacyPolicyLink', x-property-mappings.get('privacy_policy_link'));
-        System.assertEquals('hasAcceptedTerms', x-property-mappings.get('has_accepted_terms'));
         System.assertEquals('completionMessage', x-property-mappings.get('completion_message'));
         System.assertEquals('disclosureLanguage', x-property-mappings.get('disclosure_language'));
+        System.assertEquals('hasAcceptedTerms', x-property-mappings.get('has_accepted_terms'));
         System.assertEquals('policyLinks', x-property-mappings.get('policy_links'));
+        System.assertEquals('privacyPolicyLink', x-property-mappings.get('privacy_policy_link'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASLeadFormCommon leadFormCommon = new OASLeadFormCommon();
-        System.assertEquals(new List<OASLeadFormQuestion>(), leadFormCommon.questions);
         System.assertEquals(new List<OASLeadFormCommonPolicyLinksInner>(), leadFormCommon.policyLinks);
+        System.assertEquals(new List<OASLeadFormQuestion>(), leadFormCommon.questions);
+        System.assertEquals(null, leadFormCommon.completionMessage);
+        System.assertEquals(null, leadFormCommon.disclosureLanguage);
+        System.assertEquals(null, leadFormCommon.hasAcceptedTerms);
         System.assertEquals(null, leadFormCommon.name);
         System.assertEquals(null, leadFormCommon.privacyPolicyLink);
-        System.assertEquals(null, leadFormCommon.hasAcceptedTerms);
-        System.assertEquals(null, leadFormCommon.completionMessage);
         System.assertEquals(null, leadFormCommon.status);
-        System.assertEquals(null, leadFormCommon.disclosureLanguage);
     }
 }

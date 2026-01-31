@@ -14,25 +14,26 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Schema describing the object in the response, which contains information about the events that were received and processed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Schema describing the object in the response, which contains information about the events that were received and processed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponse   {
   
-  private Integer numEventsReceived;
-  private Integer numEventsProcessed;
   private List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
+  private Integer numEventsProcessed;
+  private Integer numEventsReceived;
 
   /**
-   * Total number of events received in the request.
+   * Specific messages for each event received. The order will match the order in which the events were received in the request.
    **/
   
-  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
-  @JsonProperty("num_events_received")
+  @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
+  @JsonProperty("events")
   @NotNull
-  public Integer getNumEventsReceived() {
-    return numEventsReceived;
+  @Valid
+  public List<@Valid ConversionApiResponseEventsInner> getEvents() {
+    return events;
   }
-  public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
+  public void setEvents(List<@Valid ConversionApiResponseEventsInner> events) {
+    this.events = events;
   }
 
   /**
@@ -50,18 +51,17 @@ public class ConversionApiResponse   {
   }
 
   /**
-   * Specific messages for each event received. The order will match the order in which the events were received in the request.
+   * Total number of events received in the request.
    **/
   
-  @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
-  @JsonProperty("events")
+  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
+  @JsonProperty("num_events_received")
   @NotNull
-  @Valid
-  public List<@Valid ConversionApiResponseEventsInner> getEvents() {
-    return events;
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
   }
-  public void setEvents(List<@Valid ConversionApiResponseEventsInner> events) {
-    this.events = events;
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
   }
 
 
@@ -74,14 +74,14 @@ public class ConversionApiResponse   {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(this.events, conversionApiResponse.events) &&
         Objects.equals(this.numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(this.events, conversionApiResponse.events);
+        Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
@@ -89,9 +89,9 @@ public class ConversionApiResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
     
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

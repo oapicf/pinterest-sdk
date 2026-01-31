@@ -8,8 +8,8 @@ The class is defined in **[CustomerListsList200Response.java](../../src/main/jav
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CustomerList&gt;`](CustomerList.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;CustomerList&gt;`](CustomerList.md) |  | 
 
 
 

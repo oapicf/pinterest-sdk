@@ -7,8 +7,8 @@
 
 (def user-website-verify-request-data
   {
-   (ds/opt :website) string?
    (ds/opt :verification_method) string?
+   (ds/opt :website) string?
    })
 
 (def user-website-verify-request-spec

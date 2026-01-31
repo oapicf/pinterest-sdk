@@ -1,6 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CampaignBidOptions;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
@@ -33,59 +34,11 @@ public class CampaignCreateResponseDataTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'lifetimeSpendCap'
-     */
-    @Test
-    public void lifetimeSpendCapTest() {
-        // TODO: test lifetimeSpendCap
-    }
-
-    /**
      * Test the property 'dailySpendCap'
      */
     @Test
     public void dailySpendCapTest() {
         // TODO: test dailySpendCap
-    }
-
-    /**
-     * Test the property 'orderLineId'
-     */
-    @Test
-    public void orderLineIdTest() {
-        // TODO: test orderLineId
-    }
-
-    /**
-     * Test the property 'trackingUrls'
-     */
-    @Test
-    public void trackingUrlsTest() {
-        // TODO: test trackingUrls
-    }
-
-    /**
-     * Test the property 'startTime'
-     */
-    @Test
-    public void startTimeTest() {
-        // TODO: test startTime
     }
 
     /**
@@ -97,11 +50,67 @@ public class CampaignCreateResponseDataTest {
     }
 
     /**
+     * Test the property 'isAutomatedCampaign'
+     */
+    @Test
+    public void isAutomatedCampaignTest() {
+        // TODO: test isAutomatedCampaign
+    }
+
+    /**
      * Test the property 'isFlexibleDailyBudgets'
      */
     @Test
     public void isFlexibleDailyBudgetsTest() {
         // TODO: test isFlexibleDailyBudgets
+    }
+
+    /**
+     * Test the property 'lifetimeSpendCap'
+     */
+    @Test
+    public void lifetimeSpendCapTest() {
+        // TODO: test lifetimeSpendCap
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'orderLineId'
+     */
+    @Test
+    public void orderLineIdTest() {
+        // TODO: test orderLineId
+    }
+
+    /**
+     * Test the property 'startTime'
+     */
+    @Test
+    public void startTimeTest() {
+        // TODO: test startTime
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'trackingUrls'
+     */
+    @Test
+    public void trackingUrlsTest() {
+        // TODO: test trackingUrls
     }
 
     /**
@@ -113,11 +122,11 @@ public class CampaignCreateResponseDataTest {
     }
 
     /**
-     * Test the property 'isAutomatedCampaign'
+     * Test the property 'isCampaignBudgetOptimization'
      */
     @Test
-    public void isAutomatedCampaignTest() {
-        // TODO: test isAutomatedCampaign
+    public void isCampaignBudgetOptimizationTest() {
+        // TODO: test isCampaignBudgetOptimization
     }
 
     /**
@@ -129,11 +138,11 @@ public class CampaignCreateResponseDataTest {
     }
 
     /**
-     * Test the property 'objectiveType'
+     * Test the property 'bidOptions'
      */
     @Test
-    public void objectiveTypeTest() {
-        // TODO: test objectiveType
+    public void bidOptionsTest() {
+        // TODO: test bidOptions
     }
 
     /**
@@ -145,11 +154,27 @@ public class CampaignCreateResponseDataTest {
     }
 
     /**
-     * Test the property 'updatedTime'
+     * Test the property 'isPerformancePlus'
      */
     @Test
-    public void updatedTimeTest() {
-        // TODO: test updatedTime
+    public void isPerformancePlusTest() {
+        // TODO: test isPerformancePlus
+    }
+
+    /**
+     * Test the property 'objectiveType'
+     */
+    @Test
+    public void objectiveTypeTest() {
+        // TODO: test objectiveType
+    }
+
+    /**
+     * Test the property 'summaryStatus'
+     */
+    @Test
+    public void summaryStatusTest() {
+        // TODO: test summaryStatus
     }
 
     /**
@@ -161,19 +186,11 @@ public class CampaignCreateResponseDataTest {
     }
 
     /**
-     * Test the property 'isCampaignBudgetOptimization'
+     * Test the property 'updatedTime'
      */
     @Test
-    public void isCampaignBudgetOptimizationTest() {
-        // TODO: test isCampaignBudgetOptimization
-    }
-
-    /**
-     * Test the property 'summaryStatus'
-     */
-    @Test
-    public void summaryStatusTest() {
-        // TODO: test summaryStatus
+    public void updatedTimeTest() {
+        // TODO: test updatedTime
     }
 
 }

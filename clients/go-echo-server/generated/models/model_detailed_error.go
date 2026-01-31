@@ -5,7 +5,7 @@ type DetailedError struct {
 
 	Code int32 `json:"code"`
 
-	Message string `json:"message"`
-
 	Details map[string]interface{} `json:"details"`
+
+	Message string `json:"message"`
 }

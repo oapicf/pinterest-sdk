@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ImageSize"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ImageSize"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ImageDetails = openapi_server.resourceTypes.ImageDetails
+}
+resourceTypes {
+
+  ImageSize {
+    title = ImageSize
+    description = ImageSize
+    derivedFrom = Root
+    properties {
+        _1200x {
+          type = ImageDetails
+          description = ""
+          optional = false
+        }
+        _150x150 {
+          type = ImageDetails
+          description = ""
+          optional = false
+        }
+        _400x300 {
+          type = ImageDetails
+          description = ""
+          optional = false
+        }
+        _600x {
+          type = ImageDetails
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ImageSize {
+    title = ImageSize
+    description = ImageSize
+    implements = openapi_server.resourceTypes.ImageSize
+
+  }
+}

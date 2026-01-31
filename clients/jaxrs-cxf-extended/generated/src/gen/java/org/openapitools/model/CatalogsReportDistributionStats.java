@@ -12,6 +12,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsReportDistributionStats  {
   
+ /**
+  * ID of the catalog entity.
+  */
+  @ApiModelProperty(value = "ID of the catalog entity.")
+  private String catalogId;
+
+ /**
+  * The event code that a diagnostics aggregated number references
+  */
+  @ApiModelProperty(value = "The event code that a diagnostics aggregated number references")
+  private Integer code;
+
+ /**
+  * A human-friendly label for the event code (e.g, 'SPAM')
+  */
+  @ApiModelProperty(example = "SPAM", value = "A human-friendly label for the event code (e.g, 'SPAM')")
+  private String codeLabel;
+
+ /**
+  * Indicates if issue makes items ineligible for ads distribution
+  */
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
+  private Boolean ineligibleForAds;
+
+ /**
+  * Indicates if issue makes items ineligible for organic distribution
+  */
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
+  private Boolean ineligibleForOrganic;
+
+ /**
+  * Title message describing the diagnostic issue
+  */
+  @ApiModelProperty(value = "Title message describing the diagnostic issue")
+  private String message;
+
+ /**
+  * Number of occurrences of the issue
+  */
+  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
+  private Integer occurrences;
+
 public enum ReportTypeEnum {
 
     @JsonProperty("DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
@@ -43,72 +85,6 @@ public enum ReportTypeEnum {
 
   @ApiModelProperty(value = "")
   private ReportTypeEnum reportType;
-
- /**
-  * ID of the catalog entity.
-  */
-  @ApiModelProperty(value = "ID of the catalog entity.")
-  private String catalogId;
-
- /**
-  * The event code that a diagnostics aggregated number references
-  */
-  @ApiModelProperty(value = "The event code that a diagnostics aggregated number references")
-  private Integer code;
-
- /**
-  * A human-friendly label for the event code (e.g, 'SPAM')
-  */
-  @ApiModelProperty(example = "SPAM", value = "A human-friendly label for the event code (e.g, 'SPAM')")
-  private String codeLabel;
-
- /**
-  * Title message describing the diagnostic issue
-  */
-  @ApiModelProperty(value = "Title message describing the diagnostic issue")
-  private String message;
-
- /**
-  * Number of occurrences of the issue
-  */
-  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
-  private Integer occurrences;
-
- /**
-  * Indicates if issue makes items ineligible for ads distribution
-  */
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
-  private Boolean ineligibleForAds;
-
- /**
-  * Indicates if issue makes items ineligible for organic distribution
-  */
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
-  private Boolean ineligibleForOrganic;
- /**
-  * Get reportType
-  * @return reportType
-  */
-  @JsonProperty("report_type")
-  public String getReportType() {
-    return reportType == null ? null : reportType.value();
-  }
-
-  /**
-   * Sets the <code>reportType</code> property.
-   */
- public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-  /**
-   * Sets the <code>reportType</code> property.
-   */
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
  /**
   * ID of the catalog entity.
   * @return catalogId
@@ -182,6 +158,54 @@ public enum ReportTypeEnum {
   }
 
  /**
+  * Indicates if issue makes items ineligible for ads distribution
+  * @return ineligibleForAds
+  */
+  @JsonProperty("ineligible_for_ads")
+  public Boolean getIneligibleForAds() {
+    return ineligibleForAds;
+  }
+
+  /**
+   * Sets the <code>ineligibleForAds</code> property.
+   */
+ public void setIneligibleForAds(Boolean ineligibleForAds) {
+    this.ineligibleForAds = ineligibleForAds;
+  }
+
+  /**
+   * Sets the <code>ineligibleForAds</code> property.
+   */
+  public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
+    this.ineligibleForAds = ineligibleForAds;
+    return this;
+  }
+
+ /**
+  * Indicates if issue makes items ineligible for organic distribution
+  * @return ineligibleForOrganic
+  */
+  @JsonProperty("ineligible_for_organic")
+  public Boolean getIneligibleForOrganic() {
+    return ineligibleForOrganic;
+  }
+
+  /**
+   * Sets the <code>ineligibleForOrganic</code> property.
+   */
+ public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
+    this.ineligibleForOrganic = ineligibleForOrganic;
+  }
+
+  /**
+   * Sets the <code>ineligibleForOrganic</code> property.
+   */
+  public CatalogsReportDistributionStats ineligibleForOrganic(Boolean ineligibleForOrganic) {
+    this.ineligibleForOrganic = ineligibleForOrganic;
+    return this;
+  }
+
+ /**
   * Title message describing the diagnostic issue
   * @return message
   */
@@ -230,50 +254,26 @@ public enum ReportTypeEnum {
   }
 
  /**
-  * Indicates if issue makes items ineligible for ads distribution
-  * @return ineligibleForAds
+  * Get reportType
+  * @return reportType
   */
-  @JsonProperty("ineligible_for_ads")
-  public Boolean getIneligibleForAds() {
-    return ineligibleForAds;
+  @JsonProperty("report_type")
+  public String getReportType() {
+    return reportType == null ? null : reportType.value();
   }
 
   /**
-   * Sets the <code>ineligibleForAds</code> property.
+   * Sets the <code>reportType</code> property.
    */
- public void setIneligibleForAds(Boolean ineligibleForAds) {
-    this.ineligibleForAds = ineligibleForAds;
+ public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
   }
 
   /**
-   * Sets the <code>ineligibleForAds</code> property.
+   * Sets the <code>reportType</code> property.
    */
-  public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
-    this.ineligibleForAds = ineligibleForAds;
-    return this;
-  }
-
- /**
-  * Indicates if issue makes items ineligible for organic distribution
-  * @return ineligibleForOrganic
-  */
-  @JsonProperty("ineligible_for_organic")
-  public Boolean getIneligibleForOrganic() {
-    return ineligibleForOrganic;
-  }
-
-  /**
-   * Sets the <code>ineligibleForOrganic</code> property.
-   */
- public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
-    this.ineligibleForOrganic = ineligibleForOrganic;
-  }
-
-  /**
-   * Sets the <code>ineligibleForOrganic</code> property.
-   */
-  public CatalogsReportDistributionStats ineligibleForOrganic(Boolean ineligibleForOrganic) {
-    this.ineligibleForOrganic = ineligibleForOrganic;
+  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
     return this;
   }
 
@@ -287,19 +287,19 @@ public enum ReportTypeEnum {
       return false;
     }
     CatalogsReportDistributionStats catalogsReportDistributionStats = (CatalogsReportDistributionStats) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportDistributionStats.catalogId) &&
         Objects.equals(this.code, catalogsReportDistributionStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportDistributionStats.codeLabel) &&
+        Objects.equals(this.ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
+        Objects.equals(this.ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic) &&
         Objects.equals(this.message, catalogsReportDistributionStats.message) &&
         Objects.equals(this.occurrences, catalogsReportDistributionStats.occurrences) &&
-        Objects.equals(this.ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
-        Objects.equals(this.ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic);
+        Objects.equals(this.reportType, catalogsReportDistributionStats.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
   }
 
   @Override
@@ -307,14 +307,14 @@ public enum ReportTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

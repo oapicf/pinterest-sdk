@@ -9,8 +9,8 @@ The class is defined in **[GetMMMReportResponseData.java](../../src/main/java/or
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportStatus** | [**ReportStatusEnum**](#ReportStatusEnum) |  |  [optional property]
-**url** | `String` |  |  [optional property]
 **size** | `BigDecimal` |  |  [optional property]
+**url** | `String` |  |  [optional property]
 
 ## ReportStatusEnum
 

@@ -33,15 +33,15 @@ void main() {
       // TODO
     });
 
-    // Audience description.
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
     // <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
     // AudienceType audienceType
     test('to test the property `audienceType`', () async {
+      // TODO
+    });
+
+    // Audience description.
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 

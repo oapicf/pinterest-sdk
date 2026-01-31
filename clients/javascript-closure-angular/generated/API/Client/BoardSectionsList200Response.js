@@ -6,15 +6,15 @@ goog.provide('API.Client.board_sections_list_200_response');
 API.Client.BoardSectionsList200Response = function() {}
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.BoardSectionsList200Response.prototype.bookmark;
+
+/**
  * Board sections
  * @type {!Array<!API.Client.BoardSection>}
  * @export
  */
 API.Client.BoardSectionsList200Response.prototype.items;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.BoardSectionsList200Response.prototype.bookmark;
 

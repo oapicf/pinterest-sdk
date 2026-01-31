@@ -14,6 +14,7 @@ import org.openapitools.model.ConversionReportAttributionType
 import org.openapitools.model.Error
 import org.openapitools.model.Granularity
 import org.openapitools.model.MetricsResponse
+import org.openapitools.model.ReportingTimeZone
 
 class AdsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -50,7 +51,7 @@ class AdsApi {
 
     }
 
-    def adTargetingAnalyticsGet ( String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
+    def adTargetingAnalyticsGet ( String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/targeting_analytics"
 
         // params
@@ -121,6 +122,9 @@ class AdsApi {
         if (attributionTypes != null) {
             queryParams.put("attribution_types", attributionTypes)
         }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
+        }
 
 
 
@@ -131,7 +135,7 @@ class AdsApi {
 
     }
 
-    def adsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds, Closure onSuccess, Closure onFailure)  {
+    def adsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/analytics"
 
         // params
@@ -193,6 +197,9 @@ class AdsApi {
         }
         if (campaignIds != null) {
             queryParams.put("campaign_ids", campaignIds)
+        }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
         }
 
 

@@ -13,8 +13,8 @@ module CatalogsUpsertHotelItem =
   //#endregion
 
   type CatalogsUpsertHotelItem = {
+    Attributes : CatalogsHotelAttributes;
     HotelId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsHotelAttributes;
   }
   //#endregion

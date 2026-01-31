@@ -25,17 +25,20 @@ object CatalogsHotelReportParametersReport {
   sealed trait ReportType
   case object FEEDINGESTIONISSUES extends ReportType
   case object DISTRIBUTIONISSUES extends ReportType
+  case object ALLITEMS extends ReportType
 
   object ReportType {
     def toReportType(s: String): Option[ReportType] = s match {
       case "FEEDINGESTIONISSUES" => Some(FEEDINGESTIONISSUES)
       case "DISTRIBUTIONISSUES" => Some(DISTRIBUTIONISSUES)
+      case "ALLITEMS" => Some(ALLITEMS)
       case _ => None
     }
 
     def fromReportType(x: ReportType): String = x match {
       case FEEDINGESTIONISSUES => "FEEDINGESTIONISSUES"
       case DISTRIBUTIONISSUES => "DISTRIBUTIONISSUES"
+      case ALLITEMS => "ALLITEMS"
     }
   }
 

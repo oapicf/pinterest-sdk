@@ -7,38 +7,39 @@
 #' @title BulkUpsertRequestCreate
 #' @description BulkUpsertRequestCreate Class
 #' @format An \code{R6Class} generator object
-#' @field campaigns  list(\link{CampaignCreateRequest}) [optional]
 #' @field ad_groups  list(\link{AdGroupCreateRequest}) [optional]
 #' @field ads  list(\link{AdCreateRequest}) [optional]
-#' @field product_groups  list(\link{ProductGroupPromotionCreateRequest}) [optional]
+#' @field campaigns  list(\link{CampaignCreateRequest}) [optional]
+#' @field catalog_product_groups  list(\link{MultipleProductGroupsInner}) [optional]
 #' @field keywords  list(\link{KeywordsRequest}) [optional]
+#' @field labels  list(\link{LabelCreateRequest}) [optional]
+#' @field product_groups  list(\link{ProductGroupPromotionCreateRequest}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 BulkUpsertRequestCreate <- R6::R6Class(
   "BulkUpsertRequestCreate",
   public = list(
-    `campaigns` = NULL,
     `ad_groups` = NULL,
     `ads` = NULL,
-    `product_groups` = NULL,
+    `campaigns` = NULL,
+    `catalog_product_groups` = NULL,
     `keywords` = NULL,
+    `labels` = NULL,
+    `product_groups` = NULL,
 
     #' @description
     #' Initialize a new BulkUpsertRequestCreate class.
     #'
-    #' @param campaigns campaigns
     #' @param ad_groups ad_groups
     #' @param ads ads
-    #' @param product_groups product_groups
+    #' @param campaigns campaigns
+    #' @param catalog_product_groups catalog_product_groups
     #' @param keywords keywords
+    #' @param labels labels
+    #' @param product_groups product_groups
     #' @param ... Other optional arguments.
-    initialize = function(`campaigns` = NULL, `ad_groups` = NULL, `ads` = NULL, `product_groups` = NULL, `keywords` = NULL, ...) {
-      if (!is.null(`campaigns`)) {
-        stopifnot(is.vector(`campaigns`), length(`campaigns`) != 0)
-        sapply(`campaigns`, function(x) stopifnot(R6::is.R6(x)))
-        self$`campaigns` <- `campaigns`
-      }
+    initialize = function(`ad_groups` = NULL, `ads` = NULL, `campaigns` = NULL, `catalog_product_groups` = NULL, `keywords` = NULL, `labels` = NULL, `product_groups` = NULL, ...) {
       if (!is.null(`ad_groups`)) {
         stopifnot(is.vector(`ad_groups`), length(`ad_groups`) != 0)
         sapply(`ad_groups`, function(x) stopifnot(R6::is.R6(x)))
@@ -49,15 +50,30 @@ BulkUpsertRequestCreate <- R6::R6Class(
         sapply(`ads`, function(x) stopifnot(R6::is.R6(x)))
         self$`ads` <- `ads`
       }
-      if (!is.null(`product_groups`)) {
-        stopifnot(is.vector(`product_groups`), length(`product_groups`) != 0)
-        sapply(`product_groups`, function(x) stopifnot(R6::is.R6(x)))
-        self$`product_groups` <- `product_groups`
+      if (!is.null(`campaigns`)) {
+        stopifnot(is.vector(`campaigns`), length(`campaigns`) != 0)
+        sapply(`campaigns`, function(x) stopifnot(R6::is.R6(x)))
+        self$`campaigns` <- `campaigns`
+      }
+      if (!is.null(`catalog_product_groups`)) {
+        stopifnot(is.vector(`catalog_product_groups`), length(`catalog_product_groups`) != 0)
+        sapply(`catalog_product_groups`, function(x) stopifnot(R6::is.R6(x)))
+        self$`catalog_product_groups` <- `catalog_product_groups`
       }
       if (!is.null(`keywords`)) {
         stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
         sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
         self$`keywords` <- `keywords`
+      }
+      if (!is.null(`labels`)) {
+        stopifnot(is.vector(`labels`), length(`labels`) != 0)
+        sapply(`labels`, function(x) stopifnot(R6::is.R6(x)))
+        self$`labels` <- `labels`
+      }
+      if (!is.null(`product_groups`)) {
+        stopifnot(is.vector(`product_groups`), length(`product_groups`) != 0)
+        sapply(`product_groups`, function(x) stopifnot(R6::is.R6(x)))
+        self$`product_groups` <- `product_groups`
       }
     },
 
@@ -92,10 +108,6 @@ BulkUpsertRequestCreate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       BulkUpsertRequestCreateObject <- list()
-      if (!is.null(self$`campaigns`)) {
-        BulkUpsertRequestCreateObject[["campaigns"]] <-
-          lapply(self$`campaigns`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`ad_groups`)) {
         BulkUpsertRequestCreateObject[["ad_groups"]] <-
           lapply(self$`ad_groups`, function(x) x$toSimpleType())
@@ -104,13 +116,25 @@ BulkUpsertRequestCreate <- R6::R6Class(
         BulkUpsertRequestCreateObject[["ads"]] <-
           lapply(self$`ads`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`product_groups`)) {
-        BulkUpsertRequestCreateObject[["product_groups"]] <-
-          lapply(self$`product_groups`, function(x) x$toSimpleType())
+      if (!is.null(self$`campaigns`)) {
+        BulkUpsertRequestCreateObject[["campaigns"]] <-
+          lapply(self$`campaigns`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`catalog_product_groups`)) {
+        BulkUpsertRequestCreateObject[["catalog_product_groups"]] <-
+          lapply(self$`catalog_product_groups`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`keywords`)) {
         BulkUpsertRequestCreateObject[["keywords"]] <-
           lapply(self$`keywords`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`labels`)) {
+        BulkUpsertRequestCreateObject[["labels"]] <-
+          lapply(self$`labels`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`product_groups`)) {
+        BulkUpsertRequestCreateObject[["product_groups"]] <-
+          lapply(self$`product_groups`, function(x) x$toSimpleType())
       }
       return(BulkUpsertRequestCreateObject)
     },
@@ -122,20 +146,26 @@ BulkUpsertRequestCreate <- R6::R6Class(
     #' @return the instance of BulkUpsertRequestCreate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`campaigns`)) {
-        self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignCreateRequest]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`ad_groups`)) {
         self$`ad_groups` <- ApiClient$new()$deserializeObj(this_object$`ad_groups`, "array[AdGroupCreateRequest]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`ads`)) {
         self$`ads` <- ApiClient$new()$deserializeObj(this_object$`ads`, "array[AdCreateRequest]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`product_groups`)) {
-        self$`product_groups` <- ApiClient$new()$deserializeObj(this_object$`product_groups`, "array[ProductGroupPromotionCreateRequest]", loadNamespace("openapi"))
+      if (!is.null(this_object$`campaigns`)) {
+        self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignCreateRequest]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`catalog_product_groups`)) {
+        self$`catalog_product_groups` <- ApiClient$new()$deserializeObj(this_object$`catalog_product_groups`, "array[MultipleProductGroupsInner]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`keywords`)) {
         self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordsRequest]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`labels`)) {
+        self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelCreateRequest]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`product_groups`)) {
+        self$`product_groups` <- ApiClient$new()$deserializeObj(this_object$`product_groups`, "array[ProductGroupPromotionCreateRequest]", loadNamespace("openapi"))
       }
       self
     },
@@ -158,11 +188,13 @@ BulkUpsertRequestCreate <- R6::R6Class(
     #' @return the instance of BulkUpsertRequestCreate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignCreateRequest]", loadNamespace("openapi"))
       self$`ad_groups` <- ApiClient$new()$deserializeObj(this_object$`ad_groups`, "array[AdGroupCreateRequest]", loadNamespace("openapi"))
       self$`ads` <- ApiClient$new()$deserializeObj(this_object$`ads`, "array[AdCreateRequest]", loadNamespace("openapi"))
-      self$`product_groups` <- ApiClient$new()$deserializeObj(this_object$`product_groups`, "array[ProductGroupPromotionCreateRequest]", loadNamespace("openapi"))
+      self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignCreateRequest]", loadNamespace("openapi"))
+      self$`catalog_product_groups` <- ApiClient$new()$deserializeObj(this_object$`catalog_product_groups`, "array[MultipleProductGroupsInner]", loadNamespace("openapi"))
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordsRequest]", loadNamespace("openapi"))
+      self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelCreateRequest]", loadNamespace("openapi"))
+      self$`product_groups` <- ApiClient$new()$deserializeObj(this_object$`product_groups`, "array[ProductGroupPromotionCreateRequest]", loadNamespace("openapi"))
       self
     },
 

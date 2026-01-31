@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 
@@ -24,31 +25,34 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id ID of the product group promotion.
  * @param adGroupId ID of the ad group the product group belongs to.
  * @param bidInMicroCurrency The bid in micro currency.
- * @param included True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
- * @param definition The full product group definition path
- * @param relativeDefinition The definition of the product group, relative to its parent - an attribute name/value pair
- * @param parentId The parent Product Group ID of this Product Group
- * @param slideshowCollectionsTitle Slideshow Collections Title
- * @param slideshowCollectionsDescription Slideshow Collections Description
- * @param isMdl If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
- * @param status 
- * @param trackingUrl Tracking template for proudct group promotions. 4000 limit
  * @param catalogProductGroupId ID of the catalogs product group that this product group promotion references
  * @param catalogProductGroupName Catalogs product group name
- * @param collectionsHeroPinId Hero Pin ID if this PG is promoted as a Collection
+ * @param collectionsHeaderType Collections ad header type
  * @param collectionsHeroDestinationUrl Collections Hero Destination Url
+ * @param collectionsHeroPinId Hero Pin ID if this PG is promoted as a Collection
+ * @param creativeType 
+ * @param customizableCtaType Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+ * @param definition The full product group definition path
  * @param gridClickType 
+ * @param id ID of the product group promotion.
+ * @param included True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+ * @param isGenerateBackground Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
+ * @param isMdl If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+ * @param parentId The parent Product Group ID of this Product Group
+ * @param preferredMediaType Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
+ * @param relativeDefinition The definition of the product group, relative to its parent - an attribute name/value pair
+ * @param selectedImageTag The ad image tag selected for the product group promotion.
+ * @param selectedVideoTag The ad video tag selected for the product group promotion.
+ * @param slideshowCollectionsDescription Slideshow Collections Description
+ * @param slideshowCollectionsTitle Slideshow Collections Title
+ * @param status 
+ * @param trackingUrl Tracking template for proudct group promotions. 4000 limit
  */
 
 
 data class ProductGroupPromotion (
-
-    /* ID of the product group promotion. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
     /* ID of the ad group the product group belongs to. */
     @Json(name = "ad_group_id")
@@ -58,41 +62,6 @@ data class ProductGroupPromotion (
     @Json(name = "bid_in_micro_currency")
     val bidInMicroCurrency: kotlin.Int? = null,
 
-    /* True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads. */
-    @Json(name = "included")
-    val included: kotlin.Boolean? = null,
-
-    /* The full product group definition path */
-    @Json(name = "definition")
-    val definition: kotlin.String? = null,
-
-    /* The definition of the product group, relative to its parent - an attribute name/value pair */
-    @Json(name = "relative_definition")
-    val relativeDefinition: kotlin.String? = null,
-
-    /* The parent Product Group ID of this Product Group */
-    @Json(name = "parent_id")
-    val parentId: kotlin.String? = null,
-
-    /* Slideshow Collections Title */
-    @Json(name = "slideshow_collections_title")
-    val slideshowCollectionsTitle: kotlin.String? = null,
-
-    /* Slideshow Collections Description */
-    @Json(name = "slideshow_collections_description")
-    val slideshowCollectionsDescription: kotlin.String? = null,
-
-    /* If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog */
-    @Json(name = "is_mdl")
-    val isMdl: kotlin.Boolean? = null,
-
-    @Json(name = "status")
-    val status: EntityStatus? = null,
-
-    /* Tracking template for proudct group promotions. 4000 limit */
-    @Json(name = "tracking_url")
-    val trackingUrl: kotlin.String? = null,
-
     /* ID of the catalogs product group that this product group promotion references */
     @Json(name = "catalog_product_group_id")
     val catalogProductGroupId: kotlin.String? = null,
@@ -101,19 +70,121 @@ data class ProductGroupPromotion (
     @Json(name = "catalog_product_group_name")
     val catalogProductGroupName: kotlin.String? = null,
 
-    /* Hero Pin ID if this PG is promoted as a Collection */
-    @Json(name = "collections_hero_pin_id")
-    val collectionsHeroPinId: kotlin.String? = null,
+    /* Collections ad header type */
+    @Json(name = "collections_header_type")
+    val collectionsHeaderType: ProductGroupPromotion.CollectionsHeaderType? = null,
 
     /* Collections Hero Destination Url */
     @Json(name = "collections_hero_destination_url")
     val collectionsHeroDestinationUrl: kotlin.String? = null,
 
+    /* Hero Pin ID if this PG is promoted as a Collection */
+    @Json(name = "collections_hero_pin_id")
+    val collectionsHeroPinId: kotlin.String? = null,
+
+    @Json(name = "creative_type")
+    val creativeType: CreativeType? = null,
+
+    /* Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE */
+    @Json(name = "customizable_cta_type")
+    val customizableCtaType: ProductGroupPromotion.CustomizableCtaType? = null,
+
+    /* The full product group definition path */
+    @Json(name = "definition")
+    val definition: kotlin.String? = null,
+
     @Json(name = "grid_click_type")
-    val gridClickType: GridClickType? = null
+    val gridClickType: GridClickType? = null,
+
+    /* ID of the product group promotion. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    /* True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads. */
+    @Json(name = "included")
+    val included: kotlin.Boolean? = null,
+
+    /* Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement. */
+    @Json(name = "is_generate_background")
+    val isGenerateBackground: kotlin.Boolean? = null,
+
+    /* If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog */
+    @Json(name = "is_mdl")
+    val isMdl: kotlin.Boolean? = null,
+
+    /* The parent Product Group ID of this Product Group */
+    @Json(name = "parent_id")
+    val parentId: kotlin.String? = null,
+
+    /* Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only. */
+    @Json(name = "preferred_media_type")
+    val preferredMediaType: ProductGroupPromotion.PreferredMediaType? = null,
+
+    /* The definition of the product group, relative to its parent - an attribute name/value pair */
+    @Json(name = "relative_definition")
+    val relativeDefinition: kotlin.String? = null,
+
+    /* The ad image tag selected for the product group promotion. */
+    @Json(name = "selected_image_tag")
+    val selectedImageTag: kotlin.String? = null,
+
+    /* The ad video tag selected for the product group promotion. */
+    @Json(name = "selected_video_tag")
+    val selectedVideoTag: kotlin.String? = null,
+
+    /* Slideshow Collections Description */
+    @Json(name = "slideshow_collections_description")
+    val slideshowCollectionsDescription: kotlin.String? = null,
+
+    /* Slideshow Collections Title */
+    @Json(name = "slideshow_collections_title")
+    val slideshowCollectionsTitle: kotlin.String? = null,
+
+    @Json(name = "status")
+    val status: EntityStatus? = null,
+
+    /* Tracking template for proudct group promotions. 4000 limit */
+    @Json(name = "tracking_url")
+    val trackingUrl: kotlin.String? = null
 
 ) {
 
+    /**
+     * Collections ad header type
+     *
+     * Values: SHOP_THIS_COLLECTION,EXPLORE_THIS_COLLECTION,NO_HEADER,ON_SALE,GET_DEAL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CollectionsHeaderType(val value: kotlin.String) {
+        @Json(name = "SHOP_THIS_COLLECTION") SHOP_THIS_COLLECTION("SHOP_THIS_COLLECTION"),
+        @Json(name = "EXPLORE_THIS_COLLECTION") EXPLORE_THIS_COLLECTION("EXPLORE_THIS_COLLECTION"),
+        @Json(name = "NO_HEADER") NO_HEADER("NO_HEADER"),
+        @Json(name = "ON_SALE") ON_SALE("ON_SALE"),
+        @Json(name = "GET_DEAL") GET_DEAL("GET_DEAL");
+    }
+    /**
+     * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+     *
+     * Values: SHOP_NOW,BOOK_NOW,ON_SALE,GET_DEAL,BUY_ONLINE_PICKUP_IN_STORE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CustomizableCtaType(val value: kotlin.String) {
+        @Json(name = "SHOP_NOW") SHOP_NOW("SHOP_NOW"),
+        @Json(name = "BOOK_NOW") BOOK_NOW("BOOK_NOW"),
+        @Json(name = "ON_SALE") ON_SALE("ON_SALE"),
+        @Json(name = "GET_DEAL") GET_DEAL("GET_DEAL"),
+        @Json(name = "BUY_ONLINE_PICKUP_IN_STORE") BUY_ONLINE_PICKUP_IN_STORE("BUY_ONLINE_PICKUP_IN_STORE");
+    }
+    /**
+     * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
+     *
+     * Values: VIDEO,IMAGE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class PreferredMediaType(val value: kotlin.String) {
+        @Json(name = "VIDEO") VIDEO("VIDEO"),
+        @Json(name = "IMAGE") IMAGE("IMAGE");
+    }
 
 }
 

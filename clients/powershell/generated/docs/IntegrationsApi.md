@@ -127,7 +127,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $ExternalBusinessId = "MyExternalBusinessId" # String | External business ID for the integration.
-$IntegrationRequestPatch = Initialize-IntegrationRequestPatch -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedTagId "MyConnectedTagId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerAccessTokenExpiry 0 -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" -AdditionalId1 "MyAdditionalId1" -PartnerMetadata "MyPartnerMetadata" # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata (optional)
+$IntegrationRequestPatch = Initialize-IntegrationRequestPatch -AdditionalId1 "MyAdditionalId1" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedTagId "MyConnectedTagId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerAccessTokenExpiry 0 -PartnerMetadata "MyPartnerMetadata" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
 
 # Update commerce integration
 try {
@@ -143,7 +143,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ExternalBusinessId** | **String**| External business ID for the integration. | 
- **IntegrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **IntegrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -176,7 +176,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$IntegrationRequest = Initialize-IntegrationRequest -ExternalBusinessId "MyExternalBusinessId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedTagId "MyConnectedTagId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerAccessTokenExpiry 0 -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" -AdditionalId1 "MyAdditionalId1" -PartnerMetadata "MyPartnerMetadata" # IntegrationRequest | Parameters to get create/update the Integration Metadata (optional)
+$IntegrationRequest = Initialize-IntegrationRequest -AdditionalId1 "MyAdditionalId1" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedTagId "MyConnectedTagId" -ExternalBusinessId "MyExternalBusinessId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerAccessTokenExpiry 0 -PartnerMetadata "MyPartnerMetadata" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" # IntegrationRequest | Parameters to get create/update the Integration Metadata
 
 # Create commerce integration
 try {
@@ -191,7 +191,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **IntegrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **IntegrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -225,8 +225,8 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $IntegrationLogClientError = Initialize-IntegrationLogClientError -Cause "MyCause" -ColumnNumber 0 -FileName "MyFileName" -LineNumber 0 -Message "MyMessage" -MessageDetail "MyMessageDetail" -Name "MyName" -Number 0 -VarStackTrace "MyVarStackTrace"
-$IntegrationLogClientRequest = Initialize-IntegrationLogClientRequest -Method "GET" -VarHost "MyVarHost" -Path "MyPath" -RequestHeaders @{ key_example = "MyInner" } -ResponseHeaders @{ key_example = "MyInner" } -ResponseStatusCode 0
-$IntegrationLog = Initialize-IntegrationLog -ClientTimestamp 0 -EventType "APP" -LogLevel "INFO" -ExternalBusinessId "MyExternalBusinessId" -AdvertiserId "MyAdvertiserId" -MerchantId "MyMerchantId" -TagId "MyTagId" -FeedProfileId "MyFeedProfileId" -Message "MyMessage" -AppVersionNumber "MyAppVersionNumber" -PlatformVersionNumber "MyPlatformVersionNumber" -VarError $IntegrationLogClientError -Request $IntegrationLogClientRequest
+$IntegrationLogClientRequest = Initialize-IntegrationLogClientRequest -VarHost "MyVarHost" -Method "GET" -Path "MyPath" -RequestHeaders @{ key_example = "MyInner" } -ResponseHeaders @{ key_example = "MyInner" } -ResponseStatusCode 0
+$IntegrationLog = Initialize-IntegrationLog -AdvertiserId "MyAdvertiserId" -AppVersionNumber "MyAppVersionNumber" -ClientTimestamp 0 -VarError $IntegrationLogClientError -EventType "APP" -ExternalBusinessId "MyExternalBusinessId" -FeedProfileId "MyFeedProfileId" -LogLevel "INFO" -MerchantId "MyMerchantId" -Message "MyMessage" -PlatformVersionNumber "MyPlatformVersionNumber" -Request $IntegrationLogClientRequest -TagId "MyTagId"
 
 $IntegrationLogsRequest = Initialize-IntegrationLogsRequest -Logs $IntegrationLog # IntegrationLogsRequest | Ingest log information from external integration application.
 

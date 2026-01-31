@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OperationType** | **string** |  | 
 **Id** | **string** | Targeting template ID | 
+**OperationType** | **string** |  | 
+**TargetingAttributes** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 
 ## Methods
 
 ### NewTargetingTemplateUpdateRequest
 
-`func NewTargetingTemplateUpdateRequest(operationType string, id string, ) *TargetingTemplateUpdateRequest`
+`func NewTargetingTemplateUpdateRequest(id string, operationType string, ) *TargetingTemplateUpdateRequest`
 
 NewTargetingTemplateUpdateRequest instantiates a new TargetingTemplateUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewTargetingTemplateUpdateRequestWithDefaults instantiates a new TargetingTemplateUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *TargetingTemplateUpdateRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *TargetingTemplateUpdateRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *TargetingTemplateUpdateRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
 
 ### GetOperationType
 
@@ -46,25 +67,30 @@ and a boolean to check if the value has been set.
 SetOperationType sets OperationType field to given value.
 
 
-### GetId
+### GetTargetingAttributes
 
-`func (o *TargetingTemplateUpdateRequest) GetId() string`
+`func (o *TargetingTemplateUpdateRequest) GetTargetingAttributes() TargetingSpec`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetTargetingAttributes returns the TargetingAttributes field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetTargetingAttributesOk
 
-`func (o *TargetingTemplateUpdateRequest) GetIdOk() (*string, bool)`
+`func (o *TargetingTemplateUpdateRequest) GetTargetingAttributesOk() (*TargetingSpec, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetTargetingAttributesOk returns a tuple with the TargetingAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetTargetingAttributes
 
-`func (o *TargetingTemplateUpdateRequest) SetId(v string)`
+`func (o *TargetingTemplateUpdateRequest) SetTargetingAttributes(v TargetingSpec)`
 
-SetId sets Id field to given value.
+SetTargetingAttributes sets TargetingAttributes field to given value.
 
+### HasTargetingAttributes
+
+`func (o *TargetingTemplateUpdateRequest) HasTargetingAttributes() bool`
+
+HasTargetingAttributes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

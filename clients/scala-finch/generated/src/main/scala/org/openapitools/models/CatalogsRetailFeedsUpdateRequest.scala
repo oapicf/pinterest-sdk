@@ -15,25 +15,25 @@ import org.openapitools.models.ProductAvailabilityType
 
 /**
  * Request object for updating a feed.
- * @param defaultUnderscorecurrency 
- * @param name A human-friendly name associated to a given feed.
- * @param format 
+ * @param catalogUnderscoretype 
  * @param credentials 
+ * @param defaultUnderscoreavailability 
+ * @param defaultUnderscorecurrency 
+ * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
  * @param preferredUnderscoreprocessingUnderscoreschedule 
  * @param status 
- * @param catalogUnderscoretype 
- * @param defaultUnderscoreavailability 
  */
-case class CatalogsRetailFeedsUpdateRequest(defaultUnderscorecurrency: Option[NullableCurrency],
-                name: Option[String],
-                format: Option[CatalogsFormat],
+case class CatalogsRetailFeedsUpdateRequest(catalogUnderscoretype: CatalogsType,
                 credentials: Option[CatalogsFeedCredentials],
+                defaultUnderscoreavailability: Option[ProductAvailabilityType],
+                defaultUnderscorecurrency: Option[NullableCurrency],
+                format: Option[CatalogsFormat],
                 location: Option[String],
+                name: Option[String],
                 preferredUnderscoreprocessingUnderscoreschedule: Option[CatalogsFeedProcessingSchedule],
-                status: Option[CatalogsStatus],
-                catalogUnderscoretype: CatalogsType,
-                defaultUnderscoreavailability: Option[ProductAvailabilityType]
+                status: Option[CatalogsStatus]
                 )
 
 object CatalogsRetailFeedsUpdateRequest {

@@ -6,6 +6,20 @@ goog.provide('API.Client.AudienceSubcategory');
 API.Client.AudienceSubcategory = function() {}
 
 /**
+ * Subinterest ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.AudienceSubcategory.prototype.id;
+
+/**
+ * Subinterest affinity index.
+ * @type {!number}
+ * @export
+ */
+API.Client.AudienceSubcategory.prototype.index;
+
+/**
  * Interest unique key (same as ID).
  * @type {!string}
  * @export
@@ -25,18 +39,4 @@ API.Client.AudienceSubcategory.prototype.name;
  * @export
  */
 API.Client.AudienceSubcategory.prototype.ratio;
-
-/**
- * Subinterest affinity index.
- * @type {!number}
- * @export
- */
-API.Client.AudienceSubcategory.prototype.index;
-
-/**
- * Subinterest ID.
- * @type {!string}
- * @export
- */
-API.Client.AudienceSubcategory.prototype.id;
 

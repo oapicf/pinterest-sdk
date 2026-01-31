@@ -9,8 +9,8 @@
 -export_type([openapi_boards_list_pins_200_response/0]).
 
 -type openapi_boards_list_pins_200_response() ::
-  [ {'items', list(openapi_pin:openapi_pin()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_pin:openapi_pin()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_boards_list_pins_200_response() ->
     openapi_boards_list_pins_200_response([]).
 
 openapi_boards_list_pins_200_response(Fields) ->
-  Default = [ {'items', list(openapi_pin:openapi_pin()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_pin:openapi_pin()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -58,6 +58,7 @@ feature -- Test routines
             l_ad_account_id: STRING_32
             l_campaign_id: STRING_32
             l_ad_group_id: STRING_32
+            l_ad_group_ids: LIST [STRING_32]
             l_match_types: LIST [MATCH_TYPE]
             l_page_size: INTEGER_32
             l_bookmark: STRING_32
@@ -65,7 +66,7 @@ feature -- Test routines
             -- TODO: Initialize required params.
             -- l_ad_account_id
 
-            -- l_response := api.keywords_get(l_ad_account_id, l_campaign_id, l_ad_group_id, l_match_types, l_page_size, l_bookmark)
+            -- l_response := api.keywords_get(l_ad_account_id, l_campaign_id, l_ad_group_id, l_ad_group_ids, l_match_types, l_page_size, l_bookmark)
             assert ("not_implemented", False)
         end
 
@@ -100,12 +101,14 @@ feature -- Test routines
             l_include_keywords: LIST [STRING_32]
             l_normalize_against_group: BOOLEAN
             l_limit: INTEGER_32
+            l_include_prediction: BOOLEAN
+            l_include_demographics: BOOLEAN
         do
             -- TODO: Initialize required params.
             -- l_region
             -- l_trend_type
 
-            -- l_response := api.trending_keywords_list(l_region, l_trend_type, l_interests, l_genders, l_ages, l_include_keywords, l_normalize_against_group, l_limit)
+            -- l_response := api.trending_keywords_list(l_region, l_trend_type, l_interests, l_genders, l_ages, l_include_keywords, l_normalize_against_group, l_limit, l_include_prediction, l_include_demographics)
             assert ("not_implemented", False)
         end
 

@@ -13,16 +13,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BoardSectionsList200Response  {
   
+  @ApiModelProperty(value = "")
+
+  private String bookmark;
+
  /**
   * Board sections
   */
   @ApiModelProperty(required = true, value = "Board sections")
 
   private List<BoardSection> items = new ArrayList<>();
+ /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
 
-  @ApiModelProperty(value = "")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
-  private String bookmark;
+  public BoardSectionsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
    * Board sections
    * @return items
@@ -46,24 +64,6 @@ public class BoardSectionsList200Response  {
     return this;
   }
 
- /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  public BoardSectionsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -73,13 +73,13 @@ public class BoardSectionsList200Response  {
       return false;
     }
     BoardSectionsList200Response boardSectionsList200Response = (BoardSectionsList200Response) o;
-    return Objects.equals(this.items, boardSectionsList200Response.items) &&
-        Objects.equals(this.bookmark, boardSectionsList200Response.bookmark);
+    return Objects.equals(this.bookmark, boardSectionsList200Response.bookmark) &&
+        Objects.equals(this.items, boardSectionsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -87,8 +87,8 @@ public class BoardSectionsList200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardSectionsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

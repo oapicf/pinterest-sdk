@@ -9,9 +9,9 @@
 -export_type([openapi_user_website_summary/0]).
 
 -type openapi_user_website_summary() ::
-  [ {'website', binary() }
-  | {'status', binary() }
+  [ {'status', binary() }
   | {'verified_at', binary() }
+  | {'website', binary() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_user_website_summary() ->
     openapi_user_website_summary([]).
 
 openapi_user_website_summary(Fields) ->
-  Default = [ {'website', binary() }
-            , {'status', binary() }
+  Default = [ {'status', binary() }
             , {'verified_at', binary() }
+            , {'website', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

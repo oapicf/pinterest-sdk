@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "BoardPrivacy",
+  "symbols": [
+    "PUBLIC",
+    "PROTECTED",
+    "SECRET"
+  ]
+}

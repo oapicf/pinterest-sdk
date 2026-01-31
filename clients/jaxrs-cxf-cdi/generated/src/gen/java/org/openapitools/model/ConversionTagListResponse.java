@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,11 +19,11 @@ import java.util.Objects;
 
 public class ConversionTagListResponse   {
   
-  private List<@Valid ConversionTagResponse> items = new ArrayList<>();
+  private List<@Valid ConversionTag> items = new ArrayList<>();
 
   /**
    **/
-  public ConversionTagListResponse items(List<@Valid ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<@Valid ConversionTag> items) {
     this.items = items;
     return this;
   }
@@ -31,14 +31,14 @@ public class ConversionTagListResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<@Valid ConversionTagResponse> getItems() {
+  public List<@Valid ConversionTag> getItems() {
     return items;
   }
-  public void setItems(List<@Valid ConversionTagResponse> items) {
+  public void setItems(List<@Valid ConversionTag> items) {
     this.items = items;
   }
 
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }

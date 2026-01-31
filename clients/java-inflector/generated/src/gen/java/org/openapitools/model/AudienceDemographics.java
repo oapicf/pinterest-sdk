@@ -17,22 +17,22 @@ import org.openapitools.model.AudienceDemographicValue;
  **/
 
 @ApiModel(description = "Audience demographics")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDemographics   {
   @JsonProperty("ages")
   private List<AudienceDemographicValue> ages = null;
 
-  @JsonProperty("genders")
-  private List<AudienceDemographicValue> genders = null;
+  @JsonProperty("countries")
+  private List<AudienceDemographicValue> countries = null;
 
   @JsonProperty("devices")
   private List<AudienceDemographicValue> devices = null;
 
+  @JsonProperty("genders")
+  private List<AudienceDemographicValue> genders = null;
+
   @JsonProperty("metros")
   private List<AudienceDemographicValue> metros = null;
-
-  @JsonProperty("countries")
-  private List<AudienceDemographicValue> countries = null;
 
   /**
    * Ages distribution.
@@ -53,21 +53,21 @@ public class AudienceDemographics   {
   }
 
   /**
-   * Gender distribution.
+   * Country area distribution.
    **/
-  public AudienceDemographics genders(List<AudienceDemographicValue> genders) {
-    this.genders = genders;
+  public AudienceDemographics countries(List<AudienceDemographicValue> countries) {
+    this.countries = countries;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Gender distribution.")
-  @JsonProperty("genders")
-  public List<AudienceDemographicValue> getGenders() {
-    return genders;
+  @ApiModelProperty(value = "Country area distribution.")
+  @JsonProperty("countries")
+  public List<AudienceDemographicValue> getCountries() {
+    return countries;
   }
-  public void setGenders(List<AudienceDemographicValue> genders) {
-    this.genders = genders;
+  public void setCountries(List<AudienceDemographicValue> countries) {
+    this.countries = countries;
   }
 
   /**
@@ -89,6 +89,24 @@ public class AudienceDemographics   {
   }
 
   /**
+   * Gender distribution.
+   **/
+  public AudienceDemographics genders(List<AudienceDemographicValue> genders) {
+    this.genders = genders;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Gender distribution.")
+  @JsonProperty("genders")
+  public List<AudienceDemographicValue> getGenders() {
+    return genders;
+  }
+  public void setGenders(List<AudienceDemographicValue> genders) {
+    this.genders = genders;
+  }
+
+  /**
    * Geographic metro area distribution.
    **/
   public AudienceDemographics metros(List<AudienceDemographicValue> metros) {
@@ -106,24 +124,6 @@ public class AudienceDemographics   {
     this.metros = metros;
   }
 
-  /**
-   * Country area distribution.
-   **/
-  public AudienceDemographics countries(List<AudienceDemographicValue> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Country area distribution.")
-  @JsonProperty("countries")
-  public List<AudienceDemographicValue> getCountries() {
-    return countries;
-  }
-  public void setCountries(List<AudienceDemographicValue> countries) {
-    this.countries = countries;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -135,15 +135,15 @@ public class AudienceDemographics   {
     }
     AudienceDemographics audienceDemographics = (AudienceDemographics) o;
     return Objects.equals(ages, audienceDemographics.ages) &&
-        Objects.equals(genders, audienceDemographics.genders) &&
+        Objects.equals(countries, audienceDemographics.countries) &&
         Objects.equals(devices, audienceDemographics.devices) &&
-        Objects.equals(metros, audienceDemographics.metros) &&
-        Objects.equals(countries, audienceDemographics.countries);
+        Objects.equals(genders, audienceDemographics.genders) &&
+        Objects.equals(metros, audienceDemographics.metros);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ages, genders, devices, metros, countries);
+    return Objects.hash(ages, countries, devices, genders, metros);
   }
 
   @Override
@@ -152,10 +152,10 @@ public class AudienceDemographics   {
     sb.append("class AudienceDemographics {\n");
     
     sb.append("    ages: ").append(toIndentedString(ages)).append("\n");
-    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
-    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
-    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
+    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
+    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
+    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("}");
     return sb.toString();
   }

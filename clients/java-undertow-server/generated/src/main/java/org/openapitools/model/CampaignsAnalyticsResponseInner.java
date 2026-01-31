@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,14 +23,14 @@ import java.util.Map;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignsAnalyticsResponseInner extends HashMap<String, Object>  {
   
   private String CAMPAIGN_ID;
   private Date DATE;
 
   /**
-   * The ID of the campaing that this metrics belongs to.
+   * The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    */
   public CampaignsAnalyticsResponseInner CAMPAIGN_ID(String CAMPAIGN_ID) {
     this.CAMPAIGN_ID = CAMPAIGN_ID;
@@ -38,7 +38,7 @@ public class CampaignsAnalyticsResponseInner extends HashMap<String, Object>  {
   }
 
   
-  @ApiModelProperty(required = true, value = "The ID of the campaing that this metrics belongs to.")
+  @ApiModelProperty(value = "The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
   @JsonProperty("CAMPAIGN_ID")
   public String getCAMPAIGNID() {
     return CAMPAIGN_ID;

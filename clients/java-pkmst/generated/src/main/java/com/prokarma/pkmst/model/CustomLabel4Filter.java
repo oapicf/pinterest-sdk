@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.CatalogsProductGroupMultipleStringCriteria;
+import com.prokarma.pkmst.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -15,12 +15,12 @@ import io.swagger.annotations.ApiModelProperty;
  * CustomLabel4Filter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomLabel4Filter   {
   @JsonProperty("CUSTOM_LABEL_4")
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4;
 
-  public CustomLabel4Filter CUSTOM_LABEL_4(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4) {
+  public CustomLabel4Filter CUSTOM_LABEL_4(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4) {
     this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
     return this;
   }
@@ -30,11 +30,11 @@ public class CustomLabel4Filter   {
    * @return CUSTOM_LABEL_4
    */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL4() {
     return CUSTOM_LABEL_4;
   }
 
-  public void setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4) {
+  public void setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4) {
     this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
   }
 

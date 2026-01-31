@@ -27,27 +27,19 @@ public class CatalogsUpdatableHotelAttributesTest {
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'address'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
+    public void addressTest() {
+        // TODO: test address
     }
 
     /**
-     * Test the property 'link'
+     * Test the property 'basePrice'
      */
     @Test
-    public void linkTest() {
-        // TODO: test link
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void basePriceTest() {
+        // TODO: test basePrice
     }
 
     /**
@@ -59,35 +51,11 @@ public class CatalogsUpdatableHotelAttributesTest {
     }
 
     /**
-     * Test the property 'latitude'
+     * Test the property 'category'
      */
     @Test
-    public void latitudeTest() {
-        // TODO: test latitude
-    }
-
-    /**
-     * Test the property 'longitude'
-     */
-    @Test
-    public void longitudeTest() {
-        // TODO: test longitude
-    }
-
-    /**
-     * Test the property 'neighborhood'
-     */
-    @Test
-    public void neighborhoodTest() {
-        // TODO: test neighborhood
-    }
-
-    /**
-     * Test the property 'address'
-     */
-    @Test
-    public void addressTest() {
-        // TODO: test address
+    public void categoryTest() {
+        // TODO: test category
     }
 
     /**
@@ -131,27 +99,11 @@ public class CatalogsUpdatableHotelAttributesTest {
     }
 
     /**
-     * Test the property 'category'
+     * Test the property 'description'
      */
     @Test
-    public void categoryTest() {
-        // TODO: test category
-    }
-
-    /**
-     * Test the property 'basePrice'
-     */
-    @Test
-    public void basePriceTest() {
-        // TODO: test basePrice
-    }
-
-    /**
-     * Test the property 'salePrice'
-     */
-    @Test
-    public void salePriceTest() {
-        // TODO: test salePrice
+    public void descriptionTest() {
+        // TODO: test description
     }
 
     /**
@@ -160,6 +112,54 @@ public class CatalogsUpdatableHotelAttributesTest {
     @Test
     public void guestRatingsTest() {
         // TODO: test guestRatings
+    }
+
+    /**
+     * Test the property 'latitude'
+     */
+    @Test
+    public void latitudeTest() {
+        // TODO: test latitude
+    }
+
+    /**
+     * Test the property 'link'
+     */
+    @Test
+    public void linkTest() {
+        // TODO: test link
+    }
+
+    /**
+     * Test the property 'longitude'
+     */
+    @Test
+    public void longitudeTest() {
+        // TODO: test longitude
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'neighborhood'
+     */
+    @Test
+    public void neighborhoodTest() {
+        // TODO: test neighborhood
+    }
+
+    /**
+     * Test the property 'salePrice'
+     */
+    @Test
+    public void salePriceTest() {
+        // TODO: test salePrice
     }
 
 }

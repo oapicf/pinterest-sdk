@@ -54,27 +54,6 @@ public:
 	/*! \brief Set Ages distribution.
 	 */
 	void setAges(std::list <AudienceDemographicValue> ages);
-	/*! \brief Get Gender distribution.
-	 */
-	std::list<AudienceDemographicValue> getGenders();
-
-	/*! \brief Set Gender distribution.
-	 */
-	void setGenders(std::list <AudienceDemographicValue> genders);
-	/*! \brief Get Device usage distribution.
-	 */
-	std::list<AudienceDemographicValue> getDevices();
-
-	/*! \brief Set Device usage distribution.
-	 */
-	void setDevices(std::list <AudienceDemographicValue> devices);
-	/*! \brief Get Geographic metro area distribution.
-	 */
-	std::list<AudienceDemographicValue> getMetros();
-
-	/*! \brief Set Geographic metro area distribution.
-	 */
-	void setMetros(std::list <AudienceDemographicValue> metros);
 	/*! \brief Get Country area distribution.
 	 */
 	std::list<AudienceDemographicValue> getCountries();
@@ -82,13 +61,34 @@ public:
 	/*! \brief Set Country area distribution.
 	 */
 	void setCountries(std::list <AudienceDemographicValue> countries);
+	/*! \brief Get Device usage distribution.
+	 */
+	std::list<AudienceDemographicValue> getDevices();
+
+	/*! \brief Set Device usage distribution.
+	 */
+	void setDevices(std::list <AudienceDemographicValue> devices);
+	/*! \brief Get Gender distribution.
+	 */
+	std::list<AudienceDemographicValue> getGenders();
+
+	/*! \brief Set Gender distribution.
+	 */
+	void setGenders(std::list <AudienceDemographicValue> genders);
+	/*! \brief Get Geographic metro area distribution.
+	 */
+	std::list<AudienceDemographicValue> getMetros();
+
+	/*! \brief Set Geographic metro area distribution.
+	 */
+	void setMetros(std::list <AudienceDemographicValue> metros);
 
 private:
 	std::list <AudienceDemographicValue>ages;
-	std::list <AudienceDemographicValue>genders;
-	std::list <AudienceDemographicValue>devices;
-	std::list <AudienceDemographicValue>metros;
 	std::list <AudienceDemographicValue>countries;
+	std::list <AudienceDemographicValue>devices;
+	std::list <AudienceDemographicValue>genders;
+	std::list <AudienceDemographicValue>metros;
 	void __init();
 	void __cleanup();
 

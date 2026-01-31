@@ -8,8 +8,8 @@ The class is defined in **[ProductGroupPromotionsList200Response.java](../../src
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;ProductGroupPromotionResponseItem&gt;`](ProductGroupPromotionResponseItem.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;ProductGroupPromotion&gt;`](ProductGroupPromotion.md) |  | 
 
 
 

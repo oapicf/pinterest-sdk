@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **aVAILABILITY** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
 **bRAND** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
 **cONDITION** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
-**cUSTOMLABEL0** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
-**cUSTOMLABEL1** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
-**cUSTOMLABEL2** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
-**cUSTOMLABEL3** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
-**cUSTOMLABEL4** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMLABEL0** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
+**cUSTOMLABEL1** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
+**cUSTOMLABEL2** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
+**cUSTOMLABEL3** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
+**cUSTOMLABEL4** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
 **iTEMGROUPID** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
 **gENDER** | [**OAICatalogsProductGroupMultipleGenderCriteria***](.md) |  | 
 **mEDIATYPE** | [**OAICatalogsProductGroupMultipleMediaTypesCriteria***](.md) |  | 
@@ -31,6 +31,12 @@ Name | Type | Description | Notes
 **gOOGLEPRODUCTCATEGORY1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
 **gOOGLEPRODUCTCATEGORY0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
 **pRODUCTGROUP** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMNUMBER0** | [**OAICatalogsProductGroupUint32Criteria***](.md) |  | 
+**cUSTOMNUMBER1** | [**OAICatalogsProductGroupUint32Criteria***](.md) |  | 
+**cUSTOMNUMBER2** | [**OAICatalogsProductGroupUint32Criteria***](.md) |  | 
+**cUSTOMNUMBER3** | [**OAICatalogsProductGroupUint32Criteria***](.md) |  | 
+**cUSTOMNUMBER4** | [**OAICatalogsProductGroupUint32Criteria***](.md) |  | 
+**tITLEKEYWORDS** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

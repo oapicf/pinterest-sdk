@@ -8,10 +8,10 @@
 
 (def get-partner-assets-response-data
   {
+   (ds/opt :asset_group_info) asset-group-binding-spec
    (ds/opt :asset_id) string?
    (ds/opt :asset_type) string?
    (ds/opt :permissions) (s/coll-of string?)
-   (ds/opt :asset_group_info) asset-group-binding-spec
    })
 
 (def get-partner-assets-response-spec

@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Record processing counts",
+  "name": "RecordCounts",
+  "fields": [
+    {
+      "name": "invalid",
+      "type": "int",
+      "doc": "Number of invalid records processed"
+    },
+    {
+      "name": "processed",
+      "type": "int",
+      "doc": "Number of records processed"
+    },
+    {
+      "name": "valid",
+      "type": "int",
+      "doc": "Number of valid records processed"
+    }
+  ]
+
+}

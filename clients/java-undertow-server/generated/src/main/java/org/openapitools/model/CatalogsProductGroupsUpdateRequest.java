@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -27,30 +27,13 @@ import org.openapitools.model.Country;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupsUpdateRequest   {
   
-  private String name;
   private String description;
-  private Boolean isFeatured;
   private CatalogsProductGroupFiltersRequest filters;
-
-  /**
-   */
-  public CatalogsProductGroupsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private Boolean isFeatured;
+  private String name;
 
   /**
    */
@@ -67,6 +50,23 @@ public class CatalogsProductGroupsUpdateRequest   {
   }
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  /**
+   */
+  public CatalogsProductGroupsUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
   /**
@@ -89,19 +89,19 @@ public class CatalogsProductGroupsUpdateRequest   {
 
   /**
    */
-  public CatalogsProductGroupsUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupsUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -114,15 +114,15 @@ public class CatalogsProductGroupsUpdateRequest   {
       return false;
     }
     CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest = (CatalogsProductGroupsUpdateRequest) o;
-    return Objects.equals(name, catalogsProductGroupsUpdateRequest.name) &&
-        Objects.equals(description, catalogsProductGroupsUpdateRequest.description) &&
+    return Objects.equals(description, catalogsProductGroupsUpdateRequest.description) &&
+        Objects.equals(filters, catalogsProductGroupsUpdateRequest.filters) &&
         Objects.equals(isFeatured, catalogsProductGroupsUpdateRequest.isFeatured) &&
-        Objects.equals(filters, catalogsProductGroupsUpdateRequest.filters);
+        Objects.equals(name, catalogsProductGroupsUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters);
+    return Objects.hash(description, filters, isFeatured, name);
   }
 
   @Override
@@ -130,10 +130,10 @@ public class CatalogsProductGroupsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupsUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardOwner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardOwner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BoardOwner {
+    title = BoardOwner
+    description = BoardOwner
+    derivedFrom = Root
+    properties {
+        username {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardOwner {
+    title = BoardOwner
+    description = BoardOwner
+    implements = openapi_server.resourceTypes.BoardOwner
+
+  }
+}

@@ -12,33 +12,29 @@ import { Currency } from './currency';
 
 export interface SSIOOrderLine { 
     /**
-     * OrderLineId in SFDC
+     * The SFDC id for the terms
      */
-    salesforce_order_line_id?: string | null;
+    accepted_terms_id?: string | null;
+    /**
+     * The UTC timestamp (to the nearest sec) of when terms were accepted
+     */
+    accepted_terms_time?: string | null;
     /**
      * Ads manager OrderLineId
      */
     ads_manager_order_line_id?: string | null;
     /**
-     * The pin order id associated with the order line in SFDC
+     * Agency link
      */
-    pin_order_id?: string | null;
-    /**
-     * Last modified date.
-     */
-    last_modified_date_time?: string | null;
-    /**
-     * Start date of the order line.
-     */
-    start_date?: string | null;
-    /**
-     * End date of the order line.
-     */
-    end_date?: string | null;
+    agency_link?: string | null;
     /**
      * Bill To Company name
      */
     bill_to_company_name?: string | null;
+    /**
+     * Billing contact email
+     */
+    billing_contact_email?: string | null;
     /**
      * Billing contact first name
      */
@@ -48,9 +44,22 @@ export interface SSIOOrderLine {
      */
     billing_contact_lastname?: string | null;
     /**
-     * Billing contact email
+     * If Budget order line, the budget amount.
      */
-    billing_contact_email?: string | null;
+    budget_amount?: number | null;
+    currency_info?: Currency;
+    /**
+     * End date of the order line.
+     */
+    end_date?: string | null;
+    /**
+     * If Ongoing (perpetual) order line, the estimated monthly spend
+     */
+    estimated_monthly_spend?: number | null;
+    /**
+     * Last modified date.
+     */
+    last_modified_date_time?: string | null;
     /**
      * Billing media email
      */
@@ -63,39 +72,30 @@ export interface SSIOOrderLine {
      * Billing contact first name
      */
     media_contact_lastname?: string | null;
-    currency_info?: Currency;
-    /**
-     * Agency link
-     */
-    agency_link?: string | null;
-    /**
-     * The po number
-     */
-    po_number?: string | null;
     /**
      * The order name
      */
     order_name?: string | null;
     /**
+     * The pin order id associated with the order line in SFDC
+     */
+    pin_order_id?: string | null;
+    /**
      * The Pinterest marketing partner name
      */
     pmp_name?: string | null;
     /**
-     * The SFDC id for the terms
+     * The po number
      */
-    accepted_terms_id?: string | null;
+    po_number?: string | null;
     /**
-     * The UTC timestamp (to the nearest sec) of when terms were accepted
+     * OrderLineId in SFDC
      */
-    accepted_terms_time?: string | null;
+    salesforce_order_line_id?: string | null;
     /**
-     * If Budget order line, the budget amount.
+     * Start date of the order line.
      */
-    budget_amount?: number | null;
-    /**
-     * If Ongoing (perpetual) order line, the estimated monthly spend
-     */
-    estimated_monthly_spend?: number | null;
+    start_date?: string | null;
 }
 export namespace SSIOOrderLine {
 }

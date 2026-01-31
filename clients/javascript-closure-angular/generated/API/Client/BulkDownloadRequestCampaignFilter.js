@@ -6,11 +6,10 @@ goog.provide('API.Client.BulkDownloadRequest_campaign_filter');
 API.Client.BulkDownloadRequestCampaignFilter = function() {}
 
 /**
- * Unix UTC timestamp.
- * @type {!string}
+ * @type {!Array<!API.Client.CampaignSummaryStatus>}
  * @export
  */
-API.Client.BulkDownloadRequestCampaignFilter.prototype.startTime;
+API.Client.BulkDownloadRequestCampaignFilter.prototype.campaignStatus;
 
 /**
  * Unix UTC timestamp.
@@ -27,14 +26,15 @@ API.Client.BulkDownloadRequestCampaignFilter.prototype.endTime;
 API.Client.BulkDownloadRequestCampaignFilter.prototype.name;
 
 /**
- * @type {!Array<!API.Client.CampaignSummaryStatus>}
- * @export
- */
-API.Client.BulkDownloadRequestCampaignFilter.prototype.campaignStatus;
-
-/**
  * @type {!Array<!API.Client.ObjectiveType>}
  * @export
  */
 API.Client.BulkDownloadRequestCampaignFilter.prototype.objectiveType;
+
+/**
+ * Unix UTC timestamp.
+ * @type {!string}
+ * @export
+ */
+API.Client.BulkDownloadRequestCampaignFilter.prototype.startTime;
 

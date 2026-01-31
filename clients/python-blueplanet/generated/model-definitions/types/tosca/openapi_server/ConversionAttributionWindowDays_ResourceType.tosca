@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionAttributionWindowDays"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionAttributionWindowDays"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionAttributionWindowDays {
+    title = ConversionAttributionWindowDays
+    description = ConversionAttributionWindowDays
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionAttributionWindowDays {
+    title = ConversionAttributionWindowDays
+    description = ConversionAttributionWindowDays
+    implements = openapi_server.resourceTypes.ConversionAttributionWindowDays
+
+  }
+}

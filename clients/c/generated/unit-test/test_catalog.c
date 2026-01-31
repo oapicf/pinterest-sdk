@@ -25,16 +25,16 @@ catalog_t* instantiate_catalog(int include_optional) {
       "2022-03-14T15:15:22Z",
       "864344156814050986",
       "2022-03-14T15:16:34Z",
-      "0",
-      pinterest_rest_api_catalog__RETAIL
+      pinterest_rest_api_catalog__RETAIL,
+      "0"
     );
   } else {
     catalog = catalog_create(
       "2022-03-14T15:15:22Z",
       "864344156814050986",
       "2022-03-14T15:16:34Z",
-      "0",
-      pinterest_rest_api_catalog__RETAIL
+      pinterest_rest_api_catalog__RETAIL,
+      "0"
     );
   }
 

@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOM_LABEL_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOM_LABEL_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOM_LABEL_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
 **MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
@@ -32,5 +32,11 @@ Name | Type | Description | Notes
 **GOOGLE_PRODUCT_CATEGORY_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **GOOGLE_PRODUCT_CATEGORY_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOM_NUMBER_0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOM_NUMBER_1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOM_NUMBER_2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOM_NUMBER_3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOM_NUMBER_4** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 

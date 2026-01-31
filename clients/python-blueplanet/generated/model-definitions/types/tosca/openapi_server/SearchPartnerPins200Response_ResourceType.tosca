@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SearchPartnerPins200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SearchPartnerPins200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  SummaryPin = openapi_server.resourceTypes.SummaryPin
+}
+resourceTypes {
+
+  SearchPartnerPins200Response {
+    title = SearchPartnerPins200Response
+    description = SearchPartnerPins200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = SummaryPin
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SearchPartnerPins200Response {
+    title = SearchPartnerPins200Response
+    description = SearchPartnerPins200Response
+    implements = openapi_server.resourceTypes.SearchPartnerPins200Response
+
+  }
+}

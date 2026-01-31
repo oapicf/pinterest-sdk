@@ -5,14 +5,6 @@ context("Test IntegrationLogsInvalidLogResponseRejectedLogsInner")
 
 model_instance <- IntegrationLogsInvalidLogResponseRejectedLogsInner$new()
 
-test_that("log_index", {
-  # tests for the property `log_index` (integer)
-  # Index of the log in the batch.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`log_index`, "EXPECTED_RESULT")
-})
-
 test_that("field", {
   # tests for the property `field` (character)
   # The field name containing an invalid value.
@@ -21,12 +13,12 @@ test_that("field", {
   #expect_equal(model.instance$`field`, "EXPECTED_RESULT")
 })
 
-test_that("value", {
-  # tests for the property `value` (character)
-  # The value that is invalid.
+test_that("log_index", {
+  # tests for the property `log_index` (integer)
+  # Index of the log in the batch.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`log_index`, "EXPECTED_RESULT")
 })
 
 test_that("reason", {
@@ -35,4 +27,12 @@ test_that("reason", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`reason`, "EXPECTED_RESULT")
+})
+
+test_that("value", {
+  # tests for the property `value` (character)
+  # The value that is invalid.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

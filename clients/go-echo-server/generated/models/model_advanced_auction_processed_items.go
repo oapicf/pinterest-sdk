@@ -7,5 +7,5 @@ type AdvancedAuctionProcessedItems struct {
 	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Array of advanced auction processed items
-	Items []AdvancedAuctionProcessedItem `json:"items,omitempty"`
+	Items []AdvancedAuctionItemsSubmitRecord `json:"items,omitempty"`
 }

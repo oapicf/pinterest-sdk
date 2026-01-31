@@ -39,6 +39,9 @@ open class AudienceInsightsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter audienceInsightType: (query) Type of audience insights. 
      - returns: RequestBuilder<AudienceInsightsResponse> 
@@ -93,6 +96,9 @@ open class AudienceInsightsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - returns: RequestBuilder<AudienceDefinitionResponse> 
      */

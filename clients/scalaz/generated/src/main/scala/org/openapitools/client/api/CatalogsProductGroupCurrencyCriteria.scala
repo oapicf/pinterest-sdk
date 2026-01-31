@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import CatalogsProductGroupCurrencyCriteria._
 
 case class CatalogsProductGroupCurrencyCriteria (
-  values: NonNullableCatalogsCurrency,
-negated: Option[Boolean])
+  negated: Option[Boolean],
+values: NonNullableCatalogsCurrency)
 
 object CatalogsProductGroupCurrencyCriteria {
   import DateTimeCodecs._

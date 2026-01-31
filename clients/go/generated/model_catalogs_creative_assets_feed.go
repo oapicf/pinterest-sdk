@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -26,21 +26,21 @@ type CatalogsCreativeAssetsFeed struct {
 	CreatedAt time.Time `json:"created_at"`
 	Id string `json:"id"`
 	UpdatedAt time.Time `json:"updated_at"`
-	// A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-	Name NullableString `json:"name"`
-	Format CatalogsFormat `json:"format"`
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 	CatalogType CatalogsType `json:"catalog_type"`
 	Credentials NullableCatalogsFeedCredentials `json:"credentials"`
-	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location"`
-	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule"`
-	Status CatalogsStatus `json:"status"`
+	DefaultCountry Country `json:"default_country"`
 	DefaultCurrency NullableNullableCurrency `json:"default_currency"`
 	// The locale used within a feed for product descriptions.
 	DefaultLocale string `json:"default_locale"`
-	DefaultCountry Country `json:"default_country"`
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-	CatalogId NullableString `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	Format CatalogsFormat `json:"format"`
+	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+	Location string `json:"location"`
+	// A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+	Name NullableString `json:"name"`
+	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule"`
+	Status CatalogsStatus `json:"status"`
 }
 
 type _CatalogsCreativeAssetsFeed CatalogsCreativeAssetsFeed
@@ -49,22 +49,22 @@ type _CatalogsCreativeAssetsFeed CatalogsCreativeAssetsFeed
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsFeed(createdAt time.Time, id string, updatedAt time.Time, name NullableString, format CatalogsFormat, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, location string, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, defaultCurrency NullableNullableCurrency, defaultLocale string, defaultCountry Country, catalogId NullableString) *CatalogsCreativeAssetsFeed {
+func NewCatalogsCreativeAssetsFeed(createdAt time.Time, id string, updatedAt time.Time, catalogId string, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, defaultCountry Country, defaultCurrency NullableNullableCurrency, defaultLocale string, format CatalogsFormat, location string, name NullableString, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus) *CatalogsCreativeAssetsFeed {
 	this := CatalogsCreativeAssetsFeed{}
 	this.CreatedAt = createdAt
 	this.Id = id
 	this.UpdatedAt = updatedAt
-	this.Name = name
-	this.Format = format
+	this.CatalogId = catalogId
 	this.CatalogType = catalogType
 	this.Credentials = credentials
-	this.Location = location
-	this.PreferredProcessingSchedule = preferredProcessingSchedule
-	this.Status = status
+	this.DefaultCountry = defaultCountry
 	this.DefaultCurrency = defaultCurrency
 	this.DefaultLocale = defaultLocale
-	this.DefaultCountry = defaultCountry
-	this.CatalogId = catalogId
+	this.Format = format
+	this.Location = location
+	this.Name = name
+	this.PreferredProcessingSchedule = preferredProcessingSchedule
+	this.Status = status
 	return &this
 }
 
@@ -148,54 +148,28 @@ func (o *CatalogsCreativeAssetsFeed) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
-// GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CatalogsCreativeAssetsFeed) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+// GetCatalogId returns the CatalogId field value
+func (o *CatalogsCreativeAssetsFeed) GetCatalogId() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.CatalogId
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetCatalogIdOk returns a tuple with the CatalogId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsCreativeAssetsFeed) GetNameOk() (*string, bool) {
+func (o *CatalogsCreativeAssetsFeed) GetCatalogIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.CatalogId, true
 }
 
-// SetName sets field value
-func (o *CatalogsCreativeAssetsFeed) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// GetFormat returns the Format field value
-func (o *CatalogsCreativeAssetsFeed) GetFormat() CatalogsFormat {
-	if o == nil {
-		var ret CatalogsFormat
-		return ret
-	}
-
-	return o.Format
-}
-
-// GetFormatOk returns a tuple with the Format field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeed) GetFormatOk() (*CatalogsFormat, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Format, true
-}
-
-// SetFormat sets field value
-func (o *CatalogsCreativeAssetsFeed) SetFormat(v CatalogsFormat) {
-	o.Format = v
+// SetCatalogId sets field value
+func (o *CatalogsCreativeAssetsFeed) SetCatalogId(v string) {
+	o.CatalogId = v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -248,78 +222,28 @@ func (o *CatalogsCreativeAssetsFeed) SetCredentials(v CatalogsFeedCredentials) {
 	o.Credentials.Set(&v)
 }
 
-// GetLocation returns the Location field value
-func (o *CatalogsCreativeAssetsFeed) GetLocation() string {
+// GetDefaultCountry returns the DefaultCountry field value
+func (o *CatalogsCreativeAssetsFeed) GetDefaultCountry() Country {
 	if o == nil {
-		var ret string
+		var ret Country
 		return ret
 	}
 
-	return o.Location
+	return o.DefaultCountry
 }
 
-// GetLocationOk returns a tuple with the Location field value
+// GetDefaultCountryOk returns a tuple with the DefaultCountry field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeed) GetLocationOk() (*string, bool) {
+func (o *CatalogsCreativeAssetsFeed) GetDefaultCountryOk() (*Country, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Location, true
+	return &o.DefaultCountry, true
 }
 
-// SetLocation sets field value
-func (o *CatalogsCreativeAssetsFeed) SetLocation(v string) {
-	o.Location = v
-}
-
-// GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field value
-// If the value is explicit nil, the zero value for CatalogsFeedProcessingSchedule will be returned
-func (o *CatalogsCreativeAssetsFeed) GetPreferredProcessingSchedule() CatalogsFeedProcessingSchedule {
-	if o == nil || o.PreferredProcessingSchedule.Get() == nil {
-		var ret CatalogsFeedProcessingSchedule
-		return ret
-	}
-
-	return *o.PreferredProcessingSchedule.Get()
-}
-
-// GetPreferredProcessingScheduleOk returns a tuple with the PreferredProcessingSchedule field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsCreativeAssetsFeed) GetPreferredProcessingScheduleOk() (*CatalogsFeedProcessingSchedule, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PreferredProcessingSchedule.Get(), o.PreferredProcessingSchedule.IsSet()
-}
-
-// SetPreferredProcessingSchedule sets field value
-func (o *CatalogsCreativeAssetsFeed) SetPreferredProcessingSchedule(v CatalogsFeedProcessingSchedule) {
-	o.PreferredProcessingSchedule.Set(&v)
-}
-
-// GetStatus returns the Status field value
-func (o *CatalogsCreativeAssetsFeed) GetStatus() CatalogsStatus {
-	if o == nil {
-		var ret CatalogsStatus
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeed) GetStatusOk() (*CatalogsStatus, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *CatalogsCreativeAssetsFeed) SetStatus(v CatalogsStatus) {
-	o.Status = v
+// SetDefaultCountry sets field value
+func (o *CatalogsCreativeAssetsFeed) SetDefaultCountry(v Country) {
+	o.DefaultCountry = v
 }
 
 // GetDefaultCurrency returns the DefaultCurrency field value
@@ -372,54 +296,128 @@ func (o *CatalogsCreativeAssetsFeed) SetDefaultLocale(v string) {
 	o.DefaultLocale = v
 }
 
-// GetDefaultCountry returns the DefaultCountry field value
-func (o *CatalogsCreativeAssetsFeed) GetDefaultCountry() Country {
+// GetFormat returns the Format field value
+func (o *CatalogsCreativeAssetsFeed) GetFormat() CatalogsFormat {
 	if o == nil {
-		var ret Country
+		var ret CatalogsFormat
 		return ret
 	}
 
-	return o.DefaultCountry
+	return o.Format
 }
 
-// GetDefaultCountryOk returns a tuple with the DefaultCountry field value
+// GetFormatOk returns a tuple with the Format field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeed) GetDefaultCountryOk() (*Country, bool) {
+func (o *CatalogsCreativeAssetsFeed) GetFormatOk() (*CatalogsFormat, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DefaultCountry, true
+	return &o.Format, true
 }
 
-// SetDefaultCountry sets field value
-func (o *CatalogsCreativeAssetsFeed) SetDefaultCountry(v Country) {
-	o.DefaultCountry = v
+// SetFormat sets field value
+func (o *CatalogsCreativeAssetsFeed) SetFormat(v CatalogsFormat) {
+	o.Format = v
 }
 
-// GetCatalogId returns the CatalogId field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CatalogsCreativeAssetsFeed) GetCatalogId() string {
-	if o == nil || o.CatalogId.Get() == nil {
+// GetLocation returns the Location field value
+func (o *CatalogsCreativeAssetsFeed) GetLocation() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CatalogId.Get()
+	return o.Location
 }
 
-// GetCatalogIdOk returns a tuple with the CatalogId field value
+// GetLocationOk returns a tuple with the Location field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsCreativeAssetsFeed) GetCatalogIdOk() (*string, bool) {
+func (o *CatalogsCreativeAssetsFeed) GetLocationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CatalogId.Get(), o.CatalogId.IsSet()
+	return &o.Location, true
 }
 
-// SetCatalogId sets field value
-func (o *CatalogsCreativeAssetsFeed) SetCatalogId(v string) {
-	o.CatalogId.Set(&v)
+// SetLocation sets field value
+func (o *CatalogsCreativeAssetsFeed) SetLocation(v string) {
+	o.Location = v
+}
+
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *CatalogsCreativeAssetsFeed) GetName() string {
+	if o == nil || o.Name.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsCreativeAssetsFeed) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// SetName sets field value
+func (o *CatalogsCreativeAssetsFeed) SetName(v string) {
+	o.Name.Set(&v)
+}
+
+// GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field value
+// If the value is explicit nil, the zero value for CatalogsFeedProcessingSchedule will be returned
+func (o *CatalogsCreativeAssetsFeed) GetPreferredProcessingSchedule() CatalogsFeedProcessingSchedule {
+	if o == nil || o.PreferredProcessingSchedule.Get() == nil {
+		var ret CatalogsFeedProcessingSchedule
+		return ret
+	}
+
+	return *o.PreferredProcessingSchedule.Get()
+}
+
+// GetPreferredProcessingScheduleOk returns a tuple with the PreferredProcessingSchedule field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsCreativeAssetsFeed) GetPreferredProcessingScheduleOk() (*CatalogsFeedProcessingSchedule, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PreferredProcessingSchedule.Get(), o.PreferredProcessingSchedule.IsSet()
+}
+
+// SetPreferredProcessingSchedule sets field value
+func (o *CatalogsCreativeAssetsFeed) SetPreferredProcessingSchedule(v CatalogsFeedProcessingSchedule) {
+	o.PreferredProcessingSchedule.Set(&v)
+}
+
+// GetStatus returns the Status field value
+func (o *CatalogsCreativeAssetsFeed) GetStatus() CatalogsStatus {
+	if o == nil {
+		var ret CatalogsStatus
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsFeed) GetStatusOk() (*CatalogsStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *CatalogsCreativeAssetsFeed) SetStatus(v CatalogsStatus) {
+	o.Status = v
 }
 
 func (o CatalogsCreativeAssetsFeed) MarshalJSON() ([]byte, error) {
@@ -435,17 +433,17 @@ func (o CatalogsCreativeAssetsFeed) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
 	toSerialize["updated_at"] = o.UpdatedAt
-	toSerialize["name"] = o.Name.Get()
-	toSerialize["format"] = o.Format
+	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["credentials"] = o.Credentials.Get()
-	toSerialize["location"] = o.Location
-	toSerialize["preferred_processing_schedule"] = o.PreferredProcessingSchedule.Get()
-	toSerialize["status"] = o.Status
+	toSerialize["default_country"] = o.DefaultCountry
 	toSerialize["default_currency"] = o.DefaultCurrency.Get()
 	toSerialize["default_locale"] = o.DefaultLocale
-	toSerialize["default_country"] = o.DefaultCountry
-	toSerialize["catalog_id"] = o.CatalogId.Get()
+	toSerialize["format"] = o.Format
+	toSerialize["location"] = o.Location
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["preferred_processing_schedule"] = o.PreferredProcessingSchedule.Get()
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 
@@ -457,17 +455,17 @@ func (o *CatalogsCreativeAssetsFeed) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"id",
 		"updated_at",
-		"name",
-		"format",
+		"catalog_id",
 		"catalog_type",
 		"credentials",
-		"location",
-		"preferred_processing_schedule",
-		"status",
+		"default_country",
 		"default_currency",
 		"default_locale",
-		"default_country",
-		"catalog_id",
+		"format",
+		"location",
+		"name",
+		"preferred_processing_schedule",
+		"status",
 	}
 
 	allProperties := make(map[string]interface{})

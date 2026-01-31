@@ -1,6 +1,5 @@
 package controllers;
 
-import apimodels.DetailedError;
 import apimodels.Error;
 import apimodels.IntegrationLogsRequest;
 import apimodels.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import apimodels.IntegrationRecord;
 import apimodels.IntegrationRequest;
 import apimodels.IntegrationRequestPatch;
 import apimodels.IntegrationsGetList200Response;
+import apimodels.IntegrationsLogsPost400Response;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;

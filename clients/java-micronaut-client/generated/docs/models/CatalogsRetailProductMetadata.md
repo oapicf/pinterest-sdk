@@ -10,12 +10,12 @@ The class is defined in **[CatalogsRetailProductMetadata.java](../../src/main/ja
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemId** | `String` | The user-created unique ID that represents the product. | 
-**itemGroupId** | `String` | The parent ID of the product. | 
 **availability** | `NonNullableProductAvailabilityType` |  | 
+**currency** | `NonNullableCatalogsCurrency` |  | 
+**itemGroupId** | `String` | The parent ID of the product. | 
+**itemId** | `String` | The user-created unique ID that represents the product. | 
 **price** | `BigDecimal` | The price of the product. | 
 **salePrice** | `BigDecimal` | The discounted price of the product. | 
-**currency** | `NonNullableCatalogsCurrency` |  | 
 
 
 

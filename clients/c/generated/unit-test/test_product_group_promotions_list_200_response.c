@@ -22,13 +22,13 @@ product_group_promotions_list_200_response_t* instantiate_product_group_promotio
   product_group_promotions_list_200_response_t* product_group_promotions_list_200_response = NULL;
   if (include_optional) {
     product_group_promotions_list_200_response = product_group_promotions_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     product_group_promotions_list_200_response = product_group_promotions_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

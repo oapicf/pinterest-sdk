@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsFeedsUpdateRequest');
 API.Client.CatalogsFeedsUpdateRequest = function() {}
 
 /**
+ * @type {!API.Client.CatalogsFeedCredentials}
+ * @export
+ */
+API.Client.CatalogsFeedsUpdateRequest.prototype.credentials;
+
+/**
  * @type {!API.Client.ProductAvailabilityType}
  * @export
  */
@@ -19,23 +25,10 @@ API.Client.CatalogsFeedsUpdateRequest.prototype.defaultAvailability;
 API.Client.CatalogsFeedsUpdateRequest.prototype.defaultCurrency;
 
 /**
- * A human-friendly name associated to a given feed.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsFeedsUpdateRequest.prototype.name;
-
-/**
  * @type {!API.Client.CatalogsFormat}
  * @export
  */
 API.Client.CatalogsFeedsUpdateRequest.prototype.format;
-
-/**
- * @type {!API.Client.CatalogsFeedCredentials}
- * @export
- */
-API.Client.CatalogsFeedsUpdateRequest.prototype.credentials;
 
 /**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
@@ -43,6 +36,13 @@ API.Client.CatalogsFeedsUpdateRequest.prototype.credentials;
  * @export
  */
 API.Client.CatalogsFeedsUpdateRequest.prototype.location;
+
+/**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsFeedsUpdateRequest.prototype.name;
 
 /**
  * @type {!API.Client.CatalogsFeedProcessingSchedule}

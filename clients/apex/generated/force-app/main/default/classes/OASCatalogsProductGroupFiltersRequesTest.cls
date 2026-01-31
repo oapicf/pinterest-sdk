@@ -2,83 +2,85 @@
 private class OASCatalogsProductGroupFiltersRequesTest {
     @isTest
     private static void equalsSameInstance() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf11 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf12 = catalogsProductGroupFiltersRequestAnyOf11;
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf13 = new OASCatalogsProductGroupFiltersReques();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf14 = catalogsProductGroupFiltersRequestAnyOf13;
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest1 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest2 = catalogsProductGroupFiltersRequest1;
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest3 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest4 = catalogsProductGroupFiltersRequest3;
 
-        System.assert(catalogsProductGroupFiltersRequestAnyOf11.equals(catalogsProductGroupFiltersRequestAnyOf12));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf12.equals(catalogsProductGroupFiltersRequestAnyOf11));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf11.equals(catalogsProductGroupFiltersRequestAnyOf11));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf13.equals(catalogsProductGroupFiltersRequestAnyOf14));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf14.equals(catalogsProductGroupFiltersRequestAnyOf13));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf13.equals(catalogsProductGroupFiltersRequestAnyOf13));
+        System.assert(catalogsProductGroupFiltersRequest1.equals(catalogsProductGroupFiltersRequest2));
+        System.assert(catalogsProductGroupFiltersRequest2.equals(catalogsProductGroupFiltersRequest1));
+        System.assert(catalogsProductGroupFiltersRequest1.equals(catalogsProductGroupFiltersRequest1));
+        System.assert(catalogsProductGroupFiltersRequest3.equals(catalogsProductGroupFiltersRequest4));
+        System.assert(catalogsProductGroupFiltersRequest4.equals(catalogsProductGroupFiltersRequest3));
+        System.assert(catalogsProductGroupFiltersRequest3.equals(catalogsProductGroupFiltersRequest3));
     }
 
     @isTest
     private static void equalsIdenticalInstance() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf11 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf12 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf13 = new OASCatalogsProductGroupFiltersReques();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf14 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest1 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest2 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest3 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest4 = new OASCatalogsProductGroupFiltersReques();
 
-        System.assert(catalogsProductGroupFiltersRequestAnyOf11.equals(catalogsProductGroupFiltersRequestAnyOf12));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf12.equals(catalogsProductGroupFiltersRequestAnyOf11));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf13.equals(catalogsProductGroupFiltersRequestAnyOf14));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf14.equals(catalogsProductGroupFiltersRequestAnyOf13));
+        System.assert(catalogsProductGroupFiltersRequest1.equals(catalogsProductGroupFiltersRequest2));
+        System.assert(catalogsProductGroupFiltersRequest2.equals(catalogsProductGroupFiltersRequest1));
+        System.assert(catalogsProductGroupFiltersRequest3.equals(catalogsProductGroupFiltersRequest4));
+        System.assert(catalogsProductGroupFiltersRequest4.equals(catalogsProductGroupFiltersRequest3));
     }
 
     @isTest
     private static void notEqualsDifferentType() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf11 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf12 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest1 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest2 = new OASCatalogsProductGroupFiltersReques();
 
-        System.assertEquals(false, catalogsProductGroupFiltersRequestAnyOf11.equals('foo'));
-        System.assertEquals(false, catalogsProductGroupFiltersRequestAnyOf12.equals('foo'));
+        System.assertEquals(false, catalogsProductGroupFiltersRequest1.equals('foo'));
+        System.assertEquals(false, catalogsProductGroupFiltersRequest2.equals('foo'));
     }
 
     @isTest
     private static void notEqualsNull() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf11 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf12 = new OASCatalogsProductGroupFiltersReques();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf13;
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest1 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest2 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest3;
 
-        System.assertEquals(false, catalogsProductGroupFiltersRequestAnyOf11.equals(catalogsProductGroupFiltersRequestAnyOf13));
-        System.assertEquals(false, catalogsProductGroupFiltersRequestAnyOf12.equals(catalogsProductGroupFiltersRequestAnyOf13));
+        System.assertEquals(false, catalogsProductGroupFiltersRequest1.equals(catalogsProductGroupFiltersRequest3));
+        System.assertEquals(false, catalogsProductGroupFiltersRequest2.equals(catalogsProductGroupFiltersRequest3));
     }
 
     @isTest
     private static void consistentHashCodeValue() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf11 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf12 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest1 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest2 = new OASCatalogsProductGroupFiltersReques();
 
-        System.assertEquals(catalogsProductGroupFiltersRequestAnyOf11.hashCode(), catalogsProductGroupFiltersRequestAnyOf11.hashCode());
-        System.assertEquals(catalogsProductGroupFiltersRequestAnyOf12.hashCode(), catalogsProductGroupFiltersRequestAnyOf12.hashCode());
+        System.assertEquals(catalogsProductGroupFiltersRequest1.hashCode(), catalogsProductGroupFiltersRequest1.hashCode());
+        System.assertEquals(catalogsProductGroupFiltersRequest2.hashCode(), catalogsProductGroupFiltersRequest2.hashCode());
     }
 
     @isTest
     private static void equalInstancesHaveSameHashCode() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf11 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf12 = OASCatalogsProductGroupFiltersReques.getExample();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf13 = new OASCatalogsProductGroupFiltersReques();
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf14 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest1 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest2 = OASCatalogsProductGroupFiltersReques.getExample();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest3 = new OASCatalogsProductGroupFiltersReques();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest4 = new OASCatalogsProductGroupFiltersReques();
 
-        System.assert(catalogsProductGroupFiltersRequestAnyOf11.equals(catalogsProductGroupFiltersRequestAnyOf12));
-        System.assert(catalogsProductGroupFiltersRequestAnyOf13.equals(catalogsProductGroupFiltersRequestAnyOf14));
-        System.assertEquals(catalogsProductGroupFiltersRequestAnyOf11.hashCode(), catalogsProductGroupFiltersRequestAnyOf12.hashCode());
-        System.assertEquals(catalogsProductGroupFiltersRequestAnyOf13.hashCode(), catalogsProductGroupFiltersRequestAnyOf14.hashCode());
+        System.assert(catalogsProductGroupFiltersRequest1.equals(catalogsProductGroupFiltersRequest2));
+        System.assert(catalogsProductGroupFiltersRequest3.equals(catalogsProductGroupFiltersRequest4));
+        System.assertEquals(catalogsProductGroupFiltersRequest1.hashCode(), catalogsProductGroupFiltersRequest2.hashCode());
+        System.assertEquals(catalogsProductGroupFiltersRequest3.hashCode(), catalogsProductGroupFiltersRequest4.hashCode());
     }
 
     @isTest
     private static void maintainRenamedProperties() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf1 = new OASCatalogsProductGroupFiltersReques();
-        Map<String, String> x-property-mappings = catalogsProductGroupFiltersRequestAnyOf1.getx-property-mappings();
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest = new OASCatalogsProductGroupFiltersReques();
+        Map<String, String> x-property-mappings = catalogsProductGroupFiltersRequest.getx-property-mappings();
+        System.assertEquals('anyOf', x-property-mappings.get('any_of'));
         System.assertEquals('allOf', x-property-mappings.get('all_of'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
-        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequestAnyOf1 = new OASCatalogsProductGroupFiltersReques();
-        System.assertEquals(new List<OASCatalogsProductGroupFilterKeys>(), catalogsProductGroupFiltersRequestAnyOf1.allOf);
+        OASCatalogsProductGroupFiltersReques catalogsProductGroupFiltersRequest = new OASCatalogsProductGroupFiltersReques();
+        System.assertEquals(new List<OASCatalogsProductGroupFilterKeys>(), catalogsProductGroupFiltersRequest.anyOf);
+        System.assertEquals(new List<OASCatalogsProductGroupFilterKeys>(), catalogsProductGroupFiltersRequest.allOf);
     }
 }

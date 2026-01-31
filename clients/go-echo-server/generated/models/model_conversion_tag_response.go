@@ -2,12 +2,12 @@ package models
 
 type ConversionTagResponse struct {
 
-	// Ad account ID.
-	AdAccountId string `json:"ad_account_id,omitempty"`
-
 	// Tag code snippet.
 	CodeSnippet string `json:"code_snippet,omitempty"`
 
+	Configs ConversionTagConfigs `json:"configs,omitempty"`
+
+	// The enhanced match status of the tag
 	EnhancedMatchStatus *EnhancedMatchStatusType `json:"enhanced_match_status,omitempty"`
 
 	// Tag ID.
@@ -17,12 +17,13 @@ type ConversionTagResponse struct {
 	LastFiredTimeMs *float32 `json:"last_fired_time_ms,omitempty"`
 
 	// Conversion tag name.
-	Name string `json:"name,omitempty"`
-
-	Status EntityStatus `json:"status,omitempty"`
+	Name string `json:"name"`
 
 	// Version number.
 	Version string `json:"version,omitempty"`
 
-	Configs ConversionTagConfigs `json:"configs,omitempty"`
+	// Ad account ID.
+	AdAccountId string `json:"ad_account_id"`
+
+	Status EntityStatus `json:"status,omitempty"`
 }

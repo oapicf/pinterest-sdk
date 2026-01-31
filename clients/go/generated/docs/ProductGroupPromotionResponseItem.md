@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**ProductGroupPromotionResponseElement**](ProductGroupPromotionResponseElement.md) |  | [optional] 
+**Data** | Pointer to [**ProductGroupPromotion**](ProductGroupPromotion.md) |  | [optional] 
 **Exceptions** | Pointer to [**[]Exception**](Exception.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ProductGroupPromotionResponseItem) GetData() ProductGroupPromotionResponseElement`
+`func (o *ProductGroupPromotionResponseItem) GetData() ProductGroupPromotion`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ProductGroupPromotionResponseItem) GetDataOk() (*ProductGroupPromotionResponseElement, bool)`
+`func (o *ProductGroupPromotionResponseItem) GetDataOk() (*ProductGroupPromotion, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ProductGroupPromotionResponseItem) SetData(v ProductGroupPromotionResponseElement)`
+`func (o *ProductGroupPromotionResponseItem) SetData(v ProductGroupPromotion)`
 
 SetData sets Data field to given value.
 

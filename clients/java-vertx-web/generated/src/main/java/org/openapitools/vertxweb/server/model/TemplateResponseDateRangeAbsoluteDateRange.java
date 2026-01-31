@@ -11,27 +11,27 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TemplateResponseDateRangeAbsoluteDateRange   {
   
-  private String type;
-  private BigDecimal startDate;
   private BigDecimal endDate;
+  private BigDecimal startDate;
+  private String type;
 
   public TemplateResponseDateRangeAbsoluteDateRange () {
 
   }
 
-  public TemplateResponseDateRangeAbsoluteDateRange (String type, BigDecimal startDate, BigDecimal endDate) {
-    this.type = type;
-    this.startDate = startDate;
+  public TemplateResponseDateRangeAbsoluteDateRange (BigDecimal endDate, BigDecimal startDate, String type) {
     this.endDate = endDate;
+    this.startDate = startDate;
+    this.type = type;
   }
 
     
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @JsonProperty("end_date")
+  public BigDecimal getEndDate() {
+    return endDate;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setEndDate(BigDecimal endDate) {
+    this.endDate = endDate;
   }
 
     
@@ -44,12 +44,12 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
   }
 
     
-  @JsonProperty("end_date")
-  public BigDecimal getEndDate() {
-    return endDate;
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
-  public void setEndDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -62,14 +62,14 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
       return false;
     }
     TemplateResponseDateRangeAbsoluteDateRange templateResponseDateRangeAbsoluteDateRange = (TemplateResponseDateRangeAbsoluteDateRange) o;
-    return Objects.equals(type, templateResponseDateRangeAbsoluteDateRange.type) &&
+    return Objects.equals(endDate, templateResponseDateRangeAbsoluteDateRange.endDate) &&
         Objects.equals(startDate, templateResponseDateRangeAbsoluteDateRange.startDate) &&
-        Objects.equals(endDate, templateResponseDateRangeAbsoluteDateRange.endDate);
+        Objects.equals(type, templateResponseDateRangeAbsoluteDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDate, endDate);
+    return Objects.hash(endDate, startDate, type);
   }
 
   @Override
@@ -77,9 +77,9 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeAbsoluteDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

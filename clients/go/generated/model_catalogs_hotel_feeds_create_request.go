@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,18 +22,18 @@ var _ MappedNullable = &CatalogsHotelFeedsCreateRequest{}
 
 // CatalogsHotelFeedsCreateRequest Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
 type CatalogsHotelFeedsCreateRequest struct {
-	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
-	// A human-friendly name associated to a given feed.
-	Name string `json:"name"`
-	Format CatalogsFormat `json:"format"`
-	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale"`
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogType CatalogsType `json:"catalog_type"`
 	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
+	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
+	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale"`
+	Format CatalogsFormat `json:"format"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	// A human-friendly name associated to a given feed.
+	Name string `json:"name"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
-	CatalogType CatalogsType `json:"catalog_type"`
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
-	CatalogId NullableString `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 	Status *CatalogsStatus `json:"status,omitempty"`
 }
 
@@ -43,13 +43,13 @@ type _CatalogsHotelFeedsCreateRequest CatalogsHotelFeedsCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsHotelFeedsCreateRequest(name string, format CatalogsFormat, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, location string, catalogType CatalogsType) *CatalogsHotelFeedsCreateRequest {
+func NewCatalogsHotelFeedsCreateRequest(catalogType CatalogsType, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string) *CatalogsHotelFeedsCreateRequest {
 	this := CatalogsHotelFeedsCreateRequest{}
-	this.Name = name
-	this.Format = format
-	this.DefaultLocale = defaultLocale
-	this.Location = location
 	this.CatalogType = catalogType
+	this.DefaultLocale = defaultLocale
+	this.Format = format
+	this.Location = location
+	this.Name = name
 	var status CatalogsStatus = ACTIVE
 	this.Status = &status
 	return &this
@@ -65,118 +65,60 @@ func NewCatalogsHotelFeedsCreateRequestWithDefaults() *CatalogsHotelFeedsCreateR
 	return &this
 }
 
-// GetDefaultCurrency returns the DefaultCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrency() NullableCurrency {
-	if o == nil || IsNil(o.DefaultCurrency.Get()) {
-		var ret NullableCurrency
+// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
+func (o *CatalogsHotelFeedsCreateRequest) GetCatalogId() string {
+	if o == nil || IsNil(o.CatalogId) {
+		var ret string
 		return ret
 	}
-	return *o.DefaultCurrency.Get()
+	return *o.CatalogId
 }
 
-// GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field value if set, nil otherwise
+// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrencyOk() (*NullableCurrency, bool) {
-	if o == nil {
+func (o *CatalogsHotelFeedsCreateRequest) GetCatalogIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogId) {
 		return nil, false
 	}
-	return o.DefaultCurrency.Get(), o.DefaultCurrency.IsSet()
+	return o.CatalogId, true
 }
 
-// HasDefaultCurrency returns a boolean if a field has been set.
-func (o *CatalogsHotelFeedsCreateRequest) HasDefaultCurrency() bool {
-	if o != nil && o.DefaultCurrency.IsSet() {
+// HasCatalogId returns a boolean if a field has been set.
+func (o *CatalogsHotelFeedsCreateRequest) HasCatalogId() bool {
+	if o != nil && !IsNil(o.CatalogId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultCurrency gets a reference to the given NullableNullableCurrency and assigns it to the DefaultCurrency field.
-func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrency(v NullableCurrency) {
-	o.DefaultCurrency.Set(&v)
-}
-// SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
-func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrencyNil() {
-	o.DefaultCurrency.Set(nil)
+// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
+func (o *CatalogsHotelFeedsCreateRequest) SetCatalogId(v string) {
+	o.CatalogId = &v
 }
 
-// UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
-func (o *CatalogsHotelFeedsCreateRequest) UnsetDefaultCurrency() {
-	o.DefaultCurrency.Unset()
-}
-
-// GetName returns the Name field value
-func (o *CatalogsHotelFeedsCreateRequest) GetName() string {
+// GetCatalogType returns the CatalogType field value
+func (o *CatalogsHotelFeedsCreateRequest) GetCatalogType() CatalogsType {
 	if o == nil {
-		var ret string
+		var ret CatalogsType
 		return ret
 	}
 
-	return o.Name
+	return o.CatalogType
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeedsCreateRequest) GetNameOk() (*string, bool) {
+func (o *CatalogsHotelFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.CatalogType, true
 }
 
-// SetName sets field value
-func (o *CatalogsHotelFeedsCreateRequest) SetName(v string) {
-	o.Name = v
-}
-
-// GetFormat returns the Format field value
-func (o *CatalogsHotelFeedsCreateRequest) GetFormat() CatalogsFormat {
-	if o == nil {
-		var ret CatalogsFormat
-		return ret
-	}
-
-	return o.Format
-}
-
-// GetFormatOk returns a tuple with the Format field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeedsCreateRequest) GetFormatOk() (*CatalogsFormat, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Format, true
-}
-
-// SetFormat sets field value
-func (o *CatalogsHotelFeedsCreateRequest) SetFormat(v CatalogsFormat) {
-	o.Format = v
-}
-
-// GetDefaultLocale returns the DefaultLocale field value
-func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale {
-	if o == nil {
-		var ret CatalogsFeedsCreateRequestDefaultLocale
-		return ret
-	}
-
-	return o.DefaultLocale
-}
-
-// GetDefaultLocaleOk returns a tuple with the DefaultLocale field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DefaultLocale, true
-}
-
-// SetDefaultLocale sets field value
-func (o *CatalogsHotelFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale) {
-	o.DefaultLocale = v
+// SetCatalogType sets field value
+func (o *CatalogsHotelFeedsCreateRequest) SetCatalogType(v CatalogsType) {
+	o.CatalogType = v
 }
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -221,6 +163,96 @@ func (o *CatalogsHotelFeedsCreateRequest) UnsetCredentials() {
 	o.Credentials.Unset()
 }
 
+// GetDefaultCurrency returns the DefaultCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrency() NullableCurrency {
+	if o == nil || IsNil(o.DefaultCurrency.Get()) {
+		var ret NullableCurrency
+		return ret
+	}
+	return *o.DefaultCurrency.Get()
+}
+
+// GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrencyOk() (*NullableCurrency, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DefaultCurrency.Get(), o.DefaultCurrency.IsSet()
+}
+
+// HasDefaultCurrency returns a boolean if a field has been set.
+func (o *CatalogsHotelFeedsCreateRequest) HasDefaultCurrency() bool {
+	if o != nil && o.DefaultCurrency.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultCurrency gets a reference to the given NullableNullableCurrency and assigns it to the DefaultCurrency field.
+func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrency(v NullableCurrency) {
+	o.DefaultCurrency.Set(&v)
+}
+// SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
+func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrencyNil() {
+	o.DefaultCurrency.Set(nil)
+}
+
+// UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
+func (o *CatalogsHotelFeedsCreateRequest) UnsetDefaultCurrency() {
+	o.DefaultCurrency.Unset()
+}
+
+// GetDefaultLocale returns the DefaultLocale field value
+func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale {
+	if o == nil {
+		var ret CatalogsFeedsCreateRequestDefaultLocale
+		return ret
+	}
+
+	return o.DefaultLocale
+}
+
+// GetDefaultLocaleOk returns a tuple with the DefaultLocale field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DefaultLocale, true
+}
+
+// SetDefaultLocale sets field value
+func (o *CatalogsHotelFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale) {
+	o.DefaultLocale = v
+}
+
+// GetFormat returns the Format field value
+func (o *CatalogsHotelFeedsCreateRequest) GetFormat() CatalogsFormat {
+	if o == nil {
+		var ret CatalogsFormat
+		return ret
+	}
+
+	return o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelFeedsCreateRequest) GetFormatOk() (*CatalogsFormat, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Format, true
+}
+
+// SetFormat sets field value
+func (o *CatalogsHotelFeedsCreateRequest) SetFormat(v CatalogsFormat) {
+	o.Format = v
+}
+
 // GetLocation returns the Location field value
 func (o *CatalogsHotelFeedsCreateRequest) GetLocation() string {
 	if o == nil {
@@ -243,6 +275,30 @@ func (o *CatalogsHotelFeedsCreateRequest) GetLocationOk() (*string, bool) {
 // SetLocation sets field value
 func (o *CatalogsHotelFeedsCreateRequest) SetLocation(v string) {
 	o.Location = v
+}
+
+// GetName returns the Name field value
+func (o *CatalogsHotelFeedsCreateRequest) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelFeedsCreateRequest) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *CatalogsHotelFeedsCreateRequest) SetName(v string) {
+	o.Name = v
 }
 
 // GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -287,72 +343,6 @@ func (o *CatalogsHotelFeedsCreateRequest) UnsetPreferredProcessingSchedule() {
 	o.PreferredProcessingSchedule.Unset()
 }
 
-// GetCatalogType returns the CatalogType field value
-func (o *CatalogsHotelFeedsCreateRequest) GetCatalogType() CatalogsType {
-	if o == nil {
-		var ret CatalogsType
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *CatalogsHotelFeedsCreateRequest) SetCatalogType(v CatalogsType) {
-	o.CatalogType = v
-}
-
-// GetCatalogId returns the CatalogId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelFeedsCreateRequest) GetCatalogId() string {
-	if o == nil || IsNil(o.CatalogId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.CatalogId.Get()
-}
-
-// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelFeedsCreateRequest) GetCatalogIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CatalogId.Get(), o.CatalogId.IsSet()
-}
-
-// HasCatalogId returns a boolean if a field has been set.
-func (o *CatalogsHotelFeedsCreateRequest) HasCatalogId() bool {
-	if o != nil && o.CatalogId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCatalogId gets a reference to the given NullableString and assigns it to the CatalogId field.
-func (o *CatalogsHotelFeedsCreateRequest) SetCatalogId(v string) {
-	o.CatalogId.Set(&v)
-}
-// SetCatalogIdNil sets the value for CatalogId to be an explicit nil
-func (o *CatalogsHotelFeedsCreateRequest) SetCatalogIdNil() {
-	o.CatalogId.Set(nil)
-}
-
-// UnsetCatalogId ensures that no value is present for CatalogId, not even an explicit nil
-func (o *CatalogsHotelFeedsCreateRequest) UnsetCatalogId() {
-	o.CatalogId.Unset()
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CatalogsHotelFeedsCreateRequest) GetStatus() CatalogsStatus {
 	if o == nil || IsNil(o.Status) {
@@ -395,22 +385,22 @@ func (o CatalogsHotelFeedsCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelFeedsCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DefaultCurrency.IsSet() {
-		toSerialize["default_currency"] = o.DefaultCurrency.Get()
+	if !IsNil(o.CatalogId) {
+		toSerialize["catalog_id"] = o.CatalogId
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["format"] = o.Format
-	toSerialize["default_locale"] = o.DefaultLocale
+	toSerialize["catalog_type"] = o.CatalogType
 	if o.Credentials.IsSet() {
 		toSerialize["credentials"] = o.Credentials.Get()
 	}
+	if o.DefaultCurrency.IsSet() {
+		toSerialize["default_currency"] = o.DefaultCurrency.Get()
+	}
+	toSerialize["default_locale"] = o.DefaultLocale
+	toSerialize["format"] = o.Format
 	toSerialize["location"] = o.Location
+	toSerialize["name"] = o.Name
 	if o.PreferredProcessingSchedule.IsSet() {
 		toSerialize["preferred_processing_schedule"] = o.PreferredProcessingSchedule.Get()
-	}
-	toSerialize["catalog_type"] = o.CatalogType
-	if o.CatalogId.IsSet() {
-		toSerialize["catalog_id"] = o.CatalogId.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -423,11 +413,11 @@ func (o *CatalogsHotelFeedsCreateRequest) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"format",
-		"default_locale",
-		"location",
 		"catalog_type",
+		"default_locale",
+		"format",
+		"location",
+		"name",
 	}
 
 	allProperties := make(map[string]interface{})

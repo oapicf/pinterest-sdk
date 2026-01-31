@@ -9,9 +9,9 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**mediaList**](#medialist) | **GET** /media | List media uploads|
 
 # **mediaCreate**
-> MediaUpload mediaCreate(mediaUploadRequest)
+> MediaUpload mediaCreate(mediaUploadCreate)
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file\'s contents as the request\'s <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file\'s contents as the request\'s `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -19,16 +19,16 @@ Register your intent to upload media  The response includes all of the informati
 import {
     MediaApi,
     Configuration,
-    MediaUploadRequest
+    MediaUploadCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new MediaApi(configuration);
 
-let mediaUploadRequest: MediaUploadRequest; //Create a media upload request
+let mediaUploadCreate: MediaUploadCreate; //
 
 const { status, data } = await apiInstance.mediaCreate(
-    mediaUploadRequest
+    mediaUploadCreate
 );
 ```
 
@@ -36,7 +36,7 @@ const { status, data } = await apiInstance.mediaCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **mediaUploadRequest** | **MediaUploadRequest**| Create a media upload request | |
+| **mediaUploadCreate** | **MediaUploadCreate**|  | |
 
 
 ### Return type
@@ -56,15 +56,21 @@ const { status, data } = await apiInstance.mediaCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **mediaGet**
-> MediaUploadDetails mediaGet()
+> Media mediaGet()
 
-Get details for a registered media upload, including its current status.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -77,7 +83,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MediaApi(configuration);
 
-let mediaId: string; //Media identifier (default to undefined)
+let mediaId: string; //Unique identifier for this media upload. Used to track status and for attaching during Pin creation. (default to undefined)
 
 const { status, data } = await apiInstance.mediaGet(
     mediaId
@@ -88,12 +94,12 @@ const { status, data } = await apiInstance.mediaGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **mediaId** | [**string**] | Media identifier | defaults to undefined|
+| **mediaId** | [**string**] | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | defaults to undefined|
 
 
 ### Return type
 
-**MediaUploadDetails**
+**Media**
 
 ### Authorization
 
@@ -108,16 +114,20 @@ const { status, data } = await apiInstance.mediaGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**404** | Media upload not found |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **mediaList**
 > MediaList200Response mediaList()
 
-List media uploads filtered by given parameters.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -131,7 +141,7 @@ const configuration = new Configuration();
 const apiInstance = new MediaApi(configuration);
 
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 const { status, data } = await apiInstance.mediaList(
     bookmark,
@@ -144,7 +154,7 @@ const { status, data } = await apiInstance.mediaList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 
 
 ### Return type
@@ -164,8 +174,13 @@ const { status, data } = await apiInstance.mediaList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

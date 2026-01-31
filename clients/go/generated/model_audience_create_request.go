@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,10 +27,10 @@ type AudienceCreateRequest struct {
 	// Audience name.
 	Name string `json:"name"`
 	Rule AudienceRule `json:"rule"`
-	// Audience description.
-	Description *string `json:"description,omitempty"`
 	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 	AudienceType AudienceType `json:"audience_type"`
+	// Audience description.
+	Description *string `json:"description,omitempty"`
 }
 
 type _AudienceCreateRequest AudienceCreateRequest
@@ -135,6 +135,30 @@ func (o *AudienceCreateRequest) SetRule(v AudienceRule) {
 	o.Rule = v
 }
 
+// GetAudienceType returns the AudienceType field value
+func (o *AudienceCreateRequest) GetAudienceType() AudienceType {
+	if o == nil {
+		var ret AudienceType
+		return ret
+	}
+
+	return o.AudienceType
+}
+
+// GetAudienceTypeOk returns a tuple with the AudienceType field value
+// and a boolean to check if the value has been set.
+func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AudienceType, true
+}
+
+// SetAudienceType sets field value
+func (o *AudienceCreateRequest) SetAudienceType(v AudienceType) {
+	o.AudienceType = v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AudienceCreateRequest) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -167,30 +191,6 @@ func (o *AudienceCreateRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetAudienceType returns the AudienceType field value
-func (o *AudienceCreateRequest) GetAudienceType() AudienceType {
-	if o == nil {
-		var ret AudienceType
-		return ret
-	}
-
-	return o.AudienceType
-}
-
-// GetAudienceTypeOk returns a tuple with the AudienceType field value
-// and a boolean to check if the value has been set.
-func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AudienceType, true
-}
-
-// SetAudienceType sets field value
-func (o *AudienceCreateRequest) SetAudienceType(v AudienceType) {
-	o.AudienceType = v
-}
-
 func (o AudienceCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -206,10 +206,10 @@ func (o AudienceCreateRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["rule"] = o.Rule
+	toSerialize["audience_type"] = o.AudienceType
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["audience_type"] = o.AudienceType
 	return toSerialize, nil
 }
 

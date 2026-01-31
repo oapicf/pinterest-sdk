@@ -45,20 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Address display
-	 */
-	std::string getDisplay();
-
-	/*! \brief Set Address display
-	 */
-	void setDisplay(std::string  display);
-	/*! \brief Get Purpose for which the address is used, usually Billing or Businness
-	 */
-	std::string getPurpose();
-
-	/*! \brief Set Purpose for which the address is used, usually Billing or Businness
-	 */
-	void setPurpose(std::string  purpose);
 	/*! \brief Get Salesforce id for address
 	 */
 	std::string getAddressId();
@@ -66,6 +52,13 @@ public:
 	/*! \brief Set Salesforce id for address
 	 */
 	void setAddressId(std::string  address_id);
+	/*! \brief Get Address display
+	 */
+	std::string getDisplay();
+
+	/*! \brief Set Address display
+	 */
+	void setDisplay(std::string  display);
 	/*! \brief Get Legal entity for this insertion order
 	 */
 	std::string getOrderLegalEntity();
@@ -73,12 +66,19 @@ public:
 	/*! \brief Set Legal entity for this insertion order
 	 */
 	void setOrderLegalEntity(std::string  order_legal_entity);
+	/*! \brief Get Purpose for which the address is used, usually Billing or Businness
+	 */
+	std::string getPurpose();
+
+	/*! \brief Set Purpose for which the address is used, usually Billing or Businness
+	 */
+	void setPurpose(std::string  purpose);
 
 private:
-	std::string display;
-	std::string purpose;
 	std::string address_id;
+	std::string display;
 	std::string order_legal_entity;
+	std::string purpose;
 	void __init();
 	void __cleanup();
 

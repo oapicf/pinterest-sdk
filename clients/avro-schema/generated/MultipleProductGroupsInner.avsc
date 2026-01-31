@@ -5,15 +5,20 @@
   "name": "MultipleProductGroupsInner",
   "fields": [
     {
-      "name": "name",
-      "type": "string",
-      "doc": ""
-    },
-    {
       "name": "description",
       "type": ["null", "string"],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "Catalog Feed id pertaining to the catalog product group."
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
     },
     {
       "name": "is_featured",
@@ -22,14 +27,14 @@
       "default": false
     },
     {
-      "name": "filters",
-      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "name": "name",
+      "type": "string",
       "doc": ""
     },
     {
-      "name": "feed_id",
+      "name": "catalog_id",
       "type": "string",
-      "doc": "Catalog Feed id pertaining to the catalog product group."
+      "doc": "Catalog id pertaining to the creative assets product group."
     },
     {
       "name": "catalog_type",
@@ -43,19 +48,16 @@
       "doc": ""
     },
     {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the creative assets product group."
-    },
-    {
       "name": "country",
-      "type": "model.Country",
-      "doc": ""
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "locale",
-      "type": "model.CatalogsLocale",
-      "doc": ""
+      "type": ["null", "model.CatalogsLocale"],
+      "doc": "",
+      "default": null
     }
   ]
 

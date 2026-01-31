@@ -15,6 +15,7 @@ The scopes are:
     * `boards:write_secret`
     * `catalogs:read`
     * `catalogs:write`
+    * `msot:write`
     * `pins:read`
     * `pins:read_secret`
     * `pins:write`
@@ -48,6 +49,7 @@ The scopes are:
     * `boards:write_secret`
     * `catalogs:read`
     * `catalogs:write`
+    * `msot:write`
     * `pins:read`
     * `pins:read_secret`
     * `pins:write`

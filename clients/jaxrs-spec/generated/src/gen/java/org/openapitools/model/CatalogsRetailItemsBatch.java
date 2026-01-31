@@ -26,23 +26,25 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing the catalogs retail items batch")
 @JsonTypeName("CatalogsRetailItemsBatch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsBatch   {
   private String batchId;
-  private Date createdTime;
-  private Date completedTime;
-  private BatchOperationStatus status;
   private CatalogsType catalogType;
+  private Date completedTime;
+  private Date createdTime;
   private @Valid List<@Valid ItemProcessingRecord> items = new ArrayList<>();
+  private BatchOperationStatus status;
 
   public CatalogsRetailItemsBatch() {
   }
 
   @JsonCreator
   public CatalogsRetailItemsBatch(
-    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
+    @JsonProperty(required = true, value = "created_time") Date createdTime
   ) {
     this.catalogType = catalogType;
+    this.createdTime = createdTime;
   }
 
   /**
@@ -66,23 +68,22 @@ public class CatalogsRetailItemsBatch   {
   }
 
   /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
-  public CatalogsRetailItemsBatch createdTime(Date createdTime) {
-    this.createdTime = createdTime;
+  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-  @JsonProperty("created_time")
-  public Date getCreatedTime() {
-    return createdTime;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "catalog_type")
+  @NotNull public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  @JsonProperty("created_time")
-  public void setCreatedTime(Date createdTime) {
-    this.createdTime = createdTime;
+  @JsonProperty(required = true, value = "catalog_type")
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
@@ -106,41 +107,23 @@ public class CatalogsRetailItemsBatch   {
   }
 
   /**
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
    **/
-  public CatalogsRetailItemsBatch status(BatchOperationStatus status) {
-    this.status = status;
+  public CatalogsRetailItemsBatch createdTime(Date createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
+  @ApiModelProperty(required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+  @JsonProperty(required = true, value = "created_time")
+  public Date getCreatedTime() {
+    return createdTime;
   }
 
-  @JsonProperty("status")
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
-  }
-
-  /**
-   **/
-  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "catalog_type")
-  @NotNull public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  @JsonProperty(required = true, value = "catalog_type")
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  @JsonProperty(required = true, value = "created_time")
+  public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
   }
 
   /**
@@ -179,6 +162,25 @@ public class CatalogsRetailItemsBatch   {
 
     return this;
   }
+  /**
+   **/
+  public CatalogsRetailItemsBatch status(BatchOperationStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+
+  @JsonProperty("status")
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -190,16 +192,16 @@ public class CatalogsRetailItemsBatch   {
     }
     CatalogsRetailItemsBatch catalogsRetailItemsBatch = (CatalogsRetailItemsBatch) o;
     return Objects.equals(this.batchId, catalogsRetailItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsRetailItemsBatch.createdTime) &&
-        Objects.equals(this.completedTime, catalogsRetailItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsRetailItemsBatch.status) &&
         Objects.equals(this.catalogType, catalogsRetailItemsBatch.catalogType) &&
-        Objects.equals(this.items, catalogsRetailItemsBatch.items);
+        Objects.equals(this.completedTime, catalogsRetailItemsBatch.completedTime) &&
+        Objects.equals(this.createdTime, catalogsRetailItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsRetailItemsBatch.items) &&
+        Objects.equals(this.status, catalogsRetailItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, completedTime, status, catalogType, items);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -208,11 +210,11 @@ public class CatalogsRetailItemsBatch   {
     sb.append("class CatalogsRetailItemsBatch {\n");
     
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

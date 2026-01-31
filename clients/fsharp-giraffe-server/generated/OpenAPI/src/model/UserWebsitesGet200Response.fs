@@ -11,7 +11,7 @@ module UserWebsitesGet200Response =
 
 
   type user_websites_get_200_response = {
-    Items : UserWebsiteSummary[];
     Bookmark : string option;
+    Items : UserWebsiteSummary[];
   }
   //#endregion

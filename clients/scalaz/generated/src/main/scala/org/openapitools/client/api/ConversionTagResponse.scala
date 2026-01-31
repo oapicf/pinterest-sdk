@@ -12,21 +12,22 @@ import org.joda.time.DateTime
 import ConversionTagResponse._
 
 case class ConversionTagResponse (
-  /* Ad account ID. */
-  adAccountId: Option[String],
-/* Tag code snippet. */
+  /* Tag code snippet. */
   codeSnippet: Option[String],
-enhancedMatchStatus: Option[EnhancedMatchStatusType],
+configs: Option[ConversionTagConfigs],
+/* The enhanced match status of the tag */
+  enhancedMatchStatus: Option[EnhancedMatchStatusType],
 /* Tag ID. */
   id: Option[String],
 /* Time for the last event fired. */
   lastFiredTimeMs: Option[BigDecimal],
 /* Conversion tag name. */
-  name: Option[String],
-status: Option[EntityStatus],
+  name: String,
 /* Version number. */
   version: Option[String],
-configs: Option[ConversionTagConfigs])
+/* Ad account ID. */
+  adAccountId: String,
+status: Option[EntityStatus])
 
 object ConversionTagResponse {
   import DateTimeCodecs._

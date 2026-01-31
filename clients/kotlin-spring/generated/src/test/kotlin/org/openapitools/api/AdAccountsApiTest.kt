@@ -2,10 +2,7 @@ package org.openapitools.api
 
 import org.openapitools.model.AdAccount
 import org.openapitools.model.AdAccountAnalyticsResponseInner
-import org.openapitools.model.AdAccountCreateRequest
-import org.openapitools.model.AdAccountCreateSubscriptionRequest
-import org.openapitools.model.AdAccountCreateSubscriptionResponse
-import org.openapitools.model.AdAccountGetSubscriptionResponse
+import org.openapitools.model.AdAccountCreate
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.model.AdAccountsList200Response
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response
@@ -19,10 +16,12 @@ import org.openapitools.model.AdGroupResponse
 import org.openapitools.model.AdGroupUpdateRequest
 import org.openapitools.model.AdGroupsAnalyticsResponseInner
 import org.openapitools.model.AdGroupsList200Response
+import org.openapitools.model.AdPinAnalytics
 import org.openapitools.model.AdPreviewRequest
 import org.openapitools.model.AdPreviewURLResponse
 import org.openapitools.model.AdResponse
 import org.openapitools.model.AdUpdateRequest
+import org.openapitools.model.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.model.AdsAnalyticsAdTargetingType
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest
@@ -34,9 +33,9 @@ import org.openapitools.model.AdsCreditRedeemRequest
 import org.openapitools.model.AdsCreditRedeemResponse
 import org.openapitools.model.AdsCreditsDiscountsGet200Response
 import org.openapitools.model.AdsList200Response
+import org.openapitools.model.AdvertiserDefinedEventsResponse
 import org.openapitools.model.Audience
 import org.openapitools.model.AudienceAccountType
-import org.openapitools.model.AudienceCreateCustomRequest
 import org.openapitools.model.AudienceCreateRequest
 import org.openapitools.model.AudienceDefinitionResponse
 import org.openapitools.model.AudienceInsightType
@@ -45,6 +44,8 @@ import org.openapitools.model.AudienceUpdateRequest
 import org.openapitools.model.AudiencesList200Response
 import org.openapitools.model.BidFloor
 import org.openapitools.model.BidFloorRequest
+import org.openapitools.model.BillingInvoiceDownloadResponse
+import org.openapitools.model.BillingInvoicesGet200Response
 import org.openapitools.model.BillingProfilesGet200Response
 import org.openapitools.model.BulkDownloadRequest
 import org.openapitools.model.BulkDownloadResponse
@@ -63,25 +64,36 @@ import org.openapitools.model.CampaignsList200Response
 import org.openapitools.model.ConversionApiResponse
 import org.openapitools.model.ConversionEventResponse
 import org.openapitools.model.ConversionEvents
+import org.openapitools.model.ConversionMSOTEvents
+import org.openapitools.model.ConversionProductReportRequest
 import org.openapitools.model.ConversionReportAttributionType
+import org.openapitools.model.ConversionTag
 import org.openapitools.model.ConversionTagCreate
-import org.openapitools.model.ConversionTagListResponse
-import org.openapitools.model.ConversionTagResponse
+import org.openapitools.model.ConversionTagsList200Response
 import org.openapitools.model.CreateMMMReportRequest
 import org.openapitools.model.CreateMMMReportResponse
 import org.openapitools.model.CustomerList
 import org.openapitools.model.CustomerListRequest
 import org.openapitools.model.CustomerListUpdateRequest
+import org.openapitools.model.CustomerListUploadCreateRequest
+import org.openapitools.model.CustomerListUploadCreateResponse
+import org.openapitools.model.CustomerListUploadResponse
 import org.openapitools.model.CustomerListsList200Response
 import org.openapitools.model.DetailedError
 import org.openapitools.model.Error
+import org.openapitools.model.EventQualityScore
 import org.openapitools.model.GetMMMReportResponse
 import org.openapitools.model.Granularity
+import org.openapitools.model.IngestionSourceOptions
 import org.openapitools.model.KeywordUpdateBody
 import org.openapitools.model.KeywordsGet200Response
 import org.openapitools.model.KeywordsMetricsArrayResponse
 import org.openapitools.model.KeywordsRequest
 import org.openapitools.model.KeywordsResponse
+import org.openapitools.model.LabelCreateRequest
+import org.openapitools.model.LabelUpdateRequest
+import org.openapitools.model.LabelsList200Response
+import org.openapitools.model.LabelsResponse
 import org.openapitools.model.LeadFormArrayResponse
 import org.openapitools.model.LeadFormCreateRequest
 import org.openapitools.model.LeadFormResponse
@@ -89,19 +101,30 @@ import org.openapitools.model.LeadFormTestRequest
 import org.openapitools.model.LeadFormTestResponse
 import org.openapitools.model.LeadFormUpdateRequest
 import org.openapitools.model.LeadFormsList200Response
+import org.openapitools.model.LeadSubscription
+import org.openapitools.model.LeadSubscriptionPostParamsCreate
 import org.openapitools.model.LeadsExportCreateRequest
 import org.openapitools.model.LeadsExportCreateResponse
 import org.openapitools.model.LeadsExportResponseData
+import org.openapitools.model.LookbackPeriodOptions
 import org.openapitools.model.MatchType
 import org.openapitools.model.MetricsResponse
 import org.openapitools.model.OrderLine
 import org.openapitools.model.OrderLinesList200Response
 import org.openapitools.model.PageVisitConversionTagsGet200Response
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.model.ProductGroupPromotion
 import org.openapitools.model.ProductGroupPromotionCreateRequest
 import org.openapitools.model.ProductGroupPromotionResponse
 import org.openapitools.model.ProductGroupPromotionUpdateRequest
 import org.openapitools.model.ProductGroupPromotionsList200Response
+import org.openapitools.model.PromotionCreateRequest
+import org.openapitools.model.PromotionResponse
+import org.openapitools.model.PromotionUpdateRequest
+import org.openapitools.model.PromotionsList200Response
+import org.openapitools.model.PromotionsResponse
+import org.openapitools.model.ReportingTimeZone
 import org.openapitools.model.SSIOAccountResponse
 import org.openapitools.model.SSIOCreateInsertionOrderRequest
 import org.openapitools.model.SSIOCreateInsertionOrderResponse
@@ -110,12 +133,14 @@ import org.openapitools.model.SSIOEditInsertionOrderResponse
 import org.openapitools.model.SSIOInsertionOrderStatusResponse
 import org.openapitools.model.SharedAudience
 import org.openapitools.model.SharedAudienceResponse
+import org.openapitools.model.SourcePlatformOptions
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response
 import org.openapitools.model.TargetingTemplateCreate
 import org.openapitools.model.TargetingTemplateGetResponseData
 import org.openapitools.model.TargetingTemplateList200Response
 import org.openapitools.model.TargetingTemplateUpdateRequest
+import org.openapitools.model.TemplateBasedReport
 import org.openapitools.model.TemplatesList200Response
 import org.openapitools.model.TermsOfService
 import org.junit.jupiter.api.Test
@@ -142,8 +167,9 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<List<AdAccountAnalyticsResponseInner>> = api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        val response: ResponseEntity<List<AdAccountAnalyticsResponseInner>> = api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
 
         // TODO: test validations
     }
@@ -166,9 +192,10 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
-        val attributionTypes: ConversionReportAttributionType? = TODO()
+        val attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<MetricsResponse> = api.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+        val response: ResponseEntity<MetricsResponse> = api.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
 
         // TODO: test validations
     }
@@ -200,9 +227,9 @@ class AdAccountsApiTest {
      */
     @Test
     fun adAccountsCreateTest() {
-        val adAccountCreateRequest: AdAccountCreateRequest = TODO()
+        val adAccountCreate: AdAccountCreate = TODO()
         
-        val response: ResponseEntity<AdAccount> = api.adAccountsCreate(adAccountCreateRequest)
+        val response: ResponseEntity<AdAccount> = api.adAccountsCreate(adAccountCreate)
 
         // TODO: test validations
     }
@@ -230,11 +257,11 @@ class AdAccountsApiTest {
      */
     @Test
     fun adAccountsListTest() {
+        val includeSharedAccounts: kotlin.Boolean = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
-        val includeSharedAccounts: kotlin.Boolean = TODO()
         
-        val response: ResponseEntity<AdAccountsList200Response> = api.adAccountsList(bookmark, pageSize, includeSharedAccounts)
+        val response: ResponseEntity<AdAccountsList200Response> = api.adAccountsList(includeSharedAccounts, bookmark, pageSize)
 
         // TODO: test validations
     }
@@ -266,7 +293,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val subscriptionId: kotlin.String = TODO()
         
-        val response: ResponseEntity<AdAccountGetSubscriptionResponse> = api.adAccountsSubscriptionsGetById(adAccountId, subscriptionId)
+        val response: ResponseEntity<LeadSubscription> = api.adAccountsSubscriptionsGetById(adAccountId, subscriptionId)
 
         // TODO: test validations
     }
@@ -280,10 +307,10 @@ class AdAccountsApiTest {
     @Test
     fun adAccountsSubscriptionsGetListTest() {
         val adAccountId: kotlin.String = TODO()
-        val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        val pageSize: kotlin.Int = TODO()
         
-        val response: ResponseEntity<AdAccountsSubscriptionsGetList200Response> = api.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
+        val response: ResponseEntity<AdAccountsSubscriptionsGetList200Response> = api.adAccountsSubscriptionsGetList(adAccountId, bookmark, pageSize)
 
         // TODO: test validations
     }
@@ -297,9 +324,9 @@ class AdAccountsApiTest {
     @Test
     fun adAccountsSubscriptionsPostTest() {
         val adAccountId: kotlin.String = TODO()
-        val adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest = TODO()
+        val leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate = TODO()
         
-        val response: ResponseEntity<AdAccountCreateSubscriptionResponse> = api.adAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest)
+        val response: ResponseEntity<LeadSubscription> = api.adAccountsSubscriptionsPost(adAccountId, leadSubscriptionPostParamsCreate)
 
         // TODO: test validations
     }
@@ -322,8 +349,10 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        val aggregateReportRows: kotlin.Boolean = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<List<AdGroupsAnalyticsResponseInner>> = api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        val response: ResponseEntity<List<AdGroupsAnalyticsResponseInner>> = api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
 
         // TODO: test validations
     }
@@ -337,7 +366,7 @@ class AdAccountsApiTest {
     @Test
     fun adGroupsAudienceSizingTest() {
         val adAccountId: kotlin.String = TODO()
-        val adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest? = TODO()
+        val adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest = TODO()
         
         val response: ResponseEntity<AdGroupAudienceSizingResponse> = api.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingRequest)
 
@@ -426,16 +455,17 @@ class AdAccountsApiTest {
         val adGroupIds: kotlin.collections.List<kotlin.String> = TODO()
         val startDate: java.time.LocalDate = TODO()
         val endDate: java.time.LocalDate = TODO()
-        val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType> = TODO()
+        val targetingTypes: kotlin.collections.List<AdsAnalyticsAdGroupTargetingType> = TODO()
         val columns: kotlin.collections.List<kotlin.String> = TODO()
         val granularity: Granularity = TODO()
         val clickWindowDays: kotlin.Int = TODO()
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
-        val attributionTypes: ConversionReportAttributionType? = TODO()
+        val attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<MetricsResponse> = api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+        val response: ResponseEntity<MetricsResponse> = api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
 
         // TODO: test validations
     }
@@ -452,6 +482,31 @@ class AdAccountsApiTest {
         val adGroupUpdateRequest: kotlin.collections.List<AdGroupUpdateRequest> = TODO()
         
         val response: ResponseEntity<AdGroupArrayResponse> = api.adGroupsUpdate(adAccountId, adGroupUpdateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.adPinsAnalytics
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun adPinsAnalyticsTest() {
+        val adAccountId: kotlin.String = TODO()
+        val campaignId: kotlin.String = TODO()
+        val pinIds: kotlin.collections.List<kotlin.String> = TODO()
+        val startDate: java.time.LocalDate = TODO()
+        val endDate: java.time.LocalDate = TODO()
+        val columns: kotlin.collections.List<kotlin.String> = TODO()
+        val granularity: Granularity = TODO()
+        val clickWindowDays: kotlin.Int = TODO()
+        val engagementWindowDays: kotlin.Int = TODO()
+        val viewWindowDays: kotlin.Int = TODO()
+        val conversionReportTime: kotlin.String = TODO()
+        
+        val response: ResponseEntity<List<AdPinAnalytics>> = api.adPinsAnalytics(adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
 
         // TODO: test validations
     }
@@ -491,9 +546,10 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
-        val attributionTypes: ConversionReportAttributionType? = TODO()
+        val attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<MetricsResponse> = api.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+        val response: ResponseEntity<MetricsResponse> = api.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
 
         // TODO: test validations
     }
@@ -518,8 +574,9 @@ class AdAccountsApiTest {
         val conversionReportTime: kotlin.String = TODO()
         val pinIds: kotlin.collections.List<kotlin.String>? = TODO()
         val campaignIds: kotlin.collections.List<kotlin.String>? = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<List<AdsAnalyticsResponseInner>> = api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
+        val response: ResponseEntity<List<AdsAnalyticsResponseInner>> = api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone)
 
         // TODO: test validations
     }
@@ -628,6 +685,37 @@ class AdAccountsApiTest {
     }
 
     /**
+     * To test AdAccountsApiController.advertiserDefinedEventsGet
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun advertiserDefinedEventsGetTest() {
+        val adAccountId: kotlin.String = TODO()
+        
+        val response: ResponseEntity<AdvertiserDefinedEventsResponse> = api.advertiserDefinedEventsGet(adAccountId)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.analyticsCreateConversionProductReport
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun analyticsCreateConversionProductReportTest() {
+        val adAccountId: kotlin.String = TODO()
+        val conversionProductReportRequest: ConversionProductReportRequest = TODO()
+        
+        val response: ResponseEntity<AdsAnalyticsCreateAsyncResponse> = api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportRequest)
+
+        // TODO: test validations
+    }
+
+    /**
      * To test AdAccountsApiController.analyticsCreateMmmReport
      *
      * @throws ApiException
@@ -673,7 +761,23 @@ class AdAccountsApiTest {
         val endDate: java.time.LocalDate? = TODO()
         val granularity: Granularity? = TODO()
         
-        val response: ResponseEntity<AdsAnalyticsCreateAsyncResponse> = api.analyticsCreateTemplateReport(adAccountId, templateId, startDate, endDate, granularity)
+        val response: ResponseEntity<TemplateBasedReport> = api.analyticsCreateTemplateReport(adAccountId, templateId, startDate, endDate, granularity)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.analyticsGetConversionProductReport
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun analyticsGetConversionProductReportTest() {
+        val adAccountId: kotlin.String = TODO()
+        val token: kotlin.String = TODO()
+        
+        val response: ResponseEntity<AdsAnalyticsGetAsyncResponse> = api.analyticsGetConversionProductReport(adAccountId, token)
 
         // TODO: test validations
     }
@@ -758,22 +862,6 @@ class AdAccountsApiTest {
     }
 
     /**
-     * To test AdAccountsApiController.audiencesCreateCustom
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    fun audiencesCreateCustomTest() {
-        val adAccountId: kotlin.String = TODO()
-        val audienceCreateCustomRequest: AudienceCreateCustomRequest = TODO()
-        
-        val response: ResponseEntity<Audience> = api.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
-
-        // TODO: test validations
-    }
-
-    /**
      * To test AdAccountsApiController.audiencesGet
      *
      * @throws ApiException
@@ -818,9 +906,48 @@ class AdAccountsApiTest {
     fun audiencesUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val audienceId: kotlin.String = TODO()
-        val audienceUpdateRequest: AudienceUpdateRequest? = TODO()
+        val audienceUpdateRequest: AudienceUpdateRequest = TODO()
         
         val response: ResponseEntity<Audience> = api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.billingInvoiceDownloadGet
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun billingInvoiceDownloadGetTest() {
+        val adAccountId: kotlin.String = TODO()
+        val billingInvoiceId: kotlin.String = TODO()
+        
+        val response: ResponseEntity<BillingInvoiceDownloadResponse> = api.billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.billingInvoicesGet
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun billingInvoicesGetTest() {
+        val adAccountId: kotlin.String = TODO()
+        val bookmark: kotlin.String? = TODO()
+        val pageSize: kotlin.Int = TODO()
+        val sort: kotlin.String = TODO()
+        val order: kotlin.String? = TODO()
+        val status: kotlin.String? = TODO()
+        val documentType: kotlin.String? = TODO()
+        val startDueDate: java.time.LocalDate? = TODO()
+        val endDueDate: java.time.LocalDate? = TODO()
+        
+        val response: ResponseEntity<BillingInvoicesGet200Response> = api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
 
         // TODO: test validations
     }
@@ -911,9 +1038,10 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
-        val attributionTypes: ConversionReportAttributionType? = TODO()
+        val attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<MetricsResponse> = api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+        val response: ResponseEntity<MetricsResponse> = api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
 
         // TODO: test validations
     }
@@ -936,8 +1064,10 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        val aggregateReportRows: kotlin.Boolean = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<List<CampaignsAnalyticsResponseInner>> = api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        val response: ResponseEntity<List<CampaignsAnalyticsResponseInner>> = api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
 
         // TODO: test validations
     }
@@ -1011,6 +1141,24 @@ class AdAccountsApiTest {
     }
 
     /**
+     * To test AdAccountsApiController.conversionEqsList
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun conversionEqsListTest() {
+        val lookbackPeriod: LookbackPeriodOptions = TODO()
+        val adAccountId: kotlin.String = TODO()
+        val sourcePlatform: SourcePlatformOptions? = TODO()
+        val ingestionSource: IngestionSourceOptions? = TODO()
+        
+        val response: ResponseEntity<List<EventQualityScore>> = api.conversionEqsList(lookbackPeriod, adAccountId, sourcePlatform, ingestionSource)
+
+        // TODO: test validations
+    }
+
+    /**
      * To test AdAccountsApiController.conversionTagsCreate
      *
      * @throws ApiException
@@ -1021,7 +1169,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val conversionTagCreate: ConversionTagCreate = TODO()
         
-        val response: ResponseEntity<ConversionTagResponse> = api.conversionTagsCreate(adAccountId, conversionTagCreate)
+        val response: ResponseEntity<ConversionTag> = api.conversionTagsCreate(adAccountId, conversionTagCreate)
 
         // TODO: test validations
     }
@@ -1037,7 +1185,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val conversionTagId: kotlin.String = TODO()
         
-        val response: ResponseEntity<ConversionTagResponse> = api.conversionTagsGet(adAccountId, conversionTagId)
+        val response: ResponseEntity<ConversionTag> = api.conversionTagsGet(adAccountId, conversionTagId)
 
         // TODO: test validations
     }
@@ -1053,7 +1201,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val filterDeleted: kotlin.Boolean = TODO()
         
-        val response: ResponseEntity<ConversionTagListResponse> = api.conversionTagsList(adAccountId, filterDeleted)
+        val response: ResponseEntity<ConversionTagsList200Response> = api.conversionTagsList(adAccountId, filterDeleted)
 
         // TODO: test validations
     }
@@ -1071,6 +1219,57 @@ class AdAccountsApiTest {
         val keywords: kotlin.collections.List<kotlin.String> = TODO()
         
         val response: ResponseEntity<KeywordsMetricsArrayResponse> = api.countryKeywordsMetricsGet(adAccountId, countryCode, keywords)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.customerListUploadsCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun customerListUploadsCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val customerListId: kotlin.String = TODO()
+        val customerListUploadCreateRequest: CustomerListUploadCreateRequest = TODO()
+        
+        val response: ResponseEntity<CustomerListUploadCreateResponse> = api.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.customerListUploadsGet
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun customerListUploadsGetTest() {
+        val adAccountId: kotlin.String = TODO()
+        val customerListId: kotlin.String = TODO()
+        val customerListUploadId: kotlin.String = TODO()
+        
+        val response: ResponseEntity<CustomerListUploadResponse> = api.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.customerListUploadsRun
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun customerListUploadsRunTest() {
+        val adAccountId: kotlin.String = TODO()
+        val customerListId: kotlin.String = TODO()
+        val customerListUploadId: kotlin.String = TODO()
+        
+        val response: ResponseEntity<CustomerListUploadResponse> = api.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
 
         // TODO: test validations
     }
@@ -1186,11 +1385,12 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val campaignId: kotlin.String? = TODO()
         val adGroupId: kotlin.String? = TODO()
+        val adGroupIds: kotlin.collections.List<kotlin.String>? = TODO()
         val matchTypes: kotlin.collections.List<MatchType>? = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
         
-        val response: ResponseEntity<KeywordsGet200Response> = api.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark)
+        val response: ResponseEntity<KeywordsGet200Response> = api.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark)
 
         // TODO: test validations
     }
@@ -1207,6 +1407,59 @@ class AdAccountsApiTest {
         val keywordUpdateBody: KeywordUpdateBody = TODO()
         
         val response: ResponseEntity<KeywordsResponse> = api.keywordsUpdate(adAccountId, keywordUpdateBody)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.labelsCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun labelsCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val labelCreateRequest: LabelCreateRequest = TODO()
+        
+        val response: ResponseEntity<LabelsResponse> = api.labelsCreate(adAccountId, labelCreateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.labelsList
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun labelsListTest() {
+        val adAccountId: kotlin.String = TODO()
+        val campaignIds: kotlin.collections.List<kotlin.String>? = TODO()
+        val labelIds: kotlin.collections.List<kotlin.String>? = TODO()
+        val entityStatuses: kotlin.collections.List<kotlin.String> = TODO()
+        val labelTypes: kotlin.collections.List<kotlin.String> = TODO()
+        val pageSize: kotlin.Int = TODO()
+        val bookmark: kotlin.String? = TODO()
+        
+        val response: ResponseEntity<LabelsList200Response> = api.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.labelsUpdate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun labelsUpdateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val labelUpdateRequest: LabelUpdateRequest = TODO()
+        
+        val response: ResponseEntity<LabelsResponse> = api.labelsUpdate(adAccountId, labelUpdateRequest)
 
         // TODO: test validations
     }
@@ -1327,6 +1580,22 @@ class AdAccountsApiTest {
     }
 
     /**
+     * To test AdAccountsApiController.msotEventsCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun msotEventsCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val conversionMSOTEvents: ConversionMSOTEvents = TODO()
+        
+        val response: ResponseEntity<Unit> = api.msotEventsCreate(adAccountId, conversionMSOTEvents)
+
+        // TODO: test validations
+    }
+
+    /**
      * To test AdAccountsApiController.ocpmEligibleConversionTagsGet
      *
      * @throws ApiException
@@ -1420,7 +1689,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val productGroupPromotionId: kotlin.String = TODO()
         
-        val response: ResponseEntity<ProductGroupPromotionResponse> = api.productGroupPromotionsGet(adAccountId, productGroupPromotionId)
+        val response: ResponseEntity<ProductGroupPromotion> = api.productGroupPromotionsGet(adAccountId, productGroupPromotionId)
 
         // TODO: test validations
     }
@@ -1480,8 +1749,91 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        val reportingTimezone: ReportingTimeZone? = TODO()
         
-        val response: ResponseEntity<List<ProductGroupAnalyticsResponseInner>> = api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        val response: ResponseEntity<List<ProductGroupAnalyticsResponseInner>> = api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.promotionsCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun promotionsCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val promotionCreateRequest: kotlin.collections.List<PromotionCreateRequest> = TODO()
+        
+        val response: ResponseEntity<PromotionsResponse> = api.promotionsCreate(adAccountId, promotionCreateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.promotionsDelete
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun promotionsDeleteTest() {
+        val adAccountId: kotlin.String = TODO()
+        val promotionId: kotlin.String = TODO()
+        
+        val response: ResponseEntity<Unit> = api.promotionsDelete(adAccountId, promotionId)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.promotionsGet
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun promotionsGetTest() {
+        val adAccountId: kotlin.String = TODO()
+        val promotionId: kotlin.String = TODO()
+        
+        val response: ResponseEntity<PromotionResponse> = api.promotionsGet(adAccountId, promotionId)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.promotionsList
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun promotionsListTest() {
+        val adAccountId: kotlin.String = TODO()
+        val pageSize: kotlin.Int = TODO()
+        val order: kotlin.String? = TODO()
+        val bookmark: kotlin.String? = TODO()
+        
+        val response: ResponseEntity<PromotionsList200Response> = api.promotionsList(adAccountId, pageSize, order, bookmark)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.promotionsUpdate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun promotionsUpdateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val promotionUpdateRequest: kotlin.collections.List<PromotionUpdateRequest> = TODO()
+        
+        val response: ResponseEntity<PromotionsResponse> = api.promotionsUpdate(adAccountId, promotionUpdateRequest)
 
         // TODO: test validations
     }

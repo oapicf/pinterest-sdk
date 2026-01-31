@@ -5,6 +5,13 @@ context("Test AdsAnalyticsCreateAsyncResponse")
 
 model_instance <- AdsAnalyticsCreateAsyncResponse$new()
 
+test_that("message", {
+  # tests for the property `message` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+})
+
 test_that("report_status", {
   # tests for the property `report_status` (BulkReportingJobStatus)
 
@@ -17,11 +24,4 @@ test_that("token", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`token`, "EXPECTED_RESULT")
-})
-
-test_that("message", {
-  # tests for the property `message` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })

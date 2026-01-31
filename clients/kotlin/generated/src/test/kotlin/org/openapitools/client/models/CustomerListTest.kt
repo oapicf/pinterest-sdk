@@ -37,6 +37,12 @@ class CustomerListTest : ShouldSpec() {
             //modelInstance.createdTime shouldBe ("TODO")
         }
 
+        // to test the property `exceptions` - Customer list errors
+        should("test exceptions") {
+            // uncomment below to test the property
+            //modelInstance.exceptions shouldBe ("TODO")
+        }
+
         // to test the property `id` - Customer list ID.
         should("test id") {
             // uncomment below to test the property
@@ -83,12 +89,6 @@ class CustomerListTest : ShouldSpec() {
         should("test updatedTime") {
             // uncomment below to test the property
             //modelInstance.updatedTime shouldBe ("TODO")
-        }
-
-        // to test the property `exceptions` - Customer list errors
-        should("test exceptions") {
-            // uncomment below to test the property
-            //modelInstance.exceptions shouldBe ("TODO")
         }
 
     }

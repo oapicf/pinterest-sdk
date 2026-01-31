@@ -3,15 +3,16 @@ package org.openapitools.client.model
 
 
 case class TargetingTemplateUpdateRequest (
-    _operationType: String,
     /* Targeting template ID */
-    _id: String
+    _id: String,
+    _operationType: String,
+    _targetingAttributes: Option[TargetingSpec]
 )
 object TargetingTemplateUpdateRequest {
-    def toStringBody(var_operationType: Object, var_id: Object) =
+    def toStringBody(var_id: Object, var_operationType: Object, var_targetingAttributes: Object) =
         s"""
         | {
-        | "operationType":$var_operationType,"id":$var_id
+        | "id":$var_id,"operationType":$var_operationType,"targetingAttributes":$var_targetingAttributes
         | }
         """.stripMargin
 }

@@ -16,32 +16,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UserSummary")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserSummary   {
-  private String username;
   private String type;
+  private String username;
 
   public UserSummary() {
-  }
-
-  /**
-   * Username
-   **/
-  public UserSummary username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "username", value = "Username")
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-
-  @JsonProperty("username")
-  public void setUsername(String username) {
-    this.username = username;
   }
 
   /**
@@ -64,6 +44,26 @@ public class UserSummary   {
     this.type = type;
   }
 
+  /**
+   * Username
+   **/
+  public UserSummary username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "username", value = "Username")
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+
+  @JsonProperty("username")
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -74,13 +74,13 @@ public class UserSummary   {
       return false;
     }
     UserSummary userSummary = (UserSummary) o;
-    return Objects.equals(this.username, userSummary.username) &&
-        Objects.equals(this.type, userSummary.type);
+    return Objects.equals(this.type, userSummary.type) &&
+        Objects.equals(this.username, userSummary.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, type);
+    return Objects.hash(type, username);
   }
 
   @Override
@@ -88,8 +88,8 @@ public class UserSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserSummary {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

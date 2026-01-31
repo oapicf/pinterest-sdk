@@ -43,7 +43,7 @@ pub enum SearchUserBoardsSlashGetResponse {
 pub enum SearchUserPinsSlashListResponse {
     /// Success
     Status200_Success
-    (models::PinsList200Response)
+    (models::SearchUserPinsList200Response)
     ,
     /// User not found
     Status404_UserNotFound

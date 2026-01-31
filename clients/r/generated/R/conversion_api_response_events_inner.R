@@ -7,8 +7,8 @@
 #' @title ConversionApiResponseEventsInner
 #' @description ConversionApiResponseEventsInner Class
 #' @format An \code{R6Class} generator object
-#' @field status Whether the event was processed successfully. character
 #' @field error_message Error message containing more information about why the event failed to be processed. character [optional]
+#' @field status Whether the event was processed successfully. character
 #' @field warning_message Warning messages about any fields in the event which are not standard. These are not critical to event processing. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,8 +16,8 @@
 ConversionApiResponseEventsInner <- R6::R6Class(
   "ConversionApiResponseEventsInner",
   public = list(
-    `status` = NULL,
     `error_message` = NULL,
+    `status` = NULL,
     `warning_message` = NULL,
 
     #' @description
@@ -82,13 +82,13 @@ ConversionApiResponseEventsInner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ConversionApiResponseEventsInnerObject <- list()
-      if (!is.null(self$`status`)) {
-        ConversionApiResponseEventsInnerObject[["status"]] <-
-          self$`status`
-      }
       if (!is.null(self$`error_message`)) {
         ConversionApiResponseEventsInnerObject[["error_message"]] <-
           self$`error_message`
+      }
+      if (!is.null(self$`status`)) {
+        ConversionApiResponseEventsInnerObject[["status"]] <-
+          self$`status`
       }
       if (!is.null(self$`warning_message`)) {
         ConversionApiResponseEventsInnerObject[["warning_message"]] <-
@@ -104,14 +104,14 @@ ConversionApiResponseEventsInner <- R6::R6Class(
     #' @return the instance of ConversionApiResponseEventsInner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`error_message`)) {
+        self$`error_message` <- this_object$`error_message`
+      }
       if (!is.null(this_object$`status`)) {
         if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("failed", "processed"))) {
           stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"failed\", \"processed\".", sep = ""))
         }
         self$`status` <- this_object$`status`
-      }
-      if (!is.null(this_object$`error_message`)) {
-        self$`error_message` <- this_object$`error_message`
       }
       if (!is.null(this_object$`warning_message`)) {
         self$`warning_message` <- this_object$`warning_message`
@@ -137,11 +137,11 @@ ConversionApiResponseEventsInner <- R6::R6Class(
     #' @return the instance of ConversionApiResponseEventsInner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`error_message` <- this_object$`error_message`
       if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("failed", "processed"))) {
         stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"failed\", \"processed\".", sep = ""))
       }
       self$`status` <- this_object$`status`
-      self$`error_message` <- this_object$`error_message`
       self$`warning_message` <- this_object$`warning_message`
       self
     },

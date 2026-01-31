@@ -16,10 +16,10 @@ module QuizPinData =
     Questions : QuizPinQuestion[];
     [<JsonProperty(PropertyName = "results")>]
     Results : QuizPinResult[];
-    [<JsonProperty(PropertyName = "tie_breaker_type")>]
-    TieBreakerType : string;
     [<JsonProperty(PropertyName = "tie_breaker_custom_result")>]
     TieBreakerCustomResult : QuizPinResult;
+    [<JsonProperty(PropertyName = "tie_breaker_type")>]
+    TieBreakerType : string;
   }
 
   //#endregion

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -975,6 +975,7 @@ func (c *UserAccountAPIController) WebsiteVerificationGet(w http.ResponseWriter,
 }
 
 // UserAccountFollowedInterests - List following interests
+// Deprecated
 func (c *UserAccountAPIController) UserAccountFollowedInterests(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)

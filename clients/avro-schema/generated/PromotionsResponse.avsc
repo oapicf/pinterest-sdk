@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PromotionsResponse",
+  "fields": [
+    {
+      "name": "promotions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PromotionArrayElement"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

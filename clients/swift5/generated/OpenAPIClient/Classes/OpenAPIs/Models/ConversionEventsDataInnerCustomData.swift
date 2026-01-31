@@ -13,77 +13,92 @@ import AnyCodable
 /** Object containing other custom data. */
 public struct ConversionEventsDataInnerCustomData: Codable, JSONEncodable, Hashable {
 
-    /** The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA. */
-    public var currency: String?
-    /** Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value. */
-    public var value: String?
+    /** The brand of the content associated with the event. */
+    public var contentBrand: String?
+    /** The category of the content associated with the event. */
+    public var contentCategory: String?
     /** List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). */
     public var contentIds: [String]?
     /** The name of the page or product associated with the event. */
     public var contentName: String?
-    /** The category of the content associated with the event. */
-    public var contentCategory: String?
-    /** The brand of the content associated with the event. */
-    public var contentBrand: String?
     /** A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). */
     public var contents: [ConversionEventsDataInnerCustomDataContentsInner]?
-    /** Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). */
-    public var numItems: Int64?
-    /** The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest. */
-    public var orderId: String?
-    /** The search string related to the user conversion event. */
-    public var searchString: String?
-    /** Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up. */
-    public var optOutType: String?
+    /** The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA. */
+    public var currency: String?
+    /** Only use when instructed. */
+    public var externalMeasurementId: String?
+    /** Only use when instructed. */
+    public var externalMeasurementVendorId: Int?
     /** Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided. */
     public var np: String?
+    /** Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). */
+    public var numItems: Int64?
+    /** Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer's guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter. */
+    public var optOutType: String?
+    /** The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest. */
+    public var orderId: String?
+    /** Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double. */
+    public var predictedLtv: String?
+    /** The search string related to the user conversion event. */
+    public var searchString: String?
+    /** Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value. */
+    public var value: String?
 
-    public init(currency: String? = nil, value: String? = nil, contentIds: [String]? = nil, contentName: String? = nil, contentCategory: String? = nil, contentBrand: String? = nil, contents: [ConversionEventsDataInnerCustomDataContentsInner]? = nil, numItems: Int64? = nil, orderId: String? = nil, searchString: String? = nil, optOutType: String? = nil, np: String? = nil) {
-        self.currency = currency
-        self.value = value
+    public init(contentBrand: String? = nil, contentCategory: String? = nil, contentIds: [String]? = nil, contentName: String? = nil, contents: [ConversionEventsDataInnerCustomDataContentsInner]? = nil, currency: String? = nil, externalMeasurementId: String? = nil, externalMeasurementVendorId: Int? = nil, np: String? = nil, numItems: Int64? = nil, optOutType: String? = nil, orderId: String? = nil, predictedLtv: String? = nil, searchString: String? = nil, value: String? = nil) {
+        self.contentBrand = contentBrand
+        self.contentCategory = contentCategory
         self.contentIds = contentIds
         self.contentName = contentName
-        self.contentCategory = contentCategory
-        self.contentBrand = contentBrand
         self.contents = contents
-        self.numItems = numItems
-        self.orderId = orderId
-        self.searchString = searchString
-        self.optOutType = optOutType
+        self.currency = currency
+        self.externalMeasurementId = externalMeasurementId
+        self.externalMeasurementVendorId = externalMeasurementVendorId
         self.np = np
+        self.numItems = numItems
+        self.optOutType = optOutType
+        self.orderId = orderId
+        self.predictedLtv = predictedLtv
+        self.searchString = searchString
+        self.value = value
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case currency
-        case value
+        case contentBrand = "content_brand"
+        case contentCategory = "content_category"
         case contentIds = "content_ids"
         case contentName = "content_name"
-        case contentCategory = "content_category"
-        case contentBrand = "content_brand"
         case contents
-        case numItems = "num_items"
-        case orderId = "order_id"
-        case searchString = "search_string"
-        case optOutType = "opt_out_type"
+        case currency
+        case externalMeasurementId = "external_measurement_id"
+        case externalMeasurementVendorId = "external_measurement_vendor_id"
         case np
+        case numItems = "num_items"
+        case optOutType = "opt_out_type"
+        case orderId = "order_id"
+        case predictedLtv = "predicted_ltv"
+        case searchString = "search_string"
+        case value
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(currency, forKey: .currency)
-        try container.encodeIfPresent(value, forKey: .value)
+        try container.encodeIfPresent(contentBrand, forKey: .contentBrand)
+        try container.encodeIfPresent(contentCategory, forKey: .contentCategory)
         try container.encodeIfPresent(contentIds, forKey: .contentIds)
         try container.encodeIfPresent(contentName, forKey: .contentName)
-        try container.encodeIfPresent(contentCategory, forKey: .contentCategory)
-        try container.encodeIfPresent(contentBrand, forKey: .contentBrand)
         try container.encodeIfPresent(contents, forKey: .contents)
-        try container.encodeIfPresent(numItems, forKey: .numItems)
-        try container.encodeIfPresent(orderId, forKey: .orderId)
-        try container.encodeIfPresent(searchString, forKey: .searchString)
-        try container.encodeIfPresent(optOutType, forKey: .optOutType)
+        try container.encodeIfPresent(currency, forKey: .currency)
+        try container.encodeIfPresent(externalMeasurementId, forKey: .externalMeasurementId)
+        try container.encodeIfPresent(externalMeasurementVendorId, forKey: .externalMeasurementVendorId)
         try container.encodeIfPresent(np, forKey: .np)
+        try container.encodeIfPresent(numItems, forKey: .numItems)
+        try container.encodeIfPresent(optOutType, forKey: .optOutType)
+        try container.encodeIfPresent(orderId, forKey: .orderId)
+        try container.encodeIfPresent(predictedLtv, forKey: .predictedLtv)
+        try container.encodeIfPresent(searchString, forKey: .searchString)
+        try container.encodeIfPresent(value, forKey: .value)
     }
 }
 

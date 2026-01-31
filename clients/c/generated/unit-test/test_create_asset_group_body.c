@@ -22,14 +22,14 @@ create_asset_group_body_t* instantiate_create_asset_group_body(int include_optio
   create_asset_group_body_t* create_asset_group_body = NULL;
   if (include_optional) {
     create_asset_group_body = create_asset_group_body_create(
-      "Canada Ad Accounts",
       "Asset groups that has ad accounts shared in Canada",
+      "Canada Ad Accounts",
       ["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"]
     );
   } else {
     create_asset_group_body = create_asset_group_body_create(
-      "Canada Ad Accounts",
       "Asset groups that has ad accounts shared in Canada",
+      "Canada Ad Accounts",
       ["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"]
     );
   }

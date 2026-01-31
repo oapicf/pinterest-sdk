@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class BulkUpsertStatusResponse (
-    _status: Option[BulkUpsertStatus],
-    _resultUrl: Option[String]
+    _resultUrl: Option[String],
+    _status: Option[BulkUpsertStatus]
 )
 object BulkUpsertStatusResponse {
-    def toStringBody(var_status: Object, var_resultUrl: Object) =
+    def toStringBody(var_resultUrl: Object, var_status: Object) =
         s"""
         | {
-        | "status":$var_status,"resultUrl":$var_resultUrl
+        | "resultUrl":$var_resultUrl,"status":$var_status
         | }
         """.stripMargin
 }

@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * Values: ADMIN,ANALYST,FINANCE_MANAGER,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,PROFILE_PUBLISHER
+ * Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,CONSUMER_USER
  */
 
 @JsonClass(generateAdapter = false)
@@ -37,6 +37,12 @@ enum class Permissions(val value: kotlin.String) {
     @Json(name = "FINANCE_MANAGER")
     FINANCE_MANAGER("FINANCE_MANAGER"),
 
+    @Json(name = "FINANCE_EDIT")
+    FINANCE_EDIT("FINANCE_EDIT"),
+
+    @Json(name = "FINANCE_VIEW")
+    FINANCE_VIEW("FINANCE_VIEW"),
+
     @Json(name = "AUDIENCE_MANAGER")
     AUDIENCE_MANAGER("AUDIENCE_MANAGER"),
 
@@ -46,8 +52,14 @@ enum class Permissions(val value: kotlin.String) {
     @Json(name = "CATALOGS_MANAGER")
     CATALOGS_MANAGER("CATALOGS_MANAGER"),
 
+    @Json(name = "CATALOGS_VIEWER")
+    CATALOGS_VIEWER("CATALOGS_VIEWER"),
+
     @Json(name = "PROFILE_PUBLISHER")
-    PROFILE_PUBLISHER("PROFILE_PUBLISHER");
+    PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
+
+    @Json(name = "CONSUMER_USER")
+    CONSUMER_USER("CONSUMER_USER");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

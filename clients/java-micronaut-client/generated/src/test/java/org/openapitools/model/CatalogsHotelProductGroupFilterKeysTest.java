@@ -1,6 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.model.BrandFilter;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleCountriesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
@@ -12,6 +13,7 @@ import org.openapitools.model.CustomLabel3Filter;
 import org.openapitools.model.CustomLabel4Filter;
 import org.openapitools.model.HotelIdFilter;
 import org.openapitools.model.PriceFilter;
+import org.openapitools.model.TitleKeywordsFilter;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -101,6 +103,14 @@ public class CatalogsHotelProductGroupFilterKeysTest {
     @Test
     public void COUNTRYTest() {
         // TODO: test COUNTRY
+    }
+
+    /**
+     * Test the property 'TITLE_KEYWORDS'
+     */
+    @Test
+    public void TITLE_KEYWORDSTest() {
+        // TODO: test TITLE_KEYWORDS
     }
 
 }

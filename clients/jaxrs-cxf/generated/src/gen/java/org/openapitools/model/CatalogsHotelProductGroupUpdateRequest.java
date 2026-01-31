@@ -57,10 +57,6 @@ HOTEL(String.valueOf("HOTEL"));
 
   @ApiModelProperty(value = "")
 
-  private String name;
-
-  @ApiModelProperty(value = "")
-
   private String description;
 
   @ApiModelProperty(value = "")
@@ -68,6 +64,10 @@ HOTEL(String.valueOf("HOTEL"));
   @Valid
 
   private CatalogsHotelProductGroupFilters filters;
+
+  @ApiModelProperty(value = "")
+
+  private String name;
  /**
    * Get catalogType
    * @return catalogType
@@ -86,24 +86,6 @@ HOTEL(String.valueOf("HOTEL"));
 
   public CatalogsHotelProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-   * Get name
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsHotelProductGroupUpdateRequest name(String name) {
-    this.name = name;
     return this;
   }
 
@@ -143,6 +125,24 @@ HOTEL(String.valueOf("HOTEL"));
     return this;
   }
 
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsHotelProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -153,14 +153,14 @@ HOTEL(String.valueOf("HOTEL"));
     }
     CatalogsHotelProductGroupUpdateRequest catalogsHotelProductGroupUpdateRequest = (CatalogsHotelProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsHotelProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsHotelProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsHotelProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsHotelProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsHotelProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.name, catalogsHotelProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, description, filters, name);
   }
 
   @Override
@@ -169,9 +169,9 @@ HOTEL(String.valueOf("HOTEL"));
     sb.append("class CatalogsHotelProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

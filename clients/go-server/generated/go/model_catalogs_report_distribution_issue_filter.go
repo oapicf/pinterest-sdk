@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,10 +16,10 @@ package openapi
 
 type CatalogsReportDistributionIssueFilter struct {
 
-	ReportType string `json:"report_type"`
-
 	// Unique identifier of a catalog. If not given, oldest catalog will be used
 	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+
+	ReportType string `json:"report_type"`
 }
 
 // AssertCatalogsReportDistributionIssueFilterRequired checks if the required fields are not zero-ed

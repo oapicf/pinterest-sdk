@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupPricingCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupPricingCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsProductGroupPricingCriteria {
+    title = CatalogsProductGroupPricingCriteria
+    description = CatalogsProductGroupPricingCriteria
+    derivedFrom = Root
+    properties {
+        inclusion {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type =  
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupPricingCriteria {
+    title = CatalogsProductGroupPricingCriteria
+    description = CatalogsProductGroupPricingCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupPricingCriteria
+
+  }
+}

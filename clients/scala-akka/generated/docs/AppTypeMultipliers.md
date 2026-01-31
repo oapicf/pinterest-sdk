@@ -8,7 +8,12 @@ This represents a mapping from app type targeting criteria to a bid price adjust
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APP_TYPE** | **TargetingSpecAppType** |  |  [optional]
+**APP_TYPE** | [**APPTYPE**](#APPTYPE) |  |  [optional]
+
+
+## Enum: APPTYPE
+Allowed values: [android_mobile, android_tablet, ipad, iphone, web, web_mobile]
+
 
 
 

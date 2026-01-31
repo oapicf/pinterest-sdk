@@ -23,20 +23,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param summaryMetrics The metric name and value over the requested period for each requested metric
  * @param dailyMetrics Array with the requested daily metric records
+ * @param summaryMetrics The metric name and value over the requested period for each requested metric
  */
 
 
 data class AnalyticsMetricsResponse (
 
-    /* The metric name and value over the requested period for each requested metric */
-    @Json(name = "summary_metrics")
-    val summaryMetrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null,
-
     /* Array with the requested daily metric records */
     @Json(name = "daily_metrics")
-    val dailyMetrics: kotlin.collections.List<AnalyticsDailyMetrics>? = null
+    val dailyMetrics: kotlin.collections.List<AnalyticsDailyMetrics>? = null,
+
+    /* The metric name and value over the requested period for each requested metric */
+    @Json(name = "summary_metrics")
+    val summaryMetrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null
 
 ) {
 

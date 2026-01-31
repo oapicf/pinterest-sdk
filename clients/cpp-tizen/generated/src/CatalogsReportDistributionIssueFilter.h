@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getReportType();
-
-	/*! \brief Set 
-	 */
-	void setReportType(std::string  report_type);
 	/*! \brief Get Unique identifier of a catalog. If not given, oldest catalog will be used
 	 */
 	std::string getCatalogId();
@@ -59,10 +52,17 @@ public:
 	/*! \brief Set Unique identifier of a catalog. If not given, oldest catalog will be used
 	 */
 	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	std::string getReportType();
+
+	/*! \brief Set 
+	 */
+	void setReportType(std::string  report_type);
 
 private:
-	std::string report_type;
 	std::string catalog_id;
+	std::string report_type;
 	void __init();
 	void __cleanup();
 

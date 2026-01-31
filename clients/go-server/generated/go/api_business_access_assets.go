@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -226,6 +226,22 @@ func (c *BusinessAccessAssetsAPIController) BusinessAssetMembersGet(w http.Respo
 		c.errorHandler(w, r, &RequiredError{"asset_id"}, nil)
 		return
 	}
+	var fetchSystemUsersParam bool
+	if query.Has("fetch_system_users") {
+		param, err := parseBoolParameter(
+			query.Get("fetch_system_users"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "fetch_system_users", Err: err}, nil)
+			return
+		}
+
+		fetchSystemUsersParam = param
+	} else {
+		var param bool = false
+		fetchSystemUsersParam = param
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -268,7 +284,7 @@ func (c *BusinessAccessAssetsAPIController) BusinessAssetMembersGet(w http.Respo
 		var param int32 = 0
 		startIndexParam = param
 	}
-	result, err := c.service.BusinessAssetMembersGet(r.Context(), businessIdParam, assetIdParam, bookmarkParam, pageSizeParam, startIndexParam)
+	result, err := c.service.BusinessAssetMembersGet(r.Context(), businessIdParam, assetIdParam, fetchSystemUsersParam, bookmarkParam, pageSizeParam, startIndexParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

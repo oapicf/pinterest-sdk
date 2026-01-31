@@ -1,0 +1,46 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+
+/**
+ * Overall status of event quality score.
+ **/
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+/**
+ * Overall status of event quality score.
+ */
+public enum OverallStatusOptions {
+  
+  NEEDS_IMPROVEMENT("NEEDS_IMPROVEMENT"),
+  
+  FAIR("FAIR"),
+  
+  GOOD("GOOD");
+
+  private String value;
+
+  OverallStatusOptions(String value) {
+    this.value = value;
+  }
+
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  public static OverallStatusOptions fromValue(String value) {
+    for (OverallStatusOptions b : OverallStatusOptions.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
+}

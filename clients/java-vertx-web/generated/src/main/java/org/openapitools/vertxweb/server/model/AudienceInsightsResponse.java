@@ -19,23 +19,23 @@ import org.openapitools.vertxweb.server.model.AudienceInsightType;
 public class AudienceInsightsResponse   {
   
   private List<AudienceCategory> categories = new ArrayList<>();
-  private AudienceDemographics demographics;
-  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
   private String date;
+  private AudienceDemographics demographics;
   private Integer size;
   private Boolean sizeIsUpperBound;
+  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
   public AudienceInsightsResponse () {
 
   }
 
-  public AudienceInsightsResponse (List<AudienceCategory> categories, AudienceDemographics demographics, AudienceInsightType type, String date, Integer size, Boolean sizeIsUpperBound) {
+  public AudienceInsightsResponse (List<AudienceCategory> categories, String date, AudienceDemographics demographics, Integer size, Boolean sizeIsUpperBound, AudienceInsightType type) {
     this.categories = categories;
-    this.demographics = demographics;
-    this.type = type;
     this.date = date;
+    this.demographics = demographics;
     this.size = size;
     this.sizeIsUpperBound = sizeIsUpperBound;
+    this.type = type;
   }
 
     
@@ -48,30 +48,21 @@ public class AudienceInsightsResponse   {
   }
 
     
-  @JsonProperty("demographics")
-  public AudienceDemographics getDemographics() {
-    return demographics;
-  }
-  public void setDemographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-  }
-
-    
-  @JsonProperty("type")
-  public AudienceInsightType getType() {
-    return type;
-  }
-  public void setType(AudienceInsightType type) {
-    this.type = type;
-  }
-
-    
   @JsonProperty("date")
   public String getDate() {
     return date;
   }
   public void setDate(String date) {
     this.date = date;
+  }
+
+    
+  @JsonProperty("demographics")
+  public AudienceDemographics getDemographics() {
+    return demographics;
+  }
+  public void setDemographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
   }
 
     
@@ -92,6 +83,15 @@ public class AudienceInsightsResponse   {
     this.sizeIsUpperBound = sizeIsUpperBound;
   }
 
+    
+  @JsonProperty("type")
+  public AudienceInsightType getType() {
+    return type;
+  }
+  public void setType(AudienceInsightType type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -103,16 +103,16 @@ public class AudienceInsightsResponse   {
     }
     AudienceInsightsResponse audienceInsightsResponse = (AudienceInsightsResponse) o;
     return Objects.equals(categories, audienceInsightsResponse.categories) &&
-        Objects.equals(demographics, audienceInsightsResponse.demographics) &&
-        Objects.equals(type, audienceInsightsResponse.type) &&
         Objects.equals(date, audienceInsightsResponse.date) &&
+        Objects.equals(demographics, audienceInsightsResponse.demographics) &&
         Objects.equals(size, audienceInsightsResponse.size) &&
-        Objects.equals(sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound);
+        Objects.equals(sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound) &&
+        Objects.equals(type, audienceInsightsResponse.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categories, demographics, type, date, size, sizeIsUpperBound);
+    return Objects.hash(categories, date, demographics, size, sizeIsUpperBound, type);
   }
 
   @Override
@@ -121,11 +121,11 @@ public class AudienceInsightsResponse   {
     sb.append("class AudienceInsightsResponse {\n");
     
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    sizeIsUpperBound: ").append(toIndentedString(sizeIsUpperBound)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

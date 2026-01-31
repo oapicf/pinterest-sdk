@@ -90,7 +90,7 @@ Get commerce integration metadata associated with the given external business ID
 
 <a id="integrationscommercepatch"></a>
 # **IntegrationsCommercePatch**
-> IntegrationMetadata IntegrationsCommercePatch (string externalBusinessId, IntegrationRequestPatch integrationRequestPatch = null)
+> IntegrationMetadata IntegrationsCommercePatch (string externalBusinessId, IntegrationRequestPatch integrationRequestPatch)
 
 Update commerce integration
 
@@ -102,7 +102,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **externalBusinessId** | **string** | External business ID for the integration. |  |
-| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | [optional]  |
+| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata |  |
 
 ### Return type
 
@@ -130,7 +130,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 
 <a id="integrationscommercepost"></a>
 # **IntegrationsCommercePost**
-> IntegrationMetadata IntegrationsCommercePost (IntegrationRequest integrationRequest = null)
+> IntegrationMetadata IntegrationsCommercePost (IntegrationRequest integrationRequest)
 
 Create commerce integration
 
@@ -141,7 +141,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | [optional]  |
+| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata |  |
 
 ### Return type
 

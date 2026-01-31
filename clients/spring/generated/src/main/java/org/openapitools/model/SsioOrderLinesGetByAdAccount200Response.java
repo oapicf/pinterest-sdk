@@ -27,13 +27,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ssio_order_lines_get_by_ad_account_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SsioOrderLinesGetByAdAccount200Response {
+
+  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
   private List<@Valid SSIOOrderLine> items = new ArrayList<>();
-
-  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   public SsioOrderLinesGetByAdAccount200Response() {
     super();
@@ -44,6 +44,26 @@ public class SsioOrderLinesGetByAdAccount200Response {
    */
   public SsioOrderLinesGetByAdAccount200Response(List<@Valid SSIOOrderLine> items) {
     this.items = items;
+  }
+
+  public SsioOrderLinesGetByAdAccount200Response bookmark(String bookmark) {
+    this.bookmark = JsonNullable.of(bookmark);
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  
+  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bookmark")
+  public JsonNullable<String> getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(JsonNullable<String> bookmark) {
+    this.bookmark = bookmark;
   }
 
   public SsioOrderLinesGetByAdAccount200Response items(List<@Valid SSIOOrderLine> items) {
@@ -74,26 +94,6 @@ public class SsioOrderLinesGetByAdAccount200Response {
     this.items = items;
   }
 
-  public SsioOrderLinesGetByAdAccount200Response bookmark(String bookmark) {
-    this.bookmark = JsonNullable.of(bookmark);
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  
-  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bookmark")
-  public JsonNullable<String> getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(JsonNullable<String> bookmark) {
-    this.bookmark = bookmark;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,8 +103,8 @@ public class SsioOrderLinesGetByAdAccount200Response {
       return false;
     }
     SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount200Response = (SsioOrderLinesGetByAdAccount200Response) o;
-    return Objects.equals(this.items, ssioOrderLinesGetByAdAccount200Response.items) &&
-        equalsNullable(this.bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark);
+    return equalsNullable(this.bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark) &&
+        Objects.equals(this.items, ssioOrderLinesGetByAdAccount200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -113,7 +113,7 @@ public class SsioOrderLinesGetByAdAccount200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -127,8 +127,8 @@ public class SsioOrderLinesGetByAdAccount200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SsioOrderLinesGetByAdAccount200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

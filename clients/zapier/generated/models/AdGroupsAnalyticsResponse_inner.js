@@ -7,8 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}AD_GROUP_ID`,
-                label: `The ID of the ad group that this metrics belongs to. - [${labelPrefix}AD_GROUP_ID]`,
-                required: true,
+                label: `The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true. - [${labelPrefix}AD_GROUP_ID]`,
                 type: 'string',
             },
             {

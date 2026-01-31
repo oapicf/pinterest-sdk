@@ -19,11 +19,11 @@ public class CatalogsHotelAddress   {
 
   private String city;
 
-  private String region;
-
   private String country;
 
   private String postalCode;
+
+  private String region;
 
   /**
    * Primary street address of hotel.
@@ -60,25 +60,6 @@ public class CatalogsHotelAddress   {
   }
   public void setCity(String city) {
     this.city = city;
-  }
-
-
-  /**
-   * State, county, province, where the hotel is located.
-   **/
-  public CatalogsHotelAddress region(String region) {
-    this.region = region;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
-  @JsonProperty("region")
-  public String getRegion() {
-    return region;
-  }
-  public void setRegion(String region) {
-    this.region = region;
   }
 
 
@@ -120,6 +101,25 @@ public class CatalogsHotelAddress   {
   }
 
 
+  /**
+   * State, county, province, where the hotel is located.
+   **/
+  public CatalogsHotelAddress region(String region) {
+    this.region = region;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
+  @JsonProperty("region")
+  public String getRegion() {
+    return region;
+  }
+  public void setRegion(String region) {
+    this.region = region;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -132,14 +132,14 @@ public class CatalogsHotelAddress   {
     CatalogsHotelAddress catalogsHotelAddress = (CatalogsHotelAddress) o;
     return Objects.equals(this.addr1, catalogsHotelAddress.addr1) &&
         Objects.equals(this.city, catalogsHotelAddress.city) &&
-        Objects.equals(this.region, catalogsHotelAddress.region) &&
         Objects.equals(this.country, catalogsHotelAddress.country) &&
-        Objects.equals(this.postalCode, catalogsHotelAddress.postalCode);
+        Objects.equals(this.postalCode, catalogsHotelAddress.postalCode) &&
+        Objects.equals(this.region, catalogsHotelAddress.region);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addr1, city, region, country, postalCode);
+    return Objects.hash(addr1, city, country, postalCode, region);
   }
 
   @Override
@@ -149,9 +149,9 @@ public class CatalogsHotelAddress   {
     
     sb.append("    addr1: ").append(toIndentedString(addr1)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
-    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("}");
     return sb.toString();
   }

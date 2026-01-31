@@ -7,12 +7,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class TermsOfService {
-    /* The ID of the terms of service */
-    String id
-    /* The terms of service content */
-    String html
-    /* Whether the ad account has accepted terms of service. */
-    Boolean hasAccepted
     /* The ID of the ad account. */
     String adAccountId
+    /* Whether the ad account has accepted terms of service. */
+    Boolean hasAccepted
+    /* The terms of service content */
+    String html
+    /* The ID of the terms of service */
+    String id
 }

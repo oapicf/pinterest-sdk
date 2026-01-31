@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * An internal role type used on business access, EMPLOYEE, ADMIN.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum Role {
   
   UNKNOWN("UNKNOWN"),
@@ -35,11 +35,17 @@ public enum Role {
   
   FINANCE_MANAGER("FINANCE_MANAGER"),
   
+  FINANCE_EDIT("FINANCE_EDIT"),
+  
+  FINANCE_VIEW("FINANCE_VIEW"),
+  
   AUDIENCE_MANAGER("AUDIENCE_MANAGER"),
   
   CAMPAIGN_MANAGER("CAMPAIGN_MANAGER"),
   
   CATALOGS_MANAGER("CATALOGS_MANAGER"),
+  
+  CATALOGS_VIEWER("CATALOGS_VIEWER"),
   
   RESTRICTED_OWNER("RESTRICTED_OWNER"),
   

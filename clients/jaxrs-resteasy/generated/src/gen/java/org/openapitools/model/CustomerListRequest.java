@@ -12,13 +12,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerListRequest   {
   
+  private UserListType listType = "EMAIL";
   private String name;
   private String records;
-  private UserListType listType = "EMAIL";
-  private Object exceptions;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("list_type")
+  @Valid
+  public UserListType getListType() {
+    return listType;
+  }
+  public void setListType(UserListType listType) {
+    this.listType = listType;
+  }
 
   /**
    * Customer list name.
@@ -48,32 +60,6 @@ public class CustomerListRequest   {
     this.records = records;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("list_type")
-  @Valid
-  public UserListType getListType() {
-    return listType;
-  }
-  public void setListType(UserListType listType) {
-    this.listType = listType;
-  }
-
-  /**
-   * Customer list errors.
-   **/
-  
-  @ApiModelProperty(value = "Customer list errors.")
-  @JsonProperty("exceptions")
-  public Object getExceptions() {
-    return exceptions;
-  }
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -84,15 +70,14 @@ public class CustomerListRequest   {
       return false;
     }
     CustomerListRequest customerListRequest = (CustomerListRequest) o;
-    return Objects.equals(this.name, customerListRequest.name) &&
-        Objects.equals(this.records, customerListRequest.records) &&
-        Objects.equals(this.listType, customerListRequest.listType) &&
-        Objects.equals(this.exceptions, customerListRequest.exceptions);
+    return Objects.equals(this.listType, customerListRequest.listType) &&
+        Objects.equals(this.name, customerListRequest.name) &&
+        Objects.equals(this.records, customerListRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, records, listType, exceptions);
+    return Objects.hash(listType, name, records);
   }
 
   @Override
@@ -100,10 +85,9 @@ public class CustomerListRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListRequest {\n");
     
+    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    records: ").append(toIndentedString(records)).append("\n");
-    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

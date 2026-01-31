@@ -73,7 +73,7 @@ private class OASLeadsExportResponseDataTest {
     private static void maintainRenamedProperties() {
         OASLeadsExportResponseData leadsExportResponseData = new OASLeadsExportResponseData();
         Map<String, String> x-property-mappings = leadsExportResponseData.getx-property-mappings();
-        System.assertEquals('exportStatus', x-property-mappings.get('export_status'));
         System.assertEquals('downloadUrl', x-property-mappings.get('download_url'));
+        System.assertEquals('exportStatus', x-property-mappings.get('export_status'));
     }
 }

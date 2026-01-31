@@ -4,6 +4,7 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.AdPinAnalytics
 import model.AdsAnalyticsCampaignTargetingType
 import model.CampaignCreateRequest
 import model.CampaignCreateResponse
@@ -17,12 +18,73 @@ import model.Error
 import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
+import model.ReportingTimeZone
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsApi) extends AbstractController(cc) {
   /**
-    * GET /v5/ad_accounts/:adAccountId/campaigns/targeting_analytics?campaignIds=[value]&startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]
+    * GET /v5/ad_accounts/:adAccountId/pins/analytics?campaignId=[value]&pinIds=[value]&startDate=[value]&endDate=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]
+    * @param adAccountId Unique identifier of an ad account.
+    */
+  def adPinsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): List[AdPinAnalytics] = {
+      val campaignId = request.getQueryString("campaign_id")
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("campaign_id", "query string")
+        }
+        
+      val pinIds = request.queryString.get("pin_ids")
+        .map(_.toList)
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("pin_ids", "query string")
+        }
+        
+      val startDate = request.getQueryString("start_date")
+        .map(value => LocalDate.parse(value))
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("start_date", "query string")
+        }
+        
+      val endDate = request.getQueryString("end_date")
+        .map(value => LocalDate.parse(value))
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("end_date", "query string")
+        }
+        
+      val columns = request.getQueryString("columns")
+        .map(values => splitCollectionParam(values, "csv"))
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("columns", "query string")
+        }
+        
+      val granularity = request.getQueryString("granularity")
+        .map(value => )
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("granularity", "query string")
+        }
+        
+      val clickWindowDays = request.getQueryString("click_window_days")
+        .map(value => value.toInt)
+        
+      val engagementWindowDays = request.getQueryString("engagement_window_days")
+        .map(value => value.toInt)
+        
+      val viewWindowDays = request.getQueryString("view_window_days")
+        .map(value => value.toInt)
+        
+      val conversionReportTime = request.getQueryString("conversion_report_time")
+        
+      api.adPinsAnalytics(adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * GET /v5/ad_accounts/:adAccountId/campaigns/targeting_analytics?campaignIds=[value]&startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def campaignTargetingAnalyticsGet(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -76,9 +138,13 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
       val attributionTypes = request.getQueryString("attribution_types")
+        .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
+        
+      val reportingTimezone = request.getQueryString("reporting_timezone")
         .map(value => )
         
-      api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+      api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
     }
 
     val result = executeApi()
@@ -87,7 +153,7 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/campaigns/analytics?startDate=[value]&endDate=[value]&campaignIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]
+    * GET /v5/ad_accounts/:adAccountId/campaigns/analytics?startDate=[value]&endDate=[value]&campaignIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&aggregateReportRows=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def campaignsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -133,7 +199,13 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
-      api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+      val aggregateReportRows = request.getQueryString("aggregate_report_rows")
+        .map(value => value.toBoolean)
+        
+      val reportingTimezone = request.getQueryString("reporting_timezone")
+        .map(value => )
+        
+      api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
     }
 
     val result = executeApi()

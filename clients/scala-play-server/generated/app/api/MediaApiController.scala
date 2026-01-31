@@ -5,12 +5,12 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Error
+import model.Media
 import model.MediaList200Response
 import model.MediaUpload
-import model.MediaUploadDetails
-import model.MediaUploadRequest
+import model.MediaUploadCreate
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) extends AbstractController(cc) {
   /**
@@ -18,10 +18,10 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
     */
   def mediaCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): MediaUpload = {
-      val mediaUploadRequest = request.body.asJson.map(_.as[MediaUploadRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "mediaUploadRequest")
+      val mediaUploadCreate = request.body.asJson.map(_.as[MediaUploadCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "mediaUploadCreate")
       }
-      api.mediaCreate(mediaUploadRequest)
+      api.mediaCreate(mediaUploadCreate)
     }
 
     val result = executeApi()
@@ -31,10 +31,10 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
 
   /**
     * GET /v5/media/:mediaId
-    * @param mediaId Media identifier
+    * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
     */
   def mediaGet(mediaId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): MediaUploadDetails = {
+    def executeApi(): Media = {
       api.mediaGet(mediaId)
     }
 

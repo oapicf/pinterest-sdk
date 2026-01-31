@@ -9,17 +9,17 @@ import org.openapitools.models.AdAccountCreateSubscriptionRequestPartnerMetadata
 
 /**
  * 
- * @param webhookUnderscoreurl Standard HTTPS webhook URL.
  * @param leadUnderscoreformUnderscoreid Lead form ID.
  * @param partnerUnderscoreaccessUnderscoretoken Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
- * @param partnerUnderscorerefreshUnderscoretoken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
  * @param partnerUnderscoremetadata 
+ * @param partnerUnderscorerefreshUnderscoretoken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+ * @param webhookUnderscoreurl Standard HTTPS webhook URL.
  */
-case class AdAccountCreateSubscriptionRequest(webhookUnderscoreurl: String,
-                leadUnderscoreformUnderscoreid: Option[String],
+case class AdAccountCreateSubscriptionRequest(leadUnderscoreformUnderscoreid: Option[String],
                 partnerUnderscoreaccessUnderscoretoken: Option[String],
+                partnerUnderscoremetadata: Option[AdAccountCreateSubscriptionRequestPartnerMetadata],
                 partnerUnderscorerefreshUnderscoretoken: Option[String],
-                partnerUnderscoremetadata: Option[AdAccountCreateSubscriptionRequestPartnerMetadata]
+                webhookUnderscoreurl: String
                 )
 
 object AdAccountCreateSubscriptionRequest {

@@ -6,39 +6,39 @@
 
 
 static audience_subcategory_t *audience_subcategory_create_internal(
+    char *id,
+    double index,
     char *key,
     char *name,
-    double ratio,
-    double index,
-    char *id
+    double ratio
     ) {
     audience_subcategory_t *audience_subcategory_local_var = malloc(sizeof(audience_subcategory_t));
     if (!audience_subcategory_local_var) {
         return NULL;
     }
+    audience_subcategory_local_var->id = id;
+    audience_subcategory_local_var->index = index;
     audience_subcategory_local_var->key = key;
     audience_subcategory_local_var->name = name;
     audience_subcategory_local_var->ratio = ratio;
-    audience_subcategory_local_var->index = index;
-    audience_subcategory_local_var->id = id;
 
     audience_subcategory_local_var->_library_owned = 1;
     return audience_subcategory_local_var;
 }
 
 __attribute__((deprecated)) audience_subcategory_t *audience_subcategory_create(
+    char *id,
+    double index,
     char *key,
     char *name,
-    double ratio,
-    double index,
-    char *id
+    double ratio
     ) {
     return audience_subcategory_create_internal (
+        id,
+        index,
         key,
         name,
-        ratio,
-        index,
-        id
+        ratio
         );
 }
 
@@ -51,6 +51,10 @@ void audience_subcategory_free(audience_subcategory_t *audience_subcategory) {
         return ;
     }
     listEntry_t *listEntry;
+    if (audience_subcategory->id) {
+        free(audience_subcategory->id);
+        audience_subcategory->id = NULL;
+    }
     if (audience_subcategory->key) {
         free(audience_subcategory->key);
         audience_subcategory->key = NULL;
@@ -59,15 +63,27 @@ void audience_subcategory_free(audience_subcategory_t *audience_subcategory) {
         free(audience_subcategory->name);
         audience_subcategory->name = NULL;
     }
-    if (audience_subcategory->id) {
-        free(audience_subcategory->id);
-        audience_subcategory->id = NULL;
-    }
     free(audience_subcategory);
 }
 
 cJSON *audience_subcategory_convertToJSON(audience_subcategory_t *audience_subcategory) {
     cJSON *item = cJSON_CreateObject();
+
+    // audience_subcategory->id
+    if(audience_subcategory->id) {
+    if(cJSON_AddStringToObject(item, "id", audience_subcategory->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // audience_subcategory->index
+    if(audience_subcategory->index) {
+    if(cJSON_AddNumberToObject(item, "index", audience_subcategory->index) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
 
     // audience_subcategory->key
     if(audience_subcategory->key) {
@@ -92,22 +108,6 @@ cJSON *audience_subcategory_convertToJSON(audience_subcategory_t *audience_subca
     }
     }
 
-
-    // audience_subcategory->index
-    if(audience_subcategory->index) {
-    if(cJSON_AddNumberToObject(item, "index", audience_subcategory->index) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // audience_subcategory->id
-    if(audience_subcategory->id) {
-    if(cJSON_AddStringToObject(item, "id", audience_subcategory->id) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -119,6 +119,30 @@ fail:
 audience_subcategory_t *audience_subcategory_parseFromJSON(cJSON *audience_subcategoryJSON){
 
     audience_subcategory_t *audience_subcategory_local_var = NULL;
+
+    // audience_subcategory->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_subcategoryJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // audience_subcategory->index
+    cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_subcategoryJSON, "index");
+    if (cJSON_IsNull(index)) {
+        index = NULL;
+    }
+    if (index) { 
+    if(!cJSON_IsNumber(index))
+    {
+    goto end; //Numeric
+    }
+    }
 
     // audience_subcategory->key
     cJSON *key = cJSON_GetObjectItemCaseSensitive(audience_subcategoryJSON, "key");
@@ -156,37 +180,13 @@ audience_subcategory_t *audience_subcategory_parseFromJSON(cJSON *audience_subca
     }
     }
 
-    // audience_subcategory->index
-    cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_subcategoryJSON, "index");
-    if (cJSON_IsNull(index)) {
-        index = NULL;
-    }
-    if (index) { 
-    if(!cJSON_IsNumber(index))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // audience_subcategory->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_subcategoryJSON, "id");
-    if (cJSON_IsNull(id)) {
-        id = NULL;
-    }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
-
 
     audience_subcategory_local_var = audience_subcategory_create_internal (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        index ? index->valuedouble : 0,
         key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        ratio ? ratio->valuedouble : 0,
-        index ? index->valuedouble : 0,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
+        ratio ? ratio->valuedouble : 0
         );
 
     return audience_subcategory_local_var;

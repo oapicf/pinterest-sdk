@@ -3,15 +3,15 @@ package org.openapitools.client.model
 
 
 case class ImageDetails (
-    _width: Integer,
     _height: Integer,
-    _url: String
+    _url: String,
+    _width: Integer
 )
 object ImageDetails {
-    def toStringBody(var_width: Object, var_height: Object, var_url: Object) =
+    def toStringBody(var_height: Object, var_url: Object, var_width: Object) =
         s"""
         | {
-        | "width":$var_width,"height":$var_height,"url":$var_url
+        | "height":$var_height,"url":$var_url,"width":$var_width
         | }
         """.stripMargin
 }

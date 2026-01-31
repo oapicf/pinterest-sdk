@@ -24,18 +24,18 @@ pinterest_rest_api_catalogs_items_batch_request_LANGUAGE_e catalogs_items_batch_
 
 static catalogs_items_batch_request_t *catalogs_items_batch_request_create_internal(
     pinterest_rest_api_country__e country,
+    list_t *items,
     pinterest_rest_api_catalogs_items_batch_request_LANGUAGE_e language,
-    pinterest_rest_api_batch_operation__e operation,
-    list_t *items
+    pinterest_rest_api_batch_operation__e operation
     ) {
     catalogs_items_batch_request_t *catalogs_items_batch_request_local_var = malloc(sizeof(catalogs_items_batch_request_t));
     if (!catalogs_items_batch_request_local_var) {
         return NULL;
     }
     catalogs_items_batch_request_local_var->country = country;
+    catalogs_items_batch_request_local_var->items = items;
     catalogs_items_batch_request_local_var->language = language;
     catalogs_items_batch_request_local_var->operation = operation;
-    catalogs_items_batch_request_local_var->items = items;
 
     catalogs_items_batch_request_local_var->_library_owned = 1;
     return catalogs_items_batch_request_local_var;
@@ -43,15 +43,15 @@ static catalogs_items_batch_request_t *catalogs_items_batch_request_create_inter
 
 __attribute__((deprecated)) catalogs_items_batch_request_t *catalogs_items_batch_request_create(
     pinterest_rest_api_country__e country,
+    list_t *items,
     pinterest_rest_api_catalogs_items_batch_request_LANGUAGE_e language,
-    pinterest_rest_api_batch_operation__e operation,
-    list_t *items
+    pinterest_rest_api_batch_operation__e operation
     ) {
     return catalogs_items_batch_request_create_internal (
         country,
+        items,
         language,
-        operation,
-        items
+        operation
         );
 }
 
@@ -91,6 +91,27 @@ cJSON *catalogs_items_batch_request_convertToJSON(catalogs_items_batch_request_t
     }
 
 
+    // catalogs_items_batch_request->items
+    if (!catalogs_items_batch_request->items) {
+        goto fail;
+    }
+    cJSON *items = cJSON_AddArrayToObject(item, "items");
+    if(items == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *itemsListEntry;
+    if (catalogs_items_batch_request->items) {
+    list_ForEach(itemsListEntry, catalogs_items_batch_request->items) {
+    cJSON *itemLocal = item_delete_batch_record_convertToJSON(itemsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(items, itemLocal);
+    }
+    }
+
+
     // catalogs_items_batch_request->language
     if (pinterest_rest_api_catalogs_items_batch_request_LANGUAGE_NULL == catalogs_items_batch_request->language) {
         goto fail;
@@ -114,27 +135,6 @@ cJSON *catalogs_items_batch_request_convertToJSON(catalogs_items_batch_request_t
         goto fail;
     }
 
-
-    // catalogs_items_batch_request->items
-    if (!catalogs_items_batch_request->items) {
-        goto fail;
-    }
-    cJSON *items = cJSON_AddArrayToObject(item, "items");
-    if(items == NULL) {
-    goto fail; //nonprimitive container
-    }
-
-    listEntry_t *itemsListEntry;
-    if (catalogs_items_batch_request->items) {
-    list_ForEach(itemsListEntry, catalogs_items_batch_request->items) {
-    cJSON *itemLocal = item_delete_batch_record_convertToJSON(itemsListEntry->data);
-    if(itemLocal == NULL) {
-    goto fail;
-    }
-    cJSON_AddItemToArray(items, itemLocal);
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -150,11 +150,11 @@ catalogs_items_batch_request_t *catalogs_items_batch_request_parseFromJSON(cJSON
     // define the local variable for catalogs_items_batch_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
-    // define the local variable for catalogs_items_batch_request->operation
-    pinterest_rest_api_batch_operation__e operation_local_nonprim = 0;
-
     // define the local list for catalogs_items_batch_request->items
     list_t *itemsList = NULL;
+
+    // define the local variable for catalogs_items_batch_request->operation
+    pinterest_rest_api_batch_operation__e operation_local_nonprim = 0;
 
     // catalogs_items_batch_request->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(catalogs_items_batch_requestJSON, "country");
@@ -167,6 +167,33 @@ catalogs_items_batch_request_t *catalogs_items_batch_request_parseFromJSON(cJSON
 
     
     country_local_nonprim = country_parseFromJSON(country); //custom
+
+    // catalogs_items_batch_request->items
+    cJSON *items = cJSON_GetObjectItemCaseSensitive(catalogs_items_batch_requestJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
+    if (!items) {
+        goto end;
+    }
+
+    
+    cJSON *items_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(items)){
+        goto end; //nonprimitive container
+    }
+
+    itemsList = list_createList();
+
+    cJSON_ArrayForEach(items_local_nonprimitive,items )
+    {
+        if(!cJSON_IsObject(items_local_nonprimitive)){
+            goto end;
+        }
+        item_delete_batch_record_t *itemsItem = item_delete_batch_record_parseFromJSON(items_local_nonprimitive);
+
+        list_addElement(itemsList, itemsItem);
+    }
 
     // catalogs_items_batch_request->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(catalogs_items_batch_requestJSON, "language");
@@ -197,48 +224,18 @@ catalogs_items_batch_request_t *catalogs_items_batch_request_parseFromJSON(cJSON
     
     operation_local_nonprim = batch_operation_parseFromJSON(operation); //custom
 
-    // catalogs_items_batch_request->items
-    cJSON *items = cJSON_GetObjectItemCaseSensitive(catalogs_items_batch_requestJSON, "items");
-    if (cJSON_IsNull(items)) {
-        items = NULL;
-    }
-    if (!items) {
-        goto end;
-    }
-
-    
-    cJSON *items_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(items)){
-        goto end; //nonprimitive container
-    }
-
-    itemsList = list_createList();
-
-    cJSON_ArrayForEach(items_local_nonprimitive,items )
-    {
-        if(!cJSON_IsObject(items_local_nonprimitive)){
-            goto end;
-        }
-        item_delete_batch_record_t *itemsItem = item_delete_batch_record_parseFromJSON(items_local_nonprimitive);
-
-        list_addElement(itemsList, itemsItem);
-    }
-
 
     catalogs_items_batch_request_local_var = catalogs_items_batch_request_create_internal (
         country_local_nonprim,
+        itemsList,
         languageVariable,
-        operation_local_nonprim,
-        itemsList
+        operation_local_nonprim
         );
 
     return catalogs_items_batch_request_local_var;
 end:
     if (country_local_nonprim) {
         country_local_nonprim = 0;
-    }
-    if (operation_local_nonprim) {
-        operation_local_nonprim = 0;
     }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
@@ -248,6 +245,9 @@ end:
         }
         list_freeList(itemsList);
         itemsList = NULL;
+    }
+    if (operation_local_nonprim) {
+        operation_local_nonprim = 0;
     }
     return NULL;
 

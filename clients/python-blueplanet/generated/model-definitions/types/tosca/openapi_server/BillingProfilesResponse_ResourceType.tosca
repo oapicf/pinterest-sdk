@@ -1,0 +1,65 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BillingProfilesResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BillingProfilesResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BillingProfilesResponse {
+    title = BillingProfilesResponse
+    description = BillingProfilesResponse
+    derivedFrom = Root
+    properties {
+        advertiser_id {
+          type =  string
+          description = "Advertiser ID of the billing."
+          optional = false
+        }
+        billing_type {
+          type =  string
+          description = "Billing type of the advertiser"
+          enum = ["CREDIT_CARD", "INVOICE", "INTERNAL", "RECURRING", "PREPAID"]
+          optional = false
+        }
+        card_type {
+          type =  string
+          description = "Type of the card."
+          enum = ["UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "ELO"]
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Billing ID."
+          optional = false
+        }
+        payment_method_brand {
+          type =  string
+          description = "Brand of the payment method."
+          enum = ["UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "SOFORT", "DINERS_CLUB", "ELO", "CARTE_BANCAIRE"]
+          optional = false
+        }
+        status {
+          type =  string
+          description = "Status of the billing."
+          enum = ["UNSPECIFIED", "VALID", "INVALID", "PENDING", "DELETED", "SECONDARY", "PENDING_SECONDARY"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BillingProfilesResponse {
+    title = BillingProfilesResponse
+    description = BillingProfilesResponse
+    implements = openapi_server.resourceTypes.BillingProfilesResponse
+
+  }
+}

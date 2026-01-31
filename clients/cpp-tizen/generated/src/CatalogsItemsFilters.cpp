@@ -24,8 +24,8 @@ void
 CatalogsItemsFilters::__init()
 {
 	//catalog_type = new CatalogsType();
-	//new std::list()std::list> item_ids;
 	//catalog_id = std::string();
+	//new std::list()std::list> item_ids;
 	//new std::list()std::list> hotel_ids;
 	//new std::list()std::list> creative_assets_ids;
 }
@@ -38,15 +38,15 @@ CatalogsItemsFilters::__cleanup()
 	//delete catalog_type;
 	//catalog_type = NULL;
 	//}
-	//if(item_ids != NULL) {
-	//item_ids.RemoveAll(true);
-	//delete item_ids;
-	//item_ids = NULL;
-	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
 	//catalog_id = NULL;
+	//}
+	//if(item_ids != NULL) {
+	//item_ids.RemoveAll(true);
+	//delete item_ids;
+	//item_ids = NULL;
 	//}
 	//if(hotel_ids != NULL) {
 	//hotel_ids.RemoveAll(true);
@@ -80,6 +80,17 @@ CatalogsItemsFilters::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *item_idsKey = "item_ids";
 	node = json_object_get_member(pJsonObject, item_idsKey);
 	if (node !=NULL) {
@@ -101,17 +112,6 @@ CatalogsItemsFilters::fromJson(char* jsonStr)
 			item_ids = new_list;
 		}
 		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
-		} else {
-			
-		}
 	}
 	const gchar *hotel_idsKey = "hotel_ids";
 	node = json_object_get_member(pJsonObject, hotel_idsKey);
@@ -184,6 +184,15 @@ CatalogsItemsFilters::toJson()
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getItemIds());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
@@ -198,15 +207,6 @@ CatalogsItemsFilters::toJson()
 	
 	const gchar *item_idsKey = "item_ids";
 	json_object_set_member(pJsonObject, item_idsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getHotelIds());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -257,18 +257,6 @@ CatalogsItemsFilters::setCatalogType(CatalogsType  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
-std::list<std::string>
-CatalogsItemsFilters::getItemIds()
-{
-	return item_ids;
-}
-
-void
-CatalogsItemsFilters::setItemIds(std::list <std::string> item_ids)
-{
-	this->item_ids = item_ids;
-}
-
 std::string
 CatalogsItemsFilters::getCatalogId()
 {
@@ -279,6 +267,18 @@ void
 CatalogsItemsFilters::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+std::list<std::string>
+CatalogsItemsFilters::getItemIds()
+{
+	return item_ids;
+}
+
+void
+CatalogsItemsFilters::setItemIds(std::list <std::string> item_ids)
+{
+	this->item_ids = item_ids;
 }
 
 std::list<std::string>

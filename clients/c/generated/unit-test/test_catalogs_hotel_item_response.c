@@ -23,18 +23,18 @@ catalogs_hotel_item_response_t* instantiate_catalogs_hotel_item_response(int inc
   catalogs_hotel_item_response_t* catalogs_hotel_item_response = NULL;
   if (include_optional) {
     catalogs_hotel_item_response = catalogs_hotel_item_response_create(
+       // false, not to have infinite recursion
+      instantiate_catalogs_hotel_attributes(0),
       pinterest_rest_api_catalogs_hotel_item_response__RETAIL,
       "DS0294-M",
-      list_createList(),
-       // false, not to have infinite recursion
-      instantiate_catalogs_hotel_attributes(0)
+      list_createList()
     );
   } else {
     catalogs_hotel_item_response = catalogs_hotel_item_response_create(
+      NULL,
       pinterest_rest_api_catalogs_hotel_item_response__RETAIL,
       "DS0294-M",
-      list_createList(),
-      NULL
+      list_createList()
     );
   }
 

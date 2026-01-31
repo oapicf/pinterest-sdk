@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,17 +16,19 @@ package openapi
 
 type TargetingTemplateUpdateRequest struct {
 
-	OperationType string `json:"operation_type"`
-
 	// Targeting template ID
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+
+	OperationType string `json:"operation_type"`
+
+	TargetingAttributes TargetingSpec `json:"targeting_attributes,omitempty"`
 }
 
 // AssertTargetingTemplateUpdateRequestRequired checks if the required fields are not zero-ed
 func AssertTargetingTemplateUpdateRequestRequired(obj TargetingTemplateUpdateRequest) error {
 	elements := map[string]interface{}{
-		"operation_type": obj.OperationType,
 		"id": obj.Id,
+		"operation_type": obj.OperationType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -34,10 +36,16 @@ func AssertTargetingTemplateUpdateRequestRequired(obj TargetingTemplateUpdateReq
 		}
 	}
 
+	if err := AssertTargetingSpecRequired(obj.TargetingAttributes); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertTargetingTemplateUpdateRequestConstraints checks if the values respects the defined constraints
 func AssertTargetingTemplateUpdateRequestConstraints(obj TargetingTemplateUpdateRequest) error {
+	if err := AssertTargetingSpecConstraints(obj.TargetingAttributes); err != nil {
+		return err
+	}
 	return nil
 }

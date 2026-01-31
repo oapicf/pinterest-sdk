@@ -7,10 +7,10 @@
 #' @title MediaUpload
 #' @description MediaUpload Class
 #' @format An \code{R6Class} generator object
-#' @field media_id Unique identifier for this media upload. Used to track status and for attaching during Pin creation. character [optional]
-#' @field media_type  \link{MediaUploadType} [optional]
+#' @field media_id Unique identifier for this media upload. Used to track status and for attaching during Pin creation. character
+#' @field media_type  \link{MediaUploadType}
+#' @field upload_parameters The list of parameter key/value pairs you will need to send with your POST request to upload your media file. \link{MediaUploadParameters} [optional]
 #' @field upload_url The URL where you will POST your media file. character [optional]
-#' @field upload_parameters  \link{MediaUploadAllOfUploadParameters} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,40 +19,40 @@ MediaUpload <- R6::R6Class(
   public = list(
     `media_id` = NULL,
     `media_type` = NULL,
-    `upload_url` = NULL,
     `upload_parameters` = NULL,
+    `upload_url` = NULL,
 
     #' @description
     #' Initialize a new MediaUpload class.
     #'
     #' @param media_id Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
     #' @param media_type media_type
+    #' @param upload_parameters The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
     #' @param upload_url The URL where you will POST your media file.
-    #' @param upload_parameters upload_parameters
     #' @param ... Other optional arguments.
-    initialize = function(`media_id` = NULL, `media_type` = NULL, `upload_url` = NULL, `upload_parameters` = NULL, ...) {
-      if (!is.null(`media_id`)) {
+    initialize = function(`media_id`, `media_type`, `upload_parameters` = NULL, `upload_url` = NULL, ...) {
+      if (!missing(`media_id`)) {
         if (!(is.character(`media_id`) && length(`media_id`) == 1)) {
           stop(paste("Error! Invalid data for `media_id`. Must be a string:", `media_id`))
         }
         self$`media_id` <- `media_id`
       }
-      if (!is.null(`media_type`)) {
+      if (!missing(`media_type`)) {
         if (!(`media_type` %in% c())) {
           stop(paste("Error! \"", `media_type`, "\" cannot be assigned to `media_type`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`media_type`))
         self$`media_type` <- `media_type`
       }
+      if (!is.null(`upload_parameters`)) {
+        stopifnot(R6::is.R6(`upload_parameters`))
+        self$`upload_parameters` <- `upload_parameters`
+      }
       if (!is.null(`upload_url`)) {
         if (!(is.character(`upload_url`) && length(`upload_url`) == 1)) {
           stop(paste("Error! Invalid data for `upload_url`. Must be a string:", `upload_url`))
         }
         self$`upload_url` <- `upload_url`
-      }
-      if (!is.null(`upload_parameters`)) {
-        stopifnot(R6::is.R6(`upload_parameters`))
-        self$`upload_parameters` <- `upload_parameters`
       }
     },
 
@@ -95,13 +95,13 @@ MediaUpload <- R6::R6Class(
         MediaUploadObject[["media_type"]] <-
           self$`media_type`$toSimpleType()
       }
-      if (!is.null(self$`upload_url`)) {
-        MediaUploadObject[["upload_url"]] <-
-          self$`upload_url`
-      }
       if (!is.null(self$`upload_parameters`)) {
         MediaUploadObject[["upload_parameters"]] <-
           self$`upload_parameters`$toSimpleType()
+      }
+      if (!is.null(self$`upload_url`)) {
+        MediaUploadObject[["upload_url"]] <-
+          self$`upload_url`
       }
       return(MediaUploadObject)
     },
@@ -121,13 +121,13 @@ MediaUpload <- R6::R6Class(
         `media_type_object`$fromJSON(jsonlite::toJSON(this_object$`media_type`, auto_unbox = TRUE, digits = NA))
         self$`media_type` <- `media_type_object`
       }
-      if (!is.null(this_object$`upload_url`)) {
-        self$`upload_url` <- this_object$`upload_url`
-      }
       if (!is.null(this_object$`upload_parameters`)) {
-        `upload_parameters_object` <- MediaUploadAllOfUploadParameters$new()
+        `upload_parameters_object` <- MediaUploadParameters$new()
         `upload_parameters_object`$fromJSON(jsonlite::toJSON(this_object$`upload_parameters`, auto_unbox = TRUE, digits = NA))
         self$`upload_parameters` <- `upload_parameters_object`
+      }
+      if (!is.null(this_object$`upload_url`)) {
+        self$`upload_url` <- this_object$`upload_url`
       }
       self
     },
@@ -152,8 +152,8 @@ MediaUpload <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`media_id` <- this_object$`media_id`
       self$`media_type` <- MediaUploadType$new()$fromJSON(jsonlite::toJSON(this_object$`media_type`, auto_unbox = TRUE, digits = NA))
+      self$`upload_parameters` <- MediaUploadParameters$new()$fromJSON(jsonlite::toJSON(this_object$`upload_parameters`, auto_unbox = TRUE, digits = NA))
       self$`upload_url` <- this_object$`upload_url`
-      self$`upload_parameters` <- MediaUploadAllOfUploadParameters$new()$fromJSON(jsonlite::toJSON(this_object$`upload_parameters`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -163,6 +163,20 @@ MediaUpload <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `media_id`
+      if (!is.null(input_json$`media_id`)) {
+        if (!(is.character(input_json$`media_id`) && length(input_json$`media_id`) == 1)) {
+          stop(paste("Error! Invalid data for `media_id`. Must be a string:", input_json$`media_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for MediaUpload: the required field `media_id` is missing."))
+      }
+      # check the required field `media_type`
+      if (!is.null(input_json$`media_type`)) {
+        stopifnot(R6::is.R6(input_json$`media_type`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for MediaUpload: the required field `media_type` is missing."))
+      }
     },
 
     #' @description
@@ -178,6 +192,20 @@ MediaUpload <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `media_id` is null
+      if (is.null(self$`media_id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`media_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      # check if the required `media_type` is null
+      if (is.null(self$`media_type`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -187,6 +215,20 @@ MediaUpload <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `media_id` is null
+      if (is.null(self$`media_id`)) {
+        invalid_fields["media_id"] <- "Non-nullable required field `media_id` cannot be null."
+      }
+
+      if (!str_detect(self$`media_id`, "^\\d+$")) {
+        invalid_fields["media_id"] <- "Invalid value for `media_id`, must conform to the pattern ^\\d+$."
+      }
+
+      # check if the required `media_type` is null
+      if (is.null(self$`media_type`)) {
+        invalid_fields["media_type"] <- "Non-nullable required field `media_type` cannot be null."
+      }
+
       invalid_fields
     },
 

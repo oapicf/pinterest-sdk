@@ -3,24 +3,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaType** | **String** |  | [optional] 
-**Images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 **CoverImageUrl** | **String** |  | [optional] 
-**VideoUrl** | **String** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**Duration** | **Decimal** | Duration (in milliseconds) | [optional] 
-**Height** | **Int32** | Height (in pixels) | [optional] 
-**Width** | **Int32** | Width (in pixels) | [optional] 
+**Duration** | **Decimal** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**Height** | **Int32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**MediaType** | **String** |  | 
+**VideoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**Width** | **Int32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaWithVideo = Initialize-PSOpenAPIToolsPinMediaWithVideo  -MediaType null `
- -Images null `
- -CoverImageUrl null `
- -VideoUrl null `
+$PinMediaWithVideo = Initialize-PSOpenAPIToolsPinMediaWithVideo  -CoverImageUrl null `
  -Duration null `
  -Height null `
+ -Images null `
+ -MediaType null `
+ -VideoUrl null `
  -Width null
 ```
 

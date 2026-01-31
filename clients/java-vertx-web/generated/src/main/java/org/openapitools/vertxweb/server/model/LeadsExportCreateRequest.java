@@ -7,27 +7,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LeadsExportCreateRequest   {
   
-  private String startDate;
-  private String endDate;
   private String adId;
+  private String endDate;
+  private String startDate;
 
   public LeadsExportCreateRequest () {
 
   }
 
-  public LeadsExportCreateRequest (String startDate, String endDate, String adId) {
-    this.startDate = startDate;
-    this.endDate = endDate;
+  public LeadsExportCreateRequest (String adId, String endDate, String startDate) {
     this.adId = adId;
+    this.endDate = endDate;
+    this.startDate = startDate;
   }
 
     
-  @JsonProperty("start_date")
-  public String getStartDate() {
-    return startDate;
+  @JsonProperty("ad_id")
+  public String getAdId() {
+    return adId;
   }
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setAdId(String adId) {
+    this.adId = adId;
   }
 
     
@@ -40,12 +40,12 @@ public class LeadsExportCreateRequest   {
   }
 
     
-  @JsonProperty("ad_id")
-  public String getAdId() {
-    return adId;
+  @JsonProperty("start_date")
+  public String getStartDate() {
+    return startDate;
   }
-  public void setAdId(String adId) {
-    this.adId = adId;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -58,14 +58,14 @@ public class LeadsExportCreateRequest   {
       return false;
     }
     LeadsExportCreateRequest leadsExportCreateRequest = (LeadsExportCreateRequest) o;
-    return Objects.equals(startDate, leadsExportCreateRequest.startDate) &&
+    return Objects.equals(adId, leadsExportCreateRequest.adId) &&
         Objects.equals(endDate, leadsExportCreateRequest.endDate) &&
-        Objects.equals(adId, leadsExportCreateRequest.adId);
+        Objects.equals(startDate, leadsExportCreateRequest.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, adId);
+    return Objects.hash(adId, endDate, startDate);
   }
 
   @Override
@@ -73,9 +73,9 @@ public class LeadsExportCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportCreateRequest {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

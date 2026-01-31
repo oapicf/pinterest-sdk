@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TargetingTemplateResponseData`
 --
-SELECT `name`, `auto_targeting_enabled`, `targeting_attributes`, `placement_group`, `keywords`, `tracking_urls`, `id`, `created_time`, `updated_time`, `ad_account_id`, `status`, `sizing` FROM `TargetingTemplateResponseData` WHERE 1;
+SELECT `auto_targeting_enabled`, `keywords`, `name`, `placement_group`, `targeting_attributes`, `tracking_urls`, `ad_account_id`, `created_time`, `id`, `sizing`, `status`, `updated_time` FROM `TargetingTemplateResponseData` WHERE 1;
 
 --
 -- INSERT template for table `TargetingTemplateResponseData`
 --
-INSERT INTO `TargetingTemplateResponseData`(`name`, `auto_targeting_enabled`, `targeting_attributes`, `placement_group`, `keywords`, `tracking_urls`, `id`, `created_time`, `updated_time`, `ad_account_id`, `status`, `sizing`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `TargetingTemplateResponseData`(`auto_targeting_enabled`, `keywords`, `name`, `placement_group`, `targeting_attributes`, `tracking_urls`, `ad_account_id`, `created_time`, `id`, `sizing`, `status`, `updated_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `TargetingTemplateResponseData`
 --
-UPDATE `TargetingTemplateResponseData` SET `name` = ?, `auto_targeting_enabled` = ?, `targeting_attributes` = ?, `placement_group` = ?, `keywords` = ?, `tracking_urls` = ?, `id` = ?, `created_time` = ?, `updated_time` = ?, `ad_account_id` = ?, `status` = ?, `sizing` = ? WHERE 1;
+UPDATE `TargetingTemplateResponseData` SET `auto_targeting_enabled` = ?, `keywords` = ?, `name` = ?, `placement_group` = ?, `targeting_attributes` = ?, `tracking_urls` = ?, `ad_account_id` = ?, `created_time` = ?, `id` = ?, `sizing` = ?, `status` = ?, `updated_time` = ? WHERE 1;
 
 --
 -- DELETE template for table `TargetingTemplateResponseData`

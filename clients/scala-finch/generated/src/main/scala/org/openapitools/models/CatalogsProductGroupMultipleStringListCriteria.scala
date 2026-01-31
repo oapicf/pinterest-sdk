@@ -9,11 +9,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param values 
  * @param negated 
+ * @param values 
  */
-case class CatalogsProductGroupMultipleStringListCriteria(values: Seq[Seq[String]],
-                negated: Option[Boolean]
+case class CatalogsProductGroupMultipleStringListCriteria(negated: Option[Boolean],
+                values: Seq[Seq[String]]
                 )
 
 object CatalogsProductGroupMultipleStringListCriteria {

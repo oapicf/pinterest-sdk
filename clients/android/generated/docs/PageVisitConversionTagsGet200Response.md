@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;ConversionEventResponse&gt;**](ConversionEventResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;ConversionEventResponse&gt;**](ConversionEventResponse.md) |  | 
 
 
 

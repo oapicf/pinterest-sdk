@@ -8,7 +8,6 @@ open AudiencesApiHandlerParams
 open AudiencesApiServiceInterface
 open AudiencesApiServiceImplementation
 open OpenAPI.Model.Audience
-open OpenAPI.Model.AudienceCreateCustomRequest
 open OpenAPI.Model.AudienceCreateRequest
 open OpenAPI.Model.AudienceUpdateRequest
 open OpenAPI.Model.AudiencesList200Response
@@ -36,27 +35,6 @@ module AudiencesApiHandler =
                       | AudiencesCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
                       | AudiencesCreateDefaultStatusCode resolved ->
-                            setStatusCode 0 >=> json resolved.content
-          ) next ctx
-        }
-    //#endregion
-
-    //#region AudiencesCreateCustom
-    /// <summary>
-    /// Create custom audience
-    /// </summary>
-
-    let AudiencesCreateCustom (pathParams:AudiencesCreateCustomPathParams) : HttpHandler =
-      fun (next : HttpFunc) (ctx : HttpContext) ->
-        task {
-          let! bodyParams =
-            ctx.BindJsonAsync<AudiencesCreateCustomBodyParams>()
-          let serviceArgs = {    pathParams=pathParams; bodyParams=bodyParams } : AudiencesCreateCustomArgs
-          let result = AudiencesApiService.AudiencesCreateCustom ctx serviceArgs
-          return! (match result with
-                      | AudiencesCreateCustomStatusCode200 resolved ->
-                            setStatusCode 200 >=> json resolved.content
-                      | AudiencesCreateCustomDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }

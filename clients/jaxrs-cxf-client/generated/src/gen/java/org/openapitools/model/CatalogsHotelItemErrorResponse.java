@@ -23,18 +23,18 @@ public class CatalogsHotelItemErrorResponse  {
   private CatalogsType catalogType;
 
  /**
+  * Array with the errors for the item id requested
+  */
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+
+ /**
   * The catalog hotel id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
 
   private String hotelId;
-
- /**
-  * Array with the errors for the item id requested
-  */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-
-  private List<ItemValidationEvent> errors = new ArrayList<>();
  /**
    * Get catalogType
    * @return catalogType
@@ -50,24 +50,6 @@ public class CatalogsHotelItemErrorResponse  {
 
   public CatalogsHotelItemErrorResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-   * The catalog hotel id in the merchant namespace
-   * @return hotelId
-  **/
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-
-  public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
-  }
-
-  public CatalogsHotelItemErrorResponse hotelId(String hotelId) {
-    this.hotelId = hotelId;
     return this;
   }
 
@@ -94,6 +76,24 @@ public class CatalogsHotelItemErrorResponse  {
     return this;
   }
 
+ /**
+   * The catalog hotel id in the merchant namespace
+   * @return hotelId
+  **/
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
+  }
+
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
+  }
+
+  public CatalogsHotelItemErrorResponse hotelId(String hotelId) {
+    this.hotelId = hotelId;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -104,13 +104,13 @@ public class CatalogsHotelItemErrorResponse  {
     }
     CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse = (CatalogsHotelItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsHotelItemErrorResponse.catalogType) &&
-        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId) &&
-        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors) &&
+        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, errors);
+    return Objects.hash(catalogType, errors, hotelId);
   }
 
   @Override
@@ -119,8 +119,8 @@ public class CatalogsHotelItemErrorResponse  {
     sb.append("class CatalogsHotelItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

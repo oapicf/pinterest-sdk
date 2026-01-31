@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CustomerListUpdateRequest`
 --
-SELECT `records`, `operation_type`, `exceptions` FROM `CustomerListUpdateRequest` WHERE 1;
+SELECT `operation_type`, `records` FROM `CustomerListUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CustomerListUpdateRequest`
 --
-INSERT INTO `CustomerListUpdateRequest`(`records`, `operation_type`, `exceptions`) VALUES (?, ?, ?);
+INSERT INTO `CustomerListUpdateRequest`(`operation_type`, `records`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CustomerListUpdateRequest`
 --
-UPDATE `CustomerListUpdateRequest` SET `records` = ?, `operation_type` = ?, `exceptions` = ? WHERE 1;
+UPDATE `CustomerListUpdateRequest` SET `operation_type` = ?, `records` = ? WHERE 1;
 
 --
 -- DELETE template for table `CustomerListUpdateRequest`

@@ -6,6 +6,8 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |------------- | ------------- | -------------|
 | [**adsCredit/redeem**](BillingApi.md#adsCredit/redeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 | [**adsCreditsDiscounts/get**](BillingApi.md#adsCreditsDiscounts/get) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+| [**billingInvoiceDownload/get**](BillingApi.md#billingInvoiceDownload/get) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
+| [**billingInvoices/get**](BillingApi.md#billingInvoices/get) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
 | [**billingProfiles/get**](BillingApi.md#billingProfiles/get) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
 | [**ssioAccounts/get**](BillingApi.md#ssioAccounts/get) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
 | [**ssioInsertionOrder/create**](BillingApi.md#ssioInsertionOrder/create) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
@@ -21,7 +23,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-    Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 
@@ -49,7 +51,7 @@ Redeem ad credits
 
 Get ads credit discounts
 
-    Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 
@@ -72,13 +74,76 @@ Get ads credit discounts
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+<a name="billingInvoiceDownload/get"></a>
+# **billingInvoiceDownload/get**
+> BillingInvoiceDownloadResponse billingInvoiceDownload/get(ad\_account\_id, billing\_invoice\_id)
+
+Get download url for a billing invoice
+
+    Get download url for a billing invoice.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
+| **billing\_invoice\_id** | **String**| Unique identifier of a billing invoice. | [default to null] |
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](../Models/BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="billingInvoices/get"></a>
+# **billingInvoices/get**
+> billing_invoices_get_200_response billingInvoices/get(ad\_account\_id, bookmark, page\_size, sort, order, status, document\_type, start\_due\_date, end\_due\_date)
+
+Get billing invoices
+
+    Get billing invoices in the advertiser account.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort** | **String**| Field of which to sort billing invoices | [optional] [default to DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
+| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
+| **status** | **String**| Status of billing invoices to filter by | [optional] [default to null] [enum: OPEN, CLOSED] |
+| **document\_type** | **String**| Document type of billing invoices to filter by | [optional] [default to null] [enum: INVOICE, CREDIT_MEMO] |
+| **start\_due\_date** | **date**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null] |
+| **end\_due\_date** | **date**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null] |
+
+### Return type
+
+[**billing_invoices_get_200_response**](../Models/billing_invoices_get_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 <a name="billingProfiles/get"></a>
 # **billingProfiles/get**
 > billing_profiles_get_200_response billingProfiles/get(ad\_account\_id, is\_active, bookmark, page\_size)
 
 Get billing profiles
 
-    Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 

@@ -1,10 +1,10 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.Media;
 import org.openapitools.vertxweb.server.model.MediaList200Response;
 import org.openapitools.vertxweb.server.model.MediaUpload;
-import org.openapitools.vertxweb.server.model.MediaUploadDetails;
-import org.openapitools.vertxweb.server.model.MediaUploadRequest;
+import org.openapitools.vertxweb.server.model.MediaUploadCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -18,11 +18,11 @@ import java.util.Map;
 // Implement this class
 
 public class MediaApiImpl implements MediaApi {
-    public Future<ApiResponse<MediaUpload>> mediaCreate(MediaUploadRequest mediaUploadRequest) {
+    public Future<ApiResponse<MediaUpload>> mediaCreate(MediaUploadCreate mediaUploadCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<MediaUploadDetails>> mediaGet(String mediaId) {
+    public Future<ApiResponse<Media>> mediaGet(String mediaId) {
         return Future.failedFuture(new HttpException(501));
     }
 

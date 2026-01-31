@@ -73,8 +73,8 @@ private class OASCatalogsHotelFeedsUpdateRequestTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelFeedsUpdateRequest catalogsHotelFeedsUpdateRequest = new OASCatalogsHotelFeedsUpdateRequest();
         Map<String, String> x-property-mappings = catalogsHotelFeedsUpdateRequest.getx-property-mappings();
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('defaultCurrency', x-property-mappings.get('default_currency'));
         System.assertEquals('preferredProcessingSchedule', x-property-mappings.get('preferred_processing_schedule'));
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 }

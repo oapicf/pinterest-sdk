@@ -21,8 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * This field includes all quiz data including questions, options, and results.
  * @param questions 
  * @param results 
- * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
  * @param tieBreakerCustomResult 
+ * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
  */
 data class QuizPinData(
 
@@ -34,12 +34,12 @@ data class QuizPinData(
     @Schema(example = "null", description = "")
     @get:JsonProperty("results") val results: kotlin.collections.List<QuizPinResult>? = null,
 
-    @Schema(example = "null", description = "Quiz ad tie breaker type, default is RANDOM")
-    @get:JsonProperty("tie_breaker_type") val tieBreakerType: QuizPinData.TieBreakerType? = null,
-
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("tie_breaker_custom_result") val tieBreakerCustomResult: QuizPinResult? = null
+    @get:JsonProperty("tie_breaker_custom_result") val tieBreakerCustomResult: QuizPinResult? = null,
+
+    @Schema(example = "null", description = "Quiz ad tie breaker type, default is RANDOM")
+    @get:JsonProperty("tie_breaker_type") val tieBreakerType: QuizPinData.TieBreakerType? = null
 ) {
 
     /**

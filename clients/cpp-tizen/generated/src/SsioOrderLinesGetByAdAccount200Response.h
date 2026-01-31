@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get SSIO order lines by ad acount id
-	 */
-	std::list<SSIOOrderLine> getItems();
-
-	/*! \brief Set SSIO order lines by ad acount id
-	 */
-	void setItems(std::list <SSIOOrderLine> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get SSIO order lines by ad acount id
+	 */
+	std::list<SSIOOrderLine> getItems();
+
+	/*! \brief Set SSIO order lines by ad acount id
+	 */
+	void setItems(std::list <SSIOOrderLine> items);
 
 private:
-	std::list <SSIOOrderLine>items;
 	std::string bookmark;
+	std::list <SSIOOrderLine>items;
 	void __init();
 	void __cleanup();
 

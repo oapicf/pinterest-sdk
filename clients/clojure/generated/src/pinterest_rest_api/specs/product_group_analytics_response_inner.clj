@@ -7,8 +7,8 @@
 
 (def product-group-analytics-response-inner-data
   {
-   (ds/req :PRODUCT_GROUP_ID) string?
    (ds/opt :DATE) inst?
+   (ds/req :PRODUCT_GROUP_ID) string?
    })
 
 (def product-group-analytics-response-inner-spec

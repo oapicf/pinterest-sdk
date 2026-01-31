@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import CatalogsProductGroupUpdateRequest._
 
 case class CatalogsProductGroupUpdateRequest (
-  name: Option[String],
-description: Option[String],
+  description: Option[String],
+filters: Option[CatalogsProductGroupFiltersRequest],
 /* boolean indicator of whether the product group is being featured or not */
   isFeatured: Option[Boolean],
-filters: Option[CatalogsProductGroupFiltersRequest])
+name: Option[String])
 
 object CatalogsProductGroupUpdateRequest {
   import DateTimeCodecs._

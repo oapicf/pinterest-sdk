@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -46,8 +46,8 @@ AudiencesCreate Create audience
 
 Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with
 the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude
-specific audience_ids when you create an ad group. <p/>
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>.
+specific `audience_ids` when you create an ad group. <p/>
+Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" target="_blank">creating different kinds of audiences</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -108,132 +108,6 @@ func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest
 	}
 	// body params
 	localVarPostBody = r.audienceCreateRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAudiencesCreateCustomRequest struct {
-	ctx context.Context
-	ApiService *AudiencesAPIService
-	adAccountId string
-	audienceCreateCustomRequest *AudienceCreateCustomRequest
-}
-
-// Custom audience to create.
-func (r ApiAudiencesCreateCustomRequest) AudienceCreateCustomRequest(audienceCreateCustomRequest AudienceCreateCustomRequest) ApiAudiencesCreateCustomRequest {
-	r.audienceCreateCustomRequest = &audienceCreateCustomRequest
-	return r
-}
-
-func (r ApiAudiencesCreateCustomRequest) Execute() (*Audience, *http.Response, error) {
-	return r.ApiService.AudiencesCreateCustomExecute(r)
-}
-
-/*
-AudiencesCreateCustom Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @return ApiAudiencesCreateCustomRequest
-*/
-func (a *AudiencesAPIService) AudiencesCreateCustom(ctx context.Context, adAccountId string) ApiAudiencesCreateCustomRequest {
-	return ApiAudiencesCreateCustomRequest{
-		ApiService: a,
-		ctx: ctx,
-		adAccountId: adAccountId,
-	}
-}
-
-// Execute executes the request
-//  @return Audience
-func (a *AudiencesAPIService) AudiencesCreateCustomExecute(r ApiAudiencesCreateCustomRequest) (*Audience, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Audience
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudiencesAPIService.AudiencesCreateCustom")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/audiences/custom"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
-	if r.audienceCreateCustomRequest == nil {
-		return localVarReturnValue, nil, reportError("audienceCreateCustomRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.audienceCreateCustomRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -648,6 +522,9 @@ func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest
 	}
 	if strlen(r.audienceId) > 18 {
 		return localVarReturnValue, nil, reportError("audienceId must have less than 18 elements")
+	}
+	if r.audienceUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("audienceUpdateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header

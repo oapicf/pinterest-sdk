@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AvailabilityFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AvailabilityFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+}
+resourceTypes {
+
+  AvailabilityFilter {
+    title = AvailabilityFilter
+    description = AvailabilityFilter
+    derivedFrom = Root
+    properties {
+        availability {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AvailabilityFilter {
+    title = AvailabilityFilter
+    description = AvailabilityFilter
+    implements = openapi_server.resourceTypes.AvailabilityFilter
+
+  }
+}

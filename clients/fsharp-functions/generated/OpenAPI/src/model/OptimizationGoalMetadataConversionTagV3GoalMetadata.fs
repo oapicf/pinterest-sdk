@@ -25,6 +25,8 @@ module OptimizationGoalMetadataConversionTagV3GoalMetadata =
     IsRoasOptimized : bool option;
     [<JsonProperty(PropertyName = "learning_mode_type")>]
     LearningModeType : string option;
+    [<JsonProperty(PropertyName = "reporting_event")>]
+    ReportingEvent : string;
   }
 
   //#endregion

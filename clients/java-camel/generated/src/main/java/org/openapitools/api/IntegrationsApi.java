@@ -100,7 +100,7 @@ public class IntegrationsApi extends RouteBuilder {
                 .param()
                     .name("integrationRequestPatch")
                     .type(RestParamType.body)
-                    .required(false)
+                    .required(true)
                     .description("Parameters to get create/update the Integration Metadata")
                 .endParam()
                 .to("direct:integrationsCommercePatch");
@@ -129,7 +129,7 @@ public class IntegrationsApi extends RouteBuilder {
                 .param()
                     .name("integrationRequest")
                     .type(RestParamType.body)
-                    .required(false)
+                    .required(true)
                     .description("Parameters to get create/update the Integration Metadata")
                 .endParam()
                 .to("direct:integrationsCommercePost");

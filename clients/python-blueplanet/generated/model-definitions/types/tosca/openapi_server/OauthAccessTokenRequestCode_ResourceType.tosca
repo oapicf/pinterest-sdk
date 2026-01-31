@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OauthAccessTokenRequestCode"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OauthAccessTokenRequestCode"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  OauthAccessTokenRequestCode {
+    title = OauthAccessTokenRequestCode
+    description = OauthAccessTokenRequestCode
+    derivedFrom = Root
+    properties {
+        code {
+          type =  string
+          description = ""
+          optional = true
+        }
+        redirect_uri {
+          type =  string
+          description = ""
+          optional = true
+        }
+        grant_type {
+          type =  string
+          description = ""
+          enum = ["authorization_code", "refresh_token", "client_credentials"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OauthAccessTokenRequestCode {
+    title = OauthAccessTokenRequestCode
+    description = OauthAccessTokenRequestCode
+    implements = openapi_server.resourceTypes.OauthAccessTokenRequestCode
+
+  }
+}

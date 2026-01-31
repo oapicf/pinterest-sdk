@@ -6,9 +6,10 @@ An object containing the permissions a business has on the asset.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset_id** | **string** | Unique identifier of a business asset. | [optional] [default to undefined]
-**asset_type** | **string** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] [default to undefined]
 **asset_group_info** | [**AssetGroupBinding**](AssetGroupBinding.md) |  | [optional] [default to undefined]
+**asset_id** | **string** | Unique identifier of a business asset. | [optional] [default to undefined]
+**asset_type** | **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] [default to undefined]
+**catalog_info** | [**GetBusinessAssetsResponseCatalogInfo**](GetBusinessAssetsResponseCatalogInfo.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,9 +17,10 @@ Name | Type | Description | Notes
 import { GetBusinessAssetsResponse } from './api';
 
 const instance: GetBusinessAssetsResponse = {
+    asset_group_info,
     asset_id,
     asset_type,
-    asset_group_info,
+    catalog_info,
 };
 ```
 

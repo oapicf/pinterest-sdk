@@ -17,13 +17,33 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("SSIOInsertionOrderStatus")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOInsertionOrderStatus   {
+  private String creationTime;
   private String pinOrderId;
   private String status;
-  private String creationTime;
 
   public SSIOInsertionOrderStatus() {
+  }
+
+  /**
+   * Salesforce insertion order creation time
+   **/
+  public SSIOInsertionOrderStatus creationTime(String creationTime) {
+    this.creationTime = creationTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
+  @JsonProperty("creation_time")
+  public String getCreationTime() {
+    return creationTime;
+  }
+
+  @JsonProperty("creation_time")
+  public void setCreationTime(String creationTime) {
+    this.creationTime = creationTime;
   }
 
   /**
@@ -66,26 +86,6 @@ public class SSIOInsertionOrderStatus   {
     this.status = status;
   }
 
-  /**
-   * Salesforce insertion order creation time
-   **/
-  public SSIOInsertionOrderStatus creationTime(String creationTime) {
-    this.creationTime = creationTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
-  @JsonProperty("creation_time")
-  public String getCreationTime() {
-    return creationTime;
-  }
-
-  @JsonProperty("creation_time")
-  public void setCreationTime(String creationTime) {
-    this.creationTime = creationTime;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -96,14 +96,14 @@ public class SSIOInsertionOrderStatus   {
       return false;
     }
     SSIOInsertionOrderStatus ssIOInsertionOrderStatus = (SSIOInsertionOrderStatus) o;
-    return Objects.equals(this.pinOrderId, ssIOInsertionOrderStatus.pinOrderId) &&
-        Objects.equals(this.status, ssIOInsertionOrderStatus.status) &&
-        Objects.equals(this.creationTime, ssIOInsertionOrderStatus.creationTime);
+    return Objects.equals(this.creationTime, ssIOInsertionOrderStatus.creationTime) &&
+        Objects.equals(this.pinOrderId, ssIOInsertionOrderStatus.pinOrderId) &&
+        Objects.equals(this.status, ssIOInsertionOrderStatus.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pinOrderId, status, creationTime);
+    return Objects.hash(creationTime, pinOrderId, status);
   }
 
   @Override
@@ -111,9 +111,9 @@ public class SSIOInsertionOrderStatus   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderStatus {\n");
     
+    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

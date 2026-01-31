@@ -15,13 +15,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param id 
+ * @param index 
  * @param key 
  * @param name 
  * @param ratio 
- * @param index 
- * @param id 
  */
 data class AudienceInsightCategoryCommon(
+
+    @Schema(example = "549755885175", description = "")
+    @get:JsonProperty("id") val id: kotlin.String? = null,
+
+    @Schema(example = "1.2", description = "")
+    @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
 
     @Schema(example = "549755885175", description = "")
     @get:JsonProperty("key") val key: kotlin.String? = null,
@@ -30,13 +36,7 @@ data class AudienceInsightCategoryCommon(
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @Schema(example = "0.551", description = "")
-    @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null,
-
-    @Schema(example = "1.2", description = "")
-    @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
-
-    @Schema(example = "549755885175", description = "")
-    @get:JsonProperty("id") val id: kotlin.String? = null
+    @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null
 ) {
 
 }

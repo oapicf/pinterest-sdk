@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessMemberAssetsSummaryProfilesInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessMemberAssetsSummaryProfilesInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BusinessMemberAssetsSummaryProfilesInner {
+    title = BusinessMemberAssetsSummaryProfilesInner
+    description = BusinessMemberAssetsSummaryProfilesInner
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier of a business profile."
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels member or partner has on an asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessMemberAssetsSummaryProfilesInner {
+    title = BusinessMemberAssetsSummaryProfilesInner
+    description = BusinessMemberAssetsSummaryProfilesInner
+    implements = openapi_server.resourceTypes.BusinessMemberAssetsSummaryProfilesInner
+
+  }
+}

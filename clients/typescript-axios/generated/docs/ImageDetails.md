@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **number** |  | [default to undefined]
 **height** | **number** |  | [default to undefined]
 **url** | **string** |  | [default to undefined]
+**width** | **number** |  | [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { ImageDetails } from './api';
 
 const instance: ImageDetails = {
-    width,
     height,
     url,
+    width,
 };
 ```
 

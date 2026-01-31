@@ -1,0 +1,22 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "auto_targeting_enabled" },
+      {"model": "creative_types" },
+      {"model": "keywords" },
+      {"model": "placement_group" },
+      {"model": "product_group_ids" },
+      {"model": "targeting_spec" },
+    ]
+  }]
+}

@@ -6,15 +6,15 @@ context("Test TargetingSpec")
 model_instance <- TargetingSpec$new()
 
 test_that("AGE_BUCKET", {
-  # tests for the property `AGE_BUCKET` (array[character])
-  # Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+  # tests for the property `AGE_BUCKET` (array[TargetingSpecAgeBucket])
+  # **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`AGE_BUCKET`, "EXPECTED_RESULT")
 })
 
 test_that("APPTYPE", {
-  # tests for the property `APPTYPE` (array[character])
+  # tests for the property `APPTYPE` (array[TargetingSpecAppType])
   # Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
 
   # uncomment below to test the property
@@ -38,7 +38,7 @@ test_that("AUDIENCE_INCLUDE", {
 })
 
 test_that("GENDER", {
-  # tests for the property `GENDER` (array[character])
+  # tests for the property `GENDER` (array[TargetingSpecGender])
   # Targeted genders. Values: [\&quot;unknown\&quot;,\&quot;male\&quot;,\&quot;female\&quot;]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
 
   # uncomment below to test the property
@@ -63,7 +63,7 @@ test_that("INTEREST", {
 
 test_that("LOCALE", {
   # tests for the property `LOCALE` (array[character])
-  # 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+  # 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`LOCALE`, "EXPECTED_RESULT")
@@ -71,14 +71,30 @@ test_that("LOCALE", {
 
 test_that("LOCATION", {
   # tests for the property `LOCATION` (array[character])
-  # 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+  # 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt;. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`LOCATION`, "EXPECTED_RESULT")
 })
 
+test_that("MAXIMUM_AGE", {
+  # tests for the property `MAXIMUM_AGE` (character)
+  # Maximum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;, \&quot;65+\&quot;. Must be used together with &#x60;MINIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`MAXIMUM_AGE`, "EXPECTED_RESULT")
+})
+
+test_that("MINIMUM_AGE", {
+  # tests for the property `MINIMUM_AGE` (character)
+  # Minimum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;. Note: 65+ is not allowed for minimum age. Must be used together with &#x60;MAXIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`MINIMUM_AGE`, "EXPECTED_RESULT")
+})
+
 test_that("SHOPPING_RETARGETING", {
-  # tests for the property `SHOPPING_RETARGETING` (array[TargetingSpecSHOPPINGRETARGETING])
+  # tests for the property `SHOPPING_RETARGETING` (array[TargetingSpecShoppingRetargeting])
   # Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
 
   # uncomment below to test the property

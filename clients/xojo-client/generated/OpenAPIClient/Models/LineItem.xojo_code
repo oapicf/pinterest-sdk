@@ -3,7 +3,7 @@ Protected Class LineItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Product brand. For example, "Parker".
+			Product brand. For example, 'Parker'.
 		#tag EndNote
 		product_brand As Xoson.O.OptionalString
 	#tag EndProperty
@@ -11,7 +11,7 @@ Protected Class LineItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Product category. For example, "Shoes".
+			Product category. For example, 'Shoes'.
 		#tag EndNote
 		product_category As Xoson.O.OptionalString
 	#tag EndProperty
@@ -27,7 +27,7 @@ Protected Class LineItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Product name. For example, "Parker Boots".
+			Product name. For example, 'Parker Boots'.
 		#tag EndNote
 		product_name As Xoson.O.OptionalString
 	#tag EndProperty
@@ -35,7 +35,7 @@ Protected Class LineItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Product price. For example, "99.99".
+			Product price. For example, '99.99'.
 		#tag EndNote
 		product_price As Xoson.O.OptionalString
 	#tag EndProperty
@@ -51,7 +51,7 @@ Protected Class LineItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Product variant. For example, "Red".
+			Product variant. For example, 'Red'.
 		#tag EndNote
 		product_variant As Xoson.O.OptionalString
 	#tag EndProperty
@@ -59,7 +59,7 @@ Protected Class LineItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Product variant ID. For example, "1414-34832".
+			Product variant ID. For example, '1414-34832'.
 		#tag EndNote
 		product_variant_id As Xoson.O.OptionalString
 	#tag EndProperty

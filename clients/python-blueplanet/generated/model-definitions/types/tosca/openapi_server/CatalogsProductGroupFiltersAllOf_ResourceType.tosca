@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupFiltersAllOf"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupFiltersAllOf"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupFilterKeys = openapi_server.resourceTypes.CatalogsProductGroupFilterKeys
+}
+resourceTypes {
+
+  CatalogsProductGroupFiltersAllOf {
+    title = CatalogsProductGroupFiltersAllOf
+    description = CatalogsProductGroupFiltersAllOf
+    derivedFrom = Root
+    properties {
+        all_of {
+          type = array
+          items.type = CatalogsProductGroupFilterKeys
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupFiltersAllOf {
+    title = CatalogsProductGroupFiltersAllOf
+    description = CatalogsProductGroupFiltersAllOf
+    implements = openapi_server.resourceTypes.CatalogsProductGroupFiltersAllOf
+
+  }
+}

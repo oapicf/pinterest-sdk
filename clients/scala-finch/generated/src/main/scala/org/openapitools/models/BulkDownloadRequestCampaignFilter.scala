@@ -11,17 +11,17 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param startUnderscoretime Unix UTC timestamp.
+ * @param campaignUnderscorestatus 
  * @param endUnderscoretime Unix UTC timestamp.
  * @param name Campaign name
- * @param campaignUnderscorestatus 
  * @param objectiveUnderscoretype 
+ * @param startUnderscoretime Unix UTC timestamp.
  */
-case class BulkDownloadRequestCampaignFilter(startUnderscoretime: Option[String],
+case class BulkDownloadRequestCampaignFilter(campaignUnderscorestatus: Option[Seq[CampaignSummaryStatus]],
                 endUnderscoretime: Option[String],
                 name: Option[String],
-                campaignUnderscorestatus: Option[Seq[CampaignSummaryStatus]],
-                objectiveUnderscoretype: Option[Seq[ObjectiveType]]
+                objectiveUnderscoretype: Option[Seq[ObjectiveType]],
+                startUnderscoretime: Option[String]
                 )
 
 object BulkDownloadRequestCampaignFilter {

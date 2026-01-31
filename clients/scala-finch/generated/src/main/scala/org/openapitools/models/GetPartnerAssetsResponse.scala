@@ -10,15 +10,15 @@ import scala.collection.immutable.Seq
 
 /**
  * An object containing the permissions a you/your business partner has on the asset.
- * @param assetUnderscoreid Unique identifier of a business asset.
- * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
- * @param permissions The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.
  * @param assetUnderscoregroupUnderscoreinfo 
+ * @param assetUnderscoreid Unique identifier of a business asset.
+ * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param permissions The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.
  */
-case class GetPartnerAssetsResponse(assetUnderscoreid: Option[String],
+case class GetPartnerAssetsResponse(assetUnderscoregroupUnderscoreinfo: Option[AssetGroupBinding],
+                assetUnderscoreid: Option[String],
                 assetUnderscoretype: Option[String],
-                permissions: Option[Seq[String]],
-                assetUnderscoregroupUnderscoreinfo: Option[AssetGroupBinding]
+                permissions: Option[Seq[String]]
                 )
 
 object GetPartnerAssetsResponse {

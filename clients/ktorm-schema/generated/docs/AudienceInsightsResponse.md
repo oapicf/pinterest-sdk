@@ -6,11 +6,11 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **categories** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceCategory&gt;**](AudienceCategory.md) | Category interest distribution |  [optional]
-**demographics** | demographics | long |  | [**AudienceDemographics**](AudienceDemographics.md) |  |  [optional] [foreignkey]
-**type** | type | long |  | [**AudienceInsightType**](AudienceInsightType.md) |  |  [optional] [foreignkey]
 **date** | date | text |  | **kotlin.String** | Generation date |  [optional]
+**demographics** | demographics | long |  | [**AudienceDemographics**](AudienceDemographics.md) |  |  [optional] [foreignkey]
 **propertySize** | size | int |  | **kotlin.Int** | Population count. |  [optional]
 **sizeIsUpperBound** | size_is_upper_bound | boolean |  | **kotlin.Boolean** | Indicates whether the audience size has been rounded up to the next highest upper boundary. |  [optional]
+**type** | type | long |  | [**AudienceInsightType**](AudienceInsightType.md) |  |  [optional] [foreignkey]
 
 
 # **Table `AudienceInsightsResponseAudienceCategory`**

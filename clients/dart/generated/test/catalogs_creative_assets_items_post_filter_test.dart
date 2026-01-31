@@ -16,6 +16,12 @@ void main() {
   // final instance = CatalogsCreativeAssetsItemsPostFilter();
 
   group('test CatalogsCreativeAssetsItemsPostFilter', () {
+    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -23,12 +29,6 @@ void main() {
 
     // List<String> creativeAssetsIds (default value: const [])
     test('to test the property `creativeAssetsIds`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

@@ -7,8 +7,8 @@
 
 (def paginated-data
   {
-   (ds/req :items) (s/coll-of any?)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of any?)
    })
 
 (def paginated-spec

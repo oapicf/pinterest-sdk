@@ -18,6 +18,8 @@ import java.util.Objects;
 
 public class CatalogsHotelItemsPostFilter   {
   
+  private String catalogId;
+
 
 public enum CatalogTypeEnum {
 
@@ -53,7 +55,24 @@ public enum CatalogTypeEnum {
 
   private List<String> hotelIds = new ArrayList<>();
 
-  private String catalogId;
+  /**
+   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   **/
+  public CatalogsHotelItemsPostFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
 
   /**
    **/
@@ -101,25 +120,6 @@ public enum CatalogTypeEnum {
   }
 
 
-  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-   **/
-  public CatalogsHotelItemsPostFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -130,14 +130,14 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsHotelItemsPostFilter catalogsHotelItemsPostFilter = (CatalogsHotelItemsPostFilter) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemsPostFilter.catalogType) &&
-        Objects.equals(this.hotelIds, catalogsHotelItemsPostFilter.hotelIds) &&
-        Objects.equals(this.catalogId, catalogsHotelItemsPostFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsHotelItemsPostFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelItemsPostFilter.catalogType) &&
+        Objects.equals(this.hotelIds, catalogsHotelItemsPostFilter.hotelIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelIds, catalogId);
+    return Objects.hash(catalogId, catalogType, hotelIds);
   }
 
   @Override
@@ -145,9 +145,9 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsPostFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

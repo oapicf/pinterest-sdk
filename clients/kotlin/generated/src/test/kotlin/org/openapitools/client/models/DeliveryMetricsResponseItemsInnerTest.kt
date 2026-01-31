@@ -25,12 +25,6 @@ class DeliveryMetricsResponseItemsInnerTest : ShouldSpec() {
         // uncomment below to create an instance of DeliveryMetricsResponseItemsInner
         //val modelInstance = DeliveryMetricsResponseItemsInner()
 
-        // to test the property `name` - Metric's name.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `category` - Category name
         should("test category") {
             // uncomment below to test the property
@@ -47,6 +41,12 @@ class DeliveryMetricsResponseItemsInnerTest : ShouldSpec() {
         should("test displayName") {
             // uncomment below to test the property
             //modelInstance.displayName shouldBe ("TODO")
+        }
+
+        // to test the property `name` - Metric's name.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

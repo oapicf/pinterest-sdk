@@ -18,14 +18,14 @@ import { BatchOperation } from './batchOperation';
 export interface CatalogsItemsUpsertBatchRequest { 
     country: Country;
     /**
+     * Array with catalogs items
+     */
+    items: Array<ItemUpsertBatchRecord>;
+    /**
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsUpsertBatchRequest.LanguageEnum;
     operation: BatchOperation;
-    /**
-     * Array with catalogs items
-     */
-    items: Array<ItemUpsertBatchRecord>;
 }
 export namespace CatalogsItemsUpsertBatchRequest {
     export const LanguageEnum = {

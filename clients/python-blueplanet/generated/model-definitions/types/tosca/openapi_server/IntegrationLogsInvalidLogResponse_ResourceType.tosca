@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLogsInvalidLogResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLogsInvalidLogResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  IntegrationLogsInvalidLogResponseRejectedLogsInner = openapi_server.resourceTypes.IntegrationLogsInvalidLogResponseRejectedLogsInner
+}
+resourceTypes {
+
+  IntegrationLogsInvalidLogResponse {
+    title = IntegrationLogsInvalidLogResponse
+    description = IntegrationLogsInvalidLogResponse
+    derivedFrom = Root
+    properties {
+        rejected_logs {
+          type = array
+          items.type = IntegrationLogsInvalidLogResponseRejectedLogsInner
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLogsInvalidLogResponse {
+    title = IntegrationLogsInvalidLogResponse
+    description = IntegrationLogsInvalidLogResponse
+    implements = openapi_server.resourceTypes.IntegrationLogsInvalidLogResponse
+
+  }
+}

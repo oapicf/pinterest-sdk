@@ -31,19 +31,19 @@ public class AdsAnalyticsGetAsyncResponseTest {
     }
 
     /**
-     * Test the property 'url'
-     */
-    @Test
-    public void urlTest() {
-        // TODO: test url
-    }
-
-    /**
      * Test the property 'size'
      */
     @Test
     public void sizeTest() {
         // TODO: test size
+    }
+
+    /**
+     * Test the property 'url'
+     */
+    @Test
+    public void urlTest() {
+        // TODO: test url
     }
 
 }

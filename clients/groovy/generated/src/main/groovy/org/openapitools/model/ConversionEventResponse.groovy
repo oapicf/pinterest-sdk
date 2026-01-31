@@ -7,12 +7,12 @@ import org.openapitools.model.ConversionTagType;
 
 @Canonical
 class ConversionEventResponse {
+    /* Id of the ad account. */
+    String adAccountId
     
     ConversionTagType conversionEvent
     /* Id of the tag. */
     String conversionTagId
-    /* Id of the ad account. */
-    String adAccountId
     /* Creation date in epoch format. */
     Integer createdTime
 }

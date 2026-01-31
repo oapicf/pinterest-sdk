@@ -6,7 +6,6 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.Audience;
-import com.prokarma.pkmst.model.AudienceCreateCustomRequest;
 import com.prokarma.pkmst.model.AudienceCreateRequest;
 import com.prokarma.pkmst.model.AudienceUpdateRequest;
 import com.prokarma.pkmst.model.AudiencesList200Response;
@@ -24,11 +23,11 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "Audiences", description = "the Audiences API")
 public interface AudiencesApi {
 
-    @ApiOperation(value = "Create audience", notes = "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.", response = Audience.class, authorizations = {
+    @ApiOperation(value = "Create audience", notes = "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.", response = Audience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "audiences", })
@@ -44,24 +43,10 @@ public interface AudiencesApi {
     ResponseEntity<Audience> audiencesCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "List of ads to create, size limit [1, 30]" ,required=true )   @RequestBody AudienceCreateRequest audienceCreateRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Create custom audience", notes = "Create a custom audience and find the audiences you want your ads to reach.", response = Audience.class, authorizations = {
-        @Authorization(value = "pinterest_oauth2", scopes = {
-            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
-         }, tags={ "audiences", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/ad_accounts/{ad_account_id}/audiences/custom",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    ResponseEntity<Audience> audiencesCreateCustom(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Custom audience to create." ,required=true )   @RequestBody AudienceCreateCustomRequest audienceCreateCustomRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
-
-
     @ApiOperation(value = "Get audience", notes = "Get a specific audience given the audience ID.", response = Audience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audiences", })
     @ApiResponses(value = { 
@@ -78,6 +63,8 @@ public interface AudiencesApi {
 
     @ApiOperation(value = "List audiences", notes = "Get list of audiences for the ad account.", response = AudiencesList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audiences", })
     @ApiResponses(value = { 
@@ -105,6 +92,6 @@ public interface AudiencesApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<Audience> audiencesUpdate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Unique identifier of an audience",required=true ) @PathVariable("audience_id") String audienceId,@ApiParam(value = "The audience to be updated."  )   @RequestBody AudienceUpdateRequest audienceUpdateRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<Audience> audiencesUpdate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Unique identifier of an audience",required=true ) @PathVariable("audience_id") String audienceId,@ApiParam(value = "The audience to be updated." ,required=true )   @RequestBody AudienceUpdateRequest audienceUpdateRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 }

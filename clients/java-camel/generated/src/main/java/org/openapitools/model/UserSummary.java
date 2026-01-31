@@ -18,32 +18,12 @@ import javax.annotation.Generated;
  * UserSummary
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserSummary {
-
-  private String username;
 
   private String type;
 
-  public UserSummary username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  /**
-   * Username
-   * @return username
-   */
-  
-  @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  private String username;
 
   public UserSummary type(String type) {
     this.type = type;
@@ -65,6 +45,26 @@ public class UserSummary {
     this.type = type;
   }
 
+  public UserSummary username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * Username
+   * @return username
+   */
+  
+  @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -74,21 +74,21 @@ public class UserSummary {
       return false;
     }
     UserSummary userSummary = (UserSummary) o;
-    return Objects.equals(this.username, userSummary.username) &&
-        Objects.equals(this.type, userSummary.type);
+    return Objects.equals(this.type, userSummary.type) &&
+        Objects.equals(this.username, userSummary.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, type);
+    return Objects.hash(type, username);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserSummary {\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

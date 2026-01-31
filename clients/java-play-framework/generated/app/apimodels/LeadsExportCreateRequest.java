@@ -9,14 +9,14 @@ import javax.validation.Valid;
 /**
  * LeadsExportCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LeadsExportCreateRequest   {
-  @JsonProperty("start_date")
+  @JsonProperty("ad_id")
   @NotNull
-@Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")
+@Pattern(regexp="^\\d+$")
 
-  private String startDate;
+  private String adId;
 
   @JsonProperty("end_date")
   @NotNull
@@ -24,27 +24,27 @@ public class LeadsExportCreateRequest   {
 
   private String endDate;
 
-  @JsonProperty("ad_id")
+  @JsonProperty("start_date")
   @NotNull
-@Pattern(regexp="^\\d+$")
+@Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")
 
-  private String adId;
+  private String startDate;
 
-  public LeadsExportCreateRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public LeadsExportCreateRequest adId(String adId) {
+    this.adId = adId;
     return this;
   }
 
    /**
-   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-   * @return startDate
+   * ID for the ad collecting leads
+   * @return adId
   **/
-  public String getStartDate() {
-    return startDate;
+  public String getAdId() {
+    return adId;
   }
 
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setAdId(String adId) {
+    this.adId = adId;
   }
 
   public LeadsExportCreateRequest endDate(String endDate) {
@@ -64,21 +64,21 @@ public class LeadsExportCreateRequest   {
     this.endDate = endDate;
   }
 
-  public LeadsExportCreateRequest adId(String adId) {
-    this.adId = adId;
+  public LeadsExportCreateRequest startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * ID for the ad collecting leads
-   * @return adId
+   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+   * @return startDate
   **/
-  public String getAdId() {
-    return adId;
+  public String getStartDate() {
+    return startDate;
   }
 
-  public void setAdId(String adId) {
-    this.adId = adId;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -91,14 +91,14 @@ public class LeadsExportCreateRequest   {
       return false;
     }
     LeadsExportCreateRequest leadsExportCreateRequest = (LeadsExportCreateRequest) o;
-    return Objects.equals(startDate, leadsExportCreateRequest.startDate) &&
+    return Objects.equals(adId, leadsExportCreateRequest.adId) &&
         Objects.equals(endDate, leadsExportCreateRequest.endDate) &&
-        Objects.equals(adId, leadsExportCreateRequest.adId);
+        Objects.equals(startDate, leadsExportCreateRequest.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, adId);
+    return Objects.hash(adId, endDate, startDate);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -107,9 +107,9 @@ public class LeadsExportCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportCreateRequest {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -13,27 +13,27 @@ import AnyCodable
 public struct CreateAssetAccessRequestBodyAssetRequestsInner: Codable, JSONEncodable, Hashable {
 
     public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Unique identifier of a business partner to request asset access to. */
-    public var partnerId: String
     /** An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
     public var assetIdToPermissions: [String: [Permissions]]
+    /** Unique identifier of a business partner to request asset access to. */
+    public var partnerId: String
 
-    public init(partnerId: String, assetIdToPermissions: [String: [Permissions]]) {
-        self.partnerId = partnerId
+    public init(assetIdToPermissions: [String: [Permissions]], partnerId: String) {
         self.assetIdToPermissions = assetIdToPermissions
+        self.partnerId = partnerId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case partnerId = "partner_id"
         case assetIdToPermissions = "asset_id_to_permissions"
+        case partnerId = "partner_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(partnerId, forKey: .partnerId)
         try container.encode(assetIdToPermissions, forKey: .assetIdToPermissions)
+        try container.encode(partnerId, forKey: .partnerId)
     }
 }
 

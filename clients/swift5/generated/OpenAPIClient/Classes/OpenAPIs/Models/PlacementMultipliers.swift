@@ -16,6 +16,7 @@ public struct PlacementMultipliers: Codable, JSONEncodable, Hashable {
     public enum PLACEMENTEnum: String, Codable, CaseIterable {
         case search = "SEARCH"
         case browse = "BROWSE"
+        case relatedPins = "RELATED_PINS"
     }
     public var PLACEMENT: PLACEMENT?
 

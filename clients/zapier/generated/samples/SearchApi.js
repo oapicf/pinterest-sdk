@@ -3,6 +3,6 @@ module.exports = {
         { data: {} },
     "search_user_boards_get_200_responseSample": 
         { data: {} },
-    "pins_list_200_responseSample": 
+    "search_user_pins_list_200_responseSample": 
         { data: {} },
 }

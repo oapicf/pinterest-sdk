@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardMedia;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.BoardPrivacy;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -24,43 +25,11 @@ public class BoardTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
      * Test the property 'boardPinsModifiedAt'
      */
     @Test
     public void boardPinsModifiedAtTest() {
         // TODO: test boardPinsModifiedAt
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
     }
 
     /**
@@ -72,11 +41,19 @@ public class BoardTest {
     }
 
     /**
-     * Test the property 'pinCount'
+     * Test the property 'createdAt'
      */
     @Test
-    public void pinCountTest() {
-        // TODO: test pinCount
+    public void createdAtTest() {
+        // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
     }
 
     /**
@@ -88,6 +65,22 @@ public class BoardTest {
     }
 
     /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'isAdsOnly'
+     */
+    @Test
+    public void isAdsOnlyTest() {
+        // TODO: test isAdsOnly
+    }
+
+    /**
      * Test the property 'media'
      */
     @Test
@@ -96,11 +89,27 @@ public class BoardTest {
     }
 
     /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
      * Test the property 'owner'
      */
     @Test
     public void ownerTest() {
         // TODO: test owner
+    }
+
+    /**
+     * Test the property 'pinCount'
+     */
+    @Test
+    public void pinCountTest() {
+        // TODO: test pinCount
     }
 
     /**

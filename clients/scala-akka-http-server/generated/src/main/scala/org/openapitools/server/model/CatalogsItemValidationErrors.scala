@@ -12,8 +12,8 @@ package org.openapitools.server.model
  * @param IMAGE_LINK_LENGTH_TOO_LONG  for example: ''null''
  * @param IMAGE_LINK_MISSING  for example: ''null''
  * @param INVALID_DOMAIN  for example: ''null''
- * @param ITEMID_MISSING  for example: ''null''
  * @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE  for example: ''null''
+ * @param ITEMID_MISSING  for example: ''null''
  * @param LINK_FORMAT_INVALID  for example: ''null''
  * @param LINK_LENGTH_TOO_LONG  for example: ''null''
  * @param LIST_PRICE_INVALID  for example: ''null''
@@ -37,8 +37,8 @@ final case class CatalogsItemValidationErrors (
   IMAGE_LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails] = None,
   IMAGE_LINK_MISSING: Option[CatalogsItemValidationDetails] = None,
   INVALID_DOMAIN: Option[CatalogsItemValidationDetails] = None,
-  ITEMID_MISSING: Option[CatalogsItemValidationDetails] = None,
   ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: Option[CatalogsItemValidationDetails] = None,
+  ITEMID_MISSING: Option[CatalogsItemValidationDetails] = None,
   LINK_FORMAT_INVALID: Option[CatalogsItemValidationDetails] = None,
   LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails] = None,
   LIST_PRICE_INVALID: Option[CatalogsItemValidationDetails] = None,

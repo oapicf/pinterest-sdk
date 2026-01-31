@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,9 +24,11 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 @ApiModel(description = "A successful OAuth client token response for the client token flow.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponseClientCredentials   {
   
+  private String accessToken;
+  private Integer expiresIn;
 
 
   public enum ResponseTypeEnum {
@@ -48,27 +50,8 @@ public class OauthAccessTokenResponseClientCredentials   {
   }
 
   private ResponseTypeEnum responseType;
-  private String accessToken;
-  private String tokenType = "bearer";
-  private Integer expiresIn;
   private String scope;
-
-  /**
-   */
-  public OauthAccessTokenResponseClientCredentials responseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("response_type")
-  public ResponseTypeEnum getResponseType() {
-    return responseType;
-  }
-  public void setResponseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-  }
+  private String tokenType = "bearer";
 
   /**
    */
@@ -85,23 +68,6 @@ public class OauthAccessTokenResponseClientCredentials   {
   }
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
-  }
-
-  /**
-   */
-  public OauthAccessTokenResponseClientCredentials tokenType(String tokenType) {
-    this.tokenType = tokenType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("token_type")
-  public String getTokenType() {
-    return tokenType;
-  }
-  public void setTokenType(String tokenType) {
-    this.tokenType = tokenType;
   }
 
   /**
@@ -123,6 +89,23 @@ public class OauthAccessTokenResponseClientCredentials   {
 
   /**
    */
+  public OauthAccessTokenResponseClientCredentials responseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("response_type")
+  public ResponseTypeEnum getResponseType() {
+    return responseType;
+  }
+  public void setResponseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+  }
+
+  /**
+   */
   public OauthAccessTokenResponseClientCredentials scope(String scope) {
     this.scope = scope;
     return this;
@@ -138,6 +121,23 @@ public class OauthAccessTokenResponseClientCredentials   {
     this.scope = scope;
   }
 
+  /**
+   */
+  public OauthAccessTokenResponseClientCredentials tokenType(String tokenType) {
+    this.tokenType = tokenType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("token_type")
+  public String getTokenType() {
+    return tokenType;
+  }
+  public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -148,16 +148,16 @@ public class OauthAccessTokenResponseClientCredentials   {
       return false;
     }
     OauthAccessTokenResponseClientCredentials oauthAccessTokenResponseClientCredentials = (OauthAccessTokenResponseClientCredentials) o;
-    return Objects.equals(responseType, oauthAccessTokenResponseClientCredentials.responseType) &&
-        Objects.equals(accessToken, oauthAccessTokenResponseClientCredentials.accessToken) &&
-        Objects.equals(tokenType, oauthAccessTokenResponseClientCredentials.tokenType) &&
+    return Objects.equals(accessToken, oauthAccessTokenResponseClientCredentials.accessToken) &&
         Objects.equals(expiresIn, oauthAccessTokenResponseClientCredentials.expiresIn) &&
-        Objects.equals(scope, oauthAccessTokenResponseClientCredentials.scope);
+        Objects.equals(responseType, oauthAccessTokenResponseClientCredentials.responseType) &&
+        Objects.equals(scope, oauthAccessTokenResponseClientCredentials.scope) &&
+        Objects.equals(tokenType, oauthAccessTokenResponseClientCredentials.tokenType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseType, accessToken, tokenType, expiresIn, scope);
+    return Objects.hash(accessToken, expiresIn, responseType, scope, tokenType);
   }
 
   @Override
@@ -165,11 +165,11 @@ public class OauthAccessTokenResponseClientCredentials   {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponseClientCredentials {\n");
     
-    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

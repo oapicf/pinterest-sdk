@@ -20,12 +20,16 @@ typedef struct audience_definition_t audience_definition_t;
 
 typedef struct audience_definition_t {
     char *date; // string
+    char *scope; // string
+    char *type; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_definition_t;
 
 __attribute__((deprecated)) audience_definition_t *audience_definition_create(
     char *date,
+    char *scope,
+    char *type
 );
 
 void audience_definition_free(audience_definition_t *audience_definition);

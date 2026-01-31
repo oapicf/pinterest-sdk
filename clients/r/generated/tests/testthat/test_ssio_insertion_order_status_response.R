@@ -5,6 +5,14 @@ context("Test SSIOInsertionOrderStatusResponse")
 
 model_instance <- SSIOInsertionOrderStatusResponse$new()
 
+test_that("creation_time", {
+  # tests for the property `creation_time` (character)
+  # Salesforce insertion order creation time
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`creation_time`, "EXPECTED_RESULT")
+})
+
 test_that("pin_order_id", {
   # tests for the property `pin_order_id` (character)
   # Salesforce order id
@@ -19,12 +27,4 @@ test_that("status", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
-test_that("creation_time", {
-  # tests for the property `creation_time` (character)
-  # Salesforce insertion order creation time
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`creation_time`, "EXPECTED_RESULT")
 })

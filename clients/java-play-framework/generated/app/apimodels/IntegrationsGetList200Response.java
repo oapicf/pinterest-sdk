@@ -15,18 +15,35 @@ import javax.validation.Valid;
 /**
  * IntegrationsGetList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class IntegrationsGetList200Response   {
+  @JsonProperty("bookmark")
+  
+  private String bookmark;
+
   @JsonProperty("items")
   @NotNull
 @Valid
 
   private List<@Valid IntegrationRecord> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  
-  private String bookmark;
+  public IntegrationsGetList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+   /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public IntegrationsGetList200Response items(List<@Valid IntegrationRecord> items) {
     this.items = items;
@@ -53,23 +70,6 @@ public class IntegrationsGetList200Response   {
     this.items = items;
   }
 
-  public IntegrationsGetList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-   /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class IntegrationsGetList200Response   {
       return false;
     }
     IntegrationsGetList200Response integrationsGetList200Response = (IntegrationsGetList200Response) o;
-    return Objects.equals(items, integrationsGetList200Response.items) &&
-        Objects.equals(bookmark, integrationsGetList200Response.bookmark);
+    return Objects.equals(bookmark, integrationsGetList200Response.bookmark) &&
+        Objects.equals(items, integrationsGetList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class IntegrationsGetList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationsGetList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

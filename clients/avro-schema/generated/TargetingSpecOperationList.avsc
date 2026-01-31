@@ -1,0 +1,35 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationList",
+  "fields": [
+    {
+      "name": "field",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationList_operation",
+        "symbols": [
+          "SET",
+          "ADD",
+          "REMOVE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

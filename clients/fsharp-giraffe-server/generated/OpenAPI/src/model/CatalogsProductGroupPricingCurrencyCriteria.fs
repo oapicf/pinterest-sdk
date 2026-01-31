@@ -13,9 +13,9 @@ module CatalogsProductGroupPricingCurrencyCriteria =
   //#endregion
 
   type catalogs_product_group_pricing_currency_criteria = {
-    Operator : OperatorEnum;
-    Value : decimal;
     Currency : NonNullableCatalogsCurrency;
     Negated : bool;
+    Operator : OperatorEnum;
+    Value : decimal;
   }
   //#endregion

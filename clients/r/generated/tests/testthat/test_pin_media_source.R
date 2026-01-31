@@ -5,15 +5,8 @@ context("Test PinMediaSource")
 
 model_instance <- PinMediaSource$new()
 
-test_that("source_type", {
-  # tests for the property `source_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`source_type`, "EXPECTED_RESULT")
-})
-
 test_that("content_type", {
-  # tests for the property `content_type` (character)
+  # tests for the property `content_type` (ContentType)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`content_type`, "EXPECTED_RESULT")
@@ -34,6 +27,13 @@ test_that("is_standard", {
   #expect_equal(model.instance$`is_standard`, "EXPECTED_RESULT")
 })
 
+test_that("source_type", {
+  # tests for the property `source_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`source_type`, "EXPECTED_RESULT")
+})
+
 test_that("url", {
   # tests for the property `url` (character)
 
@@ -41,16 +41,8 @@ test_that("url", {
   #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })
 
-test_that("cover_image_url", {
-  # tests for the property `cover_image_url` (character)
-  # Cover image url.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`cover_image_url`, "EXPECTED_RESULT")
-})
-
 test_that("cover_image_content_type", {
-  # tests for the property `cover_image_content_type` (character)
+  # tests for the property `cover_image_content_type` (ContentType)
   # Content type for cover image Base64.
 
   # uncomment below to test the property
@@ -65,6 +57,22 @@ test_that("cover_image_data", {
   #expect_equal(model.instance$`cover_image_data`, "EXPECTED_RESULT")
 })
 
+test_that("cover_image_key_frame_time", {
+  # tests for the property `cover_image_key_frame_time` (integer)
+  # Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cover_image_key_frame_time`, "EXPECTED_RESULT")
+})
+
+test_that("cover_image_url", {
+  # tests for the property `cover_image_url` (character)
+  # Cover image URL.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cover_image_url`, "EXPECTED_RESULT")
+})
+
 test_that("media_id", {
   # tests for the property `media_id` (character)
 
@@ -72,19 +80,19 @@ test_that("media_id", {
   #expect_equal(model.instance$`media_id`, "EXPECTED_RESULT")
 })
 
-test_that("items", {
-  # tests for the property `items` (array[PinMediaSourceImagesURLItemsInner])
-  # Array with image objects.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
-})
-
 test_that("index", {
   # tests for the property `index` (integer)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`index`, "EXPECTED_RESULT")
+})
+
+test_that("items", {
+  # tests for the property `items` (array[PinMediaSourceImagesURLItem])
+  # Array with image objects.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
 })
 
 test_that("is_affiliate_link", {

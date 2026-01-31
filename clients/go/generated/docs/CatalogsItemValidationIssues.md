@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemNumber** | **int32** | Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. | 
-**ItemId** | **NullableString** | The merchant-created unique ID that represents the product. | 
 **Errors** | [**CatalogsItemValidationErrors**](CatalogsItemValidationErrors.md) |  | 
+**ItemId** | **NullableString** | The merchant-created unique ID that represents the product. | 
+**ItemNumber** | **int32** | Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. | 
 **Warnings** | [**CatalogsItemValidationWarnings**](CatalogsItemValidationWarnings.md) |  | 
 
 ## Methods
 
 ### NewCatalogsItemValidationIssues
 
-`func NewCatalogsItemValidationIssues(itemNumber int32, itemId NullableString, errors CatalogsItemValidationErrors, warnings CatalogsItemValidationWarnings, ) *CatalogsItemValidationIssues`
+`func NewCatalogsItemValidationIssues(errors CatalogsItemValidationErrors, itemId NullableString, itemNumber int32, warnings CatalogsItemValidationWarnings, ) *CatalogsItemValidationIssues`
 
 NewCatalogsItemValidationIssues instantiates a new CatalogsItemValidationIssues object
 This constructor will assign default values to properties that have it defined,
@@ -28,24 +28,24 @@ NewCatalogsItemValidationIssuesWithDefaults instantiates a new CatalogsItemValid
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetItemNumber
+### GetErrors
 
-`func (o *CatalogsItemValidationIssues) GetItemNumber() int32`
+`func (o *CatalogsItemValidationIssues) GetErrors() CatalogsItemValidationErrors`
 
-GetItemNumber returns the ItemNumber field if non-nil, zero value otherwise.
+GetErrors returns the Errors field if non-nil, zero value otherwise.
 
-### GetItemNumberOk
+### GetErrorsOk
 
-`func (o *CatalogsItemValidationIssues) GetItemNumberOk() (*int32, bool)`
+`func (o *CatalogsItemValidationIssues) GetErrorsOk() (*CatalogsItemValidationErrors, bool)`
 
-GetItemNumberOk returns a tuple with the ItemNumber field if it's non-nil, zero value otherwise
+GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetItemNumber
+### SetErrors
 
-`func (o *CatalogsItemValidationIssues) SetItemNumber(v int32)`
+`func (o *CatalogsItemValidationIssues) SetErrors(v CatalogsItemValidationErrors)`
 
-SetItemNumber sets ItemNumber field to given value.
+SetErrors sets Errors field to given value.
 
 
 ### GetItemId
@@ -78,24 +78,24 @@ SetItemId sets ItemId field to given value.
 `func (o *CatalogsItemValidationIssues) UnsetItemId()`
 
 UnsetItemId ensures that no value is present for ItemId, not even an explicit nil
-### GetErrors
+### GetItemNumber
 
-`func (o *CatalogsItemValidationIssues) GetErrors() CatalogsItemValidationErrors`
+`func (o *CatalogsItemValidationIssues) GetItemNumber() int32`
 
-GetErrors returns the Errors field if non-nil, zero value otherwise.
+GetItemNumber returns the ItemNumber field if non-nil, zero value otherwise.
 
-### GetErrorsOk
+### GetItemNumberOk
 
-`func (o *CatalogsItemValidationIssues) GetErrorsOk() (*CatalogsItemValidationErrors, bool)`
+`func (o *CatalogsItemValidationIssues) GetItemNumberOk() (*int32, bool)`
 
-GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+GetItemNumberOk returns a tuple with the ItemNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrors
+### SetItemNumber
 
-`func (o *CatalogsItemValidationIssues) SetErrors(v CatalogsItemValidationErrors)`
+`func (o *CatalogsItemValidationIssues) SetItemNumber(v int32)`
 
-SetErrors sets Errors field to given value.
+SetItemNumber sets ItemNumber field to given value.
 
 
 ### GetWarnings

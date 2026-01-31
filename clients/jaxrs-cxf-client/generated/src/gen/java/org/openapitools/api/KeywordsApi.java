@@ -76,7 +76,7 @@ public interface KeywordsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = KeywordsGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public KeywordsGet200Response keywordsGet(@PathParam("ad_account_id") String adAccountId, @QueryParam("campaign_id") String campaignId, @QueryParam("ad_group_id") String adGroupId, @QueryParam("match_types") List<MatchType> matchTypes, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+    public KeywordsGet200Response keywordsGet(@PathParam("ad_account_id") String adAccountId, @QueryParam("campaign_id") String campaignId, @QueryParam("ad_group_id") String adGroupId, @QueryParam("ad_group_ids") List<String> adGroupIds, @QueryParam("match_types") List<MatchType> matchTypes, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
 
     /**
      * Update keywords
@@ -108,5 +108,5 @@ public interface KeywordsApi  {
         @ApiResponse(code = 200, message = "Success", response = TrendingKeywordsResponse.class),
         @ApiResponse(code = 400, message = "Invalid trending keywords request parameters", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public TrendingKeywordsResponse trendingKeywordsList(@PathParam("region") TrendsSupportedRegion region, @PathParam("trend_type") TrendType trendType, @QueryParam("interests") List<String> interests, @QueryParam("genders") List<String> genders, @QueryParam("ages") List<String> ages, @QueryParam("include_keywords") List<String> includeKeywords, @QueryParam("normalize_against_group") @DefaultValue("false")Boolean normalizeAgainstGroup, @QueryParam("limit") @DefaultValue("50")Integer limit);
+    public TrendingKeywordsResponse trendingKeywordsList(@PathParam("region") TrendsSupportedRegion region, @PathParam("trend_type") TrendType trendType, @QueryParam("interests") List<String> interests, @QueryParam("genders") List<String> genders, @QueryParam("ages") List<String> ages, @QueryParam("include_keywords") List<String> includeKeywords, @QueryParam("normalize_against_group") @DefaultValue("false")Boolean normalizeAgainstGroup, @QueryParam("limit") @DefaultValue("50")Integer limit, @QueryParam("include_prediction") @DefaultValue("false")Boolean includePrediction, @QueryParam("include_demographics") @DefaultValue("false")Boolean includeDemographics);
 }

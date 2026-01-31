@@ -12,10 +12,10 @@ module SsioInsertionOrdersStatusGetByAdAccount200Response =
 
   [<CLIMutable>]
   type SsioInsertionOrdersStatusGetByAdAccount200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : SSIOInsertionOrderStatus[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : SSIOInsertionOrderStatus[];
   }
 
   //#endregion

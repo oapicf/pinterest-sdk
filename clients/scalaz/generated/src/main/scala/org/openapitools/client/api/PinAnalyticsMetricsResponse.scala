@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import PinAnalyticsMetricsResponse._
 
 case class PinAnalyticsMetricsResponse (
-  /* The lifetime metric name and value. */
-  lifetimeMetrics: Option[Map[String, Integer]],
-/* Array with the requested daily metric records */
+  /* Array with the requested daily metric records */
   dailyMetrics: Option[List[PinAnalyticsMetricsResponseDailyMetricsInner]],
+/* The lifetime metric name and value. */
+  lifetimeMetrics: Option[Map[String, Integer]],
 /* The metric name and value over the requested period for each requested metric */
   summaryMetrics: Option[Map[String, BigDecimal]])
 

@@ -13,7 +13,7 @@ module CreativeAssetsProcessingRecord =
   type CreativeAssetsProcessingRecord = {
     CreativeAssetsId : string;
     Errors : ItemValidationEvent[];
-    Warnings : ItemValidationEvent[];
     Status : ItemProcessingStatus;
+    Warnings : ItemValidationEvent[];
   }
   //#endregion

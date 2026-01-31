@@ -10,57 +10,40 @@ import javax.validation.Valid;
 /**
  * TermsOfService
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TermsOfService   {
-  @JsonProperty("id")
+  @JsonProperty("ad_account_id")
   
-  private String id;
-
-  @JsonProperty("html")
-  
-  private String html;
+  private String adAccountId;
 
   @JsonProperty("has_accepted")
   
   private Boolean hasAccepted;
 
-  @JsonProperty("ad_account_id")
+  @JsonProperty("html")
   
-  private String adAccountId;
+  private String html;
 
-  public TermsOfService id(String id) {
-    this.id = id;
+  @JsonProperty("id")
+  
+  private String id;
+
+  public TermsOfService adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
     return this;
   }
 
    /**
-   * The ID of the terms of service
-   * @return id
+   * The ID of the ad account.
+   * @return adAccountId
   **/
-  public String getId() {
-    return id;
+  public String getAdAccountId() {
+    return adAccountId;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public TermsOfService html(String html) {
-    this.html = html;
-    return this;
-  }
-
-   /**
-   * The terms of service content
-   * @return html
-  **/
-  public String getHtml() {
-    return html;
-  }
-
-  public void setHtml(String html) {
-    this.html = html;
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
   public TermsOfService hasAccepted(Boolean hasAccepted) {
@@ -80,21 +63,38 @@ public class TermsOfService   {
     this.hasAccepted = hasAccepted;
   }
 
-  public TermsOfService adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public TermsOfService html(String html) {
+    this.html = html;
     return this;
   }
 
    /**
-   * The ID of the ad account.
-   * @return adAccountId
+   * The terms of service content
+   * @return html
   **/
-  public String getAdAccountId() {
-    return adAccountId;
+  public String getHtml() {
+    return html;
   }
 
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setHtml(String html) {
+    this.html = html;
+  }
+
+  public TermsOfService id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The ID of the terms of service
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -107,15 +107,15 @@ public class TermsOfService   {
       return false;
     }
     TermsOfService termsOfService = (TermsOfService) o;
-    return Objects.equals(id, termsOfService.id) &&
-        Objects.equals(html, termsOfService.html) &&
+    return Objects.equals(adAccountId, termsOfService.adAccountId) &&
         Objects.equals(hasAccepted, termsOfService.hasAccepted) &&
-        Objects.equals(adAccountId, termsOfService.adAccountId);
+        Objects.equals(html, termsOfService.html) &&
+        Objects.equals(id, termsOfService.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, html, hasAccepted, adAccountId);
+    return Objects.hash(adAccountId, hasAccepted, html, id);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -124,10 +124,10 @@ public class TermsOfService   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TermsOfService {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    html: ").append(toIndentedString(html)).append("\n");
-    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
+    sb.append("    html: ").append(toIndentedString(html)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

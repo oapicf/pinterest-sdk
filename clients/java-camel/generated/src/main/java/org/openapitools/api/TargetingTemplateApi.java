@@ -64,6 +64,11 @@ public class TargetingTemplateApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts/{ad_account_id}/targeting_templates")

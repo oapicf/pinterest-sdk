@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,23 +16,8 @@ package openapi
 
 type CatalogsCreativeAssetsAttributes struct {
 
-	// The name of the creative assets.
-	Title string `json:"title,omitempty"`
-
-	// Brief description of the creative assets.
-	Description string `json:"description,omitempty"`
-
-	// Link to the creative assets page.
-	Link string `json:"link,omitempty"`
-
-	// IOS deep link to the creative assets page.
-	IosDeepLink *string `json:"ios_deep_link,omitempty"`
-
 	// Link to the creative assets page.
 	AndroidDeepLink *string `json:"android_deep_link,omitempty"`
-
-	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-	GoogleProductCategory *string `json:"google_product_category,omitempty"`
 
 	// Custom grouping of creative assets.
 	CustomLabel0 *string `json:"custom_label_0,omitempty"`
@@ -48,6 +33,21 @@ type CatalogsCreativeAssetsAttributes struct {
 
 	// Custom grouping of creative assets.
 	CustomLabel4 *string `json:"custom_label_4,omitempty"`
+
+	// Brief description of the creative assets.
+	Description string `json:"description,omitempty"`
+
+	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+	GoogleProductCategory *string `json:"google_product_category,omitempty"`
+
+	// IOS deep link to the creative assets page.
+	IosDeepLink *string `json:"ios_deep_link,omitempty"`
+
+	// Link to the creative assets page.
+	Link string `json:"link,omitempty"`
+
+	// The name of the creative assets.
+	Title string `json:"title,omitempty"`
 
 	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
 	Visibility *string `json:"visibility,omitempty"`

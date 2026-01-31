@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,11 +21,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponseCode   {
   
   private String refreshToken;
+  private Integer refreshTokenExpiresAt;
   private Integer refreshTokenExpiresIn;
+  private String accessToken;
+  private Integer expiresIn;
 
 
   public enum ResponseTypeEnum {
@@ -47,10 +50,8 @@ public class OauthAccessTokenResponseCode   {
   }
 
   private ResponseTypeEnum responseType;
-  private String accessToken;
-  private String tokenType = "bearer";
-  private Integer expiresIn;
   private String scope;
+  private String tokenType = "bearer";
 
   /**
    */
@@ -60,7 +61,7 @@ public class OauthAccessTokenResponseCode   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("refresh_token")
   public String getRefreshToken() {
     return refreshToken;
@@ -71,36 +72,36 @@ public class OauthAccessTokenResponseCode   {
 
   /**
    */
+  public OauthAccessTokenResponseCode refreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+    this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("refresh_token_expires_at")
+  public Integer getRefreshTokenExpiresAt() {
+    return refreshTokenExpiresAt;
+  }
+  public void setRefreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+    this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+  }
+
+  /**
+   */
   public OauthAccessTokenResponseCode refreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
     this.refreshTokenExpiresIn = refreshTokenExpiresIn;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("refresh_token_expires_in")
   public Integer getRefreshTokenExpiresIn() {
     return refreshTokenExpiresIn;
   }
   public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
     this.refreshTokenExpiresIn = refreshTokenExpiresIn;
-  }
-
-  /**
-   */
-  public OauthAccessTokenResponseCode responseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("response_type")
-  public ResponseTypeEnum getResponseType() {
-    return responseType;
-  }
-  public void setResponseType(ResponseTypeEnum responseType) {
-    this.responseType = responseType;
   }
 
   /**
@@ -122,23 +123,6 @@ public class OauthAccessTokenResponseCode   {
 
   /**
    */
-  public OauthAccessTokenResponseCode tokenType(String tokenType) {
-    this.tokenType = tokenType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("token_type")
-  public String getTokenType() {
-    return tokenType;
-  }
-  public void setTokenType(String tokenType) {
-    this.tokenType = tokenType;
-  }
-
-  /**
-   */
   public OauthAccessTokenResponseCode expiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
     return this;
@@ -152,6 +136,23 @@ public class OauthAccessTokenResponseCode   {
   }
   public void setExpiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
+  }
+
+  /**
+   */
+  public OauthAccessTokenResponseCode responseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("response_type")
+  public ResponseTypeEnum getResponseType() {
+    return responseType;
+  }
+  public void setResponseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
   }
 
   /**
@@ -171,6 +172,23 @@ public class OauthAccessTokenResponseCode   {
     this.scope = scope;
   }
 
+  /**
+   */
+  public OauthAccessTokenResponseCode tokenType(String tokenType) {
+    this.tokenType = tokenType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("token_type")
+  public String getTokenType() {
+    return tokenType;
+  }
+  public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -182,17 +200,18 @@ public class OauthAccessTokenResponseCode   {
     }
     OauthAccessTokenResponseCode oauthAccessTokenResponseCode = (OauthAccessTokenResponseCode) o;
     return Objects.equals(refreshToken, oauthAccessTokenResponseCode.refreshToken) &&
+        Objects.equals(refreshTokenExpiresAt, oauthAccessTokenResponseCode.refreshTokenExpiresAt) &&
         Objects.equals(refreshTokenExpiresIn, oauthAccessTokenResponseCode.refreshTokenExpiresIn) &&
-        Objects.equals(responseType, oauthAccessTokenResponseCode.responseType) &&
         Objects.equals(accessToken, oauthAccessTokenResponseCode.accessToken) &&
-        Objects.equals(tokenType, oauthAccessTokenResponseCode.tokenType) &&
         Objects.equals(expiresIn, oauthAccessTokenResponseCode.expiresIn) &&
-        Objects.equals(scope, oauthAccessTokenResponseCode.scope);
+        Objects.equals(responseType, oauthAccessTokenResponseCode.responseType) &&
+        Objects.equals(scope, oauthAccessTokenResponseCode.scope) &&
+        Objects.equals(tokenType, oauthAccessTokenResponseCode.tokenType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, refreshTokenExpiresIn, responseType, accessToken, tokenType, expiresIn, scope);
+    return Objects.hash(refreshToken, refreshTokenExpiresAt, refreshTokenExpiresIn, accessToken, expiresIn, responseType, scope, tokenType);
   }
 
   @Override
@@ -201,12 +220,13 @@ public class OauthAccessTokenResponseCode   {
     sb.append("class OauthAccessTokenResponseCode {\n");
     
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    refreshTokenExpiresAt: ").append(toIndentedString(refreshTokenExpiresAt)).append("\n");
     sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
-    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

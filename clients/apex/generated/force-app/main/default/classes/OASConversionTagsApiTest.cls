@@ -3,7 +3,7 @@ private class OASConversionTagsApiTest {
     /**
      * Create conversion tag
      *
-     * Create a conversion tag, also known as &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag&quot; target&#x3D;&quot;_blank&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt;\nThe Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt;\nFor more information, see:&lt;p/&gt;\n&lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt;\n&lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;/docs/api-features/pinterest-tag/&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt;\n&lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;/docs/api-features/pinterest-tag/#enhanced-match&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.\n\nThe Pinterest Tag tracks actions people take on the ad account\&#39;s website after they view the ad account\&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.\n\nFor more information, see:\n\n[Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)\n\n[Pinterest Tag](/docs/track-conversions/pinterest-tag/)\n\n[Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      */
     @isTest
     private static void conversionTagsCreateTest() {
@@ -19,26 +19,74 @@ private class OASConversionTagsApiTest {
 
         OASClient client;
         OASConversionTagsApi api;
-        OASConversionTagResponse response;
-        OASConversionTagResponse expectedResponse;
+        OASConversionTag response;
+        OASConversionTag expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASConversionTagsApi(client);
 
-        js = JSON.serialize(OASConversionTagResponse.getExample());
+        js = JSON.serialize(OASConversionTag.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASConversionTagResponse.getExample();
-        response = (OASConversionTagResponse) api.conversionTagsCreate(params);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASConversionTagResponse.getExample());
+        js = JSON.serialize(OASConversionTag.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASConversionTagResponse.getExample();
-        response = (OASConversionTagResponse) api.conversionTagsCreate(params);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -61,31 +109,48 @@ private class OASConversionTagsApiTest {
 
         OASClient client;
         OASConversionTagsApi api;
-        OASConversionTagResponse response;
-        OASConversionTagResponse expectedResponse;
+        OASConversionTag response;
+        OASConversionTag expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASConversionTagsApi(client);
 
-        js = JSON.serialize(OASConversionTagResponse.getExample());
+        js = JSON.serialize(OASConversionTag.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASConversionTagResponse.getExample();
-        response = (OASConversionTagResponse) api.conversionTagsGet(params);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASConversionTagResponse.getExample());
+        js = JSON.serialize(OASConversionTag.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASConversionTagResponse.getExample();
-        response = (OASConversionTagResponse) api.conversionTagsGet(params);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASConversionTagsApi(client);
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTag.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTag.getExample();
+        response = (OASConversionTag) api.conversionTagsGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
-     * Get conversion tags
+     * List conversion tags
      *
      * List conversion tags associated with an ad account.
      */
@@ -98,31 +163,128 @@ private class OASConversionTagsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'filterDeleted' => true
+            'filterDeleted' => ''
         };
 
         OASClient client;
         OASConversionTagsApi api;
-        OASConversionTagListResponse response;
-        OASConversionTagListResponse expectedResponse;
+        OASConversionTagsList200Response response;
+        OASConversionTagsList200Response expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASConversionTagsApi(client);
 
-        js = JSON.serialize(OASConversionTagListResponse.getExample());
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASConversionTagListResponse.getExample();
-        response = (OASConversionTagListResponse) api.conversionTagsList(params);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASConversionTagListResponse.getExample());
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASConversionTagListResponse.getExample();
-        response = (OASConversionTagListResponse) api.conversionTagsList(params);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASConversionTagsApi(client);
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionTagsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionTagsList200Response.getExample();
+        response = (OASConversionTagsList200Response) api.conversionTagsList(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -148,6 +310,23 @@ private class OASConversionTagsApiTest {
         Map<String, List<OASConversionEventResponse>> expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASConversionTagsApi(client);
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, List<OASConversionEventResponse>>) api.ocpmEligibleConversionTagsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, List<OASConversionEventResponse>>) api.ocpmEligibleConversionTagsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASConversionTagsApi(client);
 
@@ -192,6 +371,23 @@ private class OASConversionTagsApiTest {
         OASPageVisitConversionTagsGet200Resp expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASConversionTagsApi(client);
+
+        js = JSON.serialize(OASPageVisitConversionTagsGet200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPageVisitConversionTagsGet200Resp.getExample();
+        response = (OASPageVisitConversionTagsGet200Resp) api.pageVisitConversionTagsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPageVisitConversionTagsGet200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPageVisitConversionTagsGet200Resp.getExample();
+        response = (OASPageVisitConversionTagsGet200Resp) api.pageVisitConversionTagsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASConversionTagsApi(client);
 

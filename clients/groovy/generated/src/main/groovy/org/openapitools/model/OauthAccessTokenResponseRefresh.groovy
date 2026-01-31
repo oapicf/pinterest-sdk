@@ -6,6 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class OauthAccessTokenResponseRefresh {
+    
+    String accessToken
+    
+    Integer expiresIn
 
     enum ResponseTypeEnum {
     
@@ -34,11 +38,13 @@ class OauthAccessTokenResponseRefresh {
     
     ResponseTypeEnum responseType
     
-    String accessToken
+    String scope
     
     String tokenType = "bearer"
     
-    Integer expiresIn
+    String refreshToken
     
-    String scope
+    Integer refreshTokenExpiresAt
+    
+    Integer refreshTokenExpiresIn
 }

@@ -12,16 +12,16 @@ test_that("inclusion", {
   #expect_equal(model.instance$`inclusion`, "EXPECTED_RESULT")
 })
 
-test_that("values", {
-  # tests for the property `values` (numeric)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`values`, "EXPECTED_RESULT")
-})
-
 test_that("negated", {
   # tests for the property `negated` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`negated`, "EXPECTED_RESULT")
+})
+
+test_that("values", {
+  # tests for the property `values` (numeric)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`values`, "EXPECTED_RESULT")
 })

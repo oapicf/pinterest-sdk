@@ -16,9 +16,8 @@ void main() {
   // final instance = BulkDownloadRequest();
 
   group('test BulkDownloadRequest', () {
-    // All entity types specified will be downloaded. Fewer types result in faster downloads.
-    // List<BulkEntityType> entityTypes (default value: const [])
-    test('to test the property `entityTypes`', () async {
+    // BulkDownloadRequestCampaignFilter campaignFilter
+    test('to test the property `campaignFilter`', () async {
       // TODO
     });
 
@@ -28,19 +27,20 @@ void main() {
       // TODO
     });
 
-    // Unix UTC timestamp to retrieve all entities that have changed since this time.
-    // String updatedSince
-    test('to test the property `updatedSince`', () async {
-      // TODO
-    });
-
-    // BulkDownloadRequestCampaignFilter campaignFilter
-    test('to test the property `campaignFilter`', () async {
+    // All entity types specified will be downloaded. Fewer types result in faster downloads.
+    // List<BulkEntityType> entityTypes (default value: const [])
+    test('to test the property `entityTypes`', () async {
       // TODO
     });
 
     // BulkOutputFormat outputFormat (default value: 'JSON')
     test('to test the property `outputFormat`', () async {
+      // TODO
+    });
+
+    // Unix UTC timestamp to retrieve all entities that have changed since this time.
+    // String updatedSince
+    test('to test the property `updatedSince`', () async {
       // TODO
     });
 

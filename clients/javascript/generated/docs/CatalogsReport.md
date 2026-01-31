@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportStatus** | **String** |  | [optional] 
-**url** | **String** | URL to download the report | [optional] 
 **size** | **Number** | Size of the report in bytes | [optional] 
+**url** | **String** | URL to download the report | [optional] 
 
 
 

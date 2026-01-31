@@ -40,24 +40,24 @@ pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e catalogs_repo
 }
 
 static catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create_internal(
-    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,
     char *code_label,
     char *message,
     int occurrences,
+    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity
     ) {
     catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_local_var = malloc(sizeof(catalogs_report_feed_ingestion_stats_t));
     if (!catalogs_report_feed_ingestion_stats_local_var) {
         return NULL;
     }
-    catalogs_report_feed_ingestion_stats_local_var->report_type = report_type;
     catalogs_report_feed_ingestion_stats_local_var->catalog_id = catalog_id;
     catalogs_report_feed_ingestion_stats_local_var->code = code;
     catalogs_report_feed_ingestion_stats_local_var->code_label = code_label;
     catalogs_report_feed_ingestion_stats_local_var->message = message;
     catalogs_report_feed_ingestion_stats_local_var->occurrences = occurrences;
+    catalogs_report_feed_ingestion_stats_local_var->report_type = report_type;
     catalogs_report_feed_ingestion_stats_local_var->severity = severity;
 
     catalogs_report_feed_ingestion_stats_local_var->_library_owned = 1;
@@ -65,21 +65,21 @@ static catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_st
 }
 
 __attribute__((deprecated)) catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create(
-    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,
     char *code_label,
     char *message,
     int occurrences,
+    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity
     ) {
     return catalogs_report_feed_ingestion_stats_create_internal (
-        report_type,
         catalog_id,
         code,
         code_label,
         message,
         occurrences,
+        report_type,
         severity
         );
 }
@@ -110,15 +110,6 @@ void catalogs_report_feed_ingestion_stats_free(catalogs_report_feed_ingestion_st
 
 cJSON *catalogs_report_feed_ingestion_stats_convertToJSON(catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats) {
     cJSON *item = cJSON_CreateObject();
-
-    // catalogs_report_feed_ingestion_stats->report_type
-    if(catalogs_report_feed_ingestion_stats->report_type != pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_feed_ingestion_stats_report_type_ToString(catalogs_report_feed_ingestion_stats->report_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
-    }
-
 
     // catalogs_report_feed_ingestion_stats->catalog_id
     if(catalogs_report_feed_ingestion_stats->catalog_id) {
@@ -160,6 +151,15 @@ cJSON *catalogs_report_feed_ingestion_stats_convertToJSON(catalogs_report_feed_i
     }
 
 
+    // catalogs_report_feed_ingestion_stats->report_type
+    if(catalogs_report_feed_ingestion_stats->report_type != pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_feed_ingestion_stats_report_type_ToString(catalogs_report_feed_ingestion_stats->report_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // catalogs_report_feed_ingestion_stats->severity
     if(catalogs_report_feed_ingestion_stats->severity != pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_NULL) {
     if(cJSON_AddStringToObject(item, "severity", catalogs_report_feed_ingestion_stats_severity_ToString(catalogs_report_feed_ingestion_stats->severity)) == NULL)
@@ -179,20 +179,6 @@ fail:
 catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_parseFromJSON(cJSON *catalogs_report_feed_ingestion_statsJSON){
 
     catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_local_var = NULL;
-
-    // catalogs_report_feed_ingestion_stats->report_type
-    cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_statsJSON, "report_type");
-    if (cJSON_IsNull(report_type)) {
-        report_type = NULL;
-    }
-    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_typeVariable;
-    if (report_type) { 
-    if(!cJSON_IsString(report_type))
-    {
-    goto end; //Enum
-    }
-    report_typeVariable = catalogs_report_feed_ingestion_stats_report_type_FromString(report_type->valuestring);
-    }
 
     // catalogs_report_feed_ingestion_stats->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_statsJSON, "catalog_id");
@@ -254,6 +240,20 @@ catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_par
     }
     }
 
+    // catalogs_report_feed_ingestion_stats->report_type
+    cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_statsJSON, "report_type");
+    if (cJSON_IsNull(report_type)) {
+        report_type = NULL;
+    }
+    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_typeVariable;
+    if (report_type) { 
+    if(!cJSON_IsString(report_type))
+    {
+    goto end; //Enum
+    }
+    report_typeVariable = catalogs_report_feed_ingestion_stats_report_type_FromString(report_type->valuestring);
+    }
+
     // catalogs_report_feed_ingestion_stats->severity
     cJSON *severity = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_statsJSON, "severity");
     if (cJSON_IsNull(severity)) {
@@ -270,12 +270,12 @@ catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_par
 
 
     catalogs_report_feed_ingestion_stats_local_var = catalogs_report_feed_ingestion_stats_create_internal (
-        report_type ? report_typeVariable : pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_NULL,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
         code ? code->valuedouble : 0,
         code_label && !cJSON_IsNull(code_label) ? strdup(code_label->valuestring) : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
         occurrences ? occurrences->valuedouble : 0,
+        report_type ? report_typeVariable : pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_NULL,
         severity ? severityVariable : pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_NULL
         );
 

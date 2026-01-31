@@ -2,15 +2,15 @@
 Protected Class PinMediaSourcePinURL
 
 	#tag Property, Flags = &h0
-		source_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 		#tag EndNote
 		is_affiliate_link As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		source_type As String
 	#tag EndProperty
 
 

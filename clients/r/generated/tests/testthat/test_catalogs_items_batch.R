@@ -20,14 +20,6 @@ test_that("batch_id", {
   #expect_equal(model.instance$`batch_id`, "EXPECTED_RESULT")
 })
 
-test_that("created_time", {
-  # tests for the property `created_time` (character)
-  # Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
-})
-
 test_that("completed_time", {
   # tests for the property `completed_time` (character)
   # Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
@@ -36,11 +28,12 @@ test_that("completed_time", {
   #expect_equal(model.instance$`completed_time`, "EXPECTED_RESULT")
 })
 
-test_that("status", {
-  # tests for the property `status` (BatchOperationStatus)
+test_that("created_time", {
+  # tests for the property `created_time` (character)
+  # Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
 })
 
 test_that("items", {
@@ -49,4 +42,11 @@ test_that("items", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (BatchOperationStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })

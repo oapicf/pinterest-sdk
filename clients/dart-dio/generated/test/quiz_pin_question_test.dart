@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(QuizPinQuestion, () {
+    // BuiltList<QuizPinOption> options
+    test('to test the property `options`', () async {
+      // TODO
+    });
+
     // num questionId
     test('to test the property `questionId`', () async {
       // TODO
@@ -14,11 +19,6 @@ void main() {
 
     // String questionText
     test('to test the property `questionText`', () async {
-      // TODO
-    });
-
-    // BuiltList<QuizPinOption> options
-    test('to test the property `options`', () async {
       // TODO
     });
 

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetGroupName** | **string** | Asset Group name | 
 **AssetGroupDescription** | **string** | Asset group description | 
+**AssetGroupName** | **string** | Asset Group name | 
 **AssetGroupTypes** | [**[]AssetGroupType**](AssetGroupType.md) | Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. | 
 
 ## Methods
 
 ### NewCreateAssetGroupBody
 
-`func NewCreateAssetGroupBody(assetGroupName string, assetGroupDescription string, assetGroupTypes []AssetGroupType, ) *CreateAssetGroupBody`
+`func NewCreateAssetGroupBody(assetGroupDescription string, assetGroupName string, assetGroupTypes []AssetGroupType, ) *CreateAssetGroupBody`
 
 NewCreateAssetGroupBody instantiates a new CreateAssetGroupBody object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewCreateAssetGroupBodyWithDefaults instantiates a new CreateAssetGroupBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAssetGroupName
-
-`func (o *CreateAssetGroupBody) GetAssetGroupName() string`
-
-GetAssetGroupName returns the AssetGroupName field if non-nil, zero value otherwise.
-
-### GetAssetGroupNameOk
-
-`func (o *CreateAssetGroupBody) GetAssetGroupNameOk() (*string, bool)`
-
-GetAssetGroupNameOk returns a tuple with the AssetGroupName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssetGroupName
-
-`func (o *CreateAssetGroupBody) SetAssetGroupName(v string)`
-
-SetAssetGroupName sets AssetGroupName field to given value.
-
 
 ### GetAssetGroupDescription
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *CreateAssetGroupBody) SetAssetGroupDescription(v string)`
 
 SetAssetGroupDescription sets AssetGroupDescription field to given value.
+
+
+### GetAssetGroupName
+
+`func (o *CreateAssetGroupBody) GetAssetGroupName() string`
+
+GetAssetGroupName returns the AssetGroupName field if non-nil, zero value otherwise.
+
+### GetAssetGroupNameOk
+
+`func (o *CreateAssetGroupBody) GetAssetGroupNameOk() (*string, bool)`
+
+GetAssetGroupNameOk returns a tuple with the AssetGroupName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetGroupName
+
+`func (o *CreateAssetGroupBody) SetAssetGroupName(v string)`
+
+SetAssetGroupName sets AssetGroupName field to given value.
 
 
 ### GetAssetGroupTypes

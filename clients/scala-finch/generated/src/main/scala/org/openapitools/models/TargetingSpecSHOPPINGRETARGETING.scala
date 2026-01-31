@@ -9,19 +9,19 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param exclusionUnderscorewindow Number of days ago to stop lookback timeframe for dynamic retargeting
  * @param lookbackUnderscorewindow Number of days ago to start lookback timeframe for dynamic retargeting
  * @param tagUnderscoretypes Event types to target for dynamic retargeting
- * @param exclusionUnderscorewindow Number of days ago to stop lookback timeframe for dynamic retargeting
  */
-case class TargetingSpecSHOPPINGRETARGETING(lookbackUnderscorewindow: Option[Int],
-                tagUnderscoretypes: Option[Seq[Int]],
-                exclusionUnderscorewindow: Option[Int]
+case class TargetingSpecShoppingRetargeting(exclusionUnderscorewindow: Option[Int],
+                lookbackUnderscorewindow: Option[Int],
+                tagUnderscoretypes: Option[Seq[Int]]
                 )
 
-object TargetingSpecSHOPPINGRETARGETING {
+object TargetingSpecShoppingRetargeting {
     /**
-     * Creates the codec for converting TargetingSpecSHOPPINGRETARGETING from and to JSON.
+     * Creates the codec for converting TargetingSpecShoppingRetargeting from and to JSON.
      */
-    implicit val decoder: Decoder[TargetingSpecSHOPPINGRETARGETING] = deriveDecoder
-    implicit val encoder: ObjectEncoder[TargetingSpecSHOPPINGRETARGETING] = deriveEncoder
+    implicit val decoder: Decoder[TargetingSpecShoppingRetargeting] = deriveDecoder
+    implicit val encoder: ObjectEncoder[TargetingSpecShoppingRetargeting] = deriveEncoder
 }

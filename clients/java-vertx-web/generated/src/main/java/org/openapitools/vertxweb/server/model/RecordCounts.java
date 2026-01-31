@@ -1,0 +1,96 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Record processing counts
+ **/
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class RecordCounts   {
+  
+  private Integer invalid;
+  private Integer processed;
+  private Integer valid;
+
+  public RecordCounts () {
+
+  }
+
+  public RecordCounts (Integer invalid, Integer processed, Integer valid) {
+    this.invalid = invalid;
+    this.processed = processed;
+    this.valid = valid;
+  }
+
+    
+  @JsonProperty("invalid")
+  public Integer getInvalid() {
+    return invalid;
+  }
+  public void setInvalid(Integer invalid) {
+    this.invalid = invalid;
+  }
+
+    
+  @JsonProperty("processed")
+  public Integer getProcessed() {
+    return processed;
+  }
+  public void setProcessed(Integer processed) {
+    this.processed = processed;
+  }
+
+    
+  @JsonProperty("valid")
+  public Integer getValid() {
+    return valid;
+  }
+  public void setValid(Integer valid) {
+    this.valid = valid;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    RecordCounts recordCounts = (RecordCounts) o;
+    return Objects.equals(invalid, recordCounts.invalid) &&
+        Objects.equals(processed, recordCounts.processed) &&
+        Objects.equals(valid, recordCounts.valid);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(invalid, processed, valid);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class RecordCounts {\n");
+    
+    sb.append("    invalid: ").append(toIndentedString(invalid)).append("\n");
+    sb.append("    processed: ").append(toIndentedString(processed)).append("\n");
+    sb.append("    valid: ").append(toIndentedString(valid)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

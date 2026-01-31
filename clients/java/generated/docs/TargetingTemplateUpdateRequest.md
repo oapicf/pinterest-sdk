@@ -7,8 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**operationType** | [**OperationTypeEnum**](#OperationTypeEnum) |  |  |
 |**id** | **String** | Targeting template ID |  |
+|**operationType** | [**OperationTypeEnum**](#OperationTypeEnum) |  |  |
+|**targetingAttributes** | [**TargetingSpec**](TargetingSpec.md) |  |  [optional] |
 
 
 
@@ -17,6 +18,7 @@
 | Name | Value |
 |---- | -----|
 | REMOVE | &quot;REMOVE&quot; |
+| UPDATE | &quot;UPDATE&quot; |
 
 
 

@@ -20,5 +20,6 @@ public enum AdsAnalyticsCampaignTargetingType {
   AGE_BUCKET,
   REGION,
   CREATIVE_TYPE,
-  AGE_BUCKET_AND_GENDER;
+  AGE_BUCKET_AND_GENDER,
+  AUDIENCE_MULTIPLIER;
 }

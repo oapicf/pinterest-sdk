@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[AdsCreditDiscountsResponse]**](AdsCreditDiscountsResponse.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[AdsCreditDiscountsResponse]**](AdsCreditDiscountsResponse.md) |  | 
 
 

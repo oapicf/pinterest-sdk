@@ -22,15 +22,15 @@ pin_media_source_image_url_t* instantiate_pin_media_source_image_url(int include
   pin_media_source_image_url_t* pin_media_source_image_url = NULL;
   if (include_optional) {
     pin_media_source_image_url = pin_media_source_image_url_create(
+      1,
       pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_image_url,
-      "0",
-      1
+      "0"
     );
   } else {
     pin_media_source_image_url = pin_media_source_image_url_create(
+      1,
       pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_image_url,
-      "0",
-      1
+      "0"
     );
   }
 

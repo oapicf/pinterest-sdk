@@ -31,16 +31,16 @@ class AudienceDefinitionTest : ShouldSpec() {
             //modelInstance.date shouldBe ("TODO")
         }
 
-        // to test the property `type` - Generated audience type to request.
-        should("test type") {
-            // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
-        }
-
-        // to test the property `scope` - Generated audience scope to request.
+        // to test the property `scope`
         should("test scope") {
             // uncomment below to test the property
             //modelInstance.scope shouldBe ("TODO")
+        }
+
+        // to test the property `type`
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

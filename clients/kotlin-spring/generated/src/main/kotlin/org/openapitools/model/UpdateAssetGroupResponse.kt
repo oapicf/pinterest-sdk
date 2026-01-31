@@ -17,18 +17,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param updatedAssetGroups A list of successfully edited asset groups.
  * @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
+ * @param updatedAssetGroups A list of successfully edited asset groups.
  */
 data class UpdateAssetGroupResponse(
 
     @field:Valid
-    @Schema(example = "null", description = "A list of successfully edited asset groups.")
-    @get:JsonProperty("updated_asset_groups") val updatedAssetGroups: kotlin.collections.List<AssetGroupBinding>? = null,
+    @Schema(example = "null", description = "A list of errors associated with the asset groups. Will be returned if there is an error.")
+    @get:JsonProperty("exceptions") val exceptions: kotlin.collections.List<UpdateAssetGroupResponseExceptionsInner>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "A list of errors associated with the asset groups. Will be returned if there is an error.")
-    @get:JsonProperty("exceptions") val exceptions: kotlin.collections.List<UpdateAssetGroupResponseExceptionsInner>? = null
+    @Schema(example = "null", description = "A list of successfully edited asset groups.")
+    @get:JsonProperty("updated_asset_groups") val updatedAssetGroups: kotlin.collections.List<AssetGroupBinding>? = null
 ) {
 
 }

@@ -5,16 +5,16 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.TargetingTemplateResponseData
+import org.openapitools.models.TargetingTemplateGetResponseData
 import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items 
  * @param bookmark 
+ * @param items 
  */
-case class TargetingTemplateList200Response(items: Seq[TargetingTemplateResponseData],
-                bookmark: Option[String]
+case class TargetingTemplateList200Response(bookmark: Option[String],
+                items: Seq[TargetingTemplateGetResponseData]
                 )
 
 object TargetingTemplateList200Response {

@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;CatalogsReportStats&gt;](CatalogsReportStats.md)
 `bookmark` | string
+`items` | [Array&lt;CatalogsReportStats&gt;](CatalogsReportStats.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { ReportsStats200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies ReportsStats200Response
 
 console.log(example)

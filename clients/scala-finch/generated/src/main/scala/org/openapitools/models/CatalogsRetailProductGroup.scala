@@ -11,35 +11,35 @@ import org.openapitools.models.CatalogsProductGroupType
 
 /**
  * 
- * @param catalogUnderscoretype 
- * @param id ID of the catalog product group.
- * @param name Name of catalog product group
- * @param description 
- * @param filters 
- * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
- * @param _type 
- * @param status 
- * @param createdUnderscoreat Unix timestamp in seconds of when catalog product group was created.
- * @param updatedUnderscoreat Unix timestamp in seconds of last time catalog product group was updated.
  * @param catalogUnderscoreid Catalog id pertaining to the retail product group.
- * @param feedUnderscoreid id of the catalogs feed belonging to this catalog product group
+ * @param catalogUnderscoretype 
  * @param country 
+ * @param createdUnderscoreat Unix timestamp in seconds of when catalog product group was created.
+ * @param description 
+ * @param feedUnderscoreid id of the catalogs feed belonging to this catalog product group
+ * @param filters 
+ * @param id ID of the catalog product group.
+ * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
  * @param locale 
+ * @param name Name of catalog product group
+ * @param status 
+ * @param _type 
+ * @param updatedUnderscoreat Unix timestamp in seconds of last time catalog product group was updated.
  */
-case class CatalogsRetailProductGroup(catalogUnderscoretype: String,
-                id: String,
-                name: Option[String],
-                description: Option[String],
-                filters: CatalogsProductGroupFilters,
-                isUnderscorefeatured: Option[Boolean],
-                _type: Option[CatalogsProductGroupType],
-                status: Option[CatalogsProductGroupStatus],
-                createdUnderscoreat: Option[Int],
-                updatedUnderscoreat: Option[Int],
-                catalogUnderscoreid: String,
-                feedUnderscoreid: String,
+case class CatalogsRetailProductGroup(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 country: Option[String],
-                locale: Option[String]
+                createdUnderscoreat: Option[Int],
+                description: Option[String],
+                feedUnderscoreid: String,
+                filters: CatalogsProductGroupFilters,
+                id: String,
+                isUnderscorefeatured: Option[Boolean],
+                locale: Option[String],
+                name: Option[String],
+                status: Option[CatalogsProductGroupStatus],
+                _type: CatalogsProductGroupType,
+                updatedUnderscoreat: Option[Int]
                 )
 
 object CatalogsRetailProductGroup {

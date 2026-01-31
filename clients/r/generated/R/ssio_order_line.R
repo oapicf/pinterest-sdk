@@ -7,89 +7,95 @@
 #' @title SSIOOrderLine
 #' @description SSIOOrderLine Class
 #' @format An \code{R6Class} generator object
-#' @field salesforce_order_line_id OrderLineId in SFDC character [optional]
+#' @field accepted_terms_id The SFDC id for the terms character [optional]
+#' @field accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted character [optional]
 #' @field ads_manager_order_line_id Ads manager OrderLineId character [optional]
-#' @field pin_order_id The pin order id associated with the order line in SFDC character [optional]
-#' @field last_modified_date_time Last modified date. character [optional]
-#' @field start_date Start date of the order line. character [optional]
-#' @field end_date End date of the order line. character [optional]
+#' @field agency_link Agency link character [optional]
 #' @field bill_to_company_name Bill To Company name character [optional]
+#' @field billing_contact_email Billing contact email character [optional]
 #' @field billing_contact_firstname Billing contact first name character [optional]
 #' @field billing_contact_lastname Billing contact last name character [optional]
-#' @field billing_contact_email Billing contact email character [optional]
+#' @field budget_amount If Budget order line, the budget amount. numeric [optional]
+#' @field currency_info  \link{Currency} [optional]
+#' @field end_date End date of the order line. character [optional]
+#' @field estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend numeric [optional]
+#' @field last_modified_date_time Last modified date. character [optional]
 #' @field media_contact_email Billing media email character [optional]
 #' @field media_contact_firstname Billing contact first name character [optional]
 #' @field media_contact_lastname Billing contact first name character [optional]
-#' @field currency_info  \link{Currency} [optional]
-#' @field agency_link Agency link character [optional]
-#' @field po_number The po number character [optional]
 #' @field order_name The order name character [optional]
+#' @field pin_order_id The pin order id associated with the order line in SFDC character [optional]
 #' @field pmp_name The Pinterest marketing partner name character [optional]
-#' @field accepted_terms_id The SFDC id for the terms character [optional]
-#' @field accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted character [optional]
-#' @field budget_amount If Budget order line, the budget amount. numeric [optional]
-#' @field estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend numeric [optional]
+#' @field po_number The po number character [optional]
+#' @field salesforce_order_line_id OrderLineId in SFDC character [optional]
+#' @field start_date Start date of the order line. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SSIOOrderLine <- R6::R6Class(
   "SSIOOrderLine",
   public = list(
-    `salesforce_order_line_id` = NULL,
+    `accepted_terms_id` = NULL,
+    `accepted_terms_time` = NULL,
     `ads_manager_order_line_id` = NULL,
-    `pin_order_id` = NULL,
-    `last_modified_date_time` = NULL,
-    `start_date` = NULL,
-    `end_date` = NULL,
+    `agency_link` = NULL,
     `bill_to_company_name` = NULL,
+    `billing_contact_email` = NULL,
     `billing_contact_firstname` = NULL,
     `billing_contact_lastname` = NULL,
-    `billing_contact_email` = NULL,
+    `budget_amount` = NULL,
+    `currency_info` = NULL,
+    `end_date` = NULL,
+    `estimated_monthly_spend` = NULL,
+    `last_modified_date_time` = NULL,
     `media_contact_email` = NULL,
     `media_contact_firstname` = NULL,
     `media_contact_lastname` = NULL,
-    `currency_info` = NULL,
-    `agency_link` = NULL,
-    `po_number` = NULL,
     `order_name` = NULL,
+    `pin_order_id` = NULL,
     `pmp_name` = NULL,
-    `accepted_terms_id` = NULL,
-    `accepted_terms_time` = NULL,
-    `budget_amount` = NULL,
-    `estimated_monthly_spend` = NULL,
+    `po_number` = NULL,
+    `salesforce_order_line_id` = NULL,
+    `start_date` = NULL,
 
     #' @description
     #' Initialize a new SSIOOrderLine class.
     #'
-    #' @param salesforce_order_line_id OrderLineId in SFDC
+    #' @param accepted_terms_id The SFDC id for the terms
+    #' @param accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted
     #' @param ads_manager_order_line_id Ads manager OrderLineId
-    #' @param pin_order_id The pin order id associated with the order line in SFDC
-    #' @param last_modified_date_time Last modified date.
-    #' @param start_date Start date of the order line.
-    #' @param end_date End date of the order line.
+    #' @param agency_link Agency link
     #' @param bill_to_company_name Bill To Company name
+    #' @param billing_contact_email Billing contact email
     #' @param billing_contact_firstname Billing contact first name
     #' @param billing_contact_lastname Billing contact last name
-    #' @param billing_contact_email Billing contact email
+    #' @param budget_amount If Budget order line, the budget amount.
+    #' @param currency_info currency_info
+    #' @param end_date End date of the order line.
+    #' @param estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend
+    #' @param last_modified_date_time Last modified date.
     #' @param media_contact_email Billing media email
     #' @param media_contact_firstname Billing contact first name
     #' @param media_contact_lastname Billing contact first name
-    #' @param currency_info currency_info
-    #' @param agency_link Agency link
-    #' @param po_number The po number
     #' @param order_name The order name
+    #' @param pin_order_id The pin order id associated with the order line in SFDC
     #' @param pmp_name The Pinterest marketing partner name
-    #' @param accepted_terms_id The SFDC id for the terms
-    #' @param accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted
-    #' @param budget_amount If Budget order line, the budget amount.
-    #' @param estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend
+    #' @param po_number The po number
+    #' @param salesforce_order_line_id OrderLineId in SFDC
+    #' @param start_date Start date of the order line.
     #' @param ... Other optional arguments.
-    initialize = function(`salesforce_order_line_id` = NULL, `ads_manager_order_line_id` = NULL, `pin_order_id` = NULL, `last_modified_date_time` = NULL, `start_date` = NULL, `end_date` = NULL, `bill_to_company_name` = NULL, `billing_contact_firstname` = NULL, `billing_contact_lastname` = NULL, `billing_contact_email` = NULL, `media_contact_email` = NULL, `media_contact_firstname` = NULL, `media_contact_lastname` = NULL, `currency_info` = NULL, `agency_link` = NULL, `po_number` = NULL, `order_name` = NULL, `pmp_name` = NULL, `accepted_terms_id` = NULL, `accepted_terms_time` = NULL, `budget_amount` = NULL, `estimated_monthly_spend` = NULL, ...) {
-      if (!is.null(`salesforce_order_line_id`)) {
-        if (!(is.character(`salesforce_order_line_id`) && length(`salesforce_order_line_id`) == 1)) {
-          stop(paste("Error! Invalid data for `salesforce_order_line_id`. Must be a string:", `salesforce_order_line_id`))
+    initialize = function(`accepted_terms_id` = NULL, `accepted_terms_time` = NULL, `ads_manager_order_line_id` = NULL, `agency_link` = NULL, `bill_to_company_name` = NULL, `billing_contact_email` = NULL, `billing_contact_firstname` = NULL, `billing_contact_lastname` = NULL, `budget_amount` = NULL, `currency_info` = NULL, `end_date` = NULL, `estimated_monthly_spend` = NULL, `last_modified_date_time` = NULL, `media_contact_email` = NULL, `media_contact_firstname` = NULL, `media_contact_lastname` = NULL, `order_name` = NULL, `pin_order_id` = NULL, `pmp_name` = NULL, `po_number` = NULL, `salesforce_order_line_id` = NULL, `start_date` = NULL, ...) {
+      if (!is.null(`accepted_terms_id`)) {
+        if (!(is.character(`accepted_terms_id`) && length(`accepted_terms_id`) == 1)) {
+          stop(paste("Error! Invalid data for `accepted_terms_id`. Must be a string:", `accepted_terms_id`))
         }
-        self$`salesforce_order_line_id` <- `salesforce_order_line_id`
+        self$`accepted_terms_id` <- `accepted_terms_id`
+      }
+      if (!is.null(`accepted_terms_time`)) {
+        if (!(is.character(`accepted_terms_time`) && length(`accepted_terms_time`) == 1)) {
+          stop(paste("Error! Invalid data for `accepted_terms_time`. Must be a string:", `accepted_terms_time`))
+        }
+        self$`accepted_terms_time` <- `accepted_terms_time`
       }
       if (!is.null(`ads_manager_order_line_id`)) {
         if (!(is.character(`ads_manager_order_line_id`) && length(`ads_manager_order_line_id`) == 1)) {
@@ -97,35 +103,23 @@ SSIOOrderLine <- R6::R6Class(
         }
         self$`ads_manager_order_line_id` <- `ads_manager_order_line_id`
       }
-      if (!is.null(`pin_order_id`)) {
-        if (!(is.character(`pin_order_id`) && length(`pin_order_id`) == 1)) {
-          stop(paste("Error! Invalid data for `pin_order_id`. Must be a string:", `pin_order_id`))
+      if (!is.null(`agency_link`)) {
+        if (!(is.character(`agency_link`) && length(`agency_link`) == 1)) {
+          stop(paste("Error! Invalid data for `agency_link`. Must be a string:", `agency_link`))
         }
-        self$`pin_order_id` <- `pin_order_id`
-      }
-      if (!is.null(`last_modified_date_time`)) {
-        if (!(is.character(`last_modified_date_time`) && length(`last_modified_date_time`) == 1)) {
-          stop(paste("Error! Invalid data for `last_modified_date_time`. Must be a string:", `last_modified_date_time`))
-        }
-        self$`last_modified_date_time` <- `last_modified_date_time`
-      }
-      if (!is.null(`start_date`)) {
-        if (!is.character(`start_date`)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
-        }
-        self$`start_date` <- `start_date`
-      }
-      if (!is.null(`end_date`)) {
-        if (!is.character(`end_date`)) {
-          stop(paste("Error! Invalid data for `end_date`. Must be a string:", `end_date`))
-        }
-        self$`end_date` <- `end_date`
+        self$`agency_link` <- `agency_link`
       }
       if (!is.null(`bill_to_company_name`)) {
         if (!(is.character(`bill_to_company_name`) && length(`bill_to_company_name`) == 1)) {
           stop(paste("Error! Invalid data for `bill_to_company_name`. Must be a string:", `bill_to_company_name`))
         }
         self$`bill_to_company_name` <- `bill_to_company_name`
+      }
+      if (!is.null(`billing_contact_email`)) {
+        if (!(is.character(`billing_contact_email`) && length(`billing_contact_email`) == 1)) {
+          stop(paste("Error! Invalid data for `billing_contact_email`. Must be a string:", `billing_contact_email`))
+        }
+        self$`billing_contact_email` <- `billing_contact_email`
       }
       if (!is.null(`billing_contact_firstname`)) {
         if (!(is.character(`billing_contact_firstname`) && length(`billing_contact_firstname`) == 1)) {
@@ -139,11 +133,30 @@ SSIOOrderLine <- R6::R6Class(
         }
         self$`billing_contact_lastname` <- `billing_contact_lastname`
       }
-      if (!is.null(`billing_contact_email`)) {
-        if (!(is.character(`billing_contact_email`) && length(`billing_contact_email`) == 1)) {
-          stop(paste("Error! Invalid data for `billing_contact_email`. Must be a string:", `billing_contact_email`))
+      if (!is.null(`budget_amount`)) {
+        self$`budget_amount` <- `budget_amount`
+      }
+      if (!is.null(`currency_info`)) {
+        if (!(`currency_info` %in% c())) {
+          stop(paste("Error! \"", `currency_info`, "\" cannot be assigned to `currency_info`. Must be .", sep = ""))
         }
-        self$`billing_contact_email` <- `billing_contact_email`
+        stopifnot(R6::is.R6(`currency_info`))
+        self$`currency_info` <- `currency_info`
+      }
+      if (!is.null(`end_date`)) {
+        if (!is.character(`end_date`)) {
+          stop(paste("Error! Invalid data for `end_date`. Must be a string:", `end_date`))
+        }
+        self$`end_date` <- `end_date`
+      }
+      if (!is.null(`estimated_monthly_spend`)) {
+        self$`estimated_monthly_spend` <- `estimated_monthly_spend`
+      }
+      if (!is.null(`last_modified_date_time`)) {
+        if (!(is.character(`last_modified_date_time`) && length(`last_modified_date_time`) == 1)) {
+          stop(paste("Error! Invalid data for `last_modified_date_time`. Must be a string:", `last_modified_date_time`))
+        }
+        self$`last_modified_date_time` <- `last_modified_date_time`
       }
       if (!is.null(`media_contact_email`)) {
         if (!(is.character(`media_contact_email`) && length(`media_contact_email`) == 1)) {
@@ -163,30 +176,17 @@ SSIOOrderLine <- R6::R6Class(
         }
         self$`media_contact_lastname` <- `media_contact_lastname`
       }
-      if (!is.null(`currency_info`)) {
-        if (!(`currency_info` %in% c())) {
-          stop(paste("Error! \"", `currency_info`, "\" cannot be assigned to `currency_info`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`currency_info`))
-        self$`currency_info` <- `currency_info`
-      }
-      if (!is.null(`agency_link`)) {
-        if (!(is.character(`agency_link`) && length(`agency_link`) == 1)) {
-          stop(paste("Error! Invalid data for `agency_link`. Must be a string:", `agency_link`))
-        }
-        self$`agency_link` <- `agency_link`
-      }
-      if (!is.null(`po_number`)) {
-        if (!(is.character(`po_number`) && length(`po_number`) == 1)) {
-          stop(paste("Error! Invalid data for `po_number`. Must be a string:", `po_number`))
-        }
-        self$`po_number` <- `po_number`
-      }
       if (!is.null(`order_name`)) {
         if (!(is.character(`order_name`) && length(`order_name`) == 1)) {
           stop(paste("Error! Invalid data for `order_name`. Must be a string:", `order_name`))
         }
         self$`order_name` <- `order_name`
+      }
+      if (!is.null(`pin_order_id`)) {
+        if (!(is.character(`pin_order_id`) && length(`pin_order_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pin_order_id`. Must be a string:", `pin_order_id`))
+        }
+        self$`pin_order_id` <- `pin_order_id`
       }
       if (!is.null(`pmp_name`)) {
         if (!(is.character(`pmp_name`) && length(`pmp_name`) == 1)) {
@@ -194,23 +194,23 @@ SSIOOrderLine <- R6::R6Class(
         }
         self$`pmp_name` <- `pmp_name`
       }
-      if (!is.null(`accepted_terms_id`)) {
-        if (!(is.character(`accepted_terms_id`) && length(`accepted_terms_id`) == 1)) {
-          stop(paste("Error! Invalid data for `accepted_terms_id`. Must be a string:", `accepted_terms_id`))
+      if (!is.null(`po_number`)) {
+        if (!(is.character(`po_number`) && length(`po_number`) == 1)) {
+          stop(paste("Error! Invalid data for `po_number`. Must be a string:", `po_number`))
         }
-        self$`accepted_terms_id` <- `accepted_terms_id`
+        self$`po_number` <- `po_number`
       }
-      if (!is.null(`accepted_terms_time`)) {
-        if (!(is.character(`accepted_terms_time`) && length(`accepted_terms_time`) == 1)) {
-          stop(paste("Error! Invalid data for `accepted_terms_time`. Must be a string:", `accepted_terms_time`))
+      if (!is.null(`salesforce_order_line_id`)) {
+        if (!(is.character(`salesforce_order_line_id`) && length(`salesforce_order_line_id`) == 1)) {
+          stop(paste("Error! Invalid data for `salesforce_order_line_id`. Must be a string:", `salesforce_order_line_id`))
         }
-        self$`accepted_terms_time` <- `accepted_terms_time`
+        self$`salesforce_order_line_id` <- `salesforce_order_line_id`
       }
-      if (!is.null(`budget_amount`)) {
-        self$`budget_amount` <- `budget_amount`
-      }
-      if (!is.null(`estimated_monthly_spend`)) {
-        self$`estimated_monthly_spend` <- `estimated_monthly_spend`
+      if (!is.null(`start_date`)) {
+        if (!is.character(`start_date`)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
+        }
+        self$`start_date` <- `start_date`
       }
     },
 
@@ -245,33 +245,29 @@ SSIOOrderLine <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SSIOOrderLineObject <- list()
-      if (!is.null(self$`salesforce_order_line_id`)) {
-        SSIOOrderLineObject[["salesforce_order_line_id"]] <-
-          self$`salesforce_order_line_id`
+      if (!is.null(self$`accepted_terms_id`)) {
+        SSIOOrderLineObject[["accepted_terms_id"]] <-
+          self$`accepted_terms_id`
+      }
+      if (!is.null(self$`accepted_terms_time`)) {
+        SSIOOrderLineObject[["accepted_terms_time"]] <-
+          self$`accepted_terms_time`
       }
       if (!is.null(self$`ads_manager_order_line_id`)) {
         SSIOOrderLineObject[["ads_manager_order_line_id"]] <-
           self$`ads_manager_order_line_id`
       }
-      if (!is.null(self$`pin_order_id`)) {
-        SSIOOrderLineObject[["pin_order_id"]] <-
-          self$`pin_order_id`
-      }
-      if (!is.null(self$`last_modified_date_time`)) {
-        SSIOOrderLineObject[["last_modified_date_time"]] <-
-          self$`last_modified_date_time`
-      }
-      if (!is.null(self$`start_date`)) {
-        SSIOOrderLineObject[["start_date"]] <-
-          self$`start_date`
-      }
-      if (!is.null(self$`end_date`)) {
-        SSIOOrderLineObject[["end_date"]] <-
-          self$`end_date`
+      if (!is.null(self$`agency_link`)) {
+        SSIOOrderLineObject[["agency_link"]] <-
+          self$`agency_link`
       }
       if (!is.null(self$`bill_to_company_name`)) {
         SSIOOrderLineObject[["bill_to_company_name"]] <-
           self$`bill_to_company_name`
+      }
+      if (!is.null(self$`billing_contact_email`)) {
+        SSIOOrderLineObject[["billing_contact_email"]] <-
+          self$`billing_contact_email`
       }
       if (!is.null(self$`billing_contact_firstname`)) {
         SSIOOrderLineObject[["billing_contact_firstname"]] <-
@@ -281,9 +277,25 @@ SSIOOrderLine <- R6::R6Class(
         SSIOOrderLineObject[["billing_contact_lastname"]] <-
           self$`billing_contact_lastname`
       }
-      if (!is.null(self$`billing_contact_email`)) {
-        SSIOOrderLineObject[["billing_contact_email"]] <-
-          self$`billing_contact_email`
+      if (!is.null(self$`budget_amount`)) {
+        SSIOOrderLineObject[["budget_amount"]] <-
+          self$`budget_amount`
+      }
+      if (!is.null(self$`currency_info`)) {
+        SSIOOrderLineObject[["currency_info"]] <-
+          self$`currency_info`$toSimpleType()
+      }
+      if (!is.null(self$`end_date`)) {
+        SSIOOrderLineObject[["end_date"]] <-
+          self$`end_date`
+      }
+      if (!is.null(self$`estimated_monthly_spend`)) {
+        SSIOOrderLineObject[["estimated_monthly_spend"]] <-
+          self$`estimated_monthly_spend`
+      }
+      if (!is.null(self$`last_modified_date_time`)) {
+        SSIOOrderLineObject[["last_modified_date_time"]] <-
+          self$`last_modified_date_time`
       }
       if (!is.null(self$`media_contact_email`)) {
         SSIOOrderLineObject[["media_contact_email"]] <-
@@ -297,41 +309,29 @@ SSIOOrderLine <- R6::R6Class(
         SSIOOrderLineObject[["media_contact_lastname"]] <-
           self$`media_contact_lastname`
       }
-      if (!is.null(self$`currency_info`)) {
-        SSIOOrderLineObject[["currency_info"]] <-
-          self$`currency_info`$toSimpleType()
-      }
-      if (!is.null(self$`agency_link`)) {
-        SSIOOrderLineObject[["agency_link"]] <-
-          self$`agency_link`
-      }
-      if (!is.null(self$`po_number`)) {
-        SSIOOrderLineObject[["po_number"]] <-
-          self$`po_number`
-      }
       if (!is.null(self$`order_name`)) {
         SSIOOrderLineObject[["order_name"]] <-
           self$`order_name`
+      }
+      if (!is.null(self$`pin_order_id`)) {
+        SSIOOrderLineObject[["pin_order_id"]] <-
+          self$`pin_order_id`
       }
       if (!is.null(self$`pmp_name`)) {
         SSIOOrderLineObject[["pmp_name"]] <-
           self$`pmp_name`
       }
-      if (!is.null(self$`accepted_terms_id`)) {
-        SSIOOrderLineObject[["accepted_terms_id"]] <-
-          self$`accepted_terms_id`
+      if (!is.null(self$`po_number`)) {
+        SSIOOrderLineObject[["po_number"]] <-
+          self$`po_number`
       }
-      if (!is.null(self$`accepted_terms_time`)) {
-        SSIOOrderLineObject[["accepted_terms_time"]] <-
-          self$`accepted_terms_time`
+      if (!is.null(self$`salesforce_order_line_id`)) {
+        SSIOOrderLineObject[["salesforce_order_line_id"]] <-
+          self$`salesforce_order_line_id`
       }
-      if (!is.null(self$`budget_amount`)) {
-        SSIOOrderLineObject[["budget_amount"]] <-
-          self$`budget_amount`
-      }
-      if (!is.null(self$`estimated_monthly_spend`)) {
-        SSIOOrderLineObject[["estimated_monthly_spend"]] <-
-          self$`estimated_monthly_spend`
+      if (!is.null(self$`start_date`)) {
+        SSIOOrderLineObject[["start_date"]] <-
+          self$`start_date`
       }
       return(SSIOOrderLineObject)
     },
@@ -343,26 +343,23 @@ SSIOOrderLine <- R6::R6Class(
     #' @return the instance of SSIOOrderLine
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`salesforce_order_line_id`)) {
-        self$`salesforce_order_line_id` <- this_object$`salesforce_order_line_id`
+      if (!is.null(this_object$`accepted_terms_id`)) {
+        self$`accepted_terms_id` <- this_object$`accepted_terms_id`
+      }
+      if (!is.null(this_object$`accepted_terms_time`)) {
+        self$`accepted_terms_time` <- this_object$`accepted_terms_time`
       }
       if (!is.null(this_object$`ads_manager_order_line_id`)) {
         self$`ads_manager_order_line_id` <- this_object$`ads_manager_order_line_id`
       }
-      if (!is.null(this_object$`pin_order_id`)) {
-        self$`pin_order_id` <- this_object$`pin_order_id`
-      }
-      if (!is.null(this_object$`last_modified_date_time`)) {
-        self$`last_modified_date_time` <- this_object$`last_modified_date_time`
-      }
-      if (!is.null(this_object$`start_date`)) {
-        self$`start_date` <- this_object$`start_date`
-      }
-      if (!is.null(this_object$`end_date`)) {
-        self$`end_date` <- this_object$`end_date`
+      if (!is.null(this_object$`agency_link`)) {
+        self$`agency_link` <- this_object$`agency_link`
       }
       if (!is.null(this_object$`bill_to_company_name`)) {
         self$`bill_to_company_name` <- this_object$`bill_to_company_name`
+      }
+      if (!is.null(this_object$`billing_contact_email`)) {
+        self$`billing_contact_email` <- this_object$`billing_contact_email`
       }
       if (!is.null(this_object$`billing_contact_firstname`)) {
         self$`billing_contact_firstname` <- this_object$`billing_contact_firstname`
@@ -370,8 +367,22 @@ SSIOOrderLine <- R6::R6Class(
       if (!is.null(this_object$`billing_contact_lastname`)) {
         self$`billing_contact_lastname` <- this_object$`billing_contact_lastname`
       }
-      if (!is.null(this_object$`billing_contact_email`)) {
-        self$`billing_contact_email` <- this_object$`billing_contact_email`
+      if (!is.null(this_object$`budget_amount`)) {
+        self$`budget_amount` <- this_object$`budget_amount`
+      }
+      if (!is.null(this_object$`currency_info`)) {
+        `currency_info_object` <- Currency$new()
+        `currency_info_object`$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
+        self$`currency_info` <- `currency_info_object`
+      }
+      if (!is.null(this_object$`end_date`)) {
+        self$`end_date` <- this_object$`end_date`
+      }
+      if (!is.null(this_object$`estimated_monthly_spend`)) {
+        self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
+      }
+      if (!is.null(this_object$`last_modified_date_time`)) {
+        self$`last_modified_date_time` <- this_object$`last_modified_date_time`
       }
       if (!is.null(this_object$`media_contact_email`)) {
         self$`media_contact_email` <- this_object$`media_contact_email`
@@ -382,34 +393,23 @@ SSIOOrderLine <- R6::R6Class(
       if (!is.null(this_object$`media_contact_lastname`)) {
         self$`media_contact_lastname` <- this_object$`media_contact_lastname`
       }
-      if (!is.null(this_object$`currency_info`)) {
-        `currency_info_object` <- Currency$new()
-        `currency_info_object`$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
-        self$`currency_info` <- `currency_info_object`
-      }
-      if (!is.null(this_object$`agency_link`)) {
-        self$`agency_link` <- this_object$`agency_link`
-      }
-      if (!is.null(this_object$`po_number`)) {
-        self$`po_number` <- this_object$`po_number`
-      }
       if (!is.null(this_object$`order_name`)) {
         self$`order_name` <- this_object$`order_name`
+      }
+      if (!is.null(this_object$`pin_order_id`)) {
+        self$`pin_order_id` <- this_object$`pin_order_id`
       }
       if (!is.null(this_object$`pmp_name`)) {
         self$`pmp_name` <- this_object$`pmp_name`
       }
-      if (!is.null(this_object$`accepted_terms_id`)) {
-        self$`accepted_terms_id` <- this_object$`accepted_terms_id`
+      if (!is.null(this_object$`po_number`)) {
+        self$`po_number` <- this_object$`po_number`
       }
-      if (!is.null(this_object$`accepted_terms_time`)) {
-        self$`accepted_terms_time` <- this_object$`accepted_terms_time`
+      if (!is.null(this_object$`salesforce_order_line_id`)) {
+        self$`salesforce_order_line_id` <- this_object$`salesforce_order_line_id`
       }
-      if (!is.null(this_object$`budget_amount`)) {
-        self$`budget_amount` <- this_object$`budget_amount`
-      }
-      if (!is.null(this_object$`estimated_monthly_spend`)) {
-        self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
+      if (!is.null(this_object$`start_date`)) {
+        self$`start_date` <- this_object$`start_date`
       }
       self
     },
@@ -432,28 +432,28 @@ SSIOOrderLine <- R6::R6Class(
     #' @return the instance of SSIOOrderLine
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`salesforce_order_line_id` <- this_object$`salesforce_order_line_id`
+      self$`accepted_terms_id` <- this_object$`accepted_terms_id`
+      self$`accepted_terms_time` <- this_object$`accepted_terms_time`
       self$`ads_manager_order_line_id` <- this_object$`ads_manager_order_line_id`
-      self$`pin_order_id` <- this_object$`pin_order_id`
-      self$`last_modified_date_time` <- this_object$`last_modified_date_time`
-      self$`start_date` <- this_object$`start_date`
-      self$`end_date` <- this_object$`end_date`
+      self$`agency_link` <- this_object$`agency_link`
       self$`bill_to_company_name` <- this_object$`bill_to_company_name`
+      self$`billing_contact_email` <- this_object$`billing_contact_email`
       self$`billing_contact_firstname` <- this_object$`billing_contact_firstname`
       self$`billing_contact_lastname` <- this_object$`billing_contact_lastname`
-      self$`billing_contact_email` <- this_object$`billing_contact_email`
+      self$`budget_amount` <- this_object$`budget_amount`
+      self$`currency_info` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
+      self$`end_date` <- this_object$`end_date`
+      self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
+      self$`last_modified_date_time` <- this_object$`last_modified_date_time`
       self$`media_contact_email` <- this_object$`media_contact_email`
       self$`media_contact_firstname` <- this_object$`media_contact_firstname`
       self$`media_contact_lastname` <- this_object$`media_contact_lastname`
-      self$`currency_info` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
-      self$`agency_link` <- this_object$`agency_link`
-      self$`po_number` <- this_object$`po_number`
       self$`order_name` <- this_object$`order_name`
+      self$`pin_order_id` <- this_object$`pin_order_id`
       self$`pmp_name` <- this_object$`pmp_name`
-      self$`accepted_terms_id` <- this_object$`accepted_terms_id`
-      self$`accepted_terms_time` <- this_object$`accepted_terms_time`
-      self$`budget_amount` <- this_object$`budget_amount`
-      self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
+      self$`po_number` <- this_object$`po_number`
+      self$`salesforce_order_line_id` <- this_object$`salesforce_order_line_id`
+      self$`start_date` <- this_object$`start_date`
       self
     },
 
@@ -478,11 +478,11 @@ SSIOOrderLine <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
+      if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
+      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
         return(FALSE)
       }
 
@@ -495,12 +495,12 @@ SSIOOrderLine <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
-        invalid_fields["last_modified_date_time"] <- "Invalid value for `last_modified_date_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$."
-      }
-
       if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
         invalid_fields["accepted_terms_time"] <- "Invalid value for `accepted_terms_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$."
+      }
+
+      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
+        invalid_fields["last_modified_date_time"] <- "Invalid value for `last_modified_date_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$."
       }
 
       invalid_fields

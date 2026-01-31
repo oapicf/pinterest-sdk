@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,6 @@ var _ MappedNullable = &KeywordMetrics{}
 
 // KeywordMetrics Keyword metrics JSON
 type KeywordMetrics struct {
-	// Average cost per click
-	AvgCpcInMicroCurrency *float32 `json:"avg_cpc_in_micro_currency,omitempty"`
 	// Keyword's search frequency. This value is based on keyword frequency in pepsi client response
 	KeywordQueryVolume *string `json:"keyword_query_volume,omitempty"`
 }
@@ -41,38 +39,6 @@ func NewKeywordMetrics() *KeywordMetrics {
 func NewKeywordMetricsWithDefaults() *KeywordMetrics {
 	this := KeywordMetrics{}
 	return &this
-}
-
-// GetAvgCpcInMicroCurrency returns the AvgCpcInMicroCurrency field value if set, zero value otherwise.
-func (o *KeywordMetrics) GetAvgCpcInMicroCurrency() float32 {
-	if o == nil || IsNil(o.AvgCpcInMicroCurrency) {
-		var ret float32
-		return ret
-	}
-	return *o.AvgCpcInMicroCurrency
-}
-
-// GetAvgCpcInMicroCurrencyOk returns a tuple with the AvgCpcInMicroCurrency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KeywordMetrics) GetAvgCpcInMicroCurrencyOk() (*float32, bool) {
-	if o == nil || IsNil(o.AvgCpcInMicroCurrency) {
-		return nil, false
-	}
-	return o.AvgCpcInMicroCurrency, true
-}
-
-// HasAvgCpcInMicroCurrency returns a boolean if a field has been set.
-func (o *KeywordMetrics) HasAvgCpcInMicroCurrency() bool {
-	if o != nil && !IsNil(o.AvgCpcInMicroCurrency) {
-		return true
-	}
-
-	return false
-}
-
-// SetAvgCpcInMicroCurrency gets a reference to the given float32 and assigns it to the AvgCpcInMicroCurrency field.
-func (o *KeywordMetrics) SetAvgCpcInMicroCurrency(v float32) {
-	o.AvgCpcInMicroCurrency = &v
 }
 
 // GetKeywordQueryVolume returns the KeywordQueryVolume field value if set, zero value otherwise.
@@ -117,9 +83,6 @@ func (o KeywordMetrics) MarshalJSON() ([]byte, error) {
 
 func (o KeywordMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AvgCpcInMicroCurrency) {
-		toSerialize["avg_cpc_in_micro_currency"] = o.AvgCpcInMicroCurrency
-	}
 	if !IsNil(o.KeywordQueryVolume) {
 		toSerialize["keyword_query_volume"] = o.KeywordQueryVolume
 	}

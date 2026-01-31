@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -22,19 +22,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-/**
- * Board media.
- */
 
-@ApiModel(description = "Board media.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardMedia   {
   
   private String imageCoverUrl;
   private List<String> pinThumbnailUrls = new ArrayList<>();
 
   /**
-   * Board cover image.
+   * Board cover image
    */
   public BoardMedia imageCoverUrl(String imageCoverUrl) {
     this.imageCoverUrl = imageCoverUrl;
@@ -42,7 +39,7 @@ public class BoardMedia   {
   }
 
   
-  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image.")
+  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image")
   @JsonProperty("image_cover_url")
   public String getImageCoverUrl() {
     return imageCoverUrl;

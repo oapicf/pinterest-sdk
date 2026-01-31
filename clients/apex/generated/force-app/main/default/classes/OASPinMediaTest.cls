@@ -74,5 +74,20 @@ private class OASPinMediaTest {
         OASPinMedia pinMedia = new OASPinMedia();
         Map<String, String> x-property-mappings = pinMedia.getx-property-mappings();
         System.assertEquals('mediaType', x-property-mappings.get('media_type'));
+        System.assertEquals('coverImageUrl', x-property-mappings.get('cover_image_url'));
+        System.assertEquals('videoUrl', x-property-mappings.get('video_url'));
+    }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASPinMedia pinMedia = new OASPinMedia();
+        System.assertEquals(new List<OASPinMediaMetadata>(), pinMedia.items);
+        System.assertEquals(null, pinMedia.images);
+        System.assertEquals(null, pinMedia.mediaType);
+        System.assertEquals(null, pinMedia.coverImageUrl);
+        System.assertEquals(null, pinMedia.duration);
+        System.assertEquals(null, pinMedia.height);
+        System.assertEquals(null, pinMedia.videoUrl);
+        System.assertEquals(null, pinMedia.width);
     }
 }

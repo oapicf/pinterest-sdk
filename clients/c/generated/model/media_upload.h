@@ -15,7 +15,7 @@
 
 typedef struct media_upload_t media_upload_t;
 
-#include "media_upload_all_of_upload_parameters.h"
+#include "media_upload_parameters.h"
 #include "media_upload_type.h"
 
 
@@ -23,8 +23,8 @@ typedef struct media_upload_t media_upload_t;
 typedef struct media_upload_t {
     char *media_id; // string
     media_upload_type_t *media_type; // custom
+    struct media_upload_parameters_t *upload_parameters; //model
     char *upload_url; // string
-    struct media_upload_all_of_upload_parameters_t *upload_parameters; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } media_upload_t;
@@ -32,8 +32,8 @@ typedef struct media_upload_t {
 __attribute__((deprecated)) media_upload_t *media_upload_create(
     char *media_id,
     media_upload_type_t *media_type,
-    char *upload_url,
-    media_upload_all_of_upload_parameters_t *upload_parameters
+    media_upload_parameters_t *upload_parameters,
+    char *upload_url
 );
 
 void media_upload_free(media_upload_t *media_upload);

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,10 +16,10 @@ package openapi
 
 type AdvancedAuctionItem struct {
 
+	Country Country `json:"country"`
+
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
-
-	Country Country `json:"country"`
 
 	Language Language `json:"language"`
 
@@ -29,8 +29,8 @@ type AdvancedAuctionItem struct {
 // AssertAdvancedAuctionItemRequired checks if the required fields are not zero-ed
 func AssertAdvancedAuctionItemRequired(obj AdvancedAuctionItem) error {
 	elements := map[string]interface{}{
-		"item_id": obj.ItemId,
 		"country": obj.Country,
+		"item_id": obj.ItemId,
 		"language": obj.Language,
 		"bid_options": obj.BidOptions,
 	}

@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "TargetingSpecAppType.h"
 #include <map>
 #include "Object.h"
 
@@ -49,14 +48,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	TargetingSpecAppType getAPPTYPE();
+	std::string getAPPTYPE();
 
 	/*! \brief Set 
 	 */
-	void setAPPTYPE(TargetingSpecAppType  aPP_TYPE);
+	void setAPPTYPE(std::string  aPP_TYPE);
 
 private:
-	TargetingSpecAppType aPP_TYPE;
+	std::string aPP_TYPE;
 	void __init();
 	void __cleanup();
 

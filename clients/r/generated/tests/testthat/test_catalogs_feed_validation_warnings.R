@@ -5,6 +5,1126 @@ context("Test CatalogsFeedValidationWarnings")
 
 model_instance <- CatalogsFeedValidationWarnings$new()
 
+test_that("AD_IMAGE_0_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_0_LINK_DUPLICATED` (integer)
+  # ad_image_0_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_0_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 0 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_0_LINK_REQUIRED` (integer)
+  # Ad image link 0 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_0_LINK_WARNING` (integer)
+  # Ad image link 0 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_0_TAG_DUPLICATED` (integer)
+  # ad_image_0_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_0_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 0 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_0_TAG_REQUIRED` (integer)
+  # Ad image tag 0 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_10_LINK_DUPLICATED` (integer)
+  # ad_image_10_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_10_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 10 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_10_LINK_REQUIRED` (integer)
+  # Ad image link 10 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_10_LINK_WARNING` (integer)
+  # Ad image link 10 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_10_TAG_DUPLICATED` (integer)
+  # ad_image_10_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_10_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 10 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_10_TAG_REQUIRED` (integer)
+  # Ad image tag 10 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_11_LINK_DUPLICATED` (integer)
+  # ad_image_11_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_11_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 11 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_11_LINK_REQUIRED` (integer)
+  # Ad image link 11 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_11_LINK_WARNING` (integer)
+  # Ad image link 11 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_11_TAG_DUPLICATED` (integer)
+  # ad_image_11_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_11_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 11 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_11_TAG_REQUIRED` (integer)
+  # Ad image tag 11 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_12_LINK_DUPLICATED` (integer)
+  # ad_image_12_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_12_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 12 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_12_LINK_REQUIRED` (integer)
+  # Ad image link 12 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_12_LINK_WARNING` (integer)
+  # Ad image link 12 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_12_TAG_DUPLICATED` (integer)
+  # ad_image_12_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_12_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 12 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_12_TAG_REQUIRED` (integer)
+  # Ad image tag 12 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_13_LINK_DUPLICATED` (integer)
+  # ad_image_13_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_13_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 13 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_13_LINK_REQUIRED` (integer)
+  # Ad image link 13 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_13_LINK_WARNING` (integer)
+  # Ad image link 13 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_13_TAG_DUPLICATED` (integer)
+  # ad_image_13_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_13_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 13 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_13_TAG_REQUIRED` (integer)
+  # Ad image tag 13 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_14_LINK_DUPLICATED` (integer)
+  # ad_image_14_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_14_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 14 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_14_LINK_REQUIRED` (integer)
+  # Ad image link 14 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_14_LINK_WARNING` (integer)
+  # Ad image link 14 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_14_TAG_DUPLICATED` (integer)
+  # ad_image_14_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_14_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 14 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_14_TAG_REQUIRED` (integer)
+  # Ad image tag 14 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_15_LINK_DUPLICATED` (integer)
+  # ad_image_15_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_15_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 15 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_15_LINK_REQUIRED` (integer)
+  # Ad image link 15 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_15_LINK_WARNING` (integer)
+  # Ad image link 15 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_15_TAG_DUPLICATED` (integer)
+  # ad_image_15_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_15_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 15 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_15_TAG_REQUIRED` (integer)
+  # Ad image tag 15 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_16_LINK_DUPLICATED` (integer)
+  # ad_image_16_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_16_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 16 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_16_LINK_REQUIRED` (integer)
+  # Ad image link 16 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_16_LINK_WARNING` (integer)
+  # Ad image link 16 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_16_TAG_DUPLICATED` (integer)
+  # ad_image_16_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_16_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 16 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_16_TAG_REQUIRED` (integer)
+  # Ad image tag 16 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_17_LINK_DUPLICATED` (integer)
+  # ad_image_17_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_17_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 17 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_17_LINK_REQUIRED` (integer)
+  # Ad image link 17 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_17_LINK_WARNING` (integer)
+  # Ad image link 17 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_17_TAG_DUPLICATED` (integer)
+  # ad_image_17_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_17_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 17 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_17_TAG_REQUIRED` (integer)
+  # Ad image tag 17 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_18_LINK_DUPLICATED` (integer)
+  # ad_image_18_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_18_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 18 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_18_LINK_REQUIRED` (integer)
+  # Ad image link 18 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_18_LINK_WARNING` (integer)
+  # Ad image link 18 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_18_TAG_DUPLICATED` (integer)
+  # ad_image_18_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_18_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 18 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_18_TAG_REQUIRED` (integer)
+  # Ad image tag 18 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_19_LINK_DUPLICATED` (integer)
+  # ad_image_19_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_19_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 19 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_19_LINK_REQUIRED` (integer)
+  # Ad image link 19 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_19_LINK_WARNING` (integer)
+  # Ad image link 19 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_19_TAG_DUPLICATED` (integer)
+  # ad_image_19_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_19_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 19 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_19_TAG_REQUIRED` (integer)
+  # Ad image tag 19 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_1_LINK_DUPLICATED` (integer)
+  # ad_image_1_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_1_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 1 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_1_LINK_REQUIRED` (integer)
+  # Ad image link 1 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_1_LINK_WARNING` (integer)
+  # Ad image link 1 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_1_TAG_DUPLICATED` (integer)
+  # ad_image_1_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_1_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 1 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_1_TAG_REQUIRED` (integer)
+  # Ad image tag 1 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_2_LINK_DUPLICATED` (integer)
+  # ad_image_2_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_2_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 2 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_2_LINK_REQUIRED` (integer)
+  # Ad image link 2 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_2_LINK_WARNING` (integer)
+  # Ad image link 2 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_2_TAG_DUPLICATED` (integer)
+  # ad_image_2_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_2_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 2 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_2_TAG_REQUIRED` (integer)
+  # Ad image tag 2 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_3_LINK_DUPLICATED` (integer)
+  # ad_image_3_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_3_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 3 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_3_LINK_REQUIRED` (integer)
+  # Ad image link 3 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_3_LINK_WARNING` (integer)
+  # Ad image link 3 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_3_TAG_DUPLICATED` (integer)
+  # ad_image_3_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_3_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 3 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_3_TAG_REQUIRED` (integer)
+  # Ad image tag 3 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_4_LINK_DUPLICATED` (integer)
+  # ad_image_4_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_4_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 4 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_4_LINK_REQUIRED` (integer)
+  # Ad image link 4 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_4_LINK_WARNING` (integer)
+  # Ad image link 4 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_4_TAG_DUPLICATED` (integer)
+  # ad_image_4_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_4_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 4 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_4_TAG_REQUIRED` (integer)
+  # Ad image tag 4 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_5_LINK_DUPLICATED` (integer)
+  # ad_image_5_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_5_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 5 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_5_LINK_REQUIRED` (integer)
+  # Ad image link 5 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_5_LINK_WARNING` (integer)
+  # Ad image link 5 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_5_TAG_DUPLICATED` (integer)
+  # ad_image_5_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_5_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 5 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_5_TAG_REQUIRED` (integer)
+  # Ad image tag 5 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_6_LINK_DUPLICATED` (integer)
+  # ad_image_6_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_6_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 6 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_6_LINK_REQUIRED` (integer)
+  # Ad image link 6 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_6_LINK_WARNING` (integer)
+  # Ad image link 6 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_6_TAG_DUPLICATED` (integer)
+  # ad_image_6_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_6_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 6 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_6_TAG_REQUIRED` (integer)
+  # Ad image tag 6 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_7_LINK_DUPLICATED` (integer)
+  # ad_image_7_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_7_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 7 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_7_LINK_REQUIRED` (integer)
+  # Ad image link 7 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_7_LINK_WARNING` (integer)
+  # Ad image link 7 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_7_TAG_DUPLICATED` (integer)
+  # ad_image_7_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_7_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 7 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_7_TAG_REQUIRED` (integer)
+  # Ad image tag 7 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_8_LINK_DUPLICATED` (integer)
+  # ad_image_8_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_8_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 8 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_8_LINK_REQUIRED` (integer)
+  # Ad image link 8 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_8_LINK_WARNING` (integer)
+  # Ad image link 8 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_8_TAG_DUPLICATED` (integer)
+  # ad_image_8_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_8_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 8 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_8_TAG_REQUIRED` (integer)
+  # Ad image tag 8 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_9_LINK_DUPLICATED` (integer)
+  # ad_image_9_link is duplicated with another ad image link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_9_LINK_LENGTH_TOO_LONG` (integer)
+  # Ad image link 9 length is too long. The maximum length is 2047 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_9_LINK_REQUIRED` (integer)
+  # Ad image link 9 is required because an image tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_9_LINK_WARNING` (integer)
+  # Ad image link 9 format is unsupported.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_9_TAG_DUPLICATED` (integer)
+  # ad_image_9_tag is duplicated with another ad image tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_9_TAG_LENGTH_TOO_LONG` (integer)
+  # Ad image tag 9 length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_9_TAG_REQUIRED` (integer)
+  # Ad image tag 9 is required because an image link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
 test_that("AD_LINK_FORMAT_WARNING", {
   # tests for the property `AD_LINK_FORMAT_WARNING` (integer)
   # Some items have ad links that are formatted incorrectly.
@@ -21,108 +1141,172 @@ test_that("AD_LINK_SAME_AS_LINK", {
   #expect_equal(model.instance$`AD_LINK_SAME_AS_LINK`, "EXPECTED_RESULT")
 })
 
-test_that("TITLE_LENGTH_TOO_LONG", {
-  # tests for the property `TITLE_LENGTH_TOO_LONG` (integer)
-  # The title for some items were truncated because they contain too many characters.
+test_that("AD_VIDEO_0_LINK_DUPLICATED", {
+  # tests for the property `AD_VIDEO_0_LINK_DUPLICATED` (integer)
+  # ad_video_0_link is duplicated with another ad video link.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`TITLE_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_DUPLICATED`, "EXPECTED_RESULT")
 })
 
-test_that("DESCRIPTION_LENGTH_TOO_LONG", {
-  # tests for the property `DESCRIPTION_LENGTH_TOO_LONG` (integer)
-  # The description for some items were truncated because they contain too many characters.
+test_that("AD_VIDEO_0_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_0_LINK_LENGTH_TOO_LONG` (integer)
+  # ad_video_0_link length is too long. The maximum length is 511 characters.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`DESCRIPTION_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
 })
 
-test_that("GENDER_INVALID", {
-  # tests for the property `GENDER_INVALID` (integer)
-  # Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+test_that("AD_VIDEO_0_LINK_REQUIRED", {
+  # tests for the property `AD_VIDEO_0_LINK_REQUIRED` (integer)
+  # ad_video_0_link is required for this item because ad_video_0_tag was provided.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`GENDER_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_REQUIRED`, "EXPECTED_RESULT")
 })
 
-test_that("AGE_GROUP_INVALID", {
-  # tests for the property `AGE_GROUP_INVALID` (integer)
-  # Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+test_that("AD_VIDEO_0_LINK_WARNING", {
+  # tests for the property `AD_VIDEO_0_LINK_WARNING` (integer)
+  # ad_video_0_link is formatted incorrectly and will not be published with your items.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`AGE_GROUP_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_WARNING`, "EXPECTED_RESULT")
 })
 
-test_that("SIZE_TYPE_INVALID", {
-  # tests for the property `SIZE_TYPE_INVALID` (integer)
-  # Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+test_that("AD_VIDEO_0_TAG_DUPLICATED", {
+  # tests for the property `AD_VIDEO_0_TAG_DUPLICATED` (integer)
+  # ad_video_0_tag is duplicated with another ad video tag.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SIZE_TYPE_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_TAG_DUPLICATED`, "EXPECTED_RESULT")
 })
 
-test_that("SIZE_SYSTEM_INVALID", {
-  # tests for the property `SIZE_SYSTEM_INVALID` (integer)
-  # Some items have size system values which are not one of the supported size systems.
+test_that("AD_VIDEO_0_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_0_TAG_LENGTH_TOO_LONG` (integer)
+  # ad_video_0_tag length is too long. The maximum length is 511 characters.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SIZE_SYSTEM_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
 })
 
-test_that("LINK_FORMAT_WARNING", {
-  # tests for the property `LINK_FORMAT_WARNING` (integer)
-  # Some items have an invalid product link which contains invalid UTM tracking paramaters.
+test_that("AD_VIDEO_0_TAG_REQUIRED", {
+  # tests for the property `AD_VIDEO_0_TAG_REQUIRED` (integer)
+  # ad_video_0_tag is required because ad_video_0_link was provided.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`LINK_FORMAT_WARNING`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_0_TAG_REQUIRED`, "EXPECTED_RESULT")
 })
 
-test_that("SALES_PRICE_INVALID", {
-  # tests for the property `SALES_PRICE_INVALID` (integer)
-  # Some items have sale price values that are higher than the original price of the item.
+test_that("AD_VIDEO_1_LINK_DUPLICATED", {
+  # tests for the property `AD_VIDEO_1_LINK_DUPLICATED` (integer)
+  # ad_video_1_link is duplicated with another ad video link.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SALES_PRICE_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_DUPLICATED`, "EXPECTED_RESULT")
 })
 
-test_that("PRODUCT_CATEGORY_DEPTH_WARNING", {
-  # tests for the property `PRODUCT_CATEGORY_DEPTH_WARNING` (integer)
-  # Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
+test_that("AD_VIDEO_1_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_1_LINK_LENGTH_TOO_LONG` (integer)
+  # ad_video_1_link length is too long. The maximum length is 511 characters.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`PRODUCT_CATEGORY_DEPTH_WARNING`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
 })
 
-test_that("ADWORDS_FORMAT_WARNING", {
-  # tests for the property `ADWORDS_FORMAT_WARNING` (integer)
-  # Some items have adwords_redirect links that are formatted incorrectly.
+test_that("AD_VIDEO_1_LINK_REQUIRED", {
+  # tests for the property `AD_VIDEO_1_LINK_REQUIRED` (integer)
+  # ad_video_1_link is required for this item because ad_video_1_tag was provided.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ADWORDS_FORMAT_WARNING`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_REQUIRED`, "EXPECTED_RESULT")
 })
 
-test_that("ADWORDS_SAME_AS_LINK", {
-  # tests for the property `ADWORDS_SAME_AS_LINK` (integer)
-  # Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
+test_that("AD_VIDEO_1_LINK_WARNING", {
+  # tests for the property `AD_VIDEO_1_LINK_WARNING` (integer)
+  # ad_video_1_link is formatted incorrectly and will not be published with your items.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ADWORDS_SAME_AS_LINK`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_WARNING`, "EXPECTED_RESULT")
 })
 
-test_that("DUPLICATE_HEADERS", {
-  # tests for the property `DUPLICATE_HEADERS` (integer)
-  # Your feed contains duplicate headers.
+test_that("AD_VIDEO_1_TAG_DUPLICATED", {
+  # tests for the property `AD_VIDEO_1_TAG_DUPLICATED` (integer)
+  # ad_video_1_tag is duplicated with another ad video tag.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`DUPLICATE_HEADERS`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_1_TAG_DUPLICATED`, "EXPECTED_RESULT")
 })
 
-test_that("FETCH_SAME_SIGNATURE", {
-  # tests for the property `FETCH_SAME_SIGNATURE` (integer)
-  # Ingestion completed early because there are no changes to your feed since the last successful update.
+test_that("AD_VIDEO_1_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_1_TAG_LENGTH_TOO_LONG` (integer)
+  # ad_video_1_tag length is too long. The maximum length is 511 characters.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`FETCH_SAME_SIGNATURE`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_TAG_REQUIRED", {
+  # tests for the property `AD_VIDEO_1_TAG_REQUIRED` (integer)
+  # ad_video_1_tag is required because ad_video_1_link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_DUPLICATED", {
+  # tests for the property `AD_VIDEO_2_LINK_DUPLICATED` (integer)
+  # ad_video_2_link is duplicated with another ad video link.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_2_LINK_LENGTH_TOO_LONG` (integer)
+  # ad_video_2_link length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_REQUIRED", {
+  # tests for the property `AD_VIDEO_2_LINK_REQUIRED` (integer)
+  # ad_video_2_link is required for this item because ad_video_2_tag was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_WARNING", {
+  # tests for the property `AD_VIDEO_2_LINK_WARNING` (integer)
+  # ad_video_2_link is formatted incorrectly and will not be published with your items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_TAG_DUPLICATED", {
+  # tests for the property `AD_VIDEO_2_TAG_DUPLICATED` (integer)
+  # ad_video_2_tag is duplicated with another ad video tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_2_TAG_LENGTH_TOO_LONG` (integer)
+  # ad_video_2_tag length is too long. The maximum length is 511 characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_TAG_REQUIRED", {
+  # tests for the property `AD_VIDEO_2_TAG_REQUIRED` (integer)
+  # ad_video_2_tag is required because ad_video_2_link was provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_TAG_REQUIRED`, "EXPECTED_RESULT")
 })
 
 test_that("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", {
@@ -141,172 +1325,28 @@ test_that("ADDITIONAL_IMAGE_LINK_WARNING", {
   #expect_equal(model.instance$`ADDITIONAL_IMAGE_LINK_WARNING`, "EXPECTED_RESULT")
 })
 
-test_that("IMAGE_LINK_WARNING", {
-  # tests for the property `IMAGE_LINK_WARNING` (integer)
-  # Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
+test_that("ADWORDS_FORMAT_WARNING", {
+  # tests for the property `ADWORDS_FORMAT_WARNING` (integer)
+  # Some items have adwords_redirect links that are formatted incorrectly.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`IMAGE_LINK_WARNING`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ADWORDS_FORMAT_WARNING`, "EXPECTED_RESULT")
 })
 
-test_that("SHIPPING_INVALID", {
-  # tests for the property `SHIPPING_INVALID` (integer)
-  # Some items have shipping values that are formatted incorrectly.
+test_that("ADWORDS_SAME_AS_LINK", {
+  # tests for the property `ADWORDS_SAME_AS_LINK` (integer)
+  # Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SHIPPING_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ADWORDS_SAME_AS_LINK`, "EXPECTED_RESULT")
 })
 
-test_that("TAX_INVALID", {
-  # tests for the property `TAX_INVALID` (integer)
-  # Some items have tax values that are formatted incorrectly.
+test_that("AGE_GROUP_INVALID", {
+  # tests for the property `AGE_GROUP_INVALID` (integer)
+  # Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`TAX_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("SHIPPING_WEIGHT_INVALID", {
-  # tests for the property `SHIPPING_WEIGHT_INVALID` (integer)
-  # Some items have invalid shipping_weight values.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`SHIPPING_WEIGHT_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("EXPIRATION_DATE_INVALID", {
-  # tests for the property `EXPIRATION_DATE_INVALID` (integer)
-  # Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`EXPIRATION_DATE_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("AVAILABILITY_DATE_INVALID", {
-  # tests for the property `AVAILABILITY_DATE_INVALID` (integer)
-  # Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`AVAILABILITY_DATE_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("SALE_DATE_INVALID", {
-  # tests for the property `SALE_DATE_INVALID` (integer)
-  # Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`SALE_DATE_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("WEIGHT_UNIT_INVALID", {
-  # tests for the property `WEIGHT_UNIT_INVALID` (integer)
-  # Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`WEIGHT_UNIT_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("IS_BUNDLE_INVALID", {
-  # tests for the property `IS_BUNDLE_INVALID` (integer)
-  # Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`IS_BUNDLE_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("UPDATED_TIME_INVALID", {
-  # tests for the property `UPDATED_TIME_INVALID` (integer)
-  # Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`UPDATED_TIME_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("CUSTOM_LABEL_LENGTH_TOO_LONG", {
-  # tests for the property `CUSTOM_LABEL_LENGTH_TOO_LONG` (integer)
-  # Some items have custom_label values that are too long, those items will be published without that custom label.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`CUSTOM_LABEL_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
-})
-
-test_that("PRODUCT_TYPE_LENGTH_TOO_LONG", {
-  # tests for the property `PRODUCT_TYPE_LENGTH_TOO_LONG` (integer)
-  # Some items have product_type values that are too long, those items will be published without that product type.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`PRODUCT_TYPE_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
-})
-
-test_that("TOO_MANY_ADDITIONAL_IMAGE_LINKS", {
-  # tests for the property `TOO_MANY_ADDITIONAL_IMAGE_LINKS` (integer)
-  # Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`, "EXPECTED_RESULT")
-})
-
-test_that("MULTIPACK_INVALID", {
-  # tests for the property `MULTIPACK_INVALID` (integer)
-  # Some items have invalid multipack values.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`MULTIPACK_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("INDEXED_PRODUCT_COUNT_LARGE_DELTA", {
-  # tests for the property `INDEXED_PRODUCT_COUNT_LARGE_DELTA` (integer)
-  # The product count has increased or decreased significantly compared to the last successful ingestion.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`INDEXED_PRODUCT_COUNT_LARGE_DELTA`, "EXPECTED_RESULT")
-})
-
-test_that("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", {
-  # tests for the property `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` (integer)
-  # Some items include additional_image_links that can&#39;t be found.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`, "EXPECTED_RESULT")
-})
-
-test_that("OPTIONAL_PRODUCT_CATEGORY_MISSING", {
-  # tests for the property `OPTIONAL_PRODUCT_CATEGORY_MISSING` (integer)
-  # Some items are missing a google_product_category.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`OPTIONAL_PRODUCT_CATEGORY_MISSING`, "EXPECTED_RESULT")
-})
-
-test_that("OPTIONAL_PRODUCT_CATEGORY_INVALID", {
-  # tests for the property `OPTIONAL_PRODUCT_CATEGORY_INVALID` (integer)
-  # Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`OPTIONAL_PRODUCT_CATEGORY_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("OPTIONAL_CONDITION_MISSING", {
-  # tests for the property `OPTIONAL_CONDITION_MISSING` (integer)
-  # Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`OPTIONAL_CONDITION_MISSING`, "EXPECTED_RESULT")
-})
-
-test_that("OPTIONAL_CONDITION_INVALID", {
-  # tests for the property `OPTIONAL_CONDITION_INVALID` (integer)
-  # Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`OPTIONAL_CONDITION_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("IOS_DEEP_LINK_INVALID", {
-  # tests for the property `IOS_DEEP_LINK_INVALID` (integer)
-  # Some items include invalid ios_deep_link values.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`IOS_DEEP_LINK_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AGE_GROUP_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("ANDROID_DEEP_LINK_INVALID", {
@@ -317,12 +1357,12 @@ test_that("ANDROID_DEEP_LINK_INVALID", {
   #expect_equal(model.instance$`ANDROID_DEEP_LINK_INVALID`, "EXPECTED_RESULT")
 })
 
-test_that("UTM_SOURCE_AUTO_CORRECTED", {
-  # tests for the property `UTM_SOURCE_AUTO_CORRECTED` (integer)
-  # Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
+test_that("AVAILABILITY_DATE_INVALID", {
+  # tests for the property `AVAILABILITY_DATE_INVALID` (integer)
+  # Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`UTM_SOURCE_AUTO_CORRECTED`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AVAILABILITY_DATE_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("COUNTRY_DOES_NOT_MAP_TO_CURRENCY", {
@@ -333,12 +1373,52 @@ test_that("COUNTRY_DOES_NOT_MAP_TO_CURRENCY", {
   #expect_equal(model.instance$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`, "EXPECTED_RESULT")
 })
 
-test_that("MIN_AD_PRICE_INVALID", {
-  # tests for the property `MIN_AD_PRICE_INVALID` (integer)
-  # Some items include min_ad_price values that are formatted incorrectly.
+test_that("CUSTOM_LABEL_LENGTH_TOO_LONG", {
+  # tests for the property `CUSTOM_LABEL_LENGTH_TOO_LONG` (integer)
+  # Some items have custom_label values that are too long, those items will be published without that custom label.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`MIN_AD_PRICE_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`CUSTOM_LABEL_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("DESCRIPTION_LENGTH_TOO_LONG", {
+  # tests for the property `DESCRIPTION_LENGTH_TOO_LONG` (integer)
+  # The description for some items were truncated because they contain too many characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`DESCRIPTION_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("DUPLICATE_HEADERS", {
+  # tests for the property `DUPLICATE_HEADERS` (integer)
+  # Your feed contains duplicate headers.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`DUPLICATE_HEADERS`, "EXPECTED_RESULT")
+})
+
+test_that("EXPIRATION_DATE_INVALID", {
+  # tests for the property `EXPIRATION_DATE_INVALID` (integer)
+  # Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`EXPIRATION_DATE_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("FETCH_SAME_SIGNATURE", {
+  # tests for the property `FETCH_SAME_SIGNATURE` (integer)
+  # Ingestion completed early because there are no changes to your feed since the last successful update.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`FETCH_SAME_SIGNATURE`, "EXPECTED_RESULT")
+})
+
+test_that("GENDER_INVALID", {
+  # tests for the property `GENDER_INVALID` (integer)
+  # Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`GENDER_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("GTIN_INVALID", {
@@ -349,6 +1429,14 @@ test_that("GTIN_INVALID", {
   #expect_equal(model.instance$`GTIN_INVALID`, "EXPECTED_RESULT")
 })
 
+test_that("IMAGE_LINK_WARNING", {
+  # tests for the property `IMAGE_LINK_WARNING` (integer)
+  # Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`IMAGE_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
 test_that("INCONSISTENT_CURRENCY_VALUES", {
   # tests for the property `INCONSISTENT_CURRENCY_VALUES` (integer)
   # Some items include inconsistent currencies in price fields.
@@ -357,28 +1445,132 @@ test_that("INCONSISTENT_CURRENCY_VALUES", {
   #expect_equal(model.instance$`INCONSISTENT_CURRENCY_VALUES`, "EXPECTED_RESULT")
 })
 
-test_that("SALES_PRICE_TOO_LOW", {
-  # tests for the property `SALES_PRICE_TOO_LOW` (integer)
-  # Some items include sales price that is much lower than the list price.
+test_that("INDEXED_PRODUCT_COUNT_LARGE_DELTA", {
+  # tests for the property `INDEXED_PRODUCT_COUNT_LARGE_DELTA` (integer)
+  # The product count has increased or decreased significantly compared to the last successful ingestion.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SALES_PRICE_TOO_LOW`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`INDEXED_PRODUCT_COUNT_LARGE_DELTA`, "EXPECTED_RESULT")
 })
 
-test_that("SHIPPING_WIDTH_INVALID", {
-  # tests for the property `SHIPPING_WIDTH_INVALID` (integer)
-  # Some items include incorrectly formatted shipping_width.
+test_that("IOS_DEEP_LINK_INVALID", {
+  # tests for the property `IOS_DEEP_LINK_INVALID` (integer)
+  # Some items include invalid ios_deep_link values.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SHIPPING_WIDTH_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`IOS_DEEP_LINK_INVALID`, "EXPECTED_RESULT")
 })
 
-test_that("SHIPPING_HEIGHT_INVALID", {
-  # tests for the property `SHIPPING_HEIGHT_INVALID` (integer)
-  # Some items include incorrectly formatted shipping_height.
+test_that("IS_BUNDLE_INVALID", {
+  # tests for the property `IS_BUNDLE_INVALID` (integer)
+  # Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SHIPPING_HEIGHT_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`IS_BUNDLE_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", {
+  # tests for the property `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` (integer)
+  # Some items include additional_image_links that can&#39;t be found.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`, "EXPECTED_RESULT")
+})
+
+test_that("LINK_FORMAT_WARNING", {
+  # tests for the property `LINK_FORMAT_WARNING` (integer)
+  # Some items have an invalid product link which contains invalid UTM tracking paramaters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`LINK_FORMAT_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("MIN_AD_PRICE_INVALID", {
+  # tests for the property `MIN_AD_PRICE_INVALID` (integer)
+  # Some items include min_ad_price values that are formatted incorrectly.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`MIN_AD_PRICE_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("MPN_INVALID", {
+  # tests for the property `MPN_INVALID` (integer)
+  # Some items include incorrectly formatted MPNs.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`MPN_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("MULTIPACK_INVALID", {
+  # tests for the property `MULTIPACK_INVALID` (integer)
+  # Some items have invalid multipack values.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`MULTIPACK_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("OPTIONAL_CONDITION_INVALID", {
+  # tests for the property `OPTIONAL_CONDITION_INVALID` (integer)
+  # Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`OPTIONAL_CONDITION_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("OPTIONAL_CONDITION_MISSING", {
+  # tests for the property `OPTIONAL_CONDITION_MISSING` (integer)
+  # Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`OPTIONAL_CONDITION_MISSING`, "EXPECTED_RESULT")
+})
+
+test_that("OPTIONAL_PRODUCT_CATEGORY_INVALID", {
+  # tests for the property `OPTIONAL_PRODUCT_CATEGORY_INVALID` (integer)
+  # Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`OPTIONAL_PRODUCT_CATEGORY_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("OPTIONAL_PRODUCT_CATEGORY_MISSING", {
+  # tests for the property `OPTIONAL_PRODUCT_CATEGORY_MISSING` (integer)
+  # Some items are missing a google_product_category.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`OPTIONAL_PRODUCT_CATEGORY_MISSING`, "EXPECTED_RESULT")
+})
+
+test_that("PRODUCT_CATEGORY_DEPTH_WARNING", {
+  # tests for the property `PRODUCT_CATEGORY_DEPTH_WARNING` (integer)
+  # Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`PRODUCT_CATEGORY_DEPTH_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("PRODUCT_TYPE_LENGTH_TOO_LONG", {
+  # tests for the property `PRODUCT_TYPE_LENGTH_TOO_LONG` (integer)
+  # Some items have product_type values that are too long, those items will be published without that product type.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`PRODUCT_TYPE_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("SALE_DATE_INVALID", {
+  # tests for the property `SALE_DATE_INVALID` (integer)
+  # Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SALE_DATE_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SALES_PRICE_INVALID", {
+  # tests for the property `SALES_PRICE_INVALID` (integer)
+  # Some items have sale price values that are higher than the original price of the item.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SALES_PRICE_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("SALES_PRICE_TOO_HIGH", {
@@ -389,10 +1581,114 @@ test_that("SALES_PRICE_TOO_HIGH", {
   #expect_equal(model.instance$`SALES_PRICE_TOO_HIGH`, "EXPECTED_RESULT")
 })
 
-test_that("MPN_INVALID", {
-  # tests for the property `MPN_INVALID` (integer)
-  # Some items include incorrectly formatted MPNs.
+test_that("SALES_PRICE_TOO_LOW", {
+  # tests for the property `SALES_PRICE_TOO_LOW` (integer)
+  # Some items include sales price that is much lower than the list price.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`MPN_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`SALES_PRICE_TOO_LOW`, "EXPECTED_RESULT")
+})
+
+test_that("SHIPPING_HEIGHT_INVALID", {
+  # tests for the property `SHIPPING_HEIGHT_INVALID` (integer)
+  # Some items include incorrectly formatted shipping_height.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SHIPPING_HEIGHT_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SHIPPING_INVALID", {
+  # tests for the property `SHIPPING_INVALID` (integer)
+  # Some items have shipping values that are formatted incorrectly.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SHIPPING_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SHIPPING_WEIGHT_INVALID", {
+  # tests for the property `SHIPPING_WEIGHT_INVALID` (integer)
+  # Some items have invalid shipping_weight values.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SHIPPING_WEIGHT_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SHIPPING_WIDTH_INVALID", {
+  # tests for the property `SHIPPING_WIDTH_INVALID` (integer)
+  # Some items include incorrectly formatted shipping_width.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SHIPPING_WIDTH_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SIZE_SYSTEM_INVALID", {
+  # tests for the property `SIZE_SYSTEM_INVALID` (integer)
+  # Some items have size system values which are not one of the supported size systems.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SIZE_SYSTEM_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SIZE_TYPE_INVALID", {
+  # tests for the property `SIZE_TYPE_INVALID` (integer)
+  # Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SIZE_TYPE_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("TAX_INVALID", {
+  # tests for the property `TAX_INVALID` (integer)
+  # Some items have tax values that are formatted incorrectly.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`TAX_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("TITLE_LENGTH_TOO_LONG", {
+  # tests for the property `TITLE_LENGTH_TOO_LONG` (integer)
+  # The title for some items were truncated because they contain too many characters.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`TITLE_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("TOO_MANY_ADDITIONAL_IMAGE_LINKS", {
+  # tests for the property `TOO_MANY_ADDITIONAL_IMAGE_LINKS` (integer)
+  # Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`, "EXPECTED_RESULT")
+})
+
+test_that("UPDATED_TIME_INVALID", {
+  # tests for the property `UPDATED_TIME_INVALID` (integer)
+  # Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`UPDATED_TIME_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("UTM_SOURCE_AUTO_CORRECTED", {
+  # tests for the property `UTM_SOURCE_AUTO_CORRECTED` (integer)
+  # Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`UTM_SOURCE_AUTO_CORRECTED`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED", {
+  # tests for the property `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` (integer)
+  # A video is required in the item when ad_video fields are provided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`, "EXPECTED_RESULT")
+})
+
+test_that("WEIGHT_UNIT_INVALID", {
+  # tests for the property `WEIGHT_UNIT_INVALID` (integer)
+  # Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`WEIGHT_UNIT_INVALID`, "EXPECTED_RESULT")
 })

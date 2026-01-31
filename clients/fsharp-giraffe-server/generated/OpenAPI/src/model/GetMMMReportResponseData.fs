@@ -15,7 +15,7 @@ module GetMMMReportResponseData =
 
   type GetMMMReportResponseData = {
     ReportStatus : ReportStatusEnum;
-    Url : string option;
     Size : decimal option;
+    Url : string option;
   }
   //#endregion

@@ -19,24 +19,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Integration record")
 @JsonTypeName("IntegrationRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationRecord   {
-  private String id;
-  private String externalBusinessId;
-  private String connectedMerchantId;
-  private String connectedUserId;
+  private String additionalId1;
   private String connectedAdvertiserId;
   private String connectedLbaId;
+  private String connectedMerchantId;
   private String connectedTagId;
+  private String connectedUserId;
+  private Integer createdTime;
+  private String externalBusinessId;
+  private String id;
   private String partnerAccessToken;
-  private String partnerRefreshToken;
-  private String partnerPrimaryEmail;
   private Integer partnerAccessTokenExpiry;
+  private String partnerMetadata;
+  private String partnerPrimaryEmail;
+  private String partnerRefreshToken;
   private Integer partnerRefreshTokenExpiry;
   private String scopes;
-  private String partnerMetadata;
-  private String additionalId1;
-  private Integer createdTime;
   private Integer updatedTime;
 
   public IntegrationRecord() {
@@ -44,78 +44,21 @@ public class IntegrationRecord   {
 
   /**
    **/
-  public IntegrationRecord id(String id) {
-    this.id = id;
+  public IntegrationRecord additionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("id")
-   @Pattern(regexp="^\\d+$")public String getId() {
-    return id;
+  @JsonProperty("additional_id_1")
+  public String getAdditionalId1() {
+    return additionalId1;
   }
 
-  @JsonProperty("id")
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   **/
-  public IntegrationRecord externalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("external_business_id")
-  public String getExternalBusinessId() {
-    return externalBusinessId;
-  }
-
-  @JsonProperty("external_business_id")
-  public void setExternalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-  }
-
-  /**
-   **/
-  public IntegrationRecord connectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("connected_merchant_id")
-  public String getConnectedMerchantId() {
-    return connectedMerchantId;
-  }
-
-  @JsonProperty("connected_merchant_id")
-  public void setConnectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-  }
-
-  /**
-   **/
-  public IntegrationRecord connectedUserId(String connectedUserId) {
-    this.connectedUserId = connectedUserId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("connected_user_id")
-  public String getConnectedUserId() {
-    return connectedUserId;
-  }
-
-  @JsonProperty("connected_user_id")
-  public void setConnectedUserId(String connectedUserId) {
-    this.connectedUserId = connectedUserId;
+  @JsonProperty("additional_id_1")
+  public void setAdditionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
   }
 
   /**
@@ -158,6 +101,25 @@ public class IntegrationRecord   {
 
   /**
    **/
+  public IntegrationRecord connectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("connected_merchant_id")
+  public String getConnectedMerchantId() {
+    return connectedMerchantId;
+  }
+
+  @JsonProperty("connected_merchant_id")
+  public void setConnectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+  }
+
+  /**
+   **/
   public IntegrationRecord connectedTagId(String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
@@ -173,6 +135,82 @@ public class IntegrationRecord   {
   @JsonProperty("connected_tag_id")
   public void setConnectedTagId(String connectedTagId) {
     this.connectedTagId = connectedTagId;
+  }
+
+  /**
+   **/
+  public IntegrationRecord connectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("connected_user_id")
+  public String getConnectedUserId() {
+    return connectedUserId;
+  }
+
+  @JsonProperty("connected_user_id")
+  public void setConnectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+  }
+
+  /**
+   **/
+  public IntegrationRecord createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+
+  @JsonProperty("created_time")
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  /**
+   **/
+  public IntegrationRecord externalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("external_business_id")
+  public String getExternalBusinessId() {
+    return externalBusinessId;
+  }
+
+  @JsonProperty("external_business_id")
+  public void setExternalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+  }
+
+  /**
+   **/
+  public IntegrationRecord id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("id")
+   @Pattern(regexp="^\\d+$")public String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**
@@ -196,21 +234,40 @@ public class IntegrationRecord   {
 
   /**
    **/
-  public IntegrationRecord partnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
+  public IntegrationRecord partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("partner_refresh_token")
-  public String getPartnerRefreshToken() {
-    return partnerRefreshToken;
+  @JsonProperty("partner_access_token_expiry")
+  public Integer getPartnerAccessTokenExpiry() {
+    return partnerAccessTokenExpiry;
   }
 
-  @JsonProperty("partner_refresh_token")
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
+  @JsonProperty("partner_access_token_expiry")
+  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  }
+
+  /**
+   **/
+  public IntegrationRecord partnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("partner_metadata")
+  public String getPartnerMetadata() {
+    return partnerMetadata;
+  }
+
+  @JsonProperty("partner_metadata")
+  public void setPartnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
   }
 
   /**
@@ -234,21 +291,21 @@ public class IntegrationRecord   {
 
   /**
    **/
-  public IntegrationRecord partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
-    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  public IntegrationRecord partnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("partner_access_token_expiry")
-  public Integer getPartnerAccessTokenExpiry() {
-    return partnerAccessTokenExpiry;
+  @JsonProperty("partner_refresh_token")
+  public String getPartnerRefreshToken() {
+    return partnerRefreshToken;
   }
 
-  @JsonProperty("partner_access_token_expiry")
-  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
-    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  @JsonProperty("partner_refresh_token")
+  public void setPartnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
   }
 
   /**
@@ -291,63 +348,6 @@ public class IntegrationRecord   {
 
   /**
    **/
-  public IntegrationRecord partnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("partner_metadata")
-  public String getPartnerMetadata() {
-    return partnerMetadata;
-  }
-
-  @JsonProperty("partner_metadata")
-  public void setPartnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-  }
-
-  /**
-   **/
-  public IntegrationRecord additionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("additional_id_1")
-  public String getAdditionalId1() {
-    return additionalId1;
-  }
-
-  @JsonProperty("additional_id_1")
-  public void setAdditionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-  }
-
-  /**
-   **/
-  public IntegrationRecord createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  @JsonProperty("created_time")
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
-   **/
   public IntegrationRecord updatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
@@ -375,28 +375,28 @@ public class IntegrationRecord   {
       return false;
     }
     IntegrationRecord integrationRecord = (IntegrationRecord) o;
-    return Objects.equals(this.id, integrationRecord.id) &&
-        Objects.equals(this.externalBusinessId, integrationRecord.externalBusinessId) &&
-        Objects.equals(this.connectedMerchantId, integrationRecord.connectedMerchantId) &&
-        Objects.equals(this.connectedUserId, integrationRecord.connectedUserId) &&
+    return Objects.equals(this.additionalId1, integrationRecord.additionalId1) &&
         Objects.equals(this.connectedAdvertiserId, integrationRecord.connectedAdvertiserId) &&
         Objects.equals(this.connectedLbaId, integrationRecord.connectedLbaId) &&
+        Objects.equals(this.connectedMerchantId, integrationRecord.connectedMerchantId) &&
         Objects.equals(this.connectedTagId, integrationRecord.connectedTagId) &&
+        Objects.equals(this.connectedUserId, integrationRecord.connectedUserId) &&
+        Objects.equals(this.createdTime, integrationRecord.createdTime) &&
+        Objects.equals(this.externalBusinessId, integrationRecord.externalBusinessId) &&
+        Objects.equals(this.id, integrationRecord.id) &&
         Objects.equals(this.partnerAccessToken, integrationRecord.partnerAccessToken) &&
-        Objects.equals(this.partnerRefreshToken, integrationRecord.partnerRefreshToken) &&
-        Objects.equals(this.partnerPrimaryEmail, integrationRecord.partnerPrimaryEmail) &&
         Objects.equals(this.partnerAccessTokenExpiry, integrationRecord.partnerAccessTokenExpiry) &&
+        Objects.equals(this.partnerMetadata, integrationRecord.partnerMetadata) &&
+        Objects.equals(this.partnerPrimaryEmail, integrationRecord.partnerPrimaryEmail) &&
+        Objects.equals(this.partnerRefreshToken, integrationRecord.partnerRefreshToken) &&
         Objects.equals(this.partnerRefreshTokenExpiry, integrationRecord.partnerRefreshTokenExpiry) &&
         Objects.equals(this.scopes, integrationRecord.scopes) &&
-        Objects.equals(this.partnerMetadata, integrationRecord.partnerMetadata) &&
-        Objects.equals(this.additionalId1, integrationRecord.additionalId1) &&
-        Objects.equals(this.createdTime, integrationRecord.createdTime) &&
         Objects.equals(this.updatedTime, integrationRecord.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, externalBusinessId, connectedMerchantId, connectedUserId, connectedAdvertiserId, connectedLbaId, connectedTagId, partnerAccessToken, partnerRefreshToken, partnerPrimaryEmail, partnerAccessTokenExpiry, partnerRefreshTokenExpiry, scopes, partnerMetadata, additionalId1, createdTime, updatedTime);
+    return Objects.hash(additionalId1, connectedAdvertiserId, connectedLbaId, connectedMerchantId, connectedTagId, connectedUserId, createdTime, externalBusinessId, id, partnerAccessToken, partnerAccessTokenExpiry, partnerMetadata, partnerPrimaryEmail, partnerRefreshToken, partnerRefreshTokenExpiry, scopes, updatedTime);
   }
 
   @Override
@@ -404,22 +404,22 @@ public class IntegrationRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationRecord {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
-    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
-    sb.append("    connectedUserId: ").append(toIndentedString(connectedUserId)).append("\n");
+    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
     sb.append("    connectedAdvertiserId: ").append(toIndentedString(connectedAdvertiserId)).append("\n");
     sb.append("    connectedLbaId: ").append(toIndentedString(connectedLbaId)).append("\n");
+    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
     sb.append("    connectedTagId: ").append(toIndentedString(connectedTagId)).append("\n");
+    sb.append("    connectedUserId: ").append(toIndentedString(connectedUserId)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
-    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
-    sb.append("    partnerPrimaryEmail: ").append(toIndentedString(partnerPrimaryEmail)).append("\n");
     sb.append("    partnerAccessTokenExpiry: ").append(toIndentedString(partnerAccessTokenExpiry)).append("\n");
+    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
+    sb.append("    partnerPrimaryEmail: ").append(toIndentedString(partnerPrimaryEmail)).append("\n");
+    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
     sb.append("    partnerRefreshTokenExpiry: ").append(toIndentedString(partnerRefreshTokenExpiry)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
-    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
-    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

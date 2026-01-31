@@ -5,32 +5,19 @@ context("Test AdAccount")
 
 model_instance <- AdAccount$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("name", {
-  # tests for the property `name` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("owner", {
-  # tests for the property `owner` (AdAccountOwner)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`owner`, "EXPECTED_RESULT")
-})
-
 test_that("country", {
   # tests for the property `country` (Country)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
+test_that("created_time", {
+  # tests for the property `created_time` (integer)
+  #  Creation time. Unix timestamp in seconds.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
 })
 
 test_that("currency", {
@@ -40,6 +27,29 @@ test_that("currency", {
   #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
 })
 
+test_that("id", {
+  # tests for the property `id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Ad account name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
+test_that("owner", {
+  # tests for the property `owner` (AdAccountOwner)
+  # Ad account owner
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`owner`, "EXPECTED_RESULT")
+})
+
 test_that("permissions", {
   # tests for the property `permissions` (array[BusinessAccessRole])
 
@@ -47,17 +57,8 @@ test_that("permissions", {
   #expect_equal(model.instance$`permissions`, "EXPECTED_RESULT")
 })
 
-test_that("created_time", {
-  # tests for the property `created_time` (integer)
-  # Creation time. Unix timestamp in seconds.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
-})
-
 test_that("updated_time", {
   # tests for the property `updated_time` (integer)
-  # Last update time. Unix timestamp in seconds.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`updated_time`, "EXPECTED_RESULT")

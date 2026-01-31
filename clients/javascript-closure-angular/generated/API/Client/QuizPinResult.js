@@ -10,13 +10,13 @@ API.Client.QuizPinResult = function() {}
  * @type {!string}
  * @export
  */
-API.Client.QuizPinResult.prototype.organicPinId;
+API.Client.QuizPinResult.prototype.androidDeepLink;
 
 /**
  * @type {!string}
  * @export
  */
-API.Client.QuizPinResult.prototype.androidDeepLink;
+API.Client.QuizPinResult.prototype.destinationUrl;
 
 /**
  * @type {!string}
@@ -28,7 +28,7 @@ API.Client.QuizPinResult.prototype.iosDeepLink;
  * @type {!string}
  * @export
  */
-API.Client.QuizPinResult.prototype.destinationUrl;
+API.Client.QuizPinResult.prototype.organicPinId;
 
 /**
  * @type {!number}

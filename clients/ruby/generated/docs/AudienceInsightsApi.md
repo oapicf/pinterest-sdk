@@ -25,6 +25,9 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::AudienceInsightsApi.new
@@ -71,7 +74,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -95,6 +98,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -140,7 +146,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

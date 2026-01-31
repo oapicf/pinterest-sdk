@@ -36,14 +36,6 @@ public class OauthAccessTokenRequestRefreshTest {
     }
 
     /**
-     * Test the property 'refreshOn'
-     */
-    @Test
-    public void refreshOnTest() {
-        // TODO: test refreshOn
-    }
-
-    /**
      * Test the property 'grantType'
      */
     @Test

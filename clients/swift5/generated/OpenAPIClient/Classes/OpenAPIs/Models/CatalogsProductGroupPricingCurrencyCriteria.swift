@@ -19,33 +19,33 @@ public struct CatalogsProductGroupPricingCurrencyCriteria: Codable, JSONEncodabl
         case lessThanOrEquals = "LESS_THAN_OR_EQUALS"
     }
     public static let valueRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    public var _operator: Operator
-    public var value: Double
     public var currency: NonNullableCatalogsCurrency
     public var negated: Bool? = false
+    public var _operator: Operator
+    public var value: Double
 
-    public init(_operator: Operator, value: Double, currency: NonNullableCatalogsCurrency, negated: Bool? = false) {
-        self._operator = _operator
-        self.value = value
+    public init(currency: NonNullableCatalogsCurrency, negated: Bool? = false, _operator: Operator, value: Double) {
         self.currency = currency
         self.negated = negated
+        self._operator = _operator
+        self.value = value
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _operator = "operator"
-        case value
         case currency
         case negated
+        case _operator = "operator"
+        case value
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(_operator, forKey: ._operator)
-        try container.encode(value, forKey: .value)
         try container.encode(currency, forKey: .currency)
         try container.encodeIfPresent(negated, forKey: .negated)
+        try container.encode(_operator, forKey: ._operator)
+        try container.encode(value, forKey: .value)
     }
 }
 

@@ -10,8 +10,8 @@
 
 -type openapi_audience_definition() ::
   [ {'date', binary() }
-  | {'type', binary() }
   | {'scope', binary() }
+  | {'type', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_audience_definition() ->
 
 openapi_audience_definition(Fields) ->
   Default = [ {'date', binary() }
-            , {'type', binary() }
             , {'scope', binary() }
+            , {'type', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

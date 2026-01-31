@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**credentials** | [**OAICatalogsFeedCredentials***](OAICatalogsFeedCredentials.md) |  | [optional] 
 **defaultAvailability** | [**OAIProductAvailabilityType***](OAIProductAvailabilityType.md) |  | [optional] 
 **defaultCurrency** | [**OAINullableCurrency***](OAINullableCurrency.md) |  | [optional] 
-**name** | **NSString*** | A human-friendly name associated to a given feed. | [optional] 
 **format** | [**OAICatalogsFormat***](OAICatalogsFormat.md) |  | [optional] 
-**credentials** | [**OAICatalogsFeedCredentials***](OAICatalogsFeedCredentials.md) |  | [optional] 
 **location** | **NSString*** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] 
+**name** | **NSString*** | A human-friendly name associated to a given feed. | [optional] 
 **preferredProcessingSchedule** | [**OAICatalogsFeedProcessingSchedule***](OAICatalogsFeedProcessingSchedule.md) |  | [optional] 
 **status** | [**OAICatalogsStatus***](OAICatalogsStatus.md) |  | [optional] 
 

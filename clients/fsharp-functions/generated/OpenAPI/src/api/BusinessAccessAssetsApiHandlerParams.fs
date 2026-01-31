@@ -138,6 +138,9 @@ module BusinessAccessAssetsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type BusinessAssetMembersGetQueryParams = {
+      fetchSystemUsers : bool option;
+
+
       bookmark : string option;
 
 

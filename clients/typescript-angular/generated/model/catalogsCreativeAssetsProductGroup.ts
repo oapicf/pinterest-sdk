@@ -11,7 +11,17 @@ import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAss
 
 
 export interface CatalogsCreativeAssetsProductGroup { 
+    /**
+     * Catalog id pertaining to the creative assets product group.
+     */
+    catalog_id: string;
     catalog_type: CatalogsCreativeAssetsProductGroup.CatalogTypeEnum;
+    /**
+     * Unix timestamp in seconds of when catalog product group was created.
+     */
+    created_at?: number;
+    description?: string | null;
+    filters: CatalogsCreativeAssetsProductGroupFilters;
     /**
      * ID of the creative assets product group.
      */
@@ -20,20 +30,10 @@ export interface CatalogsCreativeAssetsProductGroup {
      * Name of creative assets product group
      */
     name?: string;
-    description?: string | null;
-    filters: CatalogsCreativeAssetsProductGroupFilters;
-    /**
-     * Unix timestamp in seconds of when catalog product group was created.
-     */
-    created_at?: number;
     /**
      * Unix timestamp in seconds of last time catalog product group was updated.
      */
     updated_at?: number;
-    /**
-     * Catalog id pertaining to the creative assets product group.
-     */
-    catalog_id: string;
 }
 export namespace CatalogsCreativeAssetsProductGroup {
     export const CatalogTypeEnum = {

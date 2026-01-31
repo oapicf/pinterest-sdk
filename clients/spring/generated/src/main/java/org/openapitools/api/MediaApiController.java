@@ -1,11 +1,11 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.Media;
 import org.openapitools.model.MediaList200Response;
 import org.openapitools.model.MediaUpload;
-import org.openapitools.model.MediaUploadDetails;
-import org.openapitools.model.MediaUploadRequest;
+import org.openapitools.model.MediaUploadCreate;
 import org.springframework.lang.Nullable;
+import org.openapitools.model.PinterestLibError;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-25T14:29:26.456489381Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class MediaApiController implements MediaApi {

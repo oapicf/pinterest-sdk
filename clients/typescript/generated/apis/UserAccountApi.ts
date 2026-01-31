@@ -94,7 +94,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
      * Follow user
      * @param username A valid username
      * @param followUserRequest Follow a user.
@@ -654,6 +654,8 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Get a list of a user\'s following interests in one place.
      * List following interests
      * @param username A valid username

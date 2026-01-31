@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CreateAssetGroupBody{}
 
 // CreateAssetGroupBody struct for CreateAssetGroupBody
 type CreateAssetGroupBody struct {
-	// Asset Group name
-	AssetGroupName string `json:"asset_group_name"`
 	// Asset group description
 	AssetGroupDescription string `json:"asset_group_description"`
+	// Asset Group name
+	AssetGroupName string `json:"asset_group_name"`
 	// Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
 	AssetGroupTypes []AssetGroupType `json:"asset_group_types"`
 }
@@ -36,10 +36,10 @@ type _CreateAssetGroupBody CreateAssetGroupBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAssetGroupBody(assetGroupName string, assetGroupDescription string, assetGroupTypes []AssetGroupType) *CreateAssetGroupBody {
+func NewCreateAssetGroupBody(assetGroupDescription string, assetGroupName string, assetGroupTypes []AssetGroupType) *CreateAssetGroupBody {
 	this := CreateAssetGroupBody{}
-	this.AssetGroupName = assetGroupName
 	this.AssetGroupDescription = assetGroupDescription
+	this.AssetGroupName = assetGroupName
 	this.AssetGroupTypes = assetGroupTypes
 	return &this
 }
@@ -50,30 +50,6 @@ func NewCreateAssetGroupBody(assetGroupName string, assetGroupDescription string
 func NewCreateAssetGroupBodyWithDefaults() *CreateAssetGroupBody {
 	this := CreateAssetGroupBody{}
 	return &this
-}
-
-// GetAssetGroupName returns the AssetGroupName field value
-func (o *CreateAssetGroupBody) GetAssetGroupName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AssetGroupName
-}
-
-// GetAssetGroupNameOk returns a tuple with the AssetGroupName field value
-// and a boolean to check if the value has been set.
-func (o *CreateAssetGroupBody) GetAssetGroupNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AssetGroupName, true
-}
-
-// SetAssetGroupName sets field value
-func (o *CreateAssetGroupBody) SetAssetGroupName(v string) {
-	o.AssetGroupName = v
 }
 
 // GetAssetGroupDescription returns the AssetGroupDescription field value
@@ -98,6 +74,30 @@ func (o *CreateAssetGroupBody) GetAssetGroupDescriptionOk() (*string, bool) {
 // SetAssetGroupDescription sets field value
 func (o *CreateAssetGroupBody) SetAssetGroupDescription(v string) {
 	o.AssetGroupDescription = v
+}
+
+// GetAssetGroupName returns the AssetGroupName field value
+func (o *CreateAssetGroupBody) GetAssetGroupName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AssetGroupName
+}
+
+// GetAssetGroupNameOk returns a tuple with the AssetGroupName field value
+// and a boolean to check if the value has been set.
+func (o *CreateAssetGroupBody) GetAssetGroupNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssetGroupName, true
+}
+
+// SetAssetGroupName sets field value
+func (o *CreateAssetGroupBody) SetAssetGroupName(v string) {
+	o.AssetGroupName = v
 }
 
 // GetAssetGroupTypes returns the AssetGroupTypes field value
@@ -134,8 +134,8 @@ func (o CreateAssetGroupBody) MarshalJSON() ([]byte, error) {
 
 func (o CreateAssetGroupBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["asset_group_name"] = o.AssetGroupName
 	toSerialize["asset_group_description"] = o.AssetGroupDescription
+	toSerialize["asset_group_name"] = o.AssetGroupName
 	toSerialize["asset_group_types"] = o.AssetGroupTypes
 	return toSerialize, nil
 }
@@ -145,8 +145,8 @@ func (o *CreateAssetGroupBody) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"asset_group_name",
 		"asset_group_description",
+		"asset_group_name",
 		"asset_group_types",
 	}
 

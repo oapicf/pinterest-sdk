@@ -7,7 +7,7 @@ MyApp.add_route('GET', '/v5/search/partner/pins', {
   "nickname" => "search_partner_pins",
   "responseClass" => "search_partner_pins_200_response",
   "endpoint" => "/search/partner/pins",
-  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.",
+  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.",
   "parameters" => [
     {
       "name" => "term",
@@ -102,7 +102,7 @@ MyApp.add_route('GET', '/v5/search/pins', {
   "resourcePath" => "/Search",
   "summary" => "Search user's Pins",
   "nickname" => "search_user_pins/list",
-  "responseClass" => "pins_list_200_response",
+  "responseClass" => "search_user_pins_list_200_response",
   "endpoint" => "/search/pins",
   "notes" => "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.",
   "parameters" => [

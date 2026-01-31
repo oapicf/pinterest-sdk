@@ -8,6 +8,7 @@
     // initialize property's default value, if any
     self.budgetType = @"DAILY";
     self.pacingDeliveryType = @"STANDARD";
+    self.promotionId = @"0";
     
   }
   return self;
@@ -19,7 +20,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"status": @"status", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"bidInMicroCurrency": @"bid_in_micro_currency", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"budgetType": @"budget_type", @"startTime": @"start_time", @"endTime": @"end_time", @"targetingSpec": @"targeting_spec", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"trackingUrls": @"tracking_urls", @"autoTargetingEnabled": @"auto_targeting_enabled", @"placementGroup": @"placement_group", @"pacingDeliveryType": @"pacing_delivery_type", @"campaignId": @"campaign_id", @"billableEvent": @"billable_event", @"bidStrategyType": @"bid_strategy_type", @"targetingTemplateIds": @"targeting_template_ids" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"autoTargetingEnabled": @"auto_targeting_enabled", @"bidInMicroCurrency": @"bid_in_micro_currency", @"bidStrategyType": @"bid_strategy_type", @"billableEvent": @"billable_event", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"budgetType": @"budget_type", @"campaignId": @"campaign_id", @"endTime": @"end_time", @"isCreativeOptimization": @"is_creative_optimization", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"name": @"name", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"pacingDeliveryType": @"pacing_delivery_type", @"placementGroup": @"placement_group", @"promotionApplicationLevel": @"promotion_application_level", @"promotionId": @"promotion_id", @"startTime": @"start_time", @"status": @"status", @"targetingSpec": @"targeting_spec", @"targetingTemplateIds": @"targeting_template_ids", @"trackingUrls": @"tracking_urls", @"bidMultiplier": @"bid_multiplier" }];
 }
 
 /**
@@ -29,7 +30,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"status", @"budgetInMicroCurrency", @"bidInMicroCurrency", @"optimizationGoalMetadata", @"budgetType", @"startTime", @"endTime", @"targetingSpec", @"lifetimeFrequencyCap", @"trackingUrls", @"autoTargetingEnabled", @"placementGroup", @"pacingDeliveryType", @"bidStrategyType", @"targetingTemplateIds"];
+  NSArray *optionalProperties = @[@"autoTargetingEnabled", @"bidInMicroCurrency", @"bidStrategyType", @"budgetInMicroCurrency", @"budgetType", @"endTime", @"isCreativeOptimization", @"lifetimeFrequencyCap", @"optimizationGoalMetadata", @"pacingDeliveryType", @"placementGroup", @"promotionApplicationLevel", @"promotionId", @"startTime", @"status", @"targetingSpec", @"targetingTemplateIds", @"trackingUrls", @"bidMultiplier"];
   return [optionalProperties containsObject:propertyName];
 }
 

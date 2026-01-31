@@ -12,7 +12,7 @@ import org.openapitools.model.AudienceType;
 /**
  * AudienceCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -23,11 +23,11 @@ public class AudienceCreateRequest   {
   @JsonProperty("rule")
   private AudienceRule rule;
 
-  @JsonProperty("description")
-  private String description;
-
   @JsonProperty("audience_type")
   private AudienceType audienceType;
+
+  @JsonProperty("description")
+  private String description;
 
   public AudienceCreateRequest adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -83,24 +83,6 @@ public class AudienceCreateRequest   {
     this.rule = rule;
   }
 
-  public AudienceCreateRequest description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Audience description.
-   * @return description
-  **/
-  @ApiModelProperty(example = "string", value = "Audience description.")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
   public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
@@ -119,6 +101,24 @@ public class AudienceCreateRequest   {
     this.audienceType = audienceType;
   }
 
+  public AudienceCreateRequest description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Audience description.
+   * @return description
+  **/
+  @ApiModelProperty(example = "string", value = "Audience description.")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -132,13 +132,13 @@ public class AudienceCreateRequest   {
     return Objects.equals(this.adAccountId, audienceCreateRequest.adAccountId) &&
         Objects.equals(this.name, audienceCreateRequest.name) &&
         Objects.equals(this.rule, audienceCreateRequest.rule) &&
-        Objects.equals(this.description, audienceCreateRequest.description) &&
-        Objects.equals(this.audienceType, audienceCreateRequest.audienceType);
+        Objects.equals(this.audienceType, audienceCreateRequest.audienceType) &&
+        Objects.equals(this.description, audienceCreateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, rule, description, audienceType);
+    return Objects.hash(adAccountId, name, rule, audienceType, description);
   }
 
   @Override
@@ -149,8 +149,8 @@ public class AudienceCreateRequest   {
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

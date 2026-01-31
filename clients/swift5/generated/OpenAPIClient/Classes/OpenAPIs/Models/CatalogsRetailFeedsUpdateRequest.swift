@@ -14,55 +14,55 @@ import AnyCodable
 public struct CatalogsRetailFeedsUpdateRequest: Codable, JSONEncodable, Hashable {
 
     public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
-    public var defaultCurrency: NullableCurrency?
-    /** A human-friendly name associated to a given feed. */
-    public var name: String?
-    public var format: CatalogsFormat?
+    public var catalogType: CatalogsType
     public var credentials: CatalogsFeedCredentials?
+    public var defaultAvailability: ProductAvailabilityType?
+    public var defaultCurrency: NullableCurrency?
+    public var format: CatalogsFormat?
     /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     public var location: String?
+    /** A human-friendly name associated to a given feed. */
+    public var name: String?
     public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     public var status: CatalogsStatus?
-    public var catalogType: CatalogsType
-    public var defaultAvailability: ProductAvailabilityType?
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String? = nil, format: CatalogsFormat? = nil, credentials: CatalogsFeedCredentials? = nil, location: String? = nil, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, status: CatalogsStatus? = nil, catalogType: CatalogsType, defaultAvailability: ProductAvailabilityType? = nil) {
-        self.defaultCurrency = defaultCurrency
-        self.name = name
-        self.format = format
+    public init(catalogType: CatalogsType, credentials: CatalogsFeedCredentials? = nil, defaultAvailability: ProductAvailabilityType? = nil, defaultCurrency: NullableCurrency? = nil, format: CatalogsFormat? = nil, location: String? = nil, name: String? = nil, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, status: CatalogsStatus? = nil) {
+        self.catalogType = catalogType
         self.credentials = credentials
+        self.defaultAvailability = defaultAvailability
+        self.defaultCurrency = defaultCurrency
+        self.format = format
         self.location = location
+        self.name = name
         self.preferredProcessingSchedule = preferredProcessingSchedule
         self.status = status
-        self.catalogType = catalogType
-        self.defaultAvailability = defaultAvailability
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case defaultCurrency = "default_currency"
-        case name
-        case format
+        case catalogType = "catalog_type"
         case credentials
+        case defaultAvailability = "default_availability"
+        case defaultCurrency = "default_currency"
+        case format
         case location
+        case name
         case preferredProcessingSchedule = "preferred_processing_schedule"
         case status
-        case catalogType = "catalog_type"
-        case defaultAvailability = "default_availability"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(format, forKey: .format)
+        try container.encode(catalogType, forKey: .catalogType)
         try container.encodeIfPresent(credentials, forKey: .credentials)
+        try container.encodeIfPresent(defaultAvailability, forKey: .defaultAvailability)
+        try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
+        try container.encodeIfPresent(format, forKey: .format)
         try container.encodeIfPresent(location, forKey: .location)
+        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
         try container.encodeIfPresent(status, forKey: .status)
-        try container.encode(catalogType, forKey: .catalogType)
-        try container.encodeIfPresent(defaultAvailability, forKey: .defaultAvailability)
     }
 }
 

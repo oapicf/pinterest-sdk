@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SharedAudienceResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SharedAudienceResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Role = openapi_server.resourceTypes.Role
+}
+resourceTypes {
+
+  SharedAudienceResponse {
+    title = SharedAudienceResponse
+    description = SharedAudienceResponse
+    derivedFrom = Root
+    properties {
+        audience_id {
+          type =  string
+          description = "Audience ID that was shared"
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type = Role
+          description = ""
+          optional = false
+        }
+        recipient_account_ids {
+          type = array
+          items.type =  string
+          description = "Account IDs that received the audience"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SharedAudienceResponse {
+    title = SharedAudienceResponse
+    description = SharedAudienceResponse
+    implements = openapi_server.resourceTypes.SharedAudienceResponse
+
+  }
+}

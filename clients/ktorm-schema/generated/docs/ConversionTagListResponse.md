@@ -5,17 +5,17 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ConversionTagResponse&gt;**](ConversionTagResponse.md) |  |  [optional]
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ConversionTag&gt;**](ConversionTag.md) |  |  [optional]
 
 
-# **Table `ConversionTagListResponseConversionTagResponse`**
-(mapped from: ConversionTagListResponseConversionTagResponse)
+# **Table `ConversionTagListResponseConversionTag`**
+(mapped from: ConversionTagListResponseConversionTag)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 conversionTagListResponse | conversionTagListResponse | long | | kotlin.Long | Primary Key | *one*
-conversionTagResponse | conversionTagResponse | long | | kotlin.Long | Foreign Key | *many*
+conversionTag | conversionTag | long | | kotlin.Long | Foreign Key | *many*
 
 
 

@@ -7,10 +7,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}question_type`,
-                ...LeadFormQuestionType.fields(`${keyPrefix}question_type`, isInput),
-            },
-            {
                 key: `${keyPrefix}custom_question_field_type`,
                 ...LeadFormQuestionFieldType.fields(`${keyPrefix}custom_question_field_type`, isInput),
             },
@@ -25,15 +21,19 @@ module.exports = {
                 list: true,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}question_type`,
+                ...LeadFormQuestionType.fields(`${keyPrefix}question_type`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'question_type': bundle.inputData?.[`${keyPrefix}question_type`],
             'custom_question_field_type': bundle.inputData?.[`${keyPrefix}custom_question_field_type`],
             'custom_question_label': bundle.inputData?.[`${keyPrefix}custom_question_label`],
             'custom_question_options': bundle.inputData?.[`${keyPrefix}custom_question_options`],
+            'question_type': bundle.inputData?.[`${keyPrefix}question_type`],
         }
     },
 }

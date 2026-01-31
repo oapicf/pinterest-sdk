@@ -23,11 +23,13 @@ catalogs_delete_retail_item_t* instantiate_catalogs_delete_retail_item(int inclu
   if (include_optional) {
     catalogs_delete_retail_item = catalogs_delete_retail_item_create(
       "DS0294-M",
+      1641483432072,
       pinterest_rest_api_catalogs_delete_retail_item_OPERATION_DELETE
     );
   } else {
     catalogs_delete_retail_item = catalogs_delete_retail_item_create(
       "DS0294-M",
+      1641483432072,
       pinterest_rest_api_catalogs_delete_retail_item_OPERATION_DELETE
     );
   }

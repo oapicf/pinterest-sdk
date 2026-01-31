@@ -19,6 +19,7 @@ catalogs_feed_processing_result_t* instantiate_catalogs_feed_processing_result(i
 #include "test_catalogs_feed_ingestion_details.c"
 #include "test_catalogs_feed_product_counts.c"
 #include "test_catalogs_feed_validation_details.c"
+#include "test_catalogs_feed_video_counts.c"
 
 
 catalogs_feed_processing_result_t* instantiate_catalogs_feed_processing_result(int include_optional) {
@@ -30,17 +31,20 @@ catalogs_feed_processing_result_t* instantiate_catalogs_feed_processing_result(i
       "2022-03-14T15:16:34Z",
        // false, not to have infinite recursion
       instantiate_catalogs_feed_ingestion_details(0),
-      pinterest_rest_api_catalogs_feed_processing_result__COMPLETED,
        // false, not to have infinite recursion
       instantiate_catalogs_feed_product_counts(0),
+      pinterest_rest_api_catalogs_feed_processing_result__COMPLETED,
        // false, not to have infinite recursion
-      instantiate_catalogs_feed_validation_details(0)
+      instantiate_catalogs_feed_validation_details(0),
+       // false, not to have infinite recursion
+      instantiate_catalogs_feed_video_counts(0)
     );
   } else {
     catalogs_feed_processing_result = catalogs_feed_processing_result_create(
       "2022-03-14T15:15:22Z",
       "0",
       "2022-03-14T15:16:34Z",
+      NULL,
       NULL,
       pinterest_rest_api_catalogs_feed_processing_result__COMPLETED,
       NULL,

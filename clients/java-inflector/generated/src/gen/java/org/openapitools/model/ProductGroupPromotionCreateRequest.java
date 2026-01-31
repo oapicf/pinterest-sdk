@@ -8,19 +8,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
+import org.openapitools.model.ProductGroupPromotion;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionCreateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
 
   @JsonProperty("product_group_promotion")
-  private List<ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
+  private List<ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
 
   /**
    * ID of the Ad Group the Product Group Promotion belongs to.
@@ -42,7 +42,7 @@ public class ProductGroupPromotionCreateRequest   {
 
   /**
    **/
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
@@ -50,10 +50,10 @@ public class ProductGroupPromotionCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("product_group_promotion")
-  public List<ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
+  public List<ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
-  public void setProductGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public void setProductGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

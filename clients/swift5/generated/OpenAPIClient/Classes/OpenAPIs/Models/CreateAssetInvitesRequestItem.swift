@@ -14,31 +14,31 @@ import AnyCodable
 public struct CreateAssetInvitesRequestItem: Codable, JSONEncodable, Hashable {
 
     public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    /** An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
+    public var assetIdToPermissions: [String: [Permissions]]
     /** Unique identifier of an invite. */
     public var inviteId: String
     public var inviteType: InviteType
-    /** An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
-    public var assetIdToPermissions: [String: [Permissions]]
 
-    public init(inviteId: String, inviteType: InviteType, assetIdToPermissions: [String: [Permissions]]) {
+    public init(assetIdToPermissions: [String: [Permissions]], inviteId: String, inviteType: InviteType) {
+        self.assetIdToPermissions = assetIdToPermissions
         self.inviteId = inviteId
         self.inviteType = inviteType
-        self.assetIdToPermissions = assetIdToPermissions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case assetIdToPermissions = "asset_id_to_permissions"
         case inviteId = "invite_id"
         case inviteType = "invite_type"
-        case assetIdToPermissions = "asset_id_to_permissions"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(assetIdToPermissions, forKey: .assetIdToPermissions)
         try container.encode(inviteId, forKey: .inviteId)
         try container.encode(inviteType, forKey: .inviteType)
-        try container.encode(assetIdToPermissions, forKey: .assetIdToPermissions)
     }
 }
 

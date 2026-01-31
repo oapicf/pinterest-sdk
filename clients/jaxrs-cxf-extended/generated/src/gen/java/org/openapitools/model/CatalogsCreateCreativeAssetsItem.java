@@ -18,6 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreateCreativeAssetsItem  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsCreativeAssetsAttributes attributes;
+
  /**
   * The catalog creative assets id in the merchant namespace
   */
@@ -55,10 +59,31 @@ public enum OperationEnum {
 
   @ApiModelProperty(required = true, value = "")
   private OperationEnum operation;
+ /**
+  * Get attributes
+  * @return attributes
+  */
+  @JsonProperty("attributes")
+  @NotNull
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsCreativeAssetsAttributes attributes;
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+ public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
   * The catalog creative assets id in the merchant namespace
   * @return creativeAssetsId
@@ -109,31 +134,6 @@ public enum OperationEnum {
     return this;
   }
 
- /**
-  * Get attributes
-  * @return attributes
-  */
-  @JsonProperty("attributes")
-  @NotNull
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
- public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
-  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -144,14 +144,14 @@ public enum OperationEnum {
       return false;
     }
     CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem = (CatalogsCreateCreativeAssetsItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreateCreativeAssetsItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateCreativeAssetsItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateCreativeAssetsItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreateCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -159,9 +159,9 @@ public enum OperationEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

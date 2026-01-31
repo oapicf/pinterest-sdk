@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,8 +16,8 @@ package openapi
 
 type AdGroupsAnalyticsResponseInner struct {
 
-	// The ID of the ad group that this metrics belongs to.
-	AD_GROUP_ID string `json:"AD_GROUP_ID" validate:"regexp=^\\\\d+$"`
+	// The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
+	AD_GROUP_ID string `json:"AD_GROUP_ID,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE string `json:"DATE,omitempty"`
@@ -25,15 +25,6 @@ type AdGroupsAnalyticsResponseInner struct {
 
 // AssertAdGroupsAnalyticsResponseInnerRequired checks if the required fields are not zero-ed
 func AssertAdGroupsAnalyticsResponseInnerRequired(obj AdGroupsAnalyticsResponseInner) error {
-	elements := map[string]interface{}{
-		"AD_GROUP_ID": obj.AD_GROUP_ID,
-	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
-		}
-	}
-
 	return nil
 }
 

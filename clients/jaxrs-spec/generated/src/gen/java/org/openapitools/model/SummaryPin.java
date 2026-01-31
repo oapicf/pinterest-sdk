@@ -20,34 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Summarized pin information")
 @JsonTypeName("SummaryPin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SummaryPin   {
-  private PinMedia media;
   private String altText;
-  private String link;
-  private String title;
   private String description;
+  private String id;
+  private String link;
+  private PinMedia media;
+  private String title;
 
   public SummaryPin() {
-  }
-
-  /**
-   **/
-  public SummaryPin media(PinMedia media) {
-    this.media = media;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("media")
-  @Valid public PinMedia getMedia() {
-    return media;
-  }
-
-  @JsonProperty("media")
-  public void setMedia(PinMedia media) {
-    this.media = media;
   }
 
   /**
@@ -71,6 +53,44 @@ public class SummaryPin   {
 
   /**
    **/
+  public SummaryPin description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   **/
+  public SummaryPin id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   **/
   public SummaryPin link(String link) {
     this.link = link;
     return this;
@@ -86,6 +106,25 @@ public class SummaryPin   {
   @JsonProperty("link")
   public void setLink(String link) {
     this.link = link;
+  }
+
+  /**
+   **/
+  public SummaryPin media(PinMedia media) {
+    this.media = media;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("media")
+  @Valid public PinMedia getMedia() {
+    return media;
+  }
+
+  @JsonProperty("media")
+  public void setMedia(PinMedia media) {
+    this.media = media;
   }
 
   /**
@@ -107,25 +146,6 @@ public class SummaryPin   {
     this.title = title;
   }
 
-  /**
-   **/
-  public SummaryPin description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  @JsonProperty("description")
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -136,16 +156,17 @@ public class SummaryPin   {
       return false;
     }
     SummaryPin summaryPin = (SummaryPin) o;
-    return Objects.equals(this.media, summaryPin.media) &&
-        Objects.equals(this.altText, summaryPin.altText) &&
+    return Objects.equals(this.altText, summaryPin.altText) &&
+        Objects.equals(this.description, summaryPin.description) &&
+        Objects.equals(this.id, summaryPin.id) &&
         Objects.equals(this.link, summaryPin.link) &&
-        Objects.equals(this.title, summaryPin.title) &&
-        Objects.equals(this.description, summaryPin.description);
+        Objects.equals(this.media, summaryPin.media) &&
+        Objects.equals(this.title, summaryPin.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(media, altText, link, title, description);
+    return Objects.hash(altText, description, id, link, media, title);
   }
 
   @Override
@@ -153,11 +174,12 @@ public class SummaryPin   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SummaryPin {\n");
     
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

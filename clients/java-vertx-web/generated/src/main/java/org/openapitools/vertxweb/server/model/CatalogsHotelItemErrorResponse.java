@@ -17,17 +17,17 @@ import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 public class CatalogsHotelItemErrorResponse   {
   
   private CatalogsType catalogType;
-  private String hotelId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
+  private String hotelId;
 
   public CatalogsHotelItemErrorResponse () {
 
   }
 
-  public CatalogsHotelItemErrorResponse (CatalogsType catalogType, String hotelId, List<ItemValidationEvent> errors) {
+  public CatalogsHotelItemErrorResponse (CatalogsType catalogType, List<ItemValidationEvent> errors, String hotelId) {
     this.catalogType = catalogType;
-    this.hotelId = hotelId;
     this.errors = errors;
+    this.hotelId = hotelId;
   }
 
     
@@ -40,21 +40,21 @@ public class CatalogsHotelItemErrorResponse   {
   }
 
     
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-  public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
-  }
-
-    
   @JsonProperty("errors")
   public List<ItemValidationEvent> getErrors() {
     return errors;
   }
   public void setErrors(List<ItemValidationEvent> errors) {
     this.errors = errors;
+  }
+
+    
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
+  }
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
   }
 
 
@@ -68,13 +68,13 @@ public class CatalogsHotelItemErrorResponse   {
     }
     CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse = (CatalogsHotelItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsHotelItemErrorResponse.catalogType) &&
-        Objects.equals(hotelId, catalogsHotelItemErrorResponse.hotelId) &&
-        Objects.equals(errors, catalogsHotelItemErrorResponse.errors);
+        Objects.equals(errors, catalogsHotelItemErrorResponse.errors) &&
+        Objects.equals(hotelId, catalogsHotelItemErrorResponse.hotelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, errors);
+    return Objects.hash(catalogType, errors, hotelId);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class CatalogsHotelItemErrorResponse   {
     sb.append("class CatalogsHotelItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

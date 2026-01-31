@@ -17,15 +17,15 @@ import { CatalogsProductGroupFilters } from './catalogsProductGroupFilters';
  */
 export interface CatalogsRetailListProductsByCatalogBasedFilterRequest { 
     /**
-     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-     */
-    catalog_type: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnum;
-    /**
      * Catalog id pertaining to the retail product group.
      */
     catalog_id: string;
-    filters: CatalogsProductGroupFilters;
+    /**
+     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+     */
+    catalog_type: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnum;
     country: Country;
+    filters: CatalogsProductGroupFilters;
     locale: CatalogsLocale;
 }
 export namespace CatalogsRetailListProductsByCatalogBasedFilterRequest {

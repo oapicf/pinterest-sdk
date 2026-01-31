@@ -13,13 +13,30 @@ import org.openapitools.model.BusinessRoleForMembers;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MembersToDeleteBodyMembersInner   {
+  @JsonProperty("business_role")
+  private BusinessRoleForMembers businessRole;
+
   @JsonProperty("member_id")
   private String memberId;
 
+  /**
+   **/
+  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("business_role")
-  private BusinessRoleForMembers businessRole;
+  public BusinessRoleForMembers getBusinessRole() {
+    return businessRole;
+  }
+  public void setBusinessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+  }
 
   /**
    * Unique identifier of the member
@@ -39,23 +56,6 @@ public class MembersToDeleteBodyMembersInner   {
     this.memberId = memberId;
   }
 
-  /**
-   **/
-  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
-    this.businessRole = businessRole;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("business_role")
-  public BusinessRoleForMembers getBusinessRole() {
-    return businessRole;
-  }
-  public void setBusinessRole(BusinessRoleForMembers businessRole) {
-    this.businessRole = businessRole;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class MembersToDeleteBodyMembersInner   {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class MembersToDeleteBodyMembersInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

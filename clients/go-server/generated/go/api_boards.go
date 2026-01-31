@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -210,6 +210,13 @@ func (c *BoardsAPIController) BoardsList(w http.ResponseWriter, r *http.Request)
 		adAccountIdParam = param
 	} else {
 	}
+	var privacyParam BoardPrivacyFilter
+	if query.Has("privacy") {
+		param := BoardPrivacyFilter(query.Get("privacy"))
+
+		privacyParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -235,14 +242,7 @@ func (c *BoardsAPIController) BoardsList(w http.ResponseWriter, r *http.Request)
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var privacyParam string
-	if query.Has("privacy") {
-		param := query.Get("privacy")
-
-		privacyParam = param
-	} else {
-	}
-	result, err := c.service.BoardsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, privacyParam)
+	result, err := c.service.BoardsList(r.Context(), adAccountIdParam, privacyParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -259,18 +259,18 @@ func (c *BoardsAPIController) BoardsCreate(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var boardParam Board
+	var boardCreateParam BoardCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&boardParam); err != nil {
+	if err := d.Decode(&boardCreateParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBoardRequired(boardParam); err != nil {
+	if err := AssertBoardCreateRequired(boardCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBoardConstraints(boardParam); err != nil {
+	if err := AssertBoardCreateConstraints(boardCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -281,7 +281,7 @@ func (c *BoardsAPIController) BoardsCreate(w http.ResponseWriter, r *http.Reques
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.BoardsCreate(r.Context(), boardParam, adAccountIdParam)
+	result, err := c.service.BoardsCreate(r.Context(), boardCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -364,18 +364,18 @@ func (c *BoardsAPIController) BoardsUpdate(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{"board_id"}, nil)
 		return
 	}
-	var boardUpdateParam BoardUpdate
+	var boardWithUpdatePrivacyUpdateParam BoardWithUpdatePrivacyUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&boardUpdateParam); err != nil {
+	if err := d.Decode(&boardWithUpdatePrivacyUpdateParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBoardUpdateRequired(boardUpdateParam); err != nil {
+	if err := AssertBoardWithUpdatePrivacyUpdateRequired(boardWithUpdatePrivacyUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBoardUpdateConstraints(boardUpdateParam); err != nil {
+	if err := AssertBoardWithUpdatePrivacyUpdateConstraints(boardWithUpdatePrivacyUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -386,7 +386,7 @@ func (c *BoardsAPIController) BoardsUpdate(w http.ResponseWriter, r *http.Reques
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.BoardsUpdate(r.Context(), boardIdParam, boardUpdateParam, adAccountIdParam)
+	result, err := c.service.BoardsUpdate(r.Context(), boardIdParam, boardWithUpdatePrivacyUpdateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -434,9 +434,18 @@ func (c *BoardsAPIController) BoardsListPins(w http.ResponseWriter, r *http.Requ
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var creativeTypesParam []string
+	var creativeTypesParam []CreativeType
 	if query.Has("creative_types") {
-		creativeTypesParam = strings.Split(query.Get("creative_types"), ",")
+		paramSplits := strings.Split(query.Get("creative_types"), ",")
+		creativeTypesParam = make([]CreativeType, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewCreativeTypeFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "creative_types", Err: err}, nil)
+				return
+			}
+			creativeTypesParam = append(creativeTypesParam, paramEnum)
+		}
 	}
 	var adAccountIdParam string
 	if query.Has("ad_account_id") {

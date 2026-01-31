@@ -16,9 +16,14 @@ import javax.validation.Valid;
 /**
  * Object describing a retail item record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailItemResponse   {
+  @JsonProperty("attributes")
+  @Valid
+
+  private ItemAttributes attributes;
+
   @JsonProperty("catalog_type")
   @NotNull
 @Valid
@@ -35,10 +40,22 @@ public class CatalogsRetailItemResponse   {
 
   private List<@Valid Pin> pins = null;
 
-  @JsonProperty("attributes")
-  @Valid
+  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
 
-  private ItemAttributes attributes;
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public ItemAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsRetailItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -99,23 +116,6 @@ public class CatalogsRetailItemResponse   {
     this.pins = pins;
   }
 
-  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public ItemAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -126,15 +126,15 @@ public class CatalogsRetailItemResponse   {
       return false;
     }
     CatalogsRetailItemResponse catalogsRetailItemResponse = (CatalogsRetailItemResponse) o;
-    return Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsRetailItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(itemId, catalogsRetailItemResponse.itemId) &&
-        Objects.equals(pins, catalogsRetailItemResponse.pins) &&
-        Objects.equals(attributes, catalogsRetailItemResponse.attributes);
+        Objects.equals(pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes);
+    return Objects.hash(attributes, catalogType, itemId, pins);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -143,10 +143,10 @@ public class CatalogsRetailItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

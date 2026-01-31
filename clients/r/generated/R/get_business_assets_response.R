@@ -7,27 +7,34 @@
 #' @title GetBusinessAssetsResponse
 #' @description GetBusinessAssetsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field asset_id Unique identifier of a business asset. character [optional]
-#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. character [optional]
 #' @field asset_group_info  \link{AssetGroupBinding} [optional]
+#' @field asset_id Unique identifier of a business asset. character [optional]
+#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. character [optional]
+#' @field catalog_info  \link{GetBusinessAssetsResponseCatalogInfo} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 GetBusinessAssetsResponse <- R6::R6Class(
   "GetBusinessAssetsResponse",
   public = list(
+    `asset_group_info` = NULL,
     `asset_id` = NULL,
     `asset_type` = NULL,
-    `asset_group_info` = NULL,
+    `catalog_info` = NULL,
 
     #' @description
     #' Initialize a new GetBusinessAssetsResponse class.
     #'
-    #' @param asset_id Unique identifier of a business asset.
-    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
     #' @param asset_group_info asset_group_info
+    #' @param asset_id Unique identifier of a business asset.
+    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+    #' @param catalog_info catalog_info
     #' @param ... Other optional arguments.
-    initialize = function(`asset_id` = NULL, `asset_type` = NULL, `asset_group_info` = NULL, ...) {
+    initialize = function(`asset_group_info` = NULL, `asset_id` = NULL, `asset_type` = NULL, `catalog_info` = NULL, ...) {
+      if (!is.null(`asset_group_info`)) {
+        stopifnot(R6::is.R6(`asset_group_info`))
+        self$`asset_group_info` <- `asset_group_info`
+      }
       if (!is.null(`asset_id`)) {
         if (!(is.character(`asset_id`) && length(`asset_id`) == 1)) {
           stop(paste("Error! Invalid data for `asset_id`. Must be a string:", `asset_id`))
@@ -40,9 +47,9 @@ GetBusinessAssetsResponse <- R6::R6Class(
         }
         self$`asset_type` <- `asset_type`
       }
-      if (!is.null(`asset_group_info`)) {
-        stopifnot(R6::is.R6(`asset_group_info`))
-        self$`asset_group_info` <- `asset_group_info`
+      if (!is.null(`catalog_info`)) {
+        stopifnot(R6::is.R6(`catalog_info`))
+        self$`catalog_info` <- `catalog_info`
       }
     },
 
@@ -77,6 +84,10 @@ GetBusinessAssetsResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       GetBusinessAssetsResponseObject <- list()
+      if (!is.null(self$`asset_group_info`)) {
+        GetBusinessAssetsResponseObject[["asset_group_info"]] <-
+          self$`asset_group_info`$toSimpleType()
+      }
       if (!is.null(self$`asset_id`)) {
         GetBusinessAssetsResponseObject[["asset_id"]] <-
           self$`asset_id`
@@ -85,9 +96,9 @@ GetBusinessAssetsResponse <- R6::R6Class(
         GetBusinessAssetsResponseObject[["asset_type"]] <-
           self$`asset_type`
       }
-      if (!is.null(self$`asset_group_info`)) {
-        GetBusinessAssetsResponseObject[["asset_group_info"]] <-
-          self$`asset_group_info`$toSimpleType()
+      if (!is.null(self$`catalog_info`)) {
+        GetBusinessAssetsResponseObject[["catalog_info"]] <-
+          self$`catalog_info`$toSimpleType()
       }
       return(GetBusinessAssetsResponseObject)
     },
@@ -99,16 +110,21 @@ GetBusinessAssetsResponse <- R6::R6Class(
     #' @return the instance of GetBusinessAssetsResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`asset_group_info`)) {
+        `asset_group_info_object` <- AssetGroupBinding$new()
+        `asset_group_info_object`$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
+        self$`asset_group_info` <- `asset_group_info_object`
+      }
       if (!is.null(this_object$`asset_id`)) {
         self$`asset_id` <- this_object$`asset_id`
       }
       if (!is.null(this_object$`asset_type`)) {
         self$`asset_type` <- this_object$`asset_type`
       }
-      if (!is.null(this_object$`asset_group_info`)) {
-        `asset_group_info_object` <- AssetGroupBinding$new()
-        `asset_group_info_object`$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
-        self$`asset_group_info` <- `asset_group_info_object`
+      if (!is.null(this_object$`catalog_info`)) {
+        `catalog_info_object` <- GetBusinessAssetsResponseCatalogInfo$new()
+        `catalog_info_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_info`, auto_unbox = TRUE, digits = NA))
+        self$`catalog_info` <- `catalog_info_object`
       }
       self
     },
@@ -131,9 +147,10 @@ GetBusinessAssetsResponse <- R6::R6Class(
     #' @return the instance of GetBusinessAssetsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`asset_group_info` <- AssetGroupBinding$new()$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
       self$`asset_id` <- this_object$`asset_id`
       self$`asset_type` <- this_object$`asset_type`
-      self$`asset_group_info` <- AssetGroupBinding$new()$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
+      self$`catalog_info` <- GetBusinessAssetsResponseCatalogInfo$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_info`, auto_unbox = TRUE, digits = NA))
       self
     },
 

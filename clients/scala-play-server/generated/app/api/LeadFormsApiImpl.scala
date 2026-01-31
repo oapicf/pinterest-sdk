@@ -12,7 +12,7 @@ import model.LeadFormsList200Response
 /**
   * Provides a default implementation for [[LeadFormsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class LeadFormsApiImpl extends LeadFormsApi {
   /**
     * @inheritdoc
@@ -47,7 +47,7 @@ class LeadFormsApiImpl extends LeadFormsApi {
   override def leadFormsList(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): LeadFormsList200Response = {
     // TODO: Implement better logic
 
-    LeadFormsList200Response(List.empty[LeadFormResponse], None)
+    LeadFormsList200Response(None, List.empty[LeadFormResponse])
   }
 
   /**

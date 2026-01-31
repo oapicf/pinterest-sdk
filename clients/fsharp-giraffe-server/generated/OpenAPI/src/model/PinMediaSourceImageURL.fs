@@ -12,8 +12,8 @@ module PinMediaSourceImageURL =
   //#endregion
 
   type PinMediaSourceImageURL = {
+    IsStandard : bool;
     SourceType : SourceTypeEnum;
     Url : string;
-    IsStandard : bool;
   }
   //#endregion

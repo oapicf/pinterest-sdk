@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;AdResponse&gt;**](AdResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;AdResponse&gt;**](AdResponse.md) |  | 
 
 
 

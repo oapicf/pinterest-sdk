@@ -7,9 +7,9 @@ Creative assets batch item
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsUpdatableCreativeAssetsAttributes](CatalogsUpdatableCreativeAssetsAttributes.md)
 `creativeAssetsId` | string
 `operation` | string
-`attributes` | [CatalogsUpdatableCreativeAssetsAttributes](CatalogsUpdatableCreativeAssetsAttributes.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CatalogsCreativeAssetsBatchItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "creativeAssetsId": DS0294-M,
   "operation": null,
-  "attributes": null,
 } satisfies CatalogsCreativeAssetsBatchItem
 
 console.log(example)

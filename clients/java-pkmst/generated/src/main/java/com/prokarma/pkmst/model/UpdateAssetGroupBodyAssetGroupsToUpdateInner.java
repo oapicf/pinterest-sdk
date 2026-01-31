@@ -19,16 +19,10 @@ import java.util.List;
  * UpdateAssetGroupBodyAssetGroupsToUpdateInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
   @JsonProperty("asset_group_id")
   private String assetGroupId;
-
-  @JsonProperty("name")
-  private String name;
-
-  @JsonProperty("description")
-  private String description;
 
   @JsonProperty("asset_group_types")
   
@@ -41,6 +35,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
   @JsonProperty("assets_to_remove")
   
   private List<String> assetsToRemove = null;
+
+  @JsonProperty("description")
+  private String description;
+
+  @JsonProperty("name")
+  private String name;
 
   public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetGroupId(String assetGroupId) {
     this.assetGroupId = assetGroupId;
@@ -58,42 +58,6 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
 
   public void setAssetGroupId(String assetGroupId) {
     this.assetGroupId = assetGroupId;
-  }
-
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Asset Group name
-   * @return name
-   */
-  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Asset group description
-   * @return description
-   */
-  @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", value = "Asset group description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetGroupTypes(List<AssetGroupType> assetGroupTypes) {
@@ -174,6 +138,42 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
     this.assetsToRemove = assetsToRemove;
   }
 
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Asset group description
+   * @return description
+   */
+  @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", value = "Asset group description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Asset Group name
+   * @return name
+   */
+  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -185,16 +185,16 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
     }
     UpdateAssetGroupBodyAssetGroupsToUpdateInner updateAssetGroupBodyAssetGroupsToUpdateInner = (UpdateAssetGroupBodyAssetGroupsToUpdateInner) o;
     return Objects.equals(this.assetGroupId, updateAssetGroupBodyAssetGroupsToUpdateInner.assetGroupId) &&
-        Objects.equals(this.name, updateAssetGroupBodyAssetGroupsToUpdateInner.name) &&
-        Objects.equals(this.description, updateAssetGroupBodyAssetGroupsToUpdateInner.description) &&
         Objects.equals(this.assetGroupTypes, updateAssetGroupBodyAssetGroupsToUpdateInner.assetGroupTypes) &&
         Objects.equals(this.assetsToAdd, updateAssetGroupBodyAssetGroupsToUpdateInner.assetsToAdd) &&
-        Objects.equals(this.assetsToRemove, updateAssetGroupBodyAssetGroupsToUpdateInner.assetsToRemove);
+        Objects.equals(this.assetsToRemove, updateAssetGroupBodyAssetGroupsToUpdateInner.assetsToRemove) &&
+        Objects.equals(this.description, updateAssetGroupBodyAssetGroupsToUpdateInner.description) &&
+        Objects.equals(this.name, updateAssetGroupBodyAssetGroupsToUpdateInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupId, name, description, assetGroupTypes, assetsToAdd, assetsToRemove);
+    return Objects.hash(assetGroupId, assetGroupTypes, assetsToAdd, assetsToRemove, description, name);
   }
 
   @Override
@@ -203,11 +203,11 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
     sb.append("class UpdateAssetGroupBodyAssetGroupsToUpdateInner {\n");
     
     sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("    assetsToAdd: ").append(toIndentedString(assetsToAdd)).append("\n");
     sb.append("    assetsToRemove: ").append(toIndentedString(assetsToRemove)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

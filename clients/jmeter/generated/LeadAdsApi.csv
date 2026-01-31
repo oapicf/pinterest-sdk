@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,subscriptionId,adAccountId,subscriptionId,adAccountId,pageSize,bookmark,adAccountId,adAccountCreateSubscriptionRequest
+testCase,httpStatusCode,adAccountId,subscriptionId,adAccountId,subscriptionId,adAccountId,bookmark,pageSize,adAccountId,leadSubscriptionPostParamsCreate
 Success,200,0,0,0,0,0,0,0,0,0

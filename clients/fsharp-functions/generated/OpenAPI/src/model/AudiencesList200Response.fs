@@ -12,10 +12,10 @@ module AudiencesList200Response =
 
   [<CLIMutable>]
   type AudiencesList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : Audience[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : Audience[];
   }
 
   //#endregion

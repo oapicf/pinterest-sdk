@@ -26,33 +26,33 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name targeting template name
  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param targetingAttributes 
- * @param placementGroup 
  * @param keywords 
+ * @param name targeting template name
+ * @param placementGroup 
+ * @param targetingAttributes 
  * @param trackingUrls 
  */
 
 
 data class TargetingTemplateCommon (
 
-    /* targeting template name */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
     @Json(name = "auto_targeting_enabled")
     val autoTargetingEnabled: kotlin.Boolean? = true,
 
-    @Json(name = "targeting_attributes")
-    val targetingAttributes: TargetingSpec? = null,
+    @Json(name = "keywords")
+    val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
+
+    /* targeting template name */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
 
     @Json(name = "placement_group")
     val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
 
-    @Json(name = "keywords")
-    val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
+    @Json(name = "targeting_attributes")
+    val targetingAttributes: TargetingSpec? = null,
 
     @Json(name = "tracking_urls")
     val trackingUrls: TrackingUrls? = null

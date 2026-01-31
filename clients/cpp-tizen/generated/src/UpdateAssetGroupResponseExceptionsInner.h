@@ -45,6 +45,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Asset group id of the exception.
+	 */
+	std::string getAssetGroupId();
+
+	/*! \brief Set Asset group id of the exception.
+	 */
+	void setAssetGroupId(std::string  asset_group_id);
 	/*! \brief Get Error code associated with the error editing asset group.
 	 */
 	int getCode();
@@ -59,18 +66,11 @@ public:
 	/*! \brief Set Error message associated with the error editing asset group.
 	 */
 	void setMessage(std::string  message);
-	/*! \brief Get Asset group id of the exception.
-	 */
-	std::string getAssetGroupId();
-
-	/*! \brief Set Asset group id of the exception.
-	 */
-	void setAssetGroupId(std::string  asset_group_id);
 
 private:
+	std::string asset_group_id;
 	int code;
 	std::string message;
-	std::string asset_group_id;
 	void __init();
 	void __cleanup();
 

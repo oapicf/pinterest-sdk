@@ -7,9 +7,9 @@ Object declaring an asset role update to an invite.
 
 Name | Type
 ------------ | -------------
+`assetIdToPermissions` | { [key: string]: Array&lt;Permissions&gt;; }
 `inviteId` | string
 `inviteType` | [InviteType](InviteType.md)
-`assetIdToPermissions` | { [key: string]: Array&lt;Permissions&gt;; }
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CreateAssetInvitesRequestItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "assetIdToPermissions": {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
   "inviteId": 1234567890123,
   "inviteType": null,
-  "assetIdToPermissions": {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
 } satisfies CreateAssetInvitesRequestItem
 
 console.log(example)

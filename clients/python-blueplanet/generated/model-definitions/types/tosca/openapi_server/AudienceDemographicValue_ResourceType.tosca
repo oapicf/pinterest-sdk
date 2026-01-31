@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceDemographicValue"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceDemographicValue"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AudienceDemographicValue {
+    title = AudienceDemographicValue
+    description = AudienceDemographicValue
+    derivedFrom = Root
+    properties {
+        key {
+          type =  string
+          description = "Unique key for demographic item"
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Display name for demographic"
+          optional = false
+        }
+        ratio {
+          type =  
+          description = "Value of demographic item as a percent of total audience"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceDemographicValue {
+    title = AudienceDemographicValue
+    description = AudienceDemographicValue
+    implements = openapi_server.resourceTypes.AudienceDemographicValue
+
+  }
+}

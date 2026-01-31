@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **ITEMGROUPID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
 **MEDIATYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
@@ -31,6 +31,12 @@ Name | Type | Description | Notes
 **GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **PRODUCTGROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMNUMBER0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOMNUMBER4** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**TITLEKEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 ## Examples
 
@@ -63,7 +69,13 @@ $CatalogsProductGroupFilterKeys = Initialize-PSOpenAPIToolsCatalogsProductGroupF
  -GOOGLEPRODUCTCATEGORY2 null `
  -GOOGLEPRODUCTCATEGORY1 null `
  -GOOGLEPRODUCTCATEGORY0 null `
- -PRODUCTGROUP null
+ -PRODUCTGROUP null `
+ -CUSTOMNUMBER0 null `
+ -CUSTOMNUMBER1 null `
+ -CUSTOMNUMBER2 null `
+ -CUSTOMNUMBER3 null `
+ -CUSTOMNUMBER4 null `
+ -TITLEKEYWORDS null
 ```
 
 - Convert the resource to JSON

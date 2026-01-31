@@ -73,8 +73,8 @@ private class OASPinMediaSourceImageURLTest {
     private static void maintainRenamedProperties() {
         OASPinMediaSourceImageURL pinMediaSourceImageURL = new OASPinMediaSourceImageURL();
         Map<String, String> x-property-mappings = pinMediaSourceImageURL.getx-property-mappings();
-        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
         System.assertEquals('isStandard', x-property-mappings.get('is_standard'));
+        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
     }
 
     @isTest

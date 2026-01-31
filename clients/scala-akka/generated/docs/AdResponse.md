@@ -14,18 +14,20 @@ Name | Type | Description | Notes
 **carouselIosDeepLinks** | **Seq&lt;String&gt;** | Comma-separated deep links for the carousel pin on iOS. |  [optional]
 **clickTrackingUrl** | **String** | Tracking url for the ad clicks. |  [optional]
 **creativeType** | **CreativeType** |  |  [optional]
+**customizableCtaType** | **CustomizableCTAType** |  |  [optional]
 **destinationUrl** | **String** | Destination URL. |  [optional]
+**disclosureType** | **DisclosureType** |  |  [optional]
+**disclosureUrl** | **String** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. |  [optional]
+**gridClickType** | **GridClickType** |  |  [optional]
 **iosDeepLink** | **String** | Deep link URL for iOS devices. |  [optional]
 **isPinDeleted** | **Boolean** | Is original pin deleted? |  [optional]
 **isRemovable** | **Boolean** | Is pin repinnable? |  [optional]
+**leadFormId** | **String** | Lead form ID for lead ad generation. |  [optional]
 **name** | **String** | Name of the ad - 255 chars max. |  [optional]
+**quizPinData** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. |  [optional]
 **status** | **EntityStatus** |  |  [optional]
 **trackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  |  [optional]
 **viewTrackingUrl** | **String** | Tracking URL for ad impressions. |  [optional]
-**leadFormId** | **String** | Lead form ID for lead ad generation. |  [optional]
-**gridClickType** | **GridClickType** |  |  [optional]
-**customizableCtaType** | [**CustomizableCtaType**](#CustomizableCtaType) | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) |  [optional]
-**quizPinData** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. |  [optional]
 **pinId** | **String** | Pin ID. |  [optional]
 **adAccountId** | **String** | The ID of the advertiser that this ad belongs to. |  [optional]
 **campaignId** | **String** | ID of the ad campaign that contains this ad. |  [optional]
@@ -35,14 +37,9 @@ Name | Type | Description | Notes
 **rejectedReasons** | [**Seq[RejectedReasons]**](#Seq[RejectedReasons]) | Enum reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;. |  [optional]
 **rejectionLabels** | **Seq&lt;String&gt;** | Text reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;. |  [optional]
 **reviewStatus** | [**ReviewStatus**](#ReviewStatus) | Ad review status |  [optional]
+**summaryStatus** | **PinPromotionSummaryStatus** | Ad summary status |  [optional]
 **`type`** | **String** | Always \&quot;ad\&quot;. |  [optional]
 **updatedTime** | **Int** | Last update time. Unix timestamp in seconds. |  [optional]
-**summaryStatus** | **PinPromotionSummaryStatus** | Ad summary status |  [optional]
-
-
-## Enum: CustomizableCtaType
-Allowed values: [GET_OFFER, LEARN_MORE, ORDER_NOW, SHOP_NOW, SIGN_UP, SUBSCRIBE, BUY_NOW, CONTACT_US, GET_QUOTE, VISIT_SITE, APPLY_NOW, BOOK_NOW, REQUEST_DEMO, REGISTER_NOW, FIND_A_DEALER, ADD_TO_CART, WATCH_NOW, READ_MORE, ]
-
 
 
 ## Enum: Seq[RejectedReasons]

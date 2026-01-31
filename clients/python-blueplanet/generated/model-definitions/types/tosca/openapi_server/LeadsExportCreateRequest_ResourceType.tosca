@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadsExportCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadsExportCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LeadsExportCreateRequest {
+    title = LeadsExportCreateRequest
+    description = LeadsExportCreateRequest
+    derivedFrom = Root
+    properties {
+        ad_id {
+          type =  string
+          description = "ID for the ad collecting leads"
+          optional = true
+        }
+        end_date {
+          type =  string
+          description = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+        start_date {
+          type =  string
+          description = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadsExportCreateRequest {
+    title = LeadsExportCreateRequest
+    description = LeadsExportCreateRequest
+    implements = openapi_server.resourceTypes.LeadsExportCreateRequest
+
+  }
+}

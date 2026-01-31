@@ -432,6 +432,16 @@ static bool pinsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -750,6 +760,21 @@ static bool pinsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -770,7 +795,7 @@ static bool pinsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, 
 }
 
 static bool pinsGetHelper(char * accessToken,
-	std::string pinId, bool pinMetrics, std::string adAccountId, 
+	std::string pinId, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -788,17 +813,17 @@ static bool pinsGetHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&pinMetrics, "bool");
-	queryParams.insert(pair<string, string>("pin_metrics", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("pin_metrics");
-	}
-
-
 	itemAtq = stringify(&adAccountId, "std::string");
 	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&pinMetrics, "bool");
+	queryParams.insert(pair<string, string>("pin_metrics", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_metrics");
 	}
 
 	string mBody = "";
@@ -861,22 +886,22 @@ static bool pinsGetHelper(char * accessToken,
 
 
 bool PinsManager::pinsGetAsync(char * accessToken,
-	std::string pinId, bool pinMetrics, std::string adAccountId, 
+	std::string pinId, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData)
 {
 	return pinsGetHelper(accessToken,
-	pinId, pinMetrics, adAccountId, 
+	pinId, adAccountId, pinMetrics, 
 	handler, userData, true);
 }
 
 bool PinsManager::pinsGetSync(char * accessToken,
-	std::string pinId, bool pinMetrics, std::string adAccountId, 
+	std::string pinId, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData)
 {
 	return pinsGetHelper(accessToken,
-	pinId, pinMetrics, adAccountId, 
+	pinId, adAccountId, pinMetrics, 
 	handler, userData, false);
 }
 
@@ -926,6 +951,26 @@ static bool pinsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -946,7 +991,7 @@ static bool pinsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 }
 
 static bool pinsListHelper(char * accessToken,
-	std::string bookmark, int pageSize, std::string pinFilter, bool includeProtectedPins, std::string pinType, std::list<std::string> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string pinFilter, bool pinMetrics, bool includeProtectedPins, std::string pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -964,24 +1009,17 @@ static bool pinsListHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&pinFilter, "std::string");
 	queryParams.insert(pair<string, string>("pin_filter", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("pin_filter");
+	}
+
+
+	itemAtq = stringify(&pinMetrics, "bool");
+	queryParams.insert(pair<string, string>("pin_metrics", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_metrics");
 	}
 
 
@@ -999,8 +1037,8 @@ static bool pinsListHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = creativeTypes.begin(); queryIter != creativeTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<CreativeType>::iterator queryIter = creativeTypes.begin(); queryIter != creativeTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "CreativeType");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -1015,10 +1053,17 @@ static bool pinsListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&pinMetrics, "bool");
-	queryParams.insert(pair<string, string>("pin_metrics", itemAtq));
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("pin_metrics");
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -1075,22 +1120,22 @@ static bool pinsListHelper(char * accessToken,
 
 
 bool PinsManager::pinsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, std::string pinFilter, bool includeProtectedPins, std::string pinType, std::list<std::string> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string pinFilter, bool pinMetrics, bool includeProtectedPins, std::string pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return pinsListHelper(accessToken,
-	bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, 
+	pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool PinsManager::pinsListSync(char * accessToken,
-	std::string bookmark, int pageSize, std::string pinFilter, bool includeProtectedPins, std::string pinType, std::list<std::string> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string pinFilter, bool pinMetrics, bool includeProtectedPins, std::string pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return pinsListHelper(accessToken,
-	bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, 
+	pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -1311,6 +1356,16 @@ static bool pinsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();

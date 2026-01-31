@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
 
 ## Example
 

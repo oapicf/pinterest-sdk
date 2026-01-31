@@ -8,9 +8,9 @@ The absolute date range of the template
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**`type`** | **String** | The date range type |  [optional]
-**startDate** | **BigDecimal** | The start date of the date range |  [optional]
 **endDate** | **BigDecimal** | The end date of the date range |  [optional]
+**startDate** | **BigDecimal** | The start date of the date range |  [optional]
+**`type`** | **String** | The date range type |  [optional]
 
 
 

@@ -17,10 +17,13 @@ import org.openapitools.model.ItemCreateBatchRecord;
  * Request object to create catalogs items
  */
 @ApiModel(description = "Request object to create catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsCreateBatchRequest   {
   @JsonProperty("country")
   private Country country;
+
+  @JsonProperty("items")
+  private List<@Valid ItemCreateBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -269,9 +272,6 @@ public class CatalogsItemsCreateBatchRequest   {
   @JsonProperty("operation")
   private BatchOperation operation;
 
-  @JsonProperty("items")
-  private List<@Valid ItemCreateBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsCreateBatchRequest country(Country country) {
     this.country = country;
     return this;
@@ -288,6 +288,29 @@ public class CatalogsItemsCreateBatchRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsCreateBatchRequest items(List<@Valid ItemCreateBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsCreateBatchRequest addItemsItem(ItemCreateBatchRecord itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Array with catalogs items
+   * @return items
+  **/
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  public List<@Valid ItemCreateBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemCreateBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsCreateBatchRequest language(LanguageEnum language) {
@@ -326,29 +349,6 @@ public class CatalogsItemsCreateBatchRequest   {
     this.operation = operation;
   }
 
-  public CatalogsItemsCreateBatchRequest items(List<@Valid ItemCreateBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsCreateBatchRequest addItemsItem(ItemCreateBatchRecord itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Array with catalogs items
-   * @return items
-  **/
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  public List<@Valid ItemCreateBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemCreateBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -360,14 +360,14 @@ public class CatalogsItemsCreateBatchRequest   {
     }
     CatalogsItemsCreateBatchRequest catalogsItemsCreateBatchRequest = (CatalogsItemsCreateBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsCreateBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsCreateBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsCreateBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsCreateBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsCreateBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsCreateBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -376,9 +376,9 @@ public class CatalogsItemsCreateBatchRequest   {
     sb.append("class CatalogsItemsCreateBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

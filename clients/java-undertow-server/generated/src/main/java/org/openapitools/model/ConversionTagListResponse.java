@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,20 +18,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagListResponse   {
   
-  private List<ConversionTagResponse> items = new ArrayList<>();
+  private List<ConversionTag> items = new ArrayList<>();
 
   /**
    */
-  public ConversionTagListResponse items(List<ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<ConversionTag> items) {
     this.items = items;
     return this;
   }
@@ -39,10 +39,10 @@ public class ConversionTagListResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<ConversionTagResponse> getItems() {
+  public List<ConversionTag> getItems() {
     return items;
   }
-  public void setItems(List<ConversionTagResponse> items) {
+  public void setItems(List<ConversionTag> items) {
     this.items = items;
   }
 

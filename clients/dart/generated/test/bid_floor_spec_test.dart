@@ -16,8 +16,18 @@ void main() {
   // final instance = BidFloorSpec();
 
   group('test BidFloorSpec', () {
+    // ActionType billableEvent
+    test('to test the property `billableEvent`', () async {
+      // TODO
+    });
+
     // List<Country> countries (default value: const [])
     test('to test the property `countries`', () async {
+      // TODO
+    });
+
+    // CreativeType creativeType
+    test('to test the property `creativeType`', () async {
       // TODO
     });
 
@@ -31,18 +41,8 @@ void main() {
       // TODO
     });
 
-    // ActionType billableEvent
-    test('to test the property `billableEvent`', () async {
-      // TODO
-    });
-
     // OptimizationGoalMetadata optimizationGoalMetadata
     test('to test the property `optimizationGoalMetadata`', () async {
-      // TODO
-    });
-
-    // CreativeType creativeType
-    test('to test the property `creativeType`', () async {
       // TODO
     });
 

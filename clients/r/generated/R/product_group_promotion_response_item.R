@@ -7,7 +7,7 @@
 #' @title ProductGroupPromotionResponseItem
 #' @description ProductGroupPromotionResponseItem Class
 #' @format An \code{R6Class} generator object
-#' @field data  \link{ProductGroupPromotionResponseElement} [optional]
+#' @field data  \link{ProductGroupPromotion} [optional]
 #' @field exceptions  list(\link{Exception}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -86,7 +86,7 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
-        `data_object` <- ProductGroupPromotionResponseElement$new()
+        `data_object` <- ProductGroupPromotion$new()
         `data_object`$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
         self$`data` <- `data_object`
       }
@@ -114,7 +114,7 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
     #' @return the instance of ProductGroupPromotionResponseItem
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`data` <- ProductGroupPromotionResponseElement$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
+      self$`data` <- ProductGroupPromotion$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
       self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[Exception]", loadNamespace("openapi"))
       self
     },

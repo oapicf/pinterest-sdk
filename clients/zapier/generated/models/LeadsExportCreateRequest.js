@@ -5,8 +5,8 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}start_date`,
-                label: `Export leads collected on and after start date (UTC). Format: YYYY-MM-DD - [${labelPrefix}start_date]`,
+                key: `${keyPrefix}ad_id`,
+                label: `ID for the ad collecting leads - [${labelPrefix}ad_id]`,
                 required: true,
                 type: 'string',
             },
@@ -17,8 +17,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}ad_id`,
-                label: `ID for the ad collecting leads - [${labelPrefix}ad_id]`,
+                key: `${keyPrefix}start_date`,
+                label: `Export leads collected on and after start date (UTC). Format: YYYY-MM-DD - [${labelPrefix}start_date]`,
                 required: true,
                 type: 'string',
             },
@@ -27,9 +27,9 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'start_date': bundle.inputData?.[`${keyPrefix}start_date`],
-            'end_date': bundle.inputData?.[`${keyPrefix}end_date`],
             'ad_id': bundle.inputData?.[`${keyPrefix}ad_id`],
+            'end_date': bundle.inputData?.[`${keyPrefix}end_date`],
+            'start_date': bundle.inputData?.[`${keyPrefix}start_date`],
         }
     },
 }

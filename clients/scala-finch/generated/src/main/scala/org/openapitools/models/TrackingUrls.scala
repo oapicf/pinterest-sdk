@@ -9,17 +9,17 @@ import scala.collection.immutable.Seq
 
 /**
  * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
- * @param impression 
+ * @param audienceUnderscoreverification 
+ * @param buyableUnderscorebutton 
  * @param click 
  * @param engagement 
- * @param buyableUnderscorebutton 
- * @param audienceUnderscoreverification 
+ * @param impression 
  */
-case class TrackingUrls(impression: Option[Seq[String]],
+case class TrackingUrls(audienceUnderscoreverification: Option[Seq[String]],
+                buyableUnderscorebutton: Option[Seq[String]],
                 click: Option[Seq[String]],
                 engagement: Option[Seq[String]],
-                buyableUnderscorebutton: Option[Seq[String]],
-                audienceUnderscoreverification: Option[Seq[String]]
+                impression: Option[Seq[String]]
                 )
 
 object TrackingUrls {

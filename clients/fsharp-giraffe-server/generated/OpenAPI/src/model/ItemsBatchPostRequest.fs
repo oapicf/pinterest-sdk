@@ -20,11 +20,11 @@ module ItemsBatchPostRequest =
   //#endregion
 
   type items_batch_post_request = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     Country : Country;
-    Language : LanguageEnum;
     Items : ItemDeleteBatchRecord[];
-    CatalogId : string;
+    Language : LanguageEnum;
     Operation : BatchOperation;
   }
   //#endregion

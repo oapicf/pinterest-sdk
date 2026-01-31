@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,11 +23,11 @@ var _ MappedNullable = &CatalogsItemsDeleteDiscontinuedBatchRequest{}
 // CatalogsItemsDeleteDiscontinuedBatchRequest Request object to discontinue catalogs items
 type CatalogsItemsDeleteDiscontinuedBatchRequest struct {
 	Country Country `json:"country"`
+	// Array with catalogs items
+	Items []ItemDeleteDiscontinuedBatchRecord `json:"items"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
 	Operation BatchOperation `json:"operation"`
-	// Array with catalogs items
-	Items []ItemDeleteDiscontinuedBatchRecord `json:"items"`
 }
 
 type _CatalogsItemsDeleteDiscontinuedBatchRequest CatalogsItemsDeleteDiscontinuedBatchRequest
@@ -36,12 +36,12 @@ type _CatalogsItemsDeleteDiscontinuedBatchRequest CatalogsItemsDeleteDiscontinue
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, language string, operation BatchOperation, items []ItemDeleteDiscontinuedBatchRecord) *CatalogsItemsDeleteDiscontinuedBatchRequest {
+func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, items []ItemDeleteDiscontinuedBatchRecord, language string, operation BatchOperation) *CatalogsItemsDeleteDiscontinuedBatchRequest {
 	this := CatalogsItemsDeleteDiscontinuedBatchRequest{}
 	this.Country = country
+	this.Items = items
 	this.Language = language
 	this.Operation = operation
-	this.Items = items
 	return &this
 }
 
@@ -75,6 +75,30 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetCountryOk() (*Country, 
 // SetCountry sets field value
 func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetCountry(v Country) {
 	o.Country = v
+}
+
+// GetItems returns the Items field value
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItems() []ItemDeleteDiscontinuedBatchRecord {
+	if o == nil {
+		var ret []ItemDeleteDiscontinuedBatchRecord
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItemsOk() ([]ItemDeleteDiscontinuedBatchRecord, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetItems(v []ItemDeleteDiscontinuedBatchRecord) {
+	o.Items = v
 }
 
 // GetLanguage returns the Language field value
@@ -125,30 +149,6 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetOperation(v BatchOperat
 	o.Operation = v
 }
 
-// GetItems returns the Items field value
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItems() []ItemDeleteDiscontinuedBatchRecord {
-	if o == nil {
-		var ret []ItemDeleteDiscontinuedBatchRecord
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetItemsOk() ([]ItemDeleteDiscontinuedBatchRecord, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetItems(v []ItemDeleteDiscontinuedBatchRecord) {
-	o.Items = v
-}
-
 func (o CatalogsItemsDeleteDiscontinuedBatchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,9 +160,9 @@ func (o CatalogsItemsDeleteDiscontinuedBatchRequest) MarshalJSON() ([]byte, erro
 func (o CatalogsItemsDeleteDiscontinuedBatchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
+	toSerialize["items"] = o.Items
 	toSerialize["language"] = o.Language
 	toSerialize["operation"] = o.Operation
-	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 
@@ -172,9 +172,9 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) UnmarshalJSON(data []byte)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"country",
+		"items",
 		"language",
 		"operation",
-		"items",
 	}
 
 	allProperties := make(map[string]interface{})

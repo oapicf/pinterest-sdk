@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;AdsCreditDiscountsResponse&gt;**](AdsCreditDiscountsResponse.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;AdsCreditDiscountsResponse&gt;**](AdsCreditDiscountsResponse.md) |  |  |
 
 
 

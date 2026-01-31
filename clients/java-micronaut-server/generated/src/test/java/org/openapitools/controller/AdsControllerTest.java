@@ -14,6 +14,7 @@ import org.openapitools.model.Error;
 import org.openapitools.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.model.MetricsResponse;
+import org.openapitools.model.ReportingTimeZone;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -64,7 +65,7 @@ public class AdsControllerTest {
      *
      * The method should: Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -98,7 +99,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@8a4f94f");
+            .accept("[Ljava.lang.String;@27f71379");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdPreviewURLResponse.class);
@@ -112,7 +113,7 @@ public class AdsControllerTest {
      *
      * The method should: Get targeting analytics for ads
      *
-     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -131,10 +132,11 @@ public class AdsControllerTest {
         Integer engagementWindowDays = 30;
         Integer viewWindowDays = 1;
         String conversionReportTime = "TIME_OF_AD_ACTION";
-        ConversionReportAttributionType attributionTypes = ConversionReportAttributionType.fromValue("INDIVIDUAL");
+        List<ConversionReportAttributionType> attributionTypes = Arrays.asList();
+        ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
 
         // when
-        MetricsResponse result = controller.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes).block();
+        MetricsResponse result = controller.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone).block();
 
         // then
         Assertions.assertTrue(true);
@@ -155,7 +157,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4624f134");
+            .accept("[Ljava.lang.String;@5252571");
         request.getParameters()
             .add("ad_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -167,7 +169,8 @@ public class AdsControllerTest {
             .add("engagement_window_days", String.valueOf(30)) // The query parameter format should be 
             .add("view_window_days", String.valueOf(1)) // The query parameter format should be 
             .add("conversion_report_time", "TIME_OF_AD_ACTION") // The query parameter format should be 
-            .add("attribution_types", String.valueOf(ConversionReportAttributionType.fromValue("INDIVIDUAL"))); // The query parameter format should be 
+            .add("attribution_types", String.valueOf(Arrays.asList())) // The query parameter format should be csv
+            .add("reporting_timezone", String.valueOf(ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, MetricsResponse.class);
@@ -181,7 +184,7 @@ public class AdsControllerTest {
      *
      * The method should: Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -201,9 +204,10 @@ public class AdsControllerTest {
         String conversionReportTime = "TIME_OF_AD_ACTION";
         List<@Pattern(regexp = "^\\d+$")String> pinIds = Arrays.asList("example");
         List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = Arrays.asList("example");
+        ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
 
         // when
-        List<AdsAnalyticsResponseInner> result = controller.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds).block();
+        List<AdsAnalyticsResponseInner> result = controller.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone).block();
 
         // then
         Assertions.assertTrue(true);
@@ -224,7 +228,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@48e9436e");
+            .accept("[Ljava.lang.String;@272c9357");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -236,7 +240,8 @@ public class AdsControllerTest {
             .add("view_window_days", String.valueOf(1)) // The query parameter format should be 
             .add("conversion_report_time", "TIME_OF_AD_ACTION") // The query parameter format should be 
             .add("pin_ids", Arrays.asList("example")) // The query format should be multi
-            .add("campaign_ids", Arrays.asList("example")); // The query format should be multi
+            .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
+            .add("reporting_timezone", String.valueOf(ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, AdsAnalyticsResponseInner.class));
@@ -250,7 +255,7 @@ public class AdsControllerTest {
      *
      * The method should: Create ads
      *
-     * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+     * Create multiple new ads. Request must contain &#x60;ad_group_id&#x60;, &#x60;creative_type&#x60;, and the source Pin &#x60;pin_id&#x60;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -284,7 +289,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@5d3310a6");
+            .accept("[Ljava.lang.String;@6676c1fa");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdArrayResponse.class);
@@ -332,7 +337,7 @@ public class AdsControllerTest {
             put("ad_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7272f4ce");
+            .accept("[Ljava.lang.String;@79856a96");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdResponse.class);
@@ -385,7 +390,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@13be06e5");
+            .accept("[Ljava.lang.String;@5527c67a");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
@@ -441,7 +446,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@114ec5cf");
+            .accept("[Ljava.lang.String;@16d241a2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdArrayResponse.class);

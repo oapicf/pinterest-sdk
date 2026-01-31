@@ -15,6 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupPricingCurrencyCriteria  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private NonNullableCatalogsCurrency currency;
+
+  @ApiModelProperty(value = "")
+  private Boolean negated = false;
+
 public enum OperatorEnum {
 
     @JsonProperty("GREATER_THAN") GREATER_THAN(String.valueOf("GREATER_THAN")),
@@ -53,13 +60,55 @@ public enum OperatorEnum {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private BigDecimal value;
+ /**
+  * Get currency
+  * @return currency
+  */
+  @JsonProperty("currency")
+  @NotNull
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private NonNullableCatalogsCurrency currency;
+  /**
+   * Sets the <code>currency</code> property.
+   */
+ public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+  }
 
-  @ApiModelProperty(value = "")
-  private Boolean negated = false;
+  /**
+   * Sets the <code>currency</code> property.
+   */
+  public CatalogsProductGroupPricingCurrencyCriteria currency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+    return this;
+  }
+
+ /**
+  * Get negated
+  * @return negated
+  */
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  /**
+   * Sets the <code>negated</code> property.
+   */
+ public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
+  /**
+   * Sets the <code>negated</code> property.
+   */
+  public CatalogsProductGroupPricingCurrencyCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
  /**
   * Get operator
   * @return operator
@@ -111,55 +160,6 @@ public enum OperatorEnum {
     return this;
   }
 
- /**
-  * Get currency
-  * @return currency
-  */
-  @JsonProperty("currency")
-  @NotNull
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-
-  /**
-   * Sets the <code>currency</code> property.
-   */
- public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
-  /**
-   * Sets the <code>currency</code> property.
-   */
-  public CatalogsProductGroupPricingCurrencyCriteria currency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-    return this;
-  }
-
- /**
-  * Get negated
-  * @return negated
-  */
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  /**
-   * Sets the <code>negated</code> property.
-   */
- public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-  /**
-   * Sets the <code>negated</code> property.
-   */
-  public CatalogsProductGroupPricingCurrencyCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -170,15 +170,15 @@ public enum OperatorEnum {
       return false;
     }
     CatalogsProductGroupPricingCurrencyCriteria catalogsProductGroupPricingCurrencyCriteria = (CatalogsProductGroupPricingCurrencyCriteria) o;
-    return Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
-        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value) &&
-        Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
-        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated);
+    return Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
+        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated) &&
+        Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
+        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operator, value, currency, negated);
+    return Objects.hash(currency, negated, operator, value);
   }
 
   @Override
@@ -186,10 +186,10 @@ public enum OperatorEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupPricingCurrencyCriteria {\n");
     
-    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

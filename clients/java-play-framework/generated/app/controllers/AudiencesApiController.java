@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.Audience;
-import apimodels.AudienceCreateCustomRequest;
 import apimodels.AudienceCreateRequest;
 import apimodels.AudienceUpdateRequest;
 import apimodels.AudiencesList200Response;
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudiencesApiController extends Controller {
     private final AudiencesApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -55,21 +54,6 @@ public class AudiencesApiController extends Controller {
             throw new IllegalArgumentException("'AudienceCreateRequest' parameter is required");
         }
         return imp.audiencesCreateHttp(request, adAccountId, audienceCreateRequest);
-    }
-
-    @ApiAction
-    public Result audiencesCreateCustom(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeaudienceCreateCustomRequest = request.body().asJson();
-        AudienceCreateCustomRequest audienceCreateCustomRequest;
-        if (nodeaudienceCreateCustomRequest != null) {
-            audienceCreateCustomRequest = mapper.readValue(nodeaudienceCreateCustomRequest.toString(), AudienceCreateCustomRequest.class);
-            if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(audienceCreateCustomRequest);
-            }
-        } else {
-            throw new IllegalArgumentException("'AudienceCreateCustomRequest' parameter is required");
-        }
-        return imp.audiencesCreateCustomHttp(request, adAccountId, audienceCreateCustomRequest);
     }
 
     @ApiAction
@@ -120,7 +104,7 @@ public class AudiencesApiController extends Controller {
                 OpenAPIUtils.validate(audienceUpdateRequest);
             }
         } else {
-            audienceUpdateRequest = null;
+            throw new IllegalArgumentException("'AudienceUpdateRequest' parameter is required");
         }
         return imp.audiencesUpdateHttp(request, adAccountId, audienceId, audienceUpdateRequest);
     }

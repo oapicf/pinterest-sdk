@@ -7,20 +7,18 @@
 #' @title CustomerListRequest
 #' @description CustomerListRequest Class
 #' @format An \code{R6Class} generator object
+#' @field list_type  \link{UserListType} [optional]
 #' @field name Customer list name. character
 #' @field records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. character
-#' @field list_type  \link{UserListType} [optional]
-#' @field exceptions Customer list errors. object [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CustomerListRequest <- R6::R6Class(
   "CustomerListRequest",
   public = list(
+    `list_type` = NULL,
     `name` = NULL,
     `records` = NULL,
-    `list_type` = NULL,
-    `exceptions` = NULL,
 
     #' @description
     #' Initialize a new CustomerListRequest class.
@@ -28,9 +26,8 @@ CustomerListRequest <- R6::R6Class(
     #' @param name Customer list name.
     #' @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
     #' @param list_type list_type. Default to "EMAIL".
-    #' @param exceptions Customer list errors.
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `records`, `list_type` = "EMAIL", `exceptions` = NULL, ...) {
+    initialize = function(`name`, `records`, `list_type` = "EMAIL", ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -49,9 +46,6 @@ CustomerListRequest <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`list_type`))
         self$`list_type` <- `list_type`
-      }
-      if (!is.null(`exceptions`)) {
-        self$`exceptions` <- `exceptions`
       }
     },
 
@@ -86,6 +80,10 @@ CustomerListRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CustomerListRequestObject <- list()
+      if (!is.null(self$`list_type`)) {
+        CustomerListRequestObject[["list_type"]] <-
+          self$`list_type`$toSimpleType()
+      }
       if (!is.null(self$`name`)) {
         CustomerListRequestObject[["name"]] <-
           self$`name`
@@ -93,14 +91,6 @@ CustomerListRequest <- R6::R6Class(
       if (!is.null(self$`records`)) {
         CustomerListRequestObject[["records"]] <-
           self$`records`
-      }
-      if (!is.null(self$`list_type`)) {
-        CustomerListRequestObject[["list_type"]] <-
-          self$`list_type`$toSimpleType()
-      }
-      if (!is.null(self$`exceptions`)) {
-        CustomerListRequestObject[["exceptions"]] <-
-          self$`exceptions`
       }
       return(CustomerListRequestObject)
     },
@@ -112,19 +102,16 @@ CustomerListRequest <- R6::R6Class(
     #' @return the instance of CustomerListRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
-      if (!is.null(this_object$`records`)) {
-        self$`records` <- this_object$`records`
-      }
       if (!is.null(this_object$`list_type`)) {
         `list_type_object` <- UserListType$new()
         `list_type_object`$fromJSON(jsonlite::toJSON(this_object$`list_type`, auto_unbox = TRUE, digits = NA))
         self$`list_type` <- `list_type_object`
       }
-      if (!is.null(this_object$`exceptions`)) {
-        self$`exceptions` <- this_object$`exceptions`
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`records`)) {
+        self$`records` <- this_object$`records`
       }
       self
     },
@@ -147,10 +134,9 @@ CustomerListRequest <- R6::R6Class(
     #' @return the instance of CustomerListRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`list_type` <- UserListType$new()$fromJSON(jsonlite::toJSON(this_object$`list_type`, auto_unbox = TRUE, digits = NA))
       self$`name` <- this_object$`name`
       self$`records` <- this_object$`records`
-      self$`list_type` <- UserListType$new()$fromJSON(jsonlite::toJSON(this_object$`list_type`, auto_unbox = TRUE, digits = NA))
-      self$`exceptions` <- this_object$`exceptions`
       self
     },
 

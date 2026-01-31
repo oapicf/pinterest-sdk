@@ -4,6 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**mediaType** | **String** |  | 
+
+
+
+## Enum: MediaTypeEnum
+
+
+* `image` (value: `"image"`)
+
+
 
 

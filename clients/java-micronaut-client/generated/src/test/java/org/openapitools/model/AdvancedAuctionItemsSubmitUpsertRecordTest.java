@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdvancedAuctionBidOptions;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import org.openapitools.model.UpdateMaskBidOptionField;
@@ -27,19 +28,19 @@ public class AdvancedAuctionItemsSubmitUpsertRecordTest {
     }
 
     /**
-     * Test the property 'itemId'
-     */
-    @Test
-    public void itemIdTest() {
-        // TODO: test itemId
-    }
-
-    /**
      * Test the property 'country'
      */
     @Test
     public void countryTest() {
         // TODO: test country
+    }
+
+    /**
+     * Test the property 'itemId'
+     */
+    @Test
+    public void itemIdTest() {
+        // TODO: test itemId
     }
 
     /**
@@ -56,6 +57,14 @@ public class AdvancedAuctionItemsSubmitUpsertRecordTest {
     @Test
     public void bidOptionsTest() {
         // TODO: test bidOptions
+    }
+
+    /**
+     * Test the property 'errors'
+     */
+    @Test
+    public void errorsTest() {
+        // TODO: test errors
     }
 
     /**

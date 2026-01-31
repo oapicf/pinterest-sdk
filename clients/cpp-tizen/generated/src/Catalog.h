@@ -67,13 +67,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setUpdatedAt(std::string  updated_at);
-	/*! \brief Get A human-friendly name associated to a catalog entity.
-	 */
-	std::string getName();
-
-	/*! \brief Set A human-friendly name associated to a catalog entity.
-	 */
-	void setName(std::string  name);
 	/*! \brief Get 
 	 */
 	CatalogsType getCatalogType();
@@ -81,13 +74,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(CatalogsType  catalog_type);
+	/*! \brief Get A human-friendly name associated to a catalog entity.
+	 */
+	std::string getName();
+
+	/*! \brief Set A human-friendly name associated to a catalog entity.
+	 */
+	void setName(std::string  name);
 
 private:
 	std::string created_at;
 	std::string id;
 	std::string updated_at;
-	std::string name;
 	CatalogsType catalog_type;
+	std::string name;
 	void __init();
 	void __cleanup();
 

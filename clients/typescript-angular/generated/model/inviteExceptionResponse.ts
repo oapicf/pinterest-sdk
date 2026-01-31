@@ -14,13 +14,13 @@
  */
 export interface InviteExceptionResponse { 
     /**
-     * Unique identifier of the invite/request.
-     */
-    invite_or_request_id?: string | null;
-    /**
      * Error code associated with the error in performing the action on the invite/request.
      */
     code?: number;
+    /**
+     * Unique identifier of the invite/request.
+     */
+    invite_or_request_id?: string | null;
     /**
      * Error message associated with the error in performing the action on the invite/request.
      */

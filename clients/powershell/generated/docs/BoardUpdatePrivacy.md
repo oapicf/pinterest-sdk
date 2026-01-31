@@ -1,0 +1,20 @@
+# BoardUpdatePrivacy
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+
+## Examples
+
+- Prepare the resource
+```powershell
+$BoardUpdatePrivacy = Initialize-PSOpenAPIToolsBoardUpdatePrivacy 
+```
+
+- Convert the resource to JSON
+```powershell
+$BoardUpdatePrivacy | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

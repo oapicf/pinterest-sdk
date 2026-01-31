@@ -1,0 +1,70 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailProductGroupCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailProductGroupCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsProductGroupFiltersRequest = openapi_server.resourceTypes.CatalogsProductGroupFiltersRequest
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsRetailProductGroupCreateRequest {
+    title = CatalogsRetailProductGroupCreateRequest
+    description = CatalogsRetailProductGroupCreateRequest
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the retail product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one."
+          enum = ["RETAIL"]
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsProductGroupFiltersRequest
+          description = ""
+          optional = true
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailProductGroupCreateRequest {
+    title = CatalogsRetailProductGroupCreateRequest
+    description = CatalogsRetailProductGroupCreateRequest
+    implements = openapi_server.resourceTypes.CatalogsRetailProductGroupCreateRequest
+
+  }
+}

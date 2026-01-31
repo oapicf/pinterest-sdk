@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
@@ -17,6 +18,7 @@ import org.openapitools.model.GoogleProductCategory4Filter;
 import org.openapitools.model.GoogleProductCategory5Filter;
 import org.openapitools.model.GoogleProductCategory6Filter;
 import org.openapitools.model.MediaTypeFilter;
+import org.openapitools.model.TitleKeywordsFilter;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -146,6 +148,14 @@ public class CatalogsCreativeAssetsProductGroupFilterKeysTest {
     @Test
     public void MEDIA_TYPETest() {
         // TODO: test MEDIA_TYPE
+    }
+
+    /**
+     * Test the property 'TITLE_KEYWORDS'
+     */
+    @Test
+    public void TITLE_KEYWORDSTest() {
+        // TODO: test TITLE_KEYWORDS
     }
 
 }

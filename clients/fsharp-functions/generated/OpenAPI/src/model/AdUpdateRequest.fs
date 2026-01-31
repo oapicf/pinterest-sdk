@@ -4,6 +4,8 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.CreativeType
+open OpenAPI.Model.CustomizableCTAType
+open OpenAPI.Model.DisclosureType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
 open OpenAPI.Model.QuizPinData
@@ -30,30 +32,34 @@ module AdUpdateRequest =
     ClickTrackingUrl : string option;
     [<JsonProperty(PropertyName = "creative_type")>]
     CreativeType : CreativeType;
+    [<JsonProperty(PropertyName = "customizable_cta_type")>]
+    CustomizableCtaType : CustomizableCTAType;
     [<JsonProperty(PropertyName = "destination_url")>]
     DestinationUrl : string option;
+    [<JsonProperty(PropertyName = "disclosure_type")>]
+    DisclosureType : DisclosureType;
+    [<JsonProperty(PropertyName = "disclosure_url")>]
+    DisclosureUrl : string option;
+    [<JsonProperty(PropertyName = "grid_click_type")>]
+    GridClickType : GridClickType;
     [<JsonProperty(PropertyName = "ios_deep_link")>]
     IosDeepLink : string option;
     [<JsonProperty(PropertyName = "is_pin_deleted")>]
     IsPinDeleted : bool;
     [<JsonProperty(PropertyName = "is_removable")>]
     IsRemovable : bool;
+    [<JsonProperty(PropertyName = "lead_form_id")>]
+    LeadFormId : string option;
     [<JsonProperty(PropertyName = "name")>]
     Name : string option;
+    [<JsonProperty(PropertyName = "quiz_pin_data")>]
+    QuizPinData : QuizPinData;
     [<JsonProperty(PropertyName = "status")>]
     Status : EntityStatus;
     [<JsonProperty(PropertyName = "tracking_urls")>]
     TrackingUrls : TrackingUrls;
     [<JsonProperty(PropertyName = "view_tracking_url")>]
     ViewTrackingUrl : string option;
-    [<JsonProperty(PropertyName = "lead_form_id")>]
-    LeadFormId : string option;
-    [<JsonProperty(PropertyName = "grid_click_type")>]
-    GridClickType : GridClickType;
-    [<JsonProperty(PropertyName = "customizable_cta_type")>]
-    CustomizableCtaType : string option;
-    [<JsonProperty(PropertyName = "quiz_pin_data")>]
-    QuizPinData : QuizPinData;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "pin_id")>]

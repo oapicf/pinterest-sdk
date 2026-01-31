@@ -52,6 +52,9 @@ public enum TimerangeEnum {
   private TimerangeEnum timerange;
 
   /**
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    **/
   public OptimizationGoalMetadataFrequencyGoalMetadata frequency(Integer frequency) {
     this.frequency = frequency;
@@ -59,9 +62,9 @@ public enum TimerangeEnum {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
   @JsonProperty("frequency")
-  public Integer getFrequency() {
+ @Min(2) @Max(20)  public Integer getFrequency() {
     return frequency;
   }
   public void setFrequency(Integer frequency) {

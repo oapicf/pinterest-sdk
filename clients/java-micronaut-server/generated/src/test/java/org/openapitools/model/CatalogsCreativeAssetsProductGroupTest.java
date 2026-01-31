@@ -22,6 +22,14 @@ public class CatalogsCreativeAssetsProductGroupTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -30,19 +38,11 @@ public class CatalogsCreativeAssetsProductGroupTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'createdAt'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
@@ -62,11 +62,19 @@ public class CatalogsCreativeAssetsProductGroupTest {
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'id'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
@@ -75,14 +83,6 @@ public class CatalogsCreativeAssetsProductGroupTest {
     @Test
     public void updatedAtTest() {
         // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'catalogId'
-     */
-    @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
     }
 
 }

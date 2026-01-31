@@ -26,6 +26,12 @@ class AdsAnalyticsCreateAsyncResponseTest : ShouldSpec() {
         // uncomment below to create an instance of AdsAnalyticsCreateAsyncResponse
         //val modelInstance = AdsAnalyticsCreateAsyncResponse()
 
+        // to test the property `message`
+        should("test message") {
+            // uncomment below to test the property
+            //modelInstance.message shouldBe ("TODO")
+        }
+
         // to test the property `reportStatus`
         should("test reportStatus") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class AdsAnalyticsCreateAsyncResponseTest : ShouldSpec() {
         should("test token") {
             // uncomment below to test the property
             //modelInstance.token shouldBe ("TODO")
-        }
-
-        // to test the property `message`
-        should("test message") {
-            // uncomment below to test the property
-            //modelInstance.message shouldBe ("TODO")
         }
 
     }

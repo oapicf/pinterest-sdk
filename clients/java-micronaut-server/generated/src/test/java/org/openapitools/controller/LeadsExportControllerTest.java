@@ -63,7 +63,7 @@ public class LeadsExportControllerTest {
     void leadsExportCreateMethodTest() {
         // given
         String adAccountId = "example";
-        LeadsExportCreateRequest leadsExportCreateRequest = new LeadsExportCreateRequest("2020-12-20", "2020-12-20", "687201361754");
+        LeadsExportCreateRequest leadsExportCreateRequest = new LeadsExportCreateRequest("687201361754", "2020-12-20", "2020-12-20");
 
         // when
         LeadsExportCreateResponse result = controller.leadsExportCreate(adAccountId, leadsExportCreateRequest).block();
@@ -82,13 +82,13 @@ public class LeadsExportControllerTest {
     @Disabled("Not Implemented")
     void leadsExportCreateClientApiTest() throws IOException {
         // given
-        LeadsExportCreateRequest body = new LeadsExportCreateRequest("2020-12-20", "2020-12-20", "687201361754");
+        LeadsExportCreateRequest body = new LeadsExportCreateRequest("687201361754", "2020-12-20", "2020-12-20");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/leads_export").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@38192075");
+            .accept("[Ljava.lang.String;@299bafe9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadsExportCreateResponse.class);
@@ -136,7 +136,7 @@ public class LeadsExportControllerTest {
             put("leads_export_id", "123755885175");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7f3147b3");
+            .accept("[Ljava.lang.String;@476e510");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadsExportResponseData.class);

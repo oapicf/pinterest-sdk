@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdvancedAuctionBidOptions;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import org.openapitools.model.UpdateMaskBidOptionField;
@@ -18,14 +19,28 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item bid option upsert operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing an item bid option upsert operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsSubmitUpsertRecord   {
   
-  private String itemId;
   private Country country;
+  private String itemId;
   private Language language;
   private AdvancedAuctionBidOptions bidOptions;
+  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
   private List<UpdateMaskBidOptionField> updateMask;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("country")
+  @NotNull
+  public Country getCountry() {
+    return country;
+  }
+  public void setCountry(Country country) {
+    this.country = country;
+  }
 
   /**
    * The catalog retail item id in the merchant namespace
@@ -39,19 +54,6 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
-  @NotNull
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
   }
 
   /**
@@ -81,6 +83,19 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
   }
 
   /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   **/
+  
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+  @JsonProperty("errors")
+  public List<@Valid AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+  }
+
+  /**
    * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;.
    **/
   
@@ -104,16 +119,17 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
       return false;
     }
     AdvancedAuctionItemsSubmitUpsertRecord advancedAuctionItemsSubmitUpsertRecord = (AdvancedAuctionItemsSubmitUpsertRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsSubmitUpsertRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsSubmitUpsertRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsSubmitUpsertRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsSubmitUpsertRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitUpsertRecord.language) &&
         Objects.equals(this.bidOptions, advancedAuctionItemsSubmitUpsertRecord.bidOptions) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitUpsertRecord.errors) &&
         Objects.equals(this.updateMask, advancedAuctionItemsSubmitUpsertRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, bidOptions, updateMask);
+    return Objects.hash(country, itemId, language, bidOptions, errors, updateMask);
   }
 
   @Override
@@ -121,10 +137,11 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsSubmitUpsertRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

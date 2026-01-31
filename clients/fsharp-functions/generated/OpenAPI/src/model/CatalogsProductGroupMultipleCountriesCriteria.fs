@@ -11,10 +11,10 @@ module CatalogsProductGroupMultipleCountriesCriteria =
 
   [<CLIMutable>]
   type CatalogsProductGroupMultipleCountriesCriteria = {
-    [<JsonProperty(PropertyName = "values")>]
-    Values : Country[];
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
+    [<JsonProperty(PropertyName = "values")>]
+    Values : Country[];
   }
 
   //#endregion

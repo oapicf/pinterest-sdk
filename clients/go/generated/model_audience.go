@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,18 @@ var _ MappedNullable = &Audience{}
 type Audience struct {
 	// Ad account ID.
 	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	AudienceType *string `json:"audience_type,omitempty"`
+	// The company that created this audience.
+	CreatedByCompanyName NullableString `json:"created_by_company_name,omitempty"`
+	// Creation time. Unix timestamp in seconds.
+	CreatedTimestamp NullableInt32 `json:"created_timestamp,omitempty"`
+	// Audience description.
+	Description NullableString `json:"description,omitempty"`
 	// Audience ID.
 	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Audience name.
 	Name *string `json:"name,omitempty"`
-	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-	AudienceType *string `json:"audience_type,omitempty"`
-	// Audience description.
-	Description NullableString `json:"description,omitempty"`
 	Rule *AudienceRule `json:"rule,omitempty"`
 	// Audience size.
 	Size NullableInt32 `json:"size,omitempty"`
@@ -37,8 +41,6 @@ type Audience struct {
 	Status *string `json:"status,omitempty"`
 	// Always \"audience\".
 	Type *string `json:"type,omitempty"`
-	// Creation time. Unix timestamp in seconds.
-	CreatedTimestamp NullableInt32 `json:"created_timestamp,omitempty"`
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTimestamp NullableInt32 `json:"updated_timestamp,omitempty"`
 }
@@ -90,6 +92,164 @@ func (o *Audience) HasAdAccountId() bool {
 // SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
 func (o *Audience) SetAdAccountId(v string) {
 	o.AdAccountId = &v
+}
+
+// GetAudienceType returns the AudienceType field value if set, zero value otherwise.
+func (o *Audience) GetAudienceType() string {
+	if o == nil || IsNil(o.AudienceType) {
+		var ret string
+		return ret
+	}
+	return *o.AudienceType
+}
+
+// GetAudienceTypeOk returns a tuple with the AudienceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Audience) GetAudienceTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AudienceType) {
+		return nil, false
+	}
+	return o.AudienceType, true
+}
+
+// HasAudienceType returns a boolean if a field has been set.
+func (o *Audience) HasAudienceType() bool {
+	if o != nil && !IsNil(o.AudienceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAudienceType gets a reference to the given string and assigns it to the AudienceType field.
+func (o *Audience) SetAudienceType(v string) {
+	o.AudienceType = &v
+}
+
+// GetCreatedByCompanyName returns the CreatedByCompanyName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Audience) GetCreatedByCompanyName() string {
+	if o == nil || IsNil(o.CreatedByCompanyName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CreatedByCompanyName.Get()
+}
+
+// GetCreatedByCompanyNameOk returns a tuple with the CreatedByCompanyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Audience) GetCreatedByCompanyNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CreatedByCompanyName.Get(), o.CreatedByCompanyName.IsSet()
+}
+
+// HasCreatedByCompanyName returns a boolean if a field has been set.
+func (o *Audience) HasCreatedByCompanyName() bool {
+	if o != nil && o.CreatedByCompanyName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedByCompanyName gets a reference to the given NullableString and assigns it to the CreatedByCompanyName field.
+func (o *Audience) SetCreatedByCompanyName(v string) {
+	o.CreatedByCompanyName.Set(&v)
+}
+// SetCreatedByCompanyNameNil sets the value for CreatedByCompanyName to be an explicit nil
+func (o *Audience) SetCreatedByCompanyNameNil() {
+	o.CreatedByCompanyName.Set(nil)
+}
+
+// UnsetCreatedByCompanyName ensures that no value is present for CreatedByCompanyName, not even an explicit nil
+func (o *Audience) UnsetCreatedByCompanyName() {
+	o.CreatedByCompanyName.Unset()
+}
+
+// GetCreatedTimestamp returns the CreatedTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Audience) GetCreatedTimestamp() int32 {
+	if o == nil || IsNil(o.CreatedTimestamp.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedTimestamp.Get()
+}
+
+// GetCreatedTimestampOk returns a tuple with the CreatedTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Audience) GetCreatedTimestampOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CreatedTimestamp.Get(), o.CreatedTimestamp.IsSet()
+}
+
+// HasCreatedTimestamp returns a boolean if a field has been set.
+func (o *Audience) HasCreatedTimestamp() bool {
+	if o != nil && o.CreatedTimestamp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTimestamp gets a reference to the given NullableInt32 and assigns it to the CreatedTimestamp field.
+func (o *Audience) SetCreatedTimestamp(v int32) {
+	o.CreatedTimestamp.Set(&v)
+}
+// SetCreatedTimestampNil sets the value for CreatedTimestamp to be an explicit nil
+func (o *Audience) SetCreatedTimestampNil() {
+	o.CreatedTimestamp.Set(nil)
+}
+
+// UnsetCreatedTimestamp ensures that no value is present for CreatedTimestamp, not even an explicit nil
+func (o *Audience) UnsetCreatedTimestamp() {
+	o.CreatedTimestamp.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Audience) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Audience) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Audience) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *Audience) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Audience) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Audience) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -154,80 +314,6 @@ func (o *Audience) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Audience) SetName(v string) {
 	o.Name = &v
-}
-
-// GetAudienceType returns the AudienceType field value if set, zero value otherwise.
-func (o *Audience) GetAudienceType() string {
-	if o == nil || IsNil(o.AudienceType) {
-		var ret string
-		return ret
-	}
-	return *o.AudienceType
-}
-
-// GetAudienceTypeOk returns a tuple with the AudienceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Audience) GetAudienceTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AudienceType) {
-		return nil, false
-	}
-	return o.AudienceType, true
-}
-
-// HasAudienceType returns a boolean if a field has been set.
-func (o *Audience) HasAudienceType() bool {
-	if o != nil && !IsNil(o.AudienceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAudienceType gets a reference to the given string and assigns it to the AudienceType field.
-func (o *Audience) SetAudienceType(v string) {
-	o.AudienceType = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Audience) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Audience) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *Audience) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *Audience) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *Audience) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *Audience) UnsetDescription() {
-	o.Description.Unset()
 }
 
 // GetRule returns the Rule field value if set, zero value otherwise.
@@ -368,48 +454,6 @@ func (o *Audience) SetType(v string) {
 	o.Type = &v
 }
 
-// GetCreatedTimestamp returns the CreatedTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Audience) GetCreatedTimestamp() int32 {
-	if o == nil || IsNil(o.CreatedTimestamp.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.CreatedTimestamp.Get()
-}
-
-// GetCreatedTimestampOk returns a tuple with the CreatedTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Audience) GetCreatedTimestampOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CreatedTimestamp.Get(), o.CreatedTimestamp.IsSet()
-}
-
-// HasCreatedTimestamp returns a boolean if a field has been set.
-func (o *Audience) HasCreatedTimestamp() bool {
-	if o != nil && o.CreatedTimestamp.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTimestamp gets a reference to the given NullableInt32 and assigns it to the CreatedTimestamp field.
-func (o *Audience) SetCreatedTimestamp(v int32) {
-	o.CreatedTimestamp.Set(&v)
-}
-// SetCreatedTimestampNil sets the value for CreatedTimestamp to be an explicit nil
-func (o *Audience) SetCreatedTimestampNil() {
-	o.CreatedTimestamp.Set(nil)
-}
-
-// UnsetCreatedTimestamp ensures that no value is present for CreatedTimestamp, not even an explicit nil
-func (o *Audience) UnsetCreatedTimestamp() {
-	o.CreatedTimestamp.Unset()
-}
-
 // GetUpdatedTimestamp returns the UpdatedTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Audience) GetUpdatedTimestamp() int32 {
 	if o == nil || IsNil(o.UpdatedTimestamp.Get()) {
@@ -465,17 +509,23 @@ func (o Audience) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdAccountId) {
 		toSerialize["ad_account_id"] = o.AdAccountId
 	}
+	if !IsNil(o.AudienceType) {
+		toSerialize["audience_type"] = o.AudienceType
+	}
+	if o.CreatedByCompanyName.IsSet() {
+		toSerialize["created_by_company_name"] = o.CreatedByCompanyName.Get()
+	}
+	if o.CreatedTimestamp.IsSet() {
+		toSerialize["created_timestamp"] = o.CreatedTimestamp.Get()
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.AudienceType) {
-		toSerialize["audience_type"] = o.AudienceType
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.Rule) {
 		toSerialize["rule"] = o.Rule
@@ -488,9 +538,6 @@ func (o Audience) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if o.CreatedTimestamp.IsSet() {
-		toSerialize["created_timestamp"] = o.CreatedTimestamp.Get()
 	}
 	if o.UpdatedTimestamp.IsSet() {
 		toSerialize["updated_timestamp"] = o.UpdatedTimestamp.Get()

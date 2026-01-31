@@ -5,40 +5,47 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"errors"
+)
 
 
-// PinMediaSourceVideoId - Video ID-based media source
+
+// PinMediaSourceVideoId - Video ID-based media source.
 type PinMediaSourceVideoId struct {
 
-	SourceType string `json:"source_type"`
-
-	// Cover image url.
-	CoverImageUrl string `json:"cover_image_url,omitempty"`
-
 	// Content type for cover image Base64.
-	CoverImageContentType string `json:"cover_image_content_type,omitempty"`
+	CoverImageContentType ContentType `json:"cover_image_content_type,omitempty"`
 
 	// Cover image Base64.
 	CoverImageData string `json:"cover_image_data,omitempty"`
 
-	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+	// Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+	CoverImageKeyFrameTime int32 `json:"cover_image_key_frame_time,omitempty"`
+
+	// Cover image URL.
+	CoverImageUrl string `json:"cover_image_url,omitempty"`
 
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard bool `json:"is_standard,omitempty"`
+
+	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+
+	SourceType string `json:"source_type"`
 }
 
 // AssertPinMediaSourceVideoIdRequired checks if the required fields are not zero-ed
 func AssertPinMediaSourceVideoIdRequired(obj PinMediaSourceVideoId) error {
 	elements := map[string]interface{}{
-		"source_type": obj.SourceType,
 		"media_id": obj.MediaId,
+		"source_type": obj.SourceType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -51,5 +58,8 @@ func AssertPinMediaSourceVideoIdRequired(obj PinMediaSourceVideoId) error {
 
 // AssertPinMediaSourceVideoIdConstraints checks if the values respects the defined constraints
 func AssertPinMediaSourceVideoIdConstraints(obj PinMediaSourceVideoId) error {
+	if obj.CoverImageKeyFrameTime < 0 {
+		return &ParsingError{Param: "CoverImageKeyFrameTime", Err: errors.New(errMsgMinValueConstraint)}
+	}
 	return nil
 }

@@ -12,32 +12,32 @@ import AnyCodable
 
 public struct UserWebsiteSummary: Codable, JSONEncodable, Hashable {
 
-    /** Website with path or domain only */
-    public var website: String?
     /** Status of the verification process */
     public var status: String?
     /** UTC timestamp when the verification happened - sometimes missing */
     public var verifiedAt: String?
+    /** Website with path or domain only */
+    public var website: String?
 
-    public init(website: String? = nil, status: String? = nil, verifiedAt: String? = nil) {
-        self.website = website
+    public init(status: String? = nil, verifiedAt: String? = nil, website: String? = nil) {
         self.status = status
         self.verifiedAt = verifiedAt
+        self.website = website
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case website
         case status
         case verifiedAt = "verified_at"
+        case website
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(website, forKey: .website)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(verifiedAt, forKey: .verifiedAt)
+        try container.encodeIfPresent(website, forKey: .website)
     }
 }
 

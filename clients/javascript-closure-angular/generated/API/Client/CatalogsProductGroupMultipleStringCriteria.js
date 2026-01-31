@@ -6,14 +6,14 @@ goog.provide('API.Client.CatalogsProductGroupMultipleStringCriteria');
 API.Client.CatalogsProductGroupMultipleStringCriteria = function() {}
 
 /**
- * @type {!Array<!string>}
- * @export
- */
-API.Client.CatalogsProductGroupMultipleStringCriteria.prototype.values;
-
-/**
  * @type {!boolean}
  * @export
  */
 API.Client.CatalogsProductGroupMultipleStringCriteria.prototype.negated;
+
+/**
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.CatalogsProductGroupMultipleStringCriteria.prototype.values;
 

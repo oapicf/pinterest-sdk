@@ -19,16 +19,16 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing a retail item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
+  @JsonProperty("errors")
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+
   @JsonProperty("item_id")
   private String itemId;
-
-  @JsonProperty("errors")
-  private List<ItemValidationEvent> errors = null;
 
   /**
    **/
@@ -45,6 +45,24 @@ public class CatalogsRetailItemErrorResponse   {
   }
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   **/
+  public CatalogsRetailItemErrorResponse errors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  @JsonProperty("errors")
+  public List<ItemValidationEvent> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -65,24 +83,6 @@ public class CatalogsRetailItemErrorResponse   {
     this.itemId = itemId;
   }
 
-  /**
-   * Array with the errors for the item id requested
-   **/
-  public CatalogsRetailItemErrorResponse errors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
-    return errors;
-  }
-  public void setErrors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -94,13 +94,13 @@ public class CatalogsRetailItemErrorResponse   {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -109,8 +109,8 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

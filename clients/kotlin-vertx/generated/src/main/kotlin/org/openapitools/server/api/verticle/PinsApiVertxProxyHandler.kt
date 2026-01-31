@@ -16,6 +16,7 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import org.openapitools.server.api.model.CreativeType
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.Pin
 import org.openapitools.server.api.model.PinAnalyticsMetricsResponse
@@ -23,6 +24,7 @@ import org.openapitools.server.api.model.PinCreate
 import org.openapitools.server.api.model.PinUpdate
 import org.openapitools.server.api.model.PinsList200Response
 import org.openapitools.server.api.model.PinsSaveRequest
+import org.openapitools.server.api.model.PinterestLibError
 
 class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: PinsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -178,10 +180,10 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
                     if(pinId == null){
                         throw IllegalArgumentException("pinId is required")
                     }
-                    val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.pinsGet(pinId,pinMetrics,adAccountId,context)
+                        val result = service.pinsGet(pinId,adAccountId,pinMetrics,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -192,19 +194,19 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
         
                 "pinsList" -> {
                     val params = context.params
-                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val pinFilter = ApiHandlerUtils.searchStringInJson(params,"pin_filter")
+                    val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
                     val includeProtectedPins = ApiHandlerUtils.searchStringInJson(params,"include_protected_pins")?.toBoolean()
                     val pinType = ApiHandlerUtils.searchStringInJson(params,"pin_type")
                     val creativeTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"creative_types")
-                    val creativeTypes:kotlin.Array<kotlin.String>? = if(creativeTypesParam == null) null
+                    val creativeTypes:kotlin.Array<CreativeType>? = if(creativeTypesParam == null) null
                             else Gson().fromJson(creativeTypesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<CreativeType>>(){}.type)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.pinsList(bookmark,pageSize,pinFilter,includeProtectedPins,pinType,creativeTypes,adAccountId,pinMetrics,context)
+                        val result = service.pinsList(pinFilter,pinMetrics,includeProtectedPins,pinType,creativeTypes,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

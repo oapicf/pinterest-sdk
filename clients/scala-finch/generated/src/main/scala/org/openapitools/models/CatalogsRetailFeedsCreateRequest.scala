@@ -17,28 +17,30 @@ import org.openapitools.models.ProductAvailabilityType
 
 /**
  * Request object for creating a retail feed.
- * @param defaultUnderscorecurrency 
- * @param name A human-friendly name associated to a given feed.
- * @param format 
- * @param defaultUnderscorelocale 
- * @param credentials 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param preferredUnderscoreprocessingUnderscoreschedule 
+ * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
  * @param catalogUnderscoretype 
- * @param defaultUnderscorecountry 
+ * @param credentials 
  * @param defaultUnderscoreavailability 
+ * @param defaultUnderscorecountry 
+ * @param defaultUnderscorecurrency 
+ * @param defaultUnderscorelocale 
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
+ * @param preferredUnderscoreprocessingUnderscoreschedule 
  * @param status 
  */
-case class CatalogsRetailFeedsCreateRequest(defaultUnderscorecurrency: Option[NullableCurrency],
-                name: String,
-                format: CatalogsFormat,
-                defaultUnderscorelocale: CatalogsFeedsCreateRequestDefaultLocale,
-                credentials: Option[CatalogsFeedCredentials],
-                location: String,
-                preferredUnderscoreprocessingUnderscoreschedule: Option[CatalogsFeedProcessingSchedule],
+case class CatalogsRetailFeedsCreateRequest(catalogUnderscoreid: Option[String],
                 catalogUnderscoretype: CatalogsType,
-                defaultUnderscorecountry: Country,
+                credentials: Option[CatalogsFeedCredentials],
                 defaultUnderscoreavailability: Option[ProductAvailabilityType],
+                defaultUnderscorecountry: Country,
+                defaultUnderscorecurrency: Option[NullableCurrency],
+                defaultUnderscorelocale: CatalogsFeedsCreateRequestDefaultLocale,
+                format: CatalogsFormat,
+                location: String,
+                name: String,
+                preferredUnderscoreprocessingUnderscoreschedule: Option[CatalogsFeedProcessingSchedule],
                 status: Option[CatalogsStatus]
                 )
 

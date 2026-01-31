@@ -1,0 +1,57 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountCreateSubscriptionRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountCreateSubscriptionRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdAccountCreateSubscriptionRequestPartnerMetadata = openapi_server.resourceTypes.AdAccountCreateSubscriptionRequestPartnerMetadata
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdAccountCreateSubscriptionRequest {
+    title = AdAccountCreateSubscriptionRequest
+    description = AdAccountCreateSubscriptionRequest
+    derivedFrom = Root
+    properties {
+        lead_form_id {
+          type =  string
+          description = "Lead form ID."
+          optional = false
+        }
+        partner_access_token {
+          type =  string
+          description = "Partner access token. Only for clients that requires authentication. We recommend to avoid this param."
+          optional = false
+        }
+        partner_metadata {
+          type = AdAccountCreateSubscriptionRequestPartnerMetadata
+          description = ""
+          optional = false
+        }
+        partner_refresh_token {
+          type =  string
+          description = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param."
+          optional = false
+        }
+        webhook_url {
+          type =  string
+          description = "Standard HTTPS webhook URL."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountCreateSubscriptionRequest {
+    title = AdAccountCreateSubscriptionRequest
+    description = AdAccountCreateSubscriptionRequest
+    implements = openapi_server.resourceTypes.AdAccountCreateSubscriptionRequest
+
+  }
+}

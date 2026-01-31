@@ -5,14 +5,14 @@
   "name": "BulkUpsertStatusResponse",
   "fields": [
     {
-      "name": "status",
-      "type": ["null", "model.BulkUpsertStatus"],
+      "name": "result_url",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     },
     {
-      "name": "result_url",
-      "type": ["null", "string"],
+      "name": "status",
+      "type": ["null", "model.BulkUpsertStatus"],
       "doc": "",
       "default": null
     }

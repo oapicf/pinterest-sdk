@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AdGroupsAnalyticsResponseInner, () {
-    // The ID of the ad group that this metrics belongs to.
+    // The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
     // String AD_GROUP_ID
     test('to test the property `AD_GROUP_ID`', () async {
       // TODO

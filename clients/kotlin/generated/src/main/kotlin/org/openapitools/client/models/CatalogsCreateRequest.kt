@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,16 +23,15 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a catalog.
  *
- * @param catalogType Type of the catalog entity.
+ * @param catalogType 
  * @param name A human-friendly name associated to a given catalog.
  */
 
 
 data class CatalogsCreateRequest (
 
-    /* Type of the catalog entity. */
     @Json(name = "catalog_type")
-    val catalogType: CatalogsCreateRequest.CatalogType,
+    val catalogType: CatalogsType,
 
     /* A human-friendly name associated to a given catalog. */
     @Json(name = "name")
@@ -39,15 +39,6 @@ data class CatalogsCreateRequest (
 
 ) {
 
-    /**
-     * Type of the catalog entity.
-     *
-     * Values: HOTEL
-     */
-    @JsonClass(generateAdapter = false)
-    enum class CatalogType(val value: kotlin.String) {
-        @Json(name = "HOTEL") HOTEL("HOTEL");
-    }
 
 }
 

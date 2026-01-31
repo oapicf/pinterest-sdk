@@ -13,6 +13,13 @@ API.Client.CatalogsItemsUpdateBatchRequest = function() {}
 API.Client.CatalogsItemsUpdateBatchRequest.prototype.country;
 
 /**
+ * Array with catalogs items
+ * @type {!Array<!API.Client.ItemUpdateBatchRecord>}
+ * @export
+ */
+API.Client.CatalogsItemsUpdateBatchRequest.prototype.items;
+
+/**
  * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
@@ -24,13 +31,6 @@ API.Client.CatalogsItemsUpdateBatchRequest.prototype.language;
  * @export
  */
 API.Client.CatalogsItemsUpdateBatchRequest.prototype.operation;
-
-/**
- * Array with catalogs items
- * @type {!Array<!API.Client.ItemUpdateBatchRecord>}
- * @export
- */
-API.Client.CatalogsItemsUpdateBatchRequest.prototype.items;
 
 /** @enum {string} */
 API.Client.CatalogsItemsUpdateBatchRequest.LanguageEnum = { 

@@ -11,10 +11,10 @@ import { GetBusinessAssetsResponse } from './getBusinessAssetsResponse';
 
 
 export interface BusinessAssetsGet200Response { 
+    bookmark?: string | null;
     /**
      * List of assets the requesting business has access to.
      */
     items: Array<GetBusinessAssetsResponse>;
-    bookmark?: string | null;
 }
 

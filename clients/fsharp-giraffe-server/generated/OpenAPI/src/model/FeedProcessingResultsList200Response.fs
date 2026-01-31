@@ -11,7 +11,7 @@ module FeedProcessingResultsList200Response =
 
 
   type feed_processing_results_list_200_response = {
-    Items : CatalogsFeedProcessingResult[];
     Bookmark : string option;
+    Items : CatalogsFeedProcessingResult[];
   }
   //#endregion

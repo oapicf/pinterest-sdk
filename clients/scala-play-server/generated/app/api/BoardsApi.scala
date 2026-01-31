@@ -2,14 +2,18 @@ package api
 
 import play.api.libs.json._
 import model.Board
+import model.BoardCreate
+import model.BoardPrivacyFilter
 import model.BoardSection
 import model.BoardSectionsList200Response
-import model.BoardUpdate
+import model.BoardWithUpdatePrivacy
+import model.BoardWithUpdatePrivacyUpdate
 import model.BoardsList200Response
 import model.BoardsListPins200Response
+import model.CreativeType
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait BoardsApi {
   /**
     * Create board section
@@ -62,37 +66,34 @@ trait BoardsApi {
 
   /**
     * Create board
-    * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-    * @param board Create a board using a single board json object.
+    * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def boardsCreate(board: Board, adAccountId: Option[String]): Board
+  def boardsCreate(boardCreate: BoardCreate, adAccountId: Option[String]): Board
 
   /**
     * Delete board
-    * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-    * @param boardId Unique identifier of a board.
+    * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param adAccountId Unique identifier of an ad account.
     */
   def boardsDelete(boardId: String, adAccountId: Option[String]): Unit
 
   /**
     * Get board
-    * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-    * @param boardId Unique identifier of a board.
+    * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param adAccountId Unique identifier of an ad account.
     */
   def boardsGet(boardId: String, adAccountId: Option[String]): Board
 
   /**
     * List boards
-    * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+    * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
     * @param adAccountId Unique identifier of an ad account.
+    * @param privacy The privacy level of the board
     * @param bookmark Cursor used to fetch the next page of items
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-    * @param privacy Privacy setting for a board.
+    * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
-  def boardsList(adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int], privacy: Option[String]): BoardsList200Response
+  def boardsList(adAccountId: Option[String], privacy: Option[BoardPrivacyFilter], bookmark: Option[String], pageSize: Option[Int]): BoardsList200Response
 
   /**
     * List Pins on board
@@ -100,18 +101,16 @@ trait BoardsApi {
     * @param boardId Unique identifier of a board.
     * @param bookmark Cursor used to fetch the next page of items
     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-    * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+    * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     * @param adAccountId Unique identifier of an ad account.
-    * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+    * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
     */
-  def boardsListPins(boardId: String, bookmark: Option[String], pageSize: Option[Int], creativeTypes: Option[List[String]], adAccountId: Option[String], pinMetrics: Option[Boolean]): BoardsListPins200Response
+  def boardsListPins(boardId: String, bookmark: Option[String], pageSize: Option[Int], creativeTypes: Option[List[CreativeType]], adAccountId: Option[String], pinMetrics: Option[Boolean]): BoardsListPins200Response
 
   /**
     * Update board
-    * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-    * @param boardId Unique identifier of a board.
-    * @param boardUpdate Update a board.
+    * Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def boardsUpdate(boardId: String, boardUpdate: BoardUpdate, adAccountId: Option[String]): Board
+  def boardsUpdate(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: Option[String]): BoardWithUpdatePrivacy
 }

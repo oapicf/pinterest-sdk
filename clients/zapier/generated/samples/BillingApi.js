@@ -3,6 +3,10 @@ module.exports = {
         { data: {} },
     "ads_credits_discounts_get_200_responseSample": 
         { data: {} },
+    "BillingInvoiceDownloadResponseSample": 
+        { data: {} },
+    "billing_invoices_get_200_responseSample": 
+        { data: {} },
     "billing_profiles_get_200_responseSample": 
         { data: {} },
     "SSIOAccountResponseSample": 

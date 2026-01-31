@@ -6,8 +6,8 @@ Pin URL-based media source for product pin creation. Currently the field is only
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_type** | **string** |  | [default to undefined]
 **is_affiliate_link** | **boolean** | This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. | [optional] [default to false]
+**source_type** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { PinMediaSourcePinURL } from './api';
 
 const instance: PinMediaSourcePinURL = {
-    source_type,
     is_affiliate_link,
+    source_type,
 };
 ```
 

@@ -22,6 +22,11 @@ module UpdateMaskFieldType =
   let CustomLabel2Enum = "custom_label_2"
   let CustomLabel3Enum = "custom_label_3"
   let CustomLabel4Enum = "custom_label_4"
+  let CustomNumber0Enum = "custom_number_0"
+  let CustomNumber1Enum = "custom_number_1"
+  let CustomNumber2Enum = "custom_number_2"
+  let CustomNumber3Enum = "custom_number_3"
+  let CustomNumber4Enum = "custom_number_4"
   let DescriptionEnum = "description"
   let FreeShippingLabelEnum = "free_shipping_label"
   let FreeShippingLimitEnum = "free_shipping_limit"
@@ -51,6 +56,7 @@ module UpdateMaskFieldType =
   let TitleEnum = "title"
   let VariantNamesEnum = "variant_names"
   let VariantValuesEnum = "variant_values"
+  let PromotionIdEnum = "promotion_id"
   type UpdateMaskFieldType = string
 
   //#endregion

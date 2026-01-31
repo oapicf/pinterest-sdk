@@ -28,6 +28,10 @@ const ad_accounts/list = async (request, response) => {
   await Controller.handleRequest(request, response, service.ad_accounts/list);
 };
 
+const analytics/create_conversion_product_report = async (request, response) => {
+  await Controller.handleRequest(request, response, service.analytics/create_conversion_product_report);
+};
+
 const analytics/create_mmm_report = async (request, response) => {
   await Controller.handleRequest(request, response, service.analytics/create_mmm_report);
 };
@@ -38,6 +42,10 @@ const analytics/create_report = async (request, response) => {
 
 const analytics/create_template_report = async (request, response) => {
   await Controller.handleRequest(request, response, service.analytics/create_template_report);
+};
+
+const analytics/get_conversion_product_report = async (request, response) => {
+  await Controller.handleRequest(request, response, service.analytics/get_conversion_product_report);
 };
 
 const analytics/get_mmm_report = async (request, response) => {
@@ -63,9 +71,11 @@ module.exports = {
   ad_accounts/create,
   ad_accounts/get,
   ad_accounts/list,
+  analytics/create_conversion_product_report,
   analytics/create_mmm_report,
   analytics/create_report,
   analytics/create_template_report,
+  analytics/get_conversion_product_report,
   analytics/get_mmm_report,
   analytics/get_report,
   sandbox/delete,

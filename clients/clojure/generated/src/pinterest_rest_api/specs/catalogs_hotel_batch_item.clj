@@ -8,9 +8,9 @@
 
 (def catalogs-hotel-batch-item-data
   {
+   (ds/req :attributes) catalogs-updatable-hotel-attributes-spec
    (ds/req :hotel_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) catalogs-updatable-hotel-attributes-spec
    })
 
 (def catalogs-hotel-batch-item-spec

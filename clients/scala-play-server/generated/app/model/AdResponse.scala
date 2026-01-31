@@ -11,14 +11,14 @@ import play.api.libs.json._
   * @param carouselIosDeepLinks Comma-separated deep links for the carousel pin on iOS.
   * @param clickTrackingUrl Tracking url for the ad clicks.
   * @param destinationUrl Destination URL.
+  * @param disclosureUrl URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
   * @param iosDeepLink Deep link URL for iOS devices.
   * @param isPinDeleted Is original pin deleted?
   * @param isRemovable Is pin repinnable?
-  * @param name Name of the ad - 255 chars max.
-  * @param viewTrackingUrl Tracking URL for ad impressions.
   * @param leadFormId Lead form ID for lead ad generation.
-  * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  * @param name Name of the ad - 255 chars max.
   * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  * @param viewTrackingUrl Tracking URL for ad impressions.
   * @param pinId Pin ID.
   * @param adAccountId The ID of the advertiser that this ad belongs to.
   * @param campaignId ID of the ad campaign that contains this ad.
@@ -28,12 +28,12 @@ import play.api.libs.json._
   * @param rejectedReasons Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
   * @param rejectionLabels Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
   * @param reviewStatus Ad review status
+  * @param summaryStatus Ad summary status
   * @param `type` Always \"ad\".
   * @param updatedTime Last update time. Unix timestamp in seconds.
-  * @param summaryStatus Ad summary status
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AdResponse(
   adGroupId: Option[String],
   androidDeepLink: Option[String],
@@ -42,18 +42,20 @@ case class AdResponse(
   carouselIosDeepLinks: Option[List[String]],
   clickTrackingUrl: Option[String],
   creativeType: Option[CreativeType],
+  customizableCtaType: Option[CustomizableCTAType],
   destinationUrl: Option[String],
+  disclosureType: Option[DisclosureType],
+  disclosureUrl: Option[String],
+  gridClickType: Option[GridClickType],
   iosDeepLink: Option[String],
   isPinDeleted: Option[Boolean],
   isRemovable: Option[Boolean],
+  leadFormId: Option[String],
   name: Option[String],
+  quizPinData: Option[QuizPinData],
   status: Option[EntityStatus],
   trackingUrls: Option[TrackingUrls],
   viewTrackingUrl: Option[String],
-  leadFormId: Option[String],
-  gridClickType: Option[GridClickType],
-  customizableCtaType: Option[AdResponse.CustomizableCtaType.Value],
-  quizPinData: Option[QuizPinData],
   pinId: Option[String],
   adAccountId: Option[String],
   campaignId: Option[String],
@@ -63,16 +65,16 @@ case class AdResponse(
   rejectedReasons: Option[AdResponse.RejectedReasons.Value],
   rejectionLabels: Option[List[String]],
   reviewStatus: Option[AdResponse.ReviewStatus.Value],
+  summaryStatus: Option[PinPromotionSummaryStatus],
   `type`: Option[String],
-  updatedTime: Option[Int],
-  summaryStatus: Option[PinPromotionSummaryStatus]
+  updatedTime: Option[Int]
   additionalProperties: 
 )
 
 object AdResponse {
   implicit lazy val adResponseJsonFormat: Format[AdResponse] = {
     val realJsonFormat = Json.format[AdResponse]
-    val declaredPropNames = Set("adGroupId", "androidDeepLink", "carouselAndroidDeepLinks", "carouselDestinationUrls", "carouselIosDeepLinks", "clickTrackingUrl", "creativeType", "destinationUrl", "iosDeepLink", "isPinDeleted", "isRemovable", "name", "status", "trackingUrls", "viewTrackingUrl", "leadFormId", "gridClickType", "customizableCtaType", "quizPinData", "pinId", "adAccountId", "campaignId", "collectionItemsDestinationUrlTemplate", "createdTime", "id", "rejectedReasons", "rejectionLabels", "reviewStatus", "`type`", "updatedTime", "summaryStatus")
+    val declaredPropNames = Set("adGroupId", "androidDeepLink", "carouselAndroidDeepLinks", "carouselDestinationUrls", "carouselIosDeepLinks", "clickTrackingUrl", "creativeType", "customizableCtaType", "destinationUrl", "disclosureType", "disclosureUrl", "gridClickType", "iosDeepLink", "isPinDeleted", "isRemovable", "leadFormId", "name", "quizPinData", "status", "trackingUrls", "viewTrackingUrl", "pinId", "adAccountId", "campaignId", "collectionItemsDestinationUrlTemplate", "createdTime", "id", "rejectedReasons", "rejectionLabels", "reviewStatus", "summaryStatus", "`type`", "updatedTime")
     
     Format(
       Reads {
@@ -93,31 +95,6 @@ object AdResponse {
         newObj
       }
     )
-  }
-
-  // noinspection TypeAnnotation
-  object CustomizableCtaType extends Enumeration {
-    val GETOFFER = Value("GET_OFFER")
-    val LEARNMORE = Value("LEARN_MORE")
-    val ORDERNOW = Value("ORDER_NOW")
-    val SHOPNOW = Value("SHOP_NOW")
-    val SIGNUP = Value("SIGN_UP")
-    val SUBSCRIBE = Value("SUBSCRIBE")
-    val BUYNOW = Value("BUY_NOW")
-    val CONTACTUS = Value("CONTACT_US")
-    val GETQUOTE = Value("GET_QUOTE")
-    val VISITSITE = Value("VISIT_SITE")
-    val APPLYNOW = Value("APPLY_NOW")
-    val BOOKNOW = Value("BOOK_NOW")
-    val REQUESTDEMO = Value("REQUEST_DEMO")
-    val REGISTERNOW = Value("REGISTER_NOW")
-    val FINDADEALER = Value("FIND_A_DEALER")
-    val ADDTOCART = Value("ADD_TO_CART")
-    val WATCHNOW = Value("WATCH_NOW")
-    val READMORE = Value("READ_MORE")
-
-    type CustomizableCtaType = Value
-    implicit lazy val CustomizableCtaTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 
   // noinspection TypeAnnotation

@@ -1,6 +1,11 @@
 
 <h2>CatalogsHotelBatchRequest</h2>
 <ul class="parameter">
+  <li class="param-required-false">catalogUnderscoreid : String
+    <br/>Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">catalogUnderscoretype : String
     <br/>
       <dl class="param-enum">
@@ -13,6 +18,11 @@
 <ul class="parameter">
   <li class="param-required-true">country : Country
     <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">items : List
+    <br/>Array with catalogs item operations
   </li>
 </ul>
 <ul class="parameter">
@@ -129,15 +139,5 @@
             <dd>ZH</dd>
         </dt>
       </dl>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">items : List
-    <br/>Array with catalogs item operations
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">catalogUnderscoreid : String
-    <br/>Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
   </li>
 </ul>

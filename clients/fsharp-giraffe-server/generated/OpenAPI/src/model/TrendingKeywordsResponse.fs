@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.TrendingKeywordsResponseTrendsInner
+open OpenAPI.Model.TrendingKeyword
 
 module TrendingKeywordsResponse =
 
@@ -10,6 +10,6 @@ module TrendingKeywordsResponse =
 
 
   type TrendingKeywordsResponse = {
-    Trends : TrendingKeywordsResponseTrendsInner[];
+    Trends : TrendingKeyword[];
   }
   //#endregion

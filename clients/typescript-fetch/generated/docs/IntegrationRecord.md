@@ -7,22 +7,22 @@ Integration record
 
 Name | Type
 ------------ | -------------
-`id` | string
-`externalBusinessId` | string
-`connectedMerchantId` | string
-`connectedUserId` | string
+`additionalId1` | string
 `connectedAdvertiserId` | string
 `connectedLbaId` | string
+`connectedMerchantId` | string
 `connectedTagId` | string
+`connectedUserId` | string
+`createdTime` | number
+`externalBusinessId` | string
+`id` | string
 `partnerAccessToken` | string
-`partnerRefreshToken` | string
-`partnerPrimaryEmail` | string
 `partnerAccessTokenExpiry` | number
+`partnerMetadata` | string
+`partnerPrimaryEmail` | string
+`partnerRefreshToken` | string
 `partnerRefreshTokenExpiry` | number
 `scopes` | string
-`partnerMetadata` | string
-`additionalId1` | string
-`createdTime` | number
 `updatedTime` | number
 
 ## Example
@@ -32,22 +32,22 @@ import type { IntegrationRecord } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": null,
-  "externalBusinessId": null,
-  "connectedMerchantId": null,
-  "connectedUserId": null,
+  "additionalId1": null,
   "connectedAdvertiserId": null,
   "connectedLbaId": null,
+  "connectedMerchantId": null,
   "connectedTagId": null,
+  "connectedUserId": null,
+  "createdTime": null,
+  "externalBusinessId": null,
+  "id": null,
   "partnerAccessToken": null,
-  "partnerRefreshToken": null,
-  "partnerPrimaryEmail": null,
   "partnerAccessTokenExpiry": null,
+  "partnerMetadata": null,
+  "partnerPrimaryEmail": null,
+  "partnerRefreshToken": null,
   "partnerRefreshTokenExpiry": null,
   "scopes": null,
-  "partnerMetadata": null,
-  "additionalId1": null,
-  "createdTime": null,
   "updatedTime": null,
 } satisfies IntegrationRecord
 

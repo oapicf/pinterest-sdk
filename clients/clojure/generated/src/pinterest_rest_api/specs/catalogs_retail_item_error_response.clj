@@ -10,8 +10,8 @@
 (def catalogs-retail-item-error-response-data
   {
    (ds/req :catalog_type) catalogs-type-spec
+   (ds/req :errors) (s/coll-of item-validation-event-spec)
    (ds/opt :item_id) string?
-   (ds/opt :errors) (s/coll-of item-validation-event-spec)
    })
 
 (def catalogs-retail-item-error-response-spec

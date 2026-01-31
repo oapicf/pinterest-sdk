@@ -12,8 +12,8 @@
    (ds/opt :ad_account_id) string?
    (ds/req :name) string?
    (ds/req :rule) audience-rule-spec
-   (ds/opt :description) string?
    (ds/req :audience_type) audience-type-spec
+   (ds/opt :description) string?
    })
 
 (def audience-create-request-spec

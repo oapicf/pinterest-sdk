@@ -2,7 +2,7 @@
 
 # PinMediaSourceImagesBase64
 
-Multiple Base64-encoded images media source
+Multiple Base64-based images media source
 
 The class is defined in **[PinMediaSourceImagesBase64.java](../../src/main/java/org/openapitools/model/PinMediaSourceImagesBase64.java)**
 
@@ -10,16 +10,16 @@ The class is defined in **[PinMediaSourceImagesBase64.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  |  [optional property]
-**items** | [`List&lt;PinMediaSourceImagesBase64ItemsInner&gt;`](PinMediaSourceImagesBase64ItemsInner.md) | Array with image objects. | 
 **index** | `Integer` |  |  [optional property]
+**items** | [`List&lt;PinMediaSourceImagesBase64Item&gt;`](PinMediaSourceImagesBase64Item.md) | Array with image objects. | 
+**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) | The source type of the media. | 
+
+
 
 ## SourceTypeEnum
 
 Name | Value
 ---- | -----
 MULTIPLE_IMAGE_BASE64 | `"multiple_image_base64"`
-
-
 
 

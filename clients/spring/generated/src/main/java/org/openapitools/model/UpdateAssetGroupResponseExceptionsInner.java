@@ -21,14 +21,34 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("UpdateAssetGroupResponse_exceptions_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupResponseExceptionsInner {
+
+  private @Nullable String assetGroupId;
 
   private @Nullable Integer code;
 
   private @Nullable String message;
 
-  private @Nullable String assetGroupId;
+  public UpdateAssetGroupResponseExceptionsInner assetGroupId(@Nullable String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
+  /**
+   * Asset group id of the exception.
+   * @return assetGroupId
+   */
+  
+  @Schema(name = "asset_group_id", example = "666791336903426391", description = "Asset group id of the exception.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("asset_group_id")
+  public @Nullable String getAssetGroupId() {
+    return assetGroupId;
+  }
+
+  public void setAssetGroupId(@Nullable String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
 
   public UpdateAssetGroupResponseExceptionsInner code(@Nullable Integer code) {
     this.code = code;
@@ -70,26 +90,6 @@ public class UpdateAssetGroupResponseExceptionsInner {
     this.message = message;
   }
 
-  public UpdateAssetGroupResponseExceptionsInner assetGroupId(@Nullable String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-    return this;
-  }
-
-  /**
-   * Asset group id of the exception.
-   * @return assetGroupId
-   */
-  
-  @Schema(name = "asset_group_id", example = "666791336903426391", description = "Asset group id of the exception.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("asset_group_id")
-  public @Nullable String getAssetGroupId() {
-    return assetGroupId;
-  }
-
-  public void setAssetGroupId(@Nullable String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -99,23 +99,23 @@ public class UpdateAssetGroupResponseExceptionsInner {
       return false;
     }
     UpdateAssetGroupResponseExceptionsInner updateAssetGroupResponseExceptionsInner = (UpdateAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(this.code, updateAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(this.message, updateAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(this.assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(this.assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(this.code, updateAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(this.message, updateAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponseExceptionsInner {\n");
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

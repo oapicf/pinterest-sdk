@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "TargetingTemplateResponseData.h"
+#include "TargetingTemplateGetResponseData.h"
 #include <list>
 #include "Object.h"
 
@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<TargetingTemplateResponseData> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <TargetingTemplateResponseData> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<TargetingTemplateGetResponseData> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <TargetingTemplateGetResponseData> items);
 
 private:
-	std::list <TargetingTemplateResponseData>items;
 	std::string bookmark;
+	std::list <TargetingTemplateGetResponseData>items;
 	void __init();
 	void __cleanup();
 

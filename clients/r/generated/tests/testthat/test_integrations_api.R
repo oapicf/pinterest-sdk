@@ -35,7 +35,7 @@ test_that("IntegrationsCommercePatch", {
   # Update commerce integration
   # Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   # @param external_business_id character External business ID for the integration.
-  # @param integration_request_patch IntegrationRequestPatch Parameters to get create/update the Integration Metadata (optional)
+  # @param integration_request_patch IntegrationRequestPatch Parameters to get create/update the Integration Metadata
   # @return [IntegrationMetadata]
 
   # uncomment below to test the operation
@@ -47,7 +47,7 @@ test_that("IntegrationsCommercePost", {
   # base path: https://api.pinterest.com/v5
   # Create commerce integration
   # Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-  # @param integration_request IntegrationRequest Parameters to get create/update the Integration Metadata (optional)
+  # @param integration_request IntegrationRequest Parameters to get create/update the Integration Metadata
   # @return [IntegrationMetadata]
 
   # uncomment below to test the operation

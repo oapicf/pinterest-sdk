@@ -11,7 +11,7 @@ outputDir: out
 
 # https://openapi-generator.tech/docs/generators/csharp
 additionalProperties:
-  packageGuid: '{E7E10F66-34C7-4FDC-9B7A-4AC31FBAFAA0}'
+  packageGuid: '{73EB8AED-AF20-42D3-95A5-2CDF9CF29F7C}'
 
 # https://openapi-generator.tech/docs/integrations/#github-integration
 # gitHost:
@@ -108,7 +108,7 @@ namespace YourProject
 
 ## Api Information
 - appName: Pinterest REST API
-- appVersion: 5.14.0
+- appVersion: 5.23.0
 - appDescription: Pinterest&#39;s REST API
 
 ## Build

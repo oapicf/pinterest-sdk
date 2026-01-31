@@ -15,20 +15,20 @@ module AdAccountGetSubscriptionResponse =
     LeadFormId : string option;
     [<JsonProperty(PropertyName = "webhook_url")>]
     WebhookUrl : string;
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
-    [<JsonProperty(PropertyName = "user_account_id")>]
-    UserAccountId : string;
     [<JsonProperty(PropertyName = "ad_account_id")>]
     AdAccountId : string;
     [<JsonProperty(PropertyName = "api_version")>]
     ApiVersion : string;
-    [<JsonProperty(PropertyName = "cryptographic_key")>]
-    CryptographicKey : string option;
-    [<JsonProperty(PropertyName = "cryptographic_algorithm")>]
-    CryptographicAlgorithm : string option;
     [<JsonProperty(PropertyName = "created_time")>]
     CreatedTime : int;
+    [<JsonProperty(PropertyName = "cryptographic_algorithm")>]
+    CryptographicAlgorithm : string option;
+    [<JsonProperty(PropertyName = "cryptographic_key")>]
+    CryptographicKey : string option;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
+    [<JsonProperty(PropertyName = "user_account_id")>]
+    UserAccountId : string;
   }
 
   //#endregion

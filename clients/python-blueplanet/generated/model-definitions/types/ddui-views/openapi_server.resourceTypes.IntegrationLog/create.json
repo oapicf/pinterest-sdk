@@ -1,0 +1,29 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "advertiser_id" },
+      {"model": "app_version_number" },
+      {"model": "client_timestamp" },
+      {"model": "error" },
+      {"model": "event_type" },
+      {"model": "external_business_id" },
+      {"model": "feed_profile_id" },
+      {"model": "log_level" },
+      {"model": "merchant_id" },
+      {"model": "message" },
+      {"model": "platform_version_number" },
+      {"model": "request" },
+      {"model": "tag_id" },
+    ]
+  }]
+}

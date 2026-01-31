@@ -8,6 +8,8 @@
 #include "../model/ads_credit_redeem_request.h"
 #include "../model/ads_credit_redeem_response.h"
 #include "../model/ads_credits_discounts_get_200_response.h"
+#include "../model/billing_invoice_download_response.h"
+#include "../model/billing_invoices_get_200_response.h"
 #include "../model/billing_profiles_get_200_response.h"
 #include "../model/error.h"
 #include "../model/ssio_account_response.h"
@@ -19,10 +21,22 @@
 #include "../model/ssio_insertion_orders_status_get_by_ad_account_200_response.h"
 #include "../model/ssio_order_lines_get_by_ad_account_200_response.h"
 
+// Enum SORT for BillingAPI_billingInvoicesGet
+typedef enum  { pinterest_rest_api_billingInvoicesGet_SORT_NULL = 0, pinterest_rest_api_billingInvoicesGet_SORT_DUE_DATE, pinterest_rest_api_billingInvoicesGet_SORT_BILLING_PERIOD, pinterest_rest_api_billingInvoicesGet_SORT_DOCUMENT_TYPE, pinterest_rest_api_billingInvoicesGet_SORT_TOTAL_AMOUNT, pinterest_rest_api_billingInvoicesGet_SORT_INVOICE_NUMBER } pinterest_rest_api_billingInvoicesGet_sort_e;
+
+// Enum ORDER for BillingAPI_billingInvoicesGet
+typedef enum  { pinterest_rest_api_billingInvoicesGet_ORDER_NULL = 0, pinterest_rest_api_billingInvoicesGet_ORDER_ASCENDING, pinterest_rest_api_billingInvoicesGet_ORDER_DESCENDING } pinterest_rest_api_billingInvoicesGet_order_e;
+
+// Enum STATUS for BillingAPI_billingInvoicesGet
+typedef enum  { pinterest_rest_api_billingInvoicesGet_STATUS_NULL = 0, pinterest_rest_api_billingInvoicesGet_STATUS_OPEN, pinterest_rest_api_billingInvoicesGet_STATUS_CLOSED } pinterest_rest_api_billingInvoicesGet_status_e;
+
+// Enum DOCUMENTTYPE for BillingAPI_billingInvoicesGet
+typedef enum  { pinterest_rest_api_billingInvoicesGet_DOCUMENTTYPE_NULL = 0, pinterest_rest_api_billingInvoicesGet_DOCUMENTTYPE_INVOICE, pinterest_rest_api_billingInvoicesGet_DOCUMENTTYPE_CREDIT_MEMO } pinterest_rest_api_billingInvoicesGet_document_type_e;
+
 
 // Redeem ad credits
 //
-// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 ads_credit_redeem_response_t*
 BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_request_t *ads_credit_redeem_request);
@@ -30,15 +44,31 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
 
 // Get ads credit discounts
 //
-// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 ads_credits_discounts_get_200_response_t*
 BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size);
 
 
+// Get download url for a billing invoice
+//
+// Get download url for a billing invoice.
+//
+billing_invoice_download_response_t*
+BillingAPI_billingInvoiceDownloadGet(apiClient_t *apiClient, char *ad_account_id, char *billing_invoice_id);
+
+
+// Get billing invoices
+//
+// Get billing invoices in the advertiser account.
+//
+billing_invoices_get_200_response_t*
+BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_rest_api_billingInvoicesGet_sort_e sort, pinterest_rest_api_billingInvoicesGet_order_e order, pinterest_rest_api_billingInvoicesGet_status_e status, pinterest_rest_api_billingInvoicesGet_document_type_e document_type, char start_due_date, char end_due_date);
+
+
 // Get billing profiles
 //
-// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 billing_profiles_get_200_response_t*
 BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *is_active, char *bookmark, int *page_size);

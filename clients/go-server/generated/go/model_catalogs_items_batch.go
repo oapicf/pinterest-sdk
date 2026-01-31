@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -22,22 +22,23 @@ type CatalogsItemsBatch struct {
 	// Id of the catalogs items batch
 	BatchId string `json:"batch_id,omitempty"`
 
-	// Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-	CreatedTime time.Time `json:"created_time,omitempty"`
-
 	// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	CompletedTime *time.Time `json:"completed_time,omitempty"`
 
-	Status BatchOperationStatus `json:"status,omitempty"`
+	// Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+	CreatedTime time.Time `json:"created_time"`
 
 	// Array with the catalogs items processing records part of the catalogs items batch
 	Items []CreativeAssetsProcessingRecord `json:"items,omitempty"`
+
+	Status BatchOperationStatus `json:"status,omitempty"`
 }
 
 // AssertCatalogsItemsBatchRequired checks if the required fields are not zero-ed
 func AssertCatalogsItemsBatchRequired(obj CatalogsItemsBatch) error {
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
+		"created_time": obj.CreatedTime,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

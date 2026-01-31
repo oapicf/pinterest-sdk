@@ -16,12 +16,12 @@ import scala.collection.immutable.Seq
 
 /**
  * Object describing an item batch record
- * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param attributes 
+ * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param updateUnderscoremask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
  */
-case class ItemBatchRecord(itemUnderscoreid: Option[String],
-                attributes: Option[ItemAttributesRequest],
+case class ItemBatchRecord(attributes: Option[ItemAttributesRequest],
+                itemUnderscoreid: Option[String],
                 updateUnderscoremask: Option[Seq[UpdateMaskFieldType]]
                 )
 

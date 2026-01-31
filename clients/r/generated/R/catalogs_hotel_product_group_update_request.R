@@ -8,9 +8,9 @@
 #' @description CatalogsHotelProductGroupUpdateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_type  character [optional]
-#' @field name  character [optional]
 #' @field description  character [optional]
 #' @field filters  \link{CatalogsHotelProductGroupFilters} [optional]
+#' @field name  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,19 +18,19 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
   "CatalogsHotelProductGroupUpdateRequest",
   public = list(
     `catalog_type` = NULL,
-    `name` = NULL,
     `description` = NULL,
     `filters` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelProductGroupUpdateRequest class.
     #'
     #' @param catalog_type catalog_type
-    #' @param name name
     #' @param description description
     #' @param filters filters
+    #' @param name name
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type` = NULL, `name` = NULL, `description` = NULL, `filters` = NULL, ...) {
+    initialize = function(`catalog_type` = NULL, `description` = NULL, `filters` = NULL, `name` = NULL, ...) {
       if (!is.null(`catalog_type`)) {
         if (!(`catalog_type` %in% c("HOTEL"))) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
@@ -39,12 +39,6 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
         }
         self$`catalog_type` <- `catalog_type`
-      }
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
       }
       if (!is.null(`description`)) {
         if (!(is.character(`description`) && length(`description`) == 1)) {
@@ -55,6 +49,12 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       if (!is.null(`filters`)) {
         stopifnot(R6::is.R6(`filters`))
         self$`filters` <- `filters`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -93,10 +93,6 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
         CatalogsHotelProductGroupUpdateRequestObject[["catalog_type"]] <-
           self$`catalog_type`
       }
-      if (!is.null(self$`name`)) {
-        CatalogsHotelProductGroupUpdateRequestObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`description`)) {
         CatalogsHotelProductGroupUpdateRequestObject[["description"]] <-
           self$`description`
@@ -104,6 +100,10 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       if (!is.null(self$`filters`)) {
         CatalogsHotelProductGroupUpdateRequestObject[["filters"]] <-
           self$`filters`$toSimpleType()
+      }
+      if (!is.null(self$`name`)) {
+        CatalogsHotelProductGroupUpdateRequestObject[["name"]] <-
+          self$`name`
       }
       return(CatalogsHotelProductGroupUpdateRequestObject)
     },
@@ -121,9 +121,6 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
         }
         self$`catalog_type` <- this_object$`catalog_type`
       }
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`description`)) {
         self$`description` <- this_object$`description`
       }
@@ -131,6 +128,9 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
         `filters_object` <- CatalogsHotelProductGroupFilters$new()
         `filters_object`$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
         self$`filters` <- `filters_object`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -157,9 +157,9 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
-      self$`name` <- this_object$`name`
       self$`description` <- this_object$`description`
       self$`filters` <- CatalogsHotelProductGroupFilters$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
+      self$`name` <- this_object$`name`
       self
     },
 

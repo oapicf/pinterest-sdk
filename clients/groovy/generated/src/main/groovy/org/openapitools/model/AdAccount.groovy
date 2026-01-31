@@ -14,19 +14,19 @@ import org.openapitools.model.Currency;
 @Canonical
 class AdAccount {
     
-    String id
-    
-    String name
-    
-    AdAccountOwner owner
-    
     Country country
+    /*  Creation time. Unix timestamp in seconds. */
+    Integer createdTime
     
     Currency currency
     
+    String id
+    /* Ad account name. */
+    String name
+    /* Ad account owner */
+    AdAccountOwner owner
+    
     List<BusinessAccessRole> permissions = new ArrayList<>()
-    /* Creation time. Unix timestamp in seconds. */
-    Integer createdTime
-    /* Last update time. Unix timestamp in seconds. */
+    
     Integer updatedTime
 }

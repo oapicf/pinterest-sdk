@@ -20,7 +20,6 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.AudiencesApi
 import org.openapitools.client.models.Audience
-import org.openapitools.client.models.AudienceCreateCustomRequest
 import org.openapitools.client.models.AudienceCreateRequest
 import org.openapitools.client.models.AudienceUpdateRequest
 import org.openapitools.client.models.AudiencesList200Response
@@ -37,15 +36,6 @@ class AudiencesApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val audienceCreateRequest : AudienceCreateRequest =  // AudienceCreateRequest | List of ads to create, size limit [1, 30]
             //val result : Audience = apiInstance.audiencesCreate(adAccountId, audienceCreateRequest)
-            //result shouldBe ("TODO")
-        }
-
-        // to test audiencesCreateCustom
-        should("test audiencesCreateCustom") {
-            // uncomment below to test audiencesCreateCustom
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val audienceCreateCustomRequest : AudienceCreateCustomRequest =  // AudienceCreateCustomRequest | Custom audience to create.
-            //val result : Audience = apiInstance.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
             //result shouldBe ("TODO")
         }
 

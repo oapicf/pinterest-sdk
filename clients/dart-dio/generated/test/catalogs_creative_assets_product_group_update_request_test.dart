@@ -12,11 +12,6 @@ void main() {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
     // String description
     test('to test the property `description`', () async {
       // TODO
@@ -24,6 +19,11 @@ void main() {
 
     // CatalogsCreativeAssetsProductGroupFilters filters
     test('to test the property `filters`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

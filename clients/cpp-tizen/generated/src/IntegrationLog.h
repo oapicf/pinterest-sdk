@@ -47,6 +47,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	std::string getAdvertiserId();
+
+	/*! \brief Set 
+	 */
+	void setAdvertiserId(std::string  advertiser_id);
+	/*! \brief Get Version number of the integration application.
+	 */
+	std::string getAppVersionNumber();
+
+	/*! \brief Set Version number of the integration application.
+	 */
+	void setAppVersionNumber(std::string  app_version_number);
 	/*! \brief Get Timestamp in milliseconds of when the log was executed at the client.
 	 */
 	int getClientTimestamp();
@@ -54,6 +68,13 @@ public:
 	/*! \brief Set Timestamp in milliseconds of when the log was executed at the client.
 	 */
 	void setClientTimestamp(int  client_timestamp);
+	/*! \brief Get 
+	 */
+	IntegrationLogClientError getError();
+
+	/*! \brief Set 
+	 */
+	void setError(IntegrationLogClientError  error);
 	/*! \brief Get Log event type
 	 */
 	std::string getEventType();
@@ -61,13 +82,6 @@ public:
 	/*! \brief Set Log event type
 	 */
 	void setEventType(std::string  event_type);
-	/*! \brief Get Log level type
-	 */
-	std::string getLogLevel();
-
-	/*! \brief Set Log level type
-	 */
-	void setLogLevel(std::string  log_level);
 	/*! \brief Get 
 	 */
 	std::string getExternalBusinessId();
@@ -77,11 +91,18 @@ public:
 	void setExternalBusinessId(std::string  external_business_id);
 	/*! \brief Get 
 	 */
-	std::string getAdvertiserId();
+	std::string getFeedProfileId();
 
 	/*! \brief Set 
 	 */
-	void setAdvertiserId(std::string  advertiser_id);
+	void setFeedProfileId(std::string  feed_profile_id);
+	/*! \brief Get Log level type
+	 */
+	std::string getLogLevel();
+
+	/*! \brief Set Log level type
+	 */
+	void setLogLevel(std::string  log_level);
 	/*! \brief Get 
 	 */
 	std::string getMerchantId();
@@ -89,20 +110,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setMerchantId(std::string  merchant_id);
-	/*! \brief Get 
-	 */
-	std::string getTagId();
-
-	/*! \brief Set 
-	 */
-	void setTagId(std::string  tag_id);
-	/*! \brief Get 
-	 */
-	std::string getFeedProfileId();
-
-	/*! \brief Set 
-	 */
-	void setFeedProfileId(std::string  feed_profile_id);
 	/*! \brief Get Explanation of the event that occured.
 	 */
 	std::string getMessage();
@@ -110,13 +117,6 @@ public:
 	/*! \brief Set Explanation of the event that occured.
 	 */
 	void setMessage(std::string  message);
-	/*! \brief Get Version number of the integration application.
-	 */
-	std::string getAppVersionNumber();
-
-	/*! \brief Set Version number of the integration application.
-	 */
-	void setAppVersionNumber(std::string  app_version_number);
 	/*! \brief Get Version number of the platform the integration application is running on.
 	 */
 	std::string getPlatformVersionNumber();
@@ -126,33 +126,33 @@ public:
 	void setPlatformVersionNumber(std::string  platform_version_number);
 	/*! \brief Get 
 	 */
-	IntegrationLogClientError getError();
-
-	/*! \brief Set 
-	 */
-	void setError(IntegrationLogClientError  error);
-	/*! \brief Get 
-	 */
 	IntegrationLogClientRequest getRequest();
 
 	/*! \brief Set 
 	 */
 	void setRequest(IntegrationLogClientRequest  request);
+	/*! \brief Get 
+	 */
+	std::string getTagId();
+
+	/*! \brief Set 
+	 */
+	void setTagId(std::string  tag_id);
 
 private:
-	int client_timestamp;
-	std::string event_type;
-	std::string log_level;
-	std::string external_business_id;
 	std::string advertiser_id;
-	std::string merchant_id;
-	std::string tag_id;
-	std::string feed_profile_id;
-	std::string message;
 	std::string app_version_number;
-	std::string platform_version_number;
+	int client_timestamp;
 	IntegrationLogClientError error;
+	std::string event_type;
+	std::string external_business_id;
+	std::string feed_profile_id;
+	std::string log_level;
+	std::string merchant_id;
+	std::string message;
+	std::string platform_version_number;
 	IntegrationLogClientRequest request;
+	std::string tag_id;
 	void __init();
 	void __cleanup();
 

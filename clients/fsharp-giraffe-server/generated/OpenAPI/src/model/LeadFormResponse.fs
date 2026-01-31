@@ -13,17 +13,17 @@ module LeadFormResponse =
 
 
   type LeadFormResponse = {
-    Name : string option;
-    PrivacyPolicyLink : string option;
-    HasAcceptedTerms : bool;
     CompletionMessage : string option;
-    Status : LeadFormStatus;
     DisclosureLanguage : string option;
-    Questions : LeadFormQuestion[];
+    HasAcceptedTerms : bool;
+    Name : string option;
     PolicyLinks : LeadFormCommonPolicyLinksInner[];
-    Id : string;
+    PrivacyPolicyLink : string option;
+    Questions : LeadFormQuestion[];
+    Status : LeadFormStatus;
     AdAccountId : string;
     CreatedTime : int;
+    Id : string;
     UpdatedTime : int;
   }
   //#endregion

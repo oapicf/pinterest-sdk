@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.GetBusinessAssetsResponseCatalogInfo;
 
 
 
@@ -14,16 +16,36 @@ import org.openapitools.model.AssetGroupBinding;
  **/
 
 @ApiModel(description = "An object containing the permissions a business has on the asset.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetBusinessAssetsResponse   {
+  @JsonProperty("asset_group_info")
+  private AssetGroupBinding assetGroupInfo;
+
   @JsonProperty("asset_id")
   private String assetId;
 
   @JsonProperty("asset_type")
   private String assetType;
 
+  @JsonProperty("catalog_info")
+  private GetBusinessAssetsResponseCatalogInfo catalogInfo;
+
+  /**
+   **/
+  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
   @JsonProperty("asset_group_info")
-  private AssetGroupBinding assetGroupInfo;
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
 
   /**
    * Unique identifier of a business asset.
@@ -44,7 +66,7 @@ public class GetBusinessAssetsResponse   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   public GetBusinessAssetsResponse assetType(String assetType) {
     this.assetType = assetType;
@@ -52,7 +74,7 @@ public class GetBusinessAssetsResponse   {
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
@@ -63,19 +85,19 @@ public class GetBusinessAssetsResponse   {
 
   /**
    **/
-  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public GetBusinessAssetsResponse catalogInfo(GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.catalogInfo = catalogInfo;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
+  @JsonProperty("catalog_info")
+  public GetBusinessAssetsResponseCatalogInfo getCatalogInfo() {
+    return catalogInfo;
   }
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public void setCatalogInfo(GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.catalogInfo = catalogInfo;
   }
 
 
@@ -88,14 +110,15 @@ public class GetBusinessAssetsResponse   {
       return false;
     }
     GetBusinessAssetsResponse getBusinessAssetsResponse = (GetBusinessAssetsResponse) o;
-    return Objects.equals(assetId, getBusinessAssetsResponse.assetId) &&
+    return Objects.equals(assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo) &&
+        Objects.equals(assetId, getBusinessAssetsResponse.assetId) &&
         Objects.equals(assetType, getBusinessAssetsResponse.assetType) &&
-        Objects.equals(assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo);
+        Objects.equals(catalogInfo, getBusinessAssetsResponse.catalogInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, catalogInfo);
   }
 
   @Override
@@ -103,9 +126,10 @@ public class GetBusinessAssetsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessAssetsResponse {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
+    sb.append("    catalogInfo: ").append(toIndentedString(catalogInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

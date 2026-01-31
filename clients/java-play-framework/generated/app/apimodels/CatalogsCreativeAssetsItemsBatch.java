@@ -17,27 +17,12 @@ import javax.validation.Valid;
 /**
  * Object describing the catalogs creative assets items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsItemsBatch   {
   @JsonProperty("batch_id")
   
   private String batchId;
-
-  @JsonProperty("created_time")
-  @Valid
-
-  private OffsetDateTime createdTime;
-
-  @JsonProperty("completed_time")
-  @Valid
-
-  private OffsetDateTime completedTime;
-
-  @JsonProperty("status")
-  @Valid
-
-  private BatchOperationStatus status;
 
   @JsonProperty("catalog_type")
   @NotNull
@@ -45,10 +30,25 @@ public class CatalogsCreativeAssetsItemsBatch   {
 
   private CatalogsType catalogType;
 
+  @JsonProperty("completed_time")
+  @Valid
+
+  private OffsetDateTime completedTime;
+
+  @JsonProperty("created_time")
+  @Valid
+
+  private OffsetDateTime createdTime;
+
   @JsonProperty("items")
   @Valid
 
   private List<@Valid CreativeAssetsProcessingRecord> items = null;
+
+  @JsonProperty("status")
+  @Valid
+
+  private BatchOperationStatus status;
 
   public CatalogsCreativeAssetsItemsBatch batchId(String batchId) {
     this.batchId = batchId;
@@ -67,21 +67,21 @@ public class CatalogsCreativeAssetsItemsBatch   {
     this.batchId = batchId;
   }
 
-  public CatalogsCreativeAssetsItemsBatch createdTime(OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
+  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-   * @return createdTime
+   * Get catalogType
+   * @return catalogType
   **/
-  public OffsetDateTime getCreatedTime() {
-    return createdTime;
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setCreatedTime(OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsCreativeAssetsItemsBatch completedTime(OffsetDateTime completedTime) {
@@ -101,38 +101,21 @@ public class CatalogsCreativeAssetsItemsBatch   {
     this.completedTime = completedTime;
   }
 
-  public CatalogsCreativeAssetsItemsBatch status(BatchOperationStatus status) {
-    this.status = status;
+  public CatalogsCreativeAssetsItemsBatch createdTime(OffsetDateTime createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+   * @return createdTime
   **/
-  public BatchOperationStatus getStatus() {
-    return status;
+  public OffsetDateTime getCreatedTime() {
+    return createdTime;
   }
 
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
-  }
-
-  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  public void setCreatedTime(OffsetDateTime createdTime) {
+    this.createdTime = createdTime;
   }
 
   public CatalogsCreativeAssetsItemsBatch items(List<@Valid CreativeAssetsProcessingRecord> items) {
@@ -160,6 +143,23 @@ public class CatalogsCreativeAssetsItemsBatch   {
     this.items = items;
   }
 
+  public CatalogsCreativeAssetsItemsBatch status(BatchOperationStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,16 +171,16 @@ public class CatalogsCreativeAssetsItemsBatch   {
     }
     CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch = (CatalogsCreativeAssetsItemsBatch) o;
     return Objects.equals(batchId, catalogsCreativeAssetsItemsBatch.batchId) &&
-        Objects.equals(createdTime, catalogsCreativeAssetsItemsBatch.createdTime) &&
-        Objects.equals(completedTime, catalogsCreativeAssetsItemsBatch.completedTime) &&
-        Objects.equals(status, catalogsCreativeAssetsItemsBatch.status) &&
         Objects.equals(catalogType, catalogsCreativeAssetsItemsBatch.catalogType) &&
-        Objects.equals(items, catalogsCreativeAssetsItemsBatch.items);
+        Objects.equals(completedTime, catalogsCreativeAssetsItemsBatch.completedTime) &&
+        Objects.equals(createdTime, catalogsCreativeAssetsItemsBatch.createdTime) &&
+        Objects.equals(items, catalogsCreativeAssetsItemsBatch.items) &&
+        Objects.equals(status, catalogsCreativeAssetsItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, completedTime, status, catalogType, items);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -190,11 +190,11 @@ public class CatalogsCreativeAssetsItemsBatch   {
     sb.append("class CatalogsCreativeAssetsItemsBatch {\n");
     
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

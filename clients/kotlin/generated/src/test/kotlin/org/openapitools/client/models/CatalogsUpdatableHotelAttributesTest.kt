@@ -27,22 +27,16 @@ class CatalogsUpdatableHotelAttributesTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsUpdatableHotelAttributes
         //val modelInstance = CatalogsUpdatableHotelAttributes()
 
-        // to test the property `name` - The hotel's name.
-        should("test name") {
+        // to test the property `address`
+        should("test address") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.address shouldBe ("TODO")
         }
 
-        // to test the property `link` - Link to the product page
-        should("test link") {
+        // to test the property `basePrice` - Base price of the hotel room per night followed by the ISO currency code
+        should("test basePrice") {
             // uncomment below to test the property
-            //modelInstance.link shouldBe ("TODO")
-        }
-
-        // to test the property `description` - Brief description of the hotel.
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
+            //modelInstance.basePrice shouldBe ("TODO")
         }
 
         // to test the property `brand` - The brand to which this hotel belongs to.
@@ -51,28 +45,10 @@ class CatalogsUpdatableHotelAttributesTest : ShouldSpec() {
             //modelInstance.brand shouldBe ("TODO")
         }
 
-        // to test the property `latitude` - Latitude of the hotel.
-        should("test latitude") {
+        // to test the property `category` - The type of property. The category can be any type of internal description desired.
+        should("test category") {
             // uncomment below to test the property
-            //modelInstance.latitude shouldBe ("TODO")
-        }
-
-        // to test the property `longitude` - Longitude of the hotel.
-        should("test longitude") {
-            // uncomment below to test the property
-            //modelInstance.longitude shouldBe ("TODO")
-        }
-
-        // to test the property `neighborhood` - A list of neighborhoods where the hotel is located
-        should("test neighborhood") {
-            // uncomment below to test the property
-            //modelInstance.neighborhood shouldBe ("TODO")
-        }
-
-        // to test the property `address`
-        should("test address") {
-            // uncomment below to test the property
-            //modelInstance.address shouldBe ("TODO")
+            //modelInstance.category shouldBe ("TODO")
         }
 
         // to test the property `customLabel0` - Custom grouping of hotels
@@ -105,28 +81,52 @@ class CatalogsUpdatableHotelAttributesTest : ShouldSpec() {
             //modelInstance.customLabel4 shouldBe ("TODO")
         }
 
-        // to test the property `category` - The type of property. The category can be any type of internal description desired.
-        should("test category") {
+        // to test the property `description` - Brief description of the hotel.
+        should("test description") {
             // uncomment below to test the property
-            //modelInstance.category shouldBe ("TODO")
-        }
-
-        // to test the property `basePrice` - Base price of the hotel room per night followed by the ISO currency code
-        should("test basePrice") {
-            // uncomment below to test the property
-            //modelInstance.basePrice shouldBe ("TODO")
-        }
-
-        // to test the property `salePrice` - Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-        should("test salePrice") {
-            // uncomment below to test the property
-            //modelInstance.salePrice shouldBe ("TODO")
+            //modelInstance.description shouldBe ("TODO")
         }
 
         // to test the property `guestRatings`
         should("test guestRatings") {
             // uncomment below to test the property
             //modelInstance.guestRatings shouldBe ("TODO")
+        }
+
+        // to test the property `latitude` - Latitude of the hotel.
+        should("test latitude") {
+            // uncomment below to test the property
+            //modelInstance.latitude shouldBe ("TODO")
+        }
+
+        // to test the property `link` - Link to the product page
+        should("test link") {
+            // uncomment below to test the property
+            //modelInstance.link shouldBe ("TODO")
+        }
+
+        // to test the property `longitude` - Longitude of the hotel.
+        should("test longitude") {
+            // uncomment below to test the property
+            //modelInstance.longitude shouldBe ("TODO")
+        }
+
+        // to test the property `name` - The hotel's name.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `neighborhood` - A list of neighborhoods where the hotel is located
+        should("test neighborhood") {
+            // uncomment below to test the property
+            //modelInstance.neighborhood shouldBe ("TODO")
+        }
+
+        // to test the property `salePrice` - Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+        should("test salePrice") {
+            // uncomment below to test the property
+            //modelInstance.salePrice shouldBe ("TODO")
         }
 
     }

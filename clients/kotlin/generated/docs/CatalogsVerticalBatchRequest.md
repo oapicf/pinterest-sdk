@@ -6,8 +6,8 @@
 | ------------ | ------------- | ------------- | ------------- |
 | **catalogType** | [**inline**](#CatalogType) |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **items** | [**kotlin.collections.List&lt;CatalogsCreativeAssetsBatchItem&gt;**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations |  |
+| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **catalogId** | **kotlin.String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  [optional] |
 
 

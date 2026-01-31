@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,12 +15,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  */
-@ApiModel(description="Multiple images urls-based media source")
+@ApiModel(description="Multiple URL-based images media source")
 
 public class PinMediaSourceImagesURL  {
   
+  @ApiModelProperty(value = "")
+  private Integer index;
+
+ /**
+  * Array with image objects.
+  */
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+  @Valid
+  private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
+
 public enum SourceTypeEnum {
 
     @JsonProperty("multiple_image_urls") MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
@@ -50,75 +60,11 @@ public enum SourceTypeEnum {
     }
 }
 
-  @ApiModelProperty(value = "")
+ /**
+  * The source type of the media.
+  */
+  @ApiModelProperty(required = true, value = "The source type of the media.")
   private SourceTypeEnum sourceType;
-
- /**
-  * Array with image objects.
-  */
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  @Valid
-  private List<@Valid PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-  private Integer index;
- /**
-  * Get sourceType
-  * @return sourceType
-  */
-  @JsonProperty("source_type")
-  public String getSourceType() {
-    return sourceType == null ? null : sourceType.value();
-  }
-
-  /**
-   * Sets the <code>sourceType</code> property.
-   */
- public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  /**
-   * Sets the <code>sourceType</code> property.
-   */
-  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
- /**
-  * Array with image objects.
-  * @return items
-  */
-  @JsonProperty("items")
-  @NotNull
- @Size(min=2,max=5)  public List<@Valid PinMediaSourceImagesURLItemsInner> getItems() {
-    return items;
-  }
-
-  /**
-   * Sets the <code>items</code> property.
-   */
- public void setItems(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-  }
-
-  /**
-   * Sets the <code>items</code> property.
-   */
-  public PinMediaSourceImagesURL items(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>items</code> list.
-   */
-  public PinMediaSourceImagesURL addItemsItem(PinMediaSourceImagesURLItemsInner itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
  /**
   * Get index
   * minimum: 0
@@ -144,6 +90,64 @@ public enum SourceTypeEnum {
     return this;
   }
 
+ /**
+  * Array with image objects.
+  * @return items
+  */
+  @JsonProperty("items")
+  @NotNull
+ @Size(min=2,max=5)  public List<@Valid PinMediaSourceImagesURLItem> getItems() {
+    return items;
+  }
+
+  /**
+   * Sets the <code>items</code> property.
+   */
+ public void setItems(List<@Valid PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+  }
+
+  /**
+   * Sets the <code>items</code> property.
+   */
+  public PinMediaSourceImagesURL items(List<@Valid PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>items</code> list.
+   */
+  public PinMediaSourceImagesURL addItemsItem(PinMediaSourceImagesURLItem itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
+ /**
+  * The source type of the media.
+  * @return sourceType
+  */
+  @JsonProperty("source_type")
+  @NotNull
+  public String getSourceType() {
+    return sourceType == null ? null : sourceType.value();
+  }
+
+  /**
+   * Sets the <code>sourceType</code> property.
+   */
+ public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
+  /**
+   * Sets the <code>sourceType</code> property.
+   */
+  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -154,14 +158,14 @@ public enum SourceTypeEnum {
       return false;
     }
     PinMediaSourceImagesURL pinMediaSourceImagesURL = (PinMediaSourceImagesURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImagesURL.sourceType) &&
+    return Objects.equals(this.index, pinMediaSourceImagesURL.index) &&
         Objects.equals(this.items, pinMediaSourceImagesURL.items) &&
-        Objects.equals(this.index, pinMediaSourceImagesURL.index);
+        Objects.equals(this.sourceType, pinMediaSourceImagesURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
@@ -169,9 +173,9 @@ public enum SourceTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

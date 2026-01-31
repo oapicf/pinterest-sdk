@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**SSIOInsertionOrderStatus[]**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**SSIOInsertionOrderStatus[]**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SsioInsertionOrdersStatusGetByAdAccount200Response = Initialize-PSOpenAPIToolsSsioInsertionOrdersStatusGetByAdAccount200Response  -Items null `
- -Bookmark null
+$SsioInsertionOrdersStatusGetByAdAccount200Response = Initialize-PSOpenAPIToolsSsioInsertionOrdersStatusGetByAdAccount200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

@@ -89,6 +89,36 @@ static bool mediaCreateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -109,7 +139,7 @@ static bool mediaCreateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool mediaCreateHelper(char * accessToken,
-	std::shared_ptr<MediaUploadRequest> mediaUploadRequest, 
+	std::shared_ptr<MediaUploadCreate> mediaUploadCreate, 
 	void(* handler)(MediaUpload, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -130,11 +160,11 @@ static bool mediaCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("MediaUploadRequest")) {
-		node = converttoJson(&mediaUploadRequest, "MediaUploadRequest", "");
+	if (isprimitive("MediaUploadCreate")) {
+		node = converttoJson(&mediaUploadCreate, "MediaUploadCreate", "");
 	}
 	
-	char *jsonStr =  mediaUploadRequest.toJson();
+	char *jsonStr =  mediaUploadCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -193,36 +223,36 @@ static bool mediaCreateHelper(char * accessToken,
 
 
 bool MediaManager::mediaCreateAsync(char * accessToken,
-	std::shared_ptr<MediaUploadRequest> mediaUploadRequest, 
+	std::shared_ptr<MediaUploadCreate> mediaUploadCreate, 
 	void(* handler)(MediaUpload, Error, void* )
 	, void* userData)
 {
 	return mediaCreateHelper(accessToken,
-	mediaUploadRequest, 
+	mediaUploadCreate, 
 	handler, userData, true);
 }
 
 bool MediaManager::mediaCreateSync(char * accessToken,
-	std::shared_ptr<MediaUploadRequest> mediaUploadRequest, 
+	std::shared_ptr<MediaUploadCreate> mediaUploadCreate, 
 	void(* handler)(MediaUpload, Error, void* )
 	, void* userData)
 {
 	return mediaCreateHelper(accessToken,
-	mediaUploadRequest, 
+	mediaUploadCreate, 
 	handler, userData, false);
 }
 
 static bool mediaGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(MediaUploadDetails, Error, void* )
-	= reinterpret_cast<void(*)(MediaUploadDetails, Error, void* )> (voidHandler);
+	void(* handler)(Media, Error, void* )
+	= reinterpret_cast<void(*)(Media, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	MediaUploadDetails out;
+	Media out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -230,18 +260,38 @@ static bool mediaGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 
 
 
-		if (isprimitive("MediaUploadDetails")) {
+		if (isprimitive("Media")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "MediaUploadDetails", "MediaUploadDetails");
+			jsonToValue(&out, pJson, "Media", "Media");
 			json_node_free(pJson);
 
-			if ("MediaUploadDetails" == "std::string") {
+			if ("Media" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -279,7 +329,7 @@ static bool mediaGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 
 static bool mediaGetHelper(char * accessToken,
 	std::string mediaId, 
-	void(* handler)(MediaUploadDetails, Error, void* )
+	void(* handler)(Media, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -356,7 +406,7 @@ static bool mediaGetHelper(char * accessToken,
 
 bool MediaManager::mediaGetAsync(char * accessToken,
 	std::string mediaId, 
-	void(* handler)(MediaUploadDetails, Error, void* )
+	void(* handler)(Media, Error, void* )
 	, void* userData)
 {
 	return mediaGetHelper(accessToken,
@@ -366,7 +416,7 @@ bool MediaManager::mediaGetAsync(char * accessToken,
 
 bool MediaManager::mediaGetSync(char * accessToken,
 	std::string mediaId, 
-	void(* handler)(MediaUploadDetails, Error, void* )
+	void(* handler)(Media, Error, void* )
 	, void* userData)
 {
 	return mediaGetHelper(accessToken,
@@ -404,6 +454,31 @@ static bool mediaListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();

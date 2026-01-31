@@ -5,16 +5,19 @@
 -export_type([openapi_advanced_auction_items_submit_delete_record/0]).
 
 -type openapi_advanced_auction_items_submit_delete_record() ::
-    #{ 'item_id' := binary(),
-       'country' := openapi_country:openapi_country(),
-       'language' := openapi_language:openapi_language()
+    #{ 'country' := openapi_country:openapi_country(),
+       'item_id' := binary(),
+       'language' := openapi_language:openapi_language(),
+       'errors' => list()
      }.
 
-encode(#{ 'item_id' := ItemId,
-          'country' := Country,
-          'language' := Language
+encode(#{ 'country' := Country,
+          'item_id' := ItemId,
+          'language' := Language,
+          'errors' := Errors
         }) ->
-    #{ 'item_id' => ItemId,
-       'country' => Country,
-       'language' => Language
+    #{ 'country' => Country,
+       'item_id' => ItemId,
+       'language' => Language,
+       'errors' => Errors
      }.

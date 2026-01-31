@@ -15,6 +15,7 @@
   | {'cpa_goal_value_in_micro_currency', binary() }
   | {'is_roas_optimized', boolean() }
   | {'learning_mode_type', binary() }
+  | {'reporting_event', binary() }
   ].
 
 
@@ -28,6 +29,7 @@ openapi_optimization_goal_metadata_conversion_tag_v3_goal_metadata(Fields) ->
             , {'cpa_goal_value_in_micro_currency', binary() }
             , {'is_roas_optimized', boolean() }
             , {'learning_mode_type', elements([<<"NOT_ACTIVE">>, <<"ACTIVE">>, <<"">>]) }
+            , {'reporting_event', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_type** | **string** |  | [optional] [default to undefined]
-**title** | **string** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] [default to undefined]
+**item_type** | **string** |  | [optional] [default to undefined]
 **link** | **string** |  | [optional] [default to undefined]
-**images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] [default to undefined]
+**title** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 import { ImageMetadata } from './api';
 
 const instance: ImageMetadata = {
-    item_type,
-    title,
     description,
-    link,
     images,
+    item_type,
+    link,
+    title,
 };
 ```
 

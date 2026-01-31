@@ -6,7 +6,7 @@ context("Test TrendingKeywordsResponse")
 model_instance <- TrendingKeywordsResponse$new()
 
 test_that("trends", {
-  # tests for the property `trends` (array[TrendingKeywordsResponseTrendsInner])
+  # tests for the property `trends` (array[TrendingKeyword])
   # The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.
 
   # uncomment below to test the property

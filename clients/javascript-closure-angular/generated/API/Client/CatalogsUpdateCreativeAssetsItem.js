@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsUpdateCreativeAssetsItem');
 API.Client.CatalogsUpdateCreativeAssetsItem = function() {}
 
 /**
+ * @type {!API.Client.CatalogsUpdatableCreativeAssetsAttributes}
+ * @export
+ */
+API.Client.CatalogsUpdateCreativeAssetsItem.prototype.attributes;
+
+/**
  * The catalog creative assets item id in the merchant namespace
  * @type {!string}
  * @export
@@ -18,12 +24,6 @@ API.Client.CatalogsUpdateCreativeAssetsItem.prototype.creativeAssetsId;
  * @export
  */
 API.Client.CatalogsUpdateCreativeAssetsItem.prototype.operation;
-
-/**
- * @type {!API.Client.CatalogsUpdatableCreativeAssetsAttributes}
- * @export
- */
-API.Client.CatalogsUpdateCreativeAssetsItem.prototype.attributes;
 
 /** @enum {string} */
 API.Client.CatalogsUpdateCreativeAssetsItem.OperationEnum = { 

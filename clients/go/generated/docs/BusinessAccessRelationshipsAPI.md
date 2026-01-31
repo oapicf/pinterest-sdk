@@ -4,13 +4,163 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**BrandAccountsCreate**](BusinessAccessRelationshipsAPI.md#BrandAccountsCreate) | **Post** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**BrandAccountsUpdate**](BusinessAccessRelationshipsAPI.md#BrandAccountsUpdate) | **Patch** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**DeleteBusinessMembership**](BusinessAccessRelationshipsAPI.md#DeleteBusinessMembership) | **Delete** /businesses/{business_id}/members | Terminate business memberships
 [**DeleteBusinessPartners**](BusinessAccessRelationshipsAPI.md#DeleteBusinessPartners) | **Delete** /businesses/{business_id}/partners | Terminate business partnerships
 [**GetBusinessEmployers**](BusinessAccessRelationshipsAPI.md#GetBusinessEmployers) | **Get** /businesses/employers | List business employers for user
 [**GetBusinessMembers**](BusinessAccessRelationshipsAPI.md#GetBusinessMembers) | **Get** /businesses/{business_id}/members | Get business members
 [**GetBusinessPartners**](BusinessAccessRelationshipsAPI.md#GetBusinessPartners) | **Get** /businesses/{business_id}/partners | Get business partners
+[**SystemUserUpdate**](BusinessAccessRelationshipsAPI.md#SystemUserUpdate) | **Patch** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**UpdateBusinessMemberships**](BusinessAccessRelationshipsAPI.md#UpdateBusinessMemberships) | **Patch** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+
+## BrandAccountsCreate
+
+> BrandAccountsCreate200Response BrandAccountsCreate(ctx, businessHierarchyId).BrandAccountsCreateRequest(brandAccountsCreateRequest).Execute()
+
+Create a Brand Account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	businessHierarchyId := "7009386637860" // string | business hierarchy node id
+	brandAccountsCreateRequest := *openapiclient.NewBrandAccountsCreateRequest("Canada Stores", "canada_stores", openapiclient.Country("AD")) // BrandAccountsCreateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsCreate(context.Background(), businessHierarchyId).BrandAccountsCreateRequest(brandAccountsCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.BrandAccountsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `BrandAccountsCreate`: BrandAccountsCreate200Response
+	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.BrandAccountsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**businessHierarchyId** | **string** | business hierarchy node id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBrandAccountsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## BrandAccountsUpdate
+
+> BrandAccountsCreate200Response BrandAccountsUpdate(ctx, businessHierarchyId, brandAccountId).BrandAccountsUpdateRequest(brandAccountsUpdateRequest).Execute()
+
+Update a Brand Account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	businessHierarchyId := "7009386637860" // string | business hierarchy node id
+	brandAccountId := "729090764583391194" // string | Unique identifier of a brand account.
+	brandAccountsUpdateRequest := *openapiclient.NewBrandAccountsUpdateRequest() // BrandAccountsUpdateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsUpdate(context.Background(), businessHierarchyId, brandAccountId).BrandAccountsUpdateRequest(brandAccountsUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.BrandAccountsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `BrandAccountsUpdate`: BrandAccountsCreate200Response
+	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.BrandAccountsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**businessHierarchyId** | **string** | business hierarchy node id | 
+**brandAccountId** | **string** | Unique identifier of a brand account. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBrandAccountsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## DeleteBusinessMembership
@@ -35,7 +185,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Business id
-	membersToDeleteBody := *openapiclient.NewMembersToDeleteBody([]openapiclient.MembersToDeleteBodyMembersInner{*openapiclient.NewMembersToDeleteBodyMembersInner("140943737684417", openapiclient.BusinessRoleForMembers("EMPLOYEE"))}) // MembersToDeleteBody | List of members with role to delete.
+	membersToDeleteBody := *openapiclient.NewMembersToDeleteBody([]openapiclient.MembersToDeleteBodyMembersInner{*openapiclient.NewMembersToDeleteBodyMembersInner(openapiclient.BusinessRoleForMembers("EMPLOYEE"), "140943737684417")}) // MembersToDeleteBody | List of members with role to delete.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -227,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## GetBusinessMembers
 
-> GetBusinessMembers200Response GetBusinessMembers(ctx, businessId).AssetsSummary(assetsSummary).BusinessRoles(businessRoles).MemberIds(memberIds).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
+> GetBusinessMembers200Response GetBusinessMembers(ctx, businessId).FetchSystemUsers(fetchSystemUsers).AssetsSummary(assetsSummary).BusinessRoles(businessRoles).MemberIds(memberIds).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get business members
 
@@ -247,6 +397,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	fetchSystemUsers := true // bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 	assetsSummary := true // bool | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to false)
 	businessRoles := []openapiclient.MemberBusinessRole{openapiclient.MemberBusinessRole("EMPLOYEE")} // []MemberBusinessRole | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
 	memberIds := "00101010101,2222220101" // string | A list of business members ids separated by comma. (optional)
@@ -256,7 +407,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.GetBusinessMembers(context.Background(), businessId).AssetsSummary(assetsSummary).BusinessRoles(businessRoles).MemberIds(memberIds).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.GetBusinessMembers(context.Background(), businessId).FetchSystemUsers(fetchSystemUsers).AssetsSummary(assetsSummary).BusinessRoles(businessRoles).MemberIds(memberIds).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.GetBusinessMembers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,6 +433,7 @@ Other parameters are passed through a pointer to a apiGetBusinessMembersRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **fetchSystemUsers** | **bool** | Fetches system users if True. Fetches regular user employees if False. | [default to false]
  **assetsSummary** | **bool** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [default to false]
  **businessRoles** | [**[]MemberBusinessRole**](MemberBusinessRole.md) | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | 
  **memberIds** | **string** | A list of business members ids separated by comma. | 
@@ -382,6 +534,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SystemUserUpdate
+
+> SystemUserUpdate(ctx, businessId, systemUserId).SystemUserUpdateRequest(systemUserUpdateRequest).Execute()
+
+Update a system user information.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	systemUserId := "729090764583391194" // string | Unique identifier of a system user.
+	systemUserUpdateRequest := *openapiclient.NewSystemUserUpdateRequest("Billing API") // SystemUserUpdateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BusinessAccessRelationshipsAPI.SystemUserUpdate(context.Background(), businessId, systemUserId).SystemUserUpdateRequest(systemUserUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.SystemUserUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**businessId** | **string** | Unique identifier of the requesting business. | 
+**systemUserId** | **string** | Unique identifier of a system user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSystemUserUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

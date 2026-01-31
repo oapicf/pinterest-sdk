@@ -55,41 +55,6 @@ public class AudiencesApi extends RouteBuilder {
         
 
         /**
-        POST /ad_accounts/{ad_account_id}/audiences/custom : Create custom audience
-        **/
-        rest()
-            .securityDefinitions()
-                .oauth2("pinterest_oauth2")
-                    .flow("accessCode")
-                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
-                    .authorizationUrl("https://www.pinterest.com/oauth/")
-                        .withScope("ads:write","Create, update, or delete ads, ad groups, campaigns etc.")
-                
-            .endSecurityDefinition()
-            .post("/ad_accounts/{ad_account_id}/audiences/custom")
-                .description("Create custom audience")
-                .id("audiencesCreateCustomApi")
-                .produces("application/json")
-                .outType(Audience.class)
-                .consumes("application/json")
-                .type(AudienceCreateCustomRequest.class)
-                
-                .param()
-                    .name("adAccountId")
-                    .type(RestParamType.path)
-                    .required(true)
-                    .description("Unique identifier of an ad account.")
-                .endParam()
-                .param()
-                    .name("audienceCreateCustomRequest")
-                    .type(RestParamType.body)
-                    .required(true)
-                    .description("Custom audience to create.")
-                .endParam()
-                .to("direct:audiencesCreateCustom");
-        
-
-        /**
         GET /ad_accounts/{ad_account_id}/audiences/{audience_id} : Get audience
         **/
         rest()
@@ -98,6 +63,11 @@ public class AudiencesApi extends RouteBuilder {
                     .flow("accessCode")
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
@@ -130,6 +100,11 @@ public class AudiencesApi extends RouteBuilder {
                     .flow("accessCode")
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
@@ -206,7 +181,7 @@ public class AudiencesApi extends RouteBuilder {
                 .param()
                     .name("audienceUpdateRequest")
                     .type(RestParamType.body)
-                    .required(false)
+                    .required(true)
                     .description("The audience to be updated.")
                 .endParam()
                 .to("direct:audiencesUpdate");

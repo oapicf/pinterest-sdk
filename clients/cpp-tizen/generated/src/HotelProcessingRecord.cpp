@@ -23,34 +23,34 @@ HotelProcessingRecord::~HotelProcessingRecord()
 void
 HotelProcessingRecord::__init()
 {
-	//hotel_id = std::string();
 	//new std::list()std::list> errors;
-	//new std::list()std::list> warnings;
+	//hotel_id = std::string();
 	//status = new ItemProcessingStatus();
+	//new std::list()std::list> warnings;
 }
 
 void
 HotelProcessingRecord::__cleanup()
 {
-	//if(hotel_id != NULL) {
-	//
-	//delete hotel_id;
-	//hotel_id = NULL;
-	//}
 	//if(errors != NULL) {
 	//errors.RemoveAll(true);
 	//delete errors;
 	//errors = NULL;
 	//}
-	//if(warnings != NULL) {
-	//warnings.RemoveAll(true);
-	//delete warnings;
-	//warnings = NULL;
+	//if(hotel_id != NULL) {
+	//
+	//delete hotel_id;
+	//hotel_id = NULL;
 	//}
 	//if(status != NULL) {
 	//
 	//delete status;
 	//status = NULL;
+	//}
+	//if(warnings != NULL) {
+	//warnings.RemoveAll(true);
+	//delete warnings;
+	//warnings = NULL;
 	//}
 	//
 }
@@ -60,17 +60,6 @@ HotelProcessingRecord::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *hotel_idKey = "hotel_id";
-	node = json_object_get_member(pJsonObject, hotel_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&hotel_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *errorsKey = "errors";
 	node = json_object_get_member(pJsonObject, errorsKey);
 	if (node !=NULL) {
@@ -94,6 +83,31 @@ HotelProcessingRecord::fromJson(char* jsonStr)
 			errors = new_list;
 		}
 		
+	}
+	const gchar *hotel_idKey = "hotel_id";
+	node = json_object_get_member(pJsonObject, hotel_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&hotel_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ItemProcessingStatus")) {
+			jsonToValue(&status, node, "ItemProcessingStatus", "ItemProcessingStatus");
+		} else {
+			
+			ItemProcessingStatus* obj = static_cast<ItemProcessingStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
 	}
 	const gchar *warningsKey = "warnings";
 	node = json_object_get_member(pJsonObject, warningsKey);
@@ -119,20 +133,6 @@ HotelProcessingRecord::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ItemProcessingStatus")) {
-			jsonToValue(&status, node, "ItemProcessingStatus", "ItemProcessingStatus");
-		} else {
-			
-			ItemProcessingStatus* obj = static_cast<ItemProcessingStatus*> (&status);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 HotelProcessingRecord::HotelProcessingRecord(char* json)
@@ -145,15 +145,6 @@ HotelProcessingRecord::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getHotelId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *hotel_idKey = "hotel_id";
-	json_object_set_member(pJsonObject, hotel_idKey, node);
 	if (isprimitive("ItemValidationEvent")) {
 		list<ItemValidationEvent> new_list = static_cast<list <ItemValidationEvent> > (getErrors());
 		node = converttoJson(&new_list, "ItemValidationEvent", "array");
@@ -179,6 +170,29 @@ HotelProcessingRecord::toJson()
 	
 	const gchar *errorsKey = "errors";
 	json_object_set_member(pJsonObject, errorsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getHotelId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *hotel_idKey = "hotel_id";
+	json_object_set_member(pJsonObject, hotel_idKey, node);
+	if (isprimitive("ItemProcessingStatus")) {
+		ItemProcessingStatus obj = getStatus();
+		node = converttoJson(&obj, "ItemProcessingStatus", "");
+	}
+	else {
+		
+		ItemProcessingStatus obj = static_cast<ItemProcessingStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("ItemValidationEvent")) {
 		list<ItemValidationEvent> new_list = static_cast<list <ItemValidationEvent> > (getWarnings());
 		node = converttoJson(&new_list, "ItemValidationEvent", "array");
@@ -204,38 +218,12 @@ HotelProcessingRecord::toJson()
 	
 	const gchar *warningsKey = "warnings";
 	json_object_set_member(pJsonObject, warningsKey, node);
-	if (isprimitive("ItemProcessingStatus")) {
-		ItemProcessingStatus obj = getStatus();
-		node = converttoJson(&obj, "ItemProcessingStatus", "");
-	}
-	else {
-		
-		ItemProcessingStatus obj = static_cast<ItemProcessingStatus> (getStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-HotelProcessingRecord::getHotelId()
-{
-	return hotel_id;
-}
-
-void
-HotelProcessingRecord::setHotelId(std::string  hotel_id)
-{
-	this->hotel_id = hotel_id;
 }
 
 std::list<ItemValidationEvent>
@@ -250,16 +238,16 @@ HotelProcessingRecord::setErrors(std::list <ItemValidationEvent> errors)
 	this->errors = errors;
 }
 
-std::list<ItemValidationEvent>
-HotelProcessingRecord::getWarnings()
+std::string
+HotelProcessingRecord::getHotelId()
 {
-	return warnings;
+	return hotel_id;
 }
 
 void
-HotelProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
+HotelProcessingRecord::setHotelId(std::string  hotel_id)
 {
-	this->warnings = warnings;
+	this->hotel_id = hotel_id;
 }
 
 ItemProcessingStatus
@@ -272,6 +260,18 @@ void
 HotelProcessingRecord::setStatus(ItemProcessingStatus  status)
 {
 	this->status = status;
+}
+
+std::list<ItemValidationEvent>
+HotelProcessingRecord::getWarnings()
+{
+	return warnings;
+}
+
+void
+HotelProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
+{
+	this->warnings = warnings;
 }
 
 

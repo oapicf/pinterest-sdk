@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,12 +16,12 @@ package openapi
 
 type CatalogsRetailItemsFilter struct {
 
+	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
 	ItemIds []string `json:"item_ids"`
-
-	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // AssertCatalogsRetailItemsFilterRequired checks if the required fields are not zero-ed

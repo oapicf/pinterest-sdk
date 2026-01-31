@@ -4,11 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 **coverImageUrl** | **String** |  | [optional] 
-**videoUrl** | **String** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**duration** | **Number** | Duration (in milliseconds) | [optional] 
-**height** | **Number** | Height (in pixels) | [optional] 
-**width** | **Number** | Width (in pixels) | [optional] 
+**duration** | **Number** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**height** | **Number** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**mediaType** | **String** |  | 
+**videoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**width** | **Number** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+
+
+
+## Enum: MediaTypeEnum
+
+
+* `video` (value: `"video"`)
+
+
 
 

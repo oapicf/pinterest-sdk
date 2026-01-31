@@ -5,20 +5,20 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.MediaUploadAllOfUploadParameters
+import org.openapitools.models.MediaUploadParameters
 import org.openapitools.models.MediaUploadType
 
 /**
  * Media upload that has been registered but not uploaded/processed yet.
  * @param mediaUnderscoreid Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
  * @param mediaUnderscoretype 
+ * @param uploadUnderscoreparameters The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  * @param uploadUnderscoreurl The URL where you will POST your media file.
- * @param uploadUnderscoreparameters 
  */
-case class MediaUpload(mediaUnderscoreid: Option[String],
-                mediaUnderscoretype: Option[MediaUploadType],
-                uploadUnderscoreurl: Option[String],
-                uploadUnderscoreparameters: Option[MediaUploadAllOfUploadParameters]
+case class MediaUpload(mediaUnderscoreid: String,
+                mediaUnderscoretype: MediaUploadType,
+                uploadUnderscoreparameters: Option[MediaUploadParameters],
+                uploadUnderscoreurl: Option[String]
                 )
 
 object MediaUpload {

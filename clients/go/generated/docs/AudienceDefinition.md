@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Date** | Pointer to **NullableString** | Generation date | [optional] 
-**Type** | Pointer to **string** | Generated audience type to request. | [optional] 
-**Scope** | Pointer to **string** | Generated audience scope to request. | [optional] 
+**Scope** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -62,31 +62,6 @@ HasDate returns a boolean if a field has been set.
 `func (o *AudienceDefinition) UnsetDate()`
 
 UnsetDate ensures that no value is present for Date, not even an explicit nil
-### GetType
-
-`func (o *AudienceDefinition) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AudienceDefinition) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AudienceDefinition) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *AudienceDefinition) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetScope
 
 `func (o *AudienceDefinition) GetScope() string`
@@ -111,6 +86,31 @@ SetScope sets Scope field to given value.
 `func (o *AudienceDefinition) HasScope() bool`
 
 HasScope returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *AudienceDefinition) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AudienceDefinition) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AudienceDefinition) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AudienceDefinition) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

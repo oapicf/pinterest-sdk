@@ -5,12 +5,380 @@ context("Test UpdatableItemAttributes")
 
 model_instance <- UpdatableItemAttributes$new()
 
+test_that("ad_image_0_link", {
+  # tests for the property `ad_image_0_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_0_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_0_tag", {
+  # tests for the property `ad_image_0_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_0_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_10_link", {
+  # tests for the property `ad_image_10_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_10_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_10_tag", {
+  # tests for the property `ad_image_10_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_10_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_11_link", {
+  # tests for the property `ad_image_11_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_11_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_11_tag", {
+  # tests for the property `ad_image_11_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_11_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_12_link", {
+  # tests for the property `ad_image_12_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_12_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_12_tag", {
+  # tests for the property `ad_image_12_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_12_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_13_link", {
+  # tests for the property `ad_image_13_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_13_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_13_tag", {
+  # tests for the property `ad_image_13_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_13_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_14_link", {
+  # tests for the property `ad_image_14_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_14_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_14_tag", {
+  # tests for the property `ad_image_14_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_14_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_15_link", {
+  # tests for the property `ad_image_15_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_15_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_15_tag", {
+  # tests for the property `ad_image_15_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_15_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_16_link", {
+  # tests for the property `ad_image_16_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_16_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_16_tag", {
+  # tests for the property `ad_image_16_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_16_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_17_link", {
+  # tests for the property `ad_image_17_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_17_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_17_tag", {
+  # tests for the property `ad_image_17_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_17_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_18_link", {
+  # tests for the property `ad_image_18_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_18_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_18_tag", {
+  # tests for the property `ad_image_18_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_18_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_19_link", {
+  # tests for the property `ad_image_19_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_19_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_19_tag", {
+  # tests for the property `ad_image_19_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_19_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_1_link", {
+  # tests for the property `ad_image_1_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_1_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_1_tag", {
+  # tests for the property `ad_image_1_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_1_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_2_link", {
+  # tests for the property `ad_image_2_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_2_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_2_tag", {
+  # tests for the property `ad_image_2_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_2_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_3_link", {
+  # tests for the property `ad_image_3_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_3_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_3_tag", {
+  # tests for the property `ad_image_3_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_3_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_4_link", {
+  # tests for the property `ad_image_4_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_4_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_4_tag", {
+  # tests for the property `ad_image_4_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_4_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_5_link", {
+  # tests for the property `ad_image_5_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_5_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_5_tag", {
+  # tests for the property `ad_image_5_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_5_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_6_link", {
+  # tests for the property `ad_image_6_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_6_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_6_tag", {
+  # tests for the property `ad_image_6_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_6_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_7_link", {
+  # tests for the property `ad_image_7_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_7_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_7_tag", {
+  # tests for the property `ad_image_7_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_7_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_8_link", {
+  # tests for the property `ad_image_8_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_8_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_8_tag", {
+  # tests for the property `ad_image_8_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_8_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_9_link", {
+  # tests for the property `ad_image_9_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_9_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_image_9_tag", {
+  # tests for the property `ad_image_9_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_image_9_tag`, "EXPECTED_RESULT")
+})
+
 test_that("ad_link", {
   # tests for the property `ad_link` (character)
   # Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ad_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_video_0_link", {
+  # tests for the property `ad_video_0_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_video_0_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_video_0_tag", {
+  # tests for the property `ad_video_0_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_video_0_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_video_1_link", {
+  # tests for the property `ad_video_1_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_video_1_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_video_1_tag", {
+  # tests for the property `ad_video_1_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_video_1_tag`, "EXPECTED_RESULT")
+})
+
+test_that("ad_video_2_link", {
+  # tests for the property `ad_video_2_link` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_video_2_link`, "EXPECTED_RESULT")
+})
+
+test_that("ad_video_2_tag", {
+  # tests for the property `ad_video_2_tag` (character)
+  # &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_video_2_tag`, "EXPECTED_RESULT")
 })
 
 test_that("adult", {
@@ -23,15 +391,23 @@ test_that("adult", {
 
 test_that("age_group", {
   # tests for the property `age_group` (character)
-  # The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  # The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`age_group`, "EXPECTED_RESULT")
 })
 
+test_that("android_deep_link", {
+  # tests for the property `android_deep_link` (character)
+  # The deep link to the product on the Android app.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`android_deep_link`, "EXPECTED_RESULT")
+})
+
 test_that("availability", {
   # tests for the property `availability` (character)
-  # The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+  # The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`availability`, "EXPECTED_RESULT")
@@ -79,7 +455,7 @@ test_that("condition", {
 
 test_that("custom_label_0", {
   # tests for the property `custom_label_0` (character)
-  # &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+  # &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_label_0`, "EXPECTED_RESULT")
@@ -87,7 +463,7 @@ test_that("custom_label_0", {
 
 test_that("custom_label_1", {
   # tests for the property `custom_label_1` (character)
-  # &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+  # &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_label_1`, "EXPECTED_RESULT")
@@ -95,7 +471,7 @@ test_that("custom_label_1", {
 
 test_that("custom_label_2", {
   # tests for the property `custom_label_2` (character)
-  # &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+  # &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_label_2`, "EXPECTED_RESULT")
@@ -103,7 +479,7 @@ test_that("custom_label_2", {
 
 test_that("custom_label_3", {
   # tests for the property `custom_label_3` (character)
-  # &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+  # &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_label_3`, "EXPECTED_RESULT")
@@ -111,10 +487,50 @@ test_that("custom_label_3", {
 
 test_that("custom_label_4", {
   # tests for the property `custom_label_4` (character)
-  # &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+  # &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_label_4`, "EXPECTED_RESULT")
+})
+
+test_that("custom_number_0", {
+  # tests for the property `custom_number_0` (integer)
+  # an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`custom_number_0`, "EXPECTED_RESULT")
+})
+
+test_that("custom_number_1", {
+  # tests for the property `custom_number_1` (integer)
+  # an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`custom_number_1`, "EXPECTED_RESULT")
+})
+
+test_that("custom_number_2", {
+  # tests for the property `custom_number_2` (integer)
+  # an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`custom_number_2`, "EXPECTED_RESULT")
+})
+
+test_that("custom_number_3", {
+  # tests for the property `custom_number_3` (integer)
+  # an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`custom_number_3`, "EXPECTED_RESULT")
+})
+
+test_that("custom_number_4", {
+  # tests for the property `custom_number_4` (integer)
+  # an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`custom_number_4`, "EXPECTED_RESULT")
 })
 
 test_that("description", {
@@ -143,7 +559,7 @@ test_that("free_shipping_limit", {
 
 test_that("gender", {
   # tests for the property `gender` (character)
-  # The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+  # The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`gender`, "EXPECTED_RESULT")
@@ -158,8 +574,7 @@ test_that("google_product_category", {
 })
 
 test_that("gtin", {
-  # tests for the property `gtin` (integer)
-  # The unique universal product identifier.
+  # tests for the property `gtin` (UpdatableItemAttributesGtin)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`gtin`, "EXPECTED_RESULT")
@@ -171,6 +586,22 @@ test_that("id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("installment_price", {
+  # tests for the property `installment_price` (character)
+  # Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;payment_count&gt;:&lt;payment_amount&gt; &lt;currency&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`installment_price`, "EXPECTED_RESULT")
+})
+
+test_that("ios_deep_link", {
+  # tests for the property `ios_deep_link` (character)
+  # The deep link to the product on the iOS app.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ios_deep_link`, "EXPECTED_RESULT")
 })
 
 test_that("item_group_id", {
@@ -269,12 +700,28 @@ test_that("product_type", {
   #expect_equal(model.instance$`product_type`, "EXPECTED_RESULT")
 })
 
+test_that("promotion_id", {
+  # tests for the property `promotion_id` (character)
+  # A unique identifier referencing the promotion associated with this catalog item.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`promotion_id`, "EXPECTED_RESULT")
+})
+
 test_that("sale_price", {
   # tests for the property `sale_price` (character)
   # The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`sale_price`, "EXPECTED_RESULT")
+})
+
+test_that("sale_price_effective_date", {
+  # tests for the property `sale_price_effective_date` (character)
+  # Sale price effective date. Expected format: &lt;start_date&gt;/&lt;end_date&gt; (ISO 8601 format)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`sale_price_effective_date`, "EXPECTED_RESULT")
 })
 
 test_that("shipping", {
@@ -319,7 +766,7 @@ test_that("size", {
 
 test_that("size_system", {
   # tests for the property `size_system` (character)
-  # Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+  # Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`size_system`, "EXPECTED_RESULT")
@@ -327,7 +774,7 @@ test_that("size_system", {
 
 test_that("size_type", {
   # tests for the property `size_type` (character)
-  # Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  # Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`size_type`, "EXPECTED_RESULT")
@@ -347,6 +794,22 @@ test_that("title", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
+})
+
+test_that("unit_pricing_base_measure", {
+  # tests for the property `unit_pricing_base_measure` (character)
+  # Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;base_measure&gt; &lt;unit_type&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`unit_pricing_base_measure`, "EXPECTED_RESULT")
+})
+
+test_that("unit_pricing_measure", {
+  # tests for the property `unit_pricing_measure` (character)
+  # Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;total_units&gt; &lt;unit_type&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`unit_pricing_measure`, "EXPECTED_RESULT")
 })
 
 test_that("variant_names", {

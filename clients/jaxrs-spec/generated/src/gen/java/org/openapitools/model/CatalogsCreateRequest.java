@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.CatalogsType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,56 +19,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a catalog.")
 @JsonTypeName("CatalogsCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateRequest   {
-  public enum CatalogTypeEnum {
-
-    HOTEL(String.valueOf("HOTEL"));
-
-
-    private String value;
-
-    CatalogTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static CatalogTypeEnum fromString(String s) {
-        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static CatalogTypeEnum fromValue(String value) {
-        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
   private String name;
 
   public CatalogsCreateRequest() {
@@ -75,7 +29,7 @@ public class CatalogsCreateRequest   {
 
   @JsonCreator
   public CatalogsCreateRequest(
-    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
     @JsonProperty(required = true, value = "name") String name
   ) {
     this.catalogType = catalogType;
@@ -83,22 +37,21 @@ public class CatalogsCreateRequest   {
   }
 
   /**
-   * Type of the catalog entity.
    **/
-  public CatalogsCreateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreateRequest catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "Type of the catalog entity.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "catalog_type")
-  @NotNull public CatalogTypeEnum getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
   @JsonProperty(required = true, value = "catalog_type")
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 

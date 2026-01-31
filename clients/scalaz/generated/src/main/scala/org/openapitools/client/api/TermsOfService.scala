@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import TermsOfService._
 
 case class TermsOfService (
-  /* The ID of the terms of service */
-  id: Option[String],
-/* The terms of service content */
-  html: Option[String],
+  /* The ID of the ad account. */
+  adAccountId: Option[String],
 /* Whether the ad account has accepted terms of service. */
   hasAccepted: Option[Boolean],
-/* The ID of the ad account. */
-  adAccountId: Option[String])
+/* The terms of service content */
+  html: Option[String],
+/* The ID of the terms of service */
+  id: Option[String])
 
 object TermsOfService {
   import DateTimeCodecs._

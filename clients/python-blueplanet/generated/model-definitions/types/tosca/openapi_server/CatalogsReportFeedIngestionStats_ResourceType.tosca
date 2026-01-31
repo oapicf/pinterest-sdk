@@ -1,0 +1,68 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsReportFeedIngestionStats"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsReportFeedIngestionStats"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsReportFeedIngestionStats {
+    title = CatalogsReportFeedIngestionStats
+    description = CatalogsReportFeedIngestionStats
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "ID of the catalog entity."
+          optional = false
+        }
+        code {
+          type =  integer
+          description = "The event code that a diagnostics aggregated number references"
+          optional = false
+        }
+        code_label {
+          type =  string
+          description = "A human-friendly label for the event code (e.g, &#39;AVAILABILITY_INVALID&#39;)"
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Title message describing the diagnostic issue"
+          optional = false
+        }
+        occurrences {
+          type =  integer
+          description = "Number of occurrences of the issue"
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["FEED_INGESTION_ISSUES"]
+          optional = false
+        }
+        severity {
+          type =  string
+          description = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue"
+          enum = ["WARN", "ERROR"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsReportFeedIngestionStats {
+    title = CatalogsReportFeedIngestionStats
+    description = CatalogsReportFeedIngestionStats
+    implements = openapi_server.resourceTypes.CatalogsReportFeedIngestionStats
+
+  }
+}

@@ -25,6 +25,14 @@ public class QuizPinQuestionTest {
     }
 
     /**
+     * Test the property 'options'
+     */
+    @Test
+    public void optionsTest() {
+        // TODO: test options
+    }
+
+    /**
      * Test the property 'questionId'
      */
     @Test
@@ -38,14 +46,6 @@ public class QuizPinQuestionTest {
     @Test
     public void questionTextTest() {
         // TODO: test questionText
-    }
-
-    /**
-     * Test the property 'options'
-     */
-    @Test
-    public void optionsTest() {
-        // TODO: test options
     }
 
 }

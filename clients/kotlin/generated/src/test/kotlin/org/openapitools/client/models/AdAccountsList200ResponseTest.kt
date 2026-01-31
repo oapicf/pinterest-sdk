@@ -26,7 +26,7 @@ class AdAccountsList200ResponseTest : ShouldSpec() {
         // uncomment below to create an instance of AdAccountsList200Response
         //val modelInstance = AdAccountsList200Response()
 
-        // to test the property `items` - Ad accounts
+        // to test the property `items`
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")

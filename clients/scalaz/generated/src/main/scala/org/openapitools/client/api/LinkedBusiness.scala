@@ -12,16 +12,16 @@ import org.joda.time.DateTime
 import LinkedBusiness._
 
 case class LinkedBusiness (
-  /* Username */
-  username: Option[String],
-/* image_small_url */
-  imageSmallUrl: Option[String],
+  /* image_large_url */
+  imageLargeUrl: Option[String],
 /* image_medium_url */
   imageMediumUrl: Option[String],
-/* image_large_url */
-  imageLargeUrl: Option[String],
+/* image_small_url */
+  imageSmallUrl: Option[String],
 /* image_xlarge_url */
-  imageXlargeUrl: Option[String])
+  imageXlargeUrl: Option[String],
+/* Username */
+  username: Option[String])
 
 object LinkedBusiness {
   import DateTimeCodecs._

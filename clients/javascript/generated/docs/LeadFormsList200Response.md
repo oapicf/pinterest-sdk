@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[LeadFormResponse]**](LeadFormResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[LeadFormResponse]**](LeadFormResponse.md) |  | 
 
 

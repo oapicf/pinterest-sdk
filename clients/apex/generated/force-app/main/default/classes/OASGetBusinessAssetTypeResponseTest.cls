@@ -6,7 +6,8 @@ private class OASGetBusinessAssetTypeResponseTest {
             OASGetBusinessAssetTypeResponse.AD_ACCOUNT,
             OASGetBusinessAssetTypeResponse.PROFILE,
             OASGetBusinessAssetTypeResponse.ASSET_GROUP,
-            OASGetBusinessAssetTypeResponse.CONVERSION_TAG
+            OASGetBusinessAssetTypeResponse.CONVERSION_TAG,
+            OASGetBusinessAssetTypeResponse.CATALOG
         };
         Set<OASGetBusinessAssetTypeResponse> actual  = new Set<OASGetBusinessAssetTypeResponse>(OASGetBusinessAssetTypeResponse.values());
         System.assertEquals(expected, actual);

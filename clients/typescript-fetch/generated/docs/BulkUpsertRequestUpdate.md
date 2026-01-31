@@ -7,11 +7,13 @@ Request for creation of entities in bulk.
 
 Name | Type
 ------------ | -------------
-`campaigns` | [Array&lt;CampaignUpdateRequest&gt;](CampaignUpdateRequest.md)
 `adGroups` | [Array&lt;AdGroupUpdateRequest&gt;](AdGroupUpdateRequest.md)
 `ads` | [Array&lt;AdUpdateRequest&gt;](AdUpdateRequest.md)
-`productGroups` | [Array&lt;ProductGroupPromotionUpdateRequest&gt;](ProductGroupPromotionUpdateRequest.md)
+`campaigns` | [Array&lt;CampaignUpdateRequest&gt;](CampaignUpdateRequest.md)
+`catalogProductGroups` | [Array&lt;CatalogsProductGroupsUpdateRequest&gt;](CatalogsProductGroupsUpdateRequest.md)
 `keywords` | [Array&lt;KeywordUpdate&gt;](KeywordUpdate.md)
+`labels` | [Array&lt;LabelBulkUpdateRequest&gt;](LabelBulkUpdateRequest.md)
+`productGroups` | [Array&lt;ProductGroupPromotionUpdateRequest&gt;](ProductGroupPromotionUpdateRequest.md)
 
 ## Example
 
@@ -20,11 +22,13 @@ import type { BulkUpsertRequestUpdate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "campaigns": null,
   "adGroups": null,
   "ads": null,
-  "productGroups": null,
+  "campaigns": null,
+  "catalogProductGroups": null,
   "keywords": null,
+  "labels": null,
+  "productGroups": null,
 } satisfies BulkUpsertRequestUpdate
 
 console.log(example)

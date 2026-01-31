@@ -10,8 +10,11 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CatalogsReportDistributionIssueFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionIssueFilter   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets reportType
    */
@@ -44,8 +47,23 @@ public class CatalogsReportDistributionIssueFilter   {
   @JsonProperty("report_type")
   private ReportTypeEnum reportType;
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
+  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of a catalog. If not given, oldest catalog will be used
+   * @return catalogId
+  **/
+  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
@@ -65,24 +83,6 @@ public class CatalogsReportDistributionIssueFilter   {
     this.reportType = reportType;
   }
 
-  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of a catalog. If not given, oldest catalog will be used
-   * @return catalogId
-  **/
-  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -93,13 +93,13 @@ public class CatalogsReportDistributionIssueFilter   {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
@@ -107,8 +107,8 @@ public class CatalogsReportDistributionIssueFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

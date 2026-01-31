@@ -29,20 +29,20 @@ public class CatalogsHotelItemErrorResponse  {
   private CatalogsType catalogType;
 
  /**
+  * Array with the errors for the item id requested
+  */
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+
+  @Valid
+
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
+ /**
   * The catalog hotel id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
 
   private String hotelId;
-
- /**
-  * Array with the errors for the item id requested
-  */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-
-  @Valid
-
-  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**
    * Get catalogType
    * @return catalogType
@@ -59,6 +59,30 @@ public class CatalogsHotelItemErrorResponse  {
 
   public CatalogsHotelItemErrorResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+    return this;
+  }
+
+ /**
+   * Array with the errors for the item id requested
+   * @return errors
+  **/
+  @JsonProperty("errors")
+  @NotNull
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
+  public CatalogsHotelItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CatalogsHotelItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    this.errors.add(errorsItem);
     return this;
   }
 
@@ -80,29 +104,6 @@ public class CatalogsHotelItemErrorResponse  {
     return this;
   }
 
- /**
-   * Array with the errors for the item id requested
-   * @return errors
-  **/
-  @JsonProperty("errors")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
-  public CatalogsHotelItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CatalogsHotelItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    this.errors.add(errorsItem);
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -113,13 +114,13 @@ public class CatalogsHotelItemErrorResponse  {
     }
     CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse = (CatalogsHotelItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsHotelItemErrorResponse.catalogType) &&
-        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId) &&
-        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors) &&
+        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, errors);
+    return Objects.hash(catalogType, errors, hotelId);
   }
 
   @Override
@@ -128,8 +129,8 @@ public class CatalogsHotelItemErrorResponse  {
     sb.append("class CatalogsHotelItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

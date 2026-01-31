@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,32 +17,30 @@ package openapi
 // CatalogsRetailProductGroupCreateRequest - Request object for creating a product group.
 type CatalogsRetailProductGroupCreateRequest struct {
 
+	// Catalog id pertaining to the retail product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+
 	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	CatalogType string `json:"catalog_type"`
 
-	Name string `json:"name"`
+	Country Country `json:"country,omitempty"`
 
 	Description *string `json:"description,omitempty"`
 
 	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 
-	// Catalog id pertaining to the retail product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	Locale CatalogsLocale `json:"locale,omitempty"`
 
-	Country Country `json:"country"`
-
-	Locale CatalogsLocale `json:"locale"`
+	Name string `json:"name"`
 }
 
 // AssertCatalogsRetailProductGroupCreateRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsRetailProductGroupCreateRequestRequired(obj CatalogsRetailProductGroupCreateRequest) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"name": obj.Name,
-		"filters": obj.Filters,
 		"catalog_id": obj.CatalogId,
-		"country": obj.Country,
-		"locale": obj.Locale,
+		"catalog_type": obj.CatalogType,
+		"filters": obj.Filters,
+		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

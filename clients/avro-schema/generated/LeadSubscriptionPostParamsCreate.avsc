@@ -1,0 +1,38 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LeadSubscriptionPostParamsCreate",
+  "fields": [
+    {
+      "name": "lead_form_id",
+      "type": ["null", "string"],
+      "doc": "Lead form ID.",
+      "default": null
+    },
+    {
+      "name": "webhook_url",
+      "type": "string",
+      "doc": "Standard HTTPS webhook URL."
+    },
+    {
+      "name": "partner_access_token",
+      "type": ["null", "string"],
+      "doc": "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.",
+      "default": null
+    },
+    {
+      "name": "partner_metadata",
+      "type": ["null", "model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_refresh_token",
+      "type": ["null", "string"],
+      "doc": "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.",
+      "default": null
+    }
+  ]
+
+}

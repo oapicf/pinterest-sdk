@@ -31,6 +31,14 @@ public class CatalogsVerticalBatchRequestTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -47,14 +55,6 @@ public class CatalogsVerticalBatchRequestTest {
     }
 
     /**
-     * Test the property 'language'
-     */
-    @Test
-    public void languageTest() {
-        // TODO: test language
-    }
-
-    /**
      * Test the property 'items'
      */
     @Test
@@ -63,11 +63,11 @@ public class CatalogsVerticalBatchRequestTest {
     }
 
     /**
-     * Test the property 'catalogId'
+     * Test the property 'language'
      */
     @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
+    public void languageTest() {
+        // TODO: test language
     }
 
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &IntegrationLogsInvalidLogResponseRejectedLogsInner{}
 
 // IntegrationLogsInvalidLogResponseRejectedLogsInner struct for IntegrationLogsInvalidLogResponseRejectedLogsInner
 type IntegrationLogsInvalidLogResponseRejectedLogsInner struct {
-	// Index of the log in the batch.
-	LogIndex *int32 `json:"log_index,omitempty"`
 	// The field name containing an invalid value.
 	Field string `json:"field"`
-	// The value that is invalid.
-	Value string `json:"value"`
+	// Index of the log in the batch.
+	LogIndex *int32 `json:"log_index,omitempty"`
 	// The reason the value is invalid.
 	Reason string `json:"reason"`
+	// The value that is invalid.
+	Value string `json:"value"`
 }
 
 type _IntegrationLogsInvalidLogResponseRejectedLogsInner IntegrationLogsInvalidLogResponseRejectedLogsInner
@@ -38,11 +38,11 @@ type _IntegrationLogsInvalidLogResponseRejectedLogsInner IntegrationLogsInvalidL
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegrationLogsInvalidLogResponseRejectedLogsInner(field string, value string, reason string) *IntegrationLogsInvalidLogResponseRejectedLogsInner {
+func NewIntegrationLogsInvalidLogResponseRejectedLogsInner(field string, reason string, value string) *IntegrationLogsInvalidLogResponseRejectedLogsInner {
 	this := IntegrationLogsInvalidLogResponseRejectedLogsInner{}
 	this.Field = field
-	this.Value = value
 	this.Reason = reason
+	this.Value = value
 	return &this
 }
 
@@ -52,6 +52,30 @@ func NewIntegrationLogsInvalidLogResponseRejectedLogsInner(field string, value s
 func NewIntegrationLogsInvalidLogResponseRejectedLogsInnerWithDefaults() *IntegrationLogsInvalidLogResponseRejectedLogsInner {
 	this := IntegrationLogsInvalidLogResponseRejectedLogsInner{}
 	return &this
+}
+
+// GetField returns the Field field value
+func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetField() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Field
+}
+
+// GetFieldOk returns a tuple with the Field field value
+// and a boolean to check if the value has been set.
+func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetFieldOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Field, true
+}
+
+// SetField sets field value
+func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetField(v string) {
+	o.Field = v
 }
 
 // GetLogIndex returns the LogIndex field value if set, zero value otherwise.
@@ -86,28 +110,28 @@ func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetLogIndex(v int32
 	o.LogIndex = &v
 }
 
-// GetField returns the Field field value
-func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetField() string {
+// GetReason returns the Reason field value
+func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReason() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Field
+	return o.Reason
 }
 
-// GetFieldOk returns a tuple with the Field field value
+// GetReasonOk returns a tuple with the Reason field value
 // and a boolean to check if the value has been set.
-func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetFieldOk() (*string, bool) {
+func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReasonOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Field, true
+	return &o.Reason, true
 }
 
-// SetField sets field value
-func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetField(v string) {
-	o.Field = v
+// SetReason sets field value
+func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetReason(v string) {
+	o.Reason = v
 }
 
 // GetValue returns the Value field value
@@ -134,30 +158,6 @@ func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetValue(v string) 
 	o.Value = v
 }
 
-// GetReason returns the Reason field value
-func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReason() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Reason
-}
-
-// GetReasonOk returns a tuple with the Reason field value
-// and a boolean to check if the value has been set.
-func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReasonOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Reason, true
-}
-
-// SetReason sets field value
-func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetReason(v string) {
-	o.Reason = v
-}
-
 func (o IntegrationLogsInvalidLogResponseRejectedLogsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -168,12 +168,12 @@ func (o IntegrationLogsInvalidLogResponseRejectedLogsInner) MarshalJSON() ([]byt
 
 func (o IntegrationLogsInvalidLogResponseRejectedLogsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["field"] = o.Field
 	if !IsNil(o.LogIndex) {
 		toSerialize["log_index"] = o.LogIndex
 	}
-	toSerialize["field"] = o.Field
-	toSerialize["value"] = o.Value
 	toSerialize["reason"] = o.Reason
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 
@@ -183,8 +183,8 @@ func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) UnmarshalJSON(data 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"field",
-		"value",
 		"reason",
+		"value",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,7 +19,7 @@ type ProductGroupPromotionCreateRequest struct {
 	// ID of the Ad Group the Product Group Promotion belongs to.
 	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\\\d+$"`
 
-	ProductGroupPromotion []ProductGroupPromotionCreateRequestElement `json:"product_group_promotion"`
+	ProductGroupPromotion []ProductGroupPromotion `json:"product_group_promotion"`
 }
 
 // AssertProductGroupPromotionCreateRequestRequired checks if the required fields are not zero-ed
@@ -35,7 +35,7 @@ func AssertProductGroupPromotionCreateRequestRequired(obj ProductGroupPromotionC
 	}
 
 	for _, el := range obj.ProductGroupPromotion {
-		if err := AssertProductGroupPromotionCreateRequestElementRequired(el); err != nil {
+		if err := AssertProductGroupPromotionRequired(el); err != nil {
 			return err
 		}
 	}
@@ -45,7 +45,7 @@ func AssertProductGroupPromotionCreateRequestRequired(obj ProductGroupPromotionC
 // AssertProductGroupPromotionCreateRequestConstraints checks if the values respects the defined constraints
 func AssertProductGroupPromotionCreateRequestConstraints(obj ProductGroupPromotionCreateRequest) error {
 	for _, el := range obj.ProductGroupPromotion {
-		if err := AssertProductGroupPromotionCreateRequestElementConstraints(el); err != nil {
+		if err := AssertProductGroupPromotionConstraints(el); err != nil {
 			return err
 		}
 	}

@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Metrics for a specific event type within a quality component.",
+  "name": "QualityComponentDetails",
+  "fields": [
+    {
+      "name": "coverage",
+      "type": "double",
+      "doc": "Coverage percentage for this event type."
+    },
+    {
+      "name": "issues",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.QualityComponentIssue"
+      }],
+      "doc": "List of issues detected for this event type, if any.",
+      "default": null
+    },
+    {
+      "name": "overlap",
+      "type": ["null", "double"],
+      "doc": "Overlap percentage for this event type. Only populated for external_event_id",
+      "default": null
+    }
+  ]
+
+}

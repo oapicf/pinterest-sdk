@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items List of assets the requesting business has access to.
  * @param bookmark 
+ * @param items List of assets the requesting business has access to.
  */
-case class BusinessAssetsGet200Response(items: Seq[GetBusinessAssetsResponse],
-                bookmark: Option[String]
+case class BusinessAssetsGet200Response(bookmark: Option[String],
+                items: Seq[GetBusinessAssetsResponse]
                 )
 
 object BusinessAssetsGet200Response {

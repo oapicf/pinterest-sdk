@@ -22,25 +22,25 @@ import com.squareup.moshi.JsonClass
 /**
  * The absolute date range of the template
  *
- * @param type The date range type
- * @param startDate The start date of the date range
  * @param endDate The end date of the date range
+ * @param startDate The start date of the date range
+ * @param type The date range type
  */
 
 
 data class TemplateResponseDateRangeAbsoluteDateRange (
 
-    /* The date range type */
-    @Json(name = "type")
-    val type: kotlin.String? = null,
+    /* The end date of the date range */
+    @Json(name = "end_date")
+    val endDate: java.math.BigDecimal? = null,
 
     /* The start date of the date range */
     @Json(name = "start_date")
     val startDate: java.math.BigDecimal? = null,
 
-    /* The end date of the date range */
-    @Json(name = "end_date")
-    val endDate: java.math.BigDecimal? = null
+    /* The date range type */
+    @Json(name = "type")
+    val type: kotlin.String? = null
 
 ) {
 

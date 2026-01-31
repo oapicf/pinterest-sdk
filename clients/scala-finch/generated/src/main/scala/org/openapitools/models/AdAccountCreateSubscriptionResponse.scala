@@ -8,15 +8,25 @@ import org.openapitools._
 
 /**
  * 
- * @param id Subscription ID.
- * @param cryptographicUnderscorekey Base64 encoded key for client to decrypt lead data.
- * @param cryptographicUnderscorealgorithm Lead data encryption algorithm.
+ * @param adUnderscoreaccountUnderscoreid The Ad Account ID that this lead form belongs to.
+ * @param apiUnderscoreversion API version.
  * @param createdUnderscoretime Subscription creation time. Unix timestamp in milliseconds.
+ * @param cryptographicUnderscorealgorithm Lead data encryption algorithm.
+ * @param cryptographicUnderscorekey Base64 encoded key for client to decrypt lead data.
+ * @param id Subscription ID.
+ * @param leadUnderscoreformUnderscoreid Lead form ID.
+ * @param userUnderscoreaccountUnderscoreid User account used to subscribe lead data.
+ * @param webhookUnderscoreurl Standard HTTPS webhook URL.
  */
-case class AdAccountCreateSubscriptionResponse(id: Option[String],
-                cryptographicUnderscorekey: Option[String],
+case class AdAccountCreateSubscriptionResponse(adUnderscoreaccountUnderscoreid: Option[String],
+                apiUnderscoreversion: Option[String],
+                createdUnderscoretime: Option[Int],
                 cryptographicUnderscorealgorithm: Option[String],
-                createdUnderscoretime: Option[Int]
+                cryptographicUnderscorekey: Option[String],
+                id: Option[String],
+                leadUnderscoreformUnderscoreid: Option[String],
+                userUnderscoreaccountUnderscoreid: Option[String],
+                webhookUnderscoreurl: Option[String]
                 )
 
 object AdAccountCreateSubscriptionResponse {

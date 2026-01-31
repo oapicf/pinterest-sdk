@@ -23,8 +23,8 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param `field` The field name containing an invalid value.
- * @param `value` The value that is invalid.
  * @param reason The reason the value is invalid.
+ * @param `value` The value that is invalid.
  * @param logIndex Index of the log in the batch.
  */
 
@@ -35,13 +35,13 @@ data class IntegrationLogsInvalidLogResponseRejectedLogsInner (
     @Json(name = "field")
     val `field`: kotlin.String,
 
-    /* The value that is invalid. */
-    @Json(name = "value")
-    val `value`: kotlin.String,
-
     /* The reason the value is invalid. */
     @Json(name = "reason")
     val reason: kotlin.String,
+
+    /* The value that is invalid. */
+    @Json(name = "value")
+    val `value`: kotlin.String,
 
     /* Index of the log in the batch. */
     @Json(name = "log_index")

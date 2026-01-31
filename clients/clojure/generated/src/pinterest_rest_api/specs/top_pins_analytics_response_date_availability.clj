@@ -7,8 +7,8 @@
 
 (def top-pins-analytics-response-date-availability-data
   {
-   (ds/opt :latest_available_timestamp) float?
    (ds/opt :is_realtime) boolean?
+   (ds/opt :latest_available_timestamp) float?
    })
 
 (def top-pins-analytics-response-date-availability-spec

@@ -15,53 +15,28 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.BoardOwner
-import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaSource
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Pin
+ * Resource create operation model.
  *
- * @param id 
- * @param createdAt 
- * @param link 
- * @param title 
- * @param description 
- * @param dominantColor Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
  * @param altText 
  * @param boardId The board to which this Pin belongs.
  * @param boardSectionId The board section to which this Pin belongs.
- * @param boardOwner 
- * @param media 
+ * @param description 
+ * @param dominantColor Dominant pin color. Hex number, e.g. `#6E7874`.
+ * @param link 
  * @param mediaSource 
- * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
- * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+ * @param parentPinId The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
+ * @param sponsorId The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
+ * @param title 
  */
 
 
 data class PinCreate (
-
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
-
-    @Json(name = "link")
-    val link: kotlin.String? = null,
-
-    @Json(name = "title")
-    val title: kotlin.String? = null,
-
-    @Json(name = "description")
-    val description: kotlin.String? = null,
-
-    /* Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". */
-    @Json(name = "dominant_color")
-    val dominantColor: kotlin.String? = null,
 
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,
@@ -74,22 +49,29 @@ data class PinCreate (
     @Json(name = "board_section_id")
     val boardSectionId: kotlin.String? = null,
 
-    @Json(name = "board_owner")
-    val boardOwner: BoardOwner? = null,
+    @Json(name = "description")
+    val description: kotlin.String? = null,
 
-    @Json(name = "media")
-    val media: PinMedia? = null,
+    /* Dominant pin color. Hex number, e.g. `#6E7874`. */
+    @Json(name = "dominant_color")
+    val dominantColor: kotlin.String? = null,
+
+    @Json(name = "link")
+    val link: kotlin.String? = null,
 
     @Json(name = "media_source")
     val mediaSource: PinMediaSource? = null,
 
-    /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
+    /* The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
     @Json(name = "parent_pin_id")
     val parentPinId: kotlin.String? = null,
 
-    /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    @Json(name = "note")
-    val note: kotlin.String? = null
+    /* The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. */
+    @Json(name = "sponsor_id")
+    val sponsorId: kotlin.String? = null,
+
+    @Json(name = "title")
+    val title: kotlin.String? = null
 
 ) {
 

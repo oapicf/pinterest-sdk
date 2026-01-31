@@ -9,13 +9,13 @@
 #' @format An \code{R6Class} generator object
 #' @field lead_form_id Lead form ID. character [optional]
 #' @field webhook_url Standard HTTPS webhook URL. character [optional]
-#' @field id Subscription ID. character [optional]
-#' @field user_account_id User account used to subscribe lead data. character [optional]
 #' @field ad_account_id The Ad Account ID that this lead form belongs to. character [optional]
 #' @field api_version API version. character [optional]
-#' @field cryptographic_key Base64 encoded key for client to decrypt lead data. character [optional]
+#' @field created_time Lead subscription creation time. Unix timestamp in milliseconds. integer [optional]
 #' @field cryptographic_algorithm Lead data encryption algorithm. character [optional]
-#' @field created_time Lead form creation time. Unix timestamp in milliseconds. integer [optional]
+#' @field cryptographic_key Base64 encoded key for client to decrypt lead data. character [optional]
+#' @field id Subscription ID. character [optional]
+#' @field user_account_id User account used to subscribe lead data. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,28 +24,28 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
   public = list(
     `lead_form_id` = NULL,
     `webhook_url` = NULL,
-    `id` = NULL,
-    `user_account_id` = NULL,
     `ad_account_id` = NULL,
     `api_version` = NULL,
-    `cryptographic_key` = NULL,
-    `cryptographic_algorithm` = NULL,
     `created_time` = NULL,
+    `cryptographic_algorithm` = NULL,
+    `cryptographic_key` = NULL,
+    `id` = NULL,
+    `user_account_id` = NULL,
 
     #' @description
     #' Initialize a new AdAccountGetSubscriptionResponse class.
     #'
     #' @param lead_form_id Lead form ID.
     #' @param webhook_url Standard HTTPS webhook URL.
-    #' @param id Subscription ID.
-    #' @param user_account_id User account used to subscribe lead data.
     #' @param ad_account_id The Ad Account ID that this lead form belongs to.
     #' @param api_version API version.
-    #' @param cryptographic_key Base64 encoded key for client to decrypt lead data.
+    #' @param created_time Lead subscription creation time. Unix timestamp in milliseconds.
     #' @param cryptographic_algorithm Lead data encryption algorithm.
-    #' @param created_time Lead form creation time. Unix timestamp in milliseconds.
+    #' @param cryptographic_key Base64 encoded key for client to decrypt lead data.
+    #' @param id Subscription ID.
+    #' @param user_account_id User account used to subscribe lead data.
     #' @param ... Other optional arguments.
-    initialize = function(`lead_form_id` = NULL, `webhook_url` = NULL, `id` = NULL, `user_account_id` = NULL, `ad_account_id` = NULL, `api_version` = NULL, `cryptographic_key` = NULL, `cryptographic_algorithm` = NULL, `created_time` = NULL, ...) {
+    initialize = function(`lead_form_id` = NULL, `webhook_url` = NULL, `ad_account_id` = NULL, `api_version` = NULL, `created_time` = NULL, `cryptographic_algorithm` = NULL, `cryptographic_key` = NULL, `id` = NULL, `user_account_id` = NULL, ...) {
       if (!is.null(`lead_form_id`)) {
         if (!(is.character(`lead_form_id`) && length(`lead_form_id`) == 1)) {
           stop(paste("Error! Invalid data for `lead_form_id`. Must be a string:", `lead_form_id`))
@@ -57,18 +57,6 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
           stop(paste("Error! Invalid data for `webhook_url`. Must be a string:", `webhook_url`))
         }
         self$`webhook_url` <- `webhook_url`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
-      }
-      if (!is.null(`user_account_id`)) {
-        if (!(is.character(`user_account_id`) && length(`user_account_id`) == 1)) {
-          stop(paste("Error! Invalid data for `user_account_id`. Must be a string:", `user_account_id`))
-        }
-        self$`user_account_id` <- `user_account_id`
       }
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
@@ -82,11 +70,11 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         }
         self$`api_version` <- `api_version`
       }
-      if (!is.null(`cryptographic_key`)) {
-        if (!(is.character(`cryptographic_key`) && length(`cryptographic_key`) == 1)) {
-          stop(paste("Error! Invalid data for `cryptographic_key`. Must be a string:", `cryptographic_key`))
+      if (!is.null(`created_time`)) {
+        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
         }
-        self$`cryptographic_key` <- `cryptographic_key`
+        self$`created_time` <- `created_time`
       }
       if (!is.null(`cryptographic_algorithm`)) {
         if (!(is.character(`cryptographic_algorithm`) && length(`cryptographic_algorithm`) == 1)) {
@@ -94,11 +82,23 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         }
         self$`cryptographic_algorithm` <- `cryptographic_algorithm`
       }
-      if (!is.null(`created_time`)) {
-        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
-          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
+      if (!is.null(`cryptographic_key`)) {
+        if (!(is.character(`cryptographic_key`) && length(`cryptographic_key`) == 1)) {
+          stop(paste("Error! Invalid data for `cryptographic_key`. Must be a string:", `cryptographic_key`))
         }
-        self$`created_time` <- `created_time`
+        self$`cryptographic_key` <- `cryptographic_key`
+      }
+      if (!is.null(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!is.null(`user_account_id`)) {
+        if (!(is.character(`user_account_id`) && length(`user_account_id`) == 1)) {
+          stop(paste("Error! Invalid data for `user_account_id`. Must be a string:", `user_account_id`))
+        }
+        self$`user_account_id` <- `user_account_id`
       }
     },
 
@@ -141,14 +141,6 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         AdAccountGetSubscriptionResponseObject[["webhook_url"]] <-
           self$`webhook_url`
       }
-      if (!is.null(self$`id`)) {
-        AdAccountGetSubscriptionResponseObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`user_account_id`)) {
-        AdAccountGetSubscriptionResponseObject[["user_account_id"]] <-
-          self$`user_account_id`
-      }
       if (!is.null(self$`ad_account_id`)) {
         AdAccountGetSubscriptionResponseObject[["ad_account_id"]] <-
           self$`ad_account_id`
@@ -157,17 +149,25 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         AdAccountGetSubscriptionResponseObject[["api_version"]] <-
           self$`api_version`
       }
-      if (!is.null(self$`cryptographic_key`)) {
-        AdAccountGetSubscriptionResponseObject[["cryptographic_key"]] <-
-          self$`cryptographic_key`
+      if (!is.null(self$`created_time`)) {
+        AdAccountGetSubscriptionResponseObject[["created_time"]] <-
+          self$`created_time`
       }
       if (!is.null(self$`cryptographic_algorithm`)) {
         AdAccountGetSubscriptionResponseObject[["cryptographic_algorithm"]] <-
           self$`cryptographic_algorithm`
       }
-      if (!is.null(self$`created_time`)) {
-        AdAccountGetSubscriptionResponseObject[["created_time"]] <-
-          self$`created_time`
+      if (!is.null(self$`cryptographic_key`)) {
+        AdAccountGetSubscriptionResponseObject[["cryptographic_key"]] <-
+          self$`cryptographic_key`
+      }
+      if (!is.null(self$`id`)) {
+        AdAccountGetSubscriptionResponseObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`user_account_id`)) {
+        AdAccountGetSubscriptionResponseObject[["user_account_id"]] <-
+          self$`user_account_id`
       }
       return(AdAccountGetSubscriptionResponseObject)
     },
@@ -185,26 +185,26 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
       if (!is.null(this_object$`webhook_url`)) {
         self$`webhook_url` <- this_object$`webhook_url`
       }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
-      }
-      if (!is.null(this_object$`user_account_id`)) {
-        self$`user_account_id` <- this_object$`user_account_id`
-      }
       if (!is.null(this_object$`ad_account_id`)) {
         self$`ad_account_id` <- this_object$`ad_account_id`
       }
       if (!is.null(this_object$`api_version`)) {
         self$`api_version` <- this_object$`api_version`
       }
-      if (!is.null(this_object$`cryptographic_key`)) {
-        self$`cryptographic_key` <- this_object$`cryptographic_key`
+      if (!is.null(this_object$`created_time`)) {
+        self$`created_time` <- this_object$`created_time`
       }
       if (!is.null(this_object$`cryptographic_algorithm`)) {
         self$`cryptographic_algorithm` <- this_object$`cryptographic_algorithm`
       }
-      if (!is.null(this_object$`created_time`)) {
-        self$`created_time` <- this_object$`created_time`
+      if (!is.null(this_object$`cryptographic_key`)) {
+        self$`cryptographic_key` <- this_object$`cryptographic_key`
+      }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`user_account_id`)) {
+        self$`user_account_id` <- this_object$`user_account_id`
       }
       self
     },
@@ -229,13 +229,13 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`lead_form_id` <- this_object$`lead_form_id`
       self$`webhook_url` <- this_object$`webhook_url`
-      self$`id` <- this_object$`id`
-      self$`user_account_id` <- this_object$`user_account_id`
       self$`ad_account_id` <- this_object$`ad_account_id`
       self$`api_version` <- this_object$`api_version`
-      self$`cryptographic_key` <- this_object$`cryptographic_key`
-      self$`cryptographic_algorithm` <- this_object$`cryptographic_algorithm`
       self$`created_time` <- this_object$`created_time`
+      self$`cryptographic_algorithm` <- this_object$`cryptographic_algorithm`
+      self$`cryptographic_key` <- this_object$`cryptographic_key`
+      self$`id` <- this_object$`id`
+      self$`user_account_id` <- this_object$`user_account_id`
       self
     },
 
@@ -264,15 +264,15 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         return(FALSE)
       }
 
+      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
 
       if (!str_detect(self$`user_account_id`, "^\\d+$")) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -289,16 +289,16 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         invalid_fields["lead_form_id"] <- "Invalid value for `lead_form_id`, must conform to the pattern ^\\d+$."
       }
 
+      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
+        invalid_fields["ad_account_id"] <- "Invalid value for `ad_account_id`, must conform to the pattern ^\\d+$."
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }
 
       if (!str_detect(self$`user_account_id`, "^\\d+$")) {
         invalid_fields["user_account_id"] <- "Invalid value for `user_account_id`, must conform to the pattern ^\\d+$."
-      }
-
-      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
-        invalid_fields["ad_account_id"] <- "Invalid value for `ad_account_id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

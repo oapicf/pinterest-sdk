@@ -16,26 +16,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item processing record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing an item processing record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class HotelProcessingRecord   {
   
-  private String hotelId;
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
-  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
+  private String hotelId;
   private ItemProcessingStatus status;
-
-  /**
-   * The catalog hotel id in the merchant namespace
-   **/
-  
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-  public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
-  }
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
@@ -51,16 +38,16 @@ public class HotelProcessingRecord   {
   }
 
   /**
-   * Array with the validation warnings for the item processing record
+   * The catalog hotel id in the merchant namespace
    **/
   
-  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @JsonProperty("warnings")
-  public List<@Valid ItemValidationEvent> getWarnings() {
-    return warnings;
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
   }
-  public void setWarnings(List<@Valid ItemValidationEvent> warnings) {
-    this.warnings = warnings;
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
   }
 
   /**
@@ -75,6 +62,19 @@ public class HotelProcessingRecord   {
     this.status = status;
   }
 
+  /**
+   * Array with the validation warnings for the item processing record
+   **/
+  
+  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
+  @JsonProperty("warnings")
+  public List<@Valid ItemValidationEvent> getWarnings() {
+    return warnings;
+  }
+  public void setWarnings(List<@Valid ItemValidationEvent> warnings) {
+    this.warnings = warnings;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -85,15 +85,15 @@ public class HotelProcessingRecord   {
       return false;
     }
     HotelProcessingRecord hotelProcessingRecord = (HotelProcessingRecord) o;
-    return Objects.equals(this.hotelId, hotelProcessingRecord.hotelId) &&
-        Objects.equals(this.errors, hotelProcessingRecord.errors) &&
-        Objects.equals(this.warnings, hotelProcessingRecord.warnings) &&
-        Objects.equals(this.status, hotelProcessingRecord.status);
+    return Objects.equals(this.errors, hotelProcessingRecord.errors) &&
+        Objects.equals(this.hotelId, hotelProcessingRecord.hotelId) &&
+        Objects.equals(this.status, hotelProcessingRecord.status) &&
+        Objects.equals(this.warnings, hotelProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, errors, warnings, status);
+    return Objects.hash(errors, hotelId, status, warnings);
   }
 
   @Override
@@ -101,10 +101,10 @@ public class HotelProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class HotelProcessingRecord {\n");
     
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

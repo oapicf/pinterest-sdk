@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,16 +20,16 @@ var _ MappedNullable = &AudienceCategory{}
 
 // AudienceCategory struct for AudienceCategory
 type AudienceCategory struct {
+	// Interest ID.
+	Id *string `json:"id,omitempty"`
+	// Interest affinity index.
+	Index *float32 `json:"index,omitempty"`
 	// Interest unique key (same as ID).
 	Key *string `json:"key,omitempty"`
 	// Interest name.
 	Name *string `json:"name,omitempty"`
 	// Interest's percent of category's total audience.
 	Ratio *float32 `json:"ratio,omitempty"`
-	// Interest affinity index.
-	Index *float32 `json:"index,omitempty"`
-	// Interest ID.
-	Id *string `json:"id,omitempty"`
 	// Subcategory interest distribution
 	Subcategories []AudienceSubcategory `json:"subcategories,omitempty"`
 }
@@ -49,6 +49,70 @@ func NewAudienceCategory() *AudienceCategory {
 func NewAudienceCategoryWithDefaults() *AudienceCategory {
 	this := AudienceCategory{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AudienceCategory) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceCategory) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AudienceCategory) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AudienceCategory) SetId(v string) {
+	o.Id = &v
+}
+
+// GetIndex returns the Index field value if set, zero value otherwise.
+func (o *AudienceCategory) GetIndex() float32 {
+	if o == nil || IsNil(o.Index) {
+		var ret float32
+		return ret
+	}
+	return *o.Index
+}
+
+// GetIndexOk returns a tuple with the Index field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceCategory) GetIndexOk() (*float32, bool) {
+	if o == nil || IsNil(o.Index) {
+		return nil, false
+	}
+	return o.Index, true
+}
+
+// HasIndex returns a boolean if a field has been set.
+func (o *AudienceCategory) HasIndex() bool {
+	if o != nil && !IsNil(o.Index) {
+		return true
+	}
+
+	return false
+}
+
+// SetIndex gets a reference to the given float32 and assigns it to the Index field.
+func (o *AudienceCategory) SetIndex(v float32) {
+	o.Index = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -147,70 +211,6 @@ func (o *AudienceCategory) SetRatio(v float32) {
 	o.Ratio = &v
 }
 
-// GetIndex returns the Index field value if set, zero value otherwise.
-func (o *AudienceCategory) GetIndex() float32 {
-	if o == nil || IsNil(o.Index) {
-		var ret float32
-		return ret
-	}
-	return *o.Index
-}
-
-// GetIndexOk returns a tuple with the Index field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceCategory) GetIndexOk() (*float32, bool) {
-	if o == nil || IsNil(o.Index) {
-		return nil, false
-	}
-	return o.Index, true
-}
-
-// HasIndex returns a boolean if a field has been set.
-func (o *AudienceCategory) HasIndex() bool {
-	if o != nil && !IsNil(o.Index) {
-		return true
-	}
-
-	return false
-}
-
-// SetIndex gets a reference to the given float32 and assigns it to the Index field.
-func (o *AudienceCategory) SetIndex(v float32) {
-	o.Index = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AudienceCategory) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceCategory) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *AudienceCategory) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AudienceCategory) SetId(v string) {
-	o.Id = &v
-}
-
 // GetSubcategories returns the Subcategories field value if set, zero value otherwise.
 func (o *AudienceCategory) GetSubcategories() []AudienceSubcategory {
 	if o == nil || IsNil(o.Subcategories) {
@@ -253,6 +253,12 @@ func (o AudienceCategory) MarshalJSON() ([]byte, error) {
 
 func (o AudienceCategory) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Index) {
+		toSerialize["index"] = o.Index
+	}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
@@ -261,12 +267,6 @@ func (o AudienceCategory) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ratio) {
 		toSerialize["ratio"] = o.Ratio
-	}
-	if !IsNil(o.Index) {
-		toSerialize["index"] = o.Index
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Subcategories) {
 		toSerialize["subcategories"] = o.Subcategories

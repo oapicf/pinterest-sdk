@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionEventResponse`
 --
-SELECT `conversion_event`, `conversion_tag_id`, `ad_account_id`, `created_time` FROM `ConversionEventResponse` WHERE 1;
+SELECT `ad_account_id`, `conversion_event`, `conversion_tag_id`, `created_time` FROM `ConversionEventResponse` WHERE 1;
 
 --
 -- INSERT template for table `ConversionEventResponse`
 --
-INSERT INTO `ConversionEventResponse`(`conversion_event`, `conversion_tag_id`, `ad_account_id`, `created_time`) VALUES (?, ?, ?, ?);
+INSERT INTO `ConversionEventResponse`(`ad_account_id`, `conversion_event`, `conversion_tag_id`, `created_time`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionEventResponse`
 --
-UPDATE `ConversionEventResponse` SET `conversion_event` = ?, `conversion_tag_id` = ?, `ad_account_id` = ?, `created_time` = ? WHERE 1;
+UPDATE `ConversionEventResponse` SET `ad_account_id` = ?, `conversion_event` = ?, `conversion_tag_id` = ?, `created_time` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionEventResponse`

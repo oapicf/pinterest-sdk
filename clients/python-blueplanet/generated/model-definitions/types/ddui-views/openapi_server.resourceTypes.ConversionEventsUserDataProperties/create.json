@@ -1,0 +1,32 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "click_id" },
+      {"model": "client_ip_address" },
+      {"model": "client_user_agent" },
+      {"model": "country" },
+      {"model": "ct" },
+      {"model": "db" },
+      {"model": "em" },
+      {"model": "external_id" },
+      {"model": "fn" },
+      {"model": "ge" },
+      {"model": "hashed_maids" },
+      {"model": "ln" },
+      {"model": "partner_id" },
+      {"model": "ph" },
+      {"model": "st" },
+      {"model": "zp" },
+    ]
+  }]
+}

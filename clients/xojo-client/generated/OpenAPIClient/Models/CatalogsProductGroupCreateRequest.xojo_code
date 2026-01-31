@@ -2,12 +2,20 @@
 Protected Class CatalogsProductGroupCreateRequest
 
 	#tag Property, Flags = &h0
-		name As String
+		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
+		#tag Note
+			Catalog Feed id pertaining to the catalog product group.
+		#tag EndNote
+		feed_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		filters As OpenAPIClient.Models.CatalogsProductGroupFiltersRequest
 	#tag EndProperty
 
 
@@ -20,15 +28,7 @@ Protected Class CatalogsProductGroupCreateRequest
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsProductGroupFiltersRequest
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Catalog Feed id pertaining to the catalog product group.
-		#tag EndNote
-		feed_id As String
+		name As String
 	#tag EndProperty
 
 
@@ -69,14 +69,6 @@ Protected Class CatalogsProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="description"
 			Visible=false
 			Group="Behavior"
@@ -85,11 +77,11 @@ Protected Class CatalogsProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_featured"
+			Name="feed_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -101,7 +93,15 @@ Protected Class CatalogsProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="feed_id"
+			Name="is_featured"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -24,15 +24,16 @@ void
 Audience::__init()
 {
 	//ad_account_id = std::string();
+	//audience_type = std::string();
+	//created_by_company_name = std::string();
+	//created_timestamp = int(0);
+	//description = std::string();
 	//id = std::string();
 	//name = std::string();
-	//audience_type = std::string();
-	//description = std::string();
 	//rule = new AudienceRule();
 	//size = int(0);
 	//status = std::string();
 	//type = std::string();
-	//created_timestamp = int(0);
 	//updated_timestamp = int(0);
 }
 
@@ -44,6 +45,26 @@ Audience::__cleanup()
 	//delete ad_account_id;
 	//ad_account_id = NULL;
 	//}
+	//if(audience_type != NULL) {
+	//
+	//delete audience_type;
+	//audience_type = NULL;
+	//}
+	//if(created_by_company_name != NULL) {
+	//
+	//delete created_by_company_name;
+	//created_by_company_name = NULL;
+	//}
+	//if(created_timestamp != NULL) {
+	//
+	//delete created_timestamp;
+	//created_timestamp = NULL;
+	//}
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
+	//}
 	//if(id != NULL) {
 	//
 	//delete id;
@@ -53,16 +74,6 @@ Audience::__cleanup()
 	//
 	//delete name;
 	//name = NULL;
-	//}
-	//if(audience_type != NULL) {
-	//
-	//delete audience_type;
-	//audience_type = NULL;
-	//}
-	//if(description != NULL) {
-	//
-	//delete description;
-	//description = NULL;
 	//}
 	//if(rule != NULL) {
 	//
@@ -83,11 +94,6 @@ Audience::__cleanup()
 	//
 	//delete type;
 	//type = NULL;
-	//}
-	//if(created_timestamp != NULL) {
-	//
-	//delete created_timestamp;
-	//created_timestamp = NULL;
 	//}
 	//if(updated_timestamp != NULL) {
 	//
@@ -113,6 +119,50 @@ Audience::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *audience_typeKey = "audience_type";
+	node = json_object_get_member(pJsonObject, audience_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&audience_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *created_by_company_nameKey = "created_by_company_name";
+	node = json_object_get_member(pJsonObject, created_by_company_nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_by_company_name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *created_timestampKey = "created_timestamp";
+	node = json_object_get_member(pJsonObject, created_timestampKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&created_timestamp, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -131,28 +181,6 @@ Audience::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *audience_typeKey = "audience_type";
-	node = json_object_get_member(pJsonObject, audience_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&audience_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *descriptionKey = "description";
-	node = json_object_get_member(pJsonObject, descriptionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&description, node, "std::string", "");
 		} else {
 			
 		}
@@ -204,17 +232,6 @@ Audience::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_timestampKey = "created_timestamp";
-	node = json_object_get_member(pJsonObject, created_timestampKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&created_timestamp, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *updated_timestampKey = "updated_timestamp";
 	node = json_object_get_member(pJsonObject, updated_timestampKey);
 	if (node !=NULL) {
@@ -248,6 +265,42 @@ Audience::toJson()
 	const gchar *ad_account_idKey = "ad_account_id";
 	json_object_set_member(pJsonObject, ad_account_idKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getAudienceType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *audience_typeKey = "audience_type";
+	json_object_set_member(pJsonObject, audience_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreatedByCompanyName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *created_by_company_nameKey = "created_by_company_name";
+	json_object_set_member(pJsonObject, created_by_company_nameKey, node);
+	if (isprimitive("int")) {
+		int obj = getCreatedTimestamp();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *created_timestampKey = "created_timestamp";
+	json_object_set_member(pJsonObject, created_timestampKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -265,24 +318,6 @@ Audience::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAudienceType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *audience_typeKey = "audience_type";
-	json_object_set_member(pJsonObject, audience_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDescription();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *descriptionKey = "description";
-	json_object_set_member(pJsonObject, descriptionKey, node);
 	if (isprimitive("AudienceRule")) {
 		AudienceRule obj = getRule();
 		node = converttoJson(&obj, "AudienceRule", "");
@@ -325,15 +360,6 @@ Audience::toJson()
 	const gchar *typeKey = "type";
 	json_object_set_member(pJsonObject, typeKey, node);
 	if (isprimitive("int")) {
-		int obj = getCreatedTimestamp();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *created_timestampKey = "created_timestamp";
-	json_object_set_member(pJsonObject, created_timestampKey, node);
-	if (isprimitive("int")) {
 		int obj = getUpdatedTimestamp();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -363,6 +389,54 @@ Audience::setAdAccountId(std::string  ad_account_id)
 }
 
 std::string
+Audience::getAudienceType()
+{
+	return audience_type;
+}
+
+void
+Audience::setAudienceType(std::string  audience_type)
+{
+	this->audience_type = audience_type;
+}
+
+std::string
+Audience::getCreatedByCompanyName()
+{
+	return created_by_company_name;
+}
+
+void
+Audience::setCreatedByCompanyName(std::string  created_by_company_name)
+{
+	this->created_by_company_name = created_by_company_name;
+}
+
+int
+Audience::getCreatedTimestamp()
+{
+	return created_timestamp;
+}
+
+void
+Audience::setCreatedTimestamp(int  created_timestamp)
+{
+	this->created_timestamp = created_timestamp;
+}
+
+std::string
+Audience::getDescription()
+{
+	return description;
+}
+
+void
+Audience::setDescription(std::string  description)
+{
+	this->description = description;
+}
+
+std::string
 Audience::getId()
 {
 	return id;
@@ -384,30 +458,6 @@ void
 Audience::setName(std::string  name)
 {
 	this->name = name;
-}
-
-std::string
-Audience::getAudienceType()
-{
-	return audience_type;
-}
-
-void
-Audience::setAudienceType(std::string  audience_type)
-{
-	this->audience_type = audience_type;
-}
-
-std::string
-Audience::getDescription()
-{
-	return description;
-}
-
-void
-Audience::setDescription(std::string  description)
-{
-	this->description = description;
 }
 
 AudienceRule
@@ -456,18 +506,6 @@ void
 Audience::setType(std::string  type)
 {
 	this->type = type;
-}
-
-int
-Audience::getCreatedTimestamp()
-{
-	return created_timestamp;
-}
-
-void
-Audience::setCreatedTimestamp(int  created_timestamp)
-{
-	this->created_timestamp = created_timestamp;
 }
 
 int

@@ -8,8 +8,8 @@
 
 (def ads-credits-discounts-get-200-response-data
   {
-   (ds/req :items) (s/coll-of ads-credit-discounts-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of ads-credit-discounts-response-spec)
    })
 
 (def ads-credits-discounts-get-200-response-spec

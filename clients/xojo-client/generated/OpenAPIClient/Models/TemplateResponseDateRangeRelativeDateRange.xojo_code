@@ -3,9 +3,9 @@ Protected Class TemplateResponseDateRangeRelativeDateRange
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The date range type
+			The end date of the date range
 		#tag EndNote
-		type As Xoson.O.OptionalString
+		end_days_in_past As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
@@ -19,9 +19,9 @@ Protected Class TemplateResponseDateRangeRelativeDateRange
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The end date of the date range
+			The date range type
 		#tag EndNote
-		end_days_in_past As Xoson.O.OptionalDouble
+		type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -62,11 +62,11 @@ Protected Class TemplateResponseDateRangeRelativeDateRange
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="type"
+			Name="end_days_in_past"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -78,11 +78,11 @@ Protected Class TemplateResponseDateRangeRelativeDateRange
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="end_days_in_past"
+			Name="type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Double"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

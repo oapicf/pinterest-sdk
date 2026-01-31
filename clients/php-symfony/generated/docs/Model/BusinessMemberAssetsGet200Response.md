@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**OpenAPI\Server\Model\AssetIdPermissions**](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 **bookmark** | **string** |  | [optional] 
+**items** | [**OpenAPI\Server\Model\AssetIdPermissions**](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

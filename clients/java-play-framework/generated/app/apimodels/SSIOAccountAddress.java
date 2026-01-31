@@ -9,58 +9,24 @@ import javax.validation.Valid;
 /**
  * SSIOAccountAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class SSIOAccountAddress   {
-  @JsonProperty("display")
-  
-  private String display;
-
-  @JsonProperty("purpose")
-  
-  private String purpose;
-
   @JsonProperty("address_id")
   
   private String addressId;
+
+  @JsonProperty("display")
+  
+  private String display;
 
   @JsonProperty("order_legal_entity")
   
   private String orderLegalEntity;
 
-  public SSIOAccountAddress display(String display) {
-    this.display = display;
-    return this;
-  }
-
-   /**
-   * Address display
-   * @return display
-  **/
-  public String getDisplay() {
-    return display;
-  }
-
-  public void setDisplay(String display) {
-    this.display = display;
-  }
-
-  public SSIOAccountAddress purpose(String purpose) {
-    this.purpose = purpose;
-    return this;
-  }
-
-   /**
-   * Purpose for which the address is used, usually Billing or Businness
-   * @return purpose
-  **/
-  public String getPurpose() {
-    return purpose;
-  }
-
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
+  @JsonProperty("purpose")
+  
+  private String purpose;
 
   public SSIOAccountAddress addressId(String addressId) {
     this.addressId = addressId;
@@ -77,6 +43,23 @@ public class SSIOAccountAddress   {
 
   public void setAddressId(String addressId) {
     this.addressId = addressId;
+  }
+
+  public SSIOAccountAddress display(String display) {
+    this.display = display;
+    return this;
+  }
+
+   /**
+   * Address display
+   * @return display
+  **/
+  public String getDisplay() {
+    return display;
+  }
+
+  public void setDisplay(String display) {
+    this.display = display;
   }
 
   public SSIOAccountAddress orderLegalEntity(String orderLegalEntity) {
@@ -96,6 +79,23 @@ public class SSIOAccountAddress   {
     this.orderLegalEntity = orderLegalEntity;
   }
 
+  public SSIOAccountAddress purpose(String purpose) {
+    this.purpose = purpose;
+    return this;
+  }
+
+   /**
+   * Purpose for which the address is used, usually Billing or Businness
+   * @return purpose
+  **/
+  public String getPurpose() {
+    return purpose;
+  }
+
+  public void setPurpose(String purpose) {
+    this.purpose = purpose;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -106,15 +106,15 @@ public class SSIOAccountAddress   {
       return false;
     }
     SSIOAccountAddress ssIOAccountAddress = (SSIOAccountAddress) o;
-    return Objects.equals(display, ssIOAccountAddress.display) &&
-        Objects.equals(purpose, ssIOAccountAddress.purpose) &&
-        Objects.equals(addressId, ssIOAccountAddress.addressId) &&
-        Objects.equals(orderLegalEntity, ssIOAccountAddress.orderLegalEntity);
+    return Objects.equals(addressId, ssIOAccountAddress.addressId) &&
+        Objects.equals(display, ssIOAccountAddress.display) &&
+        Objects.equals(orderLegalEntity, ssIOAccountAddress.orderLegalEntity) &&
+        Objects.equals(purpose, ssIOAccountAddress.purpose);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, purpose, addressId, orderLegalEntity);
+    return Objects.hash(addressId, display, orderLegalEntity, purpose);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -123,10 +123,10 @@ public class SSIOAccountAddress   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountAddress {\n");
     
-    sb.append("    display: ").append(toIndentedString(display)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("    orderLegalEntity: ").append(toIndentedString(orderLegalEntity)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("}");
     return sb.toString();
   }

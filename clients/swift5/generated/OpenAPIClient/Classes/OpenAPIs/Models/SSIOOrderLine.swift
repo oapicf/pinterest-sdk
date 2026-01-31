@@ -12,128 +12,128 @@ import AnyCodable
 
 public struct SSIOOrderLine: Codable, JSONEncodable, Hashable {
 
-    public static let lastModifiedDateTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
     public static let acceptedTermsTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
-    /** OrderLineId in SFDC */
-    public var salesforceOrderLineId: String?
+    public static let lastModifiedDateTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
+    /** The SFDC id for the terms */
+    public var acceptedTermsId: String?
+    /** The UTC timestamp (to the nearest sec) of when terms were accepted */
+    public var acceptedTermsTime: String?
     /** Ads manager OrderLineId */
     public var adsManagerOrderLineId: String?
-    /** The pin order id associated with the order line in SFDC */
-    public var pinOrderId: String?
-    /** Last modified date. */
-    public var lastModifiedDateTime: String?
-    /** Start date of the order line. */
-    public var startDate: Date?
-    /** End date of the order line. */
-    public var endDate: Date?
+    /** Agency link */
+    public var agencyLink: String?
     /** Bill To Company name */
     public var billToCompanyName: String?
+    /** Billing contact email */
+    public var billingContactEmail: String?
     /** Billing contact first name */
     public var billingContactFirstname: String?
     /** Billing contact last name */
     public var billingContactLastname: String?
-    /** Billing contact email */
-    public var billingContactEmail: String?
+    /** If Budget order line, the budget amount. */
+    public var budgetAmount: Double?
+    public var currencyInfo: Currency?
+    /** End date of the order line. */
+    public var endDate: Date?
+    /** If Ongoing (perpetual) order line, the estimated monthly spend */
+    public var estimatedMonthlySpend: Double?
+    /** Last modified date. */
+    public var lastModifiedDateTime: String?
     /** Billing media email */
     public var mediaContactEmail: String?
     /** Billing contact first name */
     public var mediaContactFirstname: String?
     /** Billing contact first name */
     public var mediaContactLastname: String?
-    public var currencyInfo: Currency?
-    /** Agency link */
-    public var agencyLink: String?
-    /** The po number */
-    public var poNumber: String?
     /** The order name */
     public var orderName: String?
+    /** The pin order id associated with the order line in SFDC */
+    public var pinOrderId: String?
     /** The Pinterest marketing partner name */
     public var pmpName: String?
-    /** The SFDC id for the terms */
-    public var acceptedTermsId: String?
-    /** The UTC timestamp (to the nearest sec) of when terms were accepted */
-    public var acceptedTermsTime: String?
-    /** If Budget order line, the budget amount. */
-    public var budgetAmount: Double?
-    /** If Ongoing (perpetual) order line, the estimated monthly spend */
-    public var estimatedMonthlySpend: Double?
+    /** The po number */
+    public var poNumber: String?
+    /** OrderLineId in SFDC */
+    public var salesforceOrderLineId: String?
+    /** Start date of the order line. */
+    public var startDate: Date?
 
-    public init(salesforceOrderLineId: String? = nil, adsManagerOrderLineId: String? = nil, pinOrderId: String? = nil, lastModifiedDateTime: String? = nil, startDate: Date? = nil, endDate: Date? = nil, billToCompanyName: String? = nil, billingContactFirstname: String? = nil, billingContactLastname: String? = nil, billingContactEmail: String? = nil, mediaContactEmail: String? = nil, mediaContactFirstname: String? = nil, mediaContactLastname: String? = nil, currencyInfo: Currency? = nil, agencyLink: String? = nil, poNumber: String? = nil, orderName: String? = nil, pmpName: String? = nil, acceptedTermsId: String? = nil, acceptedTermsTime: String? = nil, budgetAmount: Double? = nil, estimatedMonthlySpend: Double? = nil) {
-        self.salesforceOrderLineId = salesforceOrderLineId
+    public init(acceptedTermsId: String? = nil, acceptedTermsTime: String? = nil, adsManagerOrderLineId: String? = nil, agencyLink: String? = nil, billToCompanyName: String? = nil, billingContactEmail: String? = nil, billingContactFirstname: String? = nil, billingContactLastname: String? = nil, budgetAmount: Double? = nil, currencyInfo: Currency? = nil, endDate: Date? = nil, estimatedMonthlySpend: Double? = nil, lastModifiedDateTime: String? = nil, mediaContactEmail: String? = nil, mediaContactFirstname: String? = nil, mediaContactLastname: String? = nil, orderName: String? = nil, pinOrderId: String? = nil, pmpName: String? = nil, poNumber: String? = nil, salesforceOrderLineId: String? = nil, startDate: Date? = nil) {
+        self.acceptedTermsId = acceptedTermsId
+        self.acceptedTermsTime = acceptedTermsTime
         self.adsManagerOrderLineId = adsManagerOrderLineId
-        self.pinOrderId = pinOrderId
-        self.lastModifiedDateTime = lastModifiedDateTime
-        self.startDate = startDate
-        self.endDate = endDate
+        self.agencyLink = agencyLink
         self.billToCompanyName = billToCompanyName
+        self.billingContactEmail = billingContactEmail
         self.billingContactFirstname = billingContactFirstname
         self.billingContactLastname = billingContactLastname
-        self.billingContactEmail = billingContactEmail
+        self.budgetAmount = budgetAmount
+        self.currencyInfo = currencyInfo
+        self.endDate = endDate
+        self.estimatedMonthlySpend = estimatedMonthlySpend
+        self.lastModifiedDateTime = lastModifiedDateTime
         self.mediaContactEmail = mediaContactEmail
         self.mediaContactFirstname = mediaContactFirstname
         self.mediaContactLastname = mediaContactLastname
-        self.currencyInfo = currencyInfo
-        self.agencyLink = agencyLink
-        self.poNumber = poNumber
         self.orderName = orderName
+        self.pinOrderId = pinOrderId
         self.pmpName = pmpName
-        self.acceptedTermsId = acceptedTermsId
-        self.acceptedTermsTime = acceptedTermsTime
-        self.budgetAmount = budgetAmount
-        self.estimatedMonthlySpend = estimatedMonthlySpend
+        self.poNumber = poNumber
+        self.salesforceOrderLineId = salesforceOrderLineId
+        self.startDate = startDate
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case salesforceOrderLineId = "salesforce_order_line_id"
+        case acceptedTermsId = "accepted_terms_id"
+        case acceptedTermsTime = "accepted_terms_time"
         case adsManagerOrderLineId = "ads_manager_order_line_id"
-        case pinOrderId = "pin_order_id"
-        case lastModifiedDateTime = "last_modified_date_time"
-        case startDate = "start_date"
-        case endDate = "end_date"
+        case agencyLink = "agency_link"
         case billToCompanyName = "bill_to_company_name"
+        case billingContactEmail = "billing_contact_email"
         case billingContactFirstname = "billing_contact_firstname"
         case billingContactLastname = "billing_contact_lastname"
-        case billingContactEmail = "billing_contact_email"
+        case budgetAmount = "budget_amount"
+        case currencyInfo = "currency_info"
+        case endDate = "end_date"
+        case estimatedMonthlySpend = "estimated_monthly_spend"
+        case lastModifiedDateTime = "last_modified_date_time"
         case mediaContactEmail = "media_contact_email"
         case mediaContactFirstname = "media_contact_firstname"
         case mediaContactLastname = "media_contact_lastname"
-        case currencyInfo = "currency_info"
-        case agencyLink = "agency_link"
-        case poNumber = "po_number"
         case orderName = "order_name"
+        case pinOrderId = "pin_order_id"
         case pmpName = "pmp_name"
-        case acceptedTermsId = "accepted_terms_id"
-        case acceptedTermsTime = "accepted_terms_time"
-        case budgetAmount = "budget_amount"
-        case estimatedMonthlySpend = "estimated_monthly_spend"
+        case poNumber = "po_number"
+        case salesforceOrderLineId = "salesforce_order_line_id"
+        case startDate = "start_date"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(salesforceOrderLineId, forKey: .salesforceOrderLineId)
+        try container.encodeIfPresent(acceptedTermsId, forKey: .acceptedTermsId)
+        try container.encodeIfPresent(acceptedTermsTime, forKey: .acceptedTermsTime)
         try container.encodeIfPresent(adsManagerOrderLineId, forKey: .adsManagerOrderLineId)
-        try container.encodeIfPresent(pinOrderId, forKey: .pinOrderId)
-        try container.encodeIfPresent(lastModifiedDateTime, forKey: .lastModifiedDateTime)
-        try container.encodeIfPresent(startDate, forKey: .startDate)
-        try container.encodeIfPresent(endDate, forKey: .endDate)
+        try container.encodeIfPresent(agencyLink, forKey: .agencyLink)
         try container.encodeIfPresent(billToCompanyName, forKey: .billToCompanyName)
+        try container.encodeIfPresent(billingContactEmail, forKey: .billingContactEmail)
         try container.encodeIfPresent(billingContactFirstname, forKey: .billingContactFirstname)
         try container.encodeIfPresent(billingContactLastname, forKey: .billingContactLastname)
-        try container.encodeIfPresent(billingContactEmail, forKey: .billingContactEmail)
+        try container.encodeIfPresent(budgetAmount, forKey: .budgetAmount)
+        try container.encodeIfPresent(currencyInfo, forKey: .currencyInfo)
+        try container.encodeIfPresent(endDate, forKey: .endDate)
+        try container.encodeIfPresent(estimatedMonthlySpend, forKey: .estimatedMonthlySpend)
+        try container.encodeIfPresent(lastModifiedDateTime, forKey: .lastModifiedDateTime)
         try container.encodeIfPresent(mediaContactEmail, forKey: .mediaContactEmail)
         try container.encodeIfPresent(mediaContactFirstname, forKey: .mediaContactFirstname)
         try container.encodeIfPresent(mediaContactLastname, forKey: .mediaContactLastname)
-        try container.encodeIfPresent(currencyInfo, forKey: .currencyInfo)
-        try container.encodeIfPresent(agencyLink, forKey: .agencyLink)
-        try container.encodeIfPresent(poNumber, forKey: .poNumber)
         try container.encodeIfPresent(orderName, forKey: .orderName)
+        try container.encodeIfPresent(pinOrderId, forKey: .pinOrderId)
         try container.encodeIfPresent(pmpName, forKey: .pmpName)
-        try container.encodeIfPresent(acceptedTermsId, forKey: .acceptedTermsId)
-        try container.encodeIfPresent(acceptedTermsTime, forKey: .acceptedTermsTime)
-        try container.encodeIfPresent(budgetAmount, forKey: .budgetAmount)
-        try container.encodeIfPresent(estimatedMonthlySpend, forKey: .estimatedMonthlySpend)
+        try container.encodeIfPresent(poNumber, forKey: .poNumber)
+        try container.encodeIfPresent(salesforceOrderLineId, forKey: .salesforceOrderLineId)
+        try container.encodeIfPresent(startDate, forKey: .startDate)
     }
 }
 

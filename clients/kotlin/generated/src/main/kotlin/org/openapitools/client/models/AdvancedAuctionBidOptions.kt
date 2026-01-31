@@ -24,20 +24,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing a retail catalog item's bid options (bid price and bid multipliers).
  *
- * @param bidInMicroCurrency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
  * @param appTypeMultipliers 
+ * @param bidInMicroCurrency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
  * @param placementMultipliers 
  */
 
 
 data class AdvancedAuctionBidOptions (
 
+    @Json(name = "app_type_multipliers")
+    val appTypeMultipliers: AppTypeMultipliers? = null,
+
     /* Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`. */
     @Json(name = "bid_in_micro_currency")
     val bidInMicroCurrency: kotlin.Long? = null,
-
-    @Json(name = "app_type_multipliers")
-    val appTypeMultipliers: AppTypeMultipliers? = null,
 
     @Json(name = "placement_multipliers")
     val placementMultipliers: PlacementMultipliers? = null

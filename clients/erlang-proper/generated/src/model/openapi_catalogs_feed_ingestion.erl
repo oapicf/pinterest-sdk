@@ -9,9 +9,9 @@
 -export_type([openapi_catalogs_feed_ingestion/0]).
 
 -type openapi_catalogs_feed_ingestion() ::
-  [ {'id', binary() }
+  [ {'created_at', datetime() }
   | {'feed_id', binary() }
-  | {'created_at', datetime() }
+  | {'id', binary() }
   | {'status', openapi_catalogs_feed_processing_status:openapi_catalogs_feed_processing_status() }
   ].
 
@@ -20,9 +20,9 @@ openapi_catalogs_feed_ingestion() ->
     openapi_catalogs_feed_ingestion([]).
 
 openapi_catalogs_feed_ingestion(Fields) ->
-  Default = [ {'id', binary() }
+  Default = [ {'created_at', datetime() }
             , {'feed_id', binary() }
-            , {'created_at', datetime() }
+            , {'id', binary() }
             , {'status', openapi_catalogs_feed_processing_status:openapi_catalogs_feed_processing_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**conversionTagsCreate**](OAIConversionTagsApi.md#conversiontagscreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**conversionTagsGet**](OAIConversionTagsApi.md#conversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**conversionTagsList**](OAIConversionTagsApi.md#conversiontagslist) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**conversionTagsList**](OAIConversionTagsApi.md#conversiontagslist) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**ocpmEligibleConversionTagsGet**](OAIConversionTagsApi.md#ocpmeligibleconversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**pageVisitConversionTagsGet**](OAIConversionTagsApi.md#pagevisitconversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
@@ -15,12 +15,12 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) conversionTagsCreateWithAdAccountId: (NSString*) adAccountId
     conversionTagCreate: (OAIConversionTagCreate*) conversionTagCreate
-        completionHandler: (void (^)(OAIConversionTagResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIConversionTag* output, NSError* error)) handler;
 ```
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 ```objc
@@ -31,14 +31,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIConversionTagCreate* conversionTagCreate = [[OAIConversionTagCreate alloc] init]; // Conversion Tag to create
+OAIConversionTagCreate* conversionTagCreate = [[OAIConversionTagCreate alloc] init]; // 
 
 OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 
 // Create conversion tag
 [apiInstance conversionTagsCreateWithAdAccountId:adAccountId
               conversionTagCreate:conversionTagCreate
-          completionHandler: ^(OAIConversionTagResponse* output, NSError* error) {
+          completionHandler: ^(OAIConversionTag* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -53,11 +53,11 @@ OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **conversionTagCreate** | [**OAIConversionTagCreate***](OAIConversionTagCreate.md)| Conversion Tag to create | 
+ **conversionTagCreate** | [**OAIConversionTagCreate***](OAIConversionTagCreate.md)|  | 
 
 ### Return type
 
-[**OAIConversionTagResponse***](OAIConversionTagResponse.md)
+[**OAIConversionTag***](OAIConversionTag.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) conversionTagsGetWithAdAccountId: (NSString*) adAccountId
     conversionTagId: (NSString*) conversionTagId
-        completionHandler: (void (^)(OAIConversionTagResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIConversionTag* output, NSError* error)) handler;
 ```
 
 Get conversion tag
@@ -88,6 +88,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* conversionTagId = 2617998078212; // Id of the conversion tag.
@@ -97,7 +100,7 @@ OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 // Get conversion tag
 [apiInstance conversionTagsGetWithAdAccountId:adAccountId
               conversionTagId:conversionTagId
-          completionHandler: ^(OAIConversionTagResponse* output, NSError* error) {
+          completionHandler: ^(OAIConversionTag* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -116,11 +119,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIConversionTagResponse***](OAIConversionTagResponse.md)
+[**OAIConversionTag***](OAIConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -133,10 +136,10 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) conversionTagsListWithAdAccountId: (NSString*) adAccountId
     filterDeleted: (NSNumber*) filterDeleted
-        completionHandler: (void (^)(OAIConversionTagListResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIConversionTagsList200Response* output, NSError* error)) handler;
 ```
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -147,16 +150,19 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* filterDeleted = true; // Filter out deleted tags. (optional) (default to @(NO))
+NSNumber* filterDeleted = @(NO); // Filter by deleted status (optional) (default to @(NO))
 
 OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 
-// Get conversion tags
+// List conversion tags
 [apiInstance conversionTagsListWithAdAccountId:adAccountId
               filterDeleted:filterDeleted
-          completionHandler: ^(OAIConversionTagListResponse* output, NSError* error) {
+          completionHandler: ^(OAIConversionTagsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -171,15 +177,15 @@ OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **filterDeleted** | **NSNumber***| Filter out deleted tags. | [optional] [default to @(NO)]
+ **filterDeleted** | **NSNumber***| Filter by deleted status | [optional] [default to @(NO)]
 
 ### Return type
 
-[**OAIConversionTagListResponse***](OAIConversionTagListResponse.md)
+[**OAIConversionTagsList200Response***](OAIConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -203,6 +209,9 @@ Get Ocpm eligible conversion tag events for an ad account.
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -234,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -261,6 +270,9 @@ Get all page visit conversion tag events for an ad account.
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -301,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

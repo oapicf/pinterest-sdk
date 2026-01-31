@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &TrendingKeywordsResponse{}
 // TrendingKeywordsResponse struct for TrendingKeywordsResponse
 type TrendingKeywordsResponse struct {
 	// The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
-	Trends []TrendingKeywordsResponseTrendsInner `json:"trends,omitempty"`
+	Trends []TrendingKeyword `json:"trends,omitempty"`
 }
 
 // NewTrendingKeywordsResponse instantiates a new TrendingKeywordsResponse object
@@ -42,9 +42,9 @@ func NewTrendingKeywordsResponseWithDefaults() *TrendingKeywordsResponse {
 }
 
 // GetTrends returns the Trends field value if set, zero value otherwise.
-func (o *TrendingKeywordsResponse) GetTrends() []TrendingKeywordsResponseTrendsInner {
+func (o *TrendingKeywordsResponse) GetTrends() []TrendingKeyword {
 	if o == nil || IsNil(o.Trends) {
-		var ret []TrendingKeywordsResponseTrendsInner
+		var ret []TrendingKeyword
 		return ret
 	}
 	return o.Trends
@@ -52,7 +52,7 @@ func (o *TrendingKeywordsResponse) GetTrends() []TrendingKeywordsResponseTrendsI
 
 // GetTrendsOk returns a tuple with the Trends field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrendingKeywordsResponse) GetTrendsOk() ([]TrendingKeywordsResponseTrendsInner, bool) {
+func (o *TrendingKeywordsResponse) GetTrendsOk() ([]TrendingKeyword, bool) {
 	if o == nil || IsNil(o.Trends) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *TrendingKeywordsResponse) HasTrends() bool {
 	return false
 }
 
-// SetTrends gets a reference to the given []TrendingKeywordsResponseTrendsInner and assigns it to the Trends field.
-func (o *TrendingKeywordsResponse) SetTrends(v []TrendingKeywordsResponseTrendsInner) {
+// SetTrends gets a reference to the given []TrendingKeyword and assigns it to the Trends field.
+func (o *TrendingKeywordsResponse) SetTrends(v []TrendingKeyword) {
 	o.Trends = v
 }
 

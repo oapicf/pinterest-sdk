@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`partnerId` | string
 `assetId` | string
+`partnerId` | string
 `partnerType` | string
 
 ## Example
@@ -17,8 +17,8 @@ import type { DeletePartnerAssetAccessBodyAccessesInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "partnerId": 1234567890123,
   "assetId": 549755885175,
+  "partnerId": 1234567890123,
   "partnerType": INTERNAL,
 } satisfies DeletePartnerAssetAccessBodyAccessesInner
 

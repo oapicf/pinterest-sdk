@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &ProductGroupPromotionCreateRequest{}
 type ProductGroupPromotionCreateRequest struct {
 	// ID of the Ad Group the Product Group Promotion belongs to.
 	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\\\d+$"`
-	ProductGroupPromotion []ProductGroupPromotionCreateRequestElement `json:"product_group_promotion"`
+	ProductGroupPromotion []ProductGroupPromotion `json:"product_group_promotion"`
 }
 
 type _ProductGroupPromotionCreateRequest ProductGroupPromotionCreateRequest
@@ -33,7 +33,7 @@ type _ProductGroupPromotionCreateRequest ProductGroupPromotionCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductGroupPromotionCreateRequest(adGroupId string, productGroupPromotion []ProductGroupPromotionCreateRequestElement) *ProductGroupPromotionCreateRequest {
+func NewProductGroupPromotionCreateRequest(adGroupId string, productGroupPromotion []ProductGroupPromotion) *ProductGroupPromotionCreateRequest {
 	this := ProductGroupPromotionCreateRequest{}
 	this.AdGroupId = adGroupId
 	this.ProductGroupPromotion = productGroupPromotion
@@ -73,9 +73,9 @@ func (o *ProductGroupPromotionCreateRequest) SetAdGroupId(v string) {
 }
 
 // GetProductGroupPromotion returns the ProductGroupPromotion field value
-func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotion() []ProductGroupPromotionCreateRequestElement {
+func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotion() []ProductGroupPromotion {
 	if o == nil {
-		var ret []ProductGroupPromotionCreateRequestElement
+		var ret []ProductGroupPromotion
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotion() []Produc
 
 // GetProductGroupPromotionOk returns a tuple with the ProductGroupPromotion field value
 // and a boolean to check if the value has been set.
-func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotionOk() ([]ProductGroupPromotionCreateRequestElement, bool) {
+func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotionOk() ([]ProductGroupPromotion, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotionOk() ([]Pro
 }
 
 // SetProductGroupPromotion sets field value
-func (o *ProductGroupPromotionCreateRequest) SetProductGroupPromotion(v []ProductGroupPromotionCreateRequestElement) {
+func (o *ProductGroupPromotionCreateRequest) SetProductGroupPromotion(v []ProductGroupPromotion) {
 	o.ProductGroupPromotion = v
 }
 

@@ -23,17 +23,18 @@ AdsAnalyticsCreateAsyncRequest::~AdsAnalyticsCreateAsyncRequest()
 void
 AdsAnalyticsCreateAsyncRequest::__init()
 {
-	//start_date = std::string();
-	//end_date = std::string();
-	//granularity = std::string();
-	//click_window_days = int(0);
-	//engagement_window_days = int(0);
-	//view_window_days = int(0);
-	//conversion_report_time = std::string();
 	//new std::list()std::list> attribution_types;
+	//click_window_days = int(0);
+	//conversion_report_time = std::string();
+	//end_date = std::string();
+	//engagement_window_days = int(0);
+	//granularity = std::string();
+	//start_date = std::string();
+	//view_window_days = int(0);
 	//new std::list()std::list> campaign_ids;
 	//new std::list()std::list> campaign_statuses;
 	//new std::list()std::list> campaign_objective_types;
+	//campaign_brand_label = std::string();
 	//new std::list()std::list> ad_group_ids;
 	//new std::list()std::list> ad_group_statuses;
 	//new std::list()std::list> ad_ids;
@@ -44,55 +45,58 @@ AdsAnalyticsCreateAsyncRequest::__init()
 	//new std::list()std::list> targeting_types;
 	//new std::list()std::list> metrics_filters;
 	//new std::list()std::list> columns;
-	//level = std::string();
-	//report_format = std::string();
-	//primary_sort = std::string();
-	//start_hour = int(0);
+	//combine_targeting_types = bool(false);
+	//new std::list()std::list> custom_conversion_event_metrics;
 	//end_hour = int(0);
+	//level = std::string();
+	//primary_sort = std::string();
+	//report_format = std::string();
+	//reporting_timezone = null;
+	//start_hour = int(0);
 }
 
 void
 AdsAnalyticsCreateAsyncRequest::__cleanup()
 {
-	//if(start_date != NULL) {
-	//
-	//delete start_date;
-	//start_date = NULL;
-	//}
-	//if(end_date != NULL) {
-	//
-	//delete end_date;
-	//end_date = NULL;
-	//}
-	//if(granularity != NULL) {
-	//
-	//delete granularity;
-	//granularity = NULL;
+	//if(attribution_types != NULL) {
+	//attribution_types.RemoveAll(true);
+	//delete attribution_types;
+	//attribution_types = NULL;
 	//}
 	//if(click_window_days != NULL) {
 	//
 	//delete click_window_days;
 	//click_window_days = NULL;
 	//}
-	//if(engagement_window_days != NULL) {
-	//
-	//delete engagement_window_days;
-	//engagement_window_days = NULL;
-	//}
-	//if(view_window_days != NULL) {
-	//
-	//delete view_window_days;
-	//view_window_days = NULL;
-	//}
 	//if(conversion_report_time != NULL) {
 	//
 	//delete conversion_report_time;
 	//conversion_report_time = NULL;
 	//}
-	//if(attribution_types != NULL) {
-	//attribution_types.RemoveAll(true);
-	//delete attribution_types;
-	//attribution_types = NULL;
+	//if(end_date != NULL) {
+	//
+	//delete end_date;
+	//end_date = NULL;
+	//}
+	//if(engagement_window_days != NULL) {
+	//
+	//delete engagement_window_days;
+	//engagement_window_days = NULL;
+	//}
+	//if(granularity != NULL) {
+	//
+	//delete granularity;
+	//granularity = NULL;
+	//}
+	//if(start_date != NULL) {
+	//
+	//delete start_date;
+	//start_date = NULL;
+	//}
+	//if(view_window_days != NULL) {
+	//
+	//delete view_window_days;
+	//view_window_days = NULL;
 	//}
 	//if(campaign_ids != NULL) {
 	//campaign_ids.RemoveAll(true);
@@ -108,6 +112,11 @@ AdsAnalyticsCreateAsyncRequest::__cleanup()
 	//campaign_objective_types.RemoveAll(true);
 	//delete campaign_objective_types;
 	//campaign_objective_types = NULL;
+	//}
+	//if(campaign_brand_label != NULL) {
+	//
+	//delete campaign_brand_label;
+	//campaign_brand_label = NULL;
 	//}
 	//if(ad_group_ids != NULL) {
 	//ad_group_ids.RemoveAll(true);
@@ -159,30 +168,45 @@ AdsAnalyticsCreateAsyncRequest::__cleanup()
 	//delete columns;
 	//columns = NULL;
 	//}
+	//if(combine_targeting_types != NULL) {
+	//
+	//delete combine_targeting_types;
+	//combine_targeting_types = NULL;
+	//}
+	//if(custom_conversion_event_metrics != NULL) {
+	//custom_conversion_event_metrics.RemoveAll(true);
+	//delete custom_conversion_event_metrics;
+	//custom_conversion_event_metrics = NULL;
+	//}
+	//if(end_hour != NULL) {
+	//
+	//delete end_hour;
+	//end_hour = NULL;
+	//}
 	//if(level != NULL) {
 	//
 	//delete level;
 	//level = NULL;
-	//}
-	//if(report_format != NULL) {
-	//
-	//delete report_format;
-	//report_format = NULL;
 	//}
 	//if(primary_sort != NULL) {
 	//
 	//delete primary_sort;
 	//primary_sort = NULL;
 	//}
+	//if(report_format != NULL) {
+	//
+	//delete report_format;
+	//report_format = NULL;
+	//}
+	//if(reporting_timezone != NULL) {
+	//
+	//delete reporting_timezone;
+	//reporting_timezone = NULL;
+	//}
 	//if(start_hour != NULL) {
 	//
 	//delete start_hour;
 	//start_hour = NULL;
-	//}
-	//if(end_hour != NULL) {
-	//
-	//delete end_hour;
-	//end_hour = NULL;
 	//}
 	//
 }
@@ -192,98 +216,6 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *start_dateKey = "start_date";
-	node = json_object_get_member(pJsonObject, start_dateKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&start_date, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *end_dateKey = "end_date";
-	node = json_object_get_member(pJsonObject, end_dateKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&end_date, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *granularityKey = "granularity";
-	node = json_object_get_member(pJsonObject, granularityKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Granularity")) {
-			jsonToValue(&granularity, node, "Granularity", "Granularity");
-		} else {
-			
-			Granularity* obj = static_cast<Granularity*> (&granularity);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *click_window_daysKey = "click_window_days";
-	node = json_object_get_member(pJsonObject, click_window_daysKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ConversionAttributionWindowDays")) {
-			jsonToValue(&click_window_days, node, "ConversionAttributionWindowDays", "ConversionAttributionWindowDays");
-		} else {
-			
-			ConversionAttributionWindowDays* obj = static_cast<ConversionAttributionWindowDays*> (&click_window_days);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *engagement_window_daysKey = "engagement_window_days";
-	node = json_object_get_member(pJsonObject, engagement_window_daysKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ConversionAttributionWindowDays")) {
-			jsonToValue(&engagement_window_days, node, "ConversionAttributionWindowDays", "ConversionAttributionWindowDays");
-		} else {
-			
-			ConversionAttributionWindowDays* obj = static_cast<ConversionAttributionWindowDays*> (&engagement_window_days);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *view_window_daysKey = "view_window_days";
-	node = json_object_get_member(pJsonObject, view_window_daysKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ConversionAttributionWindowDays")) {
-			jsonToValue(&view_window_days, node, "ConversionAttributionWindowDays", "ConversionAttributionWindowDays");
-		} else {
-			
-			ConversionAttributionWindowDays* obj = static_cast<ConversionAttributionWindowDays*> (&view_window_days);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *conversion_report_timeKey = "conversion_report_time";
-	node = json_object_get_member(pJsonObject, conversion_report_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ConversionReportTimeType")) {
-			jsonToValue(&conversion_report_time, node, "ConversionReportTimeType", "ConversionReportTimeType");
-		} else {
-			
-			ConversionReportTimeType* obj = static_cast<ConversionReportTimeType*> (&conversion_report_time);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *attribution_typesKey = "attribution_types";
 	node = json_object_get_member(pJsonObject, attribution_typesKey);
 	if (node !=NULL) {
@@ -307,6 +239,98 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 			attribution_types = new_list;
 		}
 		
+	}
+	const gchar *click_window_daysKey = "click_window_days";
+	node = json_object_get_member(pJsonObject, click_window_daysKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ConversionAttributionWindowDays")) {
+			jsonToValue(&click_window_days, node, "ConversionAttributionWindowDays", "ConversionAttributionWindowDays");
+		} else {
+			
+			ConversionAttributionWindowDays* obj = static_cast<ConversionAttributionWindowDays*> (&click_window_days);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *conversion_report_timeKey = "conversion_report_time";
+	node = json_object_get_member(pJsonObject, conversion_report_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ConversionReportTimeType")) {
+			jsonToValue(&conversion_report_time, node, "ConversionReportTimeType", "ConversionReportTimeType");
+		} else {
+			
+			ConversionReportTimeType* obj = static_cast<ConversionReportTimeType*> (&conversion_report_time);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *end_dateKey = "end_date";
+	node = json_object_get_member(pJsonObject, end_dateKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&end_date, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *engagement_window_daysKey = "engagement_window_days";
+	node = json_object_get_member(pJsonObject, engagement_window_daysKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ConversionAttributionWindowDays")) {
+			jsonToValue(&engagement_window_days, node, "ConversionAttributionWindowDays", "ConversionAttributionWindowDays");
+		} else {
+			
+			ConversionAttributionWindowDays* obj = static_cast<ConversionAttributionWindowDays*> (&engagement_window_days);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *granularityKey = "granularity";
+	node = json_object_get_member(pJsonObject, granularityKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Granularity")) {
+			jsonToValue(&granularity, node, "Granularity", "Granularity");
+		} else {
+			
+			Granularity* obj = static_cast<Granularity*> (&granularity);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *start_dateKey = "start_date";
+	node = json_object_get_member(pJsonObject, start_dateKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&start_date, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *view_window_daysKey = "view_window_days";
+	node = json_object_get_member(pJsonObject, view_window_daysKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ConversionAttributionWindowDays")) {
+			jsonToValue(&view_window_days, node, "ConversionAttributionWindowDays", "ConversionAttributionWindowDays");
+		} else {
+			
+			ConversionAttributionWindowDays* obj = static_cast<ConversionAttributionWindowDays*> (&view_window_days);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
 	}
 	const gchar *campaign_idsKey = "campaign_ids";
 	node = json_object_get_member(pJsonObject, campaign_idsKey);
@@ -377,6 +401,17 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 			campaign_objective_types = new_list;
 		}
 		
+	}
+	const gchar *campaign_brand_labelKey = "campaign_brand_label";
+	node = json_object_get_member(pJsonObject, campaign_brand_labelKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&campaign_brand_label, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *ad_group_idsKey = "ad_group_ids";
 	node = json_object_get_member(pJsonObject, ad_group_idsKey);
@@ -545,15 +580,13 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<AdsAnalyticsTargetingType> new_list;
-			AdsAnalyticsTargetingType inst;
+			list<std::string> new_list;
+			std::string inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("AdsAnalyticsTargetingType")) {
-					jsonToValue(&inst, temp_json, "AdsAnalyticsTargetingType", "");
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
 				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
 					
 				}
 				new_list.push_back(inst);
@@ -610,6 +643,52 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *combine_targeting_typesKey = "combine_targeting_types";
+	node = json_object_get_member(pJsonObject, combine_targeting_typesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&combine_targeting_types, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *custom_conversion_event_metricsKey = "custom_conversion_event_metrics";
+	node = json_object_get_member(pJsonObject, custom_conversion_event_metricsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics> new_list;
+			AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics")) {
+					jsonToValue(&inst, temp_json, "AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			custom_conversion_event_metrics = new_list;
+		}
+		
+	}
+	const gchar *end_hourKey = "end_hour";
+	node = json_object_get_member(pJsonObject, end_hourKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&end_hour, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *levelKey = "level";
 	node = json_object_get_member(pJsonObject, levelKey);
 	if (node !=NULL) {
@@ -621,6 +700,17 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 			
 			MetricsReportingLevel* obj = static_cast<MetricsReportingLevel*> (&level);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *primary_sortKey = "primary_sort";
+	node = json_object_get_member(pJsonObject, primary_sortKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&primary_sort, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -638,14 +728,17 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *primary_sortKey = "primary_sort";
-	node = json_object_get_member(pJsonObject, primary_sortKey);
+	const gchar *reporting_timezoneKey = "reporting_timezone";
+	node = json_object_get_member(pJsonObject, reporting_timezoneKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&primary_sort, node, "std::string", "");
+		if (isprimitive("ReportingTimeZone")) {
+			jsonToValue(&reporting_timezone, node, "ReportingTimeZone", "ReportingTimeZone");
 		} else {
+			
+			ReportingTimeZone* obj = static_cast<ReportingTimeZone*> (&reporting_timezone);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -656,17 +749,6 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&start_hour, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *end_hourKey = "end_hour";
-	node = json_object_get_member(pJsonObject, end_hourKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&end_hour, node, "int", "");
 		} else {
 			
 		}
@@ -683,94 +765,6 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getStartDate();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *start_dateKey = "start_date";
-	json_object_set_member(pJsonObject, start_dateKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getEndDate();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *end_dateKey = "end_date";
-	json_object_set_member(pJsonObject, end_dateKey, node);
-	if (isprimitive("Granularity")) {
-		Granularity obj = getGranularity();
-		node = converttoJson(&obj, "Granularity", "");
-	}
-	else {
-		
-		Granularity obj = static_cast<Granularity> (getGranularity());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *granularityKey = "granularity";
-	json_object_set_member(pJsonObject, granularityKey, node);
-	if (isprimitive("ConversionAttributionWindowDays")) {
-		ConversionAttributionWindowDays obj = getClickWindowDays();
-		node = converttoJson(&obj, "ConversionAttributionWindowDays", "");
-	}
-	else {
-		
-		ConversionAttributionWindowDays obj = static_cast<ConversionAttributionWindowDays> (getClickWindowDays());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *click_window_daysKey = "click_window_days";
-	json_object_set_member(pJsonObject, click_window_daysKey, node);
-	if (isprimitive("ConversionAttributionWindowDays")) {
-		ConversionAttributionWindowDays obj = getEngagementWindowDays();
-		node = converttoJson(&obj, "ConversionAttributionWindowDays", "");
-	}
-	else {
-		
-		ConversionAttributionWindowDays obj = static_cast<ConversionAttributionWindowDays> (getEngagementWindowDays());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *engagement_window_daysKey = "engagement_window_days";
-	json_object_set_member(pJsonObject, engagement_window_daysKey, node);
-	if (isprimitive("ConversionAttributionWindowDays")) {
-		ConversionAttributionWindowDays obj = getViewWindowDays();
-		node = converttoJson(&obj, "ConversionAttributionWindowDays", "");
-	}
-	else {
-		
-		ConversionAttributionWindowDays obj = static_cast<ConversionAttributionWindowDays> (getViewWindowDays());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *view_window_daysKey = "view_window_days";
-	json_object_set_member(pJsonObject, view_window_daysKey, node);
-	if (isprimitive("ConversionReportTimeType")) {
-		ConversionReportTimeType obj = getConversionReportTime();
-		node = converttoJson(&obj, "ConversionReportTimeType", "");
-	}
-	else {
-		
-		ConversionReportTimeType obj = static_cast<ConversionReportTimeType> (getConversionReportTime());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *conversion_report_timeKey = "conversion_report_time";
-	json_object_set_member(pJsonObject, conversion_report_timeKey, node);
 	if (isprimitive("ConversionReportAttributionType")) {
 		list<ConversionReportAttributionType> new_list = static_cast<list <ConversionReportAttributionType> > (getAttributionTypes());
 		node = converttoJson(&new_list, "ConversionReportAttributionType", "array");
@@ -796,6 +790,94 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	
 	const gchar *attribution_typesKey = "attribution_types";
 	json_object_set_member(pJsonObject, attribution_typesKey, node);
+	if (isprimitive("ConversionAttributionWindowDays")) {
+		ConversionAttributionWindowDays obj = getClickWindowDays();
+		node = converttoJson(&obj, "ConversionAttributionWindowDays", "");
+	}
+	else {
+		
+		ConversionAttributionWindowDays obj = static_cast<ConversionAttributionWindowDays> (getClickWindowDays());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *click_window_daysKey = "click_window_days";
+	json_object_set_member(pJsonObject, click_window_daysKey, node);
+	if (isprimitive("ConversionReportTimeType")) {
+		ConversionReportTimeType obj = getConversionReportTime();
+		node = converttoJson(&obj, "ConversionReportTimeType", "");
+	}
+	else {
+		
+		ConversionReportTimeType obj = static_cast<ConversionReportTimeType> (getConversionReportTime());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *conversion_report_timeKey = "conversion_report_time";
+	json_object_set_member(pJsonObject, conversion_report_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getEndDate();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *end_dateKey = "end_date";
+	json_object_set_member(pJsonObject, end_dateKey, node);
+	if (isprimitive("ConversionAttributionWindowDays")) {
+		ConversionAttributionWindowDays obj = getEngagementWindowDays();
+		node = converttoJson(&obj, "ConversionAttributionWindowDays", "");
+	}
+	else {
+		
+		ConversionAttributionWindowDays obj = static_cast<ConversionAttributionWindowDays> (getEngagementWindowDays());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *engagement_window_daysKey = "engagement_window_days";
+	json_object_set_member(pJsonObject, engagement_window_daysKey, node);
+	if (isprimitive("Granularity")) {
+		Granularity obj = getGranularity();
+		node = converttoJson(&obj, "Granularity", "");
+	}
+	else {
+		
+		Granularity obj = static_cast<Granularity> (getGranularity());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *granularityKey = "granularity";
+	json_object_set_member(pJsonObject, granularityKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getStartDate();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *start_dateKey = "start_date";
+	json_object_set_member(pJsonObject, start_dateKey, node);
+	if (isprimitive("ConversionAttributionWindowDays")) {
+		ConversionAttributionWindowDays obj = getViewWindowDays();
+		node = converttoJson(&obj, "ConversionAttributionWindowDays", "");
+	}
+	else {
+		
+		ConversionAttributionWindowDays obj = static_cast<ConversionAttributionWindowDays> (getViewWindowDays());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *view_window_daysKey = "view_window_days";
+	json_object_set_member(pJsonObject, view_window_daysKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getCampaignIds());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -861,6 +943,15 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	
 	const gchar *campaign_objective_typesKey = "campaign_objective_types";
 	json_object_set_member(pJsonObject, campaign_objective_typesKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCampaignBrandLabel();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *campaign_brand_labelKey = "campaign_brand_label";
+	json_object_set_member(pJsonObject, campaign_brand_labelKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getAdGroupIds());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -996,24 +1087,14 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	
 	const gchar *product_item_idsKey = "product_item_ids";
 	json_object_set_member(pJsonObject, product_item_idsKey, node);
-	if (isprimitive("AdsAnalyticsTargetingType")) {
-		list<AdsAnalyticsTargetingType> new_list = static_cast<list <AdsAnalyticsTargetingType> > (getTargetingTypes());
-		node = converttoJson(&new_list, "AdsAnalyticsTargetingType", "array");
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getTargetingTypes());
+		node = converttoJson(&new_list, "std::string", "array");
 	} else {
 		node = json_node_alloc();
-		list<AdsAnalyticsTargetingType> new_list = static_cast<list <AdsAnalyticsTargetingType> > (getTargetingTypes());
+		list<std::string> new_list = static_cast<list <std::string> > (getTargetingTypes());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
-		
-		for (list<AdsAnalyticsTargetingType>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			AdsAnalyticsTargetingType obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
 		
 	}
 
@@ -1071,6 +1152,49 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	
 	const gchar *columnsKey = "columns";
 	json_object_set_member(pJsonObject, columnsKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getCombineTargetingTypes();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *combine_targeting_typesKey = "combine_targeting_types";
+	json_object_set_member(pJsonObject, combine_targeting_typesKey, node);
+	if (isprimitive("AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics")) {
+		list<AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics> new_list = static_cast<list <AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics> > (getCustomConversionEventMetrics());
+		node = converttoJson(&new_list, "AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics", "array");
+	} else {
+		node = json_node_alloc();
+		list<AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics> new_list = static_cast<list <AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics> > (getCustomConversionEventMetrics());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *custom_conversion_event_metricsKey = "custom_conversion_event_metrics";
+	json_object_set_member(pJsonObject, custom_conversion_event_metricsKey, node);
+	if (isprimitive("int")) {
+		int obj = getEndHour();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *end_hourKey = "end_hour";
+	json_object_set_member(pJsonObject, end_hourKey, node);
 	if (isprimitive("MetricsReportingLevel")) {
 		MetricsReportingLevel obj = getLevel();
 		node = converttoJson(&obj, "MetricsReportingLevel", "");
@@ -1085,6 +1209,15 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	}
 	const gchar *levelKey = "level";
 	json_object_set_member(pJsonObject, levelKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPrimarySort();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *primary_sortKey = "primary_sort";
+	json_object_set_member(pJsonObject, primary_sortKey, node);
 	if (isprimitive("DataOutputFormat")) {
 		DataOutputFormat obj = getReportFormat();
 		node = converttoJson(&obj, "DataOutputFormat", "");
@@ -1099,15 +1232,20 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	}
 	const gchar *report_formatKey = "report_format";
 	json_object_set_member(pJsonObject, report_formatKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPrimarySort();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("ReportingTimeZone")) {
+		ReportingTimeZone obj = getReportingTimezone();
+		node = converttoJson(&obj, "ReportingTimeZone", "");
 	}
 	else {
 		
+		ReportingTimeZone obj = static_cast<ReportingTimeZone> (getReportingTimezone());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *primary_sortKey = "primary_sort";
-	json_object_set_member(pJsonObject, primary_sortKey, node);
+	const gchar *reporting_timezoneKey = "reporting_timezone";
+	json_object_set_member(pJsonObject, reporting_timezoneKey, node);
 	if (isprimitive("int")) {
 		int obj = getStartHour();
 		node = converttoJson(&obj, "int", "");
@@ -1117,15 +1255,6 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	}
 	const gchar *start_hourKey = "start_hour";
 	json_object_set_member(pJsonObject, start_hourKey, node);
-	if (isprimitive("int")) {
-		int obj = getEndHour();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *end_hourKey = "end_hour";
-	json_object_set_member(pJsonObject, end_hourKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -1134,40 +1263,16 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	return ret;
 }
 
-std::string
-AdsAnalyticsCreateAsyncRequest::getStartDate()
+std::list<ConversionReportAttributionType>
+AdsAnalyticsCreateAsyncRequest::getAttributionTypes()
 {
-	return start_date;
+	return attribution_types;
 }
 
 void
-AdsAnalyticsCreateAsyncRequest::setStartDate(std::string  start_date)
+AdsAnalyticsCreateAsyncRequest::setAttributionTypes(std::list <ConversionReportAttributionType> attribution_types)
 {
-	this->start_date = start_date;
-}
-
-std::string
-AdsAnalyticsCreateAsyncRequest::getEndDate()
-{
-	return end_date;
-}
-
-void
-AdsAnalyticsCreateAsyncRequest::setEndDate(std::string  end_date)
-{
-	this->end_date = end_date;
-}
-
-Granularity
-AdsAnalyticsCreateAsyncRequest::getGranularity()
-{
-	return granularity;
-}
-
-void
-AdsAnalyticsCreateAsyncRequest::setGranularity(Granularity  granularity)
-{
-	this->granularity = granularity;
+	this->attribution_types = attribution_types;
 }
 
 ConversionAttributionWindowDays
@@ -1182,30 +1287,6 @@ AdsAnalyticsCreateAsyncRequest::setClickWindowDays(ConversionAttributionWindowDa
 	this->click_window_days = click_window_days;
 }
 
-ConversionAttributionWindowDays
-AdsAnalyticsCreateAsyncRequest::getEngagementWindowDays()
-{
-	return engagement_window_days;
-}
-
-void
-AdsAnalyticsCreateAsyncRequest::setEngagementWindowDays(ConversionAttributionWindowDays  engagement_window_days)
-{
-	this->engagement_window_days = engagement_window_days;
-}
-
-ConversionAttributionWindowDays
-AdsAnalyticsCreateAsyncRequest::getViewWindowDays()
-{
-	return view_window_days;
-}
-
-void
-AdsAnalyticsCreateAsyncRequest::setViewWindowDays(ConversionAttributionWindowDays  view_window_days)
-{
-	this->view_window_days = view_window_days;
-}
-
 ConversionReportTimeType
 AdsAnalyticsCreateAsyncRequest::getConversionReportTime()
 {
@@ -1218,16 +1299,64 @@ AdsAnalyticsCreateAsyncRequest::setConversionReportTime(ConversionReportTimeType
 	this->conversion_report_time = conversion_report_time;
 }
 
-std::list<ConversionReportAttributionType>
-AdsAnalyticsCreateAsyncRequest::getAttributionTypes()
+std::string
+AdsAnalyticsCreateAsyncRequest::getEndDate()
 {
-	return attribution_types;
+	return end_date;
 }
 
 void
-AdsAnalyticsCreateAsyncRequest::setAttributionTypes(std::list <ConversionReportAttributionType> attribution_types)
+AdsAnalyticsCreateAsyncRequest::setEndDate(std::string  end_date)
 {
-	this->attribution_types = attribution_types;
+	this->end_date = end_date;
+}
+
+ConversionAttributionWindowDays
+AdsAnalyticsCreateAsyncRequest::getEngagementWindowDays()
+{
+	return engagement_window_days;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setEngagementWindowDays(ConversionAttributionWindowDays  engagement_window_days)
+{
+	this->engagement_window_days = engagement_window_days;
+}
+
+Granularity
+AdsAnalyticsCreateAsyncRequest::getGranularity()
+{
+	return granularity;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setGranularity(Granularity  granularity)
+{
+	this->granularity = granularity;
+}
+
+std::string
+AdsAnalyticsCreateAsyncRequest::getStartDate()
+{
+	return start_date;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setStartDate(std::string  start_date)
+{
+	this->start_date = start_date;
+}
+
+ConversionAttributionWindowDays
+AdsAnalyticsCreateAsyncRequest::getViewWindowDays()
+{
+	return view_window_days;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setViewWindowDays(ConversionAttributionWindowDays  view_window_days)
+{
+	this->view_window_days = view_window_days;
 }
 
 std::list<std::string>
@@ -1264,6 +1393,18 @@ void
 AdsAnalyticsCreateAsyncRequest::setCampaignObjectiveTypes(std::list <ObjectiveType> campaign_objective_types)
 {
 	this->campaign_objective_types = campaign_objective_types;
+}
+
+std::string
+AdsAnalyticsCreateAsyncRequest::getCampaignBrandLabel()
+{
+	return campaign_brand_label;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setCampaignBrandLabel(std::string  campaign_brand_label)
+{
+	this->campaign_brand_label = campaign_brand_label;
 }
 
 std::list<std::string>
@@ -1350,14 +1491,14 @@ AdsAnalyticsCreateAsyncRequest::setProductItemIds(std::list <std::string> produc
 	this->product_item_ids = product_item_ids;
 }
 
-std::list<AdsAnalyticsTargetingType>
+std::list<std::string>
 AdsAnalyticsCreateAsyncRequest::getTargetingTypes()
 {
 	return targeting_types;
 }
 
 void
-AdsAnalyticsCreateAsyncRequest::setTargetingTypes(std::list <AdsAnalyticsTargetingType> targeting_types)
+AdsAnalyticsCreateAsyncRequest::setTargetingTypes(std::list <std::string> targeting_types)
 {
 	this->targeting_types = targeting_types;
 }
@@ -1386,6 +1527,42 @@ AdsAnalyticsCreateAsyncRequest::setColumns(std::list <ReportingColumnAsync> colu
 	this->columns = columns;
 }
 
+bool
+AdsAnalyticsCreateAsyncRequest::getCombineTargetingTypes()
+{
+	return combine_targeting_types;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setCombineTargetingTypes(bool  combine_targeting_types)
+{
+	this->combine_targeting_types = combine_targeting_types;
+}
+
+std::list<AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics>
+AdsAnalyticsCreateAsyncRequest::getCustomConversionEventMetrics()
+{
+	return custom_conversion_event_metrics;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setCustomConversionEventMetrics(std::list <AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics> custom_conversion_event_metrics)
+{
+	this->custom_conversion_event_metrics = custom_conversion_event_metrics;
+}
+
+int
+AdsAnalyticsCreateAsyncRequest::getEndHour()
+{
+	return end_hour;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setEndHour(int  end_hour)
+{
+	this->end_hour = end_hour;
+}
+
 MetricsReportingLevel
 AdsAnalyticsCreateAsyncRequest::getLevel()
 {
@@ -1396,18 +1573,6 @@ void
 AdsAnalyticsCreateAsyncRequest::setLevel(MetricsReportingLevel  level)
 {
 	this->level = level;
-}
-
-DataOutputFormat
-AdsAnalyticsCreateAsyncRequest::getReportFormat()
-{
-	return report_format;
-}
-
-void
-AdsAnalyticsCreateAsyncRequest::setReportFormat(DataOutputFormat  report_format)
-{
-	this->report_format = report_format;
 }
 
 std::string
@@ -1422,6 +1587,30 @@ AdsAnalyticsCreateAsyncRequest::setPrimarySort(std::string  primary_sort)
 	this->primary_sort = primary_sort;
 }
 
+DataOutputFormat
+AdsAnalyticsCreateAsyncRequest::getReportFormat()
+{
+	return report_format;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setReportFormat(DataOutputFormat  report_format)
+{
+	this->report_format = report_format;
+}
+
+ReportingTimeZone
+AdsAnalyticsCreateAsyncRequest::getReportingTimezone()
+{
+	return reporting_timezone;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setReportingTimezone(ReportingTimeZone  reporting_timezone)
+{
+	this->reporting_timezone = reporting_timezone;
+}
+
 int
 AdsAnalyticsCreateAsyncRequest::getStartHour()
 {
@@ -1432,18 +1621,6 @@ void
 AdsAnalyticsCreateAsyncRequest::setStartHour(int  start_hour)
 {
 	this->start_hour = start_hour;
-}
-
-int
-AdsAnalyticsCreateAsyncRequest::getEndHour()
-{
-	return end_hour;
-}
-
-void
-AdsAnalyticsCreateAsyncRequest::setEndHour(int  end_hour)
-{
-	this->end_hour = end_hour;
 }
 
 

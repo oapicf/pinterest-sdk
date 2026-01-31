@@ -4,7 +4,11 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.GetBusinessAssetsResponseCatalogInfo;
+import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -20,14 +24,36 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "GetBusinessAssetsResponse", description = "An object containing the permissions a business has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetBusinessAssetsResponse {
+
+  private AssetGroupBinding assetGroupInfo;
 
   private String assetId;
 
   private String assetType;
 
-  private AssetGroupBinding assetGroupInfo;
+  private JsonNullable<GetBusinessAssetsResponseCatalogInfo> catalogInfo = JsonNullable.<GetBusinessAssetsResponseCatalogInfo>undefined();
+
+  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
+
+  /**
+   * Get assetGroupInfo
+   * @return assetGroupInfo
+   */
+  @Valid 
+  @Schema(name = "asset_group_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("asset_group_info")
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
 
   public GetBusinessAssetsResponse assetId(String assetId) {
     this.assetId = assetId;
@@ -55,11 +81,11 @@ public class GetBusinessAssetsResponse {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
    */
   
-  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
@@ -69,24 +95,24 @@ public class GetBusinessAssetsResponse {
     this.assetType = assetType;
   }
 
-  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public GetBusinessAssetsResponse catalogInfo(GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.catalogInfo = JsonNullable.of(catalogInfo);
     return this;
   }
 
   /**
-   * Get assetGroupInfo
-   * @return assetGroupInfo
+   * Get catalogInfo
+   * @return catalogInfo
    */
   @Valid 
-  @Schema(name = "asset_group_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
+  @Schema(name = "catalog_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_info")
+  public JsonNullable<GetBusinessAssetsResponseCatalogInfo> getCatalogInfo() {
+    return catalogInfo;
   }
 
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public void setCatalogInfo(JsonNullable<GetBusinessAssetsResponseCatalogInfo> catalogInfo) {
+    this.catalogInfo = catalogInfo;
   }
 
   @Override
@@ -98,23 +124,36 @@ public class GetBusinessAssetsResponse {
       return false;
     }
     GetBusinessAssetsResponse getBusinessAssetsResponse = (GetBusinessAssetsResponse) o;
-    return Objects.equals(this.assetId, getBusinessAssetsResponse.assetId) &&
+    return Objects.equals(this.assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo) &&
+        Objects.equals(this.assetId, getBusinessAssetsResponse.assetId) &&
         Objects.equals(this.assetType, getBusinessAssetsResponse.assetType) &&
-        Objects.equals(this.assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo);
+        equalsNullable(this.catalogInfo, getBusinessAssetsResponse.catalogInfo);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, hashCodeNullable(catalogInfo));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessAssetsResponse {\n");
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
+    sb.append("    catalogInfo: ").append(toIndentedString(catalogInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

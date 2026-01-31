@@ -26,9 +26,9 @@ import com.squareup.moshi.JsonClass
  * Object describing a hotel record
  *
  * @param catalogType 
+ * @param attributes 
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param pins The pins mapped to the item
- * @param attributes 
  */
 
 
@@ -37,16 +37,16 @@ data class CatalogsCreativeAssetsItemResponse (
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
 
+    @Json(name = "attributes")
+    val attributes: CatalogsCreativeAssetsAttributes? = null,
+
     /* The catalog creative assets id in the merchant namespace */
     @Json(name = "creative_assets_id")
     val creativeAssetsId: kotlin.String? = null,
 
     /* The pins mapped to the item */
     @Json(name = "pins")
-    val pins: kotlin.collections.List<Pin>? = null,
-
-    @Json(name = "attributes")
-    val attributes: CatalogsCreativeAssetsAttributes? = null
+    val pins: kotlin.collections.List<Pin>? = null
 
 ) {
 

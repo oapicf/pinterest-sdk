@@ -46,19 +46,19 @@ public class AudienceCreateRequestTest {
     }
 
     /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
      * Test the property 'audienceType'
      */
     @Test
     public void audienceTypeTest() {
         // TODO: test audienceType
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
     }
 
 }

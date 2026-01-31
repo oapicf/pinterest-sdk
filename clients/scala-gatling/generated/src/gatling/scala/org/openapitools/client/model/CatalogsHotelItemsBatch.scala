@@ -6,20 +6,20 @@ import java.time.OffsetDateTime
 case class CatalogsHotelItemsBatch (
     /* Id of the catalogs items batch */
     _batchId: Option[String],
-    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
-    _createdTime: Option[OffsetDateTime],
+    _catalogType: CatalogsType,
     /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     _completedTime: Option[OffsetDateTime],
-    _status: Option[BatchOperationStatus],
-    _catalogType: CatalogsType,
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
+    _createdTime: Option[OffsetDateTime],
     /* Array with the catalogs items processing records part of the catalogs items batch */
-    _items: Option[List[HotelProcessingRecord]]
+    _items: Option[List[HotelProcessingRecord]],
+    _status: Option[BatchOperationStatus]
 )
 object CatalogsHotelItemsBatch {
-    def toStringBody(var_batchId: Object, var_createdTime: Object, var_completedTime: Object, var_status: Object, var_catalogType: Object, var_items: Object) =
+    def toStringBody(var_batchId: Object, var_catalogType: Object, var_completedTime: Object, var_createdTime: Object, var_items: Object, var_status: Object) =
         s"""
         | {
-        | "batchId":$var_batchId,"createdTime":$var_createdTime,"completedTime":$var_completedTime,"status":$var_status,"catalogType":$var_catalogType,"items":$var_items
+        | "batchId":$var_batchId,"catalogType":$var_catalogType,"completedTime":$var_completedTime,"createdTime":$var_createdTime,"items":$var_items,"status":$var_status
         | }
         """.stripMargin
 }

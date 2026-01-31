@@ -4,14 +4,14 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] |
-| **name** | **String** | A human-friendly name associated to a given feed. | [optional] |
-| **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] |
+| **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 | **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] |
+| **default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] |
+| **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] |
 | **location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] |
+| **name** | **String** | A human-friendly name associated to a given feed. | [optional] |
 | **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] |
 | **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] |
-| **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 
 ## Example
 
@@ -19,14 +19,14 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsHotelFeedsUpdateRequest.new(
-  default_currency: null,
-  name: null,
-  format: null,
+  catalog_type: null,
   credentials: null,
+  default_currency: null,
+  format: null,
   location: null,
+  name: null,
   preferred_processing_schedule: null,
-  status: null,
-  catalog_type: null
+  status: null
 )
 ```
 

@@ -10,13 +10,9 @@ import javax.validation.Valid;
 /**
  * The dynamic date range of the template
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TemplateResponseDateRangeDynamicDateRange   {
-  @JsonProperty("type")
-  
-  private String type;
-
   /**
    * The dynamic range type
    */
@@ -27,7 +23,9 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     
     MONTH_TO_DATE("MONTH_TO_DATE"),
     
-    LAST_MONTH("LAST_MONTH");
+    LAST_MONTH("LAST_MONTH"),
+    
+    LAST_QUARTER("LAST_QUARTER");
 
     private final String value;
 
@@ -56,22 +54,9 @@ public class TemplateResponseDateRangeDynamicDateRange   {
   
   private RangeEnum range;
 
-  public TemplateResponseDateRangeDynamicDateRange type(String type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * The date range type
-   * @return type
-  **/
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
+  @JsonProperty("type")
+  
+  private String type;
 
   public TemplateResponseDateRangeDynamicDateRange range(RangeEnum range) {
     this.range = range;
@@ -90,6 +75,23 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     this.range = range;
   }
 
+  public TemplateResponseDateRangeDynamicDateRange type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The date range type
+   * @return type
+  **/
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -100,13 +102,13 @@ public class TemplateResponseDateRangeDynamicDateRange   {
       return false;
     }
     TemplateResponseDateRangeDynamicDateRange templateResponseDateRangeDynamicDateRange = (TemplateResponseDateRangeDynamicDateRange) o;
-    return Objects.equals(type, templateResponseDateRangeDynamicDateRange.type) &&
-        Objects.equals(range, templateResponseDateRangeDynamicDateRange.range);
+    return Objects.equals(range, templateResponseDateRangeDynamicDateRange.range) &&
+        Objects.equals(type, templateResponseDateRangeDynamicDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, range);
+    return Objects.hash(range, type);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -115,8 +117,8 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeDynamicDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

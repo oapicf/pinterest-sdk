@@ -57,7 +57,7 @@ delete_invites_results_response_array_t* BusinessAccessInviteAPI_cancelInvitesOr
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**business_id** | **char \*** | Business id | 
+**business_id** | **char \*** | Unique identifier of the requesting business. | 
 **cancel_invites_body** | **[cancel_invites_body_t](cancel_invites_body.md) \*** | A list with invite ids | 
 
 ### Return type
@@ -121,7 +121,7 @@ create_invites_results_response_array_t* BusinessAccessInviteAPI_createMembershi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**business_id** | **char \*** | Business id | 
+**business_id** | **char \*** | Unique identifier of the requesting business. | 
 **create_membership_or_partnership_invites_body** | **[create_membership_or_partnership_invites_body_t](create_membership_or_partnership_invites_body.md) \*** | An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

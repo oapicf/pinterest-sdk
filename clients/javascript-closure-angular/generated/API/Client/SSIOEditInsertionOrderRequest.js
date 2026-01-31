@@ -6,32 +6,18 @@ goog.provide('API.Client.SSIOEditInsertionOrderRequest');
 API.Client.SSIOEditInsertionOrderRequest = function() {}
 
 /**
- * Starting date of time period. Format: YYYY-MM-DD
+ * URL link for agency
  * @type {!string}
  * @export
  */
-API.Client.SSIOEditInsertionOrderRequest.prototype.startDate;
+API.Client.SSIOEditInsertionOrderRequest.prototype.agencyLink;
 
 /**
- * End date of time period. Format: YYYY-MM-DD
+ * The billing contact email
  * @type {!string}
  * @export
  */
-API.Client.SSIOEditInsertionOrderRequest.prototype.endDate;
-
-/**
- * The po number
- * @type {!string}
- * @export
- */
-API.Client.SSIOEditInsertionOrderRequest.prototype.poNumber;
-
-/**
- * If Budget order line, the budget amount.
- * @type {!number}
- * @export
- */
-API.Client.SSIOEditInsertionOrderRequest.prototype.budgetAmount;
+API.Client.SSIOEditInsertionOrderRequest.prototype.billingContactEmail;
 
 /**
  * The billing contact first name
@@ -48,11 +34,25 @@ API.Client.SSIOEditInsertionOrderRequest.prototype.billingContactFirstname;
 API.Client.SSIOEditInsertionOrderRequest.prototype.billingContactLastname;
 
 /**
- * The billing contact email
+ * If Budget order line, the budget amount.
+ * @type {!number}
+ * @export
+ */
+API.Client.SSIOEditInsertionOrderRequest.prototype.budgetAmount;
+
+/**
+ * End date of time period. Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.SSIOEditInsertionOrderRequest.prototype.billingContactEmail;
+API.Client.SSIOEditInsertionOrderRequest.prototype.endDate;
+
+/**
+ * The media contact email
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOEditInsertionOrderRequest.prototype.mediaContactEmail;
 
 /**
  * The media contact first name
@@ -69,18 +69,18 @@ API.Client.SSIOEditInsertionOrderRequest.prototype.mediaContactFirstname;
 API.Client.SSIOEditInsertionOrderRequest.prototype.mediaContactLastname;
 
 /**
- * The media contact email
+ * The po number
  * @type {!string}
  * @export
  */
-API.Client.SSIOEditInsertionOrderRequest.prototype.mediaContactEmail;
+API.Client.SSIOEditInsertionOrderRequest.prototype.poNumber;
 
 /**
- * URL link for agency
+ * Starting date of time period. Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.SSIOEditInsertionOrderRequest.prototype.agencyLink;
+API.Client.SSIOEditInsertionOrderRequest.prototype.startDate;
 
 /**
  * The email of user submitting the insertion order
@@ -88,6 +88,13 @@ API.Client.SSIOEditInsertionOrderRequest.prototype.agencyLink;
  * @export
  */
 API.Client.SSIOEditInsertionOrderRequest.prototype.userEmail;
+
+/**
+ * Ads manager OrderLineId
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOEditInsertionOrderRequest.prototype.adsManagerOrderLineId;
 
 /**
  * LineId in the Oracle DB
@@ -109,11 +116,4 @@ API.Client.SSIOEditInsertionOrderRequest.prototype.salesforceOrderId;
  * @export
  */
 API.Client.SSIOEditInsertionOrderRequest.prototype.salesforceOrderLineId;
-
-/**
- * Ads manager OrderLineId
- * @type {!string}
- * @export
- */
-API.Client.SSIOEditInsertionOrderRequest.prototype.adsManagerOrderLineId;
 

@@ -5,22 +5,22 @@
 -export_type([openapi_quiz_pin_result/0]).
 
 -type openapi_quiz_pin_result() ::
-    #{ 'organic_pin_id' => binary(),
-       'android_deep_link' => binary(),
-       'ios_deep_link' => binary(),
+    #{ 'android_deep_link' => binary(),
        'destination_url' => binary(),
+       'ios_deep_link' => binary(),
+       'organic_pin_id' => binary(),
        'result_id' => integer()
      }.
 
-encode(#{ 'organic_pin_id' := OrganicPinId,
-          'android_deep_link' := AndroidDeepLink,
-          'ios_deep_link' := IosDeepLink,
+encode(#{ 'android_deep_link' := AndroidDeepLink,
           'destination_url' := DestinationUrl,
+          'ios_deep_link' := IosDeepLink,
+          'organic_pin_id' := OrganicPinId,
           'result_id' := ResultId
         }) ->
-    #{ 'organic_pin_id' => OrganicPinId,
-       'android_deep_link' => AndroidDeepLink,
-       'ios_deep_link' => IosDeepLink,
+    #{ 'android_deep_link' => AndroidDeepLink,
        'destination_url' => DestinationUrl,
+       'ios_deep_link' => IosDeepLink,
+       'organic_pin_id' => OrganicPinId,
        'result_id' => ResultId
      }.

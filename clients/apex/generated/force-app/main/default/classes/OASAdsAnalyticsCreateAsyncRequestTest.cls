@@ -73,16 +73,17 @@ private class OASAdsAnalyticsCreateAsyncRequestTest {
     private static void maintainRenamedProperties() {
         OASAdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest = new OASAdsAnalyticsCreateAsyncRequest();
         Map<String, String> x-property-mappings = adsAnalyticsCreateAsyncRequest.getx-property-mappings();
-        System.assertEquals('startDate', x-property-mappings.get('start_date'));
-        System.assertEquals('endDate', x-property-mappings.get('end_date'));
-        System.assertEquals('clickWindowDays', x-property-mappings.get('click_window_days'));
-        System.assertEquals('engagementWindowDays', x-property-mappings.get('engagement_window_days'));
-        System.assertEquals('viewWindowDays', x-property-mappings.get('view_window_days'));
-        System.assertEquals('conversionReportTime', x-property-mappings.get('conversion_report_time'));
         System.assertEquals('attributionTypes', x-property-mappings.get('attribution_types'));
+        System.assertEquals('clickWindowDays', x-property-mappings.get('click_window_days'));
+        System.assertEquals('conversionReportTime', x-property-mappings.get('conversion_report_time'));
+        System.assertEquals('endDate', x-property-mappings.get('end_date'));
+        System.assertEquals('engagementWindowDays', x-property-mappings.get('engagement_window_days'));
+        System.assertEquals('startDate', x-property-mappings.get('start_date'));
+        System.assertEquals('viewWindowDays', x-property-mappings.get('view_window_days'));
         System.assertEquals('campaignIds', x-property-mappings.get('campaign_ids'));
         System.assertEquals('campaignStatuses', x-property-mappings.get('campaign_statuses'));
         System.assertEquals('campaignObjectiveTypes', x-property-mappings.get('campaign_objective_types'));
+        System.assertEquals('campaignBrandLabel', x-property-mappings.get('campaign_brand_label'));
         System.assertEquals('adGroupIds', x-property-mappings.get('ad_group_ids'));
         System.assertEquals('adGroupStatuses', x-property-mappings.get('ad_group_statuses'));
         System.assertEquals('adIds', x-property-mappings.get('ad_ids'));
@@ -92,20 +93,23 @@ private class OASAdsAnalyticsCreateAsyncRequestTest {
         System.assertEquals('productItemIds', x-property-mappings.get('product_item_ids'));
         System.assertEquals('targetingTypes', x-property-mappings.get('targeting_types'));
         System.assertEquals('metricsFilters', x-property-mappings.get('metrics_filters'));
-        System.assertEquals('reportFormat', x-property-mappings.get('report_format'));
-        System.assertEquals('primarySort', x-property-mappings.get('primary_sort'));
-        System.assertEquals('startHour', x-property-mappings.get('start_hour'));
+        System.assertEquals('combineTargetingTypes', x-property-mappings.get('combine_targeting_types'));
+        System.assertEquals('customConversionEventMetrics', x-property-mappings.get('custom_conversion_event_metrics'));
         System.assertEquals('endHour', x-property-mappings.get('end_hour'));
+        System.assertEquals('primarySort', x-property-mappings.get('primary_sort'));
+        System.assertEquals('reportFormat', x-property-mappings.get('report_format'));
+        System.assertEquals('reportingTimezone', x-property-mappings.get('reporting_timezone'));
+        System.assertEquals('startHour', x-property-mappings.get('start_hour'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASAdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest = new OASAdsAnalyticsCreateAsyncRequest();
+        System.assertEquals(new List<OASConversionReportAttributionType>(), adsAnalyticsCreateAsyncRequest.attributionTypes);
         System.assertEquals(OASConversionAttributionWindowDays.NUMBER_30, adsAnalyticsCreateAsyncRequest.clickWindowDays);
+        System.assertEquals('TIME_OF_AD_ACTION', adsAnalyticsCreateAsyncRequest.conversionReportTime);
         System.assertEquals(OASConversionAttributionWindowDays.NUMBER_30, adsAnalyticsCreateAsyncRequest.engagementWindowDays);
         System.assertEquals(OASConversionAttributionWindowDays.NUMBER_1, adsAnalyticsCreateAsyncRequest.viewWindowDays);
-        System.assertEquals('TIME_OF_AD_ACTION', adsAnalyticsCreateAsyncRequest.conversionReportTime);
-        System.assertEquals(new List<OASConversionReportAttributionType>(), adsAnalyticsCreateAsyncRequest.attributionTypes);
         System.assertEquals(new List<String>(), adsAnalyticsCreateAsyncRequest.campaignIds);
         System.assertEquals(new List<OASCampaignSummaryStatus>(), adsAnalyticsCreateAsyncRequest.campaignStatuses);
         System.assertEquals(new List<OASObjectiveType>(), adsAnalyticsCreateAsyncRequest.campaignObjectiveTypes);
@@ -116,16 +120,20 @@ private class OASAdsAnalyticsCreateAsyncRequestTest {
         System.assertEquals(new List<String>(), adsAnalyticsCreateAsyncRequest.productGroupIds);
         System.assertEquals(new List<OASProductGroupSummaryStatus>(), adsAnalyticsCreateAsyncRequest.productGroupStatuses);
         System.assertEquals(new List<String>(), adsAnalyticsCreateAsyncRequest.productItemIds);
-        System.assertEquals(new List<OASAdsAnalyticsTargetingType>(), adsAnalyticsCreateAsyncRequest.targetingTypes);
+        System.assertEquals(new List<String>(), adsAnalyticsCreateAsyncRequest.targetingTypes);
         System.assertEquals(new List<OASAdsAnalyticsMetricsFilter>(), adsAnalyticsCreateAsyncRequest.metricsFilters);
         System.assertEquals(new List<OASReportingColumnAsync>(), adsAnalyticsCreateAsyncRequest.columns);
+        System.assertEquals(false, adsAnalyticsCreateAsyncRequest.combineTargetingTypes);
+        System.assertEquals(new List<OASAdsAnalyticsCreateAsyncRequestAll>(), adsAnalyticsCreateAsyncRequest.customConversionEventMetrics);
         System.assertEquals('JSON', adsAnalyticsCreateAsyncRequest.reportFormat);
-        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.startDate);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.endDate);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.granularity);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.startDate);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.campaignBrandLabel);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.endHour);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.level);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.primarySort);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.reportingTimezone);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.startHour);
-        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.endHour);
     }
 }

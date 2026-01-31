@@ -1,18 +1,18 @@
 
 <h2>ConversionTagResponse</h2>
 <ul class="parameter">
-  <li class="param-required-false">adUnderscoreaccountUnderscoreid : String
-    <br/>Ad account ID.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">codeUnderscoresnippet : String
     <br/>Tag code snippet.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">enhancedUnderscorematchUnderscorestatus : EnhancedMatchStatusType
+  <li class="param-required-false">configs : ConversionTagConfigs
     <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">enhancedUnderscorematchUnderscorestatus : EnhancedMatchStatusType
+    <br/>The enhanced match status of the tag
   </li>
 </ul>
 <ul class="parameter">
@@ -26,13 +26,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">name : String
+  <li class="param-required-true">name : String
     <br/>Conversion tag name.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">status : EntityStatus
-    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -41,7 +36,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">configs : ConversionTagConfigs
+  <li class="param-required-true">adUnderscoreaccountUnderscoreid : String
+    <br/>Ad account ID.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : EntityStatus
     <br/>
   </li>
 </ul>

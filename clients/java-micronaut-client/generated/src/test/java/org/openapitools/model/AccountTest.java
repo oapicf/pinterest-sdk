@@ -21,46 +21,6 @@ public class AccountTest {
     }
 
     /**
-     * Test the property 'accountType'
-     */
-    @Test
-    public void accountTypeTest() {
-        // TODO: test accountType
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'profileImage'
-     */
-    @Test
-    public void profileImageTest() {
-        // TODO: test profileImage
-    }
-
-    /**
-     * Test the property 'websiteUrl'
-     */
-    @Test
-    public void websiteUrlTest() {
-        // TODO: test websiteUrl
-    }
-
-    /**
-     * Test the property 'username'
-     */
-    @Test
-    public void usernameTest() {
-        // TODO: test username
-    }
-
-    /**
      * Test the property 'about'
      */
     @Test
@@ -69,11 +29,11 @@ public class AccountTest {
     }
 
     /**
-     * Test the property 'businessName'
+     * Test the property 'accountType'
      */
     @Test
-    public void businessNameTest() {
-        // TODO: test businessName
+    public void accountTypeTest() {
+        // TODO: test accountType
     }
 
     /**
@@ -85,11 +45,11 @@ public class AccountTest {
     }
 
     /**
-     * Test the property 'pinCount'
+     * Test the property 'businessName'
      */
     @Test
-    public void pinCountTest() {
-        // TODO: test pinCount
+    public void businessNameTest() {
+        // TODO: test businessName
     }
 
     /**
@@ -109,11 +69,51 @@ public class AccountTest {
     }
 
     /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
      * Test the property 'monthlyViews'
      */
     @Test
     public void monthlyViewsTest() {
         // TODO: test monthlyViews
+    }
+
+    /**
+     * Test the property 'pinCount'
+     */
+    @Test
+    public void pinCountTest() {
+        // TODO: test pinCount
+    }
+
+    /**
+     * Test the property 'profileImage'
+     */
+    @Test
+    public void profileImageTest() {
+        // TODO: test profileImage
+    }
+
+    /**
+     * Test the property 'username'
+     */
+    @Test
+    public void usernameTest() {
+        // TODO: test username
+    }
+
+    /**
+     * Test the property 'websiteUrl'
+     */
+    @Test
+    public void websiteUrlTest() {
+        // TODO: test websiteUrl
     }
 
 }

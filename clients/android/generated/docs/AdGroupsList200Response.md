@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;AdGroupResponse&gt;**](AdGroupResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;AdGroupResponse&gt;**](AdGroupResponse.md) |  | 
 
 
 

@@ -7,7 +7,6 @@ import org.openapitools.api.factories.IntegrationsApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -16,6 +15,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -34,7 +34,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationsApi  {
    private final IntegrationsApiService delegate = IntegrationsApiServiceFactory.getIntegrationsApi();
 
@@ -96,7 +96,7 @@ public class IntegrationsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationMetadata.class) })
     public Response integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true) @PathParam("external_business_id") String externalBusinessId
-,@ApiParam(value = "Parameters to get create/update the Integration Metadata" ) IntegrationRequestPatch integrationRequestPatch
+,@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) IntegrationRequestPatch integrationRequestPatch
 )
     throws NotFoundException {
         return delegate.integrationsCommercePatch(externalBusinessId,integrationRequestPatch);
@@ -118,7 +118,7 @@ public class IntegrationsApi  {
         @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = IntegrationMetadata.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationMetadata.class) })
-    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ) IntegrationRequest integrationRequest
+    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) IntegrationRequest integrationRequest
 )
     throws NotFoundException {
         return delegate.integrationsCommercePost(integrationRequest);

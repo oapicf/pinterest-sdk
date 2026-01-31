@@ -6,10 +6,10 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **ages** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Ages distribution. |  [optional]
-**genders** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Gender distribution. |  [optional]
-**devices** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Device usage distribution. |  [optional]
-**metros** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Geographic metro area distribution. |  [optional]
 **countries** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Country area distribution. |  [optional]
+**devices** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Device usage distribution. |  [optional]
+**genders** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Gender distribution. |  [optional]
+**metros** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AudienceDemographicValue&gt;**](AudienceDemographicValue.md) | Geographic metro area distribution. |  [optional]
 
 
 # **Table `AudienceDemographicsAudienceDemographicValue`**

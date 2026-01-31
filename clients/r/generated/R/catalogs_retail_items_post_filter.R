@@ -7,18 +7,18 @@
 #' @title CatalogsRetailItemsPostFilter
 #' @description CatalogsRetailItemsPostFilter Class
 #' @format An \code{R6Class} generator object
+#' @field catalog_id Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog character [optional]
 #' @field catalog_type  character
 #' @field item_ids  list(character)
-#' @field catalog_id Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsRetailItemsPostFilter <- R6::R6Class(
   "CatalogsRetailItemsPostFilter",
   public = list(
+    `catalog_id` = NULL,
     `catalog_type` = NULL,
     `item_ids` = NULL,
-    `catalog_id` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailItemsPostFilter class.
@@ -81,6 +81,10 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsRetailItemsPostFilterObject <- list()
+      if (!is.null(self$`catalog_id`)) {
+        CatalogsRetailItemsPostFilterObject[["catalog_id"]] <-
+          self$`catalog_id`
+      }
       if (!is.null(self$`catalog_type`)) {
         CatalogsRetailItemsPostFilterObject[["catalog_type"]] <-
           self$`catalog_type`
@@ -88,10 +92,6 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
       if (!is.null(self$`item_ids`)) {
         CatalogsRetailItemsPostFilterObject[["item_ids"]] <-
           self$`item_ids`
-      }
-      if (!is.null(self$`catalog_id`)) {
-        CatalogsRetailItemsPostFilterObject[["catalog_id"]] <-
-          self$`catalog_id`
       }
       return(CatalogsRetailItemsPostFilterObject)
     },
@@ -103,6 +103,9 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
     #' @return the instance of CatalogsRetailItemsPostFilter
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
+      }
       if (!is.null(this_object$`catalog_type`)) {
         if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
           stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
@@ -111,9 +114,6 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
       }
       if (!is.null(this_object$`item_ids`)) {
         self$`item_ids` <- ApiClient$new()$deserializeObj(this_object$`item_ids`, "array[character]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`catalog_id`)) {
-        self$`catalog_id` <- this_object$`catalog_id`
       }
       self
     },
@@ -136,12 +136,12 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
     #' @return the instance of CatalogsRetailItemsPostFilter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`catalog_id` <- this_object$`catalog_id`
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
       self$`item_ids` <- ApiClient$new()$deserializeObj(this_object$`item_ids`, "array[character]", loadNamespace("openapi"))
-      self$`catalog_id` <- this_object$`catalog_id`
       self
     },
 
@@ -181,6 +181,10 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         return(FALSE)
@@ -198,10 +202,6 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
         return(FALSE)
       }
 
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -211,6 +211,10 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
@@ -226,10 +230,6 @@ CatalogsRetailItemsPostFilter <- R6::R6Class(
       }
       if (length(self$`item_ids`) < 1) {
         invalid_fields["item_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
-      }
-
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

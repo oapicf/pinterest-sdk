@@ -5,12 +5,11 @@ context("Test BulkDownloadRequest")
 
 model_instance <- BulkDownloadRequest$new()
 
-test_that("entity_types", {
-  # tests for the property `entity_types` (array[BulkEntityType])
-  # All entity types specified will be downloaded. Fewer types result in faster downloads.
+test_that("campaign_filter", {
+  # tests for the property `campaign_filter` (BulkDownloadRequestCampaignFilter)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`entity_types`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`campaign_filter`, "EXPECTED_RESULT")
 })
 
 test_that("entity_ids", {
@@ -21,19 +20,12 @@ test_that("entity_ids", {
   #expect_equal(model.instance$`entity_ids`, "EXPECTED_RESULT")
 })
 
-test_that("updated_since", {
-  # tests for the property `updated_since` (character)
-  # Unix UTC timestamp to retrieve all entities that have changed since this time.
+test_that("entity_types", {
+  # tests for the property `entity_types` (array[BulkEntityType])
+  # All entity types specified will be downloaded. Fewer types result in faster downloads.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`updated_since`, "EXPECTED_RESULT")
-})
-
-test_that("campaign_filter", {
-  # tests for the property `campaign_filter` (BulkDownloadRequestCampaignFilter)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`campaign_filter`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`entity_types`, "EXPECTED_RESULT")
 })
 
 test_that("output_format", {
@@ -41,4 +33,12 @@ test_that("output_format", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`output_format`, "EXPECTED_RESULT")
+})
+
+test_that("updated_since", {
+  # tests for the property `updated_since` (character)
+  # Unix UTC timestamp to retrieve all entities that have changed since this time.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`updated_since`, "EXPECTED_RESULT")
 })

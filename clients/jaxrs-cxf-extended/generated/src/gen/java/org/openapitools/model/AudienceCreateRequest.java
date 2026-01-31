@@ -31,17 +31,17 @@ public class AudienceCreateRequest  {
   private AudienceRule rule;
 
  /**
-  * Audience description.
-  */
-  @ApiModelProperty(example = "string", value = "Audience description.")
-  private String description;
-
- /**
   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
   */
   @ApiModelProperty(required = true, value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.")
   @Valid
   private AudienceType audienceType;
+
+ /**
+  * Audience description.
+  */
+  @ApiModelProperty(example = "string", value = "Audience description.")
+  private String description;
  /**
   * Ad account ID.
   * @return adAccountId
@@ -117,30 +117,6 @@ public class AudienceCreateRequest  {
   }
 
  /**
-  * Audience description.
-  * @return description
-  */
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  /**
-   * Sets the <code>description</code> property.
-   */
- public void setDescription(String description) {
-    this.description = description;
-  }
-
-  /**
-   * Sets the <code>description</code> property.
-   */
-  public AudienceCreateRequest description(String description) {
-    this.description = description;
-    return this;
-  }
-
- /**
   * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
   * @return audienceType
   */
@@ -165,6 +141,30 @@ public class AudienceCreateRequest  {
     return this;
   }
 
+ /**
+  * Audience description.
+  * @return description
+  */
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+
+  /**
+   * Sets the <code>description</code> property.
+   */
+ public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   * Sets the <code>description</code> property.
+   */
+  public AudienceCreateRequest description(String description) {
+    this.description = description;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -178,13 +178,13 @@ public class AudienceCreateRequest  {
     return Objects.equals(this.adAccountId, audienceCreateRequest.adAccountId) &&
         Objects.equals(this.name, audienceCreateRequest.name) &&
         Objects.equals(this.rule, audienceCreateRequest.rule) &&
-        Objects.equals(this.description, audienceCreateRequest.description) &&
-        Objects.equals(this.audienceType, audienceCreateRequest.audienceType);
+        Objects.equals(this.audienceType, audienceCreateRequest.audienceType) &&
+        Objects.equals(this.description, audienceCreateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, rule, description, audienceType);
+    return Objects.hash(adAccountId, name, rule, audienceType, description);
   }
 
   @Override
@@ -195,8 +195,8 @@ public class AudienceCreateRequest  {
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

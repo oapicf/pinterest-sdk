@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Media upload status
+ * 
  *
  * Values: registered,processing,succeeded,failed
  */

@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import ConversionApiResponseEventsInner._
 
 case class ConversionApiResponseEventsInner (
-  /* Whether the event was processed successfully. */
-  status: Status,
-/* Error message containing more information about why the event failed to be processed. */
+  /* Error message containing more information about why the event failed to be processed. */
   errorMessage: Option[String],
+/* Whether the event was processed successfully. */
+  status: Status,
 /* Warning messages about any fields in the event which are not standard. These are not critical to event processing. */
   warningMessage: Option[String])
 

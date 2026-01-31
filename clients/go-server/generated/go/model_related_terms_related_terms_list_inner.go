@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,9 +16,9 @@ package openapi
 
 type RelatedTermsRelatedTermsListInner struct {
 
-	Term string `json:"term,omitempty"`
-
 	RelatedTerms []string `json:"related_terms,omitempty"`
+
+	Term string `json:"term,omitempty"`
 }
 
 // AssertRelatedTermsRelatedTermsListInnerRequired checks if the required fields are not zero-ed

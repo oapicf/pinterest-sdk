@@ -13,12 +13,11 @@ import javax.validation.Valid;
 /**
  * AdGroupsAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   @JsonProperty("AD_GROUP_ID")
-  @NotNull
-@Pattern(regexp="^\\d+$")
+  @Pattern(regexp="^\\d+$")
 
   private String AD_GROUP_ID;
 
@@ -33,7 +32,7 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   }
 
    /**
-   * The ID of the ad group that this metrics belongs to.
+   * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    * @return AD_GROUP_ID
   **/
   public String getADGROUPID() {

@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 **ItemId** | **String** | The catalog item id in the merchant namespace | 
 **Operation** | **String** |  | 
-**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreateRetailItem = Initialize-PSOpenAPIToolsCatalogsCreateRetailItem  -ItemId DS0294-M `
- -Operation null `
- -Attributes null
+$CatalogsCreateRetailItem = Initialize-PSOpenAPIToolsCatalogsCreateRetailItem  -Attributes null `
+ -ItemId DS0294-M `
+ -Operation null
 ```
 
 - Convert the resource to JSON

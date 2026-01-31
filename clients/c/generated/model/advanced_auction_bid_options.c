@@ -6,16 +6,16 @@
 
 
 static advanced_auction_bid_options_t *advanced_auction_bid_options_create_internal(
-    long bid_in_micro_currency,
     app_type_multipliers_t *app_type_multipliers,
+    long bid_in_micro_currency,
     placement_multipliers_t *placement_multipliers
     ) {
     advanced_auction_bid_options_t *advanced_auction_bid_options_local_var = malloc(sizeof(advanced_auction_bid_options_t));
     if (!advanced_auction_bid_options_local_var) {
         return NULL;
     }
-    advanced_auction_bid_options_local_var->bid_in_micro_currency = bid_in_micro_currency;
     advanced_auction_bid_options_local_var->app_type_multipliers = app_type_multipliers;
+    advanced_auction_bid_options_local_var->bid_in_micro_currency = bid_in_micro_currency;
     advanced_auction_bid_options_local_var->placement_multipliers = placement_multipliers;
 
     advanced_auction_bid_options_local_var->_library_owned = 1;
@@ -23,13 +23,13 @@ static advanced_auction_bid_options_t *advanced_auction_bid_options_create_inter
 }
 
 __attribute__((deprecated)) advanced_auction_bid_options_t *advanced_auction_bid_options_create(
-    long bid_in_micro_currency,
     app_type_multipliers_t *app_type_multipliers,
+    long bid_in_micro_currency,
     placement_multipliers_t *placement_multipliers
     ) {
     return advanced_auction_bid_options_create_internal (
-        bid_in_micro_currency,
         app_type_multipliers,
+        bid_in_micro_currency,
         placement_multipliers
         );
 }
@@ -57,14 +57,6 @@ void advanced_auction_bid_options_free(advanced_auction_bid_options_t *advanced_
 cJSON *advanced_auction_bid_options_convertToJSON(advanced_auction_bid_options_t *advanced_auction_bid_options) {
     cJSON *item = cJSON_CreateObject();
 
-    // advanced_auction_bid_options->bid_in_micro_currency
-    if(advanced_auction_bid_options->bid_in_micro_currency) {
-    if(cJSON_AddNumberToObject(item, "bid_in_micro_currency", advanced_auction_bid_options->bid_in_micro_currency) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
     // advanced_auction_bid_options->app_type_multipliers
     if(advanced_auction_bid_options->app_type_multipliers) {
     cJSON *app_type_multipliers_local_JSON = app_type_multipliers_convertToJSON(advanced_auction_bid_options->app_type_multipliers);
@@ -74,6 +66,14 @@ cJSON *advanced_auction_bid_options_convertToJSON(advanced_auction_bid_options_t
     cJSON_AddItemToObject(item, "app_type_multipliers", app_type_multipliers_local_JSON);
     if(item->child == NULL) {
         goto fail;
+    }
+    }
+
+
+    // advanced_auction_bid_options->bid_in_micro_currency
+    if(advanced_auction_bid_options->bid_in_micro_currency) {
+    if(cJSON_AddNumberToObject(item, "bid_in_micro_currency", advanced_auction_bid_options->bid_in_micro_currency) == NULL) {
+    goto fail; //Numeric
     }
     }
 
@@ -108,6 +108,15 @@ advanced_auction_bid_options_t *advanced_auction_bid_options_parseFromJSON(cJSON
     // define the local variable for advanced_auction_bid_options->placement_multipliers
     placement_multipliers_t *placement_multipliers_local_nonprim = NULL;
 
+    // advanced_auction_bid_options->app_type_multipliers
+    cJSON *app_type_multipliers = cJSON_GetObjectItemCaseSensitive(advanced_auction_bid_optionsJSON, "app_type_multipliers");
+    if (cJSON_IsNull(app_type_multipliers)) {
+        app_type_multipliers = NULL;
+    }
+    if (app_type_multipliers) { 
+    app_type_multipliers_local_nonprim = app_type_multipliers_parseFromJSON(app_type_multipliers); //custom
+    }
+
     // advanced_auction_bid_options->bid_in_micro_currency
     cJSON *bid_in_micro_currency = cJSON_GetObjectItemCaseSensitive(advanced_auction_bid_optionsJSON, "bid_in_micro_currency");
     if (cJSON_IsNull(bid_in_micro_currency)) {
@@ -118,15 +127,6 @@ advanced_auction_bid_options_t *advanced_auction_bid_options_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
-    }
-
-    // advanced_auction_bid_options->app_type_multipliers
-    cJSON *app_type_multipliers = cJSON_GetObjectItemCaseSensitive(advanced_auction_bid_optionsJSON, "app_type_multipliers");
-    if (cJSON_IsNull(app_type_multipliers)) {
-        app_type_multipliers = NULL;
-    }
-    if (app_type_multipliers) { 
-    app_type_multipliers_local_nonprim = app_type_multipliers_parseFromJSON(app_type_multipliers); //custom
     }
 
     // advanced_auction_bid_options->placement_multipliers
@@ -140,8 +140,8 @@ advanced_auction_bid_options_t *advanced_auction_bid_options_parseFromJSON(cJSON
 
 
     advanced_auction_bid_options_local_var = advanced_auction_bid_options_create_internal (
-        bid_in_micro_currency ? bid_in_micro_currency->valuedouble : 0,
         app_type_multipliers ? app_type_multipliers_local_nonprim : NULL,
+        bid_in_micro_currency ? bid_in_micro_currency->valuedouble : 0,
         placement_multipliers ? placement_multipliers_local_nonprim : NULL
         );
 

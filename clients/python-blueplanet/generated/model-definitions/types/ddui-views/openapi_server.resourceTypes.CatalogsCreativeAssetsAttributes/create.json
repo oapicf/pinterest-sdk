@@ -1,0 +1,30 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "android_deep_link" },
+      {"model": "custom_label_0" },
+      {"model": "custom_label_1" },
+      {"model": "custom_label_2" },
+      {"model": "custom_label_3" },
+      {"model": "custom_label_4" },
+      {"model": "description" },
+      {"model": "google_product_category" },
+      {"model": "ios_deep_link" },
+      {"model": "link" },
+      {"model": "title" },
+      {"model": "visibility" },
+      {"model": "image_link" },
+      {"model": "video_link" },
+    ]
+  }]
+}

@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CreateAssetAccessRequestResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CreateAssetAccessRequestResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CreateAssetAccessRequestErrorMessageInner = openapi_server.resourceTypes.CreateAssetAccessRequestErrorMessageInner
+}
+resourceTypes {
+
+  CreateAssetAccessRequestResponse {
+    title = CreateAssetAccessRequestResponse
+    description = CreateAssetAccessRequestResponse
+    derivedFrom = Root
+    properties {
+        exceptions {
+          type = array
+          items.type = CreateAssetAccessRequestErrorMessageInner
+          description = "A list of errors associated with the asset access requests. Will be returned if there is an error."
+          optional = false
+        }
+        invites {
+          # TODO
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CreateAssetAccessRequestResponse {
+    title = CreateAssetAccessRequestResponse
+    description = CreateAssetAccessRequestResponse
+    implements = openapi_server.resourceTypes.CreateAssetAccessRequestResponse
+
+  }
+}

@@ -2,11 +2,6 @@
 Protected Class PinMediaSource
 
 	#tag Property, Flags = &h0
-		source_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		content_type As String
 	#tag EndProperty
 
@@ -25,15 +20,12 @@ Protected Class PinMediaSource
 
 
 	#tag Property, Flags = &h0
-		url As String
+		source_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Cover image url.
-		#tag EndNote
-		cover_image_url As Xoson.O.OptionalString
+		url As String
 	#tag EndProperty
 
 
@@ -54,7 +46,28 @@ Protected Class PinMediaSource
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+		#tag EndNote
+		cover_image_key_frame_time As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Cover image URL.
+		#tag EndNote
+		cover_image_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		media_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		index As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -62,12 +75,7 @@ Protected Class PinMediaSource
 		#tag Note
 			Array with image objects.
 		#tag EndNote
-		items() As OpenAPIClient.Models.PinMediaSourceImagesURLItemsInner
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		index As Xoson.O.OptionalInteger
+		items() As OpenAPIClient.Models.PinMediaSourceImagesURLItem
 	#tag EndProperty
 
 
@@ -85,20 +93,6 @@ Protected Class PinMediaSource
         
     #tag EndEnum
 
-    #tag Enum, Name = Content_typeEnum, Type = Integer, Flags = &h0
-        
-        ImageSlashJpeg
-        ImageSlashPng
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Cover_image_content_typeEnum, Type = Integer, Flags = &h0
-        
-        ImageSlashJpeg
-        ImageSlashPng
-        
-    #tag EndEnum
-
 
 	#tag Method, Flags = &h0
 		Shared Function Source_typeEnumToString(value As Source_typeEnum) As String
@@ -106,32 +100,6 @@ Protected Class PinMediaSource
 		    
 		    Case Source_typeEnum.PinUrl
 		      Return "pin_url"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Content_typeEnumToString(value As Content_typeEnum) As String
-		  Select Case value
-		    
-		    Case Content_typeEnum.ImageSlashJpeg
-		      Return "image/jpeg"
-		    Case Content_typeEnum.ImageSlashPng
-		      Return "image/png"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Cover_image_content_typeEnumToString(value As Cover_image_content_typeEnum) As String
-		  Select Case value
-		    
-		    Case Cover_image_content_typeEnum.ImageSlashJpeg
-		      Return "image/jpeg"
-		    Case Cover_image_content_typeEnum.ImageSlashPng
-		      Return "image/png"
 		    
 		  End Select
 		  Return ""
@@ -173,6 +141,14 @@ Protected Class PinMediaSource
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="content_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ContentType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="data"
 			Visible=false
 			Group="Behavior"
@@ -197,7 +173,15 @@ Protected Class PinMediaSource
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="cover_image_url"
+			Name="cover_image_content_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ContentType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="cover_image_data"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -205,7 +189,15 @@ Protected Class PinMediaSource
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="cover_image_data"
+			Name="cover_image_key_frame_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="cover_image_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -221,19 +213,19 @@ Protected Class PinMediaSource
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="PinMediaSourceImagesURLItemsInner"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="index"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="PinMediaSourceImagesURLItem"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

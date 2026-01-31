@@ -12,10 +12,10 @@ module UserFollowingGet200Response =
 
   [<CLIMutable>]
   type UserFollowingGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : UserSummary[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : UserSummary[];
   }
 
   //#endregion

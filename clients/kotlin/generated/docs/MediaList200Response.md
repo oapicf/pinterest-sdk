@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;MediaUploadDetails&gt;**](MediaUploadDetails.md) | Media |  |
+| **items** | [**kotlin.collections.List&lt;Media&gt;**](Media.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

@@ -23,19 +23,19 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param memberId Unique identifier of the member
  * @param businessRole 
+ * @param memberId Unique identifier of the member
  */
 
 
 data class MembersToDeleteBodyMembersInner (
 
+    @Json(name = "business_role")
+    val businessRole: BusinessRoleForMembers,
+
     /* Unique identifier of the member */
     @Json(name = "member_id")
-    val memberId: kotlin.String,
-
-    @Json(name = "business_role")
-    val businessRole: BusinessRoleForMembers
+    val memberId: kotlin.String
 
 ) {
 

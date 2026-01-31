@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;CatalogsVerticalProductGroup&gt;**](CatalogsVerticalProductGroup.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;CatalogsVerticalProductGroup&gt;**](CatalogsVerticalProductGroup.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupsList200Response } from './api';
 
 const instance: CatalogsProductGroupsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

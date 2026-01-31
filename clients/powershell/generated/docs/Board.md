@@ -3,32 +3,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | [optional] [readonly] 
-**CreatedAt** | **System.DateTime** | Date and time of board creation. | [optional] [readonly] 
 **BoardPinsModifiedAt** | **System.DateTime** | Date and time of last board pins modified. | [optional] [readonly] 
-**Name** | **String** |  | 
-**Description** | **String** |  | [optional] 
 **CollaboratorCount** | **Int32** | Count of collaborators on the board. | [optional] [readonly] 
-**PinCount** | **Int32** | Count of pins on the board. | [optional] [readonly] 
+**CreatedAt** | **System.DateTime** | Date and time of board creation. | [optional] [readonly] 
+**Description** | **String** |  | [optional] 
 **FollowerCount** | **Int32** | Board follower count. | [optional] [readonly] 
-**Media** | [**BoardMedia**](BoardMedia.md) |  | [optional] 
+**Id** | **String** |  | [readonly] 
+**IsAdsOnly** | **Boolean** | If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins. | [optional] [default to $false]
+**Media** | [**BoardMedia**](BoardMedia.md) | Board media. | [optional] [readonly] 
+**Name** | **String** |      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes &quot;&quot;Ad-only Pins&quot;&quot;. | 
 **Owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
-**Privacy** | **String** | Privacy setting for a board. Learn more about &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/en/article/secret-boards&quot;&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/en/business/article/protected-boards&quot;&quot;&gt;protected boards&lt;/a&gt; | [optional] [default to "PUBLIC"]
+**PinCount** | **Int32** | Count of Pins on the board. | [optional] [readonly] 
+**Privacy** | [**BoardPrivacy**](BoardPrivacy.md) |     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;.  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$Board = Initialize-PSOpenAPIToolsBoard  -Id 549755885175 `
- -CreatedAt 2020-01-01T20:10:40Z `
- -BoardPinsModifiedAt 2020-01-01T20:10:40Z `
- -Name Summer Recipes `
- -Description My favorite summer recipes `
+$Board = Initialize-PSOpenAPIToolsBoard  -BoardPinsModifiedAt null `
  -CollaboratorCount 17 `
- -PinCount 5 `
+ -CreatedAt null `
+ -Description My favorite summer recipes `
  -FollowerCount 13 `
+ -Id 549755885175 `
+ -IsAdsOnly true `
  -Media null `
+ -Name Summer recipes `
  -Owner null `
+ -PinCount 5 `
  -Privacy null
 ```
 

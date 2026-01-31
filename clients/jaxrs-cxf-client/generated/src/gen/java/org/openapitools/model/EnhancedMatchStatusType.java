@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * The enhanced match status of the tag
+ * Gets or Sets EnhancedMatchStatusType
  */
 public enum EnhancedMatchStatusType {
   
@@ -32,7 +32,7 @@ public enum EnhancedMatchStatusType {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
 }

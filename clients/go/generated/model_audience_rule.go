@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,8 +18,14 @@ import (
 // checks if the AudienceRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AudienceRule{}
 
-// AudienceRule JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
+// AudienceRule JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.
 type AudienceRule struct {
+	// Ad account ID.
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Ad ID for engagement audience filter.
+	AdId []string `json:"ad_id,omitempty"`
+	// Campaign ID for engagement audience filter.
+	CampaignId []string `json:"campaign_id,omitempty"`
 	// Valid countries include: \"US\", \"CA\", and \"GB\".
 	Country *string `json:"country,omitempty"`
 	// Customer list ID. For CUSTOMER_LIST `audience_type`.
@@ -28,9 +34,17 @@ type AudienceRule struct {
 	EngagementDomain []string `json:"engagement_domain,omitempty"`
 	// Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. 
 	EngagementType *string `json:"engagement_type,omitempty"`
+	// Optional for ENGAGEMENT. Engager type value should be 1-2.
+	EngagerType *int32 `json:"engager_type,omitempty"`
 	// A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
 	Event *string `json:"event,omitempty"`
-	EventData *PinterestTagEventData `json:"event_data,omitempty"`
+	EventData *EventData `json:"event_data,omitempty"`
+	// Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
+	EventSource map[string]interface{} `json:"event_source,omitempty"`
+	// Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+	IngestionSource map[string]interface{} `json:"ingestion_source,omitempty"`
+	// Objective for engagement audience filter.
+	ObjectiveType []ObjectiveType `json:"objective_type,omitempty"`
 	// Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
 	Percentage *int32 `json:"percentage,omitempty"`
 	// IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"]
@@ -45,20 +59,6 @@ type AudienceRule struct {
 	Url []string `json:"url,omitempty"`
 	// The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
 	VisitorSourceId *string `json:"visitor_source_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
-	EventSource map[string]interface{} `json:"event_source,omitempty"`
-	// Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-	IngestionSource map[string]interface{} `json:"ingestion_source,omitempty"`
-	// Optional for ENGAGEMENT. Engager type value should be 1-2.
-	EngagerType *int32 `json:"engager_type,omitempty"`
-	// Campaign ID for engagement audience filter.
-	CampaignId []string `json:"campaign_id,omitempty"`
-	// Ad ID for engagement audience filter.
-	AdId []string `json:"ad_id,omitempty"`
-	// Objective for engagement audience filter.
-	ObjectiveType []ObjectiveType `json:"objective_type,omitempty"`
-	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewAudienceRule instantiates a new AudienceRule object
@@ -76,6 +76,102 @@ func NewAudienceRule() *AudienceRule {
 func NewAudienceRuleWithDefaults() *AudienceRule {
 	this := AudienceRule{}
 	return &this
+}
+
+// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
+func (o *AudienceRule) GetAdAccountId() string {
+	if o == nil || IsNil(o.AdAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AdAccountId
+}
+
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetAdAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AdAccountId) {
+		return nil, false
+	}
+	return o.AdAccountId, true
+}
+
+// HasAdAccountId returns a boolean if a field has been set.
+func (o *AudienceRule) HasAdAccountId() bool {
+	if o != nil && !IsNil(o.AdAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
+func (o *AudienceRule) SetAdAccountId(v string) {
+	o.AdAccountId = &v
+}
+
+// GetAdId returns the AdId field value if set, zero value otherwise.
+func (o *AudienceRule) GetAdId() []string {
+	if o == nil || IsNil(o.AdId) {
+		var ret []string
+		return ret
+	}
+	return o.AdId
+}
+
+// GetAdIdOk returns a tuple with the AdId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetAdIdOk() ([]string, bool) {
+	if o == nil || IsNil(o.AdId) {
+		return nil, false
+	}
+	return o.AdId, true
+}
+
+// HasAdId returns a boolean if a field has been set.
+func (o *AudienceRule) HasAdId() bool {
+	if o != nil && !IsNil(o.AdId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdId gets a reference to the given []string and assigns it to the AdId field.
+func (o *AudienceRule) SetAdId(v []string) {
+	o.AdId = v
+}
+
+// GetCampaignId returns the CampaignId field value if set, zero value otherwise.
+func (o *AudienceRule) GetCampaignId() []string {
+	if o == nil || IsNil(o.CampaignId) {
+		var ret []string
+		return ret
+	}
+	return o.CampaignId
+}
+
+// GetCampaignIdOk returns a tuple with the CampaignId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetCampaignIdOk() ([]string, bool) {
+	if o == nil || IsNil(o.CampaignId) {
+		return nil, false
+	}
+	return o.CampaignId, true
+}
+
+// HasCampaignId returns a boolean if a field has been set.
+func (o *AudienceRule) HasCampaignId() bool {
+	if o != nil && !IsNil(o.CampaignId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCampaignId gets a reference to the given []string and assigns it to the CampaignId field.
+func (o *AudienceRule) SetCampaignId(v []string) {
+	o.CampaignId = v
 }
 
 // GetCountry returns the Country field value if set, zero value otherwise.
@@ -206,6 +302,38 @@ func (o *AudienceRule) SetEngagementType(v string) {
 	o.EngagementType = &v
 }
 
+// GetEngagerType returns the EngagerType field value if set, zero value otherwise.
+func (o *AudienceRule) GetEngagerType() int32 {
+	if o == nil || IsNil(o.EngagerType) {
+		var ret int32
+		return ret
+	}
+	return *o.EngagerType
+}
+
+// GetEngagerTypeOk returns a tuple with the EngagerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetEngagerTypeOk() (*int32, bool) {
+	if o == nil || IsNil(o.EngagerType) {
+		return nil, false
+	}
+	return o.EngagerType, true
+}
+
+// HasEngagerType returns a boolean if a field has been set.
+func (o *AudienceRule) HasEngagerType() bool {
+	if o != nil && !IsNil(o.EngagerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetEngagerType gets a reference to the given int32 and assigns it to the EngagerType field.
+func (o *AudienceRule) SetEngagerType(v int32) {
+	o.EngagerType = &v
+}
+
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *AudienceRule) GetEvent() string {
 	if o == nil || IsNil(o.Event) {
@@ -239,9 +367,9 @@ func (o *AudienceRule) SetEvent(v string) {
 }
 
 // GetEventData returns the EventData field value if set, zero value otherwise.
-func (o *AudienceRule) GetEventData() PinterestTagEventData {
+func (o *AudienceRule) GetEventData() EventData {
 	if o == nil || IsNil(o.EventData) {
-		var ret PinterestTagEventData
+		var ret EventData
 		return ret
 	}
 	return *o.EventData
@@ -249,7 +377,7 @@ func (o *AudienceRule) GetEventData() PinterestTagEventData {
 
 // GetEventDataOk returns a tuple with the EventData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudienceRule) GetEventDataOk() (*PinterestTagEventData, bool) {
+func (o *AudienceRule) GetEventDataOk() (*EventData, bool) {
 	if o == nil || IsNil(o.EventData) {
 		return nil, false
 	}
@@ -265,9 +393,105 @@ func (o *AudienceRule) HasEventData() bool {
 	return false
 }
 
-// SetEventData gets a reference to the given PinterestTagEventData and assigns it to the EventData field.
-func (o *AudienceRule) SetEventData(v PinterestTagEventData) {
+// SetEventData gets a reference to the given EventData and assigns it to the EventData field.
+func (o *AudienceRule) SetEventData(v EventData) {
 	o.EventData = &v
+}
+
+// GetEventSource returns the EventSource field value if set, zero value otherwise.
+func (o *AudienceRule) GetEventSource() map[string]interface{} {
+	if o == nil || IsNil(o.EventSource) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.EventSource
+}
+
+// GetEventSourceOk returns a tuple with the EventSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetEventSourceOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.EventSource) {
+		return map[string]interface{}{}, false
+	}
+	return o.EventSource, true
+}
+
+// HasEventSource returns a boolean if a field has been set.
+func (o *AudienceRule) HasEventSource() bool {
+	if o != nil && !IsNil(o.EventSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventSource gets a reference to the given map[string]interface{} and assigns it to the EventSource field.
+func (o *AudienceRule) SetEventSource(v map[string]interface{}) {
+	o.EventSource = v
+}
+
+// GetIngestionSource returns the IngestionSource field value if set, zero value otherwise.
+func (o *AudienceRule) GetIngestionSource() map[string]interface{} {
+	if o == nil || IsNil(o.IngestionSource) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.IngestionSource
+}
+
+// GetIngestionSourceOk returns a tuple with the IngestionSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetIngestionSourceOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.IngestionSource) {
+		return map[string]interface{}{}, false
+	}
+	return o.IngestionSource, true
+}
+
+// HasIngestionSource returns a boolean if a field has been set.
+func (o *AudienceRule) HasIngestionSource() bool {
+	if o != nil && !IsNil(o.IngestionSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetIngestionSource gets a reference to the given map[string]interface{} and assigns it to the IngestionSource field.
+func (o *AudienceRule) SetIngestionSource(v map[string]interface{}) {
+	o.IngestionSource = v
+}
+
+// GetObjectiveType returns the ObjectiveType field value if set, zero value otherwise.
+func (o *AudienceRule) GetObjectiveType() []ObjectiveType {
+	if o == nil || IsNil(o.ObjectiveType) {
+		var ret []ObjectiveType
+		return ret
+	}
+	return o.ObjectiveType
+}
+
+// GetObjectiveTypeOk returns a tuple with the ObjectiveType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceRule) GetObjectiveTypeOk() ([]ObjectiveType, bool) {
+	if o == nil || IsNil(o.ObjectiveType) {
+		return nil, false
+	}
+	return o.ObjectiveType, true
+}
+
+// HasObjectiveType returns a boolean if a field has been set.
+func (o *AudienceRule) HasObjectiveType() bool {
+	if o != nil && !IsNil(o.ObjectiveType) {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectiveType gets a reference to the given []ObjectiveType and assigns it to the ObjectiveType field.
+func (o *AudienceRule) SetObjectiveType(v []ObjectiveType) {
+	o.ObjectiveType = v
 }
 
 // GetPercentage returns the Percentage field value if set, zero value otherwise.
@@ -494,230 +718,6 @@ func (o *AudienceRule) SetVisitorSourceId(v string) {
 	o.VisitorSourceId = &v
 }
 
-// GetEventSource returns the EventSource field value if set, zero value otherwise.
-func (o *AudienceRule) GetEventSource() map[string]interface{} {
-	if o == nil || IsNil(o.EventSource) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.EventSource
-}
-
-// GetEventSourceOk returns a tuple with the EventSource field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetEventSourceOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.EventSource) {
-		return map[string]interface{}{}, false
-	}
-	return o.EventSource, true
-}
-
-// HasEventSource returns a boolean if a field has been set.
-func (o *AudienceRule) HasEventSource() bool {
-	if o != nil && !IsNil(o.EventSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventSource gets a reference to the given map[string]interface{} and assigns it to the EventSource field.
-func (o *AudienceRule) SetEventSource(v map[string]interface{}) {
-	o.EventSource = v
-}
-
-// GetIngestionSource returns the IngestionSource field value if set, zero value otherwise.
-func (o *AudienceRule) GetIngestionSource() map[string]interface{} {
-	if o == nil || IsNil(o.IngestionSource) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.IngestionSource
-}
-
-// GetIngestionSourceOk returns a tuple with the IngestionSource field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetIngestionSourceOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.IngestionSource) {
-		return map[string]interface{}{}, false
-	}
-	return o.IngestionSource, true
-}
-
-// HasIngestionSource returns a boolean if a field has been set.
-func (o *AudienceRule) HasIngestionSource() bool {
-	if o != nil && !IsNil(o.IngestionSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetIngestionSource gets a reference to the given map[string]interface{} and assigns it to the IngestionSource field.
-func (o *AudienceRule) SetIngestionSource(v map[string]interface{}) {
-	o.IngestionSource = v
-}
-
-// GetEngagerType returns the EngagerType field value if set, zero value otherwise.
-func (o *AudienceRule) GetEngagerType() int32 {
-	if o == nil || IsNil(o.EngagerType) {
-		var ret int32
-		return ret
-	}
-	return *o.EngagerType
-}
-
-// GetEngagerTypeOk returns a tuple with the EngagerType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetEngagerTypeOk() (*int32, bool) {
-	if o == nil || IsNil(o.EngagerType) {
-		return nil, false
-	}
-	return o.EngagerType, true
-}
-
-// HasEngagerType returns a boolean if a field has been set.
-func (o *AudienceRule) HasEngagerType() bool {
-	if o != nil && !IsNil(o.EngagerType) {
-		return true
-	}
-
-	return false
-}
-
-// SetEngagerType gets a reference to the given int32 and assigns it to the EngagerType field.
-func (o *AudienceRule) SetEngagerType(v int32) {
-	o.EngagerType = &v
-}
-
-// GetCampaignId returns the CampaignId field value if set, zero value otherwise.
-func (o *AudienceRule) GetCampaignId() []string {
-	if o == nil || IsNil(o.CampaignId) {
-		var ret []string
-		return ret
-	}
-	return o.CampaignId
-}
-
-// GetCampaignIdOk returns a tuple with the CampaignId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetCampaignIdOk() ([]string, bool) {
-	if o == nil || IsNil(o.CampaignId) {
-		return nil, false
-	}
-	return o.CampaignId, true
-}
-
-// HasCampaignId returns a boolean if a field has been set.
-func (o *AudienceRule) HasCampaignId() bool {
-	if o != nil && !IsNil(o.CampaignId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCampaignId gets a reference to the given []string and assigns it to the CampaignId field.
-func (o *AudienceRule) SetCampaignId(v []string) {
-	o.CampaignId = v
-}
-
-// GetAdId returns the AdId field value if set, zero value otherwise.
-func (o *AudienceRule) GetAdId() []string {
-	if o == nil || IsNil(o.AdId) {
-		var ret []string
-		return ret
-	}
-	return o.AdId
-}
-
-// GetAdIdOk returns a tuple with the AdId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetAdIdOk() ([]string, bool) {
-	if o == nil || IsNil(o.AdId) {
-		return nil, false
-	}
-	return o.AdId, true
-}
-
-// HasAdId returns a boolean if a field has been set.
-func (o *AudienceRule) HasAdId() bool {
-	if o != nil && !IsNil(o.AdId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdId gets a reference to the given []string and assigns it to the AdId field.
-func (o *AudienceRule) SetAdId(v []string) {
-	o.AdId = v
-}
-
-// GetObjectiveType returns the ObjectiveType field value if set, zero value otherwise.
-func (o *AudienceRule) GetObjectiveType() []ObjectiveType {
-	if o == nil || IsNil(o.ObjectiveType) {
-		var ret []ObjectiveType
-		return ret
-	}
-	return o.ObjectiveType
-}
-
-// GetObjectiveTypeOk returns a tuple with the ObjectiveType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetObjectiveTypeOk() ([]ObjectiveType, bool) {
-	if o == nil || IsNil(o.ObjectiveType) {
-		return nil, false
-	}
-	return o.ObjectiveType, true
-}
-
-// HasObjectiveType returns a boolean if a field has been set.
-func (o *AudienceRule) HasObjectiveType() bool {
-	if o != nil && !IsNil(o.ObjectiveType) {
-		return true
-	}
-
-	return false
-}
-
-// SetObjectiveType gets a reference to the given []ObjectiveType and assigns it to the ObjectiveType field.
-func (o *AudienceRule) SetObjectiveType(v []ObjectiveType) {
-	o.ObjectiveType = v
-}
-
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
-func (o *AudienceRule) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
-		var ret string
-		return ret
-	}
-	return *o.AdAccountId
-}
-
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceRule) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
-		return nil, false
-	}
-	return o.AdAccountId, true
-}
-
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *AudienceRule) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
-func (o *AudienceRule) SetAdAccountId(v string) {
-	o.AdAccountId = &v
-}
-
 func (o AudienceRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -728,6 +728,15 @@ func (o AudienceRule) MarshalJSON() ([]byte, error) {
 
 func (o AudienceRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AdAccountId) {
+		toSerialize["ad_account_id"] = o.AdAccountId
+	}
+	if !IsNil(o.AdId) {
+		toSerialize["ad_id"] = o.AdId
+	}
+	if !IsNil(o.CampaignId) {
+		toSerialize["campaign_id"] = o.CampaignId
+	}
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}
@@ -740,11 +749,23 @@ func (o AudienceRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EngagementType) {
 		toSerialize["engagement_type"] = o.EngagementType
 	}
+	if !IsNil(o.EngagerType) {
+		toSerialize["engager_type"] = o.EngagerType
+	}
 	if !IsNil(o.Event) {
 		toSerialize["event"] = o.Event
 	}
 	if !IsNil(o.EventData) {
 		toSerialize["event_data"] = o.EventData
+	}
+	if !IsNil(o.EventSource) {
+		toSerialize["event_source"] = o.EventSource
+	}
+	if !IsNil(o.IngestionSource) {
+		toSerialize["ingestion_source"] = o.IngestionSource
+	}
+	if !IsNil(o.ObjectiveType) {
+		toSerialize["objective_type"] = o.ObjectiveType
 	}
 	if !IsNil(o.Percentage) {
 		toSerialize["percentage"] = o.Percentage
@@ -766,27 +787,6 @@ func (o AudienceRule) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.VisitorSourceId) {
 		toSerialize["visitor_source_id"] = o.VisitorSourceId
-	}
-	if !IsNil(o.EventSource) {
-		toSerialize["event_source"] = o.EventSource
-	}
-	if !IsNil(o.IngestionSource) {
-		toSerialize["ingestion_source"] = o.IngestionSource
-	}
-	if !IsNil(o.EngagerType) {
-		toSerialize["engager_type"] = o.EngagerType
-	}
-	if !IsNil(o.CampaignId) {
-		toSerialize["campaign_id"] = o.CampaignId
-	}
-	if !IsNil(o.AdId) {
-		toSerialize["ad_id"] = o.AdId
-	}
-	if !IsNil(o.ObjectiveType) {
-		toSerialize["objective_type"] = o.ObjectiveType
-	}
-	if !IsNil(o.AdAccountId) {
-		toSerialize["ad_account_id"] = o.AdAccountId
 	}
 	return toSerialize, nil
 }

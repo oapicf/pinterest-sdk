@@ -8,8 +8,13 @@ Pin with multiple videos.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mediaType** | **String** |  |  [optional]
-**items** | [**Seq&lt;VideoMetadata&gt;**](VideoMetadata.md) |  |  [optional]
+**items** | [**Seq&lt;VideoMetadataWithItemType&gt;**](VideoMetadataWithItemType.md) |  |  [optional]
+**mediaType** | [**MediaType**](#MediaType) |  | 
+
+
+## Enum: MediaType
+Allowed values: [multiple_videos]
+
 
 
 

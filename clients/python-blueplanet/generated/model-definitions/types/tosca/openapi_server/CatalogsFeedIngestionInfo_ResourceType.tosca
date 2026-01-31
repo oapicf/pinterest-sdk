@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedIngestionInfo"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedIngestionInfo"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsFeedIngestionInfo {
+    title = CatalogsFeedIngestionInfo
+    description = CatalogsFeedIngestionInfo
+    derivedFrom = Root
+    properties {
+        in_stock {
+          type =  integer
+          description = "The number of ingested products that are in stock."
+          optional = false
+        }
+        out_of_stock {
+          type =  integer
+          description = "The number of ingested products that are in out of stock."
+          optional = false
+        }
+        preorder {
+          type =  integer
+          description = "The number of ingested products that are in preorder."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedIngestionInfo {
+    title = CatalogsFeedIngestionInfo
+    description = CatalogsFeedIngestionInfo
+    implements = openapi_server.resourceTypes.CatalogsFeedIngestionInfo
+
+  }
+}

@@ -12,30 +12,30 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param id Order line ID.
- * @param _type Always \"orderline\".
  * @param adUnderscoreaccountUnderscoreid Ad account ID.
+ * @param budget Order line budget in micro currency.
+ * @param endUnderscoretime End time. Unix timestamp.
+ * @param id Order line ID.
+ * @param name Order line name.
+ * @param paidUnderscorebudget Order line paid budget in micro currency.
+ * @param paidUnderscoretype Order line paid type.
  * @param purchaseUnderscoreorderUnderscoreid Purchase order ID.
  * @param startUnderscoretime Start time. Unix timestamp.
- * @param endUnderscoretime End time. Unix timestamp.
- * @param budget Order line budget in micro currency.
- * @param paidUnderscorebudget Order line paid budget in micro currency.
  * @param status Order line status.
- * @param name Order line name.
- * @param paidUnderscoretype Order line paid type.
+ * @param _type Always \"orderline\".
  * @param campaignUnderscoreids Associated List of campaign IDs.
  */
-case class OrderLine(id: Option[String],
-                _type: Option[String],
-                adUnderscoreaccountUnderscoreid: Option[String],
+case class OrderLine(adUnderscoreaccountUnderscoreid: Option[String],
+                budget: Option[BigDecimal],
+                endUnderscoretime: Option[BigDecimal],
+                id: Option[String],
+                name: Option[String],
+                paidUnderscorebudget: Option[BigDecimal],
+                paidUnderscoretype: Option[OrderLinePaidType],
                 purchaseUnderscoreorderUnderscoreid: Option[String],
                 startUnderscoretime: Option[BigDecimal],
-                endUnderscoretime: Option[BigDecimal],
-                budget: Option[BigDecimal],
-                paidUnderscorebudget: Option[BigDecimal],
                 status: Option[OrderLineStatus],
-                name: Option[String],
-                paidUnderscoretype: Option[OrderLinePaidType],
+                _type: Option[String],
                 campaignUnderscoreids: Seq[String]
                 )
 

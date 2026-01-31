@@ -2,10 +2,7 @@
 Protected Class BulkDownloadRequestCampaignFilter
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Unix UTC timestamp.
-		#tag EndNote
-		start_time As Xoson.O.OptionalString
+		campaign_status() As CampaignSummaryStatus
 	#tag EndProperty
 
 
@@ -26,12 +23,15 @@ Protected Class BulkDownloadRequestCampaignFilter
 
 
 	#tag Property, Flags = &h0
-		campaign_status() As CampaignSummaryStatus
+		objective_type() As ObjectiveType
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		objective_type() As ObjectiveType
+		#tag Note
+			Unix UTC timestamp.
+		#tag EndNote
+		start_time As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -72,11 +72,11 @@ Protected Class BulkDownloadRequestCampaignFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="start_time"
+			Name="campaign_status"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="CampaignSummaryStatus"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -96,19 +96,19 @@ Protected Class BulkDownloadRequestCampaignFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="campaign_status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CampaignSummaryStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="objective_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="ObjectiveType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="start_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

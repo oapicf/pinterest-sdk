@@ -14,44 +14,27 @@ import javax.validation.Valid;
 /**
  * Object describing an item processing record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemProcessingRecord   {
-  @JsonProperty("item_id")
-  
-  private String itemId;
-
   @JsonProperty("errors")
   @Valid
 
   private List<@Valid ItemValidationEvent> errors = null;
 
-  @JsonProperty("warnings")
-  @Valid
-
-  private List<@Valid ItemValidationEvent> warnings = null;
+  @JsonProperty("item_id")
+  
+  private String itemId;
 
   @JsonProperty("status")
   @Valid
 
   private ItemProcessingStatus status;
 
-  public ItemProcessingRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
+  @JsonProperty("warnings")
+  @Valid
 
-   /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
+  private List<@Valid ItemValidationEvent> warnings = null;
 
   public ItemProcessingRecord errors(List<@Valid ItemValidationEvent> errors) {
     this.errors = errors;
@@ -76,6 +59,40 @@ public class ItemProcessingRecord   {
 
   public void setErrors(List<@Valid ItemValidationEvent> errors) {
     this.errors = errors;
+  }
+
+  public ItemProcessingRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public ItemProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
   }
 
   public ItemProcessingRecord warnings(List<@Valid ItemValidationEvent> warnings) {
@@ -103,23 +120,6 @@ public class ItemProcessingRecord   {
     this.warnings = warnings;
   }
 
-  public ItemProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -130,15 +130,15 @@ public class ItemProcessingRecord   {
       return false;
     }
     ItemProcessingRecord itemProcessingRecord = (ItemProcessingRecord) o;
-    return Objects.equals(itemId, itemProcessingRecord.itemId) &&
-        Objects.equals(errors, itemProcessingRecord.errors) &&
-        Objects.equals(warnings, itemProcessingRecord.warnings) &&
-        Objects.equals(status, itemProcessingRecord.status);
+    return Objects.equals(errors, itemProcessingRecord.errors) &&
+        Objects.equals(itemId, itemProcessingRecord.itemId) &&
+        Objects.equals(status, itemProcessingRecord.status) &&
+        Objects.equals(warnings, itemProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, errors, warnings, status);
+    return Objects.hash(errors, itemId, status, warnings);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -147,10 +147,10 @@ public class ItemProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemProcessingRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

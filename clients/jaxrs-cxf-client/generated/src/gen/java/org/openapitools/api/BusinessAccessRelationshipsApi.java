@@ -1,5 +1,8 @@
 package org.openapitools.api;
 
+import org.openapitools.model.BrandAccountsCreate200Response;
+import org.openapitools.model.BrandAccountsCreateRequest;
+import org.openapitools.model.BrandAccountsUpdateRequest;
 import org.openapitools.model.DeletePartnersRequest;
 import org.openapitools.model.DeletePartnersResponse;
 import org.openapitools.model.DeletedMembersResponse;
@@ -10,6 +13,7 @@ import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.MemberBusinessRole;
 import org.openapitools.model.MembersToDeleteBody;
 import org.openapitools.model.PartnerType;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateMemberBusinessRoleBody;
 import org.openapitools.model.UpdateMemberResultsResponseArray;
 
@@ -30,9 +34,48 @@ import io.swagger.jaxrs.PATCH;
  * <p>Pinterest's REST API
  *
  */
-@Path("/businesses")
+@Path("")
 @Api(value = "/", description = "")
 public interface BusinessAccessRelationshipsApi  {
+
+    /**
+     * Create a Brand Account
+     *
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     *
+     */
+    @POST
+    @Path("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Create a Brand Account", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public BrandAccountsCreate200Response brandAccountsCreate(@PathParam("business_hierarchy_id") String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest);
+
+    /**
+     * Update a Brand Account
+     *
+     * Update an existing Brand Account
+     *
+     */
+    @PATCH
+    @Path("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Update a Brand Account", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 401, message = "Not authenticated to update Brand Account", response = Error.class),
+        @ApiResponse(code = 403, message = "Not authorized to update Brand Account", response = Error.class),
+        @ApiResponse(code = 404, message = "Brand account not found", response = Error.class),
+        @ApiResponse(code = 409, message = "This account is not a brand account.", response = Error.class),
+        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public BrandAccountsCreate200Response brandAccountsUpdate(@PathParam("business_hierarchy_id") String businessHierarchyId, @PathParam("brand_account_id") String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest);
 
     /**
      * Terminate business memberships
@@ -41,7 +84,7 @@ public interface BusinessAccessRelationshipsApi  {
      *
      */
     @DELETE
-    @Path("/{business_id}/members")
+    @Path("/businesses/{business_id}/members")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Terminate business memberships", tags={  })
@@ -57,7 +100,7 @@ public interface BusinessAccessRelationshipsApi  {
      *
      */
     @DELETE
-    @Path("/{business_id}/partners")
+    @Path("/businesses/{business_id}/partners")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Terminate business partnerships", tags={  })
@@ -74,7 +117,7 @@ public interface BusinessAccessRelationshipsApi  {
      *
      */
     @GET
-    @Path("/employers")
+    @Path("/businesses/employers")
     @Produces({ "application/json" })
     @ApiOperation(value = "List business employers for user", tags={  })
     @ApiResponses(value = { 
@@ -89,13 +132,13 @@ public interface BusinessAccessRelationshipsApi  {
      *
      */
     @GET
-    @Path("/{business_id}/members")
+    @Path("/businesses/{business_id}/members")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get business members", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = GetBusinessMembers200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public GetBusinessMembers200Response getBusinessMembers(@PathParam("business_id") String businessId, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("business_roles") List<MemberBusinessRole> businessRoles, @QueryParam("member_ids") String memberIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
+    public GetBusinessMembers200Response getBusinessMembers(@PathParam("business_id") String businessId, @QueryParam("fetch_system_users") @DefaultValue("false")Boolean fetchSystemUsers, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("business_roles") List<MemberBusinessRole> businessRoles, @QueryParam("member_ids") String memberIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
      * Get business partners
@@ -104,7 +147,7 @@ public interface BusinessAccessRelationshipsApi  {
      *
      */
     @GET
-    @Path("/{business_id}/partners")
+    @Path("/businesses/{business_id}/partners")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get business partners", tags={  })
     @ApiResponses(value = { 
@@ -113,13 +156,30 @@ public interface BusinessAccessRelationshipsApi  {
     public GetBusinessPartners200Response getBusinessPartners(@PathParam("business_id") String businessId, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("partner_type") PartnerType partnerType, @QueryParam("partner_ids") String partnerIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
 
     /**
+     * Update a system user information.
+     *
+     * Update a system user information such as name.
+     *
+     */
+    @PATCH
+    @Path("/businesses/{business_id}/system_users/{system_user_id}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Update a system user information.", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "System user updated successfully."),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public void systemUserUpdate(@PathParam("business_id") String businessId, @PathParam("system_user_id") String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest);
+
+    /**
      * Update member&#39;s business role
      *
      * Update a member&#39;s business role within the business.
      *
      */
     @PATCH
-    @Path("/{business_id}/members")
+    @Path("/businesses/{business_id}/members")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Update member's business role", tags={  })

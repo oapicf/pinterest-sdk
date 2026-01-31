@@ -7,16 +7,16 @@
 #' @title CatalogsReportDistributionIssueFilter
 #' @description CatalogsReportDistributionIssueFilter Class
 #' @format An \code{R6Class} generator object
-#' @field report_type  character
 #' @field catalog_id Unique identifier of a catalog. If not given, oldest catalog will be used character [optional]
+#' @field report_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsReportDistributionIssueFilter <- R6::R6Class(
   "CatalogsReportDistributionIssueFilter",
   public = list(
-    `report_type` = NULL,
     `catalog_id` = NULL,
+    `report_type` = NULL,
 
     #' @description
     #' Initialize a new CatalogsReportDistributionIssueFilter class.
@@ -73,13 +73,13 @@ CatalogsReportDistributionIssueFilter <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsReportDistributionIssueFilterObject <- list()
-      if (!is.null(self$`report_type`)) {
-        CatalogsReportDistributionIssueFilterObject[["report_type"]] <-
-          self$`report_type`
-      }
       if (!is.null(self$`catalog_id`)) {
         CatalogsReportDistributionIssueFilterObject[["catalog_id"]] <-
           self$`catalog_id`
+      }
+      if (!is.null(self$`report_type`)) {
+        CatalogsReportDistributionIssueFilterObject[["report_type"]] <-
+          self$`report_type`
       }
       return(CatalogsReportDistributionIssueFilterObject)
     },
@@ -91,14 +91,14 @@ CatalogsReportDistributionIssueFilter <- R6::R6Class(
     #' @return the instance of CatalogsReportDistributionIssueFilter
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
+      }
       if (!is.null(this_object$`report_type`)) {
         if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
           stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
         }
         self$`report_type` <- this_object$`report_type`
-      }
-      if (!is.null(this_object$`catalog_id`)) {
-        self$`catalog_id` <- this_object$`catalog_id`
       }
       self
     },
@@ -121,11 +121,11 @@ CatalogsReportDistributionIssueFilter <- R6::R6Class(
     #' @return the instance of CatalogsReportDistributionIssueFilter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`catalog_id` <- this_object$`catalog_id`
       if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
         stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
       }
       self$`report_type` <- this_object$`report_type`
-      self$`catalog_id` <- this_object$`catalog_id`
       self
     },
 
@@ -158,12 +158,12 @@ CatalogsReportDistributionIssueFilter <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `report_type` is null
-      if (is.null(self$`report_type`)) {
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+      # check if the required `report_type` is null
+      if (is.null(self$`report_type`)) {
         return(FALSE)
       }
 
@@ -176,13 +176,13 @@ CatalogsReportDistributionIssueFilter <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `report_type` is null
       if (is.null(self$`report_type`)) {
         invalid_fields["report_type"] <- "Non-nullable required field `report_type` cannot be null."
-      }
-
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

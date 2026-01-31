@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;TargetingTemplateResponseData&gt;**](TargetingTemplateResponseData.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;TargetingTemplateGetResponseData&gt;**](TargetingTemplateGetResponseData.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { TargetingTemplateList200Response } from './api';
 
 const instance: TargetingTemplateList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

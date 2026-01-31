@@ -8,8 +8,8 @@ use WWW::OpenAPIClient::Object::Paginated;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | **ARRAY[object]** |  | 
 **bookmark** | **string** |  | [optional] 
+**items** | **ARRAY[object]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

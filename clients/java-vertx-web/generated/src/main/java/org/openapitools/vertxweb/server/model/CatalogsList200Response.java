@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.Catalog;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsList200Response   {
   
-  private List<Catalog> items = new ArrayList<>();
   private String bookmark;
+  private List<Catalog> items = new ArrayList<>();
 
   public CatalogsList200Response () {
 
   }
 
-  public CatalogsList200Response (List<Catalog> items, String bookmark) {
-    this.items = items;
+  public CatalogsList200Response (String bookmark, List<Catalog> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<Catalog> getItems() {
-    return items;
-  }
-  public void setItems(List<Catalog> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class CatalogsList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<Catalog> getItems() {
+    return items;
+  }
+  public void setItems(List<Catalog> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class CatalogsList200Response   {
       return false;
     }
     CatalogsList200Response catalogsList200Response = (CatalogsList200Response) o;
-    return Objects.equals(items, catalogsList200Response.items) &&
-        Objects.equals(bookmark, catalogsList200Response.bookmark);
+    return Objects.equals(bookmark, catalogsList200Response.bookmark) &&
+        Objects.equals(items, catalogsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class CatalogsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

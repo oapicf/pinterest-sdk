@@ -22,20 +22,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param username Username
  * @param type Always \"user\"
+ * @param username Username
  */
 
 
 data class UserSummary (
 
-    /* Username */
-    @Json(name = "username")
-    val username: kotlin.String? = null,
-
     /* Always \"user\" */
     @Json(name = "type")
-    val type: kotlin.String? = null
+    val type: kotlin.String? = null,
+
+    /* Username */
+    @Json(name = "username")
+    val username: kotlin.String? = null
 
 ) {
 

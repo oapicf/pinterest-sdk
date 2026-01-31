@@ -85,7 +85,7 @@ public class BusinessAccessAssetsApiServiceImpl implements BusinessAccessAssetsA
      * Get all the members the requesting business has granted access to on the given asset.
      *
      */
-    public BusinessAssetMembersGet200Response businessAssetMembersGet(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex) {
+    public BusinessAssetMembersGet200Response businessAssetMembersGet(String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex) {
         // TODO: Implement...
 
         return null;

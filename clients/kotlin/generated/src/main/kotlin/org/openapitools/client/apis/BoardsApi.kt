@@ -20,12 +20,17 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Board
+import org.openapitools.client.models.BoardCreate
+import org.openapitools.client.models.BoardPrivacyFilter
 import org.openapitools.client.models.BoardSection
 import org.openapitools.client.models.BoardSectionsList200Response
-import org.openapitools.client.models.BoardUpdate
+import org.openapitools.client.models.BoardWithUpdatePrivacy
+import org.openapitools.client.models.BoardWithUpdatePrivacyUpdate
 import org.openapitools.client.models.BoardsList200Response
 import org.openapitools.client.models.BoardsListPins200Response
+import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -498,8 +503,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /boards
      * Create board
-     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param board Create a board using a single board json object.
+     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Board
      * @throws IllegalStateException If the request is not correctly configured
@@ -510,8 +515,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun boardsCreate(board: Board, adAccountId: kotlin.String? = null) : Board {
-        val localVarResponse = boardsCreateWithHttpInfo(board = board, adAccountId = adAccountId)
+    fun boardsCreate(boardCreate: BoardCreate, adAccountId: kotlin.String? = null) : Board {
+        val localVarResponse = boardsCreateWithHttpInfo(boardCreate = boardCreate, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as Board
@@ -531,8 +536,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /boards
      * Create board
-     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param board Create a board using a single board json object.
+     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Board?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -540,10 +545,10 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun boardsCreateWithHttpInfo(board: Board, adAccountId: kotlin.String?) : ApiResponse<Board?> {
-        val localVariableConfig = boardsCreateRequestConfig(board = board, adAccountId = adAccountId)
+    fun boardsCreateWithHttpInfo(boardCreate: BoardCreate, adAccountId: kotlin.String?) : ApiResponse<Board?> {
+        val localVariableConfig = boardsCreateRequestConfig(boardCreate = boardCreate, adAccountId = adAccountId)
 
-        return request<Board, Board>(
+        return request<BoardCreate, Board>(
             localVariableConfig
         )
     }
@@ -551,12 +556,12 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * To obtain the request config of the operation boardsCreate
      *
-     * @param board Create a board using a single board json object.
+     * @param boardCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun boardsCreateRequestConfig(board: Board, adAccountId: kotlin.String?) : RequestConfig<Board> {
-        val localVariableBody = board
+    fun boardsCreateRequestConfig(boardCreate: BoardCreate, adAccountId: kotlin.String?) : RequestConfig<BoardCreate> {
+        val localVariableBody = boardCreate
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -580,8 +585,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * DELETE /boards/{board_id}
      * Delete board
-     * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param boardId Unique identifier of a board.
+     * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
@@ -612,8 +617,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * DELETE /boards/{board_id}
      * Delete board
-     * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param boardId Unique identifier of a board.
+     * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -631,7 +636,7 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * To obtain the request config of the operation boardsDelete
      *
-     * @param boardId Unique identifier of a board.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -659,8 +664,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /boards/{board_id}
      * Get board
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param boardId Unique identifier of a board.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Board
      * @throws IllegalStateException If the request is not correctly configured
@@ -692,8 +697,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /boards/{board_id}
      * Get board
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param boardId Unique identifier of a board.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Board?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -712,7 +717,7 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * To obtain the request config of the operation boardsGet
      *
-     * @param boardId Unique identifier of a board.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -738,33 +743,13 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
-     * enum for parameter privacy
-     */
-     enum class PrivacyBoardsList(val value: kotlin.String) {
-         @Json(name = "ALL") ALL("ALL"),
-         @Json(name = "PROTECTED") PROTECTED("PROTECTED"),
-         @Json(name = "PUBLIC") PUBLIC("PUBLIC"),
-         @Json(name = "SECRET") SECRET("SECRET"),
-         @Json(name = "PUBLIC_AND_SECRET") PUBLIC_AND_SECRET("PUBLIC_AND_SECRET");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /boards
      * List boards
-     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param privacy The privacy level of the board (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param privacy Privacy setting for a board. (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return BoardsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -774,8 +759,8 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun boardsList(adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, privacy: PrivacyBoardsList? = null) : BoardsList200Response {
-        val localVarResponse = boardsListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, privacy = privacy)
+    fun boardsList(adAccountId: kotlin.String? = null, privacy: BoardPrivacyFilter? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BoardsList200Response {
+        val localVarResponse = boardsListWithHttpInfo(adAccountId = adAccountId, privacy = privacy, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BoardsList200Response
@@ -795,19 +780,19 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /boards
      * List boards
-     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param privacy The privacy level of the board (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param privacy Privacy setting for a board. (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<BoardsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun boardsListWithHttpInfo(adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?, privacy: PrivacyBoardsList?) : ApiResponse<BoardsList200Response?> {
-        val localVariableConfig = boardsListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, privacy = privacy)
+    fun boardsListWithHttpInfo(adAccountId: kotlin.String?, privacy: BoardPrivacyFilter?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BoardsList200Response?> {
+        val localVariableConfig = boardsListRequestConfig(adAccountId = adAccountId, privacy = privacy, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, BoardsList200Response>(
             localVariableConfig
@@ -818,26 +803,26 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * To obtain the request config of the operation boardsList
      *
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param privacy The privacy level of the board (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param privacy Privacy setting for a board. (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun boardsListRequestConfig(adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?, privacy: PrivacyBoardsList?) : RequestConfig<Unit> {
+    fun boardsListRequestConfig(adAccountId: kotlin.String?, privacy: BoardPrivacyFilter?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
                 }
+                if (privacy != null) {
+                    put("privacy", listOf(privacy.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (privacy != null) {
-                    put("privacy", listOf(privacy.value))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -854,38 +839,15 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
-     * enum for parameter creativeTypes
-     */
-     enum class CreativeTypesBoardsListPins(val value: kotlin.String) {
-         @Json(name = "REGULAR") REGULAR("REGULAR"),
-         @Json(name = "VIDEO") VIDEO("VIDEO"),
-         @Json(name = "SHOPPING") SHOPPING("SHOPPING"),
-         @Json(name = "CAROUSEL") CAROUSEL("CAROUSEL"),
-         @Json(name = "MAX_VIDEO") MAX_VIDEO("MAX_VIDEO"),
-         @Json(name = "SHOP_THE_PIN") SHOP_THE_PIN("SHOP_THE_PIN"),
-         @Json(name = "COLLECTION") COLLECTION("COLLECTION"),
-         @Json(name = "IDEA") IDEA("IDEA");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /boards/{board_id}/pins
      * List Pins on board
      * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return BoardsListPins200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -895,7 +857,7 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun boardsListPins(boardId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, creativeTypes: kotlin.collections.List<CreativeTypesBoardsListPins>? = null, adAccountId: kotlin.String? = null, pinMetrics: kotlin.Boolean? = false) : BoardsListPins200Response {
+    fun boardsListPins(boardId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, creativeTypes: kotlin.collections.List<CreativeType>? = null, adAccountId: kotlin.String? = null, pinMetrics: kotlin.Boolean? = false) : BoardsListPins200Response {
         val localVarResponse = boardsListPinsWithHttpInfo(boardId = boardId, bookmark = bookmark, pageSize = pageSize, creativeTypes = creativeTypes, adAccountId = adAccountId, pinMetrics = pinMetrics)
 
         return when (localVarResponse.responseType) {
@@ -920,16 +882,16 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return ApiResponse<BoardsListPins200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun boardsListPinsWithHttpInfo(boardId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, creativeTypes: kotlin.collections.List<CreativeTypesBoardsListPins>?, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?) : ApiResponse<BoardsListPins200Response?> {
+    fun boardsListPinsWithHttpInfo(boardId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, creativeTypes: kotlin.collections.List<CreativeType>?, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?) : ApiResponse<BoardsListPins200Response?> {
         val localVariableConfig = boardsListPinsRequestConfig(boardId = boardId, bookmark = bookmark, pageSize = pageSize, creativeTypes = creativeTypes, adAccountId = adAccountId, pinMetrics = pinMetrics)
 
         return request<Unit, BoardsListPins200Response>(
@@ -943,12 +905,12 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return RequestConfig
      */
-    fun boardsListPinsRequestConfig(boardId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, creativeTypes: kotlin.collections.List<CreativeTypesBoardsListPins>?, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?) : RequestConfig<Unit> {
+    fun boardsListPinsRequestConfig(boardId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, creativeTypes: kotlin.collections.List<CreativeType>?, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -984,11 +946,11 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * PATCH /boards/{board_id}
      * Update board
-     * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param boardId Unique identifier of a board.
-     * @param boardUpdate Update a board.
+     * Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardId 
+     * @param boardWithUpdatePrivacyUpdate 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return Board
+     * @return BoardWithUpdatePrivacy
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -997,11 +959,11 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun boardsUpdate(boardId: kotlin.String, boardUpdate: BoardUpdate, adAccountId: kotlin.String? = null) : Board {
-        val localVarResponse = boardsUpdateWithHttpInfo(boardId = boardId, boardUpdate = boardUpdate, adAccountId = adAccountId)
+    fun boardsUpdate(boardId: kotlin.String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: kotlin.String? = null) : BoardWithUpdatePrivacy {
+        val localVarResponse = boardsUpdateWithHttpInfo(boardId = boardId, boardWithUpdatePrivacyUpdate = boardWithUpdatePrivacyUpdate, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Board
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BoardWithUpdatePrivacy
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1018,20 +980,20 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * PATCH /boards/{board_id}
      * Update board
-     * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-     * @param boardId Unique identifier of a board.
-     * @param boardUpdate Update a board.
+     * Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * @param boardId 
+     * @param boardWithUpdatePrivacyUpdate 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<Board?>
+     * @return ApiResponse<BoardWithUpdatePrivacy?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun boardsUpdateWithHttpInfo(boardId: kotlin.String, boardUpdate: BoardUpdate, adAccountId: kotlin.String?) : ApiResponse<Board?> {
-        val localVariableConfig = boardsUpdateRequestConfig(boardId = boardId, boardUpdate = boardUpdate, adAccountId = adAccountId)
+    fun boardsUpdateWithHttpInfo(boardId: kotlin.String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: kotlin.String?) : ApiResponse<BoardWithUpdatePrivacy?> {
+        val localVariableConfig = boardsUpdateRequestConfig(boardId = boardId, boardWithUpdatePrivacyUpdate = boardWithUpdatePrivacyUpdate, adAccountId = adAccountId)
 
-        return request<BoardUpdate, Board>(
+        return request<BoardWithUpdatePrivacyUpdate, BoardWithUpdatePrivacy>(
             localVariableConfig
         )
     }
@@ -1039,13 +1001,13 @@ open class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * To obtain the request config of the operation boardsUpdate
      *
-     * @param boardId Unique identifier of a board.
-     * @param boardUpdate Update a board.
+     * @param boardId 
+     * @param boardWithUpdatePrivacyUpdate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun boardsUpdateRequestConfig(boardId: kotlin.String, boardUpdate: BoardUpdate, adAccountId: kotlin.String?) : RequestConfig<BoardUpdate> {
-        val localVariableBody = boardUpdate
+    fun boardsUpdateRequestConfig(boardId: kotlin.String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: kotlin.String?) : RequestConfig<BoardWithUpdatePrivacyUpdate> {
+        val localVariableBody = boardWithUpdatePrivacyUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {

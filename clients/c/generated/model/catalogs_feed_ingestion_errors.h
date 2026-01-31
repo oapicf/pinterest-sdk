@@ -27,27 +27,29 @@ pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_e ca
 
 
 typedef struct catalogs_feed_ingestion_errors_t {
-    int line_level_internal_error; //numeric
-    int large_product_count_decrease; //numeric
     int account_flagged; //numeric
-    int image_level_internal_error; //numeric
+    int fetch_google_sheet_not_shared; //numeric
     int image_file_not_accessible; //numeric
-    int image_malformed_url; //numeric
     int image_file_not_found; //numeric
     int image_invalid_file; //numeric
+    int image_level_internal_error; //numeric
+    int image_malformed_url; //numeric
+    int large_product_count_decrease; //numeric
+    int line_level_internal_error; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_errors_t;
 
 __attribute__((deprecated)) catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
-    int line_level_internal_error,
-    int large_product_count_decrease,
     int account_flagged,
-    int image_level_internal_error,
+    int fetch_google_sheet_not_shared,
     int image_file_not_accessible,
-    int image_malformed_url,
     int image_file_not_found,
-    int image_invalid_file
+    int image_invalid_file,
+    int image_level_internal_error,
+    int image_malformed_url,
+    int large_product_count_decrease,
+    int line_level_internal_error
 );
 
 void catalogs_feed_ingestion_errors_free(catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors);

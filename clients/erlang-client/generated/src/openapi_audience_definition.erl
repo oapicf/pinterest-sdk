@@ -6,15 +6,15 @@
 
 -type openapi_audience_definition() ::
     #{ 'date' => binary(),
-       'type' => binary(),
-       'scope' => binary()
+       'scope' => binary(),
+       'type' => binary()
      }.
 
 encode(#{ 'date' := Date,
-          'type' := Type,
-          'scope' := Scope
+          'scope' := Scope,
+          'type' := Type
         }) ->
     #{ 'date' => Date,
-       'type' => Type,
-       'scope' => Scope
+       'scope' => Scope,
+       'type' => Type
      }.

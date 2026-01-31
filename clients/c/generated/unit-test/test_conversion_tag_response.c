@@ -23,28 +23,28 @@ conversion_tag_response_t* instantiate_conversion_tag_response(int include_optio
   conversion_tag_response_t* conversion_tag_response = NULL;
   if (include_optional) {
     conversion_tag_response = conversion_tag_response_create(
-      "549755885175",
       "<script type=text/javascript> [...]",
-      pinterest_rest_api_conversion_tag_response__"VALIDATION_COMPLETE",
+       // false, not to have infinite recursion
+      instantiate_conversion_tag_configs(0),
+      UNKNOWN,
       "2617998078212",
       1599030000000,
       "ACME Checkout Test Tag",
-      pinterest_rest_api_conversion_tag_response__"ACTIVE",
       "3",
-       // false, not to have infinite recursion
-      instantiate_conversion_tag_configs(0)
+      "549755885175",
+      "ACTIVE"
     );
   } else {
     conversion_tag_response = conversion_tag_response_create(
-      "549755885175",
       "<script type=text/javascript> [...]",
-      pinterest_rest_api_conversion_tag_response__"VALIDATION_COMPLETE",
+      NULL,
+      UNKNOWN,
       "2617998078212",
       1599030000000,
       "ACME Checkout Test Tag",
-      pinterest_rest_api_conversion_tag_response__"ACTIVE",
       "3",
-      NULL
+      "549755885175",
+      "ACTIVE"
     );
   }
 

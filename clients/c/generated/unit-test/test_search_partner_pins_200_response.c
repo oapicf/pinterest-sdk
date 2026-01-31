@@ -22,13 +22,13 @@ search_partner_pins_200_response_t* instantiate_search_partner_pins_200_response
   search_partner_pins_200_response_t* search_partner_pins_200_response = NULL;
   if (include_optional) {
     search_partner_pins_200_response = search_partner_pins_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     search_partner_pins_200_response = search_partner_pins_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

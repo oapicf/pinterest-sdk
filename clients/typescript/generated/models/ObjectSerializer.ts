@@ -2,7 +2,7 @@ export * from '../models/Account';
 export * from '../models/ActionType';
 export * from '../models/AdAccount';
 export * from '../models/AdAccountAnalyticsResponseInner';
-export * from '../models/AdAccountCreateRequest';
+export * from '../models/AdAccountCreate';
 export * from '../models/AdAccountCreateSubscriptionRequest';
 export * from '../models/AdAccountCreateSubscriptionRequestPartnerMetadata';
 export * from '../models/AdAccountCreateSubscriptionResponse';
@@ -25,21 +25,26 @@ export * from '../models/AdGroupAudienceSizingRequestKeywordsInner';
 export * from '../models/AdGroupAudienceSizingResponse';
 export * from '../models/AdGroupCommon';
 export * from '../models/AdGroupCreateRequest';
+export * from '../models/AdGroupIdFilter';
 export * from '../models/AdGroupResponse';
 export * from '../models/AdGroupSummaryStatus';
 export * from '../models/AdGroupUpdateRequest';
 export * from '../models/AdGroupsAnalyticsResponseInner';
 export * from '../models/AdGroupsList200Response';
+export * from '../models/AdPinAnalytics';
 export * from '../models/AdPinId';
 export * from '../models/AdPreviewCreateFromImage';
 export * from '../models/AdPreviewCreateFromPin';
 export * from '../models/AdPreviewRequest';
+export * from '../models/AdPreviewShopping';
 export * from '../models/AdPreviewURLResponse';
 export * from '../models/AdResponse';
 export * from '../models/AdUpdateRequest';
+export * from '../models/AdsAnalyticsAdGroupTargetingType';
 export * from '../models/AdsAnalyticsAdTargetingType';
 export * from '../models/AdsAnalyticsCampaignTargetingType';
 export * from '../models/AdsAnalyticsCreateAsyncRequest';
+export * from '../models/AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics';
 export * from '../models/AdsAnalyticsCreateAsyncResponse';
 export * from '../models/AdsAnalyticsFilterColumn';
 export * from '../models/AdsAnalyticsFilterOperator';
@@ -64,10 +69,15 @@ export * from '../models/AdvancedAuctionItemsSubmitUpsertRecord';
 export * from '../models/AdvancedAuctionKey';
 export * from '../models/AdvancedAuctionOperation';
 export * from '../models/AdvancedAuctionOperationError';
-export * from '../models/AdvancedAuctionProcessedItem';
 export * from '../models/AdvancedAuctionProcessedItems';
+export * from '../models/AdvertiserDefinedEvent';
+export * from '../models/AdvertiserDefinedEventsResponse';
+export * from '../models/AgeTrendsBucket';
+export * from '../models/AllOf';
+export * from '../models/AmazonConnectRequest';
 export * from '../models/AnalyticsDailyMetrics';
 export * from '../models/AnalyticsMetricsResponse';
+export * from '../models/AnyOf';
 export * from '../models/AppTypeMultipliers';
 export * from '../models/AssetGroupBinding';
 export * from '../models/AssetGroupType';
@@ -76,11 +86,11 @@ export * from '../models/Audience';
 export * from '../models/AudienceAccountType';
 export * from '../models/AudienceCategory';
 export * from '../models/AudienceCommon';
-export * from '../models/AudienceCreateCustomRequest';
 export * from '../models/AudienceCreateRequest';
-export * from '../models/AudienceDataParty';
 export * from '../models/AudienceDefinition';
 export * from '../models/AudienceDefinitionResponse';
+export * from '../models/AudienceDefinitionScope';
+export * from '../models/AudienceDefinitionType';
 export * from '../models/AudienceDemographicValue';
 export * from '../models/AudienceDemographics';
 export * from '../models/AudienceInsightCategoryArrayResponse';
@@ -89,7 +99,6 @@ export * from '../models/AudienceInsightType';
 export * from '../models/AudienceInsightsResponse';
 export * from '../models/AudienceRule';
 export * from '../models/AudienceShareType';
-export * from '../models/AudienceSharingType';
 export * from '../models/AudienceSubcategory';
 export * from '../models/AudienceType';
 export * from '../models/AudienceUpdateOperationType';
@@ -106,18 +115,30 @@ export * from '../models/BatchOperationStatus';
 export * from '../models/BidFloor';
 export * from '../models/BidFloorRequest';
 export * from '../models/BidFloorSpec';
+export * from '../models/BillingInvoiceDownloadResponse';
+export * from '../models/BillingInvoiceResponse';
+export * from '../models/BillingInvoicesGet200Response';
 export * from '../models/BillingProfilesGet200Response';
 export * from '../models/BillingProfilesResponse';
 export * from '../models/Board';
+export * from '../models/BoardBase';
+export * from '../models/BoardCreate';
 export * from '../models/BoardMedia';
 export * from '../models/BoardOwner';
+export * from '../models/BoardPrivacy';
+export * from '../models/BoardPrivacyFilter';
 export * from '../models/BoardSection';
 export * from '../models/BoardSectionsList200Response';
-export * from '../models/BoardUpdate';
+export * from '../models/BoardUpdatePrivacy';
+export * from '../models/BoardWithUpdatePrivacy';
+export * from '../models/BoardWithUpdatePrivacyUpdate';
 export * from '../models/BoardsList200Response';
 export * from '../models/BoardsListPins200Response';
 export * from '../models/BoardsUserFollowsList200Response';
 export * from '../models/BookClosedResponse';
+export * from '../models/BrandAccountsCreate200Response';
+export * from '../models/BrandAccountsCreateRequest';
+export * from '../models/BrandAccountsUpdateRequest';
 export * from '../models/BrandFilter';
 export * from '../models/BudgetType';
 export * from '../models/BulkDownloadRequest';
@@ -150,6 +171,10 @@ export * from '../models/BusinessRoleCheckMode';
 export * from '../models/BusinessRoleForMembers';
 export * from '../models/BusinessSharedAudience';
 export * from '../models/BusinessSharedAudienceResponse';
+export * from '../models/CampaignAudienceMultipliers';
+export * from '../models/CampaignBidOptions';
+export * from '../models/CampaignBidOptionsCreate';
+export * from '../models/CampaignBidOptionsUpdate';
 export * from '../models/CampaignCommon';
 export * from '../models/CampaignCreateCommon';
 export * from '../models/CampaignCreateRequest';
@@ -157,6 +182,8 @@ export * from '../models/CampaignCreateResponse';
 export * from '../models/CampaignCreateResponseData';
 export * from '../models/CampaignCreateResponseItem';
 export * from '../models/CampaignId';
+export * from '../models/CampaignIdFilter';
+export * from '../models/CampaignObjectivesFilter';
 export * from '../models/CampaignResponse';
 export * from '../models/CampaignSummaryStatus';
 export * from '../models/CampaignUpdateRequest';
@@ -164,18 +191,22 @@ export * from '../models/CampaignUpdateResponse';
 export * from '../models/CampaignsAnalyticsResponseInner';
 export * from '../models/CampaignsList200Response';
 export * from '../models/CancelInvitesBody';
+export * from '../models/CarouselSlot';
 export * from '../models/Catalog';
+export * from '../models/CatalogsAvailableFilterValues';
 export * from '../models/CatalogsCreateCreativeAssetsItem';
 export * from '../models/CatalogsCreateHotelItem';
 export * from '../models/CatalogsCreateReportResponse';
 export * from '../models/CatalogsCreateRequest';
 export * from '../models/CatalogsCreateRetailItem';
 export * from '../models/CatalogsCreativeAssetsAttributes';
+export * from '../models/CatalogsCreativeAssetsAvailableFilterValues';
 export * from '../models/CatalogsCreativeAssetsBatchItem';
 export * from '../models/CatalogsCreativeAssetsBatchRequest';
 export * from '../models/CatalogsCreativeAssetsFeed';
 export * from '../models/CatalogsCreativeAssetsFeedsCreateRequest';
 export * from '../models/CatalogsCreativeAssetsFeedsUpdateRequest';
+export * from '../models/CatalogsCreativeAssetsFilterValuesMap';
 export * from '../models/CatalogsCreativeAssetsItemErrorResponse';
 export * from '../models/CatalogsCreativeAssetsItemResponse';
 export * from '../models/CatalogsCreativeAssetsItemsBatch';
@@ -210,6 +241,7 @@ export * from '../models/CatalogsFeedProductCounts';
 export * from '../models/CatalogsFeedValidationDetails';
 export * from '../models/CatalogsFeedValidationErrors';
 export * from '../models/CatalogsFeedValidationWarnings';
+export * from '../models/CatalogsFeedVideoCounts';
 export * from '../models/CatalogsFeedsCreateRequest';
 export * from '../models/CatalogsFeedsCreateRequestDefaultLocale';
 export * from '../models/CatalogsFeedsUpdateRequest';
@@ -217,11 +249,13 @@ export * from '../models/CatalogsFormat';
 export * from '../models/CatalogsHotelAddress';
 export * from '../models/CatalogsHotelAttributes';
 export * from '../models/CatalogsHotelAttributesAllOfMainImage';
+export * from '../models/CatalogsHotelAvailableFilterValues';
 export * from '../models/CatalogsHotelBatchItem';
 export * from '../models/CatalogsHotelBatchRequest';
 export * from '../models/CatalogsHotelFeed';
 export * from '../models/CatalogsHotelFeedsCreateRequest';
 export * from '../models/CatalogsHotelFeedsUpdateRequest';
+export * from '../models/CatalogsHotelFilterValuesMap';
 export * from '../models/CatalogsHotelGuestRatings';
 export * from '../models/CatalogsHotelItemErrorResponse';
 export * from '../models/CatalogsHotelItemResponse';
@@ -237,10 +271,13 @@ export * from '../models/CatalogsHotelProductGroupFilters';
 export * from '../models/CatalogsHotelProductGroupFiltersAllOf';
 export * from '../models/CatalogsHotelProductGroupFiltersAnyOf';
 export * from '../models/CatalogsHotelProductGroupProductCounts';
+export * from '../models/CatalogsHotelProductGroupType';
 export * from '../models/CatalogsHotelProductGroupUpdateRequest';
 export * from '../models/CatalogsHotelProductMetadata';
 export * from '../models/CatalogsHotelReportParameters';
 export * from '../models/CatalogsHotelReportParametersReport';
+export * from '../models/CatalogsHotelReportStatsParameters';
+export * from '../models/CatalogsHotelReportStatsParametersReport';
 export * from '../models/CatalogsItemValidationDetails';
 export * from '../models/CatalogsItemValidationErrors';
 export * from '../models/CatalogsItemValidationIssue';
@@ -265,12 +302,11 @@ export * from '../models/CatalogsProduct';
 export * from '../models/CatalogsProductGroupCreateRequest';
 export * from '../models/CatalogsProductGroupCurrencyCriteria';
 export * from '../models/CatalogsProductGroupFilterKeys';
+export * from '../models/CatalogsProductGroupFilterOperatorTypeCriteria';
 export * from '../models/CatalogsProductGroupFilters';
 export * from '../models/CatalogsProductGroupFiltersAllOf';
 export * from '../models/CatalogsProductGroupFiltersAnyOf';
 export * from '../models/CatalogsProductGroupFiltersRequest';
-export * from '../models/CatalogsProductGroupFiltersRequestAnyOf';
-export * from '../models/CatalogsProductGroupFiltersRequestAnyOf1';
 export * from '../models/CatalogsProductGroupMultipleCountriesCriteria';
 export * from '../models/CatalogsProductGroupMultipleGenderCriteria';
 export * from '../models/CatalogsProductGroupMultipleMediaTypesCriteria';
@@ -282,21 +318,25 @@ export * from '../models/CatalogsProductGroupPricingCurrencyCriteria';
 export * from '../models/CatalogsProductGroupProductCountsVertical';
 export * from '../models/CatalogsProductGroupStatus';
 export * from '../models/CatalogsProductGroupType';
+export * from '../models/CatalogsProductGroupUint32Criteria';
 export * from '../models/CatalogsProductGroupUpdateRequest';
 export * from '../models/CatalogsProductGroupsList200Response';
 export * from '../models/CatalogsProductGroupsUpdateRequest';
 export * from '../models/CatalogsReport';
+export * from '../models/CatalogsReportAllItemsFilter';
 export * from '../models/CatalogsReportDistributionIssueFilter';
 export * from '../models/CatalogsReportDistributionStats';
 export * from '../models/CatalogsReportFeedIngestionFilter';
 export * from '../models/CatalogsReportFeedIngestionStats';
 export * from '../models/CatalogsReportParameters';
 export * from '../models/CatalogsReportStats';
+export * from '../models/CatalogsRetailAvailableFilterValues';
 export * from '../models/CatalogsRetailBatchRequest';
 export * from '../models/CatalogsRetailBatchRequestItemsInner';
 export * from '../models/CatalogsRetailFeed';
 export * from '../models/CatalogsRetailFeedsCreateRequest';
 export * from '../models/CatalogsRetailFeedsUpdateRequest';
+export * from '../models/CatalogsRetailFilterValuesMap';
 export * from '../models/CatalogsRetailItemErrorResponse';
 export * from '../models/CatalogsRetailItemResponse';
 export * from '../models/CatalogsRetailItemsBatch';
@@ -310,6 +350,7 @@ export * from '../models/CatalogsRetailProductGroupProductCounts';
 export * from '../models/CatalogsRetailProductGroupUpdateRequest';
 export * from '../models/CatalogsRetailProductMetadata';
 export * from '../models/CatalogsRetailReportParameters';
+export * from '../models/CatalogsRetailReportStatsParameters';
 export * from '../models/CatalogsStatus';
 export * from '../models/CatalogsType';
 export * from '../models/CatalogsUpdatableCreativeAssetsAttributes';
@@ -328,26 +369,34 @@ export * from '../models/CatalogsVerticalProductGroupCreateRequest';
 export * from '../models/CatalogsVerticalProductGroupUpdateRequest';
 export * from '../models/CatalogsVerticalsListProductsByCatalogBasedFilterRequest';
 export * from '../models/ConditionFilter';
+export * from '../models/ContentType';
+export * from '../models/ConversionAccessTokenResponse';
 export * from '../models/ConversionApiResponse';
 export * from '../models/ConversionApiResponseEventsInner';
 export * from '../models/ConversionAttributionWindowDays';
+export * from '../models/ConversionEventAppInfo';
+export * from '../models/ConversionEventDeviceInfo';
 export * from '../models/ConversionEventResponse';
 export * from '../models/ConversionEvents';
 export * from '../models/ConversionEventsDataInner';
 export * from '../models/ConversionEventsDataInnerCustomData';
 export * from '../models/ConversionEventsDataInnerCustomDataContentsInner';
 export * from '../models/ConversionEventsUserData';
-export * from '../models/ConversionEventsUserDataAnyOf';
-export * from '../models/ConversionEventsUserDataAnyOf1';
-export * from '../models/ConversionEventsUserDataAnyOf2';
+export * from '../models/ConversionEventsUserDataProperties';
+export * from '../models/ConversionHealthSelectionItem';
+export * from '../models/ConversionMSOTEvents';
+export * from '../models/ConversionProductReportRequest';
+export * from '../models/ConversionProductReportingColumn';
 export * from '../models/ConversionReportAttributionType';
 export * from '../models/ConversionReportTimeType';
+export * from '../models/ConversionTag';
 export * from '../models/ConversionTagCommon';
 export * from '../models/ConversionTagConfigs';
 export * from '../models/ConversionTagCreate';
 export * from '../models/ConversionTagListResponse';
 export * from '../models/ConversionTagResponse';
 export * from '../models/ConversionTagType';
+export * from '../models/ConversionTagsList200Response';
 export * from '../models/Country';
 export * from '../models/CountryFilter';
 export * from '../models/CreateAssetAccessRequestBody';
@@ -376,10 +425,20 @@ export * from '../models/CustomLabel1Filter';
 export * from '../models/CustomLabel2Filter';
 export * from '../models/CustomLabel3Filter';
 export * from '../models/CustomLabel4Filter';
+export * from '../models/CustomNumber0Filter';
+export * from '../models/CustomNumber1Filter';
+export * from '../models/CustomNumber2Filter';
+export * from '../models/CustomNumber3Filter';
+export * from '../models/CustomNumber4Filter';
 export * from '../models/CustomerList';
 export * from '../models/CustomerListRequest';
 export * from '../models/CustomerListUpdateRequest';
+export * from '../models/CustomerListUpload';
+export * from '../models/CustomerListUploadCreateRequest';
+export * from '../models/CustomerListUploadCreateResponse';
+export * from '../models/CustomerListUploadResponse';
 export * from '../models/CustomerListsList200Response';
+export * from '../models/CustomizableCTAType';
 export * from '../models/DataOutputFormat';
 export * from '../models/DataStatus';
 export * from '../models/DeleteAssetGroupBody';
@@ -400,9 +459,14 @@ export * from '../models/DeletedMembersResponse';
 export * from '../models/DeliveryMetricsResponse';
 export * from '../models/DeliveryMetricsResponseItemsInner';
 export * from '../models/DetailedError';
+export * from '../models/DisclosureType';
 export * from '../models/EnhancedMatchStatusType';
 export * from '../models/EntityStatus';
+export * from '../models/ErrorDetail';
+export * from '../models/EventData';
+export * from '../models/EventQualityScore';
 export * from '../models/Exception';
+export * from '../models/FeaturedTrend';
 export * from '../models/FeedProcessingResultsList200Response';
 export * from '../models/FeedsCreateRequest';
 export * from '../models/FeedsList200Response';
@@ -410,10 +474,13 @@ export * from '../models/FeedsUpdateRequest';
 export * from '../models/FollowUserRequest';
 export * from '../models/FollowersList200Response';
 export * from '../models/Gender';
+export * from '../models/GenderBucket';
+export * from '../models/GenderDemographics';
 export * from '../models/GenderFilter';
 export * from '../models/GetAudiencesOrderBy';
 export * from '../models/GetBusinessAssetTypeResponse';
 export * from '../models/GetBusinessAssetsResponse';
+export * from '../models/GetBusinessAssetsResponseCatalogInfo';
 export * from '../models/GetBusinessEmployers200Response';
 export * from '../models/GetBusinessMembers200Response';
 export * from '../models/GetBusinessPartners200Response';
@@ -432,9 +499,12 @@ export * from '../models/Granularity';
 export * from '../models/GridClickType';
 export * from '../models/HotelIdFilter';
 export * from '../models/HotelProcessingRecord';
+export * from '../models/ImageBase64';
 export * from '../models/ImageDetails';
 export * from '../models/ImageMetadata';
-export * from '../models/ImageMetadataImages';
+export * from '../models/ImageSize';
+export * from '../models/IngestionSourceOptions';
+export * from '../models/InnerProductCategoriesMetricsHighlights';
 export * from '../models/IntegrationLog';
 export * from '../models/IntegrationLogClientError';
 export * from '../models/IntegrationLogClientRequest';
@@ -447,7 +517,9 @@ export * from '../models/IntegrationRecord';
 export * from '../models/IntegrationRequest';
 export * from '../models/IntegrationRequestPatch';
 export * from '../models/IntegrationsGetList200Response';
+export * from '../models/IntegrationsLogsPost400Response';
 export * from '../models/Interest';
+export * from '../models/InterestsEnum';
 export * from '../models/InviteAssetsSummary';
 export * from '../models/InviteAssetsSummaryAdAccountsInner';
 export * from '../models/InviteAssetsSummaryProfilesInner';
@@ -468,8 +540,8 @@ export * from '../models/ItemIdFilter';
 export * from '../models/ItemProcessingRecord';
 export * from '../models/ItemProcessingStatus';
 export * from '../models/ItemResponse';
-export * from '../models/ItemResponseAnyOf';
-export * from '../models/ItemResponseAnyOf1';
+export * from '../models/ItemResponseOneOf';
+export * from '../models/ItemResponseOneOf1';
 export * from '../models/ItemUpdateBatchRecord';
 export * from '../models/ItemUpsertBatchRecord';
 export * from '../models/ItemValidationEvent';
@@ -486,6 +558,18 @@ export * from '../models/KeywordsGet200Response';
 export * from '../models/KeywordsMetricsArrayResponse';
 export * from '../models/KeywordsRequest';
 export * from '../models/KeywordsResponse';
+export * from '../models/Label';
+export * from '../models/LabelBulkUpdateRequest';
+export * from '../models/LabelCreateRequest';
+export * from '../models/LabelCreateRequestLabelsInner';
+export * from '../models/LabelError';
+export * from '../models/LabelParentType';
+export * from '../models/LabelStatus';
+export * from '../models/LabelType';
+export * from '../models/LabelUpdateRequest';
+export * from '../models/LabelUpdateRequestLabelsInner';
+export * from '../models/LabelsList200Response';
+export * from '../models/LabelsResponse';
 export * from '../models/Language';
 export * from '../models/LeadFormArrayResponse';
 export * from '../models/LeadFormArrayResponseItemsInner';
@@ -501,24 +585,29 @@ export * from '../models/LeadFormTestRequest';
 export * from '../models/LeadFormTestResponse';
 export * from '../models/LeadFormUpdateRequest';
 export * from '../models/LeadFormsList200Response';
+export * from '../models/LeadSubscription';
+export * from '../models/LeadSubscriptionPostParamsCreate';
+export * from '../models/LeadSubscriptionPostParamsCreateAllOfPartnerMetadata';
 export * from '../models/LeadsExportCreateRequest';
 export * from '../models/LeadsExportCreateResponse';
 export * from '../models/LeadsExportResponseData';
 export * from '../models/LeadsExportStatus';
 export * from '../models/LineItem';
 export * from '../models/LinkedBusiness';
+export * from '../models/LocalStoreUpdate';
+export * from '../models/LookbackPeriodOptions';
 export * from '../models/MMMReportingColumn';
 export * from '../models/MMMReportingTargetingType';
 export * from '../models/MatchType';
 export * from '../models/MatchTypeResponse';
 export * from '../models/MaxPriceFilter';
+export * from '../models/Media';
 export * from '../models/MediaList200Response';
 export * from '../models/MediaType';
 export * from '../models/MediaTypeFilter';
 export * from '../models/MediaUpload';
-export * from '../models/MediaUploadAllOfUploadParameters';
-export * from '../models/MediaUploadDetails';
-export * from '../models/MediaUploadRequest';
+export * from '../models/MediaUploadCreate';
+export * from '../models/MediaUploadParameters';
 export * from '../models/MediaUploadStatus';
 export * from '../models/MediaUploadType';
 export * from '../models/MemberBusinessRole';
@@ -529,8 +618,11 @@ export * from '../models/MetricsResponse';
 export * from '../models/MinPriceFilter';
 export * from '../models/ModelError';
 export * from '../models/MultipleProductGroupsInner';
+export * from '../models/NonDraftEntityStatus';
 export * from '../models/NonNullableCatalogsCurrency';
 export * from '../models/NonNullableProductAvailabilityType';
+export * from '../models/NotificationPostRequest';
+export * from '../models/NotificationResponse';
 export * from '../models/NullableCatalogsItemFieldType';
 export * from '../models/NullableCurrency';
 export * from '../models/OauthAccessTokenRequestClientCredentials';
@@ -539,7 +631,6 @@ export * from '../models/OauthAccessTokenRequestRefresh';
 export * from '../models/OauthAccessTokenResponse';
 export * from '../models/OauthAccessTokenResponseClientCredentials';
 export * from '../models/OauthAccessTokenResponseCode';
-export * from '../models/OauthAccessTokenResponseEverlastingRefresh';
 export * from '../models/OauthAccessTokenResponseIntegrationRefresh';
 export * from '../models/OauthAccessTokenResponseRefresh';
 export * from '../models/ObjectiveType';
@@ -558,6 +649,7 @@ export * from '../models/OrderLineStatus';
 export * from '../models/OrderLines';
 export * from '../models/OrderLinesArrayResponse';
 export * from '../models/OrderLinesList200Response';
+export * from '../models/OverallStatusOptions';
 export * from '../models/PacingDeliveryType';
 export * from '../models/PageVisitConversionTagsGet200Response';
 export * from '../models/Paginated';
@@ -574,33 +666,39 @@ export * from '../models/PinMediaSource';
 export * from '../models/PinMediaSourceImageBase64';
 export * from '../models/PinMediaSourceImageURL';
 export * from '../models/PinMediaSourceImagesBase64';
-export * from '../models/PinMediaSourceImagesBase64ItemsInner';
+export * from '../models/PinMediaSourceImagesBase64Item';
 export * from '../models/PinMediaSourceImagesURL';
-export * from '../models/PinMediaSourceImagesURLItemsInner';
+export * from '../models/PinMediaSourceImagesURLItem';
 export * from '../models/PinMediaSourcePinURL';
 export * from '../models/PinMediaSourceVideoID';
 export * from '../models/PinMediaWithImage';
-export * from '../models/PinMediaWithImageAllOfImages';
 export * from '../models/PinMediaWithImageAndVideo';
 export * from '../models/PinMediaWithImages';
 export * from '../models/PinMediaWithVideo';
 export * from '../models/PinMediaWithVideos';
 export * from '../models/PinPromotionSummaryStatus';
 export * from '../models/PinUpdate';
-export * from '../models/PinUpdateCarouselSlotsInner';
 export * from '../models/PinsList200Response';
 export * from '../models/PinsSaveRequest';
-export * from '../models/PinterestTagEventData';
+export * from '../models/PinterestLibError';
+export * from '../models/PinterestLibPaginationOrder';
+export * from '../models/PinterestLibStatus204';
 export * from '../models/PlacementGroupType';
 export * from '../models/PlacementMultipliers';
+export * from '../models/PredictedTimeSeries';
 export * from '../models/PriceFilter';
 export * from '../models/ProductAvailabilityType';
+export * from '../models/ProductCategoriesDemographic';
+export * from '../models/ProductCategoriesEngagementType';
+export * from '../models/ProductCategoriesMetricsHighlights';
+export * from '../models/ProductCategoryDetailLookbackWindow';
+export * from '../models/ProductCategoryDetails';
+export * from '../models/ProductCategoryEnum';
+export * from '../models/ProductCategoryRegion';
 export * from '../models/ProductGroupAnalyticsResponseInner';
 export * from '../models/ProductGroupPromotion';
 export * from '../models/ProductGroupPromotionCreateRequest';
-export * from '../models/ProductGroupPromotionCreateRequestElement';
 export * from '../models/ProductGroupPromotionResponse';
-export * from '../models/ProductGroupPromotionResponseElement';
 export * from '../models/ProductGroupPromotionResponseItem';
 export * from '../models/ProductGroupPromotionUpdateRequest';
 export * from '../models/ProductGroupPromotionsList200Response';
@@ -611,17 +709,34 @@ export * from '../models/ProductType1Filter';
 export * from '../models/ProductType2Filter';
 export * from '../models/ProductType3Filter';
 export * from '../models/ProductType4Filter';
+export * from '../models/PromotionArrayElement';
+export * from '../models/PromotionCommon';
+export * from '../models/PromotionCreateRequest';
+export * from '../models/PromotionResponse';
+export * from '../models/PromotionTemplateValue';
+export * from '../models/PromotionType';
+export * from '../models/PromotionUpdateRequest';
+export * from '../models/PromotionsList200Response';
+export * from '../models/PromotionsResponse';
+export * from '../models/QualityComponentDetails';
+export * from '../models/QualityComponentIssue';
+export * from '../models/QualityComponents';
 export * from '../models/QuizPinData';
 export * from '../models/QuizPinOption';
 export * from '../models/QuizPinQuestion';
 export * from '../models/QuizPinResult';
+export * from '../models/RecordCounts';
 export * from '../models/RelatedTerms';
 export * from '../models/RelatedTermsRelatedTermsListInner';
 export * from '../models/ReportingColumnAsync';
+export * from '../models/ReportingTimeZone';
 export * from '../models/ReportsStats200Response';
+export * from '../models/ReportsStatsParametersParameter';
 export * from '../models/RespondToInvitesResponseArray';
 export * from '../models/RespondToInvitesResponseArrayItemsInner';
 export * from '../models/Role';
+export * from '../models/S3FilePart';
+export * from '../models/S3MultipartUploadData';
 export * from '../models/SSIOAccountAddress';
 export * from '../models/SSIOAccountItem';
 export * from '../models/SSIOAccountPMPName';
@@ -636,19 +751,31 @@ export * from '../models/SSIOInsertionOrderStatusResponse';
 export * from '../models/SSIOOrderLine';
 export * from '../models/SearchPartnerPins200Response';
 export * from '../models/SearchUserBoardsGet200Response';
+export * from '../models/SearchUserPinsList200Response';
 export * from '../models/SharedAudience';
 export * from '../models/SharedAudienceAccount';
 export * from '../models/SharedAudienceCommon';
 export * from '../models/SharedAudienceResponse';
 export * from '../models/SharedAudienceResponseCommon';
 export * from '../models/SingleInterestTargetingOptionResponse';
+export * from '../models/SourcePlatformOptions';
 export * from '../models/SsioInsertionOrdersStatusGetByAdAccount200Response';
 export * from '../models/SsioOrderLinesGetByAdAccount200Response';
 export * from '../models/SummaryPin';
+export * from '../models/SystemUserUpdateRequest';
 export * from '../models/TargetingAdvertiserCountry';
 export * from '../models/TargetingSpec';
+export * from '../models/TargetingSpecAgeBucket';
 export * from '../models/TargetingSpecAppType';
-export * from '../models/TargetingSpecSHOPPINGRETARGETING';
+export * from '../models/TargetingSpecGender';
+export * from '../models/TargetingSpecOperationAgeBucket';
+export * from '../models/TargetingSpecOperationAppType';
+export * from '../models/TargetingSpecOperationGender';
+export * from '../models/TargetingSpecOperationList';
+export * from '../models/TargetingSpecOperationMinMaxAge';
+export * from '../models/TargetingSpecOperationShoppingRetargeting';
+export * from '../models/TargetingSpecOperationString';
+export * from '../models/TargetingSpecShoppingRetargeting';
 export * from '../models/TargetingTemplateAudienceSizing';
 export * from '../models/TargetingTemplateAudienceSizingReachEstimate';
 export * from '../models/TargetingTemplateCommon';
@@ -659,6 +786,7 @@ export * from '../models/TargetingTemplateList200Response';
 export * from '../models/TargetingTemplateResponseData';
 export * from '../models/TargetingTemplateUpdateRequest';
 export * from '../models/TargetingTypeFilter';
+export * from '../models/TemplateBasedReport';
 export * from '../models/TemplateResponse';
 export * from '../models/TemplateResponseDateRange';
 export * from '../models/TemplateResponseDateRangeAbsoluteDateRange';
@@ -666,6 +794,8 @@ export * from '../models/TemplateResponseDateRangeDynamicDateRange';
 export * from '../models/TemplateResponseDateRangeRelativeDateRange';
 export * from '../models/TemplatesList200Response';
 export * from '../models/TermsOfService';
+export * from '../models/TimeSeries';
+export * from '../models/TitleKeywordsFilter';
 export * from '../models/TopPinsAnalyticsResponse';
 export * from '../models/TopPinsAnalyticsResponseDateAvailability';
 export * from '../models/TopPinsAnalyticsResponsePinsInner';
@@ -673,11 +803,17 @@ export * from '../models/TopVideoPinsAnalyticsResponse';
 export * from '../models/TopVideoPinsAnalyticsResponsePinsInner';
 export * from '../models/TrackingUrls';
 export * from '../models/TrendType';
+export * from '../models/TrendingKeyword';
+export * from '../models/TrendingKeywordDemographics';
+export * from '../models/TrendingKeywordDemographicsAgeDistribution';
+export * from '../models/TrendingKeywordDemographicsGenderDistribution';
 export * from '../models/TrendingKeywordsResponse';
-export * from '../models/TrendingKeywordsResponseTrendsInner';
-export * from '../models/TrendingKeywordsResponseTrendsInnerTimeSeries';
+export * from '../models/TrendingPin';
+export * from '../models/TrendingProductCategory';
+export * from '../models/TrendingTopic';
 export * from '../models/TrendsSupportedRegion';
 export * from '../models/UpdatableItemAttributes';
+export * from '../models/UpdatableItemAttributesGtin';
 export * from '../models/UpdateAssetGroupBody';
 export * from '../models/UpdateAssetGroupBodyAssetGroupsToUpdateInner';
 export * from '../models/UpdateAssetGroupResponse';
@@ -712,13 +848,14 @@ export * from '../models/UserWebsiteVerificationCode';
 export * from '../models/UserWebsiteVerifyRequest';
 export * from '../models/UserWebsitesGet200Response';
 export * from '../models/UsersForIndividualAssetResponse';
-export * from '../models/VideoMetadata';
+export * from '../models/VerticalProductCategory';
+export * from '../models/VideoMetadataWithItemType';
 
-import { Account, AccountAccountTypeEnum              } from '../models/Account';
+import { Account , AccountAccountTypeEnum             } from '../models/Account';
 import { ActionType } from '../models/ActionType';
 import { AdAccount         } from '../models/AdAccount';
 import { AdAccountAnalyticsResponseInner } from '../models/AdAccountAnalyticsResponseInner';
-import { AdAccountCreateRequest    } from '../models/AdAccountCreateRequest';
+import { AdAccountCreate     } from '../models/AdAccountCreate';
 import { AdAccountCreateSubscriptionRequest } from '../models/AdAccountCreateSubscriptionRequest';
 import { AdAccountCreateSubscriptionRequestPartnerMetadata } from '../models/AdAccountCreateSubscriptionRequestPartnerMetadata';
 import { AdAccountCreateSubscriptionResponse } from '../models/AdAccountCreateSubscriptionResponse';
@@ -731,31 +868,36 @@ import { AdAccountsList200Response } from '../models/AdAccountsList200Response';
 import { AdAccountsSubscriptionsGetList200Response } from '../models/AdAccountsSubscriptionsGetList200Response';
 import { AdArrayResponse } from '../models/AdArrayResponse';
 import { AdArrayResponseElement } from '../models/AdArrayResponseElement';
-import { AdCommon                 , AdCommonCustomizableCtaTypeEnum    } from '../models/AdCommon';
+import { AdCommon                      } from '../models/AdCommon';
 import { AdCountry } from '../models/AdCountry';
-import { AdCreateRequest                 , AdCreateRequestCustomizableCtaTypeEnum     } from '../models/AdCreateRequest';
+import { AdCreateRequest                       } from '../models/AdCreateRequest';
 import { AdGroupArrayResponse } from '../models/AdGroupArrayResponse';
 import { AdGroupArrayResponseElement } from '../models/AdGroupArrayResponseElement';
-import { AdGroupAudienceSizingRequest  , AdGroupAudienceSizingRequestCreativeTypesEnum      } from '../models/AdGroupAudienceSizingRequest';
+import { AdGroupAudienceSizingRequest , AdGroupAudienceSizingRequestCreativeTypesEnum       } from '../models/AdGroupAudienceSizingRequest';
 import { AdGroupAudienceSizingRequestKeywordsInner   } from '../models/AdGroupAudienceSizingRequestKeywordsInner';
 import { AdGroupAudienceSizingResponse } from '../models/AdGroupAudienceSizingResponse';
-import { AdGroupCommon                , AdGroupCommonBidStrategyTypeEnum    } from '../models/AdGroupCommon';
-import { AdGroupCreateRequest                , AdGroupCreateRequestBidStrategyTypeEnum    } from '../models/AdGroupCreateRequest';
-import { AdGroupResponse                , AdGroupResponseBidStrategyTypeEnum        , AdGroupResponseConversionLearningModeTypeEnum      } from '../models/AdGroupResponse';
+import { AdGroupCommon  , AdGroupCommonBidStrategyTypeEnum             , AdGroupCommonPromotionApplicationLevelEnum         } from '../models/AdGroupCommon';
+import { AdGroupCreateRequest  , AdGroupCreateRequestBidStrategyTypeEnum             , AdGroupCreateRequestPromotionApplicationLevelEnum          } from '../models/AdGroupCreateRequest';
+import { AdGroupIdFilter } from '../models/AdGroupIdFilter';
+import { AdGroupResponse  , AdGroupResponseBidStrategyTypeEnum             , AdGroupResponsePromotionApplicationLevelEnum          , AdGroupResponseConversionLearningModeTypeEnum          } from '../models/AdGroupResponse';
 import { AdGroupSummaryStatus } from '../models/AdGroupSummaryStatus';
-import { AdGroupUpdateRequest                , AdGroupUpdateRequestBidStrategyTypeEnum     } from '../models/AdGroupUpdateRequest';
+import { AdGroupUpdateRequest  , AdGroupUpdateRequestBidStrategyTypeEnum             , AdGroupUpdateRequestPromotionApplicationLevelEnum           } from '../models/AdGroupUpdateRequest';
 import { AdGroupsAnalyticsResponseInner } from '../models/AdGroupsAnalyticsResponseInner';
 import { AdGroupsList200Response } from '../models/AdGroupsList200Response';
+import { AdPinAnalytics } from '../models/AdPinAnalytics';
 import { AdPinId } from '../models/AdPinId';
 import { AdPreviewCreateFromImage } from '../models/AdPreviewCreateFromImage';
 import { AdPreviewCreateFromPin } from '../models/AdPreviewCreateFromPin';
 import { AdPreviewRequestClass } from '../models/AdPreviewRequest';
+import { AdPreviewShopping , AdPreviewShoppingCreativeTypeEnum        , AdPreviewShoppingPreferredMediaTypeEnum    } from '../models/AdPreviewShopping';
 import { AdPreviewURLResponse } from '../models/AdPreviewURLResponse';
-import { AdResponse                 , AdResponseCustomizableCtaTypeEnum         , AdResponseRejectedReasonsEnum   , AdResponseReviewStatusEnum      } from '../models/AdResponse';
-import { AdUpdateRequest                 , AdUpdateRequestCustomizableCtaTypeEnum      } from '../models/AdUpdateRequest';
+import { AdResponse                           , AdResponseRejectedReasonsEnum   , AdResponseReviewStatusEnum      } from '../models/AdResponse';
+import { AdUpdateRequest                        } from '../models/AdUpdateRequest';
+import { AdsAnalyticsAdGroupTargetingType } from '../models/AdsAnalyticsAdGroupTargetingType';
 import { AdsAnalyticsAdTargetingType } from '../models/AdsAnalyticsAdTargetingType';
 import { AdsAnalyticsCampaignTargetingType } from '../models/AdsAnalyticsCampaignTargetingType';
-import { AdsAnalyticsCreateAsyncRequest                       , AdsAnalyticsCreateAsyncRequestPrimarySortEnum     } from '../models/AdsAnalyticsCreateAsyncRequest';
+import { AdsAnalyticsCreateAsyncRequest                   , AdsAnalyticsCreateAsyncRequestTargetingTypesEnum        , AdsAnalyticsCreateAsyncRequestPrimarySortEnum      } from '../models/AdsAnalyticsCreateAsyncRequest';
+import { AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics, AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetricsCustomEventMetricsTypeEnum    } from '../models/AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics';
 import { AdsAnalyticsCreateAsyncResponse    } from '../models/AdsAnalyticsCreateAsyncResponse';
 import { AdsAnalyticsFilterColumn } from '../models/AdsAnalyticsFilterColumn';
 import { AdsAnalyticsFilterOperator } from '../models/AdsAnalyticsFilterOperator';
@@ -763,7 +905,7 @@ import { AdsAnalyticsGetAsyncResponse    } from '../models/AdsAnalyticsGetAsyncR
 import { AdsAnalyticsMetricsFilter    } from '../models/AdsAnalyticsMetricsFilter';
 import { AdsAnalyticsResponseInner } from '../models/AdsAnalyticsResponseInner';
 import { AdsAnalyticsTargetingType } from '../models/AdsAnalyticsTargetingType';
-import { AdsCreditDiscountsResponse  , AdsCreditDiscountsResponseDiscountTypeEnum       } from '../models/AdsCreditDiscountsResponse';
+import { AdsCreditDiscountsResponse    , AdsCreditDiscountsResponseDiscountTypeEnum     } from '../models/AdsCreditDiscountsResponse';
 import { AdsCreditRedeemRequest } from '../models/AdsCreditRedeemRequest';
 import { AdsCreditRedeemResponse } from '../models/AdsCreditRedeemResponse';
 import { AdsCreditsDiscountsGet200Response } from '../models/AdsCreditsDiscountsGet200Response';
@@ -773,18 +915,23 @@ import { AdvancedAuctionItem     } from '../models/AdvancedAuctionItem';
 import { AdvancedAuctionItems } from '../models/AdvancedAuctionItems';
 import { AdvancedAuctionItemsGetRecord    } from '../models/AdvancedAuctionItemsGetRecord';
 import { AdvancedAuctionItemsGetRequest } from '../models/AdvancedAuctionItemsGetRequest';
-import { AdvancedAuctionItemsSubmitDeleteRecord    } from '../models/AdvancedAuctionItemsSubmitDeleteRecord';
+import { AdvancedAuctionItemsSubmitDeleteRecord     } from '../models/AdvancedAuctionItemsSubmitDeleteRecord';
 import { AdvancedAuctionItemsSubmitRecordClass } from '../models/AdvancedAuctionItemsSubmitRecord';
 import { AdvancedAuctionItemsSubmitRequest } from '../models/AdvancedAuctionItemsSubmitRequest';
-import { AdvancedAuctionItemsSubmitUpsertRecord      } from '../models/AdvancedAuctionItemsSubmitUpsertRecord';
+import { AdvancedAuctionItemsSubmitUpsertRecord       } from '../models/AdvancedAuctionItemsSubmitUpsertRecord';
 import { AdvancedAuctionKey    } from '../models/AdvancedAuctionKey';
 import { AdvancedAuctionOperation } from '../models/AdvancedAuctionOperation';
 import { AdvancedAuctionOperationError } from '../models/AdvancedAuctionOperationError';
-import { AdvancedAuctionProcessedItem  } from '../models/AdvancedAuctionProcessedItem';
 import { AdvancedAuctionProcessedItems } from '../models/AdvancedAuctionProcessedItems';
+import { AdvertiserDefinedEvent , AdvertiserDefinedEventMappedConversionTypeEnum   } from '../models/AdvertiserDefinedEvent';
+import { AdvertiserDefinedEventsResponse } from '../models/AdvertiserDefinedEventsResponse';
+import { AgeTrendsBucket } from '../models/AgeTrendsBucket';
+import { AllOf } from '../models/AllOf';
+import { AmazonConnectRequest } from '../models/AmazonConnectRequest';
 import { AnalyticsDailyMetrics    } from '../models/AnalyticsDailyMetrics';
 import { AnalyticsMetricsResponse } from '../models/AnalyticsMetricsResponse';
-import { AppTypeMultipliers  } from '../models/AppTypeMultipliers';
+import { AnyOf } from '../models/AnyOf';
+import { AppTypeMultipliers, AppTypeMultipliersAPPTYPEEnum   } from '../models/AppTypeMultipliers';
 import { AssetGroupBinding } from '../models/AssetGroupBinding';
 import { AssetGroupType } from '../models/AssetGroupType';
 import { AssetIdPermissions } from '../models/AssetIdPermissions';
@@ -792,11 +939,11 @@ import { Audience } from '../models/Audience';
 import { AudienceAccountType } from '../models/AudienceAccountType';
 import { AudienceCategory } from '../models/AudienceCategory';
 import { AudienceCommon } from '../models/AudienceCommon';
-import { AudienceCreateCustomRequest       } from '../models/AudienceCreateCustomRequest';
 import { AudienceCreateRequest      } from '../models/AudienceCreateRequest';
-import { AudienceDataParty } from '../models/AudienceDataParty';
 import { AudienceDefinition } from '../models/AudienceDefinition';
 import { AudienceDefinitionResponse } from '../models/AudienceDefinitionResponse';
+import { AudienceDefinitionScope, AudienceDefinitionScopeScopeEnum   } from '../models/AudienceDefinitionScope';
+import { AudienceDefinitionType, AudienceDefinitionTypeScopeEnum   } from '../models/AudienceDefinitionType';
 import { AudienceDemographicValue } from '../models/AudienceDemographicValue';
 import { AudienceDemographics } from '../models/AudienceDemographics';
 import { AudienceInsightCategoryArrayResponse } from '../models/AudienceInsightCategoryArrayResponse';
@@ -805,7 +952,6 @@ import { AudienceInsightType } from '../models/AudienceInsightType';
 import { AudienceInsightsResponse       } from '../models/AudienceInsightsResponse';
 import { AudienceRule } from '../models/AudienceRule';
 import { AudienceShareType } from '../models/AudienceShareType';
-import { AudienceSharingType } from '../models/AudienceSharingType';
 import { AudienceSubcategory } from '../models/AudienceSubcategory';
 import { AudienceType } from '../models/AudienceType';
 import { AudienceUpdateOperationType } from '../models/AudienceUpdateOperationType';
@@ -822,18 +968,30 @@ import { BatchOperationStatus } from '../models/BatchOperationStatus';
 import { BidFloor } from '../models/BidFloor';
 import { BidFloorRequest } from '../models/BidFloorRequest';
 import { BidFloorSpec       } from '../models/BidFloorSpec';
+import { BillingInvoiceDownloadResponse } from '../models/BillingInvoiceDownloadResponse';
+import { BillingInvoiceResponse          , BillingInvoiceResponseDocumentTypeEnum     , BillingInvoiceResponseStatusEnum   } from '../models/BillingInvoiceResponse';
+import { BillingInvoicesGet200Response } from '../models/BillingInvoicesGet200Response';
 import { BillingProfilesGet200Response } from '../models/BillingProfilesGet200Response';
-import { BillingProfilesResponse , BillingProfilesResponseCardTypeEnum  , BillingProfilesResponseStatusEnum   , BillingProfilesResponsePaymentMethodBrandEnum   } from '../models/BillingProfilesResponse';
-import { Board          , BoardPrivacyEnum   } from '../models/Board';
+import { BillingProfilesResponse , BillingProfilesResponseBillingTypeEnum  , BillingProfilesResponseCardTypeEnum   , BillingProfilesResponsePaymentMethodBrandEnum  , BillingProfilesResponseStatusEnum   } from '../models/BillingProfilesResponse';
+import { Board             } from '../models/Board';
+import { BoardBase } from '../models/BoardBase';
+import { BoardCreate     } from '../models/BoardCreate';
 import { BoardMedia } from '../models/BoardMedia';
 import { BoardOwner } from '../models/BoardOwner';
+import { BoardPrivacy } from '../models/BoardPrivacy';
+import { BoardPrivacyFilter } from '../models/BoardPrivacyFilter';
 import { BoardSection } from '../models/BoardSection';
 import { BoardSectionsList200Response } from '../models/BoardSectionsList200Response';
-import { BoardUpdate  , BoardUpdatePrivacyEnum   } from '../models/BoardUpdate';
+import { BoardUpdatePrivacy } from '../models/BoardUpdatePrivacy';
+import { BoardWithUpdatePrivacy             } from '../models/BoardWithUpdatePrivacy';
+import { BoardWithUpdatePrivacyUpdate    } from '../models/BoardWithUpdatePrivacyUpdate';
 import { BoardsList200Response } from '../models/BoardsList200Response';
 import { BoardsListPins200Response } from '../models/BoardsListPins200Response';
 import { BoardsUserFollowsList200Response } from '../models/BoardsUserFollowsList200Response';
 import { BookClosedResponse } from '../models/BookClosedResponse';
+import { BrandAccountsCreate200Response } from '../models/BrandAccountsCreate200Response';
+import { BrandAccountsCreateRequest       } from '../models/BrandAccountsCreateRequest';
+import { BrandAccountsUpdateRequest       } from '../models/BrandAccountsUpdateRequest';
 import { BrandFilter } from '../models/BrandFilter';
 import { BudgetType } from '../models/BudgetType';
 import { BulkDownloadRequest      } from '../models/BulkDownloadRequest';
@@ -866,41 +1024,51 @@ import { BusinessRoleCheckMode } from '../models/BusinessRoleCheckMode';
 import { BusinessRoleForMembers } from '../models/BusinessRoleForMembers';
 import { BusinessSharedAudience    } from '../models/BusinessSharedAudience';
 import { BusinessSharedAudienceResponse } from '../models/BusinessSharedAudienceResponse';
-import { CampaignCommon           } from '../models/CampaignCommon';
-import { CampaignCreateCommon             } from '../models/CampaignCreateCommon';
-import { CampaignCreateRequest              } from '../models/CampaignCreateRequest';
+import { CampaignAudienceMultipliers } from '../models/CampaignAudienceMultipliers';
+import { CampaignBidOptions } from '../models/CampaignBidOptions';
+import { CampaignBidOptionsCreate } from '../models/CampaignBidOptionsCreate';
+import { CampaignBidOptionsUpdate   , CampaignBidOptionsUpdateUpdateMaskEnum   } from '../models/CampaignBidOptionsUpdate';
+import { CampaignCommon            } from '../models/CampaignCommon';
+import { CampaignCreateCommon              } from '../models/CampaignCreateCommon';
+import { CampaignCreateRequest                 } from '../models/CampaignCreateRequest';
 import { CampaignCreateResponse } from '../models/CampaignCreateResponse';
-import { CampaignCreateResponseData                    } from '../models/CampaignCreateResponseData';
+import { CampaignCreateResponseData                      } from '../models/CampaignCreateResponseData';
 import { CampaignCreateResponseItem } from '../models/CampaignCreateResponseItem';
 import { CampaignId } from '../models/CampaignId';
-import { CampaignResponse                  } from '../models/CampaignResponse';
+import { CampaignIdFilter } from '../models/CampaignIdFilter';
+import { CampaignObjectivesFilter } from '../models/CampaignObjectivesFilter';
+import { CampaignResponse                     } from '../models/CampaignResponse';
 import { CampaignSummaryStatus } from '../models/CampaignSummaryStatus';
-import { CampaignUpdateRequest                } from '../models/CampaignUpdateRequest';
+import { CampaignUpdateRequest                  } from '../models/CampaignUpdateRequest';
 import { CampaignUpdateResponse } from '../models/CampaignUpdateResponse';
 import { CampaignsAnalyticsResponseInner } from '../models/CampaignsAnalyticsResponseInner';
 import { CampaignsList200Response } from '../models/CampaignsList200Response';
 import { CancelInvitesBody } from '../models/CancelInvitesBody';
+import { CarouselSlot } from '../models/CarouselSlot';
 import { Catalog      } from '../models/Catalog';
-import { CatalogsCreateCreativeAssetsItem , CatalogsCreateCreativeAssetsItemOperationEnum    } from '../models/CatalogsCreateCreativeAssetsItem';
-import { CatalogsCreateHotelItem , CatalogsCreateHotelItemOperationEnum    } from '../models/CatalogsCreateHotelItem';
+import { CatalogsAvailableFilterValuesClass } from '../models/CatalogsAvailableFilterValues';
+import { CatalogsCreateCreativeAssetsItem  , CatalogsCreateCreativeAssetsItemOperationEnum   } from '../models/CatalogsCreateCreativeAssetsItem';
+import { CatalogsCreateHotelItem  , CatalogsCreateHotelItemOperationEnum   } from '../models/CatalogsCreateHotelItem';
 import { CatalogsCreateReportResponse } from '../models/CatalogsCreateReportResponse';
-import { CatalogsCreateRequest, CatalogsCreateRequestCatalogTypeEnum    } from '../models/CatalogsCreateRequest';
-import { CatalogsCreateRetailItem , CatalogsCreateRetailItemOperationEnum    } from '../models/CatalogsCreateRetailItem';
+import { CatalogsCreateRequest   } from '../models/CatalogsCreateRequest';
+import { CatalogsCreateRetailItem  , CatalogsCreateRetailItemOperationEnum   } from '../models/CatalogsCreateRetailItem';
 import { CatalogsCreativeAssetsAttributes } from '../models/CatalogsCreativeAssetsAttributes';
-import { CatalogsCreativeAssetsBatchItem , CatalogsCreativeAssetsBatchItemOperationEnum    } from '../models/CatalogsCreativeAssetsBatchItem';
-import { CatalogsCreativeAssetsBatchRequest, CatalogsCreativeAssetsBatchRequestCatalogTypeEnum   , CatalogsCreativeAssetsBatchRequestLanguageEnum     } from '../models/CatalogsCreativeAssetsBatchRequest';
+import { CatalogsCreativeAssetsAvailableFilterValues, CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum    } from '../models/CatalogsCreativeAssetsAvailableFilterValues';
+import { CatalogsCreativeAssetsBatchItem  , CatalogsCreativeAssetsBatchItemOperationEnum   } from '../models/CatalogsCreativeAssetsBatchItem';
+import { CatalogsCreativeAssetsBatchRequest , CatalogsCreativeAssetsBatchRequestCatalogTypeEnum    , CatalogsCreativeAssetsBatchRequestLanguageEnum   } from '../models/CatalogsCreativeAssetsBatchRequest';
 import { CatalogsCreativeAssetsFeed               } from '../models/CatalogsCreativeAssetsFeed';
 import { CatalogsCreativeAssetsFeedsCreateRequest            } from '../models/CatalogsCreativeAssetsFeedsCreateRequest';
 import { CatalogsCreativeAssetsFeedsUpdateRequest         } from '../models/CatalogsCreativeAssetsFeedsUpdateRequest';
+import { CatalogsCreativeAssetsFilterValuesMap            , CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum   } from '../models/CatalogsCreativeAssetsFilterValuesMap';
 import { CatalogsCreativeAssetsItemErrorResponse    } from '../models/CatalogsCreativeAssetsItemErrorResponse';
 import { CatalogsCreativeAssetsItemResponse     } from '../models/CatalogsCreativeAssetsItemResponse';
 import { CatalogsCreativeAssetsItemsBatch       } from '../models/CatalogsCreativeAssetsItemsBatch';
-import { CatalogsCreativeAssetsItemsFilter, CatalogsCreativeAssetsItemsFilterCatalogTypeEnum     } from '../models/CatalogsCreativeAssetsItemsFilter';
-import { CatalogsCreativeAssetsItemsPostFilter, CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum     } from '../models/CatalogsCreativeAssetsItemsPostFilter';
-import { CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest, CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogTypeEnum     } from '../models/CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest';
+import { CatalogsCreativeAssetsItemsFilter , CatalogsCreativeAssetsItemsFilterCatalogTypeEnum    } from '../models/CatalogsCreativeAssetsItemsFilter';
+import { CatalogsCreativeAssetsItemsPostFilter , CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum    } from '../models/CatalogsCreativeAssetsItemsPostFilter';
+import { CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest , CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogTypeEnum    } from '../models/CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest';
 import { CatalogsCreativeAssetsProduct, CatalogsCreativeAssetsProductCatalogTypeEnum     } from '../models/CatalogsCreativeAssetsProduct';
-import { CatalogsCreativeAssetsProductGroup, CatalogsCreativeAssetsProductGroupCatalogTypeEnum          } from '../models/CatalogsCreativeAssetsProductGroup';
-import { CatalogsCreativeAssetsProductGroupCreateRequest, CatalogsCreativeAssetsProductGroupCreateRequestCatalogTypeEnum       } from '../models/CatalogsCreativeAssetsProductGroupCreateRequest';
+import { CatalogsCreativeAssetsProductGroup , CatalogsCreativeAssetsProductGroupCatalogTypeEnum         } from '../models/CatalogsCreativeAssetsProductGroup';
+import { CatalogsCreativeAssetsProductGroupCreateRequest , CatalogsCreativeAssetsProductGroupCreateRequestCatalogTypeEnum      } from '../models/CatalogsCreativeAssetsProductGroupCreateRequest';
 import { CatalogsCreativeAssetsProductGroupFilterKeys } from '../models/CatalogsCreativeAssetsProductGroupFilterKeys';
 import { CatalogsCreativeAssetsProductGroupFilters } from '../models/CatalogsCreativeAssetsProductGroupFilters';
 import { CatalogsCreativeAssetsProductGroupFiltersAllOf } from '../models/CatalogsCreativeAssetsProductGroupFiltersAllOf';
@@ -911,21 +1079,22 @@ import { CatalogsCreativeAssetsProductMetadata   } from '../models/CatalogsCreat
 import { CatalogsDbItem } from '../models/CatalogsDbItem';
 import { CatalogsDeleteCreativeAssetsItem , CatalogsDeleteCreativeAssetsItemOperationEnum   } from '../models/CatalogsDeleteCreativeAssetsItem';
 import { CatalogsDeleteHotelItem , CatalogsDeleteHotelItemOperationEnum   } from '../models/CatalogsDeleteHotelItem';
-import { CatalogsDeleteRetailItem , CatalogsDeleteRetailItemOperationEnum   } from '../models/CatalogsDeleteRetailItem';
+import { CatalogsDeleteRetailItem  , CatalogsDeleteRetailItemOperationEnum   } from '../models/CatalogsDeleteRetailItem';
 import { CatalogsFeedClass } from '../models/CatalogsFeed';
 import { CatalogsFeedCredentials } from '../models/CatalogsFeedCredentials';
 import { CatalogsFeedIngestion     } from '../models/CatalogsFeedIngestion';
 import { CatalogsFeedIngestionDetails } from '../models/CatalogsFeedIngestionDetails';
-import { CatalogsFeedIngestionErrors , CatalogsFeedIngestionErrorsLARGEPRODUCTCOUNTDECREASEEnum         } from '../models/CatalogsFeedIngestionErrors';
+import { CatalogsFeedIngestionErrors       , CatalogsFeedIngestionErrorsLARGEPRODUCTCOUNTDECREASEEnum    } from '../models/CatalogsFeedIngestionErrors';
 import { CatalogsFeedIngestionInfo } from '../models/CatalogsFeedIngestionInfo';
 import { CatalogsFeedIngestionWarnings } from '../models/CatalogsFeedIngestionWarnings';
-import { CatalogsFeedProcessingResult        } from '../models/CatalogsFeedProcessingResult';
+import { CatalogsFeedProcessingResult         } from '../models/CatalogsFeedProcessingResult';
 import { CatalogsFeedProcessingSchedule , CatalogsFeedProcessingScheduleTimezoneEnum   } from '../models/CatalogsFeedProcessingSchedule';
 import { CatalogsFeedProcessingStatus } from '../models/CatalogsFeedProcessingStatus';
 import { CatalogsFeedProductCounts } from '../models/CatalogsFeedProductCounts';
 import { CatalogsFeedValidationDetails } from '../models/CatalogsFeedValidationDetails';
 import { CatalogsFeedValidationErrors } from '../models/CatalogsFeedValidationErrors';
-import { CatalogsFeedValidationWarnings              , CatalogsFeedValidationWarningsFETCHSAMESIGNATUREEnum                                     } from '../models/CatalogsFeedValidationWarnings';
+import { CatalogsFeedValidationWarnings                                                                                                                                                                               , CatalogsFeedValidationWarningsFETCHSAMESIGNATUREEnum                                      } from '../models/CatalogsFeedValidationWarnings';
+import { CatalogsFeedVideoCounts } from '../models/CatalogsFeedVideoCounts';
 import { CatalogsFeedsCreateRequest           } from '../models/CatalogsFeedsCreateRequest';
 import { CatalogsFeedsCreateRequestDefaultLocale } from '../models/CatalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsFeedsUpdateRequest         } from '../models/CatalogsFeedsUpdateRequest';
@@ -933,30 +1102,35 @@ import { CatalogsFormat } from '../models/CatalogsFormat';
 import { CatalogsHotelAddress } from '../models/CatalogsHotelAddress';
 import { CatalogsHotelAttributes } from '../models/CatalogsHotelAttributes';
 import { CatalogsHotelAttributesAllOfMainImage } from '../models/CatalogsHotelAttributesAllOfMainImage';
-import { CatalogsHotelBatchItem , CatalogsHotelBatchItemOperationEnum    } from '../models/CatalogsHotelBatchItem';
-import { CatalogsHotelBatchRequest, CatalogsHotelBatchRequestCatalogTypeEnum   , CatalogsHotelBatchRequestLanguageEnum     } from '../models/CatalogsHotelBatchRequest';
+import { CatalogsHotelAvailableFilterValues, CatalogsHotelAvailableFilterValuesCatalogTypeEnum    } from '../models/CatalogsHotelAvailableFilterValues';
+import { CatalogsHotelBatchItem  , CatalogsHotelBatchItemOperationEnum   } from '../models/CatalogsHotelBatchItem';
+import { CatalogsHotelBatchRequest , CatalogsHotelBatchRequestCatalogTypeEnum    , CatalogsHotelBatchRequestLanguageEnum   } from '../models/CatalogsHotelBatchRequest';
 import { CatalogsHotelFeed              } from '../models/CatalogsHotelFeed';
 import { CatalogsHotelFeedsCreateRequest           } from '../models/CatalogsHotelFeedsCreateRequest';
 import { CatalogsHotelFeedsUpdateRequest         } from '../models/CatalogsHotelFeedsUpdateRequest';
+import { CatalogsHotelFilterValuesMap } from '../models/CatalogsHotelFilterValuesMap';
 import { CatalogsHotelGuestRatings } from '../models/CatalogsHotelGuestRatings';
 import { CatalogsHotelItemErrorResponse    } from '../models/CatalogsHotelItemErrorResponse';
 import { CatalogsHotelItemResponse     } from '../models/CatalogsHotelItemResponse';
 import { CatalogsHotelItemsBatch       } from '../models/CatalogsHotelItemsBatch';
-import { CatalogsHotelItemsFilter, CatalogsHotelItemsFilterCatalogTypeEnum     } from '../models/CatalogsHotelItemsFilter';
-import { CatalogsHotelItemsPostFilter, CatalogsHotelItemsPostFilterCatalogTypeEnum     } from '../models/CatalogsHotelItemsPostFilter';
-import { CatalogsHotelListProductsByCatalogBasedFilterRequest, CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum     } from '../models/CatalogsHotelListProductsByCatalogBasedFilterRequest';
+import { CatalogsHotelItemsFilter , CatalogsHotelItemsFilterCatalogTypeEnum    } from '../models/CatalogsHotelItemsFilter';
+import { CatalogsHotelItemsPostFilter , CatalogsHotelItemsPostFilterCatalogTypeEnum    } from '../models/CatalogsHotelItemsPostFilter';
+import { CatalogsHotelListProductsByCatalogBasedFilterRequest , CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum    } from '../models/CatalogsHotelListProductsByCatalogBasedFilterRequest';
 import { CatalogsHotelProduct, CatalogsHotelProductCatalogTypeEnum     } from '../models/CatalogsHotelProduct';
-import { CatalogsHotelProductGroup, CatalogsHotelProductGroupCatalogTypeEnum          } from '../models/CatalogsHotelProductGroup';
-import { CatalogsHotelProductGroupCreateRequest, CatalogsHotelProductGroupCreateRequestCatalogTypeEnum       } from '../models/CatalogsHotelProductGroupCreateRequest';
+import { CatalogsHotelProductGroup , CatalogsHotelProductGroupCatalogTypeEnum          } from '../models/CatalogsHotelProductGroup';
+import { CatalogsHotelProductGroupCreateRequest , CatalogsHotelProductGroupCreateRequestCatalogTypeEnum      } from '../models/CatalogsHotelProductGroupCreateRequest';
 import { CatalogsHotelProductGroupFilterKeys } from '../models/CatalogsHotelProductGroupFilterKeys';
 import { CatalogsHotelProductGroupFilters } from '../models/CatalogsHotelProductGroupFilters';
 import { CatalogsHotelProductGroupFiltersAllOf } from '../models/CatalogsHotelProductGroupFiltersAllOf';
 import { CatalogsHotelProductGroupFiltersAnyOf } from '../models/CatalogsHotelProductGroupFiltersAnyOf';
 import { CatalogsHotelProductGroupProductCounts, CatalogsHotelProductGroupProductCountsCatalogTypeEnum    } from '../models/CatalogsHotelProductGroupProductCounts';
+import { CatalogsHotelProductGroupType } from '../models/CatalogsHotelProductGroupType';
 import { CatalogsHotelProductGroupUpdateRequest, CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum      } from '../models/CatalogsHotelProductGroupUpdateRequest';
 import { CatalogsHotelProductMetadata } from '../models/CatalogsHotelProductMetadata';
 import { CatalogsHotelReportParameters, CatalogsHotelReportParametersCatalogTypeEnum    } from '../models/CatalogsHotelReportParameters';
 import { CatalogsHotelReportParametersReportClass } from '../models/CatalogsHotelReportParametersReport';
+import { CatalogsHotelReportStatsParameters, CatalogsHotelReportStatsParametersCatalogTypeEnum    } from '../models/CatalogsHotelReportStatsParameters';
+import { CatalogsHotelReportStatsParametersReportClass } from '../models/CatalogsHotelReportStatsParametersReport';
 import { CatalogsItemValidationDetails   } from '../models/CatalogsItemValidationDetails';
 import { CatalogsItemValidationErrors } from '../models/CatalogsItemValidationErrors';
 import { CatalogsItemValidationIssue } from '../models/CatalogsItemValidationIssue';
@@ -965,14 +1139,14 @@ import { CatalogsItemValidationWarnings } from '../models/CatalogsItemValidation
 import { CatalogsItems } from '../models/CatalogsItems';
 import { CatalogsItemsBatchClass } from '../models/CatalogsItemsBatch';
 import { CatalogsItemsBatchRequestClass } from '../models/CatalogsItemsBatchRequest';
-import { CatalogsItemsCreateBatchRequest , CatalogsItemsCreateBatchRequestLanguageEnum     } from '../models/CatalogsItemsCreateBatchRequest';
-import { CatalogsItemsDeleteBatchRequest , CatalogsItemsDeleteBatchRequestLanguageEnum     } from '../models/CatalogsItemsDeleteBatchRequest';
-import { CatalogsItemsDeleteDiscontinuedBatchRequest , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum     } from '../models/CatalogsItemsDeleteDiscontinuedBatchRequest';
+import { CatalogsItemsCreateBatchRequest  , CatalogsItemsCreateBatchRequestLanguageEnum    } from '../models/CatalogsItemsCreateBatchRequest';
+import { CatalogsItemsDeleteBatchRequest  , CatalogsItemsDeleteBatchRequestLanguageEnum    } from '../models/CatalogsItemsDeleteBatchRequest';
+import { CatalogsItemsDeleteDiscontinuedBatchRequest  , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum    } from '../models/CatalogsItemsDeleteDiscontinuedBatchRequest';
 import { CatalogsItemsFiltersClass } from '../models/CatalogsItemsFilters';
 import { CatalogsItemsPostFiltersClass } from '../models/CatalogsItemsPostFilters';
-import { CatalogsItemsRequest , CatalogsItemsRequestLanguageEnum    } from '../models/CatalogsItemsRequest';
-import { CatalogsItemsUpdateBatchRequest , CatalogsItemsUpdateBatchRequestLanguageEnum     } from '../models/CatalogsItemsUpdateBatchRequest';
-import { CatalogsItemsUpsertBatchRequest , CatalogsItemsUpsertBatchRequestLanguageEnum     } from '../models/CatalogsItemsUpsertBatchRequest';
+import { CatalogsItemsRequest  , CatalogsItemsRequestLanguageEnum   } from '../models/CatalogsItemsRequest';
+import { CatalogsItemsUpdateBatchRequest  , CatalogsItemsUpdateBatchRequestLanguageEnum    } from '../models/CatalogsItemsUpdateBatchRequest';
+import { CatalogsItemsUpsertBatchRequest  , CatalogsItemsUpsertBatchRequestLanguageEnum    } from '../models/CatalogsItemsUpsertBatchRequest';
 import { CatalogsList200Response } from '../models/CatalogsList200Response';
 import { CatalogsListProductsByFeedBasedFilter } from '../models/CatalogsListProductsByFeedBasedFilter';
 import { CatalogsListProductsByFilterRequestClass } from '../models/CatalogsListProductsByFilterRequest';
@@ -981,12 +1155,11 @@ import { CatalogsProductClass } from '../models/CatalogsProduct';
 import { CatalogsProductGroupCreateRequest } from '../models/CatalogsProductGroupCreateRequest';
 import { CatalogsProductGroupCurrencyCriteria   } from '../models/CatalogsProductGroupCurrencyCriteria';
 import { CatalogsProductGroupFilterKeys } from '../models/CatalogsProductGroupFilterKeys';
+import { CatalogsProductGroupFilterOperatorTypeCriteria, CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum     } from '../models/CatalogsProductGroupFilterOperatorTypeCriteria';
 import { CatalogsProductGroupFilters } from '../models/CatalogsProductGroupFilters';
 import { CatalogsProductGroupFiltersAllOf } from '../models/CatalogsProductGroupFiltersAllOf';
 import { CatalogsProductGroupFiltersAnyOf } from '../models/CatalogsProductGroupFiltersAnyOf';
 import { CatalogsProductGroupFiltersRequest } from '../models/CatalogsProductGroupFiltersRequest';
-import { CatalogsProductGroupFiltersRequestAnyOf } from '../models/CatalogsProductGroupFiltersRequestAnyOf';
-import { CatalogsProductGroupFiltersRequestAnyOf1 } from '../models/CatalogsProductGroupFiltersRequestAnyOf1';
 import { CatalogsProductGroupMultipleCountriesCriteria } from '../models/CatalogsProductGroupMultipleCountriesCriteria';
 import { CatalogsProductGroupMultipleGenderCriteria } from '../models/CatalogsProductGroupMultipleGenderCriteria';
 import { CatalogsProductGroupMultipleMediaTypesCriteria } from '../models/CatalogsProductGroupMultipleMediaTypesCriteria';
@@ -994,48 +1167,53 @@ import { CatalogsProductGroupMultipleStringCriteria } from '../models/CatalogsPr
 import { CatalogsProductGroupMultipleStringListCriteria } from '../models/CatalogsProductGroupMultipleStringListCriteria';
 import { CatalogsProductGroupPinsList200Response } from '../models/CatalogsProductGroupPinsList200Response';
 import { CatalogsProductGroupPricingCriteria } from '../models/CatalogsProductGroupPricingCriteria';
-import { CatalogsProductGroupPricingCurrencyCriteria, CatalogsProductGroupPricingCurrencyCriteriaOperatorEnum      } from '../models/CatalogsProductGroupPricingCurrencyCriteria';
+import { CatalogsProductGroupPricingCurrencyCriteria  , CatalogsProductGroupPricingCurrencyCriteriaOperatorEnum    } from '../models/CatalogsProductGroupPricingCurrencyCriteria';
 import { CatalogsProductGroupProductCountsVerticalClass } from '../models/CatalogsProductGroupProductCountsVertical';
 import { CatalogsProductGroupStatus } from '../models/CatalogsProductGroupStatus';
 import { CatalogsProductGroupType } from '../models/CatalogsProductGroupType';
+import { CatalogsProductGroupUint32Criteria , CatalogsProductGroupUint32CriteriaOperatorEnum    } from '../models/CatalogsProductGroupUint32Criteria';
 import { CatalogsProductGroupUpdateRequest } from '../models/CatalogsProductGroupUpdateRequest';
 import { CatalogsProductGroupsList200Response } from '../models/CatalogsProductGroupsList200Response';
 import { CatalogsProductGroupsUpdateRequestClass } from '../models/CatalogsProductGroupsUpdateRequest';
 import { CatalogsReport, CatalogsReportReportStatusEnum     } from '../models/CatalogsReport';
-import { CatalogsReportDistributionIssueFilter, CatalogsReportDistributionIssueFilterReportTypeEnum    } from '../models/CatalogsReportDistributionIssueFilter';
-import { CatalogsReportDistributionStats, CatalogsReportDistributionStatsReportTypeEnum          } from '../models/CatalogsReportDistributionStats';
-import { CatalogsReportFeedIngestionFilter, CatalogsReportFeedIngestionFilterReportTypeEnum     } from '../models/CatalogsReportFeedIngestionFilter';
-import { CatalogsReportFeedIngestionStats, CatalogsReportFeedIngestionStatsReportTypeEnum       , CatalogsReportFeedIngestionStatsSeverityEnum   } from '../models/CatalogsReportFeedIngestionStats';
+import { CatalogsReportAllItemsFilter , CatalogsReportAllItemsFilterReportTypeEnum   } from '../models/CatalogsReportAllItemsFilter';
+import { CatalogsReportDistributionIssueFilter , CatalogsReportDistributionIssueFilterReportTypeEnum   } from '../models/CatalogsReportDistributionIssueFilter';
+import { CatalogsReportDistributionStats       , CatalogsReportDistributionStatsReportTypeEnum   } from '../models/CatalogsReportDistributionStats';
+import { CatalogsReportFeedIngestionFilter  , CatalogsReportFeedIngestionFilterReportTypeEnum   } from '../models/CatalogsReportFeedIngestionFilter';
+import { CatalogsReportFeedIngestionStats     , CatalogsReportFeedIngestionStatsReportTypeEnum  , CatalogsReportFeedIngestionStatsSeverityEnum   } from '../models/CatalogsReportFeedIngestionStats';
 import { CatalogsReportParametersClass } from '../models/CatalogsReportParameters';
 import { CatalogsReportStatsClass } from '../models/CatalogsReportStats';
-import { CatalogsRetailBatchRequest, CatalogsRetailBatchRequestCatalogTypeEnum   , CatalogsRetailBatchRequestLanguageEnum    } from '../models/CatalogsRetailBatchRequest';
-import { CatalogsRetailBatchRequestItemsInner , CatalogsRetailBatchRequestItemsInnerOperationEnum     } from '../models/CatalogsRetailBatchRequestItemsInner';
+import { CatalogsRetailAvailableFilterValues, CatalogsRetailAvailableFilterValuesCatalogTypeEnum    } from '../models/CatalogsRetailAvailableFilterValues';
+import { CatalogsRetailBatchRequest , CatalogsRetailBatchRequestCatalogTypeEnum    , CatalogsRetailBatchRequestLanguageEnum   } from '../models/CatalogsRetailBatchRequest';
+import { CatalogsRetailBatchRequestItemsInner  , CatalogsRetailBatchRequestItemsInnerOperationEnum     } from '../models/CatalogsRetailBatchRequestItemsInner';
 import { CatalogsRetailFeed               } from '../models/CatalogsRetailFeed';
-import { CatalogsRetailFeedsCreateRequest            } from '../models/CatalogsRetailFeedsCreateRequest';
+import { CatalogsRetailFeedsCreateRequest             } from '../models/CatalogsRetailFeedsCreateRequest';
 import { CatalogsRetailFeedsUpdateRequest          } from '../models/CatalogsRetailFeedsUpdateRequest';
+import { CatalogsRetailFilterValuesMap  , CatalogsRetailFilterValuesMapAvailabilityEnum   , CatalogsRetailFilterValuesMapConditionEnum       , CatalogsRetailFilterValuesMapGenderEnum         , CatalogsRetailFilterValuesMapMediaTypeEnum        } from '../models/CatalogsRetailFilterValuesMap';
 import { CatalogsRetailItemErrorResponse    } from '../models/CatalogsRetailItemErrorResponse';
 import { CatalogsRetailItemResponse     } from '../models/CatalogsRetailItemResponse';
 import { CatalogsRetailItemsBatch       } from '../models/CatalogsRetailItemsBatch';
-import { CatalogsRetailItemsFilter, CatalogsRetailItemsFilterCatalogTypeEnum     } from '../models/CatalogsRetailItemsFilter';
-import { CatalogsRetailItemsPostFilter, CatalogsRetailItemsPostFilterCatalogTypeEnum     } from '../models/CatalogsRetailItemsPostFilter';
-import { CatalogsRetailListProductsByCatalogBasedFilterRequest, CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum       } from '../models/CatalogsRetailListProductsByCatalogBasedFilterRequest';
+import { CatalogsRetailItemsFilter , CatalogsRetailItemsFilterCatalogTypeEnum    } from '../models/CatalogsRetailItemsFilter';
+import { CatalogsRetailItemsPostFilter , CatalogsRetailItemsPostFilterCatalogTypeEnum    } from '../models/CatalogsRetailItemsPostFilter';
+import { CatalogsRetailListProductsByCatalogBasedFilterRequest , CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum      } from '../models/CatalogsRetailListProductsByCatalogBasedFilterRequest';
 import { CatalogsRetailProduct, CatalogsRetailProductCatalogTypeEnum     } from '../models/CatalogsRetailProduct';
-import { CatalogsRetailProductGroup, CatalogsRetailProductGroupCatalogTypeEnum                } from '../models/CatalogsRetailProductGroup';
-import { CatalogsRetailProductGroupCreateRequest, CatalogsRetailProductGroupCreateRequestCatalogTypeEnum         } from '../models/CatalogsRetailProductGroupCreateRequest';
+import { CatalogsRetailProductGroup , CatalogsRetailProductGroupCatalogTypeEnum               } from '../models/CatalogsRetailProductGroup';
+import { CatalogsRetailProductGroupCreateRequest , CatalogsRetailProductGroupCreateRequestCatalogTypeEnum        } from '../models/CatalogsRetailProductGroupCreateRequest';
 import { CatalogsRetailProductGroupProductCounts, CatalogsRetailProductGroupProductCountsCatalogTypeEnum        } from '../models/CatalogsRetailProductGroupProductCounts';
 import { CatalogsRetailProductGroupUpdateRequest, CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum        } from '../models/CatalogsRetailProductGroupUpdateRequest';
 import { CatalogsRetailProductMetadata       } from '../models/CatalogsRetailProductMetadata';
 import { CatalogsRetailReportParameters, CatalogsRetailReportParametersCatalogTypeEnum    } from '../models/CatalogsRetailReportParameters';
+import { CatalogsRetailReportStatsParameters, CatalogsRetailReportStatsParametersCatalogTypeEnum    } from '../models/CatalogsRetailReportStatsParameters';
 import { CatalogsStatus } from '../models/CatalogsStatus';
 import { CatalogsType } from '../models/CatalogsType';
 import { CatalogsUpdatableCreativeAssetsAttributes } from '../models/CatalogsUpdatableCreativeAssetsAttributes';
 import { CatalogsUpdatableHotelAttributes } from '../models/CatalogsUpdatableHotelAttributes';
-import { CatalogsUpdateCreativeAssetsItem , CatalogsUpdateCreativeAssetsItemOperationEnum    } from '../models/CatalogsUpdateCreativeAssetsItem';
-import { CatalogsUpdateHotelItem , CatalogsUpdateHotelItemOperationEnum    } from '../models/CatalogsUpdateHotelItem';
-import { CatalogsUpdateRetailItem , CatalogsUpdateRetailItemOperationEnum     } from '../models/CatalogsUpdateRetailItem';
-import { CatalogsUpsertCreativeAssetsItem , CatalogsUpsertCreativeAssetsItemOperationEnum    } from '../models/CatalogsUpsertCreativeAssetsItem';
-import { CatalogsUpsertHotelItem , CatalogsUpsertHotelItemOperationEnum    } from '../models/CatalogsUpsertHotelItem';
-import { CatalogsUpsertRetailItem , CatalogsUpsertRetailItemOperationEnum    } from '../models/CatalogsUpsertRetailItem';
+import { CatalogsUpdateCreativeAssetsItem  , CatalogsUpdateCreativeAssetsItemOperationEnum   } from '../models/CatalogsUpdateCreativeAssetsItem';
+import { CatalogsUpdateHotelItem  , CatalogsUpdateHotelItemOperationEnum   } from '../models/CatalogsUpdateHotelItem';
+import { CatalogsUpdateRetailItem  , CatalogsUpdateRetailItemOperationEnum    } from '../models/CatalogsUpdateRetailItem';
+import { CatalogsUpsertCreativeAssetsItem  , CatalogsUpsertCreativeAssetsItemOperationEnum   } from '../models/CatalogsUpsertCreativeAssetsItem';
+import { CatalogsUpsertHotelItem  , CatalogsUpsertHotelItemOperationEnum   } from '../models/CatalogsUpsertHotelItem';
+import { CatalogsUpsertRetailItem  , CatalogsUpsertRetailItemOperationEnum   } from '../models/CatalogsUpsertRetailItem';
 import { CatalogsVerticalBatchRequestClass } from '../models/CatalogsVerticalBatchRequest';
 import { CatalogsVerticalFeedsCreateRequestClass } from '../models/CatalogsVerticalFeedsCreateRequest';
 import { CatalogsVerticalFeedsUpdateRequestClass } from '../models/CatalogsVerticalFeedsUpdateRequest';
@@ -1044,26 +1222,34 @@ import { CatalogsVerticalProductGroupCreateRequestClass } from '../models/Catalo
 import { CatalogsVerticalProductGroupUpdateRequestClass } from '../models/CatalogsVerticalProductGroupUpdateRequest';
 import { CatalogsVerticalsListProductsByCatalogBasedFilterRequestClass } from '../models/CatalogsVerticalsListProductsByCatalogBasedFilterRequest';
 import { ConditionFilter } from '../models/ConditionFilter';
+import { ContentType } from '../models/ContentType';
+import { ConversionAccessTokenResponse } from '../models/ConversionAccessTokenResponse';
 import { ConversionApiResponse } from '../models/ConversionApiResponse';
-import { ConversionApiResponseEventsInner, ConversionApiResponseEventsInnerStatusEnum     } from '../models/ConversionApiResponseEventsInner';
+import { ConversionApiResponseEventsInner , ConversionApiResponseEventsInnerStatusEnum    } from '../models/ConversionApiResponseEventsInner';
 import { ConversionAttributionWindowDays } from '../models/ConversionAttributionWindowDays';
+import { ConversionEventAppInfo } from '../models/ConversionEventAppInfo';
+import { ConversionEventDeviceInfo      , ConversionEventDeviceInfoFormFactorEnum      , ConversionEventDeviceInfoNetworkTypeEnum  , ConversionEventDeviceInfoOsFamilyEnum              } from '../models/ConversionEventDeviceInfo';
 import { ConversionEventResponse     } from '../models/ConversionEventResponse';
 import { ConversionEvents } from '../models/ConversionEvents';
 import { ConversionEventsDataInner } from '../models/ConversionEventsDataInner';
 import { ConversionEventsDataInnerCustomData } from '../models/ConversionEventsDataInnerCustomData';
 import { ConversionEventsDataInnerCustomDataContentsInner } from '../models/ConversionEventsDataInnerCustomDataContentsInner';
 import { ConversionEventsUserData } from '../models/ConversionEventsUserData';
-import { ConversionEventsUserDataAnyOf } from '../models/ConversionEventsUserDataAnyOf';
-import { ConversionEventsUserDataAnyOf1 } from '../models/ConversionEventsUserDataAnyOf1';
-import { ConversionEventsUserDataAnyOf2 } from '../models/ConversionEventsUserDataAnyOf2';
+import { ConversionEventsUserDataProperties } from '../models/ConversionEventsUserDataProperties';
+import { ConversionHealthSelectionItem } from '../models/ConversionHealthSelectionItem';
+import { ConversionMSOTEvents  , ConversionMSOTEventsAttributionModelEnum  , ConversionMSOTEventsAttributionScopeEnum      , ConversionMSOTEventsEventNameEnum       } from '../models/ConversionMSOTEvents';
+import { ConversionProductReportRequest     , ConversionProductReportRequestConversionProductAttributionTypeEnum  , ConversionProductReportRequestConversionProductBreakdownEnum    , ConversionProductReportRequestGranularityEnum  , ConversionProductReportRequestLevelEnum       } from '../models/ConversionProductReportRequest';
+import { ConversionProductReportingColumn } from '../models/ConversionProductReportingColumn';
 import { ConversionReportAttributionType } from '../models/ConversionReportAttributionType';
 import { ConversionReportTimeType } from '../models/ConversionReportTimeType';
-import { ConversionTagCommon          } from '../models/ConversionTagCommon';
+import { ConversionTag          } from '../models/ConversionTag';
+import { ConversionTagCommon        } from '../models/ConversionTagCommon';
 import { ConversionTagConfigs } from '../models/ConversionTagConfigs';
 import { ConversionTagCreate } from '../models/ConversionTagCreate';
 import { ConversionTagListResponse } from '../models/ConversionTagListResponse';
 import { ConversionTagResponse          } from '../models/ConversionTagResponse';
 import { ConversionTagType } from '../models/ConversionTagType';
+import { ConversionTagsList200Response } from '../models/ConversionTagsList200Response';
 import { Country } from '../models/Country';
 import { CountryFilter } from '../models/CountryFilter';
 import { CreateAssetAccessRequestBody } from '../models/CreateAssetAccessRequestBody';
@@ -1077,7 +1263,7 @@ import { CreateAssetInvitesRequestItem    } from '../models/CreateAssetInvitesRe
 import { CreateInvitesResultsResponseArray } from '../models/CreateInvitesResultsResponseArray';
 import { CreateInvitesResultsResponseArrayItemsInner } from '../models/CreateInvitesResultsResponseArrayItemsInner';
 import { CreateInvitesResultsResponseArrayItemsInnerInvite } from '../models/CreateInvitesResultsResponseArrayItemsInnerInvite';
-import { CreateMMMReportRequest    , CreateMMMReportRequestGranularityEnum  , CreateMMMReportRequestLevelEnum     } from '../models/CreateMMMReportRequest';
+import { CreateMMMReportRequest   , CreateMMMReportRequestGranularityEnum  , CreateMMMReportRequestLevelEnum      } from '../models/CreateMMMReportRequest';
 import { CreateMMMReportResponse } from '../models/CreateMMMReportResponse';
 import { CreateMMMReportResponseData     } from '../models/CreateMMMReportResponseData';
 import { CreateMembershipOrPartnershipInvitesBody, CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum      } from '../models/CreateMembershipOrPartnershipInvitesBody';
@@ -1092,10 +1278,20 @@ import { CustomLabel1Filter } from '../models/CustomLabel1Filter';
 import { CustomLabel2Filter } from '../models/CustomLabel2Filter';
 import { CustomLabel3Filter } from '../models/CustomLabel3Filter';
 import { CustomLabel4Filter } from '../models/CustomLabel4Filter';
-import { CustomerList       , CustomerListStatusEnum      } from '../models/CustomerList';
-import { CustomerListRequest     } from '../models/CustomerListRequest';
-import { CustomerListUpdateRequest    } from '../models/CustomerListUpdateRequest';
+import { CustomNumber0Filter } from '../models/CustomNumber0Filter';
+import { CustomNumber1Filter } from '../models/CustomNumber1Filter';
+import { CustomNumber2Filter } from '../models/CustomNumber2Filter';
+import { CustomNumber3Filter } from '../models/CustomNumber3Filter';
+import { CustomNumber4Filter } from '../models/CustomNumber4Filter';
+import { CustomerList        , CustomerListStatusEnum     } from '../models/CustomerList';
+import { CustomerListRequest    } from '../models/CustomerListRequest';
+import { CustomerListUpdateRequest   } from '../models/CustomerListUpdateRequest';
+import { CustomerListUpload       , CustomerListUploadStateEnum    } from '../models/CustomerListUpload';
+import { CustomerListUploadCreateRequest   } from '../models/CustomerListUploadCreateRequest';
+import { CustomerListUploadCreateResponse } from '../models/CustomerListUploadCreateResponse';
+import { CustomerListUploadResponse       , CustomerListUploadResponseStateEnum    } from '../models/CustomerListUploadResponse';
 import { CustomerListsList200Response } from '../models/CustomerListsList200Response';
+import { CustomizableCTAType } from '../models/CustomizableCTAType';
 import { DataOutputFormat } from '../models/DataOutputFormat';
 import { DataStatus } from '../models/DataStatus';
 import { DeleteAssetGroupBody } from '../models/DeleteAssetGroupBody';
@@ -1114,11 +1310,16 @@ import { DeletePartnersRequest } from '../models/DeletePartnersRequest';
 import { DeletePartnersResponse } from '../models/DeletePartnersResponse';
 import { DeletedMembersResponse } from '../models/DeletedMembersResponse';
 import { DeliveryMetricsResponse } from '../models/DeliveryMetricsResponse';
-import { DeliveryMetricsResponseItemsInner , DeliveryMetricsResponseItemsInnerCategoryEnum     } from '../models/DeliveryMetricsResponseItemsInner';
+import { DeliveryMetricsResponseItemsInner, DeliveryMetricsResponseItemsInnerCategoryEnum      } from '../models/DeliveryMetricsResponseItemsInner';
 import { DetailedError } from '../models/DetailedError';
+import { DisclosureType } from '../models/DisclosureType';
 import { EnhancedMatchStatusType } from '../models/EnhancedMatchStatusType';
 import { EntityStatus } from '../models/EntityStatus';
+import { ErrorDetail } from '../models/ErrorDetail';
+import { EventData            } from '../models/EventData';
+import { EventQualityScore      } from '../models/EventQualityScore';
 import { Exception } from '../models/Exception';
+import { FeaturedTrend    } from '../models/FeaturedTrend';
 import { FeedProcessingResultsList200Response } from '../models/FeedProcessingResultsList200Response';
 import { FeedsCreateRequestClass } from '../models/FeedsCreateRequest';
 import { FeedsList200Response } from '../models/FeedsList200Response';
@@ -1126,10 +1327,13 @@ import { FeedsUpdateRequestClass } from '../models/FeedsUpdateRequest';
 import { FollowUserRequest } from '../models/FollowUserRequest';
 import { FollowersList200Response } from '../models/FollowersList200Response';
 import { Gender } from '../models/Gender';
+import { GenderBucket } from '../models/GenderBucket';
+import { GenderDemographics } from '../models/GenderDemographics';
 import { GenderFilter } from '../models/GenderFilter';
 import { GetAudiencesOrderBy } from '../models/GetAudiencesOrderBy';
 import { GetBusinessAssetTypeResponse } from '../models/GetBusinessAssetTypeResponse';
 import { GetBusinessAssetsResponse } from '../models/GetBusinessAssetsResponse';
+import { GetBusinessAssetsResponseCatalogInfo } from '../models/GetBusinessAssetsResponseCatalogInfo';
 import { GetBusinessEmployers200Response } from '../models/GetBusinessEmployers200Response';
 import { GetBusinessMembers200Response } from '../models/GetBusinessMembers200Response';
 import { GetBusinessPartners200Response } from '../models/GetBusinessPartners200Response';
@@ -1148,12 +1352,15 @@ import { Granularity } from '../models/Granularity';
 import { GridClickType } from '../models/GridClickType';
 import { HotelIdFilter } from '../models/HotelIdFilter';
 import { HotelProcessingRecord     } from '../models/HotelProcessingRecord';
+import { ImageBase64, ImageBase64ContentTypeEnum    } from '../models/ImageBase64';
 import { ImageDetails } from '../models/ImageDetails';
 import { ImageMetadata } from '../models/ImageMetadata';
-import { ImageMetadataImages } from '../models/ImageMetadataImages';
-import { IntegrationLog , IntegrationLogEventTypeEnum  , IntegrationLogLogLevelEnum             } from '../models/IntegrationLog';
+import { ImageSize } from '../models/ImageSize';
+import { IngestionSourceOptions } from '../models/IngestionSourceOptions';
+import { InnerProductCategoriesMetricsHighlights } from '../models/InnerProductCategoriesMetricsHighlights';
+import { IntegrationLog    , IntegrationLogEventTypeEnum    , IntegrationLogLogLevelEnum        } from '../models/IntegrationLog';
 import { IntegrationLogClientError } from '../models/IntegrationLogClientError';
-import { IntegrationLogClientRequest, IntegrationLogClientRequestMethodEnum        } from '../models/IntegrationLogClientRequest';
+import { IntegrationLogClientRequest , IntegrationLogClientRequestMethodEnum       } from '../models/IntegrationLogClientRequest';
 import { IntegrationLogsInvalidLogResponse } from '../models/IntegrationLogsInvalidLogResponse';
 import { IntegrationLogsInvalidLogResponseRejectedLogsInner } from '../models/IntegrationLogsInvalidLogResponseRejectedLogsInner';
 import { IntegrationLogsRequest } from '../models/IntegrationLogsRequest';
@@ -1163,7 +1370,9 @@ import { IntegrationRecord } from '../models/IntegrationRecord';
 import { IntegrationRequest } from '../models/IntegrationRequest';
 import { IntegrationRequestPatch } from '../models/IntegrationRequestPatch';
 import { IntegrationsGetList200Response } from '../models/IntegrationsGetList200Response';
+import { IntegrationsLogsPost400Response } from '../models/IntegrationsLogsPost400Response';
 import { Interest } from '../models/Interest';
+import { InterestsEnum } from '../models/InterestsEnum';
 import { InviteAssetsSummary } from '../models/InviteAssetsSummary';
 import { InviteAssetsSummaryAdAccountsInner } from '../models/InviteAssetsSummaryAdAccountsInner';
 import { InviteAssetsSummaryProfilesInner } from '../models/InviteAssetsSummaryProfilesInner';
@@ -1183,9 +1392,9 @@ import { ItemGroupIdFilter } from '../models/ItemGroupIdFilter';
 import { ItemIdFilter } from '../models/ItemIdFilter';
 import { ItemProcessingRecord     } from '../models/ItemProcessingRecord';
 import { ItemProcessingStatus } from '../models/ItemProcessingStatus';
-import { ItemResponse        } from '../models/ItemResponse';
-import { ItemResponseAnyOfClass } from '../models/ItemResponseAnyOf';
-import { ItemResponseAnyOf1Class } from '../models/ItemResponseAnyOf1';
+import { ItemResponseClass } from '../models/ItemResponse';
+import { ItemResponseOneOfClass } from '../models/ItemResponseOneOf';
+import { ItemResponseOneOf1Class } from '../models/ItemResponseOneOf1';
 import { ItemUpdateBatchRecord } from '../models/ItemUpdateBatchRecord';
 import { ItemUpsertBatchRecord } from '../models/ItemUpsertBatchRecord';
 import { ItemValidationEvent } from '../models/ItemValidationEvent';
@@ -1202,6 +1411,18 @@ import { KeywordsGet200Response } from '../models/KeywordsGet200Response';
 import { KeywordsMetricsArrayResponse } from '../models/KeywordsMetricsArrayResponse';
 import { KeywordsRequest } from '../models/KeywordsRequest';
 import { KeywordsResponse } from '../models/KeywordsResponse';
+import { Label   , LabelParentTypeEnum     } from '../models/Label';
+import { LabelBulkUpdateRequest , LabelBulkUpdateRequestStatusEnum    } from '../models/LabelBulkUpdateRequest';
+import { LabelCreateRequest } from '../models/LabelCreateRequest';
+import { LabelCreateRequestLabelsInner   } from '../models/LabelCreateRequestLabelsInner';
+import { LabelError } from '../models/LabelError';
+import { LabelParentType } from '../models/LabelParentType';
+import { LabelStatus } from '../models/LabelStatus';
+import { LabelType } from '../models/LabelType';
+import { LabelUpdateRequest } from '../models/LabelUpdateRequest';
+import { LabelUpdateRequestLabelsInner    } from '../models/LabelUpdateRequestLabelsInner';
+import { LabelsList200Response } from '../models/LabelsList200Response';
+import { LabelsResponse } from '../models/LabelsResponse';
 import { Language } from '../models/Language';
 import { LeadFormArrayResponse } from '../models/LeadFormArrayResponse';
 import { LeadFormArrayResponseItemsInner } from '../models/LeadFormArrayResponseItemsInner';
@@ -1217,24 +1438,29 @@ import { LeadFormTestRequest } from '../models/LeadFormTestRequest';
 import { LeadFormTestResponse } from '../models/LeadFormTestResponse';
 import { LeadFormUpdateRequest          } from '../models/LeadFormUpdateRequest';
 import { LeadFormsList200Response } from '../models/LeadFormsList200Response';
+import { LeadSubscription } from '../models/LeadSubscription';
+import { LeadSubscriptionPostParamsCreate } from '../models/LeadSubscriptionPostParamsCreate';
+import { LeadSubscriptionPostParamsCreateAllOfPartnerMetadata } from '../models/LeadSubscriptionPostParamsCreateAllOfPartnerMetadata';
 import { LeadsExportCreateRequest } from '../models/LeadsExportCreateRequest';
 import { LeadsExportCreateResponse } from '../models/LeadsExportCreateResponse';
 import { LeadsExportResponseData   } from '../models/LeadsExportResponseData';
 import { LeadsExportStatus } from '../models/LeadsExportStatus';
 import { LineItem } from '../models/LineItem';
 import { LinkedBusiness } from '../models/LinkedBusiness';
+import { LocalStoreUpdate            } from '../models/LocalStoreUpdate';
+import { LookbackPeriodOptions } from '../models/LookbackPeriodOptions';
 import { MMMReportingColumn } from '../models/MMMReportingColumn';
 import { MMMReportingTargetingType } from '../models/MMMReportingTargetingType';
 import { MatchType } from '../models/MatchType';
 import { MatchTypeResponse } from '../models/MatchTypeResponse';
 import { MaxPriceFilter } from '../models/MaxPriceFilter';
+import { Media    } from '../models/Media';
 import { MediaList200Response } from '../models/MediaList200Response';
 import { MediaType } from '../models/MediaType';
 import { MediaTypeFilter } from '../models/MediaTypeFilter';
 import { MediaUpload     } from '../models/MediaUpload';
-import { MediaUploadAllOfUploadParameters } from '../models/MediaUploadAllOfUploadParameters';
-import { MediaUploadDetails    } from '../models/MediaUploadDetails';
-import { MediaUploadRequest  } from '../models/MediaUploadRequest';
+import { MediaUploadCreate  } from '../models/MediaUploadCreate';
+import { MediaUploadParameters } from '../models/MediaUploadParameters';
 import { MediaUploadStatus } from '../models/MediaUploadStatus';
 import { MediaUploadType } from '../models/MediaUploadType';
 import { MemberBusinessRole } from '../models/MemberBusinessRole';
@@ -1245,23 +1471,25 @@ import { MetricsResponse } from '../models/MetricsResponse';
 import { MinPriceFilter } from '../models/MinPriceFilter';
 import { ModelError } from '../models/ModelError';
 import { MultipleProductGroupsInnerClass } from '../models/MultipleProductGroupsInner';
+import { NonDraftEntityStatus } from '../models/NonDraftEntityStatus';
 import { NonNullableCatalogsCurrency } from '../models/NonNullableCatalogsCurrency';
 import { NonNullableProductAvailabilityType } from '../models/NonNullableProductAvailabilityType';
+import { NotificationPostRequestClass } from '../models/NotificationPostRequest';
+import { NotificationResponse } from '../models/NotificationResponse';
 import { NullableCatalogsItemFieldType } from '../models/NullableCatalogsItemFieldType';
 import { NullableCurrency } from '../models/NullableCurrency';
 import { OauthAccessTokenRequestClientCredentials , OauthAccessTokenRequestClientCredentialsGrantTypeEnum   } from '../models/OauthAccessTokenRequestClientCredentials';
 import { OauthAccessTokenRequestCode  , OauthAccessTokenRequestCodeGrantTypeEnum   } from '../models/OauthAccessTokenRequestCode';
-import { OauthAccessTokenRequestRefresh   , OauthAccessTokenRequestRefreshGrantTypeEnum   } from '../models/OauthAccessTokenRequestRefresh';
-import { OauthAccessTokenResponse, OauthAccessTokenResponseResponseTypeEnum       } from '../models/OauthAccessTokenResponse';
-import { OauthAccessTokenResponseClientCredentials, OauthAccessTokenResponseClientCredentialsResponseTypeEnum       } from '../models/OauthAccessTokenResponseClientCredentials';
-import { OauthAccessTokenResponseCode  , OauthAccessTokenResponseCodeResponseTypeEnum       } from '../models/OauthAccessTokenResponseCode';
-import { OauthAccessTokenResponseEverlastingRefresh   , OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum       } from '../models/OauthAccessTokenResponseEverlastingRefresh';
-import { OauthAccessTokenResponseIntegrationRefresh  , OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum       } from '../models/OauthAccessTokenResponseIntegrationRefresh';
-import { OauthAccessTokenResponseRefresh, OauthAccessTokenResponseRefreshResponseTypeEnum       } from '../models/OauthAccessTokenResponseRefresh';
+import { OauthAccessTokenRequestRefresh  , OauthAccessTokenRequestRefreshGrantTypeEnum   } from '../models/OauthAccessTokenRequestRefresh';
+import { OauthAccessTokenResponse  , OauthAccessTokenResponseResponseTypeEnum     } from '../models/OauthAccessTokenResponse';
+import { OauthAccessTokenResponseClientCredentials  , OauthAccessTokenResponseClientCredentialsResponseTypeEnum     } from '../models/OauthAccessTokenResponseClientCredentials';
+import { OauthAccessTokenResponseCode     , OauthAccessTokenResponseCodeResponseTypeEnum     } from '../models/OauthAccessTokenResponseCode';
+import { OauthAccessTokenResponseIntegrationRefresh    , OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum     } from '../models/OauthAccessTokenResponseIntegrationRefresh';
+import { OauthAccessTokenResponseRefresh  , OauthAccessTokenResponseRefreshResponseTypeEnum        } from '../models/OauthAccessTokenResponseRefresh';
 import { ObjectiveType } from '../models/ObjectiveType';
 import { OperationType } from '../models/OperationType';
 import { OptimizationGoalMetadata } from '../models/OptimizationGoalMetadata';
-import { OptimizationGoalMetadataConversionTagV3GoalMetadata , OptimizationGoalMetadataConversionTagV3GoalMetadataConversionEventEnum     , OptimizationGoalMetadataConversionTagV3GoalMetadataLearningModeTypeEnum   } from '../models/OptimizationGoalMetadataConversionTagV3GoalMetadata';
+import { OptimizationGoalMetadataConversionTagV3GoalMetadata , OptimizationGoalMetadataConversionTagV3GoalMetadataConversionEventEnum     , OptimizationGoalMetadataConversionTagV3GoalMetadataLearningModeTypeEnum    } from '../models/OptimizationGoalMetadataConversionTagV3GoalMetadata';
 import { OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows } from '../models/OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows';
 import { OptimizationGoalMetadataFrequencyGoalMetadata , OptimizationGoalMetadataFrequencyGoalMetadataTimerangeEnum   } from '../models/OptimizationGoalMetadataFrequencyGoalMetadata';
 import { OptimizationGoalMetadataScrollupGoalMetadata } from '../models/OptimizationGoalMetadataScrollupGoalMetadata';
@@ -1274,49 +1502,56 @@ import { OrderLineStatus } from '../models/OrderLineStatus';
 import { OrderLines            } from '../models/OrderLines';
 import { OrderLinesArrayResponse } from '../models/OrderLinesArrayResponse';
 import { OrderLinesList200Response } from '../models/OrderLinesList200Response';
+import { OverallStatusOptions } from '../models/OverallStatusOptions';
 import { PacingDeliveryType } from '../models/PacingDeliveryType';
 import { PageVisitConversionTagsGet200Response } from '../models/PageVisitConversionTagsGet200Response';
 import { Paginated } from '../models/Paginated';
 import { PartnerType } from '../models/PartnerType';
 import { Permissions } from '../models/Permissions';
 import { PermissionsWithOwner } from '../models/PermissionsWithOwner';
-import { Pin                    } from '../models/Pin';
+import { Pin                  } from '../models/Pin';
 import { PinAnalyticsMetricsResponse } from '../models/PinAnalyticsMetricsResponse';
 import { PinAnalyticsMetricsResponseDailyMetricsInner    } from '../models/PinAnalyticsMetricsResponseDailyMetricsInner';
 import { PinCreate } from '../models/PinCreate';
-import { PinMedia } from '../models/PinMedia';
+import { PinMediaClass } from '../models/PinMedia';
 import { PinMediaMetadata } from '../models/PinMediaMetadata';
 import { PinMediaSourceClass } from '../models/PinMediaSource';
-import { PinMediaSourceImageBase64, PinMediaSourceImageBase64SourceTypeEnum  , PinMediaSourceImageBase64ContentTypeEnum     } from '../models/PinMediaSourceImageBase64';
-import { PinMediaSourceImageURL, PinMediaSourceImageURLSourceTypeEnum     } from '../models/PinMediaSourceImageURL';
-import { PinMediaSourceImagesBase64, PinMediaSourceImagesBase64SourceTypeEnum     } from '../models/PinMediaSourceImagesBase64';
-import { PinMediaSourceImagesBase64ItemsInner   , PinMediaSourceImagesBase64ItemsInnerContentTypeEnum    } from '../models/PinMediaSourceImagesBase64ItemsInner';
-import { PinMediaSourceImagesURL, PinMediaSourceImagesURLSourceTypeEnum     } from '../models/PinMediaSourceImagesURL';
-import { PinMediaSourceImagesURLItemsInner } from '../models/PinMediaSourceImagesURLItemsInner';
-import { PinMediaSourcePinURL, PinMediaSourcePinURLSourceTypeEnum    } from '../models/PinMediaSourcePinURL';
-import { PinMediaSourceVideoID, PinMediaSourceVideoIDSourceTypeEnum   , PinMediaSourceVideoIDCoverImageContentTypeEnum      } from '../models/PinMediaSourceVideoID';
-import { PinMediaWithImage } from '../models/PinMediaWithImage';
-import { PinMediaWithImageAllOfImages } from '../models/PinMediaWithImageAllOfImages';
-import { PinMediaWithImageAndVideo } from '../models/PinMediaWithImageAndVideo';
-import { PinMediaWithImages } from '../models/PinMediaWithImages';
-import { PinMediaWithVideo } from '../models/PinMediaWithVideo';
-import { PinMediaWithVideos } from '../models/PinMediaWithVideos';
+import { PinMediaSourceImageBase64   , PinMediaSourceImageBase64SourceTypeEnum   } from '../models/PinMediaSourceImageBase64';
+import { PinMediaSourceImageURL , PinMediaSourceImageURLSourceTypeEnum    } from '../models/PinMediaSourceImageURL';
+import { PinMediaSourceImagesBase64  , PinMediaSourceImagesBase64SourceTypeEnum   } from '../models/PinMediaSourceImagesBase64';
+import { PinMediaSourceImagesBase64Item      } from '../models/PinMediaSourceImagesBase64Item';
+import { PinMediaSourceImagesURL  , PinMediaSourceImagesURLSourceTypeEnum   } from '../models/PinMediaSourceImagesURL';
+import { PinMediaSourceImagesURLItem } from '../models/PinMediaSourceImagesURLItem';
+import { PinMediaSourcePinURL , PinMediaSourcePinURLSourceTypeEnum   } from '../models/PinMediaSourcePinURL';
+import { PinMediaSourceVideoID      , PinMediaSourceVideoIDSourceTypeEnum   } from '../models/PinMediaSourceVideoID';
+import { PinMediaWithImage , PinMediaWithImageMediaTypeEnum   } from '../models/PinMediaWithImage';
+import { PinMediaWithImageAndVideo , PinMediaWithImageAndVideoMediaTypeEnum   } from '../models/PinMediaWithImageAndVideo';
+import { PinMediaWithImages , PinMediaWithImagesMediaTypeEnum   } from '../models/PinMediaWithImages';
+import { PinMediaWithVideo    , PinMediaWithVideoMediaTypeEnum     } from '../models/PinMediaWithVideo';
+import { PinMediaWithVideos , PinMediaWithVideosMediaTypeEnum   } from '../models/PinMediaWithVideos';
 import { PinPromotionSummaryStatus } from '../models/PinPromotionSummaryStatus';
 import { PinUpdate } from '../models/PinUpdate';
-import { PinUpdateCarouselSlotsInner } from '../models/PinUpdateCarouselSlotsInner';
 import { PinsList200Response } from '../models/PinsList200Response';
 import { PinsSaveRequest } from '../models/PinsSaveRequest';
-import { PinterestTagEventData            } from '../models/PinterestTagEventData';
+import { PinterestLibError } from '../models/PinterestLibError';
+import { PinterestLibPaginationOrder } from '../models/PinterestLibPaginationOrder';
+import { PinterestLibStatus204, PinterestLibStatus204StatusCodeEnum   } from '../models/PinterestLibStatus204';
 import { PlacementGroupType } from '../models/PlacementGroupType';
 import { PlacementMultipliers, PlacementMultipliersPLACEMENTEnum   } from '../models/PlacementMultipliers';
+import { PredictedTimeSeries } from '../models/PredictedTimeSeries';
 import { PriceFilter } from '../models/PriceFilter';
 import { ProductAvailabilityType } from '../models/ProductAvailabilityType';
+import { ProductCategoriesDemographic } from '../models/ProductCategoriesDemographic';
+import { ProductCategoriesEngagementType } from '../models/ProductCategoriesEngagementType';
+import { ProductCategoriesMetricsHighlights } from '../models/ProductCategoriesMetricsHighlights';
+import { ProductCategoryDetailLookbackWindow } from '../models/ProductCategoryDetailLookbackWindow';
+import { ProductCategoryDetails        } from '../models/ProductCategoryDetails';
+import { ProductCategoryEnum } from '../models/ProductCategoryEnum';
+import { ProductCategoryRegion } from '../models/ProductCategoryRegion';
 import { ProductGroupAnalyticsResponseInner } from '../models/ProductGroupAnalyticsResponseInner';
-import { ProductGroupPromotion                  } from '../models/ProductGroupPromotion';
+import { ProductGroupPromotion    , ProductGroupPromotionCollectionsHeaderTypeEnum     , ProductGroupPromotionCustomizableCtaTypeEnum         , ProductGroupPromotionPreferredMediaTypeEnum          } from '../models/ProductGroupPromotion';
 import { ProductGroupPromotionCreateRequest } from '../models/ProductGroupPromotionCreateRequest';
-import { ProductGroupPromotionCreateRequestElement                   } from '../models/ProductGroupPromotionCreateRequestElement';
 import { ProductGroupPromotionResponse } from '../models/ProductGroupPromotionResponse';
-import { ProductGroupPromotionResponseElement                   } from '../models/ProductGroupPromotionResponseElement';
 import { ProductGroupPromotionResponseItem } from '../models/ProductGroupPromotionResponseItem';
 import { ProductGroupPromotionUpdateRequest } from '../models/ProductGroupPromotionUpdateRequest';
 import { ProductGroupPromotionsList200Response } from '../models/ProductGroupPromotionsList200Response';
@@ -1327,22 +1562,39 @@ import { ProductType1Filter } from '../models/ProductType1Filter';
 import { ProductType2Filter } from '../models/ProductType2Filter';
 import { ProductType3Filter } from '../models/ProductType3Filter';
 import { ProductType4Filter } from '../models/ProductType4Filter';
-import { QuizPinData  , QuizPinDataTieBreakerTypeEnum    } from '../models/QuizPinData';
+import { PromotionArrayElement } from '../models/PromotionArrayElement';
+import { PromotionCommon, PromotionCommonDiscountStatusEnum            } from '../models/PromotionCommon';
+import { PromotionCreateRequest, PromotionCreateRequestDiscountStatusEnum            } from '../models/PromotionCreateRequest';
+import { PromotionResponse, PromotionResponseDiscountStatusEnum               } from '../models/PromotionResponse';
+import { PromotionTemplateValue     } from '../models/PromotionTemplateValue';
+import { PromotionType } from '../models/PromotionType';
+import { PromotionUpdateRequest, PromotionUpdateRequestDiscountStatusEnum              } from '../models/PromotionUpdateRequest';
+import { PromotionsList200Response } from '../models/PromotionsList200Response';
+import { PromotionsResponse } from '../models/PromotionsResponse';
+import { QualityComponentDetails } from '../models/QualityComponentDetails';
+import { QualityComponentIssue } from '../models/QualityComponentIssue';
+import { QualityComponents } from '../models/QualityComponents';
+import { QuizPinData   , QuizPinDataTieBreakerTypeEnum   } from '../models/QuizPinData';
 import { QuizPinOption } from '../models/QuizPinOption';
 import { QuizPinQuestion } from '../models/QuizPinQuestion';
 import { QuizPinResult } from '../models/QuizPinResult';
+import { RecordCounts } from '../models/RecordCounts';
 import { RelatedTerms } from '../models/RelatedTerms';
 import { RelatedTermsRelatedTermsListInner } from '../models/RelatedTermsRelatedTermsListInner';
 import { ReportingColumnAsync } from '../models/ReportingColumnAsync';
+import { ReportingTimeZone } from '../models/ReportingTimeZone';
 import { ReportsStats200Response } from '../models/ReportsStats200Response';
+import { ReportsStatsParametersParameterClass } from '../models/ReportsStatsParametersParameter';
 import { RespondToInvitesResponseArray } from '../models/RespondToInvitesResponseArray';
 import { RespondToInvitesResponseArrayItemsInner } from '../models/RespondToInvitesResponseArrayItemsInner';
 import { Role } from '../models/Role';
+import { S3FilePart } from '../models/S3FilePart';
+import { S3MultipartUploadData } from '../models/S3MultipartUploadData';
 import { SSIOAccountAddress } from '../models/SSIOAccountAddress';
 import { SSIOAccountItem } from '../models/SSIOAccountItem';
 import { SSIOAccountPMPName } from '../models/SSIOAccountPMPName';
 import { SSIOAccountResponse } from '../models/SSIOAccountResponse';
-import { SSIOCreateInsertionOrderRequest               , SSIOCreateInsertionOrderRequestOrderLineTypeEnum         } from '../models/SSIOCreateInsertionOrderRequest';
+import { SSIOCreateInsertionOrderRequest                   , SSIOCreateInsertionOrderRequestOrderLineTypeEnum     } from '../models/SSIOCreateInsertionOrderRequest';
 import { SSIOCreateInsertionOrderResponse } from '../models/SSIOCreateInsertionOrderResponse';
 import { SSIOEditInsertionOrderRequest } from '../models/SSIOEditInsertionOrderRequest';
 import { SSIOEditInsertionOrderResponse } from '../models/SSIOEditInsertionOrderResponse';
@@ -1352,19 +1604,31 @@ import { SSIOInsertionOrderStatusResponse } from '../models/SSIOInsertionOrderSt
 import { SSIOOrderLine                       } from '../models/SSIOOrderLine';
 import { SearchPartnerPins200Response } from '../models/SearchPartnerPins200Response';
 import { SearchUserBoardsGet200Response } from '../models/SearchUserBoardsGet200Response';
+import { SearchUserPinsList200Response } from '../models/SearchUserPinsList200Response';
 import { SharedAudience    } from '../models/SharedAudience';
 import { SharedAudienceAccount  , SharedAudienceAccountAccountTypeEnum    } from '../models/SharedAudienceAccount';
 import { SharedAudienceCommon   } from '../models/SharedAudienceCommon';
 import { SharedAudienceResponse } from '../models/SharedAudienceResponse';
 import { SharedAudienceResponseCommon } from '../models/SharedAudienceResponseCommon';
 import { SingleInterestTargetingOptionResponse } from '../models/SingleInterestTargetingOptionResponse';
+import { SourcePlatformOptions } from '../models/SourcePlatformOptions';
 import { SsioInsertionOrdersStatusGetByAdAccount200Response } from '../models/SsioInsertionOrdersStatusGetByAdAccount200Response';
 import { SsioOrderLinesGetByAdAccount200Response } from '../models/SsioOrderLinesGetByAdAccount200Response';
 import { SummaryPin } from '../models/SummaryPin';
+import { SystemUserUpdateRequest } from '../models/SystemUserUpdateRequest';
 import { TargetingAdvertiserCountry } from '../models/TargetingAdvertiserCountry';
-import { TargetingSpec, TargetingSpecAGEBUCKETEnum  , TargetingSpecAPPTYPEEnum    , TargetingSpecGENDEREnum       , TargetingSpecTARGETINGSTRATEGYEnum   } from '../models/TargetingSpec';
+import { TargetingSpec            , TargetingSpecTARGETINGSTRATEGYEnum   } from '../models/TargetingSpec';
+import { TargetingSpecAgeBucket } from '../models/TargetingSpecAgeBucket';
 import { TargetingSpecAppType } from '../models/TargetingSpecAppType';
-import { TargetingSpecSHOPPINGRETARGETING } from '../models/TargetingSpecSHOPPINGRETARGETING';
+import { TargetingSpecGender } from '../models/TargetingSpecGender';
+import { TargetingSpecOperationAgeBucket, TargetingSpecOperationAgeBucketFieldEnum  , TargetingSpecOperationAgeBucketOperationEnum    } from '../models/TargetingSpecOperationAgeBucket';
+import { TargetingSpecOperationAppType, TargetingSpecOperationAppTypeFieldEnum  , TargetingSpecOperationAppTypeOperationEnum    } from '../models/TargetingSpecOperationAppType';
+import { TargetingSpecOperationGender, TargetingSpecOperationGenderFieldEnum  , TargetingSpecOperationGenderOperationEnum    } from '../models/TargetingSpecOperationGender';
+import { TargetingSpecOperationList , TargetingSpecOperationListOperationEnum    } from '../models/TargetingSpecOperationList';
+import { TargetingSpecOperationMinMaxAge, TargetingSpecOperationMinMaxAgeFieldEnum  , TargetingSpecOperationMinMaxAgeOperationEnum    } from '../models/TargetingSpecOperationMinMaxAge';
+import { TargetingSpecOperationShoppingRetargeting, TargetingSpecOperationShoppingRetargetingFieldEnum  , TargetingSpecOperationShoppingRetargetingOperationEnum    } from '../models/TargetingSpecOperationShoppingRetargeting';
+import { TargetingSpecOperationString , TargetingSpecOperationStringOperationEnum    } from '../models/TargetingSpecOperationString';
+import { TargetingSpecShoppingRetargeting } from '../models/TargetingSpecShoppingRetargeting';
 import { TargetingTemplateAudienceSizing } from '../models/TargetingTemplateAudienceSizing';
 import { TargetingTemplateAudienceSizingReachEstimate } from '../models/TargetingTemplateAudienceSizingReachEstimate';
 import { TargetingTemplateCommon       } from '../models/TargetingTemplateCommon';
@@ -1373,15 +1637,18 @@ import { TargetingTemplateGetResponseData          , TargetingTemplateGetRespons
 import { TargetingTemplateKeyword   } from '../models/TargetingTemplateKeyword';
 import { TargetingTemplateList200Response } from '../models/TargetingTemplateList200Response';
 import { TargetingTemplateResponseData          , TargetingTemplateResponseDataStatusEnum    } from '../models/TargetingTemplateResponseData';
-import { TargetingTemplateUpdateRequest, TargetingTemplateUpdateRequestOperationTypeEnum    } from '../models/TargetingTemplateUpdateRequest';
-import { TargetingTypeFilter } from '../models/TargetingTypeFilter';
-import { TemplateResponse          , TemplateResponseColumnsEnum      , TemplateResponseConversionReportTimeTypeEnum     , TemplateResponseCreationSourceEnum     , TemplateResponseTypeEnum  , TemplateResponseIngestionSourcesEnum   } from '../models/TemplateResponse';
+import { TargetingTemplateUpdateRequest , TargetingTemplateUpdateRequestOperationTypeEnum    } from '../models/TargetingTemplateUpdateRequest';
+import { TargetingTypeFilter, TargetingTypeFilterTargetingTypesEnum   } from '../models/TargetingTypeFilter';
+import { TemplateBasedReport     } from '../models/TemplateBasedReport';
+import { TemplateResponse   , TemplateResponseColumnsEnum  , TemplateResponseConversionReportTimeTypeEnum  , TemplateResponseCreationSourceEnum        , TemplateResponseIngestionSourcesEnum          , TemplateResponseTypeEnum      } from '../models/TemplateResponse';
 import { TemplateResponseDateRange } from '../models/TemplateResponseDateRange';
 import { TemplateResponseDateRangeAbsoluteDateRange } from '../models/TemplateResponseDateRangeAbsoluteDateRange';
-import { TemplateResponseDateRangeDynamicDateRange , TemplateResponseDateRangeDynamicDateRangeRangeEnum   } from '../models/TemplateResponseDateRangeDynamicDateRange';
+import { TemplateResponseDateRangeDynamicDateRange, TemplateResponseDateRangeDynamicDateRangeRangeEnum    } from '../models/TemplateResponseDateRangeDynamicDateRange';
 import { TemplateResponseDateRangeRelativeDateRange } from '../models/TemplateResponseDateRangeRelativeDateRange';
 import { TemplatesList200Response } from '../models/TemplatesList200Response';
 import { TermsOfService } from '../models/TermsOfService';
+import { TimeSeries } from '../models/TimeSeries';
+import { TitleKeywordsFilter } from '../models/TitleKeywordsFilter';
 import { TopPinsAnalyticsResponse  , TopPinsAnalyticsResponseSortByEnum   } from '../models/TopPinsAnalyticsResponse';
 import { TopPinsAnalyticsResponseDateAvailability } from '../models/TopPinsAnalyticsResponseDateAvailability';
 import { TopPinsAnalyticsResponsePinsInner } from '../models/TopPinsAnalyticsResponsePinsInner';
@@ -1389,11 +1656,17 @@ import { TopVideoPinsAnalyticsResponse  , TopVideoPinsAnalyticsResponseSortByEnu
 import { TopVideoPinsAnalyticsResponsePinsInner } from '../models/TopVideoPinsAnalyticsResponsePinsInner';
 import { TrackingUrls } from '../models/TrackingUrls';
 import { TrendType } from '../models/TrendType';
+import { TrendingKeyword } from '../models/TrendingKeyword';
+import { TrendingKeywordDemographics } from '../models/TrendingKeywordDemographics';
+import { TrendingKeywordDemographicsAgeDistribution, TrendingKeywordDemographicsAgeDistributionAgeDistributionEnum   } from '../models/TrendingKeywordDemographicsAgeDistribution';
+import { TrendingKeywordDemographicsGenderDistribution, TrendingKeywordDemographicsGenderDistributionGenderDistributionEnum   } from '../models/TrendingKeywordDemographicsGenderDistribution';
 import { TrendingKeywordsResponse } from '../models/TrendingKeywordsResponse';
-import { TrendingKeywordsResponseTrendsInner } from '../models/TrendingKeywordsResponseTrendsInner';
-import { TrendingKeywordsResponseTrendsInnerTimeSeries } from '../models/TrendingKeywordsResponseTrendsInnerTimeSeries';
+import { TrendingPin } from '../models/TrendingPin';
+import { TrendingProductCategory      } from '../models/TrendingProductCategory';
+import { TrendingTopic } from '../models/TrendingTopic';
 import { TrendsSupportedRegion } from '../models/TrendsSupportedRegion';
 import { UpdatableItemAttributes } from '../models/UpdatableItemAttributes';
+import { UpdatableItemAttributesGtinClass } from '../models/UpdatableItemAttributesGtin';
 import { UpdateAssetGroupBody } from '../models/UpdateAssetGroupBody';
 import { UpdateAssetGroupBodyAssetGroupsToUpdateInner } from '../models/UpdateAssetGroupBodyAssetGroupsToUpdateInner';
 import { UpdateAssetGroupResponse } from '../models/UpdateAssetGroupResponse';
@@ -1425,10 +1698,11 @@ import { UserSingleAssetBinding } from '../models/UserSingleAssetBinding';
 import { UserSummary } from '../models/UserSummary';
 import { UserWebsiteSummary } from '../models/UserWebsiteSummary';
 import { UserWebsiteVerificationCode } from '../models/UserWebsiteVerificationCode';
-import { UserWebsiteVerifyRequest , UserWebsiteVerifyRequestVerificationMethodEnum   } from '../models/UserWebsiteVerifyRequest';
+import { UserWebsiteVerifyRequest, UserWebsiteVerifyRequestVerificationMethodEnum    } from '../models/UserWebsiteVerifyRequest';
 import { UserWebsitesGet200Response } from '../models/UserWebsitesGet200Response';
 import { UsersForIndividualAssetResponse } from '../models/UsersForIndividualAssetResponse';
-import { VideoMetadata } from '../models/VideoMetadata';
+import { VerticalProductCategory } from '../models/VerticalProductCategory';
+import { VideoMetadataWithItemType } from '../models/VideoMetadataWithItemType';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -1445,43 +1719,57 @@ let primitives = [
 let enumsMap: Set<string> = new Set<string>([
     "AccountAccountTypeEnum",
     "ActionType",
-    "AdCommonCustomizableCtaTypeEnum",
     "AdCountry",
-    "AdCreateRequestCustomizableCtaTypeEnum",
     "AdGroupAudienceSizingRequestCreativeTypesEnum",
     "AdGroupCommonBidStrategyTypeEnum",
+    "AdGroupCommonPromotionApplicationLevelEnum",
     "AdGroupCreateRequestBidStrategyTypeEnum",
+    "AdGroupCreateRequestPromotionApplicationLevelEnum",
     "AdGroupResponseBidStrategyTypeEnum",
+    "AdGroupResponsePromotionApplicationLevelEnum",
     "AdGroupResponseConversionLearningModeTypeEnum",
     "AdGroupSummaryStatus",
     "AdGroupUpdateRequestBidStrategyTypeEnum",
-    "AdResponseCustomizableCtaTypeEnum",
+    "AdGroupUpdateRequestPromotionApplicationLevelEnum",
+    "AdPreviewRequestCreativeTypeEnum",
+    "AdPreviewRequestPreferredMediaTypeEnum",
+    "AdPreviewShoppingCreativeTypeEnum",
+    "AdPreviewShoppingPreferredMediaTypeEnum",
     "AdResponseRejectedReasonsEnum",
     "AdResponseReviewStatusEnum",
-    "AdUpdateRequestCustomizableCtaTypeEnum",
+    "AdsAnalyticsAdGroupTargetingType",
     "AdsAnalyticsAdTargetingType",
     "AdsAnalyticsCampaignTargetingType",
+    "AdsAnalyticsCreateAsyncRequestTargetingTypesEnum",
     "AdsAnalyticsCreateAsyncRequestPrimarySortEnum",
+    "AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetricsCustomEventMetricsTypeEnum",
     "AdsAnalyticsFilterColumn",
     "AdsAnalyticsFilterOperator",
     "AdsAnalyticsTargetingType",
     "AdsCreditDiscountsResponseDiscountTypeEnum",
     "AdvancedAuctionOperation",
+    "AdvertiserDefinedEventMappedConversionTypeEnum",
+    "AgeTrendsBucket",
+    "AppTypeMultipliersAPPTYPEEnum",
     "AssetGroupType",
     "AudienceAccountType",
-    "AudienceDataParty",
+    "AudienceDefinitionScopeScopeEnum",
+    "AudienceDefinitionTypeScopeEnum",
     "AudienceInsightType",
     "AudienceShareType",
-    "AudienceSharingType",
     "AudienceType",
     "AudienceUpdateOperationType",
     "BatchOperation",
     "BatchOperationStatus",
+    "BillingInvoiceResponseDocumentTypeEnum",
+    "BillingInvoiceResponseStatusEnum",
+    "BillingProfilesResponseBillingTypeEnum",
     "BillingProfilesResponseCardTypeEnum",
-    "BillingProfilesResponseStatusEnum",
     "BillingProfilesResponsePaymentMethodBrandEnum",
-    "BoardPrivacyEnum",
-    "BoardUpdatePrivacyEnum",
+    "BillingProfilesResponseStatusEnum",
+    "BoardPrivacy",
+    "BoardPrivacyFilter",
+    "BoardUpdatePrivacy",
     "BudgetType",
     "BulkEntityType",
     "BulkOutputFormat",
@@ -1491,14 +1779,17 @@ let enumsMap: Set<string> = new Set<string>([
     "BusinessRole",
     "BusinessRoleCheckMode",
     "BusinessRoleForMembers",
+    "CampaignBidOptionsUpdateUpdateMaskEnum",
     "CampaignSummaryStatus",
+    "CatalogsAvailableFilterValuesCatalogTypeEnum",
     "CatalogsCreateCreativeAssetsItemOperationEnum",
     "CatalogsCreateHotelItemOperationEnum",
-    "CatalogsCreateRequestCatalogTypeEnum",
     "CatalogsCreateRetailItemOperationEnum",
+    "CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum",
     "CatalogsCreativeAssetsBatchItemOperationEnum",
     "CatalogsCreativeAssetsBatchRequestCatalogTypeEnum",
     "CatalogsCreativeAssetsBatchRequestLanguageEnum",
+    "CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum",
     "CatalogsCreativeAssetsItemsFilterCatalogTypeEnum",
     "CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum",
     "CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogTypeEnum",
@@ -1515,6 +1806,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsFeedProcessingStatus",
     "CatalogsFeedValidationWarningsFETCHSAMESIGNATUREEnum",
     "CatalogsFormat",
+    "CatalogsHotelAvailableFilterValuesCatalogTypeEnum",
     "CatalogsHotelBatchItemOperationEnum",
     "CatalogsHotelBatchRequestCatalogTypeEnum",
     "CatalogsHotelBatchRequestLanguageEnum",
@@ -1525,9 +1817,12 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsHotelProductGroupCatalogTypeEnum",
     "CatalogsHotelProductGroupCreateRequestCatalogTypeEnum",
     "CatalogsHotelProductGroupProductCountsCatalogTypeEnum",
+    "CatalogsHotelProductGroupType",
     "CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum",
     "CatalogsHotelReportParametersCatalogTypeEnum",
     "CatalogsHotelReportParametersReportReportTypeEnum",
+    "CatalogsHotelReportStatsParametersCatalogTypeEnum",
+    "CatalogsHotelReportStatsParametersReportReportTypeEnum",
     "CatalogsItemValidationIssue",
     "CatalogsItemsBatchRequestLanguageEnum",
     "CatalogsItemsCreateBatchRequestLanguageEnum",
@@ -1537,10 +1832,13 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsItemsUpdateBatchRequestLanguageEnum",
     "CatalogsItemsUpsertBatchRequestLanguageEnum",
     "CatalogsLocale",
+    "CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum",
     "CatalogsProductGroupPricingCurrencyCriteriaOperatorEnum",
     "CatalogsProductGroupStatus",
     "CatalogsProductGroupType",
+    "CatalogsProductGroupUint32CriteriaOperatorEnum",
     "CatalogsReportReportStatusEnum",
+    "CatalogsReportAllItemsFilterReportTypeEnum",
     "CatalogsReportDistributionIssueFilterReportTypeEnum",
     "CatalogsReportDistributionStatsReportTypeEnum",
     "CatalogsReportFeedIngestionFilterReportTypeEnum",
@@ -1548,9 +1846,14 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsReportFeedIngestionStatsSeverityEnum",
     "CatalogsReportStatsReportTypeEnum",
     "CatalogsReportStatsSeverityEnum",
+    "CatalogsRetailAvailableFilterValuesCatalogTypeEnum",
     "CatalogsRetailBatchRequestCatalogTypeEnum",
     "CatalogsRetailBatchRequestLanguageEnum",
     "CatalogsRetailBatchRequestItemsInnerOperationEnum",
+    "CatalogsRetailFilterValuesMapAvailabilityEnum",
+    "CatalogsRetailFilterValuesMapConditionEnum",
+    "CatalogsRetailFilterValuesMapGenderEnum",
+    "CatalogsRetailFilterValuesMapMediaTypeEnum",
     "CatalogsRetailItemsFilterCatalogTypeEnum",
     "CatalogsRetailItemsPostFilterCatalogTypeEnum",
     "CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum",
@@ -1560,6 +1863,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsRetailProductGroupProductCountsCatalogTypeEnum",
     "CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum",
     "CatalogsRetailReportParametersCatalogTypeEnum",
+    "CatalogsRetailReportStatsParametersCatalogTypeEnum",
     "CatalogsStatus",
     "CatalogsType",
     "CatalogsUpdateCreativeAssetsItemOperationEnum",
@@ -1574,8 +1878,20 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum",
     "CatalogsVerticalProductGroupUpdateRequestCatalogTypeEnum",
     "CatalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogTypeEnum",
+    "ContentType",
     "ConversionApiResponseEventsInnerStatusEnum",
     "ConversionAttributionWindowDays",
+    "ConversionEventDeviceInfoFormFactorEnum",
+    "ConversionEventDeviceInfoNetworkTypeEnum",
+    "ConversionEventDeviceInfoOsFamilyEnum",
+    "ConversionMSOTEventsAttributionModelEnum",
+    "ConversionMSOTEventsAttributionScopeEnum",
+    "ConversionMSOTEventsEventNameEnum",
+    "ConversionProductReportRequestConversionProductAttributionTypeEnum",
+    "ConversionProductReportRequestConversionProductBreakdownEnum",
+    "ConversionProductReportRequestGranularityEnum",
+    "ConversionProductReportRequestLevelEnum",
+    "ConversionProductReportingColumn",
     "ConversionReportAttributionType",
     "ConversionReportTimeType",
     "ConversionTagType",
@@ -1587,31 +1903,45 @@ let enumsMap: Set<string> = new Set<string>([
     "CreativeType",
     "Currency",
     "CustomerListStatusEnum",
+    "CustomerListUploadStateEnum",
+    "CustomerListUploadResponseStateEnum",
+    "CustomizableCTAType",
     "DataOutputFormat",
     "DataStatus",
     "DeletePartnerAssetAccessBodyAccessesInnerPartnerTypeEnum",
     "DeliveryMetricsResponseItemsInnerCategoryEnum",
+    "DisclosureType",
     "EnhancedMatchStatusType",
     "EntityStatus",
     "Gender",
+    "GenderBucket",
     "GetAudiencesOrderBy",
     "GetBusinessAssetTypeResponse",
     "GetMMMReportResponseDataReportStatusEnum",
     "Granularity",
     "GridClickType",
+    "ImageBase64ContentTypeEnum",
+    "IngestionSourceOptions",
     "IntegrationLogEventTypeEnum",
     "IntegrationLogLogLevelEnum",
     "IntegrationLogClientRequestMethodEnum",
+    "InterestsEnum",
     "InviteStatus",
     "InviteType",
     "ItemProcessingStatus",
     "ItemsBatchPostRequestCatalogTypeEnum",
     "ItemsBatchPostRequestLanguageEnum",
+    "LabelParentTypeEnum",
+    "LabelBulkUpdateRequestStatusEnum",
+    "LabelParentType",
+    "LabelStatus",
+    "LabelType",
     "Language",
     "LeadFormQuestionFieldType",
     "LeadFormQuestionType",
     "LeadFormStatus",
     "LeadsExportStatus",
+    "LookbackPeriodOptions",
     "MMMReportingColumn",
     "MMMReportingTargetingType",
     "MatchType",
@@ -1621,6 +1951,7 @@ let enumsMap: Set<string> = new Set<string>([
     "MediaUploadType",
     "MemberBusinessRole",
     "MetricsReportingLevel",
+    "NonDraftEntityStatus",
     "NonNullableCatalogsCurrency",
     "NonNullableProductAvailabilityType",
     "NullableCatalogsItemFieldType",
@@ -1631,7 +1962,6 @@ let enumsMap: Set<string> = new Set<string>([
     "OauthAccessTokenResponseResponseTypeEnum",
     "OauthAccessTokenResponseClientCredentialsResponseTypeEnum",
     "OauthAccessTokenResponseCodeResponseTypeEnum",
-    "OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum",
     "OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum",
     "OauthAccessTokenResponseRefreshResponseTypeEnum",
     "ObjectiveType",
@@ -1641,50 +1971,82 @@ let enumsMap: Set<string> = new Set<string>([
     "OptimizationGoalMetadataFrequencyGoalMetadataTimerangeEnum",
     "OrderLinePaidType",
     "OrderLineStatus",
+    "OverallStatusOptions",
     "PacingDeliveryType",
     "PartnerType",
     "Permissions",
     "PermissionsWithOwner",
+    "PinMediaMediaTypeEnum",
     "PinMediaSourceSourceTypeEnum",
-    "PinMediaSourceContentTypeEnum",
-    "PinMediaSourceCoverImageContentTypeEnum",
     "PinMediaSourceImageBase64SourceTypeEnum",
-    "PinMediaSourceImageBase64ContentTypeEnum",
     "PinMediaSourceImageURLSourceTypeEnum",
     "PinMediaSourceImagesBase64SourceTypeEnum",
-    "PinMediaSourceImagesBase64ItemsInnerContentTypeEnum",
     "PinMediaSourceImagesURLSourceTypeEnum",
     "PinMediaSourcePinURLSourceTypeEnum",
     "PinMediaSourceVideoIDSourceTypeEnum",
-    "PinMediaSourceVideoIDCoverImageContentTypeEnum",
+    "PinMediaWithImageMediaTypeEnum",
+    "PinMediaWithImageAndVideoMediaTypeEnum",
+    "PinMediaWithImagesMediaTypeEnum",
+    "PinMediaWithVideoMediaTypeEnum",
+    "PinMediaWithVideosMediaTypeEnum",
     "PinPromotionSummaryStatus",
+    "PinterestLibPaginationOrder",
+    "PinterestLibStatus204StatusCodeEnum",
     "PlacementGroupType",
     "PlacementMultipliersPLACEMENTEnum",
     "ProductAvailabilityType",
+    "ProductCategoriesEngagementType",
+    "ProductCategoryDetailLookbackWindow",
+    "ProductCategoryEnum",
+    "ProductCategoryRegion",
+    "ProductGroupPromotionCollectionsHeaderTypeEnum",
+    "ProductGroupPromotionCustomizableCtaTypeEnum",
+    "ProductGroupPromotionPreferredMediaTypeEnum",
     "ProductGroupSummaryStatus",
+    "PromotionCommonDiscountStatusEnum",
+    "PromotionCreateRequestDiscountStatusEnum",
+    "PromotionResponseDiscountStatusEnum",
+    "PromotionType",
+    "PromotionUpdateRequestDiscountStatusEnum",
     "QuizPinDataTieBreakerTypeEnum",
     "ReportingColumnAsync",
+    "ReportingTimeZone",
     "Role",
     "SSIOCreateInsertionOrderRequestOrderLineTypeEnum",
     "SharedAudienceAccountAccountTypeEnum",
+    "SourcePlatformOptions",
     "TargetingAdvertiserCountry",
-    "TargetingSpecAGEBUCKETEnum",
-    "TargetingSpecAPPTYPEEnum",
-    "TargetingSpecGENDEREnum",
     "TargetingSpecTARGETINGSTRATEGYEnum",
+    "TargetingSpecAgeBucket",
     "TargetingSpecAppType",
+    "TargetingSpecGender",
+    "TargetingSpecOperationAgeBucketFieldEnum",
+    "TargetingSpecOperationAgeBucketOperationEnum",
+    "TargetingSpecOperationAppTypeFieldEnum",
+    "TargetingSpecOperationAppTypeOperationEnum",
+    "TargetingSpecOperationGenderFieldEnum",
+    "TargetingSpecOperationGenderOperationEnum",
+    "TargetingSpecOperationListOperationEnum",
+    "TargetingSpecOperationMinMaxAgeFieldEnum",
+    "TargetingSpecOperationMinMaxAgeOperationEnum",
+    "TargetingSpecOperationShoppingRetargetingFieldEnum",
+    "TargetingSpecOperationShoppingRetargetingOperationEnum",
+    "TargetingSpecOperationStringOperationEnum",
     "TargetingTemplateGetResponseDataStatusEnum",
     "TargetingTemplateResponseDataStatusEnum",
     "TargetingTemplateUpdateRequestOperationTypeEnum",
+    "TargetingTypeFilterTargetingTypesEnum",
     "TemplateResponseColumnsEnum",
     "TemplateResponseConversionReportTimeTypeEnum",
     "TemplateResponseCreationSourceEnum",
-    "TemplateResponseTypeEnum",
     "TemplateResponseIngestionSourcesEnum",
+    "TemplateResponseTypeEnum",
     "TemplateResponseDateRangeDynamicDateRangeRangeEnum",
     "TopPinsAnalyticsResponseSortByEnum",
     "TopVideoPinsAnalyticsResponseSortByEnum",
     "TrendType",
+    "TrendingKeywordDemographicsAgeDistributionAgeDistributionEnum",
+    "TrendingKeywordDemographicsGenderDistributionGenderDistributionEnum",
     "TrendsSupportedRegion",
     "UpdateMaskBidOptionField",
     "UpdateMaskFieldType",
@@ -1692,13 +2054,14 @@ let enumsMap: Set<string> = new Set<string>([
     "UserListOperationType",
     "UserListType",
     "UserWebsiteVerifyRequestVerificationMethodEnum",
+    "VerticalProductCategory",
 ]);
 
 let typeMap: {[index: string]: any} = {
     "Account": Account,
     "AdAccount": AdAccount,
     "AdAccountAnalyticsResponseInner": AdAccountAnalyticsResponseInner,
-    "AdAccountCreateRequest": AdAccountCreateRequest,
+    "AdAccountCreate": AdAccountCreate,
     "AdAccountCreateSubscriptionRequest": AdAccountCreateSubscriptionRequest,
     "AdAccountCreateSubscriptionRequestPartnerMetadata": AdAccountCreateSubscriptionRequestPartnerMetadata,
     "AdAccountCreateSubscriptionResponse": AdAccountCreateSubscriptionResponse,
@@ -1720,18 +2083,22 @@ let typeMap: {[index: string]: any} = {
     "AdGroupAudienceSizingResponse": AdGroupAudienceSizingResponse,
     "AdGroupCommon": AdGroupCommon,
     "AdGroupCreateRequest": AdGroupCreateRequest,
+    "AdGroupIdFilter": AdGroupIdFilter,
     "AdGroupResponse": AdGroupResponse,
     "AdGroupUpdateRequest": AdGroupUpdateRequest,
     "AdGroupsAnalyticsResponseInner": AdGroupsAnalyticsResponseInner,
     "AdGroupsList200Response": AdGroupsList200Response,
+    "AdPinAnalytics": AdPinAnalytics,
     "AdPinId": AdPinId,
     "AdPreviewCreateFromImage": AdPreviewCreateFromImage,
     "AdPreviewCreateFromPin": AdPreviewCreateFromPin,
     "AdPreviewRequest": AdPreviewRequestClass,
+    "AdPreviewShopping": AdPreviewShopping,
     "AdPreviewURLResponse": AdPreviewURLResponse,
     "AdResponse": AdResponse,
     "AdUpdateRequest": AdUpdateRequest,
     "AdsAnalyticsCreateAsyncRequest": AdsAnalyticsCreateAsyncRequest,
+    "AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics": AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics,
     "AdsAnalyticsCreateAsyncResponse": AdsAnalyticsCreateAsyncResponse,
     "AdsAnalyticsGetAsyncResponse": AdsAnalyticsGetAsyncResponse,
     "AdsAnalyticsMetricsFilter": AdsAnalyticsMetricsFilter,
@@ -1752,20 +2119,25 @@ let typeMap: {[index: string]: any} = {
     "AdvancedAuctionItemsSubmitUpsertRecord": AdvancedAuctionItemsSubmitUpsertRecord,
     "AdvancedAuctionKey": AdvancedAuctionKey,
     "AdvancedAuctionOperationError": AdvancedAuctionOperationError,
-    "AdvancedAuctionProcessedItem": AdvancedAuctionProcessedItem,
     "AdvancedAuctionProcessedItems": AdvancedAuctionProcessedItems,
+    "AdvertiserDefinedEvent": AdvertiserDefinedEvent,
+    "AdvertiserDefinedEventsResponse": AdvertiserDefinedEventsResponse,
+    "AllOf": AllOf,
+    "AmazonConnectRequest": AmazonConnectRequest,
     "AnalyticsDailyMetrics": AnalyticsDailyMetrics,
     "AnalyticsMetricsResponse": AnalyticsMetricsResponse,
+    "AnyOf": AnyOf,
     "AppTypeMultipliers": AppTypeMultipliers,
     "AssetGroupBinding": AssetGroupBinding,
     "AssetIdPermissions": AssetIdPermissions,
     "Audience": Audience,
     "AudienceCategory": AudienceCategory,
     "AudienceCommon": AudienceCommon,
-    "AudienceCreateCustomRequest": AudienceCreateCustomRequest,
     "AudienceCreateRequest": AudienceCreateRequest,
     "AudienceDefinition": AudienceDefinition,
     "AudienceDefinitionResponse": AudienceDefinitionResponse,
+    "AudienceDefinitionScope": AudienceDefinitionScope,
+    "AudienceDefinitionType": AudienceDefinitionType,
     "AudienceDemographicValue": AudienceDemographicValue,
     "AudienceDemographics": AudienceDemographics,
     "AudienceInsightCategoryArrayResponse": AudienceInsightCategoryArrayResponse,
@@ -1784,18 +2156,27 @@ let typeMap: {[index: string]: any} = {
     "BidFloor": BidFloor,
     "BidFloorRequest": BidFloorRequest,
     "BidFloorSpec": BidFloorSpec,
+    "BillingInvoiceDownloadResponse": BillingInvoiceDownloadResponse,
+    "BillingInvoiceResponse": BillingInvoiceResponse,
+    "BillingInvoicesGet200Response": BillingInvoicesGet200Response,
     "BillingProfilesGet200Response": BillingProfilesGet200Response,
     "BillingProfilesResponse": BillingProfilesResponse,
     "Board": Board,
+    "BoardBase": BoardBase,
+    "BoardCreate": BoardCreate,
     "BoardMedia": BoardMedia,
     "BoardOwner": BoardOwner,
     "BoardSection": BoardSection,
     "BoardSectionsList200Response": BoardSectionsList200Response,
-    "BoardUpdate": BoardUpdate,
+    "BoardWithUpdatePrivacy": BoardWithUpdatePrivacy,
+    "BoardWithUpdatePrivacyUpdate": BoardWithUpdatePrivacyUpdate,
     "BoardsList200Response": BoardsList200Response,
     "BoardsListPins200Response": BoardsListPins200Response,
     "BoardsUserFollowsList200Response": BoardsUserFollowsList200Response,
     "BookClosedResponse": BookClosedResponse,
+    "BrandAccountsCreate200Response": BrandAccountsCreate200Response,
+    "BrandAccountsCreateRequest": BrandAccountsCreateRequest,
+    "BrandAccountsUpdateRequest": BrandAccountsUpdateRequest,
     "BrandFilter": BrandFilter,
     "BulkDownloadRequest": BulkDownloadRequest,
     "BulkDownloadRequestCampaignFilter": BulkDownloadRequestCampaignFilter,
@@ -1819,6 +2200,10 @@ let typeMap: {[index: string]: any} = {
     "BusinessPartnerAssetAccessGet200Response": BusinessPartnerAssetAccessGet200Response,
     "BusinessSharedAudience": BusinessSharedAudience,
     "BusinessSharedAudienceResponse": BusinessSharedAudienceResponse,
+    "CampaignAudienceMultipliers": CampaignAudienceMultipliers,
+    "CampaignBidOptions": CampaignBidOptions,
+    "CampaignBidOptionsCreate": CampaignBidOptionsCreate,
+    "CampaignBidOptionsUpdate": CampaignBidOptionsUpdate,
     "CampaignCommon": CampaignCommon,
     "CampaignCreateCommon": CampaignCreateCommon,
     "CampaignCreateRequest": CampaignCreateRequest,
@@ -1826,24 +2211,30 @@ let typeMap: {[index: string]: any} = {
     "CampaignCreateResponseData": CampaignCreateResponseData,
     "CampaignCreateResponseItem": CampaignCreateResponseItem,
     "CampaignId": CampaignId,
+    "CampaignIdFilter": CampaignIdFilter,
+    "CampaignObjectivesFilter": CampaignObjectivesFilter,
     "CampaignResponse": CampaignResponse,
     "CampaignUpdateRequest": CampaignUpdateRequest,
     "CampaignUpdateResponse": CampaignUpdateResponse,
     "CampaignsAnalyticsResponseInner": CampaignsAnalyticsResponseInner,
     "CampaignsList200Response": CampaignsList200Response,
     "CancelInvitesBody": CancelInvitesBody,
+    "CarouselSlot": CarouselSlot,
     "Catalog": Catalog,
+    "CatalogsAvailableFilterValues": CatalogsAvailableFilterValuesClass,
     "CatalogsCreateCreativeAssetsItem": CatalogsCreateCreativeAssetsItem,
     "CatalogsCreateHotelItem": CatalogsCreateHotelItem,
     "CatalogsCreateReportResponse": CatalogsCreateReportResponse,
     "CatalogsCreateRequest": CatalogsCreateRequest,
     "CatalogsCreateRetailItem": CatalogsCreateRetailItem,
     "CatalogsCreativeAssetsAttributes": CatalogsCreativeAssetsAttributes,
+    "CatalogsCreativeAssetsAvailableFilterValues": CatalogsCreativeAssetsAvailableFilterValues,
     "CatalogsCreativeAssetsBatchItem": CatalogsCreativeAssetsBatchItem,
     "CatalogsCreativeAssetsBatchRequest": CatalogsCreativeAssetsBatchRequest,
     "CatalogsCreativeAssetsFeed": CatalogsCreativeAssetsFeed,
     "CatalogsCreativeAssetsFeedsCreateRequest": CatalogsCreativeAssetsFeedsCreateRequest,
     "CatalogsCreativeAssetsFeedsUpdateRequest": CatalogsCreativeAssetsFeedsUpdateRequest,
+    "CatalogsCreativeAssetsFilterValuesMap": CatalogsCreativeAssetsFilterValuesMap,
     "CatalogsCreativeAssetsItemErrorResponse": CatalogsCreativeAssetsItemErrorResponse,
     "CatalogsCreativeAssetsItemResponse": CatalogsCreativeAssetsItemResponse,
     "CatalogsCreativeAssetsItemsBatch": CatalogsCreativeAssetsItemsBatch,
@@ -1877,17 +2268,20 @@ let typeMap: {[index: string]: any} = {
     "CatalogsFeedValidationDetails": CatalogsFeedValidationDetails,
     "CatalogsFeedValidationErrors": CatalogsFeedValidationErrors,
     "CatalogsFeedValidationWarnings": CatalogsFeedValidationWarnings,
+    "CatalogsFeedVideoCounts": CatalogsFeedVideoCounts,
     "CatalogsFeedsCreateRequest": CatalogsFeedsCreateRequest,
     "CatalogsFeedsCreateRequestDefaultLocale": CatalogsFeedsCreateRequestDefaultLocale,
     "CatalogsFeedsUpdateRequest": CatalogsFeedsUpdateRequest,
     "CatalogsHotelAddress": CatalogsHotelAddress,
     "CatalogsHotelAttributes": CatalogsHotelAttributes,
     "CatalogsHotelAttributesAllOfMainImage": CatalogsHotelAttributesAllOfMainImage,
+    "CatalogsHotelAvailableFilterValues": CatalogsHotelAvailableFilterValues,
     "CatalogsHotelBatchItem": CatalogsHotelBatchItem,
     "CatalogsHotelBatchRequest": CatalogsHotelBatchRequest,
     "CatalogsHotelFeed": CatalogsHotelFeed,
     "CatalogsHotelFeedsCreateRequest": CatalogsHotelFeedsCreateRequest,
     "CatalogsHotelFeedsUpdateRequest": CatalogsHotelFeedsUpdateRequest,
+    "CatalogsHotelFilterValuesMap": CatalogsHotelFilterValuesMap,
     "CatalogsHotelGuestRatings": CatalogsHotelGuestRatings,
     "CatalogsHotelItemErrorResponse": CatalogsHotelItemErrorResponse,
     "CatalogsHotelItemResponse": CatalogsHotelItemResponse,
@@ -1907,6 +2301,8 @@ let typeMap: {[index: string]: any} = {
     "CatalogsHotelProductMetadata": CatalogsHotelProductMetadata,
     "CatalogsHotelReportParameters": CatalogsHotelReportParameters,
     "CatalogsHotelReportParametersReport": CatalogsHotelReportParametersReportClass,
+    "CatalogsHotelReportStatsParameters": CatalogsHotelReportStatsParameters,
+    "CatalogsHotelReportStatsParametersReport": CatalogsHotelReportStatsParametersReportClass,
     "CatalogsItemValidationDetails": CatalogsItemValidationDetails,
     "CatalogsItemValidationErrors": CatalogsItemValidationErrors,
     "CatalogsItemValidationIssues": CatalogsItemValidationIssues,
@@ -1929,12 +2325,11 @@ let typeMap: {[index: string]: any} = {
     "CatalogsProductGroupCreateRequest": CatalogsProductGroupCreateRequest,
     "CatalogsProductGroupCurrencyCriteria": CatalogsProductGroupCurrencyCriteria,
     "CatalogsProductGroupFilterKeys": CatalogsProductGroupFilterKeys,
+    "CatalogsProductGroupFilterOperatorTypeCriteria": CatalogsProductGroupFilterOperatorTypeCriteria,
     "CatalogsProductGroupFilters": CatalogsProductGroupFilters,
     "CatalogsProductGroupFiltersAllOf": CatalogsProductGroupFiltersAllOf,
     "CatalogsProductGroupFiltersAnyOf": CatalogsProductGroupFiltersAnyOf,
     "CatalogsProductGroupFiltersRequest": CatalogsProductGroupFiltersRequest,
-    "CatalogsProductGroupFiltersRequestAnyOf": CatalogsProductGroupFiltersRequestAnyOf,
-    "CatalogsProductGroupFiltersRequestAnyOf1": CatalogsProductGroupFiltersRequestAnyOf1,
     "CatalogsProductGroupMultipleCountriesCriteria": CatalogsProductGroupMultipleCountriesCriteria,
     "CatalogsProductGroupMultipleGenderCriteria": CatalogsProductGroupMultipleGenderCriteria,
     "CatalogsProductGroupMultipleMediaTypesCriteria": CatalogsProductGroupMultipleMediaTypesCriteria,
@@ -1944,21 +2339,25 @@ let typeMap: {[index: string]: any} = {
     "CatalogsProductGroupPricingCriteria": CatalogsProductGroupPricingCriteria,
     "CatalogsProductGroupPricingCurrencyCriteria": CatalogsProductGroupPricingCurrencyCriteria,
     "CatalogsProductGroupProductCountsVertical": CatalogsProductGroupProductCountsVerticalClass,
+    "CatalogsProductGroupUint32Criteria": CatalogsProductGroupUint32Criteria,
     "CatalogsProductGroupUpdateRequest": CatalogsProductGroupUpdateRequest,
     "CatalogsProductGroupsList200Response": CatalogsProductGroupsList200Response,
     "CatalogsProductGroupsUpdateRequest": CatalogsProductGroupsUpdateRequestClass,
     "CatalogsReport": CatalogsReport,
+    "CatalogsReportAllItemsFilter": CatalogsReportAllItemsFilter,
     "CatalogsReportDistributionIssueFilter": CatalogsReportDistributionIssueFilter,
     "CatalogsReportDistributionStats": CatalogsReportDistributionStats,
     "CatalogsReportFeedIngestionFilter": CatalogsReportFeedIngestionFilter,
     "CatalogsReportFeedIngestionStats": CatalogsReportFeedIngestionStats,
     "CatalogsReportParameters": CatalogsReportParametersClass,
     "CatalogsReportStats": CatalogsReportStatsClass,
+    "CatalogsRetailAvailableFilterValues": CatalogsRetailAvailableFilterValues,
     "CatalogsRetailBatchRequest": CatalogsRetailBatchRequest,
     "CatalogsRetailBatchRequestItemsInner": CatalogsRetailBatchRequestItemsInner,
     "CatalogsRetailFeed": CatalogsRetailFeed,
     "CatalogsRetailFeedsCreateRequest": CatalogsRetailFeedsCreateRequest,
     "CatalogsRetailFeedsUpdateRequest": CatalogsRetailFeedsUpdateRequest,
+    "CatalogsRetailFilterValuesMap": CatalogsRetailFilterValuesMap,
     "CatalogsRetailItemErrorResponse": CatalogsRetailItemErrorResponse,
     "CatalogsRetailItemResponse": CatalogsRetailItemResponse,
     "CatalogsRetailItemsBatch": CatalogsRetailItemsBatch,
@@ -1972,6 +2371,7 @@ let typeMap: {[index: string]: any} = {
     "CatalogsRetailProductGroupUpdateRequest": CatalogsRetailProductGroupUpdateRequest,
     "CatalogsRetailProductMetadata": CatalogsRetailProductMetadata,
     "CatalogsRetailReportParameters": CatalogsRetailReportParameters,
+    "CatalogsRetailReportStatsParameters": CatalogsRetailReportStatsParameters,
     "CatalogsUpdatableCreativeAssetsAttributes": CatalogsUpdatableCreativeAssetsAttributes,
     "CatalogsUpdatableHotelAttributes": CatalogsUpdatableHotelAttributes,
     "CatalogsUpdateCreativeAssetsItem": CatalogsUpdateCreativeAssetsItem,
@@ -1988,22 +2388,28 @@ let typeMap: {[index: string]: any} = {
     "CatalogsVerticalProductGroupUpdateRequest": CatalogsVerticalProductGroupUpdateRequestClass,
     "CatalogsVerticalsListProductsByCatalogBasedFilterRequest": CatalogsVerticalsListProductsByCatalogBasedFilterRequestClass,
     "ConditionFilter": ConditionFilter,
+    "ConversionAccessTokenResponse": ConversionAccessTokenResponse,
     "ConversionApiResponse": ConversionApiResponse,
     "ConversionApiResponseEventsInner": ConversionApiResponseEventsInner,
+    "ConversionEventAppInfo": ConversionEventAppInfo,
+    "ConversionEventDeviceInfo": ConversionEventDeviceInfo,
     "ConversionEventResponse": ConversionEventResponse,
     "ConversionEvents": ConversionEvents,
     "ConversionEventsDataInner": ConversionEventsDataInner,
     "ConversionEventsDataInnerCustomData": ConversionEventsDataInnerCustomData,
     "ConversionEventsDataInnerCustomDataContentsInner": ConversionEventsDataInnerCustomDataContentsInner,
     "ConversionEventsUserData": ConversionEventsUserData,
-    "ConversionEventsUserDataAnyOf": ConversionEventsUserDataAnyOf,
-    "ConversionEventsUserDataAnyOf1": ConversionEventsUserDataAnyOf1,
-    "ConversionEventsUserDataAnyOf2": ConversionEventsUserDataAnyOf2,
+    "ConversionEventsUserDataProperties": ConversionEventsUserDataProperties,
+    "ConversionHealthSelectionItem": ConversionHealthSelectionItem,
+    "ConversionMSOTEvents": ConversionMSOTEvents,
+    "ConversionProductReportRequest": ConversionProductReportRequest,
+    "ConversionTag": ConversionTag,
     "ConversionTagCommon": ConversionTagCommon,
     "ConversionTagConfigs": ConversionTagConfigs,
     "ConversionTagCreate": ConversionTagCreate,
     "ConversionTagListResponse": ConversionTagListResponse,
     "ConversionTagResponse": ConversionTagResponse,
+    "ConversionTagsList200Response": ConversionTagsList200Response,
     "CountryFilter": CountryFilter,
     "CreateAssetAccessRequestBody": CreateAssetAccessRequestBody,
     "CreateAssetAccessRequestBodyAssetRequestsInner": CreateAssetAccessRequestBodyAssetRequestsInner,
@@ -2028,9 +2434,18 @@ let typeMap: {[index: string]: any} = {
     "CustomLabel2Filter": CustomLabel2Filter,
     "CustomLabel3Filter": CustomLabel3Filter,
     "CustomLabel4Filter": CustomLabel4Filter,
+    "CustomNumber0Filter": CustomNumber0Filter,
+    "CustomNumber1Filter": CustomNumber1Filter,
+    "CustomNumber2Filter": CustomNumber2Filter,
+    "CustomNumber3Filter": CustomNumber3Filter,
+    "CustomNumber4Filter": CustomNumber4Filter,
     "CustomerList": CustomerList,
     "CustomerListRequest": CustomerListRequest,
     "CustomerListUpdateRequest": CustomerListUpdateRequest,
+    "CustomerListUpload": CustomerListUpload,
+    "CustomerListUploadCreateRequest": CustomerListUploadCreateRequest,
+    "CustomerListUploadCreateResponse": CustomerListUploadCreateResponse,
+    "CustomerListUploadResponse": CustomerListUploadResponse,
     "CustomerListsList200Response": CustomerListsList200Response,
     "DeleteAssetGroupBody": DeleteAssetGroupBody,
     "DeleteAssetGroupResponse": DeleteAssetGroupResponse,
@@ -2050,15 +2465,21 @@ let typeMap: {[index: string]: any} = {
     "DeliveryMetricsResponse": DeliveryMetricsResponse,
     "DeliveryMetricsResponseItemsInner": DeliveryMetricsResponseItemsInner,
     "DetailedError": DetailedError,
+    "ErrorDetail": ErrorDetail,
+    "EventData": EventData,
+    "EventQualityScore": EventQualityScore,
     "Exception": Exception,
+    "FeaturedTrend": FeaturedTrend,
     "FeedProcessingResultsList200Response": FeedProcessingResultsList200Response,
     "FeedsCreateRequest": FeedsCreateRequestClass,
     "FeedsList200Response": FeedsList200Response,
     "FeedsUpdateRequest": FeedsUpdateRequestClass,
     "FollowUserRequest": FollowUserRequest,
     "FollowersList200Response": FollowersList200Response,
+    "GenderDemographics": GenderDemographics,
     "GenderFilter": GenderFilter,
     "GetBusinessAssetsResponse": GetBusinessAssetsResponse,
+    "GetBusinessAssetsResponseCatalogInfo": GetBusinessAssetsResponseCatalogInfo,
     "GetBusinessEmployers200Response": GetBusinessEmployers200Response,
     "GetBusinessMembers200Response": GetBusinessMembers200Response,
     "GetBusinessPartners200Response": GetBusinessPartners200Response,
@@ -2075,9 +2496,11 @@ let typeMap: {[index: string]: any} = {
     "GoogleProductCategory6Filter": GoogleProductCategory6Filter,
     "HotelIdFilter": HotelIdFilter,
     "HotelProcessingRecord": HotelProcessingRecord,
+    "ImageBase64": ImageBase64,
     "ImageDetails": ImageDetails,
     "ImageMetadata": ImageMetadata,
-    "ImageMetadataImages": ImageMetadataImages,
+    "ImageSize": ImageSize,
+    "InnerProductCategoriesMetricsHighlights": InnerProductCategoriesMetricsHighlights,
     "IntegrationLog": IntegrationLog,
     "IntegrationLogClientError": IntegrationLogClientError,
     "IntegrationLogClientRequest": IntegrationLogClientRequest,
@@ -2090,6 +2513,7 @@ let typeMap: {[index: string]: any} = {
     "IntegrationRequest": IntegrationRequest,
     "IntegrationRequestPatch": IntegrationRequestPatch,
     "IntegrationsGetList200Response": IntegrationsGetList200Response,
+    "IntegrationsLogsPost400Response": IntegrationsLogsPost400Response,
     "Interest": Interest,
     "InviteAssetsSummary": InviteAssetsSummary,
     "InviteAssetsSummaryAdAccountsInner": InviteAssetsSummaryAdAccountsInner,
@@ -2107,9 +2531,9 @@ let typeMap: {[index: string]: any} = {
     "ItemGroupIdFilter": ItemGroupIdFilter,
     "ItemIdFilter": ItemIdFilter,
     "ItemProcessingRecord": ItemProcessingRecord,
-    "ItemResponse": ItemResponse,
-    "ItemResponseAnyOf": ItemResponseAnyOfClass,
-    "ItemResponseAnyOf1": ItemResponseAnyOf1Class,
+    "ItemResponse": ItemResponseClass,
+    "ItemResponseOneOf": ItemResponseOneOfClass,
+    "ItemResponseOneOf1": ItemResponseOneOf1Class,
     "ItemUpdateBatchRecord": ItemUpdateBatchRecord,
     "ItemUpsertBatchRecord": ItemUpsertBatchRecord,
     "ItemValidationEvent": ItemValidationEvent,
@@ -2126,6 +2550,15 @@ let typeMap: {[index: string]: any} = {
     "KeywordsMetricsArrayResponse": KeywordsMetricsArrayResponse,
     "KeywordsRequest": KeywordsRequest,
     "KeywordsResponse": KeywordsResponse,
+    "Label": Label,
+    "LabelBulkUpdateRequest": LabelBulkUpdateRequest,
+    "LabelCreateRequest": LabelCreateRequest,
+    "LabelCreateRequestLabelsInner": LabelCreateRequestLabelsInner,
+    "LabelError": LabelError,
+    "LabelUpdateRequest": LabelUpdateRequest,
+    "LabelUpdateRequestLabelsInner": LabelUpdateRequestLabelsInner,
+    "LabelsList200Response": LabelsList200Response,
+    "LabelsResponse": LabelsResponse,
     "LeadFormArrayResponse": LeadFormArrayResponse,
     "LeadFormArrayResponseItemsInner": LeadFormArrayResponseItemsInner,
     "LeadFormCommon": LeadFormCommon,
@@ -2137,31 +2570,36 @@ let typeMap: {[index: string]: any} = {
     "LeadFormTestResponse": LeadFormTestResponse,
     "LeadFormUpdateRequest": LeadFormUpdateRequest,
     "LeadFormsList200Response": LeadFormsList200Response,
+    "LeadSubscription": LeadSubscription,
+    "LeadSubscriptionPostParamsCreate": LeadSubscriptionPostParamsCreate,
+    "LeadSubscriptionPostParamsCreateAllOfPartnerMetadata": LeadSubscriptionPostParamsCreateAllOfPartnerMetadata,
     "LeadsExportCreateRequest": LeadsExportCreateRequest,
     "LeadsExportCreateResponse": LeadsExportCreateResponse,
     "LeadsExportResponseData": LeadsExportResponseData,
     "LineItem": LineItem,
     "LinkedBusiness": LinkedBusiness,
+    "LocalStoreUpdate": LocalStoreUpdate,
     "MaxPriceFilter": MaxPriceFilter,
+    "Media": Media,
     "MediaList200Response": MediaList200Response,
     "MediaTypeFilter": MediaTypeFilter,
     "MediaUpload": MediaUpload,
-    "MediaUploadAllOfUploadParameters": MediaUploadAllOfUploadParameters,
-    "MediaUploadDetails": MediaUploadDetails,
-    "MediaUploadRequest": MediaUploadRequest,
+    "MediaUploadCreate": MediaUploadCreate,
+    "MediaUploadParameters": MediaUploadParameters,
     "MembersToDeleteBody": MembersToDeleteBody,
     "MembersToDeleteBodyMembersInner": MembersToDeleteBodyMembersInner,
     "MetricsResponse": MetricsResponse,
     "MinPriceFilter": MinPriceFilter,
     "ModelError": ModelError,
     "MultipleProductGroupsInner": MultipleProductGroupsInnerClass,
+    "NotificationPostRequest": NotificationPostRequestClass,
+    "NotificationResponse": NotificationResponse,
     "OauthAccessTokenRequestClientCredentials": OauthAccessTokenRequestClientCredentials,
     "OauthAccessTokenRequestCode": OauthAccessTokenRequestCode,
     "OauthAccessTokenRequestRefresh": OauthAccessTokenRequestRefresh,
     "OauthAccessTokenResponse": OauthAccessTokenResponse,
     "OauthAccessTokenResponseClientCredentials": OauthAccessTokenResponseClientCredentials,
     "OauthAccessTokenResponseCode": OauthAccessTokenResponseCode,
-    "OauthAccessTokenResponseEverlastingRefresh": OauthAccessTokenResponseEverlastingRefresh,
     "OauthAccessTokenResponseIntegrationRefresh": OauthAccessTokenResponseIntegrationRefresh,
     "OauthAccessTokenResponseRefresh": OauthAccessTokenResponseRefresh,
     "OptimizationGoalMetadata": OptimizationGoalMetadata,
@@ -2182,36 +2620,37 @@ let typeMap: {[index: string]: any} = {
     "PinAnalyticsMetricsResponse": PinAnalyticsMetricsResponse,
     "PinAnalyticsMetricsResponseDailyMetricsInner": PinAnalyticsMetricsResponseDailyMetricsInner,
     "PinCreate": PinCreate,
-    "PinMedia": PinMedia,
+    "PinMedia": PinMediaClass,
     "PinMediaMetadata": PinMediaMetadata,
     "PinMediaSource": PinMediaSourceClass,
     "PinMediaSourceImageBase64": PinMediaSourceImageBase64,
     "PinMediaSourceImageURL": PinMediaSourceImageURL,
     "PinMediaSourceImagesBase64": PinMediaSourceImagesBase64,
-    "PinMediaSourceImagesBase64ItemsInner": PinMediaSourceImagesBase64ItemsInner,
+    "PinMediaSourceImagesBase64Item": PinMediaSourceImagesBase64Item,
     "PinMediaSourceImagesURL": PinMediaSourceImagesURL,
-    "PinMediaSourceImagesURLItemsInner": PinMediaSourceImagesURLItemsInner,
+    "PinMediaSourceImagesURLItem": PinMediaSourceImagesURLItem,
     "PinMediaSourcePinURL": PinMediaSourcePinURL,
     "PinMediaSourceVideoID": PinMediaSourceVideoID,
     "PinMediaWithImage": PinMediaWithImage,
-    "PinMediaWithImageAllOfImages": PinMediaWithImageAllOfImages,
     "PinMediaWithImageAndVideo": PinMediaWithImageAndVideo,
     "PinMediaWithImages": PinMediaWithImages,
     "PinMediaWithVideo": PinMediaWithVideo,
     "PinMediaWithVideos": PinMediaWithVideos,
     "PinUpdate": PinUpdate,
-    "PinUpdateCarouselSlotsInner": PinUpdateCarouselSlotsInner,
     "PinsList200Response": PinsList200Response,
     "PinsSaveRequest": PinsSaveRequest,
-    "PinterestTagEventData": PinterestTagEventData,
+    "PinterestLibError": PinterestLibError,
+    "PinterestLibStatus204": PinterestLibStatus204,
     "PlacementMultipliers": PlacementMultipliers,
+    "PredictedTimeSeries": PredictedTimeSeries,
     "PriceFilter": PriceFilter,
+    "ProductCategoriesDemographic": ProductCategoriesDemographic,
+    "ProductCategoriesMetricsHighlights": ProductCategoriesMetricsHighlights,
+    "ProductCategoryDetails": ProductCategoryDetails,
     "ProductGroupAnalyticsResponseInner": ProductGroupAnalyticsResponseInner,
     "ProductGroupPromotion": ProductGroupPromotion,
     "ProductGroupPromotionCreateRequest": ProductGroupPromotionCreateRequest,
-    "ProductGroupPromotionCreateRequestElement": ProductGroupPromotionCreateRequestElement,
     "ProductGroupPromotionResponse": ProductGroupPromotionResponse,
-    "ProductGroupPromotionResponseElement": ProductGroupPromotionResponseElement,
     "ProductGroupPromotionResponseItem": ProductGroupPromotionResponseItem,
     "ProductGroupPromotionUpdateRequest": ProductGroupPromotionUpdateRequest,
     "ProductGroupPromotionsList200Response": ProductGroupPromotionsList200Response,
@@ -2221,15 +2660,30 @@ let typeMap: {[index: string]: any} = {
     "ProductType2Filter": ProductType2Filter,
     "ProductType3Filter": ProductType3Filter,
     "ProductType4Filter": ProductType4Filter,
+    "PromotionArrayElement": PromotionArrayElement,
+    "PromotionCommon": PromotionCommon,
+    "PromotionCreateRequest": PromotionCreateRequest,
+    "PromotionResponse": PromotionResponse,
+    "PromotionTemplateValue": PromotionTemplateValue,
+    "PromotionUpdateRequest": PromotionUpdateRequest,
+    "PromotionsList200Response": PromotionsList200Response,
+    "PromotionsResponse": PromotionsResponse,
+    "QualityComponentDetails": QualityComponentDetails,
+    "QualityComponentIssue": QualityComponentIssue,
+    "QualityComponents": QualityComponents,
     "QuizPinData": QuizPinData,
     "QuizPinOption": QuizPinOption,
     "QuizPinQuestion": QuizPinQuestion,
     "QuizPinResult": QuizPinResult,
+    "RecordCounts": RecordCounts,
     "RelatedTerms": RelatedTerms,
     "RelatedTermsRelatedTermsListInner": RelatedTermsRelatedTermsListInner,
     "ReportsStats200Response": ReportsStats200Response,
+    "ReportsStatsParametersParameter": ReportsStatsParametersParameterClass,
     "RespondToInvitesResponseArray": RespondToInvitesResponseArray,
     "RespondToInvitesResponseArrayItemsInner": RespondToInvitesResponseArrayItemsInner,
+    "S3FilePart": S3FilePart,
+    "S3MultipartUploadData": S3MultipartUploadData,
     "SSIOAccountAddress": SSIOAccountAddress,
     "SSIOAccountItem": SSIOAccountItem,
     "SSIOAccountPMPName": SSIOAccountPMPName,
@@ -2244,6 +2698,7 @@ let typeMap: {[index: string]: any} = {
     "SSIOOrderLine": SSIOOrderLine,
     "SearchPartnerPins200Response": SearchPartnerPins200Response,
     "SearchUserBoardsGet200Response": SearchUserBoardsGet200Response,
+    "SearchUserPinsList200Response": SearchUserPinsList200Response,
     "SharedAudience": SharedAudience,
     "SharedAudienceAccount": SharedAudienceAccount,
     "SharedAudienceCommon": SharedAudienceCommon,
@@ -2253,8 +2708,16 @@ let typeMap: {[index: string]: any} = {
     "SsioInsertionOrdersStatusGetByAdAccount200Response": SsioInsertionOrdersStatusGetByAdAccount200Response,
     "SsioOrderLinesGetByAdAccount200Response": SsioOrderLinesGetByAdAccount200Response,
     "SummaryPin": SummaryPin,
+    "SystemUserUpdateRequest": SystemUserUpdateRequest,
     "TargetingSpec": TargetingSpec,
-    "TargetingSpecSHOPPINGRETARGETING": TargetingSpecSHOPPINGRETARGETING,
+    "TargetingSpecOperationAgeBucket": TargetingSpecOperationAgeBucket,
+    "TargetingSpecOperationAppType": TargetingSpecOperationAppType,
+    "TargetingSpecOperationGender": TargetingSpecOperationGender,
+    "TargetingSpecOperationList": TargetingSpecOperationList,
+    "TargetingSpecOperationMinMaxAge": TargetingSpecOperationMinMaxAge,
+    "TargetingSpecOperationShoppingRetargeting": TargetingSpecOperationShoppingRetargeting,
+    "TargetingSpecOperationString": TargetingSpecOperationString,
+    "TargetingSpecShoppingRetargeting": TargetingSpecShoppingRetargeting,
     "TargetingTemplateAudienceSizing": TargetingTemplateAudienceSizing,
     "TargetingTemplateAudienceSizingReachEstimate": TargetingTemplateAudienceSizingReachEstimate,
     "TargetingTemplateCommon": TargetingTemplateCommon,
@@ -2265,6 +2728,7 @@ let typeMap: {[index: string]: any} = {
     "TargetingTemplateResponseData": TargetingTemplateResponseData,
     "TargetingTemplateUpdateRequest": TargetingTemplateUpdateRequest,
     "TargetingTypeFilter": TargetingTypeFilter,
+    "TemplateBasedReport": TemplateBasedReport,
     "TemplateResponse": TemplateResponse,
     "TemplateResponseDateRange": TemplateResponseDateRange,
     "TemplateResponseDateRangeAbsoluteDateRange": TemplateResponseDateRangeAbsoluteDateRange,
@@ -2272,16 +2736,24 @@ let typeMap: {[index: string]: any} = {
     "TemplateResponseDateRangeRelativeDateRange": TemplateResponseDateRangeRelativeDateRange,
     "TemplatesList200Response": TemplatesList200Response,
     "TermsOfService": TermsOfService,
+    "TimeSeries": TimeSeries,
+    "TitleKeywordsFilter": TitleKeywordsFilter,
     "TopPinsAnalyticsResponse": TopPinsAnalyticsResponse,
     "TopPinsAnalyticsResponseDateAvailability": TopPinsAnalyticsResponseDateAvailability,
     "TopPinsAnalyticsResponsePinsInner": TopPinsAnalyticsResponsePinsInner,
     "TopVideoPinsAnalyticsResponse": TopVideoPinsAnalyticsResponse,
     "TopVideoPinsAnalyticsResponsePinsInner": TopVideoPinsAnalyticsResponsePinsInner,
     "TrackingUrls": TrackingUrls,
+    "TrendingKeyword": TrendingKeyword,
+    "TrendingKeywordDemographics": TrendingKeywordDemographics,
+    "TrendingKeywordDemographicsAgeDistribution": TrendingKeywordDemographicsAgeDistribution,
+    "TrendingKeywordDemographicsGenderDistribution": TrendingKeywordDemographicsGenderDistribution,
     "TrendingKeywordsResponse": TrendingKeywordsResponse,
-    "TrendingKeywordsResponseTrendsInner": TrendingKeywordsResponseTrendsInner,
-    "TrendingKeywordsResponseTrendsInnerTimeSeries": TrendingKeywordsResponseTrendsInnerTimeSeries,
+    "TrendingPin": TrendingPin,
+    "TrendingProductCategory": TrendingProductCategory,
+    "TrendingTopic": TrendingTopic,
     "UpdatableItemAttributes": UpdatableItemAttributes,
+    "UpdatableItemAttributesGtin": UpdatableItemAttributesGtinClass,
     "UpdateAssetGroupBody": UpdateAssetGroupBody,
     "UpdateAssetGroupBodyAssetGroupsToUpdateInner": UpdateAssetGroupBodyAssetGroupsToUpdateInner,
     "UpdateAssetGroupResponse": UpdateAssetGroupResponse,
@@ -2311,7 +2783,7 @@ let typeMap: {[index: string]: any} = {
     "UserWebsiteVerifyRequest": UserWebsiteVerifyRequest,
     "UserWebsitesGet200Response": UserWebsitesGet200Response,
     "UsersForIndividualAssetResponse": UsersForIndividualAssetResponse,
-    "VideoMetadata": VideoMetadata,
+    "VideoMetadataWithItemType": VideoMetadataWithItemType,
 }
 
 type MimeTypeDescriptor = {

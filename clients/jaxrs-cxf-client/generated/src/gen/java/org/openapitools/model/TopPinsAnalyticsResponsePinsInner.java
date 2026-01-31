@@ -17,6 +17,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TopPinsAnalyticsResponsePinsInner  {
   
+  @ApiModelProperty(value = "")
+
+  private Map<String, DataStatus> dataStatus = new HashMap<>();
+
  /**
   * The metric name and daily value for each requested metric
   */
@@ -24,39 +28,12 @@ public class TopPinsAnalyticsResponsePinsInner  {
 
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
-  @ApiModelProperty(value = "")
-
-  private Map<String, DataStatus> dataStatus = new HashMap<>();
-
  /**
   * The pin id
   */
   @ApiModelProperty(example = "642396334344813594", value = "The pin id")
 
   private String pinId;
- /**
-   * The metric name and daily value for each requested metric
-   * @return metrics
-  **/
-  @JsonProperty("metrics")
-  public Map<String, BigDecimal> getMetrics() {
-    return metrics;
-  }
-
-  public void setMetrics(Map<String, BigDecimal> metrics) {
-    this.metrics = metrics;
-  }
-
-  public TopPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
-    this.metrics = metrics;
-    return this;
-  }
-
-  public TopPinsAnalyticsResponsePinsInner putMetricsItem(String key, BigDecimal metricsItem) {
-    this.metrics.put(key, metricsItem);
-    return this;
-  }
-
  /**
    * Get dataStatus
    * @return dataStatus
@@ -77,6 +54,29 @@ public class TopPinsAnalyticsResponsePinsInner  {
 
   public TopPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
     this.dataStatus.put(key, dataStatusItem);
+    return this;
+  }
+
+ /**
+   * The metric name and daily value for each requested metric
+   * @return metrics
+  **/
+  @JsonProperty("metrics")
+  public Map<String, BigDecimal> getMetrics() {
+    return metrics;
+  }
+
+  public void setMetrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
+  }
+
+  public TopPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
+    return this;
+  }
+
+  public TopPinsAnalyticsResponsePinsInner putMetricsItem(String key, BigDecimal metricsItem) {
+    this.metrics.put(key, metricsItem);
     return this;
   }
 
@@ -107,14 +107,14 @@ public class TopPinsAnalyticsResponsePinsInner  {
       return false;
     }
     TopPinsAnalyticsResponsePinsInner topPinsAnalyticsResponsePinsInner = (TopPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(this.metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(this.dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(this.dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(this.metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(this.pinId, topPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -122,8 +122,8 @@ public class TopPinsAnalyticsResponsePinsInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

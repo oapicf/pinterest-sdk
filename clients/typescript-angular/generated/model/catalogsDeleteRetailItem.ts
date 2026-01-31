@@ -17,6 +17,10 @@ export interface CatalogsDeleteRetailItem {
      * The catalog item id in the merchant namespace
      */
     item_id: string;
+    /**
+     * The millisecond timestamp when the item was lastly modified by the merchant.
+     */
+    last_updated_time?: number;
     operation: CatalogsDeleteRetailItem.OperationEnum;
 }
 export namespace CatalogsDeleteRetailItem {

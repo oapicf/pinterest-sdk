@@ -73,8 +73,8 @@ private class OASAdAccountTest {
     private static void maintainRenamedProperties() {
         OASAdAccount adAccount = new OASAdAccount();
         Map<String, String> x-property-mappings = adAccount.getx-property-mappings();
-        System.assertEquals('r_currency', x-property-mappings.get('currency'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
+        System.assertEquals('r_currency', x-property-mappings.get('currency'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
     }
 
@@ -82,12 +82,12 @@ private class OASAdAccountTest {
     private static void defaultValuesPopulated() {
         OASAdAccount adAccount = new OASAdAccount();
         System.assertEquals(new List<OASBusinessAccessRole>(), adAccount.permissions);
+        System.assertEquals(null, adAccount.country);
+        System.assertEquals(null, adAccount.createdTime);
+        System.assertEquals(null, adAccount.r_currency);
         System.assertEquals(null, adAccount.id);
         System.assertEquals(null, adAccount.name);
         System.assertEquals(null, adAccount.owner);
-        System.assertEquals(null, adAccount.country);
-        System.assertEquals(null, adAccount.r_currency);
-        System.assertEquals(null, adAccount.createdTime);
         System.assertEquals(null, adAccount.updatedTime);
     }
 }

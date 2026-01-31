@@ -1,7 +1,7 @@
 /*
  * PinMediaSourceImagesURL.h
  *
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  */
 
 #ifndef _PinMediaSourceImagesURL_H_
@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "PinMediaSourceImagesURL_items_inner.h"
+#include "PinMediaSourceImagesURLItem.h"
 #include <list>
 #include "Object.h"
 
@@ -22,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Multiple images urls-based media source
+/*! \brief Multiple URL-based images media source
  *
  *  \ingroup Models
  *
@@ -49,30 +49,30 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getSourceType();
-
-	/*! \brief Set 
-	 */
-	void setSourceType(std::string  source_type);
-	/*! \brief Get Array with image objects.
-	 */
-	std::list<PinMediaSourceImagesURL_items_inner> getItems();
-
-	/*! \brief Set Array with image objects.
-	 */
-	void setItems(std::list <PinMediaSourceImagesURL_items_inner> items);
-	/*! \brief Get 
-	 */
 	int getIndex();
 
 	/*! \brief Set 
 	 */
 	void setIndex(int  index);
+	/*! \brief Get Array with image objects.
+	 */
+	std::list<PinMediaSourceImagesURLItem> getItems();
+
+	/*! \brief Set Array with image objects.
+	 */
+	void setItems(std::list <PinMediaSourceImagesURLItem> items);
+	/*! \brief Get The source type of the media.
+	 */
+	std::string getSourceType();
+
+	/*! \brief Set The source type of the media.
+	 */
+	void setSourceType(std::string  source_type);
 
 private:
-	std::string source_type;
-	std::list <PinMediaSourceImagesURL_items_inner>items;
 	int index;
+	std::list <PinMediaSourceImagesURLItem>items;
+	std::string source_type;
 	void __init();
 	void __cleanup();
 

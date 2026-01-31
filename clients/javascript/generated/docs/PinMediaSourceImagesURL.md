@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | **String** |  | [optional] 
-**items** | [**[PinMediaSourceImagesURLItemsInner]**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | 
 **index** | **Number** |  | [optional] 
+**items** | [**[PinMediaSourceImagesURLItem]**](PinMediaSourceImagesURLItem.md) | Array with image objects. | 
+**sourceType** | **String** | The source type of the media. | 
 
 
 

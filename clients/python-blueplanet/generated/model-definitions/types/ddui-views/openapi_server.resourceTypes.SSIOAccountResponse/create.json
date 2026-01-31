@@ -1,0 +1,22 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "billto_infos" },
+      {"model": "can_edit" },
+      {"model": "currency" },
+      {"model": "eligible" },
+      {"model": "error" },
+      {"model": "pmp_names" },
+    ]
+  }]
+}

@@ -9,15 +9,15 @@ import org.openapitools.models.BigDecimal
 
 /**
  * If specified, you must provide all properties
- * @param score Your hotel's rating.
- * @param numberUnderscoreofUnderscorereviewers Total number of people who have rated this hotel.
  * @param maxUnderscorescore Max value for the hotel rating score.
+ * @param numberUnderscoreofUnderscorereviewers Total number of people who have rated this hotel.
  * @param ratingUnderscoresystem System you use for guest reviews.
+ * @param score Your hotel's rating.
  */
-case class CatalogsHotelGuestRatings(score: Option[BigDecimal],
+case class CatalogsHotelGuestRatings(maxUnderscorescore: Option[BigDecimal],
                 numberUnderscoreofUnderscorereviewers: Option[Int],
-                maxUnderscorescore: Option[BigDecimal],
-                ratingUnderscoresystem: Option[String]
+                ratingUnderscoresystem: Option[String],
+                score: Option[BigDecimal]
                 )
 
 object CatalogsHotelGuestRatings {

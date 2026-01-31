@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Operator** | **String** |  | 
-**Value** | **Decimal** |  | 
 **Currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Operator** | **String** |  | 
+**Value** | **Decimal** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupPricingCurrencyCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupPricingCurrencyCriteria  -Operator null `
- -Value null `
- -Currency null `
- -Negated null
+$CatalogsProductGroupPricingCurrencyCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupPricingCurrencyCriteria  -Currency null `
+ -Negated null `
+ -Operator null `
+ -Value null
 ```
 
 - Convert the resource to JSON

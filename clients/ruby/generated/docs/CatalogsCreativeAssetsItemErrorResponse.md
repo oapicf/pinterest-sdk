@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 | **creative_assets_id** | **String** | The catalog creative assets id in the merchant namespace | [optional] |
-| **errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] |
+| **errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested |  |
 
 ## Example
 

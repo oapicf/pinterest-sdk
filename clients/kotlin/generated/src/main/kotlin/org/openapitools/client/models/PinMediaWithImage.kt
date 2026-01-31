@@ -15,8 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PinMedia
-import org.openapitools.client.models.PinMediaWithImageAllOfImages
+import org.openapitools.client.models.ImageSize
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -32,13 +31,22 @@ import com.squareup.moshi.JsonClass
 data class PinMediaWithImage (
 
     @Json(name = "media_type")
-    override val mediaType: kotlin.String? = null,
+    val mediaType: PinMediaWithImage.MediaType,
 
     @Json(name = "images")
-    val images: PinMediaWithImageAllOfImages? = null
+    val images: ImageSize? = null
 
-) : PinMedia {
+) {
 
+    /**
+     * 
+     *
+     * Values: image
+     */
+    @JsonClass(generateAdapter = false)
+    enum class MediaType(val value: kotlin.String) {
+        @Json(name = "image") image("image");
+    }
 
 }
 

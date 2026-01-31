@@ -10,9 +10,15 @@ import javax.validation.Valid;
 /**
  * An item to be upserted
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsUpsertRetailItem   {
+  @JsonProperty("attributes")
+  @NotNull
+@Valid
+
+  private ItemAttributesRequest attributes;
+
   @JsonProperty("item_id")
   @NotNull
 
@@ -52,11 +58,22 @@ public class CatalogsUpsertRetailItem   {
 
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  @NotNull
-@Valid
+  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
 
-  private ItemAttributesRequest attributes;
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsUpsertRetailItem itemId(String itemId) {
     this.itemId = itemId;
@@ -92,23 +109,6 @@ public class CatalogsUpsertRetailItem   {
     this.operation = operation;
   }
 
-  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -119,14 +119,14 @@ public class CatalogsUpsertRetailItem   {
       return false;
     }
     CatalogsUpsertRetailItem catalogsUpsertRetailItem = (CatalogsUpsertRetailItem) o;
-    return Objects.equals(itemId, catalogsUpsertRetailItem.itemId) &&
-        Objects.equals(operation, catalogsUpsertRetailItem.operation) &&
-        Objects.equals(attributes, catalogsUpsertRetailItem.attributes);
+    return Objects.equals(attributes, catalogsUpsertRetailItem.attributes) &&
+        Objects.equals(itemId, catalogsUpsertRetailItem.itemId) &&
+        Objects.equals(operation, catalogsUpsertRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -135,9 +135,9 @@ public class CatalogsUpsertRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

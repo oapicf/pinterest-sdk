@@ -29,29 +29,29 @@ import javax.annotation.Generated;
  * TargetingTemplateGetResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateGetResponseData {
 
-  private String name;
-
   private Boolean autoTargetingEnabled = true;
-
-  private TargetingSpec targetingAttributes;
-
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   @Valid
   private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
 
+  private String name;
+
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+
+  private TargetingSpec targetingAttributes;
+
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
-  private String id;
+  private String adAccountId;
 
   private Integer createdTime;
 
-  private Integer updatedTime;
+  private String id;
 
-  private String adAccountId;
+  private JsonNullable<TargetingTemplateAudienceSizing> sizing = JsonNullable.<TargetingTemplateAudienceSizing>undefined();
 
   /**
    * Indicate targeting template is active or Deleted
@@ -90,29 +90,9 @@ public class TargetingTemplateGetResponseData {
 
   private StatusEnum status = StatusEnum.ACTIVE;
 
-  private JsonNullable<TargetingTemplateAudienceSizing> sizing = JsonNullable.<TargetingTemplateAudienceSizing>undefined();
+  private Integer updatedTime;
 
   private JsonNullable<Boolean> valid = JsonNullable.<Boolean>undefined();
-
-  public TargetingTemplateGetResponseData name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * targeting template name
-   * @return name
-   */
-  
-  @Schema(name = "name", example = "Gaming", description = "targeting template name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 
   public TargetingTemplateGetResponseData autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -132,46 +112,6 @@ public class TargetingTemplateGetResponseData {
 
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-  public TargetingTemplateGetResponseData targetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-    return this;
-  }
-
-  /**
-   * Get targetingAttributes
-   * @return targetingAttributes
-   */
-  @Valid 
-  @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
-  }
-
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-  }
-
-  public TargetingTemplateGetResponseData placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-  /**
-   * Get placementGroup
-   * @return placementGroup
-   */
-  @Valid 
-  @Schema(name = "placement_group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
   public TargetingTemplateGetResponseData keywords(List<@Valid TargetingTemplateKeyword> keywords) {
@@ -202,6 +142,66 @@ public class TargetingTemplateGetResponseData {
     this.keywords = keywords;
   }
 
+  public TargetingTemplateGetResponseData name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * targeting template name
+   * @return name
+   */
+  
+  @Schema(name = "name", example = "Gaming", description = "targeting template name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public TargetingTemplateGetResponseData placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+  /**
+   * Get placementGroup
+   * @return placementGroup
+   */
+  @Valid 
+  @Schema(name = "placement_group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+  }
+
+  public TargetingTemplateGetResponseData targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+    return this;
+  }
+
+  /**
+   * Get targetingAttributes
+   * @return targetingAttributes
+   */
+  @Valid 
+  @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
+  }
+
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+  }
+
   public TargetingTemplateGetResponseData trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
@@ -220,66 +220,6 @@ public class TargetingTemplateGetResponseData {
 
   public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-  public TargetingTemplateGetResponseData id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Targeting template ID.
-   * @return id
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "643", description = "Targeting template ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public TargetingTemplateGetResponseData createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  /**
-   * Targeting template created time. Unix timestamp in seconds.
-   * @return createdTime
-   */
-  
-  @Schema(name = "created_time", example = "1432744744", description = "Targeting template created time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  public TargetingTemplateGetResponseData updatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
-    return this;
-  }
-
-  /**
-   * Targeting template updated time.Unix timestamp in seconds.
-   * @return updatedTime
-   */
-  
-  @Schema(name = "updated_time", example = "1432744744", description = "Targeting template updated time.Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
-    return updatedTime;
-  }
-
-  public void setUpdatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
   }
 
   public TargetingTemplateGetResponseData adAccountId(String adAccountId) {
@@ -302,24 +242,44 @@ public class TargetingTemplateGetResponseData {
     this.adAccountId = adAccountId;
   }
 
-  public TargetingTemplateGetResponseData status(StatusEnum status) {
-    this.status = status;
+  public TargetingTemplateGetResponseData createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
   /**
-   * Indicate targeting template is active or Deleted
-   * @return status
+   * Targeting template created time. Unix timestamp in seconds.
+   * @return createdTime
    */
   
-  @Schema(name = "status", example = "ACTIVE", description = "Indicate targeting template is active or Deleted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public StatusEnum getStatus() {
-    return status;
+  @Schema(name = "created_time", example = "1432744744", description = "Targeting template created time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  public TargetingTemplateGetResponseData id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Targeting template ID.
+   * @return id
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "643", description = "Targeting template ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public TargetingTemplateGetResponseData sizing(TargetingTemplateAudienceSizing sizing) {
@@ -340,6 +300,46 @@ public class TargetingTemplateGetResponseData {
 
   public void setSizing(JsonNullable<TargetingTemplateAudienceSizing> sizing) {
     this.sizing = sizing;
+  }
+
+  public TargetingTemplateGetResponseData status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Indicate targeting template is active or Deleted
+   * @return status
+   */
+  
+  @Schema(name = "status", example = "ACTIVE", description = "Indicate targeting template is active or Deleted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+  public TargetingTemplateGetResponseData updatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
+    return this;
+  }
+
+  /**
+   * Targeting template updated time.Unix timestamp in seconds.
+   * @return updatedTime
+   */
+  
+  @Schema(name = "updated_time", example = "1432744744", description = "Targeting template updated time.Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updated_time")
+  public Integer getUpdatedTime() {
+    return updatedTime;
+  }
+
+  public void setUpdatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
   }
 
   public TargetingTemplateGetResponseData valid(Boolean valid) {
@@ -371,18 +371,18 @@ public class TargetingTemplateGetResponseData {
       return false;
     }
     TargetingTemplateGetResponseData targetingTemplateGetResponseData = (TargetingTemplateGetResponseData) o;
-    return Objects.equals(this.name, targetingTemplateGetResponseData.name) &&
-        Objects.equals(this.autoTargetingEnabled, targetingTemplateGetResponseData.autoTargetingEnabled) &&
-        Objects.equals(this.targetingAttributes, targetingTemplateGetResponseData.targetingAttributes) &&
-        Objects.equals(this.placementGroup, targetingTemplateGetResponseData.placementGroup) &&
+    return Objects.equals(this.autoTargetingEnabled, targetingTemplateGetResponseData.autoTargetingEnabled) &&
         Objects.equals(this.keywords, targetingTemplateGetResponseData.keywords) &&
+        Objects.equals(this.name, targetingTemplateGetResponseData.name) &&
+        Objects.equals(this.placementGroup, targetingTemplateGetResponseData.placementGroup) &&
+        Objects.equals(this.targetingAttributes, targetingTemplateGetResponseData.targetingAttributes) &&
         equalsNullable(this.trackingUrls, targetingTemplateGetResponseData.trackingUrls) &&
-        Objects.equals(this.id, targetingTemplateGetResponseData.id) &&
-        Objects.equals(this.createdTime, targetingTemplateGetResponseData.createdTime) &&
-        Objects.equals(this.updatedTime, targetingTemplateGetResponseData.updatedTime) &&
         Objects.equals(this.adAccountId, targetingTemplateGetResponseData.adAccountId) &&
-        Objects.equals(this.status, targetingTemplateGetResponseData.status) &&
+        Objects.equals(this.createdTime, targetingTemplateGetResponseData.createdTime) &&
+        Objects.equals(this.id, targetingTemplateGetResponseData.id) &&
         equalsNullable(this.sizing, targetingTemplateGetResponseData.sizing) &&
+        Objects.equals(this.status, targetingTemplateGetResponseData.status) &&
+        Objects.equals(this.updatedTime, targetingTemplateGetResponseData.updatedTime) &&
         equalsNullable(this.valid, targetingTemplateGetResponseData.valid);
   }
 
@@ -392,7 +392,7 @@ public class TargetingTemplateGetResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, hashCodeNullable(trackingUrls), id, createdTime, updatedTime, adAccountId, status, hashCodeNullable(sizing), hashCodeNullable(valid));
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, hashCodeNullable(trackingUrls), adAccountId, createdTime, id, hashCodeNullable(sizing), status, updatedTime, hashCodeNullable(valid));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,18 +406,18 @@ public class TargetingTemplateGetResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateGetResponseData {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sizing: ").append(toIndentedString(sizing)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    valid: ").append(toIndentedString(valid)).append("\n");
     sb.append("}");
     return sb.toString();

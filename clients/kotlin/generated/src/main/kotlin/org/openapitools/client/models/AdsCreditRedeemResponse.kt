@@ -22,17 +22,13 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  * @param errorCode Error code type if error occurs
  * @param errorMessage Reason for failure
+ * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  */
 
 
 data class AdsCreditRedeemResponse (
-
-    /* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
-    @Json(name = "success")
-    val success: kotlin.Boolean? = null,
 
     /* Error code type if error occurs */
     @Json(name = "errorCode")
@@ -40,7 +36,11 @@ data class AdsCreditRedeemResponse (
 
     /* Reason for failure */
     @Json(name = "errorMessage")
-    val errorMessage: kotlin.String? = null
+    val errorMessage: kotlin.String? = null,
+
+    /* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
+    @Json(name = "success")
+    val success: kotlin.Boolean? = null
 
 ) {
 

@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsReportAllItemsFilter
 import org.openapitools.client.models.CatalogsReportDistributionIssueFilter
 import org.openapitools.client.models.CatalogsReportFeedIngestionFilter
 
@@ -24,8 +25,8 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param reportType 
  * @param feedId ID of the feed entity.
+ * @param reportType 
  * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
  * @param catalogId Unique identifier of a catalog. If not given, oldest catalog will be used
  */
@@ -47,12 +48,13 @@ interface CatalogsHotelReportParametersReport {
     /**
      * 
      *
-     * Values: FEED_INGESTION_ISSUES,DISTRIBUTION_ISSUES
+     * Values: FEED_INGESTION_ISSUES,DISTRIBUTION_ISSUES,ALL_ITEMS
      */
     @JsonClass(generateAdapter = false)
     enum class ReportType(val value: kotlin.String) {
         @Json(name = "FEED_INGESTION_ISSUES") FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-        @Json(name = "DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
+        @Json(name = "DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
+        @Json(name = "ALL_ITEMS") ALL_ITEMS("ALL_ITEMS");
     }
 
 }

@@ -6,14 +6,14 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}asset_group_name`,
-                label: `Asset Group name - [${labelPrefix}asset_group_name]`,
+                key: `${keyPrefix}asset_group_description`,
+                label: `Asset group description - [${labelPrefix}asset_group_description]`,
                 required: true,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}asset_group_description`,
-                label: `Asset group description - [${labelPrefix}asset_group_description]`,
+                key: `${keyPrefix}asset_group_name`,
+                label: `Asset Group name - [${labelPrefix}asset_group_name]`,
                 required: true,
                 type: 'string',
             },
@@ -28,8 +28,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'asset_group_name': bundle.inputData?.[`${keyPrefix}asset_group_name`],
             'asset_group_description': bundle.inputData?.[`${keyPrefix}asset_group_description`],
+            'asset_group_name': bundle.inputData?.[`${keyPrefix}asset_group_name`],
             'asset_group_types': utils.childMapping(bundle.inputData?.[`${keyPrefix}asset_group_types`], `${keyPrefix}asset_group_types`, AssetGroupType),
         }
     },

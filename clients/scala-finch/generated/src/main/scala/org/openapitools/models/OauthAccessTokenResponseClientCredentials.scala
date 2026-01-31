@@ -8,17 +8,17 @@ import org.openapitools._
 
 /**
  * A successful OAuth client token response for the client token flow.
- * @param responseUnderscoretype 
  * @param accessUnderscoretoken 
- * @param tokenUnderscoretype 
  * @param expiresUnderscorein 
+ * @param responseUnderscoretype 
  * @param scope 
+ * @param tokenUnderscoretype 
  */
-case class OauthAccessTokenResponseClientCredentials(responseUnderscoretype: Option[String],
-                accessUnderscoretoken: String,
-                tokenUnderscoretype: String,
+case class OauthAccessTokenResponseClientCredentials(accessUnderscoretoken: String,
                 expiresUnderscorein: Int,
-                scope: String
+                responseUnderscoretype: Option[String],
+                scope: String,
+                tokenUnderscoretype: String
                 )
 
 object OauthAccessTokenResponseClientCredentials {

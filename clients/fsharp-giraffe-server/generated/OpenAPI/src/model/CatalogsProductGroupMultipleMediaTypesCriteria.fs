@@ -10,7 +10,7 @@ module CatalogsProductGroupMultipleMediaTypesCriteria =
 
 
   type CatalogsProductGroupMultipleMediaTypesCriteria = {
-    Values : MediaType[];
     Negated : bool;
+    Values : MediaType[];
   }
   //#endregion

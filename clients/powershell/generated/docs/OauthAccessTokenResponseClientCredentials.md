@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ResponseType** | **String** |  | [optional] 
 **AccessToken** | **String** |  | 
-**TokenType** | **String** |  | [default to "bearer"]
 **ExpiresIn** | **Int32** |  | 
+**ResponseType** | **String** |  | [optional] 
 **Scope** | **String** |  | 
+**TokenType** | **String** |  | [default to "bearer"]
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$OauthAccessTokenResponseClientCredentials = Initialize-PSOpenAPIToolsOauthAccessTokenResponseClientCredentials  -ResponseType null `
- -AccessToken null `
- -TokenType null `
+$OauthAccessTokenResponseClientCredentials = Initialize-PSOpenAPIToolsOauthAccessTokenResponseClientCredentials  -AccessToken null `
  -ExpiresIn null `
- -Scope null
+ -ResponseType null `
+ -Scope null `
+ -TokenType null
 ```
 
 - Convert the resource to JSON

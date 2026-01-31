@@ -9,20 +9,16 @@
 -export_type([openapi_pin_create/0]).
 
 -type openapi_pin_create() ::
-  [ {'id', binary() }
-  | {'created_at', datetime() }
-  | {'link', binary() }
-  | {'title', binary() }
-  | {'description', binary() }
-  | {'dominant_color', binary() }
-  | {'alt_text', binary() }
+  [ {'alt_text', binary() }
   | {'board_id', binary() }
   | {'board_section_id', binary() }
-  | {'board_owner', openapi_board_owner:openapi_board_owner() }
-  | {'media', openapi_pin_media:openapi_pin_media() }
+  | {'description', binary() }
+  | {'dominant_color', binary() }
+  | {'link', binary() }
   | {'media_source', openapi_pin_media_source:openapi_pin_media_source() }
   | {'parent_pin_id', binary() }
-  | {'note', binary() }
+  | {'sponsor_id', binary() }
+  | {'title', binary() }
   ].
 
 
@@ -30,20 +26,16 @@ openapi_pin_create() ->
     openapi_pin_create([]).
 
 openapi_pin_create(Fields) ->
-  Default = [ {'id', binary() }
-            , {'created_at', datetime() }
-            , {'link', binary() }
-            , {'title', binary() }
-            , {'description', binary() }
-            , {'dominant_color', binary() }
-            , {'alt_text', binary() }
+  Default = [ {'alt_text', binary() }
             , {'board_id', binary() }
             , {'board_section_id', binary() }
-            , {'board_owner', openapi_board_owner:openapi_board_owner() }
-            , {'media', openapi_pin_media:openapi_pin_media() }
+            , {'description', binary() }
+            , {'dominant_color', binary() }
+            , {'link', binary() }
             , {'media_source', openapi_pin_media_source:openapi_pin_media_source() }
             , {'parent_pin_id', binary() }
-            , {'note', binary() }
+            , {'sponsor_id', binary() }
+            , {'title', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

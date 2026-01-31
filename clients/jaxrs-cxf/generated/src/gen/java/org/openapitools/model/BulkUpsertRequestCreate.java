@@ -7,6 +7,8 @@ import org.openapitools.model.AdCreateRequest;
 import org.openapitools.model.AdGroupCreateRequest;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
+import org.openapitools.model.LabelCreateRequest;
+import org.openapitools.model.MultipleProductGroupsInner;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -27,12 +29,6 @@ public class BulkUpsertRequestCreate  {
 
   @Valid
 
-  private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
   private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
@@ -45,36 +41,31 @@ public class BulkUpsertRequestCreate  {
 
   @Valid
 
-  private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+  private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private List<MultipleProductGroupsInner> catalogProductGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
 
   @Valid
 
   private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
- /**
-   * Get campaigns
-   * @return campaigns
-  **/
-  @JsonProperty("campaigns")
-  public List<@Valid CampaignCreateRequest> getCampaigns() {
-    return campaigns;
-  }
 
-  public void setCampaigns(List<@Valid CampaignCreateRequest> campaigns) {
-    this.campaigns = campaigns;
-  }
+  @ApiModelProperty(value = "")
 
-  public BulkUpsertRequestCreate campaigns(List<@Valid CampaignCreateRequest> campaigns) {
-    this.campaigns = campaigns;
-    return this;
-  }
+  @Valid
 
-  public BulkUpsertRequestCreate addCampaignsItem(CampaignCreateRequest campaignsItem) {
-    this.campaigns.add(campaignsItem);
-    return this;
-  }
+  private List<@Valid LabelCreateRequest> labels = new ArrayList<>();
 
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
  /**
    * Get adGroups
    * @return adGroups
@@ -122,25 +113,48 @@ public class BulkUpsertRequestCreate  {
   }
 
  /**
-   * Get productGroups
-   * @return productGroups
+   * Get campaigns
+   * @return campaigns
   **/
-  @JsonProperty("product_groups")
-  public List<@Valid ProductGroupPromotionCreateRequest> getProductGroups() {
-    return productGroups;
+  @JsonProperty("campaigns")
+  public List<@Valid CampaignCreateRequest> getCampaigns() {
+    return campaigns;
   }
 
-  public void setProductGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public void setCampaigns(List<@Valid CampaignCreateRequest> campaigns) {
+    this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestCreate productGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public BulkUpsertRequestCreate campaigns(List<@Valid CampaignCreateRequest> campaigns) {
+    this.campaigns = campaigns;
     return this;
   }
 
-  public BulkUpsertRequestCreate addProductGroupsItem(ProductGroupPromotionCreateRequest productGroupsItem) {
-    this.productGroups.add(productGroupsItem);
+  public BulkUpsertRequestCreate addCampaignsItem(CampaignCreateRequest campaignsItem) {
+    this.campaigns.add(campaignsItem);
+    return this;
+  }
+
+ /**
+   * Get catalogProductGroups
+   * @return catalogProductGroups
+  **/
+  @JsonProperty("catalog_product_groups")
+  public List<MultipleProductGroupsInner> getCatalogProductGroups() {
+    return catalogProductGroups;
+  }
+
+  public void setCatalogProductGroups(List<MultipleProductGroupsInner> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
+  }
+
+  public BulkUpsertRequestCreate catalogProductGroups(List<MultipleProductGroupsInner> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
+    return this;
+  }
+
+  public BulkUpsertRequestCreate addCatalogProductGroupsItem(MultipleProductGroupsInner catalogProductGroupsItem) {
+    this.catalogProductGroups.add(catalogProductGroupsItem);
     return this;
   }
 
@@ -167,6 +181,52 @@ public class BulkUpsertRequestCreate  {
     return this;
   }
 
+ /**
+   * Get labels
+   * @return labels
+  **/
+  @JsonProperty("labels")
+  public List<@Valid LabelCreateRequest> getLabels() {
+    return labels;
+  }
+
+  public void setLabels(List<@Valid LabelCreateRequest> labels) {
+    this.labels = labels;
+  }
+
+  public BulkUpsertRequestCreate labels(List<@Valid LabelCreateRequest> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public BulkUpsertRequestCreate addLabelsItem(LabelCreateRequest labelsItem) {
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+ /**
+   * Get productGroups
+   * @return productGroups
+  **/
+  @JsonProperty("product_groups")
+  public List<@Valid ProductGroupPromotionCreateRequest> getProductGroups() {
+    return productGroups;
+  }
+
+  public void setProductGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
+    this.productGroups = productGroups;
+  }
+
+  public BulkUpsertRequestCreate productGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
+    this.productGroups = productGroups;
+    return this;
+  }
+
+  public BulkUpsertRequestCreate addProductGroupsItem(ProductGroupPromotionCreateRequest productGroupsItem) {
+    this.productGroups.add(productGroupsItem);
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -176,16 +236,18 @@ public class BulkUpsertRequestCreate  {
       return false;
     }
     BulkUpsertRequestCreate bulkUpsertRequestCreate = (BulkUpsertRequestCreate) o;
-    return Objects.equals(this.campaigns, bulkUpsertRequestCreate.campaigns) &&
-        Objects.equals(this.adGroups, bulkUpsertRequestCreate.adGroups) &&
+    return Objects.equals(this.adGroups, bulkUpsertRequestCreate.adGroups) &&
         Objects.equals(this.ads, bulkUpsertRequestCreate.ads) &&
-        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups) &&
-        Objects.equals(this.keywords, bulkUpsertRequestCreate.keywords);
+        Objects.equals(this.campaigns, bulkUpsertRequestCreate.campaigns) &&
+        Objects.equals(this.catalogProductGroups, bulkUpsertRequestCreate.catalogProductGroups) &&
+        Objects.equals(this.keywords, bulkUpsertRequestCreate.keywords) &&
+        Objects.equals(this.labels, bulkUpsertRequestCreate.labels) &&
+        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns, adGroups, ads, productGroups, keywords);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
   }
 
   @Override
@@ -193,11 +255,13 @@ public class BulkUpsertRequestCreate  {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertRequestCreate {\n");
     
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
     sb.append("    adGroups: ").append(toIndentedString(adGroups)).append("\n");
     sb.append("    ads: ").append(toIndentedString(ads)).append("\n");
-    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    catalogProductGroups: ").append(toIndentedString(catalogProductGroups)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

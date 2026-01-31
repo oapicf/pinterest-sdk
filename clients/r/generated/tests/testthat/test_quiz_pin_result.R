@@ -5,18 +5,18 @@ context("Test QuizPinResult")
 
 model_instance <- QuizPinResult$new()
 
-test_that("organic_pin_id", {
-  # tests for the property `organic_pin_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`organic_pin_id`, "EXPECTED_RESULT")
-})
-
 test_that("android_deep_link", {
   # tests for the property `android_deep_link` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`android_deep_link`, "EXPECTED_RESULT")
+})
+
+test_that("destination_url", {
+  # tests for the property `destination_url` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`destination_url`, "EXPECTED_RESULT")
 })
 
 test_that("ios_deep_link", {
@@ -26,11 +26,11 @@ test_that("ios_deep_link", {
   #expect_equal(model.instance$`ios_deep_link`, "EXPECTED_RESULT")
 })
 
-test_that("destination_url", {
-  # tests for the property `destination_url` (character)
+test_that("organic_pin_id", {
+  # tests for the property `organic_pin_id` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`destination_url`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`organic_pin_id`, "EXPECTED_RESULT")
 })
 
 test_that("result_id", {

@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List of partners with permissions to the asset.
-	 */
-	std::list<UserSingleAssetBinding> getItems();
-
-	/*! \brief Set List of partners with permissions to the asset.
-	 */
-	void setItems(std::list <UserSingleAssetBinding> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get List of partners with permissions to the asset.
+	 */
+	std::list<UserSingleAssetBinding> getItems();
+
+	/*! \brief Set List of partners with permissions to the asset.
+	 */
+	void setItems(std::list <UserSingleAssetBinding> items);
 
 private:
-	std::list <UserSingleAssetBinding>items;
 	std::string bookmark;
+	std::list <UserSingleAssetBinding>items;
 	void __init();
 	void __cleanup();
 

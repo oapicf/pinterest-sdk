@@ -23,11 +23,11 @@ export interface CreativeAssetsProcessingRecord {
      * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
      */
     errors?: Array<ItemValidationEvent>;
+    status?: ItemProcessingStatus;
     /**
      * Array with the validation warnings for the item processing record
      */
     warnings?: Array<ItemValidationEvent>;
-    status?: ItemProcessingStatus;
 }
 export namespace CreativeAssetsProcessingRecord {
 }

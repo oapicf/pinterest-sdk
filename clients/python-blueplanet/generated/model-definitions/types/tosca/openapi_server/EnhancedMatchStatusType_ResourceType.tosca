@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EnhancedMatchStatusType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EnhancedMatchStatusType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  EnhancedMatchStatusType {
+    title = EnhancedMatchStatusType
+    description = EnhancedMatchStatusType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  EnhancedMatchStatusType {
+    title = EnhancedMatchStatusType
+    description = EnhancedMatchStatusType
+    implements = openapi_server.resourceTypes.EnhancedMatchStatusType
+
+  }
+}

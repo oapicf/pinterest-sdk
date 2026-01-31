@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.UpdatableItemAttributesGtin
 open OpenAPI.Model.bool option
 open OpenAPI.Model.decimal option
 open OpenAPI.Model.int option
@@ -13,9 +14,56 @@ module UpdatableItemAttributes =
 
 
   type UpdatableItemAttributes = {
+    AdImage0Link : string option;
+    AdImage0Tag : string option;
+    AdImage10Link : string option;
+    AdImage10Tag : string option;
+    AdImage11Link : string option;
+    AdImage11Tag : string option;
+    AdImage12Link : string option;
+    AdImage12Tag : string option;
+    AdImage13Link : string option;
+    AdImage13Tag : string option;
+    AdImage14Link : string option;
+    AdImage14Tag : string option;
+    AdImage15Link : string option;
+    AdImage15Tag : string option;
+    AdImage16Link : string option;
+    AdImage16Tag : string option;
+    AdImage17Link : string option;
+    AdImage17Tag : string option;
+    AdImage18Link : string option;
+    AdImage18Tag : string option;
+    AdImage19Link : string option;
+    AdImage19Tag : string option;
+    AdImage1Link : string option;
+    AdImage1Tag : string option;
+    AdImage2Link : string option;
+    AdImage2Tag : string option;
+    AdImage3Link : string option;
+    AdImage3Tag : string option;
+    AdImage4Link : string option;
+    AdImage4Tag : string option;
+    AdImage5Link : string option;
+    AdImage5Tag : string option;
+    AdImage6Link : string option;
+    AdImage6Tag : string option;
+    AdImage7Link : string option;
+    AdImage7Tag : string option;
+    AdImage8Link : string option;
+    AdImage8Tag : string option;
+    AdImage9Link : string option;
+    AdImage9Tag : string option;
     AdLink : string option;
+    AdVideo0Link : string option;
+    AdVideo0Tag : string option;
+    AdVideo1Link : string option;
+    AdVideo1Tag : string option;
+    AdVideo2Link : string option;
+    AdVideo2Tag : string option;
     Adult : bool option;
     AgeGroup : string option;
+    AndroidDeepLink : string;
     Availability : string;
     AverageReviewRating : decimal option;
     Brand : string option;
@@ -27,13 +75,20 @@ module UpdatableItemAttributes =
     CustomLabel2 : string option;
     CustomLabel3 : string option;
     CustomLabel4 : string option;
+    CustomNumber0 : int option;
+    CustomNumber1 : int option;
+    CustomNumber2 : int option;
+    CustomNumber3 : int option;
+    CustomNumber4 : int option;
     Description : string;
     FreeShippingLabel : bool option;
     FreeShippingLimit : string option;
     Gender : string option;
     GoogleProductCategory : string option;
-    Gtin : int option;
+    Gtin : UpdatableItemAttributesGtin;
     Id : string;
+    InstallmentPrice : string option;
+    IosDeepLink : string;
     ItemGroupId : string option;
     LastUpdatedTime : int64;
     Link : string;
@@ -46,7 +101,9 @@ module UpdatableItemAttributes =
     Pattern : string option;
     Price : string;
     ProductType : string option;
+    PromotionId : string option;
     SalePrice : string option;
+    SalePriceEffectiveDate : string option;
     Shipping : string option;
     ShippingHeight : string option;
     ShippingWeight : string option;
@@ -56,6 +113,8 @@ module UpdatableItemAttributes =
     SizeType : string option;
     Tax : string option;
     Title : string;
+    UnitPricingBaseMeasure : string option;
+    UnitPricingMeasure : string option;
     VariantNames : string[];
     VariantValues : string[];
   }

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,10 +17,10 @@ package openapi
 // ItemUpsertBatchRecord - Object describing an item batch record to upsert items
 type ItemUpsertBatchRecord struct {
 
+	Attributes ItemAttributesRequest `json:"attributes,omitempty"`
+
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id,omitempty"`
-
-	Attributes ItemAttributesRequest `json:"attributes,omitempty"`
 }
 
 // AssertItemUpsertBatchRecordRequired checks if the required fields are not zero-ed

@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ImageMetadataImages
+import org.openapitools.client.models.ImageSize
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,30 +23,30 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param itemType 
- * @param title 
  * @param description 
- * @param link 
  * @param images 
+ * @param itemType 
+ * @param link 
+ * @param title 
  */
 
 
 data class ImageMetadata (
 
-    @Json(name = "item_type")
-    val itemType: kotlin.String? = null,
-
-    @Json(name = "title")
-    val title: kotlin.String? = null,
-
     @Json(name = "description")
     val description: kotlin.String? = null,
+
+    @Json(name = "images")
+    val images: ImageSize? = null,
+
+    @Json(name = "item_type")
+    val itemType: kotlin.String? = null,
 
     @Json(name = "link")
     val link: kotlin.String? = null,
 
-    @Json(name = "images")
-    val images: ImageMetadataImages? = null
+    @Json(name = "title")
+    val title: kotlin.String? = null
 
 ) {
 

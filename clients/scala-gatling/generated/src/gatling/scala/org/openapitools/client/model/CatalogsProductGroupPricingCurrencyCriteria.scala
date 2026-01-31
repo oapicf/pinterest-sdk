@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupPricingCurrencyCriteria (
-    _operator: String,
-    _value: Number,
     _currency: NonNullableCatalogsCurrency,
-    _negated: Option[Boolean]
+    _negated: Option[Boolean],
+    _operator: String,
+    _value: Number
 )
 object CatalogsProductGroupPricingCurrencyCriteria {
-    def toStringBody(var_operator: Object, var_value: Object, var_currency: Object, var_negated: Object) =
+    def toStringBody(var_currency: Object, var_negated: Object, var_operator: Object, var_value: Object) =
         s"""
         | {
-        | "operator":$var_operator,"value":$var_value,"currency":$var_currency,"negated":$var_negated
+        | "currency":$var_currency,"negated":$var_negated,"operator":$var_operator,"value":$var_value
         | }
         """.stripMargin
 }

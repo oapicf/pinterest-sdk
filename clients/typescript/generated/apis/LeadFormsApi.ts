@@ -68,7 +68,7 @@ export class LeadFormsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
      * Create lead form test data
      * @param adAccountId Unique identifier of an ad account.
      * @param leadFormId Unique identifier of a lead form.
@@ -132,7 +132,7 @@ export class LeadFormsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
      * Create lead forms
      * @param adAccountId Unique identifier of an ad account.
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].

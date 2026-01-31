@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing the campaign level bid multipliers.",
+  "name": "CampaignBidOptions",
+  "fields": [
+    {
+      "name": "app_type_multipliers",
+      "type": ["null", "model.AppTypeMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "audience_multipliers",
+      "type": ["null", "model.CampaignAudienceMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "placement_multipliers",
+      "type": ["null", "model.PlacementMultipliers"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

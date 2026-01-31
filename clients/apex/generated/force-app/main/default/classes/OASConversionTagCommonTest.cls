@@ -73,7 +73,6 @@ private class OASConversionTagCommonTest {
     private static void maintainRenamedProperties() {
         OASConversionTagCommon conversionTagCommon = new OASConversionTagCommon();
         Map<String, String> x-property-mappings = conversionTagCommon.getx-property-mappings();
-        System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('codeSnippet', x-property-mappings.get('code_snippet'));
         System.assertEquals('enhancedMatchStatus', x-property-mappings.get('enhanced_match_status'));
         System.assertEquals('lastFiredTimeMs', x-property-mappings.get('last_fired_time_ms'));

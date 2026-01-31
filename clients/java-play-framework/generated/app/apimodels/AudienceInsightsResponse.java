@@ -16,7 +16,7 @@ import javax.validation.Valid;
 /**
  * Audience interests and demographics.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AudienceInsightsResponse   {
   @JsonProperty("categories")
@@ -24,20 +24,15 @@ public class AudienceInsightsResponse   {
 
   private List<@Valid AudienceCategory> categories = null;
 
-  @JsonProperty("demographics")
-  @Valid
-
-  private AudienceDemographics demographics;
-
-  @JsonProperty("type")
-  @Valid
-
-  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
-
   @JsonProperty("date")
   @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")
 
   private String date;
+
+  @JsonProperty("demographics")
+  @Valid
+
+  private AudienceDemographics demographics;
 
   @JsonProperty("size")
   
@@ -46,6 +41,11 @@ public class AudienceInsightsResponse   {
   @JsonProperty("size_is_upper_bound")
   
   private Boolean sizeIsUpperBound;
+
+  @JsonProperty("type")
+  @Valid
+
+  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
   public AudienceInsightsResponse categories(List<@Valid AudienceCategory> categories) {
     this.categories = categories;
@@ -72,40 +72,6 @@ public class AudienceInsightsResponse   {
     this.categories = categories;
   }
 
-  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-    return this;
-  }
-
-   /**
-   * Get demographics
-   * @return demographics
-  **/
-  public AudienceDemographics getDemographics() {
-    return demographics;
-  }
-
-  public void setDemographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-  }
-
-  public AudienceInsightsResponse type(AudienceInsightType type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  public AudienceInsightType getType() {
-    return type;
-  }
-
-  public void setType(AudienceInsightType type) {
-    this.type = type;
-  }
-
   public AudienceInsightsResponse date(String date) {
     this.date = date;
     return this;
@@ -121,6 +87,23 @@ public class AudienceInsightsResponse   {
 
   public void setDate(String date) {
     this.date = date;
+  }
+
+  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
+    return this;
+  }
+
+   /**
+   * Get demographics
+   * @return demographics
+  **/
+  public AudienceDemographics getDemographics() {
+    return demographics;
+  }
+
+  public void setDemographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
   }
 
   public AudienceInsightsResponse size(Integer size) {
@@ -157,6 +140,23 @@ public class AudienceInsightsResponse   {
     this.sizeIsUpperBound = sizeIsUpperBound;
   }
 
+  public AudienceInsightsResponse type(AudienceInsightType type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  public AudienceInsightType getType() {
+    return type;
+  }
+
+  public void setType(AudienceInsightType type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,16 +168,16 @@ public class AudienceInsightsResponse   {
     }
     AudienceInsightsResponse audienceInsightsResponse = (AudienceInsightsResponse) o;
     return Objects.equals(categories, audienceInsightsResponse.categories) &&
-        Objects.equals(demographics, audienceInsightsResponse.demographics) &&
-        Objects.equals(type, audienceInsightsResponse.type) &&
         Objects.equals(date, audienceInsightsResponse.date) &&
+        Objects.equals(demographics, audienceInsightsResponse.demographics) &&
         Objects.equals(size, audienceInsightsResponse.size) &&
-        Objects.equals(sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound);
+        Objects.equals(sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound) &&
+        Objects.equals(type, audienceInsightsResponse.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categories, demographics, type, date, size, sizeIsUpperBound);
+    return Objects.hash(categories, date, demographics, size, sizeIsUpperBound, type);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -187,11 +187,11 @@ public class AudienceInsightsResponse   {
     sb.append("class AudienceInsightsResponse {\n");
     
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    sizeIsUpperBound: ").append(toIndentedString(sizeIsUpperBound)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

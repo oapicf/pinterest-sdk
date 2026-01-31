@@ -75,4 +75,13 @@ private class OASAdvancedAuctionItemsSubmitDeleteRTest {
         Map<String, String> x-property-mappings = advancedAuctionItemsSubmitDeleteRecord.getx-property-mappings();
         System.assertEquals('itemId', x-property-mappings.get('item_id'));
     }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASAdvancedAuctionItemsSubmitDeleteR advancedAuctionItemsSubmitDeleteRecord = new OASAdvancedAuctionItemsSubmitDeleteR();
+        System.assertEquals(new List<OASAdvancedAuctionOperationError>(), advancedAuctionItemsSubmitDeleteRecord.errors);
+        System.assertEquals(null, advancedAuctionItemsSubmitDeleteRecord.country);
+        System.assertEquals(null, advancedAuctionItemsSubmitDeleteRecord.itemId);
+        System.assertEquals(null, advancedAuctionItemsSubmitDeleteRecord.language);
+    }
 }

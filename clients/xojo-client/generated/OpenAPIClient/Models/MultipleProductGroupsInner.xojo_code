@@ -2,25 +2,7 @@
 Protected Class MultipleProductGroupsInner
 
 	#tag Property, Flags = &h0
-		name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		description As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			boolean indicator of whether the product group is being featured or not
-		#tag EndNote
-		Attributes( Deprecated ) is_featured As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
 	#tag EndProperty
 
 
@@ -33,7 +15,20 @@ Protected Class MultipleProductGroupsInner
 
 
 	#tag Property, Flags = &h0
-		catalog_type As String
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			boolean indicator of whether the product group is being featured or not
+		#tag EndNote
+		Attributes( Deprecated ) is_featured As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		name As String
 	#tag EndProperty
 
 
@@ -46,12 +41,17 @@ Protected Class MultipleProductGroupsInner
 
 
 	#tag Property, Flags = &h0
-		country As String
+		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		locale As String
+		country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		locale As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -109,14 +109,6 @@ Protected Class MultipleProductGroupsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="description"
 			Visible=false
 			Group="Behavior"
@@ -125,11 +117,11 @@ Protected Class MultipleProductGroupsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_featured"
+			Name="feed_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -141,7 +133,15 @@ Protected Class MultipleProductGroupsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="feed_id"
+			Name="is_featured"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -4,13 +4,73 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**brandAccounts/create**](BusinessAccessRelationshipsApi.md#brandAccounts/create) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
+| [**brandAccounts/update**](BusinessAccessRelationshipsApi.md#brandAccounts/update) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
 | [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
 | [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
 | [**get/businessEmployers**](BusinessAccessRelationshipsApi.md#get/businessEmployers) | **GET** /businesses/employers | List business employers for user |
 | [**get/businessMembers**](BusinessAccessRelationshipsApi.md#get/businessMembers) | **GET** /businesses/{business_id}/members | Get business members |
 | [**get/businessPartners**](BusinessAccessRelationshipsApi.md#get/businessPartners) | **GET** /businesses/{business_id}/partners | Get business partners |
+| [**systemUser/update**](BusinessAccessRelationshipsApi.md#systemUser/update) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
 | [**update/businessMemberships**](BusinessAccessRelationshipsApi.md#update/businessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role |
 
+
+<a name="brandAccounts/create"></a>
+# **brandAccounts/create**
+> brand_accounts_create_200_response brandAccounts/create(business\_hierarchy\_id, brand\_accounts\_create\_request)
+
+Create a Brand Account
+
+    Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **business\_hierarchy\_id** | **String**| business hierarchy node id | [default to null] |
+| **brand\_accounts\_create\_request** | [**brand_accounts_create_request**](../Models/brand_accounts_create_request.md)|  | |
+
+### Return type
+
+[**brand_accounts_create_200_response**](../Models/brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="brandAccounts/update"></a>
+# **brandAccounts/update**
+> brand_accounts_create_200_response brandAccounts/update(business\_hierarchy\_id, brand\_account\_id, brand\_accounts\_update\_request)
+
+Update a Brand Account
+
+    Update an existing Brand Account
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **business\_hierarchy\_id** | **String**| business hierarchy node id | [default to null] |
+| **brand\_account\_id** | **String**| Unique identifier of a brand account. | [default to null] |
+| **brand\_accounts\_update\_request** | [**brand_accounts_update_request**](../Models/brand_accounts_update_request.md)|  | |
+
+### Return type
+
+[**brand_accounts_create_200_response**](../Models/brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 <a name="deleteBusinessMembership"></a>
 # **deleteBusinessMembership**
@@ -98,7 +158,7 @@ List business employers for user
 
 <a name="get/businessMembers"></a>
 # **get/businessMembers**
-> get_business_members_200_response get/businessMembers(business\_id, assets\_summary, business\_roles, member\_ids, start\_index, bookmark, page\_size)
+> get_business_members_200_response get/businessMembers(business\_id, fetch\_system\_users, assets\_summary, business\_roles, member\_ids, start\_index, bookmark, page\_size)
 
 Get business members
 
@@ -109,6 +169,7 @@ Get business members
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
+| **fetch\_system\_users** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **assets\_summary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
 | **business\_roles** | [**List**](../Models/MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] [default to null] |
 | **member\_ids** | **String**| A list of business members ids separated by comma. | [optional] [default to null] |
@@ -160,6 +221,35 @@ Get business partners
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="systemUser/update"></a>
+# **systemUser/update**
+> systemUser/update(business\_id, system\_user\_id, system\_user\_update\_request)
+
+Update a system user information.
+
+    Update a system user information such as name.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
+| **system\_user\_id** | **String**| Unique identifier of a system user. | [default to null] |
+| **system\_user\_update\_request** | [**system_user_update_request**](../Models/system_user_update_request.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="update/businessMemberships"></a>

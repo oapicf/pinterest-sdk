@@ -21,19 +21,19 @@ public class BulkUpsertStatusResponseTest {
     }
 
     /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
      * Test the property 'resultUrl'
      */
     @Test
     public void resultUrlTest() {
         // TODO: test resultUrl
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

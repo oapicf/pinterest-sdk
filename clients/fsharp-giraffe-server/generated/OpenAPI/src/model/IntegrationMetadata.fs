@@ -9,19 +9,19 @@ module IntegrationMetadata =
 
 
   type IntegrationMetadata = {
-    Id : string;
-    ExternalBusinessId : string;
-    ConnectedMerchantId : string;
-    ConnectedUserId : string;
+    AdditionalId1 : string;
     ConnectedAdvertiserId : string;
     ConnectedLbaId : string;
+    ConnectedMerchantId : string;
     ConnectedTagId : string;
+    ConnectedUserId : string;
+    CreatedTimestamp : decimal;
+    ExternalBusinessId : string;
+    Id : string;
     PartnerAccessTokenExpiry : decimal;
+    PartnerMetadata : string;
     PartnerRefreshTokenExpiry : decimal;
     Scopes : string;
-    CreatedTimestamp : decimal;
     UpdatedTimestamp : decimal;
-    AdditionalId1 : string;
-    PartnerMetadata : string;
   }
   //#endregion

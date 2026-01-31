@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemProcessingStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemProcessingStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ItemProcessingStatus {
+    title = ItemProcessingStatus
+    description = ItemProcessingStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemProcessingStatus {
+    title = ItemProcessingStatus
+    description = ItemProcessingStatus
+    implements = openapi_server.resourceTypes.ItemProcessingStatus
+
+  }
+}

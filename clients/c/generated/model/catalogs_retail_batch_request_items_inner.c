@@ -22,13 +22,13 @@ pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e catalog
     return 0;
 }
 char* catalogs_retail_batch_request_items_inner_update_mask_ToString(pinterest_rest_api_catalogs_retail_batch_request_items_inner__e update_mask) {
-    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values" };
+    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "custom_number_0", "custom_number_1", "custom_number_2", "custom_number_3", "custom_number_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values", "promotion_id" };
     return update_maskArray[update_mask - 1];
 }
 
 pinterest_rest_api_catalogs_retail_batch_request_items_inner__e catalogs_retail_batch_request_items_inner_update_mask_FromString(char* update_mask) {
     int stringToReturn = 0;
-    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values" };
+    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "custom_number_0", "custom_number_1", "custom_number_2", "custom_number_3", "custom_number_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values", "promotion_id" };
     size_t sizeofArray = sizeof(update_maskArray) / sizeof(update_maskArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(update_mask, update_maskArray[stringToReturn]) == 0) {
@@ -40,35 +40,39 @@ pinterest_rest_api_catalogs_retail_batch_request_items_inner__e catalogs_retail_
 }
 
 static catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create_internal(
+    item_attributes_request_t *attributes,
     char *item_id,
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
-    item_attributes_request_t *attributes,
-    list_t *update_mask
+    list_t *update_mask,
+    long last_updated_time
     ) {
     catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_local_var = malloc(sizeof(catalogs_retail_batch_request_items_inner_t));
     if (!catalogs_retail_batch_request_items_inner_local_var) {
         return NULL;
     }
+    catalogs_retail_batch_request_items_inner_local_var->attributes = attributes;
     catalogs_retail_batch_request_items_inner_local_var->item_id = item_id;
     catalogs_retail_batch_request_items_inner_local_var->operation = operation;
-    catalogs_retail_batch_request_items_inner_local_var->attributes = attributes;
     catalogs_retail_batch_request_items_inner_local_var->update_mask = update_mask;
+    catalogs_retail_batch_request_items_inner_local_var->last_updated_time = last_updated_time;
 
     catalogs_retail_batch_request_items_inner_local_var->_library_owned = 1;
     return catalogs_retail_batch_request_items_inner_local_var;
 }
 
 __attribute__((deprecated)) catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
+    item_attributes_request_t *attributes,
     char *item_id,
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
-    item_attributes_request_t *attributes,
-    list_t *update_mask
+    list_t *update_mask,
+    long last_updated_time
     ) {
     return catalogs_retail_batch_request_items_inner_create_internal (
+        attributes,
         item_id,
         operation,
-        attributes,
-        update_mask
+        update_mask,
+        last_updated_time
         );
 }
 
@@ -81,13 +85,13 @@ void catalogs_retail_batch_request_items_inner_free(catalogs_retail_batch_reques
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_retail_batch_request_items_inner->item_id) {
-        free(catalogs_retail_batch_request_items_inner->item_id);
-        catalogs_retail_batch_request_items_inner->item_id = NULL;
-    }
     if (catalogs_retail_batch_request_items_inner->attributes) {
         item_attributes_request_free(catalogs_retail_batch_request_items_inner->attributes);
         catalogs_retail_batch_request_items_inner->attributes = NULL;
+    }
+    if (catalogs_retail_batch_request_items_inner->item_id) {
+        free(catalogs_retail_batch_request_items_inner->item_id);
+        catalogs_retail_batch_request_items_inner->item_id = NULL;
     }
     if (catalogs_retail_batch_request_items_inner->update_mask) {
         list_ForEach(listEntry, catalogs_retail_batch_request_items_inner->update_mask) {
@@ -101,6 +105,20 @@ void catalogs_retail_batch_request_items_inner_free(catalogs_retail_batch_reques
 
 cJSON *catalogs_retail_batch_request_items_inner_convertToJSON(catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_retail_batch_request_items_inner->attributes
+    if (!catalogs_retail_batch_request_items_inner->attributes) {
+        goto fail;
+    }
+    cJSON *attributes_local_JSON = item_attributes_request_convertToJSON(catalogs_retail_batch_request_items_inner->attributes);
+    if(attributes_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+
 
     // catalogs_retail_batch_request_items_inner->item_id
     if (!catalogs_retail_batch_request_items_inner->item_id) {
@@ -118,20 +136,6 @@ cJSON *catalogs_retail_batch_request_items_inner_convertToJSON(catalogs_retail_b
     if(cJSON_AddStringToObject(item, "operation", catalogs_retail_batch_request_items_inner_operation_ToString(catalogs_retail_batch_request_items_inner->operation)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // catalogs_retail_batch_request_items_inner->attributes
-    if (!catalogs_retail_batch_request_items_inner->attributes) {
-        goto fail;
-    }
-    cJSON *attributes_local_JSON = item_attributes_request_convertToJSON(catalogs_retail_batch_request_items_inner->attributes);
-    if(attributes_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
     }
 
 
@@ -154,6 +158,14 @@ cJSON *catalogs_retail_batch_request_items_inner_convertToJSON(catalogs_retail_b
     }
     }
 
+
+    // catalogs_retail_batch_request_items_inner->last_updated_time
+    if(catalogs_retail_batch_request_items_inner->last_updated_time) {
+    if(cJSON_AddNumberToObject(item, "last_updated_time", catalogs_retail_batch_request_items_inner->last_updated_time) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -171,6 +183,18 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
 
     // define the local list for catalogs_retail_batch_request_items_inner->update_mask
     list_t *update_maskList = NULL;
+
+    // catalogs_retail_batch_request_items_inner->attributes
+    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
+    if (!attributes) {
+        goto end;
+    }
+
+    
+    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
 
     // catalogs_retail_batch_request_items_inner->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "item_id");
@@ -204,18 +228,6 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     }
     operationVariable = catalogs_retail_batch_request_items_inner_operation_FromString(operation->valuestring);
 
-    // catalogs_retail_batch_request_items_inner->attributes
-    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "attributes");
-    if (cJSON_IsNull(attributes)) {
-        attributes = NULL;
-    }
-    if (!attributes) {
-        goto end;
-    }
-
-    
-    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
-
     // catalogs_retail_batch_request_items_inner->update_mask
     cJSON *update_mask = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "update_mask");
     if (cJSON_IsNull(update_mask)) {
@@ -240,12 +252,25 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     }
     }
 
+    // catalogs_retail_batch_request_items_inner->last_updated_time
+    cJSON *last_updated_time = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "last_updated_time");
+    if (cJSON_IsNull(last_updated_time)) {
+        last_updated_time = NULL;
+    }
+    if (last_updated_time) { 
+    if(!cJSON_IsNumber(last_updated_time))
+    {
+    goto end; //Numeric
+    }
+    }
+
 
     catalogs_retail_batch_request_items_inner_local_var = catalogs_retail_batch_request_items_inner_create_internal (
+        attributes_local_nonprim,
         strdup(item_id->valuestring),
         operationVariable,
-        attributes_local_nonprim,
-        update_mask ? update_maskList : NULL
+        update_mask ? update_maskList : NULL,
+        last_updated_time ? last_updated_time->valuedouble : 0
         );
 
     return catalogs_retail_batch_request_items_inner_local_var;

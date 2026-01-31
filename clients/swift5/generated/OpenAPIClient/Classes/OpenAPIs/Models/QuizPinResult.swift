@@ -13,25 +13,25 @@ import AnyCodable
 /** The result, and link out, based on the user’s choice. */
 public struct QuizPinResult: Codable, JSONEncodable, Hashable {
 
-    public var organicPinId: String?
     public var androidDeepLink: String?
-    public var iosDeepLink: String?
     public var destinationUrl: String?
+    public var iosDeepLink: String?
+    public var organicPinId: String?
     public var resultId: Double?
 
-    public init(organicPinId: String? = nil, androidDeepLink: String? = nil, iosDeepLink: String? = nil, destinationUrl: String? = nil, resultId: Double? = nil) {
-        self.organicPinId = organicPinId
+    public init(androidDeepLink: String? = nil, destinationUrl: String? = nil, iosDeepLink: String? = nil, organicPinId: String? = nil, resultId: Double? = nil) {
         self.androidDeepLink = androidDeepLink
-        self.iosDeepLink = iosDeepLink
         self.destinationUrl = destinationUrl
+        self.iosDeepLink = iosDeepLink
+        self.organicPinId = organicPinId
         self.resultId = resultId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case organicPinId = "organic_pin_id"
         case androidDeepLink = "android_deep_link"
-        case iosDeepLink = "ios_deep_link"
         case destinationUrl = "destination_url"
+        case iosDeepLink = "ios_deep_link"
+        case organicPinId = "organic_pin_id"
         case resultId = "result_id"
     }
 
@@ -39,10 +39,10 @@ public struct QuizPinResult: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(organicPinId, forKey: .organicPinId)
         try container.encodeIfPresent(androidDeepLink, forKey: .androidDeepLink)
-        try container.encodeIfPresent(iosDeepLink, forKey: .iosDeepLink)
         try container.encodeIfPresent(destinationUrl, forKey: .destinationUrl)
+        try container.encodeIfPresent(iosDeepLink, forKey: .iosDeepLink)
+        try container.encodeIfPresent(organicPinId, forKey: .organicPinId)
         try container.encodeIfPresent(resultId, forKey: .resultId)
     }
 }

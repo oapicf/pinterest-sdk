@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupMultipleMediaTypesCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupMultipleMediaTypesCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MediaType = openapi_server.resourceTypes.MediaType
+}
+resourceTypes {
+
+  CatalogsProductGroupMultipleMediaTypesCriteria {
+    title = CatalogsProductGroupMultipleMediaTypesCriteria
+    description = CatalogsProductGroupMultipleMediaTypesCriteria
+    derivedFrom = Root
+    properties {
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type = array
+          items.type = MediaType
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupMultipleMediaTypesCriteria {
+    title = CatalogsProductGroupMultipleMediaTypesCriteria
+    description = CatalogsProductGroupMultipleMediaTypesCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupMultipleMediaTypesCriteria
+
+  }
+}

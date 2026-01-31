@@ -22,12 +22,12 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("MembersToDeleteBody_members_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MembersToDeleteBodyMembersInner {
 
-  private String memberId;
-
   private BusinessRoleForMembers businessRole;
+
+  private String memberId;
 
   public MembersToDeleteBodyMembersInner() {
     super();
@@ -36,28 +36,8 @@ public class MembersToDeleteBodyMembersInner {
   /**
    * Constructor with only required parameters
    */
-  public MembersToDeleteBodyMembersInner(String memberId, BusinessRoleForMembers businessRole) {
-    this.memberId = memberId;
+  public MembersToDeleteBodyMembersInner(BusinessRoleForMembers businessRole, String memberId) {
     this.businessRole = businessRole;
-  }
-
-  public MembersToDeleteBodyMembersInner memberId(String memberId) {
-    this.memberId = memberId;
-    return this;
-  }
-
-  /**
-   * Unique identifier of the member
-   * @return memberId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 25) 
-  @Schema(name = "member_id", example = "140943737684417", description = "Unique identifier of the member", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("member_id")
-  public String getMemberId() {
-    return memberId;
-  }
-
-  public void setMemberId(String memberId) {
     this.memberId = memberId;
   }
 
@@ -81,6 +61,26 @@ public class MembersToDeleteBodyMembersInner {
     this.businessRole = businessRole;
   }
 
+  public MembersToDeleteBodyMembersInner memberId(String memberId) {
+    this.memberId = memberId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the member
+   * @return memberId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 25) 
+  @Schema(name = "member_id", example = "140943737684417", description = "Unique identifier of the member", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("member_id")
+  public String getMemberId() {
+    return memberId;
+  }
+
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -90,21 +90,21 @@ public class MembersToDeleteBodyMembersInner {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BillingInvoiceDownloadResponse",
+  "fields": [
+    {
+      "name": "download_url",
+      "type": ["null", "string"],
+      "doc": "The download url for the billing invoice",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "The billing invoice id",
+      "default": null
+    }
+  ]
+
+}

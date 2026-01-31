@@ -27,35 +27,35 @@ test_that("BRAND", {
 })
 
 test_that("CUSTOM_LABEL_0", {
-  # tests for the property `CUSTOM_LABEL_0` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_0` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_0`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_1", {
-  # tests for the property `CUSTOM_LABEL_1` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_1` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_1`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_2", {
-  # tests for the property `CUSTOM_LABEL_2` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_2` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_2`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_3", {
-  # tests for the property `CUSTOM_LABEL_3` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_3` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_3`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_4", {
-  # tests for the property `CUSTOM_LABEL_4` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_4` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_4`, "EXPECTED_RESULT")
@@ -66,4 +66,11 @@ test_that("COUNTRY", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`COUNTRY`, "EXPECTED_RESULT")
+})
+
+test_that("TITLE_KEYWORDS", {
+  # tests for the property `TITLE_KEYWORDS` (CatalogsProductGroupMultipleStringCriteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`TITLE_KEYWORDS`, "EXPECTED_RESULT")
 })

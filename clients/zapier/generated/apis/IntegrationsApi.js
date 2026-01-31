@@ -1,5 +1,4 @@
 const samples = require('../samples/IntegrationsApi');
-const DetailedError = require('../models/DetailedError');
 const Error = require('../models/Error');
 const IntegrationLogsRequest = require('../models/IntegrationLogsRequest');
 const IntegrationLogsSuccessResponse = require('../models/IntegrationLogsSuccessResponse');
@@ -8,6 +7,7 @@ const IntegrationRecord = require('../models/IntegrationRecord');
 const IntegrationRequest = require('../models/IntegrationRequest');
 const IntegrationRequestPatch = require('../models/IntegrationRequestPatch');
 const integrations_get_list_200_response = require('../models/integrations_get_list_200_response');
+const integrations_logs_post_400_response = require('../models/integrations_logs_post_400_response');
 const utils = require('../utils/utils');
 
 module.exports = {

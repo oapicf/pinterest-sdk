@@ -31,6 +31,16 @@
 
 * `CUSTOM_LABEL_4` (value: `"custom_label_4"`)
 
+* `CUSTOM_NUMBER_0` (value: `"custom_number_0"`)
+
+* `CUSTOM_NUMBER_1` (value: `"custom_number_1"`)
+
+* `CUSTOM_NUMBER_2` (value: `"custom_number_2"`)
+
+* `CUSTOM_NUMBER_3` (value: `"custom_number_3"`)
+
+* `CUSTOM_NUMBER_4` (value: `"custom_number_4"`)
+
 * `DESCRIPTION` (value: `"description"`)
 
 * `FREE_SHIPPING_LABEL` (value: `"free_shipping_label"`)
@@ -88,6 +98,8 @@
 * `VARIANT_NAMES` (value: `"variant_names"`)
 
 * `VARIANT_VALUES` (value: `"variant_values"`)
+
+* `PROMOTION_ID` (value: `"promotion_id"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,37 +24,37 @@ integration_log_t* instantiate_integration_log(int include_optional) {
   integration_log_t* integration_log = NULL;
   if (include_optional) {
     integration_log = integration_log_create(
+      "0",
+      "0",
       56,
+       // false, not to have infinite recursion
+      instantiate_integration_log_client_error(0),
       pinterest_rest_api_integration_log_EVENTTYPE_APP,
+      "0",
+      "0",
       pinterest_rest_api_integration_log_LOGLEVEL_INFO,
       "0",
       "0",
       "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
        // false, not to have infinite recursion
-      instantiate_integration_log_client_error(0),
-       // false, not to have infinite recursion
-      instantiate_integration_log_client_request(0)
+      instantiate_integration_log_client_request(0),
+      "0"
     );
   } else {
     integration_log = integration_log_create(
+      "0",
+      "0",
       56,
+      NULL,
       pinterest_rest_api_integration_log_EVENTTYPE_APP,
+      "0",
+      "0",
       pinterest_rest_api_integration_log_LOGLEVEL_INFO,
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       "0",
       "0",
       "0",
       NULL,
-      NULL
+      "0"
     );
   }
 

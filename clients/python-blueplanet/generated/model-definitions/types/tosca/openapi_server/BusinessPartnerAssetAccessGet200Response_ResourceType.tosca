@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessPartnerAssetAccessGet200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessPartnerAssetAccessGet200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  GetPartnerAssetsResponse = openapi_server.resourceTypes.GetPartnerAssetsResponse
+}
+resourceTypes {
+
+  BusinessPartnerAssetAccessGet200Response {
+    title = BusinessPartnerAssetAccessGet200Response
+    description = BusinessPartnerAssetAccessGet200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = GetPartnerAssetsResponse
+          description = "List assets on which you granted access to your partner or assets on which your partner has granted you access."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessPartnerAssetAccessGet200Response {
+    title = BusinessPartnerAssetAccessGet200Response
+    description = BusinessPartnerAssetAccessGet200Response
+    implements = openapi_server.resourceTypes.BusinessPartnerAssetAccessGet200Response
+
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "operation" },
+      {"model": "country" },
+      {"model": "item_id" },
+      {"model": "language" },
+      {"model": "bid_options" },
+      {"model": "errors" },
+      {"model": "update_mask" },
+    ]
+  }]
+}

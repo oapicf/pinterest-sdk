@@ -5,18 +5,18 @@
   "name": "CatalogsList200Response",
   "fields": [
     {
+      "name": "bookmark",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "items",
       "type": {
         "type": "array",
         "items": "model.Catalog"
       },
       "doc": ""
-    },
-    {
-      "name": "bookmark",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
     }
   ]
 

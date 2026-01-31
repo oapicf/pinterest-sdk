@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;ProductGroupPromotionResponseItem&gt;**](ProductGroupPromotionResponseItem.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  | 
 
 
 

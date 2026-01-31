@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsItemValidationIssue"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsItemValidationIssue"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsItemValidationIssue {
+    title = CatalogsItemValidationIssue
+    description = CatalogsItemValidationIssue
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsItemValidationIssue {
+    title = CatalogsItemValidationIssue
+    description = CatalogsItemValidationIssue
+    implements = openapi_server.resourceTypes.CatalogsItemValidationIssue
+
+  }
+}

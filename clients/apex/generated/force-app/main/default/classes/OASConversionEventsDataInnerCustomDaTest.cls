@@ -73,15 +73,18 @@ private class OASConversionEventsDataInnerCustomDaTest {
     private static void maintainRenamedProperties() {
         OASConversionEventsDataInnerCustomDa conversionEventsDataInnerCustomData = new OASConversionEventsDataInnerCustomDa();
         Map<String, String> x-property-mappings = conversionEventsDataInnerCustomData.getx-property-mappings();
-        System.assertEquals('r_currency', x-property-mappings.get('currency'));
+        System.assertEquals('contentBrand', x-property-mappings.get('content_brand'));
+        System.assertEquals('contentCategory', x-property-mappings.get('content_category'));
         System.assertEquals('contentIds', x-property-mappings.get('content_ids'));
         System.assertEquals('contentName', x-property-mappings.get('content_name'));
-        System.assertEquals('contentCategory', x-property-mappings.get('content_category'));
-        System.assertEquals('contentBrand', x-property-mappings.get('content_brand'));
+        System.assertEquals('r_currency', x-property-mappings.get('currency'));
+        System.assertEquals('externalMeasurementId', x-property-mappings.get('external_measurement_id'));
+        System.assertEquals('externalMeasurementVendorId', x-property-mappings.get('external_measurement_vendor_id'));
         System.assertEquals('numItems', x-property-mappings.get('num_items'));
-        System.assertEquals('orderId', x-property-mappings.get('order_id'));
-        System.assertEquals('searchString', x-property-mappings.get('search_string'));
         System.assertEquals('optOutType', x-property-mappings.get('opt_out_type'));
+        System.assertEquals('orderId', x-property-mappings.get('order_id'));
+        System.assertEquals('predictedLtv', x-property-mappings.get('predicted_ltv'));
+        System.assertEquals('searchString', x-property-mappings.get('search_string'));
     }
 
     @isTest
@@ -89,15 +92,18 @@ private class OASConversionEventsDataInnerCustomDaTest {
         OASConversionEventsDataInnerCustomDa conversionEventsDataInnerCustomData = new OASConversionEventsDataInnerCustomDa();
         System.assertEquals(new List<String>(), conversionEventsDataInnerCustomData.contentIds);
         System.assertEquals(new List<OASConversionEventsDataInnerCustomDa>(), conversionEventsDataInnerCustomData.contents);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.r_currency);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.value);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.contentName);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.contentCategory);
         System.assertEquals(null, conversionEventsDataInnerCustomData.contentBrand);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.numItems);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.orderId);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.searchString);
-        System.assertEquals(null, conversionEventsDataInnerCustomData.optOutType);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.contentCategory);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.contentName);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.r_currency);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.externalMeasurementId);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.externalMeasurementVendorId);
         System.assertEquals(null, conversionEventsDataInnerCustomData.np);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.numItems);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.optOutType);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.orderId);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.predictedLtv);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.searchString);
+        System.assertEquals(null, conversionEventsDataInnerCustomData.value);
     }
 }

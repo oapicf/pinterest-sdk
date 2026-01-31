@@ -22,19 +22,19 @@ public class TopPinsAnalyticsResponseDateAvailabilityTest {
     }
 
     /**
-     * Test the property 'latestAvailableTimestamp'
-     */
-    @Test
-    public void latestAvailableTimestampTest() {
-        // TODO: test latestAvailableTimestamp
-    }
-
-    /**
      * Test the property 'isRealtime'
      */
     @Test
     public void isRealtimeTest() {
         // TODO: test isRealtime
+    }
+
+    /**
+     * Test the property 'latestAvailableTimestamp'
+     */
+    @Test
+    public void latestAvailableTimestampTest() {
+        // TODO: test latestAvailableTimestamp
     }
 
 }

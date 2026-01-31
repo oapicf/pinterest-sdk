@@ -10,12 +10,12 @@
 
 
 export interface CatalogsRetailItemsFilter { 
-    catalog_type: CatalogsRetailItemsFilter.CatalogTypeEnum;
-    item_ids: Array<string>;
     /**
      * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
      */
     catalog_id?: string;
+    catalog_type: CatalogsRetailItemsFilter.CatalogTypeEnum;
+    item_ids: Array<string>;
 }
 export namespace CatalogsRetailItemsFilter {
     export const CatalogTypeEnum = {

@@ -15,6 +15,7 @@ import org.openapitools.model.AdvancedAuctionBidOptions;
 import org.openapitools.model.AdvancedAuctionItemsSubmitDeleteRecord;
 import org.openapitools.model.AdvancedAuctionItemsSubmitUpsertRecord;
 import org.openapitools.model.AdvancedAuctionOperation;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import org.openapitools.model.UpdateMaskBidOptionField;
@@ -37,11 +38,10 @@ import javax.annotation.Generated;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitDeleteRecord.class, name = "DELETE"),
-  @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitUpsertRecord.class, name = "UPSERT"),
-  @JsonSubTypes.Type(value = AdvancedAuctionProcessedItem.class, name = "AdvancedAuctionProcessedItem")
+  @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitUpsertRecord.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface AdvancedAuctionItemsSubmitRecord {
     public AdvancedAuctionOperation getOperation();
 }

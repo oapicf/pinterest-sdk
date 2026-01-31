@@ -9,8 +9,8 @@
 (def ads-analytics-get-async-response-data
   {
    (ds/opt :report_status) bulk-reporting-job-status-spec
-   (ds/opt :url) string?
    (ds/opt :size) float?
+   (ds/opt :url) string?
    })
 
 (def ads-analytics-get-async-response-spec

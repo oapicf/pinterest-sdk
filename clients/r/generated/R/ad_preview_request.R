@@ -16,12 +16,12 @@ AdPreviewRequest <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("AdPreviewCreateFromImage", "AdPreviewCreateFromPin"),
+    one_of = list("AdPreviewCreateFromImage", "AdPreviewCreateFromPin", "AdPreviewShopping"),
 
     #' @description
     #' Initialize a new AdPreviewRequest.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "AdPreviewCreateFromImage", "AdPreviewCreateFromPin"
+    #' @param instance an instance of the object defined in the oneOf schemas: "AdPreviewCreateFromImage", "AdPreviewCreateFromPin", "AdPreviewShopping"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -31,8 +31,11 @@ AdPreviewRequest <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AdPreviewCreateFromPin") {
         self$actual_instance <- instance
         self$actual_type <- "AdPreviewCreateFromPin"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AdPreviewShopping") {
+        self$actual_instance <- instance
+        self$actual_type <- "AdPreviewShopping"
       } else {
-        stop(paste("Failed to initialize AdPreviewRequest with oneOf schemas AdPreviewCreateFromImage, AdPreviewCreateFromPin. Provided class name: ",
+        stop(paste("Failed to initialize AdPreviewRequest with oneOf schemas AdPreviewCreateFromImage, AdPreviewCreateFromPin, AdPreviewShopping. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -90,17 +93,32 @@ AdPreviewRequest <- R6::R6Class(
         error_messages <- append(error_messages, `AdPreviewCreateFromPin_result`["message"])
       }
 
+      `AdPreviewShopping_result` <- tryCatch({
+          `AdPreviewShopping`$public_methods$validateJSON(input)
+          `AdPreviewShopping_instance` <- `AdPreviewShopping`$new()
+          instance <- `AdPreviewShopping_instance`$fromJSON(input)
+          instance_type <- "AdPreviewShopping"
+          matched_schemas <- append(matched_schemas, "AdPreviewShopping")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`AdPreviewShopping_result`["error"])) {
+        error_messages <- append(error_messages, `AdPreviewShopping_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into AdPreviewRequest with oneOf schemas AdPreviewCreateFromImage, AdPreviewCreateFromPin. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into AdPreviewRequest with oneOf schemas AdPreviewCreateFromImage, AdPreviewCreateFromPin, AdPreviewShopping. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into AdPreviewRequest with oneOf schemas AdPreviewCreateFromImage, AdPreviewCreateFromPin. Details: >>",
+        stop(paste("No match found when deserializing the input into AdPreviewRequest with oneOf schemas AdPreviewCreateFromImage, AdPreviewCreateFromPin, AdPreviewShopping. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

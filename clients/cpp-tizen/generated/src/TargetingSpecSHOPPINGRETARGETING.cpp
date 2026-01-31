@@ -5,32 +5,37 @@
 #include "Helpers.h"
 
 
-#include "TargetingSpec_SHOPPING_RETARGETING.h"
+#include "TargetingSpecShoppingRetargeting.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-TargetingSpec_SHOPPING_RETARGETING::TargetingSpec_SHOPPING_RETARGETING()
+TargetingSpecShoppingRetargeting::TargetingSpecShoppingRetargeting()
 {
 	//__init();
 }
 
-TargetingSpec_SHOPPING_RETARGETING::~TargetingSpec_SHOPPING_RETARGETING()
+TargetingSpecShoppingRetargeting::~TargetingSpecShoppingRetargeting()
 {
 	//__cleanup();
 }
 
 void
-TargetingSpec_SHOPPING_RETARGETING::__init()
+TargetingSpecShoppingRetargeting::__init()
 {
+	//exclusion_window = int(0);
 	//lookback_window = int(0);
 	//new std::list()std::list> tag_types;
-	//exclusion_window = int(0);
 }
 
 void
-TargetingSpec_SHOPPING_RETARGETING::__cleanup()
+TargetingSpecShoppingRetargeting::__cleanup()
 {
+	//if(exclusion_window != NULL) {
+	//
+	//delete exclusion_window;
+	//exclusion_window = NULL;
+	//}
 	//if(lookback_window != NULL) {
 	//
 	//delete lookback_window;
@@ -41,19 +46,25 @@ TargetingSpec_SHOPPING_RETARGETING::__cleanup()
 	//delete tag_types;
 	//tag_types = NULL;
 	//}
-	//if(exclusion_window != NULL) {
-	//
-	//delete exclusion_window;
-	//exclusion_window = NULL;
-	//}
 	//
 }
 
 void
-TargetingSpec_SHOPPING_RETARGETING::fromJson(char* jsonStr)
+TargetingSpecShoppingRetargeting::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *exclusion_windowKey = "exclusion_window";
+	node = json_object_get_member(pJsonObject, exclusion_windowKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&exclusion_window, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *lookback_windowKey = "lookback_window";
 	node = json_object_get_member(pJsonObject, lookback_windowKey);
 	if (node !=NULL) {
@@ -87,29 +98,27 @@ TargetingSpec_SHOPPING_RETARGETING::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *exclusion_windowKey = "exclusion_window";
-	node = json_object_get_member(pJsonObject, exclusion_windowKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&exclusion_window, node, "int", "");
-		} else {
-			
-		}
-	}
 }
 
-TargetingSpec_SHOPPING_RETARGETING::TargetingSpec_SHOPPING_RETARGETING(char* json)
+TargetingSpecShoppingRetargeting::TargetingSpecShoppingRetargeting(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-TargetingSpec_SHOPPING_RETARGETING::toJson()
+TargetingSpecShoppingRetargeting::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("int")) {
+		int obj = getExclusionWindow();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *exclusion_windowKey = "exclusion_window";
+	json_object_set_member(pJsonObject, exclusion_windowKey, node);
 	if (isprimitive("int")) {
 		int obj = getLookbackWindow();
 		node = converttoJson(&obj, "int", "");
@@ -134,15 +143,6 @@ TargetingSpec_SHOPPING_RETARGETING::toJson()
 	
 	const gchar *tag_typesKey = "tag_types";
 	json_object_set_member(pJsonObject, tag_typesKey, node);
-	if (isprimitive("int")) {
-		int obj = getExclusionWindow();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *exclusion_windowKey = "exclusion_window";
-	json_object_set_member(pJsonObject, exclusion_windowKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -152,39 +152,39 @@ TargetingSpec_SHOPPING_RETARGETING::toJson()
 }
 
 int
-TargetingSpec_SHOPPING_RETARGETING::getLookbackWindow()
-{
-	return lookback_window;
-}
-
-void
-TargetingSpec_SHOPPING_RETARGETING::setLookbackWindow(int  lookback_window)
-{
-	this->lookback_window = lookback_window;
-}
-
-std::list<int>
-TargetingSpec_SHOPPING_RETARGETING::getTagTypes()
-{
-	return tag_types;
-}
-
-void
-TargetingSpec_SHOPPING_RETARGETING::setTagTypes(std::list <int> tag_types)
-{
-	this->tag_types = tag_types;
-}
-
-int
-TargetingSpec_SHOPPING_RETARGETING::getExclusionWindow()
+TargetingSpecShoppingRetargeting::getExclusionWindow()
 {
 	return exclusion_window;
 }
 
 void
-TargetingSpec_SHOPPING_RETARGETING::setExclusionWindow(int  exclusion_window)
+TargetingSpecShoppingRetargeting::setExclusionWindow(int  exclusion_window)
 {
 	this->exclusion_window = exclusion_window;
+}
+
+int
+TargetingSpecShoppingRetargeting::getLookbackWindow()
+{
+	return lookback_window;
+}
+
+void
+TargetingSpecShoppingRetargeting::setLookbackWindow(int  lookback_window)
+{
+	this->lookback_window = lookback_window;
+}
+
+std::list<int>
+TargetingSpecShoppingRetargeting::getTagTypes()
+{
+	return tag_types;
+}
+
+void
+TargetingSpecShoppingRetargeting::setTagTypes(std::list <int> tag_types)
+{
+	this->tag_types = tag_types;
 }
 
 

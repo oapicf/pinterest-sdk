@@ -73,9 +73,9 @@ private class OASAudienceDemographicsTest {
     private static void defaultValuesPopulated() {
         OASAudienceDemographics audienceDemographics = new OASAudienceDemographics();
         System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.ages);
-        System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.genders);
-        System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.devices);
-        System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.metros);
         System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.countries);
+        System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.devices);
+        System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.genders);
+        System.assertEquals(new List<OASAudienceDemographicValue>(), audienceDemographics.metros);
     }
 }

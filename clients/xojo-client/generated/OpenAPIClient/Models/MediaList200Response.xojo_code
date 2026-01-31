@@ -2,15 +2,12 @@
 Protected Class MediaList200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Media
-		#tag EndNote
-		items() As OpenAPIClient.Models.MediaUploadDetails
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		items() As OpenAPIClient.Models.Media
 	#tag EndProperty
 
 
@@ -51,19 +48,19 @@ Protected Class MediaList200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="MediaUploadDetails"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Media"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -18,18 +18,18 @@ module IntegrationLog =
   //#endregion
 
   type IntegrationLog = {
-    ClientTimestamp : int;
-    EventType : EventTypeEnum;
-    LogLevel : LogLevelEnum;
-    ExternalBusinessId : string option;
     AdvertiserId : string option;
-    MerchantId : string option;
-    TagId : string option;
-    FeedProfileId : string option;
-    Message : string;
     AppVersionNumber : string;
-    PlatformVersionNumber : string;
+    ClientTimestamp : int;
     Error : IntegrationLogClientError;
+    EventType : EventTypeEnum;
+    ExternalBusinessId : string option;
+    FeedProfileId : string option;
+    LogLevel : LogLevelEnum;
+    MerchantId : string option;
+    Message : string;
+    PlatformVersionNumber : string;
     Request : IntegrationLogClientRequest;
+    TagId : string option;
   }
   //#endregion

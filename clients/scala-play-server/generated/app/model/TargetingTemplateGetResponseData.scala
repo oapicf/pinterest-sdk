@@ -4,30 +4,30 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for TargetingTemplateGetResponseData.
-  * @param name targeting template name
   * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  * @param id Targeting template ID.
-  * @param createdTime Targeting template created time. Unix timestamp in seconds.
-  * @param updatedTime Targeting template updated time.Unix timestamp in seconds.
+  * @param name targeting template name
   * @param adAccountId The ID of the advertiser that this targeting template belongs to.
+  * @param createdTime Targeting template created time. Unix timestamp in seconds.
+  * @param id Targeting template ID.
   * @param status Indicate targeting template is active or Deleted
+  * @param updatedTime Targeting template updated time.Unix timestamp in seconds.
   * @param valid Inform if the targeting template is valid (ex. would be false if has revoked audience)
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class TargetingTemplateGetResponseData(
-  name: Option[String],
   autoTargetingEnabled: Option[Boolean],
-  targetingAttributes: Option[TargetingSpec],
-  placementGroup: Option[PlacementGroupType],
   keywords: Option[List[TargetingTemplateKeyword]],
+  name: Option[String],
+  placementGroup: Option[PlacementGroupType],
+  targetingAttributes: Option[TargetingSpec],
   trackingUrls: Option[TrackingUrls],
-  id: Option[String],
-  createdTime: Option[Int],
-  updatedTime: Option[Int],
   adAccountId: Option[String],
-  status: Option[TargetingTemplateGetResponseData.Status.Value],
+  createdTime: Option[Int],
+  id: Option[String],
   sizing: Option[TargetingTemplateAudienceSizing],
+  status: Option[TargetingTemplateGetResponseData.Status.Value],
+  updatedTime: Option[Int],
   valid: Option[Boolean]
   additionalProperties: 
 )
@@ -35,7 +35,7 @@ case class TargetingTemplateGetResponseData(
 object TargetingTemplateGetResponseData {
   implicit lazy val targetingTemplateGetResponseDataJsonFormat: Format[TargetingTemplateGetResponseData] = {
     val realJsonFormat = Json.format[TargetingTemplateGetResponseData]
-    val declaredPropNames = Set("name", "autoTargetingEnabled", "targetingAttributes", "placementGroup", "keywords", "trackingUrls", "id", "createdTime", "updatedTime", "adAccountId", "status", "sizing", "valid")
+    val declaredPropNames = Set("autoTargetingEnabled", "keywords", "name", "placementGroup", "targetingAttributes", "trackingUrls", "adAccountId", "createdTime", "id", "sizing", "status", "updatedTime", "valid")
     
     Format(
       Reads {

@@ -2,15 +2,15 @@ package api
 
 import play.api.libs.json._
 import model.Error
-import model.PinsList200Response
 import model.SearchPartnerPins200Response
 import model.SearchUserBoardsGet200Response
+import model.SearchUserPinsList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait SearchApi {
   /**
     * Search pins by a given search term
-    * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+    * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
     * @param term Search term to look up pins.
     * @param countryCode Two letter country code (ISO 3166-1 alpha-2)
     * @param bookmark Cursor used to fetch the next page of items
@@ -36,5 +36,5 @@ trait SearchApi {
     * @param adAccountId Unique identifier of an ad account.
     * @param bookmark Cursor used to fetch the next page of items
     */
-  def searchUserPinsList(query: String, adAccountId: Option[String], bookmark: Option[String]): PinsList200Response
+  def searchUserPinsList(query: String, adAccountId: Option[String], bookmark: Option[String]): SearchUserPinsList200Response
 }

@@ -7,8 +7,8 @@
 #' @title TopPinsAnalyticsResponsePinsInner
 #' @description TopPinsAnalyticsResponsePinsInner Class
 #' @format An \code{R6Class} generator object
-#' @field metrics The metric name and daily value for each requested metric named list(numeric) [optional]
 #' @field data_status  named list(\link{DataStatus}) [optional]
+#' @field metrics The metric name and daily value for each requested metric named list(numeric) [optional]
 #' @field pin_id The pin id character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,27 +16,27 @@
 TopPinsAnalyticsResponsePinsInner <- R6::R6Class(
   "TopPinsAnalyticsResponsePinsInner",
   public = list(
-    `metrics` = NULL,
     `data_status` = NULL,
+    `metrics` = NULL,
     `pin_id` = NULL,
 
     #' @description
     #' Initialize a new TopPinsAnalyticsResponsePinsInner class.
     #'
-    #' @param metrics The metric name and daily value for each requested metric
     #' @param data_status data_status
+    #' @param metrics The metric name and daily value for each requested metric
     #' @param pin_id The pin id
     #' @param ... Other optional arguments.
-    initialize = function(`metrics` = NULL, `data_status` = NULL, `pin_id` = NULL, ...) {
-      if (!is.null(`metrics`)) {
-        stopifnot(is.vector(`metrics`), length(`metrics`) != 0)
-        sapply(`metrics`, function(x) stopifnot(is.character(x)))
-        self$`metrics` <- `metrics`
-      }
+    initialize = function(`data_status` = NULL, `metrics` = NULL, `pin_id` = NULL, ...) {
       if (!is.null(`data_status`)) {
         stopifnot(is.vector(`data_status`), length(`data_status`) != 0)
         sapply(`data_status`, function(x) stopifnot(R6::is.R6(x)))
         self$`data_status` <- `data_status`
+      }
+      if (!is.null(`metrics`)) {
+        stopifnot(is.vector(`metrics`), length(`metrics`) != 0)
+        sapply(`metrics`, function(x) stopifnot(is.character(x)))
+        self$`metrics` <- `metrics`
       }
       if (!is.null(`pin_id`)) {
         if (!(is.character(`pin_id`) && length(`pin_id`) == 1)) {
@@ -77,13 +77,13 @@ TopPinsAnalyticsResponsePinsInner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TopPinsAnalyticsResponsePinsInnerObject <- list()
-      if (!is.null(self$`metrics`)) {
-        TopPinsAnalyticsResponsePinsInnerObject[["metrics"]] <-
-          self$`metrics`
-      }
       if (!is.null(self$`data_status`)) {
         TopPinsAnalyticsResponsePinsInnerObject[["data_status"]] <-
           lapply(self$`data_status`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`metrics`)) {
+        TopPinsAnalyticsResponsePinsInnerObject[["metrics"]] <-
+          self$`metrics`
       }
       if (!is.null(self$`pin_id`)) {
         TopPinsAnalyticsResponsePinsInnerObject[["pin_id"]] <-
@@ -99,11 +99,11 @@ TopPinsAnalyticsResponsePinsInner <- R6::R6Class(
     #' @return the instance of TopPinsAnalyticsResponsePinsInner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`metrics`)) {
-        self$`metrics` <- ApiClient$new()$deserializeObj(this_object$`metrics`, "map(numeric)", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`data_status`)) {
         self$`data_status` <- ApiClient$new()$deserializeObj(this_object$`data_status`, "map(DataStatus)", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`metrics`)) {
+        self$`metrics` <- ApiClient$new()$deserializeObj(this_object$`metrics`, "map(numeric)", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`pin_id`)) {
         self$`pin_id` <- this_object$`pin_id`
@@ -129,8 +129,8 @@ TopPinsAnalyticsResponsePinsInner <- R6::R6Class(
     #' @return the instance of TopPinsAnalyticsResponsePinsInner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`metrics` <- ApiClient$new()$deserializeObj(this_object$`metrics`, "map(numeric)", loadNamespace("openapi"))
       self$`data_status` <- ApiClient$new()$deserializeObj(this_object$`data_status`, "map(DataStatus)", loadNamespace("openapi"))
+      self$`metrics` <- ApiClient$new()$deserializeObj(this_object$`metrics`, "map(numeric)", loadNamespace("openapi"))
       self$`pin_id` <- this_object$`pin_id`
       self
     },

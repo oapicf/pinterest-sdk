@@ -3,14 +3,14 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 
-module TargetingSpecSHOPPINGRETARGETING =
+module TargetingSpecShoppingRetargeting =
 
-  //#region TargetingSpecSHOPPINGRETARGETING
+  //#region TargetingSpecShoppingRetargeting
 
 
-  type TargetingSpec_SHOPPING_RETARGETING = {
+  type TargetingSpecShoppingRetargeting = {
+    ExclusionWindow : int;
     LookbackWindow : int;
     TagTypes : int[];
-    ExclusionWindow : int;
   }
   //#endregion

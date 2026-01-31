@@ -1,7 +1,7 @@
 /*
  * MediaUploadStatus.h
  *
- * Media upload status
+ * 
  */
 
 #ifndef _MediaUploadStatus_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Media upload status
+/*! \brief 
  *
  *  \ingroup Models
  *

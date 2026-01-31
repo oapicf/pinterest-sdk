@@ -13,14 +13,14 @@ import org.openapitools.models.AudienceType
  * @param adUnderscoreaccountUnderscoreid Ad account ID.
  * @param name Audience name.
  * @param rule 
- * @param description Audience description.
  * @param audienceUnderscoretype <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+ * @param description Audience description.
  */
 case class AudienceCreateRequest(adUnderscoreaccountUnderscoreid: Option[String],
                 name: String,
                 rule: AudienceRule,
-                description: Option[String],
-                audienceUnderscoretype: AudienceType
+                audienceUnderscoretype: AudienceType,
+                description: Option[String]
                 )
 
 object AudienceCreateRequest {

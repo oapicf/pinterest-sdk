@@ -15,20 +15,20 @@
 
 typedef struct product_group_promotions_list_200_response_t product_group_promotions_list_200_response_t;
 
-#include "product_group_promotion_response_item.h"
+#include "product_group_promotion.h"
 
 
 
 typedef struct product_group_promotions_list_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } product_group_promotions_list_200_response_t;
 
 __attribute__((deprecated)) product_group_promotions_list_200_response_t *product_group_promotions_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void product_group_promotions_list_200_response_free(product_group_promotions_list_200_response_t *product_group_promotions_list_200_response);

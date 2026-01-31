@@ -9,11 +9,16 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { Board } from '../models/Board';
+import { BoardCreate } from '../models/BoardCreate';
+import { BoardPrivacyFilter } from '../models/BoardPrivacyFilter';
 import { BoardSection } from '../models/BoardSection';
 import { BoardSectionsList200Response } from '../models/BoardSectionsList200Response';
-import { BoardUpdate } from '../models/BoardUpdate';
+import { BoardWithUpdatePrivacy } from '../models/BoardWithUpdatePrivacy';
+import { BoardWithUpdatePrivacyUpdate } from '../models/BoardWithUpdatePrivacyUpdate';
 import { BoardsList200Response } from '../models/BoardsList200Response';
 import { BoardsListPins200Response } from '../models/BoardsListPins200Response';
+import { CreativeType } from '../models/CreativeType';
+import { PinterestLibError } from '../models/PinterestLibError';
 
 /**
  * no description
@@ -344,17 +349,17 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Create board
-     * @param board Create a board using a single board json object.
+     * @param boardCreate 
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async boardsCreate(board: Board, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async boardsCreate(boardCreate: BoardCreate, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'board' is not null or undefined
-        if (board === null || board === undefined) {
-            throw new RequiredError("BoardsApi", "boardsCreate", "board");
+        // verify required parameter 'boardCreate' is not null or undefined
+        if (boardCreate === null || boardCreate === undefined) {
+            throw new RequiredError("BoardsApi", "boardsCreate", "boardCreate");
         }
 
 
@@ -378,7 +383,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(board, "Board", ""),
+            ObjectSerializer.serialize(boardCreate, "BoardCreate", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -386,6 +391,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -399,9 +409,9 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Delete board
-     * @param boardId Unique identifier of a board.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account.
      */
     public async boardsDelete(boardId: string, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
@@ -444,9 +454,9 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Get board
-     * @param boardId Unique identifier of a board.
+     * @param boardId 
      * @param adAccountId Unique identifier of an ad account.
      */
     public async boardsGet(boardId: string, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
@@ -494,14 +504,14 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * List boards
      * @param adAccountId Unique identifier of an ad account.
+     * @param privacy The privacy level of the board
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param privacy Privacy setting for a board.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      */
-    public async boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', _options?: Configuration): Promise<RequestContext> {
+    public async boardsList(adAccountId?: string, privacy?: BoardPrivacyFilter, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -521,6 +531,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
         // Query Params
+        if (privacy !== undefined) {
+            requestContext.setQueryParam("privacy", ObjectSerializer.serialize(privacy, "BoardPrivacyFilter", ""));
+        }
+
+        // Query Params
         if (bookmark !== undefined) {
             requestContext.setQueryParam("bookmark", ObjectSerializer.serialize(bookmark, "string", ""));
         }
@@ -528,11 +543,6 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (pageSize !== undefined) {
             requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", ""));
-        }
-
-        // Query Params
-        if (privacy !== undefined) {
-            requestContext.setQueryParam("privacy", ObjectSerializer.serialize(privacy, "'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET'", ""));
         }
 
 
@@ -562,11 +572,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
-    public async boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'boardId' is not null or undefined
@@ -600,7 +610,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (creativeTypes !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(creativeTypes, "Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>", "");
+            const serializedParams = ObjectSerializer.serialize(creativeTypes, "Array<CreativeType>", "");
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("creative_types", serializedParam);
             }
@@ -638,13 +648,13 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Update board
-     * @param boardId Unique identifier of a board.
-     * @param boardUpdate Update a board.
+     * @param boardId 
+     * @param boardWithUpdatePrivacyUpdate 
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async boardsUpdate(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async boardsUpdate(boardId: string, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'boardId' is not null or undefined
@@ -653,9 +663,9 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'boardUpdate' is not null or undefined
-        if (boardUpdate === null || boardUpdate === undefined) {
-            throw new RequiredError("BoardsApi", "boardsUpdate", "boardUpdate");
+        // verify required parameter 'boardWithUpdatePrivacyUpdate' is not null or undefined
+        if (boardWithUpdatePrivacyUpdate === null || boardWithUpdatePrivacyUpdate === undefined) {
+            throw new RequiredError("BoardsApi", "boardsUpdate", "boardWithUpdatePrivacyUpdate");
         }
 
 
@@ -680,7 +690,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(boardUpdate, "BoardUpdate", ""),
+            ObjectSerializer.serialize(boardWithUpdatePrivacyUpdate, "BoardWithUpdatePrivacyUpdate", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -688,6 +698,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -980,6 +995,13 @@ export class BoardsApiResponseProcessor {
      */
      public async boardsCreateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Board >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: Board = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Board", ""
+            ) as Board;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: Board = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -988,18 +1010,46 @@ export class BoardsApiResponseProcessor {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "The board name is invalid or duplicated.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
         }
         if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1026,40 +1076,47 @@ export class BoardsApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not authorized to delete the board.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
         }
         if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Board not found.", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Could not get exclusive access to delete the board.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
         }
         if (isCodeInRange("429", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
         }
         if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1090,19 +1147,47 @@ export class BoardsApiResponseProcessor {
             ) as Board;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Board not found.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
         }
         if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1133,12 +1218,47 @@ export class BoardsApiResponseProcessor {
             ) as BoardsList200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1203,50 +1323,64 @@ export class BoardsApiResponseProcessor {
      * @params response Response returned by the server for a request to boardsUpdate
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async boardsUpdateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Board >> {
+     public async boardsUpdateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BoardWithUpdatePrivacy >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Board = ObjectSerializer.deserialize(
+            const body: BoardWithUpdatePrivacy = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Board", ""
-            ) as Board;
+                "BoardWithUpdatePrivacy", ""
+            ) as BoardWithUpdatePrivacy;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Invalid board parameters.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request could not be understood by the server due to unexpected data.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "Authentication is required and has either failed or not been provided.", body, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not authorized to update the board.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: PinterestLibError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The requested resource could not be found on this server.", body, response.headers);
         }
         if (isCodeInRange("429", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "The user has sent too many requests in a given amount of time and is being rate limited.", body, response.headers);
         }
         if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
+            const body: PinterestLibError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+                "PinterestLibError", ""
+            ) as PinterestLibError;
+            throw new ApiException<PinterestLibError>(response.httpStatusCode, "An unexpected error response.", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Board = ObjectSerializer.deserialize(
+            const body: BoardWithUpdatePrivacy = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Board", ""
-            ) as Board;
+                "BoardWithUpdatePrivacy", ""
+            ) as BoardWithUpdatePrivacy;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

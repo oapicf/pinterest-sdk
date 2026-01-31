@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 //
 // Get all the members the requesting business has granted access to on the given asset.
 //
-business_asset_members_get_200_response_t* BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *business_id, char *asset_id, char *bookmark, int *page_size, int *start_index);
+business_asset_members_get_200_response_t* BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *business_id, char *asset_id, int *fetch_system_users, char *bookmark, int *page_size, int *start_index);
 ```
 
 ### Parameters
@@ -129,6 +129,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
 **asset_id** | **char \*** | Unique identifier of a business asset. | 
+**fetch_system_users** | **int \*** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
 **page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 **start_index** | **int \*** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]

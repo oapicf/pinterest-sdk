@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Any valid JSON object",
+  "name": "NotificationPostRequest",
+  "fields": [
+  ]
+
+}

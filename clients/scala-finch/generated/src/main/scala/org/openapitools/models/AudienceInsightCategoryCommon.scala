@@ -9,17 +9,17 @@ import org.openapitools.models.BigDecimal
 
 /**
  * 
+ * @param id 
+ * @param index 
  * @param key 
  * @param name 
  * @param ratio 
- * @param index 
- * @param id 
  */
-case class AudienceInsightCategoryCommon(key: Option[String],
-                name: Option[String],
-                ratio: Option[BigDecimal],
+case class AudienceInsightCategoryCommon(id: Option[String],
                 index: Option[BigDecimal],
-                id: Option[String]
+                key: Option[String],
+                name: Option[String],
+                ratio: Option[BigDecimal]
                 )
 
 object AudienceInsightCategoryCommon {

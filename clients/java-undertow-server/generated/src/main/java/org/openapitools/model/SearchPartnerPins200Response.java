@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,28 +25,11 @@ import org.openapitools.model.SummaryPin;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SearchPartnerPins200Response   {
   
-  private List<SummaryPin> items = new ArrayList<>();
   private String bookmark;
-
-  /**
-   */
-  public SearchPartnerPins200Response items(List<SummaryPin> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
-  public List<SummaryPin> getItems() {
-    return items;
-  }
-  public void setItems(List<SummaryPin> items) {
-    this.items = items;
-  }
+  private List<SummaryPin> items = new ArrayList<>();
 
   /**
    */
@@ -65,6 +48,23 @@ public class SearchPartnerPins200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   */
+  public SearchPartnerPins200Response items(List<SummaryPin> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<SummaryPin> getItems() {
+    return items;
+  }
+  public void setItems(List<SummaryPin> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -75,13 +75,13 @@ public class SearchPartnerPins200Response   {
       return false;
     }
     SearchPartnerPins200Response searchPartnerPins200Response = (SearchPartnerPins200Response) o;
-    return Objects.equals(items, searchPartnerPins200Response.items) &&
-        Objects.equals(bookmark, searchPartnerPins200Response.bookmark);
+    return Objects.equals(bookmark, searchPartnerPins200Response.bookmark) &&
+        Objects.equals(items, searchPartnerPins200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class SearchPartnerPins200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchPartnerPins200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -11,22 +11,22 @@ Method | HTTP request | Description
 
 # **mediaCreate**
 ```swift
-    open class func mediaCreate(mediaUploadRequest: MediaUploadRequest, completion: @escaping (_ data: MediaUpload?, _ error: Error?) -> Void)
+    open class func mediaCreate(mediaUploadCreate: MediaUploadCreate, completion: @escaping (_ data: MediaUpload?, _ error: Error?) -> Void)
 ```
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let mediaUploadRequest = MediaUploadRequest(mediaType: MediaUploadType()) // MediaUploadRequest | Create a media upload request
+let mediaUploadCreate = MediaUploadCreate(mediaType: MediaUploadType()) // MediaUploadCreate | 
 
 // Register media upload
-MediaAPI.mediaCreate(mediaUploadRequest: mediaUploadRequest) { (response, error) in
+MediaAPI.mediaCreate(mediaUploadCreate: mediaUploadCreate) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +42,7 @@ MediaAPI.mediaCreate(mediaUploadRequest: mediaUploadRequest) { (response, error)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaUploadRequest** | [**MediaUploadRequest**](MediaUploadRequest.md) | Create a media upload request | 
+ **mediaUploadCreate** | [**MediaUploadCreate**](MediaUploadCreate.md) |  | 
 
 ### Return type
 
@@ -61,19 +61,19 @@ Name | Type | Description  | Notes
 
 # **mediaGet**
 ```swift
-    open class func mediaGet(mediaId: String, completion: @escaping (_ data: MediaUploadDetails?, _ error: Error?) -> Void)
+    open class func mediaGet(mediaId: String, completion: @escaping (_ data: Media?, _ error: Error?) -> Void)
 ```
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let mediaId = "mediaId_example" // String | Media identifier
+let mediaId = "mediaId_example" // String | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 
 // Get media upload details
 MediaAPI.mediaGet(mediaId: mediaId) { (response, error) in
@@ -92,11 +92,11 @@ MediaAPI.mediaGet(mediaId: mediaId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaId** | **String** | Media identifier | 
+ **mediaId** | **String** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | 
 
 ### Return type
 
-[**MediaUploadDetails**](MediaUploadDetails.md)
+[**Media**](Media.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 List media uploads
 
-List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 ```swift
@@ -124,7 +124,7 @@ List media uploads filtered by given parameters.  <strong><a href='/docs/api-fea
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List media uploads
 MediaAPI.mediaList(bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -144,7 +144,7 @@ MediaAPI.mediaList(bookmark: bookmark, pageSize: pageSize) { (response, error) i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

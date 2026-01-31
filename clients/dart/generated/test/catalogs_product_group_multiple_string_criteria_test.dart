@@ -16,13 +16,13 @@ void main() {
   // final instance = CatalogsProductGroupMultipleStringCriteria();
 
   group('test CatalogsProductGroupMultipleStringCriteria', () {
-    // List<String> values (default value: const [])
-    test('to test the property `values`', () async {
+    // bool negated (default value: false)
+    test('to test the property `negated`', () async {
       // TODO
     });
 
-    // bool negated (default value: false)
-    test('to test the property `negated`', () async {
+    // List<String> values (default value: const [])
+    test('to test the property `values`', () async {
       // TODO
     });
 

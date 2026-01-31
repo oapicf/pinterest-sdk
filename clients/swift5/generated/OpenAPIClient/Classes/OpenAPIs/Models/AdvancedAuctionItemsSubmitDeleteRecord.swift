@@ -13,30 +13,35 @@ import AnyCodable
 /** Object describing an item bid option deletion operation */
 public struct AdvancedAuctionItemsSubmitDeleteRecord: Codable, JSONEncodable, Hashable {
 
+    public var country: Country
     /** The catalog retail item id in the merchant namespace */
     public var itemId: String
-    public var country: Country
     public var language: Language
+    /** Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
+    public var errors: [AdvancedAuctionOperationError]?
 
-    public init(itemId: String, country: Country, language: Language) {
-        self.itemId = itemId
+    public init(country: Country, itemId: String, language: Language, errors: [AdvancedAuctionOperationError]? = nil) {
         self.country = country
+        self.itemId = itemId
         self.language = language
+        self.errors = errors
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
         case country
+        case itemId = "item_id"
         case language
+        case errors
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(itemId, forKey: .itemId)
         try container.encode(country, forKey: .country)
+        try container.encode(itemId, forKey: .itemId)
         try container.encode(language, forKey: .language)
+        try container.encodeIfPresent(errors, forKey: .errors)
     }
 }
 

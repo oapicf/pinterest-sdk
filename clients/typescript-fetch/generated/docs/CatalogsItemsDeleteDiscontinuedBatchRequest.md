@@ -8,9 +8,9 @@ Request object to discontinue catalogs items
 Name | Type
 ------------ | -------------
 `country` | [Country](Country.md)
+`items` | [Array&lt;ItemDeleteDiscontinuedBatchRecord&gt;](ItemDeleteDiscontinuedBatchRecord.md)
 `language` | string
 `operation` | [BatchOperation](BatchOperation.md)
-`items` | [Array&lt;ItemDeleteDiscontinuedBatchRecord&gt;](ItemDeleteDiscontinuedBatchRecord.md)
 
 ## Example
 
@@ -20,9 +20,9 @@ import type { CatalogsItemsDeleteDiscontinuedBatchRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "country": null,
+  "items": null,
   "language": null,
   "operation": null,
-  "items": null,
 } satisfies CatalogsItemsDeleteDiscontinuedBatchRequest
 
 console.log(example)

@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsUpsertHotelItem, () {
+    // CatalogsHotelAttributes attributes
+    test('to test the property `attributes`', () async {
+      // TODO
+    });
+
     // The catalog hotel id in the merchant namespace
     // String hotelId
     test('to test the property `hotelId`', () async {
@@ -15,11 +20,6 @@ void main() {
 
     // String operation
     test('to test the property `operation`', () async {
-      // TODO
-    });
-
-    // CatalogsHotelAttributes attributes
-    test('to test the property `attributes`', () async {
       // TODO
     });
 

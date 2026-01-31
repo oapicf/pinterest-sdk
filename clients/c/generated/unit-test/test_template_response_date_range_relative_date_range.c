@@ -22,15 +22,15 @@ template_response_date_range_relative_date_range_t* instantiate_template_respons
   template_response_date_range_relative_date_range_t* template_response_date_range_relative_date_range = NULL;
   if (include_optional) {
     template_response_date_range_relative_date_range = template_response_date_range_relative_date_range_create(
-      "relative",
+      7,
       14,
-      7
+      "relative"
     );
   } else {
     template_response_date_range_relative_date_range = template_response_date_range_relative_date_range_create(
-      "relative",
+      7,
       14,
-      7
+      "relative"
     );
   }
 

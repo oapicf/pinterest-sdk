@@ -12,26 +12,26 @@ import org.joda.time.DateTime
 import Account._
 
 case class Account (
-  /* Type of account */
-  accountType: Option[AccountType],
-/* User account ID. */
-  id: Option[String],
-profileImage: Option[String],
-websiteUrl: Option[String],
-username: Option[String],
-/* Profile about description. */
+  /* Profile about description. */
   about: Option[String],
-businessName: Option[String],
+/* Type of account */
+  accountType: Option[AccountType],
 /* User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
   boardCount: Option[Integer],
-/* User account pin count. This includes both created and saved pins. */
-  pinCount: Option[Integer],
+businessName: Option[String],
 /* User account follower count. */
   followerCount: Option[Integer],
 /* User account following count. */
   followingCount: Option[Integer],
+/* User account ID. */
+  id: Option[String],
 /* User account monthly views. */
-  monthlyViews: Option[Integer])
+  monthlyViews: Option[Integer],
+/* User account pin count. This includes both created and saved pins. */
+  pinCount: Option[Integer],
+profileImage: Option[String],
+username: Option[String],
+websiteUrl: Option[String])
 
 object Account {
   import DateTimeCodecs._

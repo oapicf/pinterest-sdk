@@ -48,22 +48,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getTerm();
-
-	/*! \brief Set 
-	 */
-	void setTerm(std::string  term);
-	/*! \brief Get 
-	 */
 	std::list<std::string> getRelatedTerms();
 
 	/*! \brief Set 
 	 */
 	void setRelatedTerms(std::list <std::string> related_terms);
+	/*! \brief Get 
+	 */
+	std::string getTerm();
+
+	/*! \brief Set 
+	 */
+	void setTerm(std::string  term);
 
 private:
-	std::string term;
 	std::list <std::string>related_terms;
+	std::string term;
 	void __init();
 	void __cleanup();
 

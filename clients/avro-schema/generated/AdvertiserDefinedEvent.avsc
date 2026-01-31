@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdvertiserDefinedEvent",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "raw string name of the event, usually logged as raw_event_name in our dataset",
+      "default": null
+    },
+    {
+      "name": "mapped_conversion_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AdvertiserDefinedEvent_mappedUnderscoreconversionUnderscoretype",
+        "symbols": [
+          "PAGE_LOAD",
+          "UNKNOWN",
+          "INITIALIZED",
+          "PAGE_VISIT",
+          "SIGNUP",
+          "CHECKOUT",
+          "CUSTOM",
+          "VIEW_CATEGORY",
+          "SEARCH",
+          "ADD_TO_CART",
+          "WATCH_VIDEO",
+          "LEAD",
+          "APP_INSTALL",
+          "WEB_SESSION",
+          "EXTERNAL_MEASUREMENT",
+          "ADD_PAYMENT_INFO",
+          "ADD_TO_WISHLIST",
+          "INITIATE_CHECKOUT",
+          "SUBSCRIBE",
+          "VIEW_CONTENT",
+          "ADVERTISER_DEFINED_EVENT",
+          "APP_OPEN",
+          "CONTACT",
+          "SCHEDULE",
+          "FIND_LOCATION",
+          "CUSTOMIZE_PRODUCT",
+          "SUBMIT_APPLICATION",
+          "START_TRIAL"
+        ]
+      }],
+      "doc": "standard type mapped to ADE for optimization",
+      "default": null
+    }
+  ]
+
+}

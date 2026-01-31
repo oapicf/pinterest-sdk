@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 ```objc
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) searchUserPinsListWithQuery: (NSString*) query
     adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
-        completionHandler: (void (^)(OAIPinsList200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISearchUserPinsList200Response* output, NSError* error)) handler;
 ```
 
 Search user's Pins
@@ -180,7 +180,7 @@ OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
 [apiInstance searchUserPinsListWithQuery:query
               adAccountId:adAccountId
               bookmark:bookmark
-          completionHandler: ^(OAIPinsList200Response* output, NSError* error) {
+          completionHandler: ^(OAISearchUserPinsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIPinsList200Response***](OAIPinsList200Response.md)
+[**OAISearchUserPinsList200Response***](OAISearchUserPinsList200Response.md)
 
 ### Authorization
 

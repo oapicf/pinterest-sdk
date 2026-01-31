@@ -46,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unique identifier of the member
-	 */
-	std::string getMemberId();
-
-	/*! \brief Set Unique identifier of the member
-	 */
-	void setMemberId(std::string  member_id);
 	/*! \brief Get 
 	 */
 	BusinessRoleForMembers getBusinessRole();
@@ -60,10 +53,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBusinessRole(BusinessRoleForMembers  business_role);
+	/*! \brief Get Unique identifier of the member
+	 */
+	std::string getMemberId();
+
+	/*! \brief Set Unique identifier of the member
+	 */
+	void setMemberId(std::string  member_id);
 
 private:
-	std::string member_id;
 	BusinessRoleForMembers business_role;
+	std::string member_id;
 	void __init();
 	void __cleanup();
 

@@ -1,0 +1,30 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "catalog_id" },
+      {"model": "catalog_type" },
+      {"model": "country" },
+      {"model": "created_at" },
+      {"model": "description" },
+      {"model": "feed_id" },
+      {"model": "filters" },
+      {"model": "id" },
+      {"model": "is_featured" },
+      {"model": "locale" },
+      {"model": "name" },
+      {"model": "status" },
+      {"model": "type" },
+      {"model": "updated_at" },
+    ]
+  }]
+}

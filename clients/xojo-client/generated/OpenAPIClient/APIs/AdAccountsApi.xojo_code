@@ -1,7 +1,7 @@
 #tag Class
 Protected Class AdAccountsApi
 	#tag Method, Flags = &h0
-		Sub AdAccountAnalytics(, adAccountId As String, startDate As Date, endDate As Date, columns() As ColumnsEnum_AdAccountAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdAccountAnalytics, engagementWindowDays As Engagement_window_daysEnum_AdAccountAnalytics, viewWindowDays As View_window_daysEnum_AdAccountAnalytics, conversionReportTime As Conversion_report_timeEnum_AdAccountAnalytics)
+		Sub AdAccountAnalytics(, adAccountId As String, startDate As Date, endDate As Date, columns() As ColumnsEnum_AdAccountAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdAccountAnalytics, engagementWindowDays As Engagement_window_daysEnum_AdAccountAnalytics, viewWindowDays As View_window_daysEnum_AdAccountAnalytics, conversionReportTime As Conversion_report_timeEnum_AdAccountAnalytics, reportingTimezone As OpenAPIClient.Models.ReportingTimeZoneOptional)
 		  // Operation ad_account/analytics
 		  // Get ad account analytics
 		  // - 
@@ -11,19 +11,23 @@ Protected Class AdAccountsApi
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
 		  // - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
 		  // - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+		  // - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional, default to Nil)
 		  //
 		  // Invokes AdAccountsApiCallbackHandler.AdAccountAnalyticsCallback(AdAccountAnalyticsResponseInner) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/analytics
-		  // - Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+		  // - Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -63,7 +67,10 @@ Protected Class AdAccountsApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("conversion_report_time") + "=" + EncodeURLComponent(Conversion_report_timeEnum_AdAccountAnalyticsToString(conversionReportTime))
 		  
+		  If reportingTimezone <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("reporting_timezone") + "=" + EncodeURLComponent(Xoson.toJSON(reportingTimezone))
+		  
 
+		  
 		  
 		  
 
@@ -191,8 +198,12 @@ Protected Class AdAccountsApi
 		      Return "CTR"
 		    Case ColumnsEnum_AdAccountAnalytics.Ectr
 		      Return "ECTR"
+		    Case ColumnsEnum_AdAccountAnalytics.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ColumnsEnum_AdAccountAnalytics.CampaignName
 		      Return "CAMPAIGN_NAME"
+		    Case ColumnsEnum_AdAccountAnalytics.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
 		    Case ColumnsEnum_AdAccountAnalytics.PinId
 		      Return "PIN_ID"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalEngagement
@@ -233,8 +244,20 @@ Protected Class AdAccountsApi
 		      Return "CPM_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdAccountAnalytics.CpmInDollar
 		      Return "CPM_IN_DOLLAR"
+		    Case ColumnsEnum_AdAccountAnalytics.AdGroupName
+		      Return "AD_GROUP_NAME"
+		    Case ColumnsEnum_AdAccountAnalytics.AdGroupBudgetType
+		      Return "AD_GROUP_BUDGET_TYPE"
+		    Case ColumnsEnum_AdAccountAnalytics.AdGroupBudgetInLocalCurrency
+		      Return "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
 		    Case ColumnsEnum_AdAccountAnalytics.AdGroupEntityStatus
 		      Return "AD_GROUP_ENTITY_STATUS"
+		    Case ColumnsEnum_AdAccountAnalytics.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
+		    Case ColumnsEnum_AdAccountAnalytics.PromoId
+		      Return "PROMO_ID"
+		    Case ColumnsEnum_AdAccountAnalytics.PromoName
+		      Return "PROMO_NAME"
 		    Case ColumnsEnum_AdAccountAnalytics.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ColumnsEnum_AdAccountAnalytics.OrderLineName
@@ -269,6 +292,8 @@ Protected Class AdAccountsApi
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
 		    Case ColumnsEnum_AdAccountAnalytics.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ColumnsEnum_AdAccountAnalytics.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalEngagementSignup
 		      Return "TOTAL_ENGAGEMENT_SIGNUP"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalEngagementCheckout
@@ -311,10 +336,18 @@ Protected Class AdAccountsApi
 		      Return "WEB_SESSIONS_1"
 		    Case ColumnsEnum_AdAccountAnalytics.WebSessions2
 		      Return "WEB_SESSIONS_2"
+		    Case ColumnsEnum_AdAccountAnalytics.AdName
+		      Return "AD_NAME"
 		    Case ColumnsEnum_AdAccountAnalytics.CampaignLifetimeSpendCap
 		      Return "CAMPAIGN_LIFETIME_SPEND_CAP"
+		    Case ColumnsEnum_AdAccountAnalytics.AdGroupOptimization
+		      Return "AD_GROUP_OPTIMIZATION"
 		    Case ColumnsEnum_AdAccountAnalytics.CampaignDailySpendCap
 		      Return "CAMPAIGN_DAILY_SPEND_CAP"
+		    Case ColumnsEnum_AdAccountAnalytics.CampaignBudgetOptimization
+		      Return "CAMPAIGN_BUDGET_OPTIMIZATION"
+		    Case ColumnsEnum_AdAccountAnalytics.IsPremiereCampaign
+		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalPageVisit
 		      Return "TOTAL_PAGE_VISIT"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalSignup
@@ -325,6 +358,10 @@ Protected Class AdAccountsApi
 		      Return "TOTAL_CUSTOM"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalLead
 		      Return "TOTAL_LEAD"
+		    Case ColumnsEnum_AdAccountAnalytics.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ColumnsEnum_AdAccountAnalytics.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalSignupValueInMicroDollar
 		      Return "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalCheckoutValueInMicroDollar
@@ -339,10 +376,20 @@ Protected Class AdAccountsApi
 		      Return "CHECKOUT_ROAS"
 		    Case ColumnsEnum_AdAccountAnalytics.CustomRoas
 		      Return "CUSTOM_ROAS"
+		    Case ColumnsEnum_AdAccountAnalytics.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ColumnsEnum_AdAccountAnalytics.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
+		    Case ColumnsEnum_AdAccountAnalytics.Video3secViews1
+		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ColumnsEnum_AdAccountAnalytics.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ColumnsEnum_AdAccountAnalytics.VideoMrcViews1
 		      Return "VIDEO_MRC_VIEWS_1"
 		    Case ColumnsEnum_AdAccountAnalytics.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ColumnsEnum_AdAccountAnalytics.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ColumnsEnum_AdAccountAnalytics.VideoP100Complete2
 		      Return "VIDEO_P100_COMPLETE_2"
 		    Case ColumnsEnum_AdAccountAnalytics.VideoP0Combined2
@@ -361,6 +408,8 @@ Protected Class AdAccountsApi
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdAccountAnalytics.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ColumnsEnum_AdAccountAnalytics.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum_AdAccountAnalytics.EcpvInDollar
 		      Return "ECPV_IN_DOLLAR"
 		    Case ColumnsEnum_AdAccountAnalytics.EcpcvInDollar
@@ -369,6 +418,8 @@ Protected Class AdAccountsApi
 		      Return "ECPCV_P95_IN_DOLLAR"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ColumnsEnum_AdAccountAnalytics.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalVideoP100Complete
 		      Return "TOTAL_VIDEO_P100_COMPLETE"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalVideoP0Combined
@@ -411,6 +462,10 @@ Protected Class AdAccountsApi
 		      Return "INAPP_CHECKOUT_COST_PER_ACTION"
 		    Case ColumnsEnum_AdAccountAnalytics.TotalOfflineCheckout
 		      Return "TOTAL_OFFLINE_CHECKOUT"
+		    Case ColumnsEnum_AdAccountAnalytics.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum_AdAccountAnalytics.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
 		    Case ColumnsEnum_AdAccountAnalytics.IdeaPinProductTagVisit1
 		      Return "IDEA_PIN_PRODUCT_TAG_VISIT_1"
 		    Case ColumnsEnum_AdAccountAnalytics.IdeaPinProductTagVisit2
@@ -497,7 +552,7 @@ Protected Class AdAccountsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdAccountTargetingAnalyticsGet(, adAccountId As String, startDate As Date, endDate As Date, targetingTypes() As AdsAnalyticsTargetingType, columns() As ColumnsEnum_AdAccountTargetingAnalyticsGet, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdAccountTargetingAnalyticsGet, engagementWindowDays As Engagement_window_daysEnum_AdAccountTargetingAnalyticsGet, viewWindowDays As View_window_daysEnum_AdAccountTargetingAnalyticsGet, conversionReportTime As Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet, attributionTypes As OpenAPIClient.Models.ConversionReportAttributionTypeOptional)
+		Sub AdAccountTargetingAnalyticsGet(, adAccountId As String, startDate As Date, endDate As Date, targetingTypes() As AdsAnalyticsTargetingType, columns() As ColumnsEnum_AdAccountTargetingAnalyticsGet, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdAccountTargetingAnalyticsGet, engagementWindowDays As Engagement_window_daysEnum_AdAccountTargetingAnalyticsGet, viewWindowDays As View_window_daysEnum_AdAccountTargetingAnalyticsGet, conversionReportTime As Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet, attributionTypes() As ConversionReportAttributionType, reportingTimezone As OpenAPIClient.Models.ReportingTimeZoneOptional)
 		  // Operation ad_account_targeting_analytics/get
 		  // Get targeting analytics for an ad account
 		  // - 
@@ -508,20 +563,24 @@ Protected Class AdAccountsApi
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
 		  // - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
 		  // - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
 		  // - parameter attributionTypes: (query) List of types of attribution for the conversion report (optional, default to Nil)
+		  // - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional, default to Nil)
 		  //
 		  // Invokes AdAccountsApiCallbackHandler.AdAccountTargetingAnalyticsGetCallback(MetricsResponse) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/targeting_analytics
-		  // - Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+		  // - Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -580,9 +639,29 @@ Protected Class AdAccountsApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("conversion_report_time") + "=" + EncodeURLComponent(Conversion_report_timeEnum_AdAccountTargetingAnalyticsGetToString(conversionReportTime))
 		  
-		  If attributionTypes <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("attribution_types") + "=" + EncodeURLComponent(Xoson.toJSON(attributionTypes))
+		  
+		  Dim localVarQueryStringsattributionTypes() As String
+		  For Each localVarItemattributionTypes As ConversionReportAttributionType in attributionTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemattributionTypes))
+		    localVarQueryStringsattributionTypes.Append(encodedParameter)
+		  Next
+		  
+		  Dim localVarQueryStringattributionTypes As String
+		  Select Case "form"
+		    Case "form"
+			  localVarQueryStringattributionTypes = "inner=" + Join(localVarQueryStringsattributionTypes, ",")
+		    Case "spaceDelimited"
+		      localVarQueryStringattributionTypes = "inner=" + Join(localVarQueryStringsattributionTypes, " ")
+		    Case "pipeDelimited"
+		      localVarQueryStringattributionTypes = "inner=" + Join(localVarQueryStringsattributionTypes, "|")
+		    Case "deepObject"
+		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		  End Select
+		  If localVarQueryStringsattributionTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringattributionTypes)
+		  If reportingTimezone <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("reporting_timezone") + "=" + EncodeURLComponent(Xoson.toJSON(reportingTimezone))
 		  
 
+		  
 		  
 		  
 
@@ -712,8 +791,12 @@ Protected Class AdAccountsApi
 		      Return "CTR"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.Ectr
 		      Return "ECTR"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CampaignName
 		      Return "CAMPAIGN_NAME"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.PinId
 		      Return "PIN_ID"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalEngagement
@@ -754,8 +837,20 @@ Protected Class AdAccountsApi
 		      Return "CPM_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CpmInDollar
 		      Return "CPM_IN_DOLLAR"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdGroupName
+		      Return "AD_GROUP_NAME"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdGroupBudgetType
+		      Return "AD_GROUP_BUDGET_TYPE"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdGroupBudgetInLocalCurrency
+		      Return "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdGroupEntityStatus
 		      Return "AD_GROUP_ENTITY_STATUS"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.PromoId
+		      Return "PROMO_ID"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.PromoName
+		      Return "PROMO_NAME"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.OrderLineName
@@ -790,6 +885,8 @@ Protected Class AdAccountsApi
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalEngagementSignup
 		      Return "TOTAL_ENGAGEMENT_SIGNUP"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalEngagementCheckout
@@ -832,10 +929,18 @@ Protected Class AdAccountsApi
 		      Return "WEB_SESSIONS_1"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.WebSessions2
 		      Return "WEB_SESSIONS_2"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdName
+		      Return "AD_NAME"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CampaignLifetimeSpendCap
 		      Return "CAMPAIGN_LIFETIME_SPEND_CAP"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.AdGroupOptimization
+		      Return "AD_GROUP_OPTIMIZATION"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CampaignDailySpendCap
 		      Return "CAMPAIGN_DAILY_SPEND_CAP"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CampaignBudgetOptimization
+		      Return "CAMPAIGN_BUDGET_OPTIMIZATION"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.IsPremiereCampaign
+		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalPageVisit
 		      Return "TOTAL_PAGE_VISIT"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalSignup
@@ -846,6 +951,10 @@ Protected Class AdAccountsApi
 		      Return "TOTAL_CUSTOM"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalLead
 		      Return "TOTAL_LEAD"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalSignupValueInMicroDollar
 		      Return "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalCheckoutValueInMicroDollar
@@ -860,10 +969,20 @@ Protected Class AdAccountsApi
 		      Return "CHECKOUT_ROAS"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.CustomRoas
 		      Return "CUSTOM_ROAS"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.Video3secViews1
+		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.VideoMrcViews1
 		      Return "VIDEO_MRC_VIEWS_1"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.VideoP100Complete2
 		      Return "VIDEO_P100_COMPLETE_2"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.VideoP0Combined2
@@ -882,6 +1001,8 @@ Protected Class AdAccountsApi
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.EcpvInDollar
 		      Return "ECPV_IN_DOLLAR"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.EcpcvInDollar
@@ -890,6 +1011,8 @@ Protected Class AdAccountsApi
 		      Return "ECPCV_P95_IN_DOLLAR"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalVideoP100Complete
 		      Return "TOTAL_VIDEO_P100_COMPLETE"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalVideoP0Combined
@@ -932,6 +1055,10 @@ Protected Class AdAccountsApi
 		      Return "INAPP_CHECKOUT_COST_PER_ACTION"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalOfflineCheckout
 		      Return "TOTAL_OFFLINE_CHECKOUT"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.IdeaPinProductTagVisit1
 		      Return "IDEA_PIN_PRODUCT_TAG_VISIT_1"
 		    Case ColumnsEnum_AdAccountTargetingAnalyticsGet.IdeaPinProductTagVisit2
@@ -1018,16 +1145,16 @@ Protected Class AdAccountsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdAccountsCreate(, adAccountCreateRequest As OpenAPIClient.Models.AdAccountCreateRequest)
+		Sub AdAccountsCreate(, adAccountCreate As OpenAPIClient.Models.AdAccountCreate)
 		  // Operation ad_accounts/create
 		  // Create ad account
 		  // - 
-		  // - parameter adAccountCreateRequest: (body) Ad account to create. 
+		  // - parameter adAccountCreate: (body)  
 		  //
 		  // Invokes AdAccountsApiCallbackHandler.AdAccountsCreateCallback(AdAccount) on completion. 
 		  //
 		  // - POST /ad_accounts
-		  // - Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/create-an-advertiser-account">Create an advertiser account</a>.
+		  // - Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.  You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1037,7 +1164,7 @@ Protected Class AdAccountsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountCreate), "application/json")
 		  
 		  
 		  
@@ -1151,7 +1278,7 @@ Protected Class AdAccountsApi
 		  // Operation ad_accounts/get
 		  // Get ad account
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
+		  // - parameter adAccountId: (path)  
 		  //
 		  // Invokes AdAccountsApiCallbackHandler.AdAccountsGetCallback(AdAccount) on completion. 
 		  //
@@ -1162,10 +1289,14 @@ Protected Class AdAccountsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -1279,36 +1410,40 @@ Protected Class AdAccountsApi
 
 
 	#tag Method, Flags = &h0
-		Sub AdAccountsList(, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional includeSharedAccounts As Xoson.O.OptionalBoolean)
+		Sub AdAccountsList(, Optional includeSharedAccounts As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation ad_accounts/list
 		  // List ad accounts
 		  // - 
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter includeSharedAccounts: (query) Include shared ad accounts (optional, default to true)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes AdAccountsApiCallbackHandler.AdAccountsListCallback(AdAccountsList200Response) on completion. 
 		  //
 		  // - GET /ad_accounts
-		  // - Get a list of the ad_accounts that the "operation user_account" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>.
+		  // - Get a list of the ad_accounts that the "operation user_account" has access to.         - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If includeSharedAccounts <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("include_shared_accounts") + "=" + EncodeURLComponent(includeSharedAccounts.ToString)
+		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  If includeSharedAccounts <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("include_shared_accounts") + "=" + EncodeURLComponent(includeSharedAccounts.ToString)
-		  
 
+		  
 		  
 		  
 
@@ -1410,6 +1545,139 @@ Protected Class AdAccountsApi
 		  Call AdAccountsListPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AdAccountsListCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
+		Sub AnalyticsCreateConversionProductReport(, adAccountId As String, conversionProductReportRequest As OpenAPIClient.Models.ConversionProductReportRequest)
+		  // Operation analytics/create_conversion_product_report
+		  // Create a request for a brand, category, SKU report
+		  // - 
+		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
+		  // - parameter conversionProductReportRequest: (body)  
+		  //
+		  // Invokes AdAccountsApiCallbackHandler.AnalyticsCreateConversionProductReportCallback(AdsAnalyticsCreateAsyncResponse) on completion. 
+		  //
+		  // - POST /ad_accounts/{ad_account_id}/reports/brand_category_sku
+		  // - <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(conversionProductReportRequest), "application/json")
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/reports/brand_category_sku"
+		  
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.AnalyticsCreateConversionProductReport_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.AnalyticsCreateConversionProductReport_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function AnalyticsCreateConversionProductReportPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub AnalyticsCreateConversionProductReport_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse
+		  CallbackHandler.AnalyticsCreateConversionProductReportCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub AnalyticsCreateConversionProductReport_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse
+		  Call AnalyticsCreateConversionProductReportPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.AnalyticsCreateConversionProductReportCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -1560,7 +1828,7 @@ Protected Class AdAccountsApi
 		  // Invokes AdAccountsApiCallbackHandler.AnalyticsCreateReportCallback(AdsAnalyticsCreateAsyncResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/reports
-		  // - This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+		  // - This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1687,16 +1955,16 @@ Protected Class AdAccountsApi
 		  // Operation analytics/create_template_report
 		  // Create async request for an analytics report using a template
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
+		  // - parameter adAccountId: (path)  
 		  // - parameter templateId: (path) Unique identifier of a template. 
 		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. (optional, default to Nil)
 		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. (optional, default to Nil)
-		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (optional, default to Nil)
+		  // - parameter granularity: (query)    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly (optional, default to Nil)
 		  //
-		  // Invokes AdAccountsApiCallbackHandler.AnalyticsCreateTemplateReportCallback(AdsAnalyticsCreateAsyncResponse) on completion. 
+		  // Invokes AdAccountsApiCallbackHandler.AnalyticsCreateTemplateReportCallback(TemplateBasedReport) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/templates/{template_id}/reports
-		  // - This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+		  // -    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1743,7 +2011,7 @@ Protected Class AdAccountsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AnalyticsCreateTemplateReportPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse) As Boolean
+		Private Function AnalyticsCreateTemplateReportPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.TemplateBasedReport) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -1751,7 +2019,7 @@ Protected Class AdAccountsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse
+			  outData = New OpenAPIClient.Models.TemplateBasedReport
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1804,7 +2072,7 @@ Protected Class AdAccountsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse
+		  Dim data As OpenAPIClient.Models.TemplateBasedReport
 		  CallbackHandler.AnalyticsCreateTemplateReportCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1818,10 +2086,146 @@ Protected Class AdAccountsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse
+		  Dim data As OpenAPIClient.Models.TemplateBasedReport
 		  Call AnalyticsCreateTemplateReportPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AnalyticsCreateTemplateReportCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
+		Sub AnalyticsGetConversionProductReport(, adAccountId As String, token As String)
+		  // Operation analytics/get_conversion_product_report
+		  // Get advertiser brand, category, SKU report
+		  // - 
+		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
+		  // - parameter token: (query) Token returned from the post request creation call 
+		  //
+		  // Invokes AdAccountsApiCallbackHandler.AnalyticsGetConversionProductReportCallback(AdsAnalyticsGetAsyncResponse) on completion. 
+		  //
+		  // - GET /ad_accounts/{ad_account_id}/reports/brand_category_sku
+		  // - <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
+		  Dim localVarQueryParams As String = "?"
+		  localVarQueryParams = localVarQueryParams + EncodeURLComponent("token") + "=" + EncodeURLComponent(token)
+		  
+
+		  
+		  
+
+
+		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/reports/brand_category_sku"
+		  
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.AnalyticsGetConversionProductReport_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.AnalyticsGetConversionProductReport_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("GET", Me.BasePath + localVarPath + localVarQueryParams)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function AnalyticsGetConversionProductReportPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdsAnalyticsGetAsyncResponse) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.AdsAnalyticsGetAsyncResponse
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub AnalyticsGetConversionProductReport_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.AdsAnalyticsGetAsyncResponse
+		  CallbackHandler.AnalyticsGetConversionProductReportCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub AnalyticsGetConversionProductReport_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.AdsAnalyticsGetAsyncResponse
+		  Call AnalyticsGetConversionProductReportPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.AnalyticsGetConversionProductReportCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -2453,7 +2857,9 @@ Protected Class AdAccountsApi
         EcpcInDollar
         Ctr
         Ectr
+        OutboundCtr1
         CampaignName
+        CampaignBrandLabel
         PinId
         TotalEngagement
         Engagement1
@@ -2474,7 +2880,13 @@ Protected Class AdAccountsApi
         CampaignObjectiveType
         CpmInMicroDollar
         CpmInDollar
+        AdGroupName
+        AdGroupBudgetType
+        AdGroupBudgetInLocalCurrency
         AdGroupEntityStatus
+        AdGroupBidMultiplier
+        PromoId
+        PromoName
         OrderLineId
         OrderLineName
         Clickthrough1
@@ -2492,6 +2904,7 @@ Protected Class AdAccountsApi
         TotalImpressionUser
         TotalImpressionFrequency
         CostPerOutboundClickInDollar
+        CostPerOutboundClickInDollar1
         TotalEngagementSignup
         TotalEngagementCheckout
         TotalEngagementLead
@@ -2513,13 +2926,19 @@ Protected Class AdAccountsApi
         TotalWebSessions
         WebSessions1
         WebSessions2
+        AdName
         CampaignLifetimeSpendCap
+        AdGroupOptimization
         CampaignDailySpendCap
+        CampaignBudgetOptimization
+        IsPremiereCampaign
         TotalPageVisit
         TotalSignup
         TotalCheckout
         TotalCustom
         TotalLead
+        TotalAddToWishlist
+        TotalSubscribe
         TotalSignupValueInMicroDollar
         TotalCheckoutValueInMicroDollar
         TotalCustomValueInMicroDollar
@@ -2527,8 +2946,13 @@ Protected Class AdAccountsApi
         PageVisitRoas
         CheckoutRoas
         CustomRoas
+        ProductGroupAdImageTag
+        ProductGroupAdVideoTag
+        Video3secViews1
+        Video15secUniqueViews1
         VideoMrcViews1
         Video3secViews2
+        Video15secUniqueViews2
         VideoP100Complete2
         VideoP0Combined2
         VideoP25Combined2
@@ -2538,10 +2962,12 @@ Protected Class AdAccountsApi
         VideoMrcViews2
         PaidVideoViewableRate
         VideoLength
+        VideoSpendInDollar
         EcpvInDollar
         EcpcvInDollar
         EcpcvP95InDollar
         TotalVideo3secViews
+        TotalVideo15secUniqueViews
         TotalVideoP100Complete
         TotalVideoP0Combined
         TotalVideoP25Combined
@@ -2563,6 +2989,8 @@ Protected Class AdAccountsApi
         TotalWebViewCheckoutValueInMicroDollar
         InappCheckoutCostPerAction
         TotalOfflineCheckout
+        TotalAppInstallConversionRate
+        TotalInappAppInstallConversionRate
         IdeaPinProductTagVisit1
         IdeaPinProductTagVisit2
         TotalIdeaPinProductTagVisit
@@ -2649,7 +3077,9 @@ Protected Class AdAccountsApi
         EcpcInDollar
         Ctr
         Ectr
+        OutboundCtr1
         CampaignName
+        CampaignBrandLabel
         PinId
         TotalEngagement
         Engagement1
@@ -2670,7 +3100,13 @@ Protected Class AdAccountsApi
         CampaignObjectiveType
         CpmInMicroDollar
         CpmInDollar
+        AdGroupName
+        AdGroupBudgetType
+        AdGroupBudgetInLocalCurrency
         AdGroupEntityStatus
+        AdGroupBidMultiplier
+        PromoId
+        PromoName
         OrderLineId
         OrderLineName
         Clickthrough1
@@ -2688,6 +3124,7 @@ Protected Class AdAccountsApi
         TotalImpressionUser
         TotalImpressionFrequency
         CostPerOutboundClickInDollar
+        CostPerOutboundClickInDollar1
         TotalEngagementSignup
         TotalEngagementCheckout
         TotalEngagementLead
@@ -2709,13 +3146,19 @@ Protected Class AdAccountsApi
         TotalWebSessions
         WebSessions1
         WebSessions2
+        AdName
         CampaignLifetimeSpendCap
+        AdGroupOptimization
         CampaignDailySpendCap
+        CampaignBudgetOptimization
+        IsPremiereCampaign
         TotalPageVisit
         TotalSignup
         TotalCheckout
         TotalCustom
         TotalLead
+        TotalAddToWishlist
+        TotalSubscribe
         TotalSignupValueInMicroDollar
         TotalCheckoutValueInMicroDollar
         TotalCustomValueInMicroDollar
@@ -2723,8 +3166,13 @@ Protected Class AdAccountsApi
         PageVisitRoas
         CheckoutRoas
         CustomRoas
+        ProductGroupAdImageTag
+        ProductGroupAdVideoTag
+        Video3secViews1
+        Video15secUniqueViews1
         VideoMrcViews1
         Video3secViews2
+        Video15secUniqueViews2
         VideoP100Complete2
         VideoP0Combined2
         VideoP25Combined2
@@ -2734,10 +3182,12 @@ Protected Class AdAccountsApi
         VideoMrcViews2
         PaidVideoViewableRate
         VideoLength
+        VideoSpendInDollar
         EcpvInDollar
         EcpcvInDollar
         EcpcvP95InDollar
         TotalVideo3secViews
+        TotalVideo15secUniqueViews
         TotalVideoP100Complete
         TotalVideoP0Combined
         TotalVideoP25Combined
@@ -2759,6 +3209,8 @@ Protected Class AdAccountsApi
         TotalWebViewCheckoutValueInMicroDollar
         InappCheckoutCostPerAction
         TotalOfflineCheckout
+        TotalAppInstallConversionRate
+        TotalInappAppInstallConversionRate
         IdeaPinProductTagVisit1
         IdeaPinProductTagVisit2
         TotalIdeaPinProductTagVisit

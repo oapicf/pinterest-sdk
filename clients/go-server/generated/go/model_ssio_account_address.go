@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,17 +16,17 @@ package openapi
 
 type SsioAccountAddress struct {
 
-	// Address display
-	Display string `json:"display,omitempty"`
-
-	// Purpose for which the address is used, usually Billing or Businness
-	Purpose string `json:"purpose,omitempty"`
-
 	// Salesforce id for address
 	AddressId string `json:"address_id,omitempty"`
 
+	// Address display
+	Display string `json:"display,omitempty"`
+
 	// Legal entity for this insertion order
 	OrderLegalEntity string `json:"order_legal_entity,omitempty"`
+
+	// Purpose for which the address is used, usually Billing or Businness
+	Purpose string `json:"purpose,omitempty"`
 }
 
 // AssertSsioAccountAddressRequired checks if the required fields are not zero-ed

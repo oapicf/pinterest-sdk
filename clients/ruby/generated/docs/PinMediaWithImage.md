@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] |
+| **images** | [**ImageSize**](ImageSize.md) |  | [optional] |
+| **media_type** | **String** |  |  |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::PinMediaWithImage.new(
-  images: null
+  images: null,
+  media_type: null
 )
 ```
 

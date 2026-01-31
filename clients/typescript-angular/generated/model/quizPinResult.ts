@@ -13,10 +13,10 @@
  * The result, and link out, based on the user’s choice.
  */
 export interface QuizPinResult { 
-    organic_pin_id?: string;
     android_deep_link?: string;
-    ios_deep_link?: string;
     destination_url?: string;
+    ios_deep_link?: string;
+    organic_pin_id?: string;
     result_id?: number;
 }
 

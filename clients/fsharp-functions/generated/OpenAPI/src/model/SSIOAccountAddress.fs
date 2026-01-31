@@ -10,14 +10,14 @@ module SSIOAccountAddress =
 
   [<CLIMutable>]
   type SSIOAccountAddress = {
-    [<JsonProperty(PropertyName = "display")>]
-    Display : string;
-    [<JsonProperty(PropertyName = "purpose")>]
-    Purpose : string;
     [<JsonProperty(PropertyName = "address_id")>]
     AddressId : string;
+    [<JsonProperty(PropertyName = "display")>]
+    Display : string;
     [<JsonProperty(PropertyName = "order_legal_entity")>]
     OrderLegalEntity : string;
+    [<JsonProperty(PropertyName = "purpose")>]
+    Purpose : string;
   }
 
   //#endregion

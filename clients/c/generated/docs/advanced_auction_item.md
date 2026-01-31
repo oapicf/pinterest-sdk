@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_id** | **char \*** | The catalog retail item id in the merchant namespace | 
 **country** | **country_t \*** |  | 
+**item_id** | **char \*** | The catalog retail item id in the merchant namespace | 
 **language** | **language_t \*** |  | 
 **bid_options** | [**advanced_auction_bid_options_t**](advanced_auction_bid_options.md) \* |  | 
 

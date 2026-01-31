@@ -21,11 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Object describing the catalogs retail items batch
  * @param catalogType 
+ * @param createdTime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
  * @param batchId Id of the catalogs items batch
- * @param createdTime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
  * @param completedTime Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
- * @param status 
  * @param items Array with the catalogs items processing records part of the catalogs items batch
+ * @param status 
  */
 data class CatalogsRetailItemsBatch(
 
@@ -33,22 +33,22 @@ data class CatalogsRetailItemsBatch(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
 
+    @Schema(example = "null", required = true, readOnly = true, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+    @get:JsonProperty("created_time", required = true) val createdTime: java.time.OffsetDateTime?,
+
     @Schema(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", description = "Id of the catalogs items batch")
     @get:JsonProperty("batch_id") val batchId: kotlin.String? = null,
-
-    @Schema(example = "null", readOnly = true, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-    @get:JsonProperty("created_time") val createdTime: java.time.OffsetDateTime? = null,
 
     @Schema(example = "null", readOnly = true, description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
     @get:JsonProperty("completed_time") val completedTime: java.time.OffsetDateTime? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: BatchOperationStatus? = null,
+    @Schema(example = "null", description = "Array with the catalogs items processing records part of the catalogs items batch")
+    @get:JsonProperty("items") val items: kotlin.collections.List<ItemProcessingRecord>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Array with the catalogs items processing records part of the catalogs items batch")
-    @get:JsonProperty("items") val items: kotlin.collections.List<ItemProcessingRecord>? = null
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("status") val status: BatchOperationStatus? = null
 ) {
 
 }

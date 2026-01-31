@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AltText** | Pointer to **NullableString** | Pin&#39;s alternative text. | [optional] 
-**BoardId** | Pointer to **NullableString** | The id of the board to move the Pin onto. | [optional] 
-**BoardSectionId** | Pointer to **NullableString** | &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/create-a-board-section\&quot;&gt;Board section&lt;/a&gt; ID. | [optional] 
-**Description** | Pointer to **NullableString** | Pin description - 800 characters maximum. | [optional] 
-**Link** | Pointer to **NullableString** | URL viewer is taken to when they click pin. | [optional] 
-**Title** | Pointer to **NullableString** | The native pin title that creators explicitly prefer to display. | [optional] 
-**CarouselSlots** | Pointer to [**[]PinUpdateCarouselSlotsInner**](PinUpdateCarouselSlotsInner.md) | Carousel Pin slots data. | [optional] 
-**Note** | Pointer to **NullableString** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
+**AltText** | Pointer to **NullableString** |  | [optional] 
+**BoardId** | Pointer to **string** | The board to which this Pin belongs. | [optional] 
+**BoardSectionId** | Pointer to **NullableString** | The board section to which this Pin belongs. | [optional] 
+**CarouselSlots** | Pointer to [**[]CarouselSlot**](CarouselSlot.md) | Carousel Pin slots data. | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**Link** | Pointer to **NullableString** |  | [optional] 
+**Title** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -92,16 +91,6 @@ SetBoardId sets BoardId field to given value.
 
 HasBoardId returns a boolean if a field has been set.
 
-### SetBoardIdNil
-
-`func (o *PinUpdate) SetBoardIdNil(b bool)`
-
- SetBoardIdNil sets the value for BoardId to be an explicit nil
-
-### UnsetBoardId
-`func (o *PinUpdate) UnsetBoardId()`
-
-UnsetBoardId ensures that no value is present for BoardId, not even an explicit nil
 ### GetBoardSectionId
 
 `func (o *PinUpdate) GetBoardSectionId() string`
@@ -137,6 +126,31 @@ HasBoardSectionId returns a boolean if a field has been set.
 `func (o *PinUpdate) UnsetBoardSectionId()`
 
 UnsetBoardSectionId ensures that no value is present for BoardSectionId, not even an explicit nil
+### GetCarouselSlots
+
+`func (o *PinUpdate) GetCarouselSlots() []CarouselSlot`
+
+GetCarouselSlots returns the CarouselSlots field if non-nil, zero value otherwise.
+
+### GetCarouselSlotsOk
+
+`func (o *PinUpdate) GetCarouselSlotsOk() (*[]CarouselSlot, bool)`
+
+GetCarouselSlotsOk returns a tuple with the CarouselSlots field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCarouselSlots
+
+`func (o *PinUpdate) SetCarouselSlots(v []CarouselSlot)`
+
+SetCarouselSlots sets CarouselSlots field to given value.
+
+### HasCarouselSlots
+
+`func (o *PinUpdate) HasCarouselSlots() bool`
+
+HasCarouselSlots returns a boolean if a field has been set.
+
 ### GetDescription
 
 `func (o *PinUpdate) GetDescription() string`
@@ -242,66 +256,6 @@ HasTitle returns a boolean if a field has been set.
 `func (o *PinUpdate) UnsetTitle()`
 
 UnsetTitle ensures that no value is present for Title, not even an explicit nil
-### GetCarouselSlots
-
-`func (o *PinUpdate) GetCarouselSlots() []PinUpdateCarouselSlotsInner`
-
-GetCarouselSlots returns the CarouselSlots field if non-nil, zero value otherwise.
-
-### GetCarouselSlotsOk
-
-`func (o *PinUpdate) GetCarouselSlotsOk() (*[]PinUpdateCarouselSlotsInner, bool)`
-
-GetCarouselSlotsOk returns a tuple with the CarouselSlots field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCarouselSlots
-
-`func (o *PinUpdate) SetCarouselSlots(v []PinUpdateCarouselSlotsInner)`
-
-SetCarouselSlots sets CarouselSlots field to given value.
-
-### HasCarouselSlots
-
-`func (o *PinUpdate) HasCarouselSlots() bool`
-
-HasCarouselSlots returns a boolean if a field has been set.
-
-### GetNote
-
-`func (o *PinUpdate) GetNote() string`
-
-GetNote returns the Note field if non-nil, zero value otherwise.
-
-### GetNoteOk
-
-`func (o *PinUpdate) GetNoteOk() (*string, bool)`
-
-GetNoteOk returns a tuple with the Note field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNote
-
-`func (o *PinUpdate) SetNote(v string)`
-
-SetNote sets Note field to given value.
-
-### HasNote
-
-`func (o *PinUpdate) HasNote() bool`
-
-HasNote returns a boolean if a field has been set.
-
-### SetNoteNil
-
-`func (o *PinUpdate) SetNoteNil(b bool)`
-
- SetNoteNil sets the value for Note to be an explicit nil
-
-### UnsetNote
-`func (o *PinUpdate) UnsetNote()`
-
-UnsetNote ensures that no value is present for Note, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

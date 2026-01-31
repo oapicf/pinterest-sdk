@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`operator` | string
-`value` | number
 `currency` | [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
 `negated` | boolean
+`operator` | string
+`value` | number
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { CatalogsProductGroupPricingCurrencyCriteria } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "operator": null,
-  "value": null,
   "currency": null,
   "negated": null,
+  "operator": null,
+  "value": null,
 } satisfies CatalogsProductGroupPricingCurrencyCriteria
 
 console.log(example)

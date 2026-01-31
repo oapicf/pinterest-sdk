@@ -25,16 +25,16 @@ class QuizPinResultTest : ShouldSpec() {
         // uncomment below to create an instance of QuizPinResult
         //val modelInstance = QuizPinResult()
 
-        // to test the property `organicPinId`
-        should("test organicPinId") {
-            // uncomment below to test the property
-            //modelInstance.organicPinId shouldBe ("TODO")
-        }
-
         // to test the property `androidDeepLink`
         should("test androidDeepLink") {
             // uncomment below to test the property
             //modelInstance.androidDeepLink shouldBe ("TODO")
+        }
+
+        // to test the property `destinationUrl`
+        should("test destinationUrl") {
+            // uncomment below to test the property
+            //modelInstance.destinationUrl shouldBe ("TODO")
         }
 
         // to test the property `iosDeepLink`
@@ -43,10 +43,10 @@ class QuizPinResultTest : ShouldSpec() {
             //modelInstance.iosDeepLink shouldBe ("TODO")
         }
 
-        // to test the property `destinationUrl`
-        should("test destinationUrl") {
+        // to test the property `organicPinId`
+        should("test organicPinId") {
             // uncomment below to test the property
-            //modelInstance.destinationUrl shouldBe ("TODO")
+            //modelInstance.organicPinId shouldBe ("TODO")
         }
 
         // to test the property `resultId`

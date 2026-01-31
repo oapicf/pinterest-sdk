@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**impression** | **[String]** |  | [optional] 
+**audienceVerification** | **[String]** |  | [optional] 
+**buyableButton** | **[String]** |  | [optional] 
 **click** | **[String]** |  | [optional] 
 **engagement** | **[String]** |  | [optional] 
-**buyableButton** | **[String]** |  | [optional] 
-**audienceVerification** | **[String]** |  | [optional] 
+**impression** | **[String]** |  | [optional] 
 
 

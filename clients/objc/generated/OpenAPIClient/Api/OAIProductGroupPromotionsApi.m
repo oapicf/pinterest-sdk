@@ -4,10 +4,12 @@
 #import "OAIError.h"
 #import "OAIGranularity.h"
 #import "OAIProductGroupAnalyticsResponseInner.h"
+#import "OAIProductGroupPromotion.h"
 #import "OAIProductGroupPromotionCreateRequest.h"
 #import "OAIProductGroupPromotionResponse.h"
 #import "OAIProductGroupPromotionUpdateRequest.h"
 #import "OAIProductGroupPromotionsList200Response.h"
+#import "OAIReportingTimeZone.h"
 
 
 @interface OAIProductGroupPromotionsApi ()
@@ -145,11 +147,11 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
 ///
 ///  @param productGroupPromotionId Unique identifier of a product group promotion 
 ///
-///  @returns OAIProductGroupPromotionResponse*
+///  @returns OAIProductGroupPromotion*
 ///
 -(NSURLSessionTask*) productGroupPromotionsGetWithAdAccountId: (NSString*) adAccountId
     productGroupPromotionId: (NSString*) productGroupPromotionId
-    completionHandler: (void (^)(OAIProductGroupPromotionResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIProductGroupPromotion* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -215,10 +217,10 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIProductGroupPromotionResponse*"
+                              responseType: @"OAIProductGroupPromotion*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIProductGroupPromotionResponse*)data, error);
+                                    handler((OAIProductGroupPromotion*)data, error);
                                 }
                             }];
 }
@@ -412,7 +414,7 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get product group analytics
-/// Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+/// Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
@@ -427,11 +429,13 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
 ///
 ///  @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional, default to @30)
 ///
-///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional, default to @30)
+///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional, default to @30)
 ///
 ///  @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional, default to @1)
 ///
 ///  @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to @"TIME_OF_AD_ACTION")
+///
+///  @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 ///
 ///  @returns NSArray<OAIProductGroupAnalyticsResponseInner>*
 ///
@@ -445,6 +449,7 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
+    reportingTimezone: (OAIReportingTimeZone) reportingTimezone
     completionHandler: (void (^)(NSArray<OAIProductGroupAnalyticsResponseInner>* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -547,6 +552,9 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
     if (conversionReportTime != nil) {
         queryParams[@"conversion_report_time"] = conversionReportTime;
     }
+    if (reportingTimezone != nil) {
+        queryParams[@"reporting_timezone"] = reportingTimezone;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`
@@ -562,7 +570,7 @@ NSInteger kOAIProductGroupPromotionsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];

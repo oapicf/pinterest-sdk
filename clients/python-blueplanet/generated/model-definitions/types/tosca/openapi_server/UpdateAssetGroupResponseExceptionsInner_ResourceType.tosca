@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateAssetGroupResponseExceptionsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateAssetGroupResponseExceptionsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  UpdateAssetGroupResponseExceptionsInner {
+    title = UpdateAssetGroupResponseExceptionsInner
+    description = UpdateAssetGroupResponseExceptionsInner
+    derivedFrom = Root
+    properties {
+        asset_group_id {
+          type =  string
+          description = "Asset group id of the exception."
+          optional = false
+        }
+        code {
+          type =  integer
+          description = "Error code associated with the error editing asset group."
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Error message associated with the error editing asset group."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateAssetGroupResponseExceptionsInner {
+    title = UpdateAssetGroupResponseExceptionsInner
+    description = UpdateAssetGroupResponseExceptionsInner
+    implements = openapi_server.resourceTypes.UpdateAssetGroupResponseExceptionsInner
+
+  }
+}

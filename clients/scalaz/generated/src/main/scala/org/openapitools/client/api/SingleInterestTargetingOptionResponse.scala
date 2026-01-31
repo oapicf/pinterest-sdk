@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import SingleInterestTargetingOptionResponse._
 
 case class SingleInterestTargetingOptionResponse (
-  id: Option[String],
-name: Option[String],
-childInterests: Option[List[String]],
-level: Option[Integer])
+  childInterests: Option[List[String]],
+id: Option[String],
+level: Option[Integer],
+name: Option[String])
 
 object SingleInterestTargetingOptionResponse {
   import DateTimeCodecs._

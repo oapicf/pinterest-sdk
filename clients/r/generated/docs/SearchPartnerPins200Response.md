@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[SummaryPin]**](SummaryPin.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[SummaryPin]**](SummaryPin.md) |  | 
 
 

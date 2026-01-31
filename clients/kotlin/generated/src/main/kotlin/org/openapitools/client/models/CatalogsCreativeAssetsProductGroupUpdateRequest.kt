@@ -24,9 +24,9 @@ import com.squareup.moshi.JsonClass
  * Request object for updating a creative assets product group.
  *
  * @param catalogType 
- * @param name 
  * @param description 
  * @param filters 
+ * @param name 
  */
 
 
@@ -35,14 +35,14 @@ data class CatalogsCreativeAssetsProductGroupUpdateRequest (
     @Json(name = "catalog_type")
     val catalogType: CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogType? = null,
 
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     @Json(name = "description")
     val description: kotlin.String? = null,
 
     @Json(name = "filters")
-    val filters: CatalogsCreativeAssetsProductGroupFilters? = null
+    val filters: CatalogsCreativeAssetsProductGroupFilters? = null,
+
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

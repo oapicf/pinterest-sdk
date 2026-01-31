@@ -19,6 +19,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdvancedAuctionKey  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  @Valid
+
+  private Country country;
+
  /**
   * The catalog retail item id in the merchant namespace
   */
@@ -30,32 +36,7 @@ public class AdvancedAuctionKey  {
 
   @Valid
 
-  private Country country;
-
-  @ApiModelProperty(required = true, value = "")
-
-  @Valid
-
   private Language language;
- /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-  **/
-  @JsonProperty("item_id")
-  @NotNull
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public AdvancedAuctionKey itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
  /**
    * Get country
    * @return country
@@ -72,6 +53,25 @@ public class AdvancedAuctionKey  {
 
   public AdvancedAuctionKey country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+  **/
+  @JsonProperty("item_id")
+  @NotNull
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public AdvancedAuctionKey itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
@@ -103,14 +103,14 @@ public class AdvancedAuctionKey  {
       return false;
     }
     AdvancedAuctionKey advancedAuctionKey = (AdvancedAuctionKey) o;
-    return Objects.equals(this.itemId, advancedAuctionKey.itemId) &&
-        Objects.equals(this.country, advancedAuctionKey.country) &&
+    return Objects.equals(this.country, advancedAuctionKey.country) &&
+        Objects.equals(this.itemId, advancedAuctionKey.itemId) &&
         Objects.equals(this.language, advancedAuctionKey.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @Override
@@ -118,8 +118,8 @@ public class AdvancedAuctionKey  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionKey {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

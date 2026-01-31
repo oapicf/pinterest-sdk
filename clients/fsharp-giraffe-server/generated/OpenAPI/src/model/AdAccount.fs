@@ -14,13 +14,13 @@ module AdAccount =
 
 
   type AdAccount = {
+    Country : Country;
+    CreatedTime : int option;
+    Currency : Currency;
     Id : string;
     Name : string;
     Owner : AdAccountOwner;
-    Country : Country;
-    Currency : Currency;
     Permissions : BusinessAccessRole[];
-    CreatedTime : int option;
     UpdatedTime : int option;
   }
   //#endregion

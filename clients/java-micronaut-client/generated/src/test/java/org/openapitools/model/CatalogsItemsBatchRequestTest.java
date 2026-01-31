@@ -42,6 +42,14 @@ public class CatalogsItemsBatchRequestTest {
     }
 
     /**
+     * Test the property 'items'
+     */
+    @Test
+    public void itemsTest() {
+        // TODO: test items
+    }
+
+    /**
      * Test the property 'language'
      */
     @Test
@@ -55,14 +63,6 @@ public class CatalogsItemsBatchRequestTest {
     @Test
     public void operationTest() {
         // TODO: test operation
-    }
-
-    /**
-     * Test the property 'items'
-     */
-    @Test
-    public void itemsTest() {
-        // TODO: test items
     }
 
 }

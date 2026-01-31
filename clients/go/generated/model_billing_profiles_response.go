@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,16 +20,18 @@ var _ MappedNullable = &BillingProfilesResponse{}
 
 // BillingProfilesResponse struct for BillingProfilesResponse
 type BillingProfilesResponse struct {
-	// Billing ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Type of the card.
-	CardType *string `json:"card_type,omitempty"`
-	// Status of the billing.
-	Status *string `json:"status,omitempty"`
 	// Advertiser ID of the billing.
 	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Billing type of the advertiser
+	BillingType *string `json:"billing_type,omitempty"`
+	// Type of the card.
+	CardType *string `json:"card_type,omitempty"`
+	// Billing ID.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Brand of the payment method.
 	PaymentMethodBrand *string `json:"payment_method_brand,omitempty"`
+	// Status of the billing.
+	Status *string `json:"status,omitempty"`
 }
 
 // NewBillingProfilesResponse instantiates a new BillingProfilesResponse object
@@ -47,102 +49,6 @@ func NewBillingProfilesResponse() *BillingProfilesResponse {
 func NewBillingProfilesResponseWithDefaults() *BillingProfilesResponse {
 	this := BillingProfilesResponse{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *BillingProfilesResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *BillingProfilesResponse) SetId(v string) {
-	o.Id = &v
-}
-
-// GetCardType returns the CardType field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetCardType() string {
-	if o == nil || IsNil(o.CardType) {
-		var ret string
-		return ret
-	}
-	return *o.CardType
-}
-
-// GetCardTypeOk returns a tuple with the CardType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetCardTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.CardType) {
-		return nil, false
-	}
-	return o.CardType, true
-}
-
-// HasCardType returns a boolean if a field has been set.
-func (o *BillingProfilesResponse) HasCardType() bool {
-	if o != nil && !IsNil(o.CardType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCardType gets a reference to the given string and assigns it to the CardType field.
-func (o *BillingProfilesResponse) SetCardType(v string) {
-	o.CardType = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *BillingProfilesResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *BillingProfilesResponse) SetStatus(v string) {
-	o.Status = &v
 }
 
 // GetAdvertiserId returns the AdvertiserId field value if set, zero value otherwise.
@@ -177,6 +83,102 @@ func (o *BillingProfilesResponse) SetAdvertiserId(v string) {
 	o.AdvertiserId = &v
 }
 
+// GetBillingType returns the BillingType field value if set, zero value otherwise.
+func (o *BillingProfilesResponse) GetBillingType() string {
+	if o == nil || IsNil(o.BillingType) {
+		var ret string
+		return ret
+	}
+	return *o.BillingType
+}
+
+// GetBillingTypeOk returns a tuple with the BillingType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingProfilesResponse) GetBillingTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.BillingType) {
+		return nil, false
+	}
+	return o.BillingType, true
+}
+
+// HasBillingType returns a boolean if a field has been set.
+func (o *BillingProfilesResponse) HasBillingType() bool {
+	if o != nil && !IsNil(o.BillingType) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingType gets a reference to the given string and assigns it to the BillingType field.
+func (o *BillingProfilesResponse) SetBillingType(v string) {
+	o.BillingType = &v
+}
+
+// GetCardType returns the CardType field value if set, zero value otherwise.
+func (o *BillingProfilesResponse) GetCardType() string {
+	if o == nil || IsNil(o.CardType) {
+		var ret string
+		return ret
+	}
+	return *o.CardType
+}
+
+// GetCardTypeOk returns a tuple with the CardType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingProfilesResponse) GetCardTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.CardType) {
+		return nil, false
+	}
+	return o.CardType, true
+}
+
+// HasCardType returns a boolean if a field has been set.
+func (o *BillingProfilesResponse) HasCardType() bool {
+	if o != nil && !IsNil(o.CardType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardType gets a reference to the given string and assigns it to the CardType field.
+func (o *BillingProfilesResponse) SetCardType(v string) {
+	o.CardType = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *BillingProfilesResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingProfilesResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *BillingProfilesResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *BillingProfilesResponse) SetId(v string) {
+	o.Id = &v
+}
+
 // GetPaymentMethodBrand returns the PaymentMethodBrand field value if set, zero value otherwise.
 func (o *BillingProfilesResponse) GetPaymentMethodBrand() string {
 	if o == nil || IsNil(o.PaymentMethodBrand) {
@@ -209,6 +211,38 @@ func (o *BillingProfilesResponse) SetPaymentMethodBrand(v string) {
 	o.PaymentMethodBrand = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *BillingProfilesResponse) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingProfilesResponse) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *BillingProfilesResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *BillingProfilesResponse) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o BillingProfilesResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -219,20 +253,23 @@ func (o BillingProfilesResponse) MarshalJSON() ([]byte, error) {
 
 func (o BillingProfilesResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.AdvertiserId) {
+		toSerialize["advertiser_id"] = o.AdvertiserId
+	}
+	if !IsNil(o.BillingType) {
+		toSerialize["billing_type"] = o.BillingType
 	}
 	if !IsNil(o.CardType) {
 		toSerialize["card_type"] = o.CardType
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.AdvertiserId) {
-		toSerialize["advertiser_id"] = o.AdvertiserId
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.PaymentMethodBrand) {
 		toSerialize["payment_method_brand"] = o.PaymentMethodBrand
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

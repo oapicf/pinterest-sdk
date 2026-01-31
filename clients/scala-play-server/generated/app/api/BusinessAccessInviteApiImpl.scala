@@ -17,7 +17,7 @@ import model.UpdateInvitesResultsResponseArray
 /**
   * Provides a default implementation for [[BusinessAccessInviteApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class BusinessAccessInviteApiImpl extends BusinessAccessInviteApi {
   /**
     * @inheritdoc
@@ -61,7 +61,7 @@ class BusinessAccessInviteApiImpl extends BusinessAccessInviteApi {
   override def getInvites(businessId: String, isMember: Option[Boolean], inviteStatus: Option[List[String]], inviteType: Option[InviteType], bookmark: Option[String], pageSize: Option[Int]): GetInvites200Response = {
     // TODO: Implement better logic
 
-    GetInvites200Response(List.empty[InviteResponse], None)
+    GetInvites200Response(None, List.empty[InviteResponse])
   }
 
   /**

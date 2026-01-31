@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OptimizationGoalMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OptimizationGoalMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OptimizationGoalMetadataConversionTagV3GoalMetadata = openapi_server.resourceTypes.OptimizationGoalMetadataConversionTagV3GoalMetadata
+  OptimizationGoalMetadataFrequencyGoalMetadata = openapi_server.resourceTypes.OptimizationGoalMetadataFrequencyGoalMetadata
+  OptimizationGoalMetadataScrollupGoalMetadata = openapi_server.resourceTypes.OptimizationGoalMetadataScrollupGoalMetadata
+}
+resourceTypes {
+
+  OptimizationGoalMetadata {
+    title = OptimizationGoalMetadata
+    description = OptimizationGoalMetadata
+    derivedFrom = Root
+    properties {
+        conversion_tag_v3_goal_metadata {
+          type = OptimizationGoalMetadataConversionTagV3GoalMetadata
+          description = ""
+          optional = false
+        }
+        frequency_goal_metadata {
+          type = OptimizationGoalMetadataFrequencyGoalMetadata
+          description = ""
+          optional = false
+        }
+        scrollup_goal_metadata {
+          type = OptimizationGoalMetadataScrollupGoalMetadata
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OptimizationGoalMetadata {
+    title = OptimizationGoalMetadata
+    description = OptimizationGoalMetadata
+    implements = openapi_server.resourceTypes.OptimizationGoalMetadata
+
+  }
+}

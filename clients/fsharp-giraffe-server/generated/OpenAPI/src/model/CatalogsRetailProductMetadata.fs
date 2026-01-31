@@ -13,11 +13,11 @@ module CatalogsRetailProductMetadata =
 
 
   type CatalogsRetailProductMetadata = {
-    ItemId : string;
-    ItemGroupId : string option;
     Availability : NonNullableProductAvailabilityType;
+    Currency : NonNullableCatalogsCurrency;
+    ItemGroupId : string option;
+    ItemId : string;
     Price : decimal;
     SalePrice : decimal option;
-    Currency : NonNullableCatalogsCurrency;
   }
   //#endregion

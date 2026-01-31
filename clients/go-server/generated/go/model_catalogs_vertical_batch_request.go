@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,18 +17,18 @@ package openapi
 // CatalogsVerticalBatchRequest - A request object that can have multiple operations on a single batch
 type CatalogsVerticalBatchRequest struct {
 
+	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	CatalogId string `json:"catalog_id,omitempty"`
+
 	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-
 	// Array with creative assets item operations
 	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
 
-	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-	CatalogId string `json:"catalog_id,omitempty"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 }
 
 // AssertCatalogsVerticalBatchRequestRequired checks if the required fields are not zero-ed
@@ -36,8 +36,8 @@ func AssertCatalogsVerticalBatchRequestRequired(obj CatalogsVerticalBatchRequest
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
-		"language": obj.Language,
 		"items": obj.Items,
+		"language": obj.Language,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

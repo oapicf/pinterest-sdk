@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("get_business_members_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetBusinessMembers200Response   {
-  private @Valid List<@Valid UserBusinessRoleBinding> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid UserBusinessRoleBinding> items = new ArrayList<>();
 
   public GetBusinessMembers200Response() {
   }
@@ -35,6 +35,25 @@ public class GetBusinessMembers200Response   {
     @JsonProperty(required = true, value = "items") List<@Valid UserBusinessRoleBinding> items
   ) {
     this.items = items;
+  }
+
+  /**
+   **/
+  public GetBusinessMembers200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  @JsonProperty("bookmark")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
   }
 
   /**
@@ -73,25 +92,6 @@ public class GetBusinessMembers200Response   {
 
     return this;
   }
-  /**
-   **/
-  public GetBusinessMembers200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  @JsonProperty("bookmark")
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -102,13 +102,13 @@ public class GetBusinessMembers200Response   {
       return false;
     }
     GetBusinessMembers200Response getBusinessMembers200Response = (GetBusinessMembers200Response) o;
-    return Objects.equals(this.items, getBusinessMembers200Response.items) &&
-        Objects.equals(this.bookmark, getBusinessMembers200Response.bookmark);
+    return Objects.equals(this.bookmark, getBusinessMembers200Response.bookmark) &&
+        Objects.equals(this.items, getBusinessMembers200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -116,8 +116,8 @@ public class GetBusinessMembers200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessMembers200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

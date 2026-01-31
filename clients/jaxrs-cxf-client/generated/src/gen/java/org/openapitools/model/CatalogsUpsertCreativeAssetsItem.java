@@ -14,6 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsUpsertCreativeAssetsItem  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private CatalogsCreativeAssetsAttributes attributes;
+
  /**
   * The catalog creative assets id in the merchant namespace
   */
@@ -54,10 +58,24 @@ UPSERT(String.valueOf("UPSERT"));
   @ApiModelProperty(required = true, value = "")
 
   private OperationEnum operation;
+ /**
+   * Get attributes
+   * @return attributes
+  **/
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
-  private CatalogsCreativeAssetsAttributes attributes;
+  public CatalogsUpsertCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
    * The catalog creative assets id in the merchant namespace
    * @return creativeAssetsId
@@ -97,24 +115,6 @@ UPSERT(String.valueOf("UPSERT"));
     return this;
   }
 
- /**
-   * Get attributes
-   * @return attributes
-  **/
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  public CatalogsUpsertCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,14 +124,14 @@ UPSERT(String.valueOf("UPSERT"));
       return false;
     }
     CatalogsUpsertCreativeAssetsItem catalogsUpsertCreativeAssetsItem = (CatalogsUpsertCreativeAssetsItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsUpsertCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsUpsertCreativeAssetsItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpsertCreativeAssetsItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpsertCreativeAssetsItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsUpsertCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsUpsertCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -139,9 +139,9 @@ UPSERT(String.valueOf("UPSERT"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

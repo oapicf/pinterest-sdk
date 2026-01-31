@@ -21,17 +21,17 @@ test_that("errors", {
   #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
 
+test_that("status", {
+  # tests for the property `status` (ItemProcessingStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
 test_that("warnings", {
   # tests for the property `warnings` (array[ItemValidationEvent])
   # Array with the validation warnings for the item processing record
 
   # uncomment below to test the property
   #expect_equal(model.instance$`warnings`, "EXPECTED_RESULT")
-})
-
-test_that("status", {
-  # tests for the property `status` (ItemProcessingStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })

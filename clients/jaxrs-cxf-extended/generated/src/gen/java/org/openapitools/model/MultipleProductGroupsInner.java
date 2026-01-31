@@ -19,11 +19,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MultipleProductGroupsInner  {
   
-  @ApiModelProperty(required = true, value = "")
-  private String name;
-
   @ApiModelProperty(value = "")
   private String description;
+
+ /**
+  * Catalog Feed id pertaining to the catalog product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+  private String feedId;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsProductGroupFiltersRequest filters;
 
  /**
   * boolean indicator of whether the product group is being featured or not
@@ -32,39 +39,7 @@ public class MultipleProductGroupsInner  {
   private Boolean isFeatured = false;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsProductGroupFiltersRequest filters;
-
- /**
-  * Catalog Feed id pertaining to the catalog product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
-  private String feedId;
- /**
-  * Get name
-  * @return name
-  */
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public MultipleProductGroupsInner name(String name) {
-    this.name = name;
-    return this;
-  }
-
+  private String name;
  /**
   * Get description
   * @return description
@@ -90,26 +65,27 @@ public class MultipleProductGroupsInner  {
   }
 
  /**
-  * boolean indicator of whether the product group is being featured or not
-  * @return isFeatured
+  * Catalog Feed id pertaining to the catalog product group.
+  * @return feedId
   */
-  @JsonProperty("is_featured")
-  public Boolean getIsFeatured() {
-    return isFeatured;
+  @JsonProperty("feed_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getFeedId() {
+    return feedId;
   }
 
   /**
-   * Sets the <code>isFeatured</code> property.
+   * Sets the <code>feedId</code> property.
    */
- public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
+ public void setFeedId(String feedId) {
+    this.feedId = feedId;
   }
 
   /**
-   * Sets the <code>isFeatured</code> property.
+   * Sets the <code>feedId</code> property.
    */
-  public MultipleProductGroupsInner isFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
+  public MultipleProductGroupsInner feedId(String feedId) {
+    this.feedId = feedId;
     return this;
   }
 
@@ -139,27 +115,51 @@ public class MultipleProductGroupsInner  {
   }
 
  /**
-  * Catalog Feed id pertaining to the catalog product group.
-  * @return feedId
+  * boolean indicator of whether the product group is being featured or not
+  * @return isFeatured
   */
-  @JsonProperty("feed_id")
+  @JsonProperty("is_featured")
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+
+  /**
+   * Sets the <code>isFeatured</code> property.
+   */
+ public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  /**
+   * Sets the <code>isFeatured</code> property.
+   */
+  public MultipleProductGroupsInner isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+ /**
+  * Get name
+  * @return name
+  */
+  @JsonProperty("name")
   @NotNull
- @Pattern(regexp="^\\d+$")  public String getFeedId() {
-    return feedId;
+  public String getName() {
+    return name;
   }
 
   /**
-   * Sets the <code>feedId</code> property.
+   * Sets the <code>name</code> property.
    */
- public void setFeedId(String feedId) {
-    this.feedId = feedId;
+ public void setName(String name) {
+    this.name = name;
   }
 
   /**
-   * Sets the <code>feedId</code> property.
+   * Sets the <code>name</code> property.
    */
-  public MultipleProductGroupsInner feedId(String feedId) {
-    this.feedId = feedId;
+  public MultipleProductGroupsInner name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -173,16 +173,16 @@ public class MultipleProductGroupsInner  {
       return false;
     }
     MultipleProductGroupsInner multipleProductGroupsInner = (MultipleProductGroupsInner) o;
-    return Objects.equals(this.name, multipleProductGroupsInner.name) &&
-        Objects.equals(this.description, multipleProductGroupsInner.description) &&
-        Objects.equals(this.isFeatured, multipleProductGroupsInner.isFeatured) &&
+    return Objects.equals(this.description, multipleProductGroupsInner.description) &&
+        Objects.equals(this.feedId, multipleProductGroupsInner.feedId) &&
         Objects.equals(this.filters, multipleProductGroupsInner.filters) &&
-        Objects.equals(this.feedId, multipleProductGroupsInner.feedId);
+        Objects.equals(this.isFeatured, multipleProductGroupsInner.isFeatured) &&
+        Objects.equals(this.name, multipleProductGroupsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -190,11 +190,11 @@ public class MultipleProductGroupsInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class MultipleProductGroupsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

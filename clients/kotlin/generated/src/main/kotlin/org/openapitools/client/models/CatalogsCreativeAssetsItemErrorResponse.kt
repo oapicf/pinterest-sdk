@@ -25,8 +25,8 @@ import com.squareup.moshi.JsonClass
  * Object describing a creative assets item error
  *
  * @param catalogType 
- * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param errors Array with the errors for the item id requested
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 
 
@@ -35,13 +35,13 @@ data class CatalogsCreativeAssetsItemErrorResponse (
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
 
-    /* The catalog creative assets id in the merchant namespace */
-    @Json(name = "creative_assets_id")
-    val creativeAssetsId: kotlin.String? = null,
-
     /* Array with the errors for the item id requested */
     @Json(name = "errors")
-    val errors: kotlin.collections.List<ItemValidationEvent>? = null
+    val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    /* The catalog creative assets id in the merchant namespace */
+    @Json(name = "creative_assets_id")
+    val creativeAssetsId: kotlin.String? = null
 
 ) {
 

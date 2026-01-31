@@ -19,14 +19,14 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.MediaList200Response
-import org.openapitools.client.models.MediaUploadDetails
+import org.openapitools.client.models.Media
 
 class MediaList200ResponseTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of MediaList200Response
         //val modelInstance = MediaList200Response()
 
-        // to test the property `items` - Media
+        // to test the property `items`
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")

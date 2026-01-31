@@ -11,6 +11,10 @@
 
 export interface DeleteAssetGroupResponseExceptionsInner { 
     /**
+     * Asset group id of the exception.
+     */
+    asset_group_id?: string;
+    /**
      * Error code associated with the error deleting asset group.
      */
     code?: number;
@@ -18,9 +22,5 @@ export interface DeleteAssetGroupResponseExceptionsInner {
      * Error message associated with the error deleting asset group.
      */
     message?: string;
-    /**
-     * Asset group id of the exception.
-     */
-    asset_group_id?: string;
 }
 

@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Response object of catalogs items")
 @JsonTypeName("CatalogsItems")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItems   {
-  private @Valid List<@Valid ItemResponse> items = new ArrayList<>();
+  private @Valid List<ItemResponse> items = new ArrayList<>();
 
   public CatalogsItems() {
   }
@@ -32,7 +32,7 @@ public class CatalogsItems   {
   /**
    * Array with catalogs items
    **/
-  public CatalogsItems items(List<@Valid ItemResponse> items) {
+  public CatalogsItems items(List<ItemResponse> items) {
     this.items = items;
     return this;
   }
@@ -45,7 +45,7 @@ public class CatalogsItems   {
   }
 
   @JsonProperty("items")
-  public void setItems(List<@Valid ItemResponse> items) {
+  public void setItems(List<ItemResponse> items) {
     this.items = items;
   }
 

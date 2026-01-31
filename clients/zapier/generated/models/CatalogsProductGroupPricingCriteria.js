@@ -10,15 +10,15 @@ module.exports = {
                 type: 'boolean',
             },
             {
+                key: `${keyPrefix}negated`,
+                label: `[${labelPrefix}negated]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}values`,
                 label: `[${labelPrefix}values]`,
                 required: true,
                 type: 'number',
-            },
-            {
-                key: `${keyPrefix}negated`,
-                label: `[${labelPrefix}negated]`,
-                type: 'boolean',
             },
         ]
     },
@@ -26,8 +26,8 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'inclusion': bundle.inputData?.[`${keyPrefix}inclusion`],
-            'values': bundle.inputData?.[`${keyPrefix}values`],
             'negated': bundle.inputData?.[`${keyPrefix}negated`],
+            'values': bundle.inputData?.[`${keyPrefix}values`],
         }
     },
 }

@@ -26,6 +26,19 @@ public class AdsCreditDiscountsResponse  {
   @ApiModelProperty(example = "12312451231", value = "Advertiser ID the offer was applied to.")
   private String advertiserId;
 
+ /**
+  * Currency value for the discount.
+  */
+  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
+  private String discountCurrency;
+
+ /**
+  * The discount applied in the offer’s currency value.
+  */
+  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+  @Valid
+  private BigDecimal discountInMicroCurrency;
+
 public enum DiscountTypeEnum {
 
     @JsonProperty("COUPON") COUPON(String.valueOf("COUPON")),
@@ -81,30 +94,17 @@ public enum DiscountTypeEnum {
   private DiscountTypeEnum discountType;
 
  /**
-  * The discount applied in the offer’s currency value.
+  * The credits left to spend.
   */
-  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+  @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
   @Valid
-  private BigDecimal discountInMicroCurrency;
-
- /**
-  * Currency value for the discount.
-  */
-  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
-  private String discountCurrency;
+  private BigDecimal remainingDiscountInMicroCurrency;
 
  /**
   * Human readable title of the offer code.
   */
   @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
   private String title;
-
- /**
-  * The credits left to spend.
-  */
-  @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
-  @Valid
-  private BigDecimal remainingDiscountInMicroCurrency;
  /**
   * True if the offer code is currently active.
   * @return active
@@ -154,26 +154,26 @@ public enum DiscountTypeEnum {
   }
 
  /**
-  * The type of discount of this credit
-  * @return discountType
+  * Currency value for the discount.
+  * @return discountCurrency
   */
-  @JsonProperty("discountType")
-  public String getDiscountType() {
-    return discountType == null ? null : discountType.value();
+  @JsonProperty("discountCurrency")
+  public String getDiscountCurrency() {
+    return discountCurrency;
   }
 
   /**
-   * Sets the <code>discountType</code> property.
+   * Sets the <code>discountCurrency</code> property.
    */
- public void setDiscountType(DiscountTypeEnum discountType) {
-    this.discountType = discountType;
+ public void setDiscountCurrency(String discountCurrency) {
+    this.discountCurrency = discountCurrency;
   }
 
   /**
-   * Sets the <code>discountType</code> property.
+   * Sets the <code>discountCurrency</code> property.
    */
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
-    this.discountType = discountType;
+  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
+    this.discountCurrency = discountCurrency;
     return this;
   }
 
@@ -202,50 +202,26 @@ public enum DiscountTypeEnum {
   }
 
  /**
-  * Currency value for the discount.
-  * @return discountCurrency
+  * The type of discount of this credit
+  * @return discountType
   */
-  @JsonProperty("discountCurrency")
-  public String getDiscountCurrency() {
-    return discountCurrency;
+  @JsonProperty("discountType")
+  public String getDiscountType() {
+    return discountType == null ? null : discountType.value();
   }
 
   /**
-   * Sets the <code>discountCurrency</code> property.
+   * Sets the <code>discountType</code> property.
    */
- public void setDiscountCurrency(String discountCurrency) {
-    this.discountCurrency = discountCurrency;
+ public void setDiscountType(DiscountTypeEnum discountType) {
+    this.discountType = discountType;
   }
 
   /**
-   * Sets the <code>discountCurrency</code> property.
+   * Sets the <code>discountType</code> property.
    */
-  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
-    this.discountCurrency = discountCurrency;
-    return this;
-  }
-
- /**
-  * Human readable title of the offer code.
-  * @return title
-  */
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-
-  /**
-   * Sets the <code>title</code> property.
-   */
- public void setTitle(String title) {
-    this.title = title;
-  }
-
-  /**
-   * Sets the <code>title</code> property.
-   */
-  public AdsCreditDiscountsResponse title(String title) {
-    this.title = title;
+  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+    this.discountType = discountType;
     return this;
   }
 
@@ -273,6 +249,30 @@ public enum DiscountTypeEnum {
     return this;
   }
 
+ /**
+  * Human readable title of the offer code.
+  * @return title
+  */
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+
+  /**
+   * Sets the <code>title</code> property.
+   */
+ public void setTitle(String title) {
+    this.title = title;
+  }
+
+  /**
+   * Sets the <code>title</code> property.
+   */
+  public AdsCreditDiscountsResponse title(String title) {
+    this.title = title;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -285,16 +285,16 @@ public enum DiscountTypeEnum {
     AdsCreditDiscountsResponse adsCreditDiscountsResponse = (AdsCreditDiscountsResponse) o;
     return Objects.equals(this.active, adsCreditDiscountsResponse.active) &&
         Objects.equals(this.advertiserId, adsCreditDiscountsResponse.advertiserId) &&
-        Objects.equals(this.discountType, adsCreditDiscountsResponse.discountType) &&
-        Objects.equals(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
         Objects.equals(this.discountCurrency, adsCreditDiscountsResponse.discountCurrency) &&
-        Objects.equals(this.title, adsCreditDiscountsResponse.title) &&
-        Objects.equals(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency);
+        Objects.equals(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
+        Objects.equals(this.discountType, adsCreditDiscountsResponse.discountType) &&
+        Objects.equals(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency) &&
+        Objects.equals(this.title, adsCreditDiscountsResponse.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, advertiserId, discountType, discountInMicroCurrency, discountCurrency, title, remainingDiscountInMicroCurrency);
+    return Objects.hash(active, advertiserId, discountCurrency, discountInMicroCurrency, discountType, remainingDiscountInMicroCurrency, title);
   }
 
   @Override
@@ -304,11 +304,11 @@ public enum DiscountTypeEnum {
     
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
-    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
     sb.append("    discountCurrency: ").append(toIndentedString(discountCurrency)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
+    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    remainingDiscountInMicroCurrency: ").append(toIndentedString(remainingDiscountInMicroCurrency)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,6 +14,96 @@ module BusinessAccessRelationshipsApiHandlers =
     /// 
     /// </summary>
 
+    //#region BrandAccountsCreate
+    /// <summary>
+    /// Create a Brand Account
+    /// </summary>
+   [<FunctionName("BrandAccountsCreate")>]
+    let BrandAccountsCreate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<BrandAccountsCreateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = BusinessAccessRelationshipsApiService.BrandAccountsCreate bodyParams
+      match result with
+      | BrandAccountsCreateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BrandAccountsCreateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BrandAccountsCreateDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region BrandAccountsUpdate
+    /// <summary>
+    /// Update a Brand Account
+    /// </summary>
+   [<FunctionName("BrandAccountsUpdate")>]
+    let BrandAccountsUpdate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "PATCH", Route = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<BrandAccountsUpdateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = BusinessAccessRelationshipsApiService.BrandAccountsUpdate bodyParams
+      match result with
+      | BrandAccountsUpdateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BrandAccountsUpdateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BrandAccountsUpdateStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | BrandAccountsUpdateStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | BrandAccountsUpdateStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | BrandAccountsUpdateStatusCode409 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+      | BrandAccountsUpdateStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
+      | BrandAccountsUpdateDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region DeleteBusinessMembership
     /// <summary>
     /// Terminate business memberships
@@ -136,6 +226,41 @@ module BusinessAccessRelationshipsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | GetBusinessPartnersDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region SystemUserUpdate
+    /// <summary>
+    /// Update a system user information.
+    /// </summary>
+   [<FunctionName("SystemUserUpdate")>]
+    let SystemUserUpdate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "PATCH", Route = "/v5/businesses/{business_id}/system_users/{system_user_id}")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<SystemUserUpdateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = BusinessAccessRelationshipsApiService.SystemUserUpdate bodyParams
+      match result with
+      | SystemUserUpdateStatusCode200 resolved ->
+          let content = resolved.content
+          let responseContentType = "text/plain"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | SystemUserUpdateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | SystemUserUpdateDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))

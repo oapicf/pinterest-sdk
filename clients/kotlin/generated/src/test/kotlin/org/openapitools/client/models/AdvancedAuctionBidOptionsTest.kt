@@ -27,16 +27,16 @@ class AdvancedAuctionBidOptionsTest : ShouldSpec() {
         // uncomment below to create an instance of AdvancedAuctionBidOptions
         //val modelInstance = AdvancedAuctionBidOptions()
 
-        // to test the property `bidInMicroCurrency` - Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
-        should("test bidInMicroCurrency") {
-            // uncomment below to test the property
-            //modelInstance.bidInMicroCurrency shouldBe ("TODO")
-        }
-
         // to test the property `appTypeMultipliers`
         should("test appTypeMultipliers") {
             // uncomment below to test the property
             //modelInstance.appTypeMultipliers shouldBe ("TODO")
+        }
+
+        // to test the property `bidInMicroCurrency` - Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
+        should("test bidInMicroCurrency") {
+            // uncomment below to test the property
+            //modelInstance.bidInMicroCurrency shouldBe ("TODO")
         }
 
         // to test the property `placementMultipliers`

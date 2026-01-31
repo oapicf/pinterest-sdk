@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,13 +20,107 @@ var _ MappedNullable = &ItemAttributes{}
 
 // ItemAttributes struct for ItemAttributes
 type ItemAttributes struct {
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage0Link NullableString `json:"ad_image_0_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage0Tag NullableString `json:"ad_image_0_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage10Link NullableString `json:"ad_image_10_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage10Tag NullableString `json:"ad_image_10_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage11Link NullableString `json:"ad_image_11_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage11Tag NullableString `json:"ad_image_11_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage12Link NullableString `json:"ad_image_12_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage12Tag NullableString `json:"ad_image_12_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage13Link NullableString `json:"ad_image_13_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage13Tag NullableString `json:"ad_image_13_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage14Link NullableString `json:"ad_image_14_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage14Tag NullableString `json:"ad_image_14_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage15Link NullableString `json:"ad_image_15_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage15Tag NullableString `json:"ad_image_15_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage16Link NullableString `json:"ad_image_16_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage16Tag NullableString `json:"ad_image_16_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage17Link NullableString `json:"ad_image_17_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage17Tag NullableString `json:"ad_image_17_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage18Link NullableString `json:"ad_image_18_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage18Tag NullableString `json:"ad_image_18_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage19Link NullableString `json:"ad_image_19_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage19Tag NullableString `json:"ad_image_19_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage1Link NullableString `json:"ad_image_1_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage1Tag NullableString `json:"ad_image_1_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage2Link NullableString `json:"ad_image_2_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage2Tag NullableString `json:"ad_image_2_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage3Link NullableString `json:"ad_image_3_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage3Tag NullableString `json:"ad_image_3_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage4Link NullableString `json:"ad_image_4_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage4Tag NullableString `json:"ad_image_4_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage5Link NullableString `json:"ad_image_5_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage5Tag NullableString `json:"ad_image_5_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage6Link NullableString `json:"ad_image_6_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage6Tag NullableString `json:"ad_image_6_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage7Link NullableString `json:"ad_image_7_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage7Tag NullableString `json:"ad_image_7_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage8Link NullableString `json:"ad_image_8_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage8Tag NullableString `json:"ad_image_8_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdImage9Link NullableString `json:"ad_image_9_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+	AdImage9Tag NullableString `json:"ad_image_9_tag,omitempty"`
 	// Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
 	AdLink NullableString `json:"ad_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdVideo0Link NullableString `json:"ad_video_0_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+	AdVideo0Tag NullableString `json:"ad_video_0_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdVideo1Link NullableString `json:"ad_video_1_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+	AdVideo1Tag NullableString `json:"ad_video_1_tag,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+	AdVideo2Link NullableString `json:"ad_video_2_link,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+	AdVideo2Tag NullableString `json:"ad_video_2_tag,omitempty"`
 	// Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
 	Adult NullableBool `json:"adult,omitempty"`
-	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 	AgeGroup NullableString `json:"age_group,omitempty"`
-	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+	// The deep link to the product on the Android app.
+	AndroidDeepLink *string `json:"android_deep_link,omitempty"`
+	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
 	Availability *string `json:"availability,omitempty"`
 	// Average reviews for the item. Can be a number from 1-5.
 	AverageReviewRating NullableFloat32 `json:"average_review_rating,omitempty"`
@@ -39,31 +133,44 @@ type ItemAttributes struct {
 	Color NullableString `json:"color,omitempty"`
 	// The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
 	Condition NullableString `json:"condition,omitempty"`
-	// <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+	// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
 	CustomLabel0 NullableString `json:"custom_label_0,omitempty"`
-	// <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+	// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
 	CustomLabel1 NullableString `json:"custom_label_1,omitempty"`
-	// <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+	// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
 	CustomLabel2 NullableString `json:"custom_label_2,omitempty"`
-	// <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+	// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
 	CustomLabel3 NullableString `json:"custom_label_3,omitempty"`
-	// <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+	// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
 	CustomLabel4 NullableString `json:"custom_label_4,omitempty"`
+	// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+	CustomNumber0 NullableInt32 `json:"custom_number_0,omitempty"`
+	// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+	CustomNumber1 NullableInt32 `json:"custom_number_1,omitempty"`
+	// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+	CustomNumber2 NullableInt32 `json:"custom_number_2,omitempty"`
+	// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+	CustomNumber3 NullableInt32 `json:"custom_number_3,omitempty"`
+	// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+	CustomNumber4 NullableInt32 `json:"custom_number_4,omitempty"`
 	// <p><= 10000 characters</p> <p>The description of the product.</p>
 	Description *string `json:"description,omitempty"`
 	// The item is free to ship.
 	FreeShippingLabel NullableBool `json:"free_shipping_label,omitempty"`
 	// The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
 	FreeShippingLimit NullableString `json:"free_shipping_limit,omitempty"`
-	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
 	Gender NullableString `json:"gender,omitempty"`
 	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
 	GoogleProductCategory NullableString `json:"google_product_category,omitempty"`
-	// The unique universal product identifier.
-	Gtin NullableInt32 `json:"gtin,omitempty"`
+	Gtin NullableUpdatableItemAttributesGtin `json:"gtin,omitempty"`
 	// <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
 	// Deprecated
 	Id *string `json:"id,omitempty"`
+	// Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+	InstallmentPrice NullableString `json:"installment_price,omitempty"`
+	// The deep link to the product on the iOS app.
+	IosDeepLink *string `json:"ios_deep_link,omitempty"`
 	// <p><= 127 characters</p> <p>The parent ID of the product.</p>
 	ItemGroupId NullableString `json:"item_group_id,omitempty"`
 	// The millisecond timestamp when the item was lastly modified by the merchant.
@@ -88,8 +195,12 @@ type ItemAttributes struct {
 	Price *string `json:"price,omitempty"`
 	// <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
 	ProductType NullableString `json:"product_type,omitempty"`
+	// A unique identifier referencing the promotion associated with this catalog item.
+	PromotionId NullableString `json:"promotion_id,omitempty"`
 	// The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
 	SalePrice NullableString `json:"sale_price,omitempty"`
+	// Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
+	SalePriceEffectiveDate NullableString `json:"sale_price_effective_date,omitempty"`
 	// Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
 	Shipping NullableString `json:"shipping,omitempty"`
 	// The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
@@ -100,14 +211,18 @@ type ItemAttributes struct {
 	ShippingWidth NullableString `json:"shipping_width,omitempty"`
 	// The size of the product.
 	Size NullableString `json:"size,omitempty"`
-	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
 	SizeSystem NullableString `json:"size_system,omitempty"`
-	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
 	SizeType NullableString `json:"size_type,omitempty"`
 	// Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
 	Tax NullableString `json:"tax,omitempty"`
 	// <p><= 500 characters</p> <p>The name of the product.</p>
 	Title *string `json:"title,omitempty"`
+	// Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+	UnitPricingBaseMeasure NullableString `json:"unit_pricing_base_measure,omitempty"`
+	// Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+	UnitPricingMeasure NullableString `json:"unit_pricing_measure,omitempty"`
 	// Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
 	VariantNames []string `json:"variant_names,omitempty"`
 	// Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
@@ -135,6 +250,1686 @@ func NewItemAttributes() *ItemAttributes {
 func NewItemAttributesWithDefaults() *ItemAttributes {
 	this := ItemAttributes{}
 	return &this
+}
+
+// GetAdImage0Link returns the AdImage0Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage0Link() string {
+	if o == nil || IsNil(o.AdImage0Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage0Link.Get()
+}
+
+// GetAdImage0LinkOk returns a tuple with the AdImage0Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage0LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage0Link.Get(), o.AdImage0Link.IsSet()
+}
+
+// HasAdImage0Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage0Link() bool {
+	if o != nil && o.AdImage0Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage0Link gets a reference to the given NullableString and assigns it to the AdImage0Link field.
+func (o *ItemAttributes) SetAdImage0Link(v string) {
+	o.AdImage0Link.Set(&v)
+}
+// SetAdImage0LinkNil sets the value for AdImage0Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage0LinkNil() {
+	o.AdImage0Link.Set(nil)
+}
+
+// UnsetAdImage0Link ensures that no value is present for AdImage0Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage0Link() {
+	o.AdImage0Link.Unset()
+}
+
+// GetAdImage0Tag returns the AdImage0Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage0Tag() string {
+	if o == nil || IsNil(o.AdImage0Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage0Tag.Get()
+}
+
+// GetAdImage0TagOk returns a tuple with the AdImage0Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage0TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage0Tag.Get(), o.AdImage0Tag.IsSet()
+}
+
+// HasAdImage0Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage0Tag() bool {
+	if o != nil && o.AdImage0Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage0Tag gets a reference to the given NullableString and assigns it to the AdImage0Tag field.
+func (o *ItemAttributes) SetAdImage0Tag(v string) {
+	o.AdImage0Tag.Set(&v)
+}
+// SetAdImage0TagNil sets the value for AdImage0Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage0TagNil() {
+	o.AdImage0Tag.Set(nil)
+}
+
+// UnsetAdImage0Tag ensures that no value is present for AdImage0Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage0Tag() {
+	o.AdImage0Tag.Unset()
+}
+
+// GetAdImage10Link returns the AdImage10Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage10Link() string {
+	if o == nil || IsNil(o.AdImage10Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage10Link.Get()
+}
+
+// GetAdImage10LinkOk returns a tuple with the AdImage10Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage10LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage10Link.Get(), o.AdImage10Link.IsSet()
+}
+
+// HasAdImage10Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage10Link() bool {
+	if o != nil && o.AdImage10Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage10Link gets a reference to the given NullableString and assigns it to the AdImage10Link field.
+func (o *ItemAttributes) SetAdImage10Link(v string) {
+	o.AdImage10Link.Set(&v)
+}
+// SetAdImage10LinkNil sets the value for AdImage10Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage10LinkNil() {
+	o.AdImage10Link.Set(nil)
+}
+
+// UnsetAdImage10Link ensures that no value is present for AdImage10Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage10Link() {
+	o.AdImage10Link.Unset()
+}
+
+// GetAdImage10Tag returns the AdImage10Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage10Tag() string {
+	if o == nil || IsNil(o.AdImage10Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage10Tag.Get()
+}
+
+// GetAdImage10TagOk returns a tuple with the AdImage10Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage10TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage10Tag.Get(), o.AdImage10Tag.IsSet()
+}
+
+// HasAdImage10Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage10Tag() bool {
+	if o != nil && o.AdImage10Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage10Tag gets a reference to the given NullableString and assigns it to the AdImage10Tag field.
+func (o *ItemAttributes) SetAdImage10Tag(v string) {
+	o.AdImage10Tag.Set(&v)
+}
+// SetAdImage10TagNil sets the value for AdImage10Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage10TagNil() {
+	o.AdImage10Tag.Set(nil)
+}
+
+// UnsetAdImage10Tag ensures that no value is present for AdImage10Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage10Tag() {
+	o.AdImage10Tag.Unset()
+}
+
+// GetAdImage11Link returns the AdImage11Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage11Link() string {
+	if o == nil || IsNil(o.AdImage11Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage11Link.Get()
+}
+
+// GetAdImage11LinkOk returns a tuple with the AdImage11Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage11LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage11Link.Get(), o.AdImage11Link.IsSet()
+}
+
+// HasAdImage11Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage11Link() bool {
+	if o != nil && o.AdImage11Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage11Link gets a reference to the given NullableString and assigns it to the AdImage11Link field.
+func (o *ItemAttributes) SetAdImage11Link(v string) {
+	o.AdImage11Link.Set(&v)
+}
+// SetAdImage11LinkNil sets the value for AdImage11Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage11LinkNil() {
+	o.AdImage11Link.Set(nil)
+}
+
+// UnsetAdImage11Link ensures that no value is present for AdImage11Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage11Link() {
+	o.AdImage11Link.Unset()
+}
+
+// GetAdImage11Tag returns the AdImage11Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage11Tag() string {
+	if o == nil || IsNil(o.AdImage11Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage11Tag.Get()
+}
+
+// GetAdImage11TagOk returns a tuple with the AdImage11Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage11TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage11Tag.Get(), o.AdImage11Tag.IsSet()
+}
+
+// HasAdImage11Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage11Tag() bool {
+	if o != nil && o.AdImage11Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage11Tag gets a reference to the given NullableString and assigns it to the AdImage11Tag field.
+func (o *ItemAttributes) SetAdImage11Tag(v string) {
+	o.AdImage11Tag.Set(&v)
+}
+// SetAdImage11TagNil sets the value for AdImage11Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage11TagNil() {
+	o.AdImage11Tag.Set(nil)
+}
+
+// UnsetAdImage11Tag ensures that no value is present for AdImage11Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage11Tag() {
+	o.AdImage11Tag.Unset()
+}
+
+// GetAdImage12Link returns the AdImage12Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage12Link() string {
+	if o == nil || IsNil(o.AdImage12Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage12Link.Get()
+}
+
+// GetAdImage12LinkOk returns a tuple with the AdImage12Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage12LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage12Link.Get(), o.AdImage12Link.IsSet()
+}
+
+// HasAdImage12Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage12Link() bool {
+	if o != nil && o.AdImage12Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage12Link gets a reference to the given NullableString and assigns it to the AdImage12Link field.
+func (o *ItemAttributes) SetAdImage12Link(v string) {
+	o.AdImage12Link.Set(&v)
+}
+// SetAdImage12LinkNil sets the value for AdImage12Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage12LinkNil() {
+	o.AdImage12Link.Set(nil)
+}
+
+// UnsetAdImage12Link ensures that no value is present for AdImage12Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage12Link() {
+	o.AdImage12Link.Unset()
+}
+
+// GetAdImage12Tag returns the AdImage12Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage12Tag() string {
+	if o == nil || IsNil(o.AdImage12Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage12Tag.Get()
+}
+
+// GetAdImage12TagOk returns a tuple with the AdImage12Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage12TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage12Tag.Get(), o.AdImage12Tag.IsSet()
+}
+
+// HasAdImage12Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage12Tag() bool {
+	if o != nil && o.AdImage12Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage12Tag gets a reference to the given NullableString and assigns it to the AdImage12Tag field.
+func (o *ItemAttributes) SetAdImage12Tag(v string) {
+	o.AdImage12Tag.Set(&v)
+}
+// SetAdImage12TagNil sets the value for AdImage12Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage12TagNil() {
+	o.AdImage12Tag.Set(nil)
+}
+
+// UnsetAdImage12Tag ensures that no value is present for AdImage12Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage12Tag() {
+	o.AdImage12Tag.Unset()
+}
+
+// GetAdImage13Link returns the AdImage13Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage13Link() string {
+	if o == nil || IsNil(o.AdImage13Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage13Link.Get()
+}
+
+// GetAdImage13LinkOk returns a tuple with the AdImage13Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage13LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage13Link.Get(), o.AdImage13Link.IsSet()
+}
+
+// HasAdImage13Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage13Link() bool {
+	if o != nil && o.AdImage13Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage13Link gets a reference to the given NullableString and assigns it to the AdImage13Link field.
+func (o *ItemAttributes) SetAdImage13Link(v string) {
+	o.AdImage13Link.Set(&v)
+}
+// SetAdImage13LinkNil sets the value for AdImage13Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage13LinkNil() {
+	o.AdImage13Link.Set(nil)
+}
+
+// UnsetAdImage13Link ensures that no value is present for AdImage13Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage13Link() {
+	o.AdImage13Link.Unset()
+}
+
+// GetAdImage13Tag returns the AdImage13Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage13Tag() string {
+	if o == nil || IsNil(o.AdImage13Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage13Tag.Get()
+}
+
+// GetAdImage13TagOk returns a tuple with the AdImage13Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage13TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage13Tag.Get(), o.AdImage13Tag.IsSet()
+}
+
+// HasAdImage13Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage13Tag() bool {
+	if o != nil && o.AdImage13Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage13Tag gets a reference to the given NullableString and assigns it to the AdImage13Tag field.
+func (o *ItemAttributes) SetAdImage13Tag(v string) {
+	o.AdImage13Tag.Set(&v)
+}
+// SetAdImage13TagNil sets the value for AdImage13Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage13TagNil() {
+	o.AdImage13Tag.Set(nil)
+}
+
+// UnsetAdImage13Tag ensures that no value is present for AdImage13Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage13Tag() {
+	o.AdImage13Tag.Unset()
+}
+
+// GetAdImage14Link returns the AdImage14Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage14Link() string {
+	if o == nil || IsNil(o.AdImage14Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage14Link.Get()
+}
+
+// GetAdImage14LinkOk returns a tuple with the AdImage14Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage14LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage14Link.Get(), o.AdImage14Link.IsSet()
+}
+
+// HasAdImage14Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage14Link() bool {
+	if o != nil && o.AdImage14Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage14Link gets a reference to the given NullableString and assigns it to the AdImage14Link field.
+func (o *ItemAttributes) SetAdImage14Link(v string) {
+	o.AdImage14Link.Set(&v)
+}
+// SetAdImage14LinkNil sets the value for AdImage14Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage14LinkNil() {
+	o.AdImage14Link.Set(nil)
+}
+
+// UnsetAdImage14Link ensures that no value is present for AdImage14Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage14Link() {
+	o.AdImage14Link.Unset()
+}
+
+// GetAdImage14Tag returns the AdImage14Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage14Tag() string {
+	if o == nil || IsNil(o.AdImage14Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage14Tag.Get()
+}
+
+// GetAdImage14TagOk returns a tuple with the AdImage14Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage14TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage14Tag.Get(), o.AdImage14Tag.IsSet()
+}
+
+// HasAdImage14Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage14Tag() bool {
+	if o != nil && o.AdImage14Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage14Tag gets a reference to the given NullableString and assigns it to the AdImage14Tag field.
+func (o *ItemAttributes) SetAdImage14Tag(v string) {
+	o.AdImage14Tag.Set(&v)
+}
+// SetAdImage14TagNil sets the value for AdImage14Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage14TagNil() {
+	o.AdImage14Tag.Set(nil)
+}
+
+// UnsetAdImage14Tag ensures that no value is present for AdImage14Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage14Tag() {
+	o.AdImage14Tag.Unset()
+}
+
+// GetAdImage15Link returns the AdImage15Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage15Link() string {
+	if o == nil || IsNil(o.AdImage15Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage15Link.Get()
+}
+
+// GetAdImage15LinkOk returns a tuple with the AdImage15Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage15LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage15Link.Get(), o.AdImage15Link.IsSet()
+}
+
+// HasAdImage15Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage15Link() bool {
+	if o != nil && o.AdImage15Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage15Link gets a reference to the given NullableString and assigns it to the AdImage15Link field.
+func (o *ItemAttributes) SetAdImage15Link(v string) {
+	o.AdImage15Link.Set(&v)
+}
+// SetAdImage15LinkNil sets the value for AdImage15Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage15LinkNil() {
+	o.AdImage15Link.Set(nil)
+}
+
+// UnsetAdImage15Link ensures that no value is present for AdImage15Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage15Link() {
+	o.AdImage15Link.Unset()
+}
+
+// GetAdImage15Tag returns the AdImage15Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage15Tag() string {
+	if o == nil || IsNil(o.AdImage15Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage15Tag.Get()
+}
+
+// GetAdImage15TagOk returns a tuple with the AdImage15Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage15TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage15Tag.Get(), o.AdImage15Tag.IsSet()
+}
+
+// HasAdImage15Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage15Tag() bool {
+	if o != nil && o.AdImage15Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage15Tag gets a reference to the given NullableString and assigns it to the AdImage15Tag field.
+func (o *ItemAttributes) SetAdImage15Tag(v string) {
+	o.AdImage15Tag.Set(&v)
+}
+// SetAdImage15TagNil sets the value for AdImage15Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage15TagNil() {
+	o.AdImage15Tag.Set(nil)
+}
+
+// UnsetAdImage15Tag ensures that no value is present for AdImage15Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage15Tag() {
+	o.AdImage15Tag.Unset()
+}
+
+// GetAdImage16Link returns the AdImage16Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage16Link() string {
+	if o == nil || IsNil(o.AdImage16Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage16Link.Get()
+}
+
+// GetAdImage16LinkOk returns a tuple with the AdImage16Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage16LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage16Link.Get(), o.AdImage16Link.IsSet()
+}
+
+// HasAdImage16Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage16Link() bool {
+	if o != nil && o.AdImage16Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage16Link gets a reference to the given NullableString and assigns it to the AdImage16Link field.
+func (o *ItemAttributes) SetAdImage16Link(v string) {
+	o.AdImage16Link.Set(&v)
+}
+// SetAdImage16LinkNil sets the value for AdImage16Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage16LinkNil() {
+	o.AdImage16Link.Set(nil)
+}
+
+// UnsetAdImage16Link ensures that no value is present for AdImage16Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage16Link() {
+	o.AdImage16Link.Unset()
+}
+
+// GetAdImage16Tag returns the AdImage16Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage16Tag() string {
+	if o == nil || IsNil(o.AdImage16Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage16Tag.Get()
+}
+
+// GetAdImage16TagOk returns a tuple with the AdImage16Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage16TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage16Tag.Get(), o.AdImage16Tag.IsSet()
+}
+
+// HasAdImage16Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage16Tag() bool {
+	if o != nil && o.AdImage16Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage16Tag gets a reference to the given NullableString and assigns it to the AdImage16Tag field.
+func (o *ItemAttributes) SetAdImage16Tag(v string) {
+	o.AdImage16Tag.Set(&v)
+}
+// SetAdImage16TagNil sets the value for AdImage16Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage16TagNil() {
+	o.AdImage16Tag.Set(nil)
+}
+
+// UnsetAdImage16Tag ensures that no value is present for AdImage16Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage16Tag() {
+	o.AdImage16Tag.Unset()
+}
+
+// GetAdImage17Link returns the AdImage17Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage17Link() string {
+	if o == nil || IsNil(o.AdImage17Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage17Link.Get()
+}
+
+// GetAdImage17LinkOk returns a tuple with the AdImage17Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage17LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage17Link.Get(), o.AdImage17Link.IsSet()
+}
+
+// HasAdImage17Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage17Link() bool {
+	if o != nil && o.AdImage17Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage17Link gets a reference to the given NullableString and assigns it to the AdImage17Link field.
+func (o *ItemAttributes) SetAdImage17Link(v string) {
+	o.AdImage17Link.Set(&v)
+}
+// SetAdImage17LinkNil sets the value for AdImage17Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage17LinkNil() {
+	o.AdImage17Link.Set(nil)
+}
+
+// UnsetAdImage17Link ensures that no value is present for AdImage17Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage17Link() {
+	o.AdImage17Link.Unset()
+}
+
+// GetAdImage17Tag returns the AdImage17Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage17Tag() string {
+	if o == nil || IsNil(o.AdImage17Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage17Tag.Get()
+}
+
+// GetAdImage17TagOk returns a tuple with the AdImage17Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage17TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage17Tag.Get(), o.AdImage17Tag.IsSet()
+}
+
+// HasAdImage17Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage17Tag() bool {
+	if o != nil && o.AdImage17Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage17Tag gets a reference to the given NullableString and assigns it to the AdImage17Tag field.
+func (o *ItemAttributes) SetAdImage17Tag(v string) {
+	o.AdImage17Tag.Set(&v)
+}
+// SetAdImage17TagNil sets the value for AdImage17Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage17TagNil() {
+	o.AdImage17Tag.Set(nil)
+}
+
+// UnsetAdImage17Tag ensures that no value is present for AdImage17Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage17Tag() {
+	o.AdImage17Tag.Unset()
+}
+
+// GetAdImage18Link returns the AdImage18Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage18Link() string {
+	if o == nil || IsNil(o.AdImage18Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage18Link.Get()
+}
+
+// GetAdImage18LinkOk returns a tuple with the AdImage18Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage18LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage18Link.Get(), o.AdImage18Link.IsSet()
+}
+
+// HasAdImage18Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage18Link() bool {
+	if o != nil && o.AdImage18Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage18Link gets a reference to the given NullableString and assigns it to the AdImage18Link field.
+func (o *ItemAttributes) SetAdImage18Link(v string) {
+	o.AdImage18Link.Set(&v)
+}
+// SetAdImage18LinkNil sets the value for AdImage18Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage18LinkNil() {
+	o.AdImage18Link.Set(nil)
+}
+
+// UnsetAdImage18Link ensures that no value is present for AdImage18Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage18Link() {
+	o.AdImage18Link.Unset()
+}
+
+// GetAdImage18Tag returns the AdImage18Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage18Tag() string {
+	if o == nil || IsNil(o.AdImage18Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage18Tag.Get()
+}
+
+// GetAdImage18TagOk returns a tuple with the AdImage18Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage18TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage18Tag.Get(), o.AdImage18Tag.IsSet()
+}
+
+// HasAdImage18Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage18Tag() bool {
+	if o != nil && o.AdImage18Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage18Tag gets a reference to the given NullableString and assigns it to the AdImage18Tag field.
+func (o *ItemAttributes) SetAdImage18Tag(v string) {
+	o.AdImage18Tag.Set(&v)
+}
+// SetAdImage18TagNil sets the value for AdImage18Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage18TagNil() {
+	o.AdImage18Tag.Set(nil)
+}
+
+// UnsetAdImage18Tag ensures that no value is present for AdImage18Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage18Tag() {
+	o.AdImage18Tag.Unset()
+}
+
+// GetAdImage19Link returns the AdImage19Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage19Link() string {
+	if o == nil || IsNil(o.AdImage19Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage19Link.Get()
+}
+
+// GetAdImage19LinkOk returns a tuple with the AdImage19Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage19LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage19Link.Get(), o.AdImage19Link.IsSet()
+}
+
+// HasAdImage19Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage19Link() bool {
+	if o != nil && o.AdImage19Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage19Link gets a reference to the given NullableString and assigns it to the AdImage19Link field.
+func (o *ItemAttributes) SetAdImage19Link(v string) {
+	o.AdImage19Link.Set(&v)
+}
+// SetAdImage19LinkNil sets the value for AdImage19Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage19LinkNil() {
+	o.AdImage19Link.Set(nil)
+}
+
+// UnsetAdImage19Link ensures that no value is present for AdImage19Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage19Link() {
+	o.AdImage19Link.Unset()
+}
+
+// GetAdImage19Tag returns the AdImage19Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage19Tag() string {
+	if o == nil || IsNil(o.AdImage19Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage19Tag.Get()
+}
+
+// GetAdImage19TagOk returns a tuple with the AdImage19Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage19TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage19Tag.Get(), o.AdImage19Tag.IsSet()
+}
+
+// HasAdImage19Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage19Tag() bool {
+	if o != nil && o.AdImage19Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage19Tag gets a reference to the given NullableString and assigns it to the AdImage19Tag field.
+func (o *ItemAttributes) SetAdImage19Tag(v string) {
+	o.AdImage19Tag.Set(&v)
+}
+// SetAdImage19TagNil sets the value for AdImage19Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage19TagNil() {
+	o.AdImage19Tag.Set(nil)
+}
+
+// UnsetAdImage19Tag ensures that no value is present for AdImage19Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage19Tag() {
+	o.AdImage19Tag.Unset()
+}
+
+// GetAdImage1Link returns the AdImage1Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage1Link() string {
+	if o == nil || IsNil(o.AdImage1Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage1Link.Get()
+}
+
+// GetAdImage1LinkOk returns a tuple with the AdImage1Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage1LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage1Link.Get(), o.AdImage1Link.IsSet()
+}
+
+// HasAdImage1Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage1Link() bool {
+	if o != nil && o.AdImage1Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage1Link gets a reference to the given NullableString and assigns it to the AdImage1Link field.
+func (o *ItemAttributes) SetAdImage1Link(v string) {
+	o.AdImage1Link.Set(&v)
+}
+// SetAdImage1LinkNil sets the value for AdImage1Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage1LinkNil() {
+	o.AdImage1Link.Set(nil)
+}
+
+// UnsetAdImage1Link ensures that no value is present for AdImage1Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage1Link() {
+	o.AdImage1Link.Unset()
+}
+
+// GetAdImage1Tag returns the AdImage1Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage1Tag() string {
+	if o == nil || IsNil(o.AdImage1Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage1Tag.Get()
+}
+
+// GetAdImage1TagOk returns a tuple with the AdImage1Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage1TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage1Tag.Get(), o.AdImage1Tag.IsSet()
+}
+
+// HasAdImage1Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage1Tag() bool {
+	if o != nil && o.AdImage1Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage1Tag gets a reference to the given NullableString and assigns it to the AdImage1Tag field.
+func (o *ItemAttributes) SetAdImage1Tag(v string) {
+	o.AdImage1Tag.Set(&v)
+}
+// SetAdImage1TagNil sets the value for AdImage1Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage1TagNil() {
+	o.AdImage1Tag.Set(nil)
+}
+
+// UnsetAdImage1Tag ensures that no value is present for AdImage1Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage1Tag() {
+	o.AdImage1Tag.Unset()
+}
+
+// GetAdImage2Link returns the AdImage2Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage2Link() string {
+	if o == nil || IsNil(o.AdImage2Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage2Link.Get()
+}
+
+// GetAdImage2LinkOk returns a tuple with the AdImage2Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage2LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage2Link.Get(), o.AdImage2Link.IsSet()
+}
+
+// HasAdImage2Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage2Link() bool {
+	if o != nil && o.AdImage2Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage2Link gets a reference to the given NullableString and assigns it to the AdImage2Link field.
+func (o *ItemAttributes) SetAdImage2Link(v string) {
+	o.AdImage2Link.Set(&v)
+}
+// SetAdImage2LinkNil sets the value for AdImage2Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage2LinkNil() {
+	o.AdImage2Link.Set(nil)
+}
+
+// UnsetAdImage2Link ensures that no value is present for AdImage2Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage2Link() {
+	o.AdImage2Link.Unset()
+}
+
+// GetAdImage2Tag returns the AdImage2Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage2Tag() string {
+	if o == nil || IsNil(o.AdImage2Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage2Tag.Get()
+}
+
+// GetAdImage2TagOk returns a tuple with the AdImage2Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage2TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage2Tag.Get(), o.AdImage2Tag.IsSet()
+}
+
+// HasAdImage2Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage2Tag() bool {
+	if o != nil && o.AdImage2Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage2Tag gets a reference to the given NullableString and assigns it to the AdImage2Tag field.
+func (o *ItemAttributes) SetAdImage2Tag(v string) {
+	o.AdImage2Tag.Set(&v)
+}
+// SetAdImage2TagNil sets the value for AdImage2Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage2TagNil() {
+	o.AdImage2Tag.Set(nil)
+}
+
+// UnsetAdImage2Tag ensures that no value is present for AdImage2Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage2Tag() {
+	o.AdImage2Tag.Unset()
+}
+
+// GetAdImage3Link returns the AdImage3Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage3Link() string {
+	if o == nil || IsNil(o.AdImage3Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage3Link.Get()
+}
+
+// GetAdImage3LinkOk returns a tuple with the AdImage3Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage3LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage3Link.Get(), o.AdImage3Link.IsSet()
+}
+
+// HasAdImage3Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage3Link() bool {
+	if o != nil && o.AdImage3Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage3Link gets a reference to the given NullableString and assigns it to the AdImage3Link field.
+func (o *ItemAttributes) SetAdImage3Link(v string) {
+	o.AdImage3Link.Set(&v)
+}
+// SetAdImage3LinkNil sets the value for AdImage3Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage3LinkNil() {
+	o.AdImage3Link.Set(nil)
+}
+
+// UnsetAdImage3Link ensures that no value is present for AdImage3Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage3Link() {
+	o.AdImage3Link.Unset()
+}
+
+// GetAdImage3Tag returns the AdImage3Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage3Tag() string {
+	if o == nil || IsNil(o.AdImage3Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage3Tag.Get()
+}
+
+// GetAdImage3TagOk returns a tuple with the AdImage3Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage3TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage3Tag.Get(), o.AdImage3Tag.IsSet()
+}
+
+// HasAdImage3Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage3Tag() bool {
+	if o != nil && o.AdImage3Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage3Tag gets a reference to the given NullableString and assigns it to the AdImage3Tag field.
+func (o *ItemAttributes) SetAdImage3Tag(v string) {
+	o.AdImage3Tag.Set(&v)
+}
+// SetAdImage3TagNil sets the value for AdImage3Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage3TagNil() {
+	o.AdImage3Tag.Set(nil)
+}
+
+// UnsetAdImage3Tag ensures that no value is present for AdImage3Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage3Tag() {
+	o.AdImage3Tag.Unset()
+}
+
+// GetAdImage4Link returns the AdImage4Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage4Link() string {
+	if o == nil || IsNil(o.AdImage4Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage4Link.Get()
+}
+
+// GetAdImage4LinkOk returns a tuple with the AdImage4Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage4LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage4Link.Get(), o.AdImage4Link.IsSet()
+}
+
+// HasAdImage4Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage4Link() bool {
+	if o != nil && o.AdImage4Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage4Link gets a reference to the given NullableString and assigns it to the AdImage4Link field.
+func (o *ItemAttributes) SetAdImage4Link(v string) {
+	o.AdImage4Link.Set(&v)
+}
+// SetAdImage4LinkNil sets the value for AdImage4Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage4LinkNil() {
+	o.AdImage4Link.Set(nil)
+}
+
+// UnsetAdImage4Link ensures that no value is present for AdImage4Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage4Link() {
+	o.AdImage4Link.Unset()
+}
+
+// GetAdImage4Tag returns the AdImage4Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage4Tag() string {
+	if o == nil || IsNil(o.AdImage4Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage4Tag.Get()
+}
+
+// GetAdImage4TagOk returns a tuple with the AdImage4Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage4TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage4Tag.Get(), o.AdImage4Tag.IsSet()
+}
+
+// HasAdImage4Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage4Tag() bool {
+	if o != nil && o.AdImage4Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage4Tag gets a reference to the given NullableString and assigns it to the AdImage4Tag field.
+func (o *ItemAttributes) SetAdImage4Tag(v string) {
+	o.AdImage4Tag.Set(&v)
+}
+// SetAdImage4TagNil sets the value for AdImage4Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage4TagNil() {
+	o.AdImage4Tag.Set(nil)
+}
+
+// UnsetAdImage4Tag ensures that no value is present for AdImage4Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage4Tag() {
+	o.AdImage4Tag.Unset()
+}
+
+// GetAdImage5Link returns the AdImage5Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage5Link() string {
+	if o == nil || IsNil(o.AdImage5Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage5Link.Get()
+}
+
+// GetAdImage5LinkOk returns a tuple with the AdImage5Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage5LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage5Link.Get(), o.AdImage5Link.IsSet()
+}
+
+// HasAdImage5Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage5Link() bool {
+	if o != nil && o.AdImage5Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage5Link gets a reference to the given NullableString and assigns it to the AdImage5Link field.
+func (o *ItemAttributes) SetAdImage5Link(v string) {
+	o.AdImage5Link.Set(&v)
+}
+// SetAdImage5LinkNil sets the value for AdImage5Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage5LinkNil() {
+	o.AdImage5Link.Set(nil)
+}
+
+// UnsetAdImage5Link ensures that no value is present for AdImage5Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage5Link() {
+	o.AdImage5Link.Unset()
+}
+
+// GetAdImage5Tag returns the AdImage5Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage5Tag() string {
+	if o == nil || IsNil(o.AdImage5Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage5Tag.Get()
+}
+
+// GetAdImage5TagOk returns a tuple with the AdImage5Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage5TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage5Tag.Get(), o.AdImage5Tag.IsSet()
+}
+
+// HasAdImage5Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage5Tag() bool {
+	if o != nil && o.AdImage5Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage5Tag gets a reference to the given NullableString and assigns it to the AdImage5Tag field.
+func (o *ItemAttributes) SetAdImage5Tag(v string) {
+	o.AdImage5Tag.Set(&v)
+}
+// SetAdImage5TagNil sets the value for AdImage5Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage5TagNil() {
+	o.AdImage5Tag.Set(nil)
+}
+
+// UnsetAdImage5Tag ensures that no value is present for AdImage5Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage5Tag() {
+	o.AdImage5Tag.Unset()
+}
+
+// GetAdImage6Link returns the AdImage6Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage6Link() string {
+	if o == nil || IsNil(o.AdImage6Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage6Link.Get()
+}
+
+// GetAdImage6LinkOk returns a tuple with the AdImage6Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage6LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage6Link.Get(), o.AdImage6Link.IsSet()
+}
+
+// HasAdImage6Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage6Link() bool {
+	if o != nil && o.AdImage6Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage6Link gets a reference to the given NullableString and assigns it to the AdImage6Link field.
+func (o *ItemAttributes) SetAdImage6Link(v string) {
+	o.AdImage6Link.Set(&v)
+}
+// SetAdImage6LinkNil sets the value for AdImage6Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage6LinkNil() {
+	o.AdImage6Link.Set(nil)
+}
+
+// UnsetAdImage6Link ensures that no value is present for AdImage6Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage6Link() {
+	o.AdImage6Link.Unset()
+}
+
+// GetAdImage6Tag returns the AdImage6Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage6Tag() string {
+	if o == nil || IsNil(o.AdImage6Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage6Tag.Get()
+}
+
+// GetAdImage6TagOk returns a tuple with the AdImage6Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage6TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage6Tag.Get(), o.AdImage6Tag.IsSet()
+}
+
+// HasAdImage6Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage6Tag() bool {
+	if o != nil && o.AdImage6Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage6Tag gets a reference to the given NullableString and assigns it to the AdImage6Tag field.
+func (o *ItemAttributes) SetAdImage6Tag(v string) {
+	o.AdImage6Tag.Set(&v)
+}
+// SetAdImage6TagNil sets the value for AdImage6Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage6TagNil() {
+	o.AdImage6Tag.Set(nil)
+}
+
+// UnsetAdImage6Tag ensures that no value is present for AdImage6Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage6Tag() {
+	o.AdImage6Tag.Unset()
+}
+
+// GetAdImage7Link returns the AdImage7Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage7Link() string {
+	if o == nil || IsNil(o.AdImage7Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage7Link.Get()
+}
+
+// GetAdImage7LinkOk returns a tuple with the AdImage7Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage7LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage7Link.Get(), o.AdImage7Link.IsSet()
+}
+
+// HasAdImage7Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage7Link() bool {
+	if o != nil && o.AdImage7Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage7Link gets a reference to the given NullableString and assigns it to the AdImage7Link field.
+func (o *ItemAttributes) SetAdImage7Link(v string) {
+	o.AdImage7Link.Set(&v)
+}
+// SetAdImage7LinkNil sets the value for AdImage7Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage7LinkNil() {
+	o.AdImage7Link.Set(nil)
+}
+
+// UnsetAdImage7Link ensures that no value is present for AdImage7Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage7Link() {
+	o.AdImage7Link.Unset()
+}
+
+// GetAdImage7Tag returns the AdImage7Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage7Tag() string {
+	if o == nil || IsNil(o.AdImage7Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage7Tag.Get()
+}
+
+// GetAdImage7TagOk returns a tuple with the AdImage7Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage7TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage7Tag.Get(), o.AdImage7Tag.IsSet()
+}
+
+// HasAdImage7Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage7Tag() bool {
+	if o != nil && o.AdImage7Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage7Tag gets a reference to the given NullableString and assigns it to the AdImage7Tag field.
+func (o *ItemAttributes) SetAdImage7Tag(v string) {
+	o.AdImage7Tag.Set(&v)
+}
+// SetAdImage7TagNil sets the value for AdImage7Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage7TagNil() {
+	o.AdImage7Tag.Set(nil)
+}
+
+// UnsetAdImage7Tag ensures that no value is present for AdImage7Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage7Tag() {
+	o.AdImage7Tag.Unset()
+}
+
+// GetAdImage8Link returns the AdImage8Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage8Link() string {
+	if o == nil || IsNil(o.AdImage8Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage8Link.Get()
+}
+
+// GetAdImage8LinkOk returns a tuple with the AdImage8Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage8LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage8Link.Get(), o.AdImage8Link.IsSet()
+}
+
+// HasAdImage8Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage8Link() bool {
+	if o != nil && o.AdImage8Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage8Link gets a reference to the given NullableString and assigns it to the AdImage8Link field.
+func (o *ItemAttributes) SetAdImage8Link(v string) {
+	o.AdImage8Link.Set(&v)
+}
+// SetAdImage8LinkNil sets the value for AdImage8Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage8LinkNil() {
+	o.AdImage8Link.Set(nil)
+}
+
+// UnsetAdImage8Link ensures that no value is present for AdImage8Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage8Link() {
+	o.AdImage8Link.Unset()
+}
+
+// GetAdImage8Tag returns the AdImage8Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage8Tag() string {
+	if o == nil || IsNil(o.AdImage8Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage8Tag.Get()
+}
+
+// GetAdImage8TagOk returns a tuple with the AdImage8Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage8TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage8Tag.Get(), o.AdImage8Tag.IsSet()
+}
+
+// HasAdImage8Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage8Tag() bool {
+	if o != nil && o.AdImage8Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage8Tag gets a reference to the given NullableString and assigns it to the AdImage8Tag field.
+func (o *ItemAttributes) SetAdImage8Tag(v string) {
+	o.AdImage8Tag.Set(&v)
+}
+// SetAdImage8TagNil sets the value for AdImage8Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage8TagNil() {
+	o.AdImage8Tag.Set(nil)
+}
+
+// UnsetAdImage8Tag ensures that no value is present for AdImage8Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage8Tag() {
+	o.AdImage8Tag.Unset()
+}
+
+// GetAdImage9Link returns the AdImage9Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage9Link() string {
+	if o == nil || IsNil(o.AdImage9Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage9Link.Get()
+}
+
+// GetAdImage9LinkOk returns a tuple with the AdImage9Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage9LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage9Link.Get(), o.AdImage9Link.IsSet()
+}
+
+// HasAdImage9Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage9Link() bool {
+	if o != nil && o.AdImage9Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage9Link gets a reference to the given NullableString and assigns it to the AdImage9Link field.
+func (o *ItemAttributes) SetAdImage9Link(v string) {
+	o.AdImage9Link.Set(&v)
+}
+// SetAdImage9LinkNil sets the value for AdImage9Link to be an explicit nil
+func (o *ItemAttributes) SetAdImage9LinkNil() {
+	o.AdImage9Link.Set(nil)
+}
+
+// UnsetAdImage9Link ensures that no value is present for AdImage9Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage9Link() {
+	o.AdImage9Link.Unset()
+}
+
+// GetAdImage9Tag returns the AdImage9Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdImage9Tag() string {
+	if o == nil || IsNil(o.AdImage9Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdImage9Tag.Get()
+}
+
+// GetAdImage9TagOk returns a tuple with the AdImage9Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdImage9TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdImage9Tag.Get(), o.AdImage9Tag.IsSet()
+}
+
+// HasAdImage9Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdImage9Tag() bool {
+	if o != nil && o.AdImage9Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdImage9Tag gets a reference to the given NullableString and assigns it to the AdImage9Tag field.
+func (o *ItemAttributes) SetAdImage9Tag(v string) {
+	o.AdImage9Tag.Set(&v)
+}
+// SetAdImage9TagNil sets the value for AdImage9Tag to be an explicit nil
+func (o *ItemAttributes) SetAdImage9TagNil() {
+	o.AdImage9Tag.Set(nil)
+}
+
+// UnsetAdImage9Tag ensures that no value is present for AdImage9Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdImage9Tag() {
+	o.AdImage9Tag.Unset()
 }
 
 // GetAdLink returns the AdLink field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -177,6 +1972,258 @@ func (o *ItemAttributes) SetAdLinkNil() {
 // UnsetAdLink ensures that no value is present for AdLink, not even an explicit nil
 func (o *ItemAttributes) UnsetAdLink() {
 	o.AdLink.Unset()
+}
+
+// GetAdVideo0Link returns the AdVideo0Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdVideo0Link() string {
+	if o == nil || IsNil(o.AdVideo0Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdVideo0Link.Get()
+}
+
+// GetAdVideo0LinkOk returns a tuple with the AdVideo0Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdVideo0LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdVideo0Link.Get(), o.AdVideo0Link.IsSet()
+}
+
+// HasAdVideo0Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdVideo0Link() bool {
+	if o != nil && o.AdVideo0Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdVideo0Link gets a reference to the given NullableString and assigns it to the AdVideo0Link field.
+func (o *ItemAttributes) SetAdVideo0Link(v string) {
+	o.AdVideo0Link.Set(&v)
+}
+// SetAdVideo0LinkNil sets the value for AdVideo0Link to be an explicit nil
+func (o *ItemAttributes) SetAdVideo0LinkNil() {
+	o.AdVideo0Link.Set(nil)
+}
+
+// UnsetAdVideo0Link ensures that no value is present for AdVideo0Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdVideo0Link() {
+	o.AdVideo0Link.Unset()
+}
+
+// GetAdVideo0Tag returns the AdVideo0Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdVideo0Tag() string {
+	if o == nil || IsNil(o.AdVideo0Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdVideo0Tag.Get()
+}
+
+// GetAdVideo0TagOk returns a tuple with the AdVideo0Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdVideo0TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdVideo0Tag.Get(), o.AdVideo0Tag.IsSet()
+}
+
+// HasAdVideo0Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdVideo0Tag() bool {
+	if o != nil && o.AdVideo0Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdVideo0Tag gets a reference to the given NullableString and assigns it to the AdVideo0Tag field.
+func (o *ItemAttributes) SetAdVideo0Tag(v string) {
+	o.AdVideo0Tag.Set(&v)
+}
+// SetAdVideo0TagNil sets the value for AdVideo0Tag to be an explicit nil
+func (o *ItemAttributes) SetAdVideo0TagNil() {
+	o.AdVideo0Tag.Set(nil)
+}
+
+// UnsetAdVideo0Tag ensures that no value is present for AdVideo0Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdVideo0Tag() {
+	o.AdVideo0Tag.Unset()
+}
+
+// GetAdVideo1Link returns the AdVideo1Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdVideo1Link() string {
+	if o == nil || IsNil(o.AdVideo1Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdVideo1Link.Get()
+}
+
+// GetAdVideo1LinkOk returns a tuple with the AdVideo1Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdVideo1LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdVideo1Link.Get(), o.AdVideo1Link.IsSet()
+}
+
+// HasAdVideo1Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdVideo1Link() bool {
+	if o != nil && o.AdVideo1Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdVideo1Link gets a reference to the given NullableString and assigns it to the AdVideo1Link field.
+func (o *ItemAttributes) SetAdVideo1Link(v string) {
+	o.AdVideo1Link.Set(&v)
+}
+// SetAdVideo1LinkNil sets the value for AdVideo1Link to be an explicit nil
+func (o *ItemAttributes) SetAdVideo1LinkNil() {
+	o.AdVideo1Link.Set(nil)
+}
+
+// UnsetAdVideo1Link ensures that no value is present for AdVideo1Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdVideo1Link() {
+	o.AdVideo1Link.Unset()
+}
+
+// GetAdVideo1Tag returns the AdVideo1Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdVideo1Tag() string {
+	if o == nil || IsNil(o.AdVideo1Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdVideo1Tag.Get()
+}
+
+// GetAdVideo1TagOk returns a tuple with the AdVideo1Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdVideo1TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdVideo1Tag.Get(), o.AdVideo1Tag.IsSet()
+}
+
+// HasAdVideo1Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdVideo1Tag() bool {
+	if o != nil && o.AdVideo1Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdVideo1Tag gets a reference to the given NullableString and assigns it to the AdVideo1Tag field.
+func (o *ItemAttributes) SetAdVideo1Tag(v string) {
+	o.AdVideo1Tag.Set(&v)
+}
+// SetAdVideo1TagNil sets the value for AdVideo1Tag to be an explicit nil
+func (o *ItemAttributes) SetAdVideo1TagNil() {
+	o.AdVideo1Tag.Set(nil)
+}
+
+// UnsetAdVideo1Tag ensures that no value is present for AdVideo1Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdVideo1Tag() {
+	o.AdVideo1Tag.Unset()
+}
+
+// GetAdVideo2Link returns the AdVideo2Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdVideo2Link() string {
+	if o == nil || IsNil(o.AdVideo2Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdVideo2Link.Get()
+}
+
+// GetAdVideo2LinkOk returns a tuple with the AdVideo2Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdVideo2LinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdVideo2Link.Get(), o.AdVideo2Link.IsSet()
+}
+
+// HasAdVideo2Link returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdVideo2Link() bool {
+	if o != nil && o.AdVideo2Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdVideo2Link gets a reference to the given NullableString and assigns it to the AdVideo2Link field.
+func (o *ItemAttributes) SetAdVideo2Link(v string) {
+	o.AdVideo2Link.Set(&v)
+}
+// SetAdVideo2LinkNil sets the value for AdVideo2Link to be an explicit nil
+func (o *ItemAttributes) SetAdVideo2LinkNil() {
+	o.AdVideo2Link.Set(nil)
+}
+
+// UnsetAdVideo2Link ensures that no value is present for AdVideo2Link, not even an explicit nil
+func (o *ItemAttributes) UnsetAdVideo2Link() {
+	o.AdVideo2Link.Unset()
+}
+
+// GetAdVideo2Tag returns the AdVideo2Tag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetAdVideo2Tag() string {
+	if o == nil || IsNil(o.AdVideo2Tag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdVideo2Tag.Get()
+}
+
+// GetAdVideo2TagOk returns a tuple with the AdVideo2Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetAdVideo2TagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdVideo2Tag.Get(), o.AdVideo2Tag.IsSet()
+}
+
+// HasAdVideo2Tag returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAdVideo2Tag() bool {
+	if o != nil && o.AdVideo2Tag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdVideo2Tag gets a reference to the given NullableString and assigns it to the AdVideo2Tag field.
+func (o *ItemAttributes) SetAdVideo2Tag(v string) {
+	o.AdVideo2Tag.Set(&v)
+}
+// SetAdVideo2TagNil sets the value for AdVideo2Tag to be an explicit nil
+func (o *ItemAttributes) SetAdVideo2TagNil() {
+	o.AdVideo2Tag.Set(nil)
+}
+
+// UnsetAdVideo2Tag ensures that no value is present for AdVideo2Tag, not even an explicit nil
+func (o *ItemAttributes) UnsetAdVideo2Tag() {
+	o.AdVideo2Tag.Unset()
 }
 
 // GetAdult returns the Adult field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -261,6 +2308,38 @@ func (o *ItemAttributes) SetAgeGroupNil() {
 // UnsetAgeGroup ensures that no value is present for AgeGroup, not even an explicit nil
 func (o *ItemAttributes) UnsetAgeGroup() {
 	o.AgeGroup.Unset()
+}
+
+// GetAndroidDeepLink returns the AndroidDeepLink field value if set, zero value otherwise.
+func (o *ItemAttributes) GetAndroidDeepLink() string {
+	if o == nil || IsNil(o.AndroidDeepLink) {
+		var ret string
+		return ret
+	}
+	return *o.AndroidDeepLink
+}
+
+// GetAndroidDeepLinkOk returns a tuple with the AndroidDeepLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemAttributes) GetAndroidDeepLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.AndroidDeepLink) {
+		return nil, false
+	}
+	return o.AndroidDeepLink, true
+}
+
+// HasAndroidDeepLink returns a boolean if a field has been set.
+func (o *ItemAttributes) HasAndroidDeepLink() bool {
+	if o != nil && !IsNil(o.AndroidDeepLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetAndroidDeepLink gets a reference to the given string and assigns it to the AndroidDeepLink field.
+func (o *ItemAttributes) SetAndroidDeepLink(v string) {
+	o.AndroidDeepLink = &v
 }
 
 // GetAvailability returns the Availability field value if set, zero value otherwise.
@@ -718,6 +2797,216 @@ func (o *ItemAttributes) UnsetCustomLabel4() {
 	o.CustomLabel4.Unset()
 }
 
+// GetCustomNumber0 returns the CustomNumber0 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetCustomNumber0() int32 {
+	if o == nil || IsNil(o.CustomNumber0.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CustomNumber0.Get()
+}
+
+// GetCustomNumber0Ok returns a tuple with the CustomNumber0 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetCustomNumber0Ok() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomNumber0.Get(), o.CustomNumber0.IsSet()
+}
+
+// HasCustomNumber0 returns a boolean if a field has been set.
+func (o *ItemAttributes) HasCustomNumber0() bool {
+	if o != nil && o.CustomNumber0.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomNumber0 gets a reference to the given NullableInt32 and assigns it to the CustomNumber0 field.
+func (o *ItemAttributes) SetCustomNumber0(v int32) {
+	o.CustomNumber0.Set(&v)
+}
+// SetCustomNumber0Nil sets the value for CustomNumber0 to be an explicit nil
+func (o *ItemAttributes) SetCustomNumber0Nil() {
+	o.CustomNumber0.Set(nil)
+}
+
+// UnsetCustomNumber0 ensures that no value is present for CustomNumber0, not even an explicit nil
+func (o *ItemAttributes) UnsetCustomNumber0() {
+	o.CustomNumber0.Unset()
+}
+
+// GetCustomNumber1 returns the CustomNumber1 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetCustomNumber1() int32 {
+	if o == nil || IsNil(o.CustomNumber1.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CustomNumber1.Get()
+}
+
+// GetCustomNumber1Ok returns a tuple with the CustomNumber1 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetCustomNumber1Ok() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomNumber1.Get(), o.CustomNumber1.IsSet()
+}
+
+// HasCustomNumber1 returns a boolean if a field has been set.
+func (o *ItemAttributes) HasCustomNumber1() bool {
+	if o != nil && o.CustomNumber1.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomNumber1 gets a reference to the given NullableInt32 and assigns it to the CustomNumber1 field.
+func (o *ItemAttributes) SetCustomNumber1(v int32) {
+	o.CustomNumber1.Set(&v)
+}
+// SetCustomNumber1Nil sets the value for CustomNumber1 to be an explicit nil
+func (o *ItemAttributes) SetCustomNumber1Nil() {
+	o.CustomNumber1.Set(nil)
+}
+
+// UnsetCustomNumber1 ensures that no value is present for CustomNumber1, not even an explicit nil
+func (o *ItemAttributes) UnsetCustomNumber1() {
+	o.CustomNumber1.Unset()
+}
+
+// GetCustomNumber2 returns the CustomNumber2 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetCustomNumber2() int32 {
+	if o == nil || IsNil(o.CustomNumber2.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CustomNumber2.Get()
+}
+
+// GetCustomNumber2Ok returns a tuple with the CustomNumber2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetCustomNumber2Ok() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomNumber2.Get(), o.CustomNumber2.IsSet()
+}
+
+// HasCustomNumber2 returns a boolean if a field has been set.
+func (o *ItemAttributes) HasCustomNumber2() bool {
+	if o != nil && o.CustomNumber2.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomNumber2 gets a reference to the given NullableInt32 and assigns it to the CustomNumber2 field.
+func (o *ItemAttributes) SetCustomNumber2(v int32) {
+	o.CustomNumber2.Set(&v)
+}
+// SetCustomNumber2Nil sets the value for CustomNumber2 to be an explicit nil
+func (o *ItemAttributes) SetCustomNumber2Nil() {
+	o.CustomNumber2.Set(nil)
+}
+
+// UnsetCustomNumber2 ensures that no value is present for CustomNumber2, not even an explicit nil
+func (o *ItemAttributes) UnsetCustomNumber2() {
+	o.CustomNumber2.Unset()
+}
+
+// GetCustomNumber3 returns the CustomNumber3 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetCustomNumber3() int32 {
+	if o == nil || IsNil(o.CustomNumber3.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CustomNumber3.Get()
+}
+
+// GetCustomNumber3Ok returns a tuple with the CustomNumber3 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetCustomNumber3Ok() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomNumber3.Get(), o.CustomNumber3.IsSet()
+}
+
+// HasCustomNumber3 returns a boolean if a field has been set.
+func (o *ItemAttributes) HasCustomNumber3() bool {
+	if o != nil && o.CustomNumber3.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomNumber3 gets a reference to the given NullableInt32 and assigns it to the CustomNumber3 field.
+func (o *ItemAttributes) SetCustomNumber3(v int32) {
+	o.CustomNumber3.Set(&v)
+}
+// SetCustomNumber3Nil sets the value for CustomNumber3 to be an explicit nil
+func (o *ItemAttributes) SetCustomNumber3Nil() {
+	o.CustomNumber3.Set(nil)
+}
+
+// UnsetCustomNumber3 ensures that no value is present for CustomNumber3, not even an explicit nil
+func (o *ItemAttributes) UnsetCustomNumber3() {
+	o.CustomNumber3.Unset()
+}
+
+// GetCustomNumber4 returns the CustomNumber4 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetCustomNumber4() int32 {
+	if o == nil || IsNil(o.CustomNumber4.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CustomNumber4.Get()
+}
+
+// GetCustomNumber4Ok returns a tuple with the CustomNumber4 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetCustomNumber4Ok() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomNumber4.Get(), o.CustomNumber4.IsSet()
+}
+
+// HasCustomNumber4 returns a boolean if a field has been set.
+func (o *ItemAttributes) HasCustomNumber4() bool {
+	if o != nil && o.CustomNumber4.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomNumber4 gets a reference to the given NullableInt32 and assigns it to the CustomNumber4 field.
+func (o *ItemAttributes) SetCustomNumber4(v int32) {
+	o.CustomNumber4.Set(&v)
+}
+// SetCustomNumber4Nil sets the value for CustomNumber4 to be an explicit nil
+func (o *ItemAttributes) SetCustomNumber4Nil() {
+	o.CustomNumber4.Set(nil)
+}
+
+// UnsetCustomNumber4 ensures that no value is present for CustomNumber4, not even an explicit nil
+func (o *ItemAttributes) UnsetCustomNumber4() {
+	o.CustomNumber4.Unset()
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ItemAttributes) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -919,9 +3208,9 @@ func (o *ItemAttributes) UnsetGoogleProductCategory() {
 }
 
 // GetGtin returns the Gtin field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ItemAttributes) GetGtin() int32 {
+func (o *ItemAttributes) GetGtin() UpdatableItemAttributesGtin {
 	if o == nil || IsNil(o.Gtin.Get()) {
-		var ret int32
+		var ret UpdatableItemAttributesGtin
 		return ret
 	}
 	return *o.Gtin.Get()
@@ -930,7 +3219,7 @@ func (o *ItemAttributes) GetGtin() int32 {
 // GetGtinOk returns a tuple with the Gtin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ItemAttributes) GetGtinOk() (*int32, bool) {
+func (o *ItemAttributes) GetGtinOk() (*UpdatableItemAttributesGtin, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -946,8 +3235,8 @@ func (o *ItemAttributes) HasGtin() bool {
 	return false
 }
 
-// SetGtin gets a reference to the given NullableInt32 and assigns it to the Gtin field.
-func (o *ItemAttributes) SetGtin(v int32) {
+// SetGtin gets a reference to the given NullableUpdatableItemAttributesGtin and assigns it to the Gtin field.
+func (o *ItemAttributes) SetGtin(v UpdatableItemAttributesGtin) {
 	o.Gtin.Set(&v)
 }
 // SetGtinNil sets the value for Gtin to be an explicit nil
@@ -993,6 +3282,80 @@ func (o *ItemAttributes) HasId() bool {
 // Deprecated
 func (o *ItemAttributes) SetId(v string) {
 	o.Id = &v
+}
+
+// GetInstallmentPrice returns the InstallmentPrice field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetInstallmentPrice() string {
+	if o == nil || IsNil(o.InstallmentPrice.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstallmentPrice.Get()
+}
+
+// GetInstallmentPriceOk returns a tuple with the InstallmentPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetInstallmentPriceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstallmentPrice.Get(), o.InstallmentPrice.IsSet()
+}
+
+// HasInstallmentPrice returns a boolean if a field has been set.
+func (o *ItemAttributes) HasInstallmentPrice() bool {
+	if o != nil && o.InstallmentPrice.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentPrice gets a reference to the given NullableString and assigns it to the InstallmentPrice field.
+func (o *ItemAttributes) SetInstallmentPrice(v string) {
+	o.InstallmentPrice.Set(&v)
+}
+// SetInstallmentPriceNil sets the value for InstallmentPrice to be an explicit nil
+func (o *ItemAttributes) SetInstallmentPriceNil() {
+	o.InstallmentPrice.Set(nil)
+}
+
+// UnsetInstallmentPrice ensures that no value is present for InstallmentPrice, not even an explicit nil
+func (o *ItemAttributes) UnsetInstallmentPrice() {
+	o.InstallmentPrice.Unset()
+}
+
+// GetIosDeepLink returns the IosDeepLink field value if set, zero value otherwise.
+func (o *ItemAttributes) GetIosDeepLink() string {
+	if o == nil || IsNil(o.IosDeepLink) {
+		var ret string
+		return ret
+	}
+	return *o.IosDeepLink
+}
+
+// GetIosDeepLinkOk returns a tuple with the IosDeepLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemAttributes) GetIosDeepLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.IosDeepLink) {
+		return nil, false
+	}
+	return o.IosDeepLink, true
+}
+
+// HasIosDeepLink returns a boolean if a field has been set.
+func (o *ItemAttributes) HasIosDeepLink() bool {
+	if o != nil && !IsNil(o.IosDeepLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetIosDeepLink gets a reference to the given string and assigns it to the IosDeepLink field.
+func (o *ItemAttributes) SetIosDeepLink(v string) {
+	o.IosDeepLink = &v
 }
 
 // GetItemGroupId returns the ItemGroupId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1479,6 +3842,48 @@ func (o *ItemAttributes) UnsetProductType() {
 	o.ProductType.Unset()
 }
 
+// GetPromotionId returns the PromotionId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetPromotionId() string {
+	if o == nil || IsNil(o.PromotionId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PromotionId.Get()
+}
+
+// GetPromotionIdOk returns a tuple with the PromotionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetPromotionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PromotionId.Get(), o.PromotionId.IsSet()
+}
+
+// HasPromotionId returns a boolean if a field has been set.
+func (o *ItemAttributes) HasPromotionId() bool {
+	if o != nil && o.PromotionId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPromotionId gets a reference to the given NullableString and assigns it to the PromotionId field.
+func (o *ItemAttributes) SetPromotionId(v string) {
+	o.PromotionId.Set(&v)
+}
+// SetPromotionIdNil sets the value for PromotionId to be an explicit nil
+func (o *ItemAttributes) SetPromotionIdNil() {
+	o.PromotionId.Set(nil)
+}
+
+// UnsetPromotionId ensures that no value is present for PromotionId, not even an explicit nil
+func (o *ItemAttributes) UnsetPromotionId() {
+	o.PromotionId.Unset()
+}
+
 // GetSalePrice returns the SalePrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ItemAttributes) GetSalePrice() string {
 	if o == nil || IsNil(o.SalePrice.Get()) {
@@ -1519,6 +3924,48 @@ func (o *ItemAttributes) SetSalePriceNil() {
 // UnsetSalePrice ensures that no value is present for SalePrice, not even an explicit nil
 func (o *ItemAttributes) UnsetSalePrice() {
 	o.SalePrice.Unset()
+}
+
+// GetSalePriceEffectiveDate returns the SalePriceEffectiveDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetSalePriceEffectiveDate() string {
+	if o == nil || IsNil(o.SalePriceEffectiveDate.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SalePriceEffectiveDate.Get()
+}
+
+// GetSalePriceEffectiveDateOk returns a tuple with the SalePriceEffectiveDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetSalePriceEffectiveDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SalePriceEffectiveDate.Get(), o.SalePriceEffectiveDate.IsSet()
+}
+
+// HasSalePriceEffectiveDate returns a boolean if a field has been set.
+func (o *ItemAttributes) HasSalePriceEffectiveDate() bool {
+	if o != nil && o.SalePriceEffectiveDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSalePriceEffectiveDate gets a reference to the given NullableString and assigns it to the SalePriceEffectiveDate field.
+func (o *ItemAttributes) SetSalePriceEffectiveDate(v string) {
+	o.SalePriceEffectiveDate.Set(&v)
+}
+// SetSalePriceEffectiveDateNil sets the value for SalePriceEffectiveDate to be an explicit nil
+func (o *ItemAttributes) SetSalePriceEffectiveDateNil() {
+	o.SalePriceEffectiveDate.Set(nil)
+}
+
+// UnsetSalePriceEffectiveDate ensures that no value is present for SalePriceEffectiveDate, not even an explicit nil
+func (o *ItemAttributes) UnsetSalePriceEffectiveDate() {
+	o.SalePriceEffectiveDate.Unset()
 }
 
 // GetShipping returns the Shipping field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1889,6 +4336,90 @@ func (o *ItemAttributes) SetTitle(v string) {
 	o.Title = &v
 }
 
+// GetUnitPricingBaseMeasure returns the UnitPricingBaseMeasure field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetUnitPricingBaseMeasure() string {
+	if o == nil || IsNil(o.UnitPricingBaseMeasure.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.UnitPricingBaseMeasure.Get()
+}
+
+// GetUnitPricingBaseMeasureOk returns a tuple with the UnitPricingBaseMeasure field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetUnitPricingBaseMeasureOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UnitPricingBaseMeasure.Get(), o.UnitPricingBaseMeasure.IsSet()
+}
+
+// HasUnitPricingBaseMeasure returns a boolean if a field has been set.
+func (o *ItemAttributes) HasUnitPricingBaseMeasure() bool {
+	if o != nil && o.UnitPricingBaseMeasure.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPricingBaseMeasure gets a reference to the given NullableString and assigns it to the UnitPricingBaseMeasure field.
+func (o *ItemAttributes) SetUnitPricingBaseMeasure(v string) {
+	o.UnitPricingBaseMeasure.Set(&v)
+}
+// SetUnitPricingBaseMeasureNil sets the value for UnitPricingBaseMeasure to be an explicit nil
+func (o *ItemAttributes) SetUnitPricingBaseMeasureNil() {
+	o.UnitPricingBaseMeasure.Set(nil)
+}
+
+// UnsetUnitPricingBaseMeasure ensures that no value is present for UnitPricingBaseMeasure, not even an explicit nil
+func (o *ItemAttributes) UnsetUnitPricingBaseMeasure() {
+	o.UnitPricingBaseMeasure.Unset()
+}
+
+// GetUnitPricingMeasure returns the UnitPricingMeasure field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetUnitPricingMeasure() string {
+	if o == nil || IsNil(o.UnitPricingMeasure.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.UnitPricingMeasure.Get()
+}
+
+// GetUnitPricingMeasureOk returns a tuple with the UnitPricingMeasure field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetUnitPricingMeasureOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UnitPricingMeasure.Get(), o.UnitPricingMeasure.IsSet()
+}
+
+// HasUnitPricingMeasure returns a boolean if a field has been set.
+func (o *ItemAttributes) HasUnitPricingMeasure() bool {
+	if o != nil && o.UnitPricingMeasure.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPricingMeasure gets a reference to the given NullableString and assigns it to the UnitPricingMeasure field.
+func (o *ItemAttributes) SetUnitPricingMeasure(v string) {
+	o.UnitPricingMeasure.Set(&v)
+}
+// SetUnitPricingMeasureNil sets the value for UnitPricingMeasure to be an explicit nil
+func (o *ItemAttributes) SetUnitPricingMeasureNil() {
+	o.UnitPricingMeasure.Set(nil)
+}
+
+// UnsetUnitPricingMeasure ensures that no value is present for UnitPricingMeasure, not even an explicit nil
+func (o *ItemAttributes) UnsetUnitPricingMeasure() {
+	o.UnitPricingMeasure.Unset()
+}
+
 // GetVariantNames returns the VariantNames field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ItemAttributes) GetVariantNames() []string {
 	if o == nil {
@@ -2072,14 +4603,155 @@ func (o ItemAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ItemAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AdImage0Link.IsSet() {
+		toSerialize["ad_image_0_link"] = o.AdImage0Link.Get()
+	}
+	if o.AdImage0Tag.IsSet() {
+		toSerialize["ad_image_0_tag"] = o.AdImage0Tag.Get()
+	}
+	if o.AdImage10Link.IsSet() {
+		toSerialize["ad_image_10_link"] = o.AdImage10Link.Get()
+	}
+	if o.AdImage10Tag.IsSet() {
+		toSerialize["ad_image_10_tag"] = o.AdImage10Tag.Get()
+	}
+	if o.AdImage11Link.IsSet() {
+		toSerialize["ad_image_11_link"] = o.AdImage11Link.Get()
+	}
+	if o.AdImage11Tag.IsSet() {
+		toSerialize["ad_image_11_tag"] = o.AdImage11Tag.Get()
+	}
+	if o.AdImage12Link.IsSet() {
+		toSerialize["ad_image_12_link"] = o.AdImage12Link.Get()
+	}
+	if o.AdImage12Tag.IsSet() {
+		toSerialize["ad_image_12_tag"] = o.AdImage12Tag.Get()
+	}
+	if o.AdImage13Link.IsSet() {
+		toSerialize["ad_image_13_link"] = o.AdImage13Link.Get()
+	}
+	if o.AdImage13Tag.IsSet() {
+		toSerialize["ad_image_13_tag"] = o.AdImage13Tag.Get()
+	}
+	if o.AdImage14Link.IsSet() {
+		toSerialize["ad_image_14_link"] = o.AdImage14Link.Get()
+	}
+	if o.AdImage14Tag.IsSet() {
+		toSerialize["ad_image_14_tag"] = o.AdImage14Tag.Get()
+	}
+	if o.AdImage15Link.IsSet() {
+		toSerialize["ad_image_15_link"] = o.AdImage15Link.Get()
+	}
+	if o.AdImage15Tag.IsSet() {
+		toSerialize["ad_image_15_tag"] = o.AdImage15Tag.Get()
+	}
+	if o.AdImage16Link.IsSet() {
+		toSerialize["ad_image_16_link"] = o.AdImage16Link.Get()
+	}
+	if o.AdImage16Tag.IsSet() {
+		toSerialize["ad_image_16_tag"] = o.AdImage16Tag.Get()
+	}
+	if o.AdImage17Link.IsSet() {
+		toSerialize["ad_image_17_link"] = o.AdImage17Link.Get()
+	}
+	if o.AdImage17Tag.IsSet() {
+		toSerialize["ad_image_17_tag"] = o.AdImage17Tag.Get()
+	}
+	if o.AdImage18Link.IsSet() {
+		toSerialize["ad_image_18_link"] = o.AdImage18Link.Get()
+	}
+	if o.AdImage18Tag.IsSet() {
+		toSerialize["ad_image_18_tag"] = o.AdImage18Tag.Get()
+	}
+	if o.AdImage19Link.IsSet() {
+		toSerialize["ad_image_19_link"] = o.AdImage19Link.Get()
+	}
+	if o.AdImage19Tag.IsSet() {
+		toSerialize["ad_image_19_tag"] = o.AdImage19Tag.Get()
+	}
+	if o.AdImage1Link.IsSet() {
+		toSerialize["ad_image_1_link"] = o.AdImage1Link.Get()
+	}
+	if o.AdImage1Tag.IsSet() {
+		toSerialize["ad_image_1_tag"] = o.AdImage1Tag.Get()
+	}
+	if o.AdImage2Link.IsSet() {
+		toSerialize["ad_image_2_link"] = o.AdImage2Link.Get()
+	}
+	if o.AdImage2Tag.IsSet() {
+		toSerialize["ad_image_2_tag"] = o.AdImage2Tag.Get()
+	}
+	if o.AdImage3Link.IsSet() {
+		toSerialize["ad_image_3_link"] = o.AdImage3Link.Get()
+	}
+	if o.AdImage3Tag.IsSet() {
+		toSerialize["ad_image_3_tag"] = o.AdImage3Tag.Get()
+	}
+	if o.AdImage4Link.IsSet() {
+		toSerialize["ad_image_4_link"] = o.AdImage4Link.Get()
+	}
+	if o.AdImage4Tag.IsSet() {
+		toSerialize["ad_image_4_tag"] = o.AdImage4Tag.Get()
+	}
+	if o.AdImage5Link.IsSet() {
+		toSerialize["ad_image_5_link"] = o.AdImage5Link.Get()
+	}
+	if o.AdImage5Tag.IsSet() {
+		toSerialize["ad_image_5_tag"] = o.AdImage5Tag.Get()
+	}
+	if o.AdImage6Link.IsSet() {
+		toSerialize["ad_image_6_link"] = o.AdImage6Link.Get()
+	}
+	if o.AdImage6Tag.IsSet() {
+		toSerialize["ad_image_6_tag"] = o.AdImage6Tag.Get()
+	}
+	if o.AdImage7Link.IsSet() {
+		toSerialize["ad_image_7_link"] = o.AdImage7Link.Get()
+	}
+	if o.AdImage7Tag.IsSet() {
+		toSerialize["ad_image_7_tag"] = o.AdImage7Tag.Get()
+	}
+	if o.AdImage8Link.IsSet() {
+		toSerialize["ad_image_8_link"] = o.AdImage8Link.Get()
+	}
+	if o.AdImage8Tag.IsSet() {
+		toSerialize["ad_image_8_tag"] = o.AdImage8Tag.Get()
+	}
+	if o.AdImage9Link.IsSet() {
+		toSerialize["ad_image_9_link"] = o.AdImage9Link.Get()
+	}
+	if o.AdImage9Tag.IsSet() {
+		toSerialize["ad_image_9_tag"] = o.AdImage9Tag.Get()
+	}
 	if o.AdLink.IsSet() {
 		toSerialize["ad_link"] = o.AdLink.Get()
+	}
+	if o.AdVideo0Link.IsSet() {
+		toSerialize["ad_video_0_link"] = o.AdVideo0Link.Get()
+	}
+	if o.AdVideo0Tag.IsSet() {
+		toSerialize["ad_video_0_tag"] = o.AdVideo0Tag.Get()
+	}
+	if o.AdVideo1Link.IsSet() {
+		toSerialize["ad_video_1_link"] = o.AdVideo1Link.Get()
+	}
+	if o.AdVideo1Tag.IsSet() {
+		toSerialize["ad_video_1_tag"] = o.AdVideo1Tag.Get()
+	}
+	if o.AdVideo2Link.IsSet() {
+		toSerialize["ad_video_2_link"] = o.AdVideo2Link.Get()
+	}
+	if o.AdVideo2Tag.IsSet() {
+		toSerialize["ad_video_2_tag"] = o.AdVideo2Tag.Get()
 	}
 	if o.Adult.IsSet() {
 		toSerialize["adult"] = o.Adult.Get()
 	}
 	if o.AgeGroup.IsSet() {
 		toSerialize["age_group"] = o.AgeGroup.Get()
+	}
+	if !IsNil(o.AndroidDeepLink) {
+		toSerialize["android_deep_link"] = o.AndroidDeepLink
 	}
 	if !IsNil(o.Availability) {
 		toSerialize["availability"] = o.Availability
@@ -2114,6 +4786,21 @@ func (o ItemAttributes) ToMap() (map[string]interface{}, error) {
 	if o.CustomLabel4.IsSet() {
 		toSerialize["custom_label_4"] = o.CustomLabel4.Get()
 	}
+	if o.CustomNumber0.IsSet() {
+		toSerialize["custom_number_0"] = o.CustomNumber0.Get()
+	}
+	if o.CustomNumber1.IsSet() {
+		toSerialize["custom_number_1"] = o.CustomNumber1.Get()
+	}
+	if o.CustomNumber2.IsSet() {
+		toSerialize["custom_number_2"] = o.CustomNumber2.Get()
+	}
+	if o.CustomNumber3.IsSet() {
+		toSerialize["custom_number_3"] = o.CustomNumber3.Get()
+	}
+	if o.CustomNumber4.IsSet() {
+		toSerialize["custom_number_4"] = o.CustomNumber4.Get()
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -2134,6 +4821,12 @@ func (o ItemAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if o.InstallmentPrice.IsSet() {
+		toSerialize["installment_price"] = o.InstallmentPrice.Get()
+	}
+	if !IsNil(o.IosDeepLink) {
+		toSerialize["ios_deep_link"] = o.IosDeepLink
 	}
 	if o.ItemGroupId.IsSet() {
 		toSerialize["item_group_id"] = o.ItemGroupId.Get()
@@ -2171,8 +4864,14 @@ func (o ItemAttributes) ToMap() (map[string]interface{}, error) {
 	if o.ProductType.IsSet() {
 		toSerialize["product_type"] = o.ProductType.Get()
 	}
+	if o.PromotionId.IsSet() {
+		toSerialize["promotion_id"] = o.PromotionId.Get()
+	}
 	if o.SalePrice.IsSet() {
 		toSerialize["sale_price"] = o.SalePrice.Get()
+	}
+	if o.SalePriceEffectiveDate.IsSet() {
+		toSerialize["sale_price_effective_date"] = o.SalePriceEffectiveDate.Get()
 	}
 	if o.Shipping.IsSet() {
 		toSerialize["shipping"] = o.Shipping.Get()
@@ -2200,6 +4899,12 @@ func (o ItemAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title
+	}
+	if o.UnitPricingBaseMeasure.IsSet() {
+		toSerialize["unit_pricing_base_measure"] = o.UnitPricingBaseMeasure.Get()
+	}
+	if o.UnitPricingMeasure.IsSet() {
+		toSerialize["unit_pricing_measure"] = o.UnitPricingMeasure.Get()
 	}
 	if o.VariantNames != nil {
 		toSerialize["variant_names"] = o.VariantNames

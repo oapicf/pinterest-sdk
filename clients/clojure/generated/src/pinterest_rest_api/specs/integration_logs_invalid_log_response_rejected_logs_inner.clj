@@ -7,10 +7,10 @@
 
 (def integration-logs-invalid-log-response-rejected-logs-inner-data
   {
-   (ds/opt :log_index) int?
    (ds/req :field) string?
-   (ds/req :value) string?
+   (ds/opt :log_index) int?
    (ds/req :reason) string?
+   (ds/req :value) string?
    })
 
 (def integration-logs-invalid-log-response-rejected-logs-inner-spec

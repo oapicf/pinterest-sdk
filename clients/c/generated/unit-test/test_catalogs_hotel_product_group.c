@@ -23,26 +23,28 @@ catalogs_hotel_product_group_t* instantiate_catalogs_hotel_product_group(int inc
   catalogs_hotel_product_group_t* catalogs_hotel_product_group = NULL;
   if (include_optional) {
     catalogs_hotel_product_group = catalogs_hotel_product_group_create(
+      "a",
       pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_HOTEL,
-      "443727193917",
-      "Most Popular",
+      1621350033000,
       "0",
        // false, not to have infinite recursion
       instantiate_catalogs_hotel_product_group_filters(0),
-      1621350033000,
-      1622742155000,
-      "a"
+      "443727193917",
+      "Most Popular",
+      pinterest_rest_api_catalogs_hotel_product_group__"MERCHANT_CREATED",
+      1622742155000
     );
   } else {
     catalogs_hotel_product_group = catalogs_hotel_product_group_create(
+      "a",
       pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_HOTEL,
-      "443727193917",
-      "Most Popular",
+      1621350033000,
       "0",
       NULL,
-      1621350033000,
-      1622742155000,
-      "a"
+      "443727193917",
+      "Most Popular",
+      pinterest_rest_api_catalogs_hotel_product_group__"MERCHANT_CREATED",
+      1622742155000
     );
   }
 

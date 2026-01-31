@@ -5,18 +5,18 @@ context("Test CatalogsProductGroupsUpdateRequest")
 
 model_instance <- CatalogsProductGroupsUpdateRequest$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
+test_that("filters", {
+  # tests for the property `filters` (CatalogsCreativeAssetsProductGroupFilters)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })
 
 test_that("is_featured", {
@@ -27,11 +27,11 @@ test_that("is_featured", {
   #expect_equal(model.instance$`is_featured`, "EXPECTED_RESULT")
 })
 
-test_that("filters", {
-  # tests for the property `filters` (CatalogsCreativeAssetsProductGroupFilters)
+test_that("name", {
+  # tests for the property `name` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("catalog_type", {

@@ -1,9 +1,9 @@
 package controllers;
 
 import apimodels.Error;
-import apimodels.PinsList200Response;
 import apimodels.SearchPartnerPins200Response;
 import apimodels.SearchUserBoardsGet200Response;
+import apimodels.SearchUserPinsList200Response;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -73,7 +73,7 @@ public abstract class SearchApiControllerImpInterface {
             return unauthorized();
         }
 
-        PinsList200Response obj = searchUserPinsList(request, query, adAccountId, bookmark);
+        SearchUserPinsList200Response obj = searchUserPinsList(request, query, adAccountId, bookmark);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -85,6 +85,6 @@ public abstract class SearchApiControllerImpInterface {
 
     }
 
-    public abstract PinsList200Response searchUserPinsList(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception;
+    public abstract SearchUserPinsList200Response searchUserPinsList(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception;
 
 }

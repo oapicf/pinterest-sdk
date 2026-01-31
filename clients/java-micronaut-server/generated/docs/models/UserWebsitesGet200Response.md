@@ -8,8 +8,8 @@ The class is defined in **[UserWebsitesGet200Response.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;UserWebsiteSummary&gt;`](UserWebsiteSummary.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;UserWebsiteSummary&gt;`](UserWebsiteSummary.md) |  | 
 
 
 

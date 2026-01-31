@@ -6,41 +6,31 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/catalog.h"
-#include "../model/catalogs_create_report_response.h"
+#include "../model/catalogs_available_filter_values.h"
 #include "../model/catalogs_create_request.h"
-#include "../model/catalogs_feed.h"
-#include "../model/catalogs_feed_ingestion.h"
-#include "../model/catalogs_item_validation_issue.h"
-#include "../model/catalogs_items.h"
-#include "../model/catalogs_items_batch.h"
-#include "../model/catalogs_items_filters.h"
-#include "../model/catalogs_items_request.h"
 #include "../model/catalogs_list_200_response.h"
-#include "../model/catalogs_list_products_by_filter_request.h"
-#include "../model/catalogs_product_group_pins_list_200_response.h"
-#include "../model/catalogs_product_group_product_counts_vertical.h"
-#include "../model/catalogs_product_groups_list_200_response.h"
-#include "../model/catalogs_product_groups_update_request.h"
-#include "../model/catalogs_report.h"
-#include "../model/catalogs_report_parameters.h"
-#include "../model/catalogs_vertical_product_group.h"
+#include "../model/catalogs_locale.h"
+#include "../model/country.h"
 #include "../model/error.h"
-#include "../model/feed_processing_results_list_200_response.h"
-#include "../model/feeds_create_request.h"
-#include "../model/feeds_list_200_response.h"
-#include "../model/feeds_update_request.h"
-#include "../model/items_batch_post_request.h"
-#include "../model/items_issues_list_200_response.h"
-#include "../model/multiple_product_groups_inner.h"
-#include "../model/reports_stats_200_response.h"
 
-// Enum  for CatalogsAPI_itemsIssuesList
-typedef enum  { pinterest_rest_api_itemsIssuesList__NULL = 0, pinterest_rest_api_itemsIssuesList__AD_LINK_FORMAT_WARNING, pinterest_rest_api_itemsIssuesList__AD_LINK_SAME_AS_LINK, pinterest_rest_api_itemsIssuesList__ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__ADDITIONAL_IMAGE_LINK_WARNING, pinterest_rest_api_itemsIssuesList__ADULT_INVALID, pinterest_rest_api_itemsIssuesList__ADWORDS_FORMAT_INVALID, pinterest_rest_api_itemsIssuesList__ADWORDS_FORMAT_WARNING, pinterest_rest_api_itemsIssuesList__ADWORDS_SAME_AS_LINK, pinterest_rest_api_itemsIssuesList__AGE_GROUP_INVALID, pinterest_rest_api_itemsIssuesList__ANDROID_DEEP_LINK_INVALID, pinterest_rest_api_itemsIssuesList__AVAILABILITY_DATE_INVALID, pinterest_rest_api_itemsIssuesList__AVAILABILITY_INVALID, pinterest_rest_api_itemsIssuesList__BLOCKLISTED_IMAGE_SIGNATURE, pinterest_rest_api_itemsIssuesList__COUNTRY_DOES_NOT_MAP_TO_CURRENCY, pinterest_rest_api_itemsIssuesList__CUSTOM_LABEL_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__DESCRIPTION_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__DESCRIPTION_MISSING, pinterest_rest_api_itemsIssuesList__DUPLICATE_PRODUCTS, pinterest_rest_api_itemsIssuesList__EXPIRATION_DATE_INVALID, pinterest_rest_api_itemsIssuesList__GENDER_INVALID, pinterest_rest_api_itemsIssuesList__GTIN_INVALID, pinterest_rest_api_itemsIssuesList__IMAGE_LINK_INVALID, pinterest_rest_api_itemsIssuesList__IMAGE_LINK_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__IMAGE_LINK_MISSING, pinterest_rest_api_itemsIssuesList__IMAGE_LINK_WARNING, pinterest_rest_api_itemsIssuesList__INVALID_DOMAIN, pinterest_rest_api_itemsIssuesList__IOS_DEEP_LINK_INVALID, pinterest_rest_api_itemsIssuesList__IS_BUNDLE_INVALID, pinterest_rest_api_itemsIssuesList__ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, pinterest_rest_api_itemsIssuesList__ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, pinterest_rest_api_itemsIssuesList__ITEMID_MISSING, pinterest_rest_api_itemsIssuesList__LINK_FORMAT_INVALID, pinterest_rest_api_itemsIssuesList__LINK_FORMAT_WARNING, pinterest_rest_api_itemsIssuesList__LINK_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__LIST_PRICE_INVALID, pinterest_rest_api_itemsIssuesList__MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED, pinterest_rest_api_itemsIssuesList__MIN_AD_PRICE_INVALID, pinterest_rest_api_itemsIssuesList__MPN_INVALID, pinterest_rest_api_itemsIssuesList__MULTIPACK_INVALID, pinterest_rest_api_itemsIssuesList__OPTIONAL_CONDITION_INVALID, pinterest_rest_api_itemsIssuesList__OPTIONAL_CONDITION_MISSING, pinterest_rest_api_itemsIssuesList__OPTIONAL_PRODUCT_CATEGORY_INVALID, pinterest_rest_api_itemsIssuesList__OPTIONAL_PRODUCT_CATEGORY_MISSING, pinterest_rest_api_itemsIssuesList__PARSE_LINE_ERROR, pinterest_rest_api_itemsIssuesList__PINJOIN_CONTENT_UNSAFE, pinterest_rest_api_itemsIssuesList__PRICE_CANNOT_BE_DETERMINED, pinterest_rest_api_itemsIssuesList__PRICE_MISSING, pinterest_rest_api_itemsIssuesList__PRODUCT_CATEGORY_DEPTH_WARNING, pinterest_rest_api_itemsIssuesList__PRODUCT_LINK_MISSING, pinterest_rest_api_itemsIssuesList__PRODUCT_PRICE_INVALID, pinterest_rest_api_itemsIssuesList__PRODUCT_TYPE_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__SALE_DATE_INVALID, pinterest_rest_api_itemsIssuesList__SALES_PRICE_INVALID, pinterest_rest_api_itemsIssuesList__SALES_PRICE_TOO_HIGH, pinterest_rest_api_itemsIssuesList__SALES_PRICE_TOO_LOW, pinterest_rest_api_itemsIssuesList__SHIPPING_INVALID, pinterest_rest_api_itemsIssuesList__SHIPPING_HEIGHT_INVALID, pinterest_rest_api_itemsIssuesList__SHIPPING_WEIGHT_INVALID, pinterest_rest_api_itemsIssuesList__SHIPPING_WIDTH_INVALID, pinterest_rest_api_itemsIssuesList__SIZE_SYSTEM_INVALID, pinterest_rest_api_itemsIssuesList__SIZE_TYPE_INVALID, pinterest_rest_api_itemsIssuesList__TAX_INVALID, pinterest_rest_api_itemsIssuesList__TITLE_LENGTH_TOO_LONG, pinterest_rest_api_itemsIssuesList__TITLE_MISSING, pinterest_rest_api_itemsIssuesList__TOO_MANY_ADDITIONAL_IMAGE_LINKS, pinterest_rest_api_itemsIssuesList__UTM_SOURCE_AUTO_CORRECTED, pinterest_rest_api_itemsIssuesList__WEIGHT_UNIT_INVALID } pinterest_rest_api_itemsIssuesList_item_validation_issue_e;
+// Enum  for CatalogsAPI_catalogsAvailableFilterValues
+typedef enum  { pinterest_rest_api_catalogsAvailableFilterValues__NULL = 0, pinterest_rest_api_catalogsAvailableFilterValues__AD, pinterest_rest_api_catalogsAvailableFilterValues__AE, pinterest_rest_api_catalogsAvailableFilterValues__AF, pinterest_rest_api_catalogsAvailableFilterValues__AG, pinterest_rest_api_catalogsAvailableFilterValues__AI, pinterest_rest_api_catalogsAvailableFilterValues__AL, pinterest_rest_api_catalogsAvailableFilterValues__AM, pinterest_rest_api_catalogsAvailableFilterValues__AO, pinterest_rest_api_catalogsAvailableFilterValues__AQ, pinterest_rest_api_catalogsAvailableFilterValues__AR, pinterest_rest_api_catalogsAvailableFilterValues__AS, pinterest_rest_api_catalogsAvailableFilterValues__AT, pinterest_rest_api_catalogsAvailableFilterValues__AU, pinterest_rest_api_catalogsAvailableFilterValues__AW, pinterest_rest_api_catalogsAvailableFilterValues__AX, pinterest_rest_api_catalogsAvailableFilterValues__AZ, pinterest_rest_api_catalogsAvailableFilterValues__BA, pinterest_rest_api_catalogsAvailableFilterValues__BB, pinterest_rest_api_catalogsAvailableFilterValues__BD, pinterest_rest_api_catalogsAvailableFilterValues__BE, pinterest_rest_api_catalogsAvailableFilterValues__BF, pinterest_rest_api_catalogsAvailableFilterValues__BG, pinterest_rest_api_catalogsAvailableFilterValues__BH, pinterest_rest_api_catalogsAvailableFilterValues__BI, pinterest_rest_api_catalogsAvailableFilterValues__BJ, pinterest_rest_api_catalogsAvailableFilterValues__BL, pinterest_rest_api_catalogsAvailableFilterValues__BM, pinterest_rest_api_catalogsAvailableFilterValues__BN, pinterest_rest_api_catalogsAvailableFilterValues__BO, pinterest_rest_api_catalogsAvailableFilterValues__BQ, pinterest_rest_api_catalogsAvailableFilterValues__BR, pinterest_rest_api_catalogsAvailableFilterValues__BS, pinterest_rest_api_catalogsAvailableFilterValues__BT, pinterest_rest_api_catalogsAvailableFilterValues__BV, pinterest_rest_api_catalogsAvailableFilterValues__BW, pinterest_rest_api_catalogsAvailableFilterValues__BY, pinterest_rest_api_catalogsAvailableFilterValues__BZ, pinterest_rest_api_catalogsAvailableFilterValues__CA, pinterest_rest_api_catalogsAvailableFilterValues__CC, pinterest_rest_api_catalogsAvailableFilterValues__CD, pinterest_rest_api_catalogsAvailableFilterValues__CF, pinterest_rest_api_catalogsAvailableFilterValues__CG, pinterest_rest_api_catalogsAvailableFilterValues__CH, pinterest_rest_api_catalogsAvailableFilterValues__CI, pinterest_rest_api_catalogsAvailableFilterValues__CK, pinterest_rest_api_catalogsAvailableFilterValues__CL, pinterest_rest_api_catalogsAvailableFilterValues__CM, pinterest_rest_api_catalogsAvailableFilterValues__CN, pinterest_rest_api_catalogsAvailableFilterValues__CO, pinterest_rest_api_catalogsAvailableFilterValues__CR, pinterest_rest_api_catalogsAvailableFilterValues__CU, pinterest_rest_api_catalogsAvailableFilterValues__CV, pinterest_rest_api_catalogsAvailableFilterValues__CW, pinterest_rest_api_catalogsAvailableFilterValues__CX, pinterest_rest_api_catalogsAvailableFilterValues__CY, pinterest_rest_api_catalogsAvailableFilterValues__CZ, pinterest_rest_api_catalogsAvailableFilterValues__DE, pinterest_rest_api_catalogsAvailableFilterValues__DJ, pinterest_rest_api_catalogsAvailableFilterValues__DK, pinterest_rest_api_catalogsAvailableFilterValues__DM, pinterest_rest_api_catalogsAvailableFilterValues___DO, pinterest_rest_api_catalogsAvailableFilterValues__DZ, pinterest_rest_api_catalogsAvailableFilterValues__EC, pinterest_rest_api_catalogsAvailableFilterValues__EE, pinterest_rest_api_catalogsAvailableFilterValues__EG, pinterest_rest_api_catalogsAvailableFilterValues__EH, pinterest_rest_api_catalogsAvailableFilterValues__ER, pinterest_rest_api_catalogsAvailableFilterValues__ES, pinterest_rest_api_catalogsAvailableFilterValues__ET, pinterest_rest_api_catalogsAvailableFilterValues__FI, pinterest_rest_api_catalogsAvailableFilterValues__FJ, pinterest_rest_api_catalogsAvailableFilterValues__FK, pinterest_rest_api_catalogsAvailableFilterValues__FM, pinterest_rest_api_catalogsAvailableFilterValues__FO, pinterest_rest_api_catalogsAvailableFilterValues__FR, pinterest_rest_api_catalogsAvailableFilterValues__GA, pinterest_rest_api_catalogsAvailableFilterValues__GB, pinterest_rest_api_catalogsAvailableFilterValues__GD, pinterest_rest_api_catalogsAvailableFilterValues__GE, pinterest_rest_api_catalogsAvailableFilterValues__GF, pinterest_rest_api_catalogsAvailableFilterValues__GG, pinterest_rest_api_catalogsAvailableFilterValues__GH, pinterest_rest_api_catalogsAvailableFilterValues__GI, pinterest_rest_api_catalogsAvailableFilterValues__GL, pinterest_rest_api_catalogsAvailableFilterValues__GM, pinterest_rest_api_catalogsAvailableFilterValues__GN, pinterest_rest_api_catalogsAvailableFilterValues__GP, pinterest_rest_api_catalogsAvailableFilterValues__GQ, pinterest_rest_api_catalogsAvailableFilterValues__GR, pinterest_rest_api_catalogsAvailableFilterValues__GS, pinterest_rest_api_catalogsAvailableFilterValues__GT, pinterest_rest_api_catalogsAvailableFilterValues__GU, pinterest_rest_api_catalogsAvailableFilterValues__GW, pinterest_rest_api_catalogsAvailableFilterValues__GY, pinterest_rest_api_catalogsAvailableFilterValues__HK, pinterest_rest_api_catalogsAvailableFilterValues__HM, pinterest_rest_api_catalogsAvailableFilterValues__HN, pinterest_rest_api_catalogsAvailableFilterValues__HR, pinterest_rest_api_catalogsAvailableFilterValues__HT, pinterest_rest_api_catalogsAvailableFilterValues__HU, pinterest_rest_api_catalogsAvailableFilterValues__ID, pinterest_rest_api_catalogsAvailableFilterValues__IE, pinterest_rest_api_catalogsAvailableFilterValues__IL, pinterest_rest_api_catalogsAvailableFilterValues__IM, pinterest_rest_api_catalogsAvailableFilterValues__IN, pinterest_rest_api_catalogsAvailableFilterValues__IO, pinterest_rest_api_catalogsAvailableFilterValues__IQ, pinterest_rest_api_catalogsAvailableFilterValues__IR, pinterest_rest_api_catalogsAvailableFilterValues__IS, pinterest_rest_api_catalogsAvailableFilterValues__IT, pinterest_rest_api_catalogsAvailableFilterValues__JE, pinterest_rest_api_catalogsAvailableFilterValues__JM, pinterest_rest_api_catalogsAvailableFilterValues__JO, pinterest_rest_api_catalogsAvailableFilterValues__JP, pinterest_rest_api_catalogsAvailableFilterValues__KE, pinterest_rest_api_catalogsAvailableFilterValues__KG, pinterest_rest_api_catalogsAvailableFilterValues__KH, pinterest_rest_api_catalogsAvailableFilterValues__KI, pinterest_rest_api_catalogsAvailableFilterValues__KM, pinterest_rest_api_catalogsAvailableFilterValues__KN, pinterest_rest_api_catalogsAvailableFilterValues__KR, pinterest_rest_api_catalogsAvailableFilterValues__KW, pinterest_rest_api_catalogsAvailableFilterValues__KY, pinterest_rest_api_catalogsAvailableFilterValues__KZ, pinterest_rest_api_catalogsAvailableFilterValues__LA, pinterest_rest_api_catalogsAvailableFilterValues__LB, pinterest_rest_api_catalogsAvailableFilterValues__LC, pinterest_rest_api_catalogsAvailableFilterValues__LI, pinterest_rest_api_catalogsAvailableFilterValues__LK, pinterest_rest_api_catalogsAvailableFilterValues__LR, pinterest_rest_api_catalogsAvailableFilterValues__LS, pinterest_rest_api_catalogsAvailableFilterValues__LT, pinterest_rest_api_catalogsAvailableFilterValues__LU, pinterest_rest_api_catalogsAvailableFilterValues__LV, pinterest_rest_api_catalogsAvailableFilterValues__LY, pinterest_rest_api_catalogsAvailableFilterValues__MA, pinterest_rest_api_catalogsAvailableFilterValues__MC, pinterest_rest_api_catalogsAvailableFilterValues__MD, pinterest_rest_api_catalogsAvailableFilterValues__ME, pinterest_rest_api_catalogsAvailableFilterValues__MF, pinterest_rest_api_catalogsAvailableFilterValues__MG, pinterest_rest_api_catalogsAvailableFilterValues__MH, pinterest_rest_api_catalogsAvailableFilterValues__MK, pinterest_rest_api_catalogsAvailableFilterValues__ML, pinterest_rest_api_catalogsAvailableFilterValues__MM, pinterest_rest_api_catalogsAvailableFilterValues__MN, pinterest_rest_api_catalogsAvailableFilterValues__MO, pinterest_rest_api_catalogsAvailableFilterValues__MP, pinterest_rest_api_catalogsAvailableFilterValues__MQ, pinterest_rest_api_catalogsAvailableFilterValues__MR, pinterest_rest_api_catalogsAvailableFilterValues__MS, pinterest_rest_api_catalogsAvailableFilterValues__MT, pinterest_rest_api_catalogsAvailableFilterValues__MU, pinterest_rest_api_catalogsAvailableFilterValues__MV, pinterest_rest_api_catalogsAvailableFilterValues__MW, pinterest_rest_api_catalogsAvailableFilterValues__MX, pinterest_rest_api_catalogsAvailableFilterValues__MY, pinterest_rest_api_catalogsAvailableFilterValues__MZ, pinterest_rest_api_catalogsAvailableFilterValues__NA, pinterest_rest_api_catalogsAvailableFilterValues__NC, pinterest_rest_api_catalogsAvailableFilterValues__NE, pinterest_rest_api_catalogsAvailableFilterValues__NF, pinterest_rest_api_catalogsAvailableFilterValues__NG, pinterest_rest_api_catalogsAvailableFilterValues__NI, pinterest_rest_api_catalogsAvailableFilterValues__NL, pinterest_rest_api_catalogsAvailableFilterValues__NO, pinterest_rest_api_catalogsAvailableFilterValues__NP, pinterest_rest_api_catalogsAvailableFilterValues__NR, pinterest_rest_api_catalogsAvailableFilterValues__NU, pinterest_rest_api_catalogsAvailableFilterValues__NZ, pinterest_rest_api_catalogsAvailableFilterValues__OM, pinterest_rest_api_catalogsAvailableFilterValues__PA, pinterest_rest_api_catalogsAvailableFilterValues__PE, pinterest_rest_api_catalogsAvailableFilterValues__PF, pinterest_rest_api_catalogsAvailableFilterValues__PG, pinterest_rest_api_catalogsAvailableFilterValues__PH, pinterest_rest_api_catalogsAvailableFilterValues__PK, pinterest_rest_api_catalogsAvailableFilterValues__PL, pinterest_rest_api_catalogsAvailableFilterValues__PM, pinterest_rest_api_catalogsAvailableFilterValues__PN, pinterest_rest_api_catalogsAvailableFilterValues__PR, pinterest_rest_api_catalogsAvailableFilterValues__PS, pinterest_rest_api_catalogsAvailableFilterValues__PT, pinterest_rest_api_catalogsAvailableFilterValues__PW, pinterest_rest_api_catalogsAvailableFilterValues__PY, pinterest_rest_api_catalogsAvailableFilterValues__QA, pinterest_rest_api_catalogsAvailableFilterValues__RE, pinterest_rest_api_catalogsAvailableFilterValues__RO, pinterest_rest_api_catalogsAvailableFilterValues__RS, pinterest_rest_api_catalogsAvailableFilterValues__RU, pinterest_rest_api_catalogsAvailableFilterValues__RW, pinterest_rest_api_catalogsAvailableFilterValues__SA, pinterest_rest_api_catalogsAvailableFilterValues__SB, pinterest_rest_api_catalogsAvailableFilterValues__SC, pinterest_rest_api_catalogsAvailableFilterValues__SD, pinterest_rest_api_catalogsAvailableFilterValues__SE, pinterest_rest_api_catalogsAvailableFilterValues__SG, pinterest_rest_api_catalogsAvailableFilterValues__SH, pinterest_rest_api_catalogsAvailableFilterValues__SI, pinterest_rest_api_catalogsAvailableFilterValues__SJ, pinterest_rest_api_catalogsAvailableFilterValues__SK, pinterest_rest_api_catalogsAvailableFilterValues__SL, pinterest_rest_api_catalogsAvailableFilterValues__SM, pinterest_rest_api_catalogsAvailableFilterValues__SN, pinterest_rest_api_catalogsAvailableFilterValues__SO, pinterest_rest_api_catalogsAvailableFilterValues__SR, pinterest_rest_api_catalogsAvailableFilterValues__SS, pinterest_rest_api_catalogsAvailableFilterValues__ST, pinterest_rest_api_catalogsAvailableFilterValues__SV, pinterest_rest_api_catalogsAvailableFilterValues__SX, pinterest_rest_api_catalogsAvailableFilterValues__SY, pinterest_rest_api_catalogsAvailableFilterValues__SZ, pinterest_rest_api_catalogsAvailableFilterValues__TC, pinterest_rest_api_catalogsAvailableFilterValues__TD, pinterest_rest_api_catalogsAvailableFilterValues__TF, pinterest_rest_api_catalogsAvailableFilterValues__TG, pinterest_rest_api_catalogsAvailableFilterValues__TH, pinterest_rest_api_catalogsAvailableFilterValues__TJ, pinterest_rest_api_catalogsAvailableFilterValues__TK, pinterest_rest_api_catalogsAvailableFilterValues__TL, pinterest_rest_api_catalogsAvailableFilterValues__TM, pinterest_rest_api_catalogsAvailableFilterValues__TN, pinterest_rest_api_catalogsAvailableFilterValues__TO, pinterest_rest_api_catalogsAvailableFilterValues__TR, pinterest_rest_api_catalogsAvailableFilterValues__TT, pinterest_rest_api_catalogsAvailableFilterValues__TV, pinterest_rest_api_catalogsAvailableFilterValues__TW, pinterest_rest_api_catalogsAvailableFilterValues__TZ, pinterest_rest_api_catalogsAvailableFilterValues__UA, pinterest_rest_api_catalogsAvailableFilterValues__UG, pinterest_rest_api_catalogsAvailableFilterValues__UM, pinterest_rest_api_catalogsAvailableFilterValues__US, pinterest_rest_api_catalogsAvailableFilterValues__UY, pinterest_rest_api_catalogsAvailableFilterValues__UZ, pinterest_rest_api_catalogsAvailableFilterValues__VA, pinterest_rest_api_catalogsAvailableFilterValues__VC, pinterest_rest_api_catalogsAvailableFilterValues__VE, pinterest_rest_api_catalogsAvailableFilterValues__VG, pinterest_rest_api_catalogsAvailableFilterValues__VI, pinterest_rest_api_catalogsAvailableFilterValues__VN, pinterest_rest_api_catalogsAvailableFilterValues__VU, pinterest_rest_api_catalogsAvailableFilterValues__WF, pinterest_rest_api_catalogsAvailableFilterValues__WS, pinterest_rest_api_catalogsAvailableFilterValues__YE, pinterest_rest_api_catalogsAvailableFilterValues__YT, pinterest_rest_api_catalogsAvailableFilterValues__ZA, pinterest_rest_api_catalogsAvailableFilterValues__ZM, pinterest_rest_api_catalogsAvailableFilterValues__ZW } pinterest_rest_api_catalogsAvailableFilterValues_country_e;
+
+// Enum  for CatalogsAPI_catalogsAvailableFilterValues
+typedef enum  { pinterest_rest_api_catalogsAvailableFilterValues__NULL = 0, pinterest_rest_api_catalogsAvailableFilterValues__af_ZA, pinterest_rest_api_catalogsAvailableFilterValues__ar_SA, pinterest_rest_api_catalogsAvailableFilterValues__bg_BG, pinterest_rest_api_catalogsAvailableFilterValues__bn_IN, pinterest_rest_api_catalogsAvailableFilterValues__cs_CZ, pinterest_rest_api_catalogsAvailableFilterValues__da_DK, pinterest_rest_api_catalogsAvailableFilterValues__de, pinterest_rest_api_catalogsAvailableFilterValues__el_GR, pinterest_rest_api_catalogsAvailableFilterValues__en_AU, pinterest_rest_api_catalogsAvailableFilterValues__en_CA, pinterest_rest_api_catalogsAvailableFilterValues__en_GB, pinterest_rest_api_catalogsAvailableFilterValues__en_IN, pinterest_rest_api_catalogsAvailableFilterValues__en_US, pinterest_rest_api_catalogsAvailableFilterValues__es_419, pinterest_rest_api_catalogsAvailableFilterValues__es_AR, pinterest_rest_api_catalogsAvailableFilterValues__es_ES, pinterest_rest_api_catalogsAvailableFilterValues__es_MX, pinterest_rest_api_catalogsAvailableFilterValues__fi_FI, pinterest_rest_api_catalogsAvailableFilterValues__fr, pinterest_rest_api_catalogsAvailableFilterValues__fr_CA, pinterest_rest_api_catalogsAvailableFilterValues__he_IL, pinterest_rest_api_catalogsAvailableFilterValues__hi_IN, pinterest_rest_api_catalogsAvailableFilterValues__hr_HR, pinterest_rest_api_catalogsAvailableFilterValues__hu_HU, pinterest_rest_api_catalogsAvailableFilterValues__id_ID, pinterest_rest_api_catalogsAvailableFilterValues__it, pinterest_rest_api_catalogsAvailableFilterValues__ja, pinterest_rest_api_catalogsAvailableFilterValues__ko_KR, pinterest_rest_api_catalogsAvailableFilterValues__ms_MY, pinterest_rest_api_catalogsAvailableFilterValues__nb_NO, pinterest_rest_api_catalogsAvailableFilterValues__nl, pinterest_rest_api_catalogsAvailableFilterValues__pl_PL, pinterest_rest_api_catalogsAvailableFilterValues__pt_BR, pinterest_rest_api_catalogsAvailableFilterValues__pt_PT, pinterest_rest_api_catalogsAvailableFilterValues__ro_RO, pinterest_rest_api_catalogsAvailableFilterValues__ru_RU, pinterest_rest_api_catalogsAvailableFilterValues__sk_SK, pinterest_rest_api_catalogsAvailableFilterValues__sv_SE, pinterest_rest_api_catalogsAvailableFilterValues__te_IN, pinterest_rest_api_catalogsAvailableFilterValues__th_TH, pinterest_rest_api_catalogsAvailableFilterValues__tl_PH, pinterest_rest_api_catalogsAvailableFilterValues__tr, pinterest_rest_api_catalogsAvailableFilterValues__uk_UA, pinterest_rest_api_catalogsAvailableFilterValues__vi_VN, pinterest_rest_api_catalogsAvailableFilterValues__zh_CN, pinterest_rest_api_catalogsAvailableFilterValues__zh_TW } pinterest_rest_api_catalogsAvailableFilterValues_language_e;
+
+
+// List available filter values
+//
+// Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+//
+catalogs_available_filter_values_t*
+CatalogsAPI_catalogsAvailableFilterValues(apiClient_t *apiClient, char *catalog_id, char *feed_id, country_e country, catalogs_locale_e language, char *ad_account_id);
 
 
 // Create catalog
 //
-// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
+// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalog_t*
 CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *catalogs_create_request, char *ad_account_id);
@@ -52,205 +42,5 @@ CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *ca
 //
 catalogs_list_200_response_t*
 CatalogsAPI_catalogsList(apiClient_t *apiClient, char *bookmark, int *page_size, char *ad_account_id);
-
-
-// List products by product group
-//
-// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-catalogs_product_group_pins_list_200_response_t*
-CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_group_id, char *bookmark, int *page_size, char *ad_account_id, int *pin_metrics);
-
-
-// Create product group
-//
-// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-catalogs_vertical_product_group_t*
-CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product_groups_inner_t *multiple_product_groups_inner, char *ad_account_id);
-
-
-// Create product groups
-//
-// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-list_t*
-CatalogsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *multiple_product_groups_inner, char *ad_account_id);
-
-
-// Delete product group
-//
-// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-void
-CatalogsAPI_catalogsProductGroupsDelete(apiClient_t *apiClient, char *product_group_id, char *ad_account_id);
-
-
-// Delete product groups
-//
-// Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-void
-CatalogsAPI_catalogsProductGroupsDeleteMany(apiClient_t *apiClient, list_t *id, char *ad_account_id);
-
-
-// Get product group
-//
-// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-catalogs_vertical_product_group_t*
-CatalogsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group_id, char *ad_account_id);
-
-
-// List product groups
-//
-// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-catalogs_product_groups_list_200_response_t*
-CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *feed_id, char *catalog_id, char *bookmark, int *page_size, char *ad_account_id);
-
-
-// Get product counts
-//
-// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-catalogs_product_group_product_counts_vertical_t*
-CatalogsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *product_group_id, char *ad_account_id);
-
-
-// Update single product group
-//
-// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-catalogs_vertical_product_group_t*
-CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_group_id, catalogs_product_groups_update_request_t *catalogs_product_groups_update_request, char *ad_account_id);
-
-
-// List feed processing results
-//
-// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-feed_processing_results_list_200_response_t*
-CatalogsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, char *bookmark, int *page_size, char *ad_account_id);
-
-
-// Create feed
-//
-// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-catalogs_feed_t*
-CatalogsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_create_request, char *ad_account_id);
-
-
-// Delete feed
-//
-// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
-//
-void
-CatalogsAPI_feedsDelete(apiClient_t *apiClient, char *feed_id, char *ad_account_id);
-
-
-// Get feed
-//
-// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
-//
-catalogs_feed_t*
-CatalogsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account_id);
-
-
-// Ingest feed items
-//
-// Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-catalogs_feed_ingestion_t*
-CatalogsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_account_id);
-
-
-// List feeds
-//
-// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
-//
-feeds_list_200_response_t*
-CatalogsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size, char *catalog_id, char *ad_account_id);
-
-
-// Update feed
-//
-// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-catalogs_feed_t*
-CatalogsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_request_t *feeds_update_request, char *ad_account_id);
-
-
-// Get item batch status
-//
-// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-//
-catalogs_items_batch_t*
-CatalogsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_account_id);
-
-
-// Operate on item batch
-//
-// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
-//
-catalogs_items_batch_t*
-CatalogsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *items_batch_post_request, char *ad_account_id);
-
-
-// Get catalogs items
-//
-// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
-//
-catalogs_items_t*
-CatalogsAPI_itemsGet(apiClient_t *apiClient, char *country, char *language, char *ad_account_id, list_t *item_ids, catalogs_items_filters_t *filters);
-
-
-// List item issues
-//
-// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-items_issues_list_200_response_t*
-CatalogsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, char *bookmark, int *page_size, list_t *item_numbers, catalogs_item_validation_issue_e item_validation_issue, char *ad_account_id);
-
-
-// Get catalogs items (POST)
-//
-// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-//
-catalogs_items_t*
-CatalogsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs_items_request, char *ad_account_id);
-
-
-// List products by filter
-//
-// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
-//
-catalogs_product_group_pins_list_200_response_t*
-CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request, char *bookmark, int *page_size, char *ad_account_id, int *pin_metrics);
-
-
-// Build catalogs report
-//
-// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-//
-catalogs_create_report_response_t*
-CatalogsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *catalogs_report_parameters, char *ad_account_id);
-
-
-// Get catalogs report
-//
-// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-//
-catalogs_report_t*
-CatalogsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_account_id);
-
-
-// List report stats
-//
-// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-//
-reports_stats_200_response_t*
-CatalogsAPI_reportsStats(apiClient_t *apiClient, catalogs_report_parameters_t *parameters, char *ad_account_id, int *page_size, char *bookmark);
 
 

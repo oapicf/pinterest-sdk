@@ -19,9 +19,27 @@ import java.util.Objects;
 
 public class CatalogsProductGroupMultipleGenderCriteria   {
   
+  private Boolean negated = false;
+
   private List<Gender> values = new ArrayList<>();
 
-  private Boolean negated = false;
+  /**
+   **/
+  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
 
   /**
    **/
@@ -50,24 +68,6 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
   }
 
 
-  /**
-   **/
-  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -78,13 +78,13 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleGenderCriteria catalogsProductGroupMultipleGenderCriteria = (CatalogsProductGroupMultipleGenderCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleGenderCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleGenderCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleGenderCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleGenderCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -92,8 +92,8 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleGenderCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

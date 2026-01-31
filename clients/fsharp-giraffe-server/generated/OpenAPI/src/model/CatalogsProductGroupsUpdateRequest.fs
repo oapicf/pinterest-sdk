@@ -15,9 +15,9 @@ module CatalogsProductGroupsUpdateRequest =
 
 
   type catalogs_product_groups_update_request = {
-    Name : string;
     Description : string option;
-    IsFeatured : bool;
     Filters : CatalogsProductGroupFiltersRequest;
+    IsFeatured : bool;
+    Name : string;
   }
   //#endregion

@@ -8,8 +8,8 @@
 
 (def catalogs-list-200-response-data
   {
-   (ds/req :items) (s/coll-of catalog-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of catalog-spec)
    })
 
 (def catalogs-list-200-response-spec

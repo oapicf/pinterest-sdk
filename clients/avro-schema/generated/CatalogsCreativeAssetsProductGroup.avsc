@@ -5,6 +5,11 @@
   "name": "CatalogsCreativeAssetsProductGroup",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -16,14 +21,9 @@
       "doc": ""
     },
     {
-      "name": "id",
-      "type": "string",
-      "doc": "ID of the creative assets product group."
-    },
-    {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "Name of creative assets product group",
+      "name": "created_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of when catalog product group was created.",
       "default": null
     },
     {
@@ -38,9 +38,14 @@
       "doc": ""
     },
     {
-      "name": "created_at",
-      "type": ["null", "int"],
-      "doc": "Unix timestamp in seconds of when catalog product group was created.",
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the creative assets product group."
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of creative assets product group",
       "default": null
     },
     {
@@ -48,11 +53,6 @@
       "type": ["null", "int"],
       "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
       "default": null
-    },
-    {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the creative assets product group."
     }
   ]
 

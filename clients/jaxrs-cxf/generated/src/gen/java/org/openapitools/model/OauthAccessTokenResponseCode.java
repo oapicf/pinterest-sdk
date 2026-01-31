@@ -12,13 +12,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OauthAccessTokenResponseCode  {
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   private String refreshToken;
 
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
+
+  private Integer refreshTokenExpiresAt;
+
+  @ApiModelProperty(value = "")
 
   private Integer refreshTokenExpiresIn;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private String accessToken;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private Integer expiresIn;
 
 public enum ResponseTypeEnum {
 
@@ -58,25 +70,16 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
 
   @ApiModelProperty(required = true, value = "")
 
-  private String accessToken;
+  private String scope;
 
   @ApiModelProperty(required = true, value = "")
 
   private String tokenType = "bearer";
-
-  @ApiModelProperty(required = true, value = "")
-
-  private Integer expiresIn;
-
-  @ApiModelProperty(required = true, value = "")
-
-  private String scope;
  /**
    * Get refreshToken
    * @return refreshToken
   **/
   @JsonProperty("refresh_token")
-  @NotNull
   public String getRefreshToken() {
     return refreshToken;
   }
@@ -91,11 +94,28 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
   }
 
  /**
+   * Get refreshTokenExpiresAt
+   * @return refreshTokenExpiresAt
+  **/
+  @JsonProperty("refresh_token_expires_at")
+  public Integer getRefreshTokenExpiresAt() {
+    return refreshTokenExpiresAt;
+  }
+
+  public void setRefreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+    this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+  }
+
+  public OauthAccessTokenResponseCode refreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+    this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+    return this;
+  }
+
+ /**
    * Get refreshTokenExpiresIn
    * @return refreshTokenExpiresIn
   **/
   @JsonProperty("refresh_token_expires_in")
-  @NotNull
   public Integer getRefreshTokenExpiresIn() {
     return refreshTokenExpiresIn;
   }
@@ -106,6 +126,44 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
 
   public OauthAccessTokenResponseCode refreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
     this.refreshTokenExpiresIn = refreshTokenExpiresIn;
+    return this;
+  }
+
+ /**
+   * Get accessToken
+   * @return accessToken
+  **/
+  @JsonProperty("access_token")
+  @NotNull
+  public String getAccessToken() {
+    return accessToken;
+  }
+
+  public void setAccessToken(String accessToken) {
+    this.accessToken = accessToken;
+  }
+
+  public OauthAccessTokenResponseCode accessToken(String accessToken) {
+    this.accessToken = accessToken;
+    return this;
+  }
+
+ /**
+   * Get expiresIn
+   * @return expiresIn
+  **/
+  @JsonProperty("expires_in")
+  @NotNull
+  public Integer getExpiresIn() {
+    return expiresIn;
+  }
+
+  public void setExpiresIn(Integer expiresIn) {
+    this.expiresIn = expiresIn;
+  }
+
+  public OauthAccessTokenResponseCode expiresIn(Integer expiresIn) {
+    this.expiresIn = expiresIn;
     return this;
   }
 
@@ -131,21 +189,21 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
   }
 
  /**
-   * Get accessToken
-   * @return accessToken
+   * Get scope
+   * @return scope
   **/
-  @JsonProperty("access_token")
+  @JsonProperty("scope")
   @NotNull
-  public String getAccessToken() {
-    return accessToken;
+  public String getScope() {
+    return scope;
   }
 
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
+  public void setScope(String scope) {
+    this.scope = scope;
   }
 
-  public OauthAccessTokenResponseCode accessToken(String accessToken) {
-    this.accessToken = accessToken;
+  public OauthAccessTokenResponseCode scope(String scope) {
+    this.scope = scope;
     return this;
   }
 
@@ -168,44 +226,6 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
     return this;
   }
 
- /**
-   * Get expiresIn
-   * @return expiresIn
-  **/
-  @JsonProperty("expires_in")
-  @NotNull
-  public Integer getExpiresIn() {
-    return expiresIn;
-  }
-
-  public void setExpiresIn(Integer expiresIn) {
-    this.expiresIn = expiresIn;
-  }
-
-  public OauthAccessTokenResponseCode expiresIn(Integer expiresIn) {
-    this.expiresIn = expiresIn;
-    return this;
-  }
-
- /**
-   * Get scope
-   * @return scope
-  **/
-  @JsonProperty("scope")
-  @NotNull
-  public String getScope() {
-    return scope;
-  }
-
-  public void setScope(String scope) {
-    this.scope = scope;
-  }
-
-  public OauthAccessTokenResponseCode scope(String scope) {
-    this.scope = scope;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -216,17 +236,18 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
     }
     OauthAccessTokenResponseCode oauthAccessTokenResponseCode = (OauthAccessTokenResponseCode) o;
     return Objects.equals(this.refreshToken, oauthAccessTokenResponseCode.refreshToken) &&
+        Objects.equals(this.refreshTokenExpiresAt, oauthAccessTokenResponseCode.refreshTokenExpiresAt) &&
         Objects.equals(this.refreshTokenExpiresIn, oauthAccessTokenResponseCode.refreshTokenExpiresIn) &&
-        Objects.equals(this.responseType, oauthAccessTokenResponseCode.responseType) &&
         Objects.equals(this.accessToken, oauthAccessTokenResponseCode.accessToken) &&
-        Objects.equals(this.tokenType, oauthAccessTokenResponseCode.tokenType) &&
         Objects.equals(this.expiresIn, oauthAccessTokenResponseCode.expiresIn) &&
-        Objects.equals(this.scope, oauthAccessTokenResponseCode.scope);
+        Objects.equals(this.responseType, oauthAccessTokenResponseCode.responseType) &&
+        Objects.equals(this.scope, oauthAccessTokenResponseCode.scope) &&
+        Objects.equals(this.tokenType, oauthAccessTokenResponseCode.tokenType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, refreshTokenExpiresIn, responseType, accessToken, tokenType, expiresIn, scope);
+    return Objects.hash(refreshToken, refreshTokenExpiresAt, refreshTokenExpiresIn, accessToken, expiresIn, responseType, scope, tokenType);
   }
 
   @Override
@@ -235,12 +256,13 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
     sb.append("class OauthAccessTokenResponseCode {\n");
     
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    refreshTokenExpiresAt: ").append(toIndentedString(refreshTokenExpiresAt)).append("\n");
     sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
-    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -18,15 +18,15 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceInsightsResponse   {
   
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
-  private AudienceDemographics demographics;
-  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
   private String date;
+  private AudienceDemographics demographics;
   private Integer size;
   private Boolean sizeIsUpperBound;
+  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
   /**
    * Category interest distribution
@@ -43,32 +43,6 @@ public class AudienceInsightsResponse   {
   }
 
   /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("demographics")
-  @Valid
-  public AudienceDemographics getDemographics() {
-    return demographics;
-  }
-  public void setDemographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("type")
-  @Valid
-  public AudienceInsightType getType() {
-    return type;
-  }
-  public void setType(AudienceInsightType type) {
-    this.type = type;
-  }
-
-  /**
    * Generation date
    **/
   
@@ -79,6 +53,19 @@ public class AudienceInsightsResponse   {
   }
   public void setDate(String date) {
     this.date = date;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("demographics")
+  @Valid
+  public AudienceDemographics getDemographics() {
+    return demographics;
+  }
+  public void setDemographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
   }
 
   /**
@@ -107,6 +94,19 @@ public class AudienceInsightsResponse   {
     this.sizeIsUpperBound = sizeIsUpperBound;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("type")
+  @Valid
+  public AudienceInsightType getType() {
+    return type;
+  }
+  public void setType(AudienceInsightType type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -118,16 +118,16 @@ public class AudienceInsightsResponse   {
     }
     AudienceInsightsResponse audienceInsightsResponse = (AudienceInsightsResponse) o;
     return Objects.equals(this.categories, audienceInsightsResponse.categories) &&
-        Objects.equals(this.demographics, audienceInsightsResponse.demographics) &&
-        Objects.equals(this.type, audienceInsightsResponse.type) &&
         Objects.equals(this.date, audienceInsightsResponse.date) &&
+        Objects.equals(this.demographics, audienceInsightsResponse.demographics) &&
         Objects.equals(this.size, audienceInsightsResponse.size) &&
-        Objects.equals(this.sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound);
+        Objects.equals(this.sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound) &&
+        Objects.equals(this.type, audienceInsightsResponse.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categories, demographics, type, date, size, sizeIsUpperBound);
+    return Objects.hash(categories, date, demographics, size, sizeIsUpperBound, type);
   }
 
   @Override
@@ -136,11 +136,11 @@ public class AudienceInsightsResponse   {
     sb.append("class AudienceInsightsResponse {\n");
     
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    sizeIsUpperBound: ").append(toIndentedString(sizeIsUpperBound)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

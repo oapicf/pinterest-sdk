@@ -13,6 +13,18 @@ Protected Interface BillingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub BillingInvoiceDownloadGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BillingInvoiceDownloadResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BillingInvoicesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BillingInvoicesGet200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub BillingProfilesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BillingProfilesGet200Response)
 		  
 		End Sub

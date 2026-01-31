@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupUpdateRequest", description = "Request object for updating a creative assets product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -65,11 +65,11 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
-
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
+
+  private String name;
 
   public CatalogsCreativeAssetsProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -89,26 +89,6 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public CatalogsCreativeAssetsProductGroupUpdateRequest description(String description) {
@@ -151,6 +131,26 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
     this.filters = filters;
   }
 
+  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -161,9 +161,9 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
     }
     CatalogsCreativeAssetsProductGroupUpdateRequest catalogsCreativeAssetsProductGroupUpdateRequest = (CatalogsCreativeAssetsProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name) &&
         equalsNullable(this.description, catalogsCreativeAssetsProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -172,7 +172,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, hashCodeNullable(description), filters);
+    return Objects.hash(catalogType, hashCodeNullable(description), filters, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -187,9 +187,9 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupUpdateRequest {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

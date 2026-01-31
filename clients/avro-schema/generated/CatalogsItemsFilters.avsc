@@ -10,18 +10,18 @@
       "doc": ""
     },
     {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog",
+      "default": null
+    },
+    {
       "name": "item_ids",
       "type": {
         "type": "array",
         "items": "string"
       },
       "doc": ""
-    },
-    {
-      "name": "catalog_id",
-      "type": ["null", "string"],
-      "doc": "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog",
-      "default": null
     },
     {
       "name": "hotel_ids",

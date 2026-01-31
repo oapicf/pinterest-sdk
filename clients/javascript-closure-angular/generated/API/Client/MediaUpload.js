@@ -20,15 +20,16 @@ API.Client.MediaUpload.prototype.mediaId;
 API.Client.MediaUpload.prototype.mediaType;
 
 /**
+ * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+ * @type {!API.Client.MediaUploadParameters}
+ * @export
+ */
+API.Client.MediaUpload.prototype.uploadParameters;
+
+/**
  * The URL where you will POST your media file.
  * @type {!string}
  * @export
  */
 API.Client.MediaUpload.prototype.uploadUrl;
-
-/**
- * @type {!API.Client.MediaUpload_allOf_upload_parameters}
- * @export
- */
-API.Client.MediaUpload.prototype.uploadParameters;
 

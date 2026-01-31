@@ -1,18 +1,8 @@
 
 <h2>AdsAnalyticsCreateAsyncRequest</h2>
 <ul class="parameter">
-  <li class="param-required-true">startUnderscoredate : String
-    <br/>Metric report start date (UTC). Format: YYYY-MM-DD
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">endUnderscoredate : String
-    <br/>Metric report end date (UTC). Format: YYYY-MM-DD
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">granularity : Granularity
-    <br/>TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+  <li class="param-required-false">attributionUnderscoretypes : List
+    <br/>List of types of attribution for the conversion report
   </li>
 </ul>
 <ul class="parameter">
@@ -21,23 +11,33 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">engagementUnderscorewindowUnderscoredays : ConversionAttributionWindowDays
-    <br/>Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">viewUnderscorewindowUnderscoredays : ConversionAttributionWindowDays
-    <br/>Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">conversionUnderscorereportUnderscoretime : ConversionReportTimeType
     <br/>The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">attributionUnderscoretypes : List
-    <br/>List of types of attribution for the conversion report
+  <li class="param-required-true">endUnderscoredate : String
+    <br/>Metric report end date (UTC). Format: YYYY-MM-DD
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">engagementUnderscorewindowUnderscoredays : ConversionAttributionWindowDays
+    <br/>Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">granularity : Granularity
+    <br/>TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">startUnderscoredate : String
+    <br/>Metric report start date (UTC). Format: YYYY-MM-DD
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">viewUnderscorewindowUnderscoredays : ConversionAttributionWindowDays
+    <br/>Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
   </li>
 </ul>
 <ul class="parameter">
@@ -53,6 +53,11 @@
 <ul class="parameter">
   <li class="param-required-false">campaignUnderscoreobjectiveUnderscoretypes : List
     <br/>List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">campaignUnderscorebrandUnderscorelabel : String
+    <br/>Campaign brand label for filtering.
   </li>
 </ul>
 <ul class="parameter">
@@ -92,7 +97,11 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">targetingUnderscoretypes : List
-    <br/>List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+    <br/>List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+      <dl class="param-enum">
+        <dt>Enum:
+        </dt>
+      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -106,13 +115,23 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">level : MetricsReportingLevel
-    <br/>Level of the report
+  <li class="param-required-false">combineUnderscoretargetingUnderscoretypes : Boolean
+    <br/>Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&amp;US. This feature is currently in BETA and is not available to all users.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">reportUnderscoreformat : DataOutputFormat
-    <br/>Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+  <li class="param-required-false">customUnderscoreconversionUnderscoreeventUnderscoremetrics : List
+    <br/>List of advertiser-defined custom conversion event metrics to include in the report
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">endUnderscorehour : Integer
+    <br/>Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">level : MetricsReportingLevel
+    <br/>Level of the report
   </li>
 </ul>
 <ul class="parameter">
@@ -127,12 +146,17 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">startUnderscorehour : Integer
-    <br/>Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  <li class="param-required-false">reportUnderscoreformat : DataOutputFormat
+    <br/>Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">endUnderscorehour : Integer
-    <br/>Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+  <li class="param-required-false">reportingUnderscoretimezone : ReportingTimeZone
+    <br/>Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startUnderscorehour : Integer
+    <br/>Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
   </li>
 </ul>

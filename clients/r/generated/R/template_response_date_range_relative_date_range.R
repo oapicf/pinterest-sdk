@@ -7,38 +7,38 @@
 #' @title TemplateResponseDateRangeRelativeDateRange
 #' @description TemplateResponseDateRangeRelativeDateRange Class
 #' @format An \code{R6Class} generator object
-#' @field type The date range type character [optional]
-#' @field start_days_in_past The start date of the date range numeric [optional]
 #' @field end_days_in_past The end date of the date range numeric [optional]
+#' @field start_days_in_past The start date of the date range numeric [optional]
+#' @field type The date range type character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
   "TemplateResponseDateRangeRelativeDateRange",
   public = list(
-    `type` = NULL,
-    `start_days_in_past` = NULL,
     `end_days_in_past` = NULL,
+    `start_days_in_past` = NULL,
+    `type` = NULL,
 
     #' @description
     #' Initialize a new TemplateResponseDateRangeRelativeDateRange class.
     #'
-    #' @param type The date range type
-    #' @param start_days_in_past The start date of the date range
     #' @param end_days_in_past The end date of the date range
+    #' @param start_days_in_past The start date of the date range
+    #' @param type The date range type
     #' @param ... Other optional arguments.
-    initialize = function(`type` = NULL, `start_days_in_past` = NULL, `end_days_in_past` = NULL, ...) {
+    initialize = function(`end_days_in_past` = NULL, `start_days_in_past` = NULL, `type` = NULL, ...) {
+      if (!is.null(`end_days_in_past`)) {
+        self$`end_days_in_past` <- `end_days_in_past`
+      }
+      if (!is.null(`start_days_in_past`)) {
+        self$`start_days_in_past` <- `start_days_in_past`
+      }
       if (!is.null(`type`)) {
         if (!(is.character(`type`) && length(`type`) == 1)) {
           stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
         }
         self$`type` <- `type`
-      }
-      if (!is.null(`start_days_in_past`)) {
-        self$`start_days_in_past` <- `start_days_in_past`
-      }
-      if (!is.null(`end_days_in_past`)) {
-        self$`end_days_in_past` <- `end_days_in_past`
       }
     },
 
@@ -73,17 +73,17 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TemplateResponseDateRangeRelativeDateRangeObject <- list()
-      if (!is.null(self$`type`)) {
-        TemplateResponseDateRangeRelativeDateRangeObject[["type"]] <-
-          self$`type`
+      if (!is.null(self$`end_days_in_past`)) {
+        TemplateResponseDateRangeRelativeDateRangeObject[["end_days_in_past"]] <-
+          self$`end_days_in_past`
       }
       if (!is.null(self$`start_days_in_past`)) {
         TemplateResponseDateRangeRelativeDateRangeObject[["start_days_in_past"]] <-
           self$`start_days_in_past`
       }
-      if (!is.null(self$`end_days_in_past`)) {
-        TemplateResponseDateRangeRelativeDateRangeObject[["end_days_in_past"]] <-
-          self$`end_days_in_past`
+      if (!is.null(self$`type`)) {
+        TemplateResponseDateRangeRelativeDateRangeObject[["type"]] <-
+          self$`type`
       }
       return(TemplateResponseDateRangeRelativeDateRangeObject)
     },
@@ -95,14 +95,14 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRangeRelativeDateRange
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`)) {
-        self$`type` <- this_object$`type`
+      if (!is.null(this_object$`end_days_in_past`)) {
+        self$`end_days_in_past` <- this_object$`end_days_in_past`
       }
       if (!is.null(this_object$`start_days_in_past`)) {
         self$`start_days_in_past` <- this_object$`start_days_in_past`
       }
-      if (!is.null(this_object$`end_days_in_past`)) {
-        self$`end_days_in_past` <- this_object$`end_days_in_past`
+      if (!is.null(this_object$`type`)) {
+        self$`type` <- this_object$`type`
       }
       self
     },
@@ -125,9 +125,9 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRangeRelativeDateRange
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`type` <- this_object$`type`
-      self$`start_days_in_past` <- this_object$`start_days_in_past`
       self$`end_days_in_past` <- this_object$`end_days_in_past`
+      self$`start_days_in_past` <- this_object$`start_days_in_past`
+      self$`type` <- this_object$`type`
       self
     },
 

@@ -5,9 +5,8 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**term** | term | text |  | **kotlin.String** |  |  [optional]
 **relatedTerms** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-
+**term** | term | text |  | **kotlin.String** |  |  [optional]
 
 
 # **Table `RelatedTermsRelatedTermsListInnerRelatedTerms`**
@@ -18,6 +17,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 relatedTermsRelatedTermsListInner | relatedTermsRelatedTermsListInner | long | | kotlin.Long | Primary Key | *one*
 relatedTerms | relatedTerms | text | | kotlin.String | Foreign Key | *many*
+
 
 
 

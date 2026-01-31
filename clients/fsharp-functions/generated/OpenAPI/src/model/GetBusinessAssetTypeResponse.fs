@@ -12,6 +12,7 @@ module GetBusinessAssetTypeResponse =
   let PROFILEEnum = "PROFILE"
   let ASSETGROUPEnum = "ASSET_GROUP"
   let CONVERSIONTAGEnum = "CONVERSION_TAG"
+  let CATALOGEnum = "CATALOG"
   type GetBusinessAssetTypeResponse = string
 
   //#endregion

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,24 @@ var _ MappedNullable = &AdAccountCreateSubscriptionResponse{}
 
 // AdAccountCreateSubscriptionResponse struct for AdAccountCreateSubscriptionResponse
 type AdAccountCreateSubscriptionResponse struct {
-	// Subscription ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Base64 encoded key for client to decrypt lead data.
-	CryptographicKey NullableString `json:"cryptographic_key,omitempty"`
-	// Lead data encryption algorithm.
-	CryptographicAlgorithm NullableString `json:"cryptographic_algorithm,omitempty"`
+	// The Ad Account ID that this lead form belongs to.
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// API version.
+	ApiVersion *string `json:"api_version,omitempty"`
 	// Subscription creation time. Unix timestamp in milliseconds.
 	CreatedTime *int32 `json:"created_time,omitempty"`
+	// Lead data encryption algorithm.
+	CryptographicAlgorithm NullableString `json:"cryptographic_algorithm,omitempty"`
+	// Base64 encoded key for client to decrypt lead data.
+	CryptographicKey NullableString `json:"cryptographic_key,omitempty"`
+	// Subscription ID.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Lead form ID.
+	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// User account used to subscribe lead data.
+	UserAccountId *string `json:"user_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Standard HTTPS webhook URL.
+	WebhookUrl *string `json:"webhook_url,omitempty"`
 }
 
 // NewAdAccountCreateSubscriptionResponse instantiates a new AdAccountCreateSubscriptionResponse object
@@ -47,78 +57,100 @@ func NewAdAccountCreateSubscriptionResponseWithDefaults() *AdAccountCreateSubscr
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AdAccountCreateSubscriptionResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionResponse) GetAdAccountId() string {
+	if o == nil || IsNil(o.AdAccountId) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.AdAccountId
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdAccountCreateSubscriptionResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *AdAccountCreateSubscriptionResponse) GetAdAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AdAccountId) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.AdAccountId, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AdAccountCreateSubscriptionResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasAdAccountId returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasAdAccountId() bool {
+	if o != nil && !IsNil(o.AdAccountId) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AdAccountCreateSubscriptionResponse) SetId(v string) {
-	o.Id = &v
+// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
+func (o *AdAccountCreateSubscriptionResponse) SetAdAccountId(v string) {
+	o.AdAccountId = &v
 }
 
-// GetCryptographicKey returns the CryptographicKey field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKey() string {
-	if o == nil || IsNil(o.CryptographicKey.Get()) {
+// GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionResponse) GetApiVersion() string {
+	if o == nil || IsNil(o.ApiVersion) {
 		var ret string
 		return ret
 	}
-	return *o.CryptographicKey.Get()
+	return *o.ApiVersion
 }
 
-// GetCryptographicKeyOk returns a tuple with the CryptographicKey field value if set, nil otherwise
+// GetApiVersionOk returns a tuple with the ApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKeyOk() (*string, bool) {
-	if o == nil {
+func (o *AdAccountCreateSubscriptionResponse) GetApiVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiVersion) {
 		return nil, false
 	}
-	return o.CryptographicKey.Get(), o.CryptographicKey.IsSet()
+	return o.ApiVersion, true
 }
 
-// HasCryptographicKey returns a boolean if a field has been set.
-func (o *AdAccountCreateSubscriptionResponse) HasCryptographicKey() bool {
-	if o != nil && o.CryptographicKey.IsSet() {
+// HasApiVersion returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasApiVersion() bool {
+	if o != nil && !IsNil(o.ApiVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetCryptographicKey gets a reference to the given NullableString and assigns it to the CryptographicKey field.
-func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKey(v string) {
-	o.CryptographicKey.Set(&v)
-}
-// SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
-func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKeyNil() {
-	o.CryptographicKey.Set(nil)
+// SetApiVersion gets a reference to the given string and assigns it to the ApiVersion field.
+func (o *AdAccountCreateSubscriptionResponse) SetApiVersion(v string) {
+	o.ApiVersion = &v
 }
 
-// UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
-func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicKey() {
-	o.CryptographicKey.Unset()
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionResponse) GetCreatedTime() int32 {
+	if o == nil || IsNil(o.CreatedTime) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedTime
+}
+
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionResponse) GetCreatedTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.CreatedTime) {
+		return nil, false
+	}
+	return o.CreatedTime, true
+}
+
+// HasCreatedTime returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasCreatedTime() bool {
+	if o != nil && !IsNil(o.CreatedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTime gets a reference to the given int32 and assigns it to the CreatedTime field.
+func (o *AdAccountCreateSubscriptionResponse) SetCreatedTime(v int32) {
+	o.CreatedTime = &v
 }
 
 // GetCryptographicAlgorithm returns the CryptographicAlgorithm field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -163,36 +195,184 @@ func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicAlgorithm() {
 	o.CryptographicAlgorithm.Unset()
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
-func (o *AdAccountCreateSubscriptionResponse) GetCreatedTime() int32 {
-	if o == nil || IsNil(o.CreatedTime) {
-		var ret int32
+// GetCryptographicKey returns the CryptographicKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKey() string {
+	if o == nil || IsNil(o.CryptographicKey.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CryptographicKey.Get()
 }
 
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// GetCryptographicKeyOk returns a tuple with the CryptographicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdAccountCreateSubscriptionResponse) GetCreatedTimeOk() (*int32, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKeyOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CryptographicKey.Get(), o.CryptographicKey.IsSet()
 }
 
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *AdAccountCreateSubscriptionResponse) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+// HasCryptographicKey returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasCryptographicKey() bool {
+	if o != nil && o.CryptographicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given int32 and assigns it to the CreatedTime field.
-func (o *AdAccountCreateSubscriptionResponse) SetCreatedTime(v int32) {
-	o.CreatedTime = &v
+// SetCryptographicKey gets a reference to the given NullableString and assigns it to the CryptographicKey field.
+func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKey(v string) {
+	o.CryptographicKey.Set(&v)
+}
+// SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
+func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKeyNil() {
+	o.CryptographicKey.Set(nil)
+}
+
+// UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
+func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicKey() {
+	o.CryptographicKey.Unset()
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AdAccountCreateSubscriptionResponse) SetId(v string) {
+	o.Id = &v
+}
+
+// GetLeadFormId returns the LeadFormId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdAccountCreateSubscriptionResponse) GetLeadFormId() string {
+	if o == nil || IsNil(o.LeadFormId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LeadFormId.Get()
+}
+
+// GetLeadFormIdOk returns a tuple with the LeadFormId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdAccountCreateSubscriptionResponse) GetLeadFormIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LeadFormId.Get(), o.LeadFormId.IsSet()
+}
+
+// HasLeadFormId returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasLeadFormId() bool {
+	if o != nil && o.LeadFormId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLeadFormId gets a reference to the given NullableString and assigns it to the LeadFormId field.
+func (o *AdAccountCreateSubscriptionResponse) SetLeadFormId(v string) {
+	o.LeadFormId.Set(&v)
+}
+// SetLeadFormIdNil sets the value for LeadFormId to be an explicit nil
+func (o *AdAccountCreateSubscriptionResponse) SetLeadFormIdNil() {
+	o.LeadFormId.Set(nil)
+}
+
+// UnsetLeadFormId ensures that no value is present for LeadFormId, not even an explicit nil
+func (o *AdAccountCreateSubscriptionResponse) UnsetLeadFormId() {
+	o.LeadFormId.Unset()
+}
+
+// GetUserAccountId returns the UserAccountId field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionResponse) GetUserAccountId() string {
+	if o == nil || IsNil(o.UserAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.UserAccountId
+}
+
+// GetUserAccountIdOk returns a tuple with the UserAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionResponse) GetUserAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserAccountId) {
+		return nil, false
+	}
+	return o.UserAccountId, true
+}
+
+// HasUserAccountId returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasUserAccountId() bool {
+	if o != nil && !IsNil(o.UserAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAccountId gets a reference to the given string and assigns it to the UserAccountId field.
+func (o *AdAccountCreateSubscriptionResponse) SetUserAccountId(v string) {
+	o.UserAccountId = &v
+}
+
+// GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionResponse) GetWebhookUrl() string {
+	if o == nil || IsNil(o.WebhookUrl) {
+		var ret string
+		return ret
+	}
+	return *o.WebhookUrl
+}
+
+// GetWebhookUrlOk returns a tuple with the WebhookUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionResponse) GetWebhookUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.WebhookUrl) {
+		return nil, false
+	}
+	return o.WebhookUrl, true
+}
+
+// HasWebhookUrl returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionResponse) HasWebhookUrl() bool {
+	if o != nil && !IsNil(o.WebhookUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookUrl gets a reference to the given string and assigns it to the WebhookUrl field.
+func (o *AdAccountCreateSubscriptionResponse) SetWebhookUrl(v string) {
+	o.WebhookUrl = &v
 }
 
 func (o AdAccountCreateSubscriptionResponse) MarshalJSON() ([]byte, error) {
@@ -205,17 +385,32 @@ func (o AdAccountCreateSubscriptionResponse) MarshalJSON() ([]byte, error) {
 
 func (o AdAccountCreateSubscriptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.AdAccountId) {
+		toSerialize["ad_account_id"] = o.AdAccountId
 	}
-	if o.CryptographicKey.IsSet() {
-		toSerialize["cryptographic_key"] = o.CryptographicKey.Get()
+	if !IsNil(o.ApiVersion) {
+		toSerialize["api_version"] = o.ApiVersion
+	}
+	if !IsNil(o.CreatedTime) {
+		toSerialize["created_time"] = o.CreatedTime
 	}
 	if o.CryptographicAlgorithm.IsSet() {
 		toSerialize["cryptographic_algorithm"] = o.CryptographicAlgorithm.Get()
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CryptographicKey.IsSet() {
+		toSerialize["cryptographic_key"] = o.CryptographicKey.Get()
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if o.LeadFormId.IsSet() {
+		toSerialize["lead_form_id"] = o.LeadFormId.Get()
+	}
+	if !IsNil(o.UserAccountId) {
+		toSerialize["user_account_id"] = o.UserAccountId
+	}
+	if !IsNil(o.WebhookUrl) {
+		toSerialize["webhook_url"] = o.WebhookUrl
 	}
 	return toSerialize, nil
 }

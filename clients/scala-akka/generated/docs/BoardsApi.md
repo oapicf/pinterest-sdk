@@ -498,12 +498,13 @@ No authorization required
 
 Create board
 
-Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -521,11 +522,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
-    val board: Board =  // Board | Create a board using a single board json object.
+    val boardCreate: BoardCreate =  // BoardCreate | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.boardsCreate(board, adAccountId)
+    val request = apiInstance.boardsCreate(boardCreate, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -553,7 +554,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**Board**](Board.md)| Create a board using a single board json object. |
+ **boardCreate** | [**BoardCreate**](BoardCreate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -573,9 +574,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | The board name is invalid or duplicated. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardsDelete
@@ -584,7 +590,7 @@ No authorization required
 
 Delete board
 
-Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -606,7 +612,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
-    val boardId: String = boardId_example // String | Unique identifier of a board.
+    val boardId: String = boardId_example // String | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
@@ -637,7 +643,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String**| Unique identifier of a board. |
+ **boardId** | **String**|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -657,12 +663,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board deleted successfully |  -  |
-| **403** | Not authorized to delete the board. |  -  |
-| **404** | Board not found. |  -  |
-| **409** | Could not get exclusive access to delete the board. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardsGet
@@ -671,7 +678,7 @@ No authorization required
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -694,7 +701,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
-    val boardId: String = boardId_example // String | Unique identifier of a board.
+    val boardId: String = boardId_example // String | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
@@ -726,7 +733,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String**| Unique identifier of a board. |
+ **boardId** | **String**|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -746,9 +753,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardsList
@@ -757,12 +768,13 @@ No authorization required
 
 List boards
 
-Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -782,13 +794,13 @@ object Example extends App {
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
+    val privacy: BoardPrivacyFilter =  // BoardPrivacyFilter | The privacy level of the board
+
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val privacy: String = privacy_example // String | Privacy setting for a board.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy)
+    val request = apiInstance.boardsList(adAccountId, privacy, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -817,9 +829,9 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
+ **privacy** | [**BoardPrivacyFilter**](.md)| The privacy level of the board | [optional] [enum: ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **privacy** | **String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -838,8 +850,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardsListPins
@@ -854,6 +871,7 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -877,11 +895,11 @@ object Example extends App {
 
     val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
-    val creativeTypes: Seq[String] =  // Seq[String] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+    val creativeTypes: Seq[CreativeType] =  // Seq[CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val pinMetrics: Boolean = true // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+    val pinMetrics: Boolean = true // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
     
     val request = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
     val response = apiInvoker.execute(request)
@@ -914,9 +932,9 @@ Name | Type | Description  | Notes
  **boardId** | **String**| Unique identifier of a board. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
  **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **creativeTypes** | [**Seq[String]**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA]
+ **creativeTypes** | [**Seq[CreativeType]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
- **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional]
+ **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional]
 
 ### Return type
 
@@ -942,11 +960,11 @@ No authorization required
 
 ## boardsUpdate
 
-> boardsUpdate(boardsUpdateRequest): ApiRequest[Board]
+> boardsUpdate(boardsUpdateRequest): ApiRequest[BoardWithUpdatePrivacy]
 
 Update board
 
-Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -970,13 +988,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
-    val boardId: String = boardId_example // String | Unique identifier of a board.
+    val boardId: String = boardId_example // String | 
 
-    val boardUpdate: BoardUpdate =  // BoardUpdate | Update a board.
+    val boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate =  // BoardWithUpdatePrivacyUpdate | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.boardsUpdate(boardId, boardUpdate, adAccountId)
+    val request = apiInstance.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -1004,13 +1022,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String**| Unique identifier of a board. |
- **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. |
+ **boardId** | **String**|  |
+ **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
-ApiRequest[[**Board**](Board.md)]
+ApiRequest[[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)]
 
 
 ### Authorization
@@ -1025,9 +1043,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board parameters. |  -  |
-| **403** | Not authorized to update the board. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

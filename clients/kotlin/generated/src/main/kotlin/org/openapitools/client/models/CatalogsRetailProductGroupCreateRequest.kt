@@ -25,40 +25,40 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a product group.
  *
- * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
- * @param name 
- * @param filters 
  * @param catalogId Catalog id pertaining to the retail product group.
+ * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+ * @param filters 
+ * @param name 
  * @param country 
- * @param locale 
  * @param description 
+ * @param locale 
  */
 
 
 data class CatalogsRetailProductGroupCreateRequest (
 
-    /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsRetailProductGroupCreateRequest.CatalogType,
-
-    @Json(name = "name")
-    val name: kotlin.String,
-
-    @Json(name = "filters")
-    val filters: CatalogsProductGroupFiltersRequest,
-
     /* Catalog id pertaining to the retail product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
 
-    @Json(name = "country")
-    val country: Country,
+    /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsRetailProductGroupCreateRequest.CatalogType,
 
-    @Json(name = "locale")
-    val locale: CatalogsLocale,
+    @Json(name = "filters")
+    val filters: CatalogsProductGroupFiltersRequest,
+
+    @Json(name = "name")
+    val name: kotlin.String,
+
+    @Json(name = "country")
+    val country: Country? = null,
 
     @Json(name = "description")
-    val description: kotlin.String? = null
+    val description: kotlin.String? = null,
+
+    @Json(name = "locale")
+    val locale: CatalogsLocale? = null
 
 ) {
 

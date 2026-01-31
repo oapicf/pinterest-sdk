@@ -10,9 +10,13 @@ import javax.validation.Valid;
 /**
  * DeleteAssetGroupResponseExceptionsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class DeleteAssetGroupResponseExceptionsInner   {
+  @JsonProperty("asset_group_id")
+  
+  private String assetGroupId;
+
   @JsonProperty("code")
   
   private Integer code;
@@ -21,9 +25,22 @@ public class DeleteAssetGroupResponseExceptionsInner   {
   
   private String message;
 
-  @JsonProperty("asset_group_id")
-  
-  private String assetGroupId;
+  public DeleteAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
+   /**
+   * Asset group id of the exception.
+   * @return assetGroupId
+  **/
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+
+  public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
 
   public DeleteAssetGroupResponseExceptionsInner code(Integer code) {
     this.code = code;
@@ -59,23 +76,6 @@ public class DeleteAssetGroupResponseExceptionsInner   {
     this.message = message;
   }
 
-  public DeleteAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-    return this;
-  }
-
-   /**
-   * Asset group id of the exception.
-   * @return assetGroupId
-  **/
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-
-  public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -86,14 +86,14 @@ public class DeleteAssetGroupResponseExceptionsInner   {
       return false;
     }
     DeleteAssetGroupResponseExceptionsInner deleteAssetGroupResponseExceptionsInner = (DeleteAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(code, deleteAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(message, deleteAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(assetGroupId, deleteAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(assetGroupId, deleteAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(code, deleteAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(message, deleteAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -102,9 +102,9 @@ public class DeleteAssetGroupResponseExceptionsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteAssetGroupResponseExceptionsInner {\n");
     
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

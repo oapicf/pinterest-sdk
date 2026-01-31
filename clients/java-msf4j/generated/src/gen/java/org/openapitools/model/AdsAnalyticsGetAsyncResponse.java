@@ -13,16 +13,16 @@ import org.openapitools.model.BulkReportingJobStatus;
 /**
  * AdsAnalyticsGetAsyncResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsGetAsyncResponse   {
   @JsonProperty("report_status")
   private BulkReportingJobStatus reportStatus;
 
-  @JsonProperty("url")
-  private String url;
-
   @JsonProperty("size")
   private BigDecimal size;
+
+  @JsonProperty("url")
+  private String url;
 
   public AdsAnalyticsGetAsyncResponse reportStatus(BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
@@ -40,24 +40,6 @@ public class AdsAnalyticsGetAsyncResponse   {
 
   public void setReportStatus(BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
-  }
-
-  public AdsAnalyticsGetAsyncResponse url(String url) {
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Get url
-   * @return url
-  **/
-  @ApiModelProperty(value = "")
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
   }
 
   public AdsAnalyticsGetAsyncResponse size(BigDecimal size) {
@@ -78,6 +60,24 @@ public class AdsAnalyticsGetAsyncResponse   {
     this.size = size;
   }
 
+  public AdsAnalyticsGetAsyncResponse url(String url) {
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * Get url
+   * @return url
+  **/
+  @ApiModelProperty(value = "")
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -89,13 +89,13 @@ public class AdsAnalyticsGetAsyncResponse   {
     }
     AdsAnalyticsGetAsyncResponse adsAnalyticsGetAsyncResponse = (AdsAnalyticsGetAsyncResponse) o;
     return Objects.equals(this.reportStatus, adsAnalyticsGetAsyncResponse.reportStatus) &&
-        Objects.equals(this.url, adsAnalyticsGetAsyncResponse.url) &&
-        Objects.equals(this.size, adsAnalyticsGetAsyncResponse.size);
+        Objects.equals(this.size, adsAnalyticsGetAsyncResponse.size) &&
+        Objects.equals(this.url, adsAnalyticsGetAsyncResponse.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -104,8 +104,8 @@ public class AdsAnalyticsGetAsyncResponse   {
     sb.append("class AdsAnalyticsGetAsyncResponse {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

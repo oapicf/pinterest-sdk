@@ -11,18 +11,18 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param id Interest ID.
+ * @param index Interest affinity index.
  * @param key Interest unique key (same as ID).
  * @param name Interest name.
  * @param ratio Interest's percent of category's total audience.
- * @param index Interest affinity index.
- * @param id Interest ID.
  * @param subcategories Subcategory interest distribution
  */
-case class AudienceCategory(key: Option[String],
+case class AudienceCategory(id: Option[String],
+                index: Option[BigDecimal],
+                key: Option[String],
                 name: Option[String],
                 ratio: Option[BigDecimal],
-                index: Option[BigDecimal],
-                id: Option[String],
                 subcategories: Option[Seq[AudienceSubcategory]]
                 )
 

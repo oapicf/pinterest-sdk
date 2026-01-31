@@ -205,12 +205,12 @@ Protected Class IntegrationsApi
 
 
 	#tag Method, Flags = &h0
-		Sub IntegrationsCommercePatch(, externalBusinessId As String, Optional integrationRequestPatch As OpenAPIClient.Models.IntegrationRequestPatch)
+		Sub IntegrationsCommercePatch(, externalBusinessId As String, integrationRequestPatch As OpenAPIClient.Models.IntegrationRequestPatch)
 		  // Operation integrations_commerce/patch
 		  // Update commerce integration
 		  // - 
 		  // - parameter externalBusinessId: (path) External business ID for the integration. 
-		  // - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata (optional)
+		  // - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata 
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsCommercePatchCallback(IntegrationMetadata) on completion. 
 		  //
@@ -338,11 +338,11 @@ Protected Class IntegrationsApi
 
 
 	#tag Method, Flags = &h0
-		Sub IntegrationsCommercePost(, Optional integrationRequest As OpenAPIClient.Models.IntegrationRequest)
+		Sub IntegrationsCommercePost(, integrationRequest As OpenAPIClient.Models.IntegrationRequest)
 		  // Operation integrations_commerce/post
 		  // Create commerce integration
 		  // - 
-		  // - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata (optional)
+		  // - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata 
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsCommercePostCallback(IntegrationMetadata) on completion. 
 		  //

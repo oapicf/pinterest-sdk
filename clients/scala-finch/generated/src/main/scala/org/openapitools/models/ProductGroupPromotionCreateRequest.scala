@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ProductGroupPromotionCreateRequestElement
+import org.openapitools.models.ProductGroupPromotion
 import scala.collection.immutable.Seq
 
 /**
@@ -14,7 +14,7 @@ import scala.collection.immutable.Seq
  * @param productUnderscoregroupUnderscorepromotion 
  */
 case class ProductGroupPromotionCreateRequest(adUnderscoregroupUnderscoreid: String,
-                productUnderscoregroupUnderscorepromotion: Seq[ProductGroupPromotionCreateRequestElement]
+                productUnderscoregroupUnderscorepromotion: Seq[ProductGroupPromotion]
                 )
 
 object ProductGroupPromotionCreateRequest {

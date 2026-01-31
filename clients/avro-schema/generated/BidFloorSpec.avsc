@@ -5,11 +5,22 @@
   "name": "BidFloorSpec",
   "fields": [
     {
+      "name": "billable_event",
+      "type": "model.ActionType",
+      "doc": ""
+    },
+    {
       "name": "countries",
       "type": ["null", {
         "type": "array",
         "items": "model.Country"
       }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "creative_type",
+      "type": ["null", "model.CreativeType"],
       "doc": "",
       "default": null
     },
@@ -25,19 +36,8 @@
       "default": null
     },
     {
-      "name": "billable_event",
-      "type": "model.ActionType",
-      "doc": ""
-    },
-    {
       "name": "optimization_goal_metadata",
       "type": ["null", "model.OptimizationGoalMetadata"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "creative_type",
-      "type": ["null", "model.CreativeType"],
       "doc": "",
       "default": null
     }

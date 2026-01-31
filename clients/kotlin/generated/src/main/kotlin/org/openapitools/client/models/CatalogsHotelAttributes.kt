@@ -25,60 +25,44 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name The hotel's name.
- * @param link Link to the product page
- * @param description Brief description of the hotel.
- * @param brand The brand to which this hotel belongs to.
- * @param latitude Latitude of the hotel.
- * @param longitude Longitude of the hotel.
- * @param neighborhood A list of neighborhoods where the hotel is located
  * @param address 
+ * @param basePrice Base price of the hotel room per night followed by the ISO currency code
+ * @param brand The brand to which this hotel belongs to.
+ * @param category The type of property. The category can be any type of internal description desired.
  * @param customLabel0 Custom grouping of hotels
  * @param customLabel1 Custom grouping of hotels
  * @param customLabel2 Custom grouping of hotels
  * @param customLabel3 Custom grouping of hotels
  * @param customLabel4 Custom grouping of hotels
- * @param category The type of property. The category can be any type of internal description desired.
- * @param basePrice Base price of the hotel room per night followed by the ISO currency code
- * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+ * @param description Brief description of the hotel.
  * @param guestRatings 
- * @param mainImage 
+ * @param latitude Latitude of the hotel.
+ * @param link Link to the product page
+ * @param longitude Longitude of the hotel.
+ * @param name The hotel's name.
+ * @param neighborhood A list of neighborhoods where the hotel is located
+ * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
  * @param additionalImageLink <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+ * @param mainImage 
  */
 
 
 data class CatalogsHotelAttributes (
 
-    /* The hotel's name. */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
+    @Json(name = "address")
+    val address: CatalogsHotelAddress? = null,
 
-    /* Link to the product page */
-    @Json(name = "link")
-    val link: kotlin.String? = null,
-
-    /* Brief description of the hotel. */
-    @Json(name = "description")
-    val description: kotlin.String? = null,
+    /* Base price of the hotel room per night followed by the ISO currency code */
+    @Json(name = "base_price")
+    val basePrice: kotlin.String? = null,
 
     /* The brand to which this hotel belongs to. */
     @Json(name = "brand")
     val brand: kotlin.String? = null,
 
-    /* Latitude of the hotel. */
-    @Json(name = "latitude")
-    val latitude: java.math.BigDecimal? = null,
-
-    /* Longitude of the hotel. */
-    @Json(name = "longitude")
-    val longitude: java.math.BigDecimal? = null,
-
-    /* A list of neighborhoods where the hotel is located */
-    @Json(name = "neighborhood")
-    val neighborhood: kotlin.collections.List<kotlin.String>? = null,
-
-    @Json(name = "address")
-    val address: CatalogsHotelAddress? = null,
+    /* The type of property. The category can be any type of internal description desired. */
+    @Json(name = "category")
+    val category: kotlin.String? = null,
 
     /* Custom grouping of hotels */
     @Json(name = "custom_label_0")
@@ -100,27 +84,43 @@ data class CatalogsHotelAttributes (
     @Json(name = "custom_label_4")
     val customLabel4: kotlin.String? = null,
 
-    /* The type of property. The category can be any type of internal description desired. */
-    @Json(name = "category")
-    val category: kotlin.String? = null,
+    /* Brief description of the hotel. */
+    @Json(name = "description")
+    val description: kotlin.String? = null,
 
-    /* Base price of the hotel room per night followed by the ISO currency code */
-    @Json(name = "base_price")
-    val basePrice: kotlin.String? = null,
+    @Json(name = "guest_ratings")
+    val guestRatings: CatalogsHotelGuestRatings? = null,
+
+    /* Latitude of the hotel. */
+    @Json(name = "latitude")
+    val latitude: java.math.BigDecimal? = null,
+
+    /* Link to the product page */
+    @Json(name = "link")
+    val link: kotlin.String? = null,
+
+    /* Longitude of the hotel. */
+    @Json(name = "longitude")
+    val longitude: java.math.BigDecimal? = null,
+
+    /* The hotel's name. */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
+
+    /* A list of neighborhoods where the hotel is located */
+    @Json(name = "neighborhood")
+    val neighborhood: kotlin.collections.List<kotlin.String>? = null,
 
     /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
     @Json(name = "sale_price")
     val salePrice: kotlin.String? = null,
 
-    @Json(name = "guest_ratings")
-    val guestRatings: CatalogsHotelGuestRatings? = null,
-
-    @Json(name = "main_image")
-    val mainImage: CatalogsHotelAttributesAllOfMainImage? = null,
-
     /* <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> */
     @Json(name = "additional_image_link")
-    val additionalImageLink: kotlin.collections.List<kotlin.String>? = null
+    val additionalImageLink: kotlin.collections.List<kotlin.String>? = null,
+
+    @Json(name = "main_image")
+    val mainImage: CatalogsHotelAttributesAllOfMainImage? = null
 
 ) {
 

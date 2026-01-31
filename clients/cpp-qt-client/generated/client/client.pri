@@ -6,11 +6,12 @@ HEADERS += \
     $${PWD}/OAIActionType.h \
     $${PWD}/OAIAdAccount.h \
     $${PWD}/OAIAdAccountAnalyticsResponse_inner.h \
-    $${PWD}/OAIAdAccountCreateRequest.h \
+    $${PWD}/OAIAdAccountCreate.h \
     $${PWD}/OAIAdAccountCreateSubscriptionRequest.h \
     $${PWD}/OAIAdAccountCreateSubscriptionRequest_partner_metadata.h \
     $${PWD}/OAIAdAccountCreateSubscriptionResponse.h \
     $${PWD}/OAIAdAccountGetSubscriptionResponse.h \
+    $${PWD}/OAIAdAccountOwner.h \
     $${PWD}/OAIAdAccountsCountryResponse.h \
     $${PWD}/OAIAdAccountsCountryResponseData.h \
     $${PWD}/OAIAdArrayResponse.h \
@@ -25,25 +26,29 @@ HEADERS += \
     $${PWD}/OAIAdGroupAudienceSizingResponse.h \
     $${PWD}/OAIAdGroupCommon.h \
     $${PWD}/OAIAdGroupCreateRequest.h \
+    $${PWD}/OAIAdGroupIdFilter.h \
     $${PWD}/OAIAdGroupResponse.h \
     $${PWD}/OAIAdGroupSummaryStatus.h \
     $${PWD}/OAIAdGroupUpdateRequest.h \
     $${PWD}/OAIAdGroupsAnalyticsResponse_inner.h \
+    $${PWD}/OAIAdPinAnalytics.h \
     $${PWD}/OAIAdPinId.h \
     $${PWD}/OAIAdPreviewCreateFromImage.h \
     $${PWD}/OAIAdPreviewCreateFromPin.h \
     $${PWD}/OAIAdPreviewRequest.h \
+    $${PWD}/OAIAdPreviewShopping.h \
     $${PWD}/OAIAdPreviewURLResponse.h \
     $${PWD}/OAIAdResponse.h \
     $${PWD}/OAIAdUpdateRequest.h \
-    $${PWD}/OAIAd_account_owner.h \
     $${PWD}/OAIAd_accounts_audiences_shared_accounts_list_200_response.h \
     $${PWD}/OAIAd_accounts_list_200_response.h \
     $${PWD}/OAIAd_accounts_subscriptions_get_list_200_response.h \
     $${PWD}/OAIAd_groups_list_200_response.h \
+    $${PWD}/OAIAdsAnalyticsAdGroupTargetingType.h \
     $${PWD}/OAIAdsAnalyticsAdTargetingType.h \
     $${PWD}/OAIAdsAnalyticsCampaignTargetingType.h \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest.h \
+    $${PWD}/OAIAdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics.h \
     $${PWD}/OAIAdsAnalyticsCreateAsyncResponse.h \
     $${PWD}/OAIAdsAnalyticsFilterColumn.h \
     $${PWD}/OAIAdsAnalyticsFilterOperator.h \
@@ -68,10 +73,15 @@ HEADERS += \
     $${PWD}/OAIAdvancedAuctionKey.h \
     $${PWD}/OAIAdvancedAuctionOperation.h \
     $${PWD}/OAIAdvancedAuctionOperationError.h \
-    $${PWD}/OAIAdvancedAuctionProcessedItem.h \
     $${PWD}/OAIAdvancedAuctionProcessedItems.h \
+    $${PWD}/OAIAdvertiserDefinedEvent.h \
+    $${PWD}/OAIAdvertiserDefinedEventsResponse.h \
+    $${PWD}/OAIAgeTrendsBucket.h \
+    $${PWD}/OAIAll_of.h \
+    $${PWD}/OAIAmazonConnectRequest.h \
     $${PWD}/OAIAnalyticsDailyMetrics.h \
     $${PWD}/OAIAnalyticsMetricsResponse.h \
+    $${PWD}/OAIAny_of.h \
     $${PWD}/OAIAppTypeMultipliers.h \
     $${PWD}/OAIAssetGroupBinding.h \
     $${PWD}/OAIAssetGroupType.h \
@@ -80,11 +90,11 @@ HEADERS += \
     $${PWD}/OAIAudienceAccountType.h \
     $${PWD}/OAIAudienceCategory.h \
     $${PWD}/OAIAudienceCommon.h \
-    $${PWD}/OAIAudienceCreateCustomRequest.h \
     $${PWD}/OAIAudienceCreateRequest.h \
-    $${PWD}/OAIAudienceDataParty.h \
     $${PWD}/OAIAudienceDefinition.h \
     $${PWD}/OAIAudienceDefinitionResponse.h \
+    $${PWD}/OAIAudienceDefinitionScope.h \
+    $${PWD}/OAIAudienceDefinitionType.h \
     $${PWD}/OAIAudienceDemographicValue.h \
     $${PWD}/OAIAudienceDemographics.h \
     $${PWD}/OAIAudienceInsightCategoryArrayResponse.h \
@@ -93,7 +103,6 @@ HEADERS += \
     $${PWD}/OAIAudienceInsightsResponse.h \
     $${PWD}/OAIAudienceRule.h \
     $${PWD}/OAIAudienceShareType.h \
-    $${PWD}/OAIAudienceSharingType.h \
     $${PWD}/OAIAudienceSubcategory.h \
     $${PWD}/OAIAudienceType.h \
     $${PWD}/OAIAudienceUpdateOperationType.h \
@@ -110,19 +119,31 @@ HEADERS += \
     $${PWD}/OAIBidFloor.h \
     $${PWD}/OAIBidFloorRequest.h \
     $${PWD}/OAIBidFloorSpec.h \
+    $${PWD}/OAIBillingInvoiceDownloadResponse.h \
+    $${PWD}/OAIBillingInvoiceResponse.h \
     $${PWD}/OAIBillingProfilesResponse.h \
+    $${PWD}/OAIBilling_invoices_get_200_response.h \
     $${PWD}/OAIBilling_profiles_get_200_response.h \
     $${PWD}/OAIBoard.h \
+    $${PWD}/OAIBoardBase.h \
+    $${PWD}/OAIBoardCreate.h \
+    $${PWD}/OAIBoardMedia.h \
     $${PWD}/OAIBoardOwner.h \
+    $${PWD}/OAIBoardPrivacy.h \
+    $${PWD}/OAIBoardPrivacyFilter.h \
     $${PWD}/OAIBoardSection.h \
-    $${PWD}/OAIBoardUpdate.h \
-    $${PWD}/OAIBoard_media.h \
+    $${PWD}/OAIBoardUpdatePrivacy.h \
+    $${PWD}/OAIBoardWithUpdatePrivacy.h \
+    $${PWD}/OAIBoardWithUpdatePrivacyUpdate.h \
     $${PWD}/OAIBoard_sections_list_200_response.h \
     $${PWD}/OAIBoards_list_200_response.h \
     $${PWD}/OAIBoards_list_pins_200_response.h \
     $${PWD}/OAIBoards_user_follows_list_200_response.h \
     $${PWD}/OAIBookClosedResponse.h \
     $${PWD}/OAIBrandFilter.h \
+    $${PWD}/OAIBrand_accounts_create_200_response.h \
+    $${PWD}/OAIBrand_accounts_create_request.h \
+    $${PWD}/OAIBrand_accounts_update_request.h \
     $${PWD}/OAIBudgetType.h \
     $${PWD}/OAIBulkDownloadRequest.h \
     $${PWD}/OAIBulkDownloadRequest_campaign_filter.h \
@@ -154,6 +175,10 @@ HEADERS += \
     $${PWD}/OAIBusiness_members_asset_access_delete_request.h \
     $${PWD}/OAIBusiness_members_asset_access_delete_request_accesses_inner.h \
     $${PWD}/OAIBusiness_partner_asset_access_get_200_response.h \
+    $${PWD}/OAICampaignAudienceMultipliers.h \
+    $${PWD}/OAICampaignBidOptions.h \
+    $${PWD}/OAICampaignBidOptionsCreate.h \
+    $${PWD}/OAICampaignBidOptionsUpdate.h \
     $${PWD}/OAICampaignCommon.h \
     $${PWD}/OAICampaignCreateCommon.h \
     $${PWD}/OAICampaignCreateRequest.h \
@@ -161,6 +186,8 @@ HEADERS += \
     $${PWD}/OAICampaignCreateResponseData.h \
     $${PWD}/OAICampaignCreateResponseItem.h \
     $${PWD}/OAICampaignId.h \
+    $${PWD}/OAICampaignIdFilter.h \
+    $${PWD}/OAICampaignObjectivesFilter.h \
     $${PWD}/OAICampaignResponse.h \
     $${PWD}/OAICampaignSummaryStatus.h \
     $${PWD}/OAICampaignUpdateRequest.h \
@@ -168,13 +195,16 @@ HEADERS += \
     $${PWD}/OAICampaignsAnalyticsResponse_inner.h \
     $${PWD}/OAICampaigns_list_200_response.h \
     $${PWD}/OAICancelInvitesBody.h \
+    $${PWD}/OAICarouselSlot.h \
     $${PWD}/OAICatalog.h \
+    $${PWD}/OAICatalogsAvailableFilterValues.h \
     $${PWD}/OAICatalogsCreateCreativeAssetsItem.h \
     $${PWD}/OAICatalogsCreateHotelItem.h \
     $${PWD}/OAICatalogsCreateReportResponse.h \
     $${PWD}/OAICatalogsCreateRequest.h \
     $${PWD}/OAICatalogsCreateRetailItem.h \
     $${PWD}/OAICatalogsCreativeAssetsAttributes.h \
+    $${PWD}/OAICatalogsCreativeAssetsAvailableFilterValues.h \
     $${PWD}/OAICatalogsCreativeAssetsBatchItem.h \
     $${PWD}/OAICatalogsCreativeAssetsBatchRequest.h \
     $${PWD}/OAICatalogsCreativeAssetsFeed.h \
@@ -214,6 +244,7 @@ HEADERS += \
     $${PWD}/OAICatalogsFeedValidationDetails.h \
     $${PWD}/OAICatalogsFeedValidationErrors.h \
     $${PWD}/OAICatalogsFeedValidationWarnings.h \
+    $${PWD}/OAICatalogsFeedVideoCounts.h \
     $${PWD}/OAICatalogsFeedsCreateRequest.h \
     $${PWD}/OAICatalogsFeedsCreateRequest_default_locale.h \
     $${PWD}/OAICatalogsFeedsUpdateRequest.h \
@@ -221,6 +252,7 @@ HEADERS += \
     $${PWD}/OAICatalogsHotelAddress.h \
     $${PWD}/OAICatalogsHotelAttributes.h \
     $${PWD}/OAICatalogsHotelAttributes_allOf_main_image.h \
+    $${PWD}/OAICatalogsHotelAvailableFilterValues.h \
     $${PWD}/OAICatalogsHotelBatchItem.h \
     $${PWD}/OAICatalogsHotelBatchRequest.h \
     $${PWD}/OAICatalogsHotelFeed.h \
@@ -241,10 +273,13 @@ HEADERS += \
     $${PWD}/OAICatalogsHotelProductGroupFiltersAllOf.h \
     $${PWD}/OAICatalogsHotelProductGroupFiltersAnyOf.h \
     $${PWD}/OAICatalogsHotelProductGroupProductCounts.h \
+    $${PWD}/OAICatalogsHotelProductGroupType.h \
     $${PWD}/OAICatalogsHotelProductGroupUpdateRequest.h \
     $${PWD}/OAICatalogsHotelProductMetadata.h \
     $${PWD}/OAICatalogsHotelReportParameters.h \
     $${PWD}/OAICatalogsHotelReportParameters_report.h \
+    $${PWD}/OAICatalogsHotelReportStatsParameters.h \
+    $${PWD}/OAICatalogsHotelReportStatsParameters_report.h \
     $${PWD}/OAICatalogsItemValidationDetails.h \
     $${PWD}/OAICatalogsItemValidationErrors.h \
     $${PWD}/OAICatalogsItemValidationIssue.h \
@@ -268,12 +303,11 @@ HEADERS += \
     $${PWD}/OAICatalogsProductGroupCreateRequest.h \
     $${PWD}/OAICatalogsProductGroupCurrencyCriteria.h \
     $${PWD}/OAICatalogsProductGroupFilterKeys.h \
+    $${PWD}/OAICatalogsProductGroupFilterOperatorTypeCriteria.h \
     $${PWD}/OAICatalogsProductGroupFilters.h \
     $${PWD}/OAICatalogsProductGroupFiltersAllOf.h \
     $${PWD}/OAICatalogsProductGroupFiltersAnyOf.h \
     $${PWD}/OAICatalogsProductGroupFiltersRequest.h \
-    $${PWD}/OAICatalogsProductGroupFiltersRequest_anyOf.h \
-    $${PWD}/OAICatalogsProductGroupFiltersRequest_anyOf_1.h \
     $${PWD}/OAICatalogsProductGroupMultipleCountriesCriteria.h \
     $${PWD}/OAICatalogsProductGroupMultipleGenderCriteria.h \
     $${PWD}/OAICatalogsProductGroupMultipleMediaTypesCriteria.h \
@@ -283,14 +317,17 @@ HEADERS += \
     $${PWD}/OAICatalogsProductGroupProductCountsVertical.h \
     $${PWD}/OAICatalogsProductGroupStatus.h \
     $${PWD}/OAICatalogsProductGroupType.h \
+    $${PWD}/OAICatalogsProductGroupUint32Criteria.h \
     $${PWD}/OAICatalogsProductGroupUpdateRequest.h \
     $${PWD}/OAICatalogsReport.h \
+    $${PWD}/OAICatalogsReportAllItemsFilter.h \
     $${PWD}/OAICatalogsReportDistributionIssueFilter.h \
     $${PWD}/OAICatalogsReportDistributionStats.h \
     $${PWD}/OAICatalogsReportFeedIngestionFilter.h \
     $${PWD}/OAICatalogsReportFeedIngestionStats.h \
     $${PWD}/OAICatalogsReportParameters.h \
     $${PWD}/OAICatalogsReportStats.h \
+    $${PWD}/OAICatalogsRetailAvailableFilterValues.h \
     $${PWD}/OAICatalogsRetailBatchRequest.h \
     $${PWD}/OAICatalogsRetailBatchRequest_items_inner.h \
     $${PWD}/OAICatalogsRetailFeed.h \
@@ -309,6 +346,7 @@ HEADERS += \
     $${PWD}/OAICatalogsRetailProductGroupUpdateRequest.h \
     $${PWD}/OAICatalogsRetailProductMetadata.h \
     $${PWD}/OAICatalogsRetailReportParameters.h \
+    $${PWD}/OAICatalogsRetailReportStatsParameters.h \
     $${PWD}/OAICatalogsStatus.h \
     $${PWD}/OAICatalogsType.h \
     $${PWD}/OAICatalogsUpdatableCreativeAssetsAttributes.h \
@@ -326,32 +364,43 @@ HEADERS += \
     $${PWD}/OAICatalogsVerticalProductGroupCreateRequest.h \
     $${PWD}/OAICatalogsVerticalProductGroupUpdateRequest.h \
     $${PWD}/OAICatalogsVerticalsListProductsByCatalogBasedFilterRequest.h \
+    $${PWD}/OAICatalogs_creative_assets_filter_values_map.h \
+    $${PWD}/OAICatalogs_hotel_filter_values_map.h \
     $${PWD}/OAICatalogs_list_200_response.h \
     $${PWD}/OAICatalogs_product_group_pins_list_200_response.h \
     $${PWD}/OAICatalogs_product_group_pricing_currency_criteria.h \
     $${PWD}/OAICatalogs_product_groups_list_200_response.h \
     $${PWD}/OAICatalogs_product_groups_update_request.h \
+    $${PWD}/OAICatalogs_retail_filter_values_map.h \
     $${PWD}/OAIConditionFilter.h \
+    $${PWD}/OAIContentType.h \
+    $${PWD}/OAIConversionAccessTokenResponse.h \
     $${PWD}/OAIConversionApiResponse.h \
     $${PWD}/OAIConversionApiResponse_events_inner.h \
     $${PWD}/OAIConversionAttributionWindowDays.h \
+    $${PWD}/OAIConversionEventAppInfo.h \
+    $${PWD}/OAIConversionEventDeviceInfo.h \
     $${PWD}/OAIConversionEventResponse.h \
     $${PWD}/OAIConversionEvents.h \
     $${PWD}/OAIConversionEventsUserData.h \
-    $${PWD}/OAIConversionEventsUserData_anyOf.h \
-    $${PWD}/OAIConversionEventsUserData_anyOf_1.h \
-    $${PWD}/OAIConversionEventsUserData_anyOf_2.h \
+    $${PWD}/OAIConversionEventsUserDataProperties.h \
     $${PWD}/OAIConversionEvents_data_inner.h \
     $${PWD}/OAIConversionEvents_data_inner_custom_data.h \
     $${PWD}/OAIConversionEvents_data_inner_custom_data_contents_inner.h \
+    $${PWD}/OAIConversionHealthSelectionItem.h \
+    $${PWD}/OAIConversionMSOTEvents.h \
+    $${PWD}/OAIConversionProductReportRequest.h \
+    $${PWD}/OAIConversionProductReportingColumn.h \
     $${PWD}/OAIConversionReportAttributionType.h \
     $${PWD}/OAIConversionReportTimeType.h \
+    $${PWD}/OAIConversionTag.h \
     $${PWD}/OAIConversionTagCommon.h \
     $${PWD}/OAIConversionTagConfigs.h \
     $${PWD}/OAIConversionTagCreate.h \
     $${PWD}/OAIConversionTagListResponse.h \
     $${PWD}/OAIConversionTagResponse.h \
     $${PWD}/OAIConversionTagType.h \
+    $${PWD}/OAIConversion_tags_list_200_response.h \
     $${PWD}/OAICountry.h \
     $${PWD}/OAICountryFilter.h \
     $${PWD}/OAICreateAssetAccessRequestBody.h \
@@ -380,10 +429,20 @@ HEADERS += \
     $${PWD}/OAICustomLabel2Filter.h \
     $${PWD}/OAICustomLabel3Filter.h \
     $${PWD}/OAICustomLabel4Filter.h \
+    $${PWD}/OAICustomNumber0Filter.h \
+    $${PWD}/OAICustomNumber1Filter.h \
+    $${PWD}/OAICustomNumber2Filter.h \
+    $${PWD}/OAICustomNumber3Filter.h \
+    $${PWD}/OAICustomNumber4Filter.h \
     $${PWD}/OAICustomerList.h \
     $${PWD}/OAICustomerListRequest.h \
     $${PWD}/OAICustomerListUpdateRequest.h \
+    $${PWD}/OAICustomerListUpload.h \
+    $${PWD}/OAICustomerListUploadCreateRequest.h \
+    $${PWD}/OAICustomerListUploadCreateResponse.h \
+    $${PWD}/OAICustomerListUploadResponse.h \
     $${PWD}/OAICustomer_lists_list_200_response.h \
+    $${PWD}/OAICustomizableCTAType.h \
     $${PWD}/OAIDataOutputFormat.h \
     $${PWD}/OAIDataStatus.h \
     $${PWD}/OAIDeleteAssetGroupBody.h \
@@ -404,10 +463,15 @@ HEADERS += \
     $${PWD}/OAIDeliveryMetricsResponse.h \
     $${PWD}/OAIDeliveryMetricsResponse_items_inner.h \
     $${PWD}/OAIDetailedError.h \
+    $${PWD}/OAIDisclosureType.h \
     $${PWD}/OAIEnhancedMatchStatusType.h \
     $${PWD}/OAIEntityStatus.h \
     $${PWD}/OAIError.h \
+    $${PWD}/OAIErrorDetail.h \
+    $${PWD}/OAIEventData.h \
+    $${PWD}/OAIEventQualityScore.h \
     $${PWD}/OAIException.h \
+    $${PWD}/OAIFeaturedTrend.h \
     $${PWD}/OAIFeed_processing_results_list_200_response.h \
     $${PWD}/OAIFeeds_create_request.h \
     $${PWD}/OAIFeeds_list_200_response.h \
@@ -415,10 +479,13 @@ HEADERS += \
     $${PWD}/OAIFollowUserRequest.h \
     $${PWD}/OAIFollowers_list_200_response.h \
     $${PWD}/OAIGender.h \
+    $${PWD}/OAIGenderBucket.h \
+    $${PWD}/OAIGenderDemographics.h \
     $${PWD}/OAIGenderFilter.h \
     $${PWD}/OAIGetAudiencesOrderBy.h \
     $${PWD}/OAIGetBusinessAssetTypeResponse.h \
     $${PWD}/OAIGetBusinessAssetsResponse.h \
+    $${PWD}/OAIGetBusinessAssetsResponse_catalog_info.h \
     $${PWD}/OAIGetMMMReportResponse.h \
     $${PWD}/OAIGetMMMReportResponseData.h \
     $${PWD}/OAIGetPartnerAssetsResponse.h \
@@ -439,7 +506,10 @@ HEADERS += \
     $${PWD}/OAIHotelProcessingRecord.h \
     $${PWD}/OAIImageDetails.h \
     $${PWD}/OAIImageMetadata.h \
-    $${PWD}/OAIImageMetadata_images.h \
+    $${PWD}/OAIImageSize.h \
+    $${PWD}/OAIImage_Base64.h \
+    $${PWD}/OAIIngestionSourceOptions.h \
+    $${PWD}/OAIInnerProductCategoriesMetricsHighlights.h \
     $${PWD}/OAIIntegrationLog.h \
     $${PWD}/OAIIntegrationLogClientError.h \
     $${PWD}/OAIIntegrationLogClientRequest.h \
@@ -452,7 +522,9 @@ HEADERS += \
     $${PWD}/OAIIntegrationRequest.h \
     $${PWD}/OAIIntegrationRequestPatch.h \
     $${PWD}/OAIIntegrations_get_list_200_response.h \
+    $${PWD}/OAIIntegrations_logs_post_400_response.h \
     $${PWD}/OAIInterest.h \
+    $${PWD}/OAIInterestsEnum.h \
     $${PWD}/OAIInviteAssetsSummary.h \
     $${PWD}/OAIInviteAssetsSummary_ad_accounts_inner.h \
     $${PWD}/OAIInviteAssetsSummary_profiles_inner.h \
@@ -473,8 +545,8 @@ HEADERS += \
     $${PWD}/OAIItemProcessingRecord.h \
     $${PWD}/OAIItemProcessingStatus.h \
     $${PWD}/OAIItemResponse.h \
-    $${PWD}/OAIItemResponse_anyOf.h \
-    $${PWD}/OAIItemResponse_anyOf_1.h \
+    $${PWD}/OAIItemResponse_oneOf.h \
+    $${PWD}/OAIItemResponse_oneOf_1.h \
     $${PWD}/OAIItemUpdateBatchRecord.h \
     $${PWD}/OAIItemUpsertBatchRecord.h \
     $${PWD}/OAIItemValidationEvent.h \
@@ -491,6 +563,18 @@ HEADERS += \
     $${PWD}/OAIKeywordsRequest.h \
     $${PWD}/OAIKeywordsResponse.h \
     $${PWD}/OAIKeywords_get_200_response.h \
+    $${PWD}/OAILabel.h \
+    $${PWD}/OAILabelBulkUpdateRequest.h \
+    $${PWD}/OAILabelCreateRequest.h \
+    $${PWD}/OAILabelCreateRequest_labels_inner.h \
+    $${PWD}/OAILabelError.h \
+    $${PWD}/OAILabelParentType.h \
+    $${PWD}/OAILabelStatus.h \
+    $${PWD}/OAILabelType.h \
+    $${PWD}/OAILabelUpdateRequest.h \
+    $${PWD}/OAILabelUpdateRequest_labels_inner.h \
+    $${PWD}/OAILabelsResponse.h \
+    $${PWD}/OAILabels_list_200_response.h \
     $${PWD}/OAILanguage.h \
     $${PWD}/OAILeadFormArrayResponse.h \
     $${PWD}/OAILeadFormArrayResponse_items_inner.h \
@@ -505,6 +589,9 @@ HEADERS += \
     $${PWD}/OAILeadFormTestRequest.h \
     $${PWD}/OAILeadFormTestResponse.h \
     $${PWD}/OAILeadFormUpdateRequest.h \
+    $${PWD}/OAILeadSubscription.h \
+    $${PWD}/OAILeadSubscriptionPostParamsCreate.h \
+    $${PWD}/OAILeadSubscriptionPostParamsCreate_allOf_partner_metadata.h \
     $${PWD}/OAILead_forms_list_200_response.h \
     $${PWD}/OAILeadsExportCreateRequest.h \
     $${PWD}/OAILeadsExportCreateResponse.h \
@@ -512,19 +599,21 @@ HEADERS += \
     $${PWD}/OAILeadsExportStatus.h \
     $${PWD}/OAILineItem.h \
     $${PWD}/OAILinkedBusiness.h \
+    $${PWD}/OAILocalStoreUpdate.h \
+    $${PWD}/OAILookbackPeriodOptions.h \
     $${PWD}/OAIMMMReportingColumn.h \
     $${PWD}/OAIMMMReportingTargetingType.h \
     $${PWD}/OAIMatchType.h \
     $${PWD}/OAIMatchTypeResponse.h \
     $${PWD}/OAIMaxPriceFilter.h \
+    $${PWD}/OAIMedia.h \
     $${PWD}/OAIMediaType.h \
     $${PWD}/OAIMediaTypeFilter.h \
     $${PWD}/OAIMediaUpload.h \
-    $${PWD}/OAIMediaUploadDetails.h \
-    $${PWD}/OAIMediaUploadRequest.h \
+    $${PWD}/OAIMediaUploadCreate.h \
+    $${PWD}/OAIMediaUploadParameters.h \
     $${PWD}/OAIMediaUploadStatus.h \
     $${PWD}/OAIMediaUploadType.h \
-    $${PWD}/OAIMediaUpload_allOf_upload_parameters.h \
     $${PWD}/OAIMedia_list_200_response.h \
     $${PWD}/OAIMemberBusinessRole.h \
     $${PWD}/OAIMembersToDeleteBody.h \
@@ -533,8 +622,11 @@ HEADERS += \
     $${PWD}/OAIMetricsResponse.h \
     $${PWD}/OAIMinPriceFilter.h \
     $${PWD}/OAIMultiple_product_groups_inner.h \
+    $${PWD}/OAINonDraftEntityStatus.h \
     $${PWD}/OAINonNullableCatalogsCurrency.h \
     $${PWD}/OAINonNullableProductAvailabilityType.h \
+    $${PWD}/OAINotificationResponse.h \
+    $${PWD}/OAINotification_post_request.h \
     $${PWD}/OAINullableCatalogsItemFieldType.h \
     $${PWD}/OAINullableCurrency.h \
     $${PWD}/OAIOauthAccessTokenRequestClientCredentials.h \
@@ -543,7 +635,6 @@ HEADERS += \
     $${PWD}/OAIOauthAccessTokenResponse.h \
     $${PWD}/OAIOauthAccessTokenResponseClientCredentials.h \
     $${PWD}/OAIOauthAccessTokenResponseCode.h \
-    $${PWD}/OAIOauthAccessTokenResponseEverlastingRefresh.h \
     $${PWD}/OAIOauthAccessTokenResponseIntegrationRefresh.h \
     $${PWD}/OAIOauthAccessTokenResponseRefresh.h \
     $${PWD}/OAIObjectiveType.h \
@@ -562,6 +653,7 @@ HEADERS += \
     $${PWD}/OAIOrderLines.h \
     $${PWD}/OAIOrderLinesArrayResponse.h \
     $${PWD}/OAIOrder_lines_list_200_response.h \
+    $${PWD}/OAIOverallStatusOptions.h \
     $${PWD}/OAIPacingDeliveryType.h \
     $${PWD}/OAIPage_visit_conversion_tags_get_200_response.h \
     $${PWD}/OAIPaginated.h \
@@ -578,33 +670,39 @@ HEADERS += \
     $${PWD}/OAIPinMediaSourceImageBase64.h \
     $${PWD}/OAIPinMediaSourceImageURL.h \
     $${PWD}/OAIPinMediaSourceImagesBase64.h \
-    $${PWD}/OAIPinMediaSourceImagesBase64_items_inner.h \
+    $${PWD}/OAIPinMediaSourceImagesBase64Item.h \
     $${PWD}/OAIPinMediaSourceImagesURL.h \
-    $${PWD}/OAIPinMediaSourceImagesURL_items_inner.h \
+    $${PWD}/OAIPinMediaSourceImagesURLItem.h \
     $${PWD}/OAIPinMediaSourcePinURL.h \
     $${PWD}/OAIPinMediaSourceVideoID.h \
     $${PWD}/OAIPinMediaWithImage.h \
     $${PWD}/OAIPinMediaWithImageAndVideo.h \
-    $${PWD}/OAIPinMediaWithImage_allOf_images.h \
     $${PWD}/OAIPinMediaWithImages.h \
     $${PWD}/OAIPinMediaWithVideo.h \
     $${PWD}/OAIPinMediaWithVideos.h \
     $${PWD}/OAIPinPromotionSummaryStatus.h \
     $${PWD}/OAIPinUpdate.h \
-    $${PWD}/OAIPinUpdate_carousel_slots_inner.h \
     $${PWD}/OAIPins_list_200_response.h \
     $${PWD}/OAIPins_save_request.h \
-    $${PWD}/OAIPinterestTagEventData.h \
+    $${PWD}/OAIPinterest_Lib_Error.h \
+    $${PWD}/OAIPinterest_Lib_PaginationOrder.h \
+    $${PWD}/OAIPinterest_Lib_Status204.h \
     $${PWD}/OAIPlacementGroupType.h \
     $${PWD}/OAIPlacementMultipliers.h \
+    $${PWD}/OAIPredictedTimeSeries.h \
     $${PWD}/OAIPriceFilter.h \
     $${PWD}/OAIProductAvailabilityType.h \
+    $${PWD}/OAIProductCategoriesDemographic.h \
+    $${PWD}/OAIProductCategoriesEngagementType.h \
+    $${PWD}/OAIProductCategoriesMetricsHighlights.h \
+    $${PWD}/OAIProductCategoryDetailLookbackWindow.h \
+    $${PWD}/OAIProductCategoryDetails.h \
+    $${PWD}/OAIProductCategoryEnum.h \
+    $${PWD}/OAIProductCategoryRegion.h \
     $${PWD}/OAIProductGroupAnalyticsResponse_inner.h \
     $${PWD}/OAIProductGroupPromotion.h \
     $${PWD}/OAIProductGroupPromotionCreateRequest.h \
-    $${PWD}/OAIProductGroupPromotionCreateRequestElement.h \
     $${PWD}/OAIProductGroupPromotionResponse.h \
-    $${PWD}/OAIProductGroupPromotionResponseElement.h \
     $${PWD}/OAIProductGroupPromotionResponseItem.h \
     $${PWD}/OAIProductGroupPromotionUpdateRequest.h \
     $${PWD}/OAIProductGroupReferenceFilter.h \
@@ -615,17 +713,34 @@ HEADERS += \
     $${PWD}/OAIProductType3Filter.h \
     $${PWD}/OAIProductType4Filter.h \
     $${PWD}/OAIProduct_group_promotions_list_200_response.h \
+    $${PWD}/OAIPromotionArrayElement.h \
+    $${PWD}/OAIPromotionCommon.h \
+    $${PWD}/OAIPromotionCreateRequest.h \
+    $${PWD}/OAIPromotionResponse.h \
+    $${PWD}/OAIPromotionTemplateValue.h \
+    $${PWD}/OAIPromotionType.h \
+    $${PWD}/OAIPromotionUpdateRequest.h \
+    $${PWD}/OAIPromotionsResponse.h \
+    $${PWD}/OAIPromotions_list_200_response.h \
+    $${PWD}/OAIQualityComponentDetails.h \
+    $${PWD}/OAIQualityComponentIssue.h \
+    $${PWD}/OAIQualityComponents.h \
     $${PWD}/OAIQuizPinData.h \
     $${PWD}/OAIQuizPinOption.h \
     $${PWD}/OAIQuizPinQuestion.h \
     $${PWD}/OAIQuizPinResult.h \
+    $${PWD}/OAIRecordCounts.h \
     $${PWD}/OAIRelatedTerms.h \
     $${PWD}/OAIRelatedTerms_related_terms_list_inner.h \
     $${PWD}/OAIReportingColumnAsync.h \
+    $${PWD}/OAIReportingTimeZone.h \
     $${PWD}/OAIReports_stats_200_response.h \
+    $${PWD}/OAIReports_stats_parameters_parameter.h \
     $${PWD}/OAIRespondToInvitesResponseArray.h \
     $${PWD}/OAIRespondToInvitesResponseArray_items_inner.h \
     $${PWD}/OAIRole.h \
+    $${PWD}/OAIS3FilePart.h \
+    $${PWD}/OAIS3MultipartUploadData.h \
     $${PWD}/OAISSIOAccountAddress.h \
     $${PWD}/OAISSIOAccountItem.h \
     $${PWD}/OAISSIOAccountPMPName.h \
@@ -640,19 +755,31 @@ HEADERS += \
     $${PWD}/OAISSIOOrderLine.h \
     $${PWD}/OAISearch_partner_pins_200_response.h \
     $${PWD}/OAISearch_user_boards_get_200_response.h \
+    $${PWD}/OAISearch_user_pins_list_200_response.h \
     $${PWD}/OAISharedAudience.h \
     $${PWD}/OAISharedAudienceAccount.h \
     $${PWD}/OAISharedAudienceCommon.h \
     $${PWD}/OAISharedAudienceResponse.h \
     $${PWD}/OAISharedAudienceResponseCommon.h \
     $${PWD}/OAISingleInterestTargetingOptionResponse.h \
+    $${PWD}/OAISourcePlatformOptions.h \
     $${PWD}/OAISsio_insertion_orders_status_get_by_ad_account_200_response.h \
     $${PWD}/OAISsio_order_lines_get_by_ad_account_200_response.h \
     $${PWD}/OAISummaryPin.h \
+    $${PWD}/OAISystem_user_update_request.h \
     $${PWD}/OAITargetingAdvertiserCountry.h \
     $${PWD}/OAITargetingSpec.h \
+    $${PWD}/OAITargetingSpecAgeBucket.h \
     $${PWD}/OAITargetingSpecAppType.h \
-    $${PWD}/OAITargetingSpec_SHOPPING_RETARGETING.h \
+    $${PWD}/OAITargetingSpecGender.h \
+    $${PWD}/OAITargetingSpecOperationAgeBucket.h \
+    $${PWD}/OAITargetingSpecOperationAppType.h \
+    $${PWD}/OAITargetingSpecOperationGender.h \
+    $${PWD}/OAITargetingSpecOperationList.h \
+    $${PWD}/OAITargetingSpecOperationMinMaxAge.h \
+    $${PWD}/OAITargetingSpecOperationShoppingRetargeting.h \
+    $${PWD}/OAITargetingSpecOperationString.h \
+    $${PWD}/OAITargetingSpecShoppingRetargeting.h \
     $${PWD}/OAITargetingTemplateAudienceSizing.h \
     $${PWD}/OAITargetingTemplateAudienceSizing_reach_estimate.h \
     $${PWD}/OAITargetingTemplateCommon.h \
@@ -663,6 +790,7 @@ HEADERS += \
     $${PWD}/OAITargetingTemplateUpdateRequest.h \
     $${PWD}/OAITargetingTypeFilter.h \
     $${PWD}/OAITargeting_template_list_200_response.h \
+    $${PWD}/OAITemplateBasedReport.h \
     $${PWD}/OAITemplateResponse.h \
     $${PWD}/OAITemplateResponse_date_range.h \
     $${PWD}/OAITemplateResponse_date_range_absolute_date_range.h \
@@ -670,6 +798,8 @@ HEADERS += \
     $${PWD}/OAITemplateResponse_date_range_relative_date_range.h \
     $${PWD}/OAITemplates_list_200_response.h \
     $${PWD}/OAITermsOfService.h \
+    $${PWD}/OAITimeSeries.h \
+    $${PWD}/OAITitleKeywordsFilter.h \
     $${PWD}/OAITopPinsAnalyticsResponse.h \
     $${PWD}/OAITopPinsAnalyticsResponse_date_availability.h \
     $${PWD}/OAITopPinsAnalyticsResponse_pins_inner.h \
@@ -677,11 +807,17 @@ HEADERS += \
     $${PWD}/OAITopVideoPinsAnalyticsResponse_pins_inner.h \
     $${PWD}/OAITrackingUrls.h \
     $${PWD}/OAITrendType.h \
+    $${PWD}/OAITrendingKeyword.h \
+    $${PWD}/OAITrendingKeyword_demographics.h \
+    $${PWD}/OAITrendingKeyword_demographics_age_distribution.h \
+    $${PWD}/OAITrendingKeyword_demographics_gender_distribution.h \
     $${PWD}/OAITrendingKeywordsResponse.h \
-    $${PWD}/OAITrendingKeywordsResponse_trends_inner.h \
-    $${PWD}/OAITrendingKeywordsResponse_trends_inner_time_series.h \
+    $${PWD}/OAITrendingPin.h \
+    $${PWD}/OAITrendingProductCategory.h \
+    $${PWD}/OAITrendingTopic.h \
     $${PWD}/OAITrendsSupportedRegion.h \
     $${PWD}/OAIUpdatableItemAttributes.h \
+    $${PWD}/OAIUpdatableItemAttributes_gtin.h \
     $${PWD}/OAIUpdateAssetGroupBody.h \
     $${PWD}/OAIUpdateAssetGroupBody_asset_groups_to_update_inner.h \
     $${PWD}/OAIUpdateAssetGroupResponse.h \
@@ -716,7 +852,8 @@ HEADERS += \
     $${PWD}/OAIUser_following_get_200_response.h \
     $${PWD}/OAIUser_websites_get_200_response.h \
     $${PWD}/OAIUsersForIndividualAssetResponse.h \
-    $${PWD}/OAIVideoMetadata.h \
+    $${PWD}/OAIVerticalProductCategory.h \
+    $${PWD}/OAIVideoMetadataWithItemType.h \
 # APIs
     $${PWD}/OAIAdAccountsApi.h \
     $${PWD}/OAIAdGroupsApi.h \
@@ -732,20 +869,32 @@ HEADERS += \
     $${PWD}/OAIBusinessAccessInviteApi.h \
     $${PWD}/OAIBusinessAccessRelationshipsApi.h \
     $${PWD}/OAICampaignsApi.h \
+    $${PWD}/OAICatalogFeedsApi.h \
+    $${PWD}/OAICatalogItemsApi.h \
+    $${PWD}/OAICatalogProductGroupsApi.h \
+    $${PWD}/OAICatalogReportsApi.h \
     $${PWD}/OAICatalogsApi.h \
+    $${PWD}/OAIConversionEqsApi.h \
     $${PWD}/OAIConversionEventsApi.h \
     $${PWD}/OAIConversionTagsApi.h \
+    $${PWD}/OAIConversionsApi.h \
+    $${PWD}/OAICustomerListUploadsApi.h \
     $${PWD}/OAICustomerListsApi.h \
     $${PWD}/OAIIntegrationsApi.h \
     $${PWD}/OAIKeywordsApi.h \
+    $${PWD}/OAILabelsApi.h \
     $${PWD}/OAILeadAdsApi.h \
     $${PWD}/OAILeadFormsApi.h \
     $${PWD}/OAILeadsExportApi.h \
     $${PWD}/OAIMediaApi.h \
+    $${PWD}/OAIMsotEventsApi.h \
+    $${PWD}/OAINotificationApi.h \
     $${PWD}/OAIOauthApi.h \
     $${PWD}/OAIOrderLinesApi.h \
     $${PWD}/OAIPinsApi.h \
+    $${PWD}/OAIProductCategoriesApi.h \
     $${PWD}/OAIProductGroupPromotionsApi.h \
+    $${PWD}/OAIPromotionsApi.h \
     $${PWD}/OAIResourcesApi.h \
     $${PWD}/OAISearchApi.h \
     $${PWD}/OAITargetingTemplateApi.h \
@@ -768,11 +917,12 @@ SOURCES += \
     $${PWD}/OAIActionType.cpp \
     $${PWD}/OAIAdAccount.cpp \
     $${PWD}/OAIAdAccountAnalyticsResponse_inner.cpp \
-    $${PWD}/OAIAdAccountCreateRequest.cpp \
+    $${PWD}/OAIAdAccountCreate.cpp \
     $${PWD}/OAIAdAccountCreateSubscriptionRequest.cpp \
     $${PWD}/OAIAdAccountCreateSubscriptionRequest_partner_metadata.cpp \
     $${PWD}/OAIAdAccountCreateSubscriptionResponse.cpp \
     $${PWD}/OAIAdAccountGetSubscriptionResponse.cpp \
+    $${PWD}/OAIAdAccountOwner.cpp \
     $${PWD}/OAIAdAccountsCountryResponse.cpp \
     $${PWD}/OAIAdAccountsCountryResponseData.cpp \
     $${PWD}/OAIAdArrayResponse.cpp \
@@ -787,25 +937,29 @@ SOURCES += \
     $${PWD}/OAIAdGroupAudienceSizingResponse.cpp \
     $${PWD}/OAIAdGroupCommon.cpp \
     $${PWD}/OAIAdGroupCreateRequest.cpp \
+    $${PWD}/OAIAdGroupIdFilter.cpp \
     $${PWD}/OAIAdGroupResponse.cpp \
     $${PWD}/OAIAdGroupSummaryStatus.cpp \
     $${PWD}/OAIAdGroupUpdateRequest.cpp \
     $${PWD}/OAIAdGroupsAnalyticsResponse_inner.cpp \
+    $${PWD}/OAIAdPinAnalytics.cpp \
     $${PWD}/OAIAdPinId.cpp \
     $${PWD}/OAIAdPreviewCreateFromImage.cpp \
     $${PWD}/OAIAdPreviewCreateFromPin.cpp \
     $${PWD}/OAIAdPreviewRequest.cpp \
+    $${PWD}/OAIAdPreviewShopping.cpp \
     $${PWD}/OAIAdPreviewURLResponse.cpp \
     $${PWD}/OAIAdResponse.cpp \
     $${PWD}/OAIAdUpdateRequest.cpp \
-    $${PWD}/OAIAd_account_owner.cpp \
     $${PWD}/OAIAd_accounts_audiences_shared_accounts_list_200_response.cpp \
     $${PWD}/OAIAd_accounts_list_200_response.cpp \
     $${PWD}/OAIAd_accounts_subscriptions_get_list_200_response.cpp \
     $${PWD}/OAIAd_groups_list_200_response.cpp \
+    $${PWD}/OAIAdsAnalyticsAdGroupTargetingType.cpp \
     $${PWD}/OAIAdsAnalyticsAdTargetingType.cpp \
     $${PWD}/OAIAdsAnalyticsCampaignTargetingType.cpp \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest.cpp \
+    $${PWD}/OAIAdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics.cpp \
     $${PWD}/OAIAdsAnalyticsCreateAsyncResponse.cpp \
     $${PWD}/OAIAdsAnalyticsFilterColumn.cpp \
     $${PWD}/OAIAdsAnalyticsFilterOperator.cpp \
@@ -830,10 +984,15 @@ SOURCES += \
     $${PWD}/OAIAdvancedAuctionKey.cpp \
     $${PWD}/OAIAdvancedAuctionOperation.cpp \
     $${PWD}/OAIAdvancedAuctionOperationError.cpp \
-    $${PWD}/OAIAdvancedAuctionProcessedItem.cpp \
     $${PWD}/OAIAdvancedAuctionProcessedItems.cpp \
+    $${PWD}/OAIAdvertiserDefinedEvent.cpp \
+    $${PWD}/OAIAdvertiserDefinedEventsResponse.cpp \
+    $${PWD}/OAIAgeTrendsBucket.cpp \
+    $${PWD}/OAIAll_of.cpp \
+    $${PWD}/OAIAmazonConnectRequest.cpp \
     $${PWD}/OAIAnalyticsDailyMetrics.cpp \
     $${PWD}/OAIAnalyticsMetricsResponse.cpp \
+    $${PWD}/OAIAny_of.cpp \
     $${PWD}/OAIAppTypeMultipliers.cpp \
     $${PWD}/OAIAssetGroupBinding.cpp \
     $${PWD}/OAIAssetGroupType.cpp \
@@ -842,11 +1001,11 @@ SOURCES += \
     $${PWD}/OAIAudienceAccountType.cpp \
     $${PWD}/OAIAudienceCategory.cpp \
     $${PWD}/OAIAudienceCommon.cpp \
-    $${PWD}/OAIAudienceCreateCustomRequest.cpp \
     $${PWD}/OAIAudienceCreateRequest.cpp \
-    $${PWD}/OAIAudienceDataParty.cpp \
     $${PWD}/OAIAudienceDefinition.cpp \
     $${PWD}/OAIAudienceDefinitionResponse.cpp \
+    $${PWD}/OAIAudienceDefinitionScope.cpp \
+    $${PWD}/OAIAudienceDefinitionType.cpp \
     $${PWD}/OAIAudienceDemographicValue.cpp \
     $${PWD}/OAIAudienceDemographics.cpp \
     $${PWD}/OAIAudienceInsightCategoryArrayResponse.cpp \
@@ -855,7 +1014,6 @@ SOURCES += \
     $${PWD}/OAIAudienceInsightsResponse.cpp \
     $${PWD}/OAIAudienceRule.cpp \
     $${PWD}/OAIAudienceShareType.cpp \
-    $${PWD}/OAIAudienceSharingType.cpp \
     $${PWD}/OAIAudienceSubcategory.cpp \
     $${PWD}/OAIAudienceType.cpp \
     $${PWD}/OAIAudienceUpdateOperationType.cpp \
@@ -872,19 +1030,31 @@ SOURCES += \
     $${PWD}/OAIBidFloor.cpp \
     $${PWD}/OAIBidFloorRequest.cpp \
     $${PWD}/OAIBidFloorSpec.cpp \
+    $${PWD}/OAIBillingInvoiceDownloadResponse.cpp \
+    $${PWD}/OAIBillingInvoiceResponse.cpp \
     $${PWD}/OAIBillingProfilesResponse.cpp \
+    $${PWD}/OAIBilling_invoices_get_200_response.cpp \
     $${PWD}/OAIBilling_profiles_get_200_response.cpp \
     $${PWD}/OAIBoard.cpp \
+    $${PWD}/OAIBoardBase.cpp \
+    $${PWD}/OAIBoardCreate.cpp \
+    $${PWD}/OAIBoardMedia.cpp \
     $${PWD}/OAIBoardOwner.cpp \
+    $${PWD}/OAIBoardPrivacy.cpp \
+    $${PWD}/OAIBoardPrivacyFilter.cpp \
     $${PWD}/OAIBoardSection.cpp \
-    $${PWD}/OAIBoardUpdate.cpp \
-    $${PWD}/OAIBoard_media.cpp \
+    $${PWD}/OAIBoardUpdatePrivacy.cpp \
+    $${PWD}/OAIBoardWithUpdatePrivacy.cpp \
+    $${PWD}/OAIBoardWithUpdatePrivacyUpdate.cpp \
     $${PWD}/OAIBoard_sections_list_200_response.cpp \
     $${PWD}/OAIBoards_list_200_response.cpp \
     $${PWD}/OAIBoards_list_pins_200_response.cpp \
     $${PWD}/OAIBoards_user_follows_list_200_response.cpp \
     $${PWD}/OAIBookClosedResponse.cpp \
     $${PWD}/OAIBrandFilter.cpp \
+    $${PWD}/OAIBrand_accounts_create_200_response.cpp \
+    $${PWD}/OAIBrand_accounts_create_request.cpp \
+    $${PWD}/OAIBrand_accounts_update_request.cpp \
     $${PWD}/OAIBudgetType.cpp \
     $${PWD}/OAIBulkDownloadRequest.cpp \
     $${PWD}/OAIBulkDownloadRequest_campaign_filter.cpp \
@@ -916,6 +1086,10 @@ SOURCES += \
     $${PWD}/OAIBusiness_members_asset_access_delete_request.cpp \
     $${PWD}/OAIBusiness_members_asset_access_delete_request_accesses_inner.cpp \
     $${PWD}/OAIBusiness_partner_asset_access_get_200_response.cpp \
+    $${PWD}/OAICampaignAudienceMultipliers.cpp \
+    $${PWD}/OAICampaignBidOptions.cpp \
+    $${PWD}/OAICampaignBidOptionsCreate.cpp \
+    $${PWD}/OAICampaignBidOptionsUpdate.cpp \
     $${PWD}/OAICampaignCommon.cpp \
     $${PWD}/OAICampaignCreateCommon.cpp \
     $${PWD}/OAICampaignCreateRequest.cpp \
@@ -923,6 +1097,8 @@ SOURCES += \
     $${PWD}/OAICampaignCreateResponseData.cpp \
     $${PWD}/OAICampaignCreateResponseItem.cpp \
     $${PWD}/OAICampaignId.cpp \
+    $${PWD}/OAICampaignIdFilter.cpp \
+    $${PWD}/OAICampaignObjectivesFilter.cpp \
     $${PWD}/OAICampaignResponse.cpp \
     $${PWD}/OAICampaignSummaryStatus.cpp \
     $${PWD}/OAICampaignUpdateRequest.cpp \
@@ -930,13 +1106,16 @@ SOURCES += \
     $${PWD}/OAICampaignsAnalyticsResponse_inner.cpp \
     $${PWD}/OAICampaigns_list_200_response.cpp \
     $${PWD}/OAICancelInvitesBody.cpp \
+    $${PWD}/OAICarouselSlot.cpp \
     $${PWD}/OAICatalog.cpp \
+    $${PWD}/OAICatalogsAvailableFilterValues.cpp \
     $${PWD}/OAICatalogsCreateCreativeAssetsItem.cpp \
     $${PWD}/OAICatalogsCreateHotelItem.cpp \
     $${PWD}/OAICatalogsCreateReportResponse.cpp \
     $${PWD}/OAICatalogsCreateRequest.cpp \
     $${PWD}/OAICatalogsCreateRetailItem.cpp \
     $${PWD}/OAICatalogsCreativeAssetsAttributes.cpp \
+    $${PWD}/OAICatalogsCreativeAssetsAvailableFilterValues.cpp \
     $${PWD}/OAICatalogsCreativeAssetsBatchItem.cpp \
     $${PWD}/OAICatalogsCreativeAssetsBatchRequest.cpp \
     $${PWD}/OAICatalogsCreativeAssetsFeed.cpp \
@@ -976,6 +1155,7 @@ SOURCES += \
     $${PWD}/OAICatalogsFeedValidationDetails.cpp \
     $${PWD}/OAICatalogsFeedValidationErrors.cpp \
     $${PWD}/OAICatalogsFeedValidationWarnings.cpp \
+    $${PWD}/OAICatalogsFeedVideoCounts.cpp \
     $${PWD}/OAICatalogsFeedsCreateRequest.cpp \
     $${PWD}/OAICatalogsFeedsCreateRequest_default_locale.cpp \
     $${PWD}/OAICatalogsFeedsUpdateRequest.cpp \
@@ -983,6 +1163,7 @@ SOURCES += \
     $${PWD}/OAICatalogsHotelAddress.cpp \
     $${PWD}/OAICatalogsHotelAttributes.cpp \
     $${PWD}/OAICatalogsHotelAttributes_allOf_main_image.cpp \
+    $${PWD}/OAICatalogsHotelAvailableFilterValues.cpp \
     $${PWD}/OAICatalogsHotelBatchItem.cpp \
     $${PWD}/OAICatalogsHotelBatchRequest.cpp \
     $${PWD}/OAICatalogsHotelFeed.cpp \
@@ -1003,10 +1184,13 @@ SOURCES += \
     $${PWD}/OAICatalogsHotelProductGroupFiltersAllOf.cpp \
     $${PWD}/OAICatalogsHotelProductGroupFiltersAnyOf.cpp \
     $${PWD}/OAICatalogsHotelProductGroupProductCounts.cpp \
+    $${PWD}/OAICatalogsHotelProductGroupType.cpp \
     $${PWD}/OAICatalogsHotelProductGroupUpdateRequest.cpp \
     $${PWD}/OAICatalogsHotelProductMetadata.cpp \
     $${PWD}/OAICatalogsHotelReportParameters.cpp \
     $${PWD}/OAICatalogsHotelReportParameters_report.cpp \
+    $${PWD}/OAICatalogsHotelReportStatsParameters.cpp \
+    $${PWD}/OAICatalogsHotelReportStatsParameters_report.cpp \
     $${PWD}/OAICatalogsItemValidationDetails.cpp \
     $${PWD}/OAICatalogsItemValidationErrors.cpp \
     $${PWD}/OAICatalogsItemValidationIssue.cpp \
@@ -1030,12 +1214,11 @@ SOURCES += \
     $${PWD}/OAICatalogsProductGroupCreateRequest.cpp \
     $${PWD}/OAICatalogsProductGroupCurrencyCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupFilterKeys.cpp \
+    $${PWD}/OAICatalogsProductGroupFilterOperatorTypeCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupFilters.cpp \
     $${PWD}/OAICatalogsProductGroupFiltersAllOf.cpp \
     $${PWD}/OAICatalogsProductGroupFiltersAnyOf.cpp \
     $${PWD}/OAICatalogsProductGroupFiltersRequest.cpp \
-    $${PWD}/OAICatalogsProductGroupFiltersRequest_anyOf.cpp \
-    $${PWD}/OAICatalogsProductGroupFiltersRequest_anyOf_1.cpp \
     $${PWD}/OAICatalogsProductGroupMultipleCountriesCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupMultipleGenderCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupMultipleMediaTypesCriteria.cpp \
@@ -1045,14 +1228,17 @@ SOURCES += \
     $${PWD}/OAICatalogsProductGroupProductCountsVertical.cpp \
     $${PWD}/OAICatalogsProductGroupStatus.cpp \
     $${PWD}/OAICatalogsProductGroupType.cpp \
+    $${PWD}/OAICatalogsProductGroupUint32Criteria.cpp \
     $${PWD}/OAICatalogsProductGroupUpdateRequest.cpp \
     $${PWD}/OAICatalogsReport.cpp \
+    $${PWD}/OAICatalogsReportAllItemsFilter.cpp \
     $${PWD}/OAICatalogsReportDistributionIssueFilter.cpp \
     $${PWD}/OAICatalogsReportDistributionStats.cpp \
     $${PWD}/OAICatalogsReportFeedIngestionFilter.cpp \
     $${PWD}/OAICatalogsReportFeedIngestionStats.cpp \
     $${PWD}/OAICatalogsReportParameters.cpp \
     $${PWD}/OAICatalogsReportStats.cpp \
+    $${PWD}/OAICatalogsRetailAvailableFilterValues.cpp \
     $${PWD}/OAICatalogsRetailBatchRequest.cpp \
     $${PWD}/OAICatalogsRetailBatchRequest_items_inner.cpp \
     $${PWD}/OAICatalogsRetailFeed.cpp \
@@ -1071,6 +1257,7 @@ SOURCES += \
     $${PWD}/OAICatalogsRetailProductGroupUpdateRequest.cpp \
     $${PWD}/OAICatalogsRetailProductMetadata.cpp \
     $${PWD}/OAICatalogsRetailReportParameters.cpp \
+    $${PWD}/OAICatalogsRetailReportStatsParameters.cpp \
     $${PWD}/OAICatalogsStatus.cpp \
     $${PWD}/OAICatalogsType.cpp \
     $${PWD}/OAICatalogsUpdatableCreativeAssetsAttributes.cpp \
@@ -1088,32 +1275,43 @@ SOURCES += \
     $${PWD}/OAICatalogsVerticalProductGroupCreateRequest.cpp \
     $${PWD}/OAICatalogsVerticalProductGroupUpdateRequest.cpp \
     $${PWD}/OAICatalogsVerticalsListProductsByCatalogBasedFilterRequest.cpp \
+    $${PWD}/OAICatalogs_creative_assets_filter_values_map.cpp \
+    $${PWD}/OAICatalogs_hotel_filter_values_map.cpp \
     $${PWD}/OAICatalogs_list_200_response.cpp \
     $${PWD}/OAICatalogs_product_group_pins_list_200_response.cpp \
     $${PWD}/OAICatalogs_product_group_pricing_currency_criteria.cpp \
     $${PWD}/OAICatalogs_product_groups_list_200_response.cpp \
     $${PWD}/OAICatalogs_product_groups_update_request.cpp \
+    $${PWD}/OAICatalogs_retail_filter_values_map.cpp \
     $${PWD}/OAIConditionFilter.cpp \
+    $${PWD}/OAIContentType.cpp \
+    $${PWD}/OAIConversionAccessTokenResponse.cpp \
     $${PWD}/OAIConversionApiResponse.cpp \
     $${PWD}/OAIConversionApiResponse_events_inner.cpp \
     $${PWD}/OAIConversionAttributionWindowDays.cpp \
+    $${PWD}/OAIConversionEventAppInfo.cpp \
+    $${PWD}/OAIConversionEventDeviceInfo.cpp \
     $${PWD}/OAIConversionEventResponse.cpp \
     $${PWD}/OAIConversionEvents.cpp \
     $${PWD}/OAIConversionEventsUserData.cpp \
-    $${PWD}/OAIConversionEventsUserData_anyOf.cpp \
-    $${PWD}/OAIConversionEventsUserData_anyOf_1.cpp \
-    $${PWD}/OAIConversionEventsUserData_anyOf_2.cpp \
+    $${PWD}/OAIConversionEventsUserDataProperties.cpp \
     $${PWD}/OAIConversionEvents_data_inner.cpp \
     $${PWD}/OAIConversionEvents_data_inner_custom_data.cpp \
     $${PWD}/OAIConversionEvents_data_inner_custom_data_contents_inner.cpp \
+    $${PWD}/OAIConversionHealthSelectionItem.cpp \
+    $${PWD}/OAIConversionMSOTEvents.cpp \
+    $${PWD}/OAIConversionProductReportRequest.cpp \
+    $${PWD}/OAIConversionProductReportingColumn.cpp \
     $${PWD}/OAIConversionReportAttributionType.cpp \
     $${PWD}/OAIConversionReportTimeType.cpp \
+    $${PWD}/OAIConversionTag.cpp \
     $${PWD}/OAIConversionTagCommon.cpp \
     $${PWD}/OAIConversionTagConfigs.cpp \
     $${PWD}/OAIConversionTagCreate.cpp \
     $${PWD}/OAIConversionTagListResponse.cpp \
     $${PWD}/OAIConversionTagResponse.cpp \
     $${PWD}/OAIConversionTagType.cpp \
+    $${PWD}/OAIConversion_tags_list_200_response.cpp \
     $${PWD}/OAICountry.cpp \
     $${PWD}/OAICountryFilter.cpp \
     $${PWD}/OAICreateAssetAccessRequestBody.cpp \
@@ -1142,10 +1340,20 @@ SOURCES += \
     $${PWD}/OAICustomLabel2Filter.cpp \
     $${PWD}/OAICustomLabel3Filter.cpp \
     $${PWD}/OAICustomLabel4Filter.cpp \
+    $${PWD}/OAICustomNumber0Filter.cpp \
+    $${PWD}/OAICustomNumber1Filter.cpp \
+    $${PWD}/OAICustomNumber2Filter.cpp \
+    $${PWD}/OAICustomNumber3Filter.cpp \
+    $${PWD}/OAICustomNumber4Filter.cpp \
     $${PWD}/OAICustomerList.cpp \
     $${PWD}/OAICustomerListRequest.cpp \
     $${PWD}/OAICustomerListUpdateRequest.cpp \
+    $${PWD}/OAICustomerListUpload.cpp \
+    $${PWD}/OAICustomerListUploadCreateRequest.cpp \
+    $${PWD}/OAICustomerListUploadCreateResponse.cpp \
+    $${PWD}/OAICustomerListUploadResponse.cpp \
     $${PWD}/OAICustomer_lists_list_200_response.cpp \
+    $${PWD}/OAICustomizableCTAType.cpp \
     $${PWD}/OAIDataOutputFormat.cpp \
     $${PWD}/OAIDataStatus.cpp \
     $${PWD}/OAIDeleteAssetGroupBody.cpp \
@@ -1166,10 +1374,15 @@ SOURCES += \
     $${PWD}/OAIDeliveryMetricsResponse.cpp \
     $${PWD}/OAIDeliveryMetricsResponse_items_inner.cpp \
     $${PWD}/OAIDetailedError.cpp \
+    $${PWD}/OAIDisclosureType.cpp \
     $${PWD}/OAIEnhancedMatchStatusType.cpp \
     $${PWD}/OAIEntityStatus.cpp \
     $${PWD}/OAIError.cpp \
+    $${PWD}/OAIErrorDetail.cpp \
+    $${PWD}/OAIEventData.cpp \
+    $${PWD}/OAIEventQualityScore.cpp \
     $${PWD}/OAIException.cpp \
+    $${PWD}/OAIFeaturedTrend.cpp \
     $${PWD}/OAIFeed_processing_results_list_200_response.cpp \
     $${PWD}/OAIFeeds_create_request.cpp \
     $${PWD}/OAIFeeds_list_200_response.cpp \
@@ -1177,10 +1390,13 @@ SOURCES += \
     $${PWD}/OAIFollowUserRequest.cpp \
     $${PWD}/OAIFollowers_list_200_response.cpp \
     $${PWD}/OAIGender.cpp \
+    $${PWD}/OAIGenderBucket.cpp \
+    $${PWD}/OAIGenderDemographics.cpp \
     $${PWD}/OAIGenderFilter.cpp \
     $${PWD}/OAIGetAudiencesOrderBy.cpp \
     $${PWD}/OAIGetBusinessAssetTypeResponse.cpp \
     $${PWD}/OAIGetBusinessAssetsResponse.cpp \
+    $${PWD}/OAIGetBusinessAssetsResponse_catalog_info.cpp \
     $${PWD}/OAIGetMMMReportResponse.cpp \
     $${PWD}/OAIGetMMMReportResponseData.cpp \
     $${PWD}/OAIGetPartnerAssetsResponse.cpp \
@@ -1201,7 +1417,10 @@ SOURCES += \
     $${PWD}/OAIHotelProcessingRecord.cpp \
     $${PWD}/OAIImageDetails.cpp \
     $${PWD}/OAIImageMetadata.cpp \
-    $${PWD}/OAIImageMetadata_images.cpp \
+    $${PWD}/OAIImageSize.cpp \
+    $${PWD}/OAIImage_Base64.cpp \
+    $${PWD}/OAIIngestionSourceOptions.cpp \
+    $${PWD}/OAIInnerProductCategoriesMetricsHighlights.cpp \
     $${PWD}/OAIIntegrationLog.cpp \
     $${PWD}/OAIIntegrationLogClientError.cpp \
     $${PWD}/OAIIntegrationLogClientRequest.cpp \
@@ -1214,7 +1433,9 @@ SOURCES += \
     $${PWD}/OAIIntegrationRequest.cpp \
     $${PWD}/OAIIntegrationRequestPatch.cpp \
     $${PWD}/OAIIntegrations_get_list_200_response.cpp \
+    $${PWD}/OAIIntegrations_logs_post_400_response.cpp \
     $${PWD}/OAIInterest.cpp \
+    $${PWD}/OAIInterestsEnum.cpp \
     $${PWD}/OAIInviteAssetsSummary.cpp \
     $${PWD}/OAIInviteAssetsSummary_ad_accounts_inner.cpp \
     $${PWD}/OAIInviteAssetsSummary_profiles_inner.cpp \
@@ -1235,8 +1456,8 @@ SOURCES += \
     $${PWD}/OAIItemProcessingRecord.cpp \
     $${PWD}/OAIItemProcessingStatus.cpp \
     $${PWD}/OAIItemResponse.cpp \
-    $${PWD}/OAIItemResponse_anyOf.cpp \
-    $${PWD}/OAIItemResponse_anyOf_1.cpp \
+    $${PWD}/OAIItemResponse_oneOf.cpp \
+    $${PWD}/OAIItemResponse_oneOf_1.cpp \
     $${PWD}/OAIItemUpdateBatchRecord.cpp \
     $${PWD}/OAIItemUpsertBatchRecord.cpp \
     $${PWD}/OAIItemValidationEvent.cpp \
@@ -1253,6 +1474,18 @@ SOURCES += \
     $${PWD}/OAIKeywordsRequest.cpp \
     $${PWD}/OAIKeywordsResponse.cpp \
     $${PWD}/OAIKeywords_get_200_response.cpp \
+    $${PWD}/OAILabel.cpp \
+    $${PWD}/OAILabelBulkUpdateRequest.cpp \
+    $${PWD}/OAILabelCreateRequest.cpp \
+    $${PWD}/OAILabelCreateRequest_labels_inner.cpp \
+    $${PWD}/OAILabelError.cpp \
+    $${PWD}/OAILabelParentType.cpp \
+    $${PWD}/OAILabelStatus.cpp \
+    $${PWD}/OAILabelType.cpp \
+    $${PWD}/OAILabelUpdateRequest.cpp \
+    $${PWD}/OAILabelUpdateRequest_labels_inner.cpp \
+    $${PWD}/OAILabelsResponse.cpp \
+    $${PWD}/OAILabels_list_200_response.cpp \
     $${PWD}/OAILanguage.cpp \
     $${PWD}/OAILeadFormArrayResponse.cpp \
     $${PWD}/OAILeadFormArrayResponse_items_inner.cpp \
@@ -1267,6 +1500,9 @@ SOURCES += \
     $${PWD}/OAILeadFormTestRequest.cpp \
     $${PWD}/OAILeadFormTestResponse.cpp \
     $${PWD}/OAILeadFormUpdateRequest.cpp \
+    $${PWD}/OAILeadSubscription.cpp \
+    $${PWD}/OAILeadSubscriptionPostParamsCreate.cpp \
+    $${PWD}/OAILeadSubscriptionPostParamsCreate_allOf_partner_metadata.cpp \
     $${PWD}/OAILead_forms_list_200_response.cpp \
     $${PWD}/OAILeadsExportCreateRequest.cpp \
     $${PWD}/OAILeadsExportCreateResponse.cpp \
@@ -1274,19 +1510,21 @@ SOURCES += \
     $${PWD}/OAILeadsExportStatus.cpp \
     $${PWD}/OAILineItem.cpp \
     $${PWD}/OAILinkedBusiness.cpp \
+    $${PWD}/OAILocalStoreUpdate.cpp \
+    $${PWD}/OAILookbackPeriodOptions.cpp \
     $${PWD}/OAIMMMReportingColumn.cpp \
     $${PWD}/OAIMMMReportingTargetingType.cpp \
     $${PWD}/OAIMatchType.cpp \
     $${PWD}/OAIMatchTypeResponse.cpp \
     $${PWD}/OAIMaxPriceFilter.cpp \
+    $${PWD}/OAIMedia.cpp \
     $${PWD}/OAIMediaType.cpp \
     $${PWD}/OAIMediaTypeFilter.cpp \
     $${PWD}/OAIMediaUpload.cpp \
-    $${PWD}/OAIMediaUploadDetails.cpp \
-    $${PWD}/OAIMediaUploadRequest.cpp \
+    $${PWD}/OAIMediaUploadCreate.cpp \
+    $${PWD}/OAIMediaUploadParameters.cpp \
     $${PWD}/OAIMediaUploadStatus.cpp \
     $${PWD}/OAIMediaUploadType.cpp \
-    $${PWD}/OAIMediaUpload_allOf_upload_parameters.cpp \
     $${PWD}/OAIMedia_list_200_response.cpp \
     $${PWD}/OAIMemberBusinessRole.cpp \
     $${PWD}/OAIMembersToDeleteBody.cpp \
@@ -1295,8 +1533,11 @@ SOURCES += \
     $${PWD}/OAIMetricsResponse.cpp \
     $${PWD}/OAIMinPriceFilter.cpp \
     $${PWD}/OAIMultiple_product_groups_inner.cpp \
+    $${PWD}/OAINonDraftEntityStatus.cpp \
     $${PWD}/OAINonNullableCatalogsCurrency.cpp \
     $${PWD}/OAINonNullableProductAvailabilityType.cpp \
+    $${PWD}/OAINotificationResponse.cpp \
+    $${PWD}/OAINotification_post_request.cpp \
     $${PWD}/OAINullableCatalogsItemFieldType.cpp \
     $${PWD}/OAINullableCurrency.cpp \
     $${PWD}/OAIOauthAccessTokenRequestClientCredentials.cpp \
@@ -1305,7 +1546,6 @@ SOURCES += \
     $${PWD}/OAIOauthAccessTokenResponse.cpp \
     $${PWD}/OAIOauthAccessTokenResponseClientCredentials.cpp \
     $${PWD}/OAIOauthAccessTokenResponseCode.cpp \
-    $${PWD}/OAIOauthAccessTokenResponseEverlastingRefresh.cpp \
     $${PWD}/OAIOauthAccessTokenResponseIntegrationRefresh.cpp \
     $${PWD}/OAIOauthAccessTokenResponseRefresh.cpp \
     $${PWD}/OAIObjectiveType.cpp \
@@ -1324,6 +1564,7 @@ SOURCES += \
     $${PWD}/OAIOrderLines.cpp \
     $${PWD}/OAIOrderLinesArrayResponse.cpp \
     $${PWD}/OAIOrder_lines_list_200_response.cpp \
+    $${PWD}/OAIOverallStatusOptions.cpp \
     $${PWD}/OAIPacingDeliveryType.cpp \
     $${PWD}/OAIPage_visit_conversion_tags_get_200_response.cpp \
     $${PWD}/OAIPaginated.cpp \
@@ -1340,33 +1581,39 @@ SOURCES += \
     $${PWD}/OAIPinMediaSourceImageBase64.cpp \
     $${PWD}/OAIPinMediaSourceImageURL.cpp \
     $${PWD}/OAIPinMediaSourceImagesBase64.cpp \
-    $${PWD}/OAIPinMediaSourceImagesBase64_items_inner.cpp \
+    $${PWD}/OAIPinMediaSourceImagesBase64Item.cpp \
     $${PWD}/OAIPinMediaSourceImagesURL.cpp \
-    $${PWD}/OAIPinMediaSourceImagesURL_items_inner.cpp \
+    $${PWD}/OAIPinMediaSourceImagesURLItem.cpp \
     $${PWD}/OAIPinMediaSourcePinURL.cpp \
     $${PWD}/OAIPinMediaSourceVideoID.cpp \
     $${PWD}/OAIPinMediaWithImage.cpp \
     $${PWD}/OAIPinMediaWithImageAndVideo.cpp \
-    $${PWD}/OAIPinMediaWithImage_allOf_images.cpp \
     $${PWD}/OAIPinMediaWithImages.cpp \
     $${PWD}/OAIPinMediaWithVideo.cpp \
     $${PWD}/OAIPinMediaWithVideos.cpp \
     $${PWD}/OAIPinPromotionSummaryStatus.cpp \
     $${PWD}/OAIPinUpdate.cpp \
-    $${PWD}/OAIPinUpdate_carousel_slots_inner.cpp \
     $${PWD}/OAIPins_list_200_response.cpp \
     $${PWD}/OAIPins_save_request.cpp \
-    $${PWD}/OAIPinterestTagEventData.cpp \
+    $${PWD}/OAIPinterest_Lib_Error.cpp \
+    $${PWD}/OAIPinterest_Lib_PaginationOrder.cpp \
+    $${PWD}/OAIPinterest_Lib_Status204.cpp \
     $${PWD}/OAIPlacementGroupType.cpp \
     $${PWD}/OAIPlacementMultipliers.cpp \
+    $${PWD}/OAIPredictedTimeSeries.cpp \
     $${PWD}/OAIPriceFilter.cpp \
     $${PWD}/OAIProductAvailabilityType.cpp \
+    $${PWD}/OAIProductCategoriesDemographic.cpp \
+    $${PWD}/OAIProductCategoriesEngagementType.cpp \
+    $${PWD}/OAIProductCategoriesMetricsHighlights.cpp \
+    $${PWD}/OAIProductCategoryDetailLookbackWindow.cpp \
+    $${PWD}/OAIProductCategoryDetails.cpp \
+    $${PWD}/OAIProductCategoryEnum.cpp \
+    $${PWD}/OAIProductCategoryRegion.cpp \
     $${PWD}/OAIProductGroupAnalyticsResponse_inner.cpp \
     $${PWD}/OAIProductGroupPromotion.cpp \
     $${PWD}/OAIProductGroupPromotionCreateRequest.cpp \
-    $${PWD}/OAIProductGroupPromotionCreateRequestElement.cpp \
     $${PWD}/OAIProductGroupPromotionResponse.cpp \
-    $${PWD}/OAIProductGroupPromotionResponseElement.cpp \
     $${PWD}/OAIProductGroupPromotionResponseItem.cpp \
     $${PWD}/OAIProductGroupPromotionUpdateRequest.cpp \
     $${PWD}/OAIProductGroupReferenceFilter.cpp \
@@ -1377,17 +1624,34 @@ SOURCES += \
     $${PWD}/OAIProductType3Filter.cpp \
     $${PWD}/OAIProductType4Filter.cpp \
     $${PWD}/OAIProduct_group_promotions_list_200_response.cpp \
+    $${PWD}/OAIPromotionArrayElement.cpp \
+    $${PWD}/OAIPromotionCommon.cpp \
+    $${PWD}/OAIPromotionCreateRequest.cpp \
+    $${PWD}/OAIPromotionResponse.cpp \
+    $${PWD}/OAIPromotionTemplateValue.cpp \
+    $${PWD}/OAIPromotionType.cpp \
+    $${PWD}/OAIPromotionUpdateRequest.cpp \
+    $${PWD}/OAIPromotionsResponse.cpp \
+    $${PWD}/OAIPromotions_list_200_response.cpp \
+    $${PWD}/OAIQualityComponentDetails.cpp \
+    $${PWD}/OAIQualityComponentIssue.cpp \
+    $${PWD}/OAIQualityComponents.cpp \
     $${PWD}/OAIQuizPinData.cpp \
     $${PWD}/OAIQuizPinOption.cpp \
     $${PWD}/OAIQuizPinQuestion.cpp \
     $${PWD}/OAIQuizPinResult.cpp \
+    $${PWD}/OAIRecordCounts.cpp \
     $${PWD}/OAIRelatedTerms.cpp \
     $${PWD}/OAIRelatedTerms_related_terms_list_inner.cpp \
     $${PWD}/OAIReportingColumnAsync.cpp \
+    $${PWD}/OAIReportingTimeZone.cpp \
     $${PWD}/OAIReports_stats_200_response.cpp \
+    $${PWD}/OAIReports_stats_parameters_parameter.cpp \
     $${PWD}/OAIRespondToInvitesResponseArray.cpp \
     $${PWD}/OAIRespondToInvitesResponseArray_items_inner.cpp \
     $${PWD}/OAIRole.cpp \
+    $${PWD}/OAIS3FilePart.cpp \
+    $${PWD}/OAIS3MultipartUploadData.cpp \
     $${PWD}/OAISSIOAccountAddress.cpp \
     $${PWD}/OAISSIOAccountItem.cpp \
     $${PWD}/OAISSIOAccountPMPName.cpp \
@@ -1402,19 +1666,31 @@ SOURCES += \
     $${PWD}/OAISSIOOrderLine.cpp \
     $${PWD}/OAISearch_partner_pins_200_response.cpp \
     $${PWD}/OAISearch_user_boards_get_200_response.cpp \
+    $${PWD}/OAISearch_user_pins_list_200_response.cpp \
     $${PWD}/OAISharedAudience.cpp \
     $${PWD}/OAISharedAudienceAccount.cpp \
     $${PWD}/OAISharedAudienceCommon.cpp \
     $${PWD}/OAISharedAudienceResponse.cpp \
     $${PWD}/OAISharedAudienceResponseCommon.cpp \
     $${PWD}/OAISingleInterestTargetingOptionResponse.cpp \
+    $${PWD}/OAISourcePlatformOptions.cpp \
     $${PWD}/OAISsio_insertion_orders_status_get_by_ad_account_200_response.cpp \
     $${PWD}/OAISsio_order_lines_get_by_ad_account_200_response.cpp \
     $${PWD}/OAISummaryPin.cpp \
+    $${PWD}/OAISystem_user_update_request.cpp \
     $${PWD}/OAITargetingAdvertiserCountry.cpp \
     $${PWD}/OAITargetingSpec.cpp \
+    $${PWD}/OAITargetingSpecAgeBucket.cpp \
     $${PWD}/OAITargetingSpecAppType.cpp \
-    $${PWD}/OAITargetingSpec_SHOPPING_RETARGETING.cpp \
+    $${PWD}/OAITargetingSpecGender.cpp \
+    $${PWD}/OAITargetingSpecOperationAgeBucket.cpp \
+    $${PWD}/OAITargetingSpecOperationAppType.cpp \
+    $${PWD}/OAITargetingSpecOperationGender.cpp \
+    $${PWD}/OAITargetingSpecOperationList.cpp \
+    $${PWD}/OAITargetingSpecOperationMinMaxAge.cpp \
+    $${PWD}/OAITargetingSpecOperationShoppingRetargeting.cpp \
+    $${PWD}/OAITargetingSpecOperationString.cpp \
+    $${PWD}/OAITargetingSpecShoppingRetargeting.cpp \
     $${PWD}/OAITargetingTemplateAudienceSizing.cpp \
     $${PWD}/OAITargetingTemplateAudienceSizing_reach_estimate.cpp \
     $${PWD}/OAITargetingTemplateCommon.cpp \
@@ -1425,6 +1701,7 @@ SOURCES += \
     $${PWD}/OAITargetingTemplateUpdateRequest.cpp \
     $${PWD}/OAITargetingTypeFilter.cpp \
     $${PWD}/OAITargeting_template_list_200_response.cpp \
+    $${PWD}/OAITemplateBasedReport.cpp \
     $${PWD}/OAITemplateResponse.cpp \
     $${PWD}/OAITemplateResponse_date_range.cpp \
     $${PWD}/OAITemplateResponse_date_range_absolute_date_range.cpp \
@@ -1432,6 +1709,8 @@ SOURCES += \
     $${PWD}/OAITemplateResponse_date_range_relative_date_range.cpp \
     $${PWD}/OAITemplates_list_200_response.cpp \
     $${PWD}/OAITermsOfService.cpp \
+    $${PWD}/OAITimeSeries.cpp \
+    $${PWD}/OAITitleKeywordsFilter.cpp \
     $${PWD}/OAITopPinsAnalyticsResponse.cpp \
     $${PWD}/OAITopPinsAnalyticsResponse_date_availability.cpp \
     $${PWD}/OAITopPinsAnalyticsResponse_pins_inner.cpp \
@@ -1439,11 +1718,17 @@ SOURCES += \
     $${PWD}/OAITopVideoPinsAnalyticsResponse_pins_inner.cpp \
     $${PWD}/OAITrackingUrls.cpp \
     $${PWD}/OAITrendType.cpp \
+    $${PWD}/OAITrendingKeyword.cpp \
+    $${PWD}/OAITrendingKeyword_demographics.cpp \
+    $${PWD}/OAITrendingKeyword_demographics_age_distribution.cpp \
+    $${PWD}/OAITrendingKeyword_demographics_gender_distribution.cpp \
     $${PWD}/OAITrendingKeywordsResponse.cpp \
-    $${PWD}/OAITrendingKeywordsResponse_trends_inner.cpp \
-    $${PWD}/OAITrendingKeywordsResponse_trends_inner_time_series.cpp \
+    $${PWD}/OAITrendingPin.cpp \
+    $${PWD}/OAITrendingProductCategory.cpp \
+    $${PWD}/OAITrendingTopic.cpp \
     $${PWD}/OAITrendsSupportedRegion.cpp \
     $${PWD}/OAIUpdatableItemAttributes.cpp \
+    $${PWD}/OAIUpdatableItemAttributes_gtin.cpp \
     $${PWD}/OAIUpdateAssetGroupBody.cpp \
     $${PWD}/OAIUpdateAssetGroupBody_asset_groups_to_update_inner.cpp \
     $${PWD}/OAIUpdateAssetGroupResponse.cpp \
@@ -1478,7 +1763,8 @@ SOURCES += \
     $${PWD}/OAIUser_following_get_200_response.cpp \
     $${PWD}/OAIUser_websites_get_200_response.cpp \
     $${PWD}/OAIUsersForIndividualAssetResponse.cpp \
-    $${PWD}/OAIVideoMetadata.cpp \
+    $${PWD}/OAIVerticalProductCategory.cpp \
+    $${PWD}/OAIVideoMetadataWithItemType.cpp \
 # APIs
     $${PWD}/OAIAdAccountsApi.cpp \
     $${PWD}/OAIAdGroupsApi.cpp \
@@ -1494,20 +1780,32 @@ SOURCES += \
     $${PWD}/OAIBusinessAccessInviteApi.cpp \
     $${PWD}/OAIBusinessAccessRelationshipsApi.cpp \
     $${PWD}/OAICampaignsApi.cpp \
+    $${PWD}/OAICatalogFeedsApi.cpp \
+    $${PWD}/OAICatalogItemsApi.cpp \
+    $${PWD}/OAICatalogProductGroupsApi.cpp \
+    $${PWD}/OAICatalogReportsApi.cpp \
     $${PWD}/OAICatalogsApi.cpp \
+    $${PWD}/OAIConversionEqsApi.cpp \
     $${PWD}/OAIConversionEventsApi.cpp \
     $${PWD}/OAIConversionTagsApi.cpp \
+    $${PWD}/OAIConversionsApi.cpp \
+    $${PWD}/OAICustomerListUploadsApi.cpp \
     $${PWD}/OAICustomerListsApi.cpp \
     $${PWD}/OAIIntegrationsApi.cpp \
     $${PWD}/OAIKeywordsApi.cpp \
+    $${PWD}/OAILabelsApi.cpp \
     $${PWD}/OAILeadAdsApi.cpp \
     $${PWD}/OAILeadFormsApi.cpp \
     $${PWD}/OAILeadsExportApi.cpp \
     $${PWD}/OAIMediaApi.cpp \
+    $${PWD}/OAIMsotEventsApi.cpp \
+    $${PWD}/OAINotificationApi.cpp \
     $${PWD}/OAIOauthApi.cpp \
     $${PWD}/OAIOrderLinesApi.cpp \
     $${PWD}/OAIPinsApi.cpp \
+    $${PWD}/OAIProductCategoriesApi.cpp \
     $${PWD}/OAIProductGroupPromotionsApi.cpp \
+    $${PWD}/OAIPromotionsApi.cpp \
     $${PWD}/OAIResourcesApi.cpp \
     $${PWD}/OAISearchApi.cpp \
     $${PWD}/OAITargetingTemplateApi.cpp \

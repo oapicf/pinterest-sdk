@@ -5,14 +5,6 @@ context("Test ProductGroupPromotion")
 
 model_instance <- ProductGroupPromotion$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # ID of the product group promotion.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
 test_that("ad_group_id", {
   # tests for the property `ad_group_id` (character)
   # ID of the ad group the product group belongs to.
@@ -27,77 +19,6 @@ test_that("bid_in_micro_currency", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`bid_in_micro_currency`, "EXPECTED_RESULT")
-})
-
-test_that("included", {
-  # tests for the property `included` (character)
-  # True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`included`, "EXPECTED_RESULT")
-})
-
-test_that("definition", {
-  # tests for the property `definition` (character)
-  # The full product group definition path
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`definition`, "EXPECTED_RESULT")
-})
-
-test_that("relative_definition", {
-  # tests for the property `relative_definition` (character)
-  # The definition of the product group, relative to its parent - an attribute name/value pair
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`relative_definition`, "EXPECTED_RESULT")
-})
-
-test_that("parent_id", {
-  # tests for the property `parent_id` (character)
-  # The parent Product Group ID of this Product Group
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`parent_id`, "EXPECTED_RESULT")
-})
-
-test_that("slideshow_collections_title", {
-  # tests for the property `slideshow_collections_title` (character)
-  # Slideshow Collections Title
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`slideshow_collections_title`, "EXPECTED_RESULT")
-})
-
-test_that("slideshow_collections_description", {
-  # tests for the property `slideshow_collections_description` (character)
-  # Slideshow Collections Description
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`slideshow_collections_description`, "EXPECTED_RESULT")
-})
-
-test_that("is_mdl", {
-  # tests for the property `is_mdl` (character)
-  # If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`is_mdl`, "EXPECTED_RESULT")
-})
-
-test_that("status", {
-  # tests for the property `status` (EntityStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
-test_that("tracking_url", {
-  # tests for the property `tracking_url` (character)
-  # Tracking template for proudct group promotions. 4000 limit
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`tracking_url`, "EXPECTED_RESULT")
 })
 
 test_that("catalog_product_group_id", {
@@ -116,12 +37,12 @@ test_that("catalog_product_group_name", {
   #expect_equal(model.instance$`catalog_product_group_name`, "EXPECTED_RESULT")
 })
 
-test_that("collections_hero_pin_id", {
-  # tests for the property `collections_hero_pin_id` (character)
-  # Hero Pin ID if this PG is promoted as a Collection
+test_that("collections_header_type", {
+  # tests for the property `collections_header_type` (character)
+  # Collections ad header type
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`collections_hero_pin_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`collections_header_type`, "EXPECTED_RESULT")
 })
 
 test_that("collections_hero_destination_url", {
@@ -132,9 +53,143 @@ test_that("collections_hero_destination_url", {
   #expect_equal(model.instance$`collections_hero_destination_url`, "EXPECTED_RESULT")
 })
 
+test_that("collections_hero_pin_id", {
+  # tests for the property `collections_hero_pin_id` (character)
+  # Hero Pin ID if this PG is promoted as a Collection
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`collections_hero_pin_id`, "EXPECTED_RESULT")
+})
+
+test_that("creative_type", {
+  # tests for the property `creative_type` (CreativeType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`creative_type`, "EXPECTED_RESULT")
+})
+
+test_that("customizable_cta_type", {
+  # tests for the property `customizable_cta_type` (character)
+  # Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`customizable_cta_type`, "EXPECTED_RESULT")
+})
+
+test_that("definition", {
+  # tests for the property `definition` (character)
+  # The full product group definition path
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`definition`, "EXPECTED_RESULT")
+})
+
 test_that("grid_click_type", {
   # tests for the property `grid_click_type` (GridClickType)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`grid_click_type`, "EXPECTED_RESULT")
+})
+
+test_that("id", {
+  # tests for the property `id` (character)
+  # ID of the product group promotion.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("included", {
+  # tests for the property `included` (character)
+  # True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`included`, "EXPECTED_RESULT")
+})
+
+test_that("is_generate_background", {
+  # tests for the property `is_generate_background` (character)
+  # Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_generate_background`, "EXPECTED_RESULT")
+})
+
+test_that("is_mdl", {
+  # tests for the property `is_mdl` (character)
+  # If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_mdl`, "EXPECTED_RESULT")
+})
+
+test_that("parent_id", {
+  # tests for the property `parent_id` (character)
+  # The parent Product Group ID of this Product Group
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`parent_id`, "EXPECTED_RESULT")
+})
+
+test_that("preferred_media_type", {
+  # tests for the property `preferred_media_type` (character)
+  # Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`preferred_media_type`, "EXPECTED_RESULT")
+})
+
+test_that("relative_definition", {
+  # tests for the property `relative_definition` (character)
+  # The definition of the product group, relative to its parent - an attribute name/value pair
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`relative_definition`, "EXPECTED_RESULT")
+})
+
+test_that("selected_image_tag", {
+  # tests for the property `selected_image_tag` (character)
+  # The ad image tag selected for the product group promotion.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`selected_image_tag`, "EXPECTED_RESULT")
+})
+
+test_that("selected_video_tag", {
+  # tests for the property `selected_video_tag` (character)
+  # The ad video tag selected for the product group promotion.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`selected_video_tag`, "EXPECTED_RESULT")
+})
+
+test_that("slideshow_collections_description", {
+  # tests for the property `slideshow_collections_description` (character)
+  # Slideshow Collections Description
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`slideshow_collections_description`, "EXPECTED_RESULT")
+})
+
+test_that("slideshow_collections_title", {
+  # tests for the property `slideshow_collections_title` (character)
+  # Slideshow Collections Title
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`slideshow_collections_title`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (EntityStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
+test_that("tracking_url", {
+  # tests for the property `tracking_url` (character)
+  # Tracking template for proudct group promotions. 4000 limit
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`tracking_url`, "EXPECTED_RESULT")
 })

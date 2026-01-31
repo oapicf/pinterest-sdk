@@ -33,8 +33,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
+
+  private @Nullable CatalogsCreativeAssetsAttributes attributes;
 
   private CatalogsType catalogType;
 
@@ -42,8 +44,6 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
 
   @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
-
-  private @Nullable CatalogsCreativeAssetsAttributes attributes;
 
   public CatalogsCreativeAssetsItemResponse() {
     super();
@@ -54,6 +54,26 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
    */
   public CatalogsCreativeAssetsItemResponse(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsCreativeAssetsItemResponse attributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("attributes")
+  public @Nullable CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
@@ -124,26 +144,6 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
     this.pins = pins;
   }
 
-  public CatalogsCreativeAssetsItemResponse attributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("attributes")
-  public @Nullable CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -153,10 +153,10 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
       return false;
     }
     CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse = (CatalogsCreativeAssetsItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
-        equalsNullable(this.pins, catalogsCreativeAssetsItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes);
+        equalsNullable(this.pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -165,7 +165,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, hashCodeNullable(pins), attributes);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, hashCodeNullable(pins));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -179,10 +179,10 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemResponse {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

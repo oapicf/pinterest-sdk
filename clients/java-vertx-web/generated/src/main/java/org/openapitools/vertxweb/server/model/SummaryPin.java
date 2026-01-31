@@ -12,31 +12,24 @@ import org.openapitools.vertxweb.server.model.PinMedia;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SummaryPin   {
   
-  private PinMedia media;
   private String altText;
-  private String link;
-  private String title;
   private String description;
+  private String id;
+  private String link;
+  private PinMedia media;
+  private String title;
 
   public SummaryPin () {
 
   }
 
-  public SummaryPin (PinMedia media, String altText, String link, String title, String description) {
-    this.media = media;
+  public SummaryPin (String altText, String description, String id, String link, PinMedia media, String title) {
     this.altText = altText;
-    this.link = link;
-    this.title = title;
     this.description = description;
-  }
-
-    
-  @JsonProperty("media")
-  public PinMedia getMedia() {
-    return media;
-  }
-  public void setMedia(PinMedia media) {
+    this.id = id;
+    this.link = link;
     this.media = media;
+    this.title = title;
   }
 
     
@@ -49,6 +42,24 @@ public class SummaryPin   {
   }
 
     
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
   @JsonProperty("link")
   public String getLink() {
     return link;
@@ -58,21 +69,21 @@ public class SummaryPin   {
   }
 
     
+  @JsonProperty("media")
+  public PinMedia getMedia() {
+    return media;
+  }
+  public void setMedia(PinMedia media) {
+    this.media = media;
+  }
+
+    
   @JsonProperty("title")
   public String getTitle() {
     return title;
   }
   public void setTitle(String title) {
     this.title = title;
-  }
-
-    
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
   }
 
 
@@ -85,16 +96,17 @@ public class SummaryPin   {
       return false;
     }
     SummaryPin summaryPin = (SummaryPin) o;
-    return Objects.equals(media, summaryPin.media) &&
-        Objects.equals(altText, summaryPin.altText) &&
+    return Objects.equals(altText, summaryPin.altText) &&
+        Objects.equals(description, summaryPin.description) &&
+        Objects.equals(id, summaryPin.id) &&
         Objects.equals(link, summaryPin.link) &&
-        Objects.equals(title, summaryPin.title) &&
-        Objects.equals(description, summaryPin.description);
+        Objects.equals(media, summaryPin.media) &&
+        Objects.equals(title, summaryPin.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(media, altText, link, title, description);
+    return Objects.hash(altText, description, id, link, media, title);
   }
 
   @Override
@@ -102,11 +114,12 @@ public class SummaryPin   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SummaryPin {\n");
     
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "alt_text" },
+      {"model": "board_id" },
+      {"model": "board_section_id" },
+      {"model": "carousel_slots" },
+      {"model": "description" },
+      {"model": "link" },
+      {"model": "title" },
+    ]
+  }]
+}

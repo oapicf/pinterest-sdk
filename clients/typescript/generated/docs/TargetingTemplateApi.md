@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -157,8 +157,49 @@ const request: TargetingTemplateApiTargetingTemplateUpdateRequest = {
   adAccountId: "4",
     // Operation type and targeting template ID
   targetingTemplateUpdateRequest: {
-    operationType: "REMOVE",
     id: "643",
+    operationType: "REMOVE",
+    targetingAttributes: {
+      AGE_BUCKET: [
+        "["35-44","50-54"]",
+      ],
+      APPTYPE: [
+        "["ipad","iphone"]",
+      ],
+      AUDIENCE_EXCLUDE: [
+        "4",
+      ],
+      AUDIENCE_INCLUDE: [
+        "4",
+      ],
+      GENDER: [
+        "unknown",
+      ],
+      GEO: [
+        "GEO_example",
+      ],
+      INTEREST: [
+        "INTEREST_example",
+      ],
+      LOCALE: [
+        "LOCALE_example",
+      ],
+      LOCATION: [
+        "LOCATION_example",
+      ],
+      MAXIMUM_AGE: "65+",
+      MINIMUM_AGE: "18",
+      SHOPPING_RETARGETING: [
+        {
+          exclusionWindow: 14,
+          lookbackWindow: 30,
+          tagTypes: [0,6],
+        },
+      ],
+      TARGETING_STRATEGY: [
+        "CHOOSE_YOUR_OWN",
+      ],
+    },
   },
 };
 

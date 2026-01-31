@@ -546,6 +546,43 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function AdsAnalyticsAdGroupTargetingTypeToString(value As AdsAnalyticsAdGroupTargetingType) As String
+		  Select Case value
+		    Case AdsAnalyticsAdGroupTargetingType.Keyword
+		      Return "KEYWORD"
+		    Case AdsAnalyticsAdGroupTargetingType.Apptype
+		      Return "APPTYPE"
+		    Case AdsAnalyticsAdGroupTargetingType.Gender
+		      Return "GENDER"
+		    Case AdsAnalyticsAdGroupTargetingType.Location
+		      Return "LOCATION"
+		    Case AdsAnalyticsAdGroupTargetingType.Placement
+		      Return "PLACEMENT"
+		    Case AdsAnalyticsAdGroupTargetingType.Country
+		      Return "COUNTRY"
+		    Case AdsAnalyticsAdGroupTargetingType.TargetedInterest
+		      Return "TARGETED_INTEREST"
+		    Case AdsAnalyticsAdGroupTargetingType.PinnerInterest
+		      Return "PINNER_INTEREST"
+		    Case AdsAnalyticsAdGroupTargetingType.AudienceInclude
+		      Return "AUDIENCE_INCLUDE"
+		    Case AdsAnalyticsAdGroupTargetingType.Geo
+		      Return "GEO"
+		    Case AdsAnalyticsAdGroupTargetingType.AgeBucket
+		      Return "AGE_BUCKET"
+		    Case AdsAnalyticsAdGroupTargetingType.Region
+		      Return "REGION"
+		    Case AdsAnalyticsAdGroupTargetingType.AgeBucketAndGender
+		      Return "AGE_BUCKET_AND_GENDER"
+		    Case AdsAnalyticsAdGroupTargetingType.CreativeEnhancements
+		      Return "CREATIVE_ENHANCEMENTS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function AdsAnalyticsAdTargetingTypeToString(value As AdsAnalyticsAdTargetingType) As String
 		  Select Case value
 		    Case AdsAnalyticsAdTargetingType.Keyword
@@ -613,6 +650,8 @@ Protected Module Models
 		      Return "CREATIVE_TYPE"
 		    Case AdsAnalyticsCampaignTargetingType.AgeBucketAndGender
 		      Return "AGE_BUCKET_AND_GENDER"
+		    Case AdsAnalyticsCampaignTargetingType.AudienceMultiplier
+		      Return "AUDIENCE_MULTIPLIER"
 		    
 		  End Select
 		  Return ""
@@ -694,6 +733,29 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function AgeTrendsBucketToString(value As AgeTrendsBucket) As String
+		  Select Case value
+		    Case AgeTrendsBucket.Escaped1824
+		      Return "18-24"
+		    Case AgeTrendsBucket.Escaped2534
+		      Return "25-34"
+		    Case AgeTrendsBucket.Escaped3544
+		      Return "35-44"
+		    Case AgeTrendsBucket.Escaped4549
+		      Return "45-49"
+		    Case AgeTrendsBucket.Escaped5054
+		      Return "50-54"
+		    Case AgeTrendsBucket.Escaped5564
+		      Return "55-64"
+		    Case AgeTrendsBucket.Escaped65Plus
+		      Return "65+"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function AssetGroupTypeToString(value As AssetGroupType) As String
 		  Select Case value
 		    Case AssetGroupType.Brand
@@ -724,19 +786,6 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Protected Function AudienceDataPartyToString(value As AudienceDataParty) As String
-		  Select Case value
-		    Case AudienceDataParty.Escaped1p
-		      Return "1p"
-		    Case AudienceDataParty.Escaped3p
-		      Return "3p"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
 		Protected Function AudienceInsightTypeToString(value As AudienceInsightType) As String
 		  Select Case value
 		    Case AudienceInsightType.YourTotalAudience
@@ -758,19 +807,6 @@ Protected Module Models
 		      Return "SHARED"
 		    Case AudienceShareType.Received
 		      Return "RECEIVED"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Protected Function AudienceSharingTypeToString(value As AudienceSharingType) As String
-		  Select Case value
-		    Case AudienceSharingType.Custom
-		      Return "CUSTOM"
-		    Case AudienceSharingType.Syndicated
-		      Return "SYNDICATED"
 		    
 		  End Select
 		  Return ""
@@ -844,6 +880,53 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function BoardPrivacyToString(value As BoardPrivacy) As String
+		  Select Case value
+		    Case BoardPrivacy.Escapedpublic
+		      Return "PUBLIC"
+		    Case BoardPrivacy.Escapedprotected
+		      Return "PROTECTED"
+		    Case BoardPrivacy.Secret
+		      Return "SECRET"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function BoardPrivacyFilterToString(value As BoardPrivacyFilter) As String
+		  Select Case value
+		    Case BoardPrivacyFilter.All
+		      Return "ALL"
+		    Case BoardPrivacyFilter.Escapedpublic
+		      Return "PUBLIC"
+		    Case BoardPrivacyFilter.Escapedprotected
+		      Return "PROTECTED"
+		    Case BoardPrivacyFilter.Secret
+		      Return "SECRET"
+		    Case BoardPrivacyFilter.PublicAndSecret
+		      Return "PUBLIC_AND_SECRET"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function BoardUpdatePrivacyToString(value As BoardUpdatePrivacy) As String
+		  Select Case value
+		    Case BoardUpdatePrivacy.Escapedpublic
+		      Return "PUBLIC"
+		    Case BoardUpdatePrivacy.Secret
+		      Return "SECRET"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function BudgetTypeToString(value As BudgetType) As String
 		  Select Case value
 		    Case BudgetType.Daily
@@ -871,6 +954,10 @@ Protected Module Models
 		      Return "AD"
 		    Case BulkEntityType.Keyword
 		      Return "KEYWORD"
+		    Case BulkEntityType.Label
+		      Return "LABEL"
+		    Case BulkEntityType.Schedule
+		      Return "SCHEDULE"
 		    
 		  End Select
 		  Return ""
@@ -939,6 +1026,10 @@ Protected Module Models
 		      Return "SOS_READER"
 		    Case BusinessAccessRole.FinanceManager
 		      Return "FINANCE_MANAGER"
+		    Case BusinessAccessRole.FinanceView
+		      Return "FINANCE_VIEW"
+		    Case BusinessAccessRole.FinanceEdit
+		      Return "FINANCE_EDIT"
 		    Case BusinessAccessRole.AudienceManager
 		      Return "AUDIENCE_MANAGER"
 		    Case BusinessAccessRole.CampaignManager
@@ -1062,8 +1153,345 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function CatalogsHotelProductGroupTypeToString(value As CatalogsHotelProductGroupType) As String
+		  Select Case value
+		    Case CatalogsHotelProductGroupType.MerchantCreated
+		      Return "MERCHANT_CREATED"
+		    Case CatalogsHotelProductGroupType.AllListings
+		      Return "ALL_LISTINGS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function CatalogsItemValidationIssueToString(value As CatalogsItemValidationIssue) As String
 		  Select Case value
+		    Case CatalogsItemValidationIssue.AdImage0LinkLengthTooLong
+		      Return "AD_IMAGE_0_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage1LinkLengthTooLong
+		      Return "AD_IMAGE_1_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage2LinkLengthTooLong
+		      Return "AD_IMAGE_2_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage3LinkLengthTooLong
+		      Return "AD_IMAGE_3_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage4LinkLengthTooLong
+		      Return "AD_IMAGE_4_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage5LinkLengthTooLong
+		      Return "AD_IMAGE_5_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage6LinkLengthTooLong
+		      Return "AD_IMAGE_6_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage7LinkLengthTooLong
+		      Return "AD_IMAGE_7_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage8LinkLengthTooLong
+		      Return "AD_IMAGE_8_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage9LinkLengthTooLong
+		      Return "AD_IMAGE_9_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage10LinkLengthTooLong
+		      Return "AD_IMAGE_10_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage11LinkLengthTooLong
+		      Return "AD_IMAGE_11_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage12LinkLengthTooLong
+		      Return "AD_IMAGE_12_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage13LinkLengthTooLong
+		      Return "AD_IMAGE_13_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage14LinkLengthTooLong
+		      Return "AD_IMAGE_14_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage15LinkLengthTooLong
+		      Return "AD_IMAGE_15_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage16LinkLengthTooLong
+		      Return "AD_IMAGE_16_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage17LinkLengthTooLong
+		      Return "AD_IMAGE_17_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage18LinkLengthTooLong
+		      Return "AD_IMAGE_18_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage19LinkLengthTooLong
+		      Return "AD_IMAGE_19_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage0LinkWarning
+		      Return "AD_IMAGE_0_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage1LinkWarning
+		      Return "AD_IMAGE_1_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage2LinkWarning
+		      Return "AD_IMAGE_2_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage3LinkWarning
+		      Return "AD_IMAGE_3_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage4LinkWarning
+		      Return "AD_IMAGE_4_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage5LinkWarning
+		      Return "AD_IMAGE_5_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage6LinkWarning
+		      Return "AD_IMAGE_6_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage7LinkWarning
+		      Return "AD_IMAGE_7_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage8LinkWarning
+		      Return "AD_IMAGE_8_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage9LinkWarning
+		      Return "AD_IMAGE_9_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage10LinkWarning
+		      Return "AD_IMAGE_10_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage11LinkWarning
+		      Return "AD_IMAGE_11_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage12LinkWarning
+		      Return "AD_IMAGE_12_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage13LinkWarning
+		      Return "AD_IMAGE_13_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage14LinkWarning
+		      Return "AD_IMAGE_14_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage15LinkWarning
+		      Return "AD_IMAGE_15_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage16LinkWarning
+		      Return "AD_IMAGE_16_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage17LinkWarning
+		      Return "AD_IMAGE_17_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage18LinkWarning
+		      Return "AD_IMAGE_18_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage19LinkWarning
+		      Return "AD_IMAGE_19_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdImage0LinkRequired
+		      Return "AD_IMAGE_0_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage1LinkRequired
+		      Return "AD_IMAGE_1_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage2LinkRequired
+		      Return "AD_IMAGE_2_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage3LinkRequired
+		      Return "AD_IMAGE_3_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage4LinkRequired
+		      Return "AD_IMAGE_4_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage5LinkRequired
+		      Return "AD_IMAGE_5_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage6LinkRequired
+		      Return "AD_IMAGE_6_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage7LinkRequired
+		      Return "AD_IMAGE_7_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage8LinkRequired
+		      Return "AD_IMAGE_8_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage9LinkRequired
+		      Return "AD_IMAGE_9_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage10LinkRequired
+		      Return "AD_IMAGE_10_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage11LinkRequired
+		      Return "AD_IMAGE_11_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage12LinkRequired
+		      Return "AD_IMAGE_12_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage13LinkRequired
+		      Return "AD_IMAGE_13_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage14LinkRequired
+		      Return "AD_IMAGE_14_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage15LinkRequired
+		      Return "AD_IMAGE_15_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage16LinkRequired
+		      Return "AD_IMAGE_16_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage17LinkRequired
+		      Return "AD_IMAGE_17_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage18LinkRequired
+		      Return "AD_IMAGE_18_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage19LinkRequired
+		      Return "AD_IMAGE_19_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage0TagLengthTooLong
+		      Return "AD_IMAGE_0_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage1TagLengthTooLong
+		      Return "AD_IMAGE_1_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage2TagLengthTooLong
+		      Return "AD_IMAGE_2_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage3TagLengthTooLong
+		      Return "AD_IMAGE_3_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage4TagLengthTooLong
+		      Return "AD_IMAGE_4_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage5TagLengthTooLong
+		      Return "AD_IMAGE_5_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage6TagLengthTooLong
+		      Return "AD_IMAGE_6_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage7TagLengthTooLong
+		      Return "AD_IMAGE_7_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage8TagLengthTooLong
+		      Return "AD_IMAGE_8_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage9TagLengthTooLong
+		      Return "AD_IMAGE_9_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage10TagLengthTooLong
+		      Return "AD_IMAGE_10_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage11TagLengthTooLong
+		      Return "AD_IMAGE_11_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage12TagLengthTooLong
+		      Return "AD_IMAGE_12_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage13TagLengthTooLong
+		      Return "AD_IMAGE_13_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage14TagLengthTooLong
+		      Return "AD_IMAGE_14_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage15TagLengthTooLong
+		      Return "AD_IMAGE_15_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage16TagLengthTooLong
+		      Return "AD_IMAGE_16_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage17TagLengthTooLong
+		      Return "AD_IMAGE_17_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage18TagLengthTooLong
+		      Return "AD_IMAGE_18_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage19TagLengthTooLong
+		      Return "AD_IMAGE_19_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdImage0TagRequired
+		      Return "AD_IMAGE_0_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage1TagRequired
+		      Return "AD_IMAGE_1_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage2TagRequired
+		      Return "AD_IMAGE_2_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage3TagRequired
+		      Return "AD_IMAGE_3_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage4TagRequired
+		      Return "AD_IMAGE_4_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage5TagRequired
+		      Return "AD_IMAGE_5_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage6TagRequired
+		      Return "AD_IMAGE_6_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage7TagRequired
+		      Return "AD_IMAGE_7_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage8TagRequired
+		      Return "AD_IMAGE_8_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage9TagRequired
+		      Return "AD_IMAGE_9_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage10TagRequired
+		      Return "AD_IMAGE_10_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage11TagRequired
+		      Return "AD_IMAGE_11_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage12TagRequired
+		      Return "AD_IMAGE_12_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage13TagRequired
+		      Return "AD_IMAGE_13_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage14TagRequired
+		      Return "AD_IMAGE_14_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage15TagRequired
+		      Return "AD_IMAGE_15_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage16TagRequired
+		      Return "AD_IMAGE_16_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage17TagRequired
+		      Return "AD_IMAGE_17_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage18TagRequired
+		      Return "AD_IMAGE_18_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage19TagRequired
+		      Return "AD_IMAGE_19_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdImage0LinkDuplicated
+		      Return "AD_IMAGE_0_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage1LinkDuplicated
+		      Return "AD_IMAGE_1_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage2LinkDuplicated
+		      Return "AD_IMAGE_2_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage3LinkDuplicated
+		      Return "AD_IMAGE_3_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage4LinkDuplicated
+		      Return "AD_IMAGE_4_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage5LinkDuplicated
+		      Return "AD_IMAGE_5_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage6LinkDuplicated
+		      Return "AD_IMAGE_6_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage7LinkDuplicated
+		      Return "AD_IMAGE_7_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage8LinkDuplicated
+		      Return "AD_IMAGE_8_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage9LinkDuplicated
+		      Return "AD_IMAGE_9_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage10LinkDuplicated
+		      Return "AD_IMAGE_10_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage11LinkDuplicated
+		      Return "AD_IMAGE_11_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage12LinkDuplicated
+		      Return "AD_IMAGE_12_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage13LinkDuplicated
+		      Return "AD_IMAGE_13_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage14LinkDuplicated
+		      Return "AD_IMAGE_14_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage15LinkDuplicated
+		      Return "AD_IMAGE_15_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage16LinkDuplicated
+		      Return "AD_IMAGE_16_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage17LinkDuplicated
+		      Return "AD_IMAGE_17_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage18LinkDuplicated
+		      Return "AD_IMAGE_18_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage19LinkDuplicated
+		      Return "AD_IMAGE_19_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage0TagDuplicated
+		      Return "AD_IMAGE_0_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage1TagDuplicated
+		      Return "AD_IMAGE_1_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage2TagDuplicated
+		      Return "AD_IMAGE_2_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage3TagDuplicated
+		      Return "AD_IMAGE_3_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage4TagDuplicated
+		      Return "AD_IMAGE_4_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage5TagDuplicated
+		      Return "AD_IMAGE_5_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage6TagDuplicated
+		      Return "AD_IMAGE_6_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage7TagDuplicated
+		      Return "AD_IMAGE_7_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage8TagDuplicated
+		      Return "AD_IMAGE_8_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage9TagDuplicated
+		      Return "AD_IMAGE_9_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage10TagDuplicated
+		      Return "AD_IMAGE_10_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage11TagDuplicated
+		      Return "AD_IMAGE_11_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage12TagDuplicated
+		      Return "AD_IMAGE_12_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage13TagDuplicated
+		      Return "AD_IMAGE_13_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage14TagDuplicated
+		      Return "AD_IMAGE_14_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage15TagDuplicated
+		      Return "AD_IMAGE_15_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage16TagDuplicated
+		      Return "AD_IMAGE_16_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage17TagDuplicated
+		      Return "AD_IMAGE_17_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage18TagDuplicated
+		      Return "AD_IMAGE_18_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdImage19TagDuplicated
+		      Return "AD_IMAGE_19_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdVideo0LinkLengthTooLong
+		      Return "AD_VIDEO_0_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdVideo1LinkLengthTooLong
+		      Return "AD_VIDEO_1_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdVideo2LinkLengthTooLong
+		      Return "AD_VIDEO_2_LINK_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdVideo0LinkWarning
+		      Return "AD_VIDEO_0_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdVideo1LinkWarning
+		      Return "AD_VIDEO_1_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdVideo2LinkWarning
+		      Return "AD_VIDEO_2_LINK_WARNING"
+		    Case CatalogsItemValidationIssue.AdVideo0LinkRequired
+		      Return "AD_VIDEO_0_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdVideo1LinkRequired
+		      Return "AD_VIDEO_1_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdVideo2LinkRequired
+		      Return "AD_VIDEO_2_LINK_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdVideo0LinkDuplicated
+		      Return "AD_VIDEO_0_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdVideo1LinkDuplicated
+		      Return "AD_VIDEO_1_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdVideo2LinkDuplicated
+		      Return "AD_VIDEO_2_LINK_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdVideo0TagLengthTooLong
+		      Return "AD_VIDEO_0_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdVideo1TagLengthTooLong
+		      Return "AD_VIDEO_1_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdVideo2TagLengthTooLong
+		      Return "AD_VIDEO_2_TAG_LENGTH_TOO_LONG"
+		    Case CatalogsItemValidationIssue.AdVideo0TagRequired
+		      Return "AD_VIDEO_0_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdVideo1TagRequired
+		      Return "AD_VIDEO_1_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdVideo2TagRequired
+		      Return "AD_VIDEO_2_TAG_REQUIRED"
+		    Case CatalogsItemValidationIssue.AdVideo0TagDuplicated
+		      Return "AD_VIDEO_0_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdVideo1TagDuplicated
+		      Return "AD_VIDEO_1_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.AdVideo2TagDuplicated
+		      Return "AD_VIDEO_2_TAG_DUPLICATED"
+		    Case CatalogsItemValidationIssue.VideoRequiredWhenAdVideoProvided
+		      Return "VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED"
 		    Case CatalogsItemValidationIssue.AdLinkFormatWarning
 		      Return "AD_LINK_FORMAT_WARNING"
 		    Case CatalogsItemValidationIssue.AdLinkSameAsLink
@@ -1367,6 +1795,372 @@ Protected Module Models
 		      Return "HOTEL"
 		    Case CatalogsType.CreativeAssets
 		      Return "CREATIVE_ASSETS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function ContentTypeToString(value As ContentType) As String
+		  Select Case value
+		    Case ContentType.ImageSlashJpeg
+		      Return "image/jpeg"
+		    Case ContentType.ImageSlashPng
+		      Return "image/png"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function ConversionProductReportingColumnToString(value As ConversionProductReportingColumn) As String
+		  Select Case value
+		    Case ConversionProductReportingColumn.CampaignName
+		      Return "CAMPAIGN_NAME"
+		    Case ConversionProductReportingColumn.CampaignId
+		      Return "CAMPAIGN_ID"
+		    Case ConversionProductReportingColumn.AdvertiserId
+		      Return "ADVERTISER_ID"
+		    Case ConversionProductReportingColumn.AdGroupId
+		      Return "AD_GROUP_ID"
+		    Case ConversionProductReportingColumn.CampaignObjectiveType
+		      Return "CAMPAIGN_OBJECTIVE_TYPE"
+		    Case ConversionProductReportingColumn.AdGroupName
+		      Return "AD_GROUP_NAME"
+		    Case ConversionProductReportingColumn.ConversionProductId
+		      Return "CONVERSION_PRODUCT_ID"
+		    Case ConversionProductReportingColumn.ConversionProductBrand
+		      Return "CONVERSION_PRODUCT_BRAND"
+		    Case ConversionProductReportingColumn.ConversionProductCategory
+		      Return "CONVERSION_PRODUCT_CATEGORY"
+		    Case ConversionProductReportingColumn.ConversionProductIdGroup
+		      Return "CONVERSION_PRODUCT_ID_GROUP"
+		    Case ConversionProductReportingColumn.TotalConversionProductQuantity
+		      Return "TOTAL_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebConversionProductQuantity
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappConversionProductQuantity
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalConversionProductValue
+		      Return "TOTAL_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebConversionProductValue
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappConversionProductValue
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineConversionProductValue
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalConversionProductValueInUsd
+		      Return "TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebConversionProductValueInUsd
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappConversionProductValueInUsd
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalCheckoutConversionProductQuantity
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalCheckoutConversionProductValue
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalCheckoutConversionProductValueInUsd
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebCheckoutConversionProductQuantity
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebCheckoutConversionProductValue
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebCheckoutConversionProductValueInUsd
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappCheckoutConversionProductQuantity
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappCheckoutConversionProductValue
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappCheckoutConversionProductValueInUsd
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineCheckoutConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineCheckoutConversionProductValue
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineCheckoutConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalAddToCartConversionProductQuantity
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalAddToCartConversionProductValue
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalAddToCartConversionProductValueInUsd
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebAddToCartConversionProductQuantity
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebAddToCartConversionProductValue
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebAddToCartConversionProductValueInUsd
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappAddToCartConversionProductQuantity
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappAddToCartConversionProductValue
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappAddToCartConversionProductValueInUsd
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalPageVisitConversionProductQuantity
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalPageVisitConversionProductValue
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalPageVisitConversionProductValueInUsd
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebPageVisitConversionProductQuantity
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebPageVisitConversionProductValue
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebPageVisitConversionProductValueInUsd
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalSignupConversionProductQuantity
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalSignupConversionProductValue
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalSignupConversionProductValueInUsd
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebSignupConversionProductQuantity
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebSignupConversionProductValue
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebSignupConversionProductValueInUsd
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappSignupConversionProductQuantity
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappSignupConversionProductValue
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappSignupConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineSignupConversionProductQuantity
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineSignupConversionProductValue
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineSignupConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWatchVideoConversionProductQuantity
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWatchVideoConversionProductValue
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWatchVideoConversionProductValueInUsd
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebWatchVideoConversionProductQuantity
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebWatchVideoConversionProductValue
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebWatchVideoConversionProductValueInUsd
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalLeadConversionProductQuantity
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalLeadConversionProductValue
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalLeadConversionProductValueInUsd
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebLeadConversionProductQuantity
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebLeadConversionProductValue
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebLeadConversionProductValueInUsd
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineLeadConversionProductQuantity
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineLeadConversionProductValue
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineLeadConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalSearchConversionProductQuantity
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalSearchConversionProductValue
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalSearchConversionProductValueInUsd
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebSearchConversionProductQuantity
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebSearchConversionProductValue
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebSearchConversionProductValueInUsd
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappSearchConversionProductQuantity
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappSearchConversionProductValue
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappSearchConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalViewCategoryConversionProductQuantity
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalViewCategoryConversionProductValue
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalViewCategoryConversionProductValueInUsd
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebViewCategoryConversionProductQuantity
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebViewCategoryConversionProductValue
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebViewCategoryConversionProductValueInUsd
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalCustomConversionProductQuantity
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalCustomConversionProductValue
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalCustomConversionProductValueInUsd
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebCustomConversionProductQuantity
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebCustomConversionProductValue
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebCustomConversionProductValueInUsd
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineCustomConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineCustomConversionProductValue
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineCustomConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalUnknownConversionProductQuantity
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalUnknownConversionProductValue
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalUnknownConversionProductValueInUsd
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebUnknownConversionProductQuantity
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebUnknownConversionProductValue
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebUnknownConversionProductValueInUsd
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappUnknownConversionProductQuantity
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappUnknownConversionProductValue
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappUnknownConversionProductValueInUsd
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineUnknownConversionProductQuantity
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineUnknownConversionProductValue
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineUnknownConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalAddPaymentInfoConversionProductValue
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebAddPaymentInfoConversionProductValue
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappAddPaymentInfoConversionProductValue
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineAddPaymentInfoConversionProductValue
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalAddToWishlistConversionProductQuantity
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalAddToWishlistConversionProductValue
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebAddToWishlistConversionProductQuantity
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebAddToWishlistConversionProductValue
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappAddToWishlistConversionProductQuantity
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappAddToWishlistConversionProductValue
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineAddToWishlistConversionProductQuantity
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineAddToWishlistConversionProductValue
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInitiateCheckoutConversionProductValue
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebInitiateCheckoutConversionProductValue
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappInitiateCheckoutConversionProductValue
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineInitiateCheckoutConversionProductValue
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalSubscribeConversionProductQuantity
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalSubscribeConversionProductValue
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalSubscribeConversionProductValueInUsd
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebSubscribeConversionProductQuantity
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebSubscribeConversionProductValue
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebSubscribeConversionProductValueInUsd
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappSubscribeConversionProductQuantity
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappSubscribeConversionProductValue
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappSubscribeConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineSubscribeConversionProductQuantity
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineSubscribeConversionProductValue
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineSubscribeConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalViewContentConversionProductQuantity
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalViewContentConversionProductValue
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalViewContentConversionProductValueInUsd
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalWebViewContentConversionProductQuantity
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalWebViewContentConversionProductValue
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalWebViewContentConversionProductValueInUsd
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalInappViewContentConversionProductQuantity
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalInappViewContentConversionProductValue
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalInappViewContentConversionProductValueInUsd
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ConversionProductReportingColumn.TotalOfflineViewContentConversionProductQuantity
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ConversionProductReportingColumn.TotalOfflineViewContentConversionProductValue
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ConversionProductReportingColumn.TotalOfflineViewContentConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
 		    
 		  End Select
 		  Return ""
@@ -1979,6 +2773,12 @@ Protected Module Models
 		      Return "SHOWCASE"
 		    Case CreativeType.Quiz
 		      Return "QUIZ"
+		    Case CreativeType.Collage
+		      Return "COLLAGE"
+		    Case CreativeType.MaxWidthRegularCollection
+		      Return "MAX_WIDTH_REGULAR_COLLECTION"
+		    Case CreativeType.MaxWidthVideoCollection
+		      Return "MAX_WIDTH_VIDEO_COLLECTION"
 		    
 		  End Select
 		  Return ""
@@ -2042,6 +2842,73 @@ Protected Module Models
 		      Return "INR"
 		    Case Currency.Escapedtry
 		      Return "TRY"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function CustomizableCTATypeToString(value As CustomizableCTAType) As String
+		  Select Case value
+		    Case CustomizableCTAType.GetOffer
+		      Return "GET_OFFER"
+		    Case CustomizableCTAType.LearnMore
+		      Return "LEARN_MORE"
+		    Case CustomizableCTAType.OrderNow
+		      Return "ORDER_NOW"
+		    Case CustomizableCTAType.ShopNow
+		      Return "SHOP_NOW"
+		    Case CustomizableCTAType.SignUp
+		      Return "SIGN_UP"
+		    Case CustomizableCTAType.Subscribe
+		      Return "SUBSCRIBE"
+		    Case CustomizableCTAType.BuyNow
+		      Return "BUY_NOW"
+		    Case CustomizableCTAType.ContactUs
+		      Return "CONTACT_US"
+		    Case CustomizableCTAType.GetQuote
+		      Return "GET_QUOTE"
+		    Case CustomizableCTAType.VisitSite
+		      Return "VISIT_SITE"
+		    Case CustomizableCTAType.ApplyNow
+		      Return "APPLY_NOW"
+		    Case CustomizableCTAType.BookNow
+		      Return "BOOK_NOW"
+		    Case CustomizableCTAType.RequestDemo
+		      Return "REQUEST_DEMO"
+		    Case CustomizableCTAType.RegisterNow
+		      Return "REGISTER_NOW"
+		    Case CustomizableCTAType.FindADealer
+		      Return "FIND_A_DEALER"
+		    Case CustomizableCTAType.AddToCart
+		      Return "ADD_TO_CART"
+		    Case CustomizableCTAType.WatchNow
+		      Return "WATCH_NOW"
+		    Case CustomizableCTAType.ReadMore
+		      Return "READ_MORE"
+		    Case CustomizableCTAType.BuyTickets
+		      Return "BUY_TICKETS"
+		    Case CustomizableCTAType.DonateNow
+		      Return "DONATE_NOW"
+		    Case CustomizableCTAType.Download
+		      Return "DOWNLOAD"
+		    Case CustomizableCTAType.ExploreMore
+		      Return "EXPLORE_MORE"
+		    Case CustomizableCTAType.FindALocation
+		      Return "FIND_A_LOCATION"
+		    Case CustomizableCTAType.GetDeal
+		      Return "GET_DEAL"
+		    Case CustomizableCTAType.GetRecipe
+		      Return "GET_RECIPE"
+		    Case CustomizableCTAType.GetShowtimes
+		      Return "GET_SHOWTIMES"
+		    Case CustomizableCTAType.OnSale
+		      Return "ON_SALE"
+		    Case CustomizableCTAType.PlayGame
+		      Return "PLAY_GAME"
+		    Case CustomizableCTAType.TryIt
+		      Return "TRY_IT"
 		    
 		  End Select
 		  Return ""
@@ -2117,6 +2984,27 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function DisclosureTypeToString(value As DisclosureType) As String
+		  Select Case value
+		    Case DisclosureType.NoDisclosure
+		      Return "NO_DISCLOSURE"
+		    Case DisclosureType.PrescribingInformation
+		      Return "PRESCRIBING_INFORMATION"
+		    Case DisclosureType.PrescribingInformationBoxWarning
+		      Return "PRESCRIBING_INFORMATION_BOX_WARNING"
+		    Case DisclosureType.ImportantSafetyInfo
+		      Return "IMPORTANT_SAFETY_INFO"
+		    Case DisclosureType.MedGuide
+		      Return "MED_GUIDE"
+		    Case DisclosureType.PatientInformation
+		      Return "PATIENT_INFORMATION"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function EnhancedMatchStatusTypeToString(value As EnhancedMatchStatusType) As String
 		  Select Case value
 		    Case EnhancedMatchStatusType.Unknown
@@ -2168,6 +3056,21 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function GenderBucketToString(value As GenderBucket) As String
+		  Select Case value
+		    Case GenderBucket.Male
+		      Return "MALE"
+		    Case GenderBucket.Female
+		      Return "FEMALE"
+		    Case GenderBucket.Unspecified
+		      Return "UNSPECIFIED"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function GetAudiencesOrderByToString(value As GetAudiencesOrderBy) As String
 		  Select Case value
 		    Case GetAudiencesOrderBy.None
@@ -2203,6 +3106,8 @@ Protected Module Models
 		      Return "ASSET_GROUP"
 		    Case GetBusinessAssetTypeResponse.ConversionTag
 		      Return "CONVERSION_TAG"
+		    Case GetBusinessAssetTypeResponse.Catalog
+		      Return "CATALOG"
 		    
 		  End Select
 		  Return ""
@@ -2235,6 +3140,66 @@ Protected Module Models
 		      Return "CLOSEUP"
 		    Case GridClickType.DirectToDestination
 		      Return "DIRECT_TO_DESTINATION"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function IngestionSourceOptionsToString(value As IngestionSourceOptions) As String
+		  Select Case value
+		    Case IngestionSourceOptions.Tag
+		      Return "TAG"
+		    Case IngestionSourceOptions.Mmp
+		      Return "MMP"
+		    Case IngestionSourceOptions.FileUpload
+		      Return "FILE_UPLOAD"
+		    Case IngestionSourceOptions.ConversionsApi
+		      Return "CONVERSIONS_API"
+		    Case IngestionSourceOptions.Native
+		      Return "NATIVE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function InterestsEnumToString(value As InterestsEnum) As String
+		  Select Case value
+		    Case InterestsEnum.All
+		      Return "ALL"
+		    Case InterestsEnum.Animals
+		      Return "ANIMALS"
+		    Case InterestsEnum.Architecture
+		      Return "ARCHITECTURE"
+		    Case InterestsEnum.Art
+		      Return "ART"
+		    Case InterestsEnum.Beauty
+		      Return "BEAUTY"
+		    Case InterestsEnum.DiyAndCrafts
+		      Return "DIY_AND_CRAFTS"
+		    Case InterestsEnum.Education
+		      Return "EDUCATION"
+		    Case InterestsEnum.EventPlanning
+		      Return "EVENT_PLANNING"
+		    Case InterestsEnum.Fashion
+		      Return "FASHION"
+		    Case InterestsEnum.FoodAndDrinks
+		      Return "FOOD_AND_DRINKS"
+		    Case InterestsEnum.Gardening
+		      Return "GARDENING"
+		    Case InterestsEnum.Health
+		      Return "HEALTH"
+		    Case InterestsEnum.HomeDecor
+		      Return "HOME_DECOR"
+		    Case InterestsEnum.Parenting
+		      Return "PARENTING"
+		    Case InterestsEnum.Travel
+		      Return "TRAVEL"
+		    Case InterestsEnum.Wedding
+		      Return "WEDDING"
 		    
 		  End Select
 		  Return ""
@@ -2284,6 +3249,43 @@ Protected Module Models
 		      Return "FAILURE"
 		    Case ItemProcessingStatus.Processing
 		      Return "PROCESSING"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function LabelParentTypeToString(value As LabelParentType) As String
+		  Select Case value
+		    Case LabelParentType.Campaign
+		      Return "CAMPAIGN"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function LabelStatusToString(value As LabelStatus) As String
+		  Select Case value
+		    Case LabelStatus.Active
+		      Return "ACTIVE"
+		    Case LabelStatus.Archived
+		      Return "ARCHIVED"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function LabelTypeToString(value As LabelType) As String
+		  Select Case value
+		    Case LabelType.Brand
+		      Return "BRAND"
+		    Case LabelType.Custom
+		      Return "CUSTOM"
 		    
 		  End Select
 		  Return ""
@@ -2504,6 +3506,19 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function LookbackPeriodOptionsToString(value As LookbackPeriodOptions) As String
+		  Select Case value
+		    Case LookbackPeriodOptions.Escaped1d
+		      Return "1d"
+		    Case LookbackPeriodOptions.Escaped14d
+		      Return "14d"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function MMMReportingColumnToString(value As MMMReportingColumn) As String
 		  Select Case value
 		    Case MMMReportingColumn.SpendInDollar
@@ -2692,6 +3707,21 @@ Protected Module Models
 		      Return "PRODUCT_ITEM"
 		    Case MetricsReportingLevel.ProductItemTargeting
 		      Return "PRODUCT_ITEM_TARGETING"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function NonDraftEntityStatusToString(value As NonDraftEntityStatus) As String
+		  Select Case value
+		    Case NonDraftEntityStatus.Active
+		      Return "ACTIVE"
+		    Case NonDraftEntityStatus.Paused
+		      Return "PAUSED"
+		    Case NonDraftEntityStatus.Archived
+		      Return "ARCHIVED"
 		    
 		  End Select
 		  Return ""
@@ -3107,8 +4137,6 @@ Protected Module Models
 		      Return "IS_BUNDLE"
 		    Case NullableCatalogsItemFieldType.ExpirationDate
 		      Return "EXPIRATION_DATE"
-		    Case NullableCatalogsItemFieldType.SalePriceEffectiveDate
-		      Return "SALE_PRICE_EFFECTIVE_DATE"
 		    Case NullableCatalogsItemFieldType.AvailabilityDate
 		      Return "AVAILABILITY_DATE"
 		    Case NullableCatalogsItemFieldType.WeightUnit
@@ -3163,6 +4191,106 @@ Protected Module Models
 		      Return "SHIPPING_WIDTH"
 		    Case NullableCatalogsItemFieldType.ShippingHeight
 		      Return "SHIPPING_HEIGHT"
+		    Case NullableCatalogsItemFieldType.AdImage0Link
+		      Return "AD_IMAGE_0_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage1Link
+		      Return "AD_IMAGE_1_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage2Link
+		      Return "AD_IMAGE_2_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage3Link
+		      Return "AD_IMAGE_3_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage4Link
+		      Return "AD_IMAGE_4_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage5Link
+		      Return "AD_IMAGE_5_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage6Link
+		      Return "AD_IMAGE_6_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage7Link
+		      Return "AD_IMAGE_7_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage8Link
+		      Return "AD_IMAGE_8_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage9Link
+		      Return "AD_IMAGE_9_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage10Link
+		      Return "AD_IMAGE_10_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage11Link
+		      Return "AD_IMAGE_11_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage12Link
+		      Return "AD_IMAGE_12_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage13Link
+		      Return "AD_IMAGE_13_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage14Link
+		      Return "AD_IMAGE_14_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage15Link
+		      Return "AD_IMAGE_15_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage16Link
+		      Return "AD_IMAGE_16_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage17Link
+		      Return "AD_IMAGE_17_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage18Link
+		      Return "AD_IMAGE_18_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage19Link
+		      Return "AD_IMAGE_19_LINK"
+		    Case NullableCatalogsItemFieldType.AdImage0Tag
+		      Return "AD_IMAGE_0_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage1Tag
+		      Return "AD_IMAGE_1_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage2Tag
+		      Return "AD_IMAGE_2_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage3Tag
+		      Return "AD_IMAGE_3_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage4Tag
+		      Return "AD_IMAGE_4_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage5Tag
+		      Return "AD_IMAGE_5_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage6Tag
+		      Return "AD_IMAGE_6_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage7Tag
+		      Return "AD_IMAGE_7_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage8Tag
+		      Return "AD_IMAGE_8_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage9Tag
+		      Return "AD_IMAGE_9_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage10Tag
+		      Return "AD_IMAGE_10_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage11Tag
+		      Return "AD_IMAGE_11_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage12Tag
+		      Return "AD_IMAGE_12_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage13Tag
+		      Return "AD_IMAGE_13_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage14Tag
+		      Return "AD_IMAGE_14_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage15Tag
+		      Return "AD_IMAGE_15_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage16Tag
+		      Return "AD_IMAGE_16_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage17Tag
+		      Return "AD_IMAGE_17_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage18Tag
+		      Return "AD_IMAGE_18_TAG"
+		    Case NullableCatalogsItemFieldType.AdImage19Tag
+		      Return "AD_IMAGE_19_TAG"
+		    Case NullableCatalogsItemFieldType.AdVideo0Link
+		      Return "AD_VIDEO_0_LINK"
+		    Case NullableCatalogsItemFieldType.AdVideo1Link
+		      Return "AD_VIDEO_1_LINK"
+		    Case NullableCatalogsItemFieldType.AdVideo2Link
+		      Return "AD_VIDEO_2_LINK"
+		    Case NullableCatalogsItemFieldType.AdVideo0Tag
+		      Return "AD_VIDEO_0_TAG"
+		    Case NullableCatalogsItemFieldType.AdVideo1Tag
+		      Return "AD_VIDEO_1_TAG"
+		    Case NullableCatalogsItemFieldType.AdVideo2Tag
+		      Return "AD_VIDEO_2_TAG"
+		    Case NullableCatalogsItemFieldType.InstallmentPrice
+		      Return "INSTALLMENT_PRICE"
+		    Case NullableCatalogsItemFieldType.UnitPriceTotalMeasure
+		      Return "UNIT_PRICE_TOTAL_MEASURE"
+		    Case NullableCatalogsItemFieldType.UnitPriceBaseMeasure
+		      Return "UNIT_PRICE_BASE_MEASURE"
+		    Case NullableCatalogsItemFieldType.SalePriceEffectiveDate
+		      Return "SALE_PRICE_EFFECTIVE_DATE"
 		    
 		  End Select
 		  Return ""
@@ -3511,14 +4639,10 @@ Protected Module Models
 		      Return "AWARENESS"
 		    Case ObjectiveType.Consideration
 		      Return "CONSIDERATION"
-		    Case ObjectiveType.VideoView
-		      Return "VIDEO_VIEW"
 		    Case ObjectiveType.WebConversion
 		      Return "WEB_CONVERSION"
 		    Case ObjectiveType.CatalogSales
 		      Return "CATALOG_SALES"
-		    Case ObjectiveType.WebSessions
-		      Return "WEB_SESSIONS"
 		    Case ObjectiveType.VideoCompletion
 		      Return "VIDEO_COMPLETION"
 		    
@@ -3573,6 +4697,21 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function OverallStatusOptionsToString(value As OverallStatusOptions) As String
+		  Select Case value
+		    Case OverallStatusOptions.NeedsImprovement
+		      Return "NEEDS_IMPROVEMENT"
+		    Case OverallStatusOptions.Fair
+		      Return "FAIR"
+		    Case OverallStatusOptions.Good
+		      Return "GOOD"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function PacingDeliveryTypeToString(value As PacingDeliveryType) As String
 		  Select Case value
 		    Case PacingDeliveryType.Standard
@@ -3607,14 +4746,22 @@ Protected Module Models
 		      Return "ANALYST"
 		    Case Permissions.FinanceManager
 		      Return "FINANCE_MANAGER"
+		    Case Permissions.FinanceEdit
+		      Return "FINANCE_EDIT"
+		    Case Permissions.FinanceView
+		      Return "FINANCE_VIEW"
 		    Case Permissions.AudienceManager
 		      Return "AUDIENCE_MANAGER"
 		    Case Permissions.CampaignManager
 		      Return "CAMPAIGN_MANAGER"
 		    Case Permissions.CatalogsManager
 		      Return "CATALOGS_MANAGER"
+		    Case Permissions.CatalogsViewer
+		      Return "CATALOGS_VIEWER"
 		    Case Permissions.ProfilePublisher
 		      Return "PROFILE_PUBLISHER"
+		    Case Permissions.ConsumerUser
+		      Return "CONSUMER_USER"
 		    
 		  End Select
 		  Return ""
@@ -3630,6 +4777,10 @@ Protected Module Models
 		      Return "ANALYST"
 		    Case PermissionsWithOwner.FinanceManager
 		      Return "FINANCE_MANAGER"
+		    Case PermissionsWithOwner.FinanceEdit
+		      Return "FINANCE_EDIT"
+		    Case PermissionsWithOwner.FinanceView
+		      Return "FINANCE_VIEW"
 		    Case PermissionsWithOwner.AudienceManager
 		      Return "AUDIENCE_MANAGER"
 		    Case PermissionsWithOwner.CampaignManager
@@ -3674,6 +4825,19 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function PinterestLibPaginationOrderToString(value As PinterestLibPaginationOrder) As String
+		  Select Case value
+		    Case PinterestLibPaginationOrder.Ascending
+		      Return "ASCENDING"
+		    Case PinterestLibPaginationOrder.Descending
+		      Return "DESCENDING"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function PlacementGroupTypeToString(value As PlacementGroupType) As String
 		  Select Case value
 		    Case PlacementGroupType.All
@@ -3706,6 +4870,828 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function ProductCategoriesEngagementTypeToString(value As ProductCategoriesEngagementType) As String
+		  Select Case value
+		    Case ProductCategoriesEngagementType.Engagement
+		      Return "ENGAGEMENT"
+		    Case ProductCategoriesEngagementType.OutboundClick
+		      Return "OUTBOUND_CLICK"
+		    Case ProductCategoriesEngagementType.Save
+		      Return "SAVE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function ProductCategoryDetailLookbackWindowToString(value As ProductCategoryDetailLookbackWindow) As String
+		  Select Case value
+		    Case ProductCategoryDetailLookbackWindow.Escaped90
+		      Return "90"
+		    Case ProductCategoryDetailLookbackWindow.Escaped180
+		      Return "180"
+		    Case ProductCategoryDetailLookbackWindow.Escaped365
+		      Return "365"
+		    Case ProductCategoryDetailLookbackWindow.Escaped730
+		      Return "730"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function ProductCategoryEnumToString(value As ProductCategoryEnum) As String
+		  Select Case value
+		    Case ProductCategoryEnum.AccentTables
+		      Return "ACCENT_TABLES"
+		    Case ProductCategoryEnum.Accessories
+		      Return "ACCESSORIES"
+		    Case ProductCategoryEnum.Anklets
+		      Return "ANKLETS"
+		    Case ProductCategoryEnum.Aprons
+		      Return "APRONS"
+		    Case ProductCategoryEnum.AreaRugs
+		      Return "AREA_RUGS"
+		    Case ProductCategoryEnum.ArmoiresAndWardrobes
+		      Return "ARMOIRES_AND_WARDROBES"
+		    Case ProductCategoryEnum.ArtAndCraftPaints
+		      Return "ART_AND_CRAFT_PAINTS"
+		    Case ProductCategoryEnum.ArtBrushes
+		      Return "ART_BRUSHES"
+		    Case ProductCategoryEnum.ArtificialFlora
+		      Return "ARTIFICIAL_FLORA"
+		    Case ProductCategoryEnum.Artwork
+		      Return "ARTWORK"
+		    Case ProductCategoryEnum.Audio
+		      Return "AUDIO"
+		    Case ProductCategoryEnum.AudioAccessories
+		      Return "AUDIO_ACCESSORIES"
+		    Case ProductCategoryEnum.Backpacks
+		      Return "BACKPACKS"
+		    Case ProductCategoryEnum.BagAndLuggageAccessories
+		      Return "BAG_AND_LUGGAGE_ACCESSORIES"
+		    Case ProductCategoryEnum.BagsAndLuggage
+		      Return "BAGS_AND_LUGGAGE"
+		    Case ProductCategoryEnum.Bakeware
+		      Return "BAKEWARE"
+		    Case ProductCategoryEnum.Bandanas
+		      Return "BANDANAS"
+		    Case ProductCategoryEnum.BarCarts
+		      Return "BAR_CARTS"
+		    Case ProductCategoryEnum.Barware
+		      Return "BARWARE"
+		    Case ProductCategoryEnum.Baskets
+		      Return "BASKETS"
+		    Case ProductCategoryEnum.BathAndBody
+		      Return "BATH_AND_BODY"
+		    Case ProductCategoryEnum.BathAndShower
+		      Return "BATH_AND_SHOWER"
+		    Case ProductCategoryEnum.BathMatsAndRugs
+		      Return "BATH_MATS_AND_RUGS"
+		    Case ProductCategoryEnum.BathTowelsAndWashcloths
+		      Return "BATH_TOWELS_AND_WASHCLOTHS"
+		    Case ProductCategoryEnum.BathroomAccessories
+		      Return "BATHROOM_ACCESSORIES"
+		    Case ProductCategoryEnum.BathroomAccessorySets
+		      Return "BATHROOM_ACCESSORY_SETS"
+		    Case ProductCategoryEnum.BathroomVanities
+		      Return "BATHROOM_VANITIES"
+		    Case ProductCategoryEnum.BeachTowels
+		      Return "BEACH_TOWELS"
+		    Case ProductCategoryEnum.BeadsAndJewelryMakingSupplies
+		      Return "BEADS_AND_JEWELRY_MAKING_SUPPLIES"
+		    Case ProductCategoryEnum.BeautySupplements
+		      Return "BEAUTY_SUPPLEMENTS"
+		    Case ProductCategoryEnum.BedSheets
+		      Return "BED_SHEETS"
+		    Case ProductCategoryEnum.Bedding
+		      Return "BEDDING"
+		    Case ProductCategoryEnum.BedroomVanities
+		      Return "BEDROOM_VANITIES"
+		    Case ProductCategoryEnum.BedsAndAccessories
+		      Return "BEDS_AND_ACCESSORIES"
+		    Case ProductCategoryEnum.BedsAndBedFrames
+		      Return "BEDS_AND_BED_FRAMES"
+		    Case ProductCategoryEnum.BeltBags
+		      Return "BELT_BAGS"
+		    Case ProductCategoryEnum.BeltsAndSuspenders
+		      Return "BELTS_AND_SUSPENDERS"
+		    Case ProductCategoryEnum.Benches
+		      Return "BENCHES"
+		    Case ProductCategoryEnum.Beverages
+		      Return "BEVERAGES"
+		    Case ProductCategoryEnum.BirdSupplies
+		      Return "BIRD_SUPPLIES"
+		    Case ProductCategoryEnum.Blankets
+		      Return "BLANKETS"
+		    Case ProductCategoryEnum.Blouses
+		      Return "BLOUSES"
+		    Case ProductCategoryEnum.BlushesAndBronzers
+		      Return "BLUSHES_AND_BRONZERS"
+		    Case ProductCategoryEnum.BodyCare
+		      Return "BODY_CARE"
+		    Case ProductCategoryEnum.BodyJewelry
+		      Return "BODY_JEWELRY"
+		    Case ProductCategoryEnum.BodyMakeup
+		      Return "BODY_MAKEUP"
+		    Case ProductCategoryEnum.BodyMoisturizers
+		      Return "BODY_MOISTURIZERS"
+		    Case ProductCategoryEnum.BodyWashes
+		      Return "BODY_WASHES"
+		    Case ProductCategoryEnum.BookcasesAndStandingShelves
+		      Return "BOOKCASES_AND_STANDING_SHELVES"
+		    Case ProductCategoryEnum.Bookends
+		      Return "BOOKENDS"
+		    Case ProductCategoryEnum.Books
+		      Return "BOOKS"
+		    Case ProductCategoryEnum.Boots
+		      Return "BOOTS"
+		    Case ProductCategoryEnum.Bracelets
+		      Return "BRACELETS"
+		    Case ProductCategoryEnum.BridesmaidDresses
+		      Return "BRIDESMAID_DRESSES"
+		    Case ProductCategoryEnum.BroochesAndLapelPins
+		      Return "BROOCHES_AND_LAPEL_PINS"
+		    Case ProductCategoryEnum.BrowMakeup
+		      Return "BROW_MAKEUP"
+		    Case ProductCategoryEnum.BuffetsAndSideboards
+		      Return "BUFFETS_AND_SIDEBOARDS"
+		    Case ProductCategoryEnum.ButtonDownShirts
+		      Return "BUTTON_DOWN_SHIRTS"
+		    Case ProductCategoryEnum.CabinetHardware
+		      Return "CABINET_HARDWARE"
+		    Case ProductCategoryEnum.CabinetsAndStorageFurniture
+		      Return "CABINETS_AND_STORAGE_FURNITURE"
+		    Case ProductCategoryEnum.CakeDecoratingSupplies
+		      Return "CAKE_DECORATING_SUPPLIES"
+		    Case ProductCategoryEnum.CampingAndHiking
+		      Return "CAMPING_AND_HIKING"
+		    Case ProductCategoryEnum.CandleHolders
+		      Return "CANDLE_HOLDERS"
+		    Case ProductCategoryEnum.Candles
+		      Return "CANDLES"
+		    Case ProductCategoryEnum.CardstockPapers
+		      Return "CARDSTOCK_PAPERS"
+		    Case ProductCategoryEnum.CasualPants
+		      Return "CASUAL_PANTS"
+		    Case ProductCategoryEnum.CatSupplies
+		      Return "CAT_SUPPLIES"
+		    Case ProductCategoryEnum.Chairs
+		      Return "CHAIRS"
+		    Case ProductCategoryEnum.Chandeliers
+		      Return "CHANDELIERS"
+		    Case ProductCategoryEnum.CharmsAndPendants
+		      Return "CHARMS_AND_PENDANTS"
+		    Case ProductCategoryEnum.ChinaCabinetsAndHutches
+		      Return "CHINA_CABINETS_AND_HUTCHES"
+		    Case ProductCategoryEnum.ClogsAndMules
+		      Return "CLOGS_AND_MULES"
+		    Case ProductCategoryEnum.ClothNapkins
+		      Return "CLOTH_NAPKINS"
+		    Case ProductCategoryEnum.Clothing
+		      Return "CLOTHING"
+		    Case ProductCategoryEnum.ClothingAndClosetStorage
+		      Return "CLOTHING_AND_CLOSET_STORAGE"
+		    Case ProductCategoryEnum.ClothingSets
+		      Return "CLOTHING_SETS"
+		    Case ProductCategoryEnum.Coasters
+		      Return "COASTERS"
+		    Case ProductCategoryEnum.CoatsAndJackets
+		      Return "COATS_AND_JACKETS"
+		    Case ProductCategoryEnum.CoffeeAndTeaCups
+		      Return "COFFEE_AND_TEA_CUPS"
+		    Case ProductCategoryEnum.CoffeeMakersAndEspressoMachines
+		      Return "COFFEE_MAKERS_AND_ESPRESSO_MACHINES"
+		    Case ProductCategoryEnum.ColoringBooks
+		      Return "COLORING_BOOKS"
+		    Case ProductCategoryEnum.Communications
+		      Return "COMMUNICATIONS"
+		    Case ProductCategoryEnum.ComputerAccessories
+		      Return "COMPUTER_ACCESSORIES"
+		    Case ProductCategoryEnum.CookieCutters
+		      Return "COOKIE_CUTTERS"
+		    Case ProductCategoryEnum.Cookware
+		      Return "COOKWARE"
+		    Case ProductCategoryEnum.CookwareAndBakeware
+		      Return "COOKWARE_AND_BAKEWARE"
+		    Case ProductCategoryEnum.CosmeticAndToiletryBags
+		      Return "COSMETIC_AND_TOILETRY_BAGS"
+		    Case ProductCategoryEnum.CostumesAndAccessories
+		      Return "COSTUMES_AND_ACCESSORIES"
+		    Case ProductCategoryEnum.CraftAdhesivesAndMagnets
+		      Return "CRAFT_ADHESIVES_AND_MAGNETS"
+		    Case ProductCategoryEnum.CraftCuttingTools
+		      Return "CRAFT_CUTTING_TOOLS"
+		    Case ProductCategoryEnum.CraftMolds
+		      Return "CRAFT_MOLDS"
+		    Case ProductCategoryEnum.CribsAndToddlerBeds
+		      Return "CRIBS_AND_TODDLER_BEDS"
+		    Case ProductCategoryEnum.CurtainAndDrapeRods
+		      Return "CURTAIN_AND_DRAPE_RODS"
+		    Case ProductCategoryEnum.CurtainsAndDrapes
+		      Return "CURTAINS_AND_DRAPES"
+		    Case ProductCategoryEnum.CuttingBoards
+		      Return "CUTTING_BOARDS"
+		    Case ProductCategoryEnum.Cycling
+		      Return "CYCLING"
+		    Case ProductCategoryEnum.DecorativeBowls
+		      Return "DECORATIVE_BOWLS"
+		    Case ProductCategoryEnum.DecorativeJars
+		      Return "DECORATIVE_JARS"
+		    Case ProductCategoryEnum.DecorativeTapestries
+		      Return "DECORATIVE_TAPESTRIES"
+		    Case ProductCategoryEnum.DecorativeTrays
+		      Return "DECORATIVE_TRAYS"
+		    Case ProductCategoryEnum.DeodorantsAndAntiperspirants
+		      Return "DEODORANTS_AND_ANTIPERSPIRANTS"
+		    Case ProductCategoryEnum.DeskAndShelfClocks
+		      Return "DESK_AND_SHELF_CLOCKS"
+		    Case ProductCategoryEnum.Desks
+		      Return "DESKS"
+		    Case ProductCategoryEnum.DiaperBags
+		      Return "DIAPER_BAGS"
+		    Case ProductCategoryEnum.Dinnerware
+		      Return "DINNERWARE"
+		    Case ProductCategoryEnum.Dishwashers
+		      Return "DISHWASHERS"
+		    Case ProductCategoryEnum.DogSupplies
+		      Return "DOG_SUPPLIES"
+		    Case ProductCategoryEnum.DoorMats
+		      Return "DOOR_MATS"
+		    Case ProductCategoryEnum.DrawingAndPainting
+		      Return "DRAWING_AND_PAINTING"
+		    Case ProductCategoryEnum.DressPants
+		      Return "DRESS_PANTS"
+		    Case ProductCategoryEnum.Dressers
+		      Return "DRESSERS"
+		    Case ProductCategoryEnum.Dresses
+		      Return "DRESSES"
+		    Case ProductCategoryEnum.DrillsAndScrewdrivers
+		      Return "DRILLS_AND_SCREWDRIVERS"
+		    Case ProductCategoryEnum.Drinkware
+		      Return "DRINKWARE"
+		    Case ProductCategoryEnum.DuffelBags
+		      Return "DUFFEL_BAGS"
+		    Case ProductCategoryEnum.DuvetCovers
+		      Return "DUVET_COVERS"
+		    Case ProductCategoryEnum.DvdsAndVideos
+		      Return "DVDS_AND_VIDEOS"
+		    Case ProductCategoryEnum.Earrings
+		      Return "EARRINGS"
+		    Case ProductCategoryEnum.ElectronicsAccessories
+		      Return "ELECTRONICS_ACCESSORIES"
+		    Case ProductCategoryEnum.EngagementAndWeddingRings
+		      Return "ENGAGEMENT_AND_WEDDING_RINGS"
+		    Case ProductCategoryEnum.EntertainmentCentersAndTvStands
+		      Return "ENTERTAINMENT_CENTERS_AND_TV_STANDS"
+		    Case ProductCategoryEnum.Erasers
+		      Return "ERASERS"
+		    Case ProductCategoryEnum.EyeMakeup
+		      Return "EYE_MAKEUP"
+		    Case ProductCategoryEnum.EyeShadow
+		      Return "EYE_SHADOW"
+		    Case ProductCategoryEnum.Eyeliners
+		      Return "EYELINERS"
+		    Case ProductCategoryEnum.Fabric
+		      Return "FABRIC"
+		    Case ProductCategoryEnum.FaceCoverings
+		      Return "FACE_COVERINGS"
+		    Case ProductCategoryEnum.FaceLotionsAndCreams
+		      Return "FACE_LOTIONS_AND_CREAMS"
+		    Case ProductCategoryEnum.FaceMakeup
+		      Return "FACE_MAKEUP"
+		    Case ProductCategoryEnum.FacialCleansers
+		      Return "FACIAL_CLEANSERS"
+		    Case ProductCategoryEnum.FacialMoisturizers
+		      Return "FACIAL_MOISTURIZERS"
+		    Case ProductCategoryEnum.FalseEyelashes
+		      Return "FALSE_EYELASHES"
+		    Case ProductCategoryEnum.Figurines
+		      Return "FIGURINES"
+		    Case ProductCategoryEnum.FireplaceAndWoodStoveAccessories
+		      Return "FIREPLACE_AND_WOOD_STOVE_ACCESSORIES"
+		    Case ProductCategoryEnum.Fireplaces
+		      Return "FIREPLACES"
+		    Case ProductCategoryEnum.Fishing
+		      Return "FISHING"
+		    Case ProductCategoryEnum.FlagsAndWindsocks
+		      Return "FLAGS_AND_WINDSOCKS"
+		    Case ProductCategoryEnum.Flats
+		      Return "FLATS"
+		    Case ProductCategoryEnum.Flatware
+		      Return "FLATWARE"
+		    Case ProductCategoryEnum.FloorLamps
+		      Return "FLOOR_LAMPS"
+		    Case ProductCategoryEnum.FlowerGirlDresses
+		      Return "FLOWER_GIRL_DRESSES"
+		    Case ProductCategoryEnum.FoodAndBeverageCarriers
+		      Return "FOOD_AND_BEVERAGE_CARRIERS"
+		    Case ProductCategoryEnum.FoodCookersAndSteamers
+		      Return "FOOD_COOKERS_AND_STEAMERS"
+		    Case ProductCategoryEnum.FoodItems
+		      Return "FOOD_ITEMS"
+		    Case ProductCategoryEnum.FoodMixersAndBlenders
+		      Return "FOOD_MIXERS_AND_BLENDERS"
+		    Case ProductCategoryEnum.FoodStorageContainers
+		      Return "FOOD_STORAGE_CONTAINERS"
+		    Case ProductCategoryEnum.FoodStorageSupplies
+		      Return "FOOD_STORAGE_SUPPLIES"
+		    Case ProductCategoryEnum.FoundationsAndConcealers
+		      Return "FOUNDATIONS_AND_CONCEALERS"
+		    Case ProductCategoryEnum.FountainsAndPonds
+		      Return "FOUNTAINS_AND_PONDS"
+		    Case ProductCategoryEnum.Fragrance
+		      Return "FRAGRANCE"
+		    Case ProductCategoryEnum.Furniture
+		      Return "FURNITURE"
+		    Case ProductCategoryEnum.FurnitureSets
+		      Return "FURNITURE_SETS"
+		    Case ProductCategoryEnum.Games
+		      Return "GAMES"
+		    Case ProductCategoryEnum.Gardening
+		      Return "GARDENING"
+		    Case ProductCategoryEnum.GardeningTools
+		      Return "GARDENING_TOOLS"
+		    Case ProductCategoryEnum.GlovesAndMittens
+		      Return "GLOVES_AND_MITTENS"
+		    Case ProductCategoryEnum.GluesAndTapes
+		      Return "GLUES_AND_TAPES"
+		    Case ProductCategoryEnum.GroomAndGroomsmenSuits
+		      Return "GROOM_AND_GROOMSMEN_SUITS"
+		    Case ProductCategoryEnum.Hair
+		      Return "HAIR"
+		    Case ProductCategoryEnum.HairAccessories
+		      Return "HAIR_ACCESSORIES"
+		    Case ProductCategoryEnum.HairCare
+		      Return "HAIR_CARE"
+		    Case ProductCategoryEnum.HairColor
+		      Return "HAIR_COLOR"
+		    Case ProductCategoryEnum.HairCombs
+		      Return "HAIR_COMBS"
+		    Case ProductCategoryEnum.HairPinsClawsAndClips
+		      Return "HAIR_PINS_CLAWS_AND_CLIPS"
+		    Case ProductCategoryEnum.HairRemoval
+		      Return "HAIR_REMOVAL"
+		    Case ProductCategoryEnum.HairTools
+		      Return "HAIR_TOOLS"
+		    Case ProductCategoryEnum.HairTreatment
+		      Return "HAIR_TREATMENT"
+		    Case ProductCategoryEnum.HairWreaths
+		      Return "HAIR_WREATHS"
+		    Case ProductCategoryEnum.HandAndFootCare
+		      Return "HAND_AND_FOOT_CARE"
+		    Case ProductCategoryEnum.HandSoapsAndSanitizers
+		      Return "HAND_SOAPS_AND_SANITIZERS"
+		    Case ProductCategoryEnum.Handbags
+		      Return "HANDBAGS"
+		    Case ProductCategoryEnum.Handkerchiefs
+		      Return "HANDKERCHIEFS"
+		    Case ProductCategoryEnum.HardwareSupplies
+		      Return "HARDWARE_SUPPLIES"
+		    Case ProductCategoryEnum.Hats
+		      Return "HATS"
+		    Case ProductCategoryEnum.HeadboardsAndFootboards
+		      Return "HEADBOARDS_AND_FOOTBOARDS"
+		    Case ProductCategoryEnum.Headwear
+		      Return "HEADWEAR"
+		    Case ProductCategoryEnum.Highlighters
+		      Return "HIGHLIGHTERS"
+		    Case ProductCategoryEnum.HobbiesAndCreativeArts
+		      Return "HOBBIES_AND_CREATIVE_ARTS"
+		    Case ProductCategoryEnum.HomeAccessories
+		      Return "HOME_ACCESSORIES"
+		    Case ProductCategoryEnum.HomeDecorDecals
+		      Return "HOME_DECOR_DECALS"
+		    Case ProductCategoryEnum.HomeFragranceAccessories
+		      Return "HOME_FRAGRANCE_ACCESSORIES"
+		    Case ProductCategoryEnum.HomeFragrances
+		      Return "HOME_FRAGRANCES"
+		    Case ProductCategoryEnum.HomeImprovementToolsAndSupplies
+		      Return "HOME_IMPROVEMENT_TOOLS_AND_SUPPLIES"
+		    Case ProductCategoryEnum.Hosiery
+		      Return "HOSIERY"
+		    Case ProductCategoryEnum.HouseholdAppliances
+		      Return "HOUSEHOLD_APPLIANCES"
+		    Case ProductCategoryEnum.HouseholdSupplies
+		      Return "HOUSEHOLD_SUPPLIES"
+		    Case ProductCategoryEnum.Incense
+		      Return "INCENSE"
+		    Case ProductCategoryEnum.IndoorGames
+		      Return "INDOOR_GAMES"
+		    Case ProductCategoryEnum.Jeans
+		      Return "JEANS"
+		    Case ProductCategoryEnum.JewelryAndWatchAccessories
+		      Return "JEWELRY_AND_WATCH_ACCESSORIES"
+		    Case ProductCategoryEnum.JewelryAndWatches
+		      Return "JEWELRY_AND_WATCHES"
+		    Case ProductCategoryEnum.JewelrySets
+		      Return "JEWELRY_SETS"
+		    Case ProductCategoryEnum.JumpsuitsAndRompers
+		      Return "JUMPSUITS_AND_ROMPERS"
+		    Case ProductCategoryEnum.Keychains
+		      Return "KEYCHAINS"
+		    Case ProductCategoryEnum.KitchenAndDining
+		      Return "KITCHEN_AND_DINING"
+		    Case ProductCategoryEnum.KitchenAndDiningRoomTables
+		      Return "KITCHEN_AND_DINING_ROOM_TABLES"
+		    Case ProductCategoryEnum.KitchenAppliances
+		      Return "KITCHEN_APPLIANCES"
+		    Case ProductCategoryEnum.KitchenKnives
+		      Return "KITCHEN_KNIVES"
+		    Case ProductCategoryEnum.KitchenLinens
+		      Return "KITCHEN_LINENS"
+		    Case ProductCategoryEnum.KitchenMats
+		      Return "KITCHEN_MATS"
+		    Case ProductCategoryEnum.KitchenOrganizers
+		      Return "KITCHEN_ORGANIZERS"
+		    Case ProductCategoryEnum.KitchenToolsAndUtensils
+		      Return "KITCHEN_TOOLS_AND_UTENSILS"
+		    Case ProductCategoryEnum.KitchenTowels
+		      Return "KITCHEN_TOWELS"
+		    Case ProductCategoryEnum.KnittingAndCrochet
+		      Return "KNITTING_AND_CROCHET"
+		    Case ProductCategoryEnum.KnittingAndCrochetTools
+		      Return "KNITTING_AND_CROCHET_TOOLS"
+		    Case ProductCategoryEnum.LampShades
+		      Return "LAMP_SHADES"
+		    Case ProductCategoryEnum.Lamps
+		      Return "LAMPS"
+		    Case ProductCategoryEnum.Lanyards
+		      Return "LANYARDS"
+		    Case ProductCategoryEnum.LaundryHampersAndSupplies
+		      Return "LAUNDRY_HAMPERS_AND_SUPPLIES"
+		    Case ProductCategoryEnum.LawnAndGarden
+		      Return "LAWN_AND_GARDEN"
+		    Case ProductCategoryEnum.LawnAndGardenDecor
+		      Return "LAWN_AND_GARDEN_DECOR"
+		    Case ProductCategoryEnum.LawnOrnamentsAndGardenSculptures
+		      Return "LAWN_ORNAMENTS_AND_GARDEN_SCULPTURES"
+		    Case ProductCategoryEnum.Leggings
+		      Return "LEGGINGS"
+		    Case ProductCategoryEnum.LeotardsAndUnitards
+		      Return "LEOTARDS_AND_UNITARDS"
+		    Case ProductCategoryEnum.Lighting
+		      Return "LIGHTING"
+		    Case ProductCategoryEnum.LightingAccessories
+		      Return "LIGHTING_ACCESSORIES"
+		    Case ProductCategoryEnum.LightingFixtures
+		      Return "LIGHTING_FIXTURES"
+		    Case ProductCategoryEnum.LipBalms
+		      Return "LIP_BALMS"
+		    Case ProductCategoryEnum.LipCare
+		      Return "LIP_CARE"
+		    Case ProductCategoryEnum.LipMakeup
+		      Return "LIP_MAKEUP"
+		    Case ProductCategoryEnum.LipsticksAndLipGlosses
+		      Return "LIPSTICKS_AND_LIP_GLOSSES"
+		    Case ProductCategoryEnum.MagazinesAndNewspapers
+		      Return "MAGAZINES_AND_NEWSPAPERS"
+		    Case ProductCategoryEnum.Magnets
+		      Return "MAGNETS"
+		    Case ProductCategoryEnum.Makeup
+		      Return "MAKEUP"
+		    Case ProductCategoryEnum.MakeupTools
+		      Return "MAKEUP_TOOLS"
+		    Case ProductCategoryEnum.Mascaras
+		      Return "MASCARAS"
+		    Case ProductCategoryEnum.Mattresses
+		      Return "MATTRESSES"
+		    Case ProductCategoryEnum.MeasuresAndRulers
+		      Return "MEASURES_AND_RULERS"
+		    Case ProductCategoryEnum.MeasuringToolsAndSensors
+		      Return "MEASURING_TOOLS_AND_SENSORS"
+		    Case ProductCategoryEnum.MessengerBags
+		      Return "MESSENGER_BAGS"
+		    Case ProductCategoryEnum.Mirrors
+		      Return "MIRRORS"
+		    Case ProductCategoryEnum.MusicAndSoundRecordings
+		      Return "MUSIC_AND_SOUND_RECORDINGS"
+		    Case ProductCategoryEnum.NailArt
+		      Return "NAIL_ART"
+		    Case ProductCategoryEnum.NailArtKitAndTools
+		      Return "NAIL_ART_KIT_AND_TOOLS"
+		    Case ProductCategoryEnum.NailCare
+		      Return "NAIL_CARE"
+		    Case ProductCategoryEnum.NailPolishes
+		      Return "NAIL_POLISHES"
+		    Case ProductCategoryEnum.Nails
+		      Return "NAILS"
+		    Case ProductCategoryEnum.Necklaces
+		      Return "NECKLACES"
+		    Case ProductCategoryEnum.Neckties
+		      Return "NECKTIES"
+		    Case ProductCategoryEnum.NightLightsAndAmbientLighting
+		      Return "NIGHT_LIGHTS_AND_AMBIENT_LIGHTING"
+		    Case ProductCategoryEnum.Nightstands
+		      Return "NIGHTSTANDS"
+		    Case ProductCategoryEnum.NoveltySigns
+		      Return "NOVELTY_SIGNS"
+		    Case ProductCategoryEnum.OnePieces
+		      Return "ONE_PIECES"
+		    Case ProductCategoryEnum.Onesies
+		      Return "ONESIES"
+		    Case ProductCategoryEnum.Ottomans
+		      Return "OTTOMANS"
+		    Case ProductCategoryEnum.OutdoorFurniture
+		      Return "OUTDOOR_FURNITURE"
+		    Case ProductCategoryEnum.OutdoorFurnitureSets
+		      Return "OUTDOOR_FURNITURE_SETS"
+		    Case ProductCategoryEnum.OutdoorGames
+		      Return "OUTDOOR_GAMES"
+		    Case ProductCategoryEnum.OutdoorGrills
+		      Return "OUTDOOR_GRILLS"
+		    Case ProductCategoryEnum.OutdoorLiving
+		      Return "OUTDOOR_LIVING"
+		    Case ProductCategoryEnum.OutdoorPlayEquipment
+		      Return "OUTDOOR_PLAY_EQUIPMENT"
+		    Case ProductCategoryEnum.OutdoorRecreation
+		      Return "OUTDOOR_RECREATION"
+		    Case ProductCategoryEnum.OutdoorRugs
+		      Return "OUTDOOR_RUGS"
+		    Case ProductCategoryEnum.OutdoorSeating
+		      Return "OUTDOOR_SEATING"
+		    Case ProductCategoryEnum.OutdoorStructures
+		      Return "OUTDOOR_STRUCTURES"
+		    Case ProductCategoryEnum.OutdoorTables
+		      Return "OUTDOOR_TABLES"
+		    Case ProductCategoryEnum.Outerwear
+		      Return "OUTERWEAR"
+		    Case ProductCategoryEnum.OvensAndCooktops
+		      Return "OVENS_AND_COOKTOPS"
+		    Case ProductCategoryEnum.Overalls
+		      Return "OVERALLS"
+		    Case ProductCategoryEnum.OxfordsAndLoafers
+		      Return "OXFORDS_AND_LOAFERS"
+		    Case ProductCategoryEnum.PaintAndPaintTools
+		      Return "PAINT_AND_PAINT_TOOLS"
+		    Case ProductCategoryEnum.Pants
+		      Return "PANTS"
+		    Case ProductCategoryEnum.PaperCrafts
+		      Return "PAPER_CRAFTS"
+		    Case ProductCategoryEnum.ParasolsAndRainUmbrellas
+		      Return "PARASOLS_AND_RAIN_UMBRELLAS"
+		    Case ProductCategoryEnum.PartyAndCelebration
+		      Return "PARTY_AND_CELEBRATION"
+		    Case ProductCategoryEnum.PendantLights
+		      Return "PENDANT_LIGHTS"
+		    Case ProductCategoryEnum.PensAndPencils
+		      Return "PENS_AND_PENCILS"
+		    Case ProductCategoryEnum.PerfumesAndColognes
+		      Return "PERFUMES_AND_COLOGNES"
+		    Case ProductCategoryEnum.PetCarriersAndCrates
+		      Return "PET_CARRIERS_AND_CRATES"
+		    Case ProductCategoryEnum.PetCollarsAndHarnesses
+		      Return "PET_COLLARS_AND_HARNESSES"
+		    Case ProductCategoryEnum.PetSupplies
+		      Return "PET_SUPPLIES"
+		    Case ProductCategoryEnum.PhotoAlbumsAndStorage
+		      Return "PHOTO_ALBUMS_AND_STORAGE"
+		    Case ProductCategoryEnum.PictureFrames
+		      Return "PICTURE_FRAMES"
+		    Case ProductCategoryEnum.PillowcasesAndShams
+		      Return "PILLOWCASES_AND_SHAMS"
+		    Case ProductCategoryEnum.PinbackButtons
+		      Return "PINBACK_BUTTONS"
+		    Case ProductCategoryEnum.Placemats
+		      Return "PLACEMATS"
+		    Case ProductCategoryEnum.Plants
+		      Return "PLANTS"
+		    Case ProductCategoryEnum.PonytailHolders
+		      Return "PONYTAIL_HOLDERS"
+		    Case ProductCategoryEnum.PoolAndSpaAccessories
+		      Return "POOL_AND_SPA_ACCESSORIES"
+		    Case ProductCategoryEnum.PostersPrintsAndVisualArtwork
+		      Return "POSTERS_PRINTS_AND_VISUAL_ARTWORK"
+		    Case ProductCategoryEnum.PotsAndPlanters
+		      Return "POTS_AND_PLANTERS"
+		    Case ProductCategoryEnum.PotteryAndSculpting
+		      Return "POTTERY_AND_SCULPTING"
+		    Case ProductCategoryEnum.PrimersAndMakeupSetters
+		      Return "PRIMERS_AND_MAKEUP_SETTERS"
+		    Case ProductCategoryEnum.Pumps
+		      Return "PUMPS"
+		    Case ProductCategoryEnum.Puzzles
+		      Return "PUZZLES"
+		    Case ProductCategoryEnum.QuiltsAndComforters
+		      Return "QUILTS_AND_COMFORTERS"
+		    Case ProductCategoryEnum.RazorsAndShavingTools
+		      Return "RAZORS_AND_SHAVING_TOOLS"
+		    Case ProductCategoryEnum.Rings
+		      Return "RINGS"
+		    Case ProductCategoryEnum.Rugs
+		      Return "RUGS"
+		    Case ProductCategoryEnum.RunnerRugs
+		      Return "RUNNER_RUGS"
+		    Case ProductCategoryEnum.Sandals
+		      Return "SANDALS"
+		    Case ProductCategoryEnum.Sashes
+		      Return "SASHES"
+		    Case ProductCategoryEnum.Saws
+		      Return "SAWS"
+		    Case ProductCategoryEnum.ScarvesAndShawls
+		      Return "SCARVES_AND_SHAWLS"
+		    Case ProductCategoryEnum.SculpturesAndStatues
+		      Return "SCULPTURES_AND_STATUES"
+		    Case ProductCategoryEnum.SeasonalAndHolidayDecorations
+		      Return "SEASONAL_AND_HOLIDAY_DECORATIONS"
+		    Case ProductCategoryEnum.Seating
+		      Return "SEATING"
+		    Case ProductCategoryEnum.SerumsAndEssences
+		      Return "SERUMS_AND_ESSENCES"
+		    Case ProductCategoryEnum.Serveware
+		      Return "SERVEWARE"
+		    Case ProductCategoryEnum.SewingMachines
+		      Return "SEWING_MACHINES"
+		    Case ProductCategoryEnum.SewingPatterns
+		      Return "SEWING_PATTERNS"
+		    Case ProductCategoryEnum.ShampooAndConditioner
+		      Return "SHAMPOO_AND_CONDITIONER"
+		    Case ProductCategoryEnum.ShoeAccessories
+		      Return "SHOE_ACCESSORIES"
+		    Case ProductCategoryEnum.Shoes
+		      Return "SHOES"
+		    Case ProductCategoryEnum.ShoppingTotes
+		      Return "SHOPPING_TOTES"
+		    Case ProductCategoryEnum.Shorts
+		      Return "SHORTS"
+		    Case ProductCategoryEnum.ShowerCurtains
+		      Return "SHOWER_CURTAINS"
+		    Case ProductCategoryEnum.Skincare
+		      Return "SKINCARE"
+		    Case ProductCategoryEnum.SkincareMasksAndPeels
+		      Return "SKINCARE_MASKS_AND_PEELS"
+		    Case ProductCategoryEnum.Skirts
+		      Return "SKIRTS"
+		    Case ProductCategoryEnum.SleepwearAndLoungewear
+		      Return "SLEEPWEAR_AND_LOUNGEWEAR"
+		    Case ProductCategoryEnum.SlipcoversAndCushions
+		      Return "SLIPCOVERS_AND_CUSHIONS"
+		    Case ProductCategoryEnum.Slippers
+		      Return "SLIPPERS"
+		    Case ProductCategoryEnum.SneakersAndAthleticShoes
+		      Return "SNEAKERS_AND_ATHLETIC_SHOES"
+		    Case ProductCategoryEnum.SocksAndTights
+		      Return "SOCKS_AND_TIGHTS"
+		    Case ProductCategoryEnum.Sofas
+		      Return "SOFAS"
+		    Case ProductCategoryEnum.SportsUniforms
+		      Return "SPORTS_UNIFORMS"
+		    Case ProductCategoryEnum.Stemware
+		      Return "STEMWARE"
+		    Case ProductCategoryEnum.Stockings
+		      Return "STOCKINGS"
+		    Case ProductCategoryEnum.StorageAndOrganization
+		      Return "STORAGE_AND_ORGANIZATION"
+		    Case ProductCategoryEnum.StorageCabinetsAndLockers
+		      Return "STORAGE_CABINETS_AND_LOCKERS"
+		    Case ProductCategoryEnum.StorageHooksAndRacks
+		      Return "STORAGE_HOOKS_AND_RACKS"
+		    Case ProductCategoryEnum.Suitcases
+		      Return "SUITCASES"
+		    Case ProductCategoryEnum.Suits
+		      Return "SUITS"
+		    Case ProductCategoryEnum.SuitsAndSuitSeparates
+		      Return "SUITS_AND_SUIT_SEPARATES"
+		    Case ProductCategoryEnum.GlassesAndSunglasses
+		      Return "GLASSES_AND_SUNGLASSES"
+		    Case ProductCategoryEnum.Sunscreen
+		      Return "SUNSCREEN"
+		    Case ProductCategoryEnum.SweatersAndCardigans
+		      Return "SWEATERS_AND_CARDIGANS"
+		    Case ProductCategoryEnum.SweatshirtsAndHoodies
+		      Return "SWEATSHIRTS_AND_HOODIES"
+		    Case ProductCategoryEnum.Swimwear
+		      Return "SWIMWEAR"
+		    Case ProductCategoryEnum.TShirts
+		      Return "T_SHIRTS"
+		    Case ProductCategoryEnum.TableLamps
+		      Return "TABLE_LAMPS"
+		    Case ProductCategoryEnum.TableRunners
+		      Return "TABLE_RUNNERS"
+		    Case ProductCategoryEnum.Tablecloths
+		      Return "TABLECLOTHS"
+		    Case ProductCategoryEnum.Tables
+		      Return "TABLES"
+		    Case ProductCategoryEnum.Tableware
+		      Return "TABLEWARE"
+		    Case ProductCategoryEnum.TankTops
+		      Return "TANK_TOPS"
+		    Case ProductCategoryEnum.TanningOilsAndLotions
+		      Return "TANNING_OILS_AND_LOTIONS"
+		    Case ProductCategoryEnum.TeethWhitening
+		      Return "TEETH_WHITENING"
+		    Case ProductCategoryEnum.TeethWhiteningTools
+		      Return "TEETH_WHITENING_TOOLS"
+		    Case ProductCategoryEnum.Telephony
+		      Return "TELEPHONY"
+		    Case ProductCategoryEnum.TextileAndSewing
+		      Return "TEXTILE_AND_SEWING"
+		    Case ProductCategoryEnum.ThreadAndYarn
+		      Return "THREAD_AND_YARN"
+		    Case ProductCategoryEnum.ThrowPillows
+		      Return "THROW_PILLOWS"
+		    Case ProductCategoryEnum.Tiaras
+		      Return "TIARAS"
+		    Case ProductCategoryEnum.ToiletPaperHolders
+		      Return "TOILET_PAPER_HOLDERS"
+		    Case ProductCategoryEnum.TonersAndAstringents
+		      Return "TONERS_AND_ASTRINGENTS"
+		    Case ProductCategoryEnum.ToolStorageAndOrganization
+		      Return "TOOL_STORAGE_AND_ORGANIZATION"
+		    Case ProductCategoryEnum.Tools
+		      Return "TOOLS"
+		    Case ProductCategoryEnum.Tops
+		      Return "TOPS"
+		    Case ProductCategoryEnum.TowelRacksAndHolders
+		      Return "TOWEL_RACKS_AND_HOLDERS"
+		    Case ProductCategoryEnum.Toys
+		      Return "TOYS"
+		    Case ProductCategoryEnum.TraditionalAndCeremonialClothing
+		      Return "TRADITIONAL_AND_CEREMONIAL_CLOTHING"
+		    Case ProductCategoryEnum.TumblersAndWaterBottles
+		      Return "TUMBLERS_AND_WATER_BOTTLES"
+		    Case ProductCategoryEnum.Uniforms
+		      Return "UNIFORMS"
+		    Case ProductCategoryEnum.Vases
+		      Return "VASES"
+		    Case ProductCategoryEnum.VehiclePartsAndAccessories
+		      Return "VEHICLE_PARTS_AND_ACCESSORIES"
+		    Case ProductCategoryEnum.Veils
+		      Return "VEILS"
+		    Case ProductCategoryEnum.WallClocks
+		      Return "WALL_CLOCKS"
+		    Case ProductCategoryEnum.WallLightFixtures
+		      Return "WALL_LIGHT_FIXTURES"
+		    Case ProductCategoryEnum.WallPaints
+		      Return "WALL_PAINTS"
+		    Case ProductCategoryEnum.WallShelvesAndLedges
+		      Return "WALL_SHELVES_AND_LEDGES"
+		    Case ProductCategoryEnum.WalletsAndCardCases
+		      Return "WALLETS_AND_CARD_CASES"
+		    Case ProductCategoryEnum.Wallpapers
+		      Return "WALLPAPERS"
+		    Case ProductCategoryEnum.Watches
+		      Return "WATCHES"
+		    Case ProductCategoryEnum.WateringAndIrrigation
+		      Return "WATERING_AND_IRRIGATION"
+		    Case ProductCategoryEnum.WeddingCeremonyDecor
+		      Return "WEDDING_CEREMONY_DECOR"
+		    Case ProductCategoryEnum.WeddingClothing
+		      Return "WEDDING_CLOTHING"
+		    Case ProductCategoryEnum.WeddingDecor
+		      Return "WEDDING_DECOR"
+		    Case ProductCategoryEnum.WeddingDress
+		      Return "WEDDING_DRESS"
+		    Case ProductCategoryEnum.WeddingGifts
+		      Return "WEDDING_GIFTS"
+		    Case ProductCategoryEnum.WeddingStationery
+		      Return "WEDDING_STATIONERY"
+		    Case ProductCategoryEnum.WeddingTableDecor
+		      Return "WEDDING_TABLE_DECOR"
+		    Case ProductCategoryEnum.WigsAndHairExtensions
+		      Return "WIGS_AND_HAIR_EXTENSIONS"
+		    Case ProductCategoryEnum.WindowBlindsAndShades
+		      Return "WINDOW_BLINDS_AND_SHADES"
+		    Case ProductCategoryEnum.WindowTreatmentAccessories
+		      Return "WINDOW_TREATMENT_ACCESSORIES"
+		    Case ProductCategoryEnum.WindowTreatments
+		      Return "WINDOW_TREATMENTS"
+		    Case ProductCategoryEnum.WineRacks
+		      Return "WINE_RACKS"
+		    Case ProductCategoryEnum.WoodBoardsAndPlanks
+		      Return "WOOD_BOARDS_AND_PLANKS"
+		    Case ProductCategoryEnum.WoodworkingMaterials
+		      Return "WOODWORKING_MATERIALS"
+		    Case ProductCategoryEnum.WoodworkingPlans
+		      Return "WOODWORKING_PLANS"
+		    Case ProductCategoryEnum.WorkBenches
+		      Return "WORK_BENCHES"
+		    Case ProductCategoryEnum.WreathsAndGarlands
+		      Return "WREATHS_AND_GARLANDS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function ProductCategoryRegionToString(value As ProductCategoryRegion) As String
+		  Select Case value
+		    Case ProductCategoryRegion.Us
+		      Return "US"
+		    Case ProductCategoryRegion.GbPlusIe
+		      Return "GB+IE"
+		    Case ProductCategoryRegion.Ca
+		      Return "CA"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function ProductGroupSummaryStatusToString(value As ProductGroupSummaryStatus) As String
 		  Select Case value
 		    Case ProductGroupSummaryStatus.Running
@@ -3723,10 +5709,69 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function PromotionTypeToString(value As PromotionType) As String
+		  Select Case value
+		    Case PromotionType.Variable
+		      Return "VARIABLE"
+		    Case PromotionType.Sitewide
+		      Return "SITEWIDE"
+		    Case PromotionType.Checkout
+		      Return "CHECKOUT"
+		    Case PromotionType.SaveXOnY
+		      Return "SAVE_X_ON_Y"
+		    Case PromotionType.BuyXGetY
+		      Return "BUY_X_GET_Y"
+		    Case PromotionType.SpendXSaveY
+		      Return "SPEND_X_SAVE_Y"
+		    Case PromotionType.FreeShipping
+		      Return "FREE_SHIPPING"
+		    Case PromotionType.FreeShippingMinimum
+		      Return "FREE_SHIPPING_MINIMUM"
+		    Case PromotionType.FreeShippingWithDiscount
+		      Return "FREE_SHIPPING_WITH_DISCOUNT"
+		    Case PromotionType.SitewideInStores
+		      Return "SITEWIDE_IN_STORES"
+		    Case PromotionType.ExtraPercentOff
+		      Return "EXTRA_PERCENT_OFF"
+		    Case PromotionType.GiftWithPurchase
+		      Return "GIFT_WITH_PURCHASE"
+		    Case PromotionType.GiftWithPurchaseMinimum
+		      Return "GIFT_WITH_PURCHASE_MINIMUM"
+		    Case PromotionType.Fixed
+		      Return "FIXED"
+		    Case PromotionType.PercentOffClearance
+		      Return "PERCENT_OFF_CLEARANCE"
+		    Case PromotionType.XOffY
+		      Return "X_OFF_Y"
+		    Case PromotionType.GiftWithFirstPurchase
+		      Return "GIFT_WITH_FIRST_PURCHASE"
+		    Case PromotionType.BuyXGetOneFree
+		      Return "BUY_X_GET_ONE_FREE"
+		    Case PromotionType.CashBack
+		      Return "CASH_BACK"
+		    Case PromotionType.PointsOnAllPurchases
+		      Return "POINTS_ON_ALL_PURCHASES"
+		    Case PromotionType.Bonus
+		      Return "BONUS"
+		    Case PromotionType.PointsWithPurchase
+		      Return "POINTS_WITH_PURCHASE"
+		    Case PromotionType.Custom
+		      Return "CUSTOM"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function ReportingColumnAsyncToString(value As ReportingColumnAsync) As String
 		  Select Case value
 		    Case ReportingColumnAsync.SpendInMicroDollar
 		      Return "SPEND_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.AdsCreditSpendInMicroDollar
+		      Return "ADS_CREDIT_SPEND_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.AdsCreditSpendInDollar
+		      Return "ADS_CREDIT_SPEND_IN_DOLLAR"
 		    Case ReportingColumnAsync.PaidImpression
 		      Return "PAID_IMPRESSION"
 		    Case ReportingColumnAsync.SpendInDollar
@@ -3743,12 +5788,18 @@ Protected Module Models
 		      Return "ECTR"
 		    Case ReportingColumnAsync.OutboundCtr
 		      Return "OUTBOUND_CTR"
+		    Case ReportingColumnAsync.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ReportingColumnAsync.CostPerOutboundClick
 		      Return "COST_PER_OUTBOUND_CLICK"
 		    Case ReportingColumnAsync.CampaignName
 		      Return "CAMPAIGN_NAME"
 		    Case ReportingColumnAsync.CampaignStatus
 		      Return "CAMPAIGN_STATUS"
+		    Case ReportingColumnAsync.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
+		    Case ReportingColumnAsync.CampaignCustomLabels
+		      Return "CAMPAIGN_CUSTOM_LABELS"
 		    Case ReportingColumnAsync.PinPromotionStatus
 		      Return "PIN_PROMOTION_STATUS"
 		    Case ReportingColumnAsync.AdStatus
@@ -3799,12 +5850,44 @@ Protected Module Models
 		      Return "AD_GROUP_NAME"
 		    Case ReportingColumnAsync.AdGroupStatus
 		      Return "AD_GROUP_STATUS"
+		    Case ReportingColumnAsync.AdGroupBudgetType
+		      Return "AD_GROUP_BUDGET_TYPE"
+		    Case ReportingColumnAsync.AdGroupBudgetInLocalCurrency
+		      Return "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
 		    Case ReportingColumnAsync.AdGroupEntityStatus
 		      Return "AD_GROUP_ENTITY_STATUS"
+		    Case ReportingColumnAsync.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
 		    Case ReportingColumnAsync.ProductGroupId
 		      Return "PRODUCT_GROUP_ID"
 		    Case ReportingColumnAsync.ProductGroupStatus
 		      Return "PRODUCT_GROUP_STATUS"
+		    Case ReportingColumnAsync.PromoId
+		      Return "PROMO_ID"
+		    Case ReportingColumnAsync.PromoName
+		      Return "PROMO_NAME"
+		    Case ReportingColumnAsync.ProductItemName
+		      Return "PRODUCT_ITEM_NAME"
+		    Case ReportingColumnAsync.ProductItemImageUrl
+		      Return "PRODUCT_ITEM_IMAGE_URL"
+		    Case ReportingColumnAsync.ProductItemPrice
+		      Return "PRODUCT_ITEM_PRICE"
+		    Case ReportingColumnAsync.ProductItemProductUrl
+		      Return "PRODUCT_ITEM_PRODUCT_URL"
+		    Case ReportingColumnAsync.ProductItemPinUrl
+		      Return "PRODUCT_ITEM_PIN_URL"
+		    Case ReportingColumnAsync.ProductItemBrand
+		      Return "PRODUCT_ITEM_BRAND"
+		    Case ReportingColumnAsync.ProductItemDescription
+		      Return "PRODUCT_ITEM_DESCRIPTION"
+		    Case ReportingColumnAsync.ProductItemSalePrice
+		      Return "PRODUCT_ITEM_SALE_PRICE"
+		    Case ReportingColumnAsync.ProductItemProductType
+		      Return "PRODUCT_ITEM_PRODUCT_TYPE"
+		    Case ReportingColumnAsync.ProductItemProductCategory
+		      Return "PRODUCT_ITEM_PRODUCT_CATEGORY"
+		    Case ReportingColumnAsync.ProductItemCurrency
+		      Return "PRODUCT_ITEM_CURRENCY"
 		    Case ReportingColumnAsync.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ReportingColumnAsync.OrderLineName
@@ -3839,6 +5922,8 @@ Protected Module Models
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
 		    Case ReportingColumnAsync.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ReportingColumnAsync.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ReportingColumnAsync.TotalEngagementPageVisit
 		      Return "TOTAL_ENGAGEMENT_PAGE_VISIT"
 		    Case ReportingColumnAsync.TotalEngagementSignup
@@ -4051,8 +6136,14 @@ Protected Module Models
 		      Return "AD_NAME"
 		    Case ReportingColumnAsync.CampaignLifetimeSpendCap
 		      Return "CAMPAIGN_LIFETIME_SPEND_CAP"
+		    Case ReportingColumnAsync.AdGroupOptimization
+		      Return "AD_GROUP_OPTIMIZATION"
 		    Case ReportingColumnAsync.CampaignDailySpendCap
 		      Return "CAMPAIGN_DAILY_SPEND_CAP"
+		    Case ReportingColumnAsync.CampaignBudgetOptimization
+		      Return "CAMPAIGN_BUDGET_OPTIMIZATION"
+		    Case ReportingColumnAsync.IsPremiereCampaign
+		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ReportingColumnAsync.TotalPageVisitDesktopActionToDesktopConversion
 		      Return "TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION"
 		    Case ReportingColumnAsync.TotalPageVisitDesktopActionToMobileConversion
@@ -4271,6 +6362,10 @@ Protected Module Models
 		      Return "TOTAL_VIEW_CATEGORY"
 		    Case ReportingColumnAsync.TotalAppInstall
 		      Return "TOTAL_APP_INSTALL"
+		    Case ReportingColumnAsync.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ReportingColumnAsync.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
 		    Case ReportingColumnAsync.TotalSignupValueInMicroDollar
 		      Return "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
 		    Case ReportingColumnAsync.TotalCheckoutValueInMicroDollar
@@ -4301,8 +6396,14 @@ Protected Module Models
 		      Return "CHECKOUT_ROAS"
 		    Case ReportingColumnAsync.CustomRoas
 		      Return "CUSTOM_ROAS"
+		    Case ReportingColumnAsync.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ReportingColumnAsync.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
 		    Case ReportingColumnAsync.Video3secViews1
 		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ReportingColumnAsync.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ReportingColumnAsync.VideoP100Complete1
 		      Return "VIDEO_P100_COMPLETE_1"
 		    Case ReportingColumnAsync.VideoP0Combined1
@@ -4319,6 +6420,8 @@ Protected Module Models
 		      Return "VIDEO_MRC_VIEWS_1"
 		    Case ReportingColumnAsync.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ReportingColumnAsync.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ReportingColumnAsync.VideoP100Complete2
 		      Return "VIDEO_P100_COMPLETE_2"
 		    Case ReportingColumnAsync.VideoP0Combined2
@@ -4337,6 +6440,8 @@ Protected Module Models
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ReportingColumnAsync.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ReportingColumnAsync.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ReportingColumnAsync.CpvInMicroDollar
 		      Return "CPV_IN_MICRO_DOLLAR"
 		    Case ReportingColumnAsync.EcpvInDollar
@@ -4351,6 +6456,8 @@ Protected Module Models
 		      Return "ECPCV_P95_IN_DOLLAR"
 		    Case ReportingColumnAsync.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ReportingColumnAsync.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ReportingColumnAsync.TotalVideoP100Complete
 		      Return "TOTAL_VIDEO_P100_COMPLETE"
 		    Case ReportingColumnAsync.TotalVideoP0Combined
@@ -4803,6 +6910,22 @@ Protected Module Models
 		      Return "TOTAL_INAPP_VIEW_APP_INSTALL"
 		    Case ReportingColumnAsync.TotalInappViewAppInstallValueInMicroDollar
 		      Return "TOTAL_INAPP_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ReportingColumnAsync.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
+		    Case ReportingColumnAsync.IdeaPinPageForward1
+		      Return "IDEA_PIN_PAGE_FORWARD_1"
+		    Case ReportingColumnAsync.IdeaPinPageForward2
+		      Return "IDEA_PIN_PAGE_FORWARD_2"
+		    Case ReportingColumnAsync.IdeaPinPageBackward1
+		      Return "IDEA_PIN_PAGE_BACKWARD_1"
+		    Case ReportingColumnAsync.IdeaPinPageBackward2
+		      Return "IDEA_PIN_PAGE_BACKWARD_2"
+		    Case ReportingColumnAsync.TotalIdeaPinPageForward
+		      Return "TOTAL_IDEA_PIN_PAGE_FORWARD"
+		    Case ReportingColumnAsync.TotalIdeaPinPageBackward
+		      Return "TOTAL_IDEA_PIN_PAGE_BACKWARD"
 		    Case ReportingColumnAsync.IdeaPinProductTagVisit1
 		      Return "IDEA_PIN_PRODUCT_TAG_VISIT_1"
 		    Case ReportingColumnAsync.IdeaPinProductTagVisit2
@@ -4876,6 +6999,19 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function ReportingTimeZoneToString(value As ReportingTimeZone) As String
+		  Select Case value
+		    Case ReportingTimeZone.PinterestTimeZone
+		      Return "PINTEREST_TIME_ZONE"
+		    Case ReportingTimeZone.AdAccountTimeZone
+		      Return "AD_ACCOUNT_TIME_ZONE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function RoleToString(value As Role) As String
 		  Select Case value
 		    Case Role.Unknown
@@ -4890,12 +7026,18 @@ Protected Module Models
 		      Return "SOS_READER"
 		    Case Role.FinanceManager
 		      Return "FINANCE_MANAGER"
+		    Case Role.FinanceEdit
+		      Return "FINANCE_EDIT"
+		    Case Role.FinanceView
+		      Return "FINANCE_VIEW"
 		    Case Role.AudienceManager
 		      Return "AUDIENCE_MANAGER"
 		    Case Role.CampaignManager
 		      Return "CAMPAIGN_MANAGER"
 		    Case Role.CatalogsManager
 		      Return "CATALOGS_MANAGER"
+		    Case Role.CatalogsViewer
+		      Return "CATALOGS_VIEWER"
 		    Case Role.RestrictedOwner
 		      Return "RESTRICTED_OWNER"
 		    Case Role.ProfileManager
@@ -4910,6 +7052,33 @@ Protected Module Models
 		      Return "BIZ_PINNER_LIST_SHARER"
 		    Case Role.ResourceConversionTagsReader
 		      Return "RESOURCE_CONVERSION_TAGS_READER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function SourcePlatformOptionsToString(value As SourcePlatformOptions) As String
+		  Select Case value
+		    Case SourcePlatformOptions.Web
+		      Return "WEB"
+		    Case SourcePlatformOptions.Mobile
+		      Return "MOBILE"
+		    Case SourcePlatformOptions.MobileAndroid
+		      Return "MOBILE_ANDROID"
+		    Case SourcePlatformOptions.MobileIos
+		      Return "MOBILE_IOS"
+		    Case SourcePlatformOptions.Offline
+		      Return "OFFLINE"
+		    Case SourcePlatformOptions.PinterestWeb
+		      Return "PINTEREST_WEB"
+		    Case SourcePlatformOptions.PinterestAndroid
+		      Return "PINTEREST_ANDROID"
+		    Case SourcePlatformOptions.PinterestIos
+		      Return "PINTEREST_IOS"
+		    Case SourcePlatformOptions.PointOfSale
+		      Return "POINT_OF_SALE"
 		    
 		  End Select
 		  Return ""
@@ -5002,6 +7171,35 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function TargetingSpecAgeBucketToString(value As TargetingSpecAgeBucket) As String
+		  Select Case value
+		    Case TargetingSpecAgeBucket.Escaped1824
+		      Return "18-24"
+		    Case TargetingSpecAgeBucket.Escaped19Plus
+		      Return "19+"
+		    Case TargetingSpecAgeBucket.Escaped20Plus
+		      Return "20+"
+		    Case TargetingSpecAgeBucket.Escaped21Plus
+		      Return "21+"
+		    Case TargetingSpecAgeBucket.Escaped2534
+		      Return "25-34"
+		    Case TargetingSpecAgeBucket.Escaped3544
+		      Return "35-44"
+		    Case TargetingSpecAgeBucket.Escaped4549
+		      Return "45-49"
+		    Case TargetingSpecAgeBucket.Escaped5054
+		      Return "50-54"
+		    Case TargetingSpecAgeBucket.Escaped5564
+		      Return "55-64"
+		    Case TargetingSpecAgeBucket.Escaped65Plus
+		      Return "65+"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function TargetingSpecAppTypeToString(value As TargetingSpecAppType) As String
 		  Select Case value
 		    Case TargetingSpecAppType.AndroidMobile
@@ -5016,6 +7214,21 @@ Protected Module Models
 		      Return "web"
 		    Case TargetingSpecAppType.WebMobile
 		      Return "web_mobile"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function TargetingSpecGenderToString(value As TargetingSpecGender) As String
+		  Select Case value
+		    Case TargetingSpecGender.Unknown
+		      Return "unknown"
+		    Case TargetingSpecGender.Male
+		      Return "male"
+		    Case TargetingSpecGender.Female
+		      Return "female"
 		    
 		  End Select
 		  Return ""
@@ -5130,6 +7343,16 @@ Protected Module Models
 		      Return "custom_label_3"
 		    Case UpdateMaskFieldType.CustomLabel4
 		      Return "custom_label_4"
+		    Case UpdateMaskFieldType.CustomNumber0
+		      Return "custom_number_0"
+		    Case UpdateMaskFieldType.CustomNumber1
+		      Return "custom_number_1"
+		    Case UpdateMaskFieldType.CustomNumber2
+		      Return "custom_number_2"
+		    Case UpdateMaskFieldType.CustomNumber3
+		      Return "custom_number_3"
+		    Case UpdateMaskFieldType.CustomNumber4
+		      Return "custom_number_4"
 		    Case UpdateMaskFieldType.Description
 		      Return "description"
 		    Case UpdateMaskFieldType.FreeShippingLabel
@@ -5188,6 +7411,8 @@ Protected Module Models
 		      Return "variant_names"
 		    Case UpdateMaskFieldType.VariantValues
 		      Return "variant_values"
+		    Case UpdateMaskFieldType.PromotionId
+		      Return "promotion_id"
 		    
 		  End Select
 		  Return ""
@@ -5239,6 +7464,21 @@ Protected Module Models
 		      Return "DLX_ID"
 		    Case UserListType.HashedPinnerId
 		      Return "HASHED_PINNER_ID"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function VerticalProductCategoryToString(value As VerticalProductCategory) As String
+		  Select Case value
+		    Case VerticalProductCategory.Fashion
+		      Return "FASHION"
+		    Case VerticalProductCategory.HomeDecor
+		      Return "HOME_DECOR"
+		    Case VerticalProductCategory.Beauty
+		      Return "BEAUTY"
 		    
 		  End Select
 		  Return ""
@@ -5517,6 +7757,24 @@ Protected Module Models
 		DeletedDraft
 		
 	#tag EndEnum
+	#tag Enum, Name = AdsAnalyticsAdGroupTargetingType, Type = Integer, Flags = &h1
+		
+		Keyword
+		Apptype
+		Gender
+		Location
+		Placement
+		Country
+		TargetedInterest
+		PinnerInterest
+		AudienceInclude
+		Geo
+		AgeBucket
+		Region
+		AgeBucketAndGender
+		CreativeEnhancements
+		
+	#tag EndEnum
 	#tag Enum, Name = AdsAnalyticsAdTargetingType, Type = Integer, Flags = &h1
 		
 		Keyword
@@ -5551,6 +7809,7 @@ Protected Module Models
 		Region
 		CreativeType
 		AgeBucketAndGender
+		AudienceMultiplier
 		
 	#tag EndEnum
 	#tag Enum, Name = AdsAnalyticsFilterColumn, Type = Integer, Flags = &h1
@@ -5588,6 +7847,17 @@ Protected Module Models
 		Delete
 		
 	#tag EndEnum
+	#tag Enum, Name = AgeTrendsBucket, Type = Integer, Flags = &h1
+		
+		Escaped1824
+		Escaped2534
+		Escaped3544
+		Escaped4549
+		Escaped5054
+		Escaped5564
+		Escaped65Plus
+		
+	#tag EndEnum
 	#tag Enum, Name = AssetGroupType, Type = Integer, Flags = &h1
 		
 		Brand
@@ -5602,12 +7872,6 @@ Protected Module Models
 		BusinessAccount
 		
 	#tag EndEnum
-	#tag Enum, Name = AudienceDataParty, Type = Integer, Flags = &h1
-		
-		Escaped1p
-		Escaped3p
-		
-	#tag EndEnum
 	#tag Enum, Name = AudienceInsightType, Type = Integer, Flags = &h1
 		
 		YourTotalAudience
@@ -5619,12 +7883,6 @@ Protected Module Models
 		
 		Escapedshared
 		Received
-		
-	#tag EndEnum
-	#tag Enum, Name = AudienceSharingType, Type = Integer, Flags = &h1
-		
-		Custom
-		Syndicated
 		
 	#tag EndEnum
 	#tag Enum, Name = AudienceType, Type = Integer, Flags = &h1
@@ -5658,6 +7916,28 @@ Protected Module Models
 		Failed
 		
 	#tag EndEnum
+	#tag Enum, Name = BoardPrivacy, Type = Integer, Flags = &h1
+		
+		Escapedpublic
+		Escapedprotected
+		Secret
+		
+	#tag EndEnum
+	#tag Enum, Name = BoardPrivacyFilter, Type = Integer, Flags = &h1
+		
+		All
+		Escapedpublic
+		Escapedprotected
+		Secret
+		PublicAndSecret
+		
+	#tag EndEnum
+	#tag Enum, Name = BoardUpdatePrivacy, Type = Integer, Flags = &h1
+		
+		Escapedpublic
+		Secret
+		
+	#tag EndEnum
 	#tag Enum, Name = BudgetType, Type = Integer, Flags = &h1
 		
 		Daily
@@ -5672,6 +7952,8 @@ Protected Module Models
 		ProductGroup
 		Ad
 		Keyword
+		Label
+		Schedule
 		
 	#tag EndEnum
 	#tag Enum, Name = BulkOutputFormat, Type = Integer, Flags = &h1
@@ -5704,6 +7986,8 @@ Protected Module Models
 		Analyst
 		SosReader
 		FinanceManager
+		FinanceView
+		FinanceEdit
 		AudienceManager
 		CampaignManager
 		CatalogsManager
@@ -5761,8 +8045,176 @@ Protected Module Models
 		Xml
 		
 	#tag EndEnum
+	#tag Enum, Name = CatalogsHotelProductGroupType, Type = Integer, Flags = &h1
+		
+		MerchantCreated
+		AllListings
+		
+	#tag EndEnum
 	#tag Enum, Name = CatalogsItemValidationIssue, Type = Integer, Flags = &h1
 		
+		AdImage0LinkLengthTooLong
+		AdImage1LinkLengthTooLong
+		AdImage2LinkLengthTooLong
+		AdImage3LinkLengthTooLong
+		AdImage4LinkLengthTooLong
+		AdImage5LinkLengthTooLong
+		AdImage6LinkLengthTooLong
+		AdImage7LinkLengthTooLong
+		AdImage8LinkLengthTooLong
+		AdImage9LinkLengthTooLong
+		AdImage10LinkLengthTooLong
+		AdImage11LinkLengthTooLong
+		AdImage12LinkLengthTooLong
+		AdImage13LinkLengthTooLong
+		AdImage14LinkLengthTooLong
+		AdImage15LinkLengthTooLong
+		AdImage16LinkLengthTooLong
+		AdImage17LinkLengthTooLong
+		AdImage18LinkLengthTooLong
+		AdImage19LinkLengthTooLong
+		AdImage0LinkWarning
+		AdImage1LinkWarning
+		AdImage2LinkWarning
+		AdImage3LinkWarning
+		AdImage4LinkWarning
+		AdImage5LinkWarning
+		AdImage6LinkWarning
+		AdImage7LinkWarning
+		AdImage8LinkWarning
+		AdImage9LinkWarning
+		AdImage10LinkWarning
+		AdImage11LinkWarning
+		AdImage12LinkWarning
+		AdImage13LinkWarning
+		AdImage14LinkWarning
+		AdImage15LinkWarning
+		AdImage16LinkWarning
+		AdImage17LinkWarning
+		AdImage18LinkWarning
+		AdImage19LinkWarning
+		AdImage0LinkRequired
+		AdImage1LinkRequired
+		AdImage2LinkRequired
+		AdImage3LinkRequired
+		AdImage4LinkRequired
+		AdImage5LinkRequired
+		AdImage6LinkRequired
+		AdImage7LinkRequired
+		AdImage8LinkRequired
+		AdImage9LinkRequired
+		AdImage10LinkRequired
+		AdImage11LinkRequired
+		AdImage12LinkRequired
+		AdImage13LinkRequired
+		AdImage14LinkRequired
+		AdImage15LinkRequired
+		AdImage16LinkRequired
+		AdImage17LinkRequired
+		AdImage18LinkRequired
+		AdImage19LinkRequired
+		AdImage0TagLengthTooLong
+		AdImage1TagLengthTooLong
+		AdImage2TagLengthTooLong
+		AdImage3TagLengthTooLong
+		AdImage4TagLengthTooLong
+		AdImage5TagLengthTooLong
+		AdImage6TagLengthTooLong
+		AdImage7TagLengthTooLong
+		AdImage8TagLengthTooLong
+		AdImage9TagLengthTooLong
+		AdImage10TagLengthTooLong
+		AdImage11TagLengthTooLong
+		AdImage12TagLengthTooLong
+		AdImage13TagLengthTooLong
+		AdImage14TagLengthTooLong
+		AdImage15TagLengthTooLong
+		AdImage16TagLengthTooLong
+		AdImage17TagLengthTooLong
+		AdImage18TagLengthTooLong
+		AdImage19TagLengthTooLong
+		AdImage0TagRequired
+		AdImage1TagRequired
+		AdImage2TagRequired
+		AdImage3TagRequired
+		AdImage4TagRequired
+		AdImage5TagRequired
+		AdImage6TagRequired
+		AdImage7TagRequired
+		AdImage8TagRequired
+		AdImage9TagRequired
+		AdImage10TagRequired
+		AdImage11TagRequired
+		AdImage12TagRequired
+		AdImage13TagRequired
+		AdImage14TagRequired
+		AdImage15TagRequired
+		AdImage16TagRequired
+		AdImage17TagRequired
+		AdImage18TagRequired
+		AdImage19TagRequired
+		AdImage0LinkDuplicated
+		AdImage1LinkDuplicated
+		AdImage2LinkDuplicated
+		AdImage3LinkDuplicated
+		AdImage4LinkDuplicated
+		AdImage5LinkDuplicated
+		AdImage6LinkDuplicated
+		AdImage7LinkDuplicated
+		AdImage8LinkDuplicated
+		AdImage9LinkDuplicated
+		AdImage10LinkDuplicated
+		AdImage11LinkDuplicated
+		AdImage12LinkDuplicated
+		AdImage13LinkDuplicated
+		AdImage14LinkDuplicated
+		AdImage15LinkDuplicated
+		AdImage16LinkDuplicated
+		AdImage17LinkDuplicated
+		AdImage18LinkDuplicated
+		AdImage19LinkDuplicated
+		AdImage0TagDuplicated
+		AdImage1TagDuplicated
+		AdImage2TagDuplicated
+		AdImage3TagDuplicated
+		AdImage4TagDuplicated
+		AdImage5TagDuplicated
+		AdImage6TagDuplicated
+		AdImage7TagDuplicated
+		AdImage8TagDuplicated
+		AdImage9TagDuplicated
+		AdImage10TagDuplicated
+		AdImage11TagDuplicated
+		AdImage12TagDuplicated
+		AdImage13TagDuplicated
+		AdImage14TagDuplicated
+		AdImage15TagDuplicated
+		AdImage16TagDuplicated
+		AdImage17TagDuplicated
+		AdImage18TagDuplicated
+		AdImage19TagDuplicated
+		AdVideo0LinkLengthTooLong
+		AdVideo1LinkLengthTooLong
+		AdVideo2LinkLengthTooLong
+		AdVideo0LinkWarning
+		AdVideo1LinkWarning
+		AdVideo2LinkWarning
+		AdVideo0LinkRequired
+		AdVideo1LinkRequired
+		AdVideo2LinkRequired
+		AdVideo0LinkDuplicated
+		AdVideo1LinkDuplicated
+		AdVideo2LinkDuplicated
+		AdVideo0TagLengthTooLong
+		AdVideo1TagLengthTooLong
+		AdVideo2TagLengthTooLong
+		AdVideo0TagRequired
+		AdVideo1TagRequired
+		AdVideo2TagRequired
+		AdVideo0TagDuplicated
+		AdVideo1TagDuplicated
+		AdVideo2TagDuplicated
+		VideoRequiredWhenAdVideoProvided
 		AdLinkFormatWarning
 		AdLinkSameAsLink
 		AdditionalImageLinkLengthTooLong
@@ -5914,6 +8366,12 @@ Protected Module Models
 		CreativeAssets
 		
 	#tag EndEnum
+	#tag Enum, Name = ContentType, Type = Integer, Flags = &h1
+		
+		ImageSlashJpeg
+		ImageSlashPng
+		
+	#tag EndEnum
 	#tag Enum, Name = ConversionAttributionWindowDays, Type = Integer, Flags = &h1
 		
 		Escaped0 = "0"
@@ -5922,6 +8380,182 @@ Protected Module Models
 		Escaped14 = "14"
 		Escaped30 = "30"
 		Escaped60 = "60"
+		
+	#tag EndEnum
+	#tag Enum, Name = ConversionProductReportingColumn, Type = Integer, Flags = &h1
+		
+		CampaignName
+		CampaignId
+		AdvertiserId
+		AdGroupId
+		CampaignObjectiveType
+		AdGroupName
+		ConversionProductId
+		ConversionProductBrand
+		ConversionProductCategory
+		ConversionProductIdGroup
+		TotalConversionProductQuantity
+		TotalWebConversionProductQuantity
+		TotalInappConversionProductQuantity
+		TotalOfflineConversionProductQuantity
+		TotalConversionProductValue
+		TotalWebConversionProductValue
+		TotalInappConversionProductValue
+		TotalOfflineConversionProductValue
+		TotalConversionProductValueInUsd
+		TotalWebConversionProductValueInUsd
+		TotalInappConversionProductValueInUsd
+		TotalOfflineConversionProductValueInUsd
+		TotalCheckoutConversionProductQuantity
+		TotalCheckoutConversionProductValue
+		TotalCheckoutConversionProductValueInUsd
+		TotalWebCheckoutConversionProductQuantity
+		TotalWebCheckoutConversionProductValue
+		TotalWebCheckoutConversionProductValueInUsd
+		TotalInappCheckoutConversionProductQuantity
+		TotalInappCheckoutConversionProductValue
+		TotalInappCheckoutConversionProductValueInUsd
+		TotalOfflineCheckoutConversionProductQuantity
+		TotalOfflineCheckoutConversionProductValue
+		TotalOfflineCheckoutConversionProductValueInUsd
+		TotalAddToCartConversionProductQuantity
+		TotalAddToCartConversionProductValue
+		TotalAddToCartConversionProductValueInUsd
+		TotalWebAddToCartConversionProductQuantity
+		TotalWebAddToCartConversionProductValue
+		TotalWebAddToCartConversionProductValueInUsd
+		TotalInappAddToCartConversionProductQuantity
+		TotalInappAddToCartConversionProductValue
+		TotalInappAddToCartConversionProductValueInUsd
+		TotalPageVisitConversionProductQuantity
+		TotalPageVisitConversionProductValue
+		TotalPageVisitConversionProductValueInUsd
+		TotalWebPageVisitConversionProductQuantity
+		TotalWebPageVisitConversionProductValue
+		TotalWebPageVisitConversionProductValueInUsd
+		TotalSignupConversionProductQuantity
+		TotalSignupConversionProductValue
+		TotalSignupConversionProductValueInUsd
+		TotalWebSignupConversionProductQuantity
+		TotalWebSignupConversionProductValue
+		TotalWebSignupConversionProductValueInUsd
+		TotalInappSignupConversionProductQuantity
+		TotalInappSignupConversionProductValue
+		TotalInappSignupConversionProductValueInUsd
+		TotalOfflineSignupConversionProductQuantity
+		TotalOfflineSignupConversionProductValue
+		TotalOfflineSignupConversionProductValueInUsd
+		TotalWatchVideoConversionProductQuantity
+		TotalWatchVideoConversionProductValue
+		TotalWatchVideoConversionProductValueInUsd
+		TotalWebWatchVideoConversionProductQuantity
+		TotalWebWatchVideoConversionProductValue
+		TotalWebWatchVideoConversionProductValueInUsd
+		TotalLeadConversionProductQuantity
+		TotalLeadConversionProductValue
+		TotalLeadConversionProductValueInUsd
+		TotalWebLeadConversionProductQuantity
+		TotalWebLeadConversionProductValue
+		TotalWebLeadConversionProductValueInUsd
+		TotalOfflineLeadConversionProductQuantity
+		TotalOfflineLeadConversionProductValue
+		TotalOfflineLeadConversionProductValueInUsd
+		TotalSearchConversionProductQuantity
+		TotalSearchConversionProductValue
+		TotalSearchConversionProductValueInUsd
+		TotalWebSearchConversionProductQuantity
+		TotalWebSearchConversionProductValue
+		TotalWebSearchConversionProductValueInUsd
+		TotalInappSearchConversionProductQuantity
+		TotalInappSearchConversionProductValue
+		TotalInappSearchConversionProductValueInUsd
+		TotalViewCategoryConversionProductQuantity
+		TotalViewCategoryConversionProductValue
+		TotalViewCategoryConversionProductValueInUsd
+		TotalWebViewCategoryConversionProductQuantity
+		TotalWebViewCategoryConversionProductValue
+		TotalWebViewCategoryConversionProductValueInUsd
+		TotalCustomConversionProductQuantity
+		TotalCustomConversionProductValue
+		TotalCustomConversionProductValueInUsd
+		TotalWebCustomConversionProductQuantity
+		TotalWebCustomConversionProductValue
+		TotalWebCustomConversionProductValueInUsd
+		TotalOfflineCustomConversionProductQuantity
+		TotalOfflineCustomConversionProductValue
+		TotalOfflineCustomConversionProductValueInUsd
+		TotalUnknownConversionProductQuantity
+		TotalUnknownConversionProductValue
+		TotalUnknownConversionProductValueInUsd
+		TotalWebUnknownConversionProductQuantity
+		TotalWebUnknownConversionProductValue
+		TotalWebUnknownConversionProductValueInUsd
+		TotalInappUnknownConversionProductQuantity
+		TotalInappUnknownConversionProductValue
+		TotalInappUnknownConversionProductValueInUsd
+		TotalOfflineUnknownConversionProductQuantity
+		TotalOfflineUnknownConversionProductValue
+		TotalOfflineUnknownConversionProductValueInUsd
+		TotalAddPaymentInfoConversionProductQuantity
+		TotalAddPaymentInfoConversionProductValue
+		TotalAddPaymentInfoConversionProductValueInUsd
+		TotalWebAddPaymentInfoConversionProductQuantity
+		TotalWebAddPaymentInfoConversionProductValue
+		TotalWebAddPaymentInfoConversionProductValueInUsd
+		TotalInappAddPaymentInfoConversionProductQuantity
+		TotalInappAddPaymentInfoConversionProductValue
+		TotalInappAddPaymentInfoConversionProductValueInUsd
+		TotalOfflineAddPaymentInfoConversionProductQuantity
+		TotalOfflineAddPaymentInfoConversionProductValue
+		TotalOfflineAddPaymentInfoConversionProductValueInUsd
+		TotalAddToWishlistConversionProductQuantity
+		TotalAddToWishlistConversionProductValue
+		TotalAddToWishlistConversionProductValueInUsd
+		TotalWebAddToWishlistConversionProductQuantity
+		TotalWebAddToWishlistConversionProductValue
+		TotalWebAddToWishlistConversionProductValueInUsd
+		TotalInappAddToWishlistConversionProductQuantity
+		TotalInappAddToWishlistConversionProductValue
+		TotalInappAddToWishlistConversionProductValueInUsd
+		TotalOfflineAddToWishlistConversionProductQuantity
+		TotalOfflineAddToWishlistConversionProductValue
+		TotalOfflineAddToWishlistConversionProductValueInUsd
+		TotalInitiateCheckoutConversionProductQuantity
+		TotalInitiateCheckoutConversionProductValue
+		TotalInitiateCheckoutConversionProductValueInUsd
+		TotalWebInitiateCheckoutConversionProductQuantity
+		TotalWebInitiateCheckoutConversionProductValue
+		TotalWebInitiateCheckoutConversionProductValueInUsd
+		TotalInappInitiateCheckoutConversionProductQuantity
+		TotalInappInitiateCheckoutConversionProductValue
+		TotalInappInitiateCheckoutConversionProductValueInUsd
+		TotalOfflineInitiateCheckoutConversionProductQuantity
+		TotalOfflineInitiateCheckoutConversionProductValue
+		TotalOfflineInitiateCheckoutConversionProductValueInUsd
+		TotalSubscribeConversionProductQuantity
+		TotalSubscribeConversionProductValue
+		TotalSubscribeConversionProductValueInUsd
+		TotalWebSubscribeConversionProductQuantity
+		TotalWebSubscribeConversionProductValue
+		TotalWebSubscribeConversionProductValueInUsd
+		TotalInappSubscribeConversionProductQuantity
+		TotalInappSubscribeConversionProductValue
+		TotalInappSubscribeConversionProductValueInUsd
+		TotalOfflineSubscribeConversionProductQuantity
+		TotalOfflineSubscribeConversionProductValue
+		TotalOfflineSubscribeConversionProductValueInUsd
+		TotalViewContentConversionProductQuantity
+		TotalViewContentConversionProductValue
+		TotalViewContentConversionProductValueInUsd
+		TotalWebViewContentConversionProductQuantity
+		TotalWebViewContentConversionProductValue
+		TotalWebViewContentConversionProductValueInUsd
+		TotalInappViewContentConversionProductQuantity
+		TotalInappViewContentConversionProductValue
+		TotalInappViewContentConversionProductValueInUsd
+		TotalOfflineViewContentConversionProductQuantity
+		TotalOfflineViewContentConversionProductValue
+		TotalOfflineViewContentConversionProductValueInUsd
 		
 	#tag EndEnum
 	#tag Enum, Name = ConversionReportAttributionType, Type = Integer, Flags = &h1
@@ -6225,6 +8859,9 @@ Protected Module Models
 		Idea
 		Showcase
 		Quiz
+		Collage
+		MaxWidthRegularCollection
+		MaxWidthVideoCollection
 		
 	#tag EndEnum
 	#tag Enum, Name = Currency, Type = Integer, Flags = &h1
@@ -6256,6 +8893,39 @@ Protected Module Models
 		Cop
 		Inr
 		Escapedtry
+		
+	#tag EndEnum
+	#tag Enum, Name = CustomizableCTAType, Type = Integer, Flags = &h1
+		
+		GetOffer
+		LearnMore
+		OrderNow
+		ShopNow
+		SignUp
+		Subscribe
+		BuyNow
+		ContactUs
+		GetQuote
+		VisitSite
+		ApplyNow
+		BookNow
+		RequestDemo
+		RegisterNow
+		FindADealer
+		AddToCart
+		WatchNow
+		ReadMore
+		BuyTickets
+		DonateNow
+		Download
+		ExploreMore
+		FindALocation
+		GetDeal
+		GetRecipe
+		GetShowtimes
+		OnSale
+		PlayGame
+		TryIt
 		
 	#tag EndEnum
 	#tag Enum, Name = DataOutputFormat, Type = Integer, Flags = &h1
@@ -6291,6 +8961,16 @@ Protected Module Models
 		BeforeProductGroupFilterStartDate
 		
 	#tag EndEnum
+	#tag Enum, Name = DisclosureType, Type = Integer, Flags = &h1
+		
+		NoDisclosure
+		PrescribingInformation
+		PrescribingInformationBoxWarning
+		ImportantSafetyInfo
+		MedGuide
+		PatientInformation
+		
+	#tag EndEnum
 	#tag Enum, Name = EnhancedMatchStatusType, Type = Integer, Flags = &h1
 		
 		Unknown
@@ -6315,6 +8995,13 @@ Protected Module Models
 		Unisex
 		
 	#tag EndEnum
+	#tag Enum, Name = GenderBucket, Type = Integer, Flags = &h1
+		
+		Male
+		Female
+		Unspecified
+		
+	#tag EndEnum
 	#tag Enum, Name = GetAudiencesOrderBy, Type = Integer, Flags = &h1
 		
 		None
@@ -6333,6 +9020,7 @@ Protected Module Models
 		Profile
 		AssetGroup
 		ConversionTag
+		Catalog
 		
 	#tag EndEnum
 	#tag Enum, Name = Granularity, Type = Integer, Flags = &h1
@@ -6348,6 +9036,35 @@ Protected Module Models
 		
 		Closeup
 		DirectToDestination
+		
+	#tag EndEnum
+	#tag Enum, Name = IngestionSourceOptions, Type = Integer, Flags = &h1
+		
+		Tag
+		Mmp
+		FileUpload
+		ConversionsApi
+		Native
+		
+	#tag EndEnum
+	#tag Enum, Name = InterestsEnum, Type = Integer, Flags = &h1
+		
+		All
+		Animals
+		Architecture
+		Art
+		Beauty
+		DiyAndCrafts
+		Education
+		EventPlanning
+		Fashion
+		FoodAndDrinks
+		Gardening
+		Health
+		HomeDecor
+		Parenting
+		Travel
+		Wedding
 		
 	#tag EndEnum
 	#tag Enum, Name = InviteStatus, Type = Integer, Flags = &h1
@@ -6371,6 +9088,23 @@ Protected Module Models
 		Success
 		Failure
 		Processing
+		
+	#tag EndEnum
+	#tag Enum, Name = LabelParentType, Type = Integer, Flags = &h1
+		
+		Campaign
+		
+	#tag EndEnum
+	#tag Enum, Name = LabelStatus, Type = Integer, Flags = &h1
+		
+		Active
+		Archived
+		
+	#tag EndEnum
+	#tag Enum, Name = LabelType, Type = Integer, Flags = &h1
+		
+		Brand
+		Custom
 		
 	#tag EndEnum
 	#tag Enum, Name = Language, Type = Integer, Flags = &h1
@@ -6477,6 +9211,12 @@ Protected Module Models
 		Failed
 		
 	#tag EndEnum
+	#tag Enum, Name = LookbackPeriodOptions, Type = Integer, Flags = &h1
+		
+		Escaped1d
+		Escaped14d
+		
+	#tag EndEnum
 	#tag Enum, Name = MMMReportingColumn, Type = Integer, Flags = &h1
 		
 		SpendInDollar
@@ -6568,6 +9308,13 @@ Protected Module Models
 		ProductGroupTargeting
 		ProductItem
 		ProductItemTargeting
+		
+	#tag EndEnum
+	#tag Enum, Name = NonDraftEntityStatus, Type = Integer, Flags = &h1
+		
+		Active
+		Paused
+		Archived
 		
 	#tag EndEnum
 	#tag Enum, Name = NonNullableCatalogsCurrency, Type = Integer, Flags = &h1
@@ -6774,7 +9521,6 @@ Protected Module Models
 		SalePrice
 		IsBundle
 		ExpirationDate
-		SalePriceEffectiveDate
 		AvailabilityDate
 		WeightUnit
 		ProductType
@@ -6802,6 +9548,56 @@ Protected Module Models
 		MinAdPrice
 		ShippingWidth
 		ShippingHeight
+		AdImage0Link
+		AdImage1Link
+		AdImage2Link
+		AdImage3Link
+		AdImage4Link
+		AdImage5Link
+		AdImage6Link
+		AdImage7Link
+		AdImage8Link
+		AdImage9Link
+		AdImage10Link
+		AdImage11Link
+		AdImage12Link
+		AdImage13Link
+		AdImage14Link
+		AdImage15Link
+		AdImage16Link
+		AdImage17Link
+		AdImage18Link
+		AdImage19Link
+		AdImage0Tag
+		AdImage1Tag
+		AdImage2Tag
+		AdImage3Tag
+		AdImage4Tag
+		AdImage5Tag
+		AdImage6Tag
+		AdImage7Tag
+		AdImage8Tag
+		AdImage9Tag
+		AdImage10Tag
+		AdImage11Tag
+		AdImage12Tag
+		AdImage13Tag
+		AdImage14Tag
+		AdImage15Tag
+		AdImage16Tag
+		AdImage17Tag
+		AdImage18Tag
+		AdImage19Tag
+		AdVideo0Link
+		AdVideo1Link
+		AdVideo2Link
+		AdVideo0Tag
+		AdVideo1Tag
+		AdVideo2Tag
+		InstallmentPrice
+		UnitPriceTotalMeasure
+		UnitPriceBaseMeasure
+		SalePriceEffectiveDate
 		
 	#tag EndEnum
 	#tag Enum, Name = NullableCurrency, Type = Integer, Flags = &h1
@@ -6975,10 +9771,8 @@ Protected Module Models
 		
 		Awareness
 		Consideration
-		VideoView
 		WebConversion
 		CatalogSales
-		WebSessions
 		VideoCompletion
 		
 	#tag EndEnum
@@ -7003,6 +9797,13 @@ Protected Module Models
 		Deleted
 		
 	#tag EndEnum
+	#tag Enum, Name = OverallStatusOptions, Type = Integer, Flags = &h1
+		
+		NeedsImprovement
+		Fair
+		Good
+		
+	#tag EndEnum
 	#tag Enum, Name = PacingDeliveryType, Type = Integer, Flags = &h1
 		
 		Standard
@@ -7020,10 +9821,14 @@ Protected Module Models
 		Admin
 		Analyst
 		FinanceManager
+		FinanceEdit
+		FinanceView
 		AudienceManager
 		CampaignManager
 		CatalogsManager
+		CatalogsViewer
 		ProfilePublisher
+		ConsumerUser
 		
 	#tag EndEnum
 	#tag Enum, Name = PermissionsWithOwner, Type = Integer, Flags = &h1
@@ -7031,6 +9836,8 @@ Protected Module Models
 		Admin
 		Analyst
 		FinanceManager
+		FinanceEdit
+		FinanceView
 		AudienceManager
 		CampaignManager
 		CatalogsManager
@@ -7051,6 +9858,12 @@ Protected Module Models
 		DeletedDraft
 		
 	#tag EndEnum
+	#tag Enum, Name = PinterestLibPaginationOrder, Type = Integer, Flags = &h1
+		
+		Ascending
+		Descending
+		
+	#tag EndEnum
 	#tag Enum, Name = PlacementGroupType, Type = Integer, Flags = &h1
 		
 		All
@@ -7066,6 +9879,415 @@ Protected Module Models
 		Preorder
 		
 	#tag EndEnum
+	#tag Enum, Name = ProductCategoriesEngagementType, Type = Integer, Flags = &h1
+		
+		Engagement
+		OutboundClick
+		Save
+		
+	#tag EndEnum
+	#tag Enum, Name = ProductCategoryDetailLookbackWindow, Type = Integer, Flags = &h1
+		
+		Escaped90
+		Escaped180
+		Escaped365
+		Escaped730
+		
+	#tag EndEnum
+	#tag Enum, Name = ProductCategoryEnum, Type = Integer, Flags = &h1
+		
+		AccentTables
+		Accessories
+		Anklets
+		Aprons
+		AreaRugs
+		ArmoiresAndWardrobes
+		ArtAndCraftPaints
+		ArtBrushes
+		ArtificialFlora
+		Artwork
+		Audio
+		AudioAccessories
+		Backpacks
+		BagAndLuggageAccessories
+		BagsAndLuggage
+		Bakeware
+		Bandanas
+		BarCarts
+		Barware
+		Baskets
+		BathAndBody
+		BathAndShower
+		BathMatsAndRugs
+		BathTowelsAndWashcloths
+		BathroomAccessories
+		BathroomAccessorySets
+		BathroomVanities
+		BeachTowels
+		BeadsAndJewelryMakingSupplies
+		BeautySupplements
+		BedSheets
+		Bedding
+		BedroomVanities
+		BedsAndAccessories
+		BedsAndBedFrames
+		BeltBags
+		BeltsAndSuspenders
+		Benches
+		Beverages
+		BirdSupplies
+		Blankets
+		Blouses
+		BlushesAndBronzers
+		BodyCare
+		BodyJewelry
+		BodyMakeup
+		BodyMoisturizers
+		BodyWashes
+		BookcasesAndStandingShelves
+		Bookends
+		Books
+		Boots
+		Bracelets
+		BridesmaidDresses
+		BroochesAndLapelPins
+		BrowMakeup
+		BuffetsAndSideboards
+		ButtonDownShirts
+		CabinetHardware
+		CabinetsAndStorageFurniture
+		CakeDecoratingSupplies
+		CampingAndHiking
+		CandleHolders
+		Candles
+		CardstockPapers
+		CasualPants
+		CatSupplies
+		Chairs
+		Chandeliers
+		CharmsAndPendants
+		ChinaCabinetsAndHutches
+		ClogsAndMules
+		ClothNapkins
+		Clothing
+		ClothingAndClosetStorage
+		ClothingSets
+		Coasters
+		CoatsAndJackets
+		CoffeeAndTeaCups
+		CoffeeMakersAndEspressoMachines
+		ColoringBooks
+		Communications
+		ComputerAccessories
+		CookieCutters
+		Cookware
+		CookwareAndBakeware
+		CosmeticAndToiletryBags
+		CostumesAndAccessories
+		CraftAdhesivesAndMagnets
+		CraftCuttingTools
+		CraftMolds
+		CribsAndToddlerBeds
+		CurtainAndDrapeRods
+		CurtainsAndDrapes
+		CuttingBoards
+		Cycling
+		DecorativeBowls
+		DecorativeJars
+		DecorativeTapestries
+		DecorativeTrays
+		DeodorantsAndAntiperspirants
+		DeskAndShelfClocks
+		Desks
+		DiaperBags
+		Dinnerware
+		Dishwashers
+		DogSupplies
+		DoorMats
+		DrawingAndPainting
+		DressPants
+		Dressers
+		Dresses
+		DrillsAndScrewdrivers
+		Drinkware
+		DuffelBags
+		DuvetCovers
+		DvdsAndVideos
+		Earrings
+		ElectronicsAccessories
+		EngagementAndWeddingRings
+		EntertainmentCentersAndTvStands
+		Erasers
+		EyeMakeup
+		EyeShadow
+		Eyeliners
+		Fabric
+		FaceCoverings
+		FaceLotionsAndCreams
+		FaceMakeup
+		FacialCleansers
+		FacialMoisturizers
+		FalseEyelashes
+		Figurines
+		FireplaceAndWoodStoveAccessories
+		Fireplaces
+		Fishing
+		FlagsAndWindsocks
+		Flats
+		Flatware
+		FloorLamps
+		FlowerGirlDresses
+		FoodAndBeverageCarriers
+		FoodCookersAndSteamers
+		FoodItems
+		FoodMixersAndBlenders
+		FoodStorageContainers
+		FoodStorageSupplies
+		FoundationsAndConcealers
+		FountainsAndPonds
+		Fragrance
+		Furniture
+		FurnitureSets
+		Games
+		Gardening
+		GardeningTools
+		GlovesAndMittens
+		GluesAndTapes
+		GroomAndGroomsmenSuits
+		Hair
+		HairAccessories
+		HairCare
+		HairColor
+		HairCombs
+		HairPinsClawsAndClips
+		HairRemoval
+		HairTools
+		HairTreatment
+		HairWreaths
+		HandAndFootCare
+		HandSoapsAndSanitizers
+		Handbags
+		Handkerchiefs
+		HardwareSupplies
+		Hats
+		HeadboardsAndFootboards
+		Headwear
+		Highlighters
+		HobbiesAndCreativeArts
+		HomeAccessories
+		HomeDecorDecals
+		HomeFragranceAccessories
+		HomeFragrances
+		HomeImprovementToolsAndSupplies
+		Hosiery
+		HouseholdAppliances
+		HouseholdSupplies
+		Incense
+		IndoorGames
+		Jeans
+		JewelryAndWatchAccessories
+		JewelryAndWatches
+		JewelrySets
+		JumpsuitsAndRompers
+		Keychains
+		KitchenAndDining
+		KitchenAndDiningRoomTables
+		KitchenAppliances
+		KitchenKnives
+		KitchenLinens
+		KitchenMats
+		KitchenOrganizers
+		KitchenToolsAndUtensils
+		KitchenTowels
+		KnittingAndCrochet
+		KnittingAndCrochetTools
+		LampShades
+		Lamps
+		Lanyards
+		LaundryHampersAndSupplies
+		LawnAndGarden
+		LawnAndGardenDecor
+		LawnOrnamentsAndGardenSculptures
+		Leggings
+		LeotardsAndUnitards
+		Lighting
+		LightingAccessories
+		LightingFixtures
+		LipBalms
+		LipCare
+		LipMakeup
+		LipsticksAndLipGlosses
+		MagazinesAndNewspapers
+		Magnets
+		Makeup
+		MakeupTools
+		Mascaras
+		Mattresses
+		MeasuresAndRulers
+		MeasuringToolsAndSensors
+		MessengerBags
+		Mirrors
+		MusicAndSoundRecordings
+		NailArt
+		NailArtKitAndTools
+		NailCare
+		NailPolishes
+		Nails
+		Necklaces
+		Neckties
+		NightLightsAndAmbientLighting
+		Nightstands
+		NoveltySigns
+		OnePieces
+		Onesies
+		Ottomans
+		OutdoorFurniture
+		OutdoorFurnitureSets
+		OutdoorGames
+		OutdoorGrills
+		OutdoorLiving
+		OutdoorPlayEquipment
+		OutdoorRecreation
+		OutdoorRugs
+		OutdoorSeating
+		OutdoorStructures
+		OutdoorTables
+		Outerwear
+		OvensAndCooktops
+		Overalls
+		OxfordsAndLoafers
+		PaintAndPaintTools
+		Pants
+		PaperCrafts
+		ParasolsAndRainUmbrellas
+		PartyAndCelebration
+		PendantLights
+		PensAndPencils
+		PerfumesAndColognes
+		PetCarriersAndCrates
+		PetCollarsAndHarnesses
+		PetSupplies
+		PhotoAlbumsAndStorage
+		PictureFrames
+		PillowcasesAndShams
+		PinbackButtons
+		Placemats
+		Plants
+		PonytailHolders
+		PoolAndSpaAccessories
+		PostersPrintsAndVisualArtwork
+		PotsAndPlanters
+		PotteryAndSculpting
+		PrimersAndMakeupSetters
+		Pumps
+		Puzzles
+		QuiltsAndComforters
+		RazorsAndShavingTools
+		Rings
+		Rugs
+		RunnerRugs
+		Sandals
+		Sashes
+		Saws
+		ScarvesAndShawls
+		SculpturesAndStatues
+		SeasonalAndHolidayDecorations
+		Seating
+		SerumsAndEssences
+		Serveware
+		SewingMachines
+		SewingPatterns
+		ShampooAndConditioner
+		ShoeAccessories
+		Shoes
+		ShoppingTotes
+		Shorts
+		ShowerCurtains
+		Skincare
+		SkincareMasksAndPeels
+		Skirts
+		SleepwearAndLoungewear
+		SlipcoversAndCushions
+		Slippers
+		SneakersAndAthleticShoes
+		SocksAndTights
+		Sofas
+		SportsUniforms
+		Stemware
+		Stockings
+		StorageAndOrganization
+		StorageCabinetsAndLockers
+		StorageHooksAndRacks
+		Suitcases
+		Suits
+		SuitsAndSuitSeparates
+		GlassesAndSunglasses
+		Sunscreen
+		SweatersAndCardigans
+		SweatshirtsAndHoodies
+		Swimwear
+		TShirts
+		TableLamps
+		TableRunners
+		Tablecloths
+		Tables
+		Tableware
+		TankTops
+		TanningOilsAndLotions
+		TeethWhitening
+		TeethWhiteningTools
+		Telephony
+		TextileAndSewing
+		ThreadAndYarn
+		ThrowPillows
+		Tiaras
+		ToiletPaperHolders
+		TonersAndAstringents
+		ToolStorageAndOrganization
+		Tools
+		Tops
+		TowelRacksAndHolders
+		Toys
+		TraditionalAndCeremonialClothing
+		TumblersAndWaterBottles
+		Uniforms
+		Vases
+		VehiclePartsAndAccessories
+		Veils
+		WallClocks
+		WallLightFixtures
+		WallPaints
+		WallShelvesAndLedges
+		WalletsAndCardCases
+		Wallpapers
+		Watches
+		WateringAndIrrigation
+		WeddingCeremonyDecor
+		WeddingClothing
+		WeddingDecor
+		WeddingDress
+		WeddingGifts
+		WeddingStationery
+		WeddingTableDecor
+		WigsAndHairExtensions
+		WindowBlindsAndShades
+		WindowTreatmentAccessories
+		WindowTreatments
+		WineRacks
+		WoodBoardsAndPlanks
+		WoodworkingMaterials
+		WoodworkingPlans
+		WorkBenches
+		WreathsAndGarlands
+		
+	#tag EndEnum
+	#tag Enum, Name = ProductCategoryRegion, Type = Integer, Flags = &h1
+		
+		Us
+		GbPlusIe
+		Ca
+		
+	#tag EndEnum
 	#tag Enum, Name = ProductGroupSummaryStatus, Type = Integer, Flags = &h1
 		
 		Running
@@ -7074,9 +10296,38 @@ Protected Module Models
 		Archived
 		
 	#tag EndEnum
+	#tag Enum, Name = PromotionType, Type = Integer, Flags = &h1
+		
+		Variable
+		Sitewide
+		Checkout
+		SaveXOnY
+		BuyXGetY
+		SpendXSaveY
+		FreeShipping
+		FreeShippingMinimum
+		FreeShippingWithDiscount
+		SitewideInStores
+		ExtraPercentOff
+		GiftWithPurchase
+		GiftWithPurchaseMinimum
+		Fixed
+		PercentOffClearance
+		XOffY
+		GiftWithFirstPurchase
+		BuyXGetOneFree
+		CashBack
+		PointsOnAllPurchases
+		Bonus
+		PointsWithPurchase
+		Custom
+		
+	#tag EndEnum
 	#tag Enum, Name = ReportingColumnAsync, Type = Integer, Flags = &h1
 		
 		SpendInMicroDollar
+		AdsCreditSpendInMicroDollar
+		AdsCreditSpendInDollar
 		PaidImpression
 		SpendInDollar
 		CpcInMicroDollar
@@ -7085,9 +10336,12 @@ Protected Module Models
 		Ctr
 		Ectr
 		OutboundCtr
+		OutboundCtr1
 		CostPerOutboundClick
 		CampaignName
 		CampaignStatus
+		CampaignBrandLabel
+		CampaignCustomLabels
 		PinPromotionStatus
 		AdStatus
 		PinId
@@ -7113,9 +10367,25 @@ Protected Module Models
 		CpmInDollar
 		AdGroupName
 		AdGroupStatus
+		AdGroupBudgetType
+		AdGroupBudgetInLocalCurrency
 		AdGroupEntityStatus
+		AdGroupBidMultiplier
 		ProductGroupId
 		ProductGroupStatus
+		PromoId
+		PromoName
+		ProductItemName
+		ProductItemImageUrl
+		ProductItemPrice
+		ProductItemProductUrl
+		ProductItemPinUrl
+		ProductItemBrand
+		ProductItemDescription
+		ProductItemSalePrice
+		ProductItemProductType
+		ProductItemProductCategory
+		ProductItemCurrency
 		OrderLineId
 		OrderLineName
 		Clickthrough1
@@ -7133,6 +10403,7 @@ Protected Module Models
 		TotalImpressionUser
 		TotalImpressionFrequency
 		CostPerOutboundClickInDollar
+		CostPerOutboundClickInDollar1
 		TotalEngagementPageVisit
 		TotalEngagementSignup
 		TotalEngagementCheckout
@@ -7239,7 +10510,10 @@ Protected Module Models
 		PinPromotionName
 		AdName
 		CampaignLifetimeSpendCap
+		AdGroupOptimization
 		CampaignDailySpendCap
+		CampaignBudgetOptimization
+		IsPremiereCampaign
 		TotalPageVisitDesktopActionToDesktopConversion
 		TotalPageVisitDesktopActionToMobileConversion
 		TotalPageVisitDesktopActionToTabletConversion
@@ -7349,6 +10623,8 @@ Protected Module Models
 		TotalWatchVideo
 		TotalViewCategory
 		TotalAppInstall
+		TotalAddToWishlist
+		TotalSubscribe
 		TotalSignupValueInMicroDollar
 		TotalCheckoutValueInMicroDollar
 		TotalCustomValueInMicroDollar
@@ -7364,7 +10640,10 @@ Protected Module Models
 		PageVisitRoas
 		CheckoutRoas
 		CustomRoas
+		ProductGroupAdImageTag
+		ProductGroupAdVideoTag
 		Video3secViews1
+		Video15secUniqueViews1
 		VideoP100Complete1
 		VideoP0Combined1
 		VideoP25Combined1
@@ -7373,6 +10652,7 @@ Protected Module Models
 		VideoP95Combined1
 		VideoMrcViews1
 		Video3secViews2
+		Video15secUniqueViews2
 		VideoP100Complete2
 		VideoP0Combined2
 		VideoP25Combined2
@@ -7382,6 +10662,7 @@ Protected Module Models
 		VideoMrcViews2
 		PaidVideoViewableRate
 		VideoLength
+		VideoSpendInDollar
 		CpvInMicroDollar
 		EcpvInDollar
 		CpcvInMicroDollar
@@ -7389,6 +10670,7 @@ Protected Module Models
 		CpcvP95InMicroDollar
 		EcpcvP95InDollar
 		TotalVideo3secViews
+		TotalVideo15secUniqueViews
 		TotalVideoP100Complete
 		TotalVideoP0Combined
 		TotalVideoP25Combined
@@ -7615,6 +10897,14 @@ Protected Module Models
 		TotalInappEngagementAppInstallValueInMicroDollar
 		TotalInappViewAppInstall
 		TotalInappViewAppInstallValueInMicroDollar
+		TotalAppInstallConversionRate
+		TotalInappAppInstallConversionRate
+		IdeaPinPageForward1
+		IdeaPinPageForward2
+		IdeaPinPageBackward1
+		IdeaPinPageBackward2
+		TotalIdeaPinPageForward
+		TotalIdeaPinPageBackward
 		IdeaPinProductTagVisit1
 		IdeaPinProductTagVisit2
 		TotalIdeaPinProductTagVisit
@@ -7650,6 +10940,12 @@ Protected Module Models
 		StandardAdFeedItemId
 		
 	#tag EndEnum
+	#tag Enum, Name = ReportingTimeZone, Type = Integer, Flags = &h1
+		
+		PinterestTimeZone
+		AdAccountTimeZone
+		
+	#tag EndEnum
 	#tag Enum, Name = Role, Type = Integer, Flags = &h1
 		
 		Unknown
@@ -7658,9 +10954,12 @@ Protected Module Models
 		Analyst
 		SosReader
 		FinanceManager
+		FinanceEdit
+		FinanceView
 		AudienceManager
 		CampaignManager
 		CatalogsManager
+		CatalogsViewer
 		RestrictedOwner
 		ProfileManager
 		ProfilePublisher
@@ -7668,6 +10967,19 @@ Protected Module Models
 		ResourcePinnerListReader
 		BizPinnerListSharer
 		ResourceConversionTagsReader
+		
+	#tag EndEnum
+	#tag Enum, Name = SourcePlatformOptions, Type = Integer, Flags = &h1
+		
+		Web
+		Mobile
+		MobileAndroid
+		MobileIos
+		Offline
+		PinterestWeb
+		PinterestAndroid
+		PinterestIos
+		PointOfSale
 		
 	#tag EndEnum
 	#tag Enum, Name = TargetingAdvertiserCountry, Type = Integer, Flags = &h1
@@ -7712,6 +11024,20 @@ Protected Module Models
 		Co
 		
 	#tag EndEnum
+	#tag Enum, Name = TargetingSpecAgeBucket, Type = Integer, Flags = &h1
+		
+		Escaped1824
+		Escaped19Plus
+		Escaped20Plus
+		Escaped21Plus
+		Escaped2534
+		Escaped3544
+		Escaped4549
+		Escaped5054
+		Escaped5564
+		Escaped65Plus
+		
+	#tag EndEnum
 	#tag Enum, Name = TargetingSpecAppType, Type = Integer, Flags = &h1
 		
 		AndroidMobile
@@ -7720,6 +11046,13 @@ Protected Module Models
 		Iphone
 		Web
 		WebMobile
+		
+	#tag EndEnum
+	#tag Enum, Name = TargetingSpecGender, Type = Integer, Flags = &h1
+		
+		Unknown
+		Male
+		Female
 		
 	#tag EndEnum
 	#tag Enum, Name = TrendType, Type = Integer, Flags = &h1
@@ -7775,6 +11108,11 @@ Protected Module Models
 		CustomLabel2
 		CustomLabel3
 		CustomLabel4
+		CustomNumber0
+		CustomNumber1
+		CustomNumber2
+		CustomNumber3
+		CustomNumber4
 		Description
 		FreeShippingLabel
 		FreeShippingLimit
@@ -7804,6 +11142,7 @@ Protected Module Models
 		Title
 		VariantNames
 		VariantValues
+		PromotionId
 		
 	#tag EndEnum
 	#tag Enum, Name = UserFollowingFeedType, Type = Integer, Flags = &h1
@@ -7828,6 +11167,13 @@ Protected Module Models
 		LrId
 		DlxId
 		HashedPinnerId
+		
+	#tag EndEnum
+	#tag Enum, Name = VerticalProductCategory, Type = Integer, Flags = &h1
+		
+		Fashion
+		HomeDecor
+		Beauty
 		
 	#tag EndEnum
 

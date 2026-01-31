@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Index of the log in the batch.
-	 */
-	int getLogIndex();
-
-	/*! \brief Set Index of the log in the batch.
-	 */
-	void setLogIndex(int  log_index);
 	/*! \brief Get The field name containing an invalid value.
 	 */
 	std::string getField();
@@ -59,13 +52,13 @@ public:
 	/*! \brief Set The field name containing an invalid value.
 	 */
 	void setField(std::string  field);
-	/*! \brief Get The value that is invalid.
+	/*! \brief Get Index of the log in the batch.
 	 */
-	std::string getValue();
+	int getLogIndex();
 
-	/*! \brief Set The value that is invalid.
+	/*! \brief Set Index of the log in the batch.
 	 */
-	void setValue(std::string  value);
+	void setLogIndex(int  log_index);
 	/*! \brief Get The reason the value is invalid.
 	 */
 	std::string getReason();
@@ -73,12 +66,19 @@ public:
 	/*! \brief Set The reason the value is invalid.
 	 */
 	void setReason(std::string  reason);
+	/*! \brief Get The value that is invalid.
+	 */
+	std::string getValue();
+
+	/*! \brief Set The value that is invalid.
+	 */
+	void setValue(std::string  value);
 
 private:
-	int log_index;
 	std::string field;
-	std::string value;
+	int log_index;
 	std::string reason;
+	std::string value;
 	void __init();
 	void __cleanup();
 

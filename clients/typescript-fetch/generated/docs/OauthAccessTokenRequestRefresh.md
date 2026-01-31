@@ -8,7 +8,6 @@ Name | Type
 ------------ | -------------
 `refreshToken` | string
 `scope` | string
-`refreshOn` | boolean
 `grantType` | string
 
 ## Example
@@ -20,7 +19,6 @@ import type { OauthAccessTokenRequestRefresh } from ''
 const example = {
   "refreshToken": null,
   "scope": null,
-  "refreshOn": null,
   "grantType": null,
 } satisfies OauthAccessTokenRequestRefresh
 

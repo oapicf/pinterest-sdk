@@ -21,14 +21,6 @@ test_that("city", {
   #expect_equal(model.instance$`city`, "EXPECTED_RESULT")
 })
 
-test_that("region", {
-  # tests for the property `region` (character)
-  # State, county, province, where the hotel is located.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`region`, "EXPECTED_RESULT")
-})
-
 test_that("country", {
   # tests for the property `country` (character)
   # Country where the hotel is located.
@@ -43,4 +35,12 @@ test_that("postal_code", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`postal_code`, "EXPECTED_RESULT")
+})
+
+test_that("region", {
+  # tests for the property `region` (character)
+  # State, county, province, where the hotel is located.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`region`, "EXPECTED_RESULT")
 })

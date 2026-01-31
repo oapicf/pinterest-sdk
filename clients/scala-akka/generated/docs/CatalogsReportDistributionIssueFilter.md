@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reportType** | [**ReportType**](#ReportType) |  | 
 **catalogId** | **String** | Unique identifier of a catalog. If not given, oldest catalog will be used |  [optional]
+**reportType** | [**ReportType**](#ReportType) |  | 
 
 
 ## Enum: ReportType

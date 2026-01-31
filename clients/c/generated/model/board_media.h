@@ -1,7 +1,7 @@
 /*
  * board_media.h
  *
- * Board media.
+ * 
  */
 
 #ifndef _board_media_H_

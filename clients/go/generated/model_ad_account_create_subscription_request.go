@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,15 +22,15 @@ var _ MappedNullable = &AdAccountCreateSubscriptionRequest{}
 
 // AdAccountCreateSubscriptionRequest struct for AdAccountCreateSubscriptionRequest
 type AdAccountCreateSubscriptionRequest struct {
-	// Standard HTTPS webhook URL.
-	WebhookUrl string `json:"webhook_url"`
 	// Lead form ID.
 	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
+	PartnerMetadata *AdAccountCreateSubscriptionRequestPartnerMetadata `json:"partner_metadata,omitempty"`
 	// Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
-	PartnerMetadata *AdAccountCreateSubscriptionRequestPartnerMetadata `json:"partner_metadata,omitempty"`
+	// Standard HTTPS webhook URL.
+	WebhookUrl string `json:"webhook_url"`
 }
 
 type _AdAccountCreateSubscriptionRequest AdAccountCreateSubscriptionRequest
@@ -51,30 +51,6 @@ func NewAdAccountCreateSubscriptionRequest(webhookUrl string) *AdAccountCreateSu
 func NewAdAccountCreateSubscriptionRequestWithDefaults() *AdAccountCreateSubscriptionRequest {
 	this := AdAccountCreateSubscriptionRequest{}
 	return &this
-}
-
-// GetWebhookUrl returns the WebhookUrl field value
-func (o *AdAccountCreateSubscriptionRequest) GetWebhookUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.WebhookUrl
-}
-
-// GetWebhookUrlOk returns a tuple with the WebhookUrl field value
-// and a boolean to check if the value has been set.
-func (o *AdAccountCreateSubscriptionRequest) GetWebhookUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.WebhookUrl, true
-}
-
-// SetWebhookUrl sets field value
-func (o *AdAccountCreateSubscriptionRequest) SetWebhookUrl(v string) {
-	o.WebhookUrl = v
 }
 
 // GetLeadFormId returns the LeadFormId field value if set, zero value otherwise.
@@ -141,38 +117,6 @@ func (o *AdAccountCreateSubscriptionRequest) SetPartnerAccessToken(v string) {
 	o.PartnerAccessToken = &v
 }
 
-// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise.
-func (o *AdAccountCreateSubscriptionRequest) GetPartnerRefreshToken() string {
-	if o == nil || IsNil(o.PartnerRefreshToken) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerRefreshToken
-}
-
-// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdAccountCreateSubscriptionRequest) GetPartnerRefreshTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerRefreshToken) {
-		return nil, false
-	}
-	return o.PartnerRefreshToken, true
-}
-
-// HasPartnerRefreshToken returns a boolean if a field has been set.
-func (o *AdAccountCreateSubscriptionRequest) HasPartnerRefreshToken() bool {
-	if o != nil && !IsNil(o.PartnerRefreshToken) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerRefreshToken gets a reference to the given string and assigns it to the PartnerRefreshToken field.
-func (o *AdAccountCreateSubscriptionRequest) SetPartnerRefreshToken(v string) {
-	o.PartnerRefreshToken = &v
-}
-
 // GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
 func (o *AdAccountCreateSubscriptionRequest) GetPartnerMetadata() AdAccountCreateSubscriptionRequestPartnerMetadata {
 	if o == nil || IsNil(o.PartnerMetadata) {
@@ -205,6 +149,62 @@ func (o *AdAccountCreateSubscriptionRequest) SetPartnerMetadata(v AdAccountCreat
 	o.PartnerMetadata = &v
 }
 
+// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionRequest) GetPartnerRefreshToken() string {
+	if o == nil || IsNil(o.PartnerRefreshToken) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerRefreshToken
+}
+
+// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionRequest) GetPartnerRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerRefreshToken) {
+		return nil, false
+	}
+	return o.PartnerRefreshToken, true
+}
+
+// HasPartnerRefreshToken returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionRequest) HasPartnerRefreshToken() bool {
+	if o != nil && !IsNil(o.PartnerRefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerRefreshToken gets a reference to the given string and assigns it to the PartnerRefreshToken field.
+func (o *AdAccountCreateSubscriptionRequest) SetPartnerRefreshToken(v string) {
+	o.PartnerRefreshToken = &v
+}
+
+// GetWebhookUrl returns the WebhookUrl field value
+func (o *AdAccountCreateSubscriptionRequest) GetWebhookUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.WebhookUrl
+}
+
+// GetWebhookUrlOk returns a tuple with the WebhookUrl field value
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionRequest) GetWebhookUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WebhookUrl, true
+}
+
+// SetWebhookUrl sets field value
+func (o *AdAccountCreateSubscriptionRequest) SetWebhookUrl(v string) {
+	o.WebhookUrl = v
+}
+
 func (o AdAccountCreateSubscriptionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -215,19 +215,19 @@ func (o AdAccountCreateSubscriptionRequest) MarshalJSON() ([]byte, error) {
 
 func (o AdAccountCreateSubscriptionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["webhook_url"] = o.WebhookUrl
 	if !IsNil(o.LeadFormId) {
 		toSerialize["lead_form_id"] = o.LeadFormId
 	}
 	if !IsNil(o.PartnerAccessToken) {
 		toSerialize["partner_access_token"] = o.PartnerAccessToken
 	}
-	if !IsNil(o.PartnerRefreshToken) {
-		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
-	}
 	if !IsNil(o.PartnerMetadata) {
 		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
+	if !IsNil(o.PartnerRefreshToken) {
+		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
+	}
+	toSerialize["webhook_url"] = o.WebhookUrl
 	return toSerialize, nil
 }
 

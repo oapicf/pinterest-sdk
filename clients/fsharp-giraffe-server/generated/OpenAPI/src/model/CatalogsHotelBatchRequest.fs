@@ -17,10 +17,10 @@ module CatalogsHotelBatchRequest =
   //#endregion
 
   type CatalogsHotelBatchRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     Country : Country;
-    Language : LanguageEnum;
     Items : CatalogsHotelBatchItem[];
-    CatalogId : string;
+    Language : LanguageEnum;
   }
   //#endregion

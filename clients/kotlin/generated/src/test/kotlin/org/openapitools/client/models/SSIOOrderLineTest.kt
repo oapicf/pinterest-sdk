@@ -26,10 +26,16 @@ class SSIOOrderLineTest : ShouldSpec() {
         // uncomment below to create an instance of SSIOOrderLine
         //val modelInstance = SSIOOrderLine()
 
-        // to test the property `salesforceOrderLineId` - OrderLineId in SFDC
-        should("test salesforceOrderLineId") {
+        // to test the property `acceptedTermsId` - The SFDC id for the terms
+        should("test acceptedTermsId") {
             // uncomment below to test the property
-            //modelInstance.salesforceOrderLineId shouldBe ("TODO")
+            //modelInstance.acceptedTermsId shouldBe ("TODO")
+        }
+
+        // to test the property `acceptedTermsTime` - The UTC timestamp (to the nearest sec) of when terms were accepted
+        should("test acceptedTermsTime") {
+            // uncomment below to test the property
+            //modelInstance.acceptedTermsTime shouldBe ("TODO")
         }
 
         // to test the property `adsManagerOrderLineId` - Ads manager OrderLineId
@@ -38,34 +44,22 @@ class SSIOOrderLineTest : ShouldSpec() {
             //modelInstance.adsManagerOrderLineId shouldBe ("TODO")
         }
 
-        // to test the property `pinOrderId` - The pin order id associated with the order line in SFDC
-        should("test pinOrderId") {
+        // to test the property `agencyLink` - Agency link
+        should("test agencyLink") {
             // uncomment below to test the property
-            //modelInstance.pinOrderId shouldBe ("TODO")
-        }
-
-        // to test the property `lastModifiedDateTime` - Last modified date.
-        should("test lastModifiedDateTime") {
-            // uncomment below to test the property
-            //modelInstance.lastModifiedDateTime shouldBe ("TODO")
-        }
-
-        // to test the property `startDate` - Start date of the order line.
-        should("test startDate") {
-            // uncomment below to test the property
-            //modelInstance.startDate shouldBe ("TODO")
-        }
-
-        // to test the property `endDate` - End date of the order line.
-        should("test endDate") {
-            // uncomment below to test the property
-            //modelInstance.endDate shouldBe ("TODO")
+            //modelInstance.agencyLink shouldBe ("TODO")
         }
 
         // to test the property `billToCompanyName` - Bill To Company name
         should("test billToCompanyName") {
             // uncomment below to test the property
             //modelInstance.billToCompanyName shouldBe ("TODO")
+        }
+
+        // to test the property `billingContactEmail` - Billing contact email
+        should("test billingContactEmail") {
+            // uncomment below to test the property
+            //modelInstance.billingContactEmail shouldBe ("TODO")
         }
 
         // to test the property `billingContactFirstname` - Billing contact first name
@@ -80,10 +74,34 @@ class SSIOOrderLineTest : ShouldSpec() {
             //modelInstance.billingContactLastname shouldBe ("TODO")
         }
 
-        // to test the property `billingContactEmail` - Billing contact email
-        should("test billingContactEmail") {
+        // to test the property `budgetAmount` - If Budget order line, the budget amount.
+        should("test budgetAmount") {
             // uncomment below to test the property
-            //modelInstance.billingContactEmail shouldBe ("TODO")
+            //modelInstance.budgetAmount shouldBe ("TODO")
+        }
+
+        // to test the property `currencyInfo`
+        should("test currencyInfo") {
+            // uncomment below to test the property
+            //modelInstance.currencyInfo shouldBe ("TODO")
+        }
+
+        // to test the property `endDate` - End date of the order line.
+        should("test endDate") {
+            // uncomment below to test the property
+            //modelInstance.endDate shouldBe ("TODO")
+        }
+
+        // to test the property `estimatedMonthlySpend` - If Ongoing (perpetual) order line, the estimated monthly spend
+        should("test estimatedMonthlySpend") {
+            // uncomment below to test the property
+            //modelInstance.estimatedMonthlySpend shouldBe ("TODO")
+        }
+
+        // to test the property `lastModifiedDateTime` - Last modified date.
+        should("test lastModifiedDateTime") {
+            // uncomment below to test the property
+            //modelInstance.lastModifiedDateTime shouldBe ("TODO")
         }
 
         // to test the property `mediaContactEmail` - Billing media email
@@ -104,28 +122,16 @@ class SSIOOrderLineTest : ShouldSpec() {
             //modelInstance.mediaContactLastname shouldBe ("TODO")
         }
 
-        // to test the property `currencyInfo`
-        should("test currencyInfo") {
-            // uncomment below to test the property
-            //modelInstance.currencyInfo shouldBe ("TODO")
-        }
-
-        // to test the property `agencyLink` - Agency link
-        should("test agencyLink") {
-            // uncomment below to test the property
-            //modelInstance.agencyLink shouldBe ("TODO")
-        }
-
-        // to test the property `poNumber` - The po number
-        should("test poNumber") {
-            // uncomment below to test the property
-            //modelInstance.poNumber shouldBe ("TODO")
-        }
-
         // to test the property `orderName` - The order name
         should("test orderName") {
             // uncomment below to test the property
             //modelInstance.orderName shouldBe ("TODO")
+        }
+
+        // to test the property `pinOrderId` - The pin order id associated with the order line in SFDC
+        should("test pinOrderId") {
+            // uncomment below to test the property
+            //modelInstance.pinOrderId shouldBe ("TODO")
         }
 
         // to test the property `pmpName` - The Pinterest marketing partner name
@@ -134,28 +140,22 @@ class SSIOOrderLineTest : ShouldSpec() {
             //modelInstance.pmpName shouldBe ("TODO")
         }
 
-        // to test the property `acceptedTermsId` - The SFDC id for the terms
-        should("test acceptedTermsId") {
+        // to test the property `poNumber` - The po number
+        should("test poNumber") {
             // uncomment below to test the property
-            //modelInstance.acceptedTermsId shouldBe ("TODO")
+            //modelInstance.poNumber shouldBe ("TODO")
         }
 
-        // to test the property `acceptedTermsTime` - The UTC timestamp (to the nearest sec) of when terms were accepted
-        should("test acceptedTermsTime") {
+        // to test the property `salesforceOrderLineId` - OrderLineId in SFDC
+        should("test salesforceOrderLineId") {
             // uncomment below to test the property
-            //modelInstance.acceptedTermsTime shouldBe ("TODO")
+            //modelInstance.salesforceOrderLineId shouldBe ("TODO")
         }
 
-        // to test the property `budgetAmount` - If Budget order line, the budget amount.
-        should("test budgetAmount") {
+        // to test the property `startDate` - Start date of the order line.
+        should("test startDate") {
             // uncomment below to test the property
-            //modelInstance.budgetAmount shouldBe ("TODO")
-        }
-
-        // to test the property `estimatedMonthlySpend` - If Ongoing (perpetual) order line, the estimated monthly spend
-        should("test estimatedMonthlySpend") {
-            // uncomment below to test the property
-            //modelInstance.estimatedMonthlySpend shouldBe ("TODO")
+            //modelInstance.startDate shouldBe ("TODO")
         }
 
     }

@@ -11,16 +11,16 @@ module.exports = {
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}message`,
-                label: `[${labelPrefix}message]`,
-                required: true,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}details`,
                 label: `[${labelPrefix}details]`,
                 required: true,
                 dict: true,
+            },
+            {
+                key: `${keyPrefix}message`,
+                label: `[${labelPrefix}message]`,
+                required: true,
+                type: 'string',
             },
         ]
     },
@@ -28,8 +28,8 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'code': bundle.inputData?.[`${keyPrefix}code`],
-            'message': bundle.inputData?.[`${keyPrefix}message`],
             'details': bundle.inputData?.[`${keyPrefix}details`],
+            'message': bundle.inputData?.[`${keyPrefix}message`],
         }
     },
 }

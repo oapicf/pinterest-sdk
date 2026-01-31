@@ -8,19 +8,19 @@ Schema used for creating the integration metadata.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**externalBusinessId** | **String** | External business ID for the integration. |  [optional] |
-|**connectedMerchantId** | **String** |  |  [optional] |
+|**additionalId1** | **String** |  |  [optional] |
 |**connectedAdvertiserId** | **String** |  |  [optional] |
 |**connectedLbaId** | **String** |  |  [optional] |
+|**connectedMerchantId** | **String** |  |  [optional] |
 |**connectedTagId** | **String** |  |  [optional] |
+|**externalBusinessId** | **String** | External business ID for the integration. |  [optional] |
 |**partnerAccessToken** | **String** |  |  [optional] |
-|**partnerRefreshToken** | **String** |  |  [optional] |
-|**partnerPrimaryEmail** | **String** |  |  [optional] |
 |**partnerAccessTokenExpiry** | **Integer** |  |  [optional] |
+|**partnerMetadata** | **String** |  |  [optional] |
+|**partnerPrimaryEmail** | **String** |  |  [optional] |
+|**partnerRefreshToken** | **String** |  |  [optional] |
 |**partnerRefreshTokenExpiry** | **Integer** |  |  [optional] |
 |**scopes** | **String** |  |  [optional] |
-|**additionalId1** | **String** |  |  [optional] |
-|**partnerMetadata** | **String** |  |  [optional] |
 
 
 

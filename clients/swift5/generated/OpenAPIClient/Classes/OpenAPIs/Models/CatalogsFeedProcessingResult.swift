@@ -16,18 +16,20 @@ public struct CatalogsFeedProcessingResult: Codable, JSONEncodable, Hashable {
     public var id: String
     public var updatedAt: Date
     public var ingestionDetails: CatalogsFeedIngestionDetails
-    public var status: CatalogsFeedProcessingStatus
     public var productCounts: CatalogsFeedProductCounts?
+    public var status: CatalogsFeedProcessingStatus
     public var validationDetails: CatalogsFeedValidationDetails
+    public var videoCounts: CatalogsFeedVideoCounts?
 
-    public init(createdAt: Date, id: String, updatedAt: Date, ingestionDetails: CatalogsFeedIngestionDetails, status: CatalogsFeedProcessingStatus, productCounts: CatalogsFeedProductCounts?, validationDetails: CatalogsFeedValidationDetails) {
+    public init(createdAt: Date, id: String, updatedAt: Date, ingestionDetails: CatalogsFeedIngestionDetails, productCounts: CatalogsFeedProductCounts?, status: CatalogsFeedProcessingStatus, validationDetails: CatalogsFeedValidationDetails, videoCounts: CatalogsFeedVideoCounts? = nil) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
         self.ingestionDetails = ingestionDetails
-        self.status = status
         self.productCounts = productCounts
+        self.status = status
         self.validationDetails = validationDetails
+        self.videoCounts = videoCounts
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -35,9 +37,10 @@ public struct CatalogsFeedProcessingResult: Codable, JSONEncodable, Hashable {
         case id
         case updatedAt = "updated_at"
         case ingestionDetails = "ingestion_details"
-        case status
         case productCounts = "product_counts"
+        case status
         case validationDetails = "validation_details"
+        case videoCounts = "video_counts"
     }
 
     // Encodable protocol methods
@@ -48,9 +51,10 @@ public struct CatalogsFeedProcessingResult: Codable, JSONEncodable, Hashable {
         try container.encode(id, forKey: .id)
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(ingestionDetails, forKey: .ingestionDetails)
-        try container.encode(status, forKey: .status)
         try container.encode(productCounts, forKey: .productCounts)
+        try container.encode(status, forKey: .status)
         try container.encode(validationDetails, forKey: .validationDetails)
+        try container.encodeIfPresent(videoCounts, forKey: .videoCounts)
     }
 }
 

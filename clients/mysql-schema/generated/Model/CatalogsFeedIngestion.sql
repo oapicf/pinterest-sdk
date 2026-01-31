@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsFeedIngestion`
 --
-SELECT `id`, `feed_id`, `created_at`, `status` FROM `CatalogsFeedIngestion` WHERE 1;
+SELECT `created_at`, `feed_id`, `id`, `status` FROM `CatalogsFeedIngestion` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsFeedIngestion`
 --
-INSERT INTO `CatalogsFeedIngestion`(`id`, `feed_id`, `created_at`, `status`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsFeedIngestion`(`created_at`, `feed_id`, `id`, `status`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsFeedIngestion`
 --
-UPDATE `CatalogsFeedIngestion` SET `id` = ?, `feed_id` = ?, `created_at` = ?, `status` = ? WHERE 1;
+UPDATE `CatalogsFeedIngestion` SET `created_at` = ?, `feed_id` = ?, `id` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsFeedIngestion`

@@ -22,53 +22,53 @@ ssio_create_insertion_order_request_t* instantiate_ssio_create_insertion_order_r
   ssio_create_insertion_order_request_t* ssio_create_insertion_order_request = NULL;
   if (include_optional) {
     ssio_create_insertion_order_request = ssio_create_insertion_order_request_create(
-      "2020-12-20",
-      "2020-12-20",
+      "0",
+      "test@example",
+      "0",
       "0",
       5000000,
-      "0",
-      "0",
+      "2020-12-20",
       "test@example",
       "0",
       "0",
+      "0",
+      "2020-12-20",
       "test@example",
       "0",
-      "test@example",
       56,
       "0",
       "0",
+      "0",
+      pinterest_rest_api_ssio_create_insertion_order_request__UNK,
+      1.337,
       pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_BUDGET,
       "0",
-      "0",
-      "0",
-      "0",
-      1.337,
-      pinterest_rest_api_ssio_create_insertion_order_request__"USD"
+      "0"
     );
   } else {
     ssio_create_insertion_order_request = ssio_create_insertion_order_request_create(
-      "2020-12-20",
-      "2020-12-20",
+      "0",
+      "test@example",
+      "0",
       "0",
       5000000,
-      "0",
-      "0",
+      "2020-12-20",
       "test@example",
       "0",
       "0",
+      "0",
+      "2020-12-20",
       "test@example",
       "0",
-      "test@example",
       56,
       "0",
       "0",
+      "0",
+      pinterest_rest_api_ssio_create_insertion_order_request__UNK,
+      1.337,
       pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_BUDGET,
       "0",
-      "0",
-      "0",
-      "0",
-      1.337,
-      pinterest_rest_api_ssio_create_insertion_order_request__"USD"
+      "0"
     );
   }
 

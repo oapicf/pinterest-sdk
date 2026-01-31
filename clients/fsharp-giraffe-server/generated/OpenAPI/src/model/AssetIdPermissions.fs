@@ -10,9 +10,9 @@ module AssetIdPermissions =
 
 
   type AssetIdPermissions = {
+    AssetGroupInfo : AssetGroupBinding;
     AssetId : string;
     AssetType : string;
     Permissions : string[];
-    AssetGroupInfo : AssetGroupBinding;
   }
   //#endregion

@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(IntegrationRequestPatch, () {
-    // String connectedMerchantId
-    test('to test the property `connectedMerchantId`', () async {
+    // String additionalId1
+    test('to test the property `additionalId1`', () async {
       // TODO
     });
 
@@ -22,6 +22,11 @@ void main() {
       // TODO
     });
 
+    // String connectedMerchantId
+    test('to test the property `connectedMerchantId`', () async {
+      // TODO
+    });
+
     // String connectedTagId
     test('to test the property `connectedTagId`', () async {
       // TODO
@@ -32,8 +37,13 @@ void main() {
       // TODO
     });
 
-    // String partnerRefreshToken
-    test('to test the property `partnerRefreshToken`', () async {
+    // num partnerAccessTokenExpiry
+    test('to test the property `partnerAccessTokenExpiry`', () async {
+      // TODO
+    });
+
+    // String partnerMetadata
+    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 
@@ -42,8 +52,8 @@ void main() {
       // TODO
     });
 
-    // num partnerAccessTokenExpiry
-    test('to test the property `partnerAccessTokenExpiry`', () async {
+    // String partnerRefreshToken
+    test('to test the property `partnerRefreshToken`', () async {
       // TODO
     });
 
@@ -54,16 +64,6 @@ void main() {
 
     // String scopes
     test('to test the property `scopes`', () async {
-      // TODO
-    });
-
-    // String additionalId1
-    test('to test the property `additionalId1`', () async {
-      // TODO
-    });
-
-    // String partnerMetadata
-    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 

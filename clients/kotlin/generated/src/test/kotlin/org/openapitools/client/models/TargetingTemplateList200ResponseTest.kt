@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.TargetingTemplateList200Response
-import org.openapitools.client.models.TargetingTemplateResponseData
+import org.openapitools.client.models.TargetingTemplateGetResponseData
 
 class TargetingTemplateList200ResponseTest : ShouldSpec() {
     init {

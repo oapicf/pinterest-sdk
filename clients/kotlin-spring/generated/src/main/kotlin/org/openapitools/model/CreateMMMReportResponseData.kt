@@ -18,25 +18,25 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param reportStatus 
- * @param token 
  * @param message 
+ * @param reportStatus 
  * @param status 
+ * @param token 
  */
 data class CreateMMMReportResponseData(
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("message") val message: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("report_status") val reportStatus: BulkReportingJobStatus? = null,
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("token") val token: kotlin.String? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("message") val message: kotlin.String? = null,
-
     @Schema(example = "success", description = "")
-    @get:JsonProperty("status") val status: kotlin.String? = null
+    @get:JsonProperty("status") val status: kotlin.String? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("token") val token: kotlin.String? = null
 ) {
 
 }

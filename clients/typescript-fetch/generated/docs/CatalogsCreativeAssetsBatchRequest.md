@@ -7,11 +7,11 @@ Request object to update catalogs creative assets items
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
 `country` | [Country](Country.md)
-`language` | string
 `items` | [Array&lt;CatalogsCreativeAssetsBatchItem&gt;](CatalogsCreativeAssetsBatchItem.md)
-`catalogId` | string
+`language` | string
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { CatalogsCreativeAssetsBatchRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": 2680059592705,
   "catalogType": null,
   "country": null,
-  "language": null,
   "items": null,
-  "catalogId": 2680059592705,
+  "language": null,
 } satisfies CatalogsCreativeAssetsBatchRequest
 
 console.log(example)

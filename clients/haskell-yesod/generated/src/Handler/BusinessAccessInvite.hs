@@ -17,7 +17,7 @@ postBusinessesByTextRequestsAssetsAccessR businessId = notImplemented
 --
 -- Cancel membership/partnership invites and/or requests.
 -- operationId: cancelInvitesOrRequests
-deleteBusinessesByTextInvitesR :: Text -- ^ Business id
+deleteBusinessesByTextInvitesR :: Text -- ^ Unique identifier of the requesting business.
                                -> Handler Value
 deleteBusinessesByTextInvitesR businessId = notImplemented
 
@@ -33,7 +33,7 @@ postBusinessesByTextInvitesAssetsAccessR businessId = notImplemented
 --
 -- Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
 -- operationId: createMembershipOrPartnershipInvites
-postBusinessesByTextInvitesR :: Text -- ^ Business id
+postBusinessesByTextInvitesR :: Text -- ^ Unique identifier of the requesting business.
                              -> Handler Value
 postBusinessesByTextInvitesR businessId = notImplemented
 

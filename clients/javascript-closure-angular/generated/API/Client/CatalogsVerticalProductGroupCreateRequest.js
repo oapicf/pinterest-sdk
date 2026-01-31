@@ -7,16 +7,23 @@ goog.provide('API.Client.CatalogsVerticalProductGroupCreateRequest');
 API.Client.CatalogsVerticalProductGroupCreateRequest = function() {}
 
 /**
+ * Catalog id pertaining to the creative assets product group.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
 API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.catalogType;
 
 /**
- * @type {!string}
+ * @type {!API.Client.Country}
  * @export
  */
-API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.name;
+API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.country;
 
 /**
  * @type {!string}
@@ -31,23 +38,16 @@ API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.description;
 API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.filters;
 
 /**
- * Catalog id pertaining to the creative assets product group.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.catalogId;
-
-/**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.country;
-
-/**
  * @type {!API.Client.CatalogsLocale}
  * @export
  */
 API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.locale;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsVerticalProductGroupCreateRequest.CatalogTypeEnum = { 

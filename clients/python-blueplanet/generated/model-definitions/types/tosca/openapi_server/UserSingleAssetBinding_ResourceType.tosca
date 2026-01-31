@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserSingleAssetBinding"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserSingleAssetBinding"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+}
+resourceTypes {
+
+  UserSingleAssetBinding {
+    title = UserSingleAssetBinding
+    description = UserSingleAssetBinding
+    derivedFrom = Root
+    properties {
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels member or partner has on an asset."
+          optional = false
+        }
+        user {
+          type = BusinessAccessUserSummary
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserSingleAssetBinding {
+    title = UserSingleAssetBinding
+    description = UserSingleAssetBinding
+    implements = openapi_server.resourceTypes.UserSingleAssetBinding
+
+  }
+}

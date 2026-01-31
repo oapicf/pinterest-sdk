@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **String** | The catalog item id in the merchant namespace | [optional] 
 **Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [optional] 
+**ItemId** | **String** | The catalog item id in the merchant namespace | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ItemUpsertBatchRecord = Initialize-PSOpenAPIToolsItemUpsertBatchRecord  -ItemId DS0294-M `
- -Attributes null
+$ItemUpsertBatchRecord = Initialize-PSOpenAPIToolsItemUpsertBatchRecord  -Attributes null `
+ -ItemId DS0294-M
 ```
 
 - Convert the resource to JSON

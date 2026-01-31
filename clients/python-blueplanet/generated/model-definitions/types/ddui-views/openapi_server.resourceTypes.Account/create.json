@@ -1,0 +1,28 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "about" },
+      {"model": "account_type" },
+      {"model": "board_count" },
+      {"model": "business_name" },
+      {"model": "follower_count" },
+      {"model": "following_count" },
+      {"model": "id" },
+      {"model": "monthly_views" },
+      {"model": "pin_count" },
+      {"model": "profile_image" },
+      {"model": "username" },
+      {"model": "website_url" },
+    ]
+  }]
+}

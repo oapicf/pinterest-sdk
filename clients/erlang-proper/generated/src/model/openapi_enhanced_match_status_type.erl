@@ -10,5 +10,5 @@
   binary().
 
 openapi_enhanced_match_status_type() ->
-  elements([<<"UNKNOWN">>, <<"NOT_VALIDATED">>, <<"VALIDATING_IN_PROGRESS">>, <<"VALIDATION_COMPLETE">>, <<"">>]).
+  elements([<<"UNKNOWN">>, <<"NOT_VALIDATED">>, <<"VALIDATING_IN_PROGRESS">>, <<"VALIDATION_COMPLETE">>]).
 

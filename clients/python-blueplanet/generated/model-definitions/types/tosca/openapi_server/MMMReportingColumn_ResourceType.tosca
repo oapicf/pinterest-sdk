@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MMMReportingColumn"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MMMReportingColumn"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MMMReportingColumn {
+    title = MMMReportingColumn
+    description = MMMReportingColumn
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  MMMReportingColumn {
+    title = MMMReportingColumn
+    description = MMMReportingColumn
+    implements = openapi_server.resourceTypes.MMMReportingColumn
+
+  }
+}

@@ -1,0 +1,14 @@
+package models
+
+// CatalogsFeedVideoCounts - Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.
+type CatalogsFeedVideoCounts struct {
+
+	// The number of videos successfully ingested from the feed file.
+	IngestedVideos int32 `json:"ingested_videos,omitempty"`
+
+	// The number of videos that were not ingested from the feed file.
+	NotIngestedVideos int32 `json:"not_ingested_videos,omitempty"`
+
+	// The number of videos in the feed file.
+	TotalVideos int32 `json:"total_videos,omitempty"`
+}

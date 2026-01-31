@@ -11,31 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RelatedTermsRelatedTermsListInner  {
   
-  @ApiModelProperty(example = "clothes", value = "")
-
-  private String term;
-
   @ApiModelProperty(example = "[\"shoes\",\"cute clothes\"]", value = "")
 
   private List<String> relatedTerms = new ArrayList<>();
- /**
-   * Get term
-   * @return term
-  **/
-  @JsonProperty("term")
-  public String getTerm() {
-    return term;
-  }
 
-  public void setTerm(String term) {
-    this.term = term;
-  }
+  @ApiModelProperty(example = "clothes", value = "")
 
-  public RelatedTermsRelatedTermsListInner term(String term) {
-    this.term = term;
-    return this;
-  }
-
+  private String term;
  /**
    * Get relatedTerms
    * @return relatedTerms
@@ -59,6 +41,24 @@ public class RelatedTermsRelatedTermsListInner  {
     return this;
   }
 
+ /**
+   * Get term
+   * @return term
+  **/
+  @JsonProperty("term")
+  public String getTerm() {
+    return term;
+  }
+
+  public void setTerm(String term) {
+    this.term = term;
+  }
+
+  public RelatedTermsRelatedTermsListInner term(String term) {
+    this.term = term;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -68,13 +68,13 @@ public class RelatedTermsRelatedTermsListInner  {
       return false;
     }
     RelatedTermsRelatedTermsListInner relatedTermsRelatedTermsListInner = (RelatedTermsRelatedTermsListInner) o;
-    return Objects.equals(this.term, relatedTermsRelatedTermsListInner.term) &&
-        Objects.equals(this.relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms);
+    return Objects.equals(this.relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms) &&
+        Objects.equals(this.term, relatedTermsRelatedTermsListInner.term);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(term, relatedTerms);
+    return Objects.hash(relatedTerms, term);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class RelatedTermsRelatedTermsListInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class RelatedTermsRelatedTermsListInner {\n");
     
-    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("    relatedTerms: ").append(toIndentedString(relatedTerms)).append("\n");
+    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("}");
     return sb.toString();
   }

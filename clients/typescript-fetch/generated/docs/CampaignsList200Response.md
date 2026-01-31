@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;CampaignResponse&gt;](CampaignResponse.md)
 `bookmark` | string
+`items` | [Array&lt;CampaignResponse&gt;](CampaignResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CampaignsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies CampaignsList200Response
 
 console.log(example)

@@ -1,0 +1,74 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserBusinessRoleBinding"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserBusinessRoleBinding"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+  BusinessMemberAssetsSummary = openapi_server.resourceTypes.BusinessMemberAssetsSummary
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  UserBusinessRoleBinding {
+    title = UserBusinessRoleBinding
+    description = UserBusinessRoleBinding
+    derivedFrom = Root
+    properties {
+        assets_summary {
+          type = BusinessMemberAssetsSummary
+          description = ""
+          optional = false
+        }
+        business_roles {
+          type = array
+          items.type =  string
+          description = "The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER."
+          optional = false
+        }
+        created_by_business {
+          type = BusinessAccessUserSummary
+          description = "Metadata for the business that created the business relationship."
+          optional = false
+        }
+        created_by_user {
+          type = BusinessAccessUserSummary
+          description = "Metadata for the user that created the business relationship."
+          optional = false
+        }
+        created_time {
+          type =  integer
+          description = "The time the business relationship was created. Returned in milliseconds."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Unique identifier of the business member/business partner/employer."
+          optional = false
+        }
+        is_shared_partner {
+          type =  boolean
+          description = "This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to."
+          optional = false
+        }
+        user {
+          type = BusinessAccessUserSummary
+          description = "Metadata for the business member/business partner/employer."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserBusinessRoleBinding {
+    title = UserBusinessRoleBinding
+    description = UserBusinessRoleBinding
+    implements = openapi_server.resourceTypes.UserBusinessRoleBinding
+
+  }
+}

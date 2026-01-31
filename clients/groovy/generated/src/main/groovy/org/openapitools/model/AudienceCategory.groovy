@@ -10,16 +10,16 @@ import org.openapitools.model.AudienceSubcategory;
 
 @Canonical
 class AudienceCategory {
+    /* Interest ID. */
+    String id
+    /* Interest affinity index. */
+    BigDecimal index
     /* Interest unique key (same as ID). */
     String key
     /* Interest name. */
     String name
     /* Interest's percent of category's total audience. */
     BigDecimal ratio
-    /* Interest affinity index. */
-    BigDecimal index
-    /* Interest ID. */
-    String id
     /* Subcategory interest distribution */
     List<AudienceSubcategory> subcategories = new ArrayList<>()
 }

@@ -17,18 +17,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param reportType 
  * @param feedId ID of the feed entity.
+ * @param reportType 
  * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
  */
 data class CatalogsReportFeedIngestionFilter(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("report_type", required = true) val reportType: CatalogsReportFeedIngestionFilter.ReportType,
-
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", required = true, description = "ID of the feed entity.")
     @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("report_type", required = true) val reportType: CatalogsReportFeedIngestionFilter.ReportType,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")

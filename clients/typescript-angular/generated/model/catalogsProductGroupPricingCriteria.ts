@@ -11,7 +11,7 @@
 
 export interface CatalogsProductGroupPricingCriteria { 
     inclusion?: boolean;
-    values: number;
     negated?: boolean;
+    values: number;
 }
 

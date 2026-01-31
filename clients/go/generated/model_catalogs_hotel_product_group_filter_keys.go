@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,6 +28,7 @@ type CatalogsHotelProductGroupFilterKeys struct {
 	CustomLabel4Filter *CustomLabel4Filter
 	HotelIdFilter *HotelIdFilter
 	PriceFilter *PriceFilter
+	TitleKeywordsFilter *TitleKeywordsFilter
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -150,6 +151,19 @@ func (dst *CatalogsHotelProductGroupFilterKeys) UnmarshalJSON(data []byte) error
 		dst.PriceFilter = nil
 	}
 
+	// try to unmarshal JSON data into TitleKeywordsFilter
+	err = json.Unmarshal(data, &dst.TitleKeywordsFilter);
+	if err == nil {
+		jsonTitleKeywordsFilter, _ := json.Marshal(dst.TitleKeywordsFilter)
+		if string(jsonTitleKeywordsFilter) == "{}" { // empty struct
+			dst.TitleKeywordsFilter = nil
+		} else {
+			return nil // data stored in dst.TitleKeywordsFilter, return on the first match
+		}
+	} else {
+		dst.TitleKeywordsFilter = nil
+	}
+
 	return fmt.Errorf("data failed to match schemas in anyOf(CatalogsHotelProductGroupFilterKeys)")
 }
 
@@ -189,6 +203,10 @@ func (src CatalogsHotelProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 
 	if src.PriceFilter != nil {
 		return json.Marshal(&src.PriceFilter)
+	}
+
+	if src.TitleKeywordsFilter != nil {
+		return json.Marshal(&src.TitleKeywordsFilter)
 	}
 
 	return nil, nil // no data in anyOf schemas

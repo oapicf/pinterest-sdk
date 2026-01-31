@@ -1,6 +1,134 @@
 #tag Class
 Protected Class OauthApi
 	#tag Method, Flags = &h0
+		Sub OauthConversionToken()
+		  // Operation oauth/conversion_token
+		  // Generate OAuth access token for conversion API
+		  // - 
+		  //
+		  // Invokes OauthApiCallbackHandler.OauthConversionTokenCallback(ConversionAccessTokenResponse) on completion. 
+		  //
+		  // - POST /oauth/conversion_token
+		  // - Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/oauth/conversion_token"
+		  
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.OauthConversionToken_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.OauthConversionToken_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function OauthConversionTokenPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionAccessTokenResponse) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.ConversionAccessTokenResponse
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub OauthConversionToken_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.ConversionAccessTokenResponse
+		  CallbackHandler.OauthConversionTokenCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub OauthConversionToken_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.ConversionAccessTokenResponse
+		  Call OauthConversionTokenPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.OauthConversionTokenCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
 		Sub OauthToken(, grantType As Grant_typeEnum_OauthToken)
 		  // Operation oauth/token
 		  // Generate OAuth access token
@@ -10,7 +138,7 @@ Protected Class OauthApi
 		  // Invokes OauthApiCallbackHandler.OauthTokenCallback(OauthAccessTokenResponse) on completion. 
 		  //
 		  // - POST /oauth/token
-		  // - Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
+		  // - Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
 		  // - defaultResponse: Nil
 		  //
 		  // - BASIC:
@@ -147,6 +275,93 @@ Protected Class OauthApi
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub TokenRevoke(, token As String, tokenTypeHint As Token_type_hintEnum_TokenRevoke)
+		  // Operation token/revoke
+		  // Revoke a token
+		  // - parameter token: (form) The token to revoke. 
+		  // - parameter tokenTypeHint: (form) The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional, default to Sample)
+		  //
+		  // Invokes OauthApiCallbackHandler.TokenRevokeCallback() on completion. 
+		  //
+		  // - POST /oauth/token/revoke
+		  // - Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+		  //
+		  // - BASIC:
+		  //   - type: http
+		  //   - name: basic
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  Dim localVarFormParams As New Dictionary
+		  localVarFormParams.Value("token") = token
+localVarFormParams.Value("token_type_hint") = Token_type_hintEnum_TokenRevokeToString(tokenTypeHint)
+		  If localVarFormParams.Count > 0 Then localVarHTTPSocket.SetFormData(localVarFormParams)
+		  
+		  
+		  
+		  AddHandler localVarHTTPSocket.AuthenticationRequired, addressof Me.AuthenticationRequired
+
+
+		  Dim localVarPath As String = "/oauth/token/revoke"
+		  
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.TokenRevoke_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.TokenRevoke_error
+		  
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+
+	#tag Method, Flags = &h21
+		Private Sub TokenRevoke_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  CallbackHandler.TokenRevokeCallback(error)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub TokenRevoke_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  #Pragma Unused Headers
+		  #Pragma Unused Content
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  
+		  
+		  
+		  CallbackHandler.TokenRevokeCallback(error)
+		End Sub
+	#tag EndMethod
+
+
+
+	#tag Method, Flags = &h21
+		Private Function Token_type_hintEnum_TokenRevokeToString(value As Token_type_hintEnum_TokenRevoke) As String
+		  Select Case value
+		    
+		    Case Token_type_hintEnum_TokenRevoke.AccessToken
+		      Return "access_token"
+		    Case Token_type_hintEnum_TokenRevoke.RefreshToken
+		      Return "refresh_token"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
 
 
 	#tag Method, Flags = &h21
@@ -228,6 +443,13 @@ Protected Class OauthApi
         AuthorizationCode
         RefreshToken
         ClientCredentials
+		
+	#tag EndEnum
+
+	#tag Enum, Name = Token_type_hintEnum_TokenRevoke, Type = Integer, Flags = &h0
+		
+        AccessToken
+        RefreshToken
 		
 	#tag EndEnum
 

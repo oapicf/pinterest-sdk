@@ -5,7 +5,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.PinMedia;
-import org.openapitools.model.PinMediaSource;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -26,11 +25,35 @@ public class PinTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'altText'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
+    public void altTextTest() {
+        // TODO: test altText
+    }
+
+    /**
+     * Test the property 'boardId'
+     */
+    @Test
+    public void boardIdTest() {
+        // TODO: test boardId
+    }
+
+    /**
+     * Test the property 'boardOwner'
+     */
+    @Test
+    public void boardOwnerTest() {
+        // TODO: test boardOwner
+    }
+
+    /**
+     * Test the property 'boardSectionId'
+     */
+    @Test
+    public void boardSectionIdTest() {
+        // TODO: test boardSectionId
     }
 
     /**
@@ -42,19 +65,11 @@ public class PinTest {
     }
 
     /**
-     * Test the property 'link'
+     * Test the property 'creativeType'
      */
     @Test
-    public void linkTest() {
-        // TODO: test link
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
+    public void creativeTypeTest() {
+        // TODO: test creativeType
     }
 
     /**
@@ -74,43 +89,19 @@ public class PinTest {
     }
 
     /**
-     * Test the property 'altText'
+     * Test the property 'hasBeenPromoted'
      */
     @Test
-    public void altTextTest() {
-        // TODO: test altText
+    public void hasBeenPromotedTest() {
+        // TODO: test hasBeenPromoted
     }
 
     /**
-     * Test the property 'creativeType'
+     * Test the property 'id'
      */
     @Test
-    public void creativeTypeTest() {
-        // TODO: test creativeType
-    }
-
-    /**
-     * Test the property 'boardId'
-     */
-    @Test
-    public void boardIdTest() {
-        // TODO: test boardId
-    }
-
-    /**
-     * Test the property 'boardSectionId'
-     */
-    @Test
-    public void boardSectionIdTest() {
-        // TODO: test boardSectionId
-    }
-
-    /**
-     * Test the property 'boardOwner'
-     */
-    @Test
-    public void boardOwnerTest() {
-        // TODO: test boardOwner
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -122,19 +113,27 @@ public class PinTest {
     }
 
     /**
+     * Test the property 'isStandard'
+     */
+    @Test
+    public void isStandardTest() {
+        // TODO: test isStandard
+    }
+
+    /**
+     * Test the property 'link'
+     */
+    @Test
+    public void linkTest() {
+        // TODO: test link
+    }
+
+    /**
      * Test the property 'media'
      */
     @Test
     public void mediaTest() {
         // TODO: test media
-    }
-
-    /**
-     * Test the property 'mediaSource'
-     */
-    @Test
-    public void mediaSourceTest() {
-        // TODO: test mediaSource
     }
 
     /**
@@ -146,35 +145,19 @@ public class PinTest {
     }
 
     /**
-     * Test the property 'isStandard'
-     */
-    @Test
-    public void isStandardTest() {
-        // TODO: test isStandard
-    }
-
-    /**
-     * Test the property 'hasBeenPromoted'
-     */
-    @Test
-    public void hasBeenPromotedTest() {
-        // TODO: test hasBeenPromoted
-    }
-
-    /**
-     * Test the property 'note'
-     */
-    @Test
-    public void noteTest() {
-        // TODO: test note
-    }
-
-    /**
      * Test the property 'pinMetrics'
      */
     @Test
     public void pinMetricsTest() {
         // TODO: test pinMetrics
+    }
+
+    /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
     }
 
 }

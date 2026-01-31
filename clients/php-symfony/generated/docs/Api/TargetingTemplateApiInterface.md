@@ -110,6 +110,14 @@ class TargetingTemplateApi implements TargetingTemplateApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -141,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

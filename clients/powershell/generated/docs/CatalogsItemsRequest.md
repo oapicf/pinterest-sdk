@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **String** | We recommend using the CatalogsLocale values. | 
 **Filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  | 
+**Language** | **String** | We recommend using the CatalogsLocale values. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsItemsRequest = Initialize-PSOpenAPIToolsCatalogsItemsRequest  -Country null `
- -Language null `
- -Filters null
+ -Filters null `
+ -Language null
 ```
 
 - Convert the resource to JSON

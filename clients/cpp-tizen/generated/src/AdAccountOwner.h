@@ -1,11 +1,11 @@
 /*
- * Ad_account_owner.h
+ * AdAccountOwner.h
  *
  * 
  */
 
-#ifndef _Ad_account_owner_H_
-#define _Ad_account_owner_H_
+#ifndef _AdAccountOwner_H_
+#define _AdAccountOwner_H_
 
 
 #include <string>
@@ -26,16 +26,16 @@ namespace ArtikCloud {
  *
  */
 
-class Ad_account_owner : public Object {
+class AdAccountOwner : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Ad_account_owner();
-	Ad_account_owner(char* str);
+	AdAccountOwner();
+	AdAccountOwner(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Ad_account_owner();
+	virtual ~AdAccountOwner();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Public username for the user account
-	 */
-	std::string getUsername();
-
-	/*! \brief Set Public username for the user account
-	 */
-	void setUsername(std::string  username);
 	/*! \brief Get The owning account's user ID.
 	 */
 	std::string getId();
@@ -59,10 +52,17 @@ public:
 	/*! \brief Set The owning account's user ID.
 	 */
 	void setId(std::string  id);
+	/*! \brief Get Public username for the user account
+	 */
+	std::string getUsername();
+
+	/*! \brief Set Public username for the user account
+	 */
+	void setUsername(std::string  username);
 
 private:
-	std::string username;
 	std::string id;
+	std::string username;
 	void __init();
 	void __cleanup();
 
@@ -70,4 +70,4 @@ private:
 }
 }
 
-#endif /* _Ad_account_owner_H_ */
+#endif /* _AdAccountOwner_H_ */

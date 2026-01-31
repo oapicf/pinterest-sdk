@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AdAccount type satisfies the MappedNullable interface at compile time
@@ -20,24 +22,28 @@ var _ MappedNullable = &AdAccount{}
 
 // AdAccount struct for AdAccount
 type AdAccount struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Owner *AdAccountOwner `json:"owner,omitempty"`
 	Country *Country `json:"country,omitempty"`
-	Currency *Currency `json:"currency,omitempty"`
-	Permissions []BusinessAccessRole `json:"permissions,omitempty"`
-	// Creation time. Unix timestamp in seconds.
+	//  Creation time. Unix timestamp in seconds.
 	CreatedTime NullableInt32 `json:"created_time,omitempty"`
-	// Last update time. Unix timestamp in seconds.
+	Currency *Currency `json:"currency,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	// Ad account name.
+	Name *string `json:"name,omitempty"`
+	// Ad account owner
+	Owner *AdAccountOwner `json:"owner,omitempty"`
+	Permissions []BusinessAccessRole `json:"permissions,omitempty"`
 	UpdatedTime NullableInt32 `json:"updated_time,omitempty"`
 }
+
+type _AdAccount AdAccount
 
 // NewAdAccount instantiates a new AdAccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdAccount() *AdAccount {
+func NewAdAccount(id string) *AdAccount {
 	this := AdAccount{}
+	this.Id = id
 	return &this
 }
 
@@ -49,36 +55,134 @@ func NewAdAccountWithDefaults() *AdAccount {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AdAccount) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
+// GetCountry returns the Country field value if set, zero value otherwise.
+func (o *AdAccount) GetCountry() Country {
+	if o == nil || IsNil(o.Country) {
+		var ret Country
 		return ret
 	}
-	return *o.Id
+	return *o.Country
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdAccount) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *AdAccount) GetCountryOk() (*Country, bool) {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Country, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AdAccount) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasCountry returns a boolean if a field has been set.
+func (o *AdAccount) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetCountry gets a reference to the given Country and assigns it to the Country field.
+func (o *AdAccount) SetCountry(v Country) {
+	o.Country = &v
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdAccount) GetCreatedTime() int32 {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedTime.Get()
+}
+
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdAccount) GetCreatedTimeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
+}
+
+// HasCreatedTime returns a boolean if a field has been set.
+func (o *AdAccount) HasCreatedTime() bool {
+	if o != nil && o.CreatedTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTime gets a reference to the given NullableInt32 and assigns it to the CreatedTime field.
+func (o *AdAccount) SetCreatedTime(v int32) {
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *AdAccount) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
+}
+
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *AdAccount) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *AdAccount) GetCurrency() Currency {
+	if o == nil || IsNil(o.Currency) {
+		var ret Currency
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccount) GetCurrencyOk() (*Currency, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *AdAccount) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given Currency and assigns it to the Currency field.
+func (o *AdAccount) SetCurrency(v Currency) {
+	o.Currency = &v
+}
+
+// GetId returns the Id field value
+func (o *AdAccount) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *AdAccount) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
 func (o *AdAccount) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -145,70 +249,6 @@ func (o *AdAccount) SetOwner(v AdAccountOwner) {
 	o.Owner = &v
 }
 
-// GetCountry returns the Country field value if set, zero value otherwise.
-func (o *AdAccount) GetCountry() Country {
-	if o == nil || IsNil(o.Country) {
-		var ret Country
-		return ret
-	}
-	return *o.Country
-}
-
-// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdAccount) GetCountryOk() (*Country, bool) {
-	if o == nil || IsNil(o.Country) {
-		return nil, false
-	}
-	return o.Country, true
-}
-
-// HasCountry returns a boolean if a field has been set.
-func (o *AdAccount) HasCountry() bool {
-	if o != nil && !IsNil(o.Country) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountry gets a reference to the given Country and assigns it to the Country field.
-func (o *AdAccount) SetCountry(v Country) {
-	o.Country = &v
-}
-
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *AdAccount) GetCurrency() Currency {
-	if o == nil || IsNil(o.Currency) {
-		var ret Currency
-		return ret
-	}
-	return *o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdAccount) GetCurrencyOk() (*Currency, bool) {
-	if o == nil || IsNil(o.Currency) {
-		return nil, false
-	}
-	return o.Currency, true
-}
-
-// HasCurrency returns a boolean if a field has been set.
-func (o *AdAccount) HasCurrency() bool {
-	if o != nil && !IsNil(o.Currency) {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given Currency and assigns it to the Currency field.
-func (o *AdAccount) SetCurrency(v Currency) {
-	o.Currency = &v
-}
-
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *AdAccount) GetPermissions() []BusinessAccessRole {
 	if o == nil || IsNil(o.Permissions) {
@@ -239,48 +279,6 @@ func (o *AdAccount) HasPermissions() bool {
 // SetPermissions gets a reference to the given []BusinessAccessRole and assigns it to the Permissions field.
 func (o *AdAccount) SetPermissions(v []BusinessAccessRole) {
 	o.Permissions = v
-}
-
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdAccount) GetCreatedTime() int32 {
-	if o == nil || IsNil(o.CreatedTime.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.CreatedTime.Get()
-}
-
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdAccount) GetCreatedTimeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
-}
-
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *AdAccount) HasCreatedTime() bool {
-	if o != nil && o.CreatedTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTime gets a reference to the given NullableInt32 and assigns it to the CreatedTime field.
-func (o *AdAccount) SetCreatedTime(v int32) {
-	o.CreatedTime.Set(&v)
-}
-// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
-func (o *AdAccount) SetCreatedTimeNil() {
-	o.CreatedTime.Set(nil)
-}
-
-// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
-func (o *AdAccount) UnsetCreatedTime() {
-	o.CreatedTime.Unset()
 }
 
 // GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -335,31 +333,66 @@ func (o AdAccount) MarshalJSON() ([]byte, error) {
 
 func (o AdAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
 	}
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	toSerialize["id"] = o.Id
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !IsNil(o.Country) {
-		toSerialize["country"] = o.Country
-	}
-	if !IsNil(o.Currency) {
-		toSerialize["currency"] = o.Currency
-	}
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
-	}
-	if o.CreatedTime.IsSet() {
-		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
 	if o.UpdatedTime.IsSet() {
 		toSerialize["updated_time"] = o.UpdatedTime.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *AdAccount) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAdAccount := _AdAccount{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAdAccount)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdAccount(varAdAccount)
+
+	return err
 }
 
 type NullableAdAccount struct {

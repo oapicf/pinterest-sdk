@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Owner** | Pointer to [**AdAccountOwner**](AdAccountOwner.md) |  | [optional] 
 **Country** | Pointer to [**Country**](Country.md) |  | [optional] 
+**CreatedTime** | Pointer to **NullableInt32** |  Creation time. Unix timestamp in seconds. | [optional] [readonly] 
 **Currency** | Pointer to [**Currency**](Currency.md) |  | [optional] 
-**Permissions** | Pointer to [**[]BusinessAccessRole**](BusinessAccessRole.md) |  | [optional] 
-**CreatedTime** | Pointer to **NullableInt32** | Creation time. Unix timestamp in seconds. | [optional] 
-**UpdatedTime** | Pointer to **NullableInt32** | Last update time. Unix timestamp in seconds. | [optional] 
+**Id** | **string** |  | 
+**Name** | Pointer to **string** | Ad account name. | [optional] 
+**Owner** | Pointer to [**AdAccountOwner**](AdAccountOwner.md) | Ad account owner | [optional] [readonly] 
+**Permissions** | Pointer to [**[]BusinessAccessRole**](BusinessAccessRole.md) |  | [optional] [readonly] 
+**UpdatedTime** | Pointer to **NullableInt32** |  | [optional] [readonly] 
 
 ## Methods
 
 ### NewAdAccount
 
-`func NewAdAccount() *AdAccount`
+`func NewAdAccount(id string, ) *AdAccount`
 
 NewAdAccount instantiates a new AdAccount object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +31,91 @@ will change when the set of required properties is changed
 NewAdAccountWithDefaults instantiates a new AdAccount object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCountry
+
+`func (o *AdAccount) GetCountry() Country`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *AdAccount) GetCountryOk() (*Country, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *AdAccount) SetCountry(v Country)`
+
+SetCountry sets Country field to given value.
+
+### HasCountry
+
+`func (o *AdAccount) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
+
+### GetCreatedTime
+
+`func (o *AdAccount) GetCreatedTime() int32`
+
+GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
+
+### GetCreatedTimeOk
+
+`func (o *AdAccount) GetCreatedTimeOk() (*int32, bool)`
+
+GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedTime
+
+`func (o *AdAccount) SetCreatedTime(v int32)`
+
+SetCreatedTime sets CreatedTime field to given value.
+
+### HasCreatedTime
+
+`func (o *AdAccount) HasCreatedTime() bool`
+
+HasCreatedTime returns a boolean if a field has been set.
+
+### SetCreatedTimeNil
+
+`func (o *AdAccount) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *AdAccount) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+### GetCurrency
+
+`func (o *AdAccount) GetCurrency() Currency`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *AdAccount) GetCurrencyOk() (*Currency, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *AdAccount) SetCurrency(v Currency)`
+
+SetCurrency sets Currency field to given value.
+
+### HasCurrency
+
+`func (o *AdAccount) HasCurrency() bool`
+
+HasCurrency returns a boolean if a field has been set.
 
 ### GetId
 
@@ -51,11 +136,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *AdAccount) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -107,56 +187,6 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
-### GetCountry
-
-`func (o *AdAccount) GetCountry() Country`
-
-GetCountry returns the Country field if non-nil, zero value otherwise.
-
-### GetCountryOk
-
-`func (o *AdAccount) GetCountryOk() (*Country, bool)`
-
-GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountry
-
-`func (o *AdAccount) SetCountry(v Country)`
-
-SetCountry sets Country field to given value.
-
-### HasCountry
-
-`func (o *AdAccount) HasCountry() bool`
-
-HasCountry returns a boolean if a field has been set.
-
-### GetCurrency
-
-`func (o *AdAccount) GetCurrency() Currency`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *AdAccount) GetCurrencyOk() (*Currency, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *AdAccount) SetCurrency(v Currency)`
-
-SetCurrency sets Currency field to given value.
-
-### HasCurrency
-
-`func (o *AdAccount) HasCurrency() bool`
-
-HasCurrency returns a boolean if a field has been set.
-
 ### GetPermissions
 
 `func (o *AdAccount) GetPermissions() []BusinessAccessRole`
@@ -182,41 +212,6 @@ SetPermissions sets Permissions field to given value.
 
 HasPermissions returns a boolean if a field has been set.
 
-### GetCreatedTime
-
-`func (o *AdAccount) GetCreatedTime() int32`
-
-GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
-
-### GetCreatedTimeOk
-
-`func (o *AdAccount) GetCreatedTimeOk() (*int32, bool)`
-
-GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedTime
-
-`func (o *AdAccount) SetCreatedTime(v int32)`
-
-SetCreatedTime sets CreatedTime field to given value.
-
-### HasCreatedTime
-
-`func (o *AdAccount) HasCreatedTime() bool`
-
-HasCreatedTime returns a boolean if a field has been set.
-
-### SetCreatedTimeNil
-
-`func (o *AdAccount) SetCreatedTimeNil(b bool)`
-
- SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
-
-### UnsetCreatedTime
-`func (o *AdAccount) UnsetCreatedTime()`
-
-UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetUpdatedTime
 
 `func (o *AdAccount) GetUpdatedTime() int32`

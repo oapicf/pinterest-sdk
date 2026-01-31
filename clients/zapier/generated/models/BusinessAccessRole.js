@@ -10,6 +10,8 @@ module.exports = {
                     'ANALYST',
                     'SOS_READER',
                     'FINANCE_MANAGER',
+                    'FINANCE_VIEW',
+                    'FINANCE_EDIT',
                     'AUDIENCE_MANAGER',
                     'CAMPAIGN_MANAGER',
                     'CATALOGS_MANAGER',

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CatalogsProductGroupsList200Response{}
 
 // CatalogsProductGroupsList200Response struct for CatalogsProductGroupsList200Response
 type CatalogsProductGroupsList200Response struct {
-	Items []CatalogsVerticalProductGroup `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []CatalogsVerticalProductGroup `json:"items"`
 }
 
 type _CatalogsProductGroupsList200Response CatalogsProductGroupsList200Response
@@ -44,30 +44,6 @@ func NewCatalogsProductGroupsList200Response(items []CatalogsVerticalProductGrou
 func NewCatalogsProductGroupsList200ResponseWithDefaults() *CatalogsProductGroupsList200Response {
 	this := CatalogsProductGroupsList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsVerticalProductGroup {
-	if o == nil {
-		var ret []CatalogsVerticalProductGroup
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupsList200Response) GetItemsOk() ([]CatalogsVerticalProductGroup, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsVerticalProductGroup) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *CatalogsProductGroupsList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsVerticalProductGroup {
+	if o == nil {
+		var ret []CatalogsVerticalProductGroup
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupsList200Response) GetItemsOk() ([]CatalogsVerticalProductGroup, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsVerticalProductGroup) {
+	o.Items = v
+}
+
 func (o CatalogsProductGroupsList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o CatalogsProductGroupsList200Response) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsProductGroupsList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

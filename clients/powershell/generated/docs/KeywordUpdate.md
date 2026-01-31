@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** | Keyword ID. | 
 **Archived** | **Boolean** | Is keyword archived? | [optional] 
 **Bid** | **Int32** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**Id** | **String** | Keyword ID. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$KeywordUpdate = Initialize-PSOpenAPIToolsKeywordUpdate  -Id 2886364308355 `
- -Archived false `
- -Bid null
+$KeywordUpdate = Initialize-PSOpenAPIToolsKeywordUpdate  -Archived false `
+ -Bid null `
+ -Id 2886364308355
 ```
 
 - Convert the resource to JSON

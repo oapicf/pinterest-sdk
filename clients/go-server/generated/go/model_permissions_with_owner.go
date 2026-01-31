@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -25,6 +25,8 @@ const (
 	ADMIN PermissionsWithOwner = "ADMIN"
 	ANALYST PermissionsWithOwner = "ANALYST"
 	FINANCE_MANAGER PermissionsWithOwner = "FINANCE_MANAGER"
+	FINANCE_EDIT PermissionsWithOwner = "FINANCE_EDIT"
+	FINANCE_VIEW PermissionsWithOwner = "FINANCE_VIEW"
 	AUDIENCE_MANAGER PermissionsWithOwner = "AUDIENCE_MANAGER"
 	CAMPAIGN_MANAGER PermissionsWithOwner = "CAMPAIGN_MANAGER"
 	CATALOGS_MANAGER PermissionsWithOwner = "CATALOGS_MANAGER"
@@ -38,6 +40,8 @@ var AllowedPermissionsWithOwnerEnumValues = []PermissionsWithOwner{
 	"ADMIN",
 	"ANALYST",
 	"FINANCE_MANAGER",
+	"FINANCE_EDIT",
+	"FINANCE_VIEW",
 	"AUDIENCE_MANAGER",
 	"CAMPAIGN_MANAGER",
 	"CATALOGS_MANAGER",
@@ -51,6 +55,8 @@ var validPermissionsWithOwnerEnumValues = map[PermissionsWithOwner]struct{}{
 	"ADMIN": {},
 	"ANALYST": {},
 	"FINANCE_MANAGER": {},
+	"FINANCE_EDIT": {},
+	"FINANCE_VIEW": {},
 	"AUDIENCE_MANAGER": {},
 	"CAMPAIGN_MANAGER": {},
 	"CATALOGS_MANAGER": {},

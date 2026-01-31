@@ -2,15 +2,15 @@
 
 # PinMediaSourceImagesURL
 
-Multiple images urls-based media source
+Multiple URL-based images media source
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceType**](#SourceType) |  |  [optional]
-**items** | [**Seq&lt;PinMediaSourceImagesURLItemsInner&gt;**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | 
 **index** | **Int** |  |  [optional]
+**items** | [**Seq&lt;PinMediaSourceImagesURLItem&gt;**](PinMediaSourceImagesURLItem.md) | Array with image objects. | 
+**sourceType** | [**SourceType**](#SourceType) | The source type of the media. | 
 
 
 ## Enum: SourceType

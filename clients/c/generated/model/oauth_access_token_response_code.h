@@ -28,24 +28,26 @@ pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e oauth_access_
 
 typedef struct oauth_access_token_response_code_t {
     char *refresh_token; // string
+    int refresh_token_expires_at; //numeric
     int refresh_token_expires_in; //numeric
-    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type; //enum
     char *access_token; // string
-    char *token_type; // string
     int expires_in; //numeric
+    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type; //enum
     char *scope; // string
+    char *token_type; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_response_code_t;
 
 __attribute__((deprecated)) oauth_access_token_response_code_t *oauth_access_token_response_code_create(
     char *refresh_token,
+    int refresh_token_expires_at,
     int refresh_token_expires_in,
-    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
     char *access_token,
-    char *token_type,
     int expires_in,
-    char *scope
+    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
+    char *scope,
+    char *token_type
 );
 
 void oauth_access_token_response_code_free(oauth_access_token_response_code_t *oauth_access_token_response_code);

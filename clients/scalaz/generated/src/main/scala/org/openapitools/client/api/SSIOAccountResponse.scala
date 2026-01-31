@@ -12,16 +12,16 @@ import org.joda.time.DateTime
 import SSIOAccountResponse._
 
 case class SSIOAccountResponse (
-  /* Advertiser eligible to create order lines */
-  eligible: Option[Boolean],
+  /* An array of Salesforce account information that includes address, io terms, etc. */
+  billtoInfos: Option[List[SSIOAccountItem]],
 /* Advertiser eligible to update order lines */
   canEdit: Option[Boolean],
-/* An array of Salesforce account information that includes address, io terms, etc. */
-  billtoInfos: Option[List[SSIOAccountItem]],
 currency: Option[String],
-pmpNames: Option[List[SSIOAccountPMPName]],
+/* Advertiser eligible to create order lines */
+  eligible: Option[Boolean],
 /* Error indicator from Salesforce which could be \"No Error\" */
-  error: Option[String])
+  error: Option[String],
+pmpNames: Option[List[SSIOAccountPMPName]])
 
 object SSIOAccountResponse {
   import DateTimeCodecs._

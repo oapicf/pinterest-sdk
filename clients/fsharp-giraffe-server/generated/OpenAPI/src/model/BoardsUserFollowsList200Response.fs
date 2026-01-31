@@ -11,7 +11,7 @@ module BoardsUserFollowsList200Response =
 
 
   type boards_user_follows_list_200_response = {
-    Items : Board[];
     Bookmark : string option;
+    Items : Board[];
   }
   //#endregion

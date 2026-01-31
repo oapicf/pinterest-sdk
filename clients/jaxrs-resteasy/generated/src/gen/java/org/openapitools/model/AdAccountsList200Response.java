@@ -16,26 +16,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsList200Response   {
   
-  private List<@Valid AdAccount> items = new ArrayList<>();
   private String bookmark;
-
-  /**
-   * Ad accounts
-   **/
-  
-  @ApiModelProperty(required = true, value = "Ad accounts")
-  @JsonProperty("items")
-  @NotNull
-  @Valid
-  public List<@Valid AdAccount> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid AdAccount> items) {
-    this.items = items;
-  }
+  private List<@Valid AdAccount> items = new ArrayList<>();
 
   /**
    **/
@@ -49,6 +34,20 @@ public class AdAccountsList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  @NotNull
+  @Valid
+  public List<@Valid AdAccount> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid AdAccount> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -59,13 +58,13 @@ public class AdAccountsList200Response   {
       return false;
     }
     AdAccountsList200Response adAccountsList200Response = (AdAccountsList200Response) o;
-    return Objects.equals(this.items, adAccountsList200Response.items) &&
-        Objects.equals(this.bookmark, adAccountsList200Response.bookmark);
+    return Objects.equals(this.bookmark, adAccountsList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -73,8 +72,8 @@ public class AdAccountsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

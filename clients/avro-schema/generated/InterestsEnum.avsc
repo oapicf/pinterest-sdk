@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "InterestsEnum",
+  "symbols": [
+    "ALL",
+    "ANIMALS",
+    "ARCHITECTURE",
+    "ART",
+    "BEAUTY",
+    "DIY_AND_CRAFTS",
+    "EDUCATION",
+    "EVENT_PLANNING",
+    "FASHION",
+    "FOOD_AND_DRINKS",
+    "GARDENING",
+    "HEALTH",
+    "HOME_DECOR",
+    "PARENTING",
+    "TRAVEL",
+    "WEDDING"
+  ]
+}

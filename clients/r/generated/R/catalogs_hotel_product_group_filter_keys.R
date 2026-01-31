@@ -16,12 +16,12 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("BrandFilter", "CountryFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "HotelIdFilter", "PriceFilter"),
+    any_of = list("BrandFilter", "CountryFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "HotelIdFilter", "PriceFilter", "TitleKeywordsFilter"),
 
     #' @description
     #' Initialize a new CatalogsHotelProductGroupFilterKeys.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "BrandFilter", "CountryFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "HotelIdFilter", "PriceFilter"
+    #' @param instance an instance of the object defined in the anyOf schemas: "BrandFilter", "CountryFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "HotelIdFilter", "PriceFilter", "TitleKeywordsFilter"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -52,8 +52,11 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "PriceFilter") {
         self$actual_instance <- instance
         self$actual_type <- "PriceFilter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TitleKeywordsFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "TitleKeywordsFilter"
       } else {
-        stop(paste("Failed to initialize CatalogsHotelProductGroupFilterKeys with anyOf schemas BrandFilter, CountryFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, HotelIdFilter, PriceFilter. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsHotelProductGroupFilterKeys with anyOf schemas BrandFilter, CountryFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, HotelIdFilter, PriceFilter, TitleKeywordsFilter. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -204,8 +207,22 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
         error_messages <- append(error_messages, `CountryFilter_result`["message"])
       }
 
+      `TitleKeywordsFilter_result` <- tryCatch({
+          `TitleKeywordsFilter`$public_methods$validateJSON(input)
+          `TitleKeywordsFilter_instance` <- `TitleKeywordsFilter`$new()
+          self$actual_instance <- `TitleKeywordsFilter_instance`$fromJSON(input)
+          self$actual_type <- "TitleKeywordsFilter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`TitleKeywordsFilter_result`["error"])) {
+        error_messages <- append(error_messages, `TitleKeywordsFilter_result`["message"])
+      }
+
       # no match
-      stop(paste("No match found when deserializing the input into CatalogsHotelProductGroupFilterKeys with anyOf schemas BrandFilter, CountryFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, HotelIdFilter, PriceFilter. Details: >>",
+      stop(paste("No match found when deserializing the input into CatalogsHotelProductGroupFilterKeys with anyOf schemas BrandFilter, CountryFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, HotelIdFilter, PriceFilter, TitleKeywordsFilter. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

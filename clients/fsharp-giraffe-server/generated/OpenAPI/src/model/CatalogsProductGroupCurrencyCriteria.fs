@@ -10,7 +10,7 @@ module CatalogsProductGroupCurrencyCriteria =
 
 
   type CatalogsProductGroupCurrencyCriteria = {
-    Values : NonNullableCatalogsCurrency;
     Negated : bool;
+    Values : NonNullableCatalogsCurrency;
   }
   //#endregion

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,6 +28,20 @@ func NewOauthAPIService() *OauthAPIService {
 	return &OauthAPIService{}
 }
 
+// OauthConversionToken - Generate OAuth access token for conversion API
+func (s *OauthAPIService) OauthConversionToken(ctx context.Context) (ImplResponse, error) {
+	// TODO - update OauthConversionToken with the required logic for this service method.
+	// Add api_oauth_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, ConversionAccessTokenResponse{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionAccessTokenResponse{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("OauthConversionToken method not implemented")
+}
+
 // OauthToken - Generate OAuth access token
 func (s *OauthAPIService) OauthToken(ctx context.Context, grantType string) (ImplResponse, error) {
 	// TODO - update OauthToken with the required logic for this service method.
@@ -40,4 +54,24 @@ func (s *OauthAPIService) OauthToken(ctx context.Context, grantType string) (Imp
 	// return Response(0, Error{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("OauthToken method not implemented")
+}
+
+// TokenRevoke - Revoke a token
+func (s *OauthAPIService) TokenRevoke(ctx context.Context, token string, tokenTypeHint string) (ImplResponse, error) {
+	// TODO - update TokenRevoke with the required logic for this service method.
+	// Add api_oauth_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
+	// return Response(200, nil),nil
+
+	// TODO: Uncomment the next line to return response Response(401, Error{}) or use other options such as http.Ok ...
+	// return Response(401, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
+	// return Response(403, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("TokenRevoke method not implemented")
 }

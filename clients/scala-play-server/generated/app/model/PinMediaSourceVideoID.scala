@@ -3,20 +3,22 @@ package model
 import play.api.libs.json._
 
 /**
-  * Video ID-based media source
-  * @param coverImageUrl Cover image url.
+  * Video ID-based media source.
   * @param coverImageContentType Content type for cover image Base64.
   * @param coverImageData Cover image Base64.
+  * @param coverImageKeyFrameTime Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+  * @param coverImageUrl Cover image URL.
   * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinMediaSourceVideoID(
-  sourceType: PinMediaSourceVideoID.SourceType.Value,
-  coverImageUrl: Option[String],
-  coverImageContentType: Option[PinMediaSourceVideoID.CoverImageContentType.Value],
+  coverImageContentType: Option[ContentType],
   coverImageData: Option[String],
+  coverImageKeyFrameTime: Option[Int],
+  coverImageUrl: Option[String],
+  isStandard: Option[Boolean],
   mediaId: String,
-  isStandard: Option[Boolean]
+  sourceType: PinMediaSourceVideoID.SourceType.Value
 )
 
 object PinMediaSourceVideoID {
@@ -28,15 +30,6 @@ object PinMediaSourceVideoID {
 
     type SourceType = Value
     implicit lazy val SourceTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object CoverImageContentType extends Enumeration {
-    val ImageJpeg = Value("image/jpeg")
-    val ImagePng = Value("image/png")
-
-    type CoverImageContentType = Value
-    implicit lazy val CoverImageContentTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

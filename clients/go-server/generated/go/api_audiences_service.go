@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -88,18 +88,4 @@ func (s *AudiencesAPIService) AudiencesUpdate(ctx context.Context, adAccountId s
 	// return Response(0, Error{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AudiencesUpdate method not implemented")
-}
-
-// AudiencesCreateCustom - Create custom audience
-func (s *AudiencesAPIService) AudiencesCreateCustom(ctx context.Context, adAccountId string, audienceCreateCustomRequest AudienceCreateCustomRequest) (ImplResponse, error) {
-	// TODO - update AudiencesCreateCustom with the required logic for this service method.
-	// Add api_audiences_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, Audience{}) or use other options such as http.Ok ...
-	// return Response(200, Audience{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("AudiencesCreateCustom method not implemented")
 }

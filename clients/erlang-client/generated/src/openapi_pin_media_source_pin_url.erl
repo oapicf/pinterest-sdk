@@ -5,13 +5,13 @@
 -export_type([openapi_pin_media_source_pin_url/0]).
 
 -type openapi_pin_media_source_pin_url() ::
-    #{ 'source_type' := binary(),
-       'is_affiliate_link' => boolean()
+    #{ 'is_affiliate_link' => boolean(),
+       'source_type' := binary()
      }.
 
-encode(#{ 'source_type' := SourceType,
-          'is_affiliate_link' := IsAffiliateLink
+encode(#{ 'is_affiliate_link' := IsAffiliateLink,
+          'source_type' := SourceType
         }) ->
-    #{ 'source_type' => SourceType,
-       'is_affiliate_link' => IsAffiliateLink
+    #{ 'is_affiliate_link' => IsAffiliateLink,
+       'source_type' => SourceType
      }.

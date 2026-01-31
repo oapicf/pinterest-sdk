@@ -108,7 +108,7 @@ public interface BusinessAccessAssetsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Sucess", response = BusinessAssetMembersGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessAssetMembersGet200Response businessAssetMembersGet(@PathParam("business_id") String businessId, @PathParam("asset_id") String assetId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("start_index") @DefaultValue("0")Integer startIndex);
+    public BusinessAssetMembersGet200Response businessAssetMembersGet(@PathParam("business_id") String businessId, @PathParam("asset_id") String assetId, @QueryParam("fetch_system_users") @DefaultValue("false")Boolean fetchSystemUsers, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("start_index") @DefaultValue("0")Integer startIndex);
 
     /**
      * Get partners with access to asset

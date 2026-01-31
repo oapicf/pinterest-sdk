@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class UserSummary {
-    /* Username */
-    String username
     /* Always \"user\" */
     String type
+    /* Username */
+    String username
 }

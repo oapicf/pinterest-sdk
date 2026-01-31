@@ -1,9 +1,6 @@
 package org.openapitools.model;
 
-import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.BoardOwner;
-import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -22,54 +19,6 @@ public class PinCreateTest {
     @Test
     public void testPinCreate() {
         // TODO: test PinCreate
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'link'
-     */
-    @Test
-    public void linkTest() {
-        // TODO: test link
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'dominantColor'
-     */
-    @Test
-    public void dominantColorTest() {
-        // TODO: test dominantColor
     }
 
     /**
@@ -97,19 +46,27 @@ public class PinCreateTest {
     }
 
     /**
-     * Test the property 'boardOwner'
+     * Test the property 'description'
      */
     @Test
-    public void boardOwnerTest() {
-        // TODO: test boardOwner
+    public void descriptionTest() {
+        // TODO: test description
     }
 
     /**
-     * Test the property 'media'
+     * Test the property 'dominantColor'
      */
     @Test
-    public void mediaTest() {
-        // TODO: test media
+    public void dominantColorTest() {
+        // TODO: test dominantColor
+    }
+
+    /**
+     * Test the property 'link'
+     */
+    @Test
+    public void linkTest() {
+        // TODO: test link
     }
 
     /**
@@ -129,11 +86,19 @@ public class PinCreateTest {
     }
 
     /**
-     * Test the property 'note'
+     * Test the property 'sponsorId'
      */
     @Test
-    public void noteTest() {
-        // TODO: test note
+    public void sponsorIdTest() {
+        // TODO: test sponsorId
+    }
+
+    /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
     }
 
 }

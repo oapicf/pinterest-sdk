@@ -19,37 +19,19 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing an item processing record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemProcessingRecord   {
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("errors")
   private List<ItemValidationEvent> errors = null;
 
-  @JsonProperty("warnings")
-  private List<ItemValidationEvent> warnings = null;
+  @JsonProperty("item_id")
+  private String itemId;
 
   @JsonProperty("status")
   private ItemProcessingStatus status;
 
-  /**
-   * The catalog item id in the merchant namespace
-   **/
-  public ItemProcessingRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
+  @JsonProperty("warnings")
+  private List<ItemValidationEvent> warnings = null;
 
   /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
@@ -70,21 +52,21 @@ public class ItemProcessingRecord   {
   }
 
   /**
-   * Array with the validation warnings for the item processing record
+   * The catalog item id in the merchant namespace
    **/
-  public ItemProcessingRecord warnings(List<ItemValidationEvent> warnings) {
-    this.warnings = warnings;
+  public ItemProcessingRecord itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @JsonProperty("warnings")
-  public List<ItemValidationEvent> getWarnings() {
-    return warnings;
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
   }
-  public void setWarnings(List<ItemValidationEvent> warnings) {
-    this.warnings = warnings;
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   /**
@@ -104,6 +86,24 @@ public class ItemProcessingRecord   {
     this.status = status;
   }
 
+  /**
+   * Array with the validation warnings for the item processing record
+   **/
+  public ItemProcessingRecord warnings(List<ItemValidationEvent> warnings) {
+    this.warnings = warnings;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
+  @JsonProperty("warnings")
+  public List<ItemValidationEvent> getWarnings() {
+    return warnings;
+  }
+  public void setWarnings(List<ItemValidationEvent> warnings) {
+    this.warnings = warnings;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,15 +114,15 @@ public class ItemProcessingRecord   {
       return false;
     }
     ItemProcessingRecord itemProcessingRecord = (ItemProcessingRecord) o;
-    return Objects.equals(itemId, itemProcessingRecord.itemId) &&
-        Objects.equals(errors, itemProcessingRecord.errors) &&
-        Objects.equals(warnings, itemProcessingRecord.warnings) &&
-        Objects.equals(status, itemProcessingRecord.status);
+    return Objects.equals(errors, itemProcessingRecord.errors) &&
+        Objects.equals(itemId, itemProcessingRecord.itemId) &&
+        Objects.equals(status, itemProcessingRecord.status) &&
+        Objects.equals(warnings, itemProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, errors, warnings, status);
+    return Objects.hash(errors, itemId, status, warnings);
   }
 
   @Override
@@ -130,10 +130,10 @@ public class ItemProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemProcessingRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

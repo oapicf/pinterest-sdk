@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,9 +16,331 @@ package openapi
 
 type CatalogsItemValidationWarnings struct {
 
+	ADIMAGE0LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE0LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE0LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE0LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_WARNING,omitempty"`
+
+	ADIMAGE0TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE0TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE0TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE10LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE10LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE10LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE10LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_WARNING,omitempty"`
+
+	ADIMAGE10TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE10TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE10TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE11LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE11LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE11LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE11LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_WARNING,omitempty"`
+
+	ADIMAGE11TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE11TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE11TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE12LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE12LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE12LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE12LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_WARNING,omitempty"`
+
+	ADIMAGE12TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE12TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE12TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE13LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE13LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE13LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE13LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_WARNING,omitempty"`
+
+	ADIMAGE13TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE13TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE13TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE14LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE14LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE14LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE14LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_WARNING,omitempty"`
+
+	ADIMAGE14TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE14TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE14TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE15LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE15LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE15LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE15LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_WARNING,omitempty"`
+
+	ADIMAGE15TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE15TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE15TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE16LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE16LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE16LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE16LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_WARNING,omitempty"`
+
+	ADIMAGE16TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE16TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE16TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE17LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE17LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE17LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE17LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_WARNING,omitempty"`
+
+	ADIMAGE17TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE17TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE17TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE18LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE18LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE18LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE18LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_WARNING,omitempty"`
+
+	ADIMAGE18TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE18TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE18TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE19LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE19LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE19LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE19LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_WARNING,omitempty"`
+
+	ADIMAGE19TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE19TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE19TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE1LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE1LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE1LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE1LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_WARNING,omitempty"`
+
+	ADIMAGE1TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE1TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE1TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE2LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE2LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE2LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE2LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_WARNING,omitempty"`
+
+	ADIMAGE2TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE2TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE2TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE3LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE3LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE3LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE3LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_WARNING,omitempty"`
+
+	ADIMAGE3TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE3TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE3TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE4LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE4LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE4LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE4LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_WARNING,omitempty"`
+
+	ADIMAGE4TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE4TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE4TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE5LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE5LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE5LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE5LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_WARNING,omitempty"`
+
+	ADIMAGE5TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE5TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE5TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE6LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE6LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE6LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE6LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_WARNING,omitempty"`
+
+	ADIMAGE6TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE6TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE6TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE7LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE7LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE7LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE7LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_WARNING,omitempty"`
+
+	ADIMAGE7TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE7TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE7TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE8LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE8LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE8LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE8LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_WARNING,omitempty"`
+
+	ADIMAGE8TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE8TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE8TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_REQUIRED,omitempty"`
+
+	ADIMAGE9LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_DUPLICATED,omitempty"`
+
+	ADIMAGE9LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE9LINKREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_REQUIRED,omitempty"`
+
+	ADIMAGE9LINKWARNING CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_WARNING,omitempty"`
+
+	ADIMAGE9TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_DUPLICATED,omitempty"`
+
+	ADIMAGE9TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADIMAGE9TAGREQUIRED CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_REQUIRED,omitempty"`
+
 	AD_LINK_FORMAT_WARNING CatalogsItemValidationDetails `json:"AD_LINK_FORMAT_WARNING,omitempty"`
 
 	AD_LINK_SAME_AS_LINK CatalogsItemValidationDetails `json:"AD_LINK_SAME_AS_LINK,omitempty"`
+
+	ADVIDEO0LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_DUPLICATED,omitempty"`
+
+	ADVIDEO0LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADVIDEO0LINKREQUIRED CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_REQUIRED,omitempty"`
+
+	ADVIDEO0LINKWARNING CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_WARNING,omitempty"`
+
+	ADVIDEO0TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_DUPLICATED,omitempty"`
+
+	ADVIDEO0TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADVIDEO0TAGREQUIRED CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_REQUIRED,omitempty"`
+
+	ADVIDEO1LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_DUPLICATED,omitempty"`
+
+	ADVIDEO1LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADVIDEO1LINKREQUIRED CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_REQUIRED,omitempty"`
+
+	ADVIDEO1LINKWARNING CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_WARNING,omitempty"`
+
+	ADVIDEO1TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_DUPLICATED,omitempty"`
+
+	ADVIDEO1TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADVIDEO1TAGREQUIRED CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_REQUIRED,omitempty"`
+
+	ADVIDEO2LINKDUPLICATED CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_DUPLICATED,omitempty"`
+
+	ADVIDEO2LINKLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_LENGTH_TOO_LONG,omitempty"`
+
+	ADVIDEO2LINKREQUIRED CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_REQUIRED,omitempty"`
+
+	ADVIDEO2LINKWARNING CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_WARNING,omitempty"`
+
+	ADVIDEO2TAGDUPLICATED CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_DUPLICATED,omitempty"`
+
+	ADVIDEO2TAGLENGTHTOOLONG CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_LENGTH_TOO_LONG,omitempty"`
+
+	ADVIDEO2TAGREQUIRED CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_REQUIRED,omitempty"`
 
 	ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG CatalogsItemValidationDetails `json:"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG,omitempty"`
 
@@ -29,8 +351,6 @@ type CatalogsItemValidationWarnings struct {
 	ADWORDS_SAME_AS_LINK CatalogsItemValidationDetails `json:"ADWORDS_SAME_AS_LINK,omitempty"`
 
 	AGE_GROUP_INVALID CatalogsItemValidationDetails `json:"AGE_GROUP_INVALID,omitempty"`
-
-	SIZE_SYSTEM_INVALID CatalogsItemValidationDetails `json:"SIZE_SYSTEM_INVALID,omitempty"`
 
 	ANDROID_DEEP_LINK_INVALID CatalogsItemValidationDetails `json:"ANDROID_DEEP_LINK_INVALID,omitempty"`
 
@@ -76,21 +396,23 @@ type CatalogsItemValidationWarnings struct {
 
 	PRODUCT_TYPE_LENGTH_TOO_LONG CatalogsItemValidationDetails `json:"PRODUCT_TYPE_LENGTH_TOO_LONG,omitempty"`
 
-	SALES_PRICE_INVALID CatalogsItemValidationDetails `json:"SALES_PRICE_INVALID,omitempty"`
+	SALE_DATE_INVALID CatalogsItemValidationDetails `json:"SALE_DATE_INVALID,omitempty"`
 
-	SALES_PRICE_TOO_LOW CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_LOW,omitempty"`
+	SALES_PRICE_INVALID CatalogsItemValidationDetails `json:"SALES_PRICE_INVALID,omitempty"`
 
 	SALES_PRICE_TOO_HIGH CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_HIGH,omitempty"`
 
-	SALE_DATE_INVALID CatalogsItemValidationDetails `json:"SALE_DATE_INVALID,omitempty"`
-
-	SHIPPING_INVALID CatalogsItemValidationDetails `json:"SHIPPING_INVALID,omitempty"`
+	SALES_PRICE_TOO_LOW CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_LOW,omitempty"`
 
 	SHIPPING_HEIGHT_INVALID CatalogsItemValidationDetails `json:"SHIPPING_HEIGHT_INVALID,omitempty"`
+
+	SHIPPING_INVALID CatalogsItemValidationDetails `json:"SHIPPING_INVALID,omitempty"`
 
 	SHIPPING_WEIGHT_INVALID CatalogsItemValidationDetails `json:"SHIPPING_WEIGHT_INVALID,omitempty"`
 
 	SHIPPING_WIDTH_INVALID CatalogsItemValidationDetails `json:"SHIPPING_WIDTH_INVALID,omitempty"`
+
+	SIZE_SYSTEM_INVALID CatalogsItemValidationDetails `json:"SIZE_SYSTEM_INVALID,omitempty"`
 
 	SIZE_TYPE_INVALID CatalogsItemValidationDetails `json:"SIZE_TYPE_INVALID,omitempty"`
 
@@ -102,15 +424,500 @@ type CatalogsItemValidationWarnings struct {
 
 	UTM_SOURCE_AUTO_CORRECTED CatalogsItemValidationDetails `json:"UTM_SOURCE_AUTO_CORRECTED,omitempty"`
 
+	VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED CatalogsItemValidationDetails `json:"VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED,omitempty"`
+
 	WEIGHT_UNIT_INVALID CatalogsItemValidationDetails `json:"WEIGHT_UNIT_INVALID,omitempty"`
 }
 
 // AssertCatalogsItemValidationWarningsRequired checks if the required fields are not zero-ed
 func AssertCatalogsItemValidationWarningsRequired(obj CatalogsItemValidationWarnings) error {
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE0TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE10TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE11TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE12TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE13TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE14TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE15TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE16TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE17TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE18TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE19TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE1TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE2TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE3TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE4TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE5TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE6TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE7TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE8TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADIMAGE9TAGREQUIRED); err != nil {
+		return err
+	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.AD_LINK_FORMAT_WARNING); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.AD_LINK_SAME_AS_LINK); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO0TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO1TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADVIDEO2TAGREQUIRED); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG); err != nil {
@@ -126,9 +933,6 @@ func AssertCatalogsItemValidationWarningsRequired(obj CatalogsItemValidationWarn
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.AGE_GROUP_INVALID); err != nil {
-		return err
-	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.SIZE_SYSTEM_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.ANDROID_DEEP_LINK_INVALID); err != nil {
@@ -197,28 +1001,31 @@ func AssertCatalogsItemValidationWarningsRequired(obj CatalogsItemValidationWarn
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.PRODUCT_TYPE_LENGTH_TOO_LONG); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALES_PRICE_INVALID); err != nil {
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALE_DATE_INVALID); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALES_PRICE_TOO_LOW); err != nil {
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALES_PRICE_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALES_PRICE_TOO_HIGH); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALE_DATE_INVALID); err != nil {
-		return err
-	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.SHIPPING_INVALID); err != nil {
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.SALES_PRICE_TOO_LOW); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.SHIPPING_HEIGHT_INVALID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.SHIPPING_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.SHIPPING_WEIGHT_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.SHIPPING_WIDTH_INVALID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.SIZE_SYSTEM_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.SIZE_TYPE_INVALID); err != nil {
@@ -236,6 +1043,9 @@ func AssertCatalogsItemValidationWarningsRequired(obj CatalogsItemValidationWarn
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.UTM_SOURCE_AUTO_CORRECTED); err != nil {
 		return err
 	}
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED); err != nil {
+		return err
+	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.WEIGHT_UNIT_INVALID); err != nil {
 		return err
 	}
@@ -244,10 +1054,493 @@ func AssertCatalogsItemValidationWarningsRequired(obj CatalogsItemValidationWarn
 
 // AssertCatalogsItemValidationWarningsConstraints checks if the values respects the defined constraints
 func AssertCatalogsItemValidationWarningsConstraints(obj CatalogsItemValidationWarnings) error {
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE0TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE10TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE11TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE12TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE13TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE14TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE15TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE16TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE17TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE18TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE19TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE1TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE2TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE3TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE4TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE5TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE6TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE7TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE8TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADIMAGE9TAGREQUIRED); err != nil {
+		return err
+	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.AD_LINK_FORMAT_WARNING); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.AD_LINK_SAME_AS_LINK); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO0TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO1TAGREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2LINKDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2LINKLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2LINKREQUIRED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2LINKWARNING); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2TAGDUPLICATED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2TAGLENGTHTOOLONG); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADVIDEO2TAGREQUIRED); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG); err != nil {
@@ -263,9 +1556,6 @@ func AssertCatalogsItemValidationWarningsConstraints(obj CatalogsItemValidationW
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.AGE_GROUP_INVALID); err != nil {
-		return err
-	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SIZE_SYSTEM_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ANDROID_DEEP_LINK_INVALID); err != nil {
@@ -334,28 +1624,31 @@ func AssertCatalogsItemValidationWarningsConstraints(obj CatalogsItemValidationW
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.PRODUCT_TYPE_LENGTH_TOO_LONG); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALES_PRICE_INVALID); err != nil {
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALE_DATE_INVALID); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALES_PRICE_TOO_LOW); err != nil {
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALES_PRICE_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALES_PRICE_TOO_HIGH); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALE_DATE_INVALID); err != nil {
-		return err
-	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SHIPPING_INVALID); err != nil {
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SALES_PRICE_TOO_LOW); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SHIPPING_HEIGHT_INVALID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SHIPPING_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SHIPPING_WEIGHT_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SHIPPING_WIDTH_INVALID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SIZE_SYSTEM_INVALID); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.SIZE_TYPE_INVALID); err != nil {
@@ -371,6 +1664,9 @@ func AssertCatalogsItemValidationWarningsConstraints(obj CatalogsItemValidationW
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.UTM_SOURCE_AUTO_CORRECTED); err != nil {
+		return err
+	}
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.WEIGHT_UNIT_INVALID); err != nil {

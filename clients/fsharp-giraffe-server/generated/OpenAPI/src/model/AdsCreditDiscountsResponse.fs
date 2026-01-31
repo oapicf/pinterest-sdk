@@ -16,10 +16,10 @@ module AdsCreditDiscountsResponse =
   type AdsCreditDiscountsResponse = {
     Active : bool;
     AdvertiserId : string;
-    DiscountType : DiscountTypeEnum;
-    DiscountInMicroCurrency : decimal option;
     DiscountCurrency : string option;
-    Title : string option;
+    DiscountInMicroCurrency : decimal option;
+    DiscountType : DiscountTypeEnum;
     RemainingDiscountInMicroCurrency : decimal option;
+    Title : string option;
   }
   //#endregion

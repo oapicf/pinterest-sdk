@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,12 +24,29 @@ import org.openapitools.model.TemplateResponseDateRangeRelativeDateRange;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRange   {
   
+  private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
   private TemplateResponseDateRangeDynamicDateRange dynamicDateRange;
   private TemplateResponseDateRangeRelativeDateRange relativeDateRange;
-  private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
+
+  /**
+   */
+  public TemplateResponseDateRange absoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
+    this.absoluteDateRange = absoluteDateRange;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("absolute_date_range")
+  public TemplateResponseDateRangeAbsoluteDateRange getAbsoluteDateRange() {
+    return absoluteDateRange;
+  }
+  public void setAbsoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
+    this.absoluteDateRange = absoluteDateRange;
+  }
 
   /**
    */
@@ -65,23 +82,6 @@ public class TemplateResponseDateRange   {
     this.relativeDateRange = relativeDateRange;
   }
 
-  /**
-   */
-  public TemplateResponseDateRange absoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
-    this.absoluteDateRange = absoluteDateRange;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("absolute_date_range")
-  public TemplateResponseDateRangeAbsoluteDateRange getAbsoluteDateRange() {
-    return absoluteDateRange;
-  }
-  public void setAbsoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
-    this.absoluteDateRange = absoluteDateRange;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,14 +92,14 @@ public class TemplateResponseDateRange   {
       return false;
     }
     TemplateResponseDateRange templateResponseDateRange = (TemplateResponseDateRange) o;
-    return Objects.equals(dynamicDateRange, templateResponseDateRange.dynamicDateRange) &&
-        Objects.equals(relativeDateRange, templateResponseDateRange.relativeDateRange) &&
-        Objects.equals(absoluteDateRange, templateResponseDateRange.absoluteDateRange);
+    return Objects.equals(absoluteDateRange, templateResponseDateRange.absoluteDateRange) &&
+        Objects.equals(dynamicDateRange, templateResponseDateRange.dynamicDateRange) &&
+        Objects.equals(relativeDateRange, templateResponseDateRange.relativeDateRange);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dynamicDateRange, relativeDateRange, absoluteDateRange);
+    return Objects.hash(absoluteDateRange, dynamicDateRange, relativeDateRange);
   }
 
   @Override
@@ -107,9 +107,9 @@ public class TemplateResponseDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRange {\n");
     
+    sb.append("    absoluteDateRange: ").append(toIndentedString(absoluteDateRange)).append("\n");
     sb.append("    dynamicDateRange: ").append(toIndentedString(dynamicDateRange)).append("\n");
     sb.append("    relativeDateRange: ").append(toIndentedString(relativeDateRange)).append("\n");
-    sb.append("    absoluteDateRange: ").append(toIndentedString(absoluteDateRange)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -39,7 +39,7 @@ boards_user_follows/list(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Follow user
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 -spec follow_user/update(ctx:ctx(), binary(), openapi_follow_user_request:openapi_follow_user_request()) -> {ok, openapi_user_summary:openapi_user_summary(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 follow_user/update(Ctx, Username, OpenapiFollowUserRequest) ->
     follow_user/update(Ctx, Username, OpenapiFollowUserRequest, #{}).

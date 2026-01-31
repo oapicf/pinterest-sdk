@@ -1,2 +1,2 @@
-testCase,httpStatusCode,mediaUploadRequest,mediaId,bookmark,pageSize
+testCase,httpStatusCode,mediaUploadCreate,mediaId,bookmark,pageSize
 Success,200,0,0,0,0

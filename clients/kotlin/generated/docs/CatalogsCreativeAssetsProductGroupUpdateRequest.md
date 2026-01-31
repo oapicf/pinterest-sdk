@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **catalogType** | [**inline**](#CatalogType) |  |  [optional] |
-| **name** | **kotlin.String** |  |  [optional] |
 | **description** | **kotlin.String** |  |  [optional] |
 | **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional] |
+| **name** | **kotlin.String** |  |  [optional] |
 
 
 <a id="CatalogType"></a>

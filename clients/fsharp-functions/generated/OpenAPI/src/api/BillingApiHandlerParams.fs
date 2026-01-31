@@ -3,6 +3,8 @@ namespace OpenAPI
 open OpenAPI.Model.AdsCreditRedeemRequest
 open OpenAPI.Model.AdsCreditRedeemResponse
 open OpenAPI.Model.AdsCreditsDiscountsGet200Response
+open OpenAPI.Model.BillingInvoiceDownloadResponse
+open OpenAPI.Model.BillingInvoicesGet200Response
 open OpenAPI.Model.BillingProfilesGet200Response
 open OpenAPI.Model.Error
 open OpenAPI.Model.SSIOAccountResponse
@@ -84,6 +86,92 @@ module BillingApiHandlerParams =
     type AdsCreditsDiscountsGetArgs = {
       pathParams:AdsCreditsDiscountsGetPathParams;
       queryParams:Result<AdsCreditsDiscountsGetQueryParams,string>;
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type BillingInvoiceDownloadGetPathParams = {
+      adAccountId : string ;
+    //#endregion
+      billingInvoiceId : string ;
+    }
+    //#endregion
+
+
+    type BillingInvoiceDownloadGetStatusCode200Response = {
+      content:BillingInvoiceDownloadResponse;
+      
+    }
+
+    type BillingInvoiceDownloadGetStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type BillingInvoiceDownloadGetDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type BillingInvoiceDownloadGetResult = BillingInvoiceDownloadGetStatusCode200 of BillingInvoiceDownloadGetStatusCode200Response|BillingInvoiceDownloadGetStatusCode400 of BillingInvoiceDownloadGetStatusCode400Response|BillingInvoiceDownloadGetDefaultStatusCode of BillingInvoiceDownloadGetDefaultStatusCodeResponse
+
+    type BillingInvoiceDownloadGetArgs = {
+      pathParams:BillingInvoiceDownloadGetPathParams;
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type BillingInvoicesGetPathParams = {
+      adAccountId : string ;
+    }
+    //#endregion
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type BillingInvoicesGetQueryParams = {
+      bookmark : string option;
+
+
+      pageSize : int option;
+
+
+      sort : string option;
+
+
+      order : string option;
+
+
+      status : string option;
+
+
+      documentType : string option;
+
+
+      startDueDate : DateTime option;
+
+
+      endDueDate : DateTime option;
+
+    }
+    //#endregion
+
+
+    type BillingInvoicesGetStatusCode200Response = {
+      content:BillingInvoicesGet200Response;
+      
+    }
+
+    type BillingInvoicesGetStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type BillingInvoicesGetDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type BillingInvoicesGetResult = BillingInvoicesGetStatusCode200 of BillingInvoicesGetStatusCode200Response|BillingInvoicesGetStatusCode400 of BillingInvoicesGetStatusCode400Response|BillingInvoicesGetDefaultStatusCode of BillingInvoicesGetDefaultStatusCodeResponse
+
+    type BillingInvoicesGetArgs = {
+      pathParams:BillingInvoicesGetPathParams;
+      queryParams:Result<BillingInvoicesGetQueryParams,string>;
     }
     //#region Path parameters
     [<CLIMutable>]

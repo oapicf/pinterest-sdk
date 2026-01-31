@@ -17,8 +17,8 @@ module CatalogsHotelBatchItem =
   //#endregion
 
   type CatalogsHotelBatchItem = {
+    Attributes : CatalogsUpdatableHotelAttributes;
     HotelId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsUpdatableHotelAttributes;
   }
   //#endregion

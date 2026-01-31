@@ -7,7 +7,7 @@
 #' @title TargetingTypeFilter
 #' @description TargetingTypeFilter Class
 #' @format An \code{R6Class} generator object
-#' @field targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. list(\link{AdsAnalyticsTargetingType}) [optional]
+#' @field targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,12 +19,12 @@ TargetingTypeFilter <- R6::R6Class(
     #' @description
     #' Initialize a new TargetingTypeFilter class.
     #'
-    #' @param targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+    #' @param targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
     #' @param ... Other optional arguments.
     initialize = function(`targeting_types` = NULL, ...) {
       if (!is.null(`targeting_types`)) {
         stopifnot(is.vector(`targeting_types`), length(`targeting_types`) != 0)
-        sapply(`targeting_types`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`targeting_types`, function(x) stopifnot(is.character(x)))
         self$`targeting_types` <- `targeting_types`
       }
     },
@@ -62,7 +62,7 @@ TargetingTypeFilter <- R6::R6Class(
       TargetingTypeFilterObject <- list()
       if (!is.null(self$`targeting_types`)) {
         TargetingTypeFilterObject[["targeting_types"]] <-
-          lapply(self$`targeting_types`, function(x) x$toSimpleType())
+          self$`targeting_types`
       }
       return(TargetingTypeFilterObject)
     },
@@ -75,7 +75,7 @@ TargetingTypeFilter <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`targeting_types`)) {
-        self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[AdsAnalyticsTargetingType]", loadNamespace("openapi"))
+        self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[character]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +98,7 @@ TargetingTypeFilter <- R6::R6Class(
     #' @return the instance of TargetingTypeFilter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[AdsAnalyticsTargetingType]", loadNamespace("openapi"))
+      self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[character]", loadNamespace("openapi"))
       self
     },
 

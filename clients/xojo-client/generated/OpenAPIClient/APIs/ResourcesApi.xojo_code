@@ -15,10 +15,14 @@ Protected Class ResourcesApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -144,6 +148,9 @@ Protected Class ResourcesApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -153,6 +160,7 @@ Protected Class ResourcesApi
 		  localVarQueryParams = localVarQueryParams + EncodeURLComponent("report_type") + "=" + EncodeURLComponent(Report_typeEnum_DeliveryMetricsGetToString(reportType))
 		  
 
+		  
 		  
 		  
 
@@ -289,10 +297,14 @@ Protected Class ResourcesApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -413,7 +425,7 @@ Protected Class ResourcesApi
 		  // Invokes ResourcesApiCallbackHandler.LeadFormQuestionsGetCallback() on completion. 
 		  //
 		  // - GET /resources/lead_form_questions
-		  // - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+		  // - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -625,6 +637,9 @@ Protected Class ResourcesApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -640,6 +655,7 @@ Protected Class ResourcesApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 

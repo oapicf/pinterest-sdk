@@ -10,6 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsProductGroup  {
   
+ /**
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -45,6 +52,21 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   private CatalogTypeEnum catalogType;
 
  /**
+  * Unix timestamp in seconds of when catalog product group was created.
+  */
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+
+  private Integer createdAt;
+
+  @ApiModelProperty(value = "")
+
+  private String description;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private CatalogsCreativeAssetsProductGroupFilters filters;
+
+ /**
   * ID of the creative assets product group.
   */
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
@@ -58,34 +80,30 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   private String name;
 
-  @ApiModelProperty(value = "")
-
-  private String description;
-
-  @ApiModelProperty(required = true, value = "")
-
-  private CatalogsCreativeAssetsProductGroupFilters filters;
-
- /**
-  * Unix timestamp in seconds of when catalog product group was created.
-  */
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
-
-  private Integer createdAt;
-
  /**
   * Unix timestamp in seconds of last time catalog product group was updated.
   */
   @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
 
   private Integer updatedAt;
-
  /**
-  * Catalog id pertaining to the creative assets product group.
-  */
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
 
-  private String catalogId;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Get catalogType
    * @return catalogType
@@ -108,38 +126,20 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * ID of the creative assets product group.
-   * @return id
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
   **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
-  public CatalogsCreativeAssetsProductGroup id(String id) {
-    this.id = id;
-    return this;
-  }
-
- /**
-   * Name of creative assets product group
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsCreativeAssetsProductGroup name(String name) {
-    this.name = name;
+  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
@@ -180,20 +180,38 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
+   * ID of the creative assets product group.
+   * @return id
   **/
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsCreativeAssetsProductGroup id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+   * Name of creative assets product group
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsCreativeAssetsProductGroup name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -215,24 +233,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     return this;
   }
 
- /**
-   * Catalog id pertaining to the creative assets product group.
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -242,19 +242,19 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
       return false;
     }
     CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup = (CatalogsCreativeAssetsProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsCreativeAssetsProductGroup.id) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroup.name) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
+        Objects.equals(this.createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
         Objects.equals(this.description, catalogsCreativeAssetsProductGroup.description) &&
         Objects.equals(this.filters, catalogsCreativeAssetsProductGroup.filters) &&
-        Objects.equals(this.createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsCreativeAssetsProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroup.catalogId);
+        Objects.equals(this.id, catalogsCreativeAssetsProductGroup.id) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroup.name) &&
+        Objects.equals(this.updatedAt, catalogsCreativeAssetsProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, description, filters, id, name, updatedAt);
   }
 
   @Override
@@ -262,14 +262,14 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroup {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

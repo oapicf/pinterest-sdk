@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailItemsFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailItemsFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsRetailItemsFilter {
+    title = CatalogsRetailItemsFilter
+    description = CatalogsRetailItemsFilter
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog"
+          optional = false
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["RETAIL"]
+          optional = true
+        }
+        item_ids {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailItemsFilter {
+    title = CatalogsRetailItemsFilter
+    description = CatalogsRetailItemsFilter
+    implements = openapi_server.resourceTypes.CatalogsRetailItemsFilter
+
+  }
+}

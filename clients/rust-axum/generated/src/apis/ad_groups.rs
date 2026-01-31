@@ -170,7 +170,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::AdGroupsSlashAudienceSizingPathParams,
-            body: &Option<models::AdGroupAudienceSizingRequest>,
+            body: &models::AdGroupAudienceSizingRequest,
     ) -> Result<AdGroupsSlashAudienceSizingResponse, E>;
 
     /// Create ad groups.

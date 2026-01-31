@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -61,6 +61,9 @@ func (s *AdvancedAuctionAPIService) AdvancedAuctionItemsSubmitPost(ctx context.C
 
 	// TODO: Uncomment the next line to return response Response(200, AdvancedAuctionProcessedItems{}) or use other options such as http.Ok ...
 	// return Response(200, AdvancedAuctionProcessedItems{}), nil
+
+	// TODO: Uncomment the next line to return response Response(206, AdvancedAuctionProcessedItems{}) or use other options such as http.Ok ...
+	// return Response(206, AdvancedAuctionProcessedItems{}), nil
 
 	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
 	// return Response(400, Error{}), nil

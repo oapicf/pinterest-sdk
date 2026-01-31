@@ -20,6 +20,1126 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
+     * Test the property 'AD_IMAGE_0_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_0_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_0_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_0_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_0_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_0_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_0_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_0_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_0_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_0_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_0_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_0_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_0_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_0_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_0_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_0_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_0_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_0_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_0_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_0_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_0_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_10_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_10_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_10_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_10_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_10_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_10_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_10_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_10_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_10_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_10_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_10_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_10_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_10_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_10_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_10_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_11_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_11_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_11_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_11_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_11_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_11_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_11_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_11_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_11_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_11_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_11_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_11_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_11_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_11_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_11_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_12_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_12_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_12_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_12_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_12_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_12_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_12_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_12_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_12_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_12_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_12_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_12_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_12_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_12_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_12_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_13_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_13_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_13_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_13_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_13_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_13_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_13_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_13_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_13_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_13_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_13_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_13_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_13_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_13_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_13_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_14_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_14_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_14_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_14_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_14_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_14_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_14_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_14_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_14_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_14_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_14_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_14_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_14_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_14_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_14_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_15_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_15_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_15_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_15_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_15_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_15_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_15_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_15_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_15_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_15_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_15_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_15_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_15_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_15_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_15_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_16_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_16_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_16_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_16_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_16_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_16_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_16_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_16_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_16_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_16_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_16_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_16_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_16_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_16_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_16_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_17_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_17_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_17_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_17_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_17_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_17_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_17_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_17_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_17_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_17_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_17_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_17_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_17_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_17_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_17_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_18_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_18_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_18_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_18_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_18_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_18_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_18_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_18_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_18_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_18_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_18_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_18_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_18_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_18_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_18_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_19_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_19_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_19_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_19_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_19_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_19_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_19_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_19_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_19_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_19_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_19_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_19_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_19_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_19_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_19_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_1_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_1_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_1_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_1_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_1_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_1_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_1_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_1_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_1_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_1_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_1_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_1_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_1_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_1_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_1_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_2_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_2_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_2_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_2_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_2_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_2_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_2_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_2_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_2_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_2_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_2_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_2_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_2_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_2_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_2_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_3_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_3_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_3_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_3_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_3_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_3_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_3_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_3_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_3_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_3_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_3_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_3_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_3_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_3_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_3_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_4_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_4_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_4_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_4_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_4_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_4_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_4_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_4_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_4_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_4_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_4_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_4_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_4_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_4_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_4_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_5_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_5_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_5_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_5_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_5_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_5_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_5_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_5_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_5_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_5_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_5_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_5_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_5_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_5_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_5_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_6_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_6_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_6_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_6_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_6_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_6_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_6_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_6_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_6_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_6_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_6_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_6_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_6_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_6_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_6_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_7_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_7_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_7_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_7_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_7_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_7_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_7_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_7_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_7_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_7_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_7_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_7_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_7_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_7_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_7_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_8_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_8_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_8_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_8_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_8_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_8_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_8_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_8_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_8_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_8_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_8_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_8_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_8_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_8_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_8_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_9_LINK_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_9_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_9_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_9_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_9_LINK_REQUIREDTest() {
+        // TODO: test AD_IMAGE_9_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_LINK_WARNING'
+     */
+    @Test
+    public void AD_IMAGE_9_LINK_WARNINGTest() {
+        // TODO: test AD_IMAGE_9_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_IMAGE_9_TAG_DUPLICATEDTest() {
+        // TODO: test AD_IMAGE_9_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_IMAGE_9_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_IMAGE_9_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_IMAGE_9_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_IMAGE_9_TAG_REQUIREDTest() {
+        // TODO: test AD_IMAGE_9_TAG_REQUIRED
+    }
+
+    /**
      * Test the property 'AD_LINK_FORMAT_WARNING'
      */
     @Test
@@ -36,107 +1156,171 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
-     * Test the property 'TITLE_LENGTH_TOO_LONG'
+     * Test the property 'AD_VIDEO_0_LINK_DUPLICATED'
      */
     @Test
-    public void TITLE_LENGTH_TOO_LONGTest() {
-        // TODO: test TITLE_LENGTH_TOO_LONG
+    public void AD_VIDEO_0_LINK_DUPLICATEDTest() {
+        // TODO: test AD_VIDEO_0_LINK_DUPLICATED
     }
 
     /**
-     * Test the property 'DESCRIPTION_LENGTH_TOO_LONG'
+     * Test the property 'AD_VIDEO_0_LINK_LENGTH_TOO_LONG'
      */
     @Test
-    public void DESCRIPTION_LENGTH_TOO_LONGTest() {
-        // TODO: test DESCRIPTION_LENGTH_TOO_LONG
+    public void AD_VIDEO_0_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_VIDEO_0_LINK_LENGTH_TOO_LONG
     }
 
     /**
-     * Test the property 'GENDER_INVALID'
+     * Test the property 'AD_VIDEO_0_LINK_REQUIRED'
      */
     @Test
-    public void GENDER_INVALIDTest() {
-        // TODO: test GENDER_INVALID
+    public void AD_VIDEO_0_LINK_REQUIREDTest() {
+        // TODO: test AD_VIDEO_0_LINK_REQUIRED
     }
 
     /**
-     * Test the property 'AGE_GROUP_INVALID'
+     * Test the property 'AD_VIDEO_0_LINK_WARNING'
      */
     @Test
-    public void AGE_GROUP_INVALIDTest() {
-        // TODO: test AGE_GROUP_INVALID
+    public void AD_VIDEO_0_LINK_WARNINGTest() {
+        // TODO: test AD_VIDEO_0_LINK_WARNING
     }
 
     /**
-     * Test the property 'SIZE_TYPE_INVALID'
+     * Test the property 'AD_VIDEO_0_TAG_DUPLICATED'
      */
     @Test
-    public void SIZE_TYPE_INVALIDTest() {
-        // TODO: test SIZE_TYPE_INVALID
+    public void AD_VIDEO_0_TAG_DUPLICATEDTest() {
+        // TODO: test AD_VIDEO_0_TAG_DUPLICATED
     }
 
     /**
-     * Test the property 'SIZE_SYSTEM_INVALID'
+     * Test the property 'AD_VIDEO_0_TAG_LENGTH_TOO_LONG'
      */
     @Test
-    public void SIZE_SYSTEM_INVALIDTest() {
-        // TODO: test SIZE_SYSTEM_INVALID
+    public void AD_VIDEO_0_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_VIDEO_0_TAG_LENGTH_TOO_LONG
     }
 
     /**
-     * Test the property 'LINK_FORMAT_WARNING'
+     * Test the property 'AD_VIDEO_0_TAG_REQUIRED'
      */
     @Test
-    public void LINK_FORMAT_WARNINGTest() {
-        // TODO: test LINK_FORMAT_WARNING
+    public void AD_VIDEO_0_TAG_REQUIREDTest() {
+        // TODO: test AD_VIDEO_0_TAG_REQUIRED
     }
 
     /**
-     * Test the property 'SALES_PRICE_INVALID'
+     * Test the property 'AD_VIDEO_1_LINK_DUPLICATED'
      */
     @Test
-    public void SALES_PRICE_INVALIDTest() {
-        // TODO: test SALES_PRICE_INVALID
+    public void AD_VIDEO_1_LINK_DUPLICATEDTest() {
+        // TODO: test AD_VIDEO_1_LINK_DUPLICATED
     }
 
     /**
-     * Test the property 'PRODUCT_CATEGORY_DEPTH_WARNING'
+     * Test the property 'AD_VIDEO_1_LINK_LENGTH_TOO_LONG'
      */
     @Test
-    public void PRODUCT_CATEGORY_DEPTH_WARNINGTest() {
-        // TODO: test PRODUCT_CATEGORY_DEPTH_WARNING
+    public void AD_VIDEO_1_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_VIDEO_1_LINK_LENGTH_TOO_LONG
     }
 
     /**
-     * Test the property 'ADWORDS_FORMAT_WARNING'
+     * Test the property 'AD_VIDEO_1_LINK_REQUIRED'
      */
     @Test
-    public void ADWORDS_FORMAT_WARNINGTest() {
-        // TODO: test ADWORDS_FORMAT_WARNING
+    public void AD_VIDEO_1_LINK_REQUIREDTest() {
+        // TODO: test AD_VIDEO_1_LINK_REQUIRED
     }
 
     /**
-     * Test the property 'ADWORDS_SAME_AS_LINK'
+     * Test the property 'AD_VIDEO_1_LINK_WARNING'
      */
     @Test
-    public void ADWORDS_SAME_AS_LINKTest() {
-        // TODO: test ADWORDS_SAME_AS_LINK
+    public void AD_VIDEO_1_LINK_WARNINGTest() {
+        // TODO: test AD_VIDEO_1_LINK_WARNING
     }
 
     /**
-     * Test the property 'DUPLICATE_HEADERS'
+     * Test the property 'AD_VIDEO_1_TAG_DUPLICATED'
      */
     @Test
-    public void DUPLICATE_HEADERSTest() {
-        // TODO: test DUPLICATE_HEADERS
+    public void AD_VIDEO_1_TAG_DUPLICATEDTest() {
+        // TODO: test AD_VIDEO_1_TAG_DUPLICATED
     }
 
     /**
-     * Test the property 'FETCH_SAME_SIGNATURE'
+     * Test the property 'AD_VIDEO_1_TAG_LENGTH_TOO_LONG'
      */
     @Test
-    public void FETCH_SAME_SIGNATURETest() {
-        // TODO: test FETCH_SAME_SIGNATURE
+    public void AD_VIDEO_1_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_VIDEO_1_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_1_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_VIDEO_1_TAG_REQUIREDTest() {
+        // TODO: test AD_VIDEO_1_TAG_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_LINK_DUPLICATED'
+     */
+    @Test
+    public void AD_VIDEO_2_LINK_DUPLICATEDTest() {
+        // TODO: test AD_VIDEO_2_LINK_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_VIDEO_2_LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_VIDEO_2_LINK_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_LINK_REQUIRED'
+     */
+    @Test
+    public void AD_VIDEO_2_LINK_REQUIREDTest() {
+        // TODO: test AD_VIDEO_2_LINK_REQUIRED
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_LINK_WARNING'
+     */
+    @Test
+    public void AD_VIDEO_2_LINK_WARNINGTest() {
+        // TODO: test AD_VIDEO_2_LINK_WARNING
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_TAG_DUPLICATED'
+     */
+    @Test
+    public void AD_VIDEO_2_TAG_DUPLICATEDTest() {
+        // TODO: test AD_VIDEO_2_TAG_DUPLICATED
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_TAG_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void AD_VIDEO_2_TAG_LENGTH_TOO_LONGTest() {
+        // TODO: test AD_VIDEO_2_TAG_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'AD_VIDEO_2_TAG_REQUIRED'
+     */
+    @Test
+    public void AD_VIDEO_2_TAG_REQUIREDTest() {
+        // TODO: test AD_VIDEO_2_TAG_REQUIRED
     }
 
     /**
@@ -156,171 +1340,27 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
-     * Test the property 'IMAGE_LINK_WARNING'
+     * Test the property 'ADWORDS_FORMAT_WARNING'
      */
     @Test
-    public void IMAGE_LINK_WARNINGTest() {
-        // TODO: test IMAGE_LINK_WARNING
+    public void ADWORDS_FORMAT_WARNINGTest() {
+        // TODO: test ADWORDS_FORMAT_WARNING
     }
 
     /**
-     * Test the property 'SHIPPING_INVALID'
+     * Test the property 'ADWORDS_SAME_AS_LINK'
      */
     @Test
-    public void SHIPPING_INVALIDTest() {
-        // TODO: test SHIPPING_INVALID
+    public void ADWORDS_SAME_AS_LINKTest() {
+        // TODO: test ADWORDS_SAME_AS_LINK
     }
 
     /**
-     * Test the property 'TAX_INVALID'
+     * Test the property 'AGE_GROUP_INVALID'
      */
     @Test
-    public void TAX_INVALIDTest() {
-        // TODO: test TAX_INVALID
-    }
-
-    /**
-     * Test the property 'SHIPPING_WEIGHT_INVALID'
-     */
-    @Test
-    public void SHIPPING_WEIGHT_INVALIDTest() {
-        // TODO: test SHIPPING_WEIGHT_INVALID
-    }
-
-    /**
-     * Test the property 'EXPIRATION_DATE_INVALID'
-     */
-    @Test
-    public void EXPIRATION_DATE_INVALIDTest() {
-        // TODO: test EXPIRATION_DATE_INVALID
-    }
-
-    /**
-     * Test the property 'AVAILABILITY_DATE_INVALID'
-     */
-    @Test
-    public void AVAILABILITY_DATE_INVALIDTest() {
-        // TODO: test AVAILABILITY_DATE_INVALID
-    }
-
-    /**
-     * Test the property 'SALE_DATE_INVALID'
-     */
-    @Test
-    public void SALE_DATE_INVALIDTest() {
-        // TODO: test SALE_DATE_INVALID
-    }
-
-    /**
-     * Test the property 'WEIGHT_UNIT_INVALID'
-     */
-    @Test
-    public void WEIGHT_UNIT_INVALIDTest() {
-        // TODO: test WEIGHT_UNIT_INVALID
-    }
-
-    /**
-     * Test the property 'IS_BUNDLE_INVALID'
-     */
-    @Test
-    public void IS_BUNDLE_INVALIDTest() {
-        // TODO: test IS_BUNDLE_INVALID
-    }
-
-    /**
-     * Test the property 'UPDATED_TIME_INVALID'
-     */
-    @Test
-    public void UPDATED_TIME_INVALIDTest() {
-        // TODO: test UPDATED_TIME_INVALID
-    }
-
-    /**
-     * Test the property 'CUSTOM_LABEL_LENGTH_TOO_LONG'
-     */
-    @Test
-    public void CUSTOM_LABEL_LENGTH_TOO_LONGTest() {
-        // TODO: test CUSTOM_LABEL_LENGTH_TOO_LONG
-    }
-
-    /**
-     * Test the property 'PRODUCT_TYPE_LENGTH_TOO_LONG'
-     */
-    @Test
-    public void PRODUCT_TYPE_LENGTH_TOO_LONGTest() {
-        // TODO: test PRODUCT_TYPE_LENGTH_TOO_LONG
-    }
-
-    /**
-     * Test the property 'TOO_MANY_ADDITIONAL_IMAGE_LINKS'
-     */
-    @Test
-    public void TOO_MANY_ADDITIONAL_IMAGE_LINKSTest() {
-        // TODO: test TOO_MANY_ADDITIONAL_IMAGE_LINKS
-    }
-
-    /**
-     * Test the property 'MULTIPACK_INVALID'
-     */
-    @Test
-    public void MULTIPACK_INVALIDTest() {
-        // TODO: test MULTIPACK_INVALID
-    }
-
-    /**
-     * Test the property 'INDEXED_PRODUCT_COUNT_LARGE_DELTA'
-     */
-    @Test
-    public void INDEXED_PRODUCT_COUNT_LARGE_DELTATest() {
-        // TODO: test INDEXED_PRODUCT_COUNT_LARGE_DELTA
-    }
-
-    /**
-     * Test the property 'ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE'
-     */
-    @Test
-    public void ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURETest() {
-        // TODO: test ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
-    }
-
-    /**
-     * Test the property 'OPTIONAL_PRODUCT_CATEGORY_MISSING'
-     */
-    @Test
-    public void OPTIONAL_PRODUCT_CATEGORY_MISSINGTest() {
-        // TODO: test OPTIONAL_PRODUCT_CATEGORY_MISSING
-    }
-
-    /**
-     * Test the property 'OPTIONAL_PRODUCT_CATEGORY_INVALID'
-     */
-    @Test
-    public void OPTIONAL_PRODUCT_CATEGORY_INVALIDTest() {
-        // TODO: test OPTIONAL_PRODUCT_CATEGORY_INVALID
-    }
-
-    /**
-     * Test the property 'OPTIONAL_CONDITION_MISSING'
-     */
-    @Test
-    public void OPTIONAL_CONDITION_MISSINGTest() {
-        // TODO: test OPTIONAL_CONDITION_MISSING
-    }
-
-    /**
-     * Test the property 'OPTIONAL_CONDITION_INVALID'
-     */
-    @Test
-    public void OPTIONAL_CONDITION_INVALIDTest() {
-        // TODO: test OPTIONAL_CONDITION_INVALID
-    }
-
-    /**
-     * Test the property 'IOS_DEEP_LINK_INVALID'
-     */
-    @Test
-    public void IOS_DEEP_LINK_INVALIDTest() {
-        // TODO: test IOS_DEEP_LINK_INVALID
+    public void AGE_GROUP_INVALIDTest() {
+        // TODO: test AGE_GROUP_INVALID
     }
 
     /**
@@ -332,11 +1372,11 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
-     * Test the property 'UTM_SOURCE_AUTO_CORRECTED'
+     * Test the property 'AVAILABILITY_DATE_INVALID'
      */
     @Test
-    public void UTM_SOURCE_AUTO_CORRECTEDTest() {
-        // TODO: test UTM_SOURCE_AUTO_CORRECTED
+    public void AVAILABILITY_DATE_INVALIDTest() {
+        // TODO: test AVAILABILITY_DATE_INVALID
     }
 
     /**
@@ -348,11 +1388,51 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
-     * Test the property 'MIN_AD_PRICE_INVALID'
+     * Test the property 'CUSTOM_LABEL_LENGTH_TOO_LONG'
      */
     @Test
-    public void MIN_AD_PRICE_INVALIDTest() {
-        // TODO: test MIN_AD_PRICE_INVALID
+    public void CUSTOM_LABEL_LENGTH_TOO_LONGTest() {
+        // TODO: test CUSTOM_LABEL_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'DESCRIPTION_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void DESCRIPTION_LENGTH_TOO_LONGTest() {
+        // TODO: test DESCRIPTION_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'DUPLICATE_HEADERS'
+     */
+    @Test
+    public void DUPLICATE_HEADERSTest() {
+        // TODO: test DUPLICATE_HEADERS
+    }
+
+    /**
+     * Test the property 'EXPIRATION_DATE_INVALID'
+     */
+    @Test
+    public void EXPIRATION_DATE_INVALIDTest() {
+        // TODO: test EXPIRATION_DATE_INVALID
+    }
+
+    /**
+     * Test the property 'FETCH_SAME_SIGNATURE'
+     */
+    @Test
+    public void FETCH_SAME_SIGNATURETest() {
+        // TODO: test FETCH_SAME_SIGNATURE
+    }
+
+    /**
+     * Test the property 'GENDER_INVALID'
+     */
+    @Test
+    public void GENDER_INVALIDTest() {
+        // TODO: test GENDER_INVALID
     }
 
     /**
@@ -364,6 +1444,14 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
+     * Test the property 'IMAGE_LINK_WARNING'
+     */
+    @Test
+    public void IMAGE_LINK_WARNINGTest() {
+        // TODO: test IMAGE_LINK_WARNING
+    }
+
+    /**
      * Test the property 'INCONSISTENT_CURRENCY_VALUES'
      */
     @Test
@@ -372,27 +1460,131 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
-     * Test the property 'SALES_PRICE_TOO_LOW'
+     * Test the property 'INDEXED_PRODUCT_COUNT_LARGE_DELTA'
      */
     @Test
-    public void SALES_PRICE_TOO_LOWTest() {
-        // TODO: test SALES_PRICE_TOO_LOW
+    public void INDEXED_PRODUCT_COUNT_LARGE_DELTATest() {
+        // TODO: test INDEXED_PRODUCT_COUNT_LARGE_DELTA
     }
 
     /**
-     * Test the property 'SHIPPING_WIDTH_INVALID'
+     * Test the property 'IOS_DEEP_LINK_INVALID'
      */
     @Test
-    public void SHIPPING_WIDTH_INVALIDTest() {
-        // TODO: test SHIPPING_WIDTH_INVALID
+    public void IOS_DEEP_LINK_INVALIDTest() {
+        // TODO: test IOS_DEEP_LINK_INVALID
     }
 
     /**
-     * Test the property 'SHIPPING_HEIGHT_INVALID'
+     * Test the property 'IS_BUNDLE_INVALID'
      */
     @Test
-    public void SHIPPING_HEIGHT_INVALIDTest() {
-        // TODO: test SHIPPING_HEIGHT_INVALID
+    public void IS_BUNDLE_INVALIDTest() {
+        // TODO: test IS_BUNDLE_INVALID
+    }
+
+    /**
+     * Test the property 'ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE'
+     */
+    @Test
+    public void ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURETest() {
+        // TODO: test ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
+    }
+
+    /**
+     * Test the property 'LINK_FORMAT_WARNING'
+     */
+    @Test
+    public void LINK_FORMAT_WARNINGTest() {
+        // TODO: test LINK_FORMAT_WARNING
+    }
+
+    /**
+     * Test the property 'MIN_AD_PRICE_INVALID'
+     */
+    @Test
+    public void MIN_AD_PRICE_INVALIDTest() {
+        // TODO: test MIN_AD_PRICE_INVALID
+    }
+
+    /**
+     * Test the property 'MPN_INVALID'
+     */
+    @Test
+    public void MPN_INVALIDTest() {
+        // TODO: test MPN_INVALID
+    }
+
+    /**
+     * Test the property 'MULTIPACK_INVALID'
+     */
+    @Test
+    public void MULTIPACK_INVALIDTest() {
+        // TODO: test MULTIPACK_INVALID
+    }
+
+    /**
+     * Test the property 'OPTIONAL_CONDITION_INVALID'
+     */
+    @Test
+    public void OPTIONAL_CONDITION_INVALIDTest() {
+        // TODO: test OPTIONAL_CONDITION_INVALID
+    }
+
+    /**
+     * Test the property 'OPTIONAL_CONDITION_MISSING'
+     */
+    @Test
+    public void OPTIONAL_CONDITION_MISSINGTest() {
+        // TODO: test OPTIONAL_CONDITION_MISSING
+    }
+
+    /**
+     * Test the property 'OPTIONAL_PRODUCT_CATEGORY_INVALID'
+     */
+    @Test
+    public void OPTIONAL_PRODUCT_CATEGORY_INVALIDTest() {
+        // TODO: test OPTIONAL_PRODUCT_CATEGORY_INVALID
+    }
+
+    /**
+     * Test the property 'OPTIONAL_PRODUCT_CATEGORY_MISSING'
+     */
+    @Test
+    public void OPTIONAL_PRODUCT_CATEGORY_MISSINGTest() {
+        // TODO: test OPTIONAL_PRODUCT_CATEGORY_MISSING
+    }
+
+    /**
+     * Test the property 'PRODUCT_CATEGORY_DEPTH_WARNING'
+     */
+    @Test
+    public void PRODUCT_CATEGORY_DEPTH_WARNINGTest() {
+        // TODO: test PRODUCT_CATEGORY_DEPTH_WARNING
+    }
+
+    /**
+     * Test the property 'PRODUCT_TYPE_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void PRODUCT_TYPE_LENGTH_TOO_LONGTest() {
+        // TODO: test PRODUCT_TYPE_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'SALE_DATE_INVALID'
+     */
+    @Test
+    public void SALE_DATE_INVALIDTest() {
+        // TODO: test SALE_DATE_INVALID
+    }
+
+    /**
+     * Test the property 'SALES_PRICE_INVALID'
+     */
+    @Test
+    public void SALES_PRICE_INVALIDTest() {
+        // TODO: test SALES_PRICE_INVALID
     }
 
     /**
@@ -404,11 +1596,115 @@ public class CatalogsFeedValidationWarningsTest {
     }
 
     /**
-     * Test the property 'MPN_INVALID'
+     * Test the property 'SALES_PRICE_TOO_LOW'
      */
     @Test
-    public void MPN_INVALIDTest() {
-        // TODO: test MPN_INVALID
+    public void SALES_PRICE_TOO_LOWTest() {
+        // TODO: test SALES_PRICE_TOO_LOW
+    }
+
+    /**
+     * Test the property 'SHIPPING_HEIGHT_INVALID'
+     */
+    @Test
+    public void SHIPPING_HEIGHT_INVALIDTest() {
+        // TODO: test SHIPPING_HEIGHT_INVALID
+    }
+
+    /**
+     * Test the property 'SHIPPING_INVALID'
+     */
+    @Test
+    public void SHIPPING_INVALIDTest() {
+        // TODO: test SHIPPING_INVALID
+    }
+
+    /**
+     * Test the property 'SHIPPING_WEIGHT_INVALID'
+     */
+    @Test
+    public void SHIPPING_WEIGHT_INVALIDTest() {
+        // TODO: test SHIPPING_WEIGHT_INVALID
+    }
+
+    /**
+     * Test the property 'SHIPPING_WIDTH_INVALID'
+     */
+    @Test
+    public void SHIPPING_WIDTH_INVALIDTest() {
+        // TODO: test SHIPPING_WIDTH_INVALID
+    }
+
+    /**
+     * Test the property 'SIZE_SYSTEM_INVALID'
+     */
+    @Test
+    public void SIZE_SYSTEM_INVALIDTest() {
+        // TODO: test SIZE_SYSTEM_INVALID
+    }
+
+    /**
+     * Test the property 'SIZE_TYPE_INVALID'
+     */
+    @Test
+    public void SIZE_TYPE_INVALIDTest() {
+        // TODO: test SIZE_TYPE_INVALID
+    }
+
+    /**
+     * Test the property 'TAX_INVALID'
+     */
+    @Test
+    public void TAX_INVALIDTest() {
+        // TODO: test TAX_INVALID
+    }
+
+    /**
+     * Test the property 'TITLE_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void TITLE_LENGTH_TOO_LONGTest() {
+        // TODO: test TITLE_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'TOO_MANY_ADDITIONAL_IMAGE_LINKS'
+     */
+    @Test
+    public void TOO_MANY_ADDITIONAL_IMAGE_LINKSTest() {
+        // TODO: test TOO_MANY_ADDITIONAL_IMAGE_LINKS
+    }
+
+    /**
+     * Test the property 'UPDATED_TIME_INVALID'
+     */
+    @Test
+    public void UPDATED_TIME_INVALIDTest() {
+        // TODO: test UPDATED_TIME_INVALID
+    }
+
+    /**
+     * Test the property 'UTM_SOURCE_AUTO_CORRECTED'
+     */
+    @Test
+    public void UTM_SOURCE_AUTO_CORRECTEDTest() {
+        // TODO: test UTM_SOURCE_AUTO_CORRECTED
+    }
+
+    /**
+     * Test the property 'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED'
+     */
+    @Test
+    public void VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDEDTest() {
+        // TODO: test VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
+    }
+
+    /**
+     * Test the property 'WEIGHT_UNIT_INVALID'
+     */
+    @Test
+    public void WEIGHT_UNIT_INVALIDTest() {
+        // TODO: test WEIGHT_UNIT_INVALID
     }
 
 }

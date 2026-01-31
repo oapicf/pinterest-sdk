@@ -21,8 +21,8 @@ module CatalogsItemsBatchRequest =
 
   type CatalogsItemsBatchRequest = {
     Country : Country;
+    Items : ItemDeleteBatchRecord[];
     Language : LanguageEnum;
     Operation : BatchOperation;
-    Items : ItemDeleteBatchRecord[];
   }
   //#endregion

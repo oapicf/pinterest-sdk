@@ -16,14 +16,14 @@ void main() {
   // final instance = SsioInsertionOrdersStatusGetByAdAccount200Response();
 
   group('test SsioInsertionOrdersStatusGetByAdAccount200Response', () {
-    // Insertion orders status by ad acount id
-    // List<SSIOInsertionOrderStatus> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // Insertion orders status by ad acount id
+    // List<SSIOInsertionOrderStatus> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

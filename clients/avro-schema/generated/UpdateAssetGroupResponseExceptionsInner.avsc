@@ -5,6 +5,12 @@
   "name": "UpdateAssetGroupResponseExceptionsInner",
   "fields": [
     {
+      "name": "asset_group_id",
+      "type": ["null", "string"],
+      "doc": "Asset group id of the exception.",
+      "default": null
+    },
+    {
       "name": "code",
       "type": ["null", "int"],
       "doc": "Error code associated with the error editing asset group.",
@@ -14,12 +20,6 @@
       "name": "message",
       "type": ["null", "string"],
       "doc": "Error message associated with the error editing asset group.",
-      "default": null
-    },
-    {
-      "name": "asset_group_id",
-      "type": ["null", "string"],
-      "doc": "Asset group id of the exception.",
       "default": null
     }
   ]

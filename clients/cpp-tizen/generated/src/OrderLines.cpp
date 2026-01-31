@@ -23,36 +23,56 @@ OrderLines::~OrderLines()
 void
 OrderLines::__init()
 {
-	//id = std::string();
-	//type = std::string();
 	//ad_account_id = std::string();
+	//budget = double(0);
+	//end_time = double(0);
+	//id = std::string();
+	//name = std::string();
+	//paid_budget = double(0);
+	//paid_type = std::string();
 	//purchase_order_id = std::string();
 	//start_time = double(0);
-	//end_time = double(0);
-	//budget = double(0);
-	//paid_budget = double(0);
 	//status = std::string();
-	//name = std::string();
-	//paid_type = std::string();
+	//type = std::string();
 }
 
 void
 OrderLines::__cleanup()
 {
+	//if(ad_account_id != NULL) {
+	//
+	//delete ad_account_id;
+	//ad_account_id = NULL;
+	//}
+	//if(budget != NULL) {
+	//
+	//delete budget;
+	//budget = NULL;
+	//}
+	//if(end_time != NULL) {
+	//
+	//delete end_time;
+	//end_time = NULL;
+	//}
 	//if(id != NULL) {
 	//
 	//delete id;
 	//id = NULL;
 	//}
-	//if(type != NULL) {
+	//if(name != NULL) {
 	//
-	//delete type;
-	//type = NULL;
+	//delete name;
+	//name = NULL;
 	//}
-	//if(ad_account_id != NULL) {
+	//if(paid_budget != NULL) {
 	//
-	//delete ad_account_id;
-	//ad_account_id = NULL;
+	//delete paid_budget;
+	//paid_budget = NULL;
+	//}
+	//if(paid_type != NULL) {
+	//
+	//delete paid_type;
+	//paid_type = NULL;
 	//}
 	//if(purchase_order_id != NULL) {
 	//
@@ -64,35 +84,15 @@ OrderLines::__cleanup()
 	//delete start_time;
 	//start_time = NULL;
 	//}
-	//if(end_time != NULL) {
-	//
-	//delete end_time;
-	//end_time = NULL;
-	//}
-	//if(budget != NULL) {
-	//
-	//delete budget;
-	//budget = NULL;
-	//}
-	//if(paid_budget != NULL) {
-	//
-	//delete paid_budget;
-	//paid_budget = NULL;
-	//}
 	//if(status != NULL) {
 	//
 	//delete status;
 	//status = NULL;
 	//}
-	//if(name != NULL) {
+	//if(type != NULL) {
 	//
-	//delete name;
-	//name = NULL;
-	//}
-	//if(paid_type != NULL) {
-	//
-	//delete paid_type;
-	//paid_type = NULL;
+	//delete type;
+	//type = NULL;
 	//}
 	//
 }
@@ -102,6 +102,45 @@ OrderLines::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *ad_account_idKey = "ad_account_id";
+	node = json_object_get_member(pJsonObject, ad_account_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_account_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *budgetKey = "budget";
+	node = json_object_get_member(pJsonObject, budgetKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&budget, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&budget);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *end_timeKey = "end_time";
+	node = json_object_get_member(pJsonObject, end_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&end_time, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&end_time);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -113,25 +152,42 @@ OrderLines::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&type, node, "std::string", "");
+			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *ad_account_idKey = "ad_account_id";
-	node = json_object_get_member(pJsonObject, ad_account_idKey);
+	const gchar *paid_budgetKey = "paid_budget";
+	node = json_object_get_member(pJsonObject, paid_budgetKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&ad_account_id, node, "std::string", "");
+		if (isprimitive("long long")) {
+			jsonToValue(&paid_budget, node, "long long", "");
 		} else {
+			
+			long long* obj = static_cast<long long*> (&paid_budget);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *paid_typeKey = "paid_type";
+	node = json_object_get_member(pJsonObject, paid_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("OrderLinePaidType")) {
+			jsonToValue(&paid_type, node, "OrderLinePaidType", "OrderLinePaidType");
+		} else {
+			
+			OrderLinePaidType* obj = static_cast<OrderLinePaidType*> (&paid_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -160,48 +216,6 @@ OrderLines::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *end_timeKey = "end_time";
-	node = json_object_get_member(pJsonObject, end_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&end_time, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&end_time);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *budgetKey = "budget";
-	node = json_object_get_member(pJsonObject, budgetKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&budget, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&budget);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *paid_budgetKey = "paid_budget";
-	node = json_object_get_member(pJsonObject, paid_budgetKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&paid_budget, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&paid_budget);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *statusKey = "status";
 	node = json_object_get_member(pJsonObject, statusKey);
 	if (node !=NULL) {
@@ -216,28 +230,14 @@ OrderLines::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
+	const gchar *typeKey = "type";
+	node = json_object_get_member(pJsonObject, typeKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
+			jsonToValue(&type, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *paid_typeKey = "paid_type";
-	node = json_object_get_member(pJsonObject, paid_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("OrderLinePaidType")) {
-			jsonToValue(&paid_type, node, "OrderLinePaidType", "OrderLinePaidType");
-		} else {
-			
-			OrderLinePaidType* obj = static_cast<OrderLinePaidType*> (&paid_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -254,6 +254,43 @@ OrderLines::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
+		std::string obj = getAdAccountId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_account_idKey = "ad_account_id";
+	json_object_set_member(pJsonObject, ad_account_idKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getBudget();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getBudget());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *budgetKey = "budget";
+	json_object_set_member(pJsonObject, budgetKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getEndTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getEndTime());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *end_timeKey = "end_time";
+	json_object_set_member(pJsonObject, end_timeKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -263,23 +300,42 @@ OrderLines::toJson()
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getType();
+		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAdAccountId();
-		node = converttoJson(&obj, "std::string", "");
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getPaidBudget();
+		node = converttoJson(&obj, "long long", "");
 	}
 	else {
 		
+		long long obj = static_cast<long long> (getPaidBudget());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *ad_account_idKey = "ad_account_id";
-	json_object_set_member(pJsonObject, ad_account_idKey, node);
+	const gchar *paid_budgetKey = "paid_budget";
+	json_object_set_member(pJsonObject, paid_budgetKey, node);
+	if (isprimitive("OrderLinePaidType")) {
+		OrderLinePaidType obj = getPaidType();
+		node = converttoJson(&obj, "OrderLinePaidType", "");
+	}
+	else {
+		
+		OrderLinePaidType obj = static_cast<OrderLinePaidType> (getPaidType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *paid_typeKey = "paid_type";
+	json_object_set_member(pJsonObject, paid_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getPurchaseOrderId();
 		node = converttoJson(&obj, "std::string", "");
@@ -303,48 +359,6 @@ OrderLines::toJson()
 	}
 	const gchar *start_timeKey = "start_time";
 	json_object_set_member(pJsonObject, start_timeKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getEndTime();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getEndTime());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *end_timeKey = "end_time";
-	json_object_set_member(pJsonObject, end_timeKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getBudget();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getBudget());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *budgetKey = "budget";
-	json_object_set_member(pJsonObject, budgetKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getPaidBudget();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getPaidBudget());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *paid_budgetKey = "paid_budget";
-	json_object_set_member(pJsonObject, paid_budgetKey, node);
 	if (isprimitive("OrderLineStatus")) {
 		OrderLineStatus obj = getStatus();
 		node = converttoJson(&obj, "OrderLineStatus", "");
@@ -360,34 +374,56 @@ OrderLines::toJson()
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getName();
+		std::string obj = getType();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("OrderLinePaidType")) {
-		OrderLinePaidType obj = getPaidType();
-		node = converttoJson(&obj, "OrderLinePaidType", "");
-	}
-	else {
-		
-		OrderLinePaidType obj = static_cast<OrderLinePaidType> (getPaidType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *paid_typeKey = "paid_type";
-	json_object_set_member(pJsonObject, paid_typeKey, node);
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+OrderLines::getAdAccountId()
+{
+	return ad_account_id;
+}
+
+void
+OrderLines::setAdAccountId(std::string  ad_account_id)
+{
+	this->ad_account_id = ad_account_id;
+}
+
+long long
+OrderLines::getBudget()
+{
+	return budget;
+}
+
+void
+OrderLines::setBudget(long long  budget)
+{
+	this->budget = budget;
+}
+
+long long
+OrderLines::getEndTime()
+{
+	return end_time;
+}
+
+void
+OrderLines::setEndTime(long long  end_time)
+{
+	this->end_time = end_time;
 }
 
 std::string
@@ -403,27 +439,39 @@ OrderLines::setId(std::string  id)
 }
 
 std::string
-OrderLines::getType()
+OrderLines::getName()
 {
-	return type;
+	return name;
 }
 
 void
-OrderLines::setType(std::string  type)
+OrderLines::setName(std::string  name)
 {
-	this->type = type;
+	this->name = name;
 }
 
-std::string
-OrderLines::getAdAccountId()
+long long
+OrderLines::getPaidBudget()
 {
-	return ad_account_id;
+	return paid_budget;
 }
 
 void
-OrderLines::setAdAccountId(std::string  ad_account_id)
+OrderLines::setPaidBudget(long long  paid_budget)
 {
-	this->ad_account_id = ad_account_id;
+	this->paid_budget = paid_budget;
+}
+
+OrderLinePaidType
+OrderLines::getPaidType()
+{
+	return paid_type;
+}
+
+void
+OrderLines::setPaidType(OrderLinePaidType  paid_type)
+{
+	this->paid_type = paid_type;
 }
 
 std::string
@@ -450,42 +498,6 @@ OrderLines::setStartTime(long long  start_time)
 	this->start_time = start_time;
 }
 
-long long
-OrderLines::getEndTime()
-{
-	return end_time;
-}
-
-void
-OrderLines::setEndTime(long long  end_time)
-{
-	this->end_time = end_time;
-}
-
-long long
-OrderLines::getBudget()
-{
-	return budget;
-}
-
-void
-OrderLines::setBudget(long long  budget)
-{
-	this->budget = budget;
-}
-
-long long
-OrderLines::getPaidBudget()
-{
-	return paid_budget;
-}
-
-void
-OrderLines::setPaidBudget(long long  paid_budget)
-{
-	this->paid_budget = paid_budget;
-}
-
 OrderLineStatus
 OrderLines::getStatus()
 {
@@ -499,27 +511,15 @@ OrderLines::setStatus(OrderLineStatus  status)
 }
 
 std::string
-OrderLines::getName()
+OrderLines::getType()
 {
-	return name;
+	return type;
 }
 
 void
-OrderLines::setName(std::string  name)
+OrderLines::setType(std::string  type)
 {
-	this->name = name;
-}
-
-OrderLinePaidType
-OrderLines::getPaidType()
-{
-	return paid_type;
-}
-
-void
-OrderLines::setPaidType(OrderLinePaidType  paid_type)
-{
-	this->paid_type = paid_type;
+	this->type = type;
 }
 
 

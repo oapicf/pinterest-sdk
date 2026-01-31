@@ -11,7 +11,7 @@ import { Gender } from './gender';
 
 
 export interface CatalogsProductGroupMultipleGenderCriteria { 
-    values: Array<Gender>;
     negated?: boolean;
+    values: Array<Gender>;
 }
 

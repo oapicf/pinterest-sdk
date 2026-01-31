@@ -3,4 +3,6 @@ module.exports = {
         { data: {} },
     "AdvancedAuctionProcessedItemsSample": 
         { data: {} },
+    "AdvancedAuctionProcessedItemsSample": 
+        { data: {} },
 }

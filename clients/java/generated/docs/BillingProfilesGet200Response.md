@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;BillingProfilesResponse&gt;**](BillingProfilesResponse.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;BillingProfilesResponse&gt;**](BillingProfilesResponse.md) |  |  |
 
 
 

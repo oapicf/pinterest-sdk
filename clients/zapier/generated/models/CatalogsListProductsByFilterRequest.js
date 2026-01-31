@@ -17,6 +17,12 @@ module.exports = {
             },
             ...CatalogsCreativeAssetsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
             {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
+                required: true,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}catalog_type`,
                 label: `[${labelPrefix}catalog_type]`,
                 required: true,
@@ -24,12 +30,6 @@ module.exports = {
                 choices: [
                     'CREATIVE_ASSETS',
                 ],
-            },
-            {
-                key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
-                required: true,
-                type: 'string',
             },
             {
                 key: `${keyPrefix}country`,
@@ -46,8 +46,8 @@ module.exports = {
         return {
             'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
             'filters': utils.removeIfEmpty(CatalogsCreativeAssetsProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
-            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
             'locale': bundle.inputData?.[`${keyPrefix}locale`],
         }

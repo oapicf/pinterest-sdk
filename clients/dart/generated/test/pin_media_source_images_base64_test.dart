@@ -16,19 +16,20 @@ void main() {
   // final instance = PinMediaSourceImagesBase64();
 
   group('test PinMediaSourceImagesBase64', () {
-    // String sourceType
-    test('to test the property `sourceType`', () async {
+    // int index
+    test('to test the property `index`', () async {
       // TODO
     });
 
     // Array with image objects.
-    // List<PinMediaSourceImagesBase64ItemsInner> items (default value: const [])
+    // List<PinMediaSourceImagesBase64Item> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });
 
-    // int index
-    test('to test the property `index`', () async {
+    // The source type of the media.
+    // String sourceType
+    test('to test the property `sourceType`', () async {
       // TODO
     });
 

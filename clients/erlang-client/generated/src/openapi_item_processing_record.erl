@@ -5,19 +5,19 @@
 -export_type([openapi_item_processing_record/0]).
 
 -type openapi_item_processing_record() ::
-    #{ 'item_id' => binary(),
-       'errors' => list(),
-       'warnings' => list(),
-       'status' => openapi_item_processing_status:openapi_item_processing_status()
+    #{ 'errors' => list(),
+       'item_id' => binary(),
+       'status' => openapi_item_processing_status:openapi_item_processing_status(),
+       'warnings' => list()
      }.
 
-encode(#{ 'item_id' := ItemId,
-          'errors' := Errors,
-          'warnings' := Warnings,
-          'status' := Status
+encode(#{ 'errors' := Errors,
+          'item_id' := ItemId,
+          'status' := Status,
+          'warnings' := Warnings
         }) ->
-    #{ 'item_id' => ItemId,
-       'errors' => Errors,
-       'warnings' => Warnings,
-       'status' => Status
+    #{ 'errors' => Errors,
+       'item_id' => ItemId,
+       'status' => Status,
+       'warnings' => Warnings
      }.

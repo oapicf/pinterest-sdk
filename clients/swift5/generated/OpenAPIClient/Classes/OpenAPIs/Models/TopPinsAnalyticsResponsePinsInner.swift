@@ -13,21 +13,21 @@ import AnyCodable
 /** Array with metrics, status, and pin id for the requested metric */
 public struct TopPinsAnalyticsResponsePinsInner: Codable, JSONEncodable, Hashable {
 
+    public var dataStatus: [String: DataStatus]?
     /** The metric name and daily value for each requested metric */
     public var metrics: [String: Double]?
-    public var dataStatus: [String: DataStatus]?
     /** The pin id */
     public var pinId: String?
 
-    public init(metrics: [String: Double]? = nil, dataStatus: [String: DataStatus]? = nil, pinId: String? = nil) {
-        self.metrics = metrics
+    public init(dataStatus: [String: DataStatus]? = nil, metrics: [String: Double]? = nil, pinId: String? = nil) {
         self.dataStatus = dataStatus
+        self.metrics = metrics
         self.pinId = pinId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case metrics
         case dataStatus = "data_status"
+        case metrics
         case pinId = "pin_id"
     }
 
@@ -35,8 +35,8 @@ public struct TopPinsAnalyticsResponsePinsInner: Codable, JSONEncodable, Hashabl
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(metrics, forKey: .metrics)
         try container.encodeIfPresent(dataStatus, forKey: .dataStatus)
+        try container.encodeIfPresent(metrics, forKey: .metrics)
         try container.encodeIfPresent(pinId, forKey: .pinId)
     }
 }

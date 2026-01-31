@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_product_group_multiple_string_criteria/0]).
 
 -type openapi_catalogs_product_group_multiple_string_criteria() ::
-  [ {'values', list(binary()) }
-  | {'negated', boolean() }
+  [ {'negated', boolean() }
+  | {'values', list(binary()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_catalogs_product_group_multiple_string_criteria() ->
     openapi_catalogs_product_group_multiple_string_criteria([]).
 
 openapi_catalogs_product_group_multiple_string_criteria(Fields) ->
-  Default = [ {'values', list(binary()) }
-            , {'negated', boolean() }
+  Default = [ {'negated', boolean() }
+            , {'values', list(binary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

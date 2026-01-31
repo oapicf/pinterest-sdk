@@ -8,8 +8,8 @@
 
 (def top-pins-analytics-response-pins-inner-data
   {
-   (ds/opt :metrics) (s/map-of string? float?)
    (ds/opt :data_status) (s/map-of string? data-status-spec)
+   (ds/opt :metrics) (s/map-of string? float?)
    (ds/opt :pin_id) string?
    })
 

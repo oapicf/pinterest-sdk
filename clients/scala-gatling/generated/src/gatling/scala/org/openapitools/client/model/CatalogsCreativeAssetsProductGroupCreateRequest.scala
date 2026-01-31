@@ -3,18 +3,18 @@ package org.openapitools.client.model
 
 
 case class CatalogsCreativeAssetsProductGroupCreateRequest (
+    /* Catalog id pertaining to the creative assets product group. */
+    _catalogId: String,
     _catalogType: String,
-    _name: String,
     _description: Option[String],
     _filters: CatalogsCreativeAssetsProductGroupFilters,
-    /* Catalog id pertaining to the creative assets product group. */
-    _catalogId: String
+    _name: String
 )
 object CatalogsCreativeAssetsProductGroupCreateRequest {
-    def toStringBody(var_catalogType: Object, var_name: Object, var_description: Object, var_filters: Object, var_catalogId: Object) =
+    def toStringBody(var_catalogId: Object, var_catalogType: Object, var_description: Object, var_filters: Object, var_name: Object) =
         s"""
         | {
-        | "catalogType":$var_catalogType,"name":$var_name,"description":$var_description,"filters":$var_filters,"catalogId":$var_catalogId
+        | "catalogId":$var_catalogId,"catalogType":$var_catalogType,"description":$var_description,"filters":$var_filters,"name":$var_name
         | }
         """.stripMargin
 }

@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import OrderLinesList200Response._
 
 case class OrderLinesList200Response (
-  items: List[OrderLine],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[OrderLine])
 
 object OrderLinesList200Response {
   import DateTimeCodecs._

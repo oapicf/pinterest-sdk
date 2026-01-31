@@ -27,17 +27,17 @@ pinterest_rest_api_catalogs_hotel_items_post_filter_CATALOGTYPE_e catalogs_hotel
 
 
 typedef struct catalogs_hotel_items_post_filter_t {
+    char *catalog_id; // string
     pinterest_rest_api_catalogs_hotel_items_post_filter_CATALOGTYPE_e catalog_type; //enum
     list_t *hotel_ids; //primitive container
-    char *catalog_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_items_post_filter_t;
 
 __attribute__((deprecated)) catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_hotel_items_post_filter_CATALOGTYPE_e catalog_type,
-    list_t *hotel_ids,
-    char *catalog_id
+    list_t *hotel_ids
 );
 
 void catalogs_hotel_items_post_filter_free(catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter);

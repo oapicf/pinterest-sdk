@@ -23,14 +23,14 @@ catalogs_retail_item_error_response_t* instantiate_catalogs_retail_item_error_re
   if (include_optional) {
     catalogs_retail_item_error_response = catalogs_retail_item_error_response_create(
       pinterest_rest_api_catalogs_retail_item_error_response__RETAIL,
-      "DS0294-M",
-      list_createList()
+      list_createList(),
+      "DS0294-M"
     );
   } else {
     catalogs_retail_item_error_response = catalogs_retail_item_error_response_create(
       pinterest_rest_api_catalogs_retail_item_error_response__RETAIL,
-      "DS0294-M",
-      list_createList()
+      list_createList(),
+      "DS0294-M"
     );
   }
 

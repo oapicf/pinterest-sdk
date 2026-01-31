@@ -22,13 +22,13 @@ items_issues_list_200_response_t* instantiate_items_issues_list_200_response(int
   items_issues_list_200_response_t* items_issues_list_200_response = NULL;
   if (include_optional) {
     items_issues_list_200_response = items_issues_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     items_issues_list_200_response = items_issues_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

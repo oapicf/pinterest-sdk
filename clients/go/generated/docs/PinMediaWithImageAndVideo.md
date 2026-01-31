@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Items** | Pointer to [**[]PinMediaMetadata**](PinMediaMetadata.md) |  | [optional] 
+**MediaType** | **string** |  | 
 
 ## Methods
 
 ### NewPinMediaWithImageAndVideo
 
-`func NewPinMediaWithImageAndVideo() *PinMediaWithImageAndVideo`
+`func NewPinMediaWithImageAndVideo(mediaType string, ) *PinMediaWithImageAndVideo`
 
 NewPinMediaWithImageAndVideo instantiates a new PinMediaWithImageAndVideo object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +50,26 @@ SetItems sets Items field to given value.
 `func (o *PinMediaWithImageAndVideo) HasItems() bool`
 
 HasItems returns a boolean if a field has been set.
+
+### GetMediaType
+
+`func (o *PinMediaWithImageAndVideo) GetMediaType() string`
+
+GetMediaType returns the MediaType field if non-nil, zero value otherwise.
+
+### GetMediaTypeOk
+
+`func (o *PinMediaWithImageAndVideo) GetMediaTypeOk() (*string, bool)`
+
+GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaType
+
+`func (o *PinMediaWithImageAndVideo) SetMediaType(v string)`
+
+SetMediaType sets MediaType field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

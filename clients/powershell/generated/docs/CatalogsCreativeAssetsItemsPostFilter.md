@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 **CatalogType** | **String** |  | 
 **CreativeAssetsIds** | **String[]** |  | 
-**CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsItemsPostFilter = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsItemsPostFilter  -CatalogType null `
- -CreativeAssetsIds null `
- -CatalogId null
+$CatalogsCreativeAssetsItemsPostFilter = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsItemsPostFilter  -CatalogId null `
+ -CatalogType null `
+ -CreativeAssetsIds null
 ```
 
 - Convert the resource to JSON

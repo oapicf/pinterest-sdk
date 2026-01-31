@@ -19,17 +19,17 @@ typedef struct ads_credit_redeem_response_t ads_credit_redeem_response_t;
 
 
 typedef struct ads_credit_redeem_response_t {
-    int success; //boolean
     int error_code; //numeric
     char *error_message; // string
+    int success; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ads_credit_redeem_response_t;
 
 __attribute__((deprecated)) ads_credit_redeem_response_t *ads_credit_redeem_response_create(
-    int success,
     int error_code,
-    char *error_message
+    char *error_message,
+    int success
 );
 
 void ads_credit_redeem_response_free(ads_credit_redeem_response_t *ads_credit_redeem_response);

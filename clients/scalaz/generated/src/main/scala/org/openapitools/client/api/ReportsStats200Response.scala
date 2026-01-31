@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import ReportsStats200Response._
 
 case class ReportsStats200Response (
-  items: List[CatalogsReportStats],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[CatalogsReportStats])
 
 object ReportsStats200Response {
   import DateTimeCodecs._

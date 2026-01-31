@@ -5,6 +5,12 @@
   "name": "SSIOInsertionOrderStatusResponse",
   "fields": [
     {
+      "name": "creation_time",
+      "type": ["null", "string"],
+      "doc": "Salesforce insertion order creation time",
+      "default": null
+    },
+    {
       "name": "pin_order_id",
       "type": ["null", "string"],
       "doc": "Salesforce order id",
@@ -14,12 +20,6 @@
       "name": "status",
       "type": ["null", "string"],
       "doc": "Salesforce insertion order status",
-      "default": null
-    },
-    {
-      "name": "creation_time",
-      "type": ["null", "string"],
-      "doc": "Salesforce insertion order creation time",
       "default": null
     }
   ]

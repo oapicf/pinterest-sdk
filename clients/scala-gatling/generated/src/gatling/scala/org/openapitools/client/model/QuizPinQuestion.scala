@@ -3,15 +3,15 @@ package org.openapitools.client.model
 
 
 case class QuizPinQuestion (
+    _options: Option[List[QuizPinOption]],
     _questionId: Option[Number],
-    _questionText: Option[String],
-    _options: Option[List[QuizPinOption]]
+    _questionText: Option[String]
 )
 object QuizPinQuestion {
-    def toStringBody(var_questionId: Object, var_questionText: Object, var_options: Object) =
+    def toStringBody(var_options: Object, var_questionId: Object, var_questionText: Object) =
         s"""
         | {
-        | "questionId":$var_questionId,"questionText":$var_questionText,"options":$var_options
+        | "options":$var_options,"questionId":$var_questionId,"questionText":$var_questionText
         | }
         """.stripMargin
 }

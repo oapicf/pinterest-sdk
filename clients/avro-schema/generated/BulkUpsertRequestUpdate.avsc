@@ -5,15 +5,6 @@
   "name": "BulkUpsertRequestUpdate",
   "fields": [
     {
-      "name": "campaigns",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.CampaignUpdateRequest"
-      }],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "ad_groups",
       "type": ["null", {
         "type": "array",
@@ -32,10 +23,19 @@
       "default": null
     },
     {
-      "name": "product_groups",
+      "name": "campaigns",
       "type": ["null", {
         "type": "array",
-        "items": "model.ProductGroupPromotionUpdateRequest"
+        "items": "model.CampaignUpdateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "catalog_product_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CatalogsProductGroupsUpdateRequest"
       }],
       "doc": "",
       "default": null
@@ -45,6 +45,24 @@
       "type": ["null", {
         "type": "array",
         "items": "model.KeywordUpdate"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "labels",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.LabelBulkUpdateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "product_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ProductGroupPromotionUpdateRequest"
       }],
       "doc": "",
       "default": null

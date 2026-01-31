@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelProductGroup"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelProductGroup"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsHotelProductGroupFilters = openapi_server.resourceTypes.CatalogsHotelProductGroupFilters
+  CatalogsHotelProductGroupType = openapi_server.resourceTypes.CatalogsHotelProductGroupType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsHotelProductGroup {
+    title = CatalogsHotelProductGroup
+    description = CatalogsHotelProductGroup
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the hotel product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["HOTEL"]
+          optional = true
+        }
+        created_at {
+          type =  integer
+          description = "Unix timestamp in seconds of when catalog product group was created."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsHotelProductGroupFilters
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = "ID of the hotel product group."
+          optional = true
+        }
+        name {
+          type =  string
+          description = "Name of hotel product group"
+          optional = false
+        }
+        type {
+          type = CatalogsHotelProductGroupType
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  integer
+          description = "Unix timestamp in seconds of last time catalog product group was updated."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelProductGroup {
+    title = CatalogsHotelProductGroup
+    description = CatalogsHotelProductGroup
+    implements = openapi_server.resourceTypes.CatalogsHotelProductGroup
+
+  }
+}

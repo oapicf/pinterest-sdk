@@ -19,6 +19,8 @@ import java.util.Objects;
 @ApiModel(description = "Request object to list products for a given creative assets catalog_id and product group filter.")
 public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
   
+  private String catalogId;
+
 
 public enum CatalogTypeEnum {
 
@@ -52,28 +54,7 @@ public enum CatalogTypeEnum {
 
   private CatalogTypeEnum catalogType;
 
-  private String catalogId;
-
   private CatalogsCreativeAssetsProductGroupFilters filters;
-
-  /**
-   **/
-  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
-
 
   /**
    * Catalog id pertaining to the creative assets product group.
@@ -92,6 +73,25 @@ public enum CatalogTypeEnum {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+
+  /**
+   **/
+  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
 
@@ -124,14 +124,14 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = (CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.filters, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -139,8 +139,8 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

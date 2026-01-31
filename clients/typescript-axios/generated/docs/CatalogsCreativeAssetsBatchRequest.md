@@ -6,11 +6,11 @@ Request object to update catalogs creative assets items
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalog_id** | **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
 **country** | [**Country**](Country.md) |  | [default to undefined]
-**language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
 **items** | [**Array&lt;CatalogsCreativeAssetsBatchItem&gt;**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | [default to undefined]
-**catalog_id** | **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] [default to undefined]
+**language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
 
 ## Example
 
@@ -18,11 +18,11 @@ Name | Type | Description | Notes
 import { CatalogsCreativeAssetsBatchRequest } from './api';
 
 const instance: CatalogsCreativeAssetsBatchRequest = {
+    catalog_id,
     catalog_type,
     country,
-    language,
     items,
-    catalog_id,
+    language,
 };
 ```
 

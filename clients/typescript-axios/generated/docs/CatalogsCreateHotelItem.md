@@ -6,9 +6,9 @@ A hotel item to be created.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [default to undefined]
 **hotel_id** | **string** | The catalog hotel id in the merchant namespace | [default to undefined]
 **operation** | **string** |  | [default to undefined]
-**attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { CatalogsCreateHotelItem } from './api';
 
 const instance: CatalogsCreateHotelItem = {
+    attributes,
     hotel_id,
     operation,
-    attributes,
 };
 ```
 

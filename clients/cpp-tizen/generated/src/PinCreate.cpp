@@ -23,55 +23,21 @@ PinCreate::~PinCreate()
 void
 PinCreate::__init()
 {
-	//id = std::string();
-	//created_at = null;
-	//link = std::string();
-	//title = std::string();
-	//description = std::string();
-	//dominant_color = std::string();
 	//alt_text = std::string();
 	//board_id = std::string();
 	//board_section_id = std::string();
-	//board_owner = null;
-	//media = null;
-	//media_source = null;
+	//description = std::string();
+	//dominant_color = std::string();
+	//link = std::string();
+	//media_source = new PinMediaSource();
 	//parent_pin_id = std::string();
-	//note = std::string();
+	//sponsor_id = std::string();
+	//title = std::string();
 }
 
 void
 PinCreate::__cleanup()
 {
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(created_at != NULL) {
-	//
-	//delete created_at;
-	//created_at = NULL;
-	//}
-	//if(link != NULL) {
-	//
-	//delete link;
-	//link = NULL;
-	//}
-	//if(title != NULL) {
-	//
-	//delete title;
-	//title = NULL;
-	//}
-	//if(description != NULL) {
-	//
-	//delete description;
-	//description = NULL;
-	//}
-	//if(dominant_color != NULL) {
-	//
-	//delete dominant_color;
-	//dominant_color = NULL;
-	//}
 	//if(alt_text != NULL) {
 	//
 	//delete alt_text;
@@ -87,15 +53,20 @@ PinCreate::__cleanup()
 	//delete board_section_id;
 	//board_section_id = NULL;
 	//}
-	//if(board_owner != NULL) {
+	//if(description != NULL) {
 	//
-	//delete board_owner;
-	//board_owner = NULL;
+	//delete description;
+	//description = NULL;
 	//}
-	//if(media != NULL) {
+	//if(dominant_color != NULL) {
 	//
-	//delete media;
-	//media = NULL;
+	//delete dominant_color;
+	//dominant_color = NULL;
+	//}
+	//if(link != NULL) {
+	//
+	//delete link;
+	//link = NULL;
 	//}
 	//if(media_source != NULL) {
 	//
@@ -107,10 +78,15 @@ PinCreate::__cleanup()
 	//delete parent_pin_id;
 	//parent_pin_id = NULL;
 	//}
-	//if(note != NULL) {
+	//if(sponsor_id != NULL) {
 	//
-	//delete note;
-	//note = NULL;
+	//delete sponsor_id;
+	//sponsor_id = NULL;
+	//}
+	//if(title != NULL) {
+	//
+	//delete title;
+	//title = NULL;
 	//}
 	//
 }
@@ -120,72 +96,6 @@ PinCreate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *created_atKey = "created_at";
-	node = json_object_get_member(pJsonObject, created_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_at, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *linkKey = "link";
-	node = json_object_get_member(pJsonObject, linkKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&link, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *titleKey = "title";
-	node = json_object_get_member(pJsonObject, titleKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&title, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *descriptionKey = "description";
-	node = json_object_get_member(pJsonObject, descriptionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&description, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *dominant_colorKey = "dominant_color";
-	node = json_object_get_member(pJsonObject, dominant_colorKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&dominant_color, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *alt_textKey = "alt_text";
 	node = json_object_get_member(pJsonObject, alt_textKey);
 	if (node !=NULL) {
@@ -219,31 +129,36 @@ PinCreate::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *board_ownerKey = "board_owner";
-	node = json_object_get_member(pJsonObject, board_ownerKey);
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BoardOwner")) {
-			jsonToValue(&board_owner, node, "BoardOwner", "BoardOwner");
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
 		} else {
-			
-			BoardOwner* obj = static_cast<BoardOwner*> (&board_owner);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
-	const gchar *mediaKey = "media";
-	node = json_object_get_member(pJsonObject, mediaKey);
+	const gchar *dominant_colorKey = "dominant_color";
+	node = json_object_get_member(pJsonObject, dominant_colorKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("PinMedia")) {
-			jsonToValue(&media, node, "PinMedia", "PinMedia");
+		if (isprimitive("std::string")) {
+			jsonToValue(&dominant_color, node, "std::string", "");
 		} else {
 			
-			PinMedia* obj = static_cast<PinMedia*> (&media);
-			obj->fromJson(json_to_string(node, false));
+		}
+	}
+	const gchar *linkKey = "link";
+	node = json_object_get_member(pJsonObject, linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&link, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -272,13 +187,24 @@ PinCreate::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *noteKey = "note";
-	node = json_object_get_member(pJsonObject, noteKey);
+	const gchar *sponsor_idKey = "sponsor_id";
+	node = json_object_get_member(pJsonObject, sponsor_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&note, node, "std::string", "");
+			jsonToValue(&sponsor_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *titleKey = "title";
+	node = json_object_get_member(pJsonObject, titleKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&title, node, "std::string", "");
 		} else {
 			
 		}
@@ -295,60 +221,6 @@ PinCreate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCreatedAt();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *created_atKey = "created_at";
-	json_object_set_member(pJsonObject, created_atKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLink();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *linkKey = "link";
-	json_object_set_member(pJsonObject, linkKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getTitle();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *titleKey = "title";
-	json_object_set_member(pJsonObject, titleKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDescription();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *descriptionKey = "description";
-	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDominantColor();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *dominant_colorKey = "dominant_color";
-	json_object_set_member(pJsonObject, dominant_colorKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAltText();
 		node = converttoJson(&obj, "std::string", "");
@@ -376,34 +248,33 @@ PinCreate::toJson()
 	}
 	const gchar *board_section_idKey = "board_section_id";
 	json_object_set_member(pJsonObject, board_section_idKey, node);
-	if (isprimitive("BoardOwner")) {
-		BoardOwner obj = getBoardOwner();
-		node = converttoJson(&obj, "BoardOwner", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		BoardOwner obj = static_cast<BoardOwner> (getBoardOwner());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
 	}
-	const gchar *board_ownerKey = "board_owner";
-	json_object_set_member(pJsonObject, board_ownerKey, node);
-	if (isprimitive("PinMedia")) {
-		PinMedia obj = getMedia();
-		node = converttoJson(&obj, "PinMedia", "");
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDominantColor();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		PinMedia obj = static_cast<PinMedia> (getMedia());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
+	}
+	const gchar *dominant_colorKey = "dominant_color";
+	json_object_set_member(pJsonObject, dominant_colorKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
 		
 	}
-	const gchar *mediaKey = "media";
-	json_object_set_member(pJsonObject, mediaKey, node);
+	const gchar *linkKey = "link";
+	json_object_set_member(pJsonObject, linkKey, node);
 	if (isprimitive("PinMediaSource")) {
 		PinMediaSource obj = getMediaSource();
 		node = converttoJson(&obj, "PinMediaSource", "");
@@ -428,92 +299,29 @@ PinCreate::toJson()
 	const gchar *parent_pin_idKey = "parent_pin_id";
 	json_object_set_member(pJsonObject, parent_pin_idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getNote();
+		std::string obj = getSponsorId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *noteKey = "note";
-	json_object_set_member(pJsonObject, noteKey, node);
+	const gchar *sponsor_idKey = "sponsor_id";
+	json_object_set_member(pJsonObject, sponsor_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getTitle();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *titleKey = "title";
+	json_object_set_member(pJsonObject, titleKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-PinCreate::getId()
-{
-	return id;
-}
-
-void
-PinCreate::setId(std::string  id)
-{
-	this->id = id;
-}
-
-std::string
-PinCreate::getCreatedAt()
-{
-	return created_at;
-}
-
-void
-PinCreate::setCreatedAt(std::string  created_at)
-{
-	this->created_at = created_at;
-}
-
-std::string
-PinCreate::getLink()
-{
-	return link;
-}
-
-void
-PinCreate::setLink(std::string  link)
-{
-	this->link = link;
-}
-
-std::string
-PinCreate::getTitle()
-{
-	return title;
-}
-
-void
-PinCreate::setTitle(std::string  title)
-{
-	this->title = title;
-}
-
-std::string
-PinCreate::getDescription()
-{
-	return description;
-}
-
-void
-PinCreate::setDescription(std::string  description)
-{
-	this->description = description;
-}
-
-std::string
-PinCreate::getDominantColor()
-{
-	return dominant_color;
-}
-
-void
-PinCreate::setDominantColor(std::string  dominant_color)
-{
-	this->dominant_color = dominant_color;
 }
 
 std::string
@@ -552,28 +360,40 @@ PinCreate::setBoardSectionId(std::string  board_section_id)
 	this->board_section_id = board_section_id;
 }
 
-BoardOwner
-PinCreate::getBoardOwner()
+std::string
+PinCreate::getDescription()
 {
-	return board_owner;
+	return description;
 }
 
 void
-PinCreate::setBoardOwner(BoardOwner  board_owner)
+PinCreate::setDescription(std::string  description)
 {
-	this->board_owner = board_owner;
+	this->description = description;
 }
 
-PinMedia
-PinCreate::getMedia()
+std::string
+PinCreate::getDominantColor()
 {
-	return media;
+	return dominant_color;
 }
 
 void
-PinCreate::setMedia(PinMedia  media)
+PinCreate::setDominantColor(std::string  dominant_color)
 {
-	this->media = media;
+	this->dominant_color = dominant_color;
+}
+
+std::string
+PinCreate::getLink()
+{
+	return link;
+}
+
+void
+PinCreate::setLink(std::string  link)
+{
+	this->link = link;
 }
 
 PinMediaSource
@@ -601,15 +421,27 @@ PinCreate::setParentPinId(std::string  parent_pin_id)
 }
 
 std::string
-PinCreate::getNote()
+PinCreate::getSponsorId()
 {
-	return note;
+	return sponsor_id;
 }
 
 void
-PinCreate::setNote(std::string  note)
+PinCreate::setSponsorId(std::string  sponsor_id)
 {
-	this->note = note;
+	this->sponsor_id = sponsor_id;
+}
+
+std::string
+PinCreate::getTitle()
+{
+	return title;
+}
+
+void
+PinCreate::setTitle(std::string  title)
+{
+	this->title = title;
 }
 
 

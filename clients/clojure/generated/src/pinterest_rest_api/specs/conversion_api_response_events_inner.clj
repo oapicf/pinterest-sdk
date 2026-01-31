@@ -7,8 +7,8 @@
 
 (def conversion-api-response-events-inner-data
   {
-   (ds/req :status) string?
    (ds/opt :error_message) string?
+   (ds/req :status) string?
    (ds/opt :warning_message) string?
    })
 

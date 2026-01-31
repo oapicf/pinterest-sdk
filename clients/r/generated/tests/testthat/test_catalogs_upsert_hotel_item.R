@@ -5,6 +5,13 @@ context("Test CatalogsUpsertHotelItem")
 
 model_instance <- CatalogsUpsertHotelItem$new()
 
+test_that("attributes", {
+  # tests for the property `attributes` (CatalogsHotelAttributes)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
+})
+
 test_that("hotel_id", {
   # tests for the property `hotel_id` (character)
   # The catalog hotel id in the merchant namespace
@@ -18,11 +25,4 @@ test_that("operation", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`operation`, "EXPECTED_RESULT")
-})
-
-test_that("attributes", {
-  # tests for the property `attributes` (CatalogsHotelAttributes)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
 })

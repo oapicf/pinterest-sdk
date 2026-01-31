@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.ItemResponse
-Object describing an item record
+Object describing an item record or error
 
 ## Properties
 

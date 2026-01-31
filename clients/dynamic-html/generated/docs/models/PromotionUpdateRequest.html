@@ -1,0 +1,71 @@
+
+<h2>PromotionUpdateRequest</h2>
+<ul class="parameter">
+  <li class="param-required-false">discountUnderscorestatus : String
+    <br/>Discount status based on the current time and start and end time of discount
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>OTHER</dd>
+            <dd>ACTIVE</dd>
+            <dd>PAUSED</dd>
+            <dd>SCHEDULED</dd>
+            <dd>EXPIRED</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">endUnderscoretime : Integer
+    <br/>Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">externalUnderscoreid : String
+    <br/>Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">platformUnderscoretype : String
+    <br/>The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">promotionUnderscorecode : String
+    <br/>Code that can be used to redeem a promotion.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">promotionUnderscorecustomUnderscoreid : String
+    <br/>An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">promotionUnderscoretitle : String
+    <br/>Internal name for the promotion.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">promotionUnderscoretype : PromotionType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startUnderscoretime : Integer
+    <br/>Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">templateUnderscorevalues : List
+    <br/>List of values to be inserted in the promotion type-specific template.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">id : String
+    <br/>Promotion ID
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : EntityStatus
+    <br/>
+  </li>
+</ul>

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsReportDistributionStats`
 --
-SELECT `report_type`, `catalog_id`, `code`, `code_label`, `message`, `occurrences`, `ineligible_for_ads`, `ineligible_for_organic` FROM `CatalogsReportDistributionStats` WHERE 1;
+SELECT `catalog_id`, `code`, `code_label`, `ineligible_for_ads`, `ineligible_for_organic`, `message`, `occurrences`, `report_type` FROM `CatalogsReportDistributionStats` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsReportDistributionStats`
 --
-INSERT INTO `CatalogsReportDistributionStats`(`report_type`, `catalog_id`, `code`, `code_label`, `message`, `occurrences`, `ineligible_for_ads`, `ineligible_for_organic`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsReportDistributionStats`(`catalog_id`, `code`, `code_label`, `ineligible_for_ads`, `ineligible_for_organic`, `message`, `occurrences`, `report_type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsReportDistributionStats`
 --
-UPDATE `CatalogsReportDistributionStats` SET `report_type` = ?, `catalog_id` = ?, `code` = ?, `code_label` = ?, `message` = ?, `occurrences` = ?, `ineligible_for_ads` = ?, `ineligible_for_organic` = ? WHERE 1;
+UPDATE `CatalogsReportDistributionStats` SET `catalog_id` = ?, `code` = ?, `code_label` = ?, `ineligible_for_ads` = ?, `ineligible_for_organic` = ?, `message` = ?, `occurrences` = ?, `report_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsReportDistributionStats`

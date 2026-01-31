@@ -1,6 +1,8 @@
 package apimodels;
 
 import apimodels.AssetGroupBinding;
+import apimodels.GetBusinessAssetsResponseCatalogInfo;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,9 +12,14 @@ import javax.validation.Valid;
 /**
  * An object containing the permissions a business has on the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class GetBusinessAssetsResponse   {
+  @JsonProperty("asset_group_info")
+  @Valid
+
+  private AssetGroupBinding assetGroupInfo;
+
   @JsonProperty("asset_id")
   @Pattern(regexp="^\\d+$")
 @Size(min=1,max=20)
@@ -23,10 +30,27 @@ public class GetBusinessAssetsResponse   {
   
   private String assetType;
 
-  @JsonProperty("asset_group_info")
+  @JsonProperty("catalog_info")
   @Valid
 
-  private AssetGroupBinding assetGroupInfo;
+  private GetBusinessAssetsResponseCatalogInfo catalogInfo;
+
+  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
+
+   /**
+   * Get assetGroupInfo
+   * @return assetGroupInfo
+  **/
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
 
   public GetBusinessAssetsResponse assetId(String assetId) {
     this.assetId = assetId;
@@ -51,7 +75,7 @@ public class GetBusinessAssetsResponse   {
   }
 
    /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
   **/
   public String getAssetType() {
@@ -62,21 +86,21 @@ public class GetBusinessAssetsResponse   {
     this.assetType = assetType;
   }
 
-  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public GetBusinessAssetsResponse catalogInfo(GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.catalogInfo = catalogInfo;
     return this;
   }
 
    /**
-   * Get assetGroupInfo
-   * @return assetGroupInfo
+   * Get catalogInfo
+   * @return catalogInfo
   **/
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
+  public GetBusinessAssetsResponseCatalogInfo getCatalogInfo() {
+    return catalogInfo;
   }
 
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public void setCatalogInfo(GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.catalogInfo = catalogInfo;
   }
 
 
@@ -89,14 +113,15 @@ public class GetBusinessAssetsResponse   {
       return false;
     }
     GetBusinessAssetsResponse getBusinessAssetsResponse = (GetBusinessAssetsResponse) o;
-    return Objects.equals(assetId, getBusinessAssetsResponse.assetId) &&
+    return Objects.equals(assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo) &&
+        Objects.equals(assetId, getBusinessAssetsResponse.assetId) &&
         Objects.equals(assetType, getBusinessAssetsResponse.assetType) &&
-        Objects.equals(assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo);
+        Objects.equals(catalogInfo, getBusinessAssetsResponse.catalogInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, catalogInfo);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -105,9 +130,10 @@ public class GetBusinessAssetsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessAssetsResponse {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
+    sb.append("    catalogInfo: ").append(toIndentedString(catalogInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,19 +26,19 @@ public class UpdateAssetGroupResponseTest {
     }
 
     /**
-     * Test the property 'updatedAssetGroups'
-     */
-    @Test
-    public void updatedAssetGroupsTest() {
-        // TODO: test updatedAssetGroups
-    }
-
-    /**
      * Test the property 'exceptions'
      */
     @Test
     public void exceptionsTest() {
         // TODO: test exceptions
+    }
+
+    /**
+     * Test the property 'updatedAssetGroups'
+     */
+    @Test
+    public void updatedAssetGroupsTest() {
+        // TODO: test updatedAssetGroups
     }
 
 }

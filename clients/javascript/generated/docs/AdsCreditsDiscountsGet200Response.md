@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[AdsCreditDiscountsResponse]**](AdsCreditDiscountsResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[AdsCreditDiscountsResponse]**](AdsCreditDiscountsResponse.md) |  | 
 
 

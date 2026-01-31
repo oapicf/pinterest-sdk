@@ -5,12 +5,9 @@
   "name": "BulkDownloadRequest",
   "fields": [
     {
-      "name": "entity_types",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.BulkEntityType"
-      }],
-      "doc": "All entity types specified will be downloaded. Fewer types result in faster downloads.",
+      "name": "campaign_filter",
+      "type": ["null", "model.BulkDownloadRequestCampaignFilter"],
+      "doc": "",
       "default": null
     },
     {
@@ -23,15 +20,12 @@
       "default": null
     },
     {
-      "name": "updated_since",
-      "type": ["null", "string"],
-      "doc": "Unix UTC timestamp to retrieve all entities that have changed since this time.",
-      "default": null
-    },
-    {
-      "name": "campaign_filter",
-      "type": ["null", "model.BulkDownloadRequestCampaignFilter"],
-      "doc": "",
+      "name": "entity_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.BulkEntityType"
+      }],
+      "doc": "All entity types specified will be downloaded. Fewer types result in faster downloads.",
       "default": null
     },
     {
@@ -39,6 +33,12 @@
       "type": ["model.BulkOutputFormat", "null"],
       "doc": "",
       "default": BulkOutputFormat.JSON
+    },
+    {
+      "name": "updated_since",
+      "type": ["null", "string"],
+      "doc": "Unix UTC timestamp to retrieve all entities that have changed since this time.",
+      "default": null
     }
   ]
 

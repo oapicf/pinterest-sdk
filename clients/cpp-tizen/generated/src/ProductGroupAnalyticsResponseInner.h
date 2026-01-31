@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The ID of the product group that this metrics belongs to.
-	 */
-	std::string getPRODUCTGROUPID();
-
-	/*! \brief Set The ID of the product group that this metrics belongs to.
-	 */
-	void setPRODUCTGROUPID(std::string  pRODUCT_GROUP_ID);
 	/*! \brief Get Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	 */
 	Date getDATE();
@@ -62,10 +55,17 @@ public:
 	/*! \brief Set Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	 */
 	void setDATE(Date  dATE);
+	/*! \brief Get The ID of the product group that this metrics belongs to.
+	 */
+	std::string getPRODUCTGROUPID();
+
+	/*! \brief Set The ID of the product group that this metrics belongs to.
+	 */
+	void setPRODUCTGROUPID(std::string  pRODUCT_GROUP_ID);
 
 private:
-	std::string pRODUCT_GROUP_ID;
 	Date dATE;
+	std::string pRODUCT_GROUP_ID;
 	void __init();
 	void __cleanup();
 

@@ -8,8 +8,8 @@
 
 (def create-asset-group-body-data
   {
-   (ds/req :asset_group_name) string?
    (ds/req :asset_group_description) string?
+   (ds/req :asset_group_name) string?
    (ds/req :asset_group_types) (s/coll-of asset-group-type-spec)
    })
 

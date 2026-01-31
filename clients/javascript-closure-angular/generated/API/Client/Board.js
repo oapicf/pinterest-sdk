@@ -1,23 +1,9 @@
 goog.provide('API.Client.Board');
 
 /**
- * Board
  * @record
  */
 API.Client.Board = function() {}
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.Board.prototype.id;
-
-/**
- * Date and time of board creation.
- * @type {!Date}
- * @export
- */
-API.Client.Board.prototype.createdAt;
 
 /**
  * Date and time of last board pins modified.
@@ -27,18 +13,6 @@ API.Client.Board.prototype.createdAt;
 API.Client.Board.prototype.boardPinsModifiedAt;
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.Board.prototype.name;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.Board.prototype.description;
-
-/**
  * Count of collaborators on the board.
  * @type {!number}
  * @export
@@ -46,11 +20,17 @@ API.Client.Board.prototype.description;
 API.Client.Board.prototype.collaboratorCount;
 
 /**
- * Count of pins on the board.
- * @type {!number}
+ * Date and time of board creation.
+ * @type {!Date}
  * @export
  */
-API.Client.Board.prototype.pinCount;
+API.Client.Board.prototype.createdAt;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Board.prototype.description;
 
 /**
  * Board follower count.
@@ -60,10 +40,31 @@ API.Client.Board.prototype.pinCount;
 API.Client.Board.prototype.followerCount;
 
 /**
- * @type {!API.Client.Board_media}
+ * @type {!string}
+ * @export
+ */
+API.Client.Board.prototype.id;
+
+/**
+ * If set to `true`, the board will be ad-only and can store ad-only Pins.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.Board.prototype.isAdsOnly;
+
+/**
+ * Board media.
+ * @type {!API.Client.BoardMedia}
  * @export
  */
 API.Client.Board.prototype.media;
+
+/**
+ *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+ * @type {!string}
+ * @export
+ */
+API.Client.Board.prototype.name;
 
 /**
  * @type {!API.Client.BoardOwner}
@@ -72,15 +73,16 @@ API.Client.Board.prototype.media;
 API.Client.Board.prototype.owner;
 
 /**
- * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
- * @type {!string}
+ * Count of Pins on the board.
+ * @type {!number}
+ * @export
+ */
+API.Client.Board.prototype.pinCount;
+
+/**
+ *     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
+ * @type {!API.Client.BoardPrivacy}
  * @export
  */
 API.Client.Board.prototype.privacy;
 
-/** @enum {string} */
-API.Client.Board.PrivacyEnum = { 
-  PUBLIC: 'PUBLIC',
-  PROTECTED: 'PROTECTED',
-  SECRET: 'SECRET',
-}

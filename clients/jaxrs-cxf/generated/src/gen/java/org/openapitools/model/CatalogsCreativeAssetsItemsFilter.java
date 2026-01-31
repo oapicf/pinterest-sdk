@@ -15,6 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsItemsFilter  {
   
+ /**
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -54,13 +61,24 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   @ApiModelProperty(required = true, value = "")
 
   private List<String> creativeAssetsIds = new ArrayList<>();
-
  /**
-  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  */
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
 
-  private String catalogId;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsCreativeAssetsItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Get catalogType
    * @return catalogType
@@ -107,24 +125,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     return this;
   }
 
- /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsCreativeAssetsItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -134,14 +134,14 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
       return false;
     }
     CatalogsCreativeAssetsItemsFilter catalogsCreativeAssetsItemsFilter = (CatalogsCreativeAssetsItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
-        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
+        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @Override
@@ -149,9 +149,9 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

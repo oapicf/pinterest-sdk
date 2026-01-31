@@ -8,8 +8,8 @@ Used for including extra details to a base error
 Name | Type
 ------------ | -------------
 `code` | number
-`message` | string
 `details` | object
+`message` | string
 
 ## Example
 
@@ -19,8 +19,8 @@ import type { DetailedError } from ''
 // TODO: Update the object below with actual values
 const example = {
   "code": null,
-  "message": null,
   "details": null,
+  "message": null,
 } satisfies DetailedError
 
 console.log(example)

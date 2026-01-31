@@ -13,25 +13,28 @@ import AnyCodable
 /** Pin with a mix of images and videos. */
 public struct PinMediaWithImageAndVideo: Codable, JSONEncodable, Hashable {
 
-    public var mediaType: String?
+    public enum MediaType: String, Codable, CaseIterable {
+        case multipleMixed = "multiple_mixed"
+    }
     public var items: [PinMediaMetadata]?
+    public var mediaType: MediaType
 
-    public init(mediaType: String? = nil, items: [PinMediaMetadata]? = nil) {
-        self.mediaType = mediaType
+    public init(items: [PinMediaMetadata]? = nil, mediaType: MediaType) {
         self.items = items
+        self.mediaType = mediaType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mediaType = "media_type"
         case items
+        case mediaType = "media_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(mediaType, forKey: .mediaType)
         try container.encodeIfPresent(items, forKey: .items)
+        try container.encode(mediaType, forKey: .mediaType)
     }
 }
 

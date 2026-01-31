@@ -21,35 +21,19 @@ public class SSIOInsertionOrderCommonTest {
     }
 
     /**
-     * Test the property 'startDate'
+     * Test the property 'agencyLink'
      */
     @Test
-    public void startDateTest() {
-        // TODO: test startDate
+    public void agencyLinkTest() {
+        // TODO: test agencyLink
     }
 
     /**
-     * Test the property 'endDate'
+     * Test the property 'billingContactEmail'
      */
     @Test
-    public void endDateTest() {
-        // TODO: test endDate
-    }
-
-    /**
-     * Test the property 'poNumber'
-     */
-    @Test
-    public void poNumberTest() {
-        // TODO: test poNumber
-    }
-
-    /**
-     * Test the property 'budgetAmount'
-     */
-    @Test
-    public void budgetAmountTest() {
-        // TODO: test budgetAmount
+    public void billingContactEmailTest() {
+        // TODO: test billingContactEmail
     }
 
     /**
@@ -69,11 +53,27 @@ public class SSIOInsertionOrderCommonTest {
     }
 
     /**
-     * Test the property 'billingContactEmail'
+     * Test the property 'budgetAmount'
      */
     @Test
-    public void billingContactEmailTest() {
-        // TODO: test billingContactEmail
+    public void budgetAmountTest() {
+        // TODO: test budgetAmount
+    }
+
+    /**
+     * Test the property 'endDate'
+     */
+    @Test
+    public void endDateTest() {
+        // TODO: test endDate
+    }
+
+    /**
+     * Test the property 'mediaContactEmail'
+     */
+    @Test
+    public void mediaContactEmailTest() {
+        // TODO: test mediaContactEmail
     }
 
     /**
@@ -93,19 +93,19 @@ public class SSIOInsertionOrderCommonTest {
     }
 
     /**
-     * Test the property 'mediaContactEmail'
+     * Test the property 'poNumber'
      */
     @Test
-    public void mediaContactEmailTest() {
-        // TODO: test mediaContactEmail
+    public void poNumberTest() {
+        // TODO: test poNumber
     }
 
     /**
-     * Test the property 'agencyLink'
+     * Test the property 'startDate'
      */
     @Test
-    public void agencyLinkTest() {
-        // TODO: test agencyLink
+    public void startDateTest() {
+        // TODO: test startDate
     }
 
     /**

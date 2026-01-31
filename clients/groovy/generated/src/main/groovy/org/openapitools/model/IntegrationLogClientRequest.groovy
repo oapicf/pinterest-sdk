@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 @Canonical
 class IntegrationLogClientRequest {
+    /* HTTP request host from host header. */
+    String host
 
     enum MethodEnum {
     
@@ -46,8 +48,6 @@ class IntegrationLogClientRequest {
 
     
     MethodEnum method
-    /* HTTP request host from host header. */
-    String host
     /* HTTP request path. */
     String path
     /* HTTP request headers as key-value pairs. */

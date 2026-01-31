@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"adAccountId": @"ad_account_id", @"adAccountIds": @"ad_account_ids", @"userId": @"user_id", @"name": @"name", @"reportStartRelativeDaysInPast": @"report_start_relative_days_in_past", @"reportEndRelativeDaysInPast": @"report_end_relative_days_in_past", @"dateRange": @"date_range", @"reportLevel": @"report_level", @"reportFormat": @"report_format", @"columns": @"columns", @"granularity": @"granularity", @"viewWindowDays": @"view_window_days", @"clickWindowDays": @"click_window_days", @"engagementWindowDays": @"engagement_window_days", @"conversionReportTimeType": @"conversion_report_time_type", @"filtersJson": @"filters_json", @"isOwnedByUser": @"is_owned_by_user", @"isScheduled": @"is_scheduled", @"creationSource": @"creation_source", @"isDeleted": @"is_deleted", @"updatedTime": @"updated_time", @"customColumnIds": @"custom_column_ids", @"type": @"type", @"ingestionSources": @"ingestion_sources" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"adAccountIds": @"ad_account_ids", @"clickWindowDays": @"click_window_days", @"columns": @"columns", @"conversionReportTimeType": @"conversion_report_time_type", @"creationSource": @"creation_source", @"customColumnIds": @"custom_column_ids", @"dateRange": @"date_range", @"engagementWindowDays": @"engagement_window_days", @"filtersJson": @"filters_json", @"granularity": @"granularity", @"_id": @"id", @"ingestionSources": @"ingestion_sources", @"isDeleted": @"is_deleted", @"isOwnedByUser": @"is_owned_by_user", @"isScheduled": @"is_scheduled", @"name": @"name", @"reportEndRelativeDaysInPast": @"report_end_relative_days_in_past", @"reportFormat": @"report_format", @"reportLevel": @"report_level", @"reportStartRelativeDaysInPast": @"report_start_relative_days_in_past", @"type": @"type", @"updatedTime": @"updated_time", @"userId": @"user_id", @"viewWindowDays": @"view_window_days" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"_id", @"adAccountId", @"adAccountIds", @"userId", @"name", @"reportStartRelativeDaysInPast", @"reportEndRelativeDaysInPast", @"dateRange", @"reportLevel", @"reportFormat", @"columns", @"granularity", @"viewWindowDays", @"clickWindowDays", @"engagementWindowDays", @"conversionReportTimeType", @"filtersJson", @"isOwnedByUser", @"isScheduled", @"creationSource", @"isDeleted", @"updatedTime", @"customColumnIds", @"type", @"ingestionSources"];
+  NSArray *optionalProperties = @[@"adAccountId", @"adAccountIds", @"clickWindowDays", @"columns", @"conversionReportTimeType", @"creationSource", @"customColumnIds", @"dateRange", @"engagementWindowDays", @"filtersJson", @"granularity", @"_id", @"ingestionSources", @"isDeleted", @"isOwnedByUser", @"isScheduled", @"name", @"reportEndRelativeDaysInPast", @"reportFormat", @"reportLevel", @"reportStartRelativeDaysInPast", @"type", @"updatedTime", @"userId", @"viewWindowDays"];
   return [optionalProperties containsObject:propertyName];
 }
 

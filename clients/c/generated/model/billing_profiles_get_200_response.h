@@ -20,15 +20,15 @@ typedef struct billing_profiles_get_200_response_t billing_profiles_get_200_resp
 
 
 typedef struct billing_profiles_get_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } billing_profiles_get_200_response_t;
 
 __attribute__((deprecated)) billing_profiles_get_200_response_t *billing_profiles_get_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void billing_profiles_get_200_response_free(billing_profiles_get_200_response_t *billing_profiles_get_200_response);

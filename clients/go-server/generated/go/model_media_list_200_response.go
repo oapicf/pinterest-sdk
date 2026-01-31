@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,10 +16,9 @@ package openapi
 
 type MediaList200Response struct {
 
-	// Media
-	Items []MediaUploadDetails `json:"items"`
-
 	Bookmark *string `json:"bookmark,omitempty"`
+
+	Items []Media `json:"items"`
 }
 
 // AssertMediaList200ResponseRequired checks if the required fields are not zero-ed
@@ -34,7 +33,7 @@ func AssertMediaList200ResponseRequired(obj MediaList200Response) error {
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertMediaUploadDetailsRequired(el); err != nil {
+		if err := AssertMediaRequired(el); err != nil {
 			return err
 		}
 	}
@@ -44,7 +43,7 @@ func AssertMediaList200ResponseRequired(obj MediaList200Response) error {
 // AssertMediaList200ResponseConstraints checks if the values respects the defined constraints
 func AssertMediaList200ResponseConstraints(obj MediaList200Response) error {
 	for _, el := range obj.Items {
-		if err := AssertMediaUploadDetailsConstraints(el); err != nil {
+		if err := AssertMediaConstraints(el); err != nil {
 			return err
 		}
 	}

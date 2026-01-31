@@ -6,6 +6,7 @@ open OpenAPI.Model.CatalogsFeedIngestionDetails
 open OpenAPI.Model.CatalogsFeedProcessingStatus
 open OpenAPI.Model.CatalogsFeedProductCounts
 open OpenAPI.Model.CatalogsFeedValidationDetails
+open OpenAPI.Model.CatalogsFeedVideoCounts
 
 module CatalogsFeedProcessingResult =
 
@@ -17,8 +18,9 @@ module CatalogsFeedProcessingResult =
     Id : string;
     UpdatedAt : DateTime;
     IngestionDetails : CatalogsFeedIngestionDetails;
-    Status : CatalogsFeedProcessingStatus;
     ProductCounts : CatalogsFeedProductCounts;
+    Status : CatalogsFeedProcessingStatus;
     ValidationDetails : CatalogsFeedValidationDetails;
+    VideoCounts : CatalogsFeedVideoCounts;
   }
   //#endregion

@@ -22,13 +22,13 @@ pin_media_with_videos_t* instantiate_pin_media_with_videos(int include_optional)
   pin_media_with_videos_t* pin_media_with_videos = NULL;
   if (include_optional) {
     pin_media_with_videos = pin_media_with_videos_create(
-      "0",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_pin_media_with_videos_MEDIATYPE_multiple_videos
     );
   } else {
     pin_media_with_videos = pin_media_with_videos_create(
-      "0",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_pin_media_with_videos_MEDIATYPE_multiple_videos
     );
   }
 

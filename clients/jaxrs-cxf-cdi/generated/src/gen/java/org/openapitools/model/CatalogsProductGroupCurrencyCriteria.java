@@ -19,9 +19,27 @@ import java.util.Objects;
 @ApiModel(description = "A currency filter. This filter cannot be negated")
 public class CatalogsProductGroupCurrencyCriteria   {
   
+  private Boolean negated = false;
+
   private NonNullableCatalogsCurrency values;
 
-  private Boolean negated = false;
+  /**
+   **/
+  public CatalogsProductGroupCurrencyCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
 
   /**
    **/
@@ -42,24 +60,6 @@ public class CatalogsProductGroupCurrencyCriteria   {
   }
 
 
-  /**
-   **/
-  public CatalogsProductGroupCurrencyCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -70,13 +70,13 @@ public class CatalogsProductGroupCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupCurrencyCriteria catalogsProductGroupCurrencyCriteria = (CatalogsProductGroupCurrencyCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -84,8 +84,8 @@ public class CatalogsProductGroupCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCurrencyCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

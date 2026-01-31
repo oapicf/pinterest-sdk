@@ -7,7 +7,6 @@ model_instance <- PinUpdate$new()
 
 test_that("alt_text", {
   # tests for the property `alt_text` (character)
-  # Pin&#39;s alternative text.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`alt_text`, "EXPECTED_RESULT")
@@ -15,7 +14,7 @@ test_that("alt_text", {
 
 test_that("board_id", {
   # tests for the property `board_id` (character)
-  # The id of the board to move the Pin onto.
+  # The board to which this Pin belongs.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`board_id`, "EXPECTED_RESULT")
@@ -23,15 +22,22 @@ test_that("board_id", {
 
 test_that("board_section_id", {
   # tests for the property `board_section_id` (character)
-  # &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/create-a-board-section\&quot;&gt;Board section&lt;/a&gt; ID.
+  # The board section to which this Pin belongs.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`board_section_id`, "EXPECTED_RESULT")
 })
 
+test_that("carousel_slots", {
+  # tests for the property `carousel_slots` (array[CarouselSlot])
+  # Carousel Pin slots data.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`carousel_slots`, "EXPECTED_RESULT")
+})
+
 test_that("description", {
   # tests for the property `description` (character)
-  # Pin description - 800 characters maximum.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
@@ -39,7 +45,6 @@ test_that("description", {
 
 test_that("link", {
   # tests for the property `link` (character)
-  # URL viewer is taken to when they click pin.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
@@ -47,24 +52,7 @@ test_that("link", {
 
 test_that("title", {
   # tests for the property `title` (character)
-  # The native pin title that creators explicitly prefer to display.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
-test_that("carousel_slots", {
-  # tests for the property `carousel_slots` (array[PinUpdateCarouselSlotsInner])
-  # Carousel Pin slots data.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`carousel_slots`, "EXPECTED_RESULT")
-})
-
-test_that("note", {
-  # tests for the property `note` (character)
-  # Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`note`, "EXPECTED_RESULT")
 })

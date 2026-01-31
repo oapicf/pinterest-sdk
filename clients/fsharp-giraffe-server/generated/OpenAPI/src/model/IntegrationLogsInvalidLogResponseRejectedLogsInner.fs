@@ -9,9 +9,9 @@ module IntegrationLogsInvalidLogResponseRejectedLogsInner =
 
 
   type IntegrationLogsInvalidLogResponse_rejected_logs_inner = {
-    LogIndex : int;
     Field : string;
-    Value : string;
+    LogIndex : int;
     Reason : string;
+    Value : string;
   }
   //#endregion

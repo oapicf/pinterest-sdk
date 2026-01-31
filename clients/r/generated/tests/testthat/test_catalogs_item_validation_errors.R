@@ -75,18 +75,18 @@ test_that("INVALID_DOMAIN", {
   #expect_equal(model.instance$`INVALID_DOMAIN`, "EXPECTED_RESULT")
 })
 
-test_that("ITEMID_MISSING", {
-  # tests for the property `ITEMID_MISSING` (CatalogsItemValidationDetails)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ITEMID_MISSING`, "EXPECTED_RESULT")
-})
-
 test_that("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", {
   # tests for the property `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` (CatalogsItemValidationDetails)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`, "EXPECTED_RESULT")
+})
+
+test_that("ITEMID_MISSING", {
+  # tests for the property `ITEMID_MISSING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ITEMID_MISSING`, "EXPECTED_RESULT")
 })
 
 test_that("LINK_FORMAT_INVALID", {

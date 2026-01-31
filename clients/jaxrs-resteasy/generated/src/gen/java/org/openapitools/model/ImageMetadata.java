@@ -7,43 +7,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
+import org.openapitools.model.ImageSize;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageMetadata   {
   
-  private String itemType;
-  private String title;
   private String description;
+  private ImageSize images;
+  private String itemType;
   private String link;
-  private ImageMetadataImages images;
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("item_type")
-  public String getItemType() {
-    return itemType;
-  }
-  public void setItemType(String itemType) {
-    this.itemType = itemType;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
-  }
+  private String title;
 
   /**
    **/
@@ -55,6 +31,31 @@ public class ImageMetadata   {
   }
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("images")
+  @Valid
+  public ImageSize getImages() {
+    return images;
+  }
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("item_type")
+  public String getItemType() {
+    return itemType;
+  }
+  public void setItemType(String itemType) {
+    this.itemType = itemType;
   }
 
   /**
@@ -73,13 +74,12 @@ public class ImageMetadata   {
    **/
   
   @ApiModelProperty(value = "")
-  @JsonProperty("images")
-  @Valid
-  public ImageMetadataImages getImages() {
-    return images;
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
   }
-  public void setImages(ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -92,16 +92,16 @@ public class ImageMetadata   {
       return false;
     }
     ImageMetadata imageMetadata = (ImageMetadata) o;
-    return Objects.equals(this.itemType, imageMetadata.itemType) &&
-        Objects.equals(this.title, imageMetadata.title) &&
-        Objects.equals(this.description, imageMetadata.description) &&
+    return Objects.equals(this.description, imageMetadata.description) &&
+        Objects.equals(this.images, imageMetadata.images) &&
+        Objects.equals(this.itemType, imageMetadata.itemType) &&
         Objects.equals(this.link, imageMetadata.link) &&
-        Objects.equals(this.images, imageMetadata.images);
+        Objects.equals(this.title, imageMetadata.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, title, description, link, images);
+    return Objects.hash(description, images, itemType, link, title);
   }
 
   @Override
@@ -109,11 +109,11 @@ public class ImageMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageMetadata {\n");
     
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

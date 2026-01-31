@@ -50,13 +50,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get targeting template name
-	 */
-	std::string getName();
-
-	/*! \brief Set targeting template name
-	 */
-	void setName(std::string  name);
 	/*! \brief Get Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	 */
 	bool getAutoTargetingEnabled();
@@ -66,11 +59,18 @@ public:
 	void setAutoTargetingEnabled(bool  auto_targeting_enabled);
 	/*! \brief Get 
 	 */
-	TargetingSpec getTargetingAttributes();
+	std::list<TargetingTemplateKeyword> getKeywords();
 
 	/*! \brief Set 
 	 */
-	void setTargetingAttributes(TargetingSpec  targeting_attributes);
+	void setKeywords(std::list <TargetingTemplateKeyword> keywords);
+	/*! \brief Get targeting template name
+	 */
+	std::string getName();
+
+	/*! \brief Set targeting template name
+	 */
+	void setName(std::string  name);
 	/*! \brief Get 
 	 */
 	PlacementGroupType getPlacementGroup();
@@ -80,11 +80,11 @@ public:
 	void setPlacementGroup(PlacementGroupType  placement_group);
 	/*! \brief Get 
 	 */
-	std::list<TargetingTemplateKeyword> getKeywords();
+	TargetingSpec getTargetingAttributes();
 
 	/*! \brief Set 
 	 */
-	void setKeywords(std::list <TargetingTemplateKeyword> keywords);
+	void setTargetingAttributes(TargetingSpec  targeting_attributes);
 	/*! \brief Get 
 	 */
 	TrackingUrls getTrackingUrls();
@@ -94,11 +94,11 @@ public:
 	void setTrackingUrls(TrackingUrls  tracking_urls);
 
 private:
-	std::string name;
 	bool auto_targeting_enabled;
-	TargetingSpec targeting_attributes;
-	PlacementGroupType placement_group;
 	std::list <TargetingTemplateKeyword>keywords;
+	std::string name;
+	PlacementGroupType placement_group;
+	TargetingSpec targeting_attributes;
 	TrackingUrls tracking_urls;
 	void __init();
 	void __cleanup();

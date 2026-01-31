@@ -9,8 +9,8 @@
 -export_type([openapi_audiences_list_200_response/0]).
 
 -type openapi_audiences_list_200_response() ::
-  [ {'items', list(openapi_audience:openapi_audience()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_audience:openapi_audience()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_audiences_list_200_response() ->
     openapi_audiences_list_200_response([]).
 
 openapi_audiences_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_audience:openapi_audience()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_audience:openapi_audience()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

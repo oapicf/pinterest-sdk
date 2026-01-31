@@ -24,9 +24,9 @@ import com.squareup.moshi.JsonClass
  *
  * @param addr1 Primary street address of hotel.
  * @param city City where the hotel is located.
- * @param region State, county, province, where the hotel is located.
  * @param country Country where the hotel is located.
  * @param postalCode Required for countries with a postal code system. Postal or zip code of the hotel.
+ * @param region State, county, province, where the hotel is located.
  */
 
 
@@ -40,17 +40,17 @@ data class CatalogsHotelAddress (
     @Json(name = "city")
     val city: kotlin.String? = null,
 
-    /* State, county, province, where the hotel is located. */
-    @Json(name = "region")
-    val region: kotlin.String? = null,
-
     /* Country where the hotel is located. */
     @Json(name = "country")
     val country: kotlin.String? = null,
 
     /* Required for countries with a postal code system. Postal or zip code of the hotel. */
     @Json(name = "postal_code")
-    val postalCode: kotlin.String? = null
+    val postalCode: kotlin.String? = null,
+
+    /* State, county, province, where the hotel is located. */
+    @Json(name = "region")
+    val region: kotlin.String? = null
 
 ) {
 

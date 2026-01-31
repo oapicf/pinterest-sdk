@@ -14,12 +14,12 @@
       "default": null
     },
     {
-      "name": "genders",
+      "name": "countries",
       "type": ["null", {
         "type": "array",
         "items": "model.AudienceDemographicValue"
       }],
-      "doc": "Gender distribution.",
+      "doc": "Country area distribution.",
       "default": null
     },
     {
@@ -32,21 +32,21 @@
       "default": null
     },
     {
+      "name": "genders",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceDemographicValue"
+      }],
+      "doc": "Gender distribution.",
+      "default": null
+    },
+    {
       "name": "metros",
       "type": ["null", {
         "type": "array",
         "items": "model.AudienceDemographicValue"
       }],
       "doc": "Geographic metro area distribution.",
-      "default": null
-    },
-    {
-      "name": "countries",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.AudienceDemographicValue"
-      }],
-      "doc": "Country area distribution.",
       "default": null
     }
   ]

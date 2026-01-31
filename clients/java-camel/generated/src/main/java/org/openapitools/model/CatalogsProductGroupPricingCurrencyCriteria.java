@@ -23,8 +23,12 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("catalogs_product_group_pricing_currency_criteria")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupPricingCurrencyCriteria {
+
+  private NonNullableCatalogsCurrency currency;
+
+  private Boolean negated = false;
 
   /**
    * Gets or Sets operator
@@ -69,10 +73,6 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
 
   private BigDecimal value;
 
-  private NonNullableCatalogsCurrency currency;
-
-  private Boolean negated = false;
-
   public CatalogsProductGroupPricingCurrencyCriteria() {
     super();
   }
@@ -80,50 +80,9 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsProductGroupPricingCurrencyCriteria(OperatorEnum operator, BigDecimal value, NonNullableCatalogsCurrency currency) {
-    this.operator = operator;
-    this.value = value;
+  public CatalogsProductGroupPricingCurrencyCriteria(NonNullableCatalogsCurrency currency, OperatorEnum operator, BigDecimal value) {
     this.currency = currency;
-  }
-
-  public CatalogsProductGroupPricingCurrencyCriteria operator(OperatorEnum operator) {
     this.operator = operator;
-    return this;
-  }
-
-  /**
-   * Get operator
-   * @return operator
-   */
-  @NotNull 
-  @Schema(name = "operator", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("operator")
-  public OperatorEnum getOperator() {
-    return operator;
-  }
-
-  public void setOperator(OperatorEnum operator) {
-    this.operator = operator;
-  }
-
-  public CatalogsProductGroupPricingCurrencyCriteria value(BigDecimal value) {
-    this.value = value;
-    return this;
-  }
-
-  /**
-   * Get value
-   * minimum: 0
-   * @return value
-   */
-  @NotNull @Valid @DecimalMin(value = "0") 
-  @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("value")
-  public BigDecimal getValue() {
-    return value;
-  }
-
-  public void setValue(BigDecimal value) {
     this.value = value;
   }
 
@@ -167,6 +126,47 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
     this.negated = negated;
   }
 
+  public CatalogsProductGroupPricingCurrencyCriteria operator(OperatorEnum operator) {
+    this.operator = operator;
+    return this;
+  }
+
+  /**
+   * Get operator
+   * @return operator
+   */
+  @NotNull 
+  @Schema(name = "operator", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("operator")
+  public OperatorEnum getOperator() {
+    return operator;
+  }
+
+  public void setOperator(OperatorEnum operator) {
+    this.operator = operator;
+  }
+
+  public CatalogsProductGroupPricingCurrencyCriteria value(BigDecimal value) {
+    this.value = value;
+    return this;
+  }
+
+  /**
+   * Get value
+   * minimum: 0
+   * @return value
+   */
+  @NotNull @Valid @DecimalMin(value = "0") 
+  @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("value")
+  public BigDecimal getValue() {
+    return value;
+  }
+
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -176,25 +176,25 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
       return false;
     }
     CatalogsProductGroupPricingCurrencyCriteria catalogsProductGroupPricingCurrencyCriteria = (CatalogsProductGroupPricingCurrencyCriteria) o;
-    return Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
-        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value) &&
-        Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
-        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated);
+    return Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
+        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated) &&
+        Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
+        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operator, value, currency, negated);
+    return Objects.hash(currency, negated, operator, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupPricingCurrencyCriteria {\n");
-    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

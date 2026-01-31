@@ -7,10 +7,10 @@ Object describing a retail item record
 
 Name | Type
 ------------ | -------------
+`attributes` | [ItemAttributes](ItemAttributes.md)
 `catalogType` | [CatalogsType](CatalogsType.md)
 `itemId` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
-`attributes` | [ItemAttributes](ItemAttributes.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { CatalogsRetailItemResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "catalogType": null,
   "itemId": DS0294-M,
   "pins": null,
-  "attributes": null,
 } satisfies CatalogsRetailItemResponse
 
 console.log(example)

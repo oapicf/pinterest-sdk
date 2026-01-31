@@ -1,8 +1,13 @@
 const samples = require('../samples/BoardsApi');
 const Board = require('../models/Board');
+const BoardCreate = require('../models/BoardCreate');
+const BoardPrivacyFilter = require('../models/BoardPrivacyFilter');
 const BoardSection = require('../models/BoardSection');
-const BoardUpdate = require('../models/BoardUpdate');
+const BoardWithUpdatePrivacy = require('../models/BoardWithUpdatePrivacy');
+const BoardWithUpdatePrivacyUpdate = require('../models/BoardWithUpdatePrivacyUpdate');
+const CreativeType = require('../models/CreativeType');
 const Error = require('../models/Error');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const board_sections_list_200_response = require('../models/board_sections_list_200_response');
 const boards_list_200_response = require('../models/boards_list_200_response');
 const boards_list_pins_200_response = require('../models/boards_list_pins_200_response');
@@ -304,12 +309,12 @@ module.exports = {
         noun: 'boards',
         display: {
             label: 'Create board',
-            description: 'Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.',
+            description: 'Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.',
             hidden: false,
         },
         operation: {
             inputFields: [
-                ...Board.fields(),
+                ...BoardCreate.fields(),
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
@@ -332,7 +337,7 @@ module.exports = {
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
-                        ...Board.mapping(bundle),
+                        ...BoardCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -341,7 +346,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BoardSample']
+            sample: samples['BoardSample']samples['BoardSample']
         }
     },
     boards/delete: {
@@ -349,14 +354,14 @@ module.exports = {
         noun: 'boards',
         display: {
             label: 'Delete board',
-            description: 'Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.',
+            description: 'Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'board_id',
-                    label: 'Unique identifier of a board.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
@@ -397,14 +402,14 @@ module.exports = {
         noun: 'boards',
         display: {
             label: 'Get board',
-            description: 'Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.',
+            description: 'Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'board_id',
-                    label: 'Unique identifier of a board.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
@@ -446,7 +451,7 @@ module.exports = {
         noun: 'boards',
         display: {
             label: 'List boards',
-            description: 'Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.',
+            description: 'Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.',
             hidden: false,
         },
         operation: {
@@ -456,6 +461,7 @@ module.exports = {
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                 },
+                ....fields(),
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
@@ -463,20 +469,8 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
-                },
-                {
-                    key: 'privacy',
-                    label: 'Privacy setting for a board.',
-                    type: 'string',
-                    choices: [
-                        'ALL',
-                        'PROTECTED',
-                        'PUBLIC',
-                        'SECRET',
-                        'PUBLIC_AND_SECRET',
-                    ],
                 },
             ],
             outputFields: [
@@ -493,9 +487,9 @@ module.exports = {
                     },
                     params: {
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
+                        'privacy': bundle.inputData?.['privacy'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
-                        'privacy': bundle.inputData?.['privacy'],
                     },
                     body: {
                     },
@@ -537,7 +531,7 @@ module.exports = {
                 },
                 {
                     key: 'creative_types',
-                    label: 'Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.',
+                    label: 'Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.',
                     type: 'string',
                 }
                 {
@@ -547,7 +541,7 @@ module.exports = {
                 },
                 {
                     key: 'pin_metrics',
-                    label: 'Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.',
+                    label: 'Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.',
                     type: 'boolean',
                 },
             ],
@@ -587,18 +581,18 @@ module.exports = {
         noun: 'boards',
         display: {
             label: 'Update board',
-            description: 'Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.',
+            description: 'Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'board_id',
-                    label: 'Unique identifier of a board.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
-                ...BoardUpdate.fields(),
+                ...BoardWithUpdatePrivacyUpdate.fields(),
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
@@ -606,7 +600,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...Board.fields('', false),
+                ...BoardWithUpdatePrivacy.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -621,7 +615,7 @@ module.exports = {
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
-                        ...BoardUpdate.mapping(bundle),
+                        ...BoardWithUpdatePrivacyUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -630,7 +624,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BoardSample']
+            sample: samples['BoardWithUpdatePrivacySample']
         }
     },
 }

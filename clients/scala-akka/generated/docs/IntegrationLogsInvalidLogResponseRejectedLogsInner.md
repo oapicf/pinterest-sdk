@@ -7,10 +7,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**logIndex** | **Int** | Index of the log in the batch. |  [optional]
 **field** | **String** | The field name containing an invalid value. | 
-**value** | **String** | The value that is invalid. | 
+**logIndex** | **Int** | Index of the log in the batch. |  [optional]
 **reason** | **String** | The reason the value is invalid. | 
+**value** | **String** | The value that is invalid. | 
 
 
 

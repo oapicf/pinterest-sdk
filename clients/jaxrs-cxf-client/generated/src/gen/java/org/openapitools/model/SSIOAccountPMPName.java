@@ -9,36 +9,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SSIOAccountPMPName  {
   
  /**
-  * Display name
-  */
-  @ApiModelProperty(example = "Bidalgo", value = "Display name")
-
-  private String name;
-
- /**
   * Salesforce id for PMP
   */
   @ApiModelProperty(example = "0011N00001LW2aSQAT", value = "Salesforce id for PMP")
 
   private String id;
+
  /**
-   * Display name
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
+  * Display name
+  */
+  @ApiModelProperty(example = "Bidalgo", value = "Display name")
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public SSIOAccountPMPName name(String name) {
-    this.name = name;
-    return this;
-  }
-
+  private String name;
  /**
    * Salesforce id for PMP
    * @return id
@@ -57,6 +39,24 @@ public class SSIOAccountPMPName  {
     return this;
   }
 
+ /**
+   * Display name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public SSIOAccountPMPName name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -66,13 +66,13 @@ public class SSIOAccountPMPName  {
       return false;
     }
     SSIOAccountPMPName ssIOAccountPMPName = (SSIOAccountPMPName) o;
-    return Objects.equals(this.name, ssIOAccountPMPName.name) &&
-        Objects.equals(this.id, ssIOAccountPMPName.id);
+    return Objects.equals(this.id, ssIOAccountPMPName.id) &&
+        Objects.equals(this.name, ssIOAccountPMPName.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, id);
+    return Objects.hash(id, name);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class SSIOAccountPMPName  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountPMPName {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

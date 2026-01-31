@@ -10,10 +10,10 @@ module CatalogsProductGroupMultipleStringCriteria =
 
   [<CLIMutable>]
   type CatalogsProductGroupMultipleStringCriteria = {
-    [<JsonProperty(PropertyName = "values")>]
-    Values : string[];
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
+    [<JsonProperty(PropertyName = "values")>]
+    Values : string[];
   }
 
   //#endregion

@@ -36,11 +36,11 @@ public class CatalogsRetailItemsBatchTest {
     }
 
     /**
-     * Test the property 'createdTime'
+     * Test the property 'catalogType'
      */
     @Test
-    public void createdTimeTest() {
-        // TODO: test createdTime
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**
@@ -52,19 +52,11 @@ public class CatalogsRetailItemsBatchTest {
     }
 
     /**
-     * Test the property 'status'
+     * Test the property 'createdTime'
      */
     @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'catalogType'
-     */
-    @Test
-    public void catalogTypeTest() {
-        // TODO: test catalogType
+    public void createdTimeTest() {
+        // TODO: test createdTime
     }
 
     /**
@@ -73,6 +65,14 @@ public class CatalogsRetailItemsBatchTest {
     @Test
     public void itemsTest() {
         // TODO: test items
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

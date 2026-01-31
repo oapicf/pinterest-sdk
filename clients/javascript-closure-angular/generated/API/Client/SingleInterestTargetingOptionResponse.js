@@ -6,26 +6,26 @@ goog.provide('API.Client.SingleInterestTargetingOptionResponse');
 API.Client.SingleInterestTargetingOptionResponse = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.SingleInterestTargetingOptionResponse.prototype.id;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.SingleInterestTargetingOptionResponse.prototype.name;
-
-/**
  * @type {!Array<!string>}
  * @export
  */
 API.Client.SingleInterestTargetingOptionResponse.prototype.childInterests;
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.SingleInterestTargetingOptionResponse.prototype.id;
+
+/**
  * @type {!number}
  * @export
  */
 API.Client.SingleInterestTargetingOptionResponse.prototype.level;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.SingleInterestTargetingOptionResponse.prototype.name;
 

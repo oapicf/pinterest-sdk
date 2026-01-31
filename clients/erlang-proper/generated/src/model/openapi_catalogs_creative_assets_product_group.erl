@@ -9,14 +9,14 @@
 -export_type([openapi_catalogs_creative_assets_product_group/0]).
 
 -type openapi_catalogs_creative_assets_product_group() ::
-  [ {'catalog_type', binary() }
-  | {'id', binary() }
-  | {'name', binary() }
+  [ {'catalog_id', binary() }
+  | {'catalog_type', binary() }
+  | {'created_at', integer() }
   | {'description', binary() }
   | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
-  | {'created_at', integer() }
+  | {'id', binary() }
+  | {'name', binary() }
   | {'updated_at', integer() }
-  | {'catalog_id', binary() }
   ].
 
 
@@ -24,14 +24,14 @@ openapi_catalogs_creative_assets_product_group() ->
     openapi_catalogs_creative_assets_product_group([]).
 
 openapi_catalogs_creative_assets_product_group(Fields) ->
-  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
-            , {'id', binary() }
-            , {'name', binary() }
+  Default = [ {'catalog_id', binary() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
+            , {'created_at', integer() }
             , {'description', binary() }
             , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
-            , {'created_at', integer() }
+            , {'id', binary() }
+            , {'name', binary() }
             , {'updated_at', integer() }
-            , {'catalog_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

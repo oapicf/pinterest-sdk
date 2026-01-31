@@ -38,7 +38,7 @@ void main() {
     //
     // Get all the members the requesting business has granted access to on the given asset.
     //
-    //Future<BusinessAssetMembersGet200Response> businessAssetMembersGet(String businessId, String assetId, { String bookmark, int pageSize, int startIndex }) async
+    //Future<BusinessAssetMembersGet200Response> businessAssetMembersGet(String businessId, String assetId, { bool fetchSystemUsers, String bookmark, int pageSize, int startIndex }) async
     test('test businessAssetMembersGet', () async {
       // TODO
     });

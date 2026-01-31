@@ -13,10 +13,10 @@ import CatalogsReport._
 
 case class CatalogsReport (
   reportStatus: Option[ReportStatus],
-/* URL to download the report */
-  url: Option[String],
 /* Size of the report in bytes */
-  size: Option[BigDecimal])
+  size: Option[BigDecimal],
+/* URL to download the report */
+  url: Option[String])
 
 object CatalogsReport {
   import DateTimeCodecs._

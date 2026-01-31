@@ -23,11 +23,19 @@ public class CatalogsRetailProductMetadataTest {
     }
 
     /**
-     * Test the property 'itemId'
+     * Test the property 'availability'
      */
     @Test
-    public void itemIdTest() {
-        // TODO: test itemId
+    public void availabilityTest() {
+        // TODO: test availability
+    }
+
+    /**
+     * Test the property 'currency'
+     */
+    @Test
+    public void currencyTest() {
+        // TODO: test currency
     }
 
     /**
@@ -39,11 +47,11 @@ public class CatalogsRetailProductMetadataTest {
     }
 
     /**
-     * Test the property 'availability'
+     * Test the property 'itemId'
      */
     @Test
-    public void availabilityTest() {
-        // TODO: test availability
+    public void itemIdTest() {
+        // TODO: test itemId
     }
 
     /**
@@ -60,14 +68,6 @@ public class CatalogsRetailProductMetadataTest {
     @Test
     public void salePriceTest() {
         // TODO: test salePrice
-    }
-
-    /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
     }
 
 }

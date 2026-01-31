@@ -24,24 +24,24 @@ import com.squareup.moshi.JsonClass
 /**
  * Object declaring an asset role update to an invite.
  *
+ * @param assetIdToPermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
  * @param inviteId Unique identifier of an invite.
  * @param inviteType 
- * @param assetIdToPermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
  */
 
 
 data class CreateAssetInvitesRequestItem (
+
+    /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
+    @Json(name = "asset_id_to_permissions")
+    val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>,
 
     /* Unique identifier of an invite. */
     @Json(name = "invite_id")
     val inviteId: kotlin.String,
 
     @Json(name = "invite_type")
-    val inviteType: InviteType,
-
-    /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
-    @Json(name = "asset_id_to_permissions")
-    val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>
+    val inviteType: InviteType
 
 ) {
 

@@ -23,9 +23,12 @@ import com.squareup.moshi.JsonClass
  * A successful OAuth access token response for the refresh token flow.
  *
  * @param accessToken 
- * @param tokenType 
  * @param expiresIn 
  * @param scope 
+ * @param tokenType 
+ * @param refreshToken 
+ * @param refreshTokenExpiresAt 
+ * @param refreshTokenExpiresIn 
  * @param responseType 
  */
 
@@ -35,14 +38,23 @@ data class OauthAccessTokenResponseRefresh (
     @Json(name = "access_token")
     val accessToken: kotlin.String,
 
-    @Json(name = "token_type")
-    val tokenType: kotlin.String = "bearer",
-
     @Json(name = "expires_in")
     val expiresIn: kotlin.Int,
 
     @Json(name = "scope")
     val scope: kotlin.String,
+
+    @Json(name = "token_type")
+    val tokenType: kotlin.String = "bearer",
+
+    @Json(name = "refresh_token")
+    val refreshToken: kotlin.String,
+
+    @Json(name = "refresh_token_expires_at")
+    val refreshTokenExpiresAt: kotlin.Int,
+
+    @Json(name = "refresh_token_expires_in")
+    val refreshTokenExpiresIn: kotlin.Int,
 
     @Json(name = "response_type")
     val responseType: OauthAccessTokenResponseRefresh.ResponseType? = null

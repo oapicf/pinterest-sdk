@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
-**Name** | Pointer to **string** | A human-friendly name associated to a given feed. | [optional] 
 **Format** | Pointer to [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] 
-**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **Location** | Pointer to **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] 
+**Name** | Pointer to **string** | A human-friendly name associated to a given feed. | [optional] 
 **PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
@@ -32,6 +32,41 @@ NewFeedsUpdateRequestWithDefaults instantiates a new FeedsUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetCredentials
+
+`func (o *FeedsUpdateRequest) GetCredentials() CatalogsFeedCredentials`
+
+GetCredentials returns the Credentials field if non-nil, zero value otherwise.
+
+### GetCredentialsOk
+
+`func (o *FeedsUpdateRequest) GetCredentialsOk() (*CatalogsFeedCredentials, bool)`
+
+GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentials
+
+`func (o *FeedsUpdateRequest) SetCredentials(v CatalogsFeedCredentials)`
+
+SetCredentials sets Credentials field to given value.
+
+### HasCredentials
+
+`func (o *FeedsUpdateRequest) HasCredentials() bool`
+
+HasCredentials returns a boolean if a field has been set.
+
+### SetCredentialsNil
+
+`func (o *FeedsUpdateRequest) SetCredentialsNil(b bool)`
+
+ SetCredentialsNil sets the value for Credentials to be an explicit nil
+
+### UnsetCredentials
+`func (o *FeedsUpdateRequest) UnsetCredentials()`
+
+UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetDefaultAvailability
 
 `func (o *FeedsUpdateRequest) GetDefaultAvailability() ProductAvailabilityType`
@@ -102,31 +137,6 @@ HasDefaultCurrency returns a boolean if a field has been set.
 `func (o *FeedsUpdateRequest) UnsetDefaultCurrency()`
 
 UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
-### GetName
-
-`func (o *FeedsUpdateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *FeedsUpdateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *FeedsUpdateRequest) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *FeedsUpdateRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
 ### GetFormat
 
 `func (o *FeedsUpdateRequest) GetFormat() CatalogsFormat`
@@ -152,41 +162,6 @@ SetFormat sets Format field to given value.
 
 HasFormat returns a boolean if a field has been set.
 
-### GetCredentials
-
-`func (o *FeedsUpdateRequest) GetCredentials() CatalogsFeedCredentials`
-
-GetCredentials returns the Credentials field if non-nil, zero value otherwise.
-
-### GetCredentialsOk
-
-`func (o *FeedsUpdateRequest) GetCredentialsOk() (*CatalogsFeedCredentials, bool)`
-
-GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCredentials
-
-`func (o *FeedsUpdateRequest) SetCredentials(v CatalogsFeedCredentials)`
-
-SetCredentials sets Credentials field to given value.
-
-### HasCredentials
-
-`func (o *FeedsUpdateRequest) HasCredentials() bool`
-
-HasCredentials returns a boolean if a field has been set.
-
-### SetCredentialsNil
-
-`func (o *FeedsUpdateRequest) SetCredentialsNil(b bool)`
-
- SetCredentialsNil sets the value for Credentials to be an explicit nil
-
-### UnsetCredentials
-`func (o *FeedsUpdateRequest) UnsetCredentials()`
-
-UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetLocation
 
 `func (o *FeedsUpdateRequest) GetLocation() string`
@@ -211,6 +186,31 @@ SetLocation sets Location field to given value.
 `func (o *FeedsUpdateRequest) HasLocation() bool`
 
 HasLocation returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *FeedsUpdateRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *FeedsUpdateRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *FeedsUpdateRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *FeedsUpdateRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetPreferredProcessingSchedule
 

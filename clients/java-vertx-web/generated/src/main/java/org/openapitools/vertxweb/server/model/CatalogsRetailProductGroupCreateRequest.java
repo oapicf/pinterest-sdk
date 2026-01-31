@@ -15,6 +15,7 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailProductGroupCreateRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -34,25 +35,33 @@ public class CatalogsRetailProductGroupCreateRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String name;
+  private Country country;
   private String description;
   private CatalogsProductGroupFiltersRequest filters;
-  private String catalogId;
-  private Country country;
   private CatalogsLocale locale;
+  private String name;
 
   public CatalogsRetailProductGroupCreateRequest () {
 
   }
 
-  public CatalogsRetailProductGroupCreateRequest (CatalogTypeEnum catalogType, String name, String description, CatalogsProductGroupFiltersRequest filters, String catalogId, Country country, CatalogsLocale locale) {
+  public CatalogsRetailProductGroupCreateRequest (String catalogId, CatalogTypeEnum catalogType, Country country, String description, CatalogsProductGroupFiltersRequest filters, CatalogsLocale locale, String name) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.name = name;
+    this.country = country;
     this.description = description;
     this.filters = filters;
-    this.catalogId = catalogId;
-    this.country = country;
     this.locale = locale;
+    this.name = name;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
     
@@ -65,12 +74,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
     
@@ -92,30 +101,21 @@ public class CatalogsRetailProductGroupCreateRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-    
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-    
   @JsonProperty("locale")
   public CatalogsLocale getLocale() {
     return locale;
   }
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -128,18 +128,18 @@ public class CatalogsRetailProductGroupCreateRequest   {
       return false;
     }
     CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest = (CatalogsRetailProductGroupCreateRequest) o;
-    return Objects.equals(catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
-        Objects.equals(name, catalogsRetailProductGroupCreateRequest.name) &&
+    return Objects.equals(catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
+        Objects.equals(country, catalogsRetailProductGroupCreateRequest.country) &&
         Objects.equals(description, catalogsRetailProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsRetailProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
-        Objects.equals(country, catalogsRetailProductGroupCreateRequest.country) &&
-        Objects.equals(locale, catalogsRetailProductGroupCreateRequest.locale);
+        Objects.equals(locale, catalogsRetailProductGroupCreateRequest.locale) &&
+        Objects.equals(name, catalogsRetailProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -147,13 +147,13 @@ public class CatalogsRetailProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,7 +9,6 @@ module KeywordMetrics =
 
 
   type KeywordMetrics = {
-    AvgCpcInMicroCurrency : decimal;
     KeywordQueryVolume : string;
   }
   //#endregion

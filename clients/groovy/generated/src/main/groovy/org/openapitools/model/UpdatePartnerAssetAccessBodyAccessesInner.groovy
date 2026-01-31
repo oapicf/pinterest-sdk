@@ -9,10 +9,10 @@ import org.openapitools.model.Permissions;
 
 @Canonical
 class UpdatePartnerAssetAccessBodyAccessesInner {
-    /* Unique identifier of a business partner to update asset access to. */
-    String partnerId
     /* Unique identifier of the business asset. */
     String assetId
+    /* Unique identifier of a business partner to update asset access to. */
+    String partnerId
     /* A non-empty array of permissions to assign to the partner. */
     List<Permissions> permissions = new ArrayList<>()
 }

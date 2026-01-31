@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`targetingTypes` | [Array&lt;AdsAnalyticsTargetingType&gt;](AdsAnalyticsTargetingType.md)
+`targetingTypes` | Array&lt;string&gt;
 
 ## Example
 

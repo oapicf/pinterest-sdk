@@ -14,18 +14,20 @@ Name | Type
 `carouselIosDeepLinks` | Array&lt;string&gt;
 `clickTrackingUrl` | string
 `creativeType` | [CreativeType](CreativeType.md)
+`customizableCtaType` | [CustomizableCTAType](CustomizableCTAType.md)
 `destinationUrl` | string
+`disclosureType` | [DisclosureType](DisclosureType.md)
+`disclosureUrl` | string
+`gridClickType` | [GridClickType](GridClickType.md)
 `iosDeepLink` | string
 `isPinDeleted` | boolean
 `isRemovable` | boolean
+`leadFormId` | string
 `name` | string
+`quizPinData` | [QuizPinData](QuizPinData.md)
 `status` | [EntityStatus](EntityStatus.md)
 `trackingUrls` | [TrackingUrls](TrackingUrls.md)
 `viewTrackingUrl` | string
-`leadFormId` | string
-`gridClickType` | [GridClickType](GridClickType.md)
-`customizableCtaType` | string
-`quizPinData` | [QuizPinData](QuizPinData.md)
 
 ## Example
 
@@ -41,18 +43,20 @@ const example = {
   "carouselIosDeepLinks": null,
   "clickTrackingUrl": null,
   "creativeType": null,
+  "customizableCtaType": null,
   "destinationUrl": null,
+  "disclosureType": null,
+  "disclosureUrl": null,
+  "gridClickType": null,
   "iosDeepLink": null,
   "isPinDeleted": false,
   "isRemovable": false,
+  "leadFormId": null,
   "name": null,
+  "quizPinData": null,
   "status": null,
   "trackingUrls": null,
   "viewTrackingUrl": null,
-  "leadFormId": null,
-  "gridClickType": null,
-  "customizableCtaType": LEARN_MORE,
-  "quizPinData": null,
 } satisfies AdCommon
 
 console.log(example)

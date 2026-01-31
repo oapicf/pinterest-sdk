@@ -13,8 +13,8 @@ class Catalog {
     String id
     
     Date updatedAt
-    /* A human-friendly name associated to a catalog entity. */
-    String name
     
     CatalogsType catalogType
+    /* A human-friendly name associated to a catalog entity. */
+    String name
 }

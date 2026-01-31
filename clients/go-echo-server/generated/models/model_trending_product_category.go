@@ -1,0 +1,20 @@
+package models
+
+// TrendingProductCategory - Trending shopping product category
+type TrendingProductCategory struct {
+
+	// Engagement type
+	EngagementType ProductCategoriesEngagementType `json:"engagement_type"`
+
+	// Month-over-month change percentage
+	PctChangeMom int32 `json:"pct_change_mom"`
+
+	// Relative volume percentage
+	PercentRelativeVolume int32 `json:"percent_relative_volume"`
+
+	// Product Category Name
+	ProductCategory string `json:"product_category"`
+
+	// Vertical name associated with the product category
+	Verticals []VerticalProductCategory `json:"verticals,omitempty"`
+}

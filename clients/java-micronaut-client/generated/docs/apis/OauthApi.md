@@ -4,7 +4,9 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**oauthConversionToken**](OauthApi.md#oauthConversionToken) | **POST** /oauth/conversion_token | Generate OAuth access token for conversion API |
 | [**oauthToken**](OauthApi.md#oauthToken) | **POST** /oauth/token | Generate OAuth access token |
+| [**tokenRevoke**](OauthApi.md#tokenRevoke) | **POST** /oauth/token/revoke | Revoke a token |
 
 
 ## Creating OauthApi
@@ -35,6 +37,28 @@ Note that the class needs to be annotated with one of Micronaut's [scope annotat
 
 More information can be found inside [Inversion of Control guide section](https://docs.micronaut.io/latest/guide/#ioc).
 
+<a id="oauthConversionToken"></a>
+# **oauthConversionToken**
+```java
+Mono<ConversionAccessTokenResponse> OauthApi.oauthConversionToken()
+```
+
+Generate OAuth access token for conversion API
+
+Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+
+
+
+### Return type
+[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+
+### Authorization
+* **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
 <a id="oauthToken"></a>
 # **oauthToken**
 ```java
@@ -43,7 +67,7 @@ Mono<OauthAccessTokenResponse> OauthApi.oauthToken(grantType)
 
 Generate OAuth access token
 
-Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&gt;Authentication&lt;/a&gt; for more.  &lt;strong&gt;Parameter &lt;i&gt;refresh_on&lt;/i&gt; and its corresponding response type &lt;i&gt;everlasting_refresh&lt;/i&gt; are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  &lt;strong&gt;Grant type &lt;i&gt;client_credentials&lt;/i&gt; and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.&lt;/strong&gt;
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -53,6 +77,32 @@ Generate an OAuth access token by using an authorization code or a refresh token
 
 ### Return type
 [**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+
+### Authorization
+* **[basic](auth.md#basic)**
+
+### HTTP request headers
+ - **Content-Type**: `application/x-www-form-urlencoded`
+ - **Accept**: `application/json`
+
+<a id="tokenRevoke"></a>
+# **tokenRevoke**
+```java
+Mono<Void> OauthApi.tokenRevoke(tokentokenTypeHint)
+```
+
+Revoke a token
+
+Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+
+### Parameters
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **token** | `String`| The token to revoke. | |
+| **tokenTypeHint** | `String`| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional parameter] [enum: `access_token`, `refresh_token`] |
+
+
+
 
 ### Authorization
 * **[basic](auth.md#basic)**

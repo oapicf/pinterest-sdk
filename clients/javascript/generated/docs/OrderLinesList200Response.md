@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[OrderLine]**](OrderLine.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[OrderLine]**](OrderLine.md) |  | 
 
 

@@ -22,16 +22,16 @@ typedef struct catalogs_retail_item_error_response_t catalogs_retail_item_error_
 
 typedef struct catalogs_retail_item_error_response_t {
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
-    char *item_id; // string
     list_t *errors; //nonprimitive container
+    char *item_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_item_error_response_t;
 
 __attribute__((deprecated)) catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    char *item_id,
-    list_t *errors
+    list_t *errors,
+    char *item_id
 );
 
 void catalogs_retail_item_error_response_free(catalogs_retail_item_error_response_t *catalogs_retail_item_error_response);

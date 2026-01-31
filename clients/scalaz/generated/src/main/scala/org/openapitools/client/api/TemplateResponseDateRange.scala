@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import TemplateResponseDateRange._
 
 case class TemplateResponseDateRange (
-  dynamicDateRange: Option[TemplateResponseDateRangeDynamicDateRange],
-relativeDateRange: Option[TemplateResponseDateRangeRelativeDateRange],
-absoluteDateRange: Option[TemplateResponseDateRangeAbsoluteDateRange])
+  absoluteDateRange: Option[TemplateResponseDateRangeAbsoluteDateRange],
+dynamicDateRange: Option[TemplateResponseDateRangeDynamicDateRange],
+relativeDateRange: Option[TemplateResponseDateRangeRelativeDateRange])
 
 object TemplateResponseDateRange {
   import DateTimeCodecs._

@@ -22,16 +22,16 @@ conversion_event_response_t* instantiate_conversion_event_response(int include_o
   conversion_event_response_t* conversion_event_response = NULL;
   if (include_optional) {
     conversion_event_response = conversion_event_response_create(
+      "549757463328",
       pinterest_rest_api_conversion_event_response__"PAGE_LOAD",
       "2614324385652",
-      "549757463328",
       1564768710
     );
   } else {
     conversion_event_response = conversion_event_response_create(
+      "549757463328",
       pinterest_rest_api_conversion_event_response__"PAGE_LOAD",
       "2614324385652",
-      "549757463328",
       1564768710
     );
   }

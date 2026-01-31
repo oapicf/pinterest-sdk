@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
 **childInterests** | **[String]** |  | [optional] 
+**id** | **String** |  | [optional] 
 **level** | **Number** |  | [optional] 
+**name** | **String** |  | [optional] 
 
 

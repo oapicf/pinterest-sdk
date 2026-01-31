@@ -32,6 +32,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest  {
   
+ /**
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -64,11 +70,9 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   private CatalogTypeEnum catalogType;
 
- /**
-  * Catalog id pertaining to the creative assets product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
-  private String catalogId;
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private Country country;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -76,36 +80,7 @@ public enum CatalogTypeEnum {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private Country country;
-
-  @ApiModelProperty(required = true, value = "")
-  @Valid
   private CatalogsLocale locale;
- /**
-  * Get catalogType
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public String getCatalogType() {
-    return catalogType == null ? null : catalogType.value();
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
  /**
   * Catalog id pertaining to the creative assets product group.
   * @return catalogId
@@ -132,27 +107,27 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * Get filters
-  * @return filters
+  * Get catalogType
+  * @return catalogType
   */
-  @JsonProperty("filters")
+  @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
-    return filters;
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
   }
 
   /**
-   * Sets the <code>filters</code> property.
+   * Sets the <code>catalogType</code> property.
    */
- public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.filters = filters;
+ public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
-   * Sets the <code>filters</code> property.
+   * Sets the <code>catalogType</code> property.
    */
-  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.filters = filters;
+  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
@@ -178,6 +153,31 @@ public enum CatalogTypeEnum {
    */
   public CatalogsVerticalsListProductsByCatalogBasedFilterRequest country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+  * Get filters
+  * @return filters
+  */
+  @JsonProperty("filters")
+  @NotNull
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
+    return filters;
+  }
+
+  /**
+   * Sets the <code>filters</code> property.
+   */
+ public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
+    this.filters = filters;
+  }
+
+  /**
+   * Sets the <code>filters</code> property.
+   */
+  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
+    this.filters = filters;
     return this;
   }
 
@@ -216,16 +216,16 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogsVerticalsListProductsByCatalogBasedFilterRequest = (CatalogsVerticalsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogId) &&
-        Objects.equals(this.filters, catalogsVerticalsListProductsByCatalogBasedFilterRequest.filters) &&
+    return Objects.equals(this.catalogId, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.country, catalogsVerticalsListProductsByCatalogBasedFilterRequest.country) &&
+        Objects.equals(this.filters, catalogsVerticalsListProductsByCatalogBasedFilterRequest.filters) &&
         Objects.equals(this.locale, catalogsVerticalsListProductsByCatalogBasedFilterRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters, country, locale);
+    return Objects.hash(catalogId, catalogType, country, filters, locale);
   }
 
   @Override
@@ -233,10 +233,10 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();

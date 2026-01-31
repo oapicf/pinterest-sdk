@@ -19,19 +19,19 @@ typedef struct terms_of_service_t terms_of_service_t;
 
 
 typedef struct terms_of_service_t {
-    char *id; // string
-    char *html; // string
-    int has_accepted; //boolean
     char *ad_account_id; // string
+    int has_accepted; //boolean
+    char *html; // string
+    char *id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } terms_of_service_t;
 
 __attribute__((deprecated)) terms_of_service_t *terms_of_service_create(
-    char *id,
-    char *html,
+    char *ad_account_id,
     int has_accepted,
-    char *ad_account_id
+    char *html,
+    char *id
 );
 
 void terms_of_service_free(terms_of_service_t *terms_of_service);

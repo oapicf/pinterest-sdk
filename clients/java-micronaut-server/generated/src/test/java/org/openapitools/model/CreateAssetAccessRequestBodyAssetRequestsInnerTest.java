@@ -25,19 +25,19 @@ public class CreateAssetAccessRequestBodyAssetRequestsInnerTest {
     }
 
     /**
-     * Test the property 'partnerId'
-     */
-    @Test
-    public void partnerIdTest() {
-        // TODO: test partnerId
-    }
-
-    /**
      * Test the property 'assetIdToPermissions'
      */
     @Test
     public void assetIdToPermissionsTest() {
         // TODO: test assetIdToPermissions
+    }
+
+    /**
+     * Test the property 'partnerId'
+     */
+    @Test
+    public void partnerIdTest() {
+        // TODO: test partnerId
     }
 
 }

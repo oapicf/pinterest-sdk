@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **operator** | **String** |  |  |
-| **value** | **Float** |  |  |
 | **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  |  |
 | **negated** | **Boolean** |  | [optional][default to false] |
+| **operator** | **String** |  |  |
+| **value** | **Float** |  |  |
 
 ## Example
 
@@ -15,10 +15,10 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsProductGroupPricingCurrencyCriteria.new(
-  operator: null,
-  value: null,
   currency: null,
-  negated: null
+  negated: null,
+  operator: null,
+  value: null
 )
 ```
 

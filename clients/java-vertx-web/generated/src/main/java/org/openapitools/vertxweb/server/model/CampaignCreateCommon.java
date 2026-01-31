@@ -12,35 +12,37 @@ import org.openapitools.vertxweb.server.model.TrackingUrls;
 public class CampaignCreateCommon   {
   
   private String adAccountId;
-  private String name;
-  private EntityStatus status;
-  private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
-  private String orderLineId;
-  private TrackingUrls trackingUrls;
-  private Integer startTime;
   private Integer endTime;
-  private Boolean isFlexibleDailyBudgets;
-  private Integer defaultAdGroupBudgetInMicroCurrency;
   private Boolean isAutomatedCampaign;
+  private Boolean isFlexibleDailyBudgets;
+  private Integer lifetimeSpendCap;
+  private String name;
+  private String orderLineId;
+  private Integer startTime;
+  private EntityStatus status;
+  private TrackingUrls trackingUrls;
+  private Integer defaultAdGroupBudgetInMicroCurrency;
+  private Boolean isCampaignBudgetOptimization;
 
   public CampaignCreateCommon () {
 
   }
 
-  public CampaignCreateCommon (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, TrackingUrls trackingUrls, Integer startTime, Integer endTime, Boolean isFlexibleDailyBudgets, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isAutomatedCampaign) {
+  public CampaignCreateCommon (String adAccountId, Integer dailySpendCap, Integer endTime, Boolean isAutomatedCampaign, Boolean isFlexibleDailyBudgets, Integer lifetimeSpendCap, String name, String orderLineId, Integer startTime, EntityStatus status, TrackingUrls trackingUrls, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isCampaignBudgetOptimization) {
     this.adAccountId = adAccountId;
-    this.name = name;
-    this.status = status;
-    this.lifetimeSpendCap = lifetimeSpendCap;
     this.dailySpendCap = dailySpendCap;
-    this.orderLineId = orderLineId;
-    this.trackingUrls = trackingUrls;
-    this.startTime = startTime;
     this.endTime = endTime;
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     this.isAutomatedCampaign = isAutomatedCampaign;
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
+    this.lifetimeSpendCap = lifetimeSpendCap;
+    this.name = name;
+    this.orderLineId = orderLineId;
+    this.startTime = startTime;
+    this.status = status;
+    this.trackingUrls = trackingUrls;
+    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
   }
 
     
@@ -53,66 +55,12 @@ public class CampaignCreateCommon   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
-  }
-  public void setStatus(EntityStatus status) {
-    this.status = status;
-  }
-
-    
-  @JsonProperty("lifetime_spend_cap")
-  public Integer getLifetimeSpendCap() {
-    return lifetimeSpendCap;
-  }
-  public void setLifetimeSpendCap(Integer lifetimeSpendCap) {
-    this.lifetimeSpendCap = lifetimeSpendCap;
-  }
-
-    
   @JsonProperty("daily_spend_cap")
   public Integer getDailySpendCap() {
     return dailySpendCap;
   }
   public void setDailySpendCap(Integer dailySpendCap) {
     this.dailySpendCap = dailySpendCap;
-  }
-
-    
-  @JsonProperty("order_line_id")
-  public String getOrderLineId() {
-    return orderLineId;
-  }
-  public void setOrderLineId(String orderLineId) {
-    this.orderLineId = orderLineId;
-  }
-
-    
-  @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
-    return trackingUrls;
-  }
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
-    this.trackingUrls = trackingUrls;
-  }
-
-    
-  @JsonProperty("start_time")
-  public Integer getStartTime() {
-    return startTime;
-  }
-  public void setStartTime(Integer startTime) {
-    this.startTime = startTime;
   }
 
     
@@ -125,12 +73,75 @@ public class CampaignCreateCommon   {
   }
 
     
+  @JsonProperty("is_automated_campaign")
+  public Boolean getIsAutomatedCampaign() {
+    return isAutomatedCampaign;
+  }
+  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
+    this.isAutomatedCampaign = isAutomatedCampaign;
+  }
+
+    
   @JsonProperty("is_flexible_daily_budgets")
   public Boolean getIsFlexibleDailyBudgets() {
     return isFlexibleDailyBudgets;
   }
   public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
+  }
+
+    
+  @JsonProperty("lifetime_spend_cap")
+  public Integer getLifetimeSpendCap() {
+    return lifetimeSpendCap;
+  }
+  public void setLifetimeSpendCap(Integer lifetimeSpendCap) {
+    this.lifetimeSpendCap = lifetimeSpendCap;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
+  @JsonProperty("order_line_id")
+  public String getOrderLineId() {
+    return orderLineId;
+  }
+  public void setOrderLineId(String orderLineId) {
+    this.orderLineId = orderLineId;
+  }
+
+    
+  @JsonProperty("start_time")
+  public Integer getStartTime() {
+    return startTime;
+  }
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+    
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
+  }
+  public void setStatus(EntityStatus status) {
+    this.status = status;
+  }
+
+    
+  @JsonProperty("tracking_urls")
+  public TrackingUrls getTrackingUrls() {
+    return trackingUrls;
+  }
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
+    this.trackingUrls = trackingUrls;
   }
 
     
@@ -143,12 +154,12 @@ public class CampaignCreateCommon   {
   }
 
     
-  @JsonProperty("is_automated_campaign")
-  public Boolean getIsAutomatedCampaign() {
-    return isAutomatedCampaign;
+  @JsonProperty("is_campaign_budget_optimization")
+  public Boolean getIsCampaignBudgetOptimization() {
+    return isCampaignBudgetOptimization;
   }
-  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
-    this.isAutomatedCampaign = isAutomatedCampaign;
+  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
   }
 
 
@@ -162,22 +173,23 @@ public class CampaignCreateCommon   {
     }
     CampaignCreateCommon campaignCreateCommon = (CampaignCreateCommon) o;
     return Objects.equals(adAccountId, campaignCreateCommon.adAccountId) &&
-        Objects.equals(name, campaignCreateCommon.name) &&
-        Objects.equals(status, campaignCreateCommon.status) &&
-        Objects.equals(lifetimeSpendCap, campaignCreateCommon.lifetimeSpendCap) &&
         Objects.equals(dailySpendCap, campaignCreateCommon.dailySpendCap) &&
-        Objects.equals(orderLineId, campaignCreateCommon.orderLineId) &&
-        Objects.equals(trackingUrls, campaignCreateCommon.trackingUrls) &&
-        Objects.equals(startTime, campaignCreateCommon.startTime) &&
         Objects.equals(endTime, campaignCreateCommon.endTime) &&
+        Objects.equals(isAutomatedCampaign, campaignCreateCommon.isAutomatedCampaign) &&
         Objects.equals(isFlexibleDailyBudgets, campaignCreateCommon.isFlexibleDailyBudgets) &&
+        Objects.equals(lifetimeSpendCap, campaignCreateCommon.lifetimeSpendCap) &&
+        Objects.equals(name, campaignCreateCommon.name) &&
+        Objects.equals(orderLineId, campaignCreateCommon.orderLineId) &&
+        Objects.equals(startTime, campaignCreateCommon.startTime) &&
+        Objects.equals(status, campaignCreateCommon.status) &&
+        Objects.equals(trackingUrls, campaignCreateCommon.trackingUrls) &&
         Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignCreateCommon.defaultAdGroupBudgetInMicroCurrency) &&
-        Objects.equals(isAutomatedCampaign, campaignCreateCommon.isAutomatedCampaign);
+        Objects.equals(isCampaignBudgetOptimization, campaignCreateCommon.isCampaignBudgetOptimization);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
+    return Objects.hash(adAccountId, dailySpendCap, endTime, isAutomatedCampaign, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls, defaultAdGroupBudgetInMicroCurrency, isCampaignBudgetOptimization);
   }
 
   @Override
@@ -186,17 +198,18 @@ public class CampaignCreateCommon   {
     sb.append("class CampaignCreateCommon {\n");
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
     sb.append("    dailySpendCap: ").append(toIndentedString(dailySpendCap)).append("\n");
-    sb.append("    orderLineId: ").append(toIndentedString(orderLineId)).append("\n");
-    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
-    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
+    sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    orderLineId: ").append(toIndentedString(orderLineId)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
+    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
+    sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,11 +5,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}name`,
-                label: `Metric's name. - [${labelPrefix}name]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}category`,
                 label: `Category name - [${labelPrefix}category]`,
                 type: 'string',
@@ -28,15 +23,20 @@ module.exports = {
                 label: `Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. - [${labelPrefix}display_name]`,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}name`,
+                label: `Metric's name. - [${labelPrefix}name]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'name': bundle.inputData?.[`${keyPrefix}name`],
             'category': bundle.inputData?.[`${keyPrefix}category`],
             'definition': bundle.inputData?.[`${keyPrefix}definition`],
             'display_name': bundle.inputData?.[`${keyPrefix}display_name`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

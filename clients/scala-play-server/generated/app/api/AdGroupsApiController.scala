@@ -12,7 +12,7 @@ import model.AdGroupResponse
 import model.AdGroupUpdateRequest
 import model.AdGroupsAnalyticsResponseInner
 import model.AdGroupsList200Response
-import model.AdsAnalyticsTargetingType
+import model.AdsAnalyticsAdGroupTargetingType
 import model.BidFloor
 import model.BidFloorRequest
 import model.ConversionReportAttributionType
@@ -20,12 +20,13 @@ import model.Error
 import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
+import model.ReportingTimeZone
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class AdGroupsApiController @Inject()(cc: ControllerComponents, api: AdGroupsApi) extends AbstractController(cc) {
   /**
-    * GET /v5/ad_accounts/:adAccountId/ad_groups/analytics?startDate=[value]&endDate=[value]&adGroupIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]
+    * GET /v5/ad_accounts/:adAccountId/ad_groups/analytics?startDate=[value]&endDate=[value]&adGroupIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&aggregateReportRows=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adGroupsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -71,7 +72,13 @@ class AdGroupsApiController @Inject()(cc: ControllerComponents, api: AdGroupsApi
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
-      api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+      val aggregateReportRows = request.getQueryString("aggregate_report_rows")
+        .map(value => value.toBoolean)
+        
+      val reportingTimezone = request.getQueryString("reporting_timezone")
+        .map(value => )
+        
+      api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
     }
 
     val result = executeApi()
@@ -85,7 +92,9 @@ class AdGroupsApiController @Inject()(cc: ControllerComponents, api: AdGroupsApi
     */
   def adGroupsAudienceSizing(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): AdGroupAudienceSizingResponse = {
-      val adGroupAudienceSizingRequest = request.body.asJson.map(_.as[AdGroupAudienceSizingRequest])
+      val adGroupAudienceSizingRequest = request.body.asJson.map(_.as[AdGroupAudienceSizingRequest]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adGroupAudienceSizingRequest")
+      }
       api.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingRequest)
     }
 
@@ -177,7 +186,7 @@ class AdGroupsApiController @Inject()(cc: ControllerComponents, api: AdGroupsApi
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/ad_groups/targeting_analytics?adGroupIds=[value]&startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]
+    * GET /v5/ad_accounts/:adAccountId/ad_groups/targeting_analytics?adGroupIds=[value]&startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adGroupsTargetingAnalyticsGet(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -231,9 +240,13 @@ class AdGroupsApiController @Inject()(cc: ControllerComponents, api: AdGroupsApi
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
       val attributionTypes = request.getQueryString("attribution_types")
+        .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
+        
+      val reportingTimezone = request.getQueryString("reporting_timezone")
         .map(value => )
         
-      api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+      api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
     }
 
     val result = executeApi()

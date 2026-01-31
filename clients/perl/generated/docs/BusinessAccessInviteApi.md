@@ -85,7 +85,7 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Business id
+my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
 my $cancel_invites_body = WWW::OpenAPIClient::Object::CancelInvitesBody->new(); # CancelInvitesBody | A list with invite ids
 
 eval {
@@ -101,7 +101,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business_id** | **string**| Business id | 
+ **business_id** | **string**| Unique identifier of the requesting business. | 
  **cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
 
 ### Return type
@@ -187,7 +187,7 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Business id
+my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
 my $create_membership_or_partnership_invites_body = WWW::OpenAPIClient::Object::CreateMembershipOrPartnershipInvitesBody->new(); # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 
 eval {
@@ -203,7 +203,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business_id** | **string**| Business id | 
+ **business_id** | **string**| Unique identifier of the requesting business. | 
  **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

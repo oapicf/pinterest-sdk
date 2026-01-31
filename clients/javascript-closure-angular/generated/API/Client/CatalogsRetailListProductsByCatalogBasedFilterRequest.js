@@ -7,13 +7,6 @@ goog.provide('API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest')
 API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest = function() {}
 
 /**
- * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.catalogType;
-
-/**
  * Catalog id pertaining to the retail product group.
  * @type {!string}
  * @export
@@ -21,16 +14,23 @@ API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.catal
 API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.catalogId;
 
 /**
- * @type {!API.Client.CatalogsProductGroupFilters}
+ * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.filters;
+API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.Country}
  * @export
  */
 API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.country;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupFilters}
+ * @export
+ */
+API.Client.CatalogsRetailListProductsByCatalogBasedFilterRequest.prototype.filters;
 
 /**
  * @type {!API.Client.CatalogsLocale}

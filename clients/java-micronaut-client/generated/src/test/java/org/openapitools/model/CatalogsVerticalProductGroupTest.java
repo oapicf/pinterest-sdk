@@ -7,8 +7,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
+import org.openapitools.model.CatalogsHotelProductGroupType;
 import org.openapitools.model.CatalogsProductGroupStatus;
-import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -30,86 +30,6 @@ public class CatalogsVerticalProductGroupTest {
     }
 
     /**
-     * Test the property 'catalogType'
-     */
-    @Test
-    public void catalogTypeTest() {
-        // TODO: test catalogType
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'filters'
-     */
-    @Test
-    public void filtersTest() {
-        // TODO: test filters
-    }
-
-    /**
-     * Test the property 'isFeatured'
-     */
-    @Test
-    public void isFeaturedTest() {
-        // TODO: test isFeatured
-    }
-
-    /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
-    }
-
-    /**
      * Test the property 'catalogId'
      */
     @Test
@@ -118,11 +38,11 @@ public class CatalogsVerticalProductGroupTest {
     }
 
     /**
-     * Test the property 'feedId'
+     * Test the property 'catalogType'
      */
     @Test
-    public void feedIdTest() {
-        // TODO: test feedId
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**
@@ -134,11 +54,91 @@ public class CatalogsVerticalProductGroupTest {
     }
 
     /**
+     * Test the property 'createdAt'
+     */
+    @Test
+    public void createdAtTest() {
+        // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'feedId'
+     */
+    @Test
+    public void feedIdTest() {
+        // TODO: test feedId
+    }
+
+    /**
+     * Test the property 'filters'
+     */
+    @Test
+    public void filtersTest() {
+        // TODO: test filters
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'isFeatured'
+     */
+    @Test
+    public void isFeaturedTest() {
+        // TODO: test isFeatured
+    }
+
+    /**
      * Test the property 'locale'
      */
     @Test
     public void localeTest() {
         // TODO: test locale
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'updatedAt'
+     */
+    @Test
+    public void updatedAtTest() {
+        // TODO: test updatedAt
     }
 
 }

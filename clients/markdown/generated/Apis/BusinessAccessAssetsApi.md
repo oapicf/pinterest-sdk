@@ -104,7 +104,7 @@ Update asset groups.
 
 <a name="businessAssetMembers/get"></a>
 # **businessAssetMembers/get**
-> business_asset_members_get_200_response businessAssetMembers/get(business\_id, asset\_id, bookmark, page\_size, start\_index)
+> business_asset_members_get_200_response businessAssetMembers/get(business\_id, asset\_id, fetch\_system\_users, bookmark, page\_size, start\_index)
 
 Get members with access to asset
 
@@ -116,6 +116,7 @@ Get members with access to asset
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **asset\_id** | **String**| Unique identifier of a business asset. | [default to null] |
+| **fetch\_system\_users** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
 | **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
@@ -180,7 +181,7 @@ List business assets
 | **permissions** | [**List**](../Models/PermissionsWithOwner.md)| A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | [optional] [default to null] |
 | **child\_asset\_id** | **String**| A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | [optional] [default to null] |
 | **asset\_group\_id** | **String**| An asset group unique identifier. Used to fetch assets contained within the specified asset group. | [optional] [default to null] |
-| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
 | **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
@@ -212,7 +213,7 @@ Get assets assigned to a member
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **member\_id** | **String**| The member id to fetch assets for. | [default to null] |
-| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
 | **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
@@ -301,7 +302,7 @@ Get assets assigned to a partner or assets assigned by a partner
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **partner\_id** | **String**| The partner id to be bound to the Business | [default to null] |
 | **partner\_type** | [**PartnerType**](../Models/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to INTERNAL] [enum: INTERNAL, EXTERNAL] |
-| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,21 +20,21 @@ import (
 
 type CatalogsProductGroupPricingCurrencyCriteria struct {
 
-	Operator string `json:"operator"`
-
-	Value float32 `json:"value"`
-
 	Currency NonNullableCatalogsCurrency `json:"currency"`
 
 	Negated bool `json:"negated,omitempty"`
+
+	Operator string `json:"operator"`
+
+	Value float32 `json:"value"`
 }
 
 // AssertCatalogsProductGroupPricingCurrencyCriteriaRequired checks if the required fields are not zero-ed
 func AssertCatalogsProductGroupPricingCurrencyCriteriaRequired(obj CatalogsProductGroupPricingCurrencyCriteria) error {
 	elements := map[string]interface{}{
+		"currency": obj.Currency,
 		"operator": obj.Operator,
 		"value": obj.Value,
-		"currency": obj.Currency,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

@@ -36,27 +36,11 @@ public class OauthAccessTokenResponseIntegrationRefreshTest {
     }
 
     /**
-     * Test the property 'responseType'
-     */
-    @Test
-    public void responseTypeTest() {
-        // TODO: test responseType
-    }
-
-    /**
      * Test the property 'accessToken'
      */
     @Test
     public void accessTokenTest() {
         // TODO: test accessToken
-    }
-
-    /**
-     * Test the property 'tokenType'
-     */
-    @Test
-    public void tokenTypeTest() {
-        // TODO: test tokenType
     }
 
     /**
@@ -68,11 +52,27 @@ public class OauthAccessTokenResponseIntegrationRefreshTest {
     }
 
     /**
+     * Test the property 'responseType'
+     */
+    @Test
+    public void responseTypeTest() {
+        // TODO: test responseType
+    }
+
+    /**
      * Test the property 'scope'
      */
     @Test
     public void scopeTest() {
         // TODO: test scope
+    }
+
+    /**
+     * Test the property 'tokenType'
+     */
+    @Test
+    public void tokenTypeTest() {
+        // TODO: test tokenType
     }
 
 }

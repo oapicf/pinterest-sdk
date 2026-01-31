@@ -16,6 +16,7 @@ import { ItemAttributes } from './itemAttributes';
  * Object describing a retail item record
  */
 export interface CatalogsRetailItemResponse { 
+    attributes?: ItemAttributes;
     catalog_type: CatalogsType;
     /**
      * The catalog retail item id in the merchant namespace
@@ -25,7 +26,6 @@ export interface CatalogsRetailItemResponse {
      * The pins mapped to the item
      */
     pins?: Array<Pin> | null;
-    attributes?: ItemAttributes;
 }
 export namespace CatalogsRetailItemResponse {
 }

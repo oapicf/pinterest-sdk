@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.CatalogsReportAllItemsFilter;
 import org.openapitools.model.CatalogsReportDistributionIssueFilter;
 import org.openapitools.model.CatalogsReportFeedIngestionFilter;
 
@@ -12,7 +13,7 @@ public class CatalogsHotelReportParametersReport  {
   
 public enum ReportTypeEnum {
 
-FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
+FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES")), ALL_ITEMS(String.valueOf("ALL_ITEMS"));
 
 
     private String value;

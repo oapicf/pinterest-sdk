@@ -73,17 +73,17 @@ private class OASTrackingUrlsTest {
     private static void maintainRenamedProperties() {
         OASTrackingUrls trackingUrls = new OASTrackingUrls();
         Map<String, String> x-property-mappings = trackingUrls.getx-property-mappings();
-        System.assertEquals('buyableButton', x-property-mappings.get('buyable_button'));
         System.assertEquals('audienceVerification', x-property-mappings.get('audience_verification'));
+        System.assertEquals('buyableButton', x-property-mappings.get('buyable_button'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASTrackingUrls trackingUrls = new OASTrackingUrls();
-        System.assertEquals(new List<String>(), trackingUrls.impression);
+        System.assertEquals(new List<String>(), trackingUrls.audienceVerification);
+        System.assertEquals(new List<String>(), trackingUrls.buyableButton);
         System.assertEquals(new List<String>(), trackingUrls.click);
         System.assertEquals(new List<String>(), trackingUrls.engagement);
-        System.assertEquals(new List<String>(), trackingUrls.buyableButton);
-        System.assertEquals(new List<String>(), trackingUrls.audienceVerification);
+        System.assertEquals(new List<String>(), trackingUrls.impression);
     }
 }

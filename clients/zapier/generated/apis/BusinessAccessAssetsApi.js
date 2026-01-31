@@ -182,6 +182,11 @@ module.exports = {
                     required: true,
                 },
                 {
+                    key: 'fetch_system_users',
+                    label: 'Fetches system users if True. Fetches regular user employees if False.',
+                    type: 'boolean',
+                },
+                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
@@ -210,6 +215,7 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'fetch_system_users': bundle.inputData?.['fetch_system_users'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                         'start_index': bundle.inputData?.['start_index'],
@@ -332,6 +338,8 @@ module.exports = {
                         'AD_ACCOUNT',
                         'PROFILE',
                         'ASSET_GROUP',
+                        'CATALOG',
+                        'CONSUMER',
                     ],
                 },
                 {
@@ -413,6 +421,8 @@ module.exports = {
                         'AD_ACCOUNT',
                         'PROFILE',
                         'ASSET_GROUP',
+                        'CATALOG',
+                        'CONSUMER',
                     ],
                 },
                 {
@@ -582,6 +592,8 @@ module.exports = {
                         'AD_ACCOUNT',
                         'PROFILE',
                         'ASSET_GROUP',
+                        'CATALOG',
+                        'CONSUMER',
                     ],
                 },
                 {

@@ -6,38 +6,6 @@ goog.provide('API.Client.Account');
 API.Client.Account = function() {}
 
 /**
- * Type of account
- * @type {!string}
- * @export
- */
-API.Client.Account.prototype.accountType;
-
-/**
- * User account ID.
- * @type {!string}
- * @export
- */
-API.Client.Account.prototype.id;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.Account.prototype.profileImage;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.Account.prototype.websiteUrl;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.Account.prototype.username;
-
-/**
  * Profile about description.
  * @type {!string}
  * @export
@@ -45,10 +13,11 @@ API.Client.Account.prototype.username;
 API.Client.Account.prototype.about;
 
 /**
+ * Type of account
  * @type {!string}
  * @export
  */
-API.Client.Account.prototype.businessName;
+API.Client.Account.prototype.accountType;
 
 /**
  * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
@@ -58,11 +27,10 @@ API.Client.Account.prototype.businessName;
 API.Client.Account.prototype.boardCount;
 
 /**
- * User account pin count. This includes both created and saved pins.
- * @type {!number}
+ * @type {!string}
  * @export
  */
-API.Client.Account.prototype.pinCount;
+API.Client.Account.prototype.businessName;
 
 /**
  * User account follower count.
@@ -79,11 +47,43 @@ API.Client.Account.prototype.followerCount;
 API.Client.Account.prototype.followingCount;
 
 /**
+ * User account ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.Account.prototype.id;
+
+/**
  * User account monthly views.
  * @type {!number}
  * @export
  */
 API.Client.Account.prototype.monthlyViews;
+
+/**
+ * User account pin count. This includes both created and saved pins.
+ * @type {!number}
+ * @export
+ */
+API.Client.Account.prototype.pinCount;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Account.prototype.profileImage;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Account.prototype.username;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Account.prototype.websiteUrl;
 
 /** @enum {string} */
 API.Client.Account.AccountTypeEnum = { 

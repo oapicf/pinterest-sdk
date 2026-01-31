@@ -23,56 +23,16 @@ import javax.annotation.Generated;
  * CreateMMMReportResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportResponseData {
-
-  private BulkReportingJobStatus reportStatus;
-
-  private String token;
 
   private JsonNullable<String> message = JsonNullable.<String>undefined();
 
+  private BulkReportingJobStatus reportStatus;
+
   private String status;
 
-  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
-    this.reportStatus = reportStatus;
-    return this;
-  }
-
-  /**
-   * Get reportStatus
-   * @return reportStatus
-   */
-  @Valid 
-  @Schema(name = "report_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("report_status")
-  public BulkReportingJobStatus getReportStatus() {
-    return reportStatus;
-  }
-
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
-    this.reportStatus = reportStatus;
-  }
-
-  public CreateMMMReportResponseData token(String token) {
-    this.token = token;
-    return this;
-  }
-
-  /**
-   * Get token
-   * @return token
-   */
-  
-  @Schema(name = "token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("token")
-  public String getToken() {
-    return token;
-  }
-
-  public void setToken(String token) {
-    this.token = token;
-  }
+  private String token;
 
   public CreateMMMReportResponseData message(String message) {
     this.message = JsonNullable.of(message);
@@ -92,6 +52,26 @@ public class CreateMMMReportResponseData {
 
   public void setMessage(JsonNullable<String> message) {
     this.message = message;
+  }
+
+  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
+    this.reportStatus = reportStatus;
+    return this;
+  }
+
+  /**
+   * Get reportStatus
+   * @return reportStatus
+   */
+  @Valid 
+  @Schema(name = "report_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("report_status")
+  public BulkReportingJobStatus getReportStatus() {
+    return reportStatus;
+  }
+
+  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+    this.reportStatus = reportStatus;
   }
 
   public CreateMMMReportResponseData status(String status) {
@@ -114,6 +94,26 @@ public class CreateMMMReportResponseData {
     this.status = status;
   }
 
+  public CreateMMMReportResponseData token(String token) {
+    this.token = token;
+    return this;
+  }
+
+  /**
+   * Get token
+   * @return token
+   */
+  
+  @Schema(name = "token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("token")
+  public String getToken() {
+    return token;
+  }
+
+  public void setToken(String token) {
+    this.token = token;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,10 +123,10 @@ public class CreateMMMReportResponseData {
       return false;
     }
     CreateMMMReportResponseData createMMMReportResponseData = (CreateMMMReportResponseData) o;
-    return Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
-        Objects.equals(this.token, createMMMReportResponseData.token) &&
-        equalsNullable(this.message, createMMMReportResponseData.message) &&
-        Objects.equals(this.status, createMMMReportResponseData.status);
+    return equalsNullable(this.message, createMMMReportResponseData.message) &&
+        Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
+        Objects.equals(this.status, createMMMReportResponseData.status) &&
+        Objects.equals(this.token, createMMMReportResponseData.token);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -135,7 +135,7 @@ public class CreateMMMReportResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, hashCodeNullable(message), status);
+    return Objects.hash(hashCodeNullable(message), reportStatus, status, token);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -149,10 +149,10 @@ public class CreateMMMReportResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportResponseData {\n");
-    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("}");
     return sb.toString();
   }

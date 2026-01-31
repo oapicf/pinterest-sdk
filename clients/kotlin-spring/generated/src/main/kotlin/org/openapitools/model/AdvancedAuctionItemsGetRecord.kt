@@ -19,18 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Object uniquely identifying a retail catalog item
- * @param itemId The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
  */
 data class AdvancedAuctionItemsGetRecord(
 
-    @Schema(example = "DS0294-M", required = true, description = "The catalog retail item id in the merchant namespace")
-    @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
-
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
+
+    @Schema(example = "DS0294-M", required = true, description = "The catalog retail item id in the merchant namespace")
+    @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")

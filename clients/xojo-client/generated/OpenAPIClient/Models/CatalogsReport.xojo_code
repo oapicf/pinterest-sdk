@@ -8,17 +8,17 @@ Protected Class CatalogsReport
 
 	#tag Property, Flags = &h0
 		#tag Note
-			URL to download the report
+			Size of the report in bytes
 		#tag EndNote
-		url As Xoson.O.OptionalString
+		size As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Size of the report in bytes
+			URL to download the report
 		#tag EndNote
-		size As Xoson.O.OptionalDouble
+		url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -79,19 +79,19 @@ Protected Class CatalogsReport
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="size"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -23,20 +23,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Array with metrics, status, and pin id for the requested metric
  *
- * @param metrics The metric name and daily value for each requested metric
  * @param dataStatus 
+ * @param metrics The metric name and daily value for each requested metric
  * @param pinId The pin id
  */
 
 
 data class TopPinsAnalyticsResponsePinsInner (
 
+    @Json(name = "data_status")
+    val dataStatus: kotlin.collections.Map<kotlin.String, DataStatus>? = null,
+
     /* The metric name and daily value for each requested metric */
     @Json(name = "metrics")
     val metrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null,
-
-    @Json(name = "data_status")
-    val dataStatus: kotlin.collections.Map<kotlin.String, DataStatus>? = null,
 
     /* The pin id */
     @Json(name = "pin_id")

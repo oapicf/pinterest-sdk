@@ -11,7 +11,7 @@ import { CatalogsItemValidationIssues } from './catalogsItemValidationIssues';
 
 
 export interface ItemsIssuesList200Response { 
-    items: Array<CatalogsItemValidationIssues>;
     bookmark?: string | null;
+    items: Array<CatalogsItemValidationIssues>;
 }
 

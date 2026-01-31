@@ -16,17 +16,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BoardsList200Response  {
   
- /**
-  * Boards
-  */
-  @ApiModelProperty(required = true, value = "Boards")
-  @Valid
-  private List<@Valid Board> items = new ArrayList<>();
-
   @ApiModelProperty(value = "")
   private String bookmark;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private List<@Valid Board> items = new ArrayList<>();
  /**
-  * Boards
+  * Get bookmark
+  * @return bookmark
+  */
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+ public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+  public BoardsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+ /**
+  * Get items
   * @return items
   */
   @JsonProperty("items")
@@ -58,30 +79,6 @@ public class BoardsList200Response  {
     return this;
   }
 
- /**
-  * Get bookmark
-  * @return bookmark
-  */
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
- public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
-  public BoardsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,13 +89,13 @@ public class BoardsList200Response  {
       return false;
     }
     BoardsList200Response boardsList200Response = (BoardsList200Response) o;
-    return Objects.equals(this.items, boardsList200Response.items) &&
-        Objects.equals(this.bookmark, boardsList200Response.bookmark);
+    return Objects.equals(this.bookmark, boardsList200Response.bookmark) &&
+        Objects.equals(this.items, boardsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -106,8 +103,8 @@ public class BoardsList200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

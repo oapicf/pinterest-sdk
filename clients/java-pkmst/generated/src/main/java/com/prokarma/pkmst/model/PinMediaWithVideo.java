@@ -3,8 +3,8 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.PinMedia;
-import com.prokarma.pkmst.model.PinMediaWithImageAllOfImages;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.ImageSize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -19,16 +19,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Pin with video.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class PinMediaWithVideo extends PinMedia  {
-  @JsonProperty("images")
-  private PinMediaWithImageAllOfImages images;
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class PinMediaWithVideo   {
   @JsonProperty("cover_image_url")
   private String coverImageUrl;
-
-  @JsonProperty("video_url")
-  private String videoUrl;
 
   @JsonProperty("duration")
   private BigDecimal duration;
@@ -36,26 +30,46 @@ public class PinMediaWithVideo extends PinMedia  {
   @JsonProperty("height")
   private Integer height;
 
-  @JsonProperty("width")
-  private Integer width;
-
-  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
-    this.images = images;
-    return this;
-  }
+  @JsonProperty("images")
+  private ImageSize images;
 
   /**
-   * Get images
-   * @return images
+   * Gets or Sets mediaType
    */
-  @ApiModelProperty(value = "")
-  public PinMediaWithImageAllOfImages getImages() {
-    return images;
+  public enum MediaTypeEnum {
+    VIDEO("video");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String text) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
   }
 
-  public void setImages(PinMediaWithImageAllOfImages images) {
-    this.images = images;
-  }
+  @JsonProperty("media_type")
+  private MediaTypeEnum mediaType;
+
+  @JsonProperty("video_url")
+  private String videoUrl;
+
+  @JsonProperty("width")
+  private Integer width;
 
   public PinMediaWithVideo coverImageUrl(String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
@@ -75,34 +89,16 @@ public class PinMediaWithVideo extends PinMedia  {
     this.coverImageUrl = coverImageUrl;
   }
 
-  public PinMediaWithVideo videoUrl(String videoUrl) {
-    this.videoUrl = videoUrl;
-    return this;
-  }
-
-  /**
-   * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-   * @return videoUrl
-   */
-  @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
-  public String getVideoUrl() {
-    return videoUrl;
-  }
-
-  public void setVideoUrl(String videoUrl) {
-    this.videoUrl = videoUrl;
-  }
-
   public PinMediaWithVideo duration(BigDecimal duration) {
     this.duration = duration;
     return this;
   }
 
   /**
-   * Duration (in milliseconds)
+   * Duration (in miliseconds). Field maybe null after creation due to video processing time.
    * @return duration
    */
-  @ApiModelProperty(value = "Duration (in milliseconds)")
+  @ApiModelProperty(value = "Duration (in miliseconds). Field maybe null after creation due to video processing time.")
   public BigDecimal getDuration() {
     return duration;
   }
@@ -117,10 +113,10 @@ public class PinMediaWithVideo extends PinMedia  {
   }
 
   /**
-   * Height (in pixels)
+   * Height (in pixels). Field maybe null after creation due to video processing time.
    * @return height
    */
-  @ApiModelProperty(value = "Height (in pixels)")
+  @ApiModelProperty(value = "Height (in pixels). Field maybe null after creation due to video processing time.")
   public Integer getHeight() {
     return height;
   }
@@ -129,16 +125,70 @@ public class PinMediaWithVideo extends PinMedia  {
     this.height = height;
   }
 
+  public PinMediaWithVideo images(ImageSize images) {
+    this.images = images;
+    return this;
+  }
+
+  /**
+   * Get images
+   * @return images
+   */
+  @ApiModelProperty(value = "")
+  public ImageSize getImages() {
+    return images;
+  }
+
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+  public PinMediaWithVideo mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  /**
+   * Get mediaType
+   * @return mediaType
+   */
+  @ApiModelProperty(required = true, value = "")
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+  public PinMediaWithVideo videoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+    return this;
+  }
+
+  /**
+   * Video url (720p).  **Note:** This field is limited and not available to all apps.
+   * @return videoUrl
+   */
+  @ApiModelProperty(value = "Video url (720p).  **Note:** This field is limited and not available to all apps.")
+  public String getVideoUrl() {
+    return videoUrl;
+  }
+
+  public void setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+  }
+
   public PinMediaWithVideo width(Integer width) {
     this.width = width;
     return this;
   }
 
   /**
-   * Width (in pixels)
+   * Width (in pixels). Field maybe null after creation due to video processing time.
    * @return width
    */
-  @ApiModelProperty(value = "Width (in pixels)")
+  @ApiModelProperty(value = "Width (in pixels). Field maybe null after creation due to video processing time.")
   public Integer getWidth() {
     return width;
   }
@@ -157,30 +207,31 @@ public class PinMediaWithVideo extends PinMedia  {
       return false;
     }
     PinMediaWithVideo pinMediaWithVideo = (PinMediaWithVideo) o;
-    return Objects.equals(this.images, pinMediaWithVideo.images) &&
-        Objects.equals(this.coverImageUrl, pinMediaWithVideo.coverImageUrl) &&
-        Objects.equals(this.videoUrl, pinMediaWithVideo.videoUrl) &&
+    return Objects.equals(this.coverImageUrl, pinMediaWithVideo.coverImageUrl) &&
         Objects.equals(this.duration, pinMediaWithVideo.duration) &&
         Objects.equals(this.height, pinMediaWithVideo.height) &&
-        Objects.equals(this.width, pinMediaWithVideo.width) &&
-        super.equals(o);
+        Objects.equals(this.images, pinMediaWithVideo.images) &&
+        Objects.equals(this.mediaType, pinMediaWithVideo.mediaType) &&
+        Objects.equals(this.videoUrl, pinMediaWithVideo.videoUrl) &&
+        Objects.equals(this.width, pinMediaWithVideo.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, coverImageUrl, videoUrl, duration, height, width, super.hashCode());
+    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, width);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithVideo {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
-    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -7,12 +7,13 @@
 | **price** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  |  |
 | **hotel_id** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
 | **brand** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
+| **custom_label_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
 | **country** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  |  |
+| **title_keywords** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = PinterestSdkClient::CatalogsHotelProductGroupFilterKeys.new(
   custom_label_2: null,
   custom_label_3: null,
   custom_label_4: null,
-  country: null
+  country: null,
+  title_keywords: null
 )
 ```
 

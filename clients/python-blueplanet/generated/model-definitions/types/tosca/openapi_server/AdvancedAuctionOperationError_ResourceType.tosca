@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvancedAuctionOperationError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvancedAuctionOperationError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdvancedAuctionOperationError {
+    title = AdvancedAuctionOperationError
+    description = AdvancedAuctionOperationError
+    derivedFrom = Root
+    properties {
+        code {
+          type =  integer
+          description = "The error code for the item bid option operation validation error"
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Message describing the item bid option operation validation error"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvancedAuctionOperationError {
+    title = AdvancedAuctionOperationError
+    description = AdvancedAuctionOperationError
+    implements = openapi_server.resourceTypes.AdvancedAuctionOperationError
+
+  }
+}

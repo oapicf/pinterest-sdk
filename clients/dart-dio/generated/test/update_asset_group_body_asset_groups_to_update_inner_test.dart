@@ -13,18 +13,6 @@ void main() {
       // TODO
     });
 
-    // Asset Group name
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // Asset group description
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
     // Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
     // BuiltList<AssetGroupType> assetGroupTypes
     test('to test the property `assetGroupTypes`', () async {
@@ -40,6 +28,18 @@ void main() {
     // A list of asset ids to remove from the asset group.
     // BuiltList<String> assetsToRemove
     test('to test the property `assetsToRemove`', () async {
+      // TODO
+    });
+
+    // Asset group description
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // Asset Group name
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

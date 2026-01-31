@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import SsioOrderLinesGetByAdAccount200Response._
 
 case class SsioOrderLinesGetByAdAccount200Response (
-  /* SSIO order lines by ad acount id */
-  items: List[SSIOOrderLine],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* SSIO order lines by ad acount id */
+  items: List[SSIOOrderLine])
 
 object SsioOrderLinesGetByAdAccount200Response {
   import DateTimeCodecs._

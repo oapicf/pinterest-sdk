@@ -18,17 +18,30 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object for updating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object for updating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedsUpdateRequest   {
   
+  private CatalogsFeedCredentials credentials;
   private ProductAvailabilityType defaultAvailability;
   private NullableCurrency defaultCurrency;
-  private String name;
   private CatalogsFormat format;
-  private CatalogsFeedCredentials credentials;
   private String location;
+  private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("credentials")
+  @Valid
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
 
   /**
    **/
@@ -57,19 +70,6 @@ public class CatalogsFeedsUpdateRequest   {
   }
 
   /**
-   * A human-friendly name associated to a given feed.
-   **/
-  
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
    **/
   
   @ApiModelProperty(value = "")
@@ -83,19 +83,6 @@ public class CatalogsFeedsUpdateRequest   {
   }
 
   /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("credentials")
-  @Valid
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
-  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    **/
   
@@ -106,6 +93,19 @@ public class CatalogsFeedsUpdateRequest   {
   }
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed.
+   **/
+  
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -144,19 +144,19 @@ public class CatalogsFeedsUpdateRequest   {
       return false;
     }
     CatalogsFeedsUpdateRequest catalogsFeedsUpdateRequest = (CatalogsFeedsUpdateRequest) o;
-    return Objects.equals(this.defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
+    return Objects.equals(this.credentials, catalogsFeedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
         Objects.equals(this.defaultCurrency, catalogsFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(this.format, catalogsFeedsUpdateRequest.format) &&
-        Objects.equals(this.credentials, catalogsFeedsUpdateRequest.credentials) &&
         Objects.equals(this.location, catalogsFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsFeedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.status, catalogsFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultAvailability, defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -164,12 +164,12 @@ public class CatalogsFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedsUpdateRequest {\n");
     
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

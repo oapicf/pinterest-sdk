@@ -11,7 +11,7 @@ module AdGroupsList200Response =
 
 
   type ad_groups_list_200_response = {
-    Items : AdGroupResponse[];
     Bookmark : string option;
+    Items : AdGroupResponse[];
   }
   //#endregion

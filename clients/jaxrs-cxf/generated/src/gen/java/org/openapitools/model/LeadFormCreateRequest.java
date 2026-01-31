@@ -20,18 +20,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LeadFormCreateRequest  {
   
  /**
-  * Internal name of the lead form.
+  * A message for people who complete the form to let them know what happens next.
   */
-  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
+  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
 
-  private String name;
+  private String completionMessage;
 
  /**
-  * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+  * Additional disclosure language to be included in the lead form.
   */
-  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+  @ApiModelProperty(example = "By entering your personal information, you agree that your data will be collected and used.", value = "Additional disclosure language to be included in the lead form.")
 
-  private String privacyPolicyLink;
+  private String disclosureLanguage;
 
  /**
   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
@@ -41,24 +41,27 @@ public class LeadFormCreateRequest  {
   private Boolean hasAcceptedTerms;
 
  /**
-  * A message for people who complete the form to let them know what happens next.
+  * Internal name of the lead form.
   */
-  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
+  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
 
-  private String completionMessage;
+  private String name;
 
-  @ApiModelProperty(value = "")
+ /**
+  * List of additional policy links to be displayed on the lead form.
+  */
+  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
 
   @Valid
 
-  private LeadFormStatus status;
+  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
  /**
-  * Additional disclosure language to be included in the lead form.
+  * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
   */
-  @ApiModelProperty(example = "By entering your personal information, you agree that your data will be collected and used.", value = "Additional disclosure language to be included in the lead form.")
+  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
 
-  private String disclosureLanguage;
+  private String privacyPolicyLink;
 
  /**
   * List of questions to be displayed on the lead form.
@@ -69,47 +72,44 @@ public class LeadFormCreateRequest  {
 
   private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
 
- /**
-  * List of additional policy links to be displayed on the lead form.
-  */
-  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
+  @ApiModelProperty(value = "")
 
   @Valid
 
-  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
+  private LeadFormStatus status;
  /**
-   * Internal name of the lead form.
-   * @return name
+   * A message for people who complete the form to let them know what happens next.
+   * @return completionMessage
   **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("completion_message")
+  public String getCompletionMessage() {
+    return completionMessage;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCompletionMessage(String completionMessage) {
+    this.completionMessage = completionMessage;
   }
 
-  public LeadFormCreateRequest name(String name) {
-    this.name = name;
+  public LeadFormCreateRequest completionMessage(String completionMessage) {
+    this.completionMessage = completionMessage;
     return this;
   }
 
  /**
-   * A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
-   * @return privacyPolicyLink
+   * Additional disclosure language to be included in the lead form.
+   * @return disclosureLanguage
   **/
-  @JsonProperty("privacy_policy_link")
-  public String getPrivacyPolicyLink() {
-    return privacyPolicyLink;
+  @JsonProperty("disclosure_language")
+  public String getDisclosureLanguage() {
+    return disclosureLanguage;
   }
 
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
+  public void setDisclosureLanguage(String disclosureLanguage) {
+    this.disclosureLanguage = disclosureLanguage;
   }
 
-  public LeadFormCreateRequest privacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
+  public LeadFormCreateRequest disclosureLanguage(String disclosureLanguage) {
+    this.disclosureLanguage = disclosureLanguage;
     return this;
   }
 
@@ -132,56 +132,61 @@ public class LeadFormCreateRequest  {
   }
 
  /**
-   * A message for people who complete the form to let them know what happens next.
-   * @return completionMessage
+   * Internal name of the lead form.
+   * @return name
   **/
-  @JsonProperty("completion_message")
-  public String getCompletionMessage() {
-    return completionMessage;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  public void setCompletionMessage(String completionMessage) {
-    this.completionMessage = completionMessage;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public LeadFormCreateRequest completionMessage(String completionMessage) {
-    this.completionMessage = completionMessage;
+  public LeadFormCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
  /**
-   * Get status
-   * @return status
+   * List of additional policy links to be displayed on the lead form.
+   * @return policyLinks
   **/
-  @JsonProperty("status")
-  public LeadFormStatus getStatus() {
-    return status;
+  @JsonProperty("policy_links")
+ @Size(min=0,max=3)  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
   }
 
-  public void setStatus(LeadFormStatus status) {
-    this.status = status;
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
   }
 
-  public LeadFormCreateRequest status(LeadFormStatus status) {
-    this.status = status;
+  public LeadFormCreateRequest policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  public LeadFormCreateRequest addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    this.policyLinks.add(policyLinksItem);
     return this;
   }
 
  /**
-   * Additional disclosure language to be included in the lead form.
-   * @return disclosureLanguage
+   * A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
+   * @return privacyPolicyLink
   **/
-  @JsonProperty("disclosure_language")
-  public String getDisclosureLanguage() {
-    return disclosureLanguage;
+  @JsonProperty("privacy_policy_link")
+  public String getPrivacyPolicyLink() {
+    return privacyPolicyLink;
   }
 
-  public void setDisclosureLanguage(String disclosureLanguage) {
-    this.disclosureLanguage = disclosureLanguage;
+  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
   }
 
-  public LeadFormCreateRequest disclosureLanguage(String disclosureLanguage) {
-    this.disclosureLanguage = disclosureLanguage;
+  public LeadFormCreateRequest privacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
     return this;
   }
 
@@ -209,25 +214,20 @@ public class LeadFormCreateRequest  {
   }
 
  /**
-   * List of additional policy links to be displayed on the lead form.
-   * @return policyLinks
+   * Get status
+   * @return status
   **/
-  @JsonProperty("policy_links")
- @Size(min=0,max=3)  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
-    return policyLinks;
+  @JsonProperty("status")
+  public LeadFormStatus getStatus() {
+    return status;
   }
 
-  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
+  public void setStatus(LeadFormStatus status) {
+    this.status = status;
   }
 
-  public LeadFormCreateRequest policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
-    return this;
-  }
-
-  public LeadFormCreateRequest addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
-    this.policyLinks.add(policyLinksItem);
+  public LeadFormCreateRequest status(LeadFormStatus status) {
+    this.status = status;
     return this;
   }
 
@@ -240,19 +240,19 @@ public class LeadFormCreateRequest  {
       return false;
     }
     LeadFormCreateRequest leadFormCreateRequest = (LeadFormCreateRequest) o;
-    return Objects.equals(this.name, leadFormCreateRequest.name) &&
-        Objects.equals(this.privacyPolicyLink, leadFormCreateRequest.privacyPolicyLink) &&
-        Objects.equals(this.hasAcceptedTerms, leadFormCreateRequest.hasAcceptedTerms) &&
-        Objects.equals(this.completionMessage, leadFormCreateRequest.completionMessage) &&
-        Objects.equals(this.status, leadFormCreateRequest.status) &&
+    return Objects.equals(this.completionMessage, leadFormCreateRequest.completionMessage) &&
         Objects.equals(this.disclosureLanguage, leadFormCreateRequest.disclosureLanguage) &&
+        Objects.equals(this.hasAcceptedTerms, leadFormCreateRequest.hasAcceptedTerms) &&
+        Objects.equals(this.name, leadFormCreateRequest.name) &&
+        Objects.equals(this.policyLinks, leadFormCreateRequest.policyLinks) &&
+        Objects.equals(this.privacyPolicyLink, leadFormCreateRequest.privacyPolicyLink) &&
         Objects.equals(this.questions, leadFormCreateRequest.questions) &&
-        Objects.equals(this.policyLinks, leadFormCreateRequest.policyLinks);
+        Objects.equals(this.status, leadFormCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks);
+    return Objects.hash(completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status);
   }
 
   @Override
@@ -260,14 +260,14 @@ public class LeadFormCreateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormCreateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
-    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
     sb.append("    completionMessage: ").append(toIndentedString(completionMessage)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
-    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
+    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
+    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

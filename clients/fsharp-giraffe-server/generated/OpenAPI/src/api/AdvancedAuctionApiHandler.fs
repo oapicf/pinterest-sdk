@@ -65,6 +65,8 @@ module AdvancedAuctionApiHandler =
           return! (match result with
                       | AdvancedAuctionItemsSubmitPostStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdvancedAuctionItemsSubmitPostStatusCode206 resolved ->
+                            setStatusCode 206 >=> json resolved.content
                       | AdvancedAuctionItemsSubmitPostStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
                       | AdvancedAuctionItemsSubmitPostStatusCode401 resolved ->

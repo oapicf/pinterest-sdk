@@ -1,13 +1,15 @@
 {
   "namespace": "model",
   "type": "enum",
-  "doc": "Refers ads entity type",
+  "doc": "Refers ads entity type. Schedule enum is only applicable to beta users",
   "name": "BulkEntityType",
   "symbols": [
     "CAMPAIGN",
     "AD_GROUP",
     "PRODUCT_GROUP",
     "AD",
-    "KEYWORD"
+    "KEYWORD",
+    "LABEL",
+    "SCHEDULE"
   ]
 }

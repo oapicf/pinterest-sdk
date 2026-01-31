@@ -1,6 +1,6 @@
 [package]
 name = "openapi"
-version = "5.14.0"
+version = "5.23.0"
 authors = ["blah+oapicf@cliffano.com"]
 description = "Pinterest's REST API"
 license = "MIT"

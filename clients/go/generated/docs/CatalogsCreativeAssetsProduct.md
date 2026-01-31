@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **string** |  | 
 **Metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
-**Pin** | [**NullablePin**](Pin.md) |  | 
+**Pin** | [**Pin**](Pin.md) |  | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsProduct
 
-`func NewCatalogsCreativeAssetsProduct(catalogType string, metadata CatalogsCreativeAssetsProductMetadata, pin NullablePin, ) *CatalogsCreativeAssetsProduct`
+`func NewCatalogsCreativeAssetsProduct(catalogType string, metadata CatalogsCreativeAssetsProductMetadata, pin Pin, ) *CatalogsCreativeAssetsProduct`
 
 NewCatalogsCreativeAssetsProduct instantiates a new CatalogsCreativeAssetsProduct object
 This constructor will assign default values to properties that have it defined,
@@ -87,16 +87,6 @@ and a boolean to check if the value has been set.
 SetPin sets Pin field to given value.
 
 
-### SetPinNil
-
-`func (o *CatalogsCreativeAssetsProduct) SetPinNil(b bool)`
-
- SetPinNil sets the value for Pin to be an explicit nil
-
-### UnsetPin
-`func (o *CatalogsCreativeAssetsProduct) UnsetPin()`
-
-UnsetPin ensures that no value is present for Pin, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

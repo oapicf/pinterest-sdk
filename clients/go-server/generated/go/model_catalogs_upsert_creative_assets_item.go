@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,20 +17,20 @@ package openapi
 // CatalogsUpsertCreativeAssetsItem - A creative assets item to be upserted.
 type CatalogsUpsertCreativeAssetsItem struct {
 
+	Attributes CatalogsCreativeAssetsAttributes `json:"attributes"`
+
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId string `json:"creative_assets_id"`
 
 	Operation string `json:"operation"`
-
-	Attributes CatalogsCreativeAssetsAttributes `json:"attributes"`
 }
 
 // AssertCatalogsUpsertCreativeAssetsItemRequired checks if the required fields are not zero-ed
 func AssertCatalogsUpsertCreativeAssetsItemRequired(obj CatalogsUpsertCreativeAssetsItem) error {
 	elements := map[string]interface{}{
+		"attributes": obj.Attributes,
 		"creative_assets_id": obj.CreativeAssetsId,
 		"operation": obj.Operation,
-		"attributes": obj.Attributes,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

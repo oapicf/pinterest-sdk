@@ -1,0 +1,109 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsFilterValuesMap"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsFilterValuesMap"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsFilterValuesMap {
+    title = CatalogsCreativeAssetsFilterValuesMap
+    description = CatalogsCreativeAssetsFilterValuesMap
+    derivedFrom = Root
+    properties {
+        custom_label_0 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_1 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_2 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_3 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_4 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_0 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_1 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_2 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_3 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_4 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_5 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_6 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        media_type {
+          type = array
+          items.type =  string
+          description = ""
+          enum = ["IMAGE", "VIDEO"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsFilterValuesMap {
+    title = CatalogsCreativeAssetsFilterValuesMap
+    description = CatalogsCreativeAssetsFilterValuesMap
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsFilterValuesMap
+
+  }
+}

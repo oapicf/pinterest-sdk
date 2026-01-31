@@ -22,15 +22,13 @@ customer_list_update_request_t* instantiate_customer_list_update_request(int inc
   customer_list_update_request_t* customer_list_update_request = NULL;
   if (include_optional) {
     customer_list_update_request = customer_list_update_request_create(
-      "email2@pinterest.com,email6@pinterest.com,",
       "REMOVE",
-      0
+      "email2@pinterest.com,email6@pinterest.com,"
     );
   } else {
     customer_list_update_request = customer_list_update_request_create(
-      "email2@pinterest.com,email6@pinterest.com,",
       "REMOVE",
-      0
+      "email2@pinterest.com,email6@pinterest.com,"
     );
   }
 

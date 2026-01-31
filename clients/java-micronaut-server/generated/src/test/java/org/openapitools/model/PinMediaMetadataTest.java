@@ -3,8 +3,8 @@ package org.openapitools.model;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.ImageMetadataImages;
-import org.openapitools.model.VideoMetadata;
+import org.openapitools.model.ImageSize;
+import org.openapitools.model.VideoMetadataWithItemType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -25,35 +25,11 @@ public class PinMediaMetadataTest {
     }
 
     /**
-     * Test the property 'itemType'
-     */
-    @Test
-    public void itemTypeTest() {
-        // TODO: test itemType
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
     public void descriptionTest() {
         // TODO: test description
-    }
-
-    /**
-     * Test the property 'link'
-     */
-    @Test
-    public void linkTest() {
-        // TODO: test link
     }
 
     /**
@@ -65,19 +41,35 @@ public class PinMediaMetadataTest {
     }
 
     /**
+     * Test the property 'itemType'
+     */
+    @Test
+    public void itemTypeTest() {
+        // TODO: test itemType
+    }
+
+    /**
+     * Test the property 'link'
+     */
+    @Test
+    public void linkTest() {
+        // TODO: test link
+    }
+
+    /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
+    }
+
+    /**
      * Test the property 'coverImageUrl'
      */
     @Test
     public void coverImageUrlTest() {
         // TODO: test coverImageUrl
-    }
-
-    /**
-     * Test the property 'videoUrl'
-     */
-    @Test
-    public void videoUrlTest() {
-        // TODO: test videoUrl
     }
 
     /**
@@ -94,6 +86,14 @@ public class PinMediaMetadataTest {
     @Test
     public void heightTest() {
         // TODO: test height
+    }
+
+    /**
+     * Test the property 'videoUrl'
+     */
+    @Test
+    public void videoUrlTest() {
+        // TODO: test videoUrl
     }
 
     /**

@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_product_groups_list_200_response/0]).
 
 -type openapi_catalogs_product_groups_list_200_response() ::
-  [ {'items', list(openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_catalogs_product_groups_list_200_response() ->
     openapi_catalogs_product_groups_list_200_response([]).
 
 openapi_catalogs_product_groups_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

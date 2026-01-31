@@ -1,7 +1,7 @@
 /*
  * pin_update.h
  *
- * Pin fields for updates
+ * Resource create or update operation model.
  */
 
 #ifndef _pin_update_H_
@@ -15,7 +15,7 @@
 
 typedef struct pin_update_t pin_update_t;
 
-#include "pin_update_carousel_slots_inner.h"
+#include "carousel_slot.h"
 
 
 
@@ -23,11 +23,10 @@ typedef struct pin_update_t {
     char *alt_text; // string
     char *board_id; // string
     char *board_section_id; // string
+    list_t *carousel_slots; //nonprimitive container
     char *description; // string
     char *link; // string
     char *title; // string
-    list_t *carousel_slots; //nonprimitive container
-    char *note; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_update_t;
@@ -36,11 +35,10 @@ __attribute__((deprecated)) pin_update_t *pin_update_create(
     char *alt_text,
     char *board_id,
     char *board_section_id,
+    list_t *carousel_slots,
     char *description,
     char *link,
-    char *title,
-    list_t *carousel_slots,
-    char *note
+    char *title
 );
 
 void pin_update_free(pin_update_t *pin_update);

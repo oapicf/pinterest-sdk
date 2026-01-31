@@ -1,0 +1,41 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationGender",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationGender_field",
+        "symbols": [
+          "GENDER"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationGender_operation",
+        "symbols": [
+          "SET",
+          "ADD",
+          "REMOVE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.TargetingSpecGender"
+      },
+      "doc": ""
+    }
+  ]
+
+}

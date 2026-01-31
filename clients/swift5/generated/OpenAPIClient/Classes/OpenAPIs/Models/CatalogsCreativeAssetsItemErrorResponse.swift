@@ -17,9 +17,9 @@ public struct CatalogsCreativeAssetsItemErrorResponse: Codable, JSONEncodable, H
     /** The catalog creative assets id in the merchant namespace */
     public var creativeAssetsId: String?
     /** Array with the errors for the item id requested */
-    public var errors: [ItemValidationEvent]?
+    public var errors: [ItemValidationEvent]
 
-    public init(catalogType: CatalogsType, creativeAssetsId: String? = nil, errors: [ItemValidationEvent]? = nil) {
+    public init(catalogType: CatalogsType, creativeAssetsId: String? = nil, errors: [ItemValidationEvent]) {
         self.catalogType = catalogType
         self.creativeAssetsId = creativeAssetsId
         self.errors = errors
@@ -37,7 +37,7 @@ public struct CatalogsCreativeAssetsItemErrorResponse: Codable, JSONEncodable, H
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encodeIfPresent(creativeAssetsId, forKey: .creativeAssetsId)
-        try container.encodeIfPresent(errors, forKey: .errors)
+        try container.encode(errors, forKey: .errors)
     }
 }
 

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | **List&lt;Object&gt;** |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | **List&lt;Object&gt;** |  |  |
 
 
 

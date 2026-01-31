@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<Catalog> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <Catalog> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<Catalog> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <Catalog> items);
 
 private:
-	std::list <Catalog>items;
 	std::string bookmark;
+	std::list <Catalog>items;
 	void __init();
 	void __cleanup();
 

@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The enhanced match status of the tag
+* 
 * Values: UNKNOWN,NOT_VALIDATED,VALIDATING_IN_PROGRESS,VALIDATION_COMPLETE
 */
 enum class EnhancedMatchStatusType(@get:JsonValue val value: kotlin.String) {

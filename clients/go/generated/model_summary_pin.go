@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,12 @@ var _ MappedNullable = &SummaryPin{}
 
 // SummaryPin Summarized pin information
 type SummaryPin struct {
-	Media *PinMedia `json:"media,omitempty"`
 	AltText NullableString `json:"alt_text,omitempty"`
-	Link NullableString `json:"link,omitempty"`
-	Title NullableString `json:"title,omitempty"`
 	Description NullableString `json:"description,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Link NullableString `json:"link,omitempty"`
+	Media *PinMedia `json:"media,omitempty"`
+	Title NullableString `json:"title,omitempty"`
 }
 
 // NewSummaryPin instantiates a new SummaryPin object
@@ -42,38 +43,6 @@ func NewSummaryPin() *SummaryPin {
 func NewSummaryPinWithDefaults() *SummaryPin {
 	this := SummaryPin{}
 	return &this
-}
-
-// GetMedia returns the Media field value if set, zero value otherwise.
-func (o *SummaryPin) GetMedia() PinMedia {
-	if o == nil || IsNil(o.Media) {
-		var ret PinMedia
-		return ret
-	}
-	return *o.Media
-}
-
-// GetMediaOk returns a tuple with the Media field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SummaryPin) GetMediaOk() (*PinMedia, bool) {
-	if o == nil || IsNil(o.Media) {
-		return nil, false
-	}
-	return o.Media, true
-}
-
-// HasMedia returns a boolean if a field has been set.
-func (o *SummaryPin) HasMedia() bool {
-	if o != nil && !IsNil(o.Media) {
-		return true
-	}
-
-	return false
-}
-
-// SetMedia gets a reference to the given PinMedia and assigns it to the Media field.
-func (o *SummaryPin) SetMedia(v PinMedia) {
-	o.Media = &v
 }
 
 // GetAltText returns the AltText field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -118,6 +87,80 @@ func (o *SummaryPin) UnsetAltText() {
 	o.AltText.Unset()
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SummaryPin) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SummaryPin) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *SummaryPin) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *SummaryPin) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *SummaryPin) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *SummaryPin) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *SummaryPin) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SummaryPin) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *SummaryPin) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *SummaryPin) SetId(v string) {
+	o.Id = &v
+}
+
 // GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SummaryPin) GetLink() string {
 	if o == nil || IsNil(o.Link.Get()) {
@@ -158,6 +201,38 @@ func (o *SummaryPin) SetLinkNil() {
 // UnsetLink ensures that no value is present for Link, not even an explicit nil
 func (o *SummaryPin) UnsetLink() {
 	o.Link.Unset()
+}
+
+// GetMedia returns the Media field value if set, zero value otherwise.
+func (o *SummaryPin) GetMedia() PinMedia {
+	if o == nil || IsNil(o.Media) {
+		var ret PinMedia
+		return ret
+	}
+	return *o.Media
+}
+
+// GetMediaOk returns a tuple with the Media field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SummaryPin) GetMediaOk() (*PinMedia, bool) {
+	if o == nil || IsNil(o.Media) {
+		return nil, false
+	}
+	return o.Media, true
+}
+
+// HasMedia returns a boolean if a field has been set.
+func (o *SummaryPin) HasMedia() bool {
+	if o != nil && !IsNil(o.Media) {
+		return true
+	}
+
+	return false
+}
+
+// SetMedia gets a reference to the given PinMedia and assigns it to the Media field.
+func (o *SummaryPin) SetMedia(v PinMedia) {
+	o.Media = &v
 }
 
 // GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -202,48 +277,6 @@ func (o *SummaryPin) UnsetTitle() {
 	o.Title.Unset()
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SummaryPin) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SummaryPin) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *SummaryPin) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *SummaryPin) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *SummaryPin) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *SummaryPin) UnsetDescription() {
-	o.Description.Unset()
-}
-
 func (o SummaryPin) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -254,20 +287,23 @@ func (o SummaryPin) MarshalJSON() ([]byte, error) {
 
 func (o SummaryPin) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Media) {
-		toSerialize["media"] = o.Media
-	}
 	if o.AltText.IsSet() {
 		toSerialize["alt_text"] = o.AltText.Get()
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if o.Link.IsSet() {
 		toSerialize["link"] = o.Link.Get()
 	}
+	if !IsNil(o.Media) {
+		toSerialize["media"] = o.Media
+	}
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
 	}
 	return toSerialize, nil
 }

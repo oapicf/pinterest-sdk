@@ -12,44 +12,48 @@ import { BusinessAccessUserSummary } from './businessAccessUserSummary';
 
 export interface AssetGroupBinding { 
     /**
-     * Asset Group ID.
+     * A list of ad account IDs under the asset group
      */
-    id?: string;
-    /**
-     * Asset Group name
-     */
-    asset_group_name?: string | null;
+    ad_accounts_ids?: Array<string> | null;
     /**
      * Asset group description
      */
     asset_group_description?: string | null;
     /**
+     * Asset Group name
+     */
+    asset_group_name?: string | null;
+    /**
      * Asset group types
      */
     asset_group_types?: Array<string>;
     /**
-     * A list of ad account IDs under the asset group
+     * A list of catalog IDs under asset group
      */
-    ad_accounts_ids?: Array<string> | null;
+    catalogs_ids?: Array<string> | null;
     /**
-     * A list of profile IDs under asset group
+     * The data of the user that created the asset group.
      */
-    profiles_ids?: Array<string> | null;
+    created_by?: BusinessAccessUserSummary | null;
     /**
      * The creation time of the asset group
      */
     created_time?: number | null;
     /**
-     * The last update time of the asset group
+     * Asset Group ID.
      */
-    updated_time?: number | null;
+    id?: string;
     /**
      * The data of the business that owns the asset group.
      */
     owner?: BusinessAccessUserSummary | null;
     /**
-     * The data of the user that created the asset group.
+     * A list of profile IDs under asset group
      */
-    created_by?: BusinessAccessUserSummary | null;
+    profiles_ids?: Array<string> | null;
+    /**
+     * The last update time of the asset group
+     */
+    updated_time?: number | null;
 }
 

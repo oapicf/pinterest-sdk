@@ -11,7 +11,7 @@
 
 // Delete lead ads subscription
 //
-// Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 //
 void
 LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_account_id, char *subscription_id)
@@ -71,23 +71,31 @@ LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_accou
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Subscription deleted successfully");
+    //    printf("%s\n","Resource deleted successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid input parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","You are not authorized to delete this subscription.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Subscription not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //No return type
 end:
@@ -107,11 +115,11 @@ end:
 
 }
 
-// Get lead ads subscription
+// Get lead ads subscription by ID
 //
-// Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 //
-ad_account_get_subscription_response_t*
+lead_subscription_t*
 LeadAdsAPI_adAccountsSubscriptionsGetById(apiClient_t *apiClient, char *ad_account_id, char *subscription_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -169,29 +177,37 @@ LeadAdsAPI_adAccountsSubscriptionsGetById(apiClient_t *apiClient, char *ad_accou
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid input parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Can&#39;t access this subscription.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Subscription not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    ad_account_get_subscription_response_t *elementToReturn = NULL;
+    lead_subscription_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = ad_account_get_subscription_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
+        elementToReturn = lead_subscription_parseFromJSON(LeadAdsAPIlocalVarJSON);
         cJSON_Delete(LeadAdsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -221,10 +237,10 @@ end:
 
 // Get lead ads subscriptions
 //
-// Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 //
 ad_accounts_subscriptions_get_list_200_response_t*
-LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_account_id, int *page_size, char *bookmark)
+LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -257,6 +273,18 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
 
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
     char *keyQuery_page_size = NULL;
     char * valueQuery_page_size = NULL;
     keyValuePair_t *keyPairQuery_page_size = 0;
@@ -267,18 +295,6 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
         snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
-    }
-
-    // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -294,15 +310,31 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Can&#39;t access this subscription.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     ad_accounts_subscriptions_get_list_200_response_t *elementToReturn = NULL;
@@ -328,18 +360,6 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
-    }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
-    }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
-    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -352,6 +372,18 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
         keyValuePair_free(keyPairQuery_bookmark);
         keyPairQuery_bookmark = NULL;
     }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -361,10 +393,10 @@ end:
 
 // Create lead ads subscription
 //
-// Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 //
-ad_account_create_subscription_response_t*
-LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_id, ad_account_create_subscription_request_t *ad_account_create_subscription_request)
+lead_subscription_t*
+LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_id, lead_subscription_post_params_create_t *lead_subscription_post_params_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -397,12 +429,12 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_ad_account_create_subscription_request = NULL;
-    if (ad_account_create_subscription_request != NULL)
+    cJSON *localVarSingleItemJSON_lead_subscription_post_params_create = NULL;
+    if (lead_subscription_post_params_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_ad_account_create_subscription_request = ad_account_create_subscription_request_convertToJSON(ad_account_create_subscription_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ad_account_create_subscription_request);
+        localVarSingleItemJSON_lead_subscription_post_params_create = lead_subscription_post_params_create_convertToJSON(lead_subscription_post_params_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_lead_subscription_post_params_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -420,25 +452,25 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid input parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Can&#39;t access this subscription.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    ad_account_create_subscription_response_t *elementToReturn = NULL;
+    lead_subscription_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = ad_account_create_subscription_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
+        elementToReturn = lead_subscription_parseFromJSON(LeadAdsAPIlocalVarJSON);
         cJSON_Delete(LeadAdsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -458,9 +490,9 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_ad_account_create_subscription_request) {
-        cJSON_Delete(localVarSingleItemJSON_ad_account_create_subscription_request);
-        localVarSingleItemJSON_ad_account_create_subscription_request = NULL;
+    if (localVarSingleItemJSON_lead_subscription_post_params_create) {
+        cJSON_Delete(localVarSingleItemJSON_lead_subscription_post_params_create);
+        localVarSingleItemJSON_lead_subscription_post_params_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

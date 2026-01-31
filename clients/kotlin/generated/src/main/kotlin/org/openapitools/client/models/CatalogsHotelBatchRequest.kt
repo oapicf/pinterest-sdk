@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
+ * @param language We recommend using the CatalogsLocale values.
  * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  */
 
@@ -40,13 +40,13 @@ data class CatalogsHotelBatchRequest (
     @Json(name = "country")
     val country: Country,
 
-    /* We recommend using the CatalogsLocale values. */
-    @Json(name = "language")
-    val language: CatalogsHotelBatchRequest.Language,
-
     /* Array with catalogs item operations */
     @Json(name = "items")
     val items: kotlin.collections.List<CatalogsHotelBatchItem>,
+
+    /* We recommend using the CatalogsLocale values. */
+    @Json(name = "language")
+    val language: CatalogsHotelBatchRequest.Language,
 
     /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     @Json(name = "catalog_id")

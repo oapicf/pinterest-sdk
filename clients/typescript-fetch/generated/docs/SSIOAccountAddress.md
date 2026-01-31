@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`display` | string
-`purpose` | string
 `addressId` | string
+`display` | string
 `orderLegalEntity` | string
+`purpose` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { SSIOAccountAddress } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "display": 475 Brannan Street, San Francisco, CA 94103,
-  "purpose": Billing,
   "addressId": a1C1N000004MUrLUAW,
+  "display": 475 Brannan Street, San Francisco, CA 94103,
   "orderLegalEntity": PIN US OU,
+  "purpose": Billing,
 } satisfies SSIOAccountAddress
 
 console.log(example)

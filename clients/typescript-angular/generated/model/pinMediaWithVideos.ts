@@ -7,14 +7,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinMedia } from './pinMedia';
-import { VideoMetadata } from './videoMetadata';
+import { VideoMetadataWithItemType } from './videoMetadataWithItemType';
 
 
 /**
  * Pin with multiple videos.
  */
-export interface PinMediaWithVideos extends PinMedia { 
-    items?: Array<VideoMetadata>;
+export interface PinMediaWithVideos { 
+    items?: Array<VideoMetadataWithItemType>;
+    media_type: PinMediaWithVideos.MediaTypeEnum;
 }
+export namespace PinMediaWithVideos {
+    export const MediaTypeEnum = {
+        MultipleVideos: 'multiple_videos'
+    } as const;
+    export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
+}
+
 

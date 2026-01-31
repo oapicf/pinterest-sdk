@@ -1,18 +1,18 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
+import org.openapitools.model.Media
 import org.openapitools.model.MediaList200Response
 import org.openapitools.model.MediaUpload
-import org.openapitools.model.MediaUploadDetails
-import org.openapitools.model.MediaUploadRequest
+import org.openapitools.model.MediaUploadCreate
+import org.openapitools.model.PinterestLibError
 
 class MediaApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def mediaCreate ( MediaUploadRequest mediaUploadRequest, Closure onSuccess, Closure onFailure)  {
+    def mediaCreate ( MediaUploadCreate mediaUploadCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/media"
 
         // params
@@ -22,14 +22,14 @@ class MediaApi {
         def contentType
 
         // verify required params are set
-        if (mediaUploadRequest == null) {
-            throw new RuntimeException("missing required params mediaUploadRequest")
+        if (mediaUploadCreate == null) {
+            throw new RuntimeException("missing required params mediaUploadCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = mediaUploadRequest
+        bodyParams = mediaUploadCreate
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
@@ -58,7 +58,7 @@ class MediaApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
-                    MediaUploadDetails.class )
+                    Media.class )
 
     }
 

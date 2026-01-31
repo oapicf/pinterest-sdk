@@ -19,11 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaSource
+import org.openapitools.client.models.ContentType
 import org.openapitools.client.models.PinMediaSourceImageBase64
 import org.openapitools.client.models.PinMediaSourceImageURL
 import org.openapitools.client.models.PinMediaSourceImagesBase64
 import org.openapitools.client.models.PinMediaSourceImagesURL
-import org.openapitools.client.models.PinMediaSourceImagesURLItemsInner
+import org.openapitools.client.models.PinMediaSourceImagesURLItem
 import org.openapitools.client.models.PinMediaSourcePinURL
 import org.openapitools.client.models.PinMediaSourceVideoID
 
@@ -31,12 +32,6 @@ class PinMediaSourceTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinMediaSource
         //val modelInstance = PinMediaSource()
-
-        // to test the property `sourceType`
-        should("test sourceType") {
-            // uncomment below to test the property
-            //modelInstance.sourceType shouldBe ("TODO")
-        }
 
         // to test the property `contentType`
         should("test contentType") {
@@ -48,6 +43,12 @@ class PinMediaSourceTest : ShouldSpec() {
         should("test `data`") {
             // uncomment below to test the property
             //modelInstance.`data` shouldBe ("TODO")
+        }
+
+        // to test the property `sourceType`
+        should("test sourceType") {
+            // uncomment below to test the property
+            //modelInstance.sourceType shouldBe ("TODO")
         }
 
         // to test the property `url`
@@ -74,12 +75,6 @@ class PinMediaSourceTest : ShouldSpec() {
             //modelInstance.isStandard shouldBe ("TODO")
         }
 
-        // to test the property `coverImageUrl` - Cover image url.
-        should("test coverImageUrl") {
-            // uncomment below to test the property
-            //modelInstance.coverImageUrl shouldBe ("TODO")
-        }
-
         // to test the property `coverImageContentType` - Content type for cover image Base64.
         should("test coverImageContentType") {
             // uncomment below to test the property
@@ -90,6 +85,18 @@ class PinMediaSourceTest : ShouldSpec() {
         should("test coverImageData") {
             // uncomment below to test the property
             //modelInstance.coverImageData shouldBe ("TODO")
+        }
+
+        // to test the property `coverImageKeyFrameTime` - Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+        should("test coverImageKeyFrameTime") {
+            // uncomment below to test the property
+            //modelInstance.coverImageKeyFrameTime shouldBe ("TODO")
+        }
+
+        // to test the property `coverImageUrl` - Cover image URL.
+        should("test coverImageUrl") {
+            // uncomment below to test the property
+            //modelInstance.coverImageUrl shouldBe ("TODO")
         }
 
         // to test the property `index`

@@ -1,7 +1,7 @@
 package apimodels;
 
 import apimodels.Exception;
-import apimodels.ProductGroupPromotionResponseElement;
+import apimodels.ProductGroupPromotion;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,20 +15,20 @@ import javax.validation.Valid;
 /**
  * ProductGroupPromotionResponseItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ProductGroupPromotionResponseItem   {
   @JsonProperty("data")
   @Valid
 
-  private ProductGroupPromotionResponseElement data;
+  private ProductGroupPromotion data;
 
   @JsonProperty("exceptions")
   @Valid
 
   private List<@Valid Exception> exceptions = null;
 
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
     this.data = data;
     return this;
   }
@@ -37,11 +37,11 @@ public class ProductGroupPromotionResponseItem   {
    * Get data
    * @return data
   **/
-  public ProductGroupPromotionResponseElement getData() {
+  public ProductGroupPromotion getData() {
     return data;
   }
 
-  public void setData(ProductGroupPromotionResponseElement data) {
+  public void setData(ProductGroupPromotion data) {
     this.data = data;
   }
 

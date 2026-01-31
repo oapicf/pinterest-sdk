@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(IntegrationLogClientRequest, () {
-    // String method
-    test('to test the property `method`', () async {
-      // TODO
-    });
-
     // HTTP request host from host header.
     // String host
     test('to test the property `host`', () async {
+      // TODO
+    });
+
+    // String method
+    test('to test the property `method`', () async {
       // TODO
     });
 

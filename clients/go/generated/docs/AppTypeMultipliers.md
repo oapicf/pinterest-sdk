@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APP_TYPE** | Pointer to [**TargetingSpecAppType**](TargetingSpecAppType.md) |  | [optional] 
+**APP_TYPE** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAPP_TYPE
 
-`func (o *AppTypeMultipliers) GetAPP_TYPE() TargetingSpecAppType`
+`func (o *AppTypeMultipliers) GetAPP_TYPE() string`
 
 GetAPP_TYPE returns the APP_TYPE field if non-nil, zero value otherwise.
 
 ### GetAPP_TYPEOk
 
-`func (o *AppTypeMultipliers) GetAPP_TYPEOk() (*TargetingSpecAppType, bool)`
+`func (o *AppTypeMultipliers) GetAPP_TYPEOk() (*string, bool)`
 
 GetAPP_TYPEOk returns a tuple with the APP_TYPE field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAPP_TYPE
 
-`func (o *AppTypeMultipliers) SetAPP_TYPE(v TargetingSpecAppType)`
+`func (o *AppTypeMultipliers) SetAPP_TYPE(v string)`
 
 SetAPP_TYPE sets APP_TYPE field to given value.
 

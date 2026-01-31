@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **string** |  | 
 **CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
+**CatalogType** | **string** |  | 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 
 ## Methods
 
 ### NewCatalogsHotelListProductsByCatalogBasedFilterRequest
 
-`func NewCatalogsHotelListProductsByCatalogBasedFilterRequest(catalogType string, catalogId string, filters CatalogsHotelProductGroupFilters, ) *CatalogsHotelListProductsByCatalogBasedFilterRequest`
+`func NewCatalogsHotelListProductsByCatalogBasedFilterRequest(catalogId string, catalogType string, filters CatalogsHotelProductGroupFilters, ) *CatalogsHotelListProductsByCatalogBasedFilterRequest`
 
 NewCatalogsHotelListProductsByCatalogBasedFilterRequest instantiates a new CatalogsHotelListProductsByCatalogBasedFilterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewCatalogsHotelListProductsByCatalogBasedFilterRequestWithDefaults instantiates a new CatalogsHotelListProductsByCatalogBasedFilterRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCatalogType
-
-`func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogType() string`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) SetCatalogType(v string)`
-
-SetCatalogType sets CatalogType field to given value.
-
 
 ### GetCatalogId
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) SetCatalogId(v string)`
 
 SetCatalogId sets CatalogId field to given value.
+
+
+### GetCatalogType
+
+`func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
 
 
 ### GetFilters

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,17 +16,17 @@ package openapi
 
 type TermsOfService struct {
 
-	// The ID of the terms of service
-	Id string `json:"id,omitempty"`
-
-	// The terms of service content
-	Html *string `json:"html,omitempty"`
+	// The ID of the ad account.
+	AdAccountId string `json:"ad_account_id,omitempty"`
 
 	// Whether the ad account has accepted terms of service.
 	HasAccepted bool `json:"has_accepted,omitempty"`
 
-	// The ID of the ad account.
-	AdAccountId string `json:"ad_account_id,omitempty"`
+	// The terms of service content
+	Html *string `json:"html,omitempty"`
+
+	// The ID of the terms of service
+	Id string `json:"id,omitempty"`
 }
 
 // AssertTermsOfServiceRequired checks if the required fields are not zero-ed

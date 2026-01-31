@@ -11,7 +11,7 @@ module AudiencesList200Response =
 
 
   type audiences_list_200_response = {
-    Items : Audience[];
     Bookmark : string option;
+    Items : Audience[];
   }
   //#endregion

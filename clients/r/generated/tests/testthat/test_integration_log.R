@@ -5,71 +5,11 @@ context("Test IntegrationLog")
 
 model_instance <- IntegrationLog$new()
 
-test_that("client_timestamp", {
-  # tests for the property `client_timestamp` (integer)
-  # Timestamp in milliseconds of when the log was executed at the client.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`client_timestamp`, "EXPECTED_RESULT")
-})
-
-test_that("event_type", {
-  # tests for the property `event_type` (character)
-  # Log event type
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`event_type`, "EXPECTED_RESULT")
-})
-
-test_that("log_level", {
-  # tests for the property `log_level` (character)
-  # Log level type
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`log_level`, "EXPECTED_RESULT")
-})
-
-test_that("external_business_id", {
-  # tests for the property `external_business_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`external_business_id`, "EXPECTED_RESULT")
-})
-
 test_that("advertiser_id", {
   # tests for the property `advertiser_id` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`advertiser_id`, "EXPECTED_RESULT")
-})
-
-test_that("merchant_id", {
-  # tests for the property `merchant_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`merchant_id`, "EXPECTED_RESULT")
-})
-
-test_that("tag_id", {
-  # tests for the property `tag_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`tag_id`, "EXPECTED_RESULT")
-})
-
-test_that("feed_profile_id", {
-  # tests for the property `feed_profile_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`feed_profile_id`, "EXPECTED_RESULT")
-})
-
-test_that("message", {
-  # tests for the property `message` (character)
-  # Explanation of the event that occured.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
 
 test_that("app_version_number", {
@@ -80,12 +20,12 @@ test_that("app_version_number", {
   #expect_equal(model.instance$`app_version_number`, "EXPECTED_RESULT")
 })
 
-test_that("platform_version_number", {
-  # tests for the property `platform_version_number` (character)
-  # Version number of the platform the integration application is running on.
+test_that("client_timestamp", {
+  # tests for the property `client_timestamp` (integer)
+  # Timestamp in milliseconds of when the log was executed at the client.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`platform_version_number`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`client_timestamp`, "EXPECTED_RESULT")
 })
 
 test_that("error", {
@@ -95,9 +35,69 @@ test_that("error", {
   #expect_equal(model.instance$`error`, "EXPECTED_RESULT")
 })
 
+test_that("event_type", {
+  # tests for the property `event_type` (character)
+  # Log event type
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`event_type`, "EXPECTED_RESULT")
+})
+
+test_that("external_business_id", {
+  # tests for the property `external_business_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`external_business_id`, "EXPECTED_RESULT")
+})
+
+test_that("feed_profile_id", {
+  # tests for the property `feed_profile_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`feed_profile_id`, "EXPECTED_RESULT")
+})
+
+test_that("log_level", {
+  # tests for the property `log_level` (character)
+  # Log level type
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`log_level`, "EXPECTED_RESULT")
+})
+
+test_that("merchant_id", {
+  # tests for the property `merchant_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`merchant_id`, "EXPECTED_RESULT")
+})
+
+test_that("message", {
+  # tests for the property `message` (character)
+  # Explanation of the event that occured.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+})
+
+test_that("platform_version_number", {
+  # tests for the property `platform_version_number` (character)
+  # Version number of the platform the integration application is running on.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`platform_version_number`, "EXPECTED_RESULT")
+})
+
 test_that("request", {
   # tests for the property `request` (IntegrationLogClientRequest)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`request`, "EXPECTED_RESULT")
+})
+
+test_that("tag_id", {
+  # tests for the property `tag_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`tag_id`, "EXPECTED_RESULT")
 })

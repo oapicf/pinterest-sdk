@@ -44,16 +44,16 @@ class AdAccountCreateSubscriptionRequestTest : ShouldSpec() {
             //modelInstance.partnerAccessToken shouldBe ("TODO")
         }
 
-        // to test the property `partnerRefreshToken` - Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-        should("test partnerRefreshToken") {
-            // uncomment below to test the property
-            //modelInstance.partnerRefreshToken shouldBe ("TODO")
-        }
-
         // to test the property `partnerMetadata`
         should("test partnerMetadata") {
             // uncomment below to test the property
             //modelInstance.partnerMetadata shouldBe ("TODO")
+        }
+
+        // to test the property `partnerRefreshToken` - Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+        should("test partnerRefreshToken") {
+            // uncomment below to test the property
+            //modelInstance.partnerRefreshToken shouldBe ("TODO")
         }
 
     }

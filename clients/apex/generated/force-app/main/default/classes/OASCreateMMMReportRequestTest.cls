@@ -73,9 +73,9 @@ private class OASCreateMMMReportRequestTest {
     private static void maintainRenamedProperties() {
         OASCreateMMMReportRequest createMMMReportRequest = new OASCreateMMMReportRequest();
         Map<String, String> x-property-mappings = createMMMReportRequest.getx-property-mappings();
+        System.assertEquals('endDate', x-property-mappings.get('end_date'));
         System.assertEquals('reportName', x-property-mappings.get('report_name'));
         System.assertEquals('startDate', x-property-mappings.get('start_date'));
-        System.assertEquals('endDate', x-property-mappings.get('end_date'));
         System.assertEquals('targetingTypes', x-property-mappings.get('targeting_types'));
     }
 
@@ -83,12 +83,12 @@ private class OASCreateMMMReportRequestTest {
     private static void defaultValuesPopulated() {
         OASCreateMMMReportRequest createMMMReportRequest = new OASCreateMMMReportRequest();
         System.assertEquals(new List<OASTargetingAdvertiserCountry>(), createMMMReportRequest.countries);
-        System.assertEquals(new List<OASMMMReportingTargetingType>(), createMMMReportRequest.targetingTypes);
         System.assertEquals(new List<OASMMMReportingColumn>(), createMMMReportRequest.columns);
-        System.assertEquals(null, createMMMReportRequest.reportName);
-        System.assertEquals(null, createMMMReportRequest.startDate);
+        System.assertEquals(new List<OASMMMReportingTargetingType>(), createMMMReportRequest.targetingTypes);
         System.assertEquals(null, createMMMReportRequest.endDate);
         System.assertEquals(null, createMMMReportRequest.granularity);
         System.assertEquals(null, createMMMReportRequest.level);
+        System.assertEquals(null, createMMMReportRequest.reportName);
+        System.assertEquals(null, createMMMReportRequest.startDate);
     }
 }

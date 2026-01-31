@@ -7,16 +7,16 @@
 
 static detailed_error_t *detailed_error_create_internal(
     int code,
-    char *message,
-    object_t *details
+    object_t *details,
+    char *message
     ) {
     detailed_error_t *detailed_error_local_var = malloc(sizeof(detailed_error_t));
     if (!detailed_error_local_var) {
         return NULL;
     }
     detailed_error_local_var->code = code;
-    detailed_error_local_var->message = message;
     detailed_error_local_var->details = details;
+    detailed_error_local_var->message = message;
 
     detailed_error_local_var->_library_owned = 1;
     return detailed_error_local_var;
@@ -24,13 +24,13 @@ static detailed_error_t *detailed_error_create_internal(
 
 __attribute__((deprecated)) detailed_error_t *detailed_error_create(
     int code,
-    char *message,
-    object_t *details
+    object_t *details,
+    char *message
     ) {
     return detailed_error_create_internal (
         code,
-        message,
-        details
+        details,
+        message
         );
 }
 
@@ -43,13 +43,13 @@ void detailed_error_free(detailed_error_t *detailed_error) {
         return ;
     }
     listEntry_t *listEntry;
-    if (detailed_error->message) {
-        free(detailed_error->message);
-        detailed_error->message = NULL;
-    }
     if (detailed_error->details) {
         object_free(detailed_error->details);
         detailed_error->details = NULL;
+    }
+    if (detailed_error->message) {
+        free(detailed_error->message);
+        detailed_error->message = NULL;
     }
     free(detailed_error);
 }
@@ -66,15 +66,6 @@ cJSON *detailed_error_convertToJSON(detailed_error_t *detailed_error) {
     }
 
 
-    // detailed_error->message
-    if (!detailed_error->message) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "message", detailed_error->message) == NULL) {
-    goto fail; //String
-    }
-
-
     // detailed_error->details
     if (!detailed_error->details) {
         goto fail;
@@ -86,6 +77,15 @@ cJSON *detailed_error_convertToJSON(detailed_error_t *detailed_error) {
     cJSON_AddItemToObject(item, "details", details_object);
     if(item->child == NULL) {
     goto fail;
+    }
+
+
+    // detailed_error->message
+    if (!detailed_error->message) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "message", detailed_error->message) == NULL) {
+    goto fail; //String
     }
 
     return item;
@@ -115,6 +115,19 @@ detailed_error_t *detailed_error_parseFromJSON(cJSON *detailed_errorJSON){
     goto end; //Numeric
     }
 
+    // detailed_error->details
+    cJSON *details = cJSON_GetObjectItemCaseSensitive(detailed_errorJSON, "details");
+    if (cJSON_IsNull(details)) {
+        details = NULL;
+    }
+    if (!details) {
+        goto end;
+    }
+
+    object_t *details_local_object = NULL;
+    
+    details_local_object = object_parseFromJSON(details); //object
+
     // detailed_error->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(detailed_errorJSON, "message");
     if (cJSON_IsNull(message)) {
@@ -130,24 +143,11 @@ detailed_error_t *detailed_error_parseFromJSON(cJSON *detailed_errorJSON){
     goto end; //String
     }
 
-    // detailed_error->details
-    cJSON *details = cJSON_GetObjectItemCaseSensitive(detailed_errorJSON, "details");
-    if (cJSON_IsNull(details)) {
-        details = NULL;
-    }
-    if (!details) {
-        goto end;
-    }
-
-    object_t *details_local_object = NULL;
-    
-    details_local_object = object_parseFromJSON(details); //object
-
 
     detailed_error_local_var = detailed_error_create_internal (
         code->valuedouble,
-        strdup(message->valuestring),
-        details_local_object
+        details_local_object,
+        strdup(message->valuestring)
         );
 
     return detailed_error_local_var;

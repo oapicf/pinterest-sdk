@@ -17,9 +17,28 @@ import java.util.Objects;
 
 public class MembersToDeleteBodyMembersInner   {
   
+  private BusinessRoleForMembers businessRole;
+
   private String memberId;
 
-  private BusinessRoleForMembers businessRole;
+  /**
+   **/
+  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("business_role")
+  @NotNull
+  public BusinessRoleForMembers getBusinessRole() {
+    return businessRole;
+  }
+  public void setBusinessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+  }
+
 
   /**
    * Unique identifier of the member
@@ -41,25 +60,6 @@ public class MembersToDeleteBodyMembersInner   {
   }
 
 
-  /**
-   **/
-  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
-    this.businessRole = businessRole;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("business_role")
-  @NotNull
-  public BusinessRoleForMembers getBusinessRole() {
-    return businessRole;
-  }
-  public void setBusinessRole(BusinessRoleForMembers businessRole) {
-    this.businessRole = businessRole;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -70,13 +70,13 @@ public class MembersToDeleteBodyMembersInner   {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
@@ -84,8 +84,8 @@ public class MembersToDeleteBodyMembersInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

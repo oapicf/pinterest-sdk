@@ -1,30 +1,49 @@
 # PinterestSdkClient::ItemResponse
 
-## Properties
+## Class instance methods
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
-| **item_id** | **String** | The catalog item id in the merchant namespace | [optional] |
-| **pins** | [**Array&lt;Pin&gt;**](Pin.md) | The pins mapped to the item | [optional] |
-| **attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] |
-| **hotel_id** | **String** | The catalog hotel id in the merchant namespace | [optional] |
-| **creative_assets_id** | **String** | The catalog creative assets id in the merchant namespace | [optional] |
-| **errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] |
+### `openapi_one_of`
 
-## Example
+Returns the list of classes defined in oneOf.
+
+#### Example
 
 ```ruby
 require 'pinterest_sdk'
 
-instance = PinterestSdkClient::ItemResponse.new(
-  catalog_type: null,
-  item_id: DS0294-M,
-  pins: null,
-  attributes: null,
-  hotel_id: DS0294-M,
-  creative_assets_id: DS0294-M,
-  errors: null
-)
+PinterestSdkClient::ItemResponse.openapi_one_of
+# =>
+# [
+#   :'ItemResponseOneOf',
+#   :'ItemResponseOneOf1'
+# ]
 ```
+
+### build
+
+Find the appropriate object from the `openapi_one_of` list and casts the data into it.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::ItemResponse.build(data)
+# => #<ItemResponseOneOf:0x00007fdd4aab02a0>
+
+PinterestSdkClient::ItemResponse.build(data_that_doesnt_match)
+# => nil
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| **data** | **Mixed** | data to be matched against the list of oneOf items |
+
+#### Return type
+
+- `ItemResponseOneOf`
+- `ItemResponseOneOf1`
+- `nil` (if no type matches)
 

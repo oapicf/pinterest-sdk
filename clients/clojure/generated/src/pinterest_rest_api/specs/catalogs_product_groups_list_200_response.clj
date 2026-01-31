@@ -8,8 +8,8 @@
 
 (def catalogs-product-groups-list-200-response-data
   {
-   (ds/req :items) (s/coll-of catalogs-vertical-product-group-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of catalogs-vertical-product-group-spec)
    })
 
 (def catalogs-product-groups-list-200-response-spec

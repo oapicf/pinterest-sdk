@@ -9,10 +9,15 @@
 -export_type([openapi_ad_account_create_subscription_response/0]).
 
 -type openapi_ad_account_create_subscription_response() ::
-  [ {'id', binary() }
-  | {'cryptographic_key', binary() }
-  | {'cryptographic_algorithm', binary() }
+  [ {'ad_account_id', binary() }
+  | {'api_version', binary() }
   | {'created_time', integer() }
+  | {'cryptographic_algorithm', binary() }
+  | {'cryptographic_key', binary() }
+  | {'id', binary() }
+  | {'lead_form_id', binary() }
+  | {'user_account_id', binary() }
+  | {'webhook_url', binary() }
   ].
 
 
@@ -20,10 +25,15 @@ openapi_ad_account_create_subscription_response() ->
     openapi_ad_account_create_subscription_response([]).
 
 openapi_ad_account_create_subscription_response(Fields) ->
-  Default = [ {'id', binary() }
-            , {'cryptographic_key', binary() }
-            , {'cryptographic_algorithm', binary() }
+  Default = [ {'ad_account_id', binary() }
+            , {'api_version', binary() }
             , {'created_time', integer() }
+            , {'cryptographic_algorithm', binary() }
+            , {'cryptographic_key', binary() }
+            , {'id', binary() }
+            , {'lead_form_id', binary() }
+            , {'user_account_id', binary() }
+            , {'webhook_url', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

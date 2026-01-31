@@ -2,17 +2,17 @@
 Protected Class OauthAccessTokenResponseCode
 
 	#tag Property, Flags = &h0
-		refresh_token As String
+		refresh_token As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		refresh_token_expires_in As Integer
+		refresh_token_expires_at As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		response_type As Xoson.O.OptionalString
+		refresh_token_expires_in As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -22,17 +22,22 @@ Protected Class OauthAccessTokenResponseCode
 
 
 	#tag Property, Flags = &h0
-		token_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		expires_in As Integer
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		response_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		scope As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		token_type As String
 	#tag EndProperty
 
 
@@ -104,6 +109,14 @@ Protected Class OauthAccessTokenResponseCode
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="refresh_token_expires_at"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="refresh_token_expires_in"
 			Visible=false
 			Group="Behavior"
@@ -120,14 +133,6 @@ Protected Class OauthAccessTokenResponseCode
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="token_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="expires_in"
 			Visible=false
 			Group="Behavior"
@@ -137,6 +142,14 @@ Protected Class OauthAccessTokenResponseCode
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="scope"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="token_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

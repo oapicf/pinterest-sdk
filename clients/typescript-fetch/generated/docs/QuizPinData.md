@@ -9,8 +9,8 @@ Name | Type
 ------------ | -------------
 `questions` | [Array&lt;QuizPinQuestion&gt;](QuizPinQuestion.md)
 `results` | [Array&lt;QuizPinResult&gt;](QuizPinResult.md)
-`tieBreakerType` | string
 `tieBreakerCustomResult` | [QuizPinResult](QuizPinResult.md)
+`tieBreakerType` | string
 
 ## Example
 
@@ -21,8 +21,8 @@ import type { QuizPinData } from ''
 const example = {
   "questions": null,
   "results": null,
-  "tieBreakerType": null,
   "tieBreakerCustomResult": null,
+  "tieBreakerType": null,
 } satisfies QuizPinData
 
 console.log(example)

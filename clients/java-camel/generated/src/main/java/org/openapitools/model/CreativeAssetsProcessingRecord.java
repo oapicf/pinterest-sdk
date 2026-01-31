@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CreativeAssetsProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreativeAssetsProcessingRecord {
 
   private String creativeAssetsId;
@@ -33,10 +33,10 @@ public class CreativeAssetsProcessingRecord {
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
+  private ItemProcessingStatus status;
+
   @Valid
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
-
-  private ItemProcessingStatus status;
 
   public CreativeAssetsProcessingRecord creativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
@@ -86,6 +86,26 @@ public class CreativeAssetsProcessingRecord {
     this.errors = errors;
   }
 
+  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
   public CreativeAssetsProcessingRecord warnings(List<@Valid ItemValidationEvent> warnings) {
     this.warnings = warnings;
     return this;
@@ -114,26 +134,6 @@ public class CreativeAssetsProcessingRecord {
     this.warnings = warnings;
   }
 
-  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -145,13 +145,13 @@ public class CreativeAssetsProcessingRecord {
     CreativeAssetsProcessingRecord creativeAssetsProcessingRecord = (CreativeAssetsProcessingRecord) o;
     return Objects.equals(this.creativeAssetsId, creativeAssetsProcessingRecord.creativeAssetsId) &&
         Objects.equals(this.errors, creativeAssetsProcessingRecord.errors) &&
-        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings) &&
-        Objects.equals(this.status, creativeAssetsProcessingRecord.status);
+        Objects.equals(this.status, creativeAssetsProcessingRecord.status) &&
+        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, errors, warnings, status);
+    return Objects.hash(creativeAssetsId, errors, status, warnings);
   }
 
   @Override
@@ -160,8 +160,8 @@ public class CreativeAssetsProcessingRecord {
     sb.append("class CreativeAssetsProcessingRecord {\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

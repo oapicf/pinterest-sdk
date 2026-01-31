@@ -27,16 +27,16 @@ pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e
 
 
 typedef struct delete_partner_asset_access_body_accesses_inner_t {
-    char *partner_id; // string
     char *asset_id; // string
+    char *partner_id; // string
     pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } delete_partner_asset_access_body_accesses_inner_t;
 
 __attribute__((deprecated)) delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_create(
-    char *partner_id,
     char *asset_id,
+    char *partner_id,
     pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type
 );
 

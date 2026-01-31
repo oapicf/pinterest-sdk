@@ -10,10 +10,10 @@
 
 (def catalogs-product-groups-update-request-data
   {
-   (ds/opt :name) string?
    (ds/opt :description) string?
-   (ds/opt :is_featured) boolean?
    (ds/opt :filters) catalogs-creative-assets-product-group-filters-spec
+   (ds/opt :is_featured) boolean?
+   (ds/opt :name) string?
    (ds/opt :catalog_type) string?
    (ds/opt :country) country-spec
    (ds/opt :locale) catalogs-locale-spec

@@ -14,47 +14,22 @@ import javax.validation.Valid;
 /**
  * Array with metrics, status, and pin id for the requested metric
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TopVideoPinsAnalyticsResponsePinsInner   {
-  @JsonProperty("metrics")
-  @Valid
-
-  private Map<String, BigDecimal> metrics = null;
-
   @JsonProperty("data_status")
   @Valid
 
   private Map<String, DataStatus> dataStatus = null;
 
+  @JsonProperty("metrics")
+  @Valid
+
+  private Map<String, BigDecimal> metrics = null;
+
   @JsonProperty("pin_id")
   
   private String pinId;
-
-  public TopVideoPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
-    this.metrics = metrics;
-    return this;
-  }
-
-  public TopVideoPinsAnalyticsResponsePinsInner putMetricsItem(String key, BigDecimal metricsItem) {
-    if (this.metrics == null) {
-      this.metrics = new HashMap<>();
-    }
-    this.metrics.put(key, metricsItem);
-    return this;
-  }
-
-   /**
-   * The metric name and daily value for each requested metric
-   * @return metrics
-  **/
-  public Map<String, BigDecimal> getMetrics() {
-    return metrics;
-  }
-
-  public void setMetrics(Map<String, BigDecimal> metrics) {
-    this.metrics = metrics;
-  }
 
   public TopVideoPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
     this.dataStatus = dataStatus;
@@ -79,6 +54,31 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
 
   public void setDataStatus(Map<String, DataStatus> dataStatus) {
     this.dataStatus = dataStatus;
+  }
+
+  public TopVideoPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
+    return this;
+  }
+
+  public TopVideoPinsAnalyticsResponsePinsInner putMetricsItem(String key, BigDecimal metricsItem) {
+    if (this.metrics == null) {
+      this.metrics = new HashMap<>();
+    }
+    this.metrics.put(key, metricsItem);
+    return this;
+  }
+
+   /**
+   * The metric name and daily value for each requested metric
+   * @return metrics
+  **/
+  public Map<String, BigDecimal> getMetrics() {
+    return metrics;
+  }
+
+  public void setMetrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
   }
 
   public TopVideoPinsAnalyticsResponsePinsInner pinId(String pinId) {
@@ -108,14 +108,14 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
       return false;
     }
     TopVideoPinsAnalyticsResponsePinsInner topVideoPinsAnalyticsResponsePinsInner = (TopVideoPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(pinId, topVideoPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -124,8 +124,8 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopVideoPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

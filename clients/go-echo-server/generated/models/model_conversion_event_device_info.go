@@ -1,0 +1,77 @@
+package models
+
+// ConversionEventDeviceInfo - Object containing information about the device where event occurred.
+type ConversionEventDeviceInfo struct {
+
+	// Battery charge level percentage
+	BatteryLevel int32 `json:"battery_level,omitempty"`
+
+	// Device brand
+	Brand string `json:"brand,omitempty"`
+
+	// User device's mobile carrier.
+	Carrier string `json:"carrier,omitempty"`
+
+	// Number of CPU cores
+	CpuCores int32 `json:"cpu_cores,omitempty"`
+
+	// External storage size in GB
+	ExternalStorageFreeSpace int32 `json:"external_storage_free_space,omitempty"`
+
+	// External storage size in GB
+	ExternalStorageSize int32 `json:"external_storage_size,omitempty"`
+
+	// Device form factor
+	FormFactor string `json:"form_factor,omitempty"`
+
+	// Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
+	KernelVersion string `json:"kernel_version,omitempty"`
+
+	// List of user installed languages. ISO 639-1 format
+	Languages []string `json:"languages,omitempty"`
+
+	// Device locale BCP-47 format
+	Locale string `json:"locale,omitempty"`
+
+	// Device model name
+	Model string `json:"model,omitempty"`
+
+	// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
+	NetworkType string `json:"network_type,omitempty"`
+
+	// OS Family
+	OsFamily string `json:"os_family,omitempty"`
+
+	// Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
+	OsName string `json:"os_name,omitempty"`
+
+	// Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin
+	OsReleaseName string `json:"os_release_name,omitempty"`
+
+	// Full name of the version. Examples: iOS: 18.3 Android: 16.1 MacOS: 15.5 Windows: 24H2 Ubuntu Linux: 25.04
+	OsVersion string `json:"os_version,omitempty"`
+
+	// Screen density, PPI
+	ScreenDensity int32 `json:"screen_density,omitempty"`
+
+	// Screen height in pixels
+	ScreenHeight int32 `json:"screen_height,omitempty"`
+
+	// Screen width in pixels
+	ScreenWidth int32 `json:"screen_width,omitempty"`
+
+	// Internal storage size in GB
+	StorageFreeSpace int32 `json:"storage_free_space,omitempty"`
+
+	// Internal storage size in GB
+	StorageSize int32 `json:"storage_size,omitempty"`
+
+	// Device timezone
+	Timezone string `json:"timezone,omitempty"`
+
+	// Timezone abbreviation
+	TimezoneAbbr string `json:"timezone_abbr,omitempty"`
+
+	// Device type
+	Type string `json:"type,omitempty"`
+}

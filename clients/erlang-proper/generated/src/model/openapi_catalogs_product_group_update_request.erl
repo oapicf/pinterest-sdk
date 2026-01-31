@@ -9,10 +9,10 @@
 -export_type([openapi_catalogs_product_group_update_request/0]).
 
 -type openapi_catalogs_product_group_update_request() ::
-  [ {'name', binary() }
-  | {'description', binary() }
-  | {'is_featured', boolean() }
+  [ {'description', binary() }
   | {'filters', openapi_catalogs_product_group_filters_request:openapi_catalogs_product_group_filters_request() }
+  | {'is_featured', boolean() }
+  | {'name', binary() }
   ].
 
 
@@ -20,10 +20,10 @@ openapi_catalogs_product_group_update_request() ->
     openapi_catalogs_product_group_update_request([]).
 
 openapi_catalogs_product_group_update_request(Fields) ->
-  Default = [ {'name', binary() }
-            , {'description', binary() }
-            , {'is_featured', boolean() }
+  Default = [ {'description', binary() }
             , {'filters', openapi_catalogs_product_group_filters_request:openapi_catalogs_product_group_filters_request() }
+            , {'is_featured', boolean() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

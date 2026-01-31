@@ -8,9 +8,9 @@
 
 (def conversion-event-response-data
   {
+   (ds/opt :ad_account_id) string?
    (ds/opt :conversion_event) conversion-tag-type-spec
    (ds/opt :conversion_tag_id) string?
-   (ds/opt :ad_account_id) string?
    (ds/opt :created_time) int?
    })
 

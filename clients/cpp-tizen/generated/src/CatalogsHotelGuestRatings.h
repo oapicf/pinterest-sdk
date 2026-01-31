@@ -45,20 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Your hotel's rating.
-	 */
-	long long getScore();
-
-	/*! \brief Set Your hotel's rating.
-	 */
-	void setScore(long long  score);
-	/*! \brief Get Total number of people who have rated this hotel.
-	 */
-	int getNumberOfReviewers();
-
-	/*! \brief Set Total number of people who have rated this hotel.
-	 */
-	void setNumberOfReviewers(int  number_of_reviewers);
 	/*! \brief Get Max value for the hotel rating score.
 	 */
 	long long getMaxScore();
@@ -66,6 +52,13 @@ public:
 	/*! \brief Set Max value for the hotel rating score.
 	 */
 	void setMaxScore(long long  max_score);
+	/*! \brief Get Total number of people who have rated this hotel.
+	 */
+	int getNumberOfReviewers();
+
+	/*! \brief Set Total number of people who have rated this hotel.
+	 */
+	void setNumberOfReviewers(int  number_of_reviewers);
 	/*! \brief Get System you use for guest reviews.
 	 */
 	std::string getRatingSystem();
@@ -73,12 +66,19 @@ public:
 	/*! \brief Set System you use for guest reviews.
 	 */
 	void setRatingSystem(std::string  rating_system);
+	/*! \brief Get Your hotel's rating.
+	 */
+	long long getScore();
+
+	/*! \brief Set Your hotel's rating.
+	 */
+	void setScore(long long  score);
 
 private:
-	long long score;
-	int number_of_reviewers;
 	long long max_score;
+	int number_of_reviewers;
 	std::string rating_system;
+	long long score;
 	void __init();
 	void __cleanup();
 

@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
- * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  * @param errorCode Error code type if error occurs
  * @param errorMessage Reason for failure
+ * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  */
-case class AdsCreditRedeemResponse(success: Option[Boolean],
-                errorCode: Option[Int],
-                errorMessage: Option[String]
+case class AdsCreditRedeemResponse(errorCode: Option[Int],
+                errorMessage: Option[String],
+                success: Option[Boolean]
                 )
 
 object AdsCreditRedeemResponse {

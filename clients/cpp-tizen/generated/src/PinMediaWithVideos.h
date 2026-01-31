@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "PinMedia.h"
-#include "VideoMetadata.h"
+#include "VideoMetadataWithItemType.h"
 #include <list>
 #include "Object.h"
 
@@ -50,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
+	std::list<VideoMetadataWithItemType> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <VideoMetadataWithItemType> items);
+	/*! \brief Get 
+	 */
 	std::string getMediaType();
 
 	/*! \brief Set 
 	 */
 	void setMediaType(std::string  media_type);
-	/*! \brief Get 
-	 */
-	std::list<VideoMetadata> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <VideoMetadata> items);
 
 private:
+	std::list <VideoMetadataWithItemType>items;
 	std::string media_type;
-	std::list <VideoMetadata>items;
 	void __init();
 	void __cleanup();
 

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionEvents_data_inner_custom_data`
 --
-SELECT `currency`, `value`, `content_ids`, `content_name`, `content_category`, `content_brand`, `contents`, `num_items`, `order_id`, `search_string`, `opt_out_type`, `np` FROM `ConversionEvents_data_inner_custom_data` WHERE 1;
+SELECT `content_brand`, `content_category`, `content_ids`, `content_name`, `contents`, `currency`, `external_measurement_id`, `external_measurement_vendor_id`, `np`, `num_items`, `opt_out_type`, `order_id`, `predicted_ltv`, `search_string`, `value` FROM `ConversionEvents_data_inner_custom_data` WHERE 1;
 
 --
 -- INSERT template for table `ConversionEvents_data_inner_custom_data`
 --
-INSERT INTO `ConversionEvents_data_inner_custom_data`(`currency`, `value`, `content_ids`, `content_name`, `content_category`, `content_brand`, `contents`, `num_items`, `order_id`, `search_string`, `opt_out_type`, `np`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `ConversionEvents_data_inner_custom_data`(`content_brand`, `content_category`, `content_ids`, `content_name`, `contents`, `currency`, `external_measurement_id`, `external_measurement_vendor_id`, `np`, `num_items`, `opt_out_type`, `order_id`, `predicted_ltv`, `search_string`, `value`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionEvents_data_inner_custom_data`
 --
-UPDATE `ConversionEvents_data_inner_custom_data` SET `currency` = ?, `value` = ?, `content_ids` = ?, `content_name` = ?, `content_category` = ?, `content_brand` = ?, `contents` = ?, `num_items` = ?, `order_id` = ?, `search_string` = ?, `opt_out_type` = ?, `np` = ? WHERE 1;
+UPDATE `ConversionEvents_data_inner_custom_data` SET `content_brand` = ?, `content_category` = ?, `content_ids` = ?, `content_name` = ?, `contents` = ?, `currency` = ?, `external_measurement_id` = ?, `external_measurement_vendor_id` = ?, `np` = ?, `num_items` = ?, `opt_out_type` = ?, `order_id` = ?, `predicted_ltv` = ?, `search_string` = ?, `value` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionEvents_data_inner_custom_data`

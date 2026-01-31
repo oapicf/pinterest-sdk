@@ -2,15 +2,15 @@
 Protected Class GetInvites200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List of invite and request data.
-		#tag EndNote
-		items() As OpenAPIClient.Models.InviteResponse
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		#tag Note
+			List of invite and request data.
+		#tag EndNote
+		items() As OpenAPIClient.Models.InviteResponse
 	#tag EndProperty
 
 
@@ -51,19 +51,19 @@ Protected Class GetInvites200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="InviteResponse"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="InviteResponse"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

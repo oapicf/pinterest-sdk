@@ -7,7 +7,6 @@ Keyword metrics JSON
 
 Name | Type
 ------------ | -------------
-`avgCpcInMicroCurrency` | number
 `keywordQueryVolume` | string
 
 ## Example
@@ -17,7 +16,6 @@ import type { KeywordMetrics } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "avgCpcInMicroCurrency": 100000,
   "keywordQueryVolume": 5M+,
 } satisfies KeywordMetrics
 

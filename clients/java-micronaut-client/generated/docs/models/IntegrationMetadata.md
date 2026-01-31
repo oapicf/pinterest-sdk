@@ -10,20 +10,20 @@ The class is defined in **[IntegrationMetadata.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | `String` |  |  [optional property]
-**externalBusinessId** | `String` |  |  [optional property]
-**connectedMerchantId** | `String` |  |  [optional property]
-**connectedUserId** | `String` |  |  [optional property] [readonly property]
+**additionalId1** | `String` |  |  [optional property]
 **connectedAdvertiserId** | `String` |  |  [optional property] [readonly property]
 **connectedLbaId** | `String` |  |  [optional property]
+**connectedMerchantId** | `String` |  |  [optional property]
 **connectedTagId** | `String` |  |  [optional property]
+**connectedUserId** | `String` |  |  [optional property] [readonly property]
+**createdTimestamp** | `BigDecimal` |  |  [optional property]
+**externalBusinessId** | `String` |  |  [optional property]
+**id** | `String` |  |  [optional property]
 **partnerAccessTokenExpiry** | `BigDecimal` |  |  [optional property]
+**partnerMetadata** | `String` |  |  [optional property]
 **partnerRefreshTokenExpiry** | `BigDecimal` |  |  [optional property]
 **scopes** | `String` |  |  [optional property]
-**createdTimestamp** | `BigDecimal` |  |  [optional property]
 **updatedTimestamp** | `BigDecimal` |  |  [optional property]
-**additionalId1** | `String` |  |  [optional property]
-**partnerMetadata** | `String` |  |  [optional property]
 
 
 

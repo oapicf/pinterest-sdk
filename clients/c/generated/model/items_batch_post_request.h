@@ -40,22 +40,22 @@ pinterest_rest_api_items_batch_post_request_LANGUAGE_e items_batch_post_request_
 
 
 typedef struct items_batch_post_request_t {
+    char *catalog_id; // string
     pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
-    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language; //enum
     list_t *items; //nonprimitive container
-    char *catalog_id; // string
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language; //enum
     pinterest_rest_api_batch_operation__e operation; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } items_batch_post_request_t;
 
 __attribute__((deprecated)) items_batch_post_request_t *items_batch_post_request_create(
+    char *catalog_id,
     pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     list_t *items,
-    char *catalog_id,
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     pinterest_rest_api_batch_operation__e operation
 );
 

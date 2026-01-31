@@ -80,8 +80,8 @@ private class OASTopVideoPinsAnalyticsResponsePinsTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASTopVideoPinsAnalyticsResponsePins topVideoPinsAnalyticsResponsePinsInner = new OASTopVideoPinsAnalyticsResponsePins();
-        System.assertEquals(new Map<String, Double>(), topVideoPinsAnalyticsResponsePinsInner.metrics);
         System.assertEquals(new Map<String, OASDataStatus>(), topVideoPinsAnalyticsResponsePinsInner.dataStatus);
+        System.assertEquals(new Map<String, Double>(), topVideoPinsAnalyticsResponsePinsInner.metrics);
         System.assertEquals(null, topVideoPinsAnalyticsResponsePinsInner.pinId);
     }
 }

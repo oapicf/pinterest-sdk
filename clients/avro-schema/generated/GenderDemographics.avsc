@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Gender demographic distribution",
+  "name": "GenderDemographics",
+  "fields": [
+    {
+      "name": "female",
+      "type": "double",
+      "doc": "Percentage of female users"
+    },
+    {
+      "name": "male",
+      "type": "double",
+      "doc": "Percentage of male users"
+    },
+    {
+      "name": "unspecified",
+      "type": "double",
+      "doc": "Percentage of users with unspecified gender"
+    }
+  ]
+
+}

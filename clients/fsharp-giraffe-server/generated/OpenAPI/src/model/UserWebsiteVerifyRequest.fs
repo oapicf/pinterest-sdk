@@ -12,7 +12,7 @@ module UserWebsiteVerifyRequest =
   //#endregion
 
   type UserWebsiteVerifyRequest = {
-    Website : string;
     VerificationMethod : VerificationMethodEnum;
+    Website : string;
   }
   //#endregion

@@ -10,8 +10,8 @@ The class is defined in **[CatalogsProductGroupCurrencyCriteria.java](../../src/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | `NonNullableCatalogsCurrency` |  | 
 **negated** | `Boolean` |  |  [optional property]
+**values** | `NonNullableCatalogsCurrency` |  | 
 
 
 

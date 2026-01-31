@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,11 +17,11 @@ package openapi
 // CatalogsFeedProductCounts - The counts can be null early in the process.
 type CatalogsFeedProductCounts struct {
 
-	// The number of products in the feed file.
-	Original int32 `json:"original,omitempty"`
-
 	// The number of products successfully ingested from the feed file.
 	Ingested int32 `json:"ingested,omitempty"`
+
+	// The number of products in the feed file.
+	Original int32 `json:"original,omitempty"`
 }
 
 // AssertCatalogsFeedProductCountsRequired checks if the required fields are not zero-ed

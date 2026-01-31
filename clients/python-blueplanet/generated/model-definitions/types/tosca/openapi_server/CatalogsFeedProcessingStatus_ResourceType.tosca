@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedProcessingStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedProcessingStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsFeedProcessingStatus {
+    title = CatalogsFeedProcessingStatus
+    description = CatalogsFeedProcessingStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedProcessingStatus {
+    title = CatalogsFeedProcessingStatus
+    description = CatalogsFeedProcessingStatus
+    implements = openapi_server.resourceTypes.CatalogsFeedProcessingStatus
+
+  }
+}

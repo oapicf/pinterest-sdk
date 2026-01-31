@@ -10,14 +10,17 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  **/
 
-@ApiModel(description = "Image URL-based media source")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Image URL-based media source.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImageURL   {
+  @JsonProperty("is_standard")
+  private Boolean isStandard = true;
+
   /**
-   * Gets or Sets sourceType
+   * The source type of the media.
    */
   public enum SourceTypeEnum {
     IMAGE_URL("image_url");
@@ -51,10 +54,26 @@ public class PinMediaSourceImageURL   {
   @JsonProperty("url")
   private String url;
 
+  /**
+   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+   **/
+  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
   @JsonProperty("is_standard")
-  private Boolean isStandard = true;
+  public Boolean getIsStandard() {
+    return isStandard;
+  }
+  public void setIsStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+  }
 
   /**
+   * The source type of the media.
    **/
   public PinMediaSourceImageURL sourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
@@ -62,7 +81,7 @@ public class PinMediaSourceImageURL   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The source type of the media.")
   @JsonProperty("source_type")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -88,24 +107,6 @@ public class PinMediaSourceImageURL   {
     this.url = url;
   }
 
-  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-   **/
-  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
-  @JsonProperty("is_standard")
-  public Boolean getIsStandard() {
-    return isStandard;
-  }
-  public void setIsStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +117,14 @@ public class PinMediaSourceImageURL   {
       return false;
     }
     PinMediaSourceImageURL pinMediaSourceImageURL = (PinMediaSourceImageURL) o;
-    return Objects.equals(sourceType, pinMediaSourceImageURL.sourceType) &&
-        Objects.equals(url, pinMediaSourceImageURL.url) &&
-        Objects.equals(isStandard, pinMediaSourceImageURL.isStandard);
+    return Objects.equals(isStandard, pinMediaSourceImageURL.isStandard) &&
+        Objects.equals(sourceType, pinMediaSourceImageURL.sourceType) &&
+        Objects.equals(url, pinMediaSourceImageURL.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, url, isStandard);
+    return Objects.hash(isStandard, sourceType, url);
   }
 
   @Override
@@ -131,9 +132,9 @@ public class PinMediaSourceImageURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImageURL {\n");
     
+    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("}");
     return sb.toString();
   }

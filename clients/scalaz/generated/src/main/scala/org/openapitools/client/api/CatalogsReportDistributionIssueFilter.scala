@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import CatalogsReportDistributionIssueFilter._
 
 case class CatalogsReportDistributionIssueFilter (
-  reportType: ReportType,
-/* Unique identifier of a catalog. If not given, oldest catalog will be used */
-  catalogId: Option[String])
+  /* Unique identifier of a catalog. If not given, oldest catalog will be used */
+  catalogId: Option[String],
+reportType: ReportType)
 
 object CatalogsReportDistributionIssueFilter {
   import DateTimeCodecs._

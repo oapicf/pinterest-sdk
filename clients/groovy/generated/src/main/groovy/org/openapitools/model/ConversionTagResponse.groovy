@@ -11,11 +11,11 @@ import org.openapitools.model.EntityStatus;
 
 @Canonical
 class ConversionTagResponse {
-    /* Ad account ID. */
-    String adAccountId
     /* Tag code snippet. */
     String codeSnippet
     
+    ConversionTagConfigs configs
+    /* The enhanced match status of the tag */
     EnhancedMatchStatusType enhancedMatchStatus
     /* Tag ID. */
     String id
@@ -23,10 +23,10 @@ class ConversionTagResponse {
     BigDecimal lastFiredTimeMs
     /* Conversion tag name. */
     String name
-    
-    EntityStatus status
     /* Version number. */
     String version
+    /* Ad account ID. */
+    String adAccountId
     
-    ConversionTagConfigs configs
+    EntityStatus status
 }

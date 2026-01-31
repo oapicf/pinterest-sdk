@@ -1,12 +1,62 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Pin media objects.",
+  "doc": "Pin media that can be an image, video, or a mix of both.",
   "name": "PinMedia",
   "fields": [
     {
+      "name": "images",
+      "type": ["null", "model.ImageSize"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "media_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMedia_mediaUnderscoretype",
+        "symbols": [
+          "multiple_mixed"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "cover_image_url",
       "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "duration",
+      "type": ["null", "double"],
+      "doc": "Duration (in miliseconds). Field maybe null after creation due to video processing time.",
+      "default": null
+    },
+    {
+      "name": "height",
+      "type": ["null", "int"],
+      "doc": "Height (in pixels). Field maybe null after creation due to video processing time.",
+      "default": null
+    },
+    {
+      "name": "video_url",
+      "type": ["null", "string"],
+      "doc": "Video url (720p).  **Note:** This field is limited and not available to all apps.",
+      "default": null
+    },
+    {
+      "name": "width",
+      "type": ["null", "int"],
+      "doc": "Width (in pixels). Field maybe null after creation due to video processing time.",
+      "default": null
+    },
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PinMediaMetadata"
+      }],
       "doc": "",
       "default": null
     }

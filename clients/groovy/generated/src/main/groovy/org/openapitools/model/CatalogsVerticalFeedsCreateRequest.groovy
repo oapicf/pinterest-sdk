@@ -19,28 +19,28 @@ import org.openapitools.model.ProductAvailabilityType;
 
 @Canonical
 class CatalogsVerticalFeedsCreateRequest {
-    
-    NullableCurrency defaultCurrency
-    /* A human-friendly name associated to a given feed. */
-    String name
-    
-    CatalogsFormat format
-    
-    CatalogsFeedsCreateRequestDefaultLocale defaultLocale
-    
-    CatalogsFeedCredentials credentials
-    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-    String location
-    
-    CatalogsFeedProcessingSchedule preferredProcessingSchedule
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
+    String catalogId
     
     CatalogsType catalogType
     
-    Country defaultCountry
+    CatalogsFeedCredentials credentials
     
     ProductAvailabilityType defaultAvailability
     
+    Country defaultCountry
+    
+    NullableCurrency defaultCurrency
+    
+    CatalogsFeedsCreateRequestDefaultLocale defaultLocale
+    
+    CatalogsFormat format
+    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+    String location
+    /* A human-friendly name associated to a given feed. */
+    String name
+    
+    CatalogsFeedProcessingSchedule preferredProcessingSchedule
+    
     CatalogsStatus status = "ACTIVE"
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
-    String catalogId
 }

@@ -29,8 +29,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductGroupCreateRequest", description = "Request object for creating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupCreateRequest implements CatalogsVerticalProductGroupCreateRequest {
+
+  private String catalogId;
 
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -67,17 +69,15 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
+  private Country country;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsProductGroupFiltersRequest filters;
 
-  private String catalogId;
-
-  private Country country;
-
   private CatalogsLocale locale;
+
+  private String name;
 
   public CatalogsRetailProductGroupCreateRequest() {
     super();
@@ -86,13 +86,31 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailProductGroupCreateRequest(CatalogTypeEnum catalogType, String name, CatalogsProductGroupFiltersRequest filters, String catalogId, Country country, CatalogsLocale locale) {
-    this.catalogType = catalogType;
-    this.name = name;
-    this.filters = filters;
+  public CatalogsRetailProductGroupCreateRequest(String catalogId, CatalogTypeEnum catalogType, CatalogsProductGroupFiltersRequest filters, String name) {
     this.catalogId = catalogId;
-    this.country = country;
-    this.locale = locale;
+    this.catalogType = catalogType;
+    this.filters = filters;
+    this.name = name;
+  }
+
+  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the retail product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsRetailProductGroupCreateRequest catalogType(CatalogTypeEnum catalogType) {
@@ -115,24 +133,24 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailProductGroupCreateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupCreateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
    */
-  @NotNull 
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @Valid 
+  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   public CatalogsRetailProductGroupCreateRequest description(String description) {
@@ -175,46 +193,6 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
     this.filters = filters;
   }
 
-  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the retail product group.
-   * @return catalogId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the retail product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsRetailProductGroupCreateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  /**
-   * Get country
-   * @return country
-   */
-  @NotNull @Valid 
-  @Schema(name = "country", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
   public CatalogsRetailProductGroupCreateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
     return this;
@@ -224,8 +202,8 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
    * Get locale
    * @return locale
    */
-  @NotNull @Valid 
-  @Schema(name = "locale", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid 
+  @Schema(name = "locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("locale")
   public CatalogsLocale getLocale() {
     return locale;
@@ -233,6 +211,26 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
 
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+  public CatalogsRetailProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
@@ -244,13 +242,13 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
       return false;
     }
     CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest = (CatalogsRetailProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
+        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
         equalsNullable(this.description, catalogsRetailProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
-        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -259,7 +257,7 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, hashCodeNullable(description), filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, hashCodeNullable(description), filters, locale, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -273,13 +271,13 @@ public class CatalogsRetailProductGroupCreateRequest implements CatalogsVertical
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupCreateRequest {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

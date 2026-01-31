@@ -5,9 +5,9 @@
   "name": "CatalogsHotelGuestRatings",
   "fields": [
     {
-      "name": "score",
+      "name": "max_score",
       "type": ["null", "double"],
-      "doc": "Your hotel's rating.",
+      "doc": "Max value for the hotel rating score.",
       "default": null
     },
     {
@@ -17,15 +17,15 @@
       "default": null
     },
     {
-      "name": "max_score",
-      "type": ["null", "double"],
-      "doc": "Max value for the hotel rating score.",
-      "default": null
-    },
-    {
       "name": "rating_system",
       "type": ["null", "string"],
       "doc": "System you use for guest reviews.",
+      "default": null
+    },
+    {
+      "name": "score",
+      "type": ["null", "double"],
+      "doc": "Your hotel's rating.",
       "default": null
     }
   ]

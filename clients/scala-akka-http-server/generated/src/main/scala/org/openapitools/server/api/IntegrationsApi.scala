@@ -7,7 +7,6 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
-import org.openapitools.server.model.DetailedError
 import org.openapitools.server.model.Error
 import org.openapitools.server.model.IntegrationLogsRequest
 import org.openapitools.server.model.IntegrationLogsSuccessResponse
@@ -16,6 +15,7 @@ import org.openapitools.server.model.IntegrationRecord
 import org.openapitools.server.model.IntegrationRequest
 import org.openapitools.server.model.IntegrationRequestPatch
 import org.openapitools.server.model.IntegrationsGetList200Response
+import org.openapitools.server.model.IntegrationsLogsPost400Response
 
 
 class IntegrationsApi(
@@ -117,7 +117,7 @@ trait IntegrationsApiService {
    * Code: 409, Message: Can&#39;t access this integration metadata., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
-  def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: Option[IntegrationRequestPatch])
+  def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch)
       (implicit toEntityMarshallerIntegrationMetadata: ToEntityMarshaller[IntegrationMetadata], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def integrationsCommercePost200(responseIntegrationMetadata: IntegrationMetadata)(implicit toEntityMarshallerIntegrationMetadata: ToEntityMarshaller[IntegrationMetadata]): Route =
@@ -134,7 +134,7 @@ trait IntegrationsApiService {
    * Code: 409, Message: Can&#39;t access this integration metadata., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
-  def integrationsCommercePost(integrationRequest: Option[IntegrationRequest])
+  def integrationsCommercePost(integrationRequest: IntegrationRequest)
       (implicit toEntityMarshallerIntegrationMetadata: ToEntityMarshaller[IntegrationMetadata], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def integrationsGetById200(responseIntegrationRecord: IntegrationRecord)(implicit toEntityMarshallerIntegrationRecord: ToEntityMarshaller[IntegrationRecord]): Route =
@@ -164,17 +164,17 @@ trait IntegrationsApiService {
 
   def integrationsLogsPost200(responseIntegrationLogsSuccessResponse: IntegrationLogsSuccessResponse)(implicit toEntityMarshallerIntegrationLogsSuccessResponse: ToEntityMarshaller[IntegrationLogsSuccessResponse]): Route =
     complete((200, responseIntegrationLogsSuccessResponse))
-  def integrationsLogsPost400(responseDetailedError: DetailedError)(implicit toEntityMarshallerDetailedError: ToEntityMarshaller[DetailedError]): Route =
-    complete((400, responseDetailedError))
+  def integrationsLogsPost400(responseIntegrationsLogsPost400Response: IntegrationsLogsPost400Response)(implicit toEntityMarshallerIntegrationsLogsPost400Response: ToEntityMarshaller[IntegrationsLogsPost400Response]): Route =
+    complete((400, responseIntegrationsLogsPost400Response))
   def integrationsLogsPostDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
    * Code: 200, Message: Success., DataType: IntegrationLogsSuccessResponse
-   * Code: 400, Message: Bad request., DataType: DetailedError
+   * Code: 400, Message: Bad request., DataType: IntegrationsLogsPost400Response
    * Code: 0, Message: Unexpected error, DataType: Error
    */
   def integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest)
-      (implicit toEntityMarshallerDetailedError: ToEntityMarshaller[DetailedError], toEntityMarshallerIntegrationLogsSuccessResponse: ToEntityMarshaller[IntegrationLogsSuccessResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerIntegrationLogsSuccessResponse: ToEntityMarshaller[IntegrationLogsSuccessResponse], toEntityMarshallerIntegrationsLogsPost400Response: ToEntityMarshaller[IntegrationsLogsPost400Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
@@ -189,13 +189,13 @@ trait IntegrationsApiMarshaller {
 
   implicit def toEntityMarshallerIntegrationMetadata: ToEntityMarshaller[IntegrationMetadata]
 
-  implicit def toEntityMarshallerDetailedError: ToEntityMarshaller[DetailedError]
-
   implicit def toEntityMarshallerIntegrationsGetList200Response: ToEntityMarshaller[IntegrationsGetList200Response]
 
   implicit def toEntityMarshallerIntegrationLogsSuccessResponse: ToEntityMarshaller[IntegrationLogsSuccessResponse]
 
   implicit def toEntityMarshallerIntegrationRecord: ToEntityMarshaller[IntegrationRecord]
+
+  implicit def toEntityMarshallerIntegrationsLogsPost400Response: ToEntityMarshaller[IntegrationsLogsPost400Response]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 

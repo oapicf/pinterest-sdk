@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+    // Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
     // String assetType
     test('to test the property `assetType`', () async {
       // TODO

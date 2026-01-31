@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`webhookUrl` | string
 `leadFormId` | string
 `partnerAccessToken` | string
-`partnerRefreshToken` | string
 `partnerMetadata` | [AdAccountCreateSubscriptionRequestPartnerMetadata](AdAccountCreateSubscriptionRequestPartnerMetadata.md)
+`partnerRefreshToken` | string
+`webhookUrl` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { AdAccountCreateSubscriptionRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "webhookUrl": https://webhook.example.com/xyz,
   "leadFormId": 383791336903426390,
   "partnerAccessToken": null,
-  "partnerRefreshToken": null,
   "partnerMetadata": null,
+  "partnerRefreshToken": null,
+  "webhookUrl": https://webhook.example.com/xyz,
 } satisfies AdAccountCreateSubscriptionRequest
 
 console.log(example)

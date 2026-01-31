@@ -8,11 +8,11 @@
 (def conversion-events-data-inner-custom-data-contents-inner-data
   {
    (ds/opt :id) string?
+   (ds/opt :item_brand) string?
+   (ds/opt :item_category) string?
+   (ds/opt :item_name) string?
    (ds/opt :item_price) string?
    (ds/opt :quantity) int?
-   (ds/opt :item_name) string?
-   (ds/opt :item_category) string?
-   (ds/opt :item_brand) string?
    })
 
 (def conversion-events-data-inner-custom-data-contents-inner-spec

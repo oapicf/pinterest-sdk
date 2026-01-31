@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CreativeAssetsProcessingRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CreativeAssetsProcessingRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemProcessingStatus = openapi_server.resourceTypes.ItemProcessingStatus
+  ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
+}
+resourceTypes {
+
+  CreativeAssetsProcessingRecord {
+    title = CreativeAssetsProcessingRecord
+    description = CreativeAssetsProcessingRecord
+    derivedFrom = Root
+    properties {
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = false
+        }
+        errors {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail."
+          optional = false
+        }
+        status {
+          type = ItemProcessingStatus
+          description = ""
+          optional = false
+        }
+        warnings {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the validation warnings for the item processing record"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CreativeAssetsProcessingRecord {
+    title = CreativeAssetsProcessingRecord
+    description = CreativeAssetsProcessingRecord
+    implements = openapi_server.resourceTypes.CreativeAssetsProcessingRecord
+
+  }
+}

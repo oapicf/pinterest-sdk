@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -158,7 +158,7 @@ type ApiProductGroupPromotionsGetRequest struct {
 	productGroupPromotionId string
 }
 
-func (r ApiProductGroupPromotionsGetRequest) Execute() (*ProductGroupPromotionResponse, *http.Response, error) {
+func (r ApiProductGroupPromotionsGetRequest) Execute() (*ProductGroupPromotion, *http.Response, error) {
 	return r.ApiService.ProductGroupPromotionsGetExecute(r)
 }
 
@@ -182,13 +182,13 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsGet(ctx context
 }
 
 // Execute executes the request
-//  @return ProductGroupPromotionResponse
-func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsGetExecute(r ApiProductGroupPromotionsGetRequest) (*ProductGroupPromotionResponse, *http.Response, error) {
+//  @return ProductGroupPromotion
+func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsGetExecute(r ApiProductGroupPromotionsGetRequest) (*ProductGroupPromotion, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProductGroupPromotionResponse
+		localVarReturnValue  *ProductGroupPromotion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductGroupPromotionsAPIService.ProductGroupPromotionsGet")
@@ -614,6 +614,7 @@ type ApiProductGroupsAnalyticsRequest struct {
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
+	reportingTimezone *ReportingTimeZone
 }
 
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -652,7 +653,7 @@ func (r ApiProductGroupsAnalyticsRequest) ClickWindowDays(clickWindowDays int32)
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiProductGroupsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiProductGroupsAnalyticsRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -670,6 +671,12 @@ func (r ApiProductGroupsAnalyticsRequest) ConversionReportTime(conversionReportT
 	return r
 }
 
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiProductGroupsAnalyticsRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiProductGroupsAnalyticsRequest {
+	r.reportingTimezone = &reportingTimezone
+	return r
+}
+
 func (r ApiProductGroupsAnalyticsRequest) Execute() ([]ProductGroupAnalyticsResponseInner, *http.Response, error) {
 	return r.ApiService.ProductGroupsAnalyticsExecute(r)
 }
@@ -679,8 +686,8 @@ ProductGroupsAnalytics Get product group analytics
 
 Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+  - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -730,8 +737,8 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 	if len(*r.productGroupIds) < 1 {
 		return localVarReturnValue, nil, reportError("productGroupIds must have at least 1 elements")
 	}
-	if len(*r.productGroupIds) > 100 {
-		return localVarReturnValue, nil, reportError("productGroupIds must have less than 100 elements")
+	if len(*r.productGroupIds) > 250 {
+		return localVarReturnValue, nil, reportError("productGroupIds must have less than 250 elements")
 	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
@@ -782,6 +789,9 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
         var defaultValue string = "TIME_OF_AD_ACTION"
         parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
         r.conversionReportTime = &defaultValue
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

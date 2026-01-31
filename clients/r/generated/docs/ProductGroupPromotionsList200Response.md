@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[ProductGroupPromotionResponseItem]**](ProductGroupPromotionResponseItem.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[ProductGroupPromotion]**](ProductGroupPromotion.md) |  | 
 
 

@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
 `creativeAssetsIds` | Array&lt;string&gt;
-`catalogId` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { CatalogsCreativeAssetsItemsFilter } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": null,
   "catalogType": null,
   "creativeAssetsIds": null,
-  "catalogId": null,
 } satisfies CatalogsCreativeAssetsItemsFilter
 
 console.log(example)

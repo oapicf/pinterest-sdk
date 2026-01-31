@@ -6,18 +6,6 @@ goog.provide('API.Client.catalogs_product_group_pricing_currency_criteria');
 API.Client.CatalogsProductGroupPricingCurrencyCriteria = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsProductGroupPricingCurrencyCriteria.prototype.operator;
-
-/**
- * @type {!number}
- * @export
- */
-API.Client.CatalogsProductGroupPricingCurrencyCriteria.prototype.value;
-
-/**
  * @type {!API.Client.NonNullableCatalogsCurrency}
  * @export
  */
@@ -28,6 +16,18 @@ API.Client.CatalogsProductGroupPricingCurrencyCriteria.prototype.currency;
  * @export
  */
 API.Client.CatalogsProductGroupPricingCurrencyCriteria.prototype.negated;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsProductGroupPricingCurrencyCriteria.prototype.operator;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsProductGroupPricingCurrencyCriteria.prototype.value;
 
 /** @enum {string} */
 API.Client.CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum = { 

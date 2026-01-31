@@ -23,21 +23,16 @@ AdAccountCreateSubscriptionRequest::~AdAccountCreateSubscriptionRequest()
 void
 AdAccountCreateSubscriptionRequest::__init()
 {
-	//webhook_url = std::string();
 	//lead_form_id = std::string();
 	//partner_access_token = std::string();
-	//partner_refresh_token = std::string();
 	//partner_metadata = new AdAccountCreateSubscriptionRequest_partner_metadata();
+	//partner_refresh_token = std::string();
+	//webhook_url = std::string();
 }
 
 void
 AdAccountCreateSubscriptionRequest::__cleanup()
 {
-	//if(webhook_url != NULL) {
-	//
-	//delete webhook_url;
-	//webhook_url = NULL;
-	//}
 	//if(lead_form_id != NULL) {
 	//
 	//delete lead_form_id;
@@ -48,15 +43,20 @@ AdAccountCreateSubscriptionRequest::__cleanup()
 	//delete partner_access_token;
 	//partner_access_token = NULL;
 	//}
+	//if(partner_metadata != NULL) {
+	//
+	//delete partner_metadata;
+	//partner_metadata = NULL;
+	//}
 	//if(partner_refresh_token != NULL) {
 	//
 	//delete partner_refresh_token;
 	//partner_refresh_token = NULL;
 	//}
-	//if(partner_metadata != NULL) {
+	//if(webhook_url != NULL) {
 	//
-	//delete partner_metadata;
-	//partner_metadata = NULL;
+	//delete webhook_url;
+	//webhook_url = NULL;
 	//}
 	//
 }
@@ -66,17 +66,6 @@ AdAccountCreateSubscriptionRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *webhook_urlKey = "webhook_url";
-	node = json_object_get_member(pJsonObject, webhook_urlKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&webhook_url, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *lead_form_idKey = "lead_form_id";
 	node = json_object_get_member(pJsonObject, lead_form_idKey);
 	if (node !=NULL) {
@@ -99,17 +88,6 @@ AdAccountCreateSubscriptionRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *partner_refresh_tokenKey = "partner_refresh_token";
-	node = json_object_get_member(pJsonObject, partner_refresh_tokenKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&partner_refresh_token, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *partner_metadataKey = "partner_metadata";
 	node = json_object_get_member(pJsonObject, partner_metadataKey);
 	if (node !=NULL) {
@@ -121,6 +99,28 @@ AdAccountCreateSubscriptionRequest::fromJson(char* jsonStr)
 			
 			AdAccountCreateSubscriptionRequest_partner_metadata* obj = static_cast<AdAccountCreateSubscriptionRequest_partner_metadata*> (&partner_metadata);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *partner_refresh_tokenKey = "partner_refresh_token";
+	node = json_object_get_member(pJsonObject, partner_refresh_tokenKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&partner_refresh_token, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *webhook_urlKey = "webhook_url";
+	node = json_object_get_member(pJsonObject, webhook_urlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&webhook_url, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -136,15 +136,6 @@ AdAccountCreateSubscriptionRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getWebhookUrl();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *webhook_urlKey = "webhook_url";
-	json_object_set_member(pJsonObject, webhook_urlKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getLeadFormId();
 		node = converttoJson(&obj, "std::string", "");
@@ -163,15 +154,6 @@ AdAccountCreateSubscriptionRequest::toJson()
 	}
 	const gchar *partner_access_tokenKey = "partner_access_token";
 	json_object_set_member(pJsonObject, partner_access_tokenKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPartnerRefreshToken();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *partner_refresh_tokenKey = "partner_refresh_token";
-	json_object_set_member(pJsonObject, partner_refresh_tokenKey, node);
 	if (isprimitive("AdAccountCreateSubscriptionRequest_partner_metadata")) {
 		AdAccountCreateSubscriptionRequest_partner_metadata obj = getPartnerMetadata();
 		node = converttoJson(&obj, "AdAccountCreateSubscriptionRequest_partner_metadata", "");
@@ -186,24 +168,30 @@ AdAccountCreateSubscriptionRequest::toJson()
 	}
 	const gchar *partner_metadataKey = "partner_metadata";
 	json_object_set_member(pJsonObject, partner_metadataKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPartnerRefreshToken();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *partner_refresh_tokenKey = "partner_refresh_token";
+	json_object_set_member(pJsonObject, partner_refresh_tokenKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getWebhookUrl();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *webhook_urlKey = "webhook_url";
+	json_object_set_member(pJsonObject, webhook_urlKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-AdAccountCreateSubscriptionRequest::getWebhookUrl()
-{
-	return webhook_url;
-}
-
-void
-AdAccountCreateSubscriptionRequest::setWebhookUrl(std::string  webhook_url)
-{
-	this->webhook_url = webhook_url;
 }
 
 std::string
@@ -230,6 +218,18 @@ AdAccountCreateSubscriptionRequest::setPartnerAccessToken(std::string  partner_a
 	this->partner_access_token = partner_access_token;
 }
 
+AdAccountCreateSubscriptionRequest_partner_metadata
+AdAccountCreateSubscriptionRequest::getPartnerMetadata()
+{
+	return partner_metadata;
+}
+
+void
+AdAccountCreateSubscriptionRequest::setPartnerMetadata(AdAccountCreateSubscriptionRequest_partner_metadata  partner_metadata)
+{
+	this->partner_metadata = partner_metadata;
+}
+
 std::string
 AdAccountCreateSubscriptionRequest::getPartnerRefreshToken()
 {
@@ -242,16 +242,16 @@ AdAccountCreateSubscriptionRequest::setPartnerRefreshToken(std::string  partner_
 	this->partner_refresh_token = partner_refresh_token;
 }
 
-AdAccountCreateSubscriptionRequest_partner_metadata
-AdAccountCreateSubscriptionRequest::getPartnerMetadata()
+std::string
+AdAccountCreateSubscriptionRequest::getWebhookUrl()
 {
-	return partner_metadata;
+	return webhook_url;
 }
 
 void
-AdAccountCreateSubscriptionRequest::setPartnerMetadata(AdAccountCreateSubscriptionRequest_partner_metadata  partner_metadata)
+AdAccountCreateSubscriptionRequest::setWebhookUrl(std::string  webhook_url)
 {
-	this->partner_metadata = partner_metadata;
+	this->webhook_url = webhook_url;
 }
 
 

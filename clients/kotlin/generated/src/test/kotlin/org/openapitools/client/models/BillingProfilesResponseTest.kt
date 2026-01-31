@@ -25,10 +25,16 @@ class BillingProfilesResponseTest : ShouldSpec() {
         // uncomment below to create an instance of BillingProfilesResponse
         //val modelInstance = BillingProfilesResponse()
 
-        // to test the property `id` - Billing ID.
-        should("test id") {
+        // to test the property `advertiserId` - Advertiser ID of the billing.
+        should("test advertiserId") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
+            //modelInstance.advertiserId shouldBe ("TODO")
+        }
+
+        // to test the property `billingType` - Billing type of the advertiser
+        should("test billingType") {
+            // uncomment below to test the property
+            //modelInstance.billingType shouldBe ("TODO")
         }
 
         // to test the property `cardType` - Type of the card.
@@ -37,22 +43,22 @@ class BillingProfilesResponseTest : ShouldSpec() {
             //modelInstance.cardType shouldBe ("TODO")
         }
 
-        // to test the property `status` - Status of the billing.
-        should("test status") {
+        // to test the property `id` - Billing ID.
+        should("test id") {
             // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
-        // to test the property `advertiserId` - Advertiser ID of the billing.
-        should("test advertiserId") {
-            // uncomment below to test the property
-            //modelInstance.advertiserId shouldBe ("TODO")
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `paymentMethodBrand` - Brand of the payment method.
         should("test paymentMethodBrand") {
             // uncomment below to test the property
             //modelInstance.paymentMethodBrand shouldBe ("TODO")
+        }
+
+        // to test the property `status` - Status of the billing.
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

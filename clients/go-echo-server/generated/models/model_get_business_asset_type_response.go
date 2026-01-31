@@ -8,4 +8,5 @@ const (
 	PROFILE GetBusinessAssetTypeResponse = "PROFILE"
 	ASSET_GROUP GetBusinessAssetTypeResponse = "ASSET_GROUP"
 	CONVERSION_TAG GetBusinessAssetTypeResponse = "CONVERSION_TAG"
+	CATALOG GetBusinessAssetTypeResponse = "CATALOG"
 )

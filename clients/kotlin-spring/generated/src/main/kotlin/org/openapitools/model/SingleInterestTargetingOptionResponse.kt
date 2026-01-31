@@ -15,25 +15,25 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param id 
- * @param name 
  * @param childInterests 
+ * @param id 
  * @param level 
+ * @param name 
  */
 data class SingleInterestTargetingOptionResponse(
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("child_interests") val childInterests: kotlin.collections.List<kotlin.String>? = null,
 
     @get:Pattern(regexp="\\d+")
     @Schema(example = "945391946569", description = "")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
-    @Schema(example = "Dress", description = "")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("child_interests") val childInterests: kotlin.collections.List<kotlin.String>? = null,
-
     @Schema(example = "2", description = "")
-    @get:JsonProperty("level") val level: kotlin.Int? = null
+    @get:JsonProperty("level") val level: kotlin.Int? = null,
+
+    @Schema(example = "Dress", description = "")
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
 }

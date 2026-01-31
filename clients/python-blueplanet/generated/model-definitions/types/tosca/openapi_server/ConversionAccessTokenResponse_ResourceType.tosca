@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionAccessTokenResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionAccessTokenResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionAccessTokenResponse {
+    title = ConversionAccessTokenResponse
+    description = ConversionAccessTokenResponse
+    derivedFrom = Root
+    properties {
+        access_token {
+          type =  string
+          description = ""
+          optional = true
+        }
+        token_type {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionAccessTokenResponse {
+    title = ConversionAccessTokenResponse
+    description = ConversionAccessTokenResponse
+    implements = openapi_server.resourceTypes.ConversionAccessTokenResponse
+
+  }
+}

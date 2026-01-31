@@ -12,30 +12,26 @@ import AnyCodable
 
 public struct CustomerListUpdateRequest: Codable, JSONEncodable, Hashable {
 
+    public var operationType: UserListOperationType
     /** Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. */
     public var records: String
-    public var operationType: UserListOperationType
-    public var exceptions: Exception?
 
-    public init(records: String, operationType: UserListOperationType, exceptions: Exception? = nil) {
-        self.records = records
+    public init(operationType: UserListOperationType, records: String) {
         self.operationType = operationType
-        self.exceptions = exceptions
+        self.records = records
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case records
         case operationType = "operation_type"
-        case exceptions
+        case records
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(records, forKey: .records)
         try container.encode(operationType, forKey: .operationType)
-        try container.encodeIfPresent(exceptions, forKey: .exceptions)
+        try container.encode(records, forKey: .records)
     }
 }
 

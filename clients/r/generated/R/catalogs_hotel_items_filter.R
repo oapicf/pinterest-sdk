@@ -7,18 +7,18 @@
 #' @title CatalogsHotelItemsFilter
 #' @description CatalogsHotelItemsFilter Class
 #' @format An \code{R6Class} generator object
+#' @field catalog_id Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog character [optional]
 #' @field catalog_type  character
 #' @field hotel_ids  list(character)
-#' @field catalog_id Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsHotelItemsFilter <- R6::R6Class(
   "CatalogsHotelItemsFilter",
   public = list(
+    `catalog_id` = NULL,
     `catalog_type` = NULL,
     `hotel_ids` = NULL,
-    `catalog_id` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelItemsFilter class.
@@ -81,6 +81,10 @@ CatalogsHotelItemsFilter <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsHotelItemsFilterObject <- list()
+      if (!is.null(self$`catalog_id`)) {
+        CatalogsHotelItemsFilterObject[["catalog_id"]] <-
+          self$`catalog_id`
+      }
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelItemsFilterObject[["catalog_type"]] <-
           self$`catalog_type`
@@ -88,10 +92,6 @@ CatalogsHotelItemsFilter <- R6::R6Class(
       if (!is.null(self$`hotel_ids`)) {
         CatalogsHotelItemsFilterObject[["hotel_ids"]] <-
           self$`hotel_ids`
-      }
-      if (!is.null(self$`catalog_id`)) {
-        CatalogsHotelItemsFilterObject[["catalog_id"]] <-
-          self$`catalog_id`
       }
       return(CatalogsHotelItemsFilterObject)
     },
@@ -103,6 +103,9 @@ CatalogsHotelItemsFilter <- R6::R6Class(
     #' @return the instance of CatalogsHotelItemsFilter
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
+      }
       if (!is.null(this_object$`catalog_type`)) {
         if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
           stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
@@ -111,9 +114,6 @@ CatalogsHotelItemsFilter <- R6::R6Class(
       }
       if (!is.null(this_object$`hotel_ids`)) {
         self$`hotel_ids` <- ApiClient$new()$deserializeObj(this_object$`hotel_ids`, "array[character]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`catalog_id`)) {
-        self$`catalog_id` <- this_object$`catalog_id`
       }
       self
     },
@@ -136,12 +136,12 @@ CatalogsHotelItemsFilter <- R6::R6Class(
     #' @return the instance of CatalogsHotelItemsFilter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`catalog_id` <- this_object$`catalog_id`
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
       self$`hotel_ids` <- ApiClient$new()$deserializeObj(this_object$`hotel_ids`, "array[character]", loadNamespace("openapi"))
-      self$`catalog_id` <- this_object$`catalog_id`
       self
     },
 
@@ -181,6 +181,10 @@ CatalogsHotelItemsFilter <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         return(FALSE)
@@ -198,10 +202,6 @@ CatalogsHotelItemsFilter <- R6::R6Class(
         return(FALSE)
       }
 
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -211,6 +211,10 @@ CatalogsHotelItemsFilter <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
@@ -226,10 +230,6 @@ CatalogsHotelItemsFilter <- R6::R6Class(
       }
       if (length(self$`hotel_ids`) < 1) {
         invalid_fields["hotel_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
-      }
-
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

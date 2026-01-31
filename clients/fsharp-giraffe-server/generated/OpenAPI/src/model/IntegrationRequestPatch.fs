@@ -9,17 +9,17 @@ module IntegrationRequestPatch =
 
 
   type IntegrationRequestPatch = {
-    ConnectedMerchantId : string;
+    AdditionalId1 : string;
     ConnectedAdvertiserId : string;
     ConnectedLbaId : string;
+    ConnectedMerchantId : string;
     ConnectedTagId : string;
     PartnerAccessToken : string;
-    PartnerRefreshToken : string;
-    PartnerPrimaryEmail : string;
     PartnerAccessTokenExpiry : decimal;
+    PartnerMetadata : string;
+    PartnerPrimaryEmail : string;
+    PartnerRefreshToken : string;
     PartnerRefreshTokenExpiry : decimal;
     Scopes : string;
-    AdditionalId1 : string;
-    PartnerMetadata : string;
   }
   //#endregion

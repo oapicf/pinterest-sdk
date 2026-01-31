@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;Catalog&gt;**](Catalog.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;Catalog&gt;**](Catalog.md) |  | 
 
 
 

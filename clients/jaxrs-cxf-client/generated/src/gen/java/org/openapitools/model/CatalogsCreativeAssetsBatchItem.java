@@ -18,6 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsBatchItem  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+
  /**
   * The catalog creative assets id in the merchant namespace
   */
@@ -58,10 +62,24 @@ DELETE(String.valueOf("DELETE"));
   @ApiModelProperty(required = true, value = "")
 
   private OperationEnum operation;
+ /**
+   * Get attributes
+   * @return attributes
+  **/
+  @JsonProperty("attributes")
+  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
+  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
-  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+  public CatalogsCreativeAssetsBatchItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
    * The catalog creative assets id in the merchant namespace
    * @return creativeAssetsId
@@ -101,24 +119,6 @@ DELETE(String.valueOf("DELETE"));
     return this;
   }
 
- /**
-   * Get attributes
-   * @return attributes
-  **/
-  @JsonProperty("attributes")
-  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  public CatalogsCreativeAssetsBatchItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -128,14 +128,14 @@ DELETE(String.valueOf("DELETE"));
       return false;
     }
     CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem = (CatalogsCreativeAssetsBatchItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -143,9 +143,9 @@ DELETE(String.valueOf("DELETE"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

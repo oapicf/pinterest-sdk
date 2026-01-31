@@ -12,11 +12,12 @@ import org.joda.time.DateTime
 import SummaryPin._
 
 case class SummaryPin (
-  media: Option[PinMedia],
-altText: Option[String],
+  altText: Option[String],
+description: Option[String],
+id: Option[String],
 link: Option[String],
-title: Option[String],
-description: Option[String])
+media: Option[PinMedia],
+title: Option[String])
 
 object SummaryPin {
   import DateTimeCodecs._

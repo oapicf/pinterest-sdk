@@ -19,34 +19,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "The result, and link out, based on the user’s choice.")
 @JsonTypeName("QuizPinResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinResult   {
-  private String organicPinId;
   private String androidDeepLink;
-  private String iosDeepLink;
   private String destinationUrl;
+  private String iosDeepLink;
+  private String organicPinId;
   private BigDecimal resultId;
 
   public QuizPinResult() {
-  }
-
-  /**
-   **/
-  public QuizPinResult organicPinId(String organicPinId) {
-    this.organicPinId = organicPinId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("organic_pin_id")
-  public String getOrganicPinId() {
-    return organicPinId;
-  }
-
-  @JsonProperty("organic_pin_id")
-  public void setOrganicPinId(String organicPinId) {
-    this.organicPinId = organicPinId;
   }
 
   /**
@@ -70,6 +51,25 @@ public class QuizPinResult   {
 
   /**
    **/
+  public QuizPinResult destinationUrl(String destinationUrl) {
+    this.destinationUrl = destinationUrl;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("destination_url")
+  public String getDestinationUrl() {
+    return destinationUrl;
+  }
+
+  @JsonProperty("destination_url")
+  public void setDestinationUrl(String destinationUrl) {
+    this.destinationUrl = destinationUrl;
+  }
+
+  /**
+   **/
   public QuizPinResult iosDeepLink(String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
     return this;
@@ -89,21 +89,21 @@ public class QuizPinResult   {
 
   /**
    **/
-  public QuizPinResult destinationUrl(String destinationUrl) {
-    this.destinationUrl = destinationUrl;
+  public QuizPinResult organicPinId(String organicPinId) {
+    this.organicPinId = organicPinId;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("destination_url")
-  public String getDestinationUrl() {
-    return destinationUrl;
+  @JsonProperty("organic_pin_id")
+  public String getOrganicPinId() {
+    return organicPinId;
   }
 
-  @JsonProperty("destination_url")
-  public void setDestinationUrl(String destinationUrl) {
-    this.destinationUrl = destinationUrl;
+  @JsonProperty("organic_pin_id")
+  public void setOrganicPinId(String organicPinId) {
+    this.organicPinId = organicPinId;
   }
 
   /**
@@ -135,16 +135,16 @@ public class QuizPinResult   {
       return false;
     }
     QuizPinResult quizPinResult = (QuizPinResult) o;
-    return Objects.equals(this.organicPinId, quizPinResult.organicPinId) &&
-        Objects.equals(this.androidDeepLink, quizPinResult.androidDeepLink) &&
-        Objects.equals(this.iosDeepLink, quizPinResult.iosDeepLink) &&
+    return Objects.equals(this.androidDeepLink, quizPinResult.androidDeepLink) &&
         Objects.equals(this.destinationUrl, quizPinResult.destinationUrl) &&
+        Objects.equals(this.iosDeepLink, quizPinResult.iosDeepLink) &&
+        Objects.equals(this.organicPinId, quizPinResult.organicPinId) &&
         Objects.equals(this.resultId, quizPinResult.resultId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(organicPinId, androidDeepLink, iosDeepLink, destinationUrl, resultId);
+    return Objects.hash(androidDeepLink, destinationUrl, iosDeepLink, organicPinId, resultId);
   }
 
   @Override
@@ -152,10 +152,10 @@ public class QuizPinResult   {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinResult {\n");
     
-    sb.append("    organicPinId: ").append(toIndentedString(organicPinId)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
-    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    destinationUrl: ").append(toIndentedString(destinationUrl)).append("\n");
+    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    organicPinId: ").append(toIndentedString(organicPinId)).append("\n");
     sb.append("    resultId: ").append(toIndentedString(resultId)).append("\n");
     sb.append("}");
     return sb.toString();

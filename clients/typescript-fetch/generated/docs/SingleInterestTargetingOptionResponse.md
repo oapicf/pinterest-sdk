@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`name` | string
 `childInterests` | Array&lt;string&gt;
+`id` | string
 `level` | number
+`name` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { SingleInterestTargetingOptionResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 945391946569,
-  "name": Dress,
   "childInterests": null,
+  "id": 945391946569,
   "level": 2,
+  "name": Dress,
 } satisfies SingleInterestTargetingOptionResponse
 
 console.log(example)

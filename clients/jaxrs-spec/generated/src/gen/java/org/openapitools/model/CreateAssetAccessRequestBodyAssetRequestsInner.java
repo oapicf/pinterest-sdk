@@ -21,40 +21,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateAssetAccessRequestBody_asset_requests_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetAccessRequestBodyAssetRequestsInner   {
-  private String partnerId;
   private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+  private String partnerId;
 
   public CreateAssetAccessRequestBodyAssetRequestsInner() {
   }
 
   @JsonCreator
   public CreateAssetAccessRequestBodyAssetRequestsInner(
-    @JsonProperty(required = true, value = "partner_id") String partnerId,
-    @JsonProperty(required = true, value = "asset_id_to_permissions") Map<String, List<Permissions>> assetIdToPermissions
+    @JsonProperty(required = true, value = "asset_id_to_permissions") Map<String, List<Permissions>> assetIdToPermissions,
+    @JsonProperty(required = true, value = "partner_id") String partnerId
   ) {
-    this.partnerId = partnerId;
     this.assetIdToPermissions = assetIdToPermissions;
-  }
-
-  /**
-   * Unique identifier of a business partner to request asset access to.
-   **/
-  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
-  @JsonProperty(required = true, value = "partner_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getPartnerId() {
-    return partnerId;
-  }
-
-  @JsonProperty(required = true, value = "partner_id")
-  public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
   }
 
@@ -94,6 +74,26 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
 
     return this;
   }
+  /**
+   * Unique identifier of a business partner to request asset access to.
+   **/
+  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
+  @JsonProperty(required = true, value = "partner_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getPartnerId() {
+    return partnerId;
+  }
+
+  @JsonProperty(required = true, value = "partner_id")
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -104,13 +104,13 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
       return false;
     }
     CreateAssetAccessRequestBodyAssetRequestsInner createAssetAccessRequestBodyAssetRequestsInner = (CreateAssetAccessRequestBodyAssetRequestsInner) o;
-    return Objects.equals(this.partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId) &&
-        Objects.equals(this.assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions);
+    return Objects.equals(this.assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions) &&
+        Objects.equals(this.partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, partnerId);
   }
 
   @Override
@@ -118,8 +118,8 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetAccessRequestBodyAssetRequestsInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

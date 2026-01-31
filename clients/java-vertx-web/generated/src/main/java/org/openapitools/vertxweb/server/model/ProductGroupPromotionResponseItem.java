@@ -8,29 +8,29 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.Exception;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionResponseElement;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductGroupPromotionResponseItem   {
   
-  private ProductGroupPromotionResponseElement data;
+  private ProductGroupPromotion data;
   private List<Exception> exceptions;
 
   public ProductGroupPromotionResponseItem () {
 
   }
 
-  public ProductGroupPromotionResponseItem (ProductGroupPromotionResponseElement data, List<Exception> exceptions) {
+  public ProductGroupPromotionResponseItem (ProductGroupPromotion data, List<Exception> exceptions) {
     this.data = data;
     this.exceptions = exceptions;
   }
 
     
   @JsonProperty("data")
-  public ProductGroupPromotionResponseElement getData() {
+  public ProductGroupPromotion getData() {
     return data;
   }
-  public void setData(ProductGroupPromotionResponseElement data) {
+  public void setData(ProductGroupPromotion data) {
     this.data = data;
   }
 

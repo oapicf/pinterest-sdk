@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsUpdateHotelItem{}
 
 // CatalogsUpdateHotelItem Object describing an hotel item batch record
 type CatalogsUpdateHotelItem struct {
+	Attributes CatalogsUpdatableHotelAttributes `json:"attributes"`
 	// The catalog hotel item id in the merchant namespace
 	HotelId string `json:"hotel_id"`
 	Operation string `json:"operation"`
-	Attributes CatalogsUpdatableHotelAttributes `json:"attributes"`
 }
 
 type _CatalogsUpdateHotelItem CatalogsUpdateHotelItem
@@ -34,11 +34,11 @@ type _CatalogsUpdateHotelItem CatalogsUpdateHotelItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsUpdateHotelItem(hotelId string, operation string, attributes CatalogsUpdatableHotelAttributes) *CatalogsUpdateHotelItem {
+func NewCatalogsUpdateHotelItem(attributes CatalogsUpdatableHotelAttributes, hotelId string, operation string) *CatalogsUpdateHotelItem {
 	this := CatalogsUpdateHotelItem{}
+	this.Attributes = attributes
 	this.HotelId = hotelId
 	this.Operation = operation
-	this.Attributes = attributes
 	return &this
 }
 
@@ -48,6 +48,30 @@ func NewCatalogsUpdateHotelItem(hotelId string, operation string, attributes Cat
 func NewCatalogsUpdateHotelItemWithDefaults() *CatalogsUpdateHotelItem {
 	this := CatalogsUpdateHotelItem{}
 	return &this
+}
+
+// GetAttributes returns the Attributes field value
+func (o *CatalogsUpdateHotelItem) GetAttributes() CatalogsUpdatableHotelAttributes {
+	if o == nil {
+		var ret CatalogsUpdatableHotelAttributes
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsUpdateHotelItem) GetAttributesOk() (*CatalogsUpdatableHotelAttributes, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *CatalogsUpdateHotelItem) SetAttributes(v CatalogsUpdatableHotelAttributes) {
+	o.Attributes = v
 }
 
 // GetHotelId returns the HotelId field value
@@ -98,30 +122,6 @@ func (o *CatalogsUpdateHotelItem) SetOperation(v string) {
 	o.Operation = v
 }
 
-// GetAttributes returns the Attributes field value
-func (o *CatalogsUpdateHotelItem) GetAttributes() CatalogsUpdatableHotelAttributes {
-	if o == nil {
-		var ret CatalogsUpdatableHotelAttributes
-		return ret
-	}
-
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsUpdateHotelItem) GetAttributesOk() (*CatalogsUpdatableHotelAttributes, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Attributes, true
-}
-
-// SetAttributes sets field value
-func (o *CatalogsUpdateHotelItem) SetAttributes(v CatalogsUpdatableHotelAttributes) {
-	o.Attributes = v
-}
-
 func (o CatalogsUpdateHotelItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -132,9 +132,9 @@ func (o CatalogsUpdateHotelItem) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsUpdateHotelItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["hotel_id"] = o.HotelId
 	toSerialize["operation"] = o.Operation
-	toSerialize["attributes"] = o.Attributes
 	return toSerialize, nil
 }
 
@@ -143,9 +143,9 @@ func (o *CatalogsUpdateHotelItem) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"attributes",
 		"hotel_id",
 		"operation",
-		"attributes",
 	}
 
 	allProperties := make(map[string]interface{})

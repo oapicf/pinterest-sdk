@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdsAnalyticsGetAsyncResponse`
 --
-SELECT `report_status`, `url`, `size` FROM `AdsAnalyticsGetAsyncResponse` WHERE 1;
+SELECT `report_status`, `size`, `url` FROM `AdsAnalyticsGetAsyncResponse` WHERE 1;
 
 --
 -- INSERT template for table `AdsAnalyticsGetAsyncResponse`
 --
-INSERT INTO `AdsAnalyticsGetAsyncResponse`(`report_status`, `url`, `size`) VALUES (?, ?, ?);
+INSERT INTO `AdsAnalyticsGetAsyncResponse`(`report_status`, `size`, `url`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `AdsAnalyticsGetAsyncResponse`
 --
-UPDATE `AdsAnalyticsGetAsyncResponse` SET `report_status` = ?, `url` = ?, `size` = ? WHERE 1;
+UPDATE `AdsAnalyticsGetAsyncResponse` SET `report_status` = ?, `size` = ?, `url` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdsAnalyticsGetAsyncResponse`

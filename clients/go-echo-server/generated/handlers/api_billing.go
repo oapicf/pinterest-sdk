@@ -21,6 +21,22 @@ func (c *Container) AdsCreditsDiscountsGet(ctx echo.Context) error {
 }
 
 
+// BillingInvoiceDownloadGet - Get download url for a billing invoice
+func (c *Container) BillingInvoiceDownloadGet(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// BillingInvoicesGet - Get billing invoices
+func (c *Container) BillingInvoicesGet(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // BillingProfilesGet - Get billing profiles
 func (c *Container) BillingProfilesGet(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {

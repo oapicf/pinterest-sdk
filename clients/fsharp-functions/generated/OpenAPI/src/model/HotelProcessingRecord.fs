@@ -12,14 +12,14 @@ module HotelProcessingRecord =
 
   [<CLIMutable>]
   type HotelProcessingRecord = {
-    [<JsonProperty(PropertyName = "hotel_id")>]
-    HotelId : string;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : ItemValidationEvent[];
-    [<JsonProperty(PropertyName = "warnings")>]
-    Warnings : ItemValidationEvent[];
+    [<JsonProperty(PropertyName = "hotel_id")>]
+    HotelId : string;
     [<JsonProperty(PropertyName = "status")>]
     Status : ItemProcessingStatus;
+    [<JsonProperty(PropertyName = "warnings")>]
+    Warnings : ItemValidationEvent[];
   }
 
   //#endregion

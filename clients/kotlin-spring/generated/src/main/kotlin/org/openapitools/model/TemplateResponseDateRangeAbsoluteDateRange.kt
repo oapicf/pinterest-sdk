@@ -15,20 +15,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * The absolute date range of the template
- * @param type The date range type
- * @param startDate The start date of the date range
  * @param endDate The end date of the date range
+ * @param startDate The start date of the date range
+ * @param type The date range type
  */
 data class TemplateResponseDateRangeAbsoluteDateRange(
 
-    @Schema(example = "absolute", description = "The date range type")
-    @get:JsonProperty("type") val type: kotlin.String? = null,
+    @Schema(example = "6.027456183070403", description = "The end date of the date range")
+    @get:JsonProperty("end_date") val endDate: java.math.BigDecimal? = null,
 
     @Schema(example = "0.8008281904610115", description = "The start date of the date range")
     @get:JsonProperty("start_date") val startDate: java.math.BigDecimal? = null,
 
-    @Schema(example = "6.027456183070403", description = "The end date of the date range")
-    @get:JsonProperty("end_date") val endDate: java.math.BigDecimal? = null
+    @Schema(example = "absolute", description = "The date range type")
+    @get:JsonProperty("type") val type: kotlin.String? = null
 ) {
 
 }

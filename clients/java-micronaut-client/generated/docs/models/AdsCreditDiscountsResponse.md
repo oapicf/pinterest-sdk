@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | `Boolean` | True if the offer code is currently active. |  [optional property]
 **advertiserId** | `String` | Advertiser ID the offer was applied to. |  [optional property]
-**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) | The type of discount of this credit |  [optional property]
-**discountInMicroCurrency** | `BigDecimal` | The discount applied in the offer’s currency value. |  [optional property]
 **discountCurrency** | `String` | Currency value for the discount. |  [optional property]
-**title** | `String` | Human readable title of the offer code. |  [optional property]
+**discountInMicroCurrency** | `BigDecimal` | The discount applied in the offer’s currency value. |  [optional property]
+**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) | The type of discount of this credit |  [optional property]
 **remainingDiscountInMicroCurrency** | `BigDecimal` | The credits left to spend. |  [optional property]
+**title** | `String` | Human readable title of the offer code. |  [optional property]
+
+
 
 
 
@@ -42,8 +44,6 @@ REFERRAL_CREDIT | `"REFERRAL_CREDIT"`
 INVOICE_SALES_INCENTIVE_CREDIT | `"INVOICE_SALES_INCENTIVE_CREDIT"`
 INVOICE_SALES_INCENTIVE_CREDIT_APPLIED | `"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"`
 PREPAID_CREDIT_REFUND | `"PREPAID_CREDIT_REFUND"`
-
-
 
 
 

@@ -6,8 +6,8 @@ A currency filter. This filter cannot be negated
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupCurrencyCriteria } from './api';
 
 const instance: CatalogsProductGroupCurrencyCriteria = {
-    values,
     negated,
+    values,
 };
 ```
 

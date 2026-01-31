@@ -15,11 +15,6 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}region`,
-                label: `State, county, province, where the hotel is located. - [${labelPrefix}region]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}country`,
                 label: `Country where the hotel is located. - [${labelPrefix}country]`,
                 type: 'string',
@@ -29,6 +24,11 @@ module.exports = {
                 label: `Required for countries with a postal code system. Postal or zip code of the hotel. - [${labelPrefix}postal_code]`,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}region`,
+                label: `State, county, province, where the hotel is located. - [${labelPrefix}region]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -36,9 +36,9 @@ module.exports = {
         return {
             'addr1': bundle.inputData?.[`${keyPrefix}addr1`],
             'city': bundle.inputData?.[`${keyPrefix}city`],
-            'region': bundle.inputData?.[`${keyPrefix}region`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
             'postal_code': bundle.inputData?.[`${keyPrefix}postal_code`],
+            'region': bundle.inputData?.[`${keyPrefix}region`],
         }
     },
 }

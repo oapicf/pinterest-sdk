@@ -12,31 +12,31 @@ import org.openapitools.vertxweb.server.model.ObjectiveType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BulkDownloadRequestCampaignFilter   {
   
-  private String startTime;
+  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
   private String endTime;
   private String name;
-  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
   private List<ObjectiveType> objectiveType = new ArrayList<>();
+  private String startTime;
 
   public BulkDownloadRequestCampaignFilter () {
 
   }
 
-  public BulkDownloadRequestCampaignFilter (String startTime, String endTime, String name, List<CampaignSummaryStatus> campaignStatus, List<ObjectiveType> objectiveType) {
-    this.startTime = startTime;
+  public BulkDownloadRequestCampaignFilter (List<CampaignSummaryStatus> campaignStatus, String endTime, String name, List<ObjectiveType> objectiveType, String startTime) {
+    this.campaignStatus = campaignStatus;
     this.endTime = endTime;
     this.name = name;
-    this.campaignStatus = campaignStatus;
     this.objectiveType = objectiveType;
+    this.startTime = startTime;
   }
 
     
-  @JsonProperty("start_time")
-  public String getStartTime() {
-    return startTime;
+  @JsonProperty("campaign_status")
+  public List<CampaignSummaryStatus> getCampaignStatus() {
+    return campaignStatus;
   }
-  public void setStartTime(String startTime) {
-    this.startTime = startTime;
+  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
   }
 
     
@@ -58,21 +58,21 @@ public class BulkDownloadRequestCampaignFilter   {
   }
 
     
-  @JsonProperty("campaign_status")
-  public List<CampaignSummaryStatus> getCampaignStatus() {
-    return campaignStatus;
-  }
-  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-  }
-
-    
   @JsonProperty("objective_type")
   public List<ObjectiveType> getObjectiveType() {
     return objectiveType;
   }
   public void setObjectiveType(List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
+  }
+
+    
+  @JsonProperty("start_time")
+  public String getStartTime() {
+    return startTime;
+  }
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
   }
 
 
@@ -85,16 +85,16 @@ public class BulkDownloadRequestCampaignFilter   {
       return false;
     }
     BulkDownloadRequestCampaignFilter bulkDownloadRequestCampaignFilter = (BulkDownloadRequestCampaignFilter) o;
-    return Objects.equals(startTime, bulkDownloadRequestCampaignFilter.startTime) &&
+    return Objects.equals(campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
         Objects.equals(endTime, bulkDownloadRequestCampaignFilter.endTime) &&
         Objects.equals(name, bulkDownloadRequestCampaignFilter.name) &&
-        Objects.equals(campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
-        Objects.equals(objectiveType, bulkDownloadRequestCampaignFilter.objectiveType);
+        Objects.equals(objectiveType, bulkDownloadRequestCampaignFilter.objectiveType) &&
+        Objects.equals(startTime, bulkDownloadRequestCampaignFilter.startTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, endTime, name, campaignStatus, objectiveType);
+    return Objects.hash(campaignStatus, endTime, name, objectiveType, startTime);
   }
 
   @Override
@@ -102,11 +102,11 @@ public class BulkDownloadRequestCampaignFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequestCampaignFilter {\n");
     
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -64,7 +64,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"sourceType": @"source_type", @"contentType": @"content_type", @"data": @"data", @"isStandard": @"is_standard", @"url": @"url", @"coverImageUrl": @"cover_image_url", @"coverImageContentType": @"cover_image_content_type", @"coverImageData": @"cover_image_data", @"mediaId": @"media_id", @"items": @"items", @"index": @"index", @"isAffiliateLink": @"is_affiliate_link" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"contentType": @"content_type", @"data": @"data", @"isStandard": @"is_standard", @"sourceType": @"source_type", @"url": @"url", @"coverImageContentType": @"cover_image_content_type", @"coverImageData": @"cover_image_data", @"coverImageKeyFrameTime": @"cover_image_key_frame_time", @"coverImageUrl": @"cover_image_url", @"mediaId": @"media_id", @"index": @"index", @"items": @"items", @"isAffiliateLink": @"is_affiliate_link" }];
 }
 
 /**
@@ -74,7 +74,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"isStandard", @"coverImageUrl", @"coverImageContentType", @"coverImageData", @"index", @"isAffiliateLink"];
+  NSArray *optionalProperties = @[@"isStandard", @"coverImageContentType", @"coverImageData", @"coverImageKeyFrameTime", @"coverImageUrl", @"index", @"isAffiliateLink"];
   return [optionalProperties containsObject:propertyName];
 }
 

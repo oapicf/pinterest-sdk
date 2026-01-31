@@ -5,13 +5,13 @@
 -export_type([openapi_catalogs_product_group_multiple_media_types_criteria/0]).
 
 -type openapi_catalogs_product_group_multiple_media_types_criteria() ::
-    #{ 'values' := list(),
-       'negated' => boolean()
+    #{ 'negated' => boolean(),
+       'values' := list()
      }.
 
-encode(#{ 'values' := Values,
-          'negated' := Negated
+encode(#{ 'negated' := Negated,
+          'values' := Values
         }) ->
-    #{ 'values' => Values,
-       'negated' => Negated
+    #{ 'negated' => Negated,
+       'values' => Values
      }.

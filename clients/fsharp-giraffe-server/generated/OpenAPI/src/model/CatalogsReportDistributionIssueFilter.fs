@@ -12,7 +12,7 @@ module CatalogsReportDistributionIssueFilter =
   //#endregion
 
   type CatalogsReportDistributionIssueFilter = {
-    ReportType : ReportTypeEnum;
     CatalogId : string;
+    ReportType : ReportTypeEnum;
   }
   //#endregion

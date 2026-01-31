@@ -7,12 +7,6 @@ Protected Interface AudiencesApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AudiencesCreateCustomCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Audience)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub AudiencesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Audience)
 		  
 		End Sub

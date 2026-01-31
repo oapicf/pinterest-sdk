@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -21,10 +21,10 @@ type QuizPinData struct {
 
 	Results []QuizPinResult `json:"results,omitempty"`
 
+	TieBreakerCustomResult *QuizPinResult `json:"tie_breaker_custom_result,omitempty"`
+
 	// Quiz ad tie breaker type, default is RANDOM
 	TieBreakerType string `json:"tie_breaker_type,omitempty"`
-
-	TieBreakerCustomResult *QuizPinResult `json:"tie_breaker_custom_result,omitempty"`
 }
 
 // AssertQuizPinDataRequired checks if the required fields are not zero-ed

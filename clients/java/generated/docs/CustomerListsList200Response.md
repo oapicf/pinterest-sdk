@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;CustomerList&gt;**](CustomerList.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;CustomerList&gt;**](CustomerList.md) |  |  |
 
 
 

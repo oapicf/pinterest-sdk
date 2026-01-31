@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`latestAvailableTimestamp` | number
 `isRealtime` | boolean
+`latestAvailableTimestamp` | number
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { TopPinsAnalyticsResponseDateAvailability } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "latestAvailableTimestamp": 1649116799000,
   "isRealtime": false,
+  "latestAvailableTimestamp": 1649116799000,
 } satisfies TopPinsAnalyticsResponseDateAvailability
 
 console.log(example)

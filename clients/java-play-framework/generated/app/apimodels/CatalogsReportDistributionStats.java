@@ -9,9 +9,38 @@ import javax.validation.Valid;
 /**
  * CatalogsReportDistributionStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsReportDistributionStats   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
+  @JsonProperty("code")
+  
+  private Integer code;
+
+  @JsonProperty("code_label")
+  
+  private String codeLabel;
+
+  @JsonProperty("ineligible_for_ads")
+  
+  private Boolean ineligibleForAds;
+
+  @JsonProperty("ineligible_for_organic")
+  
+  private Boolean ineligibleForOrganic;
+
+  @JsonProperty("message")
+  
+  private String message;
+
+  @JsonProperty("occurrences")
+  
+  private Integer occurrences;
+
   /**
    * Gets or Sets reportType
    */
@@ -44,52 +73,6 @@ public class CatalogsReportDistributionStats   {
   @JsonProperty("report_type")
   
   private ReportTypeEnum reportType;
-
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String catalogId;
-
-  @JsonProperty("code")
-  
-  private Integer code;
-
-  @JsonProperty("code_label")
-  
-  private String codeLabel;
-
-  @JsonProperty("message")
-  
-  private String message;
-
-  @JsonProperty("occurrences")
-  
-  private Integer occurrences;
-
-  @JsonProperty("ineligible_for_ads")
-  
-  private Boolean ineligibleForAds;
-
-  @JsonProperty("ineligible_for_organic")
-  
-  private Boolean ineligibleForOrganic;
-
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportDistributionStats catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -142,40 +125,6 @@ public class CatalogsReportDistributionStats   {
     this.codeLabel = codeLabel;
   }
 
-  public CatalogsReportDistributionStats message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Title message describing the diagnostic issue
-   * @return message
-  **/
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
-    this.occurrences = occurrences;
-    return this;
-  }
-
-   /**
-   * Number of occurrences of the issue
-   * @return occurrences
-  **/
-  public Integer getOccurrences() {
-    return occurrences;
-  }
-
-  public void setOccurrences(Integer occurrences) {
-    this.occurrences = occurrences;
-  }
-
   public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
     return this;
@@ -210,6 +159,57 @@ public class CatalogsReportDistributionStats   {
     this.ineligibleForOrganic = ineligibleForOrganic;
   }
 
+  public CatalogsReportDistributionStats message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Title message describing the diagnostic issue
+   * @return message
+  **/
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
+    this.occurrences = occurrences;
+    return this;
+  }
+
+   /**
+   * Number of occurrences of the issue
+   * @return occurrences
+  **/
+  public Integer getOccurrences() {
+    return occurrences;
+  }
+
+  public void setOccurrences(Integer occurrences) {
+    this.occurrences = occurrences;
+  }
+
+  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -220,19 +220,19 @@ public class CatalogsReportDistributionStats   {
       return false;
     }
     CatalogsReportDistributionStats catalogsReportDistributionStats = (CatalogsReportDistributionStats) o;
-    return Objects.equals(reportType, catalogsReportDistributionStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportDistributionStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportDistributionStats.catalogId) &&
         Objects.equals(code, catalogsReportDistributionStats.code) &&
         Objects.equals(codeLabel, catalogsReportDistributionStats.codeLabel) &&
+        Objects.equals(ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
+        Objects.equals(ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic) &&
         Objects.equals(message, catalogsReportDistributionStats.message) &&
         Objects.equals(occurrences, catalogsReportDistributionStats.occurrences) &&
-        Objects.equals(ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
-        Objects.equals(ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic);
+        Objects.equals(reportType, catalogsReportDistributionStats.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -241,14 +241,14 @@ public class CatalogsReportDistributionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

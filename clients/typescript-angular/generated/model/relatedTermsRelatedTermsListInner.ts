@@ -10,7 +10,7 @@
 
 
 export interface RelatedTermsRelatedTermsListInner { 
-    term?: string;
     related_terms?: Array<string>;
+    term?: string;
 }
 

@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.BulkUpsertStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BulkUpsertStatusResponse   {
   
-  private BulkUpsertStatus status;
   private String resultUrl;
+  private BulkUpsertStatus status;
 
   public BulkUpsertStatusResponse () {
 
   }
 
-  public BulkUpsertStatusResponse (BulkUpsertStatus status, String resultUrl) {
-    this.status = status;
+  public BulkUpsertStatusResponse (String resultUrl, BulkUpsertStatus status) {
     this.resultUrl = resultUrl;
-  }
-
-    
-  @JsonProperty("status")
-  public BulkUpsertStatus getStatus() {
-    return status;
-  }
-  public void setStatus(BulkUpsertStatus status) {
     this.status = status;
   }
 
@@ -42,6 +33,15 @@ public class BulkUpsertStatusResponse   {
     this.resultUrl = resultUrl;
   }
 
+    
+  @JsonProperty("status")
+  public BulkUpsertStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BulkUpsertStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class BulkUpsertStatusResponse   {
       return false;
     }
     BulkUpsertStatusResponse bulkUpsertStatusResponse = (BulkUpsertStatusResponse) o;
-    return Objects.equals(status, bulkUpsertStatusResponse.status) &&
-        Objects.equals(resultUrl, bulkUpsertStatusResponse.resultUrl);
+    return Objects.equals(resultUrl, bulkUpsertStatusResponse.resultUrl) &&
+        Objects.equals(status, bulkUpsertStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, resultUrl);
+    return Objects.hash(resultUrl, status);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class BulkUpsertStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertStatusResponse {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

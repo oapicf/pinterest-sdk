@@ -12,10 +12,10 @@ module UserWebsitesGet200Response =
 
   [<CLIMutable>]
   type UserWebsitesGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : UserWebsiteSummary[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : UserWebsiteSummary[];
   }
 
   //#endregion

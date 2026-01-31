@@ -2,6 +2,11 @@
 Protected Class GetBusinessAssetsResponse
 
 	#tag Property, Flags = &h0
+		asset_group_info As OpenAPIClient.Models.AssetGroupBinding
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Unique identifier of a business asset.
 		#tag EndNote
@@ -11,14 +16,14 @@ Protected Class GetBusinessAssetsResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+			Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 		#tag EndNote
 		asset_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		asset_group_info As OpenAPIClient.Models.AssetGroupBinding
+		catalog_info As OpenAPIClient.Models.GetBusinessAssetsResponseCatalogInfo
 	#tag EndProperty
 
 
@@ -59,6 +64,14 @@ Protected Class GetBusinessAssetsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="asset_group_info"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AssetGroupBinding"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="asset_id"
 			Visible=false
 			Group="Behavior"
@@ -75,11 +88,11 @@ Protected Class GetBusinessAssetsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="asset_group_info"
+			Name="catalog_info"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AssetGroupBinding"
+			Type="GetBusinessAssetsResponseCatalogInfo"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

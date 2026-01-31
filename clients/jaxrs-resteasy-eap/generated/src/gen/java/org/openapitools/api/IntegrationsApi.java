@@ -5,7 +5,6 @@ import org.openapitools.model.*;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -14,6 +13,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +31,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface IntegrationsApi  {
 
     @DELETE
@@ -83,7 +83,7 @@ public interface IntegrationsApi  {
         @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response integrationsCommercePatch( @PathParam("external_business_id") String externalBusinessId,@ApiParam(value = "Parameters to get create/update the Integration Metadata" ) @Valid IntegrationRequestPatch integrationRequestPatch,@Context SecurityContext securityContext);
+    public Response integrationsCommercePatch( @PathParam("external_business_id") String externalBusinessId,@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) @NotNull @Valid IntegrationRequestPatch integrationRequestPatch,@Context SecurityContext securityContext);
     @POST
     @Path("/commerce")
     @Consumes({ "application/json" })
@@ -101,7 +101,7 @@ public interface IntegrationsApi  {
         @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ) @Valid IntegrationRequest integrationRequest,@Context SecurityContext securityContext);
+    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) @NotNull @Valid IntegrationRequest integrationRequest,@Context SecurityContext securityContext);
     @GET
     @Path("/{id}")
     
@@ -144,7 +144,7 @@ public interface IntegrationsApi  {
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad request.", response = DetailedError.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response integrationsLogsPost(@ApiParam(value = "Ingest log information from external integration application." ,required=true) @NotNull @Valid IntegrationLogsRequest integrationLogsRequest,@Context SecurityContext securityContext);

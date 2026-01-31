@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Term** | **String** |  | [optional] 
 **RelatedTerms** | **String[]** |  | [optional] 
+**Term** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$RelatedTermsRelatedTermsListInner = Initialize-PSOpenAPIToolsRelatedTermsRelatedTermsListInner  -Term clothes `
- -RelatedTerms [&quot;shoes&quot;,&quot;cute clothes&quot;]
+$RelatedTermsRelatedTermsListInner = Initialize-PSOpenAPIToolsRelatedTermsRelatedTermsListInner  -RelatedTerms [&quot;shoes&quot;,&quot;cute clothes&quot;] `
+ -Term clothes
 ```
 
 - Convert the resource to JSON

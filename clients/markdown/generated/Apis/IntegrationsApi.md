@@ -135,7 +135,7 @@ Update commerce integration
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **external\_business\_id** | **String**| External business ID for the integration. | [default to null] |
-| **IntegrationRequestPatch** | [**IntegrationRequestPatch**](../Models/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional] |
+| **IntegrationRequestPatch** | [**IntegrationRequestPatch**](../Models/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
 
 ### Return type
 
@@ -162,7 +162,7 @@ Create commerce integration
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **IntegrationRequest** | [**IntegrationRequest**](../Models/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional] |
+| **IntegrationRequest** | [**IntegrationRequest**](../Models/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
 
 ### Return type
 

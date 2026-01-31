@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**asset_group_id** | **string** | Asset group id of the exception. | [optional] [default to undefined]
 **code** | **number** | Error code associated with the error deleting asset group. | [optional] [default to undefined]
 **message** | **string** | Error message associated with the error deleting asset group. | [optional] [default to undefined]
-**asset_group_id** | **string** | Asset group id of the exception. | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { DeleteAssetGroupResponseExceptionsInner } from './api';
 
 const instance: DeleteAssetGroupResponseExceptionsInner = {
+    asset_group_id,
     code,
     message,
-    asset_group_id,
 };
 ```
 

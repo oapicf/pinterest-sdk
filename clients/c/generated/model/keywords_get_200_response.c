@@ -6,27 +6,27 @@
 
 
 static keywords_get_200_response_t *keywords_get_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     keywords_get_200_response_t *keywords_get_200_response_local_var = malloc(sizeof(keywords_get_200_response_t));
     if (!keywords_get_200_response_local_var) {
         return NULL;
     }
-    keywords_get_200_response_local_var->items = items;
     keywords_get_200_response_local_var->bookmark = bookmark;
+    keywords_get_200_response_local_var->items = items;
 
     keywords_get_200_response_local_var->_library_owned = 1;
     return keywords_get_200_response_local_var;
 }
 
 __attribute__((deprecated)) keywords_get_200_response_t *keywords_get_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return keywords_get_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void keywords_get_200_response_free(keywords_get_200_response_t *keywords_get_20
         return ;
     }
     listEntry_t *listEntry;
+    if (keywords_get_200_response->bookmark) {
+        free(keywords_get_200_response->bookmark);
+        keywords_get_200_response->bookmark = NULL;
+    }
     if (keywords_get_200_response->items) {
         list_ForEach(listEntry, keywords_get_200_response->items) {
             keyword_free(listEntry->data);
@@ -46,15 +50,19 @@ void keywords_get_200_response_free(keywords_get_200_response_t *keywords_get_20
         list_freeList(keywords_get_200_response->items);
         keywords_get_200_response->items = NULL;
     }
-    if (keywords_get_200_response->bookmark) {
-        free(keywords_get_200_response->bookmark);
-        keywords_get_200_response->bookmark = NULL;
-    }
     free(keywords_get_200_response);
 }
 
 cJSON *keywords_get_200_response_convertToJSON(keywords_get_200_response_t *keywords_get_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // keywords_get_200_response->bookmark
+    if(keywords_get_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", keywords_get_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // keywords_get_200_response->items
     if (!keywords_get_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *keywords_get_200_response_convertToJSON(keywords_get_200_response_t *keyw
     }
     }
 
-
-    // keywords_get_200_response->bookmark
-    if(keywords_get_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", keywords_get_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ keywords_get_200_response_t *keywords_get_200_response_parseFromJSON(cJSON *keyw
 
     // define the local list for keywords_get_200_response->items
     list_t *itemsList = NULL;
+
+    // keywords_get_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(keywords_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // keywords_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(keywords_get_200_responseJSON, "items");
@@ -126,22 +138,10 @@ keywords_get_200_response_t *keywords_get_200_response_parseFromJSON(cJSON *keyw
         list_addElement(itemsList, itemsItem);
     }
 
-    // keywords_get_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(keywords_get_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     keywords_get_200_response_local_var = keywords_get_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return keywords_get_200_response_local_var;

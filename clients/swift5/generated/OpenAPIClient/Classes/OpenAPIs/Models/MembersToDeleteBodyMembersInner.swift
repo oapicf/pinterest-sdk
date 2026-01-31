@@ -13,26 +13,26 @@ import AnyCodable
 public struct MembersToDeleteBodyMembersInner: Codable, JSONEncodable, Hashable {
 
     public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public var businessRole: BusinessRoleForMembers
     /** Unique identifier of the member */
     public var memberId: String
-    public var businessRole: BusinessRoleForMembers
 
-    public init(memberId: String, businessRole: BusinessRoleForMembers) {
-        self.memberId = memberId
+    public init(businessRole: BusinessRoleForMembers, memberId: String) {
         self.businessRole = businessRole
+        self.memberId = memberId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case memberId = "member_id"
         case businessRole = "business_role"
+        case memberId = "member_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(memberId, forKey: .memberId)
         try container.encode(businessRole, forKey: .businessRole)
+        try container.encode(memberId, forKey: .memberId)
     }
 }
 

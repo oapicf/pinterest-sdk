@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -59,6 +59,12 @@ func (c *BusinessAccessRelationshipsAPIController) Routes() Routes {
 			"/v5/businesses/employers",
 			c.GetBusinessEmployers,
 		},
+		"SystemUserUpdate": Route{
+			"SystemUserUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/system_users/{system_user_id}",
+			c.SystemUserUpdate,
+		},
 		"GetBusinessMembers": Route{
 			"GetBusinessMembers",
 			strings.ToUpper("Get"),
@@ -89,6 +95,18 @@ func (c *BusinessAccessRelationshipsAPIController) Routes() Routes {
 			"/v5/businesses/{business_id}/partners",
 			c.DeleteBusinessPartners,
 		},
+		"BrandAccountsCreate": Route{
+			"BrandAccountsCreate",
+			strings.ToUpper("Post"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+			c.BrandAccountsCreate,
+		},
+		"BrandAccountsUpdate": Route{
+			"BrandAccountsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+			c.BrandAccountsUpdate,
+		},
 	}
 }
 
@@ -100,6 +118,12 @@ func (c *BusinessAccessRelationshipsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Get"),
 			"/v5/businesses/employers",
 			c.GetBusinessEmployers,
+		},
+		Route{
+			"SystemUserUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/system_users/{system_user_id}",
+			c.SystemUserUpdate,
 		},
 		Route{
 			"GetBusinessMembers",
@@ -130,6 +154,18 @@ func (c *BusinessAccessRelationshipsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/partners",
 			c.DeleteBusinessPartners,
+		},
+		Route{
+			"BrandAccountsCreate",
+			strings.ToUpper("Post"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+			c.BrandAccountsCreate,
+		},
+		Route{
+			"BrandAccountsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+			c.BrandAccountsUpdate,
 		},
 	}
 }
@@ -178,6 +214,44 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessEmployers(w http.R
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
+// SystemUserUpdate - Update a system user information.
+func (c *BusinessAccessRelationshipsAPIController) SystemUserUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	systemUserIdParam := params["system_user_id"]
+	if systemUserIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"system_user_id"}, nil)
+		return
+	}
+	var systemUserUpdateRequestParam SystemUserUpdateRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&systemUserUpdateRequestParam); err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertSystemUserUpdateRequestRequired(systemUserUpdateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertSystemUserUpdateRequestConstraints(systemUserUpdateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.SystemUserUpdate(r.Context(), businessIdParam, systemUserIdParam, systemUserUpdateRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
 // GetBusinessMembers - Get business members
 func (c *BusinessAccessRelationshipsAPIController) GetBusinessMembers(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
@@ -190,6 +264,22 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessMembers(w http.Res
 	if businessIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
+	}
+	var fetchSystemUsersParam bool
+	if query.Has("fetch_system_users") {
+		param, err := parseBoolParameter(
+			query.Get("fetch_system_users"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "fetch_system_users", Err: err}, nil)
+			return
+		}
+
+		fetchSystemUsersParam = param
+	} else {
+		var param bool = false
+		fetchSystemUsersParam = param
 	}
 	var assetsSummaryParam bool
 	if query.Has("assets_summary") {
@@ -269,7 +359,7 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessMembers(w http.Res
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	result, err := c.service.GetBusinessMembers(r.Context(), businessIdParam, assetsSummaryParam, businessRolesParam, memberIdsParam, startIndexParam, bookmarkParam, pageSizeParam)
+	result, err := c.service.GetBusinessMembers(r.Context(), businessIdParam, fetchSystemUsersParam, assetsSummaryParam, businessRolesParam, memberIdsParam, startIndexParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -462,6 +552,77 @@ func (c *BusinessAccessRelationshipsAPIController) DeleteBusinessPartners(w http
 		return
 	}
 	result, err := c.service.DeleteBusinessPartners(r.Context(), businessIdParam, deletePartnersRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BrandAccountsCreate - Create a Brand Account
+func (c *BusinessAccessRelationshipsAPIController) BrandAccountsCreate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessHierarchyIdParam := params["business_hierarchy_id"]
+	if businessHierarchyIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_hierarchy_id"}, nil)
+		return
+	}
+	var brandAccountsCreateRequestParam BrandAccountsCreateRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&brandAccountsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBrandAccountsCreateRequestRequired(brandAccountsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBrandAccountsCreateRequestConstraints(brandAccountsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.BrandAccountsCreate(r.Context(), businessHierarchyIdParam, brandAccountsCreateRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BrandAccountsUpdate - Update a Brand Account
+func (c *BusinessAccessRelationshipsAPIController) BrandAccountsUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessHierarchyIdParam := params["business_hierarchy_id"]
+	if businessHierarchyIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_hierarchy_id"}, nil)
+		return
+	}
+	brandAccountIdParam := params["brand_account_id"]
+	if brandAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"brand_account_id"}, nil)
+		return
+	}
+	var brandAccountsUpdateRequestParam BrandAccountsUpdateRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&brandAccountsUpdateRequestParam); err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBrandAccountsUpdateRequestRequired(brandAccountsUpdateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBrandAccountsUpdateRequestConstraints(brandAccountsUpdateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.BrandAccountsUpdate(r.Context(), businessHierarchyIdParam, brandAccountIdParam, brandAccountsUpdateRequestParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -17,12 +17,17 @@ open BoardsApiHandlerTestsHelper
 open OpenAPI.BoardsApiHandler
 open OpenAPI.BoardsApiHandlerParams
 open OpenAPI.Model.Board
+open OpenAPI.Model.BoardCreate
+open OpenAPI.Model.BoardPrivacyFilter
 open OpenAPI.Model.BoardSection
 open OpenAPI.Model.BoardSectionsList200Response
-open OpenAPI.Model.BoardUpdate
+open OpenAPI.Model.BoardWithUpdatePrivacy
+open OpenAPI.Model.BoardWithUpdatePrivacyUpdate
 open OpenAPI.Model.BoardsList200Response
 open OpenAPI.Model.BoardsListPins200Response
+open OpenAPI.Model.CreativeType
 open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module BoardsApiHandlerTests =
 
@@ -477,7 +482,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsCreate - Create board returns 201 where response`` () =
+  let ``BoardsCreate - Create board returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -488,8 +493,30 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
-      // or pass a body of type Board
-      let body = obj() :?> Board |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsCreate - Create board returns 201 where Resource create operation completed successfully.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -499,7 +526,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsCreate - Create board returns 400 where The board name is invalid or duplicated.`` () =
+  let ``BoardsCreate - Create board returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -510,8 +537,8 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
-      // or pass a body of type Board
-      let body = obj() :?> Board |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -521,7 +548,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsCreate - Create board returns 0 where Unexpected error`` () =
+  let ``BoardsCreate - Create board returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -532,8 +559,96 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
-      // or pass a body of type Board
-      let body = obj() :?> Board |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsCreate - Create board returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsCreate - Create board returns 404 where The requested resource could not be found on this server.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsCreate - Create board returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsCreate - Create board returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsCreateExample "application/json")
+      // or pass a body of type BoardCreate
+      let body = obj() :?> BoardCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -543,7 +658,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsDelete - Delete board returns 204 where Board deleted successfully`` () =
+  let ``BoardsDelete - Delete board returns 204 where Resource deleted successfully.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -560,7 +675,41 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsDelete - Delete board returns 403 where Not authorized to delete the board.`` () =
+  let ``BoardsDelete - Delete board returns 400 where The request could not be understood by the server due to unexpected data.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsDelete - Delete board returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsDelete - Delete board returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -577,7 +726,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsDelete - Delete board returns 404 where Board not found.`` () =
+  let ``BoardsDelete - Delete board returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -594,24 +743,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsDelete - Delete board returns 409 where Could not get exclusive access to delete the board.`` () =
-    task {
-      use server = new TestServer(createHost())
-      use client = server.CreateClient()
-
-      // add your setup code here
-
-      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
-
-      HttpDelete client path
-        |> isStatus (enum<HttpStatusCode>(409))
-        |> readText
-        |> shouldEqual "TESTME"
-        |> ignore
-      }
-
-  [<Fact>]
-  let ``BoardsDelete - Delete board returns 429 where This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.`` () =
+  let ``BoardsDelete - Delete board returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -628,7 +760,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsDelete - Delete board returns 0 where Unexpected error`` () =
+  let ``BoardsDelete - Delete board returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -645,7 +777,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsGet - Get board returns 200 where response`` () =
+  let ``BoardsGet - Get board returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -662,7 +794,58 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsGet - Get board returns 404 where Board not found.`` () =
+  let ``BoardsGet - Get board returns 400 where The request could not be understood by the server due to unexpected data.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsGet - Get board returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsGet - Get board returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsGet - Get board returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -679,7 +862,24 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsGet - Get board returns 0 where Unexpected error`` () =
+  let ``BoardsGet - Get board returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsGet - Get board returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -696,14 +896,14 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsList - List boards returns 200 where response`` () =
+  let ``BoardsList - List boards returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/boards" + "?adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME&privacy=ADDME"
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -713,14 +913,99 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsList - List boards returns 0 where Unexpected error`` () =
+  let ``BoardsList - List boards returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/boards" + "?adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME&privacy=ADDME"
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsList - List boards returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsList - List boards returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsList - List boards returns 404 where The requested resource could not be found on this server.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsList - List boards returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BoardsList - List boards returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards" + "?adAccountId=ADDME&privacy=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -781,7 +1066,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsUpdate - Update board returns 200 where response`` () =
+  let ``BoardsUpdate - Update board returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -792,8 +1077,8 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
-      // or pass a body of type BoardUpdate
-      let body = obj() :?> BoardUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -803,7 +1088,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsUpdate - Update board returns 400 where Invalid board parameters.`` () =
+  let ``BoardsUpdate - Update board returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -814,8 +1099,8 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
-      // or pass a body of type BoardUpdate
-      let body = obj() :?> BoardUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -825,7 +1110,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsUpdate - Update board returns 403 where Not authorized to update the board.`` () =
+  let ``BoardsUpdate - Update board returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -836,8 +1121,30 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
-      // or pass a body of type BoardUpdate
-      let body = obj() :?> BoardUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsUpdate - Update board returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -847,7 +1154,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsUpdate - Update board returns 429 where This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.`` () =
+  let ``BoardsUpdate - Update board returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -858,8 +1165,30 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
-      // or pass a body of type BoardUpdate
-      let body = obj() :?> BoardUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BoardsUpdate - Update board returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/boards/{board_id}".Replace("boardId", "ADDME") + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -869,7 +1198,7 @@ module BoardsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``BoardsUpdate - Update board returns 0 where Unexpected error`` () =
+  let ``BoardsUpdate - Update board returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -880,8 +1209,8 @@ module BoardsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getBoardsUpdateExample "application/json")
-      // or pass a body of type BoardUpdate
-      let body = obj() :?> BoardUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type BoardWithUpdatePrivacyUpdate
+      let body = obj() :?> BoardWithUpdatePrivacyUpdate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path

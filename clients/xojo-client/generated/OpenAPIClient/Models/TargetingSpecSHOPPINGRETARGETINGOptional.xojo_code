@@ -1,31 +1,31 @@
 #tag Class
-Protected Class TargetingSpecSHOPPINGRETARGETINGOptional
+Protected Class TargetingSpecShoppingRetargetingOptional
 	#tag Method, Flags = &h0
-		Function Operator_Convert() As OpenAPIClient.Models.TargetingSpecSHOPPINGRETARGETING
+		Function Operator_Convert() As OpenAPIClient.Models.TargetingSpecShoppingRetargeting
 		  Return Value
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Operator_Convert(rhs As OpenAPIClient.Models.TargetingSpecSHOPPINGRETARGETING)
+		Sub Operator_Convert(rhs As OpenAPIClient.Models.TargetingSpecShoppingRetargeting)
 		  Value = rhs
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Set(Assigns rhs As OpenAPIClient.Models.TargetingSpecSHOPPINGRETARGETING)
+		Sub Set(Assigns rhs As OpenAPIClient.Models.TargetingSpecShoppingRetargeting)
 		  Value = rhs
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function ToString() As String
-		  Return OpenAPIClient.Models.TargetingSpecSHOPPINGRETARGETINGToString(Value)
+		  Return OpenAPIClient.Models.TargetingSpecShoppingRetargetingToString(Value)
 		End Function
 	#tag EndMethod
 
 	#tag Property, Flags = &h0
-		Value As OpenAPIClient.Models.TargetingSpecSHOPPINGRETARGETING
+		Value As OpenAPIClient.Models.TargetingSpecShoppingRetargeting
 	#tag EndProperty
 
 

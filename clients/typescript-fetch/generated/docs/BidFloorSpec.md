@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
+`billableEvent` | [ActionType](ActionType.md)
 `countries` | [Array&lt;Country&gt;](Country.md)
+`creativeType` | [CreativeType](CreativeType.md)
 `currency` | [Currency](Currency.md)
 `objectiveType` | [ObjectiveType](ObjectiveType.md)
-`billableEvent` | [ActionType](ActionType.md)
 `optimizationGoalMetadata` | [OptimizationGoalMetadata](OptimizationGoalMetadata.md)
-`creativeType` | [CreativeType](CreativeType.md)
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { BidFloorSpec } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "billableEvent": null,
   "countries": null,
+  "creativeType": null,
   "currency": null,
   "objectiveType": null,
-  "billableEvent": null,
   "optimizationGoalMetadata": null,
-  "creativeType": null,
 } satisfies BidFloorSpec
 
 console.log(example)

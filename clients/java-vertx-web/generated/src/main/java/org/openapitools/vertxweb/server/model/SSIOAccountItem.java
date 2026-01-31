@@ -11,29 +11,38 @@ import org.openapitools.vertxweb.server.model.SSIOAccountAddress;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOAccountItem   {
   
-  private String id;
-  private String ioTermsId;
-  private String ioTerms;
-  private String usTermsId;
-  private String usTerms;
-  private String rowTermsId;
-  private String rowTerms;
-  private String ioType;
   private List<SSIOAccountAddress> addresses = new ArrayList<>();
+  private String id;
+  private String ioTerms;
+  private String ioTermsId;
+  private String ioType;
+  private String rowTerms;
+  private String rowTermsId;
+  private String usTerms;
+  private String usTermsId;
 
   public SSIOAccountItem () {
 
   }
 
-  public SSIOAccountItem (String id, String ioTermsId, String ioTerms, String usTermsId, String usTerms, String rowTermsId, String rowTerms, String ioType, List<SSIOAccountAddress> addresses) {
+  public SSIOAccountItem (List<SSIOAccountAddress> addresses, String id, String ioTerms, String ioTermsId, String ioType, String rowTerms, String rowTermsId, String usTerms, String usTermsId) {
+    this.addresses = addresses;
     this.id = id;
-    this.ioTermsId = ioTermsId;
     this.ioTerms = ioTerms;
-    this.usTermsId = usTermsId;
-    this.usTerms = usTerms;
-    this.rowTermsId = rowTermsId;
-    this.rowTerms = rowTerms;
+    this.ioTermsId = ioTermsId;
     this.ioType = ioType;
+    this.rowTerms = rowTerms;
+    this.rowTermsId = rowTermsId;
+    this.usTerms = usTerms;
+    this.usTermsId = usTermsId;
+  }
+
+    
+  @JsonProperty("addresses")
+  public List<SSIOAccountAddress> getAddresses() {
+    return addresses;
+  }
+  public void setAddresses(List<SSIOAccountAddress> addresses) {
     this.addresses = addresses;
   }
 
@@ -47,15 +56,6 @@ public class SSIOAccountItem   {
   }
 
     
-  @JsonProperty("io_terms_id")
-  public String getIoTermsId() {
-    return ioTermsId;
-  }
-  public void setIoTermsId(String ioTermsId) {
-    this.ioTermsId = ioTermsId;
-  }
-
-    
   @JsonProperty("io_terms")
   public String getIoTerms() {
     return ioTerms;
@@ -65,39 +65,12 @@ public class SSIOAccountItem   {
   }
 
     
-  @JsonProperty("us_terms_id")
-  public String getUsTermsId() {
-    return usTermsId;
+  @JsonProperty("io_terms_id")
+  public String getIoTermsId() {
+    return ioTermsId;
   }
-  public void setUsTermsId(String usTermsId) {
-    this.usTermsId = usTermsId;
-  }
-
-    
-  @JsonProperty("us_terms")
-  public String getUsTerms() {
-    return usTerms;
-  }
-  public void setUsTerms(String usTerms) {
-    this.usTerms = usTerms;
-  }
-
-    
-  @JsonProperty("row_terms_id")
-  public String getRowTermsId() {
-    return rowTermsId;
-  }
-  public void setRowTermsId(String rowTermsId) {
-    this.rowTermsId = rowTermsId;
-  }
-
-    
-  @JsonProperty("row_terms")
-  public String getRowTerms() {
-    return rowTerms;
-  }
-  public void setRowTerms(String rowTerms) {
-    this.rowTerms = rowTerms;
+  public void setIoTermsId(String ioTermsId) {
+    this.ioTermsId = ioTermsId;
   }
 
     
@@ -110,12 +83,39 @@ public class SSIOAccountItem   {
   }
 
     
-  @JsonProperty("addresses")
-  public List<SSIOAccountAddress> getAddresses() {
-    return addresses;
+  @JsonProperty("row_terms")
+  public String getRowTerms() {
+    return rowTerms;
   }
-  public void setAddresses(List<SSIOAccountAddress> addresses) {
-    this.addresses = addresses;
+  public void setRowTerms(String rowTerms) {
+    this.rowTerms = rowTerms;
+  }
+
+    
+  @JsonProperty("row_terms_id")
+  public String getRowTermsId() {
+    return rowTermsId;
+  }
+  public void setRowTermsId(String rowTermsId) {
+    this.rowTermsId = rowTermsId;
+  }
+
+    
+  @JsonProperty("us_terms")
+  public String getUsTerms() {
+    return usTerms;
+  }
+  public void setUsTerms(String usTerms) {
+    this.usTerms = usTerms;
+  }
+
+    
+  @JsonProperty("us_terms_id")
+  public String getUsTermsId() {
+    return usTermsId;
+  }
+  public void setUsTermsId(String usTermsId) {
+    this.usTermsId = usTermsId;
   }
 
 
@@ -128,20 +128,20 @@ public class SSIOAccountItem   {
       return false;
     }
     SSIOAccountItem ssIOAccountItem = (SSIOAccountItem) o;
-    return Objects.equals(id, ssIOAccountItem.id) &&
-        Objects.equals(ioTermsId, ssIOAccountItem.ioTermsId) &&
+    return Objects.equals(addresses, ssIOAccountItem.addresses) &&
+        Objects.equals(id, ssIOAccountItem.id) &&
         Objects.equals(ioTerms, ssIOAccountItem.ioTerms) &&
-        Objects.equals(usTermsId, ssIOAccountItem.usTermsId) &&
-        Objects.equals(usTerms, ssIOAccountItem.usTerms) &&
-        Objects.equals(rowTermsId, ssIOAccountItem.rowTermsId) &&
-        Objects.equals(rowTerms, ssIOAccountItem.rowTerms) &&
+        Objects.equals(ioTermsId, ssIOAccountItem.ioTermsId) &&
         Objects.equals(ioType, ssIOAccountItem.ioType) &&
-        Objects.equals(addresses, ssIOAccountItem.addresses);
+        Objects.equals(rowTerms, ssIOAccountItem.rowTerms) &&
+        Objects.equals(rowTermsId, ssIOAccountItem.rowTermsId) &&
+        Objects.equals(usTerms, ssIOAccountItem.usTerms) &&
+        Objects.equals(usTermsId, ssIOAccountItem.usTermsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ioTermsId, ioTerms, usTermsId, usTerms, rowTermsId, rowTerms, ioType, addresses);
+    return Objects.hash(addresses, id, ioTerms, ioTermsId, ioType, rowTerms, rowTermsId, usTerms, usTermsId);
   }
 
   @Override
@@ -149,15 +149,15 @@ public class SSIOAccountItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountItem {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    ioTermsId: ").append(toIndentedString(ioTermsId)).append("\n");
-    sb.append("    ioTerms: ").append(toIndentedString(ioTerms)).append("\n");
-    sb.append("    usTermsId: ").append(toIndentedString(usTermsId)).append("\n");
-    sb.append("    usTerms: ").append(toIndentedString(usTerms)).append("\n");
-    sb.append("    rowTermsId: ").append(toIndentedString(rowTermsId)).append("\n");
-    sb.append("    rowTerms: ").append(toIndentedString(rowTerms)).append("\n");
-    sb.append("    ioType: ").append(toIndentedString(ioType)).append("\n");
     sb.append("    addresses: ").append(toIndentedString(addresses)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    ioTerms: ").append(toIndentedString(ioTerms)).append("\n");
+    sb.append("    ioTermsId: ").append(toIndentedString(ioTermsId)).append("\n");
+    sb.append("    ioType: ").append(toIndentedString(ioType)).append("\n");
+    sb.append("    rowTerms: ").append(toIndentedString(rowTerms)).append("\n");
+    sb.append("    rowTermsId: ").append(toIndentedString(rowTermsId)).append("\n");
+    sb.append("    usTerms: ").append(toIndentedString(usTerms)).append("\n");
+    sb.append("    usTermsId: ").append(toIndentedString(usTermsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,21 +12,13 @@ import { Currency } from './currency';
 
 export interface SSIOCreateInsertionOrderRequest { 
     /**
-     * Starting date of time period. Format: YYYY-MM-DD
+     * URL link for agency
      */
-    start_date: string;
+    agency_link?: string;
     /**
-     * End date of time period. Format: YYYY-MM-DD
+     * The billing contact email
      */
-    end_date?: string;
-    /**
-     * The po number
-     */
-    po_number: string;
-    /**
-     * If Budget order line, the budget amount.
-     */
-    budget_amount?: number;
+    billing_contact_email: string;
     /**
      * The billing contact first name
      */
@@ -36,9 +28,17 @@ export interface SSIOCreateInsertionOrderRequest {
      */
     billing_contact_lastname: string;
     /**
-     * The billing contact email
+     * If Budget order line, the budget amount.
      */
-    billing_contact_email: string;
+    budget_amount?: number;
+    /**
+     * End date of time period. Format: YYYY-MM-DD
+     */
+    end_date?: string;
+    /**
+     * The media contact email
+     */
+    media_contact_email: string;
     /**
      * The media contact first name
      */
@@ -48,54 +48,54 @@ export interface SSIOCreateInsertionOrderRequest {
      */
     media_contact_lastname: string;
     /**
-     * The media contact email
+     * The po number
      */
-    media_contact_email: string;
+    po_number: string;
     /**
-     * URL link for agency
+     * Starting date of time period. Format: YYYY-MM-DD
      */
-    agency_link?: string;
+    start_date: string;
     /**
      * The email of user submitting the insertion order
      */
     user_email?: string;
     /**
-     * The UTC timestamp (to the nearest sec) of when terms were accepted
-     */
-    accepted_terms_time?: number;
-    /**
-     * The pmp id
-     */
-    pmp_id: string;
-    /**
-     * The order name
-     */
-    order_name: string;
-    /**
-     * Type can be Budget or Perpetual
-     */
-    order_line_type: SSIOCreateInsertionOrderRequest.OrderLineTypeEnum;
-    /**
      * The SFDC id for the terms
      */
     accepted_terms_id: string;
     /**
-     * The bill-to company id
+     * The UTC timestamp (to the nearest sec) of when terms were accepted
      */
-    billto_company_id: string;
-    /**
-     * The bill-to business address id
-     */
-    billto_business_address_id: string;
+    accepted_terms_time?: number;
     /**
      * The bill-to billing address id
      */
     billto_billing_address_id: string;
     /**
+     * The bill-to business address id
+     */
+    billto_business_address_id: string;
+    /**
+     * The bill-to company id
+     */
+    billto_company_id: string;
+    currency_info: Currency;
+    /**
      * If Ongoing (perpetual) order line, the estimated monthly spend
      */
     estimated_monthly_spend?: number;
-    currency_info: Currency;
+    /**
+     * Type can be Budget or Perpetual
+     */
+    order_line_type: SSIOCreateInsertionOrderRequest.OrderLineTypeEnum;
+    /**
+     * The order name
+     */
+    order_name: string;
+    /**
+     * The pmp id
+     */
+    pmp_id: string;
 }
 export namespace SSIOCreateInsertionOrderRequest {
     export const OrderLineTypeEnum = {

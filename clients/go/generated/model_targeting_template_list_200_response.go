@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &TargetingTemplateList200Response{}
 
 // TargetingTemplateList200Response struct for TargetingTemplateList200Response
 type TargetingTemplateList200Response struct {
-	Items []TargetingTemplateResponseData `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []TargetingTemplateGetResponseData `json:"items"`
 }
 
 type _TargetingTemplateList200Response TargetingTemplateList200Response
@@ -32,7 +32,7 @@ type _TargetingTemplateList200Response TargetingTemplateList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetingTemplateList200Response(items []TargetingTemplateResponseData) *TargetingTemplateList200Response {
+func NewTargetingTemplateList200Response(items []TargetingTemplateGetResponseData) *TargetingTemplateList200Response {
 	this := TargetingTemplateList200Response{}
 	this.Items = items
 	return &this
@@ -44,30 +44,6 @@ func NewTargetingTemplateList200Response(items []TargetingTemplateResponseData) 
 func NewTargetingTemplateList200ResponseWithDefaults() *TargetingTemplateList200Response {
 	this := TargetingTemplateList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateResponseData {
-	if o == nil {
-		var ret []TargetingTemplateResponseData
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *TargetingTemplateList200Response) GetItemsOk() ([]TargetingTemplateResponseData, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplateResponseData) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *TargetingTemplateList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateGetResponseData {
+	if o == nil {
+		var ret []TargetingTemplateGetResponseData
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateList200Response) GetItemsOk() ([]TargetingTemplateGetResponseData, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplateGetResponseData) {
+	o.Items = v
+}
+
 func (o TargetingTemplateList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o TargetingTemplateList200Response) MarshalJSON() ([]byte, error) {
 
 func (o TargetingTemplateList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

@@ -8,8 +8,8 @@
 
 (def user-following-get-200-response-data
   {
-   (ds/req :items) (s/coll-of user-summary-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of user-summary-spec)
    })
 
 (def user-following-get-200-response-spec

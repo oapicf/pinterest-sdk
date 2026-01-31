@@ -7,36 +7,40 @@
 #' @title CatalogsRetailItemResponse
 #' @description CatalogsRetailItemResponse Class
 #' @format An \code{R6Class} generator object
+#' @field attributes  \link{ItemAttributes} [optional]
 #' @field catalog_type  \link{CatalogsType}
 #' @field item_id The catalog retail item id in the merchant namespace character [optional]
 #' @field pins The pins mapped to the item list(\link{Pin}) [optional]
-#' @field attributes  \link{ItemAttributes} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsRetailItemResponse <- R6::R6Class(
   "CatalogsRetailItemResponse",
   public = list(
+    `attributes` = NULL,
     `catalog_type` = NULL,
     `item_id` = NULL,
     `pins` = NULL,
-    `attributes` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailItemResponse class.
     #'
     #' @param catalog_type catalog_type
+    #' @param attributes attributes
     #' @param item_id The catalog retail item id in the merchant namespace
     #' @param pins The pins mapped to the item
-    #' @param attributes attributes
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `item_id` = NULL, `pins` = NULL, `attributes` = NULL, ...) {
+    initialize = function(`catalog_type`, `attributes` = NULL, `item_id` = NULL, `pins` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
+      }
+      if (!is.null(`attributes`)) {
+        stopifnot(R6::is.R6(`attributes`))
+        self$`attributes` <- `attributes`
       }
       if (!is.null(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
@@ -48,10 +52,6 @@ CatalogsRetailItemResponse <- R6::R6Class(
         stopifnot(is.vector(`pins`), length(`pins`) != 0)
         sapply(`pins`, function(x) stopifnot(R6::is.R6(x)))
         self$`pins` <- `pins`
-      }
-      if (!is.null(`attributes`)) {
-        stopifnot(R6::is.R6(`attributes`))
-        self$`attributes` <- `attributes`
       }
     },
 
@@ -86,6 +86,10 @@ CatalogsRetailItemResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsRetailItemResponseObject <- list()
+      if (!is.null(self$`attributes`)) {
+        CatalogsRetailItemResponseObject[["attributes"]] <-
+          self$`attributes`$toSimpleType()
+      }
       if (!is.null(self$`catalog_type`)) {
         CatalogsRetailItemResponseObject[["catalog_type"]] <-
           self$`catalog_type`$toSimpleType()
@@ -98,10 +102,6 @@ CatalogsRetailItemResponse <- R6::R6Class(
         CatalogsRetailItemResponseObject[["pins"]] <-
           lapply(self$`pins`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`attributes`)) {
-        CatalogsRetailItemResponseObject[["attributes"]] <-
-          self$`attributes`$toSimpleType()
-      }
       return(CatalogsRetailItemResponseObject)
     },
 
@@ -112,6 +112,11 @@ CatalogsRetailItemResponse <- R6::R6Class(
     #' @return the instance of CatalogsRetailItemResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`attributes`)) {
+        `attributes_object` <- ItemAttributes$new()
+        `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
+        self$`attributes` <- `attributes_object`
+      }
       if (!is.null(this_object$`catalog_type`)) {
         `catalog_type_object` <- CatalogsType$new()
         `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
@@ -122,11 +127,6 @@ CatalogsRetailItemResponse <- R6::R6Class(
       }
       if (!is.null(this_object$`pins`)) {
         self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[Pin]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`attributes`)) {
-        `attributes_object` <- ItemAttributes$new()
-        `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
-        self$`attributes` <- `attributes_object`
       }
       self
     },
@@ -149,10 +149,10 @@ CatalogsRetailItemResponse <- R6::R6Class(
     #' @return the instance of CatalogsRetailItemResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`attributes` <- ItemAttributes$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
       self$`item_id` <- this_object$`item_id`
       self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[Pin]", loadNamespace("openapi"))
-      self$`attributes` <- ItemAttributes$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self
     },
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalog_id** | **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
 **hotel_ids** | **Array&lt;string&gt;** |  | [default to undefined]
-**catalog_id** | **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { CatalogsHotelItemsFilter } from './api';
 
 const instance: CatalogsHotelItemsFilter = {
+    catalog_id,
     catalog_type,
     hotel_ids,
-    catalog_id,
 };
 ```
 

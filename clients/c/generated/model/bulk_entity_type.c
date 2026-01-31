@@ -5,13 +5,13 @@
 
 
 char* bulk_entity_type_bulk_entity_type_ToString(pinterest_rest_api_bulk_entity_type__e bulk_entity_type) {
-    char *bulk_entity_typeArray[] =  { "NULL", "CAMPAIGN", "AD_GROUP", "PRODUCT_GROUP", "AD", "KEYWORD" };
+    char *bulk_entity_typeArray[] =  { "NULL", "CAMPAIGN", "AD_GROUP", "PRODUCT_GROUP", "AD", "KEYWORD", "LABEL", "SCHEDULE" };
     return bulk_entity_typeArray[bulk_entity_type];
 }
 
 pinterest_rest_api_bulk_entity_type__e bulk_entity_type_bulk_entity_type_FromString(char* bulk_entity_type) {
     int stringToReturn = 0;
-    char *bulk_entity_typeArray[] =  { "NULL", "CAMPAIGN", "AD_GROUP", "PRODUCT_GROUP", "AD", "KEYWORD" };
+    char *bulk_entity_typeArray[] =  { "NULL", "CAMPAIGN", "AD_GROUP", "PRODUCT_GROUP", "AD", "KEYWORD", "LABEL", "SCHEDULE" };
     size_t sizeofArray = sizeof(bulk_entity_typeArray) / sizeof(bulk_entity_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(bulk_entity_type, bulk_entity_typeArray[stringToReturn]) == 0) {

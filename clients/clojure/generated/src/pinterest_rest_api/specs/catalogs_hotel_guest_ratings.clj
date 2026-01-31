@@ -7,10 +7,10 @@
 
 (def catalogs-hotel-guest-ratings-data
   {
-   (ds/opt :score) float?
-   (ds/opt :number_of_reviewers) int?
    (ds/opt :max_score) float?
+   (ds/opt :number_of_reviewers) int?
    (ds/opt :rating_system) string?
+   (ds/opt :score) float?
    })
 
 (def catalogs-hotel-guest-ratings-spec

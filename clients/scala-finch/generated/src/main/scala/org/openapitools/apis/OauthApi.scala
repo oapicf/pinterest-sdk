@@ -3,6 +3,7 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
+import org.openapitools.models.ConversionAccessTokenResponse
 import org.openapitools.models.Error
 import org.openapitools.models.OauthAccessTokenResponse
 import io.finch.circe._
@@ -25,7 +26,9 @@ object OauthApi {
     * @return Bundled compilation of all service endpoints.
     */
     def endpoints(da: DataAccessor) =
-        oauth/token(da)
+        oauth/conversionToken(da) :+:
+        oauth/token(da) :+:
+        token/revoke(da)
 
 
     private def checkError(e: CommonError) = e match {
@@ -50,11 +53,39 @@ object OauthApi {
 
         /**
         * 
+        * @return An endpoint representing a ConversionAccessTokenResponse
+        */
+        private def oauth/conversionToken(da: DataAccessor): Endpoint[ConversionAccessTokenResponse] =
+        post("oauth" :: "conversion_token") { () =>
+          da.Oauth_oauth/conversionToken() match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
         * @return An endpoint representing a OauthAccessTokenResponse
         */
         private def oauth/token(da: DataAccessor): Endpoint[OauthAccessTokenResponse] =
         post("oauth" :: "token" :: string) { (grantType: String) =>
           da.Oauth_oauth/token(grantType) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a Unit
+        */
+        private def token/revoke(da: DataAccessor): Endpoint[Unit] =
+        post("oauth" :: "token" :: "revoke" :: string :: paramOption("token_type_hint")) { (token: String, tokenTypeHint: Option[String]) =>
+          da.Oauth_token/revoke(token, tokenTypeHint) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

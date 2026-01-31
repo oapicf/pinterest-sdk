@@ -22,13 +22,13 @@ ads_credits_discounts_get_200_response_t* instantiate_ads_credits_discounts_get_
   ads_credits_discounts_get_200_response_t* ads_credits_discounts_get_200_response = NULL;
   if (include_optional) {
     ads_credits_discounts_get_200_response = ads_credits_discounts_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     ads_credits_discounts_get_200_response = ads_credits_discounts_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

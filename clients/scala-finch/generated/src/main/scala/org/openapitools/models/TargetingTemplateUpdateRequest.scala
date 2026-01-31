@@ -5,14 +5,17 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
+import org.openapitools.models.TargetingSpec
 
 /**
  * 
- * @param operationUnderscoretype 
  * @param id Targeting template ID
+ * @param operationUnderscoretype 
+ * @param targetingUnderscoreattributes 
  */
-case class TargetingTemplateUpdateRequest(operationUnderscoretype: String,
-                id: String
+case class TargetingTemplateUpdateRequest(id: String,
+                operationUnderscoretype: String,
+                targetingUnderscoreattributes: Option[TargetingSpec]
                 )
 
 object TargetingTemplateUpdateRequest {

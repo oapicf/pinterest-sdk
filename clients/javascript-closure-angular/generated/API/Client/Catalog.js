@@ -26,15 +26,15 @@ API.Client.Catalog.prototype.id;
 API.Client.Catalog.prototype.updatedAt;
 
 /**
+ * @type {!API.Client.CatalogsType}
+ * @export
+ */
+API.Client.Catalog.prototype.catalogType;
+
+/**
  * A human-friendly name associated to a catalog entity.
  * @type {!string}
  * @export
  */
 API.Client.Catalog.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.Catalog.prototype.catalogType;
 

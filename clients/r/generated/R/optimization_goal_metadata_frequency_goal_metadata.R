@@ -7,7 +7,7 @@
 #' @title OptimizationGoalMetadataFrequencyGoalMetadata
 #' @description OptimizationGoalMetadataFrequencyGoalMetadata Class
 #' @format An \code{R6Class} generator object
-#' @field frequency  integer [optional]
+#' @field frequency Frequency target can only be between 2 and 20 integer [optional]
 #' @field timerange User entity counts time range character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,7 +21,7 @@ OptimizationGoalMetadataFrequencyGoalMetadata <- R6::R6Class(
     #' @description
     #' Initialize a new OptimizationGoalMetadataFrequencyGoalMetadata class.
     #'
-    #' @param frequency frequency
+    #' @param frequency Frequency target can only be between 2 and 20
     #' @param timerange User entity counts time range
     #' @param ... Other optional arguments.
     initialize = function(`frequency` = NULL, `timerange` = NULL, ...) {
@@ -150,6 +150,13 @@ OptimizationGoalMetadataFrequencyGoalMetadata <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (self$`frequency` > 20) {
+        return(FALSE)
+      }
+      if (self$`frequency` < 2) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -159,6 +166,13 @@ OptimizationGoalMetadataFrequencyGoalMetadata <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (self$`frequency` > 20) {
+        invalid_fields["frequency"] <- "Invalid value for `frequency`, must be smaller than or equal to 20."
+      }
+      if (self$`frequency` < 2) {
+        invalid_fields["frequency"] <- "Invalid value for `frequency`, must be bigger than or equal to 2."
+      }
+
       invalid_fields
     },
 

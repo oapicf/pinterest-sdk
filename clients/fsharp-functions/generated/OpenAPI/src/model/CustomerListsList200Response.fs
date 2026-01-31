@@ -12,10 +12,10 @@ module CustomerListsList200Response =
 
   [<CLIMutable>]
   type CustomerListsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : CustomerList[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : CustomerList[];
   }
 
   //#endregion

@@ -1,6 +1,5 @@
 package apimodels;
 
-import apimodels.Exception;
 import apimodels.UserListOperationType;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -11,41 +10,19 @@ import javax.validation.Valid;
 /**
  * CustomerListUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CustomerListUpdateRequest   {
-  @JsonProperty("records")
-  @NotNull
-
-  private String records;
-
   @JsonProperty("operation_type")
   @NotNull
 @Valid
 
   private UserListOperationType operationType;
 
-  @JsonProperty("exceptions")
-  @Valid
+  @JsonProperty("records")
+  @NotNull
 
-  private Exception exceptions;
-
-  public CustomerListUpdateRequest records(String records) {
-    this.records = records;
-    return this;
-  }
-
-   /**
-   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-   * @return records
-  **/
-  public String getRecords() {
-    return records;
-  }
-
-  public void setRecords(String records) {
-    this.records = records;
-  }
+  private String records;
 
   public CustomerListUpdateRequest operationType(UserListOperationType operationType) {
     this.operationType = operationType;
@@ -64,21 +41,21 @@ public class CustomerListUpdateRequest   {
     this.operationType = operationType;
   }
 
-  public CustomerListUpdateRequest exceptions(Exception exceptions) {
-    this.exceptions = exceptions;
+  public CustomerListUpdateRequest records(String records) {
+    this.records = records;
     return this;
   }
 
    /**
-   * Get exceptions
-   * @return exceptions
+   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
+   * @return records
   **/
-  public Exception getExceptions() {
-    return exceptions;
+  public String getRecords() {
+    return records;
   }
 
-  public void setExceptions(Exception exceptions) {
-    this.exceptions = exceptions;
+  public void setRecords(String records) {
+    this.records = records;
   }
 
 
@@ -91,14 +68,13 @@ public class CustomerListUpdateRequest   {
       return false;
     }
     CustomerListUpdateRequest customerListUpdateRequest = (CustomerListUpdateRequest) o;
-    return Objects.equals(records, customerListUpdateRequest.records) &&
-        Objects.equals(operationType, customerListUpdateRequest.operationType) &&
-        Objects.equals(exceptions, customerListUpdateRequest.exceptions);
+    return Objects.equals(operationType, customerListUpdateRequest.operationType) &&
+        Objects.equals(records, customerListUpdateRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(records, operationType, exceptions);
+    return Objects.hash(operationType, records);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -107,9 +83,8 @@ public class CustomerListUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListUpdateRequest {\n");
     
-    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("}");
     return sb.toString();
   }

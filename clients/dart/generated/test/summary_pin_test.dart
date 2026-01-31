@@ -16,13 +16,18 @@ void main() {
   // final instance = SummaryPin();
 
   group('test SummaryPin', () {
-    // PinMedia media
-    test('to test the property `media`', () async {
+    // String altText
+    test('to test the property `altText`', () async {
       // TODO
     });
 
-    // String altText
-    test('to test the property `altText`', () async {
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
@@ -31,13 +36,13 @@ void main() {
       // TODO
     });
 
-    // String title
-    test('to test the property `title`', () async {
+    // PinMedia media
+    test('to test the property `media`', () async {
       // TODO
     });
 
-    // String description
-    test('to test the property `description`', () async {
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 

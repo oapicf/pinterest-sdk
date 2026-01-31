@@ -20,14 +20,6 @@ public class CatalogsReportFeedIngestionFilterTest {
     }
 
     /**
-     * Test the property 'reportType'
-     */
-    @Test
-    public void reportTypeTest() {
-        // TODO: test reportType
-    }
-
-    /**
      * Test the property 'feedId'
      */
     @Test
@@ -41,6 +33,14 @@ public class CatalogsReportFeedIngestionFilterTest {
     @Test
     public void processingResultIdTest() {
         // TODO: test processingResultId
+    }
+
+    /**
+     * Test the property 'reportType'
+     */
+    @Test
+    public void reportTypeTest() {
+        // TODO: test reportType
     }
 
 }

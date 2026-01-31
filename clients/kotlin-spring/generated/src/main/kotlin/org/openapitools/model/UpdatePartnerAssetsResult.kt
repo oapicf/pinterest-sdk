@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * An object containing the permissions a business partner has on the asset.
  * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
  * @param partnerId Unique identifier of a business partner.
  * @param permissions Permission levels member or partner has on an asset.
  */
@@ -26,7 +26,7 @@ data class UpdatePartnerAssetsResult(
     @Schema(example = "549755885175", description = "Unique identifier of a business asset.")
     @get:JsonProperty("asset_id") val assetId: kotlin.String? = null,
 
-    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
     @get:JsonProperty("asset_type") val assetType: kotlin.String? = null,
 
     @get:Pattern(regexp="^\\d+$")

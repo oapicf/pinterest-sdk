@@ -10,8 +10,8 @@
 
 
 export interface ImageDetails { 
-    width: number;
     height: number | null;
     url: string;
+    width: number | null;
 }
 

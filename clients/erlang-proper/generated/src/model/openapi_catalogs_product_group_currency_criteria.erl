@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_product_group_currency_criteria/0]).
 
 -type openapi_catalogs_product_group_currency_criteria() ::
-  [ {'values', openapi_non_nullable_catalogs_currency:openapi_non_nullable_catalogs_currency() }
-  | {'negated', boolean() }
+  [ {'negated', boolean() }
+  | {'values', openapi_non_nullable_catalogs_currency:openapi_non_nullable_catalogs_currency() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_catalogs_product_group_currency_criteria() ->
     openapi_catalogs_product_group_currency_criteria([]).
 
 openapi_catalogs_product_group_currency_criteria(Fields) ->
-  Default = [ {'values', openapi_non_nullable_catalogs_currency:openapi_non_nullable_catalogs_currency() }
-            , {'negated', boolean() }
+  Default = [ {'negated', boolean() }
+            , {'values', openapi_non_nullable_catalogs_currency:openapi_non_nullable_catalogs_currency() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

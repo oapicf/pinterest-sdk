@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **type** | **String** | The date range type | [optional] |
-| **start_days_in_past** | **Float** | The start date of the date range | [optional] |
 | **end_days_in_past** | **Float** | The end date of the date range | [optional] |
+| **start_days_in_past** | **Float** | The start date of the date range | [optional] |
+| **type** | **String** | The date range type | [optional] |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::TemplateResponseDateRangeRelativeDateRange.new(
-  type: relative,
+  end_days_in_past: 7,
   start_days_in_past: 14,
-  end_days_in_past: 7
+  type: relative
 )
 ```
 

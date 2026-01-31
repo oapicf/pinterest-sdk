@@ -2,12 +2,17 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.Board
+import org.openapitools.model.BoardCreate
+import org.openapitools.model.BoardPrivacyFilter
 import org.openapitools.model.BoardSection
 import org.openapitools.model.BoardSectionsList200Response
-import org.openapitools.model.BoardUpdate
+import org.openapitools.model.BoardWithUpdatePrivacy
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate
 import org.openapitools.model.BoardsList200Response
 import org.openapitools.model.BoardsListPins200Response
+import org.openapitools.model.CreativeType
 import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 
 class BoardsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -185,7 +190,7 @@ class BoardsApi {
 
     }
 
-    def boardsCreate ( Board board, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def boardsCreate ( BoardCreate boardCreate, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards"
 
         // params
@@ -195,8 +200,8 @@ class BoardsApi {
         def contentType
 
         // verify required params are set
-        if (board == null) {
-            throw new RuntimeException("missing required params board")
+        if (boardCreate == null) {
+            throw new RuntimeException("missing required params boardCreate")
         }
 
         if (adAccountId != null) {
@@ -205,7 +210,7 @@ class BoardsApi {
 
 
         contentType = 'application/json';
-        bodyParams = board
+        bodyParams = boardCreate
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
@@ -268,7 +273,7 @@ class BoardsApi {
 
     }
 
-    def boardsList ( String adAccountId, String bookmark, Integer pageSize, String privacy, Closure onSuccess, Closure onFailure)  {
+    def boardsList ( String adAccountId, BoardPrivacyFilter privacy, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards"
 
         // params
@@ -281,14 +286,14 @@ class BoardsApi {
         if (adAccountId != null) {
             queryParams.put("ad_account_id", adAccountId)
         }
+        if (privacy != null) {
+            queryParams.put("privacy", privacy)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
-        }
-        if (privacy != null) {
-            queryParams.put("privacy", privacy)
         }
 
 
@@ -300,7 +305,7 @@ class BoardsApi {
 
     }
 
-    def boardsListPins ( String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, Closure onSuccess, Closure onFailure)  {
+    def boardsListPins ( String boardId, String bookmark, Integer pageSize, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards/${board_id}/pins"
 
         // params
@@ -339,7 +344,7 @@ class BoardsApi {
 
     }
 
-    def boardsUpdate ( String boardId, BoardUpdate boardUpdate, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def boardsUpdate ( String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards/${board_id}"
 
         // params
@@ -353,8 +358,8 @@ class BoardsApi {
             throw new RuntimeException("missing required params boardId")
         }
         // verify required params are set
-        if (boardUpdate == null) {
-            throw new RuntimeException("missing required params boardUpdate")
+        if (boardWithUpdatePrivacyUpdate == null) {
+            throw new RuntimeException("missing required params boardWithUpdatePrivacyUpdate")
         }
 
         if (adAccountId != null) {
@@ -363,12 +368,12 @@ class BoardsApi {
 
 
         contentType = 'application/json';
-        bodyParams = boardUpdate
+        bodyParams = boardWithUpdatePrivacyUpdate
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "PATCH", "",
-                    Board.class )
+                    BoardWithUpdatePrivacy.class )
 
     }
 

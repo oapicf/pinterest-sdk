@@ -19,16 +19,16 @@ module CatalogsVerticalProductGroupUpdateRequest =
   type CatalogsVerticalProductGroupUpdateRequest = {
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
+    [<JsonProperty(PropertyName = "country")>]
+    Country : Country;
     [<JsonProperty(PropertyName = "description")>]
     Description : string option;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsCreativeAssetsProductGroupFilters;
-    [<JsonProperty(PropertyName = "country")>]
-    Country : Country;
     [<JsonProperty(PropertyName = "locale")>]
     Locale : CatalogsLocale;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

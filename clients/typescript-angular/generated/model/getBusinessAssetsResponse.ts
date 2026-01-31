@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { GetBusinessAssetsResponseCatalogInfo } from './getBusinessAssetsResponseCatalogInfo';
 import { AssetGroupBinding } from './assetGroupBinding';
 
 
@@ -14,14 +15,15 @@ import { AssetGroupBinding } from './assetGroupBinding';
  * An object containing the permissions a business has on the asset.
  */
 export interface GetBusinessAssetsResponse { 
+    asset_group_info?: AssetGroupBinding;
     /**
      * Unique identifier of a business asset.
      */
     asset_id?: string;
     /**
-     * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+     * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
      */
     asset_type?: string;
-    asset_group_info?: AssetGroupBinding;
+    catalog_info?: GetBusinessAssetsResponseCatalogInfo | null;
 }
 

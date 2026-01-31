@@ -8,8 +8,8 @@ use WWW::OpenAPIClient::Object::PinsList200Response;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**ARRAY[Pin]**](Pin.md) |  | 
 **bookmark** | **string** |  | [optional] 
+**items** | [**ARRAY[Pin]**](Pin.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

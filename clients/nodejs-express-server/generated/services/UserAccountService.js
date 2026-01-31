@@ -30,7 +30,7 @@ const boards_user_follows/list = ({ bookmark, pageUnderscoresize, explicitUnders
 );
 /**
 * Follow user
-* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 *
 * username String A valid username
 * followUserRequest FollowUserRequest Follow a user.

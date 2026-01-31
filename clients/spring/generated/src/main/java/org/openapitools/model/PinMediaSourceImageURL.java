@@ -23,15 +23,17 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  */
 
-@Schema(name = "PinMediaSourceImageURL", description = "Image URL-based media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "PinMediaSourceImageURL", description = "Image URL-based media source.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImageURL implements PinMediaSource {
 
+  private Boolean isStandard = true;
+
   /**
-   * Gets or Sets sourceType
+   * The source type of the media.
    */
   public enum SourceTypeEnum {
     IMAGE_URL("image_url");
@@ -67,8 +69,6 @@ public class PinMediaSourceImageURL implements PinMediaSource {
 
   private String url;
 
-  private Boolean isStandard = true;
-
   public PinMediaSourceImageURL() {
     super();
   }
@@ -81,17 +81,37 @@ public class PinMediaSourceImageURL implements PinMediaSource {
     this.url = url;
   }
 
+  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+    return this;
+  }
+
+  /**
+   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+   * @return isStandard
+   */
+  
+  @Schema(name = "is_standard", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_standard")
+  public Boolean getIsStandard() {
+    return isStandard;
+  }
+
+  public void setIsStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+  }
+
   public PinMediaSourceImageURL sourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
 
   /**
-   * Get sourceType
+   * The source type of the media.
    * @return sourceType
    */
   @NotNull 
-  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "source_type", description = "The source type of the media.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("source_type")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -121,26 +141,6 @@ public class PinMediaSourceImageURL implements PinMediaSource {
     this.url = url;
   }
 
-  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-    return this;
-  }
-
-  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-   * @return isStandard
-   */
-  
-  @Schema(name = "is_standard", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("is_standard")
-  public Boolean getIsStandard() {
-    return isStandard;
-  }
-
-  public void setIsStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,23 +150,23 @@ public class PinMediaSourceImageURL implements PinMediaSource {
       return false;
     }
     PinMediaSourceImageURL pinMediaSourceImageURL = (PinMediaSourceImageURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImageURL.sourceType) &&
-        Objects.equals(this.url, pinMediaSourceImageURL.url) &&
-        Objects.equals(this.isStandard, pinMediaSourceImageURL.isStandard);
+    return Objects.equals(this.isStandard, pinMediaSourceImageURL.isStandard) &&
+        Objects.equals(this.sourceType, pinMediaSourceImageURL.sourceType) &&
+        Objects.equals(this.url, pinMediaSourceImageURL.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, url, isStandard);
+    return Objects.hash(isStandard, sourceType, url);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImageURL {\n");
+    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("}");
     return sb.toString();
   }

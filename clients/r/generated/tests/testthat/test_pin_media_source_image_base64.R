@@ -5,15 +5,8 @@ context("Test PinMediaSourceImageBase64")
 
 model_instance <- PinMediaSourceImageBase64$new()
 
-test_that("source_type", {
-  # tests for the property `source_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`source_type`, "EXPECTED_RESULT")
-})
-
 test_that("content_type", {
-  # tests for the property `content_type` (character)
+  # tests for the property `content_type` (ContentType)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`content_type`, "EXPECTED_RESULT")
@@ -32,4 +25,12 @@ test_that("is_standard", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_standard`, "EXPECTED_RESULT")
+})
+
+test_that("source_type", {
+  # tests for the property `source_type` (character)
+  # The source type of the media.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`source_type`, "EXPECTED_RESULT")
 })

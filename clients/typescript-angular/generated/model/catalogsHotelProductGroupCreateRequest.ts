@@ -14,14 +14,14 @@ import { CatalogsHotelProductGroupFilters } from './catalogsHotelProductGroupFil
  * Request object for creating a hotel product group.
  */
 export interface CatalogsHotelProductGroupCreateRequest { 
-    catalog_type: CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum;
-    name: string;
-    description?: string | null;
-    filters: CatalogsHotelProductGroupFilters;
     /**
      * Catalog id pertaining to the hotel product group.
      */
     catalog_id: string;
+    catalog_type: CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum;
+    description?: string | null;
+    filters: CatalogsHotelProductGroupFilters;
+    name: string;
 }
 export namespace CatalogsHotelProductGroupCreateRequest {
     export const CatalogTypeEnum = {

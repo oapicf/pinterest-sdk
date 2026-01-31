@@ -12,6 +12,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsReportFeedIngestionStats  {
   
+ /**
+  * ID of the catalog entity.
+  */
+  @ApiModelProperty(value = "ID of the catalog entity.")
+  private String catalogId;
+
+ /**
+  * The event code that a diagnostics aggregated number references
+  */
+  @ApiModelProperty(example = "112", value = "The event code that a diagnostics aggregated number references")
+  private Integer code;
+
+ /**
+  * A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
+  */
+  @ApiModelProperty(example = "AVAILABILITY_INVALID", value = "A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')")
+  private String codeLabel;
+
+ /**
+  * Title message describing the diagnostic issue
+  */
+  @ApiModelProperty(value = "Title message describing the diagnostic issue")
+  private String message;
+
+ /**
+  * Number of occurrences of the issue
+  */
+  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
+  private Integer occurrences;
+
 public enum ReportTypeEnum {
 
     @JsonProperty("FEED_INGESTION_ISSUES") FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES"));
@@ -43,36 +73,6 @@ public enum ReportTypeEnum {
 
   @ApiModelProperty(value = "")
   private ReportTypeEnum reportType;
-
- /**
-  * ID of the catalog entity.
-  */
-  @ApiModelProperty(value = "ID of the catalog entity.")
-  private String catalogId;
-
- /**
-  * The event code that a diagnostics aggregated number references
-  */
-  @ApiModelProperty(example = "112", value = "The event code that a diagnostics aggregated number references")
-  private Integer code;
-
- /**
-  * A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
-  */
-  @ApiModelProperty(example = "AVAILABILITY_INVALID", value = "A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')")
-  private String codeLabel;
-
- /**
-  * Title message describing the diagnostic issue
-  */
-  @ApiModelProperty(value = "Title message describing the diagnostic issue")
-  private String message;
-
- /**
-  * Number of occurrences of the issue
-  */
-  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
-  private Integer occurrences;
 
 public enum SeverityEnum {
 
@@ -109,30 +109,6 @@ public enum SeverityEnum {
   */
   @ApiModelProperty(value = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
   private SeverityEnum severity;
- /**
-  * Get reportType
-  * @return reportType
-  */
-  @JsonProperty("report_type")
-  public String getReportType() {
-    return reportType == null ? null : reportType.value();
-  }
-
-  /**
-   * Sets the <code>reportType</code> property.
-   */
- public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-  /**
-   * Sets the <code>reportType</code> property.
-   */
-  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
  /**
   * ID of the catalog entity.
   * @return catalogId
@@ -254,6 +230,30 @@ public enum SeverityEnum {
   }
 
  /**
+  * Get reportType
+  * @return reportType
+  */
+  @JsonProperty("report_type")
+  public String getReportType() {
+    return reportType == null ? null : reportType.value();
+  }
+
+  /**
+   * Sets the <code>reportType</code> property.
+   */
+ public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
+   * Sets the <code>reportType</code> property.
+   */
+  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+ /**
   * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
   * @return severity
   */
@@ -287,18 +287,18 @@ public enum SeverityEnum {
       return false;
     }
     CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats = (CatalogsReportFeedIngestionStats) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportFeedIngestionStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportFeedIngestionStats.catalogId) &&
         Objects.equals(this.code, catalogsReportFeedIngestionStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportFeedIngestionStats.codeLabel) &&
         Objects.equals(this.message, catalogsReportFeedIngestionStats.message) &&
         Objects.equals(this.occurrences, catalogsReportFeedIngestionStats.occurrences) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionStats.reportType) &&
         Objects.equals(this.severity, catalogsReportFeedIngestionStats.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity);
   }
 
   @Override
@@ -306,12 +306,12 @@ public enum SeverityEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `multiple_product_groups_inner`
 --
-SELECT `name`, `description`, `is_featured`, `filters`, `feed_id`, `catalog_type`, `catalog_id`, `country`, `locale` FROM `multiple_product_groups_inner` WHERE 1;
+SELECT `description`, `feed_id`, `filters`, `is_featured`, `name`, `catalog_id`, `catalog_type`, `country`, `locale` FROM `multiple_product_groups_inner` WHERE 1;
 
 --
 -- INSERT template for table `multiple_product_groups_inner`
 --
-INSERT INTO `multiple_product_groups_inner`(`name`, `description`, `is_featured`, `filters`, `feed_id`, `catalog_type`, `catalog_id`, `country`, `locale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `multiple_product_groups_inner`(`description`, `feed_id`, `filters`, `is_featured`, `name`, `catalog_id`, `catalog_type`, `country`, `locale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `multiple_product_groups_inner`
 --
-UPDATE `multiple_product_groups_inner` SET `name` = ?, `description` = ?, `is_featured` = ?, `filters` = ?, `feed_id` = ?, `catalog_type` = ?, `catalog_id` = ?, `country` = ?, `locale` = ? WHERE 1;
+UPDATE `multiple_product_groups_inner` SET `description` = ?, `feed_id` = ?, `filters` = ?, `is_featured` = ?, `name` = ?, `catalog_id` = ?, `catalog_type` = ?, `country` = ?, `locale` = ? WHERE 1;
 
 --
 -- DELETE template for table `multiple_product_groups_inner`

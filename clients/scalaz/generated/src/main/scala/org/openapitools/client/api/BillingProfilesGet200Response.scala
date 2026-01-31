@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import BillingProfilesGet200Response._
 
 case class BillingProfilesGet200Response (
-  items: List[BillingProfilesResponse],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[BillingProfilesResponse])
 
 object BillingProfilesGet200Response {
   import DateTimeCodecs._

@@ -21,6 +21,14 @@ public class ConversionEventResponseTest {
     }
 
     /**
+     * Test the property 'adAccountId'
+     */
+    @Test
+    public void adAccountIdTest() {
+        // TODO: test adAccountId
+    }
+
+    /**
      * Test the property 'conversionEvent'
      */
     @Test
@@ -34,14 +42,6 @@ public class ConversionEventResponseTest {
     @Test
     public void conversionTagIdTest() {
         // TODO: test conversionTagId
-    }
-
-    /**
-     * Test the property 'adAccountId'
-     */
-    @Test
-    public void adAccountIdTest() {
-        // TODO: test adAccountId
     }
 
     /**

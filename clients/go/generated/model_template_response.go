@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,52 +20,52 @@ var _ MappedNullable = &TemplateResponse{}
 
 // TemplateResponse Template fields
 type TemplateResponse struct {
-	// Template ID
-	Id *string `json:"id,omitempty"`
 	// ID of the Ad Account that owns the template
 	AdAccountId *string `json:"ad_account_id,omitempty"`
 	// IDs of the Ad Accounts that have access to this template
 	AdAccountIds []string `json:"ad_account_ids,omitempty"`
-	// ID of the user who created the template
-	UserId *string `json:"user_id,omitempty"`
-	// Template Name
-	Name NullableString `json:"name,omitempty"`
-	// The number of days prior to the day the report will be delivered at which the report will start
-	ReportStartRelativeDaysInPast *float32 `json:"report_start_relative_days_in_past,omitempty"`
-	// The number of days prior to the day the report will be delivered at which the report will end
-	ReportEndRelativeDaysInPast *float32 `json:"report_end_relative_days_in_past,omitempty"`
-	DateRange *TemplateResponseDateRange `json:"date_range,omitempty"`
-	ReportLevel *MetricsReportingLevel `json:"report_level,omitempty"`
-	ReportFormat *DataOutputFormat `json:"report_format,omitempty"`
-	// A list of columns to be included in the report
-	Columns []string `json:"columns,omitempty"`
-	Granularity *Granularity `json:"granularity,omitempty"`
-	// The length of the sliding window over which view conversions will be attributed
-	ViewWindowDays *float32 `json:"view_window_days,omitempty"`
 	// The length of the sliding window over which click conversions will be attributed
 	ClickWindowDays *float32 `json:"click_window_days,omitempty"`
-	// The length of the sliding window over which engagement conversions will be attributed
-	EngagementWindowDays *float32 `json:"engagement_window_days,omitempty"`
+	// A list of columns to be included in the report
+	Columns []string `json:"columns,omitempty"`
 	// Conversion report time type
 	ConversionReportTimeType *string `json:"conversion_report_time_type,omitempty"`
+	// The surface used to create this template
+	CreationSource *string `json:"creation_source,omitempty"`
+	// A list of custom column IDs
+	CustomColumnIds []string `json:"custom_column_ids,omitempty"`
+	DateRange *TemplateResponseDateRange `json:"date_range,omitempty"`
+	// The length of the sliding window over which engagement conversions will be attributed
+	EngagementWindowDays *float32 `json:"engagement_window_days,omitempty"`
 	// A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values
 	FiltersJson NullableString `json:"filters_json,omitempty"`
+	Granularity *Granularity `json:"granularity,omitempty"`
+	// Template ID
+	Id *string `json:"id,omitempty"`
+	// The filter on the conversion ingestion source method for conversion metrics
+	IngestionSources []string `json:"ingestion_sources,omitempty"`
+	// A boolean that indicates if the template has been deleted
+	IsDeleted NullableBool `json:"is_deleted,omitempty"`
 	// A boolean value that indicates if the user owns the template
 	IsOwnedByUser *bool `json:"is_owned_by_user,omitempty"`
 	// A boolean value that indicates if this template has been used to create a scheduled report
 	IsScheduled *bool `json:"is_scheduled,omitempty"`
-	// The surface used to create this template
-	CreationSource *string `json:"creation_source,omitempty"`
-	// A boolean that indicates if the template has been deleted
-	IsDeleted NullableBool `json:"is_deleted,omitempty"`
-	// Time of last update in seconds since Unix epoch
-	UpdatedTime *float32 `json:"updated_time,omitempty"`
-	// A list of custom column IDs
-	CustomColumnIds []string `json:"custom_column_ids,omitempty"`
+	// Template Name
+	Name NullableString `json:"name,omitempty"`
+	// The number of days prior to the day the report will be delivered at which the report will end
+	ReportEndRelativeDaysInPast *float32 `json:"report_end_relative_days_in_past,omitempty"`
+	ReportFormat *DataOutputFormat `json:"report_format,omitempty"`
+	ReportLevel *MetricsReportingLevel `json:"report_level,omitempty"`
+	// The number of days prior to the day the report will be delivered at which the report will start
+	ReportStartRelativeDaysInPast *float32 `json:"report_start_relative_days_in_past,omitempty"`
 	// Reporting template type
 	Type *string `json:"type,omitempty"`
-	// The filter on the conversion ingestion source method for conversion metrics
-	IngestionSources []string `json:"ingestion_sources,omitempty"`
+	// Time of last update in seconds since Unix epoch
+	UpdatedTime *float32 `json:"updated_time,omitempty"`
+	// ID of the user who created the template
+	UserId *string `json:"user_id,omitempty"`
+	// The length of the sliding window over which view conversions will be attributed
+	ViewWindowDays *float32 `json:"view_window_days,omitempty"`
 }
 
 // NewTemplateResponse instantiates a new TemplateResponse object
@@ -83,38 +83,6 @@ func NewTemplateResponse() *TemplateResponse {
 func NewTemplateResponseWithDefaults() *TemplateResponse {
 	this := TemplateResponse{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *TemplateResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *TemplateResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *TemplateResponse) SetId(v string) {
-	o.Id = &v
 }
 
 // GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
@@ -181,238 +149,36 @@ func (o *TemplateResponse) SetAdAccountIds(v []string) {
 	o.AdAccountIds = v
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise.
-func (o *TemplateResponse) GetUserId() string {
-	if o == nil || IsNil(o.UserId) {
-		var ret string
-		return ret
-	}
-	return *o.UserId
-}
-
-// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.UserId) {
-		return nil, false
-	}
-	return o.UserId, true
-}
-
-// HasUserId returns a boolean if a field has been set.
-func (o *TemplateResponse) HasUserId() bool {
-	if o != nil && !IsNil(o.UserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserId gets a reference to the given string and assigns it to the UserId field.
-func (o *TemplateResponse) SetUserId(v string) {
-	o.UserId = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateResponse) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Name.Get()
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateResponse) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Name.Get(), o.Name.IsSet()
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *TemplateResponse) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *TemplateResponse) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *TemplateResponse) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *TemplateResponse) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetReportStartRelativeDaysInPast returns the ReportStartRelativeDaysInPast field value if set, zero value otherwise.
-func (o *TemplateResponse) GetReportStartRelativeDaysInPast() float32 {
-	if o == nil || IsNil(o.ReportStartRelativeDaysInPast) {
+// GetClickWindowDays returns the ClickWindowDays field value if set, zero value otherwise.
+func (o *TemplateResponse) GetClickWindowDays() float32 {
+	if o == nil || IsNil(o.ClickWindowDays) {
 		var ret float32
 		return ret
 	}
-	return *o.ReportStartRelativeDaysInPast
+	return *o.ClickWindowDays
 }
 
-// GetReportStartRelativeDaysInPastOk returns a tuple with the ReportStartRelativeDaysInPast field value if set, nil otherwise
+// GetClickWindowDaysOk returns a tuple with the ClickWindowDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetReportStartRelativeDaysInPastOk() (*float32, bool) {
-	if o == nil || IsNil(o.ReportStartRelativeDaysInPast) {
+func (o *TemplateResponse) GetClickWindowDaysOk() (*float32, bool) {
+	if o == nil || IsNil(o.ClickWindowDays) {
 		return nil, false
 	}
-	return o.ReportStartRelativeDaysInPast, true
+	return o.ClickWindowDays, true
 }
 
-// HasReportStartRelativeDaysInPast returns a boolean if a field has been set.
-func (o *TemplateResponse) HasReportStartRelativeDaysInPast() bool {
-	if o != nil && !IsNil(o.ReportStartRelativeDaysInPast) {
+// HasClickWindowDays returns a boolean if a field has been set.
+func (o *TemplateResponse) HasClickWindowDays() bool {
+	if o != nil && !IsNil(o.ClickWindowDays) {
 		return true
 	}
 
 	return false
 }
 
-// SetReportStartRelativeDaysInPast gets a reference to the given float32 and assigns it to the ReportStartRelativeDaysInPast field.
-func (o *TemplateResponse) SetReportStartRelativeDaysInPast(v float32) {
-	o.ReportStartRelativeDaysInPast = &v
-}
-
-// GetReportEndRelativeDaysInPast returns the ReportEndRelativeDaysInPast field value if set, zero value otherwise.
-func (o *TemplateResponse) GetReportEndRelativeDaysInPast() float32 {
-	if o == nil || IsNil(o.ReportEndRelativeDaysInPast) {
-		var ret float32
-		return ret
-	}
-	return *o.ReportEndRelativeDaysInPast
-}
-
-// GetReportEndRelativeDaysInPastOk returns a tuple with the ReportEndRelativeDaysInPast field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetReportEndRelativeDaysInPastOk() (*float32, bool) {
-	if o == nil || IsNil(o.ReportEndRelativeDaysInPast) {
-		return nil, false
-	}
-	return o.ReportEndRelativeDaysInPast, true
-}
-
-// HasReportEndRelativeDaysInPast returns a boolean if a field has been set.
-func (o *TemplateResponse) HasReportEndRelativeDaysInPast() bool {
-	if o != nil && !IsNil(o.ReportEndRelativeDaysInPast) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportEndRelativeDaysInPast gets a reference to the given float32 and assigns it to the ReportEndRelativeDaysInPast field.
-func (o *TemplateResponse) SetReportEndRelativeDaysInPast(v float32) {
-	o.ReportEndRelativeDaysInPast = &v
-}
-
-// GetDateRange returns the DateRange field value if set, zero value otherwise.
-func (o *TemplateResponse) GetDateRange() TemplateResponseDateRange {
-	if o == nil || IsNil(o.DateRange) {
-		var ret TemplateResponseDateRange
-		return ret
-	}
-	return *o.DateRange
-}
-
-// GetDateRangeOk returns a tuple with the DateRange field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetDateRangeOk() (*TemplateResponseDateRange, bool) {
-	if o == nil || IsNil(o.DateRange) {
-		return nil, false
-	}
-	return o.DateRange, true
-}
-
-// HasDateRange returns a boolean if a field has been set.
-func (o *TemplateResponse) HasDateRange() bool {
-	if o != nil && !IsNil(o.DateRange) {
-		return true
-	}
-
-	return false
-}
-
-// SetDateRange gets a reference to the given TemplateResponseDateRange and assigns it to the DateRange field.
-func (o *TemplateResponse) SetDateRange(v TemplateResponseDateRange) {
-	o.DateRange = &v
-}
-
-// GetReportLevel returns the ReportLevel field value if set, zero value otherwise.
-func (o *TemplateResponse) GetReportLevel() MetricsReportingLevel {
-	if o == nil || IsNil(o.ReportLevel) {
-		var ret MetricsReportingLevel
-		return ret
-	}
-	return *o.ReportLevel
-}
-
-// GetReportLevelOk returns a tuple with the ReportLevel field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetReportLevelOk() (*MetricsReportingLevel, bool) {
-	if o == nil || IsNil(o.ReportLevel) {
-		return nil, false
-	}
-	return o.ReportLevel, true
-}
-
-// HasReportLevel returns a boolean if a field has been set.
-func (o *TemplateResponse) HasReportLevel() bool {
-	if o != nil && !IsNil(o.ReportLevel) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportLevel gets a reference to the given MetricsReportingLevel and assigns it to the ReportLevel field.
-func (o *TemplateResponse) SetReportLevel(v MetricsReportingLevel) {
-	o.ReportLevel = &v
-}
-
-// GetReportFormat returns the ReportFormat field value if set, zero value otherwise.
-func (o *TemplateResponse) GetReportFormat() DataOutputFormat {
-	if o == nil || IsNil(o.ReportFormat) {
-		var ret DataOutputFormat
-		return ret
-	}
-	return *o.ReportFormat
-}
-
-// GetReportFormatOk returns a tuple with the ReportFormat field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetReportFormatOk() (*DataOutputFormat, bool) {
-	if o == nil || IsNil(o.ReportFormat) {
-		return nil, false
-	}
-	return o.ReportFormat, true
-}
-
-// HasReportFormat returns a boolean if a field has been set.
-func (o *TemplateResponse) HasReportFormat() bool {
-	if o != nil && !IsNil(o.ReportFormat) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportFormat gets a reference to the given DataOutputFormat and assigns it to the ReportFormat field.
-func (o *TemplateResponse) SetReportFormat(v DataOutputFormat) {
-	o.ReportFormat = &v
+// SetClickWindowDays gets a reference to the given float32 and assigns it to the ClickWindowDays field.
+func (o *TemplateResponse) SetClickWindowDays(v float32) {
+	o.ClickWindowDays = &v
 }
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
@@ -447,100 +213,133 @@ func (o *TemplateResponse) SetColumns(v []string) {
 	o.Columns = v
 }
 
-// GetGranularity returns the Granularity field value if set, zero value otherwise.
-func (o *TemplateResponse) GetGranularity() Granularity {
-	if o == nil || IsNil(o.Granularity) {
-		var ret Granularity
+// GetConversionReportTimeType returns the ConversionReportTimeType field value if set, zero value otherwise.
+func (o *TemplateResponse) GetConversionReportTimeType() string {
+	if o == nil || IsNil(o.ConversionReportTimeType) {
+		var ret string
 		return ret
 	}
-	return *o.Granularity
+	return *o.ConversionReportTimeType
 }
 
-// GetGranularityOk returns a tuple with the Granularity field value if set, nil otherwise
+// GetConversionReportTimeTypeOk returns a tuple with the ConversionReportTimeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetGranularityOk() (*Granularity, bool) {
-	if o == nil || IsNil(o.Granularity) {
+func (o *TemplateResponse) GetConversionReportTimeTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConversionReportTimeType) {
 		return nil, false
 	}
-	return o.Granularity, true
+	return o.ConversionReportTimeType, true
 }
 
-// HasGranularity returns a boolean if a field has been set.
-func (o *TemplateResponse) HasGranularity() bool {
-	if o != nil && !IsNil(o.Granularity) {
+// HasConversionReportTimeType returns a boolean if a field has been set.
+func (o *TemplateResponse) HasConversionReportTimeType() bool {
+	if o != nil && !IsNil(o.ConversionReportTimeType) {
 		return true
 	}
 
 	return false
 }
 
-// SetGranularity gets a reference to the given Granularity and assigns it to the Granularity field.
-func (o *TemplateResponse) SetGranularity(v Granularity) {
-	o.Granularity = &v
+// SetConversionReportTimeType gets a reference to the given string and assigns it to the ConversionReportTimeType field.
+func (o *TemplateResponse) SetConversionReportTimeType(v string) {
+	o.ConversionReportTimeType = &v
 }
 
-// GetViewWindowDays returns the ViewWindowDays field value if set, zero value otherwise.
-func (o *TemplateResponse) GetViewWindowDays() float32 {
-	if o == nil || IsNil(o.ViewWindowDays) {
-		var ret float32
+// GetCreationSource returns the CreationSource field value if set, zero value otherwise.
+func (o *TemplateResponse) GetCreationSource() string {
+	if o == nil || IsNil(o.CreationSource) {
+		var ret string
 		return ret
 	}
-	return *o.ViewWindowDays
+	return *o.CreationSource
 }
 
-// GetViewWindowDaysOk returns a tuple with the ViewWindowDays field value if set, nil otherwise
+// GetCreationSourceOk returns a tuple with the CreationSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetViewWindowDaysOk() (*float32, bool) {
-	if o == nil || IsNil(o.ViewWindowDays) {
+func (o *TemplateResponse) GetCreationSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.CreationSource) {
 		return nil, false
 	}
-	return o.ViewWindowDays, true
+	return o.CreationSource, true
 }
 
-// HasViewWindowDays returns a boolean if a field has been set.
-func (o *TemplateResponse) HasViewWindowDays() bool {
-	if o != nil && !IsNil(o.ViewWindowDays) {
+// HasCreationSource returns a boolean if a field has been set.
+func (o *TemplateResponse) HasCreationSource() bool {
+	if o != nil && !IsNil(o.CreationSource) {
 		return true
 	}
 
 	return false
 }
 
-// SetViewWindowDays gets a reference to the given float32 and assigns it to the ViewWindowDays field.
-func (o *TemplateResponse) SetViewWindowDays(v float32) {
-	o.ViewWindowDays = &v
+// SetCreationSource gets a reference to the given string and assigns it to the CreationSource field.
+func (o *TemplateResponse) SetCreationSource(v string) {
+	o.CreationSource = &v
 }
 
-// GetClickWindowDays returns the ClickWindowDays field value if set, zero value otherwise.
-func (o *TemplateResponse) GetClickWindowDays() float32 {
-	if o == nil || IsNil(o.ClickWindowDays) {
-		var ret float32
+// GetCustomColumnIds returns the CustomColumnIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateResponse) GetCustomColumnIds() []string {
+	if o == nil {
+		var ret []string
 		return ret
 	}
-	return *o.ClickWindowDays
+	return o.CustomColumnIds
 }
 
-// GetClickWindowDaysOk returns a tuple with the ClickWindowDays field value if set, nil otherwise
+// GetCustomColumnIdsOk returns a tuple with the CustomColumnIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetClickWindowDaysOk() (*float32, bool) {
-	if o == nil || IsNil(o.ClickWindowDays) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateResponse) GetCustomColumnIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.CustomColumnIds) {
 		return nil, false
 	}
-	return o.ClickWindowDays, true
+	return o.CustomColumnIds, true
 }
 
-// HasClickWindowDays returns a boolean if a field has been set.
-func (o *TemplateResponse) HasClickWindowDays() bool {
-	if o != nil && !IsNil(o.ClickWindowDays) {
+// HasCustomColumnIds returns a boolean if a field has been set.
+func (o *TemplateResponse) HasCustomColumnIds() bool {
+	if o != nil && !IsNil(o.CustomColumnIds) {
 		return true
 	}
 
 	return false
 }
 
-// SetClickWindowDays gets a reference to the given float32 and assigns it to the ClickWindowDays field.
-func (o *TemplateResponse) SetClickWindowDays(v float32) {
-	o.ClickWindowDays = &v
+// SetCustomColumnIds gets a reference to the given []string and assigns it to the CustomColumnIds field.
+func (o *TemplateResponse) SetCustomColumnIds(v []string) {
+	o.CustomColumnIds = v
+}
+
+// GetDateRange returns the DateRange field value if set, zero value otherwise.
+func (o *TemplateResponse) GetDateRange() TemplateResponseDateRange {
+	if o == nil || IsNil(o.DateRange) {
+		var ret TemplateResponseDateRange
+		return ret
+	}
+	return *o.DateRange
+}
+
+// GetDateRangeOk returns a tuple with the DateRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetDateRangeOk() (*TemplateResponseDateRange, bool) {
+	if o == nil || IsNil(o.DateRange) {
+		return nil, false
+	}
+	return o.DateRange, true
+}
+
+// HasDateRange returns a boolean if a field has been set.
+func (o *TemplateResponse) HasDateRange() bool {
+	if o != nil && !IsNil(o.DateRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateRange gets a reference to the given TemplateResponseDateRange and assigns it to the DateRange field.
+func (o *TemplateResponse) SetDateRange(v TemplateResponseDateRange) {
+	o.DateRange = &v
 }
 
 // GetEngagementWindowDays returns the EngagementWindowDays field value if set, zero value otherwise.
@@ -573,38 +372,6 @@ func (o *TemplateResponse) HasEngagementWindowDays() bool {
 // SetEngagementWindowDays gets a reference to the given float32 and assigns it to the EngagementWindowDays field.
 func (o *TemplateResponse) SetEngagementWindowDays(v float32) {
 	o.EngagementWindowDays = &v
-}
-
-// GetConversionReportTimeType returns the ConversionReportTimeType field value if set, zero value otherwise.
-func (o *TemplateResponse) GetConversionReportTimeType() string {
-	if o == nil || IsNil(o.ConversionReportTimeType) {
-		var ret string
-		return ret
-	}
-	return *o.ConversionReportTimeType
-}
-
-// GetConversionReportTimeTypeOk returns a tuple with the ConversionReportTimeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetConversionReportTimeTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ConversionReportTimeType) {
-		return nil, false
-	}
-	return o.ConversionReportTimeType, true
-}
-
-// HasConversionReportTimeType returns a boolean if a field has been set.
-func (o *TemplateResponse) HasConversionReportTimeType() bool {
-	if o != nil && !IsNil(o.ConversionReportTimeType) {
-		return true
-	}
-
-	return false
-}
-
-// SetConversionReportTimeType gets a reference to the given string and assigns it to the ConversionReportTimeType field.
-func (o *TemplateResponse) SetConversionReportTimeType(v string) {
-	o.ConversionReportTimeType = &v
 }
 
 // GetFiltersJson returns the FiltersJson field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -647,6 +414,145 @@ func (o *TemplateResponse) SetFiltersJsonNil() {
 // UnsetFiltersJson ensures that no value is present for FiltersJson, not even an explicit nil
 func (o *TemplateResponse) UnsetFiltersJson() {
 	o.FiltersJson.Unset()
+}
+
+// GetGranularity returns the Granularity field value if set, zero value otherwise.
+func (o *TemplateResponse) GetGranularity() Granularity {
+	if o == nil || IsNil(o.Granularity) {
+		var ret Granularity
+		return ret
+	}
+	return *o.Granularity
+}
+
+// GetGranularityOk returns a tuple with the Granularity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetGranularityOk() (*Granularity, bool) {
+	if o == nil || IsNil(o.Granularity) {
+		return nil, false
+	}
+	return o.Granularity, true
+}
+
+// HasGranularity returns a boolean if a field has been set.
+func (o *TemplateResponse) HasGranularity() bool {
+	if o != nil && !IsNil(o.Granularity) {
+		return true
+	}
+
+	return false
+}
+
+// SetGranularity gets a reference to the given Granularity and assigns it to the Granularity field.
+func (o *TemplateResponse) SetGranularity(v Granularity) {
+	o.Granularity = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *TemplateResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *TemplateResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *TemplateResponse) SetId(v string) {
+	o.Id = &v
+}
+
+// GetIngestionSources returns the IngestionSources field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateResponse) GetIngestionSources() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.IngestionSources
+}
+
+// GetIngestionSourcesOk returns a tuple with the IngestionSources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateResponse) GetIngestionSourcesOk() ([]string, bool) {
+	if o == nil || IsNil(o.IngestionSources) {
+		return nil, false
+	}
+	return o.IngestionSources, true
+}
+
+// HasIngestionSources returns a boolean if a field has been set.
+func (o *TemplateResponse) HasIngestionSources() bool {
+	if o != nil && !IsNil(o.IngestionSources) {
+		return true
+	}
+
+	return false
+}
+
+// SetIngestionSources gets a reference to the given []string and assigns it to the IngestionSources field.
+func (o *TemplateResponse) SetIngestionSources(v []string) {
+	o.IngestionSources = v
+}
+
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateResponse) GetIsDeleted() bool {
+	if o == nil || IsNil(o.IsDeleted.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDeleted.Get()
+}
+
+// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateResponse) GetIsDeletedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsDeleted.Get(), o.IsDeleted.IsSet()
+}
+
+// HasIsDeleted returns a boolean if a field has been set.
+func (o *TemplateResponse) HasIsDeleted() bool {
+	if o != nil && o.IsDeleted.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDeleted gets a reference to the given NullableBool and assigns it to the IsDeleted field.
+func (o *TemplateResponse) SetIsDeleted(v bool) {
+	o.IsDeleted.Set(&v)
+}
+// SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
+func (o *TemplateResponse) SetIsDeletedNil() {
+	o.IsDeleted.Set(nil)
+}
+
+// UnsetIsDeleted ensures that no value is present for IsDeleted, not even an explicit nil
+func (o *TemplateResponse) UnsetIsDeleted() {
+	o.IsDeleted.Unset()
 }
 
 // GetIsOwnedByUser returns the IsOwnedByUser field value if set, zero value otherwise.
@@ -713,143 +619,174 @@ func (o *TemplateResponse) SetIsScheduled(v bool) {
 	o.IsScheduled = &v
 }
 
-// GetCreationSource returns the CreationSource field value if set, zero value otherwise.
-func (o *TemplateResponse) GetCreationSource() string {
-	if o == nil || IsNil(o.CreationSource) {
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateResponse) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreationSource
+	return *o.Name.Get()
 }
 
-// GetCreationSourceOk returns a tuple with the CreationSource field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetCreationSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.CreationSource) {
-		return nil, false
-	}
-	return o.CreationSource, true
-}
-
-// HasCreationSource returns a boolean if a field has been set.
-func (o *TemplateResponse) HasCreationSource() bool {
-	if o != nil && !IsNil(o.CreationSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreationSource gets a reference to the given string and assigns it to the CreationSource field.
-func (o *TemplateResponse) SetCreationSource(v string) {
-	o.CreationSource = &v
-}
-
-// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateResponse) GetIsDeleted() bool {
-	if o == nil || IsNil(o.IsDeleted.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.IsDeleted.Get()
-}
-
-// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateResponse) GetIsDeletedOk() (*bool, bool) {
+func (o *TemplateResponse) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.IsDeleted.Get(), o.IsDeleted.IsSet()
+	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasIsDeleted returns a boolean if a field has been set.
-func (o *TemplateResponse) HasIsDeleted() bool {
-	if o != nil && o.IsDeleted.IsSet() {
+// HasName returns a boolean if a field has been set.
+func (o *TemplateResponse) HasName() bool {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsDeleted gets a reference to the given NullableBool and assigns it to the IsDeleted field.
-func (o *TemplateResponse) SetIsDeleted(v bool) {
-	o.IsDeleted.Set(&v)
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *TemplateResponse) SetName(v string) {
+	o.Name.Set(&v)
 }
-// SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
-func (o *TemplateResponse) SetIsDeletedNil() {
-	o.IsDeleted.Set(nil)
-}
-
-// UnsetIsDeleted ensures that no value is present for IsDeleted, not even an explicit nil
-func (o *TemplateResponse) UnsetIsDeleted() {
-	o.IsDeleted.Unset()
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *TemplateResponse) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
-func (o *TemplateResponse) GetUpdatedTime() float32 {
-	if o == nil || IsNil(o.UpdatedTime) {
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *TemplateResponse) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetReportEndRelativeDaysInPast returns the ReportEndRelativeDaysInPast field value if set, zero value otherwise.
+func (o *TemplateResponse) GetReportEndRelativeDaysInPast() float32 {
+	if o == nil || IsNil(o.ReportEndRelativeDaysInPast) {
 		var ret float32
 		return ret
 	}
-	return *o.UpdatedTime
+	return *o.ReportEndRelativeDaysInPast
 }
 
-// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
+// GetReportEndRelativeDaysInPastOk returns a tuple with the ReportEndRelativeDaysInPast field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateResponse) GetUpdatedTimeOk() (*float32, bool) {
-	if o == nil || IsNil(o.UpdatedTime) {
+func (o *TemplateResponse) GetReportEndRelativeDaysInPastOk() (*float32, bool) {
+	if o == nil || IsNil(o.ReportEndRelativeDaysInPast) {
 		return nil, false
 	}
-	return o.UpdatedTime, true
+	return o.ReportEndRelativeDaysInPast, true
 }
 
-// HasUpdatedTime returns a boolean if a field has been set.
-func (o *TemplateResponse) HasUpdatedTime() bool {
-	if o != nil && !IsNil(o.UpdatedTime) {
+// HasReportEndRelativeDaysInPast returns a boolean if a field has been set.
+func (o *TemplateResponse) HasReportEndRelativeDaysInPast() bool {
+	if o != nil && !IsNil(o.ReportEndRelativeDaysInPast) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedTime gets a reference to the given float32 and assigns it to the UpdatedTime field.
-func (o *TemplateResponse) SetUpdatedTime(v float32) {
-	o.UpdatedTime = &v
+// SetReportEndRelativeDaysInPast gets a reference to the given float32 and assigns it to the ReportEndRelativeDaysInPast field.
+func (o *TemplateResponse) SetReportEndRelativeDaysInPast(v float32) {
+	o.ReportEndRelativeDaysInPast = &v
 }
 
-// GetCustomColumnIds returns the CustomColumnIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateResponse) GetCustomColumnIds() []string {
-	if o == nil {
-		var ret []string
+// GetReportFormat returns the ReportFormat field value if set, zero value otherwise.
+func (o *TemplateResponse) GetReportFormat() DataOutputFormat {
+	if o == nil || IsNil(o.ReportFormat) {
+		var ret DataOutputFormat
 		return ret
 	}
-	return o.CustomColumnIds
+	return *o.ReportFormat
 }
 
-// GetCustomColumnIdsOk returns a tuple with the CustomColumnIds field value if set, nil otherwise
+// GetReportFormatOk returns a tuple with the ReportFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateResponse) GetCustomColumnIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.CustomColumnIds) {
+func (o *TemplateResponse) GetReportFormatOk() (*DataOutputFormat, bool) {
+	if o == nil || IsNil(o.ReportFormat) {
 		return nil, false
 	}
-	return o.CustomColumnIds, true
+	return o.ReportFormat, true
 }
 
-// HasCustomColumnIds returns a boolean if a field has been set.
-func (o *TemplateResponse) HasCustomColumnIds() bool {
-	if o != nil && !IsNil(o.CustomColumnIds) {
+// HasReportFormat returns a boolean if a field has been set.
+func (o *TemplateResponse) HasReportFormat() bool {
+	if o != nil && !IsNil(o.ReportFormat) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomColumnIds gets a reference to the given []string and assigns it to the CustomColumnIds field.
-func (o *TemplateResponse) SetCustomColumnIds(v []string) {
-	o.CustomColumnIds = v
+// SetReportFormat gets a reference to the given DataOutputFormat and assigns it to the ReportFormat field.
+func (o *TemplateResponse) SetReportFormat(v DataOutputFormat) {
+	o.ReportFormat = &v
+}
+
+// GetReportLevel returns the ReportLevel field value if set, zero value otherwise.
+func (o *TemplateResponse) GetReportLevel() MetricsReportingLevel {
+	if o == nil || IsNil(o.ReportLevel) {
+		var ret MetricsReportingLevel
+		return ret
+	}
+	return *o.ReportLevel
+}
+
+// GetReportLevelOk returns a tuple with the ReportLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetReportLevelOk() (*MetricsReportingLevel, bool) {
+	if o == nil || IsNil(o.ReportLevel) {
+		return nil, false
+	}
+	return o.ReportLevel, true
+}
+
+// HasReportLevel returns a boolean if a field has been set.
+func (o *TemplateResponse) HasReportLevel() bool {
+	if o != nil && !IsNil(o.ReportLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportLevel gets a reference to the given MetricsReportingLevel and assigns it to the ReportLevel field.
+func (o *TemplateResponse) SetReportLevel(v MetricsReportingLevel) {
+	o.ReportLevel = &v
+}
+
+// GetReportStartRelativeDaysInPast returns the ReportStartRelativeDaysInPast field value if set, zero value otherwise.
+func (o *TemplateResponse) GetReportStartRelativeDaysInPast() float32 {
+	if o == nil || IsNil(o.ReportStartRelativeDaysInPast) {
+		var ret float32
+		return ret
+	}
+	return *o.ReportStartRelativeDaysInPast
+}
+
+// GetReportStartRelativeDaysInPastOk returns a tuple with the ReportStartRelativeDaysInPast field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetReportStartRelativeDaysInPastOk() (*float32, bool) {
+	if o == nil || IsNil(o.ReportStartRelativeDaysInPast) {
+		return nil, false
+	}
+	return o.ReportStartRelativeDaysInPast, true
+}
+
+// HasReportStartRelativeDaysInPast returns a boolean if a field has been set.
+func (o *TemplateResponse) HasReportStartRelativeDaysInPast() bool {
+	if o != nil && !IsNil(o.ReportStartRelativeDaysInPast) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportStartRelativeDaysInPast gets a reference to the given float32 and assigns it to the ReportStartRelativeDaysInPast field.
+func (o *TemplateResponse) SetReportStartRelativeDaysInPast(v float32) {
+	o.ReportStartRelativeDaysInPast = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -884,37 +821,100 @@ func (o *TemplateResponse) SetType(v string) {
 	o.Type = &v
 }
 
-// GetIngestionSources returns the IngestionSources field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateResponse) GetIngestionSources() []string {
-	if o == nil {
-		var ret []string
+// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
+func (o *TemplateResponse) GetUpdatedTime() float32 {
+	if o == nil || IsNil(o.UpdatedTime) {
+		var ret float32
 		return ret
 	}
-	return o.IngestionSources
+	return *o.UpdatedTime
 }
 
-// GetIngestionSourcesOk returns a tuple with the IngestionSources field value if set, nil otherwise
+// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateResponse) GetIngestionSourcesOk() ([]string, bool) {
-	if o == nil || IsNil(o.IngestionSources) {
+func (o *TemplateResponse) GetUpdatedTimeOk() (*float32, bool) {
+	if o == nil || IsNil(o.UpdatedTime) {
 		return nil, false
 	}
-	return o.IngestionSources, true
+	return o.UpdatedTime, true
 }
 
-// HasIngestionSources returns a boolean if a field has been set.
-func (o *TemplateResponse) HasIngestionSources() bool {
-	if o != nil && !IsNil(o.IngestionSources) {
+// HasUpdatedTime returns a boolean if a field has been set.
+func (o *TemplateResponse) HasUpdatedTime() bool {
+	if o != nil && !IsNil(o.UpdatedTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetIngestionSources gets a reference to the given []string and assigns it to the IngestionSources field.
-func (o *TemplateResponse) SetIngestionSources(v []string) {
-	o.IngestionSources = v
+// SetUpdatedTime gets a reference to the given float32 and assigns it to the UpdatedTime field.
+func (o *TemplateResponse) SetUpdatedTime(v float32) {
+	o.UpdatedTime = &v
+}
+
+// GetUserId returns the UserId field value if set, zero value otherwise.
+func (o *TemplateResponse) GetUserId() string {
+	if o == nil || IsNil(o.UserId) {
+		var ret string
+		return ret
+	}
+	return *o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserId) {
+		return nil, false
+	}
+	return o.UserId, true
+}
+
+// HasUserId returns a boolean if a field has been set.
+func (o *TemplateResponse) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
+func (o *TemplateResponse) SetUserId(v string) {
+	o.UserId = &v
+}
+
+// GetViewWindowDays returns the ViewWindowDays field value if set, zero value otherwise.
+func (o *TemplateResponse) GetViewWindowDays() float32 {
+	if o == nil || IsNil(o.ViewWindowDays) {
+		var ret float32
+		return ret
+	}
+	return *o.ViewWindowDays
+}
+
+// GetViewWindowDaysOk returns a tuple with the ViewWindowDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponse) GetViewWindowDaysOk() (*float32, bool) {
+	if o == nil || IsNil(o.ViewWindowDays) {
+		return nil, false
+	}
+	return o.ViewWindowDays, true
+}
+
+// HasViewWindowDays returns a boolean if a field has been set.
+func (o *TemplateResponse) HasViewWindowDays() bool {
+	if o != nil && !IsNil(o.ViewWindowDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetViewWindowDays gets a reference to the given float32 and assigns it to the ViewWindowDays field.
+func (o *TemplateResponse) SetViewWindowDays(v float32) {
+	o.ViewWindowDays = &v
 }
 
 func (o TemplateResponse) MarshalJSON() ([]byte, error) {
@@ -927,56 +927,47 @@ func (o TemplateResponse) MarshalJSON() ([]byte, error) {
 
 func (o TemplateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.AdAccountId) {
 		toSerialize["ad_account_id"] = o.AdAccountId
 	}
 	if !IsNil(o.AdAccountIds) {
 		toSerialize["ad_account_ids"] = o.AdAccountIds
 	}
-	if !IsNil(o.UserId) {
-		toSerialize["user_id"] = o.UserId
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.ReportStartRelativeDaysInPast) {
-		toSerialize["report_start_relative_days_in_past"] = o.ReportStartRelativeDaysInPast
-	}
-	if !IsNil(o.ReportEndRelativeDaysInPast) {
-		toSerialize["report_end_relative_days_in_past"] = o.ReportEndRelativeDaysInPast
-	}
-	if !IsNil(o.DateRange) {
-		toSerialize["date_range"] = o.DateRange
-	}
-	if !IsNil(o.ReportLevel) {
-		toSerialize["report_level"] = o.ReportLevel
-	}
-	if !IsNil(o.ReportFormat) {
-		toSerialize["report_format"] = o.ReportFormat
+	if !IsNil(o.ClickWindowDays) {
+		toSerialize["click_window_days"] = o.ClickWindowDays
 	}
 	if !IsNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
-	if !IsNil(o.Granularity) {
-		toSerialize["granularity"] = o.Granularity
+	if !IsNil(o.ConversionReportTimeType) {
+		toSerialize["conversion_report_time_type"] = o.ConversionReportTimeType
 	}
-	if !IsNil(o.ViewWindowDays) {
-		toSerialize["view_window_days"] = o.ViewWindowDays
+	if !IsNil(o.CreationSource) {
+		toSerialize["creation_source"] = o.CreationSource
 	}
-	if !IsNil(o.ClickWindowDays) {
-		toSerialize["click_window_days"] = o.ClickWindowDays
+	if o.CustomColumnIds != nil {
+		toSerialize["custom_column_ids"] = o.CustomColumnIds
+	}
+	if !IsNil(o.DateRange) {
+		toSerialize["date_range"] = o.DateRange
 	}
 	if !IsNil(o.EngagementWindowDays) {
 		toSerialize["engagement_window_days"] = o.EngagementWindowDays
 	}
-	if !IsNil(o.ConversionReportTimeType) {
-		toSerialize["conversion_report_time_type"] = o.ConversionReportTimeType
-	}
 	if o.FiltersJson.IsSet() {
 		toSerialize["filters_json"] = o.FiltersJson.Get()
+	}
+	if !IsNil(o.Granularity) {
+		toSerialize["granularity"] = o.Granularity
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if o.IngestionSources != nil {
+		toSerialize["ingestion_sources"] = o.IngestionSources
+	}
+	if o.IsDeleted.IsSet() {
+		toSerialize["is_deleted"] = o.IsDeleted.Get()
 	}
 	if !IsNil(o.IsOwnedByUser) {
 		toSerialize["is_owned_by_user"] = o.IsOwnedByUser
@@ -984,23 +975,32 @@ func (o TemplateResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsScheduled) {
 		toSerialize["is_scheduled"] = o.IsScheduled
 	}
-	if !IsNil(o.CreationSource) {
-		toSerialize["creation_source"] = o.CreationSource
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if o.IsDeleted.IsSet() {
-		toSerialize["is_deleted"] = o.IsDeleted.Get()
+	if !IsNil(o.ReportEndRelativeDaysInPast) {
+		toSerialize["report_end_relative_days_in_past"] = o.ReportEndRelativeDaysInPast
 	}
-	if !IsNil(o.UpdatedTime) {
-		toSerialize["updated_time"] = o.UpdatedTime
+	if !IsNil(o.ReportFormat) {
+		toSerialize["report_format"] = o.ReportFormat
 	}
-	if o.CustomColumnIds != nil {
-		toSerialize["custom_column_ids"] = o.CustomColumnIds
+	if !IsNil(o.ReportLevel) {
+		toSerialize["report_level"] = o.ReportLevel
+	}
+	if !IsNil(o.ReportStartRelativeDaysInPast) {
+		toSerialize["report_start_relative_days_in_past"] = o.ReportStartRelativeDaysInPast
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.IngestionSources != nil {
-		toSerialize["ingestion_sources"] = o.IngestionSources
+	if !IsNil(o.UpdatedTime) {
+		toSerialize["updated_time"] = o.UpdatedTime
+	}
+	if !IsNil(o.UserId) {
+		toSerialize["user_id"] = o.UserId
+	}
+	if !IsNil(o.ViewWindowDays) {
+		toSerialize["view_window_days"] = o.ViewWindowDays
 	}
 	return toSerialize, nil
 }

@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.MediaUploadDetails
+import org.openapitools.client.models.Media
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,16 +23,15 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param items Media
+ * @param items 
  * @param bookmark 
  */
 
 
 data class MediaList200Response (
 
-    /* Media */
     @Json(name = "items")
-    val items: kotlin.collections.List<MediaUploadDetails>,
+    val items: kotlin.collections.List<Media>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

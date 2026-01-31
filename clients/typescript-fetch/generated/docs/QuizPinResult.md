@@ -7,10 +7,10 @@ The result, and link out, based on the user’s choice.
 
 Name | Type
 ------------ | -------------
-`organicPinId` | string
 `androidDeepLink` | string
-`iosDeepLink` | string
 `destinationUrl` | string
+`iosDeepLink` | string
+`organicPinId` | string
 `resultId` | number
 
 ## Example
@@ -20,10 +20,10 @@ import type { QuizPinResult } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "organicPinId": null,
   "androidDeepLink": null,
-  "iosDeepLink": null,
   "destinationUrl": null,
+  "iosDeepLink": null,
+  "organicPinId": null,
   "resultId": null,
 } satisfies QuizPinResult
 

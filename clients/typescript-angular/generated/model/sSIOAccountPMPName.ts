@@ -11,12 +11,12 @@
 
 export interface SSIOAccountPMPName { 
     /**
-     * Display name
-     */
-    name?: string;
-    /**
      * Salesforce id for PMP
      */
     id?: string;
+    /**
+     * Display name
+     */
+    name?: string;
 }
 

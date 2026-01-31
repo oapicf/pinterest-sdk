@@ -4,6 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.ContentType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,30 +17,31 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Base64-encoded image media source
- * @param sourceType 
+ * Image Base64-based media source.
  * @param contentType 
  * @param &#x60;data&#x60; 
+ * @param sourceType The source type of the media.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
 data class PinMediaSourceImageBase64(
 
+    @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceImageBase64.SourceType,
+    @get:JsonProperty("content_type", required = true) val contentType: ContentType,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("content_type", required = true) val contentType: PinMediaSourceImageBase64.ContentType,
-
-    @get:Pattern(regexp="[a-zA-Z0-9+/=]+")
+    @get:Pattern(regexp="^[a-zA-Z0-9+/=]+$")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("data", required = true) val `data`: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "The source type of the media.")
+    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceImageBase64.SourceType,
 
     @Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = true
 ) {
 
     /**
-    * 
+    * The source type of the media.
     * Values: image_base64
     */
     enum class SourceType(@get:JsonValue val value: kotlin.String) {
@@ -50,25 +52,6 @@ data class PinMediaSourceImageBase64(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceImageBase64'")
-            }
-        }
-    }
-
-    /**
-    * 
-    * Values: imageSlashJpeg,imageSlashPng
-    */
-    enum class ContentType(@get:JsonValue val value: kotlin.String) {
-
-        imageSlashJpeg("image/jpeg"),
-        imageSlashPng("image/png");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): ContentType {
                 return values().firstOrNull{it -> it.value == value}
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceImageBase64'")
             }

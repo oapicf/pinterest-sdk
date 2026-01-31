@@ -23,19 +23,21 @@ advanced_auction_items_submit_upsert_record_t* instantiate_advanced_auction_item
   advanced_auction_items_submit_upsert_record_t* advanced_auction_items_submit_upsert_record = NULL;
   if (include_optional) {
     advanced_auction_items_submit_upsert_record = advanced_auction_items_submit_upsert_record_create(
+      pinterest_rest_api_advanced_auction_items_submit_upsert_record__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_items_submit_upsert_record__"US",
       pinterest_rest_api_advanced_auction_items_submit_upsert_record__"EN",
        // false, not to have infinite recursion
       instantiate_advanced_auction_bid_options(0),
+      list_createList(),
       ["BID","APP_TYPE_BID_MULTIPLIER_SET"]
     );
   } else {
     advanced_auction_items_submit_upsert_record = advanced_auction_items_submit_upsert_record_create(
+      pinterest_rest_api_advanced_auction_items_submit_upsert_record__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_items_submit_upsert_record__"US",
       pinterest_rest_api_advanced_auction_items_submit_upsert_record__"EN",
       NULL,
+      list_createList(),
       ["BID","APP_TYPE_BID_MULTIPLIER_SET"]
     );
   }

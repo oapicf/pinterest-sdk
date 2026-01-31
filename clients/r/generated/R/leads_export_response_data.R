@@ -7,36 +7,36 @@
 #' @title LeadsExportResponseData
 #' @description LeadsExportResponseData Class
 #' @format An \code{R6Class} generator object
-#' @field export_status  \link{LeadsExportStatus} [optional]
 #' @field download_url  character [optional]
+#' @field export_status  \link{LeadsExportStatus} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 LeadsExportResponseData <- R6::R6Class(
   "LeadsExportResponseData",
   public = list(
-    `export_status` = NULL,
     `download_url` = NULL,
+    `export_status` = NULL,
 
     #' @description
     #' Initialize a new LeadsExportResponseData class.
     #'
-    #' @param export_status export_status
     #' @param download_url download_url
+    #' @param export_status export_status
     #' @param ... Other optional arguments.
-    initialize = function(`export_status` = NULL, `download_url` = NULL, ...) {
+    initialize = function(`download_url` = NULL, `export_status` = NULL, ...) {
+      if (!is.null(`download_url`)) {
+        if (!(is.character(`download_url`) && length(`download_url`) == 1)) {
+          stop(paste("Error! Invalid data for `download_url`. Must be a string:", `download_url`))
+        }
+        self$`download_url` <- `download_url`
+      }
       if (!is.null(`export_status`)) {
         if (!(`export_status` %in% c())) {
           stop(paste("Error! \"", `export_status`, "\" cannot be assigned to `export_status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`export_status`))
         self$`export_status` <- `export_status`
-      }
-      if (!is.null(`download_url`)) {
-        if (!(is.character(`download_url`) && length(`download_url`) == 1)) {
-          stop(paste("Error! Invalid data for `download_url`. Must be a string:", `download_url`))
-        }
-        self$`download_url` <- `download_url`
       }
     },
 
@@ -71,13 +71,13 @@ LeadsExportResponseData <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       LeadsExportResponseDataObject <- list()
-      if (!is.null(self$`export_status`)) {
-        LeadsExportResponseDataObject[["export_status"]] <-
-          self$`export_status`$toSimpleType()
-      }
       if (!is.null(self$`download_url`)) {
         LeadsExportResponseDataObject[["download_url"]] <-
           self$`download_url`
+      }
+      if (!is.null(self$`export_status`)) {
+        LeadsExportResponseDataObject[["export_status"]] <-
+          self$`export_status`$toSimpleType()
       }
       return(LeadsExportResponseDataObject)
     },
@@ -89,13 +89,13 @@ LeadsExportResponseData <- R6::R6Class(
     #' @return the instance of LeadsExportResponseData
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`download_url`)) {
+        self$`download_url` <- this_object$`download_url`
+      }
       if (!is.null(this_object$`export_status`)) {
         `export_status_object` <- LeadsExportStatus$new()
         `export_status_object`$fromJSON(jsonlite::toJSON(this_object$`export_status`, auto_unbox = TRUE, digits = NA))
         self$`export_status` <- `export_status_object`
-      }
-      if (!is.null(this_object$`download_url`)) {
-        self$`download_url` <- this_object$`download_url`
       }
       self
     },
@@ -118,8 +118,8 @@ LeadsExportResponseData <- R6::R6Class(
     #' @return the instance of LeadsExportResponseData
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`export_status` <- LeadsExportStatus$new()$fromJSON(jsonlite::toJSON(this_object$`export_status`, auto_unbox = TRUE, digits = NA))
       self$`download_url` <- this_object$`download_url`
+      self$`export_status` <- LeadsExportStatus$new()$fromJSON(jsonlite::toJSON(this_object$`export_status`, auto_unbox = TRUE, digits = NA))
       self
     },
 

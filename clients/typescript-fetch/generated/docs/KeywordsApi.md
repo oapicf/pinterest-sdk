@@ -34,6 +34,8 @@ async function example() {
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
     accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
+    accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new KeywordsApi(config);
 
@@ -73,7 +75,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -167,7 +169,7 @@ example().catch(console.error);
 
 ## keywordsGet
 
-> KeywordsGet200Response keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark)
+> KeywordsGet200Response keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark)
 
 Get keywords
 
@@ -187,6 +189,8 @@ async function example() {
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
     accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
+    accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new KeywordsApi(config);
 
@@ -197,9 +201,11 @@ async function example() {
     campaignId: campaignId_example,
     // string | Ad group Id. (optional)
     adGroupId: 123123123,
+    // Array<string> | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
+    adGroupIds: ...,
     // Array<MatchType> | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> (optional)
     matchTypes: ...,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
     pageSize: 56,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
@@ -225,8 +231,9 @@ example().catch(console.error);
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **campaignId** | `string` | Campaign Id to use to filter the results. | [Optional] [Defaults to `undefined`] |
 | **adGroupId** | `string` | Ad group Id. | [Optional] [Defaults to `undefined`] |
+| **adGroupIds** | `Array<string>` | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [Optional] |
 | **matchTypes** | `Array<MatchType>` | Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | [Optional] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -235,7 +242,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -329,7 +336,7 @@ example().catch(console.error);
 
 ## trendingKeywordsList
 
-> TrendingKeywordsResponse trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
+> TrendingKeywordsResponse trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics)
 
 List trending keywords
 
@@ -369,6 +376,10 @@ async function example() {
     normalizeAgainstGroup: true,
     // number | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (optional)
     limit: 25,
+    // boolean | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (optional)
+    includePrediction: true,
+    // boolean | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional)
+    includeDemographics: true,
   } satisfies TrendingKeywordsListRequest;
 
   try {
@@ -396,6 +407,8 @@ example().catch(console.error);
 | **includeKeywords** | `Array<string>` | If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [Optional] |
 | **normalizeAgainstGroup** | `boolean` | Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword\&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [Optional] [Defaults to `false`] |
 | **limit** | `number` | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [Optional] [Defaults to `50`] |
+| **includePrediction** | `boolean` | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [Optional] [Defaults to `false`] |
+| **includeDemographics** | `boolean` | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [Optional] [Defaults to `false`] |
 
 ### Return type
 

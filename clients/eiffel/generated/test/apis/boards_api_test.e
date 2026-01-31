@@ -109,23 +109,23 @@ feature -- Test routines
     test_boards_create
             -- Create board
             --
-            -- Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+            -- Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
         local
             l_response: BOARD
-            l_board: BOARD
+            l_board_create: BOARD_CREATE
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_board
+            -- l_board_create
 
-            -- l_response := api.boards_create(l_board, l_ad_account_id)
+            -- l_response := api.boards_create(l_board_create, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
     test_boards_delete
             -- Delete board
             --
-            -- Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+            -- Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
         local
             l_board_id: STRING_32
             l_ad_account_id: STRING_32
@@ -140,7 +140,7 @@ feature -- Test routines
     test_boards_get
             -- Get board
             --
-            -- Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+            -- Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
         local
             l_response: BOARD
             l_board_id: STRING_32
@@ -156,17 +156,17 @@ feature -- Test routines
     test_boards_list
             -- List boards
             --
-            -- Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+            -- Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
         local
             l_response: BOARDS_LIST_200_RESPONSE
             l_ad_account_id: STRING_32
+            l_privacy: BOARD_PRIVACY_FILTER
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
-            l_privacy: STRING_32
         do
             -- TODO: Initialize required params.
 
-            -- l_response := api.boards_list(l_ad_account_id, l_bookmark, l_page_size, l_privacy)
+            -- l_response := api.boards_list(l_ad_account_id, l_privacy, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -179,7 +179,7 @@ feature -- Test routines
             l_board_id: STRING_32
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
-            l_creative_types: LIST [STRING_32]
+            l_creative_types: LIST [CREATIVE_TYPE]
             l_ad_account_id: STRING_32
             l_pin_metrics: BOOLEAN
         do
@@ -193,18 +193,18 @@ feature -- Test routines
     test_boards_update
             -- Update board
             --
-            -- Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+            -- Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
         local
-            l_response: BOARD
+            l_response: BOARD_WITH_UPDATE_PRIVACY
             l_board_id: STRING_32
-            l_board_update: BOARD_UPDATE
+            l_board_with_update_privacy_update: BOARD_WITH_UPDATE_PRIVACY_UPDATE
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_board_id
-            -- l_board_update
+            -- l_board_with_update_privacy_update
 
-            -- l_response := api.boards_update(l_board_id, l_board_update, l_ad_account_id)
+            -- l_response := api.boards_update(l_board_id, l_board_with_update_privacy_update, l_ad_account_id)
             assert ("not_implemented", False)
         end
 

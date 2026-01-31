@@ -20,111 +20,71 @@ import javax.annotation.Generated;
  * SSIOInsertionOrderCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOInsertionOrderCommon {
 
-  private @Nullable String startDate;
+  private @Nullable String agencyLink;
 
-  private @Nullable String endDate;
-
-  private @Nullable String poNumber;
-
-  private @Nullable BigDecimal budgetAmount;
+  private @Nullable String billingContactEmail;
 
   private @Nullable String billingContactFirstname;
 
   private @Nullable String billingContactLastname;
 
-  private @Nullable String billingContactEmail;
+  private @Nullable BigDecimal budgetAmount;
+
+  private @Nullable String endDate;
+
+  private @Nullable String mediaContactEmail;
 
   private @Nullable String mediaContactFirstname;
 
   private @Nullable String mediaContactLastname;
 
-  private @Nullable String mediaContactEmail;
+  private @Nullable String poNumber;
 
-  private @Nullable String agencyLink;
+  private @Nullable String startDate;
 
   private @Nullable String userEmail;
 
-  public SSIOInsertionOrderCommon startDate(@Nullable String startDate) {
-    this.startDate = startDate;
+  public SSIOInsertionOrderCommon agencyLink(@Nullable String agencyLink) {
+    this.agencyLink = agencyLink;
     return this;
   }
 
   /**
-   * Starting date of time period. Format: YYYY-MM-DD
-   * @return startDate
-   */
-  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
-  @Schema(name = "start_date", example = "2020-12-20", description = "Starting date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("start_date")
-  public @Nullable String getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(@Nullable String startDate) {
-    this.startDate = startDate;
-  }
-
-  public SSIOInsertionOrderCommon endDate(@Nullable String endDate) {
-    this.endDate = endDate;
-    return this;
-  }
-
-  /**
-   * End date of time period. Format: YYYY-MM-DD
-   * @return endDate
-   */
-  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
-  @Schema(name = "end_date", example = "2020-12-20", description = "End date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("end_date")
-  public @Nullable String getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(@Nullable String endDate) {
-    this.endDate = endDate;
-  }
-
-  public SSIOInsertionOrderCommon poNumber(@Nullable String poNumber) {
-    this.poNumber = poNumber;
-    return this;
-  }
-
-  /**
-   * The po number
-   * @return poNumber
+   * URL link for agency
+   * @return agencyLink
    */
   
-  @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("po_number")
-  public @Nullable String getPoNumber() {
-    return poNumber;
+  @Schema(name = "agency_link", description = "URL link for agency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("agency_link")
+  public @Nullable String getAgencyLink() {
+    return agencyLink;
   }
 
-  public void setPoNumber(@Nullable String poNumber) {
-    this.poNumber = poNumber;
+  public void setAgencyLink(@Nullable String agencyLink) {
+    this.agencyLink = agencyLink;
   }
 
-  public SSIOInsertionOrderCommon budgetAmount(@Nullable BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public SSIOInsertionOrderCommon billingContactEmail(@Nullable String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
     return this;
   }
 
   /**
-   * If Budget order line, the budget amount.
-   * @return budgetAmount
+   * The billing contact email
+   * @return billingContactEmail
    */
-  @Valid 
-  @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("budget_amount")
-  public @Nullable BigDecimal getBudgetAmount() {
-    return budgetAmount;
+  
+  @Schema(name = "billing_contact_email", example = "test@example", description = "The billing contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("billing_contact_email")
+  public @Nullable String getBillingContactEmail() {
+    return billingContactEmail;
   }
 
-  public void setBudgetAmount(@Nullable BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public void setBillingContactEmail(@Nullable String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
   }
 
   public SSIOInsertionOrderCommon billingContactFirstname(@Nullable String billingContactFirstname) {
@@ -167,24 +127,64 @@ public class SSIOInsertionOrderCommon {
     this.billingContactLastname = billingContactLastname;
   }
 
-  public SSIOInsertionOrderCommon billingContactEmail(@Nullable String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public SSIOInsertionOrderCommon budgetAmount(@Nullable BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
     return this;
   }
 
   /**
-   * The billing contact email
-   * @return billingContactEmail
+   * If Budget order line, the budget amount.
+   * @return budgetAmount
    */
-  
-  @Schema(name = "billing_contact_email", example = "test@example", description = "The billing contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("billing_contact_email")
-  public @Nullable String getBillingContactEmail() {
-    return billingContactEmail;
+  @Valid 
+  @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("budget_amount")
+  public @Nullable BigDecimal getBudgetAmount() {
+    return budgetAmount;
   }
 
-  public void setBillingContactEmail(@Nullable String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public void setBudgetAmount(@Nullable BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
+  }
+
+  public SSIOInsertionOrderCommon endDate(@Nullable String endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+  /**
+   * End date of time period. Format: YYYY-MM-DD
+   * @return endDate
+   */
+  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
+  @Schema(name = "end_date", example = "2020-12-20", description = "End date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("end_date")
+  public @Nullable String getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(@Nullable String endDate) {
+    this.endDate = endDate;
+  }
+
+  public SSIOInsertionOrderCommon mediaContactEmail(@Nullable String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
+    return this;
+  }
+
+  /**
+   * The media contact email
+   * @return mediaContactEmail
+   */
+  
+  @Schema(name = "media_contact_email", example = "test@example", description = "The media contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("media_contact_email")
+  public @Nullable String getMediaContactEmail() {
+    return mediaContactEmail;
+  }
+
+  public void setMediaContactEmail(@Nullable String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
   }
 
   public SSIOInsertionOrderCommon mediaContactFirstname(@Nullable String mediaContactFirstname) {
@@ -227,44 +227,44 @@ public class SSIOInsertionOrderCommon {
     this.mediaContactLastname = mediaContactLastname;
   }
 
-  public SSIOInsertionOrderCommon mediaContactEmail(@Nullable String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+  public SSIOInsertionOrderCommon poNumber(@Nullable String poNumber) {
+    this.poNumber = poNumber;
     return this;
   }
 
   /**
-   * The media contact email
-   * @return mediaContactEmail
+   * The po number
+   * @return poNumber
    */
   
-  @Schema(name = "media_contact_email", example = "test@example", description = "The media contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("media_contact_email")
-  public @Nullable String getMediaContactEmail() {
-    return mediaContactEmail;
+  @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("po_number")
+  public @Nullable String getPoNumber() {
+    return poNumber;
   }
 
-  public void setMediaContactEmail(@Nullable String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+  public void setPoNumber(@Nullable String poNumber) {
+    this.poNumber = poNumber;
   }
 
-  public SSIOInsertionOrderCommon agencyLink(@Nullable String agencyLink) {
-    this.agencyLink = agencyLink;
+  public SSIOInsertionOrderCommon startDate(@Nullable String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
   /**
-   * URL link for agency
-   * @return agencyLink
+   * Starting date of time period. Format: YYYY-MM-DD
+   * @return startDate
    */
-  
-  @Schema(name = "agency_link", description = "URL link for agency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("agency_link")
-  public @Nullable String getAgencyLink() {
-    return agencyLink;
+  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
+  @Schema(name = "start_date", example = "2020-12-20", description = "Starting date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("start_date")
+  public @Nullable String getStartDate() {
+    return startDate;
   }
 
-  public void setAgencyLink(@Nullable String agencyLink) {
-    this.agencyLink = agencyLink;
+  public void setStartDate(@Nullable String startDate) {
+    this.startDate = startDate;
   }
 
   public SSIOInsertionOrderCommon userEmail(@Nullable String userEmail) {
@@ -296,40 +296,40 @@ public class SSIOInsertionOrderCommon {
       return false;
     }
     SSIOInsertionOrderCommon ssIOInsertionOrderCommon = (SSIOInsertionOrderCommon) o;
-    return Objects.equals(this.startDate, ssIOInsertionOrderCommon.startDate) &&
-        Objects.equals(this.endDate, ssIOInsertionOrderCommon.endDate) &&
-        Objects.equals(this.poNumber, ssIOInsertionOrderCommon.poNumber) &&
-        Objects.equals(this.budgetAmount, ssIOInsertionOrderCommon.budgetAmount) &&
+    return Objects.equals(this.agencyLink, ssIOInsertionOrderCommon.agencyLink) &&
+        Objects.equals(this.billingContactEmail, ssIOInsertionOrderCommon.billingContactEmail) &&
         Objects.equals(this.billingContactFirstname, ssIOInsertionOrderCommon.billingContactFirstname) &&
         Objects.equals(this.billingContactLastname, ssIOInsertionOrderCommon.billingContactLastname) &&
-        Objects.equals(this.billingContactEmail, ssIOInsertionOrderCommon.billingContactEmail) &&
+        Objects.equals(this.budgetAmount, ssIOInsertionOrderCommon.budgetAmount) &&
+        Objects.equals(this.endDate, ssIOInsertionOrderCommon.endDate) &&
+        Objects.equals(this.mediaContactEmail, ssIOInsertionOrderCommon.mediaContactEmail) &&
         Objects.equals(this.mediaContactFirstname, ssIOInsertionOrderCommon.mediaContactFirstname) &&
         Objects.equals(this.mediaContactLastname, ssIOInsertionOrderCommon.mediaContactLastname) &&
-        Objects.equals(this.mediaContactEmail, ssIOInsertionOrderCommon.mediaContactEmail) &&
-        Objects.equals(this.agencyLink, ssIOInsertionOrderCommon.agencyLink) &&
+        Objects.equals(this.poNumber, ssIOInsertionOrderCommon.poNumber) &&
+        Objects.equals(this.startDate, ssIOInsertionOrderCommon.startDate) &&
         Objects.equals(this.userEmail, ssIOInsertionOrderCommon.userEmail);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, poNumber, budgetAmount, billingContactFirstname, billingContactLastname, billingContactEmail, mediaContactFirstname, mediaContactLastname, mediaContactEmail, agencyLink, userEmail);
+    return Objects.hash(agencyLink, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, endDate, mediaContactEmail, mediaContactFirstname, mediaContactLastname, poNumber, startDate, userEmail);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderCommon {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
     sb.append("    billingContactFirstname: ").append(toIndentedString(billingContactFirstname)).append("\n");
     sb.append("    billingContactLastname: ").append(toIndentedString(billingContactLastname)).append("\n");
-    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
     sb.append("    mediaContactFirstname: ").append(toIndentedString(mediaContactFirstname)).append("\n");
     sb.append("    mediaContactLastname: ").append(toIndentedString(mediaContactLastname)).append("\n");
-    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
-    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    userEmail: ").append(toIndentedString(userEmail)).append("\n");
     sb.append("}");
     return sb.toString();

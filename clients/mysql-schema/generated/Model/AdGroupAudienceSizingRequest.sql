@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdGroupAudienceSizingRequest`
 --
-SELECT `auto_targeting_enabled`, `placement_group`, `creative_types`, `targeting_spec`, `product_group_ids`, `keywords` FROM `AdGroupAudienceSizingRequest` WHERE 1;
+SELECT `auto_targeting_enabled`, `creative_types`, `keywords`, `placement_group`, `product_group_ids`, `targeting_spec` FROM `AdGroupAudienceSizingRequest` WHERE 1;
 
 --
 -- INSERT template for table `AdGroupAudienceSizingRequest`
 --
-INSERT INTO `AdGroupAudienceSizingRequest`(`auto_targeting_enabled`, `placement_group`, `creative_types`, `targeting_spec`, `product_group_ids`, `keywords`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `AdGroupAudienceSizingRequest`(`auto_targeting_enabled`, `creative_types`, `keywords`, `placement_group`, `product_group_ids`, `targeting_spec`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdGroupAudienceSizingRequest`
 --
-UPDATE `AdGroupAudienceSizingRequest` SET `auto_targeting_enabled` = ?, `placement_group` = ?, `creative_types` = ?, `targeting_spec` = ?, `product_group_ids` = ?, `keywords` = ? WHERE 1;
+UPDATE `AdGroupAudienceSizingRequest` SET `auto_targeting_enabled` = ?, `creative_types` = ?, `keywords` = ?, `placement_group` = ?, `product_group_ids` = ?, `targeting_spec` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdGroupAudienceSizingRequest`

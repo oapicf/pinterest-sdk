@@ -16,7 +16,7 @@ feature -- Test routines
     test_ad_previews_create
             -- Create ad preview with pin or image
             --
-            -- Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+            -- Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
         local
             l_response: AD_PREVIEW_URL_RESPONSE
             l_ad_account_id: STRING_32
@@ -33,7 +33,7 @@ feature -- Test routines
     test_ad_targeting_analytics_get
             -- Get targeting analytics for ads
             --
-            -- Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+            -- Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
         local
             l_response: METRICS_RESPONSE
             l_ad_account_id: STRING_32
@@ -47,7 +47,8 @@ feature -- Test routines
             l_engagement_window_days: INTEGER_32
             l_view_window_days: INTEGER_32
             l_conversion_report_time: STRING_32
-            l_attribution_types: CONVERSION_REPORT_ATTRIBUTION_TYPE
+            l_attribution_types: LIST [CONVERSION_REPORT_ATTRIBUTION_TYPE]
+            l_reporting_timezone: REPORTING_TIME_ZONE
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
@@ -58,14 +59,14 @@ feature -- Test routines
             -- create {ARRAYED_LIST [STRING_32]} l_columns.make (2)
             -- l_granularity
 
-            -- l_response := api.ad_targeting_analytics_get(l_ad_account_id, l_ad_ids, l_start_date, l_end_date, l_targeting_types, l_columns, l_granularity, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time, l_attribution_types)
+            -- l_response := api.ad_targeting_analytics_get(l_ad_account_id, l_ad_ids, l_start_date, l_end_date, l_targeting_types, l_columns, l_granularity, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time, l_attribution_types, l_reporting_timezone)
             assert ("not_implemented", False)
         end
 
     test_ads_analytics
             -- Get ad analytics
             --
-            -- Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+            -- Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
         local
             l_response: LIST [ADS_ANALYTICS_RESPONSE_INNER]
             l_ad_account_id: STRING_32
@@ -80,6 +81,7 @@ feature -- Test routines
             l_conversion_report_time: STRING_32
             l_pin_ids: LIST [STRING_32]
             l_campaign_ids: LIST [STRING_32]
+            l_reporting_timezone: REPORTING_TIME_ZONE
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
@@ -88,14 +90,14 @@ feature -- Test routines
             -- create {ARRAYED_LIST [STRING_32]} l_columns.make (2)
             -- l_granularity
 
-            -- l_response := api.ads_analytics(l_ad_account_id, l_start_date, l_end_date, l_columns, l_granularity, l_ad_ids, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time, l_pin_ids, l_campaign_ids)
+            -- l_response := api.ads_analytics(l_ad_account_id, l_start_date, l_end_date, l_columns, l_granularity, l_ad_ids, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time, l_pin_ids, l_campaign_ids, l_reporting_timezone)
             assert ("not_implemented", False)
         end
 
     test_ads_create
             -- Create ads
             --
-            -- Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+            -- Create multiple new ads. Request must contain &#x60;ad_group_id&#x60;, &#x60;creative_type&#x60;, and the source Pin &#x60;pin_id&#x60;.
         local
             l_response: AD_ARRAY_RESPONSE
             l_ad_account_id: STRING_32

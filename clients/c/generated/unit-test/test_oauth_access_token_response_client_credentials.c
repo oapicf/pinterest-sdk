@@ -22,19 +22,19 @@ oauth_access_token_response_client_credentials_t* instantiate_oauth_access_token
   oauth_access_token_response_client_credentials_t* oauth_access_token_response_client_credentials = NULL;
   if (include_optional) {
     oauth_access_token_response_client_credentials = oauth_access_token_response_client_credentials_create(
+      "0",
+      56,
       pinterest_rest_api_oauth_access_token_response_client_credentials_RESPONSETYPE_authorization_code,
       "0",
-      "bearer",
-      56,
-      "0"
+      "bearer"
     );
   } else {
     oauth_access_token_response_client_credentials = oauth_access_token_response_client_credentials_create(
+      "0",
+      56,
       pinterest_rest_api_oauth_access_token_response_client_credentials_RESPONSETYPE_authorization_code,
       "0",
-      "bearer",
-      56,
-      "0"
+      "bearer"
     );
   }
 

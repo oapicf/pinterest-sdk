@@ -180,7 +180,7 @@ class IntegrationsApi implements IntegrationsApiInterface
     /**
      * Implementation of IntegrationsApiInterface#integrationsCommercePatch
      */
-    public function integrationsCommercePatch(string $externalBusinessId, ?IntegrationRequestPatch $integrationRequestPatch, int &$responseCode, array &$responseHeaders): array|object|null
+    public function integrationsCommercePatch(string $externalBusinessId, IntegrationRequestPatch $integrationRequestPatch, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -194,7 +194,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **string**| External business ID for the integration. |
- **integrationRequestPatch** | [**OpenAPI\Server\Model\IntegrationRequestPatch**](../Model/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional]
+ **integrationRequestPatch** | [**OpenAPI\Server\Model\IntegrationRequestPatch**](../Model/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata |
 
 ### Return type
 
@@ -243,7 +243,7 @@ class IntegrationsApi implements IntegrationsApiInterface
     /**
      * Implementation of IntegrationsApiInterface#integrationsCommercePost
      */
-    public function integrationsCommercePost(?IntegrationRequest $integrationRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function integrationsCommercePost(IntegrationRequest $integrationRequest, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -256,7 +256,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**OpenAPI\Server\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional]
+ **integrationRequest** | [**OpenAPI\Server\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata |
 
 ### Return type
 

@@ -3,14 +3,6 @@ Protected Class CatalogsRetailListProductsByCatalogBasedFilterRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-		#tag EndNote
-		catalog_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Catalog id pertaining to the retail product group.
 		#tag EndNote
 		catalog_id As String
@@ -18,12 +10,20 @@ Protected Class CatalogsRetailListProductsByCatalogBasedFilterRequest
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsProductGroupFilters
+		#tag Note
+			Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+		#tag EndNote
+		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		country As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		filters As OpenAPIClient.Models.CatalogsProductGroupFilters
 	#tag EndProperty
 
 
@@ -94,19 +94,19 @@ Protected Class CatalogsRetailListProductsByCatalogBasedFilterRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="filters"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsProductGroupFilters"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="filters"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupFilters"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -16,11 +16,6 @@ void main() {
   // final instance = BulkUpsertRequestCreate();
 
   group('test BulkUpsertRequestCreate', () {
-    // List<CampaignCreateRequest> campaigns (default value: const [])
-    test('to test the property `campaigns`', () async {
-      // TODO
-    });
-
     // List<AdGroupCreateRequest> adGroups (default value: const [])
     test('to test the property `adGroups`', () async {
       // TODO
@@ -31,13 +26,28 @@ void main() {
       // TODO
     });
 
-    // List<ProductGroupPromotionCreateRequest> productGroups (default value: const [])
-    test('to test the property `productGroups`', () async {
+    // List<CampaignCreateRequest> campaigns (default value: const [])
+    test('to test the property `campaigns`', () async {
+      // TODO
+    });
+
+    // List<MultipleProductGroupsInner> catalogProductGroups (default value: const [])
+    test('to test the property `catalogProductGroups`', () async {
       // TODO
     });
 
     // List<KeywordsRequest> keywords (default value: const [])
     test('to test the property `keywords`', () async {
+      // TODO
+    });
+
+    // List<LabelCreateRequest> labels (default value: const [])
+    test('to test the property `labels`', () async {
+      // TODO
+    });
+
+    // List<ProductGroupPromotionCreateRequest> productGroups (default value: const [])
+    test('to test the property `productGroups`', () async {
       // TODO
     });
 

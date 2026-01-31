@@ -23,19 +23,21 @@ summary_pin_t* instantiate_summary_pin(int include_optional) {
   summary_pin_t* summary_pin = NULL;
   if (include_optional) {
     summary_pin = summary_pin_create(
-       // false, not to have infinite recursion
-      instantiate_pin_media(0),
+      "0",
+      "0",
       "0",
       "https://www.pinterest.com/",
-      "0",
+       // false, not to have infinite recursion
+      instantiate_pin_media(0),
       "0"
     );
   } else {
     summary_pin = summary_pin_create(
-      NULL,
+      "0",
+      "0",
       "0",
       "https://www.pinterest.com/",
-      "0",
+      NULL,
       "0"
     );
   }

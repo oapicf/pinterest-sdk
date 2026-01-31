@@ -33,7 +33,9 @@ public enum AdsAnalyticsCampaignTargetingType {
   
   CREATIVE_TYPE("CREATIVE_TYPE"),
   
-  AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER");
+  AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+  
+  AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER");
 
   private String value;
 

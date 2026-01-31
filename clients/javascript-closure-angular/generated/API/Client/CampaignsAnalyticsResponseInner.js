@@ -6,7 +6,7 @@ goog.provide('API.Client.CampaignsAnalyticsResponse_inner');
 API.Client.CampaignsAnalyticsResponseInner = function() {}
 
 /**
- * The ID of the campaing that this metrics belongs to.
+ * The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @type {!string}
  * @export
  */

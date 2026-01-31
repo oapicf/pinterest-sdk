@@ -5,19 +5,19 @@
 -export_type([openapi_catalogs_hotel_guest_ratings/0]).
 
 -type openapi_catalogs_hotel_guest_ratings() ::
-    #{ 'score' => integer(),
+    #{ 'max_score' => integer(),
        'number_of_reviewers' => integer(),
-       'max_score' => integer(),
-       'rating_system' => binary()
+       'rating_system' => binary(),
+       'score' => integer()
      }.
 
-encode(#{ 'score' := Score,
+encode(#{ 'max_score' := MaxScore,
           'number_of_reviewers' := NumberOfReviewers,
-          'max_score' := MaxScore,
-          'rating_system' := RatingSystem
+          'rating_system' := RatingSystem,
+          'score' := Score
         }) ->
-    #{ 'score' => Score,
+    #{ 'max_score' => MaxScore,
        'number_of_reviewers' => NumberOfReviewers,
-       'max_score' => MaxScore,
-       'rating_system' => RatingSystem
+       'rating_system' => RatingSystem,
+       'score' => Score
      }.

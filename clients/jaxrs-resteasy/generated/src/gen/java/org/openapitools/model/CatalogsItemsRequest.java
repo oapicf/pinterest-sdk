@@ -13,10 +13,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsRequest   {
   
   private Country country;
+  private CatalogsItemsPostFilters filters;
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -249,7 +250,6 @@ public class CatalogsItemsRequest   {
   }
 
   private LanguageEnum language;
-  private CatalogsItemsPostFilters filters;
 
   /**
    **/
@@ -266,20 +266,6 @@ public class CatalogsItemsRequest   {
   }
 
   /**
-   * We recommend using the CatalogsLocale values.
-   **/
-  
-  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
-  @JsonProperty("language")
-  @NotNull
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
    **/
   
   @ApiModelProperty(required = true, value = "")
@@ -293,6 +279,20 @@ public class CatalogsItemsRequest   {
     this.filters = filters;
   }
 
+  /**
+   * We recommend using the CatalogsLocale values.
+   **/
+  
+  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
+  @JsonProperty("language")
+  @NotNull
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -304,13 +304,13 @@ public class CatalogsItemsRequest   {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(this.country, catalogsItemsRequest.country) &&
-        Objects.equals(this.language, catalogsItemsRequest.language) &&
-        Objects.equals(this.filters, catalogsItemsRequest.filters);
+        Objects.equals(this.filters, catalogsItemsRequest.filters) &&
+        Objects.equals(this.language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -319,8 +319,8 @@ public class CatalogsItemsRequest   {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

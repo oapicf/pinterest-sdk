@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportStatus** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] 
-**Token** | **String** |  | [optional] 
 **Message** | **String** |  | [optional] 
+**ReportStatus** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] 
 **Status** | **String** |  | [optional] 
+**Token** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CreateMMMReportResponseData = Initialize-PSOpenAPIToolsCreateMMMReportResponseData  -ReportStatus null `
- -Token null `
- -Message null `
- -Status success
+$CreateMMMReportResponseData = Initialize-PSOpenAPIToolsCreateMMMReportResponseData  -Message null `
+ -ReportStatus null `
+ -Status success `
+ -Token null
 ```
 
 - Convert the resource to JSON

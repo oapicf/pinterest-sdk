@@ -16,19 +16,25 @@ void main() {
   // final instance = AdvancedAuctionItemsSubmitDeleteRecord();
 
   group('test AdvancedAuctionItemsSubmitDeleteRecord', () {
+    // Country country
+    test('to test the property `country`', () async {
+      // TODO
+    });
+
     // The catalog retail item id in the merchant namespace
     // String itemId
     test('to test the property `itemId`', () async {
       // TODO
     });
 
-    // Country country
-    test('to test the property `country`', () async {
+    // Language language
+    test('to test the property `language`', () async {
       // TODO
     });
 
-    // Language language
-    test('to test the property `language`', () async {
+    // Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+    // List<AdvancedAuctionOperationError> errors (default value: const [])
+    test('to test the property `errors`', () async {
       // TODO
     });
 

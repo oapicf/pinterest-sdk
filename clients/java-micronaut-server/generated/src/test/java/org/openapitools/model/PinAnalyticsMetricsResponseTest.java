@@ -27,19 +27,19 @@ public class PinAnalyticsMetricsResponseTest {
     }
 
     /**
-     * Test the property 'lifetimeMetrics'
-     */
-    @Test
-    public void lifetimeMetricsTest() {
-        // TODO: test lifetimeMetrics
-    }
-
-    /**
      * Test the property 'dailyMetrics'
      */
     @Test
     public void dailyMetricsTest() {
         // TODO: test dailyMetrics
+    }
+
+    /**
+     * Test the property 'lifetimeMetrics'
+     */
+    @Test
+    public void lifetimeMetricsTest() {
+        // TODO: test lifetimeMetrics
     }
 
     /**

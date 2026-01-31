@@ -11,36 +11,20 @@ import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionTagConfigs;
 import org.openapitools.model.EnhancedMatchStatusType;
-import org.openapitools.model.EntityStatus;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCommon   {
   
-  private String adAccountId;
   private String codeSnippet;
+  private ConversionTagConfigs configs;
   private EnhancedMatchStatusType enhancedMatchStatus;
   private String id;
   private BigDecimal lastFiredTimeMs;
   private String name;
-  private EntityStatus status;
   private String version;
-  private ConversionTagConfigs configs;
-
-  /**
-   * Ad account ID.
-   **/
-  
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
 
   /**
    * Tag code snippet.
@@ -59,6 +43,20 @@ public class ConversionTagCommon   {
    **/
   
   @ApiModelProperty(value = "")
+  @JsonProperty("configs")
+  @Valid
+  public ConversionTagConfigs getConfigs() {
+    return configs;
+  }
+  public void setConfigs(ConversionTagConfigs configs) {
+    this.configs = configs;
+  }
+
+  /**
+   * The enhanced match status of the tag
+   **/
+  
+  @ApiModelProperty(value = "The enhanced match status of the tag")
   @JsonProperty("enhanced_match_status")
   @Valid
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
@@ -99,26 +97,14 @@ public class ConversionTagCommon   {
    * Conversion tag name.
    **/
   
-  @ApiModelProperty(example = "ACME Checkout Test Tag", value = "Conversion tag name.")
+  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
+  @NotNull
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  @Valid
-  public EntityStatus getStatus() {
-    return status;
-  }
-  public void setStatus(EntityStatus status) {
-    this.status = status;
   }
 
   /**
@@ -134,19 +120,6 @@ public class ConversionTagCommon   {
     this.version = version;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("configs")
-  @Valid
-  public ConversionTagConfigs getConfigs() {
-    return configs;
-  }
-  public void setConfigs(ConversionTagConfigs configs) {
-    this.configs = configs;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -157,20 +130,18 @@ public class ConversionTagCommon   {
       return false;
     }
     ConversionTagCommon conversionTagCommon = (ConversionTagCommon) o;
-    return Objects.equals(this.adAccountId, conversionTagCommon.adAccountId) &&
-        Objects.equals(this.codeSnippet, conversionTagCommon.codeSnippet) &&
+    return Objects.equals(this.codeSnippet, conversionTagCommon.codeSnippet) &&
+        Objects.equals(this.configs, conversionTagCommon.configs) &&
         Objects.equals(this.enhancedMatchStatus, conversionTagCommon.enhancedMatchStatus) &&
         Objects.equals(this.id, conversionTagCommon.id) &&
         Objects.equals(this.lastFiredTimeMs, conversionTagCommon.lastFiredTimeMs) &&
         Objects.equals(this.name, conversionTagCommon.name) &&
-        Objects.equals(this.status, conversionTagCommon.status) &&
-        Objects.equals(this.version, conversionTagCommon.version) &&
-        Objects.equals(this.configs, conversionTagCommon.configs);
+        Objects.equals(this.version, conversionTagCommon.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, codeSnippet, enhancedMatchStatus, id, lastFiredTimeMs, name, status, version, configs);
+    return Objects.hash(codeSnippet, configs, enhancedMatchStatus, id, lastFiredTimeMs, name, version);
   }
 
   @Override
@@ -178,15 +149,13 @@ public class ConversionTagCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCommon {\n");
     
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    codeSnippet: ").append(toIndentedString(codeSnippet)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("    enhancedMatchStatus: ").append(toIndentedString(enhancedMatchStatus)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lastFiredTimeMs: ").append(toIndentedString(lastFiredTimeMs)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

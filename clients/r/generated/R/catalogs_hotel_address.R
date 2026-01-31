@@ -9,9 +9,9 @@
 #' @format An \code{R6Class} generator object
 #' @field addr1 Primary street address of hotel. character [optional]
 #' @field city City where the hotel is located. character [optional]
-#' @field region State, county, province, where the hotel is located. character [optional]
 #' @field country Country where the hotel is located. character [optional]
 #' @field postal_code Required for countries with a postal code system. Postal or zip code of the hotel. character [optional]
+#' @field region State, county, province, where the hotel is located. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,20 +20,20 @@ CatalogsHotelAddress <- R6::R6Class(
   public = list(
     `addr1` = NULL,
     `city` = NULL,
-    `region` = NULL,
     `country` = NULL,
     `postal_code` = NULL,
+    `region` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelAddress class.
     #'
     #' @param addr1 Primary street address of hotel.
     #' @param city City where the hotel is located.
-    #' @param region State, county, province, where the hotel is located.
     #' @param country Country where the hotel is located.
     #' @param postal_code Required for countries with a postal code system. Postal or zip code of the hotel.
+    #' @param region State, county, province, where the hotel is located.
     #' @param ... Other optional arguments.
-    initialize = function(`addr1` = NULL, `city` = NULL, `region` = NULL, `country` = NULL, `postal_code` = NULL, ...) {
+    initialize = function(`addr1` = NULL, `city` = NULL, `country` = NULL, `postal_code` = NULL, `region` = NULL, ...) {
       if (!is.null(`addr1`)) {
         if (!(is.character(`addr1`) && length(`addr1`) == 1)) {
           stop(paste("Error! Invalid data for `addr1`. Must be a string:", `addr1`))
@@ -46,12 +46,6 @@ CatalogsHotelAddress <- R6::R6Class(
         }
         self$`city` <- `city`
       }
-      if (!is.null(`region`)) {
-        if (!(is.character(`region`) && length(`region`) == 1)) {
-          stop(paste("Error! Invalid data for `region`. Must be a string:", `region`))
-        }
-        self$`region` <- `region`
-      }
       if (!is.null(`country`)) {
         if (!(is.character(`country`) && length(`country`) == 1)) {
           stop(paste("Error! Invalid data for `country`. Must be a string:", `country`))
@@ -63,6 +57,12 @@ CatalogsHotelAddress <- R6::R6Class(
           stop(paste("Error! Invalid data for `postal_code`. Must be a string:", `postal_code`))
         }
         self$`postal_code` <- `postal_code`
+      }
+      if (!is.null(`region`)) {
+        if (!(is.character(`region`) && length(`region`) == 1)) {
+          stop(paste("Error! Invalid data for `region`. Must be a string:", `region`))
+        }
+        self$`region` <- `region`
       }
     },
 
@@ -105,10 +105,6 @@ CatalogsHotelAddress <- R6::R6Class(
         CatalogsHotelAddressObject[["city"]] <-
           self$`city`
       }
-      if (!is.null(self$`region`)) {
-        CatalogsHotelAddressObject[["region"]] <-
-          self$`region`
-      }
       if (!is.null(self$`country`)) {
         CatalogsHotelAddressObject[["country"]] <-
           self$`country`
@@ -116,6 +112,10 @@ CatalogsHotelAddress <- R6::R6Class(
       if (!is.null(self$`postal_code`)) {
         CatalogsHotelAddressObject[["postal_code"]] <-
           self$`postal_code`
+      }
+      if (!is.null(self$`region`)) {
+        CatalogsHotelAddressObject[["region"]] <-
+          self$`region`
       }
       return(CatalogsHotelAddressObject)
     },
@@ -133,14 +133,14 @@ CatalogsHotelAddress <- R6::R6Class(
       if (!is.null(this_object$`city`)) {
         self$`city` <- this_object$`city`
       }
-      if (!is.null(this_object$`region`)) {
-        self$`region` <- this_object$`region`
-      }
       if (!is.null(this_object$`country`)) {
         self$`country` <- this_object$`country`
       }
       if (!is.null(this_object$`postal_code`)) {
         self$`postal_code` <- this_object$`postal_code`
+      }
+      if (!is.null(this_object$`region`)) {
+        self$`region` <- this_object$`region`
       }
       self
     },
@@ -165,9 +165,9 @@ CatalogsHotelAddress <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`addr1` <- this_object$`addr1`
       self$`city` <- this_object$`city`
-      self$`region` <- this_object$`region`
       self$`country` <- this_object$`country`
       self$`postal_code` <- this_object$`postal_code`
+      self$`region` <- this_object$`region`
       self
     },
 

@@ -12,42 +12,42 @@ import AnyCodable
 
 public struct BulkDownloadRequestCampaignFilter: Codable, JSONEncodable, Hashable {
 
-    public static let startTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let endTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Unix UTC timestamp. */
-    public var startTime: String?
+    public static let startTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public var campaignStatus: [CampaignSummaryStatus]?
     /** Unix UTC timestamp. */
     public var endTime: String?
     /** Campaign name */
     public var name: String?
-    public var campaignStatus: [CampaignSummaryStatus]?
     public var objectiveType: [ObjectiveType]?
+    /** Unix UTC timestamp. */
+    public var startTime: String?
 
-    public init(startTime: String? = nil, endTime: String? = nil, name: String? = nil, campaignStatus: [CampaignSummaryStatus]? = nil, objectiveType: [ObjectiveType]? = nil) {
-        self.startTime = startTime
+    public init(campaignStatus: [CampaignSummaryStatus]? = nil, endTime: String? = nil, name: String? = nil, objectiveType: [ObjectiveType]? = nil, startTime: String? = nil) {
+        self.campaignStatus = campaignStatus
         self.endTime = endTime
         self.name = name
-        self.campaignStatus = campaignStatus
         self.objectiveType = objectiveType
+        self.startTime = startTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case startTime = "start_time"
+        case campaignStatus = "campaign_status"
         case endTime = "end_time"
         case name
-        case campaignStatus = "campaign_status"
         case objectiveType = "objective_type"
+        case startTime = "start_time"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(startTime, forKey: .startTime)
+        try container.encodeIfPresent(campaignStatus, forKey: .campaignStatus)
         try container.encodeIfPresent(endTime, forKey: .endTime)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(campaignStatus, forKey: .campaignStatus)
         try container.encodeIfPresent(objectiveType, forKey: .objectiveType)
+        try container.encodeIfPresent(startTime, forKey: .startTime)
     }
 }
 

@@ -1,10 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdAccountCreateSubscriptionRequest;
-import org.openapitools.vertxweb.server.model.AdAccountCreateSubscriptionResponse;
-import org.openapitools.vertxweb.server.model.AdAccountGetSubscriptionResponse;
 import org.openapitools.vertxweb.server.model.AdAccountsSubscriptionsGetList200Response;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.LeadSubscription;
+import org.openapitools.vertxweb.server.model.LeadSubscriptionPostParamsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -22,15 +21,15 @@ public class LeadAdsApiImpl implements LeadAdsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<AdAccountGetSubscriptionResponse>> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId) {
+    public Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<AdAccountsSubscriptionsGetList200Response>> adAccountsSubscriptionsGetList(String adAccountId, Integer pageSize, String bookmark) {
+    public Future<ApiResponse<AdAccountsSubscriptionsGetList200Response>> adAccountsSubscriptionsGetList(String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<AdAccountCreateSubscriptionResponse>> adAccountsSubscriptionsPost(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) {
+    public Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsPost(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 

@@ -3,7 +3,7 @@ Protected Class BoardMedia
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Board cover image.
+			Board cover image
 		#tag EndNote
 		image_cover_url As Xoson.O.OptionalString
 	#tag EndProperty

@@ -7,15 +7,16 @@
 Name | Type
 ------------ | -------------
 `adAccountId` | string
+`audienceType` | string
+`createdByCompanyName` | string
+`createdTimestamp` | number
+`description` | string
 `id` | string
 `name` | string
-`audienceType` | string
-`description` | string
 `rule` | [AudienceRule](AudienceRule.md)
 `size` | number
 `status` | string
 `type` | string
-`createdTimestamp` | number
 `updatedTimestamp` | number
 
 ## Example
@@ -26,15 +27,16 @@ import type { Audience } from ''
 // TODO: Update the object below with actual values
 const example = {
   "adAccountId": 549755885175,
+  "audienceType": null,
+  "createdByCompanyName": Pinterest,
+  "createdTimestamp": 1451431341,
+  "description": People who love making quilts.,
   "id": 1234,
   "name": ACME Tools,
-  "audienceType": null,
-  "description": People who love making quilts.,
   "rule": null,
   "size": 1000,
   "status": null,
   "type": audience,
-  "createdTimestamp": 1451431341,
   "updatedTimestamp": 1451431341,
 } satisfies Audience
 

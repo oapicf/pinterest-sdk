@@ -31,16 +31,16 @@ class IntegrationLogsInvalidLogResponseRejectedLogsInnerTest : ShouldSpec() {
             //modelInstance.`field` shouldBe ("TODO")
         }
 
-        // to test the property ``value`` - The value that is invalid.
-        should("test `value`") {
-            // uncomment below to test the property
-            //modelInstance.`value` shouldBe ("TODO")
-        }
-
         // to test the property `reason` - The reason the value is invalid.
         should("test reason") {
             // uncomment below to test the property
             //modelInstance.reason shouldBe ("TODO")
+        }
+
+        // to test the property ``value`` - The value that is invalid.
+        should("test `value`") {
+            // uncomment below to test the property
+            //modelInstance.`value` shouldBe ("TODO")
         }
 
         // to test the property `logIndex` - Index of the log in the batch.

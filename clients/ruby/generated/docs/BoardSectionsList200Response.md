@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::BoardSectionsList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

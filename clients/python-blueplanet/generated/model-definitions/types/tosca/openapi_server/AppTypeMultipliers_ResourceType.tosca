@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AppTypeMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AppTypeMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AppTypeMultipliers {
+    title = AppTypeMultipliers
+    description = AppTypeMultipliers
+    derivedFrom = Root
+    properties {
+        app_type {
+          type =  string
+          description = ""
+          enum = ["android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AppTypeMultipliers {
+    title = AppTypeMultipliers
+    description = AppTypeMultipliers
+    implements = openapi_server.resourceTypes.AppTypeMultipliers
+
+  }
+}

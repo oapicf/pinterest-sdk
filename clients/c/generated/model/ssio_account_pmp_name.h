@@ -19,15 +19,15 @@ typedef struct ssio_account_pmp_name_t ssio_account_pmp_name_t;
 
 
 typedef struct ssio_account_pmp_name_t {
-    char *name; // string
     char *id; // string
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_pmp_name_t;
 
 __attribute__((deprecated)) ssio_account_pmp_name_t *ssio_account_pmp_name_create(
-    char *name,
-    char *id
+    char *id,
+    char *name
 );
 
 void ssio_account_pmp_name_free(ssio_account_pmp_name_t *ssio_account_pmp_name);

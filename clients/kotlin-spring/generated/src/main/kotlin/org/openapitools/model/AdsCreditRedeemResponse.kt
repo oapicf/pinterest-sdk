@@ -15,20 +15,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  * @param errorCode Error code type if error occurs
  * @param errorMessage Reason for failure
+ * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  */
 data class AdsCreditRedeemResponse(
-
-    @Schema(example = "false", description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
-    @get:JsonProperty("success") val success: kotlin.Boolean? = null,
 
     @Schema(example = "2708", description = "Error code type if error occurs")
     @get:JsonProperty("errorCode") val errorCode: kotlin.Int? = null,
 
     @Schema(example = "The offer has already been redeemed by this advertiser", description = "Reason for failure")
-    @get:JsonProperty("errorMessage") val errorMessage: kotlin.String? = null
+    @get:JsonProperty("errorMessage") val errorMessage: kotlin.String? = null,
+
+    @Schema(example = "false", description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
+    @get:JsonProperty("success") val success: kotlin.Boolean? = null
 ) {
 
 }

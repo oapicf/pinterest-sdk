@@ -56,27 +56,6 @@ public:
 	/*! \brief Set Id of the catalogs items batch
 	 */
 	void setBatchId(std::string  batch_id);
-	/*! \brief Get Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-	 */
-	std::string getCreatedTime();
-
-	/*! \brief Set Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-	 */
-	void setCreatedTime(std::string  created_time);
-	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-	 */
-	std::string getCompletedTime();
-
-	/*! \brief Set Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-	 */
-	void setCompletedTime(std::string  completed_time);
-	/*! \brief Get 
-	 */
-	BatchOperationStatus getStatus();
-
-	/*! \brief Set 
-	 */
-	void setStatus(BatchOperationStatus  status);
 	/*! \brief Get 
 	 */
 	CatalogsType getCatalogType();
@@ -84,6 +63,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(CatalogsType  catalog_type);
+	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
+	 */
+	std::string getCompletedTime();
+
+	/*! \brief Set Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
+	 */
+	void setCompletedTime(std::string  completed_time);
+	/*! \brief Get Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+	 */
+	std::string getCreatedTime();
+
+	/*! \brief Set Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+	 */
+	void setCreatedTime(std::string  created_time);
 	/*! \brief Get Array with the catalogs items processing records part of the catalogs items batch
 	 */
 	std::list<ItemProcessingRecord> getItems();
@@ -91,14 +84,21 @@ public:
 	/*! \brief Set Array with the catalogs items processing records part of the catalogs items batch
 	 */
 	void setItems(std::list <ItemProcessingRecord> items);
+	/*! \brief Get 
+	 */
+	BatchOperationStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(BatchOperationStatus  status);
 
 private:
 	std::string batch_id;
-	std::string created_time;
-	std::string completed_time;
-	BatchOperationStatus status;
 	CatalogsType catalog_type;
+	std::string completed_time;
+	std::string created_time;
 	std::list <ItemProcessingRecord>items;
+	BatchOperationStatus status;
 	void __init();
 	void __cleanup();
 

@@ -1,8 +1,22 @@
 
 <h2>BillingProfilesResponse</h2>
 <ul class="parameter">
-  <li class="param-required-false">id : String
-    <br/>Billing ID.
+  <li class="param-required-false">advertiserUnderscoreid : String
+    <br/>Advertiser ID of the billing.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">billingUnderscoretype : String
+    <br/>Billing type of the advertiser
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>CREDIT_CARD</dd>
+            <dd>INVOICE</dd>
+            <dd>INTERNAL</dd>
+            <dd>RECURRING</dd>
+            <dd>PREPAID</dd>
+        </dt>
+      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -21,24 +35,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">status : String
-    <br/>Status of the billing.
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>UNSPECIFIED</dd>
-            <dd>VALID</dd>
-            <dd>INVALID</dd>
-            <dd>PENDING</dd>
-            <dd>DELETED</dd>
-            <dd>SECONDARY</dd>
-            <dd>PENDING_SECONDARY</dd>
-        </dt>
-      </dl>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">advertiserUnderscoreid : String
-    <br/>Advertiser ID of the billing.
+  <li class="param-required-false">id : String
+    <br/>Billing ID.
   </li>
 </ul>
 <ul class="parameter">
@@ -55,6 +53,22 @@
             <dd>DINERS_CLUB</dd>
             <dd>ELO</dd>
             <dd>CARTE_BANCAIRE</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : String
+    <br/>Status of the billing.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>UNSPECIFIED</dd>
+            <dd>VALID</dd>
+            <dd>INVALID</dd>
+            <dd>PENDING</dd>
+            <dd>DELETED</dd>
+            <dd>SECONDARY</dd>
+            <dd>PENDING_SECONDARY</dd>
         </dt>
       </dl>
   </li>

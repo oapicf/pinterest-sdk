@@ -18,8 +18,11 @@ import org.openapitools.model.Pin;
  * Object describing a hotel record
  */
 @ApiModel(description = "Object describing a hotel record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemResponse   {
+  @JsonProperty("attributes")
+  private CatalogsHotelAttributes attributes;
+
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
@@ -29,8 +32,23 @@ public class CatalogsHotelItemResponse   {
   @JsonProperty("pins")
   private List<@Valid Pin> pins = null;
 
-  @JsonProperty("attributes")
-  private CatalogsHotelAttributes attributes;
+  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @ApiModelProperty(value = "")
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsHotelItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -94,24 +112,6 @@ public class CatalogsHotelItemResponse   {
     this.pins = pins;
   }
 
-  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @ApiModelProperty(value = "")
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -122,15 +122,15 @@ public class CatalogsHotelItemResponse   {
       return false;
     }
     CatalogsHotelItemResponse catalogsHotelItemResponse = (CatalogsHotelItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsHotelItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
         Objects.equals(this.hotelId, catalogsHotelItemResponse.hotelId) &&
-        Objects.equals(this.pins, catalogsHotelItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsHotelItemResponse.attributes);
+        Objects.equals(this.pins, catalogsHotelItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, pins, attributes);
+    return Objects.hash(attributes, catalogType, hotelId, pins);
   }
 
   @Override
@@ -138,10 +138,10 @@ public class CatalogsHotelItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

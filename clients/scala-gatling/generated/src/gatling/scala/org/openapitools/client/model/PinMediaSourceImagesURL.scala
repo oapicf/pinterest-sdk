@@ -3,16 +3,17 @@ package org.openapitools.client.model
 
 
 case class PinMediaSourceImagesURL (
-    _sourceType: Option[String],
+    _index: Option[Integer],
     /* Array with image objects. */
-    _items: List[PinMediaSourceImagesURLItemsInner],
-    _index: Option[Integer]
+    _items: List[PinMediaSourceImagesURLItem],
+    /* The source type of the media. */
+    _sourceType: String
 )
 object PinMediaSourceImagesURL {
-    def toStringBody(var_sourceType: Object, var_items: Object, var_index: Object) =
+    def toStringBody(var_index: Object, var_items: Object, var_sourceType: Object) =
         s"""
         | {
-        | "sourceType":$var_sourceType,"items":$var_items,"index":$var_index
+        | "index":$var_index,"items":$var_items,"sourceType":$var_sourceType
         | }
         """.stripMargin
 }

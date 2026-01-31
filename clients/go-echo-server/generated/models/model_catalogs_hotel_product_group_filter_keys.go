@@ -8,15 +8,17 @@ type CatalogsHotelProductGroupFilterKeys struct {
 
 	BRAND CatalogsProductGroupMultipleStringCriteria `json:"BRAND"`
 
-	CUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_0"`
+	CUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_0"`
 
-	CUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_1"`
+	CUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_1"`
 
-	CUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_2"`
+	CUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_2"`
 
-	CUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_3"`
+	CUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_3"`
 
-	CUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_4"`
+	CUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_4"`
 
 	COUNTRY CatalogsProductGroupMultipleCountriesCriteria `json:"COUNTRY"`
+
+	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
 }

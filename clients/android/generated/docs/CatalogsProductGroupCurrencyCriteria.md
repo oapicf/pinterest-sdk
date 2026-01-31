@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **negated** | **Boolean** |  |  [optional]
+**values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 
 
 

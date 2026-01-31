@@ -7,24 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserSummary   {
   
-  private String username;
   private String type;
+  private String username;
 
   public UserSummary () {
 
   }
 
-  public UserSummary (String username, String type) {
-    this.username = username;
+  public UserSummary (String type, String username) {
     this.type = type;
-  }
-
-    
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
     this.username = username;
   }
 
@@ -37,6 +28,15 @@ public class UserSummary   {
     this.type = type;
   }
 
+    
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -47,13 +47,13 @@ public class UserSummary   {
       return false;
     }
     UserSummary userSummary = (UserSummary) o;
-    return Objects.equals(username, userSummary.username) &&
-        Objects.equals(type, userSummary.type);
+    return Objects.equals(type, userSummary.type) &&
+        Objects.equals(username, userSummary.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, type);
+    return Objects.hash(type, username);
   }
 
   @Override
@@ -61,8 +61,8 @@ public class UserSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserSummary {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

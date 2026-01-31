@@ -7,38 +7,45 @@
 #' @title TargetingTemplateUpdateRequest
 #' @description TargetingTemplateUpdateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field operation_type  character
 #' @field id Targeting template ID character
+#' @field operation_type  character
+#' @field targeting_attributes  \link{TargetingSpec} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TargetingTemplateUpdateRequest <- R6::R6Class(
   "TargetingTemplateUpdateRequest",
   public = list(
-    `operation_type` = NULL,
     `id` = NULL,
+    `operation_type` = NULL,
+    `targeting_attributes` = NULL,
 
     #' @description
     #' Initialize a new TargetingTemplateUpdateRequest class.
     #'
-    #' @param operation_type operation_type
     #' @param id Targeting template ID
+    #' @param operation_type operation_type
+    #' @param targeting_attributes targeting_attributes
     #' @param ... Other optional arguments.
-    initialize = function(`operation_type`, `id`, ...) {
+    initialize = function(`id`, `operation_type`, `targeting_attributes` = NULL, ...) {
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
       if (!missing(`operation_type`)) {
-        if (!(`operation_type` %in% c("REMOVE"))) {
-          stop(paste("Error! \"", `operation_type`, "\" cannot be assigned to `operation_type`. Must be \"REMOVE\".", sep = ""))
+        if (!(`operation_type` %in% c("REMOVE", "UPDATE"))) {
+          stop(paste("Error! \"", `operation_type`, "\" cannot be assigned to `operation_type`. Must be \"REMOVE\", \"UPDATE\".", sep = ""))
         }
         if (!(is.character(`operation_type`) && length(`operation_type`) == 1)) {
           stop(paste("Error! Invalid data for `operation_type`. Must be a string:", `operation_type`))
         }
         self$`operation_type` <- `operation_type`
       }
-      if (!missing(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
+      if (!is.null(`targeting_attributes`)) {
+        stopifnot(R6::is.R6(`targeting_attributes`))
+        self$`targeting_attributes` <- `targeting_attributes`
       }
     },
 
@@ -73,13 +80,17 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TargetingTemplateUpdateRequestObject <- list()
+      if (!is.null(self$`id`)) {
+        TargetingTemplateUpdateRequestObject[["id"]] <-
+          self$`id`
+      }
       if (!is.null(self$`operation_type`)) {
         TargetingTemplateUpdateRequestObject[["operation_type"]] <-
           self$`operation_type`
       }
-      if (!is.null(self$`id`)) {
-        TargetingTemplateUpdateRequestObject[["id"]] <-
-          self$`id`
+      if (!is.null(self$`targeting_attributes`)) {
+        TargetingTemplateUpdateRequestObject[["targeting_attributes"]] <-
+          self$`targeting_attributes`$toSimpleType()
       }
       return(TargetingTemplateUpdateRequestObject)
     },
@@ -91,14 +102,19 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
     #' @return the instance of TargetingTemplateUpdateRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
       if (!is.null(this_object$`operation_type`)) {
-        if (!is.null(this_object$`operation_type`) && !(this_object$`operation_type` %in% c("REMOVE"))) {
-          stop(paste("Error! \"", this_object$`operation_type`, "\" cannot be assigned to `operation_type`. Must be \"REMOVE\".", sep = ""))
+        if (!is.null(this_object$`operation_type`) && !(this_object$`operation_type` %in% c("REMOVE", "UPDATE"))) {
+          stop(paste("Error! \"", this_object$`operation_type`, "\" cannot be assigned to `operation_type`. Must be \"REMOVE\", \"UPDATE\".", sep = ""))
         }
         self$`operation_type` <- this_object$`operation_type`
       }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
+      if (!is.null(this_object$`targeting_attributes`)) {
+        `targeting_attributes_object` <- TargetingSpec$new()
+        `targeting_attributes_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
+        self$`targeting_attributes` <- `targeting_attributes_object`
       }
       self
     },
@@ -121,11 +137,12 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
     #' @return the instance of TargetingTemplateUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`operation_type`) && !(this_object$`operation_type` %in% c("REMOVE"))) {
-        stop(paste("Error! \"", this_object$`operation_type`, "\" cannot be assigned to `operation_type`. Must be \"REMOVE\".", sep = ""))
+      self$`id` <- this_object$`id`
+      if (!is.null(this_object$`operation_type`) && !(this_object$`operation_type` %in% c("REMOVE", "UPDATE"))) {
+        stop(paste("Error! \"", this_object$`operation_type`, "\" cannot be assigned to `operation_type`. Must be \"REMOVE\", \"UPDATE\".", sep = ""))
       }
       self$`operation_type` <- this_object$`operation_type`
-      self$`id` <- this_object$`id`
+      self$`targeting_attributes` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -135,14 +152,6 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `operation_type`
-      if (!is.null(input_json$`operation_type`)) {
-        if (!(is.character(input_json$`operation_type`) && length(input_json$`operation_type`) == 1)) {
-          stop(paste("Error! Invalid data for `operation_type`. Must be a string:", input_json$`operation_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for TargetingTemplateUpdateRequest: the required field `operation_type` is missing."))
-      }
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
         if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
@@ -150,6 +159,14 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TargetingTemplateUpdateRequest: the required field `id` is missing."))
+      }
+      # check the required field `operation_type`
+      if (!is.null(input_json$`operation_type`)) {
+        if (!(is.character(input_json$`operation_type`) && length(input_json$`operation_type`) == 1)) {
+          stop(paste("Error! Invalid data for `operation_type`. Must be a string:", input_json$`operation_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for TargetingTemplateUpdateRequest: the required field `operation_type` is missing."))
       }
     },
 
@@ -166,17 +183,17 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `operation_type` is null
-      if (is.null(self$`operation_type`)) {
-        return(FALSE)
-      }
-
       # check if the required `id` is null
       if (is.null(self$`id`)) {
         return(FALSE)
       }
 
       if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      # check if the required `operation_type` is null
+      if (is.null(self$`operation_type`)) {
         return(FALSE)
       }
 
@@ -189,11 +206,6 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `operation_type` is null
-      if (is.null(self$`operation_type`)) {
-        invalid_fields["operation_type"] <- "Non-nullable required field `operation_type` cannot be null."
-      }
-
       # check if the required `id` is null
       if (is.null(self$`id`)) {
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
@@ -201,6 +213,11 @@ TargetingTemplateUpdateRequest <- R6::R6Class(
 
       if (!str_detect(self$`id`, "^\\d+$")) {
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
+      # check if the required `operation_type` is null
+      if (is.null(self$`operation_type`)) {
+        invalid_fields["operation_type"] <- "Non-nullable required field `operation_type` cannot be null."
       }
 
       invalid_fields

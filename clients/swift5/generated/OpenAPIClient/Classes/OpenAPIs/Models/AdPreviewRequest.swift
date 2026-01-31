@@ -13,6 +13,7 @@ import AnyCodable
 public enum AdPreviewRequest: Codable, JSONEncodable, Hashable {
     case typeAdPreviewCreateFromImage(AdPreviewCreateFromImage)
     case typeAdPreviewCreateFromPin(AdPreviewCreateFromPin)
+    case typeAdPreviewShopping(AdPreviewShopping)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
@@ -20,6 +21,8 @@ public enum AdPreviewRequest: Codable, JSONEncodable, Hashable {
         case .typeAdPreviewCreateFromImage(let value):
             try container.encode(value)
         case .typeAdPreviewCreateFromPin(let value):
+            try container.encode(value)
+        case .typeAdPreviewShopping(let value):
             try container.encode(value)
         }
     }
@@ -30,6 +33,8 @@ public enum AdPreviewRequest: Codable, JSONEncodable, Hashable {
             self = .typeAdPreviewCreateFromImage(value)
         } else if let value = try? container.decode(AdPreviewCreateFromPin.self) {
             self = .typeAdPreviewCreateFromPin(value)
+        } else if let value = try? container.decode(AdPreviewShopping.self) {
+            self = .typeAdPreviewShopping(value)
         } else {
             throw DecodingError.typeMismatch(Self.Type.self, .init(codingPath: decoder.codingPath, debugDescription: "Unable to decode instance of AdPreviewRequest"))
         }

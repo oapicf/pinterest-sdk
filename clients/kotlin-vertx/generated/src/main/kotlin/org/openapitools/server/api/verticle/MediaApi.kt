@@ -1,10 +1,10 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.Media
 import org.openapitools.server.api.model.MediaList200Response
 import org.openapitools.server.api.model.MediaUpload
-import org.openapitools.server.api.model.MediaUploadDetails
-import org.openapitools.server.api.model.MediaUploadRequest
+import org.openapitools.server.api.model.MediaUploadCreate
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -23,10 +23,10 @@ interface MediaApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* mediaCreate
      * Register media upload */
-    suspend fun mediaCreate(mediaUploadRequest:MediaUploadRequest?,context:OperationRequest):Response<MediaUpload>
+    suspend fun mediaCreate(mediaUploadCreate:MediaUploadCreate?,context:OperationRequest):Response<MediaUpload>
     /* mediaGet
      * Get media upload details */
-    suspend fun mediaGet(mediaId:kotlin.String?,context:OperationRequest):Response<MediaUploadDetails>
+    suspend fun mediaGet(mediaId:kotlin.String?,context:OperationRequest):Response<Media>
     /* mediaList
      * List media uploads */
     suspend fun mediaList(bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<MediaList200Response>

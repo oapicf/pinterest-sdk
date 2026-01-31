@@ -12,29 +12,29 @@ import AnyCodable
 
 public struct AdsAnalyticsCreateAsyncResponse: Codable, JSONEncodable, Hashable {
 
+    public var message: String?
     public var reportStatus: BulkReportingJobStatus?
     public var token: String?
-    public var message: String?
 
-    public init(reportStatus: BulkReportingJobStatus? = nil, token: String? = nil, message: String? = nil) {
+    public init(message: String? = nil, reportStatus: BulkReportingJobStatus? = nil, token: String? = nil) {
+        self.message = message
         self.reportStatus = reportStatus
         self.token = token
-        self.message = message
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case message
         case reportStatus = "report_status"
         case token
-        case message
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(reportStatus, forKey: .reportStatus)
         try container.encodeIfPresent(token, forKey: .token)
-        try container.encodeIfPresent(message, forKey: .message)
     }
 }
 

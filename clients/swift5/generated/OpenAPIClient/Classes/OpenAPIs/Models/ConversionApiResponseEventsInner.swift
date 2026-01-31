@@ -16,22 +16,22 @@ public struct ConversionApiResponseEventsInner: Codable, JSONEncodable, Hashable
         case failed = "failed"
         case processed = "processed"
     }
-    /** Whether the event was processed successfully. */
-    public var status: Status
     /** Error message containing more information about why the event failed to be processed. */
     public var errorMessage: String?
+    /** Whether the event was processed successfully. */
+    public var status: Status
     /** Warning messages about any fields in the event which are not standard. These are not critical to event processing. */
     public var warningMessage: String?
 
-    public init(status: Status, errorMessage: String? = nil, warningMessage: String? = nil) {
-        self.status = status
+    public init(errorMessage: String? = nil, status: Status, warningMessage: String? = nil) {
         self.errorMessage = errorMessage
+        self.status = status
         self.warningMessage = warningMessage
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case status
         case errorMessage = "error_message"
+        case status
         case warningMessage = "warning_message"
     }
 
@@ -39,8 +39,8 @@ public struct ConversionApiResponseEventsInner: Codable, JSONEncodable, Hashable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(status, forKey: .status)
         try container.encodeIfPresent(errorMessage, forKey: .errorMessage)
+        try container.encode(status, forKey: .status)
         try container.encodeIfPresent(warningMessage, forKey: .warningMessage)
     }
 }

@@ -12,12 +12,14 @@ import org.joda.time.DateTime
 import CatalogsRetailBatchRequest._
 
 case class CatalogsRetailBatchRequest (
-  catalogType: CatalogType,
+  /* Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
+  catalogId: Option[String],
+catalogType: CatalogType,
 country: Country,
-/* We recommend using the CatalogsLocale values. */
-  language: Language,
 /* Array with catalogs item operations */
-  items: List[CatalogsRetailBatchRequestItemsInner])
+  items: List[CatalogsRetailBatchRequestItemsInner],
+/* We recommend using the CatalogsLocale values. */
+  language: Language)
 
 object CatalogsRetailBatchRequest {
   import DateTimeCodecs._

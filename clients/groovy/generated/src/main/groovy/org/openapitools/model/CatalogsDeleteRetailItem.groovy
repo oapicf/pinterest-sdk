@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiModelProperty;
 class CatalogsDeleteRetailItem {
     /* The catalog item id in the merchant namespace */
     String itemId
+    /* The millisecond timestamp when the item was lastly modified by the merchant. */
+    Long lastUpdatedTime
 
     enum OperationEnum {
     

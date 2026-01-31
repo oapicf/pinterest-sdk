@@ -16,8 +16,7 @@ void main() {
   // final instance = CatalogsCreateRequest();
 
   group('test CatalogsCreateRequest', () {
-    // Type of the catalog entity.
-    // String catalogType
+    // CatalogsType catalogType
     test('to test the property `catalogType`', () async {
       // TODO
     });

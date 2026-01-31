@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.TargetingSpec;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -8,9 +9,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetingTemplateUpdateRequest  {
   
+ /**
+  * Targeting template ID
+  */
+  @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
+
+  private String id;
+
 public enum OperationTypeEnum {
 
-REMOVE(String.valueOf("REMOVE"));
+REMOVE(String.valueOf("REMOVE")), UPDATE(String.valueOf("UPDATE"));
 
 
     private String value;
@@ -42,12 +50,27 @@ REMOVE(String.valueOf("REMOVE"));
 
   private OperationTypeEnum operationType;
 
- /**
-  * Targeting template ID
-  */
-  @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
+  @ApiModelProperty(value = "")
 
-  private String id;
+  private TargetingSpec targetingAttributes;
+ /**
+   * Targeting template ID
+   * @return id
+  **/
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public TargetingTemplateUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
  /**
    * Get operationType
    * @return operationType
@@ -70,20 +93,20 @@ REMOVE(String.valueOf("REMOVE"));
   }
 
  /**
-   * Targeting template ID
-   * @return id
+   * Get targetingAttributes
+   * @return targetingAttributes
   **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
-  public TargetingTemplateUpdateRequest id(String id) {
-    this.id = id;
+  public TargetingTemplateUpdateRequest targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
     return this;
   }
 
@@ -96,13 +119,14 @@ REMOVE(String.valueOf("REMOVE"));
       return false;
     }
     TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = (TargetingTemplateUpdateRequest) o;
-    return Objects.equals(this.operationType, targetingTemplateUpdateRequest.operationType) &&
-        Objects.equals(this.id, targetingTemplateUpdateRequest.id);
+    return Objects.equals(this.id, targetingTemplateUpdateRequest.id) &&
+        Objects.equals(this.operationType, targetingTemplateUpdateRequest.operationType) &&
+        Objects.equals(this.targetingAttributes, targetingTemplateUpdateRequest.targetingAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operationType, id);
+    return Objects.hash(id, operationType, targetingAttributes);
   }
 
   @Override
@@ -110,8 +134,9 @@ REMOVE(String.valueOf("REMOVE"));
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateUpdateRequest {\n");
     
-    sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

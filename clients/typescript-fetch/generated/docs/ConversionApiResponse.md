@@ -7,9 +7,9 @@ Schema describing the object in the response, which contains information about t
 
 Name | Type
 ------------ | -------------
-`numEventsReceived` | number
-`numEventsProcessed` | number
 `events` | [Array&lt;ConversionApiResponseEventsInner&gt;](ConversionApiResponseEventsInner.md)
+`numEventsProcessed` | number
+`numEventsReceived` | number
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { ConversionApiResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "numEventsReceived": null,
-  "numEventsProcessed": null,
   "events": null,
+  "numEventsProcessed": null,
+  "numEventsReceived": null,
 } satisfies ConversionApiResponse
 
 console.log(example)

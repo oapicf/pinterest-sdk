@@ -22,30 +22,30 @@ import com.squareup.moshi.JsonClass
 /**
  * If specified, you must provide all properties
  *
- * @param score Your hotel's rating.
- * @param numberOfReviewers Total number of people who have rated this hotel.
  * @param maxScore Max value for the hotel rating score.
+ * @param numberOfReviewers Total number of people who have rated this hotel.
  * @param ratingSystem System you use for guest reviews.
+ * @param score Your hotel's rating.
  */
 
 
 data class CatalogsHotelGuestRatings (
 
-    /* Your hotel's rating. */
-    @Json(name = "score")
-    val score: java.math.BigDecimal? = null,
+    /* Max value for the hotel rating score. */
+    @Json(name = "max_score")
+    val maxScore: java.math.BigDecimal? = null,
 
     /* Total number of people who have rated this hotel. */
     @Json(name = "number_of_reviewers")
     val numberOfReviewers: kotlin.Int? = null,
 
-    /* Max value for the hotel rating score. */
-    @Json(name = "max_score")
-    val maxScore: java.math.BigDecimal? = null,
-
     /* System you use for guest reviews. */
     @Json(name = "rating_system")
-    val ratingSystem: kotlin.String? = null
+    val ratingSystem: kotlin.String? = null,
+
+    /* Your hotel's rating. */
+    @Json(name = "score")
+    val score: java.math.BigDecimal? = null
 
 ) {
 

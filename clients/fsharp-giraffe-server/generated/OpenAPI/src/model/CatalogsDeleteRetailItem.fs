@@ -13,6 +13,7 @@ module CatalogsDeleteRetailItem =
 
   type CatalogsDeleteRetailItem = {
     ItemId : string;
+    LastUpdatedTime : int64;
     Operation : OperationEnum;
   }
   //#endregion

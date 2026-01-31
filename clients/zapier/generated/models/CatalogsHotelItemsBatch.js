@@ -13,9 +13,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}created_time`,
-                label: `Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}created_time]`,
-                type: 'string',
+                key: `${keyPrefix}catalog_type`,
+                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
             },
             {
                 key: `${keyPrefix}completed_time`,
@@ -23,17 +22,18 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}status`,
-                ...BatchOperationStatus.fields(`${keyPrefix}status`, isInput),
-            },
-            {
-                key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                key: `${keyPrefix}created_time`,
+                label: `Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}created_time]`,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
                 children: HotelProcessingRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
+                key: `${keyPrefix}status`,
+                ...BatchOperationStatus.fields(`${keyPrefix}status`, isInput),
             },
         ]
     },
@@ -41,11 +41,11 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'batch_id': bundle.inputData?.[`${keyPrefix}batch_id`],
-            'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
-            'completed_time': bundle.inputData?.[`${keyPrefix}completed_time`],
-            'status': bundle.inputData?.[`${keyPrefix}status`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
+            'completed_time': bundle.inputData?.[`${keyPrefix}completed_time`],
+            'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
             'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, HotelProcessingRecord),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
         }
     },
 }

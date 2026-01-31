@@ -85,7 +85,7 @@ class KeywordsApi {
 
     }
 
-    def keywordsGet ( String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def keywordsGet ( String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/keywords"
 
         // params
@@ -104,6 +104,9 @@ class KeywordsApi {
         }
         if (adGroupId != null) {
             queryParams.put("ad_group_id", adGroupId)
+        }
+        if (adGroupIds != null) {
+            queryParams.put("ad_group_ids", adGroupIds)
         }
         if (matchTypes != null) {
             queryParams.put("match_types", matchTypes)
@@ -154,7 +157,7 @@ class KeywordsApi {
 
     }
 
-    def trendingKeywordsList ( TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Closure onSuccess, Closure onFailure)  {
+    def trendingKeywordsList ( TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/trends/keywords/${region}/top/${trend_type}"
 
         // params
@@ -189,6 +192,12 @@ class KeywordsApi {
         }
         if (limit != null) {
             queryParams.put("limit", limit)
+        }
+        if (includePrediction != null) {
+            queryParams.put("include_prediction", includePrediction)
+        }
+        if (includeDemographics != null) {
+            queryParams.put("include_demographics", includeDemographics)
         }
 
 

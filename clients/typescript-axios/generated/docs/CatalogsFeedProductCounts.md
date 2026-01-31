@@ -6,8 +6,8 @@ The counts can be null early in the process.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**original** | **number** | The number of products in the feed file. | [optional] [default to undefined]
 **ingested** | **number** | The number of products successfully ingested from the feed file. | [optional] [default to undefined]
+**original** | **number** | The number of products in the feed file. | [optional] [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { CatalogsFeedProductCounts } from './api';
 
 const instance: CatalogsFeedProductCounts = {
-    original,
     ingested,
+    original,
 };
 ```
 

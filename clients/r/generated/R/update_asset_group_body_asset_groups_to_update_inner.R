@@ -8,11 +8,11 @@
 #' @description UpdateAssetGroupBodyAssetGroupsToUpdateInner Class
 #' @format An \code{R6Class} generator object
 #' @field asset_group_id Unique identifier of the asset group to update. character
-#' @field name Asset Group name character [optional]
-#' @field description Asset group description character [optional]
 #' @field asset_group_types Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. list(\link{AssetGroupType}) [optional]
 #' @field assets_to_add A list of asset ids to add to the asset group. list(character) [optional]
 #' @field assets_to_remove A list of asset ids to remove from the asset group. list(character) [optional]
+#' @field description Asset group description character [optional]
+#' @field name Asset Group name character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,40 +20,28 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
   "UpdateAssetGroupBodyAssetGroupsToUpdateInner",
   public = list(
     `asset_group_id` = NULL,
-    `name` = NULL,
-    `description` = NULL,
     `asset_group_types` = NULL,
     `assets_to_add` = NULL,
     `assets_to_remove` = NULL,
+    `description` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new UpdateAssetGroupBodyAssetGroupsToUpdateInner class.
     #'
     #' @param asset_group_id Unique identifier of the asset group to update.
-    #' @param name Asset Group name
-    #' @param description Asset group description
     #' @param asset_group_types Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
     #' @param assets_to_add A list of asset ids to add to the asset group.
     #' @param assets_to_remove A list of asset ids to remove from the asset group.
+    #' @param description Asset group description
+    #' @param name Asset Group name
     #' @param ... Other optional arguments.
-    initialize = function(`asset_group_id`, `name` = NULL, `description` = NULL, `asset_group_types` = NULL, `assets_to_add` = NULL, `assets_to_remove` = NULL, ...) {
+    initialize = function(`asset_group_id`, `asset_group_types` = NULL, `assets_to_add` = NULL, `assets_to_remove` = NULL, `description` = NULL, `name` = NULL, ...) {
       if (!missing(`asset_group_id`)) {
         if (!(is.character(`asset_group_id`) && length(`asset_group_id`) == 1)) {
           stop(paste("Error! Invalid data for `asset_group_id`. Must be a string:", `asset_group_id`))
         }
         self$`asset_group_id` <- `asset_group_id`
-      }
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
-      if (!is.null(`description`)) {
-        if (!(is.character(`description`) && length(`description`) == 1)) {
-          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
-        }
-        self$`description` <- `description`
       }
       if (!is.null(`asset_group_types`)) {
         stopifnot(is.vector(`asset_group_types`), length(`asset_group_types`) != 0)
@@ -69,6 +57,18 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
         stopifnot(is.vector(`assets_to_remove`), length(`assets_to_remove`) != 0)
         sapply(`assets_to_remove`, function(x) stopifnot(is.character(x)))
         self$`assets_to_remove` <- `assets_to_remove`
+      }
+      if (!is.null(`description`)) {
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
+        self$`description` <- `description`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -107,14 +107,6 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["asset_group_id"]] <-
           self$`asset_group_id`
       }
-      if (!is.null(self$`name`)) {
-        UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["name"]] <-
-          self$`name`
-      }
-      if (!is.null(self$`description`)) {
-        UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["description"]] <-
-          self$`description`
-      }
       if (!is.null(self$`asset_group_types`)) {
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["asset_group_types"]] <-
           lapply(self$`asset_group_types`, function(x) x$toSimpleType())
@@ -126,6 +118,14 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
       if (!is.null(self$`assets_to_remove`)) {
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["assets_to_remove"]] <-
           self$`assets_to_remove`
+      }
+      if (!is.null(self$`description`)) {
+        UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["description"]] <-
+          self$`description`
+      }
+      if (!is.null(self$`name`)) {
+        UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["name"]] <-
+          self$`name`
       }
       return(UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject)
     },
@@ -140,12 +140,6 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
       if (!is.null(this_object$`asset_group_id`)) {
         self$`asset_group_id` <- this_object$`asset_group_id`
       }
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
-      if (!is.null(this_object$`description`)) {
-        self$`description` <- this_object$`description`
-      }
       if (!is.null(this_object$`asset_group_types`)) {
         self$`asset_group_types` <- ApiClient$new()$deserializeObj(this_object$`asset_group_types`, "array[AssetGroupType]", loadNamespace("openapi"))
       }
@@ -154,6 +148,12 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
       }
       if (!is.null(this_object$`assets_to_remove`)) {
         self$`assets_to_remove` <- ApiClient$new()$deserializeObj(this_object$`assets_to_remove`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`description`)) {
+        self$`description` <- this_object$`description`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -177,11 +177,11 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`asset_group_id` <- this_object$`asset_group_id`
-      self$`name` <- this_object$`name`
-      self$`description` <- this_object$`description`
       self$`asset_group_types` <- ApiClient$new()$deserializeObj(this_object$`asset_group_types`, "array[AssetGroupType]", loadNamespace("openapi"))
       self$`assets_to_add` <- ApiClient$new()$deserializeObj(this_object$`assets_to_add`, "array[character]", loadNamespace("openapi"))
       self$`assets_to_remove` <- ApiClient$new()$deserializeObj(this_object$`assets_to_remove`, "array[character]", loadNamespace("openapi"))
+      self$`description` <- this_object$`description`
+      self$`name` <- this_object$`name`
       self
     },
 

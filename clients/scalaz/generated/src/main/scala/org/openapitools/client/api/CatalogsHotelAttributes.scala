@@ -12,21 +12,13 @@ import org.joda.time.DateTime
 import CatalogsHotelAttributes._
 
 case class CatalogsHotelAttributes (
-  /* The hotel's name. */
-  name: Option[String],
-/* Link to the product page */
-  link: Option[String],
-/* Brief description of the hotel. */
-  description: Option[String],
+  address: Option[CatalogsHotelAddress],
+/* Base price of the hotel room per night followed by the ISO currency code */
+  basePrice: Option[String],
 /* The brand to which this hotel belongs to. */
   brand: Option[String],
-/* Latitude of the hotel. */
-  latitude: Option[BigDecimal],
-/* Longitude of the hotel. */
-  longitude: Option[BigDecimal],
-/* A list of neighborhoods where the hotel is located */
-  neighborhood: Option[List[String]],
-address: Option[CatalogsHotelAddress],
+/* The type of property. The category can be any type of internal description desired. */
+  category: Option[String],
 /* Custom grouping of hotels */
   customLabel0: Option[String],
 /* Custom grouping of hotels */
@@ -37,16 +29,24 @@ address: Option[CatalogsHotelAddress],
   customLabel3: Option[String],
 /* Custom grouping of hotels */
   customLabel4: Option[String],
-/* The type of property. The category can be any type of internal description desired. */
-  category: Option[String],
-/* Base price of the hotel room per night followed by the ISO currency code */
-  basePrice: Option[String],
+/* Brief description of the hotel. */
+  description: Option[String],
+guestRatings: Option[CatalogsHotelGuestRatings],
+/* Latitude of the hotel. */
+  latitude: Option[BigDecimal],
+/* Link to the product page */
+  link: Option[String],
+/* Longitude of the hotel. */
+  longitude: Option[BigDecimal],
+/* The hotel's name. */
+  name: Option[String],
+/* A list of neighborhoods where the hotel is located */
+  neighborhood: Option[List[String]],
 /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
   salePrice: Option[String],
-guestRatings: Option[CatalogsHotelGuestRatings],
-mainImage: Option[CatalogsHotelAttributesAllOfMainImage],
 /* <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> */
-  additionalImageLink: Option[List[String]])
+  additionalImageLink: Option[List[String]],
+mainImage: Option[CatalogsHotelAttributesAllOfMainImage])
 
 object CatalogsHotelAttributes {
   import DateTimeCodecs._

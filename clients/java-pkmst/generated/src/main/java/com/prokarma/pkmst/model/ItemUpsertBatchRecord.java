@@ -16,31 +16,13 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Object describing an item batch record to upsert items")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemUpsertBatchRecord   {
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("attributes")
   private ItemAttributesRequest attributes;
 
-  public ItemUpsertBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-   */
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
+  @JsonProperty("item_id")
+  private String itemId;
 
   public ItemUpsertBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
@@ -60,6 +42,24 @@ public class ItemUpsertBatchRecord   {
     this.attributes = attributes;
   }
 
+  public ItemUpsertBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+   */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -70,13 +70,13 @@ public class ItemUpsertBatchRecord   {
       return false;
     }
     ItemUpsertBatchRecord itemUpsertBatchRecord = (ItemUpsertBatchRecord) o;
-    return Objects.equals(this.itemId, itemUpsertBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemUpsertBatchRecord.attributes);
+    return Objects.equals(this.attributes, itemUpsertBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemUpsertBatchRecord.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes);
+    return Objects.hash(attributes, itemId);
   }
 
   @Override
@@ -84,8 +84,8 @@ public class ItemUpsertBatchRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemUpsertBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

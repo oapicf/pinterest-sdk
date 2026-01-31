@@ -19,22 +19,6 @@ Protected Class AdAccountGetSubscriptionResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Subscription ID.
-		#tag EndNote
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			User account used to subscribe lead data.
-		#tag EndNote
-		user_account_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			The Ad Account ID that this lead form belongs to.
 		#tag EndNote
 		ad_account_id As Xoson.O.OptionalString
@@ -51,9 +35,9 @@ Protected Class AdAccountGetSubscriptionResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Base64 encoded key for client to decrypt lead data.
+			Lead subscription creation time. Unix timestamp in milliseconds.
 		#tag EndNote
-		cryptographic_key As Xoson.O.OptionalString
+		created_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -67,9 +51,25 @@ Protected Class AdAccountGetSubscriptionResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Lead form creation time. Unix timestamp in milliseconds.
+			Base64 encoded key for client to decrypt lead data.
 		#tag EndNote
-		created_time As Xoson.O.OptionalInteger
+		cryptographic_key As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Subscription ID.
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			User account used to subscribe lead data.
+		#tag EndNote
+		user_account_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -126,22 +126,6 @@ Protected Class AdAccountGetSubscriptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="user_account_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ad_account_id"
 			Visible=false
 			Group="Behavior"
@@ -158,11 +142,11 @@ Protected Class AdAccountGetSubscriptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="cryptographic_key"
+			Name="created_time"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -174,11 +158,27 @@ Protected Class AdAccountGetSubscriptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_time"
+			Name="cryptographic_key"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="user_account_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

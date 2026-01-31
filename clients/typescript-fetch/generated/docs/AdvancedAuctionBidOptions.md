@@ -7,8 +7,8 @@ Object describing a retail catalog item\'s bid options (bid price and bid multip
 
 Name | Type
 ------------ | -------------
-`bidInMicroCurrency` | number
 `appTypeMultipliers` | [AppTypeMultipliers](AppTypeMultipliers.md)
+`bidInMicroCurrency` | number
 `placementMultipliers` | [PlacementMultipliers](PlacementMultipliers.md)
 
 ## Example
@@ -18,8 +18,8 @@ import type { AdvancedAuctionBidOptions } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "bidInMicroCurrency": 5000000,
   "appTypeMultipliers": null,
+  "bidInMicroCurrency": 5000000,
   "placementMultipliers": null,
 } satisfies AdvancedAuctionBidOptions
 

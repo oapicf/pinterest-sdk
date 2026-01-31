@@ -1,7 +1,7 @@
 /*
  * pin.h
  *
- * Pin
+ * Pin model containing properties related to a Pinterest Pin.
  */
 
 #ifndef _pin_H_
@@ -19,54 +19,49 @@ typedef struct pin_t pin_t;
 #include "creative_type.h"
 #include "object.h"
 #include "pin_media.h"
-#include "pin_media_source.h"
 
 
 
 typedef struct pin_t {
-    char *id; // string
+    char *alt_text; // string
+    char *board_id; // string
+    struct board_owner_t *board_owner; //model
+    char *board_section_id; // string
     char *created_at; //date time
-    char *link; // string
-    char *title; // string
+    creative_type_t *creative_type; // custom
     char *description; // string
     char *dominant_color; // string
-    char *alt_text; // string
-    creative_type_t *creative_type; // custom
-    char *board_id; // string
-    char *board_section_id; // string
-    struct board_owner_t *board_owner; //model
-    int is_owner; //boolean
-    struct pin_media_t *media; //model
-    struct pin_media_source_t *media_source; //model
-    char *parent_pin_id; // string
-    int is_standard; //boolean
     int has_been_promoted; //boolean
-    char *note; // string
+    char *id; // string
+    int is_owner; //boolean
+    int is_standard; //boolean
+    char *link; // string
+    struct pin_media_t *media; //model
+    char *parent_pin_id; // string
     object_t *pin_metrics; //object
+    char *title; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_t;
 
 __attribute__((deprecated)) pin_t *pin_create(
-    char *id,
+    char *alt_text,
+    char *board_id,
+    board_owner_t *board_owner,
+    char *board_section_id,
     char *created_at,
-    char *link,
-    char *title,
+    creative_type_t *creative_type,
     char *description,
     char *dominant_color,
-    char *alt_text,
-    creative_type_t *creative_type,
-    char *board_id,
-    char *board_section_id,
-    board_owner_t *board_owner,
-    int is_owner,
-    pin_media_t *media,
-    pin_media_source_t *media_source,
-    char *parent_pin_id,
-    int is_standard,
     int has_been_promoted,
-    char *note,
-    object_t *pin_metrics
+    char *id,
+    int is_owner,
+    int is_standard,
+    char *link,
+    pin_media_t *media,
+    char *parent_pin_id,
+    object_t *pin_metrics,
+    char *title
 );
 
 void pin_free(pin_t *pin);

@@ -15,20 +15,20 @@ import { Country } from './country';
  * Request object to update catalogs creative assets items
  */
 export interface CatalogsCreativeAssetsBatchRequest { 
+    /**
+     * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+     */
+    catalog_id?: string;
     catalog_type: CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum;
     country: Country;
-    /**
-     * We recommend using the CatalogsLocale values.
-     */
-    language: CatalogsCreativeAssetsBatchRequest.LanguageEnum;
     /**
      * Array with creative assets item operations
      */
     items: Array<CatalogsCreativeAssetsBatchItem>;
     /**
-     * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+     * We recommend using the CatalogsLocale values.
      */
-    catalog_id?: string;
+    language: CatalogsCreativeAssetsBatchRequest.LanguageEnum;
 }
 export namespace CatalogsCreativeAssetsBatchRequest {
     export const CatalogTypeEnum = {

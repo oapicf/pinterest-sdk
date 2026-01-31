@@ -2,15 +2,15 @@ package org.openapitools.server.model
 
 
 /**
- * = ImageDetails =
+ * = Image details containing the URL and dimensions. =
  *
- * @param width  for example: ''null''
  * @param height  for example: ''null''
  * @param url  for example: ''null''
+ * @param width  for example: ''null''
 */
 final case class ImageDetails (
-  width: Int,
   height: Int,
-  url: String
+  url: String,
+  width: Int
 )
 

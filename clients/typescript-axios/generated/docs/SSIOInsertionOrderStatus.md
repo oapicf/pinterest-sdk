@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**creation_time** | **string** | Salesforce insertion order creation time | [optional] [default to undefined]
 **pin_order_id** | **string** | Salesforce order id | [optional] [default to undefined]
 **status** | **string** | Salesforce insertion order status | [optional] [default to undefined]
-**creation_time** | **string** | Salesforce insertion order creation time | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { SSIOInsertionOrderStatus } from './api';
 
 const instance: SSIOInsertionOrderStatus = {
+    creation_time,
     pin_order_id,
     status,
-    creation_time,
 };
 ```
 

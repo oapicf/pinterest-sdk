@@ -16,14 +16,14 @@ module CatalogsVerticalsListProductsByCatalogBasedFilterRequest =
 
   [<CLIMutable>]
   type CatalogsVerticalsListProductsByCatalogBasedFilterRequest = {
-    [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
-    [<JsonProperty(PropertyName = "filters")>]
-    Filters : CatalogsCreativeAssetsProductGroupFilters;
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "filters")>]
+    Filters : CatalogsCreativeAssetsProductGroupFilters;
     [<JsonProperty(PropertyName = "locale")>]
     Locale : CatalogsLocale;
   }

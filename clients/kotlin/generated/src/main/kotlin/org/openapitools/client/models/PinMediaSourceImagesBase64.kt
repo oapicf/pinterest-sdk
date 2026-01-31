@@ -15,16 +15,16 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PinMediaSourceImagesBase64ItemsInner
+import org.openapitools.client.models.PinMediaSourceImagesBase64Item
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Multiple Base64-encoded images media source
+ * Multiple Base64-based images media source
  *
  * @param items Array with image objects.
- * @param sourceType 
+ * @param sourceType The source type of the media.
  * @param index 
  */
 
@@ -33,10 +33,11 @@ data class PinMediaSourceImagesBase64 (
 
     /* Array with image objects. */
     @Json(name = "items")
-    val items: kotlin.collections.List<PinMediaSourceImagesBase64ItemsInner>,
+    val items: kotlin.collections.List<PinMediaSourceImagesBase64Item>,
 
+    /* The source type of the media. */
     @Json(name = "source_type")
-    val sourceType: PinMediaSourceImagesBase64.SourceType? = null,
+    val sourceType: PinMediaSourceImagesBase64.SourceType,
 
     @Json(name = "index")
     val index: kotlin.Int? = null
@@ -44,7 +45,7 @@ data class PinMediaSourceImagesBase64 (
 ) {
 
     /**
-     * 
+     * The source type of the media.
      *
      * Values: multiple_image_base64
      */

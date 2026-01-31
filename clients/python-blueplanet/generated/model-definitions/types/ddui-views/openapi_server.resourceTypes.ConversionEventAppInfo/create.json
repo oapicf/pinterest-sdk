@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "app_id" },
+      {"model": "app_name" },
+      {"model": "app_package_name" },
+      {"model": "app_store" },
+      {"model": "app_version" },
+      {"model": "install_time" },
+      {"model": "user_agent" },
+      {"model": "window_height" },
+      {"model": "window_width" },
+    ]
+  }]
+}

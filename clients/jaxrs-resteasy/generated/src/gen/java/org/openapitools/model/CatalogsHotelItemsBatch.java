@@ -19,15 +19,15 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing the catalogs hotel items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing the catalogs hotel items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsBatch   {
   
   private String batchId;
-  private Date createdTime;
-  private Date completedTime;
-  private BatchOperationStatus status;
   private CatalogsType catalogType;
+  private Date completedTime;
+  private Date createdTime;
   private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
+  private BatchOperationStatus status;
 
   /**
    * Id of the catalogs items batch
@@ -40,45 +40,6 @@ public class CatalogsHotelItemsBatch   {
   }
   public void setBatchId(String batchId) {
     this.batchId = batchId;
-  }
-
-  /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
-   **/
-  
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-  @JsonProperty("created_time")
-  public Date getCreatedTime() {
-    return createdTime;
-  }
-  public void setCreatedTime(Date createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
-   * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
-   **/
-  
-  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
-  @JsonProperty("completed_time")
-  public Date getCompletedTime() {
-    return completedTime;
-  }
-  public void setCompletedTime(Date completedTime) {
-    this.completedTime = completedTime;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  @Valid
-  public BatchOperationStatus getStatus() {
-    return status;
-  }
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
   }
 
   /**
@@ -96,6 +57,32 @@ public class CatalogsHotelItemsBatch   {
   }
 
   /**
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
+   **/
+  
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+  @JsonProperty("completed_time")
+  public Date getCompletedTime() {
+    return completedTime;
+  }
+  public void setCompletedTime(Date completedTime) {
+    this.completedTime = completedTime;
+  }
+
+  /**
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
+   **/
+  
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
+  @JsonProperty("created_time")
+  public Date getCreatedTime() {
+    return createdTime;
+  }
+  public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  /**
    * Array with the catalogs items processing records part of the catalogs items batch
    **/
   
@@ -109,6 +96,19 @@ public class CatalogsHotelItemsBatch   {
     this.items = items;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  @Valid
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -120,16 +120,16 @@ public class CatalogsHotelItemsBatch   {
     }
     CatalogsHotelItemsBatch catalogsHotelItemsBatch = (CatalogsHotelItemsBatch) o;
     return Objects.equals(this.batchId, catalogsHotelItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsHotelItemsBatch.createdTime) &&
-        Objects.equals(this.completedTime, catalogsHotelItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsHotelItemsBatch.status) &&
         Objects.equals(this.catalogType, catalogsHotelItemsBatch.catalogType) &&
-        Objects.equals(this.items, catalogsHotelItemsBatch.items);
+        Objects.equals(this.completedTime, catalogsHotelItemsBatch.completedTime) &&
+        Objects.equals(this.createdTime, catalogsHotelItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsHotelItemsBatch.items) &&
+        Objects.equals(this.status, catalogsHotelItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, completedTime, status, catalogType, items);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -138,11 +138,11 @@ public class CatalogsHotelItemsBatch   {
     sb.append("class CatalogsHotelItemsBatch {\n");
     
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

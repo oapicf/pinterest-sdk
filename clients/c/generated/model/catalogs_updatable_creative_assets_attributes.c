@@ -6,34 +6,34 @@
 
 
 static catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_create_internal(
-    char *title,
-    char *description,
-    char *link,
-    char *ios_deep_link,
     char *android_deep_link,
-    char *google_product_category,
     char *custom_label_0,
     char *custom_label_1,
     char *custom_label_2,
     char *custom_label_3,
     char *custom_label_4,
+    char *description,
+    char *google_product_category,
+    char *ios_deep_link,
+    char *link,
+    char *title,
     char *visibility
     ) {
     catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_local_var = malloc(sizeof(catalogs_updatable_creative_assets_attributes_t));
     if (!catalogs_updatable_creative_assets_attributes_local_var) {
         return NULL;
     }
-    catalogs_updatable_creative_assets_attributes_local_var->title = title;
-    catalogs_updatable_creative_assets_attributes_local_var->description = description;
-    catalogs_updatable_creative_assets_attributes_local_var->link = link;
-    catalogs_updatable_creative_assets_attributes_local_var->ios_deep_link = ios_deep_link;
     catalogs_updatable_creative_assets_attributes_local_var->android_deep_link = android_deep_link;
-    catalogs_updatable_creative_assets_attributes_local_var->google_product_category = google_product_category;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_0 = custom_label_0;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_1 = custom_label_1;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_2 = custom_label_2;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_3 = custom_label_3;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_4 = custom_label_4;
+    catalogs_updatable_creative_assets_attributes_local_var->description = description;
+    catalogs_updatable_creative_assets_attributes_local_var->google_product_category = google_product_category;
+    catalogs_updatable_creative_assets_attributes_local_var->ios_deep_link = ios_deep_link;
+    catalogs_updatable_creative_assets_attributes_local_var->link = link;
+    catalogs_updatable_creative_assets_attributes_local_var->title = title;
     catalogs_updatable_creative_assets_attributes_local_var->visibility = visibility;
 
     catalogs_updatable_creative_assets_attributes_local_var->_library_owned = 1;
@@ -41,31 +41,31 @@ static catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creat
 }
 
 __attribute__((deprecated)) catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_create(
-    char *title,
-    char *description,
-    char *link,
-    char *ios_deep_link,
     char *android_deep_link,
-    char *google_product_category,
     char *custom_label_0,
     char *custom_label_1,
     char *custom_label_2,
     char *custom_label_3,
     char *custom_label_4,
+    char *description,
+    char *google_product_category,
+    char *ios_deep_link,
+    char *link,
+    char *title,
     char *visibility
     ) {
     return catalogs_updatable_creative_assets_attributes_create_internal (
-        title,
-        description,
-        link,
-        ios_deep_link,
         android_deep_link,
-        google_product_category,
         custom_label_0,
         custom_label_1,
         custom_label_2,
         custom_label_3,
         custom_label_4,
+        description,
+        google_product_category,
+        ios_deep_link,
+        link,
+        title,
         visibility
         );
 }
@@ -79,29 +79,9 @@ void catalogs_updatable_creative_assets_attributes_free(catalogs_updatable_creat
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_updatable_creative_assets_attributes->title) {
-        free(catalogs_updatable_creative_assets_attributes->title);
-        catalogs_updatable_creative_assets_attributes->title = NULL;
-    }
-    if (catalogs_updatable_creative_assets_attributes->description) {
-        free(catalogs_updatable_creative_assets_attributes->description);
-        catalogs_updatable_creative_assets_attributes->description = NULL;
-    }
-    if (catalogs_updatable_creative_assets_attributes->link) {
-        free(catalogs_updatable_creative_assets_attributes->link);
-        catalogs_updatable_creative_assets_attributes->link = NULL;
-    }
-    if (catalogs_updatable_creative_assets_attributes->ios_deep_link) {
-        free(catalogs_updatable_creative_assets_attributes->ios_deep_link);
-        catalogs_updatable_creative_assets_attributes->ios_deep_link = NULL;
-    }
     if (catalogs_updatable_creative_assets_attributes->android_deep_link) {
         free(catalogs_updatable_creative_assets_attributes->android_deep_link);
         catalogs_updatable_creative_assets_attributes->android_deep_link = NULL;
-    }
-    if (catalogs_updatable_creative_assets_attributes->google_product_category) {
-        free(catalogs_updatable_creative_assets_attributes->google_product_category);
-        catalogs_updatable_creative_assets_attributes->google_product_category = NULL;
     }
     if (catalogs_updatable_creative_assets_attributes->custom_label_0) {
         free(catalogs_updatable_creative_assets_attributes->custom_label_0);
@@ -123,6 +103,26 @@ void catalogs_updatable_creative_assets_attributes_free(catalogs_updatable_creat
         free(catalogs_updatable_creative_assets_attributes->custom_label_4);
         catalogs_updatable_creative_assets_attributes->custom_label_4 = NULL;
     }
+    if (catalogs_updatable_creative_assets_attributes->description) {
+        free(catalogs_updatable_creative_assets_attributes->description);
+        catalogs_updatable_creative_assets_attributes->description = NULL;
+    }
+    if (catalogs_updatable_creative_assets_attributes->google_product_category) {
+        free(catalogs_updatable_creative_assets_attributes->google_product_category);
+        catalogs_updatable_creative_assets_attributes->google_product_category = NULL;
+    }
+    if (catalogs_updatable_creative_assets_attributes->ios_deep_link) {
+        free(catalogs_updatable_creative_assets_attributes->ios_deep_link);
+        catalogs_updatable_creative_assets_attributes->ios_deep_link = NULL;
+    }
+    if (catalogs_updatable_creative_assets_attributes->link) {
+        free(catalogs_updatable_creative_assets_attributes->link);
+        catalogs_updatable_creative_assets_attributes->link = NULL;
+    }
+    if (catalogs_updatable_creative_assets_attributes->title) {
+        free(catalogs_updatable_creative_assets_attributes->title);
+        catalogs_updatable_creative_assets_attributes->title = NULL;
+    }
     if (catalogs_updatable_creative_assets_attributes->visibility) {
         free(catalogs_updatable_creative_assets_attributes->visibility);
         catalogs_updatable_creative_assets_attributes->visibility = NULL;
@@ -133,49 +133,9 @@ void catalogs_updatable_creative_assets_attributes_free(catalogs_updatable_creat
 cJSON *catalogs_updatable_creative_assets_attributes_convertToJSON(catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_updatable_creative_assets_attributes->title
-    if(catalogs_updatable_creative_assets_attributes->title) {
-    if(cJSON_AddStringToObject(item, "title", catalogs_updatable_creative_assets_attributes->title) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // catalogs_updatable_creative_assets_attributes->description
-    if(catalogs_updatable_creative_assets_attributes->description) {
-    if(cJSON_AddStringToObject(item, "description", catalogs_updatable_creative_assets_attributes->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // catalogs_updatable_creative_assets_attributes->link
-    if(catalogs_updatable_creative_assets_attributes->link) {
-    if(cJSON_AddStringToObject(item, "link", catalogs_updatable_creative_assets_attributes->link) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // catalogs_updatable_creative_assets_attributes->ios_deep_link
-    if(catalogs_updatable_creative_assets_attributes->ios_deep_link) {
-    if(cJSON_AddStringToObject(item, "ios_deep_link", catalogs_updatable_creative_assets_attributes->ios_deep_link) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // catalogs_updatable_creative_assets_attributes->android_deep_link
     if(catalogs_updatable_creative_assets_attributes->android_deep_link) {
     if(cJSON_AddStringToObject(item, "android_deep_link", catalogs_updatable_creative_assets_attributes->android_deep_link) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // catalogs_updatable_creative_assets_attributes->google_product_category
-    if(catalogs_updatable_creative_assets_attributes->google_product_category) {
-    if(cJSON_AddStringToObject(item, "google_product_category", catalogs_updatable_creative_assets_attributes->google_product_category) == NULL) {
     goto fail; //String
     }
     }
@@ -221,6 +181,46 @@ cJSON *catalogs_updatable_creative_assets_attributes_convertToJSON(catalogs_upda
     }
 
 
+    // catalogs_updatable_creative_assets_attributes->description
+    if(catalogs_updatable_creative_assets_attributes->description) {
+    if(cJSON_AddStringToObject(item, "description", catalogs_updatable_creative_assets_attributes->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // catalogs_updatable_creative_assets_attributes->google_product_category
+    if(catalogs_updatable_creative_assets_attributes->google_product_category) {
+    if(cJSON_AddStringToObject(item, "google_product_category", catalogs_updatable_creative_assets_attributes->google_product_category) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // catalogs_updatable_creative_assets_attributes->ios_deep_link
+    if(catalogs_updatable_creative_assets_attributes->ios_deep_link) {
+    if(cJSON_AddStringToObject(item, "ios_deep_link", catalogs_updatable_creative_assets_attributes->ios_deep_link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // catalogs_updatable_creative_assets_attributes->link
+    if(catalogs_updatable_creative_assets_attributes->link) {
+    if(cJSON_AddStringToObject(item, "link", catalogs_updatable_creative_assets_attributes->link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // catalogs_updatable_creative_assets_attributes->title
+    if(catalogs_updatable_creative_assets_attributes->title) {
+    if(cJSON_AddStringToObject(item, "title", catalogs_updatable_creative_assets_attributes->title) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // catalogs_updatable_creative_assets_attributes->visibility
     if(catalogs_updatable_creative_assets_attributes->visibility) {
     if(cJSON_AddStringToObject(item, "visibility", catalogs_updatable_creative_assets_attributes->visibility) == NULL) {
@@ -240,54 +240,6 @@ catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_ass
 
     catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_local_var = NULL;
 
-    // catalogs_updatable_creative_assets_attributes->title
-    cJSON *title = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "title");
-    if (cJSON_IsNull(title)) {
-        title = NULL;
-    }
-    if (title) { 
-    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
-    {
-    goto end; //String
-    }
-    }
-
-    // catalogs_updatable_creative_assets_attributes->description
-    cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "description");
-    if (cJSON_IsNull(description)) {
-        description = NULL;
-    }
-    if (description) { 
-    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
-    {
-    goto end; //String
-    }
-    }
-
-    // catalogs_updatable_creative_assets_attributes->link
-    cJSON *link = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "link");
-    if (cJSON_IsNull(link)) {
-        link = NULL;
-    }
-    if (link) { 
-    if(!cJSON_IsString(link) && !cJSON_IsNull(link))
-    {
-    goto end; //String
-    }
-    }
-
-    // catalogs_updatable_creative_assets_attributes->ios_deep_link
-    cJSON *ios_deep_link = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "ios_deep_link");
-    if (cJSON_IsNull(ios_deep_link)) {
-        ios_deep_link = NULL;
-    }
-    if (ios_deep_link) { 
-    if(!cJSON_IsString(ios_deep_link) && !cJSON_IsNull(ios_deep_link))
-    {
-    goto end; //String
-    }
-    }
-
     // catalogs_updatable_creative_assets_attributes->android_deep_link
     cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "android_deep_link");
     if (cJSON_IsNull(android_deep_link)) {
@@ -295,18 +247,6 @@ catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_ass
     }
     if (android_deep_link) { 
     if(!cJSON_IsString(android_deep_link) && !cJSON_IsNull(android_deep_link))
-    {
-    goto end; //String
-    }
-    }
-
-    // catalogs_updatable_creative_assets_attributes->google_product_category
-    cJSON *google_product_category = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "google_product_category");
-    if (cJSON_IsNull(google_product_category)) {
-        google_product_category = NULL;
-    }
-    if (google_product_category) { 
-    if(!cJSON_IsString(google_product_category) && !cJSON_IsNull(google_product_category))
     {
     goto end; //String
     }
@@ -372,6 +312,66 @@ catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_ass
     }
     }
 
+    // catalogs_updatable_creative_assets_attributes->description
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
+    if (description) { 
+    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_updatable_creative_assets_attributes->google_product_category
+    cJSON *google_product_category = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "google_product_category");
+    if (cJSON_IsNull(google_product_category)) {
+        google_product_category = NULL;
+    }
+    if (google_product_category) { 
+    if(!cJSON_IsString(google_product_category) && !cJSON_IsNull(google_product_category))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_updatable_creative_assets_attributes->ios_deep_link
+    cJSON *ios_deep_link = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "ios_deep_link");
+    if (cJSON_IsNull(ios_deep_link)) {
+        ios_deep_link = NULL;
+    }
+    if (ios_deep_link) { 
+    if(!cJSON_IsString(ios_deep_link) && !cJSON_IsNull(ios_deep_link))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_updatable_creative_assets_attributes->link
+    cJSON *link = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
+    if (link) { 
+    if(!cJSON_IsString(link) && !cJSON_IsNull(link))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_updatable_creative_assets_attributes->title
+    cJSON *title = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
+    if (title) { 
+    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
+    {
+    goto end; //String
+    }
+    }
+
     // catalogs_updatable_creative_assets_attributes->visibility
     cJSON *visibility = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "visibility");
     if (cJSON_IsNull(visibility)) {
@@ -386,17 +386,17 @@ catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_ass
 
 
     catalogs_updatable_creative_assets_attributes_local_var = catalogs_updatable_creative_assets_attributes_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
         android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
-        google_product_category && !cJSON_IsNull(google_product_category) ? strdup(google_product_category->valuestring) : NULL,
         custom_label_0 && !cJSON_IsNull(custom_label_0) ? strdup(custom_label_0->valuestring) : NULL,
         custom_label_1 && !cJSON_IsNull(custom_label_1) ? strdup(custom_label_1->valuestring) : NULL,
         custom_label_2 && !cJSON_IsNull(custom_label_2) ? strdup(custom_label_2->valuestring) : NULL,
         custom_label_3 && !cJSON_IsNull(custom_label_3) ? strdup(custom_label_3->valuestring) : NULL,
         custom_label_4 && !cJSON_IsNull(custom_label_4) ? strdup(custom_label_4->valuestring) : NULL,
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        google_product_category && !cJSON_IsNull(google_product_category) ? strdup(google_product_category->valuestring) : NULL,
+        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
+        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
+        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         visibility && !cJSON_IsNull(visibility) ? strdup(visibility->valuestring) : NULL
         );
 

@@ -16,14 +16,16 @@ module CatalogsRetailBatchRequestItemsInner =
 
   [<CLIMutable>]
   type CatalogsRetailBatchRequestItemsInner = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : ItemAttributesRequest;
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : ItemAttributesRequest;
     [<JsonProperty(PropertyName = "update_mask")>]
     UpdateMask : UpdateMaskFieldType[];
+    [<JsonProperty(PropertyName = "last_updated_time")>]
+    LastUpdatedTime : int64;
   }
 
   //#endregion

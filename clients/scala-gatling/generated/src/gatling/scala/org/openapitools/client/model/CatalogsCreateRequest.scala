@@ -3,8 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsCreateRequest (
-    /* Type of the catalog entity. */
-    _catalogType: String,
+    _catalogType: CatalogsType,
     /* A human-friendly name associated to a given catalog. */
     _name: String
 )

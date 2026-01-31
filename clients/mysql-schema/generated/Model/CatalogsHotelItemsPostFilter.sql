@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsHotelItemsPostFilter`
 --
-SELECT `catalog_type`, `hotel_ids`, `catalog_id` FROM `CatalogsHotelItemsPostFilter` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `hotel_ids` FROM `CatalogsHotelItemsPostFilter` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsHotelItemsPostFilter`
 --
-INSERT INTO `CatalogsHotelItemsPostFilter`(`catalog_type`, `hotel_ids`, `catalog_id`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsHotelItemsPostFilter`(`catalog_id`, `catalog_type`, `hotel_ids`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsHotelItemsPostFilter`
 --
-UPDATE `CatalogsHotelItemsPostFilter` SET `catalog_type` = ?, `hotel_ids` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsHotelItemsPostFilter` SET `catalog_id` = ?, `catalog_type` = ?, `hotel_ids` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsHotelItemsPostFilter`

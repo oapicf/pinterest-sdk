@@ -131,7 +131,7 @@ class BusinessAccessInviteApi implements BusinessAccessInviteApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **string**| Business id |
+ **businessId** | **string**| Unique identifier of the requesting business. |
  **cancelInvitesBody** | [**OpenAPI\Server\Model\CancelInvitesBody**](../Model/CancelInvitesBody.md)| A list with invite ids |
 
 ### Return type
@@ -257,7 +257,7 @@ class BusinessAccessInviteApi implements BusinessAccessInviteApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **string**| Business id |
+ **businessId** | **string**| Unique identifier of the requesting business. |
  **createMembershipOrPartnershipInvitesBody** | [**OpenAPI\Server\Model\CreateMembershipOrPartnershipInvitesBody**](../Model/CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role |
 
 ### Return type

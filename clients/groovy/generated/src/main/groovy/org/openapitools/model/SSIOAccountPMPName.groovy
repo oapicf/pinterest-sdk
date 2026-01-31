@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class SSIOAccountPMPName {
-    /* Display name */
-    String name
     /* Salesforce id for PMP */
     String id
+    /* Display name */
+    String name
 }

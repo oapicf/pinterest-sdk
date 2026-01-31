@@ -22,13 +22,13 @@ billing_profiles_get_200_response_t* instantiate_billing_profiles_get_200_respon
   billing_profiles_get_200_response_t* billing_profiles_get_200_response = NULL;
   if (include_optional) {
     billing_profiles_get_200_response = billing_profiles_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     billing_profiles_get_200_response = billing_profiles_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

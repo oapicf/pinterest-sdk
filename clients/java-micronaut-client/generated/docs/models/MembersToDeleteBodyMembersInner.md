@@ -8,8 +8,8 @@ The class is defined in **[MembersToDeleteBodyMembersInner.java](../../src/main/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**memberId** | `String` | Unique identifier of the member | 
 **businessRole** | `BusinessRoleForMembers` |  | 
+**memberId** | `String` | Unique identifier of the member | 
 
 
 

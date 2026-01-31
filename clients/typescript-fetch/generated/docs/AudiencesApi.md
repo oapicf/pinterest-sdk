@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**audiencesCreate**](AudiencesApi.md#audiencescreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
-| [**audiencesCreateCustom**](AudiencesApi.md#audiencescreatecustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 | [**audiencesGet**](AudiencesApi.md#audiencesget) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 | [**audiencesList**](AudiencesApi.md#audienceslist) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 | [**audiencesUpdate**](AudiencesApi.md#audiencesupdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
@@ -18,7 +17,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
 
 ### Example
 
@@ -87,81 +86,6 @@ example().catch(console.error);
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
-## audiencesCreateCustom
-
-> Audience audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
-
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Example
-
-```ts
-import {
-  Configuration,
-  AudiencesApi,
-} from '';
-import type { AudiencesCreateCustomRequest } from '';
-
-async function example() {
-  console.log("🚀 Testing  SDK...");
-  const config = new Configuration({ 
-    // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
-    accessToken: "YOUR ACCESS TOKEN",
-  });
-  const api = new AudiencesApi(config);
-
-  const body = {
-    // string | Unique identifier of an ad account.
-    adAccountId: adAccountId_example,
-    // AudienceCreateCustomRequest | Custom audience to create.
-    audienceCreateCustomRequest: ...,
-  } satisfies AudiencesCreateCustomRequest;
-
-  try {
-    const data = await api.audiencesCreateCustom(body);
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Run the test
-example().catch(console.error);
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **audienceCreateCustomRequest** | [AudienceCreateCustomRequest](AudienceCreateCustomRequest.md) | Custom audience to create. | |
-
-### Return type
-
-[**Audience**](Audience.md)
-
-### Authorization
-
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
-
-
 ## audiencesGet
 
 > Audience audiencesGet(adAccountId, audienceId)
@@ -183,6 +107,8 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
+    accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
     accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new AudiencesApi(config);
@@ -220,7 +146,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -259,6 +185,8 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
+    accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
     accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new AudiencesApi(config);
@@ -305,7 +233,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -353,7 +281,7 @@ async function example() {
     adAccountId: adAccountId_example,
     // string | Unique identifier of an audience
     audienceId: audienceId_example,
-    // AudienceUpdateRequest | The audience to be updated. (optional)
+    // AudienceUpdateRequest | The audience to be updated.
     audienceUpdateRequest: ...,
   } satisfies AudiencesUpdateRequest;
 
@@ -376,7 +304,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **audienceId** | `string` | Unique identifier of an audience | [Defaults to `undefined`] |
-| **audienceUpdateRequest** | [AudienceUpdateRequest](AudienceUpdateRequest.md) | The audience to be updated. | [Optional] |
+| **audienceUpdateRequest** | [AudienceUpdateRequest](AudienceUpdateRequest.md) | The audience to be updated. | |
 
 ### Return type
 

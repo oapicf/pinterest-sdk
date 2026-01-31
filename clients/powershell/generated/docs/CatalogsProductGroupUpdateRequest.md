@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
-**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
+**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] 
+**Name** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsProductGroupUpdateRequest  -Name null `
- -Description null `
+$CatalogsProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsProductGroupUpdateRequest  -Description null `
+ -Filters null `
  -IsFeatured null `
- -Filters null
+ -Name null
 ```
 
 - Convert the resource to JSON

@@ -19,9 +19,9 @@ Protected Class AdsCreditDiscountsResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The type of discount of this credit
+			Currency value for the discount.
 		#tag EndNote
-		discountType As Xoson.O.OptionalString
+		discountCurrency As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -35,17 +35,9 @@ Protected Class AdsCreditDiscountsResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Currency value for the discount.
+			The type of discount of this credit
 		#tag EndNote
-		discountCurrency As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Human readable title of the offer code.
-		#tag EndNote
-		title As Xoson.O.OptionalString
+		discountType As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,6 +46,14 @@ Protected Class AdsCreditDiscountsResponse
 			The credits left to spend.
 		#tag EndNote
 		remainingDiscountInMicroCurrency As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Human readable title of the offer code.
+		#tag EndNote
+		title As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -184,14 +184,6 @@ Protected Class AdsCreditDiscountsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="discountInMicroCurrency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="discountCurrency"
 			Visible=false
 			Group="Behavior"
@@ -200,11 +192,11 @@ Protected Class AdsCreditDiscountsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="title"
+			Name="discountInMicroCurrency"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -213,6 +205,14 @@ Protected Class AdsCreditDiscountsResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="title"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

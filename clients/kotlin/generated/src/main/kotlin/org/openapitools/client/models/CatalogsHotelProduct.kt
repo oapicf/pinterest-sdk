@@ -39,7 +39,7 @@ data class CatalogsHotelProduct (
     val metadata: CatalogsHotelProductMetadata,
 
     @Json(name = "pin")
-    val pin: Pin?
+    val pin: Pin
 
 ) {
 

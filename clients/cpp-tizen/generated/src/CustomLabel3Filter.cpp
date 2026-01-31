@@ -23,7 +23,7 @@ CustomLabel3Filter::~CustomLabel3Filter()
 void
 CustomLabel3Filter::__init()
 {
-	//cUSTOM_LABEL_3 = new CatalogsProductGroupMultipleStringCriteria();
+	//cUSTOM_LABEL_3 = new CatalogsProductGroupFilterOperatorTypeCriteria();
 }
 
 void
@@ -47,11 +47,11 @@ CustomLabel3Filter::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_3);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_3);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -68,13 +68,13 @@ CustomLabel3Filter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL3();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL3();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL3());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL3());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -90,14 +90,14 @@ CustomLabel3Filter::toJson()
 	return ret;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CustomLabel3Filter::getCUSTOMLABEL3()
 {
 	return cUSTOM_LABEL_3;
 }
 
 void
-CustomLabel3Filter::setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_3)
+CustomLabel3Filter::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3)
 {
 	this->cUSTOM_LABEL_3 = cUSTOM_LABEL_3;
 }

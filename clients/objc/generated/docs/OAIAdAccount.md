@@ -3,14 +3,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **NSString*** |  | [optional] 
-**name** | **NSString*** |  | [optional] 
-**owner** | [**OAIAdAccountOwner***](OAIAdAccountOwner.md) |  | [optional] 
 **country** | [**OAICountry***](OAICountry.md) |  | [optional] 
+**createdTime** | **NSNumber*** |  Creation time. Unix timestamp in seconds. | [optional] [readonly] 
 **currency** | [**OAICurrency***](OAICurrency.md) |  | [optional] 
-**permissions** | [**NSArray&lt;OAIBusinessAccessRole&gt;***](OAIBusinessAccessRole.md) |  | [optional] 
-**createdTime** | **NSNumber*** | Creation time. Unix timestamp in seconds. | [optional] 
-**updatedTime** | **NSNumber*** | Last update time. Unix timestamp in seconds. | [optional] 
+**_id** | **NSString*** |  | 
+**name** | **NSString*** | Ad account name. | [optional] 
+**owner** | [**OAIAdAccountOwner***](OAIAdAccountOwner.md) | Ad account owner | [optional] [readonly] 
+**permissions** | [**NSArray&lt;OAIBusinessAccessRole&gt;***](OAIBusinessAccessRole.md) |  | [optional] [readonly] 
+**updatedTime** | **NSNumber*** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

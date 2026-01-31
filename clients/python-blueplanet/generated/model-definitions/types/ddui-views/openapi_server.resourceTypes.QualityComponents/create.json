@@ -1,0 +1,27 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "advertiser_external_id" },
+      {"model": "click_id_epik" },
+      {"model": "external_event_id" },
+      {"model": "hashed_email" },
+      {"model": "hashed_maid" },
+      {"model": "ip_address" },
+      {"model": "order_id" },
+      {"model": "order_value" },
+      {"model": "product_id" },
+      {"model": "source_url" },
+      {"model": "user_agent" },
+    ]
+  }]
+}

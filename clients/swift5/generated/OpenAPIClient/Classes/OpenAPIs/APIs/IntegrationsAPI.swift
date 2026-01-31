@@ -116,12 +116,12 @@ open class IntegrationsAPI {
      Update commerce integration
      
      - parameter externalBusinessId: (path) External business ID for the integration. 
-     - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata (optional)
+     - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: IntegrationMetadata?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: IntegrationMetadata?, _ error: Error?) -> Void)) -> RequestTask {
         return integrationsCommercePatchWithRequestBuilder(externalBusinessId: externalBusinessId, integrationRequestPatch: integrationRequestPatch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,10 +140,10 @@ open class IntegrationsAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter externalBusinessId: (path) External business ID for the integration. 
-     - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata (optional)
+     - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata 
      - returns: RequestBuilder<IntegrationMetadata> 
      */
-    open class func integrationsCommercePatchWithRequestBuilder(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch? = nil) -> RequestBuilder<IntegrationMetadata> {
+    open class func integrationsCommercePatchWithRequestBuilder(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch) -> RequestBuilder<IntegrationMetadata> {
         var localVariablePath = "/integrations/commerce/{external_business_id}"
         let externalBusinessIdPreEscape = "\(APIHelper.mapValueToPathItem(externalBusinessId))"
         let externalBusinessIdPostEscape = externalBusinessIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -167,12 +167,12 @@ open class IntegrationsAPI {
     /**
      Create commerce integration
      
-     - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata (optional)
+     - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func integrationsCommercePost(integrationRequest: IntegrationRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: IntegrationMetadata?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func integrationsCommercePost(integrationRequest: IntegrationRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: IntegrationMetadata?, _ error: Error?) -> Void)) -> RequestTask {
         return integrationsCommercePostWithRequestBuilder(integrationRequest: integrationRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -190,10 +190,10 @@ open class IntegrationsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata (optional)
+     - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata 
      - returns: RequestBuilder<IntegrationMetadata> 
      */
-    open class func integrationsCommercePostWithRequestBuilder(integrationRequest: IntegrationRequest? = nil) -> RequestBuilder<IntegrationMetadata> {
+    open class func integrationsCommercePostWithRequestBuilder(integrationRequest: IntegrationRequest) -> RequestBuilder<IntegrationMetadata> {
         let localVariablePath = "/integrations/commerce"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: integrationRequest)

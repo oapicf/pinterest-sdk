@@ -16,11 +16,17 @@ An internal role type used on business access, EMPLOYEE, ADMIN.
 
 * `FinanceManager` (value: `'FINANCE_MANAGER'`)
 
+* `FinanceEdit` (value: `'FINANCE_EDIT'`)
+
+* `FinanceView` (value: `'FINANCE_VIEW'`)
+
 * `AudienceManager` (value: `'AUDIENCE_MANAGER'`)
 
 * `CampaignManager` (value: `'CAMPAIGN_MANAGER'`)
 
 * `CatalogsManager` (value: `'CATALOGS_MANAGER'`)
+
+* `CatalogsViewer` (value: `'CATALOGS_VIEWER'`)
 
 * `RestrictedOwner` (value: `'RESTRICTED_OWNER'`)
 

@@ -6,11 +6,11 @@ import (
 
 type CatalogsFeedIngestion struct {
 
-	Id string `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
 
 	FeedId string `json:"feed_id"`
 
-	CreatedAt time.Time `json:"created_at"`
+	Id string `json:"id"`
 
 	Status CatalogsFeedProcessingStatus `json:"status"`
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -45,7 +45,7 @@ func (r ApiBulkDownloadCreateRequest) Execute() (*BulkDownloadResponse, *http.Re
 BulkDownloadCreate Get advertiser entities in bulk
 
 Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,
-and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused,
+keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
 only active entities will return data.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -305,7 +305,7 @@ func (r ApiBulkUpsertCreateRequest) Execute() (*BulkUpsertResponse, *http.Respon
 /*
 BulkUpsertCreate Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.
 Note that this request will be processed asynchronously; the response will include a <code>request_id</code>
 that can be used to obtain the status of the request.
 

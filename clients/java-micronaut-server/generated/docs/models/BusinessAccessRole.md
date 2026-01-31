@@ -17,6 +17,10 @@ The class is defined in **[BusinessAccessRole.java](../../src/main/java/org/open
 
 * `FINANCE_MANAGER` (value: `"FINANCE_MANAGER"`)
 
+* `FINANCE_VIEW` (value: `"FINANCE_VIEW"`)
+
+* `FINANCE_EDIT` (value: `"FINANCE_EDIT"`)
+
 * `AUDIENCE_MANAGER` (value: `"AUDIENCE_MANAGER"`)
 
 * `CAMPAIGN_MANAGER` (value: `"CAMPAIGN_MANAGER"`)

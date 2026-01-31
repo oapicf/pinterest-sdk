@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// EnhancedMatchStatusType The enhanced match status of the tag
+// EnhancedMatchStatusType the model 'EnhancedMatchStatusType'
 type EnhancedMatchStatusType string
 
 // List of EnhancedMatchStatusType

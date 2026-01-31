@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,13 +22,11 @@ var _ MappedNullable = &CustomerListRequest{}
 
 // CustomerListRequest struct for CustomerListRequest
 type CustomerListRequest struct {
+	ListType *UserListType `json:"list_type,omitempty"`
 	// Customer list name.
 	Name string `json:"name"`
 	// Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
 	Records string `json:"records"`
-	ListType *UserListType `json:"list_type,omitempty"`
-	// Customer list errors.
-	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 }
 
 type _CustomerListRequest CustomerListRequest
@@ -39,10 +37,10 @@ type _CustomerListRequest CustomerListRequest
 // will change when the set of required properties is changed
 func NewCustomerListRequest(name string, records string) *CustomerListRequest {
 	this := CustomerListRequest{}
-	this.Name = name
-	this.Records = records
 	var listType UserListType = EMAIL
 	this.ListType = &listType
+	this.Name = name
+	this.Records = records
 	return &this
 }
 
@@ -54,6 +52,38 @@ func NewCustomerListRequestWithDefaults() *CustomerListRequest {
 	var listType UserListType = EMAIL
 	this.ListType = &listType
 	return &this
+}
+
+// GetListType returns the ListType field value if set, zero value otherwise.
+func (o *CustomerListRequest) GetListType() UserListType {
+	if o == nil || IsNil(o.ListType) {
+		var ret UserListType
+		return ret
+	}
+	return *o.ListType
+}
+
+// GetListTypeOk returns a tuple with the ListType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListRequest) GetListTypeOk() (*UserListType, bool) {
+	if o == nil || IsNil(o.ListType) {
+		return nil, false
+	}
+	return o.ListType, true
+}
+
+// HasListType returns a boolean if a field has been set.
+func (o *CustomerListRequest) HasListType() bool {
+	if o != nil && !IsNil(o.ListType) {
+		return true
+	}
+
+	return false
+}
+
+// SetListType gets a reference to the given UserListType and assigns it to the ListType field.
+func (o *CustomerListRequest) SetListType(v UserListType) {
+	o.ListType = &v
 }
 
 // GetName returns the Name field value
@@ -104,70 +134,6 @@ func (o *CustomerListRequest) SetRecords(v string) {
 	o.Records = v
 }
 
-// GetListType returns the ListType field value if set, zero value otherwise.
-func (o *CustomerListRequest) GetListType() UserListType {
-	if o == nil || IsNil(o.ListType) {
-		var ret UserListType
-		return ret
-	}
-	return *o.ListType
-}
-
-// GetListTypeOk returns a tuple with the ListType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerListRequest) GetListTypeOk() (*UserListType, bool) {
-	if o == nil || IsNil(o.ListType) {
-		return nil, false
-	}
-	return o.ListType, true
-}
-
-// HasListType returns a boolean if a field has been set.
-func (o *CustomerListRequest) HasListType() bool {
-	if o != nil && !IsNil(o.ListType) {
-		return true
-	}
-
-	return false
-}
-
-// SetListType gets a reference to the given UserListType and assigns it to the ListType field.
-func (o *CustomerListRequest) SetListType(v UserListType) {
-	o.ListType = &v
-}
-
-// GetExceptions returns the Exceptions field value if set, zero value otherwise.
-func (o *CustomerListRequest) GetExceptions() map[string]interface{} {
-	if o == nil || IsNil(o.Exceptions) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Exceptions
-}
-
-// GetExceptionsOk returns a tuple with the Exceptions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerListRequest) GetExceptionsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Exceptions) {
-		return map[string]interface{}{}, false
-	}
-	return o.Exceptions, true
-}
-
-// HasExceptions returns a boolean if a field has been set.
-func (o *CustomerListRequest) HasExceptions() bool {
-	if o != nil && !IsNil(o.Exceptions) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceptions gets a reference to the given map[string]interface{} and assigns it to the Exceptions field.
-func (o *CustomerListRequest) SetExceptions(v map[string]interface{}) {
-	o.Exceptions = v
-}
-
 func (o CustomerListRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -178,14 +144,11 @@ func (o CustomerListRequest) MarshalJSON() ([]byte, error) {
 
 func (o CustomerListRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["records"] = o.Records
 	if !IsNil(o.ListType) {
 		toSerialize["list_type"] = o.ListType
 	}
-	if !IsNil(o.Exceptions) {
-		toSerialize["exceptions"] = o.Exceptions
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["records"] = o.Records
 	return toSerialize, nil
 }
 

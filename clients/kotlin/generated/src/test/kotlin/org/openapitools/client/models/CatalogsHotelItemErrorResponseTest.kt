@@ -33,16 +33,16 @@ class CatalogsHotelItemErrorResponseTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
-        // to test the property `hotelId` - The catalog hotel id in the merchant namespace
-        should("test hotelId") {
-            // uncomment below to test the property
-            //modelInstance.hotelId shouldBe ("TODO")
-        }
-
         // to test the property `errors` - Array with the errors for the item id requested
         should("test errors") {
             // uncomment below to test the property
             //modelInstance.errors shouldBe ("TODO")
+        }
+
+        // to test the property `hotelId` - The catalog hotel id in the merchant namespace
+        should("test hotelId") {
+            // uncomment below to test the property
+            //modelInstance.hotelId shouldBe ("TODO")
         }
 
     }

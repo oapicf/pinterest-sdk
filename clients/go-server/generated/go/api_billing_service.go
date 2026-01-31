@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -71,6 +71,40 @@ func (s *BillingAPIService) BillingProfilesGet(ctx context.Context, adAccountId 
 	// return Response(0, Error{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BillingProfilesGet method not implemented")
+}
+
+// BillingInvoicesGet - Get billing invoices
+func (s *BillingAPIService) BillingInvoicesGet(ctx context.Context, adAccountId string, bookmark string, pageSize int32, sort string, order string, status string, documentType string, startDueDate string, endDueDate string) (ImplResponse, error) {
+	// TODO - update BillingInvoicesGet with the required logic for this service method.
+	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BillingInvoicesGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BillingInvoicesGet200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
+	// return Response(400, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BillingInvoicesGet method not implemented")
+}
+
+// BillingInvoiceDownloadGet - Get download url for a billing invoice
+func (s *BillingAPIService) BillingInvoiceDownloadGet(ctx context.Context, adAccountId string, billingInvoiceId string) (ImplResponse, error) {
+	// TODO - update BillingInvoiceDownloadGet with the required logic for this service method.
+	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BillingInvoiceDownloadResponse{}) or use other options such as http.Ok ...
+	// return Response(200, BillingInvoiceDownloadResponse{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
+	// return Response(400, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BillingInvoiceDownloadGet method not implemented")
 }
 
 // SsioAccountsGet - Get Salesforce account details including bill-to information.

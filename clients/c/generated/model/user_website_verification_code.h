@@ -19,21 +19,21 @@ typedef struct user_website_verification_code_t user_website_verification_code_t
 
 
 typedef struct user_website_verification_code_t {
-    char *verification_code; // string
     char *dns_txt_record; // string
-    char *metatag; // string
-    char *filename; // string
     char *file_content; // string
+    char *filename; // string
+    char *metatag; // string
+    char *verification_code; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } user_website_verification_code_t;
 
 __attribute__((deprecated)) user_website_verification_code_t *user_website_verification_code_create(
-    char *verification_code,
     char *dns_txt_record,
-    char *metatag,
+    char *file_content,
     char *filename,
-    char *file_content
+    char *metatag,
+    char *verification_code
 );
 
 void user_website_verification_code_free(user_website_verification_code_t *user_website_verification_code);

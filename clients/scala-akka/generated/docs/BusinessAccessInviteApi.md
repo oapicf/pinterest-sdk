@@ -135,7 +135,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Business id
+    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
 
     val cancelInvitesBody: CancelInvitesBody =  // CancelInvitesBody | A list with invite ids
     
@@ -167,7 +167,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String**| Business id |
+ **businessId** | **String**| Unique identifier of the requesting business. |
  **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids |
 
 ### Return type
@@ -307,7 +307,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Business id
+    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
 
     val createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
     
@@ -339,7 +339,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String**| Business id |
+ **businessId** | **String**| Unique identifier of the requesting business. |
  **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role |
 
 ### Return type

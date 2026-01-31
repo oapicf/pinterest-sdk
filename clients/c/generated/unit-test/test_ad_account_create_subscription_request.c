@@ -23,20 +23,20 @@ ad_account_create_subscription_request_t* instantiate_ad_account_create_subscrip
   ad_account_create_subscription_request_t* ad_account_create_subscription_request = NULL;
   if (include_optional) {
     ad_account_create_subscription_request = ad_account_create_subscription_request_create(
-      "https://webhook.example.com/xyz",
       "383791336903426390",
       "0",
-      "0",
        // false, not to have infinite recursion
-      instantiate_ad_account_create_subscription_request_partner_metadata(0)
+      instantiate_ad_account_create_subscription_request_partner_metadata(0),
+      "0",
+      "https://webhook.example.com/xyz"
     );
   } else {
     ad_account_create_subscription_request = ad_account_create_subscription_request_create(
-      "https://webhook.example.com/xyz",
       "383791336903426390",
       "0",
+      NULL,
       "0",
-      NULL
+      "https://webhook.example.com/xyz"
     );
   }
 

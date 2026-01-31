@@ -5,19 +5,19 @@ context("Test IntegrationLogClientRequest")
 
 model_instance <- IntegrationLogClientRequest$new()
 
-test_that("method", {
-  # tests for the property `method` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`method`, "EXPECTED_RESULT")
-})
-
 test_that("host", {
   # tests for the property `host` (character)
   # HTTP request host from host header.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`host`, "EXPECTED_RESULT")
+})
+
+test_that("method", {
+  # tests for the property `method` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`method`, "EXPECTED_RESULT")
 })
 
 test_that("path", {

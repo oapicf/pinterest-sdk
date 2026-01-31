@@ -19,6 +19,7 @@ typedef struct catalogs_feed_processing_result_t catalogs_feed_processing_result
 #include "catalogs_feed_processing_status.h"
 #include "catalogs_feed_product_counts.h"
 #include "catalogs_feed_validation_details.h"
+#include "catalogs_feed_video_counts.h"
 
 
 
@@ -27,9 +28,10 @@ typedef struct catalogs_feed_processing_result_t {
     char *id; // string
     char *updated_at; //date time
     struct catalogs_feed_ingestion_details_t *ingestion_details; //model
-    pinterest_rest_api_catalogs_feed_processing_status__e status; //referenced enum
     struct catalogs_feed_product_counts_t *product_counts; //model
+    pinterest_rest_api_catalogs_feed_processing_status__e status; //referenced enum
     struct catalogs_feed_validation_details_t *validation_details; //model
+    struct catalogs_feed_video_counts_t *video_counts; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_processing_result_t;
@@ -39,9 +41,10 @@ __attribute__((deprecated)) catalogs_feed_processing_result_t *catalogs_feed_pro
     char *id,
     char *updated_at,
     catalogs_feed_ingestion_details_t *ingestion_details,
-    pinterest_rest_api_catalogs_feed_processing_status__e status,
     catalogs_feed_product_counts_t *product_counts,
-    catalogs_feed_validation_details_t *validation_details
+    pinterest_rest_api_catalogs_feed_processing_status__e status,
+    catalogs_feed_validation_details_t *validation_details,
+    catalogs_feed_video_counts_t *video_counts
 );
 
 void catalogs_feed_processing_result_free(catalogs_feed_processing_result_t *catalogs_feed_processing_result);

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Media upload status
+ * Gets or Sets MediaUploadStatus
  */
 public enum MediaUploadStatus {
   

@@ -10,34 +10,16 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteSummary   {
-  @JsonProperty("website")
-  private String website;
-
   @JsonProperty("status")
   private String status;
 
   @JsonProperty("verified_at")
   private String verifiedAt;
 
-  /**
-   * Website with path or domain only
-   **/
-  public UserWebsiteSummary website(String website) {
-    this.website = website;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
   @JsonProperty("website")
-  public String getWebsite() {
-    return website;
-  }
-  public void setWebsite(String website) {
-    this.website = website;
-  }
+  private String website;
 
   /**
    * Status of the verification process
@@ -75,6 +57,24 @@ public class UserWebsiteSummary   {
     this.verifiedAt = verifiedAt;
   }
 
+  /**
+   * Website with path or domain only
+   **/
+  public UserWebsiteSummary website(String website) {
+    this.website = website;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
+  @JsonProperty("website")
+  public String getWebsite() {
+    return website;
+  }
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -85,14 +85,14 @@ public class UserWebsiteSummary   {
       return false;
     }
     UserWebsiteSummary userWebsiteSummary = (UserWebsiteSummary) o;
-    return Objects.equals(website, userWebsiteSummary.website) &&
-        Objects.equals(status, userWebsiteSummary.status) &&
-        Objects.equals(verifiedAt, userWebsiteSummary.verifiedAt);
+    return Objects.equals(status, userWebsiteSummary.status) &&
+        Objects.equals(verifiedAt, userWebsiteSummary.verifiedAt) &&
+        Objects.equals(website, userWebsiteSummary.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, status, verifiedAt);
+    return Objects.hash(status, verifiedAt, website);
   }
 
   @Override
@@ -100,9 +100,9 @@ public class UserWebsiteSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteSummary {\n");
     
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    verifiedAt: ").append(toIndentedString(verifiedAt)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

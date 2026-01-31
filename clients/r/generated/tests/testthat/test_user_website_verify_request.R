@@ -5,16 +5,16 @@ context("Test UserWebsiteVerifyRequest")
 
 model_instance <- UserWebsiteVerifyRequest$new()
 
-test_that("website", {
-  # tests for the property `website` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`website`, "EXPECTED_RESULT")
-})
-
 test_that("verification_method", {
   # tests for the property `verification_method` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`verification_method`, "EXPECTED_RESULT")
+})
+
+test_that("website", {
+  # tests for the property `website` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`website`, "EXPECTED_RESULT")
 })

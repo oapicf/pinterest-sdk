@@ -6,14 +6,14 @@ goog.provide('API.Client.lead_forms_list_200_response');
 API.Client.LeadFormsList200Response = function() {}
 
 /**
- * @type {!Array<!API.Client.LeadFormResponse>}
- * @export
- */
-API.Client.LeadFormsList200Response.prototype.items;
-
-/**
  * @type {!string}
  * @export
  */
 API.Client.LeadFormsList200Response.prototype.bookmark;
+
+/**
+ * @type {!Array<!API.Client.LeadFormResponse>}
+ * @export
+ */
+API.Client.LeadFormsList200Response.prototype.items;
 

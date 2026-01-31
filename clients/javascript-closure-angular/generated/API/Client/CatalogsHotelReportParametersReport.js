@@ -36,4 +36,5 @@ API.Client.CatalogsHotelReportParametersReport.prototype.catalogId;
 API.Client.CatalogsHotelReportParametersReport.ReportTypeEnum = { 
   FEED_INGESTION_ISSUES: 'FEED_INGESTION_ISSUES',
   DISTRIBUTION_ISSUES: 'DISTRIBUTION_ISSUES',
+  ALL_ITEMS: 'ALL_ITEMS',
 }

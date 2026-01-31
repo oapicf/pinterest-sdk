@@ -4,7 +4,6 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -13,6 +12,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationsApiServiceImpl implements IntegrationsApi {
       public Response integrationsCommerceDel(String externalBusinessId,SecurityContext securityContext) {
       // do some magic!

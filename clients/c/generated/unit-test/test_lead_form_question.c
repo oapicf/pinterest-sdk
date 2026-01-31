@@ -22,17 +22,17 @@ lead_form_question_t* instantiate_lead_form_question(int include_optional) {
   lead_form_question_t* lead_form_question = NULL;
   if (include_optional) {
     lead_form_question = lead_form_question_create(
-      pinterest_rest_api_lead_form_question__"FIRST_NAME",
       pinterest_rest_api_lead_form_question__"RADIO_LIST",
       "0",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_lead_form_question__"FIRST_NAME"
     );
   } else {
     lead_form_question = lead_form_question_create(
-      pinterest_rest_api_lead_form_question__"FIRST_NAME",
       pinterest_rest_api_lead_form_question__"RADIO_LIST",
       "0",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_lead_form_question__"FIRST_NAME"
     );
   }
 

@@ -7,8 +7,8 @@ Used for including extra details to a base error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **number** |  | [default to undefined]
-**message** | **string** |  | [default to undefined]
 **details** | **object** |  | [default to undefined]
+**message** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -17,8 +17,8 @@ import { DetailedError } from './api';
 
 const instance: DetailedError = {
     code,
-    message,
     details,
+    message,
 };
 ```
 

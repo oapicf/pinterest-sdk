@@ -4,11 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | Billing ID. | [optional] |
-| **card_type** | **String** | Type of the card. | [optional] |
-| **status** | **String** | Status of the billing. | [optional] |
 | **advertiser_id** | **String** | Advertiser ID of the billing. | [optional] |
+| **billing_type** | **String** | Billing type of the advertiser | [optional] |
+| **card_type** | **String** | Type of the card. | [optional] |
+| **id** | **String** | Billing ID. | [optional] |
 | **payment_method_brand** | **String** | Brand of the payment method. | [optional] |
+| **status** | **String** | Status of the billing. | [optional] |
 
 ## Example
 
@@ -16,11 +17,12 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::BillingProfilesResponse.new(
-  id: 12312451231,
-  card_type: VISA,
-  status: INVALID,
   advertiser_id: 12312451231,
-  payment_method_brand: VISA
+  billing_type: CREDIT_CARD,
+  card_type: VISA,
+  id: 12312451231,
+  payment_method_brand: VISA,
+  status: INVALID
 )
 ```
 

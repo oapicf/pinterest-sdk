@@ -1,0 +1,10 @@
+
+
+# VerticalProductCategory
+
+## Enum
+
+
+
+
+

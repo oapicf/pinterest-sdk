@@ -37,6 +37,14 @@ public class CustomerListTest {
     }
 
     /**
+     * Test the property 'exceptions'
+     */
+    @Test
+    public void exceptionsTest() {
+        // TODO: test exceptions
+    }
+
+    /**
      * Test the property 'id'
      */
     @Test
@@ -98,14 +106,6 @@ public class CustomerListTest {
     @Test
     public void updatedTimeTest() {
         // TODO: test updatedTime
-    }
-
-    /**
-     * Test the property 'exceptions'
-     */
-    @Test
-    public void exceptionsTest() {
-        // TODO: test exceptions
     }
 
 }

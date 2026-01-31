@@ -14,7 +14,7 @@ module Catalog =
     CreatedAt : DateTime;
     Id : string;
     UpdatedAt : DateTime;
-    Name : string option;
     CatalogType : CatalogsType;
+    Name : string option;
   }
   //#endregion

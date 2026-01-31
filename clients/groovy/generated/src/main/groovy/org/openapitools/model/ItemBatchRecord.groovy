@@ -16,10 +16,10 @@ import org.openapitools.model.UpdateMaskFieldType;
 
 @Canonical
 class ItemBatchRecord {
-    /* The catalog item id in the merchant namespace */
-    String itemId
     
     ItemAttributesRequest attributes
+    /* The catalog item id in the merchant namespace */
+    String itemId
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     List<UpdateMaskFieldType> updateMask
 }

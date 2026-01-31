@@ -52,7 +52,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "user_account", description = "View user accounts associated with a given access token.")
 public interface UserAccountApi {
@@ -109,7 +109,7 @@ public interface UserAccountApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 }, { \"owner\" : \"{}\", \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\", \"name\" : \"Summer Recipes\", \"pin_count\" : 5, \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"My favorite summer recipes\", \"collaborator_count\" : 17, \"privacy\" : \"PUBLIC\", \"id\" : \"549755885175\", \"media\" : { \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ], \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\" }, \"follower_count\" : 13 } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true }, { \"owner\" : \"\", \"board_pins_modified_at\" : \"2000-01-23T04:56:07.000+00:00\", \"name\" : \"Summer recipes\", \"pin_count\" : 5, \"collaborator_count\" : 17, \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"My favorite summer recipes\", \"privacy\" : \"\", \"id\" : \"549755885175\", \"media\" : \"\", \"follower_count\" : 13, \"is_ads_only\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -133,7 +133,7 @@ public interface UserAccountApi {
     String PATH_FOLLOW_USER_UPDATE = "/user_account/following/{username}";
     /**
      * POST /user_account/following/{username} : Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      *
      * @param username A valid username (required)
      * @param followUserRequest Follow a user. (required)
@@ -144,7 +144,7 @@ public interface UserAccountApi {
     @Operation(
         operationId = "followUserUpdate",
         summary = "Follow user",
-        description = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
+        description = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
         tags = { "user_account" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -303,7 +303,7 @@ public interface UserAccountApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"image_large_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_medium_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_xlarge_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"username\" : \"username\", \"image_small_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\" }, { \"image_large_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_medium_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_xlarge_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"username\" : \"username\", \"image_small_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\" } ]";
+                    String exampleString = "[ { \"image_large_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_medium_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_xlarge_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_small_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"username\" : \"username\" }, { \"image_large_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_medium_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_xlarge_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"image_small_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\", \"username\" : \"username\" } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

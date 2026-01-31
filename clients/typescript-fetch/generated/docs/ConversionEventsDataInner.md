@@ -6,25 +6,27 @@
 
 Name | Type
 ------------ | -------------
-`eventName` | string
 `actionSource` | string
-`eventTime` | number
-`eventId` | string
-`eventSourceUrl` | string
-`optOut` | boolean
-`partnerName` | string
-`userData` | [ConversionEventsUserData](ConversionEventsUserData.md)
-`customData` | [ConversionEventsDataInnerCustomData](ConversionEventsDataInnerCustomData.md)
 `appId` | string
+`appInfo` | [ConversionEventAppInfo](ConversionEventAppInfo.md)
 `appName` | string
 `appVersion` | string
+`customData` | [ConversionEventsDataInnerCustomData](ConversionEventsDataInnerCustomData.md)
 `deviceBrand` | string
 `deviceCarrier` | string
+`deviceInfo` | [ConversionEventDeviceInfo](ConversionEventDeviceInfo.md)
 `deviceModel` | string
 `deviceType` | string
-`osVersion` | string
-`wifi` | boolean
+`eventId` | string
+`eventName` | string
+`eventSourceUrl` | string
+`eventTime` | number
 `language` | string
+`optOut` | boolean
+`osVersion` | string
+`partnerName` | string
+`userData` | [ConversionEventsUserData](ConversionEventsUserData.md)
+`wifi` | boolean
 
 ## Example
 
@@ -33,25 +35,27 @@ import type { ConversionEventsDataInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "eventName": checkout,
   "actionSource": app_ios,
-  "eventTime": 1451431341,
-  "eventId": eventId0001,
-  "eventSourceUrl": https://www.my-clothing-shop.org/,
-  "optOut": false,
-  "partnerName": ss-partnername,
-  "userData": null,
-  "customData": null,
   "appId": 429047995,
+  "appInfo": null,
   "appName": Pinterest,
   "appVersion": 7.9,
+  "customData": null,
   "deviceBrand": Apple,
   "deviceCarrier": T-Mobile,
+  "deviceInfo": null,
   "deviceModel": iPhone X,
   "deviceType": iPhone,
-  "osVersion": 12.1.4,
-  "wifi": false,
+  "eventId": eventId0001,
+  "eventName": checkout,
+  "eventSourceUrl": https://www.my-clothing-shop.org/,
+  "eventTime": 1451431341,
   "language": en,
+  "optOut": false,
+  "osVersion": 12.1.4,
+  "partnerName": ss-partnername,
+  "userData": null,
+  "wifi": false,
 } satisfies ConversionEventsDataInner
 
 console.log(example)

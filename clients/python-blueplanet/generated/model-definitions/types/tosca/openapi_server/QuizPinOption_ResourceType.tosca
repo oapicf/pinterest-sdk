@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QuizPinOption"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QuizPinOption"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  QuizPinOption {
+    title = QuizPinOption
+    description = QuizPinOption
+    derivedFrom = Root
+    properties {
+        id {
+          type =  
+          description = ""
+          optional = false
+        }
+        text {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  QuizPinOption {
+    title = QuizPinOption
+    description = QuizPinOption
+    implements = openapi_server.resourceTypes.QuizPinOption
+
+  }
+}

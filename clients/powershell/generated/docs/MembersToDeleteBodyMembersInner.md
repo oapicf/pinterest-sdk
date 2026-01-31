@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MemberId** | **String** | Unique identifier of the member | 
 **BusinessRole** | [**BusinessRoleForMembers**](BusinessRoleForMembers.md) |  | 
+**MemberId** | **String** | Unique identifier of the member | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$MembersToDeleteBodyMembersInner = Initialize-PSOpenAPIToolsMembersToDeleteBodyMembersInner  -MemberId 140943737684417 `
- -BusinessRole null
+$MembersToDeleteBodyMembersInner = Initialize-PSOpenAPIToolsMembersToDeleteBodyMembersInner  -BusinessRole null `
+ -MemberId 140943737684417
 ```
 
 - Convert the resource to JSON

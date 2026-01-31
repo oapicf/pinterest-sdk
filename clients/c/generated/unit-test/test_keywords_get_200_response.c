@@ -22,13 +22,13 @@ keywords_get_200_response_t* instantiate_keywords_get_200_response(int include_o
   keywords_get_200_response_t* keywords_get_200_response = NULL;
   if (include_optional) {
     keywords_get_200_response = keywords_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     keywords_get_200_response = keywords_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

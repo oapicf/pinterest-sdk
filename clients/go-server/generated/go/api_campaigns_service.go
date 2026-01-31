@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -75,7 +75,7 @@ func (s *CampaignsAPIService) CampaignsUpdate(ctx context.Context, adAccountId s
 }
 
 // CampaignsAnalytics - Get campaign analytics
-func (s *CampaignsAPIService) CampaignsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, campaignIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string) (ImplResponse, error) {
+func (s *CampaignsAPIService) CampaignsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, campaignIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, aggregateReportRows bool, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update CampaignsAnalytics with the required logic for this service method.
 	// Add api_campaigns_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -92,7 +92,7 @@ func (s *CampaignsAPIService) CampaignsAnalytics(ctx context.Context, adAccountI
 }
 
 // CampaignTargetingAnalyticsGet - Get targeting analytics for campaigns
-func (s *CampaignsAPIService) CampaignTargetingAnalyticsGet(ctx context.Context, adAccountId string, campaignIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsCampaignTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes ConversionReportAttributionType) (ImplResponse, error) {
+func (s *CampaignsAPIService) CampaignTargetingAnalyticsGet(ctx context.Context, adAccountId string, campaignIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsCampaignTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update CampaignTargetingAnalyticsGet with the required logic for this service method.
 	// Add api_campaigns_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,4 +117,21 @@ func (s *CampaignsAPIService) CampaignsGet(ctx context.Context, adAccountId stri
 	// return Response(0, Error{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CampaignsGet method not implemented")
+}
+
+// AdPinsAnalytics - Get pins analytics
+func (s *CampaignsAPIService) AdPinsAnalytics(ctx context.Context, adAccountId string, campaignId string, pinIds []string, startDate string, endDate string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string) (ImplResponse, error) {
+	// TODO - update AdPinsAnalytics with the required logic for this service method.
+	// Add api_campaigns_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, []AdPinAnalytics{}) or use other options such as http.Ok ...
+	// return Response(200, []AdPinAnalytics{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
+	// return Response(400, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdPinsAnalytics method not implemented")
 }

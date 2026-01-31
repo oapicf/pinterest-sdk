@@ -28,8 +28,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsUpdateRetailItem", description = "An item to be updated")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdateRetailItem {
+
+  private UpdatableItemAttributes attributes;
 
   private String itemId;
 
@@ -68,8 +70,6 @@ public class CatalogsUpdateRetailItem {
 
   private OperationEnum operation;
 
-  private UpdatableItemAttributes attributes;
-
   @Valid
   private JsonNullable<List<UpdateMaskFieldType>> updateMask = JsonNullable.<List<UpdateMaskFieldType>>undefined();
 
@@ -80,9 +80,29 @@ public class CatalogsUpdateRetailItem {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsUpdateRetailItem(String itemId, OperationEnum operation, UpdatableItemAttributes attributes) {
+  public CatalogsUpdateRetailItem(UpdatableItemAttributes attributes, String itemId, OperationEnum operation) {
+    this.attributes = attributes;
     this.itemId = itemId;
     this.operation = operation;
+  }
+
+  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("attributes")
+  public UpdatableItemAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -126,26 +146,6 @@ public class CatalogsUpdateRetailItem {
     this.operation = operation;
   }
 
-  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("attributes")
-  public UpdatableItemAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   public CatalogsUpdateRetailItem updateMask(List<UpdateMaskFieldType> updateMask) {
     this.updateMask = JsonNullable.of(updateMask);
     return this;
@@ -164,7 +164,7 @@ public class CatalogsUpdateRetailItem {
    * @return updateMask
    */
   @Valid 
-  @Schema(name = "update_mask", example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\"]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "update_mask", example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\",\"promotion_id\"]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("update_mask")
   public JsonNullable<List<UpdateMaskFieldType>> getUpdateMask() {
     return updateMask;
@@ -183,9 +183,9 @@ public class CatalogsUpdateRetailItem {
       return false;
     }
     CatalogsUpdateRetailItem catalogsUpdateRetailItem = (CatalogsUpdateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsUpdateRetailItem.itemId) &&
+    return Objects.equals(this.attributes, catalogsUpdateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsUpdateRetailItem.itemId) &&
         Objects.equals(this.operation, catalogsUpdateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpdateRetailItem.attributes) &&
         equalsNullable(this.updateMask, catalogsUpdateRetailItem.updateMask);
   }
 
@@ -195,7 +195,7 @@ public class CatalogsUpdateRetailItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, hashCodeNullable(updateMask));
+    return Objects.hash(attributes, itemId, operation, hashCodeNullable(updateMask));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -209,9 +209,9 @@ public class CatalogsUpdateRetailItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateRetailItem {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

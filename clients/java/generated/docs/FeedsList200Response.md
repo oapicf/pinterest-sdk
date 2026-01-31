@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;CatalogsFeed&gt;**](CatalogsFeed.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;CatalogsFeed&gt;**](CatalogsFeed.md) |  |  |
 
 
 

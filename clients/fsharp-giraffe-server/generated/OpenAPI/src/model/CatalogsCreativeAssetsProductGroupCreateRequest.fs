@@ -14,10 +14,10 @@ module CatalogsCreativeAssetsProductGroupCreateRequest =
   //#endregion
 
   type CatalogsCreativeAssetsProductGroupCreateRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
-    Name : string;
     Description : string option;
     Filters : CatalogsCreativeAssetsProductGroupFilters;
-    CatalogId : string;
+    Name : string;
   }
   //#endregion

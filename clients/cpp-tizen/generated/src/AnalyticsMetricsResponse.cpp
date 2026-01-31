@@ -23,22 +23,22 @@ AnalyticsMetricsResponse::~AnalyticsMetricsResponse()
 void
 AnalyticsMetricsResponse::__init()
 {
-	//new std::map()std::map> summary_metrics;
 	//new std::list()std::list> daily_metrics;
+	//new std::map()std::map> summary_metrics;
 }
 
 void
 AnalyticsMetricsResponse::__cleanup()
 {
-	//if(summary_metrics != NULL) {
-	//summary_metrics.RemoveAll(true);
-	//delete summary_metrics;
-	//summary_metrics = NULL;
-	//}
 	//if(daily_metrics != NULL) {
 	//daily_metrics.RemoveAll(true);
 	//delete daily_metrics;
 	//daily_metrics = NULL;
+	//}
+	//if(summary_metrics != NULL) {
+	//summary_metrics.RemoveAll(true);
+	//delete summary_metrics;
+	//summary_metrics = NULL;
 	//}
 	//
 }
@@ -48,18 +48,6 @@ AnalyticsMetricsResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *summary_metricsKey = "summary_metrics";
-	node = json_object_get_member(pJsonObject, summary_metricsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			summary_metrics = new_map;
-		}
-		
-	}
 	const gchar *daily_metricsKey = "daily_metrics";
 	node = json_object_get_member(pJsonObject, daily_metricsKey);
 	if (node !=NULL) {
@@ -84,6 +72,18 @@ AnalyticsMetricsResponse::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *summary_metricsKey = "summary_metrics";
+	node = json_object_get_member(pJsonObject, summary_metricsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonObject* json_obj = json_node_get_object(node);
+			map<string,string> new_map;
+			json_object_foreach_member(json_obj,helper_func,&new_map);
+			summary_metrics = new_map;
+		}
+		
+	}
 }
 
 AnalyticsMetricsResponse::AnalyticsMetricsResponse(char* json)
@@ -96,25 +96,6 @@ AnalyticsMetricsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-
-
-	{
-		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getSummaryMetrics());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
-	}
-
-	const gchar *summary_metricsKey = "summary_metrics";
-	json_object_set_member(pJsonObject, summary_metricsKey, node);
 	if (isprimitive("AnalyticsDailyMetrics")) {
 		list<AnalyticsDailyMetrics> new_list = static_cast<list <AnalyticsDailyMetrics> > (getDailyMetrics());
 		node = converttoJson(&new_list, "AnalyticsDailyMetrics", "array");
@@ -140,24 +121,31 @@ AnalyticsMetricsResponse::toJson()
 	
 	const gchar *daily_metricsKey = "daily_metrics";
 	json_object_set_member(pJsonObject, daily_metricsKey, node);
+
+
+	{
+		JsonObject* json_obj;
+		map<string, string> new_list = static_cast<map <string, string> > (getSummaryMetrics());
+		json_obj = json_object_new();
+		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			string obj = (*it).first;
+			string obj2 = (*it).second;
+			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
+			json_object_set_member(json_obj, obj.c_str(), tempnode);
+		}
+	node = json_node_alloc();
+	json_node_init_object(node, json_obj);
+	json_object_unref(json_obj);
+	}
+
+	const gchar *summary_metricsKey = "summary_metrics";
+	json_object_set_member(pJsonObject, summary_metricsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::map<string, string>
-AnalyticsMetricsResponse::getSummaryMetrics()
-{
-	return summary_metrics;
-}
-
-void
-AnalyticsMetricsResponse::setSummaryMetrics(std::map <string, string> summary_metrics)
-{
-	this->summary_metrics = summary_metrics;
 }
 
 std::list<AnalyticsDailyMetrics>
@@ -170,6 +158,18 @@ void
 AnalyticsMetricsResponse::setDailyMetrics(std::list <AnalyticsDailyMetrics> daily_metrics)
 {
 	this->daily_metrics = daily_metrics;
+}
+
+std::map<string, string>
+AnalyticsMetricsResponse::getSummaryMetrics()
+{
+	return summary_metrics;
+}
+
+void
+AnalyticsMetricsResponse::setSummaryMetrics(std::map <string, string> summary_metrics)
+{
+	this->summary_metrics = summary_metrics;
 }
 
 

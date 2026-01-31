@@ -7,23 +7,10 @@ goog.provide('API.Client.CatalogsHotelFeedsUpdateRequest');
 API.Client.CatalogsHotelFeedsUpdateRequest = function() {}
 
 /**
- * @type {!API.Client.NullableCurrency}
+ * @type {!API.Client.CatalogsType}
  * @export
  */
-API.Client.CatalogsHotelFeedsUpdateRequest.prototype.defaultCurrency;
-
-/**
- * A human-friendly name associated to a given feed.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelFeedsUpdateRequest.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsHotelFeedsUpdateRequest.prototype.format;
+API.Client.CatalogsHotelFeedsUpdateRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsFeedCredentials}
@@ -32,11 +19,30 @@ API.Client.CatalogsHotelFeedsUpdateRequest.prototype.format;
 API.Client.CatalogsHotelFeedsUpdateRequest.prototype.credentials;
 
 /**
+ * @type {!API.Client.NullableCurrency}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsUpdateRequest.prototype.defaultCurrency;
+
+/**
+ * @type {!API.Client.CatalogsFormat}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsUpdateRequest.prototype.format;
+
+/**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelFeedsUpdateRequest.prototype.location;
+
+/**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsUpdateRequest.prototype.name;
 
 /**
  * @type {!API.Client.CatalogsFeedProcessingSchedule}
@@ -49,10 +55,4 @@ API.Client.CatalogsHotelFeedsUpdateRequest.prototype.preferredProcessingSchedule
  * @export
  */
 API.Client.CatalogsHotelFeedsUpdateRequest.prototype.status;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsHotelFeedsUpdateRequest.prototype.catalogType;
 

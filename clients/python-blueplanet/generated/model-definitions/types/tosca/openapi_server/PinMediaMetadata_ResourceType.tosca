@@ -1,0 +1,83 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ImageMetadata = openapi_server.resourceTypes.ImageMetadata
+  ImageSize = openapi_server.resourceTypes.ImageSize
+  VideoMetadataWithItemType = openapi_server.resourceTypes.VideoMetadataWithItemType
+}
+resourceTypes {
+
+  PinMediaMetadata {
+    title = PinMediaMetadata
+    description = PinMediaMetadata
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        images {
+          type = ImageSize
+          description = ""
+          optional = false
+        }
+        item_type {
+          type =  string
+          description = ""
+          optional = false
+        }
+        link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        title {
+          type =  string
+          description = ""
+          optional = false
+        }
+        cover_image_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        duration {
+          type =  
+          description = "Duration (in miliseconds). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        height {
+          type =  integer
+          description = "Height (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        video_url {
+          type =  string
+          description = "Video url (720p).  **Note:** This field is limited and not available to all apps."
+          optional = false
+        }
+        width {
+          type =  integer
+          description = "Width (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaMetadata {
+    title = PinMediaMetadata
+    description = PinMediaMetadata
+    implements = openapi_server.resourceTypes.PinMediaMetadata
+
+  }
+}

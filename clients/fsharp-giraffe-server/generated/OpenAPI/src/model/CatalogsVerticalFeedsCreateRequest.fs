@@ -14,7 +14,6 @@ open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
 open OpenAPI.Model.NullableCurrency
 open OpenAPI.Model.ProductAvailabilityType
-open OpenAPI.Model.string option
 
 module CatalogsVerticalFeedsCreateRequest =
 
@@ -22,17 +21,17 @@ module CatalogsVerticalFeedsCreateRequest =
 
 
   type CatalogsVerticalFeedsCreateRequest = {
-    DefaultCurrency : NullableCurrency;
-    Name : string;
-    Format : CatalogsFormat;
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
-    Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    CatalogId : string;
     CatalogType : CatalogsType;
-    DefaultCountry : Country;
+    Credentials : CatalogsFeedCredentials;
     DefaultAvailability : ProductAvailabilityType;
+    DefaultCountry : Country;
+    DefaultCurrency : NullableCurrency;
+    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
-    CatalogId : string option;
   }
   //#endregion

@@ -2,7 +2,7 @@
 Protected Class PinMediaSourceImagesURL
 
 	#tag Property, Flags = &h0
-		source_type As Xoson.O.OptionalString
+		index As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -10,12 +10,15 @@ Protected Class PinMediaSourceImagesURL
 		#tag Note
 			Array with image objects.
 		#tag EndNote
-		items() As OpenAPIClient.Models.PinMediaSourceImagesURLItemsInner
+		items() As OpenAPIClient.Models.PinMediaSourceImagesURLItem
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		index As Xoson.O.OptionalInteger
+		#tag Note
+			The source type of the media.
+		#tag EndNote
+		source_type As String
 	#tag EndProperty
 
 
@@ -73,19 +76,19 @@ Protected Class PinMediaSourceImagesURL
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="PinMediaSourceImagesURLItemsInner"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="index"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="PinMediaSourceImagesURLItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

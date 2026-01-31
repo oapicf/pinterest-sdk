@@ -16,4 +16,5 @@ public enum GetBusinessAssetTypeResponse: String, Codable, CaseIterable {
     case profile = "PROFILE"
     case assetGroup = "ASSET_GROUP"
     case conversionTag = "CONVERSION_TAG"
+    case catalog = "CATALOG"
 }

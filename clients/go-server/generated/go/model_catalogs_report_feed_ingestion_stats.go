@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -15,8 +15,6 @@ package openapi
 
 
 type CatalogsReportFeedIngestionStats struct {
-
-	ReportType string `json:"report_type,omitempty"`
 
 	// ID of the catalog entity.
 	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
@@ -32,6 +30,8 @@ type CatalogsReportFeedIngestionStats struct {
 
 	// Number of occurrences of the issue
 	Occurrences int32 `json:"occurrences,omitempty"`
+
+	ReportType string `json:"report_type,omitempty"`
 
 	// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 	Severity string `json:"severity,omitempty"`

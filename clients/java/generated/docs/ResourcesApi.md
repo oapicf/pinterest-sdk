@@ -39,6 +39,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     ResourcesApi apiInstance = new ResourcesApi(defaultClient);
     try {
       AdAccountsCountryResponse result = apiInstance.adAccountCountriesGet();
@@ -63,7 +67,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -103,6 +107,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     ResourcesApi apiInstance = new ResourcesApi(defaultClient);
     String reportType = "SYNC"; // String | Report type.
     try {
@@ -131,7 +139,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -171,6 +179,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     ResourcesApi apiInstance = new ResourcesApi(defaultClient);
     String interestId = "interestId_example"; // String | Unique identifier of an interest.
     try {
@@ -199,7 +211,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -218,7 +230,7 @@ public class Example {
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java
@@ -370,6 +382,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     ResourcesApi apiInstance = new ResourcesApi(defaultClient);
     String targetingType = "APPTYPE"; // String | Public targeting type.
     String clientId = "1094834"; // String | Client ID.
@@ -406,7 +422,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

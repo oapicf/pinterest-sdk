@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **String** |  | 
-**Url** | **String** |  | 
 **IsStandard** | **Boolean** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to $true]
+**SourceType** | **String** | The source type of the media. | 
+**Url** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaSourceImageURL = Initialize-PSOpenAPIToolsPinMediaSourceImageURL  -SourceType null `
- -Url null `
- -IsStandard null
+$PinMediaSourceImageURL = Initialize-PSOpenAPIToolsPinMediaSourceImageURL  -IsStandard null `
+ -SourceType null `
+ -Url null
 ```
 
 - Convert the resource to JSON

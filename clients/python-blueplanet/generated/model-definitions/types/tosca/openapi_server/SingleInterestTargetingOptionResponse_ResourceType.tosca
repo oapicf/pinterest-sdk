@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SingleInterestTargetingOptionResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SingleInterestTargetingOptionResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  SingleInterestTargetingOptionResponse {
+    title = SingleInterestTargetingOptionResponse
+    description = SingleInterestTargetingOptionResponse
+    derivedFrom = Root
+    properties {
+        child_interests {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        level {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SingleInterestTargetingOptionResponse {
+    title = SingleInterestTargetingOptionResponse
+    description = SingleInterestTargetingOptionResponse
+    implements = openapi_server.resourceTypes.SingleInterestTargetingOptionResponse
+
+  }
+}

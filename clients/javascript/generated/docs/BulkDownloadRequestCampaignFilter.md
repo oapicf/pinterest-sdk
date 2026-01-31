@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**startTime** | **String** | Unix UTC timestamp. | [optional] 
+**campaignStatus** | [**[CampaignSummaryStatus]**](CampaignSummaryStatus.md) |  | [optional] 
 **endTime** | **String** | Unix UTC timestamp. | [optional] 
 **name** | **String** | Campaign name | [optional] 
-**campaignStatus** | [**[CampaignSummaryStatus]**](CampaignSummaryStatus.md) |  | [optional] 
 **objectiveType** | [**[ObjectiveType]**](ObjectiveType.md) |  | [optional] 
+**startTime** | **String** | Unix UTC timestamp. | [optional] 
 
 

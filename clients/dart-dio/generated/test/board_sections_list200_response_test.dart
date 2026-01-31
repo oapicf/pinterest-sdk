@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BoardSectionsList200Response, () {
-    // Board sections
-    // BuiltList<BoardSection> items
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // Board sections
+    // BuiltList<BoardSection> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

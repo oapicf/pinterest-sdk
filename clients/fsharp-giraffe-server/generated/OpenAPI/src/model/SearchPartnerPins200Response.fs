@@ -11,7 +11,7 @@ module SearchPartnerPins200Response =
 
 
   type search_partner_pins_200_response = {
-    Items : SummaryPin[];
     Bookmark : string option;
+    Items : SummaryPin[];
   }
   //#endregion

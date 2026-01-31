@@ -80,7 +80,7 @@ Cancel membership/partnership invites and/or requests.
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **businessId** | `String`| Business id | |
+| **businessId** | `String`| Unique identifier of the requesting business. | |
 | **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | |
 
 
@@ -134,7 +134,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **businessId** | `String`| Business id | |
+| **businessId** | `String`| Unique identifier of the requesting business. | |
 | **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
 
 

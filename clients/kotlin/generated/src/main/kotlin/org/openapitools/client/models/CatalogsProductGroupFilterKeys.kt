@@ -18,11 +18,13 @@ package org.openapitools.client.models
 import org.openapitools.client.models.AvailabilityFilter
 import org.openapitools.client.models.BrandFilter
 import org.openapitools.client.models.CatalogsProductGroupCurrencyCriteria
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleGenderCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCriteria
+import org.openapitools.client.models.CatalogsProductGroupUint32Criteria
 import org.openapitools.client.models.ConditionFilter
 import org.openapitools.client.models.CurrencyFilter
 import org.openapitools.client.models.CustomLabel0Filter
@@ -30,6 +32,11 @@ import org.openapitools.client.models.CustomLabel1Filter
 import org.openapitools.client.models.CustomLabel2Filter
 import org.openapitools.client.models.CustomLabel3Filter
 import org.openapitools.client.models.CustomLabel4Filter
+import org.openapitools.client.models.CustomNumber0Filter
+import org.openapitools.client.models.CustomNumber1Filter
+import org.openapitools.client.models.CustomNumber2Filter
+import org.openapitools.client.models.CustomNumber3Filter
+import org.openapitools.client.models.CustomNumber4Filter
 import org.openapitools.client.models.GenderFilter
 import org.openapitools.client.models.GoogleProductCategory0Filter
 import org.openapitools.client.models.GoogleProductCategory1Filter
@@ -49,6 +56,7 @@ import org.openapitools.client.models.ProductType1Filter
 import org.openapitools.client.models.ProductType2Filter
 import org.openapitools.client.models.ProductType3Filter
 import org.openapitools.client.models.ProductType4Filter
+import org.openapitools.client.models.TitleKeywordsFilter
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -84,6 +92,12 @@ import com.squareup.moshi.JsonClass
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param PRODUCT_GROUP 
+ * @param CUSTOM_NUMBER_0 
+ * @param CUSTOM_NUMBER_1 
+ * @param CUSTOM_NUMBER_2 
+ * @param CUSTOM_NUMBER_3 
+ * @param CUSTOM_NUMBER_4 
+ * @param TITLE_KEYWORDS 
  */
 
 
@@ -111,19 +125,19 @@ data class CatalogsProductGroupFilterKeys (
     val CONDITION: CatalogsProductGroupMultipleStringCriteria,
 
     @Json(name = "CUSTOM_LABEL_0")
-    val CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_1")
-    val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_2")
-    val CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_3")
-    val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_4")
-    val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "ITEM_GROUP_ID")
     val ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria,
@@ -171,7 +185,25 @@ data class CatalogsProductGroupFilterKeys (
     val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 
     @Json(name = "PRODUCT_GROUP")
-    val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
+    val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria,
+
+    @Json(name = "CUSTOM_NUMBER_0")
+    val CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria,
+
+    @Json(name = "CUSTOM_NUMBER_1")
+    val CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria,
+
+    @Json(name = "CUSTOM_NUMBER_2")
+    val CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria,
+
+    @Json(name = "CUSTOM_NUMBER_3")
+    val CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria,
+
+    @Json(name = "CUSTOM_NUMBER_4")
+    val CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria,
+
+    @Json(name = "TITLE_KEYWORDS")
+    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 
 ) {
 

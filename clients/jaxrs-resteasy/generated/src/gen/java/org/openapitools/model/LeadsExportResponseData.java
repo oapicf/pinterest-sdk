@@ -13,11 +13,23 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData   {
   
-  private LeadsExportStatus exportStatus;
   private String downloadUrl;
+  private LeadsExportStatus exportStatus;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("download_url")
+  public String getDownloadUrl() {
+    return downloadUrl;
+  }
+  public void setDownloadUrl(String downloadUrl) {
+    this.downloadUrl = downloadUrl;
+  }
 
   /**
    **/
@@ -32,18 +44,6 @@ public class LeadsExportResponseData   {
     this.exportStatus = exportStatus;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("download_url")
-  public String getDownloadUrl() {
-    return downloadUrl;
-  }
-  public void setDownloadUrl(String downloadUrl) {
-    this.downloadUrl = downloadUrl;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -54,13 +54,13 @@ public class LeadsExportResponseData   {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus) &&
-        Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl);
+    return Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, downloadUrl);
+    return Objects.hash(downloadUrl, exportStatus);
   }
 
   @Override
@@ -68,8 +68,8 @@ public class LeadsExportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
     
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

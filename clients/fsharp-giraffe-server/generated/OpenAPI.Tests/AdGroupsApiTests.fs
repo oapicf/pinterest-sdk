@@ -24,13 +24,14 @@ open OpenAPI.Model.AdGroupResponse
 open OpenAPI.Model.AdGroupUpdateRequest
 open OpenAPI.Model.AdGroupsAnalyticsResponseInner
 open OpenAPI.Model.AdGroupsList200Response
-open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.AdsAnalyticsAdGroupTargetingType
 open OpenAPI.Model.BidFloor
 open OpenAPI.Model.BidFloorRequest
 open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 
 module AdGroupsApiHandlerTests =
 
@@ -46,7 +47,7 @@ module AdGroupsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adGroupIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adGroupIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&aggregateReportRows=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -63,7 +64,7 @@ module AdGroupsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adGroupIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adGroupIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&aggregateReportRows=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -80,7 +81,7 @@ module AdGroupsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adGroupIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adGroupIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&aggregateReportRows=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -358,7 +359,7 @@ module AdGroupsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics".Replace("adAccountId", "ADDME") + "?adGroupIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics".Replace("adAccountId", "ADDME") + "?adGroupIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -375,7 +376,7 @@ module AdGroupsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics".Replace("adAccountId", "ADDME") + "?adGroupIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics".Replace("adAccountId", "ADDME") + "?adGroupIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

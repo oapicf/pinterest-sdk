@@ -6,6 +6,12 @@ goog.provide('API.Client.CustomerListRequest');
 API.Client.CustomerListRequest = function() {}
 
 /**
+ * @type {!API.Client.UserListType}
+ * @export
+ */
+API.Client.CustomerListRequest.prototype.listType;
+
+/**
  * Customer list name.
  * @type {!string}
  * @export
@@ -18,17 +24,4 @@ API.Client.CustomerListRequest.prototype.name;
  * @export
  */
 API.Client.CustomerListRequest.prototype.records;
-
-/**
- * @type {!API.Client.UserListType}
- * @export
- */
-API.Client.CustomerListRequest.prototype.listType;
-
-/**
- * Customer list errors.
- * @type {!API.Client.Object}
- * @export
- */
-API.Client.CustomerListRequest.prototype.exceptions;
 

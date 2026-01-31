@@ -16,57 +16,21 @@ public class CreateMMMReportResponseData  {
   
   @ApiModelProperty(value = "")
 
+  private String message;
+
+  @ApiModelProperty(value = "")
+
   @Valid
 
   private BulkReportingJobStatus reportStatus;
 
-  @ApiModelProperty(value = "")
-
-  private String token;
-
-  @ApiModelProperty(value = "")
-
-  private String message;
-
   @ApiModelProperty(example = "success", value = "")
 
   private String status;
- /**
-   * Get reportStatus
-   * @return reportStatus
-  **/
-  @JsonProperty("report_status")
-  public BulkReportingJobStatus getReportStatus() {
-    return reportStatus;
-  }
 
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
-    this.reportStatus = reportStatus;
-  }
+  @ApiModelProperty(value = "")
 
-  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
-    this.reportStatus = reportStatus;
-    return this;
-  }
-
- /**
-   * Get token
-   * @return token
-  **/
-  @JsonProperty("token")
-  public String getToken() {
-    return token;
-  }
-
-  public void setToken(String token) {
-    this.token = token;
-  }
-
-  public CreateMMMReportResponseData token(String token) {
-    this.token = token;
-    return this;
-  }
-
+  private String token;
  /**
    * Get message
    * @return message
@@ -82,6 +46,24 @@ public class CreateMMMReportResponseData  {
 
   public CreateMMMReportResponseData message(String message) {
     this.message = message;
+    return this;
+  }
+
+ /**
+   * Get reportStatus
+   * @return reportStatus
+  **/
+  @JsonProperty("report_status")
+  public BulkReportingJobStatus getReportStatus() {
+    return reportStatus;
+  }
+
+  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+    this.reportStatus = reportStatus;
+  }
+
+  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
+    this.reportStatus = reportStatus;
     return this;
   }
 
@@ -103,6 +85,24 @@ public class CreateMMMReportResponseData  {
     return this;
   }
 
+ /**
+   * Get token
+   * @return token
+  **/
+  @JsonProperty("token")
+  public String getToken() {
+    return token;
+  }
+
+  public void setToken(String token) {
+    this.token = token;
+  }
+
+  public CreateMMMReportResponseData token(String token) {
+    this.token = token;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -112,15 +112,15 @@ public class CreateMMMReportResponseData  {
       return false;
     }
     CreateMMMReportResponseData createMMMReportResponseData = (CreateMMMReportResponseData) o;
-    return Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
-        Objects.equals(this.token, createMMMReportResponseData.token) &&
-        Objects.equals(this.message, createMMMReportResponseData.message) &&
-        Objects.equals(this.status, createMMMReportResponseData.status);
+    return Objects.equals(this.message, createMMMReportResponseData.message) &&
+        Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
+        Objects.equals(this.status, createMMMReportResponseData.status) &&
+        Objects.equals(this.token, createMMMReportResponseData.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, message, status);
+    return Objects.hash(message, reportStatus, status, token);
   }
 
   @Override
@@ -128,10 +128,10 @@ public class CreateMMMReportResponseData  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportResponseData {\n");
     
-    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("}");
     return sb.toString();
   }

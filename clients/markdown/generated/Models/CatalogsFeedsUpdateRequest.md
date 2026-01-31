@@ -3,12 +3,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to null] |
 | **default\_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to null] |
 | **default\_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null] |
-| **name** | **String** | A human-friendly name associated to a given feed. | [optional] [default to null] |
 | **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] [default to null] |
-| **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to null] |
 | **location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] [default to null] |
+| **name** | **String** | A human-friendly name associated to a given feed. | [optional] [default to null] |
 | **preferred\_processing\_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] [default to null] |
 | **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to null] |
 

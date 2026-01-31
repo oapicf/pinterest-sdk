@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,9 +24,9 @@ type CreativeAssetsProcessingRecord struct {
 	CreativeAssetsId *string `json:"creative_assets_id,omitempty"`
 	// Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	Errors []ItemValidationEvent `json:"errors,omitempty"`
+	Status *ItemProcessingStatus `json:"status,omitempty"`
 	// Array with the validation warnings for the item processing record
 	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
-	Status *ItemProcessingStatus `json:"status,omitempty"`
 }
 
 // NewCreativeAssetsProcessingRecord instantiates a new CreativeAssetsProcessingRecord object
@@ -110,38 +110,6 @@ func (o *CreativeAssetsProcessingRecord) SetErrors(v []ItemValidationEvent) {
 	o.Errors = v
 }
 
-// GetWarnings returns the Warnings field value if set, zero value otherwise.
-func (o *CreativeAssetsProcessingRecord) GetWarnings() []ItemValidationEvent {
-	if o == nil || IsNil(o.Warnings) {
-		var ret []ItemValidationEvent
-		return ret
-	}
-	return o.Warnings
-}
-
-// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreativeAssetsProcessingRecord) GetWarningsOk() ([]ItemValidationEvent, bool) {
-	if o == nil || IsNil(o.Warnings) {
-		return nil, false
-	}
-	return o.Warnings, true
-}
-
-// HasWarnings returns a boolean if a field has been set.
-func (o *CreativeAssetsProcessingRecord) HasWarnings() bool {
-	if o != nil && !IsNil(o.Warnings) {
-		return true
-	}
-
-	return false
-}
-
-// SetWarnings gets a reference to the given []ItemValidationEvent and assigns it to the Warnings field.
-func (o *CreativeAssetsProcessingRecord) SetWarnings(v []ItemValidationEvent) {
-	o.Warnings = v
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CreativeAssetsProcessingRecord) GetStatus() ItemProcessingStatus {
 	if o == nil || IsNil(o.Status) {
@@ -174,6 +142,38 @@ func (o *CreativeAssetsProcessingRecord) SetStatus(v ItemProcessingStatus) {
 	o.Status = &v
 }
 
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *CreativeAssetsProcessingRecord) GetWarnings() []ItemValidationEvent {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []ItemValidationEvent
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreativeAssetsProcessingRecord) GetWarningsOk() ([]ItemValidationEvent, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *CreativeAssetsProcessingRecord) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []ItemValidationEvent and assigns it to the Warnings field.
+func (o *CreativeAssetsProcessingRecord) SetWarnings(v []ItemValidationEvent) {
+	o.Warnings = v
+}
+
 func (o CreativeAssetsProcessingRecord) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -190,11 +190,11 @@ func (o CreativeAssetsProcessingRecord) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !IsNil(o.Warnings) {
-		toSerialize["warnings"] = o.Warnings
-	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
 	}
 	return toSerialize, nil
 }

@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvancedAuctionItemsSubmitDeleteRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvancedAuctionItemsSubmitDeleteRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdvancedAuctionOperationError = openapi_server.resourceTypes.AdvancedAuctionOperationError
+  Country = openapi_server.resourceTypes.Country
+  Language = openapi_server.resourceTypes.Language
+}
+resourceTypes {
+
+  AdvancedAuctionItemsSubmitDeleteRecord {
+    title = AdvancedAuctionItemsSubmitDeleteRecord
+    description = AdvancedAuctionItemsSubmitDeleteRecord
+    derivedFrom = Root
+    properties {
+        country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The catalog retail item id in the merchant namespace"
+          optional = true
+        }
+        language {
+          type = Language
+          description = ""
+          optional = true
+        }
+        errors {
+          type = array
+          items.type = AdvancedAuctionOperationError
+          description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvancedAuctionItemsSubmitDeleteRecord {
+    title = AdvancedAuctionItemsSubmitDeleteRecord
+    description = AdvancedAuctionItemsSubmitDeleteRecord
+    implements = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitDeleteRecord
+
+  }
+}

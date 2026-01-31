@@ -27,13 +27,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ad_accounts_audiences_shared_accounts_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsAudiencesSharedAccountsList200Response {
+
+  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
   private List<@Valid SharedAudienceAccount> items = new ArrayList<>();
-
-  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   public AdAccountsAudiencesSharedAccountsList200Response() {
     super();
@@ -44,6 +44,26 @@ public class AdAccountsAudiencesSharedAccountsList200Response {
    */
   public AdAccountsAudiencesSharedAccountsList200Response(List<@Valid SharedAudienceAccount> items) {
     this.items = items;
+  }
+
+  public AdAccountsAudiencesSharedAccountsList200Response bookmark(String bookmark) {
+    this.bookmark = JsonNullable.of(bookmark);
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  
+  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bookmark")
+  public JsonNullable<String> getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(JsonNullable<String> bookmark) {
+    this.bookmark = bookmark;
   }
 
   public AdAccountsAudiencesSharedAccountsList200Response items(List<@Valid SharedAudienceAccount> items) {
@@ -74,26 +94,6 @@ public class AdAccountsAudiencesSharedAccountsList200Response {
     this.items = items;
   }
 
-  public AdAccountsAudiencesSharedAccountsList200Response bookmark(String bookmark) {
-    this.bookmark = JsonNullable.of(bookmark);
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  
-  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bookmark")
-  public JsonNullable<String> getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(JsonNullable<String> bookmark) {
-    this.bookmark = bookmark;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,8 +103,8 @@ public class AdAccountsAudiencesSharedAccountsList200Response {
       return false;
     }
     AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList200Response = (AdAccountsAudiencesSharedAccountsList200Response) o;
-    return Objects.equals(this.items, adAccountsAudiencesSharedAccountsList200Response.items) &&
-        equalsNullable(this.bookmark, adAccountsAudiencesSharedAccountsList200Response.bookmark);
+    return equalsNullable(this.bookmark, adAccountsAudiencesSharedAccountsList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsAudiencesSharedAccountsList200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -113,7 +113,7 @@ public class AdAccountsAudiencesSharedAccountsList200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -127,8 +127,8 @@ public class AdAccountsAudiencesSharedAccountsList200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsAudiencesSharedAccountsList200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

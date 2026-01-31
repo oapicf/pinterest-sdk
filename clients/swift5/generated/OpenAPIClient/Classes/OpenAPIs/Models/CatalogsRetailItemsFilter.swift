@@ -15,32 +15,32 @@ public struct CatalogsRetailItemsFilter: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    public static let itemIdsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogType
-    public var itemIds: [String]
+    public static let itemIdsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     /** Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
     public var catalogId: String?
+    public var catalogType: CatalogType
+    public var itemIds: [String]
 
-    public init(catalogType: CatalogType, itemIds: [String], catalogId: String? = nil) {
+    public init(catalogId: String? = nil, catalogType: CatalogType, itemIds: [String]) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
         self.itemIds = itemIds
-        self.catalogId = catalogId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
         case itemIds = "item_ids"
-        case catalogId = "catalog_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encode(itemIds, forKey: .itemIds)
-        try container.encodeIfPresent(catalogId, forKey: .catalogId)
     }
 }
 

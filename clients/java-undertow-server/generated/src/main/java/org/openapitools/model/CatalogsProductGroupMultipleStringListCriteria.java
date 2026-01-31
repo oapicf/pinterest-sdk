@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,28 +23,11 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleStringListCriteria   {
   
-  private List<List<String>> values = new ArrayList<>();
   private Boolean negated = false;
-
-  /**
-   */
-  public CatalogsProductGroupMultipleStringListCriteria values(List<List<String>> values) {
-    this.values = values;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("values")
-  public List<List<String>> getValues() {
-    return values;
-  }
-  public void setValues(List<List<String>> values) {
-    this.values = values;
-  }
+  private List<List<String>> values = new ArrayList<>();
 
   /**
    */
@@ -63,6 +46,23 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
     this.negated = negated;
   }
 
+  /**
+   */
+  public CatalogsProductGroupMultipleStringListCriteria values(List<List<String>> values) {
+    this.values = values;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("values")
+  public List<List<String>> getValues() {
+    return values;
+  }
+  public void setValues(List<List<String>> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -73,13 +73,13 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleStringListCriteria catalogsProductGroupMultipleStringListCriteria = (CatalogsProductGroupMultipleStringListCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleStringListCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleStringListCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleStringListCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleStringListCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -87,8 +87,8 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleStringListCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

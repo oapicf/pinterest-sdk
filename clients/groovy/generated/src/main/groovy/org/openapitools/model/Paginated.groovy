@@ -10,7 +10,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Canonical
 class Paginated {
     
-    List<Object> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Object> items = new ArrayList<>()
 }

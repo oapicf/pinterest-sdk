@@ -72,6 +72,7 @@ feature -- Test routines
             l_response: BUSINESS_ASSET_MEMBERS_GET_200_RESPONSE
             l_business_id: STRING_32
             l_asset_id: STRING_32
+            l_fetch_system_users: BOOLEAN
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
             l_start_index: INTEGER_32
@@ -80,7 +81,7 @@ feature -- Test routines
             -- l_business_id
             -- l_asset_id
 
-            -- l_response := api.business_asset_members_get(l_business_id, l_asset_id, l_bookmark, l_page_size, l_start_index)
+            -- l_response := api.business_asset_members_get(l_business_id, l_asset_id, l_fetch_system_users, l_bookmark, l_page_size, l_start_index)
             assert ("not_implemented", False)
         end
 

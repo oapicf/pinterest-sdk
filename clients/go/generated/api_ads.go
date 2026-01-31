@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -48,6 +48,8 @@ AdPreviewsCreate Create ad preview with pin or image
 Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/>
 If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href="https://help.pinterest.com/en/business/article/promoted-pins-overview" target="_blank">Ads Overview</a>.) <p/>
 You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+
+Creating ad preview from catalog product group is currently in BETA and is not available to all users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -178,7 +180,8 @@ type ApiAdTargetingAnalyticsGetRequest struct {
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
-	attributionTypes *ConversionReportAttributionType
+	attributionTypes *[]ConversionReportAttributionType
+	reportingTimezone *ReportingTimeZone
 }
 
 // List of Ad Ids to use to filter the results.
@@ -223,7 +226,7 @@ func (r ApiAdTargetingAnalyticsGetRequest) ClickWindowDays(clickWindowDays int32
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiAdTargetingAnalyticsGetRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdTargetingAnalyticsGetRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -242,8 +245,14 @@ func (r ApiAdTargetingAnalyticsGetRequest) ConversionReportTime(conversionReport
 }
 
 // List of types of attribution for the conversion report
-func (r ApiAdTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes ConversionReportAttributionType) ApiAdTargetingAnalyticsGetRequest {
+func (r ApiAdTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes []ConversionReportAttributionType) ApiAdTargetingAnalyticsGetRequest {
 	r.attributionTypes = &attributionTypes
+	return r
+}
+
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiAdTargetingAnalyticsGetRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiAdTargetingAnalyticsGetRequest {
+	r.reportingTimezone = &reportingTimezone
 	return r
 }
 
@@ -260,8 +269,8 @@ the response will include the requested metric information (e.g. SPEND_IN_DOLLAR
 - The token's user_account must either be the Owner of the specified ad account, or have one
 of the necessary roles granted to them via
 <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -305,8 +314,8 @@ func (a *AdsAPIService) AdTargetingAnalyticsGetExecute(r ApiAdTargetingAnalytics
 	if len(*r.adIds) < 1 {
 		return localVarReturnValue, nil, reportError("adIds must have at least 1 elements")
 	}
-	if len(*r.adIds) > 100 {
-		return localVarReturnValue, nil, reportError("adIds must have less than 100 elements")
+	if len(*r.adIds) > 250 {
+		return localVarReturnValue, nil, reportError("adIds must have less than 250 elements")
 	}
 	if r.startDate == nil {
 		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
@@ -375,7 +384,10 @@ func (a *AdsAPIService) AdTargetingAnalyticsGetExecute(r ApiAdTargetingAnalytics
         r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "csv")
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -454,6 +466,7 @@ type ApiAdsAnalyticsRequest struct {
 	conversionReportTime *string
 	pinIds *[]string
 	campaignIds *[]string
+	reportingTimezone *ReportingTimeZone
 }
 
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -492,7 +505,7 @@ func (r ApiAdsAnalyticsRequest) ClickWindowDays(clickWindowDays int32) ApiAdsAna
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiAdsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdsAnalyticsRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -522,6 +535,12 @@ func (r ApiAdsAnalyticsRequest) CampaignIds(campaignIds []string) ApiAdsAnalytic
 	return r
 }
 
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiAdsAnalyticsRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiAdsAnalyticsRequest {
+	r.reportingTimezone = &reportingTimezone
+	return r
+}
+
 func (r ApiAdsAnalyticsRequest) Execute() ([]AdsAnalyticsResponseInner, *http.Response, error) {
 	return r.ApiService.AdsAnalyticsExecute(r)
 }
@@ -532,8 +551,8 @@ AdsAnalytics Get ad analytics
 Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
 - The request must contain either ad_ids or both campaign_ids and pin_ids.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -649,6 +668,9 @@ func (a *AdsAPIService) AdsAnalyticsExecute(r ApiAdsAnalyticsRequest) ([]AdsAnal
 			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
 		}
 	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -742,7 +764,7 @@ func (r ApiAdsCreateRequest) Execute() (*AdArrayResponse, *http.Response, error)
 /*
 AdsCreate Create ads
 
-Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.

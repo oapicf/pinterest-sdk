@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`width` | number
 `height` | number
 `url` | string
+`width` | number
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { ImageDetails } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "width": null,
   "height": null,
   "url": null,
+  "width": null,
 } satisfies ImageDetails
 
 console.log(example)

@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailProductGroupProductCounts"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailProductGroupProductCounts"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsRetailProductGroupProductCounts {
+    title = CatalogsRetailProductGroupProductCounts
+    description = CatalogsRetailProductGroupProductCounts
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["RETAIL"]
+          optional = true
+        }
+        in_stock {
+          type =  
+          description = ""
+          optional = true
+        }
+        out_of_stock {
+          type =  
+          description = ""
+          optional = true
+        }
+        preorder {
+          type =  
+          description = ""
+          optional = true
+        }
+        total {
+          type =  
+          description = ""
+          optional = true
+        }
+        videos {
+          type =  
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailProductGroupProductCounts {
+    title = CatalogsRetailProductGroupProductCounts
+    description = CatalogsRetailProductGroupProductCounts
+    implements = openapi_server.resourceTypes.CatalogsRetailProductGroupProductCounts
+
+  }
+}

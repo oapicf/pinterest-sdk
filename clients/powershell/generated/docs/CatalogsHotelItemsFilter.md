@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 **CatalogType** | **String** |  | 
 **HotelIds** | **String[]** |  | 
-**CatalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelItemsFilter = Initialize-PSOpenAPIToolsCatalogsHotelItemsFilter  -CatalogType null `
- -HotelIds null `
- -CatalogId null
+$CatalogsHotelItemsFilter = Initialize-PSOpenAPIToolsCatalogsHotelItemsFilter  -CatalogId null `
+ -CatalogType null `
+ -HotelIds null
 ```
 
 - Convert the resource to JSON

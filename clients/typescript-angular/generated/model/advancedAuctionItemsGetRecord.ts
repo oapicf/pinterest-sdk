@@ -15,11 +15,11 @@ import { Country } from './country';
  * Object uniquely identifying a retail catalog item
  */
 export interface AdvancedAuctionItemsGetRecord { 
+    country: Country;
     /**
      * The catalog retail item id in the merchant namespace
      */
     item_id: string;
-    country: Country;
     language: Language;
 }
 export namespace AdvancedAuctionItemsGetRecord {

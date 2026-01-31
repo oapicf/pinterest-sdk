@@ -7,14 +7,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ImageMetadataImages } from './imageMetadataImages';
+import { ImageSize } from './imageSize';
 
 
 export interface ImageMetadata { 
-    item_type?: string;
-    title?: string | null;
     description?: string | null;
+    images?: ImageSize;
+    item_type?: string;
     link?: string | null;
-    images?: ImageMetadataImages;
+    title?: string | null;
 }
 

@@ -7,7 +7,7 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * Refers ads entity type
+ * Refers ads entity type. Schedule enum is only applicable to beta users
  */
 case class BulkEntityType()
 

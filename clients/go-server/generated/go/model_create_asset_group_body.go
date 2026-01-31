@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type CreateAssetGroupBody struct {
 
-	// Asset Group name
-	AssetGroupName string `json:"asset_group_name"`
-
 	// Asset group description
 	AssetGroupDescription string `json:"asset_group_description"`
+
+	// Asset Group name
+	AssetGroupName string `json:"asset_group_name"`
 
 	// Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
 	AssetGroupTypes []AssetGroupType `json:"asset_group_types"`
@@ -29,8 +29,8 @@ type CreateAssetGroupBody struct {
 // AssertCreateAssetGroupBodyRequired checks if the required fields are not zero-ed
 func AssertCreateAssetGroupBodyRequired(obj CreateAssetGroupBody) error {
 	elements := map[string]interface{}{
-		"asset_group_name": obj.AssetGroupName,
 		"asset_group_description": obj.AssetGroupDescription,
+		"asset_group_name": obj.AssetGroupName,
 		"asset_group_types": obj.AssetGroupTypes,
 	}
 	for name, el := range elements {

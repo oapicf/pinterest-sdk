@@ -3,17 +3,19 @@ package org.openapitools.client.model
 
 
 case class BulkUpsertRequestUpdate (
-    _campaigns: Option[List[CampaignUpdateRequest]],
     _adGroups: Option[List[AdGroupUpdateRequest]],
     _ads: Option[List[AdUpdateRequest]],
-    _productGroups: Option[List[ProductGroupPromotionUpdateRequest]],
-    _keywords: Option[List[KeywordUpdate]]
+    _campaigns: Option[List[CampaignUpdateRequest]],
+    _catalogProductGroups: Option[List[CatalogsProductGroupsUpdateRequest]],
+    _keywords: Option[List[KeywordUpdate]],
+    _labels: Option[List[LabelBulkUpdateRequest]],
+    _productGroups: Option[List[ProductGroupPromotionUpdateRequest]]
 )
 object BulkUpsertRequestUpdate {
-    def toStringBody(var_campaigns: Object, var_adGroups: Object, var_ads: Object, var_productGroups: Object, var_keywords: Object) =
+    def toStringBody(var_adGroups: Object, var_ads: Object, var_campaigns: Object, var_catalogProductGroups: Object, var_keywords: Object, var_labels: Object, var_productGroups: Object) =
         s"""
         | {
-        | "campaigns":$var_campaigns,"adGroups":$var_adGroups,"ads":$var_ads,"productGroups":$var_productGroups,"keywords":$var_keywords
+        | "adGroups":$var_adGroups,"ads":$var_ads,"campaigns":$var_campaigns,"catalogProductGroups":$var_catalogProductGroups,"keywords":$var_keywords,"labels":$var_labels,"productGroups":$var_productGroups
         | }
         """.stripMargin
 }

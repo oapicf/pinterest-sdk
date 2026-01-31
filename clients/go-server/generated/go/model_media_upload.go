@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,19 +18,30 @@ package openapi
 type MediaUpload struct {
 
 	// Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-	MediaId string `json:"media_id,omitempty"`
+	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
 
-	MediaType MediaUploadType `json:"media_type,omitempty"`
+	MediaType MediaUploadType `json:"media_type"`
+
+	// The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+	UploadParameters MediaUploadParameters `json:"upload_parameters,omitempty"`
 
 	// The URL where you will POST your media file.
 	UploadUrl string `json:"upload_url,omitempty"`
-
-	UploadParameters MediaUploadAllOfUploadParameters `json:"upload_parameters,omitempty"`
 }
 
 // AssertMediaUploadRequired checks if the required fields are not zero-ed
 func AssertMediaUploadRequired(obj MediaUpload) error {
-	if err := AssertMediaUploadAllOfUploadParametersRequired(obj.UploadParameters); err != nil {
+	elements := map[string]interface{}{
+		"media_id": obj.MediaId,
+		"media_type": obj.MediaType,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
+	if err := AssertMediaUploadParametersRequired(obj.UploadParameters); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +49,7 @@ func AssertMediaUploadRequired(obj MediaUpload) error {
 
 // AssertMediaUploadConstraints checks if the values respects the defined constraints
 func AssertMediaUploadConstraints(obj MediaUpload) error {
-	if err := AssertMediaUploadAllOfUploadParametersConstraints(obj.UploadParameters); err != nil {
+	if err := AssertMediaUploadParametersConstraints(obj.UploadParameters); err != nil {
 		return err
 	}
 	return nil

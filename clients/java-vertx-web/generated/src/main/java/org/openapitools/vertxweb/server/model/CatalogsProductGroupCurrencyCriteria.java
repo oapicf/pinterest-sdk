@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.NonNullableCatalogsCurrency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupCurrencyCriteria   {
   
-  private NonNullableCatalogsCurrency values;
   private Boolean negated = false;
+  private NonNullableCatalogsCurrency values;
 
   public CatalogsProductGroupCurrencyCriteria () {
 
   }
 
-  public CatalogsProductGroupCurrencyCriteria (NonNullableCatalogsCurrency values, Boolean negated) {
-    this.values = values;
+  public CatalogsProductGroupCurrencyCriteria (Boolean negated, NonNullableCatalogsCurrency values) {
     this.negated = negated;
-  }
-
-    
-  @JsonProperty("values")
-  public NonNullableCatalogsCurrency getValues() {
-    return values;
-  }
-  public void setValues(NonNullableCatalogsCurrency values) {
     this.values = values;
   }
 
@@ -42,6 +33,15 @@ public class CatalogsProductGroupCurrencyCriteria   {
     this.negated = negated;
   }
 
+    
+  @JsonProperty("values")
+  public NonNullableCatalogsCurrency getValues() {
+    return values;
+  }
+  public void setValues(NonNullableCatalogsCurrency values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class CatalogsProductGroupCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupCurrencyCriteria catalogsProductGroupCurrencyCriteria = (CatalogsProductGroupCurrencyCriteria) o;
-    return Objects.equals(values, catalogsProductGroupCurrencyCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupCurrencyCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupCurrencyCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupCurrencyCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class CatalogsProductGroupCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCurrencyCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

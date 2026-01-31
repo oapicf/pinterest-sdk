@@ -9,9 +9,9 @@ Request object to discontinue catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **Country** |  | 
+**items** | [**Seq&lt;ItemDeleteDiscontinuedBatchRecord&gt;**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 **language** | [**Language**](#Language) | We recommend using the CatalogsLocale values. | 
 **operation** | **BatchOperation** |  | 
-**items** | [**Seq&lt;ItemDeleteDiscontinuedBatchRecord&gt;**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 
 
 ## Enum: Language

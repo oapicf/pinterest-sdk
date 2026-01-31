@@ -6,11 +6,11 @@ Request object for updating a feed.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **CatalogsType** |  | 
-**DefaultCurrency** | **NullableCurrency** |  | [optional] 
-**Name** | **string** | A human-friendly name associated to a given feed. | [optional] 
-**Format** | **CatalogsFormat** |  | [optional] 
 **Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultCurrency** | **NullableCurrency** |  | [optional] 
+**Format** | **CatalogsFormat** |  | [optional] 
 **Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] 
+**Name** | **string** | A human-friendly name associated to a given feed. | [optional] 
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | **CatalogsStatus** |  | [optional] 
 

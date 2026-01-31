@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`status` | string
 `errorMessage` | string
+`status` | string
 `warningMessage` | string
 
 ## Example
@@ -17,8 +17,8 @@ import type { ConversionApiResponseEventsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "status": processed,
   "errorMessage": null,
+  "status": processed,
   "warningMessage": null,
 } satisfies ConversionApiResponseEventsInner
 

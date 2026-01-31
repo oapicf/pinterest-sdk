@@ -20,6 +20,82 @@ public class BusinessAccessRelationshipsApi extends RouteBuilder {
         
 
         /**
+        POST /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts : Create a Brand Account
+        **/
+        rest()
+            .securityDefinitions()
+                .oauth2("pinterest_oauth2")
+                    .flow("accessCode")
+                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
+                    .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("biz_access:read","See business access data")
+                        .withScope("biz_access:write","Create, update, or delete business access data")
+                
+            .endSecurityDefinition()
+            .post("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts")
+                .description("Create a Brand Account")
+                .id("brandAccountsCreateApi")
+                .produces("application/json")
+                .outType(BrandAccountsCreate200Response.class)
+                .consumes("application/json")
+                .type(BrandAccountsCreateRequest.class)
+                
+                .param()
+                    .name("businessHierarchyId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("business hierarchy node id")
+                .endParam()
+                .param()
+                    .name("brandAccountsCreateRequest")
+                    .type(RestParamType.body)
+                    .required(true)
+                .endParam()
+                .to("direct:brandAccountsCreate");
+        
+
+        /**
+        PATCH /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} : Update a Brand Account
+        **/
+        rest()
+            .securityDefinitions()
+                .oauth2("pinterest_oauth2")
+                    .flow("accessCode")
+                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
+                    .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("biz_access:read","See business access data")
+                        .withScope("biz_access:write","Create, update, or delete business access data")
+                
+            .endSecurityDefinition()
+            .patch("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}")
+                .description("Update a Brand Account")
+                .id("brandAccountsUpdateApi")
+                .produces("application/json")
+                .outType(BrandAccountsCreate200Response.class)
+                .consumes("application/json")
+                .type(BrandAccountsUpdateRequest.class)
+                
+                .param()
+                    .name("businessHierarchyId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("business hierarchy node id")
+                .endParam()
+                .param()
+                    .name("brandAccountId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("Unique identifier of a brand account.")
+                .endParam()
+                .param()
+                    .name("brandAccountsUpdateRequest")
+                    .type(RestParamType.body)
+                    .required(true)
+                .endParam()
+                .to("direct:brandAccountsUpdate");
+        
+
+        /**
         DELETE /businesses/{business_id}/members : Terminate business memberships
         **/
         rest()
@@ -146,6 +222,12 @@ public class BusinessAccessRelationshipsApi extends RouteBuilder {
                     .description("Unique identifier of the requesting business.")
                 .endParam()
                 .param()
+                    .name("fetchSystemUsers")
+                    .type(RestParamType.query)
+                    .required(false)
+                    .description("Fetches system users if True. Fetches regular user employees if False.")
+                .endParam()
+                .param()
                     .name("assetsSummary")
                     .type(RestParamType.query)
                     .required(false)
@@ -244,6 +326,47 @@ public class BusinessAccessRelationshipsApi extends RouteBuilder {
                     .description("Cursor used to fetch the next page of items")
                 .endParam()
                 .to("direct:getBusinessPartners");
+        
+
+        /**
+        PATCH /businesses/{business_id}/system_users/{system_user_id} : Update a system user information.
+        **/
+        rest()
+            .securityDefinitions()
+                .oauth2("pinterest_oauth2")
+                    .flow("accessCode")
+                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
+                    .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("biz_access:read","See business access data")
+                        .withScope("biz_access:write","Create, update, or delete business access data")
+                
+            .endSecurityDefinition()
+            .patch("/businesses/{business_id}/system_users/{system_user_id}")
+                .description("Update a system user information.")
+                .id("systemUserUpdateApi")
+                .produces("application/json")
+                .outType(Void.class)
+                .consumes("application/json")
+                .type(SystemUserUpdateRequest.class)
+                
+                .param()
+                    .name("businessId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("Unique identifier of the requesting business.")
+                .endParam()
+                .param()
+                    .name("systemUserId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("Unique identifier of a system user.")
+                .endParam()
+                .param()
+                    .name("systemUserUpdateRequest")
+                    .type(RestParamType.body)
+                    .required(true)
+                .endParam()
+                .to("direct:systemUserUpdate");
         
 
         /**

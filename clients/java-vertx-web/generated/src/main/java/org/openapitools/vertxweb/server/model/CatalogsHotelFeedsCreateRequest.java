@@ -19,95 +19,41 @@ import org.openapitools.vertxweb.server.model.NullableCurrency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelFeedsCreateRequest   {
   
-  private NullableCurrency defaultCurrency;
-  private String name;
-  private CatalogsFormat format;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
-  private CatalogsFeedCredentials credentials;
-  private String location;
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsType catalogType;
   private String catalogId;
+  private CatalogsType catalogType;
+  private CatalogsFeedCredentials credentials;
+  private NullableCurrency defaultCurrency;
+  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsFormat format;
+  private String location;
+  private String name;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status = "ACTIVE";
 
   public CatalogsHotelFeedsCreateRequest () {
 
   }
 
-  public CatalogsHotelFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, String catalogId, CatalogsStatus status) {
-    this.defaultCurrency = defaultCurrency;
-    this.name = name;
-    this.format = format;
-    this.defaultLocale = defaultLocale;
-    this.credentials = credentials;
-    this.location = location;
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-    this.catalogType = catalogType;
+  public CatalogsHotelFeedsCreateRequest (String catalogId, CatalogsType catalogType, CatalogsFeedCredentials credentials, NullableCurrency defaultCurrency, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.catalogId = catalogId;
+    this.catalogType = catalogType;
+    this.credentials = credentials;
+    this.defaultCurrency = defaultCurrency;
+    this.defaultLocale = defaultLocale;
+    this.format = format;
+    this.location = location;
+    this.name = name;
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
     this.status = status;
   }
 
     
-  @JsonProperty("default_currency")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
   }
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
-    
-  @JsonProperty("default_locale")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
-    return defaultLocale;
-  }
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
-    this.defaultLocale = defaultLocale;
-  }
-
-    
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
-    
-  @JsonProperty("location")
-  public String getLocation() {
-    return location;
-  }
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-    
-  @JsonProperty("preferred_processing_schedule")
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
-  }
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
     
@@ -120,12 +66,66 @@ public class CatalogsHotelFeedsCreateRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
+
+    
+  @JsonProperty("default_currency")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+    
+  @JsonProperty("default_locale")
+  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+    return defaultLocale;
+  }
+  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+    this.defaultLocale = defaultLocale;
+  }
+
+    
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+    
+  @JsonProperty("location")
+  public String getLocation() {
+    return location;
+  }
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
+  @JsonProperty("preferred_processing_schedule")
+  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
+  }
+  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
   }
 
     
@@ -147,21 +147,21 @@ public class CatalogsHotelFeedsCreateRequest   {
       return false;
     }
     CatalogsHotelFeedsCreateRequest catalogsHotelFeedsCreateRequest = (CatalogsHotelFeedsCreateRequest) o;
-    return Objects.equals(defaultCurrency, catalogsHotelFeedsCreateRequest.defaultCurrency) &&
-        Objects.equals(name, catalogsHotelFeedsCreateRequest.name) &&
-        Objects.equals(format, catalogsHotelFeedsCreateRequest.format) &&
-        Objects.equals(defaultLocale, catalogsHotelFeedsCreateRequest.defaultLocale) &&
-        Objects.equals(credentials, catalogsHotelFeedsCreateRequest.credentials) &&
-        Objects.equals(location, catalogsHotelFeedsCreateRequest.location) &&
-        Objects.equals(preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
+    return Objects.equals(catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
         Objects.equals(catalogType, catalogsHotelFeedsCreateRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
+        Objects.equals(credentials, catalogsHotelFeedsCreateRequest.credentials) &&
+        Objects.equals(defaultCurrency, catalogsHotelFeedsCreateRequest.defaultCurrency) &&
+        Objects.equals(defaultLocale, catalogsHotelFeedsCreateRequest.defaultLocale) &&
+        Objects.equals(format, catalogsHotelFeedsCreateRequest.format) &&
+        Objects.equals(location, catalogsHotelFeedsCreateRequest.location) &&
+        Objects.equals(name, catalogsHotelFeedsCreateRequest.name) &&
+        Objects.equals(preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(status, catalogsHotelFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId, status);
+    return Objects.hash(catalogId, catalogType, credentials, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -169,15 +169,15 @@ public class CatalogsHotelFeedsCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelFeedsCreateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

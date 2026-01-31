@@ -4,18 +4,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
+**Items** | [**ItemCreateBatchRecord[]**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 **Language** | **String** | We recommend using the CatalogsLocale values. | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
-**Items** | [**ItemCreateBatchRecord[]**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsItemsCreateBatchRequest = Initialize-PSOpenAPIToolsCatalogsItemsCreateBatchRequest  -Country null `
+ -Items null `
  -Language null `
- -Operation null `
- -Items null
+ -Operation null
 ```
 
 - Convert the resource to JSON

@@ -11,9 +11,11 @@ GET     /v5/ad_accounts/:adAccountId/targeting_analytics                     con
 POST     /v5/ad_accounts                     controllers.AdAccountsApiController.adAccountsCreate(request: Request)
 GET     /v5/ad_accounts/:adAccountId                     controllers.AdAccountsApiController.adAccountsGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts                     controllers.AdAccountsApiController.adAccountsList(request: Request)
+POST     /v5/ad_accounts/:adAccountId/reports/brand_category_sku                     controllers.AdAccountsApiController.analyticsCreateConversionProductReport(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/mmm_reports                     controllers.AdAccountsApiController.analyticsCreateMmmReport(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/reports                     controllers.AdAccountsApiController.analyticsCreateReport(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/templates/:templateId/reports                     controllers.AdAccountsApiController.analyticsCreateTemplateReport(request: Request, adAccountId: String, templateId: String)
+GET     /v5/ad_accounts/:adAccountId/reports/brand_category_sku                     controllers.AdAccountsApiController.analyticsGetConversionProductReport(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/mmm_reports                     controllers.AdAccountsApiController.analyticsGetMmmReport(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/reports                     controllers.AdAccountsApiController.analyticsGetReport(request: Request, adAccountId: String)
 DELETE     /v5/ad_accounts/:adAccountId/sandbox                     controllers.AdAccountsApiController.sandboxDelete(request: Request, adAccountId: String)
@@ -57,7 +59,6 @@ PATCH     /v5/businesses/:businessId/audiences/businesses/shared                
 
 #Functions for Audiences API
 POST     /v5/ad_accounts/:adAccountId/audiences                     controllers.AudiencesApiController.audiencesCreate(request: Request, adAccountId: String)
-POST     /v5/ad_accounts/:adAccountId/audiences/custom                     controllers.AudiencesApiController.audiencesCreateCustom(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/audiences/:audienceId                     controllers.AudiencesApiController.audiencesGet(request: Request, adAccountId: String, audienceId: String)
 GET     /v5/ad_accounts/:adAccountId/audiences                     controllers.AudiencesApiController.audiencesList(request: Request, adAccountId: String)
 PATCH     /v5/ad_accounts/:adAccountId/audiences/:audienceId                     controllers.AudiencesApiController.audiencesUpdate(request: Request, adAccountId: String, audienceId: String)
@@ -65,6 +66,8 @@ PATCH     /v5/ad_accounts/:adAccountId/audiences/:audienceId                    
 #Functions for Billing API
 POST     /v5/ad_accounts/:adAccountId/ads_credit/redeem                     controllers.BillingApiController.adsCreditRedeem(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/ads_credit/discounts                     controllers.BillingApiController.adsCreditsDiscountsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/billing_invoice/:billingInvoiceId/download                     controllers.BillingApiController.billingInvoiceDownloadGet(request: Request, adAccountId: String, billingInvoiceId: String)
+GET     /v5/ad_accounts/:adAccountId/billing_invoices                     controllers.BillingApiController.billingInvoicesGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/billing_profiles                     controllers.BillingApiController.billingProfilesGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/ssio/accounts                     controllers.BillingApiController.ssioAccountsGet(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/ssio/insertion_orders                     controllers.BillingApiController.ssioInsertionOrderCreate(request: Request, adAccountId: String)
@@ -114,14 +117,18 @@ GET     /v5/businesses/:businessId/invites                     controllers.Busin
 PATCH     /v5/businesses/invites                     controllers.BusinessAccessInviteApiController.respondBusinessAccessInvites(request: Request)
 
 #Functions for BusinessAccessRelationships API
+POST     /v5/business_access/business_hierarchy/:businessHierarchyId/brand_accounts                     controllers.BusinessAccessRelationshipsApiController.brandAccountsCreate(request: Request, businessHierarchyId: String)
+PATCH     /v5/business_access/business_hierarchy/:businessHierarchyId/brand_accounts/:brandAccountId                     controllers.BusinessAccessRelationshipsApiController.brandAccountsUpdate(request: Request, businessHierarchyId: String, brandAccountId: String)
 DELETE     /v5/businesses/:businessId/members                     controllers.BusinessAccessRelationshipsApiController.deleteBusinessMembership(request: Request, businessId: String)
 DELETE     /v5/businesses/:businessId/partners                     controllers.BusinessAccessRelationshipsApiController.deleteBusinessPartners(request: Request, businessId: String)
 GET     /v5/businesses/employers                     controllers.BusinessAccessRelationshipsApiController.getBusinessEmployers(request: Request)
 GET     /v5/businesses/:businessId/members                     controllers.BusinessAccessRelationshipsApiController.getBusinessMembers(request: Request, businessId: String)
 GET     /v5/businesses/:businessId/partners                     controllers.BusinessAccessRelationshipsApiController.getBusinessPartners(request: Request, businessId: String)
+PATCH     /v5/businesses/:businessId/system_users/:systemUserId                     controllers.BusinessAccessRelationshipsApiController.systemUserUpdate(request: Request, businessId: String, systemUserId: String)
 PATCH     /v5/businesses/:businessId/members                     controllers.BusinessAccessRelationshipsApiController.updateBusinessMemberships(request: Request, businessId: String)
 
 #Functions for Campaigns API
+GET     /v5/ad_accounts/:adAccountId/pins/analytics                     controllers.CampaignsApiController.adPinsAnalytics(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/campaigns/targeting_analytics                     controllers.CampaignsApiController.campaignTargetingAnalyticsGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/campaigns/analytics                     controllers.CampaignsApiController.campaignsAnalytics(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsCreate(request: Request, adAccountId: String)
@@ -129,34 +136,45 @@ GET     /v5/ad_accounts/:adAccountId/campaigns/:campaignId                     c
 GET     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsList(request: Request, adAccountId: String)
 PATCH     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsUpdate(request: Request, adAccountId: String)
 
+#Functions for CatalogFeeds API
+GET     /v5/catalogs/feeds/:feedId/processing_results                     controllers.CatalogFeedsApiController.feedProcessingResultsList(request: Request, feedId: String)
+POST     /v5/catalogs/feeds                     controllers.CatalogFeedsApiController.feedsCreate(request: Request)
+DELETE     /v5/catalogs/feeds/:feedId                     controllers.CatalogFeedsApiController.feedsDelete(request: Request, feedId: String)
+GET     /v5/catalogs/feeds/:feedId                     controllers.CatalogFeedsApiController.feedsGet(request: Request, feedId: String)
+POST     /v5/catalogs/feeds/:feedId/ingest                     controllers.CatalogFeedsApiController.feedsIngest(request: Request, feedId: String)
+GET     /v5/catalogs/feeds                     controllers.CatalogFeedsApiController.feedsList(request: Request)
+PATCH     /v5/catalogs/feeds/:feedId                     controllers.CatalogFeedsApiController.feedsUpdate(request: Request, feedId: String)
+GET     /v5/catalogs/processing_results/:processingResultId/item_issues                     controllers.CatalogFeedsApiController.itemsIssuesList(request: Request, processingResultId: String)
+
+#Functions for CatalogItems API
+GET     /v5/catalogs/items/batch/:batchId                     controllers.CatalogItemsApiController.itemsBatchGet(request: Request, batchId: String)
+POST     /v5/catalogs/items/batch                     controllers.CatalogItemsApiController.itemsBatchPost(request: Request)
+POST     /v5/catalogs/items                     controllers.CatalogItemsApiController.itemsPost(request: Request)
+
+#Functions for CatalogProductGroups API
+GET     /v5/catalogs/product_groups/:productGroupId/products                     controllers.CatalogProductGroupsApiController.catalogsProductGroupPinsList(request: Request, productGroupId: String)
+POST     /v5/catalogs/product_groups                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsCreate(request: Request)
+POST     /v5/catalogs/product_groups/multiple                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsCreateMany(request: Request)
+DELETE     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsDelete(request: Request, productGroupId: String)
+DELETE     /v5/catalogs/product_groups/multiple                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsDeleteMany(request: Request)
+GET     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsGet(request: Request, productGroupId: String)
+GET     /v5/catalogs/product_groups                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsList(request: Request)
+GET     /v5/catalogs/product_groups/:productGroupId/product_counts                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsProductCountsGet(request: Request, productGroupId: String)
+PATCH     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogProductGroupsApiController.catalogsProductGroupsUpdate(request: Request, productGroupId: String)
+POST     /v5/catalogs/products/get_by_product_group_filters                     controllers.CatalogProductGroupsApiController.productsByProductGroupFilterList(request: Request)
+
+#Functions for CatalogReports API
+POST     /v5/catalogs/reports                     controllers.CatalogReportsApiController.reportsCreate(request: Request)
+GET     /v5/catalogs/reports                     controllers.CatalogReportsApiController.reportsGet(request: Request)
+GET     /v5/catalogs/reports/stats                     controllers.CatalogReportsApiController.reportsStats(request: Request)
+
 #Functions for Catalogs API
+GET     /v5/catalogs/available_filter_values                     controllers.CatalogsApiController.catalogsAvailableFilterValues(request: Request)
 POST     /v5/catalogs                     controllers.CatalogsApiController.catalogsCreate(request: Request)
 GET     /v5/catalogs                     controllers.CatalogsApiController.catalogsList(request: Request)
-GET     /v5/catalogs/product_groups/:productGroupId/products                     controllers.CatalogsApiController.catalogsProductGroupPinsList(request: Request, productGroupId: String)
-POST     /v5/catalogs/product_groups                     controllers.CatalogsApiController.catalogsProductGroupsCreate(request: Request)
-POST     /v5/catalogs/product_groups/multiple                     controllers.CatalogsApiController.catalogsProductGroupsCreateMany(request: Request)
-DELETE     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsDelete(request: Request, productGroupId: String)
-DELETE     /v5/catalogs/product_groups/multiple                     controllers.CatalogsApiController.catalogsProductGroupsDeleteMany(request: Request)
-GET     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsGet(request: Request, productGroupId: String)
-GET     /v5/catalogs/product_groups                     controllers.CatalogsApiController.catalogsProductGroupsList(request: Request)
-GET     /v5/catalogs/product_groups/:productGroupId/product_counts                     controllers.CatalogsApiController.catalogsProductGroupsProductCountsGet(request: Request, productGroupId: String)
-PATCH     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsUpdate(request: Request, productGroupId: String)
-GET     /v5/catalogs/feeds/:feedId/processing_results                     controllers.CatalogsApiController.feedProcessingResultsList(request: Request, feedId: String)
-POST     /v5/catalogs/feeds                     controllers.CatalogsApiController.feedsCreate(request: Request)
-DELETE     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsDelete(request: Request, feedId: String)
-GET     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsGet(request: Request, feedId: String)
-POST     /v5/catalogs/feeds/:feedId/ingest                     controllers.CatalogsApiController.feedsIngest(request: Request, feedId: String)
-GET     /v5/catalogs/feeds                     controllers.CatalogsApiController.feedsList(request: Request)
-PATCH     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsUpdate(request: Request, feedId: String)
-GET     /v5/catalogs/items/batch/:batchId                     controllers.CatalogsApiController.itemsBatchGet(request: Request, batchId: String)
-POST     /v5/catalogs/items/batch                     controllers.CatalogsApiController.itemsBatchPost(request: Request)
-GET     /v5/catalogs/items                     controllers.CatalogsApiController.itemsGet(request: Request)
-GET     /v5/catalogs/processing_results/:processingResultId/item_issues                     controllers.CatalogsApiController.itemsIssuesList(request: Request, processingResultId: String)
-POST     /v5/catalogs/items                     controllers.CatalogsApiController.itemsPost(request: Request)
-POST     /v5/catalogs/products/get_by_product_group_filters                     controllers.CatalogsApiController.productsByProductGroupFilterList(request: Request)
-POST     /v5/catalogs/reports                     controllers.CatalogsApiController.reportsCreate(request: Request)
-GET     /v5/catalogs/reports                     controllers.CatalogsApiController.reportsGet(request: Request)
-GET     /v5/catalogs/reports/stats                     controllers.CatalogsApiController.reportsStats(request: Request)
+
+#Functions for ConversionEqs API
+GET     /v5/ad_accounts/:adAccountId/conversion_eqs                     controllers.ConversionEqsApiController.conversionEqsList(request: Request, adAccountId: String)
 
 #Functions for ConversionEvents API
 POST     /v5/ad_accounts/:adAccountId/events                     controllers.ConversionEventsApiController.eventsCreate(request: Request, adAccountId: String)
@@ -167,6 +185,14 @@ GET     /v5/ad_accounts/:adAccountId/conversion_tags/:conversionTagId           
 GET     /v5/ad_accounts/:adAccountId/conversion_tags                     controllers.ConversionTagsApiController.conversionTagsList(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/conversion_tags/ocpm_eligible                     controllers.ConversionTagsApiController.ocpmEligibleConversionTagsGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/conversion_tags/page_visit                     controllers.ConversionTagsApiController.pageVisitConversionTagsGet(request: Request, adAccountId: String)
+
+#Functions for Conversions API
+GET     /v5/ad_accounts/:adAccountId/advertiser_defined_events                     controllers.ConversionsApiController.advertiserDefinedEventsGet(request: Request, adAccountId: String)
+
+#Functions for CustomerListUploads API
+POST     /v5/ad_accounts/:adAccountId/customer_lists/:customerListId/uploads                     controllers.CustomerListUploadsApiController.customerListUploadsCreate(request: Request, adAccountId: String, customerListId: String)
+GET     /v5/ad_accounts/:adAccountId/customer_lists/:customerListId/uploads/:customerListUploadId                     controllers.CustomerListUploadsApiController.customerListUploadsGet(request: Request, adAccountId: String, customerListId: String, customerListUploadId: String)
+POST     /v5/ad_accounts/:adAccountId/customer_lists/:customerListId/uploads/:customerListUploadId/run                     controllers.CustomerListUploadsApiController.customerListUploadsRun(request: Request, adAccountId: String, customerListId: String, customerListUploadId: String)
 
 #Functions for CustomerLists API
 POST     /v5/ad_accounts/:adAccountId/customer_lists                     controllers.CustomerListsApiController.customerListsCreate(request: Request, adAccountId: String)
@@ -190,6 +216,11 @@ GET     /v5/ad_accounts/:adAccountId/keywords                     controllers.Ke
 PATCH     /v5/ad_accounts/:adAccountId/keywords                     controllers.KeywordsApiController.keywordsUpdate(request: Request, adAccountId: String)
 GET     /v5/trends/keywords/:region/top/:trendType                     controllers.KeywordsApiController.trendingKeywordsList(request: Request, region: TrendsSupportedRegion, trendType: TrendType)
 
+#Functions for Labels API
+POST     /v5/ad_accounts/:adAccountId/labels                     controllers.LabelsApiController.labelsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/labels                     controllers.LabelsApiController.labelsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/labels                     controllers.LabelsApiController.labelsUpdate(request: Request, adAccountId: String)
+
 #Functions for LeadAds API
 DELETE     /v5/ad_accounts/:adAccountId/leads/subscriptions/:subscriptionId                     controllers.LeadAdsApiController.adAccountsSubscriptionsDelById(request: Request, adAccountId: String, subscriptionId: String)
 GET     /v5/ad_accounts/:adAccountId/leads/subscriptions/:subscriptionId                     controllers.LeadAdsApiController.adAccountsSubscriptionsGetById(request: Request, adAccountId: String, subscriptionId: String)
@@ -212,8 +243,16 @@ POST     /v5/media                     controllers.MediaApiController.mediaCreat
 GET     /v5/media/:mediaId                     controllers.MediaApiController.mediaGet(request: Request, mediaId: String)
 GET     /v5/media                     controllers.MediaApiController.mediaList(request: Request)
 
+#Functions for MsotEvents API
+POST     /v5/ad_accounts/:adAccountId/msot/events                     controllers.MsotEventsApiController.msotEventsCreate(request: Request, adAccountId: String)
+
+#Functions for Notification API
+POST     /v5/notifications                     controllers.NotificationApiController.notificationPost(request: Request)
+
 #Functions for Oauth API
+POST     /v5/oauth/conversion_token                     controllers.OauthApiController.oauthConversionToken(request: Request)
 POST     /v5/oauth/token                     controllers.OauthApiController.oauthToken(request: Request)
+POST     /v5/oauth/token/revoke                     controllers.OauthApiController.tokenRevoke(request: Request)
 
 #Functions for OrderLines API
 GET     /v5/ad_accounts/:adAccountId/order_lines/:orderLineId                     controllers.OrderLinesApiController.orderLinesGet(request: Request, adAccountId: String, orderLineId: String)
@@ -229,12 +268,24 @@ GET     /v5/pins                     controllers.PinsApiController.pinsList(requ
 POST     /v5/pins/:pinId/save                     controllers.PinsApiController.pinsSave(request: Request, pinId: String)
 PATCH     /v5/pins/:pinId                     controllers.PinsApiController.pinsUpdate(request: Request, pinId: String)
 
+#Functions for ProductCategories API
+GET     /v5/trends/topics/featured                     controllers.ProductCategoriesApiController.trendsFeaturedTopicsList(request: Request)
+GET     /v5/trends/product_categories/details                     controllers.ProductCategoriesApiController.trendsProductCategoriesDetailsList(request: Request)
+GET     /v5/trends/product_categories/trending                     controllers.ProductCategoriesApiController.trendsProductCategoriesTrendingList(request: Request)
+
 #Functions for ProductGroupPromotions API
 POST     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsCreate(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/product_group_promotions/:productGroupPromotionId                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsGet(request: Request, adAccountId: String, productGroupPromotionId: String)
 GET     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsList(request: Request, adAccountId: String)
 PATCH     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsUpdate(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/product_groups/analytics                     controllers.ProductGroupPromotionsApiController.productGroupsAnalytics(request: Request, adAccountId: String)
+
+#Functions for Promotions API
+POST     /v5/ad_accounts/:adAccountId/promotions                     controllers.PromotionsApiController.promotionsCreate(request: Request, adAccountId: String)
+DELETE     /v5/ad_accounts/:adAccountId/promotions/:promotionId                     controllers.PromotionsApiController.promotionsDelete(request: Request, adAccountId: String, promotionId: String)
+GET     /v5/ad_accounts/:adAccountId/promotions/:promotionId                     controllers.PromotionsApiController.promotionsGet(request: Request, adAccountId: String, promotionId: String)
+GET     /v5/ad_accounts/:adAccountId/promotions                     controllers.PromotionsApiController.promotionsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/promotions                     controllers.PromotionsApiController.promotionsUpdate(request: Request, adAccountId: String)
 
 #Functions for Resources API
 GET     /v5/resources/ad_account_countries                     controllers.ResourcesApiController.adAccountCountriesGet(request: Request)

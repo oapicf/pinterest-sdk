@@ -12,9 +12,9 @@ module CatalogsCreativeAssetsItemResponse =
 
 
   type CatalogsCreativeAssetsItemResponse = {
+    Attributes : CatalogsCreativeAssetsAttributes;
     CatalogType : CatalogsType;
     CreativeAssetsId : string;
     Pins : Pin[];
-    Attributes : CatalogsCreativeAssetsAttributes;
   }
   //#endregion

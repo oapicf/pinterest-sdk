@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"avgCpcInMicroCurrency": @"avg_cpc_in_micro_currency", @"keywordQueryVolume": @"keyword_query_volume" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"keywordQueryVolume": @"keyword_query_volume" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"avgCpcInMicroCurrency", @"keywordQueryVolume"];
+  NSArray *optionalProperties = @[@"keywordQueryVolume"];
   return [optionalProperties containsObject:propertyName];
 }
 

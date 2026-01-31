@@ -1,0 +1,73 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsProductGroup"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsProductGroup"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsProductGroup {
+    title = CatalogsCreativeAssetsProductGroup
+    description = CatalogsCreativeAssetsProductGroup
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        created_at {
+          type =  integer
+          description = "Unix timestamp in seconds of when catalog product group was created."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = "ID of the creative assets product group."
+          optional = true
+        }
+        name {
+          type =  string
+          description = "Name of creative assets product group"
+          optional = false
+        }
+        updated_at {
+          type =  integer
+          description = "Unix timestamp in seconds of last time catalog product group was updated."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsProductGroup {
+    title = CatalogsCreativeAssetsProductGroup
+    description = CatalogsCreativeAssetsProductGroup
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroup
+
+  }
+}

@@ -12,10 +12,6 @@ import { AdAccountCreateSubscriptionRequestPartnerMetadata } from './adAccountCr
 
 export interface AdAccountCreateSubscriptionRequest { 
     /**
-     * Standard HTTPS webhook URL.
-     */
-    webhook_url: string;
-    /**
      * Lead form ID.
      */
     lead_form_id?: string;
@@ -23,10 +19,14 @@ export interface AdAccountCreateSubscriptionRequest {
      * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
      */
     partner_access_token?: string;
+    partner_metadata?: AdAccountCreateSubscriptionRequestPartnerMetadata;
     /**
      * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
      */
     partner_refresh_token?: string;
-    partner_metadata?: AdAccountCreateSubscriptionRequestPartnerMetadata;
+    /**
+     * Standard HTTPS webhook URL.
+     */
+    webhook_url: string;
 }
 

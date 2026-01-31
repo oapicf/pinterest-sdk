@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -70,6 +70,18 @@ func (c *BillingAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
 			c.BillingProfilesGet,
 		},
+		"BillingInvoicesGet": Route{
+			"BillingInvoicesGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/billing_invoices",
+			c.BillingInvoicesGet,
+		},
+		"BillingInvoiceDownloadGet": Route{
+			"BillingInvoiceDownloadGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
+			c.BillingInvoiceDownloadGet,
+		},
 		"SsioAccountsGet": Route{
 			"SsioAccountsGet",
 			strings.ToUpper("Get"),
@@ -129,6 +141,18 @@ func (c *BillingAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
 			c.BillingProfilesGet,
+		},
+		Route{
+			"BillingInvoicesGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/billing_invoices",
+			c.BillingInvoicesGet,
+		},
+		Route{
+			"BillingInvoiceDownloadGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
+			c.BillingInvoiceDownloadGet,
 		},
 		Route{
 			"SsioAccountsGet",
@@ -307,6 +331,121 @@ func (c *BillingAPIController) BillingProfilesGet(w http.ResponseWriter, r *http
 		pageSizeParam = param
 	}
 	result, err := c.service.BillingProfilesGet(r.Context(), adAccountIdParam, isActiveParam, bookmarkParam, pageSizeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BillingInvoicesGet - Get billing invoices
+func (c *BillingAPIController) BillingInvoicesGet(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	var sortParam string
+	if query.Has("sort") {
+		param := query.Get("sort")
+
+		sortParam = param
+	} else {
+		param := "DUE_DATE"
+		sortParam = param
+	}
+	var orderParam string
+	if query.Has("order") {
+		param := query.Get("order")
+
+		orderParam = param
+	} else {
+	}
+	var statusParam string
+	if query.Has("status") {
+		param := query.Get("status")
+
+		statusParam = param
+	} else {
+	}
+	var documentTypeParam string
+	if query.Has("document_type") {
+		param := query.Get("document_type")
+
+		documentTypeParam = param
+	} else {
+	}
+	var startDueDateParam string
+	if query.Has("start_due_date") {
+		param := string(query.Get("start_due_date"))
+
+		startDueDateParam = param
+	} else {
+	}
+	var endDueDateParam string
+	if query.Has("end_due_date") {
+		param := string(query.Get("end_due_date"))
+
+		endDueDateParam = param
+	} else {
+	}
+	result, err := c.service.BillingInvoicesGet(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, sortParam, orderParam, statusParam, documentTypeParam, startDueDateParam, endDueDateParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BillingInvoiceDownloadGet - Get download url for a billing invoice
+func (c *BillingAPIController) BillingInvoiceDownloadGet(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	billingInvoiceIdParam := params["billing_invoice_id"]
+	if billingInvoiceIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"billing_invoice_id"}, nil)
+		return
+	}
+	result, err := c.service.BillingInvoiceDownloadGet(r.Context(), adAccountIdParam, billingInvoiceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

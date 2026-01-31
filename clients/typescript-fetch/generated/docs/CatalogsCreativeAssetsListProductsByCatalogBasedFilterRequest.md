@@ -7,8 +7,8 @@ Request object to list products for a given creative assets catalog_id and produ
 
 Name | Type
 ------------ | -------------
-`catalogType` | string
 `catalogId` | string
+`catalogType` | string
 `filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
 
 ## Example
@@ -18,8 +18,8 @@ import type { CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest } fr
 
 // TODO: Update the object below with actual values
 const example = {
-  "catalogType": null,
   "catalogId": 2680059592705,
+  "catalogType": null,
   "filters": null,
 } satisfies CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
 

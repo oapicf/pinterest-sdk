@@ -8,15 +8,15 @@ use WWW::OpenAPIClient::Object::ConversionTagResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_account_id** | **string** | Ad account ID. | [optional] 
-**code_snippet** | **string** | Tag code snippet. | [optional] 
-**enhanced_match_status** | [**EnhancedMatchStatusType**](EnhancedMatchStatusType.md) |  | [optional] 
-**id** | **string** | Tag ID. | [optional] 
-**last_fired_time_ms** | **double** | Time for the last event fired. | [optional] 
-**name** | **string** | Conversion tag name. | [optional] 
-**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**version** | **string** | Version number. | [optional] 
-**configs** | [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] 
+**code_snippet** | **string** | Tag code snippet. | [optional] [readonly] 
+**configs** | [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] [readonly] 
+**enhanced_match_status** | [**EnhancedMatchStatusType**](EnhancedMatchStatusType.md) | The enhanced match status of the tag | [optional] [readonly] 
+**id** | **string** | Tag ID. | [optional] [readonly] 
+**last_fired_time_ms** | **double** | Time for the last event fired. | [optional] [readonly] 
+**name** | **string** | Conversion tag name. | 
+**version** | **string** | Version number. | [optional] [readonly] 
+**ad_account_id** | **string** | Ad account ID. | [readonly] 
+**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

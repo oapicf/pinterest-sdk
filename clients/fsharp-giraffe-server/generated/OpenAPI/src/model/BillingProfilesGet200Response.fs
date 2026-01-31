@@ -11,7 +11,7 @@ module BillingProfilesGet200Response =
 
 
   type billing_profiles_get_200_response = {
-    Items : BillingProfilesResponse[];
     Bookmark : string option;
+    Items : BillingProfilesResponse[];
   }
   //#endregion

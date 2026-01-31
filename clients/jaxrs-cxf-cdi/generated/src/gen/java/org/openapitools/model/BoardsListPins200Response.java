@@ -21,9 +21,27 @@ import java.util.Objects;
 
 public class BoardsListPins200Response   {
   
+  private String bookmark;
+
   private List<@Valid Pin> items = new ArrayList<>();
 
-  private String bookmark;
+  /**
+   **/
+  public BoardsListPins200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
 
   /**
    * Pins
@@ -53,24 +71,6 @@ public class BoardsListPins200Response   {
   }
 
 
-  /**
-   **/
-  public BoardsListPins200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,13 +81,13 @@ public class BoardsListPins200Response   {
       return false;
     }
     BoardsListPins200Response boardsListPins200Response = (BoardsListPins200Response) o;
-    return Objects.equals(this.items, boardsListPins200Response.items) &&
-        Objects.equals(this.bookmark, boardsListPins200Response.bookmark);
+    return Objects.equals(this.bookmark, boardsListPins200Response.bookmark) &&
+        Objects.equals(this.items, boardsListPins200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -95,8 +95,8 @@ public class BoardsListPins200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardsListPins200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,8 +7,8 @@
 
 (def catalogs-report-distribution-issue-filter-data
   {
-   (ds/req :report_type) string?
    (ds/opt :catalog_id) string?
+   (ds/req :report_type) string?
    })
 
 (def catalogs-report-distribution-issue-filter-spec

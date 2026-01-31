@@ -14,9 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemsPostFilter   {
   
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -38,7 +39,19 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
 
   private CatalogTypeEnum catalogType;
   private List<String> creativeAssetsIds = new ArrayList<>();
-  private String catalogId;
+
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   **/
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -66,19 +79,6 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
     this.creativeAssetsIds = creativeAssetsIds;
   }
 
-  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   **/
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -89,14 +89,14 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
       return false;
     }
     CatalogsCreativeAssetsItemsPostFilter catalogsCreativeAssetsItemsPostFilter = (CatalogsCreativeAssetsItemsPostFilter) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsItemsPostFilter.catalogType) &&
-        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsItemsPostFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsItemsPostFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsItemsPostFilter.catalogType) &&
+        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @Override
@@ -104,9 +104,9 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsPostFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

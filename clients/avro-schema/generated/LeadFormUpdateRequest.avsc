@@ -5,15 +5,15 @@
   "name": "LeadFormUpdateRequest",
   "fields": [
     {
-      "name": "name",
+      "name": "completion_message",
       "type": ["null", "string"],
-      "doc": "Internal name of the lead form.",
+      "doc": "A message for people who complete the form to let them know what happens next.",
       "default": null
     },
     {
-      "name": "privacy_policy_link",
+      "name": "disclosure_language",
       "type": ["null", "string"],
-      "doc": "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.",
+      "doc": "Additional disclosure language to be included in the lead form.",
       "default": null
     },
     {
@@ -23,21 +23,24 @@
       "default": null
     },
     {
-      "name": "completion_message",
+      "name": "name",
       "type": ["null", "string"],
-      "doc": "A message for people who complete the form to let them know what happens next.",
+      "doc": "Internal name of the lead form.",
       "default": null
     },
     {
-      "name": "status",
-      "type": ["null", "model.LeadFormStatus"],
-      "doc": "",
+      "name": "policy_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.LeadFormCommonPolicyLinksInner"
+      }],
+      "doc": "List of additional policy links to be displayed on the lead form.",
       "default": null
     },
     {
-      "name": "disclosure_language",
+      "name": "privacy_policy_link",
       "type": ["null", "string"],
-      "doc": "Additional disclosure language to be included in the lead form.",
+      "doc": "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.",
       "default": null
     },
     {
@@ -50,12 +53,9 @@
       "default": null
     },
     {
-      "name": "policy_links",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.LeadFormCommonPolicyLinksInner"
-      }],
-      "doc": "List of additional policy links to be displayed on the lead form.",
+      "name": "status",
+      "type": ["null", "model.LeadFormStatus"],
+      "doc": "",
       "default": null
     },
     {

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,25 +17,25 @@ package openapi
 // CatalogsHotelProductGroupCreateRequest - Request object for creating a hotel product group.
 type CatalogsHotelProductGroupCreateRequest struct {
 
-	CatalogType string `json:"catalog_type"`
+	// Catalog id pertaining to the hotel product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 
-	Name string `json:"name"`
+	CatalogType string `json:"catalog_type"`
 
 	Description *string `json:"description,omitempty"`
 
 	Filters CatalogsHotelProductGroupFilters `json:"filters"`
 
-	// Catalog id pertaining to the hotel product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	Name string `json:"name"`
 }
 
 // AssertCatalogsHotelProductGroupCreateRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsHotelProductGroupCreateRequestRequired(obj CatalogsHotelProductGroupCreateRequest) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"name": obj.Name,
-		"filters": obj.Filters,
 		"catalog_id": obj.CatalogId,
+		"catalog_type": obj.CatalogType,
+		"filters": obj.Filters,
+		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

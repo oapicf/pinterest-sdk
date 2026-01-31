@@ -8,9 +8,9 @@ The class is defined in **[AdsAnalyticsCreateAsyncResponse.java](../../src/main/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**message** | `String` |  |  [optional property]
 **reportStatus** | `BulkReportingJobStatus` |  |  [optional property]
 **token** | `String` |  |  [optional property]
-**message** | `String` |  |  [optional property]
 
 
 

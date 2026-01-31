@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemId** | **NSString*** | The catalog retail item id in the merchant namespace | 
 **country** | [**OAICountry***](OAICountry.md) |  | 
+**itemId** | **NSString*** | The catalog retail item id in the merchant namespace | 
 **language** | [**OAILanguage***](OAILanguage.md) |  | 
 **bidOptions** | [**OAIAdvancedAuctionBidOptions***](OAIAdvancedAuctionBidOptions.md) |  | 
 

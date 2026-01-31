@@ -1,5 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.CreativeType;
 import org.openapitools.vertxweb.server.model.Error;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.Pin;
@@ -8,6 +9,7 @@ import org.openapitools.vertxweb.server.model.PinCreate;
 import org.openapitools.vertxweb.server.model.PinUpdate;
 import org.openapitools.vertxweb.server.model.PinsList200Response;
 import org.openapitools.vertxweb.server.model.PinsSaveRequest;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -22,8 +24,8 @@ public interface PinsApi  {
     Future<ApiResponse<Map<String, PinAnalyticsMetricsResponse>>> pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId);
     Future<ApiResponse<Pin>> pinsCreate(PinCreate pinCreate, String adAccountId);
     Future<ApiResponse<Void>> pinsDelete(String pinId, String adAccountId);
-    Future<ApiResponse<Pin>> pinsGet(String pinId, Boolean pinMetrics, String adAccountId);
-    Future<ApiResponse<PinsList200Response>> pinsList(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics);
+    Future<ApiResponse<Pin>> pinsGet(String pinId, String adAccountId, Boolean pinMetrics);
+    Future<ApiResponse<PinsList200Response>> pinsList(String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes, String adAccountId, String bookmark, Integer pageSize);
     Future<ApiResponse<Pin>> pinsSave(String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId);
     Future<ApiResponse<Pin>> pinsUpdate(String pinId, PinUpdate pinUpdate, String adAccountId);
 }

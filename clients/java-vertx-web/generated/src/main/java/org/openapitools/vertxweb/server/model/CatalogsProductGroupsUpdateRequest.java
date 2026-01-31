@@ -14,28 +14,19 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupsUpdateRequest   {
   
-  private String name;
   private String description;
-  private Boolean isFeatured;
   private CatalogsProductGroupFiltersRequest filters;
+  private Boolean isFeatured;
+  private String name;
 
   public CatalogsProductGroupsUpdateRequest () {
 
   }
 
-  public CatalogsProductGroupsUpdateRequest (String name, String description, Boolean isFeatured, CatalogsProductGroupFiltersRequest filters) {
-    this.name = name;
+  public CatalogsProductGroupsUpdateRequest (String description, CatalogsProductGroupFiltersRequest filters, Boolean isFeatured, String name) {
     this.description = description;
-    this.isFeatured = isFeatured;
     this.filters = filters;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
+    this.isFeatured = isFeatured;
     this.name = name;
   }
 
@@ -49,6 +40,15 @@ public class CatalogsProductGroupsUpdateRequest   {
   }
 
     
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+    
   @JsonProperty("is_featured")
   public Boolean getIsFeatured() {
     return isFeatured;
@@ -58,12 +58,12 @@ public class CatalogsProductGroupsUpdateRequest   {
   }
 
     
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -76,15 +76,15 @@ public class CatalogsProductGroupsUpdateRequest   {
       return false;
     }
     CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest = (CatalogsProductGroupsUpdateRequest) o;
-    return Objects.equals(name, catalogsProductGroupsUpdateRequest.name) &&
-        Objects.equals(description, catalogsProductGroupsUpdateRequest.description) &&
+    return Objects.equals(description, catalogsProductGroupsUpdateRequest.description) &&
+        Objects.equals(filters, catalogsProductGroupsUpdateRequest.filters) &&
         Objects.equals(isFeatured, catalogsProductGroupsUpdateRequest.isFeatured) &&
-        Objects.equals(filters, catalogsProductGroupsUpdateRequest.filters);
+        Objects.equals(name, catalogsProductGroupsUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters);
+    return Objects.hash(description, filters, isFeatured, name);
   }
 
   @Override
@@ -92,10 +92,10 @@ public class CatalogsProductGroupsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupsUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

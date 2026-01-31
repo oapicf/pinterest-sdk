@@ -13,7 +13,7 @@ func (c *Container) AdAccountsSubscriptionsDelById(ctx echo.Context) error {
 }
 
 
-// AdAccountsSubscriptionsGetById - Get lead ads subscription
+// AdAccountsSubscriptionsGetById - Get lead ads subscription by ID
 func (c *Container) AdAccountsSubscriptionsGetById(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",

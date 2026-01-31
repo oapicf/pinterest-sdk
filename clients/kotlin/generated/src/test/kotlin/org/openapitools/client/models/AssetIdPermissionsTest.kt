@@ -26,13 +26,19 @@ class AssetIdPermissionsTest : ShouldSpec() {
         // uncomment below to create an instance of AssetIdPermissions
         //val modelInstance = AssetIdPermissions()
 
+        // to test the property `assetGroupInfo`
+        should("test assetGroupInfo") {
+            // uncomment below to test the property
+            //modelInstance.assetGroupInfo shouldBe ("TODO")
+        }
+
         // to test the property `assetId` - Unique identifier of a business asset.
         should("test assetId") {
             // uncomment below to test the property
             //modelInstance.assetId shouldBe ("TODO")
         }
 
-        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
         should("test assetType") {
             // uncomment below to test the property
             //modelInstance.assetType shouldBe ("TODO")
@@ -42,12 +48,6 @@ class AssetIdPermissionsTest : ShouldSpec() {
         should("test permissions") {
             // uncomment below to test the property
             //modelInstance.permissions shouldBe ("TODO")
-        }
-
-        // to test the property `assetGroupInfo`
-        should("test assetGroupInfo") {
-            // uncomment below to test the property
-            //modelInstance.assetGroupInfo shouldBe ("TODO")
         }
 
     }

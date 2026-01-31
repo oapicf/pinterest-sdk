@@ -25,9 +25,9 @@ DeletePartnerAssetsResult::__init()
 {
 	//asset_id = std::string();
 	//asset_type = std::string();
-	//new std::list()std::list> permissions;
 	//is_shared_partner = bool(false);
 	//partner_id = std::string();
+	//new std::list()std::list> permissions;
 }
 
 void
@@ -43,11 +43,6 @@ DeletePartnerAssetsResult::__cleanup()
 	//delete asset_type;
 	//asset_type = NULL;
 	//}
-	//if(permissions != NULL) {
-	//permissions.RemoveAll(true);
-	//delete permissions;
-	//permissions = NULL;
-	//}
 	//if(is_shared_partner != NULL) {
 	//
 	//delete is_shared_partner;
@@ -57,6 +52,11 @@ DeletePartnerAssetsResult::__cleanup()
 	//
 	//delete partner_id;
 	//partner_id = NULL;
+	//}
+	//if(permissions != NULL) {
+	//permissions.RemoveAll(true);
+	//delete permissions;
+	//permissions = NULL;
 	//}
 	//
 }
@@ -88,28 +88,6 @@ DeletePartnerAssetsResult::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *permissionsKey = "permissions";
-	node = json_object_get_member(pJsonObject, permissionsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			permissions = new_list;
-		}
-		
-	}
 	const gchar *is_shared_partnerKey = "is_shared_partner";
 	node = json_object_get_member(pJsonObject, is_shared_partnerKey);
 	if (node !=NULL) {
@@ -131,6 +109,28 @@ DeletePartnerAssetsResult::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *permissionsKey = "permissions";
+	node = json_object_get_member(pJsonObject, permissionsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			permissions = new_list;
+		}
+		
 	}
 }
 
@@ -162,21 +162,6 @@ DeletePartnerAssetsResult::toJson()
 	}
 	const gchar *asset_typeKey = "asset_type";
 	json_object_set_member(pJsonObject, asset_typeKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *permissionsKey = "permissions";
-	json_object_set_member(pJsonObject, permissionsKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIsSharedPartner();
 		node = converttoJson(&obj, "bool", "");
@@ -195,6 +180,21 @@ DeletePartnerAssetsResult::toJson()
 	}
 	const gchar *partner_idKey = "partner_id";
 	json_object_set_member(pJsonObject, partner_idKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *permissionsKey = "permissions";
+	json_object_set_member(pJsonObject, permissionsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -227,18 +227,6 @@ DeletePartnerAssetsResult::setAssetType(std::string  asset_type)
 	this->asset_type = asset_type;
 }
 
-std::list<std::string>
-DeletePartnerAssetsResult::getPermissions()
-{
-	return permissions;
-}
-
-void
-DeletePartnerAssetsResult::setPermissions(std::list <std::string> permissions)
-{
-	this->permissions = permissions;
-}
-
 bool
 DeletePartnerAssetsResult::getIsSharedPartner()
 {
@@ -261,6 +249,18 @@ void
 DeletePartnerAssetsResult::setPartnerId(std::string  partner_id)
 {
 	this->partner_id = partner_id;
+}
+
+std::list<std::string>
+DeletePartnerAssetsResult::getPermissions()
+{
+	return permissions;
+}
+
+void
+DeletePartnerAssetsResult::setPermissions(std::list <std::string> permissions)
+{
+	this->permissions = permissions;
 }
 
 

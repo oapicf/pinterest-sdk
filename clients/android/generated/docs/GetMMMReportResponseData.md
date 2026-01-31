@@ -7,8 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportStatus** | [**ReportStatusEnum**](#ReportStatusEnum) |  |  [optional]
-**url** | **String** |  |  [optional]
 **size** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**url** | **String** |  |  [optional]
 
 
 ## Enum: ReportStatusEnum

@@ -4,11 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Billing ID. | [optional] 
-**cardType** | **String** | Type of the card. | [optional] 
-**status** | **String** | Status of the billing. | [optional] 
 **advertiserId** | **String** | Advertiser ID of the billing. | [optional] 
+**billingType** | **String** | Billing type of the advertiser | [optional] 
+**cardType** | **String** | Type of the card. | [optional] 
+**id** | **String** | Billing ID. | [optional] 
 **paymentMethodBrand** | **String** | Brand of the payment method. | [optional] 
+**status** | **String** | Status of the billing. | [optional] 
+
+
+
+## Enum: BillingTypeEnum
+
+
+* `CREDIT_CARD` (value: `"CREDIT_CARD"`)
+
+* `INVOICE` (value: `"INVOICE"`)
+
+* `INTERNAL` (value: `"INTERNAL"`)
+
+* `RECURRING` (value: `"RECURRING"`)
+
+* `PREPAID` (value: `"PREPAID"`)
+
+
 
 
 
@@ -26,27 +44,6 @@ Name | Type | Description | Notes
 * `DISCOVER` (value: `"DISCOVER"`)
 
 * `ELO` (value: `"ELO"`)
-
-
-
-
-
-## Enum: StatusEnum
-
-
-* `UNSPECIFIED` (value: `"UNSPECIFIED"`)
-
-* `VALID` (value: `"VALID"`)
-
-* `INVALID` (value: `"INVALID"`)
-
-* `PENDING` (value: `"PENDING"`)
-
-* `DELETED` (value: `"DELETED"`)
-
-* `SECONDARY` (value: `"SECONDARY"`)
-
-* `PENDING_SECONDARY` (value: `"PENDING_SECONDARY"`)
 
 
 
@@ -72,6 +69,27 @@ Name | Type | Description | Notes
 * `ELO` (value: `"ELO"`)
 
 * `CARTE_BANCAIRE` (value: `"CARTE_BANCAIRE"`)
+
+
+
+
+
+## Enum: StatusEnum
+
+
+* `UNSPECIFIED` (value: `"UNSPECIFIED"`)
+
+* `VALID` (value: `"VALID"`)
+
+* `INVALID` (value: `"INVALID"`)
+
+* `PENDING` (value: `"PENDING"`)
+
+* `DELETED` (value: `"DELETED"`)
+
+* `SECONDARY` (value: `"SECONDARY"`)
+
+* `PENDING_SECONDARY` (value: `"PENDING_SECONDARY"`)
 
 
 

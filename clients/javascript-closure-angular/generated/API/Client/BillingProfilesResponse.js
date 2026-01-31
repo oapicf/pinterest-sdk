@@ -6,11 +6,18 @@ goog.provide('API.Client.BillingProfilesResponse');
 API.Client.BillingProfilesResponse = function() {}
 
 /**
- * Billing ID.
+ * Advertiser ID of the billing.
  * @type {!string}
  * @export
  */
-API.Client.BillingProfilesResponse.prototype.id;
+API.Client.BillingProfilesResponse.prototype.advertiserId;
+
+/**
+ * Billing type of the advertiser
+ * @type {!string}
+ * @export
+ */
+API.Client.BillingProfilesResponse.prototype.billingType;
 
 /**
  * Type of the card.
@@ -20,18 +27,11 @@ API.Client.BillingProfilesResponse.prototype.id;
 API.Client.BillingProfilesResponse.prototype.cardType;
 
 /**
- * Status of the billing.
+ * Billing ID.
  * @type {!string}
  * @export
  */
-API.Client.BillingProfilesResponse.prototype.status;
-
-/**
- * Advertiser ID of the billing.
- * @type {!string}
- * @export
- */
-API.Client.BillingProfilesResponse.prototype.advertiserId;
+API.Client.BillingProfilesResponse.prototype.id;
 
 /**
  * Brand of the payment method.
@@ -40,6 +40,21 @@ API.Client.BillingProfilesResponse.prototype.advertiserId;
  */
 API.Client.BillingProfilesResponse.prototype.paymentMethodBrand;
 
+/**
+ * Status of the billing.
+ * @type {!string}
+ * @export
+ */
+API.Client.BillingProfilesResponse.prototype.status;
+
+/** @enum {string} */
+API.Client.BillingProfilesResponse.BillingTypeEnum = { 
+  CREDIT_CARD: 'CREDIT_CARD',
+  INVOICE: 'INVOICE',
+  INTERNAL: 'INTERNAL',
+  RECURRING: 'RECURRING',
+  PREPAID: 'PREPAID',
+}
 /** @enum {string} */
 API.Client.BillingProfilesResponse.CardTypeEnum = { 
   UNKNOWN: 'UNKNOWN',
@@ -48,16 +63,6 @@ API.Client.BillingProfilesResponse.CardTypeEnum = {
   AMERICAN_EXPRESS: 'AMERICAN_EXPRESS',
   DISCOVER: 'DISCOVER',
   ELO: 'ELO',
-}
-/** @enum {string} */
-API.Client.BillingProfilesResponse.StatusEnum = { 
-  UNSPECIFIED: 'UNSPECIFIED',
-  VALID: 'VALID',
-  INVALID: 'INVALID',
-  PENDING: 'PENDING',
-  DELETED: 'DELETED',
-  SECONDARY: 'SECONDARY',
-  PENDING_SECONDARY: 'PENDING_SECONDARY',
 }
 /** @enum {string} */
 API.Client.BillingProfilesResponse.PaymentMethodBrandEnum = { 
@@ -70,4 +75,14 @@ API.Client.BillingProfilesResponse.PaymentMethodBrandEnum = {
   DINERS_CLUB: 'DINERS_CLUB',
   ELO: 'ELO',
   CARTE_BANCAIRE: 'CARTE_BANCAIRE',
+}
+/** @enum {string} */
+API.Client.BillingProfilesResponse.StatusEnum = { 
+  UNSPECIFIED: 'UNSPECIFIED',
+  VALID: 'VALID',
+  INVALID: 'INVALID',
+  PENDING: 'PENDING',
+  DELETED: 'DELETED',
+  SECONDARY: 'SECONDARY',
+  PENDING_SECONDARY: 'PENDING_SECONDARY',
 }

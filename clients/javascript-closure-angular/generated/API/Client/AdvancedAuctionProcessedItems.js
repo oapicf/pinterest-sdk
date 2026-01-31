@@ -15,7 +15,7 @@ API.Client.AdvancedAuctionProcessedItems.prototype.catalogId;
 
 /**
  * Array of advanced auction processed items
- * @type {!Array<!API.Client.AdvancedAuctionProcessedItem>}
+ * @type {!Array<!API.Client.AdvancedAuctionItemsSubmitRecord>}
  * @export
  */
 API.Client.AdvancedAuctionProcessedItems.prototype.items;

@@ -1,0 +1,63 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsItemsPostFilters"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsItemsPostFilters"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsItemsPostFilter = openapi_server.resourceTypes.CatalogsCreativeAssetsItemsPostFilter
+  CatalogsHotelItemsPostFilter = openapi_server.resourceTypes.CatalogsHotelItemsPostFilter
+  CatalogsRetailItemsPostFilter = openapi_server.resourceTypes.CatalogsRetailItemsPostFilter
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsItemsPostFilters {
+    title = CatalogsItemsPostFilters
+    description = CatalogsItemsPostFilters
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog"
+          optional = false
+        }
+        item_ids {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+        hotel_ids {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+        creative_assets_ids {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsItemsPostFilters {
+    title = CatalogsItemsPostFilters
+    description = CatalogsItemsPostFilters
+    implements = openapi_server.resourceTypes.CatalogsItemsPostFilters
+
+  }
+}

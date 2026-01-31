@@ -308,12 +308,12 @@ Name | Type | Description  | Notes
 <a id="Invoke-BoardsCreate"></a>
 # **Invoke-BoardsCreate**
 > Board Invoke-BoardsCreate<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Board] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardCreate] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Create board
 
-Create a board owned by the ""operation user_account"". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". - By default, the ""operation user_account"" is the token user_account.
+Create a board owned by the ""operation user_account"". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". * By default, the ""operation user_account"" is the token user_account.
 
 ### Example
 ```powershell
@@ -322,14 +322,15 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BoardMedia = Initialize-BoardMedia -ImageCoverUrl "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg" -PinThumbnailUrls "MyPinThumbnailUrls"
-$BoardOwner = Initialize-BoardOwner -Username "MyUsername"
-$Board = Initialize-Board -Id "549755885175" -CreatedAt (Get-Date) -BoardPinsModifiedAt (Get-Date) -Name "Summer Recipes" -Description "My favorite summer recipes" -CollaboratorCount 17 -PinCount 5 -FollowerCount 13 -Media $BoardMedia -Owner $BoardOwner -Privacy "PUBLIC" # Board | Create a board using a single board json object.
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$BoardCreate = Initialize-BoardCreate -Description "My favorite summer recipes" -IsAdsOnly $true -Name "Summer recipes" -Privacy "PUBLIC" # BoardCreate | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Create board
 try {
-    $Result = Invoke-BoardsCreate -Board $Board -AdAccountId $AdAccountId
+    $Result = Invoke-BoardsCreate -BoardCreate $BoardCreate -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -340,7 +341,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Board** | [**Board**](Board.md)| Create a board using a single board json object. | 
+ **BoardCreate** | [**BoardCreate**](BoardCreate.md)|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -349,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -366,7 +367,7 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the ""operation user_account"". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". - By default, the ""operation user_account"" is the token user_account.
+Delete a board owned by the ""operation user_account"". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". * By default, the ""operation user_account"" is the token user_account.
 
 ### Example
 ```powershell
@@ -375,7 +376,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BoardId = "MyBoardId" # String | Unique identifier of a board.
+$BoardId = "MyBoardId" # String | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Delete board
@@ -391,7 +392,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **BoardId** | **String**| Unique identifier of a board. | 
+ **BoardId** | **String**|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -417,7 +418,7 @@ void (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". - By default, the ""operation user_account"" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". * By default, the ""operation user_account"" is the token user_account.
 
 ### Example
 ```powershell
@@ -429,7 +430,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BoardId = "MyBoardId" # String | Unique identifier of a board.
+$BoardId = "MyBoardId" # String | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get board
@@ -445,7 +446,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **BoardId** | **String**| Unique identifier of a board. | 
+ **BoardId** | **String**|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -467,13 +468,13 @@ Name | Type | Description  | Notes
 # **Invoke-BoardsList**
 > BoardsList200Response Invoke-BoardsList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Privacy] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Privacy] <String><br>
 
 List boards
 
-Get a list of the boards owned by the ""operation user_account"" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the ""operation user_account"" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 ```powershell
@@ -486,13 +487,13 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
+$Privacy = "ALL" # BoardPrivacyFilter | The privacy level of the board (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$Privacy = "ALL" # String | Privacy setting for a board. (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List boards
 try {
-    $Result = Invoke-BoardsList -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Privacy $Privacy
+    $Result = Invoke-BoardsList -AdAccountId $AdAccountId -Privacy $Privacy -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -504,9 +505,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
+ **Privacy** | [**BoardPrivacyFilter**](BoardPrivacyFilter.md)| The privacy level of the board | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **Privacy** | **String**| Privacy setting for a board. | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -529,7 +530,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreativeTypes] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreativeTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinMetrics] <System.Nullable[Boolean]><br>
 
@@ -550,9 +551,9 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 $PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$CreativeTypes = "REGULAR" # String[] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+$CreativeTypes = "REGULAR" # CreativeType[] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
-$PinMetrics = $true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to $false)
+$PinMetrics = $true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to $false)
 
 # List Pins on board
 try {
@@ -570,9 +571,9 @@ Name | Type | Description  | Notes
  **BoardId** | **String**| Unique identifier of a board. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
  **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **CreativeTypes** | [**String[]**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
+ **CreativeTypes** | [**CreativeType[]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
- **PinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to $false]
+ **PinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to $false]
 
 ### Return type
 
@@ -591,14 +592,14 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-BoardsUpdate"></a>
 # **Invoke-BoardsUpdate**
-> Board Invoke-BoardsUpdate<br>
+> BoardWithUpdatePrivacy Invoke-BoardsUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardUpdate] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardWithUpdatePrivacyUpdate] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Update board
 
-Update a board owned by the ""operating user_account"". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". - By default, the ""operation user_account"" is the token user_account.
+Update a board owned by the ""operating user_account"". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". * By default, the ""operation user_account"" is the token user_account.
 
 ### Example
 ```powershell
@@ -607,13 +608,16 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BoardId = "MyBoardId" # String | Unique identifier of a board.
-$BoardUpdate = Initialize-BoardUpdate -Name "Summer Recipes" -Description "My favorite summer recipes" -Privacy "PUBLIC" # BoardUpdate | Update a board.
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$BoardId = "MyBoardId" # String | 
+$BoardWithUpdatePrivacyUpdate = Initialize-BoardWithUpdatePrivacyUpdate -Description "My favorite summer recipes" -Name "Summer recipes" -Privacy "PUBLIC" # BoardWithUpdatePrivacyUpdate | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Update board
 try {
-    $Result = Invoke-BoardsUpdate -BoardId $BoardId -BoardUpdate $BoardUpdate -AdAccountId $AdAccountId
+    $Result = Invoke-BoardsUpdate -BoardId $BoardId -BoardWithUpdatePrivacyUpdate $BoardWithUpdatePrivacyUpdate -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardsUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -624,17 +628,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **BoardId** | **String**| Unique identifier of a board. | 
- **BoardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. | 
+ **BoardId** | **String**|  | 
+ **BoardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**Board**](Board.md) (PSCustomObject)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md) (PSCustomObject)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

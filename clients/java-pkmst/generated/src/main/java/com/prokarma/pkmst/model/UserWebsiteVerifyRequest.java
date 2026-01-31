@@ -16,11 +16,8 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "User website verification request")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerifyRequest   {
-  @JsonProperty("website")
-  private String website;
-
   /**
    * Gets or Sets verificationMethod
    */
@@ -57,23 +54,8 @@ public class UserWebsiteVerifyRequest   {
   @JsonProperty("verification_method")
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
 
-  public UserWebsiteVerifyRequest website(String website) {
-    this.website = website;
-    return this;
-  }
-
-  /**
-   * Get website
-   * @return website
-   */
-  @ApiModelProperty(example = "pintest-website-12345678.test/test_1", value = "")
-  public String getWebsite() {
-    return website;
-  }
-
-  public void setWebsite(String website) {
-    this.website = website;
-  }
+  @JsonProperty("website")
+  private String website;
 
   public UserWebsiteVerifyRequest verificationMethod(VerificationMethodEnum verificationMethod) {
     this.verificationMethod = verificationMethod;
@@ -93,6 +75,24 @@ public class UserWebsiteVerifyRequest   {
     this.verificationMethod = verificationMethod;
   }
 
+  public UserWebsiteVerifyRequest website(String website) {
+    this.website = website;
+    return this;
+  }
+
+  /**
+   * Get website
+   * @return website
+   */
+  @ApiModelProperty(example = "pintest-website-12345678.test/test_1", value = "")
+  public String getWebsite() {
+    return website;
+  }
+
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -103,13 +103,13 @@ public class UserWebsiteVerifyRequest   {
       return false;
     }
     UserWebsiteVerifyRequest userWebsiteVerifyRequest = (UserWebsiteVerifyRequest) o;
-    return Objects.equals(this.website, userWebsiteVerifyRequest.website) &&
-        Objects.equals(this.verificationMethod, userWebsiteVerifyRequest.verificationMethod);
+    return Objects.equals(this.verificationMethod, userWebsiteVerifyRequest.verificationMethod) &&
+        Objects.equals(this.website, userWebsiteVerifyRequest.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, verificationMethod);
+    return Objects.hash(verificationMethod, website);
   }
 
   @Override
@@ -117,8 +117,8 @@ public class UserWebsiteVerifyRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerifyRequest {\n");
     
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

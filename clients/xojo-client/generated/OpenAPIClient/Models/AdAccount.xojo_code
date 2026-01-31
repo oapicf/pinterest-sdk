@@ -2,22 +2,15 @@
 Protected Class AdAccount
 
 	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		owner As OpenAPIClient.Models.AdAccountOwner
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			 Creation time. Unix timestamp in seconds.
+		#tag EndNote
+		created_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -27,22 +20,32 @@ Protected Class AdAccount
 
 
 	#tag Property, Flags = &h0
+		id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Ad account name.
+		#tag EndNote
+		name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Ad account owner
+		#tag EndNote
+		owner As OpenAPIClient.Models.AdAccountOwner
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		permissions() As BusinessAccessRole
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Creation time. Unix timestamp in seconds.
-		#tag EndNote
-		created_time As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Last update time. Unix timestamp in seconds.
-		#tag EndNote
 		updated_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
@@ -84,6 +87,30 @@ Protected Class AdAccount
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Currency"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
@@ -108,35 +135,11 @@ Protected Class AdAccount
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="country"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Country"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Currency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="permissions"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="BusinessAccessRole"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

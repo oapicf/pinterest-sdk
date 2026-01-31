@@ -11,24 +11,15 @@ import org.openapitools.vertxweb.server.model.MediaType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleMediaTypesCriteria   {
   
-  private List<MediaType> values = new ArrayList<>();
   private Boolean negated = false;
+  private List<MediaType> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleMediaTypesCriteria () {
 
   }
 
-  public CatalogsProductGroupMultipleMediaTypesCriteria (List<MediaType> values, Boolean negated) {
-    this.values = values;
+  public CatalogsProductGroupMultipleMediaTypesCriteria (Boolean negated, List<MediaType> values) {
     this.negated = negated;
-  }
-
-    
-  @JsonProperty("values")
-  public List<MediaType> getValues() {
-    return values;
-  }
-  public void setValues(List<MediaType> values) {
     this.values = values;
   }
 
@@ -41,6 +32,15 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
     this.negated = negated;
   }
 
+    
+  @JsonProperty("values")
+  public List<MediaType> getValues() {
+    return values;
+  }
+  public void setValues(List<MediaType> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -51,13 +51,13 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleMediaTypesCriteria catalogsProductGroupMultipleMediaTypesCriteria = (CatalogsProductGroupMultipleMediaTypesCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleMediaTypesCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleMediaTypesCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleMediaTypesCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleMediaTypesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -65,8 +65,8 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleMediaTypesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

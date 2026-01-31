@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * GetMMMReportResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetMMMReportResponseData {
 
   /**
@@ -71,9 +71,9 @@ public class GetMMMReportResponseData {
 
   private ReportStatusEnum reportStatus;
 
-  private JsonNullable<String> url = JsonNullable.<String>undefined();
-
   private JsonNullable<BigDecimal> size = JsonNullable.<BigDecimal>undefined();
+
+  private JsonNullable<String> url = JsonNullable.<String>undefined();
 
   public GetMMMReportResponseData reportStatus(ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
@@ -93,26 +93,6 @@ public class GetMMMReportResponseData {
 
   public void setReportStatus(ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
-  }
-
-  public GetMMMReportResponseData url(String url) {
-    this.url = JsonNullable.of(url);
-    return this;
-  }
-
-  /**
-   * Get url
-   * @return url
-   */
-  
-  @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("url")
-  public JsonNullable<String> getUrl() {
-    return url;
-  }
-
-  public void setUrl(JsonNullable<String> url) {
-    this.url = url;
   }
 
   public GetMMMReportResponseData size(BigDecimal size) {
@@ -135,6 +115,26 @@ public class GetMMMReportResponseData {
     this.size = size;
   }
 
+  public GetMMMReportResponseData url(String url) {
+    this.url = JsonNullable.of(url);
+    return this;
+  }
+
+  /**
+   * Get url
+   * @return url
+   */
+  
+  @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("url")
+  public JsonNullable<String> getUrl() {
+    return url;
+  }
+
+  public void setUrl(JsonNullable<String> url) {
+    this.url = url;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -145,8 +145,8 @@ public class GetMMMReportResponseData {
     }
     GetMMMReportResponseData getMMMReportResponseData = (GetMMMReportResponseData) o;
     return Objects.equals(this.reportStatus, getMMMReportResponseData.reportStatus) &&
-        equalsNullable(this.url, getMMMReportResponseData.url) &&
-        equalsNullable(this.size, getMMMReportResponseData.size);
+        equalsNullable(this.size, getMMMReportResponseData.size) &&
+        equalsNullable(this.url, getMMMReportResponseData.url);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -155,7 +155,7 @@ public class GetMMMReportResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, hashCodeNullable(url), hashCodeNullable(size));
+    return Objects.hash(reportStatus, hashCodeNullable(size), hashCodeNullable(url));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -170,8 +170,8 @@ public class GetMMMReportResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMMMReportResponseData {\n");
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

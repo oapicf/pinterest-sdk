@@ -14,21 +14,15 @@
       "default": null
     },
     {
-      "name": "demographics",
-      "type": ["null", "model.AudienceDemographics"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "type",
-      "type": ["null", "model.AudienceInsightType"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "date",
       "type": ["null", "string"],
       "doc": "Generation date",
+      "default": null
+    },
+    {
+      "name": "demographics",
+      "type": ["null", "model.AudienceDemographics"],
+      "doc": "",
       "default": null
     },
     {
@@ -41,6 +35,12 @@
       "name": "size_is_upper_bound",
       "type": ["null", "boolean"],
       "doc": "Indicates whether the audience size has been rounded up to the next highest upper boundary.",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "model.AudienceInsightType"],
+      "doc": "",
       "default": null
     }
   ]

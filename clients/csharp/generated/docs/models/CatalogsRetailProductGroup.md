@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **string** |  | 
-**Id** | **string** | ID of the catalog product group. | 
-**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
 **CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
-**Name** | **string** | Name of catalog product group | [optional] 
-**Description** | **string** |  | [optional] 
-**IsFeatured** | **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
-**Type** | **CatalogsProductGroupType** |  | [optional] 
-**Status** | **CatalogsProductGroupStatus** |  | [optional] 
-**CreatedAt** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
-**UpdatedAt** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**FeedId** | **string** | id of the catalogs feed belonging to this catalog product group | 
+**CatalogType** | **string** |  | 
+**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
+**Id** | **string** | ID of the catalog product group. | 
+**Type** | **CatalogsProductGroupType** |  | 
 **Country** | **string** |  | [optional] 
+**CreatedAt** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**Description** | **string** |  | [optional] 
+**FeedId** | **string** | id of the catalogs feed belonging to this catalog product group | 
+**IsFeatured** | **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Locale** | **string** |  | [optional] 
+**Name** | **string** | Name of catalog product group | [optional] 
+**Status** | **CatalogsProductGroupStatus** |  | [optional] 
+**UpdatedAt** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

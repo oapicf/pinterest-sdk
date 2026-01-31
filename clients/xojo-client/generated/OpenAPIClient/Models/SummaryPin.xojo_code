@@ -2,12 +2,17 @@
 Protected Class SummaryPin
 
 	#tag Property, Flags = &h0
-		media As OpenAPIClient.Models.PinMedia
+		alt_text As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		alt_text As Xoson.O.OptionalString
+		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -17,12 +22,12 @@ Protected Class SummaryPin
 
 
 	#tag Property, Flags = &h0
-		title As Xoson.O.OptionalString
+		media As OpenAPIClient.Models.PinMedia
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
+		title As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -63,15 +68,23 @@ Protected Class SummaryPin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="media"
+			Name="alt_text"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="PinMedia"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="alt_text"
+			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -87,15 +100,15 @@ Protected Class SummaryPin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="title"
+			Name="media"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="PinMedia"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="description"
+			Name="title"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

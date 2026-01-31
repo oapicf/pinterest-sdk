@@ -18,6 +18,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest  {
   
+ /**
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL"));
@@ -50,40 +56,9 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   private CatalogTypeEnum catalogType;
 
- /**
-  * Catalog id pertaining to the hotel product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-  private String catalogId;
-
   @ApiModelProperty(required = true, value = "")
   @Valid
   private CatalogsHotelProductGroupFilters filters;
- /**
-  * Get catalogType
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public String getCatalogType() {
-    return catalogType == null ? null : catalogType.value();
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
  /**
   * Catalog id pertaining to the hotel product group.
   * @return catalogId
@@ -106,6 +81,31 @@ public enum CatalogTypeEnum {
    */
   public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
+    return this;
+  }
+
+ /**
+  * Get catalogType
+  * @return catalogType
+  */
+  @JsonProperty("catalog_type")
+  @NotNull
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+ public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
@@ -144,14 +144,14 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsHotelListProductsByCatalogBasedFilterRequest catalogsHotelListProductsByCatalogBasedFilterRequest = (CatalogsHotelListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.filters, catalogsHotelListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -159,8 +159,8 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

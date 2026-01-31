@@ -14,37 +14,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * An exception object if there is an error performing the action. Will only be provided if there is an error.
  */
 @ApiModel(description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteExceptionResponse   {
-  @JsonProperty("invite_or_request_id")
-  private String inviteOrRequestId;
-
   @JsonProperty("code")
   private Integer code;
+
+  @JsonProperty("invite_or_request_id")
+  private String inviteOrRequestId;
 
   @JsonProperty("message")
   private String message;
 
   @JsonProperty("users_or_partner_ids")
   private List<String> usersOrPartnerIds = null;
-
-  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of the invite/request.
-   * @return inviteOrRequestId
-  **/
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
-  public String getInviteOrRequestId() {
-    return inviteOrRequestId;
-  }
-
-  public void setInviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-  }
 
   public InviteExceptionResponse code(Integer code) {
     this.code = code;
@@ -62,6 +44,24 @@ public class InviteExceptionResponse   {
 
   public void setCode(Integer code) {
     this.code = code;
+  }
+
+  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the invite/request.
+   * @return inviteOrRequestId
+  **/
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+  public String getInviteOrRequestId() {
+    return inviteOrRequestId;
+  }
+
+  public void setInviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
   }
 
   public InviteExceptionResponse message(String message) {
@@ -118,15 +118,15 @@ public class InviteExceptionResponse   {
       return false;
     }
     InviteExceptionResponse inviteExceptionResponse = (InviteExceptionResponse) o;
-    return Objects.equals(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
-        Objects.equals(this.code, inviteExceptionResponse.code) &&
+    return Objects.equals(this.code, inviteExceptionResponse.code) &&
+        Objects.equals(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
         Objects.equals(this.message, inviteExceptionResponse.message) &&
         Objects.equals(this.usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteOrRequestId, code, message, usersOrPartnerIds);
+    return Objects.hash(code, inviteOrRequestId, message, usersOrPartnerIds);
   }
 
   @Override
@@ -134,8 +134,8 @@ public class InviteExceptionResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteExceptionResponse {\n");
     
-    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    usersOrPartnerIds: ").append(toIndentedString(usersOrPartnerIds)).append("\n");
     sb.append("}");

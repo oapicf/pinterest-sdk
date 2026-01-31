@@ -33,16 +33,16 @@ class CatalogsCreativeAssetsItemErrorResponseTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
-        // to test the property `creativeAssetsId` - The catalog creative assets id in the merchant namespace
-        should("test creativeAssetsId") {
-            // uncomment below to test the property
-            //modelInstance.creativeAssetsId shouldBe ("TODO")
-        }
-
         // to test the property `errors` - Array with the errors for the item id requested
         should("test errors") {
             // uncomment below to test the property
             //modelInstance.errors shouldBe ("TODO")
+        }
+
+        // to test the property `creativeAssetsId` - The catalog creative assets id in the merchant namespace
+        should("test creativeAssetsId") {
+            // uncomment below to test the property
+            //modelInstance.creativeAssetsId shouldBe ("TODO")
         }
 
     }

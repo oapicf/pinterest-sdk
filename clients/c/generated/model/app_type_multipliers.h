@@ -15,18 +15,25 @@
 
 typedef struct app_type_multipliers_t app_type_multipliers_t;
 
-#include "targeting_spec_app_type.h"
+
+// Enum APPTYPE for app_type_multipliers
+
+typedef enum  { pinterest_rest_api_app_type_multipliers_APPTYPE_NULL = 0, pinterest_rest_api_app_type_multipliers_APPTYPE_android_mobile, pinterest_rest_api_app_type_multipliers_APPTYPE_android_tablet, pinterest_rest_api_app_type_multipliers_APPTYPE_ipad, pinterest_rest_api_app_type_multipliers_APPTYPE_iphone, pinterest_rest_api_app_type_multipliers_APPTYPE_web, pinterest_rest_api_app_type_multipliers_APPTYPE_web_mobile } pinterest_rest_api_app_type_multipliers_APPTYPE_e;
+
+char* app_type_multipliers_app_type_ToString(pinterest_rest_api_app_type_multipliers_APPTYPE_e app_type);
+
+pinterest_rest_api_app_type_multipliers_APPTYPE_e app_type_multipliers_app_type_FromString(char* app_type);
 
 
 
 typedef struct app_type_multipliers_t {
-    pinterest_rest_api_targeting_spec_app_type__e app_type; //referenced enum
+    pinterest_rest_api_app_type_multipliers_APPTYPE_e app_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } app_type_multipliers_t;
 
 __attribute__((deprecated)) app_type_multipliers_t *app_type_multipliers_create(
-    pinterest_rest_api_targeting_spec_app_type__e app_type
+    pinterest_rest_api_app_type_multipliers_APPTYPE_e app_type
 );
 
 void app_type_multipliers_free(app_type_multipliers_t *app_type_multipliers);

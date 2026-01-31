@@ -16,16 +16,16 @@ case class AdsCreditDiscountsResponse (
   active: Option[Boolean],
 /* Advertiser ID the offer was applied to. */
   advertiserId: Option[String],
-/* The type of discount of this credit */
-  discountType: Option[DiscountType],
-/* The discount applied in the offer’s currency value. */
-  discountInMicroCurrency: Option[BigDecimal],
 /* Currency value for the discount. */
   discountCurrency: Option[String],
-/* Human readable title of the offer code. */
-  title: Option[String],
+/* The discount applied in the offer’s currency value. */
+  discountInMicroCurrency: Option[BigDecimal],
+/* The type of discount of this credit */
+  discountType: Option[DiscountType],
 /* The credits left to spend. */
-  remainingDiscountInMicroCurrency: Option[BigDecimal])
+  remainingDiscountInMicroCurrency: Option[BigDecimal],
+/* Human readable title of the offer code. */
+  title: Option[String])
 
 object AdsCreditDiscountsResponse {
   import DateTimeCodecs._

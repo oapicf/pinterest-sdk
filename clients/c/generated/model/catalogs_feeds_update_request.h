@@ -25,12 +25,12 @@ typedef struct catalogs_feeds_update_request_t catalogs_feeds_update_request_t;
 
 
 typedef struct catalogs_feeds_update_request_t {
+    struct catalogs_feed_credentials_t *credentials; //model
     pinterest_rest_api_product_availability_type__e default_availability; //referenced enum
     pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
-    char *name; // string
     pinterest_rest_api_catalogs_format__e format; //referenced enum
-    struct catalogs_feed_credentials_t *credentials; //model
     char *location; // string
+    char *name; // string
     struct catalogs_feed_processing_schedule_t *preferred_processing_schedule; //model
     pinterest_rest_api_catalogs_status__e status; //referenced enum
 
@@ -38,12 +38,12 @@ typedef struct catalogs_feeds_update_request_t {
 } catalogs_feeds_update_request_t;
 
 __attribute__((deprecated)) catalogs_feeds_update_request_t *catalogs_feeds_update_request_create(
+    catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_product_availability_type__e default_availability,
     pinterest_rest_api_nullable_currency__e default_currency,
-    char *name,
     pinterest_rest_api_catalogs_format__e format,
-    catalogs_feed_credentials_t *credentials,
     char *location,
+    char *name,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     pinterest_rest_api_catalogs_status__e status
 );

@@ -22,16 +22,16 @@ typedef struct catalogs_items_request_t catalogs_items_request_t;
 
 typedef struct catalogs_items_request_t {
     pinterest_rest_api_country__e country; //referenced enum
-    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language; //enum
     struct catalogs_items_post_filters_t *filters; //model
+    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_items_request_t;
 
 __attribute__((deprecated)) catalogs_items_request_t *catalogs_items_request_create(
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language,
-    catalogs_items_post_filters_t *filters
+    catalogs_items_post_filters_t *filters,
+    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language
 );
 
 void catalogs_items_request_free(catalogs_items_request_t *catalogs_items_request);

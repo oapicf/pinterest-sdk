@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.PinMediaSourceImagesBase64ItemsInner
+open OpenAPI.Model.PinMediaSourceImagesBase64Item
 
 module PinMediaSourceImagesBase64 =
 
@@ -13,8 +13,8 @@ module PinMediaSourceImagesBase64 =
   //#endregion
 
   type PinMediaSourceImagesBase64 = {
-    SourceType : SourceTypeEnum;
-    Items : PinMediaSourceImagesBase64ItemsInner[];
     Index : int;
+    Items : PinMediaSourceImagesBase64Item[];
+    SourceType : SourceTypeEnum;
   }
   //#endregion

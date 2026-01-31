@@ -6,8 +6,39 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class BillingProfilesResponse {
-    /* Billing ID. */
-    String id
+    /* Advertiser ID of the billing. */
+    String advertiserId
+
+    enum BillingTypeEnum {
+    
+        CREDIT_CARD("CREDIT_CARD"),
+        
+        INVOICE("INVOICE"),
+        
+        INTERNAL("INTERNAL"),
+        
+        RECURRING("RECURRING"),
+        
+        PREPAID("PREPAID")
+    
+        private final String value
+    
+        BillingTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    /* Billing type of the advertiser */
+    BillingTypeEnum billingType
 
     enum CardTypeEnum {
     
@@ -41,43 +72,8 @@ class BillingProfilesResponse {
 
     /* Type of the card. */
     CardTypeEnum cardType
-
-    enum StatusEnum {
-    
-        UNSPECIFIED("UNSPECIFIED"),
-        
-        VALID("VALID"),
-        
-        INVALID("INVALID"),
-        
-        PENDING("PENDING"),
-        
-        DELETED("DELETED"),
-        
-        SECONDARY("SECONDARY"),
-        
-        PENDING_SECONDARY("PENDING_SECONDARY")
-    
-        private final String value
-    
-        StatusEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    /* Status of the billing. */
-    StatusEnum status
-    /* Advertiser ID of the billing. */
-    String advertiserId
+    /* Billing ID. */
+    String id
 
     enum PaymentMethodBrandEnum {
     
@@ -117,4 +113,39 @@ class BillingProfilesResponse {
 
     /* Brand of the payment method. */
     PaymentMethodBrandEnum paymentMethodBrand
+
+    enum StatusEnum {
+    
+        UNSPECIFIED("UNSPECIFIED"),
+        
+        VALID("VALID"),
+        
+        INVALID("INVALID"),
+        
+        PENDING("PENDING"),
+        
+        DELETED("DELETED"),
+        
+        SECONDARY("SECONDARY"),
+        
+        PENDING_SECONDARY("PENDING_SECONDARY")
+    
+        private final String value
+    
+        StatusEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    /* Status of the billing. */
+    StatusEnum status
 }

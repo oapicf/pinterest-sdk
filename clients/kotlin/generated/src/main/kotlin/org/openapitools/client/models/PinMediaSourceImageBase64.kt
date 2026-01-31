@@ -15,30 +15,32 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.ContentType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Base64-encoded image media source
+ * Image Base64-based media source.
  *
- * @param sourceType 
  * @param contentType 
  * @param `data` 
+ * @param sourceType The source type of the media.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
 
 
 data class PinMediaSourceImageBase64 (
 
-    @Json(name = "source_type")
-    val sourceType: PinMediaSourceImageBase64.SourceType,
-
     @Json(name = "content_type")
-    val contentType: PinMediaSourceImageBase64.ContentType,
+    val contentType: ContentType,
 
     @Json(name = "data")
     val `data`: kotlin.String,
+
+    /* The source type of the media. */
+    @Json(name = "source_type")
+    val sourceType: PinMediaSourceImageBase64.SourceType,
 
     /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
     @Json(name = "is_standard")
@@ -47,23 +49,13 @@ data class PinMediaSourceImageBase64 (
 ) {
 
     /**
-     * 
+     * The source type of the media.
      *
      * Values: image_base64
      */
     @JsonClass(generateAdapter = false)
     enum class SourceType(val value: kotlin.String) {
         @Json(name = "image_base64") image_base64("image_base64");
-    }
-    /**
-     * 
-     *
-     * Values: imageSlashJpeg,imageSlashPng
-     */
-    @JsonClass(generateAdapter = false)
-    enum class ContentType(val value: kotlin.String) {
-        @Json(name = "image/jpeg") imageSlashJpeg("image/jpeg"),
-        @Json(name = "image/png") imageSlashPng("image/png");
     }
 
 }

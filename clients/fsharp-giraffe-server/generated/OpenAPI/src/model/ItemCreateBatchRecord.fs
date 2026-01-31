@@ -10,7 +10,7 @@ module ItemCreateBatchRecord =
 
 
   type ItemCreateBatchRecord = {
-    ItemId : string;
     Attributes : ItemAttributesRequest;
+    ItemId : string;
   }
   //#endregion

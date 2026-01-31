@@ -14,10 +14,10 @@ import java.util.HashMap
 import ProductGroupAnalyticsResponseInner._
 
 case class ProductGroupAnalyticsResponseInner (
-  /* The ID of the product group that this metrics belongs to. */
-  PRODUCT_GROUP_ID: String,
-/* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
-  DATE: Option[LocalDate])
+  /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
+  DATE: Option[LocalDate],
+/* The ID of the product group that this metrics belongs to. */
+  PRODUCT_GROUP_ID: String)
 
 object ProductGroupAnalyticsResponseInner {
   import DateTimeCodecs._

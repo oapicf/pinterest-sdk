@@ -7,11 +7,24 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Billing ID. |  [optional] |
-|**cardType** | [**CardTypeEnum**](#CardTypeEnum) | Type of the card. |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of the billing. |  [optional] |
 |**advertiserId** | **String** | Advertiser ID of the billing. |  [optional] |
+|**billingType** | [**BillingTypeEnum**](#BillingTypeEnum) | Billing type of the advertiser |  [optional] |
+|**cardType** | [**CardTypeEnum**](#CardTypeEnum) | Type of the card. |  [optional] |
+|**id** | **String** | Billing ID. |  [optional] |
 |**paymentMethodBrand** | [**PaymentMethodBrandEnum**](#PaymentMethodBrandEnum) | Brand of the payment method. |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Status of the billing. |  [optional] |
+
+
+
+## Enum: BillingTypeEnum
+
+| Name | Value |
+|---- | -----|
+| CREDIT_CARD | &quot;CREDIT_CARD&quot; |
+| INVOICE | &quot;INVOICE&quot; |
+| INTERNAL | &quot;INTERNAL&quot; |
+| RECURRING | &quot;RECURRING&quot; |
+| PREPAID | &quot;PREPAID&quot; |
 
 
 
@@ -28,20 +41,6 @@
 
 
 
-## Enum: StatusEnum
-
-| Name | Value |
-|---- | -----|
-| UNSPECIFIED | &quot;UNSPECIFIED&quot; |
-| VALID | &quot;VALID&quot; |
-| INVALID | &quot;INVALID&quot; |
-| PENDING | &quot;PENDING&quot; |
-| DELETED | &quot;DELETED&quot; |
-| SECONDARY | &quot;SECONDARY&quot; |
-| PENDING_SECONDARY | &quot;PENDING_SECONDARY&quot; |
-
-
-
 ## Enum: PaymentMethodBrandEnum
 
 | Name | Value |
@@ -55,6 +54,20 @@
 | DINERS_CLUB | &quot;DINERS_CLUB&quot; |
 | ELO | &quot;ELO&quot; |
 | CARTE_BANCAIRE | &quot;CARTE_BANCAIRE&quot; |
+
+
+
+## Enum: StatusEnum
+
+| Name | Value |
+|---- | -----|
+| UNSPECIFIED | &quot;UNSPECIFIED&quot; |
+| VALID | &quot;VALID&quot; |
+| INVALID | &quot;INVALID&quot; |
+| PENDING | &quot;PENDING&quot; |
+| DELETED | &quot;DELETED&quot; |
+| SECONDARY | &quot;SECONDARY&quot; |
+| PENDING_SECONDARY | &quot;PENDING_SECONDARY&quot; |
 
 
 

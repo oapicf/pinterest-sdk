@@ -23,20 +23,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object to list products for a given creative assets catalog_id and product group filter.
  *
- * @param catalogType 
  * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogType 
  * @param filters 
  */
 
 
 data class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest (
 
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogType,
-
     /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
+
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogType,
 
     @Json(name = "filters")
     val filters: CatalogsCreativeAssetsProductGroupFilters

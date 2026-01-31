@@ -73,13 +73,13 @@ private class OASSSIOAccountItemTest {
     private static void maintainRenamedProperties() {
         OASSSIOAccountItem ssIOAccountItem = new OASSSIOAccountItem();
         Map<String, String> x-property-mappings = ssIOAccountItem.getx-property-mappings();
-        System.assertEquals('ioTermsId', x-property-mappings.get('io_terms_id'));
         System.assertEquals('ioTerms', x-property-mappings.get('io_terms'));
-        System.assertEquals('usTermsId', x-property-mappings.get('us_terms_id'));
-        System.assertEquals('usTerms', x-property-mappings.get('us_terms'));
-        System.assertEquals('rowTermsId', x-property-mappings.get('row_terms_id'));
-        System.assertEquals('rowTerms', x-property-mappings.get('row_terms'));
+        System.assertEquals('ioTermsId', x-property-mappings.get('io_terms_id'));
         System.assertEquals('ioType', x-property-mappings.get('io_type'));
+        System.assertEquals('rowTerms', x-property-mappings.get('row_terms'));
+        System.assertEquals('rowTermsId', x-property-mappings.get('row_terms_id'));
+        System.assertEquals('usTerms', x-property-mappings.get('us_terms'));
+        System.assertEquals('usTermsId', x-property-mappings.get('us_terms_id'));
     }
 
     @isTest
@@ -87,12 +87,12 @@ private class OASSSIOAccountItemTest {
         OASSSIOAccountItem ssIOAccountItem = new OASSSIOAccountItem();
         System.assertEquals(new List<OASSSIOAccountAddress>(), ssIOAccountItem.addresses);
         System.assertEquals(null, ssIOAccountItem.id);
-        System.assertEquals(null, ssIOAccountItem.ioTermsId);
         System.assertEquals(null, ssIOAccountItem.ioTerms);
-        System.assertEquals(null, ssIOAccountItem.usTermsId);
-        System.assertEquals(null, ssIOAccountItem.usTerms);
-        System.assertEquals(null, ssIOAccountItem.rowTermsId);
-        System.assertEquals(null, ssIOAccountItem.rowTerms);
+        System.assertEquals(null, ssIOAccountItem.ioTermsId);
         System.assertEquals(null, ssIOAccountItem.ioType);
+        System.assertEquals(null, ssIOAccountItem.rowTerms);
+        System.assertEquals(null, ssIOAccountItem.rowTermsId);
+        System.assertEquals(null, ssIOAccountItem.usTerms);
+        System.assertEquals(null, ssIOAccountItem.usTermsId);
     }
 }

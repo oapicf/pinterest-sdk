@@ -12,10 +12,10 @@ module OrderLinesList200Response =
 
   [<CLIMutable>]
   type OrderLinesList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : OrderLine[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : OrderLine[];
   }
 
   //#endregion

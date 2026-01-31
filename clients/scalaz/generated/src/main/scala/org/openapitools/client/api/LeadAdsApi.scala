@@ -21,11 +21,10 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.AdAccountCreateSubscriptionRequest
-import org.openapitools.client.api.AdAccountCreateSubscriptionResponse
-import org.openapitools.client.api.AdAccountGetSubscriptionResponse
 import org.openapitools.client.api.AdAccountsSubscriptionsGetList200Response
 import org.openapitools.client.api.Error
+import org.openapitools.client.api.LeadSubscription
+import org.openapitools.client.api.LeadSubscriptionPostParamsCreate
 
 object LeadAdsApi {
 
@@ -52,8 +51,8 @@ object LeadAdsApi {
     } yield resp
   }
 
-  def adAccountsSubscriptionsGetById(host: String, adAccountId: String, subscriptionId: String): Task[AdAccountGetSubscriptionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdAccountGetSubscriptionResponse] = jsonOf[AdAccountGetSubscriptionResponse]
+  def adAccountsSubscriptionsGetById(host: String, adAccountId: String, subscriptionId: String): Task[LeadSubscription] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadSubscription] = jsonOf[LeadSubscription]
 
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "subscription_id" + "\\}",escape(subscriptionId.toString))
 
@@ -68,12 +67,12 @@ object LeadAdsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdAccountGetSubscriptionResponse](req)
+      resp          <- client.expect[LeadSubscription](req)
 
     } yield resp
   }
 
-  def adAccountsSubscriptionsGetList(host: String, adAccountId: String, pageSize: Integer = 25, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[AdAccountsSubscriptionsGetList200Response] = {
+  def adAccountsSubscriptionsGetList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsSubscriptionsGetList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsSubscriptionsGetList200Response] = jsonOf[AdAccountsSubscriptionsGetList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -83,7 +82,7 @@ object LeadAdsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -94,8 +93,8 @@ object LeadAdsApi {
     } yield resp
   }
 
-  def adAccountsSubscriptionsPost(host: String, adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest): Task[AdAccountCreateSubscriptionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdAccountCreateSubscriptionResponse] = jsonOf[AdAccountCreateSubscriptionResponse]
+  def adAccountsSubscriptionsPost(host: String, adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate): Task[LeadSubscription] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadSubscription] = jsonOf[LeadSubscription]
 
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -109,8 +108,8 @@ object LeadAdsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountCreateSubscriptionRequest)
-      resp          <- client.expect[AdAccountCreateSubscriptionResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadSubscriptionPostParamsCreate)
+      resp          <- client.expect[LeadSubscription](req)
 
     } yield resp
   }
@@ -141,8 +140,8 @@ class HttpServiceLeadAdsApi(service: HttpService) {
     } yield resp
   }
 
-  def adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String): Task[AdAccountGetSubscriptionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdAccountGetSubscriptionResponse] = jsonOf[AdAccountGetSubscriptionResponse]
+  def adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String): Task[LeadSubscription] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadSubscription] = jsonOf[LeadSubscription]
 
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "subscription_id" + "\\}",escape(subscriptionId.toString))
 
@@ -157,12 +156,12 @@ class HttpServiceLeadAdsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdAccountGetSubscriptionResponse](req)
+      resp          <- client.expect[LeadSubscription](req)
 
     } yield resp
   }
 
-  def adAccountsSubscriptionsGetList(adAccountId: String, pageSize: Integer = 25, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[AdAccountsSubscriptionsGetList200Response] = {
+  def adAccountsSubscriptionsGetList(adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsSubscriptionsGetList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsSubscriptionsGetList200Response] = jsonOf[AdAccountsSubscriptionsGetList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -172,7 +171,7 @@ class HttpServiceLeadAdsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -183,8 +182,8 @@ class HttpServiceLeadAdsApi(service: HttpService) {
     } yield resp
   }
 
-  def adAccountsSubscriptionsPost(adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest): Task[AdAccountCreateSubscriptionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdAccountCreateSubscriptionResponse] = jsonOf[AdAccountCreateSubscriptionResponse]
+  def adAccountsSubscriptionsPost(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate): Task[LeadSubscription] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadSubscription] = jsonOf[LeadSubscription]
 
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -198,8 +197,8 @@ class HttpServiceLeadAdsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountCreateSubscriptionRequest)
-      resp          <- client.expect[AdAccountCreateSubscriptionResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadSubscriptionPostParamsCreate)
+      resp          <- client.expect[LeadSubscription](req)
 
     } yield resp
   }

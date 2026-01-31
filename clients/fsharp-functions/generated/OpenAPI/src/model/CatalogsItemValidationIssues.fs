@@ -13,12 +13,12 @@ module CatalogsItemValidationIssues =
 
   [<CLIMutable>]
   type CatalogsItemValidationIssues = {
-    [<JsonProperty(PropertyName = "item_number")>]
-    ItemNumber : int;
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string option;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : CatalogsItemValidationErrors;
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string option;
+    [<JsonProperty(PropertyName = "item_number")>]
+    ItemNumber : int;
     [<JsonProperty(PropertyName = "warnings")>]
     Warnings : CatalogsItemValidationWarnings;
   }

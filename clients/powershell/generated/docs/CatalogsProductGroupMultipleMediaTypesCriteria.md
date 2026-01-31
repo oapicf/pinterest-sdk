@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | [**MediaType[]**](MediaType.md) |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Values** | [**MediaType[]**](MediaType.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupMultipleMediaTypesCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleMediaTypesCriteria  -Values null `
- -Negated null
+$CatalogsProductGroupMultipleMediaTypesCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleMediaTypesCriteria  -Negated null `
+ -Values null
 ```
 
 - Convert the resource to JSON

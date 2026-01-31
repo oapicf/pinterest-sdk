@@ -10,61 +10,44 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60; */
+/** Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60; */
 public struct TargetingSpec: Codable, JSONEncodable, Hashable {
 
-    public enum AGEBUCKET: String, Codable, CaseIterable {
-        case _1824 = "18-24"
-        case _21Plus = "21+"
-        case _2534 = "25-34"
-        case _3544 = "35-44"
-        case _4549 = "45-49"
-        case _5054 = "50-54"
-        case _5564 = "55-64"
-        case _65Plus = "65+"
-    }
-    public enum APPTYPE: String, Codable, CaseIterable {
-        case androidMobile = "android_mobile"
-        case androidTablet = "android_tablet"
-        case ipad = "ipad"
-        case iphone = "iphone"
-        case web = "web"
-        case webMobile = "web_mobile"
-    }
-    public enum GENDER: String, Codable, CaseIterable {
-        case unknown = "unknown"
-        case male = "male"
-        case female = "female"
-    }
     public enum TARGETINGSTRATEGY: String, Codable, CaseIterable {
         case chooseYourOwn = "CHOOSE_YOUR_OWN"
         case findNewCustomers = "FIND_NEW_CUSTOMERS"
         case reconnectWithUsers = "RECONNECT_WITH_USERS"
     }
-    /** Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted. */
-    public var AGE_BUCKET: [AGEBUCKET]?
+    public static let MAXIMUM_AGERule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+\\+?$/")
+    public static let MINIMUM_AGERule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    /** **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted. */
+    public var AGE_BUCKET: [TargetingSpecAgeBucket]?
     /** Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. */
-    public var APPTYPE: [APPTYPEEnum]?
+    public var APPTYPE: [TargetingSpecAppType]?
     /** Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**. */
     public var AUDIENCE_EXCLUDE: [String]?
     /** Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**. */
     public var AUDIENCE_INCLUDE: [String]?
     /** Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. */
-    public var GENDER: [GENDEREnum]?
+    public var GENDER: [TargetingSpecGender]?
     /** Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below). */
     public var GEO: [String]?
     /** Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**. */
     public var INTEREST: [String]?
-    /** 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**. */
+    /** 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted. */
     public var LOCALE: [String]?
-    /** 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). */
+    /** 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). */
     public var LOCATION: [String]?
+    /** Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. */
+    public var MAXIMUM_AGE: String?
+    /** Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. */
+    public var MINIMUM_AGE: String?
     /** Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting */
-    public var SHOPPING_RETARGETING: [TargetingSpecSHOPPINGRETARGETING]?
+    public var SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting]?
     /**  */
     public var TARGETING_STRATEGY: [TARGETINGSTRATEGY]?
 
-    public init(AGE_BUCKET: [AGEBUCKET]? = nil, APPTYPE: [APPTYPEEnum]? = nil, AUDIENCE_EXCLUDE: [String]? = nil, AUDIENCE_INCLUDE: [String]? = nil, GENDER: [GENDEREnum]? = nil, GEO: [String]? = nil, INTEREST: [String]? = nil, LOCALE: [String]? = nil, LOCATION: [String]? = nil, SHOPPING_RETARGETING: [TargetingSpecSHOPPINGRETARGETING]? = nil, TARGETING_STRATEGY: [TARGETINGSTRATEGY]? = nil) {
+    public init(AGE_BUCKET: [TargetingSpecAgeBucket]? = nil, APPTYPE: [TargetingSpecAppType]? = nil, AUDIENCE_EXCLUDE: [String]? = nil, AUDIENCE_INCLUDE: [String]? = nil, GENDER: [TargetingSpecGender]? = nil, GEO: [String]? = nil, INTEREST: [String]? = nil, LOCALE: [String]? = nil, LOCATION: [String]? = nil, MAXIMUM_AGE: String? = nil, MINIMUM_AGE: String? = nil, SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting]? = nil, TARGETING_STRATEGY: [TARGETINGSTRATEGY]? = nil) {
         self.AGE_BUCKET = AGE_BUCKET
         self.APPTYPE = APPTYPE
         self.AUDIENCE_EXCLUDE = AUDIENCE_EXCLUDE
@@ -74,6 +57,8 @@ public struct TargetingSpec: Codable, JSONEncodable, Hashable {
         self.INTEREST = INTEREST
         self.LOCALE = LOCALE
         self.LOCATION = LOCATION
+        self.MAXIMUM_AGE = MAXIMUM_AGE
+        self.MINIMUM_AGE = MINIMUM_AGE
         self.SHOPPING_RETARGETING = SHOPPING_RETARGETING
         self.TARGETING_STRATEGY = TARGETING_STRATEGY
     }
@@ -88,6 +73,8 @@ public struct TargetingSpec: Codable, JSONEncodable, Hashable {
         case INTEREST
         case LOCALE
         case LOCATION
+        case MAXIMUM_AGE
+        case MINIMUM_AGE
         case SHOPPING_RETARGETING
         case TARGETING_STRATEGY
     }
@@ -105,6 +92,8 @@ public struct TargetingSpec: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(INTEREST, forKey: .INTEREST)
         try container.encodeIfPresent(LOCALE, forKey: .LOCALE)
         try container.encodeIfPresent(LOCATION, forKey: .LOCATION)
+        try container.encodeIfPresent(MAXIMUM_AGE, forKey: .MAXIMUM_AGE)
+        try container.encodeIfPresent(MINIMUM_AGE, forKey: .MINIMUM_AGE)
         try container.encodeIfPresent(SHOPPING_RETARGETING, forKey: .SHOPPING_RETARGETING)
         try container.encodeIfPresent(TARGETING_STRATEGY, forKey: .TARGETING_STRATEGY)
     }

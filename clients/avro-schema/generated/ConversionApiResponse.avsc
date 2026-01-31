@@ -5,9 +5,12 @@
   "name": "ConversionApiResponse",
   "fields": [
     {
-      "name": "num_events_received",
-      "type": "int",
-      "doc": "Total number of events received in the request."
+      "name": "events",
+      "type": {
+        "type": "array",
+        "items": "model.ConversionApiResponseEventsInner"
+      },
+      "doc": "Specific messages for each event received. The order will match the order in which the events were received in the request."
     },
     {
       "name": "num_events_processed",
@@ -15,12 +18,9 @@
       "doc": "Number of events that were successfully processed from the events."
     },
     {
-      "name": "events",
-      "type": {
-        "type": "array",
-        "items": "model.ConversionApiResponseEventsInner"
-      },
-      "doc": "Specific messages for each event received. The order will match the order in which the events were received in the request."
+      "name": "num_events_received",
+      "type": "int",
+      "doc": "Total number of events received in the request."
     }
   ]
 

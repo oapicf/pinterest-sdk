@@ -108,6 +108,7 @@ public class KeywordsApiHandler {
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String campaignId = requestParameters.queryParameter("campaign_id") != null ? requestParameters.queryParameter("campaign_id").getString() : null;
         String adGroupId = requestParameters.queryParameter("ad_group_id") != null ? requestParameters.queryParameter("ad_group_id").getString() : null;
+        List<String> adGroupIds = requestParameters.queryParameter("ad_group_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ad_group_ids").get(), new TypeReference<List<String>>(){}) : null;
         List<MatchType> matchTypes = requestParameters.queryParameter("match_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("match_types").get(), new TypeReference<List<MatchType>>(){}) : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
@@ -115,11 +116,12 @@ public class KeywordsApiHandler {
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter campaignId is {}", campaignId);
         logger.debug("Parameter adGroupId is {}", adGroupId);
+        logger.debug("Parameter adGroupIds is {}", adGroupIds);
         logger.debug("Parameter matchTypes is {}", matchTypes);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter bookmark is {}", bookmark);
 
-        api.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark)
+        api.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -170,6 +172,8 @@ public class KeywordsApiHandler {
         List<String> includeKeywords = requestParameters.queryParameter("include_keywords") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("include_keywords").get(), new TypeReference<List<String>>(){}) : null;
         Boolean normalizeAgainstGroup = requestParameters.queryParameter("normalize_against_group") != null ? requestParameters.queryParameter("normalize_against_group").getBoolean() : false;
         Integer limit = requestParameters.queryParameter("limit") != null ? requestParameters.queryParameter("limit").getInteger() : 50;
+        Boolean includePrediction = requestParameters.queryParameter("include_prediction") != null ? requestParameters.queryParameter("include_prediction").getBoolean() : false;
+        Boolean includeDemographics = requestParameters.queryParameter("include_demographics") != null ? requestParameters.queryParameter("include_demographics").getBoolean() : false;
 
         logger.debug("Parameter region is {}", region);
         logger.debug("Parameter trendType is {}", trendType);
@@ -179,8 +183,10 @@ public class KeywordsApiHandler {
         logger.debug("Parameter includeKeywords is {}", includeKeywords);
         logger.debug("Parameter normalizeAgainstGroup is {}", normalizeAgainstGroup);
         logger.debug("Parameter limit is {}", limit);
+        logger.debug("Parameter includePrediction is {}", includePrediction);
+        logger.debug("Parameter includeDemographics is {}", includeDemographics);
 
-        api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
+        api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

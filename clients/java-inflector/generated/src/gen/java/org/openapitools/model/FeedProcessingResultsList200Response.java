@@ -16,30 +16,13 @@ import org.openapitools.model.CatalogsFeedProcessingResult;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class FeedProcessingResultsList200Response   {
-  @JsonProperty("items")
-  private List<CatalogsFeedProcessingResult> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   **/
-  public FeedProcessingResultsList200Response items(List<CatalogsFeedProcessingResult> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<CatalogsFeedProcessingResult> getItems() {
-    return items;
-  }
-  public void setItems(List<CatalogsFeedProcessingResult> items) {
-    this.items = items;
-  }
+  private List<CatalogsFeedProcessingResult> items = new ArrayList<>();
 
   /**
    **/
@@ -58,6 +41,23 @@ public class FeedProcessingResultsList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public FeedProcessingResultsList200Response items(List<CatalogsFeedProcessingResult> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<CatalogsFeedProcessingResult> getItems() {
+    return items;
+  }
+  public void setItems(List<CatalogsFeedProcessingResult> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class FeedProcessingResultsList200Response   {
       return false;
     }
     FeedProcessingResultsList200Response feedProcessingResultsList200Response = (FeedProcessingResultsList200Response) o;
-    return Objects.equals(items, feedProcessingResultsList200Response.items) &&
-        Objects.equals(bookmark, feedProcessingResultsList200Response.bookmark);
+    return Objects.equals(bookmark, feedProcessingResultsList200Response.bookmark) &&
+        Objects.equals(items, feedProcessingResultsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class FeedProcessingResultsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeedProcessingResultsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

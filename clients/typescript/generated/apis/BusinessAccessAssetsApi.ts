@@ -208,11 +208,12 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
      * Get members with access to asset
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
      * @param bookmark Cursor used to fetch the next page of items
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      */
-    public async businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, _options?: Configuration): Promise<RequestContext> {
+    public async businessAssetMembersGet(businessId: string, assetId: string, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, startIndex?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'businessId' is not null or undefined
@@ -230,6 +231,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
 
 
 
+
         // Path Params
         const localVarPath = '/businesses/{business_id}/assets/{asset_id}/members'
             .replace('{' + 'business_id' + '}', encodeURIComponent(String(businessId)))
@@ -238,6 +240,11 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fetchSystemUsers !== undefined) {
+            requestContext.setQueryParam("fetch_system_users", ObjectSerializer.serialize(fetchSystemUsers, "boolean", ""));
+        }
 
         // Query Params
         if (bookmark !== undefined) {
@@ -349,7 +356,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
      * @param bookmark Cursor used to fetch the next page of items
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
-    public async businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
+    public async businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'businessId' is not null or undefined
@@ -393,7 +400,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
 
         // Query Params
         if (assetType !== undefined) {
-            requestContext.setQueryParam("asset_type", ObjectSerializer.serialize(assetType, "'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'", ""));
+            requestContext.setQueryParam("asset_type", ObjectSerializer.serialize(assetType, "'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'", ""));
         }
 
         // Query Params
@@ -437,7 +444,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
      * @param bookmark Cursor used to fetch the next page of items
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
-    public async businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
+    public async businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'businessId' is not null or undefined
@@ -467,7 +474,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
 
         // Query Params
         if (assetType !== undefined) {
-            requestContext.setQueryParam("asset_type", ObjectSerializer.serialize(assetType, "'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'", ""));
+            requestContext.setQueryParam("asset_type", ObjectSerializer.serialize(assetType, "'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'", ""));
         }
 
         // Query Params
@@ -624,7 +631,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param bookmark Cursor used to fetch the next page of items
      */
-    public async businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, _options?: Configuration): Promise<RequestContext> {
+    public async businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, pageSize?: number, bookmark?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'businessId' is not null or undefined
@@ -660,7 +667,7 @@ export class BusinessAccessAssetsApiRequestFactory extends BaseAPIRequestFactory
 
         // Query Params
         if (assetType !== undefined) {
-            requestContext.setQueryParam("asset_type", ObjectSerializer.serialize(assetType, "'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'", ""));
+            requestContext.setQueryParam("asset_type", ObjectSerializer.serialize(assetType, "'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'", ""));
         }
 
         // Query Params

@@ -1,0 +1,130 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelAttributes"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelAttributes"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsHotelAddress = openapi_server.resourceTypes.CatalogsHotelAddress
+  CatalogsHotelAttributesAllOfMainImage = openapi_server.resourceTypes.CatalogsHotelAttributesAllOfMainImage
+  CatalogsHotelGuestRatings = openapi_server.resourceTypes.CatalogsHotelGuestRatings
+}
+resourceTypes {
+
+  CatalogsHotelAttributes {
+    title = CatalogsHotelAttributes
+    description = CatalogsHotelAttributes
+    derivedFrom = Root
+    properties {
+        address {
+          type = CatalogsHotelAddress
+          description = ""
+          optional = false
+        }
+        base_price {
+          type =  string
+          description = "Base price of the hotel room per night followed by the ISO currency code"
+          optional = false
+        }
+        brand {
+          type =  string
+          description = "The brand to which this hotel belongs to."
+          optional = false
+        }
+        category {
+          type =  string
+          description = "The type of property. The category can be any type of internal description desired."
+          optional = false
+        }
+        custom_label_0 {
+          type =  string
+          description = "Custom grouping of hotels"
+          optional = false
+        }
+        custom_label_1 {
+          type =  string
+          description = "Custom grouping of hotels"
+          optional = false
+        }
+        custom_label_2 {
+          type =  string
+          description = "Custom grouping of hotels"
+          optional = false
+        }
+        custom_label_3 {
+          type =  string
+          description = "Custom grouping of hotels"
+          optional = false
+        }
+        custom_label_4 {
+          type =  string
+          description = "Custom grouping of hotels"
+          optional = false
+        }
+        description {
+          type =  string
+          description = "Brief description of the hotel."
+          optional = false
+        }
+        guest_ratings {
+          type = CatalogsHotelGuestRatings
+          description = ""
+          optional = false
+        }
+        latitude {
+          type =  
+          description = "Latitude of the hotel."
+          optional = false
+        }
+        link {
+          type =  string
+          description = "Link to the product page"
+          optional = false
+        }
+        longitude {
+          type =  
+          description = "Longitude of the hotel."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "The hotel&#39;s name."
+          optional = false
+        }
+        neighborhood {
+          type = array
+          items.type =  string
+          description = "A list of neighborhoods where the hotel is located"
+          optional = false
+        }
+        sale_price {
+          type =  string
+          description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel."
+          optional = false
+        }
+        additional_image_link {
+          type = array
+          items.type =  string
+          description = "&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt;"
+          optional = false
+        }
+        main_image {
+          type = CatalogsHotelAttributesAllOfMainImage
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelAttributes {
+    title = CatalogsHotelAttributes
+    description = CatalogsHotelAttributes
+    implements = openapi_server.resourceTypes.CatalogsHotelAttributes
+
+  }
+}

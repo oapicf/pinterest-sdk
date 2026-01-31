@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,16 +20,16 @@ var _ MappedNullable = &SSIOAccountResponse{}
 
 // SSIOAccountResponse struct for SSIOAccountResponse
 type SSIOAccountResponse struct {
-	// Advertiser eligible to create order lines
-	Eligible *bool `json:"eligible,omitempty"`
-	// Advertiser eligible to update order lines
-	CanEdit *bool `json:"can_edit,omitempty"`
 	// An array of Salesforce account information that includes address, io terms, etc.
 	BilltoInfos []SSIOAccountItem `json:"billto_infos,omitempty"`
+	// Advertiser eligible to update order lines
+	CanEdit *bool `json:"can_edit,omitempty"`
 	Currency *string `json:"currency,omitempty"`
-	PmpNames []SSIOAccountPMPName `json:"pmp_names,omitempty"`
+	// Advertiser eligible to create order lines
+	Eligible *bool `json:"eligible,omitempty"`
 	// Error indicator from Salesforce which could be \"No Error\"
 	Error *string `json:"error,omitempty"`
+	PmpNames []SSIOAccountPMPName `json:"pmp_names,omitempty"`
 }
 
 // NewSSIOAccountResponse instantiates a new SSIOAccountResponse object
@@ -47,70 +47,6 @@ func NewSSIOAccountResponse() *SSIOAccountResponse {
 func NewSSIOAccountResponseWithDefaults() *SSIOAccountResponse {
 	this := SSIOAccountResponse{}
 	return &this
-}
-
-// GetEligible returns the Eligible field value if set, zero value otherwise.
-func (o *SSIOAccountResponse) GetEligible() bool {
-	if o == nil || IsNil(o.Eligible) {
-		var ret bool
-		return ret
-	}
-	return *o.Eligible
-}
-
-// GetEligibleOk returns a tuple with the Eligible field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOAccountResponse) GetEligibleOk() (*bool, bool) {
-	if o == nil || IsNil(o.Eligible) {
-		return nil, false
-	}
-	return o.Eligible, true
-}
-
-// HasEligible returns a boolean if a field has been set.
-func (o *SSIOAccountResponse) HasEligible() bool {
-	if o != nil && !IsNil(o.Eligible) {
-		return true
-	}
-
-	return false
-}
-
-// SetEligible gets a reference to the given bool and assigns it to the Eligible field.
-func (o *SSIOAccountResponse) SetEligible(v bool) {
-	o.Eligible = &v
-}
-
-// GetCanEdit returns the CanEdit field value if set, zero value otherwise.
-func (o *SSIOAccountResponse) GetCanEdit() bool {
-	if o == nil || IsNil(o.CanEdit) {
-		var ret bool
-		return ret
-	}
-	return *o.CanEdit
-}
-
-// GetCanEditOk returns a tuple with the CanEdit field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOAccountResponse) GetCanEditOk() (*bool, bool) {
-	if o == nil || IsNil(o.CanEdit) {
-		return nil, false
-	}
-	return o.CanEdit, true
-}
-
-// HasCanEdit returns a boolean if a field has been set.
-func (o *SSIOAccountResponse) HasCanEdit() bool {
-	if o != nil && !IsNil(o.CanEdit) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanEdit gets a reference to the given bool and assigns it to the CanEdit field.
-func (o *SSIOAccountResponse) SetCanEdit(v bool) {
-	o.CanEdit = &v
 }
 
 // GetBilltoInfos returns the BilltoInfos field value if set, zero value otherwise.
@@ -145,6 +81,38 @@ func (o *SSIOAccountResponse) SetBilltoInfos(v []SSIOAccountItem) {
 	o.BilltoInfos = v
 }
 
+// GetCanEdit returns the CanEdit field value if set, zero value otherwise.
+func (o *SSIOAccountResponse) GetCanEdit() bool {
+	if o == nil || IsNil(o.CanEdit) {
+		var ret bool
+		return ret
+	}
+	return *o.CanEdit
+}
+
+// GetCanEditOk returns a tuple with the CanEdit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOAccountResponse) GetCanEditOk() (*bool, bool) {
+	if o == nil || IsNil(o.CanEdit) {
+		return nil, false
+	}
+	return o.CanEdit, true
+}
+
+// HasCanEdit returns a boolean if a field has been set.
+func (o *SSIOAccountResponse) HasCanEdit() bool {
+	if o != nil && !IsNil(o.CanEdit) {
+		return true
+	}
+
+	return false
+}
+
+// SetCanEdit gets a reference to the given bool and assigns it to the CanEdit field.
+func (o *SSIOAccountResponse) SetCanEdit(v bool) {
+	o.CanEdit = &v
+}
+
 // GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *SSIOAccountResponse) GetCurrency() string {
 	if o == nil || IsNil(o.Currency) {
@@ -177,36 +145,36 @@ func (o *SSIOAccountResponse) SetCurrency(v string) {
 	o.Currency = &v
 }
 
-// GetPmpNames returns the PmpNames field value if set, zero value otherwise.
-func (o *SSIOAccountResponse) GetPmpNames() []SSIOAccountPMPName {
-	if o == nil || IsNil(o.PmpNames) {
-		var ret []SSIOAccountPMPName
+// GetEligible returns the Eligible field value if set, zero value otherwise.
+func (o *SSIOAccountResponse) GetEligible() bool {
+	if o == nil || IsNil(o.Eligible) {
+		var ret bool
 		return ret
 	}
-	return o.PmpNames
+	return *o.Eligible
 }
 
-// GetPmpNamesOk returns a tuple with the PmpNames field value if set, nil otherwise
+// GetEligibleOk returns a tuple with the Eligible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SSIOAccountResponse) GetPmpNamesOk() ([]SSIOAccountPMPName, bool) {
-	if o == nil || IsNil(o.PmpNames) {
+func (o *SSIOAccountResponse) GetEligibleOk() (*bool, bool) {
+	if o == nil || IsNil(o.Eligible) {
 		return nil, false
 	}
-	return o.PmpNames, true
+	return o.Eligible, true
 }
 
-// HasPmpNames returns a boolean if a field has been set.
-func (o *SSIOAccountResponse) HasPmpNames() bool {
-	if o != nil && !IsNil(o.PmpNames) {
+// HasEligible returns a boolean if a field has been set.
+func (o *SSIOAccountResponse) HasEligible() bool {
+	if o != nil && !IsNil(o.Eligible) {
 		return true
 	}
 
 	return false
 }
 
-// SetPmpNames gets a reference to the given []SSIOAccountPMPName and assigns it to the PmpNames field.
-func (o *SSIOAccountResponse) SetPmpNames(v []SSIOAccountPMPName) {
-	o.PmpNames = v
+// SetEligible gets a reference to the given bool and assigns it to the Eligible field.
+func (o *SSIOAccountResponse) SetEligible(v bool) {
+	o.Eligible = &v
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
@@ -241,6 +209,38 @@ func (o *SSIOAccountResponse) SetError(v string) {
 	o.Error = &v
 }
 
+// GetPmpNames returns the PmpNames field value if set, zero value otherwise.
+func (o *SSIOAccountResponse) GetPmpNames() []SSIOAccountPMPName {
+	if o == nil || IsNil(o.PmpNames) {
+		var ret []SSIOAccountPMPName
+		return ret
+	}
+	return o.PmpNames
+}
+
+// GetPmpNamesOk returns a tuple with the PmpNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOAccountResponse) GetPmpNamesOk() ([]SSIOAccountPMPName, bool) {
+	if o == nil || IsNil(o.PmpNames) {
+		return nil, false
+	}
+	return o.PmpNames, true
+}
+
+// HasPmpNames returns a boolean if a field has been set.
+func (o *SSIOAccountResponse) HasPmpNames() bool {
+	if o != nil && !IsNil(o.PmpNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetPmpNames gets a reference to the given []SSIOAccountPMPName and assigns it to the PmpNames field.
+func (o *SSIOAccountResponse) SetPmpNames(v []SSIOAccountPMPName) {
+	o.PmpNames = v
+}
+
 func (o SSIOAccountResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -251,23 +251,23 @@ func (o SSIOAccountResponse) MarshalJSON() ([]byte, error) {
 
 func (o SSIOAccountResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Eligible) {
-		toSerialize["eligible"] = o.Eligible
+	if !IsNil(o.BilltoInfos) {
+		toSerialize["billto_infos"] = o.BilltoInfos
 	}
 	if !IsNil(o.CanEdit) {
 		toSerialize["can_edit"] = o.CanEdit
 	}
-	if !IsNil(o.BilltoInfos) {
-		toSerialize["billto_infos"] = o.BilltoInfos
-	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
-	if !IsNil(o.PmpNames) {
-		toSerialize["pmp_names"] = o.PmpNames
+	if !IsNil(o.Eligible) {
+		toSerialize["eligible"] = o.Eligible
 	}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
+	}
+	if !IsNil(o.PmpNames) {
+		toSerialize["pmp_names"] = o.PmpNames
 	}
 	return toSerialize, nil
 }

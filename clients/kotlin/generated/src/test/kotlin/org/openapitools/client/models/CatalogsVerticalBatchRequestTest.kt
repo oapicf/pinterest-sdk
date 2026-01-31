@@ -42,16 +42,16 @@ class CatalogsVerticalBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language` - We recommend using the CatalogsLocale values.
-        should("test language") {
-            // uncomment below to test the property
-            //modelInstance.language shouldBe ("TODO")
-        }
-
         // to test the property `items` - Array with creative assets item operations
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")
+        }
+
+        // to test the property `language` - We recommend using the CatalogsLocale values.
+        should("test language") {
+            // uncomment below to test the property
+            //modelInstance.language shouldBe ("TODO")
         }
 
         // to test the property `catalogId` - Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog

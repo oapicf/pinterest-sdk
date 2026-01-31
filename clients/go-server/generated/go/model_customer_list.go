@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -21,6 +21,9 @@ type CustomerList struct {
 
 	// Creation time. Unix timestamp in seconds.
 	CreatedTime float32 `json:"created_time,omitempty"`
+
+	// Customer list errors
+	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 
 	// Customer list ID.
 	Id string `json:"id,omitempty"`
@@ -45,9 +48,6 @@ type CustomerList struct {
 
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTime float32 `json:"updated_time,omitempty"`
-
-	// Customer list errors
-	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 }
 
 // AssertCustomerListRequired checks if the required fields are not zero-ed

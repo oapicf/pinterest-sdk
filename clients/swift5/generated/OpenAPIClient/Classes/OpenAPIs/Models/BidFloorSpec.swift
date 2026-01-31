@@ -12,41 +12,41 @@ import AnyCodable
 
 public struct BidFloorSpec: Codable, JSONEncodable, Hashable {
 
+    public var billableEvent: ActionType
     public var countries: [Country]?
+    public var creativeType: CreativeType?
     public var currency: Currency
     public var objectiveType: ObjectiveType?
-    public var billableEvent: ActionType
     public var optimizationGoalMetadata: OptimizationGoalMetadata?
-    public var creativeType: CreativeType?
 
-    public init(countries: [Country]? = nil, currency: Currency, objectiveType: ObjectiveType? = nil, billableEvent: ActionType, optimizationGoalMetadata: OptimizationGoalMetadata? = nil, creativeType: CreativeType? = nil) {
+    public init(billableEvent: ActionType, countries: [Country]? = nil, creativeType: CreativeType? = nil, currency: Currency, objectiveType: ObjectiveType? = nil, optimizationGoalMetadata: OptimizationGoalMetadata? = nil) {
+        self.billableEvent = billableEvent
         self.countries = countries
+        self.creativeType = creativeType
         self.currency = currency
         self.objectiveType = objectiveType
-        self.billableEvent = billableEvent
         self.optimizationGoalMetadata = optimizationGoalMetadata
-        self.creativeType = creativeType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case billableEvent = "billable_event"
         case countries
+        case creativeType = "creative_type"
         case currency
         case objectiveType = "objective_type"
-        case billableEvent = "billable_event"
         case optimizationGoalMetadata = "optimization_goal_metadata"
-        case creativeType = "creative_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(billableEvent, forKey: .billableEvent)
         try container.encodeIfPresent(countries, forKey: .countries)
+        try container.encodeIfPresent(creativeType, forKey: .creativeType)
         try container.encode(currency, forKey: .currency)
         try container.encodeIfPresent(objectiveType, forKey: .objectiveType)
-        try container.encode(billableEvent, forKey: .billableEvent)
         try container.encodeIfPresent(optimizationGoalMetadata, forKey: .optimizationGoalMetadata)
-        try container.encodeIfPresent(creativeType, forKey: .creativeType)
     }
 }
 

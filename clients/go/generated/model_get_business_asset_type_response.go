@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,6 +25,7 @@ const (
 	PROFILE GetBusinessAssetTypeResponse = "PROFILE"
 	ASSET_GROUP GetBusinessAssetTypeResponse = "ASSET_GROUP"
 	CONVERSION_TAG GetBusinessAssetTypeResponse = "CONVERSION_TAG"
+	CATALOG GetBusinessAssetTypeResponse = "CATALOG"
 )
 
 // All allowed values of GetBusinessAssetTypeResponse enum
@@ -33,6 +34,7 @@ var AllowedGetBusinessAssetTypeResponseEnumValues = []GetBusinessAssetTypeRespon
 	"PROFILE",
 	"ASSET_GROUP",
 	"CONVERSION_TAG",
+	"CATALOG",
 }
 
 func (v *GetBusinessAssetTypeResponse) UnmarshalJSON(src []byte) error {

@@ -21,17 +21,12 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.models.Board
 import org.openapitools.client.models.BoardMedia
 import org.openapitools.client.models.BoardOwner
+import org.openapitools.client.models.BoardPrivacy
 
 class BoardTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of Board
         //val modelInstance = Board()
-
-        // to test the property `name`
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
 
         // to test the property `id`
         should("test id") {
@@ -39,10 +34,10 @@ class BoardTest : ShouldSpec() {
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `createdAt` - Date and time of board creation.
-        should("test createdAt") {
+        // to test the property `name` -      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `boardPinsModifiedAt` - Date and time of last board pins modified.
@@ -51,22 +46,22 @@ class BoardTest : ShouldSpec() {
             //modelInstance.boardPinsModifiedAt shouldBe ("TODO")
         }
 
-        // to test the property `description`
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
-        }
-
         // to test the property `collaboratorCount` - Count of collaborators on the board.
         should("test collaboratorCount") {
             // uncomment below to test the property
             //modelInstance.collaboratorCount shouldBe ("TODO")
         }
 
-        // to test the property `pinCount` - Count of pins on the board.
-        should("test pinCount") {
+        // to test the property `createdAt` - Date and time of board creation.
+        should("test createdAt") {
             // uncomment below to test the property
-            //modelInstance.pinCount shouldBe ("TODO")
+            //modelInstance.createdAt shouldBe ("TODO")
+        }
+
+        // to test the property `description`
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
         }
 
         // to test the property `followerCount` - Board follower count.
@@ -75,7 +70,13 @@ class BoardTest : ShouldSpec() {
             //modelInstance.followerCount shouldBe ("TODO")
         }
 
-        // to test the property `media`
+        // to test the property `isAdsOnly` - If set to `true`, the board will be ad-only and can store ad-only Pins.
+        should("test isAdsOnly") {
+            // uncomment below to test the property
+            //modelInstance.isAdsOnly shouldBe ("TODO")
+        }
+
+        // to test the property `media` - Board media.
         should("test media") {
             // uncomment below to test the property
             //modelInstance.media shouldBe ("TODO")
@@ -87,7 +88,13 @@ class BoardTest : ShouldSpec() {
             //modelInstance.owner shouldBe ("TODO")
         }
 
-        // to test the property `privacy` - Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+        // to test the property `pinCount` - Count of Pins on the board.
+        should("test pinCount") {
+            // uncomment below to test the property
+            //modelInstance.pinCount shouldBe ("TODO")
+        }
+
+        // to test the property `privacy` -     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
         should("test privacy") {
             // uncomment below to test the property
             //modelInstance.privacy shouldBe ("TODO")

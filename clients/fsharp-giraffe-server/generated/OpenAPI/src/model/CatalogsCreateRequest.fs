@@ -2,17 +2,15 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsType
 
 module CatalogsCreateRequest =
 
   //#region CatalogsCreateRequest
 
-  //#region enums
-  type CatalogTypeEnum = HOTELEnum of string  
-  //#endregion
 
   type CatalogsCreateRequest = {
-    CatalogType : CatalogTypeEnum;
+    CatalogType : CatalogsType;
     Name : string;
   }
   //#endregion

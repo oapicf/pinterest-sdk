@@ -7,14 +7,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinMedia } from './pinMedia';
 import { PinMediaMetadata } from './pinMediaMetadata';
 
 
 /**
  * Pin with a mix of images and videos.
  */
-export interface PinMediaWithImageAndVideo extends PinMedia { 
+export interface PinMediaWithImageAndVideo { 
     items?: Array<PinMediaMetadata>;
+    media_type: PinMediaWithImageAndVideo.MediaTypeEnum;
 }
+export namespace PinMediaWithImageAndVideo {
+    export const MediaTypeEnum = {
+        MultipleMixed: 'multiple_mixed'
+    } as const;
+    export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
+}
+
 

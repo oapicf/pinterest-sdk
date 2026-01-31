@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemType** | Pointer to **string** |  | [optional] 
-**Title** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
+**Images** | Pointer to [**ImageSize**](ImageSize.md) |  | [optional] 
+**ItemType** | Pointer to **string** |  | [optional] 
 **Link** | Pointer to **NullableString** |  | [optional] 
-**Images** | Pointer to [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**Title** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -29,66 +29,6 @@ NewImageMetadataWithDefaults instantiates a new ImageMetadata object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetItemType
-
-`func (o *ImageMetadata) GetItemType() string`
-
-GetItemType returns the ItemType field if non-nil, zero value otherwise.
-
-### GetItemTypeOk
-
-`func (o *ImageMetadata) GetItemTypeOk() (*string, bool)`
-
-GetItemTypeOk returns a tuple with the ItemType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemType
-
-`func (o *ImageMetadata) SetItemType(v string)`
-
-SetItemType sets ItemType field to given value.
-
-### HasItemType
-
-`func (o *ImageMetadata) HasItemType() bool`
-
-HasItemType returns a boolean if a field has been set.
-
-### GetTitle
-
-`func (o *ImageMetadata) GetTitle() string`
-
-GetTitle returns the Title field if non-nil, zero value otherwise.
-
-### GetTitleOk
-
-`func (o *ImageMetadata) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTitle
-
-`func (o *ImageMetadata) SetTitle(v string)`
-
-SetTitle sets Title field to given value.
-
-### HasTitle
-
-`func (o *ImageMetadata) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
-
-### SetTitleNil
-
-`func (o *ImageMetadata) SetTitleNil(b bool)`
-
- SetTitleNil sets the value for Title to be an explicit nil
-
-### UnsetTitle
-`func (o *ImageMetadata) UnsetTitle()`
-
-UnsetTitle ensures that no value is present for Title, not even an explicit nil
 ### GetDescription
 
 `func (o *ImageMetadata) GetDescription() string`
@@ -124,6 +64,56 @@ HasDescription returns a boolean if a field has been set.
 `func (o *ImageMetadata) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetImages
+
+`func (o *ImageMetadata) GetImages() ImageSize`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *ImageMetadata) GetImagesOk() (*ImageSize, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *ImageMetadata) SetImages(v ImageSize)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *ImageMetadata) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
+
+### GetItemType
+
+`func (o *ImageMetadata) GetItemType() string`
+
+GetItemType returns the ItemType field if non-nil, zero value otherwise.
+
+### GetItemTypeOk
+
+`func (o *ImageMetadata) GetItemTypeOk() (*string, bool)`
+
+GetItemTypeOk returns a tuple with the ItemType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemType
+
+`func (o *ImageMetadata) SetItemType(v string)`
+
+SetItemType sets ItemType field to given value.
+
+### HasItemType
+
+`func (o *ImageMetadata) HasItemType() bool`
+
+HasItemType returns a boolean if a field has been set.
+
 ### GetLink
 
 `func (o *ImageMetadata) GetLink() string`
@@ -159,31 +149,41 @@ HasLink returns a boolean if a field has been set.
 `func (o *ImageMetadata) UnsetLink()`
 
 UnsetLink ensures that no value is present for Link, not even an explicit nil
-### GetImages
+### GetTitle
 
-`func (o *ImageMetadata) GetImages() ImageMetadataImages`
+`func (o *ImageMetadata) GetTitle() string`
 
-GetImages returns the Images field if non-nil, zero value otherwise.
+GetTitle returns the Title field if non-nil, zero value otherwise.
 
-### GetImagesOk
+### GetTitleOk
 
-`func (o *ImageMetadata) GetImagesOk() (*ImageMetadataImages, bool)`
+`func (o *ImageMetadata) GetTitleOk() (*string, bool)`
 
-GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetImages
+### SetTitle
 
-`func (o *ImageMetadata) SetImages(v ImageMetadataImages)`
+`func (o *ImageMetadata) SetTitle(v string)`
 
-SetImages sets Images field to given value.
+SetTitle sets Title field to given value.
 
-### HasImages
+### HasTitle
 
-`func (o *ImageMetadata) HasImages() bool`
+`func (o *ImageMetadata) HasTitle() bool`
 
-HasImages returns a boolean if a field has been set.
+HasTitle returns a boolean if a field has been set.
 
+### SetTitleNil
+
+`func (o *ImageMetadata) SetTitleNil(b bool)`
+
+ SetTitleNil sets the value for Title to be an explicit nil
+
+### UnsetTitle
+`func (o *ImageMetadata) UnsetTitle()`
+
+UnsetTitle ensures that no value is present for Title, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,18 +10,18 @@ The class is defined in **[CatalogsRetailListProductsByCatalogBasedFilterRequest
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **catalogId** | `String` | Catalog id pertaining to the retail product group. | 
-**filters** | [`CatalogsProductGroupFilters`](CatalogsProductGroupFilters.md) |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **country** | `Country` |  | 
+**filters** | [`CatalogsProductGroupFilters`](CatalogsProductGroupFilters.md) |  | 
 **locale** | `CatalogsLocale` |  | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 RETAIL | `"RETAIL"`
-
 
 
 

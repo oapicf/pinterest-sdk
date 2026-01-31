@@ -28,28 +28,28 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsRetailListProductsByCatalogBasedFilterRequest
         //val modelInstance = CatalogsRetailListProductsByCatalogBasedFilterRequest()
 
-        // to test the property `catalogType` - Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-        should("test catalogType") {
-            // uncomment below to test the property
-            //modelInstance.catalogType shouldBe ("TODO")
-        }
-
         // to test the property `catalogId` - Catalog id pertaining to the retail product group.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")
         }
 
-        // to test the property `filters`
-        should("test filters") {
+        // to test the property `catalogType` - Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+        should("test catalogType") {
             // uncomment below to test the property
-            //modelInstance.filters shouldBe ("TODO")
+            //modelInstance.catalogType shouldBe ("TODO")
         }
 
         // to test the property `country`
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `filters`
+        should("test filters") {
+            // uncomment below to test the property
+            //modelInstance.filters shouldBe ("TODO")
         }
 
         // to test the property `locale`

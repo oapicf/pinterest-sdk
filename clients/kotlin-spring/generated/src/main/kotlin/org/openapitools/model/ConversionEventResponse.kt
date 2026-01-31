@@ -18,12 +18,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param adAccountId Id of the ad account.
  * @param conversionEvent 
  * @param conversionTagId Id of the tag.
- * @param adAccountId Id of the ad account.
  * @param createdTime Creation date in epoch format.
  */
 data class ConversionEventResponse(
+
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "549757463328", description = "Id of the ad account.")
+    @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -32,10 +36,6 @@ data class ConversionEventResponse(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2614324385652", description = "Id of the tag.")
     @get:JsonProperty("conversion_tag_id") val conversionTagId: kotlin.String? = null,
-
-    @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "549757463328", description = "Id of the ad account.")
-    @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
     @Schema(example = "1564768710", description = "Creation date in epoch format.")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null

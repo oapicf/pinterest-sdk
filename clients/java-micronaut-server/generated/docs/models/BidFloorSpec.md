@@ -8,12 +8,12 @@ The class is defined in **[BidFloorSpec.java](../../src/main/java/org/openapitoo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billableEvent** | `ActionType` |  | 
 **countries** | `List&lt;Country&gt;` |  |  [optional property]
+**creativeType** | `CreativeType` |  |  [optional property]
 **currency** | `Currency` |  | 
 **objectiveType** | `ObjectiveType` |  |  [optional property]
-**billableEvent** | `ActionType` |  | 
 **optimizationGoalMetadata** | [`OptimizationGoalMetadata`](OptimizationGoalMetadata.md) |  |  [optional property]
-**creativeType** | `CreativeType` |  |  [optional property]
 
 
 

@@ -72,7 +72,7 @@ private class OASTargetingTemplateList200ResponseTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASTargetingTemplateList200Response targetingTemplateList200Response = new OASTargetingTemplateList200Response();
-        System.assertEquals(new List<OASTargetingTemplateResponseData>(), targetingTemplateList200Response.items);
+        System.assertEquals(new List<OASTargetingTemplateGetResponseData>(), targetingTemplateList200Response.items);
         System.assertEquals(null, targetingTemplateList200Response.bookmark);
     }
 }

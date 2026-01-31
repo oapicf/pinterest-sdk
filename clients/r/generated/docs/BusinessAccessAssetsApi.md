@@ -33,7 +33,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_create_asset_group_body <- CreateAssetGroupBody$new("asset_group_name_example", "asset_group_description_example", c(AssetGroupType$new())) # CreateAssetGroupBody | 
+var_create_asset_group_body <- CreateAssetGroupBody$new("asset_group_description_example", "asset_group_name_example", c(AssetGroupType$new())) # CreateAssetGroupBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -139,7 +139,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_update_asset_group_body <- UpdateAssetGroupBody$new(c(UpdateAssetGroupBody_asset_groups_to_update_inner$new("asset_group_id_example", "name_example", "description_example", c(AssetGroupType$new()), c("assets_to_add_example"), c("assets_to_remove_example")))) # UpdateAssetGroupBody | 
+var_update_asset_group_body <- UpdateAssetGroupBody$new(c(UpdateAssetGroupBody_asset_groups_to_update_inner$new("asset_group_id_example", c(AssetGroupType$new()), c("assets_to_add_example"), c("assets_to_remove_example"), "description_example", "name_example"))) # UpdateAssetGroupBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **BusinessAssetMembersGet**
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet(business_id, asset_id, bookmark = var.bookmark, page_size = 25, start_index = 0)
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet(business_id, asset_id, fetch_system_users = FALSE, bookmark = var.bookmark, page_size = 25, start_index = 0)
 
 Get members with access to asset
 
@@ -193,6 +193,7 @@ library(openapi)
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
 var_asset_id <- "729090764583391194" # character | Unique identifier of a business asset.
+var_fetch_system_users <- FALSE # character | Fetches system users if True. Fetches regular user employees if False. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
 var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
@@ -201,8 +202,8 @@ api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, bookmark = var_bookmark, page_size = var_page_size, start_index = var_start_indexdata_file = "result.txt")
-result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, bookmark = var_bookmark, page_size = var_page_size, start_index = var_start_index)
+# result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, fetch_system_users = var_fetch_system_users, bookmark = var_bookmark, page_size = var_page_size, start_index = var_start_indexdata_file = "result.txt")
+result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, fetch_system_users = var_fetch_system_users, bookmark = var_bookmark, page_size = var_page_size, start_index = var_start_index)
 dput(result)
 ```
 
@@ -212,6 +213,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **asset_id** | **character**| Unique identifier of a business asset. | 
+ **fetch_system_users** | **character**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to FALSE]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
  **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
@@ -333,7 +335,7 @@ Name | Type | Description  | Notes
  **permissions** | list( [**PermissionsWithOwner**](PermissionsWithOwner.md) )| A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | [optional] 
  **child_asset_id** | **character**| A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | [optional] 
  **asset_group_id** | **character**| An asset group unique identifier. Used to fetch assets contained within the specified asset group. | [optional] 
- **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
+ **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
  **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
@@ -393,7 +395,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **member_id** | **character**| The member id to fetch assets for. | 
- **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
+ **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
  **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
@@ -559,7 +561,7 @@ Name | Type | Description  | Notes
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **partner_id** | **character**| The partner id to be bound to the Business | 
  **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
- **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
+ **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
@@ -598,7 +600,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_delete_partner_asset_access_body <- DeletePartnerAssetAccessBody$new(c(DeletePartnerAssetAccessBody_accesses_inner$new("partner_id_example", "asset_id_example", "INTERNAL"))) # DeletePartnerAssetAccessBody | 
+var_delete_partner_asset_access_body <- DeletePartnerAssetAccessBody$new(c(DeletePartnerAssetAccessBody_accesses_inner$new("asset_id_example", "partner_id_example", "INTERNAL"))) # DeletePartnerAssetAccessBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -650,7 +652,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_update_partner_asset_access_body <- UpdatePartnerAssetAccessBody$new(c(UpdatePartnerAssetAccessBody_accesses_inner$new("partner_id_example", "asset_id_example", c(Permissions$new())))) # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+var_update_partner_asset_access_body <- UpdatePartnerAssetAccessBody$new(c(UpdatePartnerAssetAccessBody_accesses_inner$new("asset_id_example", "partner_id_example", c(Permissions$new())))) # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

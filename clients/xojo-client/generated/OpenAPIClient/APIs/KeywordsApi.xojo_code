@@ -18,6 +18,9 @@ Protected Class KeywordsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -46,6 +49,7 @@ Protected Class KeywordsApi
 		  End Select
 		  If localVarQueryStringskeywords.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringkeywords)
 
+		  
 		  
 		  
 
@@ -290,15 +294,16 @@ Protected Class KeywordsApi
 
 
 	#tag Method, Flags = &h0
-		Sub KeywordsGet(, adAccountId As String, Optional campaignId As Xoson.O.OptionalString, Optional adGroupId As Xoson.O.OptionalString, matchTypes() As MatchType, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub KeywordsGet(, adAccountId As String, Optional campaignId As Xoson.O.OptionalString, Optional adGroupId As Xoson.O.OptionalString, adGroupIds() As String, matchTypes() As MatchType, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
 		  // Operation keywords/get
 		  // Get keywords
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter campaignId: (query) Campaign Id to use to filter the results. (optional, default to Sample)
 		  // - parameter adGroupId: (query) Ad group Id. (optional, default to Sample)
+		  // - parameter adGroupIds: (query) List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional, default to Nil)
 		  // - parameter matchTypes: (query) Keyword &lt;a target&#x3D;&quot;_blank&quot; href&#x3D;&quot;/docs/api-features/targeting-overview/&quot;&gt;match type&lt;/a&gt; (optional, default to Nil)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  //
 		  // Invokes KeywordsApiCallbackHandler.KeywordsGetCallback(KeywordsGet200Response) on completion. 
@@ -310,6 +315,9 @@ Protected Class KeywordsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -320,6 +328,24 @@ Protected Class KeywordsApi
 		  
 		  If adGroupId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_group_id") + "=" + EncodeURLComponent(adGroupId)
 		  
+		  
+		  Dim localVarQueryStringsadGroupIds() As String
+		  For Each localVarItemadGroupIds As String in adGroupIds
+		    Dim encodedParameter As String = EncodeURLComponent(localVarItemadGroupIds)
+		    Select Case "form"
+		      Case "form"
+		        localVarQueryStringsadGroupIds.Append("inner=" + encodedParameter)
+		      Case "spaceDelimited"
+		        localVarQueryStringsadGroupIds.Append("inner=" + encodedParameter)
+		      Case "pipeDelimited"
+		        localVarQueryStringsadGroupIds.Append("inner=" + encodedParameter)
+		      Case "deepObject"
+		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		    End Select
+		  Next
+		  
+		  Dim localVarQueryStringadGroupIds As String
+		  localVarQueryStringadGroupIds = Join(localVarQueryStringsadGroupIds, "&")
 		  
 		  Dim localVarQueryStringsmatchTypes() As String
 		  For Each localVarItemmatchTypes As MatchType in matchTypes
@@ -343,6 +369,7 @@ Protected Class KeywordsApi
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 
+		  
 		  
 		  
 
@@ -587,7 +614,7 @@ Protected Class KeywordsApi
 
 
 	#tag Method, Flags = &h0
-		Sub TrendingKeywordsList(, region As OpenAPIClient.Models.TrendsSupportedRegion, trendType As OpenAPIClient.Models.TrendType, interests() As InterestsEnum_TrendingKeywordsList, genders() As GendersEnum_TrendingKeywordsList, ages() As AgesEnum_TrendingKeywordsList, includeKeywords() As String, Optional normalizeAgainstGroup As Xoson.O.OptionalBoolean, Optional limit As Xoson.O.OptionalInteger)
+		Sub TrendingKeywordsList(, region As OpenAPIClient.Models.TrendsSupportedRegion, trendType As OpenAPIClient.Models.TrendType, interests() As InterestsEnum_TrendingKeywordsList, genders() As GendersEnum_TrendingKeywordsList, ages() As AgesEnum_TrendingKeywordsList, includeKeywords() As String, Optional normalizeAgainstGroup As Xoson.O.OptionalBoolean, Optional limit As Xoson.O.OptionalInteger, Optional includePrediction As Xoson.O.OptionalBoolean, Optional includeDemographics As Xoson.O.OptionalBoolean)
 		  // Operation trending_keywords/list
 		  // List trending keywords
 		  // - 
@@ -599,6 +626,8 @@ Protected Class KeywordsApi
 		  // - parameter includeKeywords: (query) If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional, default to Nil)
 		  // - parameter normalizeAgainstGroup: (query) Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
 		  // - parameter limit: (query) The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+		  // - parameter includePrediction: (query) &lt;a href&#x3D;&quot;/docs/getting-started/using-beta-and-restricted-features/&quot; target&#x3D;&quot;blank&quot; target&#x3D;&quot;blank&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+		  // - parameter includeDemographics: (query) &lt;a href&#x3D;&quot;/docs/getting-started/using-beta-and-restricted-features/&quot; target&#x3D;&quot;blank&quot; target&#x3D;&quot;blank&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
 		  //
 		  // Invokes KeywordsApiCallbackHandler.TrendingKeywordsListCallback(TrendingKeywordsResponse) on completion. 
 		  //
@@ -690,6 +719,10 @@ Protected Class KeywordsApi
 		  If normalizeAgainstGroup <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("normalize_against_group") + "=" + EncodeURLComponent(normalizeAgainstGroup.ToString)
 		  
 		  If limit <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("limit") + "=" + EncodeURLComponent(limit.ToString)
+		  
+		  If includePrediction <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("include_prediction") + "=" + EncodeURLComponent(includePrediction.ToString)
+		  
+		  If includeDemographics <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("include_demographics") + "=" + EncodeURLComponent(includeDemographics.ToString)
 		  
 
 		  

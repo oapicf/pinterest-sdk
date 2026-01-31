@@ -9,11 +9,11 @@ import org.openapitools.models.NonNullableCatalogsCurrency
 
 /**
  * A currency filter. This filter cannot be negated
- * @param values 
  * @param negated 
+ * @param values 
  */
-case class CatalogsProductGroupCurrencyCriteria(values: NonNullableCatalogsCurrency,
-                negated: Option[Boolean]
+case class CatalogsProductGroupCurrencyCriteria(negated: Option[Boolean],
+                values: NonNullableCatalogsCurrency
                 )
 
 object CatalogsProductGroupCurrencyCriteria {

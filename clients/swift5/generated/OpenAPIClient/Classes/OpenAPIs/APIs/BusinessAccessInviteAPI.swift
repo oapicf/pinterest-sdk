@@ -67,7 +67,7 @@ open class BusinessAccessInviteAPI {
     /**
      Cancel invites/requests
      
-     - parameter businessId: (path) Business id 
+     - parameter businessId: (path) Unique identifier of the requesting business. 
      - parameter cancelInvitesBody: (body) A list with invite ids 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -91,7 +91,7 @@ open class BusinessAccessInviteAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter businessId: (path) Business id 
+     - parameter businessId: (path) Unique identifier of the requesting business. 
      - parameter cancelInvitesBody: (body) A list with invite ids 
      - returns: RequestBuilder<DeleteInvitesResultsResponseArray> 
      */
@@ -171,7 +171,7 @@ open class BusinessAccessInviteAPI {
     /**
      Create invites or requests
      
-     - parameter businessId: (path) Business id 
+     - parameter businessId: (path) Unique identifier of the requesting business. 
      - parameter createMembershipOrPartnershipInvitesBody: (body) An object with the properties: invite_type, partners, members, business_role 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -195,7 +195,7 @@ open class BusinessAccessInviteAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter businessId: (path) Business id 
+     - parameter businessId: (path) Unique identifier of the requesting business. 
      - parameter createMembershipOrPartnershipInvitesBody: (body) An object with the properties: invite_type, partners, members, business_role 
      - returns: RequestBuilder<CreateInvitesResultsResponseArray> 
      */

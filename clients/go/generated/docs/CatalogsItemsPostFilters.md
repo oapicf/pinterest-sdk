@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**ItemIds** | **[]string** |  | 
 **CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**ItemIds** | **[]string** |  | 
 **HotelIds** | **[]string** |  | 
 **CreativeAssetsIds** | **[]string** |  | 
 
@@ -49,26 +49,6 @@ and a boolean to check if the value has been set.
 SetCatalogType sets CatalogType field to given value.
 
 
-### GetItemIds
-
-`func (o *CatalogsItemsPostFilters) GetItemIds() []string`
-
-GetItemIds returns the ItemIds field if non-nil, zero value otherwise.
-
-### GetItemIdsOk
-
-`func (o *CatalogsItemsPostFilters) GetItemIdsOk() (*[]string, bool)`
-
-GetItemIdsOk returns a tuple with the ItemIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemIds
-
-`func (o *CatalogsItemsPostFilters) SetItemIds(v []string)`
-
-SetItemIds sets ItemIds field to given value.
-
-
 ### GetCatalogId
 
 `func (o *CatalogsItemsPostFilters) GetCatalogId() string`
@@ -93,6 +73,26 @@ SetCatalogId sets CatalogId field to given value.
 `func (o *CatalogsItemsPostFilters) HasCatalogId() bool`
 
 HasCatalogId returns a boolean if a field has been set.
+
+### GetItemIds
+
+`func (o *CatalogsItemsPostFilters) GetItemIds() []string`
+
+GetItemIds returns the ItemIds field if non-nil, zero value otherwise.
+
+### GetItemIdsOk
+
+`func (o *CatalogsItemsPostFilters) GetItemIdsOk() (*[]string, bool)`
+
+GetItemIdsOk returns a tuple with the ItemIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemIds
+
+`func (o *CatalogsItemsPostFilters) SetItemIds(v []string)`
+
+SetItemIds sets ItemIds field to given value.
+
 
 ### GetHotelIds
 

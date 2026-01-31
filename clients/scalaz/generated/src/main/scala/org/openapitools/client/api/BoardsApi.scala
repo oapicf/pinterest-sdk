@@ -22,11 +22,15 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Board
+import org.openapitools.client.api.BoardCreate
+import org.openapitools.client.api.BoardPrivacyFilter
 import org.openapitools.client.api.BoardSection
 import org.openapitools.client.api.BoardSectionsList200Response
-import org.openapitools.client.api.BoardUpdate
+import org.openapitools.client.api.BoardWithUpdatePrivacy
+import org.openapitools.client.api.BoardWithUpdatePrivacyUpdate
 import org.openapitools.client.api.BoardsList200Response
 import org.openapitools.client.api.BoardsListPins200Response
+import org.openapitools.client.api.CreativeType
 import org.openapitools.client.api.Error
 
 object BoardsApi {
@@ -138,7 +142,7 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardsCreate(host: String, board: Board, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
+  def boardsCreate(host: String, boardCreate: BoardCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
     implicit val returnTypeDecoder: EntityDecoder[Board] = jsonOf[Board]
 
     val path = "/boards"
@@ -153,7 +157,7 @@ object BoardsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(board)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardCreate)
       resp          <- client.expect[Board](req)
 
     } yield resp
@@ -199,7 +203,7 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardsList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, privacy: String)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], privacyQuery: QueryParam[String]): Task[BoardsList200Response] = {
+  def boardsList(host: String, adAccountId: String, privacy: BoardPrivacyFilter, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], privacyQuery: QueryParam[BoardPrivacyFilter], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardsList200Response] = jsonOf[BoardsList200Response]
 
     val path = "/boards"
@@ -209,7 +213,7 @@ object BoardsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("privacy", Some(privacyQuery.toParamString(privacy))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("privacy", Some(privacyQuery.toParamString(privacy))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -220,7 +224,7 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardsListPins(host: String, boardId: String, bookmark: String, pageSize: Integer = 25, creativeTypes: List[String] = List.empty[String] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], creativeTypesQuery: QueryParam[List[String]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[BoardsListPins200Response] = {
+  def boardsListPins(host: String, boardId: String, bookmark: String, pageSize: Integer = 25, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[BoardsListPins200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardsListPins200Response] = jsonOf[BoardsListPins200Response]
 
     val path = "/boards/{board_id}/pins".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
@@ -241,8 +245,8 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardsUpdate(host: String, boardId: String, boardUpdate: BoardUpdate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
-    implicit val returnTypeDecoder: EntityDecoder[Board] = jsonOf[Board]
+  def boardsUpdate(host: String, boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardWithUpdatePrivacy] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardWithUpdatePrivacy] = jsonOf[BoardWithUpdatePrivacy]
 
     val path = "/boards/{board_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
 
@@ -256,8 +260,8 @@ object BoardsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardUpdate)
-      resp          <- client.expect[Board](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardWithUpdatePrivacyUpdate)
+      resp          <- client.expect[BoardWithUpdatePrivacy](req)
 
     } yield resp
   }
@@ -372,7 +376,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardsCreate(board: Board, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
+  def boardsCreate(boardCreate: BoardCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
     implicit val returnTypeDecoder: EntityDecoder[Board] = jsonOf[Board]
 
     val path = "/boards"
@@ -387,7 +391,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(board)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardCreate)
       resp          <- client.expect[Board](req)
 
     } yield resp
@@ -433,7 +437,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardsList(adAccountId: String, bookmark: String, pageSize: Integer = 25, privacy: String)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], privacyQuery: QueryParam[String]): Task[BoardsList200Response] = {
+  def boardsList(adAccountId: String, privacy: BoardPrivacyFilter, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], privacyQuery: QueryParam[BoardPrivacyFilter], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardsList200Response] = jsonOf[BoardsList200Response]
 
     val path = "/boards"
@@ -443,7 +447,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("privacy", Some(privacyQuery.toParamString(privacy))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("privacy", Some(privacyQuery.toParamString(privacy))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -454,7 +458,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardsListPins(boardId: String, bookmark: String, pageSize: Integer = 25, creativeTypes: List[String] = List.empty[String] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], creativeTypesQuery: QueryParam[List[String]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[BoardsListPins200Response] = {
+  def boardsListPins(boardId: String, bookmark: String, pageSize: Integer = 25, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[BoardsListPins200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardsListPins200Response] = jsonOf[BoardsListPins200Response]
 
     val path = "/boards/{board_id}/pins".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
@@ -475,8 +479,8 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardsUpdate(boardId: String, boardUpdate: BoardUpdate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
-    implicit val returnTypeDecoder: EntityDecoder[Board] = jsonOf[Board]
+  def boardsUpdate(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardWithUpdatePrivacy] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardWithUpdatePrivacy] = jsonOf[BoardWithUpdatePrivacy]
 
     val path = "/boards/{board_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
 
@@ -490,8 +494,8 @@ class HttpServiceBoardsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardUpdate)
-      resp          <- client.expect[Board](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardWithUpdatePrivacyUpdate)
+      resp          <- client.expect[BoardWithUpdatePrivacy](req)
 
     } yield resp
   }

@@ -11,7 +11,7 @@ module AdsList200Response =
 
 
   type ads_list_200_response = {
-    Items : AdResponse[];
     Bookmark : string option;
+    Items : AdResponse[];
   }
   //#endregion

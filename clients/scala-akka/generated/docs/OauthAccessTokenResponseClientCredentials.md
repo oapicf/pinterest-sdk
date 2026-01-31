@@ -8,11 +8,11 @@ A successful OAuth client token response for the client token flow.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseType** | [**ResponseType**](#ResponseType) |  |  [optional]
 **accessToken** | **String** |  | 
-**tokenType** | **String** |  | 
 **expiresIn** | **Int** |  | 
+**responseType** | [**ResponseType**](#ResponseType) |  |  [optional]
 **scope** | **String** |  | 
+**tokenType** | **String** |  | 
 
 
 ## Enum: ResponseType

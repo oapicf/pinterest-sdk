@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,6 +17,8 @@ package openapi
 // CatalogsHotelItemResponse - Object describing a hotel record
 type CatalogsHotelItemResponse struct {
 
+	Attributes CatalogsHotelAttributes `json:"attributes,omitempty"`
+
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	// The catalog hotel id in the merchant namespace
@@ -24,8 +26,6 @@ type CatalogsHotelItemResponse struct {
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes CatalogsHotelAttributes `json:"attributes,omitempty"`
 }
 
 // AssertCatalogsHotelItemResponseRequired checks if the required fields are not zero-ed
@@ -39,6 +39,9 @@ func AssertCatalogsHotelItemResponseRequired(obj CatalogsHotelItemResponse) erro
 		}
 	}
 
+	if err := AssertCatalogsHotelAttributesRequired(obj.Attributes); err != nil {
+		return err
+	}
 	if obj.Pins != nil {
 		for _, el := range *obj.Pins {
 			if err := AssertPinRequired(el); err != nil {
@@ -46,14 +49,14 @@ func AssertCatalogsHotelItemResponseRequired(obj CatalogsHotelItemResponse) erro
 			}
 		}
 	}
-	if err := AssertCatalogsHotelAttributesRequired(obj.Attributes); err != nil {
-		return err
-	}
 	return nil
 }
 
 // AssertCatalogsHotelItemResponseConstraints checks if the values respects the defined constraints
 func AssertCatalogsHotelItemResponseConstraints(obj CatalogsHotelItemResponse) error {
+	if err := AssertCatalogsHotelAttributesConstraints(obj.Attributes); err != nil {
+		return err
+	}
     if obj.Pins != nil {
      	for _, el := range *obj.Pins {
      		if err := AssertPinConstraints(el); err != nil {
@@ -61,8 +64,5 @@ func AssertCatalogsHotelItemResponseConstraints(obj CatalogsHotelItemResponse) e
      		}
      	}
     }
-	if err := AssertCatalogsHotelAttributesConstraints(obj.Attributes); err != nil {
-		return err
-	}
 	return nil
 }

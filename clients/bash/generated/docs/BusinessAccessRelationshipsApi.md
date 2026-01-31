@@ -4,13 +4,89 @@ All URIs are relative to */v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](BusinessAccessRelationshipsApi.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](BusinessAccessRelationshipsApi.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+
+## brandAccountsCreate
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+
+```bash
+ brandAccountsCreate business_hierarchy_id=value
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **string** | business hierarchy node id | [default to null]
+ **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  |
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## brandAccountsUpdate
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+
+```bash
+ brandAccountsUpdate business_hierarchy_id=value brand_account_id=value
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **string** | business hierarchy node id | [default to null]
+ **brandAccountId** | **string** | Unique identifier of a brand account. | [default to null]
+ **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  |
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## deleteBusinessMembership
@@ -132,7 +208,7 @@ The return response will include the member's business_role and assets they have
 ### Example
 
 ```bash
- getBusinessMembers business_id=value  assets_summary=value  Specify as:  business_roles=value1 business_roles=value2 business_roles=...  member_ids=value  start_index=value  bookmark=value  page_size=value
+ getBusinessMembers business_id=value  fetch_system_users=value  assets_summary=value  Specify as:  business_roles=value1 business_roles=value2 business_roles=...  member_ids=value  start_index=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -141,6 +217,7 @@ The return response will include the member's business_role and assets they have
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
+ **fetchSystemUsers** | **boolean** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **assetsSummary** | **boolean** | Include assets summary in the response if this is true.
 
 The assets summary returns a dictionary representing a summary of the assets
@@ -215,6 +292,43 @@ If partner_type=EXTERNAL, the asset being queried is for the accesses you have t
 ### HTTP request headers
 
 - **Content-Type**: Not Applicable
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## systemUserUpdate
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+
+```bash
+ systemUserUpdate business_id=value system_user_id=value
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
+ **systemUserId** | **string** | Unique identifier of a system user. | [default to null]
+ **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  |
+
+### Return type
+
+(empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

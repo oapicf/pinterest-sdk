@@ -16,26 +16,26 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object for updating a product group.
- * @param name 
  * @param description 
- * @param isFeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
+ * @param isFeatured boolean indicator of whether the product group is being featured or not
+ * @param name 
  */
 data class CatalogsProductGroupUpdateRequest(
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
-    @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("filters") val filters: CatalogsProductGroupFiltersRequest? = null,
 
     @Schema(example = "null", description = "boolean indicator of whether the product group is being featured or not")
     @Deprecated(message = "")
     @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = null,
 
-    @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("filters") val filters: CatalogsProductGroupFiltersRequest? = null
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
 }

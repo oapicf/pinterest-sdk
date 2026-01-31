@@ -2,11 +2,11 @@ package org.openapitools.server.model
 
 
 /**
- * @param term  for example: ''clothes''
  * @param relatedTerms  for example: ''["shoes","cute clothes"]''
+ * @param term  for example: ''clothes''
 */
 final case class RelatedTermsRelatedTermsListInner (
-  term: Option[String] = None,
-  relatedTerms: Option[Seq[String]] = None
+  relatedTerms: Option[Seq[String]] = None,
+  term: Option[String] = None
 )
 

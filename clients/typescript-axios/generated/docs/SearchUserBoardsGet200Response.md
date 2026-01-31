@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;Board&gt;**](Board.md) | items | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;Board&gt;**](Board.md) | items | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { SearchUserBoardsGet200Response } from './api';
 
 const instance: SearchUserBoardsGet200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

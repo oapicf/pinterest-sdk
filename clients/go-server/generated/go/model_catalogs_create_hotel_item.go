@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,20 +17,20 @@ package openapi
 // CatalogsCreateHotelItem - A hotel item to be created.
 type CatalogsCreateHotelItem struct {
 
+	Attributes CatalogsHotelAttributes `json:"attributes"`
+
 	// The catalog hotel id in the merchant namespace
 	HotelId string `json:"hotel_id"`
 
 	Operation string `json:"operation"`
-
-	Attributes CatalogsHotelAttributes `json:"attributes"`
 }
 
 // AssertCatalogsCreateHotelItemRequired checks if the required fields are not zero-ed
 func AssertCatalogsCreateHotelItemRequired(obj CatalogsCreateHotelItem) error {
 	elements := map[string]interface{}{
+		"attributes": obj.Attributes,
 		"hotel_id": obj.HotelId,
 		"operation": obj.Operation,
-		"attributes": obj.Attributes,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

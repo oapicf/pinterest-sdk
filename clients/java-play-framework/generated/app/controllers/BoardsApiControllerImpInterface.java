@@ -1,12 +1,17 @@
 package controllers;
 
 import apimodels.Board;
+import apimodels.BoardCreate;
+import apimodels.BoardPrivacyFilter;
 import apimodels.BoardSection;
 import apimodels.BoardSectionsList200Response;
-import apimodels.BoardUpdate;
+import apimodels.BoardWithUpdatePrivacy;
+import apimodels.BoardWithUpdatePrivacyUpdate;
 import apimodels.BoardsList200Response;
 import apimodels.BoardsListPins200Response;
+import apimodels.CreativeType;
 import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -121,12 +126,12 @@ public abstract class BoardsApiControllerImpInterface {
 
     public abstract BoardSection boardSectionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId,  @Pattern(regexp="^\\d+$")String sectionId, BoardSection boardSection,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result boardsCreateHttp(Http.Request request, Board board,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result boardsCreateHttp(Http.Request request, BoardCreate boardCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Board obj = boardsCreate(request, board, adAccountId);
+        Board obj = boardsCreate(request, boardCreate, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -138,7 +143,7 @@ public abstract class BoardsApiControllerImpInterface {
 
     }
 
-    public abstract Board boardsCreate(Http.Request request, Board board,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract Board boardsCreate(Http.Request request, BoardCreate boardCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result boardsDeleteHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -171,12 +176,12 @@ public abstract class BoardsApiControllerImpInterface {
 
     public abstract Board boardsGet(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result boardsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String privacy) throws Exception {
+    public Result boardsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BoardPrivacyFilter privacy, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BoardsList200Response obj = boardsList(request, adAccountId, bookmark, pageSize, privacy);
+        BoardsList200Response obj = boardsList(request, adAccountId, privacy, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -188,9 +193,9 @@ public abstract class BoardsApiControllerImpInterface {
 
     }
 
-    public abstract BoardsList200Response boardsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String privacy) throws Exception;
+    public abstract BoardsList200Response boardsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BoardPrivacyFilter privacy, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result boardsListPinsHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
+    public Result boardsListPinsHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<CreativeType> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -207,14 +212,14 @@ public abstract class BoardsApiControllerImpInterface {
 
     }
 
-    public abstract BoardsListPins200Response boardsListPins(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception;
+    public abstract BoardsListPins200Response boardsListPins(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<CreativeType> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception;
 
-    public Result boardsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardUpdate boardUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result boardsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Board obj = boardsUpdate(request, boardId, boardUpdate, adAccountId);
+        BoardWithUpdatePrivacy obj = boardsUpdate(request, boardId, boardWithUpdatePrivacyUpdate, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -226,6 +231,6 @@ public abstract class BoardsApiControllerImpInterface {
 
     }
 
-    public abstract Board boardsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardUpdate boardUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract BoardWithUpdatePrivacy boardsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

@@ -2,22 +2,7 @@
 Protected Class IntegrationRecord
 
 	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		external_business_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		connected_merchant_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		connected_user_id As Xoson.O.OptionalString
+		additional_id_1 As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -32,7 +17,32 @@ Protected Class IntegrationRecord
 
 
 	#tag Property, Flags = &h0
+		connected_merchant_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		connected_tag_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		connected_user_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		created_time As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		external_business_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -42,7 +52,12 @@ Protected Class IntegrationRecord
 
 
 	#tag Property, Flags = &h0
-		partner_refresh_token As Xoson.O.OptionalString
+		partner_access_token_expiry As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		partner_metadata As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -52,7 +67,7 @@ Protected Class IntegrationRecord
 
 
 	#tag Property, Flags = &h0
-		partner_access_token_expiry As Xoson.O.OptionalInteger
+		partner_refresh_token As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -63,21 +78,6 @@ Protected Class IntegrationRecord
 
 	#tag Property, Flags = &h0
 		scopes As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		partner_metadata As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		additional_id_1 As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		created_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -123,31 +123,7 @@ Protected Class IntegrationRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="external_business_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="connected_merchant_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="connected_user_id"
+			Name="additional_id_1"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -171,7 +147,47 @@ Protected Class IntegrationRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="connected_merchant_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="connected_tag_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="connected_user_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="external_business_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -187,7 +203,15 @@ Protected Class IntegrationRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="partner_refresh_token"
+			Name="partner_access_token_expiry"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="partner_metadata"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -203,11 +227,11 @@ Protected Class IntegrationRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="partner_access_token_expiry"
+			Name="partner_refresh_token"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -224,30 +248,6 @@ Protected Class IntegrationRecord
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="partner_metadata"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="additional_id_1"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

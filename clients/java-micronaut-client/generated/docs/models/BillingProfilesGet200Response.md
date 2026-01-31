@@ -8,8 +8,8 @@ The class is defined in **[BillingProfilesGet200Response.java](../../src/main/ja
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;BillingProfilesResponse&gt;`](BillingProfilesResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;BillingProfilesResponse&gt;`](BillingProfilesResponse.md) |  | 
 
 
 

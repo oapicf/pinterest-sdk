@@ -18,26 +18,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelAttributes  {
   
- /**
-  * The hotel's name.
-  */
-  @ApiModelProperty(value = "The hotel's name.")
+  @ApiModelProperty(value = "")
 
-  private String name;
+  @Valid
 
- /**
-  * Link to the product page
-  */
-  @ApiModelProperty(value = "Link to the product page")
-
-  private String link;
+  private CatalogsHotelAddress address;
 
  /**
-  * Brief description of the hotel.
+  * Base price of the hotel room per night followed by the ISO currency code
   */
-  @ApiModelProperty(value = "Brief description of the hotel.")
+  @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
 
-  private String description;
+  private String basePrice;
 
  /**
   * The brand to which this hotel belongs to.
@@ -47,35 +39,11 @@ public class CatalogsHotelAttributes  {
   private String brand;
 
  /**
-  * Latitude of the hotel.
+  * The type of property. The category can be any type of internal description desired.
   */
-  @ApiModelProperty(value = "Latitude of the hotel.")
+  @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
 
-  @Valid
-
-  private BigDecimal latitude;
-
- /**
-  * Longitude of the hotel.
-  */
-  @ApiModelProperty(value = "Longitude of the hotel.")
-
-  @Valid
-
-  private BigDecimal longitude;
-
- /**
-  * A list of neighborhoods where the hotel is located
-  */
-  @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
-
-  private List<String> neighborhood;
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private CatalogsHotelAddress address;
+  private String category;
 
  /**
   * Custom grouping of hotels
@@ -113,18 +81,56 @@ public class CatalogsHotelAttributes  {
   private String customLabel4;
 
  /**
-  * The type of property. The category can be any type of internal description desired.
+  * Brief description of the hotel.
   */
-  @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
+  @ApiModelProperty(value = "Brief description of the hotel.")
 
-  private String category;
+  private String description;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private CatalogsHotelGuestRatings guestRatings;
 
  /**
-  * Base price of the hotel room per night followed by the ISO currency code
+  * Latitude of the hotel.
   */
-  @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
+  @ApiModelProperty(value = "Latitude of the hotel.")
 
-  private String basePrice;
+  @Valid
+
+  private BigDecimal latitude;
+
+ /**
+  * Link to the product page
+  */
+  @ApiModelProperty(value = "Link to the product page")
+
+  private String link;
+
+ /**
+  * Longitude of the hotel.
+  */
+  @ApiModelProperty(value = "Longitude of the hotel.")
+
+  @Valid
+
+  private BigDecimal longitude;
+
+ /**
+  * The hotel's name.
+  */
+  @ApiModelProperty(value = "The hotel's name.")
+
+  private String name;
+
+ /**
+  * A list of neighborhoods where the hotel is located
+  */
+  @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
+
+  private List<String> neighborhood;
 
  /**
   * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
@@ -133,75 +139,51 @@ public class CatalogsHotelAttributes  {
 
   private String salePrice;
 
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private CatalogsHotelGuestRatings guestRatings;
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private CatalogsHotelAttributesAllOfMainImage mainImage;
-
  /**
   * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
   */
   @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>")
 
   private List<String> additionalImageLink;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private CatalogsHotelAttributesAllOfMainImage mainImage;
  /**
-   * The hotel&#39;s name.
-   * @return name
+   * Get address
+   * @return address
   **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("address")
+  public CatalogsHotelAddress getAddress() {
+    return address;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setAddress(CatalogsHotelAddress address) {
+    this.address = address;
   }
 
-  public CatalogsHotelAttributes name(String name) {
-    this.name = name;
+  public CatalogsHotelAttributes address(CatalogsHotelAddress address) {
+    this.address = address;
     return this;
   }
 
  /**
-   * Link to the product page
-   * @return link
+   * Base price of the hotel room per night followed by the ISO currency code
+   * @return basePrice
   **/
-  @JsonProperty("link")
-  public String getLink() {
-    return link;
+  @JsonProperty("base_price")
+  public String getBasePrice() {
+    return basePrice;
   }
 
-  public void setLink(String link) {
-    this.link = link;
+  public void setBasePrice(String basePrice) {
+    this.basePrice = basePrice;
   }
 
-  public CatalogsHotelAttributes link(String link) {
-    this.link = link;
-    return this;
-  }
-
- /**
-   * Brief description of the hotel.
-   * @return description
-  **/
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public CatalogsHotelAttributes description(String description) {
-    this.description = description;
+  public CatalogsHotelAttributes basePrice(String basePrice) {
+    this.basePrice = basePrice;
     return this;
   }
 
@@ -224,79 +206,20 @@ public class CatalogsHotelAttributes  {
   }
 
  /**
-   * Latitude of the hotel.
-   * @return latitude
+   * The type of property. The category can be any type of internal description desired.
+   * @return category
   **/
-  @JsonProperty("latitude")
-  public BigDecimal getLatitude() {
-    return latitude;
+  @JsonProperty("category")
+  public String getCategory() {
+    return category;
   }
 
-  public void setLatitude(BigDecimal latitude) {
-    this.latitude = latitude;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
-  public CatalogsHotelAttributes latitude(BigDecimal latitude) {
-    this.latitude = latitude;
-    return this;
-  }
-
- /**
-   * Longitude of the hotel.
-   * @return longitude
-  **/
-  @JsonProperty("longitude")
-  public BigDecimal getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(BigDecimal longitude) {
-    this.longitude = longitude;
-  }
-
-  public CatalogsHotelAttributes longitude(BigDecimal longitude) {
-    this.longitude = longitude;
-    return this;
-  }
-
- /**
-   * A list of neighborhoods where the hotel is located
-   * @return neighborhood
-  **/
-  @JsonProperty("neighborhood")
-  public List<String> getNeighborhood() {
-    return neighborhood;
-  }
-
-  public void setNeighborhood(List<String> neighborhood) {
-    this.neighborhood = neighborhood;
-  }
-
-  public CatalogsHotelAttributes neighborhood(List<String> neighborhood) {
-    this.neighborhood = neighborhood;
-    return this;
-  }
-
-  public CatalogsHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
-    this.neighborhood.add(neighborhoodItem);
-    return this;
-  }
-
- /**
-   * Get address
-   * @return address
-  **/
-  @JsonProperty("address")
-  public CatalogsHotelAddress getAddress() {
-    return address;
-  }
-
-  public void setAddress(CatalogsHotelAddress address) {
-    this.address = address;
-  }
-
-  public CatalogsHotelAttributes address(CatalogsHotelAddress address) {
-    this.address = address;
+  public CatalogsHotelAttributes category(String category) {
+    this.category = category;
     return this;
   }
 
@@ -391,56 +314,20 @@ public class CatalogsHotelAttributes  {
   }
 
  /**
-   * The type of property. The category can be any type of internal description desired.
-   * @return category
+   * Brief description of the hotel.
+   * @return description
   **/
-  @JsonProperty("category")
-  public String getCategory() {
-    return category;
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
   }
 
-  public void setCategory(String category) {
-    this.category = category;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
-  public CatalogsHotelAttributes category(String category) {
-    this.category = category;
-    return this;
-  }
-
- /**
-   * Base price of the hotel room per night followed by the ISO currency code
-   * @return basePrice
-  **/
-  @JsonProperty("base_price")
-  public String getBasePrice() {
-    return basePrice;
-  }
-
-  public void setBasePrice(String basePrice) {
-    this.basePrice = basePrice;
-  }
-
-  public CatalogsHotelAttributes basePrice(String basePrice) {
-    this.basePrice = basePrice;
-    return this;
-  }
-
- /**
-   * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-   * @return salePrice
-  **/
-  @JsonProperty("sale_price")
-  public String getSalePrice() {
-    return salePrice;
-  }
-
-  public void setSalePrice(String salePrice) {
-    this.salePrice = salePrice;
-  }
-
-  public CatalogsHotelAttributes salePrice(String salePrice) {
-    this.salePrice = salePrice;
+  public CatalogsHotelAttributes description(String description) {
+    this.description = description;
     return this;
   }
 
@@ -463,20 +350,115 @@ public class CatalogsHotelAttributes  {
   }
 
  /**
-   * Get mainImage
-   * @return mainImage
+   * Latitude of the hotel.
+   * @return latitude
   **/
-  @JsonProperty("main_image")
-  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
-    return mainImage;
+  @JsonProperty("latitude")
+  public BigDecimal getLatitude() {
+    return latitude;
   }
 
-  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
-    this.mainImage = mainImage;
+  public void setLatitude(BigDecimal latitude) {
+    this.latitude = latitude;
   }
 
-  public CatalogsHotelAttributes mainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
-    this.mainImage = mainImage;
+  public CatalogsHotelAttributes latitude(BigDecimal latitude) {
+    this.latitude = latitude;
+    return this;
+  }
+
+ /**
+   * Link to the product page
+   * @return link
+  **/
+  @JsonProperty("link")
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+  public CatalogsHotelAttributes link(String link) {
+    this.link = link;
+    return this;
+  }
+
+ /**
+   * Longitude of the hotel.
+   * @return longitude
+  **/
+  @JsonProperty("longitude")
+  public BigDecimal getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(BigDecimal longitude) {
+    this.longitude = longitude;
+  }
+
+  public CatalogsHotelAttributes longitude(BigDecimal longitude) {
+    this.longitude = longitude;
+    return this;
+  }
+
+ /**
+   * The hotel&#39;s name.
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsHotelAttributes name(String name) {
+    this.name = name;
+    return this;
+  }
+
+ /**
+   * A list of neighborhoods where the hotel is located
+   * @return neighborhood
+  **/
+  @JsonProperty("neighborhood")
+  public List<String> getNeighborhood() {
+    return neighborhood;
+  }
+
+  public void setNeighborhood(List<String> neighborhood) {
+    this.neighborhood = neighborhood;
+  }
+
+  public CatalogsHotelAttributes neighborhood(List<String> neighborhood) {
+    this.neighborhood = neighborhood;
+    return this;
+  }
+
+  public CatalogsHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
+    this.neighborhood.add(neighborhoodItem);
+    return this;
+  }
+
+ /**
+   * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+   * @return salePrice
+  **/
+  @JsonProperty("sale_price")
+  public String getSalePrice() {
+    return salePrice;
+  }
+
+  public void setSalePrice(String salePrice) {
+    this.salePrice = salePrice;
+  }
+
+  public CatalogsHotelAttributes salePrice(String salePrice) {
+    this.salePrice = salePrice;
     return this;
   }
 
@@ -503,6 +485,24 @@ public class CatalogsHotelAttributes  {
     return this;
   }
 
+ /**
+   * Get mainImage
+   * @return mainImage
+  **/
+  @JsonProperty("main_image")
+  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
+    return mainImage;
+  }
+
+  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+    this.mainImage = mainImage;
+  }
+
+  public CatalogsHotelAttributes mainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+    this.mainImage = mainImage;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -512,30 +512,30 @@ public class CatalogsHotelAttributes  {
       return false;
     }
     CatalogsHotelAttributes catalogsHotelAttributes = (CatalogsHotelAttributes) o;
-    return Objects.equals(this.name, catalogsHotelAttributes.name) &&
-        Objects.equals(this.link, catalogsHotelAttributes.link) &&
-        Objects.equals(this.description, catalogsHotelAttributes.description) &&
+    return Objects.equals(this.address, catalogsHotelAttributes.address) &&
+        Objects.equals(this.basePrice, catalogsHotelAttributes.basePrice) &&
         Objects.equals(this.brand, catalogsHotelAttributes.brand) &&
-        Objects.equals(this.latitude, catalogsHotelAttributes.latitude) &&
-        Objects.equals(this.longitude, catalogsHotelAttributes.longitude) &&
-        Objects.equals(this.neighborhood, catalogsHotelAttributes.neighborhood) &&
-        Objects.equals(this.address, catalogsHotelAttributes.address) &&
+        Objects.equals(this.category, catalogsHotelAttributes.category) &&
         Objects.equals(this.customLabel0, catalogsHotelAttributes.customLabel0) &&
         Objects.equals(this.customLabel1, catalogsHotelAttributes.customLabel1) &&
         Objects.equals(this.customLabel2, catalogsHotelAttributes.customLabel2) &&
         Objects.equals(this.customLabel3, catalogsHotelAttributes.customLabel3) &&
         Objects.equals(this.customLabel4, catalogsHotelAttributes.customLabel4) &&
-        Objects.equals(this.category, catalogsHotelAttributes.category) &&
-        Objects.equals(this.basePrice, catalogsHotelAttributes.basePrice) &&
-        Objects.equals(this.salePrice, catalogsHotelAttributes.salePrice) &&
+        Objects.equals(this.description, catalogsHotelAttributes.description) &&
         Objects.equals(this.guestRatings, catalogsHotelAttributes.guestRatings) &&
-        Objects.equals(this.mainImage, catalogsHotelAttributes.mainImage) &&
-        Objects.equals(this.additionalImageLink, catalogsHotelAttributes.additionalImageLink);
+        Objects.equals(this.latitude, catalogsHotelAttributes.latitude) &&
+        Objects.equals(this.link, catalogsHotelAttributes.link) &&
+        Objects.equals(this.longitude, catalogsHotelAttributes.longitude) &&
+        Objects.equals(this.name, catalogsHotelAttributes.name) &&
+        Objects.equals(this.neighborhood, catalogsHotelAttributes.neighborhood) &&
+        Objects.equals(this.salePrice, catalogsHotelAttributes.salePrice) &&
+        Objects.equals(this.additionalImageLink, catalogsHotelAttributes.additionalImageLink) &&
+        Objects.equals(this.mainImage, catalogsHotelAttributes.mainImage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, link, description, brand, latitude, longitude, neighborhood, address, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, category, basePrice, salePrice, guestRatings, mainImage, additionalImageLink);
+    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, mainImage);
   }
 
   @Override
@@ -543,25 +543,25 @@ public class CatalogsHotelAttributes  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelAttributes {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
-    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
-    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
-    sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    basePrice: ").append(toIndentedString(basePrice)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    customLabel0: ").append(toIndentedString(customLabel0)).append("\n");
     sb.append("    customLabel1: ").append(toIndentedString(customLabel1)).append("\n");
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
-    sb.append("    category: ").append(toIndentedString(category)).append("\n");
-    sb.append("    basePrice: ").append(toIndentedString(basePrice)).append("\n");
-    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    guestRatings: ").append(toIndentedString(guestRatings)).append("\n");
-    sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
+    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
     sb.append("}");
     return sb.toString();
   }

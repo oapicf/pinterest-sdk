@@ -1,5 +1,6 @@
 package controllers;
 
+import apimodels.CreativeType;
 import apimodels.Error;
 import java.time.LocalDate;
 import java.util.Map;
@@ -9,6 +10,7 @@ import apimodels.PinCreate;
 import apimodels.PinUpdate;
 import apimodels.PinsList200Response;
 import apimodels.PinsSaveRequest;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -96,7 +98,7 @@ public abstract class PinsApiControllerImpInterface {
 
     public abstract Pin pinsCreate(Http.Request request, PinCreate pinCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result pinsDeleteHttp(Http.Request request, String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result pinsDeleteHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -106,14 +108,14 @@ public abstract class PinsApiControllerImpInterface {
 
     }
 
-    public abstract void pinsDelete(Http.Request request, String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract void pinsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result pinsGetHttp(Http.Request request, String pinId, Boolean pinMetrics,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result pinsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Pin obj = pinsGet(request, pinId, pinMetrics, adAccountId);
+        Pin obj = pinsGet(request, pinId, adAccountId, pinMetrics);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -125,14 +127,14 @@ public abstract class PinsApiControllerImpInterface {
 
     }
 
-    public abstract Pin pinsGet(Http.Request request, String pinId, Boolean pinMetrics,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract Pin pinsGet(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception;
 
-    public Result pinsListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
+    public Result pinsListHttp(Http.Request request, String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        PinsList200Response obj = pinsList(request, bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics);
+        PinsList200Response obj = pinsList(request, pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -144,7 +146,7 @@ public abstract class PinsApiControllerImpInterface {
 
     }
 
-    public abstract PinsList200Response pinsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception;
+    public abstract PinsList200Response pinsList(Http.Request request, String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
     public Result pinsSaveHttp(Http.Request request, String pinId, PinsSaveRequest pinsSaveRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -165,7 +167,7 @@ public abstract class PinsApiControllerImpInterface {
 
     public abstract Pin pinsSave(Http.Request request, String pinId, PinsSaveRequest pinsSaveRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result pinsUpdateHttp(Http.Request request, String pinId, PinUpdate pinUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result pinsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId, PinUpdate pinUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -182,6 +184,6 @@ public abstract class PinsApiControllerImpInterface {
 
     }
 
-    public abstract Pin pinsUpdate(Http.Request request, String pinId, PinUpdate pinUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract Pin pinsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId, PinUpdate pinUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

@@ -10,36 +10,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedIngestion  {
   
-  @ApiModelProperty(example = "01234", required = true, value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
 
-  private String id;
+  private Date createdAt;
 
   @ApiModelProperty(example = "56789", required = true, value = "")
 
   private String feedId;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @ApiModelProperty(example = "01234", required = true, value = "")
 
-  private Date createdAt;
+  private String id;
 
   @ApiModelProperty(required = true, value = "")
 
   private CatalogsFeedProcessingStatus status;
  /**
-   * Get id
-   * @return id
+   * Get createdAt
+   * @return createdAt
   **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("created_at")
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 
-  public CatalogsFeedIngestion id(String id) {
-    this.id = id;
+  public CatalogsFeedIngestion createdAt(Date createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
@@ -62,20 +62,20 @@ public class CatalogsFeedIngestion  {
   }
 
  /**
-   * Get createdAt
-   * @return createdAt
+   * Get id
+   * @return id
   **/
-  @JsonProperty("created_at")
-  public Date getCreatedAt() {
-    return createdAt;
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public CatalogsFeedIngestion createdAt(Date createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsFeedIngestion id(String id) {
+    this.id = id;
     return this;
   }
 
@@ -106,15 +106,15 @@ public class CatalogsFeedIngestion  {
       return false;
     }
     CatalogsFeedIngestion catalogsFeedIngestion = (CatalogsFeedIngestion) o;
-    return Objects.equals(this.id, catalogsFeedIngestion.id) &&
+    return Objects.equals(this.createdAt, catalogsFeedIngestion.createdAt) &&
         Objects.equals(this.feedId, catalogsFeedIngestion.feedId) &&
-        Objects.equals(this.createdAt, catalogsFeedIngestion.createdAt) &&
+        Objects.equals(this.id, catalogsFeedIngestion.id) &&
         Objects.equals(this.status, catalogsFeedIngestion.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, feedId, createdAt, status);
+    return Objects.hash(createdAt, feedId, id, status);
   }
 
   @Override
@@ -122,9 +122,9 @@ public class CatalogsFeedIngestion  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedIngestion {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

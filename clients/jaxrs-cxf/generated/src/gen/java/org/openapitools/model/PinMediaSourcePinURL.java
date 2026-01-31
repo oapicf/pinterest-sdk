@@ -17,6 +17,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PinMediaSourcePinURL  {
   
+ /**
+  * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+  */
+  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+
+  private Boolean isAffiliateLink = false;
+
 public enum SourceTypeEnum {
 
 PIN_URL(String.valueOf("pin_url"));
@@ -52,13 +59,24 @@ PIN_URL(String.valueOf("pin_url"));
   @ApiModelProperty(required = true, value = "")
 
   private SourceTypeEnum sourceType;
-
  /**
-  * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
-  */
-  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+   * @return isAffiliateLink
+  **/
+  @JsonProperty("is_affiliate_link")
+  public Boolean getIsAffiliateLink() {
+    return isAffiliateLink;
+  }
 
-  private Boolean isAffiliateLink = false;
+  public void setIsAffiliateLink(Boolean isAffiliateLink) {
+    this.isAffiliateLink = isAffiliateLink;
+  }
+
+  public PinMediaSourcePinURL isAffiliateLink(Boolean isAffiliateLink) {
+    this.isAffiliateLink = isAffiliateLink;
+    return this;
+  }
+
  /**
    * Get sourceType
    * @return sourceType
@@ -81,24 +99,6 @@ PIN_URL(String.valueOf("pin_url"));
     return this;
   }
 
- /**
-   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
-   * @return isAffiliateLink
-  **/
-  @JsonProperty("is_affiliate_link")
-  public Boolean getIsAffiliateLink() {
-    return isAffiliateLink;
-  }
-
-  public void setIsAffiliateLink(Boolean isAffiliateLink) {
-    this.isAffiliateLink = isAffiliateLink;
-  }
-
-  public PinMediaSourcePinURL isAffiliateLink(Boolean isAffiliateLink) {
-    this.isAffiliateLink = isAffiliateLink;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -108,13 +108,13 @@ PIN_URL(String.valueOf("pin_url"));
       return false;
     }
     PinMediaSourcePinURL pinMediaSourcePinURL = (PinMediaSourcePinURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType) &&
-        Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink);
+    return Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink) &&
+        Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, isAffiliateLink);
+    return Objects.hash(isAffiliateLink, sourceType);
   }
 
   @Override
@@ -122,8 +122,8 @@ PIN_URL(String.valueOf("pin_url"));
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourcePinURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

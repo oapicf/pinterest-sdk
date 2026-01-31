@@ -17,69 +17,69 @@ import org.openapitools.model.LeadFormStatus;
 /**
  * LeadFormUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormUpdateRequest   {
-  @JsonProperty("name")
-  private String name;
-
-  @JsonProperty("privacy_policy_link")
-  private String privacyPolicyLink;
-
-  @JsonProperty("has_accepted_terms")
-  private Boolean hasAcceptedTerms;
-
   @JsonProperty("completion_message")
   private String completionMessage;
-
-  @JsonProperty("status")
-  private LeadFormStatus status;
 
   @JsonProperty("disclosure_language")
   private String disclosureLanguage;
 
-  @JsonProperty("questions")
-  private List<@Valid LeadFormQuestion> questions = null;
+  @JsonProperty("has_accepted_terms")
+  private Boolean hasAcceptedTerms;
+
+  @JsonProperty("name")
+  private String name;
 
   @JsonProperty("policy_links")
   private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = null;
 
+  @JsonProperty("privacy_policy_link")
+  private String privacyPolicyLink;
+
+  @JsonProperty("questions")
+  private List<@Valid LeadFormQuestion> questions = null;
+
+  @JsonProperty("status")
+  private LeadFormStatus status;
+
   @JsonProperty("id")
   private String id;
 
-  public LeadFormUpdateRequest name(String name) {
-    this.name = name;
+  public LeadFormUpdateRequest completionMessage(String completionMessage) {
+    this.completionMessage = completionMessage;
     return this;
   }
 
    /**
-   * Internal name of the lead form.
-   * @return name
+   * A message for people who complete the form to let them know what happens next.
+   * @return completionMessage
   **/
-  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
-  public String getName() {
-    return name;
+  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
+  public String getCompletionMessage() {
+    return completionMessage;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCompletionMessage(String completionMessage) {
+    this.completionMessage = completionMessage;
   }
 
-  public LeadFormUpdateRequest privacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
+  public LeadFormUpdateRequest disclosureLanguage(String disclosureLanguage) {
+    this.disclosureLanguage = disclosureLanguage;
     return this;
   }
 
    /**
-   * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-   * @return privacyPolicyLink
+   * Additional disclosure language to be included in the lead form.
+   * @return disclosureLanguage
   **/
-  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
-  public String getPrivacyPolicyLink() {
-    return privacyPolicyLink;
+  @ApiModelProperty(example = "By entering your personal information, you agree that your data will be collected and used.", value = "Additional disclosure language to be included in the lead form.")
+  public String getDisclosureLanguage() {
+    return disclosureLanguage;
   }
 
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
+  public void setDisclosureLanguage(String disclosureLanguage) {
+    this.disclosureLanguage = disclosureLanguage;
   }
 
   public LeadFormUpdateRequest hasAcceptedTerms(Boolean hasAcceptedTerms) {
@@ -100,58 +100,66 @@ public class LeadFormUpdateRequest   {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
-  public LeadFormUpdateRequest completionMessage(String completionMessage) {
-    this.completionMessage = completionMessage;
+  public LeadFormUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * A message for people who complete the form to let them know what happens next.
-   * @return completionMessage
+   * Internal name of the lead form.
+   * @return name
   **/
-  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
-  public String getCompletionMessage() {
-    return completionMessage;
+  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
+  public String getName() {
+    return name;
   }
 
-  public void setCompletionMessage(String completionMessage) {
-    this.completionMessage = completionMessage;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public LeadFormUpdateRequest status(LeadFormStatus status) {
-    this.status = status;
+  public LeadFormUpdateRequest policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  public LeadFormUpdateRequest addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    if (this.policyLinks == null) {
+      this.policyLinks = new ArrayList<>();
+    }
+    this.policyLinks.add(policyLinksItem);
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * List of additional policy links to be displayed on the lead form.
+   * @return policyLinks
   **/
-  @ApiModelProperty(value = "")
-  public LeadFormStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
+  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
   }
 
-  public void setStatus(LeadFormStatus status) {
-    this.status = status;
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
   }
 
-  public LeadFormUpdateRequest disclosureLanguage(String disclosureLanguage) {
-    this.disclosureLanguage = disclosureLanguage;
+  public LeadFormUpdateRequest privacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
     return this;
   }
 
    /**
-   * Additional disclosure language to be included in the lead form.
-   * @return disclosureLanguage
+   * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+   * @return privacyPolicyLink
   **/
-  @ApiModelProperty(example = "By entering your personal information, you agree that your data will be collected and used.", value = "Additional disclosure language to be included in the lead form.")
-  public String getDisclosureLanguage() {
-    return disclosureLanguage;
+  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+  public String getPrivacyPolicyLink() {
+    return privacyPolicyLink;
   }
 
-  public void setDisclosureLanguage(String disclosureLanguage) {
-    this.disclosureLanguage = disclosureLanguage;
+  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
   }
 
   public LeadFormUpdateRequest questions(List<@Valid LeadFormQuestion> questions) {
@@ -180,30 +188,22 @@ public class LeadFormUpdateRequest   {
     this.questions = questions;
   }
 
-  public LeadFormUpdateRequest policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
-    return this;
-  }
-
-  public LeadFormUpdateRequest addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
-    if (this.policyLinks == null) {
-      this.policyLinks = new ArrayList<>();
-    }
-    this.policyLinks.add(policyLinksItem);
+  public LeadFormUpdateRequest status(LeadFormStatus status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * List of additional policy links to be displayed on the lead form.
-   * @return policyLinks
+   * Get status
+   * @return status
   **/
-  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
-  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
-    return policyLinks;
+  @ApiModelProperty(value = "")
+  public LeadFormStatus getStatus() {
+    return status;
   }
 
-  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
+  public void setStatus(LeadFormStatus status) {
+    this.status = status;
   }
 
   public LeadFormUpdateRequest id(String id) {
@@ -234,20 +234,20 @@ public class LeadFormUpdateRequest   {
       return false;
     }
     LeadFormUpdateRequest leadFormUpdateRequest = (LeadFormUpdateRequest) o;
-    return Objects.equals(this.name, leadFormUpdateRequest.name) &&
-        Objects.equals(this.privacyPolicyLink, leadFormUpdateRequest.privacyPolicyLink) &&
-        Objects.equals(this.hasAcceptedTerms, leadFormUpdateRequest.hasAcceptedTerms) &&
-        Objects.equals(this.completionMessage, leadFormUpdateRequest.completionMessage) &&
-        Objects.equals(this.status, leadFormUpdateRequest.status) &&
+    return Objects.equals(this.completionMessage, leadFormUpdateRequest.completionMessage) &&
         Objects.equals(this.disclosureLanguage, leadFormUpdateRequest.disclosureLanguage) &&
-        Objects.equals(this.questions, leadFormUpdateRequest.questions) &&
+        Objects.equals(this.hasAcceptedTerms, leadFormUpdateRequest.hasAcceptedTerms) &&
+        Objects.equals(this.name, leadFormUpdateRequest.name) &&
         Objects.equals(this.policyLinks, leadFormUpdateRequest.policyLinks) &&
+        Objects.equals(this.privacyPolicyLink, leadFormUpdateRequest.privacyPolicyLink) &&
+        Objects.equals(this.questions, leadFormUpdateRequest.questions) &&
+        Objects.equals(this.status, leadFormUpdateRequest.status) &&
         Objects.equals(this.id, leadFormUpdateRequest.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks, id);
+    return Objects.hash(completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status, id);
   }
 
   @Override
@@ -255,14 +255,14 @@ public class LeadFormUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
-    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
     sb.append("    completionMessage: ").append(toIndentedString(completionMessage)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
-    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
+    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
+    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();

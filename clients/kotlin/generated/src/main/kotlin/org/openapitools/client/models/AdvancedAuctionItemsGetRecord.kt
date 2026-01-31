@@ -24,20 +24,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Object uniquely identifying a retail catalog item
  *
- * @param itemId The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
  */
 
 
 data class AdvancedAuctionItemsGetRecord (
 
+    @Json(name = "country")
+    val country: Country,
+
     /* The catalog retail item id in the merchant namespace */
     @Json(name = "item_id")
     val itemId: kotlin.String,
-
-    @Json(name = "country")
-    val country: Country,
 
     @Json(name = "language")
     val language: Language

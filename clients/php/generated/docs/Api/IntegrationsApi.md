@@ -177,7 +177,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **external_business_id** | **string**| External business ID for the integration. | |
-| **integration_request_patch** | [**\OpenAPI\Client\Model\IntegrationRequestPatch**](../Model/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional] |
+| **integration_request_patch** | [**\OpenAPI\Client\Model\IntegrationRequestPatch**](../Model/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
 
 ### Return type
 
@@ -237,7 +237,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **integration_request** | [**\OpenAPI\Client\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional] |
+| **integration_request** | [**\OpenAPI\Client\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
 
 ### Return type
 

@@ -7,6 +7,7 @@ model_instance <- OptimizationGoalMetadataFrequencyGoalMetadata$new()
 
 test_that("frequency", {
   # tests for the property `frequency` (integer)
+  # Frequency target can only be between 2 and 20
 
   # uncomment below to test the property
   #expect_equal(model.instance$`frequency`, "EXPECTED_RESULT")

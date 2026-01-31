@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
+import org.openapitools.model.ProductGroupPromotion;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -21,7 +21,7 @@ public class ProductGroupPromotionCreateRequest  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private List<ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
+  private List<ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
  /**
    * ID of the Ad Group the Product Group Promotion belongs to.
    * @return adGroupId
@@ -45,20 +45,20 @@ public class ProductGroupPromotionCreateRequest  {
    * @return productGroupPromotion
   **/
   @JsonProperty("product_group_promotion")
-  public List<ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
+  public List<ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public void setProductGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
     this.productGroupPromotion.add(productGroupPromotionItem);
     return this;
   }

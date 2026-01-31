@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,18 +20,178 @@ var _ MappedNullable = &CatalogsFeedIngestionWarnings{}
 
 // CatalogsFeedIngestionWarnings struct for CatalogsFeedIngestionWarnings
 type CatalogsFeedIngestionWarnings struct {
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE *int32 `json:"AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND *int32 `json:"AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS400 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_400,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS403 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_403,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS404 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_404,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS405 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_405,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS410 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_410,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS429 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_429,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS500 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_500,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS502 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_502,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS503 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_503,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS504 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_504,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS507 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_507,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS508 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_508,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS520 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_520,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS521 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_521,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS522 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_522,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS525 *int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_525,omitempty"`
 	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-	ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR *int32 `json:"ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR,omitempty"`
+	AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_ERROR,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD *int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL *int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED *int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED *int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_INVALID_FILE *int32 `json:"AD_IMAGE_DOWNLOAD_INVALID_FILE,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SITE_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_SITE_ERROR,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SITE_TIMEOUT *int32 `json:"AD_IMAGE_DOWNLOAD_SITE_TIMEOUT,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SSL_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_SSL_ERROR,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR *int32 `json:"AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR,omitempty"`
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_PROCESSING_EMPTY_FILE *int32 `json:"AD_IMAGE_PROCESSING_EMPTY_FILE,omitempty"`
+	// Ad images must have a height larger than 75 pixels
+	AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL *int32 `json:"AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL,omitempty"`
+	// Ad images must have a maximum area (width x height) of less than 89478485 pixels
+	AD_IMAGE_PROCESSING_TOO_MANY_PIXELS *int32 `json:"AD_IMAGE_PROCESSING_TOO_MANY_PIXELS,omitempty"`
+	// Some ad images could not be processed due to a file type mismatch.
+	AD_IMAGE_PROCESSING_TYPE_MISMATCH *int32 `json:"AD_IMAGE_PROCESSING_TYPE_MISMATCH,omitempty"`
+	// Ad images must have a width larger than 75 pixels
+	AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL *int32 `json:"AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE *int32 `json:"AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND *int32 `json:"AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS400 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_400,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS403 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_403,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS404 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_404,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS405 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_405,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS410 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_410,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS429 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_429,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS500 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_500,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS502 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_502,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS503 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_503,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS504 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_504,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS507 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_507,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS508 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_508,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS520 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_520,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS521 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_521,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS522 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_522,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS525 *int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_525,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_ERROR,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD *int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL *int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED *int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED *int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_INVALID_FILE *int32 `json:"AD_VIDEO_DOWNLOAD_INVALID_FILE,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SITE_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_SITE_ERROR,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SITE_TIMEOUT *int32 `json:"AD_VIDEO_DOWNLOAD_SITE_TIMEOUT,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SSL_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_SSL_ERROR,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR *int32 `json:"AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR,omitempty"`
+	// Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.
+	AD_VIDEO_LENGTH_TOO_SHORT *int32 `json:"AD_VIDEO_LENGTH_TOO_SHORT,omitempty"`
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_PROCESSING_EMPTY_FILE *int32 `json:"AD_VIDEO_PROCESSING_EMPTY_FILE,omitempty"`
+	// Ad videos must have a height larger than 75 pixels
+	AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL *int32 `json:"AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL,omitempty"`
+	// Ad videos must have a maximum area (width x height) of less than 89478485 pixels
+	AD_VIDEO_PROCESSING_TOO_MANY_PIXELS *int32 `json:"AD_VIDEO_PROCESSING_TOO_MANY_PIXELS,omitempty"`
+	// Some ad videos could not be processed due to a file type mismatch.
+	AD_VIDEO_PROCESSING_TYPE_MISMATCH *int32 `json:"AD_VIDEO_PROCESSING_TYPE_MISMATCH,omitempty"`
+	// Ad videos must have a width larger than 75 pixels
+	AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL *int32 `json:"AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL,omitempty"`
 	// Additional image files are unreadable. Please upload new files to continue.
 	ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE *int32 `json:"ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE,omitempty"`
-	// Additional image files are unreadable. Please check your link and upload new files to continue.
-	ADDITIONAL_IMAGE_MALFORMED_URL *int32 `json:"ADDITIONAL_IMAGE_MALFORMED_URL,omitempty"`
 	// Additional image files are unreadable. Please upload new files to continue.
 	ADDITIONAL_IMAGE_FILE_NOT_FOUND *int32 `json:"ADDITIONAL_IMAGE_FILE_NOT_FOUND,omitempty"`
 	// Additional image files are unreadable. Please upload new files to continue.
 	ADDITIONAL_IMAGE_INVALID_FILE *int32 `json:"ADDITIONAL_IMAGE_INVALID_FILE,omitempty"`
-	// price is not a supported column. Use base_price and sale_price instead.
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR *int32 `json:"ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR,omitempty"`
+	// Additional image files are unreadable. Please check your link and upload new files to continue.
+	ADDITIONAL_IMAGE_MALFORMED_URL *int32 `json:"ADDITIONAL_IMAGE_MALFORMED_URL,omitempty"`
+	// Update your Google Sheets sharing settings from 'Editor' to 'Viewer'.
+	FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT *int32 `json:"FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT,omitempty"`
+	// Price is not a supported column. Use base_price and sale_price instead.
 	HOTEL_PRICE_HEADER_IS_PRESENT *int32 `json:"HOTEL_PRICE_HEADER_IS_PRESENT,omitempty"`
+	// Video length is too short. Please ensure that the main video is at least 4 seconds long.
+	VIDEO_DOWNLOAD_VIDEO_TOO_SHORT *int32 `json:"VIDEO_DOWNLOAD_VIDEO_TOO_SHORT,omitempty"`
+	// Video files are unreadable. Please upload new files to continue.
+	VIDEO_FILE_NOT_ACCESSIBLE *int32 `json:"VIDEO_FILE_NOT_ACCESSIBLE,omitempty"`
+	// Video files are unreadable. Please upload new files to continue.
+	VIDEO_FILE_NOT_FOUND *int32 `json:"VIDEO_FILE_NOT_FOUND,omitempty"`
+	// Video files are unreadable. Please upload new files to continue.
+	VIDEO_INVALID_FILE *int32 `json:"VIDEO_INVALID_FILE,omitempty"`
+	// We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.
+	VIDEO_LEVEL_INTERNAL_ERROR *int32 `json:"VIDEO_LEVEL_INTERNAL_ERROR,omitempty"`
+	// Video files are unreadable. Please check your link and upload new files to continue.
+	VIDEO_MALFORMED_URL *int32 `json:"VIDEO_MALFORMED_URL,omitempty"`
 }
 
 // NewCatalogsFeedIngestionWarnings instantiates a new CatalogsFeedIngestionWarnings object
@@ -51,36 +211,2340 @@ func NewCatalogsFeedIngestionWarningsWithDefaults() *CatalogsFeedIngestionWarnin
 	return &this
 }
 
-// GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR returns the ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
-func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR() int32 {
-	if o == nil || IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+// GetAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR returns the AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {
 		var ret int32
 		return ret
 	}
-	return *o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+	return *o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR
 }
 
-// GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROROk returns a tuple with the ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
+// GetAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
-	if o == nil || IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {
 		return nil, false
 	}
-	return o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR, true
+	return o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR, true
 }
 
-// HasADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
-func (o *CatalogsFeedIngestionWarnings) HasADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR() bool {
-	if o != nil && !IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+// HasAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {
 		return true
 	}
 
 	return false
 }
 
-// SetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR field.
-func (o *CatalogsFeedIngestionWarnings) SetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(v int32) {
-	o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = &v
+// SetAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR returns the AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR
+}
+
+// GetAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE returns the AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE
+}
+
+// GetAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLEOk returns a tuple with the AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLEOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE(v int32) {
+	o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_FILE_NOT_FOUND returns the AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_FILE_NOT_FOUND() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND
+}
+
+// GetAD_IMAGE_DOWNLOAD_FILE_NOT_FOUNDOk returns a tuple with the AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_FILE_NOT_FOUNDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_FILE_NOT_FOUND returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_FILE_NOT_FOUND() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_FILE_NOT_FOUND gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_FILE_NOT_FOUND(v int32) {
+	o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS400 returns the ADIMAGEDOWNLOADHTTPSTATUS400 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS400() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS400) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS400
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS400Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS400 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS400Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS400) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS400, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS400 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS400() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS400) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS400 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS400 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS400(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS400 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS403 returns the ADIMAGEDOWNLOADHTTPSTATUS403 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS403() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS403) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS403
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS403Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS403 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS403Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS403) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS403, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS403 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS403() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS403) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS403 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS403 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS403(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS403 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS404 returns the ADIMAGEDOWNLOADHTTPSTATUS404 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS404() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS404) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS404
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS404Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS404 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS404Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS404) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS404, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS404 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS404() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS404) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS404 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS404 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS404(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS404 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS405 returns the ADIMAGEDOWNLOADHTTPSTATUS405 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS405() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS405) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS405
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS405Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS405 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS405Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS405) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS405, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS405 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS405() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS405) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS405 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS405 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS405(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS405 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS410 returns the ADIMAGEDOWNLOADHTTPSTATUS410 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS410() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS410) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS410
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS410Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS410 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS410Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS410) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS410, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS410 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS410() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS410) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS410 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS410 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS410(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS410 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS429 returns the ADIMAGEDOWNLOADHTTPSTATUS429 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS429() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS429) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS429
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS429Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS429 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS429Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS429) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS429, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS429 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS429() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS429) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS429 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS429 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS429(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS429 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS500 returns the ADIMAGEDOWNLOADHTTPSTATUS500 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS500() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS500) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS500
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS500Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS500 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS500Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS500) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS500, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS500 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS500() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS500) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS500 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS500 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS500(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS500 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS502 returns the ADIMAGEDOWNLOADHTTPSTATUS502 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS502() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS502) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS502
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS502Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS502 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS502Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS502) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS502, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS502 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS502() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS502) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS502 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS502 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS502(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS502 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS503 returns the ADIMAGEDOWNLOADHTTPSTATUS503 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS503() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS503) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS503
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS503Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS503 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS503Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS503) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS503, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS503 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS503() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS503) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS503 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS503 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS503(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS503 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS504 returns the ADIMAGEDOWNLOADHTTPSTATUS504 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS504() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS504) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS504
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS504Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS504 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS504Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS504) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS504, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS504 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS504() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS504) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS504 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS504 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS504(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS504 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS507 returns the ADIMAGEDOWNLOADHTTPSTATUS507 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS507() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS507) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS507
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS507Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS507 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS507Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS507) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS507, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS507 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS507() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS507) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS507 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS507 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS507(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS507 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS508 returns the ADIMAGEDOWNLOADHTTPSTATUS508 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS508() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS508) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS508
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS508Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS508 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS508Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS508) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS508, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS508 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS508() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS508) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS508 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS508 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS508(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS508 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS520 returns the ADIMAGEDOWNLOADHTTPSTATUS520 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS520() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS520) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS520
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS520Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS520 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS520Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS520) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS520, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS520 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS520() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS520) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS520 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS520 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS520(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS520 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS521 returns the ADIMAGEDOWNLOADHTTPSTATUS521 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS521() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS521) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS521
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS521Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS521 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS521Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS521) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS521, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS521 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS521() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS521) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS521 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS521 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS521(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS521 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS522 returns the ADIMAGEDOWNLOADHTTPSTATUS522 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS522() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS522) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS522
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS522Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS522 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS522Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS522) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS522, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS522 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS522() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS522) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS522 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS522 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS522(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS522 = &v
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS525 returns the ADIMAGEDOWNLOADHTTPSTATUS525 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS525() int32 {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS525) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGEDOWNLOADHTTPSTATUS525
+}
+
+// GetADIMAGEDOWNLOADHTTPSTATUS525Ok returns a tuple with the ADIMAGEDOWNLOADHTTPSTATUS525 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADIMAGEDOWNLOADHTTPSTATUS525Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS525) {
+		return nil, false
+	}
+	return o.ADIMAGEDOWNLOADHTTPSTATUS525, true
+}
+
+// HasADIMAGEDOWNLOADHTTPSTATUS525 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADIMAGEDOWNLOADHTTPSTATUS525() bool {
+	if o != nil && !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS525) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGEDOWNLOADHTTPSTATUS525 gets a reference to the given int32 and assigns it to the ADIMAGEDOWNLOADHTTPSTATUS525 field.
+func (o *CatalogsFeedIngestionWarnings) SetADIMAGEDOWNLOADHTTPSTATUS525(v int32) {
+	o.ADIMAGEDOWNLOADHTTPSTATUS525 = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR returns the AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_ERROR returns the AD_IMAGE_DOWNLOAD_INTERNAL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_INTERNAL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INTERNAL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INTERNAL_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INTERNAL_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INTERNAL_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD returns the AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADOk returns a tuple with the AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL returns the AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URLOk returns a tuple with the AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URLOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED returns the AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITEDOk returns a tuple with the AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED returns the AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+}
+
+// GetAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIREDOk returns a tuple with the AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_INVALID_FILE returns the AD_IMAGE_DOWNLOAD_INVALID_FILE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INVALID_FILE() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INVALID_FILE) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_INVALID_FILE
+}
+
+// GetAD_IMAGE_DOWNLOAD_INVALID_FILEOk returns a tuple with the AD_IMAGE_DOWNLOAD_INVALID_FILE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_INVALID_FILEOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_INVALID_FILE) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_INVALID_FILE, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_INVALID_FILE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_INVALID_FILE() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_INVALID_FILE) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_INVALID_FILE gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_INVALID_FILE field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_INVALID_FILE(v int32) {
+	o.AD_IMAGE_DOWNLOAD_INVALID_FILE = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_SITE_ERROR returns the AD_IMAGE_DOWNLOAD_SITE_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SITE_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SITE_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_SITE_ERROR
+}
+
+// GetAD_IMAGE_DOWNLOAD_SITE_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_SITE_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SITE_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SITE_ERROR) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_SITE_ERROR, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_SITE_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_SITE_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_SITE_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_SITE_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_SITE_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_SITE_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_SITE_ERROR = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_SITE_TIMEOUT returns the AD_IMAGE_DOWNLOAD_SITE_TIMEOUT field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SITE_TIMEOUT() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT
+}
+
+// GetAD_IMAGE_DOWNLOAD_SITE_TIMEOUTOk returns a tuple with the AD_IMAGE_DOWNLOAD_SITE_TIMEOUT field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SITE_TIMEOUTOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_SITE_TIMEOUT returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_SITE_TIMEOUT() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_SITE_TIMEOUT gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_SITE_TIMEOUT field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_SITE_TIMEOUT(v int32) {
+	o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_SSL_ERROR returns the AD_IMAGE_DOWNLOAD_SSL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SSL_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SSL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_SSL_ERROR
+}
+
+// GetAD_IMAGE_DOWNLOAD_SSL_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_SSL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SSL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SSL_ERROR) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_SSL_ERROR, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_SSL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_SSL_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_SSL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_SSL_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_SSL_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_SSL_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_SSL_ERROR = &v
+}
+
+// GetAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR returns the AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR
+}
+
+// GetAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROROk returns a tuple with the AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		return nil, false
+	}
+	return o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR, true
+}
+
+// HasAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR gets a reference to the given int32 and assigns it to the AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR(v int32) {
+	o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR = &v
+}
+
+// GetAD_IMAGE_PROCESSING_EMPTY_FILE returns the AD_IMAGE_PROCESSING_EMPTY_FILE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_EMPTY_FILE() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_EMPTY_FILE) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_PROCESSING_EMPTY_FILE
+}
+
+// GetAD_IMAGE_PROCESSING_EMPTY_FILEOk returns a tuple with the AD_IMAGE_PROCESSING_EMPTY_FILE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_EMPTY_FILEOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_EMPTY_FILE) {
+		return nil, false
+	}
+	return o.AD_IMAGE_PROCESSING_EMPTY_FILE, true
+}
+
+// HasAD_IMAGE_PROCESSING_EMPTY_FILE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_PROCESSING_EMPTY_FILE() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_PROCESSING_EMPTY_FILE) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_PROCESSING_EMPTY_FILE gets a reference to the given int32 and assigns it to the AD_IMAGE_PROCESSING_EMPTY_FILE field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_PROCESSING_EMPTY_FILE(v int32) {
+	o.AD_IMAGE_PROCESSING_EMPTY_FILE = &v
+}
+
+// GetAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL returns the AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL
+}
+
+// GetAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALLOk returns a tuple with the AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALLOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL) {
+		return nil, false
+	}
+	return o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL, true
+}
+
+// HasAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL gets a reference to the given int32 and assigns it to the AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL(v int32) {
+	o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL = &v
+}
+
+// GetAD_IMAGE_PROCESSING_TOO_MANY_PIXELS returns the AD_IMAGE_PROCESSING_TOO_MANY_PIXELS field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_TOO_MANY_PIXELS() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS
+}
+
+// GetAD_IMAGE_PROCESSING_TOO_MANY_PIXELSOk returns a tuple with the AD_IMAGE_PROCESSING_TOO_MANY_PIXELS field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_TOO_MANY_PIXELSOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS) {
+		return nil, false
+	}
+	return o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS, true
+}
+
+// HasAD_IMAGE_PROCESSING_TOO_MANY_PIXELS returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_PROCESSING_TOO_MANY_PIXELS() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_PROCESSING_TOO_MANY_PIXELS gets a reference to the given int32 and assigns it to the AD_IMAGE_PROCESSING_TOO_MANY_PIXELS field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_PROCESSING_TOO_MANY_PIXELS(v int32) {
+	o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS = &v
+}
+
+// GetAD_IMAGE_PROCESSING_TYPE_MISMATCH returns the AD_IMAGE_PROCESSING_TYPE_MISMATCH field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_TYPE_MISMATCH() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_TYPE_MISMATCH) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_PROCESSING_TYPE_MISMATCH
+}
+
+// GetAD_IMAGE_PROCESSING_TYPE_MISMATCHOk returns a tuple with the AD_IMAGE_PROCESSING_TYPE_MISMATCH field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_TYPE_MISMATCHOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_TYPE_MISMATCH) {
+		return nil, false
+	}
+	return o.AD_IMAGE_PROCESSING_TYPE_MISMATCH, true
+}
+
+// HasAD_IMAGE_PROCESSING_TYPE_MISMATCH returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_PROCESSING_TYPE_MISMATCH() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_PROCESSING_TYPE_MISMATCH) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_PROCESSING_TYPE_MISMATCH gets a reference to the given int32 and assigns it to the AD_IMAGE_PROCESSING_TYPE_MISMATCH field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_PROCESSING_TYPE_MISMATCH(v int32) {
+	o.AD_IMAGE_PROCESSING_TYPE_MISMATCH = &v
+}
+
+// GetAD_IMAGE_PROCESSING_WIDTH_TOO_SMALL returns the AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_WIDTH_TOO_SMALL() int32 {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL
+}
+
+// GetAD_IMAGE_PROCESSING_WIDTH_TOO_SMALLOk returns a tuple with the AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_IMAGE_PROCESSING_WIDTH_TOO_SMALLOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL) {
+		return nil, false
+	}
+	return o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL, true
+}
+
+// HasAD_IMAGE_PROCESSING_WIDTH_TOO_SMALL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_IMAGE_PROCESSING_WIDTH_TOO_SMALL() bool {
+	if o != nil && !IsNil(o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_IMAGE_PROCESSING_WIDTH_TOO_SMALL gets a reference to the given int32 and assigns it to the AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_IMAGE_PROCESSING_WIDTH_TOO_SMALL(v int32) {
+	o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR returns the AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR returns the AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE returns the AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE
+}
+
+// GetAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLEOk returns a tuple with the AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLEOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE(v int32) {
+	o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_FILE_NOT_FOUND returns the AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_FILE_NOT_FOUND() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND
+}
+
+// GetAD_VIDEO_DOWNLOAD_FILE_NOT_FOUNDOk returns a tuple with the AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_FILE_NOT_FOUNDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_FILE_NOT_FOUND returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_FILE_NOT_FOUND() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_FILE_NOT_FOUND gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_FILE_NOT_FOUND(v int32) {
+	o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS400 returns the ADVIDEODOWNLOADHTTPSTATUS400 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS400() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS400) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS400
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS400Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS400 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS400Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS400) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS400, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS400 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS400() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS400) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS400 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS400 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS400(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS400 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS403 returns the ADVIDEODOWNLOADHTTPSTATUS403 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS403() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS403) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS403
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS403Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS403 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS403Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS403) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS403, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS403 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS403() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS403) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS403 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS403 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS403(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS403 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS404 returns the ADVIDEODOWNLOADHTTPSTATUS404 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS404() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS404) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS404
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS404Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS404 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS404Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS404) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS404, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS404 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS404() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS404) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS404 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS404 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS404(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS404 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS405 returns the ADVIDEODOWNLOADHTTPSTATUS405 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS405() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS405) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS405
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS405Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS405 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS405Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS405) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS405, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS405 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS405() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS405) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS405 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS405 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS405(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS405 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS410 returns the ADVIDEODOWNLOADHTTPSTATUS410 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS410() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS410) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS410
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS410Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS410 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS410Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS410) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS410, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS410 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS410() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS410) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS410 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS410 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS410(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS410 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS429 returns the ADVIDEODOWNLOADHTTPSTATUS429 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS429() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS429) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS429
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS429Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS429 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS429Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS429) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS429, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS429 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS429() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS429) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS429 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS429 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS429(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS429 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS500 returns the ADVIDEODOWNLOADHTTPSTATUS500 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS500() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS500) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS500
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS500Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS500 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS500Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS500) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS500, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS500 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS500() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS500) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS500 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS500 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS500(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS500 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS502 returns the ADVIDEODOWNLOADHTTPSTATUS502 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS502() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS502) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS502
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS502Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS502 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS502Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS502) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS502, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS502 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS502() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS502) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS502 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS502 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS502(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS502 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS503 returns the ADVIDEODOWNLOADHTTPSTATUS503 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS503() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS503) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS503
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS503Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS503 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS503Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS503) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS503, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS503 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS503() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS503) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS503 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS503 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS503(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS503 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS504 returns the ADVIDEODOWNLOADHTTPSTATUS504 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS504() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS504) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS504
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS504Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS504 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS504Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS504) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS504, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS504 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS504() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS504) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS504 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS504 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS504(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS504 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS507 returns the ADVIDEODOWNLOADHTTPSTATUS507 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS507() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS507) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS507
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS507Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS507 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS507Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS507) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS507, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS507 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS507() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS507) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS507 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS507 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS507(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS507 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS508 returns the ADVIDEODOWNLOADHTTPSTATUS508 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS508() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS508) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS508
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS508Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS508 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS508Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS508) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS508, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS508 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS508() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS508) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS508 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS508 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS508(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS508 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS520 returns the ADVIDEODOWNLOADHTTPSTATUS520 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS520() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS520) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS520
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS520Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS520 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS520Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS520) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS520, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS520 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS520() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS520) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS520 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS520 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS520(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS520 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS521 returns the ADVIDEODOWNLOADHTTPSTATUS521 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS521() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS521) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS521
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS521Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS521 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS521Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS521) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS521, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS521 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS521() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS521) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS521 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS521 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS521(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS521 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS522 returns the ADVIDEODOWNLOADHTTPSTATUS522 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS522() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS522) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS522
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS522Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS522 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS522Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS522) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS522, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS522 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS522() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS522) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS522 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS522 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS522(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS522 = &v
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS525 returns the ADVIDEODOWNLOADHTTPSTATUS525 field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS525() int32 {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS525) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEODOWNLOADHTTPSTATUS525
+}
+
+// GetADVIDEODOWNLOADHTTPSTATUS525Ok returns a tuple with the ADVIDEODOWNLOADHTTPSTATUS525 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADVIDEODOWNLOADHTTPSTATUS525Ok() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEODOWNLOADHTTPSTATUS525) {
+		return nil, false
+	}
+	return o.ADVIDEODOWNLOADHTTPSTATUS525, true
+}
+
+// HasADVIDEODOWNLOADHTTPSTATUS525 returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADVIDEODOWNLOADHTTPSTATUS525() bool {
+	if o != nil && !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS525) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEODOWNLOADHTTPSTATUS525 gets a reference to the given int32 and assigns it to the ADVIDEODOWNLOADHTTPSTATUS525 field.
+func (o *CatalogsFeedIngestionWarnings) SetADVIDEODOWNLOADHTTPSTATUS525(v int32) {
+	o.ADVIDEODOWNLOADHTTPSTATUS525 = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR returns the AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_ERROR returns the AD_VIDEO_DOWNLOAD_INTERNAL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_INTERNAL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INTERNAL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INTERNAL_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INTERNAL_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INTERNAL_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD returns the AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADOk returns a tuple with the AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL returns the AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URLOk returns a tuple with the AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URLOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED returns the AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITEDOk returns a tuple with the AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED returns the AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+}
+
+// GetAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIREDOk returns a tuple with the AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_INVALID_FILE returns the AD_VIDEO_DOWNLOAD_INVALID_FILE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INVALID_FILE() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INVALID_FILE) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_INVALID_FILE
+}
+
+// GetAD_VIDEO_DOWNLOAD_INVALID_FILEOk returns a tuple with the AD_VIDEO_DOWNLOAD_INVALID_FILE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_INVALID_FILEOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_INVALID_FILE) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_INVALID_FILE, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_INVALID_FILE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_INVALID_FILE() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_INVALID_FILE) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_INVALID_FILE gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_INVALID_FILE field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_INVALID_FILE(v int32) {
+	o.AD_VIDEO_DOWNLOAD_INVALID_FILE = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_SITE_ERROR returns the AD_VIDEO_DOWNLOAD_SITE_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SITE_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SITE_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_SITE_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_SITE_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_SITE_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SITE_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SITE_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_SITE_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_SITE_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_SITE_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_SITE_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_SITE_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_SITE_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_SITE_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_SITE_ERROR = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_SITE_TIMEOUT returns the AD_VIDEO_DOWNLOAD_SITE_TIMEOUT field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SITE_TIMEOUT() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT
+}
+
+// GetAD_VIDEO_DOWNLOAD_SITE_TIMEOUTOk returns a tuple with the AD_VIDEO_DOWNLOAD_SITE_TIMEOUT field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SITE_TIMEOUTOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_SITE_TIMEOUT returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_SITE_TIMEOUT() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_SITE_TIMEOUT gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_SITE_TIMEOUT field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_SITE_TIMEOUT(v int32) {
+	o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_SSL_ERROR returns the AD_VIDEO_DOWNLOAD_SSL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SSL_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SSL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_SSL_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_SSL_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_SSL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SSL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SSL_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_SSL_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_SSL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_SSL_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_SSL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_SSL_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_SSL_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_SSL_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_SSL_ERROR = &v
+}
+
+// GetAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR returns the AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR
+}
+
+// GetAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROROk returns a tuple with the AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		return nil, false
+	}
+	return o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR, true
+}
+
+// HasAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR gets a reference to the given int32 and assigns it to the AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR(v int32) {
+	o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR = &v
+}
+
+// GetAD_VIDEO_LENGTH_TOO_SHORT returns the AD_VIDEO_LENGTH_TOO_SHORT field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_LENGTH_TOO_SHORT() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_LENGTH_TOO_SHORT) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_LENGTH_TOO_SHORT
+}
+
+// GetAD_VIDEO_LENGTH_TOO_SHORTOk returns a tuple with the AD_VIDEO_LENGTH_TOO_SHORT field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_LENGTH_TOO_SHORTOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_LENGTH_TOO_SHORT) {
+		return nil, false
+	}
+	return o.AD_VIDEO_LENGTH_TOO_SHORT, true
+}
+
+// HasAD_VIDEO_LENGTH_TOO_SHORT returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_LENGTH_TOO_SHORT() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_LENGTH_TOO_SHORT) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_LENGTH_TOO_SHORT gets a reference to the given int32 and assigns it to the AD_VIDEO_LENGTH_TOO_SHORT field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_LENGTH_TOO_SHORT(v int32) {
+	o.AD_VIDEO_LENGTH_TOO_SHORT = &v
+}
+
+// GetAD_VIDEO_PROCESSING_EMPTY_FILE returns the AD_VIDEO_PROCESSING_EMPTY_FILE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_EMPTY_FILE() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_EMPTY_FILE) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_PROCESSING_EMPTY_FILE
+}
+
+// GetAD_VIDEO_PROCESSING_EMPTY_FILEOk returns a tuple with the AD_VIDEO_PROCESSING_EMPTY_FILE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_EMPTY_FILEOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_EMPTY_FILE) {
+		return nil, false
+	}
+	return o.AD_VIDEO_PROCESSING_EMPTY_FILE, true
+}
+
+// HasAD_VIDEO_PROCESSING_EMPTY_FILE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_PROCESSING_EMPTY_FILE() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_PROCESSING_EMPTY_FILE) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_PROCESSING_EMPTY_FILE gets a reference to the given int32 and assigns it to the AD_VIDEO_PROCESSING_EMPTY_FILE field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_PROCESSING_EMPTY_FILE(v int32) {
+	o.AD_VIDEO_PROCESSING_EMPTY_FILE = &v
+}
+
+// GetAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL returns the AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL
+}
+
+// GetAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALLOk returns a tuple with the AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALLOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL) {
+		return nil, false
+	}
+	return o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL, true
+}
+
+// HasAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL gets a reference to the given int32 and assigns it to the AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL(v int32) {
+	o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL = &v
+}
+
+// GetAD_VIDEO_PROCESSING_TOO_MANY_PIXELS returns the AD_VIDEO_PROCESSING_TOO_MANY_PIXELS field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_TOO_MANY_PIXELS() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS
+}
+
+// GetAD_VIDEO_PROCESSING_TOO_MANY_PIXELSOk returns a tuple with the AD_VIDEO_PROCESSING_TOO_MANY_PIXELS field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_TOO_MANY_PIXELSOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS) {
+		return nil, false
+	}
+	return o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS, true
+}
+
+// HasAD_VIDEO_PROCESSING_TOO_MANY_PIXELS returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_PROCESSING_TOO_MANY_PIXELS() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_PROCESSING_TOO_MANY_PIXELS gets a reference to the given int32 and assigns it to the AD_VIDEO_PROCESSING_TOO_MANY_PIXELS field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_PROCESSING_TOO_MANY_PIXELS(v int32) {
+	o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS = &v
+}
+
+// GetAD_VIDEO_PROCESSING_TYPE_MISMATCH returns the AD_VIDEO_PROCESSING_TYPE_MISMATCH field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_TYPE_MISMATCH() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_TYPE_MISMATCH) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_PROCESSING_TYPE_MISMATCH
+}
+
+// GetAD_VIDEO_PROCESSING_TYPE_MISMATCHOk returns a tuple with the AD_VIDEO_PROCESSING_TYPE_MISMATCH field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_TYPE_MISMATCHOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_TYPE_MISMATCH) {
+		return nil, false
+	}
+	return o.AD_VIDEO_PROCESSING_TYPE_MISMATCH, true
+}
+
+// HasAD_VIDEO_PROCESSING_TYPE_MISMATCH returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_PROCESSING_TYPE_MISMATCH() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_PROCESSING_TYPE_MISMATCH) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_PROCESSING_TYPE_MISMATCH gets a reference to the given int32 and assigns it to the AD_VIDEO_PROCESSING_TYPE_MISMATCH field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_PROCESSING_TYPE_MISMATCH(v int32) {
+	o.AD_VIDEO_PROCESSING_TYPE_MISMATCH = &v
+}
+
+// GetAD_VIDEO_PROCESSING_WIDTH_TOO_SMALL returns the AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_WIDTH_TOO_SMALL() int32 {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL) {
+		var ret int32
+		return ret
+	}
+	return *o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL
+}
+
+// GetAD_VIDEO_PROCESSING_WIDTH_TOO_SMALLOk returns a tuple with the AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetAD_VIDEO_PROCESSING_WIDTH_TOO_SMALLOk() (*int32, bool) {
+	if o == nil || IsNil(o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL) {
+		return nil, false
+	}
+	return o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL, true
+}
+
+// HasAD_VIDEO_PROCESSING_WIDTH_TOO_SMALL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasAD_VIDEO_PROCESSING_WIDTH_TOO_SMALL() bool {
+	if o != nil && !IsNil(o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_VIDEO_PROCESSING_WIDTH_TOO_SMALL gets a reference to the given int32 and assigns it to the AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL field.
+func (o *CatalogsFeedIngestionWarnings) SetAD_VIDEO_PROCESSING_WIDTH_TOO_SMALL(v int32) {
+	o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL = &v
 }
 
 // GetADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE returns the ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE field value if set, zero value otherwise.
@@ -113,38 +2577,6 @@ func (o *CatalogsFeedIngestionWarnings) HasADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE(
 // SetADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE gets a reference to the given int32 and assigns it to the ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE field.
 func (o *CatalogsFeedIngestionWarnings) SetADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE(v int32) {
 	o.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = &v
-}
-
-// GetADDITIONAL_IMAGE_MALFORMED_URL returns the ADDITIONAL_IMAGE_MALFORMED_URL field value if set, zero value otherwise.
-func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_MALFORMED_URL() int32 {
-	if o == nil || IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
-		var ret int32
-		return ret
-	}
-	return *o.ADDITIONAL_IMAGE_MALFORMED_URL
-}
-
-// GetADDITIONAL_IMAGE_MALFORMED_URLOk returns a tuple with the ADDITIONAL_IMAGE_MALFORMED_URL field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_MALFORMED_URLOk() (*int32, bool) {
-	if o == nil || IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
-		return nil, false
-	}
-	return o.ADDITIONAL_IMAGE_MALFORMED_URL, true
-}
-
-// HasADDITIONAL_IMAGE_MALFORMED_URL returns a boolean if a field has been set.
-func (o *CatalogsFeedIngestionWarnings) HasADDITIONAL_IMAGE_MALFORMED_URL() bool {
-	if o != nil && !IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
-		return true
-	}
-
-	return false
-}
-
-// SetADDITIONAL_IMAGE_MALFORMED_URL gets a reference to the given int32 and assigns it to the ADDITIONAL_IMAGE_MALFORMED_URL field.
-func (o *CatalogsFeedIngestionWarnings) SetADDITIONAL_IMAGE_MALFORMED_URL(v int32) {
-	o.ADDITIONAL_IMAGE_MALFORMED_URL = &v
 }
 
 // GetADDITIONAL_IMAGE_FILE_NOT_FOUND returns the ADDITIONAL_IMAGE_FILE_NOT_FOUND field value if set, zero value otherwise.
@@ -211,6 +2643,102 @@ func (o *CatalogsFeedIngestionWarnings) SetADDITIONAL_IMAGE_INVALID_FILE(v int32
 	o.ADDITIONAL_IMAGE_INVALID_FILE = &v
 }
 
+// GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR returns the ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR() int32 {
+	if o == nil || IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+}
+
+// GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROROk returns a tuple with the ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+		return nil, false
+	}
+	return o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR, true
+}
+
+// HasADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR() bool {
+	if o != nil && !IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(v int32) {
+	o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = &v
+}
+
+// GetADDITIONAL_IMAGE_MALFORMED_URL returns the ADDITIONAL_IMAGE_MALFORMED_URL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_MALFORMED_URL() int32 {
+	if o == nil || IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
+		var ret int32
+		return ret
+	}
+	return *o.ADDITIONAL_IMAGE_MALFORMED_URL
+}
+
+// GetADDITIONAL_IMAGE_MALFORMED_URLOk returns a tuple with the ADDITIONAL_IMAGE_MALFORMED_URL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetADDITIONAL_IMAGE_MALFORMED_URLOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
+		return nil, false
+	}
+	return o.ADDITIONAL_IMAGE_MALFORMED_URL, true
+}
+
+// HasADDITIONAL_IMAGE_MALFORMED_URL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasADDITIONAL_IMAGE_MALFORMED_URL() bool {
+	if o != nil && !IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
+		return true
+	}
+
+	return false
+}
+
+// SetADDITIONAL_IMAGE_MALFORMED_URL gets a reference to the given int32 and assigns it to the ADDITIONAL_IMAGE_MALFORMED_URL field.
+func (o *CatalogsFeedIngestionWarnings) SetADDITIONAL_IMAGE_MALFORMED_URL(v int32) {
+	o.ADDITIONAL_IMAGE_MALFORMED_URL = &v
+}
+
+// GetFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT returns the FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT() int32 {
+	if o == nil || IsNil(o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT) {
+		var ret int32
+		return ret
+	}
+	return *o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT
+}
+
+// GetFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDITOk returns a tuple with the FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDITOk() (*int32, bool) {
+	if o == nil || IsNil(o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT) {
+		return nil, false
+	}
+	return o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT, true
+}
+
+// HasFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT() bool {
+	if o != nil && !IsNil(o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT) {
+		return true
+	}
+
+	return false
+}
+
+// SetFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT gets a reference to the given int32 and assigns it to the FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT field.
+func (o *CatalogsFeedIngestionWarnings) SetFETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT(v int32) {
+	o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT = &v
+}
+
 // GetHOTEL_PRICE_HEADER_IS_PRESENT returns the HOTEL_PRICE_HEADER_IS_PRESENT field value if set, zero value otherwise.
 func (o *CatalogsFeedIngestionWarnings) GetHOTEL_PRICE_HEADER_IS_PRESENT() int32 {
 	if o == nil || IsNil(o.HOTEL_PRICE_HEADER_IS_PRESENT) {
@@ -243,6 +2771,198 @@ func (o *CatalogsFeedIngestionWarnings) SetHOTEL_PRICE_HEADER_IS_PRESENT(v int32
 	o.HOTEL_PRICE_HEADER_IS_PRESENT = &v
 }
 
+// GetVIDEO_DOWNLOAD_VIDEO_TOO_SHORT returns the VIDEO_DOWNLOAD_VIDEO_TOO_SHORT field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_DOWNLOAD_VIDEO_TOO_SHORT() int32 {
+	if o == nil || IsNil(o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT
+}
+
+// GetVIDEO_DOWNLOAD_VIDEO_TOO_SHORTOk returns a tuple with the VIDEO_DOWNLOAD_VIDEO_TOO_SHORT field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_DOWNLOAD_VIDEO_TOO_SHORTOk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT) {
+		return nil, false
+	}
+	return o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT, true
+}
+
+// HasVIDEO_DOWNLOAD_VIDEO_TOO_SHORT returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasVIDEO_DOWNLOAD_VIDEO_TOO_SHORT() bool {
+	if o != nil && !IsNil(o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_DOWNLOAD_VIDEO_TOO_SHORT gets a reference to the given int32 and assigns it to the VIDEO_DOWNLOAD_VIDEO_TOO_SHORT field.
+func (o *CatalogsFeedIngestionWarnings) SetVIDEO_DOWNLOAD_VIDEO_TOO_SHORT(v int32) {
+	o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT = &v
+}
+
+// GetVIDEO_FILE_NOT_ACCESSIBLE returns the VIDEO_FILE_NOT_ACCESSIBLE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_FILE_NOT_ACCESSIBLE() int32 {
+	if o == nil || IsNil(o.VIDEO_FILE_NOT_ACCESSIBLE) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_FILE_NOT_ACCESSIBLE
+}
+
+// GetVIDEO_FILE_NOT_ACCESSIBLEOk returns a tuple with the VIDEO_FILE_NOT_ACCESSIBLE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_FILE_NOT_ACCESSIBLEOk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_FILE_NOT_ACCESSIBLE) {
+		return nil, false
+	}
+	return o.VIDEO_FILE_NOT_ACCESSIBLE, true
+}
+
+// HasVIDEO_FILE_NOT_ACCESSIBLE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasVIDEO_FILE_NOT_ACCESSIBLE() bool {
+	if o != nil && !IsNil(o.VIDEO_FILE_NOT_ACCESSIBLE) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_FILE_NOT_ACCESSIBLE gets a reference to the given int32 and assigns it to the VIDEO_FILE_NOT_ACCESSIBLE field.
+func (o *CatalogsFeedIngestionWarnings) SetVIDEO_FILE_NOT_ACCESSIBLE(v int32) {
+	o.VIDEO_FILE_NOT_ACCESSIBLE = &v
+}
+
+// GetVIDEO_FILE_NOT_FOUND returns the VIDEO_FILE_NOT_FOUND field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_FILE_NOT_FOUND() int32 {
+	if o == nil || IsNil(o.VIDEO_FILE_NOT_FOUND) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_FILE_NOT_FOUND
+}
+
+// GetVIDEO_FILE_NOT_FOUNDOk returns a tuple with the VIDEO_FILE_NOT_FOUND field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_FILE_NOT_FOUNDOk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_FILE_NOT_FOUND) {
+		return nil, false
+	}
+	return o.VIDEO_FILE_NOT_FOUND, true
+}
+
+// HasVIDEO_FILE_NOT_FOUND returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasVIDEO_FILE_NOT_FOUND() bool {
+	if o != nil && !IsNil(o.VIDEO_FILE_NOT_FOUND) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_FILE_NOT_FOUND gets a reference to the given int32 and assigns it to the VIDEO_FILE_NOT_FOUND field.
+func (o *CatalogsFeedIngestionWarnings) SetVIDEO_FILE_NOT_FOUND(v int32) {
+	o.VIDEO_FILE_NOT_FOUND = &v
+}
+
+// GetVIDEO_INVALID_FILE returns the VIDEO_INVALID_FILE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_INVALID_FILE() int32 {
+	if o == nil || IsNil(o.VIDEO_INVALID_FILE) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_INVALID_FILE
+}
+
+// GetVIDEO_INVALID_FILEOk returns a tuple with the VIDEO_INVALID_FILE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_INVALID_FILEOk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_INVALID_FILE) {
+		return nil, false
+	}
+	return o.VIDEO_INVALID_FILE, true
+}
+
+// HasVIDEO_INVALID_FILE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasVIDEO_INVALID_FILE() bool {
+	if o != nil && !IsNil(o.VIDEO_INVALID_FILE) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_INVALID_FILE gets a reference to the given int32 and assigns it to the VIDEO_INVALID_FILE field.
+func (o *CatalogsFeedIngestionWarnings) SetVIDEO_INVALID_FILE(v int32) {
+	o.VIDEO_INVALID_FILE = &v
+}
+
+// GetVIDEO_LEVEL_INTERNAL_ERROR returns the VIDEO_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_LEVEL_INTERNAL_ERROR() int32 {
+	if o == nil || IsNil(o.VIDEO_LEVEL_INTERNAL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_LEVEL_INTERNAL_ERROR
+}
+
+// GetVIDEO_LEVEL_INTERNAL_ERROROk returns a tuple with the VIDEO_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_LEVEL_INTERNAL_ERROR) {
+		return nil, false
+	}
+	return o.VIDEO_LEVEL_INTERNAL_ERROR, true
+}
+
+// HasVIDEO_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasVIDEO_LEVEL_INTERNAL_ERROR() bool {
+	if o != nil && !IsNil(o.VIDEO_LEVEL_INTERNAL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the VIDEO_LEVEL_INTERNAL_ERROR field.
+func (o *CatalogsFeedIngestionWarnings) SetVIDEO_LEVEL_INTERNAL_ERROR(v int32) {
+	o.VIDEO_LEVEL_INTERNAL_ERROR = &v
+}
+
+// GetVIDEO_MALFORMED_URL returns the VIDEO_MALFORMED_URL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_MALFORMED_URL() int32 {
+	if o == nil || IsNil(o.VIDEO_MALFORMED_URL) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_MALFORMED_URL
+}
+
+// GetVIDEO_MALFORMED_URLOk returns a tuple with the VIDEO_MALFORMED_URL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionWarnings) GetVIDEO_MALFORMED_URLOk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_MALFORMED_URL) {
+		return nil, false
+	}
+	return o.VIDEO_MALFORMED_URL, true
+}
+
+// HasVIDEO_MALFORMED_URL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionWarnings) HasVIDEO_MALFORMED_URL() bool {
+	if o != nil && !IsNil(o.VIDEO_MALFORMED_URL) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_MALFORMED_URL gets a reference to the given int32 and assigns it to the VIDEO_MALFORMED_URL field.
+func (o *CatalogsFeedIngestionWarnings) SetVIDEO_MALFORMED_URL(v int32) {
+	o.VIDEO_MALFORMED_URL = &v
+}
+
 func (o CatalogsFeedIngestionWarnings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -253,14 +2973,227 @@ func (o CatalogsFeedIngestionWarnings) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedIngestionWarnings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
-		toSerialize["ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR"] = o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR"] = o.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR"] = o.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		toSerialize["AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE"] = o.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND) {
+		toSerialize["AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND"] = o.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS400) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_400"] = o.ADIMAGEDOWNLOADHTTPSTATUS400
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS403) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_403"] = o.ADIMAGEDOWNLOADHTTPSTATUS403
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS404) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_404"] = o.ADIMAGEDOWNLOADHTTPSTATUS404
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS405) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_405"] = o.ADIMAGEDOWNLOADHTTPSTATUS405
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS410) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_410"] = o.ADIMAGEDOWNLOADHTTPSTATUS410
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS429) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_429"] = o.ADIMAGEDOWNLOADHTTPSTATUS429
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS500) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_500"] = o.ADIMAGEDOWNLOADHTTPSTATUS500
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS502) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_502"] = o.ADIMAGEDOWNLOADHTTPSTATUS502
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS503) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_503"] = o.ADIMAGEDOWNLOADHTTPSTATUS503
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS504) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_504"] = o.ADIMAGEDOWNLOADHTTPSTATUS504
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS507) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_507"] = o.ADIMAGEDOWNLOADHTTPSTATUS507
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS508) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_508"] = o.ADIMAGEDOWNLOADHTTPSTATUS508
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS520) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_520"] = o.ADIMAGEDOWNLOADHTTPSTATUS520
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS521) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_521"] = o.ADIMAGEDOWNLOADHTTPSTATUS521
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS522) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_522"] = o.ADIMAGEDOWNLOADHTTPSTATUS522
+	}
+	if !IsNil(o.ADIMAGEDOWNLOADHTTPSTATUS525) {
+		toSerialize["AD_IMAGE_DOWNLOAD_HTTP_STATUS_525"] = o.ADIMAGEDOWNLOADHTTPSTATUS525
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR"] = o.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INTERNAL_ERROR"] = o.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD"] = o.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL"] = o.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED"] = o.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED"] = o.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_INVALID_FILE) {
+		toSerialize["AD_IMAGE_DOWNLOAD_INVALID_FILE"] = o.AD_IMAGE_DOWNLOAD_INVALID_FILE
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_SITE_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_SITE_ERROR"] = o.AD_IMAGE_DOWNLOAD_SITE_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT) {
+		toSerialize["AD_IMAGE_DOWNLOAD_SITE_TIMEOUT"] = o.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_SSL_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_SSL_ERROR"] = o.AD_IMAGE_DOWNLOAD_SSL_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		toSerialize["AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR"] = o.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR
+	}
+	if !IsNil(o.AD_IMAGE_PROCESSING_EMPTY_FILE) {
+		toSerialize["AD_IMAGE_PROCESSING_EMPTY_FILE"] = o.AD_IMAGE_PROCESSING_EMPTY_FILE
+	}
+	if !IsNil(o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL) {
+		toSerialize["AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL"] = o.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL
+	}
+	if !IsNil(o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS) {
+		toSerialize["AD_IMAGE_PROCESSING_TOO_MANY_PIXELS"] = o.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS
+	}
+	if !IsNil(o.AD_IMAGE_PROCESSING_TYPE_MISMATCH) {
+		toSerialize["AD_IMAGE_PROCESSING_TYPE_MISMATCH"] = o.AD_IMAGE_PROCESSING_TYPE_MISMATCH
+	}
+	if !IsNil(o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL) {
+		toSerialize["AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL"] = o.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR"] = o.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR"] = o.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
+		toSerialize["AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE"] = o.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND) {
+		toSerialize["AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND"] = o.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS400) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_400"] = o.ADVIDEODOWNLOADHTTPSTATUS400
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS403) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_403"] = o.ADVIDEODOWNLOADHTTPSTATUS403
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS404) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_404"] = o.ADVIDEODOWNLOADHTTPSTATUS404
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS405) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_405"] = o.ADVIDEODOWNLOADHTTPSTATUS405
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS410) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_410"] = o.ADVIDEODOWNLOADHTTPSTATUS410
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS429) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_429"] = o.ADVIDEODOWNLOADHTTPSTATUS429
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS500) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_500"] = o.ADVIDEODOWNLOADHTTPSTATUS500
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS502) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_502"] = o.ADVIDEODOWNLOADHTTPSTATUS502
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS503) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_503"] = o.ADVIDEODOWNLOADHTTPSTATUS503
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS504) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_504"] = o.ADVIDEODOWNLOADHTTPSTATUS504
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS507) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_507"] = o.ADVIDEODOWNLOADHTTPSTATUS507
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS508) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_508"] = o.ADVIDEODOWNLOADHTTPSTATUS508
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS520) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_520"] = o.ADVIDEODOWNLOADHTTPSTATUS520
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS521) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_521"] = o.ADVIDEODOWNLOADHTTPSTATUS521
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS522) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_522"] = o.ADVIDEODOWNLOADHTTPSTATUS522
+	}
+	if !IsNil(o.ADVIDEODOWNLOADHTTPSTATUS525) {
+		toSerialize["AD_VIDEO_DOWNLOAD_HTTP_STATUS_525"] = o.ADVIDEODOWNLOADHTTPSTATUS525
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR"] = o.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INTERNAL_ERROR"] = o.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD"] = o.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL"] = o.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED"] = o.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED"] = o.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_INVALID_FILE) {
+		toSerialize["AD_VIDEO_DOWNLOAD_INVALID_FILE"] = o.AD_VIDEO_DOWNLOAD_INVALID_FILE
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_SITE_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_SITE_ERROR"] = o.AD_VIDEO_DOWNLOAD_SITE_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT) {
+		toSerialize["AD_VIDEO_DOWNLOAD_SITE_TIMEOUT"] = o.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_SSL_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_SSL_ERROR"] = o.AD_VIDEO_DOWNLOAD_SSL_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
+		toSerialize["AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR"] = o.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR
+	}
+	if !IsNil(o.AD_VIDEO_LENGTH_TOO_SHORT) {
+		toSerialize["AD_VIDEO_LENGTH_TOO_SHORT"] = o.AD_VIDEO_LENGTH_TOO_SHORT
+	}
+	if !IsNil(o.AD_VIDEO_PROCESSING_EMPTY_FILE) {
+		toSerialize["AD_VIDEO_PROCESSING_EMPTY_FILE"] = o.AD_VIDEO_PROCESSING_EMPTY_FILE
+	}
+	if !IsNil(o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL) {
+		toSerialize["AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL"] = o.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL
+	}
+	if !IsNil(o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS) {
+		toSerialize["AD_VIDEO_PROCESSING_TOO_MANY_PIXELS"] = o.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS
+	}
+	if !IsNil(o.AD_VIDEO_PROCESSING_TYPE_MISMATCH) {
+		toSerialize["AD_VIDEO_PROCESSING_TYPE_MISMATCH"] = o.AD_VIDEO_PROCESSING_TYPE_MISMATCH
+	}
+	if !IsNil(o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL) {
+		toSerialize["AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL"] = o.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL
 	}
 	if !IsNil(o.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
 		toSerialize["ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE"] = o.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE
-	}
-	if !IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
-		toSerialize["ADDITIONAL_IMAGE_MALFORMED_URL"] = o.ADDITIONAL_IMAGE_MALFORMED_URL
 	}
 	if !IsNil(o.ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
 		toSerialize["ADDITIONAL_IMAGE_FILE_NOT_FOUND"] = o.ADDITIONAL_IMAGE_FILE_NOT_FOUND
@@ -268,8 +3201,35 @@ func (o CatalogsFeedIngestionWarnings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ADDITIONAL_IMAGE_INVALID_FILE) {
 		toSerialize["ADDITIONAL_IMAGE_INVALID_FILE"] = o.ADDITIONAL_IMAGE_INVALID_FILE
 	}
+	if !IsNil(o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+		toSerialize["ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR"] = o.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+	}
+	if !IsNil(o.ADDITIONAL_IMAGE_MALFORMED_URL) {
+		toSerialize["ADDITIONAL_IMAGE_MALFORMED_URL"] = o.ADDITIONAL_IMAGE_MALFORMED_URL
+	}
+	if !IsNil(o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT) {
+		toSerialize["FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT"] = o.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT
+	}
 	if !IsNil(o.HOTEL_PRICE_HEADER_IS_PRESENT) {
 		toSerialize["HOTEL_PRICE_HEADER_IS_PRESENT"] = o.HOTEL_PRICE_HEADER_IS_PRESENT
+	}
+	if !IsNil(o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT) {
+		toSerialize["VIDEO_DOWNLOAD_VIDEO_TOO_SHORT"] = o.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT
+	}
+	if !IsNil(o.VIDEO_FILE_NOT_ACCESSIBLE) {
+		toSerialize["VIDEO_FILE_NOT_ACCESSIBLE"] = o.VIDEO_FILE_NOT_ACCESSIBLE
+	}
+	if !IsNil(o.VIDEO_FILE_NOT_FOUND) {
+		toSerialize["VIDEO_FILE_NOT_FOUND"] = o.VIDEO_FILE_NOT_FOUND
+	}
+	if !IsNil(o.VIDEO_INVALID_FILE) {
+		toSerialize["VIDEO_INVALID_FILE"] = o.VIDEO_INVALID_FILE
+	}
+	if !IsNil(o.VIDEO_LEVEL_INTERNAL_ERROR) {
+		toSerialize["VIDEO_LEVEL_INTERNAL_ERROR"] = o.VIDEO_LEVEL_INTERNAL_ERROR
+	}
+	if !IsNil(o.VIDEO_MALFORMED_URL) {
+		toSerialize["VIDEO_MALFORMED_URL"] = o.VIDEO_MALFORMED_URL
 	}
 	return toSerialize, nil
 }

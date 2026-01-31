@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionTagCommon`
 --
-SELECT `ad_account_id`, `code_snippet`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `status`, `version`, `configs` FROM `ConversionTagCommon` WHERE 1;
+SELECT `code_snippet`, `configs`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `version` FROM `ConversionTagCommon` WHERE 1;
 
 --
 -- INSERT template for table `ConversionTagCommon`
 --
-INSERT INTO `ConversionTagCommon`(`ad_account_id`, `code_snippet`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `status`, `version`, `configs`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `ConversionTagCommon`(`code_snippet`, `configs`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `version`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionTagCommon`
 --
-UPDATE `ConversionTagCommon` SET `ad_account_id` = ?, `code_snippet` = ?, `enhanced_match_status` = ?, `id` = ?, `last_fired_time_ms` = ?, `name` = ?, `status` = ?, `version` = ?, `configs` = ? WHERE 1;
+UPDATE `ConversionTagCommon` SET `code_snippet` = ?, `configs` = ?, `enhanced_match_status` = ?, `id` = ?, `last_fired_time_ms` = ?, `name` = ?, `version` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionTagCommon`

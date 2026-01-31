@@ -10,8 +10,8 @@ The class is defined in **[CatalogsFeedProductCounts.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**original** | `Integer` | The number of products in the feed file. |  [optional property]
 **ingested** | `Integer` | The number of products successfully ingested from the feed file. |  [optional property]
+**original** | `Integer` | The number of products in the feed file. |  [optional property]
 
 
 

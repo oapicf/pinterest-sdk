@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
-**Name** | **String** | A human-friendly name associated to a given feed. | [optional] 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] 
-**Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **Location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] 
+**Name** | **String** | A human-friendly name associated to a given feed. | [optional] 
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
@@ -16,12 +16,12 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsFeedsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsFeedsUpdateRequest  -DefaultAvailability null `
+$CatalogsFeedsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsFeedsUpdateRequest  -Credentials null `
+ -DefaultAvailability null `
  -DefaultCurrency null `
- -Name null `
  -Format null `
- -Credentials null `
  -Location null `
+ -Name null `
  -PreferredProcessingSchedule null `
  -Status null
 ```

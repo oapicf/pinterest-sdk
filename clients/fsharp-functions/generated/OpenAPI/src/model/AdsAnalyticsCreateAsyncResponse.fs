@@ -12,12 +12,12 @@ module AdsAnalyticsCreateAsyncResponse =
 
   [<CLIMutable>]
   type AdsAnalyticsCreateAsyncResponse = {
+    [<JsonProperty(PropertyName = "message")>]
+    Message : string option;
     [<JsonProperty(PropertyName = "report_status")>]
     ReportStatus : BulkReportingJobStatus;
     [<JsonProperty(PropertyName = "token")>]
     Token : string;
-    [<JsonProperty(PropertyName = "message")>]
-    Message : string option;
   }
 
   //#endregion

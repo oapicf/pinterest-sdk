@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountCreateSubscriptionRequestPartnerMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountCreateSubscriptionRequestPartnerMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdAccountCreateSubscriptionRequestPartnerMetadata {
+    title = AdAccountCreateSubscriptionRequestPartnerMetadata
+    description = AdAccountCreateSubscriptionRequestPartnerMetadata
+    derivedFrom = Root
+    properties {
+        subscriber_key {
+          type =  string
+          description = "Text field value that uniquely identifies a subscriber."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountCreateSubscriptionRequestPartnerMetadata {
+    title = AdAccountCreateSubscriptionRequestPartnerMetadata
+    description = AdAccountCreateSubscriptionRequestPartnerMetadata
+    implements = openapi_server.resourceTypes.AdAccountCreateSubscriptionRequestPartnerMetadata
+
+  }
+}

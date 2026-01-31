@@ -3,22 +3,6 @@ Protected Class SSIOAccountAddress
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Address display
-		#tag EndNote
-		display As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Purpose for which the address is used, usually Billing or Businness
-		#tag EndNote
-		purpose As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Salesforce id for address
 		#tag EndNote
 		address_id As Xoson.O.OptionalString
@@ -27,9 +11,25 @@ Protected Class SSIOAccountAddress
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Address display
+		#tag EndNote
+		display As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Legal entity for this insertion order
 		#tag EndNote
 		order_legal_entity As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Purpose for which the address is used, usually Billing or Businness
+		#tag EndNote
+		purpose As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -70,22 +70,6 @@ Protected Class SSIOAccountAddress
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="display"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="purpose"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="address_id"
 			Visible=false
 			Group="Behavior"
@@ -94,7 +78,23 @@ Protected Class SSIOAccountAddress
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="display"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="order_legal_entity"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="purpose"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -74,16 +74,19 @@ private class OASBulkUpsertRequestUpdateTest {
         OASBulkUpsertRequestUpdate bulkUpsertRequestUpdate = new OASBulkUpsertRequestUpdate();
         Map<String, String> x-property-mappings = bulkUpsertRequestUpdate.getx-property-mappings();
         System.assertEquals('adGroups', x-property-mappings.get('ad_groups'));
+        System.assertEquals('catalogProductGroups', x-property-mappings.get('catalog_product_groups'));
         System.assertEquals('productGroups', x-property-mappings.get('product_groups'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASBulkUpsertRequestUpdate bulkUpsertRequestUpdate = new OASBulkUpsertRequestUpdate();
-        System.assertEquals(new List<OASCampaignUpdateRequest>(), bulkUpsertRequestUpdate.campaigns);
         System.assertEquals(new List<OASAdGroupUpdateRequest>(), bulkUpsertRequestUpdate.adGroups);
         System.assertEquals(new List<OASAdUpdateRequest>(), bulkUpsertRequestUpdate.ads);
-        System.assertEquals(new List<OASProductGroupPromotionUpdateReques>(), bulkUpsertRequestUpdate.productGroups);
+        System.assertEquals(new List<OASCampaignUpdateRequest>(), bulkUpsertRequestUpdate.campaigns);
+        System.assertEquals(new List<OASCatalogsProductGroupsUpdateReques>(), bulkUpsertRequestUpdate.catalogProductGroups);
         System.assertEquals(new List<OASKeywordUpdate>(), bulkUpsertRequestUpdate.keywords);
+        System.assertEquals(new List<OASLabelBulkUpdateRequest>(), bulkUpsertRequestUpdate.labels);
+        System.assertEquals(new List<OASProductGroupPromotionUpdateReques>(), bulkUpsertRequestUpdate.productGroups);
     }
 }

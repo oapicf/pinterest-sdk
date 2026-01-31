@@ -10,7 +10,6 @@ open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
 open OpenAPI.Model.NullableCurrency
-open OpenAPI.Model.string option
 
 module CatalogsCreativeAssetsFeedsCreateRequest =
 
@@ -18,16 +17,16 @@ module CatalogsCreativeAssetsFeedsCreateRequest =
 
 
   type CatalogsCreativeAssetsFeedsCreateRequest = {
-    DefaultCurrency : NullableCurrency;
-    Name : string;
-    Format : CatalogsFormat;
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
-    DefaultCountry : Country;
-    Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    CatalogId : string;
     CatalogType : CatalogsType;
-    CatalogId : string option;
+    Credentials : CatalogsFeedCredentials;
+    DefaultCountry : Country;
+    DefaultCurrency : NullableCurrency;
+    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
   }
   //#endregion

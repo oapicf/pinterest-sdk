@@ -7,7 +7,7 @@
     {
       "name": "frequency",
       "type": ["null", "int"],
-      "doc": "",
+      "doc": "Frequency target can only be between 2 and 20",
       "default": null
     },
     {

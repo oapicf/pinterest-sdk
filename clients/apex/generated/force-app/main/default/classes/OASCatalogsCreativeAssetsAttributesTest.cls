@@ -73,14 +73,14 @@ private class OASCatalogsCreativeAssetsAttributesTest {
     private static void maintainRenamedProperties() {
         OASCatalogsCreativeAssetsAttributes catalogsCreativeAssetsAttributes = new OASCatalogsCreativeAssetsAttributes();
         Map<String, String> x-property-mappings = catalogsCreativeAssetsAttributes.getx-property-mappings();
-        System.assertEquals('iosDeepLink', x-property-mappings.get('ios_deep_link'));
         System.assertEquals('androidDeepLink', x-property-mappings.get('android_deep_link'));
-        System.assertEquals('googleProductCategory', x-property-mappings.get('google_product_category'));
         System.assertEquals('customLabel0', x-property-mappings.get('custom_label_0'));
         System.assertEquals('customLabel1', x-property-mappings.get('custom_label_1'));
         System.assertEquals('customLabel2', x-property-mappings.get('custom_label_2'));
         System.assertEquals('customLabel3', x-property-mappings.get('custom_label_3'));
         System.assertEquals('customLabel4', x-property-mappings.get('custom_label_4'));
+        System.assertEquals('googleProductCategory', x-property-mappings.get('google_product_category'));
+        System.assertEquals('iosDeepLink', x-property-mappings.get('ios_deep_link'));
         System.assertEquals('imageLink', x-property-mappings.get('image_link'));
         System.assertEquals('videoLink', x-property-mappings.get('video_link'));
     }

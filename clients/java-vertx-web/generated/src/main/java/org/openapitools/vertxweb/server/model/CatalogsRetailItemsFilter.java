@@ -11,6 +11,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailItemsFilter   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -31,15 +32,23 @@ public class CatalogsRetailItemsFilter   {
 
   private CatalogTypeEnum catalogType;
   private List<String> itemIds = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsRetailItemsFilter () {
 
   }
 
-  public CatalogsRetailItemsFilter (CatalogTypeEnum catalogType, List<String> itemIds, String catalogId) {
+  public CatalogsRetailItemsFilter (String catalogId, CatalogTypeEnum catalogType, List<String> itemIds) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.itemIds = itemIds;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -61,15 +70,6 @@ public class CatalogsRetailItemsFilter   {
     this.itemIds = itemIds;
   }
 
-    
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,14 +80,14 @@ public class CatalogsRetailItemsFilter   {
       return false;
     }
     CatalogsRetailItemsFilter catalogsRetailItemsFilter = (CatalogsRetailItemsFilter) o;
-    return Objects.equals(catalogType, catalogsRetailItemsFilter.catalogType) &&
-        Objects.equals(itemIds, catalogsRetailItemsFilter.itemIds) &&
-        Objects.equals(catalogId, catalogsRetailItemsFilter.catalogId);
+    return Objects.equals(catalogId, catalogsRetailItemsFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsRetailItemsFilter.catalogType) &&
+        Objects.equals(itemIds, catalogsRetailItemsFilter.itemIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId);
+    return Objects.hash(catalogId, catalogType, itemIds);
   }
 
   @Override
@@ -95,9 +95,9 @@ public class CatalogsRetailItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

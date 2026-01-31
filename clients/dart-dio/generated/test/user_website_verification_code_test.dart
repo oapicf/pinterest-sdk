@@ -7,21 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(UserWebsiteVerificationCode, () {
-    // Code to check against the user claiming the website
-    // String verificationCode
-    test('to test the property `verificationCode`', () async {
-      // TODO
-    });
-
     // DNS TXT record to check against for the website to be claimed
     // String dnsTxtRecord
     test('to test the property `dnsTxtRecord`', () async {
       // TODO
     });
 
-    // Metatag the verification process searchs for the website to be claimed
-    // String metatag
-    test('to test the property `metatag`', () async {
+    // A full html file to upload to the website in order for it to be claimed
+    // String fileContent
+    test('to test the property `fileContent`', () async {
       // TODO
     });
 
@@ -31,9 +25,15 @@ void main() {
       // TODO
     });
 
-    // A full html file to upload to the website in order for it to be claimed
-    // String fileContent
-    test('to test the property `fileContent`', () async {
+    // Metatag the verification process searchs for the website to be claimed
+    // String metatag
+    test('to test the property `metatag`', () async {
+      // TODO
+    });
+
+    // Code to check against the user claiming the website
+    // String verificationCode
+    test('to test the property `verificationCode`', () async {
       // TODO
     });
 

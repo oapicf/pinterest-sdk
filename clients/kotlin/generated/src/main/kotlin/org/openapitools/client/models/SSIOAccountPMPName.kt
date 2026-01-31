@@ -22,20 +22,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name Display name
  * @param id Salesforce id for PMP
+ * @param name Display name
  */
 
 
 data class SSIOAccountPMPName (
 
-    /* Display name */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     /* Salesforce id for PMP */
     @Json(name = "id")
-    val id: kotlin.String? = null
+    val id: kotlin.String? = null,
+
+    /* Display name */
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

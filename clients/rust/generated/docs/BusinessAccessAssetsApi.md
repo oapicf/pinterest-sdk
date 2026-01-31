@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 
 ## business_asset_members_slash_get
 
-> models::BusinessAssetMembersGet200Response business_asset_members_slash_get(business_id, asset_id, bookmark, page_size, start_index)
+> models::BusinessAssetMembersGet200Response business_asset_members_slash_get(business_id, asset_id, fetch_system_users, bookmark, page_size, start_index)
 Get members with access to asset
 
 Get all the members the requesting business has granted access to on the given asset.
@@ -126,6 +126,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
 **asset_id** | **String** | Unique identifier of a business asset. | [required] |
+**fetch_system_users** | Option<**bool**> | Fetches system users if True. Fetches regular user employees if False. |  |[default to false]
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 **page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **start_index** | Option<**i32**> | An index to start fetching the results from. Only the results starting from this index will be returned. |  |[default to 0]

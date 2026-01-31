@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **string** |  | 
 **CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**CatalogType** | **string** |  | 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
 
-`func NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogType string, catalogId string, filters CatalogsCreativeAssetsProductGroupFilters, ) *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`
+`func NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogId string, catalogType string, filters CatalogsCreativeAssetsProductGroupFilters, ) *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`
 
 NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest instantiates a new CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestWithDefaults instantiates a new CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCatalogType
-
-`func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogType() string`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) SetCatalogType(v string)`
-
-SetCatalogType sets CatalogType field to given value.
-
 
 ### GetCatalogId
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) SetCatalogId(v string)`
 
 SetCatalogId sets CatalogId field to given value.
+
+
+### GetCatalogType
+
+`func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
 
 
 ### GetFilters

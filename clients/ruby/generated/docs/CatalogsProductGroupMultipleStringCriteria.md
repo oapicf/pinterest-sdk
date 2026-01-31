@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **values** | **Array&lt;String&gt;** |  |  |
 | **negated** | **Boolean** |  | [optional][default to false] |
+| **values** | **Array&lt;String&gt;** |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsProductGroupMultipleStringCriteria.new(
-  values: null,
-  negated: null
+  negated: null,
+  values: null
 )
 ```
 

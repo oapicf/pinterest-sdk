@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Language code, which is among the offical ISO 639-1 language list.
+ * Language code, which is among the official ISO 639-1 language list.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Language code, which is among the offical ISO 639-1 language list.
+ * Language code, which is among the official ISO 639-1 language list.
  */
 public enum Language {
   

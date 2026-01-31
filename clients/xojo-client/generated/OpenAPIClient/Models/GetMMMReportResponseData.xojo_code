@@ -7,12 +7,12 @@ Protected Class GetMMMReportResponseData
 
 
 	#tag Property, Flags = &h0
-		url As Xoson.O.OptionalString
+		size As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		size As Xoson.O.OptionalDouble
+		url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -85,19 +85,19 @@ Protected Class GetMMMReportResponseData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="size"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

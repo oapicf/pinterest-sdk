@@ -18,6 +18,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest  {
   
+ /**
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -54,18 +61,30 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   private CatalogTypeEnum catalogType;
 
- /**
-  * Catalog id pertaining to the creative assets product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
-
-  private String catalogId;
-
   @ApiModelProperty(required = true, value = "")
 
   @Valid
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
+ /**
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Get catalogType
    * @return catalogType
@@ -85,25 +104,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-   * Catalog id pertaining to the creative assets product group.
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
     return this;
   }
 
@@ -135,14 +135,14 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
       return false;
     }
     CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = (CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.filters, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -150,8 +150,8 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

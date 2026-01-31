@@ -48,13 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unix UTC timestamp.
+	/*! \brief Get 
 	 */
-	std::string getStartTime();
+	std::list<CampaignSummaryStatus> getCampaignStatus();
 
-	/*! \brief Set Unix UTC timestamp.
+	/*! \brief Set 
 	 */
-	void setStartTime(std::string  start_time);
+	void setCampaignStatus(std::list <CampaignSummaryStatus> campaign_status);
 	/*! \brief Get Unix UTC timestamp.
 	 */
 	std::string getEndTime();
@@ -71,25 +71,25 @@ public:
 	void setName(std::string  name);
 	/*! \brief Get 
 	 */
-	std::list<CampaignSummaryStatus> getCampaignStatus();
-
-	/*! \brief Set 
-	 */
-	void setCampaignStatus(std::list <CampaignSummaryStatus> campaign_status);
-	/*! \brief Get 
-	 */
 	std::list<ObjectiveType> getObjectiveType();
 
 	/*! \brief Set 
 	 */
 	void setObjectiveType(std::list <ObjectiveType> objective_type);
+	/*! \brief Get Unix UTC timestamp.
+	 */
+	std::string getStartTime();
+
+	/*! \brief Set Unix UTC timestamp.
+	 */
+	void setStartTime(std::string  start_time);
 
 private:
-	std::string start_time;
+	std::list <CampaignSummaryStatus>campaign_status;
 	std::string end_time;
 	std::string name;
-	std::list <CampaignSummaryStatus>campaign_status;
 	std::list <ObjectiveType>objective_type;
+	std::string start_time;
 	void __init();
 	void __cleanup();
 

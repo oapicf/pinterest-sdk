@@ -7,27 +7,32 @@
 #' @title QuizPinQuestion
 #' @description QuizPinQuestion Class
 #' @format An \code{R6Class} generator object
+#' @field options  list(\link{QuizPinOption}) [optional]
 #' @field question_id  numeric [optional]
 #' @field question_text  character [optional]
-#' @field options  list(\link{QuizPinOption}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 QuizPinQuestion <- R6::R6Class(
   "QuizPinQuestion",
   public = list(
+    `options` = NULL,
     `question_id` = NULL,
     `question_text` = NULL,
-    `options` = NULL,
 
     #' @description
     #' Initialize a new QuizPinQuestion class.
     #'
+    #' @param options options
     #' @param question_id question_id
     #' @param question_text question_text
-    #' @param options options
     #' @param ... Other optional arguments.
-    initialize = function(`question_id` = NULL, `question_text` = NULL, `options` = NULL, ...) {
+    initialize = function(`options` = NULL, `question_id` = NULL, `question_text` = NULL, ...) {
+      if (!is.null(`options`)) {
+        stopifnot(is.vector(`options`), length(`options`) != 0)
+        sapply(`options`, function(x) stopifnot(R6::is.R6(x)))
+        self$`options` <- `options`
+      }
       if (!is.null(`question_id`)) {
         self$`question_id` <- `question_id`
       }
@@ -36,11 +41,6 @@ QuizPinQuestion <- R6::R6Class(
           stop(paste("Error! Invalid data for `question_text`. Must be a string:", `question_text`))
         }
         self$`question_text` <- `question_text`
-      }
-      if (!is.null(`options`)) {
-        stopifnot(is.vector(`options`), length(`options`) != 0)
-        sapply(`options`, function(x) stopifnot(R6::is.R6(x)))
-        self$`options` <- `options`
       }
     },
 
@@ -75,6 +75,10 @@ QuizPinQuestion <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       QuizPinQuestionObject <- list()
+      if (!is.null(self$`options`)) {
+        QuizPinQuestionObject[["options"]] <-
+          lapply(self$`options`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`question_id`)) {
         QuizPinQuestionObject[["question_id"]] <-
           self$`question_id`
@@ -82,10 +86,6 @@ QuizPinQuestion <- R6::R6Class(
       if (!is.null(self$`question_text`)) {
         QuizPinQuestionObject[["question_text"]] <-
           self$`question_text`
-      }
-      if (!is.null(self$`options`)) {
-        QuizPinQuestionObject[["options"]] <-
-          lapply(self$`options`, function(x) x$toSimpleType())
       }
       return(QuizPinQuestionObject)
     },
@@ -97,14 +97,14 @@ QuizPinQuestion <- R6::R6Class(
     #' @return the instance of QuizPinQuestion
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`options`)) {
+        self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[QuizPinOption]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`question_id`)) {
         self$`question_id` <- this_object$`question_id`
       }
       if (!is.null(this_object$`question_text`)) {
         self$`question_text` <- this_object$`question_text`
-      }
-      if (!is.null(this_object$`options`)) {
-        self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[QuizPinOption]", loadNamespace("openapi"))
       }
       self
     },
@@ -127,9 +127,9 @@ QuizPinQuestion <- R6::R6Class(
     #' @return the instance of QuizPinQuestion
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[QuizPinOption]", loadNamespace("openapi"))
       self$`question_id` <- this_object$`question_id`
       self$`question_text` <- this_object$`question_text`
-      self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[QuizPinOption]", loadNamespace("openapi"))
       self
     },
 

@@ -7,12 +7,12 @@
 #' @title AdGroupAudienceSizingRequest
 #' @description AdGroupAudienceSizingRequest Class
 #' @format An \code{R6Class} generator object
-#' @field auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. character [optional]
-#' @field placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. \link{PlacementGroupType} [optional]
+#' @field auto_targeting_enabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. character [optional]
 #' @field creative_types Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. list(character) [optional]
-#' @field targeting_spec  \link{TargetingSpec} [optional]
-#' @field product_group_ids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. list(character) [optional]
 #' @field keywords Array of keyword objects. If the keywords field is missing, all keywords will be targeted. list(\link{AdGroupAudienceSizingRequestKeywordsInner}) [optional]
+#' @field placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. \link{PlacementGroupType} [optional]
+#' @field product_group_ids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. list(character) [optional]
+#' @field targeting_spec  \link{TargetingSpec} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,28 +20,38 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
   "AdGroupAudienceSizingRequest",
   public = list(
     `auto_targeting_enabled` = NULL,
-    `placement_group` = NULL,
     `creative_types` = NULL,
-    `targeting_spec` = NULL,
-    `product_group_ids` = NULL,
     `keywords` = NULL,
+    `placement_group` = NULL,
+    `product_group_ids` = NULL,
+    `targeting_spec` = NULL,
 
     #' @description
     #' Initialize a new AdGroupAudienceSizingRequest class.
     #'
-    #' @param auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.. Default to TRUE.
-    #' @param placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.. Default to "ALL".
+    #' @param auto_targeting_enabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.. Default to TRUE.
     #' @param creative_types Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-    #' @param targeting_spec targeting_spec
-    #' @param product_group_ids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
     #' @param keywords Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+    #' @param placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.. Default to "ALL".
+    #' @param product_group_ids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
+    #' @param targeting_spec targeting_spec
     #' @param ... Other optional arguments.
-    initialize = function(`auto_targeting_enabled` = TRUE, `placement_group` = "ALL", `creative_types` = NULL, `targeting_spec` = NULL, `product_group_ids` = NULL, `keywords` = NULL, ...) {
+    initialize = function(`auto_targeting_enabled` = TRUE, `creative_types` = NULL, `keywords` = NULL, `placement_group` = "ALL", `product_group_ids` = NULL, `targeting_spec` = NULL, ...) {
       if (!is.null(`auto_targeting_enabled`)) {
         if (!(is.logical(`auto_targeting_enabled`) && length(`auto_targeting_enabled`) == 1)) {
           stop(paste("Error! Invalid data for `auto_targeting_enabled`. Must be a boolean:", `auto_targeting_enabled`))
         }
         self$`auto_targeting_enabled` <- `auto_targeting_enabled`
+      }
+      if (!is.null(`creative_types`)) {
+        stopifnot(is.vector(`creative_types`), length(`creative_types`) != 0)
+        sapply(`creative_types`, function(x) stopifnot(is.character(x)))
+        self$`creative_types` <- `creative_types`
+      }
+      if (!is.null(`keywords`)) {
+        stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
+        sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
+        self$`keywords` <- `keywords`
       }
       if (!is.null(`placement_group`)) {
         if (!(`placement_group` %in% c())) {
@@ -50,24 +60,14 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`placement_group`))
         self$`placement_group` <- `placement_group`
       }
-      if (!is.null(`creative_types`)) {
-        stopifnot(is.vector(`creative_types`), length(`creative_types`) != 0)
-        sapply(`creative_types`, function(x) stopifnot(is.character(x)))
-        self$`creative_types` <- `creative_types`
-      }
-      if (!is.null(`targeting_spec`)) {
-        stopifnot(R6::is.R6(`targeting_spec`))
-        self$`targeting_spec` <- `targeting_spec`
-      }
       if (!is.null(`product_group_ids`)) {
         stopifnot(is.vector(`product_group_ids`), length(`product_group_ids`) != 0)
         sapply(`product_group_ids`, function(x) stopifnot(is.character(x)))
         self$`product_group_ids` <- `product_group_ids`
       }
-      if (!is.null(`keywords`)) {
-        stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
-        sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
-        self$`keywords` <- `keywords`
+      if (!is.null(`targeting_spec`)) {
+        stopifnot(R6::is.R6(`targeting_spec`))
+        self$`targeting_spec` <- `targeting_spec`
       }
     },
 
@@ -106,25 +106,25 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
         AdGroupAudienceSizingRequestObject[["auto_targeting_enabled"]] <-
           self$`auto_targeting_enabled`
       }
-      if (!is.null(self$`placement_group`)) {
-        AdGroupAudienceSizingRequestObject[["placement_group"]] <-
-          self$`placement_group`$toSimpleType()
-      }
       if (!is.null(self$`creative_types`)) {
         AdGroupAudienceSizingRequestObject[["creative_types"]] <-
           self$`creative_types`
       }
-      if (!is.null(self$`targeting_spec`)) {
-        AdGroupAudienceSizingRequestObject[["targeting_spec"]] <-
-          self$`targeting_spec`$toSimpleType()
+      if (!is.null(self$`keywords`)) {
+        AdGroupAudienceSizingRequestObject[["keywords"]] <-
+          lapply(self$`keywords`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`placement_group`)) {
+        AdGroupAudienceSizingRequestObject[["placement_group"]] <-
+          self$`placement_group`$toSimpleType()
       }
       if (!is.null(self$`product_group_ids`)) {
         AdGroupAudienceSizingRequestObject[["product_group_ids"]] <-
           self$`product_group_ids`
       }
-      if (!is.null(self$`keywords`)) {
-        AdGroupAudienceSizingRequestObject[["keywords"]] <-
-          lapply(self$`keywords`, function(x) x$toSimpleType())
+      if (!is.null(self$`targeting_spec`)) {
+        AdGroupAudienceSizingRequestObject[["targeting_spec"]] <-
+          self$`targeting_spec`$toSimpleType()
       }
       return(AdGroupAudienceSizingRequestObject)
     },
@@ -139,24 +139,24 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
       if (!is.null(this_object$`auto_targeting_enabled`)) {
         self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
       }
+      if (!is.null(this_object$`creative_types`)) {
+        self$`creative_types` <- ApiClient$new()$deserializeObj(this_object$`creative_types`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`keywords`)) {
+        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[AdGroupAudienceSizingRequestKeywordsInner]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`placement_group`)) {
         `placement_group_object` <- PlacementGroupType$new()
         `placement_group_object`$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
         self$`placement_group` <- `placement_group_object`
       }
-      if (!is.null(this_object$`creative_types`)) {
-        self$`creative_types` <- ApiClient$new()$deserializeObj(this_object$`creative_types`, "array[character]", loadNamespace("openapi"))
+      if (!is.null(this_object$`product_group_ids`)) {
+        self$`product_group_ids` <- ApiClient$new()$deserializeObj(this_object$`product_group_ids`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`targeting_spec`)) {
         `targeting_spec_object` <- TargetingSpec$new()
         `targeting_spec_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
         self$`targeting_spec` <- `targeting_spec_object`
-      }
-      if (!is.null(this_object$`product_group_ids`)) {
-        self$`product_group_ids` <- ApiClient$new()$deserializeObj(this_object$`product_group_ids`, "array[character]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`keywords`)) {
-        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[AdGroupAudienceSizingRequestKeywordsInner]", loadNamespace("openapi"))
       }
       self
     },
@@ -180,11 +180,11 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
-      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
       self$`creative_types` <- ApiClient$new()$deserializeObj(this_object$`creative_types`, "array[character]", loadNamespace("openapi"))
-      self$`targeting_spec` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
-      self$`product_group_ids` <- ApiClient$new()$deserializeObj(this_object$`product_group_ids`, "array[character]", loadNamespace("openapi"))
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[AdGroupAudienceSizingRequestKeywordsInner]", loadNamespace("openapi"))
+      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
+      self$`product_group_ids` <- ApiClient$new()$deserializeObj(this_object$`product_group_ids`, "array[character]", loadNamespace("openapi"))
+      self$`targeting_spec` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
       self
     },
 

@@ -20,10 +20,13 @@ import org.openapitools.model.ItemUpdateBatchRecord;
  **/
 
 @ApiModel(description = "Request object to update catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsUpdateBatchRequest   {
   @JsonProperty("country")
   private Country country;
+
+  @JsonProperty("items")
+  private List<ItemUpdateBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -272,9 +275,6 @@ public class CatalogsItemsUpdateBatchRequest   {
   @JsonProperty("operation")
   private BatchOperation operation;
 
-  @JsonProperty("items")
-  private List<ItemUpdateBatchRecord> items = new ArrayList<>();
-
   /**
    **/
   public CatalogsItemsUpdateBatchRequest country(Country country) {
@@ -290,6 +290,24 @@ public class CatalogsItemsUpdateBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   * Array with catalogs items
+   **/
+  public CatalogsItemsUpdateBatchRequest items(List<ItemUpdateBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @JsonProperty("items")
+  public List<ItemUpdateBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<ItemUpdateBatchRecord> items) {
+    this.items = items;
   }
 
   /**
@@ -327,24 +345,6 @@ public class CatalogsItemsUpdateBatchRequest   {
     this.operation = operation;
   }
 
-  /**
-   * Array with catalogs items
-   **/
-  public CatalogsItemsUpdateBatchRequest items(List<ItemUpdateBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
-  public List<ItemUpdateBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<ItemUpdateBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -356,14 +356,14 @@ public class CatalogsItemsUpdateBatchRequest   {
     }
     CatalogsItemsUpdateBatchRequest catalogsItemsUpdateBatchRequest = (CatalogsItemsUpdateBatchRequest) o;
     return Objects.equals(country, catalogsItemsUpdateBatchRequest.country) &&
+        Objects.equals(items, catalogsItemsUpdateBatchRequest.items) &&
         Objects.equals(language, catalogsItemsUpdateBatchRequest.language) &&
-        Objects.equals(operation, catalogsItemsUpdateBatchRequest.operation) &&
-        Objects.equals(items, catalogsItemsUpdateBatchRequest.items);
+        Objects.equals(operation, catalogsItemsUpdateBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -372,9 +372,9 @@ public class CatalogsItemsUpdateBatchRequest   {
     sb.append("class CatalogsItemsUpdateBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

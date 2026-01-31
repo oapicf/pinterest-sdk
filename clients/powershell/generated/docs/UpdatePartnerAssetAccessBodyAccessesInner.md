@@ -3,16 +3,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PartnerId** | **String** | Unique identifier of a business partner to update asset access to. | 
 **AssetId** | **String** | Unique identifier of the business asset. | 
+**PartnerId** | **String** | Unique identifier of a business partner to update asset access to. | 
 **Permissions** | [**Permissions[]**](Permissions.md) | A non-empty array of permissions to assign to the partner. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UpdatePartnerAssetAccessBodyAccessesInner = Initialize-PSOpenAPIToolsUpdatePartnerAssetAccessBodyAccessesInner  -PartnerId 1234567890123 `
- -AssetId 549755885175 `
+$UpdatePartnerAssetAccessBodyAccessesInner = Initialize-PSOpenAPIToolsUpdatePartnerAssetAccessBodyAccessesInner  -AssetId 549755885175 `
+ -PartnerId 1234567890123 `
  -Permissions [&quot;ANALYST&quot;,&quot;ADMIN&quot;]
 ```
 

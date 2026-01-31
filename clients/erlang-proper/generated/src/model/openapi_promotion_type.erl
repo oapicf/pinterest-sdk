@@ -1,0 +1,14 @@
+-module(openapi_promotion_type).
+
+-include("openapi.hrl").
+
+-export([openapi_promotion_type/0]).
+
+-export_type([openapi_promotion_type/0]).
+
+-type openapi_promotion_type() ::
+  binary().
+
+openapi_promotion_type() ->
+  elements([<<"VARIABLE">>, <<"SITEWIDE">>, <<"CHECKOUT">>, <<"SAVE_X_ON_Y">>, <<"BUY_X_GET_Y">>, <<"SPEND_X_SAVE_Y">>, <<"FREE_SHIPPING">>, <<"FREE_SHIPPING_MINIMUM">>, <<"FREE_SHIPPING_WITH_DISCOUNT">>, <<"SITEWIDE_IN_STORES">>, <<"EXTRA_PERCENT_OFF">>, <<"GIFT_WITH_PURCHASE">>, <<"GIFT_WITH_PURCHASE_MINIMUM">>, <<"FIXED">>, <<"PERCENT_OFF_CLEARANCE">>, <<"X_OFF_Y">>, <<"GIFT_WITH_FIRST_PURCHASE">>, <<"BUY_X_GET_ONE_FREE">>, <<"CASH_BACK">>, <<"POINTS_ON_ALL_PURCHASES">>, <<"BONUS">>, <<"POINTS_WITH_PURCHASE">>, <<"CUSTOM">>]).
+

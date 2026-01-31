@@ -3,15 +3,17 @@
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.country :refer :all]
             [pinterest-rest-api.specs.language :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-operation-error :refer :all]
             )
   (:import (java.io File)))
 
 
 (def advanced-auction-items-submit-delete-record-data
   {
-   (ds/req :item_id) string?
    (ds/req :country) country-spec
+   (ds/req :item_id) string?
    (ds/req :language) language-spec
+   (ds/opt :errors) (s/coll-of advanced-auction-operation-error-spec)
    })
 
 (def advanced-auction-items-submit-delete-record-spec

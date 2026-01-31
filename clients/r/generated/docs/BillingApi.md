@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdsCreditRedeem**](BillingApi.md#AdsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**AdsCreditsDiscountsGet**](BillingApi.md#AdsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**BillingInvoiceDownloadGet**](BillingApi.md#BillingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**BillingInvoicesGet**](BillingApi.md#BillingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**BillingProfilesGet**](BillingApi.md#BillingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**SsioAccountsGet**](BillingApi.md#SsioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**SsioInsertionOrderCreate**](BillingApi.md#SsioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -20,7 +22,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -73,7 +75,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -122,12 +124,132 @@ Name | Type | Description  | Notes
 | **200** | Success |  -  |
 | **0** | Unexpected error. |  -  |
 
+# **BillingInvoiceDownloadGet**
+> BillingInvoiceDownloadResponse BillingInvoiceDownloadGet(ad_account_id, billing_invoice_id)
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+```R
+library(openapi)
+
+# Get download url for a billing invoice
+#
+# prepare function argument(s)
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
+var_billing_invoice_id <- "billing_invoice_id_example" # character | Unique identifier of a billing invoice.
+
+api_instance <- BillingApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$BillingInvoiceDownloadGet(var_ad_account_id, var_billing_invoice_iddata_file = "result.txt")
+result <- api_instance$BillingInvoiceDownloadGet(var_ad_account_id, var_billing_invoice_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
+ **billing_invoice_id** | **character**| Unique identifier of a billing invoice. | 
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
+| **400** | Invalid request parameter. |  -  |
+| **0** | Unexpected error |  -  |
+
+# **BillingInvoicesGet**
+> BillingInvoicesGet200Response BillingInvoicesGet(ad_account_id, bookmark = var.bookmark, page_size = 25, sort = "DUE_DATE", order = var.order, status = var.status, document_type = var.document_type, start_due_date = var.start_due_date, end_due_date = var.end_due_date)
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+```R
+library(openapi)
+
+# Get billing invoices
+#
+# prepare function argument(s)
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
+var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_sort <- "DUE_DATE" # character | Field of which to sort billing invoices (Optional)
+var_order <- "ASCENDING" # character | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
+var_status <- "OPEN" # character | Status of billing invoices to filter by (Optional)
+var_document_type <- "INVOICE" # character | Document type of billing invoices to filter by (Optional)
+var_start_due_date <- "Sun Jan 01 00:00:00 UTC 2023" # character | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (Optional)
+var_end_due_date <- "Mon Jan 01 00:00:00 UTC 2024" # character | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (Optional)
+
+api_instance <- BillingApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$BillingInvoicesGet(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, sort = var_sort, order = var_order, status = var_status, document_type = var_document_type, start_due_date = var_start_due_date, end_due_date = var_end_due_datedata_file = "result.txt")
+result <- api_instance$BillingInvoicesGet(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, sort = var_sort, order = var_order, status = var_status, document_type = var_document_type, start_due_date = var_start_due_date, end_due_date = var_end_due_date)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
+ **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort** | Enum [DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] | Field of which to sort billing invoices | [optional] [default to &quot;DUE_DATE&quot;]
+ **order** | Enum [ASCENDING, DESCENDING] | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **status** | Enum [OPEN, CLOSED] | Status of billing invoices to filter by | [optional] 
+ **document_type** | Enum [INVOICE, CREDIT_MEMO] | Document type of billing invoices to filter by | [optional] 
+ **start_due_date** | **character**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+ **end_due_date** | **character**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+
+### Return type
+
+[**BillingInvoicesGet200Response**](billing_invoices_get_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid request parameter. |  -  |
+| **0** | Unexpected error |  -  |
+
 # **BillingProfilesGet**
 > BillingProfilesGet200Response BillingProfilesGet(ad_account_id, is_active, bookmark = var.bookmark, page_size = 25)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -244,7 +366,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ssio_create_insertion_order_request <- SSIOCreateInsertionOrderRequest$new("start_date_example", "po_number_example", "billing_contact_firstname_example", "billing_contact_lastname_example", "billing_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "media_contact_email_example", "pmp_id_example", "order_name_example", "BUDGET", "accepted_terms_id_example", "billto_company_id_example", "billto_business_address_id_example", "billto_billing_address_id_example", Currency$new(), "end_date_example", 123, "agency_link_example", "user_email_example", 123, 123) # SSIOCreateInsertionOrderRequest | Order line to create.
+var_ssio_create_insertion_order_request <- SSIOCreateInsertionOrderRequest$new("billing_contact_email_example", "billing_contact_firstname_example", "billing_contact_lastname_example", "media_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "po_number_example", "start_date_example", "accepted_terms_id_example", "billto_billing_address_id_example", "billto_business_address_id_example", "billto_company_id_example", Currency$new(), "BUDGET", "order_name_example", "pmp_id_example", "agency_link_example", 123, "end_date_example", "user_email_example", 123, 123) # SSIOCreateInsertionOrderRequest | Order line to create.
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -297,7 +419,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ssio_edit_insertion_order_request <- SSIOEditInsertionOrderRequest$new("start_date_example", "end_date_example", "po_number_example", 123, "billing_contact_firstname_example", "billing_contact_lastname_example", "billing_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "media_contact_email_example", "agency_link_example", "user_email_example", "oracle_line_id_example", "salesforce_order_id_example", "salesforce_order_line_id_example", "ads_manager_order_line_id_example") # SSIOEditInsertionOrderRequest | Order line to create.
+var_ssio_edit_insertion_order_request <- SSIOEditInsertionOrderRequest$new("agency_link_example", "billing_contact_email_example", "billing_contact_firstname_example", "billing_contact_lastname_example", 123, "end_date_example", "media_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "po_number_example", "start_date_example", "user_email_example", "ads_manager_order_line_id_example", "oracle_line_id_example", "salesforce_order_id_example", "salesforce_order_line_id_example") # SSIOEditInsertionOrderRequest | Order line to create.
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

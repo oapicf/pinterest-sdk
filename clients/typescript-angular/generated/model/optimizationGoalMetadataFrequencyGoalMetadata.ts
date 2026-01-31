@@ -10,6 +10,9 @@
 
 
 export interface OptimizationGoalMetadataFrequencyGoalMetadata { 
+    /**
+     * Frequency target can only be between 2 and 20
+     */
     frequency?: number;
     /**
      * User entity counts time range

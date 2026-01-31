@@ -23,83 +23,83 @@ TargetingTemplateGetResponseData::~TargetingTemplateGetResponseData()
 void
 TargetingTemplateGetResponseData::__init()
 {
-	//name = std::string();
 	//auto_targeting_enabled = bool(false);
-	//targeting_attributes = new TargetingSpec();
-	//placement_group = new PlacementGroupType();
 	//new std::list()std::list> keywords;
+	//name = std::string();
+	//placement_group = new PlacementGroupType();
+	//targeting_attributes = new TargetingSpec();
 	//tracking_urls = new TrackingUrls();
-	//id = std::string();
-	//created_time = int(0);
-	//updated_time = int(0);
 	//ad_account_id = std::string();
-	//status = std::string();
+	//created_time = int(0);
+	//id = std::string();
 	//sizing = new TargetingTemplateAudienceSizing();
+	//status = std::string();
+	//updated_time = int(0);
 	//valid = bool(false);
 }
 
 void
 TargetingTemplateGetResponseData::__cleanup()
 {
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(auto_targeting_enabled != NULL) {
 	//
 	//delete auto_targeting_enabled;
 	//auto_targeting_enabled = NULL;
-	//}
-	//if(targeting_attributes != NULL) {
-	//
-	//delete targeting_attributes;
-	//targeting_attributes = NULL;
-	//}
-	//if(placement_group != NULL) {
-	//
-	//delete placement_group;
-	//placement_group = NULL;
 	//}
 	//if(keywords != NULL) {
 	//keywords.RemoveAll(true);
 	//delete keywords;
 	//keywords = NULL;
 	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(placement_group != NULL) {
+	//
+	//delete placement_group;
+	//placement_group = NULL;
+	//}
+	//if(targeting_attributes != NULL) {
+	//
+	//delete targeting_attributes;
+	//targeting_attributes = NULL;
+	//}
 	//if(tracking_urls != NULL) {
 	//
 	//delete tracking_urls;
 	//tracking_urls = NULL;
-	//}
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(created_time != NULL) {
-	//
-	//delete created_time;
-	//created_time = NULL;
-	//}
-	//if(updated_time != NULL) {
-	//
-	//delete updated_time;
-	//updated_time = NULL;
 	//}
 	//if(ad_account_id != NULL) {
 	//
 	//delete ad_account_id;
 	//ad_account_id = NULL;
 	//}
-	//if(status != NULL) {
+	//if(created_time != NULL) {
 	//
-	//delete status;
-	//status = NULL;
+	//delete created_time;
+	//created_time = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
 	//}
 	//if(sizing != NULL) {
 	//
 	//delete sizing;
 	//sizing = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
+	//}
+	//if(updated_time != NULL) {
+	//
+	//delete updated_time;
+	//updated_time = NULL;
 	//}
 	//if(valid != NULL) {
 	//
@@ -114,17 +114,6 @@ TargetingTemplateGetResponseData::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *auto_targeting_enabledKey = "auto_targeting_enabled";
 	node = json_object_get_member(pJsonObject, auto_targeting_enabledKey);
 	if (node !=NULL) {
@@ -133,34 +122,6 @@ TargetingTemplateGetResponseData::fromJson(char* jsonStr)
 		if (isprimitive("bool")) {
 			jsonToValue(&auto_targeting_enabled, node, "bool", "");
 		} else {
-			
-		}
-	}
-	const gchar *targeting_attributesKey = "targeting_attributes";
-	node = json_object_get_member(pJsonObject, targeting_attributesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("TargetingSpec")) {
-			jsonToValue(&targeting_attributes, node, "TargetingSpec", "TargetingSpec");
-		} else {
-			
-			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_attributes);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *placement_groupKey = "placement_group";
-	node = json_object_get_member(pJsonObject, placement_groupKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("PlacementGroupType")) {
-			jsonToValue(&placement_group, node, "PlacementGroupType", "PlacementGroupType");
-		} else {
-			
-			PlacementGroupType* obj = static_cast<PlacementGroupType*> (&placement_group);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -188,6 +149,45 @@ TargetingTemplateGetResponseData::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *placement_groupKey = "placement_group";
+	node = json_object_get_member(pJsonObject, placement_groupKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("PlacementGroupType")) {
+			jsonToValue(&placement_group, node, "PlacementGroupType", "PlacementGroupType");
+		} else {
+			
+			PlacementGroupType* obj = static_cast<PlacementGroupType*> (&placement_group);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *targeting_attributesKey = "targeting_attributes";
+	node = json_object_get_member(pJsonObject, targeting_attributesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("TargetingSpec")) {
+			jsonToValue(&targeting_attributes, node, "TargetingSpec", "TargetingSpec");
+		} else {
+			
+			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_attributes);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *tracking_urlsKey = "tracking_urls";
 	node = json_object_get_member(pJsonObject, tracking_urlsKey);
 	if (node !=NULL) {
@@ -202,13 +202,13 @@ TargetingTemplateGetResponseData::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
+	const gchar *ad_account_idKey = "ad_account_id";
+	node = json_object_get_member(pJsonObject, ad_account_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
+			jsonToValue(&ad_account_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -224,35 +224,13 @@ TargetingTemplateGetResponseData::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *updated_timeKey = "updated_time";
-	node = json_object_get_member(pJsonObject, updated_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&updated_time, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *ad_account_idKey = "ad_account_id";
-	node = json_object_get_member(pJsonObject, ad_account_idKey);
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&ad_account_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&status, node, "std::string", "");
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
@@ -268,6 +246,28 @@ TargetingTemplateGetResponseData::fromJson(char* jsonStr)
 			
 			TargetingTemplateAudienceSizing* obj = static_cast<TargetingTemplateAudienceSizing*> (&sizing);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&status, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *updated_timeKey = "updated_time";
+	node = json_object_get_member(pJsonObject, updated_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&updated_time, node, "int", "");
+		} else {
 			
 		}
 	}
@@ -294,15 +294,6 @@ TargetingTemplateGetResponseData::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getAutoTargetingEnabled();
 		node = converttoJson(&obj, "bool", "");
@@ -312,34 +303,6 @@ TargetingTemplateGetResponseData::toJson()
 	}
 	const gchar *auto_targeting_enabledKey = "auto_targeting_enabled";
 	json_object_set_member(pJsonObject, auto_targeting_enabledKey, node);
-	if (isprimitive("TargetingSpec")) {
-		TargetingSpec obj = getTargetingAttributes();
-		node = converttoJson(&obj, "TargetingSpec", "");
-	}
-	else {
-		
-		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingAttributes());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *targeting_attributesKey = "targeting_attributes";
-	json_object_set_member(pJsonObject, targeting_attributesKey, node);
-	if (isprimitive("PlacementGroupType")) {
-		PlacementGroupType obj = getPlacementGroup();
-		node = converttoJson(&obj, "PlacementGroupType", "");
-	}
-	else {
-		
-		PlacementGroupType obj = static_cast<PlacementGroupType> (getPlacementGroup());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *placement_groupKey = "placement_group";
-	json_object_set_member(pJsonObject, placement_groupKey, node);
 	if (isprimitive("TargetingTemplateKeyword")) {
 		list<TargetingTemplateKeyword> new_list = static_cast<list <TargetingTemplateKeyword> > (getKeywords());
 		node = converttoJson(&new_list, "TargetingTemplateKeyword", "array");
@@ -365,6 +328,43 @@ TargetingTemplateGetResponseData::toJson()
 	
 	const gchar *keywordsKey = "keywords";
 	json_object_set_member(pJsonObject, keywordsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("PlacementGroupType")) {
+		PlacementGroupType obj = getPlacementGroup();
+		node = converttoJson(&obj, "PlacementGroupType", "");
+	}
+	else {
+		
+		PlacementGroupType obj = static_cast<PlacementGroupType> (getPlacementGroup());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *placement_groupKey = "placement_group";
+	json_object_set_member(pJsonObject, placement_groupKey, node);
+	if (isprimitive("TargetingSpec")) {
+		TargetingSpec obj = getTargetingAttributes();
+		node = converttoJson(&obj, "TargetingSpec", "");
+	}
+	else {
+		
+		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingAttributes());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *targeting_attributesKey = "targeting_attributes";
+	json_object_set_member(pJsonObject, targeting_attributesKey, node);
 	if (isprimitive("TrackingUrls")) {
 		TrackingUrls obj = getTrackingUrls();
 		node = converttoJson(&obj, "TrackingUrls", "");
@@ -380,14 +380,14 @@ TargetingTemplateGetResponseData::toJson()
 	const gchar *tracking_urlsKey = "tracking_urls";
 	json_object_set_member(pJsonObject, tracking_urlsKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getId();
+		std::string obj = getAdAccountId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
+	const gchar *ad_account_idKey = "ad_account_id";
+	json_object_set_member(pJsonObject, ad_account_idKey, node);
 	if (isprimitive("int")) {
 		int obj = getCreatedTime();
 		node = converttoJson(&obj, "int", "");
@@ -397,33 +397,15 @@ TargetingTemplateGetResponseData::toJson()
 	}
 	const gchar *created_timeKey = "created_time";
 	json_object_set_member(pJsonObject, created_timeKey, node);
-	if (isprimitive("int")) {
-		int obj = getUpdatedTime();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *updated_timeKey = "updated_time";
-	json_object_set_member(pJsonObject, updated_timeKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getAdAccountId();
+		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *ad_account_idKey = "ad_account_id";
-	json_object_set_member(pJsonObject, ad_account_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getStatus();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("TargetingTemplateAudienceSizing")) {
 		TargetingTemplateAudienceSizing obj = getSizing();
 		node = converttoJson(&obj, "TargetingTemplateAudienceSizing", "");
@@ -438,6 +420,24 @@ TargetingTemplateGetResponseData::toJson()
 	}
 	const gchar *sizingKey = "sizing";
 	json_object_set_member(pJsonObject, sizingKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getStatus();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("int")) {
+		int obj = getUpdatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_timeKey = "updated_time";
+	json_object_set_member(pJsonObject, updated_timeKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getValid();
 		node = converttoJson(&obj, "bool", "");
@@ -455,18 +455,6 @@ TargetingTemplateGetResponseData::toJson()
 	return ret;
 }
 
-std::string
-TargetingTemplateGetResponseData::getName()
-{
-	return name;
-}
-
-void
-TargetingTemplateGetResponseData::setName(std::string  name)
-{
-	this->name = name;
-}
-
 bool
 TargetingTemplateGetResponseData::getAutoTargetingEnabled()
 {
@@ -479,16 +467,28 @@ TargetingTemplateGetResponseData::setAutoTargetingEnabled(bool  auto_targeting_e
 	this->auto_targeting_enabled = auto_targeting_enabled;
 }
 
-TargetingSpec
-TargetingTemplateGetResponseData::getTargetingAttributes()
+std::list<TargetingTemplateKeyword>
+TargetingTemplateGetResponseData::getKeywords()
 {
-	return targeting_attributes;
+	return keywords;
 }
 
 void
-TargetingTemplateGetResponseData::setTargetingAttributes(TargetingSpec  targeting_attributes)
+TargetingTemplateGetResponseData::setKeywords(std::list <TargetingTemplateKeyword> keywords)
 {
-	this->targeting_attributes = targeting_attributes;
+	this->keywords = keywords;
+}
+
+std::string
+TargetingTemplateGetResponseData::getName()
+{
+	return name;
+}
+
+void
+TargetingTemplateGetResponseData::setName(std::string  name)
+{
+	this->name = name;
 }
 
 PlacementGroupType
@@ -503,16 +503,16 @@ TargetingTemplateGetResponseData::setPlacementGroup(PlacementGroupType  placemen
 	this->placement_group = placement_group;
 }
 
-std::list<TargetingTemplateKeyword>
-TargetingTemplateGetResponseData::getKeywords()
+TargetingSpec
+TargetingTemplateGetResponseData::getTargetingAttributes()
 {
-	return keywords;
+	return targeting_attributes;
 }
 
 void
-TargetingTemplateGetResponseData::setKeywords(std::list <TargetingTemplateKeyword> keywords)
+TargetingTemplateGetResponseData::setTargetingAttributes(TargetingSpec  targeting_attributes)
 {
-	this->keywords = keywords;
+	this->targeting_attributes = targeting_attributes;
 }
 
 TrackingUrls
@@ -528,15 +528,15 @@ TargetingTemplateGetResponseData::setTrackingUrls(TrackingUrls  tracking_urls)
 }
 
 std::string
-TargetingTemplateGetResponseData::getId()
+TargetingTemplateGetResponseData::getAdAccountId()
 {
-	return id;
+	return ad_account_id;
 }
 
 void
-TargetingTemplateGetResponseData::setId(std::string  id)
+TargetingTemplateGetResponseData::setAdAccountId(std::string  ad_account_id)
 {
-	this->id = id;
+	this->ad_account_id = ad_account_id;
 }
 
 int
@@ -551,28 +551,28 @@ TargetingTemplateGetResponseData::setCreatedTime(int  created_time)
 	this->created_time = created_time;
 }
 
-int
-TargetingTemplateGetResponseData::getUpdatedTime()
-{
-	return updated_time;
-}
-
-void
-TargetingTemplateGetResponseData::setUpdatedTime(int  updated_time)
-{
-	this->updated_time = updated_time;
-}
-
 std::string
-TargetingTemplateGetResponseData::getAdAccountId()
+TargetingTemplateGetResponseData::getId()
 {
-	return ad_account_id;
+	return id;
 }
 
 void
-TargetingTemplateGetResponseData::setAdAccountId(std::string  ad_account_id)
+TargetingTemplateGetResponseData::setId(std::string  id)
 {
-	this->ad_account_id = ad_account_id;
+	this->id = id;
+}
+
+TargetingTemplateAudienceSizing
+TargetingTemplateGetResponseData::getSizing()
+{
+	return sizing;
+}
+
+void
+TargetingTemplateGetResponseData::setSizing(TargetingTemplateAudienceSizing  sizing)
+{
+	this->sizing = sizing;
 }
 
 std::string
@@ -587,16 +587,16 @@ TargetingTemplateGetResponseData::setStatus(std::string  status)
 	this->status = status;
 }
 
-TargetingTemplateAudienceSizing
-TargetingTemplateGetResponseData::getSizing()
+int
+TargetingTemplateGetResponseData::getUpdatedTime()
 {
-	return sizing;
+	return updated_time;
 }
 
 void
-TargetingTemplateGetResponseData::setSizing(TargetingTemplateAudienceSizing  sizing)
+TargetingTemplateGetResponseData::setUpdatedTime(int  updated_time)
 {
-	this->sizing = sizing;
+	this->updated_time = updated_time;
 }
 
 bool

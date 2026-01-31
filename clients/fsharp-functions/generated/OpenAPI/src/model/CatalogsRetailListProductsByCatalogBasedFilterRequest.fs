@@ -13,14 +13,14 @@ module CatalogsRetailListProductsByCatalogBasedFilterRequest =
 
   [<CLIMutable>]
   type CatalogsRetailListProductsByCatalogBasedFilterRequest = {
-    [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
-    [<JsonProperty(PropertyName = "filters")>]
-    Filters : CatalogsProductGroupFilters;
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "filters")>]
+    Filters : CatalogsProductGroupFilters;
     [<JsonProperty(PropertyName = "locale")>]
     Locale : CatalogsLocale;
   }

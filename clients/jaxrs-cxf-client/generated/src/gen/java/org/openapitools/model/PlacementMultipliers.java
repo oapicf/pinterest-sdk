@@ -17,7 +17,7 @@ public class PlacementMultipliers extends HashMap<String, Double> {
   
 public enum PLACEMENTEnum {
 
-SEARCH(String.valueOf("SEARCH")), BROWSE(String.valueOf("BROWSE"));
+SEARCH(String.valueOf("SEARCH")), BROWSE(String.valueOf("BROWSE")), RELATED_PINS(String.valueOf("RELATED_PINS"));
 
 
     private String value;

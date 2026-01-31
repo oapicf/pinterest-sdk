@@ -25,16 +25,16 @@ class DeletePartnerAssetAccessBodyAccessesInnerTest : ShouldSpec() {
         // uncomment below to create an instance of DeletePartnerAssetAccessBodyAccessesInner
         //val modelInstance = DeletePartnerAssetAccessBodyAccessesInner()
 
-        // to test the property `partnerId` - Unique identifier of a business partner to update asset access to.
-        should("test partnerId") {
-            // uncomment below to test the property
-            //modelInstance.partnerId shouldBe ("TODO")
-        }
-
         // to test the property `assetId` - Unique identifier of the business asset.
         should("test assetId") {
             // uncomment below to test the property
             //modelInstance.assetId shouldBe ("TODO")
+        }
+
+        // to test the property `partnerId` - Unique identifier of a business partner to update asset access to.
+        should("test partnerId") {
+            // uncomment below to test the property
+            //modelInstance.partnerId shouldBe ("TODO")
         }
 
         // to test the property `partnerType` - If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.

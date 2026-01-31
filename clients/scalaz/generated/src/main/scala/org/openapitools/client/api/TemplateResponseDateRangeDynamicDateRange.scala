@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import TemplateResponseDateRangeDynamicDateRange._
 
 case class TemplateResponseDateRangeDynamicDateRange (
-  /* The date range type */
-  `type`: Option[String],
-/* The dynamic range type */
-  range: Option[Range])
+  /* The dynamic range type */
+  range: Option[Range],
+/* The date range type */
+  `type`: Option[String])
 
 object TemplateResponseDateRangeDynamicDateRange {
   import DateTimeCodecs._
@@ -24,6 +24,7 @@ object TemplateResponseDateRangeDynamicDateRange {
   case object QUARTERTODATE extends Range
   case object MONTHTODATE extends Range
   case object LASTMONTH extends Range
+  case object LASTQUARTER extends Range
 
   object Range {
     def toRange(s: String): Option[Range] = s match {
@@ -31,6 +32,7 @@ object TemplateResponseDateRangeDynamicDateRange {
       case "QUARTERTODATE" => Some(QUARTERTODATE)
       case "MONTHTODATE" => Some(MONTHTODATE)
       case "LASTMONTH" => Some(LASTMONTH)
+      case "LASTQUARTER" => Some(LASTQUARTER)
       case _ => None
     }
 
@@ -39,6 +41,7 @@ object TemplateResponseDateRangeDynamicDateRange {
       case QUARTERTODATE => "QUARTERTODATE"
       case MONTHTODATE => "MONTHTODATE"
       case LASTMONTH => "LASTMONTH"
+      case LASTQUARTER => "LASTQUARTER"
     }
   }
 

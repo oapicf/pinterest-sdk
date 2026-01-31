@@ -11,8 +11,8 @@ import org.openapitools.vertxweb.server.model.Language;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdvancedAuctionItem   {
   
-  private String itemId;
   private Country country;
+  private String itemId;
   private Language language;
   private AdvancedAuctionBidOptions bidOptions;
 
@@ -20,20 +20,11 @@ public class AdvancedAuctionItem   {
 
   }
 
-  public AdvancedAuctionItem (String itemId, Country country, Language language, AdvancedAuctionBidOptions bidOptions) {
-    this.itemId = itemId;
+  public AdvancedAuctionItem (Country country, String itemId, Language language, AdvancedAuctionBidOptions bidOptions) {
     this.country = country;
+    this.itemId = itemId;
     this.language = language;
     this.bidOptions = bidOptions;
-  }
-
-    
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
   }
 
     
@@ -43,6 +34,15 @@ public class AdvancedAuctionItem   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+    
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
     
@@ -73,15 +73,15 @@ public class AdvancedAuctionItem   {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(country, advancedAuctionItem.country) &&
+    return Objects.equals(country, advancedAuctionItem.country) &&
+        Objects.equals(itemId, advancedAuctionItem.itemId) &&
         Objects.equals(language, advancedAuctionItem.language) &&
         Objects.equals(bidOptions, advancedAuctionItem.bidOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, bidOptions);
+    return Objects.hash(country, itemId, language, bidOptions);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class AdvancedAuctionItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");

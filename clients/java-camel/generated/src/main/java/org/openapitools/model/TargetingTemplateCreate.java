@@ -28,19 +28,19 @@ import javax.annotation.Generated;
  * TargetingTemplateCreate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateCreate {
-
-  private String name;
 
   private Boolean autoTargetingEnabled = true;
 
-  private TargetingSpec targetingAttributes;
+  @Valid
+  private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
+
+  private String name;
 
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  @Valid
-  private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
+  private TargetingSpec targetingAttributes;
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
@@ -54,26 +54,6 @@ public class TargetingTemplateCreate {
   public TargetingTemplateCreate(String name, TargetingSpec targetingAttributes) {
     this.name = name;
     this.targetingAttributes = targetingAttributes;
-  }
-
-  public TargetingTemplateCreate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Name of targeting template.
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", example = "Gaming", description = "Name of targeting template.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public TargetingTemplateCreate autoTargetingEnabled(Boolean autoTargetingEnabled) {
@@ -94,46 +74,6 @@ public class TargetingTemplateCreate {
 
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-    return this;
-  }
-
-  /**
-   * Get targetingAttributes
-   * @return targetingAttributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
-  }
-
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-  }
-
-  public TargetingTemplateCreate placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-  /**
-   * Get placementGroup
-   * @return placementGroup
-   */
-  @Valid 
-  @Schema(name = "placement_group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
   public TargetingTemplateCreate keywords(List<@Valid TargetingTemplateKeyword> keywords) {
@@ -162,6 +102,66 @@ public class TargetingTemplateCreate {
 
   public void setKeywords(List<@Valid TargetingTemplateKeyword> keywords) {
     this.keywords = keywords;
+  }
+
+  public TargetingTemplateCreate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name of targeting template.
+   * @return name
+   */
+  @NotNull 
+  @Schema(name = "name", example = "Gaming", description = "Name of targeting template.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public TargetingTemplateCreate placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+  /**
+   * Get placementGroup
+   * @return placementGroup
+   */
+  @Valid 
+  @Schema(name = "placement_group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+  }
+
+  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+    return this;
+  }
+
+  /**
+   * Get targetingAttributes
+   * @return targetingAttributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
+  }
+
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
   public TargetingTemplateCreate trackingUrls(TrackingUrls trackingUrls) {
@@ -193,11 +193,11 @@ public class TargetingTemplateCreate {
       return false;
     }
     TargetingTemplateCreate targetingTemplateCreate = (TargetingTemplateCreate) o;
-    return Objects.equals(this.name, targetingTemplateCreate.name) &&
-        Objects.equals(this.autoTargetingEnabled, targetingTemplateCreate.autoTargetingEnabled) &&
-        Objects.equals(this.targetingAttributes, targetingTemplateCreate.targetingAttributes) &&
-        Objects.equals(this.placementGroup, targetingTemplateCreate.placementGroup) &&
+    return Objects.equals(this.autoTargetingEnabled, targetingTemplateCreate.autoTargetingEnabled) &&
         Objects.equals(this.keywords, targetingTemplateCreate.keywords) &&
+        Objects.equals(this.name, targetingTemplateCreate.name) &&
+        Objects.equals(this.placementGroup, targetingTemplateCreate.placementGroup) &&
+        Objects.equals(this.targetingAttributes, targetingTemplateCreate.targetingAttributes) &&
         equalsNullable(this.trackingUrls, targetingTemplateCreate.trackingUrls);
   }
 
@@ -207,7 +207,7 @@ public class TargetingTemplateCreate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, hashCodeNullable(trackingUrls));
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, hashCodeNullable(trackingUrls));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,11 +221,11 @@ public class TargetingTemplateCreate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateCreate {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("}");
     return sb.toString();

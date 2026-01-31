@@ -6,8 +6,8 @@ Array with metrics, status, and pin id for the requested metric
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metrics** | **{ [key: string]: number; }** | The metric name and daily value for each requested metric | [optional] [default to undefined]
 **data_status** | [**{ [key: string]: DataStatus; }**](DataStatus.md) |  | [optional] [default to undefined]
+**metrics** | **{ [key: string]: number; }** | The metric name and daily value for each requested metric | [optional] [default to undefined]
 **pin_id** | **string** | The pin id | [optional] [default to undefined]
 
 ## Example
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { TopVideoPinsAnalyticsResponsePinsInner } from './api';
 
 const instance: TopVideoPinsAnalyticsResponsePinsInner = {
-    metrics,
     data_status,
+    metrics,
     pin_id,
 };
 ```

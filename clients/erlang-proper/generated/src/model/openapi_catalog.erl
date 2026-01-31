@@ -12,8 +12,8 @@
   [ {'created_at', datetime() }
   | {'id', binary() }
   | {'updated_at', datetime() }
-  | {'name', binary() }
   | {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  | {'name', binary() }
   ].
 
 
@@ -24,8 +24,8 @@ openapi_catalog(Fields) ->
   Default = [ {'created_at', datetime() }
             , {'id', binary() }
             , {'updated_at', datetime() }
-            , {'name', binary() }
             , {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

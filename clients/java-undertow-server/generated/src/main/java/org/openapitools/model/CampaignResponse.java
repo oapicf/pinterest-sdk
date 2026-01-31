@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CampaignBidOptions;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
@@ -26,26 +27,29 @@ import org.openapitools.model.TrackingUrls;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignResponse   {
   
   private String id;
   private String adAccountId;
-  private String name;
-  private EntityStatus status;
-  private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
-  private String orderLineId;
-  private TrackingUrls trackingUrls;
-  private Integer startTime;
   private Integer endTime;
+  private Boolean isAutomatedCampaign;
   private Boolean isFlexibleDailyBudgets;
-  private ObjectiveType objectiveType;
+  private Integer lifetimeSpendCap;
+  private String name;
+  private String orderLineId;
+  private Integer startTime;
+  private EntityStatus status;
+  private TrackingUrls trackingUrls;
+  private CampaignBidOptions bidOptions;
   private Integer createdTime;
-  private Integer updatedTime;
-  private String type;
   private Boolean isCampaignBudgetOptimization;
+  private Boolean isPerformancePlus;
+  private ObjectiveType objectiveType;
   private CampaignSummaryStatus summaryStatus;
+  private String type;
+  private Integer updatedTime;
 
   /**
    * Campaign ID.
@@ -84,38 +88,75 @@ public class CampaignResponse   {
   }
 
   /**
-   * Campaign name.
+   * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
    */
-  public CampaignResponse name(String name) {
-    this.name = name;
+  public CampaignResponse dailySpendCap(Integer dailySpendCap) {
+    this.dailySpendCap = dailySpendCap;
     return this;
   }
 
   
-  @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
+  @JsonProperty("daily_spend_cap")
+  public Integer getDailySpendCap() {
+    return dailySpendCap;
   }
-  public void setName(String name) {
-    this.name = name;
+  public void setDailySpendCap(Integer dailySpendCap) {
+    this.dailySpendCap = dailySpendCap;
   }
 
   /**
+   * Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
    */
-  public CampaignResponse status(EntityStatus status) {
-    this.status = status;
+  public CampaignResponse endTime(Integer endTime) {
+    this.endTime = endTime;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "1644023526", value = "Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.")
+  @JsonProperty("end_time")
+  public Integer getEndTime() {
+    return endTime;
   }
-  public void setStatus(EntityStatus status) {
-    this.status = status;
+  public void setEndTime(Integer endTime) {
+    this.endTime = endTime;
+  }
+
+  /**
+   * Specifies whether the campaign was created in the automated campaign flow
+   */
+  public CampaignResponse isAutomatedCampaign(Boolean isAutomatedCampaign) {
+    this.isAutomatedCampaign = isAutomatedCampaign;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Specifies whether the campaign was created in the automated campaign flow")
+  @JsonProperty("is_automated_campaign")
+  public Boolean getIsAutomatedCampaign() {
+    return isAutomatedCampaign;
+  }
+  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
+    this.isAutomatedCampaign = isAutomatedCampaign;
+  }
+
+  /**
+   * Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+   */
+  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".")
+  @JsonProperty("is_flexible_daily_budgets")
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
+  }
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
   /**
@@ -137,21 +178,21 @@ public class CampaignResponse   {
   }
 
   /**
-   * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+   * Campaign name.
    */
-  public CampaignResponse dailySpendCap(Integer dailySpendCap) {
-    this.dailySpendCap = dailySpendCap;
+  public CampaignResponse name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
-  @JsonProperty("daily_spend_cap")
-  public Integer getDailySpendCap() {
-    return dailySpendCap;
+  @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setDailySpendCap(Integer dailySpendCap) {
-    this.dailySpendCap = dailySpendCap;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -173,6 +214,41 @@ public class CampaignResponse   {
   }
 
   /**
+   * Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+   */
+  public CampaignResponse startTime(Integer startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1580865126", value = "Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.")
+  @JsonProperty("start_time")
+  public Integer getStartTime() {
+    return startTime;
+  }
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+  /**
+   */
+  public CampaignResponse status(EntityStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
+  }
+  public void setStatus(EntityStatus status) {
+    this.status = status;
+  }
+
+  /**
    */
   public CampaignResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
@@ -190,74 +266,20 @@ public class CampaignResponse   {
   }
 
   /**
-   * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
    */
-  public CampaignResponse startTime(Integer startTime) {
-    this.startTime = startTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
-  @JsonProperty("start_time")
-  public Integer getStartTime() {
-    return startTime;
-  }
-  public void setStartTime(Integer startTime) {
-    this.startTime = startTime;
-  }
-
-  /**
-   * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-   */
-  public CampaignResponse endTime(Integer endTime) {
-    this.endTime = endTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
-  @JsonProperty("end_time")
-  public Integer getEndTime() {
-    return endTime;
-  }
-  public void setEndTime(Integer endTime) {
-    this.endTime = endTime;
-  }
-
-  /**
-   * Determine if a campaign has flexible daily budgets setup.
-   */
-  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
-  @JsonProperty("is_flexible_daily_budgets")
-  public Boolean getIsFlexibleDailyBudgets() {
-    return isFlexibleDailyBudgets;
-  }
-  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-  }
-
-  /**
-   */
-  public CampaignResponse objectiveType(ObjectiveType objectiveType) {
-    this.objectiveType = objectiveType;
+  public CampaignResponse bidOptions(CampaignBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
-    return objectiveType;
+  @JsonProperty("bid_options")
+  public CampaignBidOptions getBidOptions() {
+    return bidOptions;
   }
-  public void setObjectiveType(ObjectiveType objectiveType) {
-    this.objectiveType = objectiveType;
+  public void setBidOptions(CampaignBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
   }
 
   /**
@@ -279,21 +301,73 @@ public class CampaignResponse   {
   }
 
   /**
-   * UTC timestamp. Last update time.
+   * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
    */
-  public CampaignResponse updatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
+  public CampaignResponse isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
     return this;
   }
 
   
-  @ApiModelProperty(example = "1432744744", value = "UTC timestamp. Last update time.")
-  @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
-    return updatedTime;
+  @ApiModelProperty(example = "true", value = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
+  @JsonProperty("is_campaign_budget_optimization")
+  public Boolean getIsCampaignBudgetOptimization() {
+    return isCampaignBudgetOptimization;
   }
-  public void setUpdatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
+  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+  }
+
+  /**
+   * Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.
+   */
+  public CampaignResponse isPerformancePlus(Boolean isPerformancePlus) {
+    this.isPerformancePlus = isPerformancePlus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.")
+  @JsonProperty("is_performance_plus")
+  public Boolean getIsPerformancePlus() {
+    return isPerformancePlus;
+  }
+  public void setIsPerformancePlus(Boolean isPerformancePlus) {
+    this.isPerformancePlus = isPerformancePlus;
+  }
+
+  /**
+   */
+  public CampaignResponse objectiveType(ObjectiveType objectiveType) {
+    this.objectiveType = objectiveType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("objective_type")
+  public ObjectiveType getObjectiveType() {
+    return objectiveType;
+  }
+  public void setObjectiveType(ObjectiveType objectiveType) {
+    this.objectiveType = objectiveType;
+  }
+
+  /**
+   */
+  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("summary_status")
+  public CampaignSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
   }
 
   /**
@@ -315,38 +389,21 @@ public class CampaignResponse   {
   }
 
   /**
-   * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+   * UTC timestamp. Last update time.
    */
-  public CampaignResponse isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
-    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+  public CampaignResponse updatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
     return this;
   }
 
   
-  @ApiModelProperty(example = "true", value = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
-  @JsonProperty("is_campaign_budget_optimization")
-  public Boolean getIsCampaignBudgetOptimization() {
-    return isCampaignBudgetOptimization;
+  @ApiModelProperty(example = "1432744744", value = "UTC timestamp. Last update time.")
+  @JsonProperty("updated_time")
+  public Integer getUpdatedTime() {
+    return updatedTime;
   }
-  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
-    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
-  }
-
-  /**
-   */
-  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setUpdatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
   }
 
 
@@ -361,26 +418,29 @@ public class CampaignResponse   {
     CampaignResponse campaignResponse = (CampaignResponse) o;
     return Objects.equals(id, campaignResponse.id) &&
         Objects.equals(adAccountId, campaignResponse.adAccountId) &&
-        Objects.equals(name, campaignResponse.name) &&
-        Objects.equals(status, campaignResponse.status) &&
-        Objects.equals(lifetimeSpendCap, campaignResponse.lifetimeSpendCap) &&
         Objects.equals(dailySpendCap, campaignResponse.dailySpendCap) &&
-        Objects.equals(orderLineId, campaignResponse.orderLineId) &&
-        Objects.equals(trackingUrls, campaignResponse.trackingUrls) &&
-        Objects.equals(startTime, campaignResponse.startTime) &&
         Objects.equals(endTime, campaignResponse.endTime) &&
+        Objects.equals(isAutomatedCampaign, campaignResponse.isAutomatedCampaign) &&
         Objects.equals(isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
-        Objects.equals(objectiveType, campaignResponse.objectiveType) &&
+        Objects.equals(lifetimeSpendCap, campaignResponse.lifetimeSpendCap) &&
+        Objects.equals(name, campaignResponse.name) &&
+        Objects.equals(orderLineId, campaignResponse.orderLineId) &&
+        Objects.equals(startTime, campaignResponse.startTime) &&
+        Objects.equals(status, campaignResponse.status) &&
+        Objects.equals(trackingUrls, campaignResponse.trackingUrls) &&
+        Objects.equals(bidOptions, campaignResponse.bidOptions) &&
         Objects.equals(createdTime, campaignResponse.createdTime) &&
-        Objects.equals(updatedTime, campaignResponse.updatedTime) &&
-        Objects.equals(type, campaignResponse.type) &&
         Objects.equals(isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization) &&
-        Objects.equals(summaryStatus, campaignResponse.summaryStatus);
+        Objects.equals(isPerformancePlus, campaignResponse.isPerformancePlus) &&
+        Objects.equals(objectiveType, campaignResponse.objectiveType) &&
+        Objects.equals(summaryStatus, campaignResponse.summaryStatus) &&
+        Objects.equals(type, campaignResponse.type) &&
+        Objects.equals(updatedTime, campaignResponse.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, objectiveType, createdTime, updatedTime, type, isCampaignBudgetOptimization, summaryStatus);
+    return Objects.hash(id, adAccountId, dailySpendCap, endTime, isAutomatedCampaign, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls, bidOptions, createdTime, isCampaignBudgetOptimization, isPerformancePlus, objectiveType, summaryStatus, type, updatedTime);
   }
 
   @Override
@@ -390,21 +450,24 @@ public class CampaignResponse   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
     sb.append("    dailySpendCap: ").append(toIndentedString(dailySpendCap)).append("\n");
-    sb.append("    orderLineId: ").append(toIndentedString(orderLineId)).append("\n");
-    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
-    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
+    sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    orderLineId: ").append(toIndentedString(orderLineId)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
+    sb.append("    isPerformancePlus: ").append(toIndentedString(isPerformancePlus)).append("\n");
+    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

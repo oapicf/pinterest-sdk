@@ -31,7 +31,7 @@ class UpdatePartnerAssetsResultTest : ShouldSpec() {
             //modelInstance.assetId shouldBe ("TODO")
         }
 
-        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
         should("test assetType") {
             // uncomment below to test the property
             //modelInstance.assetType shouldBe ("TODO")

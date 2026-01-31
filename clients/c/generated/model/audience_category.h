@@ -20,22 +20,22 @@ typedef struct audience_category_t audience_category_t;
 
 
 typedef struct audience_category_t {
+    char *id; // string
+    double index; //numeric
     char *key; // string
     char *name; // string
     double ratio; //numeric
-    double index; //numeric
-    char *id; // string
     list_t *subcategories; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_category_t;
 
 __attribute__((deprecated)) audience_category_t *audience_category_create(
+    char *id,
+    double index,
     char *key,
     char *name,
     double ratio,
-    double index,
-    char *id,
     list_t *subcategories
 );
 

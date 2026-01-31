@@ -22,15 +22,15 @@ create_asset_invites_request_item_t* instantiate_create_asset_invites_request_it
   create_asset_invites_request_item_t* create_asset_invites_request_item = NULL;
   if (include_optional) {
     create_asset_invites_request_item = create_asset_invites_request_item_create(
+      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
       "1234567890123",
-      pinterest_rest_api_create_asset_invites_request_item__"MEMBER_INVITE",
-      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]}
+      pinterest_rest_api_create_asset_invites_request_item__"MEMBER_INVITE"
     );
   } else {
     create_asset_invites_request_item = create_asset_invites_request_item_create(
+      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
       "1234567890123",
-      pinterest_rest_api_create_asset_invites_request_item__"MEMBER_INVITE",
-      {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]}
+      pinterest_rest_api_create_asset_invites_request_item__"MEMBER_INVITE"
     );
   }
 

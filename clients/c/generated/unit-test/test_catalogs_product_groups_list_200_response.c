@@ -22,13 +22,13 @@ catalogs_product_groups_list_200_response_t* instantiate_catalogs_product_groups
   catalogs_product_groups_list_200_response_t* catalogs_product_groups_list_200_response = NULL;
   if (include_optional) {
     catalogs_product_groups_list_200_response = catalogs_product_groups_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     catalogs_product_groups_list_200_response = catalogs_product_groups_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

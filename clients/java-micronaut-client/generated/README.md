@@ -39,20 +39,32 @@ Description on how to create Apis is given inside individual api guides:
 * [BusinessAccessInviteApi](docs/apis/BusinessAccessInviteApi.md)
 * [BusinessAccessRelationshipsApi](docs/apis/BusinessAccessRelationshipsApi.md)
 * [CampaignsApi](docs/apis/CampaignsApi.md)
+* [CatalogFeedsApi](docs/apis/CatalogFeedsApi.md)
+* [CatalogItemsApi](docs/apis/CatalogItemsApi.md)
+* [CatalogProductGroupsApi](docs/apis/CatalogProductGroupsApi.md)
+* [CatalogReportsApi](docs/apis/CatalogReportsApi.md)
 * [CatalogsApi](docs/apis/CatalogsApi.md)
+* [ConversionEqsApi](docs/apis/ConversionEqsApi.md)
 * [ConversionEventsApi](docs/apis/ConversionEventsApi.md)
 * [ConversionTagsApi](docs/apis/ConversionTagsApi.md)
+* [ConversionsApi](docs/apis/ConversionsApi.md)
+* [CustomerListUploadsApi](docs/apis/CustomerListUploadsApi.md)
 * [CustomerListsApi](docs/apis/CustomerListsApi.md)
 * [IntegrationsApi](docs/apis/IntegrationsApi.md)
 * [KeywordsApi](docs/apis/KeywordsApi.md)
+* [LabelsApi](docs/apis/LabelsApi.md)
 * [LeadAdsApi](docs/apis/LeadAdsApi.md)
 * [LeadFormsApi](docs/apis/LeadFormsApi.md)
 * [LeadsExportApi](docs/apis/LeadsExportApi.md)
 * [MediaApi](docs/apis/MediaApi.md)
+* [MsotEventsApi](docs/apis/MsotEventsApi.md)
+* [NotificationApi](docs/apis/NotificationApi.md)
 * [OauthApi](docs/apis/OauthApi.md)
 * [OrderLinesApi](docs/apis/OrderLinesApi.md)
 * [PinsApi](docs/apis/PinsApi.md)
+* [ProductCategoriesApi](docs/apis/ProductCategoriesApi.md)
 * [ProductGroupPromotionsApi](docs/apis/ProductGroupPromotionsApi.md)
+* [PromotionsApi](docs/apis/PromotionsApi.md)
 * [ResourcesApi](docs/apis/ResourcesApi.md)
 * [SearchApi](docs/apis/SearchApi.md)
 * [TargetingTemplateApi](docs/apis/TargetingTemplateApi.md)
@@ -67,6 +79,18 @@ Details on auth methods can be found in the [auth.md](doc/auth.md).
 
 ## Author
 
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com

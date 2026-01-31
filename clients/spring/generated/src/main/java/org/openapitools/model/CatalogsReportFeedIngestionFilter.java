@@ -24,8 +24,12 @@ import javax.annotation.Generated;
  * CatalogsReportFeedIngestionFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportParametersReport {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportParametersReport, CatalogsHotelReportStatsParametersReport {
+
+  private String feedId;
+
+  private @Nullable String processingResultId;
 
   /**
    * Gets or Sets reportType
@@ -62,10 +66,6 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
 
   private ReportTypeEnum reportType;
 
-  private String feedId;
-
-  private @Nullable String processingResultId;
-
   public CatalogsReportFeedIngestionFilter() {
     super();
   }
@@ -73,28 +73,8 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
   /**
    * Constructor with only required parameters
    */
-  public CatalogsReportFeedIngestionFilter(ReportTypeEnum reportType, String feedId) {
-    this.reportType = reportType;
+  public CatalogsReportFeedIngestionFilter(String feedId, ReportTypeEnum reportType) {
     this.feedId = feedId;
-  }
-
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  /**
-   * Get reportType
-   * @return reportType
-   */
-  @NotNull 
-  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
@@ -138,6 +118,26 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
     this.processingResultId = processingResultId;
   }
 
+  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  /**
+   * Get reportType
+   * @return reportType
+   */
+  @NotNull 
+  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -147,23 +147,23 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

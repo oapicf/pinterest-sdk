@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductCategoriesMetricsHighlights"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductCategoriesMetricsHighlights"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  InnerProductCategoriesMetricsHighlights = openapi_server.resourceTypes.InnerProductCategoriesMetricsHighlights
+}
+resourceTypes {
+
+  ProductCategoriesMetricsHighlights {
+    title = ProductCategoriesMetricsHighlights
+    description = ProductCategoriesMetricsHighlights
+    derivedFrom = Root
+    properties {
+        engagement {
+          type = InnerProductCategoriesMetricsHighlights
+          description = "Engagement metric value"
+          optional = false
+        }
+        outbound_clicks {
+          type = InnerProductCategoriesMetricsHighlights
+          description = "Number of outbound clicks"
+          optional = false
+        }
+        pin_saves {
+          type = InnerProductCategoriesMetricsHighlights
+          description = "Number of pin saves"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductCategoriesMetricsHighlights {
+    title = ProductCategoriesMetricsHighlights
+    description = ProductCategoriesMetricsHighlights
+    implements = openapi_server.resourceTypes.ProductCategoriesMetricsHighlights
+
+  }
+}

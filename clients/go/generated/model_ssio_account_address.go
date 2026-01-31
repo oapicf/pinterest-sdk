@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &SSIOAccountAddress{}
 
 // SSIOAccountAddress struct for SSIOAccountAddress
 type SSIOAccountAddress struct {
-	// Address display
-	Display *string `json:"display,omitempty"`
-	// Purpose for which the address is used, usually Billing or Businness
-	Purpose *string `json:"purpose,omitempty"`
 	// Salesforce id for address
 	AddressId *string `json:"address_id,omitempty"`
+	// Address display
+	Display *string `json:"display,omitempty"`
 	// Legal entity for this insertion order
 	OrderLegalEntity *string `json:"order_legal_entity,omitempty"`
+	// Purpose for which the address is used, usually Billing or Businness
+	Purpose *string `json:"purpose,omitempty"`
 }
 
 // NewSSIOAccountAddress instantiates a new SSIOAccountAddress object
@@ -45,70 +45,6 @@ func NewSSIOAccountAddress() *SSIOAccountAddress {
 func NewSSIOAccountAddressWithDefaults() *SSIOAccountAddress {
 	this := SSIOAccountAddress{}
 	return &this
-}
-
-// GetDisplay returns the Display field value if set, zero value otherwise.
-func (o *SSIOAccountAddress) GetDisplay() string {
-	if o == nil || IsNil(o.Display) {
-		var ret string
-		return ret
-	}
-	return *o.Display
-}
-
-// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOAccountAddress) GetDisplayOk() (*string, bool) {
-	if o == nil || IsNil(o.Display) {
-		return nil, false
-	}
-	return o.Display, true
-}
-
-// HasDisplay returns a boolean if a field has been set.
-func (o *SSIOAccountAddress) HasDisplay() bool {
-	if o != nil && !IsNil(o.Display) {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplay gets a reference to the given string and assigns it to the Display field.
-func (o *SSIOAccountAddress) SetDisplay(v string) {
-	o.Display = &v
-}
-
-// GetPurpose returns the Purpose field value if set, zero value otherwise.
-func (o *SSIOAccountAddress) GetPurpose() string {
-	if o == nil || IsNil(o.Purpose) {
-		var ret string
-		return ret
-	}
-	return *o.Purpose
-}
-
-// GetPurposeOk returns a tuple with the Purpose field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOAccountAddress) GetPurposeOk() (*string, bool) {
-	if o == nil || IsNil(o.Purpose) {
-		return nil, false
-	}
-	return o.Purpose, true
-}
-
-// HasPurpose returns a boolean if a field has been set.
-func (o *SSIOAccountAddress) HasPurpose() bool {
-	if o != nil && !IsNil(o.Purpose) {
-		return true
-	}
-
-	return false
-}
-
-// SetPurpose gets a reference to the given string and assigns it to the Purpose field.
-func (o *SSIOAccountAddress) SetPurpose(v string) {
-	o.Purpose = &v
 }
 
 // GetAddressId returns the AddressId field value if set, zero value otherwise.
@@ -143,6 +79,38 @@ func (o *SSIOAccountAddress) SetAddressId(v string) {
 	o.AddressId = &v
 }
 
+// GetDisplay returns the Display field value if set, zero value otherwise.
+func (o *SSIOAccountAddress) GetDisplay() string {
+	if o == nil || IsNil(o.Display) {
+		var ret string
+		return ret
+	}
+	return *o.Display
+}
+
+// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOAccountAddress) GetDisplayOk() (*string, bool) {
+	if o == nil || IsNil(o.Display) {
+		return nil, false
+	}
+	return o.Display, true
+}
+
+// HasDisplay returns a boolean if a field has been set.
+func (o *SSIOAccountAddress) HasDisplay() bool {
+	if o != nil && !IsNil(o.Display) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplay gets a reference to the given string and assigns it to the Display field.
+func (o *SSIOAccountAddress) SetDisplay(v string) {
+	o.Display = &v
+}
+
 // GetOrderLegalEntity returns the OrderLegalEntity field value if set, zero value otherwise.
 func (o *SSIOAccountAddress) GetOrderLegalEntity() string {
 	if o == nil || IsNil(o.OrderLegalEntity) {
@@ -175,6 +143,38 @@ func (o *SSIOAccountAddress) SetOrderLegalEntity(v string) {
 	o.OrderLegalEntity = &v
 }
 
+// GetPurpose returns the Purpose field value if set, zero value otherwise.
+func (o *SSIOAccountAddress) GetPurpose() string {
+	if o == nil || IsNil(o.Purpose) {
+		var ret string
+		return ret
+	}
+	return *o.Purpose
+}
+
+// GetPurposeOk returns a tuple with the Purpose field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOAccountAddress) GetPurposeOk() (*string, bool) {
+	if o == nil || IsNil(o.Purpose) {
+		return nil, false
+	}
+	return o.Purpose, true
+}
+
+// HasPurpose returns a boolean if a field has been set.
+func (o *SSIOAccountAddress) HasPurpose() bool {
+	if o != nil && !IsNil(o.Purpose) {
+		return true
+	}
+
+	return false
+}
+
+// SetPurpose gets a reference to the given string and assigns it to the Purpose field.
+func (o *SSIOAccountAddress) SetPurpose(v string) {
+	o.Purpose = &v
+}
+
 func (o SSIOAccountAddress) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -185,17 +185,17 @@ func (o SSIOAccountAddress) MarshalJSON() ([]byte, error) {
 
 func (o SSIOAccountAddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Display) {
-		toSerialize["display"] = o.Display
-	}
-	if !IsNil(o.Purpose) {
-		toSerialize["purpose"] = o.Purpose
-	}
 	if !IsNil(o.AddressId) {
 		toSerialize["address_id"] = o.AddressId
 	}
+	if !IsNil(o.Display) {
+		toSerialize["display"] = o.Display
+	}
 	if !IsNil(o.OrderLegalEntity) {
 		toSerialize["order_legal_entity"] = o.OrderLegalEntity
+	}
+	if !IsNil(o.Purpose) {
+		toSerialize["purpose"] = o.Purpose
 	}
 	return toSerialize, nil
 }

@@ -3,15 +3,15 @@ package org.openapitools.client.model
 
 
 case class BusinessAssetPartnersGet200Response (
+    _bookmark: Option[String],
     /* List of partners with permissions to the asset. */
-    _items: List[UserSingleAssetBinding],
-    _bookmark: Option[String]
+    _items: List[UserSingleAssetBinding]
 )
 object BusinessAssetPartnersGet200Response {
-    def toStringBody(var_items: Object, var_bookmark: Object) =
+    def toStringBody(var_bookmark: Object, var_items: Object) =
         s"""
         | {
-        | "items":$var_items,"bookmark":$var_bookmark
+        | "bookmark":$var_bookmark,"items":$var_items
         | }
         """.stripMargin
 }

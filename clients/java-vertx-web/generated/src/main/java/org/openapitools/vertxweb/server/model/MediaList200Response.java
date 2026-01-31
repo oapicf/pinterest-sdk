@@ -7,29 +7,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.MediaUploadDetails;
+import org.openapitools.vertxweb.server.model.Media;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MediaList200Response   {
   
-  private List<MediaUploadDetails> items = new ArrayList<>();
   private String bookmark;
+  private List<Media> items = new ArrayList<>();
 
   public MediaList200Response () {
 
   }
 
-  public MediaList200Response (List<MediaUploadDetails> items, String bookmark) {
-    this.items = items;
+  public MediaList200Response (String bookmark, List<Media> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<MediaUploadDetails> getItems() {
-    return items;
-  }
-  public void setItems(List<MediaUploadDetails> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class MediaList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<Media> getItems() {
+    return items;
+  }
+  public void setItems(List<Media> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class MediaList200Response   {
       return false;
     }
     MediaList200Response mediaList200Response = (MediaList200Response) o;
-    return Objects.equals(items, mediaList200Response.items) &&
-        Objects.equals(bookmark, mediaList200Response.bookmark);
+    return Objects.equals(bookmark, mediaList200Response.bookmark) &&
+        Objects.equals(items, mediaList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class MediaList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MediaList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

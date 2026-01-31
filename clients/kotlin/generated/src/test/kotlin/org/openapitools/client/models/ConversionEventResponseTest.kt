@@ -26,6 +26,12 @@ class ConversionEventResponseTest : ShouldSpec() {
         // uncomment below to create an instance of ConversionEventResponse
         //val modelInstance = ConversionEventResponse()
 
+        // to test the property `adAccountId` - Id of the ad account.
+        should("test adAccountId") {
+            // uncomment below to test the property
+            //modelInstance.adAccountId shouldBe ("TODO")
+        }
+
         // to test the property `conversionEvent`
         should("test conversionEvent") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class ConversionEventResponseTest : ShouldSpec() {
         should("test conversionTagId") {
             // uncomment below to test the property
             //modelInstance.conversionTagId shouldBe ("TODO")
-        }
-
-        // to test the property `adAccountId` - Id of the ad account.
-        should("test adAccountId") {
-            // uncomment below to test the property
-            //modelInstance.adAccountId shouldBe ("TODO")
         }
 
         // to test the property `createdTime` - Creation date in epoch format.

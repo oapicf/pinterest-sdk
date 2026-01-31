@@ -33,6 +33,8 @@ import java.util.Objects;
 
 public class CatalogsCreativeAssetsBatchItem   {
   
+  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+
   private String creativeAssetsId;
 
 
@@ -68,7 +70,24 @@ public enum OperationEnum {
 
   private OperationEnum operation;
 
-  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+  /**
+   **/
+  public CatalogsCreativeAssetsBatchItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
 
   /**
    * The catalog creative assets id in the merchant namespace
@@ -109,25 +128,6 @@ public enum OperationEnum {
   }
 
 
-  /**
-   **/
-  public CatalogsCreativeAssetsBatchItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  @NotNull
-  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -138,14 +138,14 @@ public enum OperationEnum {
       return false;
     }
     CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem = (CatalogsCreativeAssetsBatchItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -153,9 +153,9 @@ public enum OperationEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

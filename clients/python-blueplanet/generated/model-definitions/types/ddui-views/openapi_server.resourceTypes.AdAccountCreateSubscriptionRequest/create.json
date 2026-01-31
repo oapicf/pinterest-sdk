@@ -1,0 +1,21 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "lead_form_id" },
+      {"model": "partner_access_token" },
+      {"model": "partner_metadata" },
+      {"model": "partner_refresh_token" },
+      {"model": "webhook_url" },
+    ]
+  }]
+}

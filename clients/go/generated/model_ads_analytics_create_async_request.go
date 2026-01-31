@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,28 +22,30 @@ var _ MappedNullable = &AdsAnalyticsCreateAsyncRequest{}
 
 // AdsAnalyticsCreateAsyncRequest struct for AdsAnalyticsCreateAsyncRequest
 type AdsAnalyticsCreateAsyncRequest struct {
-	// Metric report start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
-	// Metric report end date (UTC). Format: YYYY-MM-DD
-	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
-	// TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-	Granularity Granularity `json:"granularity"`
-	// Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-	ClickWindowDays *ConversionAttributionWindowDays `json:"click_window_days,omitempty"`
-	// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-	EngagementWindowDays *ConversionAttributionWindowDays `json:"engagement_window_days,omitempty"`
-	// Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-	ViewWindowDays *ConversionAttributionWindowDays `json:"view_window_days,omitempty"`
-	// The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-	ConversionReportTime *ConversionReportTimeType `json:"conversion_report_time,omitempty"`
 	// List of types of attribution for the conversion report
 	AttributionTypes []ConversionReportAttributionType `json:"attribution_types,omitempty"`
+	// Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+	ClickWindowDays *ConversionAttributionWindowDays `json:"click_window_days,omitempty"`
+	// The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+	ConversionReportTime *ConversionReportTimeType `json:"conversion_report_time,omitempty"`
+	// Metric report end date (UTC). Format: YYYY-MM-DD
+	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+	EngagementWindowDays *ConversionAttributionWindowDays `json:"engagement_window_days,omitempty"`
+	// TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+	Granularity Granularity `json:"granularity"`
+	// Metric report start date (UTC). Format: YYYY-MM-DD
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+	ViewWindowDays *ConversionAttributionWindowDays `json:"view_window_days,omitempty"`
 	// List of campaign ids
 	CampaignIds []string `json:"campaign_ids,omitempty"`
 	// List of status values for filtering
 	CampaignStatuses []CampaignSummaryStatus `json:"campaign_statuses,omitempty"`
 	// List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
 	CampaignObjectiveTypes []ObjectiveType `json:"campaign_objective_types,omitempty"`
+	// Campaign brand label for filtering.
+	CampaignBrandLabel *string `json:"campaign_brand_label,omitempty"`
 	// List of ad group ids
 	AdGroupIds []string `json:"ad_group_ids,omitempty"`
 	// List of values for filtering
@@ -58,22 +60,28 @@ type AdsAnalyticsCreateAsyncRequest struct {
 	ProductGroupStatuses []ProductGroupSummaryStatus `json:"product_group_statuses,omitempty"`
 	// List of product item ids
 	ProductItemIds []string `json:"product_item_ids,omitempty"`
-	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-	TargetingTypes []AdsAnalyticsTargetingType `json:"targeting_types,omitempty"`
+	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+	TargetingTypes []string `json:"targeting_types,omitempty"`
 	// List of metrics filters
 	MetricsFilters []AdsAnalyticsMetricsFilter `json:"metrics_filters,omitempty"`
 	// Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
 	Columns []ReportingColumnAsync `json:"columns"`
-	// Level of the report
-	Level MetricsReportingLevel `json:"level"`
-	// Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-	ReportFormat *DataOutputFormat `json:"report_format,omitempty"`
-	// Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-	PrimarySort *string `json:"primary_sort,omitempty"`
-	// Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
-	StartHour *int32 `json:"start_hour,omitempty"`
+	// Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.
+	CombineTargetingTypes *bool `json:"combine_targeting_types,omitempty"`
+	// List of advertiser-defined custom conversion event metrics to include in the report
+	CustomConversionEventMetrics []AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics `json:"custom_conversion_event_metrics,omitempty"`
 	// Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
 	EndHour *int32 `json:"end_hour,omitempty"`
+	// Level of the report
+	Level MetricsReportingLevel `json:"level"`
+	// Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+	PrimarySort *string `json:"primary_sort,omitempty"`
+	// Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+	ReportFormat *DataOutputFormat `json:"report_format,omitempty"`
+	// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+	ReportingTimezone *ReportingTimeZone `json:"reporting_timezone,omitempty"`
+	// Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+	StartHour *int32 `json:"start_hour,omitempty"`
 }
 
 type _AdsAnalyticsCreateAsyncRequest AdsAnalyticsCreateAsyncRequest
@@ -82,20 +90,22 @@ type _AdsAnalyticsCreateAsyncRequest AdsAnalyticsCreateAsyncRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdsAnalyticsCreateAsyncRequest(startDate string, endDate string, granularity Granularity, columns []ReportingColumnAsync, level MetricsReportingLevel) *AdsAnalyticsCreateAsyncRequest {
+func NewAdsAnalyticsCreateAsyncRequest(endDate string, granularity Granularity, startDate string, columns []ReportingColumnAsync, level MetricsReportingLevel) *AdsAnalyticsCreateAsyncRequest {
 	this := AdsAnalyticsCreateAsyncRequest{}
-	this.StartDate = startDate
-	this.EndDate = endDate
-	this.Granularity = granularity
 	var clickWindowDays ConversionAttributionWindowDays = _30
 	this.ClickWindowDays = &clickWindowDays
-	var engagementWindowDays ConversionAttributionWindowDays = _30
-	this.EngagementWindowDays = &engagementWindowDays
-	var viewWindowDays ConversionAttributionWindowDays = _1
-	this.ViewWindowDays = &viewWindowDays
 	var conversionReportTime ConversionReportTimeType = TIME_OF_AD_ACTION
 	this.ConversionReportTime = &conversionReportTime
+	this.EndDate = endDate
+	var engagementWindowDays ConversionAttributionWindowDays = _30
+	this.EngagementWindowDays = &engagementWindowDays
+	this.Granularity = granularity
+	this.StartDate = startDate
+	var viewWindowDays ConversionAttributionWindowDays = _1
+	this.ViewWindowDays = &viewWindowDays
 	this.Columns = columns
+	var combineTargetingTypes bool = false
+	this.CombineTargetingTypes = &combineTargetingTypes
 	this.Level = level
 	var reportFormat DataOutputFormat = JSON
 	this.ReportFormat = &reportFormat
@@ -109,87 +119,49 @@ func NewAdsAnalyticsCreateAsyncRequestWithDefaults() *AdsAnalyticsCreateAsyncReq
 	this := AdsAnalyticsCreateAsyncRequest{}
 	var clickWindowDays ConversionAttributionWindowDays = _30
 	this.ClickWindowDays = &clickWindowDays
+	var conversionReportTime ConversionReportTimeType = TIME_OF_AD_ACTION
+	this.ConversionReportTime = &conversionReportTime
 	var engagementWindowDays ConversionAttributionWindowDays = _30
 	this.EngagementWindowDays = &engagementWindowDays
 	var viewWindowDays ConversionAttributionWindowDays = _1
 	this.ViewWindowDays = &viewWindowDays
-	var conversionReportTime ConversionReportTimeType = TIME_OF_AD_ACTION
-	this.ConversionReportTime = &conversionReportTime
+	var combineTargetingTypes bool = false
+	this.CombineTargetingTypes = &combineTargetingTypes
 	var reportFormat DataOutputFormat = JSON
 	this.ReportFormat = &reportFormat
 	return &this
 }
 
-// GetStartDate returns the StartDate field value
-func (o *AdsAnalyticsCreateAsyncRequest) GetStartDate() string {
-	if o == nil {
-		var ret string
+// GetAttributionTypes returns the AttributionTypes field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetAttributionTypes() []ConversionReportAttributionType {
+	if o == nil || IsNil(o.AttributionTypes) {
+		var ret []ConversionReportAttributionType
 		return ret
 	}
-
-	return o.StartDate
+	return o.AttributionTypes
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value
+// GetAttributionTypesOk returns a tuple with the AttributionTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetStartDateOk() (*string, bool) {
-	if o == nil {
+func (o *AdsAnalyticsCreateAsyncRequest) GetAttributionTypesOk() ([]ConversionReportAttributionType, bool) {
+	if o == nil || IsNil(o.AttributionTypes) {
 		return nil, false
 	}
-	return &o.StartDate, true
+	return o.AttributionTypes, true
 }
 
-// SetStartDate sets field value
-func (o *AdsAnalyticsCreateAsyncRequest) SetStartDate(v string) {
-	o.StartDate = v
-}
-
-// GetEndDate returns the EndDate field value
-func (o *AdsAnalyticsCreateAsyncRequest) GetEndDate() string {
-	if o == nil {
-		var ret string
-		return ret
+// HasAttributionTypes returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasAttributionTypes() bool {
+	if o != nil && !IsNil(o.AttributionTypes) {
+		return true
 	}
 
-	return o.EndDate
+	return false
 }
 
-// GetEndDateOk returns a tuple with the EndDate field value
-// and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetEndDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EndDate, true
-}
-
-// SetEndDate sets field value
-func (o *AdsAnalyticsCreateAsyncRequest) SetEndDate(v string) {
-	o.EndDate = v
-}
-
-// GetGranularity returns the Granularity field value
-func (o *AdsAnalyticsCreateAsyncRequest) GetGranularity() Granularity {
-	if o == nil {
-		var ret Granularity
-		return ret
-	}
-
-	return o.Granularity
-}
-
-// GetGranularityOk returns a tuple with the Granularity field value
-// and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetGranularityOk() (*Granularity, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Granularity, true
-}
-
-// SetGranularity sets field value
-func (o *AdsAnalyticsCreateAsyncRequest) SetGranularity(v Granularity) {
-	o.Granularity = v
+// SetAttributionTypes gets a reference to the given []ConversionReportAttributionType and assigns it to the AttributionTypes field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetAttributionTypes(v []ConversionReportAttributionType) {
+	o.AttributionTypes = v
 }
 
 // GetClickWindowDays returns the ClickWindowDays field value if set, zero value otherwise.
@@ -224,70 +196,6 @@ func (o *AdsAnalyticsCreateAsyncRequest) SetClickWindowDays(v ConversionAttribut
 	o.ClickWindowDays = &v
 }
 
-// GetEngagementWindowDays returns the EngagementWindowDays field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetEngagementWindowDays() ConversionAttributionWindowDays {
-	if o == nil || IsNil(o.EngagementWindowDays) {
-		var ret ConversionAttributionWindowDays
-		return ret
-	}
-	return *o.EngagementWindowDays
-}
-
-// GetEngagementWindowDaysOk returns a tuple with the EngagementWindowDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetEngagementWindowDaysOk() (*ConversionAttributionWindowDays, bool) {
-	if o == nil || IsNil(o.EngagementWindowDays) {
-		return nil, false
-	}
-	return o.EngagementWindowDays, true
-}
-
-// HasEngagementWindowDays returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) HasEngagementWindowDays() bool {
-	if o != nil && !IsNil(o.EngagementWindowDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetEngagementWindowDays gets a reference to the given ConversionAttributionWindowDays and assigns it to the EngagementWindowDays field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetEngagementWindowDays(v ConversionAttributionWindowDays) {
-	o.EngagementWindowDays = &v
-}
-
-// GetViewWindowDays returns the ViewWindowDays field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetViewWindowDays() ConversionAttributionWindowDays {
-	if o == nil || IsNil(o.ViewWindowDays) {
-		var ret ConversionAttributionWindowDays
-		return ret
-	}
-	return *o.ViewWindowDays
-}
-
-// GetViewWindowDaysOk returns a tuple with the ViewWindowDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetViewWindowDaysOk() (*ConversionAttributionWindowDays, bool) {
-	if o == nil || IsNil(o.ViewWindowDays) {
-		return nil, false
-	}
-	return o.ViewWindowDays, true
-}
-
-// HasViewWindowDays returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) HasViewWindowDays() bool {
-	if o != nil && !IsNil(o.ViewWindowDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetViewWindowDays gets a reference to the given ConversionAttributionWindowDays and assigns it to the ViewWindowDays field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetViewWindowDays(v ConversionAttributionWindowDays) {
-	o.ViewWindowDays = &v
-}
-
 // GetConversionReportTime returns the ConversionReportTime field value if set, zero value otherwise.
 func (o *AdsAnalyticsCreateAsyncRequest) GetConversionReportTime() ConversionReportTimeType {
 	if o == nil || IsNil(o.ConversionReportTime) {
@@ -320,36 +228,140 @@ func (o *AdsAnalyticsCreateAsyncRequest) SetConversionReportTime(v ConversionRep
 	o.ConversionReportTime = &v
 }
 
-// GetAttributionTypes returns the AttributionTypes field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetAttributionTypes() []ConversionReportAttributionType {
-	if o == nil || IsNil(o.AttributionTypes) {
-		var ret []ConversionReportAttributionType
+// GetEndDate returns the EndDate field value
+func (o *AdsAnalyticsCreateAsyncRequest) GetEndDate() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return o.AttributionTypes
+
+	return o.EndDate
 }
 
-// GetAttributionTypesOk returns a tuple with the AttributionTypes field value if set, nil otherwise
+// GetEndDateOk returns a tuple with the EndDate field value
 // and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetAttributionTypesOk() ([]ConversionReportAttributionType, bool) {
-	if o == nil || IsNil(o.AttributionTypes) {
+func (o *AdsAnalyticsCreateAsyncRequest) GetEndDateOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AttributionTypes, true
+	return &o.EndDate, true
 }
 
-// HasAttributionTypes returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) HasAttributionTypes() bool {
-	if o != nil && !IsNil(o.AttributionTypes) {
+// SetEndDate sets field value
+func (o *AdsAnalyticsCreateAsyncRequest) SetEndDate(v string) {
+	o.EndDate = v
+}
+
+// GetEngagementWindowDays returns the EngagementWindowDays field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetEngagementWindowDays() ConversionAttributionWindowDays {
+	if o == nil || IsNil(o.EngagementWindowDays) {
+		var ret ConversionAttributionWindowDays
+		return ret
+	}
+	return *o.EngagementWindowDays
+}
+
+// GetEngagementWindowDaysOk returns a tuple with the EngagementWindowDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetEngagementWindowDaysOk() (*ConversionAttributionWindowDays, bool) {
+	if o == nil || IsNil(o.EngagementWindowDays) {
+		return nil, false
+	}
+	return o.EngagementWindowDays, true
+}
+
+// HasEngagementWindowDays returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasEngagementWindowDays() bool {
+	if o != nil && !IsNil(o.EngagementWindowDays) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributionTypes gets a reference to the given []ConversionReportAttributionType and assigns it to the AttributionTypes field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetAttributionTypes(v []ConversionReportAttributionType) {
-	o.AttributionTypes = v
+// SetEngagementWindowDays gets a reference to the given ConversionAttributionWindowDays and assigns it to the EngagementWindowDays field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetEngagementWindowDays(v ConversionAttributionWindowDays) {
+	o.EngagementWindowDays = &v
+}
+
+// GetGranularity returns the Granularity field value
+func (o *AdsAnalyticsCreateAsyncRequest) GetGranularity() Granularity {
+	if o == nil {
+		var ret Granularity
+		return ret
+	}
+
+	return o.Granularity
+}
+
+// GetGranularityOk returns a tuple with the Granularity field value
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetGranularityOk() (*Granularity, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Granularity, true
+}
+
+// SetGranularity sets field value
+func (o *AdsAnalyticsCreateAsyncRequest) SetGranularity(v Granularity) {
+	o.Granularity = v
+}
+
+// GetStartDate returns the StartDate field value
+func (o *AdsAnalyticsCreateAsyncRequest) GetStartDate() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetStartDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.StartDate, true
+}
+
+// SetStartDate sets field value
+func (o *AdsAnalyticsCreateAsyncRequest) SetStartDate(v string) {
+	o.StartDate = v
+}
+
+// GetViewWindowDays returns the ViewWindowDays field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetViewWindowDays() ConversionAttributionWindowDays {
+	if o == nil || IsNil(o.ViewWindowDays) {
+		var ret ConversionAttributionWindowDays
+		return ret
+	}
+	return *o.ViewWindowDays
+}
+
+// GetViewWindowDaysOk returns a tuple with the ViewWindowDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetViewWindowDaysOk() (*ConversionAttributionWindowDays, bool) {
+	if o == nil || IsNil(o.ViewWindowDays) {
+		return nil, false
+	}
+	return o.ViewWindowDays, true
+}
+
+// HasViewWindowDays returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasViewWindowDays() bool {
+	if o != nil && !IsNil(o.ViewWindowDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetViewWindowDays gets a reference to the given ConversionAttributionWindowDays and assigns it to the ViewWindowDays field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetViewWindowDays(v ConversionAttributionWindowDays) {
+	o.ViewWindowDays = &v
 }
 
 // GetCampaignIds returns the CampaignIds field value if set, zero value otherwise.
@@ -446,6 +458,38 @@ func (o *AdsAnalyticsCreateAsyncRequest) HasCampaignObjectiveTypes() bool {
 // SetCampaignObjectiveTypes gets a reference to the given []ObjectiveType and assigns it to the CampaignObjectiveTypes field.
 func (o *AdsAnalyticsCreateAsyncRequest) SetCampaignObjectiveTypes(v []ObjectiveType) {
 	o.CampaignObjectiveTypes = v
+}
+
+// GetCampaignBrandLabel returns the CampaignBrandLabel field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetCampaignBrandLabel() string {
+	if o == nil || IsNil(o.CampaignBrandLabel) {
+		var ret string
+		return ret
+	}
+	return *o.CampaignBrandLabel
+}
+
+// GetCampaignBrandLabelOk returns a tuple with the CampaignBrandLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetCampaignBrandLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.CampaignBrandLabel) {
+		return nil, false
+	}
+	return o.CampaignBrandLabel, true
+}
+
+// HasCampaignBrandLabel returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasCampaignBrandLabel() bool {
+	if o != nil && !IsNil(o.CampaignBrandLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetCampaignBrandLabel gets a reference to the given string and assigns it to the CampaignBrandLabel field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetCampaignBrandLabel(v string) {
+	o.CampaignBrandLabel = &v
 }
 
 // GetAdGroupIds returns the AdGroupIds field value if set, zero value otherwise.
@@ -673,9 +717,9 @@ func (o *AdsAnalyticsCreateAsyncRequest) SetProductItemIds(v []string) {
 }
 
 // GetTargetingTypes returns the TargetingTypes field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetTargetingTypes() []AdsAnalyticsTargetingType {
+func (o *AdsAnalyticsCreateAsyncRequest) GetTargetingTypes() []string {
 	if o == nil || IsNil(o.TargetingTypes) {
-		var ret []AdsAnalyticsTargetingType
+		var ret []string
 		return ret
 	}
 	return o.TargetingTypes
@@ -683,7 +727,7 @@ func (o *AdsAnalyticsCreateAsyncRequest) GetTargetingTypes() []AdsAnalyticsTarge
 
 // GetTargetingTypesOk returns a tuple with the TargetingTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetTargetingTypesOk() ([]AdsAnalyticsTargetingType, bool) {
+func (o *AdsAnalyticsCreateAsyncRequest) GetTargetingTypesOk() ([]string, bool) {
 	if o == nil || IsNil(o.TargetingTypes) {
 		return nil, false
 	}
@@ -699,8 +743,8 @@ func (o *AdsAnalyticsCreateAsyncRequest) HasTargetingTypes() bool {
 	return false
 }
 
-// SetTargetingTypes gets a reference to the given []AdsAnalyticsTargetingType and assigns it to the TargetingTypes field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetTargetingTypes(v []AdsAnalyticsTargetingType) {
+// SetTargetingTypes gets a reference to the given []string and assigns it to the TargetingTypes field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetTargetingTypes(v []string) {
 	o.TargetingTypes = v
 }
 
@@ -760,124 +804,68 @@ func (o *AdsAnalyticsCreateAsyncRequest) SetColumns(v []ReportingColumnAsync) {
 	o.Columns = v
 }
 
-// GetLevel returns the Level field value
-func (o *AdsAnalyticsCreateAsyncRequest) GetLevel() MetricsReportingLevel {
-	if o == nil {
-		var ret MetricsReportingLevel
+// GetCombineTargetingTypes returns the CombineTargetingTypes field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetCombineTargetingTypes() bool {
+	if o == nil || IsNil(o.CombineTargetingTypes) {
+		var ret bool
 		return ret
 	}
-
-	return o.Level
+	return *o.CombineTargetingTypes
 }
 
-// GetLevelOk returns a tuple with the Level field value
+// GetCombineTargetingTypesOk returns a tuple with the CombineTargetingTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetLevelOk() (*MetricsReportingLevel, bool) {
-	if o == nil {
+func (o *AdsAnalyticsCreateAsyncRequest) GetCombineTargetingTypesOk() (*bool, bool) {
+	if o == nil || IsNil(o.CombineTargetingTypes) {
 		return nil, false
 	}
-	return &o.Level, true
+	return o.CombineTargetingTypes, true
 }
 
-// SetLevel sets field value
-func (o *AdsAnalyticsCreateAsyncRequest) SetLevel(v MetricsReportingLevel) {
-	o.Level = v
-}
-
-// GetReportFormat returns the ReportFormat field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetReportFormat() DataOutputFormat {
-	if o == nil || IsNil(o.ReportFormat) {
-		var ret DataOutputFormat
-		return ret
-	}
-	return *o.ReportFormat
-}
-
-// GetReportFormatOk returns a tuple with the ReportFormat field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetReportFormatOk() (*DataOutputFormat, bool) {
-	if o == nil || IsNil(o.ReportFormat) {
-		return nil, false
-	}
-	return o.ReportFormat, true
-}
-
-// HasReportFormat returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) HasReportFormat() bool {
-	if o != nil && !IsNil(o.ReportFormat) {
+// HasCombineTargetingTypes returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasCombineTargetingTypes() bool {
+	if o != nil && !IsNil(o.CombineTargetingTypes) {
 		return true
 	}
 
 	return false
 }
 
-// SetReportFormat gets a reference to the given DataOutputFormat and assigns it to the ReportFormat field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetReportFormat(v DataOutputFormat) {
-	o.ReportFormat = &v
+// SetCombineTargetingTypes gets a reference to the given bool and assigns it to the CombineTargetingTypes field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetCombineTargetingTypes(v bool) {
+	o.CombineTargetingTypes = &v
 }
 
-// GetPrimarySort returns the PrimarySort field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySort() string {
-	if o == nil || IsNil(o.PrimarySort) {
-		var ret string
+// GetCustomConversionEventMetrics returns the CustomConversionEventMetrics field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetCustomConversionEventMetrics() []AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics {
+	if o == nil || IsNil(o.CustomConversionEventMetrics) {
+		var ret []AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
 		return ret
 	}
-	return *o.PrimarySort
+	return o.CustomConversionEventMetrics
 }
 
-// GetPrimarySortOk returns a tuple with the PrimarySort field value if set, nil otherwise
+// GetCustomConversionEventMetricsOk returns a tuple with the CustomConversionEventMetrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySortOk() (*string, bool) {
-	if o == nil || IsNil(o.PrimarySort) {
+func (o *AdsAnalyticsCreateAsyncRequest) GetCustomConversionEventMetricsOk() ([]AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics, bool) {
+	if o == nil || IsNil(o.CustomConversionEventMetrics) {
 		return nil, false
 	}
-	return o.PrimarySort, true
+	return o.CustomConversionEventMetrics, true
 }
 
-// HasPrimarySort returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) HasPrimarySort() bool {
-	if o != nil && !IsNil(o.PrimarySort) {
+// HasCustomConversionEventMetrics returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasCustomConversionEventMetrics() bool {
+	if o != nil && !IsNil(o.CustomConversionEventMetrics) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrimarySort gets a reference to the given string and assigns it to the PrimarySort field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetPrimarySort(v string) {
-	o.PrimarySort = &v
-}
-
-// GetStartHour returns the StartHour field value if set, zero value otherwise.
-func (o *AdsAnalyticsCreateAsyncRequest) GetStartHour() int32 {
-	if o == nil || IsNil(o.StartHour) {
-		var ret int32
-		return ret
-	}
-	return *o.StartHour
-}
-
-// GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) GetStartHourOk() (*int32, bool) {
-	if o == nil || IsNil(o.StartHour) {
-		return nil, false
-	}
-	return o.StartHour, true
-}
-
-// HasStartHour returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncRequest) HasStartHour() bool {
-	if o != nil && !IsNil(o.StartHour) {
-		return true
-	}
-
-	return false
-}
-
-// SetStartHour gets a reference to the given int32 and assigns it to the StartHour field.
-func (o *AdsAnalyticsCreateAsyncRequest) SetStartHour(v int32) {
-	o.StartHour = &v
+// SetCustomConversionEventMetrics gets a reference to the given []AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics and assigns it to the CustomConversionEventMetrics field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetCustomConversionEventMetrics(v []AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics) {
+	o.CustomConversionEventMetrics = v
 }
 
 // GetEndHour returns the EndHour field value if set, zero value otherwise.
@@ -912,6 +900,158 @@ func (o *AdsAnalyticsCreateAsyncRequest) SetEndHour(v int32) {
 	o.EndHour = &v
 }
 
+// GetLevel returns the Level field value
+func (o *AdsAnalyticsCreateAsyncRequest) GetLevel() MetricsReportingLevel {
+	if o == nil {
+		var ret MetricsReportingLevel
+		return ret
+	}
+
+	return o.Level
+}
+
+// GetLevelOk returns a tuple with the Level field value
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetLevelOk() (*MetricsReportingLevel, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Level, true
+}
+
+// SetLevel sets field value
+func (o *AdsAnalyticsCreateAsyncRequest) SetLevel(v MetricsReportingLevel) {
+	o.Level = v
+}
+
+// GetPrimarySort returns the PrimarySort field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySort() string {
+	if o == nil || IsNil(o.PrimarySort) {
+		var ret string
+		return ret
+	}
+	return *o.PrimarySort
+}
+
+// GetPrimarySortOk returns a tuple with the PrimarySort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySortOk() (*string, bool) {
+	if o == nil || IsNil(o.PrimarySort) {
+		return nil, false
+	}
+	return o.PrimarySort, true
+}
+
+// HasPrimarySort returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasPrimarySort() bool {
+	if o != nil && !IsNil(o.PrimarySort) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimarySort gets a reference to the given string and assigns it to the PrimarySort field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetPrimarySort(v string) {
+	o.PrimarySort = &v
+}
+
+// GetReportFormat returns the ReportFormat field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetReportFormat() DataOutputFormat {
+	if o == nil || IsNil(o.ReportFormat) {
+		var ret DataOutputFormat
+		return ret
+	}
+	return *o.ReportFormat
+}
+
+// GetReportFormatOk returns a tuple with the ReportFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetReportFormatOk() (*DataOutputFormat, bool) {
+	if o == nil || IsNil(o.ReportFormat) {
+		return nil, false
+	}
+	return o.ReportFormat, true
+}
+
+// HasReportFormat returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasReportFormat() bool {
+	if o != nil && !IsNil(o.ReportFormat) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportFormat gets a reference to the given DataOutputFormat and assigns it to the ReportFormat field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetReportFormat(v DataOutputFormat) {
+	o.ReportFormat = &v
+}
+
+// GetReportingTimezone returns the ReportingTimezone field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetReportingTimezone() ReportingTimeZone {
+	if o == nil || IsNil(o.ReportingTimezone) {
+		var ret ReportingTimeZone
+		return ret
+	}
+	return *o.ReportingTimezone
+}
+
+// GetReportingTimezoneOk returns a tuple with the ReportingTimezone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetReportingTimezoneOk() (*ReportingTimeZone, bool) {
+	if o == nil || IsNil(o.ReportingTimezone) {
+		return nil, false
+	}
+	return o.ReportingTimezone, true
+}
+
+// HasReportingTimezone returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasReportingTimezone() bool {
+	if o != nil && !IsNil(o.ReportingTimezone) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportingTimezone gets a reference to the given ReportingTimeZone and assigns it to the ReportingTimezone field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetReportingTimezone(v ReportingTimeZone) {
+	o.ReportingTimezone = &v
+}
+
+// GetStartHour returns the StartHour field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetStartHour() int32 {
+	if o == nil || IsNil(o.StartHour) {
+		var ret int32
+		return ret
+	}
+	return *o.StartHour
+}
+
+// GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetStartHourOk() (*int32, bool) {
+	if o == nil || IsNil(o.StartHour) {
+		return nil, false
+	}
+	return o.StartHour, true
+}
+
+// HasStartHour returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasStartHour() bool {
+	if o != nil && !IsNil(o.StartHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartHour gets a reference to the given int32 and assigns it to the StartHour field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetStartHour(v int32) {
+	o.StartHour = &v
+}
+
 func (o AdsAnalyticsCreateAsyncRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -922,23 +1062,23 @@ func (o AdsAnalyticsCreateAsyncRequest) MarshalJSON() ([]byte, error) {
 
 func (o AdsAnalyticsCreateAsyncRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["start_date"] = o.StartDate
-	toSerialize["end_date"] = o.EndDate
-	toSerialize["granularity"] = o.Granularity
+	if !IsNil(o.AttributionTypes) {
+		toSerialize["attribution_types"] = o.AttributionTypes
+	}
 	if !IsNil(o.ClickWindowDays) {
 		toSerialize["click_window_days"] = o.ClickWindowDays
-	}
-	if !IsNil(o.EngagementWindowDays) {
-		toSerialize["engagement_window_days"] = o.EngagementWindowDays
-	}
-	if !IsNil(o.ViewWindowDays) {
-		toSerialize["view_window_days"] = o.ViewWindowDays
 	}
 	if !IsNil(o.ConversionReportTime) {
 		toSerialize["conversion_report_time"] = o.ConversionReportTime
 	}
-	if !IsNil(o.AttributionTypes) {
-		toSerialize["attribution_types"] = o.AttributionTypes
+	toSerialize["end_date"] = o.EndDate
+	if !IsNil(o.EngagementWindowDays) {
+		toSerialize["engagement_window_days"] = o.EngagementWindowDays
+	}
+	toSerialize["granularity"] = o.Granularity
+	toSerialize["start_date"] = o.StartDate
+	if !IsNil(o.ViewWindowDays) {
+		toSerialize["view_window_days"] = o.ViewWindowDays
 	}
 	if !IsNil(o.CampaignIds) {
 		toSerialize["campaign_ids"] = o.CampaignIds
@@ -948,6 +1088,9 @@ func (o AdsAnalyticsCreateAsyncRequest) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.CampaignObjectiveTypes) {
 		toSerialize["campaign_objective_types"] = o.CampaignObjectiveTypes
+	}
+	if !IsNil(o.CampaignBrandLabel) {
+		toSerialize["campaign_brand_label"] = o.CampaignBrandLabel
 	}
 	if !IsNil(o.AdGroupIds) {
 		toSerialize["ad_group_ids"] = o.AdGroupIds
@@ -977,18 +1120,27 @@ func (o AdsAnalyticsCreateAsyncRequest) ToMap() (map[string]interface{}, error) 
 		toSerialize["metrics_filters"] = o.MetricsFilters
 	}
 	toSerialize["columns"] = o.Columns
-	toSerialize["level"] = o.Level
-	if !IsNil(o.ReportFormat) {
-		toSerialize["report_format"] = o.ReportFormat
+	if !IsNil(o.CombineTargetingTypes) {
+		toSerialize["combine_targeting_types"] = o.CombineTargetingTypes
 	}
-	if !IsNil(o.PrimarySort) {
-		toSerialize["primary_sort"] = o.PrimarySort
-	}
-	if !IsNil(o.StartHour) {
-		toSerialize["start_hour"] = o.StartHour
+	if !IsNil(o.CustomConversionEventMetrics) {
+		toSerialize["custom_conversion_event_metrics"] = o.CustomConversionEventMetrics
 	}
 	if !IsNil(o.EndHour) {
 		toSerialize["end_hour"] = o.EndHour
+	}
+	toSerialize["level"] = o.Level
+	if !IsNil(o.PrimarySort) {
+		toSerialize["primary_sort"] = o.PrimarySort
+	}
+	if !IsNil(o.ReportFormat) {
+		toSerialize["report_format"] = o.ReportFormat
+	}
+	if !IsNil(o.ReportingTimezone) {
+		toSerialize["reporting_timezone"] = o.ReportingTimezone
+	}
+	if !IsNil(o.StartHour) {
+		toSerialize["start_hour"] = o.StartHour
 	}
 	return toSerialize, nil
 }
@@ -998,9 +1150,9 @@ func (o *AdsAnalyticsCreateAsyncRequest) UnmarshalJSON(data []byte) (err error) 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"start_date",
 		"end_date",
 		"granularity",
+		"start_date",
 		"columns",
 		"level",
 	}

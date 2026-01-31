@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AudiencesCreate**](AudiencesAPI.md#AudiencesCreate) | **Post** /ad_accounts/{ad_account_id}/audiences | Create audience
-[**AudiencesCreateCustom**](AudiencesAPI.md#AudiencesCreateCustom) | **Post** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**AudiencesGet**](AudiencesAPI.md#AudiencesGet) | **Get** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 [**AudiencesList**](AudiencesAPI.md#AudiencesList) | **Get** /ad_accounts/{ad_account_id}/audiences | List audiences
 [**AudiencesUpdate**](AudiencesAPI.md#AudiencesUpdate) | **Patch** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
@@ -65,78 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] | 
-
-### Return type
-
-[**Audience**](Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AudiencesCreateCustom
-
-> Audience AudiencesCreateCustom(ctx, adAccountId).AudienceCreateCustomRequest(audienceCreateCustomRequest).Execute()
-
-Create custom audience
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/oapicf/pinterest-sdk"
-)
-
-func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	audienceCreateCustomRequest := *openapiclient.NewAudienceCreateCustomRequest("string", *openapiclient.NewAudienceRule(), openapiclient.AudienceSharingType("CUSTOM"), openapiclient.AudienceDataParty("1p")) // AudienceCreateCustomRequest | Custom audience to create.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudiencesAPI.AudiencesCreateCustom(context.Background(), adAccountId).AudienceCreateCustomRequest(audienceCreateCustomRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AudiencesAPI.AudiencesCreateCustom``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AudiencesCreateCustom`: Audience
-	fmt.Fprintf(os.Stdout, "Response from `AudiencesAPI.AudiencesCreateCustom`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAudiencesCreateCustomRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **audienceCreateCustomRequest** | [**AudienceCreateCustomRequest**](AudienceCreateCustomRequest.md) | Custom audience to create. | 
 
 ### Return type
 
@@ -217,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -295,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -330,7 +257,7 @@ import (
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	audienceId := "audienceId_example" // string | Unique identifier of an audience
-	audienceUpdateRequest := *openapiclient.NewAudienceUpdateRequest() // AudienceUpdateRequest | The audience to be updated. (optional)
+	audienceUpdateRequest := *openapiclient.NewAudienceUpdateRequest() // AudienceUpdateRequest | The audience to be updated.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

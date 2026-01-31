@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of business partners. | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of business partners. | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { GetBusinessPartners200Response } from './api';
 
 const instance: GetBusinessPartners200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

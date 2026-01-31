@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,9 +21,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private String message;
+  private Integer occurrences;
 
 
   public enum ReportTypeEnum {
@@ -43,11 +48,6 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
 
 
   public enum SeverityEnum {
@@ -68,23 +68,6 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   private SeverityEnum severity;
-
-  /**
-   */
-  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the catalog entity.
@@ -177,6 +160,23 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   /**
+   */
+  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    */
   public CatalogsReportFeedIngestionStats severity(SeverityEnum severity) {
@@ -204,18 +204,18 @@ public class CatalogsReportFeedIngestionStats   {
       return false;
     }
     CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats = (CatalogsReportFeedIngestionStats) o;
-    return Objects.equals(reportType, catalogsReportFeedIngestionStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportFeedIngestionStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportFeedIngestionStats.catalogId) &&
         Objects.equals(code, catalogsReportFeedIngestionStats.code) &&
         Objects.equals(codeLabel, catalogsReportFeedIngestionStats.codeLabel) &&
         Objects.equals(message, catalogsReportFeedIngestionStats.message) &&
         Objects.equals(occurrences, catalogsReportFeedIngestionStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportFeedIngestionStats.reportType) &&
         Objects.equals(severity, catalogsReportFeedIngestionStats.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity);
   }
 
   @Override
@@ -223,12 +223,12 @@ public class CatalogsReportFeedIngestionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

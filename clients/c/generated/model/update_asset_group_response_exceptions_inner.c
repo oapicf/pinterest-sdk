@@ -6,31 +6,31 @@
 
 
 static update_asset_group_response_exceptions_inner_t *update_asset_group_response_exceptions_inner_create_internal(
+    char *asset_group_id,
     int code,
-    char *message,
-    char *asset_group_id
+    char *message
     ) {
     update_asset_group_response_exceptions_inner_t *update_asset_group_response_exceptions_inner_local_var = malloc(sizeof(update_asset_group_response_exceptions_inner_t));
     if (!update_asset_group_response_exceptions_inner_local_var) {
         return NULL;
     }
+    update_asset_group_response_exceptions_inner_local_var->asset_group_id = asset_group_id;
     update_asset_group_response_exceptions_inner_local_var->code = code;
     update_asset_group_response_exceptions_inner_local_var->message = message;
-    update_asset_group_response_exceptions_inner_local_var->asset_group_id = asset_group_id;
 
     update_asset_group_response_exceptions_inner_local_var->_library_owned = 1;
     return update_asset_group_response_exceptions_inner_local_var;
 }
 
 __attribute__((deprecated)) update_asset_group_response_exceptions_inner_t *update_asset_group_response_exceptions_inner_create(
+    char *asset_group_id,
     int code,
-    char *message,
-    char *asset_group_id
+    char *message
     ) {
     return update_asset_group_response_exceptions_inner_create_internal (
+        asset_group_id,
         code,
-        message,
-        asset_group_id
+        message
         );
 }
 
@@ -43,19 +43,27 @@ void update_asset_group_response_exceptions_inner_free(update_asset_group_respon
         return ;
     }
     listEntry_t *listEntry;
-    if (update_asset_group_response_exceptions_inner->message) {
-        free(update_asset_group_response_exceptions_inner->message);
-        update_asset_group_response_exceptions_inner->message = NULL;
-    }
     if (update_asset_group_response_exceptions_inner->asset_group_id) {
         free(update_asset_group_response_exceptions_inner->asset_group_id);
         update_asset_group_response_exceptions_inner->asset_group_id = NULL;
+    }
+    if (update_asset_group_response_exceptions_inner->message) {
+        free(update_asset_group_response_exceptions_inner->message);
+        update_asset_group_response_exceptions_inner->message = NULL;
     }
     free(update_asset_group_response_exceptions_inner);
 }
 
 cJSON *update_asset_group_response_exceptions_inner_convertToJSON(update_asset_group_response_exceptions_inner_t *update_asset_group_response_exceptions_inner) {
     cJSON *item = cJSON_CreateObject();
+
+    // update_asset_group_response_exceptions_inner->asset_group_id
+    if(update_asset_group_response_exceptions_inner->asset_group_id) {
+    if(cJSON_AddStringToObject(item, "asset_group_id", update_asset_group_response_exceptions_inner->asset_group_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // update_asset_group_response_exceptions_inner->code
     if(update_asset_group_response_exceptions_inner->code) {
@@ -72,14 +80,6 @@ cJSON *update_asset_group_response_exceptions_inner_convertToJSON(update_asset_g
     }
     }
 
-
-    // update_asset_group_response_exceptions_inner->asset_group_id
-    if(update_asset_group_response_exceptions_inner->asset_group_id) {
-    if(cJSON_AddStringToObject(item, "asset_group_id", update_asset_group_response_exceptions_inner->asset_group_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -91,6 +91,18 @@ fail:
 update_asset_group_response_exceptions_inner_t *update_asset_group_response_exceptions_inner_parseFromJSON(cJSON *update_asset_group_response_exceptions_innerJSON){
 
     update_asset_group_response_exceptions_inner_t *update_asset_group_response_exceptions_inner_local_var = NULL;
+
+    // update_asset_group_response_exceptions_inner->asset_group_id
+    cJSON *asset_group_id = cJSON_GetObjectItemCaseSensitive(update_asset_group_response_exceptions_innerJSON, "asset_group_id");
+    if (cJSON_IsNull(asset_group_id)) {
+        asset_group_id = NULL;
+    }
+    if (asset_group_id) { 
+    if(!cJSON_IsString(asset_group_id) && !cJSON_IsNull(asset_group_id))
+    {
+    goto end; //String
+    }
+    }
 
     // update_asset_group_response_exceptions_inner->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(update_asset_group_response_exceptions_innerJSON, "code");
@@ -116,23 +128,11 @@ update_asset_group_response_exceptions_inner_t *update_asset_group_response_exce
     }
     }
 
-    // update_asset_group_response_exceptions_inner->asset_group_id
-    cJSON *asset_group_id = cJSON_GetObjectItemCaseSensitive(update_asset_group_response_exceptions_innerJSON, "asset_group_id");
-    if (cJSON_IsNull(asset_group_id)) {
-        asset_group_id = NULL;
-    }
-    if (asset_group_id) { 
-    if(!cJSON_IsString(asset_group_id) && !cJSON_IsNull(asset_group_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     update_asset_group_response_exceptions_inner_local_var = update_asset_group_response_exceptions_inner_create_internal (
+        asset_group_id && !cJSON_IsNull(asset_group_id) ? strdup(asset_group_id->valuestring) : NULL,
         code ? code->valuedouble : 0,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        asset_group_id && !cJSON_IsNull(asset_group_id) ? strdup(asset_group_id->valuestring) : NULL
+        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
         );
 
     return update_asset_group_response_exceptions_inner_local_var;

@@ -8,9 +8,9 @@ Hotel batch item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsUpdatableHotelAttributes**](CatalogsUpdatableHotelAttributes.md) |  | 
 **hotelId** | **String** | The catalog hotel id in the merchant namespace | 
 **operation** | [**Operation**](#Operation) |  | 
-**attributes** | [**CatalogsUpdatableHotelAttributes**](CatalogsUpdatableHotelAttributes.md) |  | 
 
 
 ## Enum: Operation

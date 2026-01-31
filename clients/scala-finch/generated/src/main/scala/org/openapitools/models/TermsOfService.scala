@@ -8,15 +8,15 @@ import org.openapitools._
 
 /**
  * 
- * @param id The ID of the terms of service
- * @param html The terms of service content
- * @param hasUnderscoreaccepted Whether the ad account has accepted terms of service.
  * @param adUnderscoreaccountUnderscoreid The ID of the ad account.
+ * @param hasUnderscoreaccepted Whether the ad account has accepted terms of service.
+ * @param html The terms of service content
+ * @param id The ID of the terms of service
  */
-case class TermsOfService(id: Option[String],
-                html: Option[String],
+case class TermsOfService(adUnderscoreaccountUnderscoreid: Option[String],
                 hasUnderscoreaccepted: Option[Boolean],
-                adUnderscoreaccountUnderscoreid: Option[String]
+                html: Option[String],
+                id: Option[String]
                 )
 
 object TermsOfService {

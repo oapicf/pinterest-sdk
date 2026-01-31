@@ -14,27 +14,18 @@ import org.openapitools.vertxweb.server.model.DataStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TopPinsAnalyticsResponsePinsInner   {
   
-  private Map<String, BigDecimal> metrics = new HashMap<>();
   private Map<String, DataStatus> dataStatus = new HashMap<>();
+  private Map<String, BigDecimal> metrics = new HashMap<>();
   private String pinId;
 
   public TopPinsAnalyticsResponsePinsInner () {
 
   }
 
-  public TopPinsAnalyticsResponsePinsInner (Map<String, BigDecimal> metrics, Map<String, DataStatus> dataStatus, String pinId) {
-    this.metrics = metrics;
+  public TopPinsAnalyticsResponsePinsInner (Map<String, DataStatus> dataStatus, Map<String, BigDecimal> metrics, String pinId) {
     this.dataStatus = dataStatus;
-    this.pinId = pinId;
-  }
-
-    
-  @JsonProperty("metrics")
-  public Map<String, BigDecimal> getMetrics() {
-    return metrics;
-  }
-  public void setMetrics(Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
+    this.pinId = pinId;
   }
 
     
@@ -44,6 +35,15 @@ public class TopPinsAnalyticsResponsePinsInner   {
   }
   public void setDataStatus(Map<String, DataStatus> dataStatus) {
     this.dataStatus = dataStatus;
+  }
+
+    
+  @JsonProperty("metrics")
+  public Map<String, BigDecimal> getMetrics() {
+    return metrics;
+  }
+  public void setMetrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
   }
 
     
@@ -65,14 +65,14 @@ public class TopPinsAnalyticsResponsePinsInner   {
       return false;
     }
     TopPinsAnalyticsResponsePinsInner topPinsAnalyticsResponsePinsInner = (TopPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(pinId, topPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class TopPinsAnalyticsResponsePinsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -14,6 +14,7 @@ import org.openapitools.vertxweb.server.model.Country;
 public class CatalogsItemsRequest   {
   
   private Country country;
+  private CatalogsItemsPostFilters filters;
 
 
   public enum LanguageEnum {
@@ -139,16 +140,15 @@ public class CatalogsItemsRequest   {
   }
 
   private LanguageEnum language;
-  private CatalogsItemsPostFilters filters;
 
   public CatalogsItemsRequest () {
 
   }
 
-  public CatalogsItemsRequest (Country country, LanguageEnum language, CatalogsItemsPostFilters filters) {
+  public CatalogsItemsRequest (Country country, CatalogsItemsPostFilters filters, LanguageEnum language) {
     this.country = country;
-    this.language = language;
     this.filters = filters;
+    this.language = language;
   }
 
     
@@ -161,21 +161,21 @@ public class CatalogsItemsRequest   {
   }
 
     
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-    
   @JsonProperty("filters")
   public CatalogsItemsPostFilters getFilters() {
     return filters;
   }
   public void setFilters(CatalogsItemsPostFilters filters) {
     this.filters = filters;
+  }
+
+    
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -189,13 +189,13 @@ public class CatalogsItemsRequest   {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(country, catalogsItemsRequest.country) &&
-        Objects.equals(language, catalogsItemsRequest.language) &&
-        Objects.equals(filters, catalogsItemsRequest.filters);
+        Objects.equals(filters, catalogsItemsRequest.filters) &&
+        Objects.equals(language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -204,8 +204,8 @@ public class CatalogsItemsRequest   {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,12 +22,12 @@ optimization_goal_metadata_frequency_goal_metadata_t* instantiate_optimization_g
   optimization_goal_metadata_frequency_goal_metadata_t* optimization_goal_metadata_frequency_goal_metadata = NULL;
   if (include_optional) {
     optimization_goal_metadata_frequency_goal_metadata = optimization_goal_metadata_frequency_goal_metadata_create(
-      56,
+      2,
       pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_"DAY"
     );
   } else {
     optimization_goal_metadata_frequency_goal_metadata = optimization_goal_metadata_frequency_goal_metadata_create(
-      56,
+      2,
       pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_"DAY"
     );
   }

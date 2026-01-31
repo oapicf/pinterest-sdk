@@ -3,7 +3,7 @@ const Service = require('./Service');
 
 /**
 * Get ad account analytics
-* Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+* Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * startUnderscoredate date Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -11,12 +11,13 @@ const Service = require('./Service');
 * columns List Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 * granularity Granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 * clickUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
-* engagementUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+* engagementUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional)
 * viewUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
 * conversionUnderscorereportUnderscoretime String The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
+* reportingUnderscoretimezone ReportingTimeZone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 * returns List
 * */
-const ad_account/analytics = ({ adUnderscoreaccountUnderscoreid, startUnderscoredate, endUnderscoredate, columns, granularity, clickUnderscorewindowUnderscoredays, engagementUnderscorewindowUnderscoredays, viewUnderscorewindowUnderscoredays, conversionUnderscorereportUnderscoretime }) => new Promise(
+const ad_account/analytics = ({ adUnderscoreaccountUnderscoreid, startUnderscoredate, endUnderscoredate, columns, granularity, clickUnderscorewindowUnderscoredays, engagementUnderscorewindowUnderscoredays, viewUnderscorewindowUnderscoredays, conversionUnderscorereportUnderscoretime, reportingUnderscoretimezone }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -29,6 +30,7 @@ const ad_account/analytics = ({ adUnderscoreaccountUnderscoreid, startUnderscore
         engagementUnderscorewindowUnderscoredays,
         viewUnderscorewindowUnderscoredays,
         conversionUnderscorereportUnderscoretime,
+        reportingUnderscoretimezone,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -40,7 +42,7 @@ const ad_account/analytics = ({ adUnderscoreaccountUnderscoreid, startUnderscore
 );
 /**
 * Get targeting analytics for an ad account
-* Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+* Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * startUnderscoredate date Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -49,13 +51,14 @@ const ad_account/analytics = ({ adUnderscoreaccountUnderscoreid, startUnderscore
 * columns List Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 * granularity Granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 * clickUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
-* engagementUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+* engagementUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional)
 * viewUnderscorewindowUnderscoredays Integer Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
 * conversionUnderscorereportUnderscoretime String The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
-* attributionUnderscoretypes ConversionReportAttributionType List of types of attribution for the conversion report (optional)
+* attributionUnderscoretypes List List of types of attribution for the conversion report (optional)
+* reportingUnderscoretimezone ReportingTimeZone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 * returns MetricsResponse
 * */
-const ad_account_targeting_analytics/get = ({ adUnderscoreaccountUnderscoreid, startUnderscoredate, endUnderscoredate, targetingUnderscoretypes, columns, granularity, clickUnderscorewindowUnderscoredays, engagementUnderscorewindowUnderscoredays, viewUnderscorewindowUnderscoredays, conversionUnderscorereportUnderscoretime, attributionUnderscoretypes }) => new Promise(
+const ad_account_targeting_analytics/get = ({ adUnderscoreaccountUnderscoreid, startUnderscoredate, endUnderscoredate, targetingUnderscoretypes, columns, granularity, clickUnderscorewindowUnderscoredays, engagementUnderscorewindowUnderscoredays, viewUnderscorewindowUnderscoredays, conversionUnderscorereportUnderscoretime, attributionUnderscoretypes, reportingUnderscoretimezone }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -70,6 +73,7 @@ const ad_account_targeting_analytics/get = ({ adUnderscoreaccountUnderscoreid, s
         viewUnderscorewindowUnderscoredays,
         conversionUnderscorereportUnderscoretime,
         attributionUnderscoretypes,
+        reportingUnderscoretimezone,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -81,16 +85,16 @@ const ad_account_targeting_analytics/get = ({ adUnderscoreaccountUnderscoreid, s
 );
 /**
 * Create ad account
-* Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>.
+* Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.  You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).
 *
-* adAccountCreateRequest AdAccountCreateRequest Ad account to create.
+* adAccountCreate AdAccountCreate 
 * returns AdAccount
 * */
-const ad_accounts/create = ({ adAccountCreateRequest }) => new Promise(
+const ad_accounts/create = ({ adAccountCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        adAccountCreateRequest,
+        adAccountCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -104,7 +108,7 @@ const ad_accounts/create = ({ adAccountCreateRequest }) => new Promise(
 * Get ad account
 * Get an ad account
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
+* adUnderscoreaccountUnderscoreid String 
 * returns AdAccount
 * */
 const ad_accounts/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
@@ -123,20 +127,43 @@ const ad_accounts/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
 );
 /**
 * List ad accounts
-* Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
+* Get a list of the ad_accounts that the \"operation user_account\" has access to.         - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).
 *
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * includeUnderscoresharedUnderscoreaccounts Boolean Include shared ad accounts (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns ad_accounts_list_200_response
 * */
-const ad_accounts/list = ({ bookmark, pageUnderscoresize, includeUnderscoresharedUnderscoreaccounts }) => new Promise(
+const ad_accounts/list = ({ includeUnderscoresharedUnderscoreaccounts, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
+        includeUnderscoresharedUnderscoreaccounts,
         bookmark,
         pageUnderscoresize,
-        includeUnderscoresharedUnderscoreaccounts,
+      }));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
+* Create a request for a brand, category, SKU report
+* <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+*
+* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
+* conversionProductReportRequest ConversionProductReportRequest 
+* returns AdsAnalyticsCreateAsyncResponse
+* */
+const analytics/create_conversion_product_report = ({ adUnderscoreaccountUnderscoreid, conversionProductReportRequest }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      resolve(Service.successResponse({
+        adUnderscoreaccountUnderscoreid,
+        conversionProductReportRequest,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -171,7 +198,7 @@ const analytics/create_mmm_report = ({ adUnderscoreaccountUnderscoreid, createMM
 );
 /**
 * Create async request for an account analytics report
-* This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+* This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * adsAnalyticsCreateAsyncRequest AdsAnalyticsCreateAsyncRequest 
@@ -194,14 +221,14 @@ const analytics/create_report = ({ adUnderscoreaccountUnderscoreid, adsAnalytics
 );
 /**
 * Create async request for an analytics report using a template
-* This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+*    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
+* adUnderscoreaccountUnderscoreid String 
 * templateUnderscoreid String Unique identifier of a template.
 * startUnderscoredate date Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. (optional)
 * endUnderscoredate date Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. (optional)
-* granularity Granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly (optional)
-* returns AdsAnalyticsCreateAsyncResponse
+* granularity Granularity    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly (optional)
+* returns TemplateBasedReport
 * */
 const analytics/create_template_report = ({ adUnderscoreaccountUnderscoreid, templateUnderscoreid, startUnderscoredate, endUnderscoredate, granularity }) => new Promise(
   async (resolve, reject) => {
@@ -212,6 +239,29 @@ const analytics/create_template_report = ({ adUnderscoreaccountUnderscoreid, tem
         startUnderscoredate,
         endUnderscoredate,
         granularity,
+      }));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
+* Get advertiser brand, category, SKU report
+* <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+*
+* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
+* token String Token returned from the post request creation call
+* returns AdsAnalyticsGetAsyncResponse
+* */
+const analytics/get_conversion_product_report = ({ adUnderscoreaccountUnderscoreid, token }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      resolve(Service.successResponse({
+        adUnderscoreaccountUnderscoreid,
+        token,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -322,9 +372,11 @@ module.exports = {
   ad_accounts/create,
   ad_accounts/get,
   ad_accounts/list,
+  analytics/create_conversion_product_report,
   analytics/create_mmm_report,
   analytics/create_report,
   analytics/create_template_report,
+  analytics/get_conversion_product_report,
   analytics/get_mmm_report,
   analytics/get_report,
   sandbox/delete,

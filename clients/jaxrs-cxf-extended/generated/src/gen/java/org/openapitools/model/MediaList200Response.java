@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MediaUploadDetails;
+import org.openapitools.model.Media;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,48 +16,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MediaList200Response  {
   
- /**
-  * Media
-  */
-  @ApiModelProperty(required = true, value = "Media")
-  @Valid
-  private List<@Valid MediaUploadDetails> items = new ArrayList<>();
-
   @ApiModelProperty(value = "")
   private String bookmark;
- /**
-  * Media
-  * @return items
-  */
-  @JsonProperty("items")
-  @NotNull
-  public List<@Valid MediaUploadDetails> getItems() {
-    return items;
-  }
 
-  /**
-   * Sets the <code>items</code> property.
-   */
- public void setItems(List<@Valid MediaUploadDetails> items) {
-    this.items = items;
-  }
-
-  /**
-   * Sets the <code>items</code> property.
-   */
-  public MediaList200Response items(List<@Valid MediaUploadDetails> items) {
-    this.items = items;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>items</code> list.
-   */
-  public MediaList200Response addItemsItem(MediaUploadDetails itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private List<@Valid Media> items = new ArrayList<>();
  /**
   * Get bookmark
   * @return bookmark
@@ -82,6 +46,39 @@ public class MediaList200Response  {
     return this;
   }
 
+ /**
+  * Get items
+  * @return items
+  */
+  @JsonProperty("items")
+  @NotNull
+  public List<@Valid Media> getItems() {
+    return items;
+  }
+
+  /**
+   * Sets the <code>items</code> property.
+   */
+ public void setItems(List<@Valid Media> items) {
+    this.items = items;
+  }
+
+  /**
+   * Sets the <code>items</code> property.
+   */
+  public MediaList200Response items(List<@Valid Media> items) {
+    this.items = items;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>items</code> list.
+   */
+  public MediaList200Response addItemsItem(Media itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -92,13 +89,13 @@ public class MediaList200Response  {
       return false;
     }
     MediaList200Response mediaList200Response = (MediaList200Response) o;
-    return Objects.equals(this.items, mediaList200Response.items) &&
-        Objects.equals(this.bookmark, mediaList200Response.bookmark);
+    return Objects.equals(this.bookmark, mediaList200Response.bookmark) &&
+        Objects.equals(this.items, mediaList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -106,8 +103,8 @@ public class MediaList200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class MediaList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

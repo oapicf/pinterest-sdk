@@ -24,20 +24,20 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductMetadata", description = "Retail product metadata entity")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductMetadata {
 
-  private String itemId;
+  private NonNullableProductAvailabilityType availability;
+
+  private NonNullableCatalogsCurrency currency;
 
   private JsonNullable<String> itemGroupId = JsonNullable.<String>undefined();
 
-  private NonNullableProductAvailabilityType availability;
+  private String itemId;
 
   private BigDecimal price;
 
   private JsonNullable<BigDecimal> salePrice = JsonNullable.<BigDecimal>undefined();
-
-  private NonNullableCatalogsCurrency currency;
 
   public CatalogsRetailProductMetadata() {
     super();
@@ -46,33 +46,53 @@ public class CatalogsRetailProductMetadata {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailProductMetadata(String itemId, String itemGroupId, NonNullableProductAvailabilityType availability, BigDecimal price, BigDecimal salePrice, NonNullableCatalogsCurrency currency) {
-    this.itemId = itemId;
-    this.itemGroupId = JsonNullable.of(itemGroupId);
+  public CatalogsRetailProductMetadata(NonNullableProductAvailabilityType availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
     this.availability = availability;
+    this.currency = currency;
+    this.itemGroupId = JsonNullable.of(itemGroupId);
+    this.itemId = itemId;
     this.price = price;
     this.salePrice = JsonNullable.of(salePrice);
-    this.currency = currency;
   }
 
-  public CatalogsRetailProductMetadata itemId(String itemId) {
-    this.itemId = itemId;
+  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
     return this;
   }
 
   /**
-   * The user-created unique ID that represents the product.
-   * @return itemId
+   * Get availability
+   * @return availability
    */
-  @NotNull 
-  @Schema(name = "item_id", example = "DS0294-L", description = "The user-created unique ID that represents the product.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
+  @NotNull @Valid 
+  @Schema(name = "availability", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("availability")
+  public NonNullableProductAvailabilityType getAvailability() {
+    return availability;
   }
 
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
+  public void setAvailability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
+  }
+
+  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+    return this;
+  }
+
+  /**
+   * Get currency
+   * @return currency
+   */
+  @NotNull @Valid 
+  @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("currency")
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
+
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
   }
 
   public CatalogsRetailProductMetadata itemGroupId(String itemGroupId) {
@@ -95,24 +115,24 @@ public class CatalogsRetailProductMetadata {
     this.itemGroupId = itemGroupId;
   }
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public CatalogsRetailProductMetadata itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
   /**
-   * Get availability
-   * @return availability
+   * The user-created unique ID that represents the product.
+   * @return itemId
    */
-  @NotNull @Valid 
-  @Schema(name = "availability", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("availability")
-  public NonNullableProductAvailabilityType getAvailability() {
-    return availability;
+  @NotNull 
+  @Schema(name = "item_id", example = "DS0294-L", description = "The user-created unique ID that represents the product.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public CatalogsRetailProductMetadata price(BigDecimal price) {
@@ -155,26 +175,6 @@ public class CatalogsRetailProductMetadata {
     this.salePrice = salePrice;
   }
 
-  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-    return this;
-  }
-
-  /**
-   * Get currency
-   * @return currency
-   */
-  @NotNull @Valid 
-  @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("currency")
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -184,29 +184,29 @@ public class CatalogsRetailProductMetadata {
       return false;
     }
     CatalogsRetailProductMetadata catalogsRetailProductMetadata = (CatalogsRetailProductMetadata) o;
-    return Objects.equals(this.itemId, catalogsRetailProductMetadata.itemId) &&
+    return Objects.equals(this.availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(this.currency, catalogsRetailProductMetadata.currency) &&
         Objects.equals(this.itemGroupId, catalogsRetailProductMetadata.itemGroupId) &&
-        Objects.equals(this.availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(this.itemId, catalogsRetailProductMetadata.itemId) &&
         Objects.equals(this.price, catalogsRetailProductMetadata.price) &&
-        Objects.equals(this.salePrice, catalogsRetailProductMetadata.salePrice) &&
-        Objects.equals(this.currency, catalogsRetailProductMetadata.currency);
+        Objects.equals(this.salePrice, catalogsRetailProductMetadata.salePrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, itemGroupId, availability, price, salePrice, currency);
+    return Objects.hash(availability, currency, itemGroupId, itemId, price, salePrice);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductMetadata {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

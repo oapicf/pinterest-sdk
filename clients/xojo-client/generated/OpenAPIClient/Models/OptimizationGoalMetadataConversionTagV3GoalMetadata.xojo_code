@@ -23,7 +23,7 @@ Protected Class OptimizationGoalMetadataConversionTagV3GoalMetadata
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ROAS optimization is not supported
+			Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `"CHECKOUT"` and `bid_strategy_type` is set to `"AUTOMATIC_BID"`. <br>This parameter is not enabled for all advertisers. <a href="https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/">Learn more</a>.
 		#tag EndNote
 		is_roas_optimized As Xoson.O.OptionalBoolean
 	#tag EndProperty
@@ -34,6 +34,14 @@ Protected Class OptimizationGoalMetadataConversionTagV3GoalMetadata
 			Conversion learning model type
 		#tag EndNote
 		learning_mode_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Event name for custom or standard events mapped to an oCPM model
+		#tag EndNote
+		reporting_event As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -167,6 +175,14 @@ Protected Class OptimizationGoalMetadataConversionTagV3GoalMetadata
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="reporting_event"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

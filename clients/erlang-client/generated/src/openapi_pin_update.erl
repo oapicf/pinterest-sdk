@@ -8,28 +8,25 @@
     #{ 'alt_text' => binary(),
        'board_id' => binary(),
        'board_section_id' => binary(),
+       'carousel_slots' => list(),
        'description' => binary(),
        'link' => binary(),
-       'title' => binary(),
-       'carousel_slots' => list(),
-       'note' => binary()
+       'title' => binary()
      }.
 
 encode(#{ 'alt_text' := AltText,
           'board_id' := BoardId,
           'board_section_id' := BoardSectionId,
+          'carousel_slots' := CarouselSlots,
           'description' := Description,
           'link' := Link,
-          'title' := Title,
-          'carousel_slots' := CarouselSlots,
-          'note' := Note
+          'title' := Title
         }) ->
     #{ 'alt_text' => AltText,
        'board_id' => BoardId,
        'board_section_id' => BoardSectionId,
+       'carousel_slots' => CarouselSlots,
        'description' => Description,
        'link' => Link,
-       'title' => Title,
-       'carousel_slots' => CarouselSlots,
-       'note' => Note
+       'title' => Title
      }.

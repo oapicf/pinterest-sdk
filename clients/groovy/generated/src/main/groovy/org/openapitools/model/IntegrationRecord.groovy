@@ -8,37 +8,37 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Canonical
 class IntegrationRecord {
     
-    String id
-    
-    String externalBusinessId
-    
-    String connectedMerchantId
-    
-    String connectedUserId
+    String additionalId1
     
     String connectedAdvertiserId
     
     String connectedLbaId
     
+    String connectedMerchantId
+    
     String connectedTagId
+    
+    String connectedUserId
+    
+    Integer createdTime
+    
+    String externalBusinessId
+    
+    String id
     
     String partnerAccessToken
     
-    String partnerRefreshToken
+    Integer partnerAccessTokenExpiry
+    
+    String partnerMetadata
     
     String partnerPrimaryEmail
     
-    Integer partnerAccessTokenExpiry
+    String partnerRefreshToken
     
     Integer partnerRefreshTokenExpiry
     
     String scopes
-    
-    String partnerMetadata
-    
-    String additionalId1
-    
-    Integer createdTime
     
     Integer updatedTime
 }

@@ -20,23 +20,23 @@ import org.openapitools.vertxweb.server.model.CreativeAssetsProcessingRecord;
 public class CatalogsCreativeAssetsItemsBatch   {
   
   private String batchId;
-  private OffsetDateTime createdTime;
-  private OffsetDateTime completedTime;
-  private BatchOperationStatus status;
   private CatalogsType catalogType;
+  private OffsetDateTime completedTime;
+  private OffsetDateTime createdTime;
   private List<CreativeAssetsProcessingRecord> items = new ArrayList<>();
+  private BatchOperationStatus status;
 
   public CatalogsCreativeAssetsItemsBatch () {
 
   }
 
-  public CatalogsCreativeAssetsItemsBatch (String batchId, OffsetDateTime createdTime, OffsetDateTime completedTime, BatchOperationStatus status, CatalogsType catalogType, List<CreativeAssetsProcessingRecord> items) {
+  public CatalogsCreativeAssetsItemsBatch (String batchId, CatalogsType catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<CreativeAssetsProcessingRecord> items, BatchOperationStatus status) {
     this.batchId = batchId;
-    this.createdTime = createdTime;
-    this.completedTime = completedTime;
-    this.status = status;
     this.catalogType = catalogType;
+    this.completedTime = completedTime;
+    this.createdTime = createdTime;
     this.items = items;
+    this.status = status;
   }
 
     
@@ -49,12 +49,12 @@ public class CatalogsCreativeAssetsItemsBatch   {
   }
 
     
-  @JsonProperty("created_time")
-  public OffsetDateTime getCreatedTime() {
-    return createdTime;
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
-  public void setCreatedTime(OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -67,21 +67,12 @@ public class CatalogsCreativeAssetsItemsBatch   {
   }
 
     
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
+  @JsonProperty("created_time")
+  public OffsetDateTime getCreatedTime() {
+    return createdTime;
   }
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  public void setCreatedTime(OffsetDateTime createdTime) {
+    this.createdTime = createdTime;
   }
 
     
@@ -91,6 +82,15 @@ public class CatalogsCreativeAssetsItemsBatch   {
   }
   public void setItems(List<CreativeAssetsProcessingRecord> items) {
     this.items = items;
+  }
+
+    
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
   }
 
 
@@ -104,16 +104,16 @@ public class CatalogsCreativeAssetsItemsBatch   {
     }
     CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch = (CatalogsCreativeAssetsItemsBatch) o;
     return Objects.equals(batchId, catalogsCreativeAssetsItemsBatch.batchId) &&
-        Objects.equals(createdTime, catalogsCreativeAssetsItemsBatch.createdTime) &&
-        Objects.equals(completedTime, catalogsCreativeAssetsItemsBatch.completedTime) &&
-        Objects.equals(status, catalogsCreativeAssetsItemsBatch.status) &&
         Objects.equals(catalogType, catalogsCreativeAssetsItemsBatch.catalogType) &&
-        Objects.equals(items, catalogsCreativeAssetsItemsBatch.items);
+        Objects.equals(completedTime, catalogsCreativeAssetsItemsBatch.completedTime) &&
+        Objects.equals(createdTime, catalogsCreativeAssetsItemsBatch.createdTime) &&
+        Objects.equals(items, catalogsCreativeAssetsItemsBatch.items) &&
+        Objects.equals(status, catalogsCreativeAssetsItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, completedTime, status, catalogType, items);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -122,11 +122,11 @@ public class CatalogsCreativeAssetsItemsBatch   {
     sb.append("class CatalogsCreativeAssetsItemsBatch {\n");
     
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -11,10 +11,9 @@
       "default": null
     },
     {
-      "name": "created_time",
-      "type": ["null", "string"],
-      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss",
-      "default": null
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
     },
     {
       "name": "completed_time",
@@ -23,15 +22,9 @@
       "default": null
     },
     {
-      "name": "status",
-      "type": ["null", "model.BatchOperationStatus"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
+      "name": "created_time",
+      "type": "string",
+      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion."
     },
     {
       "name": "items",
@@ -40,6 +33,12 @@
         "items": "model.ItemProcessingRecord"
       }],
       "doc": "Array with the catalogs items processing records part of the catalogs items batch",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.BatchOperationStatus"],
+      "doc": "",
       "default": null
     }
   ]

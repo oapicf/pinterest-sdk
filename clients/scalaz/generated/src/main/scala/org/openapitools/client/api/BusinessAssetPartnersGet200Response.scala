@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import BusinessAssetPartnersGet200Response._
 
 case class BusinessAssetPartnersGet200Response (
-  /* List of partners with permissions to the asset. */
-  items: List[UserSingleAssetBinding],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* List of partners with permissions to the asset. */
+  items: List[UserSingleAssetBinding])
 
 object BusinessAssetPartnersGet200Response {
   import DateTimeCodecs._

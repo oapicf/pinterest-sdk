@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[TargetingTemplateResponseData]**](TargetingTemplateResponseData.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[TargetingTemplateGetResponseData]**](TargetingTemplateGetResponseData.md) |  | 
 
 

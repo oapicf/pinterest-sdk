@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
+`id` | string
+`index` | number
 `key` | string
 `name` | string
 `ratio` | number
-`index` | number
-`id` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { AudienceSubcategory } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "id": 958862518888,
+  "index": 1.2,
   "key": 958862518888,
   "name": travel destinations,
   "ratio": 0.482,
-  "index": 1.2,
-  "id": 958862518888,
 } satisfies AudienceSubcategory
 
 console.log(example)

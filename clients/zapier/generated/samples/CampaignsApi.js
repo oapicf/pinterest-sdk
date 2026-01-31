@@ -1,4 +1,6 @@
 module.exports = {
+    "AdPinAnalyticsSample": 
+        { data: {} },
     "MetricsResponseSample": 
         { data: {} },
     "CampaignsAnalyticsResponse_innerSample": 

@@ -22,19 +22,19 @@ public class IntegrationLogClientRequestTest {
     }
 
     /**
-     * Test the property 'method'
-     */
-    @Test
-    public void methodTest() {
-        // TODO: test method
-    }
-
-    /**
      * Test the property 'host'
      */
     @Test
     public void hostTest() {
         // TODO: test host
+    }
+
+    /**
+     * Test the property 'method'
+     */
+    @Test
+    public void methodTest() {
+        // TODO: test method
     }
 
     /**

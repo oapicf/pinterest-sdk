@@ -6,27 +6,27 @@
 
 
 static feeds_list_200_response_t *feeds_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     feeds_list_200_response_t *feeds_list_200_response_local_var = malloc(sizeof(feeds_list_200_response_t));
     if (!feeds_list_200_response_local_var) {
         return NULL;
     }
-    feeds_list_200_response_local_var->items = items;
     feeds_list_200_response_local_var->bookmark = bookmark;
+    feeds_list_200_response_local_var->items = items;
 
     feeds_list_200_response_local_var->_library_owned = 1;
     return feeds_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) feeds_list_200_response_t *feeds_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return feeds_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void feeds_list_200_response_free(feeds_list_200_response_t *feeds_list_200_resp
         return ;
     }
     listEntry_t *listEntry;
+    if (feeds_list_200_response->bookmark) {
+        free(feeds_list_200_response->bookmark);
+        feeds_list_200_response->bookmark = NULL;
+    }
     if (feeds_list_200_response->items) {
         list_ForEach(listEntry, feeds_list_200_response->items) {
             catalogs_feed_free(listEntry->data);
@@ -46,15 +50,19 @@ void feeds_list_200_response_free(feeds_list_200_response_t *feeds_list_200_resp
         list_freeList(feeds_list_200_response->items);
         feeds_list_200_response->items = NULL;
     }
-    if (feeds_list_200_response->bookmark) {
-        free(feeds_list_200_response->bookmark);
-        feeds_list_200_response->bookmark = NULL;
-    }
     free(feeds_list_200_response);
 }
 
 cJSON *feeds_list_200_response_convertToJSON(feeds_list_200_response_t *feeds_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // feeds_list_200_response->bookmark
+    if(feeds_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", feeds_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // feeds_list_200_response->items
     if (!feeds_list_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *feeds_list_200_response_convertToJSON(feeds_list_200_response_t *feeds_li
     }
     }
 
-
-    // feeds_list_200_response->bookmark
-    if(feeds_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", feeds_list_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ feeds_list_200_response_t *feeds_list_200_response_parseFromJSON(cJSON *feeds_li
 
     // define the local list for feeds_list_200_response->items
     list_t *itemsList = NULL;
+
+    // feeds_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(feeds_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // feeds_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(feeds_list_200_responseJSON, "items");
@@ -126,22 +138,10 @@ feeds_list_200_response_t *feeds_list_200_response_parseFromJSON(cJSON *feeds_li
         list_addElement(itemsList, itemsItem);
     }
 
-    // feeds_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(feeds_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     feeds_list_200_response_local_var = feeds_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return feeds_list_200_response_local_var;

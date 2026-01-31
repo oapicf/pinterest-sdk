@@ -57,7 +57,6 @@ class AudiencesApiSimulation extends Simulation {
 
     // Setup all the operations per second for the test to ultimately be generated from configs
     val audiencesCreatePerSecond = config.getDouble("performance.operationsPerSecond.audiencesCreate") * rateMultiplier * instanceMultiplier
-    val audiencesCreateCustomPerSecond = config.getDouble("performance.operationsPerSecond.audiencesCreateCustom") * rateMultiplier * instanceMultiplier
     val audiencesGetPerSecond = config.getDouble("performance.operationsPerSecond.audiencesGet") * rateMultiplier * instanceMultiplier
     val audiencesListPerSecond = config.getDouble("performance.operationsPerSecond.audiencesList") * rateMultiplier * instanceMultiplier
     val audiencesUpdatePerSecond = config.getDouble("performance.operationsPerSecond.audiencesUpdate") * rateMultiplier * instanceMultiplier
@@ -66,7 +65,6 @@ class AudiencesApiSimulation extends Simulation {
 
     // Set up CSV feeders
     val audiences/createPATHFeeder = csv(userDataDirectory + File.separator + "audiencesCreate-pathParams.csv").random
-    val audiences/create_customPATHFeeder = csv(userDataDirectory + File.separator + "audiencesCreateCustom-pathParams.csv").random
     val audiences/getPATHFeeder = csv(userDataDirectory + File.separator + "audiencesGet-pathParams.csv").random
     val audiences/listQUERYFeeder = csv(userDataDirectory + File.separator + "audiencesList-queryParams.csv").random
     val audiences/listPATHFeeder = csv(userDataDirectory + File.separator + "audiencesList-pathParams.csv").random
@@ -86,20 +84,6 @@ class AudiencesApiSimulation extends Simulation {
         rampUsersPerSec(1) to(audiencesCreatePerSecond) during(rampUpSeconds),
         constantUsersPerSec(audiencesCreatePerSecond) during(durationSeconds),
         rampUsersPerSec(audiencesCreatePerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scnaudiencesCreateCustom = scenario("audiencesCreateCustomSimulation")
-        .feed(audiences/create_customPATHFeeder)
-        .exec(http("audiencesCreateCustom")
-        .httpRequest("POST","/ad_accounts/${ad_account_id}/audiences/custom")
-)
-
-    // Run scnaudiencesCreateCustom with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnaudiencesCreateCustom.inject(
-        rampUsersPerSec(1) to(audiencesCreateCustomPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(audiencesCreateCustomPerSecond) during(durationSeconds),
-        rampUsersPerSec(audiencesCreateCustomPerSecond) to(1) during(rampDownSeconds)
     )
 
     

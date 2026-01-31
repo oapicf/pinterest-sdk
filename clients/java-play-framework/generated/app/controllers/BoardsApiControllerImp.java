@@ -1,12 +1,17 @@
 package controllers;
 
 import apimodels.Board;
+import apimodels.BoardCreate;
+import apimodels.BoardPrivacyFilter;
 import apimodels.BoardSection;
 import apimodels.BoardSectionsList200Response;
-import apimodels.BoardUpdate;
+import apimodels.BoardWithUpdatePrivacy;
+import apimodels.BoardWithUpdatePrivacyUpdate;
 import apimodels.BoardsList200Response;
 import apimodels.BoardsListPins200Response;
+import apimodels.CreativeType;
 import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -17,7 +22,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardsApiControllerImp extends BoardsApiControllerImpInterface {
     @Override
     public BoardSection boardSectionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardSection boardSection,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
@@ -49,7 +54,7 @@ public class BoardsApiControllerImp extends BoardsApiControllerImpInterface {
     }
 
     @Override
-    public Board boardsCreate(Http.Request request, Board board,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Board boardsCreate(Http.Request request, BoardCreate boardCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new Board();
     }
@@ -66,21 +71,21 @@ public class BoardsApiControllerImp extends BoardsApiControllerImpInterface {
     }
 
     @Override
-    public BoardsList200Response boardsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String privacy) throws Exception {
+    public BoardsList200Response boardsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BoardPrivacyFilter privacy, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new BoardsList200Response();
     }
 
     @Override
-    public BoardsListPins200Response boardsListPins(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
+    public BoardsListPins200Response boardsListPins(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<CreativeType> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
         //Do your magic!!!
         return new BoardsListPins200Response();
     }
 
     @Override
-    public Board boardsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardUpdate boardUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public BoardWithUpdatePrivacy boardsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
-        return new Board();
+        return new BoardWithUpdatePrivacy();
     }
 
 }

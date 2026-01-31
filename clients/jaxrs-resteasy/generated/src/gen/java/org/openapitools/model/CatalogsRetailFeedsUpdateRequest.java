@@ -19,56 +19,31 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object for updating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object for updating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailFeedsUpdateRequest   {
   
-  private NullableCurrency defaultCurrency;
-  private String name;
-  private CatalogsFormat format;
+  private CatalogsType catalogType;
   private CatalogsFeedCredentials credentials;
+  private ProductAvailabilityType defaultAvailability;
+  private NullableCurrency defaultCurrency;
+  private CatalogsFormat format;
   private String location;
+  private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status;
-  private CatalogsType catalogType;
-  private ProductAvailabilityType defaultAvailability;
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_currency")
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  @NotNull
   @Valid
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  /**
-   * A human-friendly name associated to a given feed.
-   **/
-  
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("format")
-  @Valid
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
@@ -85,6 +60,45 @@ public class CatalogsRetailFeedsUpdateRequest   {
   }
 
   /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_availability")
+  @Valid
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
+  }
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_currency")
+  @Valid
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("format")
+  @Valid
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    **/
   
@@ -95,6 +109,19 @@ public class CatalogsRetailFeedsUpdateRequest   {
   }
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed.
+   **/
+  
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -123,33 +150,6 @@ public class CatalogsRetailFeedsUpdateRequest   {
     this.status = status;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  @NotNull
-  @Valid
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_availability")
-  @Valid
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
-  }
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -160,20 +160,20 @@ public class CatalogsRetailFeedsUpdateRequest   {
       return false;
     }
     CatalogsRetailFeedsUpdateRequest catalogsRetailFeedsUpdateRequest = (CatalogsRetailFeedsUpdateRequest) o;
-    return Objects.equals(this.defaultCurrency, catalogsRetailFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsRetailFeedsUpdateRequest.name) &&
-        Objects.equals(this.format, catalogsRetailFeedsUpdateRequest.format) &&
+    return Objects.equals(this.catalogType, catalogsRetailFeedsUpdateRequest.catalogType) &&
         Objects.equals(this.credentials, catalogsRetailFeedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultAvailability, catalogsRetailFeedsUpdateRequest.defaultAvailability) &&
+        Objects.equals(this.defaultCurrency, catalogsRetailFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(this.format, catalogsRetailFeedsUpdateRequest.format) &&
         Objects.equals(this.location, catalogsRetailFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsRetailFeedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsRetailFeedsUpdateRequest.status) &&
-        Objects.equals(this.catalogType, catalogsRetailFeedsUpdateRequest.catalogType) &&
-        Objects.equals(this.defaultAvailability, catalogsRetailFeedsUpdateRequest.defaultAvailability);
+        Objects.equals(this.status, catalogsRetailFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType, defaultAvailability);
+    return Objects.hash(catalogType, credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -181,15 +181,15 @@ public class CatalogsRetailFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("}");
     return sb.toString();
   }

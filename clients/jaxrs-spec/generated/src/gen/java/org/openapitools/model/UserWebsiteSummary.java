@@ -16,33 +16,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UserWebsiteSummary")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteSummary   {
-  private String website;
   private String status;
   private String verifiedAt;
+  private String website;
 
   public UserWebsiteSummary() {
-  }
-
-  /**
-   * Website with path or domain only
-   **/
-  public UserWebsiteSummary website(String website) {
-    this.website = website;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
-  @JsonProperty("website")
-  public String getWebsite() {
-    return website;
-  }
-
-  @JsonProperty("website")
-  public void setWebsite(String website) {
-    this.website = website;
   }
 
   /**
@@ -85,6 +65,26 @@ public class UserWebsiteSummary   {
     this.verifiedAt = verifiedAt;
   }
 
+  /**
+   * Website with path or domain only
+   **/
+  public UserWebsiteSummary website(String website) {
+    this.website = website;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
+  @JsonProperty("website")
+  public String getWebsite() {
+    return website;
+  }
+
+  @JsonProperty("website")
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -95,14 +95,14 @@ public class UserWebsiteSummary   {
       return false;
     }
     UserWebsiteSummary userWebsiteSummary = (UserWebsiteSummary) o;
-    return Objects.equals(this.website, userWebsiteSummary.website) &&
-        Objects.equals(this.status, userWebsiteSummary.status) &&
-        Objects.equals(this.verifiedAt, userWebsiteSummary.verifiedAt);
+    return Objects.equals(this.status, userWebsiteSummary.status) &&
+        Objects.equals(this.verifiedAt, userWebsiteSummary.verifiedAt) &&
+        Objects.equals(this.website, userWebsiteSummary.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, status, verifiedAt);
+    return Objects.hash(status, verifiedAt, website);
   }
 
   @Override
@@ -110,9 +110,9 @@ public class UserWebsiteSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteSummary {\n");
     
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    verifiedAt: ").append(toIndentedString(verifiedAt)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

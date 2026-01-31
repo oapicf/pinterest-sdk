@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"bidInMicroCurrency": @"bid_in_micro_currency", @"appTypeMultipliers": @"app_type_multipliers", @"placementMultipliers": @"placement_multipliers" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"appTypeMultipliers": @"app_type_multipliers", @"bidInMicroCurrency": @"bid_in_micro_currency", @"placementMultipliers": @"placement_multipliers" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"bidInMicroCurrency", @"appTypeMultipliers", @"placementMultipliers"];
+  NSArray *optionalProperties = @[@"appTypeMultipliers", @"bidInMicroCurrency", @"placementMultipliers"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -1,7 +1,7 @@
 /*
  * board.h
  *
- * Board
+ * 
  */
 
 #ifndef _board_H_
@@ -17,45 +17,40 @@ typedef struct board_t board_t;
 
 #include "board_media.h"
 #include "board_owner.h"
-
-// Enum PRIVACY for board
-
-typedef enum  { pinterest_rest_api_board_PRIVACY_NULL = 0, pinterest_rest_api_board_PRIVACY__PUBLIC, pinterest_rest_api_board_PRIVACY__PROTECTED, pinterest_rest_api_board_PRIVACY_SECRET } pinterest_rest_api_board_PRIVACY_e;
-
-char* board_privacy_ToString(pinterest_rest_api_board_PRIVACY_e privacy);
-
-pinterest_rest_api_board_PRIVACY_e board_privacy_FromString(char* privacy);
+#include "board_privacy.h"
 
 
 
 typedef struct board_t {
-    char *id; // string
-    char *created_at; //date time
     char *board_pins_modified_at; //date time
-    char *name; // string
-    char *description; // string
     int collaborator_count; //numeric
-    int pin_count; //numeric
+    char *created_at; //date time
+    char *description; // string
     int follower_count; //numeric
+    char *id; // string
+    int is_ads_only; //boolean
     struct board_media_t *media; //model
+    char *name; // string
     struct board_owner_t *owner; //model
-    pinterest_rest_api_board_PRIVACY_e privacy; //enum
+    int pin_count; //numeric
+    board_privacy_t *privacy; // custom
 
     int _library_owned; // Is the library responsible for freeing this object?
 } board_t;
 
 __attribute__((deprecated)) board_t *board_create(
-    char *id,
-    char *created_at,
     char *board_pins_modified_at,
-    char *name,
-    char *description,
     int collaborator_count,
-    int pin_count,
+    char *created_at,
+    char *description,
     int follower_count,
+    char *id,
+    int is_ads_only,
     board_media_t *media,
+    char *name,
     board_owner_t *owner,
-    pinterest_rest_api_board_PRIVACY_e privacy
+    int pin_count,
+    board_privacy_t *privacy
 );
 
 void board_free(board_t *board);

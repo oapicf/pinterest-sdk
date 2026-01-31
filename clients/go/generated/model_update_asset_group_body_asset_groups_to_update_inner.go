@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,16 +24,16 @@ var _ MappedNullable = &UpdateAssetGroupBodyAssetGroupsToUpdateInner{}
 type UpdateAssetGroupBodyAssetGroupsToUpdateInner struct {
 	// Unique identifier of the asset group to update.
 	AssetGroupId string `json:"asset_group_id"`
-	// Asset Group name
-	Name *string `json:"name,omitempty"`
-	// Asset group description
-	Description *string `json:"description,omitempty"`
 	// Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
 	AssetGroupTypes []AssetGroupType `json:"asset_group_types,omitempty"`
 	// A list of asset ids to add to the asset group.
 	AssetsToAdd []string `json:"assets_to_add,omitempty"`
 	// A list of asset ids to remove from the asset group.
 	AssetsToRemove []string `json:"assets_to_remove,omitempty"`
+	// Asset group description
+	Description *string `json:"description,omitempty"`
+	// Asset Group name
+	Name *string `json:"name,omitempty"`
 }
 
 type _UpdateAssetGroupBodyAssetGroupsToUpdateInner UpdateAssetGroupBodyAssetGroupsToUpdateInner
@@ -78,70 +78,6 @@ func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetAssetGroupIdOk() (*str
 // SetAssetGroupId sets field value
 func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) SetAssetGroupId(v string) {
 	o.AssetGroupId = v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) SetName(v string) {
-	o.Name = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) SetDescription(v string) {
-	o.Description = &v
 }
 
 // GetAssetGroupTypes returns the AssetGroupTypes field value if set, zero value otherwise.
@@ -240,6 +176,70 @@ func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) SetAssetsToRemove(v []str
 	o.AssetsToRemove = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *UpdateAssetGroupBodyAssetGroupsToUpdateInner) SetName(v string) {
+	o.Name = &v
+}
+
 func (o UpdateAssetGroupBodyAssetGroupsToUpdateInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -251,12 +251,6 @@ func (o UpdateAssetGroupBodyAssetGroupsToUpdateInner) MarshalJSON() ([]byte, err
 func (o UpdateAssetGroupBodyAssetGroupsToUpdateInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["asset_group_id"] = o.AssetGroupId
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
 	if !IsNil(o.AssetGroupTypes) {
 		toSerialize["asset_group_types"] = o.AssetGroupTypes
 	}
@@ -265,6 +259,12 @@ func (o UpdateAssetGroupBodyAssetGroupsToUpdateInner) ToMap() (map[string]interf
 	}
 	if !IsNil(o.AssetsToRemove) {
 		toSerialize["assets_to_remove"] = o.AssetsToRemove
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

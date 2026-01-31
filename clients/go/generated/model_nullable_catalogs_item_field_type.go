@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -49,7 +49,6 @@ const (
 	SALE_PRICE NullableCatalogsItemFieldType = "SALE_PRICE"
 	IS_BUNDLE NullableCatalogsItemFieldType = "IS_BUNDLE"
 	EXPIRATION_DATE NullableCatalogsItemFieldType = "EXPIRATION_DATE"
-	SALE_PRICE_EFFECTIVE_DATE NullableCatalogsItemFieldType = "SALE_PRICE_EFFECTIVE_DATE"
 	AVAILABILITY_DATE NullableCatalogsItemFieldType = "AVAILABILITY_DATE"
 	WEIGHT_UNIT NullableCatalogsItemFieldType = "WEIGHT_UNIT"
 	PRODUCT_TYPE NullableCatalogsItemFieldType = "PRODUCT_TYPE"
@@ -77,6 +76,56 @@ const (
 	MIN_AD_PRICE NullableCatalogsItemFieldType = "MIN_AD_PRICE"
 	SHIPPING_WIDTH NullableCatalogsItemFieldType = "SHIPPING_WIDTH"
 	SHIPPING_HEIGHT NullableCatalogsItemFieldType = "SHIPPING_HEIGHT"
+	AD_IMAGE_0_LINK NullableCatalogsItemFieldType = "AD_IMAGE_0_LINK"
+	AD_IMAGE_1_LINK NullableCatalogsItemFieldType = "AD_IMAGE_1_LINK"
+	AD_IMAGE_2_LINK NullableCatalogsItemFieldType = "AD_IMAGE_2_LINK"
+	AD_IMAGE_3_LINK NullableCatalogsItemFieldType = "AD_IMAGE_3_LINK"
+	AD_IMAGE_4_LINK NullableCatalogsItemFieldType = "AD_IMAGE_4_LINK"
+	AD_IMAGE_5_LINK NullableCatalogsItemFieldType = "AD_IMAGE_5_LINK"
+	AD_IMAGE_6_LINK NullableCatalogsItemFieldType = "AD_IMAGE_6_LINK"
+	AD_IMAGE_7_LINK NullableCatalogsItemFieldType = "AD_IMAGE_7_LINK"
+	AD_IMAGE_8_LINK NullableCatalogsItemFieldType = "AD_IMAGE_8_LINK"
+	AD_IMAGE_9_LINK NullableCatalogsItemFieldType = "AD_IMAGE_9_LINK"
+	AD_IMAGE_10_LINK NullableCatalogsItemFieldType = "AD_IMAGE_10_LINK"
+	AD_IMAGE_11_LINK NullableCatalogsItemFieldType = "AD_IMAGE_11_LINK"
+	AD_IMAGE_12_LINK NullableCatalogsItemFieldType = "AD_IMAGE_12_LINK"
+	AD_IMAGE_13_LINK NullableCatalogsItemFieldType = "AD_IMAGE_13_LINK"
+	AD_IMAGE_14_LINK NullableCatalogsItemFieldType = "AD_IMAGE_14_LINK"
+	AD_IMAGE_15_LINK NullableCatalogsItemFieldType = "AD_IMAGE_15_LINK"
+	AD_IMAGE_16_LINK NullableCatalogsItemFieldType = "AD_IMAGE_16_LINK"
+	AD_IMAGE_17_LINK NullableCatalogsItemFieldType = "AD_IMAGE_17_LINK"
+	AD_IMAGE_18_LINK NullableCatalogsItemFieldType = "AD_IMAGE_18_LINK"
+	AD_IMAGE_19_LINK NullableCatalogsItemFieldType = "AD_IMAGE_19_LINK"
+	AD_IMAGE_0_TAG NullableCatalogsItemFieldType = "AD_IMAGE_0_TAG"
+	AD_IMAGE_1_TAG NullableCatalogsItemFieldType = "AD_IMAGE_1_TAG"
+	AD_IMAGE_2_TAG NullableCatalogsItemFieldType = "AD_IMAGE_2_TAG"
+	AD_IMAGE_3_TAG NullableCatalogsItemFieldType = "AD_IMAGE_3_TAG"
+	AD_IMAGE_4_TAG NullableCatalogsItemFieldType = "AD_IMAGE_4_TAG"
+	AD_IMAGE_5_TAG NullableCatalogsItemFieldType = "AD_IMAGE_5_TAG"
+	AD_IMAGE_6_TAG NullableCatalogsItemFieldType = "AD_IMAGE_6_TAG"
+	AD_IMAGE_7_TAG NullableCatalogsItemFieldType = "AD_IMAGE_7_TAG"
+	AD_IMAGE_8_TAG NullableCatalogsItemFieldType = "AD_IMAGE_8_TAG"
+	AD_IMAGE_9_TAG NullableCatalogsItemFieldType = "AD_IMAGE_9_TAG"
+	AD_IMAGE_10_TAG NullableCatalogsItemFieldType = "AD_IMAGE_10_TAG"
+	AD_IMAGE_11_TAG NullableCatalogsItemFieldType = "AD_IMAGE_11_TAG"
+	AD_IMAGE_12_TAG NullableCatalogsItemFieldType = "AD_IMAGE_12_TAG"
+	AD_IMAGE_13_TAG NullableCatalogsItemFieldType = "AD_IMAGE_13_TAG"
+	AD_IMAGE_14_TAG NullableCatalogsItemFieldType = "AD_IMAGE_14_TAG"
+	AD_IMAGE_15_TAG NullableCatalogsItemFieldType = "AD_IMAGE_15_TAG"
+	AD_IMAGE_16_TAG NullableCatalogsItemFieldType = "AD_IMAGE_16_TAG"
+	AD_IMAGE_17_TAG NullableCatalogsItemFieldType = "AD_IMAGE_17_TAG"
+	AD_IMAGE_18_TAG NullableCatalogsItemFieldType = "AD_IMAGE_18_TAG"
+	AD_IMAGE_19_TAG NullableCatalogsItemFieldType = "AD_IMAGE_19_TAG"
+	AD_VIDEO_0_LINK NullableCatalogsItemFieldType = "AD_VIDEO_0_LINK"
+	AD_VIDEO_1_LINK NullableCatalogsItemFieldType = "AD_VIDEO_1_LINK"
+	AD_VIDEO_2_LINK NullableCatalogsItemFieldType = "AD_VIDEO_2_LINK"
+	AD_VIDEO_0_TAG NullableCatalogsItemFieldType = "AD_VIDEO_0_TAG"
+	AD_VIDEO_1_TAG NullableCatalogsItemFieldType = "AD_VIDEO_1_TAG"
+	AD_VIDEO_2_TAG NullableCatalogsItemFieldType = "AD_VIDEO_2_TAG"
+	INSTALLMENT_PRICE NullableCatalogsItemFieldType = "INSTALLMENT_PRICE"
+	UNIT_PRICE_TOTAL_MEASURE NullableCatalogsItemFieldType = "UNIT_PRICE_TOTAL_MEASURE"
+	UNIT_PRICE_BASE_MEASURE NullableCatalogsItemFieldType = "UNIT_PRICE_BASE_MEASURE"
+	SALE_PRICE_EFFECTIVE_DATE NullableCatalogsItemFieldType = "SALE_PRICE_EFFECTIVE_DATE"
 )
 
 // All allowed values of NullableCatalogsItemFieldType enum
@@ -109,7 +158,6 @@ var AllowedNullableCatalogsItemFieldTypeEnumValues = []NullableCatalogsItemField
 	"SALE_PRICE",
 	"IS_BUNDLE",
 	"EXPIRATION_DATE",
-	"SALE_PRICE_EFFECTIVE_DATE",
 	"AVAILABILITY_DATE",
 	"WEIGHT_UNIT",
 	"PRODUCT_TYPE",
@@ -137,6 +185,56 @@ var AllowedNullableCatalogsItemFieldTypeEnumValues = []NullableCatalogsItemField
 	"MIN_AD_PRICE",
 	"SHIPPING_WIDTH",
 	"SHIPPING_HEIGHT",
+	"AD_IMAGE_0_LINK",
+	"AD_IMAGE_1_LINK",
+	"AD_IMAGE_2_LINK",
+	"AD_IMAGE_3_LINK",
+	"AD_IMAGE_4_LINK",
+	"AD_IMAGE_5_LINK",
+	"AD_IMAGE_6_LINK",
+	"AD_IMAGE_7_LINK",
+	"AD_IMAGE_8_LINK",
+	"AD_IMAGE_9_LINK",
+	"AD_IMAGE_10_LINK",
+	"AD_IMAGE_11_LINK",
+	"AD_IMAGE_12_LINK",
+	"AD_IMAGE_13_LINK",
+	"AD_IMAGE_14_LINK",
+	"AD_IMAGE_15_LINK",
+	"AD_IMAGE_16_LINK",
+	"AD_IMAGE_17_LINK",
+	"AD_IMAGE_18_LINK",
+	"AD_IMAGE_19_LINK",
+	"AD_IMAGE_0_TAG",
+	"AD_IMAGE_1_TAG",
+	"AD_IMAGE_2_TAG",
+	"AD_IMAGE_3_TAG",
+	"AD_IMAGE_4_TAG",
+	"AD_IMAGE_5_TAG",
+	"AD_IMAGE_6_TAG",
+	"AD_IMAGE_7_TAG",
+	"AD_IMAGE_8_TAG",
+	"AD_IMAGE_9_TAG",
+	"AD_IMAGE_10_TAG",
+	"AD_IMAGE_11_TAG",
+	"AD_IMAGE_12_TAG",
+	"AD_IMAGE_13_TAG",
+	"AD_IMAGE_14_TAG",
+	"AD_IMAGE_15_TAG",
+	"AD_IMAGE_16_TAG",
+	"AD_IMAGE_17_TAG",
+	"AD_IMAGE_18_TAG",
+	"AD_IMAGE_19_TAG",
+	"AD_VIDEO_0_LINK",
+	"AD_VIDEO_1_LINK",
+	"AD_VIDEO_2_LINK",
+	"AD_VIDEO_0_TAG",
+	"AD_VIDEO_1_TAG",
+	"AD_VIDEO_2_TAG",
+	"INSTALLMENT_PRICE",
+	"UNIT_PRICE_TOTAL_MEASURE",
+	"UNIT_PRICE_BASE_MEASURE",
+	"SALE_PRICE_EFFECTIVE_DATE",
 }
 
 func (v *NullableCatalogsItemFieldType) UnmarshalJSON(src []byte) error {

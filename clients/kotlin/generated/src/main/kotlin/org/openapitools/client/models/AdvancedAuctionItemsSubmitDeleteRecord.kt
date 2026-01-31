@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AdvancedAuctionOperationError
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.Language
 
@@ -24,23 +25,28 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing an item bid option deletion operation
  *
- * @param itemId The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
+ * @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
  */
 
 
 data class AdvancedAuctionItemsSubmitDeleteRecord (
 
+    @Json(name = "country")
+    val country: Country,
+
     /* The catalog retail item id in the merchant namespace */
     @Json(name = "item_id")
     val itemId: kotlin.String,
 
-    @Json(name = "country")
-    val country: Country,
-
     @Json(name = "language")
-    val language: Language
+    val language: Language,
+
+    /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
+    @Json(name = "errors")
+    val errors: kotlin.collections.List<AdvancedAuctionOperationError>? = null
 
 ) {
 

@@ -8,11 +8,21 @@
 
 const Controller = require('./Controller');
 const service = require('../services/OauthService');
+const oauth/conversion_token = async (request, response) => {
+  await Controller.handleRequest(request, response, service.oauth/conversion_token);
+};
+
 const oauth/token = async (request, response) => {
   await Controller.handleRequest(request, response, service.oauth/token);
 };
 
+const token/revoke = async (request, response) => {
+  await Controller.handleRequest(request, response, service.token/revoke);
+};
+
 
 module.exports = {
+  oauth/conversion_token,
   oauth/token,
+  token/revoke,
 };

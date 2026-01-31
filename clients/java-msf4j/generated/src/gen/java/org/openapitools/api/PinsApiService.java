@@ -6,6 +6,7 @@ import org.openapitools.model.*;
 import org.wso2.msf4j.formparam.FormDataParam;
 import org.wso2.msf4j.formparam.FileInfo;
 
+import org.openapitools.model.CreativeType;
 import java.util.Date;
 import org.openapitools.model.Error;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -25,7 +27,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public abstract class PinsApiService {
     public abstract Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds
  ,Date startDate
@@ -49,17 +51,17 @@ public abstract class PinsApiService {
  ,String adAccountId
  ) throws NotFoundException;
     public abstract Response pinsGet(String pinId
- ,Boolean pinMetrics
  ,String adAccountId
+ ,Boolean pinMetrics
  ) throws NotFoundException;
-    public abstract Response pinsList(String bookmark
- ,Integer pageSize
- ,String pinFilter
+    public abstract Response pinsList(String pinFilter
+ ,Boolean pinMetrics
  ,Boolean includeProtectedPins
  ,String pinType
- ,List<String> creativeTypes
+ ,List<CreativeType> creativeTypes
  ,String adAccountId
- ,Boolean pinMetrics
+ ,String bookmark
+ ,Integer pageSize
  ) throws NotFoundException;
     public abstract Response pinsSave(String pinId
  ,PinsSaveRequest pinsSaveRequest

@@ -8,9 +8,9 @@
 
 (def ads-analytics-create-async-response-data
   {
+   (ds/opt :message) string?
    (ds/opt :report_status) bulk-reporting-job-status-spec
    (ds/opt :token) string?
-   (ds/opt :message) string?
    })
 
 (def ads-analytics-create-async-response-spec

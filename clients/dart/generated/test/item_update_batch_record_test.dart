@@ -16,14 +16,14 @@ void main() {
   // final instance = ItemUpdateBatchRecord();
 
   group('test ItemUpdateBatchRecord', () {
-    // The catalog item id in the merchant namespace
-    // String itemId
-    test('to test the property `itemId`', () async {
+    // UpdatableItemAttributes attributes
+    test('to test the property `attributes`', () async {
       // TODO
     });
 
-    // UpdatableItemAttributes attributes
-    test('to test the property `attributes`', () async {
+    // The catalog item id in the merchant namespace
+    // String itemId
+    test('to test the property `itemId`', () async {
       // TODO
     });
 

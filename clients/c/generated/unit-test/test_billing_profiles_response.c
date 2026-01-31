@@ -23,18 +23,20 @@ billing_profiles_response_t* instantiate_billing_profiles_response(int include_o
   if (include_optional) {
     billing_profiles_response = billing_profiles_response_create(
       "12312451231",
+      pinterest_rest_api_billing_profiles_response_BILLINGTYPE_"CREDIT_CARD",
       pinterest_rest_api_billing_profiles_response_CARDTYPE_"VISA",
-      pinterest_rest_api_billing_profiles_response_STATUS_"INVALID",
       "12312451231",
-      pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_"VISA"
+      pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_"VISA",
+      pinterest_rest_api_billing_profiles_response_STATUS_"INVALID"
     );
   } else {
     billing_profiles_response = billing_profiles_response_create(
       "12312451231",
+      pinterest_rest_api_billing_profiles_response_BILLINGTYPE_"CREDIT_CARD",
       pinterest_rest_api_billing_profiles_response_CARDTYPE_"VISA",
-      pinterest_rest_api_billing_profiles_response_STATUS_"INVALID",
       "12312451231",
-      pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_"VISA"
+      pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_"VISA",
+      pinterest_rest_api_billing_profiles_response_STATUS_"INVALID"
     );
   }
 

@@ -1,7 +1,6 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.Audience;
-import com.prokarma.pkmst.model.AudienceCreateCustomRequest;
 import com.prokarma.pkmst.model.AudienceCreateRequest;
 import com.prokarma.pkmst.model.AudienceUpdateRequest;
 import com.prokarma.pkmst.model.AudiencesList200Response;
@@ -28,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class AudiencesApiController implements AudiencesApi {
     private final ObjectMapper objectMapper;
@@ -39,23 +38,6 @@ public class AudiencesApiController implements AudiencesApi {
 
     public ResponseEntity<Audience> audiencesCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @ApiParam(value = "List of ads to create, size limit [1, 30]" ,required=true )   @RequestBody AudienceCreateRequest audienceCreateRequest,
-        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
-        // do some magic!
-
-        if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<Audience>(objectMapper.readValue("", Audience.class), HttpStatus.OK);
-        }
-
-
-        if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<Audience>(objectMapper.readValue("", Audience.class), HttpStatus.OK);
-        }
-
-        return new ResponseEntity<Audience>(HttpStatus.OK);
-    }
-
-    public ResponseEntity<Audience> audiencesCreateCustom(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Custom audience to create." ,required=true )   @RequestBody AudienceCreateCustomRequest audienceCreateCustomRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
@@ -120,7 +102,7 @@ public class AudiencesApiController implements AudiencesApi {
 
     public ResponseEntity<Audience> audiencesUpdate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @ApiParam(value = "Unique identifier of an audience",required=true ) @PathVariable("audience_id") String audienceId,
-        @ApiParam(value = "The audience to be updated."  )   @RequestBody AudienceUpdateRequest audienceUpdateRequest,
+        @ApiParam(value = "The audience to be updated." ,required=true )   @RequestBody AudienceUpdateRequest audienceUpdateRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

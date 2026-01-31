@@ -209,7 +209,7 @@ try {
 ## `businessAssetMembersGet()`
 
 ```php
-businessAssetMembersGet($business_id, $asset_id, $bookmark, $page_size, $start_index): \OpenAPI\Client\Model\BusinessAssetMembersGet200Response
+businessAssetMembersGet($business_id, $asset_id, $fetch_system_users, $bookmark, $page_size, $start_index): \OpenAPI\Client\Model\BusinessAssetMembersGet200Response
 ```
 
 Get members with access to asset
@@ -235,12 +235,13 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
 );
 $business_id = 729090764583391194; // string | Unique identifier of the requesting business.
 $asset_id = 729090764583391194; // string | Unique identifier of a business asset.
+$fetch_system_users = false; // bool | Fetches system users if True. Fetches regular user employees if False.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
 $page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
 try {
-    $result = $apiInstance->businessAssetMembersGet($business_id, $asset_id, $bookmark, $page_size, $start_index);
+    $result = $apiInstance->businessAssetMembersGet($business_id, $asset_id, $fetch_system_users, $bookmark, $page_size, $start_index);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->businessAssetMembersGet: ', $e->getMessage(), PHP_EOL;
@@ -253,6 +254,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **asset_id** | **string**| Unique identifier of a business asset. | |
+| **fetch_system_users** | **bool**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
 | **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |

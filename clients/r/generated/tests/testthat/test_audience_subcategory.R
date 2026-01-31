@@ -5,6 +5,22 @@ context("Test AudienceSubcategory")
 
 model_instance <- AudienceSubcategory$new()
 
+test_that("id", {
+  # tests for the property `id` (character)
+  # Subinterest ID.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("index", {
+  # tests for the property `index` (numeric)
+  # Subinterest affinity index.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`index`, "EXPECTED_RESULT")
+})
+
 test_that("key", {
   # tests for the property `key` (character)
   # Interest unique key (same as ID).
@@ -27,20 +43,4 @@ test_that("ratio", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ratio`, "EXPECTED_RESULT")
-})
-
-test_that("index", {
-  # tests for the property `index` (numeric)
-  # Subinterest affinity index.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`index`, "EXPECTED_RESULT")
-})
-
-test_that("id", {
-  # tests for the property `id` (character)
-  # Subinterest ID.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })

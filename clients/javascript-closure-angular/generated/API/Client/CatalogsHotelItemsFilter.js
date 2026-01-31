@@ -6,6 +6,13 @@ goog.provide('API.Client.CatalogsHotelItemsFilter');
 API.Client.CatalogsHotelItemsFilter = function() {}
 
 /**
+ * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelItemsFilter.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
@@ -16,13 +23,6 @@ API.Client.CatalogsHotelItemsFilter.prototype.catalogType;
  * @export
  */
 API.Client.CatalogsHotelItemsFilter.prototype.hotelIds;
-
-/**
- * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelItemsFilter.prototype.catalogId;
 
 /** @enum {string} */
 API.Client.CatalogsHotelItemsFilter.CatalogTypeEnum = { 

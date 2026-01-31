@@ -22,19 +22,15 @@ import org.openapitools.client.models.BulkUpsertRequestUpdate
 import org.openapitools.client.models.AdGroupUpdateRequest
 import org.openapitools.client.models.AdUpdateRequest
 import org.openapitools.client.models.CampaignUpdateRequest
+import org.openapitools.client.models.CatalogsProductGroupsUpdateRequest
 import org.openapitools.client.models.KeywordUpdate
+import org.openapitools.client.models.LabelBulkUpdateRequest
 import org.openapitools.client.models.ProductGroupPromotionUpdateRequest
 
 class BulkUpsertRequestUpdateTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of BulkUpsertRequestUpdate
         //val modelInstance = BulkUpsertRequestUpdate()
-
-        // to test the property `campaigns`
-        should("test campaigns") {
-            // uncomment below to test the property
-            //modelInstance.campaigns shouldBe ("TODO")
-        }
 
         // to test the property `adGroups`
         should("test adGroups") {
@@ -48,16 +44,34 @@ class BulkUpsertRequestUpdateTest : ShouldSpec() {
             //modelInstance.ads shouldBe ("TODO")
         }
 
-        // to test the property `productGroups`
-        should("test productGroups") {
+        // to test the property `campaigns`
+        should("test campaigns") {
             // uncomment below to test the property
-            //modelInstance.productGroups shouldBe ("TODO")
+            //modelInstance.campaigns shouldBe ("TODO")
+        }
+
+        // to test the property `catalogProductGroups`
+        should("test catalogProductGroups") {
+            // uncomment below to test the property
+            //modelInstance.catalogProductGroups shouldBe ("TODO")
         }
 
         // to test the property `keywords`
         should("test keywords") {
             // uncomment below to test the property
             //modelInstance.keywords shouldBe ("TODO")
+        }
+
+        // to test the property `labels`
+        should("test labels") {
+            // uncomment below to test the property
+            //modelInstance.labels shouldBe ("TODO")
+        }
+
+        // to test the property `productGroups`
+        should("test productGroups") {
+            // uncomment below to test the property
+            //modelInstance.productGroups shouldBe ("TODO")
         }
 
     }

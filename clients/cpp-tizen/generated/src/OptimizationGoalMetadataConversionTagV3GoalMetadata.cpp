@@ -29,6 +29,7 @@ OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::__init()
 	//cpa_goal_value_in_micro_currency = std::string();
 	//is_roas_optimized = bool(false);
 	//learning_mode_type = std::string();
+	//reporting_event = std::string();
 }
 
 void
@@ -63,6 +64,11 @@ OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::__cleanup()
 	//
 	//delete learning_mode_type;
 	//learning_mode_type = NULL;
+	//}
+	//if(reporting_event != NULL) {
+	//
+	//delete reporting_event;
+	//reporting_event = NULL;
 	//}
 	//
 }
@@ -141,6 +147,17 @@ OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::fromJson(char* jsonStr
 			
 		}
 	}
+	const gchar *reporting_eventKey = "reporting_event";
+	node = json_object_get_member(pJsonObject, reporting_eventKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&reporting_event, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::OptimizationGoalMetadata_conversion_tag_v3_goal_metadata(char* json)
@@ -212,6 +229,15 @@ OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::toJson()
 	}
 	const gchar *learning_mode_typeKey = "learning_mode_type";
 	json_object_set_member(pJsonObject, learning_mode_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getReportingEvent();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *reporting_eventKey = "reporting_event";
+	json_object_set_member(pJsonObject, reporting_eventKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -290,6 +316,18 @@ void
 OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::setLearningModeType(std::string  learning_mode_type)
 {
 	this->learning_mode_type = learning_mode_type;
+}
+
+std::string
+OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::getReportingEvent()
+{
+	return reporting_event;
+}
+
+void
+OptimizationGoalMetadata_conversion_tag_v3_goal_metadata::setReportingEvent(std::string  reporting_event)
+{
+	this->reporting_event = reporting_event;
 }
 
 

@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -255,7 +255,7 @@ import (
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	customerListId := "customerListId_example" // string | Unique identifier of a customer list
-	customerListUpdateRequest := *openapiclient.NewCustomerListUpdateRequest("email2@pinterest.com,email6@pinterest.com,", openapiclient.UserListOperationType("ADD")) // CustomerListUpdateRequest | 
+	customerListUpdateRequest := *openapiclient.NewCustomerListUpdateRequest(openapiclient.UserListOperationType("ADD"), "email2@pinterest.com,email6@pinterest.com,") // CustomerListUpdateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

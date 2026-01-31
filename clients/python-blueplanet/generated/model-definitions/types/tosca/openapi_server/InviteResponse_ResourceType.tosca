@@ -1,0 +1,80 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server InviteResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a InviteResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BaseInviteDataResponseInviteData = openapi_server.resourceTypes.BaseInviteDataResponseInviteData
+  BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+  InviteAssetsSummary = openapi_server.resourceTypes.InviteAssetsSummary
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  InviteResponse {
+    title = InviteResponse
+    description = InviteResponse
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier of the invite/request."
+          optional = false
+        }
+        invite_data {
+          type = BaseInviteDataResponseInviteData
+          description = ""
+          optional = false
+        }
+        is_received_invite {
+          type =  boolean
+          description = "Indicates whether the invite/request was received."
+          optional = false
+        }
+        user {
+          type = BusinessAccessUserSummary
+          description = "Metadata for the member/partner that was sent the invite/request."
+          optional = false
+        }
+        assets_summary {
+          type = InviteAssetsSummary
+          description = ""
+          optional = false
+        }
+        business_roles {
+          type = array
+          items.type =  string
+          description = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER."
+          optional = false
+        }
+        created_by_business {
+          type =  
+          description = "Metadata for the business that created the invite/request."
+          optional = false
+        }
+        created_by_user {
+          type =  
+          description = "Metadata for the user that created the invite/request."
+          optional = false
+        }
+        created_time {
+          type =  integer
+          description = "The time the invite/request was created. Returned in milliseconds."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  InviteResponse {
+    title = InviteResponse
+    description = InviteResponse
+    implements = openapi_server.resourceTypes.InviteResponse
+
+  }
+}

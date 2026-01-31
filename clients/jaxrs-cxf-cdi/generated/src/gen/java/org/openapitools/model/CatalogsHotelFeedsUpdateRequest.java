@@ -25,74 +25,38 @@ import java.util.Objects;
 @ApiModel(description = "Request object for updating a feed.")
 public class CatalogsHotelFeedsUpdateRequest   {
   
-  private NullableCurrency defaultCurrency;
-
-  private String name;
-
-  private CatalogsFormat format;
+  private CatalogsType catalogType;
 
   private CatalogsFeedCredentials credentials;
 
+  private NullableCurrency defaultCurrency;
+
+  private CatalogsFormat format;
+
   private String location;
+
+  private String name;
 
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   private CatalogsStatus status;
 
-  private CatalogsType catalogType;
-
   /**
    **/
-  public CatalogsHotelFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
+  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_currency")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-
-  /**
-   * A human-friendly name associated to a given feed.
-   **/
-  public CatalogsHotelFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  /**
-   **/
-  public CatalogsHotelFeedsUpdateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
 
@@ -115,6 +79,42 @@ public class CatalogsHotelFeedsUpdateRequest   {
 
 
   /**
+   **/
+  public CatalogsHotelFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_currency")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+
+  /**
+   **/
+  public CatalogsHotelFeedsUpdateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    **/
   public CatalogsHotelFeedsUpdateRequest location(String location) {
@@ -130,6 +130,25 @@ public class CatalogsHotelFeedsUpdateRequest   {
   }
   public void setLocation(String location) {
     this.location = location;
+  }
+
+
+  /**
+   * A human-friendly name associated to a given feed.
+   **/
+  public CatalogsHotelFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -169,25 +188,6 @@ public class CatalogsHotelFeedsUpdateRequest   {
   }
 
 
-  /**
-   **/
-  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -198,19 +198,19 @@ public class CatalogsHotelFeedsUpdateRequest   {
       return false;
     }
     CatalogsHotelFeedsUpdateRequest catalogsHotelFeedsUpdateRequest = (CatalogsHotelFeedsUpdateRequest) o;
-    return Objects.equals(this.defaultCurrency, catalogsHotelFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsHotelFeedsUpdateRequest.name) &&
-        Objects.equals(this.format, catalogsHotelFeedsUpdateRequest.format) &&
+    return Objects.equals(this.catalogType, catalogsHotelFeedsUpdateRequest.catalogType) &&
         Objects.equals(this.credentials, catalogsHotelFeedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultCurrency, catalogsHotelFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(this.format, catalogsHotelFeedsUpdateRequest.format) &&
         Objects.equals(this.location, catalogsHotelFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsHotelFeedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsHotelFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsHotelFeedsUpdateRequest.status) &&
-        Objects.equals(this.catalogType, catalogsHotelFeedsUpdateRequest.catalogType);
+        Objects.equals(this.status, catalogsHotelFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType);
+    return Objects.hash(catalogType, credentials, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -218,14 +218,14 @@ public class CatalogsHotelFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

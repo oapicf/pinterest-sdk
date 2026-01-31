@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PartnerId** | **string** | Unique identifier of a business partner to update asset access to. | 
 **AssetId** | **string** | Unique identifier of the business asset. | 
+**PartnerId** | **string** | Unique identifier of a business partner to update asset access to. | 
 **PartnerType** | Pointer to **string** | If partner_type&#x3D;INTERNAL, the deleted asset access is for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the deleted asset access is for the access you have to the partner&#39;s business asset. | [optional] [default to "INTERNAL"]
 
 ## Methods
 
 ### NewDeletePartnerAssetAccessBodyAccessesInner
 
-`func NewDeletePartnerAssetAccessBodyAccessesInner(partnerId string, assetId string, ) *DeletePartnerAssetAccessBodyAccessesInner`
+`func NewDeletePartnerAssetAccessBodyAccessesInner(assetId string, partnerId string, ) *DeletePartnerAssetAccessBodyAccessesInner`
 
 NewDeletePartnerAssetAccessBodyAccessesInner instantiates a new DeletePartnerAssetAccessBodyAccessesInner object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewDeletePartnerAssetAccessBodyAccessesInnerWithDefaults instantiates a new DeletePartnerAssetAccessBodyAccessesInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPartnerId
-
-`func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerId() string`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *DeletePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string)`
-
-SetPartnerId sets PartnerId field to given value.
-
 
 ### GetAssetId
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *DeletePartnerAssetAccessBodyAccessesInner) SetAssetId(v string)`
 
 SetAssetId sets AssetId field to given value.
+
+
+### GetPartnerId
+
+`func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerId() string`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *DeletePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string)`
+
+SetPartnerId sets PartnerId field to given value.
 
 
 ### GetPartnerType

@@ -22,13 +22,13 @@ feed_processing_results_list_200_response_t* instantiate_feed_processing_results
   feed_processing_results_list_200_response_t* feed_processing_results_list_200_response = NULL;
   if (include_optional) {
     feed_processing_results_list_200_response = feed_processing_results_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     feed_processing_results_list_200_response = feed_processing_results_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

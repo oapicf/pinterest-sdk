@@ -22,17 +22,17 @@ create_mmm_report_response_data_t* instantiate_create_mmm_report_response_data(i
   create_mmm_report_response_data_t* create_mmm_report_response_data = NULL;
   if (include_optional) {
     create_mmm_report_response_data = create_mmm_report_response_data_create(
+      "0",
       "FINISHED",
-      "0",
-      "0",
-      "success"
+      "success",
+      "0"
     );
   } else {
     create_mmm_report_response_data = create_mmm_report_response_data_create(
+      "0",
       "FINISHED",
-      "0",
-      "0",
-      "success"
+      "success",
+      "0"
     );
   }
 

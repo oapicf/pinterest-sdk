@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,13 @@ var _ MappedNullable = &BulkUpsertRequestUpdate{}
 
 // BulkUpsertRequestUpdate Request for creation of entities in bulk.
 type BulkUpsertRequestUpdate struct {
-	Campaigns []CampaignUpdateRequest `json:"campaigns,omitempty"`
 	AdGroups []AdGroupUpdateRequest `json:"ad_groups,omitempty"`
 	Ads []AdUpdateRequest `json:"ads,omitempty"`
-	ProductGroups []ProductGroupPromotionUpdateRequest `json:"product_groups,omitempty"`
+	Campaigns []CampaignUpdateRequest `json:"campaigns,omitempty"`
+	CatalogProductGroups []CatalogsProductGroupsUpdateRequest `json:"catalog_product_groups,omitempty"`
 	Keywords []KeywordUpdate `json:"keywords,omitempty"`
+	Labels []LabelBulkUpdateRequest `json:"labels,omitempty"`
+	ProductGroups []ProductGroupPromotionUpdateRequest `json:"product_groups,omitempty"`
 }
 
 // NewBulkUpsertRequestUpdate instantiates a new BulkUpsertRequestUpdate object
@@ -42,38 +44,6 @@ func NewBulkUpsertRequestUpdate() *BulkUpsertRequestUpdate {
 func NewBulkUpsertRequestUpdateWithDefaults() *BulkUpsertRequestUpdate {
 	this := BulkUpsertRequestUpdate{}
 	return &this
-}
-
-// GetCampaigns returns the Campaigns field value if set, zero value otherwise.
-func (o *BulkUpsertRequestUpdate) GetCampaigns() []CampaignUpdateRequest {
-	if o == nil || IsNil(o.Campaigns) {
-		var ret []CampaignUpdateRequest
-		return ret
-	}
-	return o.Campaigns
-}
-
-// GetCampaignsOk returns a tuple with the Campaigns field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkUpsertRequestUpdate) GetCampaignsOk() ([]CampaignUpdateRequest, bool) {
-	if o == nil || IsNil(o.Campaigns) {
-		return nil, false
-	}
-	return o.Campaigns, true
-}
-
-// HasCampaigns returns a boolean if a field has been set.
-func (o *BulkUpsertRequestUpdate) HasCampaigns() bool {
-	if o != nil && !IsNil(o.Campaigns) {
-		return true
-	}
-
-	return false
-}
-
-// SetCampaigns gets a reference to the given []CampaignUpdateRequest and assigns it to the Campaigns field.
-func (o *BulkUpsertRequestUpdate) SetCampaigns(v []CampaignUpdateRequest) {
-	o.Campaigns = v
 }
 
 // GetAdGroups returns the AdGroups field value if set, zero value otherwise.
@@ -140,36 +110,68 @@ func (o *BulkUpsertRequestUpdate) SetAds(v []AdUpdateRequest) {
 	o.Ads = v
 }
 
-// GetProductGroups returns the ProductGroups field value if set, zero value otherwise.
-func (o *BulkUpsertRequestUpdate) GetProductGroups() []ProductGroupPromotionUpdateRequest {
-	if o == nil || IsNil(o.ProductGroups) {
-		var ret []ProductGroupPromotionUpdateRequest
+// GetCampaigns returns the Campaigns field value if set, zero value otherwise.
+func (o *BulkUpsertRequestUpdate) GetCampaigns() []CampaignUpdateRequest {
+	if o == nil || IsNil(o.Campaigns) {
+		var ret []CampaignUpdateRequest
 		return ret
 	}
-	return o.ProductGroups
+	return o.Campaigns
 }
 
-// GetProductGroupsOk returns a tuple with the ProductGroups field value if set, nil otherwise
+// GetCampaignsOk returns a tuple with the Campaigns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkUpsertRequestUpdate) GetProductGroupsOk() ([]ProductGroupPromotionUpdateRequest, bool) {
-	if o == nil || IsNil(o.ProductGroups) {
+func (o *BulkUpsertRequestUpdate) GetCampaignsOk() ([]CampaignUpdateRequest, bool) {
+	if o == nil || IsNil(o.Campaigns) {
 		return nil, false
 	}
-	return o.ProductGroups, true
+	return o.Campaigns, true
 }
 
-// HasProductGroups returns a boolean if a field has been set.
-func (o *BulkUpsertRequestUpdate) HasProductGroups() bool {
-	if o != nil && !IsNil(o.ProductGroups) {
+// HasCampaigns returns a boolean if a field has been set.
+func (o *BulkUpsertRequestUpdate) HasCampaigns() bool {
+	if o != nil && !IsNil(o.Campaigns) {
 		return true
 	}
 
 	return false
 }
 
-// SetProductGroups gets a reference to the given []ProductGroupPromotionUpdateRequest and assigns it to the ProductGroups field.
-func (o *BulkUpsertRequestUpdate) SetProductGroups(v []ProductGroupPromotionUpdateRequest) {
-	o.ProductGroups = v
+// SetCampaigns gets a reference to the given []CampaignUpdateRequest and assigns it to the Campaigns field.
+func (o *BulkUpsertRequestUpdate) SetCampaigns(v []CampaignUpdateRequest) {
+	o.Campaigns = v
+}
+
+// GetCatalogProductGroups returns the CatalogProductGroups field value if set, zero value otherwise.
+func (o *BulkUpsertRequestUpdate) GetCatalogProductGroups() []CatalogsProductGroupsUpdateRequest {
+	if o == nil || IsNil(o.CatalogProductGroups) {
+		var ret []CatalogsProductGroupsUpdateRequest
+		return ret
+	}
+	return o.CatalogProductGroups
+}
+
+// GetCatalogProductGroupsOk returns a tuple with the CatalogProductGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkUpsertRequestUpdate) GetCatalogProductGroupsOk() ([]CatalogsProductGroupsUpdateRequest, bool) {
+	if o == nil || IsNil(o.CatalogProductGroups) {
+		return nil, false
+	}
+	return o.CatalogProductGroups, true
+}
+
+// HasCatalogProductGroups returns a boolean if a field has been set.
+func (o *BulkUpsertRequestUpdate) HasCatalogProductGroups() bool {
+	if o != nil && !IsNil(o.CatalogProductGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogProductGroups gets a reference to the given []CatalogsProductGroupsUpdateRequest and assigns it to the CatalogProductGroups field.
+func (o *BulkUpsertRequestUpdate) SetCatalogProductGroups(v []CatalogsProductGroupsUpdateRequest) {
+	o.CatalogProductGroups = v
 }
 
 // GetKeywords returns the Keywords field value if set, zero value otherwise.
@@ -204,6 +206,70 @@ func (o *BulkUpsertRequestUpdate) SetKeywords(v []KeywordUpdate) {
 	o.Keywords = v
 }
 
+// GetLabels returns the Labels field value if set, zero value otherwise.
+func (o *BulkUpsertRequestUpdate) GetLabels() []LabelBulkUpdateRequest {
+	if o == nil || IsNil(o.Labels) {
+		var ret []LabelBulkUpdateRequest
+		return ret
+	}
+	return o.Labels
+}
+
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkUpsertRequestUpdate) GetLabelsOk() ([]LabelBulkUpdateRequest, bool) {
+	if o == nil || IsNil(o.Labels) {
+		return nil, false
+	}
+	return o.Labels, true
+}
+
+// HasLabels returns a boolean if a field has been set.
+func (o *BulkUpsertRequestUpdate) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given []LabelBulkUpdateRequest and assigns it to the Labels field.
+func (o *BulkUpsertRequestUpdate) SetLabels(v []LabelBulkUpdateRequest) {
+	o.Labels = v
+}
+
+// GetProductGroups returns the ProductGroups field value if set, zero value otherwise.
+func (o *BulkUpsertRequestUpdate) GetProductGroups() []ProductGroupPromotionUpdateRequest {
+	if o == nil || IsNil(o.ProductGroups) {
+		var ret []ProductGroupPromotionUpdateRequest
+		return ret
+	}
+	return o.ProductGroups
+}
+
+// GetProductGroupsOk returns a tuple with the ProductGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkUpsertRequestUpdate) GetProductGroupsOk() ([]ProductGroupPromotionUpdateRequest, bool) {
+	if o == nil || IsNil(o.ProductGroups) {
+		return nil, false
+	}
+	return o.ProductGroups, true
+}
+
+// HasProductGroups returns a boolean if a field has been set.
+func (o *BulkUpsertRequestUpdate) HasProductGroups() bool {
+	if o != nil && !IsNil(o.ProductGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductGroups gets a reference to the given []ProductGroupPromotionUpdateRequest and assigns it to the ProductGroups field.
+func (o *BulkUpsertRequestUpdate) SetProductGroups(v []ProductGroupPromotionUpdateRequest) {
+	o.ProductGroups = v
+}
+
 func (o BulkUpsertRequestUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -214,20 +280,26 @@ func (o BulkUpsertRequestUpdate) MarshalJSON() ([]byte, error) {
 
 func (o BulkUpsertRequestUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Campaigns) {
-		toSerialize["campaigns"] = o.Campaigns
-	}
 	if !IsNil(o.AdGroups) {
 		toSerialize["ad_groups"] = o.AdGroups
 	}
 	if !IsNil(o.Ads) {
 		toSerialize["ads"] = o.Ads
 	}
-	if !IsNil(o.ProductGroups) {
-		toSerialize["product_groups"] = o.ProductGroups
+	if !IsNil(o.Campaigns) {
+		toSerialize["campaigns"] = o.Campaigns
+	}
+	if !IsNil(o.CatalogProductGroups) {
+		toSerialize["catalog_product_groups"] = o.CatalogProductGroups
 	}
 	if !IsNil(o.Keywords) {
 		toSerialize["keywords"] = o.Keywords
+	}
+	if !IsNil(o.Labels) {
+		toSerialize["labels"] = o.Labels
+	}
+	if !IsNil(o.ProductGroups) {
+		toSerialize["product_groups"] = o.ProductGroups
 	}
 	return toSerialize, nil
 }

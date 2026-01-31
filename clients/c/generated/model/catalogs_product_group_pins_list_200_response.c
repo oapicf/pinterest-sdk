@@ -6,27 +6,27 @@
 
 
 static catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_list_200_response_local_var = malloc(sizeof(catalogs_product_group_pins_list_200_response_t));
     if (!catalogs_product_group_pins_list_200_response_local_var) {
         return NULL;
     }
-    catalogs_product_group_pins_list_200_response_local_var->items = items;
     catalogs_product_group_pins_list_200_response_local_var->bookmark = bookmark;
+    catalogs_product_group_pins_list_200_response_local_var->items = items;
 
     catalogs_product_group_pins_list_200_response_local_var->_library_owned = 1;
     return catalogs_product_group_pins_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return catalogs_product_group_pins_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void catalogs_product_group_pins_list_200_response_free(catalogs_product_group_p
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_product_group_pins_list_200_response->bookmark) {
+        free(catalogs_product_group_pins_list_200_response->bookmark);
+        catalogs_product_group_pins_list_200_response->bookmark = NULL;
+    }
     if (catalogs_product_group_pins_list_200_response->items) {
         list_ForEach(listEntry, catalogs_product_group_pins_list_200_response->items) {
             catalogs_product_free(listEntry->data);
@@ -46,15 +50,19 @@ void catalogs_product_group_pins_list_200_response_free(catalogs_product_group_p
         list_freeList(catalogs_product_group_pins_list_200_response->items);
         catalogs_product_group_pins_list_200_response->items = NULL;
     }
-    if (catalogs_product_group_pins_list_200_response->bookmark) {
-        free(catalogs_product_group_pins_list_200_response->bookmark);
-        catalogs_product_group_pins_list_200_response->bookmark = NULL;
-    }
     free(catalogs_product_group_pins_list_200_response);
 }
 
 cJSON *catalogs_product_group_pins_list_200_response_convertToJSON(catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_product_group_pins_list_200_response->bookmark
+    if(catalogs_product_group_pins_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", catalogs_product_group_pins_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // catalogs_product_group_pins_list_200_response->items
     if (!catalogs_product_group_pins_list_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *catalogs_product_group_pins_list_200_response_convertToJSON(catalogs_prod
     }
     }
 
-
-    // catalogs_product_group_pins_list_200_response->bookmark
-    if(catalogs_product_group_pins_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", catalogs_product_group_pins_list_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_lis
 
     // define the local list for catalogs_product_group_pins_list_200_response->items
     list_t *itemsList = NULL;
+
+    // catalogs_product_group_pins_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pins_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // catalogs_product_group_pins_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pins_list_200_responseJSON, "items");
@@ -126,22 +138,10 @@ catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_lis
         list_addElement(itemsList, itemsItem);
     }
 
-    // catalogs_product_group_pins_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pins_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     catalogs_product_group_pins_list_200_response_local_var = catalogs_product_group_pins_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return catalogs_product_group_pins_list_200_response_local_var;

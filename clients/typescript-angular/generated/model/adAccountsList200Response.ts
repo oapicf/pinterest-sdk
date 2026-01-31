@@ -11,10 +11,7 @@ import { AdAccount } from './adAccount';
 
 
 export interface AdAccountsList200Response { 
-    /**
-     * Ad accounts
-     */
-    items: Array<AdAccount>;
     bookmark?: string | null;
+    items: Array<AdAccount>;
 }
 

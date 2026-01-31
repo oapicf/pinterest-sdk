@@ -15,18 +15,18 @@ import org.openapitools.models.Country
 /**
  * Request object for updating a catalog based product group.
  * @param catalogUnderscoretype 
- * @param name 
+ * @param country 
  * @param description 
  * @param filters 
- * @param country 
  * @param locale 
+ * @param name 
  */
 case class CatalogsVerticalProductGroupUpdateRequest(catalogUnderscoretype: Option[String],
-                name: Option[String],
+                country: Option[Country],
                 description: Option[String],
                 filters: Option[CatalogsCreativeAssetsProductGroupFilters],
-                country: Option[Country],
-                locale: Option[CatalogsLocale]
+                locale: Option[CatalogsLocale],
+                name: Option[String]
                 )
 
 object CatalogsVerticalProductGroupUpdateRequest {

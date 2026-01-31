@@ -2,11 +2,6 @@
 Protected Class BulkUpsertRequestCreate
 
 	#tag Property, Flags = &h0
-		campaigns() As OpenAPIClient.Models.CampaignCreateRequest
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		ad_groups() As OpenAPIClient.Models.AdGroupCreateRequest
 	#tag EndProperty
 
@@ -17,12 +12,27 @@ Protected Class BulkUpsertRequestCreate
 
 
 	#tag Property, Flags = &h0
-		product_groups() As OpenAPIClient.Models.ProductGroupPromotionCreateRequest
+		campaigns() As OpenAPIClient.Models.CampaignCreateRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		catalog_product_groups() As OpenAPIClient.Models.MultipleProductGroupsInner
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		keywords() As OpenAPIClient.Models.KeywordsRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		labels() As OpenAPIClient.Models.LabelCreateRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		product_groups() As OpenAPIClient.Models.ProductGroupPromotionCreateRequest
 	#tag EndProperty
 
 
@@ -63,14 +73,6 @@ Protected Class BulkUpsertRequestCreate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="campaigns"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CampaignCreateRequest"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ad_groups"
 			Visible=false
 			Group="Behavior"
@@ -87,11 +89,19 @@ Protected Class BulkUpsertRequestCreate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="product_groups"
+			Name="campaigns"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ProductGroupPromotionCreateRequest"
+			Type="CampaignCreateRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="catalog_product_groups"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MultipleProductGroupsInner"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -100,6 +110,22 @@ Protected Class BulkUpsertRequestCreate
 			Group="Behavior"
 			InitialValue=""
 			Type="KeywordsRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="labels"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="LabelCreateRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="product_groups"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductGroupPromotionCreateRequest"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

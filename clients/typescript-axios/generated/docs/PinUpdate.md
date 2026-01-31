@@ -1,19 +1,18 @@
 # PinUpdate
 
-Pin fields for updates
+Resource create or update operation model.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**alt_text** | **string** | Pin\&#39;s alternative text. | [optional] [default to undefined]
-**board_id** | **string** | The id of the board to move the Pin onto. | [optional] [default to undefined]
-**board_section_id** | **string** | &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/create-a-board-section\&quot;&gt;Board section&lt;/a&gt; ID. | [optional] [default to undefined]
-**description** | **string** | Pin description - 800 characters maximum. | [optional] [default to undefined]
-**link** | **string** | URL viewer is taken to when they click pin. | [optional] [default to undefined]
-**title** | **string** | The native pin title that creators explicitly prefer to display. | [optional] [default to undefined]
-**carousel_slots** | [**Array&lt;PinUpdateCarouselSlotsInner&gt;**](PinUpdateCarouselSlotsInner.md) | Carousel Pin slots data. | [optional] [default to undefined]
-**note** | **string** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] [default to undefined]
+**alt_text** | **string** |  | [optional] [default to undefined]
+**board_id** | **string** | The board to which this Pin belongs. | [optional] [default to undefined]
+**board_section_id** | **string** | The board section to which this Pin belongs. | [optional] [default to undefined]
+**carousel_slots** | [**Array&lt;CarouselSlot&gt;**](CarouselSlot.md) | Carousel Pin slots data. | [optional] [default to undefined]
+**description** | **string** |  | [optional] [default to undefined]
+**link** | **string** |  | [optional] [default to undefined]
+**title** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -24,11 +23,10 @@ const instance: PinUpdate = {
     alt_text,
     board_id,
     board_section_id,
+    carousel_slots,
     description,
     link,
     title,
-    carousel_slots,
-    note,
 };
 ```
 

@@ -24,19 +24,19 @@ public class SSIOAccountItemTest {
     }
 
     /**
+     * Test the property 'addresses'
+     */
+    @Test
+    public void addressesTest() {
+        // TODO: test addresses
+    }
+
+    /**
      * Test the property 'id'
      */
     @Test
     public void idTest() {
         // TODO: test id
-    }
-
-    /**
-     * Test the property 'ioTermsId'
-     */
-    @Test
-    public void ioTermsIdTest() {
-        // TODO: test ioTermsId
     }
 
     /**
@@ -48,35 +48,11 @@ public class SSIOAccountItemTest {
     }
 
     /**
-     * Test the property 'usTermsId'
+     * Test the property 'ioTermsId'
      */
     @Test
-    public void usTermsIdTest() {
-        // TODO: test usTermsId
-    }
-
-    /**
-     * Test the property 'usTerms'
-     */
-    @Test
-    public void usTermsTest() {
-        // TODO: test usTerms
-    }
-
-    /**
-     * Test the property 'rowTermsId'
-     */
-    @Test
-    public void rowTermsIdTest() {
-        // TODO: test rowTermsId
-    }
-
-    /**
-     * Test the property 'rowTerms'
-     */
-    @Test
-    public void rowTermsTest() {
-        // TODO: test rowTerms
+    public void ioTermsIdTest() {
+        // TODO: test ioTermsId
     }
 
     /**
@@ -88,11 +64,35 @@ public class SSIOAccountItemTest {
     }
 
     /**
-     * Test the property 'addresses'
+     * Test the property 'rowTerms'
      */
     @Test
-    public void addressesTest() {
-        // TODO: test addresses
+    public void rowTermsTest() {
+        // TODO: test rowTerms
+    }
+
+    /**
+     * Test the property 'rowTermsId'
+     */
+    @Test
+    public void rowTermsIdTest() {
+        // TODO: test rowTermsId
+    }
+
+    /**
+     * Test the property 'usTerms'
+     */
+    @Test
+    public void usTermsTest() {
+        // TODO: test usTerms
+    }
+
+    /**
+     * Test the property 'usTermsId'
+     */
+    @Test
+    public void usTermsIdTest() {
+        // TODO: test usTermsId
     }
 
 }

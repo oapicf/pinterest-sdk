@@ -22,12 +22,12 @@ catalogs_create_request_t* instantiate_catalogs_create_request(int include_optio
   catalogs_create_request_t* catalogs_create_request = NULL;
   if (include_optional) {
     catalogs_create_request = catalogs_create_request_create(
-      pinterest_rest_api_catalogs_create_request_CATALOGTYPE_HOTEL,
+      pinterest_rest_api_catalogs_create_request__RETAIL,
       "0"
     );
   } else {
     catalogs_create_request = catalogs_create_request_create(
-      pinterest_rest_api_catalogs_create_request_CATALOGTYPE_HOTEL,
+      pinterest_rest_api_catalogs_create_request__RETAIL,
       "0"
     );
   }

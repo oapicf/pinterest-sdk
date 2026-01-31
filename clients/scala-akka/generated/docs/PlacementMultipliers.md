@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 
 ## Enum: PLACEMENT
-Allowed values: [SEARCH, BROWSE]
+Allowed values: [SEARCH, BROWSE, RELATED_PINS]
 
 
 

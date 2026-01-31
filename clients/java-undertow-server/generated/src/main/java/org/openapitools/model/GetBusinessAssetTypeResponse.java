@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -31,7 +31,9 @@ public enum GetBusinessAssetTypeResponse {
         
         ASSET_GROUP("ASSET_GROUP"),
         
-        CONVERSION_TAG("CONVERSION_TAG");
+        CONVERSION_TAG("CONVERSION_TAG"),
+        
+        CATALOG("CATALOG");
 
 private String value;
 

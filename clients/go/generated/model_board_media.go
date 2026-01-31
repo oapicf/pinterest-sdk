@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,9 +18,9 @@ import (
 // checks if the BoardMedia type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BoardMedia{}
 
-// BoardMedia Board media.
+// BoardMedia struct for BoardMedia
 type BoardMedia struct {
-	// Board cover image.
+	// Board cover image
 	ImageCoverUrl NullableString `json:"image_cover_url,omitempty"`
 	// Board pin thumbnail urls.
 	PinThumbnailUrls []string `json:"pin_thumbnail_urls,omitempty"`

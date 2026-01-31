@@ -12,15 +12,15 @@ import org.joda.time.DateTime
 import AdAccountCreateSubscriptionRequest._
 
 case class AdAccountCreateSubscriptionRequest (
-  /* Standard HTTPS webhook URL. */
-  webhookUrl: String,
-/* Lead form ID. */
+  /* Lead form ID. */
   leadFormId: Option[String],
 /* Partner access token. Only for clients that requires authentication. We recommend to avoid this param. */
   partnerAccessToken: Option[String],
+partnerMetadata: Option[AdAccountCreateSubscriptionRequestPartnerMetadata],
 /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
   partnerRefreshToken: Option[String],
-partnerMetadata: Option[AdAccountCreateSubscriptionRequestPartnerMetadata])
+/* Standard HTTPS webhook URL. */
+  webhookUrl: String)
 
 object AdAccountCreateSubscriptionRequest {
   import DateTimeCodecs._

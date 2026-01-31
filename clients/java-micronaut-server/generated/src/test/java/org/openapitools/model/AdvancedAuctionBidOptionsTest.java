@@ -23,19 +23,19 @@ public class AdvancedAuctionBidOptionsTest {
     }
 
     /**
-     * Test the property 'bidInMicroCurrency'
-     */
-    @Test
-    public void bidInMicroCurrencyTest() {
-        // TODO: test bidInMicroCurrency
-    }
-
-    /**
      * Test the property 'appTypeMultipliers'
      */
     @Test
     public void appTypeMultipliersTest() {
         // TODO: test appTypeMultipliers
+    }
+
+    /**
+     * Test the property 'bidInMicroCurrency'
+     */
+    @Test
+    public void bidInMicroCurrencyTest() {
+        // TODO: test bidInMicroCurrency
     }
 
     /**

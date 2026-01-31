@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.ContentType
 
 module PinMediaSourceVideoID =
 
@@ -10,16 +11,14 @@ module PinMediaSourceVideoID =
   //#region enums
   type SourceTypeEnum = VideoIdEnum of string  
   //#endregion
-  //#region enums
-  type CoverImageContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
-  //#endregion
 
   type PinMediaSourceVideoID = {
-    SourceType : SourceTypeEnum;
-    CoverImageUrl : string;
-    CoverImageContentType : CoverImageContentTypeEnum;
+    CoverImageContentType : ContentType;
     CoverImageData : string;
-    MediaId : string;
+    CoverImageKeyFrameTime : int;
+    CoverImageUrl : string;
     IsStandard : bool;
+    MediaId : string;
+    SourceType : SourceTypeEnum;
   }
   //#endregion

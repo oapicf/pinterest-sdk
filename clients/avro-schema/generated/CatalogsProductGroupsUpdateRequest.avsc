@@ -5,14 +5,14 @@
   "name": "CatalogsProductGroupsUpdateRequest",
   "fields": [
     {
-      "name": "name",
+      "name": "description",
       "type": ["null", "string"],
       "doc": "",
       "default": null
     },
     {
-      "name": "description",
-      "type": ["null", "string"],
+      "name": "filters",
+      "type": ["null", "model.CatalogsCreativeAssetsProductGroupFilters"],
       "doc": "",
       "default": null
     },
@@ -23,8 +23,8 @@
       "default": null
     },
     {
-      "name": "filters",
-      "type": ["null", "model.CatalogsCreativeAssetsProductGroupFilters"],
+      "name": "name",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     },

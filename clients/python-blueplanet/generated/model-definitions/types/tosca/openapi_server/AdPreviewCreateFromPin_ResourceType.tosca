@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPreviewCreateFromPin"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPreviewCreateFromPin"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdPreviewCreateFromPin {
+    title = AdPreviewCreateFromPin
+    description = AdPreviewCreateFromPin
+    derivedFrom = Root
+    properties {
+        pin_id {
+          type =  string
+          description = "Pin ID."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPreviewCreateFromPin {
+    title = AdPreviewCreateFromPin
+    description = AdPreviewCreateFromPin
+    implements = openapi_server.resourceTypes.AdPreviewCreateFromPin
+
+  }
+}

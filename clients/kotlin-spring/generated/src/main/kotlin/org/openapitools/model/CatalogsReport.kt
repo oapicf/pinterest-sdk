@@ -18,19 +18,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param reportStatus 
- * @param url URL to download the report
  * @param propertySize Size of the report in bytes
+ * @param url URL to download the report
  */
 data class CatalogsReport(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("report_status") val reportStatus: CatalogsReport.ReportStatus? = null,
 
-    @Schema(example = "null", description = "URL to download the report")
-    @get:JsonProperty("url") val url: kotlin.String? = null,
-
     @Schema(example = "null", description = "Size of the report in bytes")
-    @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null
+    @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null,
+
+    @Schema(example = "null", description = "URL to download the report")
+    @get:JsonProperty("url") val url: kotlin.String? = null
 ) {
 
     /**

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateMMMReportResponseData{}
 
 // CreateMMMReportResponseData struct for CreateMMMReportResponseData
 type CreateMMMReportResponseData struct {
-	ReportStatus *BulkReportingJobStatus `json:"report_status,omitempty"`
-	Token *string `json:"token,omitempty"`
 	Message NullableString `json:"message,omitempty"`
+	ReportStatus *BulkReportingJobStatus `json:"report_status,omitempty"`
 	Status *string `json:"status,omitempty"`
+	Token *string `json:"token,omitempty"`
 }
 
 // NewCreateMMMReportResponseData instantiates a new CreateMMMReportResponseData object
@@ -41,70 +41,6 @@ func NewCreateMMMReportResponseData() *CreateMMMReportResponseData {
 func NewCreateMMMReportResponseDataWithDefaults() *CreateMMMReportResponseData {
 	this := CreateMMMReportResponseData{}
 	return &this
-}
-
-// GetReportStatus returns the ReportStatus field value if set, zero value otherwise.
-func (o *CreateMMMReportResponseData) GetReportStatus() BulkReportingJobStatus {
-	if o == nil || IsNil(o.ReportStatus) {
-		var ret BulkReportingJobStatus
-		return ret
-	}
-	return *o.ReportStatus
-}
-
-// GetReportStatusOk returns a tuple with the ReportStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateMMMReportResponseData) GetReportStatusOk() (*BulkReportingJobStatus, bool) {
-	if o == nil || IsNil(o.ReportStatus) {
-		return nil, false
-	}
-	return o.ReportStatus, true
-}
-
-// HasReportStatus returns a boolean if a field has been set.
-func (o *CreateMMMReportResponseData) HasReportStatus() bool {
-	if o != nil && !IsNil(o.ReportStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportStatus gets a reference to the given BulkReportingJobStatus and assigns it to the ReportStatus field.
-func (o *CreateMMMReportResponseData) SetReportStatus(v BulkReportingJobStatus) {
-	o.ReportStatus = &v
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *CreateMMMReportResponseData) GetToken() string {
-	if o == nil || IsNil(o.Token) {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateMMMReportResponseData) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *CreateMMMReportResponseData) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *CreateMMMReportResponseData) SetToken(v string) {
-	o.Token = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -149,6 +85,38 @@ func (o *CreateMMMReportResponseData) UnsetMessage() {
 	o.Message.Unset()
 }
 
+// GetReportStatus returns the ReportStatus field value if set, zero value otherwise.
+func (o *CreateMMMReportResponseData) GetReportStatus() BulkReportingJobStatus {
+	if o == nil || IsNil(o.ReportStatus) {
+		var ret BulkReportingJobStatus
+		return ret
+	}
+	return *o.ReportStatus
+}
+
+// GetReportStatusOk returns a tuple with the ReportStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateMMMReportResponseData) GetReportStatusOk() (*BulkReportingJobStatus, bool) {
+	if o == nil || IsNil(o.ReportStatus) {
+		return nil, false
+	}
+	return o.ReportStatus, true
+}
+
+// HasReportStatus returns a boolean if a field has been set.
+func (o *CreateMMMReportResponseData) HasReportStatus() bool {
+	if o != nil && !IsNil(o.ReportStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportStatus gets a reference to the given BulkReportingJobStatus and assigns it to the ReportStatus field.
+func (o *CreateMMMReportResponseData) SetReportStatus(v BulkReportingJobStatus) {
+	o.ReportStatus = &v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CreateMMMReportResponseData) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -181,6 +149,38 @@ func (o *CreateMMMReportResponseData) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *CreateMMMReportResponseData) GetToken() string {
+	if o == nil || IsNil(o.Token) {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateMMMReportResponseData) GetTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.Token) {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *CreateMMMReportResponseData) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *CreateMMMReportResponseData) SetToken(v string) {
+	o.Token = &v
+}
+
 func (o CreateMMMReportResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,17 +191,17 @@ func (o CreateMMMReportResponseData) MarshalJSON() ([]byte, error) {
 
 func (o CreateMMMReportResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ReportStatus) {
-		toSerialize["report_status"] = o.ReportStatus
-	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
+	if !IsNil(o.ReportStatus) {
+		toSerialize["report_status"] = o.ReportStatus
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	return toSerialize, nil
 }

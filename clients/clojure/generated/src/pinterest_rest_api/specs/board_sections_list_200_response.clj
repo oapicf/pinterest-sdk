@@ -8,8 +8,8 @@
 
 (def board-sections-list-200-response-data
   {
-   (ds/req :items) (s/coll-of board-section-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of board-section-spec)
    })
 
 (def board-sections-list-200-response-spec

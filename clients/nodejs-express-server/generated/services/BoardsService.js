@@ -136,17 +136,17 @@ const board_sections/update = ({ boardUnderscoreid, sectionUnderscoreid, boardSe
 );
 /**
 * Create board
-* Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+* Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 *
-* board Board Create a board using a single board json object.
+* boardCreate BoardCreate 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns Board
 * */
-const boards/create = ({ board, adUnderscoreaccountUnderscoreid }) => new Promise(
+const boards/create = ({ boardCreate, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        board,
+        boardCreate,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
@@ -159,9 +159,9 @@ const boards/create = ({ board, adUnderscoreaccountUnderscoreid }) => new Promis
 );
 /**
 * Delete board
-* Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+* Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 *
-* boardUnderscoreid String Unique identifier of a board.
+* boardUnderscoreid String 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * no response value expected for this operation
 * */
@@ -182,9 +182,9 @@ const boards/delete = ({ boardUnderscoreid, adUnderscoreaccountUnderscoreid }) =
 );
 /**
 * Get board
-* Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+* Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 *
-* boardUnderscoreid String Unique identifier of a board.
+* boardUnderscoreid String 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns Board
 * */
@@ -205,22 +205,22 @@ const boards/get = ({ boardUnderscoreid, adUnderscoreaccountUnderscoreid }) => n
 );
 /**
 * List boards
-* Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+* Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
+* privacy BoardPrivacyFilter The privacy level of the board (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* privacy String Privacy setting for a board. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns boards_list_200_response
 * */
-const boards/list = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, privacy }) => new Promise(
+const boards/list = ({ adUnderscoreaccountUnderscoreid, privacy, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
+        privacy,
         bookmark,
         pageUnderscoresize,
-        privacy,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -237,9 +237,9 @@ const boards/list = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscore
 * boardUnderscoreid String Unique identifier of a board.
 * bookmark String Cursor used to fetch the next page of items (optional)
 * pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* creativeUnderscoretypes List Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+* creativeUnderscoretypes List Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* pinUnderscoremetrics Boolean Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
+* pinUnderscoremetrics Boolean Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
 * returns boards_list_pins_200_response
 * */
 const boards/list_pins = ({ boardUnderscoreid, bookmark, pageUnderscoresize, creativeUnderscoretypes, adUnderscoreaccountUnderscoreid, pinUnderscoremetrics }) => new Promise(
@@ -263,19 +263,19 @@ const boards/list_pins = ({ boardUnderscoreid, bookmark, pageUnderscoresize, cre
 );
 /**
 * Update board
-* Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+* Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 *
-* boardUnderscoreid String Unique identifier of a board.
-* boardUpdate BoardUpdate Update a board.
+* boardUnderscoreid String 
+* boardWithUpdatePrivacyUpdate BoardWithUpdatePrivacyUpdate 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* returns Board
+* returns BoardWithUpdatePrivacy
 * */
-const boards/update = ({ boardUnderscoreid, boardUpdate, adUnderscoreaccountUnderscoreid }) => new Promise(
+const boards/update = ({ boardUnderscoreid, boardWithUpdatePrivacyUpdate, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         boardUnderscoreid,
-        boardUpdate,
+        boardWithUpdatePrivacyUpdate,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {

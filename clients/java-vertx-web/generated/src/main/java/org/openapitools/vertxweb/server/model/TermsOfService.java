@@ -8,38 +8,29 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TermsOfService   {
   
-  private String id;
-  private String html;
-  private Boolean hasAccepted;
   private String adAccountId;
+  private Boolean hasAccepted;
+  private String html;
+  private String id;
 
   public TermsOfService () {
 
   }
 
-  public TermsOfService (String id, String html, Boolean hasAccepted, String adAccountId) {
-    this.id = id;
-    this.html = html;
-    this.hasAccepted = hasAccepted;
+  public TermsOfService (String adAccountId, Boolean hasAccepted, String html, String id) {
     this.adAccountId = adAccountId;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
+    this.hasAccepted = hasAccepted;
+    this.html = html;
     this.id = id;
   }
 
     
-  @JsonProperty("html")
-  public String getHtml() {
-    return html;
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
   }
-  public void setHtml(String html) {
-    this.html = html;
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
     
@@ -52,12 +43,21 @@ public class TermsOfService   {
   }
 
     
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @JsonProperty("html")
+  public String getHtml() {
+    return html;
   }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setHtml(String html) {
+    this.html = html;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -70,15 +70,15 @@ public class TermsOfService   {
       return false;
     }
     TermsOfService termsOfService = (TermsOfService) o;
-    return Objects.equals(id, termsOfService.id) &&
-        Objects.equals(html, termsOfService.html) &&
+    return Objects.equals(adAccountId, termsOfService.adAccountId) &&
         Objects.equals(hasAccepted, termsOfService.hasAccepted) &&
-        Objects.equals(adAccountId, termsOfService.adAccountId);
+        Objects.equals(html, termsOfService.html) &&
+        Objects.equals(id, termsOfService.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, html, hasAccepted, adAccountId);
+    return Objects.hash(adAccountId, hasAccepted, html, id);
   }
 
   @Override
@@ -86,10 +86,10 @@ public class TermsOfService   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TermsOfService {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    html: ").append(toIndentedString(html)).append("\n");
-    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
+    sb.append("    html: ").append(toIndentedString(html)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

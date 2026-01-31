@@ -24,22 +24,22 @@ pinterest_rest_api_ad_group_audience_sizing_request_CREATIVETYPES_e ad_group_aud
 
 static ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create_internal(
     int auto_targeting_enabled,
-    placement_group_type_t *placement_group,
     list_t *creative_types,
-    targeting_spec_t *targeting_spec,
+    list_t *keywords,
+    placement_group_type_t *placement_group,
     list_t *product_group_ids,
-    list_t *keywords
+    targeting_spec_t *targeting_spec
     ) {
     ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_local_var = malloc(sizeof(ad_group_audience_sizing_request_t));
     if (!ad_group_audience_sizing_request_local_var) {
         return NULL;
     }
     ad_group_audience_sizing_request_local_var->auto_targeting_enabled = auto_targeting_enabled;
-    ad_group_audience_sizing_request_local_var->placement_group = placement_group;
     ad_group_audience_sizing_request_local_var->creative_types = creative_types;
-    ad_group_audience_sizing_request_local_var->targeting_spec = targeting_spec;
-    ad_group_audience_sizing_request_local_var->product_group_ids = product_group_ids;
     ad_group_audience_sizing_request_local_var->keywords = keywords;
+    ad_group_audience_sizing_request_local_var->placement_group = placement_group;
+    ad_group_audience_sizing_request_local_var->product_group_ids = product_group_ids;
+    ad_group_audience_sizing_request_local_var->targeting_spec = targeting_spec;
 
     ad_group_audience_sizing_request_local_var->_library_owned = 1;
     return ad_group_audience_sizing_request_local_var;
@@ -47,19 +47,19 @@ static ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_crea
 
 __attribute__((deprecated)) ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
     int auto_targeting_enabled,
-    placement_group_type_t *placement_group,
     list_t *creative_types,
-    targeting_spec_t *targeting_spec,
+    list_t *keywords,
+    placement_group_type_t *placement_group,
     list_t *product_group_ids,
-    list_t *keywords
+    targeting_spec_t *targeting_spec
     ) {
     return ad_group_audience_sizing_request_create_internal (
         auto_targeting_enabled,
-        placement_group,
         creative_types,
-        targeting_spec,
+        keywords,
+        placement_group,
         product_group_ids,
-        keywords
+        targeting_spec
         );
 }
 
@@ -72,10 +72,6 @@ void ad_group_audience_sizing_request_free(ad_group_audience_sizing_request_t *a
         return ;
     }
     listEntry_t *listEntry;
-    if (ad_group_audience_sizing_request->placement_group) {
-        placement_group_type_free(ad_group_audience_sizing_request->placement_group);
-        ad_group_audience_sizing_request->placement_group = NULL;
-    }
     if (ad_group_audience_sizing_request->creative_types) {
         list_ForEach(listEntry, ad_group_audience_sizing_request->creative_types) {
             free(listEntry->data);
@@ -83,9 +79,16 @@ void ad_group_audience_sizing_request_free(ad_group_audience_sizing_request_t *a
         list_freeList(ad_group_audience_sizing_request->creative_types);
         ad_group_audience_sizing_request->creative_types = NULL;
     }
-    if (ad_group_audience_sizing_request->targeting_spec) {
-        targeting_spec_free(ad_group_audience_sizing_request->targeting_spec);
-        ad_group_audience_sizing_request->targeting_spec = NULL;
+    if (ad_group_audience_sizing_request->keywords) {
+        list_ForEach(listEntry, ad_group_audience_sizing_request->keywords) {
+            ad_group_audience_sizing_request_keywords_inner_free(listEntry->data);
+        }
+        list_freeList(ad_group_audience_sizing_request->keywords);
+        ad_group_audience_sizing_request->keywords = NULL;
+    }
+    if (ad_group_audience_sizing_request->placement_group) {
+        placement_group_type_free(ad_group_audience_sizing_request->placement_group);
+        ad_group_audience_sizing_request->placement_group = NULL;
     }
     if (ad_group_audience_sizing_request->product_group_ids) {
         list_ForEach(listEntry, ad_group_audience_sizing_request->product_group_ids) {
@@ -94,12 +97,9 @@ void ad_group_audience_sizing_request_free(ad_group_audience_sizing_request_t *a
         list_freeList(ad_group_audience_sizing_request->product_group_ids);
         ad_group_audience_sizing_request->product_group_ids = NULL;
     }
-    if (ad_group_audience_sizing_request->keywords) {
-        list_ForEach(listEntry, ad_group_audience_sizing_request->keywords) {
-            ad_group_audience_sizing_request_keywords_inner_free(listEntry->data);
-        }
-        list_freeList(ad_group_audience_sizing_request->keywords);
-        ad_group_audience_sizing_request->keywords = NULL;
+    if (ad_group_audience_sizing_request->targeting_spec) {
+        targeting_spec_free(ad_group_audience_sizing_request->targeting_spec);
+        ad_group_audience_sizing_request->targeting_spec = NULL;
     }
     free(ad_group_audience_sizing_request);
 }
@@ -115,19 +115,6 @@ cJSON *ad_group_audience_sizing_request_convertToJSON(ad_group_audience_sizing_r
     }
 
 
-    // ad_group_audience_sizing_request->placement_group
-    if(ad_group_audience_sizing_request->placement_group) {
-    cJSON *placement_group_local_JSON = placement_group_type_convertToJSON(ad_group_audience_sizing_request->placement_group);
-    if(placement_group_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "placement_group", placement_group_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-    }
-
-
     // ad_group_audience_sizing_request->creative_types
     if(ad_group_audience_sizing_request->creative_types != pinterest_rest_api_ad_group_audience_sizing_request_CREATIVETYPES_NULL) {
     cJSON *creative_types = cJSON_AddArrayToObject(item, "creative_types");
@@ -138,36 +125,6 @@ cJSON *ad_group_audience_sizing_request_convertToJSON(ad_group_audience_sizing_r
     listEntry_t *creative_typesListEntry;
     list_ForEach(creative_typesListEntry, ad_group_audience_sizing_request->creative_types) {
     if(cJSON_AddStringToObject(creative_types, "", creative_typesListEntry->data) == NULL)
-    {
-        goto fail;
-    }
-    }
-    }
-
-
-    // ad_group_audience_sizing_request->targeting_spec
-    if(ad_group_audience_sizing_request->targeting_spec) {
-    cJSON *targeting_spec_local_JSON = targeting_spec_convertToJSON(ad_group_audience_sizing_request->targeting_spec);
-    if(targeting_spec_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "targeting_spec", targeting_spec_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // ad_group_audience_sizing_request->product_group_ids
-    if(ad_group_audience_sizing_request->product_group_ids) {
-    cJSON *product_group_ids = cJSON_AddArrayToObject(item, "product_group_ids");
-    if(product_group_ids == NULL) {
-        goto fail; //primitive container
-    }
-
-    listEntry_t *product_group_idsListEntry;
-    list_ForEach(product_group_idsListEntry, ad_group_audience_sizing_request->product_group_ids) {
-    if(cJSON_AddStringToObject(product_group_ids, "", product_group_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -194,6 +151,49 @@ cJSON *ad_group_audience_sizing_request_convertToJSON(ad_group_audience_sizing_r
     }
     }
 
+
+    // ad_group_audience_sizing_request->placement_group
+    if(ad_group_audience_sizing_request->placement_group) {
+    cJSON *placement_group_local_JSON = placement_group_type_convertToJSON(ad_group_audience_sizing_request->placement_group);
+    if(placement_group_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "placement_group", placement_group_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
+
+    // ad_group_audience_sizing_request->product_group_ids
+    if(ad_group_audience_sizing_request->product_group_ids) {
+    cJSON *product_group_ids = cJSON_AddArrayToObject(item, "product_group_ids");
+    if(product_group_ids == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *product_group_idsListEntry;
+    list_ForEach(product_group_idsListEntry, ad_group_audience_sizing_request->product_group_ids) {
+    if(cJSON_AddStringToObject(product_group_ids, "", product_group_idsListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
+    // ad_group_audience_sizing_request->targeting_spec
+    if(ad_group_audience_sizing_request->targeting_spec) {
+    cJSON *targeting_spec_local_JSON = targeting_spec_convertToJSON(ad_group_audience_sizing_request->targeting_spec);
+    if(targeting_spec_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "targeting_spec", targeting_spec_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -206,20 +206,20 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
 
     ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_local_var = NULL;
 
-    // define the local variable for ad_group_audience_sizing_request->placement_group
-    placement_group_type_t *placement_group_local_nonprim = NULL;
-
     // define the local list for ad_group_audience_sizing_request->creative_types
     list_t *creative_typesList = NULL;
 
-    // define the local variable for ad_group_audience_sizing_request->targeting_spec
-    targeting_spec_t *targeting_spec_local_nonprim = NULL;
+    // define the local list for ad_group_audience_sizing_request->keywords
+    list_t *keywordsList = NULL;
+
+    // define the local variable for ad_group_audience_sizing_request->placement_group
+    placement_group_type_t *placement_group_local_nonprim = NULL;
 
     // define the local list for ad_group_audience_sizing_request->product_group_ids
     list_t *product_group_idsList = NULL;
 
-    // define the local list for ad_group_audience_sizing_request->keywords
-    list_t *keywordsList = NULL;
+    // define the local variable for ad_group_audience_sizing_request->targeting_spec
+    targeting_spec_t *targeting_spec_local_nonprim = NULL;
 
     // ad_group_audience_sizing_request->auto_targeting_enabled
     cJSON *auto_targeting_enabled = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "auto_targeting_enabled");
@@ -231,15 +231,6 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
     {
     goto end; //Bool
     }
-    }
-
-    // ad_group_audience_sizing_request->placement_group
-    cJSON *placement_group = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "placement_group");
-    if (cJSON_IsNull(placement_group)) {
-        placement_group = NULL;
-    }
-    if (placement_group) { 
-    placement_group_local_nonprim = placement_group_type_parseFromJSON(placement_group); //custom
     }
 
     // ad_group_audience_sizing_request->creative_types
@@ -261,37 +252,6 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
             goto end;
         }
         list_addElement(creative_typesList , strdup(creative_types_local->valuestring));
-    }
-    }
-
-    // ad_group_audience_sizing_request->targeting_spec
-    cJSON *targeting_spec = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "targeting_spec");
-    if (cJSON_IsNull(targeting_spec)) {
-        targeting_spec = NULL;
-    }
-    if (targeting_spec) { 
-    targeting_spec_local_nonprim = targeting_spec_parseFromJSON(targeting_spec); //nonprimitive
-    }
-
-    // ad_group_audience_sizing_request->product_group_ids
-    cJSON *product_group_ids = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "product_group_ids");
-    if (cJSON_IsNull(product_group_ids)) {
-        product_group_ids = NULL;
-    }
-    if (product_group_ids) { 
-    cJSON *product_group_ids_local = NULL;
-    if(!cJSON_IsArray(product_group_ids)) {
-        goto end;//primitive container
-    }
-    product_group_idsList = list_createList();
-
-    cJSON_ArrayForEach(product_group_ids_local, product_group_ids)
-    {
-        if(!cJSON_IsString(product_group_ids_local))
-        {
-            goto end;
-        }
-        list_addElement(product_group_idsList , strdup(product_group_ids_local->valuestring));
     }
     }
 
@@ -319,22 +279,58 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
     }
     }
 
+    // ad_group_audience_sizing_request->placement_group
+    cJSON *placement_group = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "placement_group");
+    if (cJSON_IsNull(placement_group)) {
+        placement_group = NULL;
+    }
+    if (placement_group) { 
+    placement_group_local_nonprim = placement_group_type_parseFromJSON(placement_group); //custom
+    }
+
+    // ad_group_audience_sizing_request->product_group_ids
+    cJSON *product_group_ids = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "product_group_ids");
+    if (cJSON_IsNull(product_group_ids)) {
+        product_group_ids = NULL;
+    }
+    if (product_group_ids) { 
+    cJSON *product_group_ids_local = NULL;
+    if(!cJSON_IsArray(product_group_ids)) {
+        goto end;//primitive container
+    }
+    product_group_idsList = list_createList();
+
+    cJSON_ArrayForEach(product_group_ids_local, product_group_ids)
+    {
+        if(!cJSON_IsString(product_group_ids_local))
+        {
+            goto end;
+        }
+        list_addElement(product_group_idsList , strdup(product_group_ids_local->valuestring));
+    }
+    }
+
+    // ad_group_audience_sizing_request->targeting_spec
+    cJSON *targeting_spec = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "targeting_spec");
+    if (cJSON_IsNull(targeting_spec)) {
+        targeting_spec = NULL;
+    }
+    if (targeting_spec) { 
+    targeting_spec_local_nonprim = targeting_spec_parseFromJSON(targeting_spec); //nonprimitive
+    }
+
 
     ad_group_audience_sizing_request_local_var = ad_group_audience_sizing_request_create_internal (
         auto_targeting_enabled ? auto_targeting_enabled->valueint : 0,
-        placement_group ? placement_group_local_nonprim : NULL,
         creative_types ? creative_typesList : NULL,
-        targeting_spec ? targeting_spec_local_nonprim : NULL,
+        keywords ? keywordsList : NULL,
+        placement_group ? placement_group_local_nonprim : NULL,
         product_group_ids ? product_group_idsList : NULL,
-        keywords ? keywordsList : NULL
+        targeting_spec ? targeting_spec_local_nonprim : NULL
         );
 
     return ad_group_audience_sizing_request_local_var;
 end:
-    if (placement_group_local_nonprim) {
-        placement_group_type_free(placement_group_local_nonprim);
-        placement_group_local_nonprim = NULL;
-    }
     if (creative_typesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, creative_typesList) {
@@ -344,9 +340,18 @@ end:
         list_freeList(creative_typesList);
         creative_typesList = NULL;
     }
-    if (targeting_spec_local_nonprim) {
-        targeting_spec_free(targeting_spec_local_nonprim);
-        targeting_spec_local_nonprim = NULL;
+    if (keywordsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, keywordsList) {
+            ad_group_audience_sizing_request_keywords_inner_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(keywordsList);
+        keywordsList = NULL;
+    }
+    if (placement_group_local_nonprim) {
+        placement_group_type_free(placement_group_local_nonprim);
+        placement_group_local_nonprim = NULL;
     }
     if (product_group_idsList) {
         listEntry_t *listEntry = NULL;
@@ -357,14 +362,9 @@ end:
         list_freeList(product_group_idsList);
         product_group_idsList = NULL;
     }
-    if (keywordsList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, keywordsList) {
-            ad_group_audience_sizing_request_keywords_inner_free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(keywordsList);
-        keywordsList = NULL;
+    if (targeting_spec_local_nonprim) {
+        targeting_spec_free(targeting_spec_local_nonprim);
+        targeting_spec_local_nonprim = NULL;
     }
     return NULL;
 

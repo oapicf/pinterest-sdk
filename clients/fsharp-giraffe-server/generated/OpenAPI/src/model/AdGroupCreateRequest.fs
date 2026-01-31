@@ -10,6 +10,7 @@ open OpenAPI.Model.PacingDeliveryType
 open OpenAPI.Model.PlacementGroupType
 open OpenAPI.Model.TargetingSpec
 open OpenAPI.Model.TrackingUrls
+open OpenAPI.Model.bool option
 open OpenAPI.Model.int option
 open OpenAPI.Model.string option
 
@@ -20,25 +21,32 @@ module AdGroupCreateRequest =
   //#region enums
   type BidStrategyTypeEnum = AUTOMATICBIDEnum of string option  |  MAXBIDEnum of string option  |  TARGETAVGEnum of string option  
   //#endregion
+  //#region enums
+  type PromotionApplicationLevelEnum = NONEEnum of string option  |  ITEMEnum of string option  |  ADGROUPEnum of string option  
+  //#endregion
 
   type AdGroupCreateRequest = {
-    Name : string;
-    Status : EntityStatus;
-    BudgetInMicroCurrency : int option;
-    BidInMicroCurrency : int option;
-    OptimizationGoalMetadata : OptimizationGoalMetadata;
-    BudgetType : BudgetType;
-    StartTime : int option;
-    EndTime : int option;
-    TargetingSpec : TargetingSpec;
-    LifetimeFrequencyCap : int;
-    TrackingUrls : TrackingUrls;
     AutoTargetingEnabled : bool;
-    PlacementGroup : PlacementGroupType;
-    PacingDeliveryType : PacingDeliveryType;
-    CampaignId : string;
-    BillableEvent : ActionType;
+    BidInMicroCurrency : int option;
     BidStrategyType : BidStrategyTypeEnum;
+    BillableEvent : ActionType;
+    BudgetInMicroCurrency : int option;
+    BudgetType : BudgetType;
+    CampaignId : string;
+    EndTime : int option;
+    IsCreativeOptimization : bool option;
+    LifetimeFrequencyCap : int;
+    Name : string;
+    OptimizationGoalMetadata : OptimizationGoalMetadata;
+    PacingDeliveryType : PacingDeliveryType;
+    PlacementGroup : PlacementGroupType;
+    PromotionApplicationLevel : PromotionApplicationLevelEnum;
+    PromotionId : string option;
+    StartTime : int option;
+    Status : EntityStatus;
+    TargetingSpec : TargetingSpec;
     TargetingTemplateIds : string[];
+    TrackingUrls : TrackingUrls;
+    BidMultiplier : decimal;
   }
   //#endregion

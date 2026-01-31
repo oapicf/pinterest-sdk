@@ -9,11 +9,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param term 
  * @param relatedUnderscoreterms 
+ * @param term 
  */
-case class RelatedTermsRelatedTermsListInner(term: Option[String],
-                relatedUnderscoreterms: Option[Seq[String]]
+case class RelatedTermsRelatedTermsListInner(relatedUnderscoreterms: Option[Seq[String]],
+                term: Option[String]
                 )
 
 object RelatedTermsRelatedTermsListInner {

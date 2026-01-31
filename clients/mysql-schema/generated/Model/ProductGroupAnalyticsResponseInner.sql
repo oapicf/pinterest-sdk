@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ProductGroupAnalyticsResponse_inner`
 --
-SELECT `PRODUCT_GROUP_ID`, `DATE` FROM `ProductGroupAnalyticsResponse_inner` WHERE 1;
+SELECT `DATE`, `PRODUCT_GROUP_ID` FROM `ProductGroupAnalyticsResponse_inner` WHERE 1;
 
 --
 -- INSERT template for table `ProductGroupAnalyticsResponse_inner`
 --
-INSERT INTO `ProductGroupAnalyticsResponse_inner`(`PRODUCT_GROUP_ID`, `DATE`) VALUES (?, ?);
+INSERT INTO `ProductGroupAnalyticsResponse_inner`(`DATE`, `PRODUCT_GROUP_ID`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `ProductGroupAnalyticsResponse_inner`
 --
-UPDATE `ProductGroupAnalyticsResponse_inner` SET `PRODUCT_GROUP_ID` = ?, `DATE` = ? WHERE 1;
+UPDATE `ProductGroupAnalyticsResponse_inner` SET `DATE` = ?, `PRODUCT_GROUP_ID` = ? WHERE 1;
 
 --
 -- DELETE template for table `ProductGroupAnalyticsResponse_inner`

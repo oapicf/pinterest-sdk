@@ -26,8 +26,10 @@ import javax.annotation.Generated;
  * CatalogsCreativeAssetsItemsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
+
+  private @Nullable String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -67,8 +69,6 @@ public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
   @Valid
   private List<String> creativeAssetsIds = new ArrayList<>();
 
-  private @Nullable String catalogId;
-
   public CatalogsCreativeAssetsItemsFilter() {
     super();
   }
@@ -79,6 +79,26 @@ public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
   public CatalogsCreativeAssetsItemsFilter(CatalogTypeEnum catalogType, List<String> creativeAssetsIds) {
     this.catalogType = catalogType;
     this.creativeAssetsIds = creativeAssetsIds;
+  }
+
+  public CatalogsCreativeAssetsItemsFilter catalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public @Nullable String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsCreativeAssetsItemsFilter catalogType(CatalogTypeEnum catalogType) {
@@ -129,26 +149,6 @@ public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
     this.creativeAssetsIds = creativeAssetsIds;
   }
 
-  public CatalogsCreativeAssetsItemsFilter catalogId(@Nullable String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   * @return catalogId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("catalog_id")
-  public @Nullable String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(@Nullable String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -158,23 +158,23 @@ public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
       return false;
     }
     CatalogsCreativeAssetsItemsFilter catalogsCreativeAssetsItemsFilter = (CatalogsCreativeAssetsItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
-        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
+        Objects.equals(this.creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsFilter {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

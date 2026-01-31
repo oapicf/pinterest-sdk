@@ -22,12 +22,10 @@ keyword_metrics_t* instantiate_keyword_metrics(int include_optional) {
   keyword_metrics_t* keyword_metrics = NULL;
   if (include_optional) {
     keyword_metrics = keyword_metrics_create(
-      100000,
       "5M+"
     );
   } else {
     keyword_metrics = keyword_metrics_create(
-      100000,
       "5M+"
     );
   }

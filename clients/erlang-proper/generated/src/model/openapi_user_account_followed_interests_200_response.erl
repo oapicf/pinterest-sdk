@@ -9,8 +9,8 @@
 -export_type([openapi_user_account_followed_interests_200_response/0]).
 
 -type openapi_user_account_followed_interests_200_response() ::
-  [ {'items', list(openapi_interest:openapi_interest()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_interest:openapi_interest()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_user_account_followed_interests_200_response() ->
     openapi_user_account_followed_interests_200_response([]).
 
 openapi_user_account_followed_interests_200_response(Fields) ->
-  Default = [ {'items', list(openapi_interest:openapi_interest()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_interest:openapi_interest()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

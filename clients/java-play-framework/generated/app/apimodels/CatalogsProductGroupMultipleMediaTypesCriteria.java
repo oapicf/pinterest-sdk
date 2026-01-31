@@ -13,18 +13,35 @@ import javax.validation.Valid;
 /**
  * CatalogsProductGroupMultipleMediaTypesCriteria
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupMultipleMediaTypesCriteria   {
+  @JsonProperty("negated")
+  
+  private Boolean negated = false;
+
   @JsonProperty("values")
   @NotNull
 @Valid
 
   private List<MediaType> values = new ArrayList<>();
 
-  @JsonProperty("negated")
-  
-  private Boolean negated = false;
+  public CatalogsProductGroupMultipleMediaTypesCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+   /**
+   * Get negated
+   * @return negated
+  **/
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
 
   public CatalogsProductGroupMultipleMediaTypesCriteria values(List<MediaType> values) {
     this.values = values;
@@ -51,23 +68,6 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
     this.values = values;
   }
 
-  public CatalogsProductGroupMultipleMediaTypesCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-   /**
-   * Get negated
-   * @return negated
-  **/
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -78,13 +78,13 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleMediaTypesCriteria catalogsProductGroupMultipleMediaTypesCriteria = (CatalogsProductGroupMultipleMediaTypesCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleMediaTypesCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleMediaTypesCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleMediaTypesCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleMediaTypesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -93,8 +93,8 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleMediaTypesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

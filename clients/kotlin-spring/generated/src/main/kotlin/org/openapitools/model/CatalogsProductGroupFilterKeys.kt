@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.AvailabilityFilter
 import org.openapitools.model.BrandFilter
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.model.CatalogsProductGroupPricingCriteria
+import org.openapitools.model.CatalogsProductGroupUint32Criteria
 import org.openapitools.model.ConditionFilter
 import org.openapitools.model.CurrencyFilter
 import org.openapitools.model.CustomLabel0Filter
@@ -17,6 +19,11 @@ import org.openapitools.model.CustomLabel1Filter
 import org.openapitools.model.CustomLabel2Filter
 import org.openapitools.model.CustomLabel3Filter
 import org.openapitools.model.CustomLabel4Filter
+import org.openapitools.model.CustomNumber0Filter
+import org.openapitools.model.CustomNumber1Filter
+import org.openapitools.model.CustomNumber2Filter
+import org.openapitools.model.CustomNumber3Filter
+import org.openapitools.model.CustomNumber4Filter
 import org.openapitools.model.GenderFilter
 import org.openapitools.model.GoogleProductCategory0Filter
 import org.openapitools.model.GoogleProductCategory1Filter
@@ -36,6 +43,7 @@ import org.openapitools.model.ProductType1Filter
 import org.openapitools.model.ProductType2Filter
 import org.openapitools.model.ProductType3Filter
 import org.openapitools.model.ProductType4Filter
+import org.openapitools.model.TitleKeywordsFilter
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -77,6 +85,12 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param PRODUCT_GROUP 
+ * @param CUSTOM_NUMBER_0 
+ * @param CUSTOM_NUMBER_1 
+ * @param CUSTOM_NUMBER_2 
+ * @param CUSTOM_NUMBER_3 
+ * @param CUSTOM_NUMBER_4 
+ * @param TITLE_KEYWORDS 
  */
 data class CatalogsProductGroupFilterKeys(
 
@@ -110,23 +124,23 @@ data class CatalogsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -190,7 +204,31 @@ data class CatalogsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("PRODUCT_GROUP", required = true) val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
+    @get:JsonProperty("PRODUCT_GROUP", required = true) val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("CUSTOM_NUMBER_0", required = true) val CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("CUSTOM_NUMBER_1", required = true) val CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("CUSTOM_NUMBER_2", required = true) val CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("CUSTOM_NUMBER_3", required = true) val CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("CUSTOM_NUMBER_4", required = true) val CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("TITLE_KEYWORDS", required = true) val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 ) {
 
 }

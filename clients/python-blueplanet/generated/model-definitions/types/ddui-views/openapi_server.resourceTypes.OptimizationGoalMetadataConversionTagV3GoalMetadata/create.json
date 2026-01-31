@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "attribution_windows" },
+      {"model": "conversion_event" },
+      {"model": "conversion_tag_id" },
+      {"model": "cpa_goal_value_in_micro_currency" },
+      {"model": "is_roas_optimized" },
+      {"model": "learning_mode_type" },
+      {"model": "reporting_event" },
+    ]
+  }]
+}

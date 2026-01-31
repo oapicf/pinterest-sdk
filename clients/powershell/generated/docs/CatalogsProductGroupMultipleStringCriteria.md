@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | **String[]** |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Values** | **String[]** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupMultipleStringCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleStringCriteria  -Values null `
- -Negated null
+$CatalogsProductGroupMultipleStringCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleStringCriteria  -Negated null `
+ -Values null
 ```
 
 - Convert the resource to JSON

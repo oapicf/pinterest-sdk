@@ -27,15 +27,15 @@ public class CatalogsRetailItemsBatch   {
   
   private String batchId;
 
-  private java.util.Date createdTime;
+  private CatalogsType catalogType;
 
   private java.util.Date completedTime;
 
-  private BatchOperationStatus status;
-
-  private CatalogsType catalogType;
+  private java.util.Date createdTime;
 
   private List<@Valid ItemProcessingRecord> items = new ArrayList<>();
+
+  private BatchOperationStatus status;
 
   /**
    * Id of the catalogs items batch
@@ -57,21 +57,21 @@ public class CatalogsRetailItemsBatch   {
 
 
   /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
-  public CatalogsRetailItemsBatch createdTime(java.util.Date createdTime) {
-    this.createdTime = createdTime;
+  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-  @JsonProperty("created_time")
-  public java.util.Date getCreatedTime() {
-    return createdTime;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
-  public void setCreatedTime(java.util.Date createdTime) {
-    this.createdTime = createdTime;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
 
@@ -95,39 +95,22 @@ public class CatalogsRetailItemsBatch   {
 
 
   /**
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
    **/
-  public CatalogsRetailItemsBatch status(BatchOperationStatus status) {
-    this.status = status;
+  public CatalogsRetailItemsBatch createdTime(java.util.Date createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
-  }
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
-  }
-
-
-  /**
-   **/
-  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @ApiModelProperty(required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+  @JsonProperty("created_time")
   @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public java.util.Date getCreatedTime() {
+    return createdTime;
   }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  public void setCreatedTime(java.util.Date createdTime) {
+    this.createdTime = createdTime;
   }
 
 
@@ -158,6 +141,24 @@ public class CatalogsRetailItemsBatch   {
   }
 
 
+  /**
+   **/
+  public CatalogsRetailItemsBatch status(BatchOperationStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,16 +170,16 @@ public class CatalogsRetailItemsBatch   {
     }
     CatalogsRetailItemsBatch catalogsRetailItemsBatch = (CatalogsRetailItemsBatch) o;
     return Objects.equals(this.batchId, catalogsRetailItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsRetailItemsBatch.createdTime) &&
-        Objects.equals(this.completedTime, catalogsRetailItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsRetailItemsBatch.status) &&
         Objects.equals(this.catalogType, catalogsRetailItemsBatch.catalogType) &&
-        Objects.equals(this.items, catalogsRetailItemsBatch.items);
+        Objects.equals(this.completedTime, catalogsRetailItemsBatch.completedTime) &&
+        Objects.equals(this.createdTime, catalogsRetailItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsRetailItemsBatch.items) &&
+        Objects.equals(this.status, catalogsRetailItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, completedTime, status, catalogType, items);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -187,11 +188,11 @@ public class CatalogsRetailItemsBatch   {
     sb.append("class CatalogsRetailItemsBatch {\n");
     
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import ConversionTagListResponse._
 
 case class ConversionTagListResponse (
-  items: Option[List[ConversionTagResponse]])
+  items: Option[List[ConversionTag]])
 
 object ConversionTagListResponse {
   import DateTimeCodecs._

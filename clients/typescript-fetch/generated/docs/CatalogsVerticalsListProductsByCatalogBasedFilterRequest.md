@@ -7,10 +7,10 @@ Request object to list products for a given catalog_id and product group filter.
 
 Name | Type
 ------------ | -------------
-`catalogType` | string
 `catalogId` | string
-`filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
+`catalogType` | string
 `country` | [Country](Country.md)
+`filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
 `locale` | [CatalogsLocale](CatalogsLocale.md)
 
 ## Example
@@ -20,10 +20,10 @@ import type { CatalogsVerticalsListProductsByCatalogBasedFilterRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "catalogType": null,
   "catalogId": 2680059592705,
-  "filters": null,
+  "catalogType": null,
   "country": null,
+  "filters": null,
   "locale": null,
 } satisfies CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 

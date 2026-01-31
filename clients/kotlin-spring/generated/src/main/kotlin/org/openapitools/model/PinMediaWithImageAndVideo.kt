@@ -1,8 +1,9 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.PinMedia
+import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.PinMediaMetadata
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -17,17 +18,36 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Pin with a mix of images and videos.
+ * @param mediaType 
  * @param items 
  */
 data class PinMediaWithImageAndVideo(
 
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("media_type", required = true) val mediaType: PinMediaWithImageAndVideo.MediaType,
+
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("items") val items: kotlin.collections.List<PinMediaMetadata>? = null,
+    @get:JsonProperty("items") val items: kotlin.collections.List<PinMediaMetadata>? = null
+) {
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("media_type") override val mediaType: kotlin.String? = null
-) : PinMedia {
+    /**
+    * 
+    * Values: multiple_mixed
+    */
+    enum class MediaType(@get:JsonValue val value: kotlin.String) {
+
+        multiple_mixed("multiple_mixed");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): MediaType {
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaWithImageAndVideo'")
+            }
+        }
+    }
 
 }
 

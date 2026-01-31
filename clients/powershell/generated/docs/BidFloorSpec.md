@@ -3,23 +3,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BillableEvent** | [**ActionType**](ActionType.md) |  | 
 **Countries** | [**Country[]**](Country.md) |  | [optional] 
+**CreativeType** | [**CreativeType**](CreativeType.md) |  | [optional] 
 **Currency** | [**Currency**](Currency.md) |  | 
 **ObjectiveType** | [**ObjectiveType**](ObjectiveType.md) |  | [optional] 
-**BillableEvent** | [**ActionType**](ActionType.md) |  | 
 **OptimizationGoalMetadata** | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  | [optional] 
-**CreativeType** | [**CreativeType**](CreativeType.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BidFloorSpec = Initialize-PSOpenAPIToolsBidFloorSpec  -Countries null `
+$BidFloorSpec = Initialize-PSOpenAPIToolsBidFloorSpec  -BillableEvent null `
+ -Countries null `
+ -CreativeType null `
  -Currency null `
  -ObjectiveType null `
- -BillableEvent null `
- -OptimizationGoalMetadata null `
- -CreativeType null
+ -OptimizationGoalMetadata null
 ```
 
 - Convert the resource to JSON

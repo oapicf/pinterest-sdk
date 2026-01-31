@@ -8,6 +8,8 @@ private class OASBusinessAccessRoleTest {
             OASBusinessAccessRole.ANALYST,
             OASBusinessAccessRole.SOS_READER,
             OASBusinessAccessRole.FINANCE_MANAGER,
+            OASBusinessAccessRole.FINANCE_VIEW,
+            OASBusinessAccessRole.FINANCE_EDIT,
             OASBusinessAccessRole.AUDIENCE_MANAGER,
             OASBusinessAccessRole.CAMPAIGN_MANAGER,
             OASBusinessAccessRole.CATALOGS_MANAGER,

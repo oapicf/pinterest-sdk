@@ -5,6 +5,11 @@
   "name": "CatalogsRetailProductGroupCreateRequest",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the retail product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -16,9 +21,10 @@
       "doc": "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one."
     },
     {
-      "name": "name",
-      "type": "string",
-      "doc": ""
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "description",
@@ -32,18 +38,14 @@
       "doc": ""
     },
     {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the retail product group."
-    },
-    {
-      "name": "country",
-      "type": "model.Country",
-      "doc": ""
-    },
-    {
       "name": "locale",
-      "type": "model.CatalogsLocale",
+      "type": ["null", "model.CatalogsLocale"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
       "doc": ""
     }
   ]

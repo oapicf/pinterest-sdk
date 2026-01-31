@@ -1,6 +1,147 @@
 @isTest
 private class OASBusinessAccessRelationshipsApiTest {
     /**
+     * Create a Brand Account
+     *
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     */
+    @isTest
+    private static void brandAccountsCreateTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'businessHierarchyId' => 7009386637860,
+            'oaSBrandAccountsCreateRequest' => ''
+        };
+
+        OASClient client;
+        OASBusinessAccessRelationshipsApi api;
+        OASBrandAccountsCreate200Response response;
+        OASBrandAccountsCreate200Response expectedResponse;
+        String js = '';
+
+        client = new OASClient();
+        api = new OASBusinessAccessRelationshipsApi(client);
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsCreate(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
+     * Update a Brand Account
+     *
+     * Update an existing Brand Account
+     */
+    @isTest
+    private static void brandAccountsUpdateTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'businessHierarchyId' => 7009386637860,
+            'brandAccountId' => 729090764583391194,
+            'oaSBrandAccountsUpdateRequest' => ''
+        };
+
+        OASClient client;
+        OASBusinessAccessRelationshipsApi api;
+        OASBrandAccountsCreate200Response response;
+        OASBrandAccountsCreate200Response expectedResponse;
+        String js = '';
+
+        client = new OASClient();
+        api = new OASBusinessAccessRelationshipsApi(client);
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBrandAccountsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBrandAccountsCreate200Response.getExample();
+        response = (OASBrandAccountsCreate200Response) api.brandAccountsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
      * Terminate business memberships
      *
      * Terminate memberships between the specified members and your business.
@@ -148,6 +289,7 @@ private class OASBusinessAccessRelationshipsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'businessId' => 729090764583391194,
+            'fetchSystemUsers' => '',
             'assetsSummary' => '',
             'businessRoles' => new List<OASMemberBusinessRole>{OASMemberBusinessRole.getExample()},
             'memberIds' => 00101010101,2222220101,
@@ -225,6 +367,47 @@ private class OASBusinessAccessRelationshipsApiTest {
         res.setBody(js);
         expectedResponse = OASGetBusinessPartners200Response.getExample();
         response = (OASGetBusinessPartners200Response) api.getBusinessPartners(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
+     * Update a system user information.
+     *
+     * Update a system user information such as name.
+     */
+    @isTest
+    private static void systemUserUpdateTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'businessId' => 729090764583391194,
+            'systemUserId' => 729090764583391194,
+            'oaSSystemUserUpdateRequest' => ''
+        };
+
+        OASClient client;
+        OASBusinessAccessRelationshipsApi api;
+        String js = '';
+
+        client = new OASClient();
+        api = new OASBusinessAccessRelationshipsApi(client);
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.systemUserUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.systemUserUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 

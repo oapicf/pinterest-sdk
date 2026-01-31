@@ -24,11 +24,11 @@ public class ConversionApiResponseTest {
     }
 
     /**
-     * Test the property 'numEventsReceived'
+     * Test the property 'events'
      */
     @Test
-    public void numEventsReceivedTest() {
-        // TODO: test numEventsReceived
+    public void eventsTest() {
+        // TODO: test events
     }
 
     /**
@@ -40,11 +40,11 @@ public class ConversionApiResponseTest {
     }
 
     /**
-     * Test the property 'events'
+     * Test the property 'numEventsReceived'
      */
     @Test
-    public void eventsTest() {
-        // TODO: test events
+    public void numEventsReceivedTest() {
+        // TODO: test numEventsReceived
     }
 
 }

@@ -11,10 +11,18 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}billable_event`,
+                ...ActionType.fields(`${keyPrefix}billable_event`, isInput),
+            },
+            {
                 key: `${keyPrefix}countries`,
                 list: true,
                 type: 'string',
                 ...Country.fields(`${keyPrefix}countries`, isInput),
+            },
+            {
+                key: `${keyPrefix}creative_type`,
+                ...CreativeType.fields(`${keyPrefix}creative_type`, isInput),
             },
             {
                 key: `${keyPrefix}currency`,
@@ -24,26 +32,18 @@ module.exports = {
                 key: `${keyPrefix}objective_type`,
                 ...ObjectiveType.fields(`${keyPrefix}objective_type`, isInput),
             },
-            {
-                key: `${keyPrefix}billable_event`,
-                ...ActionType.fields(`${keyPrefix}billable_event`, isInput),
-            },
             ...OptimizationGoalMetadata.fields(`${keyPrefix}optimization_goal_metadata`, isInput),
-            {
-                key: `${keyPrefix}creative_type`,
-                ...CreativeType.fields(`${keyPrefix}creative_type`, isInput),
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'billable_event': bundle.inputData?.[`${keyPrefix}billable_event`],
             'countries': utils.childMapping(bundle.inputData?.[`${keyPrefix}countries`], `${keyPrefix}countries`, Country),
+            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'currency': bundle.inputData?.[`${keyPrefix}currency`],
             'objective_type': bundle.inputData?.[`${keyPrefix}objective_type`],
-            'billable_event': bundle.inputData?.[`${keyPrefix}billable_event`],
             'optimization_goal_metadata': utils.removeIfEmpty(OptimizationGoalMetadata.mapping(bundle, `${keyPrefix}optimization_goal_metadata`)),
-            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
         }
     },
 }

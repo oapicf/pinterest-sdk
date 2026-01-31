@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.CatalogsUpsertHotelItem;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelBatchItem   {
   
+  private CatalogsUpdatableHotelAttributes attributes;
   private String hotelId;
 
 
@@ -36,15 +37,23 @@ public class CatalogsHotelBatchItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsUpdatableHotelAttributes attributes;
 
   public CatalogsHotelBatchItem () {
 
   }
 
-  public CatalogsHotelBatchItem (String hotelId, OperationEnum operation, CatalogsUpdatableHotelAttributes attributes) {
+  public CatalogsHotelBatchItem (CatalogsUpdatableHotelAttributes attributes, String hotelId, OperationEnum operation) {
+    this.attributes = attributes;
     this.hotelId = hotelId;
     this.operation = operation;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -66,15 +75,6 @@ public class CatalogsHotelBatchItem   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("attributes")
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -85,14 +85,14 @@ public class CatalogsHotelBatchItem   {
       return false;
     }
     CatalogsHotelBatchItem catalogsHotelBatchItem = (CatalogsHotelBatchItem) o;
-    return Objects.equals(hotelId, catalogsHotelBatchItem.hotelId) &&
-        Objects.equals(operation, catalogsHotelBatchItem.operation) &&
-        Objects.equals(attributes, catalogsHotelBatchItem.attributes);
+    return Objects.equals(attributes, catalogsHotelBatchItem.attributes) &&
+        Objects.equals(hotelId, catalogsHotelBatchItem.hotelId) &&
+        Objects.equals(operation, catalogsHotelBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -100,9 +100,9 @@ public class CatalogsHotelBatchItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

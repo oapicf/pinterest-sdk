@@ -7,13 +7,14 @@
 
 (def conversion-tag-create-data
   {
-   (ds/opt :aem_enabled) boolean?
-   (ds/opt :md_frequency) float?
-   (ds/opt :aem_fnln_enabled) boolean?
-   (ds/opt :aem_ph_enabled) boolean?
-   (ds/opt :aem_ge_enabled) boolean?
    (ds/opt :aem_db_enabled) boolean?
+   (ds/opt :aem_enabled) boolean?
+   (ds/opt :aem_external_id_enabled) boolean?
+   (ds/opt :aem_fnln_enabled) boolean?
+   (ds/opt :aem_ge_enabled) boolean?
    (ds/opt :aem_loc_enabled) boolean?
+   (ds/opt :aem_ph_enabled) boolean?
+   (ds/opt :md_frequency) float?
    (ds/req :name) string?
    })
 

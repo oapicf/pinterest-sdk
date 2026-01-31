@@ -13,7 +13,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<ProductGroupPromotionCreateRequestElement> productGroupPromotion
+    // BuiltList<ProductGroupPromotion> productGroupPromotion
     test('to test the property `productGroupPromotion`', () async {
       // TODO
     });

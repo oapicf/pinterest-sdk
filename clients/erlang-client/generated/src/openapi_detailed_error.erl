@@ -6,15 +6,15 @@
 
 -type openapi_detailed_error() ::
     #{ 'code' := integer(),
-       'message' := binary(),
-       'details' := maps:map()
+       'details' := maps:map(),
+       'message' := binary()
      }.
 
 encode(#{ 'code' := Code,
-          'message' := Message,
-          'details' := Details
+          'details' := Details,
+          'message' := Message
         }) ->
     #{ 'code' => Code,
-       'message' => Message,
-       'details' => Details
+       'details' => Details,
+       'message' => Message
      }.

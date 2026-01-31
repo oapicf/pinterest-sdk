@@ -14,20 +14,23 @@ import { AdAccountOwner } from './adAccountOwner';
 
 
 export interface AdAccount { 
-    id?: string;
-    name?: string;
-    owner?: AdAccountOwner;
     country?: Country;
+    /**
+     *  Creation time. Unix timestamp in seconds.
+     */
+    readonly created_time?: number | null;
     currency?: Currency;
-    permissions?: Array<BusinessAccessRole>;
+    id: string;
     /**
-     * Creation time. Unix timestamp in seconds.
+     * Ad account name.
      */
-    created_time?: number | null;
+    name?: string;
     /**
-     * Last update time. Unix timestamp in seconds.
+     * Ad account owner
      */
-    updated_time?: number | null;
+    readonly owner?: AdAccountOwner;
+    readonly permissions?: Array<BusinessAccessRole>;
+    readonly updated_time?: number | null;
 }
 export namespace AdAccount {
 }

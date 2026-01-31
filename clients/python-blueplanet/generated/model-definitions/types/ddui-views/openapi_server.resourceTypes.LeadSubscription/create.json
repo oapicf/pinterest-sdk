@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "api_version" },
+      {"model": "created_time" },
+      {"model": "cryptographic_algorithm" },
+      {"model": "cryptographic_key" },
+      {"model": "id" },
+      {"model": "lead_form_id" },
+      {"model": "user_account_id" },
+      {"model": "webhook_url" },
+    ]
+  }]
+}

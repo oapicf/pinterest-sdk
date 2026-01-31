@@ -3,67 +3,9 @@ Protected Class ConversionEventsDataInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-		#tag EndNote
-		event_name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+			<p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
 		#tag EndNote
 		action_source As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The time when the event happened. Unix timestamp in seconds.
-		#tag EndNote
-		event_time As Int64
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-		#tag EndNote
-		event_id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			URL of the web conversion event.
-		#tag EndNote
-		event_source_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-		#tag EndNote
-		opt_out As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is "ss-partnername" lowercase. E.g ‘ss-shopify’
-		#tag EndNote
-		partner_name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		user_data As OpenAPIClient.Models.ConversionEventsUserData
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		custom_data As OpenAPIClient.Models.ConversionEventsDataInnerCustomData
 	#tag EndProperty
 
 
@@ -72,6 +14,11 @@ Protected Class ConversionEventsDataInner
 			The app store app ID.
 		#tag EndNote
 		app_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		app_info As OpenAPIClient.Models.ConversionEventAppInfo
 	#tag EndProperty
 
 
@@ -92,6 +39,11 @@ Protected Class ConversionEventsDataInner
 
 
 	#tag Property, Flags = &h0
+		custom_data As OpenAPIClient.Models.ConversionEventsDataInnerCustomData
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Brand of the user device.
 		#tag EndNote
@@ -104,6 +56,11 @@ Protected Class ConversionEventsDataInner
 			User device's mobile carrier.
 		#tag EndNote
 		device_carrier As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		device_info As OpenAPIClient.Models.ConversionEventDeviceInfo
 	#tag EndProperty
 
 
@@ -125,17 +82,33 @@ Protected Class ConversionEventsDataInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Version of the device operating system.
+			A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
 		#tag EndNote
-		os_version As Xoson.O.OptionalString
+		event_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether the event occurred when the user device was connected to wifi.
+			<p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
 		#tag EndNote
-		wifi As Xoson.O.OptionalBoolean
+		event_name As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			URL of the web conversion event.
+		#tag EndNote
+		event_source_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The time when the event happened. Unix timestamp in seconds.
+		#tag EndNote
+		event_time As Int64
 	#tag EndProperty
 
 
@@ -144,6 +117,43 @@ Protected Class ConversionEventsDataInner
 			Two-character ISO-639-1 language code indicating the user's language.
 		#tag EndNote
 		language As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+		#tag EndNote
+		opt_out As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Version of the device operating system.
+		#tag EndNote
+		os_version As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is "ss-partnername" lowercase. E.g ‘ss-shopify’
+		#tag EndNote
+		partner_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		user_data As OpenAPIClient.Models.ConversionEventsUserData
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether the event occurred when the user device was connected to wifi.
+		#tag EndNote
+		wifi As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -184,14 +194,6 @@ Protected Class ConversionEventsDataInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="event_name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="action_source"
 			Visible=false
 			Group="Behavior"
@@ -200,67 +202,19 @@ Protected Class ConversionEventsDataInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="event_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Int64"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="event_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="event_source_url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="opt_out"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Boolean"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="partner_name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="user_data"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ConversionEventsUserData"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="custom_data"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ConversionEventsDataInnerCustomData"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="app_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="app_info"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ConversionEventAppInfo"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -280,6 +234,14 @@ Protected Class ConversionEventsDataInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="custom_data"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ConversionEventsDataInnerCustomData"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="device_brand"
 			Visible=false
 			Group="Behavior"
@@ -293,6 +255,14 @@ Protected Class ConversionEventsDataInner
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="device_info"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ConversionEventDeviceInfo"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -312,7 +282,7 @@ Protected Class ConversionEventsDataInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="os_version"
+			Name="event_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -320,11 +290,27 @@ Protected Class ConversionEventsDataInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="wifi"
+			Name="event_name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="event_source_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="event_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Int64"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -333,6 +319,46 @@ Protected Class ConversionEventsDataInner
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="opt_out"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="os_version"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="partner_name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="user_data"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ConversionEventsUserData"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="wifi"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

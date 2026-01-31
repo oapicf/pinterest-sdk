@@ -12,28 +12,28 @@ import org.openapitools.model.OrderLineStatus;
 
 @Canonical
 class OrderLine {
-    /* Order line ID. */
-    String id
-    /* Always \"orderline\". */
-    String type
     /* Ad account ID. */
     String adAccountId
+    /* Order line budget in micro currency. */
+    BigDecimal budget
+    /* End time. Unix timestamp. */
+    BigDecimal endTime
+    /* Order line ID. */
+    String id
+    /* Order line name. */
+    String name
+    /* Order line paid budget in micro currency. */
+    BigDecimal paidBudget
+    /* Order line paid type. */
+    OrderLinePaidType paidType
     /* Purchase order ID. */
     String purchaseOrderId
     /* Start time. Unix timestamp. */
     BigDecimal startTime
-    /* End time. Unix timestamp. */
-    BigDecimal endTime
-    /* Order line budget in micro currency. */
-    BigDecimal budget
-    /* Order line paid budget in micro currency. */
-    BigDecimal paidBudget
     /* Order line status. */
     OrderLineStatus status
-    /* Order line name. */
-    String name
-    /* Order line paid type. */
-    OrderLinePaidType paidType
+    /* Always \"orderline\". */
+    String type
     /* Associated List of campaign IDs. */
     List<String> campaignIds = new ArrayList<>()
 }

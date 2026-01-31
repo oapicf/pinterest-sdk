@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AemEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
+**AemDbEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
+**AemEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
+**AemExternalIdEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
+**AemFnlnEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
+**AemGeEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
+**AemLocEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
+**AemPhEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. | [optional] [default to false]
 **MdFrequency** | Pointer to **NullableFloat32** | Metadata ingestion frequency. | [optional] [default to 1]
-**AemFnlnEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
-**AemPhEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match phone is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
-**AemGeEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
-**AemDbEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
-**AemLocEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
 **Name** | **string** | Conversion tag name. | 
 
 ## Methods
@@ -32,181 +33,6 @@ NewConversionTagCreateWithDefaults instantiates a new ConversionTagCreate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAemEnabled
-
-`func (o *ConversionTagCreate) GetAemEnabled() bool`
-
-GetAemEnabled returns the AemEnabled field if non-nil, zero value otherwise.
-
-### GetAemEnabledOk
-
-`func (o *ConversionTagCreate) GetAemEnabledOk() (*bool, bool)`
-
-GetAemEnabledOk returns a tuple with the AemEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAemEnabled
-
-`func (o *ConversionTagCreate) SetAemEnabled(v bool)`
-
-SetAemEnabled sets AemEnabled field to given value.
-
-### HasAemEnabled
-
-`func (o *ConversionTagCreate) HasAemEnabled() bool`
-
-HasAemEnabled returns a boolean if a field has been set.
-
-### SetAemEnabledNil
-
-`func (o *ConversionTagCreate) SetAemEnabledNil(b bool)`
-
- SetAemEnabledNil sets the value for AemEnabled to be an explicit nil
-
-### UnsetAemEnabled
-`func (o *ConversionTagCreate) UnsetAemEnabled()`
-
-UnsetAemEnabled ensures that no value is present for AemEnabled, not even an explicit nil
-### GetMdFrequency
-
-`func (o *ConversionTagCreate) GetMdFrequency() float32`
-
-GetMdFrequency returns the MdFrequency field if non-nil, zero value otherwise.
-
-### GetMdFrequencyOk
-
-`func (o *ConversionTagCreate) GetMdFrequencyOk() (*float32, bool)`
-
-GetMdFrequencyOk returns a tuple with the MdFrequency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMdFrequency
-
-`func (o *ConversionTagCreate) SetMdFrequency(v float32)`
-
-SetMdFrequency sets MdFrequency field to given value.
-
-### HasMdFrequency
-
-`func (o *ConversionTagCreate) HasMdFrequency() bool`
-
-HasMdFrequency returns a boolean if a field has been set.
-
-### SetMdFrequencyNil
-
-`func (o *ConversionTagCreate) SetMdFrequencyNil(b bool)`
-
- SetMdFrequencyNil sets the value for MdFrequency to be an explicit nil
-
-### UnsetMdFrequency
-`func (o *ConversionTagCreate) UnsetMdFrequency()`
-
-UnsetMdFrequency ensures that no value is present for MdFrequency, not even an explicit nil
-### GetAemFnlnEnabled
-
-`func (o *ConversionTagCreate) GetAemFnlnEnabled() bool`
-
-GetAemFnlnEnabled returns the AemFnlnEnabled field if non-nil, zero value otherwise.
-
-### GetAemFnlnEnabledOk
-
-`func (o *ConversionTagCreate) GetAemFnlnEnabledOk() (*bool, bool)`
-
-GetAemFnlnEnabledOk returns a tuple with the AemFnlnEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAemFnlnEnabled
-
-`func (o *ConversionTagCreate) SetAemFnlnEnabled(v bool)`
-
-SetAemFnlnEnabled sets AemFnlnEnabled field to given value.
-
-### HasAemFnlnEnabled
-
-`func (o *ConversionTagCreate) HasAemFnlnEnabled() bool`
-
-HasAemFnlnEnabled returns a boolean if a field has been set.
-
-### SetAemFnlnEnabledNil
-
-`func (o *ConversionTagCreate) SetAemFnlnEnabledNil(b bool)`
-
- SetAemFnlnEnabledNil sets the value for AemFnlnEnabled to be an explicit nil
-
-### UnsetAemFnlnEnabled
-`func (o *ConversionTagCreate) UnsetAemFnlnEnabled()`
-
-UnsetAemFnlnEnabled ensures that no value is present for AemFnlnEnabled, not even an explicit nil
-### GetAemPhEnabled
-
-`func (o *ConversionTagCreate) GetAemPhEnabled() bool`
-
-GetAemPhEnabled returns the AemPhEnabled field if non-nil, zero value otherwise.
-
-### GetAemPhEnabledOk
-
-`func (o *ConversionTagCreate) GetAemPhEnabledOk() (*bool, bool)`
-
-GetAemPhEnabledOk returns a tuple with the AemPhEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAemPhEnabled
-
-`func (o *ConversionTagCreate) SetAemPhEnabled(v bool)`
-
-SetAemPhEnabled sets AemPhEnabled field to given value.
-
-### HasAemPhEnabled
-
-`func (o *ConversionTagCreate) HasAemPhEnabled() bool`
-
-HasAemPhEnabled returns a boolean if a field has been set.
-
-### SetAemPhEnabledNil
-
-`func (o *ConversionTagCreate) SetAemPhEnabledNil(b bool)`
-
- SetAemPhEnabledNil sets the value for AemPhEnabled to be an explicit nil
-
-### UnsetAemPhEnabled
-`func (o *ConversionTagCreate) UnsetAemPhEnabled()`
-
-UnsetAemPhEnabled ensures that no value is present for AemPhEnabled, not even an explicit nil
-### GetAemGeEnabled
-
-`func (o *ConversionTagCreate) GetAemGeEnabled() bool`
-
-GetAemGeEnabled returns the AemGeEnabled field if non-nil, zero value otherwise.
-
-### GetAemGeEnabledOk
-
-`func (o *ConversionTagCreate) GetAemGeEnabledOk() (*bool, bool)`
-
-GetAemGeEnabledOk returns a tuple with the AemGeEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAemGeEnabled
-
-`func (o *ConversionTagCreate) SetAemGeEnabled(v bool)`
-
-SetAemGeEnabled sets AemGeEnabled field to given value.
-
-### HasAemGeEnabled
-
-`func (o *ConversionTagCreate) HasAemGeEnabled() bool`
-
-HasAemGeEnabled returns a boolean if a field has been set.
-
-### SetAemGeEnabledNil
-
-`func (o *ConversionTagCreate) SetAemGeEnabledNil(b bool)`
-
- SetAemGeEnabledNil sets the value for AemGeEnabled to be an explicit nil
-
-### UnsetAemGeEnabled
-`func (o *ConversionTagCreate) UnsetAemGeEnabled()`
-
-UnsetAemGeEnabled ensures that no value is present for AemGeEnabled, not even an explicit nil
 ### GetAemDbEnabled
 
 `func (o *ConversionTagCreate) GetAemDbEnabled() bool`
@@ -242,6 +68,146 @@ HasAemDbEnabled returns a boolean if a field has been set.
 `func (o *ConversionTagCreate) UnsetAemDbEnabled()`
 
 UnsetAemDbEnabled ensures that no value is present for AemDbEnabled, not even an explicit nil
+### GetAemEnabled
+
+`func (o *ConversionTagCreate) GetAemEnabled() bool`
+
+GetAemEnabled returns the AemEnabled field if non-nil, zero value otherwise.
+
+### GetAemEnabledOk
+
+`func (o *ConversionTagCreate) GetAemEnabledOk() (*bool, bool)`
+
+GetAemEnabledOk returns a tuple with the AemEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAemEnabled
+
+`func (o *ConversionTagCreate) SetAemEnabled(v bool)`
+
+SetAemEnabled sets AemEnabled field to given value.
+
+### HasAemEnabled
+
+`func (o *ConversionTagCreate) HasAemEnabled() bool`
+
+HasAemEnabled returns a boolean if a field has been set.
+
+### SetAemEnabledNil
+
+`func (o *ConversionTagCreate) SetAemEnabledNil(b bool)`
+
+ SetAemEnabledNil sets the value for AemEnabled to be an explicit nil
+
+### UnsetAemEnabled
+`func (o *ConversionTagCreate) UnsetAemEnabled()`
+
+UnsetAemEnabled ensures that no value is present for AemEnabled, not even an explicit nil
+### GetAemExternalIdEnabled
+
+`func (o *ConversionTagCreate) GetAemExternalIdEnabled() bool`
+
+GetAemExternalIdEnabled returns the AemExternalIdEnabled field if non-nil, zero value otherwise.
+
+### GetAemExternalIdEnabledOk
+
+`func (o *ConversionTagCreate) GetAemExternalIdEnabledOk() (*bool, bool)`
+
+GetAemExternalIdEnabledOk returns a tuple with the AemExternalIdEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAemExternalIdEnabled
+
+`func (o *ConversionTagCreate) SetAemExternalIdEnabled(v bool)`
+
+SetAemExternalIdEnabled sets AemExternalIdEnabled field to given value.
+
+### HasAemExternalIdEnabled
+
+`func (o *ConversionTagCreate) HasAemExternalIdEnabled() bool`
+
+HasAemExternalIdEnabled returns a boolean if a field has been set.
+
+### SetAemExternalIdEnabledNil
+
+`func (o *ConversionTagCreate) SetAemExternalIdEnabledNil(b bool)`
+
+ SetAemExternalIdEnabledNil sets the value for AemExternalIdEnabled to be an explicit nil
+
+### UnsetAemExternalIdEnabled
+`func (o *ConversionTagCreate) UnsetAemExternalIdEnabled()`
+
+UnsetAemExternalIdEnabled ensures that no value is present for AemExternalIdEnabled, not even an explicit nil
+### GetAemFnlnEnabled
+
+`func (o *ConversionTagCreate) GetAemFnlnEnabled() bool`
+
+GetAemFnlnEnabled returns the AemFnlnEnabled field if non-nil, zero value otherwise.
+
+### GetAemFnlnEnabledOk
+
+`func (o *ConversionTagCreate) GetAemFnlnEnabledOk() (*bool, bool)`
+
+GetAemFnlnEnabledOk returns a tuple with the AemFnlnEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAemFnlnEnabled
+
+`func (o *ConversionTagCreate) SetAemFnlnEnabled(v bool)`
+
+SetAemFnlnEnabled sets AemFnlnEnabled field to given value.
+
+### HasAemFnlnEnabled
+
+`func (o *ConversionTagCreate) HasAemFnlnEnabled() bool`
+
+HasAemFnlnEnabled returns a boolean if a field has been set.
+
+### SetAemFnlnEnabledNil
+
+`func (o *ConversionTagCreate) SetAemFnlnEnabledNil(b bool)`
+
+ SetAemFnlnEnabledNil sets the value for AemFnlnEnabled to be an explicit nil
+
+### UnsetAemFnlnEnabled
+`func (o *ConversionTagCreate) UnsetAemFnlnEnabled()`
+
+UnsetAemFnlnEnabled ensures that no value is present for AemFnlnEnabled, not even an explicit nil
+### GetAemGeEnabled
+
+`func (o *ConversionTagCreate) GetAemGeEnabled() bool`
+
+GetAemGeEnabled returns the AemGeEnabled field if non-nil, zero value otherwise.
+
+### GetAemGeEnabledOk
+
+`func (o *ConversionTagCreate) GetAemGeEnabledOk() (*bool, bool)`
+
+GetAemGeEnabledOk returns a tuple with the AemGeEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAemGeEnabled
+
+`func (o *ConversionTagCreate) SetAemGeEnabled(v bool)`
+
+SetAemGeEnabled sets AemGeEnabled field to given value.
+
+### HasAemGeEnabled
+
+`func (o *ConversionTagCreate) HasAemGeEnabled() bool`
+
+HasAemGeEnabled returns a boolean if a field has been set.
+
+### SetAemGeEnabledNil
+
+`func (o *ConversionTagCreate) SetAemGeEnabledNil(b bool)`
+
+ SetAemGeEnabledNil sets the value for AemGeEnabled to be an explicit nil
+
+### UnsetAemGeEnabled
+`func (o *ConversionTagCreate) UnsetAemGeEnabled()`
+
+UnsetAemGeEnabled ensures that no value is present for AemGeEnabled, not even an explicit nil
 ### GetAemLocEnabled
 
 `func (o *ConversionTagCreate) GetAemLocEnabled() bool`
@@ -277,6 +243,76 @@ HasAemLocEnabled returns a boolean if a field has been set.
 `func (o *ConversionTagCreate) UnsetAemLocEnabled()`
 
 UnsetAemLocEnabled ensures that no value is present for AemLocEnabled, not even an explicit nil
+### GetAemPhEnabled
+
+`func (o *ConversionTagCreate) GetAemPhEnabled() bool`
+
+GetAemPhEnabled returns the AemPhEnabled field if non-nil, zero value otherwise.
+
+### GetAemPhEnabledOk
+
+`func (o *ConversionTagCreate) GetAemPhEnabledOk() (*bool, bool)`
+
+GetAemPhEnabledOk returns a tuple with the AemPhEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAemPhEnabled
+
+`func (o *ConversionTagCreate) SetAemPhEnabled(v bool)`
+
+SetAemPhEnabled sets AemPhEnabled field to given value.
+
+### HasAemPhEnabled
+
+`func (o *ConversionTagCreate) HasAemPhEnabled() bool`
+
+HasAemPhEnabled returns a boolean if a field has been set.
+
+### SetAemPhEnabledNil
+
+`func (o *ConversionTagCreate) SetAemPhEnabledNil(b bool)`
+
+ SetAemPhEnabledNil sets the value for AemPhEnabled to be an explicit nil
+
+### UnsetAemPhEnabled
+`func (o *ConversionTagCreate) UnsetAemPhEnabled()`
+
+UnsetAemPhEnabled ensures that no value is present for AemPhEnabled, not even an explicit nil
+### GetMdFrequency
+
+`func (o *ConversionTagCreate) GetMdFrequency() float32`
+
+GetMdFrequency returns the MdFrequency field if non-nil, zero value otherwise.
+
+### GetMdFrequencyOk
+
+`func (o *ConversionTagCreate) GetMdFrequencyOk() (*float32, bool)`
+
+GetMdFrequencyOk returns a tuple with the MdFrequency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMdFrequency
+
+`func (o *ConversionTagCreate) SetMdFrequency(v float32)`
+
+SetMdFrequency sets MdFrequency field to given value.
+
+### HasMdFrequency
+
+`func (o *ConversionTagCreate) HasMdFrequency() bool`
+
+HasMdFrequency returns a boolean if a field has been set.
+
+### SetMdFrequencyNil
+
+`func (o *ConversionTagCreate) SetMdFrequencyNil(b bool)`
+
+ SetMdFrequencyNil sets the value for MdFrequency to be an explicit nil
+
+### UnsetMdFrequency
+`func (o *ConversionTagCreate) UnsetMdFrequency()`
+
+UnsetMdFrequency ensures that no value is present for MdFrequency, not even an explicit nil
 ### GetName
 
 `func (o *ConversionTagCreate) GetName() string`

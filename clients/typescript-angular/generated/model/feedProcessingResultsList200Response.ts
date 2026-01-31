@@ -11,7 +11,7 @@ import { CatalogsFeedProcessingResult } from './catalogsFeedProcessingResult';
 
 
 export interface FeedProcessingResultsList200Response { 
-    items: Array<CatalogsFeedProcessingResult>;
     bookmark?: string | null;
+    items: Array<CatalogsFeedProcessingResult>;
 }
 

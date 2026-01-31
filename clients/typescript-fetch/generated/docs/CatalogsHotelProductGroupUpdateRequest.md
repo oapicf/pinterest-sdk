@@ -8,9 +8,9 @@ Request object for updating a hotel product group.
 Name | Type
 ------------ | -------------
 `catalogType` | string
-`name` | string
 `description` | string
 `filters` | [CatalogsHotelProductGroupFilters](CatalogsHotelProductGroupFilters.md)
+`name` | string
 
 ## Example
 
@@ -20,9 +20,9 @@ import type { CatalogsHotelProductGroupUpdateRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
-  "name": null,
   "description": null,
   "filters": null,
+  "name": null,
 } satisfies CatalogsHotelProductGroupUpdateRequest
 
 console.log(example)

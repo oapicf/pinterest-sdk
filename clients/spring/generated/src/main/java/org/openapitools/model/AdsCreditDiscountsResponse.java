@@ -24,12 +24,16 @@ import javax.annotation.Generated;
  * AdsCreditDiscountsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditDiscountsResponse {
 
   private @Nullable Boolean active;
 
   private @Nullable String advertiserId;
+
+  private JsonNullable<String> discountCurrency = JsonNullable.<String>undefined();
+
+  private JsonNullable<BigDecimal> discountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
   /**
    * The type of discount of this credit
@@ -104,13 +108,9 @@ public class AdsCreditDiscountsResponse {
 
   private JsonNullable<DiscountTypeEnum> discountType = JsonNullable.<DiscountTypeEnum>undefined();
 
-  private JsonNullable<BigDecimal> discountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
-
-  private JsonNullable<String> discountCurrency = JsonNullable.<String>undefined();
+  private JsonNullable<BigDecimal> remainingDiscountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
   private JsonNullable<String> title = JsonNullable.<String>undefined();
-
-  private JsonNullable<BigDecimal> remainingDiscountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
   public AdsCreditDiscountsResponse active(@Nullable Boolean active) {
     this.active = active;
@@ -152,24 +152,24 @@ public class AdsCreditDiscountsResponse {
     this.advertiserId = advertiserId;
   }
 
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
-    this.discountType = JsonNullable.of(discountType);
+  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
+    this.discountCurrency = JsonNullable.of(discountCurrency);
     return this;
   }
 
   /**
-   * The type of discount of this credit
-   * @return discountType
+   * Currency value for the discount.
+   * @return discountCurrency
    */
   
-  @Schema(name = "discountType", description = "The type of discount of this credit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("discountType")
-  public JsonNullable<DiscountTypeEnum> getDiscountType() {
-    return discountType;
+  @Schema(name = "discountCurrency", example = "USD", description = "Currency value for the discount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("discountCurrency")
+  public JsonNullable<String> getDiscountCurrency() {
+    return discountCurrency;
   }
 
-  public void setDiscountType(JsonNullable<DiscountTypeEnum> discountType) {
-    this.discountType = discountType;
+  public void setDiscountCurrency(JsonNullable<String> discountCurrency) {
+    this.discountCurrency = discountCurrency;
   }
 
   public AdsCreditDiscountsResponse discountInMicroCurrency(BigDecimal discountInMicroCurrency) {
@@ -192,44 +192,24 @@ public class AdsCreditDiscountsResponse {
     this.discountInMicroCurrency = discountInMicroCurrency;
   }
 
-  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
-    this.discountCurrency = JsonNullable.of(discountCurrency);
+  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+    this.discountType = JsonNullable.of(discountType);
     return this;
   }
 
   /**
-   * Currency value for the discount.
-   * @return discountCurrency
+   * The type of discount of this credit
+   * @return discountType
    */
   
-  @Schema(name = "discountCurrency", example = "USD", description = "Currency value for the discount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("discountCurrency")
-  public JsonNullable<String> getDiscountCurrency() {
-    return discountCurrency;
+  @Schema(name = "discountType", description = "The type of discount of this credit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("discountType")
+  public JsonNullable<DiscountTypeEnum> getDiscountType() {
+    return discountType;
   }
 
-  public void setDiscountCurrency(JsonNullable<String> discountCurrency) {
-    this.discountCurrency = discountCurrency;
-  }
-
-  public AdsCreditDiscountsResponse title(String title) {
-    this.title = JsonNullable.of(title);
-    return this;
-  }
-
-  /**
-   * Human readable title of the offer code.
-   * @return title
-   */
-  
-  @Schema(name = "title", example = "Ads Credits", description = "Human readable title of the offer code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("title")
-  public JsonNullable<String> getTitle() {
-    return title;
-  }
-
-  public void setTitle(JsonNullable<String> title) {
-    this.title = title;
+  public void setDiscountType(JsonNullable<DiscountTypeEnum> discountType) {
+    this.discountType = discountType;
   }
 
   public AdsCreditDiscountsResponse remainingDiscountInMicroCurrency(BigDecimal remainingDiscountInMicroCurrency) {
@@ -252,6 +232,26 @@ public class AdsCreditDiscountsResponse {
     this.remainingDiscountInMicroCurrency = remainingDiscountInMicroCurrency;
   }
 
+  public AdsCreditDiscountsResponse title(String title) {
+    this.title = JsonNullable.of(title);
+    return this;
+  }
+
+  /**
+   * Human readable title of the offer code.
+   * @return title
+   */
+  
+  @Schema(name = "title", example = "Ads Credits", description = "Human readable title of the offer code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
+  public JsonNullable<String> getTitle() {
+    return title;
+  }
+
+  public void setTitle(JsonNullable<String> title) {
+    this.title = title;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -263,11 +263,11 @@ public class AdsCreditDiscountsResponse {
     AdsCreditDiscountsResponse adsCreditDiscountsResponse = (AdsCreditDiscountsResponse) o;
     return Objects.equals(this.active, adsCreditDiscountsResponse.active) &&
         Objects.equals(this.advertiserId, adsCreditDiscountsResponse.advertiserId) &&
-        equalsNullable(this.discountType, adsCreditDiscountsResponse.discountType) &&
-        equalsNullable(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
         equalsNullable(this.discountCurrency, adsCreditDiscountsResponse.discountCurrency) &&
-        equalsNullable(this.title, adsCreditDiscountsResponse.title) &&
-        equalsNullable(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency);
+        equalsNullable(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
+        equalsNullable(this.discountType, adsCreditDiscountsResponse.discountType) &&
+        equalsNullable(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency) &&
+        equalsNullable(this.title, adsCreditDiscountsResponse.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -276,7 +276,7 @@ public class AdsCreditDiscountsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, advertiserId, hashCodeNullable(discountType), hashCodeNullable(discountInMicroCurrency), hashCodeNullable(discountCurrency), hashCodeNullable(title), hashCodeNullable(remainingDiscountInMicroCurrency));
+    return Objects.hash(active, advertiserId, hashCodeNullable(discountCurrency), hashCodeNullable(discountInMicroCurrency), hashCodeNullable(discountType), hashCodeNullable(remainingDiscountInMicroCurrency), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -292,11 +292,11 @@ public class AdsCreditDiscountsResponse {
     sb.append("class AdsCreditDiscountsResponse {\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
-    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
     sb.append("    discountCurrency: ").append(toIndentedString(discountCurrency)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
+    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    remainingDiscountInMicroCurrency: ").append(toIndentedString(remainingDiscountInMicroCurrency)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

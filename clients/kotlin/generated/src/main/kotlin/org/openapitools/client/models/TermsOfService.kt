@@ -22,30 +22,30 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id The ID of the terms of service
- * @param html The terms of service content
- * @param hasAccepted Whether the ad account has accepted terms of service.
  * @param adAccountId The ID of the ad account.
+ * @param hasAccepted Whether the ad account has accepted terms of service.
+ * @param html The terms of service content
+ * @param id The ID of the terms of service
  */
 
 
 data class TermsOfService (
 
-    /* The ID of the terms of service */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    /* The terms of service content */
-    @Json(name = "html")
-    val html: kotlin.String? = null,
+    /* The ID of the ad account. */
+    @Json(name = "ad_account_id")
+    val adAccountId: kotlin.String? = null,
 
     /* Whether the ad account has accepted terms of service. */
     @Json(name = "has_accepted")
     val hasAccepted: kotlin.Boolean? = null,
 
-    /* The ID of the ad account. */
-    @Json(name = "ad_account_id")
-    val adAccountId: kotlin.String? = null
+    /* The terms of service content */
+    @Json(name = "html")
+    val html: kotlin.String? = null,
+
+    /* The ID of the terms of service */
+    @Json(name = "id")
+    val id: kotlin.String? = null
 
 ) {
 

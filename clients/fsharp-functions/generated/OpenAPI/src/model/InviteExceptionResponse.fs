@@ -11,10 +11,10 @@ module InviteExceptionResponse =
 
   [<CLIMutable>]
   type InviteExceptionResponse = {
-    [<JsonProperty(PropertyName = "invite_or_request_id")>]
-    InviteOrRequestId : string option;
     [<JsonProperty(PropertyName = "code")>]
     Code : int;
+    [<JsonProperty(PropertyName = "invite_or_request_id")>]
+    InviteOrRequestId : string option;
     [<JsonProperty(PropertyName = "message")>]
     Message : string;
     [<JsonProperty(PropertyName = "users_or_partner_ids")>]

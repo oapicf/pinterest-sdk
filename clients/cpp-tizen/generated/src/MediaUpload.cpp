@@ -24,9 +24,9 @@ void
 MediaUpload::__init()
 {
 	//media_id = std::string();
-	//media_type = std::string();
+	//media_type = null;
+	//upload_parameters = null;
 	//upload_url = std::string();
-	//upload_parameters = new MediaUpload_allOf_upload_parameters();
 }
 
 void
@@ -42,15 +42,15 @@ MediaUpload::__cleanup()
 	//delete media_type;
 	//media_type = NULL;
 	//}
-	//if(upload_url != NULL) {
-	//
-	//delete upload_url;
-	//upload_url = NULL;
-	//}
 	//if(upload_parameters != NULL) {
 	//
 	//delete upload_parameters;
 	//upload_parameters = NULL;
+	//}
+	//if(upload_url != NULL) {
+	//
+	//delete upload_url;
+	//upload_url = NULL;
 	//}
 	//
 }
@@ -85,6 +85,20 @@ MediaUpload::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *upload_parametersKey = "upload_parameters";
+	node = json_object_get_member(pJsonObject, upload_parametersKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("MediaUploadParameters")) {
+			jsonToValue(&upload_parameters, node, "MediaUploadParameters", "MediaUploadParameters");
+		} else {
+			
+			MediaUploadParameters* obj = static_cast<MediaUploadParameters*> (&upload_parameters);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *upload_urlKey = "upload_url";
 	node = json_object_get_member(pJsonObject, upload_urlKey);
 	if (node !=NULL) {
@@ -93,20 +107,6 @@ MediaUpload::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&upload_url, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *upload_parametersKey = "upload_parameters";
-	node = json_object_get_member(pJsonObject, upload_parametersKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("MediaUpload_allOf_upload_parameters")) {
-			jsonToValue(&upload_parameters, node, "MediaUpload_allOf_upload_parameters", "MediaUpload_allOf_upload_parameters");
-		} else {
-			
-			MediaUpload_allOf_upload_parameters* obj = static_cast<MediaUpload_allOf_upload_parameters*> (&upload_parameters);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -145,6 +145,20 @@ MediaUpload::toJson()
 	}
 	const gchar *media_typeKey = "media_type";
 	json_object_set_member(pJsonObject, media_typeKey, node);
+	if (isprimitive("MediaUploadParameters")) {
+		MediaUploadParameters obj = getUploadParameters();
+		node = converttoJson(&obj, "MediaUploadParameters", "");
+	}
+	else {
+		
+		MediaUploadParameters obj = static_cast<MediaUploadParameters> (getUploadParameters());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *upload_parametersKey = "upload_parameters";
+	json_object_set_member(pJsonObject, upload_parametersKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getUploadUrl();
 		node = converttoJson(&obj, "std::string", "");
@@ -154,20 +168,6 @@ MediaUpload::toJson()
 	}
 	const gchar *upload_urlKey = "upload_url";
 	json_object_set_member(pJsonObject, upload_urlKey, node);
-	if (isprimitive("MediaUpload_allOf_upload_parameters")) {
-		MediaUpload_allOf_upload_parameters obj = getUploadParameters();
-		node = converttoJson(&obj, "MediaUpload_allOf_upload_parameters", "");
-	}
-	else {
-		
-		MediaUpload_allOf_upload_parameters obj = static_cast<MediaUpload_allOf_upload_parameters> (getUploadParameters());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *upload_parametersKey = "upload_parameters";
-	json_object_set_member(pJsonObject, upload_parametersKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -200,6 +200,18 @@ MediaUpload::setMediaType(MediaUploadType  media_type)
 	this->media_type = media_type;
 }
 
+MediaUploadParameters
+MediaUpload::getUploadParameters()
+{
+	return upload_parameters;
+}
+
+void
+MediaUpload::setUploadParameters(MediaUploadParameters  upload_parameters)
+{
+	this->upload_parameters = upload_parameters;
+}
+
 std::string
 MediaUpload::getUploadUrl()
 {
@@ -210,18 +222,6 @@ void
 MediaUpload::setUploadUrl(std::string  upload_url)
 {
 	this->upload_url = upload_url;
-}
-
-MediaUpload_allOf_upload_parameters
-MediaUpload::getUploadParameters()
-{
-	return upload_parameters;
-}
-
-void
-MediaUpload::setUploadParameters(MediaUpload_allOf_upload_parameters  upload_parameters)
-{
-	this->upload_parameters = upload_parameters;
 }
 
 

@@ -8,8 +8,8 @@ The class is defined in **[AdAccountsAudiencesSharedAccountsList200Response.java
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;SharedAudienceAccount&gt;`](SharedAudienceAccount.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;SharedAudienceAccount&gt;`](SharedAudienceAccount.md) |  | 
 
 
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &AdsAnalyticsCreateAsyncResponse{}
 
 // AdsAnalyticsCreateAsyncResponse struct for AdsAnalyticsCreateAsyncResponse
 type AdsAnalyticsCreateAsyncResponse struct {
+	Message NullableString `json:"message,omitempty"`
 	ReportStatus *BulkReportingJobStatus `json:"report_status,omitempty"`
 	Token *string `json:"token,omitempty"`
-	Message NullableString `json:"message,omitempty"`
 }
 
 // NewAdsAnalyticsCreateAsyncResponse instantiates a new AdsAnalyticsCreateAsyncResponse object
@@ -40,6 +40,48 @@ func NewAdsAnalyticsCreateAsyncResponse() *AdsAnalyticsCreateAsyncResponse {
 func NewAdsAnalyticsCreateAsyncResponseWithDefaults() *AdsAnalyticsCreateAsyncResponse {
 	this := AdsAnalyticsCreateAsyncResponse{}
 	return &this
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdsAnalyticsCreateAsyncResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Message.Get()
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdsAnalyticsCreateAsyncResponse) GetMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Message.Get(), o.Message.IsSet()
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncResponse) HasMessage() bool {
+	if o != nil && o.Message.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+func (o *AdsAnalyticsCreateAsyncResponse) SetMessage(v string) {
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *AdsAnalyticsCreateAsyncResponse) SetMessageNil() {
+	o.Message.Set(nil)
+}
+
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *AdsAnalyticsCreateAsyncResponse) UnsetMessage() {
+	o.Message.Unset()
 }
 
 // GetReportStatus returns the ReportStatus field value if set, zero value otherwise.
@@ -106,48 +148,6 @@ func (o *AdsAnalyticsCreateAsyncResponse) SetToken(v string) {
 	o.Token = &v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdsAnalyticsCreateAsyncResponse) GetMessage() string {
-	if o == nil || IsNil(o.Message.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Message.Get()
-}
-
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdsAnalyticsCreateAsyncResponse) GetMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Message.Get(), o.Message.IsSet()
-}
-
-// HasMessage returns a boolean if a field has been set.
-func (o *AdsAnalyticsCreateAsyncResponse) HasMessage() bool {
-	if o != nil && o.Message.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
-func (o *AdsAnalyticsCreateAsyncResponse) SetMessage(v string) {
-	o.Message.Set(&v)
-}
-// SetMessageNil sets the value for Message to be an explicit nil
-func (o *AdsAnalyticsCreateAsyncResponse) SetMessageNil() {
-	o.Message.Set(nil)
-}
-
-// UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *AdsAnalyticsCreateAsyncResponse) UnsetMessage() {
-	o.Message.Unset()
-}
-
 func (o AdsAnalyticsCreateAsyncResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,14 +158,14 @@ func (o AdsAnalyticsCreateAsyncResponse) MarshalJSON() ([]byte, error) {
 
 func (o AdsAnalyticsCreateAsyncResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
+	}
 	if !IsNil(o.ReportStatus) {
 		toSerialize["report_status"] = o.ReportStatus
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
-	}
-	if o.Message.IsSet() {
-		toSerialize["message"] = o.Message.Get()
 	}
 	return toSerialize, nil
 }

@@ -6,31 +6,31 @@
 
 
 static image_details_t *image_details_create_internal(
-    int width,
     int height,
-    char *url
+    char *url,
+    int width
     ) {
     image_details_t *image_details_local_var = malloc(sizeof(image_details_t));
     if (!image_details_local_var) {
         return NULL;
     }
-    image_details_local_var->width = width;
     image_details_local_var->height = height;
     image_details_local_var->url = url;
+    image_details_local_var->width = width;
 
     image_details_local_var->_library_owned = 1;
     return image_details_local_var;
 }
 
 __attribute__((deprecated)) image_details_t *image_details_create(
-    int width,
     int height,
-    char *url
+    char *url,
+    int width
     ) {
     return image_details_create_internal (
-        width,
         height,
-        url
+        url,
+        width
         );
 }
 
@@ -53,15 +53,6 @@ void image_details_free(image_details_t *image_details) {
 cJSON *image_details_convertToJSON(image_details_t *image_details) {
     cJSON *item = cJSON_CreateObject();
 
-    // image_details->width
-    if (!image_details->width) {
-        goto fail;
-    }
-    if(cJSON_AddNumberToObject(item, "width", image_details->width) == NULL) {
-    goto fail; //Numeric
-    }
-
-
     // image_details->height
     if (!image_details->height) {
         goto fail;
@@ -79,6 +70,15 @@ cJSON *image_details_convertToJSON(image_details_t *image_details) {
     goto fail; //String
     }
 
+
+    // image_details->width
+    if (!image_details->width) {
+        goto fail;
+    }
+    if(cJSON_AddNumberToObject(item, "width", image_details->width) == NULL) {
+    goto fail; //Numeric
+    }
+
     return item;
 fail:
     if (item) {
@@ -90,21 +90,6 @@ fail:
 image_details_t *image_details_parseFromJSON(cJSON *image_detailsJSON){
 
     image_details_t *image_details_local_var = NULL;
-
-    // image_details->width
-    cJSON *width = cJSON_GetObjectItemCaseSensitive(image_detailsJSON, "width");
-    if (cJSON_IsNull(width)) {
-        width = NULL;
-    }
-    if (!width) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsNumber(width))
-    {
-    goto end; //Numeric
-    }
 
     // image_details->height
     cJSON *height = cJSON_GetObjectItemCaseSensitive(image_detailsJSON, "height");
@@ -136,11 +121,26 @@ image_details_t *image_details_parseFromJSON(cJSON *image_detailsJSON){
     goto end; //String
     }
 
+    // image_details->width
+    cJSON *width = cJSON_GetObjectItemCaseSensitive(image_detailsJSON, "width");
+    if (cJSON_IsNull(width)) {
+        width = NULL;
+    }
+    if (!width) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsNumber(width))
+    {
+    goto end; //Numeric
+    }
+
 
     image_details_local_var = image_details_create_internal (
-        width->valuedouble,
         height->valuedouble,
-        strdup(url->valuestring)
+        strdup(url->valuestring),
+        width->valuedouble
         );
 
     return image_details_local_var;

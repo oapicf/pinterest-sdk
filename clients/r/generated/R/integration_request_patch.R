@@ -7,59 +7,59 @@
 #' @title IntegrationRequestPatch
 #' @description IntegrationRequestPatch Class
 #' @format An \code{R6Class} generator object
-#' @field connected_merchant_id  character [optional]
+#' @field additional_id_1  character [optional]
 #' @field connected_advertiser_id  character [optional]
 #' @field connected_lba_id  character [optional]
+#' @field connected_merchant_id  character [optional]
 #' @field connected_tag_id  character [optional]
 #' @field partner_access_token  character [optional]
-#' @field partner_refresh_token  character [optional]
-#' @field partner_primary_email  character [optional]
 #' @field partner_access_token_expiry  numeric [optional]
+#' @field partner_metadata  character [optional]
+#' @field partner_primary_email  character [optional]
+#' @field partner_refresh_token  character [optional]
 #' @field partner_refresh_token_expiry  numeric [optional]
 #' @field scopes  character [optional]
-#' @field additional_id_1  character [optional]
-#' @field partner_metadata  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 IntegrationRequestPatch <- R6::R6Class(
   "IntegrationRequestPatch",
   public = list(
-    `connected_merchant_id` = NULL,
+    `additional_id_1` = NULL,
     `connected_advertiser_id` = NULL,
     `connected_lba_id` = NULL,
+    `connected_merchant_id` = NULL,
     `connected_tag_id` = NULL,
     `partner_access_token` = NULL,
-    `partner_refresh_token` = NULL,
-    `partner_primary_email` = NULL,
     `partner_access_token_expiry` = NULL,
+    `partner_metadata` = NULL,
+    `partner_primary_email` = NULL,
+    `partner_refresh_token` = NULL,
     `partner_refresh_token_expiry` = NULL,
     `scopes` = NULL,
-    `additional_id_1` = NULL,
-    `partner_metadata` = NULL,
 
     #' @description
     #' Initialize a new IntegrationRequestPatch class.
     #'
-    #' @param connected_merchant_id connected_merchant_id
+    #' @param additional_id_1 additional_id_1
     #' @param connected_advertiser_id connected_advertiser_id
     #' @param connected_lba_id connected_lba_id
+    #' @param connected_merchant_id connected_merchant_id
     #' @param connected_tag_id connected_tag_id
     #' @param partner_access_token partner_access_token
-    #' @param partner_refresh_token partner_refresh_token
-    #' @param partner_primary_email partner_primary_email
     #' @param partner_access_token_expiry partner_access_token_expiry
+    #' @param partner_metadata partner_metadata
+    #' @param partner_primary_email partner_primary_email
+    #' @param partner_refresh_token partner_refresh_token
     #' @param partner_refresh_token_expiry partner_refresh_token_expiry
     #' @param scopes scopes
-    #' @param additional_id_1 additional_id_1
-    #' @param partner_metadata partner_metadata
     #' @param ... Other optional arguments.
-    initialize = function(`connected_merchant_id` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_tag_id` = NULL, `partner_access_token` = NULL, `partner_refresh_token` = NULL, `partner_primary_email` = NULL, `partner_access_token_expiry` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `additional_id_1` = NULL, `partner_metadata` = NULL, ...) {
-      if (!is.null(`connected_merchant_id`)) {
-        if (!(is.character(`connected_merchant_id`) && length(`connected_merchant_id`) == 1)) {
-          stop(paste("Error! Invalid data for `connected_merchant_id`. Must be a string:", `connected_merchant_id`))
+    initialize = function(`additional_id_1` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_merchant_id` = NULL, `connected_tag_id` = NULL, `partner_access_token` = NULL, `partner_access_token_expiry` = NULL, `partner_metadata` = NULL, `partner_primary_email` = NULL, `partner_refresh_token` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, ...) {
+      if (!is.null(`additional_id_1`)) {
+        if (!(is.character(`additional_id_1`) && length(`additional_id_1`) == 1)) {
+          stop(paste("Error! Invalid data for `additional_id_1`. Must be a string:", `additional_id_1`))
         }
-        self$`connected_merchant_id` <- `connected_merchant_id`
+        self$`additional_id_1` <- `additional_id_1`
       }
       if (!is.null(`connected_advertiser_id`)) {
         if (!(is.character(`connected_advertiser_id`) && length(`connected_advertiser_id`) == 1)) {
@@ -73,6 +73,12 @@ IntegrationRequestPatch <- R6::R6Class(
         }
         self$`connected_lba_id` <- `connected_lba_id`
       }
+      if (!is.null(`connected_merchant_id`)) {
+        if (!(is.character(`connected_merchant_id`) && length(`connected_merchant_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_merchant_id`. Must be a string:", `connected_merchant_id`))
+        }
+        self$`connected_merchant_id` <- `connected_merchant_id`
+      }
       if (!is.null(`connected_tag_id`)) {
         if (!(is.character(`connected_tag_id`) && length(`connected_tag_id`) == 1)) {
           stop(paste("Error! Invalid data for `connected_tag_id`. Must be a string:", `connected_tag_id`))
@@ -85,11 +91,14 @@ IntegrationRequestPatch <- R6::R6Class(
         }
         self$`partner_access_token` <- `partner_access_token`
       }
-      if (!is.null(`partner_refresh_token`)) {
-        if (!(is.character(`partner_refresh_token`) && length(`partner_refresh_token`) == 1)) {
-          stop(paste("Error! Invalid data for `partner_refresh_token`. Must be a string:", `partner_refresh_token`))
+      if (!is.null(`partner_access_token_expiry`)) {
+        self$`partner_access_token_expiry` <- `partner_access_token_expiry`
+      }
+      if (!is.null(`partner_metadata`)) {
+        if (!(is.character(`partner_metadata`) && length(`partner_metadata`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_metadata`. Must be a string:", `partner_metadata`))
         }
-        self$`partner_refresh_token` <- `partner_refresh_token`
+        self$`partner_metadata` <- `partner_metadata`
       }
       if (!is.null(`partner_primary_email`)) {
         if (!(is.character(`partner_primary_email`) && length(`partner_primary_email`) == 1)) {
@@ -97,8 +106,11 @@ IntegrationRequestPatch <- R6::R6Class(
         }
         self$`partner_primary_email` <- `partner_primary_email`
       }
-      if (!is.null(`partner_access_token_expiry`)) {
-        self$`partner_access_token_expiry` <- `partner_access_token_expiry`
+      if (!is.null(`partner_refresh_token`)) {
+        if (!(is.character(`partner_refresh_token`) && length(`partner_refresh_token`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_refresh_token`. Must be a string:", `partner_refresh_token`))
+        }
+        self$`partner_refresh_token` <- `partner_refresh_token`
       }
       if (!is.null(`partner_refresh_token_expiry`)) {
         self$`partner_refresh_token_expiry` <- `partner_refresh_token_expiry`
@@ -108,18 +120,6 @@ IntegrationRequestPatch <- R6::R6Class(
           stop(paste("Error! Invalid data for `scopes`. Must be a string:", `scopes`))
         }
         self$`scopes` <- `scopes`
-      }
-      if (!is.null(`additional_id_1`)) {
-        if (!(is.character(`additional_id_1`) && length(`additional_id_1`) == 1)) {
-          stop(paste("Error! Invalid data for `additional_id_1`. Must be a string:", `additional_id_1`))
-        }
-        self$`additional_id_1` <- `additional_id_1`
-      }
-      if (!is.null(`partner_metadata`)) {
-        if (!(is.character(`partner_metadata`) && length(`partner_metadata`) == 1)) {
-          stop(paste("Error! Invalid data for `partner_metadata`. Must be a string:", `partner_metadata`))
-        }
-        self$`partner_metadata` <- `partner_metadata`
       }
     },
 
@@ -154,9 +154,9 @@ IntegrationRequestPatch <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       IntegrationRequestPatchObject <- list()
-      if (!is.null(self$`connected_merchant_id`)) {
-        IntegrationRequestPatchObject[["connected_merchant_id"]] <-
-          self$`connected_merchant_id`
+      if (!is.null(self$`additional_id_1`)) {
+        IntegrationRequestPatchObject[["additional_id_1"]] <-
+          self$`additional_id_1`
       }
       if (!is.null(self$`connected_advertiser_id`)) {
         IntegrationRequestPatchObject[["connected_advertiser_id"]] <-
@@ -166,6 +166,10 @@ IntegrationRequestPatch <- R6::R6Class(
         IntegrationRequestPatchObject[["connected_lba_id"]] <-
           self$`connected_lba_id`
       }
+      if (!is.null(self$`connected_merchant_id`)) {
+        IntegrationRequestPatchObject[["connected_merchant_id"]] <-
+          self$`connected_merchant_id`
+      }
       if (!is.null(self$`connected_tag_id`)) {
         IntegrationRequestPatchObject[["connected_tag_id"]] <-
           self$`connected_tag_id`
@@ -174,17 +178,21 @@ IntegrationRequestPatch <- R6::R6Class(
         IntegrationRequestPatchObject[["partner_access_token"]] <-
           self$`partner_access_token`
       }
-      if (!is.null(self$`partner_refresh_token`)) {
-        IntegrationRequestPatchObject[["partner_refresh_token"]] <-
-          self$`partner_refresh_token`
+      if (!is.null(self$`partner_access_token_expiry`)) {
+        IntegrationRequestPatchObject[["partner_access_token_expiry"]] <-
+          self$`partner_access_token_expiry`
+      }
+      if (!is.null(self$`partner_metadata`)) {
+        IntegrationRequestPatchObject[["partner_metadata"]] <-
+          self$`partner_metadata`
       }
       if (!is.null(self$`partner_primary_email`)) {
         IntegrationRequestPatchObject[["partner_primary_email"]] <-
           self$`partner_primary_email`
       }
-      if (!is.null(self$`partner_access_token_expiry`)) {
-        IntegrationRequestPatchObject[["partner_access_token_expiry"]] <-
-          self$`partner_access_token_expiry`
+      if (!is.null(self$`partner_refresh_token`)) {
+        IntegrationRequestPatchObject[["partner_refresh_token"]] <-
+          self$`partner_refresh_token`
       }
       if (!is.null(self$`partner_refresh_token_expiry`)) {
         IntegrationRequestPatchObject[["partner_refresh_token_expiry"]] <-
@@ -193,14 +201,6 @@ IntegrationRequestPatch <- R6::R6Class(
       if (!is.null(self$`scopes`)) {
         IntegrationRequestPatchObject[["scopes"]] <-
           self$`scopes`
-      }
-      if (!is.null(self$`additional_id_1`)) {
-        IntegrationRequestPatchObject[["additional_id_1"]] <-
-          self$`additional_id_1`
-      }
-      if (!is.null(self$`partner_metadata`)) {
-        IntegrationRequestPatchObject[["partner_metadata"]] <-
-          self$`partner_metadata`
       }
       return(IntegrationRequestPatchObject)
     },
@@ -212,8 +212,8 @@ IntegrationRequestPatch <- R6::R6Class(
     #' @return the instance of IntegrationRequestPatch
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`connected_merchant_id`)) {
-        self$`connected_merchant_id` <- this_object$`connected_merchant_id`
+      if (!is.null(this_object$`additional_id_1`)) {
+        self$`additional_id_1` <- this_object$`additional_id_1`
       }
       if (!is.null(this_object$`connected_advertiser_id`)) {
         self$`connected_advertiser_id` <- this_object$`connected_advertiser_id`
@@ -221,32 +221,32 @@ IntegrationRequestPatch <- R6::R6Class(
       if (!is.null(this_object$`connected_lba_id`)) {
         self$`connected_lba_id` <- this_object$`connected_lba_id`
       }
+      if (!is.null(this_object$`connected_merchant_id`)) {
+        self$`connected_merchant_id` <- this_object$`connected_merchant_id`
+      }
       if (!is.null(this_object$`connected_tag_id`)) {
         self$`connected_tag_id` <- this_object$`connected_tag_id`
       }
       if (!is.null(this_object$`partner_access_token`)) {
         self$`partner_access_token` <- this_object$`partner_access_token`
       }
-      if (!is.null(this_object$`partner_refresh_token`)) {
-        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
+      if (!is.null(this_object$`partner_access_token_expiry`)) {
+        self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      }
+      if (!is.null(this_object$`partner_metadata`)) {
+        self$`partner_metadata` <- this_object$`partner_metadata`
       }
       if (!is.null(this_object$`partner_primary_email`)) {
         self$`partner_primary_email` <- this_object$`partner_primary_email`
       }
-      if (!is.null(this_object$`partner_access_token_expiry`)) {
-        self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      if (!is.null(this_object$`partner_refresh_token`)) {
+        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
       }
       if (!is.null(this_object$`partner_refresh_token_expiry`)) {
         self$`partner_refresh_token_expiry` <- this_object$`partner_refresh_token_expiry`
       }
       if (!is.null(this_object$`scopes`)) {
         self$`scopes` <- this_object$`scopes`
-      }
-      if (!is.null(this_object$`additional_id_1`)) {
-        self$`additional_id_1` <- this_object$`additional_id_1`
-      }
-      if (!is.null(this_object$`partner_metadata`)) {
-        self$`partner_metadata` <- this_object$`partner_metadata`
       }
       self
     },
@@ -269,18 +269,18 @@ IntegrationRequestPatch <- R6::R6Class(
     #' @return the instance of IntegrationRequestPatch
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`connected_merchant_id` <- this_object$`connected_merchant_id`
+      self$`additional_id_1` <- this_object$`additional_id_1`
       self$`connected_advertiser_id` <- this_object$`connected_advertiser_id`
       self$`connected_lba_id` <- this_object$`connected_lba_id`
+      self$`connected_merchant_id` <- this_object$`connected_merchant_id`
       self$`connected_tag_id` <- this_object$`connected_tag_id`
       self$`partner_access_token` <- this_object$`partner_access_token`
-      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
-      self$`partner_primary_email` <- this_object$`partner_primary_email`
       self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      self$`partner_metadata` <- this_object$`partner_metadata`
+      self$`partner_primary_email` <- this_object$`partner_primary_email`
+      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
       self$`partner_refresh_token_expiry` <- this_object$`partner_refresh_token_expiry`
       self$`scopes` <- this_object$`scopes`
-      self$`additional_id_1` <- this_object$`additional_id_1`
-      self$`partner_metadata` <- this_object$`partner_metadata`
       self
     },
 

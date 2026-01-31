@@ -6,27 +6,27 @@
 
 
 static members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_create_internal(
-    char *member_id,
-    pinterest_rest_api_business_role_for_members__e business_role
+    pinterest_rest_api_business_role_for_members__e business_role,
+    char *member_id
     ) {
     members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_local_var = malloc(sizeof(members_to_delete_body_members_inner_t));
     if (!members_to_delete_body_members_inner_local_var) {
         return NULL;
     }
-    members_to_delete_body_members_inner_local_var->member_id = member_id;
     members_to_delete_body_members_inner_local_var->business_role = business_role;
+    members_to_delete_body_members_inner_local_var->member_id = member_id;
 
     members_to_delete_body_members_inner_local_var->_library_owned = 1;
     return members_to_delete_body_members_inner_local_var;
 }
 
 __attribute__((deprecated)) members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_create(
-    char *member_id,
-    pinterest_rest_api_business_role_for_members__e business_role
+    pinterest_rest_api_business_role_for_members__e business_role,
+    char *member_id
     ) {
     return members_to_delete_body_members_inner_create_internal (
-        member_id,
-        business_role
+        business_role,
+        member_id
         );
 }
 
@@ -49,15 +49,6 @@ void members_to_delete_body_members_inner_free(members_to_delete_body_members_in
 cJSON *members_to_delete_body_members_inner_convertToJSON(members_to_delete_body_members_inner_t *members_to_delete_body_members_inner) {
     cJSON *item = cJSON_CreateObject();
 
-    // members_to_delete_body_members_inner->member_id
-    if (!members_to_delete_body_members_inner->member_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "member_id", members_to_delete_body_members_inner->member_id) == NULL) {
-    goto fail; //String
-    }
-
-
     // members_to_delete_body_members_inner->business_role
     if (pinterest_rest_api_business_role_for_members__NULL == members_to_delete_body_members_inner->business_role) {
         goto fail;
@@ -69,6 +60,15 @@ cJSON *members_to_delete_body_members_inner_convertToJSON(members_to_delete_body
     cJSON_AddItemToObject(item, "business_role", business_role_local_JSON);
     if(item->child == NULL) {
         goto fail;
+    }
+
+
+    // members_to_delete_body_members_inner->member_id
+    if (!members_to_delete_body_members_inner->member_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "member_id", members_to_delete_body_members_inner->member_id) == NULL) {
+    goto fail; //String
     }
 
     return item;
@@ -86,6 +86,18 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_par
     // define the local variable for members_to_delete_body_members_inner->business_role
     pinterest_rest_api_business_role_for_members__e business_role_local_nonprim = 0;
 
+    // members_to_delete_body_members_inner->business_role
+    cJSON *business_role = cJSON_GetObjectItemCaseSensitive(members_to_delete_body_members_innerJSON, "business_role");
+    if (cJSON_IsNull(business_role)) {
+        business_role = NULL;
+    }
+    if (!business_role) {
+        goto end;
+    }
+
+    
+    business_role_local_nonprim = business_role_for_members_parseFromJSON(business_role); //custom
+
     // members_to_delete_body_members_inner->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(members_to_delete_body_members_innerJSON, "member_id");
     if (cJSON_IsNull(member_id)) {
@@ -101,22 +113,10 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_par
     goto end; //String
     }
 
-    // members_to_delete_body_members_inner->business_role
-    cJSON *business_role = cJSON_GetObjectItemCaseSensitive(members_to_delete_body_members_innerJSON, "business_role");
-    if (cJSON_IsNull(business_role)) {
-        business_role = NULL;
-    }
-    if (!business_role) {
-        goto end;
-    }
-
-    
-    business_role_local_nonprim = business_role_for_members_parseFromJSON(business_role); //custom
-
 
     members_to_delete_body_members_inner_local_var = members_to_delete_body_members_inner_create_internal (
-        strdup(member_id->valuestring),
-        business_role_local_nonprim
+        business_role_local_nonprim,
+        strdup(member_id->valuestring)
         );
 
     return members_to_delete_body_members_inner_local_var;

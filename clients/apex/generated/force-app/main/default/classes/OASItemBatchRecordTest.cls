@@ -81,7 +81,7 @@ private class OASItemBatchRecordTest {
     private static void defaultValuesPopulated() {
         OASItemBatchRecord itemBatchRecord = new OASItemBatchRecord();
         System.assertEquals(new List<OASUpdateMaskFieldType>(), itemBatchRecord.updateMask);
-        System.assertEquals(null, itemBatchRecord.itemId);
         System.assertEquals(null, itemBatchRecord.attributes);
+        System.assertEquals(null, itemBatchRecord.itemId);
     }
 }

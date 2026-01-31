@@ -2,15 +2,15 @@
 Protected Class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
 
 	#tag Property, Flags = &h0
-		catalog_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Catalog id pertaining to the creative assets product group.
 		#tag EndNote
 		catalog_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		catalog_type As String
 	#tag EndProperty
 
 

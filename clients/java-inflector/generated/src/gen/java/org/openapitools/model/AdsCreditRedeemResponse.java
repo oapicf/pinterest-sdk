@@ -11,34 +11,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditRedeemResponse   {
-  @JsonProperty("success")
-  private Boolean success;
-
   @JsonProperty("errorCode")
   private Integer errorCode;
 
   @JsonProperty("errorMessage")
   private String errorMessage;
 
-  /**
-   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-   **/
-  public AdsCreditRedeemResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
   @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
-  }
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
+  private Boolean success;
 
   /**
    * Error code type if error occurs
@@ -76,6 +58,24 @@ public class AdsCreditRedeemResponse   {
     this.errorMessage = errorMessage;
   }
 
+  /**
+   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+   **/
+  public AdsCreditRedeemResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
+  }
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,14 +86,14 @@ public class AdsCreditRedeemResponse   {
       return false;
     }
     AdsCreditRedeemResponse adsCreditRedeemResponse = (AdsCreditRedeemResponse) o;
-    return Objects.equals(success, adsCreditRedeemResponse.success) &&
-        Objects.equals(errorCode, adsCreditRedeemResponse.errorCode) &&
-        Objects.equals(errorMessage, adsCreditRedeemResponse.errorMessage);
+    return Objects.equals(errorCode, adsCreditRedeemResponse.errorCode) &&
+        Objects.equals(errorMessage, adsCreditRedeemResponse.errorMessage) &&
+        Objects.equals(success, adsCreditRedeemResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, errorCode, errorMessage);
+    return Objects.hash(errorCode, errorMessage, success);
   }
 
   @Override
@@ -101,9 +101,9 @@ public class AdsCreditRedeemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditRedeemResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

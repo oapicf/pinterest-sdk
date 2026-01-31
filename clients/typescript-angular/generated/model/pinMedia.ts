@@ -7,12 +7,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { PinMediaMetadata } from './pinMediaMetadata';
+import { PinMediaWithImages } from './pinMediaWithImages';
+import { ImageSize } from './imageSize';
+import { PinMediaWithVideo } from './pinMediaWithVideo';
+import { PinMediaWithImageAndVideo } from './pinMediaWithImageAndVideo';
+import { PinMediaWithImage } from './pinMediaWithImage';
+import { PinMediaWithVideos } from './pinMediaWithVideos';
 
 
 /**
- * Pin media objects.
+ * Pin media that can be an image, video, or a mix of both.
  */
-export interface PinMedia { 
-    media_type?: string;
-}
+/**
+ * @type PinMedia
+ * Pin media that can be an image, video, or a mix of both.
+ * @export
+ */
+export type PinMedia = PinMediaWithImage | PinMediaWithImageAndVideo | PinMediaWithImages | PinMediaWithVideo | PinMediaWithVideos;
 

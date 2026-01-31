@@ -22,16 +22,16 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param AD_GROUP_ID The ID of the ad group that this metrics belongs to.
+ * @param AD_GROUP_ID The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
 
 
 data class AdGroupsAnalyticsResponseInner (
 
-    /* The ID of the ad group that this metrics belongs to. */
+    /* The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true. */
     @Json(name = "AD_GROUP_ID")
-    val AD_GROUP_ID: kotlin.String,
+    val AD_GROUP_ID: kotlin.String? = null,
 
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     @Json(name = "DATE")

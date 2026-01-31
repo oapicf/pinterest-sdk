@@ -7,6 +7,8 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 
 @Canonical
 class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
+    /* Catalog id pertaining to the creative assets product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -30,8 +32,6 @@ class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
 
     
     CatalogTypeEnum catalogType
-    /* Catalog id pertaining to the creative assets product group. */
-    String catalogId
     
     CatalogsCreativeAssetsProductGroupFilters filters
 }

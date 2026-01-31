@@ -25,47 +25,53 @@ ad_group_common_t* instantiate_ad_group_common(int include_optional) {
   ad_group_common_t* ad_group_common = NULL;
   if (include_optional) {
     ad_group_common = ad_group_common_create(
+      true,
+      5000000,
+      pinterest_rest_api_ad_group_common_BIDSTRATEGYTYPE_"MAX_BID",
+      pinterest_rest_api_ad_group_common__"CLICKTHROUGH",
+      5000000,
+      "DAILY",
+      "626736533506",
+      5705424000,
+      true,
+      100,
       "Ad Group For Pin: 687195905986",
-      "ACTIVE",
-      5000000,
-      5000000,
        // false, not to have infinite recursion
       instantiate_optimization_goal_metadata(0),
-      "DAILY",
+      "STANDARD",
+      "ALL",
+      pinterest_rest_api_ad_group_common_PROMOTIONAPPLICATIONLEVEL_"ITEM",
+      "0",
       5686848000,
-      5705424000,
+      "ACTIVE",
        // false, not to have infinite recursion
       instantiate_targeting_spec(0),
-      100,
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      true,
-      "ALL",
-      "STANDARD",
-      "626736533506",
-      pinterest_rest_api_ad_group_common__"CLICKTHROUGH",
-      pinterest_rest_api_ad_group_common_BIDSTRATEGYTYPE_"MAX_BID",
-      list_createList()
+      list_createList(),
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}
     );
   } else {
     ad_group_common = ad_group_common_create(
-      "Ad Group For Pin: 687195905986",
-      "ACTIVE",
-      5000000,
-      5000000,
-      NULL,
-      "DAILY",
-      5686848000,
-      5705424000,
-      NULL,
-      100,
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       true,
-      "ALL",
-      "STANDARD",
-      "626736533506",
-      pinterest_rest_api_ad_group_common__"CLICKTHROUGH",
+      5000000,
       pinterest_rest_api_ad_group_common_BIDSTRATEGYTYPE_"MAX_BID",
-      list_createList()
+      pinterest_rest_api_ad_group_common__"CLICKTHROUGH",
+      5000000,
+      "DAILY",
+      "626736533506",
+      5705424000,
+      true,
+      100,
+      "Ad Group For Pin: 687195905986",
+      NULL,
+      "STANDARD",
+      "ALL",
+      pinterest_rest_api_ad_group_common_PROMOTIONAPPLICATIONLEVEL_"ITEM",
+      "0",
+      5686848000,
+      "ACTIVE",
+      NULL,
+      list_createList(),
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}
     );
   }
 

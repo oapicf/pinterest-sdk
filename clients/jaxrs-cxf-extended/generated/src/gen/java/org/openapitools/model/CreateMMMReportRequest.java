@@ -26,16 +26,11 @@ public class CreateMMMReportRequest  {
   private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
  /**
-  * Name of the Marketing Mix Modeling (MMM) report
+  * Metric and entity columns
   */
-  @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
-  private String reportName;
-
- /**
-  * Metric report start date (UTC). Format: YYYY-MM-DD
-  */
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
-  private String startDate;
+  @ApiModelProperty(required = true, value = "Metric and entity columns")
+  @Valid
+  private List<MMMReportingColumn> columns = new ArrayList<>();
 
  /**
   * Metric report end date (UTC). Format: YYYY-MM-DD
@@ -116,18 +111,23 @@ public enum LevelEnum {
   private LevelEnum level;
 
  /**
+  * Name of the Marketing Mix Modeling (MMM) report
+  */
+  @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
+  private String reportName;
+
+ /**
+  * Metric report start date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
+  private String startDate;
+
+ /**
   * List of targeting types
   */
   @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
   @Valid
   private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
-
- /**
-  * Metric and entity columns
-  */
-  @ApiModelProperty(required = true, value = "Metric and entity columns")
-  @Valid
-  private List<MMMReportingColumn> columns = new ArrayList<>();
  /**
   * A List of countries for filtering
   * @return countries
@@ -161,52 +161,35 @@ public enum LevelEnum {
   }
 
  /**
-  * Name of the Marketing Mix Modeling (MMM) report
-  * @return reportName
+  * Metric and entity columns
+  * @return columns
   */
-  @JsonProperty("report_name")
+  @JsonProperty("columns")
   @NotNull
-  public String getReportName() {
-    return reportName;
+  public List<MMMReportingColumn> getColumns() {
+    return columns;
   }
 
   /**
-   * Sets the <code>reportName</code> property.
+   * Sets the <code>columns</code> property.
    */
- public void setReportName(String reportName) {
-    this.reportName = reportName;
+ public void setColumns(List<MMMReportingColumn> columns) {
+    this.columns = columns;
   }
 
   /**
-   * Sets the <code>reportName</code> property.
+   * Sets the <code>columns</code> property.
    */
-  public CreateMMMReportRequest reportName(String reportName) {
-    this.reportName = reportName;
+  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
+    this.columns = columns;
     return this;
   }
 
- /**
-  * Metric report start date (UTC). Format: YYYY-MM-DD
-  * @return startDate
-  */
-  @JsonProperty("start_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
-    return startDate;
-  }
-
   /**
-   * Sets the <code>startDate</code> property.
+   * Adds a new item to the <code>columns</code> list.
    */
- public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
-  /**
-   * Sets the <code>startDate</code> property.
-   */
-  public CreateMMMReportRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public CreateMMMReportRequest addColumnsItem(MMMReportingColumn columnsItem) {
+    this.columns.add(columnsItem);
     return this;
   }
 
@@ -286,6 +269,56 @@ public enum LevelEnum {
   }
 
  /**
+  * Name of the Marketing Mix Modeling (MMM) report
+  * @return reportName
+  */
+  @JsonProperty("report_name")
+  @NotNull
+  public String getReportName() {
+    return reportName;
+  }
+
+  /**
+   * Sets the <code>reportName</code> property.
+   */
+ public void setReportName(String reportName) {
+    this.reportName = reportName;
+  }
+
+  /**
+   * Sets the <code>reportName</code> property.
+   */
+  public CreateMMMReportRequest reportName(String reportName) {
+    this.reportName = reportName;
+    return this;
+  }
+
+ /**
+  * Metric report start date (UTC). Format: YYYY-MM-DD
+  * @return startDate
+  */
+  @JsonProperty("start_date")
+  @NotNull
+ @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
+    return startDate;
+  }
+
+  /**
+   * Sets the <code>startDate</code> property.
+   */
+ public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
+  /**
+   * Sets the <code>startDate</code> property.
+   */
+  public CreateMMMReportRequest startDate(String startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+ /**
   * List of targeting types
   * @return targetingTypes
   */
@@ -318,39 +351,6 @@ public enum LevelEnum {
     return this;
   }
 
- /**
-  * Metric and entity columns
-  * @return columns
-  */
-  @JsonProperty("columns")
-  @NotNull
-  public List<MMMReportingColumn> getColumns() {
-    return columns;
-  }
-
-  /**
-   * Sets the <code>columns</code> property.
-   */
- public void setColumns(List<MMMReportingColumn> columns) {
-    this.columns = columns;
-  }
-
-  /**
-   * Sets the <code>columns</code> property.
-   */
-  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
-    this.columns = columns;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>columns</code> list.
-   */
-  public CreateMMMReportRequest addColumnsItem(MMMReportingColumn columnsItem) {
-    this.columns.add(columnsItem);
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -362,18 +362,18 @@ public enum LevelEnum {
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
     return Objects.equals(this.countries, createMMMReportRequest.countries) &&
-        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
-        Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
+        Objects.equals(this.columns, createMMMReportRequest.columns) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
-        Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns);
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+        Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
+        Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
+    return Objects.hash(countries, columns, endDate, granularity, level, reportName, startDate, targetingTypes);
   }
 
   @Override
@@ -382,13 +382,13 @@ public enum LevelEnum {
     sb.append("class CreateMMMReportRequest {\n");
     
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
-    sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
-    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

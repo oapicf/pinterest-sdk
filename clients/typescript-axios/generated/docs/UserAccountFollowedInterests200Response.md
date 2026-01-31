@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;Interest&gt;**](Interest.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;Interest&gt;**](Interest.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { UserAccountFollowedInterests200Response } from './api';
 
 const instance: UserAccountFollowedInterests200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

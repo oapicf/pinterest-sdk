@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,6 +24,8 @@ type CustomerList struct {
 	AdAccountId *string `json:"ad_account_id,omitempty"`
 	// Creation time. Unix timestamp in seconds.
 	CreatedTime *float32 `json:"created_time,omitempty"`
+	// Customer list errors
+	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 	// Customer list ID.
 	Id *string `json:"id,omitempty"`
 	// Customer list name.
@@ -40,8 +42,6 @@ type CustomerList struct {
 	Type *string `json:"type,omitempty"`
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTime *float32 `json:"updated_time,omitempty"`
-	// Customer list errors
-	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 }
 
 // NewCustomerList instantiates a new CustomerList object
@@ -123,6 +123,38 @@ func (o *CustomerList) HasCreatedTime() bool {
 // SetCreatedTime gets a reference to the given float32 and assigns it to the CreatedTime field.
 func (o *CustomerList) SetCreatedTime(v float32) {
 	o.CreatedTime = &v
+}
+
+// GetExceptions returns the Exceptions field value if set, zero value otherwise.
+func (o *CustomerList) GetExceptions() map[string]interface{} {
+	if o == nil || IsNil(o.Exceptions) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Exceptions
+}
+
+// GetExceptionsOk returns a tuple with the Exceptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerList) GetExceptionsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Exceptions) {
+		return map[string]interface{}{}, false
+	}
+	return o.Exceptions, true
+}
+
+// HasExceptions returns a boolean if a field has been set.
+func (o *CustomerList) HasExceptions() bool {
+	if o != nil && !IsNil(o.Exceptions) {
+		return true
+	}
+
+	return false
+}
+
+// SetExceptions gets a reference to the given map[string]interface{} and assigns it to the Exceptions field.
+func (o *CustomerList) SetExceptions(v map[string]interface{}) {
+	o.Exceptions = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -381,38 +413,6 @@ func (o *CustomerList) SetUpdatedTime(v float32) {
 	o.UpdatedTime = &v
 }
 
-// GetExceptions returns the Exceptions field value if set, zero value otherwise.
-func (o *CustomerList) GetExceptions() map[string]interface{} {
-	if o == nil || IsNil(o.Exceptions) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Exceptions
-}
-
-// GetExceptionsOk returns a tuple with the Exceptions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerList) GetExceptionsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Exceptions) {
-		return map[string]interface{}{}, false
-	}
-	return o.Exceptions, true
-}
-
-// HasExceptions returns a boolean if a field has been set.
-func (o *CustomerList) HasExceptions() bool {
-	if o != nil && !IsNil(o.Exceptions) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceptions gets a reference to the given map[string]interface{} and assigns it to the Exceptions field.
-func (o *CustomerList) SetExceptions(v map[string]interface{}) {
-	o.Exceptions = v
-}
-
 func (o CustomerList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -428,6 +428,9 @@ func (o CustomerList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime
+	}
+	if !IsNil(o.Exceptions) {
+		toSerialize["exceptions"] = o.Exceptions
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -452,9 +455,6 @@ func (o CustomerList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdatedTime) {
 		toSerialize["updated_time"] = o.UpdatedTime
-	}
-	if !IsNil(o.Exceptions) {
-		toSerialize["exceptions"] = o.Exceptions
 	}
 	return toSerialize, nil
 }

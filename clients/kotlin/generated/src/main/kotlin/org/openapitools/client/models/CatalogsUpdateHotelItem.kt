@@ -23,23 +23,23 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing an hotel item batch record
  *
+ * @param attributes 
  * @param hotelId The catalog hotel item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
 
 
 data class CatalogsUpdateHotelItem (
+
+    @Json(name = "attributes")
+    val attributes: CatalogsUpdatableHotelAttributes,
 
     /* The catalog hotel item id in the merchant namespace */
     @Json(name = "hotel_id")
     val hotelId: kotlin.String,
 
     @Json(name = "operation")
-    val operation: CatalogsUpdateHotelItem.Operation,
-
-    @Json(name = "attributes")
-    val attributes: CatalogsUpdatableHotelAttributes
+    val operation: CatalogsUpdateHotelItem.Operation
 
 ) {
 

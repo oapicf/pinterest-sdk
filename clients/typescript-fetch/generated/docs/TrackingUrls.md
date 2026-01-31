@@ -7,11 +7,11 @@ Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,00
 
 Name | Type
 ------------ | -------------
-`impression` | Array&lt;string&gt;
+`audienceVerification` | Array&lt;string&gt;
+`buyableButton` | Array&lt;string&gt;
 `click` | Array&lt;string&gt;
 `engagement` | Array&lt;string&gt;
-`buyableButton` | Array&lt;string&gt;
-`audienceVerification` | Array&lt;string&gt;
+`impression` | Array&lt;string&gt;
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { TrackingUrls } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "impression": null,
+  "audienceVerification": null,
+  "buyableButton": null,
   "click": null,
   "engagement": null,
-  "buyableButton": null,
-  "audienceVerification": null,
+  "impression": null,
 } satisfies TrackingUrls
 
 console.log(example)

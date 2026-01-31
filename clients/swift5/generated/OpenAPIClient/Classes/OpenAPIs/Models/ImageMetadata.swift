@@ -12,37 +12,37 @@ import AnyCodable
 
 public struct ImageMetadata: Codable, JSONEncodable, Hashable {
 
-    public var itemType: String?
-    public var title: String?
     public var description: String?
+    public var images: ImageSize?
+    public var itemType: String?
     public var link: String?
-    public var images: ImageMetadataImages?
+    public var title: String?
 
-    public init(itemType: String? = nil, title: String? = nil, description: String? = nil, link: String? = nil, images: ImageMetadataImages? = nil) {
-        self.itemType = itemType
-        self.title = title
+    public init(description: String? = nil, images: ImageSize? = nil, itemType: String? = nil, link: String? = nil, title: String? = nil) {
         self.description = description
-        self.link = link
         self.images = images
+        self.itemType = itemType
+        self.link = link
+        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemType = "item_type"
-        case title
         case description
-        case link
         case images
+        case itemType = "item_type"
+        case link
+        case title
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(itemType, forKey: .itemType)
-        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(link, forKey: .link)
         try container.encodeIfPresent(images, forKey: .images)
+        try container.encodeIfPresent(itemType, forKey: .itemType)
+        try container.encodeIfPresent(link, forKey: .link)
+        try container.encodeIfPresent(title, forKey: .title)
     }
 }
 

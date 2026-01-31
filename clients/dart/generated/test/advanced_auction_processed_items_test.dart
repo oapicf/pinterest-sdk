@@ -23,7 +23,7 @@ void main() {
     });
 
     // Array of advanced auction processed items
-    // List<AdvancedAuctionProcessedItem> items (default value: const [])
+    // List<AdvancedAuctionItemsSubmitRecord> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });

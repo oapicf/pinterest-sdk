@@ -11,7 +11,7 @@ import org.openapitools.model.IntegrationRecord;
 @Canonical
 class IntegrationsGetList200Response {
     
-    List<IntegrationRecord> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<IntegrationRecord> items = new ArrayList<>()
 }

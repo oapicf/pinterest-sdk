@@ -9,9 +9,6 @@
  */
 
 
-/**
- * Media upload status
- */
 export const MediaUploadStatus = {
     Registered: 'registered',
     Processing: 'processing',

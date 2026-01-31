@@ -22,9 +22,9 @@ type CatalogsItemValidationErrors struct {
 
 	INVALID_DOMAIN CatalogsItemValidationDetails `json:"INVALID_DOMAIN,omitempty"`
 
-	ITEMID_MISSING CatalogsItemValidationDetails `json:"ITEMID_MISSING,omitempty"`
-
 	ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE CatalogsItemValidationDetails `json:"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE,omitempty"`
+
+	ITEMID_MISSING CatalogsItemValidationDetails `json:"ITEMID_MISSING,omitempty"`
 
 	LINK_FORMAT_INVALID CatalogsItemValidationDetails `json:"LINK_FORMAT_INVALID,omitempty"`
 

@@ -33,19 +33,19 @@ public class CatalogsRetailItemErrorResponseTest {
     }
 
     /**
-     * Test the property 'itemId'
-     */
-    @Test
-    public void itemIdTest() {
-        // TODO: test itemId
-    }
-
-    /**
      * Test the property 'errors'
      */
     @Test
     public void errorsTest() {
         // TODO: test errors
+    }
+
+    /**
+     * Test the property 'itemId'
+     */
+    @Test
+    public void itemIdTest() {
+        // TODO: test itemId
     }
 
 }

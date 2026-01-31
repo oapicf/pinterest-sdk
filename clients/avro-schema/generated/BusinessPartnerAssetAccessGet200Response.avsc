@@ -5,18 +5,18 @@
   "name": "BusinessPartnerAssetAccessGet200Response",
   "fields": [
     {
+      "name": "bookmark",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "items",
       "type": {
         "type": "array",
         "items": "model.GetPartnerAssetsResponse"
       },
       "doc": "List assets on which you granted access to your partner or assets on which your partner has granted you access."
-    },
-    {
-      "name": "bookmark",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
     }
   ]
 

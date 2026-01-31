@@ -13,9 +13,14 @@ import javax.validation.Valid;
 /**
  * An object containing the permissions a you/your business partner has on the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class GetPartnerAssetsResponse   {
+  @JsonProperty("asset_group_info")
+  @Valid
+
+  private AssetGroupBinding assetGroupInfo;
+
   @JsonProperty("asset_id")
   @Pattern(regexp="^\\d+$")
 @Size(min=1,max=20)
@@ -30,10 +35,22 @@ public class GetPartnerAssetsResponse   {
   
   private List<String> permissions = null;
 
-  @JsonProperty("asset_group_info")
-  @Valid
+  public GetPartnerAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
 
-  private AssetGroupBinding assetGroupInfo;
+   /**
+   * Get assetGroupInfo
+   * @return assetGroupInfo
+  **/
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
 
   public GetPartnerAssetsResponse assetId(String assetId) {
     this.assetId = assetId;
@@ -58,7 +75,7 @@ public class GetPartnerAssetsResponse   {
   }
 
    /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
   **/
   public String getAssetType() {
@@ -94,23 +111,6 @@ public class GetPartnerAssetsResponse   {
     this.permissions = permissions;
   }
 
-  public GetPartnerAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-    return this;
-  }
-
-   /**
-   * Get assetGroupInfo
-   * @return assetGroupInfo
-  **/
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
-  }
-
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -121,15 +121,15 @@ public class GetPartnerAssetsResponse   {
       return false;
     }
     GetPartnerAssetsResponse getPartnerAssetsResponse = (GetPartnerAssetsResponse) o;
-    return Objects.equals(assetId, getPartnerAssetsResponse.assetId) &&
+    return Objects.equals(assetGroupInfo, getPartnerAssetsResponse.assetGroupInfo) &&
+        Objects.equals(assetId, getPartnerAssetsResponse.assetId) &&
         Objects.equals(assetType, getPartnerAssetsResponse.assetType) &&
-        Objects.equals(permissions, getPartnerAssetsResponse.permissions) &&
-        Objects.equals(assetGroupInfo, getPartnerAssetsResponse.assetGroupInfo);
+        Objects.equals(permissions, getPartnerAssetsResponse.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, permissions);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -138,10 +138,10 @@ public class GetPartnerAssetsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetPartnerAssetsResponse {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -16,14 +16,14 @@ void main() {
   // final instance = AdvancedAuctionItemsGetRecord();
 
   group('test AdvancedAuctionItemsGetRecord', () {
-    // The catalog retail item id in the merchant namespace
-    // String itemId
-    test('to test the property `itemId`', () async {
+    // Country country
+    test('to test the property `country`', () async {
       // TODO
     });
 
-    // Country country
-    test('to test the property `country`', () async {
+    // The catalog retail item id in the merchant namespace
+    // String itemId
+    test('to test the property `itemId`', () async {
       // TODO
     });
 

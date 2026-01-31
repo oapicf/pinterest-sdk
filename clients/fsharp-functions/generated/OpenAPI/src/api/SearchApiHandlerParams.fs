@@ -1,9 +1,9 @@
 namespace OpenAPI
 
 open OpenAPI.Model.Error
-open OpenAPI.Model.PinsList200Response
 open OpenAPI.Model.SearchPartnerPins200Response
 open OpenAPI.Model.SearchUserBoardsGet200Response
+open OpenAPI.Model.SearchUserPinsList200Response
 open System.Collections.Generic
 open System
 
@@ -100,7 +100,7 @@ module SearchApiHandlerParams =
 
 
     type SearchUserPinsListStatusCode200Response = {
-      content:PinsList200Response;
+      content:SearchUserPinsList200Response;
       
     }
 

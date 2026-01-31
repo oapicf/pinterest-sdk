@@ -11,6 +11,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelItemsPostFilter   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -31,15 +32,23 @@ public class CatalogsHotelItemsPostFilter   {
 
   private CatalogTypeEnum catalogType;
   private List<String> hotelIds = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsHotelItemsPostFilter () {
 
   }
 
-  public CatalogsHotelItemsPostFilter (CatalogTypeEnum catalogType, List<String> hotelIds, String catalogId) {
+  public CatalogsHotelItemsPostFilter (String catalogId, CatalogTypeEnum catalogType, List<String> hotelIds) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.hotelIds = hotelIds;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -61,15 +70,6 @@ public class CatalogsHotelItemsPostFilter   {
     this.hotelIds = hotelIds;
   }
 
-    
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,14 +80,14 @@ public class CatalogsHotelItemsPostFilter   {
       return false;
     }
     CatalogsHotelItemsPostFilter catalogsHotelItemsPostFilter = (CatalogsHotelItemsPostFilter) o;
-    return Objects.equals(catalogType, catalogsHotelItemsPostFilter.catalogType) &&
-        Objects.equals(hotelIds, catalogsHotelItemsPostFilter.hotelIds) &&
-        Objects.equals(catalogId, catalogsHotelItemsPostFilter.catalogId);
+    return Objects.equals(catalogId, catalogsHotelItemsPostFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsHotelItemsPostFilter.catalogType) &&
+        Objects.equals(hotelIds, catalogsHotelItemsPostFilter.hotelIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelIds, catalogId);
+    return Objects.hash(catalogId, catalogType, hotelIds);
   }
 
   @Override
@@ -95,9 +95,9 @@ public class CatalogsHotelItemsPostFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsPostFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

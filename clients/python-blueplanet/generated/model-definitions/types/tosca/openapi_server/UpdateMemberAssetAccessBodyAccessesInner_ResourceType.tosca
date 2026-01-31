@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateMemberAssetAccessBodyAccessesInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateMemberAssetAccessBodyAccessesInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Permissions = openapi_server.resourceTypes.Permissions
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  UpdateMemberAssetAccessBodyAccessesInner {
+    title = UpdateMemberAssetAccessBodyAccessesInner
+    description = UpdateMemberAssetAccessBodyAccessesInner
+    derivedFrom = Root
+    properties {
+        asset_id {
+          type =  string
+          description = "Id of the asset to update."
+          optional = true
+        }
+        member_id {
+          type =  string
+          description = "Unique identifier of the member on which to perform the update"
+          optional = true
+        }
+        permissions {
+          type = array
+          items.type = Permissions
+          description = "A non-empty array of permissions to assign to the member."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateMemberAssetAccessBodyAccessesInner {
+    title = UpdateMemberAssetAccessBodyAccessesInner
+    description = UpdateMemberAssetAccessBodyAccessesInner
+    implements = openapi_server.resourceTypes.UpdateMemberAssetAccessBodyAccessesInner
+
+  }
+}

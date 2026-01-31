@@ -6,13 +6,18 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.Board;
+import com.prokarma.pkmst.model.BoardCreate;
+import com.prokarma.pkmst.model.BoardPrivacyFilter;
 import com.prokarma.pkmst.model.BoardSection;
 import com.prokarma.pkmst.model.BoardSectionsList200Response;
-import com.prokarma.pkmst.model.BoardUpdate;
+import com.prokarma.pkmst.model.BoardWithUpdatePrivacy;
+import com.prokarma.pkmst.model.BoardWithUpdatePrivacyUpdate;
 import com.prokarma.pkmst.model.BoardsList200Response;
 import com.prokarma.pkmst.model.BoardsListPins200Response;
+import com.prokarma.pkmst.model.CreativeType;
 import com.prokarma.pkmst.model.Error;
 import java.util.List;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +31,7 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "Boards", description = "the Boards API")
 public interface BoardsApi {
 
@@ -129,77 +134,95 @@ public interface BoardsApi {
     ResponseEntity<BoardSection> boardSectionsUpdate(@ApiParam(value = "Unique identifier of a board.",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Unique identifier of a board section.",required=true ) @PathVariable("section_id") String sectionId,@ApiParam(value = "Update a board section." ,required=true )   @RequestBody BoardSection boardSection,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Create board", notes = "Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
+    @ApiOperation(value = "Create board", notes = "Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @AuthorizationScope(scope = "boards:write", description = "Create, update, or delete your public boards") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "boards:write", description = "Create, update, or delete your public boards") })
          }, tags={ "boards", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "response", response = Board.class),
-        @ApiResponse(code = 400, message = "The board name is invalid or duplicated.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Board.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = Board.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/boards",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<Board> boardsCreate(@ApiParam(value = "Create a board using a single board json object." ,required=true )   @RequestBody Board board,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<Board> boardsCreate(@ApiParam(value = "" ,required=true )   @RequestBody BoardCreate boardCreate,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Delete board", notes = "Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = Void.class, authorizations = {
+    @ApiOperation(value = "Delete board", notes = "Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "boards:write", description = "Create, update, or delete your public boards") })
          }, tags={ "boards", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Board deleted successfully"),
-        @ApiResponse(code = 403, message = "Not authorized to delete the board.", response = Error.class),
-        @ApiResponse(code = 404, message = "Board not found.", response = Error.class),
-        @ApiResponse(code = 409, message = "Could not get exclusive access to delete the board.", response = Error.class),
-        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 204, message = "Resource deleted successfully."),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.DELETE,
         value = "/boards/{board_id}",
         produces = { "application/json" }
     )
-    ResponseEntity<Void> boardsDelete(@ApiParam(value = "Unique identifier of a board.",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<Void> boardsDelete(@ApiParam(value = "",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get board", notes = "Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
+    @ApiOperation(value = "Get board", notes = "Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") })
          }, tags={ "boards", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = Board.class),
-        @ApiResponse(code = 404, message = "Board not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Board.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/boards/{board_id}",
         produces = { "application/json" }
     )
-    ResponseEntity<Board> boardsGet(@ApiParam(value = "Unique identifier of a board.",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<Board> boardsGet(@ApiParam(value = "",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "List boards", notes = "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.", response = BoardsList200Response.class, authorizations = {
+    @ApiOperation(value = "List boards", notes = "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.", response = BoardsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") })
          }, tags={ "boards", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = BoardsList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/boards",
         produces = { "application/json" }
     )
-    ResponseEntity<BoardsList200Response> boardsList(@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Privacy setting for a board.", allowableValues = "ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET")  @RequestParam(value = "privacy", required = false) String privacy, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<BoardsList200Response> boardsList(@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "The privacy level of the board", allowableValues = "ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET")  @RequestParam(value = "privacy", required = false) BoardPrivacyFilter privacy,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "List Pins on board", notes = "Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardsListPins200Response.class, authorizations = {
@@ -219,26 +242,31 @@ public interface BoardsApi {
         value = "/boards/{board_id}/pins",
         produces = { "application/json" }
     )
-    ResponseEntity<BoardsListPins200Response> boardsListPins(@ApiParam(value = "Unique identifier of a board.",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", allowableValues = "REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA")  @RequestParam(value = "creative_types", required = false) List<String> creativeTypes,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue = "false")  @RequestParam(value = "pin_metrics", required = false, defaultValue="false") Boolean pinMetrics, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<BoardsListPins200Response> boardsListPins(@ApiParam(value = "Unique identifier of a board.",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")  @RequestParam(value = "creative_types", required = false) List<CreativeType> creativeTypes,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,@ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue = "false")  @RequestParam(value = "pin_metrics", required = false, defaultValue="false") Boolean pinMetrics, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Update board", notes = "Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
+    @ApiOperation(value = "Update board", notes = "Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.", response = BoardWithUpdatePrivacy.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @AuthorizationScope(scope = "boards:write", description = "Create, update, or delete your public boards") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "boards:write", description = "Create, update, or delete your public boards") })
          }, tags={ "boards", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = Board.class),
-        @ApiResponse(code = 400, message = "Invalid board parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "Not authorized to update the board.", response = Error.class),
-        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardWithUpdatePrivacy.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.PATCH,
         value = "/boards/{board_id}",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<Board> boardsUpdate(@ApiParam(value = "Unique identifier of a board.",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "Update a board." ,required=true )   @RequestBody BoardUpdate boardUpdate,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<BoardWithUpdatePrivacy> boardsUpdate(@ApiParam(value = "",required=true ) @PathVariable("board_id") String boardId,@ApiParam(value = "" ,required=true )   @RequestBody BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate,@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 }

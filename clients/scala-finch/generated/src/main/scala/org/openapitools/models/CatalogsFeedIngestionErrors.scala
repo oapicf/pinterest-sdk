@@ -8,23 +8,25 @@ import org.openapitools._
 
 /**
  * 
- * @param LINEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
- * @param LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE The product count has decreased by more than 99% compared to the last successful ingestion.
  * @param ACCOUNTUnderscoreFLAGGED We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
- * @param IMAGEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+ * @param FETCHUnderscoreGOOGLEUnderscoreSHEETUnderscoreNOTUnderscoreSHARED Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.
  * @param IMAGEUnderscoreFILEUnderscoreNOTUnderscoreACCESSIBLE Image files are unreadable. Please upload new files to continue.
- * @param IMAGEUnderscoreMALFORMEDUnderscoreURL Image files are unreadable. Please check your link and upload new files to continue.
  * @param IMAGEUnderscoreFILEUnderscoreNOTUnderscoreFOUND Image files are unreadable. Please upload new files to continue.
  * @param IMAGEUnderscoreINVALIDUnderscoreFILE Image files are unreadable. Please upload new files to continue.
+ * @param IMAGEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+ * @param IMAGEUnderscoreMALFORMEDUnderscoreURL Image files are unreadable. Please check your link and upload new files to continue.
+ * @param LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE The product count has decreased by more than 99% compared to the last successful ingestion.
+ * @param LINEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
  */
-case class CatalogsFeedIngestionErrors(LINEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR: Option[Int],
-                LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE: Option[Int],
-                ACCOUNTUnderscoreFLAGGED: Option[Int],
-                IMAGEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR: Option[Int],
+case class CatalogsFeedIngestionErrors(ACCOUNTUnderscoreFLAGGED: Option[Int],
+                FETCHUnderscoreGOOGLEUnderscoreSHEETUnderscoreNOTUnderscoreSHARED: Option[Int],
                 IMAGEUnderscoreFILEUnderscoreNOTUnderscoreACCESSIBLE: Option[Int],
-                IMAGEUnderscoreMALFORMEDUnderscoreURL: Option[Int],
                 IMAGEUnderscoreFILEUnderscoreNOTUnderscoreFOUND: Option[Int],
-                IMAGEUnderscoreINVALIDUnderscoreFILE: Option[Int]
+                IMAGEUnderscoreINVALIDUnderscoreFILE: Option[Int],
+                IMAGEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR: Option[Int],
+                IMAGEUnderscoreMALFORMEDUnderscoreURL: Option[Int],
+                LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE: Option[Int],
+                LINEUnderscoreLEVELUnderscoreINTERNALUnderscoreERROR: Option[Int]
                 )
 
 object CatalogsFeedIngestionErrors {

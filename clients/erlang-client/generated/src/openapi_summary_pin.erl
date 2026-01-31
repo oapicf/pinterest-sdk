@@ -5,22 +5,25 @@
 -export_type([openapi_summary_pin/0]).
 
 -type openapi_summary_pin() ::
-    #{ 'media' => openapi_pin_media:openapi_pin_media(),
-       'alt_text' => binary(),
+    #{ 'alt_text' => binary(),
+       'description' => binary(),
+       'id' => binary(),
        'link' => binary(),
-       'title' => binary(),
-       'description' => binary()
+       'media' => openapi_pin_media:openapi_pin_media(),
+       'title' => binary()
      }.
 
-encode(#{ 'media' := Media,
-          'alt_text' := AltText,
+encode(#{ 'alt_text' := AltText,
+          'description' := Description,
+          'id' := Id,
           'link' := Link,
-          'title' := Title,
-          'description' := Description
+          'media' := Media,
+          'title' := Title
         }) ->
-    #{ 'media' => Media,
-       'alt_text' => AltText,
+    #{ 'alt_text' => AltText,
+       'description' => Description,
+       'id' => Id,
        'link' => Link,
-       'title' => Title,
-       'description' => Description
+       'media' => Media,
+       'title' => Title
      }.

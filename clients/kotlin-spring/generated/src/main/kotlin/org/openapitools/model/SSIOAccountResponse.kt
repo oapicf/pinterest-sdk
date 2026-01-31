@@ -17,34 +17,34 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param eligible Advertiser eligible to create order lines
- * @param canEdit Advertiser eligible to update order lines
  * @param billtoInfos An array of Salesforce account information that includes address, io terms, etc.
+ * @param canEdit Advertiser eligible to update order lines
  * @param currency 
- * @param pmpNames 
+ * @param eligible Advertiser eligible to create order lines
  * @param error Error indicator from Salesforce which could be \"No Error\"
+ * @param pmpNames 
  */
 data class SSIOAccountResponse(
-
-    @Schema(example = "true", description = "Advertiser eligible to create order lines")
-    @get:JsonProperty("eligible") val eligible: kotlin.Boolean? = null,
-
-    @Schema(example = "true", description = "Advertiser eligible to update order lines")
-    @get:JsonProperty("can_edit") val canEdit: kotlin.Boolean? = null,
 
     @field:Valid
     @Schema(example = "null", description = "An array of Salesforce account information that includes address, io terms, etc.")
     @get:JsonProperty("billto_infos") val billtoInfos: kotlin.collections.List<SSIOAccountItem>? = null,
 
+    @Schema(example = "true", description = "Advertiser eligible to update order lines")
+    @get:JsonProperty("can_edit") val canEdit: kotlin.Boolean? = null,
+
     @Schema(example = "USD", description = "")
     @get:JsonProperty("currency") val currency: kotlin.String? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("pmp_names") val pmpNames: kotlin.collections.List<SSIOAccountPMPName>? = null,
+    @Schema(example = "true", description = "Advertiser eligible to create order lines")
+    @get:JsonProperty("eligible") val eligible: kotlin.Boolean? = null,
 
     @Schema(example = "No Error", description = "Error indicator from Salesforce which could be \"No Error\"")
-    @get:JsonProperty("error") val error: kotlin.String? = null
+    @get:JsonProperty("error") val error: kotlin.String? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("pmp_names") val pmpNames: kotlin.collections.List<SSIOAccountPMPName>? = null
 ) {
 
 }

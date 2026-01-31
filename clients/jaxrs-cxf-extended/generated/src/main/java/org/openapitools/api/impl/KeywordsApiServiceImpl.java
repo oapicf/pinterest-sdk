@@ -63,7 +63,7 @@ public class KeywordsApiServiceImpl implements KeywordsApi {
      *
      */
     @Override
-    public KeywordsGet200Response keywordsGet(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark) {
+    public KeywordsGet200Response keywordsGet(String adAccountId, String campaignId, String adGroupId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark) {
         // TODO: Implement...
         return null;
     }
@@ -87,7 +87,7 @@ public class KeywordsApiServiceImpl implements KeywordsApi {
      *
      */
     @Override
-    public TrendingKeywordsResponse trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit) {
+    public TrendingKeywordsResponse trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics) {
         // TODO: Implement...
         return null;
     }

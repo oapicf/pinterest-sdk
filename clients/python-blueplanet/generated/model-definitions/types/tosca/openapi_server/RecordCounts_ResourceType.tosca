@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server RecordCounts"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a RecordCounts"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  RecordCounts {
+    title = RecordCounts
+    description = RecordCounts
+    derivedFrom = Root
+    properties {
+        invalid {
+          type =  integer
+          description = "Number of invalid records processed"
+          optional = true
+        }
+        processed {
+          type =  integer
+          description = "Number of records processed"
+          optional = true
+        }
+        valid {
+          type =  integer
+          description = "Number of valid records processed"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  RecordCounts {
+    title = RecordCounts
+    description = RecordCounts
+    implements = openapi_server.resourceTypes.RecordCounts
+
+  }
+}

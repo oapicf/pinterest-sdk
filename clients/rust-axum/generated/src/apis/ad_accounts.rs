@@ -41,35 +41,116 @@ pub enum AdAccountTargetingAnalyticsSlashGetResponse {
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdAccountsSlashCreateResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdAccount)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::AdAccount)
+    ,
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdAccountsSlashGetResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdAccount)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdAccountsSlashListResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdAccountsList200Response)
+    ,
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
+pub enum AnalyticsSlashCreateConversionProductReportResponse {
+    /// Success
+    Status200_Success
+    (models::AdsAnalyticsCreateAsyncResponse)
+    ,
+    /// Invalid ad account ads analytics brand, category, SKU parameters
+    Status400_InvalidAdAccountAdsAnalyticsBrand
+    (models::Error)
     ,
     /// Unexpected error
     Status0_UnexpectedError
@@ -114,12 +195,49 @@ pub enum AnalyticsSlashCreateReportResponse {
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AnalyticsSlashCreateTemplateReportResponse {
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::TemplateBasedReport)
+    ,
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::TemplateBasedReport)
+    ,
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
+pub enum AnalyticsSlashGetConversionProductReportResponse {
     /// Success
     Status200_Success
-    (models::AdsAnalyticsCreateAsyncResponse)
+    (models::AdsAnalyticsGetAsyncResponse)
     ,
-    /// Invalid ad account ads analytics template parameters.
-    Status400_InvalidAdAccountAdsAnalyticsTemplateParameters
+    /// Invalid ad account ads analytics parameters.
+    Status400_InvalidAdAccountAdsAnalyticsParameters
     (models::Error)
     ,
     /// Unexpected error
@@ -237,7 +355,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
-            body: &models::AdAccountCreateRequest,
+            body: &models::AdAccountCreate,
     ) -> Result<AdAccountsSlashCreateResponse, E>;
 
     /// Get ad account.
@@ -263,6 +381,19 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     cookies: &CookieJar,
       query_params: &models::AdAccountsSlashListQueryParams,
     ) -> Result<AdAccountsSlashListResponse, E>;
+
+    /// Create a request for a brand, category, SKU report.
+    ///
+    /// AnalyticsSlashCreateConversionProductReport - POST /v5/ad_accounts/{ad_account_id}/reports/brand_category_sku
+    async fn analytics_slash_create_conversion_product_report(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashCreateConversionProductReportPathParams,
+            body: &models::ConversionProductReportRequest,
+    ) -> Result<AnalyticsSlashCreateConversionProductReportResponse, E>;
 
     /// Create a request for a Marketing Mix Modeling (MMM) report.
     ///
@@ -302,6 +433,19 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
       path_params: &models::AnalyticsSlashCreateTemplateReportPathParams,
       query_params: &models::AnalyticsSlashCreateTemplateReportQueryParams,
     ) -> Result<AnalyticsSlashCreateTemplateReportResponse, E>;
+
+    /// Get advertiser brand, category, SKU report.
+    ///
+    /// AnalyticsSlashGetConversionProductReport - GET /v5/ad_accounts/{ad_account_id}/reports/brand_category_sku
+    async fn analytics_slash_get_conversion_product_report(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashGetConversionProductReportPathParams,
+      query_params: &models::AnalyticsSlashGetConversionProductReportQueryParams,
+    ) -> Result<AnalyticsSlashGetConversionProductReportResponse, E>;
 
     /// Get advertiser Marketing Mix Modeling (MMM) report..
     ///

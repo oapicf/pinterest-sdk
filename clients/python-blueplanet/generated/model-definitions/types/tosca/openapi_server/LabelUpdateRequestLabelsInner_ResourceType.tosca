@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelUpdateRequestLabelsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelUpdateRequestLabelsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LabelStatus = openapi_server.resourceTypes.LabelStatus
+}
+resourceTypes {
+
+  LabelUpdateRequestLabelsInner {
+    title = LabelUpdateRequestLabelsInner
+    description = LabelUpdateRequestLabelsInner
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Label ID."
+          optional = true
+        }
+        status {
+          type = LabelStatus
+          description = ""
+          optional = false
+        }
+        value {
+          type =  string
+          description = "Label name. 100-character limit."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelUpdateRequestLabelsInner {
+    title = LabelUpdateRequestLabelsInner
+    description = LabelUpdateRequestLabelsInner
+    implements = openapi_server.resourceTypes.LabelUpdateRequestLabelsInner
+
+  }
+}

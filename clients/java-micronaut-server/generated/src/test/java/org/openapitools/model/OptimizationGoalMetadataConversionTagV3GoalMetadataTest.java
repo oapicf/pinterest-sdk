@@ -70,4 +70,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataTest {
         // TODO: test learningModeType
     }
 
+    /**
+     * Test the property 'reportingEvent'
+     */
+    @Test
+    public void reportingEventTest() {
+        // TODO: test reportingEvent
+    }
+
 }

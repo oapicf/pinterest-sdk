@@ -7,9 +7,9 @@
 
 (def catalogs-report-feed-ingestion-filter-data
   {
-   (ds/req :report_type) string?
    (ds/req :feed_id) string?
    (ds/opt :processing_result_id) string?
+   (ds/req :report_type) string?
    })
 
 (def catalogs-report-feed-ingestion-filter-spec

@@ -9,19 +9,25 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 
 
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  **/
 
-@ApiModel(description = "Multiple images urls-based media source")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Multiple URL-based images media source")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesURL   {
+  @JsonProperty("index")
+  private Integer index;
+
+  @JsonProperty("items")
+  private List<PinMediaSourceImagesURLItem> items = new ArrayList<>();
+
   /**
-   * Gets or Sets sourceType
+   * The source type of the media.
    */
   public enum SourceTypeEnum {
     MULTIPLE_IMAGE_URLS("multiple_image_urls");
@@ -52,47 +58,6 @@ public class PinMediaSourceImagesURL   {
   @JsonProperty("source_type")
   private SourceTypeEnum sourceType;
 
-  @JsonProperty("items")
-  private List<PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
-
-  @JsonProperty("index")
-  private Integer index;
-
-  /**
-   **/
-  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  /**
-   * Array with image objects.
-   **/
-  public PinMediaSourceImagesURL items(List<PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  @JsonProperty("items")
-  public List<PinMediaSourceImagesURLItemsInner> getItems() {
-    return items;
-  }
-  public void setItems(List<PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-  }
-
   /**
    * minimum: 0
    **/
@@ -111,6 +76,42 @@ public class PinMediaSourceImagesURL   {
     this.index = index;
   }
 
+  /**
+   * Array with image objects.
+   **/
+  public PinMediaSourceImagesURL items(List<PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+  @JsonProperty("items")
+  public List<PinMediaSourceImagesURLItem> getItems() {
+    return items;
+  }
+  public void setItems(List<PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+  }
+
+  /**
+   * The source type of the media.
+   **/
+  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The source type of the media.")
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -121,14 +122,14 @@ public class PinMediaSourceImagesURL   {
       return false;
     }
     PinMediaSourceImagesURL pinMediaSourceImagesURL = (PinMediaSourceImagesURL) o;
-    return Objects.equals(sourceType, pinMediaSourceImagesURL.sourceType) &&
+    return Objects.equals(index, pinMediaSourceImagesURL.index) &&
         Objects.equals(items, pinMediaSourceImagesURL.items) &&
-        Objects.equals(index, pinMediaSourceImagesURL.index);
+        Objects.equals(sourceType, pinMediaSourceImagesURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
@@ -136,9 +137,9 @@ public class PinMediaSourceImagesURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

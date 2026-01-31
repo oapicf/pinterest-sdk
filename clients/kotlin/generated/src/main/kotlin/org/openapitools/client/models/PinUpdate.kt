@@ -15,58 +15,49 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PinUpdateCarouselSlotsInner
+import org.openapitools.client.models.CarouselSlot
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Pin fields for updates
+ * Resource create or update operation model.
  *
- * @param altText Pin's alternative text.
- * @param boardId The id of the board to move the Pin onto.
- * @param boardSectionId <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
- * @param description Pin description - 800 characters maximum.
- * @param link URL viewer is taken to when they click pin.
- * @param title The native pin title that creators explicitly prefer to display.
+ * @param altText 
+ * @param boardId The board to which this Pin belongs.
+ * @param boardSectionId The board section to which this Pin belongs.
  * @param carouselSlots Carousel Pin slots data.
- * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+ * @param description 
+ * @param link 
+ * @param title 
  */
 
 
 data class PinUpdate (
 
-    /* Pin's alternative text. */
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,
 
-    /* The id of the board to move the Pin onto. */
+    /* The board to which this Pin belongs. */
     @Json(name = "board_id")
     val boardId: kotlin.String? = null,
 
-    /* <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID. */
+    /* The board section to which this Pin belongs. */
     @Json(name = "board_section_id")
     val boardSectionId: kotlin.String? = null,
 
-    /* Pin description - 800 characters maximum. */
+    /* Carousel Pin slots data. */
+    @Json(name = "carousel_slots")
+    val carouselSlots: kotlin.collections.List<CarouselSlot>? = null,
+
     @Json(name = "description")
     val description: kotlin.String? = null,
 
-    /* URL viewer is taken to when they click pin. */
     @Json(name = "link")
     val link: kotlin.String? = null,
 
-    /* The native pin title that creators explicitly prefer to display. */
     @Json(name = "title")
-    val title: kotlin.String? = null,
-
-    /* Carousel Pin slots data. */
-    @Json(name = "carousel_slots")
-    val carouselSlots: kotlin.collections.List<PinUpdateCarouselSlotsInner>? = null,
-
-    /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    @Json(name = "note")
-    val note: kotlin.String? = null
+    val title: kotlin.String? = null
 
 ) {
 

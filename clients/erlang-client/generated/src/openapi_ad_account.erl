@@ -5,31 +5,31 @@
 -export_type([openapi_ad_account/0]).
 
 -type openapi_ad_account() ::
-    #{ 'id' => binary(),
+    #{ 'country' => openapi_country:openapi_country(),
+       'created_time' => integer(),
+       'currency' => openapi_currency:openapi_currency(),
+       'id' := binary(),
        'name' => binary(),
        'owner' => openapi_ad_account_owner:openapi_ad_account_owner(),
-       'country' => openapi_country:openapi_country(),
-       'currency' => openapi_currency:openapi_currency(),
        'permissions' => list(),
-       'created_time' => integer(),
        'updated_time' => integer()
      }.
 
-encode(#{ 'id' := Id,
+encode(#{ 'country' := Country,
+          'created_time' := CreatedTime,
+          'currency' := Currency,
+          'id' := Id,
           'name' := Name,
           'owner' := Owner,
-          'country' := Country,
-          'currency' := Currency,
           'permissions' := Permissions,
-          'created_time' := CreatedTime,
           'updated_time' := UpdatedTime
         }) ->
-    #{ 'id' => Id,
+    #{ 'country' => Country,
+       'created_time' => CreatedTime,
+       'currency' => Currency,
+       'id' => Id,
        'name' => Name,
        'owner' => Owner,
-       'country' => Country,
-       'currency' => Currency,
        'permissions' => Permissions,
-       'created_time' => CreatedTime,
        'updated_time' => UpdatedTime
      }.

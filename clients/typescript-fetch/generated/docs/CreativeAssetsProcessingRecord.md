@@ -9,8 +9,8 @@ Name | Type
 ------------ | -------------
 `creativeAssetsId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
-`warnings` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
 `status` | [ItemProcessingStatus](ItemProcessingStatus.md)
+`warnings` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
 
 ## Example
 
@@ -21,8 +21,8 @@ import type { CreativeAssetsProcessingRecord } from ''
 const example = {
   "creativeAssetsId": DS0294-M,
   "errors": null,
-  "warnings": null,
   "status": null,
+  "warnings": null,
 } satisfies CreativeAssetsProcessingRecord
 
 console.log(example)

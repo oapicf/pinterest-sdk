@@ -21,23 +21,23 @@ typedef struct catalogs_retail_product_metadata_t catalogs_retail_product_metada
 
 
 typedef struct catalogs_retail_product_metadata_t {
-    char *item_id; // string
-    char *item_group_id; // string
     pinterest_rest_api_non_nullable_product_availability_type__e availability; //referenced enum
+    pinterest_rest_api_non_nullable_catalogs_currency__e currency; //referenced enum
+    char *item_group_id; // string
+    char *item_id; // string
     double price; //numeric
     double sale_price; //numeric
-    pinterest_rest_api_non_nullable_catalogs_currency__e currency; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_product_metadata_t;
 
 __attribute__((deprecated)) catalogs_retail_product_metadata_t *catalogs_retail_product_metadata_create(
-    char *item_id,
-    char *item_group_id,
     pinterest_rest_api_non_nullable_product_availability_type__e availability,
+    pinterest_rest_api_non_nullable_catalogs_currency__e currency,
+    char *item_group_id,
+    char *item_id,
     double price,
-    double sale_price,
-    pinterest_rest_api_non_nullable_catalogs_currency__e currency
+    double sale_price
 );
 
 void catalogs_retail_product_metadata_free(catalogs_retail_product_metadata_t *catalogs_retail_product_metadata);

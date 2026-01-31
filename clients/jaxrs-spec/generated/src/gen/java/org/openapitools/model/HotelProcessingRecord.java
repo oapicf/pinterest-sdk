@@ -23,34 +23,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an item processing record")
 @JsonTypeName("HotelProcessingRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class HotelProcessingRecord   {
-  private String hotelId;
   private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
-  private @Valid List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
+  private String hotelId;
   private ItemProcessingStatus status;
+  private @Valid List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   public HotelProcessingRecord() {
-  }
-
-  /**
-   * The catalog hotel id in the merchant namespace
-   **/
-  public HotelProcessingRecord hotelId(String hotelId) {
-    this.hotelId = hotelId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-
-  @JsonProperty("hotel_id")
-  public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
   }
 
   /**
@@ -90,6 +70,45 @@ public class HotelProcessingRecord   {
     return this;
   }
   /**
+   * The catalog hotel id in the merchant namespace
+   **/
+  public HotelProcessingRecord hotelId(String hotelId) {
+    this.hotelId = hotelId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
+  }
+
+  @JsonProperty("hotel_id")
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
+  }
+
+  /**
+   **/
+  public HotelProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  @JsonProperty("status")
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
+  /**
    * Array with the validation warnings for the item processing record
    **/
   public HotelProcessingRecord warnings(List<@Valid ItemValidationEvent> warnings) {
@@ -125,25 +144,6 @@ public class HotelProcessingRecord   {
 
     return this;
   }
-  /**
-   **/
-  public HotelProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  @JsonProperty("status")
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,15 +154,15 @@ public class HotelProcessingRecord   {
       return false;
     }
     HotelProcessingRecord hotelProcessingRecord = (HotelProcessingRecord) o;
-    return Objects.equals(this.hotelId, hotelProcessingRecord.hotelId) &&
-        Objects.equals(this.errors, hotelProcessingRecord.errors) &&
-        Objects.equals(this.warnings, hotelProcessingRecord.warnings) &&
-        Objects.equals(this.status, hotelProcessingRecord.status);
+    return Objects.equals(this.errors, hotelProcessingRecord.errors) &&
+        Objects.equals(this.hotelId, hotelProcessingRecord.hotelId) &&
+        Objects.equals(this.status, hotelProcessingRecord.status) &&
+        Objects.equals(this.warnings, hotelProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, errors, warnings, status);
+    return Objects.hash(errors, hotelId, status, warnings);
   }
 
   @Override
@@ -170,10 +170,10 @@ public class HotelProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class HotelProcessingRecord {\n");
     
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

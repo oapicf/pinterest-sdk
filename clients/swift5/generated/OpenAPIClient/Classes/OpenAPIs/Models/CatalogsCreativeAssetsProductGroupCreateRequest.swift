@@ -17,38 +17,38 @@ public struct CatalogsCreativeAssetsProductGroupCreateRequest: Codable, JSONEnco
         case creativeAssets = "CREATIVE_ASSETS"
     }
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogType
-    public var name: String
-    public var description: String?
-    public var filters: CatalogsCreativeAssetsProductGroupFilters
     /** Catalog id pertaining to the creative assets product group. */
     public var catalogId: String
+    public var catalogType: CatalogType
+    public var description: String?
+    public var filters: CatalogsCreativeAssetsProductGroupFilters
+    public var name: String
 
-    public init(catalogType: CatalogType, name: String, description: String? = nil, filters: CatalogsCreativeAssetsProductGroupFilters, catalogId: String) {
+    public init(catalogId: String, catalogType: CatalogType, description: String? = nil, filters: CatalogsCreativeAssetsProductGroupFilters, name: String) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
-        self.name = name
         self.description = description
         self.filters = filters
-        self.catalogId = catalogId
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
-        case name
         case description
         case filters
-        case catalogId = "catalog_id"
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
-        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(filters, forKey: .filters)
-        try container.encode(catalogId, forKey: .catalogId)
+        try container.encode(name, forKey: .name)
     }
 }
 

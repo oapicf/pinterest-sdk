@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "code_snippet" },
+      {"model": "configs" },
+      {"model": "enhanced_match_status" },
+      {"model": "id" },
+      {"model": "last_fired_time_ms" },
+      {"model": "name" },
+      {"model": "version" },
+    ]
+  }]
+}

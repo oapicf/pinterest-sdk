@@ -14,12 +14,12 @@ module CatalogsCreativeAssetsProductGroupUpdateRequest =
   type CatalogsCreativeAssetsProductGroupUpdateRequest = {
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "description")>]
     Description : string option;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsCreativeAssetsProductGroupFilters;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

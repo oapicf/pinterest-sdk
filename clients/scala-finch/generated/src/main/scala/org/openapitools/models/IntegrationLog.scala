@@ -10,33 +10,33 @@ import org.openapitools.models.IntegrationLogClientRequest
 
 /**
  * Schema for log sent from an integration application.
- * @param clientUnderscoretimestamp Timestamp in milliseconds of when the log was executed at the client.
- * @param eventUnderscoretype Log event type
- * @param logUnderscorelevel Log level type
- * @param externalUnderscorebusinessUnderscoreid 
  * @param advertiserUnderscoreid 
- * @param merchantUnderscoreid 
- * @param tagUnderscoreid 
- * @param feedUnderscoreprofileUnderscoreid 
- * @param message Explanation of the event that occured.
  * @param appUnderscoreversionUnderscorenumber Version number of the integration application.
- * @param platformUnderscoreversionUnderscorenumber Version number of the platform the integration application is running on.
+ * @param clientUnderscoretimestamp Timestamp in milliseconds of when the log was executed at the client.
  * @param error 
+ * @param eventUnderscoretype Log event type
+ * @param externalUnderscorebusinessUnderscoreid 
+ * @param feedUnderscoreprofileUnderscoreid 
+ * @param logUnderscorelevel Log level type
+ * @param merchantUnderscoreid 
+ * @param message Explanation of the event that occured.
+ * @param platformUnderscoreversionUnderscorenumber Version number of the platform the integration application is running on.
  * @param request 
+ * @param tagUnderscoreid 
  */
-case class IntegrationLog(clientUnderscoretimestamp: Int,
-                eventUnderscoretype: String,
-                logUnderscorelevel: String,
-                externalUnderscorebusinessUnderscoreid: Option[String],
-                advertiserUnderscoreid: Option[String],
-                merchantUnderscoreid: Option[String],
-                tagUnderscoreid: Option[String],
-                feedUnderscoreprofileUnderscoreid: Option[String],
-                message: Option[String],
+case class IntegrationLog(advertiserUnderscoreid: Option[String],
                 appUnderscoreversionUnderscorenumber: Option[String],
-                platformUnderscoreversionUnderscorenumber: Option[String],
+                clientUnderscoretimestamp: Int,
                 error: Option[IntegrationLogClientError],
-                request: Option[IntegrationLogClientRequest]
+                eventUnderscoretype: String,
+                externalUnderscorebusinessUnderscoreid: Option[String],
+                feedUnderscoreprofileUnderscoreid: Option[String],
+                logUnderscorelevel: String,
+                merchantUnderscoreid: Option[String],
+                message: Option[String],
+                platformUnderscoreversionUnderscorenumber: Option[String],
+                request: Option[IntegrationLogClientRequest],
+                tagUnderscoreid: Option[String]
                 )
 
 object IntegrationLog {

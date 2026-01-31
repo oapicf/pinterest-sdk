@@ -8,10 +8,10 @@ import org.openapitools.model.Language;
 
 @Canonical
 class AdvancedAuctionKey {
-    /* The catalog retail item id in the merchant namespace */
-    String itemId
     
     Country country
+    /* The catalog retail item id in the merchant namespace */
+    String itemId
     
     Language language
 }

@@ -8,8 +8,8 @@
 (def get-mmm-report-response-data-data
   {
    (ds/opt :report_status) string?
-   (ds/opt :url) string?
    (ds/opt :size) float?
+   (ds/opt :url) string?
    })
 
 (def get-mmm-report-response-data-spec

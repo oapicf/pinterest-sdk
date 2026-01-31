@@ -8,13 +8,13 @@ Request object for creating a catalog based product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 **catalogType** | [**CatalogType**](#CatalogType) |  | 
-**name** | **String** |  | 
+**country** | **Country** |  |  [optional]
 **description** | **String** |  |  [optional]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
-**country** | **Country** |  | 
-**locale** | **CatalogsLocale** |  | 
+**locale** | **CatalogsLocale** |  |  [optional]
+**name** | **String** |  | 
 
 
 ## Enum: CatalogType

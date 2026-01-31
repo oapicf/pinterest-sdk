@@ -24,7 +24,7 @@ Create targeting templates
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let targetingTemplateCreate = TargetingTemplateCreate(name: "name_example", autoTargetingEnabled: false, targetingAttributes: TargetingSpec(AGE_BUCKET: ["AGE_BUCKET_example"], APPTYPE: ["APPTYPE_example"], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: ["GENDER_example"], GEO: ["GEO_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], SHOPPING_RETARGETING: [TargetingSpec_SHOPPING_RETARGETING(lookbackWindow: 123, tagTypes: [123], exclusionWindow: 123)], TARGETING_STRATEGY: ["TARGETING_STRATEGY_example"]), placementGroup: PlacementGroupType(), keywords: [TargetingTemplateKeyword(matchType: MatchType(), value: "value_example")], trackingUrls: TrackingUrls(impression: ["impression_example"], click: ["click_example"], engagement: ["engagement_example"], buyableButton: ["buyableButton_example"], audienceVerification: ["audienceVerification_example"])) // TargetingTemplateCreate | targeting template creation entity
+let targetingTemplateCreate = TargetingTemplateCreate(autoTargetingEnabled: false, keywords: [TargetingTemplateKeyword(matchType: MatchType(), value: "value_example")], name: "name_example", placementGroup: PlacementGroupType(), targetingAttributes: TargetingSpec(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: ["TARGETING_STRATEGY_example"]), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"])) // TargetingTemplateCreate | targeting template creation entity
 
 // Create targeting templates
 TargetingTemplateAPI.targetingTemplateCreate(adAccountId: adAccountId, targetingTemplateCreate: targetingTemplateCreate) { (response, error) in
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -136,7 +136,7 @@ Update targeting templates
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let targetingTemplateUpdateRequest = TargetingTemplateUpdateRequest(operationType: "operationType_example", id: "id_example") // TargetingTemplateUpdateRequest | Operation type and targeting template ID
+let targetingTemplateUpdateRequest = TargetingTemplateUpdateRequest(id: "id_example", operationType: "operationType_example", targetingAttributes: TargetingSpec(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: ["TARGETING_STRATEGY_example"])) // TargetingTemplateUpdateRequest | Operation type and targeting template ID
 
 // Update targeting templates
 TargetingTemplateAPI.targetingTemplateUpdate(adAccountId: adAccountId, targetingTemplateUpdateRequest: targetingTemplateUpdateRequest) { (response, error) in

@@ -1,13 +1,12 @@
-goog.provide('API.Client.Board_media');
+goog.provide('API.Client.BoardMedia');
 
 /**
- * Board media.
  * @record
  */
 API.Client.BoardMedia = function() {}
 
 /**
- * Board cover image.
+ * Board cover image
  * @type {!string}
  * @export
  */

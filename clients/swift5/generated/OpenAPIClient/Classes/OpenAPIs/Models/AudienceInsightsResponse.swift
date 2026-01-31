@@ -16,31 +16,31 @@ public struct AudienceInsightsResponse: Codable, JSONEncodable, Hashable {
     public static let dateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
     /** Category interest distribution */
     public var categories: [AudienceCategory]?
-    public var demographics: AudienceDemographics?
-    public var type: AudienceInsightType?
     /** Generation date */
     public var date: String?
+    public var demographics: AudienceDemographics?
     /** Population count. */
     public var size: Int?
     /** Indicates whether the audience size has been rounded up to the next highest upper boundary. */
     public var sizeIsUpperBound: Bool?
+    public var type: AudienceInsightType?
 
-    public init(categories: [AudienceCategory]? = nil, demographics: AudienceDemographics? = nil, type: AudienceInsightType? = nil, date: String? = nil, size: Int? = nil, sizeIsUpperBound: Bool? = nil) {
+    public init(categories: [AudienceCategory]? = nil, date: String? = nil, demographics: AudienceDemographics? = nil, size: Int? = nil, sizeIsUpperBound: Bool? = nil, type: AudienceInsightType? = nil) {
         self.categories = categories
-        self.demographics = demographics
-        self.type = type
         self.date = date
+        self.demographics = demographics
         self.size = size
         self.sizeIsUpperBound = sizeIsUpperBound
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case categories
-        case demographics
-        case type
         case date
+        case demographics
         case size
         case sizeIsUpperBound = "size_is_upper_bound"
+        case type
     }
 
     // Encodable protocol methods
@@ -48,11 +48,11 @@ public struct AudienceInsightsResponse: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(categories, forKey: .categories)
-        try container.encodeIfPresent(demographics, forKey: .demographics)
-        try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(date, forKey: .date)
+        try container.encodeIfPresent(demographics, forKey: .demographics)
         try container.encodeIfPresent(size, forKey: .size)
         try container.encodeIfPresent(sizeIsUpperBound, forKey: .sizeIsUpperBound)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

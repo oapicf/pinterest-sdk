@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomNumber4Filter",
+  "fields": [
+    {
+      "name": "CUSTOM_NUMBER_4",
+      "type": "model.CatalogsProductGroupUint32Criteria",
+      "doc": ""
+    }
+  ]
+
+}

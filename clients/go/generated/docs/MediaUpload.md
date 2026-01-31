@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaId** | Pointer to **string** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | [optional] 
-**MediaType** | Pointer to [**MediaUploadType**](MediaUploadType.md) |  | [optional] 
-**UploadUrl** | Pointer to **string** | The URL where you will POST your media file. | [optional] 
-**UploadParameters** | Pointer to [**MediaUploadAllOfUploadParameters**](MediaUploadAllOfUploadParameters.md) |  | [optional] 
+**MediaId** | **string** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | [readonly] 
+**MediaType** | [**MediaUploadType**](MediaUploadType.md) |  | 
+**UploadParameters** | Pointer to [**MediaUploadParameters**](MediaUploadParameters.md) | The list of parameter key/value pairs you will need to send with your POST request to upload your media file. | [optional] [readonly] 
+**UploadUrl** | Pointer to **string** | The URL where you will POST your media file. | [optional] [readonly] 
 
 ## Methods
 
 ### NewMediaUpload
 
-`func NewMediaUpload() *MediaUpload`
+`func NewMediaUpload(mediaId string, mediaType MediaUploadType, ) *MediaUpload`
 
 NewMediaUpload instantiates a new MediaUpload object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetMediaId sets MediaId field to given value.
 
-### HasMediaId
-
-`func (o *MediaUpload) HasMediaId() bool`
-
-HasMediaId returns a boolean if a field has been set.
 
 ### GetMediaType
 
@@ -72,11 +67,31 @@ and a boolean to check if the value has been set.
 
 SetMediaType sets MediaType field to given value.
 
-### HasMediaType
 
-`func (o *MediaUpload) HasMediaType() bool`
+### GetUploadParameters
 
-HasMediaType returns a boolean if a field has been set.
+`func (o *MediaUpload) GetUploadParameters() MediaUploadParameters`
+
+GetUploadParameters returns the UploadParameters field if non-nil, zero value otherwise.
+
+### GetUploadParametersOk
+
+`func (o *MediaUpload) GetUploadParametersOk() (*MediaUploadParameters, bool)`
+
+GetUploadParametersOk returns a tuple with the UploadParameters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUploadParameters
+
+`func (o *MediaUpload) SetUploadParameters(v MediaUploadParameters)`
+
+SetUploadParameters sets UploadParameters field to given value.
+
+### HasUploadParameters
+
+`func (o *MediaUpload) HasUploadParameters() bool`
+
+HasUploadParameters returns a boolean if a field has been set.
 
 ### GetUploadUrl
 
@@ -102,31 +117,6 @@ SetUploadUrl sets UploadUrl field to given value.
 `func (o *MediaUpload) HasUploadUrl() bool`
 
 HasUploadUrl returns a boolean if a field has been set.
-
-### GetUploadParameters
-
-`func (o *MediaUpload) GetUploadParameters() MediaUploadAllOfUploadParameters`
-
-GetUploadParameters returns the UploadParameters field if non-nil, zero value otherwise.
-
-### GetUploadParametersOk
-
-`func (o *MediaUpload) GetUploadParametersOk() (*MediaUploadAllOfUploadParameters, bool)`
-
-GetUploadParametersOk returns a tuple with the UploadParameters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUploadParameters
-
-`func (o *MediaUpload) SetUploadParameters(v MediaUploadAllOfUploadParameters)`
-
-SetUploadParameters sets UploadParameters field to given value.
-
-### HasUploadParameters
-
-`func (o *MediaUpload) HasUploadParameters() bool`
-
-HasUploadParameters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.",
+  "name": "GetBusinessAssetsResponseCatalogInfo",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": ["null", "string"],
+      "doc": "Catalog type",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Catalog ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Catalog name",
+      "default": null
+    }
+  ]
+
+}

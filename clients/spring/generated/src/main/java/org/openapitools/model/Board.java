@@ -10,6 +10,7 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardMedia;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.BoardPrivacy;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
@@ -27,70 +28,34 @@ import javax.annotation.Generated;
  * Board
  */
 
-@Schema(name = "Board", description = "Board")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Board {
-
-  private @Nullable String id;
-
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private @Nullable OffsetDateTime createdAt;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime boardPinsModifiedAt;
 
-  private String name;
+  private @Nullable Integer collaboratorCount;
+
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private @Nullable OffsetDateTime createdAt;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  private @Nullable Integer collaboratorCount;
-
-  private @Nullable Integer pinCount;
-
   private @Nullable Integer followerCount;
+
+  private String id;
+
+  private Boolean isAdsOnly = false;
 
   private @Nullable BoardMedia media;
 
+  private String name;
+
   private @Nullable BoardOwner owner;
 
-  /**
-   * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
-   */
-  public enum PrivacyEnum {
-    PUBLIC("PUBLIC"),
-    
-    PROTECTED("PROTECTED"),
-    
-    SECRET("SECRET");
+  private @Nullable Integer pinCount;
 
-    private final String value;
-
-    PrivacyEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PrivacyEnum fromValue(String value) {
-      for (PrivacyEnum b : PrivacyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public Board() {
     super();
@@ -99,48 +64,9 @@ public class Board {
   /**
    * Constructor with only required parameters
    */
-  public Board(String name) {
+  public Board(String id, String name) {
+    this.id = id;
     this.name = name;
-  }
-
-  public Board id(@Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  
-  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "549755885175", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
-  }
-
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
-
-  public Board createdAt(@Nullable OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  /**
-   * Date and time of board creation.
-   * @return createdAt
-   */
-  @Valid 
-  @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Date and time of board creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_at")
-  public @Nullable OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
   }
 
   public Board boardPinsModifiedAt(@Nullable OffsetDateTime boardPinsModifiedAt) {
@@ -153,7 +79,7 @@ public class Board {
    * @return boardPinsModifiedAt
    */
   @Valid 
-  @Schema(name = "board_pins_modified_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Date and time of last board pins modified.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_pins_modified_at", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time of last board pins modified.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_pins_modified_at")
   public @Nullable OffsetDateTime getBoardPinsModifiedAt() {
     return boardPinsModifiedAt;
@@ -161,46 +87,6 @@ public class Board {
 
   public void setBoardPinsModifiedAt(@Nullable OffsetDateTime boardPinsModifiedAt) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
-  }
-
-  public Board name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", example = "Summer Recipes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Board description(String description) {
-    this.description = JsonNullable.of(description);
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  
-  @Schema(name = "description", example = "My favorite summer recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public JsonNullable<String> getDescription() {
-    return description;
-  }
-
-  public void setDescription(JsonNullable<String> description) {
-    this.description = description;
   }
 
   public Board collaboratorCount(@Nullable Integer collaboratorCount) {
@@ -224,25 +110,44 @@ public class Board {
     this.collaboratorCount = collaboratorCount;
   }
 
-  public Board pinCount(@Nullable Integer pinCount) {
-    this.pinCount = pinCount;
+  public Board createdAt(@Nullable OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Count of pins on the board.
-   * minimum: 0
-   * @return pinCount
+   * Date and time of board creation.
+   * @return createdAt
    */
-  @Min(value = 0) 
-  @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "5", description = "Count of pins on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("pin_count")
-  public @Nullable Integer getPinCount() {
-    return pinCount;
+  @Valid 
+  @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time of board creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_at")
+  public @Nullable OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
-  public void setPinCount(@Nullable Integer pinCount) {
-    this.pinCount = pinCount;
+  public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public Board description(String description) {
+    this.description = JsonNullable.of(description);
+    return this;
+  }
+
+  /**
+   * Get description
+   * @return description
+   */
+  
+  @Schema(name = "description", example = "My favorite summer recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public JsonNullable<String> getDescription() {
+    return description;
+  }
+
+  public void setDescription(JsonNullable<String> description) {
+    this.description = description;
   }
 
   public Board followerCount(@Nullable Integer followerCount) {
@@ -266,17 +171,57 @@ public class Board {
     this.followerCount = followerCount;
   }
 
+  public Board id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "549755885175", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public Board isAdsOnly(Boolean isAdsOnly) {
+    this.isAdsOnly = isAdsOnly;
+    return this;
+  }
+
+  /**
+   * If set to `true`, the board will be ad-only and can store ad-only Pins.
+   * @return isAdsOnly
+   */
+  
+  @Schema(name = "is_ads_only", example = "true", description = "If set to `true`, the board will be ad-only and can store ad-only Pins.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_ads_only")
+  public Boolean getIsAdsOnly() {
+    return isAdsOnly;
+  }
+
+  public void setIsAdsOnly(Boolean isAdsOnly) {
+    this.isAdsOnly = isAdsOnly;
+  }
+
   public Board media(@Nullable BoardMedia media) {
     this.media = media;
     return this;
   }
 
   /**
-   * Get media
+   * Board media.
    * @return media
    */
   @Valid 
-  @Schema(name = "media", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, description = "Board media.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
   public @Nullable BoardMedia getMedia() {
     return media;
@@ -284,6 +229,26 @@ public class Board {
 
   public void setMedia(@Nullable BoardMedia media) {
     this.media = media;
+  }
+
+  public Board name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+   * @return name
+   */
+  @NotNull 
+  @Schema(name = "name", example = "Summer recipes", description = "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Board owner(@Nullable BoardOwner owner) {
@@ -306,23 +271,44 @@ public class Board {
     this.owner = owner;
   }
 
-  public Board privacy(PrivacyEnum privacy) {
+  public Board pinCount(@Nullable Integer pinCount) {
+    this.pinCount = pinCount;
+    return this;
+  }
+
+  /**
+   * Count of Pins on the board.
+   * minimum: 0
+   * @return pinCount
+   */
+  @Min(value = 0) 
+  @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "5", description = "Count of Pins on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("pin_count")
+  public @Nullable Integer getPinCount() {
+    return pinCount;
+  }
+
+  public void setPinCount(@Nullable Integer pinCount) {
+    this.pinCount = pinCount;
+  }
+
+  public Board privacy(BoardPrivacy privacy) {
     this.privacy = privacy;
     return this;
   }
 
   /**
-   * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+   *     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
    * @return privacy
    */
-  
-  @Schema(name = "privacy", description = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "privacy", description = "    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy")
-  public PrivacyEnum getPrivacy() {
+  public BoardPrivacy getPrivacy() {
     return privacy;
   }
 
-  public void setPrivacy(PrivacyEnum privacy) {
+  public void setPrivacy(BoardPrivacy privacy) {
     this.privacy = privacy;
   }
 
@@ -335,16 +321,17 @@ public class Board {
       return false;
     }
     Board board = (Board) o;
-    return Objects.equals(this.id, board.id) &&
-        Objects.equals(this.createdAt, board.createdAt) &&
-        Objects.equals(this.boardPinsModifiedAt, board.boardPinsModifiedAt) &&
-        Objects.equals(this.name, board.name) &&
-        equalsNullable(this.description, board.description) &&
+    return Objects.equals(this.boardPinsModifiedAt, board.boardPinsModifiedAt) &&
         Objects.equals(this.collaboratorCount, board.collaboratorCount) &&
-        Objects.equals(this.pinCount, board.pinCount) &&
+        Objects.equals(this.createdAt, board.createdAt) &&
+        equalsNullable(this.description, board.description) &&
         Objects.equals(this.followerCount, board.followerCount) &&
+        Objects.equals(this.id, board.id) &&
+        Objects.equals(this.isAdsOnly, board.isAdsOnly) &&
         Objects.equals(this.media, board.media) &&
+        Objects.equals(this.name, board.name) &&
         Objects.equals(this.owner, board.owner) &&
+        Objects.equals(this.pinCount, board.pinCount) &&
         Objects.equals(this.privacy, board.privacy);
   }
 
@@ -354,7 +341,7 @@ public class Board {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, boardPinsModifiedAt, name, hashCodeNullable(description), collaboratorCount, pinCount, followerCount, media, owner, privacy);
+    return Objects.hash(boardPinsModifiedAt, collaboratorCount, createdAt, hashCodeNullable(description), followerCount, id, isAdsOnly, media, name, owner, pinCount, privacy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -368,16 +355,17 @@ public class Board {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Board {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    boardPinsModifiedAt: ").append(toIndentedString(boardPinsModifiedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    collaboratorCount: ").append(toIndentedString(collaboratorCount)).append("\n");
-    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    followerCount: ").append(toIndentedString(followerCount)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isAdsOnly: ").append(toIndentedString(isAdsOnly)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
     sb.append("    privacy: ").append(toIndentedString(privacy)).append("\n");
     sb.append("}");
     return sb.toString();

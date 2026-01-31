@@ -40,22 +40,22 @@ pinterest_rest_api_items_batch_post_request_LANGUAGE_e items_batch_post_request_
 }
 
 static items_batch_post_request_t *items_batch_post_request_create_internal(
+    char *catalog_id,
     pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     list_t *items,
-    char *catalog_id,
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     pinterest_rest_api_batch_operation__e operation
     ) {
     items_batch_post_request_t *items_batch_post_request_local_var = malloc(sizeof(items_batch_post_request_t));
     if (!items_batch_post_request_local_var) {
         return NULL;
     }
+    items_batch_post_request_local_var->catalog_id = catalog_id;
     items_batch_post_request_local_var->catalog_type = catalog_type;
     items_batch_post_request_local_var->country = country;
-    items_batch_post_request_local_var->language = language;
     items_batch_post_request_local_var->items = items;
-    items_batch_post_request_local_var->catalog_id = catalog_id;
+    items_batch_post_request_local_var->language = language;
     items_batch_post_request_local_var->operation = operation;
 
     items_batch_post_request_local_var->_library_owned = 1;
@@ -63,19 +63,19 @@ static items_batch_post_request_t *items_batch_post_request_create_internal(
 }
 
 __attribute__((deprecated)) items_batch_post_request_t *items_batch_post_request_create(
+    char *catalog_id,
     pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     list_t *items,
-    char *catalog_id,
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     pinterest_rest_api_batch_operation__e operation
     ) {
     return items_batch_post_request_create_internal (
+        catalog_id,
         catalog_type,
         country,
-        language,
         items,
-        catalog_id,
+        language,
         operation
         );
 }
@@ -89,6 +89,10 @@ void items_batch_post_request_free(items_batch_post_request_t *items_batch_post_
         return ;
     }
     listEntry_t *listEntry;
+    if (items_batch_post_request->catalog_id) {
+        free(items_batch_post_request->catalog_id);
+        items_batch_post_request->catalog_id = NULL;
+    }
     if (items_batch_post_request->items) {
         list_ForEach(listEntry, items_batch_post_request->items) {
             item_delete_batch_record_free(listEntry->data);
@@ -96,15 +100,19 @@ void items_batch_post_request_free(items_batch_post_request_t *items_batch_post_
         list_freeList(items_batch_post_request->items);
         items_batch_post_request->items = NULL;
     }
-    if (items_batch_post_request->catalog_id) {
-        free(items_batch_post_request->catalog_id);
-        items_batch_post_request->catalog_id = NULL;
-    }
     free(items_batch_post_request);
 }
 
 cJSON *items_batch_post_request_convertToJSON(items_batch_post_request_t *items_batch_post_request) {
     cJSON *item = cJSON_CreateObject();
+
+    // items_batch_post_request->catalog_id
+    if(items_batch_post_request->catalog_id) {
+    if(cJSON_AddStringToObject(item, "catalog_id", items_batch_post_request->catalog_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // items_batch_post_request->catalog_type
     if (pinterest_rest_api_items_batch_post_request_CATALOGTYPE_NULL == items_batch_post_request->catalog_type) {
@@ -130,16 +138,6 @@ cJSON *items_batch_post_request_convertToJSON(items_batch_post_request_t *items_
     }
 
 
-    // items_batch_post_request->language
-    if (pinterest_rest_api_items_batch_post_request_LANGUAGE_NULL == items_batch_post_request->language) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "language", items_batch_post_request_language_ToString(items_batch_post_request->language)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
     // items_batch_post_request->items
     if (!items_batch_post_request->items) {
         goto fail;
@@ -161,11 +159,13 @@ cJSON *items_batch_post_request_convertToJSON(items_batch_post_request_t *items_
     }
 
 
-    // items_batch_post_request->catalog_id
-    if(items_batch_post_request->catalog_id) {
-    if(cJSON_AddStringToObject(item, "catalog_id", items_batch_post_request->catalog_id) == NULL) {
-    goto fail; //String
+    // items_batch_post_request->language
+    if (pinterest_rest_api_items_batch_post_request_LANGUAGE_NULL == items_batch_post_request->language) {
+        goto fail;
     }
+    if(cJSON_AddStringToObject(item, "language", items_batch_post_request_language_ToString(items_batch_post_request->language)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -203,6 +203,18 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
     // define the local variable for items_batch_post_request->operation
     pinterest_rest_api_batch_operation__e operation_local_nonprim = 0;
 
+    // items_batch_post_request->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (catalog_id) { 
+    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
+    {
+    goto end; //String
+    }
+    }
+
     // items_batch_post_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "catalog_type");
     if (cJSON_IsNull(catalog_type)) {
@@ -232,23 +244,6 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
     
     country_local_nonprim = country_parseFromJSON(country); //custom
 
-    // items_batch_post_request->language
-    cJSON *language = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "language");
-    if (cJSON_IsNull(language)) {
-        language = NULL;
-    }
-    if (!language) {
-        goto end;
-    }
-
-    pinterest_rest_api_items_batch_post_request_LANGUAGE_e languageVariable;
-    
-    if(!cJSON_IsString(language))
-    {
-    goto end; //Enum
-    }
-    languageVariable = items_batch_post_request_language_FromString(language->valuestring);
-
     // items_batch_post_request->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "items");
     if (cJSON_IsNull(items)) {
@@ -276,17 +271,22 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
         list_addElement(itemsList, itemsItem);
     }
 
-    // items_batch_post_request->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
+    // items_batch_post_request->language
+    cJSON *language = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "language");
+    if (cJSON_IsNull(language)) {
+        language = NULL;
     }
-    if (catalog_id) { 
-    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
+    if (!language) {
+        goto end;
+    }
+
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e languageVariable;
+    
+    if(!cJSON_IsString(language))
     {
-    goto end; //String
+    goto end; //Enum
     }
-    }
+    languageVariable = items_batch_post_request_language_FromString(language->valuestring);
 
     // items_batch_post_request->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "operation");
@@ -302,11 +302,11 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
 
 
     items_batch_post_request_local_var = items_batch_post_request_create_internal (
+        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
         catalog_typeVariable,
         country_local_nonprim,
-        languageVariable,
         itemsList,
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        languageVariable,
         operation_local_nonprim
         );
 

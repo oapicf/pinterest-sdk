@@ -6,35 +6,35 @@
 
 
 static catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_create_internal(
-    double score,
-    int number_of_reviewers,
     double max_score,
-    char *rating_system
+    int number_of_reviewers,
+    char *rating_system,
+    double score
     ) {
     catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_local_var = malloc(sizeof(catalogs_hotel_guest_ratings_t));
     if (!catalogs_hotel_guest_ratings_local_var) {
         return NULL;
     }
-    catalogs_hotel_guest_ratings_local_var->score = score;
-    catalogs_hotel_guest_ratings_local_var->number_of_reviewers = number_of_reviewers;
     catalogs_hotel_guest_ratings_local_var->max_score = max_score;
+    catalogs_hotel_guest_ratings_local_var->number_of_reviewers = number_of_reviewers;
     catalogs_hotel_guest_ratings_local_var->rating_system = rating_system;
+    catalogs_hotel_guest_ratings_local_var->score = score;
 
     catalogs_hotel_guest_ratings_local_var->_library_owned = 1;
     return catalogs_hotel_guest_ratings_local_var;
 }
 
 __attribute__((deprecated)) catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_create(
-    double score,
-    int number_of_reviewers,
     double max_score,
-    char *rating_system
+    int number_of_reviewers,
+    char *rating_system,
+    double score
     ) {
     return catalogs_hotel_guest_ratings_create_internal (
-        score,
-        number_of_reviewers,
         max_score,
-        rating_system
+        number_of_reviewers,
+        rating_system,
+        score
         );
 }
 
@@ -57,9 +57,9 @@ void catalogs_hotel_guest_ratings_free(catalogs_hotel_guest_ratings_t *catalogs_
 cJSON *catalogs_hotel_guest_ratings_convertToJSON(catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_hotel_guest_ratings->score
-    if(catalogs_hotel_guest_ratings->score) {
-    if(cJSON_AddNumberToObject(item, "score", catalogs_hotel_guest_ratings->score) == NULL) {
+    // catalogs_hotel_guest_ratings->max_score
+    if(catalogs_hotel_guest_ratings->max_score) {
+    if(cJSON_AddNumberToObject(item, "max_score", catalogs_hotel_guest_ratings->max_score) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -73,18 +73,18 @@ cJSON *catalogs_hotel_guest_ratings_convertToJSON(catalogs_hotel_guest_ratings_t
     }
 
 
-    // catalogs_hotel_guest_ratings->max_score
-    if(catalogs_hotel_guest_ratings->max_score) {
-    if(cJSON_AddNumberToObject(item, "max_score", catalogs_hotel_guest_ratings->max_score) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
     // catalogs_hotel_guest_ratings->rating_system
     if(catalogs_hotel_guest_ratings->rating_system) {
     if(cJSON_AddStringToObject(item, "rating_system", catalogs_hotel_guest_ratings->rating_system) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // catalogs_hotel_guest_ratings->score
+    if(catalogs_hotel_guest_ratings->score) {
+    if(cJSON_AddNumberToObject(item, "score", catalogs_hotel_guest_ratings->score) == NULL) {
+    goto fail; //Numeric
     }
     }
 
@@ -100,13 +100,13 @@ catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_parseFromJSON(cJSON
 
     catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_local_var = NULL;
 
-    // catalogs_hotel_guest_ratings->score
-    cJSON *score = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_guest_ratingsJSON, "score");
-    if (cJSON_IsNull(score)) {
-        score = NULL;
+    // catalogs_hotel_guest_ratings->max_score
+    cJSON *max_score = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_guest_ratingsJSON, "max_score");
+    if (cJSON_IsNull(max_score)) {
+        max_score = NULL;
     }
-    if (score) { 
-    if(!cJSON_IsNumber(score))
+    if (max_score) { 
+    if(!cJSON_IsNumber(max_score))
     {
     goto end; //Numeric
     }
@@ -124,18 +124,6 @@ catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_parseFromJSON(cJSON
     }
     }
 
-    // catalogs_hotel_guest_ratings->max_score
-    cJSON *max_score = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_guest_ratingsJSON, "max_score");
-    if (cJSON_IsNull(max_score)) {
-        max_score = NULL;
-    }
-    if (max_score) { 
-    if(!cJSON_IsNumber(max_score))
-    {
-    goto end; //Numeric
-    }
-    }
-
     // catalogs_hotel_guest_ratings->rating_system
     cJSON *rating_system = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_guest_ratingsJSON, "rating_system");
     if (cJSON_IsNull(rating_system)) {
@@ -148,12 +136,24 @@ catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_parseFromJSON(cJSON
     }
     }
 
+    // catalogs_hotel_guest_ratings->score
+    cJSON *score = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_guest_ratingsJSON, "score");
+    if (cJSON_IsNull(score)) {
+        score = NULL;
+    }
+    if (score) { 
+    if(!cJSON_IsNumber(score))
+    {
+    goto end; //Numeric
+    }
+    }
+
 
     catalogs_hotel_guest_ratings_local_var = catalogs_hotel_guest_ratings_create_internal (
-        score ? score->valuedouble : 0,
-        number_of_reviewers ? number_of_reviewers->valuedouble : 0,
         max_score ? max_score->valuedouble : 0,
-        rating_system && !cJSON_IsNull(rating_system) ? strdup(rating_system->valuestring) : NULL
+        number_of_reviewers ? number_of_reviewers->valuedouble : 0,
+        rating_system && !cJSON_IsNull(rating_system) ? strdup(rating_system->valuestring) : NULL,
+        score ? score->valuedouble : 0
         );
 
     return catalogs_hotel_guest_ratings_local_var;

@@ -2,39 +2,6 @@
 Protected Class PinCreate
 
 	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		created_at As Date
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		link As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		title As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Dominant pin color. Hex number, e.g. "#6E7874".
-		#tag EndNote
-		dominant_color As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		alt_text As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -56,12 +23,20 @@ Protected Class PinCreate
 
 
 	#tag Property, Flags = &h0
-		board_owner As OpenAPIClient.Models.BoardOwner
+		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		media As OpenAPIClient.Models.PinMedia
+		#tag Note
+			Dominant pin color. Hex number, e.g. `#6E7874`.
+		#tag EndNote
+		dominant_color As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -72,7 +47,7 @@ Protected Class PinCreate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The source pin id if this pin was saved from another pin. <a href="https://help.pinterest.com/article/save-pins-on-pinterest">Learn more</a>.
+			The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
 		#tag EndNote
 		parent_pin_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -80,9 +55,14 @@ Protected Class PinCreate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Private note for this Pin. <a href="https://help.pinterest.com/en/article/add-notes-to-your-pins">Learn more</a>.
+			The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
 		#tag EndNote
-		note As Xoson.O.OptionalString
+		sponsor_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		title As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -123,54 +103,6 @@ Protected Class PinCreate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_at"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="link"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="title"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="description"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="dominant_color"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="alt_text"
 			Visible=false
 			Group="Behavior"
@@ -195,19 +127,27 @@ Protected Class PinCreate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="board_owner"
+			Name="description"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BoardOwner"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="media"
+			Name="dominant_color"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="PinMedia"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="link"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -227,7 +167,15 @@ Protected Class PinCreate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="note"
+			Name="sponsor_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="title"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

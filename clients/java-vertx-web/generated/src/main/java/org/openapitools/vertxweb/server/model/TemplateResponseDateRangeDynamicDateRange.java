@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TemplateResponseDateRangeDynamicDateRange   {
   
-  private String type;
 
 
   public enum RangeEnum {
     YEAR_TO_DATE("YEAR_TO_DATE"),
     QUARTER_TO_DATE("QUARTER_TO_DATE"),
     MONTH_TO_DATE("MONTH_TO_DATE"),
-    LAST_MONTH("LAST_MONTH");
+    LAST_MONTH("LAST_MONTH"),
+    LAST_QUARTER("LAST_QUARTER");
 
     private String value;
 
@@ -34,22 +34,14 @@ public class TemplateResponseDateRangeDynamicDateRange   {
   }
 
   private RangeEnum range;
+  private String type;
 
   public TemplateResponseDateRangeDynamicDateRange () {
 
   }
 
-  public TemplateResponseDateRangeDynamicDateRange (String type, RangeEnum range) {
-    this.type = type;
+  public TemplateResponseDateRangeDynamicDateRange (RangeEnum range, String type) {
     this.range = range;
-  }
-
-    
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
     this.type = type;
   }
 
@@ -62,6 +54,15 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     this.range = range;
   }
 
+    
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -72,13 +73,13 @@ public class TemplateResponseDateRangeDynamicDateRange   {
       return false;
     }
     TemplateResponseDateRangeDynamicDateRange templateResponseDateRangeDynamicDateRange = (TemplateResponseDateRangeDynamicDateRange) o;
-    return Objects.equals(type, templateResponseDateRangeDynamicDateRange.type) &&
-        Objects.equals(range, templateResponseDateRangeDynamicDateRange.range);
+    return Objects.equals(range, templateResponseDateRangeDynamicDateRange.range) &&
+        Objects.equals(type, templateResponseDateRangeDynamicDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, range);
+    return Objects.hash(range, type);
   }
 
   @Override
@@ -86,8 +87,8 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeDynamicDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

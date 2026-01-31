@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.UserSummary;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FollowersList200Response   {
   
-  private List<UserSummary> items = new ArrayList<>();
   private String bookmark;
+  private List<UserSummary> items = new ArrayList<>();
 
   public FollowersList200Response () {
 
   }
 
-  public FollowersList200Response (List<UserSummary> items, String bookmark) {
-    this.items = items;
+  public FollowersList200Response (String bookmark, List<UserSummary> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<UserSummary> getItems() {
-    return items;
-  }
-  public void setItems(List<UserSummary> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class FollowersList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<UserSummary> getItems() {
+    return items;
+  }
+  public void setItems(List<UserSummary> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class FollowersList200Response   {
       return false;
     }
     FollowersList200Response followersList200Response = (FollowersList200Response) o;
-    return Objects.equals(items, followersList200Response.items) &&
-        Objects.equals(bookmark, followersList200Response.bookmark);
+    return Objects.equals(bookmark, followersList200Response.bookmark) &&
+        Objects.equals(items, followersList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class FollowersList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FollowersList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

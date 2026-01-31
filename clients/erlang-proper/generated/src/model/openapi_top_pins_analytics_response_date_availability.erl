@@ -9,8 +9,8 @@
 -export_type([openapi_top_pins_analytics_response_date_availability/0]).
 
 -type openapi_top_pins_analytics_response_date_availability() ::
-  [ {'latest_available_timestamp', integer() }
-  | {'is_realtime', boolean() }
+  [ {'is_realtime', boolean() }
+  | {'latest_available_timestamp', integer() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_top_pins_analytics_response_date_availability() ->
     openapi_top_pins_analytics_response_date_availability([]).
 
 openapi_top_pins_analytics_response_date_availability(Fields) ->
-  Default = [ {'latest_available_timestamp', integer() }
-            , {'is_realtime', boolean() }
+  Default = [ {'is_realtime', boolean() }
+            , {'latest_available_timestamp', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

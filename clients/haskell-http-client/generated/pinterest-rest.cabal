@@ -8,7 +8,7 @@ description:    .
                 .
                 base path: https://api.pinterest.com/v5
                 .
-                Pinterest REST API API version: 5.14.0
+                Pinterest REST API API version: 5.23.0
                 .
                 OpenAPI version: 3.0.3
                 .
@@ -80,20 +80,32 @@ library
       PinterestREST.API.BusinessAccessInvite
       PinterestREST.API.BusinessAccessRelationships
       PinterestREST.API.Campaigns
+      PinterestREST.API.CatalogFeeds
+      PinterestREST.API.CatalogItems
+      PinterestREST.API.CatalogProductGroups
+      PinterestREST.API.CatalogReports
       PinterestREST.API.Catalogs
+      PinterestREST.API.ConversionEqs
       PinterestREST.API.ConversionEvents
       PinterestREST.API.ConversionTags
+      PinterestREST.API.Conversions
+      PinterestREST.API.CustomerListUploads
       PinterestREST.API.CustomerLists
       PinterestREST.API.Integrations
       PinterestREST.API.Keywords
+      PinterestREST.API.Labels
       PinterestREST.API.LeadAds
       PinterestREST.API.LeadForms
       PinterestREST.API.LeadsExport
       PinterestREST.API.Media
+      PinterestREST.API.MsotEvents
+      PinterestREST.API.Notification
       PinterestREST.API.Oauth
       PinterestREST.API.OrderLines
       PinterestREST.API.Pins
+      PinterestREST.API.ProductCategories
       PinterestREST.API.ProductGroupPromotions
+      PinterestREST.API.Promotions
       PinterestREST.API.Resources
       PinterestREST.API.Search
       PinterestREST.API.TargetingTemplate

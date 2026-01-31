@@ -30,24 +30,44 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
+
+  private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
-  private String name;
-
   private CatalogsFormat format;
 
-  private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
-
   private String location;
+
+  private String name;
 
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
   private CatalogsStatus status;
+
+  public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = JsonNullable.of(credentials);
+    return this;
+  }
+
+  /**
+   * Get credentials
+   * @return credentials
+   */
+  @Valid 
+  @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("credentials")
+  public JsonNullable<CatalogsFeedCredentials> getCredentials() {
+    return credentials;
+  }
+
+  public void setCredentials(JsonNullable<CatalogsFeedCredentials> credentials) {
+    this.credentials = credentials;
+  }
 
   public CatalogsFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = JsonNullable.of(defaultAvailability);
@@ -89,26 +109,6 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-   */
-  
-  @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public CatalogsFeedsUpdateRequest format(CatalogsFormat format) {
     this.format = format;
     return this;
@@ -129,26 +129,6 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
     this.format = format;
   }
 
-  public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = JsonNullable.of(credentials);
-    return this;
-  }
-
-  /**
-   * Get credentials
-   * @return credentials
-   */
-  @Valid 
-  @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("credentials")
-  public JsonNullable<CatalogsFeedCredentials> getCredentials() {
-    return credentials;
-  }
-
-  public void setCredentials(JsonNullable<CatalogsFeedCredentials> credentials) {
-    this.credentials = credentials;
-  }
-
   public CatalogsFeedsUpdateRequest location(String location) {
     this.location = location;
     return this;
@@ -167,6 +147,26 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public CatalogsFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+   */
+  
+  @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsFeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -218,12 +218,12 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
       return false;
     }
     CatalogsFeedsUpdateRequest catalogsFeedsUpdateRequest = (CatalogsFeedsUpdateRequest) o;
-    return equalsNullable(this.defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
+    return equalsNullable(this.credentials, catalogsFeedsUpdateRequest.credentials) &&
+        equalsNullable(this.defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
         equalsNullable(this.defaultCurrency, catalogsFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(this.format, catalogsFeedsUpdateRequest.format) &&
-        equalsNullable(this.credentials, catalogsFeedsUpdateRequest.credentials) &&
         Objects.equals(this.location, catalogsFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsFeedsUpdateRequest.name) &&
         equalsNullable(this.preferredProcessingSchedule, catalogsFeedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.status, catalogsFeedsUpdateRequest.status);
   }
@@ -234,7 +234,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(defaultAvailability), hashCodeNullable(defaultCurrency), name, format, hashCodeNullable(credentials), location, hashCodeNullable(preferredProcessingSchedule), status);
+    return Objects.hash(hashCodeNullable(credentials), hashCodeNullable(defaultAvailability), hashCodeNullable(defaultCurrency), format, location, name, hashCodeNullable(preferredProcessingSchedule), status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,12 +248,12 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedsUpdateRequest {\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

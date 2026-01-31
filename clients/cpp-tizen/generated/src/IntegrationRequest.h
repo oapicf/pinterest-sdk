@@ -45,20 +45,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get External business ID for the integration.
-	 */
-	std::string getExternalBusinessId();
-
-	/*! \brief Set External business ID for the integration.
-	 */
-	void setExternalBusinessId(std::string  external_business_id);
 	/*! \brief Get 
 	 */
-	std::string getConnectedMerchantId();
+	std::string getAdditionalId1();
 
 	/*! \brief Set 
 	 */
-	void setConnectedMerchantId(std::string  connected_merchant_id);
+	void setAdditionalId1(std::string  additional_id_1);
 	/*! \brief Get 
 	 */
 	std::string getConnectedAdvertiserId();
@@ -75,11 +68,25 @@ public:
 	void setConnectedLbaId(std::string  connected_lba_id);
 	/*! \brief Get 
 	 */
+	std::string getConnectedMerchantId();
+
+	/*! \brief Set 
+	 */
+	void setConnectedMerchantId(std::string  connected_merchant_id);
+	/*! \brief Get 
+	 */
 	std::string getConnectedTagId();
 
 	/*! \brief Set 
 	 */
 	void setConnectedTagId(std::string  connected_tag_id);
+	/*! \brief Get External business ID for the integration.
+	 */
+	std::string getExternalBusinessId();
+
+	/*! \brief Set External business ID for the integration.
+	 */
+	void setExternalBusinessId(std::string  external_business_id);
 	/*! \brief Get 
 	 */
 	std::string getPartnerAccessToken();
@@ -89,11 +96,18 @@ public:
 	void setPartnerAccessToken(std::string  partner_access_token);
 	/*! \brief Get 
 	 */
-	std::string getPartnerRefreshToken();
+	int getPartnerAccessTokenExpiry();
 
 	/*! \brief Set 
 	 */
-	void setPartnerRefreshToken(std::string  partner_refresh_token);
+	void setPartnerAccessTokenExpiry(int  partner_access_token_expiry);
+	/*! \brief Get 
+	 */
+	std::string getPartnerMetadata();
+
+	/*! \brief Set 
+	 */
+	void setPartnerMetadata(std::string  partner_metadata);
 	/*! \brief Get 
 	 */
 	std::string getPartnerPrimaryEmail();
@@ -103,11 +117,11 @@ public:
 	void setPartnerPrimaryEmail(std::string  partner_primary_email);
 	/*! \brief Get 
 	 */
-	int getPartnerAccessTokenExpiry();
+	std::string getPartnerRefreshToken();
 
 	/*! \brief Set 
 	 */
-	void setPartnerAccessTokenExpiry(int  partner_access_token_expiry);
+	void setPartnerRefreshToken(std::string  partner_refresh_token);
 	/*! \brief Get 
 	 */
 	int getPartnerRefreshTokenExpiry();
@@ -122,35 +136,21 @@ public:
 	/*! \brief Set 
 	 */
 	void setScopes(std::string  scopes);
-	/*! \brief Get 
-	 */
-	std::string getAdditionalId1();
-
-	/*! \brief Set 
-	 */
-	void setAdditionalId1(std::string  additional_id_1);
-	/*! \brief Get 
-	 */
-	std::string getPartnerMetadata();
-
-	/*! \brief Set 
-	 */
-	void setPartnerMetadata(std::string  partner_metadata);
 
 private:
-	std::string external_business_id;
-	std::string connected_merchant_id;
+	std::string additional_id_1;
 	std::string connected_advertiser_id;
 	std::string connected_lba_id;
+	std::string connected_merchant_id;
 	std::string connected_tag_id;
+	std::string external_business_id;
 	std::string partner_access_token;
-	std::string partner_refresh_token;
-	std::string partner_primary_email;
 	int partner_access_token_expiry;
+	std::string partner_metadata;
+	std::string partner_primary_email;
+	std::string partner_refresh_token;
 	int partner_refresh_token_expiry;
 	std::string scopes;
-	std::string additional_id_1;
-	std::string partner_metadata;
 	void __init();
 	void __cleanup();
 

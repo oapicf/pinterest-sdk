@@ -20,6 +20,8 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdCommon
 import org.openapitools.client.models.CreativeType
+import org.openapitools.client.models.CustomizableCTAType
+import org.openapitools.client.models.DisclosureType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 import org.openapitools.client.models.QuizPinData
@@ -72,10 +74,34 @@ class AdCommonTest : ShouldSpec() {
             //modelInstance.creativeType shouldBe ("TODO")
         }
 
+        // to test the property `customizableCtaType`
+        should("test customizableCtaType") {
+            // uncomment below to test the property
+            //modelInstance.customizableCtaType shouldBe ("TODO")
+        }
+
         // to test the property `destinationUrl` - Destination URL.
         should("test destinationUrl") {
             // uncomment below to test the property
             //modelInstance.destinationUrl shouldBe ("TODO")
+        }
+
+        // to test the property `disclosureType`
+        should("test disclosureType") {
+            // uncomment below to test the property
+            //modelInstance.disclosureType shouldBe ("TODO")
+        }
+
+        // to test the property `disclosureUrl` - URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+        should("test disclosureUrl") {
+            // uncomment below to test the property
+            //modelInstance.disclosureUrl shouldBe ("TODO")
+        }
+
+        // to test the property `gridClickType`
+        should("test gridClickType") {
+            // uncomment below to test the property
+            //modelInstance.gridClickType shouldBe ("TODO")
         }
 
         // to test the property `iosDeepLink` - Deep link URL for iOS devices.
@@ -96,10 +122,22 @@ class AdCommonTest : ShouldSpec() {
             //modelInstance.isRemovable shouldBe ("TODO")
         }
 
+        // to test the property `leadFormId` - Lead form ID for lead ad generation.
+        should("test leadFormId") {
+            // uncomment below to test the property
+            //modelInstance.leadFormId shouldBe ("TODO")
+        }
+
         // to test the property `name` - Name of the ad - 255 chars max.
         should("test name") {
             // uncomment below to test the property
             //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `quizPinData` - Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+        should("test quizPinData") {
+            // uncomment below to test the property
+            //modelInstance.quizPinData shouldBe ("TODO")
         }
 
         // to test the property `status`
@@ -118,30 +156,6 @@ class AdCommonTest : ShouldSpec() {
         should("test viewTrackingUrl") {
             // uncomment below to test the property
             //modelInstance.viewTrackingUrl shouldBe ("TODO")
-        }
-
-        // to test the property `leadFormId` - Lead form ID for lead ad generation.
-        should("test leadFormId") {
-            // uncomment below to test the property
-            //modelInstance.leadFormId shouldBe ("TODO")
-        }
-
-        // to test the property `gridClickType`
-        should("test gridClickType") {
-            // uncomment below to test the property
-            //modelInstance.gridClickType shouldBe ("TODO")
-        }
-
-        // to test the property `customizableCtaType` - Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-        should("test customizableCtaType") {
-            // uncomment below to test the property
-            //modelInstance.customizableCtaType shouldBe ("TODO")
-        }
-
-        // to test the property `quizPinData` - Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-        should("test quizPinData") {
-            // uncomment below to test the property
-            //modelInstance.quizPinData shouldBe ("TODO")
         }
 
     }

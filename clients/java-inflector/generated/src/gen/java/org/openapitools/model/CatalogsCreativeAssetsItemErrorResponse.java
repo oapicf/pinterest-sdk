@@ -19,7 +19,7 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing a creative assets item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -28,7 +28,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
   private String creativeAssetsId;
 
   @JsonProperty("errors")
-  private List<ItemValidationEvent> errors = null;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
 
   /**
    **/
@@ -74,7 +74,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
   }
 
   
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
   @JsonProperty("errors")
   public List<ItemValidationEvent> getErrors() {
     return errors;

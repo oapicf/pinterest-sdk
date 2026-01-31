@@ -3,17 +3,17 @@ Protected Class CreateAssetAccessRequestBodyAssetRequestsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Unique identifier of a business partner to request asset access to.
+			An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
 		#tag EndNote
-		partner_id As String
+		asset_id_to_permissions As Dictionary
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+			Unique identifier of a business partner to request asset access to.
 		#tag EndNote
-		asset_id_to_permissions As Dictionary
+		partner_id As String
 	#tag EndProperty
 
 
@@ -54,19 +54,19 @@ Protected Class CreateAssetAccessRequestBodyAssetRequestsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="partner_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="asset_id_to_permissions"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Dictionary"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="partner_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

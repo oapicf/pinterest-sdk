@@ -59,20 +59,6 @@ public:
 	/*! \brief Set Standard HTTPS webhook URL.
 	 */
 	void setWebhookUrl(std::string  webhook_url);
-	/*! \brief Get Subscription ID.
-	 */
-	std::string getId();
-
-	/*! \brief Set Subscription ID.
-	 */
-	void setId(std::string  id);
-	/*! \brief Get User account used to subscribe lead data.
-	 */
-	std::string getUserAccountId();
-
-	/*! \brief Set User account used to subscribe lead data.
-	 */
-	void setUserAccountId(std::string  user_account_id);
 	/*! \brief Get The Ad Account ID that this lead form belongs to.
 	 */
 	std::string getAdAccountId();
@@ -87,13 +73,13 @@ public:
 	/*! \brief Set API version.
 	 */
 	void setApiVersion(std::string  api_version);
-	/*! \brief Get Base64 encoded key for client to decrypt lead data.
+	/*! \brief Get Lead subscription creation time. Unix timestamp in milliseconds.
 	 */
-	std::string getCryptographicKey();
+	int getCreatedTime();
 
-	/*! \brief Set Base64 encoded key for client to decrypt lead data.
+	/*! \brief Set Lead subscription creation time. Unix timestamp in milliseconds.
 	 */
-	void setCryptographicKey(std::string  cryptographic_key);
+	void setCreatedTime(int  created_time);
 	/*! \brief Get Lead data encryption algorithm.
 	 */
 	std::string getCryptographicAlgorithm();
@@ -101,24 +87,38 @@ public:
 	/*! \brief Set Lead data encryption algorithm.
 	 */
 	void setCryptographicAlgorithm(std::string  cryptographic_algorithm);
-	/*! \brief Get Lead form creation time. Unix timestamp in milliseconds.
+	/*! \brief Get Base64 encoded key for client to decrypt lead data.
 	 */
-	int getCreatedTime();
+	std::string getCryptographicKey();
 
-	/*! \brief Set Lead form creation time. Unix timestamp in milliseconds.
+	/*! \brief Set Base64 encoded key for client to decrypt lead data.
 	 */
-	void setCreatedTime(int  created_time);
+	void setCryptographicKey(std::string  cryptographic_key);
+	/*! \brief Get Subscription ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set Subscription ID.
+	 */
+	void setId(std::string  id);
+	/*! \brief Get User account used to subscribe lead data.
+	 */
+	std::string getUserAccountId();
+
+	/*! \brief Set User account used to subscribe lead data.
+	 */
+	void setUserAccountId(std::string  user_account_id);
 
 private:
 	std::string lead_form_id;
 	std::string webhook_url;
-	std::string id;
-	std::string user_account_id;
 	std::string ad_account_id;
 	std::string api_version;
-	std::string cryptographic_key;
-	std::string cryptographic_algorithm;
 	int created_time;
+	std::string cryptographic_algorithm;
+	std::string cryptographic_key;
+	std::string id;
+	std::string user_account_id;
 	void __init();
 	void __cleanup();
 

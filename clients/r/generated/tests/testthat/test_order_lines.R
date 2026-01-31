@@ -5,6 +5,30 @@ context("Test OrderLines")
 
 model_instance <- OrderLines$new()
 
+test_that("ad_account_id", {
+  # tests for the property `ad_account_id` (character)
+  # Ad account ID.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
+})
+
+test_that("budget", {
+  # tests for the property `budget` (numeric)
+  # Order line budget in micro currency.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`budget`, "EXPECTED_RESULT")
+})
+
+test_that("end_time", {
+  # tests for the property `end_time` (numeric)
+  # End time. Unix timestamp.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`end_time`, "EXPECTED_RESULT")
+})
+
 test_that("id", {
   # tests for the property `id` (character)
   # Order line ID.
@@ -13,20 +37,28 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("type", {
-  # tests for the property `type` (character)
-  # Always \&quot;orderline\&quot;.
+test_that("name", {
+  # tests for the property `name` (character)
+  # Order line name.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("ad_account_id", {
-  # tests for the property `ad_account_id` (character)
-  # Ad account ID.
+test_that("paid_budget", {
+  # tests for the property `paid_budget` (numeric)
+  # Order line paid budget in micro currency.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`paid_budget`, "EXPECTED_RESULT")
+})
+
+test_that("paid_type", {
+  # tests for the property `paid_type` (OrderLinePaidType)
+  # Order line paid type.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`paid_type`, "EXPECTED_RESULT")
 })
 
 test_that("purchase_order_id", {
@@ -45,30 +77,6 @@ test_that("start_time", {
   #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
 })
 
-test_that("end_time", {
-  # tests for the property `end_time` (numeric)
-  # End time. Unix timestamp.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`end_time`, "EXPECTED_RESULT")
-})
-
-test_that("budget", {
-  # tests for the property `budget` (numeric)
-  # Order line budget in micro currency.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`budget`, "EXPECTED_RESULT")
-})
-
-test_that("paid_budget", {
-  # tests for the property `paid_budget` (numeric)
-  # Order line paid budget in micro currency.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`paid_budget`, "EXPECTED_RESULT")
-})
-
 test_that("status", {
   # tests for the property `status` (OrderLineStatus)
   # Order line status.
@@ -77,18 +85,10 @@ test_that("status", {
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Order line name.
+test_that("type", {
+  # tests for the property `type` (character)
+  # Always \&quot;orderline\&quot;.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("paid_type", {
-  # tests for the property `paid_type` (OrderLinePaidType)
-  # Order line paid type.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`paid_type`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

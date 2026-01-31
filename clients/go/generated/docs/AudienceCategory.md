@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Interest ID. | [optional] 
+**Index** | Pointer to **float32** | Interest affinity index. | [optional] 
 **Key** | Pointer to **string** | Interest unique key (same as ID). | [optional] 
 **Name** | Pointer to **string** | Interest name. | [optional] 
 **Ratio** | Pointer to **float32** | Interest&#39;s percent of category&#39;s total audience. | [optional] 
-**Index** | Pointer to **float32** | Interest affinity index. | [optional] 
-**Id** | Pointer to **string** | Interest ID. | [optional] 
 **Subcategories** | Pointer to [**[]AudienceSubcategory**](AudienceSubcategory.md) | Subcategory interest distribution | [optional] 
 
 ## Methods
@@ -29,6 +29,56 @@ will change when the set of required properties is changed
 NewAudienceCategoryWithDefaults instantiates a new AudienceCategory object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *AudienceCategory) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AudienceCategory) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AudienceCategory) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *AudienceCategory) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetIndex
+
+`func (o *AudienceCategory) GetIndex() float32`
+
+GetIndex returns the Index field if non-nil, zero value otherwise.
+
+### GetIndexOk
+
+`func (o *AudienceCategory) GetIndexOk() (*float32, bool)`
+
+GetIndexOk returns a tuple with the Index field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIndex
+
+`func (o *AudienceCategory) SetIndex(v float32)`
+
+SetIndex sets Index field to given value.
+
+### HasIndex
+
+`func (o *AudienceCategory) HasIndex() bool`
+
+HasIndex returns a boolean if a field has been set.
 
 ### GetKey
 
@@ -104,56 +154,6 @@ SetRatio sets Ratio field to given value.
 `func (o *AudienceCategory) HasRatio() bool`
 
 HasRatio returns a boolean if a field has been set.
-
-### GetIndex
-
-`func (o *AudienceCategory) GetIndex() float32`
-
-GetIndex returns the Index field if non-nil, zero value otherwise.
-
-### GetIndexOk
-
-`func (o *AudienceCategory) GetIndexOk() (*float32, bool)`
-
-GetIndexOk returns a tuple with the Index field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIndex
-
-`func (o *AudienceCategory) SetIndex(v float32)`
-
-SetIndex sets Index field to given value.
-
-### HasIndex
-
-`func (o *AudienceCategory) HasIndex() bool`
-
-HasIndex returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *AudienceCategory) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AudienceCategory) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AudienceCategory) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *AudienceCategory) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetSubcategories
 

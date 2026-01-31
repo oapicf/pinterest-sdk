@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[ConversionTagResponse]**](ConversionTagResponse.md) |  | [optional] 
+**items** | [**array[ConversionTag]**](ConversionTag.md) |  | [optional] 
 
 

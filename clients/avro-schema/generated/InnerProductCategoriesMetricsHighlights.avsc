@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "InnerProductCategoriesMetricsHighlights",
+  "fields": [
+    {
+      "name": "pct_change_mom",
+      "type": "double",
+      "doc": "Month-over-month percentage change"
+    }
+  ]
+
+}

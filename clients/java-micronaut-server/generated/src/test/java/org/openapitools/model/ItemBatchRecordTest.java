@@ -31,19 +31,19 @@ public class ItemBatchRecordTest {
     }
 
     /**
-     * Test the property 'itemId'
-     */
-    @Test
-    public void itemIdTest() {
-        // TODO: test itemId
-    }
-
-    /**
      * Test the property 'attributes'
      */
     @Test
     public void attributesTest() {
         // TODO: test attributes
+    }
+
+    /**
+     * Test the property 'itemId'
+     */
+    @Test
+    public void itemIdTest() {
+        // TODO: test itemId
     }
 
     /**

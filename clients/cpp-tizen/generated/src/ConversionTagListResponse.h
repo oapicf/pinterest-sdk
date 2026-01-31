@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "ConversionTagResponse.h"
+#include "ConversionTag.h"
 #include <list>
 #include "Object.h"
 
@@ -49,14 +49,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<ConversionTagResponse> getItems();
+	std::list<ConversionTag> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <ConversionTagResponse> items);
+	void setItems(std::list <ConversionTag> items);
 
 private:
-	std::list <ConversionTagResponse>items;
+	std::list <ConversionTag>items;
 	void __init();
 	void __cleanup();
 

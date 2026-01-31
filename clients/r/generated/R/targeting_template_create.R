@@ -7,11 +7,11 @@
 #' @title TargetingTemplateCreate
 #' @description TargetingTemplateCreate Class
 #' @format An \code{R6Class} generator object
-#' @field name Name of targeting template. character
 #' @field auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. character [optional]
-#' @field targeting_attributes  \link{TargetingSpec}
-#' @field placement_group  \link{PlacementGroupType} [optional]
 #' @field keywords  list(\link{TargetingTemplateKeyword}) [optional]
+#' @field name Name of targeting template. character
+#' @field placement_group  \link{PlacementGroupType} [optional]
+#' @field targeting_attributes  \link{TargetingSpec}
 #' @field tracking_urls  \link{TrackingUrls} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -19,11 +19,11 @@
 TargetingTemplateCreate <- R6::R6Class(
   "TargetingTemplateCreate",
   public = list(
-    `name` = NULL,
     `auto_targeting_enabled` = NULL,
-    `targeting_attributes` = NULL,
-    `placement_group` = NULL,
     `keywords` = NULL,
+    `name` = NULL,
+    `placement_group` = NULL,
+    `targeting_attributes` = NULL,
     `tracking_urls` = NULL,
 
     #' @description
@@ -32,11 +32,11 @@ TargetingTemplateCreate <- R6::R6Class(
     #' @param name Name of targeting template.
     #' @param targeting_attributes targeting_attributes
     #' @param auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.. Default to TRUE.
-    #' @param placement_group placement_group
     #' @param keywords keywords
+    #' @param placement_group placement_group
     #' @param tracking_urls tracking_urls
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `targeting_attributes`, `auto_targeting_enabled` = TRUE, `placement_group` = NULL, `keywords` = NULL, `tracking_urls` = NULL, ...) {
+    initialize = function(`name`, `targeting_attributes`, `auto_targeting_enabled` = TRUE, `keywords` = NULL, `placement_group` = NULL, `tracking_urls` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -53,17 +53,17 @@ TargetingTemplateCreate <- R6::R6Class(
         }
         self$`auto_targeting_enabled` <- `auto_targeting_enabled`
       }
+      if (!is.null(`keywords`)) {
+        stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
+        sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
+        self$`keywords` <- `keywords`
+      }
       if (!is.null(`placement_group`)) {
         if (!(`placement_group` %in% c())) {
           stop(paste("Error! \"", `placement_group`, "\" cannot be assigned to `placement_group`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`placement_group`))
         self$`placement_group` <- `placement_group`
-      }
-      if (!is.null(`keywords`)) {
-        stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
-        sapply(`keywords`, function(x) stopifnot(R6::is.R6(x)))
-        self$`keywords` <- `keywords`
       }
       if (!is.null(`tracking_urls`)) {
         stopifnot(R6::is.R6(`tracking_urls`))
@@ -102,25 +102,25 @@ TargetingTemplateCreate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TargetingTemplateCreateObject <- list()
-      if (!is.null(self$`name`)) {
-        TargetingTemplateCreateObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`auto_targeting_enabled`)) {
         TargetingTemplateCreateObject[["auto_targeting_enabled"]] <-
           self$`auto_targeting_enabled`
       }
-      if (!is.null(self$`targeting_attributes`)) {
-        TargetingTemplateCreateObject[["targeting_attributes"]] <-
-          self$`targeting_attributes`$toSimpleType()
+      if (!is.null(self$`keywords`)) {
+        TargetingTemplateCreateObject[["keywords"]] <-
+          lapply(self$`keywords`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`name`)) {
+        TargetingTemplateCreateObject[["name"]] <-
+          self$`name`
       }
       if (!is.null(self$`placement_group`)) {
         TargetingTemplateCreateObject[["placement_group"]] <-
           self$`placement_group`$toSimpleType()
       }
-      if (!is.null(self$`keywords`)) {
-        TargetingTemplateCreateObject[["keywords"]] <-
-          lapply(self$`keywords`, function(x) x$toSimpleType())
+      if (!is.null(self$`targeting_attributes`)) {
+        TargetingTemplateCreateObject[["targeting_attributes"]] <-
+          self$`targeting_attributes`$toSimpleType()
       }
       if (!is.null(self$`tracking_urls`)) {
         TargetingTemplateCreateObject[["tracking_urls"]] <-
@@ -136,24 +136,24 @@ TargetingTemplateCreate <- R6::R6Class(
     #' @return the instance of TargetingTemplateCreate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`auto_targeting_enabled`)) {
         self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
       }
-      if (!is.null(this_object$`targeting_attributes`)) {
-        `targeting_attributes_object` <- TargetingSpec$new()
-        `targeting_attributes_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
-        self$`targeting_attributes` <- `targeting_attributes_object`
+      if (!is.null(this_object$`keywords`)) {
+        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       if (!is.null(this_object$`placement_group`)) {
         `placement_group_object` <- PlacementGroupType$new()
         `placement_group_object`$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
         self$`placement_group` <- `placement_group_object`
       }
-      if (!is.null(this_object$`keywords`)) {
-        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
+      if (!is.null(this_object$`targeting_attributes`)) {
+        `targeting_attributes_object` <- TargetingSpec$new()
+        `targeting_attributes_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
+        self$`targeting_attributes` <- `targeting_attributes_object`
       }
       if (!is.null(this_object$`tracking_urls`)) {
         `tracking_urls_object` <- TrackingUrls$new()
@@ -181,11 +181,11 @@ TargetingTemplateCreate <- R6::R6Class(
     #' @return the instance of TargetingTemplateCreate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
       self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
-      self$`targeting_attributes` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
-      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
+      self$`name` <- this_object$`name`
+      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
+      self$`targeting_attributes` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
       self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self
     },

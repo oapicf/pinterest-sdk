@@ -24,17 +24,14 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param questionType 
  * @param customQuestionFieldType 
  * @param customQuestionLabel Question label for a custom question.
  * @param customQuestionOptions Question options for a custom question.
+ * @param questionType 
  */
 
 
 data class LeadFormQuestion (
-
-    @Json(name = "question_type")
-    val questionType: LeadFormQuestionType? = null,
 
     @Json(name = "custom_question_field_type")
     val customQuestionFieldType: LeadFormQuestionFieldType? = null,
@@ -45,7 +42,10 @@ data class LeadFormQuestion (
 
     /* Question options for a custom question. */
     @Json(name = "custom_question_options")
-    val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null
+    val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null,
+
+    @Json(name = "question_type")
+    val questionType: LeadFormQuestionType? = null
 
 ) {
 

@@ -6,14 +6,14 @@ goog.provide('API.Client.LineItem');
 API.Client.LineItem = function() {}
 
 /**
- * Product brand. For example, \"Parker\".
+ * Product brand. For example, 'Parker'.
  * @type {!string}
  * @export
  */
 API.Client.LineItem.prototype.productBrand;
 
 /**
- * Product category. For example, \"Shoes\".
+ * Product category. For example, 'Shoes'.
  * @type {!string}
  * @export
  */
@@ -27,14 +27,14 @@ API.Client.LineItem.prototype.productCategory;
 API.Client.LineItem.prototype.productId;
 
 /**
- * Product name. For example, \"Parker Boots\".
+ * Product name. For example, 'Parker Boots'.
  * @type {!string}
  * @export
  */
 API.Client.LineItem.prototype.productName;
 
 /**
- * Product price. For example, \"99.99\".
+ * Product price. For example, '99.99'.
  * @type {!string}
  * @export
  */
@@ -48,14 +48,14 @@ API.Client.LineItem.prototype.productPrice;
 API.Client.LineItem.prototype.productQuantity;
 
 /**
- * Product variant. For example, \"Red\".
+ * Product variant. For example, 'Red'.
  * @type {!string}
  * @export
  */
 API.Client.LineItem.prototype.productVariant;
 
 /**
- * Product variant ID. For example, \"1414-34832\".
+ * Product variant ID. For example, '1414-34832'.
  * @type {!string}
  * @export
  */

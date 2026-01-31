@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operator** | **String** |  | 
-**value** | **Number** |  | 
 **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **negated** | **Boolean** |  | [optional] [default to false]
+**operator** | **String** |  | 
+**value** | **Number** |  | 
 
 
 

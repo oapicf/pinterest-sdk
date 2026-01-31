@@ -6,31 +6,31 @@
 
 
 static ads_analytics_create_async_response_t *ads_analytics_create_async_response_create_internal(
+    char *message,
     bulk_reporting_job_status_t *report_status,
-    char *token,
-    char *message
+    char *token
     ) {
     ads_analytics_create_async_response_t *ads_analytics_create_async_response_local_var = malloc(sizeof(ads_analytics_create_async_response_t));
     if (!ads_analytics_create_async_response_local_var) {
         return NULL;
     }
+    ads_analytics_create_async_response_local_var->message = message;
     ads_analytics_create_async_response_local_var->report_status = report_status;
     ads_analytics_create_async_response_local_var->token = token;
-    ads_analytics_create_async_response_local_var->message = message;
 
     ads_analytics_create_async_response_local_var->_library_owned = 1;
     return ads_analytics_create_async_response_local_var;
 }
 
 __attribute__((deprecated)) ads_analytics_create_async_response_t *ads_analytics_create_async_response_create(
+    char *message,
     bulk_reporting_job_status_t *report_status,
-    char *token,
-    char *message
+    char *token
     ) {
     return ads_analytics_create_async_response_create_internal (
+        message,
         report_status,
-        token,
-        message
+        token
         );
 }
 
@@ -43,6 +43,10 @@ void ads_analytics_create_async_response_free(ads_analytics_create_async_respons
         return ;
     }
     listEntry_t *listEntry;
+    if (ads_analytics_create_async_response->message) {
+        free(ads_analytics_create_async_response->message);
+        ads_analytics_create_async_response->message = NULL;
+    }
     if (ads_analytics_create_async_response->report_status) {
         bulk_reporting_job_status_free(ads_analytics_create_async_response->report_status);
         ads_analytics_create_async_response->report_status = NULL;
@@ -51,15 +55,19 @@ void ads_analytics_create_async_response_free(ads_analytics_create_async_respons
         free(ads_analytics_create_async_response->token);
         ads_analytics_create_async_response->token = NULL;
     }
-    if (ads_analytics_create_async_response->message) {
-        free(ads_analytics_create_async_response->message);
-        ads_analytics_create_async_response->message = NULL;
-    }
     free(ads_analytics_create_async_response);
 }
 
 cJSON *ads_analytics_create_async_response_convertToJSON(ads_analytics_create_async_response_t *ads_analytics_create_async_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // ads_analytics_create_async_response->message
+    if(ads_analytics_create_async_response->message) {
+    if(cJSON_AddStringToObject(item, "message", ads_analytics_create_async_response->message) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // ads_analytics_create_async_response->report_status
     if(ads_analytics_create_async_response->report_status) {
@@ -81,14 +89,6 @@ cJSON *ads_analytics_create_async_response_convertToJSON(ads_analytics_create_as
     }
     }
 
-
-    // ads_analytics_create_async_response->message
-    if(ads_analytics_create_async_response->message) {
-    if(cJSON_AddStringToObject(item, "message", ads_analytics_create_async_response->message) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -103,6 +103,18 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
 
     // define the local variable for ads_analytics_create_async_response->report_status
     bulk_reporting_job_status_t *report_status_local_nonprim = NULL;
+
+    // ads_analytics_create_async_response->message
+    cJSON *message = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
+    if (message) { 
+    if(!cJSON_IsString(message) && !cJSON_IsNull(message))
+    {
+    goto end; //String
+    }
+    }
 
     // ads_analytics_create_async_response->report_status
     cJSON *report_status = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "report_status");
@@ -125,23 +137,11 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
     }
     }
 
-    // ads_analytics_create_async_response->message
-    cJSON *message = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "message");
-    if (cJSON_IsNull(message)) {
-        message = NULL;
-    }
-    if (message) { 
-    if(!cJSON_IsString(message) && !cJSON_IsNull(message))
-    {
-    goto end; //String
-    }
-    }
-
 
     ads_analytics_create_async_response_local_var = ads_analytics_create_async_response_create_internal (
+        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
         report_status ? report_status_local_nonprim : NULL,
-        token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
+        token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL
         );
 
     return ads_analytics_create_async_response_local_var;

@@ -7,6 +7,7 @@ import org.openapitools.model.CatalogsFeedIngestionDetails;
 import org.openapitools.model.CatalogsFeedProcessingStatus;
 import org.openapitools.model.CatalogsFeedProductCounts;
 import org.openapitools.model.CatalogsFeedValidationDetails;
+import org.openapitools.model.CatalogsFeedVideoCounts;
 
 @Canonical
 class CatalogsFeedProcessingResult {
@@ -19,9 +20,11 @@ class CatalogsFeedProcessingResult {
     
     CatalogsFeedIngestionDetails ingestionDetails
     
-    CatalogsFeedProcessingStatus status
-    
     CatalogsFeedProductCounts productCounts
     
+    CatalogsFeedProcessingStatus status
+    
     CatalogsFeedValidationDetails validationDetails
+    
+    CatalogsFeedVideoCounts videoCounts
 }

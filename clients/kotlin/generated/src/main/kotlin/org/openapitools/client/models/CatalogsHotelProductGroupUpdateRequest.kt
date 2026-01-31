@@ -24,9 +24,9 @@ import com.squareup.moshi.JsonClass
  * Request object for updating a hotel product group.
  *
  * @param catalogType 
- * @param name 
  * @param description 
  * @param filters 
+ * @param name 
  */
 
 
@@ -35,14 +35,14 @@ data class CatalogsHotelProductGroupUpdateRequest (
     @Json(name = "catalog_type")
     val catalogType: CatalogsHotelProductGroupUpdateRequest.CatalogType? = null,
 
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     @Json(name = "description")
     val description: kotlin.String? = null,
 
     @Json(name = "filters")
-    val filters: CatalogsHotelProductGroupFilters? = null
+    val filters: CatalogsHotelProductGroupFilters? = null,
+
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

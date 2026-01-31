@@ -13,25 +13,25 @@ import org.openapitools.models.Country
 
 /**
  * 
- * @param name 
  * @param description 
- * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
- * @param filters 
  * @param feedUnderscoreid Catalog Feed id pertaining to the catalog product group.
- * @param catalogUnderscoretype 
+ * @param filters 
+ * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
+ * @param name 
  * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
+ * @param catalogUnderscoretype 
  * @param country 
  * @param locale 
  */
-case class MultipleProductGroupsInner(name: String,
-                description: Option[String],
-                isUnderscorefeatured: Option[Boolean],
-                filters: CatalogsCreativeAssetsProductGroupFilters,
+case class MultipleProductGroupsInner(description: Option[String],
                 feedUnderscoreid: String,
-                catalogUnderscoretype: String,
+                filters: CatalogsCreativeAssetsProductGroupFilters,
+                isUnderscorefeatured: Option[Boolean],
+                name: String,
                 catalogUnderscoreid: String,
-                country: Country,
-                locale: CatalogsLocale
+                catalogUnderscoretype: String,
+                country: Option[Country],
+                locale: Option[CatalogsLocale]
                 )
 
 object MultipleProductGroupsInner {

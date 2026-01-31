@@ -21,45 +21,19 @@ import java.util.Map;
  * PinAnalyticsMetricsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinAnalyticsMetricsResponse   {
-  @JsonProperty("lifetime_metrics")
-  
-  private Map<String, Integer> lifetimeMetrics = null;
-
   @JsonProperty("daily_metrics")
   
   private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = null;
 
+  @JsonProperty("lifetime_metrics")
+  
+  private Map<String, Integer> lifetimeMetrics = null;
+
   @JsonProperty("summary_metrics")
   
   private Map<String, BigDecimal> summaryMetrics = null;
-
-  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-    return this;
-  }
-
-  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
-    if (this.lifetimeMetrics == null) {
-      this.lifetimeMetrics = new HashMap<>());
-    }
-    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
-    return this;
-  }
-
-  /**
-   * The lifetime metric name and value.
-   * @return lifetimeMetrics
-   */
-  @ApiModelProperty(example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", value = "The lifetime metric name and value.")
-  public Map<String, Integer> getLifetimeMetrics() {
-    return lifetimeMetrics;
-  }
-
-  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-  }
 
   public PinAnalyticsMetricsResponse dailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
@@ -85,6 +59,32 @@ public class PinAnalyticsMetricsResponse   {
 
   public void setDailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
+  }
+
+  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
+    return this;
+  }
+
+  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
+    if (this.lifetimeMetrics == null) {
+      this.lifetimeMetrics = new HashMap<>());
+    }
+    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
+    return this;
+  }
+
+  /**
+   * The lifetime metric name and value.
+   * @return lifetimeMetrics
+   */
+  @ApiModelProperty(example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", value = "The lifetime metric name and value.")
+  public Map<String, Integer> getLifetimeMetrics() {
+    return lifetimeMetrics;
+  }
+
+  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
   }
 
   public PinAnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
@@ -123,14 +123,14 @@ public class PinAnalyticsMetricsResponse   {
       return false;
     }
     PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = (PinAnalyticsMetricsResponse) o;
-    return Objects.equals(this.lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
-        Objects.equals(this.dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+    return Objects.equals(this.dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(this.lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
         Objects.equals(this.summaryMetrics, pinAnalyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lifetimeMetrics, dailyMetrics, summaryMetrics);
+    return Objects.hash(dailyMetrics, lifetimeMetrics, summaryMetrics);
   }
 
   @Override
@@ -138,8 +138,8 @@ public class PinAnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinAnalyticsMetricsResponse {\n");
     
-    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();

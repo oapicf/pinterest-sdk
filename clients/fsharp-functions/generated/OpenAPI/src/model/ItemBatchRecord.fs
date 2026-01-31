@@ -17,10 +17,10 @@ module ItemBatchRecord =
 
   [<CLIMutable>]
   type ItemBatchRecord = {
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
     [<JsonProperty(PropertyName = "attributes")>]
     Attributes : ItemAttributesRequest;
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
     [<JsonProperty(PropertyName = "update_mask")>]
     UpdateMask : UpdateMaskFieldType[];
   }

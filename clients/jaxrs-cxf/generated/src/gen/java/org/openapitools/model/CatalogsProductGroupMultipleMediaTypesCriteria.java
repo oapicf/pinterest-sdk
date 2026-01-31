@@ -14,15 +14,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupMultipleMediaTypesCriteria  {
   
+  @ApiModelProperty(value = "")
+
+  private Boolean negated = false;
+
   @ApiModelProperty(required = true, value = "")
 
   @Valid
 
   private List<MediaType> values = new ArrayList<>();
+ /**
+   * Get negated
+   * @return negated
+  **/
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
 
-  @ApiModelProperty(value = "")
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
 
-  private Boolean negated = false;
+  public CatalogsProductGroupMultipleMediaTypesCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
  /**
    * Get values
    * @return values
@@ -47,24 +65,6 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria  {
     return this;
   }
 
- /**
-   * Get negated
-   * @return negated
-  **/
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-  public CatalogsProductGroupMultipleMediaTypesCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -74,13 +74,13 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria  {
       return false;
     }
     CatalogsProductGroupMultipleMediaTypesCriteria catalogsProductGroupMultipleMediaTypesCriteria = (CatalogsProductGroupMultipleMediaTypesCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleMediaTypesCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleMediaTypesCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleMediaTypesCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleMediaTypesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -88,8 +88,8 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleMediaTypesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

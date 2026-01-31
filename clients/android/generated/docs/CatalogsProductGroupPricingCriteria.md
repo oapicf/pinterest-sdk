@@ -7,8 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **Boolean** |  |  [optional]
-**values** | [**BigDecimal**](BigDecimal.md) |  | 
 **negated** | **Boolean** |  |  [optional]
+**values** | [**BigDecimal**](BigDecimal.md) |  | 
 
 
 

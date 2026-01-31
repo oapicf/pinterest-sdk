@@ -7,19 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsCreativeAssetsFeedsUpdateRequest, () {
-    // NullableCurrency defaultCurrency
-    test('to test the property `defaultCurrency`', () async {
-      // TODO
-    });
-
-    // A human-friendly name associated to a given feed.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // CatalogsFormat format
-    test('to test the property `format`', () async {
+    // CatalogsType catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 
@@ -28,9 +17,25 @@ void main() {
       // TODO
     });
 
+    // NullableCurrency defaultCurrency
+    test('to test the property `defaultCurrency`', () async {
+      // TODO
+    });
+
+    // CatalogsFormat format
+    test('to test the property `format`', () async {
+      // TODO
+    });
+
     // The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
     // String location
     test('to test the property `location`', () async {
+      // TODO
+    });
+
+    // A human-friendly name associated to a given feed.
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 
@@ -41,11 +46,6 @@ void main() {
 
     // CatalogsStatus status
     test('to test the property `status`', () async {
-      // TODO
-    });
-
-    // CatalogsType catalogType
-    test('to test the property `catalogType`', () async {
       // TODO
     });
 

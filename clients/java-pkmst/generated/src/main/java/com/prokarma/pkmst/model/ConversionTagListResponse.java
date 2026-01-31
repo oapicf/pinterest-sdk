@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.ConversionTagResponse;
+import com.prokarma.pkmst.model.ConversionTag;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ import java.util.List;
  * ConversionTagListResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagListResponse   {
   @JsonProperty("items")
   
-  private List<ConversionTagResponse> items = null;
+  private List<ConversionTag> items = null;
 
-  public ConversionTagListResponse items(List<ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<ConversionTag> items) {
     this.items = items;
     return this;
   }
 
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -42,11 +42,11 @@ public class ConversionTagListResponse   {
    * @return items
    */
   @ApiModelProperty(value = "")
-  public List<ConversionTagResponse> getItems() {
+  public List<ConversionTag> getItems() {
     return items;
   }
 
-  public void setItems(List<ConversionTagResponse> items) {
+  public void setItems(List<ConversionTag> items) {
     this.items = items;
   }
 

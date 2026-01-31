@@ -1,15 +1,15 @@
 
 # PinMediaSourceImageURL
 
-Image URL-based media source
+Image URL-based media source.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
+`isStandard` | boolean
 `sourceType` | string
 `url` | string
-`isStandard` | boolean
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { PinMediaSourceImageURL } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "isStandard": null,
   "sourceType": null,
   "url": null,
-  "isStandard": null,
 } satisfies PinMediaSourceImageURL
 
 console.log(example)

@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ConversionTagListResponse
-import org.openapitools.client.models.ConversionTagResponse
+import org.openapitools.client.models.ConversionTag
 
 class ConversionTagListResponseTest : ShouldSpec() {
     init {

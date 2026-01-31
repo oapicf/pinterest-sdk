@@ -7,12 +7,12 @@ MyApp.add_route('POST', '/v5/media', {
   "nickname" => "media/create",
   "responseClass" => "MediaUpload",
   "endpoint" => "/media",
-  "notes" => "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+  "notes" => "Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.",
   "parameters" => [
     {
       "name" => "body",
-      "description" => "Create a media upload request",
-      "dataType" => "MediaUploadRequest",
+      "description" => "",
+      "dataType" => "MediaUploadCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -27,13 +27,13 @@ MyApp.add_route('GET', '/v5/media/{media_id}', {
   "resourcePath" => "/Media",
   "summary" => "Get media upload details",
   "nickname" => "media/get",
-  "responseClass" => "MediaUploadDetails",
+  "responseClass" => "Media",
   "endpoint" => "/media/{media_id}",
-  "notes" => "Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+  "notes" => "Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.",
   "parameters" => [
     {
       "name" => "media_id",
-      "description" => "Media identifier",
+      "description" => "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -51,7 +51,7 @@ MyApp.add_route('GET', '/v5/media', {
   "nickname" => "media/list",
   "responseClass" => "media_list_200_response",
   "endpoint" => "/media",
-  "notes" => "List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+  "notes" => "List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -62,7 +62,7 @@ MyApp.add_route('GET', '/v5/media', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",

@@ -26,30 +26,90 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "OrderLines", description = "Order Line")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OrderLines {
+
+  private String adAccountId;
+
+  private JsonNullable<BigDecimal> budget = JsonNullable.<BigDecimal>undefined();
+
+  private JsonNullable<BigDecimal> endTime = JsonNullable.<BigDecimal>undefined();
 
   private String id;
 
-  private String type;
+  private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  private String adAccountId;
+  private JsonNullable<BigDecimal> paidBudget = JsonNullable.<BigDecimal>undefined();
+
+  private JsonNullable<OrderLinePaidType> paidType = JsonNullable.<OrderLinePaidType>undefined();
 
   private JsonNullable<String> purchaseOrderId = JsonNullable.<String>undefined();
 
   private BigDecimal startTime;
 
-  private JsonNullable<BigDecimal> endTime = JsonNullable.<BigDecimal>undefined();
-
-  private JsonNullable<BigDecimal> budget = JsonNullable.<BigDecimal>undefined();
-
-  private JsonNullable<BigDecimal> paidBudget = JsonNullable.<BigDecimal>undefined();
-
   private OrderLineStatus status;
 
-  private JsonNullable<String> name = JsonNullable.<String>undefined();
+  private String type;
 
-  private JsonNullable<OrderLinePaidType> paidType = JsonNullable.<OrderLinePaidType>undefined();
+  public OrderLines adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
+  }
+
+  /**
+   * Ad account ID.
+   * @return adAccountId
+   */
+  
+  @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
+
+  public OrderLines budget(BigDecimal budget) {
+    this.budget = JsonNullable.of(budget);
+    return this;
+  }
+
+  /**
+   * Order line budget in micro currency.
+   * @return budget
+   */
+  @Valid 
+  @Schema(name = "budget", example = "5000000", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("budget")
+  public JsonNullable<BigDecimal> getBudget() {
+    return budget;
+  }
+
+  public void setBudget(JsonNullable<BigDecimal> budget) {
+    this.budget = budget;
+  }
+
+  public OrderLines endTime(BigDecimal endTime) {
+    this.endTime = JsonNullable.of(endTime);
+    return this;
+  }
+
+  /**
+   * End time. Unix timestamp.
+   * @return endTime
+   */
+  @Valid 
+  @Schema(name = "end_time", example = "1461269616", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("end_time")
+  public JsonNullable<BigDecimal> getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(JsonNullable<BigDecimal> endTime) {
+    this.endTime = endTime;
+  }
 
   public OrderLines id(String id) {
     this.id = id;
@@ -71,44 +131,64 @@ public class OrderLines {
     this.id = id;
   }
 
-  public OrderLines type(String type) {
-    this.type = type;
+  public OrderLines name(String name) {
+    this.name = JsonNullable.of(name);
     return this;
   }
 
   /**
-   * Always \"orderline\".
-   * @return type
+   * Order line name.
+   * @return name
    */
   
-  @Schema(name = "type", example = "orderline", description = "Always \"orderline\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @Schema(name = "name", example = "Order Line Name 1", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public JsonNullable<String> getName() {
+    return name;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setName(JsonNullable<String> name) {
+    this.name = name;
   }
 
-  public OrderLines adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public OrderLines paidBudget(BigDecimal paidBudget) {
+    this.paidBudget = JsonNullable.of(paidBudget);
     return this;
   }
 
   /**
-   * Ad account ID.
-   * @return adAccountId
+   * Order line paid budget in micro currency.
+   * @return paidBudget
    */
-  
-  @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @Valid 
+  @Schema(name = "paid_budget", example = "5000000", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("paid_budget")
+  public JsonNullable<BigDecimal> getPaidBudget() {
+    return paidBudget;
   }
 
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setPaidBudget(JsonNullable<BigDecimal> paidBudget) {
+    this.paidBudget = paidBudget;
+  }
+
+  public OrderLines paidType(OrderLinePaidType paidType) {
+    this.paidType = JsonNullable.of(paidType);
+    return this;
+  }
+
+  /**
+   * Order line paid type.
+   * @return paidType
+   */
+  @Valid 
+  @Schema(name = "paid_type", description = "Order line paid type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("paid_type")
+  public JsonNullable<OrderLinePaidType> getPaidType() {
+    return paidType;
+  }
+
+  public void setPaidType(JsonNullable<OrderLinePaidType> paidType) {
+    this.paidType = paidType;
   }
 
   public OrderLines purchaseOrderId(String purchaseOrderId) {
@@ -151,66 +231,6 @@ public class OrderLines {
     this.startTime = startTime;
   }
 
-  public OrderLines endTime(BigDecimal endTime) {
-    this.endTime = JsonNullable.of(endTime);
-    return this;
-  }
-
-  /**
-   * End time. Unix timestamp.
-   * @return endTime
-   */
-  @Valid 
-  @Schema(name = "end_time", example = "1461269616", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("end_time")
-  public JsonNullable<BigDecimal> getEndTime() {
-    return endTime;
-  }
-
-  public void setEndTime(JsonNullable<BigDecimal> endTime) {
-    this.endTime = endTime;
-  }
-
-  public OrderLines budget(BigDecimal budget) {
-    this.budget = JsonNullable.of(budget);
-    return this;
-  }
-
-  /**
-   * Order line budget in micro currency.
-   * @return budget
-   */
-  @Valid 
-  @Schema(name = "budget", example = "5000000", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("budget")
-  public JsonNullable<BigDecimal> getBudget() {
-    return budget;
-  }
-
-  public void setBudget(JsonNullable<BigDecimal> budget) {
-    this.budget = budget;
-  }
-
-  public OrderLines paidBudget(BigDecimal paidBudget) {
-    this.paidBudget = JsonNullable.of(paidBudget);
-    return this;
-  }
-
-  /**
-   * Order line paid budget in micro currency.
-   * @return paidBudget
-   */
-  @Valid 
-  @Schema(name = "paid_budget", example = "5000000", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("paid_budget")
-  public JsonNullable<BigDecimal> getPaidBudget() {
-    return paidBudget;
-  }
-
-  public void setPaidBudget(JsonNullable<BigDecimal> paidBudget) {
-    this.paidBudget = paidBudget;
-  }
-
   public OrderLines status(OrderLineStatus status) {
     this.status = status;
     return this;
@@ -231,44 +251,24 @@ public class OrderLines {
     this.status = status;
   }
 
-  public OrderLines name(String name) {
-    this.name = JsonNullable.of(name);
+  public OrderLines type(String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Order line name.
-   * @return name
+   * Always \"orderline\".
+   * @return type
    */
   
-  @Schema(name = "name", example = "Order Line Name 1", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public JsonNullable<String> getName() {
-    return name;
+  @Schema(name = "type", example = "orderline", description = "Always \"orderline\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
 
-  public void setName(JsonNullable<String> name) {
-    this.name = name;
-  }
-
-  public OrderLines paidType(OrderLinePaidType paidType) {
-    this.paidType = JsonNullable.of(paidType);
-    return this;
-  }
-
-  /**
-   * Order line paid type.
-   * @return paidType
-   */
-  @Valid 
-  @Schema(name = "paid_type", description = "Order line paid type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("paid_type")
-  public JsonNullable<OrderLinePaidType> getPaidType() {
-    return paidType;
-  }
-
-  public void setPaidType(JsonNullable<OrderLinePaidType> paidType) {
-    this.paidType = paidType;
+  public void setType(String type) {
+    this.type = type;
   }
 
   @Override
@@ -280,17 +280,17 @@ public class OrderLines {
       return false;
     }
     OrderLines orderLines = (OrderLines) o;
-    return Objects.equals(this.id, orderLines.id) &&
-        Objects.equals(this.type, orderLines.type) &&
-        Objects.equals(this.adAccountId, orderLines.adAccountId) &&
+    return Objects.equals(this.adAccountId, orderLines.adAccountId) &&
+        equalsNullable(this.budget, orderLines.budget) &&
+        equalsNullable(this.endTime, orderLines.endTime) &&
+        Objects.equals(this.id, orderLines.id) &&
+        equalsNullable(this.name, orderLines.name) &&
+        equalsNullable(this.paidBudget, orderLines.paidBudget) &&
+        equalsNullable(this.paidType, orderLines.paidType) &&
         equalsNullable(this.purchaseOrderId, orderLines.purchaseOrderId) &&
         Objects.equals(this.startTime, orderLines.startTime) &&
-        equalsNullable(this.endTime, orderLines.endTime) &&
-        equalsNullable(this.budget, orderLines.budget) &&
-        equalsNullable(this.paidBudget, orderLines.paidBudget) &&
         Objects.equals(this.status, orderLines.status) &&
-        equalsNullable(this.name, orderLines.name) &&
-        equalsNullable(this.paidType, orderLines.paidType);
+        Objects.equals(this.type, orderLines.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -299,7 +299,7 @@ public class OrderLines {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, adAccountId, hashCodeNullable(purchaseOrderId), startTime, hashCodeNullable(endTime), hashCodeNullable(budget), hashCodeNullable(paidBudget), status, hashCodeNullable(name), hashCodeNullable(paidType));
+    return Objects.hash(adAccountId, hashCodeNullable(budget), hashCodeNullable(endTime), id, hashCodeNullable(name), hashCodeNullable(paidBudget), hashCodeNullable(paidType), hashCodeNullable(purchaseOrderId), startTime, status, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -313,17 +313,17 @@ public class OrderLines {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLines {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    paidBudget: ").append(toIndentedString(paidBudget)).append("\n");
+    sb.append("    paidType: ").append(toIndentedString(paidType)).append("\n");
     sb.append("    purchaseOrderId: ").append(toIndentedString(purchaseOrderId)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    paidBudget: ").append(toIndentedString(paidBudget)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    paidType: ").append(toIndentedString(paidType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -18,13 +18,9 @@ export interface CreateMMMReportRequest {
      */
     countries?: Array<TargetingAdvertiserCountry>;
     /**
-     * Name of the Marketing Mix Modeling (MMM) report
+     * Metric and entity columns
      */
-    report_name: string;
-    /**
-     * Metric report start date (UTC). Format: YYYY-MM-DD
-     */
-    start_date: string;
+    columns: Array<MMMReportingColumn>;
     /**
      * Metric report end date (UTC). Format: YYYY-MM-DD
      */
@@ -38,13 +34,17 @@ export interface CreateMMMReportRequest {
      */
     level: CreateMMMReportRequest.LevelEnum;
     /**
+     * Name of the Marketing Mix Modeling (MMM) report
+     */
+    report_name: string;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD
+     */
+    start_date: string;
+    /**
      * List of targeting types
      */
     targeting_types: Array<MMMReportingTargetingType>;
-    /**
-     * Metric and entity columns
-     */
-    columns: Array<MMMReportingColumn>;
 }
 export namespace CreateMMMReportRequest {
     export const GranularityEnum = {

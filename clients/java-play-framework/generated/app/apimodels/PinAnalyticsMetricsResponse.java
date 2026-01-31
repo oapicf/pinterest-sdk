@@ -16,47 +16,22 @@ import javax.validation.Valid;
 /**
  * PinAnalyticsMetricsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinAnalyticsMetricsResponse   {
-  @JsonProperty("lifetime_metrics")
-  
-  private Map<String, Integer> lifetimeMetrics = null;
-
   @JsonProperty("daily_metrics")
   @Valid
 
   private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = null;
 
+  @JsonProperty("lifetime_metrics")
+  
+  private Map<String, Integer> lifetimeMetrics = null;
+
   @JsonProperty("summary_metrics")
   @Valid
 
   private Map<String, BigDecimal> summaryMetrics = null;
-
-  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-    return this;
-  }
-
-  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
-    if (this.lifetimeMetrics == null) {
-      this.lifetimeMetrics = new HashMap<>();
-    }
-    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
-    return this;
-  }
-
-   /**
-   * The lifetime metric name and value.
-   * @return lifetimeMetrics
-  **/
-  public Map<String, Integer> getLifetimeMetrics() {
-    return lifetimeMetrics;
-  }
-
-  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-  }
 
   public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
@@ -81,6 +56,31 @@ public class PinAnalyticsMetricsResponse   {
 
   public void setDailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
+  }
+
+  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
+    return this;
+  }
+
+  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
+    if (this.lifetimeMetrics == null) {
+      this.lifetimeMetrics = new HashMap<>();
+    }
+    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
+    return this;
+  }
+
+   /**
+   * The lifetime metric name and value.
+   * @return lifetimeMetrics
+  **/
+  public Map<String, Integer> getLifetimeMetrics() {
+    return lifetimeMetrics;
+  }
+
+  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
   }
 
   public PinAnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
@@ -118,14 +118,14 @@ public class PinAnalyticsMetricsResponse   {
       return false;
     }
     PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = (PinAnalyticsMetricsResponse) o;
-    return Objects.equals(lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
-        Objects.equals(dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+    return Objects.equals(dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
         Objects.equals(summaryMetrics, pinAnalyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lifetimeMetrics, dailyMetrics, summaryMetrics);
+    return Objects.hash(dailyMetrics, lifetimeMetrics, summaryMetrics);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -134,8 +134,8 @@ public class PinAnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinAnalyticsMetricsResponse {\n");
     
-    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();

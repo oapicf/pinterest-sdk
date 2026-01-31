@@ -6,55 +6,47 @@
 
 
 static conversion_tag_common_t *conversion_tag_common_create_internal(
-    char *ad_account_id,
     char *code_snippet,
-    pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status,
+    conversion_tag_configs_t *configs,
+    enhanced_match_status_type_t *enhanced_match_status,
     char *id,
     double last_fired_time_ms,
     char *name,
-    pinterest_rest_api_entity_status__e status,
-    char *version,
-    conversion_tag_configs_t *configs
+    char *version
     ) {
     conversion_tag_common_t *conversion_tag_common_local_var = malloc(sizeof(conversion_tag_common_t));
     if (!conversion_tag_common_local_var) {
         return NULL;
     }
-    conversion_tag_common_local_var->ad_account_id = ad_account_id;
     conversion_tag_common_local_var->code_snippet = code_snippet;
+    conversion_tag_common_local_var->configs = configs;
     conversion_tag_common_local_var->enhanced_match_status = enhanced_match_status;
     conversion_tag_common_local_var->id = id;
     conversion_tag_common_local_var->last_fired_time_ms = last_fired_time_ms;
     conversion_tag_common_local_var->name = name;
-    conversion_tag_common_local_var->status = status;
     conversion_tag_common_local_var->version = version;
-    conversion_tag_common_local_var->configs = configs;
 
     conversion_tag_common_local_var->_library_owned = 1;
     return conversion_tag_common_local_var;
 }
 
 __attribute__((deprecated)) conversion_tag_common_t *conversion_tag_common_create(
-    char *ad_account_id,
     char *code_snippet,
-    pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status,
+    conversion_tag_configs_t *configs,
+    enhanced_match_status_type_t *enhanced_match_status,
     char *id,
     double last_fired_time_ms,
     char *name,
-    pinterest_rest_api_entity_status__e status,
-    char *version,
-    conversion_tag_configs_t *configs
+    char *version
     ) {
     return conversion_tag_common_create_internal (
-        ad_account_id,
         code_snippet,
+        configs,
         enhanced_match_status,
         id,
         last_fired_time_ms,
         name,
-        status,
-        version,
-        configs
+        version
         );
 }
 
@@ -67,13 +59,17 @@ void conversion_tag_common_free(conversion_tag_common_t *conversion_tag_common) 
         return ;
     }
     listEntry_t *listEntry;
-    if (conversion_tag_common->ad_account_id) {
-        free(conversion_tag_common->ad_account_id);
-        conversion_tag_common->ad_account_id = NULL;
-    }
     if (conversion_tag_common->code_snippet) {
         free(conversion_tag_common->code_snippet);
         conversion_tag_common->code_snippet = NULL;
+    }
+    if (conversion_tag_common->configs) {
+        conversion_tag_configs_free(conversion_tag_common->configs);
+        conversion_tag_common->configs = NULL;
+    }
+    if (conversion_tag_common->enhanced_match_status) {
+        enhanced_match_status_type_free(conversion_tag_common->enhanced_match_status);
+        conversion_tag_common->enhanced_match_status = NULL;
     }
     if (conversion_tag_common->id) {
         free(conversion_tag_common->id);
@@ -87,23 +83,11 @@ void conversion_tag_common_free(conversion_tag_common_t *conversion_tag_common) 
         free(conversion_tag_common->version);
         conversion_tag_common->version = NULL;
     }
-    if (conversion_tag_common->configs) {
-        conversion_tag_configs_free(conversion_tag_common->configs);
-        conversion_tag_common->configs = NULL;
-    }
     free(conversion_tag_common);
 }
 
 cJSON *conversion_tag_common_convertToJSON(conversion_tag_common_t *conversion_tag_common) {
     cJSON *item = cJSON_CreateObject();
-
-    // conversion_tag_common->ad_account_id
-    if(conversion_tag_common->ad_account_id) {
-    if(cJSON_AddStringToObject(item, "ad_account_id", conversion_tag_common->ad_account_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // conversion_tag_common->code_snippet
     if(conversion_tag_common->code_snippet) {
@@ -113,8 +97,21 @@ cJSON *conversion_tag_common_convertToJSON(conversion_tag_common_t *conversion_t
     }
 
 
+    // conversion_tag_common->configs
+    if(conversion_tag_common->configs) {
+    cJSON *configs_local_JSON = conversion_tag_configs_convertToJSON(conversion_tag_common->configs);
+    if(configs_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "configs", configs_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
     // conversion_tag_common->enhanced_match_status
-    if(conversion_tag_common->enhanced_match_status != pinterest_rest_api_enhanced_match_status_type__NULL) {
+    if(conversion_tag_common->enhanced_match_status) {
     cJSON *enhanced_match_status_local_JSON = enhanced_match_status_type_convertToJSON(conversion_tag_common->enhanced_match_status);
     if(enhanced_match_status_local_JSON == NULL) {
         goto fail; // custom
@@ -143,23 +140,11 @@ cJSON *conversion_tag_common_convertToJSON(conversion_tag_common_t *conversion_t
 
 
     // conversion_tag_common->name
-    if(conversion_tag_common->name) {
-    if(cJSON_AddStringToObject(item, "name", conversion_tag_common->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // conversion_tag_common->status
-    if(conversion_tag_common->status != pinterest_rest_api_entity_status__NULL) {
-    cJSON *status_local_JSON = entity_status_convertToJSON(conversion_tag_common->status);
-    if(status_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "status", status_local_JSON);
-    if(item->child == NULL) {
+    if (!conversion_tag_common->name) {
         goto fail;
     }
+    if(cJSON_AddStringToObject(item, "name", conversion_tag_common->name) == NULL) {
+    goto fail; //String
     }
 
 
@@ -167,19 +152,6 @@ cJSON *conversion_tag_common_convertToJSON(conversion_tag_common_t *conversion_t
     if(conversion_tag_common->version) {
     if(cJSON_AddStringToObject(item, "version", conversion_tag_common->version) == NULL) {
     goto fail; //String
-    }
-    }
-
-
-    // conversion_tag_common->configs
-    if(conversion_tag_common->configs) {
-    cJSON *configs_local_JSON = conversion_tag_configs_convertToJSON(conversion_tag_common->configs);
-    if(configs_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "configs", configs_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
     }
     }
 
@@ -195,26 +167,11 @@ conversion_tag_common_t *conversion_tag_common_parseFromJSON(cJSON *conversion_t
 
     conversion_tag_common_t *conversion_tag_common_local_var = NULL;
 
-    // define the local variable for conversion_tag_common->enhanced_match_status
-    pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_local_nonprim = 0;
-
-    // define the local variable for conversion_tag_common->status
-    pinterest_rest_api_entity_status__e status_local_nonprim = 0;
-
     // define the local variable for conversion_tag_common->configs
     conversion_tag_configs_t *configs_local_nonprim = NULL;
 
-    // conversion_tag_common->ad_account_id
-    cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(conversion_tag_commonJSON, "ad_account_id");
-    if (cJSON_IsNull(ad_account_id)) {
-        ad_account_id = NULL;
-    }
-    if (ad_account_id) { 
-    if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
-    {
-    goto end; //String
-    }
-    }
+    // define the local variable for conversion_tag_common->enhanced_match_status
+    enhanced_match_status_type_t *enhanced_match_status_local_nonprim = NULL;
 
     // conversion_tag_common->code_snippet
     cJSON *code_snippet = cJSON_GetObjectItemCaseSensitive(conversion_tag_commonJSON, "code_snippet");
@@ -226,6 +183,15 @@ conversion_tag_common_t *conversion_tag_common_parseFromJSON(cJSON *conversion_t
     {
     goto end; //String
     }
+    }
+
+    // conversion_tag_common->configs
+    cJSON *configs = cJSON_GetObjectItemCaseSensitive(conversion_tag_commonJSON, "configs");
+    if (cJSON_IsNull(configs)) {
+        configs = NULL;
+    }
+    if (configs) { 
+    configs_local_nonprim = conversion_tag_configs_parseFromJSON(configs); //nonprimitive
     }
 
     // conversion_tag_common->enhanced_match_status
@@ -266,20 +232,14 @@ conversion_tag_common_t *conversion_tag_common_parseFromJSON(cJSON *conversion_t
     if (cJSON_IsNull(name)) {
         name = NULL;
     }
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
+    if (!name) {
+        goto end;
     }
 
-    // conversion_tag_common->status
-    cJSON *status = cJSON_GetObjectItemCaseSensitive(conversion_tag_commonJSON, "status");
-    if (cJSON_IsNull(status)) {
-        status = NULL;
-    }
-    if (status) { 
-    status_local_nonprim = entity_status_parseFromJSON(status); //custom
+    
+    if(!cJSON_IsString(name))
+    {
+    goto end; //String
     }
 
     // conversion_tag_common->version
@@ -294,39 +254,26 @@ conversion_tag_common_t *conversion_tag_common_parseFromJSON(cJSON *conversion_t
     }
     }
 
-    // conversion_tag_common->configs
-    cJSON *configs = cJSON_GetObjectItemCaseSensitive(conversion_tag_commonJSON, "configs");
-    if (cJSON_IsNull(configs)) {
-        configs = NULL;
-    }
-    if (configs) { 
-    configs_local_nonprim = conversion_tag_configs_parseFromJSON(configs); //nonprimitive
-    }
-
 
     conversion_tag_common_local_var = conversion_tag_common_create_internal (
-        ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         code_snippet && !cJSON_IsNull(code_snippet) ? strdup(code_snippet->valuestring) : NULL,
-        enhanced_match_status ? enhanced_match_status_local_nonprim : 0,
+        configs ? configs_local_nonprim : NULL,
+        enhanced_match_status ? enhanced_match_status_local_nonprim : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         last_fired_time_ms ? last_fired_time_ms->valuedouble : 0,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        status ? status_local_nonprim : 0,
-        version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL,
-        configs ? configs_local_nonprim : NULL
+        strdup(name->valuestring),
+        version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL
         );
 
     return conversion_tag_common_local_var;
 end:
-    if (enhanced_match_status_local_nonprim) {
-        enhanced_match_status_local_nonprim = 0;
-    }
-    if (status_local_nonprim) {
-        status_local_nonprim = 0;
-    }
     if (configs_local_nonprim) {
         conversion_tag_configs_free(configs_local_nonprim);
         configs_local_nonprim = NULL;
+    }
+    if (enhanced_match_status_local_nonprim) {
+        enhanced_match_status_type_free(enhanced_match_status_local_nonprim);
+        enhanced_match_status_local_nonprim = NULL;
     }
     return NULL;
 

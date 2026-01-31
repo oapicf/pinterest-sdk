@@ -12,6 +12,7 @@ import org.openapitools.vertxweb.server.model.CatalogsHotelAttributes;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreateHotelItem   {
   
+  private CatalogsHotelAttributes attributes;
   private String hotelId;
 
 
@@ -32,15 +33,23 @@ public class CatalogsCreateHotelItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsHotelAttributes attributes;
 
   public CatalogsCreateHotelItem () {
 
   }
 
-  public CatalogsCreateHotelItem (String hotelId, OperationEnum operation, CatalogsHotelAttributes attributes) {
+  public CatalogsCreateHotelItem (CatalogsHotelAttributes attributes, String hotelId, OperationEnum operation) {
+    this.attributes = attributes;
     this.hotelId = hotelId;
     this.operation = operation;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsHotelAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -62,15 +71,6 @@ public class CatalogsCreateHotelItem   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("attributes")
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,14 +81,14 @@ public class CatalogsCreateHotelItem   {
       return false;
     }
     CatalogsCreateHotelItem catalogsCreateHotelItem = (CatalogsCreateHotelItem) o;
-    return Objects.equals(hotelId, catalogsCreateHotelItem.hotelId) &&
-        Objects.equals(operation, catalogsCreateHotelItem.operation) &&
-        Objects.equals(attributes, catalogsCreateHotelItem.attributes);
+    return Objects.equals(attributes, catalogsCreateHotelItem.attributes) &&
+        Objects.equals(hotelId, catalogsCreateHotelItem.hotelId) &&
+        Objects.equals(operation, catalogsCreateHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -96,9 +96,9 @@ public class CatalogsCreateHotelItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

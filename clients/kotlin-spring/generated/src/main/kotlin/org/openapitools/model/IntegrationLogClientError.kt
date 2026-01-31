@@ -41,7 +41,7 @@ data class IntegrationLogClientError(
     @Schema(example = "null", description = "Line number where the error happened.")
     @get:JsonProperty("line_number") val lineNumber: kotlin.Int? = null,
 
-    @get:Size(max=512)
+    @get:Size(max=8192)
     @Schema(example = "null", description = "Human-readable description of the error.")
     @get:JsonProperty("message") val message: kotlin.String? = null,
 

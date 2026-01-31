@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "demographics" },
+      {"model": "has_prediction" },
+      {"model": "keyword" },
+      {"model": "pct_growth_mom" },
+      {"model": "pct_growth_wow" },
+      {"model": "pct_growth_yoy" },
+      {"model": "predicted_time_series" },
+      {"model": "time_series" },
+    ]
+  }]
+}

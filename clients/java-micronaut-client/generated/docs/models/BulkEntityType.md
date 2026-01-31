@@ -17,5 +17,9 @@ The class is defined in **[BulkEntityType.java](../../src/main/java/org/openapit
 
 * `KEYWORD` (value: `"KEYWORD"`)
 
+* `LABEL` (value: `"LABEL"`)
+
+* `SCHEDULE` (value: `"SCHEDULE"`)
+
 
 

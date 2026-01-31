@@ -16,6 +16,7 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import org.openapitools.server.api.model.ConversionAccessTokenResponse
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.OauthAccessTokenResponse
 
@@ -65,6 +66,9 @@ class OauthApiVertxProxyHandler(private val vertx: Vertx, private val service: O
             val context = OperationRequest(contextSerialized)
             when (action) {
         
+                "oauthConversionToken" -> {
+                }
+        
                 "oauthToken" -> {
                     val params = context.params
                     val grantType = ApiHandlerUtils.searchStringInJson(params,"grant_type")
@@ -73,6 +77,23 @@ class OauthApiVertxProxyHandler(private val vertx: Vertx, private val service: O
                     }
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.oauthToken(grantType,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "tokenRevoke" -> {
+                    val params = context.params
+                    val token = ApiHandlerUtils.searchStringInJson(params,"token")
+                    if(token == null){
+                        throw IllegalArgumentException("token is required")
+                    }
+                    val tokenTypeHint = ApiHandlerUtils.searchStringInJson(params,"token_type_hint")
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.tokenRevoke(token,tokenTypeHint,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

@@ -13,6 +13,42 @@ inherit
 feature -- Test routines
 
 
+    test_brand_accounts_create
+            -- Create a Brand Account
+            --
+            -- Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+        local
+            l_response: BRAND_ACCOUNTS_CREATE_200_RESPONSE
+            l_business_hierarchy_id: STRING_32
+            l_brand_accounts_create_request: BRAND_ACCOUNTS_CREATE_REQUEST
+        do
+            -- TODO: Initialize required params.
+            -- l_business_hierarchy_id
+            -- l_brand_accounts_create_request
+
+            -- l_response := api.brand_accounts_create(l_business_hierarchy_id, l_brand_accounts_create_request)
+            assert ("not_implemented", False)
+        end
+
+    test_brand_accounts_update
+            -- Update a Brand Account
+            --
+            -- Update an existing Brand Account
+        local
+            l_response: BRAND_ACCOUNTS_CREATE_200_RESPONSE
+            l_business_hierarchy_id: STRING_32
+            l_brand_account_id: STRING_32
+            l_brand_accounts_update_request: BRAND_ACCOUNTS_UPDATE_REQUEST
+        do
+            -- TODO: Initialize required params.
+            -- l_business_hierarchy_id
+            -- l_brand_account_id
+            -- l_brand_accounts_update_request
+
+            -- l_response := api.brand_accounts_update(l_business_hierarchy_id, l_brand_account_id, l_brand_accounts_update_request)
+            assert ("not_implemented", False)
+        end
+
     test_business_employers
             -- List business employers for user
             --
@@ -35,6 +71,7 @@ feature -- Test routines
         local
             l_response: GET_BUSINESS_MEMBERS_200_RESPONSE
             l_business_id: STRING_32
+            l_fetch_system_users: BOOLEAN
             l_assets_summary: BOOLEAN
             l_business_roles: LIST [MEMBER_BUSINESS_ROLE]
             l_member_ids: STRING_32
@@ -45,7 +82,7 @@ feature -- Test routines
             -- TODO: Initialize required params.
             -- l_business_id
 
-            -- l_response := api.business_members(l_business_id, l_assets_summary, l_business_roles, l_member_ids, l_start_index, l_bookmark, l_page_size)
+            -- l_response := api.business_members(l_business_id, l_fetch_system_users, l_assets_summary, l_business_roles, l_member_ids, l_start_index, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -101,6 +138,24 @@ feature -- Test routines
             -- l_delete_partners_request
 
             -- l_response := api.delete_business_partners(l_business_id, l_delete_partners_request)
+            assert ("not_implemented", False)
+        end
+
+    test_system_user_update
+            -- Update a system user information.
+            --
+            -- Update a system user information such as name.
+        local
+            l_business_id: STRING_32
+            l_system_user_id: STRING_32
+            l_system_user_update_request: SYSTEM_USER_UPDATE_REQUEST
+        do
+            -- TODO: Initialize required params.
+            -- l_business_id
+            -- l_system_user_id
+            -- l_system_user_update_request
+
+            -- api.system_user_update(l_business_id, l_system_user_id, l_system_user_update_request)
             assert ("not_implemented", False)
         end
 

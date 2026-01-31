@@ -48,11 +48,18 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<std::string> getImpression();
+	std::list<std::string> getAudienceVerification();
 
 	/*! \brief Set 
 	 */
-	void setImpression(std::list <std::string> impression);
+	void setAudienceVerification(std::list <std::string> audience_verification);
+	/*! \brief Get 
+	 */
+	std::list<std::string> getBuyableButton();
+
+	/*! \brief Set 
+	 */
+	void setBuyableButton(std::list <std::string> buyable_button);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getClick();
@@ -69,25 +76,18 @@ public:
 	void setEngagement(std::list <std::string> engagement);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getBuyableButton();
+	std::list<std::string> getImpression();
 
 	/*! \brief Set 
 	 */
-	void setBuyableButton(std::list <std::string> buyable_button);
-	/*! \brief Get 
-	 */
-	std::list<std::string> getAudienceVerification();
-
-	/*! \brief Set 
-	 */
-	void setAudienceVerification(std::list <std::string> audience_verification);
+	void setImpression(std::list <std::string> impression);
 
 private:
-	std::list <std::string>impression;
+	std::list <std::string>audience_verification;
+	std::list <std::string>buyable_button;
 	std::list <std::string>click;
 	std::list <std::string>engagement;
-	std::list <std::string>buyable_button;
-	std::list <std::string>audience_verification;
+	std::list <std::string>impression;
 	void __init();
 	void __cleanup();
 

@@ -12,17 +12,7 @@ Protected Class OauthAccessTokenResponseIntegrationRefresh
 
 
 	#tag Property, Flags = &h0
-		response_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		access_token As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		token_type As String
 	#tag EndProperty
 
 
@@ -32,7 +22,17 @@ Protected Class OauthAccessTokenResponseIntegrationRefresh
 
 
 	#tag Property, Flags = &h0
+		response_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		scope As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		token_type As String
 	#tag EndProperty
 
 
@@ -120,14 +120,6 @@ Protected Class OauthAccessTokenResponseIntegrationRefresh
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="token_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="expires_in"
 			Visible=false
 			Group="Behavior"
@@ -137,6 +129,14 @@ Protected Class OauthAccessTokenResponseIntegrationRefresh
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="scope"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="token_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsHotelItemsPostFilter._
 
 case class CatalogsHotelItemsPostFilter (
-  catalogType: CatalogType,
-hotelIds: List[String],
-/* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
-  catalogId: Option[String])
+  /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+  catalogId: Option[String],
+catalogType: CatalogType,
+hotelIds: List[String])
 
 object CatalogsHotelItemsPostFilter {
   import DateTimeCodecs._

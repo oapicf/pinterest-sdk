@@ -20,15 +20,15 @@ typedef struct user_account_followed_interests_200_response_t user_account_follo
 
 
 typedef struct user_account_followed_interests_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } user_account_followed_interests_200_response_t;
 
 __attribute__((deprecated)) user_account_followed_interests_200_response_t *user_account_followed_interests_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void user_account_followed_interests_200_response_free(user_account_followed_interests_200_response_t *user_account_followed_interests_200_response);

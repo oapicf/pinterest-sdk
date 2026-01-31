@@ -21,18 +21,18 @@ typedef struct catalogs_item_validation_issues_t catalogs_item_validation_issues
 
 
 typedef struct catalogs_item_validation_issues_t {
-    int item_number; //numeric
-    char *item_id; // string
     struct catalogs_item_validation_errors_t *errors; //model
+    char *item_id; // string
+    int item_number; //numeric
     struct catalogs_item_validation_warnings_t *warnings; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_item_validation_issues_t;
 
 __attribute__((deprecated)) catalogs_item_validation_issues_t *catalogs_item_validation_issues_create(
-    int item_number,
-    char *item_id,
     catalogs_item_validation_errors_t *errors,
+    char *item_id,
+    int item_number,
     catalogs_item_validation_warnings_t *warnings
 );
 

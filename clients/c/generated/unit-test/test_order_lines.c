@@ -22,31 +22,31 @@ order_lines_t* instantiate_order_lines(int include_optional) {
   order_lines_t* order_lines = NULL;
   if (include_optional) {
     order_lines = order_lines_create(
-      "2680059592705",
-      "orderline",
       "549755885175",
+      5000000,
+      1461269616,
+      "2680059592705",
+      "Order Line Name 1",
+      5000000,
+      "PAID",
       "PO12345",
       1452208622,
-      1461269616,
-      5000000,
-      5000000,
       "ACTIVE",
-      "Order Line Name 1",
-      "PAID"
+      "orderline"
     );
   } else {
     order_lines = order_lines_create(
-      "2680059592705",
-      "orderline",
       "549755885175",
+      5000000,
+      1461269616,
+      "2680059592705",
+      "Order Line Name 1",
+      5000000,
+      "PAID",
       "PO12345",
       1452208622,
-      1461269616,
-      5000000,
-      5000000,
       "ACTIVE",
-      "Order Line Name 1",
-      "PAID"
+      "orderline"
     );
   }
 

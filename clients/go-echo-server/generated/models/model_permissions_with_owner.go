@@ -7,6 +7,8 @@ const (
 	ADMIN PermissionsWithOwner = "ADMIN"
 	ANALYST PermissionsWithOwner = "ANALYST"
 	FINANCE_MANAGER PermissionsWithOwner = "FINANCE_MANAGER"
+	FINANCE_EDIT PermissionsWithOwner = "FINANCE_EDIT"
+	FINANCE_VIEW PermissionsWithOwner = "FINANCE_VIEW"
 	AUDIENCE_MANAGER PermissionsWithOwner = "AUDIENCE_MANAGER"
 	CAMPAIGN_MANAGER PermissionsWithOwner = "CAMPAIGN_MANAGER"
 	CATALOGS_MANAGER PermissionsWithOwner = "CATALOGS_MANAGER"

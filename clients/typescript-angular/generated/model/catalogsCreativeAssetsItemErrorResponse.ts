@@ -23,7 +23,7 @@ export interface CatalogsCreativeAssetsItemErrorResponse {
     /**
      * Array with the errors for the item id requested
      */
-    errors?: Array<ItemValidationEvent>;
+    errors: Array<ItemValidationEvent>;
 }
 export namespace CatalogsCreativeAssetsItemErrorResponse {
 }

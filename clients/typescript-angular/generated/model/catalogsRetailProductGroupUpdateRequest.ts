@@ -20,11 +20,11 @@ export interface CatalogsRetailProductGroupUpdateRequest {
      * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
      */
     catalog_type?: CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnum;
-    name?: string;
+    country?: Country;
     description?: string | null;
     filters?: CatalogsProductGroupFiltersRequest;
-    country?: Country;
     locale?: CatalogsLocale;
+    name?: string;
 }
 export namespace CatalogsRetailProductGroupUpdateRequest {
     export const CatalogTypeEnum = {

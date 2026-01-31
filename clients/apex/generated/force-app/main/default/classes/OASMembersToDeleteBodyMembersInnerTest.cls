@@ -73,7 +73,7 @@ private class OASMembersToDeleteBodyMembersInnerTest {
     private static void maintainRenamedProperties() {
         OASMembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = new OASMembersToDeleteBodyMembersInner();
         Map<String, String> x-property-mappings = membersToDeleteBodyMembersInner.getx-property-mappings();
-        System.assertEquals('memberId', x-property-mappings.get('member_id'));
         System.assertEquals('businessRole', x-property-mappings.get('business_role'));
+        System.assertEquals('memberId', x-property-mappings.get('member_id'));
     }
 }

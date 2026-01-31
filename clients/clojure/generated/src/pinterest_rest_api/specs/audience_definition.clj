@@ -8,8 +8,8 @@
 (def audience-definition-data
   {
    (ds/opt :date) string?
-   (ds/opt :type) string?
    (ds/opt :scope) string?
+   (ds/opt :type) string?
    })
 
 (def audience-definition-spec

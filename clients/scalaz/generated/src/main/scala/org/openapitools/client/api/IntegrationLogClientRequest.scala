@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import IntegrationLogClientRequest._
 
 case class IntegrationLogClientRequest (
-  method: Method,
-/* HTTP request host from host header. */
+  /* HTTP request host from host header. */
   host: String,
+method: Method,
 /* HTTP request path. */
   `path`: String,
 /* HTTP request headers as key-value pairs. */

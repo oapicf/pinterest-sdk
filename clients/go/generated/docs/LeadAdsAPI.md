@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdAccountsSubscriptionsDelById**](LeadAdsAPI.md#AdAccountsSubscriptionsDelById) | **Delete** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription
-[**AdAccountsSubscriptionsGetById**](LeadAdsAPI.md#AdAccountsSubscriptionsGetById) | **Get** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription
+[**AdAccountsSubscriptionsGetById**](LeadAdsAPI.md#AdAccountsSubscriptionsGetById) | **Get** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID
 [**AdAccountsSubscriptionsGetList**](LeadAdsAPI.md#AdAccountsSubscriptionsGetList) | **Get** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions
 [**AdAccountsSubscriptionsPost**](LeadAdsAPI.md#AdAccountsSubscriptionsPost) | **Post** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 
 ## AdAccountsSubscriptionsGetById
 
-> AdAccountGetSubscriptionResponse AdAccountsSubscriptionsGetById(ctx, adAccountId, subscriptionId).Execute()
+> LeadSubscription AdAccountsSubscriptionsGetById(ctx, adAccountId, subscriptionId).Execute()
 
-Get lead ads subscription
+Get lead ads subscription by ID
 
 
 
@@ -113,7 +113,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadAdsAPI.AdAccountsSubscriptionsGetById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AdAccountsSubscriptionsGetById`: AdAccountGetSubscriptionResponse
+	// response from `AdAccountsSubscriptionsGetById`: LeadSubscription
 	fmt.Fprintf(os.Stdout, "Response from `LeadAdsAPI.AdAccountsSubscriptionsGetById`: %v\n", resp)
 }
 ```
@@ -139,11 +139,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AdAccountGetSubscriptionResponse**](AdAccountGetSubscriptionResponse.md)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## AdAccountsSubscriptionsGetList
 
-> AdAccountsSubscriptionsGetList200Response AdAccountsSubscriptionsGetList(ctx, adAccountId).PageSize(pageSize).Bookmark(bookmark).Execute()
+> AdAccountsSubscriptionsGetList200Response AdAccountsSubscriptionsGetList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get lead ads subscriptions
 
@@ -177,12 +177,12 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsGetList(context.Background(), adAccountId).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsGetList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadAdsAPI.AdAccountsSubscriptionsGetList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,8 +208,8 @@ Other parameters are passed through a pointer to a apiAdAccountsSubscriptionsGet
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## AdAccountsSubscriptionsPost
 
-> AdAccountCreateSubscriptionResponse AdAccountsSubscriptionsPost(ctx, adAccountId).AdAccountCreateSubscriptionRequest(adAccountCreateSubscriptionRequest).Execute()
+> LeadSubscription AdAccountsSubscriptionsPost(ctx, adAccountId).LeadSubscriptionPostParamsCreate(leadSubscriptionPostParamsCreate).Execute()
 
 Create lead ads subscription
 
@@ -251,16 +251,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	adAccountCreateSubscriptionRequest := *openapiclient.NewAdAccountCreateSubscriptionRequest("https://webhook.example.com/xyz") // AdAccountCreateSubscriptionRequest | Subscription to create.
+	leadSubscriptionPostParamsCreate := *openapiclient.NewLeadSubscriptionPostParamsCreate("WebhookUrl_example") // LeadSubscriptionPostParamsCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsPost(context.Background(), adAccountId).AdAccountCreateSubscriptionRequest(adAccountCreateSubscriptionRequest).Execute()
+	resp, r, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsPost(context.Background(), adAccountId).LeadSubscriptionPostParamsCreate(leadSubscriptionPostParamsCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadAdsAPI.AdAccountsSubscriptionsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AdAccountsSubscriptionsPost`: AdAccountCreateSubscriptionResponse
+	// response from `AdAccountsSubscriptionsPost`: LeadSubscription
 	fmt.Fprintf(os.Stdout, "Response from `LeadAdsAPI.AdAccountsSubscriptionsPost`: %v\n", resp)
 }
 ```
@@ -281,11 +281,11 @@ Other parameters are passed through a pointer to a apiAdAccountsSubscriptionsPos
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **adAccountCreateSubscriptionRequest** | [**AdAccountCreateSubscriptionRequest**](AdAccountCreateSubscriptionRequest.md) | Subscription to create. | 
+ **leadSubscriptionPostParamsCreate** | [**LeadSubscriptionPostParamsCreate**](LeadSubscriptionPostParamsCreate.md) |  | 
 
 ### Return type
 
-[**AdAccountCreateSubscriptionResponse**](AdAccountCreateSubscriptionResponse.md)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

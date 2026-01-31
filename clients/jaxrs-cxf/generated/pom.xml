@@ -5,7 +5,7 @@
   <packaging>war</packaging>
   <name>openapi-cxf-server</name>
   <description>Pinterest&#39;s REST API</description>
-  <version>5.14.0</version>
+  <version>5.23.0</version>
 
 
   <build>

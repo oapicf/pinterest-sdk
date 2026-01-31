@@ -8,6 +8,8 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 | ------------- | ------------- | ------------- |
 | [**adsCreditRedeem()**](BillingApi.md#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 | [**adsCreditsDiscountsGet()**](BillingApi.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+| [**billingInvoiceDownloadGet()**](BillingApi.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
+| [**billingInvoicesGet()**](BillingApi.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
 | [**billingProfilesGet()**](BillingApi.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
 | [**ssioAccountsGet()**](BillingApi.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
 | [**ssioInsertionOrderCreate()**](BillingApi.md#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
@@ -25,7 +27,7 @@ adsCreditRedeem($ad_account_id, $ads_credit_redeem_request): \OpenAPI\Client\Mod
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -87,7 +89,7 @@ adsCreditsDiscountsGet($ad_account_id, $bookmark, $page_size): \OpenAPI\Client\M
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -143,6 +145,144 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `billingInvoiceDownloadGet()`
+
+```php
+billingInvoiceDownloadGet($ad_account_id, $billing_invoice_id): \OpenAPI\Client\Model\BillingInvoiceDownloadResponse
+```
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\BillingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
+$billing_invoice_id = 'billing_invoice_id_example'; // string | Unique identifier of a billing invoice.
+
+try {
+    $result = $apiInstance->billingInvoiceDownloadGet($ad_account_id, $billing_invoice_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingApi->billingInvoiceDownloadGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_account_id** | **string**| Unique identifier of an ad account. | |
+| **billing_invoice_id** | **string**| Unique identifier of a billing invoice. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\BillingInvoiceDownloadResponse**](../Model/BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `billingInvoicesGet()`
+
+```php
+billingInvoicesGet($ad_account_id, $bookmark, $page_size, $sort, $order, $status, $document_type, $start_due_date, $end_due_date): \OpenAPI\Client\Model\BillingInvoicesGet200Response
+```
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\BillingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
+$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$sort = DUE_DATE; // string | Field of which to sort billing invoices
+$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+$status = OPEN; // string | Status of billing invoices to filter by
+$document_type = INVOICE; // string | Document type of billing invoices to filter by
+$start_due_date = Sun Jan 01 00:00:00 UTC 2023; // \DateTime | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+$end_due_date = Mon Jan 01 00:00:00 UTC 2024; // \DateTime | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+
+try {
+    $result = $apiInstance->billingInvoicesGet($ad_account_id, $bookmark, $page_size, $sort, $order, $status, $document_type, $start_due_date, $end_due_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingApi->billingInvoicesGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_account_id** | **string**| Unique identifier of an ad account. | |
+| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort** | **string**| Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;] |
+| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **status** | **string**| Status of billing invoices to filter by | [optional] |
+| **document_type** | **string**| Document type of billing invoices to filter by | [optional] |
+| **start_due_date** | **\DateTime**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+| **end_due_date** | **\DateTime**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\BillingInvoicesGet200Response**](../Model/BillingInvoicesGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `billingProfilesGet()`
 
 ```php
@@ -151,7 +291,7 @@ billingProfilesGet($ad_account_id, $is_active, $bookmark, $page_size): \OpenAPI\
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 

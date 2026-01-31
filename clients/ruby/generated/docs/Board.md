@@ -4,17 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** |  | [optional][readonly] |
-| **created_at** | **Time** | Date and time of board creation. | [optional][readonly] |
 | **board_pins_modified_at** | **Time** | Date and time of last board pins modified. | [optional][readonly] |
-| **name** | **String** |  |  |
-| **description** | **String** |  | [optional] |
 | **collaborator_count** | **Integer** | Count of collaborators on the board. | [optional][readonly] |
-| **pin_count** | **Integer** | Count of pins on the board. | [optional][readonly] |
+| **created_at** | **Time** | Date and time of board creation. | [optional][readonly] |
+| **description** | **String** |  | [optional] |
 | **follower_count** | **Integer** | Board follower count. | [optional][readonly] |
-| **media** | [**BoardMedia**](BoardMedia.md) |  | [optional] |
+| **id** | **String** |  | [readonly] |
+| **is_ads_only** | **Boolean** | If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins. | [optional][default to false] |
+| **media** | [**BoardMedia**](BoardMedia.md) | Board media. | [optional][readonly] |
+| **name** | **String** |      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;. |  |
 | **owner** | [**BoardOwner**](BoardOwner.md) |  | [optional][readonly] |
-| **privacy** | **String** | Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt; | [optional][default to &#39;PUBLIC&#39;] |
+| **pin_count** | **Integer** | Count of Pins on the board. | [optional][readonly] |
+| **privacy** | [**BoardPrivacy**](BoardPrivacy.md) |     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;.  | [optional] |
 
 ## Example
 
@@ -22,16 +23,17 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::Board.new(
-  id: 549755885175,
-  created_at: 2020-01-01T20:10:40Z,
-  board_pins_modified_at: 2020-01-01T20:10:40Z,
-  name: Summer Recipes,
-  description: My favorite summer recipes,
+  board_pins_modified_at: null,
   collaborator_count: 17,
-  pin_count: 5,
+  created_at: null,
+  description: My favorite summer recipes,
   follower_count: 13,
+  id: 549755885175,
+  is_ads_only: true,
   media: null,
+  name: Summer recipes,
   owner: null,
+  pin_count: 5,
   privacy: null
 )
 ```

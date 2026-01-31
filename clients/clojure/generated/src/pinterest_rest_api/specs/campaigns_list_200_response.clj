@@ -8,8 +8,8 @@
 
 (def campaigns-list-200-response-data
   {
-   (ds/req :items) (s/coll-of campaign-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of campaign-response-spec)
    })
 
 (def campaigns-list-200-response-spec

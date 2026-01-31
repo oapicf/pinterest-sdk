@@ -33,16 +33,16 @@ class CatalogsRetailItemErrorResponseTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
-        // to test the property `itemId` - The catalog item id in the merchant namespace
-        should("test itemId") {
-            // uncomment below to test the property
-            //modelInstance.itemId shouldBe ("TODO")
-        }
-
         // to test the property `errors` - Array with the errors for the item id requested
         should("test errors") {
             // uncomment below to test the property
             //modelInstance.errors shouldBe ("TODO")
+        }
+
+        // to test the property `itemId` - The catalog item id in the merchant namespace
+        should("test itemId") {
+            // uncomment below to test the property
+            //modelInstance.itemId shouldBe ("TODO")
         }
 
     }

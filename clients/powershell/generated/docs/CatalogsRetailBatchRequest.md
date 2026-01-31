@@ -3,19 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] 
 **CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **String** | We recommend using the CatalogsLocale values. | 
 **Items** | [**CatalogsRetailBatchRequestItemsInner[]**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**Language** | **String** | We recommend using the CatalogsLocale values. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsRetailBatchRequest = Initialize-PSOpenAPIToolsCatalogsRetailBatchRequest  -CatalogType null `
+$CatalogsRetailBatchRequest = Initialize-PSOpenAPIToolsCatalogsRetailBatchRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Country null `
- -Language null `
- -Items null
+ -Items null `
+ -Language null
 ```
 
 - Convert the resource to JSON

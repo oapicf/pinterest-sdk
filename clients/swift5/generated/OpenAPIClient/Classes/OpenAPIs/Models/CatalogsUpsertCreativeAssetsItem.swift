@@ -16,30 +16,30 @@ public struct CatalogsUpsertCreativeAssetsItem: Codable, JSONEncodable, Hashable
     public enum Operation: String, Codable, CaseIterable {
         case upsert = "UPSERT"
     }
+    public var attributes: CatalogsCreativeAssetsAttributes
     /** The catalog creative assets id in the merchant namespace */
     public var creativeAssetsId: String
     public var operation: Operation
-    public var attributes: CatalogsCreativeAssetsAttributes
 
-    public init(creativeAssetsId: String, operation: Operation, attributes: CatalogsCreativeAssetsAttributes) {
+    public init(attributes: CatalogsCreativeAssetsAttributes, creativeAssetsId: String, operation: Operation) {
+        self.attributes = attributes
         self.creativeAssetsId = creativeAssetsId
         self.operation = operation
-        self.attributes = attributes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case attributes
         case creativeAssetsId = "creative_assets_id"
         case operation
-        case attributes
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(attributes, forKey: .attributes)
         try container.encode(creativeAssetsId, forKey: .creativeAssetsId)
         try container.encode(operation, forKey: .operation)
-        try container.encode(attributes, forKey: .attributes)
     }
 }
 

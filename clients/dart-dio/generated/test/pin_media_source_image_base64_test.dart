@@ -7,12 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(PinMediaSourceImageBase64, () {
-    // String sourceType
-    test('to test the property `sourceType`', () async {
-      // TODO
-    });
-
-    // String contentType
+    // ContentType contentType
     test('to test the property `contentType`', () async {
       // TODO
     });
@@ -25,6 +20,12 @@ void main() {
     // Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
     // bool isStandard (default value: true)
     test('to test the property `isStandard`', () async {
+      // TODO
+    });
+
+    // The source type of the media.
+    // String sourceType
+    test('to test the property `sourceType`', () async {
       // TODO
     });
 

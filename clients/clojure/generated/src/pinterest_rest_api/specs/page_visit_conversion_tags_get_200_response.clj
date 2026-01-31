@@ -8,8 +8,8 @@
 
 (def page-visit-conversion-tags-get-200-response-data
   {
-   (ds/req :items) (s/coll-of conversion-event-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of conversion-event-response-spec)
    })
 
 (def page-visit-conversion-tags-get-200-response-spec

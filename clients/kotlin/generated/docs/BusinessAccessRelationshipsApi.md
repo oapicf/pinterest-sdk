@@ -4,13 +4,118 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
+| [**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
 | [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
 | [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
 | [**getBusinessEmployers**](BusinessAccessRelationshipsApi.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user |
 | [**getBusinessMembers**](BusinessAccessRelationshipsApi.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members |
 | [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners |
+| [**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
 | [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role |
 
+
+<a id="brandAccountsCreate"></a>
+# **brandAccountsCreate**
+> BrandAccountsCreate200Response brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = BusinessAccessRelationshipsApi()
+val businessHierarchyId : kotlin.String = 7009386637860 // kotlin.String | business hierarchy node id
+val brandAccountsCreateRequest : BrandAccountsCreateRequest =  // BrandAccountsCreateRequest | 
+try {
+    val result : BrandAccountsCreate200Response = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling BusinessAccessRelationshipsApi#brandAccountsCreate")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling BusinessAccessRelationshipsApi#brandAccountsCreate")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| **businessHierarchyId** | **kotlin.String**| business hierarchy node id | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | |
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+
+Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a id="brandAccountsUpdate"></a>
+# **brandAccountsUpdate**
+> BrandAccountsCreate200Response brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = BusinessAccessRelationshipsApi()
+val businessHierarchyId : kotlin.String = 7009386637860 // kotlin.String | business hierarchy node id
+val brandAccountId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a brand account.
+val brandAccountsUpdateRequest : BrandAccountsUpdateRequest =  // BrandAccountsUpdateRequest | 
+try {
+    val result : BrandAccountsCreate200Response = apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling BusinessAccessRelationshipsApi#brandAccountsUpdate")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling BusinessAccessRelationshipsApi#brandAccountsUpdate")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| **businessHierarchyId** | **kotlin.String**| business hierarchy node id | |
+| **brandAccountId** | **kotlin.String**| Unique identifier of a brand account. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | |
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+
+Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a id="deleteBusinessMembership"></a>
 # **deleteBusinessMembership**
@@ -164,7 +269,7 @@ Configure pinterest_oauth2:
 
 <a id="getBusinessMembers"></a>
 # **getBusinessMembers**
-> GetBusinessMembers200Response getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+> GetBusinessMembers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
 Get business members
 
@@ -178,6 +283,7 @@ Get all members of the specified business. The return response will include the 
 
 val apiInstance = BusinessAccessRelationshipsApi()
 val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+val fetchSystemUsers : kotlin.Boolean = true // kotlin.Boolean | Fetches system users if True. Fetches regular user employees if False.
 val assetsSummary : kotlin.Boolean = true // kotlin.Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 val businessRoles : kotlin.collections.List<MemberBusinessRole> =  // kotlin.collections.List<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
 val memberIds : kotlin.String = 00101010101,2222220101 // kotlin.String | A list of business members ids separated by comma.
@@ -185,7 +291,7 @@ val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the r
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
 val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
-    val result : GetBusinessMembers200Response = apiInstance.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+    val result : GetBusinessMembers200Response = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BusinessAccessRelationshipsApi#getBusinessMembers")
@@ -198,6 +304,7 @@ try {
 
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
+| **fetchSystemUsers** | **kotlin.Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **assetsSummary** | **kotlin.Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
 | **businessRoles** | [**kotlin.collections.List&lt;MemberBusinessRole&gt;**](MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] |
 | **memberIds** | **kotlin.String**| A list of business members ids separated by comma. | [optional] |
@@ -280,6 +387,57 @@ Configure pinterest_oauth2:
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="systemUserUpdate"></a>
+# **systemUserUpdate**
+> systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = BusinessAccessRelationshipsApi()
+val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+val systemUserId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a system user.
+val systemUserUpdateRequest : SystemUserUpdateRequest =  // SystemUserUpdateRequest | 
+try {
+    apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+} catch (e: ClientException) {
+    println("4xx response calling BusinessAccessRelationshipsApi#systemUserUpdate")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling BusinessAccessRelationshipsApi#systemUserUpdate")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
+| **systemUserId** | **kotlin.String**| Unique identifier of a system user. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a id="updateBusinessMemberships"></a>

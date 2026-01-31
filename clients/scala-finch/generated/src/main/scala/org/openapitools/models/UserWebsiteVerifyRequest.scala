@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * User website verification request
- * @param website 
  * @param verificationUnderscoremethod 
+ * @param website 
  */
-case class UserWebsiteVerifyRequest(website: Option[String],
-                verificationUnderscoremethod: Option[String]
+case class UserWebsiteVerifyRequest(verificationUnderscoremethod: Option[String],
+                website: Option[String]
                 )
 
 object UserWebsiteVerifyRequest {

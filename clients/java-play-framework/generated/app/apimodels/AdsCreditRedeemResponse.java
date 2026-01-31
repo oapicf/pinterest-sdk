@@ -10,13 +10,9 @@ import javax.validation.Valid;
 /**
  * AdsCreditRedeemResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsCreditRedeemResponse   {
-  @JsonProperty("success")
-  
-  private Boolean success;
-
   @JsonProperty("errorCode")
   
   private Integer errorCode;
@@ -25,22 +21,9 @@ public class AdsCreditRedeemResponse   {
   
   private String errorMessage;
 
-  public AdsCreditRedeemResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-   /**
-   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-   * @return success
-  **/
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
+  @JsonProperty("success")
+  
+  private Boolean success;
 
   public AdsCreditRedeemResponse errorCode(Integer errorCode) {
     this.errorCode = errorCode;
@@ -76,6 +59,23 @@ public class AdsCreditRedeemResponse   {
     this.errorMessage = errorMessage;
   }
 
+  public AdsCreditRedeemResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+   /**
+   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+   * @return success
+  **/
+  public Boolean getSuccess() {
+    return success;
+  }
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,14 +86,14 @@ public class AdsCreditRedeemResponse   {
       return false;
     }
     AdsCreditRedeemResponse adsCreditRedeemResponse = (AdsCreditRedeemResponse) o;
-    return Objects.equals(success, adsCreditRedeemResponse.success) &&
-        Objects.equals(errorCode, adsCreditRedeemResponse.errorCode) &&
-        Objects.equals(errorMessage, adsCreditRedeemResponse.errorMessage);
+    return Objects.equals(errorCode, adsCreditRedeemResponse.errorCode) &&
+        Objects.equals(errorMessage, adsCreditRedeemResponse.errorMessage) &&
+        Objects.equals(success, adsCreditRedeemResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, errorCode, errorMessage);
+    return Objects.hash(errorCode, errorMessage, success);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -102,9 +102,9 @@ public class AdsCreditRedeemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditRedeemResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

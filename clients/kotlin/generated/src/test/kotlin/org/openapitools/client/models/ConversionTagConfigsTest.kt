@@ -25,10 +25,46 @@ class ConversionTagConfigsTest : ShouldSpec() {
         // uncomment below to create an instance of ConversionTagConfigs
         //val modelInstance = ConversionTagConfigs()
 
-        // to test the property `aemEnabled` - Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+        // to test the property `aemDbEnabled` - Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+        should("test aemDbEnabled") {
+            // uncomment below to test the property
+            //modelInstance.aemDbEnabled shouldBe ("TODO")
+        }
+
+        // to test the property `aemEnabled` - Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
         should("test aemEnabled") {
             // uncomment below to test the property
             //modelInstance.aemEnabled shouldBe ("TODO")
+        }
+
+        // to test the property `aemExternalIdEnabled` - Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+        should("test aemExternalIdEnabled") {
+            // uncomment below to test the property
+            //modelInstance.aemExternalIdEnabled shouldBe ("TODO")
+        }
+
+        // to test the property `aemFnlnEnabled` - Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+        should("test aemFnlnEnabled") {
+            // uncomment below to test the property
+            //modelInstance.aemFnlnEnabled shouldBe ("TODO")
+        }
+
+        // to test the property `aemGeEnabled` - Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+        should("test aemGeEnabled") {
+            // uncomment below to test the property
+            //modelInstance.aemGeEnabled shouldBe ("TODO")
+        }
+
+        // to test the property `aemLocEnabled` - Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+        should("test aemLocEnabled") {
+            // uncomment below to test the property
+            //modelInstance.aemLocEnabled shouldBe ("TODO")
+        }
+
+        // to test the property `aemPhEnabled` - Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+        should("test aemPhEnabled") {
+            // uncomment below to test the property
+            //modelInstance.aemPhEnabled shouldBe ("TODO")
         }
 
         // to test the property `mdFrequency` - Metadata ingestion frequency.
@@ -37,34 +73,10 @@ class ConversionTagConfigsTest : ShouldSpec() {
             //modelInstance.mdFrequency shouldBe ("TODO")
         }
 
-        // to test the property `aemFnlnEnabled` - Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-        should("test aemFnlnEnabled") {
+        // to test the property `noCodeCapiDomains` - List of advertiser subdomains configured for NoCodeCAPI calls.
+        should("test noCodeCapiDomains") {
             // uncomment below to test the property
-            //modelInstance.aemFnlnEnabled shouldBe ("TODO")
-        }
-
-        // to test the property `aemPhEnabled` - Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-        should("test aemPhEnabled") {
-            // uncomment below to test the property
-            //modelInstance.aemPhEnabled shouldBe ("TODO")
-        }
-
-        // to test the property `aemGeEnabled` - Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-        should("test aemGeEnabled") {
-            // uncomment below to test the property
-            //modelInstance.aemGeEnabled shouldBe ("TODO")
-        }
-
-        // to test the property `aemDbEnabled` - Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-        should("test aemDbEnabled") {
-            // uncomment below to test the property
-            //modelInstance.aemDbEnabled shouldBe ("TODO")
-        }
-
-        // to test the property `aemLocEnabled` - Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-        should("test aemLocEnabled") {
-            // uncomment below to test the property
-            //modelInstance.aemLocEnabled shouldBe ("TODO")
+            //modelInstance.noCodeCapiDomains shouldBe ("TODO")
         }
 
     }

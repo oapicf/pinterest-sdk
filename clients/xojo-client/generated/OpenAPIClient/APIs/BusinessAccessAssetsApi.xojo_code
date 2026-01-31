@@ -400,12 +400,13 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BusinessAssetMembersGet(, businessId As String, assetId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional startIndex As Xoson.O.OptionalInteger)
+		Sub BusinessAssetMembersGet(, businessId As String, assetId As String, Optional fetchSystemUsers As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional startIndex As Xoson.O.OptionalInteger)
 		  // Operation business_asset_members/get
 		  // Get members with access to asset
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter assetId: (path) Unique identifier of a business asset. 
+		  // - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
@@ -425,7 +426,9 @@ Protected Class BusinessAccessAssetsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If fetchSystemUsers <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("fetch_system_users") + "=" + EncodeURLComponent(fetchSystemUsers.ToString)
+		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
@@ -870,6 +873,10 @@ Protected Class BusinessAccessAssetsApi
 		      Return "PROFILE"
 		    Case Asset_typeEnum_BusinessAssetsGet.AssetGroup
 		      Return "ASSET_GROUP"
+		    Case Asset_typeEnum_BusinessAssetsGet.Catalog
+		      Return "CATALOG"
+		    Case Asset_typeEnum_BusinessAssetsGet.Consumer
+		      Return "CONSUMER"
 		    
 		  End Select
 		  Return ""
@@ -1034,6 +1041,10 @@ Protected Class BusinessAccessAssetsApi
 		      Return "PROFILE"
 		    Case Asset_typeEnum_BusinessMemberAssetsGet.AssetGroup
 		      Return "ASSET_GROUP"
+		    Case Asset_typeEnum_BusinessMemberAssetsGet.Catalog
+		      Return "CATALOG"
+		    Case Asset_typeEnum_BusinessMemberAssetsGet.Consumer
+		      Return "CONSUMER"
 		    
 		  End Select
 		  Return ""
@@ -1467,6 +1478,10 @@ Protected Class BusinessAccessAssetsApi
 		      Return "PROFILE"
 		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.AssetGroup
 		      Return "ASSET_GROUP"
+		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.Catalog
+		      Return "CATALOG"
+		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.Consumer
+		      Return "CONSUMER"
 		    
 		  End Select
 		  Return ""
@@ -1820,6 +1835,8 @@ Protected Class BusinessAccessAssetsApi
         AdAccount
         Profile
         AssetGroup
+        Catalog
+        Consumer
 		
 	#tag EndEnum
 
@@ -1828,6 +1845,8 @@ Protected Class BusinessAccessAssetsApi
         AdAccount
         Profile
         AssetGroup
+        Catalog
+        Consumer
 		
 	#tag EndEnum
 
@@ -1836,6 +1855,8 @@ Protected Class BusinessAccessAssetsApi
         AdAccount
         Profile
         AssetGroup
+        Catalog
+        Consumer
 		
 	#tag EndEnum
 

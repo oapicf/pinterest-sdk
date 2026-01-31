@@ -110,7 +110,7 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessInviteApi apiInstance = new BusinessAccessInviteApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Business id
+    String businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
     CancelInvitesBody cancelInvitesBody = new CancelInvitesBody(); // CancelInvitesBody | A list with invite ids
     try {
       DeleteInvitesResultsResponseArray result = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody);
@@ -130,7 +130,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **businessId** | **String**| Business id | |
+| **businessId** | **String**| Unique identifier of the requesting business. | |
 | **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | |
 
 ### Return type
@@ -250,7 +250,7 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessInviteApi apiInstance = new BusinessAccessInviteApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Business id
+    String businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
     CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = new CreateMembershipOrPartnershipInvitesBody(); // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
     try {
       CreateInvitesResultsResponseArray result = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody);
@@ -270,7 +270,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **businessId** | **String**| Business id | |
+| **businessId** | **String**| Unique identifier of the requesting business. | |
 | **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
 
 ### Return type

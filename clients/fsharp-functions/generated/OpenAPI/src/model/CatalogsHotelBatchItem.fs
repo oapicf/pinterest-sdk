@@ -15,12 +15,12 @@ module CatalogsHotelBatchItem =
 
   [<CLIMutable>]
   type CatalogsHotelBatchItem = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsUpdatableHotelAttributes;
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsUpdatableHotelAttributes;
   }
 
   //#endregion

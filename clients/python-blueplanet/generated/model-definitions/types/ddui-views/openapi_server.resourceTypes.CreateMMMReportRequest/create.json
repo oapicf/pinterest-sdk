@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "countries" },
+      {"model": "columns" },
+      {"model": "end_date" },
+      {"model": "granularity" },
+      {"model": "level" },
+      {"model": "report_name" },
+      {"model": "start_date" },
+      {"model": "targeting_types" },
+    ]
+  }]
+}

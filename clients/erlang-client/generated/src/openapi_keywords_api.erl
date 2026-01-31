@@ -63,7 +63,7 @@ keywords/get(Ctx, AdAccountId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/keywords"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['campaign_id', 'ad_group_id', 'match_types', 'page_size', 'bookmark'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['campaign_id', 'ad_group_id', 'ad_group_ids', 'match_types', 'page_size', 'bookmark'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -105,7 +105,7 @@ trending_keywords/list(Ctx, Region, TrendType, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/trends/keywords/", Region, "/top/", TrendType, ""],
-    QS = lists:flatten([])++openapi_utils:optional_params(['interests', 'genders', 'ages', 'include_keywords', 'normalize_against_group', 'limit'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['interests', 'genders', 'ages', 'include_keywords', 'normalize_against_group', 'limit', 'include_prediction', 'include_demographics'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

@@ -3,17 +3,25 @@ Protected Class AdAccountCreateSubscriptionResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Subscription ID.
+			The Ad Account ID that this lead form belongs to.
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		ad_account_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Base64 encoded key for client to decrypt lead data.
+			API version.
 		#tag EndNote
-		cryptographic_key As Xoson.O.OptionalString
+		api_version As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Subscription creation time. Unix timestamp in milliseconds.
+		#tag EndNote
+		created_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -27,9 +35,41 @@ Protected Class AdAccountCreateSubscriptionResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Subscription creation time. Unix timestamp in milliseconds.
+			Base64 encoded key for client to decrypt lead data.
 		#tag EndNote
-		created_time As Xoson.O.OptionalInteger
+		cryptographic_key As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Subscription ID.
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Lead form ID.
+		#tag EndNote
+		lead_form_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			User account used to subscribe lead data.
+		#tag EndNote
+		user_account_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Standard HTTPS webhook URL.
+		#tag EndNote
+		webhook_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -70,7 +110,31 @@ Protected Class AdAccountCreateSubscriptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="ad_account_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="api_version"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="cryptographic_algorithm"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -86,7 +150,7 @@ Protected Class AdAccountCreateSubscriptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="cryptographic_algorithm"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -94,11 +158,27 @@ Protected Class AdAccountCreateSubscriptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_time"
+			Name="lead_form_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="user_account_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="webhook_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

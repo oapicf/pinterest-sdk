@@ -8,20 +8,20 @@ import org.openapitools._
 
 /**
  * 
- * @param reportUnderscoretype 
  * @param catalogUnderscoreid ID of the catalog entity.
  * @param code The event code that a diagnostics aggregated number references
  * @param codeUnderscorelabel A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
  * @param message Title message describing the diagnostic issue
  * @param occurrences Number of occurrences of the issue
+ * @param reportUnderscoretype 
  * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
  */
-case class CatalogsReportFeedIngestionStats(reportUnderscoretype: Option[String],
-                catalogUnderscoreid: Option[String],
+case class CatalogsReportFeedIngestionStats(catalogUnderscoreid: Option[String],
                 code: Option[Int],
                 codeUnderscorelabel: Option[String],
                 message: Option[String],
                 occurrences: Option[Int],
+                reportUnderscoretype: Option[String],
                 severity: Option[String]
                 )
 

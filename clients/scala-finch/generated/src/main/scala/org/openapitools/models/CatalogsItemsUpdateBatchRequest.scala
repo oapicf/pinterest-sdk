@@ -13,14 +13,14 @@ import scala.collection.immutable.Seq
 /**
  * Request object to update catalogs items
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 case class CatalogsItemsUpdateBatchRequest(country: Country,
+                items: Seq[ItemUpdateBatchRecord],
                 language: String,
-                operation: BatchOperation,
-                items: Seq[ItemUpdateBatchRecord]
+                operation: BatchOperation
                 )
 
 object CatalogsItemsUpdateBatchRequest {

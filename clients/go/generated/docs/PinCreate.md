@@ -4,20 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] [readonly] 
-**CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Link** | Pointer to **NullableString** |  | [optional] 
-**Title** | Pointer to **NullableString** |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**DominantColor** | Pointer to **NullableString** | Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;. | [optional] 
 **AltText** | Pointer to **NullableString** |  | [optional] 
 **BoardId** | Pointer to **string** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | Pointer to **NullableString** | The board section to which this Pin belongs. | [optional] 
-**BoardOwner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
-**Media** | Pointer to [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**DominantColor** | Pointer to **NullableString** | Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;. | [optional] 
+**Link** | Pointer to **NullableString** |  | [optional] 
 **MediaSource** | Pointer to [**PinMediaSource**](PinMediaSource.md) |  | [optional] 
-**ParentPinId** | Pointer to **NullableString** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
-**Note** | Pointer to **NullableString** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
+**ParentPinId** | Pointer to **NullableString** | The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). | [optional] 
+**SponsorId** | Pointer to **NullableString** | The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. | [optional] 
+**Title** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -38,196 +34,6 @@ NewPinCreateWithDefaults instantiates a new PinCreate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
-
-`func (o *PinCreate) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *PinCreate) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *PinCreate) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *PinCreate) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetCreatedAt
-
-`func (o *PinCreate) GetCreatedAt() time.Time`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *PinCreate) GetCreatedAtOk() (*time.Time, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *PinCreate) SetCreatedAt(v time.Time)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-### HasCreatedAt
-
-`func (o *PinCreate) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
-
-### GetLink
-
-`func (o *PinCreate) GetLink() string`
-
-GetLink returns the Link field if non-nil, zero value otherwise.
-
-### GetLinkOk
-
-`func (o *PinCreate) GetLinkOk() (*string, bool)`
-
-GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLink
-
-`func (o *PinCreate) SetLink(v string)`
-
-SetLink sets Link field to given value.
-
-### HasLink
-
-`func (o *PinCreate) HasLink() bool`
-
-HasLink returns a boolean if a field has been set.
-
-### SetLinkNil
-
-`func (o *PinCreate) SetLinkNil(b bool)`
-
- SetLinkNil sets the value for Link to be an explicit nil
-
-### UnsetLink
-`func (o *PinCreate) UnsetLink()`
-
-UnsetLink ensures that no value is present for Link, not even an explicit nil
-### GetTitle
-
-`func (o *PinCreate) GetTitle() string`
-
-GetTitle returns the Title field if non-nil, zero value otherwise.
-
-### GetTitleOk
-
-`func (o *PinCreate) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTitle
-
-`func (o *PinCreate) SetTitle(v string)`
-
-SetTitle sets Title field to given value.
-
-### HasTitle
-
-`func (o *PinCreate) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
-
-### SetTitleNil
-
-`func (o *PinCreate) SetTitleNil(b bool)`
-
- SetTitleNil sets the value for Title to be an explicit nil
-
-### UnsetTitle
-`func (o *PinCreate) UnsetTitle()`
-
-UnsetTitle ensures that no value is present for Title, not even an explicit nil
-### GetDescription
-
-`func (o *PinCreate) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *PinCreate) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *PinCreate) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *PinCreate) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *PinCreate) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *PinCreate) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetDominantColor
-
-`func (o *PinCreate) GetDominantColor() string`
-
-GetDominantColor returns the DominantColor field if non-nil, zero value otherwise.
-
-### GetDominantColorOk
-
-`func (o *PinCreate) GetDominantColorOk() (*string, bool)`
-
-GetDominantColorOk returns a tuple with the DominantColor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDominantColor
-
-`func (o *PinCreate) SetDominantColor(v string)`
-
-SetDominantColor sets DominantColor field to given value.
-
-### HasDominantColor
-
-`func (o *PinCreate) HasDominantColor() bool`
-
-HasDominantColor returns a boolean if a field has been set.
-
-### SetDominantColorNil
-
-`func (o *PinCreate) SetDominantColorNil(b bool)`
-
- SetDominantColorNil sets the value for DominantColor to be an explicit nil
-
-### UnsetDominantColor
-`func (o *PinCreate) UnsetDominantColor()`
-
-UnsetDominantColor ensures that no value is present for DominantColor, not even an explicit nil
 ### GetAltText
 
 `func (o *PinCreate) GetAltText() string`
@@ -323,56 +129,111 @@ HasBoardSectionId returns a boolean if a field has been set.
 `func (o *PinCreate) UnsetBoardSectionId()`
 
 UnsetBoardSectionId ensures that no value is present for BoardSectionId, not even an explicit nil
-### GetBoardOwner
+### GetDescription
 
-`func (o *PinCreate) GetBoardOwner() BoardOwner`
+`func (o *PinCreate) GetDescription() string`
 
-GetBoardOwner returns the BoardOwner field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetBoardOwnerOk
+### GetDescriptionOk
 
-`func (o *PinCreate) GetBoardOwnerOk() (*BoardOwner, bool)`
+`func (o *PinCreate) GetDescriptionOk() (*string, bool)`
 
-GetBoardOwnerOk returns a tuple with the BoardOwner field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBoardOwner
+### SetDescription
 
-`func (o *PinCreate) SetBoardOwner(v BoardOwner)`
+`func (o *PinCreate) SetDescription(v string)`
 
-SetBoardOwner sets BoardOwner field to given value.
+SetDescription sets Description field to given value.
 
-### HasBoardOwner
+### HasDescription
 
-`func (o *PinCreate) HasBoardOwner() bool`
+`func (o *PinCreate) HasDescription() bool`
 
-HasBoardOwner returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### GetMedia
+### SetDescriptionNil
 
-`func (o *PinCreate) GetMedia() PinMedia`
+`func (o *PinCreate) SetDescriptionNil(b bool)`
 
-GetMedia returns the Media field if non-nil, zero value otherwise.
+ SetDescriptionNil sets the value for Description to be an explicit nil
 
-### GetMediaOk
+### UnsetDescription
+`func (o *PinCreate) UnsetDescription()`
 
-`func (o *PinCreate) GetMediaOk() (*PinMedia, bool)`
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetDominantColor
 
-GetMediaOk returns a tuple with the Media field if it's non-nil, zero value otherwise
+`func (o *PinCreate) GetDominantColor() string`
+
+GetDominantColor returns the DominantColor field if non-nil, zero value otherwise.
+
+### GetDominantColorOk
+
+`func (o *PinCreate) GetDominantColorOk() (*string, bool)`
+
+GetDominantColorOk returns a tuple with the DominantColor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMedia
+### SetDominantColor
 
-`func (o *PinCreate) SetMedia(v PinMedia)`
+`func (o *PinCreate) SetDominantColor(v string)`
 
-SetMedia sets Media field to given value.
+SetDominantColor sets DominantColor field to given value.
 
-### HasMedia
+### HasDominantColor
 
-`func (o *PinCreate) HasMedia() bool`
+`func (o *PinCreate) HasDominantColor() bool`
 
-HasMedia returns a boolean if a field has been set.
+HasDominantColor returns a boolean if a field has been set.
 
+### SetDominantColorNil
+
+`func (o *PinCreate) SetDominantColorNil(b bool)`
+
+ SetDominantColorNil sets the value for DominantColor to be an explicit nil
+
+### UnsetDominantColor
+`func (o *PinCreate) UnsetDominantColor()`
+
+UnsetDominantColor ensures that no value is present for DominantColor, not even an explicit nil
+### GetLink
+
+`func (o *PinCreate) GetLink() string`
+
+GetLink returns the Link field if non-nil, zero value otherwise.
+
+### GetLinkOk
+
+`func (o *PinCreate) GetLinkOk() (*string, bool)`
+
+GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLink
+
+`func (o *PinCreate) SetLink(v string)`
+
+SetLink sets Link field to given value.
+
+### HasLink
+
+`func (o *PinCreate) HasLink() bool`
+
+HasLink returns a boolean if a field has been set.
+
+### SetLinkNil
+
+`func (o *PinCreate) SetLinkNil(b bool)`
+
+ SetLinkNil sets the value for Link to be an explicit nil
+
+### UnsetLink
+`func (o *PinCreate) UnsetLink()`
+
+UnsetLink ensures that no value is present for Link, not even an explicit nil
 ### GetMediaSource
 
 `func (o *PinCreate) GetMediaSource() PinMediaSource`
@@ -433,41 +294,76 @@ HasParentPinId returns a boolean if a field has been set.
 `func (o *PinCreate) UnsetParentPinId()`
 
 UnsetParentPinId ensures that no value is present for ParentPinId, not even an explicit nil
-### GetNote
+### GetSponsorId
 
-`func (o *PinCreate) GetNote() string`
+`func (o *PinCreate) GetSponsorId() string`
 
-GetNote returns the Note field if non-nil, zero value otherwise.
+GetSponsorId returns the SponsorId field if non-nil, zero value otherwise.
 
-### GetNoteOk
+### GetSponsorIdOk
 
-`func (o *PinCreate) GetNoteOk() (*string, bool)`
+`func (o *PinCreate) GetSponsorIdOk() (*string, bool)`
 
-GetNoteOk returns a tuple with the Note field if it's non-nil, zero value otherwise
+GetSponsorIdOk returns a tuple with the SponsorId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNote
+### SetSponsorId
 
-`func (o *PinCreate) SetNote(v string)`
+`func (o *PinCreate) SetSponsorId(v string)`
 
-SetNote sets Note field to given value.
+SetSponsorId sets SponsorId field to given value.
 
-### HasNote
+### HasSponsorId
 
-`func (o *PinCreate) HasNote() bool`
+`func (o *PinCreate) HasSponsorId() bool`
 
-HasNote returns a boolean if a field has been set.
+HasSponsorId returns a boolean if a field has been set.
 
-### SetNoteNil
+### SetSponsorIdNil
 
-`func (o *PinCreate) SetNoteNil(b bool)`
+`func (o *PinCreate) SetSponsorIdNil(b bool)`
 
- SetNoteNil sets the value for Note to be an explicit nil
+ SetSponsorIdNil sets the value for SponsorId to be an explicit nil
 
-### UnsetNote
-`func (o *PinCreate) UnsetNote()`
+### UnsetSponsorId
+`func (o *PinCreate) UnsetSponsorId()`
 
-UnsetNote ensures that no value is present for Note, not even an explicit nil
+UnsetSponsorId ensures that no value is present for SponsorId, not even an explicit nil
+### GetTitle
+
+`func (o *PinCreate) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *PinCreate) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *PinCreate) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *PinCreate) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
+### SetTitleNil
+
+`func (o *PinCreate) SetTitleNil(b bool)`
+
+ SetTitleNil sets the value for Title to be an explicit nil
+
+### UnsetTitle
+`func (o *PinCreate) UnsetTitle()`
+
+UnsetTitle ensures that no value is present for Title, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

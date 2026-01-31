@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeleteAssetGroupResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeleteAssetGroupResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeleteAssetGroupResponseExceptionsInner = openapi_server.resourceTypes.DeleteAssetGroupResponseExceptionsInner
+}
+resourceTypes {
+
+  DeleteAssetGroupResponse {
+    title = DeleteAssetGroupResponse
+    description = DeleteAssetGroupResponse
+    derivedFrom = Root
+    properties {
+        deleted_asset_groups {
+          type = array
+          items.type =  string
+          description = "A list of ids of successfully deleted asset groups."
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = DeleteAssetGroupResponseExceptionsInner
+          description = "A list of errors associated with the asset groups. Will be returned if there is an error."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeleteAssetGroupResponse {
+    title = DeleteAssetGroupResponse
+    description = DeleteAssetGroupResponse
+    implements = openapi_server.resourceTypes.DeleteAssetGroupResponse
+
+  }
+}

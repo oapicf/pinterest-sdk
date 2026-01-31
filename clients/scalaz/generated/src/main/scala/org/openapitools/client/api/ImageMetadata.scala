@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import ImageMetadata._
 
 case class ImageMetadata (
-  itemType: Option[String],
-title: Option[String],
-description: Option[String],
+  description: Option[String],
+images: Option[ImageSize],
+itemType: Option[String],
 link: Option[String],
-images: Option[ImageMetadataImages])
+title: Option[String])
 
 object ImageMetadata {
   import DateTimeCodecs._

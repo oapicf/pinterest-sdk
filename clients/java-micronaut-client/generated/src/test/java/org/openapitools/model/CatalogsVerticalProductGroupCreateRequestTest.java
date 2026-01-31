@@ -30,6 +30,14 @@ public class CatalogsVerticalProductGroupCreateRequestTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -38,11 +46,11 @@ public class CatalogsVerticalProductGroupCreateRequestTest {
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'country'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
+    public void countryTest() {
+        // TODO: test country
     }
 
     /**
@@ -62,27 +70,19 @@ public class CatalogsVerticalProductGroupCreateRequestTest {
     }
 
     /**
-     * Test the property 'catalogId'
-     */
-    @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
-    }
-
-    /**
-     * Test the property 'country'
-     */
-    @Test
-    public void countryTest() {
-        // TODO: test country
-    }
-
-    /**
      * Test the property 'locale'
      */
     @Test
     public void localeTest() {
         // TODO: test locale
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
 }

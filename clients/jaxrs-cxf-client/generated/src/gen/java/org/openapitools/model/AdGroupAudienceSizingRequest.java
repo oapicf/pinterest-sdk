@@ -16,18 +16,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdGroupAudienceSizingRequest  {
   
  /**
-  * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
   */
-  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
 
   private Boolean autoTargetingEnabled = true;
-
- /**
-  * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-  */
-  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
-
-  private PlacementGroupType placementGroup = "ALL";
 
 public enum CreativeTypesEnum {
 
@@ -66,9 +59,19 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
 
   private List<CreativeTypesEnum> creativeTypes;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+  */
+  @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
 
-  private TargetingSpec targetingSpec;
+  private List<AdGroupAudienceSizingRequestKeywordsInner> keywords;
+
+ /**
+  * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  */
+  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
+
+  private PlacementGroupType placementGroup = "ALL";
 
  /**
   * Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
@@ -77,14 +80,11 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
 
   private List<String> productGroupIds;
 
- /**
-  * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
-  */
-  @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
+  @ApiModelProperty(value = "")
 
-  private List<AdGroupAudienceSizingRequestKeywordsInner> keywords;
+  private TargetingSpec targetingSpec;
  /**
-   * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+   * Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
    * @return autoTargetingEnabled
   **/
   @JsonProperty("auto_targeting_enabled")
@@ -98,24 +98,6 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
 
   public AdGroupAudienceSizingRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-    return this;
-  }
-
- /**
-   * &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
-   * @return placementGroup
-  **/
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-  }
-
-  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
     return this;
   }
 
@@ -143,20 +125,43 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
   }
 
  /**
-   * Get targetingSpec
-   * @return targetingSpec
+   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+   * @return keywords
   **/
-  @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
+  @JsonProperty("keywords")
+  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
+    return keywords;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
   }
 
-  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public AdGroupAudienceSizingRequest keywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
+    return this;
+  }
+
+  public AdGroupAudienceSizingRequest addKeywordsItem(AdGroupAudienceSizingRequestKeywordsInner keywordsItem) {
+    this.keywords.add(keywordsItem);
+    return this;
+  }
+
+ /**
+   * &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+   * @return placementGroup
+  **/
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+  }
+
+  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
     return this;
   }
 
@@ -184,25 +189,20 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
   }
 
  /**
-   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
-   * @return keywords
+   * Get targetingSpec
+   * @return targetingSpec
   **/
-  @JsonProperty("keywords")
-  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
-    return keywords;
+  @JsonProperty("targeting_spec")
+  public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
   }
 
-  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
   }
 
-  public AdGroupAudienceSizingRequest keywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
-    return this;
-  }
-
-  public AdGroupAudienceSizingRequest addKeywordsItem(AdGroupAudienceSizingRequestKeywordsInner keywordsItem) {
-    this.keywords.add(keywordsItem);
+  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
     return this;
   }
 
@@ -216,16 +216,16 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
     }
     AdGroupAudienceSizingRequest adGroupAudienceSizingRequest = (AdGroupAudienceSizingRequest) o;
     return Objects.equals(this.autoTargetingEnabled, adGroupAudienceSizingRequest.autoTargetingEnabled) &&
-        Objects.equals(this.placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(this.creativeTypes, adGroupAudienceSizingRequest.creativeTypes) &&
-        Objects.equals(this.targetingSpec, adGroupAudienceSizingRequest.targetingSpec) &&
+        Objects.equals(this.keywords, adGroupAudienceSizingRequest.keywords) &&
+        Objects.equals(this.placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(this.productGroupIds, adGroupAudienceSizingRequest.productGroupIds) &&
-        Objects.equals(this.keywords, adGroupAudienceSizingRequest.keywords);
+        Objects.equals(this.targetingSpec, adGroupAudienceSizingRequest.targetingSpec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, placementGroup, creativeTypes, targetingSpec, productGroupIds, keywords);
+    return Objects.hash(autoTargetingEnabled, creativeTypes, keywords, placementGroup, productGroupIds, targetingSpec);
   }
 
   @Override
@@ -234,11 +234,11 @@ REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(Str
     sb.append("class AdGroupAudienceSizingRequest {\n");
     
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    creativeTypes: ").append(toIndentedString(creativeTypes)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("}");
     return sb.toString();
   }

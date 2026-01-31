@@ -7,46 +7,28 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.CatalogsType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object for creating a catalog.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object for creating a catalog.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateRequest   {
   
-
-  /**
-   * Type of the catalog entity.
-   */
-  public enum CatalogTypeEnum {
-    HOTEL("HOTEL");
-    private String value;
-
-    CatalogTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
   private String name;
 
   /**
-   * Type of the catalog entity.
    **/
   
-  @ApiModelProperty(required = true, value = "Type of the catalog entity.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogTypeEnum getCatalogType() {
+  @Valid
+  public CatalogsType getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 

@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_feed_product_counts/0]).
 
 -type openapi_catalogs_feed_product_counts() ::
-  [ {'original', integer() }
-  | {'ingested', integer() }
+  [ {'ingested', integer() }
+  | {'original', integer() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_catalogs_feed_product_counts() ->
     openapi_catalogs_feed_product_counts([]).
 
 openapi_catalogs_feed_product_counts(Fields) ->
-  Default = [ {'original', integer() }
-            , {'ingested', integer() }
+  Default = [ {'ingested', integer() }
+            , {'original', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

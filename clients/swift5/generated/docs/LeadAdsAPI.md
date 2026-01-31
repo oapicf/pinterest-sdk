@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adAccountsSubscriptionsDelById**](LeadAdsAPI.md#adaccountssubscriptionsdelbyid) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription
-[**adAccountsSubscriptionsGetById**](LeadAdsAPI.md#adaccountssubscriptionsgetbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription
+[**adAccountsSubscriptionsGetById**](LeadAdsAPI.md#adaccountssubscriptionsgetbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID
 [**adAccountsSubscriptionsGetList**](LeadAdsAPI.md#adaccountssubscriptionsgetlist) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions
 [**adAccountsSubscriptionsPost**](LeadAdsAPI.md#adaccountssubscriptionspost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Delete lead ads subscription
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
 ### Example
 ```swift
@@ -64,12 +64,12 @@ Void (empty response body)
 
 # **adAccountsSubscriptionsGetById**
 ```swift
-    open class func adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String, completion: @escaping (_ data: AdAccountGetSubscriptionResponse?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String, completion: @escaping (_ data: LeadSubscription?, _ error: Error?) -> Void)
 ```
 
-Get lead ads subscription
+Get lead ads subscription by ID
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
 ### Example
 ```swift
@@ -79,7 +79,7 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let subscriptionId = "subscriptionId_example" // String | Unique identifier of a subscription.
 
-// Get lead ads subscription
+// Get lead ads subscription by ID
 LeadAdsAPI.adAccountsSubscriptionsGetById(adAccountId: adAccountId, subscriptionId: subscriptionId) { (response, error) in
     guard error == nil else {
         print(error)
@@ -101,11 +101,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AdAccountGetSubscriptionResponse**](AdAccountGetSubscriptionResponse.md)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -116,12 +116,12 @@ Name | Type | Description  | Notes
 
 # **adAccountsSubscriptionsGetList**
 ```swift
-    open class func adAccountsSubscriptionsGetList(adAccountId: String, pageSize: Int? = nil, bookmark: String? = nil, completion: @escaping (_ data: AdAccountsSubscriptionsGetList200Response?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsGetList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AdAccountsSubscriptionsGetList200Response?, _ error: Error?) -> Void)
 ```
 
 Get lead ads subscriptions
 
-Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
 ### Example
 ```swift
@@ -129,11 +129,11 @@ Get the advertiser's list of lead ads subscriptions. - Only requests for the OWN
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
+let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get lead ads subscriptions
-LeadAdsAPI.adAccountsSubscriptionsGetList(adAccountId: adAccountId, pageSize: pageSize, bookmark: bookmark) { (response, error) in
+LeadAdsAPI.adAccountsSubscriptionsGetList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -150,8 +150,8 @@ LeadAdsAPI.adAccountsSubscriptionsGetList(adAccountId: adAccountId, pageSize: pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -170,12 +170,12 @@ Name | Type | Description  | Notes
 
 # **adAccountsSubscriptionsPost**
 ```swift
-    open class func adAccountsSubscriptionsPost(adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, completion: @escaping (_ data: AdAccountCreateSubscriptionResponse?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsPost(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, completion: @escaping (_ data: LeadSubscription?, _ error: Error?) -> Void)
 ```
 
 Create lead ads subscription
 
-Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 
 ### Example
 ```swift
@@ -183,10 +183,10 @@ Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let adAccountCreateSubscriptionRequest = AdAccountCreateSubscriptionRequest(webhookUrl: "webhookUrl_example", leadFormId: "leadFormId_example", partnerAccessToken: "partnerAccessToken_example", partnerRefreshToken: "partnerRefreshToken_example", partnerMetadata: AdAccountCreateSubscriptionRequest_partner_metadata(subscriberKey: "subscriberKey_example")) // AdAccountCreateSubscriptionRequest | Subscription to create.
+let leadSubscriptionPostParamsCreate = LeadSubscriptionPostParamsCreate(leadFormId: "leadFormId_example", webhookUrl: "webhookUrl_example", partnerAccessToken: "partnerAccessToken_example", partnerMetadata: LeadSubscriptionPostParamsCreate_allOf_partner_metadata(subscriberKey: "subscriberKey_example"), partnerRefreshToken: "partnerRefreshToken_example") // LeadSubscriptionPostParamsCreate | 
 
 // Create lead ads subscription
-LeadAdsAPI.adAccountsSubscriptionsPost(adAccountId: adAccountId, adAccountCreateSubscriptionRequest: adAccountCreateSubscriptionRequest) { (response, error) in
+LeadAdsAPI.adAccountsSubscriptionsPost(adAccountId: adAccountId, leadSubscriptionPostParamsCreate: leadSubscriptionPostParamsCreate) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -203,11 +203,11 @@ LeadAdsAPI.adAccountsSubscriptionsPost(adAccountId: adAccountId, adAccountCreate
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
- **adAccountCreateSubscriptionRequest** | [**AdAccountCreateSubscriptionRequest**](AdAccountCreateSubscriptionRequest.md) | Subscription to create. | 
+ **leadSubscriptionPostParamsCreate** | [**LeadSubscriptionPostParamsCreate**](LeadSubscriptionPostParamsCreate.md) |  | 
 
 ### Return type
 
-[**AdAccountCreateSubscriptionResponse**](AdAccountCreateSubscriptionResponse.md)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

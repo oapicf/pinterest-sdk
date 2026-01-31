@@ -22,13 +22,13 @@ pin_media_source_pin_url_t* instantiate_pin_media_source_pin_url(int include_opt
   pin_media_source_pin_url_t* pin_media_source_pin_url = NULL;
   if (include_optional) {
     pin_media_source_pin_url = pin_media_source_pin_url_create(
-      pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_pin_url,
-      1
+      1,
+      pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_pin_url
     );
   } else {
     pin_media_source_pin_url = pin_media_source_pin_url_create(
-      pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_pin_url,
-      1
+      1,
+      pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_pin_url
     );
   }
 

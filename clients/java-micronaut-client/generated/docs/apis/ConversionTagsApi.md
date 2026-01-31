@@ -6,7 +6,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |------------- | ------------- | -------------|
 | [**conversionTagsCreate**](ConversionTagsApi.md#conversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 | [**conversionTagsGet**](ConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-| [**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+| [**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 | [**ocpmEligibleConversionTagsGet**](ConversionTagsApi.md#ocpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 | [**pageVisitConversionTagsGet**](ConversionTagsApi.md#pageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
 
@@ -42,22 +42,22 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="conversionTagsCreate"></a>
 # **conversionTagsCreate**
 ```java
-Mono<ConversionTagResponse> ConversionTagsApi.conversionTagsCreate(adAccountIdconversionTagCreate)
+Mono<ConversionTag> ConversionTagsApi.conversionTagsCreate(adAccountIdconversionTagCreate)
 ```
 
 Create conversion tag
 
-Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create | |
+| **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)|  | |
 
 
 ### Return type
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -69,7 +69,7 @@ Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinte
 <a id="conversionTagsGet"></a>
 # **conversionTagsGet**
 ```java
-Mono<ConversionTagResponse> ConversionTagsApi.conversionTagsGet(adAccountIdconversionTagId)
+Mono<ConversionTag> ConversionTagsApi.conversionTagsGet(adAccountIdconversionTagId)
 ```
 
 Get conversion tag
@@ -84,10 +84,11 @@ Get information about an existing conversion tag.
 
 
 ### Return type
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -96,10 +97,10 @@ Get information about an existing conversion tag.
 <a id="conversionTagsList"></a>
 # **conversionTagsList**
 ```java
-Mono<ConversionTagListResponse> ConversionTagsApi.conversionTagsList(adAccountIdfilterDeleted)
+Mono<ConversionTagsList200Response> ConversionTagsApi.conversionTagsList(adAccountIdfilterDeleted)
 ```
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -107,14 +108,15 @@ List conversion tags associated with an ad account.
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **filterDeleted** | `Boolean`| Filter out deleted tags. | [optional parameter] [default to `false`] |
+| **filterDeleted** | `Boolean`| Filter by deleted status | [optional parameter] [default to `false`] |
 
 
 ### Return type
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -141,6 +143,7 @@ Get Ocpm eligible conversion tag events for an ad account.
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -170,6 +173,7 @@ Get all page visit conversion tag events for an ad account.
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined

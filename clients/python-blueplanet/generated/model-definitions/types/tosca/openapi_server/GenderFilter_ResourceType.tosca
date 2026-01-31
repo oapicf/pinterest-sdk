@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GenderFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GenderFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleGenderCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleGenderCriteria
+}
+resourceTypes {
+
+  GenderFilter {
+    title = GenderFilter
+    description = GenderFilter
+    derivedFrom = Root
+    properties {
+        gender {
+          type = CatalogsProductGroupMultipleGenderCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GenderFilter {
+    title = GenderFilter
+    description = GenderFilter
+    implements = openapi_server.resourceTypes.GenderFilter
+
+  }
+}

@@ -75,6 +75,7 @@ private class OASAudienceTest {
         Map<String, String> x-property-mappings = audience.getx-property-mappings();
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('audienceType', x-property-mappings.get('audience_type'));
+        System.assertEquals('createdByCompanyName', x-property-mappings.get('created_by_company_name'));
         System.assertEquals('createdTimestamp', x-property-mappings.get('created_timestamp'));
         System.assertEquals('updatedTimestamp', x-property-mappings.get('updated_timestamp'));
     }

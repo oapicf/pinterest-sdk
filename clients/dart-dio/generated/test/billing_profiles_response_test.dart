@@ -7,9 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BillingProfilesResponse, () {
-    // Billing ID.
-    // String id
-    test('to test the property `id`', () async {
+    // Advertiser ID of the billing.
+    // String advertiserId
+    test('to test the property `advertiserId`', () async {
+      // TODO
+    });
+
+    // Billing type of the advertiser
+    // String billingType
+    test('to test the property `billingType`', () async {
       // TODO
     });
 
@@ -19,21 +25,21 @@ void main() {
       // TODO
     });
 
-    // Status of the billing.
-    // String status
-    test('to test the property `status`', () async {
-      // TODO
-    });
-
-    // Advertiser ID of the billing.
-    // String advertiserId
-    test('to test the property `advertiserId`', () async {
+    // Billing ID.
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
     // Brand of the payment method.
     // String paymentMethodBrand
     test('to test the property `paymentMethodBrand`', () async {
+      // TODO
+    });
+
+    // Status of the billing.
+    // String status
+    test('to test the property `status`', () async {
       // TODO
     });
 

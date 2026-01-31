@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Type of asset.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum GetBusinessAssetTypeResponse {
   
   AD_ACCOUNT("AD_ACCOUNT"),
@@ -29,7 +29,9 @@ public enum GetBusinessAssetTypeResponse {
   
   ASSET_GROUP("ASSET_GROUP"),
   
-  CONVERSION_TAG("CONVERSION_TAG");
+  CONVERSION_TAG("CONVERSION_TAG"),
+  
+  CATALOG("CATALOG");
 
   private final String value;
 

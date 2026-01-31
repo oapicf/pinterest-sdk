@@ -22,21 +22,21 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param assetId Unique identifier of the business asset.
+ * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param partnerType If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
  */
 
 
 data class DeletePartnerAssetAccessBodyAccessesInner (
 
-    /* Unique identifier of a business partner to update asset access to. */
-    @Json(name = "partner_id")
-    val partnerId: kotlin.String,
-
     /* Unique identifier of the business asset. */
     @Json(name = "asset_id")
     val assetId: kotlin.String,
+
+    /* Unique identifier of a business partner to update asset access to. */
+    @Json(name = "partner_id")
+    val partnerId: kotlin.String,
 
     /* If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset. */
     @Json(name = "partner_type")

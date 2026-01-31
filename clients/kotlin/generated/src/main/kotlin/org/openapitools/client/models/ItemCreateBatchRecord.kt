@@ -23,19 +23,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing an item batch record to create items
  *
- * @param itemId The catalog item id in the merchant namespace
  * @param attributes 
+ * @param itemId The catalog item id in the merchant namespace
  */
 
 
 data class ItemCreateBatchRecord (
 
+    @Json(name = "attributes")
+    val attributes: ItemAttributesRequest? = null,
+
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
-    val itemId: kotlin.String? = null,
-
-    @Json(name = "attributes")
-    val attributes: ItemAttributesRequest? = null
+    val itemId: kotlin.String? = null
 
 ) {
 

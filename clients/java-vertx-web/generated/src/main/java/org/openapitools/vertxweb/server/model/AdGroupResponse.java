@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,22 +22,8 @@ import org.openapitools.vertxweb.server.model.TrackingUrls;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdGroupResponse   {
   
-  private String name;
-  private EntityStatus status;
-  private Integer budgetInMicroCurrency;
-  private Integer bidInMicroCurrency;
-  private OptimizationGoalMetadata optimizationGoalMetadata;
-  private BudgetType budgetType;
-  private Integer startTime;
-  private Integer endTime;
-  private TargetingSpec targetingSpec;
-  private Integer lifetimeFrequencyCap;
-  private TrackingUrls trackingUrls;
   private Boolean autoTargetingEnabled;
-  private PlacementGroupType placementGroup;
-  private PacingDeliveryType pacingDeliveryType;
-  private String campaignId;
-  private ActionType billableEvent;
+  private Integer bidInMicroCurrency;
 
 
   public enum BidStrategyTypeEnum {
@@ -58,12 +45,46 @@ public class AdGroupResponse   {
   }
 
   private BidStrategyTypeEnum bidStrategyType;
+  private ActionType billableEvent;
+  private Integer budgetInMicroCurrency;
+  private BudgetType budgetType;
+  private String campaignId;
+  private Integer endTime;
+  private Boolean isCreativeOptimization;
+  private Integer lifetimeFrequencyCap;
+  private String name;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
+  private PacingDeliveryType pacingDeliveryType;
+  private PlacementGroupType placementGroup;
+
+
+  public enum PromotionApplicationLevelEnum {
+    NONE("NONE"),
+    ITEM("ITEM"),
+    AD_GROUP("AD_GROUP");
+
+    private String value;
+
+    PromotionApplicationLevelEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private PromotionApplicationLevelEnum promotionApplicationLevel;
+  private String promotionId = "0";
+  private Integer startTime;
+  private EntityStatus status;
+  private TargetingSpec targetingSpec;
   private List<String> targetingTemplateIds;
-  private String id;
+  private TrackingUrls trackingUrls;
   private String adAccountId;
-  private Integer createdTime;
-  private Integer updatedTime;
-  private String type = "adgroup";
+  private BigDecimal bidMultiplier;
 
 
   public enum ConversionLearningModeTypeEnum {
@@ -84,141 +105,50 @@ public class AdGroupResponse   {
   }
 
   private ConversionLearningModeTypeEnum conversionLearningModeType;
-  private AdGroupSummaryStatus summaryStatus;
-  private String feedProfileId;
+  private Integer createdTime;
   private Object dcaAssets = null;
+  private String feedProfileId;
+  private String id;
+  private AdGroupSummaryStatus summaryStatus;
+  private String type = "adgroup";
+  private Integer updatedTime;
 
   public AdGroupResponse () {
 
   }
 
-  public AdGroupResponse (String name, EntityStatus status, Integer budgetInMicroCurrency, Integer bidInMicroCurrency, OptimizationGoalMetadata optimizationGoalMetadata, BudgetType budgetType, Integer startTime, Integer endTime, TargetingSpec targetingSpec, Integer lifetimeFrequencyCap, TrackingUrls trackingUrls, Boolean autoTargetingEnabled, PlacementGroupType placementGroup, PacingDeliveryType pacingDeliveryType, String campaignId, ActionType billableEvent, BidStrategyTypeEnum bidStrategyType, List<String> targetingTemplateIds, String id, String adAccountId, Integer createdTime, Integer updatedTime, String type, ConversionLearningModeTypeEnum conversionLearningModeType, AdGroupSummaryStatus summaryStatus, String feedProfileId, Object dcaAssets) {
-    this.name = name;
-    this.status = status;
-    this.budgetInMicroCurrency = budgetInMicroCurrency;
-    this.bidInMicroCurrency = bidInMicroCurrency;
-    this.optimizationGoalMetadata = optimizationGoalMetadata;
-    this.budgetType = budgetType;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.targetingSpec = targetingSpec;
-    this.lifetimeFrequencyCap = lifetimeFrequencyCap;
-    this.trackingUrls = trackingUrls;
+  public AdGroupResponse (Boolean autoTargetingEnabled, Integer bidInMicroCurrency, BidStrategyTypeEnum bidStrategyType, ActionType billableEvent, Integer budgetInMicroCurrency, BudgetType budgetType, String campaignId, Integer endTime, Boolean isCreativeOptimization, Integer lifetimeFrequencyCap, String name, OptimizationGoalMetadata optimizationGoalMetadata, PacingDeliveryType pacingDeliveryType, PlacementGroupType placementGroup, PromotionApplicationLevelEnum promotionApplicationLevel, String promotionId, Integer startTime, EntityStatus status, TargetingSpec targetingSpec, List<String> targetingTemplateIds, TrackingUrls trackingUrls, String adAccountId, BigDecimal bidMultiplier, ConversionLearningModeTypeEnum conversionLearningModeType, Integer createdTime, Object dcaAssets, String feedProfileId, String id, AdGroupSummaryStatus summaryStatus, String type, Integer updatedTime) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-    this.placementGroup = placementGroup;
-    this.pacingDeliveryType = pacingDeliveryType;
-    this.campaignId = campaignId;
-    this.billableEvent = billableEvent;
-    this.bidStrategyType = bidStrategyType;
-    this.targetingTemplateIds = targetingTemplateIds;
-    this.id = id;
-    this.adAccountId = adAccountId;
-    this.createdTime = createdTime;
-    this.updatedTime = updatedTime;
-    this.type = type;
-    this.conversionLearningModeType = conversionLearningModeType;
-    this.summaryStatus = summaryStatus;
-    this.feedProfileId = feedProfileId;
-    this.dcaAssets = dcaAssets;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
-  }
-  public void setStatus(EntityStatus status) {
-    this.status = status;
-  }
-
-    
-  @JsonProperty("budget_in_micro_currency")
-  public Integer getBudgetInMicroCurrency() {
-    return budgetInMicroCurrency;
-  }
-  public void setBudgetInMicroCurrency(Integer budgetInMicroCurrency) {
-    this.budgetInMicroCurrency = budgetInMicroCurrency;
-  }
-
-    
-  @JsonProperty("bid_in_micro_currency")
-  public Integer getBidInMicroCurrency() {
-    return bidInMicroCurrency;
-  }
-  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
-  }
-
-    
-  @JsonProperty("optimization_goal_metadata")
-  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
-    return optimizationGoalMetadata;
-  }
-  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
-    this.optimizationGoalMetadata = optimizationGoalMetadata;
-  }
-
-    
-  @JsonProperty("budget_type")
-  public BudgetType getBudgetType() {
-    return budgetType;
-  }
-  public void setBudgetType(BudgetType budgetType) {
+    this.bidStrategyType = bidStrategyType;
+    this.billableEvent = billableEvent;
+    this.budgetInMicroCurrency = budgetInMicroCurrency;
     this.budgetType = budgetType;
-  }
-
-    
-  @JsonProperty("start_time")
-  public Integer getStartTime() {
-    return startTime;
-  }
-  public void setStartTime(Integer startTime) {
-    this.startTime = startTime;
-  }
-
-    
-  @JsonProperty("end_time")
-  public Integer getEndTime() {
-    return endTime;
-  }
-  public void setEndTime(Integer endTime) {
+    this.campaignId = campaignId;
     this.endTime = endTime;
-  }
-
-    
-  @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
-  }
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
-  }
-
-    
-  @JsonProperty("lifetime_frequency_cap")
-  public Integer getLifetimeFrequencyCap() {
-    return lifetimeFrequencyCap;
-  }
-  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+    this.isCreativeOptimization = isCreativeOptimization;
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
-  }
-
-    
-  @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
-    return trackingUrls;
-  }
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+    this.name = name;
+    this.optimizationGoalMetadata = optimizationGoalMetadata;
+    this.pacingDeliveryType = pacingDeliveryType;
+    this.placementGroup = placementGroup;
+    this.promotionApplicationLevel = promotionApplicationLevel;
+    this.promotionId = promotionId;
+    this.startTime = startTime;
+    this.status = status;
+    this.targetingSpec = targetingSpec;
+    this.targetingTemplateIds = targetingTemplateIds;
     this.trackingUrls = trackingUrls;
+    this.adAccountId = adAccountId;
+    this.bidMultiplier = bidMultiplier;
+    this.conversionLearningModeType = conversionLearningModeType;
+    this.createdTime = createdTime;
+    this.dcaAssets = dcaAssets;
+    this.feedProfileId = feedProfileId;
+    this.id = id;
+    this.summaryStatus = summaryStatus;
+    this.type = type;
+    this.updatedTime = updatedTime;
   }
 
     
@@ -231,39 +161,12 @@ public class AdGroupResponse   {
   }
 
     
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
+  @JsonProperty("bid_in_micro_currency")
+  public Integer getBidInMicroCurrency() {
+    return bidInMicroCurrency;
   }
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-  }
-
-    
-  @JsonProperty("pacing_delivery_type")
-  public PacingDeliveryType getPacingDeliveryType() {
-    return pacingDeliveryType;
-  }
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
-    this.pacingDeliveryType = pacingDeliveryType;
-  }
-
-    
-  @JsonProperty("campaign_id")
-  public String getCampaignId() {
-    return campaignId;
-  }
-  public void setCampaignId(String campaignId) {
-    this.campaignId = campaignId;
-  }
-
-    
-  @JsonProperty("billable_event")
-  public ActionType getBillableEvent() {
-    return billableEvent;
-  }
-  public void setBillableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
+  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
     
@@ -276,6 +179,150 @@ public class AdGroupResponse   {
   }
 
     
+  @JsonProperty("billable_event")
+  public ActionType getBillableEvent() {
+    return billableEvent;
+  }
+  public void setBillableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
+  }
+
+    
+  @JsonProperty("budget_in_micro_currency")
+  public Integer getBudgetInMicroCurrency() {
+    return budgetInMicroCurrency;
+  }
+  public void setBudgetInMicroCurrency(Integer budgetInMicroCurrency) {
+    this.budgetInMicroCurrency = budgetInMicroCurrency;
+  }
+
+    
+  @JsonProperty("budget_type")
+  public BudgetType getBudgetType() {
+    return budgetType;
+  }
+  public void setBudgetType(BudgetType budgetType) {
+    this.budgetType = budgetType;
+  }
+
+    
+  @JsonProperty("campaign_id")
+  public String getCampaignId() {
+    return campaignId;
+  }
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+    
+  @JsonProperty("end_time")
+  public Integer getEndTime() {
+    return endTime;
+  }
+  public void setEndTime(Integer endTime) {
+    this.endTime = endTime;
+  }
+
+    
+  @JsonProperty("is_creative_optimization")
+  public Boolean getIsCreativeOptimization() {
+    return isCreativeOptimization;
+  }
+  public void setIsCreativeOptimization(Boolean isCreativeOptimization) {
+    this.isCreativeOptimization = isCreativeOptimization;
+  }
+
+    
+  @JsonProperty("lifetime_frequency_cap")
+  public Integer getLifetimeFrequencyCap() {
+    return lifetimeFrequencyCap;
+  }
+  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+    this.lifetimeFrequencyCap = lifetimeFrequencyCap;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
+  @JsonProperty("optimization_goal_metadata")
+  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
+    return optimizationGoalMetadata;
+  }
+  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+    this.optimizationGoalMetadata = optimizationGoalMetadata;
+  }
+
+    
+  @JsonProperty("pacing_delivery_type")
+  public PacingDeliveryType getPacingDeliveryType() {
+    return pacingDeliveryType;
+  }
+  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+    this.pacingDeliveryType = pacingDeliveryType;
+  }
+
+    
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+  }
+
+    
+  @JsonProperty("promotion_application_level")
+  public PromotionApplicationLevelEnum getPromotionApplicationLevel() {
+    return promotionApplicationLevel;
+  }
+  public void setPromotionApplicationLevel(PromotionApplicationLevelEnum promotionApplicationLevel) {
+    this.promotionApplicationLevel = promotionApplicationLevel;
+  }
+
+    
+  @JsonProperty("promotion_id")
+  public String getPromotionId() {
+    return promotionId;
+  }
+  public void setPromotionId(String promotionId) {
+    this.promotionId = promotionId;
+  }
+
+    
+  @JsonProperty("start_time")
+  public Integer getStartTime() {
+    return startTime;
+  }
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+    
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
+  }
+  public void setStatus(EntityStatus status) {
+    this.status = status;
+  }
+
+    
+  @JsonProperty("targeting_spec")
+  public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
+  }
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
+  }
+
+    
   @JsonProperty("targeting_template_ids")
   public List<String> getTargetingTemplateIds() {
     return targetingTemplateIds;
@@ -285,12 +332,12 @@ public class AdGroupResponse   {
   }
 
     
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("tracking_urls")
+  public TrackingUrls getTrackingUrls() {
+    return trackingUrls;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
+    this.trackingUrls = trackingUrls;
   }
 
     
@@ -303,30 +350,12 @@ public class AdGroupResponse   {
   }
 
     
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
+  @JsonProperty("bid_multiplier")
+  public BigDecimal getBidMultiplier() {
+    return bidMultiplier;
   }
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-    
-  @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
-    return updatedTime;
-  }
-  public void setUpdatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
-  }
-
-    
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
+  public void setBidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
   }
 
     
@@ -339,12 +368,21 @@ public class AdGroupResponse   {
   }
 
     
-  @JsonProperty("summary_status")
-  public AdGroupSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
   }
-  public void setSummaryStatus(AdGroupSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+    
+  @JsonProperty("dca_assets")
+  public Object getDcaAssets() {
+    return dcaAssets;
+  }
+  public void setDcaAssets(Object dcaAssets) {
+    this.dcaAssets = dcaAssets;
   }
 
     
@@ -357,12 +395,39 @@ public class AdGroupResponse   {
   }
 
     
-  @JsonProperty("dca_assets")
-  public Object getDcaAssets() {
-    return dcaAssets;
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
-  public void setDcaAssets(Object dcaAssets) {
-    this.dcaAssets = dcaAssets;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
+  @JsonProperty("summary_status")
+  public AdGroupSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+  public void setSummaryStatus(AdGroupSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+  }
+
+    
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
+  }
+
+    
+  @JsonProperty("updated_time")
+  public Integer getUpdatedTime() {
+    return updatedTime;
+  }
+  public void setUpdatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
   }
 
 
@@ -375,38 +440,42 @@ public class AdGroupResponse   {
       return false;
     }
     AdGroupResponse adGroupResponse = (AdGroupResponse) o;
-    return Objects.equals(name, adGroupResponse.name) &&
-        Objects.equals(status, adGroupResponse.status) &&
-        Objects.equals(budgetInMicroCurrency, adGroupResponse.budgetInMicroCurrency) &&
+    return Objects.equals(autoTargetingEnabled, adGroupResponse.autoTargetingEnabled) &&
         Objects.equals(bidInMicroCurrency, adGroupResponse.bidInMicroCurrency) &&
-        Objects.equals(optimizationGoalMetadata, adGroupResponse.optimizationGoalMetadata) &&
-        Objects.equals(budgetType, adGroupResponse.budgetType) &&
-        Objects.equals(startTime, adGroupResponse.startTime) &&
-        Objects.equals(endTime, adGroupResponse.endTime) &&
-        Objects.equals(targetingSpec, adGroupResponse.targetingSpec) &&
-        Objects.equals(lifetimeFrequencyCap, adGroupResponse.lifetimeFrequencyCap) &&
-        Objects.equals(trackingUrls, adGroupResponse.trackingUrls) &&
-        Objects.equals(autoTargetingEnabled, adGroupResponse.autoTargetingEnabled) &&
-        Objects.equals(placementGroup, adGroupResponse.placementGroup) &&
-        Objects.equals(pacingDeliveryType, adGroupResponse.pacingDeliveryType) &&
-        Objects.equals(campaignId, adGroupResponse.campaignId) &&
-        Objects.equals(billableEvent, adGroupResponse.billableEvent) &&
         Objects.equals(bidStrategyType, adGroupResponse.bidStrategyType) &&
+        Objects.equals(billableEvent, adGroupResponse.billableEvent) &&
+        Objects.equals(budgetInMicroCurrency, adGroupResponse.budgetInMicroCurrency) &&
+        Objects.equals(budgetType, adGroupResponse.budgetType) &&
+        Objects.equals(campaignId, adGroupResponse.campaignId) &&
+        Objects.equals(endTime, adGroupResponse.endTime) &&
+        Objects.equals(isCreativeOptimization, adGroupResponse.isCreativeOptimization) &&
+        Objects.equals(lifetimeFrequencyCap, adGroupResponse.lifetimeFrequencyCap) &&
+        Objects.equals(name, adGroupResponse.name) &&
+        Objects.equals(optimizationGoalMetadata, adGroupResponse.optimizationGoalMetadata) &&
+        Objects.equals(pacingDeliveryType, adGroupResponse.pacingDeliveryType) &&
+        Objects.equals(placementGroup, adGroupResponse.placementGroup) &&
+        Objects.equals(promotionApplicationLevel, adGroupResponse.promotionApplicationLevel) &&
+        Objects.equals(promotionId, adGroupResponse.promotionId) &&
+        Objects.equals(startTime, adGroupResponse.startTime) &&
+        Objects.equals(status, adGroupResponse.status) &&
+        Objects.equals(targetingSpec, adGroupResponse.targetingSpec) &&
         Objects.equals(targetingTemplateIds, adGroupResponse.targetingTemplateIds) &&
-        Objects.equals(id, adGroupResponse.id) &&
+        Objects.equals(trackingUrls, adGroupResponse.trackingUrls) &&
         Objects.equals(adAccountId, adGroupResponse.adAccountId) &&
-        Objects.equals(createdTime, adGroupResponse.createdTime) &&
-        Objects.equals(updatedTime, adGroupResponse.updatedTime) &&
-        Objects.equals(type, adGroupResponse.type) &&
+        Objects.equals(bidMultiplier, adGroupResponse.bidMultiplier) &&
         Objects.equals(conversionLearningModeType, adGroupResponse.conversionLearningModeType) &&
-        Objects.equals(summaryStatus, adGroupResponse.summaryStatus) &&
+        Objects.equals(createdTime, adGroupResponse.createdTime) &&
+        Objects.equals(dcaAssets, adGroupResponse.dcaAssets) &&
         Objects.equals(feedProfileId, adGroupResponse.feedProfileId) &&
-        Objects.equals(dcaAssets, adGroupResponse.dcaAssets);
+        Objects.equals(id, adGroupResponse.id) &&
+        Objects.equals(summaryStatus, adGroupResponse.summaryStatus) &&
+        Objects.equals(type, adGroupResponse.type) &&
+        Objects.equals(updatedTime, adGroupResponse.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, targetingTemplateIds, id, adAccountId, createdTime, updatedTime, type, conversionLearningModeType, summaryStatus, feedProfileId, dcaAssets);
+    return Objects.hash(autoTargetingEnabled, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, budgetType, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, pacingDeliveryType, placementGroup, promotionApplicationLevel, promotionId, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls, adAccountId, bidMultiplier, conversionLearningModeType, createdTime, dcaAssets, feedProfileId, id, summaryStatus, type, updatedTime);
   }
 
   @Override
@@ -414,33 +483,37 @@ public class AdGroupResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdGroupResponse {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    budgetInMicroCurrency: ").append(toIndentedString(budgetInMicroCurrency)).append("\n");
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
-    sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
-    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    lifetimeFrequencyCap: ").append(toIndentedString(lifetimeFrequencyCap)).append("\n");
-    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
-    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
+    sb.append("    budgetInMicroCurrency: ").append(toIndentedString(budgetInMicroCurrency)).append("\n");
+    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    isCreativeOptimization: ").append(toIndentedString(isCreativeOptimization)).append("\n");
+    sb.append("    lifetimeFrequencyCap: ").append(toIndentedString(lifetimeFrequencyCap)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
+    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    promotionApplicationLevel: ").append(toIndentedString(promotionApplicationLevel)).append("\n");
+    sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
     sb.append("    conversionLearningModeType: ").append(toIndentedString(conversionLearningModeType)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
-    sb.append("    feedProfileId: ").append(toIndentedString(feedProfileId)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    dcaAssets: ").append(toIndentedString(dcaAssets)).append("\n");
+    sb.append("    feedProfileId: ").append(toIndentedString(feedProfileId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -13,6 +13,13 @@ API.Client.CatalogsItemsUpsertBatchRequest = function() {}
 API.Client.CatalogsItemsUpsertBatchRequest.prototype.country;
 
 /**
+ * Array with catalogs items
+ * @type {!Array<!API.Client.ItemUpsertBatchRecord>}
+ * @export
+ */
+API.Client.CatalogsItemsUpsertBatchRequest.prototype.items;
+
+/**
  * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
@@ -24,13 +31,6 @@ API.Client.CatalogsItemsUpsertBatchRequest.prototype.language;
  * @export
  */
 API.Client.CatalogsItemsUpsertBatchRequest.prototype.operation;
-
-/**
- * Array with catalogs items
- * @type {!Array<!API.Client.ItemUpsertBatchRecord>}
- * @export
- */
-API.Client.CatalogsItemsUpsertBatchRequest.prototype.items;
 
 /** @enum {string} */
 API.Client.CatalogsItemsUpsertBatchRequest.LanguageEnum = { 

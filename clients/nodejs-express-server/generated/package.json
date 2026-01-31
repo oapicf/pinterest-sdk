@@ -1,6 +1,6 @@
 {
   "name":  "pinterest-rest-api",
-  "version": "5.14.0",
+  "version": "5.23.0",
   "description": "Pinterest's REST API",
   "main": "index.js",
   "scripts": {

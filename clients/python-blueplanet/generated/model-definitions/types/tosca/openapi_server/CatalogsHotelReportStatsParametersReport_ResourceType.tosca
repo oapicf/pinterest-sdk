@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelReportStatsParametersReport"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelReportStatsParametersReport"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsReportDistributionIssueFilter = openapi_server.resourceTypes.CatalogsReportDistributionIssueFilter
+  CatalogsReportFeedIngestionFilter = openapi_server.resourceTypes.CatalogsReportFeedIngestionFilter
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsHotelReportStatsParametersReport {
+    title = CatalogsHotelReportStatsParametersReport
+    description = CatalogsHotelReportStatsParametersReport
+    derivedFrom = Root
+    properties {
+        report_type {
+          type =  string
+          description = ""
+          enum = ["FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES"]
+          optional = false
+        }
+        feed_id {
+          type =  string
+          description = "ID of the feed entity."
+          optional = true
+        }
+        processing_result_id {
+          type =  string
+          description = "Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result."
+          optional = false
+        }
+        catalog_id {
+          type =  string
+          description = "Unique identifier of a catalog. If not given, oldest catalog will be used"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelReportStatsParametersReport {
+    title = CatalogsHotelReportStatsParametersReport
+    description = CatalogsHotelReportStatsParametersReport
+    implements = openapi_server.resourceTypes.CatalogsHotelReportStatsParametersReport
+
+  }
+}

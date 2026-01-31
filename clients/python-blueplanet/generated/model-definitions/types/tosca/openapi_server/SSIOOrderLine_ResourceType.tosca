@@ -1,0 +1,142 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOOrderLine"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOOrderLine"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Currency = openapi_server.resourceTypes.Currency
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  SSIOOrderLine {
+    title = SSIOOrderLine
+    description = SSIOOrderLine
+    derivedFrom = Root
+    properties {
+        accepted_terms_id {
+          type =  string
+          description = "The SFDC id for the terms"
+          optional = false
+        }
+        accepted_terms_time {
+          type =  string
+          description = "The UTC timestamp (to the nearest sec) of when terms were accepted"
+          optional = false
+        }
+        ads_manager_order_line_id {
+          type =  string
+          description = "Ads manager OrderLineId"
+          optional = false
+        }
+        agency_link {
+          type =  string
+          description = "Agency link"
+          optional = false
+        }
+        bill_to_company_name {
+          type =  string
+          description = "Bill To Company name"
+          optional = false
+        }
+        billing_contact_email {
+          type =  string
+          description = "Billing contact email"
+          optional = false
+        }
+        billing_contact_firstname {
+          type =  string
+          description = "Billing contact first name"
+          optional = false
+        }
+        billing_contact_lastname {
+          type =  string
+          description = "Billing contact last name"
+          optional = false
+        }
+        budget_amount {
+          type =  
+          description = "If Budget order line, the budget amount."
+          optional = false
+        }
+        currency_info {
+          type = Currency
+          description = ""
+          optional = false
+        }
+        end_date {
+          type =  string
+          description = "End date of the order line."
+          optional = false
+        }
+        estimated_monthly_spend {
+          type =  
+          description = "If Ongoing (perpetual) order line, the estimated monthly spend"
+          optional = false
+        }
+        last_modified_date_time {
+          type =  string
+          description = "Last modified date."
+          optional = false
+        }
+        media_contact_email {
+          type =  string
+          description = "Billing media email"
+          optional = false
+        }
+        media_contact_firstname {
+          type =  string
+          description = "Billing contact first name"
+          optional = false
+        }
+        media_contact_lastname {
+          type =  string
+          description = "Billing contact first name"
+          optional = false
+        }
+        order_name {
+          type =  string
+          description = "The order name"
+          optional = false
+        }
+        pin_order_id {
+          type =  string
+          description = "The pin order id associated with the order line in SFDC"
+          optional = false
+        }
+        pmp_name {
+          type =  string
+          description = "The Pinterest marketing partner name"
+          optional = false
+        }
+        po_number {
+          type =  string
+          description = "The po number"
+          optional = false
+        }
+        salesforce_order_line_id {
+          type =  string
+          description = "OrderLineId in SFDC"
+          optional = false
+        }
+        start_date {
+          type =  string
+          description = "Start date of the order line."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOOrderLine {
+    title = SSIOOrderLine
+    description = SSIOOrderLine
+    implements = openapi_server.resourceTypes.SSIOOrderLine
+
+  }
+}

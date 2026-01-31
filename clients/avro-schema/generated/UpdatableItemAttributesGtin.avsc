@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The unique universal product identifier.",
+  "name": "UpdatableItemAttributesGtin",
+  "fields": [
+  ]
+
+}

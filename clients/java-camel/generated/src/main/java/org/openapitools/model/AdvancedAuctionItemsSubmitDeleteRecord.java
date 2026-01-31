@@ -5,14 +5,15 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -28,14 +29,17 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionItemsSubmitDeleteRecord", description = "Object describing an item bid option deletion operation")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionItemsSubmitRecord {
-
-  private String itemId;
 
   private Country country;
 
+  private String itemId;
+
   private Language language;
+
+  @Valid
+  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
 
   private AdvancedAuctionOperation operation;
 
@@ -46,31 +50,11 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
   /**
    * Constructor with only required parameters
    */
-  public AdvancedAuctionItemsSubmitDeleteRecord(String itemId, Country country, Language language) {
-    this.itemId = itemId;
+  public AdvancedAuctionItemsSubmitDeleteRecord(Country country, String itemId, Language language) {
     this.country = country;
+    this.itemId = itemId;
     this.language = language;
     this.operation = operation;
-  }
-
-  public AdvancedAuctionItemsSubmitDeleteRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-   */
-  @NotNull 
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
   }
 
   public AdvancedAuctionItemsSubmitDeleteRecord country(Country country) {
@@ -93,6 +77,26 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
     this.country = country;
   }
 
+  public AdvancedAuctionItemsSubmitDeleteRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+   */
+  @NotNull 
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
   public AdvancedAuctionItemsSubmitDeleteRecord language(Language language) {
     this.language = language;
     return this;
@@ -111,6 +115,34 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
 
   public void setLanguage(Language language) {
     this.language = language;
+  }
+
+  public AdvancedAuctionItemsSubmitDeleteRecord errors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public AdvancedAuctionItemsSubmitDeleteRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   * @return errors
+   */
+  @Valid 
+  @Schema(name = "errors", description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("errors")
+  public List<@Valid AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
   }
 
   public AdvancedAuctionItemsSubmitDeleteRecord operation(AdvancedAuctionOperation operation) {
@@ -142,24 +174,26 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
       return false;
     }
     AdvancedAuctionItemsSubmitDeleteRecord advancedAuctionItemsSubmitDeleteRecord = (AdvancedAuctionItemsSubmitDeleteRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsSubmitDeleteRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsSubmitDeleteRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsSubmitDeleteRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsSubmitDeleteRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitDeleteRecord.language) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors) &&
         Objects.equals(this.operation, advancedAuctionItemsSubmitDeleteRecord.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, operation);
+    return Objects.hash(country, itemId, language, errors, operation);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsSubmitDeleteRecord {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

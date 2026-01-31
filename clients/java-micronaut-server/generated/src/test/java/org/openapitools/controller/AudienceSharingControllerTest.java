@@ -94,7 +94,7 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3eeece33");
+            .accept("[Ljava.lang.String;@2ce7d3be");
         request.getParameters()
             .add("audience_id", "example") // The query parameter format should be 
             .add("account_type", String.valueOf(AudienceAccountType.fromValue("AD_ACCOUNT"))) // The query parameter format should be 
@@ -149,7 +149,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7015e045");
+            .accept("[Ljava.lang.String;@4988b397");
         request.getParameters()
             .add("audience_id", "example") // The query parameter format should be 
             .add("account_type", String.valueOf(AudienceAccountType.fromValue("AD_ACCOUNT"))) // The query parameter format should be 
@@ -203,7 +203,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@659d6f74");
+            .accept("[Ljava.lang.String;@2cf9a66");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -221,7 +221,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing between ad accounts
      *
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -255,7 +255,7 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@7792e75e");
+            .accept("[Ljava.lang.String;@668e80a2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudienceResponse.class);
@@ -269,7 +269,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing from an ad account to businesses
      *
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -303,7 +303,7 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3f4520c9");
+            .accept("[Ljava.lang.String;@7466d5ee");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BusinessSharedAudienceResponse.class);
@@ -317,7 +317,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing from a business to ad accounts
      *
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -351,7 +351,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@608df8ac");
+            .accept("[Ljava.lang.String;@787ed4fe");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudienceResponse.class);
@@ -365,7 +365,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing between businesses
      *
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -399,7 +399,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@6ee5cd06");
+            .accept("[Ljava.lang.String;@69c7d3d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BusinessSharedAudienceResponse.class);

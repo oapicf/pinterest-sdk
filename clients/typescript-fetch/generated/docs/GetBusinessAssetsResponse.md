@@ -7,9 +7,10 @@ An object containing the permissions a business has on the asset.
 
 Name | Type
 ------------ | -------------
+`assetGroupInfo` | [AssetGroupBinding](AssetGroupBinding.md)
 `assetId` | string
 `assetType` | string
-`assetGroupInfo` | [AssetGroupBinding](AssetGroupBinding.md)
+`catalogInfo` | [GetBusinessAssetsResponseCatalogInfo](GetBusinessAssetsResponseCatalogInfo.md)
 
 ## Example
 
@@ -18,9 +19,10 @@ import type { GetBusinessAssetsResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "assetGroupInfo": null,
   "assetId": 549755885175,
   "assetType": AD_ACCOUNT,
-  "assetGroupInfo": null,
+  "catalogInfo": null,
 } satisfies GetBusinessAssetsResponse
 
 console.log(example)

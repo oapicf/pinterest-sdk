@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TargetingTypes** | Pointer to [**[]AdsAnalyticsTargetingType**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | [optional] 
+**TargetingTypes** | Pointer to **[]string** | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTargetingTypes
 
-`func (o *TargetingTypeFilter) GetTargetingTypes() []AdsAnalyticsTargetingType`
+`func (o *TargetingTypeFilter) GetTargetingTypes() []string`
 
 GetTargetingTypes returns the TargetingTypes field if non-nil, zero value otherwise.
 
 ### GetTargetingTypesOk
 
-`func (o *TargetingTypeFilter) GetTargetingTypesOk() (*[]AdsAnalyticsTargetingType, bool)`
+`func (o *TargetingTypeFilter) GetTargetingTypesOk() (*[]string, bool)`
 
 GetTargetingTypesOk returns a tuple with the TargetingTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetingTypes
 
-`func (o *TargetingTypeFilter) SetTargetingTypes(v []AdsAnalyticsTargetingType)`
+`func (o *TargetingTypeFilter) SetTargetingTypes(v []string)`
 
 SetTargetingTypes sets TargetingTypes field to given value.
 

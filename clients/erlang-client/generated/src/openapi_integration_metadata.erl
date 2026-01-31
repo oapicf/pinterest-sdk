@@ -5,49 +5,49 @@
 -export_type([openapi_integration_metadata/0]).
 
 -type openapi_integration_metadata() ::
-    #{ 'id' => binary(),
-       'external_business_id' => binary(),
-       'connected_merchant_id' => binary(),
-       'connected_user_id' => binary(),
+    #{ 'additional_id_1' => binary(),
        'connected_advertiser_id' => binary(),
        'connected_lba_id' => binary(),
+       'connected_merchant_id' => binary(),
        'connected_tag_id' => binary(),
+       'connected_user_id' => binary(),
+       'created_timestamp' => integer(),
+       'external_business_id' => binary(),
+       'id' => binary(),
        'partner_access_token_expiry' => integer(),
+       'partner_metadata' => binary(),
        'partner_refresh_token_expiry' => integer(),
        'scopes' => binary(),
-       'created_timestamp' => integer(),
-       'updated_timestamp' => integer(),
-       'additional_id_1' => binary(),
-       'partner_metadata' => binary()
+       'updated_timestamp' => integer()
      }.
 
-encode(#{ 'id' := Id,
-          'external_business_id' := ExternalBusinessId,
-          'connected_merchant_id' := ConnectedMerchantId,
-          'connected_user_id' := ConnectedUserId,
+encode(#{ 'additional_id_1' := AdditionalId1,
           'connected_advertiser_id' := ConnectedAdvertiserId,
           'connected_lba_id' := ConnectedLbaId,
+          'connected_merchant_id' := ConnectedMerchantId,
           'connected_tag_id' := ConnectedTagId,
+          'connected_user_id' := ConnectedUserId,
+          'created_timestamp' := CreatedTimestamp,
+          'external_business_id' := ExternalBusinessId,
+          'id' := Id,
           'partner_access_token_expiry' := PartnerAccessTokenExpiry,
+          'partner_metadata' := PartnerMetadata,
           'partner_refresh_token_expiry' := PartnerRefreshTokenExpiry,
           'scopes' := Scopes,
-          'created_timestamp' := CreatedTimestamp,
-          'updated_timestamp' := UpdatedTimestamp,
-          'additional_id_1' := AdditionalId1,
-          'partner_metadata' := PartnerMetadata
+          'updated_timestamp' := UpdatedTimestamp
         }) ->
-    #{ 'id' => Id,
-       'external_business_id' => ExternalBusinessId,
-       'connected_merchant_id' => ConnectedMerchantId,
-       'connected_user_id' => ConnectedUserId,
+    #{ 'additional_id_1' => AdditionalId1,
        'connected_advertiser_id' => ConnectedAdvertiserId,
        'connected_lba_id' => ConnectedLbaId,
+       'connected_merchant_id' => ConnectedMerchantId,
        'connected_tag_id' => ConnectedTagId,
+       'connected_user_id' => ConnectedUserId,
+       'created_timestamp' => CreatedTimestamp,
+       'external_business_id' => ExternalBusinessId,
+       'id' => Id,
        'partner_access_token_expiry' => PartnerAccessTokenExpiry,
+       'partner_metadata' => PartnerMetadata,
        'partner_refresh_token_expiry' => PartnerRefreshTokenExpiry,
        'scopes' => Scopes,
-       'created_timestamp' => CreatedTimestamp,
-       'updated_timestamp' => UpdatedTimestamp,
-       'additional_id_1' => AdditionalId1,
-       'partner_metadata' => PartnerMetadata
+       'updated_timestamp' => UpdatedTimestamp
      }.

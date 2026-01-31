@@ -11,38 +11,21 @@ import javax.validation.Valid;
 /**
  * MembersToDeleteBodyMembersInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class MembersToDeleteBodyMembersInner   {
-  @JsonProperty("member_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-@Size(max=25)
-
-  private String memberId;
-
   @JsonProperty("business_role")
   @NotNull
 @Valid
 
   private BusinessRoleForMembers businessRole;
 
-  public MembersToDeleteBodyMembersInner memberId(String memberId) {
-    this.memberId = memberId;
-    return this;
-  }
+  @JsonProperty("member_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+@Size(max=25)
 
-   /**
-   * Unique identifier of the member
-   * @return memberId
-  **/
-  public String getMemberId() {
-    return memberId;
-  }
-
-  public void setMemberId(String memberId) {
-    this.memberId = memberId;
-  }
+  private String memberId;
 
   public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
     this.businessRole = businessRole;
@@ -61,6 +44,23 @@ public class MembersToDeleteBodyMembersInner   {
     this.businessRole = businessRole;
   }
 
+  public MembersToDeleteBodyMembersInner memberId(String memberId) {
+    this.memberId = memberId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the member
+   * @return memberId
+  **/
+  public String getMemberId() {
+    return memberId;
+  }
+
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -71,13 +71,13 @@ public class MembersToDeleteBodyMembersInner   {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -86,8 +86,8 @@ public class MembersToDeleteBodyMembersInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

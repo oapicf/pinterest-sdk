@@ -46,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getMethod();
-
-	/*! \brief Set 
-	 */
-	void setMethod(std::string  method);
 	/*! \brief Get HTTP request host from host header.
 	 */
 	std::string getHost();
@@ -60,6 +53,13 @@ public:
 	/*! \brief Set HTTP request host from host header.
 	 */
 	void setHost(std::string  host);
+	/*! \brief Get 
+	 */
+	std::string getMethod();
+
+	/*! \brief Set 
+	 */
+	void setMethod(std::string  method);
 	/*! \brief Get HTTP request path.
 	 */
 	std::string getPath();
@@ -90,8 +90,8 @@ public:
 	void setResponseStatusCode(int  response_status_code);
 
 private:
-	std::string method;
 	std::string host;
+	std::string method;
 	std::string path;
 	std::map <std::string, std::string>request_headers;
 	std::map <std::string, std::string>response_headers;

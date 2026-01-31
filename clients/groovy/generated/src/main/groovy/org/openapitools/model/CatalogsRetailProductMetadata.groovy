@@ -9,16 +9,16 @@ import org.openapitools.model.NonNullableProductAvailabilityType;
 
 @Canonical
 class CatalogsRetailProductMetadata {
-    /* The user-created unique ID that represents the product. */
-    String itemId
-    /* The parent ID of the product. */
-    String itemGroupId
     
     NonNullableProductAvailabilityType availability
+    
+    NonNullableCatalogsCurrency currency
+    /* The parent ID of the product. */
+    String itemGroupId
+    /* The user-created unique ID that represents the product. */
+    String itemId
     /* The price of the product. */
     BigDecimal price
     /* The discounted price of the product. */
     BigDecimal salePrice
-    
-    NonNullableCatalogsCurrency currency
 }

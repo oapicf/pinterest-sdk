@@ -16,13 +16,13 @@ void main() {
   // final instance = AdAccountsSubscriptionsGetList200Response();
 
   group('test AdAccountsSubscriptionsGetList200Response', () {
-    // List<AdAccountGetSubscriptionResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<LeadSubscription> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

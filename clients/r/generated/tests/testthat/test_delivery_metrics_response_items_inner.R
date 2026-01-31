@@ -5,14 +5,6 @@ context("Test DeliveryMetricsResponseItemsInner")
 
 model_instance <- DeliveryMetricsResponseItemsInner$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Metric&#39;s name.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("category", {
   # tests for the property `category` (character)
   # Category name
@@ -35,4 +27,12 @@ test_that("display_name", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`display_name`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Metric&#39;s name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })

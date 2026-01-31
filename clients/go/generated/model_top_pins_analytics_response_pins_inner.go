@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &TopPinsAnalyticsResponsePinsInner{}
 
 // TopPinsAnalyticsResponsePinsInner Array with metrics, status, and pin id for the requested metric
 type TopPinsAnalyticsResponsePinsInner struct {
+	DataStatus *map[string]DataStatus `json:"data_status,omitempty"`
 	// The metric name and daily value for each requested metric
 	Metrics *map[string]float32 `json:"metrics,omitempty"`
-	DataStatus *map[string]DataStatus `json:"data_status,omitempty"`
 	// The pin id
 	PinId *string `json:"pin_id,omitempty"`
 }
@@ -42,38 +42,6 @@ func NewTopPinsAnalyticsResponsePinsInner() *TopPinsAnalyticsResponsePinsInner {
 func NewTopPinsAnalyticsResponsePinsInnerWithDefaults() *TopPinsAnalyticsResponsePinsInner {
 	this := TopPinsAnalyticsResponsePinsInner{}
 	return &this
-}
-
-// GetMetrics returns the Metrics field value if set, zero value otherwise.
-func (o *TopPinsAnalyticsResponsePinsInner) GetMetrics() map[string]float32 {
-	if o == nil || IsNil(o.Metrics) {
-		var ret map[string]float32
-		return ret
-	}
-	return *o.Metrics
-}
-
-// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TopPinsAnalyticsResponsePinsInner) GetMetricsOk() (*map[string]float32, bool) {
-	if o == nil || IsNil(o.Metrics) {
-		return nil, false
-	}
-	return o.Metrics, true
-}
-
-// HasMetrics returns a boolean if a field has been set.
-func (o *TopPinsAnalyticsResponsePinsInner) HasMetrics() bool {
-	if o != nil && !IsNil(o.Metrics) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetrics gets a reference to the given map[string]float32 and assigns it to the Metrics field.
-func (o *TopPinsAnalyticsResponsePinsInner) SetMetrics(v map[string]float32) {
-	o.Metrics = &v
 }
 
 // GetDataStatus returns the DataStatus field value if set, zero value otherwise.
@@ -106,6 +74,38 @@ func (o *TopPinsAnalyticsResponsePinsInner) HasDataStatus() bool {
 // SetDataStatus gets a reference to the given map[string]DataStatus and assigns it to the DataStatus field.
 func (o *TopPinsAnalyticsResponsePinsInner) SetDataStatus(v map[string]DataStatus) {
 	o.DataStatus = &v
+}
+
+// GetMetrics returns the Metrics field value if set, zero value otherwise.
+func (o *TopPinsAnalyticsResponsePinsInner) GetMetrics() map[string]float32 {
+	if o == nil || IsNil(o.Metrics) {
+		var ret map[string]float32
+		return ret
+	}
+	return *o.Metrics
+}
+
+// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TopPinsAnalyticsResponsePinsInner) GetMetricsOk() (*map[string]float32, bool) {
+	if o == nil || IsNil(o.Metrics) {
+		return nil, false
+	}
+	return o.Metrics, true
+}
+
+// HasMetrics returns a boolean if a field has been set.
+func (o *TopPinsAnalyticsResponsePinsInner) HasMetrics() bool {
+	if o != nil && !IsNil(o.Metrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetrics gets a reference to the given map[string]float32 and assigns it to the Metrics field.
+func (o *TopPinsAnalyticsResponsePinsInner) SetMetrics(v map[string]float32) {
+	o.Metrics = &v
 }
 
 // GetPinId returns the PinId field value if set, zero value otherwise.
@@ -150,11 +150,11 @@ func (o TopPinsAnalyticsResponsePinsInner) MarshalJSON() ([]byte, error) {
 
 func (o TopPinsAnalyticsResponsePinsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Metrics) {
-		toSerialize["metrics"] = o.Metrics
-	}
 	if !IsNil(o.DataStatus) {
 		toSerialize["data_status"] = o.DataStatus
+	}
+	if !IsNil(o.Metrics) {
+		toSerialize["metrics"] = o.Metrics
 	}
 	if !IsNil(o.PinId) {
 		toSerialize["pin_id"] = o.PinId

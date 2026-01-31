@@ -11,24 +11,15 @@ import org.openapitools.vertxweb.server.model.Gender;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleGenderCriteria   {
   
-  private List<Gender> values = new ArrayList<>();
   private Boolean negated = false;
+  private List<Gender> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleGenderCriteria () {
 
   }
 
-  public CatalogsProductGroupMultipleGenderCriteria (List<Gender> values, Boolean negated) {
-    this.values = values;
+  public CatalogsProductGroupMultipleGenderCriteria (Boolean negated, List<Gender> values) {
     this.negated = negated;
-  }
-
-    
-  @JsonProperty("values")
-  public List<Gender> getValues() {
-    return values;
-  }
-  public void setValues(List<Gender> values) {
     this.values = values;
   }
 
@@ -41,6 +32,15 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     this.negated = negated;
   }
 
+    
+  @JsonProperty("values")
+  public List<Gender> getValues() {
+    return values;
+  }
+  public void setValues(List<Gender> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -51,13 +51,13 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleGenderCriteria catalogsProductGroupMultipleGenderCriteria = (CatalogsProductGroupMultipleGenderCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleGenderCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleGenderCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleGenderCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleGenderCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -65,8 +65,8 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleGenderCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

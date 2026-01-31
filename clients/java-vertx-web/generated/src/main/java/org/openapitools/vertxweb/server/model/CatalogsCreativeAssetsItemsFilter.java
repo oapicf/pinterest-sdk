@@ -11,6 +11,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsItemsFilter   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -31,15 +32,23 @@ public class CatalogsCreativeAssetsItemsFilter   {
 
   private CatalogTypeEnum catalogType;
   private List<String> creativeAssetsIds = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsCreativeAssetsItemsFilter () {
 
   }
 
-  public CatalogsCreativeAssetsItemsFilter (CatalogTypeEnum catalogType, List<String> creativeAssetsIds, String catalogId) {
+  public CatalogsCreativeAssetsItemsFilter (String catalogId, CatalogTypeEnum catalogType, List<String> creativeAssetsIds) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.creativeAssetsIds = creativeAssetsIds;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -61,15 +70,6 @@ public class CatalogsCreativeAssetsItemsFilter   {
     this.creativeAssetsIds = creativeAssetsIds;
   }
 
-    
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,14 +80,14 @@ public class CatalogsCreativeAssetsItemsFilter   {
       return false;
     }
     CatalogsCreativeAssetsItemsFilter catalogsCreativeAssetsItemsFilter = (CatalogsCreativeAssetsItemsFilter) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
-        Objects.equals(creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsItemsFilter.catalogId);
+    return Objects.equals(catalogId, catalogsCreativeAssetsItemsFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsItemsFilter.catalogType) &&
+        Objects.equals(creativeAssetsIds, catalogsCreativeAssetsItemsFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @Override
@@ -95,9 +95,9 @@ public class CatalogsCreativeAssetsItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

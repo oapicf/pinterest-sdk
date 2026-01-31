@@ -16,17 +16,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param assetGroupName Asset Group name
  * @param assetGroupDescription Asset group description
+ * @param assetGroupName Asset Group name
  * @param assetGroupTypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  */
 data class CreateAssetGroupBody(
 
-    @Schema(example = "Canada Ad Accounts", required = true, description = "Asset Group name")
-    @get:JsonProperty("asset_group_name", required = true) val assetGroupName: kotlin.String,
-
     @Schema(example = "Asset groups that has ad accounts shared in Canada", required = true, description = "Asset group description")
     @get:JsonProperty("asset_group_description", required = true) val assetGroupDescription: kotlin.String,
+
+    @Schema(example = "Canada Ad Accounts", required = true, description = "Asset Group name")
+    @get:JsonProperty("asset_group_name", required = true) val assetGroupName: kotlin.String,
 
     @field:Valid
     @Schema(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", required = true, description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")

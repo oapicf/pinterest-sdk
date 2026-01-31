@@ -13,15 +13,11 @@ import AnyCodable
 /** Request object for creating a catalog. */
 public struct CatalogsCreateRequest: Codable, JSONEncodable, Hashable {
 
-    public enum CatalogType: String, Codable, CaseIterable {
-        case hotel = "HOTEL"
-    }
-    /** Type of the catalog entity. */
-    public var catalogType: CatalogType
+    public var catalogType: CatalogsType
     /** A human-friendly name associated to a given catalog. */
     public var name: String
 
-    public init(catalogType: CatalogType, name: String) {
+    public init(catalogType: CatalogsType, name: String) {
         self.catalogType = catalogType
         self.name = name
     }

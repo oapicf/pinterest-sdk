@@ -1,19 +1,20 @@
 #' Create a new ConversionTagCreate
 #'
 #' @description
-#' ConversionTagCreate Class
+#' Resource create operation model.
 #'
 #' @docType class
 #' @title ConversionTagCreate
 #' @description ConversionTagCreate Class
 #' @format An \code{R6Class} generator object
-#' @field aem_enabled Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
+#' @field aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
+#' @field aem_enabled Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
+#' @field aem_external_id_enabled Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
+#' @field aem_fnln_enabled Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
+#' @field aem_ge_enabled Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
+#' @field aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
+#' @field aem_ph_enabled Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. character [optional]
 #' @field md_frequency Metadata ingestion frequency. numeric [optional]
-#' @field aem_fnln_enabled Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
-#' @field aem_ph_enabled Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
-#' @field aem_ge_enabled Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
-#' @field aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
-#' @field aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
 #' @field name Conversion tag name. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,60 +22,35 @@
 ConversionTagCreate <- R6::R6Class(
   "ConversionTagCreate",
   public = list(
-    `aem_enabled` = NULL,
-    `md_frequency` = NULL,
-    `aem_fnln_enabled` = NULL,
-    `aem_ph_enabled` = NULL,
-    `aem_ge_enabled` = NULL,
     `aem_db_enabled` = NULL,
+    `aem_enabled` = NULL,
+    `aem_external_id_enabled` = NULL,
+    `aem_fnln_enabled` = NULL,
+    `aem_ge_enabled` = NULL,
     `aem_loc_enabled` = NULL,
+    `aem_ph_enabled` = NULL,
+    `md_frequency` = NULL,
     `name` = NULL,
 
     #' @description
     #' Initialize a new ConversionTagCreate class.
     #'
     #' @param name Conversion tag name.
-    #' @param aem_enabled Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
+    #' @param aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
+    #' @param aem_enabled Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
+    #' @param aem_external_id_enabled Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
+    #' @param aem_fnln_enabled Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
+    #' @param aem_ge_enabled Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
+    #' @param aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
+    #' @param aem_ph_enabled Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.. Default to FALSE.
     #' @param md_frequency Metadata ingestion frequency.. Default to 1.
-    #' @param aem_fnln_enabled Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
-    #' @param aem_ph_enabled Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
-    #' @param aem_ge_enabled Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
-    #' @param aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
-    #' @param aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `aem_enabled` = FALSE, `md_frequency` = 1, `aem_fnln_enabled` = FALSE, `aem_ph_enabled` = FALSE, `aem_ge_enabled` = FALSE, `aem_db_enabled` = FALSE, `aem_loc_enabled` = FALSE, ...) {
+    initialize = function(`name`, `aem_db_enabled` = FALSE, `aem_enabled` = FALSE, `aem_external_id_enabled` = FALSE, `aem_fnln_enabled` = FALSE, `aem_ge_enabled` = FALSE, `aem_loc_enabled` = FALSE, `aem_ph_enabled` = FALSE, `md_frequency` = 1, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
         self$`name` <- `name`
-      }
-      if (!is.null(`aem_enabled`)) {
-        if (!(is.logical(`aem_enabled`) && length(`aem_enabled`) == 1)) {
-          stop(paste("Error! Invalid data for `aem_enabled`. Must be a boolean:", `aem_enabled`))
-        }
-        self$`aem_enabled` <- `aem_enabled`
-      }
-      if (!is.null(`md_frequency`)) {
-        self$`md_frequency` <- `md_frequency`
-      }
-      if (!is.null(`aem_fnln_enabled`)) {
-        if (!(is.logical(`aem_fnln_enabled`) && length(`aem_fnln_enabled`) == 1)) {
-          stop(paste("Error! Invalid data for `aem_fnln_enabled`. Must be a boolean:", `aem_fnln_enabled`))
-        }
-        self$`aem_fnln_enabled` <- `aem_fnln_enabled`
-      }
-      if (!is.null(`aem_ph_enabled`)) {
-        if (!(is.logical(`aem_ph_enabled`) && length(`aem_ph_enabled`) == 1)) {
-          stop(paste("Error! Invalid data for `aem_ph_enabled`. Must be a boolean:", `aem_ph_enabled`))
-        }
-        self$`aem_ph_enabled` <- `aem_ph_enabled`
-      }
-      if (!is.null(`aem_ge_enabled`)) {
-        if (!(is.logical(`aem_ge_enabled`) && length(`aem_ge_enabled`) == 1)) {
-          stop(paste("Error! Invalid data for `aem_ge_enabled`. Must be a boolean:", `aem_ge_enabled`))
-        }
-        self$`aem_ge_enabled` <- `aem_ge_enabled`
       }
       if (!is.null(`aem_db_enabled`)) {
         if (!(is.logical(`aem_db_enabled`) && length(`aem_db_enabled`) == 1)) {
@@ -82,11 +58,44 @@ ConversionTagCreate <- R6::R6Class(
         }
         self$`aem_db_enabled` <- `aem_db_enabled`
       }
+      if (!is.null(`aem_enabled`)) {
+        if (!(is.logical(`aem_enabled`) && length(`aem_enabled`) == 1)) {
+          stop(paste("Error! Invalid data for `aem_enabled`. Must be a boolean:", `aem_enabled`))
+        }
+        self$`aem_enabled` <- `aem_enabled`
+      }
+      if (!is.null(`aem_external_id_enabled`)) {
+        if (!(is.logical(`aem_external_id_enabled`) && length(`aem_external_id_enabled`) == 1)) {
+          stop(paste("Error! Invalid data for `aem_external_id_enabled`. Must be a boolean:", `aem_external_id_enabled`))
+        }
+        self$`aem_external_id_enabled` <- `aem_external_id_enabled`
+      }
+      if (!is.null(`aem_fnln_enabled`)) {
+        if (!(is.logical(`aem_fnln_enabled`) && length(`aem_fnln_enabled`) == 1)) {
+          stop(paste("Error! Invalid data for `aem_fnln_enabled`. Must be a boolean:", `aem_fnln_enabled`))
+        }
+        self$`aem_fnln_enabled` <- `aem_fnln_enabled`
+      }
+      if (!is.null(`aem_ge_enabled`)) {
+        if (!(is.logical(`aem_ge_enabled`) && length(`aem_ge_enabled`) == 1)) {
+          stop(paste("Error! Invalid data for `aem_ge_enabled`. Must be a boolean:", `aem_ge_enabled`))
+        }
+        self$`aem_ge_enabled` <- `aem_ge_enabled`
+      }
       if (!is.null(`aem_loc_enabled`)) {
         if (!(is.logical(`aem_loc_enabled`) && length(`aem_loc_enabled`) == 1)) {
           stop(paste("Error! Invalid data for `aem_loc_enabled`. Must be a boolean:", `aem_loc_enabled`))
         }
         self$`aem_loc_enabled` <- `aem_loc_enabled`
+      }
+      if (!is.null(`aem_ph_enabled`)) {
+        if (!(is.logical(`aem_ph_enabled`) && length(`aem_ph_enabled`) == 1)) {
+          stop(paste("Error! Invalid data for `aem_ph_enabled`. Must be a boolean:", `aem_ph_enabled`))
+        }
+        self$`aem_ph_enabled` <- `aem_ph_enabled`
+      }
+      if (!is.null(`md_frequency`)) {
+        self$`md_frequency` <- `md_frequency`
       }
     },
 
@@ -121,33 +130,37 @@ ConversionTagCreate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ConversionTagCreateObject <- list()
+      if (!is.null(self$`aem_db_enabled`)) {
+        ConversionTagCreateObject[["aem_db_enabled"]] <-
+          self$`aem_db_enabled`
+      }
       if (!is.null(self$`aem_enabled`)) {
         ConversionTagCreateObject[["aem_enabled"]] <-
           self$`aem_enabled`
       }
-      if (!is.null(self$`md_frequency`)) {
-        ConversionTagCreateObject[["md_frequency"]] <-
-          self$`md_frequency`
+      if (!is.null(self$`aem_external_id_enabled`)) {
+        ConversionTagCreateObject[["aem_external_id_enabled"]] <-
+          self$`aem_external_id_enabled`
       }
       if (!is.null(self$`aem_fnln_enabled`)) {
         ConversionTagCreateObject[["aem_fnln_enabled"]] <-
           self$`aem_fnln_enabled`
       }
-      if (!is.null(self$`aem_ph_enabled`)) {
-        ConversionTagCreateObject[["aem_ph_enabled"]] <-
-          self$`aem_ph_enabled`
-      }
       if (!is.null(self$`aem_ge_enabled`)) {
         ConversionTagCreateObject[["aem_ge_enabled"]] <-
           self$`aem_ge_enabled`
       }
-      if (!is.null(self$`aem_db_enabled`)) {
-        ConversionTagCreateObject[["aem_db_enabled"]] <-
-          self$`aem_db_enabled`
-      }
       if (!is.null(self$`aem_loc_enabled`)) {
         ConversionTagCreateObject[["aem_loc_enabled"]] <-
           self$`aem_loc_enabled`
+      }
+      if (!is.null(self$`aem_ph_enabled`)) {
+        ConversionTagCreateObject[["aem_ph_enabled"]] <-
+          self$`aem_ph_enabled`
+      }
+      if (!is.null(self$`md_frequency`)) {
+        ConversionTagCreateObject[["md_frequency"]] <-
+          self$`md_frequency`
       }
       if (!is.null(self$`name`)) {
         ConversionTagCreateObject[["name"]] <-
@@ -163,26 +176,29 @@ ConversionTagCreate <- R6::R6Class(
     #' @return the instance of ConversionTagCreate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`aem_db_enabled`)) {
+        self$`aem_db_enabled` <- this_object$`aem_db_enabled`
+      }
       if (!is.null(this_object$`aem_enabled`)) {
         self$`aem_enabled` <- this_object$`aem_enabled`
       }
-      if (!is.null(this_object$`md_frequency`)) {
-        self$`md_frequency` <- this_object$`md_frequency`
+      if (!is.null(this_object$`aem_external_id_enabled`)) {
+        self$`aem_external_id_enabled` <- this_object$`aem_external_id_enabled`
       }
       if (!is.null(this_object$`aem_fnln_enabled`)) {
         self$`aem_fnln_enabled` <- this_object$`aem_fnln_enabled`
       }
-      if (!is.null(this_object$`aem_ph_enabled`)) {
-        self$`aem_ph_enabled` <- this_object$`aem_ph_enabled`
-      }
       if (!is.null(this_object$`aem_ge_enabled`)) {
         self$`aem_ge_enabled` <- this_object$`aem_ge_enabled`
       }
-      if (!is.null(this_object$`aem_db_enabled`)) {
-        self$`aem_db_enabled` <- this_object$`aem_db_enabled`
-      }
       if (!is.null(this_object$`aem_loc_enabled`)) {
         self$`aem_loc_enabled` <- this_object$`aem_loc_enabled`
+      }
+      if (!is.null(this_object$`aem_ph_enabled`)) {
+        self$`aem_ph_enabled` <- this_object$`aem_ph_enabled`
+      }
+      if (!is.null(this_object$`md_frequency`)) {
+        self$`md_frequency` <- this_object$`md_frequency`
       }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
@@ -208,13 +224,14 @@ ConversionTagCreate <- R6::R6Class(
     #' @return the instance of ConversionTagCreate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`aem_enabled` <- this_object$`aem_enabled`
-      self$`md_frequency` <- this_object$`md_frequency`
-      self$`aem_fnln_enabled` <- this_object$`aem_fnln_enabled`
-      self$`aem_ph_enabled` <- this_object$`aem_ph_enabled`
-      self$`aem_ge_enabled` <- this_object$`aem_ge_enabled`
       self$`aem_db_enabled` <- this_object$`aem_db_enabled`
+      self$`aem_enabled` <- this_object$`aem_enabled`
+      self$`aem_external_id_enabled` <- this_object$`aem_external_id_enabled`
+      self$`aem_fnln_enabled` <- this_object$`aem_fnln_enabled`
+      self$`aem_ge_enabled` <- this_object$`aem_ge_enabled`
       self$`aem_loc_enabled` <- this_object$`aem_loc_enabled`
+      self$`aem_ph_enabled` <- this_object$`aem_ph_enabled`
+      self$`md_frequency` <- this_object$`md_frequency`
       self$`name` <- this_object$`name`
       self
     },

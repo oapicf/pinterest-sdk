@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import BulkDownloadRequest._
 
 case class BulkDownloadRequest (
-  /* All entity types specified will be downloaded. Fewer types result in faster downloads. */
-  entityTypes: Option[List[BulkEntityType]],
+  campaignFilter: Option[BulkDownloadRequestCampaignFilter],
 /* All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded. */
   entityIds: Option[List[String]],
+/* All entity types specified will be downloaded. Fewer types result in faster downloads. */
+  entityTypes: Option[List[BulkEntityType]],
+outputFormat: Option[BulkOutputFormat],
 /* Unix UTC timestamp to retrieve all entities that have changed since this time. */
-  updatedSince: Option[String],
-campaignFilter: Option[BulkDownloadRequestCampaignFilter],
-outputFormat: Option[BulkOutputFormat])
+  updatedSince: Option[String])
 
 object BulkDownloadRequest {
   import DateTimeCodecs._

@@ -10,39 +10,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountAddress   {
   
-  private String display;
-  private String purpose;
   private String addressId;
+  private String display;
   private String orderLegalEntity;
-
-  /**
-   * Address display
-   **/
-  
-  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
-  @JsonProperty("display")
-  public String getDisplay() {
-    return display;
-  }
-  public void setDisplay(String display) {
-    this.display = display;
-  }
-
-  /**
-   * Purpose for which the address is used, usually Billing or Businness
-   **/
-  
-  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
-  @JsonProperty("purpose")
-  public String getPurpose() {
-    return purpose;
-  }
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
+  private String purpose;
 
   /**
    * Salesforce id for address
@@ -58,6 +32,19 @@ public class SSIOAccountAddress   {
   }
 
   /**
+   * Address display
+   **/
+  
+  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
+  @JsonProperty("display")
+  public String getDisplay() {
+    return display;
+  }
+  public void setDisplay(String display) {
+    this.display = display;
+  }
+
+  /**
    * Legal entity for this insertion order
    **/
   
@@ -70,6 +57,19 @@ public class SSIOAccountAddress   {
     this.orderLegalEntity = orderLegalEntity;
   }
 
+  /**
+   * Purpose for which the address is used, usually Billing or Businness
+   **/
+  
+  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
+  @JsonProperty("purpose")
+  public String getPurpose() {
+    return purpose;
+  }
+  public void setPurpose(String purpose) {
+    this.purpose = purpose;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,15 +80,15 @@ public class SSIOAccountAddress   {
       return false;
     }
     SSIOAccountAddress ssIOAccountAddress = (SSIOAccountAddress) o;
-    return Objects.equals(this.display, ssIOAccountAddress.display) &&
-        Objects.equals(this.purpose, ssIOAccountAddress.purpose) &&
-        Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
-        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity);
+    return Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
+        Objects.equals(this.display, ssIOAccountAddress.display) &&
+        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity) &&
+        Objects.equals(this.purpose, ssIOAccountAddress.purpose);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, purpose, addressId, orderLegalEntity);
+    return Objects.hash(addressId, display, orderLegalEntity, purpose);
   }
 
   @Override
@@ -96,10 +96,10 @@ public class SSIOAccountAddress   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountAddress {\n");
     
-    sb.append("    display: ").append(toIndentedString(display)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("    orderLegalEntity: ").append(toIndentedString(orderLegalEntity)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("}");
     return sb.toString();
   }

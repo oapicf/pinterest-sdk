@@ -16,14 +16,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param id Interest ID.
+ * @param index Interest affinity index.
  * @param key Interest unique key (same as ID).
  * @param name Interest name.
  * @param ratio Interest's percent of category's total audience.
- * @param index Interest affinity index.
- * @param id Interest ID.
  * @param subcategories Subcategory interest distribution
  */
 data class AudienceCategory(
+
+    @Schema(example = "1234567", description = "Interest ID.")
+    @get:JsonProperty("id") val id: kotlin.String? = null,
+
+    @Schema(example = "1.2", description = "Interest affinity index.")
+    @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
 
     @Schema(example = "1234567", description = "Interest unique key (same as ID).")
     @get:JsonProperty("key") val key: kotlin.String? = null,
@@ -33,12 +39,6 @@ data class AudienceCategory(
 
     @Schema(example = "0.551", description = "Interest's percent of category's total audience.")
     @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null,
-
-    @Schema(example = "1.2", description = "Interest affinity index.")
-    @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
-
-    @Schema(example = "1234567", description = "Interest ID.")
-    @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "Subcategory interest distribution")

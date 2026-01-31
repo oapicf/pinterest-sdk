@@ -6,12 +6,6 @@ goog.provide('API.Client.CatalogsReportDistributionStats');
 API.Client.CatalogsReportDistributionStats = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsReportDistributionStats.prototype.reportType;
-
-/**
  * ID of the catalog entity.
  * @type {!string}
  * @export
@@ -33,6 +27,20 @@ API.Client.CatalogsReportDistributionStats.prototype.code;
 API.Client.CatalogsReportDistributionStats.prototype.codeLabel;
 
 /**
+ * Indicates if issue makes items ineligible for ads distribution
+ * @type {!boolean}
+ * @export
+ */
+API.Client.CatalogsReportDistributionStats.prototype.ineligibleForAds;
+
+/**
+ * Indicates if issue makes items ineligible for organic distribution
+ * @type {!boolean}
+ * @export
+ */
+API.Client.CatalogsReportDistributionStats.prototype.ineligibleForOrganic;
+
+/**
  * Title message describing the diagnostic issue
  * @type {!string}
  * @export
@@ -47,18 +55,10 @@ API.Client.CatalogsReportDistributionStats.prototype.message;
 API.Client.CatalogsReportDistributionStats.prototype.occurrences;
 
 /**
- * Indicates if issue makes items ineligible for ads distribution
- * @type {!boolean}
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsReportDistributionStats.prototype.ineligibleForAds;
-
-/**
- * Indicates if issue makes items ineligible for organic distribution
- * @type {!boolean}
- * @export
- */
-API.Client.CatalogsReportDistributionStats.prototype.ineligibleForOrganic;
+API.Client.CatalogsReportDistributionStats.prototype.reportType;
 
 /** @enum {string} */
 API.Client.CatalogsReportDistributionStats.ReportTypeEnum = { 

@@ -15,21 +15,28 @@
 
 typedef struct pin_media_with_image_and_video_t pin_media_with_image_and_video_t;
 
-#include "pin_media.h"
 #include "pin_media_metadata.h"
+
+// Enum MEDIATYPE for pin_media_with_image_and_video
+
+typedef enum  { pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_NULL = 0, pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_multiple_mixed } pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_e;
+
+char* pin_media_with_image_and_video_media_type_ToString(pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_e media_type);
+
+pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_e pin_media_with_image_and_video_media_type_FromString(char* media_type);
 
 
 
 typedef struct pin_media_with_image_and_video_t {
-    char *media_type; // string
     list_t *items; //nonprimitive container
+    pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_e media_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_image_and_video_t;
 
 __attribute__((deprecated)) pin_media_with_image_and_video_t *pin_media_with_image_and_video_create(
-    char *media_type,
-    list_t *items
+    list_t *items,
+    pinterest_rest_api_pin_media_with_image_and_video_MEDIATYPE_e media_type
 );
 
 void pin_media_with_image_and_video_free(pin_media_with_image_and_video_t *pin_media_with_image_and_video);

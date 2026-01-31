@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Impression** | **String[]** |  | [optional] 
+**AudienceVerification** | **String[]** |  | [optional] 
+**BuyableButton** | **String[]** |  | [optional] 
 **Click** | **String[]** |  | [optional] 
 **Engagement** | **String[]** |  | [optional] 
-**BuyableButton** | **String[]** |  | [optional] 
-**AudienceVerification** | **String[]** |  | [optional] 
+**Impression** | **String[]** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TrackingUrls = Initialize-PSOpenAPIToolsTrackingUrls  -Impression null `
+$TrackingUrls = Initialize-PSOpenAPIToolsTrackingUrls  -AudienceVerification null `
+ -BuyableButton null `
  -Click null `
  -Engagement null `
- -BuyableButton null `
- -AudienceVerification null
+ -Impression null
 ```
 
 - Convert the resource to JSON

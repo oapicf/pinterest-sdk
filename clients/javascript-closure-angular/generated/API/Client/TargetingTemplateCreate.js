@@ -6,13 +6,6 @@ goog.provide('API.Client.TargetingTemplateCreate');
 API.Client.TargetingTemplateCreate = function() {}
 
 /**
- * Name of targeting template.
- * @type {!string}
- * @export
- */
-API.Client.TargetingTemplateCreate.prototype.name;
-
-/**
  * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
  * @type {!boolean}
  * @export
@@ -20,10 +13,17 @@ API.Client.TargetingTemplateCreate.prototype.name;
 API.Client.TargetingTemplateCreate.prototype.autoTargetingEnabled;
 
 /**
- * @type {!API.Client.TargetingSpec}
+ * @type {!Array<!API.Client.TargetingTemplateKeyword>}
  * @export
  */
-API.Client.TargetingTemplateCreate.prototype.targetingAttributes;
+API.Client.TargetingTemplateCreate.prototype.keywords;
+
+/**
+ * Name of targeting template.
+ * @type {!string}
+ * @export
+ */
+API.Client.TargetingTemplateCreate.prototype.name;
 
 /**
  * @type {!API.Client.PlacementGroupType}
@@ -32,10 +32,10 @@ API.Client.TargetingTemplateCreate.prototype.targetingAttributes;
 API.Client.TargetingTemplateCreate.prototype.placementGroup;
 
 /**
- * @type {!Array<!API.Client.TargetingTemplateKeyword>}
+ * @type {!API.Client.TargetingSpec}
  * @export
  */
-API.Client.TargetingTemplateCreate.prototype.keywords;
+API.Client.TargetingTemplateCreate.prototype.targetingAttributes;
 
 /**
  * @type {!API.Client.TrackingUrls}

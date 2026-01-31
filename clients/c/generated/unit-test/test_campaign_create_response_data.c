@@ -17,6 +17,7 @@
 campaign_create_response_data_t* instantiate_campaign_create_response_data(int include_optional);
 
 #include "test_tracking_urls.c"
+#include "test_campaign_bid_options.c"
 
 
 campaign_create_response_data_t* instantiate_campaign_create_response_data(int include_optional) {
@@ -24,46 +25,51 @@ campaign_create_response_data_t* instantiate_campaign_create_response_data(int i
   if (include_optional) {
     campaign_create_response_data = campaign_create_response_data_create(
       "549755885175",
-      "ACME Tools",
-      "ACTIVE",
       1432744744,
-      1432744744,
-      "549755885175",
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      1580865126,
       1644023526,
       true,
+      true,
+      1432744744,
+      "ACME Tools",
+      "549755885175",
+      1580865126,
+      "ACTIVE",
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       0,
       true,
       "549755885175",
-      pinterest_rest_api_campaign_create_response_data__AWARENESS,
+       // false, not to have infinite recursion
+      instantiate_campaign_bid_options(0),
       1432744744,
-      1432744744,
-      "campaign",
       true,
-      pinterest_rest_api_campaign_create_response_data__"RUNNING"
+      pinterest_rest_api_campaign_create_response_data__AWARENESS,
+      pinterest_rest_api_campaign_create_response_data__"RUNNING",
+      "campaign",
+      1432744744
     );
   } else {
     campaign_create_response_data = campaign_create_response_data_create(
       "549755885175",
-      "ACME Tools",
-      "ACTIVE",
       1432744744,
-      1432744744,
-      "549755885175",
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      1580865126,
       1644023526,
       true,
+      true,
+      1432744744,
+      "ACME Tools",
+      "549755885175",
+      1580865126,
+      "ACTIVE",
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       0,
       true,
       "549755885175",
-      pinterest_rest_api_campaign_create_response_data__AWARENESS,
+      NULL,
       1432744744,
-      1432744744,
-      "campaign",
       true,
-      pinterest_rest_api_campaign_create_response_data__"RUNNING"
+      pinterest_rest_api_campaign_create_response_data__AWARENESS,
+      pinterest_rest_api_campaign_create_response_data__"RUNNING",
+      "campaign",
+      1432744744
     );
   }
 

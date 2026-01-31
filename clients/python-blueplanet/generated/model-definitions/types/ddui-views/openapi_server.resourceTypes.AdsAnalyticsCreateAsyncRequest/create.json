@@ -1,0 +1,46 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "attribution_types" },
+      {"model": "click_window_days" },
+      {"model": "conversion_report_time" },
+      {"model": "end_date" },
+      {"model": "engagement_window_days" },
+      {"model": "granularity" },
+      {"model": "start_date" },
+      {"model": "view_window_days" },
+      {"model": "campaign_ids" },
+      {"model": "campaign_statuses" },
+      {"model": "campaign_objective_types" },
+      {"model": "campaign_brand_label" },
+      {"model": "ad_group_ids" },
+      {"model": "ad_group_statuses" },
+      {"model": "ad_ids" },
+      {"model": "ad_statuses" },
+      {"model": "product_group_ids" },
+      {"model": "product_group_statuses" },
+      {"model": "product_item_ids" },
+      {"model": "targeting_types" },
+      {"model": "metrics_filters" },
+      {"model": "columns" },
+      {"model": "combine_targeting_types" },
+      {"model": "custom_conversion_event_metrics" },
+      {"model": "end_hour" },
+      {"model": "level" },
+      {"model": "primary_sort" },
+      {"model": "report_format" },
+      {"model": "reporting_timezone" },
+      {"model": "start_hour" },
+    ]
+  }]
+}

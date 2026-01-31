@@ -24,10 +24,16 @@ module AdGroupsApiHandlerTestsHelper =
   let mutable AdGroupsAudienceSizingBody = ""
 
   AdGroupsAudienceSizingBody <- WebUtility.HtmlDecode "{
+  &quot;keywords&quot; : [ {
+    &quot;match_type&quot; : &quot;BROAD&quot;,
+    &quot;value&quot; : &quot;value&quot;
+  }, {
+    &quot;match_type&quot; : &quot;BROAD&quot;,
+    &quot;value&quot; : &quot;value&quot;
+  } ],
   &quot;targeting_spec&quot; : {
-    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
     &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+    &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
     &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
     &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
     &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -39,19 +45,15 @@ module AdGroupsApiHandlerTestsHelper =
       &quot;exclusion_window&quot; : 14,
       &quot;tag_types&quot; : [ 0, 6 ]
     } ],
-    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
     &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+    &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
     &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
   },
-  &quot;keywords&quot; : [ {
-    &quot;match_type&quot; : &quot;BROAD&quot;,
-    &quot;value&quot; : &quot;value&quot;
-  }, {
-    &quot;match_type&quot; : &quot;BROAD&quot;,
-    &quot;value&quot; : &quot;value&quot;
-  } ],
   &quot;creative_types&quot; : [ &quot;REGULAR&quot;, &quot;REGULAR&quot; ],
   &quot;product_group_ids&quot; : [ &quot;23423422123&quot;, &quot;23423422123&quot; ],
   &quot;auto_targeting_enabled&quot; : true,
@@ -154,17 +156,20 @@ module AdGroupsApiHandlerTestsHelper =
   AdGroupsCreateBody <- WebUtility.HtmlDecode "{
   &quot;bid_in_micro_currency&quot; : 5000000,
   &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
+  &quot;is_creative_optimization&quot; : true,
   &quot;end_time&quot; : 5705424000,
+  &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+  &quot;promotion_id&quot; : &quot;7834020347906&quot;,
   &quot;auto_targeting_enabled&quot; : true,
+  &quot;bid_multiplier&quot; : 1,
   &quot;tracking_urls&quot; : &quot;{}&quot;,
   &quot;budget_in_micro_currency&quot; : 5000000,
   &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
   &quot;start_time&quot; : 5686848000,
   &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
   &quot;targeting_spec&quot; : {
-    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
     &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+    &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
     &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
     &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
     &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -176,11 +181,14 @@ module AdGroupsApiHandlerTestsHelper =
       &quot;exclusion_window&quot; : 14,
       &quot;tag_types&quot; : [ 0, 6 ]
     } ],
-    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
     &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+    &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
     &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
   },
   &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
   &quot;lifetime_frequency_cap&quot; : 100,
@@ -188,8 +196,8 @@ module AdGroupsApiHandlerTestsHelper =
   &quot;placement_group&quot; : &quot;placement_group&quot;,
   &quot;budget_type&quot; : &quot;DAILY&quot;,
   &quot;campaign_id&quot; : &quot;626736533506&quot;,
-  &quot;status&quot; : &quot;status&quot;,
-  &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;
+  &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
+  &quot;status&quot; : &quot;status&quot;
 }"
   AdGroupsCreateExamples <- AdGroupsCreateExamples.Add("application/json", AdGroupsCreateBody)
 
@@ -209,17 +217,20 @@ module AdGroupsApiHandlerTestsHelper =
   AdGroupsUpdateBody <- WebUtility.HtmlDecode "{
   &quot;bid_in_micro_currency&quot; : 5000000,
   &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
+  &quot;is_creative_optimization&quot; : true,
   &quot;end_time&quot; : 5705424000,
+  &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+  &quot;promotion_id&quot; : &quot;7834020347906&quot;,
   &quot;auto_targeting_enabled&quot; : true,
+  &quot;bid_multiplier&quot; : 1,
   &quot;tracking_urls&quot; : &quot;{}&quot;,
   &quot;budget_in_micro_currency&quot; : 5000000,
   &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
   &quot;start_time&quot; : 5686848000,
   &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
   &quot;targeting_spec&quot; : {
-    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
     &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+    &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
     &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
     &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
     &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -231,11 +242,14 @@ module AdGroupsApiHandlerTestsHelper =
       &quot;exclusion_window&quot; : 14,
       &quot;tag_types&quot; : [ 0, 6 ]
     } ],
-    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
     &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+    &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
     &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
   },
   &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
   &quot;lifetime_frequency_cap&quot; : 100,
@@ -244,8 +258,8 @@ module AdGroupsApiHandlerTestsHelper =
   &quot;placement_group&quot; : &quot;placement_group&quot;,
   &quot;budget_type&quot; : &quot;budget_type&quot;,
   &quot;campaign_id&quot; : &quot;626736533506&quot;,
-  &quot;status&quot; : &quot;status&quot;,
-  &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;
+  &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;,
+  &quot;status&quot; : &quot;status&quot;
 }"
   AdGroupsUpdateExamples <- AdGroupsUpdateExamples.Add("application/json", AdGroupsUpdateBody)
 

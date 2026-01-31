@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]AdsCreditDiscountsResponse**](AdsCreditDiscountsResponse.md) |  | 
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
+**Items** | [**[]AdsCreditDiscountsResponse**](AdsCreditDiscountsResponse.md) |  | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewAdsCreditsDiscountsGet200ResponseWithDefaults instantiates a new AdsCreditsDiscountsGet200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItems
-
-`func (o *AdsCreditsDiscountsGet200Response) GetItems() []AdsCreditDiscountsResponse`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *AdsCreditsDiscountsGet200Response) GetItemsOk() (*[]AdsCreditDiscountsResponse, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *AdsCreditsDiscountsGet200Response) SetItems(v []AdsCreditDiscountsResponse)`
-
-SetItems sets Items field to given value.
-
 
 ### GetBookmark
 
@@ -81,6 +61,26 @@ HasBookmark returns a boolean if a field has been set.
 `func (o *AdsCreditsDiscountsGet200Response) UnsetBookmark()`
 
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
+### GetItems
+
+`func (o *AdsCreditsDiscountsGet200Response) GetItems() []AdsCreditDiscountsResponse`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *AdsCreditsDiscountsGet200Response) GetItemsOk() (*[]AdsCreditDiscountsResponse, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *AdsCreditsDiscountsGet200Response) SetItems(v []AdsCreditDiscountsResponse)`
+
+SetItems sets Items field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

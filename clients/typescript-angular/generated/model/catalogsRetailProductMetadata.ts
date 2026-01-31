@@ -15,15 +15,16 @@ import { NonNullableProductAvailabilityType } from './nonNullableProductAvailabi
  * Retail product metadata entity
  */
 export interface CatalogsRetailProductMetadata { 
-    /**
-     * The user-created unique ID that represents the product.
-     */
-    item_id: string;
+    availability: NonNullableProductAvailabilityType;
+    currency: NonNullableCatalogsCurrency;
     /**
      * The parent ID of the product.
      */
     item_group_id: string | null;
-    availability: NonNullableProductAvailabilityType;
+    /**
+     * The user-created unique ID that represents the product.
+     */
+    item_id: string;
     /**
      * The price of the product.
      */
@@ -32,7 +33,6 @@ export interface CatalogsRetailProductMetadata {
      * The discounted price of the product.
      */
     sale_price: number | null;
-    currency: NonNullableCatalogsCurrency;
 }
 export namespace CatalogsRetailProductMetadata {
 }

@@ -1,0 +1,75 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionEventAppInfo"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionEventAppInfo"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionEventAppInfo {
+    title = ConversionEventAppInfo
+    description = ConversionEventAppInfo
+    derivedFrom = Root
+    properties {
+        app_id {
+          type =  string
+          description = "App ID in Google Play Store, AppStore or other stores."
+          optional = false
+        }
+        app_name {
+          type =  string
+          description = "Name of the app. Primarily used for Mobile Apps."
+          optional = false
+        }
+        app_package_name {
+          type =  string
+          description = "App package name"
+          optional = false
+        }
+        app_store {
+          type =  string
+          description = "The name of the app distributor or store from which the app was installed. Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps"
+          optional = false
+        }
+        app_version {
+          type =  string
+          description = "App version. Primarily used for mobile apps"
+          optional = false
+        }
+        install_time {
+          type =  integer
+          description = "App install time. Unix timestamp in seconds"
+          optional = false
+        }
+        user_agent {
+          type =  string
+          description = "User Agent request header. Primarily used for Web events"
+          optional = false
+        }
+        window_height {
+          type =  integer
+          description = "Inner height of the window or viewport."
+          optional = false
+        }
+        window_width {
+          type =  integer
+          description = "Inner width of the window or viewport."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionEventAppInfo {
+    title = ConversionEventAppInfo
+    description = ConversionEventAppInfo
+    implements = openapi_server.resourceTypes.ConversionEventAppInfo
+
+  }
+}

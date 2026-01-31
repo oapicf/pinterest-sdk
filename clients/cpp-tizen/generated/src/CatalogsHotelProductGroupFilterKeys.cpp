@@ -26,12 +26,13 @@ CatalogsHotelProductGroupFilterKeys::__init()
 	//pRICE = new Catalogs_product_group_pricing_currency_criteria();
 	//hOTEL_ID = new CatalogsProductGroupMultipleStringCriteria();
 	//bRAND = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_0 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_1 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_2 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_3 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_4 = new CatalogsProductGroupMultipleStringCriteria();
+	//cUSTOM_LABEL_0 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_1 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_2 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_3 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_4 = new CatalogsProductGroupFilterOperatorTypeCriteria();
 	//cOUNTRY = new CatalogsProductGroupMultipleCountriesCriteria();
+	//tITLE_KEYWORDS = new CatalogsProductGroupMultipleStringCriteria();
 }
 
 void
@@ -81,6 +82,11 @@ CatalogsHotelProductGroupFilterKeys::__cleanup()
 	//
 	//delete cOUNTRY;
 	//cOUNTRY = NULL;
+	//}
+	//if(tITLE_KEYWORDS != NULL) {
+	//
+	//delete tITLE_KEYWORDS;
+	//tITLE_KEYWORDS = NULL;
 	//}
 	//
 }
@@ -137,11 +143,11 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_0, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_0, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_0);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_0);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -151,11 +157,11 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_1, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_1, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_1);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_1);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -165,11 +171,11 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_2, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_2, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_2);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_2);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -179,11 +185,11 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_3);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_3);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -193,11 +199,11 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_4, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_4, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_4);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_4);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -212,6 +218,20 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsProductGroupMultipleCountriesCriteria* obj = static_cast<CatalogsProductGroupMultipleCountriesCriteria*> (&cOUNTRY);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *tITLE_KEYWORDSKey = "TITLE_KEYWORDS";
+	node = json_object_get_member(pJsonObject, tITLE_KEYWORDSKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+			jsonToValue(&tITLE_KEYWORDS, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		} else {
+			
+			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&tITLE_KEYWORDS);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -270,13 +290,13 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 	}
 	const gchar *bRANDKey = "BRAND";
 	json_object_set_member(pJsonObject, bRANDKey, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL0();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL0();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL0());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL0());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -284,13 +304,13 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_0Key = "CUSTOM_LABEL_0";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_0Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL1();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL1();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL1());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL1());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -298,13 +318,13 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_1Key = "CUSTOM_LABEL_1";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_1Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL2();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL2();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL2());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL2());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -312,13 +332,13 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_2Key = "CUSTOM_LABEL_2";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_2Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL3();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL3();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL3());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL3());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -326,13 +346,13 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_3Key = "CUSTOM_LABEL_3";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_3Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL4();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL4();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL4());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL4());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -354,6 +374,20 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 	}
 	const gchar *cOUNTRYKey = "COUNTRY";
 	json_object_set_member(pJsonObject, cOUNTRYKey, node);
+	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+		CatalogsProductGroupMultipleStringCriteria obj = getTITLEKEYWORDS();
+		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	}
+	else {
+		
+		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getTITLEKEYWORDS());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *tITLE_KEYWORDSKey = "TITLE_KEYWORDS";
+	json_object_set_member(pJsonObject, tITLE_KEYWORDSKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -398,62 +432,62 @@ CatalogsHotelProductGroupFilterKeys::setBRAND(CatalogsProductGroupMultipleString
 	this->bRAND = bRAND;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL0()
 {
 	return cUSTOM_LABEL_0;
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_0)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_0)
 {
 	this->cUSTOM_LABEL_0 = cUSTOM_LABEL_0;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL1()
 {
 	return cUSTOM_LABEL_1;
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_1)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1)
 {
 	this->cUSTOM_LABEL_1 = cUSTOM_LABEL_1;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL2()
 {
 	return cUSTOM_LABEL_2;
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_2)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2)
 {
 	this->cUSTOM_LABEL_2 = cUSTOM_LABEL_2;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL3()
 {
 	return cUSTOM_LABEL_3;
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_3)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3)
 {
 	this->cUSTOM_LABEL_3 = cUSTOM_LABEL_3;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL4()
 {
 	return cUSTOM_LABEL_4;
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_4)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_4)
 {
 	this->cUSTOM_LABEL_4 = cUSTOM_LABEL_4;
 }
@@ -468,6 +502,18 @@ void
 CatalogsHotelProductGroupFilterKeys::setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria  cOUNTRY)
 {
 	this->cOUNTRY = cOUNTRY;
+}
+
+CatalogsProductGroupMultipleStringCriteria
+CatalogsHotelProductGroupFilterKeys::getTITLEKEYWORDS()
+{
+	return tITLE_KEYWORDS;
+}
+
+void
+CatalogsHotelProductGroupFilterKeys::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS)
+{
+	this->tITLE_KEYWORDS = tITLE_KEYWORDS;
 }
 
 

@@ -12,33 +12,33 @@ import AnyCodable
 
 public struct CreateMMMReportResponseData: Codable, JSONEncodable, Hashable {
 
-    public var reportStatus: BulkReportingJobStatus?
-    public var token: String?
     public var message: String?
+    public var reportStatus: BulkReportingJobStatus?
     public var status: String?
+    public var token: String?
 
-    public init(reportStatus: BulkReportingJobStatus? = nil, token: String? = nil, message: String? = nil, status: String? = nil) {
-        self.reportStatus = reportStatus
-        self.token = token
+    public init(message: String? = nil, reportStatus: BulkReportingJobStatus? = nil, status: String? = nil, token: String? = nil) {
         self.message = message
+        self.reportStatus = reportStatus
         self.status = status
+        self.token = token
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case reportStatus = "report_status"
-        case token
         case message
+        case reportStatus = "report_status"
         case status
+        case token
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(reportStatus, forKey: .reportStatus)
-        try container.encodeIfPresent(token, forKey: .token)
         try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(reportStatus, forKey: .reportStatus)
         try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(token, forKey: .token)
     }
 }
 

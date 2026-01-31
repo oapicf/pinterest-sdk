@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,28 +25,11 @@ import org.openapitools.model.BulkUpsertStatus;
  */
 
 @ApiModel(description = "ID of the bulk request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertStatusResponse   {
   
-  private BulkUpsertStatus status;
   private String resultUrl;
-
-  /**
-   */
-  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public BulkUpsertStatus getStatus() {
-    return status;
-  }
-  public void setStatus(BulkUpsertStatus status) {
-    this.status = status;
-  }
+  private BulkUpsertStatus status;
 
   /**
    */
@@ -65,6 +48,23 @@ public class BulkUpsertStatusResponse   {
     this.resultUrl = resultUrl;
   }
 
+  /**
+   */
+  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public BulkUpsertStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BulkUpsertStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -75,13 +75,13 @@ public class BulkUpsertStatusResponse   {
       return false;
     }
     BulkUpsertStatusResponse bulkUpsertStatusResponse = (BulkUpsertStatusResponse) o;
-    return Objects.equals(status, bulkUpsertStatusResponse.status) &&
-        Objects.equals(resultUrl, bulkUpsertStatusResponse.resultUrl);
+    return Objects.equals(resultUrl, bulkUpsertStatusResponse.resultUrl) &&
+        Objects.equals(status, bulkUpsertStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, resultUrl);
+    return Objects.hash(resultUrl, status);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class BulkUpsertStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertStatusResponse {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

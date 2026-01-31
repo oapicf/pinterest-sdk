@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &CatalogsHotelBatchRequest{}
 
 // CatalogsHotelBatchRequest Request object to update catalogs hotel items
 type CatalogsHotelBatchRequest struct {
-	CatalogType string `json:"catalog_type"`
-	Country Country `json:"country"`
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-	// Array with catalogs item operations
-	Items []CatalogsHotelBatchItem `json:"items"`
 	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
+	Country Country `json:"country"`
+	// Array with catalogs item operations
+	Items []CatalogsHotelBatchItem `json:"items"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 }
 
 type _CatalogsHotelBatchRequest CatalogsHotelBatchRequest
@@ -38,12 +38,12 @@ type _CatalogsHotelBatchRequest CatalogsHotelBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsHotelBatchRequest(catalogType string, country Country, language string, items []CatalogsHotelBatchItem) *CatalogsHotelBatchRequest {
+func NewCatalogsHotelBatchRequest(catalogType string, country Country, items []CatalogsHotelBatchItem, language string) *CatalogsHotelBatchRequest {
 	this := CatalogsHotelBatchRequest{}
 	this.CatalogType = catalogType
 	this.Country = country
-	this.Language = language
 	this.Items = items
+	this.Language = language
 	return &this
 }
 
@@ -53,6 +53,38 @@ func NewCatalogsHotelBatchRequest(catalogType string, country Country, language 
 func NewCatalogsHotelBatchRequestWithDefaults() *CatalogsHotelBatchRequest {
 	this := CatalogsHotelBatchRequest{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
+func (o *CatalogsHotelBatchRequest) GetCatalogId() string {
+	if o == nil || IsNil(o.CatalogId) {
+		var ret string
+		return ret
+	}
+	return *o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelBatchRequest) GetCatalogIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogId) {
+		return nil, false
+	}
+	return o.CatalogId, true
+}
+
+// HasCatalogId returns a boolean if a field has been set.
+func (o *CatalogsHotelBatchRequest) HasCatalogId() bool {
+	if o != nil && !IsNil(o.CatalogId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
+func (o *CatalogsHotelBatchRequest) SetCatalogId(v string) {
+	o.CatalogId = &v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -103,30 +135,6 @@ func (o *CatalogsHotelBatchRequest) SetCountry(v Country) {
 	o.Country = v
 }
 
-// GetLanguage returns the Language field value
-func (o *CatalogsHotelBatchRequest) GetLanguage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Language
-}
-
-// GetLanguageOk returns a tuple with the Language field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Language, true
-}
-
-// SetLanguage sets field value
-func (o *CatalogsHotelBatchRequest) SetLanguage(v string) {
-	o.Language = v
-}
-
 // GetItems returns the Items field value
 func (o *CatalogsHotelBatchRequest) GetItems() []CatalogsHotelBatchItem {
 	if o == nil {
@@ -151,36 +159,28 @@ func (o *CatalogsHotelBatchRequest) SetItems(v []CatalogsHotelBatchItem) {
 	o.Items = v
 }
 
-// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
-func (o *CatalogsHotelBatchRequest) GetCatalogId() string {
-	if o == nil || IsNil(o.CatalogId) {
+// GetLanguage returns the Language field value
+func (o *CatalogsHotelBatchRequest) GetLanguage() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CatalogId
+
+	return o.Language
 }
 
-// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelBatchRequest) GetCatalogIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CatalogId) {
+func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CatalogId, true
+	return &o.Language, true
 }
 
-// HasCatalogId returns a boolean if a field has been set.
-func (o *CatalogsHotelBatchRequest) HasCatalogId() bool {
-	if o != nil && !IsNil(o.CatalogId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
-func (o *CatalogsHotelBatchRequest) SetCatalogId(v string) {
-	o.CatalogId = &v
+// SetLanguage sets field value
+func (o *CatalogsHotelBatchRequest) SetLanguage(v string) {
+	o.Language = v
 }
 
 func (o CatalogsHotelBatchRequest) MarshalJSON() ([]byte, error) {
@@ -193,13 +193,13 @@ func (o CatalogsHotelBatchRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelBatchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["country"] = o.Country
-	toSerialize["language"] = o.Language
-	toSerialize["items"] = o.Items
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
+	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["country"] = o.Country
+	toSerialize["items"] = o.Items
+	toSerialize["language"] = o.Language
 	return toSerialize, nil
 }
 
@@ -210,8 +210,8 @@ func (o *CatalogsHotelBatchRequest) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"catalog_type",
 		"country",
-		"language",
 		"items",
+		"language",
 	}
 
 	allProperties := make(map[string]interface{})

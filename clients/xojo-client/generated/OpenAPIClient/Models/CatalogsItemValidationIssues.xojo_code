@@ -2,10 +2,7 @@
 Protected Class CatalogsItemValidationIssues
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-		#tag EndNote
-		item_number As Integer
+		errors As OpenAPIClient.Models.CatalogsItemValidationErrors
 	#tag EndProperty
 
 
@@ -18,7 +15,10 @@ Protected Class CatalogsItemValidationIssues
 
 
 	#tag Property, Flags = &h0
-		errors As OpenAPIClient.Models.CatalogsItemValidationErrors
+		#tag Note
+			Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+		#tag EndNote
+		item_number As Integer
 	#tag EndProperty
 
 
@@ -64,11 +64,11 @@ Protected Class CatalogsItemValidationIssues
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_number"
+			Name="errors"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="CatalogsItemValidationErrors"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -80,11 +80,11 @@ Protected Class CatalogsItemValidationIssues
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="errors"
+			Name="item_number"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsItemValidationErrors"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -6,39 +6,47 @@
 
 
 static bulk_upsert_request_create_t *bulk_upsert_request_create_create_internal(
-    list_t *campaigns,
     list_t *ad_groups,
     list_t *ads,
-    list_t *product_groups,
-    list_t *keywords
+    list_t *campaigns,
+    list_t *catalog_product_groups,
+    list_t *keywords,
+    list_t *labels,
+    list_t *product_groups
     ) {
     bulk_upsert_request_create_t *bulk_upsert_request_create_local_var = malloc(sizeof(bulk_upsert_request_create_t));
     if (!bulk_upsert_request_create_local_var) {
         return NULL;
     }
-    bulk_upsert_request_create_local_var->campaigns = campaigns;
     bulk_upsert_request_create_local_var->ad_groups = ad_groups;
     bulk_upsert_request_create_local_var->ads = ads;
-    bulk_upsert_request_create_local_var->product_groups = product_groups;
+    bulk_upsert_request_create_local_var->campaigns = campaigns;
+    bulk_upsert_request_create_local_var->catalog_product_groups = catalog_product_groups;
     bulk_upsert_request_create_local_var->keywords = keywords;
+    bulk_upsert_request_create_local_var->labels = labels;
+    bulk_upsert_request_create_local_var->product_groups = product_groups;
 
     bulk_upsert_request_create_local_var->_library_owned = 1;
     return bulk_upsert_request_create_local_var;
 }
 
 __attribute__((deprecated)) bulk_upsert_request_create_t *bulk_upsert_request_create_create(
-    list_t *campaigns,
     list_t *ad_groups,
     list_t *ads,
-    list_t *product_groups,
-    list_t *keywords
+    list_t *campaigns,
+    list_t *catalog_product_groups,
+    list_t *keywords,
+    list_t *labels,
+    list_t *product_groups
     ) {
     return bulk_upsert_request_create_create_internal (
-        campaigns,
         ad_groups,
         ads,
-        product_groups,
-        keywords
+        campaigns,
+        catalog_product_groups,
+        keywords,
+        labels,
+        product_groups
         );
 }
 
@@ -51,13 +59,6 @@ void bulk_upsert_request_create_free(bulk_upsert_request_create_t *bulk_upsert_r
         return ;
     }
     listEntry_t *listEntry;
-    if (bulk_upsert_request_create->campaigns) {
-        list_ForEach(listEntry, bulk_upsert_request_create->campaigns) {
-            campaign_create_request_free(listEntry->data);
-        }
-        list_freeList(bulk_upsert_request_create->campaigns);
-        bulk_upsert_request_create->campaigns = NULL;
-    }
     if (bulk_upsert_request_create->ad_groups) {
         list_ForEach(listEntry, bulk_upsert_request_create->ad_groups) {
             ad_group_create_request_free(listEntry->data);
@@ -72,12 +73,19 @@ void bulk_upsert_request_create_free(bulk_upsert_request_create_t *bulk_upsert_r
         list_freeList(bulk_upsert_request_create->ads);
         bulk_upsert_request_create->ads = NULL;
     }
-    if (bulk_upsert_request_create->product_groups) {
-        list_ForEach(listEntry, bulk_upsert_request_create->product_groups) {
-            product_group_promotion_create_request_free(listEntry->data);
+    if (bulk_upsert_request_create->campaigns) {
+        list_ForEach(listEntry, bulk_upsert_request_create->campaigns) {
+            campaign_create_request_free(listEntry->data);
         }
-        list_freeList(bulk_upsert_request_create->product_groups);
-        bulk_upsert_request_create->product_groups = NULL;
+        list_freeList(bulk_upsert_request_create->campaigns);
+        bulk_upsert_request_create->campaigns = NULL;
+    }
+    if (bulk_upsert_request_create->catalog_product_groups) {
+        list_ForEach(listEntry, bulk_upsert_request_create->catalog_product_groups) {
+            multiple_product_groups_inner_free(listEntry->data);
+        }
+        list_freeList(bulk_upsert_request_create->catalog_product_groups);
+        bulk_upsert_request_create->catalog_product_groups = NULL;
     }
     if (bulk_upsert_request_create->keywords) {
         list_ForEach(listEntry, bulk_upsert_request_create->keywords) {
@@ -86,31 +94,25 @@ void bulk_upsert_request_create_free(bulk_upsert_request_create_t *bulk_upsert_r
         list_freeList(bulk_upsert_request_create->keywords);
         bulk_upsert_request_create->keywords = NULL;
     }
+    if (bulk_upsert_request_create->labels) {
+        list_ForEach(listEntry, bulk_upsert_request_create->labels) {
+            label_create_request_free(listEntry->data);
+        }
+        list_freeList(bulk_upsert_request_create->labels);
+        bulk_upsert_request_create->labels = NULL;
+    }
+    if (bulk_upsert_request_create->product_groups) {
+        list_ForEach(listEntry, bulk_upsert_request_create->product_groups) {
+            product_group_promotion_create_request_free(listEntry->data);
+        }
+        list_freeList(bulk_upsert_request_create->product_groups);
+        bulk_upsert_request_create->product_groups = NULL;
+    }
     free(bulk_upsert_request_create);
 }
 
 cJSON *bulk_upsert_request_create_convertToJSON(bulk_upsert_request_create_t *bulk_upsert_request_create) {
     cJSON *item = cJSON_CreateObject();
-
-    // bulk_upsert_request_create->campaigns
-    if(bulk_upsert_request_create->campaigns) {
-    cJSON *campaigns = cJSON_AddArrayToObject(item, "campaigns");
-    if(campaigns == NULL) {
-    goto fail; //nonprimitive container
-    }
-
-    listEntry_t *campaignsListEntry;
-    if (bulk_upsert_request_create->campaigns) {
-    list_ForEach(campaignsListEntry, bulk_upsert_request_create->campaigns) {
-    cJSON *itemLocal = campaign_create_request_convertToJSON(campaignsListEntry->data);
-    if(itemLocal == NULL) {
-    goto fail;
-    }
-    cJSON_AddItemToArray(campaigns, itemLocal);
-    }
-    }
-    }
-
 
     // bulk_upsert_request_create->ad_groups
     if(bulk_upsert_request_create->ad_groups) {
@@ -152,21 +154,41 @@ cJSON *bulk_upsert_request_create_convertToJSON(bulk_upsert_request_create_t *bu
     }
 
 
-    // bulk_upsert_request_create->product_groups
-    if(bulk_upsert_request_create->product_groups) {
-    cJSON *product_groups = cJSON_AddArrayToObject(item, "product_groups");
-    if(product_groups == NULL) {
+    // bulk_upsert_request_create->campaigns
+    if(bulk_upsert_request_create->campaigns) {
+    cJSON *campaigns = cJSON_AddArrayToObject(item, "campaigns");
+    if(campaigns == NULL) {
     goto fail; //nonprimitive container
     }
 
-    listEntry_t *product_groupsListEntry;
-    if (bulk_upsert_request_create->product_groups) {
-    list_ForEach(product_groupsListEntry, bulk_upsert_request_create->product_groups) {
-    cJSON *itemLocal = product_group_promotion_create_request_convertToJSON(product_groupsListEntry->data);
+    listEntry_t *campaignsListEntry;
+    if (bulk_upsert_request_create->campaigns) {
+    list_ForEach(campaignsListEntry, bulk_upsert_request_create->campaigns) {
+    cJSON *itemLocal = campaign_create_request_convertToJSON(campaignsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
-    cJSON_AddItemToArray(product_groups, itemLocal);
+    cJSON_AddItemToArray(campaigns, itemLocal);
+    }
+    }
+    }
+
+
+    // bulk_upsert_request_create->catalog_product_groups
+    if(bulk_upsert_request_create->catalog_product_groups) {
+    cJSON *catalog_product_groups = cJSON_AddArrayToObject(item, "catalog_product_groups");
+    if(catalog_product_groups == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *catalog_product_groupsListEntry;
+    if (bulk_upsert_request_create->catalog_product_groups) {
+    list_ForEach(catalog_product_groupsListEntry, bulk_upsert_request_create->catalog_product_groups) {
+    cJSON *itemLocal = multiple_product_groups_inner_convertToJSON(catalog_product_groupsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(catalog_product_groups, itemLocal);
     }
     }
     }
@@ -191,6 +213,46 @@ cJSON *bulk_upsert_request_create_convertToJSON(bulk_upsert_request_create_t *bu
     }
     }
 
+
+    // bulk_upsert_request_create->labels
+    if(bulk_upsert_request_create->labels) {
+    cJSON *labels = cJSON_AddArrayToObject(item, "labels");
+    if(labels == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *labelsListEntry;
+    if (bulk_upsert_request_create->labels) {
+    list_ForEach(labelsListEntry, bulk_upsert_request_create->labels) {
+    cJSON *itemLocal = label_create_request_convertToJSON(labelsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(labels, itemLocal);
+    }
+    }
+    }
+
+
+    // bulk_upsert_request_create->product_groups
+    if(bulk_upsert_request_create->product_groups) {
+    cJSON *product_groups = cJSON_AddArrayToObject(item, "product_groups");
+    if(product_groups == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *product_groupsListEntry;
+    if (bulk_upsert_request_create->product_groups) {
+    list_ForEach(product_groupsListEntry, bulk_upsert_request_create->product_groups) {
+    cJSON *itemLocal = product_group_promotion_create_request_convertToJSON(product_groupsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(product_groups, itemLocal);
+    }
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -203,44 +265,26 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
 
     bulk_upsert_request_create_t *bulk_upsert_request_create_local_var = NULL;
 
-    // define the local list for bulk_upsert_request_create->campaigns
-    list_t *campaignsList = NULL;
-
     // define the local list for bulk_upsert_request_create->ad_groups
     list_t *ad_groupsList = NULL;
 
     // define the local list for bulk_upsert_request_create->ads
     list_t *adsList = NULL;
 
-    // define the local list for bulk_upsert_request_create->product_groups
-    list_t *product_groupsList = NULL;
+    // define the local list for bulk_upsert_request_create->campaigns
+    list_t *campaignsList = NULL;
+
+    // define the local list for bulk_upsert_request_create->catalog_product_groups
+    list_t *catalog_product_groupsList = NULL;
 
     // define the local list for bulk_upsert_request_create->keywords
     list_t *keywordsList = NULL;
 
-    // bulk_upsert_request_create->campaigns
-    cJSON *campaigns = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "campaigns");
-    if (cJSON_IsNull(campaigns)) {
-        campaigns = NULL;
-    }
-    if (campaigns) { 
-    cJSON *campaigns_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(campaigns)){
-        goto end; //nonprimitive container
-    }
+    // define the local list for bulk_upsert_request_create->labels
+    list_t *labelsList = NULL;
 
-    campaignsList = list_createList();
-
-    cJSON_ArrayForEach(campaigns_local_nonprimitive,campaigns )
-    {
-        if(!cJSON_IsObject(campaigns_local_nonprimitive)){
-            goto end;
-        }
-        campaign_create_request_t *campaignsItem = campaign_create_request_parseFromJSON(campaigns_local_nonprimitive);
-
-        list_addElement(campaignsList, campaignsItem);
-    }
-    }
+    // define the local list for bulk_upsert_request_create->product_groups
+    list_t *product_groupsList = NULL;
 
     // bulk_upsert_request_create->ad_groups
     cJSON *ad_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "ad_groups");
@@ -290,27 +334,51 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
     }
     }
 
-    // bulk_upsert_request_create->product_groups
-    cJSON *product_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "product_groups");
-    if (cJSON_IsNull(product_groups)) {
-        product_groups = NULL;
+    // bulk_upsert_request_create->campaigns
+    cJSON *campaigns = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "campaigns");
+    if (cJSON_IsNull(campaigns)) {
+        campaigns = NULL;
     }
-    if (product_groups) { 
-    cJSON *product_groups_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(product_groups)){
+    if (campaigns) { 
+    cJSON *campaigns_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(campaigns)){
         goto end; //nonprimitive container
     }
 
-    product_groupsList = list_createList();
+    campaignsList = list_createList();
 
-    cJSON_ArrayForEach(product_groups_local_nonprimitive,product_groups )
+    cJSON_ArrayForEach(campaigns_local_nonprimitive,campaigns )
     {
-        if(!cJSON_IsObject(product_groups_local_nonprimitive)){
+        if(!cJSON_IsObject(campaigns_local_nonprimitive)){
             goto end;
         }
-        product_group_promotion_create_request_t *product_groupsItem = product_group_promotion_create_request_parseFromJSON(product_groups_local_nonprimitive);
+        campaign_create_request_t *campaignsItem = campaign_create_request_parseFromJSON(campaigns_local_nonprimitive);
 
-        list_addElement(product_groupsList, product_groupsItem);
+        list_addElement(campaignsList, campaignsItem);
+    }
+    }
+
+    // bulk_upsert_request_create->catalog_product_groups
+    cJSON *catalog_product_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "catalog_product_groups");
+    if (cJSON_IsNull(catalog_product_groups)) {
+        catalog_product_groups = NULL;
+    }
+    if (catalog_product_groups) { 
+    cJSON *catalog_product_groups_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(catalog_product_groups)){
+        goto end; //nonprimitive container
+    }
+
+    catalog_product_groupsList = list_createList();
+
+    cJSON_ArrayForEach(catalog_product_groups_local_nonprimitive,catalog_product_groups )
+    {
+        if(!cJSON_IsObject(catalog_product_groups_local_nonprimitive)){
+            goto end;
+        }
+        multiple_product_groups_inner_t *catalog_product_groupsItem = multiple_product_groups_inner_parseFromJSON(catalog_product_groups_local_nonprimitive);
+
+        list_addElement(catalog_product_groupsList, catalog_product_groupsItem);
     }
     }
 
@@ -338,26 +406,67 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
     }
     }
 
+    // bulk_upsert_request_create->labels
+    cJSON *labels = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "labels");
+    if (cJSON_IsNull(labels)) {
+        labels = NULL;
+    }
+    if (labels) { 
+    cJSON *labels_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(labels)){
+        goto end; //nonprimitive container
+    }
+
+    labelsList = list_createList();
+
+    cJSON_ArrayForEach(labels_local_nonprimitive,labels )
+    {
+        if(!cJSON_IsObject(labels_local_nonprimitive)){
+            goto end;
+        }
+        label_create_request_t *labelsItem = label_create_request_parseFromJSON(labels_local_nonprimitive);
+
+        list_addElement(labelsList, labelsItem);
+    }
+    }
+
+    // bulk_upsert_request_create->product_groups
+    cJSON *product_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "product_groups");
+    if (cJSON_IsNull(product_groups)) {
+        product_groups = NULL;
+    }
+    if (product_groups) { 
+    cJSON *product_groups_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(product_groups)){
+        goto end; //nonprimitive container
+    }
+
+    product_groupsList = list_createList();
+
+    cJSON_ArrayForEach(product_groups_local_nonprimitive,product_groups )
+    {
+        if(!cJSON_IsObject(product_groups_local_nonprimitive)){
+            goto end;
+        }
+        product_group_promotion_create_request_t *product_groupsItem = product_group_promotion_create_request_parseFromJSON(product_groups_local_nonprimitive);
+
+        list_addElement(product_groupsList, product_groupsItem);
+    }
+    }
+
 
     bulk_upsert_request_create_local_var = bulk_upsert_request_create_create_internal (
-        campaigns ? campaignsList : NULL,
         ad_groups ? ad_groupsList : NULL,
         ads ? adsList : NULL,
-        product_groups ? product_groupsList : NULL,
-        keywords ? keywordsList : NULL
+        campaigns ? campaignsList : NULL,
+        catalog_product_groups ? catalog_product_groupsList : NULL,
+        keywords ? keywordsList : NULL,
+        labels ? labelsList : NULL,
+        product_groups ? product_groupsList : NULL
         );
 
     return bulk_upsert_request_create_local_var;
 end:
-    if (campaignsList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, campaignsList) {
-            campaign_create_request_free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(campaignsList);
-        campaignsList = NULL;
-    }
     if (ad_groupsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, ad_groupsList) {
@@ -376,14 +485,23 @@ end:
         list_freeList(adsList);
         adsList = NULL;
     }
-    if (product_groupsList) {
+    if (campaignsList) {
         listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, product_groupsList) {
-            product_group_promotion_create_request_free(listEntry->data);
+        list_ForEach(listEntry, campaignsList) {
+            campaign_create_request_free(listEntry->data);
             listEntry->data = NULL;
         }
-        list_freeList(product_groupsList);
-        product_groupsList = NULL;
+        list_freeList(campaignsList);
+        campaignsList = NULL;
+    }
+    if (catalog_product_groupsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, catalog_product_groupsList) {
+            multiple_product_groups_inner_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(catalog_product_groupsList);
+        catalog_product_groupsList = NULL;
     }
     if (keywordsList) {
         listEntry_t *listEntry = NULL;
@@ -393,6 +511,24 @@ end:
         }
         list_freeList(keywordsList);
         keywordsList = NULL;
+    }
+    if (labelsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, labelsList) {
+            label_create_request_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(labelsList);
+        labelsList = NULL;
+    }
+    if (product_groupsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, product_groupsList) {
+            product_group_promotion_create_request_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(product_groupsList);
+        product_groupsList = NULL;
     }
     return NULL;
 

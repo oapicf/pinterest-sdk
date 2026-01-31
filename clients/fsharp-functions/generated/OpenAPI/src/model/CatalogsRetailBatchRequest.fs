@@ -12,14 +12,16 @@ module CatalogsRetailBatchRequest =
 
   [<CLIMutable>]
   type CatalogsRetailBatchRequest = {
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
-    [<JsonProperty(PropertyName = "language")>]
-    Language : string;
     [<JsonProperty(PropertyName = "items")>]
     Items : CatalogsRetailBatchRequestItemsInner[];
+    [<JsonProperty(PropertyName = "language")>]
+    Language : string;
   }
 
   //#endregion

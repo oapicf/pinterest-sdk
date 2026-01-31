@@ -21,15 +21,15 @@ API.Client.CreativeAssetsProcessingRecord.prototype.creativeAssetsId;
 API.Client.CreativeAssetsProcessingRecord.prototype.errors;
 
 /**
+ * @type {!API.Client.ItemProcessingStatus}
+ * @export
+ */
+API.Client.CreativeAssetsProcessingRecord.prototype.status;
+
+/**
  * Array with the validation warnings for the item processing record
  * @type {!Array<!API.Client.ItemValidationEvent>}
  * @export
  */
 API.Client.CreativeAssetsProcessingRecord.prototype.warnings;
-
-/**
- * @type {!API.Client.ItemProcessingStatus}
- * @export
- */
-API.Client.CreativeAssetsProcessingRecord.prototype.status;
 

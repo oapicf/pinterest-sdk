@@ -14,12 +14,12 @@ import { ItemAttributesRequest } from './itemAttributesRequest';
  * An item to be created
  */
 export interface CatalogsCreateRetailItem { 
+    attributes: ItemAttributesRequest;
     /**
      * The catalog item id in the merchant namespace
      */
     item_id: string;
     operation: CatalogsCreateRetailItem.OperationEnum;
-    attributes: ItemAttributesRequest;
 }
 export namespace CatalogsCreateRetailItem {
     export const OperationEnum = {

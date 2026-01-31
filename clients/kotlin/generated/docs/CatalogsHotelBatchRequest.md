@@ -6,8 +6,8 @@
 | ------------ | ------------- | ------------- | ------------- |
 | **catalogType** | [**inline**](#CatalogType) |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **items** | [**kotlin.collections.List&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations |  |
+| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **catalogId** | **kotlin.String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional] |
 
 

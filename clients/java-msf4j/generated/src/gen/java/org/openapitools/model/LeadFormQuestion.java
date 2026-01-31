@@ -16,11 +16,8 @@ import org.openapitools.model.LeadFormQuestionType;
 /**
  * LeadFormQuestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormQuestion   {
-  @JsonProperty("question_type")
-  private LeadFormQuestionType questionType;
-
   @JsonProperty("custom_question_field_type")
   private LeadFormQuestionFieldType customQuestionFieldType;
 
@@ -30,23 +27,8 @@ public class LeadFormQuestion   {
   @JsonProperty("custom_question_options")
   private List<String> customQuestionOptions = null;
 
-  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
-    this.questionType = questionType;
-    return this;
-  }
-
-   /**
-   * Get questionType
-   * @return questionType
-  **/
-  @ApiModelProperty(value = "")
-  public LeadFormQuestionType getQuestionType() {
-    return questionType;
-  }
-
-  public void setQuestionType(LeadFormQuestionType questionType) {
-    this.questionType = questionType;
-  }
+  @JsonProperty("question_type")
+  private LeadFormQuestionType questionType;
 
   public LeadFormQuestion customQuestionFieldType(LeadFormQuestionFieldType customQuestionFieldType) {
     this.customQuestionFieldType = customQuestionFieldType;
@@ -110,6 +92,24 @@ public class LeadFormQuestion   {
     this.customQuestionOptions = customQuestionOptions;
   }
 
+  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
+    this.questionType = questionType;
+    return this;
+  }
+
+   /**
+   * Get questionType
+   * @return questionType
+  **/
+  @ApiModelProperty(value = "")
+  public LeadFormQuestionType getQuestionType() {
+    return questionType;
+  }
+
+  public void setQuestionType(LeadFormQuestionType questionType) {
+    this.questionType = questionType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -120,15 +120,15 @@ public class LeadFormQuestion   {
       return false;
     }
     LeadFormQuestion leadFormQuestion = (LeadFormQuestion) o;
-    return Objects.equals(this.questionType, leadFormQuestion.questionType) &&
-        Objects.equals(this.customQuestionFieldType, leadFormQuestion.customQuestionFieldType) &&
+    return Objects.equals(this.customQuestionFieldType, leadFormQuestion.customQuestionFieldType) &&
         Objects.equals(this.customQuestionLabel, leadFormQuestion.customQuestionLabel) &&
-        Objects.equals(this.customQuestionOptions, leadFormQuestion.customQuestionOptions);
+        Objects.equals(this.customQuestionOptions, leadFormQuestion.customQuestionOptions) &&
+        Objects.equals(this.questionType, leadFormQuestion.questionType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionType, customQuestionFieldType, customQuestionLabel, customQuestionOptions);
+    return Objects.hash(customQuestionFieldType, customQuestionLabel, customQuestionOptions, questionType);
   }
 
   @Override
@@ -136,10 +136,10 @@ public class LeadFormQuestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormQuestion {\n");
     
-    sb.append("    questionType: ").append(toIndentedString(questionType)).append("\n");
     sb.append("    customQuestionFieldType: ").append(toIndentedString(customQuestionFieldType)).append("\n");
     sb.append("    customQuestionLabel: ").append(toIndentedString(customQuestionLabel)).append("\n");
     sb.append("    customQuestionOptions: ").append(toIndentedString(customQuestionOptions)).append("\n");
+    sb.append("    questionType: ").append(toIndentedString(questionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

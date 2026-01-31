@@ -7,9 +7,9 @@
 
 (def user-website-summary-data
   {
-   (ds/opt :website) string?
    (ds/opt :status) string?
    (ds/opt :verified_at) string?
+   (ds/opt :website) string?
    })
 
 (def user-website-summary-spec

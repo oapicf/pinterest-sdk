@@ -6,14 +6,174 @@
 
 
 static catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_create_internal(
+    catalogs_item_validation_details_t *ad_image_0_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_0_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_0_link_required,
+    catalogs_item_validation_details_t *ad_image_0_link_warning,
+    catalogs_item_validation_details_t *ad_image_0_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_0_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_0_tag_required,
+    catalogs_item_validation_details_t *ad_image_10_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_10_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_10_link_required,
+    catalogs_item_validation_details_t *ad_image_10_link_warning,
+    catalogs_item_validation_details_t *ad_image_10_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_10_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_10_tag_required,
+    catalogs_item_validation_details_t *ad_image_11_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_11_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_11_link_required,
+    catalogs_item_validation_details_t *ad_image_11_link_warning,
+    catalogs_item_validation_details_t *ad_image_11_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_11_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_11_tag_required,
+    catalogs_item_validation_details_t *ad_image_12_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_12_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_12_link_required,
+    catalogs_item_validation_details_t *ad_image_12_link_warning,
+    catalogs_item_validation_details_t *ad_image_12_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_12_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_12_tag_required,
+    catalogs_item_validation_details_t *ad_image_13_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_13_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_13_link_required,
+    catalogs_item_validation_details_t *ad_image_13_link_warning,
+    catalogs_item_validation_details_t *ad_image_13_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_13_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_13_tag_required,
+    catalogs_item_validation_details_t *ad_image_14_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_14_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_14_link_required,
+    catalogs_item_validation_details_t *ad_image_14_link_warning,
+    catalogs_item_validation_details_t *ad_image_14_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_14_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_14_tag_required,
+    catalogs_item_validation_details_t *ad_image_15_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_15_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_15_link_required,
+    catalogs_item_validation_details_t *ad_image_15_link_warning,
+    catalogs_item_validation_details_t *ad_image_15_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_15_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_15_tag_required,
+    catalogs_item_validation_details_t *ad_image_16_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_16_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_16_link_required,
+    catalogs_item_validation_details_t *ad_image_16_link_warning,
+    catalogs_item_validation_details_t *ad_image_16_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_16_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_16_tag_required,
+    catalogs_item_validation_details_t *ad_image_17_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_17_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_17_link_required,
+    catalogs_item_validation_details_t *ad_image_17_link_warning,
+    catalogs_item_validation_details_t *ad_image_17_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_17_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_17_tag_required,
+    catalogs_item_validation_details_t *ad_image_18_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_18_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_18_link_required,
+    catalogs_item_validation_details_t *ad_image_18_link_warning,
+    catalogs_item_validation_details_t *ad_image_18_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_18_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_18_tag_required,
+    catalogs_item_validation_details_t *ad_image_19_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_19_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_19_link_required,
+    catalogs_item_validation_details_t *ad_image_19_link_warning,
+    catalogs_item_validation_details_t *ad_image_19_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_19_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_19_tag_required,
+    catalogs_item_validation_details_t *ad_image_1_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_1_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_1_link_required,
+    catalogs_item_validation_details_t *ad_image_1_link_warning,
+    catalogs_item_validation_details_t *ad_image_1_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_1_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_1_tag_required,
+    catalogs_item_validation_details_t *ad_image_2_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_2_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_2_link_required,
+    catalogs_item_validation_details_t *ad_image_2_link_warning,
+    catalogs_item_validation_details_t *ad_image_2_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_2_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_2_tag_required,
+    catalogs_item_validation_details_t *ad_image_3_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_3_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_3_link_required,
+    catalogs_item_validation_details_t *ad_image_3_link_warning,
+    catalogs_item_validation_details_t *ad_image_3_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_3_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_3_tag_required,
+    catalogs_item_validation_details_t *ad_image_4_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_4_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_4_link_required,
+    catalogs_item_validation_details_t *ad_image_4_link_warning,
+    catalogs_item_validation_details_t *ad_image_4_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_4_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_4_tag_required,
+    catalogs_item_validation_details_t *ad_image_5_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_5_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_5_link_required,
+    catalogs_item_validation_details_t *ad_image_5_link_warning,
+    catalogs_item_validation_details_t *ad_image_5_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_5_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_5_tag_required,
+    catalogs_item_validation_details_t *ad_image_6_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_6_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_6_link_required,
+    catalogs_item_validation_details_t *ad_image_6_link_warning,
+    catalogs_item_validation_details_t *ad_image_6_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_6_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_6_tag_required,
+    catalogs_item_validation_details_t *ad_image_7_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_7_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_7_link_required,
+    catalogs_item_validation_details_t *ad_image_7_link_warning,
+    catalogs_item_validation_details_t *ad_image_7_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_7_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_7_tag_required,
+    catalogs_item_validation_details_t *ad_image_8_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_8_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_8_link_required,
+    catalogs_item_validation_details_t *ad_image_8_link_warning,
+    catalogs_item_validation_details_t *ad_image_8_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_8_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_8_tag_required,
+    catalogs_item_validation_details_t *ad_image_9_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_9_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_9_link_required,
+    catalogs_item_validation_details_t *ad_image_9_link_warning,
+    catalogs_item_validation_details_t *ad_image_9_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_9_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_9_tag_required,
     catalogs_item_validation_details_t *ad_link_format_warning,
     catalogs_item_validation_details_t *ad_link_same_as_link,
+    catalogs_item_validation_details_t *ad_video_0_link_duplicated,
+    catalogs_item_validation_details_t *ad_video_0_link_length_too_long,
+    catalogs_item_validation_details_t *ad_video_0_link_required,
+    catalogs_item_validation_details_t *ad_video_0_link_warning,
+    catalogs_item_validation_details_t *ad_video_0_tag_duplicated,
+    catalogs_item_validation_details_t *ad_video_0_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_video_0_tag_required,
+    catalogs_item_validation_details_t *ad_video_1_link_duplicated,
+    catalogs_item_validation_details_t *ad_video_1_link_length_too_long,
+    catalogs_item_validation_details_t *ad_video_1_link_required,
+    catalogs_item_validation_details_t *ad_video_1_link_warning,
+    catalogs_item_validation_details_t *ad_video_1_tag_duplicated,
+    catalogs_item_validation_details_t *ad_video_1_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_video_1_tag_required,
+    catalogs_item_validation_details_t *ad_video_2_link_duplicated,
+    catalogs_item_validation_details_t *ad_video_2_link_length_too_long,
+    catalogs_item_validation_details_t *ad_video_2_link_required,
+    catalogs_item_validation_details_t *ad_video_2_link_warning,
+    catalogs_item_validation_details_t *ad_video_2_tag_duplicated,
+    catalogs_item_validation_details_t *ad_video_2_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_video_2_tag_required,
     catalogs_item_validation_details_t *additional_image_link_length_too_long,
     catalogs_item_validation_details_t *additional_image_link_warning,
     catalogs_item_validation_details_t *adwords_format_warning,
     catalogs_item_validation_details_t *adwords_same_as_link,
     catalogs_item_validation_details_t *age_group_invalid,
-    catalogs_item_validation_details_t *size_system_invalid,
     catalogs_item_validation_details_t *android_deep_link_invalid,
     catalogs_item_validation_details_t *availability_date_invalid,
     catalogs_item_validation_details_t *country_does_not_map_to_currency,
@@ -36,33 +196,195 @@ static catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_cr
     catalogs_item_validation_details_t *optional_product_category_missing,
     catalogs_item_validation_details_t *product_category_depth_warning,
     catalogs_item_validation_details_t *product_type_length_too_long,
-    catalogs_item_validation_details_t *sales_price_invalid,
-    catalogs_item_validation_details_t *sales_price_too_low,
-    catalogs_item_validation_details_t *sales_price_too_high,
     catalogs_item_validation_details_t *sale_date_invalid,
-    catalogs_item_validation_details_t *shipping_invalid,
+    catalogs_item_validation_details_t *sales_price_invalid,
+    catalogs_item_validation_details_t *sales_price_too_high,
+    catalogs_item_validation_details_t *sales_price_too_low,
     catalogs_item_validation_details_t *shipping_height_invalid,
+    catalogs_item_validation_details_t *shipping_invalid,
     catalogs_item_validation_details_t *shipping_weight_invalid,
     catalogs_item_validation_details_t *shipping_width_invalid,
+    catalogs_item_validation_details_t *size_system_invalid,
     catalogs_item_validation_details_t *size_type_invalid,
     catalogs_item_validation_details_t *tax_invalid,
     catalogs_item_validation_details_t *title_length_too_long,
     catalogs_item_validation_details_t *too_many_additional_image_links,
     catalogs_item_validation_details_t *utm_source_auto_corrected,
+    catalogs_item_validation_details_t *video_required_when_ad_video_provided,
     catalogs_item_validation_details_t *weight_unit_invalid
     ) {
     catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_local_var = malloc(sizeof(catalogs_item_validation_warnings_t));
     if (!catalogs_item_validation_warnings_local_var) {
         return NULL;
     }
+    catalogs_item_validation_warnings_local_var->ad_image_0_link_duplicated = ad_image_0_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_0_link_length_too_long = ad_image_0_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_0_link_required = ad_image_0_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_0_link_warning = ad_image_0_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_0_tag_duplicated = ad_image_0_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_0_tag_length_too_long = ad_image_0_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_0_tag_required = ad_image_0_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_10_link_duplicated = ad_image_10_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_10_link_length_too_long = ad_image_10_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_10_link_required = ad_image_10_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_10_link_warning = ad_image_10_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_10_tag_duplicated = ad_image_10_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_10_tag_length_too_long = ad_image_10_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_10_tag_required = ad_image_10_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_11_link_duplicated = ad_image_11_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_11_link_length_too_long = ad_image_11_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_11_link_required = ad_image_11_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_11_link_warning = ad_image_11_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_11_tag_duplicated = ad_image_11_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_11_tag_length_too_long = ad_image_11_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_11_tag_required = ad_image_11_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_12_link_duplicated = ad_image_12_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_12_link_length_too_long = ad_image_12_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_12_link_required = ad_image_12_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_12_link_warning = ad_image_12_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_12_tag_duplicated = ad_image_12_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_12_tag_length_too_long = ad_image_12_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_12_tag_required = ad_image_12_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_13_link_duplicated = ad_image_13_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_13_link_length_too_long = ad_image_13_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_13_link_required = ad_image_13_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_13_link_warning = ad_image_13_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_13_tag_duplicated = ad_image_13_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_13_tag_length_too_long = ad_image_13_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_13_tag_required = ad_image_13_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_14_link_duplicated = ad_image_14_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_14_link_length_too_long = ad_image_14_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_14_link_required = ad_image_14_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_14_link_warning = ad_image_14_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_14_tag_duplicated = ad_image_14_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_14_tag_length_too_long = ad_image_14_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_14_tag_required = ad_image_14_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_15_link_duplicated = ad_image_15_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_15_link_length_too_long = ad_image_15_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_15_link_required = ad_image_15_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_15_link_warning = ad_image_15_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_15_tag_duplicated = ad_image_15_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_15_tag_length_too_long = ad_image_15_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_15_tag_required = ad_image_15_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_16_link_duplicated = ad_image_16_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_16_link_length_too_long = ad_image_16_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_16_link_required = ad_image_16_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_16_link_warning = ad_image_16_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_16_tag_duplicated = ad_image_16_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_16_tag_length_too_long = ad_image_16_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_16_tag_required = ad_image_16_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_17_link_duplicated = ad_image_17_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_17_link_length_too_long = ad_image_17_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_17_link_required = ad_image_17_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_17_link_warning = ad_image_17_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_17_tag_duplicated = ad_image_17_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_17_tag_length_too_long = ad_image_17_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_17_tag_required = ad_image_17_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_18_link_duplicated = ad_image_18_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_18_link_length_too_long = ad_image_18_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_18_link_required = ad_image_18_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_18_link_warning = ad_image_18_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_18_tag_duplicated = ad_image_18_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_18_tag_length_too_long = ad_image_18_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_18_tag_required = ad_image_18_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_19_link_duplicated = ad_image_19_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_19_link_length_too_long = ad_image_19_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_19_link_required = ad_image_19_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_19_link_warning = ad_image_19_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_19_tag_duplicated = ad_image_19_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_19_tag_length_too_long = ad_image_19_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_19_tag_required = ad_image_19_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_1_link_duplicated = ad_image_1_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_1_link_length_too_long = ad_image_1_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_1_link_required = ad_image_1_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_1_link_warning = ad_image_1_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_1_tag_duplicated = ad_image_1_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_1_tag_length_too_long = ad_image_1_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_1_tag_required = ad_image_1_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_2_link_duplicated = ad_image_2_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_2_link_length_too_long = ad_image_2_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_2_link_required = ad_image_2_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_2_link_warning = ad_image_2_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_2_tag_duplicated = ad_image_2_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_2_tag_length_too_long = ad_image_2_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_2_tag_required = ad_image_2_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_3_link_duplicated = ad_image_3_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_3_link_length_too_long = ad_image_3_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_3_link_required = ad_image_3_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_3_link_warning = ad_image_3_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_3_tag_duplicated = ad_image_3_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_3_tag_length_too_long = ad_image_3_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_3_tag_required = ad_image_3_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_4_link_duplicated = ad_image_4_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_4_link_length_too_long = ad_image_4_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_4_link_required = ad_image_4_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_4_link_warning = ad_image_4_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_4_tag_duplicated = ad_image_4_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_4_tag_length_too_long = ad_image_4_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_4_tag_required = ad_image_4_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_5_link_duplicated = ad_image_5_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_5_link_length_too_long = ad_image_5_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_5_link_required = ad_image_5_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_5_link_warning = ad_image_5_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_5_tag_duplicated = ad_image_5_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_5_tag_length_too_long = ad_image_5_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_5_tag_required = ad_image_5_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_6_link_duplicated = ad_image_6_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_6_link_length_too_long = ad_image_6_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_6_link_required = ad_image_6_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_6_link_warning = ad_image_6_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_6_tag_duplicated = ad_image_6_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_6_tag_length_too_long = ad_image_6_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_6_tag_required = ad_image_6_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_7_link_duplicated = ad_image_7_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_7_link_length_too_long = ad_image_7_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_7_link_required = ad_image_7_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_7_link_warning = ad_image_7_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_7_tag_duplicated = ad_image_7_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_7_tag_length_too_long = ad_image_7_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_7_tag_required = ad_image_7_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_8_link_duplicated = ad_image_8_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_8_link_length_too_long = ad_image_8_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_8_link_required = ad_image_8_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_8_link_warning = ad_image_8_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_8_tag_duplicated = ad_image_8_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_8_tag_length_too_long = ad_image_8_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_8_tag_required = ad_image_8_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_image_9_link_duplicated = ad_image_9_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_9_link_length_too_long = ad_image_9_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_9_link_required = ad_image_9_link_required;
+    catalogs_item_validation_warnings_local_var->ad_image_9_link_warning = ad_image_9_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_image_9_tag_duplicated = ad_image_9_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_image_9_tag_length_too_long = ad_image_9_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_image_9_tag_required = ad_image_9_tag_required;
     catalogs_item_validation_warnings_local_var->ad_link_format_warning = ad_link_format_warning;
     catalogs_item_validation_warnings_local_var->ad_link_same_as_link = ad_link_same_as_link;
+    catalogs_item_validation_warnings_local_var->ad_video_0_link_duplicated = ad_video_0_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_video_0_link_length_too_long = ad_video_0_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_video_0_link_required = ad_video_0_link_required;
+    catalogs_item_validation_warnings_local_var->ad_video_0_link_warning = ad_video_0_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_video_0_tag_duplicated = ad_video_0_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_video_0_tag_length_too_long = ad_video_0_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_video_0_tag_required = ad_video_0_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_video_1_link_duplicated = ad_video_1_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_video_1_link_length_too_long = ad_video_1_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_video_1_link_required = ad_video_1_link_required;
+    catalogs_item_validation_warnings_local_var->ad_video_1_link_warning = ad_video_1_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_video_1_tag_duplicated = ad_video_1_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_video_1_tag_length_too_long = ad_video_1_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_video_1_tag_required = ad_video_1_tag_required;
+    catalogs_item_validation_warnings_local_var->ad_video_2_link_duplicated = ad_video_2_link_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_video_2_link_length_too_long = ad_video_2_link_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_video_2_link_required = ad_video_2_link_required;
+    catalogs_item_validation_warnings_local_var->ad_video_2_link_warning = ad_video_2_link_warning;
+    catalogs_item_validation_warnings_local_var->ad_video_2_tag_duplicated = ad_video_2_tag_duplicated;
+    catalogs_item_validation_warnings_local_var->ad_video_2_tag_length_too_long = ad_video_2_tag_length_too_long;
+    catalogs_item_validation_warnings_local_var->ad_video_2_tag_required = ad_video_2_tag_required;
     catalogs_item_validation_warnings_local_var->additional_image_link_length_too_long = additional_image_link_length_too_long;
     catalogs_item_validation_warnings_local_var->additional_image_link_warning = additional_image_link_warning;
     catalogs_item_validation_warnings_local_var->adwords_format_warning = adwords_format_warning;
     catalogs_item_validation_warnings_local_var->adwords_same_as_link = adwords_same_as_link;
     catalogs_item_validation_warnings_local_var->age_group_invalid = age_group_invalid;
-    catalogs_item_validation_warnings_local_var->size_system_invalid = size_system_invalid;
     catalogs_item_validation_warnings_local_var->android_deep_link_invalid = android_deep_link_invalid;
     catalogs_item_validation_warnings_local_var->availability_date_invalid = availability_date_invalid;
     catalogs_item_validation_warnings_local_var->country_does_not_map_to_currency = country_does_not_map_to_currency;
@@ -85,19 +407,21 @@ static catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_cr
     catalogs_item_validation_warnings_local_var->optional_product_category_missing = optional_product_category_missing;
     catalogs_item_validation_warnings_local_var->product_category_depth_warning = product_category_depth_warning;
     catalogs_item_validation_warnings_local_var->product_type_length_too_long = product_type_length_too_long;
-    catalogs_item_validation_warnings_local_var->sales_price_invalid = sales_price_invalid;
-    catalogs_item_validation_warnings_local_var->sales_price_too_low = sales_price_too_low;
-    catalogs_item_validation_warnings_local_var->sales_price_too_high = sales_price_too_high;
     catalogs_item_validation_warnings_local_var->sale_date_invalid = sale_date_invalid;
-    catalogs_item_validation_warnings_local_var->shipping_invalid = shipping_invalid;
+    catalogs_item_validation_warnings_local_var->sales_price_invalid = sales_price_invalid;
+    catalogs_item_validation_warnings_local_var->sales_price_too_high = sales_price_too_high;
+    catalogs_item_validation_warnings_local_var->sales_price_too_low = sales_price_too_low;
     catalogs_item_validation_warnings_local_var->shipping_height_invalid = shipping_height_invalid;
+    catalogs_item_validation_warnings_local_var->shipping_invalid = shipping_invalid;
     catalogs_item_validation_warnings_local_var->shipping_weight_invalid = shipping_weight_invalid;
     catalogs_item_validation_warnings_local_var->shipping_width_invalid = shipping_width_invalid;
+    catalogs_item_validation_warnings_local_var->size_system_invalid = size_system_invalid;
     catalogs_item_validation_warnings_local_var->size_type_invalid = size_type_invalid;
     catalogs_item_validation_warnings_local_var->tax_invalid = tax_invalid;
     catalogs_item_validation_warnings_local_var->title_length_too_long = title_length_too_long;
     catalogs_item_validation_warnings_local_var->too_many_additional_image_links = too_many_additional_image_links;
     catalogs_item_validation_warnings_local_var->utm_source_auto_corrected = utm_source_auto_corrected;
+    catalogs_item_validation_warnings_local_var->video_required_when_ad_video_provided = video_required_when_ad_video_provided;
     catalogs_item_validation_warnings_local_var->weight_unit_invalid = weight_unit_invalid;
 
     catalogs_item_validation_warnings_local_var->_library_owned = 1;
@@ -105,14 +429,174 @@ static catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_cr
 }
 
 __attribute__((deprecated)) catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_create(
+    catalogs_item_validation_details_t *ad_image_0_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_0_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_0_link_required,
+    catalogs_item_validation_details_t *ad_image_0_link_warning,
+    catalogs_item_validation_details_t *ad_image_0_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_0_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_0_tag_required,
+    catalogs_item_validation_details_t *ad_image_10_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_10_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_10_link_required,
+    catalogs_item_validation_details_t *ad_image_10_link_warning,
+    catalogs_item_validation_details_t *ad_image_10_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_10_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_10_tag_required,
+    catalogs_item_validation_details_t *ad_image_11_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_11_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_11_link_required,
+    catalogs_item_validation_details_t *ad_image_11_link_warning,
+    catalogs_item_validation_details_t *ad_image_11_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_11_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_11_tag_required,
+    catalogs_item_validation_details_t *ad_image_12_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_12_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_12_link_required,
+    catalogs_item_validation_details_t *ad_image_12_link_warning,
+    catalogs_item_validation_details_t *ad_image_12_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_12_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_12_tag_required,
+    catalogs_item_validation_details_t *ad_image_13_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_13_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_13_link_required,
+    catalogs_item_validation_details_t *ad_image_13_link_warning,
+    catalogs_item_validation_details_t *ad_image_13_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_13_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_13_tag_required,
+    catalogs_item_validation_details_t *ad_image_14_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_14_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_14_link_required,
+    catalogs_item_validation_details_t *ad_image_14_link_warning,
+    catalogs_item_validation_details_t *ad_image_14_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_14_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_14_tag_required,
+    catalogs_item_validation_details_t *ad_image_15_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_15_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_15_link_required,
+    catalogs_item_validation_details_t *ad_image_15_link_warning,
+    catalogs_item_validation_details_t *ad_image_15_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_15_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_15_tag_required,
+    catalogs_item_validation_details_t *ad_image_16_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_16_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_16_link_required,
+    catalogs_item_validation_details_t *ad_image_16_link_warning,
+    catalogs_item_validation_details_t *ad_image_16_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_16_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_16_tag_required,
+    catalogs_item_validation_details_t *ad_image_17_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_17_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_17_link_required,
+    catalogs_item_validation_details_t *ad_image_17_link_warning,
+    catalogs_item_validation_details_t *ad_image_17_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_17_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_17_tag_required,
+    catalogs_item_validation_details_t *ad_image_18_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_18_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_18_link_required,
+    catalogs_item_validation_details_t *ad_image_18_link_warning,
+    catalogs_item_validation_details_t *ad_image_18_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_18_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_18_tag_required,
+    catalogs_item_validation_details_t *ad_image_19_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_19_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_19_link_required,
+    catalogs_item_validation_details_t *ad_image_19_link_warning,
+    catalogs_item_validation_details_t *ad_image_19_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_19_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_19_tag_required,
+    catalogs_item_validation_details_t *ad_image_1_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_1_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_1_link_required,
+    catalogs_item_validation_details_t *ad_image_1_link_warning,
+    catalogs_item_validation_details_t *ad_image_1_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_1_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_1_tag_required,
+    catalogs_item_validation_details_t *ad_image_2_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_2_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_2_link_required,
+    catalogs_item_validation_details_t *ad_image_2_link_warning,
+    catalogs_item_validation_details_t *ad_image_2_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_2_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_2_tag_required,
+    catalogs_item_validation_details_t *ad_image_3_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_3_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_3_link_required,
+    catalogs_item_validation_details_t *ad_image_3_link_warning,
+    catalogs_item_validation_details_t *ad_image_3_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_3_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_3_tag_required,
+    catalogs_item_validation_details_t *ad_image_4_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_4_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_4_link_required,
+    catalogs_item_validation_details_t *ad_image_4_link_warning,
+    catalogs_item_validation_details_t *ad_image_4_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_4_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_4_tag_required,
+    catalogs_item_validation_details_t *ad_image_5_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_5_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_5_link_required,
+    catalogs_item_validation_details_t *ad_image_5_link_warning,
+    catalogs_item_validation_details_t *ad_image_5_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_5_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_5_tag_required,
+    catalogs_item_validation_details_t *ad_image_6_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_6_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_6_link_required,
+    catalogs_item_validation_details_t *ad_image_6_link_warning,
+    catalogs_item_validation_details_t *ad_image_6_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_6_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_6_tag_required,
+    catalogs_item_validation_details_t *ad_image_7_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_7_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_7_link_required,
+    catalogs_item_validation_details_t *ad_image_7_link_warning,
+    catalogs_item_validation_details_t *ad_image_7_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_7_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_7_tag_required,
+    catalogs_item_validation_details_t *ad_image_8_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_8_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_8_link_required,
+    catalogs_item_validation_details_t *ad_image_8_link_warning,
+    catalogs_item_validation_details_t *ad_image_8_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_8_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_8_tag_required,
+    catalogs_item_validation_details_t *ad_image_9_link_duplicated,
+    catalogs_item_validation_details_t *ad_image_9_link_length_too_long,
+    catalogs_item_validation_details_t *ad_image_9_link_required,
+    catalogs_item_validation_details_t *ad_image_9_link_warning,
+    catalogs_item_validation_details_t *ad_image_9_tag_duplicated,
+    catalogs_item_validation_details_t *ad_image_9_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_image_9_tag_required,
     catalogs_item_validation_details_t *ad_link_format_warning,
     catalogs_item_validation_details_t *ad_link_same_as_link,
+    catalogs_item_validation_details_t *ad_video_0_link_duplicated,
+    catalogs_item_validation_details_t *ad_video_0_link_length_too_long,
+    catalogs_item_validation_details_t *ad_video_0_link_required,
+    catalogs_item_validation_details_t *ad_video_0_link_warning,
+    catalogs_item_validation_details_t *ad_video_0_tag_duplicated,
+    catalogs_item_validation_details_t *ad_video_0_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_video_0_tag_required,
+    catalogs_item_validation_details_t *ad_video_1_link_duplicated,
+    catalogs_item_validation_details_t *ad_video_1_link_length_too_long,
+    catalogs_item_validation_details_t *ad_video_1_link_required,
+    catalogs_item_validation_details_t *ad_video_1_link_warning,
+    catalogs_item_validation_details_t *ad_video_1_tag_duplicated,
+    catalogs_item_validation_details_t *ad_video_1_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_video_1_tag_required,
+    catalogs_item_validation_details_t *ad_video_2_link_duplicated,
+    catalogs_item_validation_details_t *ad_video_2_link_length_too_long,
+    catalogs_item_validation_details_t *ad_video_2_link_required,
+    catalogs_item_validation_details_t *ad_video_2_link_warning,
+    catalogs_item_validation_details_t *ad_video_2_tag_duplicated,
+    catalogs_item_validation_details_t *ad_video_2_tag_length_too_long,
+    catalogs_item_validation_details_t *ad_video_2_tag_required,
     catalogs_item_validation_details_t *additional_image_link_length_too_long,
     catalogs_item_validation_details_t *additional_image_link_warning,
     catalogs_item_validation_details_t *adwords_format_warning,
     catalogs_item_validation_details_t *adwords_same_as_link,
     catalogs_item_validation_details_t *age_group_invalid,
-    catalogs_item_validation_details_t *size_system_invalid,
     catalogs_item_validation_details_t *android_deep_link_invalid,
     catalogs_item_validation_details_t *availability_date_invalid,
     catalogs_item_validation_details_t *country_does_not_map_to_currency,
@@ -135,30 +619,192 @@ __attribute__((deprecated)) catalogs_item_validation_warnings_t *catalogs_item_v
     catalogs_item_validation_details_t *optional_product_category_missing,
     catalogs_item_validation_details_t *product_category_depth_warning,
     catalogs_item_validation_details_t *product_type_length_too_long,
-    catalogs_item_validation_details_t *sales_price_invalid,
-    catalogs_item_validation_details_t *sales_price_too_low,
-    catalogs_item_validation_details_t *sales_price_too_high,
     catalogs_item_validation_details_t *sale_date_invalid,
-    catalogs_item_validation_details_t *shipping_invalid,
+    catalogs_item_validation_details_t *sales_price_invalid,
+    catalogs_item_validation_details_t *sales_price_too_high,
+    catalogs_item_validation_details_t *sales_price_too_low,
     catalogs_item_validation_details_t *shipping_height_invalid,
+    catalogs_item_validation_details_t *shipping_invalid,
     catalogs_item_validation_details_t *shipping_weight_invalid,
     catalogs_item_validation_details_t *shipping_width_invalid,
+    catalogs_item_validation_details_t *size_system_invalid,
     catalogs_item_validation_details_t *size_type_invalid,
     catalogs_item_validation_details_t *tax_invalid,
     catalogs_item_validation_details_t *title_length_too_long,
     catalogs_item_validation_details_t *too_many_additional_image_links,
     catalogs_item_validation_details_t *utm_source_auto_corrected,
+    catalogs_item_validation_details_t *video_required_when_ad_video_provided,
     catalogs_item_validation_details_t *weight_unit_invalid
     ) {
     return catalogs_item_validation_warnings_create_internal (
+        ad_image_0_link_duplicated,
+        ad_image_0_link_length_too_long,
+        ad_image_0_link_required,
+        ad_image_0_link_warning,
+        ad_image_0_tag_duplicated,
+        ad_image_0_tag_length_too_long,
+        ad_image_0_tag_required,
+        ad_image_10_link_duplicated,
+        ad_image_10_link_length_too_long,
+        ad_image_10_link_required,
+        ad_image_10_link_warning,
+        ad_image_10_tag_duplicated,
+        ad_image_10_tag_length_too_long,
+        ad_image_10_tag_required,
+        ad_image_11_link_duplicated,
+        ad_image_11_link_length_too_long,
+        ad_image_11_link_required,
+        ad_image_11_link_warning,
+        ad_image_11_tag_duplicated,
+        ad_image_11_tag_length_too_long,
+        ad_image_11_tag_required,
+        ad_image_12_link_duplicated,
+        ad_image_12_link_length_too_long,
+        ad_image_12_link_required,
+        ad_image_12_link_warning,
+        ad_image_12_tag_duplicated,
+        ad_image_12_tag_length_too_long,
+        ad_image_12_tag_required,
+        ad_image_13_link_duplicated,
+        ad_image_13_link_length_too_long,
+        ad_image_13_link_required,
+        ad_image_13_link_warning,
+        ad_image_13_tag_duplicated,
+        ad_image_13_tag_length_too_long,
+        ad_image_13_tag_required,
+        ad_image_14_link_duplicated,
+        ad_image_14_link_length_too_long,
+        ad_image_14_link_required,
+        ad_image_14_link_warning,
+        ad_image_14_tag_duplicated,
+        ad_image_14_tag_length_too_long,
+        ad_image_14_tag_required,
+        ad_image_15_link_duplicated,
+        ad_image_15_link_length_too_long,
+        ad_image_15_link_required,
+        ad_image_15_link_warning,
+        ad_image_15_tag_duplicated,
+        ad_image_15_tag_length_too_long,
+        ad_image_15_tag_required,
+        ad_image_16_link_duplicated,
+        ad_image_16_link_length_too_long,
+        ad_image_16_link_required,
+        ad_image_16_link_warning,
+        ad_image_16_tag_duplicated,
+        ad_image_16_tag_length_too_long,
+        ad_image_16_tag_required,
+        ad_image_17_link_duplicated,
+        ad_image_17_link_length_too_long,
+        ad_image_17_link_required,
+        ad_image_17_link_warning,
+        ad_image_17_tag_duplicated,
+        ad_image_17_tag_length_too_long,
+        ad_image_17_tag_required,
+        ad_image_18_link_duplicated,
+        ad_image_18_link_length_too_long,
+        ad_image_18_link_required,
+        ad_image_18_link_warning,
+        ad_image_18_tag_duplicated,
+        ad_image_18_tag_length_too_long,
+        ad_image_18_tag_required,
+        ad_image_19_link_duplicated,
+        ad_image_19_link_length_too_long,
+        ad_image_19_link_required,
+        ad_image_19_link_warning,
+        ad_image_19_tag_duplicated,
+        ad_image_19_tag_length_too_long,
+        ad_image_19_tag_required,
+        ad_image_1_link_duplicated,
+        ad_image_1_link_length_too_long,
+        ad_image_1_link_required,
+        ad_image_1_link_warning,
+        ad_image_1_tag_duplicated,
+        ad_image_1_tag_length_too_long,
+        ad_image_1_tag_required,
+        ad_image_2_link_duplicated,
+        ad_image_2_link_length_too_long,
+        ad_image_2_link_required,
+        ad_image_2_link_warning,
+        ad_image_2_tag_duplicated,
+        ad_image_2_tag_length_too_long,
+        ad_image_2_tag_required,
+        ad_image_3_link_duplicated,
+        ad_image_3_link_length_too_long,
+        ad_image_3_link_required,
+        ad_image_3_link_warning,
+        ad_image_3_tag_duplicated,
+        ad_image_3_tag_length_too_long,
+        ad_image_3_tag_required,
+        ad_image_4_link_duplicated,
+        ad_image_4_link_length_too_long,
+        ad_image_4_link_required,
+        ad_image_4_link_warning,
+        ad_image_4_tag_duplicated,
+        ad_image_4_tag_length_too_long,
+        ad_image_4_tag_required,
+        ad_image_5_link_duplicated,
+        ad_image_5_link_length_too_long,
+        ad_image_5_link_required,
+        ad_image_5_link_warning,
+        ad_image_5_tag_duplicated,
+        ad_image_5_tag_length_too_long,
+        ad_image_5_tag_required,
+        ad_image_6_link_duplicated,
+        ad_image_6_link_length_too_long,
+        ad_image_6_link_required,
+        ad_image_6_link_warning,
+        ad_image_6_tag_duplicated,
+        ad_image_6_tag_length_too_long,
+        ad_image_6_tag_required,
+        ad_image_7_link_duplicated,
+        ad_image_7_link_length_too_long,
+        ad_image_7_link_required,
+        ad_image_7_link_warning,
+        ad_image_7_tag_duplicated,
+        ad_image_7_tag_length_too_long,
+        ad_image_7_tag_required,
+        ad_image_8_link_duplicated,
+        ad_image_8_link_length_too_long,
+        ad_image_8_link_required,
+        ad_image_8_link_warning,
+        ad_image_8_tag_duplicated,
+        ad_image_8_tag_length_too_long,
+        ad_image_8_tag_required,
+        ad_image_9_link_duplicated,
+        ad_image_9_link_length_too_long,
+        ad_image_9_link_required,
+        ad_image_9_link_warning,
+        ad_image_9_tag_duplicated,
+        ad_image_9_tag_length_too_long,
+        ad_image_9_tag_required,
         ad_link_format_warning,
         ad_link_same_as_link,
+        ad_video_0_link_duplicated,
+        ad_video_0_link_length_too_long,
+        ad_video_0_link_required,
+        ad_video_0_link_warning,
+        ad_video_0_tag_duplicated,
+        ad_video_0_tag_length_too_long,
+        ad_video_0_tag_required,
+        ad_video_1_link_duplicated,
+        ad_video_1_link_length_too_long,
+        ad_video_1_link_required,
+        ad_video_1_link_warning,
+        ad_video_1_tag_duplicated,
+        ad_video_1_tag_length_too_long,
+        ad_video_1_tag_required,
+        ad_video_2_link_duplicated,
+        ad_video_2_link_length_too_long,
+        ad_video_2_link_required,
+        ad_video_2_link_warning,
+        ad_video_2_tag_duplicated,
+        ad_video_2_tag_length_too_long,
+        ad_video_2_tag_required,
         additional_image_link_length_too_long,
         additional_image_link_warning,
         adwords_format_warning,
         adwords_same_as_link,
         age_group_invalid,
-        size_system_invalid,
         android_deep_link_invalid,
         availability_date_invalid,
         country_does_not_map_to_currency,
@@ -181,19 +827,21 @@ __attribute__((deprecated)) catalogs_item_validation_warnings_t *catalogs_item_v
         optional_product_category_missing,
         product_category_depth_warning,
         product_type_length_too_long,
-        sales_price_invalid,
-        sales_price_too_low,
-        sales_price_too_high,
         sale_date_invalid,
-        shipping_invalid,
+        sales_price_invalid,
+        sales_price_too_high,
+        sales_price_too_low,
         shipping_height_invalid,
+        shipping_invalid,
         shipping_weight_invalid,
         shipping_width_invalid,
+        size_system_invalid,
         size_type_invalid,
         tax_invalid,
         title_length_too_long,
         too_many_additional_image_links,
         utm_source_auto_corrected,
+        video_required_when_ad_video_provided,
         weight_unit_invalid
         );
 }
@@ -207,6 +855,566 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_item_validation_warnings->ad_image_0_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_0_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_0_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_0_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_0_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_link_required);
+        catalogs_item_validation_warnings->ad_image_0_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_0_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_link_warning);
+        catalogs_item_validation_warnings->ad_image_0_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_0_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_0_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_0_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_0_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_0_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_0_tag_required);
+        catalogs_item_validation_warnings->ad_image_0_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_10_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_10_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_link_required);
+        catalogs_item_validation_warnings->ad_image_10_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_link_warning);
+        catalogs_item_validation_warnings->ad_image_10_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_10_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_10_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_10_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_10_tag_required);
+        catalogs_item_validation_warnings->ad_image_10_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_11_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_11_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_link_required);
+        catalogs_item_validation_warnings->ad_image_11_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_link_warning);
+        catalogs_item_validation_warnings->ad_image_11_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_11_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_11_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_11_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_11_tag_required);
+        catalogs_item_validation_warnings->ad_image_11_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_12_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_12_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_link_required);
+        catalogs_item_validation_warnings->ad_image_12_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_link_warning);
+        catalogs_item_validation_warnings->ad_image_12_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_12_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_12_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_12_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_12_tag_required);
+        catalogs_item_validation_warnings->ad_image_12_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_13_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_13_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_link_required);
+        catalogs_item_validation_warnings->ad_image_13_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_link_warning);
+        catalogs_item_validation_warnings->ad_image_13_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_13_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_13_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_13_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_13_tag_required);
+        catalogs_item_validation_warnings->ad_image_13_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_14_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_14_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_link_required);
+        catalogs_item_validation_warnings->ad_image_14_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_link_warning);
+        catalogs_item_validation_warnings->ad_image_14_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_14_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_14_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_14_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_14_tag_required);
+        catalogs_item_validation_warnings->ad_image_14_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_15_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_15_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_link_required);
+        catalogs_item_validation_warnings->ad_image_15_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_link_warning);
+        catalogs_item_validation_warnings->ad_image_15_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_15_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_15_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_15_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_15_tag_required);
+        catalogs_item_validation_warnings->ad_image_15_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_16_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_16_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_link_required);
+        catalogs_item_validation_warnings->ad_image_16_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_link_warning);
+        catalogs_item_validation_warnings->ad_image_16_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_16_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_16_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_16_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_16_tag_required);
+        catalogs_item_validation_warnings->ad_image_16_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_17_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_17_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_link_required);
+        catalogs_item_validation_warnings->ad_image_17_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_link_warning);
+        catalogs_item_validation_warnings->ad_image_17_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_17_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_17_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_17_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_17_tag_required);
+        catalogs_item_validation_warnings->ad_image_17_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_18_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_18_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_link_required);
+        catalogs_item_validation_warnings->ad_image_18_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_link_warning);
+        catalogs_item_validation_warnings->ad_image_18_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_18_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_18_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_18_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_18_tag_required);
+        catalogs_item_validation_warnings->ad_image_18_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_19_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_19_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_link_required);
+        catalogs_item_validation_warnings->ad_image_19_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_link_warning);
+        catalogs_item_validation_warnings->ad_image_19_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_19_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_19_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_19_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_19_tag_required);
+        catalogs_item_validation_warnings->ad_image_19_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_1_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_1_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_link_required);
+        catalogs_item_validation_warnings->ad_image_1_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_link_warning);
+        catalogs_item_validation_warnings->ad_image_1_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_1_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_1_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_1_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_1_tag_required);
+        catalogs_item_validation_warnings->ad_image_1_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_2_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_2_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_link_required);
+        catalogs_item_validation_warnings->ad_image_2_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_link_warning);
+        catalogs_item_validation_warnings->ad_image_2_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_2_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_2_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_2_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_2_tag_required);
+        catalogs_item_validation_warnings->ad_image_2_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_3_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_3_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_link_required);
+        catalogs_item_validation_warnings->ad_image_3_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_link_warning);
+        catalogs_item_validation_warnings->ad_image_3_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_3_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_3_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_3_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_3_tag_required);
+        catalogs_item_validation_warnings->ad_image_3_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_4_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_4_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_link_required);
+        catalogs_item_validation_warnings->ad_image_4_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_link_warning);
+        catalogs_item_validation_warnings->ad_image_4_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_4_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_4_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_4_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_4_tag_required);
+        catalogs_item_validation_warnings->ad_image_4_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_5_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_5_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_link_required);
+        catalogs_item_validation_warnings->ad_image_5_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_link_warning);
+        catalogs_item_validation_warnings->ad_image_5_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_5_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_5_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_5_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_5_tag_required);
+        catalogs_item_validation_warnings->ad_image_5_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_6_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_6_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_link_required);
+        catalogs_item_validation_warnings->ad_image_6_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_link_warning);
+        catalogs_item_validation_warnings->ad_image_6_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_6_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_6_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_6_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_6_tag_required);
+        catalogs_item_validation_warnings->ad_image_6_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_7_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_7_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_link_required);
+        catalogs_item_validation_warnings->ad_image_7_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_link_warning);
+        catalogs_item_validation_warnings->ad_image_7_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_7_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_7_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_7_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_7_tag_required);
+        catalogs_item_validation_warnings->ad_image_7_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_8_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_8_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_link_required);
+        catalogs_item_validation_warnings->ad_image_8_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_link_warning);
+        catalogs_item_validation_warnings->ad_image_8_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_8_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_8_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_8_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_8_tag_required);
+        catalogs_item_validation_warnings->ad_image_8_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_link_duplicated);
+        catalogs_item_validation_warnings->ad_image_9_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_link_length_too_long);
+        catalogs_item_validation_warnings->ad_image_9_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_link_required);
+        catalogs_item_validation_warnings->ad_image_9_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_link_warning);
+        catalogs_item_validation_warnings->ad_image_9_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_tag_duplicated);
+        catalogs_item_validation_warnings->ad_image_9_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_image_9_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_image_9_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_image_9_tag_required);
+        catalogs_item_validation_warnings->ad_image_9_tag_required = NULL;
+    }
     if (catalogs_item_validation_warnings->ad_link_format_warning) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_link_format_warning);
         catalogs_item_validation_warnings->ad_link_format_warning = NULL;
@@ -214,6 +1422,90 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
     if (catalogs_item_validation_warnings->ad_link_same_as_link) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_link_same_as_link);
         catalogs_item_validation_warnings->ad_link_same_as_link = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_link_duplicated);
+        catalogs_item_validation_warnings->ad_video_0_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_link_length_too_long);
+        catalogs_item_validation_warnings->ad_video_0_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_link_required);
+        catalogs_item_validation_warnings->ad_video_0_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_link_warning);
+        catalogs_item_validation_warnings->ad_video_0_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_tag_duplicated);
+        catalogs_item_validation_warnings->ad_video_0_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_video_0_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_0_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_0_tag_required);
+        catalogs_item_validation_warnings->ad_video_0_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_link_duplicated);
+        catalogs_item_validation_warnings->ad_video_1_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_link_length_too_long);
+        catalogs_item_validation_warnings->ad_video_1_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_link_required);
+        catalogs_item_validation_warnings->ad_video_1_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_link_warning);
+        catalogs_item_validation_warnings->ad_video_1_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_tag_duplicated);
+        catalogs_item_validation_warnings->ad_video_1_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_video_1_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_1_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_1_tag_required);
+        catalogs_item_validation_warnings->ad_video_1_tag_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_link_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_link_duplicated);
+        catalogs_item_validation_warnings->ad_video_2_link_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_link_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_link_length_too_long);
+        catalogs_item_validation_warnings->ad_video_2_link_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_link_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_link_required);
+        catalogs_item_validation_warnings->ad_video_2_link_required = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_link_warning) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_link_warning);
+        catalogs_item_validation_warnings->ad_video_2_link_warning = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_tag_duplicated) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_tag_duplicated);
+        catalogs_item_validation_warnings->ad_video_2_tag_duplicated = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_tag_length_too_long) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_tag_length_too_long);
+        catalogs_item_validation_warnings->ad_video_2_tag_length_too_long = NULL;
+    }
+    if (catalogs_item_validation_warnings->ad_video_2_tag_required) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->ad_video_2_tag_required);
+        catalogs_item_validation_warnings->ad_video_2_tag_required = NULL;
     }
     if (catalogs_item_validation_warnings->additional_image_link_length_too_long) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->additional_image_link_length_too_long);
@@ -234,10 +1526,6 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
     if (catalogs_item_validation_warnings->age_group_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->age_group_invalid);
         catalogs_item_validation_warnings->age_group_invalid = NULL;
-    }
-    if (catalogs_item_validation_warnings->size_system_invalid) {
-        catalogs_item_validation_details_free(catalogs_item_validation_warnings->size_system_invalid);
-        catalogs_item_validation_warnings->size_system_invalid = NULL;
     }
     if (catalogs_item_validation_warnings->android_deep_link_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->android_deep_link_invalid);
@@ -327,29 +1615,29 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->product_type_length_too_long);
         catalogs_item_validation_warnings->product_type_length_too_long = NULL;
     }
+    if (catalogs_item_validation_warnings->sale_date_invalid) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->sale_date_invalid);
+        catalogs_item_validation_warnings->sale_date_invalid = NULL;
+    }
     if (catalogs_item_validation_warnings->sales_price_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->sales_price_invalid);
         catalogs_item_validation_warnings->sales_price_invalid = NULL;
-    }
-    if (catalogs_item_validation_warnings->sales_price_too_low) {
-        catalogs_item_validation_details_free(catalogs_item_validation_warnings->sales_price_too_low);
-        catalogs_item_validation_warnings->sales_price_too_low = NULL;
     }
     if (catalogs_item_validation_warnings->sales_price_too_high) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->sales_price_too_high);
         catalogs_item_validation_warnings->sales_price_too_high = NULL;
     }
-    if (catalogs_item_validation_warnings->sale_date_invalid) {
-        catalogs_item_validation_details_free(catalogs_item_validation_warnings->sale_date_invalid);
-        catalogs_item_validation_warnings->sale_date_invalid = NULL;
-    }
-    if (catalogs_item_validation_warnings->shipping_invalid) {
-        catalogs_item_validation_details_free(catalogs_item_validation_warnings->shipping_invalid);
-        catalogs_item_validation_warnings->shipping_invalid = NULL;
+    if (catalogs_item_validation_warnings->sales_price_too_low) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->sales_price_too_low);
+        catalogs_item_validation_warnings->sales_price_too_low = NULL;
     }
     if (catalogs_item_validation_warnings->shipping_height_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->shipping_height_invalid);
         catalogs_item_validation_warnings->shipping_height_invalid = NULL;
+    }
+    if (catalogs_item_validation_warnings->shipping_invalid) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->shipping_invalid);
+        catalogs_item_validation_warnings->shipping_invalid = NULL;
     }
     if (catalogs_item_validation_warnings->shipping_weight_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->shipping_weight_invalid);
@@ -358,6 +1646,10 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
     if (catalogs_item_validation_warnings->shipping_width_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->shipping_width_invalid);
         catalogs_item_validation_warnings->shipping_width_invalid = NULL;
+    }
+    if (catalogs_item_validation_warnings->size_system_invalid) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->size_system_invalid);
+        catalogs_item_validation_warnings->size_system_invalid = NULL;
     }
     if (catalogs_item_validation_warnings->size_type_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->size_type_invalid);
@@ -379,6 +1671,10 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->utm_source_auto_corrected);
         catalogs_item_validation_warnings->utm_source_auto_corrected = NULL;
     }
+    if (catalogs_item_validation_warnings->video_required_when_ad_video_provided) {
+        catalogs_item_validation_details_free(catalogs_item_validation_warnings->video_required_when_ad_video_provided);
+        catalogs_item_validation_warnings->video_required_when_ad_video_provided = NULL;
+    }
     if (catalogs_item_validation_warnings->weight_unit_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_warnings->weight_unit_invalid);
         catalogs_item_validation_warnings->weight_unit_invalid = NULL;
@@ -388,6 +1684,1826 @@ void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t 
 
 cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_warnings_t *catalogs_item_validation_warnings) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_item_validation_warnings->ad_image_0_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_0_link_duplicated) {
+    cJSON *ad_image_0_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_link_duplicated);
+    if(ad_image_0_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_LINK_DUPLICATED", ad_image_0_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_0_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_0_link_length_too_long) {
+    cJSON *ad_image_0_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_link_length_too_long);
+    if(ad_image_0_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_LINK_LENGTH_TOO_LONG", ad_image_0_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_0_link_required
+    if(catalogs_item_validation_warnings->ad_image_0_link_required) {
+    cJSON *ad_image_0_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_link_required);
+    if(ad_image_0_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_LINK_REQUIRED", ad_image_0_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_0_link_warning
+    if(catalogs_item_validation_warnings->ad_image_0_link_warning) {
+    cJSON *ad_image_0_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_link_warning);
+    if(ad_image_0_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_LINK_WARNING", ad_image_0_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_0_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_0_tag_duplicated) {
+    cJSON *ad_image_0_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_tag_duplicated);
+    if(ad_image_0_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_TAG_DUPLICATED", ad_image_0_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_0_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_0_tag_length_too_long) {
+    cJSON *ad_image_0_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_tag_length_too_long);
+    if(ad_image_0_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_TAG_LENGTH_TOO_LONG", ad_image_0_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_0_tag_required
+    if(catalogs_item_validation_warnings->ad_image_0_tag_required) {
+    cJSON *ad_image_0_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_0_tag_required);
+    if(ad_image_0_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_0_TAG_REQUIRED", ad_image_0_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_10_link_duplicated) {
+    cJSON *ad_image_10_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_link_duplicated);
+    if(ad_image_10_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_LINK_DUPLICATED", ad_image_10_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_10_link_length_too_long) {
+    cJSON *ad_image_10_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_link_length_too_long);
+    if(ad_image_10_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_LINK_LENGTH_TOO_LONG", ad_image_10_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_link_required
+    if(catalogs_item_validation_warnings->ad_image_10_link_required) {
+    cJSON *ad_image_10_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_link_required);
+    if(ad_image_10_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_LINK_REQUIRED", ad_image_10_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_link_warning
+    if(catalogs_item_validation_warnings->ad_image_10_link_warning) {
+    cJSON *ad_image_10_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_link_warning);
+    if(ad_image_10_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_LINK_WARNING", ad_image_10_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_10_tag_duplicated) {
+    cJSON *ad_image_10_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_tag_duplicated);
+    if(ad_image_10_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_TAG_DUPLICATED", ad_image_10_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_10_tag_length_too_long) {
+    cJSON *ad_image_10_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_tag_length_too_long);
+    if(ad_image_10_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_TAG_LENGTH_TOO_LONG", ad_image_10_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_10_tag_required
+    if(catalogs_item_validation_warnings->ad_image_10_tag_required) {
+    cJSON *ad_image_10_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_10_tag_required);
+    if(ad_image_10_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_10_TAG_REQUIRED", ad_image_10_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_11_link_duplicated) {
+    cJSON *ad_image_11_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_link_duplicated);
+    if(ad_image_11_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_LINK_DUPLICATED", ad_image_11_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_11_link_length_too_long) {
+    cJSON *ad_image_11_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_link_length_too_long);
+    if(ad_image_11_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_LINK_LENGTH_TOO_LONG", ad_image_11_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_link_required
+    if(catalogs_item_validation_warnings->ad_image_11_link_required) {
+    cJSON *ad_image_11_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_link_required);
+    if(ad_image_11_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_LINK_REQUIRED", ad_image_11_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_link_warning
+    if(catalogs_item_validation_warnings->ad_image_11_link_warning) {
+    cJSON *ad_image_11_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_link_warning);
+    if(ad_image_11_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_LINK_WARNING", ad_image_11_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_11_tag_duplicated) {
+    cJSON *ad_image_11_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_tag_duplicated);
+    if(ad_image_11_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_TAG_DUPLICATED", ad_image_11_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_11_tag_length_too_long) {
+    cJSON *ad_image_11_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_tag_length_too_long);
+    if(ad_image_11_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_TAG_LENGTH_TOO_LONG", ad_image_11_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_11_tag_required
+    if(catalogs_item_validation_warnings->ad_image_11_tag_required) {
+    cJSON *ad_image_11_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_11_tag_required);
+    if(ad_image_11_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_11_TAG_REQUIRED", ad_image_11_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_12_link_duplicated) {
+    cJSON *ad_image_12_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_link_duplicated);
+    if(ad_image_12_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_LINK_DUPLICATED", ad_image_12_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_12_link_length_too_long) {
+    cJSON *ad_image_12_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_link_length_too_long);
+    if(ad_image_12_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_LINK_LENGTH_TOO_LONG", ad_image_12_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_link_required
+    if(catalogs_item_validation_warnings->ad_image_12_link_required) {
+    cJSON *ad_image_12_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_link_required);
+    if(ad_image_12_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_LINK_REQUIRED", ad_image_12_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_link_warning
+    if(catalogs_item_validation_warnings->ad_image_12_link_warning) {
+    cJSON *ad_image_12_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_link_warning);
+    if(ad_image_12_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_LINK_WARNING", ad_image_12_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_12_tag_duplicated) {
+    cJSON *ad_image_12_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_tag_duplicated);
+    if(ad_image_12_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_TAG_DUPLICATED", ad_image_12_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_12_tag_length_too_long) {
+    cJSON *ad_image_12_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_tag_length_too_long);
+    if(ad_image_12_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_TAG_LENGTH_TOO_LONG", ad_image_12_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_12_tag_required
+    if(catalogs_item_validation_warnings->ad_image_12_tag_required) {
+    cJSON *ad_image_12_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_12_tag_required);
+    if(ad_image_12_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_12_TAG_REQUIRED", ad_image_12_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_13_link_duplicated) {
+    cJSON *ad_image_13_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_link_duplicated);
+    if(ad_image_13_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_LINK_DUPLICATED", ad_image_13_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_13_link_length_too_long) {
+    cJSON *ad_image_13_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_link_length_too_long);
+    if(ad_image_13_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_LINK_LENGTH_TOO_LONG", ad_image_13_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_link_required
+    if(catalogs_item_validation_warnings->ad_image_13_link_required) {
+    cJSON *ad_image_13_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_link_required);
+    if(ad_image_13_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_LINK_REQUIRED", ad_image_13_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_link_warning
+    if(catalogs_item_validation_warnings->ad_image_13_link_warning) {
+    cJSON *ad_image_13_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_link_warning);
+    if(ad_image_13_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_LINK_WARNING", ad_image_13_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_13_tag_duplicated) {
+    cJSON *ad_image_13_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_tag_duplicated);
+    if(ad_image_13_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_TAG_DUPLICATED", ad_image_13_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_13_tag_length_too_long) {
+    cJSON *ad_image_13_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_tag_length_too_long);
+    if(ad_image_13_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_TAG_LENGTH_TOO_LONG", ad_image_13_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_13_tag_required
+    if(catalogs_item_validation_warnings->ad_image_13_tag_required) {
+    cJSON *ad_image_13_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_13_tag_required);
+    if(ad_image_13_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_13_TAG_REQUIRED", ad_image_13_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_14_link_duplicated) {
+    cJSON *ad_image_14_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_link_duplicated);
+    if(ad_image_14_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_LINK_DUPLICATED", ad_image_14_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_14_link_length_too_long) {
+    cJSON *ad_image_14_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_link_length_too_long);
+    if(ad_image_14_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_LINK_LENGTH_TOO_LONG", ad_image_14_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_link_required
+    if(catalogs_item_validation_warnings->ad_image_14_link_required) {
+    cJSON *ad_image_14_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_link_required);
+    if(ad_image_14_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_LINK_REQUIRED", ad_image_14_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_link_warning
+    if(catalogs_item_validation_warnings->ad_image_14_link_warning) {
+    cJSON *ad_image_14_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_link_warning);
+    if(ad_image_14_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_LINK_WARNING", ad_image_14_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_14_tag_duplicated) {
+    cJSON *ad_image_14_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_tag_duplicated);
+    if(ad_image_14_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_TAG_DUPLICATED", ad_image_14_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_14_tag_length_too_long) {
+    cJSON *ad_image_14_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_tag_length_too_long);
+    if(ad_image_14_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_TAG_LENGTH_TOO_LONG", ad_image_14_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_14_tag_required
+    if(catalogs_item_validation_warnings->ad_image_14_tag_required) {
+    cJSON *ad_image_14_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_14_tag_required);
+    if(ad_image_14_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_14_TAG_REQUIRED", ad_image_14_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_15_link_duplicated) {
+    cJSON *ad_image_15_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_link_duplicated);
+    if(ad_image_15_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_LINK_DUPLICATED", ad_image_15_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_15_link_length_too_long) {
+    cJSON *ad_image_15_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_link_length_too_long);
+    if(ad_image_15_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_LINK_LENGTH_TOO_LONG", ad_image_15_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_link_required
+    if(catalogs_item_validation_warnings->ad_image_15_link_required) {
+    cJSON *ad_image_15_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_link_required);
+    if(ad_image_15_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_LINK_REQUIRED", ad_image_15_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_link_warning
+    if(catalogs_item_validation_warnings->ad_image_15_link_warning) {
+    cJSON *ad_image_15_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_link_warning);
+    if(ad_image_15_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_LINK_WARNING", ad_image_15_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_15_tag_duplicated) {
+    cJSON *ad_image_15_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_tag_duplicated);
+    if(ad_image_15_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_TAG_DUPLICATED", ad_image_15_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_15_tag_length_too_long) {
+    cJSON *ad_image_15_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_tag_length_too_long);
+    if(ad_image_15_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_TAG_LENGTH_TOO_LONG", ad_image_15_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_15_tag_required
+    if(catalogs_item_validation_warnings->ad_image_15_tag_required) {
+    cJSON *ad_image_15_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_15_tag_required);
+    if(ad_image_15_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_15_TAG_REQUIRED", ad_image_15_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_16_link_duplicated) {
+    cJSON *ad_image_16_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_link_duplicated);
+    if(ad_image_16_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_LINK_DUPLICATED", ad_image_16_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_16_link_length_too_long) {
+    cJSON *ad_image_16_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_link_length_too_long);
+    if(ad_image_16_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_LINK_LENGTH_TOO_LONG", ad_image_16_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_link_required
+    if(catalogs_item_validation_warnings->ad_image_16_link_required) {
+    cJSON *ad_image_16_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_link_required);
+    if(ad_image_16_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_LINK_REQUIRED", ad_image_16_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_link_warning
+    if(catalogs_item_validation_warnings->ad_image_16_link_warning) {
+    cJSON *ad_image_16_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_link_warning);
+    if(ad_image_16_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_LINK_WARNING", ad_image_16_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_16_tag_duplicated) {
+    cJSON *ad_image_16_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_tag_duplicated);
+    if(ad_image_16_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_TAG_DUPLICATED", ad_image_16_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_16_tag_length_too_long) {
+    cJSON *ad_image_16_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_tag_length_too_long);
+    if(ad_image_16_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_TAG_LENGTH_TOO_LONG", ad_image_16_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_16_tag_required
+    if(catalogs_item_validation_warnings->ad_image_16_tag_required) {
+    cJSON *ad_image_16_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_16_tag_required);
+    if(ad_image_16_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_16_TAG_REQUIRED", ad_image_16_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_17_link_duplicated) {
+    cJSON *ad_image_17_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_link_duplicated);
+    if(ad_image_17_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_LINK_DUPLICATED", ad_image_17_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_17_link_length_too_long) {
+    cJSON *ad_image_17_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_link_length_too_long);
+    if(ad_image_17_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_LINK_LENGTH_TOO_LONG", ad_image_17_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_link_required
+    if(catalogs_item_validation_warnings->ad_image_17_link_required) {
+    cJSON *ad_image_17_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_link_required);
+    if(ad_image_17_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_LINK_REQUIRED", ad_image_17_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_link_warning
+    if(catalogs_item_validation_warnings->ad_image_17_link_warning) {
+    cJSON *ad_image_17_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_link_warning);
+    if(ad_image_17_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_LINK_WARNING", ad_image_17_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_17_tag_duplicated) {
+    cJSON *ad_image_17_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_tag_duplicated);
+    if(ad_image_17_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_TAG_DUPLICATED", ad_image_17_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_17_tag_length_too_long) {
+    cJSON *ad_image_17_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_tag_length_too_long);
+    if(ad_image_17_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_TAG_LENGTH_TOO_LONG", ad_image_17_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_17_tag_required
+    if(catalogs_item_validation_warnings->ad_image_17_tag_required) {
+    cJSON *ad_image_17_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_17_tag_required);
+    if(ad_image_17_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_17_TAG_REQUIRED", ad_image_17_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_18_link_duplicated) {
+    cJSON *ad_image_18_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_link_duplicated);
+    if(ad_image_18_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_LINK_DUPLICATED", ad_image_18_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_18_link_length_too_long) {
+    cJSON *ad_image_18_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_link_length_too_long);
+    if(ad_image_18_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_LINK_LENGTH_TOO_LONG", ad_image_18_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_link_required
+    if(catalogs_item_validation_warnings->ad_image_18_link_required) {
+    cJSON *ad_image_18_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_link_required);
+    if(ad_image_18_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_LINK_REQUIRED", ad_image_18_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_link_warning
+    if(catalogs_item_validation_warnings->ad_image_18_link_warning) {
+    cJSON *ad_image_18_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_link_warning);
+    if(ad_image_18_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_LINK_WARNING", ad_image_18_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_18_tag_duplicated) {
+    cJSON *ad_image_18_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_tag_duplicated);
+    if(ad_image_18_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_TAG_DUPLICATED", ad_image_18_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_18_tag_length_too_long) {
+    cJSON *ad_image_18_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_tag_length_too_long);
+    if(ad_image_18_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_TAG_LENGTH_TOO_LONG", ad_image_18_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_18_tag_required
+    if(catalogs_item_validation_warnings->ad_image_18_tag_required) {
+    cJSON *ad_image_18_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_18_tag_required);
+    if(ad_image_18_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_18_TAG_REQUIRED", ad_image_18_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_19_link_duplicated) {
+    cJSON *ad_image_19_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_link_duplicated);
+    if(ad_image_19_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_LINK_DUPLICATED", ad_image_19_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_19_link_length_too_long) {
+    cJSON *ad_image_19_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_link_length_too_long);
+    if(ad_image_19_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_LINK_LENGTH_TOO_LONG", ad_image_19_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_link_required
+    if(catalogs_item_validation_warnings->ad_image_19_link_required) {
+    cJSON *ad_image_19_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_link_required);
+    if(ad_image_19_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_LINK_REQUIRED", ad_image_19_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_link_warning
+    if(catalogs_item_validation_warnings->ad_image_19_link_warning) {
+    cJSON *ad_image_19_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_link_warning);
+    if(ad_image_19_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_LINK_WARNING", ad_image_19_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_19_tag_duplicated) {
+    cJSON *ad_image_19_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_tag_duplicated);
+    if(ad_image_19_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_TAG_DUPLICATED", ad_image_19_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_19_tag_length_too_long) {
+    cJSON *ad_image_19_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_tag_length_too_long);
+    if(ad_image_19_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_TAG_LENGTH_TOO_LONG", ad_image_19_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_19_tag_required
+    if(catalogs_item_validation_warnings->ad_image_19_tag_required) {
+    cJSON *ad_image_19_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_19_tag_required);
+    if(ad_image_19_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_19_TAG_REQUIRED", ad_image_19_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_1_link_duplicated) {
+    cJSON *ad_image_1_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_link_duplicated);
+    if(ad_image_1_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_LINK_DUPLICATED", ad_image_1_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_1_link_length_too_long) {
+    cJSON *ad_image_1_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_link_length_too_long);
+    if(ad_image_1_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_LINK_LENGTH_TOO_LONG", ad_image_1_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_link_required
+    if(catalogs_item_validation_warnings->ad_image_1_link_required) {
+    cJSON *ad_image_1_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_link_required);
+    if(ad_image_1_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_LINK_REQUIRED", ad_image_1_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_link_warning
+    if(catalogs_item_validation_warnings->ad_image_1_link_warning) {
+    cJSON *ad_image_1_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_link_warning);
+    if(ad_image_1_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_LINK_WARNING", ad_image_1_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_1_tag_duplicated) {
+    cJSON *ad_image_1_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_tag_duplicated);
+    if(ad_image_1_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_TAG_DUPLICATED", ad_image_1_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_1_tag_length_too_long) {
+    cJSON *ad_image_1_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_tag_length_too_long);
+    if(ad_image_1_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_TAG_LENGTH_TOO_LONG", ad_image_1_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_1_tag_required
+    if(catalogs_item_validation_warnings->ad_image_1_tag_required) {
+    cJSON *ad_image_1_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_1_tag_required);
+    if(ad_image_1_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_1_TAG_REQUIRED", ad_image_1_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_2_link_duplicated) {
+    cJSON *ad_image_2_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_link_duplicated);
+    if(ad_image_2_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_LINK_DUPLICATED", ad_image_2_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_2_link_length_too_long) {
+    cJSON *ad_image_2_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_link_length_too_long);
+    if(ad_image_2_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_LINK_LENGTH_TOO_LONG", ad_image_2_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_link_required
+    if(catalogs_item_validation_warnings->ad_image_2_link_required) {
+    cJSON *ad_image_2_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_link_required);
+    if(ad_image_2_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_LINK_REQUIRED", ad_image_2_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_link_warning
+    if(catalogs_item_validation_warnings->ad_image_2_link_warning) {
+    cJSON *ad_image_2_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_link_warning);
+    if(ad_image_2_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_LINK_WARNING", ad_image_2_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_2_tag_duplicated) {
+    cJSON *ad_image_2_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_tag_duplicated);
+    if(ad_image_2_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_TAG_DUPLICATED", ad_image_2_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_2_tag_length_too_long) {
+    cJSON *ad_image_2_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_tag_length_too_long);
+    if(ad_image_2_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_TAG_LENGTH_TOO_LONG", ad_image_2_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_2_tag_required
+    if(catalogs_item_validation_warnings->ad_image_2_tag_required) {
+    cJSON *ad_image_2_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_2_tag_required);
+    if(ad_image_2_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_2_TAG_REQUIRED", ad_image_2_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_3_link_duplicated) {
+    cJSON *ad_image_3_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_link_duplicated);
+    if(ad_image_3_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_LINK_DUPLICATED", ad_image_3_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_3_link_length_too_long) {
+    cJSON *ad_image_3_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_link_length_too_long);
+    if(ad_image_3_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_LINK_LENGTH_TOO_LONG", ad_image_3_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_link_required
+    if(catalogs_item_validation_warnings->ad_image_3_link_required) {
+    cJSON *ad_image_3_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_link_required);
+    if(ad_image_3_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_LINK_REQUIRED", ad_image_3_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_link_warning
+    if(catalogs_item_validation_warnings->ad_image_3_link_warning) {
+    cJSON *ad_image_3_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_link_warning);
+    if(ad_image_3_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_LINK_WARNING", ad_image_3_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_3_tag_duplicated) {
+    cJSON *ad_image_3_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_tag_duplicated);
+    if(ad_image_3_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_TAG_DUPLICATED", ad_image_3_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_3_tag_length_too_long) {
+    cJSON *ad_image_3_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_tag_length_too_long);
+    if(ad_image_3_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_TAG_LENGTH_TOO_LONG", ad_image_3_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_3_tag_required
+    if(catalogs_item_validation_warnings->ad_image_3_tag_required) {
+    cJSON *ad_image_3_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_3_tag_required);
+    if(ad_image_3_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_3_TAG_REQUIRED", ad_image_3_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_4_link_duplicated) {
+    cJSON *ad_image_4_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_link_duplicated);
+    if(ad_image_4_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_LINK_DUPLICATED", ad_image_4_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_4_link_length_too_long) {
+    cJSON *ad_image_4_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_link_length_too_long);
+    if(ad_image_4_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_LINK_LENGTH_TOO_LONG", ad_image_4_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_link_required
+    if(catalogs_item_validation_warnings->ad_image_4_link_required) {
+    cJSON *ad_image_4_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_link_required);
+    if(ad_image_4_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_LINK_REQUIRED", ad_image_4_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_link_warning
+    if(catalogs_item_validation_warnings->ad_image_4_link_warning) {
+    cJSON *ad_image_4_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_link_warning);
+    if(ad_image_4_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_LINK_WARNING", ad_image_4_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_4_tag_duplicated) {
+    cJSON *ad_image_4_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_tag_duplicated);
+    if(ad_image_4_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_TAG_DUPLICATED", ad_image_4_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_4_tag_length_too_long) {
+    cJSON *ad_image_4_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_tag_length_too_long);
+    if(ad_image_4_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_TAG_LENGTH_TOO_LONG", ad_image_4_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_4_tag_required
+    if(catalogs_item_validation_warnings->ad_image_4_tag_required) {
+    cJSON *ad_image_4_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_4_tag_required);
+    if(ad_image_4_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_4_TAG_REQUIRED", ad_image_4_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_5_link_duplicated) {
+    cJSON *ad_image_5_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_link_duplicated);
+    if(ad_image_5_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_LINK_DUPLICATED", ad_image_5_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_5_link_length_too_long) {
+    cJSON *ad_image_5_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_link_length_too_long);
+    if(ad_image_5_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_LINK_LENGTH_TOO_LONG", ad_image_5_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_link_required
+    if(catalogs_item_validation_warnings->ad_image_5_link_required) {
+    cJSON *ad_image_5_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_link_required);
+    if(ad_image_5_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_LINK_REQUIRED", ad_image_5_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_link_warning
+    if(catalogs_item_validation_warnings->ad_image_5_link_warning) {
+    cJSON *ad_image_5_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_link_warning);
+    if(ad_image_5_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_LINK_WARNING", ad_image_5_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_5_tag_duplicated) {
+    cJSON *ad_image_5_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_tag_duplicated);
+    if(ad_image_5_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_TAG_DUPLICATED", ad_image_5_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_5_tag_length_too_long) {
+    cJSON *ad_image_5_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_tag_length_too_long);
+    if(ad_image_5_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_TAG_LENGTH_TOO_LONG", ad_image_5_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_5_tag_required
+    if(catalogs_item_validation_warnings->ad_image_5_tag_required) {
+    cJSON *ad_image_5_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_5_tag_required);
+    if(ad_image_5_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_5_TAG_REQUIRED", ad_image_5_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_6_link_duplicated) {
+    cJSON *ad_image_6_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_link_duplicated);
+    if(ad_image_6_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_LINK_DUPLICATED", ad_image_6_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_6_link_length_too_long) {
+    cJSON *ad_image_6_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_link_length_too_long);
+    if(ad_image_6_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_LINK_LENGTH_TOO_LONG", ad_image_6_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_link_required
+    if(catalogs_item_validation_warnings->ad_image_6_link_required) {
+    cJSON *ad_image_6_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_link_required);
+    if(ad_image_6_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_LINK_REQUIRED", ad_image_6_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_link_warning
+    if(catalogs_item_validation_warnings->ad_image_6_link_warning) {
+    cJSON *ad_image_6_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_link_warning);
+    if(ad_image_6_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_LINK_WARNING", ad_image_6_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_6_tag_duplicated) {
+    cJSON *ad_image_6_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_tag_duplicated);
+    if(ad_image_6_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_TAG_DUPLICATED", ad_image_6_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_6_tag_length_too_long) {
+    cJSON *ad_image_6_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_tag_length_too_long);
+    if(ad_image_6_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_TAG_LENGTH_TOO_LONG", ad_image_6_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_6_tag_required
+    if(catalogs_item_validation_warnings->ad_image_6_tag_required) {
+    cJSON *ad_image_6_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_6_tag_required);
+    if(ad_image_6_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_6_TAG_REQUIRED", ad_image_6_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_7_link_duplicated) {
+    cJSON *ad_image_7_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_link_duplicated);
+    if(ad_image_7_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_LINK_DUPLICATED", ad_image_7_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_7_link_length_too_long) {
+    cJSON *ad_image_7_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_link_length_too_long);
+    if(ad_image_7_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_LINK_LENGTH_TOO_LONG", ad_image_7_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_link_required
+    if(catalogs_item_validation_warnings->ad_image_7_link_required) {
+    cJSON *ad_image_7_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_link_required);
+    if(ad_image_7_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_LINK_REQUIRED", ad_image_7_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_link_warning
+    if(catalogs_item_validation_warnings->ad_image_7_link_warning) {
+    cJSON *ad_image_7_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_link_warning);
+    if(ad_image_7_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_LINK_WARNING", ad_image_7_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_7_tag_duplicated) {
+    cJSON *ad_image_7_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_tag_duplicated);
+    if(ad_image_7_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_TAG_DUPLICATED", ad_image_7_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_7_tag_length_too_long) {
+    cJSON *ad_image_7_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_tag_length_too_long);
+    if(ad_image_7_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_TAG_LENGTH_TOO_LONG", ad_image_7_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_7_tag_required
+    if(catalogs_item_validation_warnings->ad_image_7_tag_required) {
+    cJSON *ad_image_7_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_7_tag_required);
+    if(ad_image_7_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_7_TAG_REQUIRED", ad_image_7_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_8_link_duplicated) {
+    cJSON *ad_image_8_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_link_duplicated);
+    if(ad_image_8_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_LINK_DUPLICATED", ad_image_8_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_8_link_length_too_long) {
+    cJSON *ad_image_8_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_link_length_too_long);
+    if(ad_image_8_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_LINK_LENGTH_TOO_LONG", ad_image_8_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_link_required
+    if(catalogs_item_validation_warnings->ad_image_8_link_required) {
+    cJSON *ad_image_8_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_link_required);
+    if(ad_image_8_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_LINK_REQUIRED", ad_image_8_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_link_warning
+    if(catalogs_item_validation_warnings->ad_image_8_link_warning) {
+    cJSON *ad_image_8_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_link_warning);
+    if(ad_image_8_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_LINK_WARNING", ad_image_8_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_8_tag_duplicated) {
+    cJSON *ad_image_8_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_tag_duplicated);
+    if(ad_image_8_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_TAG_DUPLICATED", ad_image_8_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_8_tag_length_too_long) {
+    cJSON *ad_image_8_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_tag_length_too_long);
+    if(ad_image_8_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_TAG_LENGTH_TOO_LONG", ad_image_8_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_8_tag_required
+    if(catalogs_item_validation_warnings->ad_image_8_tag_required) {
+    cJSON *ad_image_8_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_8_tag_required);
+    if(ad_image_8_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_8_TAG_REQUIRED", ad_image_8_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_link_duplicated
+    if(catalogs_item_validation_warnings->ad_image_9_link_duplicated) {
+    cJSON *ad_image_9_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_link_duplicated);
+    if(ad_image_9_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_LINK_DUPLICATED", ad_image_9_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_9_link_length_too_long) {
+    cJSON *ad_image_9_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_link_length_too_long);
+    if(ad_image_9_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_LINK_LENGTH_TOO_LONG", ad_image_9_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_link_required
+    if(catalogs_item_validation_warnings->ad_image_9_link_required) {
+    cJSON *ad_image_9_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_link_required);
+    if(ad_image_9_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_LINK_REQUIRED", ad_image_9_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_link_warning
+    if(catalogs_item_validation_warnings->ad_image_9_link_warning) {
+    cJSON *ad_image_9_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_link_warning);
+    if(ad_image_9_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_LINK_WARNING", ad_image_9_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_image_9_tag_duplicated) {
+    cJSON *ad_image_9_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_tag_duplicated);
+    if(ad_image_9_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_TAG_DUPLICATED", ad_image_9_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_image_9_tag_length_too_long) {
+    cJSON *ad_image_9_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_tag_length_too_long);
+    if(ad_image_9_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_TAG_LENGTH_TOO_LONG", ad_image_9_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_image_9_tag_required
+    if(catalogs_item_validation_warnings->ad_image_9_tag_required) {
+    cJSON *ad_image_9_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_image_9_tag_required);
+    if(ad_image_9_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_IMAGE_9_TAG_REQUIRED", ad_image_9_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
 
     // catalogs_item_validation_warnings->ad_link_format_warning
     if(catalogs_item_validation_warnings->ad_link_format_warning) {
@@ -409,6 +3525,279 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "AD_LINK_SAME_AS_LINK", ad_link_same_as_link_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_link_duplicated
+    if(catalogs_item_validation_warnings->ad_video_0_link_duplicated) {
+    cJSON *ad_video_0_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_link_duplicated);
+    if(ad_video_0_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_LINK_DUPLICATED", ad_video_0_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_video_0_link_length_too_long) {
+    cJSON *ad_video_0_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_link_length_too_long);
+    if(ad_video_0_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_LINK_LENGTH_TOO_LONG", ad_video_0_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_link_required
+    if(catalogs_item_validation_warnings->ad_video_0_link_required) {
+    cJSON *ad_video_0_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_link_required);
+    if(ad_video_0_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_LINK_REQUIRED", ad_video_0_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_link_warning
+    if(catalogs_item_validation_warnings->ad_video_0_link_warning) {
+    cJSON *ad_video_0_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_link_warning);
+    if(ad_video_0_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_LINK_WARNING", ad_video_0_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_video_0_tag_duplicated) {
+    cJSON *ad_video_0_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_tag_duplicated);
+    if(ad_video_0_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_TAG_DUPLICATED", ad_video_0_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_video_0_tag_length_too_long) {
+    cJSON *ad_video_0_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_tag_length_too_long);
+    if(ad_video_0_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_TAG_LENGTH_TOO_LONG", ad_video_0_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_0_tag_required
+    if(catalogs_item_validation_warnings->ad_video_0_tag_required) {
+    cJSON *ad_video_0_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_0_tag_required);
+    if(ad_video_0_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_0_TAG_REQUIRED", ad_video_0_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_link_duplicated
+    if(catalogs_item_validation_warnings->ad_video_1_link_duplicated) {
+    cJSON *ad_video_1_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_link_duplicated);
+    if(ad_video_1_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_LINK_DUPLICATED", ad_video_1_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_video_1_link_length_too_long) {
+    cJSON *ad_video_1_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_link_length_too_long);
+    if(ad_video_1_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_LINK_LENGTH_TOO_LONG", ad_video_1_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_link_required
+    if(catalogs_item_validation_warnings->ad_video_1_link_required) {
+    cJSON *ad_video_1_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_link_required);
+    if(ad_video_1_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_LINK_REQUIRED", ad_video_1_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_link_warning
+    if(catalogs_item_validation_warnings->ad_video_1_link_warning) {
+    cJSON *ad_video_1_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_link_warning);
+    if(ad_video_1_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_LINK_WARNING", ad_video_1_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_video_1_tag_duplicated) {
+    cJSON *ad_video_1_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_tag_duplicated);
+    if(ad_video_1_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_TAG_DUPLICATED", ad_video_1_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_video_1_tag_length_too_long) {
+    cJSON *ad_video_1_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_tag_length_too_long);
+    if(ad_video_1_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_TAG_LENGTH_TOO_LONG", ad_video_1_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_1_tag_required
+    if(catalogs_item_validation_warnings->ad_video_1_tag_required) {
+    cJSON *ad_video_1_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_1_tag_required);
+    if(ad_video_1_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_1_TAG_REQUIRED", ad_video_1_tag_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_link_duplicated
+    if(catalogs_item_validation_warnings->ad_video_2_link_duplicated) {
+    cJSON *ad_video_2_link_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_link_duplicated);
+    if(ad_video_2_link_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_LINK_DUPLICATED", ad_video_2_link_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_link_length_too_long
+    if(catalogs_item_validation_warnings->ad_video_2_link_length_too_long) {
+    cJSON *ad_video_2_link_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_link_length_too_long);
+    if(ad_video_2_link_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_LINK_LENGTH_TOO_LONG", ad_video_2_link_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_link_required
+    if(catalogs_item_validation_warnings->ad_video_2_link_required) {
+    cJSON *ad_video_2_link_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_link_required);
+    if(ad_video_2_link_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_LINK_REQUIRED", ad_video_2_link_required_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_link_warning
+    if(catalogs_item_validation_warnings->ad_video_2_link_warning) {
+    cJSON *ad_video_2_link_warning_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_link_warning);
+    if(ad_video_2_link_warning_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_LINK_WARNING", ad_video_2_link_warning_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_tag_duplicated
+    if(catalogs_item_validation_warnings->ad_video_2_tag_duplicated) {
+    cJSON *ad_video_2_tag_duplicated_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_tag_duplicated);
+    if(ad_video_2_tag_duplicated_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_TAG_DUPLICATED", ad_video_2_tag_duplicated_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_tag_length_too_long
+    if(catalogs_item_validation_warnings->ad_video_2_tag_length_too_long) {
+    cJSON *ad_video_2_tag_length_too_long_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_tag_length_too_long);
+    if(ad_video_2_tag_length_too_long_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_TAG_LENGTH_TOO_LONG", ad_video_2_tag_length_too_long_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->ad_video_2_tag_required
+    if(catalogs_item_validation_warnings->ad_video_2_tag_required) {
+    cJSON *ad_video_2_tag_required_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->ad_video_2_tag_required);
+    if(ad_video_2_tag_required_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "AD_VIDEO_2_TAG_REQUIRED", ad_video_2_tag_required_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -474,19 +3863,6 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "AGE_GROUP_INVALID", age_group_invalid_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // catalogs_item_validation_warnings->size_system_invalid
-    if(catalogs_item_validation_warnings->size_system_invalid) {
-    cJSON *size_system_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->size_system_invalid);
-    if(size_system_invalid_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "SIZE_SYSTEM_INVALID", size_system_invalid_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -779,6 +4155,19 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     }
 
 
+    // catalogs_item_validation_warnings->sale_date_invalid
+    if(catalogs_item_validation_warnings->sale_date_invalid) {
+    cJSON *sale_date_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->sale_date_invalid);
+    if(sale_date_invalid_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "SALE_DATE_INVALID", sale_date_invalid_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
     // catalogs_item_validation_warnings->sales_price_invalid
     if(catalogs_item_validation_warnings->sales_price_invalid) {
     cJSON *sales_price_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->sales_price_invalid);
@@ -786,19 +4175,6 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "SALES_PRICE_INVALID", sales_price_invalid_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // catalogs_item_validation_warnings->sales_price_too_low
-    if(catalogs_item_validation_warnings->sales_price_too_low) {
-    cJSON *sales_price_too_low_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->sales_price_too_low);
-    if(sales_price_too_low_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "SALES_PRICE_TOO_LOW", sales_price_too_low_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -818,26 +4194,13 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     }
 
 
-    // catalogs_item_validation_warnings->sale_date_invalid
-    if(catalogs_item_validation_warnings->sale_date_invalid) {
-    cJSON *sale_date_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->sale_date_invalid);
-    if(sale_date_invalid_local_JSON == NULL) {
+    // catalogs_item_validation_warnings->sales_price_too_low
+    if(catalogs_item_validation_warnings->sales_price_too_low) {
+    cJSON *sales_price_too_low_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->sales_price_too_low);
+    if(sales_price_too_low_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "SALE_DATE_INVALID", sale_date_invalid_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // catalogs_item_validation_warnings->shipping_invalid
-    if(catalogs_item_validation_warnings->shipping_invalid) {
-    cJSON *shipping_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->shipping_invalid);
-    if(shipping_invalid_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "SHIPPING_INVALID", shipping_invalid_local_JSON);
+    cJSON_AddItemToObject(item, "SALES_PRICE_TOO_LOW", sales_price_too_low_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -851,6 +4214,19 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "SHIPPING_HEIGHT_INVALID", shipping_height_invalid_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->shipping_invalid
+    if(catalogs_item_validation_warnings->shipping_invalid) {
+    cJSON *shipping_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->shipping_invalid);
+    if(shipping_invalid_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "SHIPPING_INVALID", shipping_invalid_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -877,6 +4253,19 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "SHIPPING_WIDTH_INVALID", shipping_width_invalid_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_warnings->size_system_invalid
+    if(catalogs_item_validation_warnings->size_system_invalid) {
+    cJSON *size_system_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->size_system_invalid);
+    if(size_system_invalid_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "SIZE_SYSTEM_INVALID", size_system_invalid_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -948,6 +4337,19 @@ cJSON *catalogs_item_validation_warnings_convertToJSON(catalogs_item_validation_
     }
 
 
+    // catalogs_item_validation_warnings->video_required_when_ad_video_provided
+    if(catalogs_item_validation_warnings->video_required_when_ad_video_provided) {
+    cJSON *video_required_when_ad_video_provided_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->video_required_when_ad_video_provided);
+    if(video_required_when_ad_video_provided_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED", video_required_when_ad_video_provided_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
     // catalogs_item_validation_warnings->weight_unit_invalid
     if(catalogs_item_validation_warnings->weight_unit_invalid) {
     cJSON *weight_unit_invalid_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_warnings->weight_unit_invalid);
@@ -972,11 +4374,494 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
 
     catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_local_var = NULL;
 
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_link_duplicated
+    catalogs_item_validation_details_t *ad_image_0_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_0_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_link_required
+    catalogs_item_validation_details_t *ad_image_0_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_link_warning
+    catalogs_item_validation_details_t *ad_image_0_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_0_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_0_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_0_tag_required
+    catalogs_item_validation_details_t *ad_image_0_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_link_duplicated
+    catalogs_item_validation_details_t *ad_image_10_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_10_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_link_required
+    catalogs_item_validation_details_t *ad_image_10_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_link_warning
+    catalogs_item_validation_details_t *ad_image_10_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_10_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_10_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_10_tag_required
+    catalogs_item_validation_details_t *ad_image_10_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_link_duplicated
+    catalogs_item_validation_details_t *ad_image_11_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_11_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_link_required
+    catalogs_item_validation_details_t *ad_image_11_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_link_warning
+    catalogs_item_validation_details_t *ad_image_11_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_11_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_11_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_11_tag_required
+    catalogs_item_validation_details_t *ad_image_11_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_link_duplicated
+    catalogs_item_validation_details_t *ad_image_12_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_12_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_link_required
+    catalogs_item_validation_details_t *ad_image_12_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_link_warning
+    catalogs_item_validation_details_t *ad_image_12_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_12_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_12_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_12_tag_required
+    catalogs_item_validation_details_t *ad_image_12_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_link_duplicated
+    catalogs_item_validation_details_t *ad_image_13_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_13_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_link_required
+    catalogs_item_validation_details_t *ad_image_13_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_link_warning
+    catalogs_item_validation_details_t *ad_image_13_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_13_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_13_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_13_tag_required
+    catalogs_item_validation_details_t *ad_image_13_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_link_duplicated
+    catalogs_item_validation_details_t *ad_image_14_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_14_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_link_required
+    catalogs_item_validation_details_t *ad_image_14_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_link_warning
+    catalogs_item_validation_details_t *ad_image_14_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_14_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_14_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_14_tag_required
+    catalogs_item_validation_details_t *ad_image_14_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_link_duplicated
+    catalogs_item_validation_details_t *ad_image_15_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_15_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_link_required
+    catalogs_item_validation_details_t *ad_image_15_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_link_warning
+    catalogs_item_validation_details_t *ad_image_15_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_15_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_15_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_15_tag_required
+    catalogs_item_validation_details_t *ad_image_15_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_link_duplicated
+    catalogs_item_validation_details_t *ad_image_16_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_16_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_link_required
+    catalogs_item_validation_details_t *ad_image_16_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_link_warning
+    catalogs_item_validation_details_t *ad_image_16_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_16_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_16_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_16_tag_required
+    catalogs_item_validation_details_t *ad_image_16_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_link_duplicated
+    catalogs_item_validation_details_t *ad_image_17_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_17_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_link_required
+    catalogs_item_validation_details_t *ad_image_17_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_link_warning
+    catalogs_item_validation_details_t *ad_image_17_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_17_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_17_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_17_tag_required
+    catalogs_item_validation_details_t *ad_image_17_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_link_duplicated
+    catalogs_item_validation_details_t *ad_image_18_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_18_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_link_required
+    catalogs_item_validation_details_t *ad_image_18_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_link_warning
+    catalogs_item_validation_details_t *ad_image_18_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_18_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_18_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_18_tag_required
+    catalogs_item_validation_details_t *ad_image_18_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_link_duplicated
+    catalogs_item_validation_details_t *ad_image_19_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_19_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_link_required
+    catalogs_item_validation_details_t *ad_image_19_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_link_warning
+    catalogs_item_validation_details_t *ad_image_19_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_19_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_19_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_19_tag_required
+    catalogs_item_validation_details_t *ad_image_19_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_link_duplicated
+    catalogs_item_validation_details_t *ad_image_1_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_1_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_link_required
+    catalogs_item_validation_details_t *ad_image_1_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_link_warning
+    catalogs_item_validation_details_t *ad_image_1_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_1_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_1_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_1_tag_required
+    catalogs_item_validation_details_t *ad_image_1_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_link_duplicated
+    catalogs_item_validation_details_t *ad_image_2_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_2_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_link_required
+    catalogs_item_validation_details_t *ad_image_2_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_link_warning
+    catalogs_item_validation_details_t *ad_image_2_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_2_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_2_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_2_tag_required
+    catalogs_item_validation_details_t *ad_image_2_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_link_duplicated
+    catalogs_item_validation_details_t *ad_image_3_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_3_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_link_required
+    catalogs_item_validation_details_t *ad_image_3_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_link_warning
+    catalogs_item_validation_details_t *ad_image_3_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_3_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_3_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_3_tag_required
+    catalogs_item_validation_details_t *ad_image_3_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_link_duplicated
+    catalogs_item_validation_details_t *ad_image_4_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_4_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_link_required
+    catalogs_item_validation_details_t *ad_image_4_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_link_warning
+    catalogs_item_validation_details_t *ad_image_4_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_4_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_4_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_4_tag_required
+    catalogs_item_validation_details_t *ad_image_4_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_link_duplicated
+    catalogs_item_validation_details_t *ad_image_5_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_5_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_link_required
+    catalogs_item_validation_details_t *ad_image_5_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_link_warning
+    catalogs_item_validation_details_t *ad_image_5_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_5_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_5_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_5_tag_required
+    catalogs_item_validation_details_t *ad_image_5_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_link_duplicated
+    catalogs_item_validation_details_t *ad_image_6_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_6_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_link_required
+    catalogs_item_validation_details_t *ad_image_6_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_link_warning
+    catalogs_item_validation_details_t *ad_image_6_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_6_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_6_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_6_tag_required
+    catalogs_item_validation_details_t *ad_image_6_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_link_duplicated
+    catalogs_item_validation_details_t *ad_image_7_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_7_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_link_required
+    catalogs_item_validation_details_t *ad_image_7_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_link_warning
+    catalogs_item_validation_details_t *ad_image_7_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_7_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_7_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_7_tag_required
+    catalogs_item_validation_details_t *ad_image_7_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_link_duplicated
+    catalogs_item_validation_details_t *ad_image_8_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_8_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_link_required
+    catalogs_item_validation_details_t *ad_image_8_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_link_warning
+    catalogs_item_validation_details_t *ad_image_8_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_8_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_8_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_8_tag_required
+    catalogs_item_validation_details_t *ad_image_8_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_link_duplicated
+    catalogs_item_validation_details_t *ad_image_9_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_link_length_too_long
+    catalogs_item_validation_details_t *ad_image_9_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_link_required
+    catalogs_item_validation_details_t *ad_image_9_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_link_warning
+    catalogs_item_validation_details_t *ad_image_9_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_tag_duplicated
+    catalogs_item_validation_details_t *ad_image_9_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_tag_length_too_long
+    catalogs_item_validation_details_t *ad_image_9_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_image_9_tag_required
+    catalogs_item_validation_details_t *ad_image_9_tag_required_local_nonprim = NULL;
+
     // define the local variable for catalogs_item_validation_warnings->ad_link_format_warning
     catalogs_item_validation_details_t *ad_link_format_warning_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->ad_link_same_as_link
     catalogs_item_validation_details_t *ad_link_same_as_link_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_link_duplicated
+    catalogs_item_validation_details_t *ad_video_0_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_link_length_too_long
+    catalogs_item_validation_details_t *ad_video_0_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_link_required
+    catalogs_item_validation_details_t *ad_video_0_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_link_warning
+    catalogs_item_validation_details_t *ad_video_0_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_tag_duplicated
+    catalogs_item_validation_details_t *ad_video_0_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_tag_length_too_long
+    catalogs_item_validation_details_t *ad_video_0_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_0_tag_required
+    catalogs_item_validation_details_t *ad_video_0_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_link_duplicated
+    catalogs_item_validation_details_t *ad_video_1_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_link_length_too_long
+    catalogs_item_validation_details_t *ad_video_1_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_link_required
+    catalogs_item_validation_details_t *ad_video_1_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_link_warning
+    catalogs_item_validation_details_t *ad_video_1_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_tag_duplicated
+    catalogs_item_validation_details_t *ad_video_1_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_tag_length_too_long
+    catalogs_item_validation_details_t *ad_video_1_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_1_tag_required
+    catalogs_item_validation_details_t *ad_video_1_tag_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_link_duplicated
+    catalogs_item_validation_details_t *ad_video_2_link_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_link_length_too_long
+    catalogs_item_validation_details_t *ad_video_2_link_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_link_required
+    catalogs_item_validation_details_t *ad_video_2_link_required_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_link_warning
+    catalogs_item_validation_details_t *ad_video_2_link_warning_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_tag_duplicated
+    catalogs_item_validation_details_t *ad_video_2_tag_duplicated_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_tag_length_too_long
+    catalogs_item_validation_details_t *ad_video_2_tag_length_too_long_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->ad_video_2_tag_required
+    catalogs_item_validation_details_t *ad_video_2_tag_required_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->additional_image_link_length_too_long
     catalogs_item_validation_details_t *additional_image_link_length_too_long_local_nonprim = NULL;
@@ -992,9 +4877,6 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
 
     // define the local variable for catalogs_item_validation_warnings->age_group_invalid
     catalogs_item_validation_details_t *age_group_invalid_local_nonprim = NULL;
-
-    // define the local variable for catalogs_item_validation_warnings->size_system_invalid
-    catalogs_item_validation_details_t *size_system_invalid_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->android_deep_link_invalid
     catalogs_item_validation_details_t *android_deep_link_invalid_local_nonprim = NULL;
@@ -1062,29 +4944,32 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     // define the local variable for catalogs_item_validation_warnings->product_type_length_too_long
     catalogs_item_validation_details_t *product_type_length_too_long_local_nonprim = NULL;
 
+    // define the local variable for catalogs_item_validation_warnings->sale_date_invalid
+    catalogs_item_validation_details_t *sale_date_invalid_local_nonprim = NULL;
+
     // define the local variable for catalogs_item_validation_warnings->sales_price_invalid
     catalogs_item_validation_details_t *sales_price_invalid_local_nonprim = NULL;
-
-    // define the local variable for catalogs_item_validation_warnings->sales_price_too_low
-    catalogs_item_validation_details_t *sales_price_too_low_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->sales_price_too_high
     catalogs_item_validation_details_t *sales_price_too_high_local_nonprim = NULL;
 
-    // define the local variable for catalogs_item_validation_warnings->sale_date_invalid
-    catalogs_item_validation_details_t *sale_date_invalid_local_nonprim = NULL;
-
-    // define the local variable for catalogs_item_validation_warnings->shipping_invalid
-    catalogs_item_validation_details_t *shipping_invalid_local_nonprim = NULL;
+    // define the local variable for catalogs_item_validation_warnings->sales_price_too_low
+    catalogs_item_validation_details_t *sales_price_too_low_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->shipping_height_invalid
     catalogs_item_validation_details_t *shipping_height_invalid_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->shipping_invalid
+    catalogs_item_validation_details_t *shipping_invalid_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->shipping_weight_invalid
     catalogs_item_validation_details_t *shipping_weight_invalid_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->shipping_width_invalid
     catalogs_item_validation_details_t *shipping_width_invalid_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_warnings->size_system_invalid
+    catalogs_item_validation_details_t *size_system_invalid_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_warnings->size_type_invalid
     catalogs_item_validation_details_t *size_type_invalid_local_nonprim = NULL;
@@ -1101,8 +4986,1271 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     // define the local variable for catalogs_item_validation_warnings->utm_source_auto_corrected
     catalogs_item_validation_details_t *utm_source_auto_corrected_local_nonprim = NULL;
 
+    // define the local variable for catalogs_item_validation_warnings->video_required_when_ad_video_provided
+    catalogs_item_validation_details_t *video_required_when_ad_video_provided_local_nonprim = NULL;
+
     // define the local variable for catalogs_item_validation_warnings->weight_unit_invalid
     catalogs_item_validation_details_t *weight_unit_invalid_local_nonprim = NULL;
+
+    // catalogs_item_validation_warnings->ad_image_0_link_duplicated
+    cJSON *ad_image_0_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_0_link_duplicated)) {
+        ad_image_0_link_duplicated = NULL;
+    }
+    if (ad_image_0_link_duplicated) { 
+    ad_image_0_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_0_link_length_too_long
+    cJSON *ad_image_0_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_0_link_length_too_long)) {
+        ad_image_0_link_length_too_long = NULL;
+    }
+    if (ad_image_0_link_length_too_long) { 
+    ad_image_0_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_0_link_required
+    cJSON *ad_image_0_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_0_link_required)) {
+        ad_image_0_link_required = NULL;
+    }
+    if (ad_image_0_link_required) { 
+    ad_image_0_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_0_link_warning
+    cJSON *ad_image_0_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_0_link_warning)) {
+        ad_image_0_link_warning = NULL;
+    }
+    if (ad_image_0_link_warning) { 
+    ad_image_0_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_0_tag_duplicated
+    cJSON *ad_image_0_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_0_tag_duplicated)) {
+        ad_image_0_tag_duplicated = NULL;
+    }
+    if (ad_image_0_tag_duplicated) { 
+    ad_image_0_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_0_tag_length_too_long
+    cJSON *ad_image_0_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_0_tag_length_too_long)) {
+        ad_image_0_tag_length_too_long = NULL;
+    }
+    if (ad_image_0_tag_length_too_long) { 
+    ad_image_0_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_0_tag_required
+    cJSON *ad_image_0_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_0_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_0_tag_required)) {
+        ad_image_0_tag_required = NULL;
+    }
+    if (ad_image_0_tag_required) { 
+    ad_image_0_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_0_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_link_duplicated
+    cJSON *ad_image_10_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_10_link_duplicated)) {
+        ad_image_10_link_duplicated = NULL;
+    }
+    if (ad_image_10_link_duplicated) { 
+    ad_image_10_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_link_length_too_long
+    cJSON *ad_image_10_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_10_link_length_too_long)) {
+        ad_image_10_link_length_too_long = NULL;
+    }
+    if (ad_image_10_link_length_too_long) { 
+    ad_image_10_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_link_required
+    cJSON *ad_image_10_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_10_link_required)) {
+        ad_image_10_link_required = NULL;
+    }
+    if (ad_image_10_link_required) { 
+    ad_image_10_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_link_warning
+    cJSON *ad_image_10_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_10_link_warning)) {
+        ad_image_10_link_warning = NULL;
+    }
+    if (ad_image_10_link_warning) { 
+    ad_image_10_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_tag_duplicated
+    cJSON *ad_image_10_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_10_tag_duplicated)) {
+        ad_image_10_tag_duplicated = NULL;
+    }
+    if (ad_image_10_tag_duplicated) { 
+    ad_image_10_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_tag_length_too_long
+    cJSON *ad_image_10_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_10_tag_length_too_long)) {
+        ad_image_10_tag_length_too_long = NULL;
+    }
+    if (ad_image_10_tag_length_too_long) { 
+    ad_image_10_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_10_tag_required
+    cJSON *ad_image_10_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_10_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_10_tag_required)) {
+        ad_image_10_tag_required = NULL;
+    }
+    if (ad_image_10_tag_required) { 
+    ad_image_10_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_10_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_link_duplicated
+    cJSON *ad_image_11_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_11_link_duplicated)) {
+        ad_image_11_link_duplicated = NULL;
+    }
+    if (ad_image_11_link_duplicated) { 
+    ad_image_11_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_link_length_too_long
+    cJSON *ad_image_11_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_11_link_length_too_long)) {
+        ad_image_11_link_length_too_long = NULL;
+    }
+    if (ad_image_11_link_length_too_long) { 
+    ad_image_11_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_link_required
+    cJSON *ad_image_11_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_11_link_required)) {
+        ad_image_11_link_required = NULL;
+    }
+    if (ad_image_11_link_required) { 
+    ad_image_11_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_link_warning
+    cJSON *ad_image_11_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_11_link_warning)) {
+        ad_image_11_link_warning = NULL;
+    }
+    if (ad_image_11_link_warning) { 
+    ad_image_11_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_tag_duplicated
+    cJSON *ad_image_11_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_11_tag_duplicated)) {
+        ad_image_11_tag_duplicated = NULL;
+    }
+    if (ad_image_11_tag_duplicated) { 
+    ad_image_11_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_tag_length_too_long
+    cJSON *ad_image_11_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_11_tag_length_too_long)) {
+        ad_image_11_tag_length_too_long = NULL;
+    }
+    if (ad_image_11_tag_length_too_long) { 
+    ad_image_11_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_11_tag_required
+    cJSON *ad_image_11_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_11_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_11_tag_required)) {
+        ad_image_11_tag_required = NULL;
+    }
+    if (ad_image_11_tag_required) { 
+    ad_image_11_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_11_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_link_duplicated
+    cJSON *ad_image_12_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_12_link_duplicated)) {
+        ad_image_12_link_duplicated = NULL;
+    }
+    if (ad_image_12_link_duplicated) { 
+    ad_image_12_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_link_length_too_long
+    cJSON *ad_image_12_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_12_link_length_too_long)) {
+        ad_image_12_link_length_too_long = NULL;
+    }
+    if (ad_image_12_link_length_too_long) { 
+    ad_image_12_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_link_required
+    cJSON *ad_image_12_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_12_link_required)) {
+        ad_image_12_link_required = NULL;
+    }
+    if (ad_image_12_link_required) { 
+    ad_image_12_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_link_warning
+    cJSON *ad_image_12_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_12_link_warning)) {
+        ad_image_12_link_warning = NULL;
+    }
+    if (ad_image_12_link_warning) { 
+    ad_image_12_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_tag_duplicated
+    cJSON *ad_image_12_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_12_tag_duplicated)) {
+        ad_image_12_tag_duplicated = NULL;
+    }
+    if (ad_image_12_tag_duplicated) { 
+    ad_image_12_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_tag_length_too_long
+    cJSON *ad_image_12_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_12_tag_length_too_long)) {
+        ad_image_12_tag_length_too_long = NULL;
+    }
+    if (ad_image_12_tag_length_too_long) { 
+    ad_image_12_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_12_tag_required
+    cJSON *ad_image_12_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_12_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_12_tag_required)) {
+        ad_image_12_tag_required = NULL;
+    }
+    if (ad_image_12_tag_required) { 
+    ad_image_12_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_12_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_link_duplicated
+    cJSON *ad_image_13_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_13_link_duplicated)) {
+        ad_image_13_link_duplicated = NULL;
+    }
+    if (ad_image_13_link_duplicated) { 
+    ad_image_13_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_link_length_too_long
+    cJSON *ad_image_13_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_13_link_length_too_long)) {
+        ad_image_13_link_length_too_long = NULL;
+    }
+    if (ad_image_13_link_length_too_long) { 
+    ad_image_13_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_link_required
+    cJSON *ad_image_13_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_13_link_required)) {
+        ad_image_13_link_required = NULL;
+    }
+    if (ad_image_13_link_required) { 
+    ad_image_13_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_link_warning
+    cJSON *ad_image_13_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_13_link_warning)) {
+        ad_image_13_link_warning = NULL;
+    }
+    if (ad_image_13_link_warning) { 
+    ad_image_13_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_tag_duplicated
+    cJSON *ad_image_13_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_13_tag_duplicated)) {
+        ad_image_13_tag_duplicated = NULL;
+    }
+    if (ad_image_13_tag_duplicated) { 
+    ad_image_13_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_tag_length_too_long
+    cJSON *ad_image_13_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_13_tag_length_too_long)) {
+        ad_image_13_tag_length_too_long = NULL;
+    }
+    if (ad_image_13_tag_length_too_long) { 
+    ad_image_13_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_13_tag_required
+    cJSON *ad_image_13_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_13_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_13_tag_required)) {
+        ad_image_13_tag_required = NULL;
+    }
+    if (ad_image_13_tag_required) { 
+    ad_image_13_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_13_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_link_duplicated
+    cJSON *ad_image_14_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_14_link_duplicated)) {
+        ad_image_14_link_duplicated = NULL;
+    }
+    if (ad_image_14_link_duplicated) { 
+    ad_image_14_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_link_length_too_long
+    cJSON *ad_image_14_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_14_link_length_too_long)) {
+        ad_image_14_link_length_too_long = NULL;
+    }
+    if (ad_image_14_link_length_too_long) { 
+    ad_image_14_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_link_required
+    cJSON *ad_image_14_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_14_link_required)) {
+        ad_image_14_link_required = NULL;
+    }
+    if (ad_image_14_link_required) { 
+    ad_image_14_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_link_warning
+    cJSON *ad_image_14_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_14_link_warning)) {
+        ad_image_14_link_warning = NULL;
+    }
+    if (ad_image_14_link_warning) { 
+    ad_image_14_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_tag_duplicated
+    cJSON *ad_image_14_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_14_tag_duplicated)) {
+        ad_image_14_tag_duplicated = NULL;
+    }
+    if (ad_image_14_tag_duplicated) { 
+    ad_image_14_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_tag_length_too_long
+    cJSON *ad_image_14_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_14_tag_length_too_long)) {
+        ad_image_14_tag_length_too_long = NULL;
+    }
+    if (ad_image_14_tag_length_too_long) { 
+    ad_image_14_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_14_tag_required
+    cJSON *ad_image_14_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_14_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_14_tag_required)) {
+        ad_image_14_tag_required = NULL;
+    }
+    if (ad_image_14_tag_required) { 
+    ad_image_14_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_14_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_link_duplicated
+    cJSON *ad_image_15_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_15_link_duplicated)) {
+        ad_image_15_link_duplicated = NULL;
+    }
+    if (ad_image_15_link_duplicated) { 
+    ad_image_15_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_link_length_too_long
+    cJSON *ad_image_15_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_15_link_length_too_long)) {
+        ad_image_15_link_length_too_long = NULL;
+    }
+    if (ad_image_15_link_length_too_long) { 
+    ad_image_15_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_link_required
+    cJSON *ad_image_15_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_15_link_required)) {
+        ad_image_15_link_required = NULL;
+    }
+    if (ad_image_15_link_required) { 
+    ad_image_15_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_link_warning
+    cJSON *ad_image_15_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_15_link_warning)) {
+        ad_image_15_link_warning = NULL;
+    }
+    if (ad_image_15_link_warning) { 
+    ad_image_15_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_tag_duplicated
+    cJSON *ad_image_15_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_15_tag_duplicated)) {
+        ad_image_15_tag_duplicated = NULL;
+    }
+    if (ad_image_15_tag_duplicated) { 
+    ad_image_15_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_tag_length_too_long
+    cJSON *ad_image_15_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_15_tag_length_too_long)) {
+        ad_image_15_tag_length_too_long = NULL;
+    }
+    if (ad_image_15_tag_length_too_long) { 
+    ad_image_15_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_15_tag_required
+    cJSON *ad_image_15_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_15_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_15_tag_required)) {
+        ad_image_15_tag_required = NULL;
+    }
+    if (ad_image_15_tag_required) { 
+    ad_image_15_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_15_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_link_duplicated
+    cJSON *ad_image_16_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_16_link_duplicated)) {
+        ad_image_16_link_duplicated = NULL;
+    }
+    if (ad_image_16_link_duplicated) { 
+    ad_image_16_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_link_length_too_long
+    cJSON *ad_image_16_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_16_link_length_too_long)) {
+        ad_image_16_link_length_too_long = NULL;
+    }
+    if (ad_image_16_link_length_too_long) { 
+    ad_image_16_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_link_required
+    cJSON *ad_image_16_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_16_link_required)) {
+        ad_image_16_link_required = NULL;
+    }
+    if (ad_image_16_link_required) { 
+    ad_image_16_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_link_warning
+    cJSON *ad_image_16_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_16_link_warning)) {
+        ad_image_16_link_warning = NULL;
+    }
+    if (ad_image_16_link_warning) { 
+    ad_image_16_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_tag_duplicated
+    cJSON *ad_image_16_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_16_tag_duplicated)) {
+        ad_image_16_tag_duplicated = NULL;
+    }
+    if (ad_image_16_tag_duplicated) { 
+    ad_image_16_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_tag_length_too_long
+    cJSON *ad_image_16_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_16_tag_length_too_long)) {
+        ad_image_16_tag_length_too_long = NULL;
+    }
+    if (ad_image_16_tag_length_too_long) { 
+    ad_image_16_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_16_tag_required
+    cJSON *ad_image_16_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_16_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_16_tag_required)) {
+        ad_image_16_tag_required = NULL;
+    }
+    if (ad_image_16_tag_required) { 
+    ad_image_16_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_16_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_link_duplicated
+    cJSON *ad_image_17_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_17_link_duplicated)) {
+        ad_image_17_link_duplicated = NULL;
+    }
+    if (ad_image_17_link_duplicated) { 
+    ad_image_17_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_link_length_too_long
+    cJSON *ad_image_17_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_17_link_length_too_long)) {
+        ad_image_17_link_length_too_long = NULL;
+    }
+    if (ad_image_17_link_length_too_long) { 
+    ad_image_17_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_link_required
+    cJSON *ad_image_17_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_17_link_required)) {
+        ad_image_17_link_required = NULL;
+    }
+    if (ad_image_17_link_required) { 
+    ad_image_17_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_link_warning
+    cJSON *ad_image_17_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_17_link_warning)) {
+        ad_image_17_link_warning = NULL;
+    }
+    if (ad_image_17_link_warning) { 
+    ad_image_17_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_tag_duplicated
+    cJSON *ad_image_17_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_17_tag_duplicated)) {
+        ad_image_17_tag_duplicated = NULL;
+    }
+    if (ad_image_17_tag_duplicated) { 
+    ad_image_17_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_tag_length_too_long
+    cJSON *ad_image_17_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_17_tag_length_too_long)) {
+        ad_image_17_tag_length_too_long = NULL;
+    }
+    if (ad_image_17_tag_length_too_long) { 
+    ad_image_17_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_17_tag_required
+    cJSON *ad_image_17_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_17_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_17_tag_required)) {
+        ad_image_17_tag_required = NULL;
+    }
+    if (ad_image_17_tag_required) { 
+    ad_image_17_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_17_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_link_duplicated
+    cJSON *ad_image_18_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_18_link_duplicated)) {
+        ad_image_18_link_duplicated = NULL;
+    }
+    if (ad_image_18_link_duplicated) { 
+    ad_image_18_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_link_length_too_long
+    cJSON *ad_image_18_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_18_link_length_too_long)) {
+        ad_image_18_link_length_too_long = NULL;
+    }
+    if (ad_image_18_link_length_too_long) { 
+    ad_image_18_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_link_required
+    cJSON *ad_image_18_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_18_link_required)) {
+        ad_image_18_link_required = NULL;
+    }
+    if (ad_image_18_link_required) { 
+    ad_image_18_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_link_warning
+    cJSON *ad_image_18_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_18_link_warning)) {
+        ad_image_18_link_warning = NULL;
+    }
+    if (ad_image_18_link_warning) { 
+    ad_image_18_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_tag_duplicated
+    cJSON *ad_image_18_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_18_tag_duplicated)) {
+        ad_image_18_tag_duplicated = NULL;
+    }
+    if (ad_image_18_tag_duplicated) { 
+    ad_image_18_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_tag_length_too_long
+    cJSON *ad_image_18_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_18_tag_length_too_long)) {
+        ad_image_18_tag_length_too_long = NULL;
+    }
+    if (ad_image_18_tag_length_too_long) { 
+    ad_image_18_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_18_tag_required
+    cJSON *ad_image_18_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_18_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_18_tag_required)) {
+        ad_image_18_tag_required = NULL;
+    }
+    if (ad_image_18_tag_required) { 
+    ad_image_18_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_18_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_link_duplicated
+    cJSON *ad_image_19_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_19_link_duplicated)) {
+        ad_image_19_link_duplicated = NULL;
+    }
+    if (ad_image_19_link_duplicated) { 
+    ad_image_19_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_link_length_too_long
+    cJSON *ad_image_19_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_19_link_length_too_long)) {
+        ad_image_19_link_length_too_long = NULL;
+    }
+    if (ad_image_19_link_length_too_long) { 
+    ad_image_19_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_link_required
+    cJSON *ad_image_19_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_19_link_required)) {
+        ad_image_19_link_required = NULL;
+    }
+    if (ad_image_19_link_required) { 
+    ad_image_19_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_link_warning
+    cJSON *ad_image_19_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_19_link_warning)) {
+        ad_image_19_link_warning = NULL;
+    }
+    if (ad_image_19_link_warning) { 
+    ad_image_19_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_tag_duplicated
+    cJSON *ad_image_19_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_19_tag_duplicated)) {
+        ad_image_19_tag_duplicated = NULL;
+    }
+    if (ad_image_19_tag_duplicated) { 
+    ad_image_19_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_tag_length_too_long
+    cJSON *ad_image_19_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_19_tag_length_too_long)) {
+        ad_image_19_tag_length_too_long = NULL;
+    }
+    if (ad_image_19_tag_length_too_long) { 
+    ad_image_19_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_19_tag_required
+    cJSON *ad_image_19_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_19_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_19_tag_required)) {
+        ad_image_19_tag_required = NULL;
+    }
+    if (ad_image_19_tag_required) { 
+    ad_image_19_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_19_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_link_duplicated
+    cJSON *ad_image_1_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_1_link_duplicated)) {
+        ad_image_1_link_duplicated = NULL;
+    }
+    if (ad_image_1_link_duplicated) { 
+    ad_image_1_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_link_length_too_long
+    cJSON *ad_image_1_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_1_link_length_too_long)) {
+        ad_image_1_link_length_too_long = NULL;
+    }
+    if (ad_image_1_link_length_too_long) { 
+    ad_image_1_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_link_required
+    cJSON *ad_image_1_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_1_link_required)) {
+        ad_image_1_link_required = NULL;
+    }
+    if (ad_image_1_link_required) { 
+    ad_image_1_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_link_warning
+    cJSON *ad_image_1_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_1_link_warning)) {
+        ad_image_1_link_warning = NULL;
+    }
+    if (ad_image_1_link_warning) { 
+    ad_image_1_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_tag_duplicated
+    cJSON *ad_image_1_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_1_tag_duplicated)) {
+        ad_image_1_tag_duplicated = NULL;
+    }
+    if (ad_image_1_tag_duplicated) { 
+    ad_image_1_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_tag_length_too_long
+    cJSON *ad_image_1_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_1_tag_length_too_long)) {
+        ad_image_1_tag_length_too_long = NULL;
+    }
+    if (ad_image_1_tag_length_too_long) { 
+    ad_image_1_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_1_tag_required
+    cJSON *ad_image_1_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_1_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_1_tag_required)) {
+        ad_image_1_tag_required = NULL;
+    }
+    if (ad_image_1_tag_required) { 
+    ad_image_1_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_1_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_link_duplicated
+    cJSON *ad_image_2_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_2_link_duplicated)) {
+        ad_image_2_link_duplicated = NULL;
+    }
+    if (ad_image_2_link_duplicated) { 
+    ad_image_2_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_link_length_too_long
+    cJSON *ad_image_2_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_2_link_length_too_long)) {
+        ad_image_2_link_length_too_long = NULL;
+    }
+    if (ad_image_2_link_length_too_long) { 
+    ad_image_2_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_link_required
+    cJSON *ad_image_2_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_2_link_required)) {
+        ad_image_2_link_required = NULL;
+    }
+    if (ad_image_2_link_required) { 
+    ad_image_2_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_link_warning
+    cJSON *ad_image_2_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_2_link_warning)) {
+        ad_image_2_link_warning = NULL;
+    }
+    if (ad_image_2_link_warning) { 
+    ad_image_2_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_tag_duplicated
+    cJSON *ad_image_2_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_2_tag_duplicated)) {
+        ad_image_2_tag_duplicated = NULL;
+    }
+    if (ad_image_2_tag_duplicated) { 
+    ad_image_2_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_tag_length_too_long
+    cJSON *ad_image_2_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_2_tag_length_too_long)) {
+        ad_image_2_tag_length_too_long = NULL;
+    }
+    if (ad_image_2_tag_length_too_long) { 
+    ad_image_2_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_2_tag_required
+    cJSON *ad_image_2_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_2_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_2_tag_required)) {
+        ad_image_2_tag_required = NULL;
+    }
+    if (ad_image_2_tag_required) { 
+    ad_image_2_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_2_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_link_duplicated
+    cJSON *ad_image_3_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_3_link_duplicated)) {
+        ad_image_3_link_duplicated = NULL;
+    }
+    if (ad_image_3_link_duplicated) { 
+    ad_image_3_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_link_length_too_long
+    cJSON *ad_image_3_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_3_link_length_too_long)) {
+        ad_image_3_link_length_too_long = NULL;
+    }
+    if (ad_image_3_link_length_too_long) { 
+    ad_image_3_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_link_required
+    cJSON *ad_image_3_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_3_link_required)) {
+        ad_image_3_link_required = NULL;
+    }
+    if (ad_image_3_link_required) { 
+    ad_image_3_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_link_warning
+    cJSON *ad_image_3_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_3_link_warning)) {
+        ad_image_3_link_warning = NULL;
+    }
+    if (ad_image_3_link_warning) { 
+    ad_image_3_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_tag_duplicated
+    cJSON *ad_image_3_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_3_tag_duplicated)) {
+        ad_image_3_tag_duplicated = NULL;
+    }
+    if (ad_image_3_tag_duplicated) { 
+    ad_image_3_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_tag_length_too_long
+    cJSON *ad_image_3_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_3_tag_length_too_long)) {
+        ad_image_3_tag_length_too_long = NULL;
+    }
+    if (ad_image_3_tag_length_too_long) { 
+    ad_image_3_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_3_tag_required
+    cJSON *ad_image_3_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_3_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_3_tag_required)) {
+        ad_image_3_tag_required = NULL;
+    }
+    if (ad_image_3_tag_required) { 
+    ad_image_3_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_3_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_link_duplicated
+    cJSON *ad_image_4_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_4_link_duplicated)) {
+        ad_image_4_link_duplicated = NULL;
+    }
+    if (ad_image_4_link_duplicated) { 
+    ad_image_4_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_link_length_too_long
+    cJSON *ad_image_4_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_4_link_length_too_long)) {
+        ad_image_4_link_length_too_long = NULL;
+    }
+    if (ad_image_4_link_length_too_long) { 
+    ad_image_4_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_link_required
+    cJSON *ad_image_4_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_4_link_required)) {
+        ad_image_4_link_required = NULL;
+    }
+    if (ad_image_4_link_required) { 
+    ad_image_4_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_link_warning
+    cJSON *ad_image_4_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_4_link_warning)) {
+        ad_image_4_link_warning = NULL;
+    }
+    if (ad_image_4_link_warning) { 
+    ad_image_4_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_tag_duplicated
+    cJSON *ad_image_4_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_4_tag_duplicated)) {
+        ad_image_4_tag_duplicated = NULL;
+    }
+    if (ad_image_4_tag_duplicated) { 
+    ad_image_4_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_tag_length_too_long
+    cJSON *ad_image_4_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_4_tag_length_too_long)) {
+        ad_image_4_tag_length_too_long = NULL;
+    }
+    if (ad_image_4_tag_length_too_long) { 
+    ad_image_4_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_4_tag_required
+    cJSON *ad_image_4_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_4_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_4_tag_required)) {
+        ad_image_4_tag_required = NULL;
+    }
+    if (ad_image_4_tag_required) { 
+    ad_image_4_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_4_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_link_duplicated
+    cJSON *ad_image_5_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_5_link_duplicated)) {
+        ad_image_5_link_duplicated = NULL;
+    }
+    if (ad_image_5_link_duplicated) { 
+    ad_image_5_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_link_length_too_long
+    cJSON *ad_image_5_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_5_link_length_too_long)) {
+        ad_image_5_link_length_too_long = NULL;
+    }
+    if (ad_image_5_link_length_too_long) { 
+    ad_image_5_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_link_required
+    cJSON *ad_image_5_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_5_link_required)) {
+        ad_image_5_link_required = NULL;
+    }
+    if (ad_image_5_link_required) { 
+    ad_image_5_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_link_warning
+    cJSON *ad_image_5_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_5_link_warning)) {
+        ad_image_5_link_warning = NULL;
+    }
+    if (ad_image_5_link_warning) { 
+    ad_image_5_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_tag_duplicated
+    cJSON *ad_image_5_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_5_tag_duplicated)) {
+        ad_image_5_tag_duplicated = NULL;
+    }
+    if (ad_image_5_tag_duplicated) { 
+    ad_image_5_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_tag_length_too_long
+    cJSON *ad_image_5_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_5_tag_length_too_long)) {
+        ad_image_5_tag_length_too_long = NULL;
+    }
+    if (ad_image_5_tag_length_too_long) { 
+    ad_image_5_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_5_tag_required
+    cJSON *ad_image_5_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_5_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_5_tag_required)) {
+        ad_image_5_tag_required = NULL;
+    }
+    if (ad_image_5_tag_required) { 
+    ad_image_5_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_5_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_link_duplicated
+    cJSON *ad_image_6_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_6_link_duplicated)) {
+        ad_image_6_link_duplicated = NULL;
+    }
+    if (ad_image_6_link_duplicated) { 
+    ad_image_6_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_link_length_too_long
+    cJSON *ad_image_6_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_6_link_length_too_long)) {
+        ad_image_6_link_length_too_long = NULL;
+    }
+    if (ad_image_6_link_length_too_long) { 
+    ad_image_6_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_link_required
+    cJSON *ad_image_6_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_6_link_required)) {
+        ad_image_6_link_required = NULL;
+    }
+    if (ad_image_6_link_required) { 
+    ad_image_6_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_link_warning
+    cJSON *ad_image_6_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_6_link_warning)) {
+        ad_image_6_link_warning = NULL;
+    }
+    if (ad_image_6_link_warning) { 
+    ad_image_6_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_tag_duplicated
+    cJSON *ad_image_6_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_6_tag_duplicated)) {
+        ad_image_6_tag_duplicated = NULL;
+    }
+    if (ad_image_6_tag_duplicated) { 
+    ad_image_6_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_tag_length_too_long
+    cJSON *ad_image_6_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_6_tag_length_too_long)) {
+        ad_image_6_tag_length_too_long = NULL;
+    }
+    if (ad_image_6_tag_length_too_long) { 
+    ad_image_6_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_6_tag_required
+    cJSON *ad_image_6_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_6_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_6_tag_required)) {
+        ad_image_6_tag_required = NULL;
+    }
+    if (ad_image_6_tag_required) { 
+    ad_image_6_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_6_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_link_duplicated
+    cJSON *ad_image_7_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_7_link_duplicated)) {
+        ad_image_7_link_duplicated = NULL;
+    }
+    if (ad_image_7_link_duplicated) { 
+    ad_image_7_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_link_length_too_long
+    cJSON *ad_image_7_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_7_link_length_too_long)) {
+        ad_image_7_link_length_too_long = NULL;
+    }
+    if (ad_image_7_link_length_too_long) { 
+    ad_image_7_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_link_required
+    cJSON *ad_image_7_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_7_link_required)) {
+        ad_image_7_link_required = NULL;
+    }
+    if (ad_image_7_link_required) { 
+    ad_image_7_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_link_warning
+    cJSON *ad_image_7_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_7_link_warning)) {
+        ad_image_7_link_warning = NULL;
+    }
+    if (ad_image_7_link_warning) { 
+    ad_image_7_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_tag_duplicated
+    cJSON *ad_image_7_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_7_tag_duplicated)) {
+        ad_image_7_tag_duplicated = NULL;
+    }
+    if (ad_image_7_tag_duplicated) { 
+    ad_image_7_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_tag_length_too_long
+    cJSON *ad_image_7_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_7_tag_length_too_long)) {
+        ad_image_7_tag_length_too_long = NULL;
+    }
+    if (ad_image_7_tag_length_too_long) { 
+    ad_image_7_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_7_tag_required
+    cJSON *ad_image_7_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_7_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_7_tag_required)) {
+        ad_image_7_tag_required = NULL;
+    }
+    if (ad_image_7_tag_required) { 
+    ad_image_7_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_7_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_link_duplicated
+    cJSON *ad_image_8_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_8_link_duplicated)) {
+        ad_image_8_link_duplicated = NULL;
+    }
+    if (ad_image_8_link_duplicated) { 
+    ad_image_8_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_link_length_too_long
+    cJSON *ad_image_8_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_8_link_length_too_long)) {
+        ad_image_8_link_length_too_long = NULL;
+    }
+    if (ad_image_8_link_length_too_long) { 
+    ad_image_8_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_link_required
+    cJSON *ad_image_8_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_8_link_required)) {
+        ad_image_8_link_required = NULL;
+    }
+    if (ad_image_8_link_required) { 
+    ad_image_8_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_link_warning
+    cJSON *ad_image_8_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_8_link_warning)) {
+        ad_image_8_link_warning = NULL;
+    }
+    if (ad_image_8_link_warning) { 
+    ad_image_8_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_tag_duplicated
+    cJSON *ad_image_8_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_8_tag_duplicated)) {
+        ad_image_8_tag_duplicated = NULL;
+    }
+    if (ad_image_8_tag_duplicated) { 
+    ad_image_8_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_tag_length_too_long
+    cJSON *ad_image_8_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_8_tag_length_too_long)) {
+        ad_image_8_tag_length_too_long = NULL;
+    }
+    if (ad_image_8_tag_length_too_long) { 
+    ad_image_8_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_8_tag_required
+    cJSON *ad_image_8_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_8_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_8_tag_required)) {
+        ad_image_8_tag_required = NULL;
+    }
+    if (ad_image_8_tag_required) { 
+    ad_image_8_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_8_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_link_duplicated
+    cJSON *ad_image_9_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_image_9_link_duplicated)) {
+        ad_image_9_link_duplicated = NULL;
+    }
+    if (ad_image_9_link_duplicated) { 
+    ad_image_9_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_link_length_too_long
+    cJSON *ad_image_9_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_9_link_length_too_long)) {
+        ad_image_9_link_length_too_long = NULL;
+    }
+    if (ad_image_9_link_length_too_long) { 
+    ad_image_9_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_link_required
+    cJSON *ad_image_9_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_image_9_link_required)) {
+        ad_image_9_link_required = NULL;
+    }
+    if (ad_image_9_link_required) { 
+    ad_image_9_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_link_warning
+    cJSON *ad_image_9_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_LINK_WARNING");
+    if (cJSON_IsNull(ad_image_9_link_warning)) {
+        ad_image_9_link_warning = NULL;
+    }
+    if (ad_image_9_link_warning) { 
+    ad_image_9_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_tag_duplicated
+    cJSON *ad_image_9_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_image_9_tag_duplicated)) {
+        ad_image_9_tag_duplicated = NULL;
+    }
+    if (ad_image_9_tag_duplicated) { 
+    ad_image_9_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_tag_length_too_long
+    cJSON *ad_image_9_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_image_9_tag_length_too_long)) {
+        ad_image_9_tag_length_too_long = NULL;
+    }
+    if (ad_image_9_tag_length_too_long) { 
+    ad_image_9_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_image_9_tag_required
+    cJSON *ad_image_9_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_IMAGE_9_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_image_9_tag_required)) {
+        ad_image_9_tag_required = NULL;
+    }
+    if (ad_image_9_tag_required) { 
+    ad_image_9_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_image_9_tag_required); //nonprimitive
+    }
 
     // catalogs_item_validation_warnings->ad_link_format_warning
     cJSON *ad_link_format_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_LINK_FORMAT_WARNING");
@@ -1120,6 +6268,195 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     }
     if (ad_link_same_as_link) { 
     ad_link_same_as_link_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_link_same_as_link); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_link_duplicated
+    cJSON *ad_video_0_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_video_0_link_duplicated)) {
+        ad_video_0_link_duplicated = NULL;
+    }
+    if (ad_video_0_link_duplicated) { 
+    ad_video_0_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_link_length_too_long
+    cJSON *ad_video_0_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_video_0_link_length_too_long)) {
+        ad_video_0_link_length_too_long = NULL;
+    }
+    if (ad_video_0_link_length_too_long) { 
+    ad_video_0_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_link_required
+    cJSON *ad_video_0_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_video_0_link_required)) {
+        ad_video_0_link_required = NULL;
+    }
+    if (ad_video_0_link_required) { 
+    ad_video_0_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_link_warning
+    cJSON *ad_video_0_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_LINK_WARNING");
+    if (cJSON_IsNull(ad_video_0_link_warning)) {
+        ad_video_0_link_warning = NULL;
+    }
+    if (ad_video_0_link_warning) { 
+    ad_video_0_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_tag_duplicated
+    cJSON *ad_video_0_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_video_0_tag_duplicated)) {
+        ad_video_0_tag_duplicated = NULL;
+    }
+    if (ad_video_0_tag_duplicated) { 
+    ad_video_0_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_tag_length_too_long
+    cJSON *ad_video_0_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_video_0_tag_length_too_long)) {
+        ad_video_0_tag_length_too_long = NULL;
+    }
+    if (ad_video_0_tag_length_too_long) { 
+    ad_video_0_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_0_tag_required
+    cJSON *ad_video_0_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_0_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_video_0_tag_required)) {
+        ad_video_0_tag_required = NULL;
+    }
+    if (ad_video_0_tag_required) { 
+    ad_video_0_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_0_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_link_duplicated
+    cJSON *ad_video_1_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_video_1_link_duplicated)) {
+        ad_video_1_link_duplicated = NULL;
+    }
+    if (ad_video_1_link_duplicated) { 
+    ad_video_1_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_link_length_too_long
+    cJSON *ad_video_1_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_video_1_link_length_too_long)) {
+        ad_video_1_link_length_too_long = NULL;
+    }
+    if (ad_video_1_link_length_too_long) { 
+    ad_video_1_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_link_required
+    cJSON *ad_video_1_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_video_1_link_required)) {
+        ad_video_1_link_required = NULL;
+    }
+    if (ad_video_1_link_required) { 
+    ad_video_1_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_link_warning
+    cJSON *ad_video_1_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_LINK_WARNING");
+    if (cJSON_IsNull(ad_video_1_link_warning)) {
+        ad_video_1_link_warning = NULL;
+    }
+    if (ad_video_1_link_warning) { 
+    ad_video_1_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_tag_duplicated
+    cJSON *ad_video_1_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_video_1_tag_duplicated)) {
+        ad_video_1_tag_duplicated = NULL;
+    }
+    if (ad_video_1_tag_duplicated) { 
+    ad_video_1_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_tag_length_too_long
+    cJSON *ad_video_1_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_video_1_tag_length_too_long)) {
+        ad_video_1_tag_length_too_long = NULL;
+    }
+    if (ad_video_1_tag_length_too_long) { 
+    ad_video_1_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_1_tag_required
+    cJSON *ad_video_1_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_1_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_video_1_tag_required)) {
+        ad_video_1_tag_required = NULL;
+    }
+    if (ad_video_1_tag_required) { 
+    ad_video_1_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_1_tag_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_link_duplicated
+    cJSON *ad_video_2_link_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_LINK_DUPLICATED");
+    if (cJSON_IsNull(ad_video_2_link_duplicated)) {
+        ad_video_2_link_duplicated = NULL;
+    }
+    if (ad_video_2_link_duplicated) { 
+    ad_video_2_link_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_link_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_link_length_too_long
+    cJSON *ad_video_2_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_video_2_link_length_too_long)) {
+        ad_video_2_link_length_too_long = NULL;
+    }
+    if (ad_video_2_link_length_too_long) { 
+    ad_video_2_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_link_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_link_required
+    cJSON *ad_video_2_link_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_LINK_REQUIRED");
+    if (cJSON_IsNull(ad_video_2_link_required)) {
+        ad_video_2_link_required = NULL;
+    }
+    if (ad_video_2_link_required) { 
+    ad_video_2_link_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_link_required); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_link_warning
+    cJSON *ad_video_2_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_LINK_WARNING");
+    if (cJSON_IsNull(ad_video_2_link_warning)) {
+        ad_video_2_link_warning = NULL;
+    }
+    if (ad_video_2_link_warning) { 
+    ad_video_2_link_warning_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_link_warning); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_tag_duplicated
+    cJSON *ad_video_2_tag_duplicated = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_TAG_DUPLICATED");
+    if (cJSON_IsNull(ad_video_2_tag_duplicated)) {
+        ad_video_2_tag_duplicated = NULL;
+    }
+    if (ad_video_2_tag_duplicated) { 
+    ad_video_2_tag_duplicated_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_tag_duplicated); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_tag_length_too_long
+    cJSON *ad_video_2_tag_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_TAG_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(ad_video_2_tag_length_too_long)) {
+        ad_video_2_tag_length_too_long = NULL;
+    }
+    if (ad_video_2_tag_length_too_long) { 
+    ad_video_2_tag_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_tag_length_too_long); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->ad_video_2_tag_required
+    cJSON *ad_video_2_tag_required = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "AD_VIDEO_2_TAG_REQUIRED");
+    if (cJSON_IsNull(ad_video_2_tag_required)) {
+        ad_video_2_tag_required = NULL;
+    }
+    if (ad_video_2_tag_required) { 
+    ad_video_2_tag_required_local_nonprim = catalogs_item_validation_details_parseFromJSON(ad_video_2_tag_required); //nonprimitive
     }
 
     // catalogs_item_validation_warnings->additional_image_link_length_too_long
@@ -1165,15 +6502,6 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     }
     if (age_group_invalid) { 
     age_group_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(age_group_invalid); //nonprimitive
-    }
-
-    // catalogs_item_validation_warnings->size_system_invalid
-    cJSON *size_system_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SIZE_SYSTEM_INVALID");
-    if (cJSON_IsNull(size_system_invalid)) {
-        size_system_invalid = NULL;
-    }
-    if (size_system_invalid) { 
-    size_system_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(size_system_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_warnings->android_deep_link_invalid
@@ -1374,6 +6702,15 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     product_type_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(product_type_length_too_long); //nonprimitive
     }
 
+    // catalogs_item_validation_warnings->sale_date_invalid
+    cJSON *sale_date_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SALE_DATE_INVALID");
+    if (cJSON_IsNull(sale_date_invalid)) {
+        sale_date_invalid = NULL;
+    }
+    if (sale_date_invalid) { 
+    sale_date_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(sale_date_invalid); //nonprimitive
+    }
+
     // catalogs_item_validation_warnings->sales_price_invalid
     cJSON *sales_price_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SALES_PRICE_INVALID");
     if (cJSON_IsNull(sales_price_invalid)) {
@@ -1381,15 +6718,6 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     }
     if (sales_price_invalid) { 
     sales_price_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(sales_price_invalid); //nonprimitive
-    }
-
-    // catalogs_item_validation_warnings->sales_price_too_low
-    cJSON *sales_price_too_low = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SALES_PRICE_TOO_LOW");
-    if (cJSON_IsNull(sales_price_too_low)) {
-        sales_price_too_low = NULL;
-    }
-    if (sales_price_too_low) { 
-    sales_price_too_low_local_nonprim = catalogs_item_validation_details_parseFromJSON(sales_price_too_low); //nonprimitive
     }
 
     // catalogs_item_validation_warnings->sales_price_too_high
@@ -1401,22 +6729,13 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     sales_price_too_high_local_nonprim = catalogs_item_validation_details_parseFromJSON(sales_price_too_high); //nonprimitive
     }
 
-    // catalogs_item_validation_warnings->sale_date_invalid
-    cJSON *sale_date_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SALE_DATE_INVALID");
-    if (cJSON_IsNull(sale_date_invalid)) {
-        sale_date_invalid = NULL;
+    // catalogs_item_validation_warnings->sales_price_too_low
+    cJSON *sales_price_too_low = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SALES_PRICE_TOO_LOW");
+    if (cJSON_IsNull(sales_price_too_low)) {
+        sales_price_too_low = NULL;
     }
-    if (sale_date_invalid) { 
-    sale_date_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(sale_date_invalid); //nonprimitive
-    }
-
-    // catalogs_item_validation_warnings->shipping_invalid
-    cJSON *shipping_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SHIPPING_INVALID");
-    if (cJSON_IsNull(shipping_invalid)) {
-        shipping_invalid = NULL;
-    }
-    if (shipping_invalid) { 
-    shipping_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(shipping_invalid); //nonprimitive
+    if (sales_price_too_low) { 
+    sales_price_too_low_local_nonprim = catalogs_item_validation_details_parseFromJSON(sales_price_too_low); //nonprimitive
     }
 
     // catalogs_item_validation_warnings->shipping_height_invalid
@@ -1426,6 +6745,15 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     }
     if (shipping_height_invalid) { 
     shipping_height_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(shipping_height_invalid); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->shipping_invalid
+    cJSON *shipping_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SHIPPING_INVALID");
+    if (cJSON_IsNull(shipping_invalid)) {
+        shipping_invalid = NULL;
+    }
+    if (shipping_invalid) { 
+    shipping_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(shipping_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_warnings->shipping_weight_invalid
@@ -1444,6 +6772,15 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     }
     if (shipping_width_invalid) { 
     shipping_width_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(shipping_width_invalid); //nonprimitive
+    }
+
+    // catalogs_item_validation_warnings->size_system_invalid
+    cJSON *size_system_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "SIZE_SYSTEM_INVALID");
+    if (cJSON_IsNull(size_system_invalid)) {
+        size_system_invalid = NULL;
+    }
+    if (size_system_invalid) { 
+    size_system_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(size_system_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_warnings->size_type_invalid
@@ -1491,6 +6828,15 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     utm_source_auto_corrected_local_nonprim = catalogs_item_validation_details_parseFromJSON(utm_source_auto_corrected); //nonprimitive
     }
 
+    // catalogs_item_validation_warnings->video_required_when_ad_video_provided
+    cJSON *video_required_when_ad_video_provided = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED");
+    if (cJSON_IsNull(video_required_when_ad_video_provided)) {
+        video_required_when_ad_video_provided = NULL;
+    }
+    if (video_required_when_ad_video_provided) { 
+    video_required_when_ad_video_provided_local_nonprim = catalogs_item_validation_details_parseFromJSON(video_required_when_ad_video_provided); //nonprimitive
+    }
+
     // catalogs_item_validation_warnings->weight_unit_invalid
     cJSON *weight_unit_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_warningsJSON, "WEIGHT_UNIT_INVALID");
     if (cJSON_IsNull(weight_unit_invalid)) {
@@ -1502,14 +6848,174 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
 
 
     catalogs_item_validation_warnings_local_var = catalogs_item_validation_warnings_create_internal (
+        ad_image_0_link_duplicated ? ad_image_0_link_duplicated_local_nonprim : NULL,
+        ad_image_0_link_length_too_long ? ad_image_0_link_length_too_long_local_nonprim : NULL,
+        ad_image_0_link_required ? ad_image_0_link_required_local_nonprim : NULL,
+        ad_image_0_link_warning ? ad_image_0_link_warning_local_nonprim : NULL,
+        ad_image_0_tag_duplicated ? ad_image_0_tag_duplicated_local_nonprim : NULL,
+        ad_image_0_tag_length_too_long ? ad_image_0_tag_length_too_long_local_nonprim : NULL,
+        ad_image_0_tag_required ? ad_image_0_tag_required_local_nonprim : NULL,
+        ad_image_10_link_duplicated ? ad_image_10_link_duplicated_local_nonprim : NULL,
+        ad_image_10_link_length_too_long ? ad_image_10_link_length_too_long_local_nonprim : NULL,
+        ad_image_10_link_required ? ad_image_10_link_required_local_nonprim : NULL,
+        ad_image_10_link_warning ? ad_image_10_link_warning_local_nonprim : NULL,
+        ad_image_10_tag_duplicated ? ad_image_10_tag_duplicated_local_nonprim : NULL,
+        ad_image_10_tag_length_too_long ? ad_image_10_tag_length_too_long_local_nonprim : NULL,
+        ad_image_10_tag_required ? ad_image_10_tag_required_local_nonprim : NULL,
+        ad_image_11_link_duplicated ? ad_image_11_link_duplicated_local_nonprim : NULL,
+        ad_image_11_link_length_too_long ? ad_image_11_link_length_too_long_local_nonprim : NULL,
+        ad_image_11_link_required ? ad_image_11_link_required_local_nonprim : NULL,
+        ad_image_11_link_warning ? ad_image_11_link_warning_local_nonprim : NULL,
+        ad_image_11_tag_duplicated ? ad_image_11_tag_duplicated_local_nonprim : NULL,
+        ad_image_11_tag_length_too_long ? ad_image_11_tag_length_too_long_local_nonprim : NULL,
+        ad_image_11_tag_required ? ad_image_11_tag_required_local_nonprim : NULL,
+        ad_image_12_link_duplicated ? ad_image_12_link_duplicated_local_nonprim : NULL,
+        ad_image_12_link_length_too_long ? ad_image_12_link_length_too_long_local_nonprim : NULL,
+        ad_image_12_link_required ? ad_image_12_link_required_local_nonprim : NULL,
+        ad_image_12_link_warning ? ad_image_12_link_warning_local_nonprim : NULL,
+        ad_image_12_tag_duplicated ? ad_image_12_tag_duplicated_local_nonprim : NULL,
+        ad_image_12_tag_length_too_long ? ad_image_12_tag_length_too_long_local_nonprim : NULL,
+        ad_image_12_tag_required ? ad_image_12_tag_required_local_nonprim : NULL,
+        ad_image_13_link_duplicated ? ad_image_13_link_duplicated_local_nonprim : NULL,
+        ad_image_13_link_length_too_long ? ad_image_13_link_length_too_long_local_nonprim : NULL,
+        ad_image_13_link_required ? ad_image_13_link_required_local_nonprim : NULL,
+        ad_image_13_link_warning ? ad_image_13_link_warning_local_nonprim : NULL,
+        ad_image_13_tag_duplicated ? ad_image_13_tag_duplicated_local_nonprim : NULL,
+        ad_image_13_tag_length_too_long ? ad_image_13_tag_length_too_long_local_nonprim : NULL,
+        ad_image_13_tag_required ? ad_image_13_tag_required_local_nonprim : NULL,
+        ad_image_14_link_duplicated ? ad_image_14_link_duplicated_local_nonprim : NULL,
+        ad_image_14_link_length_too_long ? ad_image_14_link_length_too_long_local_nonprim : NULL,
+        ad_image_14_link_required ? ad_image_14_link_required_local_nonprim : NULL,
+        ad_image_14_link_warning ? ad_image_14_link_warning_local_nonprim : NULL,
+        ad_image_14_tag_duplicated ? ad_image_14_tag_duplicated_local_nonprim : NULL,
+        ad_image_14_tag_length_too_long ? ad_image_14_tag_length_too_long_local_nonprim : NULL,
+        ad_image_14_tag_required ? ad_image_14_tag_required_local_nonprim : NULL,
+        ad_image_15_link_duplicated ? ad_image_15_link_duplicated_local_nonprim : NULL,
+        ad_image_15_link_length_too_long ? ad_image_15_link_length_too_long_local_nonprim : NULL,
+        ad_image_15_link_required ? ad_image_15_link_required_local_nonprim : NULL,
+        ad_image_15_link_warning ? ad_image_15_link_warning_local_nonprim : NULL,
+        ad_image_15_tag_duplicated ? ad_image_15_tag_duplicated_local_nonprim : NULL,
+        ad_image_15_tag_length_too_long ? ad_image_15_tag_length_too_long_local_nonprim : NULL,
+        ad_image_15_tag_required ? ad_image_15_tag_required_local_nonprim : NULL,
+        ad_image_16_link_duplicated ? ad_image_16_link_duplicated_local_nonprim : NULL,
+        ad_image_16_link_length_too_long ? ad_image_16_link_length_too_long_local_nonprim : NULL,
+        ad_image_16_link_required ? ad_image_16_link_required_local_nonprim : NULL,
+        ad_image_16_link_warning ? ad_image_16_link_warning_local_nonprim : NULL,
+        ad_image_16_tag_duplicated ? ad_image_16_tag_duplicated_local_nonprim : NULL,
+        ad_image_16_tag_length_too_long ? ad_image_16_tag_length_too_long_local_nonprim : NULL,
+        ad_image_16_tag_required ? ad_image_16_tag_required_local_nonprim : NULL,
+        ad_image_17_link_duplicated ? ad_image_17_link_duplicated_local_nonprim : NULL,
+        ad_image_17_link_length_too_long ? ad_image_17_link_length_too_long_local_nonprim : NULL,
+        ad_image_17_link_required ? ad_image_17_link_required_local_nonprim : NULL,
+        ad_image_17_link_warning ? ad_image_17_link_warning_local_nonprim : NULL,
+        ad_image_17_tag_duplicated ? ad_image_17_tag_duplicated_local_nonprim : NULL,
+        ad_image_17_tag_length_too_long ? ad_image_17_tag_length_too_long_local_nonprim : NULL,
+        ad_image_17_tag_required ? ad_image_17_tag_required_local_nonprim : NULL,
+        ad_image_18_link_duplicated ? ad_image_18_link_duplicated_local_nonprim : NULL,
+        ad_image_18_link_length_too_long ? ad_image_18_link_length_too_long_local_nonprim : NULL,
+        ad_image_18_link_required ? ad_image_18_link_required_local_nonprim : NULL,
+        ad_image_18_link_warning ? ad_image_18_link_warning_local_nonprim : NULL,
+        ad_image_18_tag_duplicated ? ad_image_18_tag_duplicated_local_nonprim : NULL,
+        ad_image_18_tag_length_too_long ? ad_image_18_tag_length_too_long_local_nonprim : NULL,
+        ad_image_18_tag_required ? ad_image_18_tag_required_local_nonprim : NULL,
+        ad_image_19_link_duplicated ? ad_image_19_link_duplicated_local_nonprim : NULL,
+        ad_image_19_link_length_too_long ? ad_image_19_link_length_too_long_local_nonprim : NULL,
+        ad_image_19_link_required ? ad_image_19_link_required_local_nonprim : NULL,
+        ad_image_19_link_warning ? ad_image_19_link_warning_local_nonprim : NULL,
+        ad_image_19_tag_duplicated ? ad_image_19_tag_duplicated_local_nonprim : NULL,
+        ad_image_19_tag_length_too_long ? ad_image_19_tag_length_too_long_local_nonprim : NULL,
+        ad_image_19_tag_required ? ad_image_19_tag_required_local_nonprim : NULL,
+        ad_image_1_link_duplicated ? ad_image_1_link_duplicated_local_nonprim : NULL,
+        ad_image_1_link_length_too_long ? ad_image_1_link_length_too_long_local_nonprim : NULL,
+        ad_image_1_link_required ? ad_image_1_link_required_local_nonprim : NULL,
+        ad_image_1_link_warning ? ad_image_1_link_warning_local_nonprim : NULL,
+        ad_image_1_tag_duplicated ? ad_image_1_tag_duplicated_local_nonprim : NULL,
+        ad_image_1_tag_length_too_long ? ad_image_1_tag_length_too_long_local_nonprim : NULL,
+        ad_image_1_tag_required ? ad_image_1_tag_required_local_nonprim : NULL,
+        ad_image_2_link_duplicated ? ad_image_2_link_duplicated_local_nonprim : NULL,
+        ad_image_2_link_length_too_long ? ad_image_2_link_length_too_long_local_nonprim : NULL,
+        ad_image_2_link_required ? ad_image_2_link_required_local_nonprim : NULL,
+        ad_image_2_link_warning ? ad_image_2_link_warning_local_nonprim : NULL,
+        ad_image_2_tag_duplicated ? ad_image_2_tag_duplicated_local_nonprim : NULL,
+        ad_image_2_tag_length_too_long ? ad_image_2_tag_length_too_long_local_nonprim : NULL,
+        ad_image_2_tag_required ? ad_image_2_tag_required_local_nonprim : NULL,
+        ad_image_3_link_duplicated ? ad_image_3_link_duplicated_local_nonprim : NULL,
+        ad_image_3_link_length_too_long ? ad_image_3_link_length_too_long_local_nonprim : NULL,
+        ad_image_3_link_required ? ad_image_3_link_required_local_nonprim : NULL,
+        ad_image_3_link_warning ? ad_image_3_link_warning_local_nonprim : NULL,
+        ad_image_3_tag_duplicated ? ad_image_3_tag_duplicated_local_nonprim : NULL,
+        ad_image_3_tag_length_too_long ? ad_image_3_tag_length_too_long_local_nonprim : NULL,
+        ad_image_3_tag_required ? ad_image_3_tag_required_local_nonprim : NULL,
+        ad_image_4_link_duplicated ? ad_image_4_link_duplicated_local_nonprim : NULL,
+        ad_image_4_link_length_too_long ? ad_image_4_link_length_too_long_local_nonprim : NULL,
+        ad_image_4_link_required ? ad_image_4_link_required_local_nonprim : NULL,
+        ad_image_4_link_warning ? ad_image_4_link_warning_local_nonprim : NULL,
+        ad_image_4_tag_duplicated ? ad_image_4_tag_duplicated_local_nonprim : NULL,
+        ad_image_4_tag_length_too_long ? ad_image_4_tag_length_too_long_local_nonprim : NULL,
+        ad_image_4_tag_required ? ad_image_4_tag_required_local_nonprim : NULL,
+        ad_image_5_link_duplicated ? ad_image_5_link_duplicated_local_nonprim : NULL,
+        ad_image_5_link_length_too_long ? ad_image_5_link_length_too_long_local_nonprim : NULL,
+        ad_image_5_link_required ? ad_image_5_link_required_local_nonprim : NULL,
+        ad_image_5_link_warning ? ad_image_5_link_warning_local_nonprim : NULL,
+        ad_image_5_tag_duplicated ? ad_image_5_tag_duplicated_local_nonprim : NULL,
+        ad_image_5_tag_length_too_long ? ad_image_5_tag_length_too_long_local_nonprim : NULL,
+        ad_image_5_tag_required ? ad_image_5_tag_required_local_nonprim : NULL,
+        ad_image_6_link_duplicated ? ad_image_6_link_duplicated_local_nonprim : NULL,
+        ad_image_6_link_length_too_long ? ad_image_6_link_length_too_long_local_nonprim : NULL,
+        ad_image_6_link_required ? ad_image_6_link_required_local_nonprim : NULL,
+        ad_image_6_link_warning ? ad_image_6_link_warning_local_nonprim : NULL,
+        ad_image_6_tag_duplicated ? ad_image_6_tag_duplicated_local_nonprim : NULL,
+        ad_image_6_tag_length_too_long ? ad_image_6_tag_length_too_long_local_nonprim : NULL,
+        ad_image_6_tag_required ? ad_image_6_tag_required_local_nonprim : NULL,
+        ad_image_7_link_duplicated ? ad_image_7_link_duplicated_local_nonprim : NULL,
+        ad_image_7_link_length_too_long ? ad_image_7_link_length_too_long_local_nonprim : NULL,
+        ad_image_7_link_required ? ad_image_7_link_required_local_nonprim : NULL,
+        ad_image_7_link_warning ? ad_image_7_link_warning_local_nonprim : NULL,
+        ad_image_7_tag_duplicated ? ad_image_7_tag_duplicated_local_nonprim : NULL,
+        ad_image_7_tag_length_too_long ? ad_image_7_tag_length_too_long_local_nonprim : NULL,
+        ad_image_7_tag_required ? ad_image_7_tag_required_local_nonprim : NULL,
+        ad_image_8_link_duplicated ? ad_image_8_link_duplicated_local_nonprim : NULL,
+        ad_image_8_link_length_too_long ? ad_image_8_link_length_too_long_local_nonprim : NULL,
+        ad_image_8_link_required ? ad_image_8_link_required_local_nonprim : NULL,
+        ad_image_8_link_warning ? ad_image_8_link_warning_local_nonprim : NULL,
+        ad_image_8_tag_duplicated ? ad_image_8_tag_duplicated_local_nonprim : NULL,
+        ad_image_8_tag_length_too_long ? ad_image_8_tag_length_too_long_local_nonprim : NULL,
+        ad_image_8_tag_required ? ad_image_8_tag_required_local_nonprim : NULL,
+        ad_image_9_link_duplicated ? ad_image_9_link_duplicated_local_nonprim : NULL,
+        ad_image_9_link_length_too_long ? ad_image_9_link_length_too_long_local_nonprim : NULL,
+        ad_image_9_link_required ? ad_image_9_link_required_local_nonprim : NULL,
+        ad_image_9_link_warning ? ad_image_9_link_warning_local_nonprim : NULL,
+        ad_image_9_tag_duplicated ? ad_image_9_tag_duplicated_local_nonprim : NULL,
+        ad_image_9_tag_length_too_long ? ad_image_9_tag_length_too_long_local_nonprim : NULL,
+        ad_image_9_tag_required ? ad_image_9_tag_required_local_nonprim : NULL,
         ad_link_format_warning ? ad_link_format_warning_local_nonprim : NULL,
         ad_link_same_as_link ? ad_link_same_as_link_local_nonprim : NULL,
+        ad_video_0_link_duplicated ? ad_video_0_link_duplicated_local_nonprim : NULL,
+        ad_video_0_link_length_too_long ? ad_video_0_link_length_too_long_local_nonprim : NULL,
+        ad_video_0_link_required ? ad_video_0_link_required_local_nonprim : NULL,
+        ad_video_0_link_warning ? ad_video_0_link_warning_local_nonprim : NULL,
+        ad_video_0_tag_duplicated ? ad_video_0_tag_duplicated_local_nonprim : NULL,
+        ad_video_0_tag_length_too_long ? ad_video_0_tag_length_too_long_local_nonprim : NULL,
+        ad_video_0_tag_required ? ad_video_0_tag_required_local_nonprim : NULL,
+        ad_video_1_link_duplicated ? ad_video_1_link_duplicated_local_nonprim : NULL,
+        ad_video_1_link_length_too_long ? ad_video_1_link_length_too_long_local_nonprim : NULL,
+        ad_video_1_link_required ? ad_video_1_link_required_local_nonprim : NULL,
+        ad_video_1_link_warning ? ad_video_1_link_warning_local_nonprim : NULL,
+        ad_video_1_tag_duplicated ? ad_video_1_tag_duplicated_local_nonprim : NULL,
+        ad_video_1_tag_length_too_long ? ad_video_1_tag_length_too_long_local_nonprim : NULL,
+        ad_video_1_tag_required ? ad_video_1_tag_required_local_nonprim : NULL,
+        ad_video_2_link_duplicated ? ad_video_2_link_duplicated_local_nonprim : NULL,
+        ad_video_2_link_length_too_long ? ad_video_2_link_length_too_long_local_nonprim : NULL,
+        ad_video_2_link_required ? ad_video_2_link_required_local_nonprim : NULL,
+        ad_video_2_link_warning ? ad_video_2_link_warning_local_nonprim : NULL,
+        ad_video_2_tag_duplicated ? ad_video_2_tag_duplicated_local_nonprim : NULL,
+        ad_video_2_tag_length_too_long ? ad_video_2_tag_length_too_long_local_nonprim : NULL,
+        ad_video_2_tag_required ? ad_video_2_tag_required_local_nonprim : NULL,
         additional_image_link_length_too_long ? additional_image_link_length_too_long_local_nonprim : NULL,
         additional_image_link_warning ? additional_image_link_warning_local_nonprim : NULL,
         adwords_format_warning ? adwords_format_warning_local_nonprim : NULL,
         adwords_same_as_link ? adwords_same_as_link_local_nonprim : NULL,
         age_group_invalid ? age_group_invalid_local_nonprim : NULL,
-        size_system_invalid ? size_system_invalid_local_nonprim : NULL,
         android_deep_link_invalid ? android_deep_link_invalid_local_nonprim : NULL,
         availability_date_invalid ? availability_date_invalid_local_nonprim : NULL,
         country_does_not_map_to_currency ? country_does_not_map_to_currency_local_nonprim : NULL,
@@ -1532,24 +7038,586 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
         optional_product_category_missing ? optional_product_category_missing_local_nonprim : NULL,
         product_category_depth_warning ? product_category_depth_warning_local_nonprim : NULL,
         product_type_length_too_long ? product_type_length_too_long_local_nonprim : NULL,
-        sales_price_invalid ? sales_price_invalid_local_nonprim : NULL,
-        sales_price_too_low ? sales_price_too_low_local_nonprim : NULL,
-        sales_price_too_high ? sales_price_too_high_local_nonprim : NULL,
         sale_date_invalid ? sale_date_invalid_local_nonprim : NULL,
-        shipping_invalid ? shipping_invalid_local_nonprim : NULL,
+        sales_price_invalid ? sales_price_invalid_local_nonprim : NULL,
+        sales_price_too_high ? sales_price_too_high_local_nonprim : NULL,
+        sales_price_too_low ? sales_price_too_low_local_nonprim : NULL,
         shipping_height_invalid ? shipping_height_invalid_local_nonprim : NULL,
+        shipping_invalid ? shipping_invalid_local_nonprim : NULL,
         shipping_weight_invalid ? shipping_weight_invalid_local_nonprim : NULL,
         shipping_width_invalid ? shipping_width_invalid_local_nonprim : NULL,
+        size_system_invalid ? size_system_invalid_local_nonprim : NULL,
         size_type_invalid ? size_type_invalid_local_nonprim : NULL,
         tax_invalid ? tax_invalid_local_nonprim : NULL,
         title_length_too_long ? title_length_too_long_local_nonprim : NULL,
         too_many_additional_image_links ? too_many_additional_image_links_local_nonprim : NULL,
         utm_source_auto_corrected ? utm_source_auto_corrected_local_nonprim : NULL,
+        video_required_when_ad_video_provided ? video_required_when_ad_video_provided_local_nonprim : NULL,
         weight_unit_invalid ? weight_unit_invalid_local_nonprim : NULL
         );
 
     return catalogs_item_validation_warnings_local_var;
 end:
+    if (ad_image_0_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_link_duplicated_local_nonprim);
+        ad_image_0_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_0_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_link_length_too_long_local_nonprim);
+        ad_image_0_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_0_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_link_required_local_nonprim);
+        ad_image_0_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_0_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_link_warning_local_nonprim);
+        ad_image_0_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_0_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_tag_duplicated_local_nonprim);
+        ad_image_0_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_0_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_tag_length_too_long_local_nonprim);
+        ad_image_0_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_0_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_0_tag_required_local_nonprim);
+        ad_image_0_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_10_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_link_duplicated_local_nonprim);
+        ad_image_10_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_10_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_link_length_too_long_local_nonprim);
+        ad_image_10_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_10_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_link_required_local_nonprim);
+        ad_image_10_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_10_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_link_warning_local_nonprim);
+        ad_image_10_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_10_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_tag_duplicated_local_nonprim);
+        ad_image_10_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_10_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_tag_length_too_long_local_nonprim);
+        ad_image_10_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_10_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_10_tag_required_local_nonprim);
+        ad_image_10_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_11_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_link_duplicated_local_nonprim);
+        ad_image_11_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_11_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_link_length_too_long_local_nonprim);
+        ad_image_11_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_11_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_link_required_local_nonprim);
+        ad_image_11_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_11_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_link_warning_local_nonprim);
+        ad_image_11_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_11_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_tag_duplicated_local_nonprim);
+        ad_image_11_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_11_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_tag_length_too_long_local_nonprim);
+        ad_image_11_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_11_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_11_tag_required_local_nonprim);
+        ad_image_11_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_12_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_link_duplicated_local_nonprim);
+        ad_image_12_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_12_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_link_length_too_long_local_nonprim);
+        ad_image_12_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_12_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_link_required_local_nonprim);
+        ad_image_12_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_12_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_link_warning_local_nonprim);
+        ad_image_12_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_12_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_tag_duplicated_local_nonprim);
+        ad_image_12_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_12_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_tag_length_too_long_local_nonprim);
+        ad_image_12_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_12_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_12_tag_required_local_nonprim);
+        ad_image_12_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_13_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_link_duplicated_local_nonprim);
+        ad_image_13_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_13_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_link_length_too_long_local_nonprim);
+        ad_image_13_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_13_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_link_required_local_nonprim);
+        ad_image_13_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_13_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_link_warning_local_nonprim);
+        ad_image_13_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_13_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_tag_duplicated_local_nonprim);
+        ad_image_13_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_13_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_tag_length_too_long_local_nonprim);
+        ad_image_13_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_13_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_13_tag_required_local_nonprim);
+        ad_image_13_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_14_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_link_duplicated_local_nonprim);
+        ad_image_14_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_14_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_link_length_too_long_local_nonprim);
+        ad_image_14_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_14_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_link_required_local_nonprim);
+        ad_image_14_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_14_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_link_warning_local_nonprim);
+        ad_image_14_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_14_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_tag_duplicated_local_nonprim);
+        ad_image_14_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_14_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_tag_length_too_long_local_nonprim);
+        ad_image_14_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_14_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_14_tag_required_local_nonprim);
+        ad_image_14_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_15_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_link_duplicated_local_nonprim);
+        ad_image_15_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_15_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_link_length_too_long_local_nonprim);
+        ad_image_15_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_15_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_link_required_local_nonprim);
+        ad_image_15_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_15_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_link_warning_local_nonprim);
+        ad_image_15_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_15_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_tag_duplicated_local_nonprim);
+        ad_image_15_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_15_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_tag_length_too_long_local_nonprim);
+        ad_image_15_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_15_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_15_tag_required_local_nonprim);
+        ad_image_15_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_16_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_link_duplicated_local_nonprim);
+        ad_image_16_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_16_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_link_length_too_long_local_nonprim);
+        ad_image_16_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_16_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_link_required_local_nonprim);
+        ad_image_16_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_16_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_link_warning_local_nonprim);
+        ad_image_16_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_16_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_tag_duplicated_local_nonprim);
+        ad_image_16_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_16_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_tag_length_too_long_local_nonprim);
+        ad_image_16_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_16_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_16_tag_required_local_nonprim);
+        ad_image_16_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_17_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_link_duplicated_local_nonprim);
+        ad_image_17_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_17_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_link_length_too_long_local_nonprim);
+        ad_image_17_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_17_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_link_required_local_nonprim);
+        ad_image_17_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_17_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_link_warning_local_nonprim);
+        ad_image_17_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_17_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_tag_duplicated_local_nonprim);
+        ad_image_17_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_17_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_tag_length_too_long_local_nonprim);
+        ad_image_17_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_17_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_17_tag_required_local_nonprim);
+        ad_image_17_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_18_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_link_duplicated_local_nonprim);
+        ad_image_18_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_18_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_link_length_too_long_local_nonprim);
+        ad_image_18_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_18_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_link_required_local_nonprim);
+        ad_image_18_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_18_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_link_warning_local_nonprim);
+        ad_image_18_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_18_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_tag_duplicated_local_nonprim);
+        ad_image_18_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_18_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_tag_length_too_long_local_nonprim);
+        ad_image_18_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_18_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_18_tag_required_local_nonprim);
+        ad_image_18_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_19_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_link_duplicated_local_nonprim);
+        ad_image_19_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_19_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_link_length_too_long_local_nonprim);
+        ad_image_19_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_19_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_link_required_local_nonprim);
+        ad_image_19_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_19_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_link_warning_local_nonprim);
+        ad_image_19_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_19_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_tag_duplicated_local_nonprim);
+        ad_image_19_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_19_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_tag_length_too_long_local_nonprim);
+        ad_image_19_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_19_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_19_tag_required_local_nonprim);
+        ad_image_19_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_1_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_link_duplicated_local_nonprim);
+        ad_image_1_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_1_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_link_length_too_long_local_nonprim);
+        ad_image_1_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_1_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_link_required_local_nonprim);
+        ad_image_1_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_1_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_link_warning_local_nonprim);
+        ad_image_1_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_1_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_tag_duplicated_local_nonprim);
+        ad_image_1_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_1_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_tag_length_too_long_local_nonprim);
+        ad_image_1_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_1_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_1_tag_required_local_nonprim);
+        ad_image_1_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_2_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_link_duplicated_local_nonprim);
+        ad_image_2_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_2_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_link_length_too_long_local_nonprim);
+        ad_image_2_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_2_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_link_required_local_nonprim);
+        ad_image_2_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_2_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_link_warning_local_nonprim);
+        ad_image_2_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_2_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_tag_duplicated_local_nonprim);
+        ad_image_2_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_2_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_tag_length_too_long_local_nonprim);
+        ad_image_2_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_2_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_2_tag_required_local_nonprim);
+        ad_image_2_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_3_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_link_duplicated_local_nonprim);
+        ad_image_3_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_3_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_link_length_too_long_local_nonprim);
+        ad_image_3_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_3_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_link_required_local_nonprim);
+        ad_image_3_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_3_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_link_warning_local_nonprim);
+        ad_image_3_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_3_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_tag_duplicated_local_nonprim);
+        ad_image_3_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_3_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_tag_length_too_long_local_nonprim);
+        ad_image_3_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_3_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_3_tag_required_local_nonprim);
+        ad_image_3_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_4_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_link_duplicated_local_nonprim);
+        ad_image_4_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_4_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_link_length_too_long_local_nonprim);
+        ad_image_4_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_4_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_link_required_local_nonprim);
+        ad_image_4_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_4_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_link_warning_local_nonprim);
+        ad_image_4_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_4_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_tag_duplicated_local_nonprim);
+        ad_image_4_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_4_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_tag_length_too_long_local_nonprim);
+        ad_image_4_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_4_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_4_tag_required_local_nonprim);
+        ad_image_4_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_5_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_link_duplicated_local_nonprim);
+        ad_image_5_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_5_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_link_length_too_long_local_nonprim);
+        ad_image_5_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_5_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_link_required_local_nonprim);
+        ad_image_5_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_5_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_link_warning_local_nonprim);
+        ad_image_5_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_5_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_tag_duplicated_local_nonprim);
+        ad_image_5_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_5_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_tag_length_too_long_local_nonprim);
+        ad_image_5_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_5_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_5_tag_required_local_nonprim);
+        ad_image_5_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_6_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_link_duplicated_local_nonprim);
+        ad_image_6_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_6_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_link_length_too_long_local_nonprim);
+        ad_image_6_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_6_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_link_required_local_nonprim);
+        ad_image_6_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_6_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_link_warning_local_nonprim);
+        ad_image_6_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_6_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_tag_duplicated_local_nonprim);
+        ad_image_6_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_6_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_tag_length_too_long_local_nonprim);
+        ad_image_6_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_6_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_6_tag_required_local_nonprim);
+        ad_image_6_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_7_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_link_duplicated_local_nonprim);
+        ad_image_7_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_7_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_link_length_too_long_local_nonprim);
+        ad_image_7_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_7_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_link_required_local_nonprim);
+        ad_image_7_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_7_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_link_warning_local_nonprim);
+        ad_image_7_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_7_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_tag_duplicated_local_nonprim);
+        ad_image_7_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_7_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_tag_length_too_long_local_nonprim);
+        ad_image_7_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_7_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_7_tag_required_local_nonprim);
+        ad_image_7_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_8_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_link_duplicated_local_nonprim);
+        ad_image_8_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_8_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_link_length_too_long_local_nonprim);
+        ad_image_8_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_8_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_link_required_local_nonprim);
+        ad_image_8_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_8_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_link_warning_local_nonprim);
+        ad_image_8_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_8_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_tag_duplicated_local_nonprim);
+        ad_image_8_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_8_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_tag_length_too_long_local_nonprim);
+        ad_image_8_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_8_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_8_tag_required_local_nonprim);
+        ad_image_8_tag_required_local_nonprim = NULL;
+    }
+    if (ad_image_9_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_link_duplicated_local_nonprim);
+        ad_image_9_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_9_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_link_length_too_long_local_nonprim);
+        ad_image_9_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_9_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_link_required_local_nonprim);
+        ad_image_9_link_required_local_nonprim = NULL;
+    }
+    if (ad_image_9_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_link_warning_local_nonprim);
+        ad_image_9_link_warning_local_nonprim = NULL;
+    }
+    if (ad_image_9_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_tag_duplicated_local_nonprim);
+        ad_image_9_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_image_9_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_tag_length_too_long_local_nonprim);
+        ad_image_9_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_image_9_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_image_9_tag_required_local_nonprim);
+        ad_image_9_tag_required_local_nonprim = NULL;
+    }
     if (ad_link_format_warning_local_nonprim) {
         catalogs_item_validation_details_free(ad_link_format_warning_local_nonprim);
         ad_link_format_warning_local_nonprim = NULL;
@@ -1557,6 +7625,90 @@ end:
     if (ad_link_same_as_link_local_nonprim) {
         catalogs_item_validation_details_free(ad_link_same_as_link_local_nonprim);
         ad_link_same_as_link_local_nonprim = NULL;
+    }
+    if (ad_video_0_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_link_duplicated_local_nonprim);
+        ad_video_0_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_video_0_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_link_length_too_long_local_nonprim);
+        ad_video_0_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_video_0_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_link_required_local_nonprim);
+        ad_video_0_link_required_local_nonprim = NULL;
+    }
+    if (ad_video_0_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_link_warning_local_nonprim);
+        ad_video_0_link_warning_local_nonprim = NULL;
+    }
+    if (ad_video_0_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_tag_duplicated_local_nonprim);
+        ad_video_0_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_video_0_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_tag_length_too_long_local_nonprim);
+        ad_video_0_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_video_0_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_0_tag_required_local_nonprim);
+        ad_video_0_tag_required_local_nonprim = NULL;
+    }
+    if (ad_video_1_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_link_duplicated_local_nonprim);
+        ad_video_1_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_video_1_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_link_length_too_long_local_nonprim);
+        ad_video_1_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_video_1_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_link_required_local_nonprim);
+        ad_video_1_link_required_local_nonprim = NULL;
+    }
+    if (ad_video_1_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_link_warning_local_nonprim);
+        ad_video_1_link_warning_local_nonprim = NULL;
+    }
+    if (ad_video_1_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_tag_duplicated_local_nonprim);
+        ad_video_1_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_video_1_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_tag_length_too_long_local_nonprim);
+        ad_video_1_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_video_1_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_1_tag_required_local_nonprim);
+        ad_video_1_tag_required_local_nonprim = NULL;
+    }
+    if (ad_video_2_link_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_link_duplicated_local_nonprim);
+        ad_video_2_link_duplicated_local_nonprim = NULL;
+    }
+    if (ad_video_2_link_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_link_length_too_long_local_nonprim);
+        ad_video_2_link_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_video_2_link_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_link_required_local_nonprim);
+        ad_video_2_link_required_local_nonprim = NULL;
+    }
+    if (ad_video_2_link_warning_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_link_warning_local_nonprim);
+        ad_video_2_link_warning_local_nonprim = NULL;
+    }
+    if (ad_video_2_tag_duplicated_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_tag_duplicated_local_nonprim);
+        ad_video_2_tag_duplicated_local_nonprim = NULL;
+    }
+    if (ad_video_2_tag_length_too_long_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_tag_length_too_long_local_nonprim);
+        ad_video_2_tag_length_too_long_local_nonprim = NULL;
+    }
+    if (ad_video_2_tag_required_local_nonprim) {
+        catalogs_item_validation_details_free(ad_video_2_tag_required_local_nonprim);
+        ad_video_2_tag_required_local_nonprim = NULL;
     }
     if (additional_image_link_length_too_long_local_nonprim) {
         catalogs_item_validation_details_free(additional_image_link_length_too_long_local_nonprim);
@@ -1577,10 +7729,6 @@ end:
     if (age_group_invalid_local_nonprim) {
         catalogs_item_validation_details_free(age_group_invalid_local_nonprim);
         age_group_invalid_local_nonprim = NULL;
-    }
-    if (size_system_invalid_local_nonprim) {
-        catalogs_item_validation_details_free(size_system_invalid_local_nonprim);
-        size_system_invalid_local_nonprim = NULL;
     }
     if (android_deep_link_invalid_local_nonprim) {
         catalogs_item_validation_details_free(android_deep_link_invalid_local_nonprim);
@@ -1670,29 +7818,29 @@ end:
         catalogs_item_validation_details_free(product_type_length_too_long_local_nonprim);
         product_type_length_too_long_local_nonprim = NULL;
     }
+    if (sale_date_invalid_local_nonprim) {
+        catalogs_item_validation_details_free(sale_date_invalid_local_nonprim);
+        sale_date_invalid_local_nonprim = NULL;
+    }
     if (sales_price_invalid_local_nonprim) {
         catalogs_item_validation_details_free(sales_price_invalid_local_nonprim);
         sales_price_invalid_local_nonprim = NULL;
-    }
-    if (sales_price_too_low_local_nonprim) {
-        catalogs_item_validation_details_free(sales_price_too_low_local_nonprim);
-        sales_price_too_low_local_nonprim = NULL;
     }
     if (sales_price_too_high_local_nonprim) {
         catalogs_item_validation_details_free(sales_price_too_high_local_nonprim);
         sales_price_too_high_local_nonprim = NULL;
     }
-    if (sale_date_invalid_local_nonprim) {
-        catalogs_item_validation_details_free(sale_date_invalid_local_nonprim);
-        sale_date_invalid_local_nonprim = NULL;
-    }
-    if (shipping_invalid_local_nonprim) {
-        catalogs_item_validation_details_free(shipping_invalid_local_nonprim);
-        shipping_invalid_local_nonprim = NULL;
+    if (sales_price_too_low_local_nonprim) {
+        catalogs_item_validation_details_free(sales_price_too_low_local_nonprim);
+        sales_price_too_low_local_nonprim = NULL;
     }
     if (shipping_height_invalid_local_nonprim) {
         catalogs_item_validation_details_free(shipping_height_invalid_local_nonprim);
         shipping_height_invalid_local_nonprim = NULL;
+    }
+    if (shipping_invalid_local_nonprim) {
+        catalogs_item_validation_details_free(shipping_invalid_local_nonprim);
+        shipping_invalid_local_nonprim = NULL;
     }
     if (shipping_weight_invalid_local_nonprim) {
         catalogs_item_validation_details_free(shipping_weight_invalid_local_nonprim);
@@ -1701,6 +7849,10 @@ end:
     if (shipping_width_invalid_local_nonprim) {
         catalogs_item_validation_details_free(shipping_width_invalid_local_nonprim);
         shipping_width_invalid_local_nonprim = NULL;
+    }
+    if (size_system_invalid_local_nonprim) {
+        catalogs_item_validation_details_free(size_system_invalid_local_nonprim);
+        size_system_invalid_local_nonprim = NULL;
     }
     if (size_type_invalid_local_nonprim) {
         catalogs_item_validation_details_free(size_type_invalid_local_nonprim);
@@ -1721,6 +7873,10 @@ end:
     if (utm_source_auto_corrected_local_nonprim) {
         catalogs_item_validation_details_free(utm_source_auto_corrected_local_nonprim);
         utm_source_auto_corrected_local_nonprim = NULL;
+    }
+    if (video_required_when_ad_video_provided_local_nonprim) {
+        catalogs_item_validation_details_free(video_required_when_ad_video_provided_local_nonprim);
+        video_required_when_ad_video_provided_local_nonprim = NULL;
     }
     if (weight_unit_invalid_local_nonprim) {
         catalogs_item_validation_details_free(weight_unit_invalid_local_nonprim);

@@ -1,23 +1,19 @@
 const utils = require('../utils/utils');
-const ImageMetadata_images = require('../models/ImageMetadata_images');
+const ImageSize = require('../models/ImageSize');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}item_type`,
-                label: `[${labelPrefix}item_type]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}title`,
-                label: `[${labelPrefix}title]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}description`,
                 label: `[${labelPrefix}description]`,
+                type: 'string',
+            },
+            ...ImageSize.fields(`${keyPrefix}images`, isInput),
+            {
+                key: `${keyPrefix}item_type`,
+                label: `[${labelPrefix}item_type]`,
                 type: 'string',
             },
             {
@@ -25,17 +21,21 @@ module.exports = {
                 label: `[${labelPrefix}link]`,
                 type: 'string',
             },
-            ...ImageMetadata_images.fields(`${keyPrefix}images`, isInput),
+            {
+                key: `${keyPrefix}title`,
+                label: `[${labelPrefix}title]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'item_type': bundle.inputData?.[`${keyPrefix}item_type`],
-            'title': bundle.inputData?.[`${keyPrefix}title`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
+            'images': utils.removeIfEmpty(ImageSize.mapping(bundle, `${keyPrefix}images`)),
+            'item_type': bundle.inputData?.[`${keyPrefix}item_type`],
             'link': bundle.inputData?.[`${keyPrefix}link`],
-            'images': utils.removeIfEmpty(ImageMetadata_images.mapping(bundle, `${keyPrefix}images`)),
+            'title': bundle.inputData?.[`${keyPrefix}title`],
         }
     },
 }

@@ -42,6 +42,7 @@ typedef struct optimization_goal_metadata_conversion_tag_v3_goal_metadata_t {
     char *cpa_goal_value_in_micro_currency; // string
     int is_roas_optimized; //boolean
     pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_e learning_mode_type; //enum
+    char *reporting_event; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_conversion_tag_v3_goal_metadata_t;
@@ -52,7 +53,8 @@ __attribute__((deprecated)) optimization_goal_metadata_conversion_tag_v3_goal_me
     char *conversion_tag_id,
     char *cpa_goal_value_in_micro_currency,
     int is_roas_optimized,
-    pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_e learning_mode_type
+    pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_e learning_mode_type,
+    char *reporting_event
 );
 
 void optimization_goal_metadata_conversion_tag_v3_goal_metadata_free(optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata);

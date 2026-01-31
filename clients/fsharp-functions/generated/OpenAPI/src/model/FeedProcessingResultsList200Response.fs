@@ -12,10 +12,10 @@ module FeedProcessingResultsList200Response =
 
   [<CLIMutable>]
   type FeedProcessingResultsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : CatalogsFeedProcessingResult[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : CatalogsFeedProcessingResult[];
   }
 
   //#endregion

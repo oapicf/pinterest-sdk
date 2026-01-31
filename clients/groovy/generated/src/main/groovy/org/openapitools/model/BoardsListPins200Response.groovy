@@ -10,8 +10,8 @@ import org.openapitools.model.Pin;
 
 @Canonical
 class BoardsListPins200Response {
-    /* Pins */
-    List<Pin> items = new ArrayList<>()
     
     String bookmark
+    /* Pins */
+    List<Pin> items = new ArrayList<>()
 }

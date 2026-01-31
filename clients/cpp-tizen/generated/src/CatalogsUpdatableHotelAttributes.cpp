@@ -23,67 +23,47 @@ CatalogsUpdatableHotelAttributes::~CatalogsUpdatableHotelAttributes()
 void
 CatalogsUpdatableHotelAttributes::__init()
 {
-	//name = std::string();
-	//link = std::string();
-	//description = std::string();
-	//brand = std::string();
-	//latitude = double(0);
-	//longitude = double(0);
-	//new std::list()std::list> neighborhood;
 	//address = new CatalogsHotelAddress();
+	//base_price = std::string();
+	//brand = std::string();
+	//category = std::string();
 	//custom_label_0 = std::string();
 	//custom_label_1 = std::string();
 	//custom_label_2 = std::string();
 	//custom_label_3 = std::string();
 	//custom_label_4 = std::string();
-	//category = std::string();
-	//base_price = std::string();
-	//sale_price = std::string();
+	//description = std::string();
 	//guest_ratings = new CatalogsHotelGuestRatings();
+	//latitude = double(0);
+	//link = std::string();
+	//longitude = double(0);
+	//name = std::string();
+	//new std::list()std::list> neighborhood;
+	//sale_price = std::string();
 }
 
 void
 CatalogsUpdatableHotelAttributes::__cleanup()
 {
-	//if(name != NULL) {
+	//if(address != NULL) {
 	//
-	//delete name;
-	//name = NULL;
+	//delete address;
+	//address = NULL;
 	//}
-	//if(link != NULL) {
+	//if(base_price != NULL) {
 	//
-	//delete link;
-	//link = NULL;
-	//}
-	//if(description != NULL) {
-	//
-	//delete description;
-	//description = NULL;
+	//delete base_price;
+	//base_price = NULL;
 	//}
 	//if(brand != NULL) {
 	//
 	//delete brand;
 	//brand = NULL;
 	//}
-	//if(latitude != NULL) {
+	//if(category != NULL) {
 	//
-	//delete latitude;
-	//latitude = NULL;
-	//}
-	//if(longitude != NULL) {
-	//
-	//delete longitude;
-	//longitude = NULL;
-	//}
-	//if(neighborhood != NULL) {
-	//neighborhood.RemoveAll(true);
-	//delete neighborhood;
-	//neighborhood = NULL;
-	//}
-	//if(address != NULL) {
-	//
-	//delete address;
-	//address = NULL;
+	//delete category;
+	//category = NULL;
 	//}
 	//if(custom_label_0 != NULL) {
 	//
@@ -110,25 +90,45 @@ CatalogsUpdatableHotelAttributes::__cleanup()
 	//delete custom_label_4;
 	//custom_label_4 = NULL;
 	//}
-	//if(category != NULL) {
+	//if(description != NULL) {
 	//
-	//delete category;
-	//category = NULL;
-	//}
-	//if(base_price != NULL) {
-	//
-	//delete base_price;
-	//base_price = NULL;
-	//}
-	//if(sale_price != NULL) {
-	//
-	//delete sale_price;
-	//sale_price = NULL;
+	//delete description;
+	//description = NULL;
 	//}
 	//if(guest_ratings != NULL) {
 	//
 	//delete guest_ratings;
 	//guest_ratings = NULL;
+	//}
+	//if(latitude != NULL) {
+	//
+	//delete latitude;
+	//latitude = NULL;
+	//}
+	//if(link != NULL) {
+	//
+	//delete link;
+	//link = NULL;
+	//}
+	//if(longitude != NULL) {
+	//
+	//delete longitude;
+	//longitude = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(neighborhood != NULL) {
+	//neighborhood.RemoveAll(true);
+	//delete neighborhood;
+	//neighborhood = NULL;
+	//}
+	//if(sale_price != NULL) {
+	//
+	//delete sale_price;
+	//sale_price = NULL;
 	//}
 	//
 }
@@ -138,35 +138,27 @@ CatalogsUpdatableHotelAttributes::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
+	const gchar *addressKey = "address";
+	node = json_object_get_member(pJsonObject, addressKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
+		if (isprimitive("CatalogsHotelAddress")) {
+			jsonToValue(&address, node, "CatalogsHotelAddress", "CatalogsHotelAddress");
 		} else {
+			
+			CatalogsHotelAddress* obj = static_cast<CatalogsHotelAddress*> (&address);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
-	const gchar *linkKey = "link";
-	node = json_object_get_member(pJsonObject, linkKey);
+	const gchar *base_priceKey = "base_price";
+	node = json_object_get_member(pJsonObject, base_priceKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&link, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *descriptionKey = "description";
-	node = json_object_get_member(pJsonObject, descriptionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&description, node, "std::string", "");
+			jsonToValue(&base_price, node, "std::string", "");
 		} else {
 			
 		}
@@ -182,67 +174,14 @@ CatalogsUpdatableHotelAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *latitudeKey = "latitude";
-	node = json_object_get_member(pJsonObject, latitudeKey);
+	const gchar *categoryKey = "category";
+	node = json_object_get_member(pJsonObject, categoryKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("long long")) {
-			jsonToValue(&latitude, node, "long long", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&category, node, "std::string", "");
 		} else {
-			
-			long long* obj = static_cast<long long*> (&latitude);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *longitudeKey = "longitude";
-	node = json_object_get_member(pJsonObject, longitudeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&longitude, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&longitude);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *neighborhoodKey = "neighborhood";
-	node = json_object_get_member(pJsonObject, neighborhoodKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			neighborhood = new_list;
-		}
-		
-	}
-	const gchar *addressKey = "address";
-	node = json_object_get_member(pJsonObject, addressKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsHotelAddress")) {
-			jsonToValue(&address, node, "CatalogsHotelAddress", "CatalogsHotelAddress");
-		} else {
-			
-			CatalogsHotelAddress* obj = static_cast<CatalogsHotelAddress*> (&address);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -301,35 +240,13 @@ CatalogsUpdatableHotelAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *categoryKey = "category";
-	node = json_object_get_member(pJsonObject, categoryKey);
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&category, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *base_priceKey = "base_price";
-	node = json_object_get_member(pJsonObject, base_priceKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&base_price, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *sale_priceKey = "sale_price";
-	node = json_object_get_member(pJsonObject, sale_priceKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&sale_price, node, "std::string", "");
+			jsonToValue(&description, node, "std::string", "");
 		} else {
 			
 		}
@@ -348,6 +265,89 @@ CatalogsUpdatableHotelAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *latitudeKey = "latitude";
+	node = json_object_get_member(pJsonObject, latitudeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&latitude, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&latitude);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *linkKey = "link";
+	node = json_object_get_member(pJsonObject, linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *longitudeKey = "longitude";
+	node = json_object_get_member(pJsonObject, longitudeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&longitude, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&longitude);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *neighborhoodKey = "neighborhood";
+	node = json_object_get_member(pJsonObject, neighborhoodKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			neighborhood = new_list;
+		}
+		
+	}
+	const gchar *sale_priceKey = "sale_price";
+	node = json_object_get_member(pJsonObject, sale_priceKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&sale_price, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsUpdatableHotelAttributes::CatalogsUpdatableHotelAttributes(char* json)
@@ -360,85 +360,6 @@ CatalogsUpdatableHotelAttributes::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLink();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *linkKey = "link";
-	json_object_set_member(pJsonObject, linkKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDescription();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *descriptionKey = "description";
-	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBrand();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *brandKey = "brand";
-	json_object_set_member(pJsonObject, brandKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getLatitude();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getLatitude());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *latitudeKey = "latitude";
-	json_object_set_member(pJsonObject, latitudeKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getLongitude();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getLongitude());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *longitudeKey = "longitude";
-	json_object_set_member(pJsonObject, longitudeKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getNeighborhood());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getNeighborhood());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *neighborhoodKey = "neighborhood";
-	json_object_set_member(pJsonObject, neighborhoodKey, node);
 	if (isprimitive("CatalogsHotelAddress")) {
 		CatalogsHotelAddress obj = getAddress();
 		node = converttoJson(&obj, "CatalogsHotelAddress", "");
@@ -453,6 +374,33 @@ CatalogsUpdatableHotelAttributes::toJson()
 	}
 	const gchar *addressKey = "address";
 	json_object_set_member(pJsonObject, addressKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getBasePrice();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *base_priceKey = "base_price";
+	json_object_set_member(pJsonObject, base_priceKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getBrand();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *brandKey = "brand";
+	json_object_set_member(pJsonObject, brandKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCategory();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *categoryKey = "category";
+	json_object_set_member(pJsonObject, categoryKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCustomLabel0();
 		node = converttoJson(&obj, "std::string", "");
@@ -499,32 +447,14 @@ CatalogsUpdatableHotelAttributes::toJson()
 	const gchar *custom_label_4Key = "custom_label_4";
 	json_object_set_member(pJsonObject, custom_label_4Key, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCategory();
+		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *categoryKey = "category";
-	json_object_set_member(pJsonObject, categoryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBasePrice();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *base_priceKey = "base_price";
-	json_object_set_member(pJsonObject, base_priceKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getSalePrice();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *sale_priceKey = "sale_price";
-	json_object_set_member(pJsonObject, sale_priceKey, node);
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
 	if (isprimitive("CatalogsHotelGuestRatings")) {
 		CatalogsHotelGuestRatings obj = getGuestRatings();
 		node = converttoJson(&obj, "CatalogsHotelGuestRatings", "");
@@ -539,6 +469,76 @@ CatalogsUpdatableHotelAttributes::toJson()
 	}
 	const gchar *guest_ratingsKey = "guest_ratings";
 	json_object_set_member(pJsonObject, guest_ratingsKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getLatitude();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getLatitude());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *latitudeKey = "latitude";
+	json_object_set_member(pJsonObject, latitudeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *linkKey = "link";
+	json_object_set_member(pJsonObject, linkKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getLongitude();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getLongitude());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *longitudeKey = "longitude";
+	json_object_set_member(pJsonObject, longitudeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getNeighborhood());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getNeighborhood());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *neighborhoodKey = "neighborhood";
+	json_object_set_member(pJsonObject, neighborhoodKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getSalePrice();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *sale_priceKey = "sale_price";
+	json_object_set_member(pJsonObject, sale_priceKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -547,40 +547,28 @@ CatalogsUpdatableHotelAttributes::toJson()
 	return ret;
 }
 
-std::string
-CatalogsUpdatableHotelAttributes::getName()
+CatalogsHotelAddress
+CatalogsUpdatableHotelAttributes::getAddress()
 {
-	return name;
+	return address;
 }
 
 void
-CatalogsUpdatableHotelAttributes::setName(std::string  name)
+CatalogsUpdatableHotelAttributes::setAddress(CatalogsHotelAddress  address)
 {
-	this->name = name;
+	this->address = address;
 }
 
 std::string
-CatalogsUpdatableHotelAttributes::getLink()
+CatalogsUpdatableHotelAttributes::getBasePrice()
 {
-	return link;
+	return base_price;
 }
 
 void
-CatalogsUpdatableHotelAttributes::setLink(std::string  link)
+CatalogsUpdatableHotelAttributes::setBasePrice(std::string  base_price)
 {
-	this->link = link;
-}
-
-std::string
-CatalogsUpdatableHotelAttributes::getDescription()
-{
-	return description;
-}
-
-void
-CatalogsUpdatableHotelAttributes::setDescription(std::string  description)
-{
-	this->description = description;
+	this->base_price = base_price;
 }
 
 std::string
@@ -595,52 +583,16 @@ CatalogsUpdatableHotelAttributes::setBrand(std::string  brand)
 	this->brand = brand;
 }
 
-long long
-CatalogsUpdatableHotelAttributes::getLatitude()
+std::string
+CatalogsUpdatableHotelAttributes::getCategory()
 {
-	return latitude;
+	return category;
 }
 
 void
-CatalogsUpdatableHotelAttributes::setLatitude(long long  latitude)
+CatalogsUpdatableHotelAttributes::setCategory(std::string  category)
 {
-	this->latitude = latitude;
-}
-
-long long
-CatalogsUpdatableHotelAttributes::getLongitude()
-{
-	return longitude;
-}
-
-void
-CatalogsUpdatableHotelAttributes::setLongitude(long long  longitude)
-{
-	this->longitude = longitude;
-}
-
-std::list<std::string>
-CatalogsUpdatableHotelAttributes::getNeighborhood()
-{
-	return neighborhood;
-}
-
-void
-CatalogsUpdatableHotelAttributes::setNeighborhood(std::list <std::string> neighborhood)
-{
-	this->neighborhood = neighborhood;
-}
-
-CatalogsHotelAddress
-CatalogsUpdatableHotelAttributes::getAddress()
-{
-	return address;
-}
-
-void
-CatalogsUpdatableHotelAttributes::setAddress(CatalogsHotelAddress  address)
-{
-	this->address = address;
+	this->category = category;
 }
 
 std::string
@@ -704,39 +656,15 @@ CatalogsUpdatableHotelAttributes::setCustomLabel4(std::string  custom_label_4)
 }
 
 std::string
-CatalogsUpdatableHotelAttributes::getCategory()
+CatalogsUpdatableHotelAttributes::getDescription()
 {
-	return category;
+	return description;
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCategory(std::string  category)
+CatalogsUpdatableHotelAttributes::setDescription(std::string  description)
 {
-	this->category = category;
-}
-
-std::string
-CatalogsUpdatableHotelAttributes::getBasePrice()
-{
-	return base_price;
-}
-
-void
-CatalogsUpdatableHotelAttributes::setBasePrice(std::string  base_price)
-{
-	this->base_price = base_price;
-}
-
-std::string
-CatalogsUpdatableHotelAttributes::getSalePrice()
-{
-	return sale_price;
-}
-
-void
-CatalogsUpdatableHotelAttributes::setSalePrice(std::string  sale_price)
-{
-	this->sale_price = sale_price;
+	this->description = description;
 }
 
 CatalogsHotelGuestRatings
@@ -749,6 +677,78 @@ void
 CatalogsUpdatableHotelAttributes::setGuestRatings(CatalogsHotelGuestRatings  guest_ratings)
 {
 	this->guest_ratings = guest_ratings;
+}
+
+long long
+CatalogsUpdatableHotelAttributes::getLatitude()
+{
+	return latitude;
+}
+
+void
+CatalogsUpdatableHotelAttributes::setLatitude(long long  latitude)
+{
+	this->latitude = latitude;
+}
+
+std::string
+CatalogsUpdatableHotelAttributes::getLink()
+{
+	return link;
+}
+
+void
+CatalogsUpdatableHotelAttributes::setLink(std::string  link)
+{
+	this->link = link;
+}
+
+long long
+CatalogsUpdatableHotelAttributes::getLongitude()
+{
+	return longitude;
+}
+
+void
+CatalogsUpdatableHotelAttributes::setLongitude(long long  longitude)
+{
+	this->longitude = longitude;
+}
+
+std::string
+CatalogsUpdatableHotelAttributes::getName()
+{
+	return name;
+}
+
+void
+CatalogsUpdatableHotelAttributes::setName(std::string  name)
+{
+	this->name = name;
+}
+
+std::list<std::string>
+CatalogsUpdatableHotelAttributes::getNeighborhood()
+{
+	return neighborhood;
+}
+
+void
+CatalogsUpdatableHotelAttributes::setNeighborhood(std::list <std::string> neighborhood)
+{
+	this->neighborhood = neighborhood;
+}
+
+std::string
+CatalogsUpdatableHotelAttributes::getSalePrice()
+{
+	return sale_price;
+}
+
+void
+CatalogsUpdatableHotelAttributes::setSalePrice(std::string  sale_price)
+{
+	this->sale_price = sale_price;
 }
 
 

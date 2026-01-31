@@ -73,7 +73,7 @@ private class OASCatalogsReportDistributionIssueFiTest {
     private static void maintainRenamedProperties() {
         OASCatalogsReportDistributionIssueFi catalogsReportDistributionIssueFilter = new OASCatalogsReportDistributionIssueFi();
         Map<String, String> x-property-mappings = catalogsReportDistributionIssueFilter.getx-property-mappings();
-        System.assertEquals('reportType', x-property-mappings.get('report_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('reportType', x-property-mappings.get('report_type'));
     }
 }

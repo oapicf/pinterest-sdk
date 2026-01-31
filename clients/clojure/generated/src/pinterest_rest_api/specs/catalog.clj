@@ -11,8 +11,8 @@
    (ds/req :created_at) inst?
    (ds/req :id) string?
    (ds/req :updated_at) inst?
-   (ds/req :name) string?
    (ds/req :catalog_type) catalogs-type-spec
+   (ds/req :name) string?
    })
 
 (def catalog-spec

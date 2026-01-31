@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
+ * Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
  *
- * Values: AWARENESS,CONSIDERATION,VIDEO_VIEW,WEB_CONVERSION,CATALOG_SALES,WEB_SESSIONS,VIDEO_COMPLETION
+ * Values: AWARENESS,CONSIDERATION,WEB_CONVERSION,CATALOG_SALES,VIDEO_COMPLETION
  */
 
 @JsonClass(generateAdapter = false)
@@ -34,17 +34,11 @@ enum class ObjectiveType(val value: kotlin.String) {
     @Json(name = "CONSIDERATION")
     CONSIDERATION("CONSIDERATION"),
 
-    @Json(name = "VIDEO_VIEW")
-    VIDEO_VIEW("VIDEO_VIEW"),
-
     @Json(name = "WEB_CONVERSION")
     WEB_CONVERSION("WEB_CONVERSION"),
 
     @Json(name = "CATALOG_SALES")
     CATALOG_SALES("CATALOG_SALES"),
-
-    @Json(name = "WEB_SESSIONS")
-    WEB_SESSIONS("WEB_SESSIONS"),
 
     @Json(name = "VIDEO_COMPLETION")
     VIDEO_COMPLETION("VIDEO_COMPLETION");

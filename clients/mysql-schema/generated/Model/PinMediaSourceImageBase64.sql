@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaSourceImageBase64`
 --
-SELECT `source_type`, `content_type`, `data`, `is_standard` FROM `PinMediaSourceImageBase64` WHERE 1;
+SELECT `content_type`, `data`, `is_standard`, `source_type` FROM `PinMediaSourceImageBase64` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaSourceImageBase64`
 --
-INSERT INTO `PinMediaSourceImageBase64`(`source_type`, `content_type`, `data`, `is_standard`) VALUES (?, ?, ?, ?);
+INSERT INTO `PinMediaSourceImageBase64`(`content_type`, `data`, `is_standard`, `source_type`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `PinMediaSourceImageBase64`
 --
-UPDATE `PinMediaSourceImageBase64` SET `source_type` = ?, `content_type` = ?, `data` = ?, `is_standard` = ? WHERE 1;
+UPDATE `PinMediaSourceImageBase64` SET `content_type` = ?, `data` = ?, `is_standard` = ?, `source_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaSourceImageBase64`

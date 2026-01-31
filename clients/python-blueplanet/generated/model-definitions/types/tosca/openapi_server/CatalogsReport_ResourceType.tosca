@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsReport"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsReport"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsReport {
+    title = CatalogsReport
+    description = CatalogsReport
+    derivedFrom = Root
+    properties {
+        report_status {
+          type =  string
+          description = ""
+          enum = ["FINISHED", "IN_PROGRESS"]
+          optional = false
+        }
+        size {
+          type =  
+          description = "Size of the report in bytes"
+          optional = false
+        }
+        url {
+          type =  string
+          description = "URL to download the report"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsReport {
+    title = CatalogsReport
+    description = CatalogsReport
+    implements = openapi_server.resourceTypes.CatalogsReport
+
+  }
+}

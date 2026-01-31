@@ -12,7 +12,9 @@ class PlacementMultipliers {
     
         SEARCH("SEARCH"),
         
-        BROWSE("BROWSE")
+        BROWSE("BROWSE"),
+        
+        RELATED_PINS("RELATED_PINS")
     
         private final String value
     

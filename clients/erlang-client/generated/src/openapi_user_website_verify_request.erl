@@ -5,13 +5,13 @@
 -export_type([openapi_user_website_verify_request/0]).
 
 -type openapi_user_website_verify_request() ::
-    #{ 'website' => binary(),
-       'verification_method' => binary()
+    #{ 'verification_method' => binary(),
+       'website' => binary()
      }.
 
-encode(#{ 'website' := Website,
-          'verification_method' := VerificationMethod
+encode(#{ 'verification_method' := VerificationMethod,
+          'website' := Website
         }) ->
-    #{ 'website' => Website,
-       'verification_method' => VerificationMethod
+    #{ 'verification_method' => VerificationMethod,
+       'website' => Website
      }.

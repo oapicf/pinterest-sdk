@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Questions** | Pointer to [**[]QuizPinQuestion**](QuizPinQuestion.md) |  | [optional] 
 **Results** | Pointer to [**[]QuizPinResult**](QuizPinResult.md) |  | [optional] 
-**TieBreakerType** | Pointer to **string** | Quiz ad tie breaker type, default is RANDOM | [optional] 
 **TieBreakerCustomResult** | Pointer to [**NullableQuizPinResult**](QuizPinResult.md) |  | [optional] 
+**TieBreakerType** | Pointer to **string** | Quiz ad tie breaker type, default is RANDOM | [optional] 
 
 ## Methods
 
@@ -78,31 +78,6 @@ SetResults sets Results field to given value.
 
 HasResults returns a boolean if a field has been set.
 
-### GetTieBreakerType
-
-`func (o *QuizPinData) GetTieBreakerType() string`
-
-GetTieBreakerType returns the TieBreakerType field if non-nil, zero value otherwise.
-
-### GetTieBreakerTypeOk
-
-`func (o *QuizPinData) GetTieBreakerTypeOk() (*string, bool)`
-
-GetTieBreakerTypeOk returns a tuple with the TieBreakerType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTieBreakerType
-
-`func (o *QuizPinData) SetTieBreakerType(v string)`
-
-SetTieBreakerType sets TieBreakerType field to given value.
-
-### HasTieBreakerType
-
-`func (o *QuizPinData) HasTieBreakerType() bool`
-
-HasTieBreakerType returns a boolean if a field has been set.
-
 ### GetTieBreakerCustomResult
 
 `func (o *QuizPinData) GetTieBreakerCustomResult() QuizPinResult`
@@ -138,6 +113,31 @@ HasTieBreakerCustomResult returns a boolean if a field has been set.
 `func (o *QuizPinData) UnsetTieBreakerCustomResult()`
 
 UnsetTieBreakerCustomResult ensures that no value is present for TieBreakerCustomResult, not even an explicit nil
+### GetTieBreakerType
+
+`func (o *QuizPinData) GetTieBreakerType() string`
+
+GetTieBreakerType returns the TieBreakerType field if non-nil, zero value otherwise.
+
+### GetTieBreakerTypeOk
+
+`func (o *QuizPinData) GetTieBreakerTypeOk() (*string, bool)`
+
+GetTieBreakerTypeOk returns a tuple with the TieBreakerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTieBreakerType
+
+`func (o *QuizPinData) SetTieBreakerType(v string)`
+
+SetTieBreakerType sets TieBreakerType field to given value.
+
+### HasTieBreakerType
+
+`func (o *QuizPinData) HasTieBreakerType() bool`
+
+HasTieBreakerType returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

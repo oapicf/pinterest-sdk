@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,14 +16,227 @@ package openapi
 
 type CatalogsFeedIngestionWarnings struct {
 
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE int32 `json:"AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND int32 `json:"AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS400 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_400,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS403 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_403,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS404 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_404,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS405 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_405,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS410 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_410,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS429 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_429,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS500 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_500,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS502 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_502,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS503 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_503,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS504 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_504,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS507 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_507,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS508 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_508,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS520 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_520,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS521 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_521,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS522 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_522,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	ADIMAGEDOWNLOADHTTPSTATUS525 int32 `json:"AD_IMAGE_DOWNLOAD_HTTP_STATUS_525,omitempty"`
+
 	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-	ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR int32 `json:"ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR,omitempty"`
+	AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_ERROR,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED int32 `json:"AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_INVALID_FILE int32 `json:"AD_IMAGE_DOWNLOAD_INVALID_FILE,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SITE_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_SITE_ERROR,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SITE_TIMEOUT int32 `json:"AD_IMAGE_DOWNLOAD_SITE_TIMEOUT,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SSL_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_SSL_ERROR,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR int32 `json:"AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR,omitempty"`
+
+	// Ad image files are unreadable. Please check your link and upload new files to continue.
+	AD_IMAGE_PROCESSING_EMPTY_FILE int32 `json:"AD_IMAGE_PROCESSING_EMPTY_FILE,omitempty"`
+
+	// Ad images must have a height larger than 75 pixels
+	AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL int32 `json:"AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL,omitempty"`
+
+	// Ad images must have a maximum area (width x height) of less than 89478485 pixels
+	AD_IMAGE_PROCESSING_TOO_MANY_PIXELS int32 `json:"AD_IMAGE_PROCESSING_TOO_MANY_PIXELS,omitempty"`
+
+	// Some ad images could not be processed due to a file type mismatch.
+	AD_IMAGE_PROCESSING_TYPE_MISMATCH int32 `json:"AD_IMAGE_PROCESSING_TYPE_MISMATCH,omitempty"`
+
+	// Ad images must have a width larger than 75 pixels
+	AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL int32 `json:"AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE int32 `json:"AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND int32 `json:"AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS400 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_400,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS403 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_403,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS404 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_404,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS405 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_405,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS410 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_410,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS429 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_429,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS500 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_500,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS502 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_502,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS503 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_503,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS504 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_504,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS507 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_507,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS508 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_508,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS520 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_520,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS521 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_521,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS522 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_522,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	ADVIDEODOWNLOADHTTPSTATUS525 int32 `json:"AD_VIDEO_DOWNLOAD_HTTP_STATUS_525,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_ERROR,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED int32 `json:"AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_INVALID_FILE int32 `json:"AD_VIDEO_DOWNLOAD_INVALID_FILE,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SITE_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_SITE_ERROR,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SITE_TIMEOUT int32 `json:"AD_VIDEO_DOWNLOAD_SITE_TIMEOUT,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SSL_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_SSL_ERROR,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR int32 `json:"AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR,omitempty"`
+
+	// Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.
+	AD_VIDEO_LENGTH_TOO_SHORT int32 `json:"AD_VIDEO_LENGTH_TOO_SHORT,omitempty"`
+
+	// Ad video files are unreadable. Please check your link and upload new files to continue.
+	AD_VIDEO_PROCESSING_EMPTY_FILE int32 `json:"AD_VIDEO_PROCESSING_EMPTY_FILE,omitempty"`
+
+	// Ad videos must have a height larger than 75 pixels
+	AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL int32 `json:"AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL,omitempty"`
+
+	// Ad videos must have a maximum area (width x height) of less than 89478485 pixels
+	AD_VIDEO_PROCESSING_TOO_MANY_PIXELS int32 `json:"AD_VIDEO_PROCESSING_TOO_MANY_PIXELS,omitempty"`
+
+	// Some ad videos could not be processed due to a file type mismatch.
+	AD_VIDEO_PROCESSING_TYPE_MISMATCH int32 `json:"AD_VIDEO_PROCESSING_TYPE_MISMATCH,omitempty"`
+
+	// Ad videos must have a width larger than 75 pixels
+	AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL int32 `json:"AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL,omitempty"`
 
 	// Additional image files are unreadable. Please upload new files to continue.
 	ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE int32 `json:"ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE,omitempty"`
-
-	// Additional image files are unreadable. Please check your link and upload new files to continue.
-	ADDITIONAL_IMAGE_MALFORMED_URL int32 `json:"ADDITIONAL_IMAGE_MALFORMED_URL,omitempty"`
 
 	// Additional image files are unreadable. Please upload new files to continue.
 	ADDITIONAL_IMAGE_FILE_NOT_FOUND int32 `json:"ADDITIONAL_IMAGE_FILE_NOT_FOUND,omitempty"`
@@ -31,8 +244,35 @@ type CatalogsFeedIngestionWarnings struct {
 	// Additional image files are unreadable. Please upload new files to continue.
 	ADDITIONAL_IMAGE_INVALID_FILE int32 `json:"ADDITIONAL_IMAGE_INVALID_FILE,omitempty"`
 
-	// price is not a supported column. Use base_price and sale_price instead.
+	// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+	ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR int32 `json:"ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR,omitempty"`
+
+	// Additional image files are unreadable. Please check your link and upload new files to continue.
+	ADDITIONAL_IMAGE_MALFORMED_URL int32 `json:"ADDITIONAL_IMAGE_MALFORMED_URL,omitempty"`
+
+	// Update your Google Sheets sharing settings from 'Editor' to 'Viewer'.
+	FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT int32 `json:"FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT,omitempty"`
+
+	// Price is not a supported column. Use base_price and sale_price instead.
 	HOTEL_PRICE_HEADER_IS_PRESENT int32 `json:"HOTEL_PRICE_HEADER_IS_PRESENT,omitempty"`
+
+	// Video length is too short. Please ensure that the main video is at least 4 seconds long.
+	VIDEO_DOWNLOAD_VIDEO_TOO_SHORT int32 `json:"VIDEO_DOWNLOAD_VIDEO_TOO_SHORT,omitempty"`
+
+	// Video files are unreadable. Please upload new files to continue.
+	VIDEO_FILE_NOT_ACCESSIBLE int32 `json:"VIDEO_FILE_NOT_ACCESSIBLE,omitempty"`
+
+	// Video files are unreadable. Please upload new files to continue.
+	VIDEO_FILE_NOT_FOUND int32 `json:"VIDEO_FILE_NOT_FOUND,omitempty"`
+
+	// Video files are unreadable. Please upload new files to continue.
+	VIDEO_INVALID_FILE int32 `json:"VIDEO_INVALID_FILE,omitempty"`
+
+	// We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.
+	VIDEO_LEVEL_INTERNAL_ERROR int32 `json:"VIDEO_LEVEL_INTERNAL_ERROR,omitempty"`
+
+	// Video files are unreadable. Please check your link and upload new files to continue.
+	VIDEO_MALFORMED_URL int32 `json:"VIDEO_MALFORMED_URL,omitempty"`
 }
 
 // AssertCatalogsFeedIngestionWarningsRequired checks if the required fields are not zero-ed

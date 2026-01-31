@@ -13,8 +13,8 @@ module CatalogsUpsertRetailItem =
   //#endregion
 
   type CatalogsUpsertRetailItem = {
+    Attributes : ItemAttributesRequest;
     ItemId : string;
     Operation : OperationEnum;
-    Attributes : ItemAttributesRequest;
   }
   //#endregion

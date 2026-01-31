@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,22 +19,22 @@ type CatalogsItemsBatchRequest struct {
 
 	Country Country `json:"country"`
 
+	// Array with catalogs items
+	Items []ItemDeleteBatchRecord `json:"items"`
+
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
 
 	Operation BatchOperation `json:"operation"`
-
-	// Array with catalogs items
-	Items []ItemDeleteBatchRecord `json:"items"`
 }
 
 // AssertCatalogsItemsBatchRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsItemsBatchRequestRequired(obj CatalogsItemsBatchRequest) error {
 	elements := map[string]interface{}{
 		"country": obj.Country,
+		"items": obj.Items,
 		"language": obj.Language,
 		"operation": obj.Operation,
-		"items": obj.Items,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

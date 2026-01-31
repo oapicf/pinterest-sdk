@@ -10,11 +10,16 @@ The class is defined in **[OauthAccessTokenResponseRefresh.java](../../src/main/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional property]
 **accessToken** | `String` |  | 
-**tokenType** | `String` |  | 
 **expiresIn** | `Integer` |  | 
+**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional property]
 **scope** | `String` |  | 
+**tokenType** | `String` |  | 
+**refreshToken** | `String` |  | 
+**refreshTokenExpiresAt** | `Integer` |  | 
+**refreshTokenExpiresIn** | `Integer` |  | 
+
+
 
 ## ResponseTypeEnum
 
@@ -23,6 +28,7 @@ Name | Value
 AUTHORIZATION_CODE | `"authorization_code"`
 REFRESH_TOKEN | `"refresh_token"`
 CLIENT_CREDENTIALS | `"client_credentials"`
+
 
 
 

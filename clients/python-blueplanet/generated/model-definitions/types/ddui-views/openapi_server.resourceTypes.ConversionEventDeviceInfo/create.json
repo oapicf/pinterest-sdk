@@ -1,0 +1,40 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "battery_level" },
+      {"model": "brand" },
+      {"model": "carrier" },
+      {"model": "cpu_cores" },
+      {"model": "external_storage_free_space" },
+      {"model": "external_storage_size" },
+      {"model": "form_factor" },
+      {"model": "kernel_version" },
+      {"model": "languages" },
+      {"model": "locale" },
+      {"model": "model" },
+      {"model": "network_type" },
+      {"model": "os_family" },
+      {"model": "os_name" },
+      {"model": "os_release_name" },
+      {"model": "os_version" },
+      {"model": "screen_density" },
+      {"model": "screen_height" },
+      {"model": "screen_width" },
+      {"model": "storage_free_space" },
+      {"model": "storage_size" },
+      {"model": "timezone" },
+      {"model": "timezone_abbr" },
+      {"model": "type" },
+    ]
+  }]
+}

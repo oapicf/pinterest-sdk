@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendingKeywordDemographics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendingKeywordDemographics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TrendingKeywordDemographicsAgeDistribution = openapi_server.resourceTypes.TrendingKeywordDemographicsAgeDistribution
+  TrendingKeywordDemographicsGenderDistribution = openapi_server.resourceTypes.TrendingKeywordDemographicsGenderDistribution
+}
+resourceTypes {
+
+  TrendingKeywordDemographics {
+    title = TrendingKeywordDemographics
+    description = TrendingKeywordDemographics
+    derivedFrom = Root
+    properties {
+        age_distribution {
+          type = TrendingKeywordDemographicsAgeDistribution
+          description = ""
+          optional = false
+        }
+        gender_distribution {
+          type = TrendingKeywordDemographicsGenderDistribution
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendingKeywordDemographics {
+    title = TrendingKeywordDemographics
+    description = TrendingKeywordDemographics
+    implements = openapi_server.resourceTypes.TrendingKeywordDemographics
+
+  }
+}

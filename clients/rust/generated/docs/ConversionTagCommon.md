@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_account_id** | Option<**String**> | Ad account ID. | [optional]
-**code_snippet** | Option<**String**> | Tag code snippet. | [optional]
-**enhanced_match_status** | Option<[**models::EnhancedMatchStatusType**](EnhancedMatchStatusType.md)> |  | [optional]
-**id** | Option<**String**> | Tag ID. | [optional]
-**last_fired_time_ms** | Option<**f64**> | Time for the last event fired. | [optional]
-**name** | Option<**String**> | Conversion tag name. | [optional]
-**status** | Option<[**models::EntityStatus**](EntityStatus.md)> |  | [optional]
-**version** | Option<**String**> | Version number. | [optional]
-**configs** | Option<[**models::ConversionTagConfigs**](ConversionTagConfigs.md)> |  | [optional]
+**code_snippet** | Option<**String**> | Tag code snippet. | [optional][readonly]
+**configs** | Option<[**models::ConversionTagConfigs**](ConversionTagConfigs.md)> |  | [optional][readonly]
+**enhanced_match_status** | Option<[**models::EnhancedMatchStatusType**](EnhancedMatchStatusType.md)> | The enhanced match status of the tag | [optional][readonly]
+**id** | Option<**String**> | Tag ID. | [optional][readonly]
+**last_fired_time_ms** | Option<**f64**> | Time for the last event fired. | [optional][readonly]
+**name** | **String** | Conversion tag name. | 
+**version** | Option<**String**> | Version number. | [optional][readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

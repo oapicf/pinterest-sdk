@@ -7,30 +7,37 @@
 #' @title CatalogsProductGroupPricingCurrencyCriteria
 #' @description CatalogsProductGroupPricingCurrencyCriteria Class
 #' @format An \code{R6Class} generator object
-#' @field operator  character
-#' @field value  numeric
 #' @field currency  \link{NonNullableCatalogsCurrency}
 #' @field negated  character [optional]
+#' @field operator  character
+#' @field value  numeric
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
   "CatalogsProductGroupPricingCurrencyCriteria",
   public = list(
-    `operator` = NULL,
-    `value` = NULL,
     `currency` = NULL,
     `negated` = NULL,
+    `operator` = NULL,
+    `value` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupPricingCurrencyCriteria class.
     #'
+    #' @param currency currency
     #' @param operator operator
     #' @param value value
-    #' @param currency currency
     #' @param negated negated. Default to FALSE.
     #' @param ... Other optional arguments.
-    initialize = function(`operator`, `value`, `currency`, `negated` = FALSE, ...) {
+    initialize = function(`currency`, `operator`, `value`, `negated` = FALSE, ...) {
+      if (!missing(`currency`)) {
+        if (!(`currency` %in% c())) {
+          stop(paste("Error! \"", `currency`, "\" cannot be assigned to `currency`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`currency`))
+        self$`currency` <- `currency`
+      }
       if (!missing(`operator`)) {
         if (!(`operator` %in% c("GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"))) {
           stop(paste("Error! \"", `operator`, "\" cannot be assigned to `operator`. Must be \"GREATER_THAN\", \"GREATER_THAN_OR_EQUALS\", \"LESS_THAN\", \"LESS_THAN_OR_EQUALS\".", sep = ""))
@@ -42,13 +49,6 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
       }
       if (!missing(`value`)) {
         self$`value` <- `value`
-      }
-      if (!missing(`currency`)) {
-        if (!(`currency` %in% c())) {
-          stop(paste("Error! \"", `currency`, "\" cannot be assigned to `currency`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`currency`))
-        self$`currency` <- `currency`
       }
       if (!is.null(`negated`)) {
         if (!(is.logical(`negated`) && length(`negated`) == 1)) {
@@ -89,14 +89,6 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupPricingCurrencyCriteriaObject <- list()
-      if (!is.null(self$`operator`)) {
-        CatalogsProductGroupPricingCurrencyCriteriaObject[["operator"]] <-
-          self$`operator`
-      }
-      if (!is.null(self$`value`)) {
-        CatalogsProductGroupPricingCurrencyCriteriaObject[["value"]] <-
-          self$`value`
-      }
       if (!is.null(self$`currency`)) {
         CatalogsProductGroupPricingCurrencyCriteriaObject[["currency"]] <-
           self$`currency`$toSimpleType()
@@ -104,6 +96,14 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupPricingCurrencyCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`operator`)) {
+        CatalogsProductGroupPricingCurrencyCriteriaObject[["operator"]] <-
+          self$`operator`
+      }
+      if (!is.null(self$`value`)) {
+        CatalogsProductGroupPricingCurrencyCriteriaObject[["value"]] <-
+          self$`value`
       }
       return(CatalogsProductGroupPricingCurrencyCriteriaObject)
     },
@@ -115,6 +115,14 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupPricingCurrencyCriteria
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`currency`)) {
+        `currency_object` <- NonNullableCatalogsCurrency$new()
+        `currency_object`$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
+        self$`currency` <- `currency_object`
+      }
+      if (!is.null(this_object$`negated`)) {
+        self$`negated` <- this_object$`negated`
+      }
       if (!is.null(this_object$`operator`)) {
         if (!is.null(this_object$`operator`) && !(this_object$`operator` %in% c("GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"))) {
           stop(paste("Error! \"", this_object$`operator`, "\" cannot be assigned to `operator`. Must be \"GREATER_THAN\", \"GREATER_THAN_OR_EQUALS\", \"LESS_THAN\", \"LESS_THAN_OR_EQUALS\".", sep = ""))
@@ -123,14 +131,6 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
       }
       if (!is.null(this_object$`value`)) {
         self$`value` <- this_object$`value`
-      }
-      if (!is.null(this_object$`currency`)) {
-        `currency_object` <- NonNullableCatalogsCurrency$new()
-        `currency_object`$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
-        self$`currency` <- `currency_object`
-      }
-      if (!is.null(this_object$`negated`)) {
-        self$`negated` <- this_object$`negated`
       }
       self
     },
@@ -153,13 +153,13 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupPricingCurrencyCriteria
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`currency` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
+      self$`negated` <- this_object$`negated`
       if (!is.null(this_object$`operator`) && !(this_object$`operator` %in% c("GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"))) {
         stop(paste("Error! \"", this_object$`operator`, "\" cannot be assigned to `operator`. Must be \"GREATER_THAN\", \"GREATER_THAN_OR_EQUALS\", \"LESS_THAN\", \"LESS_THAN_OR_EQUALS\".", sep = ""))
       }
       self$`operator` <- this_object$`operator`
       self$`value` <- this_object$`value`
-      self$`currency` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
-      self$`negated` <- this_object$`negated`
       self
     },
 
@@ -169,6 +169,12 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `currency`
+      if (!is.null(input_json$`currency`)) {
+        stopifnot(R6::is.R6(input_json$`currency`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupPricingCurrencyCriteria: the required field `currency` is missing."))
+      }
       # check the required field `operator`
       if (!is.null(input_json$`operator`)) {
         if (!(is.character(input_json$`operator`) && length(input_json$`operator`) == 1)) {
@@ -181,12 +187,6 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
       if (!is.null(input_json$`value`)) {
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupPricingCurrencyCriteria: the required field `value` is missing."))
-      }
-      # check the required field `currency`
-      if (!is.null(input_json$`currency`)) {
-        stopifnot(R6::is.R6(input_json$`currency`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupPricingCurrencyCriteria: the required field `currency` is missing."))
       }
     },
 
@@ -203,6 +203,11 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `currency` is null
+      if (is.null(self$`currency`)) {
+        return(FALSE)
+      }
+
       # check if the required `operator` is null
       if (is.null(self$`operator`)) {
         return(FALSE)
@@ -214,11 +219,6 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
       }
 
       if (self$`value` < 0) {
-        return(FALSE)
-      }
-
-      # check if the required `currency` is null
-      if (is.null(self$`currency`)) {
         return(FALSE)
       }
 
@@ -231,6 +231,11 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `currency` is null
+      if (is.null(self$`currency`)) {
+        invalid_fields["currency"] <- "Non-nullable required field `currency` cannot be null."
+      }
+
       # check if the required `operator` is null
       if (is.null(self$`operator`)) {
         invalid_fields["operator"] <- "Non-nullable required field `operator` cannot be null."
@@ -243,11 +248,6 @@ CatalogsProductGroupPricingCurrencyCriteria <- R6::R6Class(
 
       if (self$`value` < 0) {
         invalid_fields["value"] <- "Invalid value for `value`, must be bigger than or equal to 0."
-      }
-
-      # check if the required `currency` is null
-      if (is.null(self$`currency`)) {
-        invalid_fields["currency"] <- "Non-nullable required field `currency` cannot be null."
       }
 
       invalid_fields

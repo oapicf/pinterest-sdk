@@ -4,44 +4,26 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.ImageMetadataImages;
+import org.openapitools.vertxweb.server.model.ImageSize;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImageMetadata   {
   
-  private String itemType;
-  private String title;
   private String description;
+  private ImageSize images;
+  private String itemType;
   private String link;
-  private ImageMetadataImages images;
+  private String title;
 
   public ImageMetadata () {
 
   }
 
-  public ImageMetadata (String itemType, String title, String description, String link, ImageMetadataImages images) {
-    this.itemType = itemType;
-    this.title = title;
+  public ImageMetadata (String description, ImageSize images, String itemType, String link, String title) {
     this.description = description;
-    this.link = link;
     this.images = images;
-  }
-
-    
-  @JsonProperty("item_type")
-  public String getItemType() {
-    return itemType;
-  }
-  public void setItemType(String itemType) {
     this.itemType = itemType;
-  }
-
-    
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
+    this.link = link;
     this.title = title;
   }
 
@@ -55,6 +37,24 @@ public class ImageMetadata   {
   }
 
     
+  @JsonProperty("images")
+  public ImageSize getImages() {
+    return images;
+  }
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+    
+  @JsonProperty("item_type")
+  public String getItemType() {
+    return itemType;
+  }
+  public void setItemType(String itemType) {
+    this.itemType = itemType;
+  }
+
+    
   @JsonProperty("link")
   public String getLink() {
     return link;
@@ -64,12 +64,12 @@ public class ImageMetadata   {
   }
 
     
-  @JsonProperty("images")
-  public ImageMetadataImages getImages() {
-    return images;
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
   }
-  public void setImages(ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -82,16 +82,16 @@ public class ImageMetadata   {
       return false;
     }
     ImageMetadata imageMetadata = (ImageMetadata) o;
-    return Objects.equals(itemType, imageMetadata.itemType) &&
-        Objects.equals(title, imageMetadata.title) &&
-        Objects.equals(description, imageMetadata.description) &&
+    return Objects.equals(description, imageMetadata.description) &&
+        Objects.equals(images, imageMetadata.images) &&
+        Objects.equals(itemType, imageMetadata.itemType) &&
         Objects.equals(link, imageMetadata.link) &&
-        Objects.equals(images, imageMetadata.images);
+        Objects.equals(title, imageMetadata.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, title, description, link, images);
+    return Objects.hash(description, images, itemType, link, title);
   }
 
   @Override
@@ -99,11 +99,11 @@ public class ImageMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageMetadata {\n");
     
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

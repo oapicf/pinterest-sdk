@@ -24,26 +24,26 @@ export interface CatalogsRetailFeed {
     created_at: string;
     id: string;
     updated_at: string;
-    /**
-     * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-     */
-    name: string | null;
-    format: CatalogsFormat;
     catalog_type: CatalogsType;
     credentials: CatalogsFeedCredentials | null;
-    /**
-     * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     */
-    location: string;
-    preferred_processing_schedule: CatalogsFeedProcessingSchedule | null;
-    status: CatalogsStatus;
+    default_availability: ProductAvailabilityType | null;
+    default_country: Country;
     default_currency: NullableCurrency | null;
     /**
      * The locale used within a feed for product descriptions.
      */
     default_locale: string;
-    default_country: Country;
-    default_availability: ProductAvailabilityType | null;
+    format: CatalogsFormat;
+    /**
+     * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+     */
+    location: string;
+    /**
+     * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+     */
+    name: string | null;
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule | null;
+    status: CatalogsStatus;
 }
 export namespace CatalogsRetailFeed {
 }

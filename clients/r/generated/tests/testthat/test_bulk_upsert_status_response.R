@@ -5,16 +5,16 @@ context("Test BulkUpsertStatusResponse")
 
 model_instance <- BulkUpsertStatusResponse$new()
 
-test_that("status", {
-  # tests for the property `status` (BulkUpsertStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
 test_that("result_url", {
   # tests for the property `result_url` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`result_url`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (BulkUpsertStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })

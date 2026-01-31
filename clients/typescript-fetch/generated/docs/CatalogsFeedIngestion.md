@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`feedId` | string
 `createdAt` | Date
+`feedId` | string
+`id` | string
 `status` | [CatalogsFeedProcessingStatus](CatalogsFeedProcessingStatus.md)
 
 ## Example
@@ -18,9 +18,9 @@ import type { CatalogsFeedIngestion } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 01234,
-  "feedId": 56789,
   "createdAt": 2022-03-14T15:16:34Z,
+  "feedId": 56789,
+  "id": 01234,
   "status": null,
 } satisfies CatalogsFeedIngestion
 

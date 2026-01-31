@@ -11,18 +11,18 @@ import scala.collection.immutable.Seq
 /**
  * 
  * @param assetUnderscoregroupUnderscoreid Unique identifier of the asset group to update.
- * @param name Asset Group name
- * @param description Asset group description
  * @param assetUnderscoregroupUnderscoretypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  * @param assetsUnderscoretoUnderscoreadd A list of asset ids to add to the asset group.
  * @param assetsUnderscoretoUnderscoreremove A list of asset ids to remove from the asset group.
+ * @param description Asset group description
+ * @param name Asset Group name
  */
 case class UpdateAssetGroupBodyAssetGroupsToUpdateInner(assetUnderscoregroupUnderscoreid: String,
-                name: Option[String],
-                description: Option[String],
                 assetUnderscoregroupUnderscoretypes: Option[Seq[AssetGroupType]],
                 assetsUnderscoretoUnderscoreadd: Option[Seq[String]],
-                assetsUnderscoretoUnderscoreremove: Option[Seq[String]]
+                assetsUnderscoretoUnderscoreremove: Option[Seq[String]],
+                description: Option[String],
+                name: Option[String]
                 )
 
 object UpdateAssetGroupBodyAssetGroupsToUpdateInner {

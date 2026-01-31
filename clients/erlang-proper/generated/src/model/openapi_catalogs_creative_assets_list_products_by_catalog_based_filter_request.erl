@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_creative_assets_list_products_by_catalog_based_filter_request/0]).
 
 -type openapi_catalogs_creative_assets_list_products_by_catalog_based_filter_request() ::
-  [ {'catalog_type', binary() }
-  | {'catalog_id', binary() }
+  [ {'catalog_id', binary() }
+  | {'catalog_type', binary() }
   | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
   ].
 
@@ -19,8 +19,8 @@ openapi_catalogs_creative_assets_list_products_by_catalog_based_filter_request()
     openapi_catalogs_creative_assets_list_products_by_catalog_based_filter_request([]).
 
 openapi_catalogs_creative_assets_list_products_by_catalog_based_filter_request(Fields) ->
-  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
-            , {'catalog_id', binary() }
+  Default = [ {'catalog_id', binary() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -9,8 +9,8 @@ Object describing a retail item error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | **CatalogsType** |  | 
+**errors** | [**Seq&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | 
 **itemId** | **String** | The catalog item id in the merchant namespace |  [optional]
-**errors** | [**Seq&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested |  [optional]
 
 
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The date range type | [optional] 
-**StartDaysInPast** | Pointer to **float32** | The start date of the date range | [optional] 
 **EndDaysInPast** | Pointer to **float32** | The end date of the date range | [optional] 
+**StartDaysInPast** | Pointer to **float32** | The start date of the date range | [optional] 
+**Type** | Pointer to **string** | The date range type | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewTemplateResponseDateRangeRelativeDateRangeWithDefaults instantiates a new Tem
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetType
+### GetEndDaysInPast
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) GetType() string`
+`func (o *TemplateResponseDateRangeRelativeDateRange) GetEndDaysInPast() float32`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetEndDaysInPast returns the EndDaysInPast field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetEndDaysInPastOk
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) GetTypeOk() (*string, bool)`
+`func (o *TemplateResponseDateRangeRelativeDateRange) GetEndDaysInPastOk() (*float32, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetEndDaysInPastOk returns a tuple with the EndDaysInPast field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetEndDaysInPast
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) SetType(v string)`
+`func (o *TemplateResponseDateRangeRelativeDateRange) SetEndDaysInPast(v float32)`
 
-SetType sets Type field to given value.
+SetEndDaysInPast sets EndDaysInPast field to given value.
 
-### HasType
+### HasEndDaysInPast
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) HasType() bool`
+`func (o *TemplateResponseDateRangeRelativeDateRange) HasEndDaysInPast() bool`
 
-HasType returns a boolean if a field has been set.
+HasEndDaysInPast returns a boolean if a field has been set.
 
 ### GetStartDaysInPast
 
@@ -77,30 +77,30 @@ SetStartDaysInPast sets StartDaysInPast field to given value.
 
 HasStartDaysInPast returns a boolean if a field has been set.
 
-### GetEndDaysInPast
+### GetType
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) GetEndDaysInPast() float32`
+`func (o *TemplateResponseDateRangeRelativeDateRange) GetType() string`
 
-GetEndDaysInPast returns the EndDaysInPast field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetEndDaysInPastOk
+### GetTypeOk
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) GetEndDaysInPastOk() (*float32, bool)`
+`func (o *TemplateResponseDateRangeRelativeDateRange) GetTypeOk() (*string, bool)`
 
-GetEndDaysInPastOk returns a tuple with the EndDaysInPast field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndDaysInPast
+### SetType
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) SetEndDaysInPast(v float32)`
+`func (o *TemplateResponseDateRangeRelativeDateRange) SetType(v string)`
 
-SetEndDaysInPast sets EndDaysInPast field to given value.
+SetType sets Type field to given value.
 
-### HasEndDaysInPast
+### HasType
 
-`func (o *TemplateResponseDateRangeRelativeDateRange) HasEndDaysInPast() bool`
+`func (o *TemplateResponseDateRangeRelativeDateRange) HasType() bool`
 
-HasEndDaysInPast returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

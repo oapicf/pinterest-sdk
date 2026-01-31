@@ -10,24 +10,45 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Pin media objects. */
-public struct PinMedia: Codable, JSONEncodable, Hashable {
-
-    public var mediaType: String?
-
-    public init(mediaType: String? = nil) {
-        self.mediaType = mediaType
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mediaType = "media_type"
-    }
-
-    // Encodable protocol methods
+/** Pin media that can be an image, video, or a mix of both. */
+public enum PinMedia: Codable, JSONEncodable, Hashable {
+    case typePinMediaWithImage(PinMediaWithImage)
+    case typePinMediaWithImageAndVideo(PinMediaWithImageAndVideo)
+    case typePinMediaWithImages(PinMediaWithImages)
+    case typePinMediaWithVideo(PinMediaWithVideo)
+    case typePinMediaWithVideos(PinMediaWithVideos)
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(mediaType, forKey: .mediaType)
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .typePinMediaWithImage(let value):
+            try container.encode(value)
+        case .typePinMediaWithImageAndVideo(let value):
+            try container.encode(value)
+        case .typePinMediaWithImages(let value):
+            try container.encode(value)
+        case .typePinMediaWithVideo(let value):
+            try container.encode(value)
+        case .typePinMediaWithVideos(let value):
+            try container.encode(value)
+        }
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(PinMediaWithImage.self) {
+            self = .typePinMediaWithImage(value)
+        } else if let value = try? container.decode(PinMediaWithImageAndVideo.self) {
+            self = .typePinMediaWithImageAndVideo(value)
+        } else if let value = try? container.decode(PinMediaWithImages.self) {
+            self = .typePinMediaWithImages(value)
+        } else if let value = try? container.decode(PinMediaWithVideo.self) {
+            self = .typePinMediaWithVideo(value)
+        } else if let value = try? container.decode(PinMediaWithVideos.self) {
+            self = .typePinMediaWithVideos(value)
+        } else {
+            throw DecodingError.typeMismatch(Self.Type.self, .init(codingPath: decoder.codingPath, debugDescription: "Unable to decode instance of PinMedia"))
+        }
     }
 }
 

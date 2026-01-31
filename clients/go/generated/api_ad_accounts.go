@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -36,6 +36,7 @@ type ApiAdAccountAnalyticsRequest struct {
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
+	reportingTimezone *ReportingTimeZone
 }
 
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -68,7 +69,7 @@ func (r ApiAdAccountAnalyticsRequest) ClickWindowDays(clickWindowDays int32) Api
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiAdAccountAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdAccountAnalyticsRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -86,6 +87,12 @@ func (r ApiAdAccountAnalyticsRequest) ConversionReportTime(conversionReportTime 
 	return r
 }
 
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiAdAccountAnalyticsRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiAdAccountAnalyticsRequest {
+	r.reportingTimezone = &reportingTimezone
+	return r
+}
+
 func (r ApiAdAccountAnalyticsRequest) Execute() ([]AdAccountAnalyticsResponseInner, *http.Response, error) {
 	return r.ApiService.AdAccountAnalyticsExecute(r)
 }
@@ -95,8 +102,8 @@ AdAccountAnalytics Get ad account analytics
 
 Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -178,6 +185,9 @@ func (a *AdAccountsAPIService) AdAccountAnalyticsExecute(r ApiAdAccountAnalytics
         var defaultValue string = "TIME_OF_AD_ACTION"
         parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
         r.conversionReportTime = &defaultValue
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -265,7 +275,8 @@ type ApiAdAccountTargetingAnalyticsGetRequest struct {
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
-	attributionTypes *ConversionReportAttributionType
+	attributionTypes *[]ConversionReportAttributionType
+	reportingTimezone *ReportingTimeZone
 }
 
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -304,7 +315,7 @@ func (r ApiAdAccountTargetingAnalyticsGetRequest) ClickWindowDays(clickWindowDay
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiAdAccountTargetingAnalyticsGetRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdAccountTargetingAnalyticsGetRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -323,8 +334,14 @@ func (r ApiAdAccountTargetingAnalyticsGetRequest) ConversionReportTime(conversio
 }
 
 // List of types of attribution for the conversion report
-func (r ApiAdAccountTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes ConversionReportAttributionType) ApiAdAccountTargetingAnalyticsGetRequest {
+func (r ApiAdAccountTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes []ConversionReportAttributionType) ApiAdAccountTargetingAnalyticsGetRequest {
 	r.attributionTypes = &attributionTypes
+	return r
+}
+
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiAdAccountTargetingAnalyticsGetRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiAdAccountTargetingAnalyticsGetRequest {
+	r.reportingTimezone = &reportingTimezone
 	return r
 }
 
@@ -341,8 +358,8 @@ For the requested account and metrics, the response will include the requested m
 - The token's user_account must either be the Owner of the specified ad account, or have one
 of the necessary roles granted to them via
 <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -436,7 +453,10 @@ func (a *AdAccountsAPIService) AdAccountTargetingAnalyticsGetExecute(r ApiAdAcco
         r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "csv")
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -503,12 +523,11 @@ func (a *AdAccountsAPIService) AdAccountTargetingAnalyticsGetExecute(r ApiAdAcco
 type ApiAdAccountsCreateRequest struct {
 	ctx context.Context
 	ApiService *AdAccountsAPIService
-	adAccountCreateRequest *AdAccountCreateRequest
+	adAccountCreate *AdAccountCreate
 }
 
-// Ad account to create.
-func (r ApiAdAccountsCreateRequest) AdAccountCreateRequest(adAccountCreateRequest AdAccountCreateRequest) ApiAdAccountsCreateRequest {
-	r.adAccountCreateRequest = &adAccountCreateRequest
+func (r ApiAdAccountsCreateRequest) AdAccountCreate(adAccountCreate AdAccountCreate) ApiAdAccountsCreateRequest {
+	r.adAccountCreate = &adAccountCreate
 	return r
 }
 
@@ -520,9 +539,10 @@ func (r ApiAdAccountsCreateRequest) Execute() (*AdAccount, *http.Response, error
 AdAccountsCreate Create ad account
 
 Create a new ad account. Different ad accounts can support different currencies, payment methods, etc.
-An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/>
-You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/>
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/create-an-advertiser-account">Create an advertiser account</a>.
+An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.
+
+You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.)
+For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAdAccountsCreateRequest
@@ -554,8 +574,8 @@ func (a *AdAccountsAPIService) AdAccountsCreateExecute(r ApiAdAccountsCreateRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adAccountCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("adAccountCreateRequest is required and must be specified")
+	if r.adAccountCreate == nil {
+		return localVarReturnValue, nil, reportError("adAccountCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -576,7 +596,7 @@ func (a *AdAccountsAPIService) AdAccountsCreateExecute(r ApiAdAccountsCreateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.adAccountCreateRequest
+	localVarPostBody = r.adAccountCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -599,7 +619,62 @@ func (a *AdAccountsAPIService) AdAccountsCreateExecute(r ApiAdAccountsCreateRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -638,7 +713,7 @@ AdAccountsGet Get ad account
 Get an ad account
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
+ @param adAccountId
  @return ApiAdAccountsGetRequest
 */
 func (a *AdAccountsAPIService) AdAccountsGet(ctx context.Context, adAccountId string) ApiAdAccountsGetRequest {
@@ -713,7 +788,62 @@ func (a *AdAccountsAPIService) AdAccountsGetExecute(r ApiAdAccountsGetRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -739,9 +869,15 @@ func (a *AdAccountsAPIService) AdAccountsGetExecute(r ApiAdAccountsGetRequest) (
 type ApiAdAccountsListRequest struct {
 	ctx context.Context
 	ApiService *AdAccountsAPIService
+	includeSharedAccounts *bool
 	bookmark *string
 	pageSize *int32
-	includeSharedAccounts *bool
+}
+
+// Include shared ad accounts
+func (r ApiAdAccountsListRequest) IncludeSharedAccounts(includeSharedAccounts bool) ApiAdAccountsListRequest {
+	r.includeSharedAccounts = &includeSharedAccounts
+	return r
 }
 
 // Cursor used to fetch the next page of items
@@ -750,15 +886,9 @@ func (r ApiAdAccountsListRequest) Bookmark(bookmark string) ApiAdAccountsListReq
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiAdAccountsListRequest) PageSize(pageSize int32) ApiAdAccountsListRequest {
 	r.pageSize = &pageSize
-	return r
-}
-
-// Include shared ad accounts
-func (r ApiAdAccountsListRequest) IncludeSharedAccounts(includeSharedAccounts bool) ApiAdAccountsListRequest {
-	r.includeSharedAccounts = &includeSharedAccounts
 	return r
 }
 
@@ -770,7 +900,7 @@ func (r ApiAdAccountsListRequest) Execute() (*AdAccountsList200Response, *http.R
 AdAccountsList List ad accounts
 
 Get a list of the ad_accounts that the "operation user_account" has access to.
-- This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>.
+        - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAdAccountsListRequest
@@ -803,6 +933,13 @@ func (a *AdAccountsAPIService) AdAccountsListExecute(r ApiAdAccountsListRequest)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.includeSharedAccounts != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_shared_accounts", r.includeSharedAccounts, "form", "")
+	} else {
+        var defaultValue bool = true
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_shared_accounts", defaultValue, "form", "")
+        r.includeSharedAccounts = &defaultValue
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
@@ -812,13 +949,6 @@ func (a *AdAccountsAPIService) AdAccountsListExecute(r ApiAdAccountsListRequest)
         var defaultValue int32 = 25
         parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
         r.pageSize = &defaultValue
-	}
-	if r.includeSharedAccounts != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_shared_accounts", r.includeSharedAccounts, "form", "")
-	} else {
-        var defaultValue bool = true
-        parameterAddToHeaderOrQuery(localVarQueryParams, "include_shared_accounts", defaultValue, "form", "")
-        r.includeSharedAccounts = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -858,6 +988,198 @@ func (a *AdAccountsAPIService) AdAccountsListExecute(r ApiAdAccountsListRequest)
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAnalyticsCreateConversionProductReportRequest struct {
+	ctx context.Context
+	ApiService *AdAccountsAPIService
+	adAccountId string
+	conversionProductReportRequest *ConversionProductReportRequest
+}
+
+func (r ApiAnalyticsCreateConversionProductReportRequest) ConversionProductReportRequest(conversionProductReportRequest ConversionProductReportRequest) ApiAnalyticsCreateConversionProductReportRequest {
+	r.conversionProductReportRequest = &conversionProductReportRequest
+	return r
+}
+
+func (r ApiAnalyticsCreateConversionProductReportRequest) Execute() (*AdsAnalyticsCreateAsyncResponse, *http.Response, error) {
+	return r.ApiService.AnalyticsCreateConversionProductReportExecute(r)
+}
+
+/*
+AnalyticsCreateConversionProductReport Create a request for a brand, category, SKU report
+
+<a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Restricted</a>
+This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiAnalyticsCreateConversionProductReportRequest
+*/
+func (a *AdAccountsAPIService) AnalyticsCreateConversionProductReport(ctx context.Context, adAccountId string) ApiAnalyticsCreateConversionProductReportRequest {
+	return ApiAnalyticsCreateConversionProductReportRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return AdsAnalyticsCreateAsyncResponse
+func (a *AdAccountsAPIService) AnalyticsCreateConversionProductReportExecute(r ApiAnalyticsCreateConversionProductReportRequest) (*AdsAnalyticsCreateAsyncResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AdsAnalyticsCreateAsyncResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdAccountsAPIService.AnalyticsCreateConversionProductReport")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/reports/brand_category_sku"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if r.conversionProductReportRequest == nil {
+		return localVarReturnValue, nil, reportError("conversionProductReportRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.conversionProductReportRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1040,9 +1362,9 @@ AnalyticsCreateReport Create async request for an account analytics report
 
 This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
-- If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days.
+- If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+- If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.
 - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1182,24 +1504,26 @@ func (r ApiAnalyticsCreateTemplateReportRequest) EndDate(endDate string) ApiAnal
 	return r
 }
 
-// TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+//    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly
 func (r ApiAnalyticsCreateTemplateReportRequest) Granularity(granularity Granularity) ApiAnalyticsCreateTemplateReportRequest {
 	r.granularity = &granularity
 	return r
 }
 
-func (r ApiAnalyticsCreateTemplateReportRequest) Execute() (*AdsAnalyticsCreateAsyncResponse, *http.Response, error) {
+func (r ApiAnalyticsCreateTemplateReportRequest) Execute() (*TemplateBasedReport, *http.Response, error) {
 	return r.ApiService.AnalyticsCreateTemplateReportExecute(r)
 }
 
 /*
 AnalyticsCreateTemplateReport Create async request for an analytics report using a template
 
-This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the
-template. It returns a token that you can use to download the report when it is ready.
+
+  This takes a template ID and an optional custom timeframe and
+  constructs an asynchronous report based on the template. It returns
+  a token that you can use to download the report when it is ready.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
+ @param adAccountId
  @param templateId Unique identifier of a template.
  @return ApiAnalyticsCreateTemplateReportRequest
 */
@@ -1213,13 +1537,13 @@ func (a *AdAccountsAPIService) AnalyticsCreateTemplateReport(ctx context.Context
 }
 
 // Execute executes the request
-//  @return AdsAnalyticsCreateAsyncResponse
-func (a *AdAccountsAPIService) AnalyticsCreateTemplateReportExecute(r ApiAnalyticsCreateTemplateReportRequest) (*AdsAnalyticsCreateAsyncResponse, *http.Response, error) {
+//  @return TemplateBasedReport
+func (a *AdAccountsAPIService) AnalyticsCreateTemplateReportExecute(r ApiAnalyticsCreateTemplateReportRequest) (*TemplateBasedReport, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AdsAnalyticsCreateAsyncResponse
+		localVarReturnValue  *TemplateBasedReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdAccountsAPIService.AnalyticsCreateTemplateReport")
@@ -1250,6 +1574,187 @@ func (a *AdAccountsAPIService) AnalyticsCreateTemplateReportExecute(r ApiAnalyti
 	if r.granularity != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAnalyticsGetConversionProductReportRequest struct {
+	ctx context.Context
+	ApiService *AdAccountsAPIService
+	adAccountId string
+	token *string
+}
+
+// Token returned from the post request creation call
+func (r ApiAnalyticsGetConversionProductReportRequest) Token(token string) ApiAnalyticsGetConversionProductReportRequest {
+	r.token = &token
+	return r
+}
+
+func (r ApiAnalyticsGetConversionProductReportRequest) Execute() (*AdsAnalyticsGetAsyncResponse, *http.Response, error) {
+	return r.ApiService.AnalyticsGetConversionProductReportExecute(r)
+}
+
+/*
+AnalyticsGetConversionProductReport Get advertiser brand, category, SKU report
+
+<a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Restricted</a>
+Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiAnalyticsGetConversionProductReportRequest
+*/
+func (a *AdAccountsAPIService) AnalyticsGetConversionProductReport(ctx context.Context, adAccountId string) ApiAnalyticsGetConversionProductReportRequest {
+	return ApiAnalyticsGetConversionProductReportRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return AdsAnalyticsGetAsyncResponse
+func (a *AdAccountsAPIService) AnalyticsGetConversionProductReportExecute(r ApiAnalyticsGetConversionProductReportRequest) (*AdsAnalyticsGetAsyncResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AdsAnalyticsGetAsyncResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdAccountsAPIService.AnalyticsGetConversionProductReport")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/reports/brand_category_sku"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if r.token == nil {
+		return localVarReturnValue, nil, reportError("token is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

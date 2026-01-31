@@ -18,21 +18,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * An item to be created
+ * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
 data class CatalogsCreateRetailItem(
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("attributes", required = true) val attributes: ItemAttributesRequest,
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog item id in the merchant namespace")
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: CatalogsCreateRetailItem.Operation,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("attributes", required = true) val attributes: ItemAttributesRequest
+    @get:JsonProperty("operation", required = true) val operation: CatalogsCreateRetailItem.Operation
 ) {
 
     /**

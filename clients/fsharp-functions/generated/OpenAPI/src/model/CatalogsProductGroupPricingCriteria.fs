@@ -12,10 +12,10 @@ module CatalogsProductGroupPricingCriteria =
   type CatalogsProductGroupPricingCriteria = {
     [<JsonProperty(PropertyName = "inclusion")>]
     Inclusion : bool;
-    [<JsonProperty(PropertyName = "values")>]
-    Values : decimal;
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
+    [<JsonProperty(PropertyName = "values")>]
+    Values : decimal;
   }
 
   //#endregion

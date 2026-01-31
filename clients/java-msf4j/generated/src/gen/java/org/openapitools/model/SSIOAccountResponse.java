@@ -14,61 +14,25 @@ import org.openapitools.model.SSIOAccountPMPName;
 /**
  * SSIOAccountResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountResponse   {
-  @JsonProperty("eligible")
-  private Boolean eligible;
+  @JsonProperty("billto_infos")
+  private List<@Valid SSIOAccountItem> billtoInfos = null;
 
   @JsonProperty("can_edit")
   private Boolean canEdit;
 
-  @JsonProperty("billto_infos")
-  private List<@Valid SSIOAccountItem> billtoInfos = null;
-
   @JsonProperty("currency")
   private String currency;
 
-  @JsonProperty("pmp_names")
-  private List<@Valid SSIOAccountPMPName> pmpNames = null;
+  @JsonProperty("eligible")
+  private Boolean eligible;
 
   @JsonProperty("error")
   private String error;
 
-  public SSIOAccountResponse eligible(Boolean eligible) {
-    this.eligible = eligible;
-    return this;
-  }
-
-   /**
-   * Advertiser eligible to create order lines
-   * @return eligible
-  **/
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
-  public Boolean getEligible() {
-    return eligible;
-  }
-
-  public void setEligible(Boolean eligible) {
-    this.eligible = eligible;
-  }
-
-  public SSIOAccountResponse canEdit(Boolean canEdit) {
-    this.canEdit = canEdit;
-    return this;
-  }
-
-   /**
-   * Advertiser eligible to update order lines
-   * @return canEdit
-  **/
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
-  public Boolean getCanEdit() {
-    return canEdit;
-  }
-
-  public void setCanEdit(Boolean canEdit) {
-    this.canEdit = canEdit;
-  }
+  @JsonProperty("pmp_names")
+  private List<@Valid SSIOAccountPMPName> pmpNames = null;
 
   public SSIOAccountResponse billtoInfos(List<@Valid SSIOAccountItem> billtoInfos) {
     this.billtoInfos = billtoInfos;
@@ -96,6 +60,24 @@ public class SSIOAccountResponse   {
     this.billtoInfos = billtoInfos;
   }
 
+  public SSIOAccountResponse canEdit(Boolean canEdit) {
+    this.canEdit = canEdit;
+    return this;
+  }
+
+   /**
+   * Advertiser eligible to update order lines
+   * @return canEdit
+  **/
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
+  public Boolean getCanEdit() {
+    return canEdit;
+  }
+
+  public void setCanEdit(Boolean canEdit) {
+    this.canEdit = canEdit;
+  }
+
   public SSIOAccountResponse currency(String currency) {
     this.currency = currency;
     return this;
@@ -112,6 +94,42 @@ public class SSIOAccountResponse   {
 
   public void setCurrency(String currency) {
     this.currency = currency;
+  }
+
+  public SSIOAccountResponse eligible(Boolean eligible) {
+    this.eligible = eligible;
+    return this;
+  }
+
+   /**
+   * Advertiser eligible to create order lines
+   * @return eligible
+  **/
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
+  public Boolean getEligible() {
+    return eligible;
+  }
+
+  public void setEligible(Boolean eligible) {
+    this.eligible = eligible;
+  }
+
+  public SSIOAccountResponse error(String error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Error indicator from Salesforce which could be \"No Error\"
+   * @return error
+  **/
+  @ApiModelProperty(example = "No Error", value = "Error indicator from Salesforce which could be \"No Error\"")
+  public String getError() {
+    return error;
+  }
+
+  public void setError(String error) {
+    this.error = error;
   }
 
   public SSIOAccountResponse pmpNames(List<@Valid SSIOAccountPMPName> pmpNames) {
@@ -140,24 +158,6 @@ public class SSIOAccountResponse   {
     this.pmpNames = pmpNames;
   }
 
-  public SSIOAccountResponse error(String error) {
-    this.error = error;
-    return this;
-  }
-
-   /**
-   * Error indicator from Salesforce which could be \"No Error\"
-   * @return error
-  **/
-  @ApiModelProperty(example = "No Error", value = "Error indicator from Salesforce which could be \"No Error\"")
-  public String getError() {
-    return error;
-  }
-
-  public void setError(String error) {
-    this.error = error;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -168,17 +168,17 @@ public class SSIOAccountResponse   {
       return false;
     }
     SSIOAccountResponse ssIOAccountResponse = (SSIOAccountResponse) o;
-    return Objects.equals(this.eligible, ssIOAccountResponse.eligible) &&
+    return Objects.equals(this.billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(this.canEdit, ssIOAccountResponse.canEdit) &&
-        Objects.equals(this.billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(this.currency, ssIOAccountResponse.currency) &&
-        Objects.equals(this.pmpNames, ssIOAccountResponse.pmpNames) &&
-        Objects.equals(this.error, ssIOAccountResponse.error);
+        Objects.equals(this.eligible, ssIOAccountResponse.eligible) &&
+        Objects.equals(this.error, ssIOAccountResponse.error) &&
+        Objects.equals(this.pmpNames, ssIOAccountResponse.pmpNames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eligible, canEdit, billtoInfos, currency, pmpNames, error);
+    return Objects.hash(billtoInfos, canEdit, currency, eligible, error, pmpNames);
   }
 
   @Override
@@ -186,12 +186,12 @@ public class SSIOAccountResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountResponse {\n");
     
-    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
-    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    billtoInfos: ").append(toIndentedString(billtoInfos)).append("\n");
+    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
+    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

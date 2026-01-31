@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupMultipleStringCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupMultipleStringCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsProductGroupMultipleStringCriteria {
+    title = CatalogsProductGroupMultipleStringCriteria
+    description = CatalogsProductGroupMultipleStringCriteria
+    derivedFrom = Root
+    properties {
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupMultipleStringCriteria {
+    title = CatalogsProductGroupMultipleStringCriteria
+    description = CatalogsProductGroupMultipleStringCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+
+  }
+}

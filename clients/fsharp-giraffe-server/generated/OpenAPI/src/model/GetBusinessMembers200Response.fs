@@ -11,7 +11,7 @@ module GetBusinessMembers200Response =
 
 
   type get_business_members_200_response = {
-    Items : UserBusinessRoleBinding[];
     Bookmark : string option;
+    Items : UserBusinessRoleBinding[];
   }
   //#endregion

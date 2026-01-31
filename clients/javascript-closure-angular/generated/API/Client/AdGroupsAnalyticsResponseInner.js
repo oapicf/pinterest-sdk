@@ -6,7 +6,7 @@ goog.provide('API.Client.AdGroupsAnalyticsResponse_inner');
 API.Client.AdGroupsAnalyticsResponseInner = function() {}
 
 /**
- * The ID of the ad group that this metrics belongs to.
+ * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @type {!string}
  * @export
  */

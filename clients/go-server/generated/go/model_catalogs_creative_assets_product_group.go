@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,7 +16,17 @@ package openapi
 
 type CatalogsCreativeAssetsProductGroup struct {
 
+	// Catalog id pertaining to the creative assets product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
+
+	// Unix timestamp in seconds of when catalog product group was created.
+	CreatedAt int32 `json:"created_at,omitempty"`
+
+	Description *string `json:"description,omitempty"`
+
+	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
 	// ID of the creative assets product group.
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
@@ -24,27 +34,17 @@ type CatalogsCreativeAssetsProductGroup struct {
 	// Name of creative assets product group
 	Name string `json:"name,omitempty"`
 
-	Description *string `json:"description,omitempty"`
-
-	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
-
-	// Unix timestamp in seconds of when catalog product group was created.
-	CreatedAt int32 `json:"created_at,omitempty"`
-
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
-
-	// Catalog id pertaining to the creative assets product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 }
 
 // AssertCatalogsCreativeAssetsProductGroupRequired checks if the required fields are not zero-ed
 func AssertCatalogsCreativeAssetsProductGroupRequired(obj CatalogsCreativeAssetsProductGroup) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"id": obj.Id,
-		"filters": obj.Filters,
 		"catalog_id": obj.CatalogId,
+		"catalog_type": obj.CatalogType,
+		"filters": obj.Filters,
+		"id": obj.Id,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

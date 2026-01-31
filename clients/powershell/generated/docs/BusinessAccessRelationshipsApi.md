@@ -4,13 +4,123 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Invoke-BrandAccountsCreate**](BusinessAccessRelationshipsApi.md#Invoke-BrandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**Invoke-BrandAccountsUpdate**](BusinessAccessRelationshipsApi.md#Invoke-BrandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**Invoke-DeleteBusinessMembership**](BusinessAccessRelationshipsApi.md#Invoke-DeleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**Invoke-DeleteBusinessPartners**](BusinessAccessRelationshipsApi.md#Invoke-DeleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**Get-BusinessEmployers**](BusinessAccessRelationshipsApi.md#Get-BusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**Get-BusinessMembers**](BusinessAccessRelationshipsApi.md#Get-BusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**Get-BusinessPartners**](BusinessAccessRelationshipsApi.md#Get-BusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**Invoke-SystemUserUpdate**](BusinessAccessRelationshipsApi.md#Invoke-SystemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**Update-BusinessMemberships**](BusinessAccessRelationshipsApi.md#Update-BusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+<a id="Invoke-BrandAccountsCreate"></a>
+# **Invoke-BrandAccountsCreate**
+> BrandAccountsCreate200Response Invoke-BrandAccountsCreate<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessHierarchyId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountsCreateRequest] <PSCustomObject><br>
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$BusinessHierarchyId = "7009386637860" # String | business hierarchy node id
+$ImageBase64 = Initialize-ImageBase64 -ContentType "image/jpeg" -VarData "MyVarData"
+$BrandAccountsCreateRequest = Initialize-BrandAccountsCreateRequest -Name "Canada Stores" -Username "canada_stores" -Country "AD" -About "Stores in Canada" -Website "https://www.example.com" -ProfileImage $ImageBase64 # BrandAccountsCreateRequest | 
+
+# Create a Brand Account
+try {
+    $Result = Invoke-BrandAccountsCreate -BusinessHierarchyId $BusinessHierarchyId -BrandAccountsCreateRequest $BrandAccountsCreateRequest
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-BrandAccountsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **BusinessHierarchyId** | **String**| business hierarchy node id | 
+ **BrandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-BrandAccountsUpdate"></a>
+# **Invoke-BrandAccountsUpdate**
+> BrandAccountsCreate200Response Invoke-BrandAccountsUpdate<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessHierarchyId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountsUpdateRequest] <PSCustomObject><br>
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$BusinessHierarchyId = "7009386637860" # String | business hierarchy node id
+$BrandAccountId = "729090764583391194" # String | Unique identifier of a brand account.
+$ImageBase64 = Initialize-ImageBase64 -ContentType "image/jpeg" -VarData "MyVarData"
+$BrandAccountsUpdateRequest = Initialize-BrandAccountsUpdateRequest -Name "Canada Stores" -Username "canada_stores" -Country "AD" -About "Stores in Canada" -Website "https://www.example.com" -ProfileImage $ImageBase64 # BrandAccountsUpdateRequest | 
+
+# Update a Brand Account
+try {
+    $Result = Invoke-BrandAccountsUpdate -BusinessHierarchyId $BusinessHierarchyId -BrandAccountId $BrandAccountId -BrandAccountsUpdateRequest $BrandAccountsUpdateRequest
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-BrandAccountsUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **BusinessHierarchyId** | **String**| business hierarchy node id | 
+ **BrandAccountId** | **String**| Unique identifier of a brand account. | 
+ **BrandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="Invoke-DeleteBusinessMembership"></a>
 # **Invoke-DeleteBusinessMembership**
@@ -30,7 +140,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Business id
-$MembersToDeleteBodyMembersInner = Initialize-MembersToDeleteBodyMembersInner -MemberId "140943737684417" -BusinessRole "EMPLOYEE"
+$MembersToDeleteBodyMembersInner = Initialize-MembersToDeleteBodyMembersInner -BusinessRole "EMPLOYEE" -MemberId "140943737684417"
 $MembersToDeleteBody = Initialize-MembersToDeleteBody -Members $MembersToDeleteBodyMembersInner # MembersToDeleteBody | List of members with role to delete.
 
 # Terminate business memberships
@@ -171,6 +281,7 @@ Name | Type | Description  | Notes
 # **Get-BusinessMembers**
 > GetBusinessMembers200Response Get-BusinessMembers<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FetchSystemUsers] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetsSummary] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessRoles] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MemberIds] <String><br>
@@ -190,6 +301,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$FetchSystemUsers = $true # Boolean | Fetches system users if True. Fetches regular user employees if False. (optional) (default to $false)
 $AssetsSummary = $true # Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to $false)
 $BusinessRoles = "EMPLOYEE" # MemberBusinessRole[] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
 $MemberIds = "00101010101,2222220101" # String | A list of business members ids separated by comma. (optional)
@@ -199,7 +311,7 @@ $PageSize = 56 # Int32 | Maximum number of items to include in a single page of 
 
 # Get business members
 try {
-    $Result = Get-BusinessMembers -BusinessId $BusinessId -AssetsSummary $AssetsSummary -BusinessRoles $BusinessRoles -MemberIds $MemberIds -StartIndex $StartIndex -Bookmark $Bookmark -PageSize $PageSize
+    $Result = Get-BusinessMembers -BusinessId $BusinessId -FetchSystemUsers $FetchSystemUsers -AssetsSummary $AssetsSummary -BusinessRoles $BusinessRoles -MemberIds $MemberIds -StartIndex $StartIndex -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Get-BusinessMembers: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -211,6 +323,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
+ **FetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to $false]
  **AssetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to $false]
  **BusinessRoles** | [**MemberBusinessRole[]**](MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
  **MemberIds** | **String**| A list of business members ids separated by comma. | [optional] 
@@ -295,6 +408,60 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-SystemUserUpdate"></a>
+# **Invoke-SystemUserUpdate**
+> void Invoke-SystemUserUpdate<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SystemUserId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SystemUserUpdateRequest] <PSCustomObject><br>
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$SystemUserId = "729090764583391194" # String | Unique identifier of a system user.
+$SystemUserUpdateRequest = Initialize-SystemUserUpdateRequest -Name "Billing API" # SystemUserUpdateRequest | 
+
+# Update a system user information.
+try {
+    $Result = Invoke-SystemUserUpdate -BusinessId $BusinessId -SystemUserId $SystemUserId -SystemUserUpdateRequest $SystemUserUpdateRequest
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-SystemUserUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **BusinessId** | **String**| Unique identifier of the requesting business. | 
+ **SystemUserId** | **String**| Unique identifier of a system user. | 
+ **SystemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

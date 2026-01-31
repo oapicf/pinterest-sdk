@@ -6,27 +6,27 @@
 
 
 static catalogs_product_group_multiple_string_criteria_t *catalogs_product_group_multiple_string_criteria_create_internal(
-    list_t *values,
-    int negated
+    int negated,
+    list_t *values
     ) {
     catalogs_product_group_multiple_string_criteria_t *catalogs_product_group_multiple_string_criteria_local_var = malloc(sizeof(catalogs_product_group_multiple_string_criteria_t));
     if (!catalogs_product_group_multiple_string_criteria_local_var) {
         return NULL;
     }
-    catalogs_product_group_multiple_string_criteria_local_var->values = values;
     catalogs_product_group_multiple_string_criteria_local_var->negated = negated;
+    catalogs_product_group_multiple_string_criteria_local_var->values = values;
 
     catalogs_product_group_multiple_string_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_multiple_string_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_multiple_string_criteria_t *catalogs_product_group_multiple_string_criteria_create(
-    list_t *values,
-    int negated
+    int negated,
+    list_t *values
     ) {
     return catalogs_product_group_multiple_string_criteria_create_internal (
-        values,
-        negated
+        negated,
+        values
         );
 }
 
@@ -52,6 +52,14 @@ void catalogs_product_group_multiple_string_criteria_free(catalogs_product_group
 cJSON *catalogs_product_group_multiple_string_criteria_convertToJSON(catalogs_product_group_multiple_string_criteria_t *catalogs_product_group_multiple_string_criteria) {
     cJSON *item = cJSON_CreateObject();
 
+    // catalogs_product_group_multiple_string_criteria->negated
+    if(catalogs_product_group_multiple_string_criteria->negated) {
+    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_multiple_string_criteria->negated) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // catalogs_product_group_multiple_string_criteria->values
     if (!catalogs_product_group_multiple_string_criteria->values) {
         goto fail;
@@ -69,14 +77,6 @@ cJSON *catalogs_product_group_multiple_string_criteria_convertToJSON(catalogs_pr
     }
     }
 
-
-    // catalogs_product_group_multiple_string_criteria->negated
-    if(catalogs_product_group_multiple_string_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_multiple_string_criteria->negated) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -91,6 +91,18 @@ catalogs_product_group_multiple_string_criteria_t *catalogs_product_group_multip
 
     // define the local list for catalogs_product_group_multiple_string_criteria->values
     list_t *valuesList = NULL;
+
+    // catalogs_product_group_multiple_string_criteria->negated
+    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_string_criteriaJSON, "negated");
+    if (cJSON_IsNull(negated)) {
+        negated = NULL;
+    }
+    if (negated) { 
+    if(!cJSON_IsBool(negated))
+    {
+    goto end; //Bool
+    }
+    }
 
     // catalogs_product_group_multiple_string_criteria->values
     cJSON *values = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_string_criteriaJSON, "values");
@@ -117,22 +129,10 @@ catalogs_product_group_multiple_string_criteria_t *catalogs_product_group_multip
         list_addElement(valuesList , strdup(values_local->valuestring));
     }
 
-    // catalogs_product_group_multiple_string_criteria->negated
-    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_string_criteriaJSON, "negated");
-    if (cJSON_IsNull(negated)) {
-        negated = NULL;
-    }
-    if (negated) { 
-    if(!cJSON_IsBool(negated))
-    {
-    goto end; //Bool
-    }
-    }
-
 
     catalogs_product_group_multiple_string_criteria_local_var = catalogs_product_group_multiple_string_criteria_create_internal (
-        valuesList,
-        negated ? negated->valueint : 0
+        negated ? negated->valueint : 0,
+        valuesList
         );
 
     return catalogs_product_group_multiple_string_criteria_local_var;

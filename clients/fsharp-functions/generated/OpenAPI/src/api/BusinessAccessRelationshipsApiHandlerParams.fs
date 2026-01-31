@@ -1,5 +1,8 @@
 namespace OpenAPI
 
+open OpenAPI.Model.BrandAccountsCreate200Response
+open OpenAPI.Model.BrandAccountsCreateRequest
+open OpenAPI.Model.BrandAccountsUpdateRequest
 open OpenAPI.Model.DeletePartnersRequest
 open OpenAPI.Model.DeletePartnersResponse
 open OpenAPI.Model.DeletedMembersResponse
@@ -10,6 +13,7 @@ open OpenAPI.Model.GetBusinessPartners200Response
 open OpenAPI.Model.MemberBusinessRole
 open OpenAPI.Model.MembersToDeleteBody
 open OpenAPI.Model.PartnerType
+open OpenAPI.Model.SystemUserUpdateRequest
 open OpenAPI.Model.UpdateMemberBusinessRoleBody
 open OpenAPI.Model.UpdateMemberResultsResponseArray
 open System.Collections.Generic
@@ -17,6 +21,99 @@ open System
 
 module BusinessAccessRelationshipsApiHandlerParams =
 
+    //#region Path parameters
+    [<CLIMutable>]
+    type BrandAccountsCreatePathParams = {
+      businessHierarchyId : string ;
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type BrandAccountsCreateBodyParams = BrandAccountsCreateRequest
+    //#endregion
+
+
+    type BrandAccountsCreateStatusCode200Response = {
+      content:BrandAccountsCreate200Response;
+      
+    }
+
+    type BrandAccountsCreateStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsCreateDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type BrandAccountsCreateResult = BrandAccountsCreateStatusCode200 of BrandAccountsCreateStatusCode200Response|BrandAccountsCreateStatusCode400 of BrandAccountsCreateStatusCode400Response|BrandAccountsCreateDefaultStatusCode of BrandAccountsCreateDefaultStatusCodeResponse
+
+    type BrandAccountsCreateArgs = {
+      pathParams:BrandAccountsCreatePathParams;
+      bodyParams:BrandAccountsCreateBodyParams
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type BrandAccountsUpdatePathParams = {
+      businessHierarchyId : string ;
+    //#endregion
+      brandAccountId : string ;
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type BrandAccountsUpdateBodyParams = BrandAccountsUpdateRequest
+    //#endregion
+
+
+    type BrandAccountsUpdateStatusCode200Response = {
+      content:BrandAccountsCreate200Response;
+      
+    }
+
+    type BrandAccountsUpdateStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsUpdateStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsUpdateStatusCode403Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsUpdateStatusCode404Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsUpdateStatusCode409Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsUpdateStatusCode429Response = {
+      content:Error;
+      
+    }
+
+    type BrandAccountsUpdateDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type BrandAccountsUpdateResult = BrandAccountsUpdateStatusCode200 of BrandAccountsUpdateStatusCode200Response|BrandAccountsUpdateStatusCode400 of BrandAccountsUpdateStatusCode400Response|BrandAccountsUpdateStatusCode401 of BrandAccountsUpdateStatusCode401Response|BrandAccountsUpdateStatusCode403 of BrandAccountsUpdateStatusCode403Response|BrandAccountsUpdateStatusCode404 of BrandAccountsUpdateStatusCode404Response|BrandAccountsUpdateStatusCode409 of BrandAccountsUpdateStatusCode409Response|BrandAccountsUpdateStatusCode429 of BrandAccountsUpdateStatusCode429Response|BrandAccountsUpdateDefaultStatusCode of BrandAccountsUpdateDefaultStatusCodeResponse
+
+    type BrandAccountsUpdateArgs = {
+      pathParams:BrandAccountsUpdatePathParams;
+      bodyParams:BrandAccountsUpdateBodyParams
+    }
     //#region Path parameters
     [<CLIMutable>]
     type DeleteBusinessMembershipPathParams = {
@@ -115,6 +212,9 @@ module BusinessAccessRelationshipsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type GetBusinessMembersQueryParams = {
+      fetchSystemUsers : bool option;
+
+
       assetsSummary : bool option;
 
 
@@ -196,6 +296,41 @@ module BusinessAccessRelationshipsApiHandlerParams =
     type GetBusinessPartnersArgs = {
       pathParams:GetBusinessPartnersPathParams;
       queryParams:Result<GetBusinessPartnersQueryParams,string>;
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type SystemUserUpdatePathParams = {
+      businessId : string ;
+    //#endregion
+      systemUserId : string ;
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type SystemUserUpdateBodyParams = SystemUserUpdateRequest
+    //#endregion
+
+
+    type SystemUserUpdateStatusCode200Response = {
+      content:string;
+      
+    }
+
+    type SystemUserUpdateStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type SystemUserUpdateDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type SystemUserUpdateResult = SystemUserUpdateStatusCode200 of SystemUserUpdateStatusCode200Response|SystemUserUpdateStatusCode400 of SystemUserUpdateStatusCode400Response|SystemUserUpdateDefaultStatusCode of SystemUserUpdateDefaultStatusCodeResponse
+
+    type SystemUserUpdateArgs = {
+      pathParams:SystemUserUpdatePathParams;
+      bodyParams:SystemUserUpdateBodyParams
     }
     //#region Path parameters
     [<CLIMutable>]

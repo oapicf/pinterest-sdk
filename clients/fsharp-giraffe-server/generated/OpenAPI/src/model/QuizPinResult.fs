@@ -9,10 +9,10 @@ module QuizPinResult =
 
 
   type QuizPinResult = {
-    OrganicPinId : string;
     AndroidDeepLink : string;
-    IosDeepLink : string;
     DestinationUrl : string;
+    IosDeepLink : string;
+    OrganicPinId : string;
     ResultId : decimal;
   }
   //#endregion

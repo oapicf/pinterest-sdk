@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaWithImageAndVideo`
 --
-SELECT `media_type`, `items` FROM `PinMediaWithImageAndVideo` WHERE 1;
+SELECT `items`, `media_type` FROM `PinMediaWithImageAndVideo` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaWithImageAndVideo`
 --
-INSERT INTO `PinMediaWithImageAndVideo`(`media_type`, `items`) VALUES (?, ?);
+INSERT INTO `PinMediaWithImageAndVideo`(`items`, `media_type`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `PinMediaWithImageAndVideo`
 --
-UPDATE `PinMediaWithImageAndVideo` SET `media_type` = ?, `items` = ? WHERE 1;
+UPDATE `PinMediaWithImageAndVideo` SET `items` = ?, `media_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaWithImageAndVideo`

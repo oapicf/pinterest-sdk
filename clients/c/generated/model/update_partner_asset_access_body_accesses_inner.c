@@ -5,13 +5,13 @@
 
 
 char* update_partner_asset_access_body_accesses_inner_permissions_ToString(pinterest_rest_api_update_partner_asset_access_body_accesses_inner__e permissions) {
-    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     return permissionsArray[permissions - 1];
 }
 
 pinterest_rest_api_update_partner_asset_access_body_accesses_inner__e update_partner_asset_access_body_accesses_inner_permissions_FromString(char* permissions) {
     int stringToReturn = 0;
-    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     size_t sizeofArray = sizeof(permissionsArray) / sizeof(permissionsArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(permissions, permissionsArray[stringToReturn]) == 0) {
@@ -23,16 +23,16 @@ pinterest_rest_api_update_partner_asset_access_body_accesses_inner__e update_par
 }
 
 static update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create_internal(
-    char *partner_id,
     char *asset_id,
+    char *partner_id,
     list_t *permissions
     ) {
     update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_local_var = malloc(sizeof(update_partner_asset_access_body_accesses_inner_t));
     if (!update_partner_asset_access_body_accesses_inner_local_var) {
         return NULL;
     }
-    update_partner_asset_access_body_accesses_inner_local_var->partner_id = partner_id;
     update_partner_asset_access_body_accesses_inner_local_var->asset_id = asset_id;
+    update_partner_asset_access_body_accesses_inner_local_var->partner_id = partner_id;
     update_partner_asset_access_body_accesses_inner_local_var->permissions = permissions;
 
     update_partner_asset_access_body_accesses_inner_local_var->_library_owned = 1;
@@ -40,13 +40,13 @@ static update_partner_asset_access_body_accesses_inner_t *update_partner_asset_a
 }
 
 __attribute__((deprecated)) update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create(
-    char *partner_id,
     char *asset_id,
+    char *partner_id,
     list_t *permissions
     ) {
     return update_partner_asset_access_body_accesses_inner_create_internal (
-        partner_id,
         asset_id,
+        partner_id,
         permissions
         );
 }
@@ -60,13 +60,13 @@ void update_partner_asset_access_body_accesses_inner_free(update_partner_asset_a
         return ;
     }
     listEntry_t *listEntry;
-    if (update_partner_asset_access_body_accesses_inner->partner_id) {
-        free(update_partner_asset_access_body_accesses_inner->partner_id);
-        update_partner_asset_access_body_accesses_inner->partner_id = NULL;
-    }
     if (update_partner_asset_access_body_accesses_inner->asset_id) {
         free(update_partner_asset_access_body_accesses_inner->asset_id);
         update_partner_asset_access_body_accesses_inner->asset_id = NULL;
+    }
+    if (update_partner_asset_access_body_accesses_inner->partner_id) {
+        free(update_partner_asset_access_body_accesses_inner->partner_id);
+        update_partner_asset_access_body_accesses_inner->partner_id = NULL;
     }
     if (update_partner_asset_access_body_accesses_inner->permissions) {
         list_ForEach(listEntry, update_partner_asset_access_body_accesses_inner->permissions) {
@@ -81,20 +81,20 @@ void update_partner_asset_access_body_accesses_inner_free(update_partner_asset_a
 cJSON *update_partner_asset_access_body_accesses_inner_convertToJSON(update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner) {
     cJSON *item = cJSON_CreateObject();
 
-    // update_partner_asset_access_body_accesses_inner->partner_id
-    if (!update_partner_asset_access_body_accesses_inner->partner_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "partner_id", update_partner_asset_access_body_accesses_inner->partner_id) == NULL) {
-    goto fail; //String
-    }
-
-
     // update_partner_asset_access_body_accesses_inner->asset_id
     if (!update_partner_asset_access_body_accesses_inner->asset_id) {
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "asset_id", update_partner_asset_access_body_accesses_inner->asset_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // update_partner_asset_access_body_accesses_inner->partner_id
+    if (!update_partner_asset_access_body_accesses_inner->partner_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "partner_id", update_partner_asset_access_body_accesses_inner->partner_id) == NULL) {
     goto fail; //String
     }
 
@@ -134,21 +134,6 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
     // define the local list for update_partner_asset_access_body_accesses_inner->permissions
     list_t *permissionsList = NULL;
 
-    // update_partner_asset_access_body_accesses_inner->partner_id
-    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(update_partner_asset_access_body_accesses_innerJSON, "partner_id");
-    if (cJSON_IsNull(partner_id)) {
-        partner_id = NULL;
-    }
-    if (!partner_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(partner_id))
-    {
-    goto end; //String
-    }
-
     // update_partner_asset_access_body_accesses_inner->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(update_partner_asset_access_body_accesses_innerJSON, "asset_id");
     if (cJSON_IsNull(asset_id)) {
@@ -160,6 +145,21 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
 
     
     if(!cJSON_IsString(asset_id))
+    {
+    goto end; //String
+    }
+
+    // update_partner_asset_access_body_accesses_inner->partner_id
+    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(update_partner_asset_access_body_accesses_innerJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
+    if (!partner_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(partner_id))
     {
     goto end; //String
     }
@@ -193,8 +193,8 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
 
 
     update_partner_asset_access_body_accesses_inner_local_var = update_partner_asset_access_body_accesses_inner_create_internal (
-        strdup(partner_id->valuestring),
         strdup(asset_id->valuestring),
+        strdup(partner_id->valuestring),
         permissionsList
         );
 

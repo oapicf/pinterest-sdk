@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The catalog item id in the merchant namespace
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The catalog item id in the merchant namespace
-	 */
-	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
 	UpdatableItemAttributes getAttributes();
@@ -62,6 +55,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setAttributes(UpdatableItemAttributes  attributes);
+	/*! \brief Get The catalog item id in the merchant namespace
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The catalog item id in the merchant namespace
+	 */
+	void setItemId(std::string  item_id);
 	/*! \brief Get The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	 */
 	std::list<UpdateMaskFieldType> getUpdateMask();
@@ -71,8 +71,8 @@ public:
 	void setUpdateMask(std::list <UpdateMaskFieldType> update_mask);
 
 private:
-	std::string item_id;
 	UpdatableItemAttributes attributes;
+	std::string item_id;
 	std::list <UpdateMaskFieldType>update_mask;
 	void __init();
 	void __cleanup();

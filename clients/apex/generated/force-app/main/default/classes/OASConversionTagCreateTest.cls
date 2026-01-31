@@ -73,25 +73,27 @@ private class OASConversionTagCreateTest {
     private static void maintainRenamedProperties() {
         OASConversionTagCreate conversionTagCreate = new OASConversionTagCreate();
         Map<String, String> x-property-mappings = conversionTagCreate.getx-property-mappings();
-        System.assertEquals('aemEnabled', x-property-mappings.get('aem_enabled'));
-        System.assertEquals('mdFrequency', x-property-mappings.get('md_frequency'));
-        System.assertEquals('aemFnlnEnabled', x-property-mappings.get('aem_fnln_enabled'));
-        System.assertEquals('aemPhEnabled', x-property-mappings.get('aem_ph_enabled'));
-        System.assertEquals('aemGeEnabled', x-property-mappings.get('aem_ge_enabled'));
         System.assertEquals('aemDbEnabled', x-property-mappings.get('aem_db_enabled'));
+        System.assertEquals('aemEnabled', x-property-mappings.get('aem_enabled'));
+        System.assertEquals('aemExternalIdEnabled', x-property-mappings.get('aem_external_id_enabled'));
+        System.assertEquals('aemFnlnEnabled', x-property-mappings.get('aem_fnln_enabled'));
+        System.assertEquals('aemGeEnabled', x-property-mappings.get('aem_ge_enabled'));
         System.assertEquals('aemLocEnabled', x-property-mappings.get('aem_loc_enabled'));
+        System.assertEquals('aemPhEnabled', x-property-mappings.get('aem_ph_enabled'));
+        System.assertEquals('mdFrequency', x-property-mappings.get('md_frequency'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASConversionTagCreate conversionTagCreate = new OASConversionTagCreate();
-        System.assertEquals(false, conversionTagCreate.aemEnabled);
-        System.assertEquals(1, conversionTagCreate.mdFrequency);
-        System.assertEquals(false, conversionTagCreate.aemFnlnEnabled);
-        System.assertEquals(false, conversionTagCreate.aemPhEnabled);
-        System.assertEquals(false, conversionTagCreate.aemGeEnabled);
         System.assertEquals(false, conversionTagCreate.aemDbEnabled);
+        System.assertEquals(false, conversionTagCreate.aemEnabled);
+        System.assertEquals(false, conversionTagCreate.aemExternalIdEnabled);
+        System.assertEquals(false, conversionTagCreate.aemFnlnEnabled);
+        System.assertEquals(false, conversionTagCreate.aemGeEnabled);
         System.assertEquals(false, conversionTagCreate.aemLocEnabled);
+        System.assertEquals(false, conversionTagCreate.aemPhEnabled);
+        System.assertEquals(1, conversionTagCreate.mdFrequency);
         System.assertEquals(null, conversionTagCreate.name);
     }
 }

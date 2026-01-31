@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BulkUpsertStatusResponse, () {
-    // BulkUpsertStatus status
-    test('to test the property `status`', () async {
+    // String resultUrl
+    test('to test the property `resultUrl`', () async {
       // TODO
     });
 
-    // String resultUrl
-    test('to test the property `resultUrl`', () async {
+    // BulkUpsertStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 

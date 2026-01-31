@@ -12,9 +12,9 @@ module DeliveryMetricsResponseItemsInner =
   //#endregion
 
   type DeliveryMetricsResponse_items_inner = {
-    Name : string;
     Category : CategoryEnum;
     Definition : string;
     DisplayName : string;
+    Name : string;
   }
   //#endregion

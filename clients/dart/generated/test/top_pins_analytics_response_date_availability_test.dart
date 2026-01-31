@@ -16,13 +16,13 @@ void main() {
   // final instance = TopPinsAnalyticsResponseDateAvailability();
 
   group('test TopPinsAnalyticsResponseDateAvailability', () {
-    // num latestAvailableTimestamp
-    test('to test the property `latestAvailableTimestamp`', () async {
+    // bool isRealtime
+    test('to test the property `isRealtime`', () async {
       // TODO
     });
 
-    // bool isRealtime
-    test('to test the property `isRealtime`', () async {
+    // num latestAvailableTimestamp
+    test('to test the property `latestAvailableTimestamp`', () async {
       // TODO
     });
 

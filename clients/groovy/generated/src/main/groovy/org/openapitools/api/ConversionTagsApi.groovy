@@ -2,11 +2,12 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.ConversionEventResponse
+import org.openapitools.model.ConversionTag
 import org.openapitools.model.ConversionTagCreate
-import org.openapitools.model.ConversionTagListResponse
-import org.openapitools.model.ConversionTagResponse
+import org.openapitools.model.ConversionTagsList200Response
 import org.openapitools.model.Error
 import org.openapitools.model.PageVisitConversionTagsGet200Response
+import org.openapitools.model.PinterestLibError
 
 class ConversionTagsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -39,7 +40,7 @@ class ConversionTagsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "POST", "",
-                    ConversionTagResponse.class )
+                    ConversionTag.class )
 
     }
 
@@ -67,7 +68,7 @@ class ConversionTagsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
-                    ConversionTagResponse.class )
+                    ConversionTag.class )
 
     }
 
@@ -94,7 +95,7 @@ class ConversionTagsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
-                    ConversionTagListResponse.class )
+                    ConversionTagsList200Response.class )
 
     }
 

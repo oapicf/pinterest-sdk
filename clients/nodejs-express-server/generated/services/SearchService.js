@@ -3,7 +3,7 @@ const Service = require('./Service');
 
 /**
 * Search pins by a given search term
-* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 *
 * term String Search term to look up pins.
 * countryUnderscorecode String Two letter country code (ISO 3166-1 alpha-2)
@@ -64,7 +64,7 @@ const search_user_boards/get = ({ adUnderscoreaccountUnderscoreid, bookmark, pag
 * query String Search query. Can contain pin description keywords or comma-separated pin IDs.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* returns pins_list_200_response
+* returns search_user_pins_list_200_response
 * */
 const search_user_pins/list = ({ query, adUnderscoreaccountUnderscoreid, bookmark }) => new Promise(
   async (resolve, reject) => {

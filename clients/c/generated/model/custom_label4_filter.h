@@ -15,18 +15,18 @@
 
 typedef struct custom_label4_filter_t custom_label4_filter_t;
 
-#include "catalogs_product_group_multiple_string_criteria.h"
+#include "catalogs_product_group_filter_operator_type_criteria.h"
 
 
 
 typedef struct custom_label4_filter_t {
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4; //object
 
     int _library_owned; // Is the library responsible for freeing this object?
 } custom_label4_filter_t;
 
 __attribute__((deprecated)) custom_label4_filter_t *custom_label4_filter_create(
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4
 );
 
 void custom_label4_filter_free(custom_label4_filter_t *custom_label4_filter);

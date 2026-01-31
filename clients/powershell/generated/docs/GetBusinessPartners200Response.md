@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**UserBusinessRoleBinding[]**](UserBusinessRoleBinding.md) | List of business partners. | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**UserBusinessRoleBinding[]**](UserBusinessRoleBinding.md) | List of business partners. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$GetBusinessPartners200Response = Initialize-PSOpenAPIToolsGetBusinessPartners200Response  -Items null `
- -Bookmark null
+$GetBusinessPartners200Response = Initialize-PSOpenAPIToolsGetBusinessPartners200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

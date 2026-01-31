@@ -1,12 +1,13 @@
 namespace OpenAPI
 
 open OpenAPI.Model.ConversionEventResponse
+open OpenAPI.Model.ConversionTag
 open OpenAPI.Model.ConversionTagCreate
-open OpenAPI.Model.ConversionTagListResponse
-open OpenAPI.Model.ConversionTagResponse
+open OpenAPI.Model.ConversionTagsList200Response
 open OpenAPI.Model.Error
 open System.Collections.Generic
 open OpenAPI.Model.PageVisitConversionTagsGet200Response
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -26,15 +27,45 @@ module ConversionTagsApiHandlerParams =
 
 
     type ConversionTagsCreateStatusCode200Response = {
-      content:ConversionTagResponse;
+      content:ConversionTag;
+      
+    }
+
+    type ConversionTagsCreateStatusCode201Response = {
+      content:ConversionTag;
+      
+    }
+
+    type ConversionTagsCreateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type ConversionTagsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type ConversionTagsCreateResult = ConversionTagsCreateStatusCode200 of ConversionTagsCreateStatusCode200Response|ConversionTagsCreateDefaultStatusCode of ConversionTagsCreateDefaultStatusCodeResponse
+    type ConversionTagsCreateResult = ConversionTagsCreateStatusCode200 of ConversionTagsCreateStatusCode200Response|ConversionTagsCreateStatusCode201 of ConversionTagsCreateStatusCode201Response|ConversionTagsCreateStatusCode400 of ConversionTagsCreateStatusCode400Response|ConversionTagsCreateStatusCode401 of ConversionTagsCreateStatusCode401Response|ConversionTagsCreateStatusCode403 of ConversionTagsCreateStatusCode403Response|ConversionTagsCreateStatusCode404 of ConversionTagsCreateStatusCode404Response|ConversionTagsCreateStatusCode429 of ConversionTagsCreateStatusCode429Response|ConversionTagsCreateDefaultStatusCode of ConversionTagsCreateDefaultStatusCodeResponse
 
     type ConversionTagsCreateArgs = {
       pathParams:ConversionTagsCreatePathParams;
@@ -51,7 +82,7 @@ module ConversionTagsApiHandlerParams =
 
 
     type ConversionTagsGetStatusCode200Response = {
-      content:ConversionTagResponse;
+      content:ConversionTag;
       
     }
 
@@ -81,15 +112,40 @@ module ConversionTagsApiHandlerParams =
 
 
     type ConversionTagsListStatusCode200Response = {
-      content:ConversionTagListResponse;
+      content:ConversionTagsList200Response;
+      
+    }
+
+    type ConversionTagsListStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type ConversionTagsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type ConversionTagsListResult = ConversionTagsListStatusCode200 of ConversionTagsListStatusCode200Response|ConversionTagsListDefaultStatusCode of ConversionTagsListDefaultStatusCodeResponse
+    type ConversionTagsListResult = ConversionTagsListStatusCode200 of ConversionTagsListStatusCode200Response|ConversionTagsListStatusCode400 of ConversionTagsListStatusCode400Response|ConversionTagsListStatusCode401 of ConversionTagsListStatusCode401Response|ConversionTagsListStatusCode403 of ConversionTagsListStatusCode403Response|ConversionTagsListStatusCode404 of ConversionTagsListStatusCode404Response|ConversionTagsListStatusCode429 of ConversionTagsListStatusCode429Response|ConversionTagsListDefaultStatusCode of ConversionTagsListDefaultStatusCodeResponse
 
     type ConversionTagsListArgs = {
       pathParams:ConversionTagsListPathParams;

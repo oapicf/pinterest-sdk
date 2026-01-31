@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**audiencesCreate**](AudiencesApi.md#audiencesCreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
-[**audiencesCreateCustom**](AudiencesApi.md#audiencesCreateCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**audiencesGet**](AudiencesApi.md#audiencesGet) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 [**audiencesList**](AudiencesApi.md#audiencesList) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
 [**audiencesUpdate**](AudiencesApi.md#audiencesUpdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
@@ -18,7 +17,7 @@ Method | HTTP request | Description
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
 
 ### Example
 
@@ -63,57 +62,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## audiencesCreateCustom
-
-> Audience audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
-
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Example
-
-```javascript
-import PinterestSdk from 'pinterest-sdk';
-let defaultClient = PinterestSdk.ApiClient.instance;
-// Configure OAuth2 access token for authorization: pinterest_oauth2
-let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
-pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
-
-let apiInstance = new PinterestSdk.AudiencesApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let audienceCreateCustomRequest = new PinterestSdk.AudienceCreateCustomRequest(); // AudienceCreateCustomRequest | Custom audience to create.
-apiInstance.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
- **audienceCreateCustomRequest** | [**AudienceCreateCustomRequest**](AudienceCreateCustomRequest.md)| Custom audience to create. | 
-
-### Return type
-
-[**Audience**](Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## audiencesGet
 
 > Audience audiencesGet(adAccountId, audienceId)
@@ -130,6 +78,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudiencesApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
@@ -157,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -181,6 +132,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudiencesApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
@@ -216,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -226,7 +180,7 @@ Name | Type | Description  | Notes
 
 ## audiencesUpdate
 
-> Audience audiencesUpdate(adAccountId, audienceId, opts)
+> Audience audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
 
 Update audience
 
@@ -244,10 +198,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.AudiencesApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let audienceId = "audienceId_example"; // String | Unique identifier of an audience
-let opts = {
-  'audienceUpdateRequest': new PinterestSdk.AudienceUpdateRequest() // AudienceUpdateRequest | The audience to be updated.
-};
-apiInstance.audiencesUpdate(adAccountId, audienceId, opts, (error, data, response) => {
+let audienceUpdateRequest = new PinterestSdk.AudienceUpdateRequest(); // AudienceUpdateRequest | The audience to be updated.
+apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -263,7 +215,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **audienceId** | **String**| Unique identifier of an audience | 
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | [optional] 
+ **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | 
 
 ### Return type
 

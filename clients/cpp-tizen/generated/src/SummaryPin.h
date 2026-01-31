@@ -48,18 +48,25 @@ public:
 
 	/*! \brief Get 
 	 */
-	PinMedia getMedia();
-
-	/*! \brief Set 
-	 */
-	void setMedia(PinMedia  media);
-	/*! \brief Get 
-	 */
 	std::string getAltText();
 
 	/*! \brief Set 
 	 */
 	void setAltText(std::string  alt_text);
+	/*! \brief Get 
+	 */
+	std::string getDescription();
+
+	/*! \brief Set 
+	 */
+	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	std::string getId();
+
+	/*! \brief Set 
+	 */
+	void setId(std::string  id);
 	/*! \brief Get 
 	 */
 	std::string getLink();
@@ -69,25 +76,26 @@ public:
 	void setLink(std::string  link);
 	/*! \brief Get 
 	 */
+	PinMedia getMedia();
+
+	/*! \brief Set 
+	 */
+	void setMedia(PinMedia  media);
+	/*! \brief Get 
+	 */
 	std::string getTitle();
 
 	/*! \brief Set 
 	 */
 	void setTitle(std::string  title);
-	/*! \brief Get 
-	 */
-	std::string getDescription();
-
-	/*! \brief Set 
-	 */
-	void setDescription(std::string  description);
 
 private:
-	PinMedia media;
 	std::string alt_text;
-	std::string link;
-	std::string title;
 	std::string description;
+	std::string id;
+	std::string link;
+	PinMedia media;
+	std::string title;
 	void __init();
 	void __cleanup();
 

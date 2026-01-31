@@ -27,10 +27,16 @@ class CatalogsRetailProductMetadataTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsRetailProductMetadata
         //val modelInstance = CatalogsRetailProductMetadata()
 
-        // to test the property `itemId` - The user-created unique ID that represents the product.
-        should("test itemId") {
+        // to test the property `availability`
+        should("test availability") {
             // uncomment below to test the property
-            //modelInstance.itemId shouldBe ("TODO")
+            //modelInstance.availability shouldBe ("TODO")
+        }
+
+        // to test the property `currency`
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
         }
 
         // to test the property `itemGroupId` - The parent ID of the product.
@@ -39,10 +45,10 @@ class CatalogsRetailProductMetadataTest : ShouldSpec() {
             //modelInstance.itemGroupId shouldBe ("TODO")
         }
 
-        // to test the property `availability`
-        should("test availability") {
+        // to test the property `itemId` - The user-created unique ID that represents the product.
+        should("test itemId") {
             // uncomment below to test the property
-            //modelInstance.availability shouldBe ("TODO")
+            //modelInstance.itemId shouldBe ("TODO")
         }
 
         // to test the property `price` - The price of the product.
@@ -55,12 +61,6 @@ class CatalogsRetailProductMetadataTest : ShouldSpec() {
         should("test salePrice") {
             // uncomment below to test the property
             //modelInstance.salePrice shouldBe ("TODO")
-        }
-
-        // to test the property `currency`
-        should("test currency") {
-            // uncomment below to test the property
-            //modelInstance.currency shouldBe ("TODO")
         }
 
     }

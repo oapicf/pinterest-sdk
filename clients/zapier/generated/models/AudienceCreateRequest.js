@@ -19,13 +19,13 @@ module.exports = {
             },
             ...AudienceRule.fields(`${keyPrefix}rule`, isInput),
             {
+                key: `${keyPrefix}audience_type`,
+                ...AudienceType.fields(`${keyPrefix}audience_type`, isInput),
+            },
+            {
                 key: `${keyPrefix}description`,
                 label: `Audience description. - [${labelPrefix}description]`,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}audience_type`,
-                ...AudienceType.fields(`${keyPrefix}audience_type`, isInput),
             },
         ]
     },
@@ -35,8 +35,8 @@ module.exports = {
             'ad_account_id': bundle.inputData?.[`${keyPrefix}ad_account_id`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'rule': utils.removeIfEmpty(AudienceRule.mapping(bundle, `${keyPrefix}rule`)),
-            'description': bundle.inputData?.[`${keyPrefix}description`],
             'audience_type': bundle.inputData?.[`${keyPrefix}audience_type`],
+            'description': bundle.inputData?.[`${keyPrefix}description`],
         }
     },
 }

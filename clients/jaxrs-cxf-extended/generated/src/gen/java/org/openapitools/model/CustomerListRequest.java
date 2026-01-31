@@ -13,6 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerListRequest  {
   
+  @ApiModelProperty(value = "")
+  @Valid
+  private UserListType listType = "EMAIL";
+
  /**
   * Customer list name.
   */
@@ -24,16 +28,30 @@ public class CustomerListRequest  {
   */
   @ApiModelProperty(example = "email1@pinterest.com,email2@pinterest.com,..<more records>", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
   private String records;
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private UserListType listType = "EMAIL";
-
  /**
-  * Customer list errors.
+  * Get listType
+  * @return listType
   */
-  @ApiModelProperty(value = "Customer list errors.")
-  private Object exceptions;
+  @JsonProperty("list_type")
+  public UserListType getListType() {
+    return listType;
+  }
+
+  /**
+   * Sets the <code>listType</code> property.
+   */
+ public void setListType(UserListType listType) {
+    this.listType = listType;
+  }
+
+  /**
+   * Sets the <code>listType</code> property.
+   */
+  public CustomerListRequest listType(UserListType listType) {
+    this.listType = listType;
+    return this;
+  }
+
  /**
   * Customer list name.
   * @return name
@@ -84,54 +102,6 @@ public class CustomerListRequest  {
     return this;
   }
 
- /**
-  * Get listType
-  * @return listType
-  */
-  @JsonProperty("list_type")
-  public UserListType getListType() {
-    return listType;
-  }
-
-  /**
-   * Sets the <code>listType</code> property.
-   */
- public void setListType(UserListType listType) {
-    this.listType = listType;
-  }
-
-  /**
-   * Sets the <code>listType</code> property.
-   */
-  public CustomerListRequest listType(UserListType listType) {
-    this.listType = listType;
-    return this;
-  }
-
- /**
-  * Customer list errors.
-  * @return exceptions
-  */
-  @JsonProperty("exceptions")
-  public Object getExceptions() {
-    return exceptions;
-  }
-
-  /**
-   * Sets the <code>exceptions</code> property.
-   */
- public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
-  /**
-   * Sets the <code>exceptions</code> property.
-   */
-  public CustomerListRequest exceptions(Object exceptions) {
-    this.exceptions = exceptions;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -142,15 +112,14 @@ public class CustomerListRequest  {
       return false;
     }
     CustomerListRequest customerListRequest = (CustomerListRequest) o;
-    return Objects.equals(this.name, customerListRequest.name) &&
-        Objects.equals(this.records, customerListRequest.records) &&
-        Objects.equals(this.listType, customerListRequest.listType) &&
-        Objects.equals(this.exceptions, customerListRequest.exceptions);
+    return Objects.equals(this.listType, customerListRequest.listType) &&
+        Objects.equals(this.name, customerListRequest.name) &&
+        Objects.equals(this.records, customerListRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, records, listType, exceptions);
+    return Objects.hash(listType, name, records);
   }
 
   @Override
@@ -158,10 +127,9 @@ public class CustomerListRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListRequest {\n");
     
+    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    records: ").append(toIndentedString(records)).append("\n");
-    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

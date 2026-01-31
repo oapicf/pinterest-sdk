@@ -1,7 +1,7 @@
 /*
  * PinMedia.h
  *
- * Pin media objects.
+ * Pin media that can be an image, video, or a mix of both.
  */
 
 #ifndef _PinMedia_H_
@@ -9,6 +9,14 @@
 
 
 #include <string>
+#include "ImageSize.h"
+#include "PinMediaMetadata.h"
+#include "PinMediaWithImage.h"
+#include "PinMediaWithImageAndVideo.h"
+#include "PinMediaWithImages.h"
+#include "PinMediaWithVideo.h"
+#include "PinMediaWithVideos.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -20,7 +28,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin media objects.
+/*! \brief Pin media that can be an image, video, or a mix of both.
  *
  *  \ingroup Models
  *
@@ -47,14 +55,70 @@ public:
 
 	/*! \brief Get 
 	 */
+	ImageSize getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(ImageSize  images);
+	/*! \brief Get 
+	 */
 	std::string getMediaType();
 
 	/*! \brief Set 
 	 */
 	void setMediaType(std::string  media_type);
+	/*! \brief Get 
+	 */
+	std::string getCoverImageUrl();
+
+	/*! \brief Set 
+	 */
+	void setCoverImageUrl(std::string  cover_image_url);
+	/*! \brief Get Duration (in miliseconds). Field maybe null after creation due to video processing time.
+	 */
+	long long getDuration();
+
+	/*! \brief Set Duration (in miliseconds). Field maybe null after creation due to video processing time.
+	 */
+	void setDuration(long long  duration);
+	/*! \brief Get Height (in pixels). Field maybe null after creation due to video processing time.
+	 */
+	int getHeight();
+
+	/*! \brief Set Height (in pixels). Field maybe null after creation due to video processing time.
+	 */
+	void setHeight(int  height);
+	/*! \brief Get Video url (720p).  **Note:** This field is limited and not available to all apps.
+	 */
+	std::string getVideoUrl();
+
+	/*! \brief Set Video url (720p).  **Note:** This field is limited and not available to all apps.
+	 */
+	void setVideoUrl(std::string  video_url);
+	/*! \brief Get Width (in pixels). Field maybe null after creation due to video processing time.
+	 */
+	int getWidth();
+
+	/*! \brief Set Width (in pixels). Field maybe null after creation due to video processing time.
+	 */
+	void setWidth(int  width);
+	/*! \brief Get 
+	 */
+	std::list<PinMediaMetadata> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <PinMediaMetadata> items);
 
 private:
+	ImageSize images;
 	std::string media_type;
+	std::string cover_image_url;
+	long long duration;
+	int height;
+	std::string video_url;
+	int width;
+	std::list <PinMediaMetadata>items;
 	void __init();
 	void __cleanup();
 

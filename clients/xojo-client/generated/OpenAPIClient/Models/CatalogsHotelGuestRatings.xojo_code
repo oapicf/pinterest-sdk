@@ -3,9 +3,9 @@ Protected Class CatalogsHotelGuestRatings
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Your hotel's rating.
+			Max value for the hotel rating score.
 		#tag EndNote
-		score As Xoson.O.OptionalDouble
+		max_score As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
@@ -19,17 +19,17 @@ Protected Class CatalogsHotelGuestRatings
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Max value for the hotel rating score.
+			System you use for guest reviews.
 		#tag EndNote
-		max_score As Xoson.O.OptionalDouble
+		rating_system As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			System you use for guest reviews.
+			Your hotel's rating.
 		#tag EndNote
-		rating_system As Xoson.O.OptionalString
+		score As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
@@ -70,7 +70,7 @@ Protected Class CatalogsHotelGuestRatings
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="score"
+			Name="max_score"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -86,19 +86,19 @@ Protected Class CatalogsHotelGuestRatings
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="max_score"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="rating_system"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="score"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

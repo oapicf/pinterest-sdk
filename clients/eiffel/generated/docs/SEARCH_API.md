@@ -15,7 +15,7 @@ Feature | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 
 ### Parameters
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_pins_list**
-> search_user_pins_list (query: STRING_32 ; ad_account_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ): detachable PINS_LIST_200_RESPONSE
+> search_user_pins_list (query: STRING_32 ; ad_account_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ): detachable SEARCH_USER_PINS_LIST_200_RESPONSE
 
 
 Search user's Pins
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PINS_LIST_200_RESPONSE**](pins_list_200_response.md)
+[**SEARCH_USER_PINS_LIST_200_RESPONSE**](search_user_pins_list_200_response.md)
 
 ### Authorization
 

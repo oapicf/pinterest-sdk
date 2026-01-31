@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Username** | **String** | Public username for the user account | [optional] 
 **Id** | **String** | The owning account&#39;s user ID. | [optional] 
+**Username** | **String** | Public username for the user account | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdAccountOwner = Initialize-PSOpenAPIToolsAdAccountOwner  -Username null `
- -Id null
+$AdAccountOwner = Initialize-PSOpenAPIToolsAdAccountOwner  -Id null `
+ -Username null
 ```
 
 - Convert the resource to JSON

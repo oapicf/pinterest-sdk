@@ -23,18 +23,18 @@ get_partner_assets_response_t* instantiate_get_partner_assets_response(int inclu
   get_partner_assets_response_t* get_partner_assets_response = NULL;
   if (include_optional) {
     get_partner_assets_response = get_partner_assets_response_create(
+       // false, not to have infinite recursion
+      instantiate_asset_group_binding(0),
       "549755885175",
       "AD_ACCOUNT",
-      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
-       // false, not to have infinite recursion
-      instantiate_asset_group_binding(0)
+      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"]
     );
   } else {
     get_partner_assets_response = get_partner_assets_response_create(
+      NULL,
       "549755885175",
       "AD_ACCOUNT",
-      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
-      NULL
+      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"]
     );
   }
 

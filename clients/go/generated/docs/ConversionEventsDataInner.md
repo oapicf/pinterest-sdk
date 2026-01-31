@@ -4,31 +4,33 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventName** | **string** | &lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt;  | 
-**ActionSource** | **string** | &lt;p&gt;   The source indicating where the conversion event occurred.   &lt;ul&gt;     &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;web&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt;  | 
-**EventTime** | **int64** | The time when the event happened. Unix timestamp in seconds. | 
-**EventId** | **string** | A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. | 
-**EventSourceUrl** | Pointer to **NullableString** | URL of the web conversion event. | [optional] 
-**OptOut** | Pointer to **bool** | When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. | [optional] 
-**PartnerName** | Pointer to **NullableString** | The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’ | [optional] 
-**UserData** | [**ConversionEventsUserData**](ConversionEventsUserData.md) |  | 
-**CustomData** | Pointer to [**ConversionEventsDataInnerCustomData**](ConversionEventsDataInnerCustomData.md) |  | [optional] 
+**ActionSource** | **string** | &lt;p&gt;The source indicating where the conversion event occurred.&lt;/p&gt; - &#x60;app_android&#x60; - &#x60;app_ios&#x60; - &#x60;web&#x60; - &#x60;offline&#x60; | 
 **AppId** | Pointer to **NullableString** | The app store app ID. | [optional] 
+**AppInfo** | Pointer to [**ConversionEventAppInfo**](ConversionEventAppInfo.md) |  | [optional] 
 **AppName** | Pointer to **NullableString** | Name of the app. | [optional] 
 **AppVersion** | Pointer to **NullableString** | Version of the app. | [optional] 
+**CustomData** | Pointer to [**ConversionEventsDataInnerCustomData**](ConversionEventsDataInnerCustomData.md) |  | [optional] 
 **DeviceBrand** | Pointer to **NullableString** | Brand of the user device. | [optional] 
 **DeviceCarrier** | Pointer to **NullableString** | User device&#39;s mobile carrier. | [optional] 
+**DeviceInfo** | Pointer to [**ConversionEventDeviceInfo**](ConversionEventDeviceInfo.md) |  | [optional] 
 **DeviceModel** | Pointer to **NullableString** | Model of the user device. | [optional] 
 **DeviceType** | Pointer to **NullableString** | Type of the user device. | [optional] 
-**OsVersion** | Pointer to **NullableString** | Version of the device operating system. | [optional] 
-**Wifi** | Pointer to **bool** | Whether the event occurred when the user device was connected to wifi. | [optional] 
+**EventId** | **string** | A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. | 
+**EventName** | **string** | &lt;p&gt;The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.&lt;/p&gt;  - &#x60;add_payment_info&#x60; - &#x60;add_to_cart&#x60; - &#x60;add_to_wishlist&#x60; - &#x60;app_install&#x60; - &#x60;checkout&#x60; - &#x60;custom&#x60; - &#x60;initiate_checkout&#x60; - &#x60;lead&#x60; - &#x60;page_visit&#x60; - &#x60;search&#x60; - &#x60;signup&#x60; - &#x60;subscribe&#x60; - &#x60;view_category&#x60; - &#x60;view_content&#x60; - &#x60;watch_video&#x60; | 
+**EventSourceUrl** | Pointer to **NullableString** | URL of the web conversion event. | [optional] 
+**EventTime** | **int64** | The time when the event happened. Unix timestamp in seconds. | 
 **Language** | Pointer to **NullableString** | Two-character ISO-639-1 language code indicating the user&#39;s language. | [optional] 
+**OptOut** | Pointer to **bool** | When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. | [optional] 
+**OsVersion** | Pointer to **NullableString** | Version of the device operating system. | [optional] 
+**PartnerName** | Pointer to **NullableString** | The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’ | [optional] 
+**UserData** | [**ConversionEventsUserData**](ConversionEventsUserData.md) |  | 
+**Wifi** | Pointer to **bool** | Whether the event occurred when the user device was connected to wifi. | [optional] 
 
 ## Methods
 
 ### NewConversionEventsDataInner
 
-`func NewConversionEventsDataInner(eventName string, actionSource string, eventTime int64, eventId string, userData ConversionEventsUserData, ) *ConversionEventsDataInner`
+`func NewConversionEventsDataInner(actionSource string, eventId string, eventName string, eventTime int64, userData ConversionEventsUserData, ) *ConversionEventsDataInner`
 
 NewConversionEventsDataInner instantiates a new ConversionEventsDataInner object
 This constructor will assign default values to properties that have it defined,
@@ -42,26 +44,6 @@ will change when the set of required properties is changed
 NewConversionEventsDataInnerWithDefaults instantiates a new ConversionEventsDataInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEventName
-
-`func (o *ConversionEventsDataInner) GetEventName() string`
-
-GetEventName returns the EventName field if non-nil, zero value otherwise.
-
-### GetEventNameOk
-
-`func (o *ConversionEventsDataInner) GetEventNameOk() (*string, bool)`
-
-GetEventNameOk returns a tuple with the EventName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventName
-
-`func (o *ConversionEventsDataInner) SetEventName(v string)`
-
-SetEventName sets EventName field to given value.
-
 
 ### GetActionSource
 
@@ -82,186 +64,6 @@ and a boolean to check if the value has been set.
 
 SetActionSource sets ActionSource field to given value.
 
-
-### GetEventTime
-
-`func (o *ConversionEventsDataInner) GetEventTime() int64`
-
-GetEventTime returns the EventTime field if non-nil, zero value otherwise.
-
-### GetEventTimeOk
-
-`func (o *ConversionEventsDataInner) GetEventTimeOk() (*int64, bool)`
-
-GetEventTimeOk returns a tuple with the EventTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventTime
-
-`func (o *ConversionEventsDataInner) SetEventTime(v int64)`
-
-SetEventTime sets EventTime field to given value.
-
-
-### GetEventId
-
-`func (o *ConversionEventsDataInner) GetEventId() string`
-
-GetEventId returns the EventId field if non-nil, zero value otherwise.
-
-### GetEventIdOk
-
-`func (o *ConversionEventsDataInner) GetEventIdOk() (*string, bool)`
-
-GetEventIdOk returns a tuple with the EventId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventId
-
-`func (o *ConversionEventsDataInner) SetEventId(v string)`
-
-SetEventId sets EventId field to given value.
-
-
-### GetEventSourceUrl
-
-`func (o *ConversionEventsDataInner) GetEventSourceUrl() string`
-
-GetEventSourceUrl returns the EventSourceUrl field if non-nil, zero value otherwise.
-
-### GetEventSourceUrlOk
-
-`func (o *ConversionEventsDataInner) GetEventSourceUrlOk() (*string, bool)`
-
-GetEventSourceUrlOk returns a tuple with the EventSourceUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventSourceUrl
-
-`func (o *ConversionEventsDataInner) SetEventSourceUrl(v string)`
-
-SetEventSourceUrl sets EventSourceUrl field to given value.
-
-### HasEventSourceUrl
-
-`func (o *ConversionEventsDataInner) HasEventSourceUrl() bool`
-
-HasEventSourceUrl returns a boolean if a field has been set.
-
-### SetEventSourceUrlNil
-
-`func (o *ConversionEventsDataInner) SetEventSourceUrlNil(b bool)`
-
- SetEventSourceUrlNil sets the value for EventSourceUrl to be an explicit nil
-
-### UnsetEventSourceUrl
-`func (o *ConversionEventsDataInner) UnsetEventSourceUrl()`
-
-UnsetEventSourceUrl ensures that no value is present for EventSourceUrl, not even an explicit nil
-### GetOptOut
-
-`func (o *ConversionEventsDataInner) GetOptOut() bool`
-
-GetOptOut returns the OptOut field if non-nil, zero value otherwise.
-
-### GetOptOutOk
-
-`func (o *ConversionEventsDataInner) GetOptOutOk() (*bool, bool)`
-
-GetOptOutOk returns a tuple with the OptOut field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOptOut
-
-`func (o *ConversionEventsDataInner) SetOptOut(v bool)`
-
-SetOptOut sets OptOut field to given value.
-
-### HasOptOut
-
-`func (o *ConversionEventsDataInner) HasOptOut() bool`
-
-HasOptOut returns a boolean if a field has been set.
-
-### GetPartnerName
-
-`func (o *ConversionEventsDataInner) GetPartnerName() string`
-
-GetPartnerName returns the PartnerName field if non-nil, zero value otherwise.
-
-### GetPartnerNameOk
-
-`func (o *ConversionEventsDataInner) GetPartnerNameOk() (*string, bool)`
-
-GetPartnerNameOk returns a tuple with the PartnerName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerName
-
-`func (o *ConversionEventsDataInner) SetPartnerName(v string)`
-
-SetPartnerName sets PartnerName field to given value.
-
-### HasPartnerName
-
-`func (o *ConversionEventsDataInner) HasPartnerName() bool`
-
-HasPartnerName returns a boolean if a field has been set.
-
-### SetPartnerNameNil
-
-`func (o *ConversionEventsDataInner) SetPartnerNameNil(b bool)`
-
- SetPartnerNameNil sets the value for PartnerName to be an explicit nil
-
-### UnsetPartnerName
-`func (o *ConversionEventsDataInner) UnsetPartnerName()`
-
-UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
-### GetUserData
-
-`func (o *ConversionEventsDataInner) GetUserData() ConversionEventsUserData`
-
-GetUserData returns the UserData field if non-nil, zero value otherwise.
-
-### GetUserDataOk
-
-`func (o *ConversionEventsDataInner) GetUserDataOk() (*ConversionEventsUserData, bool)`
-
-GetUserDataOk returns a tuple with the UserData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserData
-
-`func (o *ConversionEventsDataInner) SetUserData(v ConversionEventsUserData)`
-
-SetUserData sets UserData field to given value.
-
-
-### GetCustomData
-
-`func (o *ConversionEventsDataInner) GetCustomData() ConversionEventsDataInnerCustomData`
-
-GetCustomData returns the CustomData field if non-nil, zero value otherwise.
-
-### GetCustomDataOk
-
-`func (o *ConversionEventsDataInner) GetCustomDataOk() (*ConversionEventsDataInnerCustomData, bool)`
-
-GetCustomDataOk returns a tuple with the CustomData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomData
-
-`func (o *ConversionEventsDataInner) SetCustomData(v ConversionEventsDataInnerCustomData)`
-
-SetCustomData sets CustomData field to given value.
-
-### HasCustomData
-
-`func (o *ConversionEventsDataInner) HasCustomData() bool`
-
-HasCustomData returns a boolean if a field has been set.
 
 ### GetAppId
 
@@ -298,6 +100,31 @@ HasAppId returns a boolean if a field has been set.
 `func (o *ConversionEventsDataInner) UnsetAppId()`
 
 UnsetAppId ensures that no value is present for AppId, not even an explicit nil
+### GetAppInfo
+
+`func (o *ConversionEventsDataInner) GetAppInfo() ConversionEventAppInfo`
+
+GetAppInfo returns the AppInfo field if non-nil, zero value otherwise.
+
+### GetAppInfoOk
+
+`func (o *ConversionEventsDataInner) GetAppInfoOk() (*ConversionEventAppInfo, bool)`
+
+GetAppInfoOk returns a tuple with the AppInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppInfo
+
+`func (o *ConversionEventsDataInner) SetAppInfo(v ConversionEventAppInfo)`
+
+SetAppInfo sets AppInfo field to given value.
+
+### HasAppInfo
+
+`func (o *ConversionEventsDataInner) HasAppInfo() bool`
+
+HasAppInfo returns a boolean if a field has been set.
+
 ### GetAppName
 
 `func (o *ConversionEventsDataInner) GetAppName() string`
@@ -368,6 +195,31 @@ HasAppVersion returns a boolean if a field has been set.
 `func (o *ConversionEventsDataInner) UnsetAppVersion()`
 
 UnsetAppVersion ensures that no value is present for AppVersion, not even an explicit nil
+### GetCustomData
+
+`func (o *ConversionEventsDataInner) GetCustomData() ConversionEventsDataInnerCustomData`
+
+GetCustomData returns the CustomData field if non-nil, zero value otherwise.
+
+### GetCustomDataOk
+
+`func (o *ConversionEventsDataInner) GetCustomDataOk() (*ConversionEventsDataInnerCustomData, bool)`
+
+GetCustomDataOk returns a tuple with the CustomData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomData
+
+`func (o *ConversionEventsDataInner) SetCustomData(v ConversionEventsDataInnerCustomData)`
+
+SetCustomData sets CustomData field to given value.
+
+### HasCustomData
+
+`func (o *ConversionEventsDataInner) HasCustomData() bool`
+
+HasCustomData returns a boolean if a field has been set.
+
 ### GetDeviceBrand
 
 `func (o *ConversionEventsDataInner) GetDeviceBrand() string`
@@ -438,6 +290,31 @@ HasDeviceCarrier returns a boolean if a field has been set.
 `func (o *ConversionEventsDataInner) UnsetDeviceCarrier()`
 
 UnsetDeviceCarrier ensures that no value is present for DeviceCarrier, not even an explicit nil
+### GetDeviceInfo
+
+`func (o *ConversionEventsDataInner) GetDeviceInfo() ConversionEventDeviceInfo`
+
+GetDeviceInfo returns the DeviceInfo field if non-nil, zero value otherwise.
+
+### GetDeviceInfoOk
+
+`func (o *ConversionEventsDataInner) GetDeviceInfoOk() (*ConversionEventDeviceInfo, bool)`
+
+GetDeviceInfoOk returns a tuple with the DeviceInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceInfo
+
+`func (o *ConversionEventsDataInner) SetDeviceInfo(v ConversionEventDeviceInfo)`
+
+SetDeviceInfo sets DeviceInfo field to given value.
+
+### HasDeviceInfo
+
+`func (o *ConversionEventsDataInner) HasDeviceInfo() bool`
+
+HasDeviceInfo returns a boolean if a field has been set.
+
 ### GetDeviceModel
 
 `func (o *ConversionEventsDataInner) GetDeviceModel() string`
@@ -508,65 +385,100 @@ HasDeviceType returns a boolean if a field has been set.
 `func (o *ConversionEventsDataInner) UnsetDeviceType()`
 
 UnsetDeviceType ensures that no value is present for DeviceType, not even an explicit nil
-### GetOsVersion
+### GetEventId
 
-`func (o *ConversionEventsDataInner) GetOsVersion() string`
+`func (o *ConversionEventsDataInner) GetEventId() string`
 
-GetOsVersion returns the OsVersion field if non-nil, zero value otherwise.
+GetEventId returns the EventId field if non-nil, zero value otherwise.
 
-### GetOsVersionOk
+### GetEventIdOk
 
-`func (o *ConversionEventsDataInner) GetOsVersionOk() (*string, bool)`
+`func (o *ConversionEventsDataInner) GetEventIdOk() (*string, bool)`
 
-GetOsVersionOk returns a tuple with the OsVersion field if it's non-nil, zero value otherwise
+GetEventIdOk returns a tuple with the EventId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOsVersion
+### SetEventId
 
-`func (o *ConversionEventsDataInner) SetOsVersion(v string)`
+`func (o *ConversionEventsDataInner) SetEventId(v string)`
 
-SetOsVersion sets OsVersion field to given value.
+SetEventId sets EventId field to given value.
 
-### HasOsVersion
 
-`func (o *ConversionEventsDataInner) HasOsVersion() bool`
+### GetEventName
 
-HasOsVersion returns a boolean if a field has been set.
+`func (o *ConversionEventsDataInner) GetEventName() string`
 
-### SetOsVersionNil
+GetEventName returns the EventName field if non-nil, zero value otherwise.
 
-`func (o *ConversionEventsDataInner) SetOsVersionNil(b bool)`
+### GetEventNameOk
 
- SetOsVersionNil sets the value for OsVersion to be an explicit nil
+`func (o *ConversionEventsDataInner) GetEventNameOk() (*string, bool)`
 
-### UnsetOsVersion
-`func (o *ConversionEventsDataInner) UnsetOsVersion()`
-
-UnsetOsVersion ensures that no value is present for OsVersion, not even an explicit nil
-### GetWifi
-
-`func (o *ConversionEventsDataInner) GetWifi() bool`
-
-GetWifi returns the Wifi field if non-nil, zero value otherwise.
-
-### GetWifiOk
-
-`func (o *ConversionEventsDataInner) GetWifiOk() (*bool, bool)`
-
-GetWifiOk returns a tuple with the Wifi field if it's non-nil, zero value otherwise
+GetEventNameOk returns a tuple with the EventName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWifi
+### SetEventName
 
-`func (o *ConversionEventsDataInner) SetWifi(v bool)`
+`func (o *ConversionEventsDataInner) SetEventName(v string)`
 
-SetWifi sets Wifi field to given value.
+SetEventName sets EventName field to given value.
 
-### HasWifi
 
-`func (o *ConversionEventsDataInner) HasWifi() bool`
+### GetEventSourceUrl
 
-HasWifi returns a boolean if a field has been set.
+`func (o *ConversionEventsDataInner) GetEventSourceUrl() string`
+
+GetEventSourceUrl returns the EventSourceUrl field if non-nil, zero value otherwise.
+
+### GetEventSourceUrlOk
+
+`func (o *ConversionEventsDataInner) GetEventSourceUrlOk() (*string, bool)`
+
+GetEventSourceUrlOk returns a tuple with the EventSourceUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventSourceUrl
+
+`func (o *ConversionEventsDataInner) SetEventSourceUrl(v string)`
+
+SetEventSourceUrl sets EventSourceUrl field to given value.
+
+### HasEventSourceUrl
+
+`func (o *ConversionEventsDataInner) HasEventSourceUrl() bool`
+
+HasEventSourceUrl returns a boolean if a field has been set.
+
+### SetEventSourceUrlNil
+
+`func (o *ConversionEventsDataInner) SetEventSourceUrlNil(b bool)`
+
+ SetEventSourceUrlNil sets the value for EventSourceUrl to be an explicit nil
+
+### UnsetEventSourceUrl
+`func (o *ConversionEventsDataInner) UnsetEventSourceUrl()`
+
+UnsetEventSourceUrl ensures that no value is present for EventSourceUrl, not even an explicit nil
+### GetEventTime
+
+`func (o *ConversionEventsDataInner) GetEventTime() int64`
+
+GetEventTime returns the EventTime field if non-nil, zero value otherwise.
+
+### GetEventTimeOk
+
+`func (o *ConversionEventsDataInner) GetEventTimeOk() (*int64, bool)`
+
+GetEventTimeOk returns a tuple with the EventTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventTime
+
+`func (o *ConversionEventsDataInner) SetEventTime(v int64)`
+
+SetEventTime sets EventTime field to given value.
+
 
 ### GetLanguage
 
@@ -603,6 +515,146 @@ HasLanguage returns a boolean if a field has been set.
 `func (o *ConversionEventsDataInner) UnsetLanguage()`
 
 UnsetLanguage ensures that no value is present for Language, not even an explicit nil
+### GetOptOut
+
+`func (o *ConversionEventsDataInner) GetOptOut() bool`
+
+GetOptOut returns the OptOut field if non-nil, zero value otherwise.
+
+### GetOptOutOk
+
+`func (o *ConversionEventsDataInner) GetOptOutOk() (*bool, bool)`
+
+GetOptOutOk returns a tuple with the OptOut field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptOut
+
+`func (o *ConversionEventsDataInner) SetOptOut(v bool)`
+
+SetOptOut sets OptOut field to given value.
+
+### HasOptOut
+
+`func (o *ConversionEventsDataInner) HasOptOut() bool`
+
+HasOptOut returns a boolean if a field has been set.
+
+### GetOsVersion
+
+`func (o *ConversionEventsDataInner) GetOsVersion() string`
+
+GetOsVersion returns the OsVersion field if non-nil, zero value otherwise.
+
+### GetOsVersionOk
+
+`func (o *ConversionEventsDataInner) GetOsVersionOk() (*string, bool)`
+
+GetOsVersionOk returns a tuple with the OsVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsVersion
+
+`func (o *ConversionEventsDataInner) SetOsVersion(v string)`
+
+SetOsVersion sets OsVersion field to given value.
+
+### HasOsVersion
+
+`func (o *ConversionEventsDataInner) HasOsVersion() bool`
+
+HasOsVersion returns a boolean if a field has been set.
+
+### SetOsVersionNil
+
+`func (o *ConversionEventsDataInner) SetOsVersionNil(b bool)`
+
+ SetOsVersionNil sets the value for OsVersion to be an explicit nil
+
+### UnsetOsVersion
+`func (o *ConversionEventsDataInner) UnsetOsVersion()`
+
+UnsetOsVersion ensures that no value is present for OsVersion, not even an explicit nil
+### GetPartnerName
+
+`func (o *ConversionEventsDataInner) GetPartnerName() string`
+
+GetPartnerName returns the PartnerName field if non-nil, zero value otherwise.
+
+### GetPartnerNameOk
+
+`func (o *ConversionEventsDataInner) GetPartnerNameOk() (*string, bool)`
+
+GetPartnerNameOk returns a tuple with the PartnerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerName
+
+`func (o *ConversionEventsDataInner) SetPartnerName(v string)`
+
+SetPartnerName sets PartnerName field to given value.
+
+### HasPartnerName
+
+`func (o *ConversionEventsDataInner) HasPartnerName() bool`
+
+HasPartnerName returns a boolean if a field has been set.
+
+### SetPartnerNameNil
+
+`func (o *ConversionEventsDataInner) SetPartnerNameNil(b bool)`
+
+ SetPartnerNameNil sets the value for PartnerName to be an explicit nil
+
+### UnsetPartnerName
+`func (o *ConversionEventsDataInner) UnsetPartnerName()`
+
+UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
+### GetUserData
+
+`func (o *ConversionEventsDataInner) GetUserData() ConversionEventsUserData`
+
+GetUserData returns the UserData field if non-nil, zero value otherwise.
+
+### GetUserDataOk
+
+`func (o *ConversionEventsDataInner) GetUserDataOk() (*ConversionEventsUserData, bool)`
+
+GetUserDataOk returns a tuple with the UserData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserData
+
+`func (o *ConversionEventsDataInner) SetUserData(v ConversionEventsUserData)`
+
+SetUserData sets UserData field to given value.
+
+
+### GetWifi
+
+`func (o *ConversionEventsDataInner) GetWifi() bool`
+
+GetWifi returns the Wifi field if non-nil, zero value otherwise.
+
+### GetWifiOk
+
+`func (o *ConversionEventsDataInner) GetWifiOk() (*bool, bool)`
+
+GetWifiOk returns a tuple with the Wifi field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWifi
+
+`func (o *ConversionEventsDataInner) SetWifi(v bool)`
+
+SetWifi sets Wifi field to given value.
+
+### HasWifi
+
+`func (o *ConversionEventsDataInner) HasWifi() bool`
+
+HasWifi returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -11,13 +11,13 @@ import scala.collection.immutable.Seq
 
 /**
  * Object declaring an asset role update to an invite.
+ * @param assetUnderscoreidUnderscoretoUnderscorepermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
  * @param inviteUnderscoreid Unique identifier of an invite.
  * @param inviteUnderscoretype 
- * @param assetUnderscoreidUnderscoretoUnderscorepermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
  */
-case class CreateAssetInvitesRequestItem(inviteUnderscoreid: String,
-                inviteUnderscoretype: InviteType,
-                assetUnderscoreidUnderscoretoUnderscorepermissions: Map[String, Seq[Permissions]]
+case class CreateAssetInvitesRequestItem(assetUnderscoreidUnderscoretoUnderscorepermissions: Map[String, Seq[Permissions]],
+                inviteUnderscoreid: String,
+                inviteUnderscoretype: InviteType
                 )
 
 object CreateAssetInvitesRequestItem {

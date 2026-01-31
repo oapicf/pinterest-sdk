@@ -11,9 +11,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourcePinURL   {
   
+  private Boolean isAffiliateLink = false;
 
   /**
    * Gets or Sets sourceType
@@ -34,20 +35,6 @@ public class PinMediaSourcePinURL   {
   }
 
   private SourceTypeEnum sourceType;
-  private Boolean isAffiliateLink = false;
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("source_type")
-  @NotNull
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
 
   /**
    * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
@@ -62,6 +49,19 @@ public class PinMediaSourcePinURL   {
     this.isAffiliateLink = isAffiliateLink;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("source_type")
+  @NotNull
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -72,13 +72,13 @@ public class PinMediaSourcePinURL   {
       return false;
     }
     PinMediaSourcePinURL pinMediaSourcePinURL = (PinMediaSourcePinURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType) &&
-        Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink);
+    return Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink) &&
+        Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, isAffiliateLink);
+    return Objects.hash(isAffiliateLink, sourceType);
   }
 
   @Override
@@ -86,8 +86,8 @@ public class PinMediaSourcePinURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourcePinURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

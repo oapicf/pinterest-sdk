@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,8 @@ var _ MappedNullable = &MediaList200Response{}
 
 // MediaList200Response struct for MediaList200Response
 type MediaList200Response struct {
-	// Media
-	Items []MediaUploadDetails `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []Media `json:"items"`
 }
 
 type _MediaList200Response MediaList200Response
@@ -33,7 +32,7 @@ type _MediaList200Response MediaList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMediaList200Response(items []MediaUploadDetails) *MediaList200Response {
+func NewMediaList200Response(items []Media) *MediaList200Response {
 	this := MediaList200Response{}
 	this.Items = items
 	return &this
@@ -45,30 +44,6 @@ func NewMediaList200Response(items []MediaUploadDetails) *MediaList200Response {
 func NewMediaList200ResponseWithDefaults() *MediaList200Response {
 	this := MediaList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *MediaList200Response) GetItems() []MediaUploadDetails {
-	if o == nil {
-		var ret []MediaUploadDetails
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *MediaList200Response) GetItemsOk() ([]MediaUploadDetails, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *MediaList200Response) SetItems(v []MediaUploadDetails) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -113,6 +88,30 @@ func (o *MediaList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *MediaList200Response) GetItems() []Media {
+	if o == nil {
+		var ret []Media
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *MediaList200Response) GetItemsOk() ([]Media, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *MediaList200Response) SetItems(v []Media) {
+	o.Items = v
+}
+
 func (o MediaList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,10 +122,10 @@ func (o MediaList200Response) MarshalJSON() ([]byte, error) {
 
 func (o MediaList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

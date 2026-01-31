@@ -15,16 +15,16 @@ import { PlacementGroupType } from './placementGroupType';
 
 export interface TargetingTemplateCommon { 
     /**
-     * targeting template name
-     */
-    name?: string;
-    /**
      * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
      */
     auto_targeting_enabled?: boolean;
-    targeting_attributes?: TargetingSpec;
-    placement_group?: PlacementGroupType;
     keywords?: Array<TargetingTemplateKeyword>;
+    /**
+     * targeting template name
+     */
+    name?: string;
+    placement_group?: PlacementGroupType;
+    targeting_attributes?: TargetingSpec;
     tracking_urls?: TrackingUrls | null;
 }
 export namespace TargetingTemplateCommon {

@@ -48,6 +48,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -77,7 +78,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApi  {
 
     @Inject BusinessesApiService service;
@@ -194,9 +195,9 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Sucess", response = BusinessAssetMembersGet200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response businessAssetMembersGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("asset_id") String assetId, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex,@Context SecurityContext securityContext)
+    public Response businessAssetMembersGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("asset_id") String assetId, @DefaultValue("false") @QueryParam("fetch_system_users") Boolean fetchSystemUsers, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.businessAssetMembersGet(businessId,assetId,bookmark,pageSize,startIndex,securityContext);
+        return service.businessAssetMembersGet(businessId,assetId,fetchSystemUsers,bookmark,pageSize,startIndex,securityContext);
     }
     @GET
     @Path("/{business_id}/assets/{asset_id}/partners")
@@ -228,7 +229,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BusinessAssetsGet200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response businessAssetsGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @QueryParam("permissions") List<PermissionsWithOwner> permissions, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @QueryParam("child_asset_id") String childAssetId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @QueryParam("asset_group_id") String assetGroupId,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
+    public Response businessAssetsGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @QueryParam("permissions") List<PermissionsWithOwner> permissions, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @QueryParam("child_asset_id") String childAssetId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @QueryParam("asset_group_id") String assetGroupId,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.businessAssetsGet(businessId,permissions,childAssetId,assetGroupId,assetType,startIndex,bookmark,pageSize,securityContext);
     }
@@ -245,7 +246,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BusinessMemberAssetsGet200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response businessMemberAssetsGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("member_id") String memberId,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
+    public Response businessMemberAssetsGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("member_id") String memberId,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.businessMemberAssetsGet(businessId,memberId,assetType,startIndex,bookmark,pageSize,securityContext);
     }
@@ -296,7 +297,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BusinessPartnerAssetAccessGet200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response businessPartnerAssetAccessGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("partner_id") String partnerId,, allowableValues="INTERNAL, EXTERNAL" @DefaultValue("INTERNAL") @QueryParam("partner_type") PartnerType partnerType,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext)
+    public Response businessPartnerAssetAccessGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("partner_id") String partnerId,, allowableValues="INTERNAL, EXTERNAL" @DefaultValue("INTERNAL") @QueryParam("partner_type") PartnerType partnerType,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.businessPartnerAssetAccessGet(businessId,partnerId,partnerType,assetType,startIndex,pageSize,bookmark,securityContext);
     }
@@ -313,7 +314,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = DeleteInvitesResultsResponseArray.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response cancelInvitesOrRequests( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId,@ApiParam(value = "A list with invite ids" ,required=true) @NotNull @Valid CancelInvitesBody cancelInvitesBody,@Context SecurityContext securityContext)
+    public Response cancelInvitesOrRequests( @Pattern(regexp="^\\d+$") @Size(min=1) @PathParam("business_id") String businessId,@ApiParam(value = "A list with invite ids" ,required=true) @NotNull @Valid CancelInvitesBody cancelInvitesBody,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.cancelInvitesOrRequests(businessId,cancelInvitesBody,securityContext);
     }
@@ -348,7 +349,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = CreateInvitesResultsResponseArray.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response createMembershipOrPartnershipInvites( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId,@ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true) @NotNull @Valid CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,@Context SecurityContext securityContext)
+    public Response createMembershipOrPartnershipInvites( @Pattern(regexp="^\\d+$") @Size(min=1) @PathParam("business_id") String businessId,@ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true) @NotNull @Valid CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.createMembershipOrPartnershipInvites(businessId,createMembershipOrPartnershipInvitesBody,securityContext);
     }
@@ -436,9 +437,9 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = GetBusinessMembers200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response getBusinessMembers( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @DefaultValue("false") @QueryParam("assets_summary") Boolean assetsSummary, @QueryParam("business_roles") List<MemberBusinessRole> businessRoles, @Size(max=500) @QueryParam("member_ids") String memberIds, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
+    public Response getBusinessMembers( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @DefaultValue("false") @QueryParam("fetch_system_users") Boolean fetchSystemUsers, @DefaultValue("false") @QueryParam("assets_summary") Boolean assetsSummary, @QueryParam("business_roles") List<MemberBusinessRole> businessRoles, @Size(max=500) @QueryParam("member_ids") String memberIds, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.getBusinessMembers(businessId,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize,securityContext);
+        return service.getBusinessMembers(businessId,fetchSystemUsers,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize,securityContext);
     }
     @GET
     @Path("/{business_id}/partners")
@@ -470,7 +471,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = GetInvites200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response getInvites( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @DefaultValue("true") @QueryParam("is_member") Boolean isMember, @Size(min=1) @QueryParam("invite_status") List<String> inviteStatus,, allowableValues="MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST" @QueryParam("invite_type") InviteType inviteType, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
+    public Response getInvites( @Pattern(regexp="^\\d+$") @Size(min=1) @PathParam("business_id") String businessId, @DefaultValue("true") @QueryParam("is_member") Boolean isMember, @Size(min=1) @QueryParam("invite_status") List<String> inviteStatus,, allowableValues="MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST" @QueryParam("invite_type") InviteType inviteType, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.getInvites(businessId,isMember,inviteStatus,inviteType,bookmark,pageSize,securityContext);
     }
@@ -512,6 +513,26 @@ public class BusinessesApi  {
         return service.sharedAudiencesForBusinessList(businessId,bookmark,order,pageSize,securityContext);
     }
     @PATCH
+    @Path("/{business_id}/system_users/{system_user_id}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Update a system user information.", notes = "Update a system user information such as name.", response = Void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
+            @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
+        })
+    }, tags={ "business_access_relationships", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "System user updated successfully.", response = Void.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response systemUserUpdate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("system_user_id") String systemUserId,@ApiParam(value = "" ,required=true) @NotNull @Valid SystemUserUpdateRequest systemUserUpdateRequest,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return service.systemUserUpdate(businessId,systemUserId,systemUserUpdateRequest,securityContext);
+    }
+    @PATCH
     @Path("/{business_id}/members")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
@@ -532,7 +553,7 @@ public class BusinessesApi  {
     @Path("/{business_id}/audiences/ad_accounts/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update audience sharing from a business to ad accounts", notes = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update audience sharing from a business to ad accounts", notes = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
         })
@@ -551,7 +572,7 @@ public class BusinessesApi  {
     @Path("/{business_id}/audiences/businesses/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update audience sharing between businesses", notes = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update audience sharing between businesses", notes = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
         })

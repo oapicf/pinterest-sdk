@@ -11,27 +11,39 @@
 
 export interface BillingProfilesResponse { 
     /**
-     * Billing ID.
+     * Advertiser ID of the billing.
      */
-    id?: string;
+    advertiser_id?: string;
+    /**
+     * Billing type of the advertiser
+     */
+    billing_type?: BillingProfilesResponse.BillingTypeEnum;
     /**
      * Type of the card.
      */
     card_type?: BillingProfilesResponse.CardTypeEnum;
     /**
-     * Status of the billing.
+     * Billing ID.
      */
-    status?: BillingProfilesResponse.StatusEnum;
-    /**
-     * Advertiser ID of the billing.
-     */
-    advertiser_id?: string;
+    id?: string;
     /**
      * Brand of the payment method.
      */
     payment_method_brand?: BillingProfilesResponse.PaymentMethodBrandEnum;
+    /**
+     * Status of the billing.
+     */
+    status?: BillingProfilesResponse.StatusEnum;
 }
 export namespace BillingProfilesResponse {
+    export const BillingTypeEnum = {
+        CreditCard: 'CREDIT_CARD',
+        Invoice: 'INVOICE',
+        Internal: 'INTERNAL',
+        Recurring: 'RECURRING',
+        Prepaid: 'PREPAID'
+    } as const;
+    export type BillingTypeEnum = typeof BillingTypeEnum[keyof typeof BillingTypeEnum];
     export const CardTypeEnum = {
         Unknown: 'UNKNOWN',
         Visa: 'VISA',
@@ -41,16 +53,6 @@ export namespace BillingProfilesResponse {
         Elo: 'ELO'
     } as const;
     export type CardTypeEnum = typeof CardTypeEnum[keyof typeof CardTypeEnum];
-    export const StatusEnum = {
-        Unspecified: 'UNSPECIFIED',
-        Valid: 'VALID',
-        Invalid: 'INVALID',
-        Pending: 'PENDING',
-        Deleted: 'DELETED',
-        Secondary: 'SECONDARY',
-        PendingSecondary: 'PENDING_SECONDARY'
-    } as const;
-    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
     export const PaymentMethodBrandEnum = {
         Unknown: 'UNKNOWN',
         Visa: 'VISA',
@@ -63,6 +65,16 @@ export namespace BillingProfilesResponse {
         CarteBancaire: 'CARTE_BANCAIRE'
     } as const;
     export type PaymentMethodBrandEnum = typeof PaymentMethodBrandEnum[keyof typeof PaymentMethodBrandEnum];
+    export const StatusEnum = {
+        Unspecified: 'UNSPECIFIED',
+        Valid: 'VALID',
+        Invalid: 'INVALID',
+        Pending: 'PENDING',
+        Deleted: 'DELETED',
+        Secondary: 'SECONDARY',
+        PendingSecondary: 'PENDING_SECONDARY'
+    } as const;
+    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

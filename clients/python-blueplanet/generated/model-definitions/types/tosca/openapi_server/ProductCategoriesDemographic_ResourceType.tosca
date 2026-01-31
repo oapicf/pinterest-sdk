@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductCategoriesDemographic"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductCategoriesDemographic"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  GenderDemographics = openapi_server.resourceTypes.GenderDemographics
+}
+resourceTypes {
+
+  ProductCategoriesDemographic {
+    title = ProductCategoriesDemographic
+    description = ProductCategoriesDemographic
+    derivedFrom = Root
+    properties {
+        age {
+          # TODO
+          description = "Age demographic distribution"
+          optional = true
+        }
+        gender {
+          type = GenderDemographics
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductCategoriesDemographic {
+    title = ProductCategoriesDemographic
+    description = ProductCategoriesDemographic
+    implements = openapi_server.resourceTypes.ProductCategoriesDemographic
+
+  }
+}

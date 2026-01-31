@@ -12,11 +12,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeliveryMetricsResponseItemsInner   {
-  @JsonProperty("name")
-  private String name;
-
   /**
    * Category name
    */
@@ -57,23 +54,8 @@ public class DeliveryMetricsResponseItemsInner   {
   @JsonProperty("display_name")
   private String displayName;
 
-  /**
-   * Metric's name.
-   **/
-  public DeliveryMetricsResponseItemsInner name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
   @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private String name;
 
   /**
    * Category name
@@ -129,6 +111,24 @@ public class DeliveryMetricsResponseItemsInner   {
     this.displayName = displayName;
   }
 
+  /**
+   * Metric's name.
+   **/
+  public DeliveryMetricsResponseItemsInner name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,15 +139,15 @@ public class DeliveryMetricsResponseItemsInner   {
       return false;
     }
     DeliveryMetricsResponseItemsInner deliveryMetricsResponseItemsInner = (DeliveryMetricsResponseItemsInner) o;
-    return Objects.equals(name, deliveryMetricsResponseItemsInner.name) &&
-        Objects.equals(category, deliveryMetricsResponseItemsInner.category) &&
+    return Objects.equals(category, deliveryMetricsResponseItemsInner.category) &&
         Objects.equals(definition, deliveryMetricsResponseItemsInner.definition) &&
-        Objects.equals(displayName, deliveryMetricsResponseItemsInner.displayName);
+        Objects.equals(displayName, deliveryMetricsResponseItemsInner.displayName) &&
+        Objects.equals(name, deliveryMetricsResponseItemsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, category, definition, displayName);
+    return Objects.hash(category, definition, displayName, name);
   }
 
   @Override
@@ -155,10 +155,10 @@ public class DeliveryMetricsResponseItemsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeliveryMetricsResponseItemsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    definition: ").append(toIndentedString(definition)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

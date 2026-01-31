@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CountryFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CountryFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleCountriesCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleCountriesCriteria
+}
+resourceTypes {
+
+  CountryFilter {
+    title = CountryFilter
+    description = CountryFilter
+    derivedFrom = Root
+    properties {
+        country {
+          type = CatalogsProductGroupMultipleCountriesCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CountryFilter {
+    title = CountryFilter
+    description = CountryFilter
+    implements = openapi_server.resourceTypes.CountryFilter
+
+  }
+}

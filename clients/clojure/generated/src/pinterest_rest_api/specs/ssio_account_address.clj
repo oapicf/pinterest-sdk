@@ -7,10 +7,10 @@
 
 (def ssio-account-address-data
   {
-   (ds/opt :display) string?
-   (ds/opt :purpose) string?
    (ds/opt :address_id) string?
+   (ds/opt :display) string?
    (ds/opt :order_legal_entity) string?
+   (ds/opt :purpose) string?
    })
 
 (def ssio-account-address-spec

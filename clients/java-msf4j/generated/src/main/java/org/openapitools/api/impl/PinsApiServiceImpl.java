@@ -3,6 +3,7 @@ package org.openapitools.api.impl;
 import org.openapitools.api.*;
 import org.openapitools.model.*;
 
+import org.openapitools.model.CreativeType;
 import java.util.Date;
 import org.openapitools.model.Error;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -25,7 +27,7 @@ import org.wso2.msf4j.formparam.FileInfo;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApiServiceImpl extends PinsApiService {
     @Override
     public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds
@@ -66,21 +68,21 @@ public class PinsApiServiceImpl extends PinsApiService {
     }
     @Override
     public Response pinsGet(String pinId
-, Boolean pinMetrics
 , String adAccountId
+, Boolean pinMetrics
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response pinsList(String bookmark
-, Integer pageSize
-, String pinFilter
+    public Response pinsList(String pinFilter
+, Boolean pinMetrics
 , Boolean includeProtectedPins
 , String pinType
-, List<String> creativeTypes
+, List<CreativeType> creativeTypes
 , String adAccountId
-, Boolean pinMetrics
+, String bookmark
+, Integer pageSize
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

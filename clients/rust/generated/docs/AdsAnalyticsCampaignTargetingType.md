@@ -18,6 +18,7 @@
 | Region | REGION |
 | CreativeType | CREATIVE_TYPE |
 | AgeBucketAndGender | AGE_BUCKET_AND_GENDER |
+| AudienceMultiplier | AUDIENCE_MULTIPLIER |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

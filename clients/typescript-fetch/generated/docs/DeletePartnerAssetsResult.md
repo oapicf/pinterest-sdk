@@ -9,9 +9,9 @@ Name | Type
 ------------ | -------------
 `assetId` | string
 `assetType` | string
-`permissions` | Array&lt;string&gt;
 `isSharedPartner` | boolean
 `partnerId` | string
+`permissions` | Array&lt;string&gt;
 
 ## Example
 
@@ -22,9 +22,9 @@ import type { DeletePartnerAssetsResult } from ''
 const example = {
   "assetId": 549755885175,
   "assetType": AD_ACCOUNT,
-  "permissions": ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
   "isSharedPartner": false,
   "partnerId": 140943737684417,
+  "permissions": ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
 } satisfies DeletePartnerAssetsResult
 
 console.log(example)

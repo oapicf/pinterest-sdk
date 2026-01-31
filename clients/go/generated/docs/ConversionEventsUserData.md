@@ -4,28 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ph** | Pointer to **[]string** | Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
-**Ge** | Pointer to **[]string** | Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender. The string should be in the UTF-8 format. | [optional] 
-**Db** | Pointer to **[]string** | Sha256 hashes of user&#39;s date of birthday, given as year, month, and day. The string should be in the UTF-8 format. | [optional] 
-**Ln** | Pointer to **[]string** | Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
-**Fn** | Pointer to **[]string** | Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**ClickId** | Pointer to **NullableString** | The unique identifier stored in _epik cookie on your domain or &amp;epik&#x3D; query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. | [optional] 
+**ClientIpAddress** | Pointer to **string** | The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. | [optional] 
+**ClientUserAgent** | Pointer to **string** | The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. | [optional] 
+**Country** | Pointer to **[]string** | Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase. The string should be in the UTF-8 format. | [optional] 
 **Ct** | Pointer to **[]string** | Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format. | [optional] 
+**Db** | Pointer to **[]string** | Sha256 hashes of user&#39;s date of birthday, given as year, month, and day. The string should be in the UTF-8 format. | [optional] 
+**Em** | Pointer to **[]string** | Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**ExternalId** | Pointer to **[]string** | Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**Fn** | Pointer to **[]string** | Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**Ge** | Pointer to **[]string** | Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender. The string should be in the UTF-8 format. | [optional] 
+**HashedMaids** | Pointer to **[]string** | Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**Ln** | Pointer to **[]string** | Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**PartnerId** | Pointer to **NullableString** | A unique identifier of visitors&#39; information defined by third party partners. e.g RampID | [optional] 
+**Ph** | Pointer to **[]string** | Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
 **St** | Pointer to **[]string** | Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format. | [optional] 
 **Zp** | Pointer to **[]string** | Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format. | [optional] 
-**Country** | Pointer to **[]string** | Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase. The string should be in the UTF-8 format. | [optional] 
-**ExternalId** | Pointer to **[]string** | Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
-**ClickId** | Pointer to **NullableString** | The unique identifier stored in _epik cookie on your domain or &amp;epik&#x3D; query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. | [optional] 
-**PartnerId** | Pointer to **NullableString** | A unique identifier of visitors&#39; information defined by third party partners. e.g RampID | [optional] 
-**Em** | **[]string** | Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | 
-**HashedMaids** | **[]string** | Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | 
-**ClientIpAddress** | **string** | The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. | 
-**ClientUserAgent** | **string** | The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. | 
 
 ## Methods
 
 ### NewConversionEventsUserData
 
-`func NewConversionEventsUserData(em []string, hashedMaids []string, clientIpAddress string, clientUserAgent string, ) *ConversionEventsUserData`
+`func NewConversionEventsUserData() *ConversionEventsUserData`
 
 NewConversionEventsUserData instantiates a new ConversionEventsUserData object
 This constructor will assign default values to properties that have it defined,
@@ -40,55 +40,140 @@ NewConversionEventsUserDataWithDefaults instantiates a new ConversionEventsUserD
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetPh
+### GetClickId
 
-`func (o *ConversionEventsUserData) GetPh() []string`
+`func (o *ConversionEventsUserData) GetClickId() string`
 
-GetPh returns the Ph field if non-nil, zero value otherwise.
+GetClickId returns the ClickId field if non-nil, zero value otherwise.
 
-### GetPhOk
+### GetClickIdOk
 
-`func (o *ConversionEventsUserData) GetPhOk() (*[]string, bool)`
+`func (o *ConversionEventsUserData) GetClickIdOk() (*string, bool)`
 
-GetPhOk returns a tuple with the Ph field if it's non-nil, zero value otherwise
+GetClickIdOk returns a tuple with the ClickId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPh
+### SetClickId
 
-`func (o *ConversionEventsUserData) SetPh(v []string)`
+`func (o *ConversionEventsUserData) SetClickId(v string)`
 
-SetPh sets Ph field to given value.
+SetClickId sets ClickId field to given value.
 
-### HasPh
+### HasClickId
 
-`func (o *ConversionEventsUserData) HasPh() bool`
+`func (o *ConversionEventsUserData) HasClickId() bool`
 
-HasPh returns a boolean if a field has been set.
+HasClickId returns a boolean if a field has been set.
 
-### GetGe
+### SetClickIdNil
 
-`func (o *ConversionEventsUserData) GetGe() []string`
+`func (o *ConversionEventsUserData) SetClickIdNil(b bool)`
 
-GetGe returns the Ge field if non-nil, zero value otherwise.
+ SetClickIdNil sets the value for ClickId to be an explicit nil
 
-### GetGeOk
+### UnsetClickId
+`func (o *ConversionEventsUserData) UnsetClickId()`
 
-`func (o *ConversionEventsUserData) GetGeOk() (*[]string, bool)`
+UnsetClickId ensures that no value is present for ClickId, not even an explicit nil
+### GetClientIpAddress
 
-GetGeOk returns a tuple with the Ge field if it's non-nil, zero value otherwise
+`func (o *ConversionEventsUserData) GetClientIpAddress() string`
+
+GetClientIpAddress returns the ClientIpAddress field if non-nil, zero value otherwise.
+
+### GetClientIpAddressOk
+
+`func (o *ConversionEventsUserData) GetClientIpAddressOk() (*string, bool)`
+
+GetClientIpAddressOk returns a tuple with the ClientIpAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGe
+### SetClientIpAddress
 
-`func (o *ConversionEventsUserData) SetGe(v []string)`
+`func (o *ConversionEventsUserData) SetClientIpAddress(v string)`
 
-SetGe sets Ge field to given value.
+SetClientIpAddress sets ClientIpAddress field to given value.
 
-### HasGe
+### HasClientIpAddress
 
-`func (o *ConversionEventsUserData) HasGe() bool`
+`func (o *ConversionEventsUserData) HasClientIpAddress() bool`
 
-HasGe returns a boolean if a field has been set.
+HasClientIpAddress returns a boolean if a field has been set.
+
+### GetClientUserAgent
+
+`func (o *ConversionEventsUserData) GetClientUserAgent() string`
+
+GetClientUserAgent returns the ClientUserAgent field if non-nil, zero value otherwise.
+
+### GetClientUserAgentOk
+
+`func (o *ConversionEventsUserData) GetClientUserAgentOk() (*string, bool)`
+
+GetClientUserAgentOk returns a tuple with the ClientUserAgent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientUserAgent
+
+`func (o *ConversionEventsUserData) SetClientUserAgent(v string)`
+
+SetClientUserAgent sets ClientUserAgent field to given value.
+
+### HasClientUserAgent
+
+`func (o *ConversionEventsUserData) HasClientUserAgent() bool`
+
+HasClientUserAgent returns a boolean if a field has been set.
+
+### GetCountry
+
+`func (o *ConversionEventsUserData) GetCountry() []string`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *ConversionEventsUserData) GetCountryOk() (*[]string, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *ConversionEventsUserData) SetCountry(v []string)`
+
+SetCountry sets Country field to given value.
+
+### HasCountry
+
+`func (o *ConversionEventsUserData) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
+
+### GetCt
+
+`func (o *ConversionEventsUserData) GetCt() []string`
+
+GetCt returns the Ct field if non-nil, zero value otherwise.
+
+### GetCtOk
+
+`func (o *ConversionEventsUserData) GetCtOk() (*[]string, bool)`
+
+GetCtOk returns a tuple with the Ct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCt
+
+`func (o *ConversionEventsUserData) SetCt(v []string)`
+
+SetCt sets Ct field to given value.
+
+### HasCt
+
+`func (o *ConversionEventsUserData) HasCt() bool`
+
+HasCt returns a boolean if a field has been set.
 
 ### GetDb
 
@@ -115,30 +200,55 @@ SetDb sets Db field to given value.
 
 HasDb returns a boolean if a field has been set.
 
-### GetLn
+### GetEm
 
-`func (o *ConversionEventsUserData) GetLn() []string`
+`func (o *ConversionEventsUserData) GetEm() []string`
 
-GetLn returns the Ln field if non-nil, zero value otherwise.
+GetEm returns the Em field if non-nil, zero value otherwise.
 
-### GetLnOk
+### GetEmOk
 
-`func (o *ConversionEventsUserData) GetLnOk() (*[]string, bool)`
+`func (o *ConversionEventsUserData) GetEmOk() (*[]string, bool)`
 
-GetLnOk returns a tuple with the Ln field if it's non-nil, zero value otherwise
+GetEmOk returns a tuple with the Em field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLn
+### SetEm
 
-`func (o *ConversionEventsUserData) SetLn(v []string)`
+`func (o *ConversionEventsUserData) SetEm(v []string)`
 
-SetLn sets Ln field to given value.
+SetEm sets Em field to given value.
 
-### HasLn
+### HasEm
 
-`func (o *ConversionEventsUserData) HasLn() bool`
+`func (o *ConversionEventsUserData) HasEm() bool`
 
-HasLn returns a boolean if a field has been set.
+HasEm returns a boolean if a field has been set.
+
+### GetExternalId
+
+`func (o *ConversionEventsUserData) GetExternalId() []string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *ConversionEventsUserData) GetExternalIdOk() (*[]string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *ConversionEventsUserData) SetExternalId(v []string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *ConversionEventsUserData) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
 
 ### GetFn
 
@@ -165,30 +275,140 @@ SetFn sets Fn field to given value.
 
 HasFn returns a boolean if a field has been set.
 
-### GetCt
+### GetGe
 
-`func (o *ConversionEventsUserData) GetCt() []string`
+`func (o *ConversionEventsUserData) GetGe() []string`
 
-GetCt returns the Ct field if non-nil, zero value otherwise.
+GetGe returns the Ge field if non-nil, zero value otherwise.
 
-### GetCtOk
+### GetGeOk
 
-`func (o *ConversionEventsUserData) GetCtOk() (*[]string, bool)`
+`func (o *ConversionEventsUserData) GetGeOk() (*[]string, bool)`
 
-GetCtOk returns a tuple with the Ct field if it's non-nil, zero value otherwise
+GetGeOk returns a tuple with the Ge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCt
+### SetGe
 
-`func (o *ConversionEventsUserData) SetCt(v []string)`
+`func (o *ConversionEventsUserData) SetGe(v []string)`
 
-SetCt sets Ct field to given value.
+SetGe sets Ge field to given value.
 
-### HasCt
+### HasGe
 
-`func (o *ConversionEventsUserData) HasCt() bool`
+`func (o *ConversionEventsUserData) HasGe() bool`
 
-HasCt returns a boolean if a field has been set.
+HasGe returns a boolean if a field has been set.
+
+### GetHashedMaids
+
+`func (o *ConversionEventsUserData) GetHashedMaids() []string`
+
+GetHashedMaids returns the HashedMaids field if non-nil, zero value otherwise.
+
+### GetHashedMaidsOk
+
+`func (o *ConversionEventsUserData) GetHashedMaidsOk() (*[]string, bool)`
+
+GetHashedMaidsOk returns a tuple with the HashedMaids field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashedMaids
+
+`func (o *ConversionEventsUserData) SetHashedMaids(v []string)`
+
+SetHashedMaids sets HashedMaids field to given value.
+
+### HasHashedMaids
+
+`func (o *ConversionEventsUserData) HasHashedMaids() bool`
+
+HasHashedMaids returns a boolean if a field has been set.
+
+### GetLn
+
+`func (o *ConversionEventsUserData) GetLn() []string`
+
+GetLn returns the Ln field if non-nil, zero value otherwise.
+
+### GetLnOk
+
+`func (o *ConversionEventsUserData) GetLnOk() (*[]string, bool)`
+
+GetLnOk returns a tuple with the Ln field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLn
+
+`func (o *ConversionEventsUserData) SetLn(v []string)`
+
+SetLn sets Ln field to given value.
+
+### HasLn
+
+`func (o *ConversionEventsUserData) HasLn() bool`
+
+HasLn returns a boolean if a field has been set.
+
+### GetPartnerId
+
+`func (o *ConversionEventsUserData) GetPartnerId() string`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *ConversionEventsUserData) GetPartnerIdOk() (*string, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *ConversionEventsUserData) SetPartnerId(v string)`
+
+SetPartnerId sets PartnerId field to given value.
+
+### HasPartnerId
+
+`func (o *ConversionEventsUserData) HasPartnerId() bool`
+
+HasPartnerId returns a boolean if a field has been set.
+
+### SetPartnerIdNil
+
+`func (o *ConversionEventsUserData) SetPartnerIdNil(b bool)`
+
+ SetPartnerIdNil sets the value for PartnerId to be an explicit nil
+
+### UnsetPartnerId
+`func (o *ConversionEventsUserData) UnsetPartnerId()`
+
+UnsetPartnerId ensures that no value is present for PartnerId, not even an explicit nil
+### GetPh
+
+`func (o *ConversionEventsUserData) GetPh() []string`
+
+GetPh returns the Ph field if non-nil, zero value otherwise.
+
+### GetPhOk
+
+`func (o *ConversionEventsUserData) GetPhOk() (*[]string, bool)`
+
+GetPhOk returns a tuple with the Ph field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPh
+
+`func (o *ConversionEventsUserData) SetPh(v []string)`
+
+SetPh sets Ph field to given value.
+
+### HasPh
+
+`func (o *ConversionEventsUserData) HasPh() bool`
+
+HasPh returns a boolean if a field has been set.
 
 ### GetSt
 
@@ -239,206 +459,6 @@ SetZp sets Zp field to given value.
 `func (o *ConversionEventsUserData) HasZp() bool`
 
 HasZp returns a boolean if a field has been set.
-
-### GetCountry
-
-`func (o *ConversionEventsUserData) GetCountry() []string`
-
-GetCountry returns the Country field if non-nil, zero value otherwise.
-
-### GetCountryOk
-
-`func (o *ConversionEventsUserData) GetCountryOk() (*[]string, bool)`
-
-GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountry
-
-`func (o *ConversionEventsUserData) SetCountry(v []string)`
-
-SetCountry sets Country field to given value.
-
-### HasCountry
-
-`func (o *ConversionEventsUserData) HasCountry() bool`
-
-HasCountry returns a boolean if a field has been set.
-
-### GetExternalId
-
-`func (o *ConversionEventsUserData) GetExternalId() []string`
-
-GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
-
-### GetExternalIdOk
-
-`func (o *ConversionEventsUserData) GetExternalIdOk() (*[]string, bool)`
-
-GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalId
-
-`func (o *ConversionEventsUserData) SetExternalId(v []string)`
-
-SetExternalId sets ExternalId field to given value.
-
-### HasExternalId
-
-`func (o *ConversionEventsUserData) HasExternalId() bool`
-
-HasExternalId returns a boolean if a field has been set.
-
-### GetClickId
-
-`func (o *ConversionEventsUserData) GetClickId() string`
-
-GetClickId returns the ClickId field if non-nil, zero value otherwise.
-
-### GetClickIdOk
-
-`func (o *ConversionEventsUserData) GetClickIdOk() (*string, bool)`
-
-GetClickIdOk returns a tuple with the ClickId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClickId
-
-`func (o *ConversionEventsUserData) SetClickId(v string)`
-
-SetClickId sets ClickId field to given value.
-
-### HasClickId
-
-`func (o *ConversionEventsUserData) HasClickId() bool`
-
-HasClickId returns a boolean if a field has been set.
-
-### SetClickIdNil
-
-`func (o *ConversionEventsUserData) SetClickIdNil(b bool)`
-
- SetClickIdNil sets the value for ClickId to be an explicit nil
-
-### UnsetClickId
-`func (o *ConversionEventsUserData) UnsetClickId()`
-
-UnsetClickId ensures that no value is present for ClickId, not even an explicit nil
-### GetPartnerId
-
-`func (o *ConversionEventsUserData) GetPartnerId() string`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *ConversionEventsUserData) GetPartnerIdOk() (*string, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *ConversionEventsUserData) SetPartnerId(v string)`
-
-SetPartnerId sets PartnerId field to given value.
-
-### HasPartnerId
-
-`func (o *ConversionEventsUserData) HasPartnerId() bool`
-
-HasPartnerId returns a boolean if a field has been set.
-
-### SetPartnerIdNil
-
-`func (o *ConversionEventsUserData) SetPartnerIdNil(b bool)`
-
- SetPartnerIdNil sets the value for PartnerId to be an explicit nil
-
-### UnsetPartnerId
-`func (o *ConversionEventsUserData) UnsetPartnerId()`
-
-UnsetPartnerId ensures that no value is present for PartnerId, not even an explicit nil
-### GetEm
-
-`func (o *ConversionEventsUserData) GetEm() []string`
-
-GetEm returns the Em field if non-nil, zero value otherwise.
-
-### GetEmOk
-
-`func (o *ConversionEventsUserData) GetEmOk() (*[]string, bool)`
-
-GetEmOk returns a tuple with the Em field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEm
-
-`func (o *ConversionEventsUserData) SetEm(v []string)`
-
-SetEm sets Em field to given value.
-
-
-### GetHashedMaids
-
-`func (o *ConversionEventsUserData) GetHashedMaids() []string`
-
-GetHashedMaids returns the HashedMaids field if non-nil, zero value otherwise.
-
-### GetHashedMaidsOk
-
-`func (o *ConversionEventsUserData) GetHashedMaidsOk() (*[]string, bool)`
-
-GetHashedMaidsOk returns a tuple with the HashedMaids field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHashedMaids
-
-`func (o *ConversionEventsUserData) SetHashedMaids(v []string)`
-
-SetHashedMaids sets HashedMaids field to given value.
-
-
-### GetClientIpAddress
-
-`func (o *ConversionEventsUserData) GetClientIpAddress() string`
-
-GetClientIpAddress returns the ClientIpAddress field if non-nil, zero value otherwise.
-
-### GetClientIpAddressOk
-
-`func (o *ConversionEventsUserData) GetClientIpAddressOk() (*string, bool)`
-
-GetClientIpAddressOk returns a tuple with the ClientIpAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientIpAddress
-
-`func (o *ConversionEventsUserData) SetClientIpAddress(v string)`
-
-SetClientIpAddress sets ClientIpAddress field to given value.
-
-
-### GetClientUserAgent
-
-`func (o *ConversionEventsUserData) GetClientUserAgent() string`
-
-GetClientUserAgent returns the ClientUserAgent field if non-nil, zero value otherwise.
-
-### GetClientUserAgentOk
-
-`func (o *ConversionEventsUserData) GetClientUserAgentOk() (*string, bool)`
-
-GetClientUserAgentOk returns a tuple with the ClientUserAgent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientUserAgent
-
-`func (o *ConversionEventsUserData) SetClientUserAgent(v string)`
-
-SetClientUserAgent sets ClientUserAgent field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,9 +21,27 @@ import java.util.Objects;
 
 public class GetInvites200Response   {
   
+  private String bookmark;
+
   private List<@Valid InviteResponse> items = new ArrayList<>();
 
-  private String bookmark;
+  /**
+   **/
+  public GetInvites200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
 
   /**
    * List of invite and request data.
@@ -53,24 +71,6 @@ public class GetInvites200Response   {
   }
 
 
-  /**
-   **/
-  public GetInvites200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,13 +81,13 @@ public class GetInvites200Response   {
       return false;
     }
     GetInvites200Response getInvites200Response = (GetInvites200Response) o;
-    return Objects.equals(this.items, getInvites200Response.items) &&
-        Objects.equals(this.bookmark, getInvites200Response.bookmark);
+    return Objects.equals(this.bookmark, getInvites200Response.bookmark) &&
+        Objects.equals(this.items, getInvites200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -95,8 +95,8 @@ public class GetInvites200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetInvites200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

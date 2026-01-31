@@ -1,10 +1,10 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.Media;
 import org.openapitools.vertxweb.server.model.MediaList200Response;
 import org.openapitools.vertxweb.server.model.MediaUpload;
-import org.openapitools.vertxweb.server.model.MediaUploadDetails;
-import org.openapitools.vertxweb.server.model.MediaUploadRequest;
+import org.openapitools.vertxweb.server.model.MediaUploadCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -48,11 +48,11 @@ public class MediaApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        MediaUploadRequest mediaUploadRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MediaUploadRequest>(){}) : null;
+        MediaUploadCreate mediaUploadCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MediaUploadCreate>(){}) : null;
 
-        logger.debug("Parameter mediaUploadRequest is {}", mediaUploadRequest);
+        logger.debug("Parameter mediaUploadCreate is {}", mediaUploadCreate);
 
-        api.mediaCreate(mediaUploadRequest)
+        api.mediaCreate(mediaUploadCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

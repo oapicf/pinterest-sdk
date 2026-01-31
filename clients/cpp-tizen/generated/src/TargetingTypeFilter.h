@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "AdsAnalyticsTargetingType.h"
 #include <list>
 #include "Object.h"
 
@@ -47,16 +46,16 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+	/*! \brief Get List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	 */
-	std::list<AdsAnalyticsTargetingType> getTargetingTypes();
+	std::list<std::string> getTargetingTypes();
 
-	/*! \brief Set List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+	/*! \brief Set List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	 */
-	void setTargetingTypes(std::list <AdsAnalyticsTargetingType> targeting_types);
+	void setTargetingTypes(std::list <std::string> targeting_types);
 
 private:
-	std::list <AdsAnalyticsTargetingType>targeting_types;
+	std::list <std::string>targeting_types;
 	void __init();
 	void __cleanup();
 

@@ -26,10 +26,8 @@ import javax.annotation.Generated;
  * LeadFormQuestion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormQuestion {
-
-  private LeadFormQuestionType questionType;
 
   private JsonNullable<LeadFormQuestionFieldType> customQuestionFieldType = JsonNullable.<LeadFormQuestionFieldType>undefined();
 
@@ -38,25 +36,7 @@ public class LeadFormQuestion {
   @Valid
   private JsonNullable<List<String>> customQuestionOptions = JsonNullable.<List<String>>undefined();
 
-  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
-    this.questionType = questionType;
-    return this;
-  }
-
-  /**
-   * Get questionType
-   * @return questionType
-   */
-  @Valid 
-  @Schema(name = "question_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("question_type")
-  public LeadFormQuestionType getQuestionType() {
-    return questionType;
-  }
-
-  public void setQuestionType(LeadFormQuestionType questionType) {
-    this.questionType = questionType;
-  }
+  private LeadFormQuestionType questionType;
 
   public LeadFormQuestion customQuestionFieldType(LeadFormQuestionFieldType customQuestionFieldType) {
     this.customQuestionFieldType = JsonNullable.of(customQuestionFieldType);
@@ -126,6 +106,26 @@ public class LeadFormQuestion {
     this.customQuestionOptions = customQuestionOptions;
   }
 
+  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
+    this.questionType = questionType;
+    return this;
+  }
+
+  /**
+   * Get questionType
+   * @return questionType
+   */
+  @Valid 
+  @Schema(name = "question_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("question_type")
+  public LeadFormQuestionType getQuestionType() {
+    return questionType;
+  }
+
+  public void setQuestionType(LeadFormQuestionType questionType) {
+    this.questionType = questionType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -135,10 +135,10 @@ public class LeadFormQuestion {
       return false;
     }
     LeadFormQuestion leadFormQuestion = (LeadFormQuestion) o;
-    return Objects.equals(this.questionType, leadFormQuestion.questionType) &&
-        equalsNullable(this.customQuestionFieldType, leadFormQuestion.customQuestionFieldType) &&
+    return equalsNullable(this.customQuestionFieldType, leadFormQuestion.customQuestionFieldType) &&
         equalsNullable(this.customQuestionLabel, leadFormQuestion.customQuestionLabel) &&
-        equalsNullable(this.customQuestionOptions, leadFormQuestion.customQuestionOptions);
+        equalsNullable(this.customQuestionOptions, leadFormQuestion.customQuestionOptions) &&
+        Objects.equals(this.questionType, leadFormQuestion.questionType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -147,7 +147,7 @@ public class LeadFormQuestion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionType, hashCodeNullable(customQuestionFieldType), hashCodeNullable(customQuestionLabel), hashCodeNullable(customQuestionOptions));
+    return Objects.hash(hashCodeNullable(customQuestionFieldType), hashCodeNullable(customQuestionLabel), hashCodeNullable(customQuestionOptions), questionType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -161,10 +161,10 @@ public class LeadFormQuestion {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormQuestion {\n");
-    sb.append("    questionType: ").append(toIndentedString(questionType)).append("\n");
     sb.append("    customQuestionFieldType: ").append(toIndentedString(customQuestionFieldType)).append("\n");
     sb.append("    customQuestionLabel: ").append(toIndentedString(customQuestionLabel)).append("\n");
     sb.append("    customQuestionOptions: ").append(toIndentedString(customQuestionOptions)).append("\n");
+    sb.append("    questionType: ").append(toIndentedString(questionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -34,23 +34,23 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemsBatch", description = "Object describing the catalogs creative assets items batch")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
 
   private @Nullable String batchId;
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private @Nullable OffsetDateTime createdTime;
+  private CatalogsType catalogType;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<OffsetDateTime> completedTime = JsonNullable.<OffsetDateTime>undefined();
 
-  private @Nullable BatchOperationStatus status;
-
-  private CatalogsType catalogType;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private @Nullable OffsetDateTime createdTime;
 
   @Valid
   private List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
+
+  private @Nullable BatchOperationStatus status;
 
   public CatalogsCreativeAssetsItemsBatch() {
     super();
@@ -83,24 +83,24 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
     this.batchId = batchId;
   }
 
-  public CatalogsCreativeAssetsItemsBatch createdTime(@Nullable OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
+  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-   * @return createdTime
+   * Get catalogType
+   * @return catalogType
    */
-  @Valid 
-  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_time")
-  public @Nullable OffsetDateTime getCreatedTime() {
-    return createdTime;
+  @NotNull @Valid 
+  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setCreatedTime(@Nullable OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsCreativeAssetsItemsBatch completedTime(OffsetDateTime completedTime) {
@@ -123,44 +123,24 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
     this.completedTime = completedTime;
   }
 
-  public CatalogsCreativeAssetsItemsBatch status(@Nullable BatchOperationStatus status) {
-    this.status = status;
+  public CatalogsCreativeAssetsItemsBatch createdTime(@Nullable OffsetDateTime createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
   /**
-   * Get status
-   * @return status
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+   * @return createdTime
    */
   @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public @Nullable BatchOperationStatus getStatus() {
-    return status;
+  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_time")
+  public @Nullable OffsetDateTime getCreatedTime() {
+    return createdTime;
   }
 
-  public void setStatus(@Nullable BatchOperationStatus status) {
-    this.status = status;
-  }
-
-  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  /**
-   * Get catalogType
-   * @return catalogType
-   */
-  @NotNull @Valid 
-  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  public void setCreatedTime(@Nullable OffsetDateTime createdTime) {
+    this.createdTime = createdTime;
   }
 
   public CatalogsCreativeAssetsItemsBatch items(List<@Valid CreativeAssetsProcessingRecord> items) {
@@ -191,6 +171,26 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
     this.items = items;
   }
 
+  public CatalogsCreativeAssetsItemsBatch status(@Nullable BatchOperationStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public @Nullable BatchOperationStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(@Nullable BatchOperationStatus status) {
+    this.status = status;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -201,11 +201,11 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
     }
     CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch = (CatalogsCreativeAssetsItemsBatch) o;
     return Objects.equals(this.batchId, catalogsCreativeAssetsItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsCreativeAssetsItemsBatch.createdTime) &&
-        equalsNullable(this.completedTime, catalogsCreativeAssetsItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsCreativeAssetsItemsBatch.status) &&
         Objects.equals(this.catalogType, catalogsCreativeAssetsItemsBatch.catalogType) &&
-        Objects.equals(this.items, catalogsCreativeAssetsItemsBatch.items);
+        equalsNullable(this.completedTime, catalogsCreativeAssetsItemsBatch.completedTime) &&
+        Objects.equals(this.createdTime, catalogsCreativeAssetsItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsCreativeAssetsItemsBatch.items) &&
+        Objects.equals(this.status, catalogsCreativeAssetsItemsBatch.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -214,7 +214,7 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, hashCodeNullable(completedTime), status, catalogType, items);
+    return Objects.hash(batchId, catalogType, hashCodeNullable(completedTime), createdTime, items, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -229,11 +229,11 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsBatch {\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

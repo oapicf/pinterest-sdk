@@ -11,7 +11,7 @@ import org.openapitools.model.Audience;
 @Canonical
 class AudiencesList200Response {
     
-    List<Audience> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Audience> items = new ArrayList<>()
 }

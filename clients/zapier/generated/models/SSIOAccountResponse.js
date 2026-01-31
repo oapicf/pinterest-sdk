@@ -7,9 +7,9 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}eligible`,
-                label: `Advertiser eligible to create order lines - [${labelPrefix}eligible]`,
-                type: 'boolean',
+                key: `${keyPrefix}billto_infos`,
+                label: `[${labelPrefix}billto_infos]`,
+                children: SSIOAccountItem.fields(`${keyPrefix}billto_infos${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}can_edit`,
@@ -17,13 +17,18 @@ module.exports = {
                 type: 'boolean',
             },
             {
-                key: `${keyPrefix}billto_infos`,
-                label: `[${labelPrefix}billto_infos]`,
-                children: SSIOAccountItem.fields(`${keyPrefix}billto_infos${!isInput ? '[]' : ''}`, isInput, true), 
-            },
-            {
                 key: `${keyPrefix}currency`,
                 label: `[${labelPrefix}currency]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}eligible`,
+                label: `Advertiser eligible to create order lines - [${labelPrefix}eligible]`,
+                type: 'boolean',
+            },
+            {
+                key: `${keyPrefix}error`,
+                label: `Error indicator from Salesforce which could be \"No Error\" - [${labelPrefix}error]`,
                 type: 'string',
             },
             {
@@ -31,22 +36,17 @@ module.exports = {
                 label: `[${labelPrefix}pmp_names]`,
                 children: SSIOAccountPMPName.fields(`${keyPrefix}pmp_names${!isInput ? '[]' : ''}`, isInput, true), 
             },
-            {
-                key: `${keyPrefix}error`,
-                label: `Error indicator from Salesforce which could be \"No Error\" - [${labelPrefix}error]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'eligible': bundle.inputData?.[`${keyPrefix}eligible`],
-            'can_edit': bundle.inputData?.[`${keyPrefix}can_edit`],
             'billto_infos': utils.childMapping(bundle.inputData?.[`${keyPrefix}billto_infos`], `${keyPrefix}billto_infos`, SSIOAccountItem),
+            'can_edit': bundle.inputData?.[`${keyPrefix}can_edit`],
             'currency': bundle.inputData?.[`${keyPrefix}currency`],
-            'pmp_names': utils.childMapping(bundle.inputData?.[`${keyPrefix}pmp_names`], `${keyPrefix}pmp_names`, SSIOAccountPMPName),
+            'eligible': bundle.inputData?.[`${keyPrefix}eligible`],
             'error': bundle.inputData?.[`${keyPrefix}error`],
+            'pmp_names': utils.childMapping(bundle.inputData?.[`${keyPrefix}pmp_names`], `${keyPrefix}pmp_names`, SSIOAccountPMPName),
         }
     },
 }

@@ -16,9 +16,9 @@ void main() {
   // final instance = TemplateResponseDateRangeRelativeDateRange();
 
   group('test TemplateResponseDateRangeRelativeDateRange', () {
-    // The date range type
-    // String type
-    test('to test the property `type`', () async {
+    // The end date of the date range
+    // num endDaysInPast
+    test('to test the property `endDaysInPast`', () async {
       // TODO
     });
 
@@ -28,9 +28,9 @@ void main() {
       // TODO
     });
 
-    // The end date of the date range
-    // num endDaysInPast
-    test('to test the property `endDaysInPast`', () async {
+    // The date range type
+    // String type
+    test('to test the property `type`', () async {
       // TODO
     });
 

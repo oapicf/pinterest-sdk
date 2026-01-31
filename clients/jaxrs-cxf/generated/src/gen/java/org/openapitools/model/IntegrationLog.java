@@ -20,12 +20,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IntegrationLog  {
   
+  @ApiModelProperty(value = "")
+
+  private String advertiserId;
+
+ /**
+  * Version number of the integration application.
+  */
+  @ApiModelProperty(value = "Version number of the integration application.")
+
+  private String appVersionNumber;
+
  /**
   * Timestamp in milliseconds of when the log was executed at the client.
   */
   @ApiModelProperty(required = true, value = "Timestamp in milliseconds of when the log was executed at the client.")
 
   private Integer clientTimestamp;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private IntegrationLogClientError error;
 
 public enum EventTypeEnum {
 
@@ -65,6 +82,14 @@ APP(String.valueOf("APP")), API(String.valueOf("API"));
   @ApiModelProperty(required = true, value = "Log event type")
 
   private EventTypeEnum eventType;
+
+  @ApiModelProperty(value = "")
+
+  private String externalBusinessId;
+
+  @ApiModelProperty(value = "")
+
+  private String feedProfileId;
 
 public enum LogLevelEnum {
 
@@ -107,23 +132,7 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
 
   @ApiModelProperty(value = "")
 
-  private String externalBusinessId;
-
-  @ApiModelProperty(value = "")
-
-  private String advertiserId;
-
-  @ApiModelProperty(value = "")
-
   private String merchantId;
-
-  @ApiModelProperty(value = "")
-
-  private String tagId;
-
-  @ApiModelProperty(value = "")
-
-  private String feedProfileId;
 
  /**
   * Explanation of the event that occured.
@@ -131,13 +140,6 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
   @ApiModelProperty(value = "Explanation of the event that occured.")
 
   private String message;
-
- /**
-  * Version number of the integration application.
-  */
-  @ApiModelProperty(value = "Version number of the integration application.")
-
-  private String appVersionNumber;
 
  /**
   * Version number of the platform the integration application is running on.
@@ -150,13 +152,47 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
 
   @Valid
 
-  private IntegrationLogClientError error;
+  private IntegrationLogClientRequest request;
 
   @ApiModelProperty(value = "")
 
-  @Valid
+  private String tagId;
+ /**
+   * Get advertiserId
+   * @return advertiserId
+  **/
+  @JsonProperty("advertiser_id")
+ @Size(max=128)  public String getAdvertiserId() {
+    return advertiserId;
+  }
 
-  private IntegrationLogClientRequest request;
+  public void setAdvertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
+  }
+
+  public IntegrationLog advertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
+    return this;
+  }
+
+ /**
+   * Version number of the integration application.
+   * @return appVersionNumber
+  **/
+  @JsonProperty("app_version_number")
+ @Size(max=20)  public String getAppVersionNumber() {
+    return appVersionNumber;
+  }
+
+  public void setAppVersionNumber(String appVersionNumber) {
+    this.appVersionNumber = appVersionNumber;
+  }
+
+  public IntegrationLog appVersionNumber(String appVersionNumber) {
+    this.appVersionNumber = appVersionNumber;
+    return this;
+  }
+
  /**
    * Timestamp in milliseconds of when the log was executed at the client.
    * @return clientTimestamp
@@ -173,6 +209,24 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
 
   public IntegrationLog clientTimestamp(Integer clientTimestamp) {
     this.clientTimestamp = clientTimestamp;
+    return this;
+  }
+
+ /**
+   * Get error
+   * @return error
+  **/
+  @JsonProperty("error")
+  public IntegrationLogClientError getError() {
+    return error;
+  }
+
+  public void setError(IntegrationLogClientError error) {
+    this.error = error;
+  }
+
+  public IntegrationLog error(IntegrationLogClientError error) {
+    this.error = error;
     return this;
   }
 
@@ -199,28 +253,6 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
   }
 
  /**
-   * Log level type
-   * @return logLevel
-  **/
-  @JsonProperty("log_level")
-  @NotNull
-  public String getLogLevel() {
-    if (logLevel == null) {
-      return null;
-    }
-    return logLevel.value();
-  }
-
-  public void setLogLevel(LogLevelEnum logLevel) {
-    this.logLevel = logLevel;
-  }
-
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
-    this.logLevel = logLevel;
-    return this;
-  }
-
- /**
    * Get externalBusinessId
    * @return externalBusinessId
   **/
@@ -235,60 +267,6 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
 
   public IntegrationLog externalBusinessId(String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
-    return this;
-  }
-
- /**
-   * Get advertiserId
-   * @return advertiserId
-  **/
-  @JsonProperty("advertiser_id")
- @Size(max=128)  public String getAdvertiserId() {
-    return advertiserId;
-  }
-
-  public void setAdvertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-  }
-
-  public IntegrationLog advertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-    return this;
-  }
-
- /**
-   * Get merchantId
-   * @return merchantId
-  **/
-  @JsonProperty("merchant_id")
- @Size(max=128)  public String getMerchantId() {
-    return merchantId;
-  }
-
-  public void setMerchantId(String merchantId) {
-    this.merchantId = merchantId;
-  }
-
-  public IntegrationLog merchantId(String merchantId) {
-    this.merchantId = merchantId;
-    return this;
-  }
-
- /**
-   * Get tagId
-   * @return tagId
-  **/
-  @JsonProperty("tag_id")
- @Size(max=128)  public String getTagId() {
-    return tagId;
-  }
-
-  public void setTagId(String tagId) {
-    this.tagId = tagId;
-  }
-
-  public IntegrationLog tagId(String tagId) {
-    this.tagId = tagId;
     return this;
   }
 
@@ -311,11 +289,51 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
   }
 
  /**
+   * Log level type
+   * @return logLevel
+  **/
+  @JsonProperty("log_level")
+  @NotNull
+  public String getLogLevel() {
+    if (logLevel == null) {
+      return null;
+    }
+    return logLevel.value();
+  }
+
+  public void setLogLevel(LogLevelEnum logLevel) {
+    this.logLevel = logLevel;
+  }
+
+  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+    this.logLevel = logLevel;
+    return this;
+  }
+
+ /**
+   * Get merchantId
+   * @return merchantId
+  **/
+  @JsonProperty("merchant_id")
+ @Size(max=128)  public String getMerchantId() {
+    return merchantId;
+  }
+
+  public void setMerchantId(String merchantId) {
+    this.merchantId = merchantId;
+  }
+
+  public IntegrationLog merchantId(String merchantId) {
+    this.merchantId = merchantId;
+    return this;
+  }
+
+ /**
    * Explanation of the event that occured.
    * @return message
   **/
   @JsonProperty("message")
- @Size(max=2048)  public String getMessage() {
+ @Size(max=8192)  public String getMessage() {
     return message;
   }
 
@@ -325,24 +343,6 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
 
   public IntegrationLog message(String message) {
     this.message = message;
-    return this;
-  }
-
- /**
-   * Version number of the integration application.
-   * @return appVersionNumber
-  **/
-  @JsonProperty("app_version_number")
- @Size(max=20)  public String getAppVersionNumber() {
-    return appVersionNumber;
-  }
-
-  public void setAppVersionNumber(String appVersionNumber) {
-    this.appVersionNumber = appVersionNumber;
-  }
-
-  public IntegrationLog appVersionNumber(String appVersionNumber) {
-    this.appVersionNumber = appVersionNumber;
     return this;
   }
 
@@ -365,24 +365,6 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
   }
 
  /**
-   * Get error
-   * @return error
-  **/
-  @JsonProperty("error")
-  public IntegrationLogClientError getError() {
-    return error;
-  }
-
-  public void setError(IntegrationLogClientError error) {
-    this.error = error;
-  }
-
-  public IntegrationLog error(IntegrationLogClientError error) {
-    this.error = error;
-    return this;
-  }
-
- /**
    * Get request
    * @return request
   **/
@@ -400,6 +382,24 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
     return this;
   }
 
+ /**
+   * Get tagId
+   * @return tagId
+  **/
+  @JsonProperty("tag_id")
+ @Size(max=128)  public String getTagId() {
+    return tagId;
+  }
+
+  public void setTagId(String tagId) {
+    this.tagId = tagId;
+  }
+
+  public IntegrationLog tagId(String tagId) {
+    this.tagId = tagId;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -409,24 +409,24 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
       return false;
     }
     IntegrationLog integrationLog = (IntegrationLog) o;
-    return Objects.equals(this.clientTimestamp, integrationLog.clientTimestamp) &&
-        Objects.equals(this.eventType, integrationLog.eventType) &&
-        Objects.equals(this.logLevel, integrationLog.logLevel) &&
-        Objects.equals(this.externalBusinessId, integrationLog.externalBusinessId) &&
-        Objects.equals(this.advertiserId, integrationLog.advertiserId) &&
-        Objects.equals(this.merchantId, integrationLog.merchantId) &&
-        Objects.equals(this.tagId, integrationLog.tagId) &&
-        Objects.equals(this.feedProfileId, integrationLog.feedProfileId) &&
-        Objects.equals(this.message, integrationLog.message) &&
+    return Objects.equals(this.advertiserId, integrationLog.advertiserId) &&
         Objects.equals(this.appVersionNumber, integrationLog.appVersionNumber) &&
-        Objects.equals(this.platformVersionNumber, integrationLog.platformVersionNumber) &&
+        Objects.equals(this.clientTimestamp, integrationLog.clientTimestamp) &&
         Objects.equals(this.error, integrationLog.error) &&
-        Objects.equals(this.request, integrationLog.request);
+        Objects.equals(this.eventType, integrationLog.eventType) &&
+        Objects.equals(this.externalBusinessId, integrationLog.externalBusinessId) &&
+        Objects.equals(this.feedProfileId, integrationLog.feedProfileId) &&
+        Objects.equals(this.logLevel, integrationLog.logLevel) &&
+        Objects.equals(this.merchantId, integrationLog.merchantId) &&
+        Objects.equals(this.message, integrationLog.message) &&
+        Objects.equals(this.platformVersionNumber, integrationLog.platformVersionNumber) &&
+        Objects.equals(this.request, integrationLog.request) &&
+        Objects.equals(this.tagId, integrationLog.tagId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientTimestamp, eventType, logLevel, externalBusinessId, advertiserId, merchantId, tagId, feedProfileId, message, appVersionNumber, platformVersionNumber, error, request);
+    return Objects.hash(advertiserId, appVersionNumber, clientTimestamp, error, eventType, externalBusinessId, feedProfileId, logLevel, merchantId, message, platformVersionNumber, request, tagId);
   }
 
   @Override
@@ -434,19 +434,19 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLog {\n");
     
-    sb.append("    clientTimestamp: ").append(toIndentedString(clientTimestamp)).append("\n");
-    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
-    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
-    sb.append("    tagId: ").append(toIndentedString(tagId)).append("\n");
-    sb.append("    feedProfileId: ").append(toIndentedString(feedProfileId)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    appVersionNumber: ").append(toIndentedString(appVersionNumber)).append("\n");
-    sb.append("    platformVersionNumber: ").append(toIndentedString(platformVersionNumber)).append("\n");
+    sb.append("    clientTimestamp: ").append(toIndentedString(clientTimestamp)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
+    sb.append("    feedProfileId: ").append(toIndentedString(feedProfileId)).append("\n");
+    sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
+    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    platformVersionNumber: ").append(toIndentedString(platformVersionNumber)).append("\n");
     sb.append("    request: ").append(toIndentedString(request)).append("\n");
+    sb.append("    tagId: ").append(toIndentedString(tagId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &CatalogsFeedsUpdateRequest{}
 
 // CatalogsFeedsUpdateRequest Request object for updating a feed.
 type CatalogsFeedsUpdateRequest struct {
+	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
 	DefaultAvailability NullableProductAvailabilityType `json:"default_availability,omitempty"`
 	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
-	// A human-friendly name associated to a given feed.
-	Name *string `json:"name,omitempty"`
 	Format *CatalogsFormat `json:"format,omitempty"`
-	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	Location *string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	// A human-friendly name associated to a given feed.
+	Name *string `json:"name,omitempty"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
 	Status *CatalogsStatus `json:"status,omitempty"`
 }
@@ -47,6 +47,48 @@ func NewCatalogsFeedsUpdateRequest() *CatalogsFeedsUpdateRequest {
 func NewCatalogsFeedsUpdateRequestWithDefaults() *CatalogsFeedsUpdateRequest {
 	this := CatalogsFeedsUpdateRequest{}
 	return &this
+}
+
+// GetCredentials returns the Credentials field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsFeedsUpdateRequest) GetCredentials() CatalogsFeedCredentials {
+	if o == nil || IsNil(o.Credentials.Get()) {
+		var ret CatalogsFeedCredentials
+		return ret
+	}
+	return *o.Credentials.Get()
+}
+
+// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsFeedsUpdateRequest) GetCredentialsOk() (*CatalogsFeedCredentials, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Credentials.Get(), o.Credentials.IsSet()
+}
+
+// HasCredentials returns a boolean if a field has been set.
+func (o *CatalogsFeedsUpdateRequest) HasCredentials() bool {
+	if o != nil && o.Credentials.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentials gets a reference to the given NullableCatalogsFeedCredentials and assigns it to the Credentials field.
+func (o *CatalogsFeedsUpdateRequest) SetCredentials(v CatalogsFeedCredentials) {
+	o.Credentials.Set(&v)
+}
+// SetCredentialsNil sets the value for Credentials to be an explicit nil
+func (o *CatalogsFeedsUpdateRequest) SetCredentialsNil() {
+	o.Credentials.Set(nil)
+}
+
+// UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
+func (o *CatalogsFeedsUpdateRequest) UnsetCredentials() {
+	o.Credentials.Unset()
 }
 
 // GetDefaultAvailability returns the DefaultAvailability field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -133,38 +175,6 @@ func (o *CatalogsFeedsUpdateRequest) UnsetDefaultCurrency() {
 	o.DefaultCurrency.Unset()
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CatalogsFeedsUpdateRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedsUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsFeedsUpdateRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CatalogsFeedsUpdateRequest) SetName(v string) {
-	o.Name = &v
-}
-
 // GetFormat returns the Format field value if set, zero value otherwise.
 func (o *CatalogsFeedsUpdateRequest) GetFormat() CatalogsFormat {
 	if o == nil || IsNil(o.Format) {
@@ -197,48 +207,6 @@ func (o *CatalogsFeedsUpdateRequest) SetFormat(v CatalogsFormat) {
 	o.Format = &v
 }
 
-// GetCredentials returns the Credentials field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsFeedsUpdateRequest) GetCredentials() CatalogsFeedCredentials {
-	if o == nil || IsNil(o.Credentials.Get()) {
-		var ret CatalogsFeedCredentials
-		return ret
-	}
-	return *o.Credentials.Get()
-}
-
-// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsFeedsUpdateRequest) GetCredentialsOk() (*CatalogsFeedCredentials, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Credentials.Get(), o.Credentials.IsSet()
-}
-
-// HasCredentials returns a boolean if a field has been set.
-func (o *CatalogsFeedsUpdateRequest) HasCredentials() bool {
-	if o != nil && o.Credentials.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCredentials gets a reference to the given NullableCatalogsFeedCredentials and assigns it to the Credentials field.
-func (o *CatalogsFeedsUpdateRequest) SetCredentials(v CatalogsFeedCredentials) {
-	o.Credentials.Set(&v)
-}
-// SetCredentialsNil sets the value for Credentials to be an explicit nil
-func (o *CatalogsFeedsUpdateRequest) SetCredentialsNil() {
-	o.Credentials.Set(nil)
-}
-
-// UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
-func (o *CatalogsFeedsUpdateRequest) UnsetCredentials() {
-	o.Credentials.Unset()
-}
-
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *CatalogsFeedsUpdateRequest) GetLocation() string {
 	if o == nil || IsNil(o.Location) {
@@ -269,6 +237,38 @@ func (o *CatalogsFeedsUpdateRequest) HasLocation() bool {
 // SetLocation gets a reference to the given string and assigns it to the Location field.
 func (o *CatalogsFeedsUpdateRequest) SetLocation(v string) {
 	o.Location = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CatalogsFeedsUpdateRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedsUpdateRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsFeedsUpdateRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CatalogsFeedsUpdateRequest) SetName(v string) {
+	o.Name = &v
 }
 
 // GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -355,23 +355,23 @@ func (o CatalogsFeedsUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedsUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Credentials.IsSet() {
+		toSerialize["credentials"] = o.Credentials.Get()
+	}
 	if o.DefaultAvailability.IsSet() {
 		toSerialize["default_availability"] = o.DefaultAvailability.Get()
 	}
 	if o.DefaultCurrency.IsSet() {
 		toSerialize["default_currency"] = o.DefaultCurrency.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format
 	}
-	if o.Credentials.IsSet() {
-		toSerialize["credentials"] = o.Credentials.Get()
-	}
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.PreferredProcessingSchedule.IsSet() {
 		toSerialize["preferred_processing_schedule"] = o.PreferredProcessingSchedule.Get()

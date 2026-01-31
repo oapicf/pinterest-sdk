@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"imageUrl": @"image_url", @"title": @"title", @"pinId": @"pin_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"imageUrl": @"image_url", @"title": @"title", @"pinId": @"pin_id", @"catalogProductGroupId": @"catalog_product_group_id", @"creativeType": @"creative_type", @"customizableCtaType": @"customizable_cta_type", @"heroImageTitle": @"hero_image_title", @"heroImageUrl": @"hero_image_url", @"heroPinId": @"hero_pin_id", @"imageTag": @"image_tag", @"itemId": @"item_id", @"preferredMediaType": @"preferred_media_type", @"videoTag": @"video_tag" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[];
+  NSArray *optionalProperties = @[@"customizableCtaType", @"heroImageTitle", @"heroImageUrl", @"heroPinId", @"imageTag", @"itemId", @"preferredMediaType", @"videoTag"];
   return [optionalProperties containsObject:propertyName];
 }
 

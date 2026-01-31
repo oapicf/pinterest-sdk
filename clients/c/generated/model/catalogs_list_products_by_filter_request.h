@@ -34,8 +34,8 @@ pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalo
 typedef struct catalogs_list_products_by_filter_request_t {
     char *feed_id; // string
     struct catalogs_creative_assets_product_group_filters_t *filters; //model
-    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type; //enum
     char *catalog_id; // string
+    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
     pinterest_rest_api_catalogs_locale__e locale; //referenced enum
 
@@ -45,8 +45,8 @@ typedef struct catalogs_list_products_by_filter_request_t {
 __attribute__((deprecated)) catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request_create(
     char *feed_id,
     catalogs_creative_assets_product_group_filters_t *filters,
-    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
     pinterest_rest_api_catalogs_locale__e locale
 );

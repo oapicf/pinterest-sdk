@@ -16,7 +16,7 @@ feature -- Test routines
     test_ads_credit_redeem
             -- Redeem ad credits
             --
-            -- Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
             l_response: ADS_CREDIT_REDEEM_RESPONSE
             l_ad_account_id: STRING_32
@@ -33,7 +33,7 @@ feature -- Test routines
     test_ads_credits_discounts_get
             -- Get ads credit discounts
             --
-            -- Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
             l_response: ADS_CREDITS_DISCOUNTS_GET_200_RESPONSE
             l_ad_account_id: STRING_32
@@ -47,10 +47,50 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
 
+    test_billing_invoice_download_get
+            -- Get download url for a billing invoice
+            --
+            -- Get download url for a billing invoice.
+        local
+            l_response: BILLING_INVOICE_DOWNLOAD_RESPONSE
+            l_ad_account_id: STRING_32
+            l_billing_invoice_id: STRING_32
+        do
+            -- TODO: Initialize required params.
+            -- l_ad_account_id
+            -- l_billing_invoice_id
+
+            -- l_response := api.billing_invoice_download_get(l_ad_account_id, l_billing_invoice_id)
+            assert ("not_implemented", False)
+        end
+
+    test_billing_invoices_get
+            -- Get billing invoices
+            --
+            -- Get billing invoices in the advertiser account.
+        local
+            l_response: BILLING_INVOICES_GET_200_RESPONSE
+            l_ad_account_id: STRING_32
+            l_bookmark: STRING_32
+            l_page_size: INTEGER_32
+            l_sort: STRING_32
+            l_order: STRING_32
+            l_status: STRING_32
+            l_document_type: STRING_32
+            l_start_due_date: DATE
+            l_end_due_date: DATE
+        do
+            -- TODO: Initialize required params.
+            -- l_ad_account_id
+
+            -- l_response := api.billing_invoices_get(l_ad_account_id, l_bookmark, l_page_size, l_sort, l_order, l_status, l_document_type, l_start_due_date, l_end_due_date)
+            assert ("not_implemented", False)
+        end
+
     test_billing_profiles_get
             -- Get billing profiles
             --
-            -- Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
             l_response: BILLING_PROFILES_GET_200_RESPONSE
             l_ad_account_id: STRING_32

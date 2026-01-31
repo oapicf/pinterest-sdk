@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="System error details included in the log sent by the client.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="System error details included in the log sent by the client.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientError   {
   
   private String cause;
@@ -81,7 +81,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Human-readable description of the error.")
   @JsonProperty("message")
- @Size(max=512)  public String getMessage() {
+ @Size(max=8192)  public String getMessage() {
     return message;
   }
   public void setMessage(String message) {

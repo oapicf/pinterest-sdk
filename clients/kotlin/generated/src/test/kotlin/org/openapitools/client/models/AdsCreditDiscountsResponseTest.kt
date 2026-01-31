@@ -37,10 +37,10 @@ class AdsCreditDiscountsResponseTest : ShouldSpec() {
             //modelInstance.advertiserId shouldBe ("TODO")
         }
 
-        // to test the property `discountType` - The type of discount of this credit
-        should("test discountType") {
+        // to test the property `discountCurrency` - Currency value for the discount.
+        should("test discountCurrency") {
             // uncomment below to test the property
-            //modelInstance.discountType shouldBe ("TODO")
+            //modelInstance.discountCurrency shouldBe ("TODO")
         }
 
         // to test the property `discountInMicroCurrency` - The discount applied in the offer’s currency value.
@@ -49,22 +49,22 @@ class AdsCreditDiscountsResponseTest : ShouldSpec() {
             //modelInstance.discountInMicroCurrency shouldBe ("TODO")
         }
 
-        // to test the property `discountCurrency` - Currency value for the discount.
-        should("test discountCurrency") {
+        // to test the property `discountType` - The type of discount of this credit
+        should("test discountType") {
             // uncomment below to test the property
-            //modelInstance.discountCurrency shouldBe ("TODO")
-        }
-
-        // to test the property `title` - Human readable title of the offer code.
-        should("test title") {
-            // uncomment below to test the property
-            //modelInstance.title shouldBe ("TODO")
+            //modelInstance.discountType shouldBe ("TODO")
         }
 
         // to test the property `remainingDiscountInMicroCurrency` - The credits left to spend.
         should("test remainingDiscountInMicroCurrency") {
             // uncomment below to test the property
             //modelInstance.remainingDiscountInMicroCurrency shouldBe ("TODO")
+        }
+
+        // to test the property `title` - Human readable title of the offer code.
+        should("test title") {
+            // uncomment below to test the property
+            //modelInstance.title shouldBe ("TODO")
         }
 
     }

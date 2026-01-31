@@ -12,24 +12,24 @@ import AnyCodable
 
 public struct CatalogsItemValidationIssues: Codable, JSONEncodable, Hashable {
 
-    /** Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
-    public var itemNumber: Int
+    public var errors: CatalogsItemValidationErrors
     /** The merchant-created unique ID that represents the product. */
     public var itemId: String?
-    public var errors: CatalogsItemValidationErrors
+    /** Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
+    public var itemNumber: Int
     public var warnings: CatalogsItemValidationWarnings
 
-    public init(itemNumber: Int, itemId: String?, errors: CatalogsItemValidationErrors, warnings: CatalogsItemValidationWarnings) {
-        self.itemNumber = itemNumber
-        self.itemId = itemId
+    public init(errors: CatalogsItemValidationErrors, itemId: String?, itemNumber: Int, warnings: CatalogsItemValidationWarnings) {
         self.errors = errors
+        self.itemId = itemId
+        self.itemNumber = itemNumber
         self.warnings = warnings
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemNumber = "item_number"
-        case itemId = "item_id"
         case errors
+        case itemId = "item_id"
+        case itemNumber = "item_number"
         case warnings
     }
 
@@ -37,9 +37,9 @@ public struct CatalogsItemValidationIssues: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(itemNumber, forKey: .itemNumber)
-        try container.encode(itemId, forKey: .itemId)
         try container.encode(errors, forKey: .errors)
+        try container.encode(itemId, forKey: .itemId)
+        try container.encode(itemNumber, forKey: .itemNumber)
         try container.encode(warnings, forKey: .warnings)
     }
 }

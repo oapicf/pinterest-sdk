@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**mediaType** | media_type | text |  | **kotlin.String** |  |  [optional]
+**mediaType** | media_type | text NOT NULL |  | [**media_type**](#MediaType) |  | 
 **items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ImageMetadata&gt;**](ImageMetadata.md) |  |  [optional]
 
 

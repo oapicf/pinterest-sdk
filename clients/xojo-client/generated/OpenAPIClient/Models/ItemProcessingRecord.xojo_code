@@ -3,14 +3,6 @@ Protected Class ItemProcessingRecord
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The catalog item id in the merchant namespace
-		#tag EndNote
-		item_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 		#tag EndNote
 		errors() As OpenAPIClient.Models.ItemValidationEvent
@@ -19,14 +11,22 @@ Protected Class ItemProcessingRecord
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Array with the validation warnings for the item processing record
+			The catalog item id in the merchant namespace
 		#tag EndNote
-		warnings() As OpenAPIClient.Models.ItemValidationEvent
+		item_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		status As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Array with the validation warnings for the item processing record
+		#tag EndNote
+		warnings() As OpenAPIClient.Models.ItemValidationEvent
 	#tag EndProperty
 
 
@@ -67,14 +67,6 @@ Protected Class ItemProcessingRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="errors"
 			Visible=false
 			Group="Behavior"
@@ -83,11 +75,11 @@ Protected Class ItemProcessingRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="warnings"
+			Name="item_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ItemValidationEvent"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -96,6 +88,14 @@ Protected Class ItemProcessingRecord
 			Group="Behavior"
 			InitialValue=""
 			Type="ItemProcessingStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="warnings"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ItemValidationEvent"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -9,24 +9,15 @@ import org.openapitools.vertxweb.server.model.BusinessRoleForMembers;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MembersToDeleteBodyMembersInner   {
   
-  private String memberId;
   private BusinessRoleForMembers businessRole;
+  private String memberId;
 
   public MembersToDeleteBodyMembersInner () {
 
   }
 
-  public MembersToDeleteBodyMembersInner (String memberId, BusinessRoleForMembers businessRole) {
-    this.memberId = memberId;
+  public MembersToDeleteBodyMembersInner (BusinessRoleForMembers businessRole, String memberId) {
     this.businessRole = businessRole;
-  }
-
-    
-  @JsonProperty("member_id")
-  public String getMemberId() {
-    return memberId;
-  }
-  public void setMemberId(String memberId) {
     this.memberId = memberId;
   }
 
@@ -39,6 +30,15 @@ public class MembersToDeleteBodyMembersInner   {
     this.businessRole = businessRole;
   }
 
+    
+  @JsonProperty("member_id")
+  public String getMemberId() {
+    return memberId;
+  }
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -49,13 +49,13 @@ public class MembersToDeleteBodyMembersInner   {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
@@ -63,8 +63,8 @@ public class MembersToDeleteBodyMembersInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

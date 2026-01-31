@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MediaType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MediaType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MediaType {
+    title = MediaType
+    description = MediaType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  MediaType {
+    title = MediaType
+    description = MediaType
+    implements = openapi_server.resourceTypes.MediaType
+
+  }
+}

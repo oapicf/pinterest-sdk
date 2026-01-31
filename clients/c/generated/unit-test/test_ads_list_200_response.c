@@ -22,13 +22,13 @@ ads_list_200_response_t* instantiate_ads_list_200_response(int include_optional)
   ads_list_200_response_t* ads_list_200_response = NULL;
   if (include_optional) {
     ads_list_200_response = ads_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     ads_list_200_response = ads_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

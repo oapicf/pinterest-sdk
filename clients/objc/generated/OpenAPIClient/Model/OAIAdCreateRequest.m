@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adGroupId": @"ad_group_id", @"androidDeepLink": @"android_deep_link", @"carouselAndroidDeepLinks": @"carousel_android_deep_links", @"carouselDestinationUrls": @"carousel_destination_urls", @"carouselIosDeepLinks": @"carousel_ios_deep_links", @"clickTrackingUrl": @"click_tracking_url", @"creativeType": @"creative_type", @"destinationUrl": @"destination_url", @"iosDeepLink": @"ios_deep_link", @"isPinDeleted": @"is_pin_deleted", @"isRemovable": @"is_removable", @"name": @"name", @"status": @"status", @"trackingUrls": @"tracking_urls", @"viewTrackingUrl": @"view_tracking_url", @"leadFormId": @"lead_form_id", @"gridClickType": @"grid_click_type", @"customizableCtaType": @"customizable_cta_type", @"quizPinData": @"quiz_pin_data", @"pinId": @"pin_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adGroupId": @"ad_group_id", @"androidDeepLink": @"android_deep_link", @"carouselAndroidDeepLinks": @"carousel_android_deep_links", @"carouselDestinationUrls": @"carousel_destination_urls", @"carouselIosDeepLinks": @"carousel_ios_deep_links", @"clickTrackingUrl": @"click_tracking_url", @"creativeType": @"creative_type", @"customizableCtaType": @"customizable_cta_type", @"destinationUrl": @"destination_url", @"disclosureType": @"disclosure_type", @"disclosureUrl": @"disclosure_url", @"gridClickType": @"grid_click_type", @"iosDeepLink": @"ios_deep_link", @"isPinDeleted": @"is_pin_deleted", @"isRemovable": @"is_removable", @"leadFormId": @"lead_form_id", @"name": @"name", @"quizPinData": @"quiz_pin_data", @"status": @"status", @"trackingUrls": @"tracking_urls", @"viewTrackingUrl": @"view_tracking_url", @"pinId": @"pin_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"androidDeepLink", @"carouselAndroidDeepLinks", @"carouselDestinationUrls", @"carouselIosDeepLinks", @"clickTrackingUrl", @"destinationUrl", @"iosDeepLink", @"isPinDeleted", @"isRemovable", @"name", @"status", @"trackingUrls", @"viewTrackingUrl", @"leadFormId", @"gridClickType", @"customizableCtaType", @"quizPinData", ];
+  NSArray *optionalProperties = @[@"androidDeepLink", @"carouselAndroidDeepLinks", @"carouselDestinationUrls", @"carouselIosDeepLinks", @"clickTrackingUrl", @"customizableCtaType", @"destinationUrl", @"disclosureType", @"disclosureUrl", @"gridClickType", @"iosDeepLink", @"isPinDeleted", @"isRemovable", @"leadFormId", @"name", @"quizPinData", @"status", @"trackingUrls", @"viewTrackingUrl", ];
   return [optionalProperties containsObject:propertyName];
 }
 

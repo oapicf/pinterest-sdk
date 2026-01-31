@@ -20,10 +20,53 @@ import javax.annotation.Generated;
  * BillingProfilesResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BillingProfilesResponse {
 
-  private @Nullable String id;
+  private @Nullable String advertiserId;
+
+  /**
+   * Billing type of the advertiser
+   */
+  public enum BillingTypeEnum {
+    CREDIT_CARD("CREDIT_CARD"),
+    
+    INVOICE("INVOICE"),
+    
+    INTERNAL("INTERNAL"),
+    
+    RECURRING("RECURRING"),
+    
+    PREPAID("PREPAID");
+
+    private final String value;
+
+    BillingTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static BillingTypeEnum fromValue(String value) {
+      for (BillingTypeEnum b : BillingTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private @Nullable BillingTypeEnum billingType;
 
   /**
    * Type of the card.
@@ -70,54 +113,7 @@ public class BillingProfilesResponse {
 
   private @Nullable CardTypeEnum cardType;
 
-  /**
-   * Status of the billing.
-   */
-  public enum StatusEnum {
-    UNSPECIFIED("UNSPECIFIED"),
-    
-    VALID("VALID"),
-    
-    INVALID("INVALID"),
-    
-    PENDING("PENDING"),
-    
-    DELETED("DELETED"),
-    
-    SECONDARY("SECONDARY"),
-    
-    PENDING_SECONDARY("PENDING_SECONDARY");
-
-    private final String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable StatusEnum status;
-
-  private @Nullable String advertiserId;
+  private @Nullable String id;
 
   /**
    * Brand of the payment method.
@@ -170,24 +166,91 @@ public class BillingProfilesResponse {
 
   private @Nullable PaymentMethodBrandEnum paymentMethodBrand;
 
-  public BillingProfilesResponse id(@Nullable String id) {
-    this.id = id;
+  /**
+   * Status of the billing.
+   */
+  public enum StatusEnum {
+    UNSPECIFIED("UNSPECIFIED"),
+    
+    VALID("VALID"),
+    
+    INVALID("INVALID"),
+    
+    PENDING("PENDING"),
+    
+    DELETED("DELETED"),
+    
+    SECONDARY("SECONDARY"),
+    
+    PENDING_SECONDARY("PENDING_SECONDARY");
+
+    private final String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private @Nullable StatusEnum status;
+
+  public BillingProfilesResponse advertiserId(@Nullable String advertiserId) {
+    this.advertiserId = advertiserId;
     return this;
   }
 
   /**
-   * Billing ID.
-   * @return id
+   * Advertiser ID of the billing.
+   * @return advertiserId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "12312451231", description = "Billing ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
+  @Schema(name = "advertiser_id", example = "12312451231", description = "Advertiser ID of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("advertiser_id")
+  public @Nullable String getAdvertiserId() {
+    return advertiserId;
   }
 
-  public void setId(@Nullable String id) {
-    this.id = id;
+  public void setAdvertiserId(@Nullable String advertiserId) {
+    this.advertiserId = advertiserId;
+  }
+
+  public BillingProfilesResponse billingType(@Nullable BillingTypeEnum billingType) {
+    this.billingType = billingType;
+    return this;
+  }
+
+  /**
+   * Billing type of the advertiser
+   * @return billingType
+   */
+  
+  @Schema(name = "billing_type", example = "CREDIT_CARD", description = "Billing type of the advertiser", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("billing_type")
+  public @Nullable BillingTypeEnum getBillingType() {
+    return billingType;
+  }
+
+  public void setBillingType(@Nullable BillingTypeEnum billingType) {
+    this.billingType = billingType;
   }
 
   public BillingProfilesResponse cardType(@Nullable CardTypeEnum cardType) {
@@ -210,44 +273,24 @@ public class BillingProfilesResponse {
     this.cardType = cardType;
   }
 
-  public BillingProfilesResponse status(@Nullable StatusEnum status) {
-    this.status = status;
+  public BillingProfilesResponse id(@Nullable String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Status of the billing.
-   * @return status
-   */
-  
-  @Schema(name = "status", example = "INVALID", description = "Status of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public @Nullable StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(@Nullable StatusEnum status) {
-    this.status = status;
-  }
-
-  public BillingProfilesResponse advertiserId(@Nullable String advertiserId) {
-    this.advertiserId = advertiserId;
-    return this;
-  }
-
-  /**
-   * Advertiser ID of the billing.
-   * @return advertiserId
+   * Billing ID.
+   * @return id
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "advertiser_id", example = "12312451231", description = "Advertiser ID of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("advertiser_id")
-  public @Nullable String getAdvertiserId() {
-    return advertiserId;
+  @Schema(name = "id", example = "12312451231", description = "Billing ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
   }
 
-  public void setAdvertiserId(@Nullable String advertiserId) {
-    this.advertiserId = advertiserId;
+  public void setId(@Nullable String id) {
+    this.id = id;
   }
 
   public BillingProfilesResponse paymentMethodBrand(@Nullable PaymentMethodBrandEnum paymentMethodBrand) {
@@ -270,6 +313,26 @@ public class BillingProfilesResponse {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 
+  public BillingProfilesResponse status(@Nullable StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Status of the billing.
+   * @return status
+   */
+  
+  @Schema(name = "status", example = "INVALID", description = "Status of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public @Nullable StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(@Nullable StatusEnum status) {
+    this.status = status;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -279,27 +342,29 @@ public class BillingProfilesResponse {
       return false;
     }
     BillingProfilesResponse billingProfilesResponse = (BillingProfilesResponse) o;
-    return Objects.equals(this.id, billingProfilesResponse.id) &&
+    return Objects.equals(this.advertiserId, billingProfilesResponse.advertiserId) &&
+        Objects.equals(this.billingType, billingProfilesResponse.billingType) &&
         Objects.equals(this.cardType, billingProfilesResponse.cardType) &&
-        Objects.equals(this.status, billingProfilesResponse.status) &&
-        Objects.equals(this.advertiserId, billingProfilesResponse.advertiserId) &&
-        Objects.equals(this.paymentMethodBrand, billingProfilesResponse.paymentMethodBrand);
+        Objects.equals(this.id, billingProfilesResponse.id) &&
+        Objects.equals(this.paymentMethodBrand, billingProfilesResponse.paymentMethodBrand) &&
+        Objects.equals(this.status, billingProfilesResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cardType, status, advertiserId, paymentMethodBrand);
+    return Objects.hash(advertiserId, billingType, cardType, id, paymentMethodBrand, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingProfilesResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    billingType: ").append(toIndentedString(billingType)).append("\n");
+    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentMethodBrand: ").append(toIndentedString(paymentMethodBrand)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

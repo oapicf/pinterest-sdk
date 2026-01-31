@@ -5,16 +5,16 @@
 -export_type([openapi_image_details/0]).
 
 -type openapi_image_details() ::
-    #{ 'width' := integer(),
-       'height' := integer(),
-       'url' := binary()
+    #{ 'height' := integer(),
+       'url' := binary(),
+       'width' := integer()
      }.
 
-encode(#{ 'width' := Width,
-          'height' := Height,
-          'url' := Url
+encode(#{ 'height' := Height,
+          'url' := Url,
+          'width' := Width
         }) ->
-    #{ 'width' => Width,
-       'height' => Height,
-       'url' => Url
+    #{ 'height' => Height,
+       'url' => Url,
+       'width' => Width
      }.

@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
 `category` | string
 `definition` | string
 `displayName` | string
+`name` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { DeliveryMetricsResponseItemsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": AD_GROUP_ID,
   "category": ADS,
   "definition": Unique ID for your ad group,
   "displayName": Ad group ID,
+  "name": AD_GROUP_ID,
 } satisfies DeliveryMetricsResponseItemsInner
 
 console.log(example)

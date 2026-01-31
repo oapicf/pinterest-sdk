@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **Int!** |  | [default to null]
 **height** | **Int** |  | [default to null]
 **url** | **String!** |  | [default to null]
+**width** | **Int** |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

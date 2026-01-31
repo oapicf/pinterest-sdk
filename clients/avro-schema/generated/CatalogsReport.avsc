@@ -18,15 +18,15 @@
       "default": null
     },
     {
-      "name": "url",
-      "type": ["null", "string"],
-      "doc": "URL to download the report",
-      "default": null
-    },
-    {
       "name": "size",
       "type": ["null", "double"],
       "doc": "Size of the report in bytes",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": ["null", "string"],
+      "doc": "URL to download the report",
       "default": null
     }
   ]

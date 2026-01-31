@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Pin fields for updates */
+/** Resource create or update operation model. */
 public struct PinUpdate: Codable, JSONEncodable, Hashable {
 
     public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
@@ -19,43 +19,35 @@ public struct PinUpdate: Codable, JSONEncodable, Hashable {
     public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
     public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
-    /** Pin's alternative text. */
     public var altText: String?
-    /** The id of the board to move the Pin onto. */
+    /** The board to which this Pin belongs. */
     public var boardId: String?
-    /** <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID. */
+    /** The board section to which this Pin belongs. */
     public var boardSectionId: String?
-    /** Pin description - 800 characters maximum. */
-    public var description: String?
-    /** URL viewer is taken to when they click pin. */
-    public var link: String?
-    /** The native pin title that creators explicitly prefer to display. */
-    public var title: String?
     /** Carousel Pin slots data. */
-    public var carouselSlots: [PinUpdateCarouselSlotsInner]?
-    /** Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    public var note: String?
+    public var carouselSlots: [CarouselSlot]?
+    public var description: String?
+    public var link: String?
+    public var title: String?
 
-    public init(altText: String? = nil, boardId: String? = nil, boardSectionId: String? = nil, description: String? = nil, link: String? = nil, title: String? = nil, carouselSlots: [PinUpdateCarouselSlotsInner]? = nil, note: String? = nil) {
+    public init(altText: String? = nil, boardId: String? = nil, boardSectionId: String? = nil, carouselSlots: [CarouselSlot]? = nil, description: String? = nil, link: String? = nil, title: String? = nil) {
         self.altText = altText
         self.boardId = boardId
         self.boardSectionId = boardSectionId
+        self.carouselSlots = carouselSlots
         self.description = description
         self.link = link
         self.title = title
-        self.carouselSlots = carouselSlots
-        self.note = note
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case altText = "alt_text"
         case boardId = "board_id"
         case boardSectionId = "board_section_id"
+        case carouselSlots = "carousel_slots"
         case description
         case link
         case title
-        case carouselSlots = "carousel_slots"
-        case note
     }
 
     // Encodable protocol methods
@@ -65,11 +57,10 @@ public struct PinUpdate: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(altText, forKey: .altText)
         try container.encodeIfPresent(boardId, forKey: .boardId)
         try container.encodeIfPresent(boardSectionId, forKey: .boardSectionId)
+        try container.encodeIfPresent(carouselSlots, forKey: .carouselSlots)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(link, forKey: .link)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(carouselSlots, forKey: .carouselSlots)
-        try container.encodeIfPresent(note, forKey: .note)
     }
 }
 

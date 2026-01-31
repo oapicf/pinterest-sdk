@@ -25,6 +25,7 @@ pinterest_rest_api_customer_list_STATUS_e customer_list_status_FromString(char* 
 static customer_list_t *customer_list_create_internal(
     char *ad_account_id,
     double created_time,
+    object_t *exceptions,
     char *id,
     char *name,
     double num_batches,
@@ -32,8 +33,7 @@ static customer_list_t *customer_list_create_internal(
     double num_uploaded_user_records,
     pinterest_rest_api_customer_list_STATUS_e status,
     char *type,
-    double updated_time,
-    object_t *exceptions
+    double updated_time
     ) {
     customer_list_t *customer_list_local_var = malloc(sizeof(customer_list_t));
     if (!customer_list_local_var) {
@@ -41,6 +41,7 @@ static customer_list_t *customer_list_create_internal(
     }
     customer_list_local_var->ad_account_id = ad_account_id;
     customer_list_local_var->created_time = created_time;
+    customer_list_local_var->exceptions = exceptions;
     customer_list_local_var->id = id;
     customer_list_local_var->name = name;
     customer_list_local_var->num_batches = num_batches;
@@ -49,7 +50,6 @@ static customer_list_t *customer_list_create_internal(
     customer_list_local_var->status = status;
     customer_list_local_var->type = type;
     customer_list_local_var->updated_time = updated_time;
-    customer_list_local_var->exceptions = exceptions;
 
     customer_list_local_var->_library_owned = 1;
     return customer_list_local_var;
@@ -58,6 +58,7 @@ static customer_list_t *customer_list_create_internal(
 __attribute__((deprecated)) customer_list_t *customer_list_create(
     char *ad_account_id,
     double created_time,
+    object_t *exceptions,
     char *id,
     char *name,
     double num_batches,
@@ -65,12 +66,12 @@ __attribute__((deprecated)) customer_list_t *customer_list_create(
     double num_uploaded_user_records,
     pinterest_rest_api_customer_list_STATUS_e status,
     char *type,
-    double updated_time,
-    object_t *exceptions
+    double updated_time
     ) {
     return customer_list_create_internal (
         ad_account_id,
         created_time,
+        exceptions,
         id,
         name,
         num_batches,
@@ -78,8 +79,7 @@ __attribute__((deprecated)) customer_list_t *customer_list_create(
         num_uploaded_user_records,
         status,
         type,
-        updated_time,
-        exceptions
+        updated_time
         );
 }
 
@@ -96,6 +96,10 @@ void customer_list_free(customer_list_t *customer_list) {
         free(customer_list->ad_account_id);
         customer_list->ad_account_id = NULL;
     }
+    if (customer_list->exceptions) {
+        object_free(customer_list->exceptions);
+        customer_list->exceptions = NULL;
+    }
     if (customer_list->id) {
         free(customer_list->id);
         customer_list->id = NULL;
@@ -107,10 +111,6 @@ void customer_list_free(customer_list_t *customer_list) {
     if (customer_list->type) {
         free(customer_list->type);
         customer_list->type = NULL;
-    }
-    if (customer_list->exceptions) {
-        object_free(customer_list->exceptions);
-        customer_list->exceptions = NULL;
     }
     free(customer_list);
 }
@@ -130,6 +130,19 @@ cJSON *customer_list_convertToJSON(customer_list_t *customer_list) {
     if(customer_list->created_time) {
     if(cJSON_AddNumberToObject(item, "created_time", customer_list->created_time) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // customer_list->exceptions
+    if(customer_list->exceptions) {
+    cJSON *exceptions_object = object_convertToJSON(customer_list->exceptions);
+    if(exceptions_object == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "exceptions", exceptions_object);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -198,19 +211,6 @@ cJSON *customer_list_convertToJSON(customer_list_t *customer_list) {
     }
     }
 
-
-    // customer_list->exceptions
-    if(customer_list->exceptions) {
-    cJSON *exceptions_object = object_convertToJSON(customer_list->exceptions);
-    if(exceptions_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "exceptions", exceptions_object);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -245,6 +245,16 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
     {
     goto end; //Numeric
     }
+    }
+
+    // customer_list->exceptions
+    cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
+    object_t *exceptions_local_object = NULL;
+    if (exceptions) { 
+    exceptions_local_object = object_parseFromJSON(exceptions); //object
     }
 
     // customer_list->id
@@ -345,20 +355,11 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
     }
     }
 
-    // customer_list->exceptions
-    cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "exceptions");
-    if (cJSON_IsNull(exceptions)) {
-        exceptions = NULL;
-    }
-    object_t *exceptions_local_object = NULL;
-    if (exceptions) { 
-    exceptions_local_object = object_parseFromJSON(exceptions); //object
-    }
-
 
     customer_list_local_var = customer_list_create_internal (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         created_time ? created_time->valuedouble : 0,
+        exceptions ? exceptions_local_object : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         num_batches ? num_batches->valuedouble : 0,
@@ -366,8 +367,7 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
         num_uploaded_user_records ? num_uploaded_user_records->valuedouble : 0,
         status ? statusVariable : pinterest_rest_api_customer_list_STATUS_NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        updated_time ? updated_time->valuedouble : 0,
-        exceptions ? exceptions_local_object : NULL
+        updated_time ? updated_time->valuedouble : 0
         );
 
     return customer_list_local_var;

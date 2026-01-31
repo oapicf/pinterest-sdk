@@ -9,7 +9,7 @@ import javax.validation.Valid;
 /**
  * Used for including extra details to a base error
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class DetailedError   {
   @JsonProperty("code")
@@ -17,15 +17,15 @@ public class DetailedError   {
 
   private Integer code;
 
-  @JsonProperty("message")
-  @NotNull
-
-  private String message;
-
   @JsonProperty("details")
   @NotNull
 
   private Object details;
+
+  @JsonProperty("message")
+  @NotNull
+
+  private String message;
 
   public DetailedError code(Integer code) {
     this.code = code;
@@ -42,23 +42,6 @@ public class DetailedError   {
 
   public void setCode(Integer code) {
     this.code = code;
-  }
-
-  public DetailedError message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Get message
-   * @return message
-  **/
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
   }
 
   public DetailedError details(Object details) {
@@ -78,6 +61,23 @@ public class DetailedError   {
     this.details = details;
   }
 
+  public DetailedError message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -89,13 +89,13 @@ public class DetailedError   {
     }
     DetailedError detailedError = (DetailedError) o;
     return Objects.equals(code, detailedError.code) &&
-        Objects.equals(message, detailedError.message) &&
-        Objects.equals(details, detailedError.details);
+        Objects.equals(details, detailedError.details) &&
+        Objects.equals(message, detailedError.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, details);
+    return Objects.hash(code, details, message);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -105,8 +105,8 @@ public class DetailedError   {
     sb.append("class DetailedError {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

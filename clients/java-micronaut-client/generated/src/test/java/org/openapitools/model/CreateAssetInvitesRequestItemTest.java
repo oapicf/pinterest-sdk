@@ -25,6 +25,14 @@ public class CreateAssetInvitesRequestItemTest {
     }
 
     /**
+     * Test the property 'assetIdToPermissions'
+     */
+    @Test
+    public void assetIdToPermissionsTest() {
+        // TODO: test assetIdToPermissions
+    }
+
+    /**
      * Test the property 'inviteId'
      */
     @Test
@@ -38,14 +46,6 @@ public class CreateAssetInvitesRequestItemTest {
     @Test
     public void inviteTypeTest() {
         // TODO: test inviteType
-    }
-
-    /**
-     * Test the property 'assetIdToPermissions'
-     */
-    @Test
-    public void assetIdToPermissionsTest() {
-        // TODO: test assetIdToPermissions
     }
 
 }

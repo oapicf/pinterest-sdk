@@ -10,60 +10,61 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Board */
 public struct Board: Codable, JSONEncodable, Hashable {
 
-    public enum Privacy: String, Codable, CaseIterable {
-        case _public = "PUBLIC"
-        case protected = "PROTECTED"
-        case secret = "SECRET"
-    }
     public static let collaboratorCountRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    public static let pinCountRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public static let followerCountRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    public var id: String?
-    /** Date and time of board creation. */
-    public var createdAt: Date?
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let pinCountRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     /** Date and time of last board pins modified. */
     public var boardPinsModifiedAt: Date?
-    public var name: String
-    public var description: String?
     /** Count of collaborators on the board. */
     public var collaboratorCount: Int?
-    /** Count of pins on the board. */
-    public var pinCount: Int?
+    /** Date and time of board creation. */
+    public var createdAt: Date?
+    public var description: String?
     /** Board follower count. */
     public var followerCount: Int?
+    public var id: String
+    /** If set to `true`, the board will be ad-only and can store ad-only Pins. */
+    public var isAdsOnly: Bool? = false
+    /** Board media. */
     public var media: BoardMedia?
+    /**      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    public var name: String
     public var owner: BoardOwner?
-    /** Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a> */
-    public var privacy: Privacy? = ._public
+    /** Count of Pins on the board. */
+    public var pinCount: Int?
+    /**     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`.  */
+    public var privacy: BoardPrivacy?
 
-    public init(id: String? = nil, createdAt: Date? = nil, boardPinsModifiedAt: Date? = nil, name: String, description: String? = nil, collaboratorCount: Int? = nil, pinCount: Int? = nil, followerCount: Int? = nil, media: BoardMedia? = nil, owner: BoardOwner? = nil, privacy: Privacy? = ._public) {
-        self.id = id
-        self.createdAt = createdAt
+    public init(boardPinsModifiedAt: Date? = nil, collaboratorCount: Int? = nil, createdAt: Date? = nil, description: String? = nil, followerCount: Int? = nil, id: String, isAdsOnly: Bool? = false, media: BoardMedia? = nil, name: String, owner: BoardOwner? = nil, pinCount: Int? = nil, privacy: BoardPrivacy? = nil) {
         self.boardPinsModifiedAt = boardPinsModifiedAt
-        self.name = name
-        self.description = description
         self.collaboratorCount = collaboratorCount
-        self.pinCount = pinCount
+        self.createdAt = createdAt
+        self.description = description
         self.followerCount = followerCount
+        self.id = id
+        self.isAdsOnly = isAdsOnly
         self.media = media
+        self.name = name
         self.owner = owner
+        self.pinCount = pinCount
         self.privacy = privacy
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case createdAt = "created_at"
         case boardPinsModifiedAt = "board_pins_modified_at"
-        case name
-        case description
         case collaboratorCount = "collaborator_count"
-        case pinCount = "pin_count"
+        case createdAt = "created_at"
+        case description
         case followerCount = "follower_count"
+        case id
+        case isAdsOnly = "is_ads_only"
         case media
+        case name
         case owner
+        case pinCount = "pin_count"
         case privacy
     }
 
@@ -71,16 +72,17 @@ public struct Board: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(boardPinsModifiedAt, forKey: .boardPinsModifiedAt)
-        try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(collaboratorCount, forKey: .collaboratorCount)
-        try container.encodeIfPresent(pinCount, forKey: .pinCount)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(followerCount, forKey: .followerCount)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(isAdsOnly, forKey: .isAdsOnly)
         try container.encodeIfPresent(media, forKey: .media)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(owner, forKey: .owner)
+        try container.encodeIfPresent(pinCount, forKey: .pinCount)
         try container.encodeIfPresent(privacy, forKey: .privacy)
     }
 }

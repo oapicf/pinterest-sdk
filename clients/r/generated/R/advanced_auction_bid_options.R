@@ -7,8 +7,8 @@
 #' @title AdvancedAuctionBidOptions
 #' @description AdvancedAuctionBidOptions Class
 #' @format An \code{R6Class} generator object
-#' @field bid_in_micro_currency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`. integer [optional]
 #' @field app_type_multipliers  \link{AppTypeMultipliers} [optional]
+#' @field bid_in_micro_currency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`. integer [optional]
 #' @field placement_multipliers  \link{PlacementMultipliers} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,27 +16,27 @@
 AdvancedAuctionBidOptions <- R6::R6Class(
   "AdvancedAuctionBidOptions",
   public = list(
-    `bid_in_micro_currency` = NULL,
     `app_type_multipliers` = NULL,
+    `bid_in_micro_currency` = NULL,
     `placement_multipliers` = NULL,
 
     #' @description
     #' Initialize a new AdvancedAuctionBidOptions class.
     #'
-    #' @param bid_in_micro_currency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
     #' @param app_type_multipliers app_type_multipliers
+    #' @param bid_in_micro_currency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
     #' @param placement_multipliers placement_multipliers
     #' @param ... Other optional arguments.
-    initialize = function(`bid_in_micro_currency` = NULL, `app_type_multipliers` = NULL, `placement_multipliers` = NULL, ...) {
+    initialize = function(`app_type_multipliers` = NULL, `bid_in_micro_currency` = NULL, `placement_multipliers` = NULL, ...) {
+      if (!is.null(`app_type_multipliers`)) {
+        stopifnot(R6::is.R6(`app_type_multipliers`))
+        self$`app_type_multipliers` <- `app_type_multipliers`
+      }
       if (!is.null(`bid_in_micro_currency`)) {
         if (!(is.numeric(`bid_in_micro_currency`) && length(`bid_in_micro_currency`) == 1)) {
           stop(paste("Error! Invalid data for `bid_in_micro_currency`. Must be an integer:", `bid_in_micro_currency`))
         }
         self$`bid_in_micro_currency` <- `bid_in_micro_currency`
-      }
-      if (!is.null(`app_type_multipliers`)) {
-        stopifnot(R6::is.R6(`app_type_multipliers`))
-        self$`app_type_multipliers` <- `app_type_multipliers`
       }
       if (!is.null(`placement_multipliers`)) {
         stopifnot(R6::is.R6(`placement_multipliers`))
@@ -75,13 +75,13 @@ AdvancedAuctionBidOptions <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdvancedAuctionBidOptionsObject <- list()
-      if (!is.null(self$`bid_in_micro_currency`)) {
-        AdvancedAuctionBidOptionsObject[["bid_in_micro_currency"]] <-
-          self$`bid_in_micro_currency`
-      }
       if (!is.null(self$`app_type_multipliers`)) {
         AdvancedAuctionBidOptionsObject[["app_type_multipliers"]] <-
           self$`app_type_multipliers`$toSimpleType()
+      }
+      if (!is.null(self$`bid_in_micro_currency`)) {
+        AdvancedAuctionBidOptionsObject[["bid_in_micro_currency"]] <-
+          self$`bid_in_micro_currency`
       }
       if (!is.null(self$`placement_multipliers`)) {
         AdvancedAuctionBidOptionsObject[["placement_multipliers"]] <-
@@ -97,13 +97,13 @@ AdvancedAuctionBidOptions <- R6::R6Class(
     #' @return the instance of AdvancedAuctionBidOptions
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`bid_in_micro_currency`)) {
-        self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
-      }
       if (!is.null(this_object$`app_type_multipliers`)) {
         `app_type_multipliers_object` <- AppTypeMultipliers$new()
         `app_type_multipliers_object`$fromJSON(jsonlite::toJSON(this_object$`app_type_multipliers`, auto_unbox = TRUE, digits = NA))
         self$`app_type_multipliers` <- `app_type_multipliers_object`
+      }
+      if (!is.null(this_object$`bid_in_micro_currency`)) {
+        self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
       }
       if (!is.null(this_object$`placement_multipliers`)) {
         `placement_multipliers_object` <- PlacementMultipliers$new()
@@ -131,8 +131,8 @@ AdvancedAuctionBidOptions <- R6::R6Class(
     #' @return the instance of AdvancedAuctionBidOptions
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
       self$`app_type_multipliers` <- AppTypeMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`app_type_multipliers`, auto_unbox = TRUE, digits = NA))
+      self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
       self$`placement_multipliers` <- PlacementMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`placement_multipliers`, auto_unbox = TRUE, digits = NA))
       self
     },

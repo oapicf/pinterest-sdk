@@ -10,13 +10,13 @@
       "doc": ""
     },
     {
-      "name": "message",
-      "type": "string",
+      "name": "details",
+      "type": "model.object",
       "doc": ""
     },
     {
-      "name": "details",
-      "type": "model.object",
+      "name": "message",
+      "type": "string",
       "doc": ""
     }
   ]

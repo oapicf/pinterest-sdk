@@ -12,45 +12,45 @@ import AnyCodable
 
 public struct SSIOAccountResponse: Codable, JSONEncodable, Hashable {
 
-    /** Advertiser eligible to create order lines */
-    public var eligible: Bool?
-    /** Advertiser eligible to update order lines */
-    public var canEdit: Bool?
     /** An array of Salesforce account information that includes address, io terms, etc. */
     public var billtoInfos: [SSIOAccountItem]?
+    /** Advertiser eligible to update order lines */
+    public var canEdit: Bool?
     public var currency: String?
-    public var pmpNames: [SSIOAccountPMPName]?
+    /** Advertiser eligible to create order lines */
+    public var eligible: Bool?
     /** Error indicator from Salesforce which could be \"No Error\" */
     public var error: String?
+    public var pmpNames: [SSIOAccountPMPName]?
 
-    public init(eligible: Bool? = nil, canEdit: Bool? = nil, billtoInfos: [SSIOAccountItem]? = nil, currency: String? = nil, pmpNames: [SSIOAccountPMPName]? = nil, error: String? = nil) {
-        self.eligible = eligible
-        self.canEdit = canEdit
+    public init(billtoInfos: [SSIOAccountItem]? = nil, canEdit: Bool? = nil, currency: String? = nil, eligible: Bool? = nil, error: String? = nil, pmpNames: [SSIOAccountPMPName]? = nil) {
         self.billtoInfos = billtoInfos
+        self.canEdit = canEdit
         self.currency = currency
-        self.pmpNames = pmpNames
+        self.eligible = eligible
         self.error = error
+        self.pmpNames = pmpNames
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case eligible
-        case canEdit = "can_edit"
         case billtoInfos = "billto_infos"
+        case canEdit = "can_edit"
         case currency
-        case pmpNames = "pmp_names"
+        case eligible
         case error
+        case pmpNames = "pmp_names"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(eligible, forKey: .eligible)
-        try container.encodeIfPresent(canEdit, forKey: .canEdit)
         try container.encodeIfPresent(billtoInfos, forKey: .billtoInfos)
+        try container.encodeIfPresent(canEdit, forKey: .canEdit)
         try container.encodeIfPresent(currency, forKey: .currency)
-        try container.encodeIfPresent(pmpNames, forKey: .pmpNames)
+        try container.encodeIfPresent(eligible, forKey: .eligible)
         try container.encodeIfPresent(error, forKey: .error)
+        try container.encodeIfPresent(pmpNames, forKey: .pmpNames)
     }
 }
 

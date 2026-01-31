@@ -18,10 +18,10 @@ module CatalogsVerticalsListProductsByCatalogBasedFilterRequest =
   //#endregion
 
   type CatalogsVerticalsListProductsByCatalogBasedFilterRequest = {
-    CatalogType : CatalogTypeEnum;
     CatalogId : string;
-    Filters : CatalogsCreativeAssetsProductGroupFilters;
+    CatalogType : CatalogTypeEnum;
     Country : Country;
+    Filters : CatalogsCreativeAssetsProductGroupFilters;
     Locale : CatalogsLocale;
   }
   //#endregion

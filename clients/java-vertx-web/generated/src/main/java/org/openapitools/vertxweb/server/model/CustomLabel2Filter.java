@@ -3,27 +3,27 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomLabel2Filter   {
   
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
 
   public CustomLabel2Filter () {
 
   }
 
-  public CustomLabel2Filter (CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public CustomLabel2Filter (CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 
     
   @JsonProperty("CUSTOM_LABEL_2")
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
   }
-  public void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 

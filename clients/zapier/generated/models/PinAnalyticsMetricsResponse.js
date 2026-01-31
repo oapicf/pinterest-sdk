@@ -6,14 +6,14 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}lifetime_metrics`,
-                label: `The lifetime metric name and value. - [${labelPrefix}lifetime_metrics]`,
-                type: 'object',
-            },
-            {
                 key: `${keyPrefix}daily_metrics`,
                 label: `[${labelPrefix}daily_metrics]`,
                 children: PinAnalyticsMetricsResponse_daily_metrics_inner.fields(`${keyPrefix}daily_metrics${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
+                key: `${keyPrefix}lifetime_metrics`,
+                label: `The lifetime metric name and value. - [${labelPrefix}lifetime_metrics]`,
+                type: 'object',
             },
             {
                 key: `${keyPrefix}summary_metrics`,
@@ -25,8 +25,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'lifetime_metrics': bundle.inputData?.[`${keyPrefix}lifetime_metrics`],
             'daily_metrics': utils.childMapping(bundle.inputData?.[`${keyPrefix}daily_metrics`], `${keyPrefix}daily_metrics`, PinAnalyticsMetricsResponse_daily_metrics_inner),
+            'lifetime_metrics': bundle.inputData?.[`${keyPrefix}lifetime_metrics`],
             'summary_metrics': bundle.inputData?.[`${keyPrefix}summary_metrics`],
         }
     },

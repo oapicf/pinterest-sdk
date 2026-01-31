@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TargetingSpec, () {
-    // Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
-    // BuiltList<String> AGE_BUCKET
+    // **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
+    // BuiltList<TargetingSpecAgeBucket> AGE_BUCKET
     test('to test the property `AGE_BUCKET`', () async {
       // TODO
     });
 
     // Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
-    // BuiltList<String> APPTYPE
+    // BuiltList<TargetingSpecAppType> APPTYPE
     test('to test the property `APPTYPE`', () async {
       // TODO
     });
@@ -32,7 +32,7 @@ void main() {
     });
 
     // Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-    // BuiltList<String> GENDER
+    // BuiltList<TargetingSpecGender> GENDER
     test('to test the property `GENDER`', () async {
       // TODO
     });
@@ -49,20 +49,32 @@ void main() {
       // TODO
     });
 
-    // 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+    // 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
     // BuiltList<String> LOCALE
     test('to test the property `LOCALE`', () async {
       // TODO
     });
 
-    // 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+    // 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
     // BuiltList<String> LOCATION
     test('to test the property `LOCATION`', () async {
       // TODO
     });
 
+    // Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+    // String MAXIMUM_AGE
+    test('to test the property `MAXIMUM_AGE`', () async {
+      // TODO
+    });
+
+    // Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+    // String MINIMUM_AGE
+    test('to test the property `MINIMUM_AGE`', () async {
+      // TODO
+    });
+
     // Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
-    // BuiltList<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING
+    // BuiltList<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING
     test('to test the property `SHOPPING_RETARGETING`', () async {
       // TODO
     });

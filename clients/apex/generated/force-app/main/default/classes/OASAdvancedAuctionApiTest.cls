@@ -146,5 +146,13 @@ private class OASAdvancedAuctionApiTest {
         expectedResponse = OASAdvancedAuctionProcessedItems.getExample();
         response = (OASAdvancedAuctionProcessedItems) api.advancedAuctionItemsSubmitPost(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdvancedAuctionProcessedItems.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdvancedAuctionProcessedItems.getExample();
+        response = (OASAdvancedAuctionProcessedItems) api.advancedAuctionItemsSubmitPost(params);
+        System.assertEquals(expectedResponse, response);
     }
 }

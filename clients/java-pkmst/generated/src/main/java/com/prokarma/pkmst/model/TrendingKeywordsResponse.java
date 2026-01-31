@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.TrendingKeywordsResponseTrendsInner;
+import com.prokarma.pkmst.model.TrendingKeyword;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ import java.util.List;
  * TrendingKeywordsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrendingKeywordsResponse   {
   @JsonProperty("trends")
   
-  private List<TrendingKeywordsResponseTrendsInner> trends = null;
+  private List<TrendingKeyword> trends = null;
 
-  public TrendingKeywordsResponse trends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse trends(List<TrendingKeyword> trends) {
     this.trends = trends;
     return this;
   }
 
-  public TrendingKeywordsResponse addTrendsItem(TrendingKeywordsResponseTrendsInner trendsItem) {
+  public TrendingKeywordsResponse addTrendsItem(TrendingKeyword trendsItem) {
     if (this.trends == null) {
       this.trends = new ArrayList<>();
     }
@@ -42,11 +42,11 @@ public class TrendingKeywordsResponse   {
    * @return trends
    */
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
-  public List<TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<TrendingKeyword> getTrends() {
     return trends;
   }
 
-  public void setTrends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<TrendingKeyword> trends) {
     this.trends = trends;
   }
 

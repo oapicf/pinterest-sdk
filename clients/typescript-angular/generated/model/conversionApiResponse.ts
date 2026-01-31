@@ -15,16 +15,16 @@ import { ConversionApiResponseEventsInner } from './conversionApiResponseEventsI
  */
 export interface ConversionApiResponse { 
     /**
-     * Total number of events received in the request.
+     * Specific messages for each event received. The order will match the order in which the events were received in the request.
      */
-    num_events_received: number;
+    events: Array<ConversionApiResponseEventsInner>;
     /**
      * Number of events that were successfully processed from the events.
      */
     num_events_processed: number;
     /**
-     * Specific messages for each event received. The order will match the order in which the events were received in the request.
+     * Total number of events received in the request.
      */
-    events: Array<ConversionApiResponseEventsInner>;
+    num_events_received: number;
 }
 

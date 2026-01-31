@@ -24,45 +24,45 @@ catalogs_updatable_hotel_attributes_t* instantiate_catalogs_updatable_hotel_attr
   catalogs_updatable_hotel_attributes_t* catalogs_updatable_hotel_attributes = NULL;
   if (include_optional) {
     catalogs_updatable_hotel_attributes = catalogs_updatable_hotel_attributes_create(
-      "0",
-      "0",
-      "0",
-      "0",
-      1.337,
-      1.337,
-      list_createList(),
        // false, not to have infinite recursion
       instantiate_catalogs_hotel_address(0),
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       "100 USD",
-      "90 USD",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
        // false, not to have infinite recursion
-      instantiate_catalogs_hotel_guest_ratings(0)
+      instantiate_catalogs_hotel_guest_ratings(0),
+      1.337,
+      "0",
+      1.337,
+      "0",
+      list_createList(),
+      "90 USD"
     );
   } else {
     catalogs_updatable_hotel_attributes = catalogs_updatable_hotel_attributes_create(
-      "0",
-      "0",
-      "0",
-      "0",
-      1.337,
-      1.337,
-      list_createList(),
       NULL,
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       "100 USD",
-      "90 USD",
-      NULL
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      NULL,
+      1.337,
+      "0",
+      1.337,
+      "0",
+      list_createList(),
+      "90 USD"
     );
   }
 

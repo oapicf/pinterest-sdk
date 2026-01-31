@@ -1,0 +1,87 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LocalStoreUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LocalStoreUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LocalStoreUpdate {
+    title = LocalStoreUpdate
+    description = LocalStoreUpdate
+    derivedFrom = Root
+    properties {
+        address_primary {
+          type =  string
+          description = "Primary address line of the store."
+          optional = false
+        }
+        address_secondary {
+          type =  string
+          description = "Secondary address line of the store."
+          optional = false
+        }
+        city {
+          type =  string
+          description = "City where the store is located."
+          optional = false
+        }
+        country {
+          type = Country
+          description = "Country code where the store is located."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "The ID of the local store."
+          optional = true
+        }
+        latitude {
+          type =  integer
+          description = "Geographic latitude coordinate of the store."
+          optional = false
+        }
+        longitude {
+          type =  integer
+          description = "Geographic longitude coordinate of the store."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "The name of the local store."
+          optional = false
+        }
+        postal_code {
+          type =  string
+          description = "Postal or ZIP code of the store."
+          optional = false
+        }
+        region {
+          type =  string
+          description = "State or region code where the store is located."
+          optional = false
+        }
+        store_code {
+          type =  string
+          description = "Merchant provided code for the local store. Unique within the merchant&#39;s catalog."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LocalStoreUpdate {
+    title = LocalStoreUpdate
+    description = LocalStoreUpdate
+    implements = openapi_server.resourceTypes.LocalStoreUpdate
+
+  }
+}

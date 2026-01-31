@@ -1,6 +1,5 @@
 package api
 
-import model.DetailedError
 import model.Error
 import model.IntegrationLogsRequest
 import model.IntegrationLogsSuccessResponse
@@ -9,11 +8,12 @@ import model.IntegrationRecord
 import model.IntegrationRequest
 import model.IntegrationRequestPatch
 import model.IntegrationsGetList200Response
+import model.IntegrationsLogsPost400Response
 
 /**
   * Provides a default implementation for [[IntegrationsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
@@ -36,7 +36,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
     */
-  override def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: Option[IntegrationRequestPatch]): IntegrationMetadata = {
+  override def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch): IntegrationMetadata = {
     // TODO: Implement better logic
 
     IntegrationMetadata(None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -45,7 +45,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
     */
-  override def integrationsCommercePost(integrationRequest: Option[IntegrationRequest]): IntegrationMetadata = {
+  override def integrationsCommercePost(integrationRequest: IntegrationRequest): IntegrationMetadata = {
     // TODO: Implement better logic
 
     IntegrationMetadata(None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -66,7 +66,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   override def integrationsGetList(bookmark: Option[String], pageSize: Option[Int]): IntegrationsGetList200Response = {
     // TODO: Implement better logic
 
-    IntegrationsGetList200Response(List.empty[IntegrationRecord], None)
+    IntegrationsGetList200Response(None, List.empty[IntegrationRecord])
   }
 
   /**

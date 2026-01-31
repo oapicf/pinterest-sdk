@@ -73,6 +73,7 @@ private class OASCatalogsRetailBatchRequestTest {
     private static void maintainRenamedProperties() {
         OASCatalogsRetailBatchRequest catalogsRetailBatchRequest = new OASCatalogsRetailBatchRequest();
         Map<String, String> x-property-mappings = catalogsRetailBatchRequest.getx-property-mappings();
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 
@@ -80,6 +81,7 @@ private class OASCatalogsRetailBatchRequestTest {
     private static void defaultValuesPopulated() {
         OASCatalogsRetailBatchRequest catalogsRetailBatchRequest = new OASCatalogsRetailBatchRequest();
         System.assertEquals(new List<OASCatalogsRetailBatchRequestItemsIn>(), catalogsRetailBatchRequest.items);
+        System.assertEquals(null, catalogsRetailBatchRequest.catalogId);
         System.assertEquals(null, catalogsRetailBatchRequest.catalogType);
         System.assertEquals(null, catalogsRetailBatchRequest.country);
         System.assertEquals(null, catalogsRetailBatchRequest.language);

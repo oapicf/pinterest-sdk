@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
 **catalogType** | **string** |  | 
-**name** | **string** |  | 
+**country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | [optional] 
 **description** | **string** |  | [optional] 
 **filters** | [**OpenAPI\Server\Model\CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
-**country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | 
-**locale** | [**OpenAPI\Server\Model\CatalogsLocale**](CatalogsLocale.md) |  | 
+**locale** | [**OpenAPI\Server\Model\CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**name** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

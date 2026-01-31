@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**reportStatus** | [**ReportStatusEnum**](#ReportStatusEnum) |  |  [optional] |
-|**url** | **String** | URL to download the report |  [optional] |
 |**size** | **BigDecimal** | Size of the report in bytes |  [optional] |
+|**url** | **String** | URL to download the report |  [optional] |
 
 
 

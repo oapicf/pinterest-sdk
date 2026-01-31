@@ -9,8 +9,8 @@ module UpdateAssetGroupResponseExceptionsInner =
 
 
   type UpdateAssetGroupResponse_exceptions_inner = {
+    AssetGroupId : string;
     Code : int;
     Message : string;
-    AssetGroupId : string;
   }
   //#endregion

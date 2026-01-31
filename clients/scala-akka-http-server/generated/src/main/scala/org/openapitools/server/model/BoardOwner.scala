@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * = Board owner =
+ * = Board owner containing the username. =
  *
  * @param username  for example: ''null''
 */

@@ -35,7 +35,7 @@ open class AudiencesAPI {
     /**
      Create audience
      - POST /ad_accounts/{ad_account_id}/audiences
-     - Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+     - Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -50,58 +50,6 @@ open class AudiencesAPI {
         localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: audienceCreateRequest)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Audience>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Create custom audience
-     
-     - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter audienceCreateCustomRequest: (body) Custom audience to create. 
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func audiencesCreateCustom(adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Audience?, _ error: Error?) -> Void)) -> RequestTask {
-        return audiencesCreateCustomWithRequestBuilder(adAccountId: adAccountId, audienceCreateCustomRequest: audienceCreateCustomRequest).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Create custom audience
-     - POST /ad_accounts/{ad_account_id}/audiences/custom
-     - Create a custom audience and find the audiences you want your ads to reach.
-     - OAuth:
-       - type: oauth2
-       - name: pinterest_oauth2
-     - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter audienceCreateCustomRequest: (body) Custom audience to create. 
-     - returns: RequestBuilder<Audience> 
-     */
-    open class func audiencesCreateCustomWithRequestBuilder(adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest) -> RequestBuilder<Audience> {
-        var localVariablePath = "/ad_accounts/{ad_account_id}/audiences/custom"
-        let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
-        let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: audienceCreateCustomRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -143,6 +91,9 @@ open class AudiencesAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter audienceId: (path) Unique identifier of an audience 
      - returns: RequestBuilder<Audience> 
@@ -217,6 +168,9 @@ open class AudiencesAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
@@ -256,12 +210,12 @@ open class AudiencesAPI {
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter audienceId: (path) Unique identifier of an audience 
-     - parameter audienceUpdateRequest: (body) The audience to be updated. (optional)
+     - parameter audienceUpdateRequest: (body) The audience to be updated. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Audience?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Audience?, _ error: Error?) -> Void)) -> RequestTask {
         return audiencesUpdateWithRequestBuilder(adAccountId: adAccountId, audienceId: audienceId, audienceUpdateRequest: audienceUpdateRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -281,10 +235,10 @@ open class AudiencesAPI {
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter audienceId: (path) Unique identifier of an audience 
-     - parameter audienceUpdateRequest: (body) The audience to be updated. (optional)
+     - parameter audienceUpdateRequest: (body) The audience to be updated. 
      - returns: RequestBuilder<Audience> 
      */
-    open class func audiencesUpdateWithRequestBuilder(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest? = nil) -> RequestBuilder<Audience> {
+    open class func audiencesUpdateWithRequestBuilder(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest) -> RequestBuilder<Audience> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

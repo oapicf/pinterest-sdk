@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionTagCommon"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionTagCommon"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionTagConfigs = openapi_server.resourceTypes.ConversionTagConfigs
+  EnhancedMatchStatusType = openapi_server.resourceTypes.EnhancedMatchStatusType
+}
+resourceTypes {
+
+  ConversionTagCommon {
+    title = ConversionTagCommon
+    description = ConversionTagCommon
+    derivedFrom = Root
+    properties {
+        code_snippet {
+          type =  string
+          description = "Tag code snippet."
+          optional = false
+        }
+        configs {
+          type = ConversionTagConfigs
+          description = ""
+          optional = false
+        }
+        enhanced_match_status {
+          type = EnhancedMatchStatusType
+          description = "The enhanced match status of the tag"
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Tag ID."
+          optional = false
+        }
+        last_fired_time_ms {
+          type =  
+          description = "Time for the last event fired."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Conversion tag name."
+          optional = true
+        }
+        version {
+          type =  string
+          description = "Version number."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionTagCommon {
+    title = ConversionTagCommon
+    description = ConversionTagCommon
+    implements = openapi_server.resourceTypes.ConversionTagCommon
+
+  }
+}

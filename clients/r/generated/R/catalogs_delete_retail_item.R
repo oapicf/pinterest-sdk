@@ -8,6 +8,7 @@
 #' @description CatalogsDeleteRetailItem Class
 #' @format An \code{R6Class} generator object
 #' @field item_id The catalog item id in the merchant namespace character
+#' @field last_updated_time The millisecond timestamp when the item was lastly modified by the merchant. integer [optional]
 #' @field operation  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,6 +17,7 @@ CatalogsDeleteRetailItem <- R6::R6Class(
   "CatalogsDeleteRetailItem",
   public = list(
     `item_id` = NULL,
+    `last_updated_time` = NULL,
     `operation` = NULL,
 
     #' @description
@@ -23,8 +25,9 @@ CatalogsDeleteRetailItem <- R6::R6Class(
     #'
     #' @param item_id The catalog item id in the merchant namespace
     #' @param operation operation
+    #' @param last_updated_time The millisecond timestamp when the item was lastly modified by the merchant.
     #' @param ... Other optional arguments.
-    initialize = function(`item_id`, `operation`, ...) {
+    initialize = function(`item_id`, `operation`, `last_updated_time` = NULL, ...) {
       if (!missing(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
           stop(paste("Error! Invalid data for `item_id`. Must be a string:", `item_id`))
@@ -39,6 +42,12 @@ CatalogsDeleteRetailItem <- R6::R6Class(
           stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
         }
         self$`operation` <- `operation`
+      }
+      if (!is.null(`last_updated_time`)) {
+        if (!(is.numeric(`last_updated_time`) && length(`last_updated_time`) == 1)) {
+          stop(paste("Error! Invalid data for `last_updated_time`. Must be an integer:", `last_updated_time`))
+        }
+        self$`last_updated_time` <- `last_updated_time`
       }
     },
 
@@ -77,6 +86,10 @@ CatalogsDeleteRetailItem <- R6::R6Class(
         CatalogsDeleteRetailItemObject[["item_id"]] <-
           self$`item_id`
       }
+      if (!is.null(self$`last_updated_time`)) {
+        CatalogsDeleteRetailItemObject[["last_updated_time"]] <-
+          self$`last_updated_time`
+      }
       if (!is.null(self$`operation`)) {
         CatalogsDeleteRetailItemObject[["operation"]] <-
           self$`operation`
@@ -93,6 +106,9 @@ CatalogsDeleteRetailItem <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`item_id`)) {
         self$`item_id` <- this_object$`item_id`
+      }
+      if (!is.null(this_object$`last_updated_time`)) {
+        self$`last_updated_time` <- this_object$`last_updated_time`
       }
       if (!is.null(this_object$`operation`)) {
         if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("DELETE"))) {
@@ -122,6 +138,7 @@ CatalogsDeleteRetailItem <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`item_id` <- this_object$`item_id`
+      self$`last_updated_time` <- this_object$`last_updated_time`
       if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("DELETE"))) {
         stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"DELETE\".", sep = ""))
       }

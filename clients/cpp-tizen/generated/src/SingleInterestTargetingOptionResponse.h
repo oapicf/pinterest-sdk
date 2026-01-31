@@ -48,20 +48,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getId();
-
-	/*! \brief Set 
-	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getName();
-
-	/*! \brief Set 
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
 	std::list<std::string> getChildInterests();
 
 	/*! \brief Set 
@@ -69,17 +55,31 @@ public:
 	void setChildInterests(std::list <std::string> child_interests);
 	/*! \brief Get 
 	 */
+	std::string getId();
+
+	/*! \brief Set 
+	 */
+	void setId(std::string  id);
+	/*! \brief Get 
+	 */
 	int getLevel();
 
 	/*! \brief Set 
 	 */
 	void setLevel(int  level);
+	/*! \brief Get 
+	 */
+	std::string getName();
+
+	/*! \brief Set 
+	 */
+	void setName(std::string  name);
 
 private:
-	std::string id;
-	std::string name;
 	std::list <std::string>child_interests;
+	std::string id;
 	int level;
+	std::string name;
 	void __init();
 	void __cleanup();
 

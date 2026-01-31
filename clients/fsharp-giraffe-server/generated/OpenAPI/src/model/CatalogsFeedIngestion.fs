@@ -10,9 +10,9 @@ module CatalogsFeedIngestion =
 
 
   type CatalogsFeedIngestion = {
-    Id : string;
-    FeedId : string;
     CreatedAt : DateTime;
+    FeedId : string;
+    Id : string;
     Status : CatalogsFeedProcessingStatus;
   }
   //#endregion

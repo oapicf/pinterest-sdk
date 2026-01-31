@@ -290,11 +290,11 @@ Configure pinterest_oauth2:
 
 <a id="boardsCreate"></a>
 # **boardsCreate**
-> Board boardsCreate(board, adAccountId)
+> Board boardsCreate(boardCreate, adAccountId)
 
 Create board
 
-Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 ```kotlin
@@ -303,10 +303,10 @@ Create a board owned by the \&quot;operation user_account\&quot;. Optional: Busi
 //import org.openapitools.client.models.*
 
 val apiInstance = BoardsApi()
-val board : Board =  // Board | Create a board using a single board json object.
+val boardCreate : BoardCreate =  // BoardCreate | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : Board = apiInstance.boardsCreate(board, adAccountId)
+    val result : Board = apiInstance.boardsCreate(boardCreate, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardsCreate")
@@ -318,7 +318,7 @@ try {
 ```
 
 ### Parameters
-| **board** | [**Board**](Board.md)| Create a board using a single board json object. | |
+| **boardCreate** | [**BoardCreate**](BoardCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
@@ -332,6 +332,8 @@ try {
 
 Configure pinterest_oauth2:
     ApiClient.accessToken = ""
+Configure client_credentials:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -344,7 +346,7 @@ Configure pinterest_oauth2:
 
 Delete board
 
-Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 ```kotlin
@@ -353,7 +355,7 @@ Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Bu
 //import org.openapitools.client.models.*
 
 val apiInstance = BoardsApi()
-val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
+val boardId : kotlin.String = boardId_example // kotlin.String | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
     apiInstance.boardsDelete(boardId, adAccountId)
@@ -367,7 +369,7 @@ try {
 ```
 
 ### Parameters
-| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **boardId** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
@@ -393,7 +395,7 @@ Configure pinterest_oauth2:
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 ```kotlin
@@ -402,7 +404,7 @@ Get a board owned by the operation user_account - or a group board that has been
 //import org.openapitools.client.models.*
 
 val apiInstance = BoardsApi()
-val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
+val boardId : kotlin.String = boardId_example // kotlin.String | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
     val result : Board = apiInstance.boardsGet(boardId, adAccountId)
@@ -417,7 +419,7 @@ try {
 ```
 
 ### Parameters
-| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **boardId** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
@@ -441,11 +443,11 @@ Configure client_credentials:
 
 <a id="boardsList"></a>
 # **boardsList**
-> BoardsList200Response boardsList(adAccountId, bookmark, pageSize, privacy)
+> BoardsList200Response boardsList(adAccountId, privacy, bookmark, pageSize)
 
 List boards
 
-Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 ```kotlin
@@ -455,11 +457,11 @@ Get a list of the boards owned by the \&quot;operation user_account\&quot; + gro
 
 val apiInstance = BoardsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+val privacy : BoardPrivacyFilter =  // BoardPrivacyFilter | The privacy level of the board
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val privacy : kotlin.String = privacy_example // kotlin.String | Privacy setting for a board.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : BoardsList200Response = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy)
+    val result : BoardsList200Response = apiInstance.boardsList(adAccountId, privacy, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardsList")
@@ -472,11 +474,11 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| **privacy** | [**BoardPrivacyFilter**](.md)| The privacy level of the board | [optional] [enum: ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **privacy** | **kotlin.String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -513,9 +515,9 @@ val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
 val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val creativeTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+val creativeTypes : kotlin.collections.List<CreativeType> =  // kotlin.collections.List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 try {
     val result : BoardsListPins200Response = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
     println(result)
@@ -532,11 +534,11 @@ try {
 | **boardId** | **kotlin.String**| Unique identifier of a board. | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **creativeTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] |
+| **creativeTypes** | [**kotlin.collections.List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
 
 ### Return type
 
@@ -557,11 +559,11 @@ Configure client_credentials:
 
 <a id="boardsUpdate"></a>
 # **boardsUpdate**
-> Board boardsUpdate(boardId, boardUpdate, adAccountId)
+> BoardWithUpdatePrivacy boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
 
 Update board
 
-Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 ```kotlin
@@ -570,11 +572,11 @@ Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Bu
 //import org.openapitools.client.models.*
 
 val apiInstance = BoardsApi()
-val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
-val boardUpdate : BoardUpdate =  // BoardUpdate | Update a board.
+val boardId : kotlin.String = boardId_example // kotlin.String | 
+val boardWithUpdatePrivacyUpdate : BoardWithUpdatePrivacyUpdate =  // BoardWithUpdatePrivacyUpdate | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : Board = apiInstance.boardsUpdate(boardId, boardUpdate, adAccountId)
+    val result : BoardWithUpdatePrivacy = apiInstance.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardsUpdate")
@@ -586,20 +588,22 @@ try {
 ```
 
 ### Parameters
-| **boardId** | **kotlin.String**| Unique identifier of a board. | |
-| **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. | |
+| **boardId** | **kotlin.String**|  | |
+| **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers

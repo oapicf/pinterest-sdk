@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[OrderLine]**](OrderLine.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[OrderLine]**](OrderLine.md) |  | 
 
 

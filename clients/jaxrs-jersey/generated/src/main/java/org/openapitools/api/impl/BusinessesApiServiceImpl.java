@@ -43,6 +43,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -64,7 +65,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-31T04:54:42.155723473Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApiServiceImpl extends BusinessesApiService {
     @Override
     public Response assetAccessRequestsCreate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody, SecurityContext securityContext) throws NotFoundException {
@@ -92,7 +93,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response businessAssetMembersGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex, SecurityContext securityContext) throws NotFoundException {
+    public Response businessAssetMembersGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, Boolean fetchSystemUsers, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -127,7 +128,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response cancelInvitesOrRequests( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CancelInvitesBody cancelInvitesBody, SecurityContext securityContext) throws NotFoundException {
+    public Response cancelInvitesOrRequests( @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesBody cancelInvitesBody, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -137,7 +138,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response createMembershipOrPartnershipInvites( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, SecurityContext securityContext) throws NotFoundException {
+    public Response createMembershipOrPartnershipInvites( @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -162,7 +163,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response getBusinessMembers( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize, SecurityContext securityContext) throws NotFoundException {
+    public Response getBusinessMembers( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -172,7 +173,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response getInvites( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize, SecurityContext securityContext) throws NotFoundException {
+    public Response getInvites( @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -183,6 +184,11 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
     }
     @Override
     public Response sharedAudiencesForBusinessList( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize, SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response systemUserUpdate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

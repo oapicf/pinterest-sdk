@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ad_account_id** | **char \*** | Associated ad account ID. | [optional] 
 **created_time** | **double** | Creation time. Unix timestamp in seconds. | [optional] 
+**exceptions** | [**object_t**](.md) \* | Customer list errors | [optional] 
 **id** | **char \*** | Customer list ID. | [optional] 
 **name** | **char \*** | Customer list name. | [optional] 
 **num_batches** | **double** | Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. | [optional] 
@@ -13,7 +14,6 @@ Name | Type | Description | Notes
 **status** | **pinterest_rest_api_customer_list_STATUS_e** | Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. | [optional] 
 **type** | **char \*** | Always \&quot;customerlist\&quot;. | [optional] 
 **updated_time** | **double** | Last update time. Unix timestamp in seconds. | [optional] 
-**exceptions** | [**object_t**](.md) \* | Customer list errors | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

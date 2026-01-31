@@ -10,9 +10,9 @@
 
 -type openapi_item_response() ::
   [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  | {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
   | {'item_id', binary() }
   | {'pins', list(openapi_pin:openapi_pin()) }
-  | {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
   | {'hotel_id', binary() }
   | {'creative_assets_id', binary() }
   | {'errors', list(openapi_item_validation_event:openapi_item_validation_event()) }
@@ -24,9 +24,9 @@ openapi_item_response() ->
 
 openapi_item_response(Fields) ->
   Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+            , {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
             , {'item_id', binary() }
             , {'pins', list(openapi_pin:openapi_pin()) }
-            , {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
             , {'hotel_id', binary() }
             , {'creative_assets_id', binary() }
             , {'errors', list(openapi_item_validation_event:openapi_item_validation_event()) }

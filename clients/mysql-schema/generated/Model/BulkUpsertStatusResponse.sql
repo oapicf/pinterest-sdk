@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `BulkUpsertStatusResponse`
 --
-SELECT `status`, `result_url` FROM `BulkUpsertStatusResponse` WHERE 1;
+SELECT `result_url`, `status` FROM `BulkUpsertStatusResponse` WHERE 1;
 
 --
 -- INSERT template for table `BulkUpsertStatusResponse`
 --
-INSERT INTO `BulkUpsertStatusResponse`(`status`, `result_url`) VALUES (?, ?);
+INSERT INTO `BulkUpsertStatusResponse`(`result_url`, `status`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `BulkUpsertStatusResponse`
 --
-UPDATE `BulkUpsertStatusResponse` SET `status` = ?, `result_url` = ? WHERE 1;
+UPDATE `BulkUpsertStatusResponse` SET `result_url` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `BulkUpsertStatusResponse`

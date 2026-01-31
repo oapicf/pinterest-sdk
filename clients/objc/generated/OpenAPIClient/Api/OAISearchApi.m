@@ -2,9 +2,9 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIError.h"
-#import "OAIPinsList200Response.h"
 #import "OAISearchPartnerPins200Response.h"
 #import "OAISearchUserBoardsGet200Response.h"
+#import "OAISearchUserPinsList200Response.h"
 
 
 @interface OAISearchApi ()
@@ -54,7 +54,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 
 ///
 /// Search pins by a given search term
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 ///  @param term Search term to look up pins. 
 ///
 ///  @param countryCode Two letter country code (ISO 3166-1 alpha-2) 
@@ -239,12 +239,12 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @returns OAIPinsList200Response*
+///  @returns OAISearchUserPinsList200Response*
 ///
 -(NSURLSessionTask*) searchUserPinsListWithQuery: (NSString*) query
     adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
-    completionHandler: (void (^)(OAIPinsList200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISearchUserPinsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'query' is set
     if (query == nil) {
         NSParameterAssert(query);
@@ -302,10 +302,10 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIPinsList200Response*"
+                              responseType: @"OAISearchUserPinsList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIPinsList200Response*)data, error);
+                                    handler((OAISearchUserPinsList200Response*)data, error);
                                 }
                             }];
 }

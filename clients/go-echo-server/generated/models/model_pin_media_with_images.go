@@ -4,4 +4,6 @@ package models
 type PinMediaWithImages struct {
 
 	Items []ImageMetadata `json:"items,omitempty"`
+
+	MediaType string `json:"media_type"`
 }

@@ -13,17 +13,17 @@ API.Client.CatalogsItemsRequest = function() {}
 API.Client.CatalogsItemsRequest.prototype.country;
 
 /**
+ * @type {!API.Client.CatalogsItemsPostFilters}
+ * @export
+ */
+API.Client.CatalogsItemsRequest.prototype.filters;
+
+/**
  * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsRequest.prototype.language;
-
-/**
- * @type {!API.Client.CatalogsItemsPostFilters}
- * @export
- */
-API.Client.CatalogsItemsRequest.prototype.filters;
 
 /** @enum {string} */
 API.Client.CatalogsItemsRequest.LanguageEnum = { 

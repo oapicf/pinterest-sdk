@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * Catalogs Feed object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeed   {
   @JsonProperty("created_at")
@@ -44,17 +44,6 @@ public class CatalogsFeed   {
 
   private OffsetDateTime updatedAt;
 
-  @JsonProperty("name")
-  @NotNull
-
-  private String name;
-
-  @JsonProperty("format")
-  @NotNull
-@Valid
-
-  private CatalogsFormat format;
-
   @JsonProperty("catalog_type")
   @NotNull
 @Valid
@@ -67,22 +56,17 @@ public class CatalogsFeed   {
 
   private CatalogsFeedCredentials credentials;
 
-  @JsonProperty("location")
-  @NotNull
-
-  private String location;
-
-  @JsonProperty("preferred_processing_schedule")
+  @JsonProperty("default_availability")
   @NotNull
 @Valid
 
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+  private ProductAvailabilityType defaultAvailability;
 
-  @JsonProperty("status")
+  @JsonProperty("default_country")
   @NotNull
 @Valid
 
-  private CatalogsStatus status;
+  private Country defaultCountry;
 
   @JsonProperty("default_currency")
   @NotNull
@@ -95,17 +79,33 @@ public class CatalogsFeed   {
 
   private String defaultLocale;
 
-  @JsonProperty("default_country")
+  @JsonProperty("format")
   @NotNull
 @Valid
 
-  private Country defaultCountry;
+  private CatalogsFormat format;
 
-  @JsonProperty("default_availability")
+  @JsonProperty("location")
+  @NotNull
+
+  private String location;
+
+  @JsonProperty("name")
+  @NotNull
+
+  private String name;
+
+  @JsonProperty("preferred_processing_schedule")
   @NotNull
 @Valid
 
-  private ProductAvailabilityType defaultAvailability;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+
+  @JsonProperty("status")
+  @NotNull
+@Valid
+
+  private CatalogsStatus status;
 
   @JsonProperty("catalog_id")
   @NotNull
@@ -164,40 +164,6 @@ public class CatalogsFeed   {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsFeed name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsFeed format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
   public CatalogsFeed catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
@@ -232,55 +198,38 @@ public class CatalogsFeed   {
     this.credentials = credentials;
   }
 
-  public CatalogsFeed location(String location) {
-    this.location = location;
+  public CatalogsFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
     return this;
   }
 
    /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-   * @return location
+   * Get defaultAvailability
+   * @return defaultAvailability
   **/
-  public String getLocation() {
-    return location;
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
   }
 
-  public void setLocation(String location) {
-    this.location = location;
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
   }
 
-  public CatalogsFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  public CatalogsFeed defaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
     return this;
   }
 
    /**
-   * Get preferredProcessingSchedule
-   * @return preferredProcessingSchedule
+   * Get defaultCountry
+   * @return defaultCountry
   **/
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
+  public Country getDefaultCountry() {
+    return defaultCountry;
   }
 
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-  }
-
-  public CatalogsFeed status(CatalogsStatus status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  public CatalogsStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(CatalogsStatus status) {
-    this.status = status;
+  public void setDefaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
   }
 
   public CatalogsFeed defaultCurrency(NullableCurrency defaultCurrency) {
@@ -317,38 +266,89 @@ public class CatalogsFeed   {
     this.defaultLocale = defaultLocale;
   }
 
-  public CatalogsFeed defaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public CatalogsFeed format(CatalogsFormat format) {
+    this.format = format;
     return this;
   }
 
    /**
-   * Get defaultCountry
-   * @return defaultCountry
+   * Get format
+   * @return format
   **/
-  public Country getDefaultCountry() {
-    return defaultCountry;
+  public CatalogsFormat getFormat() {
+    return format;
   }
 
-  public void setDefaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
   }
 
-  public CatalogsFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  public CatalogsFeed location(String location) {
+    this.location = location;
     return this;
   }
 
    /**
-   * Get defaultAvailability
-   * @return defaultAvailability
+   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+   * @return location
   **/
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
+  public String getLocation() {
+    return location;
   }
 
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public CatalogsFeed name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+    return this;
+  }
+
+   /**
+   * Get preferredProcessingSchedule
+   * @return preferredProcessingSchedule
+  **/
+  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
+  }
+
+  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  }
+
+  public CatalogsFeed status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
   public CatalogsFeed catalogId(String catalogId) {
@@ -381,23 +381,23 @@ public class CatalogsFeed   {
     return Objects.equals(createdAt, catalogsFeed.createdAt) &&
         Objects.equals(id, catalogsFeed.id) &&
         Objects.equals(updatedAt, catalogsFeed.updatedAt) &&
-        Objects.equals(name, catalogsFeed.name) &&
-        Objects.equals(format, catalogsFeed.format) &&
         Objects.equals(catalogType, catalogsFeed.catalogType) &&
         Objects.equals(credentials, catalogsFeed.credentials) &&
-        Objects.equals(location, catalogsFeed.location) &&
-        Objects.equals(preferredProcessingSchedule, catalogsFeed.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsFeed.status) &&
+        Objects.equals(defaultAvailability, catalogsFeed.defaultAvailability) &&
+        Objects.equals(defaultCountry, catalogsFeed.defaultCountry) &&
         Objects.equals(defaultCurrency, catalogsFeed.defaultCurrency) &&
         Objects.equals(defaultLocale, catalogsFeed.defaultLocale) &&
-        Objects.equals(defaultCountry, catalogsFeed.defaultCountry) &&
-        Objects.equals(defaultAvailability, catalogsFeed.defaultAvailability) &&
+        Objects.equals(format, catalogsFeed.format) &&
+        Objects.equals(location, catalogsFeed.location) &&
+        Objects.equals(name, catalogsFeed.name) &&
+        Objects.equals(preferredProcessingSchedule, catalogsFeed.preferredProcessingSchedule) &&
+        Objects.equals(status, catalogsFeed.status) &&
         Objects.equals(catalogId, catalogsFeed.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, format, catalogType, credentials, location, preferredProcessingSchedule, status, defaultCurrency, defaultLocale, defaultCountry, defaultAvailability, catalogId);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, credentials, defaultAvailability, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status, catalogId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -409,17 +409,17 @@ public class CatalogsFeed   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();

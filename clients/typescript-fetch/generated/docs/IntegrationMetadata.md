@@ -7,20 +7,20 @@ Integration metadata
 
 Name | Type
 ------------ | -------------
-`id` | string
-`externalBusinessId` | string
-`connectedMerchantId` | string
-`connectedUserId` | string
+`additionalId1` | string
 `connectedAdvertiserId` | string
 `connectedLbaId` | string
+`connectedMerchantId` | string
 `connectedTagId` | string
+`connectedUserId` | string
+`createdTimestamp` | number
+`externalBusinessId` | string
+`id` | string
 `partnerAccessTokenExpiry` | number
+`partnerMetadata` | string
 `partnerRefreshTokenExpiry` | number
 `scopes` | string
-`createdTimestamp` | number
 `updatedTimestamp` | number
-`additionalId1` | string
-`partnerMetadata` | string
 
 ## Example
 
@@ -29,20 +29,20 @@ import type { IntegrationMetadata } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": null,
-  "externalBusinessId": null,
-  "connectedMerchantId": null,
-  "connectedUserId": null,
+  "additionalId1": null,
   "connectedAdvertiserId": null,
   "connectedLbaId": null,
+  "connectedMerchantId": null,
   "connectedTagId": null,
+  "connectedUserId": null,
+  "createdTimestamp": null,
+  "externalBusinessId": null,
+  "id": null,
   "partnerAccessTokenExpiry": null,
+  "partnerMetadata": null,
   "partnerRefreshTokenExpiry": null,
   "scopes": null,
-  "createdTimestamp": null,
   "updatedTimestamp": null,
-  "additionalId1": null,
-  "partnerMetadata": null,
 } satisfies IntegrationMetadata
 
 console.log(example)

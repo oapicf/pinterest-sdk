@@ -33,7 +33,7 @@ Create a new asset group with the specified parameters. - An <a href=\"https://h
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
-let createAssetGroupBody = CreateAssetGroupBody(assetGroupName: "assetGroupName_example", assetGroupDescription: "assetGroupDescription_example", assetGroupTypes: [AssetGroupType()]) // CreateAssetGroupBody | 
+let createAssetGroupBody = CreateAssetGroupBody(assetGroupDescription: "assetGroupDescription_example", assetGroupName: "assetGroupName_example", assetGroupTypes: [AssetGroupType()]) // CreateAssetGroupBody | 
 
 // Create a new asset group.
 BusinessAccessAssetsAPI.assetGroupCreate(businessId: businessId, createAssetGroupBody: createAssetGroupBody) { (response, error) in
@@ -137,7 +137,7 @@ Update a batch of asset groups with the specified parameters.
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
-let updateAssetGroupBody = UpdateAssetGroupBody(assetGroupsToUpdate: [UpdateAssetGroupBody_asset_groups_to_update_inner(assetGroupId: "assetGroupId_example", name: "name_example", description: "description_example", assetGroupTypes: [AssetGroupType()], assetsToAdd: ["assetsToAdd_example"], assetsToRemove: ["assetsToRemove_example"])]) // UpdateAssetGroupBody | 
+let updateAssetGroupBody = UpdateAssetGroupBody(assetGroupsToUpdate: [UpdateAssetGroupBody_asset_groups_to_update_inner(assetGroupId: "assetGroupId_example", assetGroupTypes: [AssetGroupType()], assetsToAdd: ["assetsToAdd_example"], assetsToRemove: ["assetsToRemove_example"], description: "description_example", name: "name_example")]) // UpdateAssetGroupBody | 
 
 // Update asset groups.
 BusinessAccessAssetsAPI.assetGroupUpdate(businessId: businessId, updateAssetGroupBody: updateAssetGroupBody) { (response, error) in
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 # **businessAssetMembersGet**
 ```swift
-    open class func businessAssetMembersGet(businessId: String, assetId: String, bookmark: String? = nil, pageSize: Int? = nil, startIndex: Int? = nil, completion: @escaping (_ data: BusinessAssetMembersGet200Response?, _ error: Error?) -> Void)
+    open class func businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, startIndex: Int? = nil, completion: @escaping (_ data: BusinessAssetMembersGet200Response?, _ error: Error?) -> Void)
 ```
 
 Get members with access to asset
@@ -190,12 +190,13 @@ import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
 let assetId = "assetId_example" // String | Unique identifier of a business asset.
+let fetchSystemUsers = true // Bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
 let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let startIndex = 987 // Int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 
 // Get members with access to asset
-BusinessAccessAssetsAPI.businessAssetMembersGet(businessId: businessId, assetId: assetId, bookmark: bookmark, pageSize: pageSize, startIndex: startIndex) { (response, error) in
+BusinessAccessAssetsAPI.businessAssetMembersGet(businessId: businessId, assetId: assetId, fetchSystemUsers: fetchSystemUsers, bookmark: bookmark, pageSize: pageSize, startIndex: startIndex) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -213,6 +214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String** | Unique identifier of the requesting business. | 
  **assetId** | **String** | Unique identifier of a business asset. | 
+ **fetchSystemUsers** | **Bool** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
  **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **startIndex** | **Int** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
@@ -595,7 +597,7 @@ Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
-let deletePartnerAssetAccessBody = DeletePartnerAssetAccessBody(accesses: [DeletePartnerAssetAccessBody_accesses_inner(partnerId: "partnerId_example", assetId: "assetId_example", partnerType: "partnerType_example")]) // DeletePartnerAssetAccessBody | 
+let deletePartnerAssetAccessBody = DeletePartnerAssetAccessBody(accesses: [DeletePartnerAssetAccessBody_accesses_inner(assetId: "assetId_example", partnerId: "partnerId_example", partnerType: "partnerType_example")]) // DeletePartnerAssetAccessBody | 
 
 // Delete partner access to asset
 BusinessAccessAssetsAPI.deletePartnerAssetAccessHandlerImpl(businessId: businessId, deletePartnerAssetAccessBody: deletePartnerAssetAccessBody) { (response, error) in
@@ -647,7 +649,7 @@ Grant multiple partners access to assets and/or update multiple partner's exisit
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
-let updatePartnerAssetAccessBody = UpdatePartnerAssetAccessBody(accesses: [UpdatePartnerAssetAccessBody_accesses_inner(partnerId: "partnerId_example", assetId: "assetId_example", permissions: [Permissions()])]) // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+let updatePartnerAssetAccessBody = UpdatePartnerAssetAccessBody(accesses: [UpdatePartnerAssetAccessBody_accesses_inner(assetId: "assetId_example", partnerId: "partnerId_example", permissions: [Permissions()])]) // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
 
 // Assign/Update partner asset permissions
 BusinessAccessAssetsAPI.updatePartnerAssetAccessHandlerImpl(businessId: businessId, updatePartnerAssetAccessBody: updatePartnerAssetAccessBody) { (response, error) in

@@ -7,13 +7,21 @@ module.exports = {
         { data: {} },
     "AdAccountSample": 
         { data: {} },
+    "AdAccountSample": 
+        { data: {} },
     "ad_accounts_list_200_responseSample": 
+        { data: {} },
+    "AdsAnalyticsCreateAsyncResponseSample": 
         { data: {} },
     "CreateMMMReportResponseSample": 
         { data: {} },
     "AdsAnalyticsCreateAsyncResponseSample": 
         { data: {} },
-    "AdsAnalyticsCreateAsyncResponseSample": 
+    "TemplateBasedReportSample": 
+        { data: {} },
+    "TemplateBasedReportSample": 
+        { data: {} },
+    "AdsAnalyticsGetAsyncResponseSample": 
         { data: {} },
     "GetMMMReportResponseSample": 
         { data: {} },

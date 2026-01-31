@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**AdsCreditDiscountsResponse[]**](AdsCreditDiscountsResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**AdsCreditDiscountsResponse[]**](AdsCreditDiscountsResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdsCreditsDiscountsGet200Response = Initialize-PSOpenAPIToolsAdsCreditsDiscountsGet200Response  -Items null `
- -Bookmark null
+$AdsCreditsDiscountsGet200Response = Initialize-PSOpenAPIToolsAdsCreditsDiscountsGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

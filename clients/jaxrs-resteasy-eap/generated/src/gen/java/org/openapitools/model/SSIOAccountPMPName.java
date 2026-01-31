@@ -10,24 +10,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountPMPName   {
   
-  private String name;
   private String id;
-
-  /**
-   * Display name
-   **/
-  
-  @ApiModelProperty(example = "Bidalgo", value = "Display name")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private String name;
 
   /**
    * Salesforce id for PMP
@@ -42,6 +29,19 @@ public class SSIOAccountPMPName   {
     this.id = id;
   }
 
+  /**
+   * Display name
+   **/
+  
+  @ApiModelProperty(example = "Bidalgo", value = "Display name")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class SSIOAccountPMPName   {
       return false;
     }
     SSIOAccountPMPName ssIOAccountPMPName = (SSIOAccountPMPName) o;
-    return Objects.equals(this.name, ssIOAccountPMPName.name) &&
-        Objects.equals(this.id, ssIOAccountPMPName.id);
+    return Objects.equals(this.id, ssIOAccountPMPName.id) &&
+        Objects.equals(this.name, ssIOAccountPMPName.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, id);
+    return Objects.hash(id, name);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class SSIOAccountPMPName   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountPMPName {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

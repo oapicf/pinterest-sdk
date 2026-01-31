@@ -13,27 +13,18 @@ import org.openapitools.vertxweb.server.model.PlacementMultipliers;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdvancedAuctionBidOptions   {
   
-  private Long bidInMicroCurrency;
   private AppTypeMultipliers appTypeMultipliers;
+  private Long bidInMicroCurrency;
   private PlacementMultipliers placementMultipliers;
 
   public AdvancedAuctionBidOptions () {
 
   }
 
-  public AdvancedAuctionBidOptions (Long bidInMicroCurrency, AppTypeMultipliers appTypeMultipliers, PlacementMultipliers placementMultipliers) {
-    this.bidInMicroCurrency = bidInMicroCurrency;
+  public AdvancedAuctionBidOptions (AppTypeMultipliers appTypeMultipliers, Long bidInMicroCurrency, PlacementMultipliers placementMultipliers) {
     this.appTypeMultipliers = appTypeMultipliers;
-    this.placementMultipliers = placementMultipliers;
-  }
-
-    
-  @JsonProperty("bid_in_micro_currency")
-  public Long getBidInMicroCurrency() {
-    return bidInMicroCurrency;
-  }
-  public void setBidInMicroCurrency(Long bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
+    this.placementMultipliers = placementMultipliers;
   }
 
     
@@ -43,6 +34,15 @@ public class AdvancedAuctionBidOptions   {
   }
   public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
     this.appTypeMultipliers = appTypeMultipliers;
+  }
+
+    
+  @JsonProperty("bid_in_micro_currency")
+  public Long getBidInMicroCurrency() {
+    return bidInMicroCurrency;
+  }
+  public void setBidInMicroCurrency(Long bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
     
@@ -64,14 +64,14 @@ public class AdvancedAuctionBidOptions   {
       return false;
     }
     AdvancedAuctionBidOptions advancedAuctionBidOptions = (AdvancedAuctionBidOptions) o;
-    return Objects.equals(bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
-        Objects.equals(appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+    return Objects.equals(appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+        Objects.equals(bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
         Objects.equals(placementMultipliers, advancedAuctionBidOptions.placementMultipliers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidInMicroCurrency, appTypeMultipliers, placementMultipliers);
+    return Objects.hash(appTypeMultipliers, bidInMicroCurrency, placementMultipliers);
   }
 
   @Override
@@ -79,8 +79,8 @@ public class AdvancedAuctionBidOptions   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionBidOptions {\n");
     
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();

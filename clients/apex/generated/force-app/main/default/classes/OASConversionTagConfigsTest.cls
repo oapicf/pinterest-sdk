@@ -73,24 +73,28 @@ private class OASConversionTagConfigsTest {
     private static void maintainRenamedProperties() {
         OASConversionTagConfigs conversionTagConfigs = new OASConversionTagConfigs();
         Map<String, String> x-property-mappings = conversionTagConfigs.getx-property-mappings();
-        System.assertEquals('aemEnabled', x-property-mappings.get('aem_enabled'));
-        System.assertEquals('mdFrequency', x-property-mappings.get('md_frequency'));
-        System.assertEquals('aemFnlnEnabled', x-property-mappings.get('aem_fnln_enabled'));
-        System.assertEquals('aemPhEnabled', x-property-mappings.get('aem_ph_enabled'));
-        System.assertEquals('aemGeEnabled', x-property-mappings.get('aem_ge_enabled'));
         System.assertEquals('aemDbEnabled', x-property-mappings.get('aem_db_enabled'));
+        System.assertEquals('aemEnabled', x-property-mappings.get('aem_enabled'));
+        System.assertEquals('aemExternalIdEnabled', x-property-mappings.get('aem_external_id_enabled'));
+        System.assertEquals('aemFnlnEnabled', x-property-mappings.get('aem_fnln_enabled'));
+        System.assertEquals('aemGeEnabled', x-property-mappings.get('aem_ge_enabled'));
         System.assertEquals('aemLocEnabled', x-property-mappings.get('aem_loc_enabled'));
+        System.assertEquals('aemPhEnabled', x-property-mappings.get('aem_ph_enabled'));
+        System.assertEquals('mdFrequency', x-property-mappings.get('md_frequency'));
+        System.assertEquals('noCodeCapiDomains', x-property-mappings.get('no_code_capi_domains'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASConversionTagConfigs conversionTagConfigs = new OASConversionTagConfigs();
-        System.assertEquals(false, conversionTagConfigs.aemEnabled);
-        System.assertEquals(1, conversionTagConfigs.mdFrequency);
-        System.assertEquals(false, conversionTagConfigs.aemFnlnEnabled);
-        System.assertEquals(false, conversionTagConfigs.aemPhEnabled);
-        System.assertEquals(false, conversionTagConfigs.aemGeEnabled);
         System.assertEquals(false, conversionTagConfigs.aemDbEnabled);
+        System.assertEquals(false, conversionTagConfigs.aemEnabled);
+        System.assertEquals(false, conversionTagConfigs.aemExternalIdEnabled);
+        System.assertEquals(false, conversionTagConfigs.aemFnlnEnabled);
+        System.assertEquals(false, conversionTagConfigs.aemGeEnabled);
         System.assertEquals(false, conversionTagConfigs.aemLocEnabled);
+        System.assertEquals(false, conversionTagConfigs.aemPhEnabled);
+        System.assertEquals(1, conversionTagConfigs.mdFrequency);
+        System.assertEquals(new List<String>(), conversionTagConfigs.noCodeCapiDomains);
     }
 }

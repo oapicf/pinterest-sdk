@@ -13,17 +13,17 @@ module OrderLine =
 
 
   type OrderLine = {
-    Id : string;
-    Type : string;
     AdAccountId : string;
+    Budget : decimal option;
+    EndTime : decimal option;
+    Id : string;
+    Name : string option;
+    PaidBudget : decimal option;
+    PaidType : OrderLinePaidType;
     PurchaseOrderId : string option;
     StartTime : decimal;
-    EndTime : decimal option;
-    Budget : decimal option;
-    PaidBudget : decimal option;
     Status : OrderLineStatus;
-    Name : string option;
-    PaidType : OrderLinePaidType;
+    Type : string;
     CampaignIds : string[];
   }
   //#endregion

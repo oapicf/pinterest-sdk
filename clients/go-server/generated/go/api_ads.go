@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -427,7 +427,14 @@ func (c *AdsAPIController) AdsAnalytics(w http.ResponseWriter, r *http.Request) 
 	if query.Has("campaign_ids") {
 		campaignIdsParam = strings.Split(query.Get("campaign_ids"), ",")
 	}
-	result, err := c.service.AdsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, columnsParam, granularityParam, adIdsParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, pinIdsParam, campaignIdsParam)
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
+
+		reportingTimezoneParam = param
+	} else {
+	}
+	result, err := c.service.AdsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, columnsParam, granularityParam, adIdsParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, pinIdsParam, campaignIdsParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -555,14 +562,27 @@ func (c *AdsAPIController) AdTargetingAnalyticsGet(w http.ResponseWriter, r *htt
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	var attributionTypesParam ConversionReportAttributionType
+	var attributionTypesParam []ConversionReportAttributionType
 	if query.Has("attribution_types") {
-		param := ConversionReportAttributionType(query.Get("attribution_types"))
+		paramSplits := strings.Split(query.Get("attribution_types"), ",")
+		attributionTypesParam = make([]ConversionReportAttributionType, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewConversionReportAttributionTypeFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "attribution_types", Err: err}, nil)
+				return
+			}
+			attributionTypesParam = append(attributionTypesParam, paramEnum)
+		}
+	}
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
 
-		attributionTypesParam = param
+		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.AdTargetingAnalyticsGet(r.Context(), adAccountIdParam, adIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam)
+	result, err := c.service.AdTargetingAnalyticsGet(r.Context(), adAccountIdParam, adIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -12,56 +12,64 @@ import org.joda.time.DateTime
 import AdGroupResponse._
 
 case class AdGroupResponse (
-  /* Ad group name. */
-  name: Option[String],
-/* Ad group/entity status. */
-  status: Option[EntityStatus],
+  /* Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
+  autoTargetingEnabled: Option[Boolean],
+/* Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. */
+  bidInMicroCurrency: Option[Integer],
+/* Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\". */
+  bidStrategyType: Option[BidStrategyType],
+billableEvent: Option[ActionType],
 /* Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. */
   budgetInMicroCurrency: Option[Integer],
-/* Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. */
-  bidInMicroCurrency: Option[Integer],
-/* Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
-  optimizationGoalMetadata: Option[OptimizationGoalMetadata],
 budgetType: Option[BudgetType],
-/* Ad group start time. Unix timestamp in seconds. Defaults to current time. */
-  startTime: Option[Integer],
-/* Ad group end time. Unix timestamp in seconds. */
-  endTime: Option[Integer],
-targetingSpec: Option[TargetingSpec],
-/* Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. */
-  lifetimeFrequencyCap: Option[Integer],
-/* Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
-  trackingUrls: Option[TrackingUrls],
-/* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
-  autoTargetingEnabled: Option[Boolean],
-/* <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
-  placementGroup: Option[PlacementGroupType],
-pacingDeliveryType: Option[PacingDeliveryType],
 /* Campaign ID of the ad group. */
   campaignId: Option[String],
-billableEvent: Option[ActionType],
-/* Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID. */
-  bidStrategyType: Option[BidStrategyType],
+/* Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. */
+  endTime: Option[Integer],
+/* Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale. */
+  isCreativeOptimization: Option[Boolean],
+/* Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. */
+  lifetimeFrequencyCap: Option[Integer],
+/* Ad group name. */
+  name: Option[String],
+/* Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
+  optimizationGoalMetadata: Option[OptimizationGoalMetadata],
+pacingDeliveryType: Option[PacingDeliveryType],
+/* <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
+  placementGroup: Option[PlacementGroupType],
+/* Specify if the promotion is applied at ad group or item level */
+  promotionApplicationLevel: Option[PromotionApplicationLevel],
+/* Promotion ID. To clear this field, set to null. */
+  promotionId: Option[String],
+/* Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. */
+  startTime: Option[Integer],
+/* Ad group/entity status. */
+  status: Option[EntityStatus],
+targetingSpec: Option[TargetingSpec],
 /* Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. */
   targetingTemplateIds: Option[List[String]],
-/* Ad group ID. */
-  id: Option[String],
+/* Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
+  trackingUrls: Option[TrackingUrls],
 /* Advertiser ID. */
   adAccountId: Option[String],
-/* Ad group creation time. Unix timestamp in seconds. */
-  createdTime: Option[Integer],
-/* Ad group last update time. Unix timestamp in seconds. */
-  updatedTime: Option[Integer],
-/* Always \"adgroup\". */
-  `type`: Option[String],
+/* <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>. */
+  bidMultiplier: Option[BigDecimal],
 /* oCPM learn mode */
   conversionLearningModeType: Option[ConversionLearningModeType],
-/* Ad group summary status. */
-  summaryStatus: Option[AdGroupSummaryStatus],
+/* Ad group creation time. Unix timestamp in seconds. */
+  createdTime: Option[Integer],
+/* [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets. */
+  dcaAssets: Option[AnyType],
 /* Feed Profile ID associated to the adgroup. */
   feedProfileId: Option[String],
-/* [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets. */
-  dcaAssets: Option[AnyType])
+/* Ad group ID. */
+  id: Option[String],
+/* Ad group summary status. */
+  summaryStatus: Option[AdGroupSummaryStatus],
+/* Always \"adgroup\". */
+  `type`: Option[String],
+/* Ad group last update time. Unix timestamp in seconds. */
+  updatedTime: Option[Integer])
 
 object AdGroupResponse {
   import DateTimeCodecs._
@@ -90,6 +98,31 @@ object AdGroupResponse {
 
   implicit val BidStrategyTypeEnumDecoder: DecodeJson[BidStrategyType] =
     DecodeJson.optionDecoder[BidStrategyType](n => n.string.flatMap(jStr => BidStrategyType.toBidStrategyType(jStr)), "BidStrategyType failed to de-serialize")
+  sealed trait PromotionApplicationLevel
+  case object NONE extends PromotionApplicationLevel
+  case object ITEM extends PromotionApplicationLevel
+  case object ADGROUP extends PromotionApplicationLevel
+
+  object PromotionApplicationLevel {
+    def toPromotionApplicationLevel(s: String): Option[PromotionApplicationLevel] = s match {
+      case "NONE" => Some(NONE)
+      case "ITEM" => Some(ITEM)
+      case "ADGROUP" => Some(ADGROUP)
+      case _ => None
+    }
+
+    def fromPromotionApplicationLevel(x: PromotionApplicationLevel): String = x match {
+      case NONE => "NONE"
+      case ITEM => "ITEM"
+      case ADGROUP => "ADGROUP"
+    }
+  }
+
+  implicit val PromotionApplicationLevelEnumEncoder: EncodeJson[PromotionApplicationLevel] =
+    EncodeJson[PromotionApplicationLevel](is => StringEncodeJson(PromotionApplicationLevel.fromPromotionApplicationLevel(is)))
+
+  implicit val PromotionApplicationLevelEnumDecoder: DecodeJson[PromotionApplicationLevel] =
+    DecodeJson.optionDecoder[PromotionApplicationLevel](n => n.string.flatMap(jStr => PromotionApplicationLevel.toPromotionApplicationLevel(jStr)), "PromotionApplicationLevel failed to de-serialize")
   sealed trait ConversionLearningModeType
   case object NOTACTIVE extends ConversionLearningModeType
   case object ACTIVE extends ConversionLearningModeType

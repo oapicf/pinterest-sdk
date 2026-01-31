@@ -97,7 +97,7 @@ open class UserAccountAPI {
     /**
      Follow user
      - POST /user_account/following/{username}
-     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -787,6 +787,7 @@ open class UserAccountAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func userAccountFollowedInterests(username: String, bookmark: String? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserAccountFollowedInterests200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return userAccountFollowedInterestsWithRequestBuilder(username: username, bookmark: bookmark, pageSize: pageSize).execute(apiResponseQueue) { result in
@@ -814,6 +815,7 @@ open class UserAccountAPI {
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<UserAccountFollowedInterests200Response> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func userAccountFollowedInterestsWithRequestBuilder(username: String, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<UserAccountFollowedInterests200Response> {
         var localVariablePath = "/users/{username}/interests/follow"
         let usernamePreEscape = "\(APIHelper.mapValueToPathItem(username))"

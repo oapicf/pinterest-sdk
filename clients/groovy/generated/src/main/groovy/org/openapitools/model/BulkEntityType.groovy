@@ -13,7 +13,11 @@ enum BulkEntityType {
     
     AD("AD"),
     
-    KEYWORD("KEYWORD")
+    KEYWORD("KEYWORD"),
+    
+    LABEL("LABEL"),
+    
+    SCHEDULE("SCHEDULE")
 
     private final String value
 

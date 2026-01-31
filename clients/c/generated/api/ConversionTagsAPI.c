@@ -63,9 +63,9 @@ end:
 
 // Create conversion tag
 //
-// Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+// Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 //
-conversion_tag_response_t*
+conversion_tag_t*
 ConversionTagsAPI_conversionTagsCreate(apiClient_t *apiClient, char *ad_account_id, conversion_tag_create_t *conversion_tag_create)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -122,17 +122,41 @@ ConversionTagsAPI_conversionTagsCreate(apiClient_t *apiClient, char *ad_account_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    conversion_tag_response_t *elementToReturn = NULL;
+    conversion_tag_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = conversion_tag_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        elementToReturn = conversion_tag_parseFromJSON(ConversionTagsAPIlocalVarJSON);
         cJSON_Delete(ConversionTagsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -168,7 +192,7 @@ end:
 //
 // Get information about an existing conversion tag.
 //
-conversion_tag_response_t*
+conversion_tag_t*
 ConversionTagsAPI_conversionTagsGet(apiClient_t *apiClient, char *ad_account_id, char *conversion_tag_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -233,10 +257,10 @@ ConversionTagsAPI_conversionTagsGet(apiClient_t *apiClient, char *ad_account_id,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    conversion_tag_response_t *elementToReturn = NULL;
+    conversion_tag_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = conversion_tag_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        elementToReturn = conversion_tag_parseFromJSON(ConversionTagsAPIlocalVarJSON);
         cJSON_Delete(ConversionTagsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -264,11 +288,11 @@ end:
 
 }
 
-// Get conversion tags
+// List conversion tags
 //
 // List conversion tags associated with an ad account.
 //
-conversion_tag_list_response_t*
+conversion_tags_list_200_response_t*
 ConversionTagsAPI_conversionTagsList(apiClient_t *apiClient, char *ad_account_id, int *filter_deleted)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -327,17 +351,37 @@ ConversionTagsAPI_conversionTagsList(apiClient_t *apiClient, char *ad_account_id
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    conversion_tag_list_response_t *elementToReturn = NULL;
+    conversion_tags_list_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = conversion_tag_list_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        elementToReturn = conversion_tags_list_200_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
         cJSON_Delete(ConversionTagsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;

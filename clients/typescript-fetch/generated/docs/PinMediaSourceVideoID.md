@@ -1,18 +1,19 @@
 
 # PinMediaSourceVideoID
 
-Video ID-based media source
+Video ID-based media source.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`sourceType` | string
-`coverImageUrl` | string
-`coverImageContentType` | string
+`coverImageContentType` | [ContentType](ContentType.md)
 `coverImageData` | string
-`mediaId` | string
+`coverImageKeyFrameTime` | number
+`coverImageUrl` | string
 `isStandard` | boolean
+`mediaId` | string
+`sourceType` | string
 
 ## Example
 
@@ -21,12 +22,13 @@ import type { PinMediaSourceVideoID } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceType": null,
-  "coverImageUrl": null,
   "coverImageContentType": null,
   "coverImageData": null,
-  "mediaId": null,
+  "coverImageKeyFrameTime": null,
+  "coverImageUrl": null,
   "isStandard": null,
+  "mediaId": null,
+  "sourceType": null,
 } satisfies PinMediaSourceVideoID
 
 console.log(example)

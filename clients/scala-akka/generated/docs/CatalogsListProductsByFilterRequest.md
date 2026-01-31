@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feedId** | **String** | Catalog Feed id pertaining to the catalog product group filter. | 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **country** | **Country** |  | 
 **locale** | **CatalogsLocale** |  | 
 

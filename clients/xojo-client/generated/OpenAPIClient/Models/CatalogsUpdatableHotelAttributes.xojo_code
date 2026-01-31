@@ -2,26 +2,15 @@
 Protected Class CatalogsUpdatableHotelAttributes
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The hotel's name.
-		#tag EndNote
-		name As Xoson.O.OptionalString
+		address As OpenAPIClient.Models.CatalogsHotelAddress
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Link to the product page
+			Base price of the hotel room per night followed by the ISO currency code
 		#tag EndNote
-		link As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Brief description of the hotel.
-		#tag EndNote
-		description As Xoson.O.OptionalString
+		base_price As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -35,30 +24,9 @@ Protected Class CatalogsUpdatableHotelAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Latitude of the hotel.
+			The type of property. The category can be any type of internal description desired.
 		#tag EndNote
-		latitude As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Longitude of the hotel.
-		#tag EndNote
-		longitude As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A list of neighborhoods where the hotel is located
-		#tag EndNote
-		neighborhood() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		address As OpenAPIClient.Models.CatalogsHotelAddress
+		category As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -104,17 +72,54 @@ Protected Class CatalogsUpdatableHotelAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The type of property. The category can be any type of internal description desired.
+			Brief description of the hotel.
 		#tag EndNote
-		category As Xoson.O.OptionalString
+		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		guest_ratings As OpenAPIClient.Models.CatalogsHotelGuestRatings
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Base price of the hotel room per night followed by the ISO currency code
+			Latitude of the hotel.
 		#tag EndNote
-		base_price As Xoson.O.OptionalString
+		latitude As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Link to the product page
+		#tag EndNote
+		link As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Longitude of the hotel.
+		#tag EndNote
+		longitude As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The hotel's name.
+		#tag EndNote
+		name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			A list of neighborhoods where the hotel is located
+		#tag EndNote
+		neighborhood() As String
 	#tag EndProperty
 
 
@@ -123,11 +128,6 @@ Protected Class CatalogsUpdatableHotelAttributes
 			Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 		#tag EndNote
 		sale_price As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		guest_ratings As OpenAPIClient.Models.CatalogsHotelGuestRatings
 	#tag EndProperty
 
 
@@ -168,23 +168,15 @@ Protected Class CatalogsUpdatableHotelAttributes
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="address"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="CatalogsHotelAddress"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="link"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="description"
+			Name="base_price"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -200,35 +192,11 @@ Protected Class CatalogsUpdatableHotelAttributes
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="latitude"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="longitude"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="neighborhood"
+			Name="category"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="address"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsHotelAddress"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -272,23 +240,7 @@ Protected Class CatalogsUpdatableHotelAttributes
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="category"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="base_price"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="sale_price"
+			Name="description"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -301,6 +253,54 @@ Protected Class CatalogsUpdatableHotelAttributes
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsHotelGuestRatings"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="latitude"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="link"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="longitude"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="neighborhood"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sale_price"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

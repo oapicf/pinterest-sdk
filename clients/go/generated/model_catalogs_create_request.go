@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,7 @@ var _ MappedNullable = &CatalogsCreateRequest{}
 
 // CatalogsCreateRequest Request object for creating a catalog.
 type CatalogsCreateRequest struct {
-	// Type of the catalog entity.
-	CatalogType string `json:"catalog_type"`
+	CatalogType CatalogsType `json:"catalog_type"`
 	// A human-friendly name associated to a given catalog.
 	Name string `json:"name"`
 }
@@ -34,7 +33,7 @@ type _CatalogsCreateRequest CatalogsCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreateRequest(catalogType string, name string) *CatalogsCreateRequest {
+func NewCatalogsCreateRequest(catalogType CatalogsType, name string) *CatalogsCreateRequest {
 	this := CatalogsCreateRequest{}
 	this.CatalogType = catalogType
 	this.Name = name
@@ -50,9 +49,9 @@ func NewCatalogsCreateRequestWithDefaults() *CatalogsCreateRequest {
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsCreateRequest) GetCatalogType() string {
+func (o *CatalogsCreateRequest) GetCatalogType() CatalogsType {
 	if o == nil {
-		var ret string
+		var ret CatalogsType
 		return ret
 	}
 
@@ -61,7 +60,7 @@ func (o *CatalogsCreateRequest) GetCatalogType() string {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreateRequest) GetCatalogTypeOk() (*string, bool) {
+func (o *CatalogsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +68,7 @@ func (o *CatalogsCreateRequest) GetCatalogTypeOk() (*string, bool) {
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsCreateRequest) SetCatalogType(v string) {
+func (o *CatalogsCreateRequest) SetCatalogType(v CatalogsType) {
 	o.CatalogType = v
 }
 

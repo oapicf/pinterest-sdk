@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.model.MediaUploadAllOfUploadParameters;
+import org.openapitools.model.MediaUploadParameters;
 import org.openapitools.model.MediaUploadType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -22,16 +22,28 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUpload", description = "Media upload that has been registered but not uploaded/processed yet.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaUpload {
 
   private String mediaId;
 
   private MediaUploadType mediaType;
 
+  private MediaUploadParameters uploadParameters;
+
   private String uploadUrl;
 
-  private MediaUploadAllOfUploadParameters uploadParameters;
+  public MediaUpload() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public MediaUpload(String mediaId, MediaUploadType mediaType) {
+    this.mediaId = mediaId;
+    this.mediaType = mediaType;
+  }
 
   public MediaUpload mediaId(String mediaId) {
     this.mediaId = mediaId;
@@ -42,8 +54,8 @@ public class MediaUpload {
    * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
    * @return mediaId
    */
-  
-  @Schema(name = "media_id", description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "media_id", accessMode = Schema.AccessMode.READ_ONLY, example = "12345", description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_id")
   public String getMediaId() {
     return mediaId;
@@ -62,8 +74,8 @@ public class MediaUpload {
    * Get mediaType
    * @return mediaType
    */
-  @Valid 
-  @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "media_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_type")
   public MediaUploadType getMediaType() {
     return mediaType;
@@ -71,6 +83,26 @@ public class MediaUpload {
 
   public void setMediaType(MediaUploadType mediaType) {
     this.mediaType = mediaType;
+  }
+
+  public MediaUpload uploadParameters(MediaUploadParameters uploadParameters) {
+    this.uploadParameters = uploadParameters;
+    return this;
+  }
+
+  /**
+   * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+   * @return uploadParameters
+   */
+  @Valid 
+  @Schema(name = "upload_parameters", accessMode = Schema.AccessMode.READ_ONLY, description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("upload_parameters")
+  public MediaUploadParameters getUploadParameters() {
+    return uploadParameters;
+  }
+
+  public void setUploadParameters(MediaUploadParameters uploadParameters) {
+    this.uploadParameters = uploadParameters;
   }
 
   public MediaUpload uploadUrl(String uploadUrl) {
@@ -83,7 +115,7 @@ public class MediaUpload {
    * @return uploadUrl
    */
   
-  @Schema(name = "upload_url", example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", description = "The URL where you will POST your media file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "upload_url", accessMode = Schema.AccessMode.READ_ONLY, example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", description = "The URL where you will POST your media file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upload_url")
   public String getUploadUrl() {
     return uploadUrl;
@@ -91,26 +123,6 @@ public class MediaUpload {
 
   public void setUploadUrl(String uploadUrl) {
     this.uploadUrl = uploadUrl;
-  }
-
-  public MediaUpload uploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
-    this.uploadParameters = uploadParameters;
-    return this;
-  }
-
-  /**
-   * Get uploadParameters
-   * @return uploadParameters
-   */
-  @Valid 
-  @Schema(name = "upload_parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("upload_parameters")
-  public MediaUploadAllOfUploadParameters getUploadParameters() {
-    return uploadParameters;
-  }
-
-  public void setUploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
-    this.uploadParameters = uploadParameters;
   }
 
   @Override
@@ -124,13 +136,13 @@ public class MediaUpload {
     MediaUpload mediaUpload = (MediaUpload) o;
     return Objects.equals(this.mediaId, mediaUpload.mediaId) &&
         Objects.equals(this.mediaType, mediaUpload.mediaType) &&
-        Objects.equals(this.uploadUrl, mediaUpload.uploadUrl) &&
-        Objects.equals(this.uploadParameters, mediaUpload.uploadParameters);
+        Objects.equals(this.uploadParameters, mediaUpload.uploadParameters) &&
+        Objects.equals(this.uploadUrl, mediaUpload.uploadUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mediaId, mediaType, uploadUrl, uploadParameters);
+    return Objects.hash(mediaId, mediaType, uploadParameters, uploadUrl);
   }
 
   @Override
@@ -139,8 +151,8 @@ public class MediaUpload {
     sb.append("class MediaUpload {\n");
     sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
-    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("    uploadParameters: ").append(toIndentedString(uploadParameters)).append("\n");
+    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;CampaignResponse&gt;**](CampaignResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;CampaignResponse&gt;**](CampaignResponse.md) |  | 
 
 
 

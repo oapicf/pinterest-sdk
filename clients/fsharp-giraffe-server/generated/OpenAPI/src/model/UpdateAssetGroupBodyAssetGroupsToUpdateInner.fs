@@ -11,10 +11,10 @@ module UpdateAssetGroupBodyAssetGroupsToUpdateInner =
 
   type UpdateAssetGroupBody_asset_groups_to_update_inner = {
     AssetGroupId : string;
-    Name : string;
-    Description : string;
     AssetGroupTypes : AssetGroupType[];
     AssetsToAdd : string[];
     AssetsToRemove : string[];
+    Description : string;
+    Name : string;
   }
   //#endregion

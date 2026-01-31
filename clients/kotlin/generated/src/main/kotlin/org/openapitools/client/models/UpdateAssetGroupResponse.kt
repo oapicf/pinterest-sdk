@@ -24,20 +24,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param updatedAssetGroups A list of successfully edited asset groups.
  * @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
+ * @param updatedAssetGroups A list of successfully edited asset groups.
  */
 
 
 data class UpdateAssetGroupResponse (
 
-    /* A list of successfully edited asset groups. */
-    @Json(name = "updated_asset_groups")
-    val updatedAssetGroups: kotlin.collections.List<AssetGroupBinding>? = null,
-
     /* A list of errors associated with the asset groups. Will be returned if there is an error. */
     @Json(name = "exceptions")
-    val exceptions: kotlin.collections.List<UpdateAssetGroupResponseExceptionsInner>? = null
+    val exceptions: kotlin.collections.List<UpdateAssetGroupResponseExceptionsInner>? = null,
+
+    /* A list of successfully edited asset groups. */
+    @Json(name = "updated_asset_groups")
+    val updatedAssetGroups: kotlin.collections.List<AssetGroupBinding>? = null
 
 ) {
 

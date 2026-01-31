@@ -11,10 +11,13 @@ import io.swagger.annotations.ApiModelProperty;
  * An item to be deleted
  */
 @ApiModel(description = "An item to be deleted")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsDeleteRetailItem   {
   @JsonProperty("item_id")
   private String itemId;
+
+  @JsonProperty("last_updated_time")
+  private Long lastUpdatedTime;
 
   /**
    * Gets or Sets operation
@@ -66,6 +69,24 @@ public class CatalogsDeleteRetailItem   {
     this.itemId = itemId;
   }
 
+  public CatalogsDeleteRetailItem lastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+    return this;
+  }
+
+   /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   * @return lastUpdatedTime
+  **/
+  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
   public CatalogsDeleteRetailItem operation(OperationEnum operation) {
     this.operation = operation;
     return this;
@@ -95,12 +116,13 @@ public class CatalogsDeleteRetailItem   {
     }
     CatalogsDeleteRetailItem catalogsDeleteRetailItem = (CatalogsDeleteRetailItem) o;
     return Objects.equals(this.itemId, catalogsDeleteRetailItem.itemId) &&
+        Objects.equals(this.lastUpdatedTime, catalogsDeleteRetailItem.lastUpdatedTime) &&
         Objects.equals(this.operation, catalogsDeleteRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation);
+    return Objects.hash(itemId, lastUpdatedTime, operation);
   }
 
   @Override
@@ -109,6 +131,7 @@ public class CatalogsDeleteRetailItem   {
     sb.append("class CatalogsDeleteRetailItem {\n");
     
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

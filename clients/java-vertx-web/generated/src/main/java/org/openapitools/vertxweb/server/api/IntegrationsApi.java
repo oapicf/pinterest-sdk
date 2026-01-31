@@ -1,6 +1,5 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.DetailedError;
 import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.IntegrationLogsRequest;
 import org.openapitools.vertxweb.server.model.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import org.openapitools.vertxweb.server.model.IntegrationRecord;
 import org.openapitools.vertxweb.server.model.IntegrationRequest;
 import org.openapitools.vertxweb.server.model.IntegrationRequestPatch;
 import org.openapitools.vertxweb.server.model.IntegrationsGetList200Response;
+import org.openapitools.vertxweb.server.model.IntegrationsLogsPost400Response;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 

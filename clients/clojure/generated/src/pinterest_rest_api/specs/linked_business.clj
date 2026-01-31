@@ -7,11 +7,11 @@
 
 (def linked-business-data
   {
-   (ds/opt :username) string?
-   (ds/opt :image_small_url) string?
-   (ds/opt :image_medium_url) string?
    (ds/opt :image_large_url) string?
+   (ds/opt :image_medium_url) string?
+   (ds/opt :image_small_url) string?
    (ds/opt :image_xlarge_url) string?
+   (ds/opt :username) string?
    })
 
 (def linked-business-spec

@@ -22,13 +22,13 @@ import javax.annotation.Generated;
  * CatalogsProductGroupMultipleMediaTypesCriteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleMediaTypesCriteria {
+
+  private Boolean negated = false;
 
   @Valid
   private List<MediaType> values = new ArrayList<>();
-
-  private Boolean negated = false;
 
   public CatalogsProductGroupMultipleMediaTypesCriteria() {
     super();
@@ -39,6 +39,26 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria {
    */
   public CatalogsProductGroupMultipleMediaTypesCriteria(List<MediaType> values) {
     this.values = values;
+  }
+
+  public CatalogsProductGroupMultipleMediaTypesCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  /**
+   * Get negated
+   * @return negated
+   */
+  
+  @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
   }
 
   public CatalogsProductGroupMultipleMediaTypesCriteria values(List<MediaType> values) {
@@ -69,26 +89,6 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria {
     this.values = values;
   }
 
-  public CatalogsProductGroupMultipleMediaTypesCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  /**
-   * Get negated
-   * @return negated
-   */
-  
-  @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -98,21 +98,21 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria {
       return false;
     }
     CatalogsProductGroupMultipleMediaTypesCriteria catalogsProductGroupMultipleMediaTypesCriteria = (CatalogsProductGroupMultipleMediaTypesCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleMediaTypesCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleMediaTypesCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleMediaTypesCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleMediaTypesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleMediaTypesCriteria {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

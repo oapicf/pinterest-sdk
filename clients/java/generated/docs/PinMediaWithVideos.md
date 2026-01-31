@@ -8,7 +8,16 @@ Pin with multiple videos.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;VideoMetadata&gt;**](VideoMetadata.md) |  |  [optional] |
+|**items** | [**List&lt;VideoMetadataWithItemType&gt;**](VideoMetadataWithItemType.md) |  |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  |  |
+
+
+
+## Enum: MediaTypeEnum
+
+| Name | Value |
+|---- | -----|
+| MULTIPLE_VIDEOS | &quot;multiple_videos&quot; |
 
 
 

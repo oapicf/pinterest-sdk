@@ -38,7 +38,7 @@ public class CatalogsCreativeAssetsItemErrorResponse  {
  /**
   * Array with the errors for the item id requested
   */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
 
   @Valid
 
@@ -85,6 +85,7 @@ public class CatalogsCreativeAssetsItemErrorResponse  {
    * @return errors
   **/
   @JsonProperty("errors")
+  @NotNull
   public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }

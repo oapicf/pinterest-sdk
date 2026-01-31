@@ -5,12 +5,12 @@ Pin with video.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media_type** | **character** |  | [optional] 
-**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImage_allOf_images.md) |  | [optional] 
 **cover_image_url** | **character** |  | [optional] 
-**video_url** | **character** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**duration** | **numeric** | Duration (in milliseconds) | [optional] 
-**height** | **integer** | Height (in pixels) | [optional] 
-**width** | **integer** | Width (in pixels) | [optional] 
+**duration** | **numeric** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**height** | **integer** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**media_type** | **character** |  | [Enum: [video]] 
+**video_url** | **character** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**width** | **integer** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 

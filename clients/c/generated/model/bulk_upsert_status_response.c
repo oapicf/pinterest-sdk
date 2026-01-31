@@ -6,27 +6,27 @@
 
 
 static bulk_upsert_status_response_t *bulk_upsert_status_response_create_internal(
-    pinterest_rest_api_bulk_upsert_status__e status,
-    char *result_url
+    char *result_url,
+    pinterest_rest_api_bulk_upsert_status__e status
     ) {
     bulk_upsert_status_response_t *bulk_upsert_status_response_local_var = malloc(sizeof(bulk_upsert_status_response_t));
     if (!bulk_upsert_status_response_local_var) {
         return NULL;
     }
-    bulk_upsert_status_response_local_var->status = status;
     bulk_upsert_status_response_local_var->result_url = result_url;
+    bulk_upsert_status_response_local_var->status = status;
 
     bulk_upsert_status_response_local_var->_library_owned = 1;
     return bulk_upsert_status_response_local_var;
 }
 
 __attribute__((deprecated)) bulk_upsert_status_response_t *bulk_upsert_status_response_create(
-    pinterest_rest_api_bulk_upsert_status__e status,
-    char *result_url
+    char *result_url,
+    pinterest_rest_api_bulk_upsert_status__e status
     ) {
     return bulk_upsert_status_response_create_internal (
-        status,
-        result_url
+        result_url,
+        status
         );
 }
 
@@ -49,6 +49,14 @@ void bulk_upsert_status_response_free(bulk_upsert_status_response_t *bulk_upsert
 cJSON *bulk_upsert_status_response_convertToJSON(bulk_upsert_status_response_t *bulk_upsert_status_response) {
     cJSON *item = cJSON_CreateObject();
 
+    // bulk_upsert_status_response->result_url
+    if(bulk_upsert_status_response->result_url) {
+    if(cJSON_AddStringToObject(item, "result_url", bulk_upsert_status_response->result_url) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // bulk_upsert_status_response->status
     if(bulk_upsert_status_response->status != pinterest_rest_api_bulk_upsert_status__NULL) {
     cJSON *status_local_JSON = bulk_upsert_status_convertToJSON(bulk_upsert_status_response->status);
@@ -58,14 +66,6 @@ cJSON *bulk_upsert_status_response_convertToJSON(bulk_upsert_status_response_t *
     cJSON_AddItemToObject(item, "status", status_local_JSON);
     if(item->child == NULL) {
         goto fail;
-    }
-    }
-
-
-    // bulk_upsert_status_response->result_url
-    if(bulk_upsert_status_response->result_url) {
-    if(cJSON_AddStringToObject(item, "result_url", bulk_upsert_status_response->result_url) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -84,15 +84,6 @@ bulk_upsert_status_response_t *bulk_upsert_status_response_parseFromJSON(cJSON *
     // define the local variable for bulk_upsert_status_response->status
     pinterest_rest_api_bulk_upsert_status__e status_local_nonprim = 0;
 
-    // bulk_upsert_status_response->status
-    cJSON *status = cJSON_GetObjectItemCaseSensitive(bulk_upsert_status_responseJSON, "status");
-    if (cJSON_IsNull(status)) {
-        status = NULL;
-    }
-    if (status) { 
-    status_local_nonprim = bulk_upsert_status_parseFromJSON(status); //custom
-    }
-
     // bulk_upsert_status_response->result_url
     cJSON *result_url = cJSON_GetObjectItemCaseSensitive(bulk_upsert_status_responseJSON, "result_url");
     if (cJSON_IsNull(result_url)) {
@@ -105,10 +96,19 @@ bulk_upsert_status_response_t *bulk_upsert_status_response_parseFromJSON(cJSON *
     }
     }
 
+    // bulk_upsert_status_response->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(bulk_upsert_status_responseJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
+    if (status) { 
+    status_local_nonprim = bulk_upsert_status_parseFromJSON(status); //custom
+    }
+
 
     bulk_upsert_status_response_local_var = bulk_upsert_status_response_create_internal (
-        status ? status_local_nonprim : 0,
-        result_url && !cJSON_IsNull(result_url) ? strdup(result_url->valuestring) : NULL
+        result_url && !cJSON_IsNull(result_url) ? strdup(result_url->valuestring) : NULL,
+        status ? status_local_nonprim : 0
         );
 
     return bulk_upsert_status_response_local_var;

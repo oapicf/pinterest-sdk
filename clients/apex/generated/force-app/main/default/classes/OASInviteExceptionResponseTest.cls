@@ -81,8 +81,8 @@ private class OASInviteExceptionResponseTest {
     private static void defaultValuesPopulated() {
         OASInviteExceptionResponse inviteExceptionResponse = new OASInviteExceptionResponse();
         System.assertEquals(new List<String>(), inviteExceptionResponse.usersOrPartnerIds);
-        System.assertEquals(null, inviteExceptionResponse.inviteOrRequestId);
         System.assertEquals(null, inviteExceptionResponse.code);
+        System.assertEquals(null, inviteExceptionResponse.inviteOrRequestId);
         System.assertEquals(null, inviteExceptionResponse.message);
     }
 }

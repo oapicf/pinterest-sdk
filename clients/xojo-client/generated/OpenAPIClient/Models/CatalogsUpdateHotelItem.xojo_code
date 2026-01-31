@@ -2,6 +2,11 @@
 Protected Class CatalogsUpdateHotelItem
 
 	#tag Property, Flags = &h0
+		Escapedattributes As OpenAPIClient.Models.CatalogsUpdatableHotelAttributes
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			The catalog hotel item id in the merchant namespace
 		#tag EndNote
@@ -11,11 +16,6 @@ Protected Class CatalogsUpdateHotelItem
 
 	#tag Property, Flags = &h0
 		operation As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.CatalogsUpdatableHotelAttributes
 	#tag EndProperty
 
 
@@ -73,19 +73,19 @@ Protected Class CatalogsUpdateHotelItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="hotel_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Escapedattributes"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsUpdatableHotelAttributes"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="hotel_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

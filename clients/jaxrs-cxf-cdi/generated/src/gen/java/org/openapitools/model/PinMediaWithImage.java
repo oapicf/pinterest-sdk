@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.PinMedia;
-import org.openapitools.model.PinMediaWithImageAllOfImages;
+import org.openapitools.model.ImageSize;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,13 +17,46 @@ import java.util.Objects;
 
 
 @ApiModel(description = "Pin with image.")
-public class PinMediaWithImage extends PinMedia  {
+public class PinMediaWithImage   {
   
-  private PinMediaWithImageAllOfImages images;
+  private ImageSize images;
+
+
+public enum MediaTypeEnum {
+
+    @JsonProperty("image") IMAGE(String.valueOf("image"));
+
+
+    private String value;
+
+    MediaTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private MediaTypeEnum mediaType;
 
   /**
    **/
-  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
+  public PinMediaWithImage images(ImageSize images) {
     this.images = images;
     return this;
   }
@@ -32,11 +64,30 @@ public class PinMediaWithImage extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("images")
-  public PinMediaWithImageAllOfImages getImages() {
+  public ImageSize getImages() {
     return images;
   }
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(ImageSize images) {
     this.images = images;
+  }
+
+
+  /**
+   **/
+  public PinMediaWithImage mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("media_type")
+  @NotNull
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -50,20 +101,22 @@ public class PinMediaWithImage extends PinMedia  {
       return false;
     }
     PinMediaWithImage pinMediaWithImage = (PinMediaWithImage) o;
-    return super.equals(o) && Objects.equals(this.images, pinMediaWithImage.images);
+    return Objects.equals(this.images, pinMediaWithImage.images) &&
+        Objects.equals(this.mediaType, pinMediaWithImage.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), images);
+    return Objects.hash(images, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImage {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

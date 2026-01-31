@@ -7,30 +7,34 @@
 #' @title GetPartnerAssetsResponse
 #' @description GetPartnerAssetsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field asset_id Unique identifier of a business asset. character [optional]
-#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. character [optional]
-#' @field permissions The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset. list(character) [optional]
 #' @field asset_group_info  \link{AssetGroupBinding} [optional]
+#' @field asset_id Unique identifier of a business asset. character [optional]
+#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. character [optional]
+#' @field permissions The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 GetPartnerAssetsResponse <- R6::R6Class(
   "GetPartnerAssetsResponse",
   public = list(
+    `asset_group_info` = NULL,
     `asset_id` = NULL,
     `asset_type` = NULL,
     `permissions` = NULL,
-    `asset_group_info` = NULL,
 
     #' @description
     #' Initialize a new GetPartnerAssetsResponse class.
     #'
-    #' @param asset_id Unique identifier of a business asset.
-    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
-    #' @param permissions The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.
     #' @param asset_group_info asset_group_info
+    #' @param asset_id Unique identifier of a business asset.
+    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+    #' @param permissions The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.
     #' @param ... Other optional arguments.
-    initialize = function(`asset_id` = NULL, `asset_type` = NULL, `permissions` = NULL, `asset_group_info` = NULL, ...) {
+    initialize = function(`asset_group_info` = NULL, `asset_id` = NULL, `asset_type` = NULL, `permissions` = NULL, ...) {
+      if (!is.null(`asset_group_info`)) {
+        stopifnot(R6::is.R6(`asset_group_info`))
+        self$`asset_group_info` <- `asset_group_info`
+      }
       if (!is.null(`asset_id`)) {
         if (!(is.character(`asset_id`) && length(`asset_id`) == 1)) {
           stop(paste("Error! Invalid data for `asset_id`. Must be a string:", `asset_id`))
@@ -47,10 +51,6 @@ GetPartnerAssetsResponse <- R6::R6Class(
         stopifnot(is.vector(`permissions`), length(`permissions`) != 0)
         sapply(`permissions`, function(x) stopifnot(is.character(x)))
         self$`permissions` <- `permissions`
-      }
-      if (!is.null(`asset_group_info`)) {
-        stopifnot(R6::is.R6(`asset_group_info`))
-        self$`asset_group_info` <- `asset_group_info`
       }
     },
 
@@ -85,6 +85,10 @@ GetPartnerAssetsResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       GetPartnerAssetsResponseObject <- list()
+      if (!is.null(self$`asset_group_info`)) {
+        GetPartnerAssetsResponseObject[["asset_group_info"]] <-
+          self$`asset_group_info`$toSimpleType()
+      }
       if (!is.null(self$`asset_id`)) {
         GetPartnerAssetsResponseObject[["asset_id"]] <-
           self$`asset_id`
@@ -97,10 +101,6 @@ GetPartnerAssetsResponse <- R6::R6Class(
         GetPartnerAssetsResponseObject[["permissions"]] <-
           self$`permissions`
       }
-      if (!is.null(self$`asset_group_info`)) {
-        GetPartnerAssetsResponseObject[["asset_group_info"]] <-
-          self$`asset_group_info`$toSimpleType()
-      }
       return(GetPartnerAssetsResponseObject)
     },
 
@@ -111,6 +111,11 @@ GetPartnerAssetsResponse <- R6::R6Class(
     #' @return the instance of GetPartnerAssetsResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`asset_group_info`)) {
+        `asset_group_info_object` <- AssetGroupBinding$new()
+        `asset_group_info_object`$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
+        self$`asset_group_info` <- `asset_group_info_object`
+      }
       if (!is.null(this_object$`asset_id`)) {
         self$`asset_id` <- this_object$`asset_id`
       }
@@ -119,11 +124,6 @@ GetPartnerAssetsResponse <- R6::R6Class(
       }
       if (!is.null(this_object$`permissions`)) {
         self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`asset_group_info`)) {
-        `asset_group_info_object` <- AssetGroupBinding$new()
-        `asset_group_info_object`$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
-        self$`asset_group_info` <- `asset_group_info_object`
       }
       self
     },
@@ -146,10 +146,10 @@ GetPartnerAssetsResponse <- R6::R6Class(
     #' @return the instance of GetPartnerAssetsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`asset_group_info` <- AssetGroupBinding$new()$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
       self$`asset_id` <- this_object$`asset_id`
       self$`asset_type` <- this_object$`asset_type`
       self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
-      self$`asset_group_info` <- AssetGroupBinding$new()$fromJSON(jsonlite::toJSON(this_object$`asset_group_info`, auto_unbox = TRUE, digits = NA))
       self
     },
 

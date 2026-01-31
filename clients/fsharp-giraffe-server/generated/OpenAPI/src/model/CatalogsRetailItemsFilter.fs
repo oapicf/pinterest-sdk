@@ -12,8 +12,8 @@ module CatalogsRetailItemsFilter =
   //#endregion
 
   type CatalogsRetailItemsFilter = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     ItemIds : string[];
-    CatalogId : string;
   }
   //#endregion

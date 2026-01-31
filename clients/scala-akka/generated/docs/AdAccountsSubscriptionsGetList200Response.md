@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;AdAccountGetSubscriptionResponse&gt;**](AdAccountGetSubscriptionResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;LeadSubscription&gt;**](LeadSubscription.md) |  | 
 
 
 

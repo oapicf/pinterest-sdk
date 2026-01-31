@@ -14,16 +14,14 @@ API.Client.AudienceDefinition = function() {}
 API.Client.AudienceDefinition.prototype.date;
 
 /**
- * Generated audience type to request.
- * @type {!string}
- * @export
- */
-API.Client.AudienceDefinition.prototype.type;
-
-/**
- * Generated audience scope to request.
  * @type {!string}
  * @export
  */
 API.Client.AudienceDefinition.prototype.scope;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.AudienceDefinition.prototype.type;
 

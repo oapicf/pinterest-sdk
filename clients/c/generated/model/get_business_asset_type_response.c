@@ -5,13 +5,13 @@
 
 
 char* get_business_asset_type_response_get_business_asset_type_response_ToString(pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_response) {
-    char *get_business_asset_type_responseArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CONVERSION_TAG" };
+    char *get_business_asset_type_responseArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CONVERSION_TAG", "CATALOG" };
     return get_business_asset_type_responseArray[get_business_asset_type_response];
 }
 
 pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_response_get_business_asset_type_response_FromString(char* get_business_asset_type_response) {
     int stringToReturn = 0;
-    char *get_business_asset_type_responseArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CONVERSION_TAG" };
+    char *get_business_asset_type_responseArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CONVERSION_TAG", "CATALOG" };
     size_t sizeofArray = sizeof(get_business_asset_type_responseArray) / sizeof(get_business_asset_type_responseArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(get_business_asset_type_response, get_business_asset_type_responseArray[stringToReturn]) == 0) {

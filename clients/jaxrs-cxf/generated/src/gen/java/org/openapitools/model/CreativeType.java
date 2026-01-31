@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Ad creative type enum. For update, only draft ads may update creative type. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+ * Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  */
 public enum CreativeType {
   
@@ -29,7 +29,13 @@ public enum CreativeType {
   
   SHOWCASE("SHOWCASE"),
   
-  QUIZ("QUIZ");
+  QUIZ("QUIZ"),
+  
+  COLLAGE("COLLAGE"),
+  
+  MAX_WIDTH_REGULAR_COLLECTION("MAX_WIDTH_REGULAR_COLLECTION"),
+  
+  MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION");
 
   private String value;
 

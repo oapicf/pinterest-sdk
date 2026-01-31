@@ -13,33 +13,33 @@ import AnyCodable
 public struct SingleInterestTargetingOptionResponse: Codable, JSONEncodable, Hashable {
 
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/\\d+/")
-    public var id: String?
-    public var name: String?
     public var childInterests: [String]?
+    public var id: String?
     public var level: Int?
+    public var name: String?
 
-    public init(id: String? = nil, name: String? = nil, childInterests: [String]? = nil, level: Int? = nil) {
-        self.id = id
-        self.name = name
+    public init(childInterests: [String]? = nil, id: String? = nil, level: Int? = nil, name: String? = nil) {
         self.childInterests = childInterests
+        self.id = id
         self.level = level
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case name
         case childInterests = "child_interests"
+        case id
         case level
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(childInterests, forKey: .childInterests)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(level, forKey: .level)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

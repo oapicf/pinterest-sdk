@@ -18,10 +18,10 @@ module AudienceCreateRequest =
     Name : string;
     [<JsonProperty(PropertyName = "rule")>]
     Rule : AudienceRule;
-    [<JsonProperty(PropertyName = "description")>]
-    Description : string;
     [<JsonProperty(PropertyName = "audience_type")>]
     AudienceType : AudienceType;
+    [<JsonProperty(PropertyName = "description")>]
+    Description : string;
   }
 
   //#endregion

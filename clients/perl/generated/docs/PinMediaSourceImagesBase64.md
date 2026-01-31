@@ -8,9 +8,9 @@ use WWW::OpenAPIClient::Object::PinMediaSourceImagesBase64;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_type** | **string** |  | [optional] 
-**items** | [**ARRAY[PinMediaSourceImagesBase64ItemsInner]**](PinMediaSourceImagesBase64ItemsInner.md) | Array with image objects. | 
 **index** | **int** |  | [optional] 
+**items** | [**ARRAY[PinMediaSourceImagesBase64Item]**](PinMediaSourceImagesBase64Item.md) | Array with image objects. | 
+**source_type** | **string** | The source type of the media. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

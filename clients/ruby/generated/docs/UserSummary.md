@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **username** | **String** | Username | [optional] |
 | **type** | **String** | Always \&quot;user\&quot; | [optional] |
+| **username** | **String** | Username | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::UserSummary.new(
-  username: username,
-  type: user
+  type: user,
+  username: username
 )
 ```
 

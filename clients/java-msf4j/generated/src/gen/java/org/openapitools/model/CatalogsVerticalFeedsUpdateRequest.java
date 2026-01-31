@@ -25,22 +25,28 @@ import org.openapitools.model.ProductAvailabilityType;
  * Request object for updating a feed.
  */
 @ApiModel(description = "Request object for updating a feed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsVerticalFeedsUpdateRequest   {
-  @JsonProperty("default_currency")
-  private NullableCurrency defaultCurrency;
-
-  @JsonProperty("name")
-  private String name;
-
-  @JsonProperty("format")
-  private CatalogsFormat format;
+  @JsonProperty("catalog_type")
+  private CatalogsType catalogType;
 
   @JsonProperty("credentials")
   private CatalogsFeedCredentials credentials;
 
+  @JsonProperty("default_availability")
+  private ProductAvailabilityType defaultAvailability;
+
+  @JsonProperty("default_currency")
+  private NullableCurrency defaultCurrency;
+
+  @JsonProperty("format")
+  private CatalogsFormat format;
+
   @JsonProperty("location")
   private String location;
+
+  @JsonProperty("name")
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
@@ -48,64 +54,22 @@ public class CatalogsVerticalFeedsUpdateRequest   {
   @JsonProperty("status")
   private CatalogsStatus status;
 
-  @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
-
-  @JsonProperty("default_availability")
-  private ProductAvailabilityType defaultAvailability;
-
-  public CatalogsVerticalFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
+  public CatalogsVerticalFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Get defaultCurrency
-   * @return defaultCurrency
+   * Get catalogType
+   * @return catalogType
   **/
-  @ApiModelProperty(value = "")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  public CatalogsVerticalFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-  **/
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsVerticalFeedsUpdateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  @ApiModelProperty(value = "")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsVerticalFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
@@ -126,6 +90,60 @@ public class CatalogsVerticalFeedsUpdateRequest   {
     this.credentials = credentials;
   }
 
+  public CatalogsVerticalFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+    return this;
+  }
+
+   /**
+   * Get defaultAvailability
+   * @return defaultAvailability
+  **/
+  @ApiModelProperty(value = "")
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
+  }
+
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+  }
+
+  public CatalogsVerticalFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+   /**
+   * Get defaultCurrency
+   * @return defaultCurrency
+  **/
+  @ApiModelProperty(value = "")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  public CatalogsVerticalFeedsUpdateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  @ApiModelProperty(value = "")
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
   public CatalogsVerticalFeedsUpdateRequest location(String location) {
     this.location = location;
     return this;
@@ -142,6 +160,24 @@ public class CatalogsVerticalFeedsUpdateRequest   {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public CatalogsVerticalFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+  **/
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsVerticalFeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -180,42 +216,6 @@ public class CatalogsVerticalFeedsUpdateRequest   {
     this.status = status;
   }
 
-  public CatalogsVerticalFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  public CatalogsVerticalFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-    return this;
-  }
-
-   /**
-   * Get defaultAvailability
-   * @return defaultAvailability
-  **/
-  @ApiModelProperty(value = "")
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
-  }
-
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -226,20 +226,20 @@ public class CatalogsVerticalFeedsUpdateRequest   {
       return false;
     }
     CatalogsVerticalFeedsUpdateRequest catalogsVerticalFeedsUpdateRequest = (CatalogsVerticalFeedsUpdateRequest) o;
-    return Objects.equals(this.defaultCurrency, catalogsVerticalFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsVerticalFeedsUpdateRequest.name) &&
-        Objects.equals(this.format, catalogsVerticalFeedsUpdateRequest.format) &&
+    return Objects.equals(this.catalogType, catalogsVerticalFeedsUpdateRequest.catalogType) &&
         Objects.equals(this.credentials, catalogsVerticalFeedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultAvailability, catalogsVerticalFeedsUpdateRequest.defaultAvailability) &&
+        Objects.equals(this.defaultCurrency, catalogsVerticalFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(this.format, catalogsVerticalFeedsUpdateRequest.format) &&
         Objects.equals(this.location, catalogsVerticalFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsVerticalFeedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsVerticalFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsVerticalFeedsUpdateRequest.status) &&
-        Objects.equals(this.catalogType, catalogsVerticalFeedsUpdateRequest.catalogType) &&
-        Objects.equals(this.defaultAvailability, catalogsVerticalFeedsUpdateRequest.defaultAvailability);
+        Objects.equals(this.status, catalogsVerticalFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType, defaultAvailability);
+    return Objects.hash(catalogType, credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -247,15 +247,15 @@ public class CatalogsVerticalFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("}");
     return sb.toString();
   }

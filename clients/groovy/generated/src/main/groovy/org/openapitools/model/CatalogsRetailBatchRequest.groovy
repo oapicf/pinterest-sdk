@@ -10,6 +10,8 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsRetailBatchRequest {
+    /* Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -35,6 +37,8 @@ class CatalogsRetailBatchRequest {
     CatalogTypeEnum catalogType
     
     Country country
+    /* Array with catalogs item operations */
+    List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -270,6 +274,4 @@ class CatalogsRetailBatchRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
-    /* Array with catalogs item operations */
-    List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>()
 }

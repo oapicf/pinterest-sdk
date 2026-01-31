@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,31 +16,28 @@ package openapi
 
 type LeadFormResponse struct {
 
-	// Internal name of the lead form.
-	Name *string `json:"name,omitempty"`
-
-	// A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-	PrivacyPolicyLink *string `json:"privacy_policy_link,omitempty"`
-
-	// Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-	HasAcceptedTerms bool `json:"has_accepted_terms,omitempty"`
-
 	// A message for people who complete the form to let them know what happens next.
 	CompletionMessage *string `json:"completion_message,omitempty"`
-
-	Status LeadFormStatus `json:"status,omitempty"`
 
 	// Additional disclosure language to be included in the lead form.
 	DisclosureLanguage *string `json:"disclosure_language,omitempty"`
 
-	// List of questions to be displayed on the lead form.
-	Questions []LeadFormQuestion `json:"questions,omitempty"`
+	// Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+	HasAcceptedTerms bool `json:"has_accepted_terms,omitempty"`
+
+	// Internal name of the lead form.
+	Name *string `json:"name,omitempty"`
 
 	// List of additional policy links to be displayed on the lead form.
 	PolicyLinks []LeadFormCommonPolicyLinksInner `json:"policy_links,omitempty"`
 
-	// The ID of this lead form
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+	PrivacyPolicyLink *string `json:"privacy_policy_link,omitempty"`
+
+	// List of questions to be displayed on the lead form.
+	Questions []LeadFormQuestion `json:"questions,omitempty"`
+
+	Status LeadFormStatus `json:"status,omitempty"`
 
 	// The Ad Account ID that this lead form belongs to.
 	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
@@ -48,19 +45,22 @@ type LeadFormResponse struct {
 	// Lead form creation time. Unix timestamp in seconds.
 	CreatedTime int32 `json:"created_time,omitempty"`
 
+	// The ID of this lead form
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTime int32 `json:"updated_time,omitempty"`
 }
 
 // AssertLeadFormResponseRequired checks if the required fields are not zero-ed
 func AssertLeadFormResponseRequired(obj LeadFormResponse) error {
-	for _, el := range obj.Questions {
-		if err := AssertLeadFormQuestionRequired(el); err != nil {
+	for _, el := range obj.PolicyLinks {
+		if err := AssertLeadFormCommonPolicyLinksInnerRequired(el); err != nil {
 			return err
 		}
 	}
-	for _, el := range obj.PolicyLinks {
-		if err := AssertLeadFormCommonPolicyLinksInnerRequired(el); err != nil {
+	for _, el := range obj.Questions {
+		if err := AssertLeadFormQuestionRequired(el); err != nil {
 			return err
 		}
 	}
@@ -69,13 +69,13 @@ func AssertLeadFormResponseRequired(obj LeadFormResponse) error {
 
 // AssertLeadFormResponseConstraints checks if the values respects the defined constraints
 func AssertLeadFormResponseConstraints(obj LeadFormResponse) error {
-	for _, el := range obj.Questions {
-		if err := AssertLeadFormQuestionConstraints(el); err != nil {
+	for _, el := range obj.PolicyLinks {
+		if err := AssertLeadFormCommonPolicyLinksInnerConstraints(el); err != nil {
 			return err
 		}
 	}
-	for _, el := range obj.PolicyLinks {
-		if err := AssertLeadFormCommonPolicyLinksInnerConstraints(el); err != nil {
+	for _, el := range obj.Questions {
+		if err := AssertLeadFormQuestionConstraints(el); err != nil {
 			return err
 		}
 	}

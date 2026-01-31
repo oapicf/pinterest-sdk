@@ -13,11 +13,11 @@ import CatalogsItemsUpdateBatchRequest._
 
 case class CatalogsItemsUpdateBatchRequest (
   country: Country,
+/* Array with catalogs items */
+  items: List[ItemUpdateBatchRecord],
 /* We recommend using the CatalogsLocale values. */
   language: Language,
-operation: BatchOperation,
-/* Array with catalogs items */
-  items: List[ItemUpdateBatchRecord])
+operation: BatchOperation)
 
 object CatalogsItemsUpdateBatchRequest {
   import DateTimeCodecs._

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CustomLabel4Filter{}
 
 // CustomLabel4Filter struct for CustomLabel4Filter
 type CustomLabel4Filter struct {
-	CUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_4"`
+	CUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_4"`
 }
 
 type _CustomLabel4Filter CustomLabel4Filter
@@ -31,7 +31,7 @@ type _CustomLabel4Filter CustomLabel4Filter
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomLabel4Filter(cUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria) *CustomLabel4Filter {
+func NewCustomLabel4Filter(cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria) *CustomLabel4Filter {
 	this := CustomLabel4Filter{}
 	this.CUSTOMLABEL4 = cUSTOMLABEL4
 	return &this
@@ -46,9 +46,9 @@ func NewCustomLabel4FilterWithDefaults() *CustomLabel4Filter {
 }
 
 // GetCUSTOMLABEL4 returns the CUSTOMLABEL4 field value
-func (o *CustomLabel4Filter) GetCUSTOMLABEL4() CatalogsProductGroupMultipleStringCriteria {
+func (o *CustomLabel4Filter) GetCUSTOMLABEL4() CatalogsProductGroupFilterOperatorTypeCriteria {
 	if o == nil {
-		var ret CatalogsProductGroupMultipleStringCriteria
+		var ret CatalogsProductGroupFilterOperatorTypeCriteria
 		return ret
 	}
 
@@ -57,15 +57,15 @@ func (o *CustomLabel4Filter) GetCUSTOMLABEL4() CatalogsProductGroupMultipleStrin
 
 // GetCUSTOMLABEL4Ok returns a tuple with the CUSTOMLABEL4 field value
 // and a boolean to check if the value has been set.
-func (o *CustomLabel4Filter) GetCUSTOMLABEL4Ok() (CatalogsProductGroupMultipleStringCriteria, bool) {
+func (o *CustomLabel4Filter) GetCUSTOMLABEL4Ok() (CatalogsProductGroupFilterOperatorTypeCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringCriteria{}, false
+		return CatalogsProductGroupFilterOperatorTypeCriteria{}, false
 	}
 	return o.CUSTOMLABEL4, true
 }
 
 // SetCUSTOMLABEL4 sets field value
-func (o *CustomLabel4Filter) SetCUSTOMLABEL4(v CatalogsProductGroupMultipleStringCriteria) {
+func (o *CustomLabel4Filter) SetCUSTOMLABEL4(v CatalogsProductGroupFilterOperatorTypeCriteria) {
 	o.CUSTOMLABEL4 = v
 }
 

@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadSubscriptionPostParamsCreateAllOfPartnerMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadSubscriptionPostParamsCreateAllOfPartnerMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata {
+    title = LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+    description = LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+    derivedFrom = Root
+    properties {
+        subscriber_key {
+          type =  string
+          description = "Text field value that uniquely identifies a subscriber."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata {
+    title = LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+    description = LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+    implements = openapi_server.resourceTypes.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+
+  }
+}

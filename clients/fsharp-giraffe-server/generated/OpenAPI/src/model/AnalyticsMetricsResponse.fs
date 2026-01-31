@@ -11,7 +11,7 @@ module AnalyticsMetricsResponse =
 
 
   type AnalyticsMetricsResponse = {
-    SummaryMetrics : IDictionary<string, decimal>;
     DailyMetrics : AnalyticsDailyMetrics[];
+    SummaryMetrics : IDictionary<string, decimal>;
   }
   //#endregion

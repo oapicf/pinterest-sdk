@@ -8,6 +8,10 @@
 
 const Controller = require('./Controller');
 const service = require('../services/CampaignsService');
+const ad_pins/analytics = async (request, response) => {
+  await Controller.handleRequest(request, response, service.ad_pins/analytics);
+};
+
 const campaign_targeting_analytics/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.campaign_targeting_analytics/get);
 };
@@ -34,6 +38,7 @@ const campaigns/update = async (request, response) => {
 
 
 module.exports = {
+  ad_pins/analytics,
   campaign_targeting_analytics/get,
   campaigns/analytics,
   campaigns/create,

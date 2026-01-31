@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class OptimizationGoalMetadataFrequencyGoalMetadata {
-    
+    /* Frequency target can only be between 2 and 20 */
     Integer frequency
 
     enum TimerangeEnum {

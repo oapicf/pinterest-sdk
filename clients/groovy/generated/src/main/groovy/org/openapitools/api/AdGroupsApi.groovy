@@ -9,20 +9,21 @@ import org.openapitools.model.AdGroupResponse
 import org.openapitools.model.AdGroupUpdateRequest
 import org.openapitools.model.AdGroupsAnalyticsResponseInner
 import org.openapitools.model.AdGroupsList200Response
-import org.openapitools.model.AdsAnalyticsTargetingType
+import org.openapitools.model.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.model.BidFloor
 import org.openapitools.model.BidFloorRequest
 import org.openapitools.model.ConversionReportAttributionType
 import org.openapitools.model.Error
 import org.openapitools.model.Granularity
 import org.openapitools.model.MetricsResponse
+import org.openapitools.model.ReportingTimeZone
 
 class AdGroupsApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def adGroupsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> adGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Closure onSuccess, Closure onFailure)  {
+    def adGroupsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> adGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Boolean aggregateReportRows, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ad_groups/analytics"
 
         // params
@@ -83,6 +84,12 @@ class AdGroupsApi {
         if (conversionReportTime != null) {
             queryParams.put("conversion_report_time", conversionReportTime)
         }
+        if (aggregateReportRows != null) {
+            queryParams.put("aggregate_report_rows", aggregateReportRows)
+        }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
+        }
 
 
 
@@ -105,6 +112,10 @@ class AdGroupsApi {
         // verify required params are set
         if (adAccountId == null) {
             throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (adGroupAudienceSizingRequest == null) {
+            throw new RuntimeException("missing required params adGroupAudienceSizingRequest")
         }
 
 
@@ -252,7 +263,7 @@ class AdGroupsApi {
 
     }
 
-    def adGroupsTargetingAnalyticsGet ( String adAccountId, List<String> adGroupIds, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
+    def adGroupsTargetingAnalyticsGet ( String adAccountId, List<String> adGroupIds, Date startDate, Date endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ad_groups/targeting_analytics"
 
         // params
@@ -322,6 +333,9 @@ class AdGroupsApi {
         }
         if (attributionTypes != null) {
             queryParams.put("attribution_types", attributionTypes)
+        }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
         }
 
 

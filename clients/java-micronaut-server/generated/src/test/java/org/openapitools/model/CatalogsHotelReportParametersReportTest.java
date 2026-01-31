@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.model.CatalogsReportAllItemsFilter;
 import org.openapitools.model.CatalogsReportDistributionIssueFilter;
 import org.openapitools.model.CatalogsReportFeedIngestionFilter;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -26,14 +27,6 @@ public class CatalogsHotelReportParametersReportTest {
     }
 
     /**
-     * Test the property 'reportType'
-     */
-    @Test
-    public void reportTypeTest() {
-        // TODO: test reportType
-    }
-
-    /**
      * Test the property 'feedId'
      */
     @Test
@@ -47,6 +40,14 @@ public class CatalogsHotelReportParametersReportTest {
     @Test
     public void processingResultIdTest() {
         // TODO: test processingResultId
+    }
+
+    /**
+     * Test the property 'reportType'
+     */
+    @Test
+    public void reportTypeTest() {
+        // TODO: test reportType
     }
 
     /**

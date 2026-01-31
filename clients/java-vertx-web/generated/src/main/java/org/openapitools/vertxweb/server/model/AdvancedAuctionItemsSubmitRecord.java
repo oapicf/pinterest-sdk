@@ -11,6 +11,7 @@ import org.openapitools.vertxweb.server.model.AdvancedAuctionBidOptions;
 import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsSubmitDeleteRecord;
 import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsSubmitUpsertRecord;
 import org.openapitools.vertxweb.server.model.AdvancedAuctionOperation;
+import org.openapitools.vertxweb.server.model.AdvancedAuctionOperationError;
 import org.openapitools.vertxweb.server.model.Country;
 import org.openapitools.vertxweb.server.model.Language;
 import org.openapitools.vertxweb.server.model.UpdateMaskBidOptionField;
@@ -22,22 +23,24 @@ import org.openapitools.vertxweb.server.model.UpdateMaskBidOptionField;
 public class AdvancedAuctionItemsSubmitRecord   {
   
   private AdvancedAuctionOperation operation;
-  private String itemId;
   private Country country;
+  private String itemId;
   private Language language;
   private AdvancedAuctionBidOptions bidOptions;
+  private List<AdvancedAuctionOperationError> errors = new ArrayList<>();
   private List<UpdateMaskBidOptionField> updateMask;
 
   public AdvancedAuctionItemsSubmitRecord () {
 
   }
 
-  public AdvancedAuctionItemsSubmitRecord (AdvancedAuctionOperation operation, String itemId, Country country, Language language, AdvancedAuctionBidOptions bidOptions, List<UpdateMaskBidOptionField> updateMask) {
+  public AdvancedAuctionItemsSubmitRecord (AdvancedAuctionOperation operation, Country country, String itemId, Language language, AdvancedAuctionBidOptions bidOptions, List<AdvancedAuctionOperationError> errors, List<UpdateMaskBidOptionField> updateMask) {
     this.operation = operation;
-    this.itemId = itemId;
     this.country = country;
+    this.itemId = itemId;
     this.language = language;
     this.bidOptions = bidOptions;
+    this.errors = errors;
     this.updateMask = updateMask;
   }
 
@@ -51,21 +54,21 @@ public class AdvancedAuctionItemsSubmitRecord   {
   }
 
     
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-    
   @JsonProperty("country")
   public Country getCountry() {
     return country;
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+    
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
     
@@ -84,6 +87,15 @@ public class AdvancedAuctionItemsSubmitRecord   {
   }
   public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;
+  }
+
+    
+  @JsonProperty("errors")
+  public List<AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
   }
 
     
@@ -106,16 +118,17 @@ public class AdvancedAuctionItemsSubmitRecord   {
     }
     AdvancedAuctionItemsSubmitRecord advancedAuctionItemsSubmitRecord = (AdvancedAuctionItemsSubmitRecord) o;
     return Objects.equals(operation, advancedAuctionItemsSubmitRecord.operation) &&
-        Objects.equals(itemId, advancedAuctionItemsSubmitRecord.itemId) &&
         Objects.equals(country, advancedAuctionItemsSubmitRecord.country) &&
+        Objects.equals(itemId, advancedAuctionItemsSubmitRecord.itemId) &&
         Objects.equals(language, advancedAuctionItemsSubmitRecord.language) &&
         Objects.equals(bidOptions, advancedAuctionItemsSubmitRecord.bidOptions) &&
+        Objects.equals(errors, advancedAuctionItemsSubmitRecord.errors) &&
         Objects.equals(updateMask, advancedAuctionItemsSubmitRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, itemId, country, language, bidOptions, updateMask);
+    return Objects.hash(operation, country, itemId, language, bidOptions, errors, updateMask);
   }
 
   @Override
@@ -124,10 +137,11 @@ public class AdvancedAuctionItemsSubmitRecord   {
     sb.append("class AdvancedAuctionItemsSubmitRecord {\n");
     
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

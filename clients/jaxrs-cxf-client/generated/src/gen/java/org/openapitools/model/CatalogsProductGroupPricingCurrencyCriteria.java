@@ -10,6 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupPricingCurrencyCriteria  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private NonNullableCatalogsCurrency currency;
+
+  @ApiModelProperty(value = "")
+
+  private Boolean negated = false;
+
 public enum OperatorEnum {
 
 GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valueOf("GREATER_THAN_OR_EQUALS")), LESS_THAN(String.valueOf("LESS_THAN")), LESS_THAN_OR_EQUALS(String.valueOf("LESS_THAN_OR_EQUALS"));
@@ -47,14 +55,42 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
   @ApiModelProperty(required = true, value = "")
 
   private BigDecimal value;
+ /**
+   * Get currency
+   * @return currency
+  **/
+  @JsonProperty("currency")
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
 
-  @ApiModelProperty(required = true, value = "")
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+  }
 
-  private NonNullableCatalogsCurrency currency;
+  public CatalogsProductGroupPricingCurrencyCriteria currency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+    return this;
+  }
 
-  @ApiModelProperty(value = "")
+ /**
+   * Get negated
+   * @return negated
+  **/
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
 
-  private Boolean negated = false;
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
+  public CatalogsProductGroupPricingCurrencyCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
  /**
    * Get operator
    * @return operator
@@ -95,42 +131,6 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
     return this;
   }
 
- /**
-   * Get currency
-   * @return currency
-  **/
-  @JsonProperty("currency")
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
-  public CatalogsProductGroupPricingCurrencyCriteria currency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-    return this;
-  }
-
- /**
-   * Get negated
-   * @return negated
-  **/
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-  public CatalogsProductGroupPricingCurrencyCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -140,15 +140,15 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
       return false;
     }
     CatalogsProductGroupPricingCurrencyCriteria catalogsProductGroupPricingCurrencyCriteria = (CatalogsProductGroupPricingCurrencyCriteria) o;
-    return Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
-        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value) &&
-        Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
-        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated);
+    return Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
+        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated) &&
+        Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
+        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operator, value, currency, negated);
+    return Objects.hash(currency, negated, operator, value);
   }
 
   @Override
@@ -156,10 +156,10 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupPricingCurrencyCriteria {\n");
     
-    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

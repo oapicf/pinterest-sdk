@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RefreshToken** | **string** |  | 
-**RefreshTokenExpiresIn** | **int** |  | 
 **AccessToken** | **string** |  | 
 **ExpiresIn** | **int** |  | 
 **Scope** | **string** |  | 
+**RefreshToken** | **string** |  | [optional] 
+**RefreshTokenExpiresAt** | **int** |  | [optional] 
+**RefreshTokenExpiresIn** | **int** |  | [optional] 
 **ResponseType** | **string** |  | [optional] 
 **TokenType** | **string** |  | [default to "bearer"]
 

@@ -6,10 +6,8 @@
 |---- | -----|
 | Awareness | AWARENESS |
 | Consideration | CONSIDERATION |
-| VideoView | VIDEO_VIEW |
 | WebConversion | WEB_CONVERSION |
 | CatalogSales | CATALOG_SALES |
-| WebSessions | WEB_SESSIONS |
 | VideoCompletion | VIDEO_COMPLETION |
 
 

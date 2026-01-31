@@ -15,6 +15,8 @@ class QuizPinData {
     List<QuizPinQuestion> questions = new ArrayList<>()
     
     List<QuizPinResult> results = new ArrayList<>()
+    
+    QuizPinResult tieBreakerCustomResult
 
     enum TieBreakerTypeEnum {
     
@@ -40,6 +42,4 @@ class QuizPinData {
 
     /* Quiz ad tie breaker type, default is RANDOM */
     TieBreakerTypeEnum tieBreakerType
-    
-    QuizPinResult tieBreakerCustomResult
 }

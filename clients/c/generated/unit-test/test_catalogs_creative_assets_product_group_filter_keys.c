@@ -35,10 +35,12 @@ catalogs_creative_assets_product_group_filter_keys_t* instantiate_catalogs_creat
       0,
       0,
       0,
+      0,
       0
     );
   } else {
     catalogs_creative_assets_product_group_filter_keys = catalogs_creative_assets_product_group_filter_keys_create(
+      0,
       0,
       0,
       0,

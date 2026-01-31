@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsAnalyticsResponseInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsAnalyticsResponseInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdsAnalyticsResponseInner {
+    title = AdsAnalyticsResponseInner
+    description = AdsAnalyticsResponseInner
+    derivedFrom = Root
+    properties {
+        ad_id {
+          type =  string
+          description = "The ID of the ad that this metrics belongs to."
+          optional = true
+        }
+        _date {
+          type =  string
+          description = "Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsAnalyticsResponseInner {
+    title = AdsAnalyticsResponseInner
+    description = AdsAnalyticsResponseInner
+    implements = openapi_server.resourceTypes.AdsAnalyticsResponseInner
+
+  }
+}

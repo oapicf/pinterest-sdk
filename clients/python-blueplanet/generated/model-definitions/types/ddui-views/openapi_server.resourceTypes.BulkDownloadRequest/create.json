@@ -1,0 +1,21 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "campaign_filter" },
+      {"model": "entity_ids" },
+      {"model": "entity_types" },
+      {"model": "output_format" },
+      {"model": "updated_since" },
+    ]
+  }]
+}

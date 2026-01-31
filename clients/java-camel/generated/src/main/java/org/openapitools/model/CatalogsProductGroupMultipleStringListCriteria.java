@@ -21,13 +21,13 @@ import javax.annotation.Generated;
  * CatalogsProductGroupMultipleStringListCriteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleStringListCriteria {
+
+  private Boolean negated = false;
 
   @Valid
   private List<List<String>> values = new ArrayList<>();
-
-  private Boolean negated = false;
 
   public CatalogsProductGroupMultipleStringListCriteria() {
     super();
@@ -38,6 +38,26 @@ public class CatalogsProductGroupMultipleStringListCriteria {
    */
   public CatalogsProductGroupMultipleStringListCriteria(List<List<String>> values) {
     this.values = values;
+  }
+
+  public CatalogsProductGroupMultipleStringListCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  /**
+   * Get negated
+   * @return negated
+   */
+  
+  @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
   }
 
   public CatalogsProductGroupMultipleStringListCriteria values(List<List<String>> values) {
@@ -68,26 +88,6 @@ public class CatalogsProductGroupMultipleStringListCriteria {
     this.values = values;
   }
 
-  public CatalogsProductGroupMultipleStringListCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  /**
-   * Get negated
-   * @return negated
-   */
-  
-  @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -97,21 +97,21 @@ public class CatalogsProductGroupMultipleStringListCriteria {
       return false;
     }
     CatalogsProductGroupMultipleStringListCriteria catalogsProductGroupMultipleStringListCriteria = (CatalogsProductGroupMultipleStringListCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleStringListCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleStringListCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleStringListCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleStringListCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleStringListCriteria {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

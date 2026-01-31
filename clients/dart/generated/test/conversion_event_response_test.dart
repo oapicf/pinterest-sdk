@@ -16,6 +16,12 @@ void main() {
   // final instance = ConversionEventResponse();
 
   group('test ConversionEventResponse', () {
+    // Id of the ad account.
+    // String adAccountId
+    test('to test the property `adAccountId`', () async {
+      // TODO
+    });
+
     // ConversionTagType conversionEvent
     test('to test the property `conversionEvent`', () async {
       // TODO
@@ -24,12 +30,6 @@ void main() {
     // Id of the tag.
     // String conversionTagId
     test('to test the property `conversionTagId`', () async {
-      // TODO
-    });
-
-    // Id of the ad account.
-    // String adAccountId
-    test('to test the property `adAccountId`', () async {
       // TODO
     });
 

@@ -11,12 +11,12 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param lifetimeUnderscoremetrics The lifetime metric name and value.
  * @param dailyUnderscoremetrics Array with the requested daily metric records
+ * @param lifetimeUnderscoremetrics The lifetime metric name and value.
  * @param summaryUnderscoremetrics The metric name and value over the requested period for each requested metric
  */
-case class PinAnalyticsMetricsResponse(lifetimeUnderscoremetrics: Option[Map[String, Int]],
-                dailyUnderscoremetrics: Option[Seq[PinAnalyticsMetricsResponseDailyMetricsInner]],
+case class PinAnalyticsMetricsResponse(dailyUnderscoremetrics: Option[Seq[PinAnalyticsMetricsResponseDailyMetricsInner]],
+                lifetimeUnderscoremetrics: Option[Map[String, Int]],
                 summaryUnderscoremetrics: Option[Map[String, BigDecimal]]
                 )
 

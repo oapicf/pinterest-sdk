@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,10 +17,10 @@ package openapi
 // IntegrationLogClientRequest - HTTP request details included in the log sent by the client.
 type IntegrationLogClientRequest struct {
 
-	Method string `json:"method"`
-
 	// HTTP request host from host header.
 	Host string `json:"host"`
+
+	Method string `json:"method"`
 
 	// HTTP request path.
 	Path string `json:"path"`
@@ -37,8 +37,8 @@ type IntegrationLogClientRequest struct {
 // AssertIntegrationLogClientRequestRequired checks if the required fields are not zero-ed
 func AssertIntegrationLogClientRequestRequired(obj IntegrationLogClientRequest) error {
 	elements := map[string]interface{}{
-		"method": obj.Method,
 		"host": obj.Host,
+		"method": obj.Method,
 		"path": obj.Path,
 	}
 	for name, el := range elements {

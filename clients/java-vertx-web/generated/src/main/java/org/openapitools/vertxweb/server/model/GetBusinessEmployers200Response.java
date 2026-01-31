@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.UserBusinessRoleBinding;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetBusinessEmployers200Response   {
   
-  private List<UserBusinessRoleBinding> items = new ArrayList<>();
   private String bookmark;
+  private List<UserBusinessRoleBinding> items = new ArrayList<>();
 
   public GetBusinessEmployers200Response () {
 
   }
 
-  public GetBusinessEmployers200Response (List<UserBusinessRoleBinding> items, String bookmark) {
-    this.items = items;
+  public GetBusinessEmployers200Response (String bookmark, List<UserBusinessRoleBinding> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<UserBusinessRoleBinding> getItems() {
-    return items;
-  }
-  public void setItems(List<UserBusinessRoleBinding> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class GetBusinessEmployers200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<UserBusinessRoleBinding> getItems() {
+    return items;
+  }
+  public void setItems(List<UserBusinessRoleBinding> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class GetBusinessEmployers200Response   {
       return false;
     }
     GetBusinessEmployers200Response getBusinessEmployers200Response = (GetBusinessEmployers200Response) o;
-    return Objects.equals(items, getBusinessEmployers200Response.items) &&
-        Objects.equals(bookmark, getBusinessEmployers200Response.bookmark);
+    return Objects.equals(bookmark, getBusinessEmployers200Response.bookmark) &&
+        Objects.equals(items, getBusinessEmployers200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class GetBusinessEmployers200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessEmployers200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,6 +5,11 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog - [${labelPrefix}catalog_id]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}catalog_type`,
                 label: `[${labelPrefix}catalog_type]`,
                 required: true,
@@ -20,19 +25,14 @@ module.exports = {
                 list: true,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog - [${labelPrefix}catalog_id]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'hotel_ids': bundle.inputData?.[`${keyPrefix}hotel_ids`],
-            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
         }
     },
 }

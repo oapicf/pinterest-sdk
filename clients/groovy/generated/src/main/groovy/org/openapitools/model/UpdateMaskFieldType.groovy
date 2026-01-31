@@ -33,6 +33,16 @@ enum UpdateMaskFieldType {
     
     CUSTOM_LABEL_4("custom_label_4"),
     
+    CUSTOM_NUMBER_0("custom_number_0"),
+    
+    CUSTOM_NUMBER_1("custom_number_1"),
+    
+    CUSTOM_NUMBER_2("custom_number_2"),
+    
+    CUSTOM_NUMBER_3("custom_number_3"),
+    
+    CUSTOM_NUMBER_4("custom_number_4"),
+    
     DESCRIPTION("description"),
     
     FREE_SHIPPING_LABEL("free_shipping_label"),
@@ -89,7 +99,9 @@ enum UpdateMaskFieldType {
     
     VARIANT_NAMES("variant_names"),
     
-    VARIANT_VALUES("variant_values")
+    VARIANT_VALUES("variant_values"),
+    
+    PROMOTION_ID("promotion_id")
 
     private final String value
 

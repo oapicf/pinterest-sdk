@@ -3,8 +3,8 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.PinMedia;
-import com.prokarma.pkmst.model.PinMediaWithImageAllOfImages;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.ImageSize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -17,12 +17,44 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Pin with image.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class PinMediaWithImage extends PinMedia  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class PinMediaWithImage   {
   @JsonProperty("images")
-  private PinMediaWithImageAllOfImages images;
+  private ImageSize images;
 
-  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
+  /**
+   * Gets or Sets mediaType
+   */
+  public enum MediaTypeEnum {
+    IMAGE("image");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String text) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("media_type")
+  private MediaTypeEnum mediaType;
+
+  public PinMediaWithImage images(ImageSize images) {
     this.images = images;
     return this;
   }
@@ -32,12 +64,30 @@ public class PinMediaWithImage extends PinMedia  {
    * @return images
    */
   @ApiModelProperty(value = "")
-  public PinMediaWithImageAllOfImages getImages() {
+  public ImageSize getImages() {
     return images;
   }
 
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(ImageSize images) {
     this.images = images;
+  }
+
+  public PinMediaWithImage mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  /**
+   * Get mediaType
+   * @return mediaType
+   */
+  @ApiModelProperty(required = true, value = "")
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -51,20 +101,21 @@ public class PinMediaWithImage extends PinMedia  {
     }
     PinMediaWithImage pinMediaWithImage = (PinMediaWithImage) o;
     return Objects.equals(this.images, pinMediaWithImage.images) &&
-        super.equals(o);
+        Objects.equals(this.mediaType, pinMediaWithImage.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, super.hashCode());
+    return Objects.hash(images, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImage {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

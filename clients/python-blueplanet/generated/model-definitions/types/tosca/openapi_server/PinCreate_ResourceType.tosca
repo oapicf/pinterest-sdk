@@ -1,0 +1,82 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinMediaSource = openapi_server.resourceTypes.PinMediaSource
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  PinCreate {
+    title = PinCreate
+    description = PinCreate
+    derivedFrom = Root
+    properties {
+        alt_text {
+          type =  string
+          description = ""
+          optional = false
+        }
+        board_id {
+          type =  string
+          description = "The board to which this Pin belongs."
+          optional = false
+        }
+        board_section_id {
+          type =  string
+          description = "The board section to which this Pin belongs."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        dominant_color {
+          type =  string
+          description = "Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;."
+          optional = false
+        }
+        link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        media_source {
+          type = PinMediaSource
+          description = ""
+          optional = false
+        }
+        parent_pin_id {
+          type =  string
+          description = "The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest)."
+          optional = false
+        }
+        sponsor_id {
+          type =  string
+          description = "The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta."
+          optional = false
+        }
+        title {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinCreate {
+    title = PinCreate
+    description = PinCreate
+    implements = openapi_server.resourceTypes.PinCreate
+
+  }
+}

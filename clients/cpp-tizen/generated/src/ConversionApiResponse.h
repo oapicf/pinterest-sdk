@@ -47,20 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Total number of events received in the request.
-	 */
-	int getNumEventsReceived();
-
-	/*! \brief Set Total number of events received in the request.
-	 */
-	void setNumEventsReceived(int  num_events_received);
-	/*! \brief Get Number of events that were successfully processed from the events.
-	 */
-	int getNumEventsProcessed();
-
-	/*! \brief Set Number of events that were successfully processed from the events.
-	 */
-	void setNumEventsProcessed(int  num_events_processed);
 	/*! \brief Get Specific messages for each event received. The order will match the order in which the events were received in the request.
 	 */
 	std::list<ConversionApiResponse_events_inner> getEvents();
@@ -68,11 +54,25 @@ public:
 	/*! \brief Set Specific messages for each event received. The order will match the order in which the events were received in the request.
 	 */
 	void setEvents(std::list <ConversionApiResponse_events_inner> events);
+	/*! \brief Get Number of events that were successfully processed from the events.
+	 */
+	int getNumEventsProcessed();
+
+	/*! \brief Set Number of events that were successfully processed from the events.
+	 */
+	void setNumEventsProcessed(int  num_events_processed);
+	/*! \brief Get Total number of events received in the request.
+	 */
+	int getNumEventsReceived();
+
+	/*! \brief Set Total number of events received in the request.
+	 */
+	void setNumEventsReceived(int  num_events_received);
 
 private:
-	int num_events_received;
-	int num_events_processed;
 	std::list <ConversionApiResponse_events_inner>events;
+	int num_events_processed;
+	int num_events_received;
 	void __init();
 	void __cleanup();
 

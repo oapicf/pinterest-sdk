@@ -11,24 +11,24 @@ import javax.validation.Valid;
 /**
  * CatalogsItemValidationIssues
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemValidationIssues   {
-  @JsonProperty("item_number")
+  @JsonProperty("errors")
   @NotNull
+@Valid
 
-  private Integer itemNumber;
+  private CatalogsItemValidationErrors errors;
 
   @JsonProperty("item_id")
   @NotNull
 
   private String itemId;
 
-  @JsonProperty("errors")
+  @JsonProperty("item_number")
   @NotNull
-@Valid
 
-  private CatalogsItemValidationErrors errors;
+  private Integer itemNumber;
 
   @JsonProperty("warnings")
   @NotNull
@@ -36,21 +36,21 @@ public class CatalogsItemValidationIssues   {
 
   private CatalogsItemValidationWarnings warnings;
 
-  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
     return this;
   }
 
    /**
-   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-   * @return itemNumber
+   * Get errors
+   * @return errors
   **/
-  public Integer getItemNumber() {
-    return itemNumber;
+  public CatalogsItemValidationErrors getErrors() {
+    return errors;
   }
 
-  public void setItemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public void setErrors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
   }
 
   public CatalogsItemValidationIssues itemId(String itemId) {
@@ -70,21 +70,21 @@ public class CatalogsItemValidationIssues   {
     this.itemId = itemId;
   }
 
-  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
     return this;
   }
 
    /**
-   * Get errors
-   * @return errors
+   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+   * @return itemNumber
   **/
-  public CatalogsItemValidationErrors getErrors() {
-    return errors;
+  public Integer getItemNumber() {
+    return itemNumber;
   }
 
-  public void setErrors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public void setItemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
   }
 
   public CatalogsItemValidationIssues warnings(CatalogsItemValidationWarnings warnings) {
@@ -114,15 +114,15 @@ public class CatalogsItemValidationIssues   {
       return false;
     }
     CatalogsItemValidationIssues catalogsItemValidationIssues = (CatalogsItemValidationIssues) o;
-    return Objects.equals(itemNumber, catalogsItemValidationIssues.itemNumber) &&
+    return Objects.equals(errors, catalogsItemValidationIssues.errors) &&
         Objects.equals(itemId, catalogsItemValidationIssues.itemId) &&
-        Objects.equals(errors, catalogsItemValidationIssues.errors) &&
+        Objects.equals(itemNumber, catalogsItemValidationIssues.itemNumber) &&
         Objects.equals(warnings, catalogsItemValidationIssues.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemNumber, itemId, errors, warnings);
+    return Objects.hash(errors, itemId, itemNumber, warnings);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -131,9 +131,9 @@ public class CatalogsItemValidationIssues   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemValidationIssues {\n");
     
-    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();

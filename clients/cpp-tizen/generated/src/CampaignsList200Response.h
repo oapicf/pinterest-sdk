@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<CampaignResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <CampaignResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<CampaignResponse> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <CampaignResponse> items);
 
 private:
-	std::list <CampaignResponse>items;
 	std::string bookmark;
+	std::list <CampaignResponse>items;
 	void __init();
 	void __cleanup();
 

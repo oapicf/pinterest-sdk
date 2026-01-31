@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PermissionsWithOwner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PermissionsWithOwner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PermissionsWithOwner {
+    title = PermissionsWithOwner
+    description = PermissionsWithOwner
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  PermissionsWithOwner {
+    title = PermissionsWithOwner
+    description = PermissionsWithOwner
+    implements = openapi_server.resourceTypes.PermissionsWithOwner
+
+  }
+}

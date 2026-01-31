@@ -13,16 +13,18 @@ package org.openapitools.server.model
  * @param CUSTOM_LABEL_3  for example: ''null''
  * @param CUSTOM_LABEL_4  for example: ''null''
  * @param COUNTRY  for example: ''null''
+ * @param TITLE_KEYWORDS  for example: ''null''
 */
 final case class CatalogsHotelProductGroupFilterKeys (
   PRICE: CatalogsProductGroupPricingCurrencyCriteria,
   HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,
   BRAND: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
-  COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
+  CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
+  COUNTRY: CatalogsProductGroupMultipleCountriesCriteria,
+  TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 )
 

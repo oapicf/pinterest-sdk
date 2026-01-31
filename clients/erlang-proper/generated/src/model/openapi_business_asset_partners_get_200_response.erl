@@ -9,8 +9,8 @@
 -export_type([openapi_business_asset_partners_get_200_response/0]).
 
 -type openapi_business_asset_partners_get_200_response() ::
-  [ {'items', list(openapi_user_single_asset_binding:openapi_user_single_asset_binding()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_user_single_asset_binding:openapi_user_single_asset_binding()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_business_asset_partners_get_200_response() ->
     openapi_business_asset_partners_get_200_response([]).
 
 openapi_business_asset_partners_get_200_response(Fields) ->
-  Default = [ {'items', list(openapi_user_single_asset_binding:openapi_user_single_asset_binding()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_user_single_asset_binding:openapi_user_single_asset_binding()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

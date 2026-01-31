@@ -17,10 +17,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object to discontinue catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object to discontinue catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   
   private Country country;
+  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -254,7 +255,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   private LanguageEnum language;
   private BatchOperation operation;
-  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
   /**
    **/
@@ -268,6 +268,21 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   * Array with catalogs items
+   **/
+  
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @JsonProperty("items")
+  @NotNull
+  @Valid
+  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
   }
 
   /**
@@ -298,21 +313,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     this.operation = operation;
   }
 
-  /**
-   * Array with catalogs items
-   **/
-  
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
-  @NotNull
-  @Valid
-  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -324,14 +324,14 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     }
     CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest = (CatalogsItemsDeleteDiscontinuedBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsDeleteDiscontinuedBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsDeleteDiscontinuedBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsDeleteDiscontinuedBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsDeleteDiscontinuedBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -340,9 +340,9 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     sb.append("class CatalogsItemsDeleteDiscontinuedBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

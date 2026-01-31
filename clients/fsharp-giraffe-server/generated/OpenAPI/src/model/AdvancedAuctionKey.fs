@@ -11,8 +11,8 @@ module AdvancedAuctionKey =
 
 
   type AdvancedAuctionKey = {
-    ItemId : string;
     Country : Country;
+    ItemId : string;
     Language : Language;
   }
   //#endregion

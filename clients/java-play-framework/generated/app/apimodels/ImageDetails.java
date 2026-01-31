@@ -9,18 +9,11 @@ import javax.validation.Valid;
 /**
  * ImageDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ImageDetails   {
-  @JsonProperty("width")
-  @NotNull
-@Min(100)
-
-  private Integer width;
-
   @JsonProperty("height")
   @NotNull
-@Min(100)
 
   private Integer height;
 
@@ -29,23 +22,10 @@ public class ImageDetails   {
 
   private String url;
 
-  public ImageDetails width(Integer width) {
-    this.width = width;
-    return this;
-  }
+  @JsonProperty("width")
+  @NotNull
 
-   /**
-   * Get width
-   * minimum: 100
-   * @return width
-  **/
-  public Integer getWidth() {
-    return width;
-  }
-
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
+  private Integer width;
 
   public ImageDetails height(Integer height) {
     this.height = height;
@@ -54,7 +34,6 @@ public class ImageDetails   {
 
    /**
    * Get height
-   * minimum: 100
    * @return height
   **/
   public Integer getHeight() {
@@ -82,6 +61,23 @@ public class ImageDetails   {
     this.url = url;
   }
 
+  public ImageDetails width(Integer width) {
+    this.width = width;
+    return this;
+  }
+
+   /**
+   * Get width
+   * @return width
+  **/
+  public Integer getWidth() {
+    return width;
+  }
+
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -92,14 +88,14 @@ public class ImageDetails   {
       return false;
     }
     ImageDetails imageDetails = (ImageDetails) o;
-    return Objects.equals(width, imageDetails.width) &&
-        Objects.equals(height, imageDetails.height) &&
-        Objects.equals(url, imageDetails.url);
+    return Objects.equals(height, imageDetails.height) &&
+        Objects.equals(url, imageDetails.url) &&
+        Objects.equals(width, imageDetails.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, url);
+    return Objects.hash(height, url, width);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -108,9 +104,9 @@ public class ImageDetails   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageDetails {\n");
     
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

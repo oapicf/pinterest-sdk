@@ -5,13 +5,13 @@
 -export_type([openapi_catalogs_report_distribution_issue_filter/0]).
 
 -type openapi_catalogs_report_distribution_issue_filter() ::
-    #{ 'report_type' := binary(),
-       'catalog_id' => binary()
+    #{ 'catalog_id' => binary(),
+       'report_type' := binary()
      }.
 
-encode(#{ 'report_type' := ReportType,
-          'catalog_id' := CatalogId
+encode(#{ 'catalog_id' := CatalogId,
+          'report_type' := ReportType
         }) ->
-    #{ 'report_type' => ReportType,
-       'catalog_id' => CatalogId
+    #{ 'catalog_id' => CatalogId,
+       'report_type' => ReportType
      }.

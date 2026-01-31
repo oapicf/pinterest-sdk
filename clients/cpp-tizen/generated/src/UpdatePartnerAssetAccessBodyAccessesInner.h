@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unique identifier of a business partner to update asset access to.
-	 */
-	std::string getPartnerId();
-
-	/*! \brief Set Unique identifier of a business partner to update asset access to.
-	 */
-	void setPartnerId(std::string  partner_id);
 	/*! \brief Get Unique identifier of the business asset.
 	 */
 	std::string getAssetId();
@@ -61,6 +54,13 @@ public:
 	/*! \brief Set Unique identifier of the business asset.
 	 */
 	void setAssetId(std::string  asset_id);
+	/*! \brief Get Unique identifier of a business partner to update asset access to.
+	 */
+	std::string getPartnerId();
+
+	/*! \brief Set Unique identifier of a business partner to update asset access to.
+	 */
+	void setPartnerId(std::string  partner_id);
 	/*! \brief Get A non-empty array of permissions to assign to the partner.
 	 */
 	std::list<Permissions> getPermissions();
@@ -70,8 +70,8 @@ public:
 	void setPermissions(std::list <Permissions> permissions);
 
 private:
-	std::string partner_id;
 	std::string asset_id;
+	std::string partner_id;
 	std::list <Permissions>permissions;
 	void __init();
 	void __cleanup();

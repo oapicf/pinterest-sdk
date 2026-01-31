@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaSourceImageURL   {
   
+  private Boolean isStandard = true;
 
 
   public enum SourceTypeEnum {
@@ -31,15 +32,23 @@ public class PinMediaSourceImageURL   {
 
   private SourceTypeEnum sourceType;
   private String url;
-  private Boolean isStandard = true;
 
   public PinMediaSourceImageURL () {
 
   }
 
-  public PinMediaSourceImageURL (SourceTypeEnum sourceType, String url, Boolean isStandard) {
+  public PinMediaSourceImageURL (Boolean isStandard, SourceTypeEnum sourceType, String url) {
+    this.isStandard = isStandard;
     this.sourceType = sourceType;
     this.url = url;
+  }
+
+    
+  @JsonProperty("is_standard")
+  public Boolean getIsStandard() {
+    return isStandard;
+  }
+  public void setIsStandard(Boolean isStandard) {
     this.isStandard = isStandard;
   }
 
@@ -61,15 +70,6 @@ public class PinMediaSourceImageURL   {
     this.url = url;
   }
 
-    
-  @JsonProperty("is_standard")
-  public Boolean getIsStandard() {
-    return isStandard;
-  }
-  public void setIsStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,14 +80,14 @@ public class PinMediaSourceImageURL   {
       return false;
     }
     PinMediaSourceImageURL pinMediaSourceImageURL = (PinMediaSourceImageURL) o;
-    return Objects.equals(sourceType, pinMediaSourceImageURL.sourceType) &&
-        Objects.equals(url, pinMediaSourceImageURL.url) &&
-        Objects.equals(isStandard, pinMediaSourceImageURL.isStandard);
+    return Objects.equals(isStandard, pinMediaSourceImageURL.isStandard) &&
+        Objects.equals(sourceType, pinMediaSourceImageURL.sourceType) &&
+        Objects.equals(url, pinMediaSourceImageURL.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, url, isStandard);
+    return Objects.hash(isStandard, sourceType, url);
   }
 
   @Override
@@ -95,9 +95,9 @@ public class PinMediaSourceImageURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImageURL {\n");
     
+    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("}");
     return sb.toString();
   }

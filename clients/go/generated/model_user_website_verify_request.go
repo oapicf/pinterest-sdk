@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &UserWebsiteVerifyRequest{}
 
 // UserWebsiteVerifyRequest User website verification request
 type UserWebsiteVerifyRequest struct {
-	Website *string `json:"website,omitempty"`
 	VerificationMethod *string `json:"verification_method,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // NewUserWebsiteVerifyRequest instantiates a new UserWebsiteVerifyRequest object
@@ -43,38 +43,6 @@ func NewUserWebsiteVerifyRequestWithDefaults() *UserWebsiteVerifyRequest {
 	var verificationMethod string = "METATAG"
 	this.VerificationMethod = &verificationMethod
 	return &this
-}
-
-// GetWebsite returns the Website field value if set, zero value otherwise.
-func (o *UserWebsiteVerifyRequest) GetWebsite() string {
-	if o == nil || IsNil(o.Website) {
-		var ret string
-		return ret
-	}
-	return *o.Website
-}
-
-// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserWebsiteVerifyRequest) GetWebsiteOk() (*string, bool) {
-	if o == nil || IsNil(o.Website) {
-		return nil, false
-	}
-	return o.Website, true
-}
-
-// HasWebsite returns a boolean if a field has been set.
-func (o *UserWebsiteVerifyRequest) HasWebsite() bool {
-	if o != nil && !IsNil(o.Website) {
-		return true
-	}
-
-	return false
-}
-
-// SetWebsite gets a reference to the given string and assigns it to the Website field.
-func (o *UserWebsiteVerifyRequest) SetWebsite(v string) {
-	o.Website = &v
 }
 
 // GetVerificationMethod returns the VerificationMethod field value if set, zero value otherwise.
@@ -109,6 +77,38 @@ func (o *UserWebsiteVerifyRequest) SetVerificationMethod(v string) {
 	o.VerificationMethod = &v
 }
 
+// GetWebsite returns the Website field value if set, zero value otherwise.
+func (o *UserWebsiteVerifyRequest) GetWebsite() string {
+	if o == nil || IsNil(o.Website) {
+		var ret string
+		return ret
+	}
+	return *o.Website
+}
+
+// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserWebsiteVerifyRequest) GetWebsiteOk() (*string, bool) {
+	if o == nil || IsNil(o.Website) {
+		return nil, false
+	}
+	return o.Website, true
+}
+
+// HasWebsite returns a boolean if a field has been set.
+func (o *UserWebsiteVerifyRequest) HasWebsite() bool {
+	if o != nil && !IsNil(o.Website) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsite gets a reference to the given string and assigns it to the Website field.
+func (o *UserWebsiteVerifyRequest) SetWebsite(v string) {
+	o.Website = &v
+}
+
 func (o UserWebsiteVerifyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,11 +119,11 @@ func (o UserWebsiteVerifyRequest) MarshalJSON() ([]byte, error) {
 
 func (o UserWebsiteVerifyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Website) {
-		toSerialize["website"] = o.Website
-	}
 	if !IsNil(o.VerificationMethod) {
 		toSerialize["verification_method"] = o.VerificationMethod
+	}
+	if !IsNil(o.Website) {
+		toSerialize["website"] = o.Website
 	}
 	return toSerialize, nil
 }

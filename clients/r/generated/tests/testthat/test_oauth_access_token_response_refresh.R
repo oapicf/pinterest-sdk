@@ -5,25 +5,11 @@ context("Test OauthAccessTokenResponseRefresh")
 
 model_instance <- OauthAccessTokenResponseRefresh$new()
 
-test_that("response_type", {
-  # tests for the property `response_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`response_type`, "EXPECTED_RESULT")
-})
-
 test_that("access_token", {
   # tests for the property `access_token` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`access_token`, "EXPECTED_RESULT")
-})
-
-test_that("token_type", {
-  # tests for the property `token_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`token_type`, "EXPECTED_RESULT")
 })
 
 test_that("expires_in", {
@@ -33,9 +19,44 @@ test_that("expires_in", {
   #expect_equal(model.instance$`expires_in`, "EXPECTED_RESULT")
 })
 
+test_that("response_type", {
+  # tests for the property `response_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`response_type`, "EXPECTED_RESULT")
+})
+
 test_that("scope", {
   # tests for the property `scope` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
+})
+
+test_that("token_type", {
+  # tests for the property `token_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`token_type`, "EXPECTED_RESULT")
+})
+
+test_that("refresh_token", {
+  # tests for the property `refresh_token` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`refresh_token`, "EXPECTED_RESULT")
+})
+
+test_that("refresh_token_expires_at", {
+  # tests for the property `refresh_token_expires_at` (integer)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`refresh_token_expires_at`, "EXPECTED_RESULT")
+})
+
+test_that("refresh_token_expires_in", {
+  # tests for the property `refresh_token_expires_in` (integer)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`refresh_token_expires_in`, "EXPECTED_RESULT")
 })

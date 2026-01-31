@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkUpsertRequestCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkUpsertRequestCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdCreateRequest = openapi_server.resourceTypes.AdCreateRequest
+  AdGroupCreateRequest = openapi_server.resourceTypes.AdGroupCreateRequest
+  CampaignCreateRequest = openapi_server.resourceTypes.CampaignCreateRequest
+  KeywordsRequest = openapi_server.resourceTypes.KeywordsRequest
+  LabelCreateRequest = openapi_server.resourceTypes.LabelCreateRequest
+  MultipleProductGroupsInner = openapi_server.resourceTypes.MultipleProductGroupsInner
+  ProductGroupPromotionCreateRequest = openapi_server.resourceTypes.ProductGroupPromotionCreateRequest
+}
+resourceTypes {
+
+  BulkUpsertRequestCreate {
+    title = BulkUpsertRequestCreate
+    description = BulkUpsertRequestCreate
+    derivedFrom = Root
+    properties {
+        ad_groups {
+          type = array
+          items.type = AdGroupCreateRequest
+          description = ""
+          optional = false
+        }
+        ads {
+          type = array
+          items.type = AdCreateRequest
+          description = ""
+          optional = false
+        }
+        campaigns {
+          type = array
+          items.type = CampaignCreateRequest
+          description = ""
+          optional = false
+        }
+        catalog_product_groups {
+          type = array
+          items.type = MultipleProductGroupsInner
+          description = ""
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = KeywordsRequest
+          description = ""
+          optional = false
+        }
+        labels {
+          type = array
+          items.type = LabelCreateRequest
+          description = ""
+          optional = false
+        }
+        product_groups {
+          type = array
+          items.type = ProductGroupPromotionCreateRequest
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkUpsertRequestCreate {
+    title = BulkUpsertRequestCreate
+    description = BulkUpsertRequestCreate
+    implements = openapi_server.resourceTypes.BulkUpsertRequestCreate
+
+  }
+}

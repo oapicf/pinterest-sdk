@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "catalog_id" },
+      {"model": "code" },
+      {"model": "code_label" },
+      {"model": "ineligible_for_ads" },
+      {"model": "ineligible_for_organic" },
+      {"model": "message" },
+      {"model": "occurrences" },
+      {"model": "report_type" },
+    ]
+  }]
+}

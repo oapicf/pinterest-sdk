@@ -16,11 +16,6 @@ void main() {
   // final instance = ImageDetails();
 
   group('test ImageDetails', () {
-    // int width
-    test('to test the property `width`', () async {
-      // TODO
-    });
-
     // int height
     test('to test the property `height`', () async {
       // TODO
@@ -28,6 +23,11 @@ void main() {
 
     // String url
     test('to test the property `url`', () async {
+      // TODO
+    });
+
+    // int width
+    test('to test the property `width`', () async {
       // TODO
     });
 

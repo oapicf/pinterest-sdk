@@ -21,51 +21,11 @@ public class CatalogsUpdatableCreativeAssetsAttributesTest {
     }
 
     /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'link'
-     */
-    @Test
-    public void linkTest() {
-        // TODO: test link
-    }
-
-    /**
-     * Test the property 'iosDeepLink'
-     */
-    @Test
-    public void iosDeepLinkTest() {
-        // TODO: test iosDeepLink
-    }
-
-    /**
      * Test the property 'androidDeepLink'
      */
     @Test
     public void androidDeepLinkTest() {
         // TODO: test androidDeepLink
-    }
-
-    /**
-     * Test the property 'googleProductCategory'
-     */
-    @Test
-    public void googleProductCategoryTest() {
-        // TODO: test googleProductCategory
     }
 
     /**
@@ -106,6 +66,46 @@ public class CatalogsUpdatableCreativeAssetsAttributesTest {
     @Test
     public void customLabel4Test() {
         // TODO: test customLabel4
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'googleProductCategory'
+     */
+    @Test
+    public void googleProductCategoryTest() {
+        // TODO: test googleProductCategory
+    }
+
+    /**
+     * Test the property 'iosDeepLink'
+     */
+    @Test
+    public void iosDeepLinkTest() {
+        // TODO: test iosDeepLink
+    }
+
+    /**
+     * Test the property 'link'
+     */
+    @Test
+    public void linkTest() {
+        // TODO: test link
+    }
+
+    /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
     }
 
     /**

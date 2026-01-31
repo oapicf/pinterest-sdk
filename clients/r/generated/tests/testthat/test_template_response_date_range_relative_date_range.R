@@ -5,12 +5,12 @@ context("Test TemplateResponseDateRangeRelativeDateRange")
 
 model_instance <- TemplateResponseDateRangeRelativeDateRange$new()
 
-test_that("type", {
-  # tests for the property `type` (character)
-  # The date range type
+test_that("end_days_in_past", {
+  # tests for the property `end_days_in_past` (numeric)
+  # The end date of the date range
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`end_days_in_past`, "EXPECTED_RESULT")
 })
 
 test_that("start_days_in_past", {
@@ -21,10 +21,10 @@ test_that("start_days_in_past", {
   #expect_equal(model.instance$`start_days_in_past`, "EXPECTED_RESULT")
 })
 
-test_that("end_days_in_past", {
-  # tests for the property `end_days_in_past` (numeric)
-  # The end date of the date range
+test_that("type", {
+  # tests for the property `type` (character)
+  # The date range type
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end_days_in_past`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

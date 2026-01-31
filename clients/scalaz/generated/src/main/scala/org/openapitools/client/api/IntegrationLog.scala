@@ -12,25 +12,25 @@ import org.joda.time.DateTime
 import IntegrationLog._
 
 case class IntegrationLog (
-  /* Timestamp in milliseconds of when the log was executed at the client. */
-  clientTimestamp: Integer,
-/* Log event type */
-  eventType: EventType,
-/* Log level type */
-  logLevel: LogLevel,
-externalBusinessId: Option[String],
-advertiserId: Option[String],
-merchantId: Option[String],
-tagId: Option[String],
-feedProfileId: Option[String],
-/* Explanation of the event that occured. */
-  message: Option[String],
+  advertiserId: Option[String],
 /* Version number of the integration application. */
   appVersionNumber: Option[String],
+/* Timestamp in milliseconds of when the log was executed at the client. */
+  clientTimestamp: Integer,
+error: Option[IntegrationLogClientError],
+/* Log event type */
+  eventType: EventType,
+externalBusinessId: Option[String],
+feedProfileId: Option[String],
+/* Log level type */
+  logLevel: LogLevel,
+merchantId: Option[String],
+/* Explanation of the event that occured. */
+  message: Option[String],
 /* Version number of the platform the integration application is running on. */
   platformVersionNumber: Option[String],
-error: Option[IntegrationLogClientError],
-request: Option[IntegrationLogClientRequest])
+request: Option[IntegrationLogClientRequest],
+tagId: Option[String])
 
 object IntegrationLog {
   import DateTimeCodecs._

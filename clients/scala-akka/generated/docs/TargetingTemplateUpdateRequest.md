@@ -7,12 +7,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operationType** | [**OperationType**](#OperationType) |  | 
 **id** | **String** | Targeting template ID | 
+**operationType** | [**OperationType**](#OperationType) |  | 
+**targetingAttributes** | [**TargetingSpec**](TargetingSpec.md) |  |  [optional]
 
 
 ## Enum: OperationType
-Allowed values: [REMOVE]
+Allowed values: [REMOVE, UPDATE]
 
 
 

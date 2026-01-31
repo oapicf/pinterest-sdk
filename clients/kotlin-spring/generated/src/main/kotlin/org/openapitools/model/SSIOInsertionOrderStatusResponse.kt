@@ -15,20 +15,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param creationTime Salesforce insertion order creation time
  * @param pinOrderId Salesforce order id
  * @param status Salesforce insertion order status
- * @param creationTime Salesforce insertion order creation time
  */
 data class SSIOInsertionOrderStatusResponse(
+
+    @Schema(example = "2017-06-21T23:11:11.000Z", description = "Salesforce insertion order creation time")
+    @get:JsonProperty("creation_time") val creationTime: kotlin.String? = null,
 
     @Schema(example = "0Q01N0000015hekSAB", description = "Salesforce order id")
     @get:JsonProperty("pin_order_id") val pinOrderId: kotlin.String? = null,
 
     @Schema(example = "Approved", description = "Salesforce insertion order status")
-    @get:JsonProperty("status") val status: kotlin.String? = null,
-
-    @Schema(example = "2017-06-21T23:11:11.000Z", description = "Salesforce insertion order creation time")
-    @get:JsonProperty("creation_time") val creationTime: kotlin.String? = null
+    @get:JsonProperty("status") val status: kotlin.String? = null
 ) {
 
 }

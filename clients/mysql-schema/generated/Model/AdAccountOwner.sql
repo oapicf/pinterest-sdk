@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'Ad_account_owner' definition.
+-- Prepared SQL queries for 'AdAccountOwner' definition.
 --
 
 
 --
--- SELECT template for table `Ad_account_owner`
+-- SELECT template for table `AdAccountOwner`
 --
-SELECT `username`, `id` FROM `Ad_account_owner` WHERE 1;
+SELECT `id`, `username` FROM `AdAccountOwner` WHERE 1;
 
 --
--- INSERT template for table `Ad_account_owner`
+-- INSERT template for table `AdAccountOwner`
 --
-INSERT INTO `Ad_account_owner`(`username`, `id`) VALUES (?, ?);
+INSERT INTO `AdAccountOwner`(`id`, `username`) VALUES (?, ?);
 
 --
--- UPDATE template for table `Ad_account_owner`
+-- UPDATE template for table `AdAccountOwner`
 --
-UPDATE `Ad_account_owner` SET `username` = ?, `id` = ? WHERE 1;
+UPDATE `AdAccountOwner` SET `id` = ?, `username` = ? WHERE 1;
 
 --
--- DELETE template for table `Ad_account_owner`
+-- DELETE template for table `AdAccountOwner`
 --
-DELETE FROM `Ad_account_owner` WHERE 0;
+DELETE FROM `AdAccountOwner` WHERE 0;
 

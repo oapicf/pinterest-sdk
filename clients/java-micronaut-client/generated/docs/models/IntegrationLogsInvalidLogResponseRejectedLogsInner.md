@@ -8,10 +8,10 @@ The class is defined in **[IntegrationLogsInvalidLogResponseRejectedLogsInner.ja
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**logIndex** | `Integer` | Index of the log in the batch. |  [optional property]
 **field** | `String` | The field name containing an invalid value. | 
-**value** | `String` | The value that is invalid. | 
+**logIndex** | `Integer` | Index of the log in the batch. |  [optional property]
 **reason** | `String` | The reason the value is invalid. | 
+**value** | `String` | The value that is invalid. | 
 
 
 

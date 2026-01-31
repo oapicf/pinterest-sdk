@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
 **CreativeAssetsId** | **String** | The catalog creative assets id in the merchant namespace | 
 **Operation** | **String** |  | 
-**Attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsBatchItem = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsBatchItem  -CreativeAssetsId DS0294-M `
- -Operation null `
- -Attributes null
+$CatalogsCreativeAssetsBatchItem = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsBatchItem  -Attributes null `
+ -CreativeAssetsId DS0294-M `
+ -Operation null
 ```
 
 - Convert the resource to JSON

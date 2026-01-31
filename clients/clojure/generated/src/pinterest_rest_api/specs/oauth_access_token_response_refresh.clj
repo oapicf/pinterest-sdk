@@ -7,11 +7,14 @@
 
 (def oauth-access-token-response-refresh-data
   {
-   (ds/opt :response_type) string?
    (ds/req :access_token) string?
-   (ds/req :token_type) string?
    (ds/req :expires_in) int?
+   (ds/opt :response_type) string?
    (ds/req :scope) string?
+   (ds/req :token_type) string?
+   (ds/req :refresh_token) string?
+   (ds/req :refresh_token_expires_at) int?
+   (ds/req :refresh_token_expires_in) int?
    })
 
 (def oauth-access-token-response-refresh-spec

@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
-**name** | **String** |  | 
 **description** | **String** |  |  [optional]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**name** | **String** |  | 
 
 
 ## Enum: CatalogTypeEnum

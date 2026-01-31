@@ -8,92 +8,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.TargetingSpecSHOPPINGRETARGETING;
+import org.openapitools.vertxweb.server.model.TargetingSpecAgeBucket;
+import org.openapitools.vertxweb.server.model.TargetingSpecAppType;
+import org.openapitools.vertxweb.server.model.TargetingSpecGender;
+import org.openapitools.vertxweb.server.model.TargetingSpecShoppingRetargeting;
 
 /**
- * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
+ * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60;
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingSpec   {
   
-
-
-  public enum AGEBUCKETEnum {
-    _18_24("18-24"),
-    _21_("21+"),
-    _25_34("25-34"),
-    _35_44("35-44"),
-    _45_49("45-49"),
-    _50_54("50-54"),
-    _55_64("55-64"),
-    _65_("65+");
-
-    private String value;
-
-    AGEBUCKETEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private List<AGEBUCKETEnum> AGE_BUCKET;
-
-
-  public enum APPTYPEEnum {
-    ANDROID_MOBILE("android_mobile"),
-    ANDROID_TABLET("android_tablet"),
-    IPAD("ipad"),
-    IPHONE("iphone"),
-    WEB("web"),
-    WEB_MOBILE("web_mobile");
-
-    private String value;
-
-    APPTYPEEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private List<APPTYPEEnum> APPTYPE;
+  private List<TargetingSpecAgeBucket> AGE_BUCKET;
+  private List<TargetingSpecAppType> APPTYPE;
   private List<String> AUDIENCE_EXCLUDE;
   private List<String> AUDIENCE_INCLUDE;
-
-
-  public enum GENDEREnum {
-    UNKNOWN("unknown"),
-    MALE("male"),
-    FEMALE("female");
-
-    private String value;
-
-    GENDEREnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private List<GENDEREnum> GENDER;
+  private List<TargetingSpecGender> GENDER;
   private List<String> GEO;
   private List<String> INTEREST = new ArrayList<>();
   private List<String> LOCALE;
   private List<String> LOCATION;
-  private List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING;
+  private String MAXIMUM_AGE;
+  private String MINIMUM_AGE;
+  private List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING;
 
 
   public enum TARGETINGSTRATEGYEnum {
@@ -120,7 +57,7 @@ public class TargetingSpec   {
 
   }
 
-  public TargetingSpec (List<AGEBUCKETEnum> AGE_BUCKET, List<APPTYPEEnum> APPTYPE, List<String> AUDIENCE_EXCLUDE, List<String> AUDIENCE_INCLUDE, List<GENDEREnum> GENDER, List<String> GEO, List<String> INTEREST, List<String> LOCALE, List<String> LOCATION, List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING, List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
+  public TargetingSpec (List<TargetingSpecAgeBucket> AGE_BUCKET, List<TargetingSpecAppType> APPTYPE, List<String> AUDIENCE_EXCLUDE, List<String> AUDIENCE_INCLUDE, List<TargetingSpecGender> GENDER, List<String> GEO, List<String> INTEREST, List<String> LOCALE, List<String> LOCATION, String MAXIMUM_AGE, String MINIMUM_AGE, List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING, List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
     this.AGE_BUCKET = AGE_BUCKET;
     this.APPTYPE = APPTYPE;
     this.AUDIENCE_EXCLUDE = AUDIENCE_EXCLUDE;
@@ -130,25 +67,27 @@ public class TargetingSpec   {
     this.INTEREST = INTEREST;
     this.LOCALE = LOCALE;
     this.LOCATION = LOCATION;
+    this.MAXIMUM_AGE = MAXIMUM_AGE;
+    this.MINIMUM_AGE = MINIMUM_AGE;
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
     this.TARGETING_STRATEGY = TARGETING_STRATEGY;
   }
 
     
   @JsonProperty("AGE_BUCKET")
-  public List<AGEBUCKETEnum> getAGEBUCKET() {
+  public List<TargetingSpecAgeBucket> getAGEBUCKET() {
     return AGE_BUCKET;
   }
-  public void setAGEBUCKET(List<AGEBUCKETEnum> AGE_BUCKET) {
+  public void setAGEBUCKET(List<TargetingSpecAgeBucket> AGE_BUCKET) {
     this.AGE_BUCKET = AGE_BUCKET;
   }
 
     
   @JsonProperty("APPTYPE")
-  public List<APPTYPEEnum> getAPPTYPE() {
+  public List<TargetingSpecAppType> getAPPTYPE() {
     return APPTYPE;
   }
-  public void setAPPTYPE(List<APPTYPEEnum> APPTYPE) {
+  public void setAPPTYPE(List<TargetingSpecAppType> APPTYPE) {
     this.APPTYPE = APPTYPE;
   }
 
@@ -172,10 +111,10 @@ public class TargetingSpec   {
 
     
   @JsonProperty("GENDER")
-  public List<GENDEREnum> getGENDER() {
+  public List<TargetingSpecGender> getGENDER() {
     return GENDER;
   }
-  public void setGENDER(List<GENDEREnum> GENDER) {
+  public void setGENDER(List<TargetingSpecGender> GENDER) {
     this.GENDER = GENDER;
   }
 
@@ -216,11 +155,29 @@ public class TargetingSpec   {
   }
 
     
+  @JsonProperty("MAXIMUM_AGE")
+  public String getMAXIMUMAGE() {
+    return MAXIMUM_AGE;
+  }
+  public void setMAXIMUMAGE(String MAXIMUM_AGE) {
+    this.MAXIMUM_AGE = MAXIMUM_AGE;
+  }
+
+    
+  @JsonProperty("MINIMUM_AGE")
+  public String getMINIMUMAGE() {
+    return MINIMUM_AGE;
+  }
+  public void setMINIMUMAGE(String MINIMUM_AGE) {
+    this.MINIMUM_AGE = MINIMUM_AGE;
+  }
+
+    
   @JsonProperty("SHOPPING_RETARGETING")
-  public List<TargetingSpecSHOPPINGRETARGETING> getSHOPPINGRETARGETING() {
+  public List<TargetingSpecShoppingRetargeting> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
   }
-  public void setSHOPPINGRETARGETING(List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
+  public void setSHOPPINGRETARGETING(List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
   }
 
@@ -252,13 +209,15 @@ public class TargetingSpec   {
         Objects.equals(INTEREST, targetingSpec.INTEREST) &&
         Objects.equals(LOCALE, targetingSpec.LOCALE) &&
         Objects.equals(LOCATION, targetingSpec.LOCATION) &&
+        Objects.equals(MAXIMUM_AGE, targetingSpec.MAXIMUM_AGE) &&
+        Objects.equals(MINIMUM_AGE, targetingSpec.MINIMUM_AGE) &&
         Objects.equals(SHOPPING_RETARGETING, targetingSpec.SHOPPING_RETARGETING) &&
         Objects.equals(TARGETING_STRATEGY, targetingSpec.TARGETING_STRATEGY);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, SHOPPING_RETARGETING, TARGETING_STRATEGY);
+    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, MAXIMUM_AGE, MINIMUM_AGE, SHOPPING_RETARGETING, TARGETING_STRATEGY);
   }
 
   @Override
@@ -275,6 +234,8 @@ public class TargetingSpec   {
     sb.append("    INTEREST: ").append(toIndentedString(INTEREST)).append("\n");
     sb.append("    LOCALE: ").append(toIndentedString(LOCALE)).append("\n");
     sb.append("    LOCATION: ").append(toIndentedString(LOCATION)).append("\n");
+    sb.append("    MAXIMUM_AGE: ").append(toIndentedString(MAXIMUM_AGE)).append("\n");
+    sb.append("    MINIMUM_AGE: ").append(toIndentedString(MINIMUM_AGE)).append("\n");
     sb.append("    SHOPPING_RETARGETING: ").append(toIndentedString(SHOPPING_RETARGETING)).append("\n");
     sb.append("    TARGETING_STRATEGY: ").append(toIndentedString(TARGETING_STRATEGY)).append("\n");
     sb.append("}");

@@ -53,22 +53,6 @@ public class CatalogsRetailFeedTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property '_format'
-     */
-    @Test
-    public void _formatTest() {
-        // TODO: test _format
-    }
-
-    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -85,27 +69,19 @@ public class CatalogsRetailFeedTest {
     }
 
     /**
-     * Test the property 'location'
+     * Test the property 'defaultAvailability'
      */
     @Test
-    public void locationTest() {
-        // TODO: test location
+    public void defaultAvailabilityTest() {
+        // TODO: test defaultAvailability
     }
 
     /**
-     * Test the property 'preferredProcessingSchedule'
+     * Test the property 'defaultCountry'
      */
     @Test
-    public void preferredProcessingScheduleTest() {
-        // TODO: test preferredProcessingSchedule
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
+    public void defaultCountryTest() {
+        // TODO: test defaultCountry
     }
 
     /**
@@ -125,19 +101,43 @@ public class CatalogsRetailFeedTest {
     }
 
     /**
-     * Test the property 'defaultCountry'
+     * Test the property '_format'
      */
     @Test
-    public void defaultCountryTest() {
-        // TODO: test defaultCountry
+    public void _formatTest() {
+        // TODO: test _format
     }
 
     /**
-     * Test the property 'defaultAvailability'
+     * Test the property 'location'
      */
     @Test
-    public void defaultAvailabilityTest() {
-        // TODO: test defaultAvailability
+    public void locationTest() {
+        // TODO: test location
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'preferredProcessingSchedule'
+     */
+    @Test
+    public void preferredProcessingScheduleTest() {
+        // TODO: test preferredProcessingSchedule
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

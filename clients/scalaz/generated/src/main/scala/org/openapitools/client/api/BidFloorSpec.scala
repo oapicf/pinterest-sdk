@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import BidFloorSpec._
 
 case class BidFloorSpec (
-  countries: Option[List[Country]],
+  billableEvent: ActionType,
+countries: Option[List[Country]],
+creativeType: Option[CreativeType],
 currency: Currency,
 objectiveType: Option[ObjectiveType],
-billableEvent: ActionType,
-optimizationGoalMetadata: Option[OptimizationGoalMetadata],
-creativeType: Option[CreativeType])
+optimizationGoalMetadata: Option[OptimizationGoalMetadata])
 
 object BidFloorSpec {
   import DateTimeCodecs._

@@ -18,20 +18,39 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("MembersToDeleteBody_members_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MembersToDeleteBodyMembersInner   {
-  private String memberId;
   private BusinessRoleForMembers businessRole;
+  private String memberId;
 
   public MembersToDeleteBodyMembersInner() {
   }
 
   @JsonCreator
   public MembersToDeleteBodyMembersInner(
-    @JsonProperty(required = true, value = "member_id") String memberId,
-    @JsonProperty(required = true, value = "business_role") BusinessRoleForMembers businessRole
+    @JsonProperty(required = true, value = "business_role") BusinessRoleForMembers businessRole,
+    @JsonProperty(required = true, value = "member_id") String memberId
   ) {
+    this.businessRole = businessRole;
     this.memberId = memberId;
+  }
+
+  /**
+   **/
+  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "business_role")
+  @NotNull public BusinessRoleForMembers getBusinessRole() {
+    return businessRole;
+  }
+
+  @JsonProperty(required = true, value = "business_role")
+  public void setBusinessRole(BusinessRoleForMembers businessRole) {
     this.businessRole = businessRole;
   }
 
@@ -55,25 +74,6 @@ public class MembersToDeleteBodyMembersInner   {
     this.memberId = memberId;
   }
 
-  /**
-   **/
-  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
-    this.businessRole = businessRole;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "business_role")
-  @NotNull public BusinessRoleForMembers getBusinessRole() {
-    return businessRole;
-  }
-
-  @JsonProperty(required = true, value = "business_role")
-  public void setBusinessRole(BusinessRoleForMembers businessRole) {
-    this.businessRole = businessRole;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -84,13 +84,13 @@ public class MembersToDeleteBodyMembersInner   {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
@@ -98,8 +98,8 @@ public class MembersToDeleteBodyMembersInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,24 +6,24 @@
 
 -type openapi_catalogs_retail_product_group_update_request() ::
     #{ 'catalog_type' => binary(),
-       'name' => binary(),
+       'country' => openapi_country:openapi_country(),
        'description' => binary(),
        'filters' => openapi_catalogs_product_group_filters_request:openapi_catalogs_product_group_filters_request(),
-       'country' => openapi_country:openapi_country(),
-       'locale' => openapi_catalogs_locale:openapi_catalogs_locale()
+       'locale' => openapi_catalogs_locale:openapi_catalogs_locale(),
+       'name' => binary()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
-          'name' := Name,
+          'country' := Country,
           'description' := Description,
           'filters' := Filters,
-          'country' := Country,
-          'locale' := Locale
+          'locale' := Locale,
+          'name' := Name
         }) ->
     #{ 'catalog_type' => CatalogType,
-       'name' => Name,
+       'country' => Country,
        'description' => Description,
        'filters' => Filters,
-       'country' => Country,
-       'locale' => Locale
+       'locale' => Locale,
+       'name' => Name
      }.

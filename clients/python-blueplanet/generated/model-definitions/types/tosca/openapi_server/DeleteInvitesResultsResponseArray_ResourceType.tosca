@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeleteInvitesResultsResponseArray"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeleteInvitesResultsResponseArray"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeleteInvitesResultsResponseArrayItemsInner = openapi_server.resourceTypes.DeleteInvitesResultsResponseArrayItemsInner
+}
+resourceTypes {
+
+  DeleteInvitesResultsResponseArray {
+    title = DeleteInvitesResultsResponseArray
+    description = DeleteInvitesResultsResponseArray
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = DeleteInvitesResultsResponseArrayItemsInner
+          description = "List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeleteInvitesResultsResponseArray {
+    title = DeleteInvitesResultsResponseArray
+    description = DeleteInvitesResultsResponseArray
+    implements = openapi_server.resourceTypes.DeleteInvitesResultsResponseArray
+
+  }
+}

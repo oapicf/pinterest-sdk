@@ -18,11 +18,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Used for including extra details to a base error")
 @JsonTypeName("DetailedError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DetailedError   {
   private Integer code;
-  private String message;
   private Object details;
+  private String message;
 
   public DetailedError() {
   }
@@ -30,12 +30,12 @@ public class DetailedError   {
   @JsonCreator
   public DetailedError(
     @JsonProperty(required = true, value = "code") Integer code,
-    @JsonProperty(required = true, value = "message") String message,
-    @JsonProperty(required = true, value = "details") Object details
+    @JsonProperty(required = true, value = "details") Object details,
+    @JsonProperty(required = true, value = "message") String message
   ) {
     this.code = code;
-    this.message = message;
     this.details = details;
+    this.message = message;
   }
 
   /**
@@ -59,25 +59,6 @@ public class DetailedError   {
 
   /**
    **/
-  public DetailedError message(String message) {
-    this.message = message;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "message")
-  @NotNull public String getMessage() {
-    return message;
-  }
-
-  @JsonProperty(required = true, value = "message")
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  /**
-   **/
   public DetailedError details(Object details) {
     this.details = details;
     return this;
@@ -95,6 +76,25 @@ public class DetailedError   {
     this.details = details;
   }
 
+  /**
+   **/
+  public DetailedError message(String message) {
+    this.message = message;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "message")
+  @NotNull public String getMessage() {
+    return message;
+  }
+
+  @JsonProperty(required = true, value = "message")
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -106,13 +106,13 @@ public class DetailedError   {
     }
     DetailedError detailedError = (DetailedError) o;
     return Objects.equals(this.code, detailedError.code) &&
-        Objects.equals(this.message, detailedError.message) &&
-        Objects.equals(this.details, detailedError.details);
+        Objects.equals(this.details, detailedError.details) &&
+        Objects.equals(this.message, detailedError.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, details);
+    return Objects.hash(code, details, message);
   }
 
   @Override
@@ -121,8 +121,8 @@ public class DetailedError   {
     sb.append("class DetailedError {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

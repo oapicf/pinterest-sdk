@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,15 +16,15 @@ package openapi
 
 type CatalogsProductGroupsUpdateRequest struct {
 
-	Name string `json:"name,omitempty"`
-
 	Description *string `json:"description,omitempty"`
+
+	Filters CatalogsProductGroupFiltersRequest `json:"filters,omitempty"`
 
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured bool `json:"is_featured,omitempty"`
 
-	Filters CatalogsProductGroupFiltersRequest `json:"filters,omitempty"`
+	Name string `json:"name,omitempty"`
 }
 
 // AssertCatalogsProductGroupsUpdateRequestRequired checks if the required fields are not zero-ed

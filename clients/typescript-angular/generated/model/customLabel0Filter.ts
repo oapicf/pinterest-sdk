@@ -7,10 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CatalogsProductGroupMultipleStringCriteria } from './catalogsProductGroupMultipleStringCriteria';
+import { CatalogsProductGroupFilterOperatorTypeCriteria } from './catalogsProductGroupFilterOperatorTypeCriteria';
 
 
 export interface CustomLabel0Filter { 
-    CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria;
+    CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria;
 }
 

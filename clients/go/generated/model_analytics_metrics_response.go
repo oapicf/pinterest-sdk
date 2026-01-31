@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &AnalyticsMetricsResponse{}
 
 // AnalyticsMetricsResponse struct for AnalyticsMetricsResponse
 type AnalyticsMetricsResponse struct {
-	// The metric name and value over the requested period for each requested metric
-	SummaryMetrics *map[string]float32 `json:"summary_metrics,omitempty"`
 	// Array with the requested daily metric records
 	DailyMetrics []AnalyticsDailyMetrics `json:"daily_metrics,omitempty"`
+	// The metric name and value over the requested period for each requested metric
+	SummaryMetrics *map[string]float32 `json:"summary_metrics,omitempty"`
 }
 
 // NewAnalyticsMetricsResponse instantiates a new AnalyticsMetricsResponse object
@@ -41,38 +41,6 @@ func NewAnalyticsMetricsResponse() *AnalyticsMetricsResponse {
 func NewAnalyticsMetricsResponseWithDefaults() *AnalyticsMetricsResponse {
 	this := AnalyticsMetricsResponse{}
 	return &this
-}
-
-// GetSummaryMetrics returns the SummaryMetrics field value if set, zero value otherwise.
-func (o *AnalyticsMetricsResponse) GetSummaryMetrics() map[string]float32 {
-	if o == nil || IsNil(o.SummaryMetrics) {
-		var ret map[string]float32
-		return ret
-	}
-	return *o.SummaryMetrics
-}
-
-// GetSummaryMetricsOk returns a tuple with the SummaryMetrics field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AnalyticsMetricsResponse) GetSummaryMetricsOk() (*map[string]float32, bool) {
-	if o == nil || IsNil(o.SummaryMetrics) {
-		return nil, false
-	}
-	return o.SummaryMetrics, true
-}
-
-// HasSummaryMetrics returns a boolean if a field has been set.
-func (o *AnalyticsMetricsResponse) HasSummaryMetrics() bool {
-	if o != nil && !IsNil(o.SummaryMetrics) {
-		return true
-	}
-
-	return false
-}
-
-// SetSummaryMetrics gets a reference to the given map[string]float32 and assigns it to the SummaryMetrics field.
-func (o *AnalyticsMetricsResponse) SetSummaryMetrics(v map[string]float32) {
-	o.SummaryMetrics = &v
 }
 
 // GetDailyMetrics returns the DailyMetrics field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *AnalyticsMetricsResponse) SetDailyMetrics(v []AnalyticsDailyMetrics) {
 	o.DailyMetrics = v
 }
 
+// GetSummaryMetrics returns the SummaryMetrics field value if set, zero value otherwise.
+func (o *AnalyticsMetricsResponse) GetSummaryMetrics() map[string]float32 {
+	if o == nil || IsNil(o.SummaryMetrics) {
+		var ret map[string]float32
+		return ret
+	}
+	return *o.SummaryMetrics
+}
+
+// GetSummaryMetricsOk returns a tuple with the SummaryMetrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AnalyticsMetricsResponse) GetSummaryMetricsOk() (*map[string]float32, bool) {
+	if o == nil || IsNil(o.SummaryMetrics) {
+		return nil, false
+	}
+	return o.SummaryMetrics, true
+}
+
+// HasSummaryMetrics returns a boolean if a field has been set.
+func (o *AnalyticsMetricsResponse) HasSummaryMetrics() bool {
+	if o != nil && !IsNil(o.SummaryMetrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSummaryMetrics gets a reference to the given map[string]float32 and assigns it to the SummaryMetrics field.
+func (o *AnalyticsMetricsResponse) SetSummaryMetrics(v map[string]float32) {
+	o.SummaryMetrics = &v
+}
+
 func (o AnalyticsMetricsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,11 +117,11 @@ func (o AnalyticsMetricsResponse) MarshalJSON() ([]byte, error) {
 
 func (o AnalyticsMetricsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SummaryMetrics) {
-		toSerialize["summary_metrics"] = o.SummaryMetrics
-	}
 	if !IsNil(o.DailyMetrics) {
 		toSerialize["daily_metrics"] = o.DailyMetrics
+	}
+	if !IsNil(o.SummaryMetrics) {
+		toSerialize["summary_metrics"] = o.SummaryMetrics
 	}
 	return toSerialize, nil
 }

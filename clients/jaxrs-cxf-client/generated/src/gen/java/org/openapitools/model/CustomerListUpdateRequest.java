@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.model.Exception;
 import org.openapitools.model.UserListOperationType;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -10,38 +9,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerListUpdateRequest  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private UserListOperationType operationType;
+
  /**
   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
   */
   @ApiModelProperty(example = "email2@pinterest.com,email6@pinterest.com,", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
 
   private String records;
-
-  @ApiModelProperty(required = true, value = "")
-
-  private UserListOperationType operationType;
-
-  @ApiModelProperty(value = "")
-
-  private Exception exceptions;
- /**
-   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-   * @return records
-  **/
-  @JsonProperty("records")
-  public String getRecords() {
-    return records;
-  }
-
-  public void setRecords(String records) {
-    this.records = records;
-  }
-
-  public CustomerListUpdateRequest records(String records) {
-    this.records = records;
-    return this;
-  }
-
  /**
    * Get operationType
    * @return operationType
@@ -61,20 +38,20 @@ public class CustomerListUpdateRequest  {
   }
 
  /**
-   * Get exceptions
-   * @return exceptions
+   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
+   * @return records
   **/
-  @JsonProperty("exceptions")
-  public Exception getExceptions() {
-    return exceptions;
+  @JsonProperty("records")
+  public String getRecords() {
+    return records;
   }
 
-  public void setExceptions(Exception exceptions) {
-    this.exceptions = exceptions;
+  public void setRecords(String records) {
+    this.records = records;
   }
 
-  public CustomerListUpdateRequest exceptions(Exception exceptions) {
-    this.exceptions = exceptions;
+  public CustomerListUpdateRequest records(String records) {
+    this.records = records;
     return this;
   }
 
@@ -87,14 +64,13 @@ public class CustomerListUpdateRequest  {
       return false;
     }
     CustomerListUpdateRequest customerListUpdateRequest = (CustomerListUpdateRequest) o;
-    return Objects.equals(this.records, customerListUpdateRequest.records) &&
-        Objects.equals(this.operationType, customerListUpdateRequest.operationType) &&
-        Objects.equals(this.exceptions, customerListUpdateRequest.exceptions);
+    return Objects.equals(this.operationType, customerListUpdateRequest.operationType) &&
+        Objects.equals(this.records, customerListUpdateRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(records, operationType, exceptions);
+    return Objects.hash(operationType, records);
   }
 
   @Override
@@ -102,9 +78,8 @@ public class CustomerListUpdateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListUpdateRequest {\n");
     
-    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("}");
     return sb.toString();
   }

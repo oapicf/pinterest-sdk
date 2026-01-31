@@ -23,24 +23,24 @@ create_mmm_report_request_t* instantiate_create_mmm_report_request(int include_o
   if (include_optional) {
     create_mmm_report_request = create_mmm_report_request_create(
       list_createList(),
-      "0",
-      "2020-12-20",
+      list_createList(),
       "2020-12-20",
       pinterest_rest_api_create_mmm_report_request_GRANULARITY_DAY,
       pinterest_rest_api_create_mmm_report_request_LEVEL_CAMPAIGN_TARGETING,
-      ["GENDER"],
-      list_createList()
+      "0",
+      "2020-12-20",
+      ["GENDER"]
     );
   } else {
     create_mmm_report_request = create_mmm_report_request_create(
       list_createList(),
-      "0",
-      "2020-12-20",
+      list_createList(),
       "2020-12-20",
       pinterest_rest_api_create_mmm_report_request_GRANULARITY_DAY,
       pinterest_rest_api_create_mmm_report_request_LEVEL_CAMPAIGN_TARGETING,
-      ["GENDER"],
-      list_createList()
+      "0",
+      "2020-12-20",
+      ["GENDER"]
     );
   }
 

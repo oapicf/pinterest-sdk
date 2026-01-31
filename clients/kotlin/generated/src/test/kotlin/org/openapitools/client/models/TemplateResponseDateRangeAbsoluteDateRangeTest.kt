@@ -25,10 +25,10 @@ class TemplateResponseDateRangeAbsoluteDateRangeTest : ShouldSpec() {
         // uncomment below to create an instance of TemplateResponseDateRangeAbsoluteDateRange
         //val modelInstance = TemplateResponseDateRangeAbsoluteDateRange()
 
-        // to test the property `type` - The date range type
-        should("test type") {
+        // to test the property `endDate` - The end date of the date range
+        should("test endDate") {
             // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
+            //modelInstance.endDate shouldBe ("TODO")
         }
 
         // to test the property `startDate` - The start date of the date range
@@ -37,10 +37,10 @@ class TemplateResponseDateRangeAbsoluteDateRangeTest : ShouldSpec() {
             //modelInstance.startDate shouldBe ("TODO")
         }
 
-        // to test the property `endDate` - The end date of the date range
-        should("test endDate") {
+        // to test the property `type` - The date range type
+        should("test type") {
             // uncomment below to test the property
-            //modelInstance.endDate shouldBe ("TODO")
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

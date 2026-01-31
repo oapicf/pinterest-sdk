@@ -1,7 +1,6 @@
 package api
 
 import play.api.libs.json._
-import model.DetailedError
 import model.Error
 import model.IntegrationLogsRequest
 import model.IntegrationLogsSuccessResponse
@@ -10,8 +9,9 @@ import model.IntegrationRecord
 import model.IntegrationRequest
 import model.IntegrationRequestPatch
 import model.IntegrationsGetList200Response
+import model.IntegrationsLogsPost400Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait IntegrationsApi {
   /**
     * Delete commerce integration
@@ -33,14 +33,14 @@ trait IntegrationsApi {
     * @param externalBusinessId External business ID for the integration.
     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
     */
-  def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: Option[IntegrationRequestPatch]): IntegrationMetadata
+  def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch): IntegrationMetadata
 
   /**
     * Create commerce integration
     * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     * @param integrationRequest Parameters to get create/update the Integration Metadata
     */
-  def integrationsCommercePost(integrationRequest: Option[IntegrationRequest]): IntegrationMetadata
+  def integrationsCommercePost(integrationRequest: IntegrationRequest): IntegrationMetadata
 
   /**
     * Get integration metadata

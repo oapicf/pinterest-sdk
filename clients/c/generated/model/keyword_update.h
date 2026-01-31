@@ -19,17 +19,17 @@ typedef struct keyword_update_t keyword_update_t;
 
 
 typedef struct keyword_update_t {
-    char *id; // string
     int archived; //boolean
     int bid; //numeric
+    char *id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } keyword_update_t;
 
 __attribute__((deprecated)) keyword_update_t *keyword_update_create(
-    char *id,
     int archived,
-    int bid
+    int bid,
+    char *id
 );
 
 void keyword_update_free(keyword_update_t *keyword_update);

@@ -1,0 +1,55 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceSubcategory"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceSubcategory"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AudienceSubcategory {
+    title = AudienceSubcategory
+    description = AudienceSubcategory
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Subinterest ID."
+          optional = false
+        }
+        index {
+          type =  
+          description = "Subinterest affinity index."
+          optional = false
+        }
+        key {
+          type =  string
+          description = "Interest unique key (same as ID)."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Subinterest name."
+          optional = false
+        }
+        ratio {
+          type =  
+          description = "Subinterest&#39;s percent of category&#39;s total audience."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceSubcategory {
+    title = AudienceSubcategory
+    description = AudienceSubcategory
+    implements = openapi_server.resourceTypes.AudienceSubcategory
+
+  }
+}

@@ -23,22 +23,6 @@ public class CatalogsProductGroupPricingCurrencyCriteriaTest {
     }
 
     /**
-     * Test the property 'operator'
-     */
-    @Test
-    public void operatorTest() {
-        // TODO: test operator
-    }
-
-    /**
-     * Test the property 'value'
-     */
-    @Test
-    public void valueTest() {
-        // TODO: test value
-    }
-
-    /**
      * Test the property 'currency'
      */
     @Test
@@ -52,6 +36,22 @@ public class CatalogsProductGroupPricingCurrencyCriteriaTest {
     @Test
     public void negatedTest() {
         // TODO: test negated
+    }
+
+    /**
+     * Test the property 'operator'
+     */
+    @Test
+    public void operatorTest() {
+        // TODO: test operator
+    }
+
+    /**
+     * Test the property 'value'
+     */
+    @Test
+    public void valueTest() {
+        // TODO: test value
     }
 
 }

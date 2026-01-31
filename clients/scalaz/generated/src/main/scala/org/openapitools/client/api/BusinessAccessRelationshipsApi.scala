@@ -21,6 +21,9 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.BrandAccountsCreate200Response
+import org.openapitools.client.api.BrandAccountsCreateRequest
+import org.openapitools.client.api.BrandAccountsUpdateRequest
 import org.openapitools.client.api.DeletePartnersRequest
 import org.openapitools.client.api.DeletePartnersResponse
 import org.openapitools.client.api.DeletedMembersResponse
@@ -31,6 +34,7 @@ import org.openapitools.client.api.GetBusinessPartners200Response
 import org.openapitools.client.api.MemberBusinessRole
 import org.openapitools.client.api.MembersToDeleteBody
 import org.openapitools.client.api.PartnerType
+import org.openapitools.client.api.SystemUserUpdateRequest
 import org.openapitools.client.api.UpdateMemberBusinessRoleBody
 import org.openapitools.client.api.UpdateMemberResultsResponseArray
 
@@ -39,6 +43,48 @@ object BusinessAccessRelationshipsApi {
   val client = PooledHttp1Client()
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
+
+  def brandAccountsCreate(host: String, businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest): Task[BrandAccountsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BrandAccountsCreate200Response] = jsonOf[BrandAccountsCreate200Response]
+
+    val path = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".replaceAll("\\{" + "business_hierarchy_id" + "\\}",escape(businessHierarchyId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(brandAccountsCreateRequest)
+      resp          <- client.expect[BrandAccountsCreate200Response](req)
+
+    } yield resp
+  }
+
+  def brandAccountsUpdate(host: String, businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest): Task[BrandAccountsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BrandAccountsCreate200Response] = jsonOf[BrandAccountsCreate200Response]
+
+    val path = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".replaceAll("\\{" + "business_hierarchy_id" + "\\}",escape(businessHierarchyId.toString)).replaceAll("\\{" + "brand_account_id" + "\\}",escape(brandAccountId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(brandAccountsUpdateRequest)
+      resp          <- client.expect[BrandAccountsCreate200Response](req)
+
+    } yield resp
+  }
 
   def deleteBusinessMembership(host: String, businessId: String, membersToDeleteBody: MembersToDeleteBody): Task[DeletedMembersResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[DeletedMembersResponse] = jsonOf[DeletedMembersResponse]
@@ -103,7 +149,7 @@ object BusinessAccessRelationshipsApi {
     } yield resp
   }
 
-  def getBusinessMembers(host: String, businessId: String, assetsSummary: Boolean = false, businessRoles: List[MemberBusinessRole] = List.empty[MemberBusinessRole] , memberIds: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit assetsSummaryQuery: QueryParam[Boolean], businessRolesQuery: QueryParam[List[MemberBusinessRole]], memberIdsQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetBusinessMembers200Response] = {
+  def getBusinessMembers(host: String, businessId: String, fetchSystemUsers: Boolean = false, assetsSummary: Boolean = false, businessRoles: List[MemberBusinessRole] = List.empty[MemberBusinessRole] , memberIds: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit fetchSystemUsersQuery: QueryParam[Boolean], assetsSummaryQuery: QueryParam[Boolean], businessRolesQuery: QueryParam[List[MemberBusinessRole]], memberIdsQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetBusinessMembers200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[GetBusinessMembers200Response] = jsonOf[GetBusinessMembers200Response]
 
     val path = "/businesses/{business_id}/members".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -113,7 +159,7 @@ object BusinessAccessRelationshipsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("assetsSummary", Some(assets_summaryQuery.toParamString(assets_summary))), ("businessRoles", Some(business_rolesQuery.toParamString(business_roles))), ("memberIds", Some(member_idsQuery.toParamString(member_ids))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
+      ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("assetsSummary", Some(assets_summaryQuery.toParamString(assets_summary))), ("businessRoles", Some(business_rolesQuery.toParamString(business_roles))), ("memberIds", Some(member_idsQuery.toParamString(member_ids))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -145,6 +191,25 @@ object BusinessAccessRelationshipsApi {
     } yield resp
   }
 
+  def systemUserUpdate(host: String, businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest): Task[Unit] = {
+    val path = "/businesses/{business_id}/system_users/{system_user_id}".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "system_user_id" + "\\}",escape(systemUserId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(systemUserUpdateRequest)
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def updateBusinessMemberships(host: String, businessId: String, updateMemberBusinessRoleBody: List[UpdateMemberBusinessRoleBody]): Task[UpdateMemberResultsResponseArray] = {
     implicit val returnTypeDecoder: EntityDecoder[UpdateMemberResultsResponseArray] = jsonOf[UpdateMemberResultsResponseArray]
 
@@ -172,6 +237,48 @@ class HttpServiceBusinessAccessRelationshipsApi(service: HttpService) {
   val client = Client.fromHttpService(service)
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
+
+  def brandAccountsCreate(businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest): Task[BrandAccountsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BrandAccountsCreate200Response] = jsonOf[BrandAccountsCreate200Response]
+
+    val path = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".replaceAll("\\{" + "business_hierarchy_id" + "\\}",escape(businessHierarchyId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(brandAccountsCreateRequest)
+      resp          <- client.expect[BrandAccountsCreate200Response](req)
+
+    } yield resp
+  }
+
+  def brandAccountsUpdate(businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest): Task[BrandAccountsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BrandAccountsCreate200Response] = jsonOf[BrandAccountsCreate200Response]
+
+    val path = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".replaceAll("\\{" + "business_hierarchy_id" + "\\}",escape(businessHierarchyId.toString)).replaceAll("\\{" + "brand_account_id" + "\\}",escape(brandAccountId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(brandAccountsUpdateRequest)
+      resp          <- client.expect[BrandAccountsCreate200Response](req)
+
+    } yield resp
+  }
 
   def deleteBusinessMembership(businessId: String, membersToDeleteBody: MembersToDeleteBody): Task[DeletedMembersResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[DeletedMembersResponse] = jsonOf[DeletedMembersResponse]
@@ -236,7 +343,7 @@ class HttpServiceBusinessAccessRelationshipsApi(service: HttpService) {
     } yield resp
   }
 
-  def getBusinessMembers(businessId: String, assetsSummary: Boolean = false, businessRoles: List[MemberBusinessRole] = List.empty[MemberBusinessRole] , memberIds: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit assetsSummaryQuery: QueryParam[Boolean], businessRolesQuery: QueryParam[List[MemberBusinessRole]], memberIdsQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetBusinessMembers200Response] = {
+  def getBusinessMembers(businessId: String, fetchSystemUsers: Boolean = false, assetsSummary: Boolean = false, businessRoles: List[MemberBusinessRole] = List.empty[MemberBusinessRole] , memberIds: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit fetchSystemUsersQuery: QueryParam[Boolean], assetsSummaryQuery: QueryParam[Boolean], businessRolesQuery: QueryParam[List[MemberBusinessRole]], memberIdsQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetBusinessMembers200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[GetBusinessMembers200Response] = jsonOf[GetBusinessMembers200Response]
 
     val path = "/businesses/{business_id}/members".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -246,7 +353,7 @@ class HttpServiceBusinessAccessRelationshipsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("assetsSummary", Some(assets_summaryQuery.toParamString(assets_summary))), ("businessRoles", Some(business_rolesQuery.toParamString(business_roles))), ("memberIds", Some(member_idsQuery.toParamString(member_ids))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
+      ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("assetsSummary", Some(assets_summaryQuery.toParamString(assets_summary))), ("businessRoles", Some(business_rolesQuery.toParamString(business_roles))), ("memberIds", Some(member_idsQuery.toParamString(member_ids))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -274,6 +381,25 @@ class HttpServiceBusinessAccessRelationshipsApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[GetBusinessPartners200Response](req)
+
+    } yield resp
+  }
+
+  def systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest): Task[Unit] = {
+    val path = "/businesses/{business_id}/system_users/{system_user_id}".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "system_user_id" + "\\}",escape(systemUserId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(systemUserUpdateRequest)
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }

@@ -1,0 +1,63 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object containing information about the application where event occurred.",
+  "name": "ConversionEventAppInfo",
+  "fields": [
+    {
+      "name": "app_id",
+      "type": ["null", "string"],
+      "doc": "App ID in Google Play Store, AppStore or other stores.",
+      "default": null
+    },
+    {
+      "name": "app_name",
+      "type": ["null", "string"],
+      "doc": "Name of the app. Primarily used for Mobile Apps.",
+      "default": null
+    },
+    {
+      "name": "app_package_name",
+      "type": ["null", "string"],
+      "doc": "App package name",
+      "default": null
+    },
+    {
+      "name": "app_store",
+      "type": ["null", "string"],
+      "doc": "The name of the app distributor or store from which the app was installed. Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps",
+      "default": null
+    },
+    {
+      "name": "app_version",
+      "type": ["null", "string"],
+      "doc": "App version. Primarily used for mobile apps",
+      "default": null
+    },
+    {
+      "name": "install_time",
+      "type": ["null", "int"],
+      "doc": "App install time. Unix timestamp in seconds",
+      "default": null
+    },
+    {
+      "name": "user_agent",
+      "type": ["null", "string"],
+      "doc": "User Agent request header. Primarily used for Web events",
+      "default": null
+    },
+    {
+      "name": "window_height",
+      "type": ["null", "int"],
+      "doc": "Inner height of the window or viewport.",
+      "default": null
+    },
+    {
+      "name": "window_width",
+      "type": ["null", "int"],
+      "doc": "Inner width of the window or viewport.",
+      "default": null
+    }
+  ]
+
+}

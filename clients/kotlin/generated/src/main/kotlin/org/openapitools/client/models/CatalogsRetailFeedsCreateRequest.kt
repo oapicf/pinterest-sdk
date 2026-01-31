@@ -31,35 +31,22 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a retail feed.
  *
- * @param name A human-friendly name associated to a given feed.
- * @param format 
- * @param defaultLocale 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @param catalogType 
  * @param defaultCountry 
- * @param defaultCurrency 
+ * @param defaultLocale 
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
  * @param credentials 
- * @param preferredProcessingSchedule 
  * @param defaultAvailability 
+ * @param defaultCurrency 
+ * @param preferredProcessingSchedule 
  * @param status 
  */
 
 
 data class CatalogsRetailFeedsCreateRequest (
-
-    /* A human-friendly name associated to a given feed. */
-    @Json(name = "name")
-    val name: kotlin.String,
-
-    @Json(name = "format")
-    val format: CatalogsFormat,
-
-    @Json(name = "default_locale")
-    val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
-
-    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-    @Json(name = "location")
-    val location: kotlin.String,
 
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
@@ -67,17 +54,35 @@ data class CatalogsRetailFeedsCreateRequest (
     @Json(name = "default_country")
     val defaultCountry: Country,
 
-    @Json(name = "default_currency")
-    val defaultCurrency: NullableCurrency? = null,
+    @Json(name = "default_locale")
+    val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+
+    @Json(name = "format")
+    val format: CatalogsFormat,
+
+    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+    @Json(name = "location")
+    val location: kotlin.String,
+
+    /* A human-friendly name associated to a given feed. */
+    @Json(name = "name")
+    val name: kotlin.String,
+
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String? = null,
 
     @Json(name = "credentials")
     val credentials: CatalogsFeedCredentials? = null,
 
-    @Json(name = "preferred_processing_schedule")
-    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
-
     @Json(name = "default_availability")
     val defaultAvailability: ProductAvailabilityType? = null,
+
+    @Json(name = "default_currency")
+    val defaultCurrency: NullableCurrency? = null,
+
+    @Json(name = "preferred_processing_schedule")
+    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
 
     @Json(name = "status")
     val status: CatalogsStatus? = "ACTIVE"

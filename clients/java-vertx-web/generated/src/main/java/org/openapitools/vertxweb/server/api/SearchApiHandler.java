@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.PinsList200Response;
 import org.openapitools.vertxweb.server.model.SearchPartnerPins200Response;
 import org.openapitools.vertxweb.server.model.SearchUserBoardsGet200Response;
+import org.openapitools.vertxweb.server.model.SearchUserPinsList200Response;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;

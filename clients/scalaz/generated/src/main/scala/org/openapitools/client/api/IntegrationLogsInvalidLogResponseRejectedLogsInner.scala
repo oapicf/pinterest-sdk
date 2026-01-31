@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import IntegrationLogsInvalidLogResponseRejectedLogsInner._
 
 case class IntegrationLogsInvalidLogResponseRejectedLogsInner (
-  /* Index of the log in the batch. */
-  logIndex: Option[Integer],
-/* The field name containing an invalid value. */
+  /* The field name containing an invalid value. */
   field: String,
-/* The value that is invalid. */
-  value: String,
+/* Index of the log in the batch. */
+  logIndex: Option[Integer],
 /* The reason the value is invalid. */
-  reason: String)
+  reason: String,
+/* The value that is invalid. */
+  value: String)
 
 object IntegrationLogsInvalidLogResponseRejectedLogsInner {
   import DateTimeCodecs._

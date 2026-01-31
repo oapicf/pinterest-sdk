@@ -8,12 +8,14 @@ import model.Error
 import model.Granularity
 import java.time.LocalDate
 import model.ProductGroupAnalyticsResponseInner
+import model.ProductGroupPromotion
 import model.ProductGroupPromotionCreateRequest
 import model.ProductGroupPromotionResponse
 import model.ProductGroupPromotionUpdateRequest
 import model.ProductGroupPromotionsList200Response
+import model.ReportingTimeZone
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, api: ProductGroupPromotionsApi) extends AbstractController(cc) {
   /**
@@ -39,7 +41,7 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
     * @param productGroupPromotionId Unique identifier of a product group promotion
     */
   def productGroupPromotionsGet(adAccountId: String, productGroupPromotionId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): ProductGroupPromotionResponse = {
+    def executeApi(): ProductGroupPromotion = {
       api.productGroupPromotionsGet(adAccountId, productGroupPromotionId)
     }
 
@@ -95,7 +97,7 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/product_groups/analytics?startDate=[value]&endDate=[value]&productGroupIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]
+    * GET /v5/ad_accounts/:adAccountId/product_groups/analytics?startDate=[value]&endDate=[value]&productGroupIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def productGroupsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -141,7 +143,10 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
-      api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+      val reportingTimezone = request.getQueryString("reporting_timezone")
+        .map(value => )
+        
+      api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
     }
 
     val result = executeApi()

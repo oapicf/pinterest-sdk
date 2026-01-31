@@ -12,6 +12,10 @@ class AdsCreditDiscountsResponse {
     Boolean active
     /* Advertiser ID the offer was applied to. */
     String advertiserId
+    /* Currency value for the discount. */
+    String discountCurrency
+    /* The discount applied in the offer’s currency value. */
+    BigDecimal discountInMicroCurrency
 
     enum DiscountTypeEnum {
     
@@ -73,12 +77,8 @@ class AdsCreditDiscountsResponse {
 
     /* The type of discount of this credit */
     DiscountTypeEnum discountType
-    /* The discount applied in the offer’s currency value. */
-    BigDecimal discountInMicroCurrency
-    /* Currency value for the discount. */
-    String discountCurrency
-    /* Human readable title of the offer code. */
-    String title
     /* The credits left to spend. */
     BigDecimal remainingDiscountInMicroCurrency
+    /* Human readable title of the offer code. */
+    String title
 }

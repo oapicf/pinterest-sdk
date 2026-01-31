@@ -1,0 +1,34 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Schema for GET Conversion EQS response.",
+  "name": "EventQualityScore",
+  "fields": [
+    {
+      "name": "ingestion_source",
+      "type": "model.IngestionSourceOptions",
+      "doc": ""
+    },
+    {
+      "name": "lookback_period",
+      "type": "model.LookbackPeriodOptions",
+      "doc": ""
+    },
+    {
+      "name": "overall_status",
+      "type": "model.OverallStatusOptions",
+      "doc": ""
+    },
+    {
+      "name": "quality_components",
+      "type": "model.QualityComponents",
+      "doc": ""
+    },
+    {
+      "name": "source_platform",
+      "type": "model.SourcePlatformOptions",
+      "doc": ""
+    }
+  ]
+
+}

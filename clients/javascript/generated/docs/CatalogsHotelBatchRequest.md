@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 **catalogType** | **String** |  | 
 **country** | [**Country**](Country.md) |  | 
-**language** | **String** | We recommend using the CatalogsLocale values. | 
 **items** | [**[CatalogsHotelBatchItem]**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**catalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**language** | **String** | We recommend using the CatalogsLocale values. | 
 
 
 

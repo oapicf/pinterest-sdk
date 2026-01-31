@@ -5,42 +5,18 @@ import play.api.libs.json._
 /**
   * Media upload that has been registered but not uploaded/processed yet.
   * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+  * @param uploadParameters The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
   * @param uploadUrl The URL where you will POST your media file.
-  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class MediaUpload(
-  mediaId: Option[String],
-  mediaType: Option[MediaUploadType],
-  uploadUrl: Option[String],
-  uploadParameters: Option[MediaUploadAllOfUploadParameters]
-  additionalProperties: 
+  mediaId: String,
+  mediaType: MediaUploadType,
+  uploadParameters: Option[MediaUploadParameters],
+  uploadUrl: Option[String]
 )
 
 object MediaUpload {
-  implicit lazy val mediaUploadJsonFormat: Format[MediaUpload] = {
-    val realJsonFormat = Json.format[MediaUpload]
-    val declaredPropNames = Set("mediaId", "mediaType", "uploadUrl", "uploadParameters")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { mediaUpload =>
-        val jsObj = realJsonFormat.writes(mediaUpload)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
-  }
+  implicit lazy val mediaUploadJsonFormat: Format[MediaUpload] = Json.format[MediaUpload]
 }
 

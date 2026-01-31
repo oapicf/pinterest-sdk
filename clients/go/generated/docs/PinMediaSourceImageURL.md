@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **string** |  | 
-**Url** | **string** |  | 
 **IsStandard** | Pointer to **bool** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to true]
+**SourceType** | **string** | The source type of the media. | 
+**Url** | **string** |  | 
 
 ## Methods
 
@@ -26,6 +26,31 @@ will change when the set of required properties is changed
 NewPinMediaSourceImageURLWithDefaults instantiates a new PinMediaSourceImageURL object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetIsStandard
+
+`func (o *PinMediaSourceImageURL) GetIsStandard() bool`
+
+GetIsStandard returns the IsStandard field if non-nil, zero value otherwise.
+
+### GetIsStandardOk
+
+`func (o *PinMediaSourceImageURL) GetIsStandardOk() (*bool, bool)`
+
+GetIsStandardOk returns a tuple with the IsStandard field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsStandard
+
+`func (o *PinMediaSourceImageURL) SetIsStandard(v bool)`
+
+SetIsStandard sets IsStandard field to given value.
+
+### HasIsStandard
+
+`func (o *PinMediaSourceImageURL) HasIsStandard() bool`
+
+HasIsStandard returns a boolean if a field has been set.
 
 ### GetSourceType
 
@@ -66,31 +91,6 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
-
-### GetIsStandard
-
-`func (o *PinMediaSourceImageURL) GetIsStandard() bool`
-
-GetIsStandard returns the IsStandard field if non-nil, zero value otherwise.
-
-### GetIsStandardOk
-
-`func (o *PinMediaSourceImageURL) GetIsStandardOk() (*bool, bool)`
-
-GetIsStandardOk returns a tuple with the IsStandard field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsStandard
-
-`func (o *PinMediaSourceImageURL) SetIsStandard(v bool)`
-
-SetIsStandard sets IsStandard field to given value.
-
-### HasIsStandard
-
-`func (o *PinMediaSourceImageURL) HasIsStandard() bool`
-
-HasIsStandard returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

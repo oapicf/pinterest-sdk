@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object containing the permissions a business partner has on the asset.")
 @JsonTypeName("UpdatePartnerAssetsResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdatePartnerAssetsResult   {
   private String assetId;
   private String assetType;
@@ -52,7 +52,7 @@ public class UpdatePartnerAssetsResult   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   public UpdatePartnerAssetsResult assetType(String assetType) {
     this.assetType = assetType;
@@ -60,7 +60,7 @@ public class UpdatePartnerAssetsResult   {
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;

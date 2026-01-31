@@ -15,7 +15,7 @@ import model.TrendType
 import model.TrendingKeywordsResponse
 import model.TrendsSupportedRegion
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi) extends AbstractController(cc) {
   /**
@@ -61,7 +61,7 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/keywords?campaignId=[value]&adGroupId=[value]&matchTypes=[value]&pageSize=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/keywords?campaignId=[value]&adGroupId=[value]&adGroupIds=[value]&matchTypes=[value]&pageSize=[value]&bookmark=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def keywordsGet(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -69,6 +69,9 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
       val campaignId = request.getQueryString("campaign_id")
         
       val adGroupId = request.getQueryString("ad_group_id")
+        
+      val adGroupIds = request.queryString.get("ad_group_ids")
+        .map(_.toList)
         
       val matchTypes = request.queryString.get("match_types")
         .map(_.toList)
@@ -79,7 +82,7 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
         
       val bookmark = request.getQueryString("bookmark")
         
-      api.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark)
+      api.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark)
     }
 
     val result = executeApi()
@@ -105,7 +108,7 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
   }
 
   /**
-    * GET /v5/trends/keywords/:region/top/:trendType?interests=[value]&genders=[value]&ages=[value]&includeKeywords=[value]&normalizeAgainstGroup=[value]&limit=[value]
+    * GET /v5/trends/keywords/:region/top/:trendType?interests=[value]&genders=[value]&ages=[value]&includeKeywords=[value]&normalizeAgainstGroup=[value]&limit=[value]&includePrediction=[value]&includeDemographics=[value]
     * @param region The geographic region of interest. Only top trends within the specified region will be returned.&lt;br /&gt; The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;, corresponding to the following geographic areas: - &#x60;US&#x60; - United States - &#x60;CA&#x60; - Canada - &#x60;DE&#x60; - Germany - &#x60;FR&#x60; - France - &#x60;ES&#x60; - Spain - &#x60;IT&#x60; - Italy - &#x60;DE+AT+CH&#x60; - Germanic countries - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland - &#x60;IT+ES+PT+GR+MT&#x60; - Southern Europe - &#x60;PL+RO+HU+SK+CZ&#x60; - Eastern Europe - &#x60;SE+DK+FI+NO&#x60; - Nordic countries - &#x60;NL+BE+LU&#x60; - Benelux - &#x60;AR&#x60; - Argentina - &#x60;BR&#x60; - Brazil - &#x60;CO&#x60; - Colombia - &#x60;MX&#x60; - Mexico - &#x60;MX+AR+CO+CL&#x60; - Hispanic LatAm - &#x60;AU+NZ&#x60; - Australasia
     * @param trendType The methodology used to rank how trendy a keyword is. - &#x60;growing&#x60; trends have high upward growth in search volume over the last quarter - &#x60;monthly&#x60; trends have high search volume in the last month - &#x60;yearly&#x60; trends have high search volume in the last year - &#x60;seasonal&#x60; trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual)
     */
@@ -129,7 +132,13 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
+      val includePrediction = request.getQueryString("include_prediction")
+        .map(value => value.toBoolean)
+        
+      val includeDemographics = request.getQueryString("include_demographics")
+        .map(value => value.toBoolean)
+        
+      api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics)
     }
 
     val result = executeApi()

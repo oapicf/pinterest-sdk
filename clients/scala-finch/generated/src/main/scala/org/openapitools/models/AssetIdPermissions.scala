@@ -10,15 +10,15 @@ import scala.collection.immutable.Seq
 
 /**
  * An object containing the permissions a business member has on the asset.
- * @param assetUnderscoreid Unique identifier of a business asset.
- * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
- * @param permissions Permission levels member or partner has on an asset.
  * @param assetUnderscoregroupUnderscoreinfo 
+ * @param assetUnderscoreid Unique identifier of a business asset.
+ * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param permissions Permission levels member or partner has on an asset.
  */
-case class AssetIdPermissions(assetUnderscoreid: Option[String],
+case class AssetIdPermissions(assetUnderscoregroupUnderscoreinfo: Option[AssetGroupBinding],
+                assetUnderscoreid: Option[String],
                 assetUnderscoretype: Option[String],
-                permissions: Option[Seq[String]],
-                assetUnderscoregroupUnderscoreinfo: Option[AssetGroupBinding]
+                permissions: Option[Seq[String]]
                 )
 
 object AssetIdPermissions {

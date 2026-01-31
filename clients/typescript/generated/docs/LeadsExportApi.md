@@ -28,9 +28,9 @@ const request: LeadsExportApiLeadsExportCreateRequest = {
   adAccountId: "4",
   
   leadsExportCreateRequest: {
-    startDate: "2020-12-20",
-    endDate: "2020-12-20",
     adId: "687201361754",
+    endDate: "2020-12-20",
+    startDate: "2020-12-20",
   },
 };
 

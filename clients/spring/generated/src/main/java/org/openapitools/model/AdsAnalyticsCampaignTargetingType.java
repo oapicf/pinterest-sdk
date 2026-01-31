@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Reporting targeting type for campaigns
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum AdsAnalyticsCampaignTargetingType {
   
   KEYWORD("KEYWORD"),
@@ -49,7 +49,9 @@ public enum AdsAnalyticsCampaignTargetingType {
   
   CREATIVE_TYPE("CREATIVE_TYPE"),
   
-  AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER");
+  AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+  
+  AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER");
 
   private final String value;
 

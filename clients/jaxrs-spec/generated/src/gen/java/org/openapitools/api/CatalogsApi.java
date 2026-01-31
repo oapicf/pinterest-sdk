@@ -1,6 +1,7 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Catalog;
+import org.openapitools.model.CatalogsAvailableFilterValues;
 import org.openapitools.model.CatalogsCreateReportResponse;
 import org.openapitools.model.CatalogsCreateRequest;
 import org.openapitools.model.CatalogsFeed;
@@ -8,10 +9,10 @@ import org.openapitools.model.CatalogsFeedIngestion;
 import org.openapitools.model.CatalogsItemValidationIssue;
 import org.openapitools.model.CatalogsItems;
 import org.openapitools.model.CatalogsItemsBatch;
-import org.openapitools.model.CatalogsItemsFilters;
 import org.openapitools.model.CatalogsItemsRequest;
 import org.openapitools.model.CatalogsList200Response;
 import org.openapitools.model.CatalogsListProductsByFilterRequest;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupPinsList200Response;
 import org.openapitools.model.CatalogsProductGroupProductCountsVertical;
 import org.openapitools.model.CatalogsProductGroupsList200Response;
@@ -19,6 +20,7 @@ import org.openapitools.model.CatalogsProductGroupsUpdateRequest;
 import org.openapitools.model.CatalogsReport;
 import org.openapitools.model.CatalogsReportParameters;
 import org.openapitools.model.CatalogsVerticalProductGroup;
+import org.openapitools.model.Country;
 import org.openapitools.model.Error;
 import org.openapitools.model.FeedProcessingResultsList200Response;
 import org.openapitools.model.FeedsCreateRequest;
@@ -28,6 +30,7 @@ import org.openapitools.model.ItemsBatchPostRequest;
 import org.openapitools.model.ItemsIssuesList200Response;
 import org.openapitools.model.MultipleProductGroupsInner;
 import org.openapitools.model.ReportsStats200Response;
+import org.openapitools.model.ReportsStatsParametersParameter;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -45,13 +48,33 @@ import javax.validation.Valid;
 */
 @Path("/catalogs")
 @Api(description = "the catalogs API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsApi {
+
+    @GET
+    @Path("/available_filter_values")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "List available filter values", notes = "Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = CatalogsAvailableFilterValues.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
+         }, tags={ "catalogs" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = CatalogsAvailableFilterValues.class),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 401, message = "Unauthorized access.", response = Error.class),
+        @ApiResponse(code = 403, message = "Forbidden. Account not authorized to access available filter values.", response = Error.class),
+        @ApiResponse(code = 404, message = "Data feed not found.", response = Error.class),
+        @ApiResponse(code = 409, message = "Can't access this feature without an existing catalog.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+    })
+    public Response catalogsAvailableFilterValues(@QueryParam("catalog_id") @NotNull @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id.")  String catalogId,@QueryParam("feed_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given feed_id. If not given, all feeds are considered.")  String feedId,@QueryParam("country")  @ApiParam("Country for the Catalogs Items")  Country country,@QueryParam("language")  @ApiParam("Language for the Catalogs Items")  CatalogsLocale language,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+        return Response.ok().entity("magic!").build();
+    }
 
     @POST
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create catalog", notes = "Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.", response = Catalog.class, authorizations = {
+    @ApiOperation(value = "Create catalog", notes = "Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = Catalog.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
          }, tags={ "catalogs" })
@@ -89,7 +112,7 @@ public class CatalogsApi {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsProductGroupPinsList200Response.class),
         @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
@@ -97,7 +120,7 @@ public class CatalogsApi {
         @ApiResponse(code = 404, message = "Catalogs product group not found.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
     })
-    public Response catalogsProductGroupPinsList(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics) {
+    public Response catalogsProductGroupPinsList(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -105,10 +128,10 @@ public class CatalogsApi {
     @Path("/product_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create product group", notes = "Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsVerticalProductGroup.class, authorizations = {
+    @ApiOperation(value = "Create product group", notes = "Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsVerticalProductGroup.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Success", response = CatalogsVerticalProductGroup.class),
         @ApiResponse(code = 400, message = "Invalid body.", response = Error.class),
@@ -128,7 +151,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Create product groups", notes = "Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = String.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Success", response = String.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid body.", response = Error.class),
@@ -147,7 +170,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Delete product group", notes = "Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 204, message = "Catalogs Product Group deleted successfully.", response = Void.class),
         @ApiResponse(code = 400, message = "Invalid catalogs product group id parameters.", response = Error.class),
@@ -167,7 +190,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Delete product groups", notes = "Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 204, message = "Catalogs Product Groups deleted successfully.", response = Void.class),
         @ApiResponse(code = 401, message = "Unauthorized access.", response = Error.class),
@@ -186,7 +209,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Get product group", notes = "Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = CatalogsVerticalProductGroup.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsVerticalProductGroup.class),
         @ApiResponse(code = 400, message = "Invalid catalogs product group id parameters.", response = Error.class),
@@ -206,7 +229,7 @@ public class CatalogsApi {
     @ApiOperation(value = "List product groups", notes = "Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = CatalogsProductGroupsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsProductGroupsList200Response.class),
         @ApiResponse(code = 400, message = "Invalid feed parameters.", response = Error.class),
@@ -226,7 +249,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Get product counts", notes = "Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = CatalogsProductGroupProductCountsVertical.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsProductGroupProductCountsVertical.class),
         @ApiResponse(code = 404, message = "Product Group Not Found.", response = Error.class),
@@ -241,10 +264,10 @@ public class CatalogsApi {
     @Path("/product_groups/{product_group_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update single product group", notes = "Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsVerticalProductGroup.class, authorizations = {
+    @ApiOperation(value = "Update single product group", notes = "Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsVerticalProductGroup.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsVerticalProductGroup.class),
         @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
@@ -264,7 +287,7 @@ public class CatalogsApi {
     @ApiOperation(value = "List feed processing results", notes = "Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = FeedProcessingResultsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = FeedProcessingResultsList200Response.class),
         @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
@@ -287,7 +310,7 @@ public class CatalogsApi {
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Success", response = CatalogsFeed.class),
         @ApiResponse(code = 400, message = "Invalid feed parameters.", response = Error.class),
@@ -312,7 +335,7 @@ public class CatalogsApi {
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 204, message = "Feed deleted successfully.", response = Void.class),
         @ApiResponse(code = 400, message = "Invalid feed parameters.", response = Error.class),
@@ -333,7 +356,7 @@ public class CatalogsApi {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsFeed.class),
         @ApiResponse(code = 400, message = "Invalid feed parameters.", response = Error.class),
@@ -351,7 +374,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Ingest feed items", notes = "Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsFeedIngestion.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "The ingestion process was successfully started.", response = CatalogsFeedIngestion.class),
         @ApiResponse(code = 400, message = "Invalid feed parameters.", response = Error.class),
@@ -371,7 +394,7 @@ public class CatalogsApi {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = FeedsList200Response.class),
         @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
@@ -393,7 +416,7 @@ public class CatalogsApi {
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsFeed.class),
         @ApiResponse(code = 400, message = "Invalid feed parameters.", response = Error.class),
@@ -413,7 +436,7 @@ public class CatalogsApi {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_items" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response containing the requested catalogs items batch", response = CatalogsItemsBatch.class),
         @ApiResponse(code = 401, message = "Not authenticated to access catalogs items batch", response = Error.class),
@@ -422,7 +445,7 @@ public class CatalogsApi {
         @ApiResponse(code = 405, message = "Method Not Allowed.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response itemsBatchGet(@PathParam("batch_id") @ApiParam("Id of a catalogs items batch to fetch") String batchId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response itemsBatchGet(@PathParam("batch_id") @Pattern(regexp="^[a-zA-Z0-9]+$") @ApiParam("Id of a catalogs items batch to fetch") String batchId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -430,14 +453,14 @@ public class CatalogsApi {
     @Path("/items/batch")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Operate on item batch", notes = "This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.", response = CatalogsItemsBatch.class, authorizations = {
+    @ApiOperation(value = "Operate on item batch", notes = "This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.", response = CatalogsItemsBatch.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "catalogs:write", description = "Create, update, or delete your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_items" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response containing the requested catalogs items batch", response = CatalogsItemsBatch.class),
         @ApiResponse(code = 400, message = "Invalid request parameters.", response = Error.class),
@@ -450,30 +473,12 @@ public class CatalogsApi {
     }
 
     @GET
-    @Path("/items")
-    @Produces({ "application/json" })
-    @ApiOperation(value = "Get catalogs items", notes = "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.", response = CatalogsItems.class, authorizations = {
-        @Authorization(value = "pinterest_oauth2", scopes = {
-            @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Response containing the requested catalogs items", response = CatalogsItems.class),
-        @ApiResponse(code = 400, message = "Invalid request parameters.", response = Error.class),
-        @ApiResponse(code = 401, message = "Not authorized to access catalogs items", response = Error.class),
-        @ApiResponse(code = 403, message = "Not authorized to access catalogs items", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
-    })
-    public Response itemsGet(@QueryParam("country") @NotNull  @ApiParam("Country for the Catalogs Items")  String country,@QueryParam("language") @NotNull  @ApiParam("Language for the Catalogs Items")  String language,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("item_ids")  @ApiParam("This parameter is deprecated. Use filters instead.")  List<String> itemIds,@QueryParam("filters")  @ApiParam("Identifies items to be retrieved. This is a required parameter.")  CatalogsItemsFilters filters) {
-        return Response.ok().entity("magic!").build();
-    }
-
-    @GET
     @Path("/processing_results/{processing_result_id}/item_issues")
     @Produces({ "application/json" })
     @ApiOperation(value = "List item issues", notes = "List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>", response = ItemsIssuesList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_feeds" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = ItemsIssuesList200Response.class),
         @ApiResponse(code = 401, message = "Unauthorized access.", response = Error.class),
@@ -492,7 +497,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Get catalogs items (POST)", notes = "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsItems.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_items" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response containing the requested catalogs items", response = CatalogsItems.class),
         @ApiResponse(code = 400, message = "Invalid request", response = Error.class),
@@ -513,14 +518,14 @@ public class CatalogsApi {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data"),
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_product_groups" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CatalogsProductGroupPinsList200Response.class),
         @ApiResponse(code = 401, message = "Unauthorized access.", response = Error.class),
         @ApiResponse(code = 409, message = "Conflict. Can't get products.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
     })
-    public Response productsByProductGroupFilterList(@Valid @NotNull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics) {
+    public Response productsByProductGroupFilterList(@Valid @NotNull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -528,10 +533,10 @@ public class CatalogsApi {
     @Path("/reports")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Build catalogs report", notes = "Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.", response = CatalogsCreateReportResponse.class, authorizations = {
+    @ApiOperation(value = "Build catalogs report", notes = "Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.", response = CatalogsCreateReportResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_reports" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response containing the report token", response = CatalogsCreateReportResponse.class),
         @ApiResponse(code = 404, message = "Entity (e.g., catalog, feed or processing_result) not found", response = Error.class),
@@ -548,7 +553,7 @@ public class CatalogsApi {
     @ApiOperation(value = "Get catalogs report", notes = "This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.", response = CatalogsReport.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_reports" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response that contains a link to download the report", response = CatalogsReport.class),
         @ApiResponse(code = 400, message = "The token you provided is not valid or has expired.", response = Error.class),
@@ -565,13 +570,13 @@ public class CatalogsApi {
     @ApiOperation(value = "List report stats", notes = "List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.", response = ReportsStats200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "catalogs:read", description = "See all of your catalogs data") })
-         }, tags={ "catalogs" })
+         }, tags={ "catalog_reports" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response containing the diagnostics aggregated counters", response = ReportsStats200Response.class),
         @ApiResponse(code = 401, message = "Not authorized to access catalogs", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response reportsStats(@QueryParam("parameters") @NotNull  @ApiParam("Contains the parameters for report identification.")  CatalogsReportParameters parameters,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark) {
+    public Response reportsStats(@QueryParam("parameters") @NotNull  @ApiParam("Contains the parameters for report identification.")  ReportsStatsParametersParameter parameters,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark) {
         return Response.ok().entity("magic!").build();
     }
 }

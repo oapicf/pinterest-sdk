@@ -1,23 +1,23 @@
-# TargetingSpecSHOPPINGRETARGETING
+# TargetingSpecShoppingRetargeting
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**exclusion_window** | **number** | Number of days ago to stop lookback timeframe for dynamic retargeting | [optional] [default to undefined]
 **lookback_window** | **number** | Number of days ago to start lookback timeframe for dynamic retargeting | [optional] [default to undefined]
 **tag_types** | **Array&lt;number&gt;** | Event types to target for dynamic retargeting | [optional] [default to undefined]
-**exclusion_window** | **number** | Number of days ago to stop lookback timeframe for dynamic retargeting | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { TargetingSpecSHOPPINGRETARGETING } from './api';
+import { TargetingSpecShoppingRetargeting } from './api';
 
-const instance: TargetingSpecSHOPPINGRETARGETING = {
+const instance: TargetingSpecShoppingRetargeting = {
+    exclusion_window,
     lookback_window,
     tag_types,
-    exclusion_window,
 };
 ```
 

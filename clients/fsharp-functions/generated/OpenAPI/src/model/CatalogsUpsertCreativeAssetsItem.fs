@@ -11,12 +11,12 @@ module CatalogsUpsertCreativeAssetsItem =
 
   [<CLIMutable>]
   type CatalogsUpsertCreativeAssetsItem = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsCreativeAssetsAttributes;
     [<JsonProperty(PropertyName = "creative_assets_id")>]
     CreativeAssetsId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsCreativeAssetsAttributes;
   }
 
   //#endregion

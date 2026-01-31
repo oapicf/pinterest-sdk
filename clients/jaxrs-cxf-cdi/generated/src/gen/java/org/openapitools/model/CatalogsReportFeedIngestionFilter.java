@@ -15,6 +15,10 @@ import java.util.Objects;
 
 public class CatalogsReportFeedIngestionFilter   {
   
+  private String feedId;
+
+  private String processingResultId;
+
 
 public enum ReportTypeEnum {
 
@@ -47,29 +51,6 @@ public enum ReportTypeEnum {
 }
 
   private ReportTypeEnum reportType;
-
-  private String feedId;
-
-  private String processingResultId;
-
-  /**
-   **/
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  @NotNull
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
 
   /**
    * ID of the feed entity.
@@ -110,6 +91,25 @@ public enum ReportTypeEnum {
   }
 
 
+  /**
+   **/
+  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("report_type")
+  @NotNull
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -120,14 +120,14 @@ public enum ReportTypeEnum {
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @Override
@@ -135,9 +135,9 @@ public enum ReportTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;OrderLine&gt;**](OrderLine.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;OrderLine&gt;**](OrderLine.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { OrderLinesList200Response } from './api';
 
 const instance: OrderLinesList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

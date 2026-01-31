@@ -89,7 +89,7 @@ public class TargetingTemplateControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4c292313");
+            .accept("[Ljava.lang.String;@526c3731");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, TargetingTemplateGetResponseData.class);
@@ -140,7 +140,7 @@ public class TargetingTemplateControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@636fdfa0");
+            .accept("[Ljava.lang.String;@3d209363");
         request.getParameters()
             .add("order", "ASCENDING") // The query parameter format should be 
             .add("include_sizing", String.valueOf(false)) // The query parameter format should be 
@@ -169,7 +169,7 @@ public class TargetingTemplateControllerTest {
     void targetingTemplateUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest("example", "643");
+        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest("643", "example");
 
         // when
         controller.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest).block();
@@ -188,13 +188,13 @@ public class TargetingTemplateControllerTest {
     @Disabled("Not Implemented")
     void targetingTemplateUpdateClientApiTest() throws IOException {
         // given
-        TargetingTemplateUpdateRequest body = new TargetingTemplateUpdateRequest("example", "643");
+        TargetingTemplateUpdateRequest body = new TargetingTemplateUpdateRequest("643", "example");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/targeting_templates").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@2e8076");
+            .accept("[Ljava.lang.String;@32296d67");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 

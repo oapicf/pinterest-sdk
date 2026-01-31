@@ -7,16 +7,16 @@
 #' @title AdsCreditsDiscountsGet200Response
 #' @description AdsCreditsDiscountsGet200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{AdsCreditDiscountsResponse})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{AdsCreditDiscountsResponse})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdsCreditsDiscountsGet200Response <- R6::R6Class(
   "AdsCreditsDiscountsGet200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new AdsCreditsDiscountsGet200Response class.
@@ -69,13 +69,13 @@ AdsCreditsDiscountsGet200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdsCreditsDiscountsGet200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        AdsCreditsDiscountsGet200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         AdsCreditsDiscountsGet200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        AdsCreditsDiscountsGet200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(AdsCreditsDiscountsGet200ResponseObject)
     },
@@ -87,11 +87,11 @@ AdsCreditsDiscountsGet200Response <- R6::R6Class(
     #' @return the instance of AdsCreditsDiscountsGet200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdsCreditDiscountsResponse]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdsCreditDiscountsResponse]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ AdsCreditsDiscountsGet200Response <- R6::R6Class(
     #' @return the instance of AdsCreditsDiscountsGet200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdsCreditDiscountsResponse]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdsCreditDiscountsResponse]", loadNamespace("openapi"))
       self
     },
 

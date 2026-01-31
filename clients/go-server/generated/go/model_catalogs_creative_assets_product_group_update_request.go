@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,11 +19,11 @@ type CatalogsCreativeAssetsProductGroupUpdateRequest struct {
 
 	CatalogType string `json:"catalog_type,omitempty"`
 
-	Name string `json:"name,omitempty"`
-
 	Description *string `json:"description,omitempty"`
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters,omitempty"`
+
+	Name string `json:"name,omitempty"`
 }
 
 // AssertCatalogsCreativeAssetsProductGroupUpdateRequestRequired checks if the required fields are not zero-ed

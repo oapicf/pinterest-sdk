@@ -72,7 +72,7 @@ private class OASAdAccountsSubscriptionsGetList200Test {
     @isTest
     private static void defaultValuesPopulated() {
         OASAdAccountsSubscriptionsGetList200 adAccountsSubscriptionsGetList200Response = new OASAdAccountsSubscriptionsGetList200();
-        System.assertEquals(new List<OASAdAccountGetSubscriptionResponse>(), adAccountsSubscriptionsGetList200Response.items);
+        System.assertEquals(new List<OASLeadSubscription>(), adAccountsSubscriptionsGetList200Response.items);
         System.assertEquals(null, adAccountsSubscriptionsGetList200Response.bookmark);
     }
 }

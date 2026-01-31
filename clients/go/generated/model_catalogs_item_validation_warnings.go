@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,174 @@ var _ MappedNullable = &CatalogsItemValidationWarnings{}
 
 // CatalogsItemValidationWarnings struct for CatalogsItemValidationWarnings
 type CatalogsItemValidationWarnings struct {
+	ADIMAGE0LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_DUPLICATED,omitempty"`
+	ADIMAGE0LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE0LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_REQUIRED,omitempty"`
+	ADIMAGE0LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_WARNING,omitempty"`
+	ADIMAGE0TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_DUPLICATED,omitempty"`
+	ADIMAGE0TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE0TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_REQUIRED,omitempty"`
+	ADIMAGE10LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_DUPLICATED,omitempty"`
+	ADIMAGE10LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE10LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_REQUIRED,omitempty"`
+	ADIMAGE10LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_WARNING,omitempty"`
+	ADIMAGE10TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_DUPLICATED,omitempty"`
+	ADIMAGE10TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE10TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_REQUIRED,omitempty"`
+	ADIMAGE11LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_DUPLICATED,omitempty"`
+	ADIMAGE11LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE11LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_REQUIRED,omitempty"`
+	ADIMAGE11LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_WARNING,omitempty"`
+	ADIMAGE11TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_DUPLICATED,omitempty"`
+	ADIMAGE11TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE11TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_REQUIRED,omitempty"`
+	ADIMAGE12LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_DUPLICATED,omitempty"`
+	ADIMAGE12LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE12LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_REQUIRED,omitempty"`
+	ADIMAGE12LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_WARNING,omitempty"`
+	ADIMAGE12TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_DUPLICATED,omitempty"`
+	ADIMAGE12TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE12TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_REQUIRED,omitempty"`
+	ADIMAGE13LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_DUPLICATED,omitempty"`
+	ADIMAGE13LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE13LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_REQUIRED,omitempty"`
+	ADIMAGE13LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_WARNING,omitempty"`
+	ADIMAGE13TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_DUPLICATED,omitempty"`
+	ADIMAGE13TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE13TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_REQUIRED,omitempty"`
+	ADIMAGE14LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_DUPLICATED,omitempty"`
+	ADIMAGE14LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE14LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_REQUIRED,omitempty"`
+	ADIMAGE14LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_WARNING,omitempty"`
+	ADIMAGE14TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_DUPLICATED,omitempty"`
+	ADIMAGE14TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE14TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_REQUIRED,omitempty"`
+	ADIMAGE15LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_DUPLICATED,omitempty"`
+	ADIMAGE15LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE15LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_REQUIRED,omitempty"`
+	ADIMAGE15LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_WARNING,omitempty"`
+	ADIMAGE15TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_DUPLICATED,omitempty"`
+	ADIMAGE15TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE15TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_REQUIRED,omitempty"`
+	ADIMAGE16LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_DUPLICATED,omitempty"`
+	ADIMAGE16LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE16LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_REQUIRED,omitempty"`
+	ADIMAGE16LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_WARNING,omitempty"`
+	ADIMAGE16TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_DUPLICATED,omitempty"`
+	ADIMAGE16TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE16TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_REQUIRED,omitempty"`
+	ADIMAGE17LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_DUPLICATED,omitempty"`
+	ADIMAGE17LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE17LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_REQUIRED,omitempty"`
+	ADIMAGE17LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_WARNING,omitempty"`
+	ADIMAGE17TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_DUPLICATED,omitempty"`
+	ADIMAGE17TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE17TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_REQUIRED,omitempty"`
+	ADIMAGE18LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_DUPLICATED,omitempty"`
+	ADIMAGE18LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE18LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_REQUIRED,omitempty"`
+	ADIMAGE18LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_WARNING,omitempty"`
+	ADIMAGE18TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_DUPLICATED,omitempty"`
+	ADIMAGE18TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE18TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_REQUIRED,omitempty"`
+	ADIMAGE19LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_DUPLICATED,omitempty"`
+	ADIMAGE19LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE19LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_REQUIRED,omitempty"`
+	ADIMAGE19LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_WARNING,omitempty"`
+	ADIMAGE19TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_DUPLICATED,omitempty"`
+	ADIMAGE19TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE19TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_REQUIRED,omitempty"`
+	ADIMAGE1LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_DUPLICATED,omitempty"`
+	ADIMAGE1LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE1LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_REQUIRED,omitempty"`
+	ADIMAGE1LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_WARNING,omitempty"`
+	ADIMAGE1TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_DUPLICATED,omitempty"`
+	ADIMAGE1TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE1TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_REQUIRED,omitempty"`
+	ADIMAGE2LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_DUPLICATED,omitempty"`
+	ADIMAGE2LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE2LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_REQUIRED,omitempty"`
+	ADIMAGE2LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_WARNING,omitempty"`
+	ADIMAGE2TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_DUPLICATED,omitempty"`
+	ADIMAGE2TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE2TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_REQUIRED,omitempty"`
+	ADIMAGE3LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_DUPLICATED,omitempty"`
+	ADIMAGE3LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE3LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_REQUIRED,omitempty"`
+	ADIMAGE3LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_WARNING,omitempty"`
+	ADIMAGE3TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_DUPLICATED,omitempty"`
+	ADIMAGE3TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE3TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_REQUIRED,omitempty"`
+	ADIMAGE4LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_DUPLICATED,omitempty"`
+	ADIMAGE4LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE4LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_REQUIRED,omitempty"`
+	ADIMAGE4LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_WARNING,omitempty"`
+	ADIMAGE4TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_DUPLICATED,omitempty"`
+	ADIMAGE4TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE4TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_REQUIRED,omitempty"`
+	ADIMAGE5LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_DUPLICATED,omitempty"`
+	ADIMAGE5LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE5LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_REQUIRED,omitempty"`
+	ADIMAGE5LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_WARNING,omitempty"`
+	ADIMAGE5TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_DUPLICATED,omitempty"`
+	ADIMAGE5TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE5TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_REQUIRED,omitempty"`
+	ADIMAGE6LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_DUPLICATED,omitempty"`
+	ADIMAGE6LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE6LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_REQUIRED,omitempty"`
+	ADIMAGE6LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_WARNING,omitempty"`
+	ADIMAGE6TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_DUPLICATED,omitempty"`
+	ADIMAGE6TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE6TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_REQUIRED,omitempty"`
+	ADIMAGE7LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_DUPLICATED,omitempty"`
+	ADIMAGE7LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE7LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_REQUIRED,omitempty"`
+	ADIMAGE7LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_WARNING,omitempty"`
+	ADIMAGE7TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_DUPLICATED,omitempty"`
+	ADIMAGE7TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE7TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_REQUIRED,omitempty"`
+	ADIMAGE8LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_DUPLICATED,omitempty"`
+	ADIMAGE8LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE8LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_REQUIRED,omitempty"`
+	ADIMAGE8LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_WARNING,omitempty"`
+	ADIMAGE8TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_DUPLICATED,omitempty"`
+	ADIMAGE8TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE8TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_REQUIRED,omitempty"`
+	ADIMAGE9LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_DUPLICATED,omitempty"`
+	ADIMAGE9LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE9LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_REQUIRED,omitempty"`
+	ADIMAGE9LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_WARNING,omitempty"`
+	ADIMAGE9TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_DUPLICATED,omitempty"`
+	ADIMAGE9TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADIMAGE9TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_REQUIRED,omitempty"`
 	AD_LINK_FORMAT_WARNING *CatalogsItemValidationDetails `json:"AD_LINK_FORMAT_WARNING,omitempty"`
 	AD_LINK_SAME_AS_LINK *CatalogsItemValidationDetails `json:"AD_LINK_SAME_AS_LINK,omitempty"`
+	ADVIDEO0LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_DUPLICATED,omitempty"`
+	ADVIDEO0LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADVIDEO0LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_REQUIRED,omitempty"`
+	ADVIDEO0LINKWARNING *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_WARNING,omitempty"`
+	ADVIDEO0TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_DUPLICATED,omitempty"`
+	ADVIDEO0TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADVIDEO0TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_REQUIRED,omitempty"`
+	ADVIDEO1LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_DUPLICATED,omitempty"`
+	ADVIDEO1LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADVIDEO1LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_REQUIRED,omitempty"`
+	ADVIDEO1LINKWARNING *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_WARNING,omitempty"`
+	ADVIDEO1TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_DUPLICATED,omitempty"`
+	ADVIDEO1TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADVIDEO1TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_REQUIRED,omitempty"`
+	ADVIDEO2LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_DUPLICATED,omitempty"`
+	ADVIDEO2LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_LENGTH_TOO_LONG,omitempty"`
+	ADVIDEO2LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_REQUIRED,omitempty"`
+	ADVIDEO2LINKWARNING *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_WARNING,omitempty"`
+	ADVIDEO2TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_DUPLICATED,omitempty"`
+	ADVIDEO2TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_LENGTH_TOO_LONG,omitempty"`
+	ADVIDEO2TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_REQUIRED,omitempty"`
 	ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG,omitempty"`
 	ADDITIONAL_IMAGE_LINK_WARNING *CatalogsItemValidationDetails `json:"ADDITIONAL_IMAGE_LINK_WARNING,omitempty"`
 	ADWORDS_FORMAT_WARNING *CatalogsItemValidationDetails `json:"ADWORDS_FORMAT_WARNING,omitempty"`
 	ADWORDS_SAME_AS_LINK *CatalogsItemValidationDetails `json:"ADWORDS_SAME_AS_LINK,omitempty"`
 	AGE_GROUP_INVALID *CatalogsItemValidationDetails `json:"AGE_GROUP_INVALID,omitempty"`
-	SIZE_SYSTEM_INVALID *CatalogsItemValidationDetails `json:"SIZE_SYSTEM_INVALID,omitempty"`
 	ANDROID_DEEP_LINK_INVALID *CatalogsItemValidationDetails `json:"ANDROID_DEEP_LINK_INVALID,omitempty"`
 	AVAILABILITY_DATE_INVALID *CatalogsItemValidationDetails `json:"AVAILABILITY_DATE_INVALID,omitempty"`
 	COUNTRY_DOES_NOT_MAP_TO_CURRENCY *CatalogsItemValidationDetails `json:"COUNTRY_DOES_NOT_MAP_TO_CURRENCY,omitempty"`
@@ -50,19 +210,21 @@ type CatalogsItemValidationWarnings struct {
 	OPTIONAL_PRODUCT_CATEGORY_MISSING *CatalogsItemValidationDetails `json:"OPTIONAL_PRODUCT_CATEGORY_MISSING,omitempty"`
 	PRODUCT_CATEGORY_DEPTH_WARNING *CatalogsItemValidationDetails `json:"PRODUCT_CATEGORY_DEPTH_WARNING,omitempty"`
 	PRODUCT_TYPE_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"PRODUCT_TYPE_LENGTH_TOO_LONG,omitempty"`
-	SALES_PRICE_INVALID *CatalogsItemValidationDetails `json:"SALES_PRICE_INVALID,omitempty"`
-	SALES_PRICE_TOO_LOW *CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_LOW,omitempty"`
-	SALES_PRICE_TOO_HIGH *CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_HIGH,omitempty"`
 	SALE_DATE_INVALID *CatalogsItemValidationDetails `json:"SALE_DATE_INVALID,omitempty"`
-	SHIPPING_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_INVALID,omitempty"`
+	SALES_PRICE_INVALID *CatalogsItemValidationDetails `json:"SALES_PRICE_INVALID,omitempty"`
+	SALES_PRICE_TOO_HIGH *CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_HIGH,omitempty"`
+	SALES_PRICE_TOO_LOW *CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_LOW,omitempty"`
 	SHIPPING_HEIGHT_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_HEIGHT_INVALID,omitempty"`
+	SHIPPING_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_INVALID,omitempty"`
 	SHIPPING_WEIGHT_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_WEIGHT_INVALID,omitempty"`
 	SHIPPING_WIDTH_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_WIDTH_INVALID,omitempty"`
+	SIZE_SYSTEM_INVALID *CatalogsItemValidationDetails `json:"SIZE_SYSTEM_INVALID,omitempty"`
 	SIZE_TYPE_INVALID *CatalogsItemValidationDetails `json:"SIZE_TYPE_INVALID,omitempty"`
 	TAX_INVALID *CatalogsItemValidationDetails `json:"TAX_INVALID,omitempty"`
 	TITLE_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"TITLE_LENGTH_TOO_LONG,omitempty"`
 	TOO_MANY_ADDITIONAL_IMAGE_LINKS *CatalogsItemValidationDetails `json:"TOO_MANY_ADDITIONAL_IMAGE_LINKS,omitempty"`
 	UTM_SOURCE_AUTO_CORRECTED *CatalogsItemValidationDetails `json:"UTM_SOURCE_AUTO_CORRECTED,omitempty"`
+	VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED *CatalogsItemValidationDetails `json:"VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED,omitempty"`
 	WEIGHT_UNIT_INVALID *CatalogsItemValidationDetails `json:"WEIGHT_UNIT_INVALID,omitempty"`
 }
 
@@ -81,6 +243,4486 @@ func NewCatalogsItemValidationWarnings() *CatalogsItemValidationWarnings {
 func NewCatalogsItemValidationWarningsWithDefaults() *CatalogsItemValidationWarnings {
 	this := CatalogsItemValidationWarnings{}
 	return &this
+}
+
+// GetADIMAGE0LINKDUPLICATED returns the ADIMAGE0LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0LINKDUPLICATED
+}
+
+// GetADIMAGE0LINKDUPLICATEDOk returns a tuple with the ADIMAGE0LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKDUPLICATED, true
+}
+
+// HasADIMAGE0LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0LINKDUPLICATED = &v
+}
+
+// GetADIMAGE0LINKLENGTHTOOLONG returns the ADIMAGE0LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE0LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE0LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE0LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE0LINKREQUIRED returns the ADIMAGE0LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0LINKREQUIRED
+}
+
+// GetADIMAGE0LINKREQUIREDOk returns a tuple with the ADIMAGE0LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKREQUIRED, true
+}
+
+// HasADIMAGE0LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0LINKREQUIRED = &v
+}
+
+// GetADIMAGE0LINKWARNING returns the ADIMAGE0LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0LINKWARNING
+}
+
+// GetADIMAGE0LINKWARNINGOk returns a tuple with the ADIMAGE0LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKWARNING, true
+}
+
+// HasADIMAGE0LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0LINKWARNING = &v
+}
+
+// GetADIMAGE0TAGDUPLICATED returns the ADIMAGE0TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0TAGDUPLICATED
+}
+
+// GetADIMAGE0TAGDUPLICATEDOk returns a tuple with the ADIMAGE0TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE0TAGDUPLICATED, true
+}
+
+// HasADIMAGE0TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0TAGDUPLICATED = &v
+}
+
+// GetADIMAGE0TAGLENGTHTOOLONG returns the ADIMAGE0TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE0TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE0TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE0TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE0TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE0TAGREQUIRED returns the ADIMAGE0TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE0TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE0TAGREQUIRED
+}
+
+// GetADIMAGE0TAGREQUIREDOk returns a tuple with the ADIMAGE0TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE0TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE0TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE0TAGREQUIRED, true
+}
+
+// HasADIMAGE0TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE0TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE0TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE0TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE0TAGREQUIRED = &v
+}
+
+// GetADIMAGE10LINKDUPLICATED returns the ADIMAGE10LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10LINKDUPLICATED
+}
+
+// GetADIMAGE10LINKDUPLICATEDOk returns a tuple with the ADIMAGE10LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKDUPLICATED, true
+}
+
+// HasADIMAGE10LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10LINKDUPLICATED = &v
+}
+
+// GetADIMAGE10LINKLENGTHTOOLONG returns the ADIMAGE10LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE10LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE10LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE10LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE10LINKREQUIRED returns the ADIMAGE10LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10LINKREQUIRED
+}
+
+// GetADIMAGE10LINKREQUIREDOk returns a tuple with the ADIMAGE10LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKREQUIRED, true
+}
+
+// HasADIMAGE10LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10LINKREQUIRED = &v
+}
+
+// GetADIMAGE10LINKWARNING returns the ADIMAGE10LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10LINKWARNING
+}
+
+// GetADIMAGE10LINKWARNINGOk returns a tuple with the ADIMAGE10LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKWARNING, true
+}
+
+// HasADIMAGE10LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10LINKWARNING = &v
+}
+
+// GetADIMAGE10TAGDUPLICATED returns the ADIMAGE10TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10TAGDUPLICATED
+}
+
+// GetADIMAGE10TAGDUPLICATEDOk returns a tuple with the ADIMAGE10TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE10TAGDUPLICATED, true
+}
+
+// HasADIMAGE10TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10TAGDUPLICATED = &v
+}
+
+// GetADIMAGE10TAGLENGTHTOOLONG returns the ADIMAGE10TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE10TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE10TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE10TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE10TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE10TAGREQUIRED returns the ADIMAGE10TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE10TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE10TAGREQUIRED
+}
+
+// GetADIMAGE10TAGREQUIREDOk returns a tuple with the ADIMAGE10TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE10TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE10TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE10TAGREQUIRED, true
+}
+
+// HasADIMAGE10TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE10TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE10TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE10TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE10TAGREQUIRED = &v
+}
+
+// GetADIMAGE11LINKDUPLICATED returns the ADIMAGE11LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11LINKDUPLICATED
+}
+
+// GetADIMAGE11LINKDUPLICATEDOk returns a tuple with the ADIMAGE11LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKDUPLICATED, true
+}
+
+// HasADIMAGE11LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11LINKDUPLICATED = &v
+}
+
+// GetADIMAGE11LINKLENGTHTOOLONG returns the ADIMAGE11LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE11LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE11LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE11LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE11LINKREQUIRED returns the ADIMAGE11LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11LINKREQUIRED
+}
+
+// GetADIMAGE11LINKREQUIREDOk returns a tuple with the ADIMAGE11LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKREQUIRED, true
+}
+
+// HasADIMAGE11LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11LINKREQUIRED = &v
+}
+
+// GetADIMAGE11LINKWARNING returns the ADIMAGE11LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11LINKWARNING
+}
+
+// GetADIMAGE11LINKWARNINGOk returns a tuple with the ADIMAGE11LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKWARNING, true
+}
+
+// HasADIMAGE11LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11LINKWARNING = &v
+}
+
+// GetADIMAGE11TAGDUPLICATED returns the ADIMAGE11TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11TAGDUPLICATED
+}
+
+// GetADIMAGE11TAGDUPLICATEDOk returns a tuple with the ADIMAGE11TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE11TAGDUPLICATED, true
+}
+
+// HasADIMAGE11TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11TAGDUPLICATED = &v
+}
+
+// GetADIMAGE11TAGLENGTHTOOLONG returns the ADIMAGE11TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE11TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE11TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE11TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE11TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE11TAGREQUIRED returns the ADIMAGE11TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE11TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE11TAGREQUIRED
+}
+
+// GetADIMAGE11TAGREQUIREDOk returns a tuple with the ADIMAGE11TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE11TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE11TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE11TAGREQUIRED, true
+}
+
+// HasADIMAGE11TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE11TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE11TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE11TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE11TAGREQUIRED = &v
+}
+
+// GetADIMAGE12LINKDUPLICATED returns the ADIMAGE12LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12LINKDUPLICATED
+}
+
+// GetADIMAGE12LINKDUPLICATEDOk returns a tuple with the ADIMAGE12LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKDUPLICATED, true
+}
+
+// HasADIMAGE12LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12LINKDUPLICATED = &v
+}
+
+// GetADIMAGE12LINKLENGTHTOOLONG returns the ADIMAGE12LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE12LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE12LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE12LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE12LINKREQUIRED returns the ADIMAGE12LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12LINKREQUIRED
+}
+
+// GetADIMAGE12LINKREQUIREDOk returns a tuple with the ADIMAGE12LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKREQUIRED, true
+}
+
+// HasADIMAGE12LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12LINKREQUIRED = &v
+}
+
+// GetADIMAGE12LINKWARNING returns the ADIMAGE12LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12LINKWARNING
+}
+
+// GetADIMAGE12LINKWARNINGOk returns a tuple with the ADIMAGE12LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKWARNING, true
+}
+
+// HasADIMAGE12LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12LINKWARNING = &v
+}
+
+// GetADIMAGE12TAGDUPLICATED returns the ADIMAGE12TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12TAGDUPLICATED
+}
+
+// GetADIMAGE12TAGDUPLICATEDOk returns a tuple with the ADIMAGE12TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE12TAGDUPLICATED, true
+}
+
+// HasADIMAGE12TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12TAGDUPLICATED = &v
+}
+
+// GetADIMAGE12TAGLENGTHTOOLONG returns the ADIMAGE12TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE12TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE12TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE12TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE12TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE12TAGREQUIRED returns the ADIMAGE12TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE12TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE12TAGREQUIRED
+}
+
+// GetADIMAGE12TAGREQUIREDOk returns a tuple with the ADIMAGE12TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE12TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE12TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE12TAGREQUIRED, true
+}
+
+// HasADIMAGE12TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE12TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE12TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE12TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE12TAGREQUIRED = &v
+}
+
+// GetADIMAGE13LINKDUPLICATED returns the ADIMAGE13LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13LINKDUPLICATED
+}
+
+// GetADIMAGE13LINKDUPLICATEDOk returns a tuple with the ADIMAGE13LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKDUPLICATED, true
+}
+
+// HasADIMAGE13LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13LINKDUPLICATED = &v
+}
+
+// GetADIMAGE13LINKLENGTHTOOLONG returns the ADIMAGE13LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE13LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE13LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE13LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE13LINKREQUIRED returns the ADIMAGE13LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13LINKREQUIRED
+}
+
+// GetADIMAGE13LINKREQUIREDOk returns a tuple with the ADIMAGE13LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKREQUIRED, true
+}
+
+// HasADIMAGE13LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13LINKREQUIRED = &v
+}
+
+// GetADIMAGE13LINKWARNING returns the ADIMAGE13LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13LINKWARNING
+}
+
+// GetADIMAGE13LINKWARNINGOk returns a tuple with the ADIMAGE13LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKWARNING, true
+}
+
+// HasADIMAGE13LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13LINKWARNING = &v
+}
+
+// GetADIMAGE13TAGDUPLICATED returns the ADIMAGE13TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13TAGDUPLICATED
+}
+
+// GetADIMAGE13TAGDUPLICATEDOk returns a tuple with the ADIMAGE13TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE13TAGDUPLICATED, true
+}
+
+// HasADIMAGE13TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13TAGDUPLICATED = &v
+}
+
+// GetADIMAGE13TAGLENGTHTOOLONG returns the ADIMAGE13TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE13TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE13TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE13TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE13TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE13TAGREQUIRED returns the ADIMAGE13TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE13TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE13TAGREQUIRED
+}
+
+// GetADIMAGE13TAGREQUIREDOk returns a tuple with the ADIMAGE13TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE13TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE13TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE13TAGREQUIRED, true
+}
+
+// HasADIMAGE13TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE13TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE13TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE13TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE13TAGREQUIRED = &v
+}
+
+// GetADIMAGE14LINKDUPLICATED returns the ADIMAGE14LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14LINKDUPLICATED
+}
+
+// GetADIMAGE14LINKDUPLICATEDOk returns a tuple with the ADIMAGE14LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKDUPLICATED, true
+}
+
+// HasADIMAGE14LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14LINKDUPLICATED = &v
+}
+
+// GetADIMAGE14LINKLENGTHTOOLONG returns the ADIMAGE14LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE14LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE14LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE14LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE14LINKREQUIRED returns the ADIMAGE14LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14LINKREQUIRED
+}
+
+// GetADIMAGE14LINKREQUIREDOk returns a tuple with the ADIMAGE14LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKREQUIRED, true
+}
+
+// HasADIMAGE14LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14LINKREQUIRED = &v
+}
+
+// GetADIMAGE14LINKWARNING returns the ADIMAGE14LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14LINKWARNING
+}
+
+// GetADIMAGE14LINKWARNINGOk returns a tuple with the ADIMAGE14LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKWARNING, true
+}
+
+// HasADIMAGE14LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14LINKWARNING = &v
+}
+
+// GetADIMAGE14TAGDUPLICATED returns the ADIMAGE14TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14TAGDUPLICATED
+}
+
+// GetADIMAGE14TAGDUPLICATEDOk returns a tuple with the ADIMAGE14TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE14TAGDUPLICATED, true
+}
+
+// HasADIMAGE14TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14TAGDUPLICATED = &v
+}
+
+// GetADIMAGE14TAGLENGTHTOOLONG returns the ADIMAGE14TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE14TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE14TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE14TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE14TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE14TAGREQUIRED returns the ADIMAGE14TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE14TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE14TAGREQUIRED
+}
+
+// GetADIMAGE14TAGREQUIREDOk returns a tuple with the ADIMAGE14TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE14TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE14TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE14TAGREQUIRED, true
+}
+
+// HasADIMAGE14TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE14TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE14TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE14TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE14TAGREQUIRED = &v
+}
+
+// GetADIMAGE15LINKDUPLICATED returns the ADIMAGE15LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15LINKDUPLICATED
+}
+
+// GetADIMAGE15LINKDUPLICATEDOk returns a tuple with the ADIMAGE15LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKDUPLICATED, true
+}
+
+// HasADIMAGE15LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15LINKDUPLICATED = &v
+}
+
+// GetADIMAGE15LINKLENGTHTOOLONG returns the ADIMAGE15LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE15LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE15LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE15LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE15LINKREQUIRED returns the ADIMAGE15LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15LINKREQUIRED
+}
+
+// GetADIMAGE15LINKREQUIREDOk returns a tuple with the ADIMAGE15LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKREQUIRED, true
+}
+
+// HasADIMAGE15LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15LINKREQUIRED = &v
+}
+
+// GetADIMAGE15LINKWARNING returns the ADIMAGE15LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15LINKWARNING
+}
+
+// GetADIMAGE15LINKWARNINGOk returns a tuple with the ADIMAGE15LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKWARNING, true
+}
+
+// HasADIMAGE15LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15LINKWARNING = &v
+}
+
+// GetADIMAGE15TAGDUPLICATED returns the ADIMAGE15TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15TAGDUPLICATED
+}
+
+// GetADIMAGE15TAGDUPLICATEDOk returns a tuple with the ADIMAGE15TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE15TAGDUPLICATED, true
+}
+
+// HasADIMAGE15TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15TAGDUPLICATED = &v
+}
+
+// GetADIMAGE15TAGLENGTHTOOLONG returns the ADIMAGE15TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE15TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE15TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE15TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE15TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE15TAGREQUIRED returns the ADIMAGE15TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE15TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE15TAGREQUIRED
+}
+
+// GetADIMAGE15TAGREQUIREDOk returns a tuple with the ADIMAGE15TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE15TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE15TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE15TAGREQUIRED, true
+}
+
+// HasADIMAGE15TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE15TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE15TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE15TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE15TAGREQUIRED = &v
+}
+
+// GetADIMAGE16LINKDUPLICATED returns the ADIMAGE16LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16LINKDUPLICATED
+}
+
+// GetADIMAGE16LINKDUPLICATEDOk returns a tuple with the ADIMAGE16LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKDUPLICATED, true
+}
+
+// HasADIMAGE16LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16LINKDUPLICATED = &v
+}
+
+// GetADIMAGE16LINKLENGTHTOOLONG returns the ADIMAGE16LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE16LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE16LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE16LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE16LINKREQUIRED returns the ADIMAGE16LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16LINKREQUIRED
+}
+
+// GetADIMAGE16LINKREQUIREDOk returns a tuple with the ADIMAGE16LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKREQUIRED, true
+}
+
+// HasADIMAGE16LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16LINKREQUIRED = &v
+}
+
+// GetADIMAGE16LINKWARNING returns the ADIMAGE16LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16LINKWARNING
+}
+
+// GetADIMAGE16LINKWARNINGOk returns a tuple with the ADIMAGE16LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKWARNING, true
+}
+
+// HasADIMAGE16LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16LINKWARNING = &v
+}
+
+// GetADIMAGE16TAGDUPLICATED returns the ADIMAGE16TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16TAGDUPLICATED
+}
+
+// GetADIMAGE16TAGDUPLICATEDOk returns a tuple with the ADIMAGE16TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE16TAGDUPLICATED, true
+}
+
+// HasADIMAGE16TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16TAGDUPLICATED = &v
+}
+
+// GetADIMAGE16TAGLENGTHTOOLONG returns the ADIMAGE16TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE16TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE16TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE16TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE16TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE16TAGREQUIRED returns the ADIMAGE16TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE16TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE16TAGREQUIRED
+}
+
+// GetADIMAGE16TAGREQUIREDOk returns a tuple with the ADIMAGE16TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE16TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE16TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE16TAGREQUIRED, true
+}
+
+// HasADIMAGE16TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE16TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE16TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE16TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE16TAGREQUIRED = &v
+}
+
+// GetADIMAGE17LINKDUPLICATED returns the ADIMAGE17LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17LINKDUPLICATED
+}
+
+// GetADIMAGE17LINKDUPLICATEDOk returns a tuple with the ADIMAGE17LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKDUPLICATED, true
+}
+
+// HasADIMAGE17LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17LINKDUPLICATED = &v
+}
+
+// GetADIMAGE17LINKLENGTHTOOLONG returns the ADIMAGE17LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE17LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE17LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE17LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE17LINKREQUIRED returns the ADIMAGE17LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17LINKREQUIRED
+}
+
+// GetADIMAGE17LINKREQUIREDOk returns a tuple with the ADIMAGE17LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKREQUIRED, true
+}
+
+// HasADIMAGE17LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17LINKREQUIRED = &v
+}
+
+// GetADIMAGE17LINKWARNING returns the ADIMAGE17LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17LINKWARNING
+}
+
+// GetADIMAGE17LINKWARNINGOk returns a tuple with the ADIMAGE17LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKWARNING, true
+}
+
+// HasADIMAGE17LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17LINKWARNING = &v
+}
+
+// GetADIMAGE17TAGDUPLICATED returns the ADIMAGE17TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17TAGDUPLICATED
+}
+
+// GetADIMAGE17TAGDUPLICATEDOk returns a tuple with the ADIMAGE17TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE17TAGDUPLICATED, true
+}
+
+// HasADIMAGE17TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17TAGDUPLICATED = &v
+}
+
+// GetADIMAGE17TAGLENGTHTOOLONG returns the ADIMAGE17TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE17TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE17TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE17TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE17TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE17TAGREQUIRED returns the ADIMAGE17TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE17TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE17TAGREQUIRED
+}
+
+// GetADIMAGE17TAGREQUIREDOk returns a tuple with the ADIMAGE17TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE17TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE17TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE17TAGREQUIRED, true
+}
+
+// HasADIMAGE17TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE17TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE17TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE17TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE17TAGREQUIRED = &v
+}
+
+// GetADIMAGE18LINKDUPLICATED returns the ADIMAGE18LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18LINKDUPLICATED
+}
+
+// GetADIMAGE18LINKDUPLICATEDOk returns a tuple with the ADIMAGE18LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKDUPLICATED, true
+}
+
+// HasADIMAGE18LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18LINKDUPLICATED = &v
+}
+
+// GetADIMAGE18LINKLENGTHTOOLONG returns the ADIMAGE18LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE18LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE18LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE18LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE18LINKREQUIRED returns the ADIMAGE18LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18LINKREQUIRED
+}
+
+// GetADIMAGE18LINKREQUIREDOk returns a tuple with the ADIMAGE18LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKREQUIRED, true
+}
+
+// HasADIMAGE18LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18LINKREQUIRED = &v
+}
+
+// GetADIMAGE18LINKWARNING returns the ADIMAGE18LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18LINKWARNING
+}
+
+// GetADIMAGE18LINKWARNINGOk returns a tuple with the ADIMAGE18LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKWARNING, true
+}
+
+// HasADIMAGE18LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18LINKWARNING = &v
+}
+
+// GetADIMAGE18TAGDUPLICATED returns the ADIMAGE18TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18TAGDUPLICATED
+}
+
+// GetADIMAGE18TAGDUPLICATEDOk returns a tuple with the ADIMAGE18TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE18TAGDUPLICATED, true
+}
+
+// HasADIMAGE18TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18TAGDUPLICATED = &v
+}
+
+// GetADIMAGE18TAGLENGTHTOOLONG returns the ADIMAGE18TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE18TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE18TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE18TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE18TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE18TAGREQUIRED returns the ADIMAGE18TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE18TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE18TAGREQUIRED
+}
+
+// GetADIMAGE18TAGREQUIREDOk returns a tuple with the ADIMAGE18TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE18TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE18TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE18TAGREQUIRED, true
+}
+
+// HasADIMAGE18TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE18TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE18TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE18TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE18TAGREQUIRED = &v
+}
+
+// GetADIMAGE19LINKDUPLICATED returns the ADIMAGE19LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19LINKDUPLICATED
+}
+
+// GetADIMAGE19LINKDUPLICATEDOk returns a tuple with the ADIMAGE19LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKDUPLICATED, true
+}
+
+// HasADIMAGE19LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19LINKDUPLICATED = &v
+}
+
+// GetADIMAGE19LINKLENGTHTOOLONG returns the ADIMAGE19LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE19LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE19LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE19LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE19LINKREQUIRED returns the ADIMAGE19LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19LINKREQUIRED
+}
+
+// GetADIMAGE19LINKREQUIREDOk returns a tuple with the ADIMAGE19LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKREQUIRED, true
+}
+
+// HasADIMAGE19LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19LINKREQUIRED = &v
+}
+
+// GetADIMAGE19LINKWARNING returns the ADIMAGE19LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19LINKWARNING
+}
+
+// GetADIMAGE19LINKWARNINGOk returns a tuple with the ADIMAGE19LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKWARNING, true
+}
+
+// HasADIMAGE19LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19LINKWARNING = &v
+}
+
+// GetADIMAGE19TAGDUPLICATED returns the ADIMAGE19TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19TAGDUPLICATED
+}
+
+// GetADIMAGE19TAGDUPLICATEDOk returns a tuple with the ADIMAGE19TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE19TAGDUPLICATED, true
+}
+
+// HasADIMAGE19TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19TAGDUPLICATED = &v
+}
+
+// GetADIMAGE19TAGLENGTHTOOLONG returns the ADIMAGE19TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE19TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE19TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE19TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE19TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE19TAGREQUIRED returns the ADIMAGE19TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE19TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE19TAGREQUIRED
+}
+
+// GetADIMAGE19TAGREQUIREDOk returns a tuple with the ADIMAGE19TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE19TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE19TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE19TAGREQUIRED, true
+}
+
+// HasADIMAGE19TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE19TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE19TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE19TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE19TAGREQUIRED = &v
+}
+
+// GetADIMAGE1LINKDUPLICATED returns the ADIMAGE1LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1LINKDUPLICATED
+}
+
+// GetADIMAGE1LINKDUPLICATEDOk returns a tuple with the ADIMAGE1LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKDUPLICATED, true
+}
+
+// HasADIMAGE1LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1LINKDUPLICATED = &v
+}
+
+// GetADIMAGE1LINKLENGTHTOOLONG returns the ADIMAGE1LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE1LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE1LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE1LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE1LINKREQUIRED returns the ADIMAGE1LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1LINKREQUIRED
+}
+
+// GetADIMAGE1LINKREQUIREDOk returns a tuple with the ADIMAGE1LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKREQUIRED, true
+}
+
+// HasADIMAGE1LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1LINKREQUIRED = &v
+}
+
+// GetADIMAGE1LINKWARNING returns the ADIMAGE1LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1LINKWARNING
+}
+
+// GetADIMAGE1LINKWARNINGOk returns a tuple with the ADIMAGE1LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKWARNING, true
+}
+
+// HasADIMAGE1LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1LINKWARNING = &v
+}
+
+// GetADIMAGE1TAGDUPLICATED returns the ADIMAGE1TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1TAGDUPLICATED
+}
+
+// GetADIMAGE1TAGDUPLICATEDOk returns a tuple with the ADIMAGE1TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE1TAGDUPLICATED, true
+}
+
+// HasADIMAGE1TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1TAGDUPLICATED = &v
+}
+
+// GetADIMAGE1TAGLENGTHTOOLONG returns the ADIMAGE1TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE1TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE1TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE1TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE1TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE1TAGREQUIRED returns the ADIMAGE1TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE1TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE1TAGREQUIRED
+}
+
+// GetADIMAGE1TAGREQUIREDOk returns a tuple with the ADIMAGE1TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE1TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE1TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE1TAGREQUIRED, true
+}
+
+// HasADIMAGE1TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE1TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE1TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE1TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE1TAGREQUIRED = &v
+}
+
+// GetADIMAGE2LINKDUPLICATED returns the ADIMAGE2LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2LINKDUPLICATED
+}
+
+// GetADIMAGE2LINKDUPLICATEDOk returns a tuple with the ADIMAGE2LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKDUPLICATED, true
+}
+
+// HasADIMAGE2LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2LINKDUPLICATED = &v
+}
+
+// GetADIMAGE2LINKLENGTHTOOLONG returns the ADIMAGE2LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE2LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE2LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE2LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE2LINKREQUIRED returns the ADIMAGE2LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2LINKREQUIRED
+}
+
+// GetADIMAGE2LINKREQUIREDOk returns a tuple with the ADIMAGE2LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKREQUIRED, true
+}
+
+// HasADIMAGE2LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2LINKREQUIRED = &v
+}
+
+// GetADIMAGE2LINKWARNING returns the ADIMAGE2LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2LINKWARNING
+}
+
+// GetADIMAGE2LINKWARNINGOk returns a tuple with the ADIMAGE2LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKWARNING, true
+}
+
+// HasADIMAGE2LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2LINKWARNING = &v
+}
+
+// GetADIMAGE2TAGDUPLICATED returns the ADIMAGE2TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2TAGDUPLICATED
+}
+
+// GetADIMAGE2TAGDUPLICATEDOk returns a tuple with the ADIMAGE2TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE2TAGDUPLICATED, true
+}
+
+// HasADIMAGE2TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2TAGDUPLICATED = &v
+}
+
+// GetADIMAGE2TAGLENGTHTOOLONG returns the ADIMAGE2TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE2TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE2TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE2TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE2TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE2TAGREQUIRED returns the ADIMAGE2TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE2TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE2TAGREQUIRED
+}
+
+// GetADIMAGE2TAGREQUIREDOk returns a tuple with the ADIMAGE2TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE2TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE2TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE2TAGREQUIRED, true
+}
+
+// HasADIMAGE2TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE2TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE2TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE2TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE2TAGREQUIRED = &v
+}
+
+// GetADIMAGE3LINKDUPLICATED returns the ADIMAGE3LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3LINKDUPLICATED
+}
+
+// GetADIMAGE3LINKDUPLICATEDOk returns a tuple with the ADIMAGE3LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKDUPLICATED, true
+}
+
+// HasADIMAGE3LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3LINKDUPLICATED = &v
+}
+
+// GetADIMAGE3LINKLENGTHTOOLONG returns the ADIMAGE3LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE3LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE3LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE3LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE3LINKREQUIRED returns the ADIMAGE3LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3LINKREQUIRED
+}
+
+// GetADIMAGE3LINKREQUIREDOk returns a tuple with the ADIMAGE3LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKREQUIRED, true
+}
+
+// HasADIMAGE3LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3LINKREQUIRED = &v
+}
+
+// GetADIMAGE3LINKWARNING returns the ADIMAGE3LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3LINKWARNING
+}
+
+// GetADIMAGE3LINKWARNINGOk returns a tuple with the ADIMAGE3LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKWARNING, true
+}
+
+// HasADIMAGE3LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3LINKWARNING = &v
+}
+
+// GetADIMAGE3TAGDUPLICATED returns the ADIMAGE3TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3TAGDUPLICATED
+}
+
+// GetADIMAGE3TAGDUPLICATEDOk returns a tuple with the ADIMAGE3TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE3TAGDUPLICATED, true
+}
+
+// HasADIMAGE3TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3TAGDUPLICATED = &v
+}
+
+// GetADIMAGE3TAGLENGTHTOOLONG returns the ADIMAGE3TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE3TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE3TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE3TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE3TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE3TAGREQUIRED returns the ADIMAGE3TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE3TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE3TAGREQUIRED
+}
+
+// GetADIMAGE3TAGREQUIREDOk returns a tuple with the ADIMAGE3TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE3TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE3TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE3TAGREQUIRED, true
+}
+
+// HasADIMAGE3TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE3TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE3TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE3TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE3TAGREQUIRED = &v
+}
+
+// GetADIMAGE4LINKDUPLICATED returns the ADIMAGE4LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4LINKDUPLICATED
+}
+
+// GetADIMAGE4LINKDUPLICATEDOk returns a tuple with the ADIMAGE4LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKDUPLICATED, true
+}
+
+// HasADIMAGE4LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4LINKDUPLICATED = &v
+}
+
+// GetADIMAGE4LINKLENGTHTOOLONG returns the ADIMAGE4LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE4LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE4LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE4LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE4LINKREQUIRED returns the ADIMAGE4LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4LINKREQUIRED
+}
+
+// GetADIMAGE4LINKREQUIREDOk returns a tuple with the ADIMAGE4LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKREQUIRED, true
+}
+
+// HasADIMAGE4LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4LINKREQUIRED = &v
+}
+
+// GetADIMAGE4LINKWARNING returns the ADIMAGE4LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4LINKWARNING
+}
+
+// GetADIMAGE4LINKWARNINGOk returns a tuple with the ADIMAGE4LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKWARNING, true
+}
+
+// HasADIMAGE4LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4LINKWARNING = &v
+}
+
+// GetADIMAGE4TAGDUPLICATED returns the ADIMAGE4TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4TAGDUPLICATED
+}
+
+// GetADIMAGE4TAGDUPLICATEDOk returns a tuple with the ADIMAGE4TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE4TAGDUPLICATED, true
+}
+
+// HasADIMAGE4TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4TAGDUPLICATED = &v
+}
+
+// GetADIMAGE4TAGLENGTHTOOLONG returns the ADIMAGE4TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE4TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE4TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE4TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE4TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE4TAGREQUIRED returns the ADIMAGE4TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE4TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE4TAGREQUIRED
+}
+
+// GetADIMAGE4TAGREQUIREDOk returns a tuple with the ADIMAGE4TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE4TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE4TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE4TAGREQUIRED, true
+}
+
+// HasADIMAGE4TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE4TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE4TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE4TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE4TAGREQUIRED = &v
+}
+
+// GetADIMAGE5LINKDUPLICATED returns the ADIMAGE5LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5LINKDUPLICATED
+}
+
+// GetADIMAGE5LINKDUPLICATEDOk returns a tuple with the ADIMAGE5LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKDUPLICATED, true
+}
+
+// HasADIMAGE5LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5LINKDUPLICATED = &v
+}
+
+// GetADIMAGE5LINKLENGTHTOOLONG returns the ADIMAGE5LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE5LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE5LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE5LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE5LINKREQUIRED returns the ADIMAGE5LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5LINKREQUIRED
+}
+
+// GetADIMAGE5LINKREQUIREDOk returns a tuple with the ADIMAGE5LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKREQUIRED, true
+}
+
+// HasADIMAGE5LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5LINKREQUIRED = &v
+}
+
+// GetADIMAGE5LINKWARNING returns the ADIMAGE5LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5LINKWARNING
+}
+
+// GetADIMAGE5LINKWARNINGOk returns a tuple with the ADIMAGE5LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKWARNING, true
+}
+
+// HasADIMAGE5LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5LINKWARNING = &v
+}
+
+// GetADIMAGE5TAGDUPLICATED returns the ADIMAGE5TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5TAGDUPLICATED
+}
+
+// GetADIMAGE5TAGDUPLICATEDOk returns a tuple with the ADIMAGE5TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE5TAGDUPLICATED, true
+}
+
+// HasADIMAGE5TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5TAGDUPLICATED = &v
+}
+
+// GetADIMAGE5TAGLENGTHTOOLONG returns the ADIMAGE5TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE5TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE5TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE5TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE5TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE5TAGREQUIRED returns the ADIMAGE5TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE5TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE5TAGREQUIRED
+}
+
+// GetADIMAGE5TAGREQUIREDOk returns a tuple with the ADIMAGE5TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE5TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE5TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE5TAGREQUIRED, true
+}
+
+// HasADIMAGE5TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE5TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE5TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE5TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE5TAGREQUIRED = &v
+}
+
+// GetADIMAGE6LINKDUPLICATED returns the ADIMAGE6LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6LINKDUPLICATED
+}
+
+// GetADIMAGE6LINKDUPLICATEDOk returns a tuple with the ADIMAGE6LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKDUPLICATED, true
+}
+
+// HasADIMAGE6LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6LINKDUPLICATED = &v
+}
+
+// GetADIMAGE6LINKLENGTHTOOLONG returns the ADIMAGE6LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE6LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE6LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE6LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE6LINKREQUIRED returns the ADIMAGE6LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6LINKREQUIRED
+}
+
+// GetADIMAGE6LINKREQUIREDOk returns a tuple with the ADIMAGE6LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKREQUIRED, true
+}
+
+// HasADIMAGE6LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6LINKREQUIRED = &v
+}
+
+// GetADIMAGE6LINKWARNING returns the ADIMAGE6LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6LINKWARNING
+}
+
+// GetADIMAGE6LINKWARNINGOk returns a tuple with the ADIMAGE6LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKWARNING, true
+}
+
+// HasADIMAGE6LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6LINKWARNING = &v
+}
+
+// GetADIMAGE6TAGDUPLICATED returns the ADIMAGE6TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6TAGDUPLICATED
+}
+
+// GetADIMAGE6TAGDUPLICATEDOk returns a tuple with the ADIMAGE6TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE6TAGDUPLICATED, true
+}
+
+// HasADIMAGE6TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6TAGDUPLICATED = &v
+}
+
+// GetADIMAGE6TAGLENGTHTOOLONG returns the ADIMAGE6TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE6TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE6TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE6TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE6TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE6TAGREQUIRED returns the ADIMAGE6TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE6TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE6TAGREQUIRED
+}
+
+// GetADIMAGE6TAGREQUIREDOk returns a tuple with the ADIMAGE6TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE6TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE6TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE6TAGREQUIRED, true
+}
+
+// HasADIMAGE6TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE6TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE6TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE6TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE6TAGREQUIRED = &v
+}
+
+// GetADIMAGE7LINKDUPLICATED returns the ADIMAGE7LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7LINKDUPLICATED
+}
+
+// GetADIMAGE7LINKDUPLICATEDOk returns a tuple with the ADIMAGE7LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKDUPLICATED, true
+}
+
+// HasADIMAGE7LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7LINKDUPLICATED = &v
+}
+
+// GetADIMAGE7LINKLENGTHTOOLONG returns the ADIMAGE7LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE7LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE7LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE7LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE7LINKREQUIRED returns the ADIMAGE7LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7LINKREQUIRED
+}
+
+// GetADIMAGE7LINKREQUIREDOk returns a tuple with the ADIMAGE7LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKREQUIRED, true
+}
+
+// HasADIMAGE7LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7LINKREQUIRED = &v
+}
+
+// GetADIMAGE7LINKWARNING returns the ADIMAGE7LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7LINKWARNING
+}
+
+// GetADIMAGE7LINKWARNINGOk returns a tuple with the ADIMAGE7LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKWARNING, true
+}
+
+// HasADIMAGE7LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7LINKWARNING = &v
+}
+
+// GetADIMAGE7TAGDUPLICATED returns the ADIMAGE7TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7TAGDUPLICATED
+}
+
+// GetADIMAGE7TAGDUPLICATEDOk returns a tuple with the ADIMAGE7TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE7TAGDUPLICATED, true
+}
+
+// HasADIMAGE7TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7TAGDUPLICATED = &v
+}
+
+// GetADIMAGE7TAGLENGTHTOOLONG returns the ADIMAGE7TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE7TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE7TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE7TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE7TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE7TAGREQUIRED returns the ADIMAGE7TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE7TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE7TAGREQUIRED
+}
+
+// GetADIMAGE7TAGREQUIREDOk returns a tuple with the ADIMAGE7TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE7TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE7TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE7TAGREQUIRED, true
+}
+
+// HasADIMAGE7TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE7TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE7TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE7TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE7TAGREQUIRED = &v
+}
+
+// GetADIMAGE8LINKDUPLICATED returns the ADIMAGE8LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8LINKDUPLICATED
+}
+
+// GetADIMAGE8LINKDUPLICATEDOk returns a tuple with the ADIMAGE8LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKDUPLICATED, true
+}
+
+// HasADIMAGE8LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8LINKDUPLICATED = &v
+}
+
+// GetADIMAGE8LINKLENGTHTOOLONG returns the ADIMAGE8LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE8LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE8LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE8LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE8LINKREQUIRED returns the ADIMAGE8LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8LINKREQUIRED
+}
+
+// GetADIMAGE8LINKREQUIREDOk returns a tuple with the ADIMAGE8LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKREQUIRED, true
+}
+
+// HasADIMAGE8LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8LINKREQUIRED = &v
+}
+
+// GetADIMAGE8LINKWARNING returns the ADIMAGE8LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8LINKWARNING
+}
+
+// GetADIMAGE8LINKWARNINGOk returns a tuple with the ADIMAGE8LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKWARNING, true
+}
+
+// HasADIMAGE8LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8LINKWARNING = &v
+}
+
+// GetADIMAGE8TAGDUPLICATED returns the ADIMAGE8TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8TAGDUPLICATED
+}
+
+// GetADIMAGE8TAGDUPLICATEDOk returns a tuple with the ADIMAGE8TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE8TAGDUPLICATED, true
+}
+
+// HasADIMAGE8TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8TAGDUPLICATED = &v
+}
+
+// GetADIMAGE8TAGLENGTHTOOLONG returns the ADIMAGE8TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE8TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE8TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE8TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE8TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE8TAGREQUIRED returns the ADIMAGE8TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE8TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE8TAGREQUIRED
+}
+
+// GetADIMAGE8TAGREQUIREDOk returns a tuple with the ADIMAGE8TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE8TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE8TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE8TAGREQUIRED, true
+}
+
+// HasADIMAGE8TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE8TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE8TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE8TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE8TAGREQUIRED = &v
+}
+
+// GetADIMAGE9LINKDUPLICATED returns the ADIMAGE9LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9LINKDUPLICATED
+}
+
+// GetADIMAGE9LINKDUPLICATEDOk returns a tuple with the ADIMAGE9LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKDUPLICATED, true
+}
+
+// HasADIMAGE9LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9LINKDUPLICATED = &v
+}
+
+// GetADIMAGE9LINKLENGTHTOOLONG returns the ADIMAGE9LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE9LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE9LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE9LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE9LINKREQUIRED returns the ADIMAGE9LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9LINKREQUIRED
+}
+
+// GetADIMAGE9LINKREQUIREDOk returns a tuple with the ADIMAGE9LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKREQUIRED, true
+}
+
+// HasADIMAGE9LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9LINKREQUIRED = &v
+}
+
+// GetADIMAGE9LINKWARNING returns the ADIMAGE9LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9LINKWARNING
+}
+
+// GetADIMAGE9LINKWARNINGOk returns a tuple with the ADIMAGE9LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKWARNING, true
+}
+
+// HasADIMAGE9LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9LINKWARNING = &v
+}
+
+// GetADIMAGE9TAGDUPLICATED returns the ADIMAGE9TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9TAGDUPLICATED
+}
+
+// GetADIMAGE9TAGDUPLICATEDOk returns a tuple with the ADIMAGE9TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE9TAGDUPLICATED, true
+}
+
+// HasADIMAGE9TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9TAGDUPLICATED = &v
+}
+
+// GetADIMAGE9TAGLENGTHTOOLONG returns the ADIMAGE9TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE9TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE9TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE9TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE9TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE9TAGREQUIRED returns the ADIMAGE9TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADIMAGE9TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADIMAGE9TAGREQUIRED
+}
+
+// GetADIMAGE9TAGREQUIREDOk returns a tuple with the ADIMAGE9TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADIMAGE9TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADIMAGE9TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE9TAGREQUIRED, true
+}
+
+// HasADIMAGE9TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADIMAGE9TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADIMAGE9TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADIMAGE9TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADIMAGE9TAGREQUIRED = &v
 }
 
 // GetAD_LINK_FORMAT_WARNING returns the AD_LINK_FORMAT_WARNING field value if set, zero value otherwise.
@@ -145,6 +4787,678 @@ func (o *CatalogsItemValidationWarnings) HasAD_LINK_SAME_AS_LINK() bool {
 // SetAD_LINK_SAME_AS_LINK gets a reference to the given CatalogsItemValidationDetails and assigns it to the AD_LINK_SAME_AS_LINK field.
 func (o *CatalogsItemValidationWarnings) SetAD_LINK_SAME_AS_LINK(v CatalogsItemValidationDetails) {
 	o.AD_LINK_SAME_AS_LINK = &v
+}
+
+// GetADVIDEO0LINKDUPLICATED returns the ADVIDEO0LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0LINKDUPLICATED
+}
+
+// GetADVIDEO0LINKDUPLICATEDOk returns a tuple with the ADVIDEO0LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO0LINKDUPLICATED, true
+}
+
+// HasADVIDEO0LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0LINKDUPLICATED = &v
+}
+
+// GetADVIDEO0LINKLENGTHTOOLONG returns the ADVIDEO0LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0LINKLENGTHTOOLONG
+}
+
+// GetADVIDEO0LINKLENGTHTOOLONGOk returns a tuple with the ADVIDEO0LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO0LINKLENGTHTOOLONG, true
+}
+
+// HasADVIDEO0LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0LINKLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO0LINKREQUIRED returns the ADVIDEO0LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0LINKREQUIRED
+}
+
+// GetADVIDEO0LINKREQUIREDOk returns a tuple with the ADVIDEO0LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO0LINKREQUIRED, true
+}
+
+// HasADVIDEO0LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0LINKREQUIRED = &v
+}
+
+// GetADVIDEO0LINKWARNING returns the ADVIDEO0LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0LINKWARNING
+}
+
+// GetADVIDEO0LINKWARNINGOk returns a tuple with the ADVIDEO0LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKWARNING) {
+		return nil, false
+	}
+	return o.ADVIDEO0LINKWARNING, true
+}
+
+// HasADVIDEO0LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0LINKWARNING = &v
+}
+
+// GetADVIDEO0TAGDUPLICATED returns the ADVIDEO0TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0TAGDUPLICATED
+}
+
+// GetADVIDEO0TAGDUPLICATEDOk returns a tuple with the ADVIDEO0TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO0TAGDUPLICATED, true
+}
+
+// HasADVIDEO0TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0TAGDUPLICATED = &v
+}
+
+// GetADVIDEO0TAGLENGTHTOOLONG returns the ADVIDEO0TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0TAGLENGTHTOOLONG
+}
+
+// GetADVIDEO0TAGLENGTHTOOLONGOk returns a tuple with the ADVIDEO0TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO0TAGLENGTHTOOLONG, true
+}
+
+// HasADVIDEO0TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0TAGLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO0TAGREQUIRED returns the ADVIDEO0TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO0TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO0TAGREQUIRED
+}
+
+// GetADVIDEO0TAGREQUIREDOk returns a tuple with the ADVIDEO0TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO0TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO0TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO0TAGREQUIRED, true
+}
+
+// HasADVIDEO0TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO0TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO0TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO0TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO0TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO0TAGREQUIRED = &v
+}
+
+// GetADVIDEO1LINKDUPLICATED returns the ADVIDEO1LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1LINKDUPLICATED
+}
+
+// GetADVIDEO1LINKDUPLICATEDOk returns a tuple with the ADVIDEO1LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO1LINKDUPLICATED, true
+}
+
+// HasADVIDEO1LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1LINKDUPLICATED = &v
+}
+
+// GetADVIDEO1LINKLENGTHTOOLONG returns the ADVIDEO1LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1LINKLENGTHTOOLONG
+}
+
+// GetADVIDEO1LINKLENGTHTOOLONGOk returns a tuple with the ADVIDEO1LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO1LINKLENGTHTOOLONG, true
+}
+
+// HasADVIDEO1LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1LINKLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO1LINKREQUIRED returns the ADVIDEO1LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1LINKREQUIRED
+}
+
+// GetADVIDEO1LINKREQUIREDOk returns a tuple with the ADVIDEO1LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO1LINKREQUIRED, true
+}
+
+// HasADVIDEO1LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1LINKREQUIRED = &v
+}
+
+// GetADVIDEO1LINKWARNING returns the ADVIDEO1LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1LINKWARNING
+}
+
+// GetADVIDEO1LINKWARNINGOk returns a tuple with the ADVIDEO1LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKWARNING) {
+		return nil, false
+	}
+	return o.ADVIDEO1LINKWARNING, true
+}
+
+// HasADVIDEO1LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1LINKWARNING = &v
+}
+
+// GetADVIDEO1TAGDUPLICATED returns the ADVIDEO1TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1TAGDUPLICATED
+}
+
+// GetADVIDEO1TAGDUPLICATEDOk returns a tuple with the ADVIDEO1TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO1TAGDUPLICATED, true
+}
+
+// HasADVIDEO1TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1TAGDUPLICATED = &v
+}
+
+// GetADVIDEO1TAGLENGTHTOOLONG returns the ADVIDEO1TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1TAGLENGTHTOOLONG
+}
+
+// GetADVIDEO1TAGLENGTHTOOLONGOk returns a tuple with the ADVIDEO1TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO1TAGLENGTHTOOLONG, true
+}
+
+// HasADVIDEO1TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1TAGLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO1TAGREQUIRED returns the ADVIDEO1TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO1TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO1TAGREQUIRED
+}
+
+// GetADVIDEO1TAGREQUIREDOk returns a tuple with the ADVIDEO1TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO1TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO1TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO1TAGREQUIRED, true
+}
+
+// HasADVIDEO1TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO1TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO1TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO1TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO1TAGREQUIRED = &v
+}
+
+// GetADVIDEO2LINKDUPLICATED returns the ADVIDEO2LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2LINKDUPLICATED
+}
+
+// GetADVIDEO2LINKDUPLICATEDOk returns a tuple with the ADVIDEO2LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKDUPLICATED, true
+}
+
+// HasADVIDEO2LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2LINKDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2LINKDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2LINKDUPLICATED = &v
+}
+
+// GetADVIDEO2LINKLENGTHTOOLONG returns the ADVIDEO2LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2LINKLENGTHTOOLONG
+}
+
+// GetADVIDEO2LINKLENGTHTOOLONGOk returns a tuple with the ADVIDEO2LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKLENGTHTOOLONG, true
+}
+
+// HasADVIDEO2LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2LINKLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2LINKLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2LINKLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO2LINKREQUIRED returns the ADVIDEO2LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2LINKREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2LINKREQUIRED
+}
+
+// GetADVIDEO2LINKREQUIREDOk returns a tuple with the ADVIDEO2LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKREQUIRED, true
+}
+
+// HasADVIDEO2LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2LINKREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2LINKREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2LINKREQUIRED = &v
+}
+
+// GetADVIDEO2LINKWARNING returns the ADVIDEO2LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKWARNING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2LINKWARNING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2LINKWARNING
+}
+
+// GetADVIDEO2LINKWARNINGOk returns a tuple with the ADVIDEO2LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2LINKWARNINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKWARNING) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKWARNING, true
+}
+
+// HasADVIDEO2LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKWARNING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2LINKWARNING field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2LINKWARNING(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2LINKWARNING = &v
+}
+
+// GetADVIDEO2TAGDUPLICATED returns the ADVIDEO2TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2TAGDUPLICATED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2TAGDUPLICATED
+}
+
+// GetADVIDEO2TAGDUPLICATEDOk returns a tuple with the ADVIDEO2TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2TAGDUPLICATEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO2TAGDUPLICATED, true
+}
+
+// HasADVIDEO2TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2TAGDUPLICATED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2TAGDUPLICATED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2TAGDUPLICATED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2TAGDUPLICATED = &v
+}
+
+// GetADVIDEO2TAGLENGTHTOOLONG returns the ADVIDEO2TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2TAGLENGTHTOOLONG() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2TAGLENGTHTOOLONG
+}
+
+// GetADVIDEO2TAGLENGTHTOOLONGOk returns a tuple with the ADVIDEO2TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2TAGLENGTHTOOLONGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO2TAGLENGTHTOOLONG, true
+}
+
+// HasADVIDEO2TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2TAGLENGTHTOOLONG gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2TAGLENGTHTOOLONG field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2TAGLENGTHTOOLONG(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2TAGLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO2TAGREQUIRED returns the ADVIDEO2TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2TAGREQUIRED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ADVIDEO2TAGREQUIRED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ADVIDEO2TAGREQUIRED
+}
+
+// GetADVIDEO2TAGREQUIREDOk returns a tuple with the ADVIDEO2TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetADVIDEO2TAGREQUIREDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ADVIDEO2TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO2TAGREQUIRED, true
+}
+
+// HasADVIDEO2TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasADVIDEO2TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2TAGREQUIRED gets a reference to the given CatalogsItemValidationDetails and assigns it to the ADVIDEO2TAGREQUIRED field.
+func (o *CatalogsItemValidationWarnings) SetADVIDEO2TAGREQUIRED(v CatalogsItemValidationDetails) {
+	o.ADVIDEO2TAGREQUIRED = &v
 }
 
 // GetADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG returns the ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG field value if set, zero value otherwise.
@@ -305,38 +5619,6 @@ func (o *CatalogsItemValidationWarnings) HasAGE_GROUP_INVALID() bool {
 // SetAGE_GROUP_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the AGE_GROUP_INVALID field.
 func (o *CatalogsItemValidationWarnings) SetAGE_GROUP_INVALID(v CatalogsItemValidationDetails) {
 	o.AGE_GROUP_INVALID = &v
-}
-
-// GetSIZE_SYSTEM_INVALID returns the SIZE_SYSTEM_INVALID field value if set, zero value otherwise.
-func (o *CatalogsItemValidationWarnings) GetSIZE_SYSTEM_INVALID() CatalogsItemValidationDetails {
-	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
-		var ret CatalogsItemValidationDetails
-		return ret
-	}
-	return *o.SIZE_SYSTEM_INVALID
-}
-
-// GetSIZE_SYSTEM_INVALIDOk returns a tuple with the SIZE_SYSTEM_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationWarnings) GetSIZE_SYSTEM_INVALIDOk() (*CatalogsItemValidationDetails, bool) {
-	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
-		return nil, false
-	}
-	return o.SIZE_SYSTEM_INVALID, true
-}
-
-// HasSIZE_SYSTEM_INVALID returns a boolean if a field has been set.
-func (o *CatalogsItemValidationWarnings) HasSIZE_SYSTEM_INVALID() bool {
-	if o != nil && !IsNil(o.SIZE_SYSTEM_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetSIZE_SYSTEM_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SIZE_SYSTEM_INVALID field.
-func (o *CatalogsItemValidationWarnings) SetSIZE_SYSTEM_INVALID(v CatalogsItemValidationDetails) {
-	o.SIZE_SYSTEM_INVALID = &v
 }
 
 // GetANDROID_DEEP_LINK_INVALID returns the ANDROID_DEEP_LINK_INVALID field value if set, zero value otherwise.
@@ -1043,6 +6325,38 @@ func (o *CatalogsItemValidationWarnings) SetPRODUCT_TYPE_LENGTH_TOO_LONG(v Catal
 	o.PRODUCT_TYPE_LENGTH_TOO_LONG = &v
 }
 
+// GetSALE_DATE_INVALID returns the SALE_DATE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetSALE_DATE_INVALID() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.SALE_DATE_INVALID) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.SALE_DATE_INVALID
+}
+
+// GetSALE_DATE_INVALIDOk returns a tuple with the SALE_DATE_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetSALE_DATE_INVALIDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.SALE_DATE_INVALID) {
+		return nil, false
+	}
+	return o.SALE_DATE_INVALID, true
+}
+
+// HasSALE_DATE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasSALE_DATE_INVALID() bool {
+	if o != nil && !IsNil(o.SALE_DATE_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSALE_DATE_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SALE_DATE_INVALID field.
+func (o *CatalogsItemValidationWarnings) SetSALE_DATE_INVALID(v CatalogsItemValidationDetails) {
+	o.SALE_DATE_INVALID = &v
+}
+
 // GetSALES_PRICE_INVALID returns the SALES_PRICE_INVALID field value if set, zero value otherwise.
 func (o *CatalogsItemValidationWarnings) GetSALES_PRICE_INVALID() CatalogsItemValidationDetails {
 	if o == nil || IsNil(o.SALES_PRICE_INVALID) {
@@ -1073,38 +6387,6 @@ func (o *CatalogsItemValidationWarnings) HasSALES_PRICE_INVALID() bool {
 // SetSALES_PRICE_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SALES_PRICE_INVALID field.
 func (o *CatalogsItemValidationWarnings) SetSALES_PRICE_INVALID(v CatalogsItemValidationDetails) {
 	o.SALES_PRICE_INVALID = &v
-}
-
-// GetSALES_PRICE_TOO_LOW returns the SALES_PRICE_TOO_LOW field value if set, zero value otherwise.
-func (o *CatalogsItemValidationWarnings) GetSALES_PRICE_TOO_LOW() CatalogsItemValidationDetails {
-	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
-		var ret CatalogsItemValidationDetails
-		return ret
-	}
-	return *o.SALES_PRICE_TOO_LOW
-}
-
-// GetSALES_PRICE_TOO_LOWOk returns a tuple with the SALES_PRICE_TOO_LOW field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationWarnings) GetSALES_PRICE_TOO_LOWOk() (*CatalogsItemValidationDetails, bool) {
-	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
-		return nil, false
-	}
-	return o.SALES_PRICE_TOO_LOW, true
-}
-
-// HasSALES_PRICE_TOO_LOW returns a boolean if a field has been set.
-func (o *CatalogsItemValidationWarnings) HasSALES_PRICE_TOO_LOW() bool {
-	if o != nil && !IsNil(o.SALES_PRICE_TOO_LOW) {
-		return true
-	}
-
-	return false
-}
-
-// SetSALES_PRICE_TOO_LOW gets a reference to the given CatalogsItemValidationDetails and assigns it to the SALES_PRICE_TOO_LOW field.
-func (o *CatalogsItemValidationWarnings) SetSALES_PRICE_TOO_LOW(v CatalogsItemValidationDetails) {
-	o.SALES_PRICE_TOO_LOW = &v
 }
 
 // GetSALES_PRICE_TOO_HIGH returns the SALES_PRICE_TOO_HIGH field value if set, zero value otherwise.
@@ -1139,68 +6421,36 @@ func (o *CatalogsItemValidationWarnings) SetSALES_PRICE_TOO_HIGH(v CatalogsItemV
 	o.SALES_PRICE_TOO_HIGH = &v
 }
 
-// GetSALE_DATE_INVALID returns the SALE_DATE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsItemValidationWarnings) GetSALE_DATE_INVALID() CatalogsItemValidationDetails {
-	if o == nil || IsNil(o.SALE_DATE_INVALID) {
+// GetSALES_PRICE_TOO_LOW returns the SALES_PRICE_TOO_LOW field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetSALES_PRICE_TOO_LOW() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
 		var ret CatalogsItemValidationDetails
 		return ret
 	}
-	return *o.SALE_DATE_INVALID
+	return *o.SALES_PRICE_TOO_LOW
 }
 
-// GetSALE_DATE_INVALIDOk returns a tuple with the SALE_DATE_INVALID field value if set, nil otherwise
+// GetSALES_PRICE_TOO_LOWOk returns a tuple with the SALES_PRICE_TOO_LOW field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationWarnings) GetSALE_DATE_INVALIDOk() (*CatalogsItemValidationDetails, bool) {
-	if o == nil || IsNil(o.SALE_DATE_INVALID) {
+func (o *CatalogsItemValidationWarnings) GetSALES_PRICE_TOO_LOWOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
 		return nil, false
 	}
-	return o.SALE_DATE_INVALID, true
+	return o.SALES_PRICE_TOO_LOW, true
 }
 
-// HasSALE_DATE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsItemValidationWarnings) HasSALE_DATE_INVALID() bool {
-	if o != nil && !IsNil(o.SALE_DATE_INVALID) {
+// HasSALES_PRICE_TOO_LOW returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasSALES_PRICE_TOO_LOW() bool {
+	if o != nil && !IsNil(o.SALES_PRICE_TOO_LOW) {
 		return true
 	}
 
 	return false
 }
 
-// SetSALE_DATE_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SALE_DATE_INVALID field.
-func (o *CatalogsItemValidationWarnings) SetSALE_DATE_INVALID(v CatalogsItemValidationDetails) {
-	o.SALE_DATE_INVALID = &v
-}
-
-// GetSHIPPING_INVALID returns the SHIPPING_INVALID field value if set, zero value otherwise.
-func (o *CatalogsItemValidationWarnings) GetSHIPPING_INVALID() CatalogsItemValidationDetails {
-	if o == nil || IsNil(o.SHIPPING_INVALID) {
-		var ret CatalogsItemValidationDetails
-		return ret
-	}
-	return *o.SHIPPING_INVALID
-}
-
-// GetSHIPPING_INVALIDOk returns a tuple with the SHIPPING_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationWarnings) GetSHIPPING_INVALIDOk() (*CatalogsItemValidationDetails, bool) {
-	if o == nil || IsNil(o.SHIPPING_INVALID) {
-		return nil, false
-	}
-	return o.SHIPPING_INVALID, true
-}
-
-// HasSHIPPING_INVALID returns a boolean if a field has been set.
-func (o *CatalogsItemValidationWarnings) HasSHIPPING_INVALID() bool {
-	if o != nil && !IsNil(o.SHIPPING_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetSHIPPING_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SHIPPING_INVALID field.
-func (o *CatalogsItemValidationWarnings) SetSHIPPING_INVALID(v CatalogsItemValidationDetails) {
-	o.SHIPPING_INVALID = &v
+// SetSALES_PRICE_TOO_LOW gets a reference to the given CatalogsItemValidationDetails and assigns it to the SALES_PRICE_TOO_LOW field.
+func (o *CatalogsItemValidationWarnings) SetSALES_PRICE_TOO_LOW(v CatalogsItemValidationDetails) {
+	o.SALES_PRICE_TOO_LOW = &v
 }
 
 // GetSHIPPING_HEIGHT_INVALID returns the SHIPPING_HEIGHT_INVALID field value if set, zero value otherwise.
@@ -1233,6 +6483,38 @@ func (o *CatalogsItemValidationWarnings) HasSHIPPING_HEIGHT_INVALID() bool {
 // SetSHIPPING_HEIGHT_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SHIPPING_HEIGHT_INVALID field.
 func (o *CatalogsItemValidationWarnings) SetSHIPPING_HEIGHT_INVALID(v CatalogsItemValidationDetails) {
 	o.SHIPPING_HEIGHT_INVALID = &v
+}
+
+// GetSHIPPING_INVALID returns the SHIPPING_INVALID field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetSHIPPING_INVALID() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.SHIPPING_INVALID) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.SHIPPING_INVALID
+}
+
+// GetSHIPPING_INVALIDOk returns a tuple with the SHIPPING_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetSHIPPING_INVALIDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.SHIPPING_INVALID) {
+		return nil, false
+	}
+	return o.SHIPPING_INVALID, true
+}
+
+// HasSHIPPING_INVALID returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasSHIPPING_INVALID() bool {
+	if o != nil && !IsNil(o.SHIPPING_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSHIPPING_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SHIPPING_INVALID field.
+func (o *CatalogsItemValidationWarnings) SetSHIPPING_INVALID(v CatalogsItemValidationDetails) {
+	o.SHIPPING_INVALID = &v
 }
 
 // GetSHIPPING_WEIGHT_INVALID returns the SHIPPING_WEIGHT_INVALID field value if set, zero value otherwise.
@@ -1297,6 +6579,38 @@ func (o *CatalogsItemValidationWarnings) HasSHIPPING_WIDTH_INVALID() bool {
 // SetSHIPPING_WIDTH_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SHIPPING_WIDTH_INVALID field.
 func (o *CatalogsItemValidationWarnings) SetSHIPPING_WIDTH_INVALID(v CatalogsItemValidationDetails) {
 	o.SHIPPING_WIDTH_INVALID = &v
+}
+
+// GetSIZE_SYSTEM_INVALID returns the SIZE_SYSTEM_INVALID field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetSIZE_SYSTEM_INVALID() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.SIZE_SYSTEM_INVALID
+}
+
+// GetSIZE_SYSTEM_INVALIDOk returns a tuple with the SIZE_SYSTEM_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetSIZE_SYSTEM_INVALIDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
+		return nil, false
+	}
+	return o.SIZE_SYSTEM_INVALID, true
+}
+
+// HasSIZE_SYSTEM_INVALID returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasSIZE_SYSTEM_INVALID() bool {
+	if o != nil && !IsNil(o.SIZE_SYSTEM_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSIZE_SYSTEM_INVALID gets a reference to the given CatalogsItemValidationDetails and assigns it to the SIZE_SYSTEM_INVALID field.
+func (o *CatalogsItemValidationWarnings) SetSIZE_SYSTEM_INVALID(v CatalogsItemValidationDetails) {
+	o.SIZE_SYSTEM_INVALID = &v
 }
 
 // GetSIZE_TYPE_INVALID returns the SIZE_TYPE_INVALID field value if set, zero value otherwise.
@@ -1459,6 +6773,38 @@ func (o *CatalogsItemValidationWarnings) SetUTM_SOURCE_AUTO_CORRECTED(v Catalogs
 	o.UTM_SOURCE_AUTO_CORRECTED = &v
 }
 
+// GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED returns the VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED field value if set, zero value otherwise.
+func (o *CatalogsItemValidationWarnings) GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
+}
+
+// GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDEDOk returns a tuple with the VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationWarnings) GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDEDOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		return nil, false
+	}
+	return o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, true
+}
+
+// HasVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED returns a boolean if a field has been set.
+func (o *CatalogsItemValidationWarnings) HasVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED() bool {
+	if o != nil && !IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED gets a reference to the given CatalogsItemValidationDetails and assigns it to the VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED field.
+func (o *CatalogsItemValidationWarnings) SetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED(v CatalogsItemValidationDetails) {
+	o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = &v
+}
+
 // GetWEIGHT_UNIT_INVALID returns the WEIGHT_UNIT_INVALID field value if set, zero value otherwise.
 func (o *CatalogsItemValidationWarnings) GetWEIGHT_UNIT_INVALID() CatalogsItemValidationDetails {
 	if o == nil || IsNil(o.WEIGHT_UNIT_INVALID) {
@@ -1501,11 +6847,494 @@ func (o CatalogsItemValidationWarnings) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsItemValidationWarnings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_0_LINK_DUPLICATED"] = o.ADIMAGE0LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_0_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE0LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE0LINKREQUIRED) {
+		toSerialize["AD_IMAGE_0_LINK_REQUIRED"] = o.ADIMAGE0LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE0LINKWARNING) {
+		toSerialize["AD_IMAGE_0_LINK_WARNING"] = o.ADIMAGE0LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_0_TAG_DUPLICATED"] = o.ADIMAGE0TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_0_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE0TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE0TAGREQUIRED) {
+		toSerialize["AD_IMAGE_0_TAG_REQUIRED"] = o.ADIMAGE0TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_10_LINK_DUPLICATED"] = o.ADIMAGE10LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_10_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE10LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE10LINKREQUIRED) {
+		toSerialize["AD_IMAGE_10_LINK_REQUIRED"] = o.ADIMAGE10LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE10LINKWARNING) {
+		toSerialize["AD_IMAGE_10_LINK_WARNING"] = o.ADIMAGE10LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_10_TAG_DUPLICATED"] = o.ADIMAGE10TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_10_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE10TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE10TAGREQUIRED) {
+		toSerialize["AD_IMAGE_10_TAG_REQUIRED"] = o.ADIMAGE10TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_11_LINK_DUPLICATED"] = o.ADIMAGE11LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_11_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE11LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE11LINKREQUIRED) {
+		toSerialize["AD_IMAGE_11_LINK_REQUIRED"] = o.ADIMAGE11LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE11LINKWARNING) {
+		toSerialize["AD_IMAGE_11_LINK_WARNING"] = o.ADIMAGE11LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_11_TAG_DUPLICATED"] = o.ADIMAGE11TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_11_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE11TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE11TAGREQUIRED) {
+		toSerialize["AD_IMAGE_11_TAG_REQUIRED"] = o.ADIMAGE11TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_12_LINK_DUPLICATED"] = o.ADIMAGE12LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_12_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE12LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE12LINKREQUIRED) {
+		toSerialize["AD_IMAGE_12_LINK_REQUIRED"] = o.ADIMAGE12LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE12LINKWARNING) {
+		toSerialize["AD_IMAGE_12_LINK_WARNING"] = o.ADIMAGE12LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_12_TAG_DUPLICATED"] = o.ADIMAGE12TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_12_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE12TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE12TAGREQUIRED) {
+		toSerialize["AD_IMAGE_12_TAG_REQUIRED"] = o.ADIMAGE12TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_13_LINK_DUPLICATED"] = o.ADIMAGE13LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_13_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE13LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE13LINKREQUIRED) {
+		toSerialize["AD_IMAGE_13_LINK_REQUIRED"] = o.ADIMAGE13LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE13LINKWARNING) {
+		toSerialize["AD_IMAGE_13_LINK_WARNING"] = o.ADIMAGE13LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_13_TAG_DUPLICATED"] = o.ADIMAGE13TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_13_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE13TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE13TAGREQUIRED) {
+		toSerialize["AD_IMAGE_13_TAG_REQUIRED"] = o.ADIMAGE13TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_14_LINK_DUPLICATED"] = o.ADIMAGE14LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_14_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE14LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE14LINKREQUIRED) {
+		toSerialize["AD_IMAGE_14_LINK_REQUIRED"] = o.ADIMAGE14LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE14LINKWARNING) {
+		toSerialize["AD_IMAGE_14_LINK_WARNING"] = o.ADIMAGE14LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_14_TAG_DUPLICATED"] = o.ADIMAGE14TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_14_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE14TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE14TAGREQUIRED) {
+		toSerialize["AD_IMAGE_14_TAG_REQUIRED"] = o.ADIMAGE14TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_15_LINK_DUPLICATED"] = o.ADIMAGE15LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_15_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE15LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE15LINKREQUIRED) {
+		toSerialize["AD_IMAGE_15_LINK_REQUIRED"] = o.ADIMAGE15LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE15LINKWARNING) {
+		toSerialize["AD_IMAGE_15_LINK_WARNING"] = o.ADIMAGE15LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_15_TAG_DUPLICATED"] = o.ADIMAGE15TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_15_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE15TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE15TAGREQUIRED) {
+		toSerialize["AD_IMAGE_15_TAG_REQUIRED"] = o.ADIMAGE15TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_16_LINK_DUPLICATED"] = o.ADIMAGE16LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_16_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE16LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE16LINKREQUIRED) {
+		toSerialize["AD_IMAGE_16_LINK_REQUIRED"] = o.ADIMAGE16LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE16LINKWARNING) {
+		toSerialize["AD_IMAGE_16_LINK_WARNING"] = o.ADIMAGE16LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_16_TAG_DUPLICATED"] = o.ADIMAGE16TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_16_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE16TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE16TAGREQUIRED) {
+		toSerialize["AD_IMAGE_16_TAG_REQUIRED"] = o.ADIMAGE16TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_17_LINK_DUPLICATED"] = o.ADIMAGE17LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_17_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE17LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE17LINKREQUIRED) {
+		toSerialize["AD_IMAGE_17_LINK_REQUIRED"] = o.ADIMAGE17LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE17LINKWARNING) {
+		toSerialize["AD_IMAGE_17_LINK_WARNING"] = o.ADIMAGE17LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_17_TAG_DUPLICATED"] = o.ADIMAGE17TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_17_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE17TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE17TAGREQUIRED) {
+		toSerialize["AD_IMAGE_17_TAG_REQUIRED"] = o.ADIMAGE17TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_18_LINK_DUPLICATED"] = o.ADIMAGE18LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_18_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE18LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE18LINKREQUIRED) {
+		toSerialize["AD_IMAGE_18_LINK_REQUIRED"] = o.ADIMAGE18LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE18LINKWARNING) {
+		toSerialize["AD_IMAGE_18_LINK_WARNING"] = o.ADIMAGE18LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_18_TAG_DUPLICATED"] = o.ADIMAGE18TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_18_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE18TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE18TAGREQUIRED) {
+		toSerialize["AD_IMAGE_18_TAG_REQUIRED"] = o.ADIMAGE18TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_19_LINK_DUPLICATED"] = o.ADIMAGE19LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_19_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE19LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE19LINKREQUIRED) {
+		toSerialize["AD_IMAGE_19_LINK_REQUIRED"] = o.ADIMAGE19LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE19LINKWARNING) {
+		toSerialize["AD_IMAGE_19_LINK_WARNING"] = o.ADIMAGE19LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_19_TAG_DUPLICATED"] = o.ADIMAGE19TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_19_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE19TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE19TAGREQUIRED) {
+		toSerialize["AD_IMAGE_19_TAG_REQUIRED"] = o.ADIMAGE19TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_1_LINK_DUPLICATED"] = o.ADIMAGE1LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_1_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE1LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE1LINKREQUIRED) {
+		toSerialize["AD_IMAGE_1_LINK_REQUIRED"] = o.ADIMAGE1LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE1LINKWARNING) {
+		toSerialize["AD_IMAGE_1_LINK_WARNING"] = o.ADIMAGE1LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_1_TAG_DUPLICATED"] = o.ADIMAGE1TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_1_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE1TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE1TAGREQUIRED) {
+		toSerialize["AD_IMAGE_1_TAG_REQUIRED"] = o.ADIMAGE1TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_2_LINK_DUPLICATED"] = o.ADIMAGE2LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_2_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE2LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE2LINKREQUIRED) {
+		toSerialize["AD_IMAGE_2_LINK_REQUIRED"] = o.ADIMAGE2LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE2LINKWARNING) {
+		toSerialize["AD_IMAGE_2_LINK_WARNING"] = o.ADIMAGE2LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_2_TAG_DUPLICATED"] = o.ADIMAGE2TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_2_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE2TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE2TAGREQUIRED) {
+		toSerialize["AD_IMAGE_2_TAG_REQUIRED"] = o.ADIMAGE2TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_3_LINK_DUPLICATED"] = o.ADIMAGE3LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_3_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE3LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE3LINKREQUIRED) {
+		toSerialize["AD_IMAGE_3_LINK_REQUIRED"] = o.ADIMAGE3LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE3LINKWARNING) {
+		toSerialize["AD_IMAGE_3_LINK_WARNING"] = o.ADIMAGE3LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_3_TAG_DUPLICATED"] = o.ADIMAGE3TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_3_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE3TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE3TAGREQUIRED) {
+		toSerialize["AD_IMAGE_3_TAG_REQUIRED"] = o.ADIMAGE3TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_4_LINK_DUPLICATED"] = o.ADIMAGE4LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_4_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE4LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE4LINKREQUIRED) {
+		toSerialize["AD_IMAGE_4_LINK_REQUIRED"] = o.ADIMAGE4LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE4LINKWARNING) {
+		toSerialize["AD_IMAGE_4_LINK_WARNING"] = o.ADIMAGE4LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_4_TAG_DUPLICATED"] = o.ADIMAGE4TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_4_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE4TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE4TAGREQUIRED) {
+		toSerialize["AD_IMAGE_4_TAG_REQUIRED"] = o.ADIMAGE4TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_5_LINK_DUPLICATED"] = o.ADIMAGE5LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_5_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE5LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE5LINKREQUIRED) {
+		toSerialize["AD_IMAGE_5_LINK_REQUIRED"] = o.ADIMAGE5LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE5LINKWARNING) {
+		toSerialize["AD_IMAGE_5_LINK_WARNING"] = o.ADIMAGE5LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_5_TAG_DUPLICATED"] = o.ADIMAGE5TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_5_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE5TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE5TAGREQUIRED) {
+		toSerialize["AD_IMAGE_5_TAG_REQUIRED"] = o.ADIMAGE5TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_6_LINK_DUPLICATED"] = o.ADIMAGE6LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_6_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE6LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE6LINKREQUIRED) {
+		toSerialize["AD_IMAGE_6_LINK_REQUIRED"] = o.ADIMAGE6LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE6LINKWARNING) {
+		toSerialize["AD_IMAGE_6_LINK_WARNING"] = o.ADIMAGE6LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_6_TAG_DUPLICATED"] = o.ADIMAGE6TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_6_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE6TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE6TAGREQUIRED) {
+		toSerialize["AD_IMAGE_6_TAG_REQUIRED"] = o.ADIMAGE6TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_7_LINK_DUPLICATED"] = o.ADIMAGE7LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_7_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE7LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE7LINKREQUIRED) {
+		toSerialize["AD_IMAGE_7_LINK_REQUIRED"] = o.ADIMAGE7LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE7LINKWARNING) {
+		toSerialize["AD_IMAGE_7_LINK_WARNING"] = o.ADIMAGE7LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_7_TAG_DUPLICATED"] = o.ADIMAGE7TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_7_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE7TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE7TAGREQUIRED) {
+		toSerialize["AD_IMAGE_7_TAG_REQUIRED"] = o.ADIMAGE7TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_8_LINK_DUPLICATED"] = o.ADIMAGE8LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_8_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE8LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE8LINKREQUIRED) {
+		toSerialize["AD_IMAGE_8_LINK_REQUIRED"] = o.ADIMAGE8LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE8LINKWARNING) {
+		toSerialize["AD_IMAGE_8_LINK_WARNING"] = o.ADIMAGE8LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_8_TAG_DUPLICATED"] = o.ADIMAGE8TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_8_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE8TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE8TAGREQUIRED) {
+		toSerialize["AD_IMAGE_8_TAG_REQUIRED"] = o.ADIMAGE8TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_9_LINK_DUPLICATED"] = o.ADIMAGE9LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_9_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE9LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE9LINKREQUIRED) {
+		toSerialize["AD_IMAGE_9_LINK_REQUIRED"] = o.ADIMAGE9LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE9LINKWARNING) {
+		toSerialize["AD_IMAGE_9_LINK_WARNING"] = o.ADIMAGE9LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_9_TAG_DUPLICATED"] = o.ADIMAGE9TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_9_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE9TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE9TAGREQUIRED) {
+		toSerialize["AD_IMAGE_9_TAG_REQUIRED"] = o.ADIMAGE9TAGREQUIRED
+	}
 	if !IsNil(o.AD_LINK_FORMAT_WARNING) {
 		toSerialize["AD_LINK_FORMAT_WARNING"] = o.AD_LINK_FORMAT_WARNING
 	}
 	if !IsNil(o.AD_LINK_SAME_AS_LINK) {
 		toSerialize["AD_LINK_SAME_AS_LINK"] = o.AD_LINK_SAME_AS_LINK
+	}
+	if !IsNil(o.ADVIDEO0LINKDUPLICATED) {
+		toSerialize["AD_VIDEO_0_LINK_DUPLICATED"] = o.ADVIDEO0LINKDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_0_LINK_LENGTH_TOO_LONG"] = o.ADVIDEO0LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO0LINKREQUIRED) {
+		toSerialize["AD_VIDEO_0_LINK_REQUIRED"] = o.ADVIDEO0LINKREQUIRED
+	}
+	if !IsNil(o.ADVIDEO0LINKWARNING) {
+		toSerialize["AD_VIDEO_0_LINK_WARNING"] = o.ADVIDEO0LINKWARNING
+	}
+	if !IsNil(o.ADVIDEO0TAGDUPLICATED) {
+		toSerialize["AD_VIDEO_0_TAG_DUPLICATED"] = o.ADVIDEO0TAGDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_0_TAG_LENGTH_TOO_LONG"] = o.ADVIDEO0TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO0TAGREQUIRED) {
+		toSerialize["AD_VIDEO_0_TAG_REQUIRED"] = o.ADVIDEO0TAGREQUIRED
+	}
+	if !IsNil(o.ADVIDEO1LINKDUPLICATED) {
+		toSerialize["AD_VIDEO_1_LINK_DUPLICATED"] = o.ADVIDEO1LINKDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_1_LINK_LENGTH_TOO_LONG"] = o.ADVIDEO1LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO1LINKREQUIRED) {
+		toSerialize["AD_VIDEO_1_LINK_REQUIRED"] = o.ADVIDEO1LINKREQUIRED
+	}
+	if !IsNil(o.ADVIDEO1LINKWARNING) {
+		toSerialize["AD_VIDEO_1_LINK_WARNING"] = o.ADVIDEO1LINKWARNING
+	}
+	if !IsNil(o.ADVIDEO1TAGDUPLICATED) {
+		toSerialize["AD_VIDEO_1_TAG_DUPLICATED"] = o.ADVIDEO1TAGDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_1_TAG_LENGTH_TOO_LONG"] = o.ADVIDEO1TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO1TAGREQUIRED) {
+		toSerialize["AD_VIDEO_1_TAG_REQUIRED"] = o.ADVIDEO1TAGREQUIRED
+	}
+	if !IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		toSerialize["AD_VIDEO_2_LINK_DUPLICATED"] = o.ADVIDEO2LINKDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_2_LINK_LENGTH_TOO_LONG"] = o.ADVIDEO2LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO2LINKREQUIRED) {
+		toSerialize["AD_VIDEO_2_LINK_REQUIRED"] = o.ADVIDEO2LINKREQUIRED
+	}
+	if !IsNil(o.ADVIDEO2LINKWARNING) {
+		toSerialize["AD_VIDEO_2_LINK_WARNING"] = o.ADVIDEO2LINKWARNING
+	}
+	if !IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		toSerialize["AD_VIDEO_2_TAG_DUPLICATED"] = o.ADVIDEO2TAGDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_2_TAG_LENGTH_TOO_LONG"] = o.ADVIDEO2TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO2TAGREQUIRED) {
+		toSerialize["AD_VIDEO_2_TAG_REQUIRED"] = o.ADVIDEO2TAGREQUIRED
 	}
 	if !IsNil(o.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
 		toSerialize["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"] = o.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
@@ -1521,9 +7350,6 @@ func (o CatalogsItemValidationWarnings) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.AGE_GROUP_INVALID) {
 		toSerialize["AGE_GROUP_INVALID"] = o.AGE_GROUP_INVALID
-	}
-	if !IsNil(o.SIZE_SYSTEM_INVALID) {
-		toSerialize["SIZE_SYSTEM_INVALID"] = o.SIZE_SYSTEM_INVALID
 	}
 	if !IsNil(o.ANDROID_DEEP_LINK_INVALID) {
 		toSerialize["ANDROID_DEEP_LINK_INVALID"] = o.ANDROID_DEEP_LINK_INVALID
@@ -1591,29 +7417,32 @@ func (o CatalogsItemValidationWarnings) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
 		toSerialize["PRODUCT_TYPE_LENGTH_TOO_LONG"] = o.PRODUCT_TYPE_LENGTH_TOO_LONG
 	}
+	if !IsNil(o.SALE_DATE_INVALID) {
+		toSerialize["SALE_DATE_INVALID"] = o.SALE_DATE_INVALID
+	}
 	if !IsNil(o.SALES_PRICE_INVALID) {
 		toSerialize["SALES_PRICE_INVALID"] = o.SALES_PRICE_INVALID
-	}
-	if !IsNil(o.SALES_PRICE_TOO_LOW) {
-		toSerialize["SALES_PRICE_TOO_LOW"] = o.SALES_PRICE_TOO_LOW
 	}
 	if !IsNil(o.SALES_PRICE_TOO_HIGH) {
 		toSerialize["SALES_PRICE_TOO_HIGH"] = o.SALES_PRICE_TOO_HIGH
 	}
-	if !IsNil(o.SALE_DATE_INVALID) {
-		toSerialize["SALE_DATE_INVALID"] = o.SALE_DATE_INVALID
-	}
-	if !IsNil(o.SHIPPING_INVALID) {
-		toSerialize["SHIPPING_INVALID"] = o.SHIPPING_INVALID
+	if !IsNil(o.SALES_PRICE_TOO_LOW) {
+		toSerialize["SALES_PRICE_TOO_LOW"] = o.SALES_PRICE_TOO_LOW
 	}
 	if !IsNil(o.SHIPPING_HEIGHT_INVALID) {
 		toSerialize["SHIPPING_HEIGHT_INVALID"] = o.SHIPPING_HEIGHT_INVALID
+	}
+	if !IsNil(o.SHIPPING_INVALID) {
+		toSerialize["SHIPPING_INVALID"] = o.SHIPPING_INVALID
 	}
 	if !IsNil(o.SHIPPING_WEIGHT_INVALID) {
 		toSerialize["SHIPPING_WEIGHT_INVALID"] = o.SHIPPING_WEIGHT_INVALID
 	}
 	if !IsNil(o.SHIPPING_WIDTH_INVALID) {
 		toSerialize["SHIPPING_WIDTH_INVALID"] = o.SHIPPING_WIDTH_INVALID
+	}
+	if !IsNil(o.SIZE_SYSTEM_INVALID) {
+		toSerialize["SIZE_SYSTEM_INVALID"] = o.SIZE_SYSTEM_INVALID
 	}
 	if !IsNil(o.SIZE_TYPE_INVALID) {
 		toSerialize["SIZE_TYPE_INVALID"] = o.SIZE_TYPE_INVALID
@@ -1629,6 +7458,9 @@ func (o CatalogsItemValidationWarnings) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
 		toSerialize["UTM_SOURCE_AUTO_CORRECTED"] = o.UTM_SOURCE_AUTO_CORRECTED
+	}
+	if !IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		toSerialize["VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED"] = o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
 	}
 	if !IsNil(o.WEIGHT_UNIT_INVALID) {
 		toSerialize["WEIGHT_UNIT_INVALID"] = o.WEIGHT_UNIT_INVALID

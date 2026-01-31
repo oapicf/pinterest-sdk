@@ -9,17 +9,17 @@ import org.openapitools.models.CatalogsProductGroupFiltersRequest
 
 /**
  * Request object for creating a product group.
- * @param name 
  * @param description 
- * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
- * @param filters 
  * @param feedUnderscoreid Catalog Feed id pertaining to the catalog product group.
+ * @param filters 
+ * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
+ * @param name 
  */
-case class CatalogsProductGroupCreateRequest(name: String,
-                description: Option[String],
-                isUnderscorefeatured: Option[Boolean],
+case class CatalogsProductGroupCreateRequest(description: Option[String],
+                feedUnderscoreid: String,
                 filters: CatalogsProductGroupFiltersRequest,
-                feedUnderscoreid: String
+                isUnderscorefeatured: Option[Boolean],
+                name: String
                 )
 
 object CatalogsProductGroupCreateRequest {

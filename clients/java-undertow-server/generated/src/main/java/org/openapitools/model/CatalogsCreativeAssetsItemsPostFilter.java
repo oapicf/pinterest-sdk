@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,9 +24,10 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemsPostFilter   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -47,7 +48,24 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
 
   private CatalogTypeEnum catalogType;
   private List<String> creativeAssetsIds = new ArrayList<>();
-  private String catalogId;
+
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   */
+  public CatalogsCreativeAssetsItemsPostFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    */
@@ -83,24 +101,6 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
     this.creativeAssetsIds = creativeAssetsIds;
   }
 
-  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   */
-  public CatalogsCreativeAssetsItemsPostFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -111,14 +111,14 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
       return false;
     }
     CatalogsCreativeAssetsItemsPostFilter catalogsCreativeAssetsItemsPostFilter = (CatalogsCreativeAssetsItemsPostFilter) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsItemsPostFilter.catalogType) &&
-        Objects.equals(creativeAssetsIds, catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsItemsPostFilter.catalogId);
+    return Objects.equals(catalogId, catalogsCreativeAssetsItemsPostFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsItemsPostFilter.catalogType) &&
+        Objects.equals(creativeAssetsIds, catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @Override
@@ -126,9 +126,9 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsPostFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

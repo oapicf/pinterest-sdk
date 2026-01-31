@@ -5,13 +5,8 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}external_business_id`,
-                label: `External business ID for the integration. - [${labelPrefix}external_business_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}connected_merchant_id`,
-                label: `[${labelPrefix}connected_merchant_id]`,
+                key: `${keyPrefix}additional_id_1`,
+                label: `[${labelPrefix}additional_id_1]`,
                 type: 'string',
             },
             {
@@ -25,8 +20,18 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}connected_merchant_id`,
+                label: `[${labelPrefix}connected_merchant_id]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}connected_tag_id`,
                 label: `[${labelPrefix}connected_tag_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}external_business_id`,
+                label: `External business ID for the integration. - [${labelPrefix}external_business_id]`,
                 type: 'string',
             },
             {
@@ -35,8 +40,13 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}partner_refresh_token`,
-                label: `[${labelPrefix}partner_refresh_token]`,
+                key: `${keyPrefix}partner_access_token_expiry`,
+                label: `[${labelPrefix}partner_access_token_expiry]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}partner_metadata`,
+                label: `[${labelPrefix}partner_metadata]`,
                 type: 'string',
             },
             {
@@ -45,9 +55,9 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}partner_access_token_expiry`,
-                label: `[${labelPrefix}partner_access_token_expiry]`,
-                type: 'integer',
+                key: `${keyPrefix}partner_refresh_token`,
+                label: `[${labelPrefix}partner_refresh_token]`,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}partner_refresh_token_expiry`,
@@ -59,34 +69,24 @@ module.exports = {
                 label: `[${labelPrefix}scopes]`,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}additional_id_1`,
-                label: `[${labelPrefix}additional_id_1]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}partner_metadata`,
-                label: `[${labelPrefix}partner_metadata]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'external_business_id': bundle.inputData?.[`${keyPrefix}external_business_id`],
-            'connected_merchant_id': bundle.inputData?.[`${keyPrefix}connected_merchant_id`],
+            'additional_id_1': bundle.inputData?.[`${keyPrefix}additional_id_1`],
             'connected_advertiser_id': bundle.inputData?.[`${keyPrefix}connected_advertiser_id`],
             'connected_lba_id': bundle.inputData?.[`${keyPrefix}connected_lba_id`],
+            'connected_merchant_id': bundle.inputData?.[`${keyPrefix}connected_merchant_id`],
             'connected_tag_id': bundle.inputData?.[`${keyPrefix}connected_tag_id`],
+            'external_business_id': bundle.inputData?.[`${keyPrefix}external_business_id`],
             'partner_access_token': bundle.inputData?.[`${keyPrefix}partner_access_token`],
-            'partner_refresh_token': bundle.inputData?.[`${keyPrefix}partner_refresh_token`],
-            'partner_primary_email': bundle.inputData?.[`${keyPrefix}partner_primary_email`],
             'partner_access_token_expiry': bundle.inputData?.[`${keyPrefix}partner_access_token_expiry`],
+            'partner_metadata': bundle.inputData?.[`${keyPrefix}partner_metadata`],
+            'partner_primary_email': bundle.inputData?.[`${keyPrefix}partner_primary_email`],
+            'partner_refresh_token': bundle.inputData?.[`${keyPrefix}partner_refresh_token`],
             'partner_refresh_token_expiry': bundle.inputData?.[`${keyPrefix}partner_refresh_token_expiry`],
             'scopes': bundle.inputData?.[`${keyPrefix}scopes`],
-            'additional_id_1': bundle.inputData?.[`${keyPrefix}additional_id_1`],
-            'partner_metadata': bundle.inputData?.[`${keyPrefix}partner_metadata`],
         }
     },
 }

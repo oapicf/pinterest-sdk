@@ -14,18 +14,18 @@ import { AssetGroupBinding } from './assetGroupBinding';
  * An object containing the permissions a you/your business partner has on the asset.
  */
 export interface GetPartnerAssetsResponse { 
+    asset_group_info?: AssetGroupBinding;
     /**
      * Unique identifier of a business asset.
      */
     asset_id?: string;
     /**
-     * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+     * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
      */
     asset_type?: string;
     /**
      * The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner\'s business asset.
      */
     permissions?: Array<string>;
-    asset_group_info?: AssetGroupBinding;
 }
 

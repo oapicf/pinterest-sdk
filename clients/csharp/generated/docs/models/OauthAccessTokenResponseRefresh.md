@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **AccessToken** | **string** |  | 
 **ExpiresIn** | **int** |  | 
 **Scope** | **string** |  | 
+**RefreshToken** | **string** |  | 
+**RefreshTokenExpiresAt** | **int** |  | 
+**RefreshTokenExpiresIn** | **int** |  | 
 **ResponseType** | **string** |  | [optional] 
 **TokenType** | **string** |  | [default to "bearer"]
 

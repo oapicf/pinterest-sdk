@@ -3,55 +3,55 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartDate** | **String** | Starting date of time period. Format: YYYY-MM-DD | 
-**EndDate** | **String** | End date of time period. Format: YYYY-MM-DD | [optional] 
-**PoNumber** | **String** | The po number | 
-**BudgetAmount** | **Decimal** | If Budget order line, the budget amount. | [optional] 
+**AgencyLink** | **String** | URL link for agency | [optional] 
+**BillingContactEmail** | **String** | The billing contact email | 
 **BillingContactFirstname** | **String** | The billing contact first name | 
 **BillingContactLastname** | **String** | The billing contact last name | 
-**BillingContactEmail** | **String** | The billing contact email | 
+**BudgetAmount** | **Decimal** | If Budget order line, the budget amount. | [optional] 
+**EndDate** | **String** | End date of time period. Format: YYYY-MM-DD | [optional] 
+**MediaContactEmail** | **String** | The media contact email | 
 **MediaContactFirstname** | **String** | The media contact first name | 
 **MediaContactLastname** | **String** | The media contact last name | 
-**MediaContactEmail** | **String** | The media contact email | 
-**AgencyLink** | **String** | URL link for agency | [optional] 
+**PoNumber** | **String** | The po number | 
+**StartDate** | **String** | Starting date of time period. Format: YYYY-MM-DD | 
 **UserEmail** | **String** | The email of user submitting the insertion order | [optional] 
-**AcceptedTermsTime** | **Int32** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
-**PmpId** | **String** | The pmp id | 
-**OrderName** | **String** | The order name | 
-**OrderLineType** | **String** | Type can be Budget or Perpetual | 
 **AcceptedTermsId** | **String** | The SFDC id for the terms | 
-**BilltoCompanyId** | **String** | The bill-to company id | 
-**BilltoBusinessAddressId** | **String** | The bill-to business address id | 
+**AcceptedTermsTime** | **Int32** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
 **BilltoBillingAddressId** | **String** | The bill-to billing address id | 
-**EstimatedMonthlySpend** | **Decimal** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**BilltoBusinessAddressId** | **String** | The bill-to business address id | 
+**BilltoCompanyId** | **String** | The bill-to company id | 
 **CurrencyInfo** | [**Currency**](Currency.md) |  | 
+**EstimatedMonthlySpend** | **Decimal** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**OrderLineType** | **String** | Type can be Budget or Perpetual | 
+**OrderName** | **String** | The order name | 
+**PmpId** | **String** | The pmp id | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SSIOCreateInsertionOrderRequest = Initialize-PSOpenAPIToolsSSIOCreateInsertionOrderRequest  -StartDate 2020-12-20 `
- -EndDate 2020-12-20 `
- -PoNumber null `
- -BudgetAmount 5000000 `
+$SSIOCreateInsertionOrderRequest = Initialize-PSOpenAPIToolsSSIOCreateInsertionOrderRequest  -AgencyLink null `
+ -BillingContactEmail test@example `
  -BillingContactFirstname null `
  -BillingContactLastname null `
- -BillingContactEmail test@example `
+ -BudgetAmount 5000000 `
+ -EndDate 2020-12-20 `
+ -MediaContactEmail test@example `
  -MediaContactFirstname null `
  -MediaContactLastname null `
- -MediaContactEmail test@example `
- -AgencyLink null `
+ -PoNumber null `
+ -StartDate 2020-12-20 `
  -UserEmail test@example `
- -AcceptedTermsTime null `
- -PmpId null `
- -OrderName null `
- -OrderLineType null `
  -AcceptedTermsId null `
- -BilltoCompanyId null `
- -BilltoBusinessAddressId null `
+ -AcceptedTermsTime null `
  -BilltoBillingAddressId null `
+ -BilltoBusinessAddressId null `
+ -BilltoCompanyId null `
+ -CurrencyInfo null `
  -EstimatedMonthlySpend null `
- -CurrencyInfo null
+ -OrderLineType null `
+ -OrderName null `
+ -PmpId null
 ```
 
 - Convert the resource to JSON

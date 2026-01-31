@@ -7,16 +7,16 @@
 #' @title CatalogsProductGroupPinsList200Response
 #' @description CatalogsProductGroupPinsList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items Pins list(\link{CatalogsProduct})
 #' @field bookmark  character [optional]
+#' @field items Pins list(\link{CatalogsProduct})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupPinsList200Response <- R6::R6Class(
   "CatalogsProductGroupPinsList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupPinsList200Response class.
@@ -69,13 +69,13 @@ CatalogsProductGroupPinsList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupPinsList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        CatalogsProductGroupPinsList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         CatalogsProductGroupPinsList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        CatalogsProductGroupPinsList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(CatalogsProductGroupPinsList200ResponseObject)
     },
@@ -87,11 +87,11 @@ CatalogsProductGroupPinsList200Response <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupPinsList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsProduct]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsProduct]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ CatalogsProductGroupPinsList200Response <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupPinsList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsProduct]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsProduct]", loadNamespace("openapi"))
       self
     },
 

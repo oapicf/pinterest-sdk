@@ -11,9 +11,15 @@ import javax.validation.Valid;
 /**
  * CatalogsCreativeAssetsProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsProductGroup   {
+  @JsonProperty("catalog_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -48,15 +54,9 @@ public class CatalogsCreativeAssetsProductGroup   {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-
-  private String id;
-
-  @JsonProperty("name")
+  @JsonProperty("created_at")
   
-  private String name;
+  private Integer createdAt;
 
   @JsonProperty("description")
   
@@ -68,19 +68,36 @@ public class CatalogsCreativeAssetsProductGroup   {
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @JsonProperty("created_at")
+  @JsonProperty("id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String id;
+
+  @JsonProperty("name")
   
-  private Integer createdAt;
+  private String name;
 
   @JsonProperty("updated_at")
   
   private Integer updatedAt;
 
-  @JsonProperty("catalog_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
+  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
 
-  private String catalogId;
+   /**
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+  **/
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsCreativeAssetsProductGroup catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -99,38 +116,21 @@ public class CatalogsCreativeAssetsProductGroup   {
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsProductGroup id(String id) {
-    this.id = id;
+  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * ID of the creative assets product group.
-   * @return id
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
   **/
-  public String getId() {
-    return id;
+  public Integer getCreatedAt() {
+    return createdAt;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CatalogsCreativeAssetsProductGroup name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of creative assets product group
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
   public CatalogsCreativeAssetsProductGroup description(String description) {
@@ -167,21 +167,38 @@ public class CatalogsCreativeAssetsProductGroup   {
     this.filters = filters;
   }
 
-  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsCreativeAssetsProductGroup id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
+   * ID of the creative assets product group.
+   * @return id
   **/
-  public Integer getCreatedAt() {
-    return createdAt;
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public CatalogsCreativeAssetsProductGroup name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of creative assets product group
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsCreativeAssetsProductGroup updatedAt(Integer updatedAt) {
@@ -201,23 +218,6 @@ public class CatalogsCreativeAssetsProductGroup   {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Catalog id pertaining to the creative assets product group.
-   * @return catalogId
-  **/
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -228,19 +228,19 @@ public class CatalogsCreativeAssetsProductGroup   {
       return false;
     }
     CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup = (CatalogsCreativeAssetsProductGroup) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
-        Objects.equals(id, catalogsCreativeAssetsProductGroup.id) &&
-        Objects.equals(name, catalogsCreativeAssetsProductGroup.name) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsProductGroup.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
+        Objects.equals(createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
         Objects.equals(description, catalogsCreativeAssetsProductGroup.description) &&
         Objects.equals(filters, catalogsCreativeAssetsProductGroup.filters) &&
-        Objects.equals(createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
-        Objects.equals(updatedAt, catalogsCreativeAssetsProductGroup.updatedAt) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsProductGroup.catalogId);
+        Objects.equals(id, catalogsCreativeAssetsProductGroup.id) &&
+        Objects.equals(name, catalogsCreativeAssetsProductGroup.name) &&
+        Objects.equals(updatedAt, catalogsCreativeAssetsProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, description, filters, id, name, updatedAt);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -249,14 +249,14 @@ public class CatalogsCreativeAssetsProductGroup   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroup {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

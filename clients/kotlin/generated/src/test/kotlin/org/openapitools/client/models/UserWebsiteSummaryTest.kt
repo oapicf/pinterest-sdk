@@ -25,12 +25,6 @@ class UserWebsiteSummaryTest : ShouldSpec() {
         // uncomment below to create an instance of UserWebsiteSummary
         //val modelInstance = UserWebsiteSummary()
 
-        // to test the property `website` - Website with path or domain only
-        should("test website") {
-            // uncomment below to test the property
-            //modelInstance.website shouldBe ("TODO")
-        }
-
         // to test the property `status` - Status of the verification process
         should("test status") {
             // uncomment below to test the property
@@ -41,6 +35,12 @@ class UserWebsiteSummaryTest : ShouldSpec() {
         should("test verifiedAt") {
             // uncomment below to test the property
             //modelInstance.verifiedAt shouldBe ("TODO")
+        }
+
+        // to test the property `website` - Website with path or domain only
+        should("test website") {
+            // uncomment below to test the property
+            //modelInstance.website shouldBe ("TODO")
         }
 
     }

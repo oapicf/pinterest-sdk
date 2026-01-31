@@ -26,16 +26,16 @@ CatalogsHotelFeed::__init()
 	//created_at = null;
 	//id = std::string();
 	//updated_at = null;
-	//name = std::string();
-	//format = new CatalogsFormat();
+	//catalog_id = std::string();
 	//catalog_type = new CatalogsType();
 	//credentials = new CatalogsFeedCredentials();
-	//location = std::string();
-	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
-	//status = new CatalogsStatus();
 	//default_currency = new NullableCurrency();
 	//default_locale = std::string();
-	//catalog_id = std::string();
+	//format = new CatalogsFormat();
+	//location = std::string();
+	//name = std::string();
+	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
+	//status = new CatalogsStatus();
 }
 
 void
@@ -56,15 +56,10 @@ CatalogsHotelFeed::__cleanup()
 	//delete updated_at;
 	//updated_at = NULL;
 	//}
-	//if(name != NULL) {
+	//if(catalog_id != NULL) {
 	//
-	//delete name;
-	//name = NULL;
-	//}
-	//if(format != NULL) {
-	//
-	//delete format;
-	//format = NULL;
+	//delete catalog_id;
+	//catalog_id = NULL;
 	//}
 	//if(catalog_type != NULL) {
 	//
@@ -76,21 +71,6 @@ CatalogsHotelFeed::__cleanup()
 	//delete credentials;
 	//credentials = NULL;
 	//}
-	//if(location != NULL) {
-	//
-	//delete location;
-	//location = NULL;
-	//}
-	//if(preferred_processing_schedule != NULL) {
-	//
-	//delete preferred_processing_schedule;
-	//preferred_processing_schedule = NULL;
-	//}
-	//if(status != NULL) {
-	//
-	//delete status;
-	//status = NULL;
-	//}
 	//if(default_currency != NULL) {
 	//
 	//delete default_currency;
@@ -101,10 +81,30 @@ CatalogsHotelFeed::__cleanup()
 	//delete default_locale;
 	//default_locale = NULL;
 	//}
-	//if(catalog_id != NULL) {
+	//if(format != NULL) {
 	//
-	//delete catalog_id;
-	//catalog_id = NULL;
+	//delete format;
+	//format = NULL;
+	//}
+	//if(location != NULL) {
+	//
+	//delete location;
+	//location = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(preferred_processing_schedule != NULL) {
+	//
+	//delete preferred_processing_schedule;
+	//preferred_processing_schedule = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//
 }
@@ -147,28 +147,14 @@ CatalogsHotelFeed::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
+			jsonToValue(&catalog_id, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *formatKey = "format";
-	node = json_object_get_member(pJsonObject, formatKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsFormat")) {
-			jsonToValue(&format, node, "CatalogsFormat", "CatalogsFormat");
-		} else {
-			
-			CatalogsFormat* obj = static_cast<CatalogsFormat*> (&format);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -200,6 +186,45 @@ CatalogsHotelFeed::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *default_currencyKey = "default_currency";
+	node = json_object_get_member(pJsonObject, default_currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("NullableCurrency")) {
+			jsonToValue(&default_currency, node, "NullableCurrency", "NullableCurrency");
+		} else {
+			
+			NullableCurrency* obj = static_cast<NullableCurrency*> (&default_currency);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *default_localeKey = "default_locale";
+	node = json_object_get_member(pJsonObject, default_localeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&default_locale, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *formatKey = "format";
+	node = json_object_get_member(pJsonObject, formatKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsFormat")) {
+			jsonToValue(&format, node, "CatalogsFormat", "CatalogsFormat");
+		} else {
+			
+			CatalogsFormat* obj = static_cast<CatalogsFormat*> (&format);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *locationKey = "location";
 	node = json_object_get_member(pJsonObject, locationKey);
 	if (node !=NULL) {
@@ -207,6 +232,17 @@ CatalogsHotelFeed::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&location, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
@@ -236,42 +272,6 @@ CatalogsHotelFeed::fromJson(char* jsonStr)
 			
 			CatalogsStatus* obj = static_cast<CatalogsStatus*> (&status);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *default_currencyKey = "default_currency";
-	node = json_object_get_member(pJsonObject, default_currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("NullableCurrency")) {
-			jsonToValue(&default_currency, node, "NullableCurrency", "NullableCurrency");
-		} else {
-			
-			NullableCurrency* obj = static_cast<NullableCurrency*> (&default_currency);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *default_localeKey = "default_locale";
-	node = json_object_get_member(pJsonObject, default_localeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&default_locale, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -315,28 +315,14 @@ CatalogsHotelFeed::toJson()
 	const gchar *updated_atKey = "updated_at";
 	json_object_set_member(pJsonObject, updated_atKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getName();
+		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("CatalogsFormat")) {
-		CatalogsFormat obj = getFormat();
-		node = converttoJson(&obj, "CatalogsFormat", "");
-	}
-	else {
-		
-		CatalogsFormat obj = static_cast<CatalogsFormat> (getFormat());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *formatKey = "format";
-	json_object_set_member(pJsonObject, formatKey, node);
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("CatalogsType")) {
 		CatalogsType obj = getCatalogType();
 		node = converttoJson(&obj, "CatalogsType", "");
@@ -365,6 +351,43 @@ CatalogsHotelFeed::toJson()
 	}
 	const gchar *credentialsKey = "credentials";
 	json_object_set_member(pJsonObject, credentialsKey, node);
+	if (isprimitive("NullableCurrency")) {
+		NullableCurrency obj = getDefaultCurrency();
+		node = converttoJson(&obj, "NullableCurrency", "");
+	}
+	else {
+		
+		NullableCurrency obj = static_cast<NullableCurrency> (getDefaultCurrency());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *default_currencyKey = "default_currency";
+	json_object_set_member(pJsonObject, default_currencyKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDefaultLocale();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *default_localeKey = "default_locale";
+	json_object_set_member(pJsonObject, default_localeKey, node);
+	if (isprimitive("CatalogsFormat")) {
+		CatalogsFormat obj = getFormat();
+		node = converttoJson(&obj, "CatalogsFormat", "");
+	}
+	else {
+		
+		CatalogsFormat obj = static_cast<CatalogsFormat> (getFormat());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *formatKey = "format";
+	json_object_set_member(pJsonObject, formatKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getLocation();
 		node = converttoJson(&obj, "std::string", "");
@@ -374,6 +397,15 @@ CatalogsHotelFeed::toJson()
 	}
 	const gchar *locationKey = "location";
 	json_object_set_member(pJsonObject, locationKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("CatalogsFeedProcessingSchedule")) {
 		CatalogsFeedProcessingSchedule obj = getPreferredProcessingSchedule();
 		node = converttoJson(&obj, "CatalogsFeedProcessingSchedule", "");
@@ -402,38 +434,6 @@ CatalogsHotelFeed::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("NullableCurrency")) {
-		NullableCurrency obj = getDefaultCurrency();
-		node = converttoJson(&obj, "NullableCurrency", "");
-	}
-	else {
-		
-		NullableCurrency obj = static_cast<NullableCurrency> (getDefaultCurrency());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *default_currencyKey = "default_currency";
-	json_object_set_member(pJsonObject, default_currencyKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDefaultLocale();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *default_localeKey = "default_locale";
-	json_object_set_member(pJsonObject, default_localeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -479,27 +479,15 @@ CatalogsHotelFeed::setUpdatedAt(std::string  updated_at)
 }
 
 std::string
-CatalogsHotelFeed::getName()
+CatalogsHotelFeed::getCatalogId()
 {
-	return name;
+	return catalog_id;
 }
 
 void
-CatalogsHotelFeed::setName(std::string  name)
+CatalogsHotelFeed::setCatalogId(std::string  catalog_id)
 {
-	this->name = name;
-}
-
-CatalogsFormat
-CatalogsHotelFeed::getFormat()
-{
-	return format;
-}
-
-void
-CatalogsHotelFeed::setFormat(CatalogsFormat  format)
-{
-	this->format = format;
+	this->catalog_id = catalog_id;
 }
 
 CatalogsType
@@ -526,42 +514,6 @@ CatalogsHotelFeed::setCredentials(CatalogsFeedCredentials  credentials)
 	this->credentials = credentials;
 }
 
-std::string
-CatalogsHotelFeed::getLocation()
-{
-	return location;
-}
-
-void
-CatalogsHotelFeed::setLocation(std::string  location)
-{
-	this->location = location;
-}
-
-CatalogsFeedProcessingSchedule
-CatalogsHotelFeed::getPreferredProcessingSchedule()
-{
-	return preferred_processing_schedule;
-}
-
-void
-CatalogsHotelFeed::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
-{
-	this->preferred_processing_schedule = preferred_processing_schedule;
-}
-
-CatalogsStatus
-CatalogsHotelFeed::getStatus()
-{
-	return status;
-}
-
-void
-CatalogsHotelFeed::setStatus(CatalogsStatus  status)
-{
-	this->status = status;
-}
-
 NullableCurrency
 CatalogsHotelFeed::getDefaultCurrency()
 {
@@ -586,16 +538,64 @@ CatalogsHotelFeed::setDefaultLocale(std::string  default_locale)
 	this->default_locale = default_locale;
 }
 
-std::string
-CatalogsHotelFeed::getCatalogId()
+CatalogsFormat
+CatalogsHotelFeed::getFormat()
 {
-	return catalog_id;
+	return format;
 }
 
 void
-CatalogsHotelFeed::setCatalogId(std::string  catalog_id)
+CatalogsHotelFeed::setFormat(CatalogsFormat  format)
 {
-	this->catalog_id = catalog_id;
+	this->format = format;
+}
+
+std::string
+CatalogsHotelFeed::getLocation()
+{
+	return location;
+}
+
+void
+CatalogsHotelFeed::setLocation(std::string  location)
+{
+	this->location = location;
+}
+
+std::string
+CatalogsHotelFeed::getName()
+{
+	return name;
+}
+
+void
+CatalogsHotelFeed::setName(std::string  name)
+{
+	this->name = name;
+}
+
+CatalogsFeedProcessingSchedule
+CatalogsHotelFeed::getPreferredProcessingSchedule()
+{
+	return preferred_processing_schedule;
+}
+
+void
+CatalogsHotelFeed::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+{
+	this->preferred_processing_schedule = preferred_processing_schedule;
+}
+
+CatalogsStatus
+CatalogsHotelFeed::getStatus()
+{
+	return status;
+}
+
+void
+CatalogsHotelFeed::setStatus(CatalogsStatus  status)
+{
+	this->status = status;
 }
 
 

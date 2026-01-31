@@ -9,12 +9,13 @@ open AdAccountsApiServiceInterface
 open AdAccountsApiServiceImplementation
 open OpenAPI.Model.AdAccount
 open OpenAPI.Model.AdAccountAnalyticsResponseInner
-open OpenAPI.Model.AdAccountCreateRequest
+open OpenAPI.Model.AdAccountCreate
 open OpenAPI.Model.AdAccountsList200Response
 open OpenAPI.Model.AdsAnalyticsCreateAsyncRequest
 open OpenAPI.Model.AdsAnalyticsCreateAsyncResponse
 open OpenAPI.Model.AdsAnalyticsGetAsyncResponse
 open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.ConversionProductReportRequest
 open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.CreateMMMReportRequest
 open OpenAPI.Model.CreateMMMReportResponse
@@ -22,6 +23,9 @@ open OpenAPI.Model.Error
 open OpenAPI.Model.GetMMMReportResponse
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.ReportingTimeZone
+open OpenAPI.Model.TemplateBasedReport
 open OpenAPI.Model.TemplatesList200Response
 
 module AdAccountsApiHandler =
@@ -87,6 +91,18 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AdAccountsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdAccountsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | AdAccountsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdAccountsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdAccountsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -106,6 +122,16 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AdAccountsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdAccountsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdAccountsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdAccountsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -126,7 +152,40 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AdAccountsListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdAccountsListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdAccountsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdAccountsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsListDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region AnalyticsCreateConversionProductReport
+    /// <summary>
+    /// Create a request for a brand, category, SKU report
+    /// </summary>
+
+    let AnalyticsCreateConversionProductReport (pathParams:AnalyticsCreateConversionProductReportPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let! bodyParams =
+            ctx.BindJsonAsync<AnalyticsCreateConversionProductReportBodyParams>()
+          let serviceArgs = {    pathParams=pathParams; bodyParams=bodyParams } : AnalyticsCreateConversionProductReportArgs
+          let result = AdAccountsApiService.AnalyticsCreateConversionProductReport ctx serviceArgs
+          return! (match result with
+                      | AnalyticsCreateConversionProductReportStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }
@@ -192,9 +251,41 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AnalyticsCreateTemplateReportStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AnalyticsCreateTemplateReportStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | AnalyticsCreateTemplateReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsCreateTemplateReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsCreateTemplateReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsCreateTemplateReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsCreateTemplateReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsCreateTemplateReportDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region AnalyticsGetConversionProductReport
+    /// <summary>
+    /// Get advertiser brand, category, SKU report
+    /// </summary>
+
+    let AnalyticsGetConversionProductReport (pathParams:AnalyticsGetConversionProductReportPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<AnalyticsGetConversionProductReportQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : AnalyticsGetConversionProductReportArgs
+          let result = AdAccountsApiService.AnalyticsGetConversionProductReport ctx serviceArgs
+          return! (match result with
+                      | AnalyticsGetConversionProductReportStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | AnalyticsGetConversionProductReportStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AnalyticsGetConversionProductReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }

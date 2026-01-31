@@ -28,8 +28,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupCreateRequest", description = "Request object for creating a creative assets product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupCreateRequest implements CatalogsVerticalProductGroupCreateRequest {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -66,13 +68,11 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
-
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  private String catalogId;
+  private String name;
 
   public CatalogsCreativeAssetsProductGroupCreateRequest() {
     super();
@@ -81,10 +81,30 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsProductGroupCreateRequest(CatalogTypeEnum catalogType, String name, CatalogsCreativeAssetsProductGroupFilters filters, String catalogId) {
+  public CatalogsCreativeAssetsProductGroupCreateRequest(String catalogId, CatalogTypeEnum catalogType, CatalogsCreativeAssetsProductGroupFilters filters, String name) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.name = name;
     this.filters = filters;
+    this.name = name;
+  }
+
+  public CatalogsCreativeAssetsProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -106,26 +126,6 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsCreativeAssetsProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public CatalogsCreativeAssetsProductGroupCreateRequest description(String description) {
@@ -168,24 +168,24 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
     this.filters = filters;
   }
 
-  public CatalogsCreativeAssetsProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsCreativeAssetsProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Catalog id pertaining to the creative assets product group.
-   * @return catalogId
+   * Get name
+   * @return name
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
@@ -197,11 +197,11 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
       return false;
     }
     CatalogsCreativeAssetsProductGroupCreateRequest catalogsCreativeAssetsProductGroupCreateRequest = (CatalogsCreativeAssetsProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupCreateRequest.catalogType) &&
         equalsNullable(this.description, catalogsCreativeAssetsProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsCreativeAssetsProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroupCreateRequest.catalogId);
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroupCreateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -210,7 +210,7 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, hashCodeNullable(description), filters, catalogId);
+    return Objects.hash(catalogId, catalogType, hashCodeNullable(description), filters, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -224,11 +224,11 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest implements Catalogs
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupCreateRequest {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

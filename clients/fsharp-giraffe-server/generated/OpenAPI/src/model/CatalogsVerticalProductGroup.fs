@@ -5,8 +5,8 @@ open System.Collections.Generic
 open OpenAPI.Model.CatalogsCreativeAssetsProductGroup
 open OpenAPI.Model.CatalogsCreativeAssetsProductGroupFilters
 open OpenAPI.Model.CatalogsHotelProductGroup
+open OpenAPI.Model.CatalogsHotelProductGroupType
 open OpenAPI.Model.CatalogsProductGroupStatus
-open OpenAPI.Model.CatalogsProductGroupType
 open OpenAPI.Model.CatalogsRetailProductGroup
 open OpenAPI.Model.string option
 
@@ -19,19 +19,19 @@ module CatalogsVerticalProductGroup =
   //#endregion
 
   type CatalogsVerticalProductGroup = {
-    CatalogType : CatalogTypeEnum;
-    Id : string;
-    Name : string;
-    Description : string option;
-    Filters : CatalogsCreativeAssetsProductGroupFilters;
-    IsFeatured : bool;
-    Type : CatalogsProductGroupType;
-    Status : CatalogsProductGroupStatus;
-    CreatedAt : int;
-    UpdatedAt : int;
     CatalogId : string;
-    FeedId : string option;
+    CatalogType : CatalogTypeEnum;
     Country : string option;
+    CreatedAt : int;
+    Description : string option;
+    FeedId : string option;
+    Filters : CatalogsCreativeAssetsProductGroupFilters;
+    Id : string;
+    IsFeatured : bool;
     Locale : string option;
+    Name : string;
+    Status : CatalogsProductGroupStatus;
+    Type : CatalogsHotelProductGroupType;
+    UpdatedAt : int;
   }
   //#endregion

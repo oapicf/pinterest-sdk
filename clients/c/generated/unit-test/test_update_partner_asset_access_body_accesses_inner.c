@@ -22,14 +22,14 @@ update_partner_asset_access_body_accesses_inner_t* instantiate_update_partner_as
   update_partner_asset_access_body_accesses_inner_t* update_partner_asset_access_body_accesses_inner = NULL;
   if (include_optional) {
     update_partner_asset_access_body_accesses_inner = update_partner_asset_access_body_accesses_inner_create(
-      "1234567890123",
       "549755885175",
+      "1234567890123",
       ["ANALYST","ADMIN"]
     );
   } else {
     update_partner_asset_access_body_accesses_inner = update_partner_asset_access_body_accesses_inner_create(
-      "1234567890123",
       "549755885175",
+      "1234567890123",
       ["ANALYST","ADMIN"]
     );
   }

@@ -22,13 +22,13 @@ pins_list_200_response_t* instantiate_pins_list_200_response(int include_optiona
   pins_list_200_response_t* pins_list_200_response = NULL;
   if (include_optional) {
     pins_list_200_response = pins_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     pins_list_200_response = pins_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

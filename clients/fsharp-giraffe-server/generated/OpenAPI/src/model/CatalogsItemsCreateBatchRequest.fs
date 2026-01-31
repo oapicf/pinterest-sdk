@@ -16,8 +16,8 @@ module CatalogsItemsCreateBatchRequest =
 
   type CatalogsItemsCreateBatchRequest = {
     Country : Country;
+    Items : ItemCreateBatchRecord[];
     Language : LanguageEnum;
     Operation : BatchOperation;
-    Items : ItemCreateBatchRecord[];
   }
   //#endregion

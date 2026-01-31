@@ -14,11 +14,10 @@ API.Client.CatalogsCreativeAssetsItemsBatch = function() {}
 API.Client.CatalogsCreativeAssetsItemsBatch.prototype.batchId;
 
 /**
- * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
- * @type {!Date}
+ * @type {!API.Client.CatalogsType}
  * @export
  */
-API.Client.CatalogsCreativeAssetsItemsBatch.prototype.createdTime;
+API.Client.CatalogsCreativeAssetsItemsBatch.prototype.catalogType;
 
 /**
  * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
@@ -28,16 +27,11 @@ API.Client.CatalogsCreativeAssetsItemsBatch.prototype.createdTime;
 API.Client.CatalogsCreativeAssetsItemsBatch.prototype.completedTime;
 
 /**
- * @type {!API.Client.BatchOperationStatus}
+ * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+ * @type {!Date}
  * @export
  */
-API.Client.CatalogsCreativeAssetsItemsBatch.prototype.status;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsCreativeAssetsItemsBatch.prototype.catalogType;
+API.Client.CatalogsCreativeAssetsItemsBatch.prototype.createdTime;
 
 /**
  * Array with the catalogs items processing records part of the catalogs items batch
@@ -45,4 +39,10 @@ API.Client.CatalogsCreativeAssetsItemsBatch.prototype.catalogType;
  * @export
  */
 API.Client.CatalogsCreativeAssetsItemsBatch.prototype.items;
+
+/**
+ * @type {!API.Client.BatchOperationStatus}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsItemsBatch.prototype.status;
 

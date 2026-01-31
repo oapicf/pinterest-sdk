@@ -20,9 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object of catalogs items")
 @JsonTypeName("CatalogsItemsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsRequest   {
   private Country country;
+  private CatalogsItemsPostFilters filters;
   public enum LanguageEnum {
 
     AF_ZA(String.valueOf("af-ZA")), AR_SA(String.valueOf("ar-SA")), BG_BG(String.valueOf("bg-BG")), BN_IN(String.valueOf("bn-IN")), CS_CZ(String.valueOf("cs-CZ")), DA_DK(String.valueOf("da-DK")), DE(String.valueOf("de")), EL_GR(String.valueOf("el-GR")), EN_AU(String.valueOf("en-AU")), EN_CA(String.valueOf("en-CA")), EN_GB(String.valueOf("en-GB")), EN_IN(String.valueOf("en-IN")), EN_US(String.valueOf("en-US")), ES_419(String.valueOf("es-419")), ES_AR(String.valueOf("es-AR")), ES_ES(String.valueOf("es-ES")), ES_MX(String.valueOf("es-MX")), FI_FI(String.valueOf("fi-FI")), FR(String.valueOf("fr")), FR_CA(String.valueOf("fr-CA")), HE_IL(String.valueOf("he-IL")), HI_IN(String.valueOf("hi-IN")), HR_HR(String.valueOf("hr-HR")), HU_HU(String.valueOf("hu-HU")), ID_ID(String.valueOf("id-ID")), IT(String.valueOf("it")), JA(String.valueOf("ja")), KO_KR(String.valueOf("ko-KR")), MS_MY(String.valueOf("ms-MY")), NB_NO(String.valueOf("nb-NO")), NL(String.valueOf("nl")), PL_PL(String.valueOf("pl-PL")), PT_BR(String.valueOf("pt-BR")), PT_PT(String.valueOf("pt-PT")), RO_RO(String.valueOf("ro-RO")), RU_RU(String.valueOf("ru-RU")), SK_SK(String.valueOf("sk-SK")), SV_SE(String.valueOf("sv-SE")), TE_IN(String.valueOf("te-IN")), TH_TH(String.valueOf("th-TH")), TL_PH(String.valueOf("tl-PH")), TR(String.valueOf("tr")), UK_UA(String.valueOf("uk-UA")), VI_VN(String.valueOf("vi-VN")), ZH_CN(String.valueOf("zh-CN")), ZH_TW(String.valueOf("zh-TW")), AM(String.valueOf("AM")), AR(String.valueOf("AR")), AZ(String.valueOf("AZ")), BG(String.valueOf("BG")), BN(String.valueOf("BN")), BS(String.valueOf("BS")), CA(String.valueOf("CA")), CS(String.valueOf("CS")), DA(String.valueOf("DA")), DV(String.valueOf("DV")), DZ(String.valueOf("DZ")), DE2(String.valueOf("DE")), EL(String.valueOf("EL")), EN(String.valueOf("EN")), ES(String.valueOf("ES")), ET(String.valueOf("ET")), FA(String.valueOf("FA")), FI(String.valueOf("FI")), FR2(String.valueOf("FR")), HE(String.valueOf("HE")), HI(String.valueOf("HI")), HR(String.valueOf("HR")), HU(String.valueOf("HU")), HY(String.valueOf("HY")), ID(String.valueOf("ID")), IN(String.valueOf("IN")), IS(String.valueOf("IS")), IT2(String.valueOf("IT")), IW(String.valueOf("IW")), JA2(String.valueOf("JA")), KA(String.valueOf("KA")), KM(String.valueOf("KM")), KO(String.valueOf("KO")), LO(String.valueOf("LO")), LT(String.valueOf("LT")), LV(String.valueOf("LV")), MK(String.valueOf("MK")), MN(String.valueOf("MN")), MS(String.valueOf("MS")), MY(String.valueOf("MY")), NB(String.valueOf("NB")), NE(String.valueOf("NE")), NL2(String.valueOf("NL")), NO(String.valueOf("NO")), PL(String.valueOf("PL")), PT(String.valueOf("PT")), RO(String.valueOf("RO")), RU(String.valueOf("RU")), SK(String.valueOf("SK")), SL(String.valueOf("SL")), SQ(String.valueOf("SQ")), SR(String.valueOf("SR")), SV(String.valueOf("SV")), TL(String.valueOf("TL")), UK(String.valueOf("UK")), VI(String.valueOf("VI")), TE(String.valueOf("TE")), TH(String.valueOf("TH")), TR2(String.valueOf("TR")), XX(String.valueOf("XX")), ZH(String.valueOf("ZH"));
@@ -71,7 +72,6 @@ public class CatalogsItemsRequest   {
 }
 
   private LanguageEnum language;
-  private CatalogsItemsPostFilters filters;
 
   public CatalogsItemsRequest() {
   }
@@ -79,12 +79,12 @@ public class CatalogsItemsRequest   {
   @JsonCreator
   public CatalogsItemsRequest(
     @JsonProperty(required = true, value = "country") Country country,
-    @JsonProperty(required = true, value = "language") LanguageEnum language,
-    @JsonProperty(required = true, value = "filters") CatalogsItemsPostFilters filters
+    @JsonProperty(required = true, value = "filters") CatalogsItemsPostFilters filters,
+    @JsonProperty(required = true, value = "language") LanguageEnum language
   ) {
     this.country = country;
-    this.language = language;
     this.filters = filters;
+    this.language = language;
   }
 
   /**
@@ -107,6 +107,25 @@ public class CatalogsItemsRequest   {
   }
 
   /**
+   **/
+  public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "filters")
+  @NotNull @Valid public CatalogsItemsPostFilters getFilters() {
+    return filters;
+  }
+
+  @JsonProperty(required = true, value = "filters")
+  public void setFilters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
+  }
+
+  /**
    * We recommend using the CatalogsLocale values.
    **/
   public CatalogsItemsRequest language(LanguageEnum language) {
@@ -126,25 +145,6 @@ public class CatalogsItemsRequest   {
     this.language = language;
   }
 
-  /**
-   **/
-  public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "filters")
-  @NotNull @Valid public CatalogsItemsPostFilters getFilters() {
-    return filters;
-  }
-
-  @JsonProperty(required = true, value = "filters")
-  public void setFilters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -156,13 +156,13 @@ public class CatalogsItemsRequest   {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(this.country, catalogsItemsRequest.country) &&
-        Objects.equals(this.language, catalogsItemsRequest.language) &&
-        Objects.equals(this.filters, catalogsItemsRequest.filters);
+        Objects.equals(this.filters, catalogsItemsRequest.filters) &&
+        Objects.equals(this.language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -171,8 +171,8 @@ public class CatalogsItemsRequest   {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

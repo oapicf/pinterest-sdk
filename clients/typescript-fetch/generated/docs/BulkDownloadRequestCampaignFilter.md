@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`startTime` | string
+`campaignStatus` | [Array&lt;CampaignSummaryStatus&gt;](CampaignSummaryStatus.md)
 `endTime` | string
 `name` | string
-`campaignStatus` | [Array&lt;CampaignSummaryStatus&gt;](CampaignSummaryStatus.md)
 `objectiveType` | [Array&lt;ObjectiveType&gt;](ObjectiveType.md)
+`startTime` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { BulkDownloadRequestCampaignFilter } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "startTime": 1622848072,
+  "campaignStatus": null,
   "endTime": 1622848072,
   "name": campaign name,
-  "campaignStatus": null,
   "objectiveType": null,
+  "startTime": 1622848072,
 } satisfies BulkDownloadRequestCampaignFilter
 
 console.log(example)

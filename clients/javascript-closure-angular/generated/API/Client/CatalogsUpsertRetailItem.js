@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsUpsertRetailItem');
 API.Client.CatalogsUpsertRetailItem = function() {}
 
 /**
+ * @type {!API.Client.ItemAttributesRequest}
+ * @export
+ */
+API.Client.CatalogsUpsertRetailItem.prototype.attributes;
+
+/**
  * The catalog item id in the merchant namespace
  * @type {!string}
  * @export
@@ -18,12 +24,6 @@ API.Client.CatalogsUpsertRetailItem.prototype.itemId;
  * @export
  */
 API.Client.CatalogsUpsertRetailItem.prototype.operation;
-
-/**
- * @type {!API.Client.ItemAttributesRequest}
- * @export
- */
-API.Client.CatalogsUpsertRetailItem.prototype.attributes;
 
 /** @enum {string} */
 API.Client.CatalogsUpsertRetailItem.OperationEnum = { 

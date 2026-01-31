@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,46 +16,49 @@ package openapi
 
 type AssetGroupBinding struct {
 
-	// Asset Group ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	// Asset Group name
-	AssetGroupName *string `json:"asset_group_name,omitempty"`
+	// A list of ad account IDs under the asset group
+	AdAccountsIds *[]string `json:"ad_accounts_ids,omitempty"`
 
 	// Asset group description
 	AssetGroupDescription *string `json:"asset_group_description,omitempty"`
 
+	// Asset Group name
+	AssetGroupName *string `json:"asset_group_name,omitempty"`
+
 	// Asset group types
 	AssetGroupTypes []string `json:"asset_group_types,omitempty"`
 
-	// A list of ad account IDs under the asset group
-	AdAccountsIds *[]string `json:"ad_accounts_ids,omitempty"`
+	// A list of catalog IDs under asset group
+	CatalogsIds *[]string `json:"catalogs_ids,omitempty"`
 
-	// A list of profile IDs under asset group
-	ProfilesIds *[]string `json:"profiles_ids,omitempty"`
+	// The data of the user that created the asset group.
+	CreatedBy *BusinessAccessUserSummary `json:"created_by,omitempty"`
 
 	// The creation time of the asset group
 	CreatedTime *int32 `json:"created_time,omitempty"`
 
-	// The last update time of the asset group
-	UpdatedTime *int32 `json:"updated_time,omitempty"`
+	// Asset Group ID.
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// The data of the business that owns the asset group.
 	Owner *BusinessAccessUserSummary `json:"owner,omitempty"`
 
-	// The data of the user that created the asset group.
-	CreatedBy *BusinessAccessUserSummary `json:"created_by,omitempty"`
+	// A list of profile IDs under asset group
+	ProfilesIds *[]string `json:"profiles_ids,omitempty"`
+
+	// The last update time of the asset group
+	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }
 
 // AssertAssetGroupBindingRequired checks if the required fields are not zero-ed
 func AssertAssetGroupBindingRequired(obj AssetGroupBinding) error {
-	if obj.Owner != nil {
-		if err := AssertBusinessAccessUserSummaryRequired(*obj.Owner); err != nil {
+	if obj.CreatedBy != nil {
+		if err := AssertBusinessAccessUserSummaryRequired(*obj.CreatedBy); err != nil {
 			return err
 		}
 	}
-	if obj.CreatedBy != nil {
-		if err := AssertBusinessAccessUserSummaryRequired(*obj.CreatedBy); err != nil {
+	if obj.Owner != nil {
+		if err := AssertBusinessAccessUserSummaryRequired(*obj.Owner); err != nil {
 			return err
 		}
 	}
@@ -64,13 +67,13 @@ func AssertAssetGroupBindingRequired(obj AssetGroupBinding) error {
 
 // AssertAssetGroupBindingConstraints checks if the values respects the defined constraints
 func AssertAssetGroupBindingConstraints(obj AssetGroupBinding) error {
-    if obj.Owner != nil {
-     	if err := AssertBusinessAccessUserSummaryConstraints(*obj.Owner); err != nil {
+    if obj.CreatedBy != nil {
+     	if err := AssertBusinessAccessUserSummaryConstraints(*obj.CreatedBy); err != nil {
      		return err
      	}
     }
-    if obj.CreatedBy != nil {
-     	if err := AssertBusinessAccessUserSummaryConstraints(*obj.CreatedBy); err != nil {
+    if obj.Owner != nil {
+     	if err := AssertBusinessAccessUserSummaryConstraints(*obj.Owner); err != nil {
      		return err
      	}
     }

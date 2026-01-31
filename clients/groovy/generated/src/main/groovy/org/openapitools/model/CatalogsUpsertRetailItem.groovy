@@ -7,6 +7,8 @@ import org.openapitools.model.ItemAttributesRequest;
 
 @Canonical
 class CatalogsUpsertRetailItem {
+    
+    ItemAttributesRequest attributes
     /* The catalog item id in the merchant namespace */
     String itemId
 
@@ -32,6 +34,4 @@ class CatalogsUpsertRetailItem {
 
     
     OperationEnum operation
-    
-    ItemAttributesRequest attributes
 }

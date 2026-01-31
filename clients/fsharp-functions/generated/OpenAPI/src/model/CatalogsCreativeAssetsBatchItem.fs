@@ -15,12 +15,12 @@ module CatalogsCreativeAssetsBatchItem =
 
   [<CLIMutable>]
   type CatalogsCreativeAssetsBatchItem = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
     [<JsonProperty(PropertyName = "creative_assets_id")>]
     CreativeAssetsId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
   }
 
   //#endregion

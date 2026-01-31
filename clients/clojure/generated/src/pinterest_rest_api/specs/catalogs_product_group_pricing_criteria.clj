@@ -8,8 +8,8 @@
 (def catalogs-product-group-pricing-criteria-data
   {
    (ds/opt :inclusion) boolean?
-   (ds/req :values) float?
    (ds/opt :negated) boolean?
+   (ds/req :values) float?
    })
 
 (def catalogs-product-group-pricing-criteria-spec

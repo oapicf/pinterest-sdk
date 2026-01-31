@@ -6,7 +6,7 @@ import { Account } from '../models/Account';
 import { ActionType } from '../models/ActionType';
 import { AdAccount } from '../models/AdAccount';
 import { AdAccountAnalyticsResponseInner } from '../models/AdAccountAnalyticsResponseInner';
-import { AdAccountCreateRequest } from '../models/AdAccountCreateRequest';
+import { AdAccountCreate } from '../models/AdAccountCreate';
 import { AdAccountCreateSubscriptionRequest } from '../models/AdAccountCreateSubscriptionRequest';
 import { AdAccountCreateSubscriptionRequestPartnerMetadata } from '../models/AdAccountCreateSubscriptionRequestPartnerMetadata';
 import { AdAccountCreateSubscriptionResponse } from '../models/AdAccountCreateSubscriptionResponse';
@@ -29,21 +29,26 @@ import { AdGroupAudienceSizingRequestKeywordsInner } from '../models/AdGroupAudi
 import { AdGroupAudienceSizingResponse } from '../models/AdGroupAudienceSizingResponse';
 import { AdGroupCommon } from '../models/AdGroupCommon';
 import { AdGroupCreateRequest } from '../models/AdGroupCreateRequest';
+import { AdGroupIdFilter } from '../models/AdGroupIdFilter';
 import { AdGroupResponse } from '../models/AdGroupResponse';
 import { AdGroupSummaryStatus } from '../models/AdGroupSummaryStatus';
 import { AdGroupUpdateRequest } from '../models/AdGroupUpdateRequest';
 import { AdGroupsAnalyticsResponseInner } from '../models/AdGroupsAnalyticsResponseInner';
 import { AdGroupsList200Response } from '../models/AdGroupsList200Response';
+import { AdPinAnalytics } from '../models/AdPinAnalytics';
 import { AdPinId } from '../models/AdPinId';
 import { AdPreviewCreateFromImage } from '../models/AdPreviewCreateFromImage';
 import { AdPreviewCreateFromPin } from '../models/AdPreviewCreateFromPin';
 import { AdPreviewRequest } from '../models/AdPreviewRequest';
+import { AdPreviewShopping } from '../models/AdPreviewShopping';
 import { AdPreviewURLResponse } from '../models/AdPreviewURLResponse';
 import { AdResponse } from '../models/AdResponse';
 import { AdUpdateRequest } from '../models/AdUpdateRequest';
+import { AdsAnalyticsAdGroupTargetingType } from '../models/AdsAnalyticsAdGroupTargetingType';
 import { AdsAnalyticsAdTargetingType } from '../models/AdsAnalyticsAdTargetingType';
 import { AdsAnalyticsCampaignTargetingType } from '../models/AdsAnalyticsCampaignTargetingType';
 import { AdsAnalyticsCreateAsyncRequest } from '../models/AdsAnalyticsCreateAsyncRequest';
+import { AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics } from '../models/AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics';
 import { AdsAnalyticsCreateAsyncResponse } from '../models/AdsAnalyticsCreateAsyncResponse';
 import { AdsAnalyticsFilterColumn } from '../models/AdsAnalyticsFilterColumn';
 import { AdsAnalyticsFilterOperator } from '../models/AdsAnalyticsFilterOperator';
@@ -68,10 +73,15 @@ import { AdvancedAuctionItemsSubmitUpsertRecord } from '../models/AdvancedAuctio
 import { AdvancedAuctionKey } from '../models/AdvancedAuctionKey';
 import { AdvancedAuctionOperation } from '../models/AdvancedAuctionOperation';
 import { AdvancedAuctionOperationError } from '../models/AdvancedAuctionOperationError';
-import { AdvancedAuctionProcessedItem } from '../models/AdvancedAuctionProcessedItem';
 import { AdvancedAuctionProcessedItems } from '../models/AdvancedAuctionProcessedItems';
+import { AdvertiserDefinedEvent } from '../models/AdvertiserDefinedEvent';
+import { AdvertiserDefinedEventsResponse } from '../models/AdvertiserDefinedEventsResponse';
+import { AgeTrendsBucket } from '../models/AgeTrendsBucket';
+import { AllOf } from '../models/AllOf';
+import { AmazonConnectRequest } from '../models/AmazonConnectRequest';
 import { AnalyticsDailyMetrics } from '../models/AnalyticsDailyMetrics';
 import { AnalyticsMetricsResponse } from '../models/AnalyticsMetricsResponse';
+import { AnyOf } from '../models/AnyOf';
 import { AppTypeMultipliers } from '../models/AppTypeMultipliers';
 import { AssetGroupBinding } from '../models/AssetGroupBinding';
 import { AssetGroupType } from '../models/AssetGroupType';
@@ -80,11 +90,11 @@ import { Audience } from '../models/Audience';
 import { AudienceAccountType } from '../models/AudienceAccountType';
 import { AudienceCategory } from '../models/AudienceCategory';
 import { AudienceCommon } from '../models/AudienceCommon';
-import { AudienceCreateCustomRequest } from '../models/AudienceCreateCustomRequest';
 import { AudienceCreateRequest } from '../models/AudienceCreateRequest';
-import { AudienceDataParty } from '../models/AudienceDataParty';
 import { AudienceDefinition } from '../models/AudienceDefinition';
 import { AudienceDefinitionResponse } from '../models/AudienceDefinitionResponse';
+import { AudienceDefinitionScope } from '../models/AudienceDefinitionScope';
+import { AudienceDefinitionType } from '../models/AudienceDefinitionType';
 import { AudienceDemographicValue } from '../models/AudienceDemographicValue';
 import { AudienceDemographics } from '../models/AudienceDemographics';
 import { AudienceInsightCategoryArrayResponse } from '../models/AudienceInsightCategoryArrayResponse';
@@ -93,7 +103,6 @@ import { AudienceInsightType } from '../models/AudienceInsightType';
 import { AudienceInsightsResponse } from '../models/AudienceInsightsResponse';
 import { AudienceRule } from '../models/AudienceRule';
 import { AudienceShareType } from '../models/AudienceShareType';
-import { AudienceSharingType } from '../models/AudienceSharingType';
 import { AudienceSubcategory } from '../models/AudienceSubcategory';
 import { AudienceType } from '../models/AudienceType';
 import { AudienceUpdateOperationType } from '../models/AudienceUpdateOperationType';
@@ -110,18 +119,30 @@ import { BatchOperationStatus } from '../models/BatchOperationStatus';
 import { BidFloor } from '../models/BidFloor';
 import { BidFloorRequest } from '../models/BidFloorRequest';
 import { BidFloorSpec } from '../models/BidFloorSpec';
+import { BillingInvoiceDownloadResponse } from '../models/BillingInvoiceDownloadResponse';
+import { BillingInvoiceResponse } from '../models/BillingInvoiceResponse';
+import { BillingInvoicesGet200Response } from '../models/BillingInvoicesGet200Response';
 import { BillingProfilesGet200Response } from '../models/BillingProfilesGet200Response';
 import { BillingProfilesResponse } from '../models/BillingProfilesResponse';
 import { Board } from '../models/Board';
+import { BoardBase } from '../models/BoardBase';
+import { BoardCreate } from '../models/BoardCreate';
 import { BoardMedia } from '../models/BoardMedia';
 import { BoardOwner } from '../models/BoardOwner';
+import { BoardPrivacy } from '../models/BoardPrivacy';
+import { BoardPrivacyFilter } from '../models/BoardPrivacyFilter';
 import { BoardSection } from '../models/BoardSection';
 import { BoardSectionsList200Response } from '../models/BoardSectionsList200Response';
-import { BoardUpdate } from '../models/BoardUpdate';
+import { BoardUpdatePrivacy } from '../models/BoardUpdatePrivacy';
+import { BoardWithUpdatePrivacy } from '../models/BoardWithUpdatePrivacy';
+import { BoardWithUpdatePrivacyUpdate } from '../models/BoardWithUpdatePrivacyUpdate';
 import { BoardsList200Response } from '../models/BoardsList200Response';
 import { BoardsListPins200Response } from '../models/BoardsListPins200Response';
 import { BoardsUserFollowsList200Response } from '../models/BoardsUserFollowsList200Response';
 import { BookClosedResponse } from '../models/BookClosedResponse';
+import { BrandAccountsCreate200Response } from '../models/BrandAccountsCreate200Response';
+import { BrandAccountsCreateRequest } from '../models/BrandAccountsCreateRequest';
+import { BrandAccountsUpdateRequest } from '../models/BrandAccountsUpdateRequest';
 import { BrandFilter } from '../models/BrandFilter';
 import { BudgetType } from '../models/BudgetType';
 import { BulkDownloadRequest } from '../models/BulkDownloadRequest';
@@ -154,6 +175,10 @@ import { BusinessRoleCheckMode } from '../models/BusinessRoleCheckMode';
 import { BusinessRoleForMembers } from '../models/BusinessRoleForMembers';
 import { BusinessSharedAudience } from '../models/BusinessSharedAudience';
 import { BusinessSharedAudienceResponse } from '../models/BusinessSharedAudienceResponse';
+import { CampaignAudienceMultipliers } from '../models/CampaignAudienceMultipliers';
+import { CampaignBidOptions } from '../models/CampaignBidOptions';
+import { CampaignBidOptionsCreate } from '../models/CampaignBidOptionsCreate';
+import { CampaignBidOptionsUpdate } from '../models/CampaignBidOptionsUpdate';
 import { CampaignCommon } from '../models/CampaignCommon';
 import { CampaignCreateCommon } from '../models/CampaignCreateCommon';
 import { CampaignCreateRequest } from '../models/CampaignCreateRequest';
@@ -161,6 +186,8 @@ import { CampaignCreateResponse } from '../models/CampaignCreateResponse';
 import { CampaignCreateResponseData } from '../models/CampaignCreateResponseData';
 import { CampaignCreateResponseItem } from '../models/CampaignCreateResponseItem';
 import { CampaignId } from '../models/CampaignId';
+import { CampaignIdFilter } from '../models/CampaignIdFilter';
+import { CampaignObjectivesFilter } from '../models/CampaignObjectivesFilter';
 import { CampaignResponse } from '../models/CampaignResponse';
 import { CampaignSummaryStatus } from '../models/CampaignSummaryStatus';
 import { CampaignUpdateRequest } from '../models/CampaignUpdateRequest';
@@ -168,18 +195,22 @@ import { CampaignUpdateResponse } from '../models/CampaignUpdateResponse';
 import { CampaignsAnalyticsResponseInner } from '../models/CampaignsAnalyticsResponseInner';
 import { CampaignsList200Response } from '../models/CampaignsList200Response';
 import { CancelInvitesBody } from '../models/CancelInvitesBody';
+import { CarouselSlot } from '../models/CarouselSlot';
 import { Catalog } from '../models/Catalog';
+import { CatalogsAvailableFilterValues } from '../models/CatalogsAvailableFilterValues';
 import { CatalogsCreateCreativeAssetsItem } from '../models/CatalogsCreateCreativeAssetsItem';
 import { CatalogsCreateHotelItem } from '../models/CatalogsCreateHotelItem';
 import { CatalogsCreateReportResponse } from '../models/CatalogsCreateReportResponse';
 import { CatalogsCreateRequest } from '../models/CatalogsCreateRequest';
 import { CatalogsCreateRetailItem } from '../models/CatalogsCreateRetailItem';
 import { CatalogsCreativeAssetsAttributes } from '../models/CatalogsCreativeAssetsAttributes';
+import { CatalogsCreativeAssetsAvailableFilterValues } from '../models/CatalogsCreativeAssetsAvailableFilterValues';
 import { CatalogsCreativeAssetsBatchItem } from '../models/CatalogsCreativeAssetsBatchItem';
 import { CatalogsCreativeAssetsBatchRequest } from '../models/CatalogsCreativeAssetsBatchRequest';
 import { CatalogsCreativeAssetsFeed } from '../models/CatalogsCreativeAssetsFeed';
 import { CatalogsCreativeAssetsFeedsCreateRequest } from '../models/CatalogsCreativeAssetsFeedsCreateRequest';
 import { CatalogsCreativeAssetsFeedsUpdateRequest } from '../models/CatalogsCreativeAssetsFeedsUpdateRequest';
+import { CatalogsCreativeAssetsFilterValuesMap } from '../models/CatalogsCreativeAssetsFilterValuesMap';
 import { CatalogsCreativeAssetsItemErrorResponse } from '../models/CatalogsCreativeAssetsItemErrorResponse';
 import { CatalogsCreativeAssetsItemResponse } from '../models/CatalogsCreativeAssetsItemResponse';
 import { CatalogsCreativeAssetsItemsBatch } from '../models/CatalogsCreativeAssetsItemsBatch';
@@ -214,6 +245,7 @@ import { CatalogsFeedProductCounts } from '../models/CatalogsFeedProductCounts';
 import { CatalogsFeedValidationDetails } from '../models/CatalogsFeedValidationDetails';
 import { CatalogsFeedValidationErrors } from '../models/CatalogsFeedValidationErrors';
 import { CatalogsFeedValidationWarnings } from '../models/CatalogsFeedValidationWarnings';
+import { CatalogsFeedVideoCounts } from '../models/CatalogsFeedVideoCounts';
 import { CatalogsFeedsCreateRequest } from '../models/CatalogsFeedsCreateRequest';
 import { CatalogsFeedsCreateRequestDefaultLocale } from '../models/CatalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsFeedsUpdateRequest } from '../models/CatalogsFeedsUpdateRequest';
@@ -221,11 +253,13 @@ import { CatalogsFormat } from '../models/CatalogsFormat';
 import { CatalogsHotelAddress } from '../models/CatalogsHotelAddress';
 import { CatalogsHotelAttributes } from '../models/CatalogsHotelAttributes';
 import { CatalogsHotelAttributesAllOfMainImage } from '../models/CatalogsHotelAttributesAllOfMainImage';
+import { CatalogsHotelAvailableFilterValues } from '../models/CatalogsHotelAvailableFilterValues';
 import { CatalogsHotelBatchItem } from '../models/CatalogsHotelBatchItem';
 import { CatalogsHotelBatchRequest } from '../models/CatalogsHotelBatchRequest';
 import { CatalogsHotelFeed } from '../models/CatalogsHotelFeed';
 import { CatalogsHotelFeedsCreateRequest } from '../models/CatalogsHotelFeedsCreateRequest';
 import { CatalogsHotelFeedsUpdateRequest } from '../models/CatalogsHotelFeedsUpdateRequest';
+import { CatalogsHotelFilterValuesMap } from '../models/CatalogsHotelFilterValuesMap';
 import { CatalogsHotelGuestRatings } from '../models/CatalogsHotelGuestRatings';
 import { CatalogsHotelItemErrorResponse } from '../models/CatalogsHotelItemErrorResponse';
 import { CatalogsHotelItemResponse } from '../models/CatalogsHotelItemResponse';
@@ -241,10 +275,13 @@ import { CatalogsHotelProductGroupFilters } from '../models/CatalogsHotelProduct
 import { CatalogsHotelProductGroupFiltersAllOf } from '../models/CatalogsHotelProductGroupFiltersAllOf';
 import { CatalogsHotelProductGroupFiltersAnyOf } from '../models/CatalogsHotelProductGroupFiltersAnyOf';
 import { CatalogsHotelProductGroupProductCounts } from '../models/CatalogsHotelProductGroupProductCounts';
+import { CatalogsHotelProductGroupType } from '../models/CatalogsHotelProductGroupType';
 import { CatalogsHotelProductGroupUpdateRequest } from '../models/CatalogsHotelProductGroupUpdateRequest';
 import { CatalogsHotelProductMetadata } from '../models/CatalogsHotelProductMetadata';
 import { CatalogsHotelReportParameters } from '../models/CatalogsHotelReportParameters';
 import { CatalogsHotelReportParametersReport } from '../models/CatalogsHotelReportParametersReport';
+import { CatalogsHotelReportStatsParameters } from '../models/CatalogsHotelReportStatsParameters';
+import { CatalogsHotelReportStatsParametersReport } from '../models/CatalogsHotelReportStatsParametersReport';
 import { CatalogsItemValidationDetails } from '../models/CatalogsItemValidationDetails';
 import { CatalogsItemValidationErrors } from '../models/CatalogsItemValidationErrors';
 import { CatalogsItemValidationIssue } from '../models/CatalogsItemValidationIssue';
@@ -269,12 +306,11 @@ import { CatalogsProduct } from '../models/CatalogsProduct';
 import { CatalogsProductGroupCreateRequest } from '../models/CatalogsProductGroupCreateRequest';
 import { CatalogsProductGroupCurrencyCriteria } from '../models/CatalogsProductGroupCurrencyCriteria';
 import { CatalogsProductGroupFilterKeys } from '../models/CatalogsProductGroupFilterKeys';
+import { CatalogsProductGroupFilterOperatorTypeCriteria } from '../models/CatalogsProductGroupFilterOperatorTypeCriteria';
 import { CatalogsProductGroupFilters } from '../models/CatalogsProductGroupFilters';
 import { CatalogsProductGroupFiltersAllOf } from '../models/CatalogsProductGroupFiltersAllOf';
 import { CatalogsProductGroupFiltersAnyOf } from '../models/CatalogsProductGroupFiltersAnyOf';
 import { CatalogsProductGroupFiltersRequest } from '../models/CatalogsProductGroupFiltersRequest';
-import { CatalogsProductGroupFiltersRequestAnyOf } from '../models/CatalogsProductGroupFiltersRequestAnyOf';
-import { CatalogsProductGroupFiltersRequestAnyOf1 } from '../models/CatalogsProductGroupFiltersRequestAnyOf1';
 import { CatalogsProductGroupMultipleCountriesCriteria } from '../models/CatalogsProductGroupMultipleCountriesCriteria';
 import { CatalogsProductGroupMultipleGenderCriteria } from '../models/CatalogsProductGroupMultipleGenderCriteria';
 import { CatalogsProductGroupMultipleMediaTypesCriteria } from '../models/CatalogsProductGroupMultipleMediaTypesCriteria';
@@ -286,21 +322,25 @@ import { CatalogsProductGroupPricingCurrencyCriteria } from '../models/CatalogsP
 import { CatalogsProductGroupProductCountsVertical } from '../models/CatalogsProductGroupProductCountsVertical';
 import { CatalogsProductGroupStatus } from '../models/CatalogsProductGroupStatus';
 import { CatalogsProductGroupType } from '../models/CatalogsProductGroupType';
+import { CatalogsProductGroupUint32Criteria } from '../models/CatalogsProductGroupUint32Criteria';
 import { CatalogsProductGroupUpdateRequest } from '../models/CatalogsProductGroupUpdateRequest';
 import { CatalogsProductGroupsList200Response } from '../models/CatalogsProductGroupsList200Response';
 import { CatalogsProductGroupsUpdateRequest } from '../models/CatalogsProductGroupsUpdateRequest';
 import { CatalogsReport } from '../models/CatalogsReport';
+import { CatalogsReportAllItemsFilter } from '../models/CatalogsReportAllItemsFilter';
 import { CatalogsReportDistributionIssueFilter } from '../models/CatalogsReportDistributionIssueFilter';
 import { CatalogsReportDistributionStats } from '../models/CatalogsReportDistributionStats';
 import { CatalogsReportFeedIngestionFilter } from '../models/CatalogsReportFeedIngestionFilter';
 import { CatalogsReportFeedIngestionStats } from '../models/CatalogsReportFeedIngestionStats';
 import { CatalogsReportParameters } from '../models/CatalogsReportParameters';
 import { CatalogsReportStats } from '../models/CatalogsReportStats';
+import { CatalogsRetailAvailableFilterValues } from '../models/CatalogsRetailAvailableFilterValues';
 import { CatalogsRetailBatchRequest } from '../models/CatalogsRetailBatchRequest';
 import { CatalogsRetailBatchRequestItemsInner } from '../models/CatalogsRetailBatchRequestItemsInner';
 import { CatalogsRetailFeed } from '../models/CatalogsRetailFeed';
 import { CatalogsRetailFeedsCreateRequest } from '../models/CatalogsRetailFeedsCreateRequest';
 import { CatalogsRetailFeedsUpdateRequest } from '../models/CatalogsRetailFeedsUpdateRequest';
+import { CatalogsRetailFilterValuesMap } from '../models/CatalogsRetailFilterValuesMap';
 import { CatalogsRetailItemErrorResponse } from '../models/CatalogsRetailItemErrorResponse';
 import { CatalogsRetailItemResponse } from '../models/CatalogsRetailItemResponse';
 import { CatalogsRetailItemsBatch } from '../models/CatalogsRetailItemsBatch';
@@ -314,6 +354,7 @@ import { CatalogsRetailProductGroupProductCounts } from '../models/CatalogsRetai
 import { CatalogsRetailProductGroupUpdateRequest } from '../models/CatalogsRetailProductGroupUpdateRequest';
 import { CatalogsRetailProductMetadata } from '../models/CatalogsRetailProductMetadata';
 import { CatalogsRetailReportParameters } from '../models/CatalogsRetailReportParameters';
+import { CatalogsRetailReportStatsParameters } from '../models/CatalogsRetailReportStatsParameters';
 import { CatalogsStatus } from '../models/CatalogsStatus';
 import { CatalogsType } from '../models/CatalogsType';
 import { CatalogsUpdatableCreativeAssetsAttributes } from '../models/CatalogsUpdatableCreativeAssetsAttributes';
@@ -332,26 +373,34 @@ import { CatalogsVerticalProductGroupCreateRequest } from '../models/CatalogsVer
 import { CatalogsVerticalProductGroupUpdateRequest } from '../models/CatalogsVerticalProductGroupUpdateRequest';
 import { CatalogsVerticalsListProductsByCatalogBasedFilterRequest } from '../models/CatalogsVerticalsListProductsByCatalogBasedFilterRequest';
 import { ConditionFilter } from '../models/ConditionFilter';
+import { ContentType } from '../models/ContentType';
+import { ConversionAccessTokenResponse } from '../models/ConversionAccessTokenResponse';
 import { ConversionApiResponse } from '../models/ConversionApiResponse';
 import { ConversionApiResponseEventsInner } from '../models/ConversionApiResponseEventsInner';
 import { ConversionAttributionWindowDays } from '../models/ConversionAttributionWindowDays';
+import { ConversionEventAppInfo } from '../models/ConversionEventAppInfo';
+import { ConversionEventDeviceInfo } from '../models/ConversionEventDeviceInfo';
 import { ConversionEventResponse } from '../models/ConversionEventResponse';
 import { ConversionEvents } from '../models/ConversionEvents';
 import { ConversionEventsDataInner } from '../models/ConversionEventsDataInner';
 import { ConversionEventsDataInnerCustomData } from '../models/ConversionEventsDataInnerCustomData';
 import { ConversionEventsDataInnerCustomDataContentsInner } from '../models/ConversionEventsDataInnerCustomDataContentsInner';
 import { ConversionEventsUserData } from '../models/ConversionEventsUserData';
-import { ConversionEventsUserDataAnyOf } from '../models/ConversionEventsUserDataAnyOf';
-import { ConversionEventsUserDataAnyOf1 } from '../models/ConversionEventsUserDataAnyOf1';
-import { ConversionEventsUserDataAnyOf2 } from '../models/ConversionEventsUserDataAnyOf2';
+import { ConversionEventsUserDataProperties } from '../models/ConversionEventsUserDataProperties';
+import { ConversionHealthSelectionItem } from '../models/ConversionHealthSelectionItem';
+import { ConversionMSOTEvents } from '../models/ConversionMSOTEvents';
+import { ConversionProductReportRequest } from '../models/ConversionProductReportRequest';
+import { ConversionProductReportingColumn } from '../models/ConversionProductReportingColumn';
 import { ConversionReportAttributionType } from '../models/ConversionReportAttributionType';
 import { ConversionReportTimeType } from '../models/ConversionReportTimeType';
+import { ConversionTag } from '../models/ConversionTag';
 import { ConversionTagCommon } from '../models/ConversionTagCommon';
 import { ConversionTagConfigs } from '../models/ConversionTagConfigs';
 import { ConversionTagCreate } from '../models/ConversionTagCreate';
 import { ConversionTagListResponse } from '../models/ConversionTagListResponse';
 import { ConversionTagResponse } from '../models/ConversionTagResponse';
 import { ConversionTagType } from '../models/ConversionTagType';
+import { ConversionTagsList200Response } from '../models/ConversionTagsList200Response';
 import { Country } from '../models/Country';
 import { CountryFilter } from '../models/CountryFilter';
 import { CreateAssetAccessRequestBody } from '../models/CreateAssetAccessRequestBody';
@@ -380,10 +429,20 @@ import { CustomLabel1Filter } from '../models/CustomLabel1Filter';
 import { CustomLabel2Filter } from '../models/CustomLabel2Filter';
 import { CustomLabel3Filter } from '../models/CustomLabel3Filter';
 import { CustomLabel4Filter } from '../models/CustomLabel4Filter';
+import { CustomNumber0Filter } from '../models/CustomNumber0Filter';
+import { CustomNumber1Filter } from '../models/CustomNumber1Filter';
+import { CustomNumber2Filter } from '../models/CustomNumber2Filter';
+import { CustomNumber3Filter } from '../models/CustomNumber3Filter';
+import { CustomNumber4Filter } from '../models/CustomNumber4Filter';
 import { CustomerList } from '../models/CustomerList';
 import { CustomerListRequest } from '../models/CustomerListRequest';
 import { CustomerListUpdateRequest } from '../models/CustomerListUpdateRequest';
+import { CustomerListUpload } from '../models/CustomerListUpload';
+import { CustomerListUploadCreateRequest } from '../models/CustomerListUploadCreateRequest';
+import { CustomerListUploadCreateResponse } from '../models/CustomerListUploadCreateResponse';
+import { CustomerListUploadResponse } from '../models/CustomerListUploadResponse';
 import { CustomerListsList200Response } from '../models/CustomerListsList200Response';
+import { CustomizableCTAType } from '../models/CustomizableCTAType';
 import { DataOutputFormat } from '../models/DataOutputFormat';
 import { DataStatus } from '../models/DataStatus';
 import { DeleteAssetGroupBody } from '../models/DeleteAssetGroupBody';
@@ -404,9 +463,14 @@ import { DeletedMembersResponse } from '../models/DeletedMembersResponse';
 import { DeliveryMetricsResponse } from '../models/DeliveryMetricsResponse';
 import { DeliveryMetricsResponseItemsInner } from '../models/DeliveryMetricsResponseItemsInner';
 import { DetailedError } from '../models/DetailedError';
+import { DisclosureType } from '../models/DisclosureType';
 import { EnhancedMatchStatusType } from '../models/EnhancedMatchStatusType';
 import { EntityStatus } from '../models/EntityStatus';
+import { ErrorDetail } from '../models/ErrorDetail';
+import { EventData } from '../models/EventData';
+import { EventQualityScore } from '../models/EventQualityScore';
 import { Exception } from '../models/Exception';
+import { FeaturedTrend } from '../models/FeaturedTrend';
 import { FeedProcessingResultsList200Response } from '../models/FeedProcessingResultsList200Response';
 import { FeedsCreateRequest } from '../models/FeedsCreateRequest';
 import { FeedsList200Response } from '../models/FeedsList200Response';
@@ -414,10 +478,13 @@ import { FeedsUpdateRequest } from '../models/FeedsUpdateRequest';
 import { FollowUserRequest } from '../models/FollowUserRequest';
 import { FollowersList200Response } from '../models/FollowersList200Response';
 import { Gender } from '../models/Gender';
+import { GenderBucket } from '../models/GenderBucket';
+import { GenderDemographics } from '../models/GenderDemographics';
 import { GenderFilter } from '../models/GenderFilter';
 import { GetAudiencesOrderBy } from '../models/GetAudiencesOrderBy';
 import { GetBusinessAssetTypeResponse } from '../models/GetBusinessAssetTypeResponse';
 import { GetBusinessAssetsResponse } from '../models/GetBusinessAssetsResponse';
+import { GetBusinessAssetsResponseCatalogInfo } from '../models/GetBusinessAssetsResponseCatalogInfo';
 import { GetBusinessEmployers200Response } from '../models/GetBusinessEmployers200Response';
 import { GetBusinessMembers200Response } from '../models/GetBusinessMembers200Response';
 import { GetBusinessPartners200Response } from '../models/GetBusinessPartners200Response';
@@ -436,9 +503,12 @@ import { Granularity } from '../models/Granularity';
 import { GridClickType } from '../models/GridClickType';
 import { HotelIdFilter } from '../models/HotelIdFilter';
 import { HotelProcessingRecord } from '../models/HotelProcessingRecord';
+import { ImageBase64 } from '../models/ImageBase64';
 import { ImageDetails } from '../models/ImageDetails';
 import { ImageMetadata } from '../models/ImageMetadata';
-import { ImageMetadataImages } from '../models/ImageMetadataImages';
+import { ImageSize } from '../models/ImageSize';
+import { IngestionSourceOptions } from '../models/IngestionSourceOptions';
+import { InnerProductCategoriesMetricsHighlights } from '../models/InnerProductCategoriesMetricsHighlights';
 import { IntegrationLog } from '../models/IntegrationLog';
 import { IntegrationLogClientError } from '../models/IntegrationLogClientError';
 import { IntegrationLogClientRequest } from '../models/IntegrationLogClientRequest';
@@ -451,7 +521,9 @@ import { IntegrationRecord } from '../models/IntegrationRecord';
 import { IntegrationRequest } from '../models/IntegrationRequest';
 import { IntegrationRequestPatch } from '../models/IntegrationRequestPatch';
 import { IntegrationsGetList200Response } from '../models/IntegrationsGetList200Response';
+import { IntegrationsLogsPost400Response } from '../models/IntegrationsLogsPost400Response';
 import { Interest } from '../models/Interest';
+import { InterestsEnum } from '../models/InterestsEnum';
 import { InviteAssetsSummary } from '../models/InviteAssetsSummary';
 import { InviteAssetsSummaryAdAccountsInner } from '../models/InviteAssetsSummaryAdAccountsInner';
 import { InviteAssetsSummaryProfilesInner } from '../models/InviteAssetsSummaryProfilesInner';
@@ -472,8 +544,8 @@ import { ItemIdFilter } from '../models/ItemIdFilter';
 import { ItemProcessingRecord } from '../models/ItemProcessingRecord';
 import { ItemProcessingStatus } from '../models/ItemProcessingStatus';
 import { ItemResponse } from '../models/ItemResponse';
-import { ItemResponseAnyOf } from '../models/ItemResponseAnyOf';
-import { ItemResponseAnyOf1 } from '../models/ItemResponseAnyOf1';
+import { ItemResponseOneOf } from '../models/ItemResponseOneOf';
+import { ItemResponseOneOf1 } from '../models/ItemResponseOneOf1';
 import { ItemUpdateBatchRecord } from '../models/ItemUpdateBatchRecord';
 import { ItemUpsertBatchRecord } from '../models/ItemUpsertBatchRecord';
 import { ItemValidationEvent } from '../models/ItemValidationEvent';
@@ -490,6 +562,18 @@ import { KeywordsGet200Response } from '../models/KeywordsGet200Response';
 import { KeywordsMetricsArrayResponse } from '../models/KeywordsMetricsArrayResponse';
 import { KeywordsRequest } from '../models/KeywordsRequest';
 import { KeywordsResponse } from '../models/KeywordsResponse';
+import { Label } from '../models/Label';
+import { LabelBulkUpdateRequest } from '../models/LabelBulkUpdateRequest';
+import { LabelCreateRequest } from '../models/LabelCreateRequest';
+import { LabelCreateRequestLabelsInner } from '../models/LabelCreateRequestLabelsInner';
+import { LabelError } from '../models/LabelError';
+import { LabelParentType } from '../models/LabelParentType';
+import { LabelStatus } from '../models/LabelStatus';
+import { LabelType } from '../models/LabelType';
+import { LabelUpdateRequest } from '../models/LabelUpdateRequest';
+import { LabelUpdateRequestLabelsInner } from '../models/LabelUpdateRequestLabelsInner';
+import { LabelsList200Response } from '../models/LabelsList200Response';
+import { LabelsResponse } from '../models/LabelsResponse';
 import { Language } from '../models/Language';
 import { LeadFormArrayResponse } from '../models/LeadFormArrayResponse';
 import { LeadFormArrayResponseItemsInner } from '../models/LeadFormArrayResponseItemsInner';
@@ -505,24 +589,29 @@ import { LeadFormTestRequest } from '../models/LeadFormTestRequest';
 import { LeadFormTestResponse } from '../models/LeadFormTestResponse';
 import { LeadFormUpdateRequest } from '../models/LeadFormUpdateRequest';
 import { LeadFormsList200Response } from '../models/LeadFormsList200Response';
+import { LeadSubscription } from '../models/LeadSubscription';
+import { LeadSubscriptionPostParamsCreate } from '../models/LeadSubscriptionPostParamsCreate';
+import { LeadSubscriptionPostParamsCreateAllOfPartnerMetadata } from '../models/LeadSubscriptionPostParamsCreateAllOfPartnerMetadata';
 import { LeadsExportCreateRequest } from '../models/LeadsExportCreateRequest';
 import { LeadsExportCreateResponse } from '../models/LeadsExportCreateResponse';
 import { LeadsExportResponseData } from '../models/LeadsExportResponseData';
 import { LeadsExportStatus } from '../models/LeadsExportStatus';
 import { LineItem } from '../models/LineItem';
 import { LinkedBusiness } from '../models/LinkedBusiness';
+import { LocalStoreUpdate } from '../models/LocalStoreUpdate';
+import { LookbackPeriodOptions } from '../models/LookbackPeriodOptions';
 import { MMMReportingColumn } from '../models/MMMReportingColumn';
 import { MMMReportingTargetingType } from '../models/MMMReportingTargetingType';
 import { MatchType } from '../models/MatchType';
 import { MatchTypeResponse } from '../models/MatchTypeResponse';
 import { MaxPriceFilter } from '../models/MaxPriceFilter';
+import { Media } from '../models/Media';
 import { MediaList200Response } from '../models/MediaList200Response';
 import { MediaType } from '../models/MediaType';
 import { MediaTypeFilter } from '../models/MediaTypeFilter';
 import { MediaUpload } from '../models/MediaUpload';
-import { MediaUploadAllOfUploadParameters } from '../models/MediaUploadAllOfUploadParameters';
-import { MediaUploadDetails } from '../models/MediaUploadDetails';
-import { MediaUploadRequest } from '../models/MediaUploadRequest';
+import { MediaUploadCreate } from '../models/MediaUploadCreate';
+import { MediaUploadParameters } from '../models/MediaUploadParameters';
 import { MediaUploadStatus } from '../models/MediaUploadStatus';
 import { MediaUploadType } from '../models/MediaUploadType';
 import { MemberBusinessRole } from '../models/MemberBusinessRole';
@@ -533,8 +622,11 @@ import { MetricsResponse } from '../models/MetricsResponse';
 import { MinPriceFilter } from '../models/MinPriceFilter';
 import { ModelError } from '../models/ModelError';
 import { MultipleProductGroupsInner } from '../models/MultipleProductGroupsInner';
+import { NonDraftEntityStatus } from '../models/NonDraftEntityStatus';
 import { NonNullableCatalogsCurrency } from '../models/NonNullableCatalogsCurrency';
 import { NonNullableProductAvailabilityType } from '../models/NonNullableProductAvailabilityType';
+import { NotificationPostRequest } from '../models/NotificationPostRequest';
+import { NotificationResponse } from '../models/NotificationResponse';
 import { NullableCatalogsItemFieldType } from '../models/NullableCatalogsItemFieldType';
 import { NullableCurrency } from '../models/NullableCurrency';
 import { OauthAccessTokenRequestClientCredentials } from '../models/OauthAccessTokenRequestClientCredentials';
@@ -543,7 +635,6 @@ import { OauthAccessTokenRequestRefresh } from '../models/OauthAccessTokenReques
 import { OauthAccessTokenResponse } from '../models/OauthAccessTokenResponse';
 import { OauthAccessTokenResponseClientCredentials } from '../models/OauthAccessTokenResponseClientCredentials';
 import { OauthAccessTokenResponseCode } from '../models/OauthAccessTokenResponseCode';
-import { OauthAccessTokenResponseEverlastingRefresh } from '../models/OauthAccessTokenResponseEverlastingRefresh';
 import { OauthAccessTokenResponseIntegrationRefresh } from '../models/OauthAccessTokenResponseIntegrationRefresh';
 import { OauthAccessTokenResponseRefresh } from '../models/OauthAccessTokenResponseRefresh';
 import { ObjectiveType } from '../models/ObjectiveType';
@@ -562,6 +653,7 @@ import { OrderLineStatus } from '../models/OrderLineStatus';
 import { OrderLines } from '../models/OrderLines';
 import { OrderLinesArrayResponse } from '../models/OrderLinesArrayResponse';
 import { OrderLinesList200Response } from '../models/OrderLinesList200Response';
+import { OverallStatusOptions } from '../models/OverallStatusOptions';
 import { PacingDeliveryType } from '../models/PacingDeliveryType';
 import { PageVisitConversionTagsGet200Response } from '../models/PageVisitConversionTagsGet200Response';
 import { Paginated } from '../models/Paginated';
@@ -578,33 +670,39 @@ import { PinMediaSource } from '../models/PinMediaSource';
 import { PinMediaSourceImageBase64 } from '../models/PinMediaSourceImageBase64';
 import { PinMediaSourceImageURL } from '../models/PinMediaSourceImageURL';
 import { PinMediaSourceImagesBase64 } from '../models/PinMediaSourceImagesBase64';
-import { PinMediaSourceImagesBase64ItemsInner } from '../models/PinMediaSourceImagesBase64ItemsInner';
+import { PinMediaSourceImagesBase64Item } from '../models/PinMediaSourceImagesBase64Item';
 import { PinMediaSourceImagesURL } from '../models/PinMediaSourceImagesURL';
-import { PinMediaSourceImagesURLItemsInner } from '../models/PinMediaSourceImagesURLItemsInner';
+import { PinMediaSourceImagesURLItem } from '../models/PinMediaSourceImagesURLItem';
 import { PinMediaSourcePinURL } from '../models/PinMediaSourcePinURL';
 import { PinMediaSourceVideoID } from '../models/PinMediaSourceVideoID';
 import { PinMediaWithImage } from '../models/PinMediaWithImage';
-import { PinMediaWithImageAllOfImages } from '../models/PinMediaWithImageAllOfImages';
 import { PinMediaWithImageAndVideo } from '../models/PinMediaWithImageAndVideo';
 import { PinMediaWithImages } from '../models/PinMediaWithImages';
 import { PinMediaWithVideo } from '../models/PinMediaWithVideo';
 import { PinMediaWithVideos } from '../models/PinMediaWithVideos';
 import { PinPromotionSummaryStatus } from '../models/PinPromotionSummaryStatus';
 import { PinUpdate } from '../models/PinUpdate';
-import { PinUpdateCarouselSlotsInner } from '../models/PinUpdateCarouselSlotsInner';
 import { PinsList200Response } from '../models/PinsList200Response';
 import { PinsSaveRequest } from '../models/PinsSaveRequest';
-import { PinterestTagEventData } from '../models/PinterestTagEventData';
+import { PinterestLibError } from '../models/PinterestLibError';
+import { PinterestLibPaginationOrder } from '../models/PinterestLibPaginationOrder';
+import { PinterestLibStatus204 } from '../models/PinterestLibStatus204';
 import { PlacementGroupType } from '../models/PlacementGroupType';
 import { PlacementMultipliers } from '../models/PlacementMultipliers';
+import { PredictedTimeSeries } from '../models/PredictedTimeSeries';
 import { PriceFilter } from '../models/PriceFilter';
 import { ProductAvailabilityType } from '../models/ProductAvailabilityType';
+import { ProductCategoriesDemographic } from '../models/ProductCategoriesDemographic';
+import { ProductCategoriesEngagementType } from '../models/ProductCategoriesEngagementType';
+import { ProductCategoriesMetricsHighlights } from '../models/ProductCategoriesMetricsHighlights';
+import { ProductCategoryDetailLookbackWindow } from '../models/ProductCategoryDetailLookbackWindow';
+import { ProductCategoryDetails } from '../models/ProductCategoryDetails';
+import { ProductCategoryEnum } from '../models/ProductCategoryEnum';
+import { ProductCategoryRegion } from '../models/ProductCategoryRegion';
 import { ProductGroupAnalyticsResponseInner } from '../models/ProductGroupAnalyticsResponseInner';
 import { ProductGroupPromotion } from '../models/ProductGroupPromotion';
 import { ProductGroupPromotionCreateRequest } from '../models/ProductGroupPromotionCreateRequest';
-import { ProductGroupPromotionCreateRequestElement } from '../models/ProductGroupPromotionCreateRequestElement';
 import { ProductGroupPromotionResponse } from '../models/ProductGroupPromotionResponse';
-import { ProductGroupPromotionResponseElement } from '../models/ProductGroupPromotionResponseElement';
 import { ProductGroupPromotionResponseItem } from '../models/ProductGroupPromotionResponseItem';
 import { ProductGroupPromotionUpdateRequest } from '../models/ProductGroupPromotionUpdateRequest';
 import { ProductGroupPromotionsList200Response } from '../models/ProductGroupPromotionsList200Response';
@@ -615,17 +713,34 @@ import { ProductType1Filter } from '../models/ProductType1Filter';
 import { ProductType2Filter } from '../models/ProductType2Filter';
 import { ProductType3Filter } from '../models/ProductType3Filter';
 import { ProductType4Filter } from '../models/ProductType4Filter';
+import { PromotionArrayElement } from '../models/PromotionArrayElement';
+import { PromotionCommon } from '../models/PromotionCommon';
+import { PromotionCreateRequest } from '../models/PromotionCreateRequest';
+import { PromotionResponse } from '../models/PromotionResponse';
+import { PromotionTemplateValue } from '../models/PromotionTemplateValue';
+import { PromotionType } from '../models/PromotionType';
+import { PromotionUpdateRequest } from '../models/PromotionUpdateRequest';
+import { PromotionsList200Response } from '../models/PromotionsList200Response';
+import { PromotionsResponse } from '../models/PromotionsResponse';
+import { QualityComponentDetails } from '../models/QualityComponentDetails';
+import { QualityComponentIssue } from '../models/QualityComponentIssue';
+import { QualityComponents } from '../models/QualityComponents';
 import { QuizPinData } from '../models/QuizPinData';
 import { QuizPinOption } from '../models/QuizPinOption';
 import { QuizPinQuestion } from '../models/QuizPinQuestion';
 import { QuizPinResult } from '../models/QuizPinResult';
+import { RecordCounts } from '../models/RecordCounts';
 import { RelatedTerms } from '../models/RelatedTerms';
 import { RelatedTermsRelatedTermsListInner } from '../models/RelatedTermsRelatedTermsListInner';
 import { ReportingColumnAsync } from '../models/ReportingColumnAsync';
+import { ReportingTimeZone } from '../models/ReportingTimeZone';
 import { ReportsStats200Response } from '../models/ReportsStats200Response';
+import { ReportsStatsParametersParameter } from '../models/ReportsStatsParametersParameter';
 import { RespondToInvitesResponseArray } from '../models/RespondToInvitesResponseArray';
 import { RespondToInvitesResponseArrayItemsInner } from '../models/RespondToInvitesResponseArrayItemsInner';
 import { Role } from '../models/Role';
+import { S3FilePart } from '../models/S3FilePart';
+import { S3MultipartUploadData } from '../models/S3MultipartUploadData';
 import { SSIOAccountAddress } from '../models/SSIOAccountAddress';
 import { SSIOAccountItem } from '../models/SSIOAccountItem';
 import { SSIOAccountPMPName } from '../models/SSIOAccountPMPName';
@@ -640,19 +755,31 @@ import { SSIOInsertionOrderStatusResponse } from '../models/SSIOInsertionOrderSt
 import { SSIOOrderLine } from '../models/SSIOOrderLine';
 import { SearchPartnerPins200Response } from '../models/SearchPartnerPins200Response';
 import { SearchUserBoardsGet200Response } from '../models/SearchUserBoardsGet200Response';
+import { SearchUserPinsList200Response } from '../models/SearchUserPinsList200Response';
 import { SharedAudience } from '../models/SharedAudience';
 import { SharedAudienceAccount } from '../models/SharedAudienceAccount';
 import { SharedAudienceCommon } from '../models/SharedAudienceCommon';
 import { SharedAudienceResponse } from '../models/SharedAudienceResponse';
 import { SharedAudienceResponseCommon } from '../models/SharedAudienceResponseCommon';
 import { SingleInterestTargetingOptionResponse } from '../models/SingleInterestTargetingOptionResponse';
+import { SourcePlatformOptions } from '../models/SourcePlatformOptions';
 import { SsioInsertionOrdersStatusGetByAdAccount200Response } from '../models/SsioInsertionOrdersStatusGetByAdAccount200Response';
 import { SsioOrderLinesGetByAdAccount200Response } from '../models/SsioOrderLinesGetByAdAccount200Response';
 import { SummaryPin } from '../models/SummaryPin';
+import { SystemUserUpdateRequest } from '../models/SystemUserUpdateRequest';
 import { TargetingAdvertiserCountry } from '../models/TargetingAdvertiserCountry';
 import { TargetingSpec } from '../models/TargetingSpec';
+import { TargetingSpecAgeBucket } from '../models/TargetingSpecAgeBucket';
 import { TargetingSpecAppType } from '../models/TargetingSpecAppType';
-import { TargetingSpecSHOPPINGRETARGETING } from '../models/TargetingSpecSHOPPINGRETARGETING';
+import { TargetingSpecGender } from '../models/TargetingSpecGender';
+import { TargetingSpecOperationAgeBucket } from '../models/TargetingSpecOperationAgeBucket';
+import { TargetingSpecOperationAppType } from '../models/TargetingSpecOperationAppType';
+import { TargetingSpecOperationGender } from '../models/TargetingSpecOperationGender';
+import { TargetingSpecOperationList } from '../models/TargetingSpecOperationList';
+import { TargetingSpecOperationMinMaxAge } from '../models/TargetingSpecOperationMinMaxAge';
+import { TargetingSpecOperationShoppingRetargeting } from '../models/TargetingSpecOperationShoppingRetargeting';
+import { TargetingSpecOperationString } from '../models/TargetingSpecOperationString';
+import { TargetingSpecShoppingRetargeting } from '../models/TargetingSpecShoppingRetargeting';
 import { TargetingTemplateAudienceSizing } from '../models/TargetingTemplateAudienceSizing';
 import { TargetingTemplateAudienceSizingReachEstimate } from '../models/TargetingTemplateAudienceSizingReachEstimate';
 import { TargetingTemplateCommon } from '../models/TargetingTemplateCommon';
@@ -663,6 +790,7 @@ import { TargetingTemplateList200Response } from '../models/TargetingTemplateLis
 import { TargetingTemplateResponseData } from '../models/TargetingTemplateResponseData';
 import { TargetingTemplateUpdateRequest } from '../models/TargetingTemplateUpdateRequest';
 import { TargetingTypeFilter } from '../models/TargetingTypeFilter';
+import { TemplateBasedReport } from '../models/TemplateBasedReport';
 import { TemplateResponse } from '../models/TemplateResponse';
 import { TemplateResponseDateRange } from '../models/TemplateResponseDateRange';
 import { TemplateResponseDateRangeAbsoluteDateRange } from '../models/TemplateResponseDateRangeAbsoluteDateRange';
@@ -670,6 +798,8 @@ import { TemplateResponseDateRangeDynamicDateRange } from '../models/TemplateRes
 import { TemplateResponseDateRangeRelativeDateRange } from '../models/TemplateResponseDateRangeRelativeDateRange';
 import { TemplatesList200Response } from '../models/TemplatesList200Response';
 import { TermsOfService } from '../models/TermsOfService';
+import { TimeSeries } from '../models/TimeSeries';
+import { TitleKeywordsFilter } from '../models/TitleKeywordsFilter';
 import { TopPinsAnalyticsResponse } from '../models/TopPinsAnalyticsResponse';
 import { TopPinsAnalyticsResponseDateAvailability } from '../models/TopPinsAnalyticsResponseDateAvailability';
 import { TopPinsAnalyticsResponsePinsInner } from '../models/TopPinsAnalyticsResponsePinsInner';
@@ -677,11 +807,17 @@ import { TopVideoPinsAnalyticsResponse } from '../models/TopVideoPinsAnalyticsRe
 import { TopVideoPinsAnalyticsResponsePinsInner } from '../models/TopVideoPinsAnalyticsResponsePinsInner';
 import { TrackingUrls } from '../models/TrackingUrls';
 import { TrendType } from '../models/TrendType';
+import { TrendingKeyword } from '../models/TrendingKeyword';
+import { TrendingKeywordDemographics } from '../models/TrendingKeywordDemographics';
+import { TrendingKeywordDemographicsAgeDistribution } from '../models/TrendingKeywordDemographicsAgeDistribution';
+import { TrendingKeywordDemographicsGenderDistribution } from '../models/TrendingKeywordDemographicsGenderDistribution';
 import { TrendingKeywordsResponse } from '../models/TrendingKeywordsResponse';
-import { TrendingKeywordsResponseTrendsInner } from '../models/TrendingKeywordsResponseTrendsInner';
-import { TrendingKeywordsResponseTrendsInnerTimeSeries } from '../models/TrendingKeywordsResponseTrendsInnerTimeSeries';
+import { TrendingPin } from '../models/TrendingPin';
+import { TrendingProductCategory } from '../models/TrendingProductCategory';
+import { TrendingTopic } from '../models/TrendingTopic';
 import { TrendsSupportedRegion } from '../models/TrendsSupportedRegion';
 import { UpdatableItemAttributes } from '../models/UpdatableItemAttributes';
+import { UpdatableItemAttributesGtin } from '../models/UpdatableItemAttributesGtin';
 import { UpdateAssetGroupBody } from '../models/UpdateAssetGroupBody';
 import { UpdateAssetGroupBodyAssetGroupsToUpdateInner } from '../models/UpdateAssetGroupBodyAssetGroupsToUpdateInner';
 import { UpdateAssetGroupResponse } from '../models/UpdateAssetGroupResponse';
@@ -716,7 +852,8 @@ import { UserWebsiteVerificationCode } from '../models/UserWebsiteVerificationCo
 import { UserWebsiteVerifyRequest } from '../models/UserWebsiteVerifyRequest';
 import { UserWebsitesGet200Response } from '../models/UserWebsitesGet200Response';
 import { UsersForIndividualAssetResponse } from '../models/UsersForIndividualAssetResponse';
-import { VideoMetadata } from '../models/VideoMetadata';
+import { VerticalProductCategory } from '../models/VerticalProductCategory';
+import { VideoMetadataWithItemType } from '../models/VideoMetadataWithItemType';
 
 import { ObservableAdAccountsApi } from "./ObservableAPI";
 import { AdAccountsApiRequestFactory, AdAccountsApiResponseProcessor} from "../apis/AdAccountsApi";
@@ -746,10 +883,10 @@ export interface AdAccountsApiAdAccountAnalyticsRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof AdAccountsApiadAccountAnalytics
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -765,7 +902,7 @@ export interface AdAccountsApiAdAccountAnalyticsRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof AdAccountsApiadAccountAnalytics
@@ -785,6 +922,13 @@ export interface AdAccountsApiAdAccountAnalyticsRequest {
      * @memberof AdAccountsApiadAccountAnalytics
      */
     conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof AdAccountsApiadAccountAnalytics
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface AdAccountsApiAdAccountTargetingAnalyticsGetRequest {
@@ -819,10 +963,10 @@ export interface AdAccountsApiAdAccountTargetingAnalyticsGetRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof AdAccountsApiadAccountTargetingAnalyticsGet
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -838,7 +982,7 @@ export interface AdAccountsApiAdAccountTargetingAnalyticsGetRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof AdAccountsApiadAccountTargetingAnalyticsGet
@@ -861,24 +1005,31 @@ export interface AdAccountsApiAdAccountTargetingAnalyticsGetRequest {
     /**
      * List of types of attribution for the conversion report
      * Defaults to: undefined
-     * @type ConversionReportAttributionType
+     * @type Array&lt;ConversionReportAttributionType&gt;
      * @memberof AdAccountsApiadAccountTargetingAnalyticsGet
      */
-    attributionTypes?: ConversionReportAttributionType
+    attributionTypes?: Array<ConversionReportAttributionType>
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof AdAccountsApiadAccountTargetingAnalyticsGet
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface AdAccountsApiAdAccountsCreateRequest {
     /**
-     * Ad account to create.
-     * @type AdAccountCreateRequest
+     * 
+     * @type AdAccountCreate
      * @memberof AdAccountsApiadAccountsCreate
      */
-    adAccountCreateRequest: AdAccountCreateRequest
+    adAccountCreate: AdAccountCreate
 }
 
 export interface AdAccountsApiAdAccountsGetRequest {
     /**
-     * Unique identifier of an ad account.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AdAccountsApiadAccountsGet
@@ -888,6 +1039,13 @@ export interface AdAccountsApiAdAccountsGetRequest {
 
 export interface AdAccountsApiAdAccountsListRequest {
     /**
+     * Include shared ad accounts
+     * Defaults to: true
+     * @type boolean
+     * @memberof AdAccountsApiadAccountsList
+     */
+    includeSharedAccounts?: boolean
+    /**
      * Cursor used to fetch the next page of items
      * Defaults to: undefined
      * @type string
@@ -895,7 +1053,7 @@ export interface AdAccountsApiAdAccountsListRequest {
      */
     bookmark?: string
     /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * Minimum: 1
      * Maximum: 250
      * Defaults to: 25
@@ -903,13 +1061,22 @@ export interface AdAccountsApiAdAccountsListRequest {
      * @memberof AdAccountsApiadAccountsList
      */
     pageSize?: number
+}
+
+export interface AdAccountsApiAnalyticsCreateConversionProductReportRequest {
     /**
-     * Include shared ad accounts
-     * Defaults to: true
-     * @type boolean
-     * @memberof AdAccountsApiadAccountsList
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof AdAccountsApianalyticsCreateConversionProductReport
      */
-    includeSharedAccounts?: boolean
+    adAccountId: string
+    /**
+     * 
+     * @type ConversionProductReportRequest
+     * @memberof AdAccountsApianalyticsCreateConversionProductReport
+     */
+    conversionProductReportRequest: ConversionProductReportRequest
 }
 
 export interface AdAccountsApiAnalyticsCreateMmmReportRequest {
@@ -946,7 +1113,7 @@ export interface AdAccountsApiAnalyticsCreateReportRequest {
 
 export interface AdAccountsApiAnalyticsCreateTemplateReportRequest {
     /**
-     * Unique identifier of an ad account.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AdAccountsApianalyticsCreateTemplateReport
@@ -974,12 +1141,29 @@ export interface AdAccountsApiAnalyticsCreateTemplateReportRequest {
      */
     endDate?: string
     /**
-     * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     *    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
      * @type Granularity
      * @memberof AdAccountsApianalyticsCreateTemplateReport
      */
     granularity?: Granularity
+}
+
+export interface AdAccountsApiAnalyticsGetConversionProductReportRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof AdAccountsApianalyticsGetConversionProductReport
+     */
+    adAccountId: string
+    /**
+     * Token returned from the post request creation call
+     * Defaults to: undefined
+     * @type string
+     * @memberof AdAccountsApianalyticsGetConversionProductReport
+     */
+    token: string
 }
 
 export interface AdAccountsApiAnalyticsGetMmmReportRequest {
@@ -1067,57 +1251,57 @@ export class ObjectAdAccountsApi {
     }
 
     /**
-     * Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+     * Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
      * Get ad account analytics
      * @param param the request object
      */
     public adAccountAnalyticsWithHttpInfo(param: AdAccountsApiAdAccountAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdAccountAnalyticsResponseInner>>> {
-        return this.api.adAccountAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.adAccountAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+     * Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
      * Get ad account analytics
      * @param param the request object
      */
     public adAccountAnalytics(param: AdAccountsApiAdAccountAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdAccountAnalyticsResponseInner>> {
-        return this.api.adAccountAnalytics(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.adAccountAnalytics(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for an ad account
      * @param param the request object
      */
     public adAccountTargetingAnalyticsGetWithHttpInfo(param: AdAccountsApiAdAccountTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        return this.api.adAccountTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.adAccountTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for an ad account
      * @param param the request object
      */
     public adAccountTargetingAnalyticsGet(param: AdAccountsApiAdAccountTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
-        return this.api.adAccountTargetingAnalyticsGet(param.adAccountId, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.adAccountTargetingAnalyticsGet(param.adAccountId, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>.
+     * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.  You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).
      * Create ad account
      * @param param the request object
      */
     public adAccountsCreateWithHttpInfo(param: AdAccountsApiAdAccountsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccount>> {
-        return this.api.adAccountsCreateWithHttpInfo(param.adAccountCreateRequest,  options).toPromise();
+        return this.api.adAccountsCreateWithHttpInfo(param.adAccountCreate,  options).toPromise();
     }
 
     /**
-     * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>.
+     * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.  You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).
      * Create ad account
      * @param param the request object
      */
     public adAccountsCreate(param: AdAccountsApiAdAccountsCreateRequest, options?: ConfigurationOptions): Promise<AdAccount> {
-        return this.api.adAccountsCreate(param.adAccountCreateRequest,  options).toPromise();
+        return this.api.adAccountsCreate(param.adAccountCreate,  options).toPromise();
     }
 
     /**
@@ -1139,21 +1323,39 @@ export class ObjectAdAccountsApi {
     }
 
     /**
-     * Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
+     * Get a list of the ad_accounts that the \"operation user_account\" has access to.         - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).
      * List ad accounts
      * @param param the request object
      */
     public adAccountsListWithHttpInfo(param: AdAccountsApiAdAccountsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsList200Response>> {
-        return this.api.adAccountsListWithHttpInfo(param.bookmark, param.pageSize, param.includeSharedAccounts,  options).toPromise();
+        return this.api.adAccountsListWithHttpInfo(param.includeSharedAccounts, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
-     * Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
+     * Get a list of the ad_accounts that the \"operation user_account\" has access to.         - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).
      * List ad accounts
      * @param param the request object
      */
     public adAccountsList(param: AdAccountsApiAdAccountsListRequest = {}, options?: ConfigurationOptions): Promise<AdAccountsList200Response> {
-        return this.api.adAccountsList(param.bookmark, param.pageSize, param.includeSharedAccounts,  options).toPromise();
+        return this.api.adAccountsList(param.includeSharedAccounts, param.bookmark, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+     * Create a request for a brand, category, SKU report
+     * @param param the request object
+     */
+    public analyticsCreateConversionProductReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateConversionProductReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
+        return this.api.analyticsCreateConversionProductReportWithHttpInfo(param.adAccountId, param.conversionProductReportRequest,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+     * Create a request for a brand, category, SKU report
+     * @param param the request object
+     */
+    public analyticsCreateConversionProductReport(param: AdAccountsApiAnalyticsCreateConversionProductReportRequest, options?: ConfigurationOptions): Promise<AdsAnalyticsCreateAsyncResponse> {
+        return this.api.analyticsCreateConversionProductReport(param.adAccountId, param.conversionProductReportRequest,  options).toPromise();
     }
 
     /**
@@ -1175,7 +1377,7 @@ export class ObjectAdAccountsApi {
     }
 
     /**
-     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      * Create async request for an account analytics report
      * @param param the request object
      */
@@ -1184,7 +1386,7 @@ export class ObjectAdAccountsApi {
     }
 
     /**
-     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      * Create async request for an account analytics report
      * @param param the request object
      */
@@ -1193,21 +1395,39 @@ export class ObjectAdAccountsApi {
     }
 
     /**
-     * This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+     *    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
      * Create async request for an analytics report using a template
      * @param param the request object
      */
-    public analyticsCreateTemplateReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
+    public analyticsCreateTemplateReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<TemplateBasedReport>> {
         return this.api.analyticsCreateTemplateReportWithHttpInfo(param.adAccountId, param.templateId, param.startDate, param.endDate, param.granularity,  options).toPromise();
     }
 
     /**
-     * This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+     *    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
      * Create async request for an analytics report using a template
      * @param param the request object
      */
-    public analyticsCreateTemplateReport(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: ConfigurationOptions): Promise<AdsAnalyticsCreateAsyncResponse> {
+    public analyticsCreateTemplateReport(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: ConfigurationOptions): Promise<TemplateBasedReport> {
         return this.api.analyticsCreateTemplateReport(param.adAccountId, param.templateId, param.startDate, param.endDate, param.granularity,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+     * Get advertiser brand, category, SKU report
+     * @param param the request object
+     */
+    public analyticsGetConversionProductReportWithHttpInfo(param: AdAccountsApiAnalyticsGetConversionProductReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsAnalyticsGetAsyncResponse>> {
+        return this.api.analyticsGetConversionProductReportWithHttpInfo(param.adAccountId, param.token,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+     * Get advertiser brand, category, SKU report
+     * @param param the request object
+     */
+    public analyticsGetConversionProductReport(param: AdAccountsApiAnalyticsGetConversionProductReportRequest, options?: ConfigurationOptions): Promise<AdsAnalyticsGetAsyncResponse> {
+        return this.api.analyticsGetConversionProductReport(param.adAccountId, param.token,  options).toPromise();
     }
 
     /**
@@ -1319,10 +1539,10 @@ export interface AdGroupsApiAdGroupsAnalyticsRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof AdGroupsApiadGroupsAnalytics
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -1338,7 +1558,7 @@ export interface AdGroupsApiAdGroupsAnalyticsRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof AdGroupsApiadGroupsAnalytics
@@ -1358,6 +1578,20 @@ export interface AdGroupsApiAdGroupsAnalyticsRequest {
      * @memberof AdGroupsApiadGroupsAnalytics
      */
     conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'
+    /**
+     * Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
+     * Defaults to: false
+     * @type boolean
+     * @memberof AdGroupsApiadGroupsAnalytics
+     */
+    aggregateReportRows?: boolean
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof AdGroupsApiadGroupsAnalytics
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface AdGroupsApiAdGroupsAudienceSizingRequest {
@@ -1373,7 +1607,7 @@ export interface AdGroupsApiAdGroupsAudienceSizingRequest {
      * @type AdGroupAudienceSizingRequest
      * @memberof AdGroupsApiadGroupsAudienceSizing
      */
-    adGroupAudienceSizingRequest?: AdGroupAudienceSizingRequest
+    adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest
 }
 
 export interface AdGroupsApiAdGroupsBidFloorGetRequest {
@@ -1516,19 +1750,19 @@ export interface AdGroupsApiAdGroupsTargetingAnalyticsGetRequest {
      */
     endDate: string
     /**
-     * Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+     * Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.
      * Defaults to: undefined
-     * @type Array&lt;AdsAnalyticsTargetingType&gt;
+     * @type Array&lt;AdsAnalyticsAdGroupTargetingType&gt;
      * @memberof AdGroupsApiadGroupsTargetingAnalyticsGet
      */
-    targetingTypes: Array<AdsAnalyticsTargetingType>
+    targetingTypes: Array<AdsAnalyticsAdGroupTargetingType>
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof AdGroupsApiadGroupsTargetingAnalyticsGet
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -1544,7 +1778,7 @@ export interface AdGroupsApiAdGroupsTargetingAnalyticsGetRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof AdGroupsApiadGroupsTargetingAnalyticsGet
@@ -1567,10 +1801,17 @@ export interface AdGroupsApiAdGroupsTargetingAnalyticsGetRequest {
     /**
      * List of types of attribution for the conversion report
      * Defaults to: undefined
-     * @type ConversionReportAttributionType
+     * @type Array&lt;ConversionReportAttributionType&gt;
      * @memberof AdGroupsApiadGroupsTargetingAnalyticsGet
      */
-    attributionTypes?: ConversionReportAttributionType
+    attributionTypes?: Array<ConversionReportAttributionType>
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof AdGroupsApiadGroupsTargetingAnalyticsGet
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface AdGroupsApiAdGroupsUpdateRequest {
@@ -1597,21 +1838,21 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get ad group analytics
      * @param param the request object
      */
     public adGroupsAnalyticsWithHttpInfo(param: AdGroupsApiAdGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdGroupsAnalyticsResponseInner>>> {
-        return this.api.adGroupsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.adGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.adGroupsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.adGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.aggregateReportRows, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get ad group analytics
      * @param param the request object
      */
     public adGroupsAnalytics(param: AdGroupsApiAdGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdGroupsAnalyticsResponseInner>> {
-        return this.api.adGroupsAnalytics(param.adAccountId, param.startDate, param.endDate, param.adGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.adGroupsAnalytics(param.adAccountId, param.startDate, param.endDate, param.adGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.aggregateReportRows, param.reportingTimezone,  options).toPromise();
     }
 
     /**
@@ -1633,7 +1874,7 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
      * Get bid floors
      * @param param the request object
      */
@@ -1642,7 +1883,7 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
      * Get bid floors
      * @param param the request object
      */
@@ -1651,7 +1892,7 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - \'bid_in_micro_currency\' and \'budget_in_micro_currency\' should be expressed in microcurrency amounts based on the currency field set in the advertiser\'s profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser\'s profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
      * Create ad groups
      * @param param the request object
      */
@@ -1660,7 +1901,7 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - \'bid_in_micro_currency\' and \'budget_in_micro_currency\' should be expressed in microcurrency amounts based on the currency field set in the advertiser\'s profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser\'s profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
      * Create ad groups
      * @param param the request object
      */
@@ -1669,7 +1910,7 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+     * Get a specific ad group given the ad group ID.
      * Get ad group
      * @param param the request object
      */
@@ -1678,7 +1919,7 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+     * Get a specific ad group given the ad group ID.
      * Get ad group
      * @param param the request object
      */
@@ -1705,21 +1946,21 @@ export class ObjectAdGroupsApi {
     }
 
     /**
-     * Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for ad groups
      * @param param the request object
      */
     public adGroupsTargetingAnalyticsGetWithHttpInfo(param: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        return this.api.adGroupsTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.adGroupIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.adGroupsTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.adGroupIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for ad groups
      * @param param the request object
      */
     public adGroupsTargetingAnalyticsGet(param: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
-        return this.api.adGroupsTargetingAnalyticsGet(param.adAccountId, param.adGroupIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.adGroupsTargetingAnalyticsGet(param.adAccountId, param.adGroupIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
@@ -1800,10 +2041,10 @@ export interface AdsApiAdTargetingAnalyticsGetRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof AdsApiadTargetingAnalyticsGet
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -1819,7 +2060,7 @@ export interface AdsApiAdTargetingAnalyticsGetRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof AdsApiadTargetingAnalyticsGet
@@ -1842,10 +2083,17 @@ export interface AdsApiAdTargetingAnalyticsGetRequest {
     /**
      * List of types of attribution for the conversion report
      * Defaults to: undefined
-     * @type ConversionReportAttributionType
+     * @type Array&lt;ConversionReportAttributionType&gt;
      * @memberof AdsApiadTargetingAnalyticsGet
      */
-    attributionTypes?: ConversionReportAttributionType
+    attributionTypes?: Array<ConversionReportAttributionType>
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof AdsApiadTargetingAnalyticsGet
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface AdsApiAdsAnalyticsRequest {
@@ -1873,10 +2121,10 @@ export interface AdsApiAdsAnalyticsRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof AdsApiadsAnalytics
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -1899,7 +2147,7 @@ export interface AdsApiAdsAnalyticsRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof AdsApiadsAnalytics
@@ -1933,6 +2181,13 @@ export interface AdsApiAdsAnalyticsRequest {
      * @memberof AdsApiadsAnalytics
      */
     campaignIds?: Array<string>
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof AdsApiadsAnalytics
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface AdsApiAdsCreateRequest {
@@ -2053,7 +2308,7 @@ export class ObjectAdsApi {
     }
 
     /**
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
      * Create ad preview with pin or image
      * @param param the request object
      */
@@ -2062,7 +2317,7 @@ export class ObjectAdsApi {
     }
 
     /**
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
      * Create ad preview with pin or image
      * @param param the request object
      */
@@ -2071,43 +2326,43 @@ export class ObjectAdsApi {
     }
 
     /**
-     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for ads
      * @param param the request object
      */
     public adTargetingAnalyticsGetWithHttpInfo(param: AdsApiAdTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        return this.api.adTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.adIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.adTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.adIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for ads
      * @param param the request object
      */
     public adTargetingAnalyticsGet(param: AdsApiAdTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
-        return this.api.adTargetingAnalyticsGet(param.adAccountId, param.adIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.adTargetingAnalyticsGet(param.adAccountId, param.adIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get ad analytics
      * @param param the request object
      */
     public adsAnalyticsWithHttpInfo(param: AdsApiAdsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdsAnalyticsResponseInner>>> {
-        return this.api.adsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.adIds, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.pinIds, param.campaignIds,  options).toPromise();
+        return this.api.adsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.adIds, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.pinIds, param.campaignIds, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get ad analytics
      * @param param the request object
      */
     public adsAnalytics(param: AdsApiAdsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdsAnalyticsResponseInner>> {
-        return this.api.adsAnalytics(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.adIds, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.pinIds, param.campaignIds,  options).toPromise();
+        return this.api.adsAnalytics(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.adIds, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.pinIds, param.campaignIds, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+     * Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
      * Create ads
      * @param param the request object
      */
@@ -2116,7 +2371,7 @@ export class ObjectAdsApi {
     }
 
     /**
-     * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+     * Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
      * Create ads
      * @param param the request object
      */
@@ -2577,7 +2832,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href=\'https://help.pinterest.com/en/business/article/create-and-manage-accounts\'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href=\'https://help.pinterest.com/en/business/article/create-and-manage-accounts\'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing between ad accounts
      * @param param the request object
      */
@@ -2586,7 +2841,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href=\'https://help.pinterest.com/en/business/article/create-and-manage-accounts\'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href=\'https://help.pinterest.com/en/business/article/create-and-manage-accounts\'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing between ad accounts
      * @param param the request object
      */
@@ -2595,7 +2850,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing from an ad account to businesses
      * @param param the request object
      */
@@ -2604,7 +2859,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing from an ad account to businesses
      * @param param the request object
      */
@@ -2613,7 +2868,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing from a business to ad accounts
      * @param param the request object
      */
@@ -2622,7 +2877,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing from a business to ad accounts
      * @param param the request object
      */
@@ -2631,7 +2886,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing between businesses
      * @param param the request object
      */
@@ -2640,7 +2895,7 @@ export class ObjectAudienceSharingApi {
     }
 
     /**
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.
      * Update audience sharing between businesses
      * @param param the request object
      */
@@ -2667,22 +2922,6 @@ export interface AudiencesApiAudiencesCreateRequest {
      * @memberof AudiencesApiaudiencesCreate
      */
     audienceCreateRequest: AudienceCreateRequest
-}
-
-export interface AudiencesApiAudiencesCreateCustomRequest {
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof AudiencesApiaudiencesCreateCustom
-     */
-    adAccountId: string
-    /**
-     * Custom audience to create.
-     * @type AudienceCreateCustomRequest
-     * @memberof AudiencesApiaudiencesCreateCustom
-     */
-    audienceCreateCustomRequest: AudienceCreateCustomRequest
 }
 
 export interface AudiencesApiAudiencesGetRequest {
@@ -2762,7 +3001,7 @@ export interface AudiencesApiAudiencesUpdateRequest {
      * @type AudienceUpdateRequest
      * @memberof AudiencesApiaudiencesUpdate
      */
-    audienceUpdateRequest?: AudienceUpdateRequest
+    audienceUpdateRequest: AudienceUpdateRequest
 }
 
 export class ObjectAudiencesApi {
@@ -2773,7 +3012,7 @@ export class ObjectAudiencesApi {
     }
 
     /**
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
      * Create audience
      * @param param the request object
      */
@@ -2782,30 +3021,12 @@ export class ObjectAudiencesApi {
     }
 
     /**
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
      * Create audience
      * @param param the request object
      */
     public audiencesCreate(param: AudiencesApiAudiencesCreateRequest, options?: ConfigurationOptions): Promise<Audience> {
         return this.api.audiencesCreate(param.adAccountId, param.audienceCreateRequest,  options).toPromise();
-    }
-
-    /**
-     * Create a custom audience and find the audiences you want your ads to reach.
-     * Create custom audience
-     * @param param the request object
-     */
-    public audiencesCreateCustomWithHttpInfo(param: AudiencesApiAudiencesCreateCustomRequest, options?: ConfigurationOptions): Promise<HttpInfo<Audience>> {
-        return this.api.audiencesCreateCustomWithHttpInfo(param.adAccountId, param.audienceCreateCustomRequest,  options).toPromise();
-    }
-
-    /**
-     * Create a custom audience and find the audiences you want your ads to reach.
-     * Create custom audience
-     * @param param the request object
-     */
-    public audiencesCreateCustom(param: AudiencesApiAudiencesCreateCustomRequest, options?: ConfigurationOptions): Promise<Audience> {
-        return this.api.audiencesCreateCustom(param.adAccountId, param.audienceCreateCustomRequest,  options).toPromise();
     }
 
     /**
@@ -2907,6 +3128,91 @@ export interface BillingApiAdsCreditsDiscountsGetRequest {
      * @memberof BillingApiadsCreditsDiscountsGet
      */
     pageSize?: number
+}
+
+export interface BillingApiBillingInvoiceDownloadGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof BillingApibillingInvoiceDownloadGet
+     */
+    adAccountId: string
+    /**
+     * Unique identifier of a billing invoice.
+     * Defaults to: undefined
+     * @type string
+     * @memberof BillingApibillingInvoiceDownloadGet
+     */
+    billingInvoiceId: string
+}
+
+export interface BillingApiBillingInvoicesGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof BillingApibillingInvoicesGet
+     */
+    adAccountId: string
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof BillingApibillingInvoicesGet
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof BillingApibillingInvoicesGet
+     */
+    pageSize?: number
+    /**
+     * Field of which to sort billing invoices
+     * Defaults to: &#39;DUE_DATE&#39;
+     * @type &#39;DUE_DATE&#39; | &#39;BILLING_PERIOD&#39; | &#39;DOCUMENT_TYPE&#39; | &#39;TOTAL_AMOUNT&#39; | &#39;INVOICE_NUMBER&#39;
+     * @memberof BillingApibillingInvoicesGet
+     */
+    sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER'
+    /**
+     * The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+     * Defaults to: undefined
+     * @type &#39;ASCENDING&#39; | &#39;DESCENDING&#39;
+     * @memberof BillingApibillingInvoicesGet
+     */
+    order?: 'ASCENDING' | 'DESCENDING'
+    /**
+     * Status of billing invoices to filter by
+     * Defaults to: undefined
+     * @type &#39;OPEN&#39; | &#39;CLOSED&#39;
+     * @memberof BillingApibillingInvoicesGet
+     */
+    status?: 'OPEN' | 'CLOSED'
+    /**
+     * Document type of billing invoices to filter by
+     * Defaults to: undefined
+     * @type &#39;INVOICE&#39; | &#39;CREDIT_MEMO&#39;
+     * @memberof BillingApibillingInvoicesGet
+     */
+    documentType?: 'INVOICE' | 'CREDIT_MEMO'
+    /**
+     * Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+     * Defaults to: undefined
+     * @type string
+     * @memberof BillingApibillingInvoicesGet
+     */
+    startDueDate?: string
+    /**
+     * Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+     * Defaults to: undefined
+     * @type string
+     * @memberof BillingApibillingInvoicesGet
+     */
+    endDueDate?: string
 }
 
 export interface BillingApiBillingProfilesGetRequest {
@@ -3068,7 +3374,7 @@ export class ObjectBillingApi {
     }
 
     /**
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Redeem ad credits
      * @param param the request object
      */
@@ -3077,7 +3383,7 @@ export class ObjectBillingApi {
     }
 
     /**
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Redeem ad credits
      * @param param the request object
      */
@@ -3086,7 +3392,7 @@ export class ObjectBillingApi {
     }
 
     /**
-     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get ads credit discounts
      * @param param the request object
      */
@@ -3095,7 +3401,7 @@ export class ObjectBillingApi {
     }
 
     /**
-     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get ads credit discounts
      * @param param the request object
      */
@@ -3104,7 +3410,43 @@ export class ObjectBillingApi {
     }
 
     /**
-     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get download url for a billing invoice.
+     * Get download url for a billing invoice
+     * @param param the request object
+     */
+    public billingInvoiceDownloadGetWithHttpInfo(param: BillingApiBillingInvoiceDownloadGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BillingInvoiceDownloadResponse>> {
+        return this.api.billingInvoiceDownloadGetWithHttpInfo(param.adAccountId, param.billingInvoiceId,  options).toPromise();
+    }
+
+    /**
+     * Get download url for a billing invoice.
+     * Get download url for a billing invoice
+     * @param param the request object
+     */
+    public billingInvoiceDownloadGet(param: BillingApiBillingInvoiceDownloadGetRequest, options?: ConfigurationOptions): Promise<BillingInvoiceDownloadResponse> {
+        return this.api.billingInvoiceDownloadGet(param.adAccountId, param.billingInvoiceId,  options).toPromise();
+    }
+
+    /**
+     * Get billing invoices in the advertiser account.
+     * Get billing invoices
+     * @param param the request object
+     */
+    public billingInvoicesGetWithHttpInfo(param: BillingApiBillingInvoicesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BillingInvoicesGet200Response>> {
+        return this.api.billingInvoicesGetWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize, param.sort, param.order, param.status, param.documentType, param.startDueDate, param.endDueDate,  options).toPromise();
+    }
+
+    /**
+     * Get billing invoices in the advertiser account.
+     * Get billing invoices
+     * @param param the request object
+     */
+    public billingInvoicesGet(param: BillingApiBillingInvoicesGetRequest, options?: ConfigurationOptions): Promise<BillingInvoicesGet200Response> {
+        return this.api.billingInvoicesGet(param.adAccountId, param.bookmark, param.pageSize, param.sort, param.order, param.status, param.documentType, param.startDueDate, param.endDueDate,  options).toPromise();
+    }
+
+    /**
+     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get billing profiles
      * @param param the request object
      */
@@ -3113,7 +3455,7 @@ export class ObjectBillingApi {
     }
 
     /**
-     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get billing profiles
      * @param param the request object
      */
@@ -3386,11 +3728,11 @@ export interface BoardsApiBoardSectionsUpdateRequest {
 
 export interface BoardsApiBoardsCreateRequest {
     /**
-     * Create a board using a single board json object.
-     * @type Board
+     * 
+     * @type BoardCreate
      * @memberof BoardsApiboardsCreate
      */
-    board: Board
+    boardCreate: BoardCreate
     /**
      * Unique identifier of an ad account.
      * Defaults to: undefined
@@ -3402,7 +3744,7 @@ export interface BoardsApiBoardsCreateRequest {
 
 export interface BoardsApiBoardsDeleteRequest {
     /**
-     * Unique identifier of a board.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof BoardsApiboardsDelete
@@ -3419,7 +3761,7 @@ export interface BoardsApiBoardsDeleteRequest {
 
 export interface BoardsApiBoardsGetRequest {
     /**
-     * Unique identifier of a board.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof BoardsApiboardsGet
@@ -3443,6 +3785,13 @@ export interface BoardsApiBoardsListRequest {
      */
     adAccountId?: string
     /**
+     * The privacy level of the board
+     * Defaults to: undefined
+     * @type BoardPrivacyFilter
+     * @memberof BoardsApiboardsList
+     */
+    privacy?: BoardPrivacyFilter
+    /**
      * Cursor used to fetch the next page of items
      * Defaults to: undefined
      * @type string
@@ -3450,7 +3799,7 @@ export interface BoardsApiBoardsListRequest {
      */
     bookmark?: string
     /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * Minimum: 1
      * Maximum: 250
      * Defaults to: 25
@@ -3458,13 +3807,6 @@ export interface BoardsApiBoardsListRequest {
      * @memberof BoardsApiboardsList
      */
     pageSize?: number
-    /**
-     * Privacy setting for a board.
-     * Defaults to: undefined
-     * @type &#39;ALL&#39; | &#39;PROTECTED&#39; | &#39;PUBLIC&#39; | &#39;SECRET&#39; | &#39;PUBLIC_AND_SECRET&#39;
-     * @memberof BoardsApiboardsList
-     */
-    privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET'
 }
 
 export interface BoardsApiBoardsListPinsRequest {
@@ -3492,12 +3834,12 @@ export interface BoardsApiBoardsListPinsRequest {
      */
     pageSize?: number
     /**
-     * Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+     * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
      * Defaults to: undefined
-     * @type Array&lt;&#39;REGULAR&#39; | &#39;VIDEO&#39; | &#39;SHOPPING&#39; | &#39;CAROUSEL&#39; | &#39;MAX_VIDEO&#39; | &#39;SHOP_THE_PIN&#39; | &#39;COLLECTION&#39; | &#39;IDEA&#39;&gt;
+     * @type Array&lt;CreativeType&gt;
      * @memberof BoardsApiboardsListPins
      */
-    creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>
+    creativeTypes?: Array<CreativeType>
     /**
      * Unique identifier of an ad account.
      * Defaults to: undefined
@@ -3506,7 +3848,7 @@ export interface BoardsApiBoardsListPinsRequest {
      */
     adAccountId?: string
     /**
-     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * Defaults to: false
      * @type boolean
      * @memberof BoardsApiboardsListPins
@@ -3516,18 +3858,18 @@ export interface BoardsApiBoardsListPinsRequest {
 
 export interface BoardsApiBoardsUpdateRequest {
     /**
-     * Unique identifier of a board.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof BoardsApiboardsUpdate
      */
     boardId: string
     /**
-     * Update a board.
-     * @type BoardUpdate
+     * 
+     * @type BoardWithUpdatePrivacyUpdate
      * @memberof BoardsApiboardsUpdate
      */
-    boardUpdate: BoardUpdate
+    boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate
     /**
      * Unique identifier of an ad account.
      * Defaults to: undefined
@@ -3635,25 +3977,25 @@ export class ObjectBoardsApi {
     }
 
     /**
-     * Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Create board
      * @param param the request object
      */
     public boardsCreateWithHttpInfo(param: BoardsApiBoardsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Board>> {
-        return this.api.boardsCreateWithHttpInfo(param.board, param.adAccountId,  options).toPromise();
+        return this.api.boardsCreateWithHttpInfo(param.boardCreate, param.adAccountId,  options).toPromise();
     }
 
     /**
-     * Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Create board
      * @param param the request object
      */
     public boardsCreate(param: BoardsApiBoardsCreateRequest, options?: ConfigurationOptions): Promise<Board> {
-        return this.api.boardsCreate(param.board, param.adAccountId,  options).toPromise();
+        return this.api.boardsCreate(param.boardCreate, param.adAccountId,  options).toPromise();
     }
 
     /**
-     * Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Delete board
      * @param param the request object
      */
@@ -3662,7 +4004,7 @@ export class ObjectBoardsApi {
     }
 
     /**
-     * Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Delete board
      * @param param the request object
      */
@@ -3671,7 +4013,7 @@ export class ObjectBoardsApi {
     }
 
     /**
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Get board
      * @param param the request object
      */
@@ -3680,7 +4022,7 @@ export class ObjectBoardsApi {
     }
 
     /**
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Get board
      * @param param the request object
      */
@@ -3689,21 +4031,21 @@ export class ObjectBoardsApi {
     }
 
     /**
-     * Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * List boards
      * @param param the request object
      */
     public boardsListWithHttpInfo(param: BoardsApiBoardsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BoardsList200Response>> {
-        return this.api.boardsListWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize, param.privacy,  options).toPromise();
+        return this.api.boardsListWithHttpInfo(param.adAccountId, param.privacy, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
-     * Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * List boards
      * @param param the request object
      */
     public boardsList(param: BoardsApiBoardsListRequest = {}, options?: ConfigurationOptions): Promise<BoardsList200Response> {
-        return this.api.boardsList(param.adAccountId, param.bookmark, param.pageSize, param.privacy,  options).toPromise();
+        return this.api.boardsList(param.adAccountId, param.privacy, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -3725,21 +4067,21 @@ export class ObjectBoardsApi {
     }
 
     /**
-     * Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Update board
      * @param param the request object
      */
-    public boardsUpdateWithHttpInfo(param: BoardsApiBoardsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Board>> {
-        return this.api.boardsUpdateWithHttpInfo(param.boardId, param.boardUpdate, param.adAccountId,  options).toPromise();
+    public boardsUpdateWithHttpInfo(param: BoardsApiBoardsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BoardWithUpdatePrivacy>> {
+        return this.api.boardsUpdateWithHttpInfo(param.boardId, param.boardWithUpdatePrivacyUpdate, param.adAccountId,  options).toPromise();
     }
 
     /**
-     * Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     * Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      * Update board
      * @param param the request object
      */
-    public boardsUpdate(param: BoardsApiBoardsUpdateRequest, options?: ConfigurationOptions): Promise<Board> {
-        return this.api.boardsUpdate(param.boardId, param.boardUpdate, param.adAccountId,  options).toPromise();
+    public boardsUpdate(param: BoardsApiBoardsUpdateRequest, options?: ConfigurationOptions): Promise<BoardWithUpdatePrivacy> {
+        return this.api.boardsUpdate(param.boardId, param.boardWithUpdatePrivacyUpdate, param.adAccountId,  options).toPromise();
     }
 
 }
@@ -3811,7 +4153,7 @@ export class ObjectBulkApi {
     }
 
     /**
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * Get advertiser entities in bulk
      * @param param the request object
      */
@@ -3820,7 +4162,7 @@ export class ObjectBulkApi {
     }
 
     /**
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * Get advertiser entities in bulk
      * @param param the request object
      */
@@ -3847,7 +4189,7 @@ export class ObjectBulkApi {
     }
 
     /**
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
      * Create/update ad entities in bulk
      * @param param the request object
      */
@@ -3856,7 +4198,7 @@ export class ObjectBulkApi {
     }
 
     /**
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
      * Create/update ad entities in bulk
      * @param param the request object
      */
@@ -3932,6 +4274,13 @@ export interface BusinessAccessAssetsApiBusinessAssetMembersGetRequest {
      * @memberof BusinessAccessAssetsApibusinessAssetMembersGet
      */
     assetId: string
+    /**
+     * Fetches system users if True. Fetches regular user employees if False.
+     * Defaults to: false
+     * @type boolean
+     * @memberof BusinessAccessAssetsApibusinessAssetMembersGet
+     */
+    fetchSystemUsers?: boolean
     /**
      * Cursor used to fetch the next page of items
      * Defaults to: undefined
@@ -4031,10 +4380,10 @@ export interface BusinessAccessAssetsApiBusinessAssetsGetRequest {
     /**
      * A resource type to filter the assets by. Only assets of the specified type will be returned.
      * Defaults to: &#39;AD_ACCOUNT&#39;
-     * @type &#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;
+     * @type &#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;
      * @memberof BusinessAccessAssetsApibusinessAssetsGet
      */
-    assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'
+    assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'
     /**
      * An index to start fetching the results from. Only the results starting from this index will be returned.
      * Minimum: 0
@@ -4079,10 +4428,10 @@ export interface BusinessAccessAssetsApiBusinessMemberAssetsGetRequest {
     /**
      * A resource type to filter the assets by. Only assets of the specified type will be returned.
      * Defaults to: &#39;AD_ACCOUNT&#39;
-     * @type &#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;
+     * @type &#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;
      * @memberof BusinessAccessAssetsApibusinessMemberAssetsGet
      */
-    assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'
+    assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'
     /**
      * An index to start fetching the results from. Only the results starting from this index will be returned.
      * Minimum: 0
@@ -4166,10 +4515,10 @@ export interface BusinessAccessAssetsApiBusinessPartnerAssetAccessGetRequest {
     /**
      * A resource type to filter the assets by. Only assets of the specified type will be returned.
      * Defaults to: &#39;AD_ACCOUNT&#39;
-     * @type &#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;
+     * @type &#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;
      * @memberof BusinessAccessAssetsApibusinessPartnerAssetAccessGet
      */
-    assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'
+    assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'
     /**
      * An index to start fetching the results from. Only the results starting from this index will be returned.
      * Minimum: 0
@@ -4295,7 +4644,7 @@ export class ObjectBusinessAccessAssetsApi {
      * @param param the request object
      */
     public businessAssetMembersGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetMembersGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessAssetMembersGet200Response>> {
-        return this.api.businessAssetMembersGetWithHttpInfo(param.businessId, param.assetId, param.bookmark, param.pageSize, param.startIndex,  options).toPromise();
+        return this.api.businessAssetMembersGetWithHttpInfo(param.businessId, param.assetId, param.fetchSystemUsers, param.bookmark, param.pageSize, param.startIndex,  options).toPromise();
     }
 
     /**
@@ -4304,7 +4653,7 @@ export class ObjectBusinessAccessAssetsApi {
      * @param param the request object
      */
     public businessAssetMembersGet(param: BusinessAccessAssetsApiBusinessAssetMembersGetRequest, options?: ConfigurationOptions): Promise<BusinessAssetMembersGet200Response> {
-        return this.api.businessAssetMembersGet(param.businessId, param.assetId, param.bookmark, param.pageSize, param.startIndex,  options).toPromise();
+        return this.api.businessAssetMembersGet(param.businessId, param.assetId, param.fetchSystemUsers, param.bookmark, param.pageSize, param.startIndex,  options).toPromise();
     }
 
     /**
@@ -4474,7 +4823,7 @@ export interface BusinessAccessInviteApiAssetAccessRequestsCreateRequest {
 
 export interface BusinessAccessInviteApiCancelInvitesOrRequestsRequest {
     /**
-     * Business id
+     * Unique identifier of the requesting business.
      * Defaults to: undefined
      * @type string
      * @memberof BusinessAccessInviteApicancelInvitesOrRequests
@@ -4506,7 +4855,7 @@ export interface BusinessAccessInviteApiCreateAssetInvitesRequest {
 
 export interface BusinessAccessInviteApiCreateMembershipOrPartnershipInvitesRequest {
     /**
-     * Business id
+     * Unique identifier of the requesting business.
      * Defaults to: undefined
      * @type string
      * @memberof BusinessAccessInviteApicreateMembershipOrPartnershipInvites
@@ -4696,6 +5045,45 @@ export class ObjectBusinessAccessInviteApi {
 import { ObservableBusinessAccessRelationshipsApi } from "./ObservableAPI";
 import { BusinessAccessRelationshipsApiRequestFactory, BusinessAccessRelationshipsApiResponseProcessor} from "../apis/BusinessAccessRelationshipsApi";
 
+export interface BusinessAccessRelationshipsApiBrandAccountsCreateRequest {
+    /**
+     * business hierarchy node id
+     * Defaults to: undefined
+     * @type string
+     * @memberof BusinessAccessRelationshipsApibrandAccountsCreate
+     */
+    businessHierarchyId: string
+    /**
+     * 
+     * @type BrandAccountsCreateRequest
+     * @memberof BusinessAccessRelationshipsApibrandAccountsCreate
+     */
+    brandAccountsCreateRequest: BrandAccountsCreateRequest
+}
+
+export interface BusinessAccessRelationshipsApiBrandAccountsUpdateRequest {
+    /**
+     * business hierarchy node id
+     * Defaults to: undefined
+     * @type string
+     * @memberof BusinessAccessRelationshipsApibrandAccountsUpdate
+     */
+    businessHierarchyId: string
+    /**
+     * Unique identifier of a brand account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof BusinessAccessRelationshipsApibrandAccountsUpdate
+     */
+    brandAccountId: string
+    /**
+     * 
+     * @type BrandAccountsUpdateRequest
+     * @memberof BusinessAccessRelationshipsApibrandAccountsUpdate
+     */
+    brandAccountsUpdateRequest: BrandAccountsUpdateRequest
+}
+
 export interface BusinessAccessRelationshipsApiDeleteBusinessMembershipRequest {
     /**
      * Business id
@@ -4755,6 +5143,13 @@ export interface BusinessAccessRelationshipsApiGetBusinessMembersRequest {
      * @memberof BusinessAccessRelationshipsApigetBusinessMembers
      */
     businessId: string
+    /**
+     * Fetches system users if True. Fetches regular user employees if False.
+     * Defaults to: false
+     * @type boolean
+     * @memberof BusinessAccessRelationshipsApigetBusinessMembers
+     */
+    fetchSystemUsers?: boolean
     /**
      * Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
      * Defaults to: false
@@ -4857,6 +5252,29 @@ export interface BusinessAccessRelationshipsApiGetBusinessPartnersRequest {
     bookmark?: string
 }
 
+export interface BusinessAccessRelationshipsApiSystemUserUpdateRequest {
+    /**
+     * Unique identifier of the requesting business.
+     * Defaults to: undefined
+     * @type string
+     * @memberof BusinessAccessRelationshipsApisystemUserUpdate
+     */
+    businessId: string
+    /**
+     * Unique identifier of a system user.
+     * Defaults to: undefined
+     * @type string
+     * @memberof BusinessAccessRelationshipsApisystemUserUpdate
+     */
+    systemUserId: string
+    /**
+     * 
+     * @type SystemUserUpdateRequest
+     * @memberof BusinessAccessRelationshipsApisystemUserUpdate
+     */
+    systemUserUpdateRequest: SystemUserUpdateRequest
+}
+
 export interface BusinessAccessRelationshipsApiUpdateBusinessMembershipsRequest {
     /**
      * Business id
@@ -4878,6 +5296,42 @@ export class ObjectBusinessAccessRelationshipsApi {
 
     public constructor(configuration: Configuration, requestFactory?: BusinessAccessRelationshipsApiRequestFactory, responseProcessor?: BusinessAccessRelationshipsApiResponseProcessor) {
         this.api = new ObservableBusinessAccessRelationshipsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     * Create a Brand Account
+     * @param param the request object
+     */
+    public brandAccountsCreateWithHttpInfo(param: BusinessAccessRelationshipsApiBrandAccountsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BrandAccountsCreate200Response>> {
+        return this.api.brandAccountsCreateWithHttpInfo(param.businessHierarchyId, param.brandAccountsCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     * Create a Brand Account
+     * @param param the request object
+     */
+    public brandAccountsCreate(param: BusinessAccessRelationshipsApiBrandAccountsCreateRequest, options?: ConfigurationOptions): Promise<BrandAccountsCreate200Response> {
+        return this.api.brandAccountsCreate(param.businessHierarchyId, param.brandAccountsCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * Update an existing Brand Account
+     * Update a Brand Account
+     * @param param the request object
+     */
+    public brandAccountsUpdateWithHttpInfo(param: BusinessAccessRelationshipsApiBrandAccountsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BrandAccountsCreate200Response>> {
+        return this.api.brandAccountsUpdateWithHttpInfo(param.businessHierarchyId, param.brandAccountId, param.brandAccountsUpdateRequest,  options).toPromise();
+    }
+
+    /**
+     * Update an existing Brand Account
+     * Update a Brand Account
+     * @param param the request object
+     */
+    public brandAccountsUpdate(param: BusinessAccessRelationshipsApiBrandAccountsUpdateRequest, options?: ConfigurationOptions): Promise<BrandAccountsCreate200Response> {
+        return this.api.brandAccountsUpdate(param.businessHierarchyId, param.brandAccountId, param.brandAccountsUpdateRequest,  options).toPromise();
     }
 
     /**
@@ -4940,7 +5394,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * @param param the request object
      */
     public getBusinessMembersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessMembersRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessMembers200Response>> {
-        return this.api.getBusinessMembersWithHttpInfo(param.businessId, param.assetsSummary, param.businessRoles, param.memberIds, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
+        return this.api.getBusinessMembersWithHttpInfo(param.businessId, param.fetchSystemUsers, param.assetsSummary, param.businessRoles, param.memberIds, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -4949,7 +5403,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * @param param the request object
      */
     public getBusinessMembers(param: BusinessAccessRelationshipsApiGetBusinessMembersRequest, options?: ConfigurationOptions): Promise<GetBusinessMembers200Response> {
-        return this.api.getBusinessMembers(param.businessId, param.assetsSummary, param.businessRoles, param.memberIds, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
+        return this.api.getBusinessMembers(param.businessId, param.fetchSystemUsers, param.assetsSummary, param.businessRoles, param.memberIds, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -4968,6 +5422,24 @@ export class ObjectBusinessAccessRelationshipsApi {
      */
     public getBusinessPartners(param: BusinessAccessRelationshipsApiGetBusinessPartnersRequest, options?: ConfigurationOptions): Promise<GetBusinessPartners200Response> {
         return this.api.getBusinessPartners(param.businessId, param.assetsSummary, param.partnerType, param.partnerIds, param.startIndex, param.pageSize, param.bookmark,  options).toPromise();
+    }
+
+    /**
+     * Update a system user information such as name.
+     * Update a system user information.
+     * @param param the request object
+     */
+    public systemUserUpdateWithHttpInfo(param: BusinessAccessRelationshipsApiSystemUserUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.systemUserUpdateWithHttpInfo(param.businessId, param.systemUserId, param.systemUserUpdateRequest,  options).toPromise();
+    }
+
+    /**
+     * Update a system user information such as name.
+     * Update a system user information.
+     * @param param the request object
+     */
+    public systemUserUpdate(param: BusinessAccessRelationshipsApiSystemUserUpdateRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.systemUserUpdate(param.businessId, param.systemUserId, param.systemUserUpdateRequest,  options).toPromise();
     }
 
     /**
@@ -4992,6 +5464,86 @@ export class ObjectBusinessAccessRelationshipsApi {
 
 import { ObservableCampaignsApi } from "./ObservableAPI";
 import { CampaignsApiRequestFactory, CampaignsApiResponseProcessor} from "../apis/CampaignsApi";
+
+export interface CampaignsApiAdPinsAnalyticsRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    adAccountId: string
+    /**
+     * Campaign Id to use to filter the results.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    campaignId: string
+    /**
+     * List of Pin IDs.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    pinIds: Array<string>
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    startDate: string
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    endDate: string
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
+     * Defaults to: undefined
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    /**
+     * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * Defaults to: undefined
+     * @type Granularity
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    granularity: Granularity
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Defaults to: 30
+     * @type 0 | 1 | 7 | 14 | 30 | 60
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
+     * Defaults to: 30
+     * @type 0 | 1 | 7 | 14 | 30 | 60
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
+     * Defaults to: 1
+     * @type 0 | 1 | 7 | 14 | 30 | 60
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     * Defaults to: &#39;TIME_OF_AD_ACTION&#39;
+     * @type &#39;TIME_OF_AD_ACTION&#39; | &#39;TIME_OF_CONVERSION&#39;
+     * @memberof CampaignsApiadPinsAnalytics
+     */
+    conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'
+}
 
 export interface CampaignsApiCampaignTargetingAnalyticsGetRequest {
     /**
@@ -5032,10 +5584,10 @@ export interface CampaignsApiCampaignTargetingAnalyticsGetRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof CampaignsApicampaignTargetingAnalyticsGet
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -5051,7 +5603,7 @@ export interface CampaignsApiCampaignTargetingAnalyticsGetRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof CampaignsApicampaignTargetingAnalyticsGet
@@ -5074,10 +5626,17 @@ export interface CampaignsApiCampaignTargetingAnalyticsGetRequest {
     /**
      * List of types of attribution for the conversion report
      * Defaults to: undefined
-     * @type ConversionReportAttributionType
+     * @type Array&lt;ConversionReportAttributionType&gt;
      * @memberof CampaignsApicampaignTargetingAnalyticsGet
      */
-    attributionTypes?: ConversionReportAttributionType
+    attributionTypes?: Array<ConversionReportAttributionType>
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof CampaignsApicampaignTargetingAnalyticsGet
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface CampaignsApiCampaignsAnalyticsRequest {
@@ -5112,10 +5671,10 @@ export interface CampaignsApiCampaignsAnalyticsRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof CampaignsApicampaignsAnalytics
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -5131,7 +5690,7 @@ export interface CampaignsApiCampaignsAnalyticsRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof CampaignsApicampaignsAnalytics
@@ -5151,6 +5710,20 @@ export interface CampaignsApiCampaignsAnalyticsRequest {
      * @memberof CampaignsApicampaignsAnalytics
      */
     conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'
+    /**
+     * Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
+     * Defaults to: false
+     * @type boolean
+     * @memberof CampaignsApicampaignsAnalytics
+     */
+    aggregateReportRows?: boolean
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof CampaignsApicampaignsAnalytics
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export interface CampaignsApiCampaignsCreateRequest {
@@ -5257,43 +5830,61 @@ export class ObjectCampaignsApi {
     }
 
     /**
-     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     * Get pins analytics
+     * @param param the request object
+     */
+    public adPinsAnalyticsWithHttpInfo(param: CampaignsApiAdPinsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdPinAnalytics>>> {
+        return this.api.adPinsAnalyticsWithHttpInfo(param.adAccountId, param.campaignId, param.pinIds, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+    }
+
+    /**
+     * Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     * Get pins analytics
+     * @param param the request object
+     */
+    public adPinsAnalytics(param: CampaignsApiAdPinsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdPinAnalytics>> {
+        return this.api.adPinsAnalytics(param.adAccountId, param.campaignId, param.pinIds, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+    }
+
+    /**
+     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for campaigns
      * @param param the request object
      */
     public campaignTargetingAnalyticsGetWithHttpInfo(param: CampaignsApiCampaignTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        return this.api.campaignTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.campaignIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.campaignTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.campaignIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get targeting analytics for campaigns
      * @param param the request object
      */
     public campaignTargetingAnalyticsGet(param: CampaignsApiCampaignTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
-        return this.api.campaignTargetingAnalyticsGet(param.adAccountId, param.campaignIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
+        return this.api.campaignTargetingAnalyticsGet(param.adAccountId, param.campaignIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get campaign analytics
      * @param param the request object
      */
     public campaignsAnalyticsWithHttpInfo(param: CampaignsApiCampaignsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<CampaignsAnalyticsResponseInner>>> {
-        return this.api.campaignsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.campaignIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.campaignsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.campaignIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.aggregateReportRows, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get campaign analytics
      * @param param the request object
      */
     public campaignsAnalytics(param: CampaignsApiCampaignsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<CampaignsAnalyticsResponseInner>> {
-        return this.api.campaignsAnalytics(param.adAccountId, param.startDate, param.endDate, param.campaignIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.campaignsAnalytics(param.adAccountId, param.startDate, param.endDate, param.campaignIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.aggregateReportRows, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
      * Create campaigns
      * @param param the request object
      */
@@ -5302,7 +5893,7 @@ export class ObjectCampaignsApi {
     }
 
     /**
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
      * Create campaigns
      * @param param the request object
      */
@@ -5347,7 +5938,7 @@ export class ObjectCampaignsApi {
     }
 
     /**
-     * Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+     * <p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser\'s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\'s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
      * Update campaigns
      * @param param the request object
      */
@@ -5356,7 +5947,7 @@ export class ObjectCampaignsApi {
     }
 
     /**
-     * Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+     * <p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser\'s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\'s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
      * Update campaigns
      * @param param the request object
      */
@@ -5366,8 +5957,1093 @@ export class ObjectCampaignsApi {
 
 }
 
+import { ObservableCatalogFeedsApi } from "./ObservableAPI";
+import { CatalogFeedsApiRequestFactory, CatalogFeedsApiResponseProcessor} from "../apis/CatalogFeedsApi";
+
+export interface CatalogFeedsApiFeedProcessingResultsListRequest {
+    /**
+     * Unique identifier of a feed
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedProcessingResultsList
+     */
+    feedId: string
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedProcessingResultsList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogFeedsApifeedProcessingResultsList
+     */
+    pageSize?: number
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedProcessingResultsList
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiFeedsCreateRequest {
+    /**
+     * Request object used to created a feed.
+     * @type FeedsCreateRequest
+     * @memberof CatalogFeedsApifeedsCreate
+     */
+    feedsCreateRequest: FeedsCreateRequest
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsCreate
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiFeedsDeleteRequest {
+    /**
+     * Unique identifier of a feed
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsDelete
+     */
+    feedId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsDelete
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiFeedsGetRequest {
+    /**
+     * Unique identifier of a feed
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsGet
+     */
+    feedId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsGet
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiFeedsIngestRequest {
+    /**
+     * Unique identifier of a feed
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsIngest
+     */
+    feedId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsIngest
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiFeedsListRequest {
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogFeedsApifeedsList
+     */
+    pageSize?: number
+    /**
+     * Filter entities for a given catalog_id. If not given, all catalogs are considered.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsList
+     */
+    catalogId?: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsList
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiFeedsUpdateRequest {
+    /**
+     * Unique identifier of a feed
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsUpdate
+     */
+    feedId: string
+    /**
+     * Request object used to update a feed.
+     * @type FeedsUpdateRequest
+     * @memberof CatalogFeedsApifeedsUpdate
+     */
+    feedsUpdateRequest: FeedsUpdateRequest
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApifeedsUpdate
+     */
+    adAccountId?: string
+}
+
+export interface CatalogFeedsApiItemsIssuesListRequest {
+    /**
+     * Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApiitemsIssuesList
+     */
+    processingResultId: string
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApiitemsIssuesList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogFeedsApiitemsIssuesList
+     */
+    pageSize?: number
+    /**
+     * Item number based on order of appearance in the Catalogs Feed. For example, \&#39;0\&#39; refers to first item found in a feed that was downloaded from a \&#39;location\&#39; specified during feed creation.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof CatalogFeedsApiitemsIssuesList
+     */
+    itemNumbers?: Array<number>
+    /**
+     * Filter item validation issues that have a given type of item validation issue.
+     * Defaults to: undefined
+     * @type CatalogsItemValidationIssue
+     * @memberof CatalogFeedsApiitemsIssuesList
+     */
+    itemValidationIssue?: CatalogsItemValidationIssue
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogFeedsApiitemsIssuesList
+     */
+    adAccountId?: string
+}
+
+export class ObjectCatalogFeedsApi {
+    private api: ObservableCatalogFeedsApi
+
+    public constructor(configuration: Configuration, requestFactory?: CatalogFeedsApiRequestFactory, responseProcessor?: CatalogFeedsApiResponseProcessor) {
+        this.api = new ObservableCatalogFeedsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List feed processing results
+     * @param param the request object
+     */
+    public feedProcessingResultsListWithHttpInfo(param: CatalogFeedsApiFeedProcessingResultsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<FeedProcessingResultsList200Response>> {
+        return this.api.feedProcessingResultsListWithHttpInfo(param.feedId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List feed processing results
+     * @param param the request object
+     */
+    public feedProcessingResultsList(param: CatalogFeedsApiFeedProcessingResultsListRequest, options?: ConfigurationOptions): Promise<FeedProcessingResultsList200Response> {
+        return this.api.feedProcessingResultsList(param.feedId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create feed
+     * @param param the request object
+     */
+    public feedsCreateWithHttpInfo(param: CatalogFeedsApiFeedsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
+        return this.api.feedsCreateWithHttpInfo(param.feedsCreateRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create feed
+     * @param param the request object
+     */
+    public feedsCreate(param: CatalogFeedsApiFeedsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
+        return this.api.feedsCreate(param.feedsCreateRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
+     * Delete feed
+     * @param param the request object
+     */
+    public feedsDeleteWithHttpInfo(param: CatalogFeedsApiFeedsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.feedsDeleteWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
+     * Delete feed
+     * @param param the request object
+     */
+    public feedsDelete(param: CatalogFeedsApiFeedsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.feedsDelete(param.feedId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
+     * Get feed
+     * @param param the request object
+     */
+    public feedsGetWithHttpInfo(param: CatalogFeedsApiFeedsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
+        return this.api.feedsGetWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
+     * Get feed
+     * @param param the request object
+     */
+    public feedsGet(param: CatalogFeedsApiFeedsGetRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
+        return this.api.feedsGet(param.feedId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Ingest feed items
+     * @param param the request object
+     */
+    public feedsIngestWithHttpInfo(param: CatalogFeedsApiFeedsIngestRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeedIngestion>> {
+        return this.api.feedsIngestWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Ingest feed items
+     * @param param the request object
+     */
+    public feedsIngest(param: CatalogFeedsApiFeedsIngestRequest, options?: ConfigurationOptions): Promise<CatalogsFeedIngestion> {
+        return this.api.feedsIngest(param.feedId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
+     * List feeds
+     * @param param the request object
+     */
+    public feedsListWithHttpInfo(param: CatalogFeedsApiFeedsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<FeedsList200Response>> {
+        return this.api.feedsListWithHttpInfo(param.bookmark, param.pageSize, param.catalogId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
+     * List feeds
+     * @param param the request object
+     */
+    public feedsList(param: CatalogFeedsApiFeedsListRequest = {}, options?: ConfigurationOptions): Promise<FeedsList200Response> {
+        return this.api.feedsList(param.bookmark, param.pageSize, param.catalogId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update feed
+     * @param param the request object
+     */
+    public feedsUpdateWithHttpInfo(param: CatalogFeedsApiFeedsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
+        return this.api.feedsUpdateWithHttpInfo(param.feedId, param.feedsUpdateRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update feed
+     * @param param the request object
+     */
+    public feedsUpdate(param: CatalogFeedsApiFeedsUpdateRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
+        return this.api.feedsUpdate(param.feedId, param.feedsUpdateRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters \'item_numbers\' and \'item_validation_issue\' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a> and <a href=\'/docs/api/v5/#operation/reports/get\'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List item issues
+     * @param param the request object
+     */
+    public itemsIssuesListWithHttpInfo(param: CatalogFeedsApiItemsIssuesListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ItemsIssuesList200Response>> {
+        return this.api.itemsIssuesListWithHttpInfo(param.processingResultId, param.bookmark, param.pageSize, param.itemNumbers, param.itemValidationIssue, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters \'item_numbers\' and \'item_validation_issue\' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a> and <a href=\'/docs/api/v5/#operation/reports/get\'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List item issues
+     * @param param the request object
+     */
+    public itemsIssuesList(param: CatalogFeedsApiItemsIssuesListRequest, options?: ConfigurationOptions): Promise<ItemsIssuesList200Response> {
+        return this.api.itemsIssuesList(param.processingResultId, param.bookmark, param.pageSize, param.itemNumbers, param.itemValidationIssue, param.adAccountId,  options).toPromise();
+    }
+
+}
+
+import { ObservableCatalogItemsApi } from "./ObservableAPI";
+import { CatalogItemsApiRequestFactory, CatalogItemsApiResponseProcessor} from "../apis/CatalogItemsApi";
+
+export interface CatalogItemsApiItemsBatchGetRequest {
+    /**
+     * Id of a catalogs items batch to fetch
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogItemsApiitemsBatchGet
+     */
+    batchId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogItemsApiitemsBatchGet
+     */
+    adAccountId?: string
+}
+
+export interface CatalogItemsApiItemsBatchPostRequest {
+    /**
+     * Request object used to create catalogs items in a batch
+     * @type ItemsBatchPostRequest
+     * @memberof CatalogItemsApiitemsBatchPost
+     */
+    itemsBatchPostRequest: ItemsBatchPostRequest
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogItemsApiitemsBatchPost
+     */
+    adAccountId?: string
+}
+
+export interface CatalogItemsApiItemsPostRequest {
+    /**
+     * Request object used to get catalogs items
+     * @type CatalogsItemsRequest
+     * @memberof CatalogItemsApiitemsPost
+     */
+    catalogsItemsRequest: CatalogsItemsRequest
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogItemsApiitemsPost
+     */
+    adAccountId?: string
+}
+
+export class ObjectCatalogItemsApi {
+    private api: ObservableCatalogItemsApi
+
+    public constructor(configuration: Configuration, requestFactory?: CatalogItemsApiRequestFactory, responseProcessor?: CatalogItemsApiResponseProcessor) {
+        this.api = new ObservableCatalogItemsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get item batch status
+     * @param param the request object
+     */
+    public itemsBatchGetWithHttpInfo(param: CatalogItemsApiItemsBatchGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
+        return this.api.itemsBatchGetWithHttpInfo(param.batchId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get item batch status
+     * @param param the request object
+     */
+    public itemsBatchGet(param: CatalogItemsApiItemsBatchGetRequest, options?: ConfigurationOptions): Promise<CatalogsItemsBatch> {
+        return this.api.itemsBatchGet(param.batchId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+     * Operate on item batch
+     * @param param the request object
+     */
+    public itemsBatchPostWithHttpInfo(param: CatalogItemsApiItemsBatchPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
+        return this.api.itemsBatchPostWithHttpInfo(param.itemsBatchPostRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+     * Operate on item batch
+     * @param param the request object
+     */
+    public itemsBatchPost(param: CatalogItemsApiItemsBatchPostRequest, options?: ConfigurationOptions): Promise<CatalogsItemsBatch> {
+        return this.api.itemsBatchPost(param.itemsBatchPostRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Get catalogs items (POST)
+     * @param param the request object
+     */
+    public itemsPostWithHttpInfo(param: CatalogItemsApiItemsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
+        return this.api.itemsPostWithHttpInfo(param.catalogsItemsRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Get catalogs items (POST)
+     * @param param the request object
+     */
+    public itemsPost(param: CatalogItemsApiItemsPostRequest, options?: ConfigurationOptions): Promise<CatalogsItems> {
+        return this.api.itemsPost(param.catalogsItemsRequest, param.adAccountId,  options).toPromise();
+    }
+
+}
+
+import { ObservableCatalogProductGroupsApi } from "./ObservableAPI";
+import { CatalogProductGroupsApiRequestFactory, CatalogProductGroupsApiResponseProcessor} from "../apis/CatalogProductGroupsApi";
+
+export interface CatalogProductGroupsApiCatalogsProductGroupPinsListRequest {
+    /**
+     * Unique identifier of a product group
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupPinsList
+     */
+    productGroupId: string
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupPinsList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogProductGroupsApicatalogsProductGroupPinsList
+     */
+    pageSize?: number
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupPinsList
+     */
+    adAccountId?: string
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Defaults to: false
+     * @type boolean
+     * @memberof CatalogProductGroupsApicatalogsProductGroupPinsList
+     */
+    pinMetrics?: boolean
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsCreateRequest {
+    /**
+     * Request object used to create a single catalogs product groups.
+     * @type MultipleProductGroupsInner
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsCreate
+     */
+    multipleProductGroupsInner: MultipleProductGroupsInner
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsCreate
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsCreateManyRequest {
+    /**
+     * Request object used to create one or more catalogs product groups.
+     * @type Array&lt;MultipleProductGroupsInner&gt;
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsCreateMany
+     */
+    multipleProductGroupsInner: Array<MultipleProductGroupsInner>
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsCreateMany
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsDeleteRequest {
+    /**
+     * Unique identifier of a product group
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsDelete
+     */
+    productGroupId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsDelete
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsDeleteManyRequest {
+    /**
+     * Comma-separated list of product group ids
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsDeleteMany
+     */
+    id: Array<number>
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsDeleteMany
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsGetRequest {
+    /**
+     * Unique identifier of a product group
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsGet
+     */
+    productGroupId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsGet
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsListRequest {
+    /**
+     * Comma-separated list of product group ids
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsList
+     */
+    id?: Array<number>
+    /**
+     * Filter entities for a given feed_id. If not given, all feeds are considered.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsList
+     */
+    feedId?: string
+    /**
+     * Filter entities for a given catalog_id. If not given, all catalogs are considered.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsList
+     */
+    catalogId?: string
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsList
+     */
+    pageSize?: number
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsList
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsProductCountsGetRequest {
+    /**
+     * Unique identifier of a product group
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsProductCountsGet
+     */
+    productGroupId: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsProductCountsGet
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiCatalogsProductGroupsUpdateRequest {
+    /**
+     * Unique identifier of a product group
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsUpdate
+     */
+    productGroupId: string
+    /**
+     * Request object used to Update a catalogs product group.
+     * @type CatalogsProductGroupsUpdateRequest
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsUpdate
+     */
+    catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApicatalogsProductGroupsUpdate
+     */
+    adAccountId?: string
+}
+
+export interface CatalogProductGroupsApiProductsByProductGroupFilterListRequest {
+    /**
+     * Object holding a group of filters for a catalog product group
+     * @type CatalogsListProductsByFilterRequest
+     * @memberof CatalogProductGroupsApiproductsByProductGroupFilterList
+     */
+    catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApiproductsByProductGroupFilterList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogProductGroupsApiproductsByProductGroupFilterList
+     */
+    pageSize?: number
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogProductGroupsApiproductsByProductGroupFilterList
+     */
+    adAccountId?: string
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Defaults to: false
+     * @type boolean
+     * @memberof CatalogProductGroupsApiproductsByProductGroupFilterList
+     */
+    pinMetrics?: boolean
+}
+
+export class ObjectCatalogProductGroupsApi {
+    private api: ObservableCatalogProductGroupsApi
+
+    public constructor(configuration: Configuration, requestFactory?: CatalogProductGroupsApiRequestFactory, responseProcessor?: CatalogProductGroupsApiResponseProcessor) {
+        this.api = new ObservableCatalogProductGroupsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List products by product group
+     * @param param the request object
+     */
+    public catalogsProductGroupPinsListWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupPinsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
+        return this.api.catalogsProductGroupPinsListWithHttpInfo(param.productGroupId, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
+    }
+
+    /**
+     * Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List products by product group
+     * @param param the request object
+     */
+    public catalogsProductGroupPinsList(param: CatalogProductGroupsApiCatalogsProductGroupPinsListRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
+        return this.api.catalogsProductGroupPinsList(param.productGroupId, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
+    }
+
+    /**
+     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsCreateWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
+        return this.api.catalogsProductGroupsCreateWithHttpInfo(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsCreate(param: CatalogProductGroupsApiCatalogsProductGroupsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
+        return this.api.catalogsProductGroupsCreate(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create product groups
+     * @param param the request object
+     */
+    public catalogsProductGroupsCreateManyWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsCreateManyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
+        return this.api.catalogsProductGroupsCreateManyWithHttpInfo(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create product groups
+     * @param param the request object
+     */
+    public catalogsProductGroupsCreateMany(param: CatalogProductGroupsApiCatalogsProductGroupsCreateManyRequest, options?: ConfigurationOptions): Promise<Array<string>> {
+        return this.api.catalogsProductGroupsCreateMany(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Delete product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsDeleteWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.catalogsProductGroupsDeleteWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Delete product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsDelete(param: CatalogProductGroupsApiCatalogsProductGroupsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.catalogsProductGroupsDelete(param.productGroupId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Delete product groups
+     * @param param the request object
+     */
+    public catalogsProductGroupsDeleteManyWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsDeleteManyRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.catalogsProductGroupsDeleteManyWithHttpInfo(param.id, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Delete product groups
+     * @param param the request object
+     */
+    public catalogsProductGroupsDeleteMany(param: CatalogProductGroupsApiCatalogsProductGroupsDeleteManyRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.catalogsProductGroupsDeleteMany(param.id, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Get product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsGetWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
+        return this.api.catalogsProductGroupsGetWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Get product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsGet(param: CatalogProductGroupsApiCatalogsProductGroupsGetRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
+        return this.api.catalogsProductGroupsGet(param.productGroupId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List product groups
+     * @param param the request object
+     */
+    public catalogsProductGroupsListWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupsList200Response>> {
+        return this.api.catalogsProductGroupsListWithHttpInfo(param.id, param.feedId, param.catalogId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List product groups
+     * @param param the request object
+     */
+    public catalogsProductGroupsList(param: CatalogProductGroupsApiCatalogsProductGroupsListRequest = {}, options?: ConfigurationOptions): Promise<CatalogsProductGroupsList200Response> {
+        return this.api.catalogsProductGroupsList(param.id, param.feedId, param.catalogId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Get product counts
+     * @param param the request object
+     */
+    public catalogsProductGroupsProductCountsGetWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsProductCountsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupProductCountsVertical>> {
+        return this.api.catalogsProductGroupsProductCountsGetWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * Get product counts
+     * @param param the request object
+     */
+    public catalogsProductGroupsProductCountsGet(param: CatalogProductGroupsApiCatalogsProductGroupsProductCountsGetRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupProductCountsVertical> {
+        return this.api.catalogsProductGroupsProductCountsGet(param.productGroupId, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update single product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsUpdateWithHttpInfo(param: CatalogProductGroupsApiCatalogsProductGroupsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
+        return this.api.catalogsProductGroupsUpdateWithHttpInfo(param.productGroupId, param.catalogsProductGroupsUpdateRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update single product group
+     * @param param the request object
+     */
+    public catalogsProductGroupsUpdate(param: CatalogProductGroupsApiCatalogsProductGroupsUpdateRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
+        return this.api.catalogsProductGroupsUpdate(param.productGroupId, param.catalogsProductGroupsUpdateRequest, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List products by filter
+     * @param param the request object
+     */
+    public productsByProductGroupFilterListWithHttpInfo(param: CatalogProductGroupsApiProductsByProductGroupFilterListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
+        return this.api.productsByProductGroupFilterListWithHttpInfo(param.catalogsListProductsByFilterRequest, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
+    }
+
+    /**
+     * List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List products by filter
+     * @param param the request object
+     */
+    public productsByProductGroupFilterList(param: CatalogProductGroupsApiProductsByProductGroupFilterListRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
+        return this.api.productsByProductGroupFilterList(param.catalogsListProductsByFilterRequest, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
+    }
+
+}
+
+import { ObservableCatalogReportsApi } from "./ObservableAPI";
+import { CatalogReportsApiRequestFactory, CatalogReportsApiResponseProcessor} from "../apis/CatalogReportsApi";
+
+export interface CatalogReportsApiReportsCreateRequest {
+    /**
+     * Request object to asynchronously create a report.
+     * @type CatalogsReportParameters
+     * @memberof CatalogReportsApireportsCreate
+     */
+    catalogsReportParameters: CatalogsReportParameters
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogReportsApireportsCreate
+     */
+    adAccountId?: string
+}
+
+export interface CatalogReportsApiReportsGetRequest {
+    /**
+     * Token returned from async build report call
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogReportsApireportsGet
+     */
+    token: string
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogReportsApireportsGet
+     */
+    adAccountId?: string
+}
+
+export interface CatalogReportsApiReportsStatsRequest {
+    /**
+     * Contains the parameters for report identification.
+     * Defaults to: undefined
+     * @type ReportsStatsParametersParameter
+     * @memberof CatalogReportsApireportsStats
+     */
+    parameters: ReportsStatsParametersParameter
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogReportsApireportsStats
+     */
+    adAccountId?: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof CatalogReportsApireportsStats
+     */
+    pageSize?: number
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogReportsApireportsStats
+     */
+    bookmark?: string
+}
+
+export class ObjectCatalogReportsApi {
+    private api: ObservableCatalogReportsApi
+
+    public constructor(configuration: Configuration, requestFactory?: CatalogReportsApiRequestFactory, responseProcessor?: CatalogReportsApiResponseProcessor) {
+        this.api = new ObservableCatalogReportsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Build catalogs report
+     * @param param the request object
+     */
+    public reportsCreateWithHttpInfo(param: CatalogReportsApiReportsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsCreateReportResponse>> {
+        return this.api.reportsCreateWithHttpInfo(param.catalogsReportParameters, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Build catalogs report
+     * @param param the request object
+     */
+    public reportsCreate(param: CatalogReportsApiReportsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsCreateReportResponse> {
+        return this.api.reportsCreate(param.catalogsReportParameters, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * This returns a URL to a report given a token returned from <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get catalogs report
+     * @param param the request object
+     */
+    public reportsGetWithHttpInfo(param: CatalogReportsApiReportsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsReport>> {
+        return this.api.reportsGetWithHttpInfo(param.token, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * This returns a URL to a report given a token returned from <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get catalogs report
+     * @param param the request object
+     */
+    public reportsGet(param: CatalogReportsApiReportsGetRequest, options?: ConfigurationOptions): Promise<CatalogsReport> {
+        return this.api.reportsGet(param.token, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * List report stats
+     * @param param the request object
+     */
+    public reportsStatsWithHttpInfo(param: CatalogReportsApiReportsStatsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportsStats200Response>> {
+        return this.api.reportsStatsWithHttpInfo(param.parameters, param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
+    }
+
+    /**
+     * List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * List report stats
+     * @param param the request object
+     */
+    public reportsStats(param: CatalogReportsApiReportsStatsRequest, options?: ConfigurationOptions): Promise<ReportsStats200Response> {
+        return this.api.reportsStats(param.parameters, param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
+    }
+
+}
+
 import { ObservableCatalogsApi } from "./ObservableAPI";
 import { CatalogsApiRequestFactory, CatalogsApiResponseProcessor} from "../apis/CatalogsApi";
+
+export interface CatalogsApiCatalogsAvailableFilterValuesRequest {
+    /**
+     * Filter entities for a given catalog_id.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogsApicatalogsAvailableFilterValues
+     */
+    catalogId: string
+    /**
+     * Filter entities for a given feed_id. If not given, all feeds are considered.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogsApicatalogsAvailableFilterValues
+     */
+    feedId?: string
+    /**
+     * Country for the Catalogs Items
+     * Defaults to: undefined
+     * @type Country
+     * @memberof CatalogsApicatalogsAvailableFilterValues
+     */
+    country?: Country
+    /**
+     * Language for the Catalogs Items
+     * Defaults to: undefined
+     * @type CatalogsLocale
+     * @memberof CatalogsApicatalogsAvailableFilterValues
+     */
+    language?: CatalogsLocale
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CatalogsApicatalogsAvailableFilterValues
+     */
+    adAccountId?: string
+}
 
 export interface CatalogsApiCatalogsCreateRequest {
     /**
@@ -5411,611 +7087,6 @@ export interface CatalogsApiCatalogsListRequest {
     adAccountId?: string
 }
 
-export interface CatalogsApiCatalogsProductGroupPinsListRequest {
-    /**
-     * Unique identifier of a product group
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupPinsList
-     */
-    productGroupId: string
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupPinsList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApicatalogsProductGroupPinsList
-     */
-    pageSize?: number
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupPinsList
-     */
-    adAccountId?: string
-    /**
-     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-     * Defaults to: false
-     * @type boolean
-     * @memberof CatalogsApicatalogsProductGroupPinsList
-     */
-    pinMetrics?: boolean
-}
-
-export interface CatalogsApiCatalogsProductGroupsCreateRequest {
-    /**
-     * Request object used to create a single catalogs product groups.
-     * @type MultipleProductGroupsInner
-     * @memberof CatalogsApicatalogsProductGroupsCreate
-     */
-    multipleProductGroupsInner: MultipleProductGroupsInner
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsCreate
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsCreateManyRequest {
-    /**
-     * Request object used to create one or more catalogs product groups.
-     * @type Array&lt;MultipleProductGroupsInner&gt;
-     * @memberof CatalogsApicatalogsProductGroupsCreateMany
-     */
-    multipleProductGroupsInner: Array<MultipleProductGroupsInner>
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsCreateMany
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsDeleteRequest {
-    /**
-     * Unique identifier of a product group
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsDelete
-     */
-    productGroupId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsDelete
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsDeleteManyRequest {
-    /**
-     * Comma-separated list of product group ids
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof CatalogsApicatalogsProductGroupsDeleteMany
-     */
-    id: Array<number>
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsDeleteMany
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsGetRequest {
-    /**
-     * Unique identifier of a product group
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsGet
-     */
-    productGroupId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsGet
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsListRequest {
-    /**
-     * Comma-separated list of product group ids
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof CatalogsApicatalogsProductGroupsList
-     */
-    id?: Array<number>
-    /**
-     * Filter entities for a given feed_id. If not given, all feeds are considered.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsList
-     */
-    feedId?: string
-    /**
-     * Filter entities for a given catalog_id. If not given, all catalogs are considered.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsList
-     */
-    catalogId?: string
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApicatalogsProductGroupsList
-     */
-    pageSize?: number
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsList
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsProductCountsGetRequest {
-    /**
-     * Unique identifier of a product group
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsProductCountsGet
-     */
-    productGroupId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsProductCountsGet
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiCatalogsProductGroupsUpdateRequest {
-    /**
-     * Unique identifier of a product group
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsUpdate
-     */
-    productGroupId: string
-    /**
-     * Request object used to Update a catalogs product group.
-     * @type CatalogsProductGroupsUpdateRequest
-     * @memberof CatalogsApicatalogsProductGroupsUpdate
-     */
-    catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApicatalogsProductGroupsUpdate
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedProcessingResultsListRequest {
-    /**
-     * Unique identifier of a feed
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedProcessingResultsList
-     */
-    feedId: string
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedProcessingResultsList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApifeedProcessingResultsList
-     */
-    pageSize?: number
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedProcessingResultsList
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedsCreateRequest {
-    /**
-     * Request object used to created a feed.
-     * @type FeedsCreateRequest
-     * @memberof CatalogsApifeedsCreate
-     */
-    feedsCreateRequest: FeedsCreateRequest
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsCreate
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedsDeleteRequest {
-    /**
-     * Unique identifier of a feed
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsDelete
-     */
-    feedId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsDelete
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedsGetRequest {
-    /**
-     * Unique identifier of a feed
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsGet
-     */
-    feedId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsGet
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedsIngestRequest {
-    /**
-     * Unique identifier of a feed
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsIngest
-     */
-    feedId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsIngest
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedsListRequest {
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApifeedsList
-     */
-    pageSize?: number
-    /**
-     * Filter entities for a given catalog_id. If not given, all catalogs are considered.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsList
-     */
-    catalogId?: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsList
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiFeedsUpdateRequest {
-    /**
-     * Unique identifier of a feed
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsUpdate
-     */
-    feedId: string
-    /**
-     * Request object used to update a feed.
-     * @type FeedsUpdateRequest
-     * @memberof CatalogsApifeedsUpdate
-     */
-    feedsUpdateRequest: FeedsUpdateRequest
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApifeedsUpdate
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiItemsBatchGetRequest {
-    /**
-     * Id of a catalogs items batch to fetch
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsBatchGet
-     */
-    batchId: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsBatchGet
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiItemsBatchPostRequest {
-    /**
-     * Request object used to create catalogs items in a batch
-     * @type ItemsBatchPostRequest
-     * @memberof CatalogsApiitemsBatchPost
-     */
-    itemsBatchPostRequest: ItemsBatchPostRequest
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsBatchPost
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiItemsGetRequest {
-    /**
-     * Country for the Catalogs Items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsGet
-     */
-    country: string
-    /**
-     * Language for the Catalogs Items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsGet
-     */
-    language: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsGet
-     */
-    adAccountId?: string
-    /**
-     * This parameter is deprecated. Use filters instead.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof CatalogsApiitemsGet
-     */
-    itemIds?: Array<string>
-    /**
-     * Identifies items to be retrieved. This is a required parameter.
-     * Defaults to: undefined
-     * @type CatalogsItemsFilters
-     * @memberof CatalogsApiitemsGet
-     */
-    filters?: CatalogsItemsFilters
-}
-
-export interface CatalogsApiItemsIssuesListRequest {
-    /**
-     * Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsIssuesList
-     */
-    processingResultId: string
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsIssuesList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApiitemsIssuesList
-     */
-    pageSize?: number
-    /**
-     * Item number based on order of appearance in the Catalogs Feed. For example, \&#39;0\&#39; refers to first item found in a feed that was downloaded from a \&#39;location\&#39; specified during feed creation.
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof CatalogsApiitemsIssuesList
-     */
-    itemNumbers?: Array<number>
-    /**
-     * Filter item validation issues that have a given type of item validation issue.
-     * Defaults to: undefined
-     * @type CatalogsItemValidationIssue
-     * @memberof CatalogsApiitemsIssuesList
-     */
-    itemValidationIssue?: CatalogsItemValidationIssue
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsIssuesList
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiItemsPostRequest {
-    /**
-     * Request object used to get catalogs items
-     * @type CatalogsItemsRequest
-     * @memberof CatalogsApiitemsPost
-     */
-    catalogsItemsRequest: CatalogsItemsRequest
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiitemsPost
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiProductsByProductGroupFilterListRequest {
-    /**
-     * Object holding a group of filters for a catalog product group
-     * @type CatalogsListProductsByFilterRequest
-     * @memberof CatalogsApiproductsByProductGroupFilterList
-     */
-    catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiproductsByProductGroupFilterList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApiproductsByProductGroupFilterList
-     */
-    pageSize?: number
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApiproductsByProductGroupFilterList
-     */
-    adAccountId?: string
-    /**
-     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-     * Defaults to: false
-     * @type boolean
-     * @memberof CatalogsApiproductsByProductGroupFilterList
-     */
-    pinMetrics?: boolean
-}
-
-export interface CatalogsApiReportsCreateRequest {
-    /**
-     * Request object to asynchronously create a report.
-     * @type CatalogsReportParameters
-     * @memberof CatalogsApireportsCreate
-     */
-    catalogsReportParameters: CatalogsReportParameters
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApireportsCreate
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiReportsGetRequest {
-    /**
-     * Token returned from async build report call
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApireportsGet
-     */
-    token: string
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApireportsGet
-     */
-    adAccountId?: string
-}
-
-export interface CatalogsApiReportsStatsRequest {
-    /**
-     * Contains the parameters for report identification.
-     * Defaults to: undefined
-     * @type CatalogsReportParameters
-     * @memberof CatalogsApireportsStats
-     */
-    parameters: CatalogsReportParameters
-    /**
-     * Unique identifier of an ad account.
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApireportsStats
-     */
-    adAccountId?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof CatalogsApireportsStats
-     */
-    pageSize?: number
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof CatalogsApireportsStats
-     */
-    bookmark?: string
-}
-
 export class ObjectCatalogsApi {
     private api: ObservableCatalogsApi
 
@@ -6024,7 +7095,25 @@ export class ObjectCatalogsApi {
     }
 
     /**
-     * Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
+     * Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List available filter values
+     * @param param the request object
+     */
+    public catalogsAvailableFilterValuesWithHttpInfo(param: CatalogsApiCatalogsAvailableFilterValuesRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsAvailableFilterValues>> {
+        return this.api.catalogsAvailableFilterValuesWithHttpInfo(param.catalogId, param.feedId, param.country, param.language, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+     * List available filter values
+     * @param param the request object
+     */
+    public catalogsAvailableFilterValues(param: CatalogsApiCatalogsAvailableFilterValuesRequest, options?: ConfigurationOptions): Promise<CatalogsAvailableFilterValues> {
+        return this.api.catalogsAvailableFilterValues(param.catalogId, param.feedId, param.country, param.language, param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      * Create catalog
      * @param param the request object
      */
@@ -6033,7 +7122,7 @@ export class ObjectCatalogsApi {
     }
 
     /**
-     * Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
+     * Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      * Create catalog
      * @param param the request object
      */
@@ -6059,454 +7148,65 @@ export class ObjectCatalogsApi {
         return this.api.catalogsList(param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
+}
+
+import { ObservableConversionEqsApi } from "./ObservableAPI";
+import { ConversionEqsApiRequestFactory, ConversionEqsApiResponseProcessor} from "../apis/ConversionEqsApi";
+
+export interface ConversionEqsApiConversionEqsListRequest {
     /**
-     * Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List products by product group
-     * @param param the request object
+     * Lookback window (number of days).
+     * Defaults to: undefined
+     * @type LookbackPeriodOptions
+     * @memberof ConversionEqsApiconversionEqsList
      */
-    public catalogsProductGroupPinsListWithHttpInfo(param: CatalogsApiCatalogsProductGroupPinsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
-        return this.api.catalogsProductGroupPinsListWithHttpInfo(param.productGroupId, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
+    lookbackPeriod: LookbackPeriodOptions
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof ConversionEqsApiconversionEqsList
+     */
+    adAccountId: string
+    /**
+     * Source platform of event.
+     * Defaults to: undefined
+     * @type SourcePlatformOptions
+     * @memberof ConversionEqsApiconversionEqsList
+     */
+    sourcePlatform?: SourcePlatformOptions
+    /**
+     * Ingestion source of event.
+     * Defaults to: undefined
+     * @type IngestionSourceOptions
+     * @memberof ConversionEqsApiconversionEqsList
+     */
+    ingestionSource?: IngestionSourceOptions
+}
+
+export class ObjectConversionEqsApi {
+    private api: ObservableConversionEqsApi
+
+    public constructor(configuration: Configuration, requestFactory?: ConversionEqsApiRequestFactory, responseProcessor?: ConversionEqsApiResponseProcessor) {
+        this.api = new ObservableConversionEqsApi(configuration, requestFactory, responseProcessor);
     }
 
     /**
-     * Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List products by product group
+     * Get the Event Quality Score (EQS) of your conversion signals.  [Event Quality Score](https://help.pinterest.com/en/business/article/eqs) indicates how effective the customer information and event insights (metadata) passed with your web, app and offline conversion events may be at matching to a Pinterest user.
+     * Get event quality score (EQS)
      * @param param the request object
      */
-    public catalogsProductGroupPinsList(param: CatalogsApiCatalogsProductGroupPinsListRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
-        return this.api.catalogsProductGroupPinsList(param.productGroupId, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
+    public conversionEqsListWithHttpInfo(param: ConversionEqsApiConversionEqsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<EventQualityScore>>> {
+        return this.api.conversionEqsListWithHttpInfo(param.lookbackPeriod, param.adAccountId, param.sourcePlatform, param.ingestionSource,  options).toPromise();
     }
 
     /**
-     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Create product group
+     * Get the Event Quality Score (EQS) of your conversion signals.  [Event Quality Score](https://help.pinterest.com/en/business/article/eqs) indicates how effective the customer information and event insights (metadata) passed with your web, app and offline conversion events may be at matching to a Pinterest user.
+     * Get event quality score (EQS)
      * @param param the request object
      */
-    public catalogsProductGroupsCreateWithHttpInfo(param: CatalogsApiCatalogsProductGroupsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
-        return this.api.catalogsProductGroupsCreateWithHttpInfo(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Create product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsCreate(param: CatalogsApiCatalogsProductGroupsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
-        return this.api.catalogsProductGroupsCreate(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Create product groups
-     * @param param the request object
-     */
-    public catalogsProductGroupsCreateManyWithHttpInfo(param: CatalogsApiCatalogsProductGroupsCreateManyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
-        return this.api.catalogsProductGroupsCreateManyWithHttpInfo(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Create product groups
-     * @param param the request object
-     */
-    public catalogsProductGroupsCreateMany(param: CatalogsApiCatalogsProductGroupsCreateManyRequest, options?: ConfigurationOptions): Promise<Array<string>> {
-        return this.api.catalogsProductGroupsCreateMany(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Delete product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsDeleteWithHttpInfo(param: CatalogsApiCatalogsProductGroupsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.catalogsProductGroupsDeleteWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Delete product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsDelete(param: CatalogsApiCatalogsProductGroupsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.catalogsProductGroupsDelete(param.productGroupId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Delete product groups
-     * @param param the request object
-     */
-    public catalogsProductGroupsDeleteManyWithHttpInfo(param: CatalogsApiCatalogsProductGroupsDeleteManyRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.catalogsProductGroupsDeleteManyWithHttpInfo(param.id, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Delete product groups
-     * @param param the request object
-     */
-    public catalogsProductGroupsDeleteMany(param: CatalogsApiCatalogsProductGroupsDeleteManyRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.catalogsProductGroupsDeleteMany(param.id, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Get product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsGetWithHttpInfo(param: CatalogsApiCatalogsProductGroupsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
-        return this.api.catalogsProductGroupsGetWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Get product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsGet(param: CatalogsApiCatalogsProductGroupsGetRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
-        return this.api.catalogsProductGroupsGet(param.productGroupId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List product groups
-     * @param param the request object
-     */
-    public catalogsProductGroupsListWithHttpInfo(param: CatalogsApiCatalogsProductGroupsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupsList200Response>> {
-        return this.api.catalogsProductGroupsListWithHttpInfo(param.id, param.feedId, param.catalogId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List product groups
-     * @param param the request object
-     */
-    public catalogsProductGroupsList(param: CatalogsApiCatalogsProductGroupsListRequest = {}, options?: ConfigurationOptions): Promise<CatalogsProductGroupsList200Response> {
-        return this.api.catalogsProductGroupsList(param.id, param.feedId, param.catalogId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Get product counts
-     * @param param the request object
-     */
-    public catalogsProductGroupsProductCountsGetWithHttpInfo(param: CatalogsApiCatalogsProductGroupsProductCountsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupProductCountsVertical>> {
-        return this.api.catalogsProductGroupsProductCountsGetWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * Get product counts
-     * @param param the request object
-     */
-    public catalogsProductGroupsProductCountsGet(param: CatalogsApiCatalogsProductGroupsProductCountsGetRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupProductCountsVertical> {
-        return this.api.catalogsProductGroupsProductCountsGet(param.productGroupId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Update single product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsUpdateWithHttpInfo(param: CatalogsApiCatalogsProductGroupsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
-        return this.api.catalogsProductGroupsUpdateWithHttpInfo(param.productGroupId, param.catalogsProductGroupsUpdateRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Update single product group
-     * @param param the request object
-     */
-    public catalogsProductGroupsUpdate(param: CatalogsApiCatalogsProductGroupsUpdateRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
-        return this.api.catalogsProductGroupsUpdate(param.productGroupId, param.catalogsProductGroupsUpdateRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List feed processing results
-     * @param param the request object
-     */
-    public feedProcessingResultsListWithHttpInfo(param: CatalogsApiFeedProcessingResultsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<FeedProcessingResultsList200Response>> {
-        return this.api.feedProcessingResultsListWithHttpInfo(param.feedId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List feed processing results
-     * @param param the request object
-     */
-    public feedProcessingResultsList(param: CatalogsApiFeedProcessingResultsListRequest, options?: ConfigurationOptions): Promise<FeedProcessingResultsList200Response> {
-        return this.api.feedProcessingResultsList(param.feedId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Create feed
-     * @param param the request object
-     */
-    public feedsCreateWithHttpInfo(param: CatalogsApiFeedsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
-        return this.api.feedsCreateWithHttpInfo(param.feedsCreateRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Create feed
-     * @param param the request object
-     */
-    public feedsCreate(param: CatalogsApiFeedsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
-        return this.api.feedsCreate(param.feedsCreateRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
-     * Delete feed
-     * @param param the request object
-     */
-    public feedsDeleteWithHttpInfo(param: CatalogsApiFeedsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.feedsDeleteWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
-     * Delete feed
-     * @param param the request object
-     */
-    public feedsDelete(param: CatalogsApiFeedsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.feedsDelete(param.feedId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
-     * Get feed
-     * @param param the request object
-     */
-    public feedsGetWithHttpInfo(param: CatalogsApiFeedsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
-        return this.api.feedsGetWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
-     * Get feed
-     * @param param the request object
-     */
-    public feedsGet(param: CatalogsApiFeedsGetRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
-        return this.api.feedsGet(param.feedId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Ingest feed items
-     * @param param the request object
-     */
-    public feedsIngestWithHttpInfo(param: CatalogsApiFeedsIngestRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeedIngestion>> {
-        return this.api.feedsIngestWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Ingest feed items
-     * @param param the request object
-     */
-    public feedsIngest(param: CatalogsApiFeedsIngestRequest, options?: ConfigurationOptions): Promise<CatalogsFeedIngestion> {
-        return this.api.feedsIngest(param.feedId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
-     * List feeds
-     * @param param the request object
-     */
-    public feedsListWithHttpInfo(param: CatalogsApiFeedsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<FeedsList200Response>> {
-        return this.api.feedsListWithHttpInfo(param.bookmark, param.pageSize, param.catalogId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.
-     * List feeds
-     * @param param the request object
-     */
-    public feedsList(param: CatalogsApiFeedsListRequest = {}, options?: ConfigurationOptions): Promise<FeedsList200Response> {
-        return this.api.feedsList(param.bookmark, param.pageSize, param.catalogId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Update feed
-     * @param param the request object
-     */
-    public feedsUpdateWithHttpInfo(param: CatalogsApiFeedsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
-        return this.api.feedsUpdateWithHttpInfo(param.feedId, param.feedsUpdateRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href=\'https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href=\'/docs/api-features/shopping-overview/\'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Update feed
-     * @param param the request object
-     */
-    public feedsUpdate(param: CatalogsApiFeedsUpdateRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
-        return this.api.feedsUpdate(param.feedId, param.feedsUpdateRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * Get item batch status
-     * @param param the request object
-     */
-    public itemsBatchGetWithHttpInfo(param: CatalogsApiItemsBatchGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
-        return this.api.itemsBatchGetWithHttpInfo(param.batchId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * Get item batch status
-     * @param param the request object
-     */
-    public itemsBatchGet(param: CatalogsApiItemsBatchGetRequest, options?: ConfigurationOptions): Promise<CatalogsItemsBatch> {
-        return this.api.itemsBatchGet(param.batchId, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
-     * Operate on item batch
-     * @param param the request object
-     */
-    public itemsBatchPostWithHttpInfo(param: CatalogsApiItemsBatchPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
-        return this.api.itemsBatchPostWithHttpInfo(param.itemsBatchPostRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
-     * Operate on item batch
-     * @param param the request object
-     */
-    public itemsBatchPost(param: CatalogsApiItemsBatchPostRequest, options?: ConfigurationOptions): Promise<CatalogsItemsBatch> {
-        return this.api.itemsBatchPost(param.itemsBatchPostRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href=\'/docs/api/v5/#operation/items/post\'>Get catalogs items (POST)</a> instead.
-     * Get catalogs items
-     * @param param the request object
-     */
-    public itemsGetWithHttpInfo(param: CatalogsApiItemsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
-        return this.api.itemsGetWithHttpInfo(param.country, param.language, param.adAccountId, param.itemIds, param.filters,  options).toPromise();
-    }
-
-    /**
-     * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href=\'/docs/api/v5/#operation/items/post\'>Get catalogs items (POST)</a> instead.
-     * Get catalogs items
-     * @param param the request object
-     */
-    public itemsGet(param: CatalogsApiItemsGetRequest, options?: ConfigurationOptions): Promise<CatalogsItems> {
-        return this.api.itemsGet(param.country, param.language, param.adAccountId, param.itemIds, param.filters,  options).toPromise();
-    }
-
-    /**
-     * List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters \'item_numbers\' and \'item_validation_issue\' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a> and <a href=\'/docs/api/v5/#operation/reports/get\'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List item issues
-     * @param param the request object
-     */
-    public itemsIssuesListWithHttpInfo(param: CatalogsApiItemsIssuesListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ItemsIssuesList200Response>> {
-        return this.api.itemsIssuesListWithHttpInfo(param.processingResultId, param.bookmark, param.pageSize, param.itemNumbers, param.itemValidationIssue, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters \'item_numbers\' and \'item_validation_issue\' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a> and <a href=\'/docs/api/v5/#operation/reports/get\'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List item issues
-     * @param param the request object
-     */
-    public itemsIssuesList(param: CatalogsApiItemsIssuesListRequest, options?: ConfigurationOptions): Promise<ItemsIssuesList200Response> {
-        return this.api.itemsIssuesList(param.processingResultId, param.bookmark, param.pageSize, param.itemNumbers, param.itemValidationIssue, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Get catalogs items (POST)
-     * @param param the request object
-     */
-    public itemsPostWithHttpInfo(param: CatalogsApiItemsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
-        return this.api.itemsPostWithHttpInfo(param.catalogsItemsRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * Get catalogs items (POST)
-     * @param param the request object
-     */
-    public itemsPost(param: CatalogsApiItemsPostRequest, options?: ConfigurationOptions): Promise<CatalogsItems> {
-        return this.api.itemsPost(param.catalogsItemsRequest, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List products by filter
-     * @param param the request object
-     */
-    public productsByProductGroupFilterListWithHttpInfo(param: CatalogsApiProductsByProductGroupFilterListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
-        return this.api.productsByProductGroupFilterListWithHttpInfo(param.catalogsListProductsByFilterRequest, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
-    }
-
-    /**
-     * List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
-     * List products by filter
-     * @param param the request object
-     */
-    public productsByProductGroupFilterList(param: CatalogsApiProductsByProductGroupFilterListRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
-        return this.api.productsByProductGroupFilterList(param.catalogsListProductsByFilterRequest, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
-    }
-
-    /**
-     * Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * Build catalogs report
-     * @param param the request object
-     */
-    public reportsCreateWithHttpInfo(param: CatalogsApiReportsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsCreateReportResponse>> {
-        return this.api.reportsCreateWithHttpInfo(param.catalogsReportParameters, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * Build catalogs report
-     * @param param the request object
-     */
-    public reportsCreate(param: CatalogsApiReportsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsCreateReportResponse> {
-        return this.api.reportsCreate(param.catalogsReportParameters, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * This returns a URL to a report given a token returned from <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * Get catalogs report
-     * @param param the request object
-     */
-    public reportsGetWithHttpInfo(param: CatalogsApiReportsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsReport>> {
-        return this.api.reportsGetWithHttpInfo(param.token, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * This returns a URL to a report given a token returned from <a href=\'/docs/api/v5/#operation/reports/create\'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * Get catalogs report
-     * @param param the request object
-     */
-    public reportsGet(param: CatalogsApiReportsGetRequest, options?: ConfigurationOptions): Promise<CatalogsReport> {
-        return this.api.reportsGet(param.token, param.adAccountId,  options).toPromise();
-    }
-
-    /**
-     * List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * List report stats
-     * @param param the request object
-     */
-    public reportsStatsWithHttpInfo(param: CatalogsApiReportsStatsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportsStats200Response>> {
-        return this.api.reportsStatsWithHttpInfo(param.parameters, param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
-    }
-
-    /**
-     * List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * List report stats
-     * @param param the request object
-     */
-    public reportsStats(param: CatalogsApiReportsStatsRequest, options?: ConfigurationOptions): Promise<ReportsStats200Response> {
-        return this.api.reportsStats(param.parameters, param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
+    public conversionEqsList(param: ConversionEqsApiConversionEqsListRequest, options?: ConfigurationOptions): Promise<Array<EventQualityScore>> {
+        return this.api.conversionEqsList(param.lookbackPeriod, param.adAccountId, param.sourcePlatform, param.ingestionSource,  options).toPromise();
     }
 
 }
@@ -6576,7 +7276,7 @@ export interface ConversionTagsApiConversionTagsCreateRequest {
      */
     adAccountId: string
     /**
-     * Conversion Tag to create
+     * 
      * @type ConversionTagCreate
      * @memberof ConversionTagsApiconversionTagsCreate
      */
@@ -6609,7 +7309,7 @@ export interface ConversionTagsApiConversionTagsListRequest {
      */
     adAccountId: string
     /**
-     * Filter out deleted tags.
+     * Filter by deleted status
      * Defaults to: false
      * @type boolean
      * @memberof ConversionTagsApiconversionTagsList
@@ -6668,20 +7368,20 @@ export class ObjectConversionTagsApi {
     }
 
     /**
-     * Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account\'s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      * Create conversion tag
      * @param param the request object
      */
-    public conversionTagsCreateWithHttpInfo(param: ConversionTagsApiConversionTagsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagResponse>> {
+    public conversionTagsCreateWithHttpInfo(param: ConversionTagsApiConversionTagsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTag>> {
         return this.api.conversionTagsCreateWithHttpInfo(param.adAccountId, param.conversionTagCreate,  options).toPromise();
     }
 
     /**
-     * Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account\'s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      * Create conversion tag
      * @param param the request object
      */
-    public conversionTagsCreate(param: ConversionTagsApiConversionTagsCreateRequest, options?: ConfigurationOptions): Promise<ConversionTagResponse> {
+    public conversionTagsCreate(param: ConversionTagsApiConversionTagsCreateRequest, options?: ConfigurationOptions): Promise<ConversionTag> {
         return this.api.conversionTagsCreate(param.adAccountId, param.conversionTagCreate,  options).toPromise();
     }
 
@@ -6690,7 +7390,7 @@ export class ObjectConversionTagsApi {
      * Get conversion tag
      * @param param the request object
      */
-    public conversionTagsGetWithHttpInfo(param: ConversionTagsApiConversionTagsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagResponse>> {
+    public conversionTagsGetWithHttpInfo(param: ConversionTagsApiConversionTagsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTag>> {
         return this.api.conversionTagsGetWithHttpInfo(param.adAccountId, param.conversionTagId,  options).toPromise();
     }
 
@@ -6699,25 +7399,25 @@ export class ObjectConversionTagsApi {
      * Get conversion tag
      * @param param the request object
      */
-    public conversionTagsGet(param: ConversionTagsApiConversionTagsGetRequest, options?: ConfigurationOptions): Promise<ConversionTagResponse> {
+    public conversionTagsGet(param: ConversionTagsApiConversionTagsGetRequest, options?: ConfigurationOptions): Promise<ConversionTag> {
         return this.api.conversionTagsGet(param.adAccountId, param.conversionTagId,  options).toPromise();
     }
 
     /**
      * List conversion tags associated with an ad account.
-     * Get conversion tags
+     * List conversion tags
      * @param param the request object
      */
-    public conversionTagsListWithHttpInfo(param: ConversionTagsApiConversionTagsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagListResponse>> {
+    public conversionTagsListWithHttpInfo(param: ConversionTagsApiConversionTagsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagsList200Response>> {
         return this.api.conversionTagsListWithHttpInfo(param.adAccountId, param.filterDeleted,  options).toPromise();
     }
 
     /**
      * List conversion tags associated with an ad account.
-     * Get conversion tags
+     * List conversion tags
      * @param param the request object
      */
-    public conversionTagsList(param: ConversionTagsApiConversionTagsListRequest, options?: ConfigurationOptions): Promise<ConversionTagListResponse> {
+    public conversionTagsList(param: ConversionTagsApiConversionTagsListRequest, options?: ConfigurationOptions): Promise<ConversionTagsList200Response> {
         return this.api.conversionTagsList(param.adAccountId, param.filterDeleted,  options).toPromise();
     }
 
@@ -6755,6 +7455,183 @@ export class ObjectConversionTagsApi {
      */
     public pageVisitConversionTagsGet(param: ConversionTagsApiPageVisitConversionTagsGetRequest, options?: ConfigurationOptions): Promise<PageVisitConversionTagsGet200Response> {
         return this.api.pageVisitConversionTagsGet(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
+    }
+
+}
+
+import { ObservableConversionsApi } from "./ObservableAPI";
+import { ConversionsApiRequestFactory, ConversionsApiResponseProcessor} from "../apis/ConversionsApi";
+
+export interface ConversionsApiAdvertiserDefinedEventsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof ConversionsApiadvertiserDefinedEventsGet
+     */
+    adAccountId: string
+}
+
+export class ObjectConversionsApi {
+    private api: ObservableConversionsApi
+
+    public constructor(configuration: Configuration, requestFactory?: ConversionsApiRequestFactory, responseProcessor?: ConversionsApiResponseProcessor) {
+        this.api = new ObservableConversionsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * <p>Get advertiser defined events for the given ad account.</p>
+     * Get advertiser defined events
+     * @param param the request object
+     */
+    public advertiserDefinedEventsGetWithHttpInfo(param: ConversionsApiAdvertiserDefinedEventsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdvertiserDefinedEventsResponse>> {
+        return this.api.advertiserDefinedEventsGetWithHttpInfo(param.adAccountId,  options).toPromise();
+    }
+
+    /**
+     * <p>Get advertiser defined events for the given ad account.</p>
+     * Get advertiser defined events
+     * @param param the request object
+     */
+    public advertiserDefinedEventsGet(param: ConversionsApiAdvertiserDefinedEventsGetRequest, options?: ConfigurationOptions): Promise<AdvertiserDefinedEventsResponse> {
+        return this.api.advertiserDefinedEventsGet(param.adAccountId,  options).toPromise();
+    }
+
+}
+
+import { ObservableCustomerListUploadsApi } from "./ObservableAPI";
+import { CustomerListUploadsApiRequestFactory, CustomerListUploadsApiResponseProcessor} from "../apis/CustomerListUploadsApi";
+
+export interface CustomerListUploadsApiCustomerListUploadsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsCreate
+     */
+    adAccountId: string
+    /**
+     * Unique identifier of a customer list
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsCreate
+     */
+    customerListId: string
+    /**
+     * Parameters to create a customer list upload request
+     * @type CustomerListUploadCreateRequest
+     * @memberof CustomerListUploadsApicustomerListUploadsCreate
+     */
+    customerListUploadCreateRequest: CustomerListUploadCreateRequest
+}
+
+export interface CustomerListUploadsApiCustomerListUploadsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsGet
+     */
+    adAccountId: string
+    /**
+     * Unique identifier of a customer list
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsGet
+     */
+    customerListId: string
+    /**
+     * Unique identifier of a customer list upload
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsGet
+     */
+    customerListUploadId: string
+}
+
+export interface CustomerListUploadsApiCustomerListUploadsRunRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsRun
+     */
+    adAccountId: string
+    /**
+     * Unique identifier of a customer list
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsRun
+     */
+    customerListId: string
+    /**
+     * Unique identifier of a customer list upload
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomerListUploadsApicustomerListUploadsRun
+     */
+    customerListUploadId: string
+}
+
+export class ObjectCustomerListUploadsApi {
+    private api: ObservableCustomerListUploadsApi
+
+    public constructor(configuration: Configuration, requestFactory?: CustomerListUploadsApiRequestFactory, responseProcessor?: CustomerListUploadsApiResponseProcessor) {
+        this.api = new ObservableCustomerListUploadsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+     * Create customer list upload
+     * @param param the request object
+     */
+    public customerListUploadsCreateWithHttpInfo(param: CustomerListUploadsApiCustomerListUploadsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerListUploadCreateResponse>> {
+        return this.api.customerListUploadsCreateWithHttpInfo(param.adAccountId, param.customerListId, param.customerListUploadCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+     * Create customer list upload
+     * @param param the request object
+     */
+    public customerListUploadsCreate(param: CustomerListUploadsApiCustomerListUploadsCreateRequest, options?: ConfigurationOptions): Promise<CustomerListUploadCreateResponse> {
+        return this.api.customerListUploadsCreate(param.adAccountId, param.customerListId, param.customerListUploadCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+     * Get customer list upload
+     * @param param the request object
+     */
+    public customerListUploadsGetWithHttpInfo(param: CustomerListUploadsApiCustomerListUploadsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerListUploadResponse>> {
+        return this.api.customerListUploadsGetWithHttpInfo(param.adAccountId, param.customerListId, param.customerListUploadId,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+     * Get customer list upload
+     * @param param the request object
+     */
+    public customerListUploadsGet(param: CustomerListUploadsApiCustomerListUploadsGetRequest, options?: ConfigurationOptions): Promise<CustomerListUploadResponse> {
+        return this.api.customerListUploadsGet(param.adAccountId, param.customerListId, param.customerListUploadId,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+     * Run customer list upload
+     * @param param the request object
+     */
+    public customerListUploadsRunWithHttpInfo(param: CustomerListUploadsApiCustomerListUploadsRunRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerListUploadResponse>> {
+        return this.api.customerListUploadsRunWithHttpInfo(param.adAccountId, param.customerListId, param.customerListUploadId,  options).toPromise();
+    }
+
+    /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+     * Run customer list upload
+     * @param param the request object
+     */
+    public customerListUploadsRun(param: CustomerListUploadsApiCustomerListUploadsRunRequest, options?: ConfigurationOptions): Promise<CustomerListUploadResponse> {
+        return this.api.customerListUploadsRun(param.adAccountId, param.customerListId, param.customerListUploadId,  options).toPromise();
     }
 
 }
@@ -6859,7 +7736,7 @@ export class ObjectCustomerListsApi {
     }
 
     /**
-     * <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>  <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>
+     * <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
      * Create customer lists
      * @param param the request object
      */
@@ -6868,7 +7745,7 @@ export class ObjectCustomerListsApi {
     }
 
     /**
-     * <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>  <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>
+     * <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
      * Create customer lists
      * @param param the request object
      */
@@ -6913,7 +7790,7 @@ export class ObjectCustomerListsApi {
     }
 
     /**
-     * <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+     * <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
      * Update customer list
      * @param param the request object
      */
@@ -6922,7 +7799,7 @@ export class ObjectCustomerListsApi {
     }
 
     /**
-     * <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+     * <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
      * Update customer list
      * @param param the request object
      */
@@ -6968,7 +7845,7 @@ export interface IntegrationsApiIntegrationsCommercePatchRequest {
      * @type IntegrationRequestPatch
      * @memberof IntegrationsApiintegrationsCommercePatch
      */
-    integrationRequestPatch?: IntegrationRequestPatch
+    integrationRequestPatch: IntegrationRequestPatch
 }
 
 export interface IntegrationsApiIntegrationsCommercePostRequest {
@@ -6977,7 +7854,7 @@ export interface IntegrationsApiIntegrationsCommercePostRequest {
      * @type IntegrationRequest
      * @memberof IntegrationsApiintegrationsCommercePost
      */
-    integrationRequest?: IntegrationRequest
+    integrationRequest: IntegrationRequest
 }
 
 export interface IntegrationsApiIntegrationsGetByIdRequest {
@@ -7084,7 +7961,7 @@ export class ObjectIntegrationsApi {
      * Create commerce integration
      * @param param the request object
      */
-    public integrationsCommercePostWithHttpInfo(param: IntegrationsApiIntegrationsCommercePostRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
+    public integrationsCommercePostWithHttpInfo(param: IntegrationsApiIntegrationsCommercePostRequest, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
         return this.api.integrationsCommercePostWithHttpInfo(param.integrationRequest,  options).toPromise();
     }
 
@@ -7093,7 +7970,7 @@ export class ObjectIntegrationsApi {
      * Create commerce integration
      * @param param the request object
      */
-    public integrationsCommercePost(param: IntegrationsApiIntegrationsCommercePostRequest = {}, options?: ConfigurationOptions): Promise<IntegrationMetadata> {
+    public integrationsCommercePost(param: IntegrationsApiIntegrationsCommercePostRequest, options?: ConfigurationOptions): Promise<IntegrationMetadata> {
         return this.api.integrationsCommercePost(param.integrationRequest,  options).toPromise();
     }
 
@@ -7219,6 +8096,13 @@ export interface KeywordsApiKeywordsGetRequest {
      */
     adGroupId?: string
     /**
+     * List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof KeywordsApikeywordsGet
+     */
+    adGroupIds?: Array<string>
+    /**
      * Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt;
      * Defaults to: undefined
      * @type Array&lt;MatchType&gt;
@@ -7226,9 +8110,8 @@ export interface KeywordsApiKeywordsGetRequest {
      */
     matchTypes?: Array<MatchType>
     /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * Minimum: 1
-     * Maximum: 250
      * Defaults to: 25
      * @type number
      * @memberof KeywordsApikeywordsGet
@@ -7318,6 +8201,20 @@ export interface KeywordsApiTrendingKeywordsListRequest {
      * @memberof KeywordsApitrendingKeywordsList
      */
     limit?: number
+    /**
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data.
+     * Defaults to: false
+     * @type boolean
+     * @memberof KeywordsApitrendingKeywordsList
+     */
+    includePrediction?: boolean
+    /**
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data.
+     * Defaults to: false
+     * @type boolean
+     * @memberof KeywordsApitrendingKeywordsList
+     */
+    includeDemographics?: boolean
 }
 
 export class ObjectKeywordsApi {
@@ -7369,7 +8266,7 @@ export class ObjectKeywordsApi {
      * @param param the request object
      */
     public keywordsGetWithHttpInfo(param: KeywordsApiKeywordsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<KeywordsGet200Response>> {
-        return this.api.keywordsGetWithHttpInfo(param.adAccountId, param.campaignId, param.adGroupId, param.matchTypes, param.pageSize, param.bookmark,  options).toPromise();
+        return this.api.keywordsGetWithHttpInfo(param.adAccountId, param.campaignId, param.adGroupId, param.adGroupIds, param.matchTypes, param.pageSize, param.bookmark,  options).toPromise();
     }
 
     /**
@@ -7378,7 +8275,7 @@ export class ObjectKeywordsApi {
      * @param param the request object
      */
     public keywordsGet(param: KeywordsApiKeywordsGetRequest, options?: ConfigurationOptions): Promise<KeywordsGet200Response> {
-        return this.api.keywordsGet(param.adAccountId, param.campaignId, param.adGroupId, param.matchTypes, param.pageSize, param.bookmark,  options).toPromise();
+        return this.api.keywordsGet(param.adAccountId, param.campaignId, param.adGroupId, param.adGroupIds, param.matchTypes, param.pageSize, param.bookmark,  options).toPromise();
     }
 
     /**
@@ -7405,7 +8302,7 @@ export class ObjectKeywordsApi {
      * @param param the request object
      */
     public trendingKeywordsListWithHttpInfo(param: KeywordsApiTrendingKeywordsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<TrendingKeywordsResponse>> {
-        return this.api.trendingKeywordsListWithHttpInfo(param.region, param.trendType, param.interests, param.genders, param.ages, param.includeKeywords, param.normalizeAgainstGroup, param.limit,  options).toPromise();
+        return this.api.trendingKeywordsListWithHttpInfo(param.region, param.trendType, param.interests, param.genders, param.ages, param.includeKeywords, param.normalizeAgainstGroup, param.limit, param.includePrediction, param.includeDemographics,  options).toPromise();
     }
 
     /**
@@ -7414,7 +8311,159 @@ export class ObjectKeywordsApi {
      * @param param the request object
      */
     public trendingKeywordsList(param: KeywordsApiTrendingKeywordsListRequest, options?: ConfigurationOptions): Promise<TrendingKeywordsResponse> {
-        return this.api.trendingKeywordsList(param.region, param.trendType, param.interests, param.genders, param.ages, param.includeKeywords, param.normalizeAgainstGroup, param.limit,  options).toPromise();
+        return this.api.trendingKeywordsList(param.region, param.trendType, param.interests, param.genders, param.ages, param.includeKeywords, param.normalizeAgainstGroup, param.limit, param.includePrediction, param.includeDemographics,  options).toPromise();
+    }
+
+}
+
+import { ObservableLabelsApi } from "./ObservableAPI";
+import { LabelsApiRequestFactory, LabelsApiResponseProcessor} from "../apis/LabelsApi";
+
+export interface LabelsApiLabelsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof LabelsApilabelsCreate
+     */
+    adAccountId: string
+    /**
+     * 
+     * @type LabelCreateRequest
+     * @memberof LabelsApilabelsCreate
+     */
+    labelCreateRequest: LabelCreateRequest
+}
+
+export interface LabelsApiLabelsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof LabelsApilabelsList
+     */
+    adAccountId: string
+    /**
+     * List of Campaign Ids to use to filter the results.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof LabelsApilabelsList
+     */
+    campaignIds?: Array<string>
+    /**
+     * List of Label Ids to use to filter the results.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof LabelsApilabelsList
+     */
+    labelIds?: Array<string>
+    /**
+     * Label entity status
+     * Defaults to: undefined
+     * @type Array&lt;&#39;ACTIVE&#39; | &#39;ARCHIVED&#39;&gt;
+     * @memberof LabelsApilabelsList
+     */
+    entityStatuses?: Array<'ACTIVE' | 'ARCHIVED'>
+    /**
+     * Label type.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;BRAND&#39; | &#39;CUSTOM&#39;&gt;
+     * @memberof LabelsApilabelsList
+     */
+    labelTypes?: Array<'BRAND' | 'CUSTOM'>
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof LabelsApilabelsList
+     */
+    pageSize?: number
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof LabelsApilabelsList
+     */
+    bookmark?: string
+}
+
+export interface LabelsApiLabelsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof LabelsApilabelsUpdate
+     */
+    adAccountId: string
+    /**
+     * 
+     * @type LabelUpdateRequest
+     * @memberof LabelsApilabelsUpdate
+     */
+    labelUpdateRequest: LabelUpdateRequest
+}
+
+export class ObjectLabelsApi {
+    private api: ObservableLabelsApi
+
+    public constructor(configuration: Configuration, requestFactory?: LabelsApiRequestFactory, responseProcessor?: LabelsApiResponseProcessor) {
+        this.api = new ObservableLabelsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * <p> <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>
+     * Create labels
+     * @param param the request object
+     */
+    public labelsCreateWithHttpInfo(param: LabelsApiLabelsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<LabelsResponse>> {
+        return this.api.labelsCreateWithHttpInfo(param.adAccountId, param.labelCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * <p> <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>
+     * Create labels
+     * @param param the request object
+     */
+    public labelsCreate(param: LabelsApiLabelsCreateRequest, options?: ConfigurationOptions): Promise<LabelsResponse> {
+        return this.api.labelsCreate(param.adAccountId, param.labelCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>
+     * List labels
+     * @param param the request object
+     */
+    public labelsListWithHttpInfo(param: LabelsApiLabelsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<LabelsList200Response>> {
+        return this.api.labelsListWithHttpInfo(param.adAccountId, param.campaignIds, param.labelIds, param.entityStatuses, param.labelTypes, param.pageSize, param.bookmark,  options).toPromise();
+    }
+
+    /**
+     * <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>
+     * List labels
+     * @param param the request object
+     */
+    public labelsList(param: LabelsApiLabelsListRequest, options?: ConfigurationOptions): Promise<LabelsList200Response> {
+        return this.api.labelsList(param.adAccountId, param.campaignIds, param.labelIds, param.entityStatuses, param.labelTypes, param.pageSize, param.bookmark,  options).toPromise();
+    }
+
+    /**
+     * <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>
+     * Update labels
+     * @param param the request object
+     */
+    public labelsUpdateWithHttpInfo(param: LabelsApiLabelsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<LabelsResponse>> {
+        return this.api.labelsUpdateWithHttpInfo(param.adAccountId, param.labelUpdateRequest,  options).toPromise();
+    }
+
+    /**
+     * <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>
+     * Update labels
+     * @param param the request object
+     */
+    public labelsUpdate(param: LabelsApiLabelsUpdateRequest, options?: ConfigurationOptions): Promise<LabelsResponse> {
+        return this.api.labelsUpdate(param.adAccountId, param.labelUpdateRequest,  options).toPromise();
     }
 
 }
@@ -7465,7 +8514,14 @@ export interface LeadAdsApiAdAccountsSubscriptionsGetListRequest {
      */
     adAccountId: string
     /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof LeadAdsApiadAccountsSubscriptionsGetList
+     */
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * Minimum: 1
      * Maximum: 250
      * Defaults to: 25
@@ -7473,13 +8529,6 @@ export interface LeadAdsApiAdAccountsSubscriptionsGetListRequest {
      * @memberof LeadAdsApiadAccountsSubscriptionsGetList
      */
     pageSize?: number
-    /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof LeadAdsApiadAccountsSubscriptionsGetList
-     */
-    bookmark?: string
 }
 
 export interface LeadAdsApiAdAccountsSubscriptionsPostRequest {
@@ -7491,11 +8540,11 @@ export interface LeadAdsApiAdAccountsSubscriptionsPostRequest {
      */
     adAccountId: string
     /**
-     * Subscription to create.
-     * @type AdAccountCreateSubscriptionRequest
+     * 
+     * @type LeadSubscriptionPostParamsCreate
      * @memberof LeadAdsApiadAccountsSubscriptionsPost
      */
-    adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest
+    leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate
 }
 
 export class ObjectLeadAdsApi {
@@ -7506,7 +8555,7 @@ export class ObjectLeadAdsApi {
     }
 
     /**
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
      * Delete lead ads subscription
      * @param param the request object
      */
@@ -7515,7 +8564,7 @@ export class ObjectLeadAdsApi {
     }
 
     /**
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
      * Delete lead ads subscription
      * @param param the request object
      */
@@ -7524,57 +8573,57 @@ export class ObjectLeadAdsApi {
     }
 
     /**
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
-     * Get lead ads subscription
+     * Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
+     * Get lead ads subscription by ID
      * @param param the request object
      */
-    public adAccountsSubscriptionsGetByIdWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountGetSubscriptionResponse>> {
+    public adAccountsSubscriptionsGetByIdWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSubscription>> {
         return this.api.adAccountsSubscriptionsGetByIdWithHttpInfo(param.adAccountId, param.subscriptionId,  options).toPromise();
     }
 
     /**
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
-     * Get lead ads subscription
+     * Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
+     * Get lead ads subscription by ID
      * @param param the request object
      */
-    public adAccountsSubscriptionsGetById(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: ConfigurationOptions): Promise<AdAccountGetSubscriptionResponse> {
+    public adAccountsSubscriptionsGetById(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: ConfigurationOptions): Promise<LeadSubscription> {
         return this.api.adAccountsSubscriptionsGetById(param.adAccountId, param.subscriptionId,  options).toPromise();
     }
 
     /**
-     * Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get the advertiser\'s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      * Get lead ads subscriptions
      * @param param the request object
      */
     public adAccountsSubscriptionsGetListWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsSubscriptionsGetList200Response>> {
-        return this.api.adAccountsSubscriptionsGetListWithHttpInfo(param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
+        return this.api.adAccountsSubscriptionsGetListWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
-     * Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get the advertiser\'s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      * Get lead ads subscriptions
      * @param param the request object
      */
     public adAccountsSubscriptionsGetList(param: LeadAdsApiAdAccountsSubscriptionsGetListRequest, options?: ConfigurationOptions): Promise<AdAccountsSubscriptionsGetList200Response> {
-        return this.api.adAccountsSubscriptionsGetList(param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
+        return this.api.adAccountsSubscriptionsGetList(param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
-     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      * Create lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsPostWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountCreateSubscriptionResponse>> {
-        return this.api.adAccountsSubscriptionsPostWithHttpInfo(param.adAccountId, param.adAccountCreateSubscriptionRequest,  options).toPromise();
+    public adAccountsSubscriptionsPostWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSubscription>> {
+        return this.api.adAccountsSubscriptionsPostWithHttpInfo(param.adAccountId, param.leadSubscriptionPostParamsCreate,  options).toPromise();
     }
 
     /**
-     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      * Create lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsPost(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: ConfigurationOptions): Promise<AdAccountCreateSubscriptionResponse> {
-        return this.api.adAccountsSubscriptionsPost(param.adAccountId, param.adAccountCreateSubscriptionRequest,  options).toPromise();
+    public adAccountsSubscriptionsPost(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: ConfigurationOptions): Promise<LeadSubscription> {
+        return this.api.adAccountsSubscriptionsPost(param.adAccountId, param.leadSubscriptionPostParamsCreate,  options).toPromise();
     }
 
 }
@@ -7713,7 +8762,7 @@ export class ObjectLeadFormsApi {
     }
 
     /**
-     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
      * Create lead form test data
      * @param param the request object
      */
@@ -7722,7 +8771,7 @@ export class ObjectLeadFormsApi {
     }
 
     /**
-     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
      * Create lead form test data
      * @param param the request object
      */
@@ -7731,7 +8780,7 @@ export class ObjectLeadFormsApi {
     }
 
     /**
-     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
      * Create lead forms
      * @param param the request object
      */
@@ -7740,7 +8789,7 @@ export class ObjectLeadFormsApi {
     }
 
     /**
-     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
      * Create lead forms
      * @param param the request object
      */
@@ -7872,16 +8921,16 @@ import { MediaApiRequestFactory, MediaApiResponseProcessor} from "../apis/MediaA
 
 export interface MediaApiMediaCreateRequest {
     /**
-     * Create a media upload request
-     * @type MediaUploadRequest
+     * 
+     * @type MediaUploadCreate
      * @memberof MediaApimediaCreate
      */
-    mediaUploadRequest: MediaUploadRequest
+    mediaUploadCreate: MediaUploadCreate
 }
 
 export interface MediaApiMediaGetRequest {
     /**
-     * Media identifier
+     * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
      * Defaults to: undefined
      * @type string
      * @memberof MediaApimediaGet
@@ -7898,7 +8947,7 @@ export interface MediaApiMediaListRequest {
      */
     bookmark?: string
     /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * Minimum: 1
      * Maximum: 250
      * Defaults to: 25
@@ -7916,43 +8965,43 @@ export class ObjectMediaApi {
     }
 
     /**
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file\'s contents as the request\'s <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file\'s contents as the request\'s `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * Register media upload
      * @param param the request object
      */
     public mediaCreateWithHttpInfo(param: MediaApiMediaCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<MediaUpload>> {
-        return this.api.mediaCreateWithHttpInfo(param.mediaUploadRequest,  options).toPromise();
+        return this.api.mediaCreateWithHttpInfo(param.mediaUploadCreate,  options).toPromise();
     }
 
     /**
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file\'s contents as the request\'s <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file\'s contents as the request\'s `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * Register media upload
      * @param param the request object
      */
     public mediaCreate(param: MediaApiMediaCreateRequest, options?: ConfigurationOptions): Promise<MediaUpload> {
-        return this.api.mediaCreate(param.mediaUploadRequest,  options).toPromise();
+        return this.api.mediaCreate(param.mediaUploadCreate,  options).toPromise();
     }
 
     /**
-     * Get details for a registered media upload, including its current status.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * Get media upload details
      * @param param the request object
      */
-    public mediaGetWithHttpInfo(param: MediaApiMediaGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MediaUploadDetails>> {
+    public mediaGetWithHttpInfo(param: MediaApiMediaGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Media>> {
         return this.api.mediaGetWithHttpInfo(param.mediaId,  options).toPromise();
     }
 
     /**
-     * Get details for a registered media upload, including its current status.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * Get media upload details
      * @param param the request object
      */
-    public mediaGet(param: MediaApiMediaGetRequest, options?: ConfigurationOptions): Promise<MediaUploadDetails> {
+    public mediaGet(param: MediaApiMediaGetRequest, options?: ConfigurationOptions): Promise<Media> {
         return this.api.mediaGet(param.mediaId,  options).toPromise();
     }
 
     /**
-     * List media uploads filtered by given parameters.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * List media uploads
      * @param param the request object
      */
@@ -7961,7 +9010,7 @@ export class ObjectMediaApi {
     }
 
     /**
-     * List media uploads filtered by given parameters.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * List media uploads
      * @param param the request object
      */
@@ -7971,8 +9020,96 @@ export class ObjectMediaApi {
 
 }
 
+import { ObservableMsotEventsApi } from "./ObservableAPI";
+import { MsotEventsApiRequestFactory, MsotEventsApiResponseProcessor} from "../apis/MsotEventsApi";
+
+export interface MsotEventsApiMsotEventsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof MsotEventsApimsotEventsCreate
+     */
+    adAccountId: string
+    /**
+     * Attributed MSOT conversion events
+     * @type ConversionMSOTEvents
+     * @memberof MsotEventsApimsotEventsCreate
+     */
+    conversionMSOTEvents: ConversionMSOTEvents
+}
+
+export class ObjectMsotEventsApi {
+    private api: ObservableMsotEventsApi
+
+    public constructor(configuration: Configuration, requestFactory?: MsotEventsApiRequestFactory, responseProcessor?: MsotEventsApiResponseProcessor) {
+        this.api = new ObservableMsotEventsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+     * Send Measurement Source Of Truth (MSOT) attributed conversion events
+     * @param param the request object
+     */
+    public msotEventsCreateWithHttpInfo(param: MsotEventsApiMsotEventsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.msotEventsCreateWithHttpInfo(param.adAccountId, param.conversionMSOTEvents,  options).toPromise();
+    }
+
+    /**
+     * <strong>This feature is currently in beta and not available to all apps, if you\'re interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+     * Send Measurement Source Of Truth (MSOT) attributed conversion events
+     * @param param the request object
+     */
+    public msotEventsCreate(param: MsotEventsApiMsotEventsCreateRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.msotEventsCreate(param.adAccountId, param.conversionMSOTEvents,  options).toPromise();
+    }
+
+}
+
+import { ObservableNotificationApi } from "./ObservableAPI";
+import { NotificationApiRequestFactory, NotificationApiResponseProcessor} from "../apis/NotificationApi";
+
+export interface NotificationApiNotificationPostRequest {
+    /**
+     * notification event.
+     * @type NotificationPostRequest
+     * @memberof NotificationApinotificationPost
+     */
+    notificationPostRequest: NotificationPostRequest
+}
+
+export class ObjectNotificationApi {
+    private api: ObservableNotificationApi
+
+    public constructor(configuration: Configuration, requestFactory?: NotificationApiRequestFactory, responseProcessor?: NotificationApiResponseProcessor) {
+        this.api = new ObservableNotificationApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests\' systems. This API is gated and you need to request access to this feature.
+     * Receive notifications from external partners.
+     * @param param the request object
+     */
+    public notificationPostWithHttpInfo(param: NotificationApiNotificationPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<NotificationResponse>> {
+        return this.api.notificationPostWithHttpInfo(param.notificationPostRequest,  options).toPromise();
+    }
+
+    /**
+     * Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests\' systems. This API is gated and you need to request access to this feature.
+     * Receive notifications from external partners.
+     * @param param the request object
+     */
+    public notificationPost(param: NotificationApiNotificationPostRequest, options?: ConfigurationOptions): Promise<NotificationResponse> {
+        return this.api.notificationPost(param.notificationPostRequest,  options).toPromise();
+    }
+
+}
+
 import { ObservableOauthApi } from "./ObservableAPI";
 import { OauthApiRequestFactory, OauthApiResponseProcessor} from "../apis/OauthApi";
+
+export interface OauthApiOauthConversionTokenRequest {
+}
 
 export interface OauthApiOauthTokenRequest {
     /**
@@ -7984,6 +9121,23 @@ export interface OauthApiOauthTokenRequest {
     grantType: string
 }
 
+export interface OauthApiTokenRevokeRequest {
+    /**
+     * The token to revoke.
+     * Defaults to: undefined
+     * @type string
+     * @memberof OauthApitokenRevoke
+     */
+    token: string
+    /**
+     * The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+     * Defaults to: undefined
+     * @type string
+     * @memberof OauthApitokenRevoke
+     */
+    tokenTypeHint?: string
+}
+
 export class ObjectOauthApi {
     private api: ObservableOauthApi
 
@@ -7992,7 +9146,25 @@ export class ObjectOauthApi {
     }
 
     /**
-     * Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href=\'/docs/getting-started/authentication-and-scopes/\'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
+     * Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+     * Generate OAuth access token for conversion API
+     * @param param the request object
+     */
+    public oauthConversionTokenWithHttpInfo(param: OauthApiOauthConversionTokenRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ConversionAccessTokenResponse>> {
+        return this.api.oauthConversionTokenWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+     * Generate OAuth access token for conversion API
+     * @param param the request object
+     */
+    public oauthConversionToken(param: OauthApiOauthConversionTokenRequest = {}, options?: ConfigurationOptions): Promise<ConversionAccessTokenResponse> {
+        return this.api.oauthConversionToken( options).toPromise();
+    }
+
+    /**
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href=\'/docs/getting-started/set-up-authentication-and-authorization/\' target=\'blank\'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href=\'/docs/developer-tools/token-debugger/\' target=\'blank\'>Token Debugger</a> to validate and inspect your access token.
      * Generate OAuth access token
      * @param param the request object
      */
@@ -8001,12 +9173,30 @@ export class ObjectOauthApi {
     }
 
     /**
-     * Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href=\'/docs/getting-started/authentication-and-scopes/\'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href=\'/docs/getting-started/set-up-authentication-and-authorization/\' target=\'blank\'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href=\'/docs/developer-tools/token-debugger/\' target=\'blank\'>Token Debugger</a> to validate and inspect your access token.
      * Generate OAuth access token
      * @param param the request object
      */
     public oauthToken(param: OauthApiOauthTokenRequest, options?: ConfigurationOptions): Promise<OauthAccessTokenResponse> {
         return this.api.oauthToken(param.grantType,  options).toPromise();
+    }
+
+    /**
+     * Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+     * Revoke a token
+     * @param param the request object
+     */
+    public tokenRevokeWithHttpInfo(param: OauthApiTokenRevokeRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.tokenRevokeWithHttpInfo(param.token, param.tokenTypeHint,  options).toPromise();
+    }
+
+    /**
+     * Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+     * Revoke a token
+     * @param param the request object
+     */
+    public tokenRevoke(param: OauthApiTokenRevokeRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.tokenRevoke(param.token, param.tokenTypeHint,  options).toPromise();
     }
 
 }
@@ -8211,7 +9401,7 @@ export interface PinsApiPinsAnalyticsRequest {
 
 export interface PinsApiPinsCreateRequest {
     /**
-     * Create a new Pin.
+     * 
      * @type PinCreate
      * @memberof PinsApipinsCreate
      */
@@ -8227,7 +9417,7 @@ export interface PinsApiPinsCreateRequest {
 
 export interface PinsApiPinsDeleteRequest {
     /**
-     * Unique identifier of a Pin.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof PinsApipinsDelete
@@ -8244,19 +9434,12 @@ export interface PinsApiPinsDeleteRequest {
 
 export interface PinsApiPinsGetRequest {
     /**
-     * Unique identifier of a Pin.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof PinsApipinsGet
      */
     pinId: string
-    /**
-     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-     * Defaults to: false
-     * @type boolean
-     * @memberof PinsApipinsGet
-     */
-    pinMetrics?: boolean
     /**
      * Unique identifier of an ad account.
      * Defaults to: undefined
@@ -8264,34 +9447,32 @@ export interface PinsApiPinsGetRequest {
      * @memberof PinsApipinsGet
      */
     adAccountId?: string
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Defaults to: false
+     * @type boolean
+     * @memberof PinsApipinsGet
+     */
+    pinMetrics?: boolean
 }
 
 export interface PinsApiPinsListRequest {
     /**
-     * Cursor used to fetch the next page of items
-     * Defaults to: undefined
-     * @type string
-     * @memberof PinsApipinsList
-     */
-    bookmark?: string
-    /**
-     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * Minimum: 1
-     * Maximum: 250
-     * Defaults to: 25
-     * @type number
-     * @memberof PinsApipinsList
-     */
-    pageSize?: number
-    /**
-     * Pin filter.
+     * The filter to apply to the pins
      * Defaults to: undefined
      * @type &#39;exclude_native&#39; | &#39;exclude_repins&#39; | &#39;has_been_promoted&#39;
      * @memberof PinsApipinsList
      */
     pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted'
     /**
-     * Specify if return pins from protected boards
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Defaults to: false
+     * @type boolean
+     * @memberof PinsApipinsList
+     */
+    pinMetrics?: boolean
+    /**
+     * Whether to include protected pins in the results
      * Defaults to: false
      * @type boolean
      * @memberof PinsApipinsList
@@ -8305,12 +9486,12 @@ export interface PinsApiPinsListRequest {
      */
     pinType?: 'PRIVATE'
     /**
-     * Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+     * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
      * Defaults to: undefined
-     * @type Array&lt;&#39;REGULAR&#39; | &#39;VIDEO&#39; | &#39;SHOPPING&#39; | &#39;CAROUSEL&#39; | &#39;MAX_VIDEO&#39; | &#39;SHOP_THE_PIN&#39; | &#39;COLLECTION&#39; | &#39;IDEA&#39;&gt;
+     * @type Array&lt;CreativeType&gt;
      * @memberof PinsApipinsList
      */
-    creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>
+    creativeTypes?: Array<CreativeType>
     /**
      * Unique identifier of an ad account.
      * Defaults to: undefined
@@ -8319,12 +9500,21 @@ export interface PinsApiPinsListRequest {
      */
     adAccountId?: string
     /**
-     * Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-     * Defaults to: false
-     * @type boolean
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
      * @memberof PinsApipinsList
      */
-    pinMetrics?: boolean
+    bookmark?: string
+    /**
+     * Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof PinsApipinsList
+     */
+    pageSize?: number
 }
 
 export interface PinsApiPinsSaveRequest {
@@ -8352,7 +9542,7 @@ export interface PinsApiPinsSaveRequest {
 
 export interface PinsApiPinsUpdateRequest {
     /**
-     * Unique identifier of a Pin.
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof PinsApipinsUpdate
@@ -8381,7 +9571,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * Get multiple Pin analytics
      * @param param the request object
      */
@@ -8390,7 +9580,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * Get multiple Pin analytics
      * @param param the request object
      */
@@ -8417,7 +9607,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user\'s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\'s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \'curated content\', please use our <a href=\'/docs/web-features/add-ons-overview/\'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href=\'/docs/api-features/content-overview/\'>Content App Solutions Guide</a>.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     *   Create a Pin on a board or board section owned by the \"operation user_account\".   Note: If the current \"operation user_account\" (defined by the access token) has access to another user\'s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\'s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \'curated content\', please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      * Create Pin
      * @param param the request object
      */
@@ -8426,7 +9616,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user\'s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\'s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \'curated content\', please use our <a href=\'/docs/web-features/add-ons-overview/\'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href=\'/docs/api-features/content-overview/\'>Content App Solutions Guide</a>.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
+     *   Create a Pin on a board or board section owned by the \"operation user_account\".   Note: If the current \"operation user_account\" (defined by the access token) has access to another user\'s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\'s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \'curated content\', please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      * Create Pin
      * @param param the request object
      */
@@ -8435,7 +9625,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     *    Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * Delete Pin
      * @param param the request object
      */
@@ -8444,7 +9634,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     *    Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * Delete Pin
      * @param param the request object
      */
@@ -8453,39 +9643,39 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     *    Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * Get Pin
      * @param param the request object
      */
     public pinsGetWithHttpInfo(param: PinsApiPinsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pin>> {
-        return this.api.pinsGetWithHttpInfo(param.pinId, param.pinMetrics, param.adAccountId,  options).toPromise();
+        return this.api.pinsGetWithHttpInfo(param.pinId, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
     /**
-     * Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     *    Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * Get Pin
      * @param param the request object
      */
     public pinsGet(param: PinsApiPinsGetRequest, options?: ConfigurationOptions): Promise<Pin> {
-        return this.api.pinsGet(param.pinId, param.pinMetrics, param.adAccountId,  options).toPromise();
+        return this.api.pinsGet(param.pinId, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
     /**
-     * Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href=\'/docs/api/v5/#operation/boards/list_pins\'>GET List Pins on Board</a>.
+     *      Get a list of the Pins owned by the \"operation user_account\".     - By default, the \"operation user_account\" is the token user_account.     - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an `ad_account_id` to use the owner of that ad_account as the \"operation user_account\".      Disclaimer: There are known performance issues when filtering by field `creative_type` and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      * List Pins
      * @param param the request object
      */
     public pinsListWithHttpInfo(param: PinsApiPinsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<PinsList200Response>> {
-        return this.api.pinsListWithHttpInfo(param.bookmark, param.pageSize, param.pinFilter, param.includeProtectedPins, param.pinType, param.creativeTypes, param.adAccountId, param.pinMetrics,  options).toPromise();
+        return this.api.pinsListWithHttpInfo(param.pinFilter, param.pinMetrics, param.includeProtectedPins, param.pinType, param.creativeTypes, param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
-     * Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href=\'/docs/api/v5/#operation/boards/list_pins\'>GET List Pins on Board</a>.
+     *      Get a list of the Pins owned by the \"operation user_account\".     - By default, the \"operation user_account\" is the token user_account.     - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an `ad_account_id` to use the owner of that ad_account as the \"operation user_account\".      Disclaimer: There are known performance issues when filtering by field `creative_type` and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      * List Pins
      * @param param the request object
      */
     public pinsList(param: PinsApiPinsListRequest = {}, options?: ConfigurationOptions): Promise<PinsList200Response> {
-        return this.api.pinsList(param.bookmark, param.pageSize, param.pinFilter, param.includeProtectedPins, param.pinType, param.creativeTypes, param.adAccountId, param.pinMetrics,  options).toPromise();
+        return this.api.pinsList(param.pinFilter, param.pinMetrics, param.includeProtectedPins, param.pinType, param.creativeTypes, param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -8507,7 +9697,7 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * Update Pin
      * @param param the request object
      */
@@ -8516,12 +9706,164 @@ export class ObjectPinsApi {
     }
 
     /**
-     * Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * Update Pin
      * @param param the request object
      */
     public pinsUpdate(param: PinsApiPinsUpdateRequest, options?: ConfigurationOptions): Promise<Pin> {
         return this.api.pinsUpdate(param.pinId, param.pinUpdate, param.adAccountId,  options).toPromise();
+    }
+
+}
+
+import { ObservableProductCategoriesApi } from "./ObservableAPI";
+import { ProductCategoriesApiRequestFactory, ProductCategoriesApiResponseProcessor} from "../apis/ProductCategoriesApi";
+
+export interface ProductCategoriesApiTrendsFeaturedTopicsListRequest {
+    /**
+     *       The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada
+     * Defaults to: undefined
+     * @type ProductCategoryRegion
+     * @memberof ProductCategoriesApitrendsFeaturedTopicsList
+     */
+    region: ProductCategoryRegion
+    /**
+     * Interest to filter by
+     * Defaults to: undefined
+     * @type InterestsEnum
+     * @memberof ProductCategoriesApitrendsFeaturedTopicsList
+     */
+    interest?: InterestsEnum
+}
+
+export interface ProductCategoriesApiTrendsProductCategoriesDetailsListRequest {
+    /**
+     * List of product categories
+     * Defaults to: undefined
+     * @type Array&lt;ProductCategoryEnum&gt;
+     * @memberof ProductCategoriesApitrendsProductCategoriesDetailsList
+     */
+    productCategories: Array<ProductCategoryEnum>
+    /**
+     *       The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada
+     * Defaults to: undefined
+     * @type ProductCategoryRegion
+     * @memberof ProductCategoriesApitrendsProductCategoriesDetailsList
+     */
+    region: ProductCategoryRegion
+    /**
+     *    Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.   - &#x60;90&#x60; - Last 90 days (3 months)   - &#x60;180&#x60; - Last 180 days (6 months)   - &#x60;365&#x60; - Last 365 days (1 year)   - &#x60;730&#x60; - Last 730 days (2 years)
+     * Defaults to: undefined
+     * @type ProductCategoryDetailLookbackWindow
+     * @memberof ProductCategoriesApitrendsProductCategoriesDetailsList
+     */
+    lookbackWindow?: ProductCategoryDetailLookbackWindow
+    /**
+     *      Type of engagement metric to analyze. - &#x60;ENGAGEMENT&#x60; - Overall engagement metric - &#x60;OUTBOUND_CLICK&#x60; - Number of outbound clicks - &#x60;SAVE&#x60; - Number of pin saves
+     * Defaults to: undefined
+     * @type ProductCategoriesEngagementType
+     * @memberof ProductCategoriesApitrendsProductCategoriesDetailsList
+     */
+    engagementType?: ProductCategoriesEngagementType
+}
+
+export interface ProductCategoriesApiTrendsProductCategoriesTrendingListRequest {
+    /**
+     *       The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada
+     * Defaults to: undefined
+     * @type ProductCategoryRegion
+     * @memberof ProductCategoriesApitrendsProductCategoriesTrendingList
+     */
+    region: ProductCategoryRegion
+    /**
+     * List of verticals to filter by
+     * Defaults to: undefined
+     * @type Array&lt;VerticalProductCategory&gt;
+     * @memberof ProductCategoriesApitrendsProductCategoriesTrendingList
+     */
+    verticals?: Array<VerticalProductCategory>
+    /**
+     * Age to filter by. If not provided, the results will be filtered by all ages.
+     * Defaults to: undefined
+     * @type Array&lt;AgeTrendsBucket&gt;
+     * @memberof ProductCategoriesApitrendsProductCategoriesTrendingList
+     */
+    ages?: Array<AgeTrendsBucket>
+    /**
+     * Gender to filter by, If not provided, the results will be filtered by all genders.
+     * Defaults to: undefined
+     * @type Array&lt;GenderBucket&gt;
+     * @memberof ProductCategoriesApitrendsProductCategoriesTrendingList
+     */
+    genders?: Array<GenderBucket>
+    /**
+     *      Type of engagement metric to analyze. - &#x60;ENGAGEMENT&#x60; - Overall engagement metric - &#x60;OUTBOUND_CLICK&#x60; - Number of outbound clicks - &#x60;SAVE&#x60; - Number of pin saves
+     * Defaults to: undefined
+     * @type ProductCategoriesEngagementType
+     * @memberof ProductCategoriesApitrendsProductCategoriesTrendingList
+     */
+    engagementType?: ProductCategoriesEngagementType
+}
+
+export class ObjectProductCategoriesApi {
+    private api: ObservableProductCategoriesApi
+
+    public constructor(configuration: Configuration, requestFactory?: ProductCategoriesApiRequestFactory, responseProcessor?: ProductCategoriesApiResponseProcessor) {
+        this.api = new ObservableProductCategoriesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     *   Enables advertisers to pull top five trending topics by interest and market, at full parity with the Pinterest Trends UI.
+     * Get featured topics
+     * @param param the request object
+     */
+    public trendsFeaturedTopicsListWithHttpInfo(param: ProductCategoriesApiTrendsFeaturedTopicsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<FeaturedTrend>>> {
+        return this.api.trendsFeaturedTopicsListWithHttpInfo(param.region, param.interest,  options).toPromise();
+    }
+
+    /**
+     *   Enables advertisers to pull top five trending topics by interest and market, at full parity with the Pinterest Trends UI.
+     * Get featured topics
+     * @param param the request object
+     */
+    public trendsFeaturedTopicsList(param: ProductCategoriesApiTrendsFeaturedTopicsListRequest, options?: ConfigurationOptions): Promise<Array<FeaturedTrend>> {
+        return this.api.trendsFeaturedTopicsList(param.region, param.interest,  options).toPromise();
+    }
+
+    /**
+     *   Enables advertisers to retrieve demographic information, related pins, and trend lines for specified product categories
+     * Get product category details
+     * @param param the request object
+     */
+    public trendsProductCategoriesDetailsListWithHttpInfo(param: ProductCategoriesApiTrendsProductCategoriesDetailsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<ProductCategoryDetails>>> {
+        return this.api.trendsProductCategoriesDetailsListWithHttpInfo(param.productCategories, param.region, param.lookbackWindow, param.engagementType,  options).toPromise();
+    }
+
+    /**
+     *   Enables advertisers to retrieve demographic information, related pins, and trend lines for specified product categories
+     * Get product category details
+     * @param param the request object
+     */
+    public trendsProductCategoriesDetailsList(param: ProductCategoriesApiTrendsProductCategoriesDetailsListRequest, options?: ConfigurationOptions): Promise<Array<ProductCategoryDetails>> {
+        return this.api.trendsProductCategoriesDetailsList(param.productCategories, param.region, param.lookbackWindow, param.engagementType,  options).toPromise();
+    }
+
+    /**
+     *   Get a list of growing Shopping Product Categories in ranked order allowing filtering by engagement type, vertical, age, and gender.
+     * Get a list of growing Shopping Product Categories
+     * @param param the request object
+     */
+    public trendsProductCategoriesTrendingListWithHttpInfo(param: ProductCategoriesApiTrendsProductCategoriesTrendingListRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<TrendingProductCategory>>> {
+        return this.api.trendsProductCategoriesTrendingListWithHttpInfo(param.region, param.verticals, param.ages, param.genders, param.engagementType,  options).toPromise();
+    }
+
+    /**
+     *   Get a list of growing Shopping Product Categories in ranked order allowing filtering by engagement type, vertical, age, and gender.
+     * Get a list of growing Shopping Product Categories
+     * @param param the request object
+     */
+    public trendsProductCategoriesTrendingList(param: ProductCategoriesApiTrendsProductCategoriesTrendingListRequest, options?: ConfigurationOptions): Promise<Array<TrendingProductCategory>> {
+        return this.api.trendsProductCategoriesTrendingList(param.region, param.verticals, param.ages, param.genders, param.engagementType,  options).toPromise();
     }
 
 }
@@ -8664,10 +10006,10 @@ export interface ProductGroupPromotionsApiProductGroupsAnalyticsRequest {
     /**
      * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * Defaults to: undefined
-     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
+     * @type Array&lt;&#39;SPEND_IN_MICRO_DOLLAR&#39; | &#39;PAID_IMPRESSION&#39; | &#39;SPEND_IN_DOLLAR&#39; | &#39;CPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_MICRO_DOLLAR&#39; | &#39;ECPC_IN_DOLLAR&#39; | &#39;CTR&#39; | &#39;ECTR&#39; | &#39;OUTBOUND_CTR_1&#39; | &#39;CAMPAIGN_NAME&#39; | &#39;CAMPAIGN_BRAND_LABEL&#39; | &#39;PIN_ID&#39; | &#39;TOTAL_ENGAGEMENT&#39; | &#39;ENGAGEMENT_1&#39; | &#39;ENGAGEMENT_2&#39; | &#39;ECPE_IN_DOLLAR&#39; | &#39;ENGAGEMENT_RATE&#39; | &#39;EENGAGEMENT_RATE&#39; | &#39;ECPM_IN_MICRO_DOLLAR&#39; | &#39;REPIN_RATE&#39; | &#39;CTR_2&#39; | &#39;CAMPAIGN_ID&#39; | &#39;ADVERTISER_ID&#39; | &#39;AD_ACCOUNT_ID&#39; | &#39;PIN_PROMOTION_ID&#39; | &#39;AD_ID&#39; | &#39;AD_GROUP_ID&#39; | &#39;CAMPAIGN_ENTITY_STATUS&#39; | &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; | &#39;CPM_IN_MICRO_DOLLAR&#39; | &#39;CPM_IN_DOLLAR&#39; | &#39;AD_GROUP_NAME&#39; | &#39;AD_GROUP_BUDGET_TYPE&#39; | &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; | &#39;AD_GROUP_ENTITY_STATUS&#39; | &#39;AD_GROUP_BID_MULTIPLIER&#39; | &#39;PROMO_ID&#39; | &#39;PROMO_NAME&#39; | &#39;ORDER_LINE_ID&#39; | &#39;ORDER_LINE_NAME&#39; | &#39;CLICKTHROUGH_1&#39; | &#39;REPIN_1&#39; | &#39;IMPRESSION_1&#39; | &#39;IMPRESSION_1_GROSS&#39; | &#39;CLICKTHROUGH_1_GROSS&#39; | &#39;OUTBOUND_CLICK_1&#39; | &#39;CLICKTHROUGH_2&#39; | &#39;REPIN_2&#39; | &#39;IMPRESSION_2&#39; | &#39;OUTBOUND_CLICK_2&#39; | &#39;TOTAL_CLICKTHROUGH&#39; | &#39;TOTAL_IMPRESSION&#39; | &#39;TOTAL_IMPRESSION_USER&#39; | &#39;TOTAL_IMPRESSION_FREQUENCY&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; | &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_ENGAGEMENT_LEAD&#39; | &#39;TOTAL_CLICK_SIGNUP&#39; | &#39;TOTAL_CLICK_CHECKOUT&#39; | &#39;TOTAL_CLICK_ADD_TO_CART&#39; | &#39;TOTAL_CLICK_LEAD&#39; | &#39;TOTAL_VIEW_SIGNUP&#39; | &#39;TOTAL_VIEW_CHECKOUT&#39; | &#39;TOTAL_VIEW_ADD_TO_CART&#39; | &#39;TOTAL_VIEW_LEAD&#39; | &#39;TOTAL_CONVERSIONS&#39; | &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_SESSIONS&#39; | &#39;WEB_SESSIONS_1&#39; | &#39;WEB_SESSIONS_2&#39; | &#39;AD_NAME&#39; | &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; | &#39;AD_GROUP_OPTIMIZATION&#39; | &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; | &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; | &#39;IS_PREMIERE_CAMPAIGN&#39; | &#39;TOTAL_PAGE_VISIT&#39; | &#39;TOTAL_SIGNUP&#39; | &#39;TOTAL_CHECKOUT&#39; | &#39;TOTAL_CUSTOM&#39; | &#39;TOTAL_LEAD&#39; | &#39;TOTAL_ADD_TO_WISHLIST&#39; | &#39;TOTAL_SUBSCRIBE&#39; | &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; | &#39;PAGE_VISIT_COST_PER_ACTION&#39; | &#39;PAGE_VISIT_ROAS&#39; | &#39;CHECKOUT_ROAS&#39; | &#39;CUSTOM_ROAS&#39; | &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; | &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; | &#39;VIDEO_3SEC_VIEWS_1&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; | &#39;VIDEO_MRC_VIEWS_1&#39; | &#39;VIDEO_3SEC_VIEWS_2&#39; | &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; | &#39;VIDEO_P100_COMPLETE_2&#39; | &#39;VIDEO_P0_COMBINED_2&#39; | &#39;VIDEO_P25_COMBINED_2&#39; | &#39;VIDEO_P50_COMBINED_2&#39; | &#39;VIDEO_P75_COMBINED_2&#39; | &#39;VIDEO_P95_COMBINED_2&#39; | &#39;VIDEO_MRC_VIEWS_2&#39; | &#39;PAID_VIDEO_VIEWABLE_RATE&#39; | &#39;VIDEO_LENGTH&#39; | &#39;VIDEO_SPEND_IN_DOLLAR&#39; | &#39;ECPV_IN_DOLLAR&#39; | &#39;ECPCV_IN_DOLLAR&#39; | &#39;ECPCV_P95_IN_DOLLAR&#39; | &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; | &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; | &#39;TOTAL_VIDEO_P100_COMPLETE&#39; | &#39;TOTAL_VIDEO_P0_COMBINED&#39; | &#39;TOTAL_VIDEO_P25_COMBINED&#39; | &#39;TOTAL_VIDEO_P50_COMBINED&#39; | &#39;TOTAL_VIDEO_P75_COMBINED&#39; | &#39;TOTAL_VIDEO_P95_COMBINED&#39; | &#39;TOTAL_VIDEO_MRC_VIEWS&#39; | &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; | &#39;TOTAL_REPIN_RATE&#39; | &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; | &#39;WEB_CHECKOUT_ROAS&#39; | &#39;TOTAL_WEB_CHECKOUT&#39; | &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; | &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; | &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; | &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; | &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; | &#39;TOTAL_OFFLINE_CHECKOUT&#39; | &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; | &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; | &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; | &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; | &#39;LEADS&#39; | &#39;COST_PER_LEAD&#39; | &#39;QUIZ_COMPLETED&#39; | &#39;QUIZ_PIN_RESULT_OPEN&#39; | &#39;QUIZ_COMPLETION_RATE&#39; | &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; | &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; | &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; | &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; | &#39;SHOWCASE_SUBPAGE_REPIN&#39; | &#39;SHOWCASE_SUBPIN_REPIN&#39; | &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; | &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; | &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; | &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; | &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; | &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; | &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; | &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; | &#39;TOTAL_LEAD_CONVERSION_RATE&#39; | &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; | &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; | &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; | &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;&gt;
      * @memberof ProductGroupPromotionsApiproductGroupsAnalytics
      */
-    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
+    columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>
     /**
      * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * Defaults to: undefined
@@ -8683,7 +10025,7 @@ export interface ProductGroupPromotionsApiProductGroupsAnalyticsRequest {
      */
     clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
      * Defaults to: 30
      * @type 0 | 1 | 7 | 14 | 30 | 60
      * @memberof ProductGroupPromotionsApiproductGroupsAnalytics
@@ -8703,6 +10045,13 @@ export interface ProductGroupPromotionsApiProductGroupsAnalyticsRequest {
      * @memberof ProductGroupPromotionsApiproductGroupsAnalytics
      */
     conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     * Defaults to: undefined
+     * @type ReportingTimeZone
+     * @memberof ProductGroupPromotionsApiproductGroupsAnalytics
+     */
+    reportingTimezone?: ReportingTimeZone
 }
 
 export class ObjectProductGroupPromotionsApi {
@@ -8735,7 +10084,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get a product group promotion by id
      * @param param the request object
      */
-    public productGroupPromotionsGetWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
+    public productGroupPromotionsGetWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductGroupPromotion>> {
         return this.api.productGroupPromotionsGetWithHttpInfo(param.adAccountId, param.productGroupPromotionId,  options).toPromise();
     }
 
@@ -8744,7 +10093,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get a product group promotion by id
      * @param param the request object
      */
-    public productGroupPromotionsGet(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: ConfigurationOptions): Promise<ProductGroupPromotionResponse> {
+    public productGroupPromotionsGet(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: ConfigurationOptions): Promise<ProductGroupPromotion> {
         return this.api.productGroupPromotionsGet(param.adAccountId, param.productGroupPromotionId,  options).toPromise();
     }
 
@@ -8785,21 +10134,222 @@ export class ObjectProductGroupPromotionsApi {
     }
 
     /**
-     * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get product group analytics
      * @param param the request object
      */
     public productGroupsAnalyticsWithHttpInfo(param: ProductGroupPromotionsApiProductGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<ProductGroupAnalyticsResponseInner>>> {
-        return this.api.productGroupsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.productGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.productGroupsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.productGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.reportingTimezone,  options).toPromise();
     }
 
     /**
-     * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * Get product group analytics
      * @param param the request object
      */
     public productGroupsAnalytics(param: ProductGroupPromotionsApiProductGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<ProductGroupAnalyticsResponseInner>> {
-        return this.api.productGroupsAnalytics(param.adAccountId, param.startDate, param.endDate, param.productGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
+        return this.api.productGroupsAnalytics(param.adAccountId, param.startDate, param.endDate, param.productGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.reportingTimezone,  options).toPromise();
+    }
+
+}
+
+import { ObservablePromotionsApi } from "./ObservableAPI";
+import { PromotionsApiRequestFactory, PromotionsApiResponseProcessor} from "../apis/PromotionsApi";
+
+export interface PromotionsApiPromotionsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsCreate
+     */
+    adAccountId: string
+    /**
+     * List of promotions to create, size limit [1, 30].
+     * @type Array&lt;PromotionCreateRequest&gt;
+     * @memberof PromotionsApipromotionsCreate
+     */
+    promotionCreateRequest: Array<PromotionCreateRequest>
+}
+
+export interface PromotionsApiPromotionsDeleteRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsDelete
+     */
+    adAccountId: string
+    /**
+     * Unique identifier of a promotion
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsDelete
+     */
+    promotionId: string
+}
+
+export interface PromotionsApiPromotionsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsGet
+     */
+    adAccountId: string
+    /**
+     * Unique identifier of a promotion
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsGet
+     */
+    promotionId: string
+}
+
+export interface PromotionsApiPromotionsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsList
+     */
+    adAccountId: string
+    /**
+     * Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * Minimum: 1
+     * Maximum: 250
+     * Defaults to: 25
+     * @type number
+     * @memberof PromotionsApipromotionsList
+     */
+    pageSize?: number
+    /**
+     * The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+     * Defaults to: undefined
+     * @type &#39;ASCENDING&#39; | &#39;DESCENDING&#39;
+     * @memberof PromotionsApipromotionsList
+     */
+    order?: 'ASCENDING' | 'DESCENDING'
+    /**
+     * Cursor used to fetch the next page of items
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsList
+     */
+    bookmark?: string
+}
+
+export interface PromotionsApiPromotionsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PromotionsApipromotionsUpdate
+     */
+    adAccountId: string
+    /**
+     * List of promotions to create, size limit [1, 30].
+     * @type Array&lt;PromotionUpdateRequest&gt;
+     * @memberof PromotionsApipromotionsUpdate
+     */
+    promotionUpdateRequest: Array<PromotionUpdateRequest>
+}
+
+export class ObjectPromotionsApi {
+    private api: ObservablePromotionsApi
+
+    public constructor(configuration: Configuration, requestFactory?: PromotionsApiRequestFactory, responseProcessor?: PromotionsApiResponseProcessor) {
+        this.api = new ObservablePromotionsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Create multiple new promotions.
+     * Create promotions
+     * @param param the request object
+     */
+    public promotionsCreateWithHttpInfo(param: PromotionsApiPromotionsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<PromotionsResponse>> {
+        return this.api.promotionsCreateWithHttpInfo(param.adAccountId, param.promotionCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * Create multiple new promotions.
+     * Create promotions
+     * @param param the request object
+     */
+    public promotionsCreate(param: PromotionsApiPromotionsCreateRequest, options?: ConfigurationOptions): Promise<PromotionsResponse> {
+        return this.api.promotionsCreate(param.adAccountId, param.promotionCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * Delete a promotion within Pinterest.
+     * Delete promotion by id
+     * @param param the request object
+     */
+    public promotionsDeleteWithHttpInfo(param: PromotionsApiPromotionsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.promotionsDeleteWithHttpInfo(param.adAccountId, param.promotionId,  options).toPromise();
+    }
+
+    /**
+     * Delete a promotion within Pinterest.
+     * Delete promotion by id
+     * @param param the request object
+     */
+    public promotionsDelete(param: PromotionsApiPromotionsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.promotionsDelete(param.adAccountId, param.promotionId,  options).toPromise();
+    }
+
+    /**
+     * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+     * Get promotion by id
+     * @param param the request object
+     */
+    public promotionsGetWithHttpInfo(param: PromotionsApiPromotionsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<PromotionResponse>> {
+        return this.api.promotionsGetWithHttpInfo(param.adAccountId, param.promotionId,  options).toPromise();
+    }
+
+    /**
+     * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+     * Get promotion by id
+     * @param param the request object
+     */
+    public promotionsGet(param: PromotionsApiPromotionsGetRequest, options?: ConfigurationOptions): Promise<PromotionResponse> {
+        return this.api.promotionsGet(param.adAccountId, param.promotionId,  options).toPromise();
+    }
+
+    /**
+     * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+     * Get promotions
+     * @param param the request object
+     */
+    public promotionsListWithHttpInfo(param: PromotionsApiPromotionsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<PromotionsList200Response>> {
+        return this.api.promotionsListWithHttpInfo(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
+    }
+
+    /**
+     * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+     * Get promotions
+     * @param param the request object
+     */
+    public promotionsList(param: PromotionsApiPromotionsListRequest, options?: ConfigurationOptions): Promise<PromotionsList200Response> {
+        return this.api.promotionsList(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
+    }
+
+    /**
+     * Update multiple promotions.
+     * Update promotions
+     * @param param the request object
+     */
+    public promotionsUpdateWithHttpInfo(param: PromotionsApiPromotionsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<PromotionsResponse>> {
+        return this.api.promotionsUpdateWithHttpInfo(param.adAccountId, param.promotionUpdateRequest,  options).toPromise();
+    }
+
+    /**
+     * Update multiple promotions.
+     * Update promotions
+     * @param param the request object
+     */
+    public promotionsUpdate(param: PromotionsApiPromotionsUpdateRequest, options?: ConfigurationOptions): Promise<PromotionsResponse> {
+        return this.api.promotionsUpdate(param.adAccountId, param.promotionUpdateRequest,  options).toPromise();
     }
 
 }
@@ -8943,7 +10493,7 @@ export class ObjectResourcesApi {
     }
 
     /**
-     * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get lead form questions
      * @param param the request object
      */
@@ -8952,7 +10502,7 @@ export class ObjectResourcesApi {
     }
 
     /**
-     * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get lead form questions
      * @param param the request object
      */
@@ -9106,7 +10656,7 @@ export class ObjectSearchApi {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
      * Search pins by a given search term
      * @param param the request object
      */
@@ -9115,7 +10665,7 @@ export class ObjectSearchApi {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
      * Search pins by a given search term
      * @param param the request object
      */
@@ -9146,7 +10696,7 @@ export class ObjectSearchApi {
      * Search user\'s Pins
      * @param param the request object
      */
-    public searchUserPinsListWithHttpInfo(param: SearchApiSearchUserPinsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<PinsList200Response>> {
+    public searchUserPinsListWithHttpInfo(param: SearchApiSearchUserPinsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<SearchUserPinsList200Response>> {
         return this.api.searchUserPinsListWithHttpInfo(param.query, param.adAccountId, param.bookmark,  options).toPromise();
     }
 
@@ -9155,7 +10705,7 @@ export class ObjectSearchApi {
      * Search user\'s Pins
      * @param param the request object
      */
-    public searchUserPinsList(param: SearchApiSearchUserPinsListRequest, options?: ConfigurationOptions): Promise<PinsList200Response> {
+    public searchUserPinsList(param: SearchApiSearchUserPinsListRequest, options?: ConfigurationOptions): Promise<SearchUserPinsList200Response> {
         return this.api.searchUserPinsList(param.query, param.adAccountId, param.bookmark,  options).toPromise();
     }
 
@@ -9919,7 +11469,7 @@ export class ObjectUserAccountApi {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
      * Follow user
      * @param param the request object
      */
@@ -9928,7 +11478,7 @@ export class ObjectUserAccountApi {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
      * Follow user
      * @param param the request object
      */

@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param values 
  * @param negated 
+ * @param values 
  */
-case class CatalogsProductGroupMultipleCountriesCriteria(values: Seq[Country],
-                negated: Option[Boolean]
+case class CatalogsProductGroupMultipleCountriesCriteria(negated: Option[Boolean],
+                values: Seq[Country]
                 )
 
 object CatalogsProductGroupMultipleCountriesCriteria {

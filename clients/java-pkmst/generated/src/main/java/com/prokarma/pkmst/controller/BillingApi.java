@@ -8,8 +8,11 @@ package com.prokarma.pkmst.controller;
 import com.prokarma.pkmst.model.AdsCreditRedeemRequest;
 import com.prokarma.pkmst.model.AdsCreditRedeemResponse;
 import com.prokarma.pkmst.model.AdsCreditsDiscountsGet200Response;
+import com.prokarma.pkmst.model.BillingInvoiceDownloadResponse;
+import com.prokarma.pkmst.model.BillingInvoicesGet200Response;
 import com.prokarma.pkmst.model.BillingProfilesGet200Response;
 import com.prokarma.pkmst.model.Error;
+import java.time.LocalDate;
 import com.prokarma.pkmst.model.SSIOAccountResponse;
 import com.prokarma.pkmst.model.SSIOCreateInsertionOrderRequest;
 import com.prokarma.pkmst.model.SSIOCreateInsertionOrderResponse;
@@ -31,11 +34,11 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "Billing", description = "the Billing API")
 public interface BillingApi {
 
-    @ApiOperation(value = "Redeem ad credits", notes = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdsCreditRedeemResponse.class, authorizations = {
+    @ApiOperation(value = "Redeem ad credits", notes = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>", response = AdsCreditRedeemResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "billing:write", description = "Create, update, or delete billing data, billing profiles, etc.") })
@@ -53,7 +56,7 @@ public interface BillingApi {
     ResponseEntity<AdsCreditRedeemResponse> adsCreditRedeem(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Redeem ad credits request." ,required=true )   @RequestBody AdsCreditRedeemRequest adsCreditRedeemRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get ads credit discounts", notes = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdsCreditsDiscountsGet200Response.class, authorizations = {
+    @ApiOperation(value = "Get ads credit discounts", notes = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>", response = AdsCreditsDiscountsGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
@@ -69,7 +72,41 @@ public interface BillingApi {
     ResponseEntity<AdsCreditsDiscountsGet200Response> adsCreditsDiscountsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get billing profiles", notes = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = BillingProfilesGet200Response.class, authorizations = {
+    @ApiOperation(value = "Get download url for a billing invoice", notes = "Get download url for a billing invoice.", response = BillingInvoiceDownloadResponse.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
+            @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
+         }, tags={ "billing", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Successfully fetched Billing invoice information for a given ad account", response = BillingInvoiceDownloadResponse.class),
+        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
+        produces = { "application/json" }
+    )
+    ResponseEntity<BillingInvoiceDownloadResponse> billingInvoiceDownloadGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Unique identifier of a billing invoice.",required=true ) @PathVariable("billing_invoice_id") String billingInvoiceId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+
+
+    @ApiOperation(value = "Get billing invoices", notes = "Get billing invoices in the advertiser account.", response = BillingInvoicesGet200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
+            @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
+         }, tags={ "billing", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = BillingInvoicesGet200Response.class),
+        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/ad_accounts/{ad_account_id}/billing_invoices",
+        produces = { "application/json" }
+    )
+    ResponseEntity<BillingInvoicesGet200Response> billingInvoicesGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Field of which to sort billing invoices", allowableValues = "DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER", defaultValue = "DUE_DATE")  @RequestParam(value = "sort", required = false, defaultValue="DUE_DATE") String sort,@ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) String order,@ApiParam(value = "Status of billing invoices to filter by", allowableValues = "OPEN, CLOSED")  @RequestParam(value = "status", required = false) String status,@ApiParam(value = "Document type of billing invoices to filter by", allowableValues = "INVOICE, CREDIT_MEMO")  @RequestParam(value = "document_type", required = false) String documentType,@ApiParam(value = "Starting point for due dates when searching for invoices. Format: YYYY-MM-DD")  @RequestParam(value = "start_due_date", required = false) LocalDate startDueDate,@ApiParam(value = "Ending point for due dates when searching for invoices. Format: YYYY-MM-DD")  @RequestParam(value = "end_due_date", required = false) LocalDate endDueDate, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+
+
+    @ApiOperation(value = "Get billing profiles", notes = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>", response = BillingProfilesGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })

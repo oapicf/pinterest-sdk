@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items Insertion orders status by ad acount id
  * @param bookmark 
+ * @param items Insertion orders status by ad acount id
  */
-case class SsioInsertionOrdersStatusGetByAdAccount200Response(items: Seq[SSIOInsertionOrderStatus],
-                bookmark: Option[String]
+case class SsioInsertionOrdersStatusGetByAdAccount200Response(bookmark: Option[String],
+                items: Seq[SSIOInsertionOrderStatus]
                 )
 
 object SsioInsertionOrdersStatusGetByAdAccount200Response {

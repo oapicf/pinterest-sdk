@@ -18,38 +18,18 @@ import javax.annotation.Generated;
  * UserWebsiteVerificationCode
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerificationCode {
-
-  private String verificationCode;
 
   private String dnsTxtRecord;
 
-  private String metatag;
+  private String fileContent;
 
   private String filename;
 
-  private String fileContent;
+  private String metatag;
 
-  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-    return this;
-  }
-
-  /**
-   * Code to check against the user claiming the website
-   * @return verificationCode
-   */
-  
-  @Schema(name = "verification_code", example = "e1edcc1a43976c646367e9c6c9a9b7b6", description = "Code to check against the user claiming the website", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("verification_code")
-  public String getVerificationCode() {
-    return verificationCode;
-  }
-
-  public void setVerificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-  }
+  private String verificationCode;
 
   public UserWebsiteVerificationCode dnsTxtRecord(String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
@@ -69,46 +49,6 @@ public class UserWebsiteVerificationCode {
 
   public void setDnsTxtRecord(String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
-  }
-
-  public UserWebsiteVerificationCode metatag(String metatag) {
-    this.metatag = metatag;
-    return this;
-  }
-
-  /**
-   * Metatag the verification process searchs for the website to be claimed
-   * @return metatag
-   */
-  
-  @Schema(name = "metatag", example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", description = "Metatag the verification process searchs for the website to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("metatag")
-  public String getMetatag() {
-    return metatag;
-  }
-
-  public void setMetatag(String metatag) {
-    this.metatag = metatag;
-  }
-
-  public UserWebsiteVerificationCode filename(String filename) {
-    this.filename = filename;
-    return this;
-  }
-
-  /**
-   * File expected to find on the website being claimed
-   * @return filename
-   */
-  
-  @Schema(name = "filename", example = "pinterest-e1edc.html", description = "File expected to find on the website being claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("filename")
-  public String getFilename() {
-    return filename;
-  }
-
-  public void setFilename(String filename) {
-    this.filename = filename;
   }
 
   public UserWebsiteVerificationCode fileContent(String fileContent) {
@@ -131,6 +71,66 @@ public class UserWebsiteVerificationCode {
     this.fileContent = fileContent;
   }
 
+  public UserWebsiteVerificationCode filename(String filename) {
+    this.filename = filename;
+    return this;
+  }
+
+  /**
+   * File expected to find on the website being claimed
+   * @return filename
+   */
+  
+  @Schema(name = "filename", example = "pinterest-e1edc.html", description = "File expected to find on the website being claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("filename")
+  public String getFilename() {
+    return filename;
+  }
+
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
+
+  public UserWebsiteVerificationCode metatag(String metatag) {
+    this.metatag = metatag;
+    return this;
+  }
+
+  /**
+   * Metatag the verification process searchs for the website to be claimed
+   * @return metatag
+   */
+  
+  @Schema(name = "metatag", example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", description = "Metatag the verification process searchs for the website to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("metatag")
+  public String getMetatag() {
+    return metatag;
+  }
+
+  public void setMetatag(String metatag) {
+    this.metatag = metatag;
+  }
+
+  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+    return this;
+  }
+
+  /**
+   * Code to check against the user claiming the website
+   * @return verificationCode
+   */
+  
+  @Schema(name = "verification_code", example = "e1edcc1a43976c646367e9c6c9a9b7b6", description = "Code to check against the user claiming the website", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("verification_code")
+  public String getVerificationCode() {
+    return verificationCode;
+  }
+
+  public void setVerificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -140,27 +140,27 @@ public class UserWebsiteVerificationCode {
       return false;
     }
     UserWebsiteVerificationCode userWebsiteVerificationCode = (UserWebsiteVerificationCode) o;
-    return Objects.equals(this.verificationCode, userWebsiteVerificationCode.verificationCode) &&
-        Objects.equals(this.dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
-        Objects.equals(this.metatag, userWebsiteVerificationCode.metatag) &&
+    return Objects.equals(this.dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
+        Objects.equals(this.fileContent, userWebsiteVerificationCode.fileContent) &&
         Objects.equals(this.filename, userWebsiteVerificationCode.filename) &&
-        Objects.equals(this.fileContent, userWebsiteVerificationCode.fileContent);
+        Objects.equals(this.metatag, userWebsiteVerificationCode.metatag) &&
+        Objects.equals(this.verificationCode, userWebsiteVerificationCode.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verificationCode, dnsTxtRecord, metatag, filename, fileContent);
+    return Objects.hash(dnsTxtRecord, fileContent, filename, metatag, verificationCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerificationCode {\n");
-    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("    dnsTxtRecord: ").append(toIndentedString(dnsTxtRecord)).append("\n");
-    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
-    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
     sb.append("    fileContent: ").append(toIndentedString(fileContent)).append("\n");
+    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
+    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
+    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

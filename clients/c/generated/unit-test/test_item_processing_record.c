@@ -22,17 +22,17 @@ item_processing_record_t* instantiate_item_processing_record(int include_optiona
   item_processing_record_t* item_processing_record = NULL;
   if (include_optional) {
     item_processing_record = item_processing_record_create(
+      list_createList(),
       "DS0294-M",
-      list_createList(),
-      list_createList(),
-      pinterest_rest_api_item_processing_record__"SUCCESS"
+      pinterest_rest_api_item_processing_record__"SUCCESS",
+      list_createList()
     );
   } else {
     item_processing_record = item_processing_record_create(
+      list_createList(),
       "DS0294-M",
-      list_createList(),
-      list_createList(),
-      pinterest_rest_api_item_processing_record__"SUCCESS"
+      pinterest_rest_api_item_processing_record__"SUCCESS",
+      list_createList()
     );
   }
 

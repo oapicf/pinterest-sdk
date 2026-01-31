@@ -11,10 +11,10 @@ import { CatalogsProduct } from './catalogsProduct';
 
 
 export interface CatalogsProductGroupPinsList200Response { 
+    bookmark?: string | null;
     /**
      * Pins
      */
     items: Array<CatalogsProduct>;
-    bookmark?: string | null;
 }
 

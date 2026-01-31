@@ -26,10 +26,10 @@ class ConversionApiResponseTest : ShouldSpec() {
         // uncomment below to create an instance of ConversionApiResponse
         //val modelInstance = ConversionApiResponse()
 
-        // to test the property `numEventsReceived` - Total number of events received in the request.
-        should("test numEventsReceived") {
+        // to test the property `events` - Specific messages for each event received. The order will match the order in which the events were received in the request.
+        should("test events") {
             // uncomment below to test the property
-            //modelInstance.numEventsReceived shouldBe ("TODO")
+            //modelInstance.events shouldBe ("TODO")
         }
 
         // to test the property `numEventsProcessed` - Number of events that were successfully processed from the events.
@@ -38,10 +38,10 @@ class ConversionApiResponseTest : ShouldSpec() {
             //modelInstance.numEventsProcessed shouldBe ("TODO")
         }
 
-        // to test the property `events` - Specific messages for each event received. The order will match the order in which the events were received in the request.
-        should("test events") {
+        // to test the property `numEventsReceived` - Total number of events received in the request.
+        should("test numEventsReceived") {
             // uncomment below to test the property
-            //modelInstance.events shouldBe ("TODO")
+            //modelInstance.numEventsReceived shouldBe ("TODO")
         }
 
     }

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -31,13 +31,30 @@ import org.openapitools.model.Pin;
  */
 
 @ApiModel(description = "Object describing a hotel record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemResponse   {
   
+  private CatalogsCreativeAssetsAttributes attributes;
   private CatalogsType catalogType;
   private String creativeAssetsId;
   private List<Pin> pins;
-  private CatalogsCreativeAssetsAttributes attributes;
+
+  /**
+   */
+  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    */
@@ -92,23 +109,6 @@ public class CatalogsCreativeAssetsItemResponse   {
     this.pins = pins;
   }
 
-  /**
-   */
-  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -119,15 +119,15 @@ public class CatalogsCreativeAssetsItemResponse   {
       return false;
     }
     CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse = (CatalogsCreativeAssetsItemResponse) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
-        Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins) &&
-        Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes);
+        Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, pins, attributes);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
   }
 
   @Override
@@ -135,10 +135,10 @@ public class CatalogsCreativeAssetsItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

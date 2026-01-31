@@ -1,6 +1,21 @@
 
 <h2>AudienceRule</h2>
 <ul class="parameter">
+  <li class="param-required-false">adUnderscoreaccountUnderscoreid : String
+    <br/>Ad account ID.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">adUnderscoreid : List
+    <br/>Ad ID for engagement audience filter.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">campaignUnderscoreid : List
+    <br/>Campaign ID for engagement audience filter.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">country : String
     <br/>Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;.
   </li>
@@ -21,13 +36,33 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">engagerUnderscoretype : Integer
+    <br/>Optional for ENGAGEMENT. Engager type value should be 1-2.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">event : String
     <br/>A Pinterest tag event. Optional for VISITOR &#x60;audience_type&#x60;. Possible values are &#x60;pagevisit&#x60;, &#x60;signup&#x60;, &#x60;checkout&#x60;, &#x60;viewcategory&#x60;, &#x60;search&#x60;, &#x60;addtocart&#x60;, &#x60;watchvideo&#x60;, &#x60;lead&#x60;, and &#x60;custom&#x60;. This field also accepts a partner-defined Pinterest tag event.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">eventUnderscoredata : PinterestTagEventData
+  <li class="param-required-false">eventUnderscoredata : EventData
     <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">eventUnderscoresource : Object
+    <br/>Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ingestionUnderscoresource : Object
+    <br/>Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">objectiveUnderscoretype : List
+    <br/>Objective for engagement audience filter.
   </li>
 </ul>
 <ul class="parameter">
@@ -63,40 +98,5 @@
 <ul class="parameter">
   <li class="param-required-false">visitorUnderscoresourceUnderscoreid : String
     <br/>The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR &#x60;audience_type&#x60;.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">eventUnderscoresource : Object
-    <br/>Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">ingestionUnderscoresource : Object
-    <br/>Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">engagerUnderscoretype : Integer
-    <br/>Optional for ENGAGEMENT. Engager type value should be 1-2.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">campaignUnderscoreid : List
-    <br/>Campaign ID for engagement audience filter.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">adUnderscoreid : List
-    <br/>Ad ID for engagement audience filter.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">objectiveUnderscoretype : List
-    <br/>Objective for engagement audience filter.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">adUnderscoreaccountUnderscoreid : String
-    <br/>Ad account ID.
   </li>
 </ul>

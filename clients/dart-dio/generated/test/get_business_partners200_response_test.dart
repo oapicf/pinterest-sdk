@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(GetBusinessPartners200Response, () {
-    // List of business partners.
-    // BuiltList<UserBusinessRoleBinding> items
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List of business partners.
+    // BuiltList<UserBusinessRoleBinding> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

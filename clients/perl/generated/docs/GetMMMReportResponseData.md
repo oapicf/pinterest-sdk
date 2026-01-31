@@ -9,8 +9,8 @@ use WWW::OpenAPIClient::Object::GetMMMReportResponseData;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **report_status** | **string** |  | [optional] 
-**url** | **string** |  | [optional] 
 **size** | **double** |  | [optional] 
+**url** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

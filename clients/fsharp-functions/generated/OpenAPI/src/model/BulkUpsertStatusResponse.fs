@@ -11,10 +11,10 @@ module BulkUpsertStatusResponse =
 
   [<CLIMutable>]
   type BulkUpsertStatusResponse = {
-    [<JsonProperty(PropertyName = "status")>]
-    Status : BulkUpsertStatus;
     [<JsonProperty(PropertyName = "result_url")>]
     ResultUrl : string;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : BulkUpsertStatus;
   }
 
   //#endregion

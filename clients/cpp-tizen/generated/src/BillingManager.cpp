@@ -394,6 +394,392 @@ bool BillingManager::adsCreditsDiscountsGetSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool billingInvoiceDownloadGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(BillingInvoiceDownloadResponse, Error, void* )
+	= reinterpret_cast<void(*)(BillingInvoiceDownloadResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	BillingInvoiceDownloadResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("BillingInvoiceDownloadResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "BillingInvoiceDownloadResponse", "BillingInvoiceDownloadResponse");
+			json_node_free(pJson);
+
+			if ("BillingInvoiceDownloadResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool billingInvoiceDownloadGetHelper(char * accessToken,
+	std::string adAccountId, std::string billingInvoiceId, 
+	void(* handler)(BillingInvoiceDownloadResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+	string s_billingInvoiceId("{");
+	s_billingInvoiceId.append("billing_invoice_id");
+	s_billingInvoiceId.append("}");
+	pos = url.find(s_billingInvoiceId);
+	url.erase(pos, s_billingInvoiceId.length());
+	url.insert(pos, stringify(&billingInvoiceId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = billingInvoiceDownloadGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), billingInvoiceDownloadGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool BillingManager::billingInvoiceDownloadGetAsync(char * accessToken,
+	std::string adAccountId, std::string billingInvoiceId, 
+	void(* handler)(BillingInvoiceDownloadResponse, Error, void* )
+	, void* userData)
+{
+	return billingInvoiceDownloadGetHelper(accessToken,
+	adAccountId, billingInvoiceId, 
+	handler, userData, true);
+}
+
+bool BillingManager::billingInvoiceDownloadGetSync(char * accessToken,
+	std::string adAccountId, std::string billingInvoiceId, 
+	void(* handler)(BillingInvoiceDownloadResponse, Error, void* )
+	, void* userData)
+{
+	return billingInvoiceDownloadGetHelper(accessToken,
+	adAccountId, billingInvoiceId, 
+	handler, userData, false);
+}
+
+static bool billingInvoicesGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(Billing_invoices_get_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Billing_invoices_get_200_response, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	Billing_invoices_get_200_response out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("Billing_invoices_get_200_response")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "Billing_invoices_get_200_response", "Billing_invoices_get_200_response");
+			json_node_free(pJson);
+
+			if ("Billing_invoices_get_200_response" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool billingInvoicesGetHelper(char * accessToken,
+	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	void(* handler)(Billing_invoices_get_200_response, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&sort, "std::string");
+	queryParams.insert(pair<string, string>("sort", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("sort");
+	}
+
+
+	itemAtq = stringify(&order, "std::string");
+	queryParams.insert(pair<string, string>("order", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("order");
+	}
+
+
+	itemAtq = stringify(&status, "std::string");
+	queryParams.insert(pair<string, string>("status", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("status");
+	}
+
+
+	itemAtq = stringify(&documentType, "std::string");
+	queryParams.insert(pair<string, string>("document_type", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("document_type");
+	}
+
+
+	itemAtq = stringify(&startDueDate, "Date");
+	queryParams.insert(pair<string, string>("start_due_date", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("start_due_date");
+	}
+
+
+	itemAtq = stringify(&endDueDate, "Date");
+	queryParams.insert(pair<string, string>("end_due_date", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("end_due_date");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/ad_accounts/{ad_account_id}/billing_invoices");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = billingInvoicesGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), billingInvoicesGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool BillingManager::billingInvoicesGetAsync(char * accessToken,
+	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	void(* handler)(Billing_invoices_get_200_response, Error, void* )
+	, void* userData)
+{
+	return billingInvoicesGetHelper(accessToken,
+	adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate, 
+	handler, userData, true);
+}
+
+bool BillingManager::billingInvoicesGetSync(char * accessToken,
+	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	void(* handler)(Billing_invoices_get_200_response, Error, void* )
+	, void* userData)
+{
+	return billingInvoicesGetHelper(accessToken,
+	adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate, 
+	handler, userData, false);
+}
+
 static bool billingProfilesGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {

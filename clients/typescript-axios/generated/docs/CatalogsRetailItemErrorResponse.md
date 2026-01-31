@@ -7,8 +7,8 @@ Object describing a retail item error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
+**errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [default to undefined]
 **item_id** | **string** | The catalog item id in the merchant namespace | [optional] [default to undefined]
-**errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] [default to undefined]
 
 ## Example
 
@@ -17,8 +17,8 @@ import { CatalogsRetailItemErrorResponse } from './api';
 
 const instance: CatalogsRetailItemErrorResponse = {
     catalog_type,
-    item_id,
     errors,
+    item_id,
 };
 ```
 

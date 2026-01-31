@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`creationTime` | string
 `pinOrderId` | string
 `status` | string
-`creationTime` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { SSIOInsertionOrderStatusResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "creationTime": 2017-06-21T23:11:11.000Z,
   "pinOrderId": 0Q01N0000015hekSAB,
   "status": Approved,
-  "creationTime": 2017-06-21T23:11:11.000Z,
 } satisfies SSIOInsertionOrderStatusResponse
 
 console.log(example)

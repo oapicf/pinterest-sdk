@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsRetailItemsBatch`
 --
-SELECT `batch_id`, `created_time`, `completed_time`, `status`, `catalog_type`, `items` FROM `CatalogsRetailItemsBatch` WHERE 1;
+SELECT `batch_id`, `catalog_type`, `completed_time`, `created_time`, `items`, `status` FROM `CatalogsRetailItemsBatch` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsRetailItemsBatch`
 --
-INSERT INTO `CatalogsRetailItemsBatch`(`batch_id`, `created_time`, `completed_time`, `status`, `catalog_type`, `items`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsRetailItemsBatch`(`batch_id`, `catalog_type`, `completed_time`, `created_time`, `items`, `status`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsRetailItemsBatch`
 --
-UPDATE `CatalogsRetailItemsBatch` SET `batch_id` = ?, `created_time` = ?, `completed_time` = ?, `status` = ?, `catalog_type` = ?, `items` = ? WHERE 1;
+UPDATE `CatalogsRetailItemsBatch` SET `batch_id` = ?, `catalog_type` = ?, `completed_time` = ?, `created_time` = ?, `items` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsRetailItemsBatch`

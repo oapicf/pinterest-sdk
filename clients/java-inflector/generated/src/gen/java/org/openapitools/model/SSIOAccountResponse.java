@@ -15,42 +15,42 @@ import org.openapitools.model.SSIOAccountPMPName;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountResponse   {
-  @JsonProperty("eligible")
-  private Boolean eligible;
+  @JsonProperty("billto_infos")
+  private List<SSIOAccountItem> billtoInfos = null;
 
   @JsonProperty("can_edit")
   private Boolean canEdit;
 
-  @JsonProperty("billto_infos")
-  private List<SSIOAccountItem> billtoInfos = null;
-
   @JsonProperty("currency")
   private String currency;
 
-  @JsonProperty("pmp_names")
-  private List<SSIOAccountPMPName> pmpNames = null;
+  @JsonProperty("eligible")
+  private Boolean eligible;
 
   @JsonProperty("error")
   private String error;
 
+  @JsonProperty("pmp_names")
+  private List<SSIOAccountPMPName> pmpNames = null;
+
   /**
-   * Advertiser eligible to create order lines
+   * An array of Salesforce account information that includes address, io terms, etc.
    **/
-  public SSIOAccountResponse eligible(Boolean eligible) {
-    this.eligible = eligible;
+  public SSIOAccountResponse billtoInfos(List<SSIOAccountItem> billtoInfos) {
+    this.billtoInfos = billtoInfos;
     return this;
   }
 
   
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
-  @JsonProperty("eligible")
-  public Boolean getEligible() {
-    return eligible;
+  @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
+  @JsonProperty("billto_infos")
+  public List<SSIOAccountItem> getBilltoInfos() {
+    return billtoInfos;
   }
-  public void setEligible(Boolean eligible) {
-    this.eligible = eligible;
+  public void setBilltoInfos(List<SSIOAccountItem> billtoInfos) {
+    this.billtoInfos = billtoInfos;
   }
 
   /**
@@ -72,24 +72,6 @@ public class SSIOAccountResponse   {
   }
 
   /**
-   * An array of Salesforce account information that includes address, io terms, etc.
-   **/
-  public SSIOAccountResponse billtoInfos(List<SSIOAccountItem> billtoInfos) {
-    this.billtoInfos = billtoInfos;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
-  @JsonProperty("billto_infos")
-  public List<SSIOAccountItem> getBilltoInfos() {
-    return billtoInfos;
-  }
-  public void setBilltoInfos(List<SSIOAccountItem> billtoInfos) {
-    this.billtoInfos = billtoInfos;
-  }
-
-  /**
    **/
   public SSIOAccountResponse currency(String currency) {
     this.currency = currency;
@@ -107,20 +89,21 @@ public class SSIOAccountResponse   {
   }
 
   /**
+   * Advertiser eligible to create order lines
    **/
-  public SSIOAccountResponse pmpNames(List<SSIOAccountPMPName> pmpNames) {
-    this.pmpNames = pmpNames;
+  public SSIOAccountResponse eligible(Boolean eligible) {
+    this.eligible = eligible;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("pmp_names")
-  public List<SSIOAccountPMPName> getPmpNames() {
-    return pmpNames;
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
+  @JsonProperty("eligible")
+  public Boolean getEligible() {
+    return eligible;
   }
-  public void setPmpNames(List<SSIOAccountPMPName> pmpNames) {
-    this.pmpNames = pmpNames;
+  public void setEligible(Boolean eligible) {
+    this.eligible = eligible;
   }
 
   /**
@@ -141,6 +124,23 @@ public class SSIOAccountResponse   {
     this.error = error;
   }
 
+  /**
+   **/
+  public SSIOAccountResponse pmpNames(List<SSIOAccountPMPName> pmpNames) {
+    this.pmpNames = pmpNames;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("pmp_names")
+  public List<SSIOAccountPMPName> getPmpNames() {
+    return pmpNames;
+  }
+  public void setPmpNames(List<SSIOAccountPMPName> pmpNames) {
+    this.pmpNames = pmpNames;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -151,17 +151,17 @@ public class SSIOAccountResponse   {
       return false;
     }
     SSIOAccountResponse ssIOAccountResponse = (SSIOAccountResponse) o;
-    return Objects.equals(eligible, ssIOAccountResponse.eligible) &&
+    return Objects.equals(billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(canEdit, ssIOAccountResponse.canEdit) &&
-        Objects.equals(billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(currency, ssIOAccountResponse.currency) &&
-        Objects.equals(pmpNames, ssIOAccountResponse.pmpNames) &&
-        Objects.equals(error, ssIOAccountResponse.error);
+        Objects.equals(eligible, ssIOAccountResponse.eligible) &&
+        Objects.equals(error, ssIOAccountResponse.error) &&
+        Objects.equals(pmpNames, ssIOAccountResponse.pmpNames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eligible, canEdit, billtoInfos, currency, pmpNames, error);
+    return Objects.hash(billtoInfos, canEdit, currency, eligible, error, pmpNames);
   }
 
   @Override
@@ -169,12 +169,12 @@ public class SSIOAccountResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountResponse {\n");
     
-    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
-    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    billtoInfos: ").append(toIndentedString(billtoInfos)).append("\n");
+    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
+    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

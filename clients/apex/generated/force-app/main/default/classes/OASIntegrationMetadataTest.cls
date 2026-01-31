@@ -73,17 +73,17 @@ private class OASIntegrationMetadataTest {
     private static void maintainRenamedProperties() {
         OASIntegrationMetadata integrationMetadata = new OASIntegrationMetadata();
         Map<String, String> x-property-mappings = integrationMetadata.getx-property-mappings();
-        System.assertEquals('externalBusinessId', x-property-mappings.get('external_business_id'));
-        System.assertEquals('connectedMerchantId', x-property-mappings.get('connected_merchant_id'));
-        System.assertEquals('connectedUserId', x-property-mappings.get('connected_user_id'));
+        System.assertEquals('additionalId1', x-property-mappings.get('additional_id_1'));
         System.assertEquals('connectedAdvertiserId', x-property-mappings.get('connected_advertiser_id'));
         System.assertEquals('connectedLbaId', x-property-mappings.get('connected_lba_id'));
+        System.assertEquals('connectedMerchantId', x-property-mappings.get('connected_merchant_id'));
         System.assertEquals('connectedTagId', x-property-mappings.get('connected_tag_id'));
-        System.assertEquals('partnerAccessTokenExpiry', x-property-mappings.get('partner_access_token_expiry'));
-        System.assertEquals('partnerRefreshTokenExpiry', x-property-mappings.get('partner_refresh_token_expiry'));
+        System.assertEquals('connectedUserId', x-property-mappings.get('connected_user_id'));
         System.assertEquals('createdTimestamp', x-property-mappings.get('created_timestamp'));
-        System.assertEquals('updatedTimestamp', x-property-mappings.get('updated_timestamp'));
-        System.assertEquals('additionalId1', x-property-mappings.get('additional_id_1'));
+        System.assertEquals('externalBusinessId', x-property-mappings.get('external_business_id'));
+        System.assertEquals('partnerAccessTokenExpiry', x-property-mappings.get('partner_access_token_expiry'));
         System.assertEquals('partnerMetadata', x-property-mappings.get('partner_metadata'));
+        System.assertEquals('partnerRefreshTokenExpiry', x-property-mappings.get('partner_refresh_token_expiry'));
+        System.assertEquals('updatedTimestamp', x-property-mappings.get('updated_timestamp'));
     }
 }

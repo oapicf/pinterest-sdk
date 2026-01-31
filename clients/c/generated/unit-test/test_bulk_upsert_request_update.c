@@ -26,10 +26,14 @@ bulk_upsert_request_update_t* instantiate_bulk_upsert_request_update(int include
       list_createList(),
       list_createList(),
       list_createList(),
+      list_createList(),
+      list_createList(),
       list_createList()
     );
   } else {
     bulk_upsert_request_update = bulk_upsert_request_update_create(
+      list_createList(),
+      list_createList(),
       list_createList(),
       list_createList(),
       list_createList(),

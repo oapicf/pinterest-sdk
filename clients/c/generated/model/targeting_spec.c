@@ -4,14 +4,14 @@
 #include "targeting_spec.h"
 
 
-char* targeting_spec_age_bucket_ToString(pinterest_rest_api_targeting_spec_AGEBUCKET_e age_bucket) {
-    char *age_bucketArray[] =  { "NULL", "18-24", "21+", "25-34", "35-44", "45-49", "50-54", "55-64", "65+" };
+char* targeting_spec_age_bucket_ToString(pinterest_rest_api_targeting_spec__e age_bucket) {
+    char *age_bucketArray[] =  { "NULL", "18-24", "19+", "20+", "21+", "25-34", "35-44", "45-49", "50-54", "55-64", "65+" };
     return age_bucketArray[age_bucket - 1];
 }
 
-pinterest_rest_api_targeting_spec_AGEBUCKET_e targeting_spec_age_bucket_FromString(char* age_bucket) {
+pinterest_rest_api_targeting_spec__e targeting_spec_age_bucket_FromString(char* age_bucket) {
     int stringToReturn = 0;
-    char *age_bucketArray[] =  { "NULL", "18-24", "21+", "25-34", "35-44", "45-49", "50-54", "55-64", "65+" };
+    char *age_bucketArray[] =  { "NULL", "18-24", "19+", "20+", "21+", "25-34", "35-44", "45-49", "50-54", "55-64", "65+" };
     size_t sizeofArray = sizeof(age_bucketArray) / sizeof(age_bucketArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(age_bucket, age_bucketArray[stringToReturn]) == 0) {
@@ -21,12 +21,12 @@ pinterest_rest_api_targeting_spec_AGEBUCKET_e targeting_spec_age_bucket_FromStri
     }
     return 0;
 }
-char* targeting_spec_apptype_ToString(pinterest_rest_api_targeting_spec_APPTYPE_e apptype) {
+char* targeting_spec_apptype_ToString(pinterest_rest_api_targeting_spec__e apptype) {
     char *apptypeArray[] =  { "NULL", "android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile" };
     return apptypeArray[apptype - 1];
 }
 
-pinterest_rest_api_targeting_spec_APPTYPE_e targeting_spec_apptype_FromString(char* apptype) {
+pinterest_rest_api_targeting_spec__e targeting_spec_apptype_FromString(char* apptype) {
     int stringToReturn = 0;
     char *apptypeArray[] =  { "NULL", "android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile" };
     size_t sizeofArray = sizeof(apptypeArray) / sizeof(apptypeArray[0]);
@@ -38,12 +38,12 @@ pinterest_rest_api_targeting_spec_APPTYPE_e targeting_spec_apptype_FromString(ch
     }
     return 0;
 }
-char* targeting_spec_gender_ToString(pinterest_rest_api_targeting_spec_GENDER_e gender) {
+char* targeting_spec_gender_ToString(pinterest_rest_api_targeting_spec__e gender) {
     char *genderArray[] =  { "NULL", "unknown", "male", "female" };
     return genderArray[gender - 1];
 }
 
-pinterest_rest_api_targeting_spec_GENDER_e targeting_spec_gender_FromString(char* gender) {
+pinterest_rest_api_targeting_spec__e targeting_spec_gender_FromString(char* gender) {
     int stringToReturn = 0;
     char *genderArray[] =  { "NULL", "unknown", "male", "female" };
     size_t sizeofArray = sizeof(genderArray) / sizeof(genderArray[0]);
@@ -83,6 +83,8 @@ static targeting_spec_t *targeting_spec_create_internal(
     list_t *interest,
     list_t *locale,
     list_t *location,
+    char *maximum_age,
+    char *minimum_age,
     list_t *shopping_retargeting,
     list_t *targeting_strategy
     ) {
@@ -99,6 +101,8 @@ static targeting_spec_t *targeting_spec_create_internal(
     targeting_spec_local_var->interest = interest;
     targeting_spec_local_var->locale = locale;
     targeting_spec_local_var->location = location;
+    targeting_spec_local_var->maximum_age = maximum_age;
+    targeting_spec_local_var->minimum_age = minimum_age;
     targeting_spec_local_var->shopping_retargeting = shopping_retargeting;
     targeting_spec_local_var->targeting_strategy = targeting_strategy;
 
@@ -116,6 +120,8 @@ __attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
     list_t *interest,
     list_t *locale,
     list_t *location,
+    char *maximum_age,
+    char *minimum_age,
     list_t *shopping_retargeting,
     list_t *targeting_strategy
     ) {
@@ -129,6 +135,8 @@ __attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
         interest,
         locale,
         location,
+        maximum_age,
+        minimum_age,
         shopping_retargeting,
         targeting_strategy
         );
@@ -145,14 +153,14 @@ void targeting_spec_free(targeting_spec_t *targeting_spec) {
     listEntry_t *listEntry;
     if (targeting_spec->age_bucket) {
         list_ForEach(listEntry, targeting_spec->age_bucket) {
-            free(listEntry->data);
+            targeting_spec_age_bucket_free(listEntry->data);
         }
         list_freeList(targeting_spec->age_bucket);
         targeting_spec->age_bucket = NULL;
     }
     if (targeting_spec->apptype) {
         list_ForEach(listEntry, targeting_spec->apptype) {
-            free(listEntry->data);
+            targeting_spec_app_type_free(listEntry->data);
         }
         list_freeList(targeting_spec->apptype);
         targeting_spec->apptype = NULL;
@@ -173,7 +181,7 @@ void targeting_spec_free(targeting_spec_t *targeting_spec) {
     }
     if (targeting_spec->gender) {
         list_ForEach(listEntry, targeting_spec->gender) {
-            free(listEntry->data);
+            targeting_spec_gender_free(listEntry->data);
         }
         list_freeList(targeting_spec->gender);
         targeting_spec->gender = NULL;
@@ -206,6 +214,14 @@ void targeting_spec_free(targeting_spec_t *targeting_spec) {
         list_freeList(targeting_spec->location);
         targeting_spec->location = NULL;
     }
+    if (targeting_spec->maximum_age) {
+        free(targeting_spec->maximum_age);
+        targeting_spec->maximum_age = NULL;
+    }
+    if (targeting_spec->minimum_age) {
+        free(targeting_spec->minimum_age);
+        targeting_spec->minimum_age = NULL;
+    }
     if (targeting_spec->shopping_retargeting) {
         list_ForEach(listEntry, targeting_spec->shopping_retargeting) {
             targeting_spec_shopping_retargeting_free(listEntry->data);
@@ -227,34 +243,40 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
     cJSON *item = cJSON_CreateObject();
 
     // targeting_spec->age_bucket
-    if(targeting_spec->age_bucket != pinterest_rest_api_targeting_spec_AGEBUCKET_NULL) {
+    if(targeting_spec->age_bucket != pinterest_rest_api_list_AGEBUCKET_NULL) {
     cJSON *age_bucket = cJSON_AddArrayToObject(item, "AGE_BUCKET");
     if(age_bucket == NULL) {
-        goto fail; //primitive container
+    goto fail; //nonprimitive container
     }
 
     listEntry_t *age_bucketListEntry;
+    if (targeting_spec->age_bucket) {
     list_ForEach(age_bucketListEntry, targeting_spec->age_bucket) {
-    if(cJSON_AddStringToObject(age_bucket, "", age_bucketListEntry->data) == NULL)
-    {
-        goto fail;
+    cJSON *itemLocal = targeting_spec_age_bucket_convertToJSON((pinterest_rest_api_targeting_spec__e)age_bucketListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(age_bucket, itemLocal);
     }
     }
     }
 
 
     // targeting_spec->apptype
-    if(targeting_spec->apptype != pinterest_rest_api_targeting_spec_APPTYPE_NULL) {
+    if(targeting_spec->apptype != pinterest_rest_api_list_APPTYPE_NULL) {
     cJSON *apptype = cJSON_AddArrayToObject(item, "APPTYPE");
     if(apptype == NULL) {
-        goto fail; //primitive container
+    goto fail; //nonprimitive container
     }
 
     listEntry_t *apptypeListEntry;
+    if (targeting_spec->apptype) {
     list_ForEach(apptypeListEntry, targeting_spec->apptype) {
-    if(cJSON_AddStringToObject(apptype, "", apptypeListEntry->data) == NULL)
-    {
-        goto fail;
+    cJSON *itemLocal = targeting_spec_app_type_convertToJSON((pinterest_rest_api_targeting_spec__e)apptypeListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(apptype, itemLocal);
     }
     }
     }
@@ -295,17 +317,20 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
 
     // targeting_spec->gender
-    if(targeting_spec->gender != pinterest_rest_api_targeting_spec_GENDER_NULL) {
+    if(targeting_spec->gender != pinterest_rest_api_list_GENDER_NULL) {
     cJSON *gender = cJSON_AddArrayToObject(item, "GENDER");
     if(gender == NULL) {
-        goto fail; //primitive container
+    goto fail; //nonprimitive container
     }
 
     listEntry_t *genderListEntry;
+    if (targeting_spec->gender) {
     list_ForEach(genderListEntry, targeting_spec->gender) {
-    if(cJSON_AddStringToObject(gender, "", genderListEntry->data) == NULL)
-    {
-        goto fail;
+    cJSON *itemLocal = targeting_spec_gender_convertToJSON((pinterest_rest_api_targeting_spec__e)genderListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(gender, itemLocal);
     }
     }
     }
@@ -375,6 +400,22 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
     {
         goto fail;
     }
+    }
+    }
+
+
+    // targeting_spec->maximum_age
+    if(targeting_spec->maximum_age) {
+    if(cJSON_AddStringToObject(item, "MAXIMUM_AGE", targeting_spec->maximum_age) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // targeting_spec->minimum_age
+    if(targeting_spec->minimum_age) {
+    if(cJSON_AddStringToObject(item, "MINIMUM_AGE", targeting_spec->minimum_age) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -466,19 +507,21 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
         age_bucket = NULL;
     }
     if (age_bucket) { 
-    cJSON *age_bucket_local = NULL;
-    if(!cJSON_IsArray(age_bucket)) {
-        goto end;//primitive container
+    cJSON *age_bucket_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(age_bucket)){
+        goto end; //nonprimitive container
     }
+
     age_bucketList = list_createList();
 
-    cJSON_ArrayForEach(age_bucket_local, age_bucket)
+    cJSON_ArrayForEach(age_bucket_local_nonprimitive,age_bucket )
     {
-        if(!cJSON_IsString(age_bucket_local))
-        {
+        if(!cJSON_IsObject(age_bucket_local_nonprimitive)){
             goto end;
         }
-        list_addElement(age_bucketList , strdup(age_bucket_local->valuestring));
+        targeting_spec_targeting_spec_age_bucket_e age_bucketItem = targeting_spec_age_bucket_parseFromJSON(age_bucket_local_nonprimitive);
+
+        list_addElement(age_bucketList, (void *)age_bucketItem);
     }
     }
 
@@ -488,19 +531,21 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
         apptype = NULL;
     }
     if (apptype) { 
-    cJSON *apptype_local = NULL;
-    if(!cJSON_IsArray(apptype)) {
-        goto end;//primitive container
+    cJSON *apptype_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(apptype)){
+        goto end; //nonprimitive container
     }
+
     apptypeList = list_createList();
 
-    cJSON_ArrayForEach(apptype_local, apptype)
+    cJSON_ArrayForEach(apptype_local_nonprimitive,apptype )
     {
-        if(!cJSON_IsString(apptype_local))
-        {
+        if(!cJSON_IsObject(apptype_local_nonprimitive)){
             goto end;
         }
-        list_addElement(apptypeList , strdup(apptype_local->valuestring));
+        targeting_spec_targeting_spec_app_type_e apptypeItem = targeting_spec_app_type_parseFromJSON(apptype_local_nonprimitive);
+
+        list_addElement(apptypeList, (void *)apptypeItem);
     }
     }
 
@@ -554,19 +599,21 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
         gender = NULL;
     }
     if (gender) { 
-    cJSON *gender_local = NULL;
-    if(!cJSON_IsArray(gender)) {
-        goto end;//primitive container
+    cJSON *gender_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(gender)){
+        goto end; //nonprimitive container
     }
+
     genderList = list_createList();
 
-    cJSON_ArrayForEach(gender_local, gender)
+    cJSON_ArrayForEach(gender_local_nonprimitive,gender )
     {
-        if(!cJSON_IsString(gender_local))
-        {
+        if(!cJSON_IsObject(gender_local_nonprimitive)){
             goto end;
         }
-        list_addElement(genderList , strdup(gender_local->valuestring));
+        targeting_spec_targeting_spec_gender_e genderItem = targeting_spec_gender_parseFromJSON(gender_local_nonprimitive);
+
+        list_addElement(genderList, (void *)genderItem);
     }
     }
 
@@ -658,6 +705,30 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
     }
     }
 
+    // targeting_spec->maximum_age
+    cJSON *maximum_age = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "MAXIMUM_AGE");
+    if (cJSON_IsNull(maximum_age)) {
+        maximum_age = NULL;
+    }
+    if (maximum_age) { 
+    if(!cJSON_IsString(maximum_age) && !cJSON_IsNull(maximum_age))
+    {
+    goto end; //String
+    }
+    }
+
+    // targeting_spec->minimum_age
+    cJSON *minimum_age = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "MINIMUM_AGE");
+    if (cJSON_IsNull(minimum_age)) {
+        minimum_age = NULL;
+    }
+    if (minimum_age) { 
+    if(!cJSON_IsString(minimum_age) && !cJSON_IsNull(minimum_age))
+    {
+    goto end; //String
+    }
+    }
+
     // targeting_spec->shopping_retargeting
     cJSON *shopping_retargeting = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "SHOPPING_RETARGETING");
     if (cJSON_IsNull(shopping_retargeting)) {
@@ -715,6 +786,8 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
         interest ? interestList : NULL,
         locale ? localeList : NULL,
         location ? locationList : NULL,
+        maximum_age && !cJSON_IsNull(maximum_age) ? strdup(maximum_age->valuestring) : NULL,
+        minimum_age && !cJSON_IsNull(minimum_age) ? strdup(minimum_age->valuestring) : NULL,
         shopping_retargeting ? shopping_retargetingList : NULL,
         targeting_strategy ? targeting_strategyList : NULL
         );
@@ -724,7 +797,7 @@ end:
     if (age_bucketList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, age_bucketList) {
-            free(listEntry->data);
+            targeting_spec_age_bucket_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(age_bucketList);
@@ -733,7 +806,7 @@ end:
     if (apptypeList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, apptypeList) {
-            free(listEntry->data);
+            targeting_spec_app_type_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(apptypeList);
@@ -760,7 +833,7 @@ end:
     if (genderList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, genderList) {
-            free(listEntry->data);
+            targeting_spec_gender_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(genderList);

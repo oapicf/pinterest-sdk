@@ -1,0 +1,99 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLog"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLog"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  IntegrationLogClientError = openapi_server.resourceTypes.IntegrationLogClientError
+  IntegrationLogClientRequest = openapi_server.resourceTypes.IntegrationLogClientRequest
+}
+resourceTypes {
+
+  IntegrationLog {
+    title = IntegrationLog
+    description = IntegrationLog
+    derivedFrom = Root
+    properties {
+        advertiser_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        app_version_number {
+          type =  string
+          description = "Version number of the integration application."
+          optional = false
+        }
+        client_timestamp {
+          type =  integer
+          description = "Timestamp in milliseconds of when the log was executed at the client."
+          optional = true
+        }
+        error {
+          type = IntegrationLogClientError
+          description = ""
+          optional = false
+        }
+        event_type {
+          type =  string
+          description = "Log event type"
+          enum = ["APP", "API"]
+          optional = true
+        }
+        external_business_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        feed_profile_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        log_level {
+          type =  string
+          description = "Log level type"
+          enum = ["INFO", "WARN", "ERROR"]
+          optional = true
+        }
+        merchant_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Explanation of the event that occured."
+          optional = false
+        }
+        platform_version_number {
+          type =  string
+          description = "Version number of the platform the integration application is running on."
+          optional = false
+        }
+        request {
+          type = IntegrationLogClientRequest
+          description = ""
+          optional = false
+        }
+        tag_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLog {
+    title = IntegrationLog
+    description = IntegrationLog
+    implements = openapi_server.resourceTypes.IntegrationLog
+
+  }
+}

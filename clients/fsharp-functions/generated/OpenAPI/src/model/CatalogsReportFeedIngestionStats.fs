@@ -10,8 +10,6 @@ module CatalogsReportFeedIngestionStats =
 
   [<CLIMutable>]
   type CatalogsReportFeedIngestionStats = {
-    [<JsonProperty(PropertyName = "report_type")>]
-    ReportType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
     [<JsonProperty(PropertyName = "code")>]
@@ -22,6 +20,8 @@ module CatalogsReportFeedIngestionStats =
     Message : string;
     [<JsonProperty(PropertyName = "occurrences")>]
     Occurrences : int;
+    [<JsonProperty(PropertyName = "report_type")>]
+    ReportType : string;
     [<JsonProperty(PropertyName = "severity")>]
     Severity : string;
   }

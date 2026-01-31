@@ -39,16 +39,16 @@ class CreativeAssetsProcessingRecordTest : ShouldSpec() {
             //modelInstance.errors shouldBe ("TODO")
         }
 
-        // to test the property `warnings` - Array with the validation warnings for the item processing record
-        should("test warnings") {
-            // uncomment below to test the property
-            //modelInstance.warnings shouldBe ("TODO")
-        }
-
         // to test the property `status`
         should("test status") {
             // uncomment below to test the property
             //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `warnings` - Array with the validation warnings for the item processing record
+        should("test warnings") {
+            // uncomment below to test the property
+            //modelInstance.warnings shouldBe ("TODO")
         }
 
     }

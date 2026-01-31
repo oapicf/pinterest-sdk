@@ -1,10 +1,10 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.Media;
 import org.openapitools.model.MediaList200Response;
 import org.openapitools.model.MediaUpload;
-import org.openapitools.model.MediaUploadDetails;
-import org.openapitools.model.MediaUploadRequest;
+import org.openapitools.model.MediaUploadCreate;
+import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -36,7 +36,7 @@ public interface MediaApi  {
     /**
      * Register media upload
      *
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      */
     @POST
@@ -45,14 +45,20 @@ public interface MediaApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Register media upload", tags={ "media" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "response", response = MediaUpload.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public MediaUpload mediaCreate(@Valid MediaUploadRequest mediaUploadRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MediaUpload.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = MediaUpload.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public MediaUpload mediaCreate(@Valid MediaUploadCreate mediaUploadCreate);
 
     /**
      * Get media upload details
      *
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      */
     @GET
@@ -60,15 +66,19 @@ public interface MediaApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get media upload details", tags={ "media" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = MediaUploadDetails.class),
-        @ApiResponse(code = 404, message = "Media upload not found", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public MediaUploadDetails mediaGet(@PathParam("media_id") @Pattern(regexp="^\\d+$") String mediaId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Media.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Media mediaGet(@PathParam("media_id") @Pattern(regexp="^\\d+$") String mediaId);
 
     /**
      * List media uploads
      *
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      */
     @GET
@@ -76,7 +86,12 @@ public interface MediaApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List media uploads", tags={ "media" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = MediaList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MediaList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public MediaList200Response mediaList(@QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
 }

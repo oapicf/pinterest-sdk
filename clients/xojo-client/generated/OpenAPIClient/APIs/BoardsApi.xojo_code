@@ -655,31 +655,35 @@ Protected Class BoardsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BoardsCreate(, board As OpenAPIClient.Models.Board, Optional adAccountId As Xoson.O.OptionalString)
+		Sub BoardsCreate(, boardCreate As OpenAPIClient.Models.BoardCreate, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation boards/create
 		  // Create board
 		  // - 
-		  // - parameter board: (body) Create a board using a single board json object. 
+		  // - parameter boardCreate: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsCreateCallback(Board) on completion. 
 		  //
 		  // - POST /boards
-		  // - Create a board owned by the "operation user_account". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". - By default, the "operation user_account" is the token user_account.
+		  // - Create a board owned by the "operation user_account". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". * By default, the "operation user_account" is the token user_account.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(board), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardCreate), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -791,13 +795,13 @@ Protected Class BoardsApi
 		Sub BoardsDelete(, boardId As String, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation boards/delete
 		  // Delete board
-		  // - parameter boardId: (path) Unique identifier of a board. 
+		  // - parameter boardId: (path)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsDeleteCallback() on completion. 
 		  //
 		  // - DELETE /boards/{board_id}
-		  // - Delete a board owned by the "operation user_account". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". - By default, the "operation user_account" is the token user_account.
+		  // - Delete a board owned by the "operation user_account". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". * By default, the "operation user_account" is the token user_account.
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -868,13 +872,13 @@ Protected Class BoardsApi
 		  // Operation boards/get
 		  // Get board
 		  // - 
-		  // - parameter boardId: (path) Unique identifier of a board. 
+		  // - parameter boardId: (path)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsGetCallback(Board) on completion. 
 		  //
 		  // - GET /boards/{board_id}
-		  // - Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". - By default, the "operation user_account" is the token user_account.
+		  // - Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". * By default, the "operation user_account" is the token user_account.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1004,19 +1008,19 @@ Protected Class BoardsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BoardsList(, Optional adAccountId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, privacy As PrivacyEnum_BoardsList)
+		Sub BoardsList(, Optional adAccountId As Xoson.O.OptionalString, privacy As OpenAPIClient.Models.BoardPrivacyFilterOptional, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation boards/list
 		  // List boards
 		  // - 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  // - parameter privacy: (query) The privacy level of the board (optional, default to Nil)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter privacy: (query) Privacy setting for a board. (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsListCallback(BoardsList200Response) on completion. 
 		  //
 		  // - GET /boards
-		  // - Get a list of the boards owned by the "operation user_account" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+		  // - Get a list of the boards owned by the "operation user_account" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1033,11 +1037,11 @@ Protected Class BoardsApi
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
+		  If privacy <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("privacy") + "=" + EncodeURLComponent(Xoson.toJSON(privacy))
+		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("privacy") + "=" + EncodeURLComponent(PrivacyEnum_BoardsListToString(privacy))
 		  
 
 		  
@@ -1147,37 +1151,18 @@ Protected Class BoardsApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function PrivacyEnum_BoardsListToString(value As PrivacyEnum_BoardsList) As String
-		  Select Case value
-		    
-		    Case PrivacyEnum_BoardsList.All
-		      Return "ALL"
-		    Case PrivacyEnum_BoardsList.Escapedprotected
-		      Return "PROTECTED"
-		    Case PrivacyEnum_BoardsList.Escapedpublic
-		      Return "PUBLIC"
-		    Case PrivacyEnum_BoardsList.Secret
-		      Return "SECRET"
-		    Case PrivacyEnum_BoardsList.PublicAndSecret
-		      Return "PUBLIC_AND_SECRET"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BoardsListPins(, boardId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, creativeTypes() As Creative_typesEnum_BoardsListPins, Optional adAccountId As Xoson.O.OptionalString, Optional pinMetrics As Xoson.O.OptionalBoolean)
+		Sub BoardsListPins(, boardId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, creativeTypes() As CreativeType, Optional adAccountId As Xoson.O.OptionalString, Optional pinMetrics As Xoson.O.OptionalBoolean)
 		  // Operation boards/list_pins
 		  // List Pins on board
 		  // - 
 		  // - parameter boardId: (path) Unique identifier of a board. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional, default to Nil)
+		  // - parameter creativeTypes: (query) Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional, default to Nil)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
-		  // - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+		  // - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsListPinsCallback(BoardsListPins200Response) on completion. 
 		  //
@@ -1203,15 +1188,15 @@ Protected Class BoardsApi
 		  
 		  
 		  Dim localVarQueryStringscreativeTypes() As String
-		  For Each localVarItemcreativeTypes As Creative_typesEnum_BoardsListPins in creativeTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Creative_typesEnum_BoardsListPinsToString(localVarItemcreativeTypes))
+		  For Each localVarItemcreativeTypes As CreativeType in creativeTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemcreativeTypes))
 		    Select Case "form"
 		      Case "form"
-		        localVarQueryStringscreativeTypes.Append("creative_types=" + encodedParameter)
+		        localVarQueryStringscreativeTypes.Append("inner=" + encodedParameter)
 		      Case "spaceDelimited"
-		        localVarQueryStringscreativeTypes.Append("creative_types=" + encodedParameter)
+		        localVarQueryStringscreativeTypes.Append("inner=" + encodedParameter)
 		      Case "pipeDelimited"
-		        localVarQueryStringscreativeTypes.Append("creative_types=" + encodedParameter)
+		        localVarQueryStringscreativeTypes.Append("inner=" + encodedParameter)
 		      Case "deepObject"
 		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		    End Select
@@ -1334,59 +1319,38 @@ Protected Class BoardsApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function Creative_typesEnum_BoardsListPinsToString(value As Creative_typesEnum_BoardsListPins) As String
-		  Select Case value
-		    
-		    Case Creative_typesEnum_BoardsListPins.Regular
-		      Return "REGULAR"
-		    Case Creative_typesEnum_BoardsListPins.Video
-		      Return "VIDEO"
-		    Case Creative_typesEnum_BoardsListPins.Shopping
-		      Return "SHOPPING"
-		    Case Creative_typesEnum_BoardsListPins.Carousel
-		      Return "CAROUSEL"
-		    Case Creative_typesEnum_BoardsListPins.MaxVideo
-		      Return "MAX_VIDEO"
-		    Case Creative_typesEnum_BoardsListPins.ShopThePin
-		      Return "SHOP_THE_PIN"
-		    Case Creative_typesEnum_BoardsListPins.Collection
-		      Return "COLLECTION"
-		    Case Creative_typesEnum_BoardsListPins.Idea
-		      Return "IDEA"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BoardsUpdate(, boardId As String, boardUpdate As OpenAPIClient.Models.BoardUpdate, Optional adAccountId As Xoson.O.OptionalString)
+		Sub BoardsUpdate(, boardId As String, boardWithUpdatePrivacyUpdate As OpenAPIClient.Models.BoardWithUpdatePrivacyUpdate, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation boards/update
 		  // Update board
 		  // - 
-		  // - parameter boardId: (path) Unique identifier of a board. 
-		  // - parameter boardUpdate: (body) Update a board. 
+		  // - parameter boardId: (path)  
+		  // - parameter boardWithUpdatePrivacyUpdate: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes BoardsApiCallbackHandler.BoardsUpdateCallback(Board) on completion. 
+		  // Invokes BoardsApiCallbackHandler.BoardsUpdateCallback(BoardWithUpdatePrivacy) on completion. 
 		  //
 		  // - PATCH /boards/{board_id}
-		  // - Update a board owned by the "operating user_account". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". - By default, the "operation user_account" is the token user_account.
+		  // - Update a board owned by the "operating user_account". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". * By default, the "operation user_account" is the token user_account.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardUpdate), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardWithUpdatePrivacyUpdate), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -1412,7 +1376,7 @@ Protected Class BoardsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BoardsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Board) As Boolean
+		Private Function BoardsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BoardWithUpdatePrivacy) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -1420,7 +1384,7 @@ Protected Class BoardsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.Board
+			  outData = New OpenAPIClient.Models.BoardWithUpdatePrivacy
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1473,7 +1437,7 @@ Protected Class BoardsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.Board
+		  Dim data As OpenAPIClient.Models.BoardWithUpdatePrivacy
 		  CallbackHandler.BoardsUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1487,7 +1451,7 @@ Protected Class BoardsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.Board
+		  Dim data As OpenAPIClient.Models.BoardWithUpdatePrivacy
 		  Call BoardsUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BoardsUpdateCallback(error, data)
@@ -1572,29 +1536,6 @@ Protected Class BoardsApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = PrivacyEnum_BoardsList, Type = Integer, Flags = &h0
-		
-        All
-        Escapedprotected
-        Escapedpublic
-        Secret
-        PublicAndSecret
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Creative_typesEnum_BoardsListPins, Type = Integer, Flags = &h0
-		
-        Regular
-        Video
-        Shopping
-        Carousel
-        MaxVideo
-        ShopThePin
-        Collection
-        Idea
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

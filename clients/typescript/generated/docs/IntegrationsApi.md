@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **integrationsCommercePatch**
-> IntegrationMetadata integrationsCommercePatch()
+> IntegrationMetadata integrationsCommercePatch(integrationRequestPatch)
 
 Update commerce integration metadata for the given external business ID. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -141,20 +141,20 @@ const apiInstance = new IntegrationsApi(configuration);
 const request: IntegrationsApiIntegrationsCommercePatchRequest = {
     // External business ID for the integration.
   externalBusinessId: "external_business_id_example",
-    // Parameters to get create/update the Integration Metadata (optional)
+    // Parameters to get create/update the Integration Metadata
   integrationRequestPatch: {
-    connectedMerchantId: "connectedMerchantId_example",
+    additionalId1: "additionalId1_example",
     connectedAdvertiserId: "connectedAdvertiserId_example",
     connectedLbaId: "connectedLbaId_example",
+    connectedMerchantId: "connectedMerchantId_example",
     connectedTagId: "connectedTagId_example",
     partnerAccessToken: "partnerAccessToken_example",
-    partnerRefreshToken: "partnerRefreshToken_example",
-    partnerPrimaryEmail: "partnerPrimaryEmail_example",
     partnerAccessTokenExpiry: 3.14,
+    partnerMetadata: "partnerMetadata_example",
+    partnerPrimaryEmail: "partnerPrimaryEmail_example",
+    partnerRefreshToken: "partnerRefreshToken_example",
     partnerRefreshTokenExpiry: 3.14,
     scopes: "scopes_example",
-    additionalId1: "additionalId1_example",
-    partnerMetadata: "partnerMetadata_example",
   },
 };
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **integrationsCommercePost**
-> IntegrationMetadata integrationsCommercePost()
+> IntegrationMetadata integrationsCommercePost(integrationRequest)
 
 Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -211,21 +211,21 @@ const configuration = createConfiguration();
 const apiInstance = new IntegrationsApi(configuration);
 
 const request: IntegrationsApiIntegrationsCommercePostRequest = {
-    // Parameters to get create/update the Integration Metadata (optional)
+    // Parameters to get create/update the Integration Metadata
   integrationRequest: {
-    externalBusinessId: "externalBusinessId_example",
-    connectedMerchantId: "connectedMerchantId_example",
+    additionalId1: "additionalId1_example",
     connectedAdvertiserId: "connectedAdvertiserId_example",
     connectedLbaId: "connectedLbaId_example",
+    connectedMerchantId: "connectedMerchantId_example",
     connectedTagId: "connectedTagId_example",
+    externalBusinessId: "externalBusinessId_example",
     partnerAccessToken: "partnerAccessToken_example",
-    partnerRefreshToken: "partnerRefreshToken_example",
-    partnerPrimaryEmail: "partnerPrimaryEmail_example",
     partnerAccessTokenExpiry: 1,
+    partnerMetadata: "partnerMetadata_example",
+    partnerPrimaryEmail: "partnerPrimaryEmail_example",
+    partnerRefreshToken: "partnerRefreshToken_example",
     partnerRefreshTokenExpiry: 1,
     scopes: "scopes_example",
-    additionalId1: "additionalId1_example",
-    partnerMetadata: "partnerMetadata_example",
   },
 };
 
@@ -397,17 +397,9 @@ const request: IntegrationsApiIntegrationsLogsPostRequest = {
   integrationLogsRequest: {
     logs: [
       {
-        clientTimestamp: 1,
-        eventType: "APP",
-        logLevel: "INFO",
-        externalBusinessId: "externalBusinessId_example",
         advertiserId: "advertiserId_example",
-        merchantId: "merchantId_example",
-        tagId: "tagId_example",
-        feedProfileId: "feedProfileId_example",
-        message: "message_example",
         appVersionNumber: "appVersionNumber_example",
-        platformVersionNumber: "platformVersionNumber_example",
+        clientTimestamp: 1,
         error: {
           cause: "cause_example",
           columnNumber: 1,
@@ -419,9 +411,16 @@ const request: IntegrationsApiIntegrationsLogsPostRequest = {
           number: 1,
           stackTrace: "stackTrace_example",
         },
+        eventType: "APP",
+        externalBusinessId: "externalBusinessId_example",
+        feedProfileId: "feedProfileId_example",
+        logLevel: "INFO",
+        merchantId: "merchantId_example",
+        message: "message_example",
+        platformVersionNumber: "platformVersionNumber_example",
         request: {
-          method: "GET",
           host: "host_example",
+          method: "GET",
           path: "path_example",
           requestHeaders: {
             "key": "key_example",
@@ -431,6 +430,7 @@ const request: IntegrationsApiIntegrationsLogsPostRequest = {
           },
           responseStatusCode: 1,
         },
+        tagId: "tagId_example",
       },
     ],
   },

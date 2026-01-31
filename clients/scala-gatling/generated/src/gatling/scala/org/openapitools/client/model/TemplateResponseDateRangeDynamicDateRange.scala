@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class TemplateResponseDateRangeDynamicDateRange (
-    /* The date range type */
-    _type: Option[String],
     /* The dynamic range type */
-    _range: Option[String]
+    _range: Option[String],
+    /* The date range type */
+    _type: Option[String]
 )
 object TemplateResponseDateRangeDynamicDateRange {
-    def toStringBody(var_type: Object, var_range: Object) =
+    def toStringBody(var_range: Object, var_type: Object) =
         s"""
         | {
-        | "type":$var_type,"range":$var_range
+        | "range":$var_range,"type":$var_type
         | }
         """.stripMargin
 }

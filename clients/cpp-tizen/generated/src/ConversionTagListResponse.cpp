@@ -49,12 +49,12 @@ ConversionTagListResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<ConversionTagResponse> new_list;
-			ConversionTagResponse inst;
+			list<ConversionTag> new_list;
+			ConversionTag inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ConversionTagResponse")) {
-					jsonToValue(&inst, temp_json, "ConversionTagResponse", "");
+				if (isprimitive("ConversionTag")) {
+					jsonToValue(&inst, temp_json, "ConversionTag", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ ConversionTagListResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("ConversionTagResponse")) {
-		list<ConversionTagResponse> new_list = static_cast<list <ConversionTagResponse> > (getItems());
-		node = converttoJson(&new_list, "ConversionTagResponse", "array");
+	if (isprimitive("ConversionTag")) {
+		list<ConversionTag> new_list = static_cast<list <ConversionTag> > (getItems());
+		node = converttoJson(&new_list, "ConversionTag", "array");
 	} else {
 		node = json_node_alloc();
-		list<ConversionTagResponse> new_list = static_cast<list <ConversionTagResponse> > (getItems());
+		list<ConversionTag> new_list = static_cast<list <ConversionTag> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<ConversionTagResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<ConversionTag>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			ConversionTagResponse obj = *it;
+			ConversionTag obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ ConversionTagListResponse::toJson()
 	return ret;
 }
 
-std::list<ConversionTagResponse>
+std::list<ConversionTag>
 ConversionTagListResponse::getItems()
 {
 	return items;
 }
 
 void
-ConversionTagListResponse::setItems(std::list <ConversionTagResponse> items)
+ConversionTagListResponse::setItems(std::list <ConversionTag> items)
 {
 	this->items = items;
 }

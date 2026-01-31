@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
- * @param startUnderscoredate Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
- * @param endUnderscoredate Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
  * @param adUnderscoreid ID for the ad collecting leads
+ * @param endUnderscoredate Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+ * @param startUnderscoredate Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
  */
-case class LeadsExportCreateRequest(startUnderscoredate: String,
+case class LeadsExportCreateRequest(adUnderscoreid: String,
                 endUnderscoredate: String,
-                adUnderscoreid: String
+                startUnderscoredate: String
                 )
 
 object LeadsExportCreateRequest {

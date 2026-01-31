@@ -28,33 +28,33 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a catalog based product group.
  *
- * @param catalogType 
- * @param name 
- * @param filters 
  * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogType 
+ * @param filters 
+ * @param name 
  * @param country 
- * @param locale 
  * @param description 
+ * @param locale 
  */
 
 
 interface CatalogsVerticalProductGroupCreateRequest {
 
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsVerticalProductGroupCreateRequest.CatalogType
-    @Json(name = "name")
-    val name: kotlin.String
-    @Json(name = "filters")
-    val filters: CatalogsCreativeAssetsProductGroupFilters
     /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsVerticalProductGroupCreateRequest.CatalogType
+    @Json(name = "filters")
+    val filters: CatalogsCreativeAssetsProductGroupFilters
+    @Json(name = "name")
+    val name: kotlin.String
     @Json(name = "country")
-    val country: Country
-    @Json(name = "locale")
-    val locale: CatalogsLocale
+    val country: Country?
     @Json(name = "description")
     val description: kotlin.String?
+    @Json(name = "locale")
+    val locale: CatalogsLocale?
     /**
      * 
      *

@@ -10,12 +10,12 @@ import org.openapitools.models.BigDecimal
 /**
  * 
  * @param reportUnderscorestatus 
- * @param url URL to download the report
  * @param size Size of the report in bytes
+ * @param url URL to download the report
  */
 case class CatalogsReport(reportUnderscorestatus: Option[String],
-                url: Option[String],
-                size: Option[BigDecimal]
+                size: Option[BigDecimal],
+                url: Option[String]
                 )
 
 object CatalogsReport {

@@ -8,17 +8,17 @@ Protected Class CatalogsRetailItemErrorResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The catalog item id in the merchant namespace
+			Array with the errors for the item id requested
 		#tag EndNote
-		item_id As Xoson.O.OptionalString
+		errors() As OpenAPIClient.Models.ItemValidationEvent
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Array with the errors for the item id requested
+			The catalog item id in the merchant namespace
 		#tag EndNote
-		errors() As OpenAPIClient.Models.ItemValidationEvent
+		item_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -67,19 +67,19 @@ Protected Class CatalogsRetailItemErrorResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="errors"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="ItemValidationEvent"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

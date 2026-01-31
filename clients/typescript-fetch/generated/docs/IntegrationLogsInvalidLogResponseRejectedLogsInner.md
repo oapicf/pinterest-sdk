@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`logIndex` | number
 `field` | string
-`value` | string
+`logIndex` | number
 `reason` | string
+`value` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { IntegrationLogsInvalidLogResponseRejectedLogsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "logIndex": null,
   "field": null,
-  "value": null,
+  "logIndex": null,
   "reason": null,
+  "value": null,
 } satisfies IntegrationLogsInvalidLogResponseRejectedLogsInner
 
 console.log(example)

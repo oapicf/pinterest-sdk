@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;IntegrationRecord&gt;**](IntegrationRecord.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;IntegrationRecord&gt;**](IntegrationRecord.md) |  |  |
 
 
 

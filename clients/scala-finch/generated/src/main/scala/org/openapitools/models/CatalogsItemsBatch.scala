@@ -18,17 +18,17 @@ import scala.collection.immutable.Seq
  * Object describing the catalogs items batch
  * @param catalogUnderscoretype 
  * @param batchUnderscoreid Id of the catalogs items batch
- * @param createdUnderscoretime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
  * @param completedUnderscoretime Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
- * @param status 
+ * @param createdUnderscoretime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
  * @param items Array with the catalogs items processing records part of the catalogs items batch
+ * @param status 
  */
 case class CatalogsItemsBatch(catalogUnderscoretype: CatalogsType,
                 batchUnderscoreid: Option[String],
-                createdUnderscoretime: Option[ZonedDateTime],
                 completedUnderscoretime: Option[ZonedDateTime],
-                status: Option[BatchOperationStatus],
-                items: Option[Seq[CreativeAssetsProcessingRecord]]
+                createdUnderscoretime: ZonedDateTime,
+                items: Option[Seq[CreativeAssetsProcessingRecord]],
+                status: Option[BatchOperationStatus]
                 )
 
 object CatalogsItemsBatch {

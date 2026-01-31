@@ -9,12 +9,12 @@
 
 (def ssio-account-response-data
   {
-   (ds/opt :eligible) boolean?
-   (ds/opt :can_edit) boolean?
    (ds/opt :billto_infos) (s/coll-of ssio-account-item-spec)
+   (ds/opt :can_edit) boolean?
    (ds/opt :currency) string?
-   (ds/opt :pmp_names) (s/coll-of ssio-account-pmp-name-spec)
+   (ds/opt :eligible) boolean?
    (ds/opt :error) string?
+   (ds/opt :pmp_names) (s/coll-of ssio-account-pmp-name-spec)
    })
 
 (def ssio-account-response-spec

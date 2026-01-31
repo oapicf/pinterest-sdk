@@ -16,13 +16,13 @@ void main() {
   // final instance = TargetingTemplateList200Response();
 
   group('test TargetingTemplateList200Response', () {
-    // List<TargetingTemplateResponseData> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<TargetingTemplateGetResponseData> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

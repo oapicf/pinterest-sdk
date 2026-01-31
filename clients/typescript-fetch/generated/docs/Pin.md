@@ -1,31 +1,29 @@
 
 # Pin
 
-Pin
+Pin model containing properties related to a Pinterest Pin.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`id` | string
+`altText` | string
+`boardId` | string
+`boardOwner` | [BoardOwner](BoardOwner.md)
+`boardSectionId` | string
 `createdAt` | Date
-`link` | string
-`title` | string
+`creativeType` | [CreativeType](CreativeType.md)
 `description` | string
 `dominantColor` | string
-`altText` | string
-`creativeType` | [CreativeType](CreativeType.md)
-`boardId` | string
-`boardSectionId` | string
-`boardOwner` | [BoardOwner](BoardOwner.md)
-`isOwner` | boolean
-`media` | [PinMedia](PinMedia.md)
-`mediaSource` | [PinMediaSource](PinMediaSource.md)
-`parentPinId` | string
-`isStandard` | boolean
 `hasBeenPromoted` | boolean
-`note` | string
+`id` | string
+`isOwner` | boolean
+`isStandard` | boolean
+`link` | string
+`media` | [PinMedia](PinMedia.md)
+`parentPinId` | string
 `pinMetrics` | object
+`title` | string
 
 ## Example
 
@@ -34,25 +32,23 @@ import type { Pin } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 813744226420795884,
-  "createdAt": 2020-01-01T20:10:40Z,
-  "link": https://www.pinterest.com/,
-  "title": null,
-  "description": null,
-  "dominantColor": #6E7874,
   "altText": null,
-  "creativeType": null,
   "boardId": null,
-  "boardSectionId": null,
   "boardOwner": null,
-  "isOwner": null,
-  "media": null,
-  "mediaSource": null,
-  "parentPinId": null,
-  "isStandard": null,
+  "boardSectionId": null,
+  "createdAt": null,
+  "creativeType": null,
+  "description": null,
+  "dominantColor": null,
   "hasBeenPromoted": null,
-  "note": null,
+  "id": null,
+  "isOwner": null,
+  "isStandard": null,
+  "link": null,
+  "media": null,
+  "parentPinId": null,
   "pinMetrics": {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}},
+  "title": null,
 } satisfies Pin
 
 console.log(example)

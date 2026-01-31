@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `LeadFormUpdateRequest`
 --
-SELECT `name`, `privacy_policy_link`, `has_accepted_terms`, `completion_message`, `status`, `disclosure_language`, `questions`, `policy_links`, `id` FROM `LeadFormUpdateRequest` WHERE 1;
+SELECT `completion_message`, `disclosure_language`, `has_accepted_terms`, `name`, `policy_links`, `privacy_policy_link`, `questions`, `status`, `id` FROM `LeadFormUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `LeadFormUpdateRequest`
 --
-INSERT INTO `LeadFormUpdateRequest`(`name`, `privacy_policy_link`, `has_accepted_terms`, `completion_message`, `status`, `disclosure_language`, `questions`, `policy_links`, `id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `LeadFormUpdateRequest`(`completion_message`, `disclosure_language`, `has_accepted_terms`, `name`, `policy_links`, `privacy_policy_link`, `questions`, `status`, `id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `LeadFormUpdateRequest`
 --
-UPDATE `LeadFormUpdateRequest` SET `name` = ?, `privacy_policy_link` = ?, `has_accepted_terms` = ?, `completion_message` = ?, `status` = ?, `disclosure_language` = ?, `questions` = ?, `policy_links` = ?, `id` = ? WHERE 1;
+UPDATE `LeadFormUpdateRequest` SET `completion_message` = ?, `disclosure_language` = ?, `has_accepted_terms` = ?, `name` = ?, `policy_links` = ?, `privacy_policy_link` = ?, `questions` = ?, `status` = ?, `id` = ? WHERE 1;
 
 --
 -- DELETE template for table `LeadFormUpdateRequest`

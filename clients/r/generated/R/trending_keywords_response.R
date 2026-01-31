@@ -7,7 +7,7 @@
 #' @title TrendingKeywordsResponse
 #' @description TrendingKeywordsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field trends The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend. list(\link{TrendingKeywordsResponseTrendsInner}) [optional]
+#' @field trends The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend. list(\link{TrendingKeyword}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -75,7 +75,7 @@ TrendingKeywordsResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`trends`)) {
-        self$`trends` <- ApiClient$new()$deserializeObj(this_object$`trends`, "array[TrendingKeywordsResponseTrendsInner]", loadNamespace("openapi"))
+        self$`trends` <- ApiClient$new()$deserializeObj(this_object$`trends`, "array[TrendingKeyword]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +98,7 @@ TrendingKeywordsResponse <- R6::R6Class(
     #' @return the instance of TrendingKeywordsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`trends` <- ApiClient$new()$deserializeObj(this_object$`trends`, "array[TrendingKeywordsResponseTrendsInner]", loadNamespace("openapi"))
+      self$`trends` <- ApiClient$new()$deserializeObj(this_object$`trends`, "array[TrendingKeyword]", loadNamespace("openapi"))
       self
     },
 

@@ -14,6 +14,7 @@ import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.MetricsResponse;
+import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -31,11 +32,11 @@ public class AdsApiImpl implements AdsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<MetricsResponse>> adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public Future<ApiResponse<MetricsResponse>> adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<List<AdsAnalyticsResponseInner>>> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds) {
+    public Future<ApiResponse<List<AdsAnalyticsResponseInner>>> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds, ReportingTimeZone reportingTimezone) {
         return Future.failedFuture(new HttpException(501));
     }
 

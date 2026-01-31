@@ -1,0 +1,70 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LineItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LineItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LineItem {
+    title = LineItem
+    description = LineItem
+    derivedFrom = Root
+    properties {
+        product_brand {
+          type =  string
+          description = "Product brand. For example, &#39;Parker&#39;."
+          optional = false
+        }
+        product_category {
+          type =  string
+          description = "Product category. For example, &#39;Shoes&#39;."
+          optional = false
+        }
+        product_id {
+          type =  integer
+          description = "Product ID. For example, 1414."
+          optional = false
+        }
+        product_name {
+          type =  string
+          description = "Product name. For example, &#39;Parker Boots&#39;."
+          optional = false
+        }
+        product_price {
+          type =  string
+          description = "Product price. For example, &#39;99.99&#39;."
+          optional = false
+        }
+        product_quantity {
+          type =  integer
+          description = "Product quantity. For example, 2."
+          optional = false
+        }
+        product_variant {
+          type =  string
+          description = "Product variant. For example, &#39;Red&#39;."
+          optional = false
+        }
+        product_variant_id {
+          type =  string
+          description = "Product variant ID. For example, &#39;1414-34832&#39;."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LineItem {
+    title = LineItem
+    description = LineItem
+    implements = openapi_server.resourceTypes.LineItem
+
+  }
+}

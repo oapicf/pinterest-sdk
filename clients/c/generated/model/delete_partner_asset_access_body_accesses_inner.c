@@ -23,16 +23,16 @@ pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e
 }
 
 static delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_create_internal(
-    char *partner_id,
     char *asset_id,
+    char *partner_id,
     pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type
     ) {
     delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_local_var = malloc(sizeof(delete_partner_asset_access_body_accesses_inner_t));
     if (!delete_partner_asset_access_body_accesses_inner_local_var) {
         return NULL;
     }
-    delete_partner_asset_access_body_accesses_inner_local_var->partner_id = partner_id;
     delete_partner_asset_access_body_accesses_inner_local_var->asset_id = asset_id;
+    delete_partner_asset_access_body_accesses_inner_local_var->partner_id = partner_id;
     delete_partner_asset_access_body_accesses_inner_local_var->partner_type = partner_type;
 
     delete_partner_asset_access_body_accesses_inner_local_var->_library_owned = 1;
@@ -40,13 +40,13 @@ static delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_a
 }
 
 __attribute__((deprecated)) delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_create(
-    char *partner_id,
     char *asset_id,
+    char *partner_id,
     pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type
     ) {
     return delete_partner_asset_access_body_accesses_inner_create_internal (
-        partner_id,
         asset_id,
+        partner_id,
         partner_type
         );
 }
@@ -60,13 +60,13 @@ void delete_partner_asset_access_body_accesses_inner_free(delete_partner_asset_a
         return ;
     }
     listEntry_t *listEntry;
-    if (delete_partner_asset_access_body_accesses_inner->partner_id) {
-        free(delete_partner_asset_access_body_accesses_inner->partner_id);
-        delete_partner_asset_access_body_accesses_inner->partner_id = NULL;
-    }
     if (delete_partner_asset_access_body_accesses_inner->asset_id) {
         free(delete_partner_asset_access_body_accesses_inner->asset_id);
         delete_partner_asset_access_body_accesses_inner->asset_id = NULL;
+    }
+    if (delete_partner_asset_access_body_accesses_inner->partner_id) {
+        free(delete_partner_asset_access_body_accesses_inner->partner_id);
+        delete_partner_asset_access_body_accesses_inner->partner_id = NULL;
     }
     free(delete_partner_asset_access_body_accesses_inner);
 }
@@ -74,20 +74,20 @@ void delete_partner_asset_access_body_accesses_inner_free(delete_partner_asset_a
 cJSON *delete_partner_asset_access_body_accesses_inner_convertToJSON(delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner) {
     cJSON *item = cJSON_CreateObject();
 
-    // delete_partner_asset_access_body_accesses_inner->partner_id
-    if (!delete_partner_asset_access_body_accesses_inner->partner_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "partner_id", delete_partner_asset_access_body_accesses_inner->partner_id) == NULL) {
-    goto fail; //String
-    }
-
-
     // delete_partner_asset_access_body_accesses_inner->asset_id
     if (!delete_partner_asset_access_body_accesses_inner->asset_id) {
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "asset_id", delete_partner_asset_access_body_accesses_inner->asset_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // delete_partner_asset_access_body_accesses_inner->partner_id
+    if (!delete_partner_asset_access_body_accesses_inner->partner_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "partner_id", delete_partner_asset_access_body_accesses_inner->partner_id) == NULL) {
     goto fail; //String
     }
 
@@ -112,21 +112,6 @@ delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_b
 
     delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_local_var = NULL;
 
-    // delete_partner_asset_access_body_accesses_inner->partner_id
-    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_body_accesses_innerJSON, "partner_id");
-    if (cJSON_IsNull(partner_id)) {
-        partner_id = NULL;
-    }
-    if (!partner_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(partner_id))
-    {
-    goto end; //String
-    }
-
     // delete_partner_asset_access_body_accesses_inner->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_body_accesses_innerJSON, "asset_id");
     if (cJSON_IsNull(asset_id)) {
@@ -138,6 +123,21 @@ delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_b
 
     
     if(!cJSON_IsString(asset_id))
+    {
+    goto end; //String
+    }
+
+    // delete_partner_asset_access_body_accesses_inner->partner_id
+    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_body_accesses_innerJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
+    if (!partner_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(partner_id))
     {
     goto end; //String
     }
@@ -158,8 +158,8 @@ delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_b
 
 
     delete_partner_asset_access_body_accesses_inner_local_var = delete_partner_asset_access_body_accesses_inner_create_internal (
-        strdup(partner_id->valuestring),
         strdup(asset_id->valuestring),
+        strdup(partner_id->valuestring),
         partner_type ? partner_typeVariable : pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_NULL
         );
 

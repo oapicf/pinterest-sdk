@@ -13,12 +13,24 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing a retail catalog item's bid options (bid price and bid multipliers).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing a retail catalog item's bid options (bid price and bid multipliers).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionBidOptions   {
   
-  private Long bidInMicroCurrency;
   private AppTypeMultipliers appTypeMultipliers;
+  private Long bidInMicroCurrency;
   private PlacementMultipliers placementMultipliers;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("app_type_multipliers")
+  public AppTypeMultipliers getAppTypeMultipliers() {
+    return appTypeMultipliers;
+  }
+  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+    this.appTypeMultipliers = appTypeMultipliers;
+  }
 
   /**
    * Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.
@@ -31,18 +43,6 @@ public class AdvancedAuctionBidOptions   {
   }
   public void setBidInMicroCurrency(Long bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("app_type_multipliers")
-  public AppTypeMultipliers getAppTypeMultipliers() {
-    return appTypeMultipliers;
-  }
-  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
-    this.appTypeMultipliers = appTypeMultipliers;
   }
 
   /**
@@ -67,14 +67,14 @@ public class AdvancedAuctionBidOptions   {
       return false;
     }
     AdvancedAuctionBidOptions advancedAuctionBidOptions = (AdvancedAuctionBidOptions) o;
-    return Objects.equals(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
-        Objects.equals(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+    return Objects.equals(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+        Objects.equals(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
         Objects.equals(this.placementMultipliers, advancedAuctionBidOptions.placementMultipliers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidInMicroCurrency, appTypeMultipliers, placementMultipliers);
+    return Objects.hash(appTypeMultipliers, bidInMicroCurrency, placementMultipliers);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class AdvancedAuctionBidOptions   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionBidOptions {\n");
     
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();

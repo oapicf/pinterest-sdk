@@ -47,22 +47,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getWebsite();
-
-	/*! \brief Set 
-	 */
-	void setWebsite(std::string  website);
-	/*! \brief Get 
-	 */
 	std::string getVerificationMethod();
 
 	/*! \brief Set 
 	 */
 	void setVerificationMethod(std::string  verification_method);
+	/*! \brief Get 
+	 */
+	std::string getWebsite();
+
+	/*! \brief Set 
+	 */
+	void setWebsite(std::string  website);
 
 private:
-	std::string website;
 	std::string verification_method;
+	std::string website;
 	void __init();
 	void __cleanup();
 

@@ -8,29 +8,24 @@ import org.openapitools._
 import org.openapitools.models.BigDecimal
 import org.openapitools.models.ConversionTagConfigs
 import org.openapitools.models.EnhancedMatchStatusType
-import org.openapitools.models.EntityStatus
 
 /**
  * 
- * @param adUnderscoreaccountUnderscoreid Ad account ID.
  * @param codeUnderscoresnippet Tag code snippet.
- * @param enhancedUnderscorematchUnderscorestatus 
+ * @param configs 
+ * @param enhancedUnderscorematchUnderscorestatus The enhanced match status of the tag
  * @param id Tag ID.
  * @param lastUnderscorefiredUnderscoretimeUnderscorems Time for the last event fired.
  * @param name Conversion tag name.
- * @param status 
  * @param version Version number.
- * @param configs 
  */
-case class ConversionTagCommon(adUnderscoreaccountUnderscoreid: Option[String],
-                codeUnderscoresnippet: Option[String],
+case class ConversionTagCommon(codeUnderscoresnippet: Option[String],
+                configs: Option[ConversionTagConfigs],
                 enhancedUnderscorematchUnderscorestatus: Option[EnhancedMatchStatusType],
                 id: Option[String],
                 lastUnderscorefiredUnderscoretimeUnderscorems: Option[BigDecimal],
-                name: Option[String],
-                status: Option[EntityStatus],
-                version: Option[String],
-                configs: Option[ConversionTagConfigs]
+                name: String,
+                version: Option[String]
                 )
 
 object ConversionTagCommon {

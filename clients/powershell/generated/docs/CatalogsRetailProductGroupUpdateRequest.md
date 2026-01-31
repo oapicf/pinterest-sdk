@@ -4,22 +4,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **String** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | [optional] 
-**Name** | **String** |  | [optional] 
+**Country** | [**Country**](Country.md) |  | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
-**Country** | [**Country**](Country.md) |  | [optional] 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**Name** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsRetailProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsRetailProductGroupUpdateRequest  -CatalogType null `
- -Name null `
+ -Country null `
  -Description null `
  -Filters null `
- -Country null `
- -Locale null
+ -Locale null `
+ -Name null
 ```
 
 - Convert the resource to JSON

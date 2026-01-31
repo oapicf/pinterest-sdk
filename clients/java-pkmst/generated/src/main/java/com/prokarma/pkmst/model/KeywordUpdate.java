@@ -15,34 +15,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * KeywordUpdate
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordUpdate   {
-  @JsonProperty("id")
-  private String id;
-
   @JsonProperty("archived")
   private Boolean archived;
 
   @JsonProperty("bid")
   private Integer bid;
 
-  public KeywordUpdate id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Keyword ID.
-   * @return id
-   */
-  @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
+  @JsonProperty("id")
+  private String id;
 
   public KeywordUpdate archived(Boolean archived) {
     this.archived = archived;
@@ -80,6 +62,24 @@ public class KeywordUpdate   {
     this.bid = bid;
   }
 
+  public KeywordUpdate id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Keyword ID.
+   * @return id
+   */
+  @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,14 +90,14 @@ public class KeywordUpdate   {
       return false;
     }
     KeywordUpdate keywordUpdate = (KeywordUpdate) o;
-    return Objects.equals(this.id, keywordUpdate.id) &&
-        Objects.equals(this.archived, keywordUpdate.archived) &&
-        Objects.equals(this.bid, keywordUpdate.bid);
+    return Objects.equals(this.archived, keywordUpdate.archived) &&
+        Objects.equals(this.bid, keywordUpdate.bid) &&
+        Objects.equals(this.id, keywordUpdate.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, archived, bid);
+    return Objects.hash(archived, bid, id);
   }
 
   @Override
@@ -105,9 +105,9 @@ public class KeywordUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordUpdate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

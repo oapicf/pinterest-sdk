@@ -15,7 +15,7 @@ Method | HTTP request | Description
 Get advertiser entities in bulk
 
 Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,
-and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused,
+keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
 only active entities will return data.
 
 ### Example
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.
 Note that this request will be processed asynchronously; the response will include a <code>request_id</code>
 that can be used to obtain the status of the request.
 

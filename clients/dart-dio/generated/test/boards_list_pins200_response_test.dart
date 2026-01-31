@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BoardsListPins200Response, () {
-    // Pins
-    // BuiltList<Pin> items
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // Pins
+    // BuiltList<Pin> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

@@ -17,8 +17,8 @@
       "default": null
     },
     {
-      "name": "name",
-      "type": ["null", "string"],
+      "name": "country",
+      "type": ["null", "model.Country"],
       "doc": "",
       "default": null
     },
@@ -35,14 +35,14 @@
       "default": null
     },
     {
-      "name": "country",
-      "type": ["null", "model.Country"],
+      "name": "locale",
+      "type": ["null", "model.CatalogsLocale"],
       "doc": "",
       "default": null
     },
     {
-      "name": "locale",
-      "type": ["null", "model.CatalogsLocale"],
+      "name": "name",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     }

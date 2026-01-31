@@ -23,12 +23,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionKey", description = "Object uniquely identifying a retail catalog item")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionKey {
 
-  private String itemId;
-
   private Country country;
+
+  private String itemId;
 
   private Language language;
 
@@ -39,30 +39,10 @@ public class AdvancedAuctionKey {
   /**
    * Constructor with only required parameters
    */
-  public AdvancedAuctionKey(String itemId, Country country, Language language) {
-    this.itemId = itemId;
+  public AdvancedAuctionKey(Country country, String itemId, Language language) {
     this.country = country;
+    this.itemId = itemId;
     this.language = language;
-  }
-
-  public AdvancedAuctionKey itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-   */
-  @NotNull 
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
   }
 
   public AdvancedAuctionKey country(Country country) {
@@ -83,6 +63,26 @@ public class AdvancedAuctionKey {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdvancedAuctionKey itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+   */
+  @NotNull 
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public AdvancedAuctionKey language(Language language) {
@@ -114,22 +114,22 @@ public class AdvancedAuctionKey {
       return false;
     }
     AdvancedAuctionKey advancedAuctionKey = (AdvancedAuctionKey) o;
-    return Objects.equals(this.itemId, advancedAuctionKey.itemId) &&
-        Objects.equals(this.country, advancedAuctionKey.country) &&
+    return Objects.equals(this.country, advancedAuctionKey.country) &&
+        Objects.equals(this.itemId, advancedAuctionKey.itemId) &&
         Objects.equals(this.language, advancedAuctionKey.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionKey {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

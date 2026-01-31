@@ -5,27 +5,15 @@
   "name": "SSIOEditInsertionOrderRequest",
   "fields": [
     {
-      "name": "start_date",
+      "name": "agency_link",
       "type": ["null", "string"],
-      "doc": "Starting date of time period. Format: YYYY-MM-DD",
+      "doc": "URL link for agency",
       "default": null
     },
     {
-      "name": "end_date",
+      "name": "billing_contact_email",
       "type": ["null", "string"],
-      "doc": "End date of time period. Format: YYYY-MM-DD",
-      "default": null
-    },
-    {
-      "name": "po_number",
-      "type": ["null", "string"],
-      "doc": "The po number",
-      "default": null
-    },
-    {
-      "name": "budget_amount",
-      "type": ["null", "double"],
-      "doc": "If Budget order line, the budget amount.",
+      "doc": "The billing contact email",
       "default": null
     },
     {
@@ -41,9 +29,21 @@
       "default": null
     },
     {
-      "name": "billing_contact_email",
+      "name": "budget_amount",
+      "type": ["null", "double"],
+      "doc": "If Budget order line, the budget amount.",
+      "default": null
+    },
+    {
+      "name": "end_date",
       "type": ["null", "string"],
-      "doc": "The billing contact email",
+      "doc": "End date of time period. Format: YYYY-MM-DD",
+      "default": null
+    },
+    {
+      "name": "media_contact_email",
+      "type": ["null", "string"],
+      "doc": "The media contact email",
       "default": null
     },
     {
@@ -59,21 +59,27 @@
       "default": null
     },
     {
-      "name": "media_contact_email",
+      "name": "po_number",
       "type": ["null", "string"],
-      "doc": "The media contact email",
+      "doc": "The po number",
       "default": null
     },
     {
-      "name": "agency_link",
+      "name": "start_date",
       "type": ["null", "string"],
-      "doc": "URL link for agency",
+      "doc": "Starting date of time period. Format: YYYY-MM-DD",
       "default": null
     },
     {
       "name": "user_email",
       "type": ["null", "string"],
       "doc": "The email of user submitting the insertion order",
+      "default": null
+    },
+    {
+      "name": "ads_manager_order_line_id",
+      "type": ["null", "string"],
+      "doc": "Ads manager OrderLineId",
       "default": null
     },
     {
@@ -92,12 +98,6 @@
       "name": "salesforce_order_line_id",
       "type": ["null", "string"],
       "doc": "OrderLineId in SFDC",
-      "default": null
-    },
-    {
-      "name": "ads_manager_order_line_id",
-      "type": ["null", "string"],
-      "doc": "Ads manager OrderLineId",
       "default": null
     }
   ]

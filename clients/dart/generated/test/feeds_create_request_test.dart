@@ -16,19 +16,34 @@ void main() {
   // final instance = FeedsCreateRequest();
 
   group('test FeedsCreateRequest', () {
+    // Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // CatalogsType catalogType
+    test('to test the property `catalogType`', () async {
+      // TODO
+    });
+
+    // CatalogsFeedCredentials credentials
+    test('to test the property `credentials`', () async {
+      // TODO
+    });
+
+    // ProductAvailabilityType defaultAvailability
+    test('to test the property `defaultAvailability`', () async {
+      // TODO
+    });
+
+    // Country defaultCountry
+    test('to test the property `defaultCountry`', () async {
+      // TODO
+    });
+
     // NullableCurrency defaultCurrency
     test('to test the property `defaultCurrency`', () async {
-      // TODO
-    });
-
-    // A human-friendly name associated to a given feed.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // CatalogsFormat format
-    test('to test the property `format`', () async {
       // TODO
     });
 
@@ -37,8 +52,8 @@ void main() {
       // TODO
     });
 
-    // CatalogsFeedCredentials credentials
-    test('to test the property `credentials`', () async {
+    // CatalogsFormat format
+    test('to test the property `format`', () async {
       // TODO
     });
 
@@ -48,34 +63,19 @@ void main() {
       // TODO
     });
 
+    // A human-friendly name associated to a given feed.
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
     // CatalogsFeedProcessingSchedule preferredProcessingSchedule
     test('to test the property `preferredProcessingSchedule`', () async {
       // TODO
     });
 
-    // CatalogsType catalogType
-    test('to test the property `catalogType`', () async {
-      // TODO
-    });
-
-    // Country defaultCountry
-    test('to test the property `defaultCountry`', () async {
-      // TODO
-    });
-
-    // ProductAvailabilityType defaultAvailability
-    test('to test the property `defaultAvailability`', () async {
-      // TODO
-    });
-
     // CatalogsStatus status (default value: 'ACTIVE')
     test('to test the property `status`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

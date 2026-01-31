@@ -23,26 +23,26 @@ ad_account_t* instantiate_ad_account(int include_optional) {
   ad_account_t* ad_account = NULL;
   if (include_optional) {
     ad_account = ad_account_create(
-      "0",
+      pinterest_rest_api_ad_account__AD,
+      56,
+      pinterest_rest_api_ad_account__UNK,
+      "a",
       "0",
        // false, not to have infinite recursion
       instantiate_ad_account_owner(0),
-      pinterest_rest_api_ad_account__"US",
-      pinterest_rest_api_ad_account__"USD",
       list_createList(),
-      1451431341,
-      1451431341
+      56
     );
   } else {
     ad_account = ad_account_create(
-      "0",
+      pinterest_rest_api_ad_account__AD,
+      56,
+      pinterest_rest_api_ad_account__UNK,
+      "a",
       "0",
       NULL,
-      pinterest_rest_api_ad_account__"US",
-      pinterest_rest_api_ad_account__"USD",
       list_createList(),
-      1451431341,
-      1451431341
+      56
     );
   }
 

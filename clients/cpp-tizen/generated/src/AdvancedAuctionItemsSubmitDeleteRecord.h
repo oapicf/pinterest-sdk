@@ -9,8 +9,10 @@
 
 
 #include <string>
+#include "AdvancedAuctionOperationError.h"
 #include "Country.h"
 #include "Language.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -47,6 +49,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	Country getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(Country  country);
 	/*! \brief Get The catalog retail item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -56,23 +65,24 @@ public:
 	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	Country getCountry();
-
-	/*! \brief Set 
-	 */
-	void setCountry(Country  country);
-	/*! \brief Get 
-	 */
 	Language getLanguage();
 
 	/*! \brief Set 
 	 */
 	void setLanguage(Language  language);
+	/*! \brief Get Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	 */
+	std::list<AdvancedAuctionOperationError> getErrors();
+
+	/*! \brief Set Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	 */
+	void setErrors(std::list <AdvancedAuctionOperationError> errors);
 
 private:
-	std::string item_id;
 	Country country;
+	std::string item_id;
 	Language language;
+	std::list <AdvancedAuctionOperationError>errors;
 	void __init();
 	void __cleanup();
 

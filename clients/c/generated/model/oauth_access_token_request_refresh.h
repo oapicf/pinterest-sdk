@@ -29,7 +29,6 @@ pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e oauth_access_t
 typedef struct oauth_access_token_request_refresh_t {
     char *refresh_token; // string
     char *scope; // string
-    int refresh_on; //boolean
     pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -38,7 +37,6 @@ typedef struct oauth_access_token_request_refresh_t {
 __attribute__((deprecated)) oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create(
     char *refresh_token,
     char *scope,
-    int refresh_on,
     pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type
 );
 

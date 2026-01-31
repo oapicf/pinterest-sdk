@@ -12,8 +12,29 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}catalog_type`,
+                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+            },
+            ...CatalogsFeedCredentials.fields(`${keyPrefix}credentials`, isInput),
+            {
                 key: `${keyPrefix}default_currency`,
                 ...NullableCurrency.fields(`${keyPrefix}default_currency`, isInput),
+            },
+            ...CatalogsFeedsCreateRequest_default_locale.fields(`${keyPrefix}default_locale`, isInput),
+            {
+                key: `${keyPrefix}format`,
+                ...CatalogsFormat.fields(`${keyPrefix}format`, isInput),
+            },
+            {
+                key: `${keyPrefix}location`,
+                label: `The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. - [${labelPrefix}location]`,
+                required: true,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}name`,
@@ -21,28 +42,7 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}format`,
-                ...CatalogsFormat.fields(`${keyPrefix}format`, isInput),
-            },
-            ...CatalogsFeedsCreateRequest_default_locale.fields(`${keyPrefix}default_locale`, isInput),
-            ...CatalogsFeedCredentials.fields(`${keyPrefix}credentials`, isInput),
-            {
-                key: `${keyPrefix}location`,
-                label: `The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. - [${labelPrefix}location]`,
-                required: true,
-                type: 'string',
-            },
             ...CatalogsFeedProcessingSchedule.fields(`${keyPrefix}preferred_processing_schedule`, isInput),
-            {
-                key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
-            },
-            {
-                key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
-                type: 'string',
-            },
             {
                 key: `${keyPrefix}status`,
                 ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
@@ -52,15 +52,15 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'default_currency': bundle.inputData?.[`${keyPrefix}default_currency`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
-            'format': bundle.inputData?.[`${keyPrefix}format`],
-            'default_locale': utils.removeIfEmpty(CatalogsFeedsCreateRequest_default_locale.mapping(bundle, `${keyPrefix}default_locale`)),
-            'credentials': utils.removeIfEmpty(CatalogsFeedCredentials.mapping(bundle, `${keyPrefix}credentials`)),
-            'location': bundle.inputData?.[`${keyPrefix}location`],
-            'preferred_processing_schedule': utils.removeIfEmpty(CatalogsFeedProcessingSchedule.mapping(bundle, `${keyPrefix}preferred_processing_schedule`)),
-            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
+            'credentials': utils.removeIfEmpty(CatalogsFeedCredentials.mapping(bundle, `${keyPrefix}credentials`)),
+            'default_currency': bundle.inputData?.[`${keyPrefix}default_currency`],
+            'default_locale': utils.removeIfEmpty(CatalogsFeedsCreateRequest_default_locale.mapping(bundle, `${keyPrefix}default_locale`)),
+            'format': bundle.inputData?.[`${keyPrefix}format`],
+            'location': bundle.inputData?.[`${keyPrefix}location`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
+            'preferred_processing_schedule': utils.removeIfEmpty(CatalogsFeedProcessingSchedule.mapping(bundle, `${keyPrefix}preferred_processing_schedule`)),
             'status': bundle.inputData?.[`${keyPrefix}status`],
         }
     },

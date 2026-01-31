@@ -8,6 +8,9 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { BrandAccountsCreate200Response } from '../models/BrandAccountsCreate200Response';
+import { BrandAccountsCreateRequest } from '../models/BrandAccountsCreateRequest';
+import { BrandAccountsUpdateRequest } from '../models/BrandAccountsUpdateRequest';
 import { DeletePartnersRequest } from '../models/DeletePartnersRequest';
 import { DeletePartnersResponse } from '../models/DeletePartnersResponse';
 import { DeletedMembersResponse } from '../models/DeletedMembersResponse';
@@ -17,6 +20,7 @@ import { GetBusinessPartners200Response } from '../models/GetBusinessPartners200
 import { MemberBusinessRole } from '../models/MemberBusinessRole';
 import { MembersToDeleteBody } from '../models/MembersToDeleteBody';
 import { PartnerType } from '../models/PartnerType';
+import { SystemUserUpdateRequest } from '../models/SystemUserUpdateRequest';
 import { UpdateMemberBusinessRoleBody } from '../models/UpdateMemberBusinessRoleBody';
 import { UpdateMemberResultsResponseArray } from '../models/UpdateMemberResultsResponseArray';
 
@@ -24,6 +28,126 @@ import { UpdateMemberResultsResponseArray } from '../models/UpdateMemberResultsR
  * no description
  */
 export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequestFactory {
+
+    /**
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     * Create a Brand Account
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountsCreateRequest 
+     */
+    public async brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'businessHierarchyId' is not null or undefined
+        if (businessHierarchyId === null || businessHierarchyId === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "brandAccountsCreate", "businessHierarchyId");
+        }
+
+
+        // verify required parameter 'brandAccountsCreateRequest' is not null or undefined
+        if (brandAccountsCreateRequest === null || brandAccountsCreateRequest === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "brandAccountsCreate", "brandAccountsCreateRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts'
+            .replace('{' + 'business_hierarchy_id' + '}', encodeURIComponent(String(businessHierarchyId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(brandAccountsCreateRequest, "BrandAccountsCreateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Update an existing Brand Account
+     * Update a Brand Account
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountId Unique identifier of a brand account.
+     * @param brandAccountsUpdateRequest 
+     */
+    public async brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'businessHierarchyId' is not null or undefined
+        if (businessHierarchyId === null || businessHierarchyId === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "brandAccountsUpdate", "businessHierarchyId");
+        }
+
+
+        // verify required parameter 'brandAccountId' is not null or undefined
+        if (brandAccountId === null || brandAccountId === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "brandAccountsUpdate", "brandAccountId");
+        }
+
+
+        // verify required parameter 'brandAccountsUpdateRequest' is not null or undefined
+        if (brandAccountsUpdateRequest === null || brandAccountsUpdateRequest === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "brandAccountsUpdate", "brandAccountsUpdateRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'
+            .replace('{' + 'business_hierarchy_id' + '}', encodeURIComponent(String(businessHierarchyId)))
+            .replace('{' + 'brand_account_id' + '}', encodeURIComponent(String(brandAccountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(brandAccountsUpdateRequest, "BrandAccountsUpdateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
 
     /**
      * Terminate memberships between the specified members and your business.
@@ -185,6 +309,7 @@ export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequest
      * Get all members of the specified business. The return response will include the member\'s business_role and assets they have access to if assets_summary=TRUE
      * Get business members
      * @param businessId Unique identifier of the requesting business.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
      * @param memberIds A list of business members ids separated by comma.
@@ -192,13 +317,14 @@ export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequest
      * @param bookmark Cursor used to fetch the next page of items
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
-    public async getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'businessId' is not null or undefined
         if (businessId === null || businessId === undefined) {
             throw new RequiredError("BusinessAccessRelationshipsApi", "getBusinessMembers", "businessId");
         }
+
 
 
 
@@ -214,6 +340,11 @@ export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequest
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fetchSystemUsers !== undefined) {
+            requestContext.setQueryParam("fetch_system_users", ObjectSerializer.serialize(fetchSystemUsers, "boolean", ""));
+        }
 
         // Query Params
         if (assetsSummary !== undefined) {
@@ -345,6 +476,70 @@ export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequest
     }
 
     /**
+     * Update a system user information such as name.
+     * Update a system user information.
+     * @param businessId Unique identifier of the requesting business.
+     * @param systemUserId Unique identifier of a system user.
+     * @param systemUserUpdateRequest 
+     */
+    public async systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'businessId' is not null or undefined
+        if (businessId === null || businessId === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "systemUserUpdate", "businessId");
+        }
+
+
+        // verify required parameter 'systemUserId' is not null or undefined
+        if (systemUserId === null || systemUserId === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "systemUserUpdate", "systemUserId");
+        }
+
+
+        // verify required parameter 'systemUserUpdateRequest' is not null or undefined
+        if (systemUserUpdateRequest === null || systemUserUpdateRequest === undefined) {
+            throw new RequiredError("BusinessAccessRelationshipsApi", "systemUserUpdate", "systemUserUpdateRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/businesses/{business_id}/system_users/{system_user_id}'
+            .replace('{' + 'business_id' + '}', encodeURIComponent(String(businessId)))
+            .replace('{' + 'system_user_id' + '}', encodeURIComponent(String(systemUserId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(systemUserUpdateRequest, "SystemUserUpdateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Update a member\'s business role within the business.
      * Update member\'s business role
      * @param businessId Business id
@@ -403,6 +598,127 @@ export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequest
 }
 
 export class BusinessAccessRelationshipsApiResponseProcessor {
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to brandAccountsCreate
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async brandAccountsCreateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BrandAccountsCreate200Response >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: BrandAccountsCreate200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BrandAccountsCreate200Response", ""
+            ) as BrandAccountsCreate200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Invalid parameters.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BrandAccountsCreate200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BrandAccountsCreate200Response", ""
+            ) as BrandAccountsCreate200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to brandAccountsUpdate
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async brandAccountsUpdateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BrandAccountsCreate200Response >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: BrandAccountsCreate200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BrandAccountsCreate200Response", ""
+            ) as BrandAccountsCreate200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Invalid parameters.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not authenticated to update Brand Account", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not authorized to update Brand Account", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Brand account not found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "This account is not a brand account.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BrandAccountsCreate200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BrandAccountsCreate200Response", ""
+            ) as BrandAccountsCreate200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
 
     /**
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
@@ -585,6 +901,45 @@ export class BusinessAccessRelationshipsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "GetBusinessPartners200Response", ""
             ) as GetBusinessPartners200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to systemUserUpdate
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async systemUserUpdateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Invalid parameters.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

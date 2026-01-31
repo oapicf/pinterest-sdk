@@ -11,17 +11,17 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**conversion_tags_create**](ConversionTagsApi.md#conversion_tags_create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**conversion_tags_get**](ConversionTagsApi.md#conversion_tags_get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**conversion_tags_list**](ConversionTagsApi.md#conversion_tags_list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**conversion_tags_list**](ConversionTagsApi.md#conversion_tags_list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**ocpm_eligible_conversion_tags_get**](ConversionTagsApi.md#ocpm_eligible_conversion_tags_get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**page_visit_conversion_tags_get**](ConversionTagsApi.md#page_visit_conversion_tags_get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
 
 # **conversion_tags_create**
-> ConversionTagResponse conversion_tags_create(ad_account_id => $ad_account_id, conversion_tag_create => $conversion_tag_create)
+> ConversionTag conversion_tags_create(ad_account_id => $ad_account_id, conversion_tag_create => $conversion_tag_create)
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 ```perl
@@ -34,7 +34,7 @@ my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $conversion_tag_create = WWW::OpenAPIClient::Object::ConversionTagCreate->new(); # ConversionTagCreate | Conversion Tag to create
+my $conversion_tag_create = WWW::OpenAPIClient::Object::ConversionTagCreate->new(); # ConversionTagCreate | 
 
 eval {
     my $result = $api_instance->conversion_tags_create(ad_account_id => $ad_account_id, conversion_tag_create => $conversion_tag_create);
@@ -50,11 +50,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **conversion_tag_create** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create | 
+ **conversion_tag_create** | [**ConversionTagCreate**](ConversionTagCreate.md)|  | 
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **conversion_tags_get**
-> ConversionTagResponse conversion_tags_get(ad_account_id => $ad_account_id, conversion_tag_id => $conversion_tag_id)
+> ConversionTag conversion_tags_get(ad_account_id => $ad_account_id, conversion_tag_id => $conversion_tag_id)
 
 Get conversion tag
 
@@ -81,6 +81,8 @@ use WWW::OpenAPIClient::ConversionTagsApi;
 my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
@@ -105,11 +107,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -119,9 +121,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **conversion_tags_list**
-> ConversionTagListResponse conversion_tags_list(ad_account_id => $ad_account_id, filter_deleted => $filter_deleted)
+> ConversionTagsList200Response conversion_tags_list(ad_account_id => $ad_account_id, filter_deleted => $filter_deleted)
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -133,10 +135,12 @@ my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $filter_deleted = true; # boolean | Filter out deleted tags.
+my $filter_deleted = false; # boolean | Filter by deleted status
 
 eval {
     my $result = $api_instance->conversion_tags_list(ad_account_id => $ad_account_id, filter_deleted => $filter_deleted);
@@ -152,15 +156,15 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **filter_deleted** | **boolean**| Filter out deleted tags. | [optional] [default to false]
+ **filter_deleted** | **boolean**| Filter by deleted status | [optional] [default to false]
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -183,6 +187,8 @@ use WWW::OpenAPIClient::ConversionTagsApi;
 my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
@@ -209,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -232,6 +238,8 @@ use WWW::OpenAPIClient::ConversionTagsApi;
 my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
@@ -264,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

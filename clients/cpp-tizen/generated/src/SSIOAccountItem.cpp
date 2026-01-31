@@ -23,64 +23,64 @@ SSIOAccountItem::~SSIOAccountItem()
 void
 SSIOAccountItem::__init()
 {
-	//id = std::string();
-	//io_terms_id = std::string();
-	//io_terms = std::string();
-	//us_terms_id = std::string();
-	//us_terms = std::string();
-	//row_terms_id = std::string();
-	//row_terms = std::string();
-	//io_type = std::string();
 	//new std::list()std::list> addresses;
+	//id = std::string();
+	//io_terms = std::string();
+	//io_terms_id = std::string();
+	//io_type = std::string();
+	//row_terms = std::string();
+	//row_terms_id = std::string();
+	//us_terms = std::string();
+	//us_terms_id = std::string();
 }
 
 void
 SSIOAccountItem::__cleanup()
 {
+	//if(addresses != NULL) {
+	//addresses.RemoveAll(true);
+	//delete addresses;
+	//addresses = NULL;
+	//}
 	//if(id != NULL) {
 	//
 	//delete id;
 	//id = NULL;
-	//}
-	//if(io_terms_id != NULL) {
-	//
-	//delete io_terms_id;
-	//io_terms_id = NULL;
 	//}
 	//if(io_terms != NULL) {
 	//
 	//delete io_terms;
 	//io_terms = NULL;
 	//}
-	//if(us_terms_id != NULL) {
+	//if(io_terms_id != NULL) {
 	//
-	//delete us_terms_id;
-	//us_terms_id = NULL;
-	//}
-	//if(us_terms != NULL) {
-	//
-	//delete us_terms;
-	//us_terms = NULL;
-	//}
-	//if(row_terms_id != NULL) {
-	//
-	//delete row_terms_id;
-	//row_terms_id = NULL;
-	//}
-	//if(row_terms != NULL) {
-	//
-	//delete row_terms;
-	//row_terms = NULL;
+	//delete io_terms_id;
+	//io_terms_id = NULL;
 	//}
 	//if(io_type != NULL) {
 	//
 	//delete io_type;
 	//io_type = NULL;
 	//}
-	//if(addresses != NULL) {
-	//addresses.RemoveAll(true);
-	//delete addresses;
-	//addresses = NULL;
+	//if(row_terms != NULL) {
+	//
+	//delete row_terms;
+	//row_terms = NULL;
+	//}
+	//if(row_terms_id != NULL) {
+	//
+	//delete row_terms_id;
+	//row_terms_id = NULL;
+	//}
+	//if(us_terms != NULL) {
+	//
+	//delete us_terms;
+	//us_terms = NULL;
+	//}
+	//if(us_terms_id != NULL) {
+	//
+	//delete us_terms_id;
+	//us_terms_id = NULL;
 	//}
 	//
 }
@@ -90,94 +90,6 @@ SSIOAccountItem::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *io_terms_idKey = "io_terms_id";
-	node = json_object_get_member(pJsonObject, io_terms_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&io_terms_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *io_termsKey = "io_terms";
-	node = json_object_get_member(pJsonObject, io_termsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&io_terms, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *us_terms_idKey = "us_terms_id";
-	node = json_object_get_member(pJsonObject, us_terms_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&us_terms_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *us_termsKey = "us_terms";
-	node = json_object_get_member(pJsonObject, us_termsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&us_terms, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *row_terms_idKey = "row_terms_id";
-	node = json_object_get_member(pJsonObject, row_terms_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&row_terms_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *row_termsKey = "row_terms";
-	node = json_object_get_member(pJsonObject, row_termsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&row_terms, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *io_typeKey = "io_type";
-	node = json_object_get_member(pJsonObject, io_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&io_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *addressesKey = "addresses";
 	node = json_object_get_member(pJsonObject, addressesKey);
 	if (node !=NULL) {
@@ -202,6 +114,94 @@ SSIOAccountItem::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *io_termsKey = "io_terms";
+	node = json_object_get_member(pJsonObject, io_termsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&io_terms, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *io_terms_idKey = "io_terms_id";
+	node = json_object_get_member(pJsonObject, io_terms_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&io_terms_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *io_typeKey = "io_type";
+	node = json_object_get_member(pJsonObject, io_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&io_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *row_termsKey = "row_terms";
+	node = json_object_get_member(pJsonObject, row_termsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&row_terms, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *row_terms_idKey = "row_terms_id";
+	node = json_object_get_member(pJsonObject, row_terms_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&row_terms_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *us_termsKey = "us_terms";
+	node = json_object_get_member(pJsonObject, us_termsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&us_terms, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *us_terms_idKey = "us_terms_id";
+	node = json_object_get_member(pJsonObject, us_terms_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&us_terms_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 SSIOAccountItem::SSIOAccountItem(char* json)
@@ -214,78 +214,6 @@ SSIOAccountItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getIoTermsId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *io_terms_idKey = "io_terms_id";
-	json_object_set_member(pJsonObject, io_terms_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getIoTerms();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *io_termsKey = "io_terms";
-	json_object_set_member(pJsonObject, io_termsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUsTermsId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *us_terms_idKey = "us_terms_id";
-	json_object_set_member(pJsonObject, us_terms_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUsTerms();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *us_termsKey = "us_terms";
-	json_object_set_member(pJsonObject, us_termsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getRowTermsId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *row_terms_idKey = "row_terms_id";
-	json_object_set_member(pJsonObject, row_terms_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getRowTerms();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *row_termsKey = "row_terms";
-	json_object_set_member(pJsonObject, row_termsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getIoType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *io_typeKey = "io_type";
-	json_object_set_member(pJsonObject, io_typeKey, node);
 	if (isprimitive("SSIOAccountAddress")) {
 		list<SSIOAccountAddress> new_list = static_cast<list <SSIOAccountAddress> > (getAddresses());
 		node = converttoJson(&new_list, "SSIOAccountAddress", "array");
@@ -311,12 +239,96 @@ SSIOAccountItem::toJson()
 	
 	const gchar *addressesKey = "addresses";
 	json_object_set_member(pJsonObject, addressesKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getIoTerms();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *io_termsKey = "io_terms";
+	json_object_set_member(pJsonObject, io_termsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getIoTermsId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *io_terms_idKey = "io_terms_id";
+	json_object_set_member(pJsonObject, io_terms_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getIoType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *io_typeKey = "io_type";
+	json_object_set_member(pJsonObject, io_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getRowTerms();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *row_termsKey = "row_terms";
+	json_object_set_member(pJsonObject, row_termsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getRowTermsId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *row_terms_idKey = "row_terms_id";
+	json_object_set_member(pJsonObject, row_terms_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUsTerms();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *us_termsKey = "us_terms";
+	json_object_set_member(pJsonObject, us_termsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUsTermsId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *us_terms_idKey = "us_terms_id";
+	json_object_set_member(pJsonObject, us_terms_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::list<SSIOAccountAddress>
+SSIOAccountItem::getAddresses()
+{
+	return addresses;
+}
+
+void
+SSIOAccountItem::setAddresses(std::list <SSIOAccountAddress> addresses)
+{
+	this->addresses = addresses;
 }
 
 std::string
@@ -332,18 +344,6 @@ SSIOAccountItem::setId(std::string  id)
 }
 
 std::string
-SSIOAccountItem::getIoTermsId()
-{
-	return io_terms_id;
-}
-
-void
-SSIOAccountItem::setIoTermsId(std::string  io_terms_id)
-{
-	this->io_terms_id = io_terms_id;
-}
-
-std::string
 SSIOAccountItem::getIoTerms()
 {
 	return io_terms;
@@ -356,39 +356,27 @@ SSIOAccountItem::setIoTerms(std::string  io_terms)
 }
 
 std::string
-SSIOAccountItem::getUsTermsId()
+SSIOAccountItem::getIoTermsId()
 {
-	return us_terms_id;
+	return io_terms_id;
 }
 
 void
-SSIOAccountItem::setUsTermsId(std::string  us_terms_id)
+SSIOAccountItem::setIoTermsId(std::string  io_terms_id)
 {
-	this->us_terms_id = us_terms_id;
+	this->io_terms_id = io_terms_id;
 }
 
 std::string
-SSIOAccountItem::getUsTerms()
+SSIOAccountItem::getIoType()
 {
-	return us_terms;
+	return io_type;
 }
 
 void
-SSIOAccountItem::setUsTerms(std::string  us_terms)
+SSIOAccountItem::setIoType(std::string  io_type)
 {
-	this->us_terms = us_terms;
-}
-
-std::string
-SSIOAccountItem::getRowTermsId()
-{
-	return row_terms_id;
-}
-
-void
-SSIOAccountItem::setRowTermsId(std::string  row_terms_id)
-{
-	this->row_terms_id = row_terms_id;
+	this->io_type = io_type;
 }
 
 std::string
@@ -404,27 +392,39 @@ SSIOAccountItem::setRowTerms(std::string  row_terms)
 }
 
 std::string
-SSIOAccountItem::getIoType()
+SSIOAccountItem::getRowTermsId()
 {
-	return io_type;
+	return row_terms_id;
 }
 
 void
-SSIOAccountItem::setIoType(std::string  io_type)
+SSIOAccountItem::setRowTermsId(std::string  row_terms_id)
 {
-	this->io_type = io_type;
+	this->row_terms_id = row_terms_id;
 }
 
-std::list<SSIOAccountAddress>
-SSIOAccountItem::getAddresses()
+std::string
+SSIOAccountItem::getUsTerms()
 {
-	return addresses;
+	return us_terms;
 }
 
 void
-SSIOAccountItem::setAddresses(std::list <SSIOAccountAddress> addresses)
+SSIOAccountItem::setUsTerms(std::string  us_terms)
 {
-	this->addresses = addresses;
+	this->us_terms = us_terms;
+}
+
+std::string
+SSIOAccountItem::getUsTermsId()
+{
+	return us_terms_id;
+}
+
+void
+SSIOAccountItem::setUsTermsId(std::string  us_terms_id)
+{
+	this->us_terms_id = us_terms_id;
 }
 
 

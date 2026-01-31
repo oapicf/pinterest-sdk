@@ -14,10 +14,10 @@ module ConversionTagResponse =
 
   [<CLIMutable>]
   type ConversionTagResponse = {
-    [<JsonProperty(PropertyName = "ad_account_id")>]
-    AdAccountId : string;
     [<JsonProperty(PropertyName = "code_snippet")>]
     CodeSnippet : string;
+    [<JsonProperty(PropertyName = "configs")>]
+    Configs : ConversionTagConfigs;
     [<JsonProperty(PropertyName = "enhanced_match_status")>]
     EnhancedMatchStatus : EnhancedMatchStatusType;
     [<JsonProperty(PropertyName = "id")>]
@@ -26,12 +26,12 @@ module ConversionTagResponse =
     LastFiredTimeMs : decimal option;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : EntityStatus;
     [<JsonProperty(PropertyName = "version")>]
     Version : string;
-    [<JsonProperty(PropertyName = "configs")>]
-    Configs : ConversionTagConfigs;
+    [<JsonProperty(PropertyName = "ad_account_id")>]
+    AdAccountId : string;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : EntityStatus;
   }
 
   //#endregion

@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsCreateRetailItem');
 API.Client.CatalogsCreateRetailItem = function() {}
 
 /**
+ * @type {!API.Client.ItemAttributesRequest}
+ * @export
+ */
+API.Client.CatalogsCreateRetailItem.prototype.attributes;
+
+/**
  * The catalog item id in the merchant namespace
  * @type {!string}
  * @export
@@ -18,12 +24,6 @@ API.Client.CatalogsCreateRetailItem.prototype.itemId;
  * @export
  */
 API.Client.CatalogsCreateRetailItem.prototype.operation;
-
-/**
- * @type {!API.Client.ItemAttributesRequest}
- * @export
- */
-API.Client.CatalogsCreateRetailItem.prototype.attributes;
 
 /** @enum {string} */
 API.Client.CatalogsCreateRetailItem.OperationEnum = { 

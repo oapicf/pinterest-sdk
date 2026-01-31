@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
-**Name** | **string** | A human-friendly name associated to a given feed. | 
-**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
-**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
-**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
-**Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
-**PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**CatalogId** | Pointer to **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
+**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
+**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
+**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
+**Name** | **string** | A human-friendly name associated to a given feed. | 
+**PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to ACTIVE]
 
 ## Methods
 
 ### NewCatalogsHotelFeedsCreateRequest
 
-`func NewCatalogsHotelFeedsCreateRequest(name string, format CatalogsFormat, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, location string, catalogType CatalogsType, ) *CatalogsHotelFeedsCreateRequest`
+`func NewCatalogsHotelFeedsCreateRequest(catalogType CatalogsType, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string, ) *CatalogsHotelFeedsCreateRequest`
 
 NewCatalogsHotelFeedsCreateRequest instantiates a new CatalogsHotelFeedsCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -34,99 +34,49 @@ NewCatalogsHotelFeedsCreateRequestWithDefaults instantiates a new CatalogsHotelF
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetDefaultCurrency
+### GetCatalogId
 
-`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrency() NullableCurrency`
+`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogId() string`
 
-GetDefaultCurrency returns the DefaultCurrency field if non-nil, zero value otherwise.
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
 
-### GetDefaultCurrencyOk
+### GetCatalogIdOk
 
-`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrencyOk() (*NullableCurrency, bool)`
+`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogIdOk() (*string, bool)`
 
-GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field if it's non-nil, zero value otherwise
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDefaultCurrency
+### SetCatalogId
 
-`func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrency(v NullableCurrency)`
+`func (o *CatalogsHotelFeedsCreateRequest) SetCatalogId(v string)`
 
-SetDefaultCurrency sets DefaultCurrency field to given value.
+SetCatalogId sets CatalogId field to given value.
 
-### HasDefaultCurrency
+### HasCatalogId
 
-`func (o *CatalogsHotelFeedsCreateRequest) HasDefaultCurrency() bool`
+`func (o *CatalogsHotelFeedsCreateRequest) HasCatalogId() bool`
 
-HasDefaultCurrency returns a boolean if a field has been set.
+HasCatalogId returns a boolean if a field has been set.
 
-### SetDefaultCurrencyNil
+### GetCatalogType
 
-`func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrencyNil(b bool)`
+`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogType() CatalogsType`
 
- SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
-### UnsetDefaultCurrency
-`func (o *CatalogsHotelFeedsCreateRequest) UnsetDefaultCurrency()`
+### GetCatalogTypeOk
 
-UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
-### GetName
+`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
 
-`func (o *CatalogsHotelFeedsCreateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCatalogType
 
-`func (o *CatalogsHotelFeedsCreateRequest) SetName(v string)`
+`func (o *CatalogsHotelFeedsCreateRequest) SetCatalogType(v CatalogsType)`
 
-SetName sets Name field to given value.
-
-
-### GetFormat
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetFormat() CatalogsFormat`
-
-GetFormat returns the Format field if non-nil, zero value otherwise.
-
-### GetFormatOk
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetFormatOk() (*CatalogsFormat, bool)`
-
-GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFormat
-
-`func (o *CatalogsHotelFeedsCreateRequest) SetFormat(v CatalogsFormat)`
-
-SetFormat sets Format field to given value.
-
-
-### GetDefaultLocale
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale`
-
-GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
-
-### GetDefaultLocaleOk
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool)`
-
-GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultLocale
-
-`func (o *CatalogsHotelFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale)`
-
-SetDefaultLocale sets DefaultLocale field to given value.
+SetCatalogType sets CatalogType field to given value.
 
 
 ### GetCredentials
@@ -164,6 +114,81 @@ HasCredentials returns a boolean if a field has been set.
 `func (o *CatalogsHotelFeedsCreateRequest) UnsetCredentials()`
 
 UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
+### GetDefaultCurrency
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrency() NullableCurrency`
+
+GetDefaultCurrency returns the DefaultCurrency field if non-nil, zero value otherwise.
+
+### GetDefaultCurrencyOk
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultCurrencyOk() (*NullableCurrency, bool)`
+
+GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultCurrency
+
+`func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrency(v NullableCurrency)`
+
+SetDefaultCurrency sets DefaultCurrency field to given value.
+
+### HasDefaultCurrency
+
+`func (o *CatalogsHotelFeedsCreateRequest) HasDefaultCurrency() bool`
+
+HasDefaultCurrency returns a boolean if a field has been set.
+
+### SetDefaultCurrencyNil
+
+`func (o *CatalogsHotelFeedsCreateRequest) SetDefaultCurrencyNil(b bool)`
+
+ SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
+
+### UnsetDefaultCurrency
+`func (o *CatalogsHotelFeedsCreateRequest) UnsetDefaultCurrency()`
+
+UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
+### GetDefaultLocale
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale`
+
+GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
+
+### GetDefaultLocaleOk
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool)`
+
+GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultLocale
+
+`func (o *CatalogsHotelFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale)`
+
+SetDefaultLocale sets DefaultLocale field to given value.
+
+
+### GetFormat
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetFormat() CatalogsFormat`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetFormatOk() (*CatalogsFormat, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *CatalogsHotelFeedsCreateRequest) SetFormat(v CatalogsFormat)`
+
+SetFormat sets Format field to given value.
+
+
 ### GetLocation
 
 `func (o *CatalogsHotelFeedsCreateRequest) GetLocation() string`
@@ -182,6 +207,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsHotelFeedsCreateRequest) SetLocation(v string)`
 
 SetLocation sets Location field to given value.
+
+
+### GetName
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsHotelFeedsCreateRequest) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetPreferredProcessingSchedule
@@ -219,61 +264,6 @@ HasPreferredProcessingSchedule returns a boolean if a field has been set.
 `func (o *CatalogsHotelFeedsCreateRequest) UnsetPreferredProcessingSchedule()`
 
 UnsetPreferredProcessingSchedule ensures that no value is present for PreferredProcessingSchedule, not even an explicit nil
-### GetCatalogType
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsHotelFeedsCreateRequest) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
-
-### GetCatalogId
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsHotelFeedsCreateRequest) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsHotelFeedsCreateRequest) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
-
-### HasCatalogId
-
-`func (o *CatalogsHotelFeedsCreateRequest) HasCatalogId() bool`
-
-HasCatalogId returns a boolean if a field has been set.
-
-### SetCatalogIdNil
-
-`func (o *CatalogsHotelFeedsCreateRequest) SetCatalogIdNil(b bool)`
-
- SetCatalogIdNil sets the value for CatalogId to be an explicit nil
-
-### UnsetCatalogId
-`func (o *CatalogsHotelFeedsCreateRequest) UnsetCatalogId()`
-
-UnsetCatalogId ensures that no value is present for CatalogId, not even an explicit nil
 ### GetStatus
 
 `func (o *CatalogsHotelFeedsCreateRequest) GetStatus() CatalogsStatus`

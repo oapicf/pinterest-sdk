@@ -30,14 +30,6 @@ public class CatalogsHotelProductGroupUpdateRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
@@ -51,6 +43,14 @@ public class CatalogsHotelProductGroupUpdateRequestTest {
     @Test
     public void filtersTest() {
         // TODO: test filters
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
 }

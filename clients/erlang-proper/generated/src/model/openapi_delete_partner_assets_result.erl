@@ -11,9 +11,9 @@
 -type openapi_delete_partner_assets_result() ::
   [ {'asset_id', binary() }
   | {'asset_type', binary() }
-  | {'permissions', list(binary()) }
   | {'is_shared_partner', boolean() }
   | {'partner_id', binary() }
+  | {'permissions', list(binary()) }
   ].
 
 
@@ -23,9 +23,9 @@ openapi_delete_partner_assets_result() ->
 openapi_delete_partner_assets_result(Fields) ->
   Default = [ {'asset_id', binary() }
             , {'asset_type', binary() }
-            , {'permissions', list(binary()) }
             , {'is_shared_partner', boolean() }
             , {'partner_id', binary() }
+            , {'permissions', list(binary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

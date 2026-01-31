@@ -10,10 +10,10 @@ module CatalogsReportDistributionIssueFilter =
 
   [<CLIMutable>]
   type CatalogsReportDistributionIssueFilter = {
-    [<JsonProperty(PropertyName = "report_type")>]
-    ReportType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
+    [<JsonProperty(PropertyName = "report_type")>]
+    ReportType : string;
   }
 
   //#endregion

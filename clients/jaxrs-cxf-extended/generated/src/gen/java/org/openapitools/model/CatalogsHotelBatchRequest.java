@@ -22,6 +22,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelBatchRequest  {
   
+ /**
+  * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  */
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL"));
@@ -57,6 +63,13 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private Country country;
+
+ /**
+  * Array with catalogs item operations
+  */
+  @ApiModelProperty(required = true, value = "Array with catalogs item operations")
+  @Valid
+  private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
 
 public enum LanguageEnum {
 
@@ -198,19 +211,30 @@ public enum LanguageEnum {
   */
   @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
   private LanguageEnum language;
-
- /**
-  * Array with catalogs item operations
-  */
-  @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  @Valid
-  private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
-
  /**
   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  * @return catalogId
   */
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
-  private String catalogId;
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public CatalogsHotelBatchRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -262,31 +286,6 @@ public enum LanguageEnum {
   }
 
  /**
-  * We recommend using the CatalogsLocale values.
-  * @return language
-  */
-  @JsonProperty("language")
-  @NotNull
-  public String getLanguage() {
-    return language == null ? null : language.value();
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
- public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
-  public CatalogsHotelBatchRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
- /**
   * Array with catalogs item operations
   * @return items
   */
@@ -320,26 +319,27 @@ public enum LanguageEnum {
   }
 
  /**
-  * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-  * @return catalogId
+  * We recommend using the CatalogsLocale values.
+  * @return language
   */
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("language")
+  @NotNull
+  public String getLanguage() {
+    return language == null ? null : language.value();
   }
 
   /**
-   * Sets the <code>catalogId</code> property.
+   * Sets the <code>language</code> property.
    */
- public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+ public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
   /**
-   * Sets the <code>catalogId</code> property.
+   * Sets the <code>language</code> property.
    */
-  public CatalogsHotelBatchRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelBatchRequest language(LanguageEnum language) {
+    this.language = language;
     return this;
   }
 
@@ -353,16 +353,16 @@ public enum LanguageEnum {
       return false;
     }
     CatalogsHotelBatchRequest catalogsHotelBatchRequest = (CatalogsHotelBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsHotelBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsHotelBatchRequest.country) &&
-        Objects.equals(this.language, catalogsHotelBatchRequest.language) &&
         Objects.equals(this.items, catalogsHotelBatchRequest.items) &&
-        Objects.equals(this.catalogId, catalogsHotelBatchRequest.catalogId);
+        Objects.equals(this.language, catalogsHotelBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -370,11 +370,11 @@ public enum LanguageEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

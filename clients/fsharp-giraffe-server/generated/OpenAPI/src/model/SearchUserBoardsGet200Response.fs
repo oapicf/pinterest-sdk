@@ -11,7 +11,7 @@ module SearchUserBoardsGet200Response =
 
 
   type search_user_boards_get_200_response = {
-    Items : Board[];
     Bookmark : string option;
+    Items : Board[];
   }
   //#endregion

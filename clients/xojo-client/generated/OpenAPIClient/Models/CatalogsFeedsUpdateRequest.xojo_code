@@ -2,6 +2,11 @@
 Protected Class CatalogsFeedsUpdateRequest
 
 	#tag Property, Flags = &h0
+		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		default_availability As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -12,20 +17,7 @@ Protected Class CatalogsFeedsUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			A human-friendly name associated to a given feed.
-		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		format As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
 	#tag EndProperty
 
 
@@ -34,6 +26,14 @@ Protected Class CatalogsFeedsUpdateRequest
 			The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 		#tag EndNote
 		location As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			A human-friendly name associated to a given feed.
+		#tag EndNote
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -84,6 +84,14 @@ Protected Class CatalogsFeedsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="credentials"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFeedCredentials"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="default_availability"
 			Visible=false
 			Group="Behavior"
@@ -100,14 +108,6 @@ Protected Class CatalogsFeedsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="format"
 			Visible=false
 			Group="Behavior"
@@ -116,15 +116,15 @@ Protected Class CatalogsFeedsUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="credentials"
+			Name="location"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsFeedCredentials"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="location"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

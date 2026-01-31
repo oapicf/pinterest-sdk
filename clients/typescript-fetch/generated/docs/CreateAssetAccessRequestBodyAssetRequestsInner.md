@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`partnerId` | string
 `assetIdToPermissions` | { [key: string]: Array&lt;Permissions&gt;; }
+`partnerId` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CreateAssetAccessRequestBodyAssetRequestsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "partnerId": 809944451643622187,
   "assetIdToPermissions": {"549760723247":["ANALYST"],"549760723248":["ANALYST","ADMIN"],"809944451643622187":["PROFILE_PUBLISHER"]},
+  "partnerId": 809944451643622187,
 } satisfies CreateAssetAccessRequestBodyAssetRequestsInner
 
 console.log(example)

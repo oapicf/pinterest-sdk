@@ -9,12 +9,12 @@ import org.openapitools._
 /**
  * Queryable audience representation.
  * @param date Generation date
- * @param _type Generated audience type to request.
- * @param scope Generated audience scope to request.
+ * @param scope 
+ * @param _type 
  */
 case class AudienceDefinition(date: Option[String],
-                _type: Option[String],
-                scope: Option[String]
+                scope: Option[String],
+                _type: Option[String]
                 )
 
 object AudienceDefinition {

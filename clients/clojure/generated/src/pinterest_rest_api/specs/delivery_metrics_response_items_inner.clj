@@ -7,10 +7,10 @@
 
 (def delivery-metrics-response-items-inner-data
   {
-   (ds/opt :name) string?
    (ds/opt :category) string?
    (ds/opt :definition) string?
    (ds/opt :display_name) string?
+   (ds/opt :name) string?
    })
 
 (def delivery-metrics-response-items-inner-spec

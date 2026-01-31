@@ -15,16 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param name Display name
  * @param id Salesforce id for PMP
+ * @param name Display name
  */
 data class SSIOAccountPMPName(
 
-    @Schema(example = "Bidalgo", description = "Display name")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
     @Schema(example = "0011N00001LW2aSQAT", description = "Salesforce id for PMP")
-    @get:JsonProperty("id") val id: kotlin.String? = null
+    @get:JsonProperty("id") val id: kotlin.String? = null,
+
+    @Schema(example = "Bidalgo", description = "Display name")
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
 }

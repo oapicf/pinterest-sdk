@@ -5,8 +5,13 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}is_standard`,
+                label: `Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. - [${labelPrefix}is_standard]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}source_type`,
-                label: `[${labelPrefix}source_type]`,
+                label: `The source type of the media. - [${labelPrefix}source_type]`,
                 required: true,
                 type: 'string',
                 choices: [
@@ -19,19 +24,14 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}is_standard`,
-                label: `Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. - [${labelPrefix}is_standard]`,
-                type: 'boolean',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
             'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
             'url': bundle.inputData?.[`${keyPrefix}url`],
-            'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
         }
     },
 }

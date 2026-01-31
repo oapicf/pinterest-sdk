@@ -22,15 +22,15 @@ keyword_update_t* instantiate_keyword_update(int include_optional) {
   keyword_update_t* keyword_update = NULL;
   if (include_optional) {
     keyword_update = keyword_update_create(
-      "2886364308355",
       false,
-      56
+      56,
+      "2886364308355"
     );
   } else {
     keyword_update = keyword_update_create(
-      "2886364308355",
       false,
-      56
+      56,
+      "2886364308355"
     );
   }
 

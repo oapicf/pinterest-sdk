@@ -8,8 +8,13 @@ Pin with image.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mediaType** | **String** |  |  [optional]
-**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  |  [optional]
+**images** | [**ImageSize**](ImageSize.md) |  |  [optional]
+**mediaType** | [**MediaType**](#MediaType) |  | 
+
+
+## Enum: MediaType
+Allowed values: [image]
+
 
 
 

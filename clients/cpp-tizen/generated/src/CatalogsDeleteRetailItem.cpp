@@ -24,6 +24,7 @@ void
 CatalogsDeleteRetailItem::__init()
 {
 	//item_id = std::string();
+	//last_updated_time = long(0);
 	//operation = std::string();
 }
 
@@ -34,6 +35,11 @@ CatalogsDeleteRetailItem::__cleanup()
 	//
 	//delete item_id;
 	//item_id = NULL;
+	//}
+	//if(last_updated_time != NULL) {
+	//
+	//delete last_updated_time;
+	//last_updated_time = NULL;
 	//}
 	//if(operation != NULL) {
 	//
@@ -55,6 +61,17 @@ CatalogsDeleteRetailItem::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&item_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *last_updated_timeKey = "last_updated_time";
+	node = json_object_get_member(pJsonObject, last_updated_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&last_updated_time, node, "long long", "");
 		} else {
 			
 		}
@@ -91,6 +108,15 @@ CatalogsDeleteRetailItem::toJson()
 	}
 	const gchar *item_idKey = "item_id";
 	json_object_set_member(pJsonObject, item_idKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getLastUpdatedTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *last_updated_timeKey = "last_updated_time";
+	json_object_set_member(pJsonObject, last_updated_timeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getOperation();
 		node = converttoJson(&obj, "std::string", "");
@@ -118,6 +144,18 @@ void
 CatalogsDeleteRetailItem::setItemId(std::string  item_id)
 {
 	this->item_id = item_id;
+}
+
+long long
+CatalogsDeleteRetailItem::getLastUpdatedTime()
+{
+	return last_updated_time;
+}
+
+void
+CatalogsDeleteRetailItem::setLastUpdatedTime(long long  last_updated_time)
+{
+	this->last_updated_time = last_updated_time;
 }
 
 std::string

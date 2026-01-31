@@ -21,6 +21,23 @@ pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_countr
     }
     return 0;
 }
+char* create_mmm_report_request_columns_ToString(pinterest_rest_api_create_mmm_report_request__e columns) {
+    char *columnsArray[] =  { "NULL", "SPEND_IN_DOLLAR", "SPEND_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "ECTR", "CAMPAIGN_NAME", "TOTAL_ENGAGEMENT", "EENGAGEMENT_RATE", "ECPM_IN_DOLLAR", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_GROUP_ID", "AD_GROUP_NAME", "CLICKTHROUGH_1", "IMPRESSION_1", "CLICKTHROUGH_2", "IMPRESSION_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "ADVERTISER_NAME", "SPEND_ORDER_LINE_PAID_TYPE" };
+    return columnsArray[columns - 1];
+}
+
+pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_columns_FromString(char* columns) {
+    int stringToReturn = 0;
+    char *columnsArray[] =  { "NULL", "SPEND_IN_DOLLAR", "SPEND_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "ECTR", "CAMPAIGN_NAME", "TOTAL_ENGAGEMENT", "EENGAGEMENT_RATE", "ECPM_IN_DOLLAR", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_GROUP_ID", "AD_GROUP_NAME", "CLICKTHROUGH_1", "IMPRESSION_1", "CLICKTHROUGH_2", "IMPRESSION_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "ADVERTISER_NAME", "SPEND_ORDER_LINE_PAID_TYPE" };
+    size_t sizeofArray = sizeof(columnsArray) / sizeof(columnsArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(columns, columnsArray[stringToReturn]) == 0) {
+            return stringToReturn + 1;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 char* create_mmm_report_request_granularity_ToString(pinterest_rest_api_create_mmm_report_request_GRANULARITY_e granularity) {
     char* granularityArray[] =  { "NULL", "DAY", "WEEK" };
     return granularityArray[granularity];
@@ -72,46 +89,29 @@ pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_target
     }
     return 0;
 }
-char* create_mmm_report_request_columns_ToString(pinterest_rest_api_create_mmm_report_request__e columns) {
-    char *columnsArray[] =  { "NULL", "SPEND_IN_DOLLAR", "SPEND_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "ECTR", "CAMPAIGN_NAME", "TOTAL_ENGAGEMENT", "EENGAGEMENT_RATE", "ECPM_IN_DOLLAR", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_GROUP_ID", "AD_GROUP_NAME", "CLICKTHROUGH_1", "IMPRESSION_1", "CLICKTHROUGH_2", "IMPRESSION_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "ADVERTISER_NAME", "SPEND_ORDER_LINE_PAID_TYPE" };
-    return columnsArray[columns - 1];
-}
-
-pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_columns_FromString(char* columns) {
-    int stringToReturn = 0;
-    char *columnsArray[] =  { "NULL", "SPEND_IN_DOLLAR", "SPEND_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "ECTR", "CAMPAIGN_NAME", "TOTAL_ENGAGEMENT", "EENGAGEMENT_RATE", "ECPM_IN_DOLLAR", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_GROUP_ID", "AD_GROUP_NAME", "CLICKTHROUGH_1", "IMPRESSION_1", "CLICKTHROUGH_2", "IMPRESSION_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "ADVERTISER_NAME", "SPEND_ORDER_LINE_PAID_TYPE" };
-    size_t sizeofArray = sizeof(columnsArray) / sizeof(columnsArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(columns, columnsArray[stringToReturn]) == 0) {
-            return stringToReturn + 1;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static create_mmm_report_request_t *create_mmm_report_request_create_internal(
     list_t *countries,
-    char *report_name,
-    char *start_date,
+    list_t *columns,
     char *end_date,
     pinterest_rest_api_create_mmm_report_request_GRANULARITY_e granularity,
     pinterest_rest_api_create_mmm_report_request_LEVEL_e level,
-    list_t *targeting_types,
-    list_t *columns
+    char *report_name,
+    char *start_date,
+    list_t *targeting_types
     ) {
     create_mmm_report_request_t *create_mmm_report_request_local_var = malloc(sizeof(create_mmm_report_request_t));
     if (!create_mmm_report_request_local_var) {
         return NULL;
     }
     create_mmm_report_request_local_var->countries = countries;
-    create_mmm_report_request_local_var->report_name = report_name;
-    create_mmm_report_request_local_var->start_date = start_date;
+    create_mmm_report_request_local_var->columns = columns;
     create_mmm_report_request_local_var->end_date = end_date;
     create_mmm_report_request_local_var->granularity = granularity;
     create_mmm_report_request_local_var->level = level;
+    create_mmm_report_request_local_var->report_name = report_name;
+    create_mmm_report_request_local_var->start_date = start_date;
     create_mmm_report_request_local_var->targeting_types = targeting_types;
-    create_mmm_report_request_local_var->columns = columns;
 
     create_mmm_report_request_local_var->_library_owned = 1;
     return create_mmm_report_request_local_var;
@@ -119,23 +119,23 @@ static create_mmm_report_request_t *create_mmm_report_request_create_internal(
 
 __attribute__((deprecated)) create_mmm_report_request_t *create_mmm_report_request_create(
     list_t *countries,
-    char *report_name,
-    char *start_date,
+    list_t *columns,
     char *end_date,
     pinterest_rest_api_create_mmm_report_request_GRANULARITY_e granularity,
     pinterest_rest_api_create_mmm_report_request_LEVEL_e level,
-    list_t *targeting_types,
-    list_t *columns
+    char *report_name,
+    char *start_date,
+    list_t *targeting_types
     ) {
     return create_mmm_report_request_create_internal (
         countries,
-        report_name,
-        start_date,
+        columns,
         end_date,
         granularity,
         level,
-        targeting_types,
-        columns
+        report_name,
+        start_date,
+        targeting_types
         );
 }
 
@@ -155,6 +155,17 @@ void create_mmm_report_request_free(create_mmm_report_request_t *create_mmm_repo
         list_freeList(create_mmm_report_request->countries);
         create_mmm_report_request->countries = NULL;
     }
+    if (create_mmm_report_request->columns) {
+        list_ForEach(listEntry, create_mmm_report_request->columns) {
+            mmm_reporting_column_free(listEntry->data);
+        }
+        list_freeList(create_mmm_report_request->columns);
+        create_mmm_report_request->columns = NULL;
+    }
+    if (create_mmm_report_request->end_date) {
+        free(create_mmm_report_request->end_date);
+        create_mmm_report_request->end_date = NULL;
+    }
     if (create_mmm_report_request->report_name) {
         free(create_mmm_report_request->report_name);
         create_mmm_report_request->report_name = NULL;
@@ -163,23 +174,12 @@ void create_mmm_report_request_free(create_mmm_report_request_t *create_mmm_repo
         free(create_mmm_report_request->start_date);
         create_mmm_report_request->start_date = NULL;
     }
-    if (create_mmm_report_request->end_date) {
-        free(create_mmm_report_request->end_date);
-        create_mmm_report_request->end_date = NULL;
-    }
     if (create_mmm_report_request->targeting_types) {
         list_ForEach(listEntry, create_mmm_report_request->targeting_types) {
             mmm_reporting_targeting_type_free(listEntry->data);
         }
         list_freeList(create_mmm_report_request->targeting_types);
         create_mmm_report_request->targeting_types = NULL;
-    }
-    if (create_mmm_report_request->columns) {
-        list_ForEach(listEntry, create_mmm_report_request->columns) {
-            mmm_reporting_column_free(listEntry->data);
-        }
-        list_freeList(create_mmm_report_request->columns);
-        create_mmm_report_request->columns = NULL;
     }
     free(create_mmm_report_request);
 }
@@ -207,21 +207,24 @@ cJSON *create_mmm_report_request_convertToJSON(create_mmm_report_request_t *crea
     }
 
 
-    // create_mmm_report_request->report_name
-    if (!create_mmm_report_request->report_name) {
+    // create_mmm_report_request->columns
+    if (pinterest_rest_api_list_COLUMNS_NULL == create_mmm_report_request->columns) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "report_name", create_mmm_report_request->report_name) == NULL) {
-    goto fail; //String
+    cJSON *columns = cJSON_AddArrayToObject(item, "columns");
+    if(columns == NULL) {
+    goto fail; //nonprimitive container
     }
 
-
-    // create_mmm_report_request->start_date
-    if (!create_mmm_report_request->start_date) {
-        goto fail;
+    listEntry_t *columnsListEntry;
+    if (create_mmm_report_request->columns) {
+    list_ForEach(columnsListEntry, create_mmm_report_request->columns) {
+    cJSON *itemLocal = mmm_reporting_column_convertToJSON((pinterest_rest_api_create_mmm_report_request__e)columnsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
     }
-    if(cJSON_AddStringToObject(item, "start_date", create_mmm_report_request->start_date) == NULL) {
-    goto fail; //String
+    cJSON_AddItemToArray(columns, itemLocal);
+    }
     }
 
 
@@ -254,6 +257,24 @@ cJSON *create_mmm_report_request_convertToJSON(create_mmm_report_request_t *crea
     }
 
 
+    // create_mmm_report_request->report_name
+    if (!create_mmm_report_request->report_name) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "report_name", create_mmm_report_request->report_name) == NULL) {
+    goto fail; //String
+    }
+
+
+    // create_mmm_report_request->start_date
+    if (!create_mmm_report_request->start_date) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "start_date", create_mmm_report_request->start_date) == NULL) {
+    goto fail; //String
+    }
+
+
     // create_mmm_report_request->targeting_types
     if (pinterest_rest_api_list_TARGETINGTYPES_NULL == create_mmm_report_request->targeting_types) {
         goto fail;
@@ -274,27 +295,6 @@ cJSON *create_mmm_report_request_convertToJSON(create_mmm_report_request_t *crea
     }
     }
 
-
-    // create_mmm_report_request->columns
-    if (pinterest_rest_api_list_COLUMNS_NULL == create_mmm_report_request->columns) {
-        goto fail;
-    }
-    cJSON *columns = cJSON_AddArrayToObject(item, "columns");
-    if(columns == NULL) {
-    goto fail; //nonprimitive container
-    }
-
-    listEntry_t *columnsListEntry;
-    if (create_mmm_report_request->columns) {
-    list_ForEach(columnsListEntry, create_mmm_report_request->columns) {
-    cJSON *itemLocal = mmm_reporting_column_convertToJSON((pinterest_rest_api_create_mmm_report_request__e)columnsListEntry->data);
-    if(itemLocal == NULL) {
-    goto fail;
-    }
-    cJSON_AddItemToArray(columns, itemLocal);
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -310,11 +310,11 @@ create_mmm_report_request_t *create_mmm_report_request_parseFromJSON(cJSON *crea
     // define the local list for create_mmm_report_request->countries
     list_t *countriesList = NULL;
 
-    // define the local list for create_mmm_report_request->targeting_types
-    list_t *targeting_typesList = NULL;
-
     // define the local list for create_mmm_report_request->columns
     list_t *columnsList = NULL;
+
+    // define the local list for create_mmm_report_request->targeting_types
+    list_t *targeting_typesList = NULL;
 
     // create_mmm_report_request->countries
     cJSON *countries = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "countries");
@@ -340,34 +340,31 @@ create_mmm_report_request_t *create_mmm_report_request_parseFromJSON(cJSON *crea
     }
     }
 
-    // create_mmm_report_request->report_name
-    cJSON *report_name = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "report_name");
-    if (cJSON_IsNull(report_name)) {
-        report_name = NULL;
+    // create_mmm_report_request->columns
+    cJSON *columns = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "columns");
+    if (cJSON_IsNull(columns)) {
+        columns = NULL;
     }
-    if (!report_name) {
+    if (!columns) {
         goto end;
     }
 
     
-    if(!cJSON_IsString(report_name))
-    {
-    goto end; //String
+    cJSON *columns_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(columns)){
+        goto end; //nonprimitive container
     }
 
-    // create_mmm_report_request->start_date
-    cJSON *start_date = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "start_date");
-    if (cJSON_IsNull(start_date)) {
-        start_date = NULL;
-    }
-    if (!start_date) {
-        goto end;
-    }
+    columnsList = list_createList();
 
-    
-    if(!cJSON_IsString(start_date))
+    cJSON_ArrayForEach(columns_local_nonprimitive,columns )
     {
-    goto end; //String
+        if(!cJSON_IsObject(columns_local_nonprimitive)){
+            goto end;
+        }
+        create_mmm_report_request_mmm_reporting_column_e columnsItem = mmm_reporting_column_parseFromJSON(columns_local_nonprimitive);
+
+        list_addElement(columnsList, (void *)columnsItem);
     }
 
     // create_mmm_report_request->end_date
@@ -419,6 +416,36 @@ create_mmm_report_request_t *create_mmm_report_request_parseFromJSON(cJSON *crea
     }
     levelVariable = create_mmm_report_request_level_FromString(level->valuestring);
 
+    // create_mmm_report_request->report_name
+    cJSON *report_name = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "report_name");
+    if (cJSON_IsNull(report_name)) {
+        report_name = NULL;
+    }
+    if (!report_name) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(report_name))
+    {
+    goto end; //String
+    }
+
+    // create_mmm_report_request->start_date
+    cJSON *start_date = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "start_date");
+    if (cJSON_IsNull(start_date)) {
+        start_date = NULL;
+    }
+    if (!start_date) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(start_date))
+    {
+    goto end; //String
+    }
+
     // create_mmm_report_request->targeting_types
     cJSON *targeting_types = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "targeting_types");
     if (cJSON_IsNull(targeting_types)) {
@@ -446,43 +473,16 @@ create_mmm_report_request_t *create_mmm_report_request_parseFromJSON(cJSON *crea
         list_addElement(targeting_typesList, (void *)targeting_typesItem);
     }
 
-    // create_mmm_report_request->columns
-    cJSON *columns = cJSON_GetObjectItemCaseSensitive(create_mmm_report_requestJSON, "columns");
-    if (cJSON_IsNull(columns)) {
-        columns = NULL;
-    }
-    if (!columns) {
-        goto end;
-    }
-
-    
-    cJSON *columns_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(columns)){
-        goto end; //nonprimitive container
-    }
-
-    columnsList = list_createList();
-
-    cJSON_ArrayForEach(columns_local_nonprimitive,columns )
-    {
-        if(!cJSON_IsObject(columns_local_nonprimitive)){
-            goto end;
-        }
-        create_mmm_report_request_mmm_reporting_column_e columnsItem = mmm_reporting_column_parseFromJSON(columns_local_nonprimitive);
-
-        list_addElement(columnsList, (void *)columnsItem);
-    }
-
 
     create_mmm_report_request_local_var = create_mmm_report_request_create_internal (
         countries ? countriesList : NULL,
-        strdup(report_name->valuestring),
-        strdup(start_date->valuestring),
+        columnsList,
         strdup(end_date->valuestring),
         granularityVariable,
         levelVariable,
-        targeting_typesList,
-        columnsList
+        strdup(report_name->valuestring),
+        strdup(start_date->valuestring),
+        targeting_typesList
         );
 
     return create_mmm_report_request_local_var;
@@ -496,15 +496,6 @@ end:
         list_freeList(countriesList);
         countriesList = NULL;
     }
-    if (targeting_typesList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, targeting_typesList) {
-            mmm_reporting_targeting_type_free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(targeting_typesList);
-        targeting_typesList = NULL;
-    }
     if (columnsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, columnsList) {
@@ -513,6 +504,15 @@ end:
         }
         list_freeList(columnsList);
         columnsList = NULL;
+    }
+    if (targeting_typesList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, targeting_typesList) {
+            mmm_reporting_targeting_type_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(targeting_typesList);
+        targeting_typesList = NULL;
     }
     return NULL;
 

@@ -11,7 +11,7 @@ module OrderLinesList200Response =
 
 
   type order_lines_list_200_response = {
-    Items : OrderLine[];
     Bookmark : string option;
+    Items : OrderLine[];
   }
   //#endregion

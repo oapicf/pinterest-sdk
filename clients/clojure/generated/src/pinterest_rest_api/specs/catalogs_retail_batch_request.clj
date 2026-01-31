@@ -9,10 +9,11 @@
 
 (def catalogs-retail-batch-request-data
   {
+   (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :country) country-spec
-   (ds/req :language) string?
    (ds/req :items) (s/coll-of catalogs-retail-batch-request-items-inner-spec)
+   (ds/req :language) string?
    })
 
 (def catalogs-retail-batch-request-spec

@@ -14,6 +14,7 @@ import { AdvancedAuctionItemsSubmitDeleteRecord } from './advancedAuctionItemsSu
 import { Country } from './country';
 import { AdvancedAuctionBidOptions } from './advancedAuctionBidOptions';
 import { AdvancedAuctionOperation } from './advancedAuctionOperation';
+import { AdvancedAuctionOperationError } from './advancedAuctionOperationError';
 
 
 /**

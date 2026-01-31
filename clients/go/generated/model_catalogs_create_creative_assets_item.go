@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsCreateCreativeAssetsItem{}
 
 // CatalogsCreateCreativeAssetsItem A creative assets item to be created.
 type CatalogsCreateCreativeAssetsItem struct {
+	Attributes CatalogsCreativeAssetsAttributes `json:"attributes"`
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId string `json:"creative_assets_id"`
 	Operation string `json:"operation"`
-	Attributes CatalogsCreativeAssetsAttributes `json:"attributes"`
 }
 
 type _CatalogsCreateCreativeAssetsItem CatalogsCreateCreativeAssetsItem
@@ -34,11 +34,11 @@ type _CatalogsCreateCreativeAssetsItem CatalogsCreateCreativeAssetsItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreateCreativeAssetsItem(creativeAssetsId string, operation string, attributes CatalogsCreativeAssetsAttributes) *CatalogsCreateCreativeAssetsItem {
+func NewCatalogsCreateCreativeAssetsItem(attributes CatalogsCreativeAssetsAttributes, creativeAssetsId string, operation string) *CatalogsCreateCreativeAssetsItem {
 	this := CatalogsCreateCreativeAssetsItem{}
+	this.Attributes = attributes
 	this.CreativeAssetsId = creativeAssetsId
 	this.Operation = operation
-	this.Attributes = attributes
 	return &this
 }
 
@@ -48,6 +48,30 @@ func NewCatalogsCreateCreativeAssetsItem(creativeAssetsId string, operation stri
 func NewCatalogsCreateCreativeAssetsItemWithDefaults() *CatalogsCreateCreativeAssetsItem {
 	this := CatalogsCreateCreativeAssetsItem{}
 	return &this
+}
+
+// GetAttributes returns the Attributes field value
+func (o *CatalogsCreateCreativeAssetsItem) GetAttributes() CatalogsCreativeAssetsAttributes {
+	if o == nil {
+		var ret CatalogsCreativeAssetsAttributes
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreateCreativeAssetsItem) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *CatalogsCreateCreativeAssetsItem) SetAttributes(v CatalogsCreativeAssetsAttributes) {
+	o.Attributes = v
 }
 
 // GetCreativeAssetsId returns the CreativeAssetsId field value
@@ -98,30 +122,6 @@ func (o *CatalogsCreateCreativeAssetsItem) SetOperation(v string) {
 	o.Operation = v
 }
 
-// GetAttributes returns the Attributes field value
-func (o *CatalogsCreateCreativeAssetsItem) GetAttributes() CatalogsCreativeAssetsAttributes {
-	if o == nil {
-		var ret CatalogsCreativeAssetsAttributes
-		return ret
-	}
-
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreateCreativeAssetsItem) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Attributes, true
-}
-
-// SetAttributes sets field value
-func (o *CatalogsCreateCreativeAssetsItem) SetAttributes(v CatalogsCreativeAssetsAttributes) {
-	o.Attributes = v
-}
-
 func (o CatalogsCreateCreativeAssetsItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -132,9 +132,9 @@ func (o CatalogsCreateCreativeAssetsItem) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsCreateCreativeAssetsItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["creative_assets_id"] = o.CreativeAssetsId
 	toSerialize["operation"] = o.Operation
-	toSerialize["attributes"] = o.Attributes
 	return toSerialize, nil
 }
 
@@ -143,9 +143,9 @@ func (o *CatalogsCreateCreativeAssetsItem) UnmarshalJSON(data []byte) (err error
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"attributes",
 		"creative_assets_id",
 		"operation",
-		"attributes",
 	}
 
 	allProperties := make(map[string]interface{})

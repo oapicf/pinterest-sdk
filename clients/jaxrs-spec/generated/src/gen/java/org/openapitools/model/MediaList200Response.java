@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MediaUploadDetails;
+import org.openapitools.model.Media;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,57 +22,21 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("media_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaList200Response   {
-  private @Valid List<@Valid MediaUploadDetails> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid Media> items = new ArrayList<>();
 
   public MediaList200Response() {
   }
 
   @JsonCreator
   public MediaList200Response(
-    @JsonProperty(required = true, value = "items") List<@Valid MediaUploadDetails> items
+    @JsonProperty(required = true, value = "items") List<@Valid Media> items
   ) {
     this.items = items;
   }
 
-  /**
-   * Media
-   **/
-  public MediaList200Response items(List<@Valid MediaUploadDetails> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Media")
-  @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid MediaUploadDetails> getItems() {
-    return items;
-  }
-
-  @JsonProperty(required = true, value = "items")
-  public void setItems(List<@Valid MediaUploadDetails> items) {
-    this.items = items;
-  }
-
-  public MediaList200Response addItemsItem(MediaUploadDetails itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  public MediaList200Response removeItemsItem(MediaUploadDetails itemsItem) {
-    if (itemsItem != null && this.items != null) {
-      this.items.remove(itemsItem);
-    }
-
-    return this;
-  }
   /**
    **/
   public MediaList200Response bookmark(String bookmark) {
@@ -92,6 +56,41 @@ public class MediaList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public MediaList200Response items(List<@Valid Media> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "items")
+  @NotNull @Valid public List<@Valid Media> getItems() {
+    return items;
+  }
+
+  @JsonProperty(required = true, value = "items")
+  public void setItems(List<@Valid Media> items) {
+    this.items = items;
+  }
+
+  public MediaList200Response addItemsItem(Media itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  public MediaList200Response removeItemsItem(Media itemsItem) {
+    if (itemsItem != null && this.items != null) {
+      this.items.remove(itemsItem);
+    }
+
+    return this;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -102,13 +101,13 @@ public class MediaList200Response   {
       return false;
     }
     MediaList200Response mediaList200Response = (MediaList200Response) o;
-    return Objects.equals(this.items, mediaList200Response.items) &&
-        Objects.equals(this.bookmark, mediaList200Response.bookmark);
+    return Objects.equals(this.bookmark, mediaList200Response.bookmark) &&
+        Objects.equals(this.items, mediaList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -116,8 +115,8 @@ public class MediaList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MediaList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

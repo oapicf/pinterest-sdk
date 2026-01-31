@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CustomLabel4Filter, () {
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL4
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL4
     test('to test the property `cUSTOMLABEL4`', () async {
       // TODO
     });

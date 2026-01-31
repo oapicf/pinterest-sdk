@@ -6,39 +6,42 @@
 
 -type openapi_audience() ::
     #{ 'ad_account_id' => binary(),
+       'audience_type' => binary(),
+       'created_by_company_name' => binary(),
+       'created_timestamp' => integer(),
+       'description' => binary(),
        'id' => binary(),
        'name' => binary(),
-       'audience_type' => binary(),
-       'description' => binary(),
        'rule' => openapi_audience_rule:openapi_audience_rule(),
        'size' => integer(),
        'status' => binary(),
        'type' => binary(),
-       'created_timestamp' => integer(),
        'updated_timestamp' => integer()
      }.
 
 encode(#{ 'ad_account_id' := AdAccountId,
+          'audience_type' := AudienceType,
+          'created_by_company_name' := CreatedByCompanyName,
+          'created_timestamp' := CreatedTimestamp,
+          'description' := Description,
           'id' := Id,
           'name' := Name,
-          'audience_type' := AudienceType,
-          'description' := Description,
           'rule' := Rule,
           'size' := Size,
           'status' := Status,
           'type' := Type,
-          'created_timestamp' := CreatedTimestamp,
           'updated_timestamp' := UpdatedTimestamp
         }) ->
     #{ 'ad_account_id' => AdAccountId,
+       'audience_type' => AudienceType,
+       'created_by_company_name' => CreatedByCompanyName,
+       'created_timestamp' => CreatedTimestamp,
+       'description' => Description,
        'id' => Id,
        'name' => Name,
-       'audience_type' => AudienceType,
-       'description' => Description,
        'rule' => Rule,
        'size' => Size,
        'status' => Status,
        'type' => Type,
-       'created_timestamp' => CreatedTimestamp,
        'updated_timestamp' => UpdatedTimestamp
      }.

@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **availability** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **brand** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **condition** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_0** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_1** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_2** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_3** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_4** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**custom_label_0** | [**models::CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_1** | [**models::CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_2** | [**models::CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_3** | [**models::CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_4** | [**models::CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **item_group_id** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **gender** | [**models::CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
 **media_type** | [**models::CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
@@ -32,6 +32,12 @@ Name | Type | Description | Notes
 **google_product_category_1** | [**models::CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **google_product_category_0** | [**models::CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **product_group** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**custom_number_0** | [**models::CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_1** | [**models::CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_2** | [**models::CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_3** | [**models::CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_4** | [**models::CatalogsProductGroupUint32Criteria**](.md) |  | 
+**title_keywords** | [**models::CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

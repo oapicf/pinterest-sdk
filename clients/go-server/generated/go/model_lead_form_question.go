@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,8 +16,6 @@ package openapi
 
 type LeadFormQuestion struct {
 
-	QuestionType LeadFormQuestionType `json:"question_type,omitempty"`
-
 	CustomQuestionFieldType *LeadFormQuestionFieldType `json:"custom_question_field_type,omitempty"`
 
 	// Question label for a custom question.
@@ -25,6 +23,8 @@ type LeadFormQuestion struct {
 
 	// Question options for a custom question.
 	CustomQuestionOptions *[]string `json:"custom_question_options,omitempty"`
+
+	QuestionType LeadFormQuestionType `json:"question_type,omitempty"`
 }
 
 // AssertLeadFormQuestionRequired checks if the required fields are not zero-ed

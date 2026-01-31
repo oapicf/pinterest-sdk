@@ -51,6 +51,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	ItemAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(ItemAttributes  attributes);
+	/*! \brief Get 
+	 */
 	CatalogsType getCatalogType();
 
 	/*! \brief Set 
@@ -70,19 +77,12 @@ public:
 	/*! \brief Set The pins mapped to the item
 	 */
 	void setPins(std::list <Pin> pins);
-	/*! \brief Get 
-	 */
-	ItemAttributes getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(ItemAttributes  attributes);
 
 private:
+	ItemAttributes attributes;
 	CatalogsType catalog_type;
 	std::string item_id;
 	std::list <Pin>pins;
-	ItemAttributes attributes;
 	void __init();
 	void __cleanup();
 

@@ -18,14 +18,32 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Paginated
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Paginated   {
+  @JsonProperty("bookmark")
+  private String bookmark;
+
   @JsonProperty("items")
   
   private List<Object> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  private String bookmark;
+  public Paginated bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  @ApiModelProperty(value = "")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public Paginated items(List<Object> items) {
     this.items = items;
@@ -53,24 +71,6 @@ public class Paginated   {
     this.items = items;
   }
 
-  public Paginated bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  @ApiModelProperty(value = "")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,13 +81,13 @@ public class Paginated   {
       return false;
     }
     Paginated paginated = (Paginated) o;
-    return Objects.equals(this.items, paginated.items) &&
-        Objects.equals(this.bookmark, paginated.bookmark);
+    return Objects.equals(this.bookmark, paginated.bookmark) &&
+        Objects.equals(this.items, paginated.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -95,8 +95,8 @@ public class Paginated   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Paginated {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

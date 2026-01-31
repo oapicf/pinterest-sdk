@@ -369,11 +369,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardsCreate**
-> OpenAPI\Server\Model\Board boardsCreate($board, $adAccountId)
+> OpenAPI\Server\Model\Board boardsCreate($boardCreate, $adAccountId)
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example Implementation
 ```php
@@ -395,12 +395,20 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
      * Implementation of BoardsApiInterface#boardsCreate
      */
-    public function boardsCreate(Board $board, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardsCreate(BoardCreate $boardCreate, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -413,7 +421,7 @@ class BoardsApi implements BoardsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**OpenAPI\Server\Model\Board**](../Model/Board.md)| Create a board using a single board json object. |
+ **boardCreate** | [**OpenAPI\Server\Model\BoardCreate**](../Model/BoardCreate.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -422,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -436,7 +444,7 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example Implementation
 ```php
@@ -476,7 +484,7 @@ class BoardsApi implements BoardsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **string**| Unique identifier of a board. |
+ **boardId** | **string**|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -499,7 +507,7 @@ void (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example Implementation
 ```php
@@ -547,7 +555,7 @@ class BoardsApi implements BoardsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **string**| Unique identifier of a board. |
+ **boardId** | **string**|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -566,11 +574,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardsList**
-> OpenAPI\Server\Model\BoardsList200Response boardsList($adAccountId, $bookmark, $pageSize, $privacy)
+> OpenAPI\Server\Model\BoardsList200Response boardsList($adAccountId, $privacy, $bookmark, $pageSize)
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example Implementation
 ```php
@@ -605,7 +613,7 @@ class BoardsApi implements BoardsApiInterface
     /**
      * Implementation of BoardsApiInterface#boardsList
      */
-    public function boardsList(?string $adAccountId, ?string $bookmark, int $pageSize, ?string $privacy, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardsList(?string $adAccountId, ?BoardPrivacyFilter $privacy, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -619,9 +627,9 @@ class BoardsApi implements BoardsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
+ **privacy** | [**OpenAPI\Server\Model\BoardPrivacyFilter**](../Model/.md)| The privacy level of the board | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **string**| Privacy setting for a board. | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -694,9 +702,9 @@ Name | Type | Description  | Notes
  **boardId** | **string**| Unique identifier of a board. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
  **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **creativeTypes** | [**string**](../Model/string.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
+ **creativeTypes** | [**OpenAPI\Server\Model\CreativeType**](../Model/OpenAPI\Server\Model\CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
- **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 
 ### Return type
 
@@ -714,11 +722,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardsUpdate**
-> OpenAPI\Server\Model\Board boardsUpdate($boardId, $boardUpdate, $adAccountId)
+> OpenAPI\Server\Model\BoardWithUpdatePrivacy boardsUpdate($boardId, $boardWithUpdatePrivacyUpdate, $adAccountId)
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example Implementation
 ```php
@@ -740,12 +748,20 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
      * Implementation of BoardsApiInterface#boardsUpdate
      */
-    public function boardsUpdate(string $boardId, BoardUpdate $boardUpdate, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardsUpdate(string $boardId, BoardWithUpdatePrivacyUpdate $boardWithUpdatePrivacyUpdate, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -758,17 +774,17 @@ class BoardsApi implements BoardsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **string**| Unique identifier of a board. |
- **boardUpdate** | [**OpenAPI\Server\Model\BoardUpdate**](../Model/BoardUpdate.md)| Update a board. |
+ **boardId** | **string**|  |
+ **boardWithUpdatePrivacyUpdate** | [**OpenAPI\Server\Model\BoardWithUpdatePrivacyUpdate**](../Model/BoardWithUpdatePrivacyUpdate.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
-[**OpenAPI\Server\Model\Board**](../Model/Board.md)
+[**OpenAPI\Server\Model\BoardWithUpdatePrivacy**](../Model/BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

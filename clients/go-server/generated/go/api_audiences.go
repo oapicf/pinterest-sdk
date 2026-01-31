@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,8 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"errors"
-	"io"
 	"net/http"
 	"strings"
 
@@ -78,12 +76,6 @@ func (c *AudiencesAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}",
 			c.AudiencesUpdate,
 		},
-		"AudiencesCreateCustom": Route{
-			"AudiencesCreateCustom",
-			strings.ToUpper("Post"),
-			"/v5/ad_accounts/{ad_account_id}/audiences/custom",
-			c.AudiencesCreateCustom,
-		},
 	}
 }
 
@@ -113,12 +105,6 @@ func (c *AudiencesAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}",
 			c.AudiencesUpdate,
-		},
-		Route{
-			"AudiencesCreateCustom",
-			strings.ToUpper("Post"),
-			"/v5/ad_accounts/{ad_account_id}/audiences/custom",
-			c.AudiencesCreateCustom,
 		},
 	}
 }
@@ -261,7 +247,7 @@ func (c *AudiencesAPIController) AudiencesUpdate(w http.ResponseWriter, r *http.
 	var audienceUpdateRequestParam AudienceUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&audienceUpdateRequestParam); err != nil && !errors.Is(err, io.EOF) {
+	if err := d.Decode(&audienceUpdateRequestParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -274,39 +260,6 @@ func (c *AudiencesAPIController) AudiencesUpdate(w http.ResponseWriter, r *http.
 		return
 	}
 	result, err := c.service.AudiencesUpdate(r.Context(), adAccountIdParam, audienceIdParam, audienceUpdateRequestParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// AudiencesCreateCustom - Create custom audience
-func (c *AudiencesAPIController) AudiencesCreateCustom(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
-	var audienceCreateCustomRequestParam AudienceCreateCustomRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&audienceCreateCustomRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertAudienceCreateCustomRequestRequired(audienceCreateCustomRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertAudienceCreateCustomRequestConstraints(audienceCreateCustomRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.AudiencesCreateCustom(r.Context(), adAccountIdParam, audienceCreateCustomRequestParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

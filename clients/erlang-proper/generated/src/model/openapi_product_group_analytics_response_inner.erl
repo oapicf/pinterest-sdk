@@ -9,8 +9,8 @@
 -export_type([openapi_product_group_analytics_response_inner/0]).
 
 -type openapi_product_group_analytics_response_inner() ::
-  [ {'PRODUCT_GROUP_ID', binary() }
-  | {'DATE', date() }
+  [ {'DATE', date() }
+  | {'PRODUCT_GROUP_ID', binary() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_product_group_analytics_response_inner() ->
     openapi_product_group_analytics_response_inner([]).
 
 openapi_product_group_analytics_response_inner(Fields) ->
-  Default = [ {'PRODUCT_GROUP_ID', binary() }
-            , {'DATE', date() }
+  Default = [ {'DATE', date() }
+            , {'PRODUCT_GROUP_ID', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -14,20 +14,20 @@ import CreateMMMReportRequest._
 case class CreateMMMReportRequest (
   /* A List of countries for filtering */
   countries: Option[List[TargetingAdvertiserCountry]],
-/* Name of the Marketing Mix Modeling (MMM) report */
-  reportName: String,
-/* Metric report start date (UTC). Format: YYYY-MM-DD */
-  startDate: String,
+/* Metric and entity columns */
+  columns: List[MMMReportingColumn],
 /* Metric report end date (UTC). Format: YYYY-MM-DD */
   endDate: String,
 /* DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly. */
   granularity: Granularity,
 /* Level of the report */
   level: Level,
+/* Name of the Marketing Mix Modeling (MMM) report */
+  reportName: String,
+/* Metric report start date (UTC). Format: YYYY-MM-DD */
+  startDate: String,
 /* List of targeting types */
-  targetingTypes: List[MMMReportingTargetingType],
-/* Metric and entity columns */
-  columns: List[MMMReportingColumn])
+  targetingTypes: List[MMMReportingTargetingType])
 
 object CreateMMMReportRequest {
   import DateTimeCodecs._

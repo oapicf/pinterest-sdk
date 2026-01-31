@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,27 +16,27 @@ public class ConversionTagListResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid ConversionTagResponse> items = new ArrayList<>();
+  private List<@Valid ConversionTag> items = new ArrayList<>();
  /**
   * Get items
   * @return items
   */
   @JsonProperty("items")
-  public List<@Valid ConversionTagResponse> getItems() {
+  public List<@Valid ConversionTag> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<@Valid ConversionTagResponse> items) {
+ public void setItems(List<@Valid ConversionTag> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public ConversionTagListResponse items(List<@Valid ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<@Valid ConversionTag> items) {
     this.items = items;
     return this;
   }
@@ -44,7 +44,7 @@ public class ConversionTagListResponse  {
   /**
    * Adds a new item to the <code>items</code> list.
    */
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     this.items.add(itemsItem);
     return this;
   }

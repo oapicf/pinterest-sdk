@@ -4,10 +4,10 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **id** | **kotlin.String** |  |  [optional] |
-| **name** | **kotlin.String** |  |  [optional] |
 | **childInterests** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
+| **id** | **kotlin.String** |  |  [optional] |
 | **level** | **kotlin.Int** |  |  [optional] |
+| **name** | **kotlin.String** |  |  [optional] |
 
 
 

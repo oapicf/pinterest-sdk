@@ -7,19 +7,19 @@ Schema used for creating the integration metadata.
 
 Name | Type
 ------------ | -------------
-`externalBusinessId` | string
-`connectedMerchantId` | string
+`additionalId1` | string
 `connectedAdvertiserId` | string
 `connectedLbaId` | string
+`connectedMerchantId` | string
 `connectedTagId` | string
+`externalBusinessId` | string
 `partnerAccessToken` | string
-`partnerRefreshToken` | string
-`partnerPrimaryEmail` | string
 `partnerAccessTokenExpiry` | number
+`partnerMetadata` | string
+`partnerPrimaryEmail` | string
+`partnerRefreshToken` | string
 `partnerRefreshTokenExpiry` | number
 `scopes` | string
-`additionalId1` | string
-`partnerMetadata` | string
 
 ## Example
 
@@ -28,19 +28,19 @@ import type { IntegrationRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "externalBusinessId": null,
-  "connectedMerchantId": null,
+  "additionalId1": null,
   "connectedAdvertiserId": null,
   "connectedLbaId": null,
+  "connectedMerchantId": null,
   "connectedTagId": null,
+  "externalBusinessId": null,
   "partnerAccessToken": null,
-  "partnerRefreshToken": null,
-  "partnerPrimaryEmail": null,
   "partnerAccessTokenExpiry": null,
+  "partnerMetadata": null,
+  "partnerPrimaryEmail": null,
+  "partnerRefreshToken": null,
   "partnerRefreshTokenExpiry": null,
   "scopes": null,
-  "additionalId1": null,
-  "partnerMetadata": null,
 } satisfies IntegrationRequest
 
 console.log(example)

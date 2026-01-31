@@ -31,59 +31,11 @@ public class CampaignCommonTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'lifetimeSpendCap'
-     */
-    @Test
-    public void lifetimeSpendCapTest() {
-        // TODO: test lifetimeSpendCap
-    }
-
-    /**
      * Test the property 'dailySpendCap'
      */
     @Test
     public void dailySpendCapTest() {
         // TODO: test dailySpendCap
-    }
-
-    /**
-     * Test the property 'orderLineId'
-     */
-    @Test
-    public void orderLineIdTest() {
-        // TODO: test orderLineId
-    }
-
-    /**
-     * Test the property 'trackingUrls'
-     */
-    @Test
-    public void trackingUrlsTest() {
-        // TODO: test trackingUrls
-    }
-
-    /**
-     * Test the property 'startTime'
-     */
-    @Test
-    public void startTimeTest() {
-        // TODO: test startTime
     }
 
     /**
@@ -95,11 +47,67 @@ public class CampaignCommonTest {
     }
 
     /**
+     * Test the property 'isAutomatedCampaign'
+     */
+    @Test
+    public void isAutomatedCampaignTest() {
+        // TODO: test isAutomatedCampaign
+    }
+
+    /**
      * Test the property 'isFlexibleDailyBudgets'
      */
     @Test
     public void isFlexibleDailyBudgetsTest() {
         // TODO: test isFlexibleDailyBudgets
+    }
+
+    /**
+     * Test the property 'lifetimeSpendCap'
+     */
+    @Test
+    public void lifetimeSpendCapTest() {
+        // TODO: test lifetimeSpendCap
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'orderLineId'
+     */
+    @Test
+    public void orderLineIdTest() {
+        // TODO: test orderLineId
+    }
+
+    /**
+     * Test the property 'startTime'
+     */
+    @Test
+    public void startTimeTest() {
+        // TODO: test startTime
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'trackingUrls'
+     */
+    @Test
+    public void trackingUrlsTest() {
+        // TODO: test trackingUrls
     }
 
 }

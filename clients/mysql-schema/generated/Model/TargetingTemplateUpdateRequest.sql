@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TargetingTemplateUpdateRequest`
 --
-SELECT `operation_type`, `id` FROM `TargetingTemplateUpdateRequest` WHERE 1;
+SELECT `id`, `operation_type`, `targeting_attributes` FROM `TargetingTemplateUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `TargetingTemplateUpdateRequest`
 --
-INSERT INTO `TargetingTemplateUpdateRequest`(`operation_type`, `id`) VALUES (?, ?);
+INSERT INTO `TargetingTemplateUpdateRequest`(`id`, `operation_type`, `targeting_attributes`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `TargetingTemplateUpdateRequest`
 --
-UPDATE `TargetingTemplateUpdateRequest` SET `operation_type` = ?, `id` = ? WHERE 1;
+UPDATE `TargetingTemplateUpdateRequest` SET `id` = ?, `operation_type` = ?, `targeting_attributes` = ? WHERE 1;
 
 --
 -- DELETE template for table `TargetingTemplateUpdateRequest`

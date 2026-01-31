@@ -73,10 +73,10 @@ private class OASCatalogsReportDistributionStatsTest {
     private static void maintainRenamedProperties() {
         OASCatalogsReportDistributionStats catalogsReportDistributionStats = new OASCatalogsReportDistributionStats();
         Map<String, String> x-property-mappings = catalogsReportDistributionStats.getx-property-mappings();
-        System.assertEquals('reportType', x-property-mappings.get('report_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('codeLabel', x-property-mappings.get('code_label'));
         System.assertEquals('ineligibleForAds', x-property-mappings.get('ineligible_for_ads'));
         System.assertEquals('ineligibleForOrganic', x-property-mappings.get('ineligible_for_organic'));
+        System.assertEquals('reportType', x-property-mappings.get('report_type'));
     }
 }

@@ -33,8 +33,8 @@ CatalogsItemValidationErrors::__init()
 	//iMAGE_LINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
 	//iMAGE_LINK_MISSING = new CatalogsItemValidationDetails();
 	//iNVALID_DOMAIN = new CatalogsItemValidationDetails();
-	//iTEMID_MISSING = new CatalogsItemValidationDetails();
 	//iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = new CatalogsItemValidationDetails();
+	//iTEMID_MISSING = new CatalogsItemValidationDetails();
 	//lINK_FORMAT_INVALID = new CatalogsItemValidationDetails();
 	//lINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
 	//lIST_PRICE_INVALID = new CatalogsItemValidationDetails();
@@ -101,15 +101,15 @@ CatalogsItemValidationErrors::__cleanup()
 	//delete iNVALID_DOMAIN;
 	//iNVALID_DOMAIN = NULL;
 	//}
-	//if(iTEMID_MISSING != NULL) {
-	//
-	//delete iTEMID_MISSING;
-	//iTEMID_MISSING = NULL;
-	//}
 	//if(iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE != NULL) {
 	//
 	//delete iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 	//iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = NULL;
+	//}
+	//if(iTEMID_MISSING != NULL) {
+	//
+	//delete iTEMID_MISSING;
+	//iTEMID_MISSING = NULL;
 	//}
 	//if(lINK_FORMAT_INVALID != NULL) {
 	//
@@ -314,20 +314,6 @@ CatalogsItemValidationErrors::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *iTEMID_MISSINGKey = "ITEMID_MISSING";
-	node = json_object_get_member(pJsonObject, iTEMID_MISSINGKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&iTEMID_MISSING, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&iTEMID_MISSING);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *iTEM_MAIN_IMAGE_DOWNLOAD_FAILUREKey = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE";
 	node = json_object_get_member(pJsonObject, iTEM_MAIN_IMAGE_DOWNLOAD_FAILUREKey);
 	if (node !=NULL) {
@@ -338,6 +324,20 @@ CatalogsItemValidationErrors::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *iTEMID_MISSINGKey = "ITEMID_MISSING";
+	node = json_object_get_member(pJsonObject, iTEMID_MISSINGKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsItemValidationDetails")) {
+			jsonToValue(&iTEMID_MISSING, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
+		} else {
+			
+			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&iTEMID_MISSING);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -649,20 +649,6 @@ CatalogsItemValidationErrors::toJson()
 	const gchar *iNVALID_DOMAINKey = "INVALID_DOMAIN";
 	json_object_set_member(pJsonObject, iNVALID_DOMAINKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getITEMIDMISSING();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getITEMIDMISSING());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *iTEMID_MISSINGKey = "ITEMID_MISSING";
-	json_object_set_member(pJsonObject, iTEMID_MISSINGKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getITEMMAINIMAGEDOWNLOADFAILURE();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
 	}
@@ -676,6 +662,20 @@ CatalogsItemValidationErrors::toJson()
 	}
 	const gchar *iTEM_MAIN_IMAGE_DOWNLOAD_FAILUREKey = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE";
 	json_object_set_member(pJsonObject, iTEM_MAIN_IMAGE_DOWNLOAD_FAILUREKey, node);
+	if (isprimitive("CatalogsItemValidationDetails")) {
+		CatalogsItemValidationDetails obj = getITEMIDMISSING();
+		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
+	}
+	else {
+		
+		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getITEMIDMISSING());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *iTEMID_MISSINGKey = "ITEMID_MISSING";
+	json_object_set_member(pJsonObject, iTEMID_MISSINGKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getLINKFORMATINVALID();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
@@ -959,18 +959,6 @@ CatalogsItemValidationErrors::setINVALIDDOMAIN(CatalogsItemValidationDetails  iN
 }
 
 CatalogsItemValidationDetails
-CatalogsItemValidationErrors::getITEMIDMISSING()
-{
-	return iTEMID_MISSING;
-}
-
-void
-CatalogsItemValidationErrors::setITEMIDMISSING(CatalogsItemValidationDetails  iTEMID_MISSING)
-{
-	this->iTEMID_MISSING = iTEMID_MISSING;
-}
-
-CatalogsItemValidationDetails
 CatalogsItemValidationErrors::getITEMMAINIMAGEDOWNLOADFAILURE()
 {
 	return iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
@@ -980,6 +968,18 @@ void
 CatalogsItemValidationErrors::setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails  iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE)
 {
 	this->iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+}
+
+CatalogsItemValidationDetails
+CatalogsItemValidationErrors::getITEMIDMISSING()
+{
+	return iTEMID_MISSING;
+}
+
+void
+CatalogsItemValidationErrors::setITEMIDMISSING(CatalogsItemValidationDetails  iTEMID_MISSING)
+{
+	this->iTEMID_MISSING = iTEMID_MISSING;
 }
 
 CatalogsItemValidationDetails

@@ -11,11 +11,11 @@
 
 export interface LineItem { 
     /**
-     * Product brand. For example, \"Parker\".
+     * Product brand. For example, \'Parker\'.
      */
     product_brand?: string;
     /**
-     * Product category. For example, \"Shoes\".
+     * Product category. For example, \'Shoes\'.
      */
     product_category?: string;
     /**
@@ -23,11 +23,11 @@ export interface LineItem {
      */
     product_id?: number;
     /**
-     * Product name. For example, \"Parker Boots\".
+     * Product name. For example, \'Parker Boots\'.
      */
     product_name?: string;
     /**
-     * Product price. For example, \"99.99\".
+     * Product price. For example, \'99.99\'.
      */
     product_price?: string;
     /**
@@ -35,11 +35,11 @@ export interface LineItem {
      */
     product_quantity?: number;
     /**
-     * Product variant. For example, \"Red\".
+     * Product variant. For example, \'Red\'.
      */
     product_variant?: string;
     /**
-     * Product variant ID. For example, \"1414-34832\".
+     * Product variant ID. For example, \'1414-34832\'.
      */
     product_variant_id?: string;
 }

@@ -18,9 +18,27 @@ import java.util.Objects;
 
 public class CatalogsProductGroupMultipleStringCriteria   {
   
+  private Boolean negated = false;
+
   private List<String> values = new ArrayList<>();
 
-  private Boolean negated = false;
+  /**
+   **/
+  public CatalogsProductGroupMultipleStringCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
 
   /**
    **/
@@ -49,24 +67,6 @@ public class CatalogsProductGroupMultipleStringCriteria   {
   }
 
 
-  /**
-   **/
-  public CatalogsProductGroupMultipleStringCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -77,13 +77,13 @@ public class CatalogsProductGroupMultipleStringCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleStringCriteria catalogsProductGroupMultipleStringCriteria = (CatalogsProductGroupMultipleStringCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleStringCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleStringCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleStringCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleStringCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -91,8 +91,8 @@ public class CatalogsProductGroupMultipleStringCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleStringCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

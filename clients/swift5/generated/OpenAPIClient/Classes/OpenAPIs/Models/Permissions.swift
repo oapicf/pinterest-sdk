@@ -14,8 +14,12 @@ public enum Permissions: String, Codable, CaseIterable {
     case admin = "ADMIN"
     case analyst = "ANALYST"
     case financeManager = "FINANCE_MANAGER"
+    case financeEdit = "FINANCE_EDIT"
+    case financeView = "FINANCE_VIEW"
     case audienceManager = "AUDIENCE_MANAGER"
     case campaignManager = "CAMPAIGN_MANAGER"
     case catalogsManager = "CATALOGS_MANAGER"
+    case catalogsViewer = "CATALOGS_VIEWER"
     case profilePublisher = "PROFILE_PUBLISHER"
+    case consumerUser = "CONSUMER_USER"
 }

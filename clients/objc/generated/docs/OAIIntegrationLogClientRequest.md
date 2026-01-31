@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **NSString*** |  | 
 **host** | **NSString*** | HTTP request host from host header. | 
+**method** | **NSString*** |  | 
 **path** | **NSString*** | HTTP request path. | 
 **requestHeaders** | **NSDictionary&lt;NSString*, NSString*&gt;*** | HTTP request headers as key-value pairs. | [optional] 
 **responseHeaders** | **NSDictionary&lt;NSString*, NSString*&gt;*** | HTTP response headers as key-value pairs. | [optional] 

@@ -12,16 +12,16 @@ module CatalogsHotelBatchRequest =
 
   [<CLIMutable>]
   type CatalogsHotelBatchRequest = {
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
-    [<JsonProperty(PropertyName = "language")>]
-    Language : string;
     [<JsonProperty(PropertyName = "items")>]
     Items : CatalogsHotelBatchItem[];
-    [<JsonProperty(PropertyName = "catalog_id")>]
-    CatalogId : string;
+    [<JsonProperty(PropertyName = "language")>]
+    Language : string;
   }
 
   //#endregion

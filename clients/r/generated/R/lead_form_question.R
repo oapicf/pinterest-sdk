@@ -7,37 +7,30 @@
 #' @title LeadFormQuestion
 #' @description LeadFormQuestion Class
 #' @format An \code{R6Class} generator object
-#' @field question_type  \link{LeadFormQuestionType} [optional]
 #' @field custom_question_field_type  \link{LeadFormQuestionFieldType} [optional]
 #' @field custom_question_label Question label for a custom question. character [optional]
 #' @field custom_question_options Question options for a custom question. list(character) [optional]
+#' @field question_type  \link{LeadFormQuestionType} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 LeadFormQuestion <- R6::R6Class(
   "LeadFormQuestion",
   public = list(
-    `question_type` = NULL,
     `custom_question_field_type` = NULL,
     `custom_question_label` = NULL,
     `custom_question_options` = NULL,
+    `question_type` = NULL,
 
     #' @description
     #' Initialize a new LeadFormQuestion class.
     #'
-    #' @param question_type question_type
     #' @param custom_question_field_type custom_question_field_type
     #' @param custom_question_label Question label for a custom question.
     #' @param custom_question_options Question options for a custom question.
+    #' @param question_type question_type
     #' @param ... Other optional arguments.
-    initialize = function(`question_type` = NULL, `custom_question_field_type` = NULL, `custom_question_label` = NULL, `custom_question_options` = NULL, ...) {
-      if (!is.null(`question_type`)) {
-        if (!(`question_type` %in% c())) {
-          stop(paste("Error! \"", `question_type`, "\" cannot be assigned to `question_type`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`question_type`))
-        self$`question_type` <- `question_type`
-      }
+    initialize = function(`custom_question_field_type` = NULL, `custom_question_label` = NULL, `custom_question_options` = NULL, `question_type` = NULL, ...) {
       if (!is.null(`custom_question_field_type`)) {
         if (!(`custom_question_field_type` %in% c())) {
           stop(paste("Error! \"", `custom_question_field_type`, "\" cannot be assigned to `custom_question_field_type`. Must be .", sep = ""))
@@ -55,6 +48,13 @@ LeadFormQuestion <- R6::R6Class(
         stopifnot(is.vector(`custom_question_options`), length(`custom_question_options`) != 0)
         sapply(`custom_question_options`, function(x) stopifnot(is.character(x)))
         self$`custom_question_options` <- `custom_question_options`
+      }
+      if (!is.null(`question_type`)) {
+        if (!(`question_type` %in% c())) {
+          stop(paste("Error! \"", `question_type`, "\" cannot be assigned to `question_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`question_type`))
+        self$`question_type` <- `question_type`
       }
     },
 
@@ -89,10 +89,6 @@ LeadFormQuestion <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       LeadFormQuestionObject <- list()
-      if (!is.null(self$`question_type`)) {
-        LeadFormQuestionObject[["question_type"]] <-
-          self$`question_type`$toSimpleType()
-      }
       if (!is.null(self$`custom_question_field_type`)) {
         LeadFormQuestionObject[["custom_question_field_type"]] <-
           self$`custom_question_field_type`$toSimpleType()
@@ -105,6 +101,10 @@ LeadFormQuestion <- R6::R6Class(
         LeadFormQuestionObject[["custom_question_options"]] <-
           self$`custom_question_options`
       }
+      if (!is.null(self$`question_type`)) {
+        LeadFormQuestionObject[["question_type"]] <-
+          self$`question_type`$toSimpleType()
+      }
       return(LeadFormQuestionObject)
     },
 
@@ -115,11 +115,6 @@ LeadFormQuestion <- R6::R6Class(
     #' @return the instance of LeadFormQuestion
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`question_type`)) {
-        `question_type_object` <- LeadFormQuestionType$new()
-        `question_type_object`$fromJSON(jsonlite::toJSON(this_object$`question_type`, auto_unbox = TRUE, digits = NA))
-        self$`question_type` <- `question_type_object`
-      }
       if (!is.null(this_object$`custom_question_field_type`)) {
         `custom_question_field_type_object` <- LeadFormQuestionFieldType$new()
         `custom_question_field_type_object`$fromJSON(jsonlite::toJSON(this_object$`custom_question_field_type`, auto_unbox = TRUE, digits = NA))
@@ -130,6 +125,11 @@ LeadFormQuestion <- R6::R6Class(
       }
       if (!is.null(this_object$`custom_question_options`)) {
         self$`custom_question_options` <- ApiClient$new()$deserializeObj(this_object$`custom_question_options`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`question_type`)) {
+        `question_type_object` <- LeadFormQuestionType$new()
+        `question_type_object`$fromJSON(jsonlite::toJSON(this_object$`question_type`, auto_unbox = TRUE, digits = NA))
+        self$`question_type` <- `question_type_object`
       }
       self
     },
@@ -152,10 +152,10 @@ LeadFormQuestion <- R6::R6Class(
     #' @return the instance of LeadFormQuestion
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`question_type` <- LeadFormQuestionType$new()$fromJSON(jsonlite::toJSON(this_object$`question_type`, auto_unbox = TRUE, digits = NA))
       self$`custom_question_field_type` <- LeadFormQuestionFieldType$new()$fromJSON(jsonlite::toJSON(this_object$`custom_question_field_type`, auto_unbox = TRUE, digits = NA))
       self$`custom_question_label` <- this_object$`custom_question_label`
       self$`custom_question_options` <- ApiClient$new()$deserializeObj(this_object$`custom_question_options`, "array[character]", loadNamespace("openapi"))
+      self$`question_type` <- LeadFormQuestionType$new()$fromJSON(jsonlite::toJSON(this_object$`question_type`, auto_unbox = TRUE, digits = NA))
       self
     },
 

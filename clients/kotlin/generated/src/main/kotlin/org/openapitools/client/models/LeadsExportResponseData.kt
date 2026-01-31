@@ -23,18 +23,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param exportStatus 
  * @param downloadUrl 
+ * @param exportStatus 
  */
 
 
 data class LeadsExportResponseData (
 
-    @Json(name = "export_status")
-    val exportStatus: LeadsExportStatus? = null,
-
     @Json(name = "download_url")
-    val downloadUrl: kotlin.String? = null
+    val downloadUrl: kotlin.String? = null,
+
+    @Json(name = "export_status")
+    val exportStatus: LeadsExportStatus? = null
 
 ) {
 

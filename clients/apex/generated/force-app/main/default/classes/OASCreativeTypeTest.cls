@@ -12,7 +12,10 @@ private class OASCreativeTypeTest {
             OASCreativeType.COLLECTION,
             OASCreativeType.IDEA,
             OASCreativeType.SHOWCASE,
-            OASCreativeType.QUIZ
+            OASCreativeType.QUIZ,
+            OASCreativeType.COLLAGE,
+            OASCreativeType.MAX_WIDTH_REGULAR_COLLECTION,
+            OASCreativeType.MAX_WIDTH_VIDEO_COLLECTION
         };
         Set<OASCreativeType> actual  = new Set<OASCreativeType>(OASCreativeType.values());
         System.assertEquals(expected, actual);

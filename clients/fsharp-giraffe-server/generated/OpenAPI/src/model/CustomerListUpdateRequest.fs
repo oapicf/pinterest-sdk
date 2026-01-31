@@ -2,7 +2,6 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.Exception
 open OpenAPI.Model.UserListOperationType
 
 module CustomerListUpdateRequest =
@@ -11,8 +10,7 @@ module CustomerListUpdateRequest =
 
 
   type CustomerListUpdateRequest = {
-    Records : string;
     OperationType : UserListOperationType;
-    Exceptions : Exception;
+    Records : string;
   }
   //#endregion

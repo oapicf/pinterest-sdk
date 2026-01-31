@@ -1,15 +1,15 @@
 
 # PinMediaSourceImagesURL
 
-Multiple images urls-based media source
+Multiple URL-based images media source
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`sourceType` | string
-`items` | [Array&lt;PinMediaSourceImagesURLItemsInner&gt;](PinMediaSourceImagesURLItemsInner.md)
 `index` | number
+`items` | [Array&lt;PinMediaSourceImagesURLItem&gt;](PinMediaSourceImagesURLItem.md)
+`sourceType` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { PinMediaSourceImagesURL } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceType": null,
-  "items": null,
   "index": null,
+  "items": null,
+  "sourceType": null,
 } satisfies PinMediaSourceImagesURL
 
 console.log(example)

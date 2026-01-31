@@ -25,16 +25,10 @@ class LinkedBusinessTest : ShouldSpec() {
         // uncomment below to create an instance of LinkedBusiness
         //val modelInstance = LinkedBusiness()
 
-        // to test the property `username` - Username
-        should("test username") {
+        // to test the property `imageLargeUrl` - image_large_url
+        should("test imageLargeUrl") {
             // uncomment below to test the property
-            //modelInstance.username shouldBe ("TODO")
-        }
-
-        // to test the property `imageSmallUrl` - image_small_url
-        should("test imageSmallUrl") {
-            // uncomment below to test the property
-            //modelInstance.imageSmallUrl shouldBe ("TODO")
+            //modelInstance.imageLargeUrl shouldBe ("TODO")
         }
 
         // to test the property `imageMediumUrl` - image_medium_url
@@ -43,16 +37,22 @@ class LinkedBusinessTest : ShouldSpec() {
             //modelInstance.imageMediumUrl shouldBe ("TODO")
         }
 
-        // to test the property `imageLargeUrl` - image_large_url
-        should("test imageLargeUrl") {
+        // to test the property `imageSmallUrl` - image_small_url
+        should("test imageSmallUrl") {
             // uncomment below to test the property
-            //modelInstance.imageLargeUrl shouldBe ("TODO")
+            //modelInstance.imageSmallUrl shouldBe ("TODO")
         }
 
         // to test the property `imageXlargeUrl` - image_xlarge_url
         should("test imageXlargeUrl") {
             // uncomment below to test the property
             //modelInstance.imageXlargeUrl shouldBe ("TODO")
+        }
+
+        // to test the property `username` - Username
+        should("test username") {
+            // uncomment below to test the property
+            //modelInstance.username shouldBe ("TODO")
         }
 
     }

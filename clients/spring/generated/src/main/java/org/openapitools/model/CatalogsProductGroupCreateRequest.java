@@ -26,19 +26,19 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupCreateRequest", description = "Request object for creating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsInner {
 
-  private String name;
-
   private JsonNullable<String> description = JsonNullable.<String>undefined();
+
+  private String feedId;
+
+  private CatalogsProductGroupFiltersRequest filters;
 
   @Deprecated
   private Boolean isFeatured = false;
 
-  private CatalogsProductGroupFiltersRequest filters;
-
-  private String feedId;
+  private String name;
 
   public CatalogsProductGroupCreateRequest() {
     super();
@@ -47,29 +47,9 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
   /**
    * Constructor with only required parameters
    */
-  public CatalogsProductGroupCreateRequest(String name, CatalogsProductGroupFiltersRequest filters, String feedId) {
-    this.name = name;
-    this.filters = filters;
+  public CatalogsProductGroupCreateRequest(String feedId, CatalogsProductGroupFiltersRequest filters, String name) {
     this.feedId = feedId;
-  }
-
-  public CatalogsProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
+    this.filters = filters;
     this.name = name;
   }
 
@@ -91,6 +71,46 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
 
   public void setDescription(JsonNullable<String> description) {
     this.description = description;
+  }
+
+  public CatalogsProductGroupCreateRequest feedId(String feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+  /**
+   * Catalog Feed id pertaining to the catalog product group.
+   * @return feedId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "feed_id", example = "2680059592705", description = "Catalog Feed id pertaining to the catalog product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("feed_id")
+  public String getFeedId() {
+    return feedId;
+  }
+
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
+  }
+
+  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  /**
+   * Get filters
+   * @return filters
+   */
+  @NotNull @Valid 
+  @Schema(name = "filters", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
   public CatalogsProductGroupCreateRequest isFeatured(Boolean isFeatured) {
@@ -119,44 +139,24 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
     this.isFeatured = isFeatured;
   }
 
-  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get filters
-   * @return filters
+   * Get name
+   * @return name
    */
-  @NotNull @Valid 
-  @Schema(name = "filters", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
-  }
-
-  public CatalogsProductGroupCreateRequest feedId(String feedId) {
-    this.feedId = feedId;
-    return this;
-  }
-
-  /**
-   * Catalog Feed id pertaining to the catalog product group.
-   * @return feedId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "feed_id", example = "2680059592705", description = "Catalog Feed id pertaining to the catalog product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("feed_id")
-  public String getFeedId() {
-    return feedId;
-  }
-
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
@@ -168,11 +168,11 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
       return false;
     }
     CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest = (CatalogsProductGroupCreateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupCreateRequest.name) &&
-        equalsNullable(this.description, catalogsProductGroupCreateRequest.description) &&
-        Objects.equals(this.isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+    return equalsNullable(this.description, catalogsProductGroupCreateRequest.description) &&
+        Objects.equals(this.feedId, catalogsProductGroupCreateRequest.feedId) &&
         Objects.equals(this.filters, catalogsProductGroupCreateRequest.filters) &&
-        Objects.equals(this.feedId, catalogsProductGroupCreateRequest.feedId);
+        Objects.equals(this.isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+        Objects.equals(this.name, catalogsProductGroupCreateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -181,7 +181,7 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, hashCodeNullable(description), isFeatured, filters, feedId);
+    return Objects.hash(hashCodeNullable(description), feedId, filters, isFeatured, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,11 +195,11 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCreateRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

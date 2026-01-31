@@ -60,22 +60,6 @@ ItemAttributesRequestAllOfImageLink <- R6::R6Class(
       error_messages <- list()
       instance <- NULL
 
-      `array[character]_result` <- tryCatch({
-          instance <- jsonlite::fromJSON(input, simplifyVector = FALSE)
-          if (typeof(instance) != "array[character]") {
-            stop(sprintf("Data type doesn't match. Expected: %s. Actual: %s.", "array[character]", typeof(instance)))
-          }
-          instance_type <- "array[character]"
-          matched_schemas <- append(matched_schemas, "array[character]")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`array[character]_result`["error"])) {
-        error_messages <- append(error_messages, `array[character]_result`["message"])
-      }
-
       `character_result` <- tryCatch({
           instance <- jsonlite::fromJSON(input, simplifyVector = FALSE)
           if (typeof(instance) != "character") {
@@ -90,6 +74,22 @@ ItemAttributesRequestAllOfImageLink <- R6::R6Class(
 
       if (!is.null(`character_result`["error"])) {
         error_messages <- append(error_messages, `character_result`["message"])
+      }
+
+      `array[character]_result` <- tryCatch({
+          instance <- jsonlite::fromJSON(input, simplifyVector = FALSE)
+          if (typeof(instance) != "array[character]") {
+            stop(sprintf("Data type doesn't match. Expected: %s. Actual: %s.", "array[character]", typeof(instance)))
+          }
+          instance_type <- "array[character]"
+          matched_schemas <- append(matched_schemas, "array[character]")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`array[character]_result`["error"])) {
+        error_messages <- append(error_messages, `array[character]_result`["message"])
       }
 
       if (matched == 1) {

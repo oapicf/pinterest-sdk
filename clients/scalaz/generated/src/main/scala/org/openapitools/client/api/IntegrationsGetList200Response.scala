@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import IntegrationsGetList200Response._
 
 case class IntegrationsGetList200Response (
-  items: List[IntegrationRecord],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[IntegrationRecord])
 
 object IntegrationsGetList200Response {
   import DateTimeCodecs._

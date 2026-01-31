@@ -10,44 +10,49 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Resource create operation model. */
 public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
 
-    /** Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
+    /** Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
+    public var aemDbEnabled: Bool? = false
+    /** Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
     public var aemEnabled: Bool? = false
+    /** Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
+    public var aemExternalIdEnabled: Bool? = false
+    /** Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
+    public var aemFnlnEnabled: Bool? = false
+    /** Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
+    public var aemGeEnabled: Bool? = false
+    /** Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
+    public var aemLocEnabled: Bool? = false
+    /** Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. */
+    public var aemPhEnabled: Bool? = false
     /** Metadata ingestion frequency. */
     public var mdFrequency: Double? = 1
-    /** Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-    public var aemFnlnEnabled: Bool? = false
-    /** Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-    public var aemPhEnabled: Bool? = false
-    /** Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-    public var aemGeEnabled: Bool? = false
-    /** Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-    public var aemDbEnabled: Bool? = false
-    /** Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-    public var aemLocEnabled: Bool? = false
     /** Conversion tag name. */
     public var name: String
 
-    public init(aemEnabled: Bool? = false, mdFrequency: Double? = 1, aemFnlnEnabled: Bool? = false, aemPhEnabled: Bool? = false, aemGeEnabled: Bool? = false, aemDbEnabled: Bool? = false, aemLocEnabled: Bool? = false, name: String) {
-        self.aemEnabled = aemEnabled
-        self.mdFrequency = mdFrequency
-        self.aemFnlnEnabled = aemFnlnEnabled
-        self.aemPhEnabled = aemPhEnabled
-        self.aemGeEnabled = aemGeEnabled
+    public init(aemDbEnabled: Bool? = false, aemEnabled: Bool? = false, aemExternalIdEnabled: Bool? = false, aemFnlnEnabled: Bool? = false, aemGeEnabled: Bool? = false, aemLocEnabled: Bool? = false, aemPhEnabled: Bool? = false, mdFrequency: Double? = 1, name: String) {
         self.aemDbEnabled = aemDbEnabled
+        self.aemEnabled = aemEnabled
+        self.aemExternalIdEnabled = aemExternalIdEnabled
+        self.aemFnlnEnabled = aemFnlnEnabled
+        self.aemGeEnabled = aemGeEnabled
         self.aemLocEnabled = aemLocEnabled
+        self.aemPhEnabled = aemPhEnabled
+        self.mdFrequency = mdFrequency
         self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case aemEnabled = "aem_enabled"
-        case mdFrequency = "md_frequency"
-        case aemFnlnEnabled = "aem_fnln_enabled"
-        case aemPhEnabled = "aem_ph_enabled"
-        case aemGeEnabled = "aem_ge_enabled"
         case aemDbEnabled = "aem_db_enabled"
+        case aemEnabled = "aem_enabled"
+        case aemExternalIdEnabled = "aem_external_id_enabled"
+        case aemFnlnEnabled = "aem_fnln_enabled"
+        case aemGeEnabled = "aem_ge_enabled"
         case aemLocEnabled = "aem_loc_enabled"
+        case aemPhEnabled = "aem_ph_enabled"
+        case mdFrequency = "md_frequency"
         case name
     }
 
@@ -55,13 +60,14 @@ public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(aemEnabled, forKey: .aemEnabled)
-        try container.encodeIfPresent(mdFrequency, forKey: .mdFrequency)
-        try container.encodeIfPresent(aemFnlnEnabled, forKey: .aemFnlnEnabled)
-        try container.encodeIfPresent(aemPhEnabled, forKey: .aemPhEnabled)
-        try container.encodeIfPresent(aemGeEnabled, forKey: .aemGeEnabled)
         try container.encodeIfPresent(aemDbEnabled, forKey: .aemDbEnabled)
+        try container.encodeIfPresent(aemEnabled, forKey: .aemEnabled)
+        try container.encodeIfPresent(aemExternalIdEnabled, forKey: .aemExternalIdEnabled)
+        try container.encodeIfPresent(aemFnlnEnabled, forKey: .aemFnlnEnabled)
+        try container.encodeIfPresent(aemGeEnabled, forKey: .aemGeEnabled)
         try container.encodeIfPresent(aemLocEnabled, forKey: .aemLocEnabled)
+        try container.encodeIfPresent(aemPhEnabled, forKey: .aemPhEnabled)
+        try container.encodeIfPresent(mdFrequency, forKey: .mdFrequency)
         try container.encode(name, forKey: .name)
     }
 }

@@ -1,5 +1,6 @@
 package api
 
+import model.CreativeType
 import model.Error
 import java.time.LocalDate
 import model.Pin
@@ -12,7 +13,7 @@ import model.PinsSaveRequest
 /**
   * Provides a default implementation for [[PinsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class PinsApiImpl extends PinsApi {
   /**
     * @inheritdoc
@@ -38,7 +39,7 @@ class PinsApiImpl extends PinsApi {
   override def pinsCreate(pinCreate: PinCreate, adAccountId: Option[String]): Pin = {
     // TODO: Implement better logic
 
-    Pin(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    Pin(None, None, None, None, None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 
   /**
@@ -53,19 +54,19 @@ class PinsApiImpl extends PinsApi {
   /**
     * @inheritdoc
     */
-  override def pinsGet(pinId: String, pinMetrics: Option[Boolean], adAccountId: Option[String]): Pin = {
+  override def pinsGet(pinId: String, adAccountId: Option[String], pinMetrics: Option[Boolean]): Pin = {
     // TODO: Implement better logic
 
-    Pin(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    Pin(None, None, None, None, None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def pinsList(bookmark: Option[String], pageSize: Option[Int], pinFilter: Option[String], includeProtectedPins: Option[Boolean], pinType: Option[String], creativeTypes: Option[List[String]], adAccountId: Option[String], pinMetrics: Option[Boolean]): PinsList200Response = {
+  override def pinsList(pinFilter: Option[String], pinMetrics: Option[Boolean], includeProtectedPins: Option[Boolean], pinType: Option[String], creativeTypes: Option[List[CreativeType]], adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): PinsList200Response = {
     // TODO: Implement better logic
 
-    PinsList200Response(List.empty[Pin], None)
+    PinsList200Response(None, List.empty[Pin])
   }
 
   /**
@@ -74,7 +75,7 @@ class PinsApiImpl extends PinsApi {
   override def pinsSave(pinId: String, pinsSaveRequest: PinsSaveRequest, adAccountId: Option[String]): Pin = {
     // TODO: Implement better logic
 
-    Pin(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    Pin(None, None, None, None, None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 
   /**
@@ -83,6 +84,6 @@ class PinsApiImpl extends PinsApi {
   override def pinsUpdate(pinId: String, pinUpdate: PinUpdate, adAccountId: Option[String]): Pin = {
     // TODO: Implement better logic
 
-    Pin(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    Pin(None, None, None, None, None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 }

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **catalog_id** | **String** | Catalog id pertaining to all items | [optional] |
-| **items** | [**Array&lt;AdvancedAuctionProcessedItem&gt;**](AdvancedAuctionProcessedItem.md) | Array of advanced auction processed items | [optional] |
+| **items** | [**Array&lt;AdvancedAuctionItemsSubmitRecord&gt;**](AdvancedAuctionItemsSubmitRecord.md) | Array of advanced auction processed items | [optional] |
 
 ## Example
 

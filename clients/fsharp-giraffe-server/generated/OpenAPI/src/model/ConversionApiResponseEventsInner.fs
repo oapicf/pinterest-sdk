@@ -13,8 +13,8 @@ module ConversionApiResponseEventsInner =
   //#endregion
 
   type ConversionApiResponse_events_inner = {
-    Status : StatusEnum;
     ErrorMessage : string option;
+    Status : StatusEnum;
     WarningMessage : string option;
   }
   //#endregion

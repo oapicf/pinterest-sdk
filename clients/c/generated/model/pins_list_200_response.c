@@ -6,27 +6,27 @@
 
 
 static pins_list_200_response_t *pins_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     pins_list_200_response_t *pins_list_200_response_local_var = malloc(sizeof(pins_list_200_response_t));
     if (!pins_list_200_response_local_var) {
         return NULL;
     }
-    pins_list_200_response_local_var->items = items;
     pins_list_200_response_local_var->bookmark = bookmark;
+    pins_list_200_response_local_var->items = items;
 
     pins_list_200_response_local_var->_library_owned = 1;
     return pins_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) pins_list_200_response_t *pins_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return pins_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void pins_list_200_response_free(pins_list_200_response_t *pins_list_200_respons
         return ;
     }
     listEntry_t *listEntry;
+    if (pins_list_200_response->bookmark) {
+        free(pins_list_200_response->bookmark);
+        pins_list_200_response->bookmark = NULL;
+    }
     if (pins_list_200_response->items) {
         list_ForEach(listEntry, pins_list_200_response->items) {
             pin_free(listEntry->data);
@@ -46,15 +50,19 @@ void pins_list_200_response_free(pins_list_200_response_t *pins_list_200_respons
         list_freeList(pins_list_200_response->items);
         pins_list_200_response->items = NULL;
     }
-    if (pins_list_200_response->bookmark) {
-        free(pins_list_200_response->bookmark);
-        pins_list_200_response->bookmark = NULL;
-    }
     free(pins_list_200_response);
 }
 
 cJSON *pins_list_200_response_convertToJSON(pins_list_200_response_t *pins_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // pins_list_200_response->bookmark
+    if(pins_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", pins_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // pins_list_200_response->items
     if (!pins_list_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *pins_list_200_response_convertToJSON(pins_list_200_response_t *pins_list_
     }
     }
 
-
-    // pins_list_200_response->bookmark
-    if(pins_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", pins_list_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ pins_list_200_response_t *pins_list_200_response_parseFromJSON(cJSON *pins_list_
 
     // define the local list for pins_list_200_response->items
     list_t *itemsList = NULL;
+
+    // pins_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(pins_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // pins_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(pins_list_200_responseJSON, "items");
@@ -126,22 +138,10 @@ pins_list_200_response_t *pins_list_200_response_parseFromJSON(cJSON *pins_list_
         list_addElement(itemsList, itemsItem);
     }
 
-    // pins_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(pins_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     pins_list_200_response_local_var = pins_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return pins_list_200_response_local_var;

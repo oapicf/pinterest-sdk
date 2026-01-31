@@ -25,12 +25,12 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("UpdatePartnerAssetAccessBody_accesses_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdatePartnerAssetAccessBodyAccessesInner {
 
-  private String partnerId;
-
   private String assetId;
+
+  private String partnerId;
 
   @Valid
   private List<Permissions> permissions = new ArrayList<>();
@@ -42,30 +42,10 @@ public class UpdatePartnerAssetAccessBodyAccessesInner {
   /**
    * Constructor with only required parameters
    */
-  public UpdatePartnerAssetAccessBodyAccessesInner(String partnerId, String assetId, List<Permissions> permissions) {
-    this.partnerId = partnerId;
+  public UpdatePartnerAssetAccessBodyAccessesInner(String assetId, String partnerId, List<Permissions> permissions) {
     this.assetId = assetId;
+    this.partnerId = partnerId;
     this.permissions = permissions;
-  }
-
-  public UpdatePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-  /**
-   * Unique identifier of a business partner to update asset access to.
-   * @return partnerId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 25) 
-  @Schema(name = "partner_id", example = "1234567890123", description = "Unique identifier of a business partner to update asset access to.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("partner_id")
-  public String getPartnerId() {
-    return partnerId;
-  }
-
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
   }
 
   public UpdatePartnerAssetAccessBodyAccessesInner assetId(String assetId) {
@@ -86,6 +66,26 @@ public class UpdatePartnerAssetAccessBodyAccessesInner {
 
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+  public UpdatePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of a business partner to update asset access to.
+   * @return partnerId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 25) 
+  @Schema(name = "partner_id", example = "1234567890123", description = "Unique identifier of a business partner to update asset access to.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("partner_id")
+  public String getPartnerId() {
+    return partnerId;
+  }
+
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
   public UpdatePartnerAssetAccessBodyAccessesInner permissions(List<Permissions> permissions) {
@@ -125,22 +125,22 @@ public class UpdatePartnerAssetAccessBodyAccessesInner {
       return false;
     }
     UpdatePartnerAssetAccessBodyAccessesInner updatePartnerAssetAccessBodyAccessesInner = (UpdatePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(this.partnerId, updatePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(this.assetId, updatePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(this.assetId, updatePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(this.partnerId, updatePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(this.permissions, updatePartnerAssetAccessBodyAccessesInner.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, permissions);
+    return Objects.hash(assetId, partnerId, permissions);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdatePartnerAssetAccessBodyAccessesInner {\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();

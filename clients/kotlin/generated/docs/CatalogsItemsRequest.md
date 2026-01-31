@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  |  |
+| **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 
 
 <a id="Language"></a>

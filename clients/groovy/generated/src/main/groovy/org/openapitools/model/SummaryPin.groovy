@@ -9,13 +9,15 @@ import org.openapitools.model.PinMedia;
 @Canonical
 class SummaryPin {
     
-    PinMedia media
-    
     String altText
+    
+    String description
+    
+    String id
     
     String link
     
-    String title
+    PinMedia media
     
-    String description
+    String title
 }

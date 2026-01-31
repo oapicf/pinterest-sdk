@@ -13,18 +13,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdAccountsList200Response  {
   
- /**
-  * Ad accounts
-  */
-  @ApiModelProperty(required = true, value = "Ad accounts")
-
-  private List<AdAccount> items = new ArrayList<>();
-
   @ApiModelProperty(value = "")
 
   private String bookmark;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private List<AdAccount> items = new ArrayList<>();
  /**
-   * Ad accounts
+   * Get bookmark
+   * @return bookmark
+  **/
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  public AdAccountsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+ /**
+   * Get items
    * @return items
   **/
   @JsonProperty("items")
@@ -46,24 +61,6 @@ public class AdAccountsList200Response  {
     return this;
   }
 
- /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  public AdAccountsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -73,13 +70,13 @@ public class AdAccountsList200Response  {
       return false;
     }
     AdAccountsList200Response adAccountsList200Response = (AdAccountsList200Response) o;
-    return Objects.equals(this.items, adAccountsList200Response.items) &&
-        Objects.equals(this.bookmark, adAccountsList200Response.bookmark);
+    return Objects.equals(this.bookmark, adAccountsList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -87,8 +84,8 @@ public class AdAccountsList200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

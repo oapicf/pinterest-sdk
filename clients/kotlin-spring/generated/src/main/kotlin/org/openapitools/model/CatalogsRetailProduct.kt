@@ -34,7 +34,7 @@ data class CatalogsRetailProduct(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("pin", required = true) val pin: Pin?
+    @get:JsonProperty("pin", required = true) val pin: Pin
 ) {
 
     /**

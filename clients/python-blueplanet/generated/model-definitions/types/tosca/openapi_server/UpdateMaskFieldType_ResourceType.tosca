@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateMaskFieldType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateMaskFieldType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  UpdateMaskFieldType {
+    title = UpdateMaskFieldType
+    description = UpdateMaskFieldType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateMaskFieldType {
+    title = UpdateMaskFieldType
+    description = UpdateMaskFieldType
+    implements = openapi_server.resourceTypes.UpdateMaskFieldType
+
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "access_token" },
+      {"model": "expires_in" },
+      {"model": "response_type" },
+      {"model": "scope" },
+      {"model": "token_type" },
+      {"model": "refresh_token" },
+      {"model": "refresh_token_expires_at" },
+      {"model": "refresh_token_expires_in" },
+    ]
+  }]
+}

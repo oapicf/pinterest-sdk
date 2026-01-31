@@ -11,15 +11,20 @@ import java.util.List;
 import org.openapitools.model.*;
 
 import org.openapitools.model.Board;
+import org.openapitools.model.BoardCreate;
+import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
 import org.openapitools.model.BoardSectionsList200Response;
-import org.openapitools.model.BoardUpdate;
+import org.openapitools.model.BoardWithUpdatePrivacy;
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.Error;
 import java.util.List;
+import org.openapitools.model.PinterestLibError;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -58,7 +63,7 @@ public class BoardsController  {
   */
 
   /*
-    public ResponseContext boardsCreate(RequestContext request , Board board, String adAccountId) {
+    public ResponseContext boardsCreate(RequestContext request , BoardCreate boardCreate, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -76,19 +81,19 @@ public class BoardsController  {
   */
 
   /*
-    public ResponseContext boardsList(RequestContext request , String adAccountId, String bookmark, Integer pageSize, String privacy) {
+    public ResponseContext boardsList(RequestContext request , String adAccountId, BoardPrivacyFilter privacy, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext boardsListPins(RequestContext request , String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) {
+    public ResponseContext boardsListPins(RequestContext request , String boardId, String bookmark, Integer pageSize, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext boardsUpdate(RequestContext request , String boardId, BoardUpdate boardUpdate, String adAccountId) {
+    public ResponseContext boardsUpdate(RequestContext request , String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

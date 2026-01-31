@@ -7,7 +7,8 @@ Pin with image.
 
 Name | Type
 ------------ | -------------
-`images` | [PinMediaWithImageAllOfImages](PinMediaWithImageAllOfImages.md)
+`images` | [ImageSize](ImageSize.md)
+`mediaType` | string
 
 ## Example
 
@@ -17,6 +18,7 @@ import type { PinMediaWithImage } from ''
 // TODO: Update the object below with actual values
 const example = {
   "images": null,
+  "mediaType": null,
 } satisfies PinMediaWithImage
 
 console.log(example)

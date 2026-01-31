@@ -7,9 +7,9 @@
 | **refreshToken** | **kotlin.String** |  |  |
 | **refreshTokenExpiresIn** | **kotlin.Int** |  |  |
 | **accessToken** | **kotlin.String** |  |  |
-| **tokenType** | **kotlin.String** |  |  |
 | **expiresIn** | **kotlin.Int** |  |  |
 | **scope** | **kotlin.String** |  |  |
+| **tokenType** | **kotlin.String** |  |  |
 | **responseType** | [**inline**](#ResponseType) |  |  [optional] |
 
 

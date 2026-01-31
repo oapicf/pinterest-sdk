@@ -8,9 +8,9 @@
 
 (def catalogs-create-creative-assets-item-data
   {
+   (ds/req :attributes) catalogs-creative-assets-attributes-spec
    (ds/req :creative_assets_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) catalogs-creative-assets-attributes-spec
    })
 
 (def catalogs-create-creative-assets-item-spec

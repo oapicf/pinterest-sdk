@@ -16,7 +16,7 @@ import java.util.List;
  **/
 
 @ApiModel(description = "The terminated asset access.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnerAssetsResult   {
   @JsonProperty("asset_id")
   private String assetId;
@@ -24,14 +24,14 @@ public class DeletePartnerAssetsResult   {
   @JsonProperty("asset_type")
   private String assetType;
 
-  @JsonProperty("permissions")
-  private List<String> permissions = null;
-
   @JsonProperty("is_shared_partner")
   private Boolean isSharedPartner;
 
   @JsonProperty("partner_id")
   private String partnerId;
+
+  @JsonProperty("permissions")
+  private List<String> permissions = null;
 
   /**
    * Unique identifier of a business asset.
@@ -52,7 +52,7 @@ public class DeletePartnerAssetsResult   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   public DeletePartnerAssetsResult assetType(String assetType) {
     this.assetType = assetType;
@@ -60,31 +60,13 @@ public class DeletePartnerAssetsResult   {
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
   }
   public void setAssetType(String assetType) {
     this.assetType = assetType;
-  }
-
-  /**
-   * Permission levels member or partner has on an asset.
-   **/
-  public DeletePartnerAssetsResult permissions(List<String> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
-  @JsonProperty("permissions")
-  public List<String> getPermissions() {
-    return permissions;
-  }
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
   }
 
   /**
@@ -123,6 +105,24 @@ public class DeletePartnerAssetsResult   {
     this.partnerId = partnerId;
   }
 
+  /**
+   * Permission levels member or partner has on an asset.
+   **/
+  public DeletePartnerAssetsResult permissions(List<String> permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
+  @JsonProperty("permissions")
+  public List<String> getPermissions() {
+    return permissions;
+  }
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -135,14 +135,14 @@ public class DeletePartnerAssetsResult   {
     DeletePartnerAssetsResult deletePartnerAssetsResult = (DeletePartnerAssetsResult) o;
     return Objects.equals(assetId, deletePartnerAssetsResult.assetId) &&
         Objects.equals(assetType, deletePartnerAssetsResult.assetType) &&
-        Objects.equals(permissions, deletePartnerAssetsResult.permissions) &&
         Objects.equals(isSharedPartner, deletePartnerAssetsResult.isSharedPartner) &&
-        Objects.equals(partnerId, deletePartnerAssetsResult.partnerId);
+        Objects.equals(partnerId, deletePartnerAssetsResult.partnerId) &&
+        Objects.equals(permissions, deletePartnerAssetsResult.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, isSharedPartner, partnerId);
+    return Objects.hash(assetId, assetType, isSharedPartner, partnerId, permissions);
   }
 
   @Override
@@ -152,9 +152,9 @@ public class DeletePartnerAssetsResult   {
     
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    isSharedPartner: ").append(toIndentedString(isSharedPartner)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

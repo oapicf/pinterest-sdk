@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,24 +18,18 @@ import (
 // checks if the PinUpdate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PinUpdate{}
 
-// PinUpdate Pin fields for updates
+// PinUpdate Resource create or update operation model.
 type PinUpdate struct {
-	// Pin's alternative text.
 	AltText NullableString `json:"alt_text,omitempty"`
-	// The id of the board to move the Pin onto.
-	BoardId NullableString `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+	// The board to which this Pin belongs.
+	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// The board section to which this Pin belongs.
 	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Pin description - 800 characters maximum.
-	Description NullableString `json:"description,omitempty"`
-	// URL viewer is taken to when they click pin.
-	Link NullableString `json:"link,omitempty"`
-	// The native pin title that creators explicitly prefer to display.
-	Title NullableString `json:"title,omitempty"`
 	// Carousel Pin slots data.
-	CarouselSlots []PinUpdateCarouselSlotsInner `json:"carousel_slots,omitempty"`
-	// Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-	Note NullableString `json:"note,omitempty"`
+	CarouselSlots []CarouselSlot `json:"carousel_slots,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Link NullableString `json:"link,omitempty"`
+	Title NullableString `json:"title,omitempty"`
 }
 
 // NewPinUpdate instantiates a new PinUpdate object
@@ -97,46 +91,36 @@ func (o *PinUpdate) UnsetAltText() {
 	o.AltText.Unset()
 }
 
-// GetBoardId returns the BoardId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBoardId returns the BoardId field value if set, zero value otherwise.
 func (o *PinUpdate) GetBoardId() string {
-	if o == nil || IsNil(o.BoardId.Get()) {
+	if o == nil || IsNil(o.BoardId) {
 		var ret string
 		return ret
 	}
-	return *o.BoardId.Get()
+	return *o.BoardId
 }
 
 // GetBoardIdOk returns a tuple with the BoardId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PinUpdate) GetBoardIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BoardId) {
 		return nil, false
 	}
-	return o.BoardId.Get(), o.BoardId.IsSet()
+	return o.BoardId, true
 }
 
 // HasBoardId returns a boolean if a field has been set.
 func (o *PinUpdate) HasBoardId() bool {
-	if o != nil && o.BoardId.IsSet() {
+	if o != nil && !IsNil(o.BoardId) {
 		return true
 	}
 
 	return false
 }
 
-// SetBoardId gets a reference to the given NullableString and assigns it to the BoardId field.
+// SetBoardId gets a reference to the given string and assigns it to the BoardId field.
 func (o *PinUpdate) SetBoardId(v string) {
-	o.BoardId.Set(&v)
-}
-// SetBoardIdNil sets the value for BoardId to be an explicit nil
-func (o *PinUpdate) SetBoardIdNil() {
-	o.BoardId.Set(nil)
-}
-
-// UnsetBoardId ensures that no value is present for BoardId, not even an explicit nil
-func (o *PinUpdate) UnsetBoardId() {
-	o.BoardId.Unset()
+	o.BoardId = &v
 }
 
 // GetBoardSectionId returns the BoardSectionId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -179,6 +163,38 @@ func (o *PinUpdate) SetBoardSectionIdNil() {
 // UnsetBoardSectionId ensures that no value is present for BoardSectionId, not even an explicit nil
 func (o *PinUpdate) UnsetBoardSectionId() {
 	o.BoardSectionId.Unset()
+}
+
+// GetCarouselSlots returns the CarouselSlots field value if set, zero value otherwise.
+func (o *PinUpdate) GetCarouselSlots() []CarouselSlot {
+	if o == nil || IsNil(o.CarouselSlots) {
+		var ret []CarouselSlot
+		return ret
+	}
+	return o.CarouselSlots
+}
+
+// GetCarouselSlotsOk returns a tuple with the CarouselSlots field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PinUpdate) GetCarouselSlotsOk() ([]CarouselSlot, bool) {
+	if o == nil || IsNil(o.CarouselSlots) {
+		return nil, false
+	}
+	return o.CarouselSlots, true
+}
+
+// HasCarouselSlots returns a boolean if a field has been set.
+func (o *PinUpdate) HasCarouselSlots() bool {
+	if o != nil && !IsNil(o.CarouselSlots) {
+		return true
+	}
+
+	return false
+}
+
+// SetCarouselSlots gets a reference to the given []CarouselSlot and assigns it to the CarouselSlots field.
+func (o *PinUpdate) SetCarouselSlots(v []CarouselSlot) {
+	o.CarouselSlots = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -307,80 +323,6 @@ func (o *PinUpdate) UnsetTitle() {
 	o.Title.Unset()
 }
 
-// GetCarouselSlots returns the CarouselSlots field value if set, zero value otherwise.
-func (o *PinUpdate) GetCarouselSlots() []PinUpdateCarouselSlotsInner {
-	if o == nil || IsNil(o.CarouselSlots) {
-		var ret []PinUpdateCarouselSlotsInner
-		return ret
-	}
-	return o.CarouselSlots
-}
-
-// GetCarouselSlotsOk returns a tuple with the CarouselSlots field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinUpdate) GetCarouselSlotsOk() ([]PinUpdateCarouselSlotsInner, bool) {
-	if o == nil || IsNil(o.CarouselSlots) {
-		return nil, false
-	}
-	return o.CarouselSlots, true
-}
-
-// HasCarouselSlots returns a boolean if a field has been set.
-func (o *PinUpdate) HasCarouselSlots() bool {
-	if o != nil && !IsNil(o.CarouselSlots) {
-		return true
-	}
-
-	return false
-}
-
-// SetCarouselSlots gets a reference to the given []PinUpdateCarouselSlotsInner and assigns it to the CarouselSlots field.
-func (o *PinUpdate) SetCarouselSlots(v []PinUpdateCarouselSlotsInner) {
-	o.CarouselSlots = v
-}
-
-// GetNote returns the Note field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PinUpdate) GetNote() string {
-	if o == nil || IsNil(o.Note.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Note.Get()
-}
-
-// GetNoteOk returns a tuple with the Note field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PinUpdate) GetNoteOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Note.Get(), o.Note.IsSet()
-}
-
-// HasNote returns a boolean if a field has been set.
-func (o *PinUpdate) HasNote() bool {
-	if o != nil && o.Note.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNote gets a reference to the given NullableString and assigns it to the Note field.
-func (o *PinUpdate) SetNote(v string) {
-	o.Note.Set(&v)
-}
-// SetNoteNil sets the value for Note to be an explicit nil
-func (o *PinUpdate) SetNoteNil() {
-	o.Note.Set(nil)
-}
-
-// UnsetNote ensures that no value is present for Note, not even an explicit nil
-func (o *PinUpdate) UnsetNote() {
-	o.Note.Unset()
-}
-
 func (o PinUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -394,11 +336,14 @@ func (o PinUpdate) ToMap() (map[string]interface{}, error) {
 	if o.AltText.IsSet() {
 		toSerialize["alt_text"] = o.AltText.Get()
 	}
-	if o.BoardId.IsSet() {
-		toSerialize["board_id"] = o.BoardId.Get()
+	if !IsNil(o.BoardId) {
+		toSerialize["board_id"] = o.BoardId
 	}
 	if o.BoardSectionId.IsSet() {
 		toSerialize["board_section_id"] = o.BoardSectionId.Get()
+	}
+	if !IsNil(o.CarouselSlots) {
+		toSerialize["carousel_slots"] = o.CarouselSlots
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
@@ -408,12 +353,6 @@ func (o PinUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
-	}
-	if !IsNil(o.CarouselSlots) {
-		toSerialize["carousel_slots"] = o.CarouselSlots
-	}
-	if o.Note.IsSet() {
-		toSerialize["note"] = o.Note.Get()
 	}
 	return toSerialize, nil
 }

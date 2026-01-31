@@ -10,16 +10,16 @@ module AudienceSubcategory =
 
   [<CLIMutable>]
   type AudienceSubcategory = {
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
+    [<JsonProperty(PropertyName = "index")>]
+    Index : decimal;
     [<JsonProperty(PropertyName = "key")>]
     Key : string;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
     [<JsonProperty(PropertyName = "ratio")>]
     Ratio : decimal;
-    [<JsonProperty(PropertyName = "index")>]
-    Index : decimal;
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
   }
 
   //#endregion

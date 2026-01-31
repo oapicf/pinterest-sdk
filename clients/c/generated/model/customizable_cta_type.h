@@ -1,0 +1,32 @@
+/*
+ * customizable_cta_type.h
+ *
+ * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+ */
+
+#ifndef _customizable_cta_type_H_
+#define _customizable_cta_type_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct customizable_cta_type_t customizable_cta_type_t;
+
+
+// Enum  for customizable_cta_type
+
+typedef enum { pinterest_rest_api_customizable_cta_type__NULL = 0, pinterest_rest_api_customizable_cta_type__GET_OFFER, pinterest_rest_api_customizable_cta_type__LEARN_MORE, pinterest_rest_api_customizable_cta_type__ORDER_NOW, pinterest_rest_api_customizable_cta_type__SHOP_NOW, pinterest_rest_api_customizable_cta_type__SIGN_UP, pinterest_rest_api_customizable_cta_type__SUBSCRIBE, pinterest_rest_api_customizable_cta_type__BUY_NOW, pinterest_rest_api_customizable_cta_type__CONTACT_US, pinterest_rest_api_customizable_cta_type__GET_QUOTE, pinterest_rest_api_customizable_cta_type__VISIT_SITE, pinterest_rest_api_customizable_cta_type__APPLY_NOW, pinterest_rest_api_customizable_cta_type__BOOK_NOW, pinterest_rest_api_customizable_cta_type__REQUEST_DEMO, pinterest_rest_api_customizable_cta_type__REGISTER_NOW, pinterest_rest_api_customizable_cta_type__FIND_A_DEALER, pinterest_rest_api_customizable_cta_type__ADD_TO_CART, pinterest_rest_api_customizable_cta_type__WATCH_NOW, pinterest_rest_api_customizable_cta_type__READ_MORE, pinterest_rest_api_customizable_cta_type__BUY_TICKETS, pinterest_rest_api_customizable_cta_type__DONATE_NOW, pinterest_rest_api_customizable_cta_type__DOWNLOAD, pinterest_rest_api_customizable_cta_type__EXPLORE_MORE, pinterest_rest_api_customizable_cta_type__FIND_A_LOCATION, pinterest_rest_api_customizable_cta_type__GET_DEAL, pinterest_rest_api_customizable_cta_type__GET_RECIPE, pinterest_rest_api_customizable_cta_type__GET_SHOWTIMES, pinterest_rest_api_customizable_cta_type__ON_SALE, pinterest_rest_api_customizable_cta_type__PLAY_GAME, pinterest_rest_api_customizable_cta_type__TRY_IT } pinterest_rest_api_customizable_cta_type__e;
+
+char* customizable_cta_type_customizable_cta_type_ToString(pinterest_rest_api_customizable_cta_type__e customizable_cta_type);
+
+pinterest_rest_api_customizable_cta_type__e customizable_cta_type_customizable_cta_type_FromString(char* customizable_cta_type);
+
+cJSON *customizable_cta_type_convertToJSON(pinterest_rest_api_customizable_cta_type__e customizable_cta_type);
+
+pinterest_rest_api_customizable_cta_type__e customizable_cta_type_parseFromJSON(cJSON *customizable_cta_typeJSON);
+
+#endif /* _customizable_cta_type_H_ */
+

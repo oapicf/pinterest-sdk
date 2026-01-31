@@ -9,7 +9,7 @@ module SSIOAccountPMPName =
 
 
   type SSIOAccountPMPName = {
-    Name : string;
     Id : string;
+    Name : string;
   }
   //#endregion

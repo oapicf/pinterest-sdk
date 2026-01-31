@@ -11,7 +11,6 @@ open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
 open OpenAPI.Model.NullableCurrency
-open OpenAPI.Model.string option
 
 module CatalogsCreativeAssetsFeedsCreateRequest =
 
@@ -19,26 +18,26 @@ module CatalogsCreativeAssetsFeedsCreateRequest =
 
   [<CLIMutable>]
   type CatalogsCreativeAssetsFeedsCreateRequest = {
-    [<JsonProperty(PropertyName = "default_currency")>]
-    DefaultCurrency : NullableCurrency;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
-    [<JsonProperty(PropertyName = "format")>]
-    Format : CatalogsFormat;
-    [<JsonProperty(PropertyName = "default_locale")>]
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
-    [<JsonProperty(PropertyName = "default_country")>]
-    DefaultCountry : Country;
-    [<JsonProperty(PropertyName = "credentials")>]
-    Credentials : CatalogsFeedCredentials;
-    [<JsonProperty(PropertyName = "location")>]
-    Location : string;
-    [<JsonProperty(PropertyName = "preferred_processing_schedule")>]
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
-    [<JsonProperty(PropertyName = "catalog_id")>]
-    CatalogId : string option;
+    [<JsonProperty(PropertyName = "credentials")>]
+    Credentials : CatalogsFeedCredentials;
+    [<JsonProperty(PropertyName = "default_country")>]
+    DefaultCountry : Country;
+    [<JsonProperty(PropertyName = "default_currency")>]
+    DefaultCurrency : NullableCurrency;
+    [<JsonProperty(PropertyName = "default_locale")>]
+    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    [<JsonProperty(PropertyName = "format")>]
+    Format : CatalogsFormat;
+    [<JsonProperty(PropertyName = "location")>]
+    Location : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
+    [<JsonProperty(PropertyName = "preferred_processing_schedule")>]
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     [<JsonProperty(PropertyName = "status")>]
     Status : CatalogsStatus;
   }

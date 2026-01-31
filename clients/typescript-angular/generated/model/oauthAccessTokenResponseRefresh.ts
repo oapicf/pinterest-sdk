@@ -13,11 +13,14 @@
  * A successful OAuth access token response for the refresh token flow.
  */
 export interface OauthAccessTokenResponseRefresh { 
-    response_type?: OauthAccessTokenResponseRefresh.ResponseTypeEnum;
     access_token: string;
-    token_type: string;
     expires_in: number;
+    response_type?: OauthAccessTokenResponseRefresh.ResponseTypeEnum;
     scope: string;
+    token_type: string;
+    refresh_token: string;
+    refresh_token_expires_at: number;
+    refresh_token_expires_in: number;
 }
 export namespace OauthAccessTokenResponseRefresh {
     export const ResponseTypeEnum = {

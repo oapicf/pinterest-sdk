@@ -1,7 +1,7 @@
 /*
  * targeting_spec.h
  *
- * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
+ * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60;
  */
 
 #ifndef _targeting_spec_H_
@@ -15,31 +15,34 @@
 
 typedef struct targeting_spec_t targeting_spec_t;
 
+#include "targeting_spec_age_bucket.h"
+#include "targeting_spec_app_type.h"
+#include "targeting_spec_gender.h"
 #include "targeting_spec_shopping_retargeting.h"
 
-// Enum AGEBUCKET for targeting_spec
+// Enum  for targeting_spec
 
-typedef enum  { pinterest_rest_api_targeting_spec_AGEBUCKET_NULL = 0, pinterest_rest_api_targeting_spec_AGEBUCKET__18_24, pinterest_rest_api_targeting_spec_AGEBUCKET__21+, pinterest_rest_api_targeting_spec_AGEBUCKET__25_34, pinterest_rest_api_targeting_spec_AGEBUCKET__35_44, pinterest_rest_api_targeting_spec_AGEBUCKET__45_49, pinterest_rest_api_targeting_spec_AGEBUCKET__50_54, pinterest_rest_api_targeting_spec_AGEBUCKET__55_64, pinterest_rest_api_targeting_spec_AGEBUCKET__65+ } pinterest_rest_api_targeting_spec_AGEBUCKET_e;
+typedef enum  { pinterest_rest_api_targeting_spec__NULL = 0, pinterest_rest_api_targeting_spec___18_24, pinterest_rest_api_targeting_spec___19+, pinterest_rest_api_targeting_spec___20+, pinterest_rest_api_targeting_spec___21+, pinterest_rest_api_targeting_spec___25_34, pinterest_rest_api_targeting_spec___35_44, pinterest_rest_api_targeting_spec___45_49, pinterest_rest_api_targeting_spec___50_54, pinterest_rest_api_targeting_spec___55_64, pinterest_rest_api_targeting_spec___65+ } pinterest_rest_api_targeting_spec__e;
 
-char* targeting_spec_age_bucket_ToString(pinterest_rest_api_targeting_spec_AGEBUCKET_e age_bucket);
+char* targeting_spec_age_bucket_ToString(pinterest_rest_api_targeting_spec__e age_bucket);
 
-pinterest_rest_api_targeting_spec_AGEBUCKET_e targeting_spec_age_bucket_FromString(char* age_bucket);
+pinterest_rest_api_targeting_spec__e targeting_spec_age_bucket_FromString(char* age_bucket);
 
-// Enum APPTYPE for targeting_spec
+// Enum  for targeting_spec
 
-typedef enum  { pinterest_rest_api_targeting_spec_APPTYPE_NULL = 0, pinterest_rest_api_targeting_spec_APPTYPE_android_mobile, pinterest_rest_api_targeting_spec_APPTYPE_android_tablet, pinterest_rest_api_targeting_spec_APPTYPE_ipad, pinterest_rest_api_targeting_spec_APPTYPE_iphone, pinterest_rest_api_targeting_spec_APPTYPE_web, pinterest_rest_api_targeting_spec_APPTYPE_web_mobile } pinterest_rest_api_targeting_spec_APPTYPE_e;
+typedef enum  { pinterest_rest_api_targeting_spec__NULL = 0, pinterest_rest_api_targeting_spec__android_mobile, pinterest_rest_api_targeting_spec__android_tablet, pinterest_rest_api_targeting_spec__ipad, pinterest_rest_api_targeting_spec__iphone, pinterest_rest_api_targeting_spec__web, pinterest_rest_api_targeting_spec__web_mobile } pinterest_rest_api_targeting_spec__e;
 
-char* targeting_spec_apptype_ToString(pinterest_rest_api_targeting_spec_APPTYPE_e apptype);
+char* targeting_spec_apptype_ToString(pinterest_rest_api_targeting_spec__e apptype);
 
-pinterest_rest_api_targeting_spec_APPTYPE_e targeting_spec_apptype_FromString(char* apptype);
+pinterest_rest_api_targeting_spec__e targeting_spec_apptype_FromString(char* apptype);
 
-// Enum GENDER for targeting_spec
+// Enum  for targeting_spec
 
-typedef enum  { pinterest_rest_api_targeting_spec_GENDER_NULL = 0, pinterest_rest_api_targeting_spec_GENDER_unknown, pinterest_rest_api_targeting_spec_GENDER_male, pinterest_rest_api_targeting_spec_GENDER_female } pinterest_rest_api_targeting_spec_GENDER_e;
+typedef enum  { pinterest_rest_api_targeting_spec__NULL = 0, pinterest_rest_api_targeting_spec__unknown, pinterest_rest_api_targeting_spec__male, pinterest_rest_api_targeting_spec__female } pinterest_rest_api_targeting_spec__e;
 
-char* targeting_spec_gender_ToString(pinterest_rest_api_targeting_spec_GENDER_e gender);
+char* targeting_spec_gender_ToString(pinterest_rest_api_targeting_spec__e gender);
 
-pinterest_rest_api_targeting_spec_GENDER_e targeting_spec_gender_FromString(char* gender);
+pinterest_rest_api_targeting_spec__e targeting_spec_gender_FromString(char* gender);
 
 // Enum TARGETINGSTRATEGY for targeting_spec
 
@@ -52,15 +55,17 @@ pinterest_rest_api_targeting_spec_TARGETINGSTRATEGY_e targeting_spec_targeting_s
 
 
 typedef struct targeting_spec_t {
-    list_t *age_bucket; //primitive container
-    list_t *apptype; //primitive container
+    list_t *age_bucket; //nonprimitive container
+    list_t *apptype; //nonprimitive container
     list_t *audience_exclude; //primitive container
     list_t *audience_include; //primitive container
-    list_t *gender; //primitive container
+    list_t *gender; //nonprimitive container
     list_t *geo; //primitive container
     list_t *interest; //primitive container
     list_t *locale; //primitive container
     list_t *location; //primitive container
+    char *maximum_age; // string
+    char *minimum_age; // string
     list_t *shopping_retargeting; //nonprimitive container
     list_t *targeting_strategy; //primitive container
 
@@ -77,6 +82,8 @@ __attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
     list_t *interest,
     list_t *locale,
     list_t *location,
+    char *maximum_age,
+    char *minimum_age,
     list_t *shopping_retargeting,
     list_t *targeting_strategy
 );

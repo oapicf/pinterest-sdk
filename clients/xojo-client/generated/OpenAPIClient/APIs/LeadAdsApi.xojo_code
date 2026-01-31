@@ -10,7 +10,7 @@ Protected Class LeadAdsApi
 		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsDelByIdCallback() on completion. 
 		  //
 		  // - DELETE /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
-		  // - Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+		  // - Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -79,24 +79,28 @@ Protected Class LeadAdsApi
 	#tag Method, Flags = &h0
 		Sub AdAccountsSubscriptionsGetById(, adAccountId As String, subscriptionId As String)
 		  // Operation ad_accounts_subscriptions/get_by_id
-		  // Get lead ads subscription
+		  // Get lead ads subscription by ID
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter subscriptionId: (path) Unique identifier of a subscription. 
 		  //
-		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsGetByIdCallback(AdAccountGetSubscriptionResponse) on completion. 
+		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsGetByIdCallback(LeadSubscription) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
-		  // - Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+		  // - Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -127,7 +131,7 @@ Protected Class LeadAdsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AdAccountsSubscriptionsGetByIdPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountGetSubscriptionResponse) As Boolean
+		Private Function AdAccountsSubscriptionsGetByIdPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadSubscription) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -135,7 +139,7 @@ Protected Class LeadAdsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AdAccountGetSubscriptionResponse
+			  outData = New OpenAPIClient.Models.LeadSubscription
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -188,7 +192,7 @@ Protected Class LeadAdsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AdAccountGetSubscriptionResponse
+		  Dim data As OpenAPIClient.Models.LeadSubscription
 		  CallbackHandler.AdAccountsSubscriptionsGetByIdCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -202,7 +206,7 @@ Protected Class LeadAdsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AdAccountGetSubscriptionResponse
+		  Dim data As OpenAPIClient.Models.LeadSubscription
 		  Call AdAccountsSubscriptionsGetByIdPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AdAccountsSubscriptionsGetByIdCallback(error, data)
@@ -213,18 +217,18 @@ Protected Class LeadAdsApi
 
 
 	#tag Method, Flags = &h0
-		Sub AdAccountsSubscriptionsGetList(, adAccountId As String, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub AdAccountsSubscriptionsGetList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation ad_accounts_subscriptions/get_list
 		  // Get lead ads subscriptions
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsGetListCallback(AdAccountsSubscriptionsGetList200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/leads/subscriptions
-		  // - Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+		  // - Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -236,9 +240,9 @@ Protected Class LeadAdsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -352,17 +356,17 @@ Protected Class LeadAdsApi
 
 
 	#tag Method, Flags = &h0
-		Sub AdAccountsSubscriptionsPost(, adAccountId As String, adAccountCreateSubscriptionRequest As OpenAPIClient.Models.AdAccountCreateSubscriptionRequest)
+		Sub AdAccountsSubscriptionsPost(, adAccountId As String, leadSubscriptionPostParamsCreate As OpenAPIClient.Models.LeadSubscriptionPostParamsCreate)
 		  // Operation ad_accounts_subscriptions/post
 		  // Create lead ads subscription
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter adAccountCreateSubscriptionRequest: (body) Subscription to create. 
+		  // - parameter leadSubscriptionPostParamsCreate: (body)  
 		  //
-		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsPostCallback(AdAccountCreateSubscriptionResponse) on completion. 
+		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsPostCallback(LeadSubscription) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/leads/subscriptions
-		  // - Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+		  // - Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -372,7 +376,7 @@ Protected Class LeadAdsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountCreateSubscriptionRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadSubscriptionPostParamsCreate), "application/json")
 		  
 		  
 		  
@@ -399,7 +403,7 @@ Protected Class LeadAdsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AdAccountsSubscriptionsPostPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountCreateSubscriptionResponse) As Boolean
+		Private Function AdAccountsSubscriptionsPostPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadSubscription) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -407,7 +411,7 @@ Protected Class LeadAdsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AdAccountCreateSubscriptionResponse
+			  outData = New OpenAPIClient.Models.LeadSubscription
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -460,7 +464,7 @@ Protected Class LeadAdsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AdAccountCreateSubscriptionResponse
+		  Dim data As OpenAPIClient.Models.LeadSubscription
 		  CallbackHandler.AdAccountsSubscriptionsPostCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -474,7 +478,7 @@ Protected Class LeadAdsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AdAccountCreateSubscriptionResponse
+		  Dim data As OpenAPIClient.Models.LeadSubscription
 		  Call AdAccountsSubscriptionsPostPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AdAccountsSubscriptionsPostCallback(error, data)

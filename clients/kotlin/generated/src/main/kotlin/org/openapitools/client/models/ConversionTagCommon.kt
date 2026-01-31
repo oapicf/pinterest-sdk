@@ -17,7 +17,6 @@ package org.openapitools.client.models
 
 import org.openapitools.client.models.ConversionTagConfigs
 import org.openapitools.client.models.EnhancedMatchStatusType
-import org.openapitools.client.models.EntityStatus
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -25,28 +24,30 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param adAccountId Ad account ID.
+ * @param name Conversion tag name.
  * @param codeSnippet Tag code snippet.
- * @param enhancedMatchStatus 
+ * @param configs 
+ * @param enhancedMatchStatus The enhanced match status of the tag
  * @param id Tag ID.
  * @param lastFiredTimeMs Time for the last event fired.
- * @param name Conversion tag name.
- * @param status 
  * @param version Version number.
- * @param configs 
  */
 
 
 data class ConversionTagCommon (
 
-    /* Ad account ID. */
-    @Json(name = "ad_account_id")
-    val adAccountId: kotlin.String? = null,
+    /* Conversion tag name. */
+    @Json(name = "name")
+    val name: kotlin.String,
 
     /* Tag code snippet. */
     @Json(name = "code_snippet")
     val codeSnippet: kotlin.String? = null,
 
+    @Json(name = "configs")
+    val configs: ConversionTagConfigs? = null,
+
+    /* The enhanced match status of the tag */
     @Json(name = "enhanced_match_status")
     val enhancedMatchStatus: EnhancedMatchStatusType? = null,
 
@@ -58,19 +59,9 @@ data class ConversionTagCommon (
     @Json(name = "last_fired_time_ms")
     val lastFiredTimeMs: java.math.BigDecimal? = null,
 
-    /* Conversion tag name. */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    @Json(name = "status")
-    val status: EntityStatus? = null,
-
     /* Version number. */
     @Json(name = "version")
-    val version: kotlin.String? = null,
-
-    @Json(name = "configs")
-    val configs: ConversionTagConfigs? = null
+    val version: kotlin.String? = null
 
 ) {
 

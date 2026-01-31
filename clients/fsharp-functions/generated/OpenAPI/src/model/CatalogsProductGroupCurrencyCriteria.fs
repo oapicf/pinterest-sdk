@@ -11,10 +11,10 @@ module CatalogsProductGroupCurrencyCriteria =
 
   [<CLIMutable>]
   type CatalogsProductGroupCurrencyCriteria = {
-    [<JsonProperty(PropertyName = "values")>]
-    Values : NonNullableCatalogsCurrency;
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
+    [<JsonProperty(PropertyName = "values")>]
+    Values : NonNullableCatalogsCurrency;
   }
 
   //#endregion

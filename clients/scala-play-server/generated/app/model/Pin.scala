@@ -4,38 +4,35 @@ import play.api.libs.json._
 import java.time.OffsetDateTime
 
 /**
-  * Pin
-  * @param dominantColor Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
+  * Pin model containing properties related to a Pinterest Pin.
   * @param boardId The board to which this Pin belongs.
   * @param boardSectionId The board section to which this Pin belongs.
-  * @param isOwner Whether the \"operation user_account\" is the Pin owner.
-  * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-  * @param isStandard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
+  * @param dominantColor Dominant pin color. Hex number, e.g. `#6E7874`.
   * @param hasBeenPromoted Whether the Pin has been promoted or not.
-  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+  * @param isOwner Whether the \"operation user_account\" is the Pin owner.
+  * @param isStandard Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+  * @param parentPinId The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
   * @param pinMetrics Pin metrics with associated time intervals if any.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class Pin(
-  id: Option[String],
+  altText: Option[String],
+  boardId: Option[String],
+  boardOwner: Option[BoardOwner],
+  boardSectionId: Option[String],
   createdAt: Option[OffsetDateTime],
-  link: Option[String],
-  title: Option[String],
+  creativeType: Option[CreativeType],
   description: Option[String],
   dominantColor: Option[String],
-  altText: Option[String],
-  creativeType: Option[CreativeType],
-  boardId: Option[String],
-  boardSectionId: Option[String],
-  boardOwner: Option[BoardOwner],
-  isOwner: Option[Boolean],
-  media: Option[PinMedia],
-  mediaSource: Option[PinMediaSource],
-  parentPinId: Option[String],
-  isStandard: Option[Boolean],
   hasBeenPromoted: Option[Boolean],
-  note: Option[String],
-  pinMetrics: Option[JsObject]
+  id: String,
+  isOwner: Option[Boolean],
+  isStandard: Option[Boolean],
+  link: Option[String],
+  media: Option[PinMedia],
+  parentPinId: Option[String],
+  pinMetrics: Option[JsObject],
+  title: Option[String]
 )
 
 object Pin {

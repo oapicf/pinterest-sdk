@@ -11,10 +11,10 @@ import { UserSummary } from './userSummary';
 
 
 export interface UserFollowingGet200Response { 
+    bookmark?: string | null;
     /**
      * Users
      */
     items: Array<UserSummary>;
-    bookmark?: string | null;
 }
 

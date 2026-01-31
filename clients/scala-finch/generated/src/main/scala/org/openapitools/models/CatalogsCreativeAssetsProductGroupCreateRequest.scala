@@ -9,17 +9,17 @@ import org.openapitools.models.CatalogsCreativeAssetsProductGroupFilters
 
 /**
  * Request object for creating a creative assets product group.
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
  * @param catalogUnderscoretype 
- * @param name 
  * @param description 
  * @param filters 
- * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
+ * @param name 
  */
-case class CatalogsCreativeAssetsProductGroupCreateRequest(catalogUnderscoretype: String,
-                name: String,
+case class CatalogsCreativeAssetsProductGroupCreateRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 description: Option[String],
                 filters: CatalogsCreativeAssetsProductGroupFilters,
-                catalogUnderscoreid: String
+                name: String
                 )
 
 object CatalogsCreativeAssetsProductGroupCreateRequest {

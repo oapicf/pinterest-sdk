@@ -73,15 +73,15 @@ private class OASConversionApiResponseTest {
     private static void maintainRenamedProperties() {
         OASConversionApiResponse conversionApiResponse = new OASConversionApiResponse();
         Map<String, String> x-property-mappings = conversionApiResponse.getx-property-mappings();
-        System.assertEquals('numEventsReceived', x-property-mappings.get('num_events_received'));
         System.assertEquals('numEventsProcessed', x-property-mappings.get('num_events_processed'));
+        System.assertEquals('numEventsReceived', x-property-mappings.get('num_events_received'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASConversionApiResponse conversionApiResponse = new OASConversionApiResponse();
         System.assertEquals(new List<OASConversionApiResponseEventsInner>(), conversionApiResponse.events);
-        System.assertEquals(null, conversionApiResponse.numEventsReceived);
         System.assertEquals(null, conversionApiResponse.numEventsProcessed);
+        System.assertEquals(null, conversionApiResponse.numEventsReceived);
     }
 }

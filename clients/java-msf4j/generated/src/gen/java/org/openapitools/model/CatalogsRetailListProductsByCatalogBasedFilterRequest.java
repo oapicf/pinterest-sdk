@@ -14,8 +14,11 @@ import org.openapitools.model.Country;
  * Request object to list products for a given retail catalog_id and product group filter.
  */
 @ApiModel(description = "Request object to list products for a given retail catalog_id and product group filter.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
    */
@@ -48,35 +51,14 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
+  @JsonProperty("country")
+  private Country country;
 
   @JsonProperty("filters")
   private CatalogsProductGroupFilters filters;
 
-  @JsonProperty("country")
-  private Country country;
-
   @JsonProperty("locale")
   private CatalogsLocale locale;
-
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-   * @return catalogType
-  **/
-  @ApiModelProperty(required = true, value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -96,22 +78,22 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
     this.catalogId = catalogId;
   }
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Get filters
-   * @return filters
+   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+   * @return catalogType
   **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsProductGroupFilters getFilters() {
-    return filters;
+  @ApiModelProperty(required = true, value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
   }
 
-  public void setFilters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest country(Country country) {
@@ -130,6 +112,24 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsProductGroupFilters getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
   }
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest locale(CatalogsLocale locale) {
@@ -160,16 +160,16 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsRetailListProductsByCatalogBasedFilterRequest catalogsRetailListProductsByCatalogBasedFilterRequest = (CatalogsRetailListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
-        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
+    return Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailListProductsByCatalogBasedFilterRequest.country) &&
+        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
         Objects.equals(this.locale, catalogsRetailListProductsByCatalogBasedFilterRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters, country, locale);
+    return Objects.hash(catalogId, catalogType, country, filters, locale);
   }
 
   @Override
@@ -177,10 +177,10 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -16,12 +16,12 @@ CatalogsCreativeAssetsProductGroupFilterKeys <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("CreativeAssetsIdFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "MediaTypeFilter"),
+    any_of = list("CreativeAssetsIdFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "MediaTypeFilter", "TitleKeywordsFilter"),
 
     #' @description
     #' Initialize a new CatalogsCreativeAssetsProductGroupFilterKeys.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "CreativeAssetsIdFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "MediaTypeFilter"
+    #' @param instance an instance of the object defined in the anyOf schemas: "CreativeAssetsIdFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "MediaTypeFilter", "TitleKeywordsFilter"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -67,8 +67,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MediaTypeFilter") {
         self$actual_instance <- instance
         self$actual_type <- "MediaTypeFilter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TitleKeywordsFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "TitleKeywordsFilter"
       } else {
-        stop(paste("Failed to initialize CatalogsCreativeAssetsProductGroupFilterKeys with anyOf schemas CreativeAssetsIdFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, MediaTypeFilter. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsCreativeAssetsProductGroupFilterKeys with anyOf schemas CreativeAssetsIdFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, MediaTypeFilter, TitleKeywordsFilter. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -289,8 +292,22 @@ CatalogsCreativeAssetsProductGroupFilterKeys <- R6::R6Class(
         error_messages <- append(error_messages, `MediaTypeFilter_result`["message"])
       }
 
+      `TitleKeywordsFilter_result` <- tryCatch({
+          `TitleKeywordsFilter`$public_methods$validateJSON(input)
+          `TitleKeywordsFilter_instance` <- `TitleKeywordsFilter`$new()
+          self$actual_instance <- `TitleKeywordsFilter_instance`$fromJSON(input)
+          self$actual_type <- "TitleKeywordsFilter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`TitleKeywordsFilter_result`["error"])) {
+        error_messages <- append(error_messages, `TitleKeywordsFilter_result`["message"])
+      }
+
       # no match
-      stop(paste("No match found when deserializing the input into CatalogsCreativeAssetsProductGroupFilterKeys with anyOf schemas CreativeAssetsIdFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, MediaTypeFilter. Details: >>",
+      stop(paste("No match found when deserializing the input into CatalogsCreativeAssetsProductGroupFilterKeys with anyOf schemas CreativeAssetsIdFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, MediaTypeFilter, TitleKeywordsFilter. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

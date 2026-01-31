@@ -33,12 +33,6 @@ class CatalogsFeedsCreateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsFeedsCreateRequest
         //val modelInstance = CatalogsFeedsCreateRequest()
 
-        // to test the property `name` - A human-friendly name associated to a given feed.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `format`
         should("test format") {
             // uncomment below to test the property
@@ -49,6 +43,30 @@ class CatalogsFeedsCreateRequestTest : ShouldSpec() {
         should("test location") {
             // uncomment below to test the property
             //modelInstance.location shouldBe ("TODO")
+        }
+
+        // to test the property `name` - A human-friendly name associated to a given feed.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `credentials`
+        should("test credentials") {
+            // uncomment below to test the property
+            //modelInstance.credentials shouldBe ("TODO")
+        }
+
+        // to test the property `defaultAvailability`
+        should("test defaultAvailability") {
+            // uncomment below to test the property
+            //modelInstance.defaultAvailability shouldBe ("TODO")
+        }
+
+        // to test the property `defaultCountry`
+        should("test defaultCountry") {
+            // uncomment below to test the property
+            //modelInstance.defaultCountry shouldBe ("TODO")
         }
 
         // to test the property `defaultCurrency`
@@ -63,28 +81,10 @@ class CatalogsFeedsCreateRequestTest : ShouldSpec() {
             //modelInstance.defaultLocale shouldBe ("TODO")
         }
 
-        // to test the property `credentials`
-        should("test credentials") {
-            // uncomment below to test the property
-            //modelInstance.credentials shouldBe ("TODO")
-        }
-
         // to test the property `preferredProcessingSchedule`
         should("test preferredProcessingSchedule") {
             // uncomment below to test the property
             //modelInstance.preferredProcessingSchedule shouldBe ("TODO")
-        }
-
-        // to test the property `defaultCountry`
-        should("test defaultCountry") {
-            // uncomment below to test the property
-            //modelInstance.defaultCountry shouldBe ("TODO")
-        }
-
-        // to test the property `defaultAvailability`
-        should("test defaultAvailability") {
-            // uncomment below to test the property
-            //modelInstance.defaultAvailability shouldBe ("TODO")
         }
 
         // to test the property `status`

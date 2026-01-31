@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,13 +20,13 @@ var _ MappedNullable = &AssetIdPermissions{}
 
 // AssetIdPermissions An object containing the permissions a business member has on the asset.
 type AssetIdPermissions struct {
+	AssetGroupInfo *AssetGroupBinding `json:"asset_group_info,omitempty"`
 	// Unique identifier of a business asset.
 	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	AssetType *string `json:"asset_type,omitempty"`
 	// Permission levels member or partner has on an asset.
 	Permissions []string `json:"permissions,omitempty"`
-	AssetGroupInfo *AssetGroupBinding `json:"asset_group_info,omitempty"`
 }
 
 // NewAssetIdPermissions instantiates a new AssetIdPermissions object
@@ -44,6 +44,38 @@ func NewAssetIdPermissions() *AssetIdPermissions {
 func NewAssetIdPermissionsWithDefaults() *AssetIdPermissions {
 	this := AssetIdPermissions{}
 	return &this
+}
+
+// GetAssetGroupInfo returns the AssetGroupInfo field value if set, zero value otherwise.
+func (o *AssetIdPermissions) GetAssetGroupInfo() AssetGroupBinding {
+	if o == nil || IsNil(o.AssetGroupInfo) {
+		var ret AssetGroupBinding
+		return ret
+	}
+	return *o.AssetGroupInfo
+}
+
+// GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssetIdPermissions) GetAssetGroupInfoOk() (*AssetGroupBinding, bool) {
+	if o == nil || IsNil(o.AssetGroupInfo) {
+		return nil, false
+	}
+	return o.AssetGroupInfo, true
+}
+
+// HasAssetGroupInfo returns a boolean if a field has been set.
+func (o *AssetIdPermissions) HasAssetGroupInfo() bool {
+	if o != nil && !IsNil(o.AssetGroupInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssetGroupInfo gets a reference to the given AssetGroupBinding and assigns it to the AssetGroupInfo field.
+func (o *AssetIdPermissions) SetAssetGroupInfo(v AssetGroupBinding) {
+	o.AssetGroupInfo = &v
 }
 
 // GetAssetId returns the AssetId field value if set, zero value otherwise.
@@ -142,38 +174,6 @@ func (o *AssetIdPermissions) SetPermissions(v []string) {
 	o.Permissions = v
 }
 
-// GetAssetGroupInfo returns the AssetGroupInfo field value if set, zero value otherwise.
-func (o *AssetIdPermissions) GetAssetGroupInfo() AssetGroupBinding {
-	if o == nil || IsNil(o.AssetGroupInfo) {
-		var ret AssetGroupBinding
-		return ret
-	}
-	return *o.AssetGroupInfo
-}
-
-// GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AssetIdPermissions) GetAssetGroupInfoOk() (*AssetGroupBinding, bool) {
-	if o == nil || IsNil(o.AssetGroupInfo) {
-		return nil, false
-	}
-	return o.AssetGroupInfo, true
-}
-
-// HasAssetGroupInfo returns a boolean if a field has been set.
-func (o *AssetIdPermissions) HasAssetGroupInfo() bool {
-	if o != nil && !IsNil(o.AssetGroupInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssetGroupInfo gets a reference to the given AssetGroupBinding and assigns it to the AssetGroupInfo field.
-func (o *AssetIdPermissions) SetAssetGroupInfo(v AssetGroupBinding) {
-	o.AssetGroupInfo = &v
-}
-
 func (o AssetIdPermissions) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -184,6 +184,9 @@ func (o AssetIdPermissions) MarshalJSON() ([]byte, error) {
 
 func (o AssetIdPermissions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AssetGroupInfo) {
+		toSerialize["asset_group_info"] = o.AssetGroupInfo
+	}
 	if !IsNil(o.AssetId) {
 		toSerialize["asset_id"] = o.AssetId
 	}
@@ -192,9 +195,6 @@ func (o AssetIdPermissions) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
-	}
-	if !IsNil(o.AssetGroupInfo) {
-		toSerialize["asset_group_info"] = o.AssetGroupInfo
 	}
 	return toSerialize, nil
 }

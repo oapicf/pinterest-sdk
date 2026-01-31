@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemUnderscoreid** | **string** |  | [default to null]
 **country** | [**Country**](Country.md) |  | [default to null]
+**itemUnderscoreid** | **string** |  | [default to null]
 **language** | [**Language**](Language.md) |  | [default to null]
 **bidUnderscoreoptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | [default to null]
 

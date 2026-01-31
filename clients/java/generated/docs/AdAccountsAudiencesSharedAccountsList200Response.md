@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;SharedAudienceAccount&gt;**](SharedAudienceAccount.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;SharedAudienceAccount&gt;**](SharedAudienceAccount.md) |  |  |
 
 
 

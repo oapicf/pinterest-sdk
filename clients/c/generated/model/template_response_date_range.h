@@ -22,17 +22,17 @@ typedef struct template_response_date_range_t template_response_date_range_t;
 
 
 typedef struct template_response_date_range_t {
+    struct template_response_date_range_absolute_date_range_t *absolute_date_range; //model
     struct template_response_date_range_dynamic_date_range_t *dynamic_date_range; //model
     struct template_response_date_range_relative_date_range_t *relative_date_range; //model
-    struct template_response_date_range_absolute_date_range_t *absolute_date_range; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } template_response_date_range_t;
 
 __attribute__((deprecated)) template_response_date_range_t *template_response_date_range_create(
+    template_response_date_range_absolute_date_range_t *absolute_date_range,
     template_response_date_range_dynamic_date_range_t *dynamic_date_range,
-    template_response_date_range_relative_date_range_t *relative_date_range,
-    template_response_date_range_absolute_date_range_t *absolute_date_range
+    template_response_date_range_relative_date_range_t *relative_date_range
 );
 
 void template_response_date_range_free(template_response_date_range_t *template_response_date_range);

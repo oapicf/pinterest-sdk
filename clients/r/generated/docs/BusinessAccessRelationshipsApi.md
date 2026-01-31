@@ -4,13 +4,129 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**BrandAccountsCreate**](BusinessAccessRelationshipsApi.md#BrandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**BrandAccountsUpdate**](BusinessAccessRelationshipsApi.md#BrandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**DeleteBusinessMembership**](BusinessAccessRelationshipsApi.md#DeleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**DeleteBusinessPartners**](BusinessAccessRelationshipsApi.md#DeleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**GetBusinessEmployers**](BusinessAccessRelationshipsApi.md#GetBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**GetBusinessMembers**](BusinessAccessRelationshipsApi.md#GetBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**GetBusinessPartners**](BusinessAccessRelationshipsApi.md#GetBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**SystemUserUpdate**](BusinessAccessRelationshipsApi.md#SystemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**UpdateBusinessMemberships**](BusinessAccessRelationshipsApi.md#UpdateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+# **BrandAccountsCreate**
+> BrandAccountsCreate200Response BrandAccountsCreate(business_hierarchy_id, brand_accounts_create_request)
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+```R
+library(openapi)
+
+# Create a Brand Account
+#
+# prepare function argument(s)
+var_business_hierarchy_id <- "7009386637860" # character | business hierarchy node id
+var_brand_accounts_create_request <- brand_accounts_create_request$new("name_example", "username_example", Country$new(), "about_example", "website_example", Image_Base64$new("image/jpeg", "data_example")) # BrandAccountsCreateRequest | 
+
+api_instance <- BusinessAccessRelationshipsApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$BrandAccountsCreate(var_business_hierarchy_id, var_brand_accounts_create_requestdata_file = "result.txt")
+result <- api_instance$BrandAccountsCreate(var_business_hierarchy_id, var_brand_accounts_create_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_hierarchy_id** | **character**| business hierarchy node id | 
+ **brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid parameters. |  -  |
+| **0** | Unexpected error |  -  |
+
+# **BrandAccountsUpdate**
+> BrandAccountsCreate200Response BrandAccountsUpdate(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+```R
+library(openapi)
+
+# Update a Brand Account
+#
+# prepare function argument(s)
+var_business_hierarchy_id <- "7009386637860" # character | business hierarchy node id
+var_brand_account_id <- "729090764583391194" # character | Unique identifier of a brand account.
+var_brand_accounts_update_request <- brand_accounts_update_request$new("name_example", "username_example", Country$new(), "about_example", "website_example", Image_Base64$new("image/jpeg", "data_example")) # BrandAccountsUpdateRequest | 
+
+api_instance <- BusinessAccessRelationshipsApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$BrandAccountsUpdate(var_business_hierarchy_id, var_brand_account_id, var_brand_accounts_update_requestdata_file = "result.txt")
+result <- api_instance$BrandAccountsUpdate(var_business_hierarchy_id, var_brand_account_id, var_brand_accounts_update_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_hierarchy_id** | **character**| business hierarchy node id | 
+ **brand_account_id** | **character**| Unique identifier of a brand account. | 
+ **brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid parameters. |  -  |
+| **401** | Not authenticated to update Brand Account |  -  |
+| **403** | Not authorized to update Brand Account |  -  |
+| **404** | Brand account not found |  -  |
+| **409** | This account is not a brand account. |  -  |
+| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
+| **0** | Unexpected error |  -  |
 
 # **DeleteBusinessMembership**
 > DeletedMembersResponse DeleteBusinessMembership(business_id, members_to_delete_body)
@@ -27,7 +143,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Business id
-var_members_to_delete_body <- MembersToDeleteBody$new(c(MembersToDeleteBody_members_inner$new("member_id_example", BusinessRoleForMembers$new()))) # MembersToDeleteBody | List of members with role to delete.
+var_members_to_delete_body <- MembersToDeleteBody$new(c(MembersToDeleteBody_members_inner$new(BusinessRoleForMembers$new(), "member_id_example"))) # MembersToDeleteBody | List of members with role to delete.
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -170,7 +286,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **GetBusinessMembers**
-> GetBusinessMembers200Response GetBusinessMembers(business_id, assets_summary = FALSE, business_roles = var.business_roles, member_ids = var.member_ids, start_index = 0, bookmark = var.bookmark, page_size = 25)
+> GetBusinessMembers200Response GetBusinessMembers(business_id, fetch_system_users = FALSE, assets_summary = FALSE, business_roles = var.business_roles, member_ids = var.member_ids, start_index = 0, bookmark = var.bookmark, page_size = 25)
 
 Get business members
 
@@ -184,6 +300,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_fetch_system_users <- FALSE # character | Fetches system users if True. Fetches regular user employees if False. (Optional)
 var_assets_summary <- FALSE # character | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (Optional)
 var_business_roles <- c(MemberBusinessRole$new()) # array[MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (Optional)
 var_member_ids <- "00101010101,2222220101" # character | A list of business members ids separated by comma. (Optional)
@@ -195,8 +312,8 @@ api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$GetBusinessMembers(var_business_id, assets_summary = var_assets_summary, business_roles = var_business_roles, member_ids = var_member_ids, start_index = var_start_index, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$GetBusinessMembers(var_business_id, assets_summary = var_assets_summary, business_roles = var_business_roles, member_ids = var_member_ids, start_index = var_start_index, bookmark = var_bookmark, page_size = var_page_size)
+# result <- api_instance$GetBusinessMembers(var_business_id, fetch_system_users = var_fetch_system_users, assets_summary = var_assets_summary, business_roles = var_business_roles, member_ids = var_member_ids, start_index = var_start_index, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$GetBusinessMembers(var_business_id, fetch_system_users = var_fetch_system_users, assets_summary = var_assets_summary, business_roles = var_business_roles, member_ids = var_member_ids, start_index = var_start_index, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -205,6 +322,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
+ **fetch_system_users** | **character**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to FALSE]
  **assets_summary** | **character**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to FALSE]
  **business_roles** | list( [**MemberBusinessRole**](MemberBusinessRole.md) )| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
  **member_ids** | **character**| A list of business members ids separated by comma. | [optional] 
@@ -291,6 +409,58 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
+| **0** | Unexpected error |  -  |
+
+# **SystemUserUpdate**
+> SystemUserUpdate(business_id, system_user_id, system_user_update_request)
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+```R
+library(openapi)
+
+# Update a system user information.
+#
+# prepare function argument(s)
+var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_system_user_id <- "729090764583391194" # character | Unique identifier of a system user.
+var_system_user_update_request <- system_user_update_request$new("name_example") # SystemUserUpdateRequest | 
+
+api_instance <- BusinessAccessRelationshipsApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+api_instance$SystemUserUpdate(var_business_id, var_system_user_id, var_system_user_update_request)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_id** | **character**| Unique identifier of the requesting business. | 
+ **system_user_id** | **character**| Unique identifier of a system user. | 
+ **system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | System user updated successfully. |  -  |
+| **400** | Invalid parameters. |  -  |
 | **0** | Unexpected error |  -  |
 
 # **UpdateBusinessMemberships**

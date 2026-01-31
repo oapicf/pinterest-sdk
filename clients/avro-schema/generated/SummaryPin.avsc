@@ -5,13 +5,19 @@
   "name": "SummaryPin",
   "fields": [
     {
-      "name": "media",
-      "type": ["null", "model.PinMedia"],
+      "name": "alt_text",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     },
     {
-      "name": "alt_text",
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
       "type": ["null", "string"],
       "doc": "",
       "default": null
@@ -23,13 +29,13 @@
       "default": null
     },
     {
-      "name": "title",
-      "type": ["null", "string"],
+      "name": "media",
+      "type": ["null", "model.PinMedia"],
       "doc": "",
       "default": null
     },
     {
-      "name": "description",
+      "name": "title",
       "type": ["null", "string"],
       "doc": "",
       "default": null

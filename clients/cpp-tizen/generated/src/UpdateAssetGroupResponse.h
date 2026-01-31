@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get A list of successfully edited asset groups.
-	 */
-	std::list<AssetGroupBinding> getUpdatedAssetGroups();
-
-	/*! \brief Set A list of successfully edited asset groups.
-	 */
-	void setUpdatedAssetGroups(std::list <AssetGroupBinding> updated_asset_groups);
 	/*! \brief Get A list of errors associated with the asset groups. Will be returned if there is an error.
 	 */
 	std::list<UpdateAssetGroupResponse_exceptions_inner> getExceptions();
@@ -62,10 +55,17 @@ public:
 	/*! \brief Set A list of errors associated with the asset groups. Will be returned if there is an error.
 	 */
 	void setExceptions(std::list <UpdateAssetGroupResponse_exceptions_inner> exceptions);
+	/*! \brief Get A list of successfully edited asset groups.
+	 */
+	std::list<AssetGroupBinding> getUpdatedAssetGroups();
+
+	/*! \brief Set A list of successfully edited asset groups.
+	 */
+	void setUpdatedAssetGroups(std::list <AssetGroupBinding> updated_asset_groups);
 
 private:
-	std::list <AssetGroupBinding>updated_asset_groups;
 	std::list <UpdateAssetGroupResponse_exceptions_inner>exceptions;
+	std::list <AssetGroupBinding>updated_asset_groups;
 	void __init();
 	void __cleanup();
 

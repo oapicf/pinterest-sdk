@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
- * @param width 
  * @param height 
  * @param url 
+ * @param width 
  */
-case class ImageDetails(width: Int,
-                height: Int,
-                url: String
+case class ImageDetails(height: Int,
+                url: String,
+                width: Int
                 )
 
 object ImageDetails {

@@ -12,26 +12,28 @@ import org.joda.time.DateTime
 import AssetGroupBinding._
 
 case class AssetGroupBinding (
-  /* Asset Group ID. */
-  id: Option[String],
-/* Asset Group name */
-  assetGroupName: Option[String],
+  /* A list of ad account IDs under the asset group */
+  adAccountsIds: Option[List[String]],
 /* Asset group description */
   assetGroupDescription: Option[String],
+/* Asset Group name */
+  assetGroupName: Option[String],
 /* Asset group types */
   assetGroupTypes: Option[List[String]],
-/* A list of ad account IDs under the asset group */
-  adAccountsIds: Option[List[String]],
-/* A list of profile IDs under asset group */
-  profilesIds: Option[List[String]],
+/* A list of catalog IDs under asset group */
+  catalogsIds: Option[List[String]],
+/* The data of the user that created the asset group. */
+  createdBy: Option[BusinessAccessUserSummary],
 /* The creation time of the asset group */
   createdTime: Option[Integer],
-/* The last update time of the asset group */
-  updatedTime: Option[Integer],
+/* Asset Group ID. */
+  id: Option[String],
 /* The data of the business that owns the asset group. */
   owner: Option[BusinessAccessUserSummary],
-/* The data of the user that created the asset group. */
-  createdBy: Option[BusinessAccessUserSummary])
+/* A list of profile IDs under asset group */
+  profilesIds: Option[List[String]],
+/* The last update time of the asset group */
+  updatedTime: Option[Integer])
 
 object AssetGroupBinding {
   import DateTimeCodecs._

@@ -12,10 +12,10 @@ module ProductGroupAnalyticsResponseInner =
 
   [<CLIMutable>]
   type ProductGroupAnalyticsResponseInner = {
-    [<JsonProperty(PropertyName = "PRODUCT_GROUP_ID")>]
-    PRODUCT_GROUP_ID : string;
     [<JsonProperty(PropertyName = "DATE")>]
     DATE : DateTime;
+    [<JsonProperty(PropertyName = "PRODUCT_GROUP_ID")>]
+    PRODUCT_GROUP_ID : string;
   }
 
   //#endregion

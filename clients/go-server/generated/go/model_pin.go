@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,66 +18,67 @@ import (
 
 
 
-// Pin - Pin
+// Pin - Pin model containing properties related to a Pinterest Pin.
 type Pin struct {
 
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	CreatedAt time.Time `json:"created_at,omitempty"`
-
-	Link *string `json:"link,omitempty"`
-
-	Title *string `json:"title,omitempty"`
-
-	Description *string `json:"description,omitempty"`
-
-	// Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-	DominantColor *string `json:"dominant_color,omitempty"`
-
 	AltText *string `json:"alt_text,omitempty"`
-
-	CreativeType *CreativeType `json:"creative_type,omitempty"`
 
 	// The board to which this Pin belongs.
 	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 
+	BoardOwner BoardOwner `json:"board_owner,omitempty"`
+
 	// The board section to which this Pin belongs.
 	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	BoardOwner BoardOwner `json:"board_owner,omitempty"`
+	CreatedAt time.Time `json:"created_at,omitempty"`
 
-	// Whether the \"operation user_account\" is the Pin owner.
-	IsOwner bool `json:"is_owner,omitempty"`
+	CreativeType *CreativeType `json:"creative_type,omitempty"`
 
-	Media PinMedia `json:"media,omitempty"`
+	Description *string `json:"description,omitempty"`
 
-	MediaSource PinMediaSource `json:"media_source,omitempty"`
-
-	// The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-	ParentPinId *string `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	// Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
-	IsStandard bool `json:"is_standard,omitempty"`
+	// Dominant pin color. Hex number, e.g. `#6E7874`.
+	DominantColor *string `json:"dominant_color,omitempty"`
 
 	// Whether the Pin has been promoted or not.
 	HasBeenPromoted bool `json:"has_been_promoted,omitempty"`
 
-	// Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-	Note *string `json:"note,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+
+	// Whether the \"operation user_account\" is the Pin owner.
+	IsOwner bool `json:"is_owner,omitempty"`
+
+	// Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+	IsStandard bool `json:"is_standard,omitempty"`
+
+	Link *string `json:"link,omitempty"`
+
+	Media PinMedia `json:"media,omitempty"`
+
+	// The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
+	ParentPinId *string `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Pin metrics with associated time intervals if any.
 	PinMetrics *map[string]interface{} `json:"pin_metrics,omitempty"`
+
+	Title *string `json:"title,omitempty"`
 }
 
 // AssertPinRequired checks if the required fields are not zero-ed
 func AssertPinRequired(obj Pin) error {
+	elements := map[string]interface{}{
+		"id": obj.Id,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	if err := AssertBoardOwnerRequired(obj.BoardOwner); err != nil {
 		return err
 	}
 	if err := AssertPinMediaRequired(obj.Media); err != nil {
-		return err
-	}
-	if err := AssertPinMediaSourceRequired(obj.MediaSource); err != nil {
 		return err
 	}
 	return nil
@@ -89,9 +90,6 @@ func AssertPinConstraints(obj Pin) error {
 		return err
 	}
 	if err := AssertPinMediaConstraints(obj.Media); err != nil {
-		return err
-	}
-	if err := AssertPinMediaSourceConstraints(obj.MediaSource); err != nil {
 		return err
 	}
 	return nil

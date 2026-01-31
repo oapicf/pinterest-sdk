@@ -5,6 +5,13 @@ context("Test QuizPinQuestion")
 
 model_instance <- QuizPinQuestion$new()
 
+test_that("options", {
+  # tests for the property `options` (array[QuizPinOption])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`options`, "EXPECTED_RESULT")
+})
+
 test_that("question_id", {
   # tests for the property `question_id` (numeric)
 
@@ -17,11 +24,4 @@ test_that("question_text", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`question_text`, "EXPECTED_RESULT")
-})
-
-test_that("options", {
-  # tests for the property `options` (array[QuizPinOption])
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`options`, "EXPECTED_RESULT")
 })

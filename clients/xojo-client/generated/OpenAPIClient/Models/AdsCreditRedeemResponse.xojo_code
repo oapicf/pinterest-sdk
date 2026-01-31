@@ -3,14 +3,6 @@ Protected Class AdsCreditRedeemResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-		#tag EndNote
-		success As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Error code type if error occurs
 		#tag EndNote
 		errorCode As Xoson.O.OptionalInteger
@@ -22,6 +14,14 @@ Protected Class AdsCreditRedeemResponse
 			Reason for failure
 		#tag EndNote
 		errorMessage As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+		#tag EndNote
+		success As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -62,14 +62,6 @@ Protected Class AdsCreditRedeemResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="success"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Boolean"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="errorCode"
 			Visible=false
 			Group="Behavior"
@@ -83,6 +75,14 @@ Protected Class AdsCreditRedeemResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="success"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

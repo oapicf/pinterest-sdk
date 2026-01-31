@@ -73,22 +73,24 @@ private class OASPinMediaSourceVideoIDTest {
     private static void maintainRenamedProperties() {
         OASPinMediaSourceVideoID pinMediaSourceVideoID = new OASPinMediaSourceVideoID();
         Map<String, String> x-property-mappings = pinMediaSourceVideoID.getx-property-mappings();
-        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
-        System.assertEquals('coverImageUrl', x-property-mappings.get('cover_image_url'));
         System.assertEquals('coverImageContentType', x-property-mappings.get('cover_image_content_type'));
         System.assertEquals('coverImageData', x-property-mappings.get('cover_image_data'));
-        System.assertEquals('mediaId', x-property-mappings.get('media_id'));
+        System.assertEquals('coverImageKeyFrameTime', x-property-mappings.get('cover_image_key_frame_time'));
+        System.assertEquals('coverImageUrl', x-property-mappings.get('cover_image_url'));
         System.assertEquals('isStandard', x-property-mappings.get('is_standard'));
+        System.assertEquals('mediaId', x-property-mappings.get('media_id'));
+        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASPinMediaSourceVideoID pinMediaSourceVideoID = new OASPinMediaSourceVideoID();
         System.assertEquals(true, pinMediaSourceVideoID.isStandard);
-        System.assertEquals(null, pinMediaSourceVideoID.sourceType);
-        System.assertEquals(null, pinMediaSourceVideoID.coverImageUrl);
         System.assertEquals(null, pinMediaSourceVideoID.coverImageContentType);
         System.assertEquals(null, pinMediaSourceVideoID.coverImageData);
+        System.assertEquals(null, pinMediaSourceVideoID.coverImageKeyFrameTime);
+        System.assertEquals(null, pinMediaSourceVideoID.coverImageUrl);
         System.assertEquals(null, pinMediaSourceVideoID.mediaId);
+        System.assertEquals(null, pinMediaSourceVideoID.sourceType);
     }
 }

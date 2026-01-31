@@ -13,19 +13,14 @@ void main() {
       // TODO
     });
 
-    // AudienceDemographics demographics
-    test('to test the property `demographics`', () async {
-      // TODO
-    });
-
-    // AudienceInsightType type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // Generation date
     // String date
     test('to test the property `date`', () async {
+      // TODO
+    });
+
+    // AudienceDemographics demographics
+    test('to test the property `demographics`', () async {
       // TODO
     });
 
@@ -38,6 +33,11 @@ void main() {
     // Indicates whether the audience size has been rounded up to the next highest upper boundary.
     // bool sizeIsUpperBound
     test('to test the property `sizeIsUpperBound`', () async {
+      // TODO
+    });
+
+    // AudienceInsightType type
+    test('to test the property `type`', () async {
       // TODO
     });
 

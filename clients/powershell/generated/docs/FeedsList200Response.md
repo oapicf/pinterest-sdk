@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsFeed[]**](CatalogsFeed.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CatalogsFeed[]**](CatalogsFeed.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$FeedsList200Response = Initialize-PSOpenAPIToolsFeedsList200Response  -Items null `
- -Bookmark null
+$FeedsList200Response = Initialize-PSOpenAPIToolsFeedsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

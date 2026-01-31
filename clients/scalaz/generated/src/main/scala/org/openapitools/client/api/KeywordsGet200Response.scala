@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import KeywordsGet200Response._
 
 case class KeywordsGet200Response (
-  items: List[Keyword],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[Keyword])
 
 object KeywordsGet200Response {
   import DateTimeCodecs._

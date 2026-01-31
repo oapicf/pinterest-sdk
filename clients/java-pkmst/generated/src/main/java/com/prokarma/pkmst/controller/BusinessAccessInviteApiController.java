@@ -36,7 +36,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class BusinessAccessInviteApiController implements BusinessAccessInviteApi {
     private final ObjectMapper objectMapper;
@@ -62,7 +62,7 @@ public class BusinessAccessInviteApiController implements BusinessAccessInviteAp
         return new ResponseEntity<CreateAssetAccessRequestResponse>(HttpStatus.OK);
     }
 
-    public ResponseEntity<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(@ApiParam(value = "Business id",required=true ) @PathVariable("business_id") String businessId,
+    public ResponseEntity<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
         @ApiParam(value = "A list with invite ids" ,required=true )   @RequestBody CancelInvitesBody cancelInvitesBody,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
@@ -96,7 +96,7 @@ public class BusinessAccessInviteApiController implements BusinessAccessInviteAp
         return new ResponseEntity<UpdateInvitesResultsResponseArray>(HttpStatus.OK);
     }
 
-    public ResponseEntity<CreateInvitesResultsResponseArray> createMembershipOrPartnershipInvites(@ApiParam(value = "Business id",required=true ) @PathVariable("business_id") String businessId,
+    public ResponseEntity<CreateInvitesResultsResponseArray> createMembershipOrPartnershipInvites(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
         @ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true )   @RequestBody CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!

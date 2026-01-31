@@ -16,8 +16,8 @@
 #include "../model/ad_common.h"
 ad_common_t* instantiate_ad_common(int include_optional);
 
-#include "test_tracking_urls.c"
 #include "test_quiz_pin_data.c"
+#include "test_tracking_urls.c"
 
 
 ad_common_t* instantiate_ad_common(int include_optional) {
@@ -30,19 +30,21 @@ ad_common_t* instantiate_ad_common(int include_optional) {
       list_createList(),
       list_createList(),
       "0",
-      pinterest_rest_api_ad_common__"REGULAR",
+      pinterest_rest_api_ad_common__REGULAR,
+      pinterest_rest_api_ad_common__"LEARN_MORE",
       "0",
+      pinterest_rest_api_ad_common__"MED_GUIDE",
+      "0",
+      pinterest_rest_api_ad_common__"CLOSEUP",
       "0",
       false,
       false,
+      "a",
       "0",
+      {"questions":[{"question_id":1,"question_text":"Where do you thrive?","options":[{"text":"Hangout vibes"},{"text":"Time to party!"},{"text":"Keeping it lowkey"}]},{"question_id":2,"question_text":"Where would you nap?","options":[{"text":"Hammock in the mountains"},{"text":"Beach towel in the sand"},{"text":"Tent under the stars"}]},{"question_id":2,"question_text":"Who are you taking?","options":[{"text":"No one—solo trip!"},{"text":"My best friend"},{"text":"The family"}]}],"results":[{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":1},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":2},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":3}]},
       pinterest_rest_api_ad_common__"ACTIVE",
       {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      "0",
-      "a",
-      pinterest_rest_api_ad_common__"CLOSEUP",
-      pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_"LEARN_MORE",
-      {"questions":[{"question_id":1,"question_text":"Where do you thrive?","options":[{"text":"Hangout vibes"},{"text":"Time to party!"},{"text":"Keeping it lowkey"}]},{"question_id":2,"question_text":"Where would you nap?","options":[{"text":"Hammock in the mountains"},{"text":"Beach towel in the sand"},{"text":"Tent under the stars"}]},{"question_id":2,"question_text":"Who are you taking?","options":[{"text":"No one—solo trip!"},{"text":"My best friend"},{"text":"The family"}]}],"results":[{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":1},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":2},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":3}]}
+      "0"
     );
   } else {
     ad_common = ad_common_create(
@@ -52,19 +54,21 @@ ad_common_t* instantiate_ad_common(int include_optional) {
       list_createList(),
       list_createList(),
       "0",
-      pinterest_rest_api_ad_common__"REGULAR",
+      pinterest_rest_api_ad_common__REGULAR,
+      pinterest_rest_api_ad_common__"LEARN_MORE",
       "0",
+      pinterest_rest_api_ad_common__"MED_GUIDE",
+      "0",
+      pinterest_rest_api_ad_common__"CLOSEUP",
       "0",
       false,
       false,
+      "a",
       "0",
+      {"questions":[{"question_id":1,"question_text":"Where do you thrive?","options":[{"text":"Hangout vibes"},{"text":"Time to party!"},{"text":"Keeping it lowkey"}]},{"question_id":2,"question_text":"Where would you nap?","options":[{"text":"Hammock in the mountains"},{"text":"Beach towel in the sand"},{"text":"Tent under the stars"}]},{"question_id":2,"question_text":"Who are you taking?","options":[{"text":"No one—solo trip!"},{"text":"My best friend"},{"text":"The family"}]}],"results":[{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":1},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":2},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":3}]},
       pinterest_rest_api_ad_common__"ACTIVE",
       {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      "0",
-      "a",
-      pinterest_rest_api_ad_common__"CLOSEUP",
-      pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_"LEARN_MORE",
-      {"questions":[{"question_id":1,"question_text":"Where do you thrive?","options":[{"text":"Hangout vibes"},{"text":"Time to party!"},{"text":"Keeping it lowkey"}]},{"question_id":2,"question_text":"Where would you nap?","options":[{"text":"Hammock in the mountains"},{"text":"Beach towel in the sand"},{"text":"Tent under the stars"}]},{"question_id":2,"question_text":"Who are you taking?","options":[{"text":"No one—solo trip!"},{"text":"My best friend"},{"text":"The family"}]}],"results":[{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":1},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":2},{"organicPinId":"1234","android_deep_link":"https://www.pinterest.com/","iOS_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/","result_id":3}]}
+      "0"
     );
   }
 

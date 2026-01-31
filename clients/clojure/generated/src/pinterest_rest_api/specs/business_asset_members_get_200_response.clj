@@ -8,8 +8,8 @@
 
 (def business-asset-members-get-200-response-data
   {
-   (ds/req :items) (s/coll-of user-single-asset-binding-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of user-single-asset-binding-spec)
    })
 
 (def business-asset-members-get-200-response-spec

@@ -17,13 +17,13 @@ import { CatalogsType } from './catalogsType';
 export interface CatalogsRetailItemErrorResponse { 
     catalog_type: CatalogsType;
     /**
+     * Array with the errors for the item id requested
+     */
+    errors: Array<ItemValidationEvent>;
+    /**
      * The catalog item id in the merchant namespace
      */
     item_id?: string;
-    /**
-     * Array with the errors for the item id requested
-     */
-    errors?: Array<ItemValidationEvent>;
 }
 export namespace CatalogsRetailItemErrorResponse {
 }

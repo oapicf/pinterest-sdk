@@ -1,0 +1,21 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "engagement_type" },
+      {"model": "pct_change_mom" },
+      {"model": "percent_relative_volume" },
+      {"model": "product_category" },
+      {"model": "verticals" },
+    ]
+  }]
+}

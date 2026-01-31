@@ -5,6 +5,14 @@ context("Test ConversionEventResponse")
 
 model_instance <- ConversionEventResponse$new()
 
+test_that("ad_account_id", {
+  # tests for the property `ad_account_id` (character)
+  # Id of the ad account.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
+})
+
 test_that("conversion_event", {
   # tests for the property `conversion_event` (ConversionTagType)
 
@@ -18,14 +26,6 @@ test_that("conversion_tag_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`conversion_tag_id`, "EXPECTED_RESULT")
-})
-
-test_that("ad_account_id", {
-  # tests for the property `ad_account_id` (character)
-  # Id of the ad account.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
 })
 
 test_that("created_time", {

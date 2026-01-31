@@ -19,7 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CustomerListUpdateRequest
-import org.openapitools.client.models.Exception
 import org.openapitools.client.models.UserListOperationType
 
 class CustomerListUpdateRequestTest : ShouldSpec() {
@@ -27,22 +26,16 @@ class CustomerListUpdateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CustomerListUpdateRequest
         //val modelInstance = CustomerListUpdateRequest()
 
-        // to test the property `records` - Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-        should("test records") {
-            // uncomment below to test the property
-            //modelInstance.records shouldBe ("TODO")
-        }
-
         // to test the property `operationType`
         should("test operationType") {
             // uncomment below to test the property
             //modelInstance.operationType shouldBe ("TODO")
         }
 
-        // to test the property `exceptions`
-        should("test exceptions") {
+        // to test the property `records` - Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
+        should("test records") {
             // uncomment below to test the property
-            //modelInstance.exceptions shouldBe ("TODO")
+            //modelInstance.records shouldBe ("TODO")
         }
 
     }

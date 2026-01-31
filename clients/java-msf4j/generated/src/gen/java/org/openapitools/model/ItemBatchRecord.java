@@ -21,34 +21,16 @@ import org.openapitools.model.UpdateMaskFieldType;
  * Object describing an item batch record
  */
 @ApiModel(description = "Object describing an item batch record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemBatchRecord   {
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("attributes")
   private ItemAttributesRequest attributes;
 
+  @JsonProperty("item_id")
+  private String itemId;
+
   @JsonProperty("update_mask")
   private List<UpdateMaskFieldType> updateMask = null;
-
-  public ItemBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
 
   public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
@@ -66,6 +48,24 @@ public class ItemBatchRecord   {
 
   public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
+  }
+
+  public ItemBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public ItemBatchRecord updateMask(List<UpdateMaskFieldType> updateMask) {
@@ -104,14 +104,14 @@ public class ItemBatchRecord   {
       return false;
     }
     ItemBatchRecord itemBatchRecord = (ItemBatchRecord) o;
-    return Objects.equals(this.itemId, itemBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemBatchRecord.attributes) &&
+    return Objects.equals(this.attributes, itemBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemBatchRecord.itemId) &&
         Objects.equals(this.updateMask, itemBatchRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes, updateMask);
+    return Objects.hash(attributes, itemId, updateMask);
   }
 
   @Override
@@ -119,8 +119,8 @@ public class ItemBatchRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

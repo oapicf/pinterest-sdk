@@ -14,7 +14,7 @@ void main() {
     });
 
     // Array of advanced auction processed items
-    // BuiltList<AdvancedAuctionProcessedItem> items
+    // BuiltList<AdvancedAuctionItemsSubmitRecord> items
     test('to test the property `items`', () async {
       // TODO
     });

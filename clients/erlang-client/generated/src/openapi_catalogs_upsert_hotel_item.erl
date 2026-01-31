@@ -5,16 +5,16 @@
 -export_type([openapi_catalogs_upsert_hotel_item/0]).
 
 -type openapi_catalogs_upsert_hotel_item() ::
-    #{ 'hotel_id' := binary(),
-       'operation' := binary(),
-       'attributes' := openapi_catalogs_hotel_attributes:openapi_catalogs_hotel_attributes()
+    #{ 'attributes' := openapi_catalogs_hotel_attributes:openapi_catalogs_hotel_attributes(),
+       'hotel_id' := binary(),
+       'operation' := binary()
      }.
 
-encode(#{ 'hotel_id' := HotelId,
-          'operation' := Operation,
-          'attributes' := Attributes
+encode(#{ 'attributes' := Attributes,
+          'hotel_id' := HotelId,
+          'operation' := Operation
         }) ->
-    #{ 'hotel_id' => HotelId,
-       'operation' => Operation,
-       'attributes' => Attributes
+    #{ 'attributes' => Attributes,
+       'hotel_id' => HotelId,
+       'operation' => Operation
      }.

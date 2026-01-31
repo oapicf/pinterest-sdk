@@ -1,0 +1,57 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadSubscriptionPostParamsCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadSubscriptionPostParamsCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata = openapi_server.resourceTypes.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LeadSubscriptionPostParamsCreate {
+    title = LeadSubscriptionPostParamsCreate
+    description = LeadSubscriptionPostParamsCreate
+    derivedFrom = Root
+    properties {
+        lead_form_id {
+          type =  string
+          description = "Lead form ID."
+          optional = false
+        }
+        webhook_url {
+          type =  string
+          description = "Standard HTTPS webhook URL."
+          optional = true
+        }
+        partner_access_token {
+          type =  string
+          description = "Partner access token. Only for clients that requires authentication. We recommend to avoid this param."
+          optional = false
+        }
+        partner_metadata {
+          type = LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+          description = ""
+          optional = false
+        }
+        partner_refresh_token {
+          type =  string
+          description = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadSubscriptionPostParamsCreate {
+    title = LeadSubscriptionPostParamsCreate
+    description = LeadSubscriptionPostParamsCreate
+    implements = openapi_server.resourceTypes.LeadSubscriptionPostParamsCreate
+
+  }
+}

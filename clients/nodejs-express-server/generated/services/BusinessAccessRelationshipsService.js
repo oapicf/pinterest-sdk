@@ -2,6 +2,54 @@
 const Service = require('./Service');
 
 /**
+* Create a Brand Account
+* Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+*
+* businessUnderscorehierarchyUnderscoreid String business hierarchy node id
+* brandAccountsCreateRequest BrandAccountsCreateRequest 
+* returns brand_accounts_create_200_response
+* */
+const brand_accounts/create = ({ businessUnderscorehierarchyUnderscoreid, brandAccountsCreateRequest }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      resolve(Service.successResponse({
+        businessUnderscorehierarchyUnderscoreid,
+        brandAccountsCreateRequest,
+      }));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
+* Update a Brand Account
+* Update an existing Brand Account
+*
+* businessUnderscorehierarchyUnderscoreid String business hierarchy node id
+* brandUnderscoreaccountUnderscoreid String Unique identifier of a brand account.
+* brandAccountsUpdateRequest BrandAccountsUpdateRequest 
+* returns brand_accounts_create_200_response
+* */
+const brand_accounts/update = ({ businessUnderscorehierarchyUnderscoreid, brandUnderscoreaccountUnderscoreid, brandAccountsUpdateRequest }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      resolve(Service.successResponse({
+        businessUnderscorehierarchyUnderscoreid,
+        brandUnderscoreaccountUnderscoreid,
+        brandAccountsUpdateRequest,
+      }));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
 * Terminate business memberships
 * Terminate memberships between the specified members and your business.
 *
@@ -75,6 +123,7 @@ const get/business_employers = ({ pageUnderscoresize, bookmark }) => new Promise
 * Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
+* fetchUnderscoresystemUnderscoreusers Boolean Fetches system users if True. Fetches regular user employees if False. (optional)
 * assetsUnderscoresummary Boolean Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
 * businessUnderscoreroles List A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
 * memberUnderscoreids String A list of business members ids separated by comma. (optional)
@@ -83,11 +132,12 @@ const get/business_employers = ({ pageUnderscoresize, bookmark }) => new Promise
 * pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns get_business_members_200_response
 * */
-const get/business_members = ({ businessUnderscoreid, assetsUnderscoresummary, businessUnderscoreroles, memberUnderscoreids, startUnderscoreindex, bookmark, pageUnderscoresize }) => new Promise(
+const get/business_members = ({ businessUnderscoreid, fetchUnderscoresystemUnderscoreusers, assetsUnderscoresummary, businessUnderscoreroles, memberUnderscoreids, startUnderscoreindex, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
+        fetchUnderscoresystemUnderscoreusers,
         assetsUnderscoresummary,
         businessUnderscoreroles,
         memberUnderscoreids,
@@ -137,6 +187,31 @@ const get/business_partners = ({ businessUnderscoreid, assetsUnderscoresummary, 
   },
 );
 /**
+* Update a system user information.
+* Update a system user information such as name.
+*
+* businessUnderscoreid String Unique identifier of the requesting business.
+* systemUnderscoreuserUnderscoreid String Unique identifier of a system user.
+* systemUserUpdateRequest SystemUserUpdateRequest 
+* no response value expected for this operation
+* */
+const system_user/update = ({ businessUnderscoreid, systemUnderscoreuserUnderscoreid, systemUserUpdateRequest }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      resolve(Service.successResponse({
+        businessUnderscoreid,
+        systemUnderscoreuserUnderscoreid,
+        systemUserUpdateRequest,
+      }));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
 * Update member's business role
 * Update a member's business role within the business.
 *
@@ -161,10 +236,13 @@ const update/business_memberships = ({ businessUnderscoreid, updateMemberBusines
 );
 
 module.exports = {
+  brand_accounts/create,
+  brand_accounts/update,
   delete_business_membership,
   delete_business_partners,
   get/business_employers,
   get/business_members,
   get/business_partners,
+  system_user/update,
   update/business_memberships,
 };

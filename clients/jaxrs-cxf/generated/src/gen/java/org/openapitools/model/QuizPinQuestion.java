@@ -24,17 +24,40 @@ public class QuizPinQuestion  {
 
   @Valid
 
-  private BigDecimal questionId;
-
-  @ApiModelProperty(value = "")
-
-  private String questionText;
+  private List<@Valid QuizPinOption> options = new ArrayList<>();
 
   @ApiModelProperty(value = "")
 
   @Valid
 
-  private List<@Valid QuizPinOption> options = new ArrayList<>();
+  private BigDecimal questionId;
+
+  @ApiModelProperty(value = "")
+
+  private String questionText;
+ /**
+   * Get options
+   * @return options
+  **/
+  @JsonProperty("options")
+  public List<@Valid QuizPinOption> getOptions() {
+    return options;
+  }
+
+  public void setOptions(List<@Valid QuizPinOption> options) {
+    this.options = options;
+  }
+
+  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
+    this.options = options;
+    return this;
+  }
+
+  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
+    this.options.add(optionsItem);
+    return this;
+  }
+
  /**
    * Get questionId
    * @return questionId
@@ -71,29 +94,6 @@ public class QuizPinQuestion  {
     return this;
   }
 
- /**
-   * Get options
-   * @return options
-  **/
-  @JsonProperty("options")
-  public List<@Valid QuizPinOption> getOptions() {
-    return options;
-  }
-
-  public void setOptions(List<@Valid QuizPinOption> options) {
-    this.options = options;
-  }
-
-  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
-    this.options = options;
-    return this;
-  }
-
-  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
-    this.options.add(optionsItem);
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,14 +103,14 @@ public class QuizPinQuestion  {
       return false;
     }
     QuizPinQuestion quizPinQuestion = (QuizPinQuestion) o;
-    return Objects.equals(this.questionId, quizPinQuestion.questionId) &&
-        Objects.equals(this.questionText, quizPinQuestion.questionText) &&
-        Objects.equals(this.options, quizPinQuestion.options);
+    return Objects.equals(this.options, quizPinQuestion.options) &&
+        Objects.equals(this.questionId, quizPinQuestion.questionId) &&
+        Objects.equals(this.questionText, quizPinQuestion.questionText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionId, questionText, options);
+    return Objects.hash(options, questionId, questionText);
   }
 
   @Override
@@ -118,9 +118,9 @@ public class QuizPinQuestion  {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinQuestion {\n");
     
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    questionId: ").append(toIndentedString(questionId)).append("\n");
     sb.append("    questionText: ").append(toIndentedString(questionText)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

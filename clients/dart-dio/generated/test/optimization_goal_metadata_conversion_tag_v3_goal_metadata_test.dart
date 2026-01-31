@@ -27,7 +27,7 @@ void main() {
       // TODO
     });
 
-    // ROAS optimization is not supported
+    // Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
     // bool isRoasOptimized
     test('to test the property `isRoasOptimized`', () async {
       // TODO
@@ -36,6 +36,12 @@ void main() {
     // Conversion learning model type
     // String learningModeType
     test('to test the property `learningModeType`', () async {
+      // TODO
+    });
+
+    // Event name for custom or standard events mapped to an oCPM model
+    // String reportingEvent
+    test('to test the property `reportingEvent`', () async {
       // TODO
     });
 

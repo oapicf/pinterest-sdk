@@ -5,7 +5,6 @@ import org.openapitools.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -14,6 +13,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationsApiServiceImpl implements IntegrationsApiService {
       @Override
       public Response integrationsCommerceDel(String externalBusinessId, SecurityContext securityContext) {

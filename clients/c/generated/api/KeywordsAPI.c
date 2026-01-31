@@ -492,7 +492,7 @@ end:
 // <p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
 //
 keywords_get_200_response_t*
-KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campaign_id, char *ad_group_id, list_t *match_types, int *page_size, char *bookmark)
+KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campaign_id, char *ad_group_id, list_t *ad_group_ids, list_t *match_types, int *page_size, char *bookmark)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -546,6 +546,12 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
         valueQuery_ad_group_id = strdup((ad_group_id));
         keyPairQuery_ad_group_id = keyValuePair_create(keyQuery_ad_group_id, valueQuery_ad_group_id);
         list_addElement(localVarQueryParameters,keyPairQuery_ad_group_id);
+    }
+
+    // query parameters
+    if (ad_group_ids)
+    {
+        list_addElement(localVarQueryParameters,ad_group_ids);
     }
 
     // query parameters
@@ -785,7 +791,7 @@ end:
 // <p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>. 
 //
 trending_keywords_response_t*
-KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region_e region, trend_type_e trend_type, list_t *interests, list_t *genders, list_t *ages, list_t *include_keywords, int *normalize_against_group, int *limit)
+KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region_e region, trend_type_e trend_type, list_t *interests, list_t *genders, list_t *ages, list_t *include_keywords, int *normalize_against_group, int *limit, int *include_prediction, int *include_demographics)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -860,6 +866,32 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
         keyPairQuery_limit = keyValuePair_create(keyQuery_limit, valueQuery_limit);
         list_addElement(localVarQueryParameters,keyPairQuery_limit);
     }
+
+    // query parameters
+    char *keyQuery_include_prediction = NULL;
+    char * valueQuery_include_prediction = NULL;
+    keyValuePair_t *keyPairQuery_include_prediction = 0;
+    if (include_prediction)
+    {
+        keyQuery_include_prediction = strdup("include_prediction");
+        valueQuery_include_prediction = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_include_prediction, MAX_NUMBER_LENGTH, "%d", *include_prediction);
+        keyPairQuery_include_prediction = keyValuePair_create(keyQuery_include_prediction, valueQuery_include_prediction);
+        list_addElement(localVarQueryParameters,keyPairQuery_include_prediction);
+    }
+
+    // query parameters
+    char *keyQuery_include_demographics = NULL;
+    char * valueQuery_include_demographics = NULL;
+    keyValuePair_t *keyPairQuery_include_demographics = 0;
+    if (include_demographics)
+    {
+        keyQuery_include_demographics = strdup("include_demographics");
+        valueQuery_include_demographics = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_include_demographics, MAX_NUMBER_LENGTH, "%d", *include_demographics);
+        keyPairQuery_include_demographics = keyValuePair_create(keyQuery_include_demographics, valueQuery_include_demographics);
+        list_addElement(localVarQueryParameters,keyPairQuery_include_demographics);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -932,6 +964,30 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
     if(keyPairQuery_limit){
         keyValuePair_free(keyPairQuery_limit);
         keyPairQuery_limit = NULL;
+    }
+    if(keyQuery_include_prediction){
+        free(keyQuery_include_prediction);
+        keyQuery_include_prediction = NULL;
+    }
+    if(valueQuery_include_prediction){
+        free(valueQuery_include_prediction);
+        valueQuery_include_prediction = NULL;
+    }
+    if(keyPairQuery_include_prediction){
+        keyValuePair_free(keyPairQuery_include_prediction);
+        keyPairQuery_include_prediction = NULL;
+    }
+    if(keyQuery_include_demographics){
+        free(keyQuery_include_demographics);
+        keyQuery_include_demographics = NULL;
+    }
+    if(valueQuery_include_demographics){
+        free(valueQuery_include_demographics);
+        valueQuery_include_demographics = NULL;
+    }
+    if(keyPairQuery_include_demographics){
+        keyValuePair_free(keyPairQuery_include_demographics);
+        keyPairQuery_include_demographics = NULL;
     }
     return elementToReturn;
 end:

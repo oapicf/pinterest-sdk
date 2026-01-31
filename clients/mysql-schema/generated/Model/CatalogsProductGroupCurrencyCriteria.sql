@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsProductGroupCurrencyCriteria`
 --
-SELECT `values`, `negated` FROM `CatalogsProductGroupCurrencyCriteria` WHERE 1;
+SELECT `negated`, `values` FROM `CatalogsProductGroupCurrencyCriteria` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsProductGroupCurrencyCriteria`
 --
-INSERT INTO `CatalogsProductGroupCurrencyCriteria`(`values`, `negated`) VALUES (?, ?);
+INSERT INTO `CatalogsProductGroupCurrencyCriteria`(`negated`, `values`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CatalogsProductGroupCurrencyCriteria`
 --
-UPDATE `CatalogsProductGroupCurrencyCriteria` SET `values` = ?, `negated` = ? WHERE 1;
+UPDATE `CatalogsProductGroupCurrencyCriteria` SET `negated` = ?, `values` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsProductGroupCurrencyCriteria`

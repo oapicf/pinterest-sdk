@@ -11,11 +11,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param summaryUnderscoremetrics The metric name and value over the requested period for each requested metric
  * @param dailyUnderscoremetrics Array with the requested daily metric records
+ * @param summaryUnderscoremetrics The metric name and value over the requested period for each requested metric
  */
-case class AnalyticsMetricsResponse(summaryUnderscoremetrics: Option[Map[String, BigDecimal]],
-                dailyUnderscoremetrics: Option[Seq[AnalyticsDailyMetrics]]
+case class AnalyticsMetricsResponse(dailyUnderscoremetrics: Option[Seq[AnalyticsDailyMetrics]],
+                summaryUnderscoremetrics: Option[Map[String, BigDecimal]]
                 )
 
 object AnalyticsMetricsResponse {

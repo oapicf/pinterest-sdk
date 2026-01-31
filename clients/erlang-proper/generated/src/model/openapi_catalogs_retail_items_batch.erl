@@ -10,11 +10,11 @@
 
 -type openapi_catalogs_retail_items_batch() ::
   [ {'batch_id', binary() }
-  | {'created_time', datetime() }
-  | {'completed_time', datetime() }
-  | {'status', openapi_batch_operation_status:openapi_batch_operation_status() }
   | {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  | {'completed_time', datetime() }
+  | {'created_time', datetime() }
   | {'items', list(openapi_item_processing_record:openapi_item_processing_record()) }
+  | {'status', openapi_batch_operation_status:openapi_batch_operation_status() }
   ].
 
 
@@ -23,11 +23,11 @@ openapi_catalogs_retail_items_batch() ->
 
 openapi_catalogs_retail_items_batch(Fields) ->
   Default = [ {'batch_id', binary() }
-            , {'created_time', datetime() }
-            , {'completed_time', datetime() }
-            , {'status', openapi_batch_operation_status:openapi_batch_operation_status() }
             , {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+            , {'completed_time', datetime() }
+            , {'created_time', datetime() }
             , {'items', list(openapi_item_processing_record:openapi_item_processing_record()) }
+            , {'status', openapi_batch_operation_status:openapi_batch_operation_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 **CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **String** | We recommend using the CatalogsLocale values. | 
 **Items** | [**CatalogsHotelBatchItem[]**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**CatalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**Language** | **String** | We recommend using the CatalogsLocale values. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelBatchRequest = Initialize-PSOpenAPIToolsCatalogsHotelBatchRequest  -CatalogType null `
+$CatalogsHotelBatchRequest = Initialize-PSOpenAPIToolsCatalogsHotelBatchRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Country null `
- -Language null `
  -Items null `
- -CatalogId 2680059592705
+ -Language null
 ```
 
 - Convert the resource to JSON

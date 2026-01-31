@@ -4,10 +4,10 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **reportStatus** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  |  [optional] |
-| **token** | **kotlin.String** |  |  [optional] |
 | **message** | **kotlin.String** |  |  [optional] |
+| **reportStatus** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  |  [optional] |
 | **status** | **kotlin.String** |  |  [optional] |
+| **token** | **kotlin.String** |  |  [optional] |
 
 
 

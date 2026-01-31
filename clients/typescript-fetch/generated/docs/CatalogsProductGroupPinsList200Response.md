@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;CatalogsProduct&gt;](CatalogsProduct.md)
 `bookmark` | string
+`items` | [Array&lt;CatalogsProduct&gt;](CatalogsProduct.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsProductGroupPinsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies CatalogsProductGroupPinsList200Response
 
 console.log(example)

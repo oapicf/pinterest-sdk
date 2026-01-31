@@ -26,45 +26,17 @@ import javax.annotation.Generated;
  * PinAnalyticsMetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinAnalyticsMetricsResponse {
-
-  @Valid
-  private Map<String, Integer> lifetimeMetrics = new HashMap<>();
 
   @Valid
   private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
 
   @Valid
+  private Map<String, Integer> lifetimeMetrics = new HashMap<>();
+
+  @Valid
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
-
-  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-    return this;
-  }
-
-  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
-    if (this.lifetimeMetrics == null) {
-      this.lifetimeMetrics = new HashMap<>();
-    }
-    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
-    return this;
-  }
-
-  /**
-   * The lifetime metric name and value.
-   * @return lifetimeMetrics
-   */
-  
-  @Schema(name = "lifetime_metrics", example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", description = "The lifetime metric name and value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("lifetime_metrics")
-  public Map<String, Integer> getLifetimeMetrics() {
-    return lifetimeMetrics;
-  }
-
-  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-  }
 
   public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
@@ -92,6 +64,34 @@ public class PinAnalyticsMetricsResponse {
 
   public void setDailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
+  }
+
+  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
+    return this;
+  }
+
+  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
+    if (this.lifetimeMetrics == null) {
+      this.lifetimeMetrics = new HashMap<>();
+    }
+    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
+    return this;
+  }
+
+  /**
+   * The lifetime metric name and value.
+   * @return lifetimeMetrics
+   */
+  
+  @Schema(name = "lifetime_metrics", example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", description = "The lifetime metric name and value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("lifetime_metrics")
+  public Map<String, Integer> getLifetimeMetrics() {
+    return lifetimeMetrics;
+  }
+
+  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
   }
 
   public PinAnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
@@ -131,22 +131,22 @@ public class PinAnalyticsMetricsResponse {
       return false;
     }
     PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = (PinAnalyticsMetricsResponse) o;
-    return Objects.equals(this.lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
-        Objects.equals(this.dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+    return Objects.equals(this.dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(this.lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
         Objects.equals(this.summaryMetrics, pinAnalyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lifetimeMetrics, dailyMetrics, summaryMetrics);
+    return Objects.hash(dailyMetrics, lifetimeMetrics, summaryMetrics);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinAnalyticsMetricsResponse {\n");
-    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();

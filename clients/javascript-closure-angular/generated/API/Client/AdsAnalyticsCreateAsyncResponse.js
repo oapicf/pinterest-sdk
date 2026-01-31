@@ -6,6 +6,12 @@ goog.provide('API.Client.AdsAnalyticsCreateAsyncResponse');
 API.Client.AdsAnalyticsCreateAsyncResponse = function() {}
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.AdsAnalyticsCreateAsyncResponse.prototype.message;
+
+/**
  * @type {!API.Client.BulkReportingJobStatus}
  * @export
  */
@@ -16,10 +22,4 @@ API.Client.AdsAnalyticsCreateAsyncResponse.prototype.reportStatus;
  * @export
  */
 API.Client.AdsAnalyticsCreateAsyncResponse.prototype.token;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.AdsAnalyticsCreateAsyncResponse.prototype.message;
 

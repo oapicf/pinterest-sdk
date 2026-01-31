@@ -5,6 +5,14 @@ import (
 	"net/http"
 )
 
+// AdPinsAnalytics - Get pins analytics
+func (c *Container) AdPinsAnalytics(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // CampaignTargetingAnalyticsGet - Get targeting analytics for campaigns
 func (c *Container) CampaignTargetingAnalyticsGet(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {

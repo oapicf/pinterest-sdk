@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ReportsStatsParametersParameter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ReportsStatsParametersParameter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsHotelReportStatsParameters = openapi_server.resourceTypes.CatalogsHotelReportStatsParameters
+  CatalogsHotelReportStatsParametersReport = openapi_server.resourceTypes.CatalogsHotelReportStatsParametersReport
+  CatalogsRetailReportStatsParameters = openapi_server.resourceTypes.CatalogsRetailReportStatsParameters
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+}
+resourceTypes {
+
+  ReportsStatsParametersParameter {
+    title = ReportsStatsParametersParameter
+    description = ReportsStatsParametersParameter
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        report {
+          type = CatalogsHotelReportStatsParametersReport
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ReportsStatsParametersParameter {
+    title = ReportsStatsParametersParameter
+    description = ReportsStatsParametersParameter
+    implements = openapi_server.resourceTypes.ReportsStatsParametersParameter
+
+  }
+}

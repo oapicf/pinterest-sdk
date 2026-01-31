@@ -9,15 +9,13 @@ import org.openapitools.models.UserListType
 
 /**
  * 
+ * @param listUnderscoretype 
  * @param name Customer list name.
  * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
- * @param listUnderscoretype 
- * @param exceptions Customer list errors.
  */
-case class CustomerListRequest(name: String,
-                records: String,
-                listUnderscoretype: Option[UserListType],
-                exceptions: Option[Object]
+case class CustomerListRequest(listUnderscoretype: Option[UserListType],
+                name: String,
+                records: String
                 )
 
 object CustomerListRequest {

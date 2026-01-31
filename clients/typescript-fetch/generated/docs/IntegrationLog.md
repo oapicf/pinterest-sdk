@@ -7,19 +7,19 @@ Schema for log sent from an integration application.
 
 Name | Type
 ------------ | -------------
-`clientTimestamp` | number
-`eventType` | string
-`logLevel` | string
-`externalBusinessId` | string
 `advertiserId` | string
-`merchantId` | string
-`tagId` | string
-`feedProfileId` | string
-`message` | string
 `appVersionNumber` | string
-`platformVersionNumber` | string
+`clientTimestamp` | number
 `error` | [IntegrationLogClientError](IntegrationLogClientError.md)
+`eventType` | string
+`externalBusinessId` | string
+`feedProfileId` | string
+`logLevel` | string
+`merchantId` | string
+`message` | string
+`platformVersionNumber` | string
 `request` | [IntegrationLogClientRequest](IntegrationLogClientRequest.md)
+`tagId` | string
 
 ## Example
 
@@ -28,19 +28,19 @@ import type { IntegrationLog } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "clientTimestamp": null,
-  "eventType": null,
-  "logLevel": null,
-  "externalBusinessId": null,
   "advertiserId": null,
-  "merchantId": null,
-  "tagId": null,
-  "feedProfileId": null,
-  "message": null,
   "appVersionNumber": null,
-  "platformVersionNumber": null,
+  "clientTimestamp": null,
   "error": null,
+  "eventType": null,
+  "externalBusinessId": null,
+  "feedProfileId": null,
+  "logLevel": null,
+  "merchantId": null,
+  "message": null,
+  "platformVersionNumber": null,
   "request": null,
+  "tagId": null,
 } satisfies IntegrationLog
 
 console.log(example)

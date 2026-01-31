@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,61 +19,71 @@ type CampaignCreateResponseData struct {
 	// Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
 	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	// Campaign name.
-	Name string `json:"name,omitempty"`
-
-	Status EntityStatus `json:"status,omitempty"`
-
-	// Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-	LifetimeSpendCap *int32 `json:"lifetime_spend_cap,omitempty"`
-
 	// Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
 	DailySpendCap *int32 `json:"daily_spend_cap,omitempty"`
 
-	// Order line ID that appears on the invoice.
-	OrderLineId *string `json:"order_line_id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
-
-	// Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-	StartTime *int32 `json:"start_time,omitempty"`
-
-	// Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+	// Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
 	EndTime *int32 `json:"end_time,omitempty"`
-
-	// Determine if a campaign has flexible daily budgets setup.
-	IsFlexibleDailyBudgets *bool `json:"is_flexible_daily_budgets,omitempty"`
-
-	// When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-	DefaultAdGroupBudgetInMicroCurrency *int32 `json:"default_ad_group_budget_in_micro_currency,omitempty"`
 
 	// Specifies whether the campaign was created in the automated campaign flow
 	IsAutomatedCampaign *bool `json:"is_automated_campaign,omitempty"`
 
-	// Campaign ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+	IsFlexibleDailyBudgets *bool `json:"is_flexible_daily_budgets,omitempty"`
 
-	ObjectiveType ObjectiveType `json:"objective_type,omitempty"`
+	// Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+	LifetimeSpendCap *int32 `json:"lifetime_spend_cap,omitempty"`
 
-	// Campaign creation time. Unix timestamp in seconds.
-	CreatedTime int32 `json:"created_time,omitempty"`
+	// Campaign name.
+	Name string `json:"name,omitempty"`
 
-	// UTC timestamp. Last update time.
-	UpdatedTime int32 `json:"updated_time,omitempty"`
+	// Order line ID that appears on the invoice.
+	OrderLineId *string `json:"order_line_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	// Always \"campaign\".
-	Type string `json:"type,omitempty"`
+	// Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+	StartTime *int32 `json:"start_time,omitempty"`
+
+	Status EntityStatus `json:"status,omitempty"`
+
+	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
+
+	// When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+	DefaultAdGroupBudgetInMicroCurrency *int32 `json:"default_ad_group_budget_in_micro_currency,omitempty"`
 
 	// Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 	IsCampaignBudgetOptimization *bool `json:"is_campaign_budget_optimization,omitempty"`
 
+	// Campaign ID.
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+
+	BidOptions *CampaignBidOptions `json:"bid_options,omitempty"`
+
+	// Campaign creation time. Unix timestamp in seconds.
+	CreatedTime int32 `json:"created_time,omitempty"`
+
+	// Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.
+	IsPerformancePlus bool `json:"is_performance_plus,omitempty"`
+
+	ObjectiveType ObjectiveType `json:"objective_type,omitempty"`
+
 	SummaryStatus CampaignSummaryStatus `json:"summary_status,omitempty"`
+
+	// Always \"campaign\".
+	Type string `json:"type,omitempty"`
+
+	// UTC timestamp. Last update time.
+	UpdatedTime int32 `json:"updated_time,omitempty"`
 }
 
 // AssertCampaignCreateResponseDataRequired checks if the required fields are not zero-ed
 func AssertCampaignCreateResponseDataRequired(obj CampaignCreateResponseData) error {
 	if obj.TrackingUrls != nil {
 		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
+			return err
+		}
+	}
+	if obj.BidOptions != nil {
+		if err := AssertCampaignBidOptionsRequired(*obj.BidOptions); err != nil {
 			return err
 		}
 	}
@@ -84,6 +94,11 @@ func AssertCampaignCreateResponseDataRequired(obj CampaignCreateResponseData) er
 func AssertCampaignCreateResponseDataConstraints(obj CampaignCreateResponseData) error {
     if obj.TrackingUrls != nil {
      	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {
+     		return err
+     	}
+    }
+    if obj.BidOptions != nil {
+     	if err := AssertCampaignBidOptionsConstraints(*obj.BidOptions); err != nil {
      		return err
      	}
     }

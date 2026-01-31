@@ -152,7 +152,7 @@ end
 
 ## integrations_commerce_patch
 
-> <IntegrationMetadata> integrations_commerce_patch(external_business_id, opts)
+> <IntegrationMetadata> integrations_commerce_patch(external_business_id, integration_request_patch)
 
 Update commerce integration
 
@@ -171,13 +171,11 @@ end
 
 api_instance = PinterestSdkClient::IntegrationsApi.new
 external_business_id = 'external_business_id_example' # String | External business ID for the integration.
-opts = {
-  integration_request_patch: PinterestSdkClient::IntegrationRequestPatch.new # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
-}
+integration_request_patch = PinterestSdkClient::IntegrationRequestPatch.new # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
 
 begin
   # Update commerce integration
-  result = api_instance.integrations_commerce_patch(external_business_id, opts)
+  result = api_instance.integrations_commerce_patch(external_business_id, integration_request_patch)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_commerce_patch: #{e}"
@@ -188,12 +186,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_patch_with_http_info(external_business_id, opts)
+> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_patch_with_http_info(external_business_id, integration_request_patch)
 
 ```ruby
 begin
   # Update commerce integration
-  data, status_code, headers = api_instance.integrations_commerce_patch_with_http_info(external_business_id, opts)
+  data, status_code, headers = api_instance.integrations_commerce_patch_with_http_info(external_business_id, integration_request_patch)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IntegrationMetadata>
@@ -207,7 +205,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **external_business_id** | **String** | External business ID for the integration. |  |
-| **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | [optional] |
+| **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata |  |
 
 ### Return type
 
@@ -225,7 +223,7 @@ end
 
 ## integrations_commerce_post
 
-> <IntegrationMetadata> integrations_commerce_post(opts)
+> <IntegrationMetadata> integrations_commerce_post(integration_request)
 
 Create commerce integration
 
@@ -243,13 +241,11 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::IntegrationsApi.new
-opts = {
-  integration_request: PinterestSdkClient::IntegrationRequest.new # IntegrationRequest | Parameters to get create/update the Integration Metadata
-}
+integration_request = PinterestSdkClient::IntegrationRequest.new # IntegrationRequest | Parameters to get create/update the Integration Metadata
 
 begin
   # Create commerce integration
-  result = api_instance.integrations_commerce_post(opts)
+  result = api_instance.integrations_commerce_post(integration_request)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_commerce_post: #{e}"
@@ -260,12 +256,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_post_with_http_info(opts)
+> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_post_with_http_info(integration_request)
 
 ```ruby
 begin
   # Create commerce integration
-  data, status_code, headers = api_instance.integrations_commerce_post_with_http_info(opts)
+  data, status_code, headers = api_instance.integrations_commerce_post_with_http_info(integration_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IntegrationMetadata>
@@ -278,7 +274,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **integration_request** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | [optional] |
+| **integration_request** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata |  |
 
 ### Return type
 

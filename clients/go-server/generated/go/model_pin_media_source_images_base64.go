@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,21 +18,23 @@ import (
 
 
 
-// PinMediaSourceImagesBase64 - Multiple Base64-encoded images media source
+// PinMediaSourceImagesBase64 - Multiple Base64-based images media source
 type PinMediaSourceImagesBase64 struct {
 
-	SourceType string `json:"source_type,omitempty"`
+	Index int32 `json:"index,omitempty"`
 
 	// Array with image objects.
-	Items []PinMediaSourceImagesBase64ItemsInner `json:"items"`
+	Items []PinMediaSourceImagesBase64Item `json:"items"`
 
-	Index int32 `json:"index,omitempty"`
+	// The source type of the media.
+	SourceType string `json:"source_type"`
 }
 
 // AssertPinMediaSourceImagesBase64Required checks if the required fields are not zero-ed
 func AssertPinMediaSourceImagesBase64Required(obj PinMediaSourceImagesBase64) error {
 	elements := map[string]interface{}{
 		"items": obj.Items,
+		"source_type": obj.SourceType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -41,7 +43,7 @@ func AssertPinMediaSourceImagesBase64Required(obj PinMediaSourceImagesBase64) er
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertPinMediaSourceImagesBase64ItemsInnerRequired(el); err != nil {
+		if err := AssertPinMediaSourceImagesBase64ItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -50,13 +52,13 @@ func AssertPinMediaSourceImagesBase64Required(obj PinMediaSourceImagesBase64) er
 
 // AssertPinMediaSourceImagesBase64Constraints checks if the values respects the defined constraints
 func AssertPinMediaSourceImagesBase64Constraints(obj PinMediaSourceImagesBase64) error {
-	for _, el := range obj.Items {
-		if err := AssertPinMediaSourceImagesBase64ItemsInnerConstraints(el); err != nil {
-			return err
-		}
-	}
 	if obj.Index < 0 {
 		return &ParsingError{Param: "Index", Err: errors.New(errMsgMinValueConstraint)}
+	}
+	for _, el := range obj.Items {
+		if err := AssertPinMediaSourceImagesBase64ItemConstraints(el); err != nil {
+			return err
+		}
 	}
 	return nil
 }

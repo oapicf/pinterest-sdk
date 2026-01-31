@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import UserWebsitesGet200Response._
 
 case class UserWebsitesGet200Response (
-  items: List[UserWebsiteSummary],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[UserWebsiteSummary])
 
 object UserWebsitesGet200Response {
   import DateTimeCodecs._

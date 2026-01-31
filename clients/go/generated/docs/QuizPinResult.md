@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrganicPinId** | Pointer to **string** |  | [optional] 
 **AndroidDeepLink** | Pointer to **string** |  | [optional] 
-**IosDeepLink** | Pointer to **string** |  | [optional] 
 **DestinationUrl** | Pointer to **string** |  | [optional] 
+**IosDeepLink** | Pointer to **string** |  | [optional] 
+**OrganicPinId** | Pointer to **string** |  | [optional] 
 **ResultId** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -28,31 +28,6 @@ will change when the set of required properties is changed
 NewQuizPinResultWithDefaults instantiates a new QuizPinResult object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetOrganicPinId
-
-`func (o *QuizPinResult) GetOrganicPinId() string`
-
-GetOrganicPinId returns the OrganicPinId field if non-nil, zero value otherwise.
-
-### GetOrganicPinIdOk
-
-`func (o *QuizPinResult) GetOrganicPinIdOk() (*string, bool)`
-
-GetOrganicPinIdOk returns a tuple with the OrganicPinId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrganicPinId
-
-`func (o *QuizPinResult) SetOrganicPinId(v string)`
-
-SetOrganicPinId sets OrganicPinId field to given value.
-
-### HasOrganicPinId
-
-`func (o *QuizPinResult) HasOrganicPinId() bool`
-
-HasOrganicPinId returns a boolean if a field has been set.
 
 ### GetAndroidDeepLink
 
@@ -79,6 +54,31 @@ SetAndroidDeepLink sets AndroidDeepLink field to given value.
 
 HasAndroidDeepLink returns a boolean if a field has been set.
 
+### GetDestinationUrl
+
+`func (o *QuizPinResult) GetDestinationUrl() string`
+
+GetDestinationUrl returns the DestinationUrl field if non-nil, zero value otherwise.
+
+### GetDestinationUrlOk
+
+`func (o *QuizPinResult) GetDestinationUrlOk() (*string, bool)`
+
+GetDestinationUrlOk returns a tuple with the DestinationUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationUrl
+
+`func (o *QuizPinResult) SetDestinationUrl(v string)`
+
+SetDestinationUrl sets DestinationUrl field to given value.
+
+### HasDestinationUrl
+
+`func (o *QuizPinResult) HasDestinationUrl() bool`
+
+HasDestinationUrl returns a boolean if a field has been set.
+
 ### GetIosDeepLink
 
 `func (o *QuizPinResult) GetIosDeepLink() string`
@@ -104,30 +104,30 @@ SetIosDeepLink sets IosDeepLink field to given value.
 
 HasIosDeepLink returns a boolean if a field has been set.
 
-### GetDestinationUrl
+### GetOrganicPinId
 
-`func (o *QuizPinResult) GetDestinationUrl() string`
+`func (o *QuizPinResult) GetOrganicPinId() string`
 
-GetDestinationUrl returns the DestinationUrl field if non-nil, zero value otherwise.
+GetOrganicPinId returns the OrganicPinId field if non-nil, zero value otherwise.
 
-### GetDestinationUrlOk
+### GetOrganicPinIdOk
 
-`func (o *QuizPinResult) GetDestinationUrlOk() (*string, bool)`
+`func (o *QuizPinResult) GetOrganicPinIdOk() (*string, bool)`
 
-GetDestinationUrlOk returns a tuple with the DestinationUrl field if it's non-nil, zero value otherwise
+GetOrganicPinIdOk returns a tuple with the OrganicPinId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDestinationUrl
+### SetOrganicPinId
 
-`func (o *QuizPinResult) SetDestinationUrl(v string)`
+`func (o *QuizPinResult) SetOrganicPinId(v string)`
 
-SetDestinationUrl sets DestinationUrl field to given value.
+SetOrganicPinId sets OrganicPinId field to given value.
 
-### HasDestinationUrl
+### HasOrganicPinId
 
-`func (o *QuizPinResult) HasDestinationUrl() bool`
+`func (o *QuizPinResult) HasOrganicPinId() bool`
 
-HasDestinationUrl returns a boolean if a field has been set.
+HasOrganicPinId returns a boolean if a field has been set.
 
 ### GetResultId
 

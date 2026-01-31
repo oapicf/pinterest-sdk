@@ -230,10 +230,10 @@ class BoardsApiSimulation extends Simulation {
         .feed(boards/listQUERYFeeder)
         .exec(http("boardsList")
         .httpRequest("GET","/boards")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
-        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("privacy","${privacy}")
+        .queryParam("ad_account_id","${ad_account_id}")
 )
 
     // Run scnboardsList with warm up and reach a constant rate for entire duration
@@ -252,8 +252,8 @@ class BoardsApiSimulation extends Simulation {
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("creative_types","${creative_types}")
+        .queryParam("pin_metrics","${pin_metrics}")
 )
 
     // Run scnboardsListPins with warm up and reach a constant rate for entire duration

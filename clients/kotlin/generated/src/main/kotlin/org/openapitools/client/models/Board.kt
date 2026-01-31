@@ -17,81 +17,78 @@ package org.openapitools.client.models
 
 import org.openapitools.client.models.BoardMedia
 import org.openapitools.client.models.BoardOwner
+import org.openapitools.client.models.BoardPrivacy
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Board
+ * 
  *
- * @param name 
  * @param id 
- * @param createdAt Date and time of board creation.
+ * @param name      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
  * @param boardPinsModifiedAt Date and time of last board pins modified.
- * @param description 
  * @param collaboratorCount Count of collaborators on the board.
- * @param pinCount Count of pins on the board.
+ * @param createdAt Date and time of board creation.
+ * @param description 
  * @param followerCount Board follower count.
- * @param media 
+ * @param isAdsOnly If set to `true`, the board will be ad-only and can store ad-only Pins.
+ * @param media Board media.
  * @param owner 
- * @param privacy Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+ * @param pinCount Count of Pins on the board.
+ * @param privacy     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
  */
 
 
 data class Board (
 
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
     @Json(name = "name")
     val name: kotlin.String,
-
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    /* Date and time of board creation. */
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
 
     /* Date and time of last board pins modified. */
     @Json(name = "board_pins_modified_at")
     val boardPinsModifiedAt: java.time.OffsetDateTime? = null,
 
-    @Json(name = "description")
-    val description: kotlin.String? = null,
-
     /* Count of collaborators on the board. */
     @Json(name = "collaborator_count")
     val collaboratorCount: kotlin.Int? = null,
 
-    /* Count of pins on the board. */
-    @Json(name = "pin_count")
-    val pinCount: kotlin.Int? = null,
+    /* Date and time of board creation. */
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime? = null,
+
+    @Json(name = "description")
+    val description: kotlin.String? = null,
 
     /* Board follower count. */
     @Json(name = "follower_count")
     val followerCount: kotlin.Int? = null,
 
+    /* If set to `true`, the board will be ad-only and can store ad-only Pins. */
+    @Json(name = "is_ads_only")
+    val isAdsOnly: kotlin.Boolean? = false,
+
+    /* Board media. */
     @Json(name = "media")
     val media: BoardMedia? = null,
 
     @Json(name = "owner")
     val owner: BoardOwner? = null,
 
-    /* Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a> */
+    /* Count of Pins on the board. */
+    @Json(name = "pin_count")
+    val pinCount: kotlin.Int? = null,
+
+    /*     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`.  */
     @Json(name = "privacy")
-    val privacy: Board.Privacy? = Privacy.PUBLIC
+    val privacy: BoardPrivacy? = null
 
 ) {
 
-    /**
-     * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
-     *
-     * Values: PUBLIC,PROTECTED,SECRET
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Privacy(val value: kotlin.String) {
-        @Json(name = "PUBLIC") PUBLIC("PUBLIC"),
-        @Json(name = "PROTECTED") PROTECTED("PROTECTED"),
-        @Json(name = "SECRET") SECRET("SECRET");
-    }
 
 }
 

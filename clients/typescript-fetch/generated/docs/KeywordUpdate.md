@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
 `archived` | boolean
 `bid` | number
+`id` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { KeywordUpdate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 2886364308355,
   "archived": false,
   "bid": null,
+  "id": 2886364308355,
 } satisfies KeywordUpdate
 
 console.log(example)

@@ -4,11 +4,12 @@ import java.io._
 import org.openapitools._
 import org.openapitools.models._
 import org.openapitools.models.ConversionEventResponse
+import org.openapitools.models.ConversionTag
 import org.openapitools.models.ConversionTagCreate
-import org.openapitools.models.ConversionTagListResponse
-import org.openapitools.models.ConversionTagResponse
+import org.openapitools.models.ConversionTagsList200Response
 import org.openapitools.models.Error
 import org.openapitools.models.PageVisitConversionTagsGet200Response
+import org.openapitools.models.PinterestLibError
 import scala.collection.immutable.Seq
 import io.finch.circe._
 import io.circe.generic.semiauto._
@@ -59,9 +60,9 @@ object ConversionTagsApi {
 
         /**
         * 
-        * @return An endpoint representing a ConversionTagResponse
+        * @return An endpoint representing a ConversionTag
         */
-        private def conversionTags/create(da: DataAccessor): Endpoint[ConversionTagResponse] =
+        private def conversionTags/create(da: DataAccessor): Endpoint[ConversionTag] =
         post("ad_accounts" :: string :: "conversion_tags" :: jsonBody[ConversionTagCreate]) { (adAccountId: String, conversionTagCreate: ConversionTagCreate) =>
           da.ConversionTags_conversionTags/create(adAccountId, conversionTagCreate) match {
             case Left(error) => checkError(error)
@@ -73,9 +74,9 @@ object ConversionTagsApi {
 
         /**
         * 
-        * @return An endpoint representing a ConversionTagResponse
+        * @return An endpoint representing a ConversionTag
         */
-        private def conversionTags/get(da: DataAccessor): Endpoint[ConversionTagResponse] =
+        private def conversionTags/get(da: DataAccessor): Endpoint[ConversionTag] =
         get("ad_accounts" :: string :: "conversion_tags" :: string) { (adAccountId: String, conversionTagId: String) =>
           da.ConversionTags_conversionTags/get(adAccountId, conversionTagId) match {
             case Left(error) => checkError(error)
@@ -87,9 +88,9 @@ object ConversionTagsApi {
 
         /**
         * 
-        * @return An endpoint representing a ConversionTagListResponse
+        * @return An endpoint representing a ConversionTagsList200Response
         */
-        private def conversionTags/list(da: DataAccessor): Endpoint[ConversionTagListResponse] =
+        private def conversionTags/list(da: DataAccessor): Endpoint[ConversionTagsList200Response] =
         get("ad_accounts" :: string :: "conversion_tags" :: paramOption("filter_deleted").map(_.map(_.toBoolean))) { (adAccountId: String, filterDeleted: Option[Boolean]) =>
           da.ConversionTags_conversionTags/list(adAccountId, filterDeleted) match {
             case Left(error) => checkError(error)

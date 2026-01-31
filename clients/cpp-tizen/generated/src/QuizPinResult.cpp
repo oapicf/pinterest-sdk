@@ -23,35 +23,35 @@ QuizPinResult::~QuizPinResult()
 void
 QuizPinResult::__init()
 {
-	//organic_pin_id = std::string();
 	//android_deep_link = std::string();
-	//ios_deep_link = std::string();
 	//destination_url = std::string();
+	//ios_deep_link = std::string();
+	//organic_pin_id = std::string();
 	//result_id = double(0);
 }
 
 void
 QuizPinResult::__cleanup()
 {
-	//if(organic_pin_id != NULL) {
-	//
-	//delete organic_pin_id;
-	//organic_pin_id = NULL;
-	//}
 	//if(android_deep_link != NULL) {
 	//
 	//delete android_deep_link;
 	//android_deep_link = NULL;
+	//}
+	//if(destination_url != NULL) {
+	//
+	//delete destination_url;
+	//destination_url = NULL;
 	//}
 	//if(ios_deep_link != NULL) {
 	//
 	//delete ios_deep_link;
 	//ios_deep_link = NULL;
 	//}
-	//if(destination_url != NULL) {
+	//if(organic_pin_id != NULL) {
 	//
-	//delete destination_url;
-	//destination_url = NULL;
+	//delete organic_pin_id;
+	//organic_pin_id = NULL;
 	//}
 	//if(result_id != NULL) {
 	//
@@ -66,17 +66,6 @@ QuizPinResult::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *organic_pin_idKey = "organic_pin_id";
-	node = json_object_get_member(pJsonObject, organic_pin_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&organic_pin_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *android_deep_linkKey = "android_deep_link";
 	node = json_object_get_member(pJsonObject, android_deep_linkKey);
 	if (node !=NULL) {
@@ -84,6 +73,17 @@ QuizPinResult::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&android_deep_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *destination_urlKey = "destination_url";
+	node = json_object_get_member(pJsonObject, destination_urlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&destination_url, node, "std::string", "");
 		} else {
 			
 		}
@@ -99,13 +99,13 @@ QuizPinResult::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *destination_urlKey = "destination_url";
-	node = json_object_get_member(pJsonObject, destination_urlKey);
+	const gchar *organic_pin_idKey = "organic_pin_id";
+	node = json_object_get_member(pJsonObject, organic_pin_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&destination_url, node, "std::string", "");
+			jsonToValue(&organic_pin_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -137,15 +137,6 @@ QuizPinResult::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getOrganicPinId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *organic_pin_idKey = "organic_pin_id";
-	json_object_set_member(pJsonObject, organic_pin_idKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getAndroidDeepLink();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -154,6 +145,15 @@ QuizPinResult::toJson()
 	}
 	const gchar *android_deep_linkKey = "android_deep_link";
 	json_object_set_member(pJsonObject, android_deep_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDestinationUrl();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *destination_urlKey = "destination_url";
+	json_object_set_member(pJsonObject, destination_urlKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getIosDeepLink();
 		node = converttoJson(&obj, "std::string", "");
@@ -164,14 +164,14 @@ QuizPinResult::toJson()
 	const gchar *ios_deep_linkKey = "ios_deep_link";
 	json_object_set_member(pJsonObject, ios_deep_linkKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getDestinationUrl();
+		std::string obj = getOrganicPinId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *destination_urlKey = "destination_url";
-	json_object_set_member(pJsonObject, destination_urlKey, node);
+	const gchar *organic_pin_idKey = "organic_pin_id";
+	json_object_set_member(pJsonObject, organic_pin_idKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getResultId();
 		node = converttoJson(&obj, "long long", "");
@@ -195,18 +195,6 @@ QuizPinResult::toJson()
 }
 
 std::string
-QuizPinResult::getOrganicPinId()
-{
-	return organic_pin_id;
-}
-
-void
-QuizPinResult::setOrganicPinId(std::string  organic_pin_id)
-{
-	this->organic_pin_id = organic_pin_id;
-}
-
-std::string
 QuizPinResult::getAndroidDeepLink()
 {
 	return android_deep_link;
@@ -216,6 +204,18 @@ void
 QuizPinResult::setAndroidDeepLink(std::string  android_deep_link)
 {
 	this->android_deep_link = android_deep_link;
+}
+
+std::string
+QuizPinResult::getDestinationUrl()
+{
+	return destination_url;
+}
+
+void
+QuizPinResult::setDestinationUrl(std::string  destination_url)
+{
+	this->destination_url = destination_url;
 }
 
 std::string
@@ -231,15 +231,15 @@ QuizPinResult::setIosDeepLink(std::string  ios_deep_link)
 }
 
 std::string
-QuizPinResult::getDestinationUrl()
+QuizPinResult::getOrganicPinId()
 {
-	return destination_url;
+	return organic_pin_id;
 }
 
 void
-QuizPinResult::setDestinationUrl(std::string  destination_url)
+QuizPinResult::setOrganicPinId(std::string  organic_pin_id)
 {
-	this->destination_url = destination_url;
+	this->organic_pin_id = organic_pin_id;
 }
 
 long long

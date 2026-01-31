@@ -27,34 +27,34 @@ catalogs_hotel_feed_t* instantiate_catalogs_hotel_feed(int include_optional) {
       "2022-03-14T15:15:22Z",
       "0",
       "2022-03-14T15:16:34Z",
-      "0",
-      pinterest_rest_api_catalogs_hotel_feed__TSV,
+      "a",
       pinterest_rest_api_catalogs_hotel_feed__RETAIL,
        // false, not to have infinite recursion
       instantiate_catalogs_feed_credentials(0),
+      pinterest_rest_api_catalogs_hotel_feed__"USD",
+      "en-US",
+      pinterest_rest_api_catalogs_hotel_feed__TSV,
+      "0",
       "0",
        // false, not to have infinite recursion
       instantiate_catalogs_feed_processing_schedule(0),
-      pinterest_rest_api_catalogs_hotel_feed__ACTIVE,
-      pinterest_rest_api_catalogs_hotel_feed__"USD",
-      "en-US",
-      "a"
+      pinterest_rest_api_catalogs_hotel_feed__ACTIVE
     );
   } else {
     catalogs_hotel_feed = catalogs_hotel_feed_create(
       "2022-03-14T15:15:22Z",
       "0",
       "2022-03-14T15:16:34Z",
-      "0",
-      pinterest_rest_api_catalogs_hotel_feed__TSV,
+      "a",
       pinterest_rest_api_catalogs_hotel_feed__RETAIL,
       NULL,
-      "0",
-      NULL,
-      pinterest_rest_api_catalogs_hotel_feed__ACTIVE,
       pinterest_rest_api_catalogs_hotel_feed__"USD",
       "en-US",
-      "a"
+      pinterest_rest_api_catalogs_hotel_feed__TSV,
+      "0",
+      "0",
+      NULL,
+      pinterest_rest_api_catalogs_hotel_feed__ACTIVE
     );
   }
 

@@ -5,13 +5,13 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.ConversionEventResponse
+import model.ConversionTag
 import model.ConversionTagCreate
-import model.ConversionTagListResponse
-import model.ConversionTagResponse
+import model.ConversionTagsList200Response
 import model.Error
 import model.PageVisitConversionTagsGet200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class ConversionTagsApiController @Inject()(cc: ControllerComponents, api: ConversionTagsApi) extends AbstractController(cc) {
   /**
@@ -19,7 +19,7 @@ class ConversionTagsApiController @Inject()(cc: ControllerComponents, api: Conve
     * @param adAccountId Unique identifier of an ad account.
     */
   def conversionTagsCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): ConversionTagResponse = {
+    def executeApi(): ConversionTag = {
       val conversionTagCreate = request.body.asJson.map(_.as[ConversionTagCreate]).getOrElse {
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "conversionTagCreate")
       }
@@ -37,7 +37,7 @@ class ConversionTagsApiController @Inject()(cc: ControllerComponents, api: Conve
     * @param conversionTagId Id of the conversion tag.
     */
   def conversionTagsGet(adAccountId: String, conversionTagId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): ConversionTagResponse = {
+    def executeApi(): ConversionTag = {
       api.conversionTagsGet(adAccountId, conversionTagId)
     }
 
@@ -51,7 +51,7 @@ class ConversionTagsApiController @Inject()(cc: ControllerComponents, api: Conve
     * @param adAccountId Unique identifier of an ad account.
     */
   def conversionTagsList(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): ConversionTagListResponse = {
+    def executeApi(): ConversionTagsList200Response = {
       val filterDeleted = request.getQueryString("filter_deleted")
         .map(value => value.toBoolean)
         

@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FeedId** | **String** | Catalog Feed id pertaining to the catalog product group filter. | 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**CatalogType** | **String** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 ```powershell
 $CatalogsListProductsByFilterRequest = Initialize-PSOpenAPIToolsCatalogsListProductsByFilterRequest  -FeedId 2680059592705 `
  -Filters null `
- -CatalogType null `
  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Country null `
  -Locale null
 ```

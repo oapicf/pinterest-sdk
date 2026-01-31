@@ -5,13 +5,15 @@ import play.api.libs.json._
 /**
   * Request for creation of entities in bulk.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class BulkUpsertRequestUpdate(
-  campaigns: Option[List[CampaignUpdateRequest]],
   adGroups: Option[List[AdGroupUpdateRequest]],
   ads: Option[List[AdUpdateRequest]],
-  productGroups: Option[List[ProductGroupPromotionUpdateRequest]],
-  keywords: Option[List[KeywordUpdate]]
+  campaigns: Option[List[CampaignUpdateRequest]],
+  catalogProductGroups: Option[List[CatalogsProductGroupsUpdateRequest]],
+  keywords: Option[List[KeywordUpdate]],
+  labels: Option[List[LabelBulkUpdateRequest]],
+  productGroups: Option[List[ProductGroupPromotionUpdateRequest]]
 )
 
 object BulkUpsertRequestUpdate {

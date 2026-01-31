@@ -1,11 +1,34 @@
 -module(openapi_oauth_api).
 
--export([oauth/token/2, oauth/token/3]).
+-export([oauth/conversion_token/1, oauth/conversion_token/2,
+         oauth/token/2, oauth/token/3,
+         token/revoke/2, token/revoke/3]).
 
 -define(BASE_URL, <<"/v5">>).
 
+%% @doc Generate OAuth access token for conversion API
+%% Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+-spec oauth/conversion_token(ctx:ctx()) -> {ok, openapi_conversion_access_token_response:openapi_conversion_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+oauth/conversion_token(Ctx) ->
+    oauth/conversion_token(Ctx, #{}).
+
+-spec oauth/conversion_token(ctx:ctx(), maps:map()) -> {ok, openapi_conversion_access_token_response:openapi_conversion_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+oauth/conversion_token(Ctx, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = post,
+    Path = [?BASE_URL, "/oauth/conversion_token"],
+    QS = [],
+    Headers = [],
+    Body1 = [],
+    ContentTypeHeader = openapi_utils:select_header_content_type([]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
+
 %% @doc Generate OAuth access token
-%% Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
+%% Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
 -spec oauth/token(ctx:ctx(), binary()) -> {ok, openapi_oauth_access_token_response:openapi_oauth_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 oauth/token(Ctx, GrantType) ->
     oauth/token(Ctx, GrantType, #{}).
@@ -20,6 +43,27 @@ oauth/token(Ctx, GrantType, Optional) ->
     QS = [],
     Headers = [],
     Body1 = {form, [{<<"grant_type">>, GrantType}]++openapi_utils:optional_params([], _OptionalParams)},
+    ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/x-www-form-urlencoded">>]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
+
+%% @doc Revoke a token
+%% Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+-spec token/revoke(ctx:ctx(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+token/revoke(Ctx, Token) ->
+    token/revoke(Ctx, Token, #{}).
+
+-spec token/revoke(ctx:ctx(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+token/revoke(Ctx, Token, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = post,
+    Path = [?BASE_URL, "/oauth/token/revoke"],
+    QS = [],
+    Headers = [],
+    Body1 = {form, [{<<"token">>, Token}]++openapi_utils:optional_params(['token_type_hint'], _OptionalParams)},
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/x-www-form-urlencoded">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

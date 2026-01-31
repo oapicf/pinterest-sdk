@@ -16,7 +16,7 @@ void main() {
   // final instance = CampaignsAnalyticsResponseInner();
 
   group('test CampaignsAnalyticsResponseInner', () {
-    // The ID of the campaing that this metrics belongs to.
+    // The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
     // String CAMPAIGN_ID
     test('to test the property `CAMPAIGN_ID`', () async {
       // TODO

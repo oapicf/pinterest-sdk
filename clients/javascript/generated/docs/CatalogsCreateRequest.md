@@ -4,16 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | **String** | Type of the catalog entity. | 
+**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **name** | **String** | A human-friendly name associated to a given catalog. | 
-
-
-
-## Enum: CatalogTypeEnum
-
-
-* `HOTEL` (value: `"HOTEL"`)
-
-
 
 

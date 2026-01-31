@@ -1,10 +1,9 @@
 namespace OpenAPI
 
-open OpenAPI.Model.AdAccountCreateSubscriptionRequest
-open OpenAPI.Model.AdAccountCreateSubscriptionResponse
-open OpenAPI.Model.AdAccountGetSubscriptionResponse
 open OpenAPI.Model.AdAccountsSubscriptionsGetList200Response
-open OpenAPI.Model.Error
+open OpenAPI.Model.LeadSubscription
+open OpenAPI.Model.LeadSubscriptionPostParamsCreate
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -26,25 +25,35 @@ module LeadAdsApiHandlerParams =
     }
 
     type AdAccountsSubscriptionsDelByIdStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsDelByIdStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsDelByIdStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsDelByIdStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsDelByIdStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsDelByIdDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AdAccountsSubscriptionsDelByIdResult = AdAccountsSubscriptionsDelByIdStatusCode204 of AdAccountsSubscriptionsDelByIdStatusCode204Response|AdAccountsSubscriptionsDelByIdStatusCode400 of AdAccountsSubscriptionsDelByIdStatusCode400Response|AdAccountsSubscriptionsDelByIdStatusCode403 of AdAccountsSubscriptionsDelByIdStatusCode403Response|AdAccountsSubscriptionsDelByIdStatusCode404 of AdAccountsSubscriptionsDelByIdStatusCode404Response|AdAccountsSubscriptionsDelByIdDefaultStatusCode of AdAccountsSubscriptionsDelByIdDefaultStatusCodeResponse
+    type AdAccountsSubscriptionsDelByIdResult = AdAccountsSubscriptionsDelByIdStatusCode204 of AdAccountsSubscriptionsDelByIdStatusCode204Response|AdAccountsSubscriptionsDelByIdStatusCode400 of AdAccountsSubscriptionsDelByIdStatusCode400Response|AdAccountsSubscriptionsDelByIdStatusCode401 of AdAccountsSubscriptionsDelByIdStatusCode401Response|AdAccountsSubscriptionsDelByIdStatusCode403 of AdAccountsSubscriptionsDelByIdStatusCode403Response|AdAccountsSubscriptionsDelByIdStatusCode404 of AdAccountsSubscriptionsDelByIdStatusCode404Response|AdAccountsSubscriptionsDelByIdStatusCode429 of AdAccountsSubscriptionsDelByIdStatusCode429Response|AdAccountsSubscriptionsDelByIdDefaultStatusCode of AdAccountsSubscriptionsDelByIdDefaultStatusCodeResponse
 
     type AdAccountsSubscriptionsDelByIdArgs = {
       pathParams:AdAccountsSubscriptionsDelByIdPathParams;
@@ -60,30 +69,40 @@ module LeadAdsApiHandlerParams =
 
 
     type AdAccountsSubscriptionsGetByIdStatusCode200Response = {
-      content:AdAccountGetSubscriptionResponse;
+      content:LeadSubscription;
       
     }
 
     type AdAccountsSubscriptionsGetByIdStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsGetByIdStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsGetByIdStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsGetByIdStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsGetByIdStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsGetByIdDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AdAccountsSubscriptionsGetByIdResult = AdAccountsSubscriptionsGetByIdStatusCode200 of AdAccountsSubscriptionsGetByIdStatusCode200Response|AdAccountsSubscriptionsGetByIdStatusCode400 of AdAccountsSubscriptionsGetByIdStatusCode400Response|AdAccountsSubscriptionsGetByIdStatusCode403 of AdAccountsSubscriptionsGetByIdStatusCode403Response|AdAccountsSubscriptionsGetByIdStatusCode404 of AdAccountsSubscriptionsGetByIdStatusCode404Response|AdAccountsSubscriptionsGetByIdDefaultStatusCode of AdAccountsSubscriptionsGetByIdDefaultStatusCodeResponse
+    type AdAccountsSubscriptionsGetByIdResult = AdAccountsSubscriptionsGetByIdStatusCode200 of AdAccountsSubscriptionsGetByIdStatusCode200Response|AdAccountsSubscriptionsGetByIdStatusCode400 of AdAccountsSubscriptionsGetByIdStatusCode400Response|AdAccountsSubscriptionsGetByIdStatusCode401 of AdAccountsSubscriptionsGetByIdStatusCode401Response|AdAccountsSubscriptionsGetByIdStatusCode403 of AdAccountsSubscriptionsGetByIdStatusCode403Response|AdAccountsSubscriptionsGetByIdStatusCode404 of AdAccountsSubscriptionsGetByIdStatusCode404Response|AdAccountsSubscriptionsGetByIdStatusCode429 of AdAccountsSubscriptionsGetByIdStatusCode429Response|AdAccountsSubscriptionsGetByIdDefaultStatusCode of AdAccountsSubscriptionsGetByIdDefaultStatusCodeResponse
 
     type AdAccountsSubscriptionsGetByIdArgs = {
       pathParams:AdAccountsSubscriptionsGetByIdPathParams;
@@ -98,10 +117,10 @@ module LeadAdsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type AdAccountsSubscriptionsGetListQueryParams = {
-      pageSize : int option;
-
-
       bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -112,16 +131,36 @@ module LeadAdsApiHandlerParams =
       
     }
 
+    type AdAccountsSubscriptionsGetListStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsGetListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
     type AdAccountsSubscriptionsGetListStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsGetListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsSubscriptionsGetListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsGetListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AdAccountsSubscriptionsGetListResult = AdAccountsSubscriptionsGetListStatusCode200 of AdAccountsSubscriptionsGetListStatusCode200Response|AdAccountsSubscriptionsGetListStatusCode403 of AdAccountsSubscriptionsGetListStatusCode403Response|AdAccountsSubscriptionsGetListDefaultStatusCode of AdAccountsSubscriptionsGetListDefaultStatusCodeResponse
+    type AdAccountsSubscriptionsGetListResult = AdAccountsSubscriptionsGetListStatusCode200 of AdAccountsSubscriptionsGetListStatusCode200Response|AdAccountsSubscriptionsGetListStatusCode400 of AdAccountsSubscriptionsGetListStatusCode400Response|AdAccountsSubscriptionsGetListStatusCode401 of AdAccountsSubscriptionsGetListStatusCode401Response|AdAccountsSubscriptionsGetListStatusCode403 of AdAccountsSubscriptionsGetListStatusCode403Response|AdAccountsSubscriptionsGetListStatusCode404 of AdAccountsSubscriptionsGetListStatusCode404Response|AdAccountsSubscriptionsGetListStatusCode429 of AdAccountsSubscriptionsGetListStatusCode429Response|AdAccountsSubscriptionsGetListDefaultStatusCode of AdAccountsSubscriptionsGetListDefaultStatusCodeResponse
 
     type AdAccountsSubscriptionsGetListArgs = {
       pathParams:AdAccountsSubscriptionsGetListPathParams;
@@ -136,27 +175,27 @@ module LeadAdsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AdAccountsSubscriptionsPostBodyParams = AdAccountCreateSubscriptionRequest
+    type AdAccountsSubscriptionsPostBodyParams = LeadSubscriptionPostParamsCreate
     //#endregion
 
 
     type AdAccountsSubscriptionsPostStatusCode200Response = {
-      content:AdAccountCreateSubscriptionResponse;
+      content:LeadSubscription;
       
     }
 
     type AdAccountsSubscriptionsPostStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsPostStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type AdAccountsSubscriptionsPostDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type AdAccountsSubscriptionsPostResult = AdAccountsSubscriptionsPostStatusCode200 of AdAccountsSubscriptionsPostStatusCode200Response|AdAccountsSubscriptionsPostStatusCode400 of AdAccountsSubscriptionsPostStatusCode400Response|AdAccountsSubscriptionsPostStatusCode403 of AdAccountsSubscriptionsPostStatusCode403Response|AdAccountsSubscriptionsPostDefaultStatusCode of AdAccountsSubscriptionsPostDefaultStatusCodeResponse

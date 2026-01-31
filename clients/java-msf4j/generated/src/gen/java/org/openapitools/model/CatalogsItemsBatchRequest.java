@@ -25,10 +25,13 @@ import org.openapitools.model.ItemDeleteBatchRecord;
  * Request object of catalogs items batch
  */
 @ApiModel(description = "Request object of catalogs items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsBatchRequest   {
   @JsonProperty("country")
   private Country country;
+
+  @JsonProperty("items")
+  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -277,9 +280,6 @@ public class CatalogsItemsBatchRequest   {
   @JsonProperty("operation")
   private BatchOperation operation;
 
-  @JsonProperty("items")
-  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsBatchRequest country(Country country) {
     this.country = country;
     return this;
@@ -296,6 +296,29 @@ public class CatalogsItemsBatchRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsBatchRequest items(List<@Valid ItemDeleteBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsBatchRequest addItemsItem(ItemDeleteBatchRecord itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Array with catalogs items
+   * @return items
+  **/
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  public List<@Valid ItemDeleteBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemDeleteBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsBatchRequest language(LanguageEnum language) {
@@ -334,29 +357,6 @@ public class CatalogsItemsBatchRequest   {
     this.operation = operation;
   }
 
-  public CatalogsItemsBatchRequest items(List<@Valid ItemDeleteBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsBatchRequest addItemsItem(ItemDeleteBatchRecord itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Array with catalogs items
-   * @return items
-  **/
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  public List<@Valid ItemDeleteBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemDeleteBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -368,14 +368,14 @@ public class CatalogsItemsBatchRequest   {
     }
     CatalogsItemsBatchRequest catalogsItemsBatchRequest = (CatalogsItemsBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -384,9 +384,9 @@ public class CatalogsItemsBatchRequest   {
     sb.append("class CatalogsItemsBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

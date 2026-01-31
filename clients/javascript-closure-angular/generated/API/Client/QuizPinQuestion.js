@@ -7,6 +7,12 @@ goog.provide('API.Client.QuizPinQuestion');
 API.Client.QuizPinQuestion = function() {}
 
 /**
+ * @type {!Array<!API.Client.QuizPinOption>}
+ * @export
+ */
+API.Client.QuizPinQuestion.prototype.options;
+
+/**
  * @type {!number}
  * @export
  */
@@ -17,10 +23,4 @@ API.Client.QuizPinQuestion.prototype.questionId;
  * @export
  */
 API.Client.QuizPinQuestion.prototype.questionText;
-
-/**
- * @type {!Array<!API.Client.QuizPinOption>}
- * @export
- */
-API.Client.QuizPinQuestion.prototype.options;
 

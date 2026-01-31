@@ -77,6 +77,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.TargetingTemplateApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
@@ -114,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

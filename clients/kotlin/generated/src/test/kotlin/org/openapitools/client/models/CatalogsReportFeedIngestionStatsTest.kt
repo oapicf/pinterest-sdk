@@ -25,12 +25,6 @@ class CatalogsReportFeedIngestionStatsTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsReportFeedIngestionStats
         //val modelInstance = CatalogsReportFeedIngestionStats()
 
-        // to test the property `reportType`
-        should("test reportType") {
-            // uncomment below to test the property
-            //modelInstance.reportType shouldBe ("TODO")
-        }
-
         // to test the property `catalogId` - ID of the catalog entity.
         should("test catalogId") {
             // uncomment below to test the property
@@ -59,6 +53,12 @@ class CatalogsReportFeedIngestionStatsTest : ShouldSpec() {
         should("test occurrences") {
             // uncomment below to test the property
             //modelInstance.occurrences shouldBe ("TODO")
+        }
+
+        // to test the property `reportType`
+        should("test reportType") {
+            // uncomment below to test the property
+            //modelInstance.reportType shouldBe ("TODO")
         }
 
         // to test the property `severity` - An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue

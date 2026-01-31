@@ -11,7 +11,7 @@ module BusinessMemberAssetsGet200Response =
 
 
   type business_member_assets_get_200_response = {
-    Items : AssetIdPermissions[];
     Bookmark : string option;
+    Items : AssetIdPermissions[];
   }
   //#endregion

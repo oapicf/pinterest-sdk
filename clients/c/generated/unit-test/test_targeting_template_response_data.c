@@ -25,34 +25,34 @@ targeting_template_response_data_t* instantiate_targeting_template_response_data
   targeting_template_response_data_t* targeting_template_response_data = NULL;
   if (include_optional) {
     targeting_template_response_data = targeting_template_response_data_create(
-      "Gaming",
       1,
+      [{value=cats, match_type=EXACT_NEGATIVE}],
+      "Gaming",
+      pinterest_rest_api_targeting_template_response_data__"ALL",
        // false, not to have infinite recursion
       instantiate_targeting_spec(0),
-      pinterest_rest_api_targeting_template_response_data__"ALL",
-      [{value=cats, match_type=EXACT_NEGATIVE}],
       {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      "643",
-      1432744744,
-      1432744744,
       "549755885175",
+      1432744744,
+      "643",
+      {"reach_estimate":{"estimate":63492000,"lower_bound":47619000,"upper_bound":79365000}},
       pinterest_rest_api_targeting_template_response_data_STATUS_"ACTIVE",
-      {"reach_estimate":{"estimate":63492000,"lower_bound":47619000,"upper_bound":79365000}}
+      1432744744
     );
   } else {
     targeting_template_response_data = targeting_template_response_data_create(
-      "Gaming",
       1,
-      NULL,
-      pinterest_rest_api_targeting_template_response_data__"ALL",
       [{value=cats, match_type=EXACT_NEGATIVE}],
+      "Gaming",
+      pinterest_rest_api_targeting_template_response_data__"ALL",
+      NULL,
       {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      "643",
-      1432744744,
-      1432744744,
       "549755885175",
+      1432744744,
+      "643",
+      {"reach_estimate":{"estimate":63492000,"lower_bound":47619000,"upper_bound":79365000}},
       pinterest_rest_api_targeting_template_response_data_STATUS_"ACTIVE",
-      {"reach_estimate":{"estimate":63492000,"lower_bound":47619000,"upper_bound":79365000}}
+      1432744744
     );
   }
 

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;AdAccount&gt;**](AdAccount.md) | Ad accounts |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;AdAccount&gt;**](AdAccount.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::AdAccountsList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductGroupUpdateRequest", description = "Request object for updating a retail product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -67,15 +67,15 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
+  private Country country;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsProductGroupFiltersRequest filters;
 
-  private Country country;
-
   private CatalogsLocale locale;
+
+  private String name;
 
   public CatalogsRetailProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -97,24 +97,24 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
    */
-  
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @Valid 
+  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   public CatalogsRetailProductGroupUpdateRequest description(String description) {
@@ -157,26 +157,6 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.filters = filters;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  /**
-   * Get country
-   * @return country
-   */
-  @Valid 
-  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
   public CatalogsRetailProductGroupUpdateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
     return this;
@@ -197,6 +177,26 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.locale = locale;
   }
 
+  public CatalogsRetailProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -207,11 +207,11 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     }
     CatalogsRetailProductGroupUpdateRequest catalogsRetailProductGroupUpdateRequest = (CatalogsRetailProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsRetailProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name) &&
+        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
         equalsNullable(this.description, catalogsRetailProductGroupUpdateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupUpdateRequest.filters) &&
-        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -220,7 +220,7 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, hashCodeNullable(description), filters, country, locale);
+    return Objects.hash(catalogType, country, hashCodeNullable(description), filters, locale, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,11 +235,11 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupUpdateRequest {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

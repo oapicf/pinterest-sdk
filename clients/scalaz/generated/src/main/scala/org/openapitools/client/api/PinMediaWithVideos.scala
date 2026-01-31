@@ -12,11 +12,30 @@ import org.joda.time.DateTime
 import PinMediaWithVideos._
 
 case class PinMediaWithVideos (
-  mediaType: Option[String],
-items: Option[List[VideoMetadata]])
+  items: Option[List[VideoMetadataWithItemType]],
+mediaType: MediaType)
 
 object PinMediaWithVideos {
   import DateTimeCodecs._
+  sealed trait MediaType
+  case object MultipleVideos extends MediaType
+
+  object MediaType {
+    def toMediaType(s: String): Option[MediaType] = s match {
+      case "MultipleVideos" => Some(MultipleVideos)
+      case _ => None
+    }
+
+    def fromMediaType(x: MediaType): String = x match {
+      case MultipleVideos => "MultipleVideos"
+    }
+  }
+
+  implicit val MediaTypeEnumEncoder: EncodeJson[MediaType] =
+    EncodeJson[MediaType](is => StringEncodeJson(MediaType.fromMediaType(is)))
+
+  implicit val MediaTypeEnumDecoder: DecodeJson[MediaType] =
+    DecodeJson.optionDecoder[MediaType](n => n.string.flatMap(jStr => MediaType.toMediaType(jStr)), "MediaType failed to de-serialize")
 
   implicit val PinMediaWithVideosCodecJson: CodecJson[PinMediaWithVideos] = CodecJson.derive[PinMediaWithVideos]
   implicit val PinMediaWithVideosDecoder: EntityDecoder[PinMediaWithVideos] = jsonOf[PinMediaWithVideos]

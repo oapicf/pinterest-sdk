@@ -1,13 +1,18 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Board;
+import org.openapitools.model.BoardCreate;
+import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
 import org.openapitools.model.BoardSectionsList200Response;
-import org.openapitools.model.BoardUpdate;
+import org.openapitools.model.BoardWithUpdatePrivacy;
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.Error;
 import org.springframework.lang.Nullable;
+import org.openapitools.model.PinterestLibError;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-25T14:29:26.456489381Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class BoardsApiController implements BoardsApi {

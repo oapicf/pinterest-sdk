@@ -20,7 +20,7 @@ use crate::{models::check_xss_string, models::check_xss_vec_string, models::chec
 pub fn new<I, A, E, C>(api_impl: I) -> Router
 where
     I: AsRef<A> + Clone + Send + Sync + 'static,
-    A: apis::ad_accounts::AdAccounts<E> + apis::ad_groups::AdGroups<E> + apis::ads::Ads<E> + apis::advanced_auction::AdvancedAuction<E> + apis::audience_insights::AudienceInsights<E> + apis::audience_sharing::AudienceSharing<E> + apis::audiences::Audiences<E> + apis::billing::Billing<E> + apis::boards::Boards<E> + apis::bulk::Bulk<E> + apis::business_access_assets::BusinessAccessAssets<E> + apis::business_access_invite::BusinessAccessInvite<E> + apis::business_access_relationships::BusinessAccessRelationships<E> + apis::campaigns::Campaigns<E> + apis::catalogs::Catalogs<E> + apis::conversion_events::ConversionEvents<E, Claims = C> + apis::conversion_tags::ConversionTags<E> + apis::customer_lists::CustomerLists<E> + apis::integrations::Integrations<E> + apis::keywords::Keywords<E> + apis::lead_ads::LeadAds<E> + apis::lead_forms::LeadForms<E> + apis::leads_export::LeadsExport<E> + apis::media::Media<E> + apis::oauth::Oauth<E, Claims = C> + apis::order_lines::OrderLines<E> + apis::pins::Pins<E> + apis::product_group_promotions::ProductGroupPromotions<E> + apis::resources::Resources<E> + apis::search::Search<E> + apis::targeting_template::TargetingTemplate<E> + apis::terms::Terms<E> + apis::terms_of_service::TermsOfService<E> + apis::user_account::UserAccount<E> + apis::ApiAuthBasic<Claims = C> + apis::ApiAuthBasic<Claims = C> + Send + Sync + 'static,
+    A: apis::ad_accounts::AdAccounts<E> + apis::ad_groups::AdGroups<E> + apis::ads::Ads<E> + apis::advanced_auction::AdvancedAuction<E> + apis::audience_insights::AudienceInsights<E> + apis::audience_sharing::AudienceSharing<E> + apis::audiences::Audiences<E> + apis::billing::Billing<E> + apis::boards::Boards<E> + apis::bulk::Bulk<E> + apis::business_access_assets::BusinessAccessAssets<E> + apis::business_access_invite::BusinessAccessInvite<E> + apis::business_access_relationships::BusinessAccessRelationships<E> + apis::campaigns::Campaigns<E> + apis::catalog_feeds::CatalogFeeds<E> + apis::catalog_items::CatalogItems<E> + apis::catalog_product_groups::CatalogProductGroups<E> + apis::catalog_reports::CatalogReports<E> + apis::catalogs::Catalogs<E> + apis::conversion_eqs::ConversionEqs<E> + apis::conversion_events::ConversionEvents<E, Claims = C> + apis::conversion_tags::ConversionTags<E> + apis::conversions::Conversions<E> + apis::customer_list_uploads::CustomerListUploads<E> + apis::customer_lists::CustomerLists<E> + apis::integrations::Integrations<E> + apis::keywords::Keywords<E> + apis::labels::Labels<E> + apis::lead_ads::LeadAds<E> + apis::lead_forms::LeadForms<E> + apis::leads_export::LeadsExport<E> + apis::media::Media<E> + apis::msot_events::MsotEvents<E> + apis::notification::Notification<E> + apis::oauth::Oauth<E, Claims = C> + apis::order_lines::OrderLines<E> + apis::pins::Pins<E> + apis::product_categories::ProductCategories<E> + apis::product_group_promotions::ProductGroupPromotions<E> + apis::promotions::Promotions<E> + apis::resources::Resources<E> + apis::search::Search<E> + apis::targeting_template::TargetingTemplate<E> + apis::terms::Terms<E> + apis::terms_of_service::TermsOfService<E> + apis::user_account::UserAccount<E> + apis::ApiAuthBasic<Claims = C> + apis::ApiAuthBasic<Claims = C> + Send + Sync + 'static,
     E: std::fmt::Debug + Send + Sync + 'static,
     C: Send + Sync + 'static,
 {
@@ -68,6 +68,9 @@ where
         .route("/v5/ad_accounts/{ad_account_id}/ads_credit/redeem",
             post(ads_credit_slash_redeem::<I, A, E>)
         )
+        .route("/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+            get(advertiser_defined_events_slash_get::<I, A, E>)
+        )
         .route("/v5/ad_accounts/{ad_account_id}/analytics",
             get(ad_account_slash_analytics::<I, A, E>)
         )
@@ -83,9 +86,6 @@ where
         .route("/v5/ad_accounts/{ad_account_id}/audiences/businesses/shared",
             patch(update_ad_account_to_business_shared_audience::<I, A, E>)
         )
-        .route("/v5/ad_accounts/{ad_account_id}/audiences/custom",
-            post(audiences_slash_create_custom::<I, A, E>)
-        )
         .route("/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
             get(ad_accounts_audiences_shared_accounts_slash_list::<I, A, E>)
         )
@@ -94,6 +94,12 @@ where
         )
         .route("/v5/ad_accounts/{ad_account_id}/bid_floor",
             post(ad_groups_bid_floor_slash_get::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
+            get(billing_invoice_download_slash_get::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/billing_invoices",
+            get(billing_invoices_slash_get::<I, A, E>)
         )
         .route("/v5/ad_accounts/{ad_account_id}/billing_profiles",
             get(billing_profiles_slash_get::<I, A, E>)
@@ -119,6 +125,9 @@ where
         .route("/v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}",
             get(campaigns_slash_get::<I, A, E>)
         )
+        .route("/v5/ad_accounts/{ad_account_id}/conversion_eqs",
+            get(conversion_eqs_slash_list::<I, A, E>)
+        )
         .route("/v5/ad_accounts/{ad_account_id}/conversion_tags",
             get(conversion_tags_slash_list::<I, A, E>).post(conversion_tags_slash_create::<I, A, E>)
         )
@@ -137,6 +146,15 @@ where
         .route("/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}",
             get(customer_lists_slash_get::<I, A, E>).patch(customer_lists_slash_update::<I, A, E>)
         )
+        .route("/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads",
+            post(customer_list_uploads_slash_create::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}",
+            get(customer_list_uploads_slash_get::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run",
+            post(customer_list_uploads_slash_run::<I, A, E>)
+        )
         .route("/v5/ad_accounts/{ad_account_id}/events",
             post(events_slash_create::<I, A, E, C>)
         )
@@ -148,6 +166,9 @@ where
         )
         .route("/v5/ad_accounts/{ad_account_id}/keywords/metrics",
             get(country_keywords_metrics_slash_get::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/labels",
+            get(labels_slash_list::<I, A, E>).patch(labels_slash_update::<I, A, E>).post(labels_slash_create::<I, A, E>)
         )
         .route("/v5/ad_accounts/{ad_account_id}/lead_forms",
             get(lead_forms_slash_list::<I, A, E>).patch(lead_forms_slash_update::<I, A, E>).post(lead_forms_slash_create::<I, A, E>)
@@ -173,11 +194,17 @@ where
         .route("/v5/ad_accounts/{ad_account_id}/mmm_reports",
             get(analytics_slash_get_mmm_report::<I, A, E>).post(analytics_slash_create_mmm_report::<I, A, E>)
         )
+        .route("/v5/ad_accounts/{ad_account_id}/msot/events",
+            post(msot_events_slash_create::<I, A, E>)
+        )
         .route("/v5/ad_accounts/{ad_account_id}/order_lines",
             get(order_lines_slash_list::<I, A, E>)
         )
         .route("/v5/ad_accounts/{ad_account_id}/order_lines/{order_line_id}",
             get(order_lines_slash_get::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/pins/analytics",
+            get(ad_pins_slash_analytics::<I, A, E>)
         )
         .route("/v5/ad_accounts/{ad_account_id}/product_group_promotions",
             get(product_group_promotions_slash_list::<I, A, E>).patch(product_group_promotions_slash_update::<I, A, E>).post(product_group_promotions_slash_create::<I, A, E>)
@@ -188,8 +215,17 @@ where
         .route("/v5/ad_accounts/{ad_account_id}/product_groups/analytics",
             get(product_groups_slash_analytics::<I, A, E>)
         )
+        .route("/v5/ad_accounts/{ad_account_id}/promotions",
+            get(promotions_slash_list::<I, A, E>).patch(promotions_slash_update::<I, A, E>).post(promotions_slash_create::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}",
+            delete(promotions_slash_delete::<I, A, E>).get(promotions_slash_get::<I, A, E>)
+        )
         .route("/v5/ad_accounts/{ad_account_id}/reports",
             get(analytics_slash_get_report::<I, A, E>).post(analytics_slash_create_report::<I, A, E>)
+        )
+        .route("/v5/ad_accounts/{ad_account_id}/reports/brand_category_sku",
+            get(analytics_slash_get_conversion_product_report::<I, A, E>).post(analytics_slash_create_conversion_product_report::<I, A, E>)
         )
         .route("/v5/ad_accounts/{ad_account_id}/sandbox",
             delete(sandbox_slash_delete::<I, A, E>)
@@ -248,6 +284,12 @@ where
         .route("/v5/boards/{board_id}/sections/{section_id}/pins",
             get(board_sections_slash_list_pins::<I, A, E>)
         )
+        .route("/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+            post(brand_accounts_slash_create::<I, A, E>)
+        )
+        .route("/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+            patch(brand_accounts_slash_update::<I, A, E>)
+        )
         .route("/v5/businesses/employers",
             get(get_slash_business_employers::<I, A, E>)
         )
@@ -305,8 +347,14 @@ where
         .route("/v5/businesses/{business_id}/requests/assets/access",
             post(asset_access_requests_slash_create::<I, A, E>)
         )
+        .route("/v5/businesses/{business_id}/system_users/{system_user_id}",
+            patch(system_user_slash_update::<I, A, E>)
+        )
         .route("/v5/catalogs",
             get(catalogs_slash_list::<I, A, E>).post(catalogs_slash_create::<I, A, E>)
+        )
+        .route("/v5/catalogs/available_filter_values",
+            get(catalogs_slash_available_filter_values::<I, A, E>)
         )
         .route("/v5/catalogs/feeds",
             get(feeds_slash_list::<I, A, E>).post(feeds_slash_create::<I, A, E>)
@@ -321,7 +369,7 @@ where
             get(feed_processing_results_slash_list::<I, A, E>)
         )
         .route("/v5/catalogs/items",
-            get(items_slash_get::<I, A, E>).post(items_slash_post::<I, A, E>)
+            post(items_slash_post::<I, A, E>)
         )
         .route("/v5/catalogs/items/batch",
             post(items_batch_slash_post::<I, A, E>)
@@ -377,8 +425,17 @@ where
         .route("/v5/media/{media_id}",
             get(media_slash_get::<I, A, E>)
         )
+        .route("/v5/notifications",
+            post(notification_slash_post::<I, A, E>)
+        )
+        .route("/v5/oauth/conversion_token",
+            post(oauth_slash_conversion_token::<I, A, E, C>)
+        )
         .route("/v5/oauth/token",
             post(oauth_slash_token::<I, A, E, C>)
+        )
+        .route("/v5/oauth/token/revoke",
+            post(token_slash_revoke::<I, A, E, C>)
         )
         .route("/v5/pins",
             get(pins_slash_list::<I, A, E>).post(pins_slash_create::<I, A, E>)
@@ -430,6 +487,15 @@ where
         )
         .route("/v5/trends/keywords/{region}/top/{trend_type}",
             get(trending_keywords_slash_list::<I, A, E>)
+        )
+        .route("/v5/trends/product_categories/details",
+            get(trends_product_categories_details_slash_list::<I, A, E>)
+        )
+        .route("/v5/trends/product_categories/trending",
+            get(trends_product_categories_trending_slash_list::<I, A, E>)
+        )
+        .route("/v5/trends/topics/featured",
+            get(trends_featured_topics_slash_list::<I, A, E>)
         )
         .route("/v5/user_account",
             get(user_account_slash_get::<I, A, E>)
@@ -728,15 +794,15 @@ let result = api_impl.as_ref().ad_account_targeting_analytics_slash_get(
     #[allow(dead_code)]
     struct AdAccountsSlashCreateBodyValidator<'a> {
           #[validate(nested)]
-          body: &'a models::AdAccountCreateRequest,
+          body: &'a models::AdAccountCreate,
     }
 
 
 #[tracing::instrument(skip_all)]
 fn ad_accounts_slash_create_validation(
-        body: models::AdAccountCreateRequest,
+        body: models::AdAccountCreate,
 ) -> std::result::Result<(
-        models::AdAccountCreateRequest,
+        models::AdAccountCreate,
 ), ValidationErrors>
 {
               let b = AdAccountsSlashCreateBodyValidator { body: &body };
@@ -753,7 +819,7 @@ async fn ad_accounts_slash_create<I, A, E>(
   host: Host,
   cookies: CookieJar,
  State(api_impl): State<I>,
-          Json(body): Json<models::AdAccountCreateRequest>,
+          Json(body): Json<models::AdAccountCreate>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -794,7 +860,7 @@ let result = api_impl.as_ref().ad_accounts_slash_create(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status200_Success
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -812,7 +878,115 @@ let result = api_impl.as_ref().ad_accounts_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status0_UnexpectedError
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status201_ResourceCreateOperationCompletedSuccessfully
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(201);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashCreateResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -904,7 +1078,7 @@ let result = api_impl.as_ref().ad_accounts_slash_get(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status200_Success
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -922,7 +1096,97 @@ let result = api_impl.as_ref().ad_accounts_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status0_UnexpectedError
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashGetResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -1014,7 +1278,7 @@ let result = api_impl.as_ref().ad_accounts_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::ad_accounts::AdAccountsSlashListResponse::Status200_Response
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -1032,7 +1296,241 @@ let result = api_impl.as_ref().ad_accounts_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::ad_accounts::AdAccountsSlashListResponse::Status0_UnexpectedError
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AdAccountsSlashListResponse::Status0_AnUnexpectedErrorResponse
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct AnalyticsSlashCreateConversionProductReportBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::ConversionProductReportRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn analytics_slash_create_conversion_product_report_validation(
+  path_params: models::AnalyticsSlashCreateConversionProductReportPathParams,
+        body: models::ConversionProductReportRequest,
+) -> std::result::Result<(
+  models::AnalyticsSlashCreateConversionProductReportPathParams,
+        models::ConversionProductReportRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = AnalyticsSlashCreateConversionProductReportBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// AnalyticsSlashCreateConversionProductReport - POST /v5/ad_accounts/{ad_account_id}/reports/brand_category_sku
+#[tracing::instrument(skip_all)]
+async fn analytics_slash_create_conversion_product_report<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::AnalyticsSlashCreateConversionProductReportPathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::ConversionProductReportRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    analytics_slash_create_conversion_product_report_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().analytics_slash_create_conversion_product_report(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::ad_accounts::AnalyticsSlashCreateConversionProductReportResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateConversionProductReportResponse::Status400_InvalidAdAccountAdsAnalyticsBrand
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateConversionProductReportResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -1420,7 +1918,7 @@ let result = api_impl.as_ref().analytics_slash_create_template_report(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status200_Success
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -1438,7 +1936,25 @@ let result = api_impl.as_ref().analytics_slash_create_template_report(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status400_InvalidAdAccountAdsAnalyticsTemplateParameters
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status201_ResourceCreateOperationCompletedSuccessfully
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(201);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -1456,7 +1972,215 @@ let result = api_impl.as_ref().analytics_slash_create_template_report(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status0_UnexpectedError
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashCreateTemplateReportResponse::Status0_AnUnexpectedErrorResponse
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn analytics_slash_get_conversion_product_report_validation(
+  path_params: models::AnalyticsSlashGetConversionProductReportPathParams,
+  query_params: models::AnalyticsSlashGetConversionProductReportQueryParams,
+) -> std::result::Result<(
+  models::AnalyticsSlashGetConversionProductReportPathParams,
+  models::AnalyticsSlashGetConversionProductReportQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// AnalyticsSlashGetConversionProductReport - GET /v5/ad_accounts/{ad_account_id}/reports/brand_category_sku
+#[tracing::instrument(skip_all)]
+async fn analytics_slash_get_conversion_product_report<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::AnalyticsSlashGetConversionProductReportPathParams>,
+  QueryExtra(query_params): QueryExtra<models::AnalyticsSlashGetConversionProductReportQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    analytics_slash_get_conversion_product_report_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().analytics_slash_get_conversion_product_report(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::ad_accounts::AnalyticsSlashGetConversionProductReportResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashGetConversionProductReportResponse::Status400_InvalidAdAccountAdsAnalyticsParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::ad_accounts::AnalyticsSlashGetConversionProductReportResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -2295,17 +3019,15 @@ let result = api_impl.as_ref().ad_groups_slash_analytics(
 #[tracing::instrument(skip_all)]
 fn ad_groups_slash_audience_sizing_validation(
   path_params: models::AdGroupsSlashAudienceSizingPathParams,
-        body: Option<models::AdGroupAudienceSizingRequest>,
+        body: models::AdGroupAudienceSizingRequest,
 ) -> std::result::Result<(
   models::AdGroupsSlashAudienceSizingPathParams,
-        Option<models::AdGroupAudienceSizingRequest>,
+        models::AdGroupAudienceSizingRequest,
 ), ValidationErrors>
 {
   path_params.validate()?;
-            if let Some(body) = &body {
-              let b = AdGroupsSlashAudienceSizingBodyValidator { body };
+              let b = AdGroupsSlashAudienceSizingBodyValidator { body: &body };
               b.validate()?;
-            }
 
 Ok((
   path_params,
@@ -2320,7 +3042,7 @@ async fn ad_groups_slash_audience_sizing<I, A, E>(
   cookies: CookieJar,
   Path(path_params): Path<models::AdGroupsSlashAudienceSizingPathParams>,
  State(api_impl): State<I>,
-          Json(body): Json<Option<models::AdGroupAudienceSizingRequest>>,
+          Json(body): Json<models::AdGroupAudienceSizingRequest>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -4266,6 +4988,24 @@ let result = api_impl.as_ref().advanced_auction_items_submit_slash_post(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
+                                                apis::advanced_auction::AdvancedAuctionItemsSubmitSlashPostResponse::Status206_ResponseContainingTheResultsOfTheItemBidOptionsOperations
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(206);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
                                                 apis::advanced_auction::AdvancedAuctionItemsSubmitSlashPostResponse::Status400_InvalidRequestParameters
                                                     (body)
                                                 => {
@@ -5742,132 +6482,6 @@ let result = api_impl.as_ref().audiences_slash_create(
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
 
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct AudiencesSlashCreateCustomBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::AudienceCreateCustomRequest,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn audiences_slash_create_custom_validation(
-  path_params: models::AudiencesSlashCreateCustomPathParams,
-        body: models::AudienceCreateCustomRequest,
-) -> std::result::Result<(
-  models::AudiencesSlashCreateCustomPathParams,
-        models::AudienceCreateCustomRequest,
-), ValidationErrors>
-{
-  path_params.validate()?;
-              let b = AudiencesSlashCreateCustomBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  path_params,
-    body,
-))
-}
-/// AudiencesSlashCreateCustom - POST /v5/ad_accounts/{ad_account_id}/audiences/custom
-#[tracing::instrument(skip_all)]
-async fn audiences_slash_create_custom<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::AudiencesSlashCreateCustomPathParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::AudienceCreateCustomRequest>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::audiences::Audiences<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    audiences_slash_create_custom_validation(
-        path_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().audiences_slash_create_custom(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::audiences::AudiencesSlashCreateCustomResponse::Status200_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::audiences::AudiencesSlashCreateCustomResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
 
 #[tracing::instrument(skip_all)]
 fn audiences_slash_get_validation(
@@ -6143,17 +6757,15 @@ let result = api_impl.as_ref().audiences_slash_list(
 #[tracing::instrument(skip_all)]
 fn audiences_slash_update_validation(
   path_params: models::AudiencesSlashUpdatePathParams,
-        body: Option<models::AudienceUpdateRequest>,
+        body: models::AudienceUpdateRequest,
 ) -> std::result::Result<(
   models::AudiencesSlashUpdatePathParams,
-        Option<models::AudienceUpdateRequest>,
+        models::AudienceUpdateRequest,
 ), ValidationErrors>
 {
   path_params.validate()?;
-            if let Some(body) = &body {
-              let b = AudiencesSlashUpdateBodyValidator { body };
+              let b = AudiencesSlashUpdateBodyValidator { body: &body };
               b.validate()?;
-            }
 
 Ok((
   path_params,
@@ -6168,7 +6780,7 @@ async fn audiences_slash_update<I, A, E>(
   cookies: CookieJar,
   Path(path_params): Path<models::AudiencesSlashUpdatePathParams>,
  State(api_impl): State<I>,
-          Json(body): Json<Option<models::AudienceUpdateRequest>>,
+          Json(body): Json<models::AudienceUpdateRequest>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -6493,6 +7105,270 @@ let result = api_impl.as_ref().ads_credits_discounts_slash_get(
                                                   response.body(Body::from(body_content))
                                                 },
                                                 apis::billing::AdsCreditsDiscountsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn billing_invoice_download_slash_get_validation(
+  path_params: models::BillingInvoiceDownloadSlashGetPathParams,
+) -> std::result::Result<(
+  models::BillingInvoiceDownloadSlashGetPathParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+
+Ok((
+  path_params,
+))
+}
+/// BillingInvoiceDownloadSlashGet - GET /v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download
+#[tracing::instrument(skip_all)]
+async fn billing_invoice_download_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::BillingInvoiceDownloadSlashGetPathParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::billing::Billing<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    billing_invoice_download_slash_get_validation(
+        path_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().billing_invoice_download_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::billing::BillingInvoiceDownloadSlashGetResponse::Status200_SuccessfullyFetchedBillingInvoiceInformationForAGivenAdAccount
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::billing::BillingInvoiceDownloadSlashGetResponse::Status400_InvalidRequestParameter
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::billing::BillingInvoiceDownloadSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn billing_invoices_slash_get_validation(
+  path_params: models::BillingInvoicesSlashGetPathParams,
+  query_params: models::BillingInvoicesSlashGetQueryParams,
+) -> std::result::Result<(
+  models::BillingInvoicesSlashGetPathParams,
+  models::BillingInvoicesSlashGetQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// BillingInvoicesSlashGet - GET /v5/ad_accounts/{ad_account_id}/billing_invoices
+#[tracing::instrument(skip_all)]
+async fn billing_invoices_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::BillingInvoicesSlashGetPathParams>,
+  QueryExtra(query_params): QueryExtra<models::BillingInvoicesSlashGetQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::billing::Billing<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    billing_invoices_slash_get_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().billing_invoices_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::billing::BillingInvoicesSlashGetResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::billing::BillingInvoicesSlashGetResponse::Status400_InvalidRequestParameter
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::billing::BillingInvoicesSlashGetResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -8303,17 +9179,17 @@ let result = api_impl.as_ref().board_sections_slash_update(
     #[allow(dead_code)]
     struct BoardsSlashCreateBodyValidator<'a> {
           #[validate(nested)]
-          body: &'a models::Board,
+          body: &'a models::BoardCreate,
     }
 
 
 #[tracing::instrument(skip_all)]
 fn boards_slash_create_validation(
   query_params: models::BoardsSlashCreateQueryParams,
-        body: models::Board,
+        body: models::BoardCreate,
 ) -> std::result::Result<(
   models::BoardsSlashCreateQueryParams,
-        models::Board,
+        models::BoardCreate,
 ), ValidationErrors>
 {
   query_params.validate()?;
@@ -8333,7 +9209,7 @@ async fn boards_slash_create<I, A, E>(
   cookies: CookieJar,
   QueryExtra(query_params): QueryExtra<models::BoardsSlashCreateQueryParams>,
  State(api_impl): State<I>,
-          Json(body): Json<models::Board>,
+          Json(body): Json<models::BoardCreate>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -8377,7 +9253,25 @@ let result = api_impl.as_ref().boards_slash_create(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::boards::BoardsSlashCreateResponse::Status201_Response
+                                                apis::boards::BoardsSlashCreateResponse::Status200_TheRequestHasSucceeded
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashCreateResponse::Status201_ResourceCreateOperationCompletedSuccessfully
                                                     (body)
                                                 => {
                                                   let mut response = response.status(201);
@@ -8395,7 +9289,7 @@ let result = api_impl.as_ref().boards_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashCreateResponse::Status400_TheBoardNameIsInvalidOrDuplicated
+                                                apis::boards::BoardsSlashCreateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -8413,7 +9307,79 @@ let result = api_impl.as_ref().boards_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashCreateResponse::Status0_UnexpectedError
+                                                apis::boards::BoardsSlashCreateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashCreateResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashCreateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashCreateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashCreateResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -8513,12 +9479,48 @@ let result = api_impl.as_ref().boards_slash_delete(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::boards::BoardsSlashDeleteResponse::Status204_BoardDeletedSuccessfully
+                                                apis::boards::BoardsSlashDeleteResponse::Status204_ResourceDeletedSuccessfully
                                                 => {
                                                   let mut response = response.status(204);
                                                   response.body(Body::empty())
                                                 },
-                                                apis::boards::BoardsSlashDeleteResponse::Status403_NotAuthorizedToDeleteTheBoard
+                                                apis::boards::BoardsSlashDeleteResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashDeleteResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashDeleteResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -8536,7 +9538,7 @@ let result = api_impl.as_ref().boards_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashDeleteResponse::Status404_BoardNotFound
+                                                apis::boards::BoardsSlashDeleteResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -8554,25 +9556,7 @@ let result = api_impl.as_ref().boards_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashDeleteResponse::Status409_CouldNotGetExclusiveAccessToDeleteTheBoard
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(409);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::boards::BoardsSlashDeleteResponse::Status429_ThisRequestExceededARateLimit
+                                                apis::boards::BoardsSlashDeleteResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
                                                     (body)
                                                 => {
                                                   let mut response = response.status(429);
@@ -8590,7 +9574,7 @@ let result = api_impl.as_ref().boards_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashDeleteResponse::Status0_UnexpectedError
+                                                apis::boards::BoardsSlashDeleteResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -8690,7 +9674,7 @@ let result = api_impl.as_ref().boards_slash_get(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::boards::BoardsSlashGetResponse::Status200_Response
+                                                apis::boards::BoardsSlashGetResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -8708,7 +9692,61 @@ let result = api_impl.as_ref().boards_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashGetResponse::Status404_BoardNotFound
+                                                apis::boards::BoardsSlashGetResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashGetResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashGetResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashGetResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -8726,7 +9764,25 @@ let result = api_impl.as_ref().boards_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashGetResponse::Status0_UnexpectedError
+                                                apis::boards::BoardsSlashGetResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashGetResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -8818,7 +9874,7 @@ let result = api_impl.as_ref().boards_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::boards::BoardsSlashListResponse::Status200_Response
+                                                apis::boards::BoardsSlashListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -8836,7 +9892,97 @@ let result = api_impl.as_ref().boards_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashListResponse::Status0_UnexpectedError
+                                                apis::boards::BoardsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashListResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -9006,7 +10152,7 @@ let result = api_impl.as_ref().boards_slash_list_pins(
     #[allow(dead_code)]
     struct BoardsSlashUpdateBodyValidator<'a> {
           #[validate(nested)]
-          body: &'a models::BoardUpdate,
+          body: &'a models::BoardWithUpdatePrivacyUpdate,
     }
 
 
@@ -9014,11 +10160,11 @@ let result = api_impl.as_ref().boards_slash_list_pins(
 fn boards_slash_update_validation(
   path_params: models::BoardsSlashUpdatePathParams,
   query_params: models::BoardsSlashUpdateQueryParams,
-        body: models::BoardUpdate,
+        body: models::BoardWithUpdatePrivacyUpdate,
 ) -> std::result::Result<(
   models::BoardsSlashUpdatePathParams,
   models::BoardsSlashUpdateQueryParams,
-        models::BoardUpdate,
+        models::BoardWithUpdatePrivacyUpdate,
 ), ValidationErrors>
 {
   path_params.validate()?;
@@ -9041,7 +10187,7 @@ async fn boards_slash_update<I, A, E>(
   Path(path_params): Path<models::BoardsSlashUpdatePathParams>,
   QueryExtra(query_params): QueryExtra<models::BoardsSlashUpdateQueryParams>,
  State(api_impl): State<I>,
-          Json(body): Json<models::BoardUpdate>,
+          Json(body): Json<models::BoardWithUpdatePrivacyUpdate>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -9088,7 +10234,7 @@ let result = api_impl.as_ref().boards_slash_update(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::boards::BoardsSlashUpdateResponse::Status200_Response
+                                                apis::boards::BoardsSlashUpdateResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -9106,7 +10252,7 @@ let result = api_impl.as_ref().boards_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashUpdateResponse::Status400_InvalidBoardParameters
+                                                apis::boards::BoardsSlashUpdateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -9124,7 +10270,25 @@ let result = api_impl.as_ref().boards_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashUpdateResponse::Status403_NotAuthorizedToUpdateTheBoard
+                                                apis::boards::BoardsSlashUpdateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashUpdateResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -9142,7 +10306,25 @@ let result = api_impl.as_ref().boards_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashUpdateResponse::Status429_ThisRequestExceededARateLimit
+                                                apis::boards::BoardsSlashUpdateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::boards::BoardsSlashUpdateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
                                                     (body)
                                                 => {
                                                   let mut response = response.status(429);
@@ -9160,7 +10342,7 @@ let result = api_impl.as_ref().boards_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::boards::BoardsSlashUpdateResponse::Status0_UnexpectedError
+                                                apis::boards::BoardsSlashUpdateResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -11828,6 +13010,384 @@ let result = api_impl.as_ref().respond_business_access_invites(
 
     #[derive(validator::Validate)]
     #[allow(dead_code)]
+    struct BrandAccountsSlashCreateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::BrandAccountsCreateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn brand_accounts_slash_create_validation(
+  path_params: models::BrandAccountsSlashCreatePathParams,
+        body: models::BrandAccountsCreateRequest,
+) -> std::result::Result<(
+  models::BrandAccountsSlashCreatePathParams,
+        models::BrandAccountsCreateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = BrandAccountsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// BrandAccountsSlashCreate - POST /v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+#[tracing::instrument(skip_all)]
+async fn brand_accounts_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::BrandAccountsSlashCreatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::BrandAccountsCreateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::business_access_relationships::BusinessAccessRelationships<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    brand_accounts_slash_create_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().brand_accounts_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::business_access_relationships::BrandAccountsSlashCreateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashCreateResponse::Status400_InvalidParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashCreateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct BrandAccountsSlashUpdateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::BrandAccountsUpdateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn brand_accounts_slash_update_validation(
+  path_params: models::BrandAccountsSlashUpdatePathParams,
+        body: models::BrandAccountsUpdateRequest,
+) -> std::result::Result<(
+  models::BrandAccountsSlashUpdatePathParams,
+        models::BrandAccountsUpdateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = BrandAccountsSlashUpdateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// BrandAccountsSlashUpdate - PATCH /v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+#[tracing::instrument(skip_all)]
+async fn brand_accounts_slash_update<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::BrandAccountsSlashUpdatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::BrandAccountsUpdateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::business_access_relationships::BusinessAccessRelationships<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    brand_accounts_slash_update_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().brand_accounts_slash_update(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status400_InvalidParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status401_NotAuthenticatedToUpdateBrandAccount
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status403_NotAuthorizedToUpdateBrandAccount
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status404_BrandAccountNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status409_ThisAccountIsNotABrandAccount
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status429_ThisRequestExceededARateLimit
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::BrandAccountsSlashUpdateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
     struct DeleteBusinessMembershipBodyValidator<'a> {
           #[validate(nested)]
           body: &'a models::MembersToDeleteBody,
@@ -12444,6 +14004,137 @@ let result = api_impl.as_ref().get_slash_business_partners(
 
     #[derive(validator::Validate)]
     #[allow(dead_code)]
+    struct SystemUserSlashUpdateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::SystemUserUpdateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn system_user_slash_update_validation(
+  path_params: models::SystemUserSlashUpdatePathParams,
+        body: models::SystemUserUpdateRequest,
+) -> std::result::Result<(
+  models::SystemUserSlashUpdatePathParams,
+        models::SystemUserUpdateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = SystemUserSlashUpdateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// SystemUserSlashUpdate - PATCH /v5/businesses/{business_id}/system_users/{system_user_id}
+#[tracing::instrument(skip_all)]
+async fn system_user_slash_update<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::SystemUserSlashUpdatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::SystemUserUpdateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::business_access_relationships::BusinessAccessRelationships<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    system_user_slash_update_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().system_user_slash_update(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::business_access_relationships::SystemUserSlashUpdateResponse::Status200_SystemUserUpdatedSuccessfully
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  response.body(Body::empty())
+                                                },
+                                                apis::business_access_relationships::SystemUserSlashUpdateResponse::Status400_InvalidParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::business_access_relationships::SystemUserSlashUpdateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
     struct UpdateSlashBusinessMembershipsBodyValidator<'a> {
             #[validate(
                     length(min = 1),
@@ -12542,6 +14233,142 @@ let result = api_impl.as_ref().update_slash_business_memberships(
                                                   response.body(Body::from(body_content))
                                                 },
                                                 apis::business_access_relationships::UpdateSlashBusinessMembershipsResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn ad_pins_slash_analytics_validation(
+  path_params: models::AdPinsSlashAnalyticsPathParams,
+  query_params: models::AdPinsSlashAnalyticsQueryParams,
+) -> std::result::Result<(
+  models::AdPinsSlashAnalyticsPathParams,
+  models::AdPinsSlashAnalyticsQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// AdPinsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/pins/analytics
+#[tracing::instrument(skip_all)]
+async fn ad_pins_slash_analytics<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::AdPinsSlashAnalyticsPathParams>,
+  QueryExtra(query_params): QueryExtra<models::AdPinsSlashAnalyticsQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::campaigns::Campaigns<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    ad_pins_slash_analytics_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().ad_pins_slash_analytics(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::campaigns::AdPinsSlashAnalyticsResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::campaigns::AdPinsSlashAnalyticsResponse::Status400_InvalidAdAccountPinsAnalyticsParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::campaigns::AdPinsSlashAnalyticsResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -13331,6 +15158,1989 @@ let result = api_impl.as_ref().campaigns_slash_update(
 
 
 #[tracing::instrument(skip_all)]
+fn feed_processing_results_slash_list_validation(
+  path_params: models::FeedProcessingResultsSlashListPathParams,
+  query_params: models::FeedProcessingResultsSlashListQueryParams,
+) -> std::result::Result<(
+  models::FeedProcessingResultsSlashListPathParams,
+  models::FeedProcessingResultsSlashListQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// FeedProcessingResultsSlashList - GET /v5/catalogs/feeds/{feed_id}/processing_results
+#[tracing::instrument(skip_all)]
+async fn feed_processing_results_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::FeedProcessingResultsSlashListPathParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedProcessingResultsSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feed_processing_results_slash_list_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feed_processing_results_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedProcessingResultsSlashListResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedProcessingResultsSlashListResponse::Status400_InvalidParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedProcessingResultsSlashListResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedProcessingResultsSlashListResponse::Status404_FeedNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedProcessingResultsSlashListResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct FeedsSlashCreateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::FeedsCreateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn feeds_slash_create_validation(
+  query_params: models::FeedsSlashCreateQueryParams,
+        body: models::FeedsCreateRequest,
+) -> std::result::Result<(
+  models::FeedsSlashCreateQueryParams,
+        models::FeedsCreateRequest,
+), ValidationErrors>
+{
+  query_params.validate()?;
+              let b = FeedsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  query_params,
+    body,
+))
+}
+/// FeedsSlashCreate - POST /v5/catalogs/feeds
+#[tracing::instrument(skip_all)]
+async fn feeds_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashCreateQueryParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::FeedsCreateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feeds_slash_create_validation(
+        query_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feeds_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status201_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(201);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status400_InvalidFeedParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status403_BusinessAccountRequired
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status409_UserWebsiteRequired
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status422_UniqueFeedNameIsRequired
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(422);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status501_NotImplemented
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(501);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashCreateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn feeds_slash_delete_validation(
+  path_params: models::FeedsSlashDeletePathParams,
+  query_params: models::FeedsSlashDeleteQueryParams,
+) -> std::result::Result<(
+  models::FeedsSlashDeletePathParams,
+  models::FeedsSlashDeleteQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// FeedsSlashDelete - DELETE /v5/catalogs/feeds/{feed_id}
+#[tracing::instrument(skip_all)]
+async fn feeds_slash_delete<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::FeedsSlashDeletePathParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashDeleteQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feeds_slash_delete_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feeds_slash_delete(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedsSlashDeleteResponse::Status204_FeedDeletedSuccessfully
+                                                => {
+                                                  let mut response = response.status(204);
+                                                  response.body(Body::empty())
+                                                },
+                                                apis::catalog_feeds::FeedsSlashDeleteResponse::Status400_InvalidFeedParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashDeleteResponse::Status403_Forbidden
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashDeleteResponse::Status404_DataFeedNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashDeleteResponse::Status409_Conflict
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashDeleteResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn feeds_slash_get_validation(
+  path_params: models::FeedsSlashGetPathParams,
+  query_params: models::FeedsSlashGetQueryParams,
+) -> std::result::Result<(
+  models::FeedsSlashGetPathParams,
+  models::FeedsSlashGetQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// FeedsSlashGet - GET /v5/catalogs/feeds/{feed_id}
+#[tracing::instrument(skip_all)]
+async fn feeds_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::FeedsSlashGetPathParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashGetQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feeds_slash_get_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feeds_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedsSlashGetResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashGetResponse::Status400_InvalidFeedParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashGetResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashGetResponse::Status404_DataFeedNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn feeds_slash_ingest_validation(
+  path_params: models::FeedsSlashIngestPathParams,
+  query_params: models::FeedsSlashIngestQueryParams,
+) -> std::result::Result<(
+  models::FeedsSlashIngestPathParams,
+  models::FeedsSlashIngestQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// FeedsSlashIngest - POST /v5/catalogs/feeds/{feed_id}/ingest
+#[tracing::instrument(skip_all)]
+async fn feeds_slash_ingest<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::FeedsSlashIngestPathParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashIngestQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feeds_slash_ingest_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feeds_slash_ingest(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedsSlashIngestResponse::Status200_TheIngestionProcessWasSuccessfullyStarted
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashIngestResponse::Status400_InvalidFeedParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashIngestResponse::Status403_Forbidden
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashIngestResponse::Status404_DataFeedNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashIngestResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn feeds_slash_list_validation(
+  query_params: models::FeedsSlashListQueryParams,
+) -> std::result::Result<(
+  models::FeedsSlashListQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// FeedsSlashList - GET /v5/catalogs/feeds
+#[tracing::instrument(skip_all)]
+async fn feeds_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feeds_slash_list_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feeds_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedsSlashListResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashListResponse::Status400_InvalidParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashListResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashListResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct FeedsSlashUpdateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::FeedsUpdateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn feeds_slash_update_validation(
+  path_params: models::FeedsSlashUpdatePathParams,
+  query_params: models::FeedsSlashUpdateQueryParams,
+        body: models::FeedsUpdateRequest,
+) -> std::result::Result<(
+  models::FeedsSlashUpdatePathParams,
+  models::FeedsSlashUpdateQueryParams,
+        models::FeedsUpdateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+              let b = FeedsSlashUpdateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+    body,
+))
+}
+/// FeedsSlashUpdate - PATCH /v5/catalogs/feeds/{feed_id}
+#[tracing::instrument(skip_all)]
+async fn feeds_slash_update<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::FeedsSlashUpdatePathParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashUpdateQueryParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::FeedsUpdateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    feeds_slash_update_validation(
+        path_params,
+        query_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().feeds_slash_update(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::FeedsSlashUpdateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashUpdateResponse::Status400_InvalidFeedParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashUpdateResponse::Status403_Forbidden
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashUpdateResponse::Status404_DataFeedNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::FeedsSlashUpdateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn items_issues_slash_list_validation(
+  path_params: models::ItemsIssuesSlashListPathParams,
+  query_params: models::ItemsIssuesSlashListQueryParams,
+) -> std::result::Result<(
+  models::ItemsIssuesSlashListPathParams,
+  models::ItemsIssuesSlashListQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// ItemsIssuesSlashList - GET /v5/catalogs/processing_results/{processing_result_id}/item_issues
+#[tracing::instrument(skip_all)]
+async fn items_issues_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::ItemsIssuesSlashListPathParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsIssuesSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_feeds::CatalogFeeds<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    items_issues_slash_list_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().items_issues_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_feeds::ItemsIssuesSlashListResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::ItemsIssuesSlashListResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::ItemsIssuesSlashListResponse::Status404_ProcessingResultNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::ItemsIssuesSlashListResponse::Status501_NotImplemented
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(501);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_feeds::ItemsIssuesSlashListResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn items_batch_slash_get_validation(
+  path_params: models::ItemsBatchSlashGetPathParams,
+  query_params: models::ItemsBatchSlashGetQueryParams,
+) -> std::result::Result<(
+  models::ItemsBatchSlashGetPathParams,
+  models::ItemsBatchSlashGetQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// ItemsBatchSlashGet - GET /v5/catalogs/items/batch/{batch_id}
+#[tracing::instrument(skip_all)]
+async fn items_batch_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::ItemsBatchSlashGetPathParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsBatchSlashGetQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_items::CatalogItems<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    items_batch_slash_get_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().items_batch_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_items::ItemsBatchSlashGetResponse::Status200_ResponseContainingTheRequestedCatalogsItemsBatch
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashGetResponse::Status401_NotAuthenticatedToAccessCatalogsItemsBatch
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashGetResponse::Status403_NotAuthorizedToAccessCatalogsItemsBatch
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashGetResponse::Status404_CatalogsItemsBatchNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashGetResponse::Status405_MethodNotAllowed
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(405);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct ItemsBatchSlashPostBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::ItemsBatchPostRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn items_batch_slash_post_validation(
+  query_params: models::ItemsBatchSlashPostQueryParams,
+        body: models::ItemsBatchPostRequest,
+) -> std::result::Result<(
+  models::ItemsBatchSlashPostQueryParams,
+        models::ItemsBatchPostRequest,
+), ValidationErrors>
+{
+  query_params.validate()?;
+              let b = ItemsBatchSlashPostBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  query_params,
+    body,
+))
+}
+/// ItemsBatchSlashPost - POST /v5/catalogs/items/batch
+#[tracing::instrument(skip_all)]
+async fn items_batch_slash_post<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::ItemsBatchSlashPostQueryParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::ItemsBatchPostRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_items::CatalogItems<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    items_batch_slash_post_validation(
+        query_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().items_batch_slash_post(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_items::ItemsBatchSlashPostResponse::Status200_ResponseContainingTheRequestedCatalogsItemsBatch
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashPostResponse::Status400_InvalidRequestParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashPostResponse::Status401_NotAuthenticatedToPostCatalogsItems
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashPostResponse::Status403_NotAuthorizedToPostCatalogsItems
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsBatchSlashPostResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct ItemsSlashPostBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::CatalogsItemsRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn items_slash_post_validation(
+  query_params: models::ItemsSlashPostQueryParams,
+        body: models::CatalogsItemsRequest,
+) -> std::result::Result<(
+  models::ItemsSlashPostQueryParams,
+        models::CatalogsItemsRequest,
+), ValidationErrors>
+{
+  query_params.validate()?;
+              let b = ItemsSlashPostBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  query_params,
+    body,
+))
+}
+/// ItemsSlashPost - POST /v5/catalogs/items
+#[tracing::instrument(skip_all)]
+async fn items_slash_post<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::ItemsSlashPostQueryParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::CatalogsItemsRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_items::CatalogItems<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    items_slash_post_validation(
+        query_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().items_slash_post(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_items::ItemsSlashPostResponse::Status200_ResponseContainingTheRequestedCatalogsItems
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsSlashPostResponse::Status400_InvalidRequest
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsSlashPostResponse::Status401_NotAuthorizedToAccessCatalogsItems
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsSlashPostResponse::Status403_NotAuthorizedToAccessCatalogsItems
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_items::ItemsSlashPostResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
 fn catalogs_product_group_pins_slash_list_validation(
   path_params: models::CatalogsProductGroupPinsSlashListPathParams,
   query_params: models::CatalogsProductGroupPinsSlashListQueryParams,
@@ -13359,7 +17169,7 @@ async fn catalogs_product_group_pins_slash_list<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -13399,7 +17209,7 @@ let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupPinsSlashListResponse::Status200_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupPinsSlashListResponse::Status200_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -13417,7 +17227,7 @@ let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupPinsSlashListResponse::Status400_InvalidParameters
+                                                apis::catalog_product_groups::CatalogsProductGroupPinsSlashListResponse::Status400_InvalidParameters
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -13435,7 +17245,7 @@ let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupPinsSlashListResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupPinsSlashListResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -13453,7 +17263,7 @@ let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupPinsSlashListResponse::Status404_CatalogsProductGroupNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupPinsSlashListResponse::Status404_CatalogsProductGroupNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -13471,7 +17281,7 @@ let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupPinsSlashListResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupPinsSlashListResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -13539,7 +17349,7 @@ async fn catalogs_product_groups_slash_create<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -13579,7 +17389,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateResponse::Status201_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateResponse::Status201_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(201);
@@ -13597,7 +17407,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateResponse::Status400_InvalidBody
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateResponse::Status400_InvalidBody
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -13615,7 +17425,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -13633,7 +17443,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -13651,7 +17461,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -13669,7 +17479,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -13702,7 +17512,10 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create(
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CatalogsProductGroupsSlashCreateManyBodyValidator<'a> {
-                #[validate(nested)]
+            #[validate(
+                    length(min = 1, max = 1000),
+                   nested,
+            )]
           body: &'a Vec<models::MultipleProductGroupsInner>,
     }
 
@@ -13737,7 +17550,7 @@ async fn catalogs_product_groups_slash_create_many<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -13777,7 +17590,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateManyResponse::Status201_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateManyResponse::Status201_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(201);
@@ -13795,7 +17608,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateManyResponse::Status400_InvalidBody
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateManyResponse::Status400_InvalidBody
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -13813,7 +17626,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateManyResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateManyResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -13831,7 +17644,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateManyResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateManyResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -13849,7 +17662,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateManyResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateManyResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -13867,7 +17680,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashCreateManyResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashCreateManyResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -13927,7 +17740,7 @@ async fn catalogs_product_groups_slash_delete<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -13967,12 +17780,12 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status204_CatalogsProductGroupDeletedSuccessfully
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status204_CatalogsProductGroupDeletedSuccessfully
                                                 => {
                                                   let mut response = response.status(204);
                                                   response.body(Body::empty())
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status400_InvalidCatalogsProductGroupIdParameters
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status400_InvalidCatalogsProductGroupIdParameters
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -13990,7 +17803,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -14008,7 +17821,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -14026,7 +17839,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status404_CatalogsProductGroupNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status404_CatalogsProductGroupNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -14044,7 +17857,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -14062,7 +17875,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -14117,7 +17930,7 @@ async fn catalogs_product_groups_slash_delete_many<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -14154,12 +17967,12 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteManyResponse::Status204_CatalogsProductGroupsDeletedSuccessfully
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteManyResponse::Status204_CatalogsProductGroupsDeletedSuccessfully
                                                 => {
                                                   let mut response = response.status(204);
                                                   response.body(Body::empty())
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteManyResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteManyResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -14177,7 +17990,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteManyResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteManyResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -14195,7 +18008,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteManyResponse::Status404_CatalogsProductGroupNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteManyResponse::Status404_CatalogsProductGroupNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -14213,7 +18026,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteManyResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteManyResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -14231,7 +18044,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashDeleteManyResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashDeleteManyResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -14291,7 +18104,7 @@ async fn catalogs_product_groups_slash_get<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -14331,7 +18144,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status200_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status200_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -14349,7 +18162,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status400_InvalidCatalogsProductGroupIdParameters
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status400_InvalidCatalogsProductGroupIdParameters
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -14367,7 +18180,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -14385,7 +18198,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -14403,7 +18216,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status404_CatalogsProductGroupNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status404_CatalogsProductGroupNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -14421,7 +18234,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -14439,7 +18252,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashGetResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashGetResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -14494,7 +18307,7 @@ async fn catalogs_product_groups_slash_list<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -14531,7 +18344,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status200_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status200_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -14549,7 +18362,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status400_InvalidFeedParameters
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status400_InvalidFeedParameters
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -14567,7 +18380,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -14585,7 +18398,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -14603,7 +18416,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status404_DataFeedNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status404_DataFeedNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -14621,7 +18434,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -14639,7 +18452,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashListResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashListResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -14699,7 +18512,7 @@ async fn catalogs_product_groups_slash_product_counts_get<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -14739,7 +18552,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_product_counts_get(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashProductCountsGetResponse::Status200_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashProductCountsGetResponse::Status200_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -14757,7 +18570,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_product_counts_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashProductCountsGetResponse::Status404_ProductGroupNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashProductCountsGetResponse::Status404_ProductGroupNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -14775,7 +18588,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_product_counts_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashProductCountsGetResponse::Status409_Can
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashProductCountsGetResponse::Status409_Can
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -14793,7 +18606,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_product_counts_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashProductCountsGetResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashProductCountsGetResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -14866,7 +18679,7 @@ async fn catalogs_product_groups_slash_update<I, A, E>(
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -14909,7 +18722,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status200_Success
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status200_Success
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -14927,7 +18740,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status400_InvalidParameters
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status400_InvalidParameters
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -14945,7 +18758,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status401_UnauthorizedAccess
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status401_UnauthorizedAccess
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -14963,7 +18776,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status403_Forbidden
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status403_Forbidden
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -14981,7 +18794,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status404_CatalogsProductGroupNotFound
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status404_CatalogsProductGroupNotFound
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -14999,7 +18812,7 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status409_Conflict
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status409_Conflict
                                                     (body)
                                                 => {
                                                   let mut response = response.status(409);
@@ -15017,7 +18830,805 @@ let result = api_impl.as_ref().catalogs_product_groups_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::CatalogsProductGroupsSlashUpdateResponse::Status0_UnexpectedError
+                                                apis::catalog_product_groups::CatalogsProductGroupsSlashUpdateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct ProductsByProductGroupFilterSlashListBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::CatalogsListProductsByFilterRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn products_by_product_group_filter_slash_list_validation(
+  query_params: models::ProductsByProductGroupFilterSlashListQueryParams,
+        body: models::CatalogsListProductsByFilterRequest,
+) -> std::result::Result<(
+  models::ProductsByProductGroupFilterSlashListQueryParams,
+        models::CatalogsListProductsByFilterRequest,
+), ValidationErrors>
+{
+  query_params.validate()?;
+              let b = ProductsByProductGroupFilterSlashListBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  query_params,
+    body,
+))
+}
+/// ProductsByProductGroupFilterSlashList - POST /v5/catalogs/products/get_by_product_group_filters
+#[tracing::instrument(skip_all)]
+async fn products_by_product_group_filter_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::ProductsByProductGroupFilterSlashListQueryParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::CatalogsListProductsByFilterRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_product_groups::CatalogProductGroups<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    products_by_product_group_filter_slash_list_validation(
+        query_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().products_by_product_group_filter_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_product_groups::ProductsByProductGroupFilterSlashListResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_product_groups::ProductsByProductGroupFilterSlashListResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_product_groups::ProductsByProductGroupFilterSlashListResponse::Status409_Conflict
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_product_groups::ProductsByProductGroupFilterSlashListResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct ReportsSlashCreateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::CatalogsReportParameters,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn reports_slash_create_validation(
+  query_params: models::ReportsSlashCreateQueryParams,
+        body: models::CatalogsReportParameters,
+) -> std::result::Result<(
+  models::ReportsSlashCreateQueryParams,
+        models::CatalogsReportParameters,
+), ValidationErrors>
+{
+  query_params.validate()?;
+              let b = ReportsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  query_params,
+    body,
+))
+}
+/// ReportsSlashCreate - POST /v5/catalogs/reports
+#[tracing::instrument(skip_all)]
+async fn reports_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::ReportsSlashCreateQueryParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::CatalogsReportParameters>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_reports::CatalogReports<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    reports_slash_create_validation(
+        query_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().reports_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_reports::ReportsSlashCreateResponse::Status200_ResponseContainingTheReportToken
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashCreateResponse::Status404_Entity
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashCreateResponse::Status409_Can
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashCreateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn reports_slash_get_validation(
+  query_params: models::ReportsSlashGetQueryParams,
+) -> std::result::Result<(
+  models::ReportsSlashGetQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// ReportsSlashGet - GET /v5/catalogs/reports
+#[tracing::instrument(skip_all)]
+async fn reports_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::ReportsSlashGetQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_reports::CatalogReports<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    reports_slash_get_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().reports_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_reports::ReportsSlashGetResponse::Status200_ResponseThatContainsALinkToDownloadTheReport
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashGetResponse::Status400_TheTokenYouProvidedIsNotValidOrHasExpired
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashGetResponse::Status409_Can
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn reports_slash_stats_validation(
+  query_params: models::ReportsSlashStatsQueryParams,
+) -> std::result::Result<(
+  models::ReportsSlashStatsQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// ReportsSlashStats - GET /v5/catalogs/reports/stats
+#[tracing::instrument(skip_all)]
+async fn reports_slash_stats<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::ReportsSlashStatsQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalog_reports::CatalogReports<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    reports_slash_stats_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().reports_slash_stats(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalog_reports::ReportsSlashStatsResponse::Status200_ResponseContainingTheDiagnosticsAggregatedCounters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashStatsResponse::Status401_NotAuthorizedToAccessCatalogs
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalog_reports::ReportsSlashStatsResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn catalogs_slash_available_filter_values_validation(
+  query_params: models::CatalogsSlashAvailableFilterValuesQueryParams,
+) -> std::result::Result<(
+  models::CatalogsSlashAvailableFilterValuesQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// CatalogsSlashAvailableFilterValues - GET /v5/catalogs/available_filter_values
+#[tracing::instrument(skip_all)]
+async fn catalogs_slash_available_filter_values<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::CatalogsSlashAvailableFilterValuesQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    catalogs_slash_available_filter_values_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().catalogs_slash_available_filter_values(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status400_InvalidParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status401_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status403_Forbidden
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status404_DataFeedNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status409_Can
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(409);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::catalogs::CatalogsSlashAvailableFilterValuesResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -15357,12 +19968,12 @@ let result = api_impl.as_ref().catalogs_slash_list(
 
 
 #[tracing::instrument(skip_all)]
-fn feed_processing_results_slash_list_validation(
-  path_params: models::FeedProcessingResultsSlashListPathParams,
-  query_params: models::FeedProcessingResultsSlashListQueryParams,
+fn conversion_eqs_slash_list_validation(
+  path_params: models::ConversionEqsSlashListPathParams,
+  query_params: models::ConversionEqsSlashListQueryParams,
 ) -> std::result::Result<(
-  models::FeedProcessingResultsSlashListPathParams,
-  models::FeedProcessingResultsSlashListQueryParams,
+  models::ConversionEqsSlashListPathParams,
+  models::ConversionEqsSlashListQueryParams,
 ), ValidationErrors>
 {
   path_params.validate()?;
@@ -15373,19 +19984,19 @@ Ok((
   query_params,
 ))
 }
-/// FeedProcessingResultsSlashList - GET /v5/catalogs/feeds/{feed_id}/processing_results
+/// ConversionEqsSlashList - GET /v5/ad_accounts/{ad_account_id}/conversion_eqs
 #[tracing::instrument(skip_all)]
-async fn feed_processing_results_slash_list<I, A, E>(
+async fn conversion_eqs_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Path(path_params): Path<models::FeedProcessingResultsSlashListPathParams>,
-  QueryExtra(query_params): QueryExtra<models::FeedProcessingResultsSlashListQueryParams>,
+  Path(path_params): Path<models::ConversionEqsSlashListPathParams>,
+  QueryExtra(query_params): QueryExtra<models::ConversionEqsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
+    A: apis::conversion_eqs::ConversionEqs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
 
@@ -15394,7 +20005,7 @@ where
 
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
-    feed_processing_results_slash_list_validation(
+    conversion_eqs_slash_list_validation(
         path_params,
         query_params,
     )
@@ -15412,7 +20023,7 @@ where
 
 
 
-let result = api_impl.as_ref().feed_processing_results_slash_list(
+let result = api_impl.as_ref().conversion_eqs_slash_list(
       
       &method,
       &host,
@@ -15425,7 +20036,7 @@ let result = api_impl.as_ref().feed_processing_results_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedProcessingResultsSlashListResponse::Status200_Success
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -15443,7 +20054,7 @@ let result = api_impl.as_ref().feed_processing_results_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::FeedProcessingResultsSlashListResponse::Status400_InvalidParameters
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -15461,7 +20072,7 @@ let result = api_impl.as_ref().feed_processing_results_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::FeedProcessingResultsSlashListResponse::Status401_UnauthorizedAccess
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
                                                     (body)
                                                 => {
                                                   let mut response = response.status(401);
@@ -15479,187 +20090,7 @@ let result = api_impl.as_ref().feed_processing_results_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::FeedProcessingResultsSlashListResponse::Status404_FeedNotFound
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedProcessingResultsSlashListResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct FeedsSlashCreateBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::FeedsCreateRequest,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn feeds_slash_create_validation(
-  query_params: models::FeedsSlashCreateQueryParams,
-        body: models::FeedsCreateRequest,
-) -> std::result::Result<(
-  models::FeedsSlashCreateQueryParams,
-        models::FeedsCreateRequest,
-), ValidationErrors>
-{
-  query_params.validate()?;
-              let b = FeedsSlashCreateBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  query_params,
-    body,
-))
-}
-/// FeedsSlashCreate - POST /v5/catalogs/feeds
-#[tracing::instrument(skip_all)]
-async fn feeds_slash_create<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::FeedsSlashCreateQueryParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::FeedsCreateRequest>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    feeds_slash_create_validation(
-        query_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().feeds_slash_create(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedsSlashCreateResponse::Status201_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(201);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status400_InvalidFeedParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status401_UnauthorizedAccess
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status403_BusinessAccountRequired
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -15677,202 +20108,7 @@ let result = api_impl.as_ref().feeds_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status409_UserWebsiteRequired
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(409);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status422_UniqueFeedNameIsRequired
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(422);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status501_NotImplemented
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(501);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashCreateResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn feeds_slash_delete_validation(
-  path_params: models::FeedsSlashDeletePathParams,
-  query_params: models::FeedsSlashDeleteQueryParams,
-) -> std::result::Result<(
-  models::FeedsSlashDeletePathParams,
-  models::FeedsSlashDeleteQueryParams,
-), ValidationErrors>
-{
-  path_params.validate()?;
-  query_params.validate()?;
-
-Ok((
-  path_params,
-  query_params,
-))
-}
-/// FeedsSlashDelete - DELETE /v5/catalogs/feeds/{feed_id}
-#[tracing::instrument(skip_all)]
-async fn feeds_slash_delete<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::FeedsSlashDeletePathParams>,
-  QueryExtra(query_params): QueryExtra<models::FeedsSlashDeleteQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    feeds_slash_delete_validation(
-        path_params,
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().feeds_slash_delete(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedsSlashDeleteResponse::Status204_FeedDeletedSuccessfully
-                                                => {
-                                                  let mut response = response.status(204);
-                                                  response.body(Body::empty())
-                                                },
-                                                apis::catalogs::FeedsSlashDeleteResponse::Status400_InvalidFeedParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashDeleteResponse::Status403_Forbidden
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashDeleteResponse::Status404_DataFeedNotFound
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -15890,10 +20126,10 @@ let result = api_impl.as_ref().feeds_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::FeedsSlashDeleteResponse::Status409_Conflict
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
                                                     (body)
                                                 => {
-                                                  let mut response = response.status(409);
+                                                  let mut response = response.status(429);
                                                   {
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
@@ -15908,2169 +20144,7 @@ let result = api_impl.as_ref().feeds_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::catalogs::FeedsSlashDeleteResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn feeds_slash_get_validation(
-  path_params: models::FeedsSlashGetPathParams,
-  query_params: models::FeedsSlashGetQueryParams,
-) -> std::result::Result<(
-  models::FeedsSlashGetPathParams,
-  models::FeedsSlashGetQueryParams,
-), ValidationErrors>
-{
-  path_params.validate()?;
-  query_params.validate()?;
-
-Ok((
-  path_params,
-  query_params,
-))
-}
-/// FeedsSlashGet - GET /v5/catalogs/feeds/{feed_id}
-#[tracing::instrument(skip_all)]
-async fn feeds_slash_get<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::FeedsSlashGetPathParams>,
-  QueryExtra(query_params): QueryExtra<models::FeedsSlashGetQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    feeds_slash_get_validation(
-        path_params,
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().feeds_slash_get(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedsSlashGetResponse::Status200_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashGetResponse::Status400_InvalidFeedParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashGetResponse::Status401_UnauthorizedAccess
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashGetResponse::Status404_DataFeedNotFound
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashGetResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn feeds_slash_ingest_validation(
-  path_params: models::FeedsSlashIngestPathParams,
-  query_params: models::FeedsSlashIngestQueryParams,
-) -> std::result::Result<(
-  models::FeedsSlashIngestPathParams,
-  models::FeedsSlashIngestQueryParams,
-), ValidationErrors>
-{
-  path_params.validate()?;
-  query_params.validate()?;
-
-Ok((
-  path_params,
-  query_params,
-))
-}
-/// FeedsSlashIngest - POST /v5/catalogs/feeds/{feed_id}/ingest
-#[tracing::instrument(skip_all)]
-async fn feeds_slash_ingest<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::FeedsSlashIngestPathParams>,
-  QueryExtra(query_params): QueryExtra<models::FeedsSlashIngestQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    feeds_slash_ingest_validation(
-        path_params,
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().feeds_slash_ingest(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedsSlashIngestResponse::Status200_TheIngestionProcessWasSuccessfullyStarted
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashIngestResponse::Status400_InvalidFeedParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashIngestResponse::Status403_Forbidden
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashIngestResponse::Status404_DataFeedNotFound
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashIngestResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn feeds_slash_list_validation(
-  query_params: models::FeedsSlashListQueryParams,
-) -> std::result::Result<(
-  models::FeedsSlashListQueryParams,
-), ValidationErrors>
-{
-  query_params.validate()?;
-
-Ok((
-  query_params,
-))
-}
-/// FeedsSlashList - GET /v5/catalogs/feeds
-#[tracing::instrument(skip_all)]
-async fn feeds_slash_list<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::FeedsSlashListQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    feeds_slash_list_validation(
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().feeds_slash_list(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedsSlashListResponse::Status200_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashListResponse::Status400_InvalidParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashListResponse::Status401_UnauthorizedAccess
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashListResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct FeedsSlashUpdateBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::FeedsUpdateRequest,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn feeds_slash_update_validation(
-  path_params: models::FeedsSlashUpdatePathParams,
-  query_params: models::FeedsSlashUpdateQueryParams,
-        body: models::FeedsUpdateRequest,
-) -> std::result::Result<(
-  models::FeedsSlashUpdatePathParams,
-  models::FeedsSlashUpdateQueryParams,
-        models::FeedsUpdateRequest,
-), ValidationErrors>
-{
-  path_params.validate()?;
-  query_params.validate()?;
-              let b = FeedsSlashUpdateBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  path_params,
-  query_params,
-    body,
-))
-}
-/// FeedsSlashUpdate - PATCH /v5/catalogs/feeds/{feed_id}
-#[tracing::instrument(skip_all)]
-async fn feeds_slash_update<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::FeedsSlashUpdatePathParams>,
-  QueryExtra(query_params): QueryExtra<models::FeedsSlashUpdateQueryParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::FeedsUpdateRequest>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    feeds_slash_update_validation(
-        path_params,
-        query_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-    query_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().feeds_slash_update(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-        &query_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::FeedsSlashUpdateResponse::Status200_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashUpdateResponse::Status400_InvalidFeedParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashUpdateResponse::Status403_Forbidden
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashUpdateResponse::Status404_DataFeedNotFound
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::FeedsSlashUpdateResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn items_batch_slash_get_validation(
-  path_params: models::ItemsBatchSlashGetPathParams,
-  query_params: models::ItemsBatchSlashGetQueryParams,
-) -> std::result::Result<(
-  models::ItemsBatchSlashGetPathParams,
-  models::ItemsBatchSlashGetQueryParams,
-), ValidationErrors>
-{
-  path_params.validate()?;
-  query_params.validate()?;
-
-Ok((
-  path_params,
-  query_params,
-))
-}
-/// ItemsBatchSlashGet - GET /v5/catalogs/items/batch/{batch_id}
-#[tracing::instrument(skip_all)]
-async fn items_batch_slash_get<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::ItemsBatchSlashGetPathParams>,
-  QueryExtra(query_params): QueryExtra<models::ItemsBatchSlashGetQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    items_batch_slash_get_validation(
-        path_params,
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().items_batch_slash_get(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ItemsBatchSlashGetResponse::Status200_ResponseContainingTheRequestedCatalogsItemsBatch
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashGetResponse::Status401_NotAuthenticatedToAccessCatalogsItemsBatch
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashGetResponse::Status403_NotAuthorizedToAccessCatalogsItemsBatch
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashGetResponse::Status404_CatalogsItemsBatchNotFound
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashGetResponse::Status405_MethodNotAllowed
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(405);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashGetResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct ItemsBatchSlashPostBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::ItemsBatchPostRequest,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn items_batch_slash_post_validation(
-  query_params: models::ItemsBatchSlashPostQueryParams,
-        body: models::ItemsBatchPostRequest,
-) -> std::result::Result<(
-  models::ItemsBatchSlashPostQueryParams,
-        models::ItemsBatchPostRequest,
-), ValidationErrors>
-{
-  query_params.validate()?;
-              let b = ItemsBatchSlashPostBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  query_params,
-    body,
-))
-}
-/// ItemsBatchSlashPost - POST /v5/catalogs/items/batch
-#[tracing::instrument(skip_all)]
-async fn items_batch_slash_post<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ItemsBatchSlashPostQueryParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::ItemsBatchPostRequest>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    items_batch_slash_post_validation(
-        query_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().items_batch_slash_post(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ItemsBatchSlashPostResponse::Status200_ResponseContainingTheRequestedCatalogsItemsBatch
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashPostResponse::Status400_InvalidRequestParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashPostResponse::Status401_NotAuthenticatedToPostCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashPostResponse::Status403_NotAuthorizedToPostCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsBatchSlashPostResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn items_issues_slash_list_validation(
-  path_params: models::ItemsIssuesSlashListPathParams,
-  query_params: models::ItemsIssuesSlashListQueryParams,
-) -> std::result::Result<(
-  models::ItemsIssuesSlashListPathParams,
-  models::ItemsIssuesSlashListQueryParams,
-), ValidationErrors>
-{
-  path_params.validate()?;
-  query_params.validate()?;
-
-Ok((
-  path_params,
-  query_params,
-))
-}
-/// ItemsIssuesSlashList - GET /v5/catalogs/processing_results/{processing_result_id}/item_issues
-#[tracing::instrument(skip_all)]
-async fn items_issues_slash_list<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  Path(path_params): Path<models::ItemsIssuesSlashListPathParams>,
-  QueryExtra(query_params): QueryExtra<models::ItemsIssuesSlashListQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    items_issues_slash_list_validation(
-        path_params,
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    path_params,
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().items_issues_slash_list(
-      
-      &method,
-      &host,
-      &cookies,
-        &path_params,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ItemsIssuesSlashListResponse::Status200_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsIssuesSlashListResponse::Status401_UnauthorizedAccess
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsIssuesSlashListResponse::Status404_ProcessingResultNotFound
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsIssuesSlashListResponse::Status501_NotImplemented
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(501);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsIssuesSlashListResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn items_slash_get_validation(
-  query_params: models::ItemsSlashGetQueryParams,
-) -> std::result::Result<(
-  models::ItemsSlashGetQueryParams,
-), ValidationErrors>
-{
-  query_params.validate()?;
-
-Ok((
-  query_params,
-))
-}
-/// ItemsSlashGet - GET /v5/catalogs/items
-#[tracing::instrument(skip_all)]
-async fn items_slash_get<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ItemsSlashGetQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    items_slash_get_validation(
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().items_slash_get(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ItemsSlashGetResponse::Status200_ResponseContainingTheRequestedCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashGetResponse::Status400_InvalidRequestParameters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashGetResponse::Status401_NotAuthorizedToAccessCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashGetResponse::Status403_NotAuthorizedToAccessCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashGetResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct ItemsSlashPostBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::CatalogsItemsRequest,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn items_slash_post_validation(
-  query_params: models::ItemsSlashPostQueryParams,
-        body: models::CatalogsItemsRequest,
-) -> std::result::Result<(
-  models::ItemsSlashPostQueryParams,
-        models::CatalogsItemsRequest,
-), ValidationErrors>
-{
-  query_params.validate()?;
-              let b = ItemsSlashPostBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  query_params,
-    body,
-))
-}
-/// ItemsSlashPost - POST /v5/catalogs/items
-#[tracing::instrument(skip_all)]
-async fn items_slash_post<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ItemsSlashPostQueryParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::CatalogsItemsRequest>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    items_slash_post_validation(
-        query_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().items_slash_post(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ItemsSlashPostResponse::Status200_ResponseContainingTheRequestedCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashPostResponse::Status400_InvalidRequest
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashPostResponse::Status401_NotAuthorizedToAccessCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashPostResponse::Status403_NotAuthorizedToAccessCatalogsItems
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(403);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ItemsSlashPostResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct ProductsByProductGroupFilterSlashListBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::CatalogsListProductsByFilterRequest,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn products_by_product_group_filter_slash_list_validation(
-  query_params: models::ProductsByProductGroupFilterSlashListQueryParams,
-        body: models::CatalogsListProductsByFilterRequest,
-) -> std::result::Result<(
-  models::ProductsByProductGroupFilterSlashListQueryParams,
-        models::CatalogsListProductsByFilterRequest,
-), ValidationErrors>
-{
-  query_params.validate()?;
-              let b = ProductsByProductGroupFilterSlashListBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  query_params,
-    body,
-))
-}
-/// ProductsByProductGroupFilterSlashList - POST /v5/catalogs/products/get_by_product_group_filters
-#[tracing::instrument(skip_all)]
-async fn products_by_product_group_filter_slash_list<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ProductsByProductGroupFilterSlashListQueryParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::CatalogsListProductsByFilterRequest>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    products_by_product_group_filter_slash_list_validation(
-        query_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().products_by_product_group_filter_slash_list(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ProductsByProductGroupFilterSlashListResponse::Status200_Success
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ProductsByProductGroupFilterSlashListResponse::Status401_UnauthorizedAccess
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ProductsByProductGroupFilterSlashListResponse::Status409_Conflict
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(409);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ProductsByProductGroupFilterSlashListResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-    #[derive(validator::Validate)]
-    #[allow(dead_code)]
-    struct ReportsSlashCreateBodyValidator<'a> {
-          #[validate(nested)]
-          body: &'a models::CatalogsReportParameters,
-    }
-
-
-#[tracing::instrument(skip_all)]
-fn reports_slash_create_validation(
-  query_params: models::ReportsSlashCreateQueryParams,
-        body: models::CatalogsReportParameters,
-) -> std::result::Result<(
-  models::ReportsSlashCreateQueryParams,
-        models::CatalogsReportParameters,
-), ValidationErrors>
-{
-  query_params.validate()?;
-              let b = ReportsSlashCreateBodyValidator { body: &body };
-              b.validate()?;
-
-Ok((
-  query_params,
-    body,
-))
-}
-/// ReportsSlashCreate - POST /v5/catalogs/reports
-#[tracing::instrument(skip_all)]
-async fn reports_slash_create<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ReportsSlashCreateQueryParams>,
- State(api_impl): State<I>,
-          Json(body): Json<models::CatalogsReportParameters>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    reports_slash_create_validation(
-        query_params,
-          body,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-      body,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().reports_slash_create(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-              &body,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ReportsSlashCreateResponse::Status200_ResponseContainingTheReportToken
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashCreateResponse::Status404_Entity
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(404);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashCreateResponse::Status409_Can
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(409);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashCreateResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn reports_slash_get_validation(
-  query_params: models::ReportsSlashGetQueryParams,
-) -> std::result::Result<(
-  models::ReportsSlashGetQueryParams,
-), ValidationErrors>
-{
-  query_params.validate()?;
-
-Ok((
-  query_params,
-))
-}
-/// ReportsSlashGet - GET /v5/catalogs/reports
-#[tracing::instrument(skip_all)]
-async fn reports_slash_get<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ReportsSlashGetQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    reports_slash_get_validation(
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().reports_slash_get(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ReportsSlashGetResponse::Status200_ResponseThatContainsALinkToDownloadTheReport
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashGetResponse::Status400_TheTokenYouProvidedIsNotValidOrHasExpired
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(400);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashGetResponse::Status409_Can
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(409);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashGetResponse::Status0_UnexpectedError
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(0);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                            },
-                                            Err(why) => {
-                                                    // Application code returned an error. This should not happen, as the implementation should
-                                                    // return a valid response.
-                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
-                                            },
-                                        };
-
-
-                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
-}
-
-
-#[tracing::instrument(skip_all)]
-fn reports_slash_stats_validation(
-  query_params: models::ReportsSlashStatsQueryParams,
-) -> std::result::Result<(
-  models::ReportsSlashStatsQueryParams,
-), ValidationErrors>
-{
-  query_params.validate()?;
-
-Ok((
-  query_params,
-))
-}
-/// ReportsSlashStats - GET /v5/catalogs/reports/stats
-#[tracing::instrument(skip_all)]
-async fn reports_slash_stats<I, A, E>(
-  method: Method,
-  host: Host,
-  cookies: CookieJar,
-  QueryExtra(query_params): QueryExtra<models::ReportsSlashStatsQueryParams>,
- State(api_impl): State<I>,
-) -> Result<Response, StatusCode>
-where
-    I: AsRef<A> + Send + Sync,
-    A: apis::catalogs::Catalogs<E> + Send + Sync,
-    E: std::fmt::Debug + Send + Sync + 'static,
-        {
-
-
-
-
-      #[allow(clippy::redundant_closure)]
-      let validation = tokio::task::spawn_blocking(move ||
-    reports_slash_stats_validation(
-        query_params,
-    )
-  ).await.unwrap();
-
-  let Ok((
-    query_params,
-  )) = validation else {
-    return Response::builder()
-            .status(StatusCode::BAD_REQUEST)
-            .body(Body::from(validation.unwrap_err().to_string()))
-            .map_err(|_| StatusCode::BAD_REQUEST);
-  };
-
-
-
-let result = api_impl.as_ref().reports_slash_stats(
-      
-      &method,
-      &host,
-      &cookies,
-        &query_params,
-  ).await;
-
-  let mut response = Response::builder();
-
-  let resp = match result {
-                                            Ok(rsp) => match rsp {
-                                                apis::catalogs::ReportsSlashStatsResponse::Status200_ResponseContainingTheDiagnosticsAggregatedCounters
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(200);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashStatsResponse::Status401_NotAuthorizedToAccessCatalogs
-                                                    (body)
-                                                => {
-                                                  let mut response = response.status(401);
-                                                  {
-                                                    let mut response_headers = response.headers_mut().unwrap();
-                                                    response_headers.insert(
-                                                        CONTENT_TYPE,
-                                                        HeaderValue::from_static("application/json"));
-                                                  }
-
-                                                  let body_content =  tokio::task::spawn_blocking(move ||
-                                                      serde_json::to_vec(&body).map_err(|e| {
-                                                        error!(error = ?e);
-                                                        StatusCode::INTERNAL_SERVER_ERROR
-                                                      })).await.unwrap()?;
-                                                  response.body(Body::from(body_content))
-                                                },
-                                                apis::catalogs::ReportsSlashStatsResponse::Status0_UnexpectedError
+                                                apis::conversion_eqs::ConversionEqsSlashListResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -18430,7 +20504,7 @@ let result = api_impl.as_ref().conversion_tags_slash_create(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status200_Success
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -18448,7 +20522,115 @@ let result = api_impl.as_ref().conversion_tags_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status0_UnexpectedError
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status201_ResourceCreateOperationCompletedSuccessfully
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(201);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashCreateResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -18658,7 +20840,7 @@ let result = api_impl.as_ref().conversion_tags_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status200_Success
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -18676,7 +20858,97 @@ let result = api_impl.as_ref().conversion_tags_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status0_UnexpectedError
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversion_tags::ConversionTagsSlashListResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -18905,6 +21177,462 @@ let result = api_impl.as_ref().page_visit_conversion_tags_slash_get(
                                                   response.body(Body::from(body_content))
                                                 },
                                                 apis::conversion_tags::PageVisitConversionTagsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn advertiser_defined_events_slash_get_validation(
+  path_params: models::AdvertiserDefinedEventsSlashGetPathParams,
+) -> std::result::Result<(
+  models::AdvertiserDefinedEventsSlashGetPathParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+
+Ok((
+  path_params,
+))
+}
+/// AdvertiserDefinedEventsSlashGet - GET /v5/ad_accounts/{ad_account_id}/advertiser_defined_events
+#[tracing::instrument(skip_all)]
+async fn advertiser_defined_events_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::AdvertiserDefinedEventsSlashGetPathParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::conversions::Conversions<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    advertiser_defined_events_slash_get_validation(
+        path_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().advertiser_defined_events_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::conversions::AdvertiserDefinedEventsSlashGetResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::conversions::AdvertiserDefinedEventsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct CustomerListUploadsSlashCreateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::CustomerListUploadCreateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn customer_list_uploads_slash_create_validation(
+  path_params: models::CustomerListUploadsSlashCreatePathParams,
+        body: models::CustomerListUploadCreateRequest,
+) -> std::result::Result<(
+  models::CustomerListUploadsSlashCreatePathParams,
+        models::CustomerListUploadCreateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = CustomerListUploadsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// CustomerListUploadsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads
+#[tracing::instrument(skip_all)]
+async fn customer_list_uploads_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::CustomerListUploadsSlashCreatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::CustomerListUploadCreateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::customer_list_uploads::CustomerListUploads<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    customer_list_uploads_slash_create_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().customer_list_uploads_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::customer_list_uploads::CustomerListUploadsSlashCreateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::customer_list_uploads::CustomerListUploadsSlashCreateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn customer_list_uploads_slash_get_validation(
+  path_params: models::CustomerListUploadsSlashGetPathParams,
+) -> std::result::Result<(
+  models::CustomerListUploadsSlashGetPathParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+
+Ok((
+  path_params,
+))
+}
+/// CustomerListUploadsSlashGet - GET /v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}
+#[tracing::instrument(skip_all)]
+async fn customer_list_uploads_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::CustomerListUploadsSlashGetPathParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::customer_list_uploads::CustomerListUploads<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    customer_list_uploads_slash_get_validation(
+        path_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().customer_list_uploads_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::customer_list_uploads::CustomerListUploadsSlashGetResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::customer_list_uploads::CustomerListUploadsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn customer_list_uploads_slash_run_validation(
+  path_params: models::CustomerListUploadsSlashRunPathParams,
+) -> std::result::Result<(
+  models::CustomerListUploadsSlashRunPathParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+
+Ok((
+  path_params,
+))
+}
+/// CustomerListUploadsSlashRun - POST /v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run
+#[tracing::instrument(skip_all)]
+async fn customer_list_uploads_slash_run<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::CustomerListUploadsSlashRunPathParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::customer_list_uploads::CustomerListUploads<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    customer_list_uploads_slash_run_validation(
+        path_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().customer_list_uploads_slash_run(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::customer_list_uploads::CustomerListUploadsSlashRunResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::customer_list_uploads::CustomerListUploadsSlashRunResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -19668,17 +22396,15 @@ let result = api_impl.as_ref().integrations_commerce_slash_get(
 #[tracing::instrument(skip_all)]
 fn integrations_commerce_slash_patch_validation(
   path_params: models::IntegrationsCommerceSlashPatchPathParams,
-        body: Option<models::IntegrationRequestPatch>,
+        body: models::IntegrationRequestPatch,
 ) -> std::result::Result<(
   models::IntegrationsCommerceSlashPatchPathParams,
-        Option<models::IntegrationRequestPatch>,
+        models::IntegrationRequestPatch,
 ), ValidationErrors>
 {
   path_params.validate()?;
-            if let Some(body) = &body {
-              let b = IntegrationsCommerceSlashPatchBodyValidator { body };
+              let b = IntegrationsCommerceSlashPatchBodyValidator { body: &body };
               b.validate()?;
-            }
 
 Ok((
   path_params,
@@ -19693,7 +22419,7 @@ async fn integrations_commerce_slash_patch<I, A, E>(
   cookies: CookieJar,
   Path(path_params): Path<models::IntegrationsCommerceSlashPatchPathParams>,
  State(api_impl): State<I>,
-          Json(body): Json<Option<models::IntegrationRequestPatch>>,
+          Json(body): Json<models::IntegrationRequestPatch>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -19831,15 +22557,13 @@ let result = api_impl.as_ref().integrations_commerce_slash_patch(
 
 #[tracing::instrument(skip_all)]
 fn integrations_commerce_slash_post_validation(
-        body: Option<models::IntegrationRequest>,
+        body: models::IntegrationRequest,
 ) -> std::result::Result<(
-        Option<models::IntegrationRequest>,
+        models::IntegrationRequest,
 ), ValidationErrors>
 {
-            if let Some(body) = &body {
-              let b = IntegrationsCommerceSlashPostBodyValidator { body };
+              let b = IntegrationsCommerceSlashPostBodyValidator { body: &body };
               b.validate()?;
-            }
 
 Ok((
     body,
@@ -19852,7 +22576,7 @@ async fn integrations_commerce_slash_post<I, A, E>(
   host: Host,
   cookies: CookieJar,
  State(api_impl): State<I>,
-          Json(body): Json<Option<models::IntegrationRequest>>,
+          Json(body): Json<models::IntegrationRequest>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -20975,6 +23699,394 @@ let result = api_impl.as_ref().trending_keywords_slash_list(
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
 
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct LabelsSlashCreateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::LabelCreateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn labels_slash_create_validation(
+  path_params: models::LabelsSlashCreatePathParams,
+        body: models::LabelCreateRequest,
+) -> std::result::Result<(
+  models::LabelsSlashCreatePathParams,
+        models::LabelCreateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = LabelsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// LabelsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/labels
+#[tracing::instrument(skip_all)]
+async fn labels_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::LabelsSlashCreatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::LabelCreateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::labels::Labels<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    labels_slash_create_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().labels_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::labels::LabelsSlashCreateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::labels::LabelsSlashCreateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn labels_slash_list_validation(
+  path_params: models::LabelsSlashListPathParams,
+  query_params: models::LabelsSlashListQueryParams,
+) -> std::result::Result<(
+  models::LabelsSlashListPathParams,
+  models::LabelsSlashListQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// LabelsSlashList - GET /v5/ad_accounts/{ad_account_id}/labels
+#[tracing::instrument(skip_all)]
+async fn labels_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::LabelsSlashListPathParams>,
+  QueryExtra(query_params): QueryExtra<models::LabelsSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::labels::Labels<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    labels_slash_list_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().labels_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::labels::LabelsSlashListResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::labels::LabelsSlashListResponse::Status400_InvalidAdAccountAdsParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::labels::LabelsSlashListResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct LabelsSlashUpdateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::LabelUpdateRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn labels_slash_update_validation(
+  path_params: models::LabelsSlashUpdatePathParams,
+        body: models::LabelUpdateRequest,
+) -> std::result::Result<(
+  models::LabelsSlashUpdatePathParams,
+        models::LabelUpdateRequest,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = LabelsSlashUpdateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// LabelsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/labels
+#[tracing::instrument(skip_all)]
+async fn labels_slash_update<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::LabelsSlashUpdatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::LabelUpdateRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::labels::Labels<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    labels_slash_update_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().labels_slash_update(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::labels::LabelsSlashUpdateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::labels::LabelsSlashUpdateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
 
 #[tracing::instrument(skip_all)]
 fn ad_accounts_subscriptions_slash_del_by_id_validation(
@@ -21037,12 +24149,12 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_del_by_id(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status204_SubscriptionDeletedSuccessfully
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status204_ResourceDeletedSuccessfully
                                                 => {
                                                   let mut response = response.status(204);
                                                   response.body(Body::empty())
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status400_InvalidInputParameters
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -21060,7 +24172,25 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_del_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status403_YouAreNotAuthorizedToDeleteThisSubscription
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -21078,7 +24208,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_del_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status404_SubscriptionNotFound
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -21096,7 +24226,25 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_del_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status0_UnexpectedError
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashDelByIdResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -21188,7 +24336,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status200_Success
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -21206,7 +24354,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status400_InvalidInputParameters
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -21224,7 +24372,25 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status403_Can
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -21242,7 +24408,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status404_SubscriptionNotFound
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -21260,7 +24426,25 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status0_UnexpectedError
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetByIdResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -21360,7 +24544,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status200_Success
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -21378,7 +24562,43 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status403_Can
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -21396,7 +24616,43 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status0_UnexpectedError
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashGetListResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -21430,17 +24686,17 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_list(
     #[allow(dead_code)]
     struct AdAccountsSubscriptionsSlashPostBodyValidator<'a> {
           #[validate(nested)]
-          body: &'a models::AdAccountCreateSubscriptionRequest,
+          body: &'a models::LeadSubscriptionPostParamsCreate,
     }
 
 
 #[tracing::instrument(skip_all)]
 fn ad_accounts_subscriptions_slash_post_validation(
   path_params: models::AdAccountsSubscriptionsSlashPostPathParams,
-        body: models::AdAccountCreateSubscriptionRequest,
+        body: models::LeadSubscriptionPostParamsCreate,
 ) -> std::result::Result<(
   models::AdAccountsSubscriptionsSlashPostPathParams,
-        models::AdAccountCreateSubscriptionRequest,
+        models::LeadSubscriptionPostParamsCreate,
 ), ValidationErrors>
 {
   path_params.validate()?;
@@ -21460,7 +24716,7 @@ async fn ad_accounts_subscriptions_slash_post<I, A, E>(
   cookies: CookieJar,
   Path(path_params): Path<models::AdAccountsSubscriptionsSlashPostPathParams>,
  State(api_impl): State<I>,
-          Json(body): Json<models::AdAccountCreateSubscriptionRequest>,
+          Json(body): Json<models::LeadSubscriptionPostParamsCreate>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -21504,7 +24760,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_post(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status200_Success
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -21522,7 +24778,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_post(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status400_InvalidInputParameters
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -21540,7 +24796,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_post(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status403_Can
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -21558,7 +24814,7 @@ let result = api_impl.as_ref().ad_accounts_subscriptions_slash_post(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status0_UnexpectedError
+                                                apis::lead_ads::AdAccountsSubscriptionsSlashPostResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -22620,15 +25876,15 @@ let result = api_impl.as_ref().leads_export_slash_get(
     #[allow(dead_code)]
     struct MediaSlashCreateBodyValidator<'a> {
           #[validate(nested)]
-          body: &'a models::MediaUploadRequest,
+          body: &'a models::MediaUploadCreate,
     }
 
 
 #[tracing::instrument(skip_all)]
 fn media_slash_create_validation(
-        body: models::MediaUploadRequest,
+        body: models::MediaUploadCreate,
 ) -> std::result::Result<(
-        models::MediaUploadRequest,
+        models::MediaUploadCreate,
 ), ValidationErrors>
 {
               let b = MediaSlashCreateBodyValidator { body: &body };
@@ -22645,7 +25901,7 @@ async fn media_slash_create<I, A, E>(
   host: Host,
   cookies: CookieJar,
  State(api_impl): State<I>,
-          Json(body): Json<models::MediaUploadRequest>,
+          Json(body): Json<models::MediaUploadCreate>,
 ) -> Result<Response, StatusCode>
 where
     I: AsRef<A> + Send + Sync,
@@ -22686,7 +25942,25 @@ let result = api_impl.as_ref().media_slash_create(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::media::MediaSlashCreateResponse::Status201_Response
+                                                apis::media::MediaSlashCreateResponse::Status200_TheRequestHasSucceeded
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashCreateResponse::Status201_ResourceCreateOperationCompletedSuccessfully
                                                     (body)
                                                 => {
                                                   let mut response = response.status(201);
@@ -22704,7 +25978,97 @@ let result = api_impl.as_ref().media_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::media::MediaSlashCreateResponse::Status0_UnexpectedError
+                                                apis::media::MediaSlashCreateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashCreateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashCreateResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashCreateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashCreateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashCreateResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -22796,7 +26160,7 @@ let result = api_impl.as_ref().media_slash_get(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::media::MediaSlashGetResponse::Status200_Response
+                                                apis::media::MediaSlashGetResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -22814,7 +26178,61 @@ let result = api_impl.as_ref().media_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::media::MediaSlashGetResponse::Status404_MediaUploadNotFound
+                                                apis::media::MediaSlashGetResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashGetResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashGetResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashGetResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -22832,7 +26250,25 @@ let result = api_impl.as_ref().media_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::media::MediaSlashGetResponse::Status0_UnexpectedError
+                                                apis::media::MediaSlashGetResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashGetResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -22924,7 +26360,7 @@ let result = api_impl.as_ref().media_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::media::MediaSlashListResponse::Status200_Response
+                                                apis::media::MediaSlashListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -22942,7 +26378,520 @@ let result = api_impl.as_ref().media_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::media::MediaSlashListResponse::Status0_UnexpectedError
+                                                apis::media::MediaSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::media::MediaSlashListResponse::Status0_AnUnexpectedErrorResponse
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct MsotEventsSlashCreateBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::ConversionMsotEvents,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn msot_events_slash_create_validation(
+  path_params: models::MsotEventsSlashCreatePathParams,
+        body: models::ConversionMsotEvents,
+) -> std::result::Result<(
+  models::MsotEventsSlashCreatePathParams,
+        models::ConversionMsotEvents,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = MsotEventsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// MsotEventsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/msot/events
+#[tracing::instrument(skip_all)]
+async fn msot_events_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::MsotEventsSlashCreatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<models::ConversionMsotEvents>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::msot_events::MsotEvents<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    msot_events_slash_create_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().msot_events_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::msot_events::MsotEventsSlashCreateResponse::Status200_Success
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  response.body(Body::empty())
+                                                },
+                                                apis::msot_events::MsotEventsSlashCreateResponse::Status400_TheRequestWasInvalid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::msot_events::MsotEventsSlashCreateResponse::Status401_NotAuthorizedToSendMSOTConversionEvents
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::msot_events::MsotEventsSlashCreateResponse::Status403_UnauthorizedAccess
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::msot_events::MsotEventsSlashCreateResponse::Status429_ThisRequestExceededARateLimit
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::msot_events::MsotEventsSlashCreateResponse::Status0_UnexpectedErrors
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct NotificationSlashPostBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::NotificationPostRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn notification_slash_post_validation(
+        body: models::NotificationPostRequest,
+) -> std::result::Result<(
+        models::NotificationPostRequest,
+), ValidationErrors>
+{
+              let b = NotificationSlashPostBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+    body,
+))
+}
+/// NotificationSlashPost - POST /v5/notifications
+#[tracing::instrument(skip_all)]
+async fn notification_slash_post<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+ State(api_impl): State<I>,
+          Json(body): Json<models::NotificationPostRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::notification::Notification<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    notification_slash_post_validation(
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().notification_slash_post(
+      
+      &method,
+      &host,
+      &cookies,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::notification::NotificationSlashPostResponse::Status200_SuccessfullyReceivedNotification
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::notification::NotificationSlashPostResponse::Status400_InvalidRequestParameter
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::notification::NotificationSlashPostResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn oauth_slash_conversion_token_validation(
+) -> std::result::Result<(
+), ValidationErrors>
+{
+
+Ok((
+))
+}
+/// OauthSlashConversionToken - POST /v5/oauth/conversion_token
+#[tracing::instrument(skip_all)]
+async fn oauth_slash_conversion_token<I, A, E, C>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::oauth::Oauth<E, Claims = C> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    oauth_slash_conversion_token_validation(
+    )
+  ).await.unwrap();
+
+  let Ok((
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().oauth_slash_conversion_token(
+      
+      &method,
+      &host,
+      &cookies,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::oauth::OauthSlashConversionTokenResponse::Status200_Response
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::oauth::OauthSlashConversionTokenResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -23071,6 +27020,157 @@ let result = api_impl.as_ref().oauth_slash_token(
                                                   response.body(Body::from(body_content))
                                                 },
                                                 apis::oauth::OauthSlashTokenResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct TokenSlashRevokeBodyValidator<'a> {
+          #[validate(nested)]
+          body: &'a models::TokenRevocationRequest,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn token_slash_revoke_validation(
+        body: models::TokenRevocationRequest,
+) -> std::result::Result<(
+        models::TokenRevocationRequest,
+), ValidationErrors>
+{
+              let b = TokenSlashRevokeBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+    body,
+))
+}
+/// TokenSlashRevoke - POST /v5/oauth/token/revoke
+#[tracing::instrument(skip_all)]
+async fn token_slash_revoke<I, A, E, C>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  headers: HeaderMap,
+ State(api_impl): State<I>,
+          Form(body): Form<models::TokenRevocationRequest>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::oauth::Oauth<E, Claims = C>+ apis::ApiAuthBasic<Claims = C> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+    // Authentication
+    let claims_in_auth_header = api_impl.as_ref().extract_claims_from_auth_header(apis::BasicAuthKind::Basic, &headers, "authorization").await;
+    let claims = None
+             .or(claims_in_auth_header)
+          ;
+    let Some(claims) = claims else {
+        return response_with_status_code_only(StatusCode::UNAUTHORIZED);
+    };
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    token_slash_revoke_validation(
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().token_slash_revoke(
+      
+      &method,
+      &host,
+      &cookies,
+        &claims,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::oauth::TokenSlashRevokeResponse::Status200_SuccessfulTokenRevocation
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  response.body(Body::empty())
+                                                },
+                                                apis::oauth::TokenSlashRevokeResponse::Status401_ClientAuthenticationError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::oauth::TokenSlashRevokeResponse::Status403_ClientIsNotAllowedToRevokeToken
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::oauth::TokenSlashRevokeResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -23760,7 +27860,25 @@ let result = api_impl.as_ref().pins_slash_create(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::pins::PinsSlashCreateResponse::Status201_SuccessfulPinCreation
+                                                apis::pins::PinsSlashCreateResponse::Status200_TheRequestHasSucceeded
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashCreateResponse::Status201_ResourceCreateOperationCompletedSuccessfully
                                                     (body)
                                                 => {
                                                   let mut response = response.status(201);
@@ -23778,7 +27896,7 @@ let result = api_impl.as_ref().pins_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashCreateResponse::Status400_InvalidPinParametersResponse
+                                                apis::pins::PinsSlashCreateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -23796,7 +27914,25 @@ let result = api_impl.as_ref().pins_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashCreateResponse::Status403_ThePin
+                                                apis::pins::PinsSlashCreateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashCreateResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -23814,7 +27950,7 @@ let result = api_impl.as_ref().pins_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashCreateResponse::Status404_BoardOrSectionNotFound
+                                                apis::pins::PinsSlashCreateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -23832,7 +27968,7 @@ let result = api_impl.as_ref().pins_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashCreateResponse::Status429_ThisRequestExceededARateLimit
+                                                apis::pins::PinsSlashCreateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
                                                     (body)
                                                 => {
                                                   let mut response = response.status(429);
@@ -23850,7 +27986,7 @@ let result = api_impl.as_ref().pins_slash_create(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashCreateResponse::Status0_UnexpectedError
+                                                apis::pins::PinsSlashCreateResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -23950,12 +28086,48 @@ let result = api_impl.as_ref().pins_slash_delete(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::pins::PinsSlashDeleteResponse::Status204_SuccessfullyDeletedPin
+                                                apis::pins::PinsSlashDeleteResponse::Status204_ResourceDeletedSuccessfully
                                                 => {
                                                   let mut response = response.status(204);
                                                   response.body(Body::empty())
                                                 },
-                                                apis::pins::PinsSlashDeleteResponse::Status403_NotAuthorizedToAccessBoardOrPin
+                                                apis::pins::PinsSlashDeleteResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashDeleteResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashDeleteResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -23973,7 +28145,7 @@ let result = api_impl.as_ref().pins_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashDeleteResponse::Status404_PinNotFound
+                                                apis::pins::PinsSlashDeleteResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -23991,7 +28163,25 @@ let result = api_impl.as_ref().pins_slash_delete(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashDeleteResponse::Status0_UnexpectedError
+                                                apis::pins::PinsSlashDeleteResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashDeleteResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -24091,7 +28281,7 @@ let result = api_impl.as_ref().pins_slash_get(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::pins::PinsSlashGetResponse::Status200_Response
+                                                apis::pins::PinsSlashGetResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -24109,7 +28299,43 @@ let result = api_impl.as_ref().pins_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashGetResponse::Status403_NotAuthorizedToAccessBoardOrPin
+                                                apis::pins::PinsSlashGetResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashGetResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashGetResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -24127,7 +28353,7 @@ let result = api_impl.as_ref().pins_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashGetResponse::Status404_PinNotFound
+                                                apis::pins::PinsSlashGetResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -24145,7 +28371,25 @@ let result = api_impl.as_ref().pins_slash_get(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashGetResponse::Status0_UnexpectedError
+                                                apis::pins::PinsSlashGetResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashGetResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -24237,7 +28481,7 @@ let result = api_impl.as_ref().pins_slash_list(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::pins::PinsSlashListResponse::Status200_Success
+                                                apis::pins::PinsSlashListResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -24255,7 +28499,7 @@ let result = api_impl.as_ref().pins_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashListResponse::Status400_InvalidPinFilterValue
+                                                apis::pins::PinsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
                                                     (body)
                                                 => {
                                                   let mut response = response.status(400);
@@ -24273,7 +28517,79 @@ let result = api_impl.as_ref().pins_slash_list(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashListResponse::Status0_UnexpectedError
+                                                apis::pins::PinsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashListResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -24559,7 +28875,7 @@ let result = api_impl.as_ref().pins_slash_update(
 
   let resp = match result {
                                             Ok(rsp) => match rsp {
-                                                apis::pins::PinsSlashUpdateResponse::Status200_Response
+                                                apis::pins::PinsSlashUpdateResponse::Status200_TheRequestHasSucceeded
                                                     (body)
                                                 => {
                                                   let mut response = response.status(200);
@@ -24577,7 +28893,43 @@ let result = api_impl.as_ref().pins_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashUpdateResponse::Status403_NotAuthorizedToUpdatePin
+                                                apis::pins::PinsSlashUpdateResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashUpdateResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::pins::PinsSlashUpdateResponse::Status403_TheRequestWasValid
                                                     (body)
                                                 => {
                                                   let mut response = response.status(403);
@@ -24595,7 +28947,7 @@ let result = api_impl.as_ref().pins_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashUpdateResponse::Status404_PinNotFound
+                                                apis::pins::PinsSlashUpdateResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
                                                     (body)
                                                 => {
                                                   let mut response = response.status(404);
@@ -24613,7 +28965,7 @@ let result = api_impl.as_ref().pins_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashUpdateResponse::Status429_ThisRequestExceededARateLimit
+                                                apis::pins::PinsSlashUpdateResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
                                                     (body)
                                                 => {
                                                   let mut response = response.status(429);
@@ -24631,7 +28983,607 @@ let result = api_impl.as_ref().pins_slash_update(
                                                       })).await.unwrap()?;
                                                   response.body(Body::from(body_content))
                                                 },
-                                                apis::pins::PinsSlashUpdateResponse::Status0_UnexpectedError
+                                                apis::pins::PinsSlashUpdateResponse::Status0_AnUnexpectedErrorResponse
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn trends_featured_topics_slash_list_validation(
+  query_params: models::TrendsFeaturedTopicsSlashListQueryParams,
+) -> std::result::Result<(
+  models::TrendsFeaturedTopicsSlashListQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// TrendsFeaturedTopicsSlashList - GET /v5/trends/topics/featured
+#[tracing::instrument(skip_all)]
+async fn trends_featured_topics_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::TrendsFeaturedTopicsSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::product_categories::ProductCategories<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    trends_featured_topics_slash_list_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().trends_featured_topics_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status200_TheRequestHasSucceeded
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsFeaturedTopicsSlashListResponse::Status0_AnUnexpectedErrorResponse
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn trends_product_categories_details_slash_list_validation(
+  query_params: models::TrendsProductCategoriesDetailsSlashListQueryParams,
+) -> std::result::Result<(
+  models::TrendsProductCategoriesDetailsSlashListQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// TrendsProductCategoriesDetailsSlashList - GET /v5/trends/product_categories/details
+#[tracing::instrument(skip_all)]
+async fn trends_product_categories_details_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::TrendsProductCategoriesDetailsSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::product_categories::ProductCategories<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    trends_product_categories_details_slash_list_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().trends_product_categories_details_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status200_TheRequestHasSucceeded
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesDetailsSlashListResponse::Status0_AnUnexpectedErrorResponse
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn trends_product_categories_trending_slash_list_validation(
+  query_params: models::TrendsProductCategoriesTrendingSlashListQueryParams,
+) -> std::result::Result<(
+  models::TrendsProductCategoriesTrendingSlashListQueryParams,
+), ValidationErrors>
+{
+  query_params.validate()?;
+
+Ok((
+  query_params,
+))
+}
+/// TrendsProductCategoriesTrendingSlashList - GET /v5/trends/product_categories/trending
+#[tracing::instrument(skip_all)]
+async fn trends_product_categories_trending_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  QueryExtra(query_params): QueryExtra<models::TrendsProductCategoriesTrendingSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::product_categories::ProductCategories<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    trends_product_categories_trending_slash_list_validation(
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().trends_product_categories_trending_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status200_TheRequestHasSucceeded
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(401);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status403_TheRequestWasValid
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(403);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(429);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::product_categories::TrendsProductCategoriesTrendingSlashListResponse::Status0_AnUnexpectedErrorResponse
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);
@@ -25248,6 +30200,661 @@ let result = api_impl.as_ref().product_groups_slash_analytics(
                                                   response.body(Body::from(body_content))
                                                 },
                                                 apis::product_group_promotions::ProductGroupsSlashAnalyticsResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct PromotionsSlashCreateBodyValidator<'a> {
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
+          body: &'a Vec<models::PromotionCreateRequest>,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn promotions_slash_create_validation(
+  path_params: models::PromotionsSlashCreatePathParams,
+        body: Vec<models::PromotionCreateRequest>,
+) -> std::result::Result<(
+  models::PromotionsSlashCreatePathParams,
+        Vec<models::PromotionCreateRequest>,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = PromotionsSlashCreateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// PromotionsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/promotions
+#[tracing::instrument(skip_all)]
+async fn promotions_slash_create<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::PromotionsSlashCreatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<Vec<models::PromotionCreateRequest>>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::promotions::Promotions<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    promotions_slash_create_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().promotions_slash_create(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::promotions::PromotionsSlashCreateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashCreateResponse::Status400_InvalidCreatePromotionsRequestParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashCreateResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn promotions_slash_delete_validation(
+  path_params: models::PromotionsSlashDeletePathParams,
+) -> std::result::Result<(
+  models::PromotionsSlashDeletePathParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+
+Ok((
+  path_params,
+))
+}
+/// PromotionsSlashDelete - DELETE /v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}
+#[tracing::instrument(skip_all)]
+async fn promotions_slash_delete<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::PromotionsSlashDeletePathParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::promotions::Promotions<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    promotions_slash_delete_validation(
+        path_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().promotions_slash_delete(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::promotions::PromotionsSlashDeleteResponse::Status204_PromotionDeletedSuccessfully
+                                                => {
+                                                  let mut response = response.status(204);
+                                                  response.body(Body::empty())
+                                                },
+                                                apis::promotions::PromotionsSlashDeleteResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn promotions_slash_get_validation(
+  path_params: models::PromotionsSlashGetPathParams,
+) -> std::result::Result<(
+  models::PromotionsSlashGetPathParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+
+Ok((
+  path_params,
+))
+}
+/// PromotionsSlashGet - GET /v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}
+#[tracing::instrument(skip_all)]
+async fn promotions_slash_get<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::PromotionsSlashGetPathParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::promotions::Promotions<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    promotions_slash_get_validation(
+        path_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().promotions_slash_get(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::promotions::PromotionsSlashGetResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashGetResponse::Status404_ThePromotionIDForTheGivenAdAccountIDWasNotFound
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(404);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashGetResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+
+#[tracing::instrument(skip_all)]
+fn promotions_slash_list_validation(
+  path_params: models::PromotionsSlashListPathParams,
+  query_params: models::PromotionsSlashListQueryParams,
+) -> std::result::Result<(
+  models::PromotionsSlashListPathParams,
+  models::PromotionsSlashListQueryParams,
+), ValidationErrors>
+{
+  path_params.validate()?;
+  query_params.validate()?;
+
+Ok((
+  path_params,
+  query_params,
+))
+}
+/// PromotionsSlashList - GET /v5/ad_accounts/{ad_account_id}/promotions
+#[tracing::instrument(skip_all)]
+async fn promotions_slash_list<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::PromotionsSlashListPathParams>,
+  QueryExtra(query_params): QueryExtra<models::PromotionsSlashListQueryParams>,
+ State(api_impl): State<I>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::promotions::Promotions<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    promotions_slash_list_validation(
+        path_params,
+        query_params,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+    query_params,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().promotions_slash_list(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+        &query_params,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::promotions::PromotionsSlashListResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashListResponse::Status400_InvalidAdAccountPromotionsParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashListResponse::Status0_UnexpectedError
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(0);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                            },
+                                            Err(why) => {
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                            },
+                                        };
+
+
+                                        resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
+}
+
+    #[derive(validator::Validate)]
+    #[allow(dead_code)]
+    struct PromotionsSlashUpdateBodyValidator<'a> {
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
+          body: &'a Vec<models::PromotionUpdateRequest>,
+    }
+
+
+#[tracing::instrument(skip_all)]
+fn promotions_slash_update_validation(
+  path_params: models::PromotionsSlashUpdatePathParams,
+        body: Vec<models::PromotionUpdateRequest>,
+) -> std::result::Result<(
+  models::PromotionsSlashUpdatePathParams,
+        Vec<models::PromotionUpdateRequest>,
+), ValidationErrors>
+{
+  path_params.validate()?;
+              let b = PromotionsSlashUpdateBodyValidator { body: &body };
+              b.validate()?;
+
+Ok((
+  path_params,
+    body,
+))
+}
+/// PromotionsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/promotions
+#[tracing::instrument(skip_all)]
+async fn promotions_slash_update<I, A, E>(
+  method: Method,
+  host: Host,
+  cookies: CookieJar,
+  Path(path_params): Path<models::PromotionsSlashUpdatePathParams>,
+ State(api_impl): State<I>,
+          Json(body): Json<Vec<models::PromotionUpdateRequest>>,
+) -> Result<Response, StatusCode>
+where
+    I: AsRef<A> + Send + Sync,
+    A: apis::promotions::Promotions<E> + Send + Sync,
+    E: std::fmt::Debug + Send + Sync + 'static,
+        {
+
+
+
+
+      #[allow(clippy::redundant_closure)]
+      let validation = tokio::task::spawn_blocking(move ||
+    promotions_slash_update_validation(
+        path_params,
+          body,
+    )
+  ).await.unwrap();
+
+  let Ok((
+    path_params,
+      body,
+  )) = validation else {
+    return Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body(Body::from(validation.unwrap_err().to_string()))
+            .map_err(|_| StatusCode::BAD_REQUEST);
+  };
+
+
+
+let result = api_impl.as_ref().promotions_slash_update(
+      
+      &method,
+      &host,
+      &cookies,
+        &path_params,
+              &body,
+  ).await;
+
+  let mut response = Response::builder();
+
+  let resp = match result {
+                                            Ok(rsp) => match rsp {
+                                                apis::promotions::PromotionsSlashUpdateResponse::Status200_Success
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(200);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashUpdateResponse::Status400_InvalidCreatePromotionsRequestParameters
+                                                    (body)
+                                                => {
+                                                  let mut response = response.status(400);
+                                                  {
+                                                    let mut response_headers = response.headers_mut().unwrap();
+                                                    response_headers.insert(
+                                                        CONTENT_TYPE,
+                                                        HeaderValue::from_static("application/json"));
+                                                  }
+
+                                                  let body_content =  tokio::task::spawn_blocking(move ||
+                                                      serde_json::to_vec(&body).map_err(|e| {
+                                                        error!(error = ?e);
+                                                        StatusCode::INTERNAL_SERVER_ERROR
+                                                      })).await.unwrap()?;
+                                                  response.body(Body::from(body_content))
+                                                },
+                                                apis::promotions::PromotionsSlashUpdateResponse::Status0_UnexpectedError
                                                     (body)
                                                 => {
                                                   let mut response = response.status(0);

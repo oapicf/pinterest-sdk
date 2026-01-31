@@ -13,42 +13,42 @@ import AnyCodable
 /** Ad entities to get in bulk request. */
 public struct BulkDownloadRequest: Codable, JSONEncodable, Hashable {
 
-    public static let entityTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
+    public static let entityTypesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
     public static let updatedSinceRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** All entity types specified will be downloaded. Fewer types result in faster downloads. */
-    public var entityTypes: [BulkEntityType]?
+    public var campaignFilter: BulkDownloadRequestCampaignFilter?
     /** All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded. */
     public var entityIds: [String]?
+    /** All entity types specified will be downloaded. Fewer types result in faster downloads. */
+    public var entityTypes: [BulkEntityType]?
+    public var outputFormat: BulkOutputFormat? = "JSON"
     /** Unix UTC timestamp to retrieve all entities that have changed since this time. */
     public var updatedSince: String?
-    public var campaignFilter: BulkDownloadRequestCampaignFilter?
-    public var outputFormat: BulkOutputFormat? = "JSON"
 
-    public init(entityTypes: [BulkEntityType]? = nil, entityIds: [String]? = nil, updatedSince: String? = nil, campaignFilter: BulkDownloadRequestCampaignFilter? = nil, outputFormat: BulkOutputFormat? = "JSON") {
-        self.entityTypes = entityTypes
-        self.entityIds = entityIds
-        self.updatedSince = updatedSince
+    public init(campaignFilter: BulkDownloadRequestCampaignFilter? = nil, entityIds: [String]? = nil, entityTypes: [BulkEntityType]? = nil, outputFormat: BulkOutputFormat? = "JSON", updatedSince: String? = nil) {
         self.campaignFilter = campaignFilter
+        self.entityIds = entityIds
+        self.entityTypes = entityTypes
         self.outputFormat = outputFormat
+        self.updatedSince = updatedSince
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case entityTypes = "entity_types"
-        case entityIds = "entity_ids"
-        case updatedSince = "updated_since"
         case campaignFilter = "campaign_filter"
+        case entityIds = "entity_ids"
+        case entityTypes = "entity_types"
         case outputFormat = "output_format"
+        case updatedSince = "updated_since"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(entityTypes, forKey: .entityTypes)
-        try container.encodeIfPresent(entityIds, forKey: .entityIds)
-        try container.encodeIfPresent(updatedSince, forKey: .updatedSince)
         try container.encodeIfPresent(campaignFilter, forKey: .campaignFilter)
+        try container.encodeIfPresent(entityIds, forKey: .entityIds)
+        try container.encodeIfPresent(entityTypes, forKey: .entityTypes)
         try container.encodeIfPresent(outputFormat, forKey: .outputFormat)
+        try container.encodeIfPresent(updatedSince, forKey: .updatedSince)
     }
 }
 

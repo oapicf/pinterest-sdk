@@ -16,24 +16,8 @@ void main() {
   // final instance = MultipleProductGroupsInner();
 
   group('test MultipleProductGroupsInner', () {
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
     // String description
     test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // boolean indicator of whether the product group is being featured or not
-    // bool isFeatured (default value: false)
-    test('to test the property `isFeatured`', () async {
-      // TODO
-    });
-
-    // CatalogsCreativeAssetsProductGroupFilters filters
-    test('to test the property `filters`', () async {
       // TODO
     });
 
@@ -43,14 +27,30 @@ void main() {
       // TODO
     });
 
-    // String catalogType
-    test('to test the property `catalogType`', () async {
+    // CatalogsCreativeAssetsProductGroupFilters filters
+    test('to test the property `filters`', () async {
+      // TODO
+    });
+
+    // boolean indicator of whether the product group is being featured or not
+    // bool isFeatured (default value: false)
+    test('to test the property `isFeatured`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 
     // Catalog id pertaining to the creative assets product group.
     // String catalogId
     test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // String catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 

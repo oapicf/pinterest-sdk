@@ -19,21 +19,17 @@ public struct OauthAccessTokenRequestRefresh: Codable, JSONEncodable, Hashable {
     }
     public var refreshToken: String
     public var scope: String?
-    /** Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". */
-    public var refreshOn: Bool?
     public var grantType: GrantType
 
-    public init(refreshToken: String, scope: String? = nil, refreshOn: Bool? = nil, grantType: GrantType) {
+    public init(refreshToken: String, scope: String? = nil, grantType: GrantType) {
         self.refreshToken = refreshToken
         self.scope = scope
-        self.refreshOn = refreshOn
         self.grantType = grantType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case refreshToken = "refresh_token"
         case scope
-        case refreshOn = "refresh_on"
         case grantType = "grant_type"
     }
 
@@ -43,7 +39,6 @@ public struct OauthAccessTokenRequestRefresh: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(refreshToken, forKey: .refreshToken)
         try container.encodeIfPresent(scope, forKey: .scope)
-        try container.encodeIfPresent(refreshOn, forKey: .refreshOn)
         try container.encode(grantType, forKey: .grantType)
     }
 }

@@ -1,10 +1,10 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.Media;
 import com.prokarma.pkmst.model.MediaList200Response;
 import com.prokarma.pkmst.model.MediaUpload;
-import com.prokarma.pkmst.model.MediaUploadDetails;
-import com.prokarma.pkmst.model.MediaUploadRequest;
+import com.prokarma.pkmst.model.MediaUploadCreate;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class MediaApiController implements MediaApi {
     private final ObjectMapper objectMapper;
@@ -36,9 +36,39 @@ public class MediaApiController implements MediaApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<MediaUpload> mediaCreate(@ApiParam(value = "Create a media upload request" ,required=true )   @RequestBody MediaUploadRequest mediaUploadRequest,
+    public ResponseEntity<MediaUpload> mediaCreate(@ApiParam(value = "" ,required=true )   @RequestBody MediaUploadCreate mediaUploadCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<MediaUpload>(objectMapper.readValue("", MediaUpload.class), HttpStatus.OK);
@@ -52,31 +82,76 @@ public class MediaApiController implements MediaApi {
         return new ResponseEntity<MediaUpload>(HttpStatus.OK);
     }
 
-    public ResponseEntity<MediaUploadDetails> mediaGet(@ApiParam(value = "Media identifier",required=true ) @PathVariable("media_id") String mediaId,
+    public ResponseEntity<Media> mediaGet(@ApiParam(value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.",required=true ) @PathVariable("media_id") String mediaId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<MediaUploadDetails>(objectMapper.readValue("", MediaUploadDetails.class), HttpStatus.OK);
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<MediaUploadDetails>(objectMapper.readValue("", MediaUploadDetails.class), HttpStatus.OK);
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<MediaUploadDetails>(objectMapper.readValue("", MediaUploadDetails.class), HttpStatus.OK);
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<MediaUploadDetails>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Media>(objectMapper.readValue("", Media.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<Media>(HttpStatus.OK);
     }
 
     public ResponseEntity<MediaList200Response> mediaList(@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaList200Response>(objectMapper.readValue("", MediaList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaList200Response>(objectMapper.readValue("", MediaList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaList200Response>(objectMapper.readValue("", MediaList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaList200Response>(objectMapper.readValue("", MediaList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MediaList200Response>(objectMapper.readValue("", MediaList200Response.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<MediaList200Response>(objectMapper.readValue("", MediaList200Response.class), HttpStatus.OK);

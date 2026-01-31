@@ -23,7 +23,7 @@ import com.squareup.moshi.JsonClass
  * An object containing the permissions a business partner has on the asset.
  *
  * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
  * @param partnerId Unique identifier of a business partner.
  * @param permissions Permission levels member or partner has on an asset.
  */
@@ -35,7 +35,7 @@ data class UpdatePartnerAssetsResult (
     @Json(name = "asset_id")
     val assetId: kotlin.String? = null,
 
-    /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     @Json(name = "asset_type")
     val assetType: kotlin.String? = null,
 

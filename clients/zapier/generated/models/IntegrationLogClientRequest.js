@@ -5,6 +5,12 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}host`,
+                label: `HTTP request host from host header. - [${labelPrefix}host]`,
+                required: true,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}method`,
                 label: `[${labelPrefix}method]`,
                 required: true,
@@ -20,12 +26,6 @@ module.exports = {
                     'TRACE',
                     'PATCH',
                 ],
-            },
-            {
-                key: `${keyPrefix}host`,
-                label: `HTTP request host from host header. - [${labelPrefix}host]`,
-                required: true,
-                type: 'string',
             },
             {
                 key: `${keyPrefix}path`,
@@ -53,8 +53,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'method': bundle.inputData?.[`${keyPrefix}method`],
             'host': bundle.inputData?.[`${keyPrefix}host`],
+            'method': bundle.inputData?.[`${keyPrefix}method`],
             'path': bundle.inputData?.[`${keyPrefix}path`],
             'request_headers': bundle.inputData?.[`${keyPrefix}request_headers`],
             'response_headers': bundle.inputData?.[`${keyPrefix}response_headers`],

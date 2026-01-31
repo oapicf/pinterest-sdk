@@ -8,8 +8,8 @@ The class is defined in **[ItemsIssuesList200Response.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CatalogsItemValidationIssues&gt;`](CatalogsItemValidationIssues.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;CatalogsItemValidationIssues&gt;`](CatalogsItemValidationIssues.md) |  | 
 
 
 

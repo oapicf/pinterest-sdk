@@ -5,19 +5,19 @@ context("Test ItemBatchRecord")
 
 model_instance <- ItemBatchRecord$new()
 
+test_that("attributes", {
+  # tests for the property `attributes` (ItemAttributesRequest)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
+})
+
 test_that("item_id", {
   # tests for the property `item_id` (character)
   # The catalog item id in the merchant namespace
 
   # uncomment below to test the property
   #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
-})
-
-test_that("attributes", {
-  # tests for the property `attributes` (ItemAttributesRequest)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
 })
 
 test_that("update_mask", {

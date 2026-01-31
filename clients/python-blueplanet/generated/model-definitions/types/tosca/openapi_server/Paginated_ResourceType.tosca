@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Paginated"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Paginated"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  Paginated {
+    title = Paginated
+    description = Paginated
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type =  
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Paginated {
+    title = Paginated
+    description = Paginated
+    implements = openapi_server.resourceTypes.Paginated
+
+  }
+}

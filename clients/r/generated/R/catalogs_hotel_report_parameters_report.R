@@ -16,15 +16,18 @@ CatalogsHotelReportParametersReport <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("CatalogsReportDistributionIssueFilter", "CatalogsReportFeedIngestionFilter"),
+    one_of = list("CatalogsReportAllItemsFilter", "CatalogsReportDistributionIssueFilter", "CatalogsReportFeedIngestionFilter"),
 
     #' @description
     #' Initialize a new CatalogsHotelReportParametersReport.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsReportDistributionIssueFilter", "CatalogsReportFeedIngestionFilter"
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsReportAllItemsFilter", "CatalogsReportDistributionIssueFilter", "CatalogsReportFeedIngestionFilter"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsReportAllItemsFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsReportAllItemsFilter"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsReportDistributionIssueFilter") {
         self$actual_instance <- instance
         self$actual_type <- "CatalogsReportDistributionIssueFilter"
@@ -32,7 +35,7 @@ CatalogsHotelReportParametersReport <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "CatalogsReportFeedIngestionFilter"
       } else {
-        stop(paste("Failed to initialize CatalogsHotelReportParametersReport with oneOf schemas CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsHotelReportParametersReport with oneOf schemas CatalogsReportAllItemsFilter, CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -90,17 +93,32 @@ CatalogsHotelReportParametersReport <- R6::R6Class(
         error_messages <- append(error_messages, `CatalogsReportDistributionIssueFilter_result`["message"])
       }
 
+      `CatalogsReportAllItemsFilter_result` <- tryCatch({
+          `CatalogsReportAllItemsFilter`$public_methods$validateJSON(input)
+          `CatalogsReportAllItemsFilter_instance` <- `CatalogsReportAllItemsFilter`$new()
+          instance <- `CatalogsReportAllItemsFilter_instance`$fromJSON(input)
+          instance_type <- "CatalogsReportAllItemsFilter"
+          matched_schemas <- append(matched_schemas, "CatalogsReportAllItemsFilter")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsReportAllItemsFilter_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsReportAllItemsFilter_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into CatalogsHotelReportParametersReport with oneOf schemas CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into CatalogsHotelReportParametersReport with oneOf schemas CatalogsReportAllItemsFilter, CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into CatalogsHotelReportParametersReport with oneOf schemas CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Details: >>",
+        stop(paste("No match found when deserializing the input into CatalogsHotelReportParametersReport with oneOf schemas CatalogsReportAllItemsFilter, CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

@@ -15,5 +15,9 @@
 
 * `KEYWORD` (value: `"KEYWORD"`)
 
+* `LABEL` (value: `"LABEL"`)
+
+* `SCHEDULE` (value: `"SCHEDULE"`)
+
 
 

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `UserWebsiteSummary`
 --
-SELECT `website`, `status`, `verified_at` FROM `UserWebsiteSummary` WHERE 1;
+SELECT `status`, `verified_at`, `website` FROM `UserWebsiteSummary` WHERE 1;
 
 --
 -- INSERT template for table `UserWebsiteSummary`
 --
-INSERT INTO `UserWebsiteSummary`(`website`, `status`, `verified_at`) VALUES (?, ?, ?);
+INSERT INTO `UserWebsiteSummary`(`status`, `verified_at`, `website`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `UserWebsiteSummary`
 --
-UPDATE `UserWebsiteSummary` SET `website` = ?, `status` = ?, `verified_at` = ? WHERE 1;
+UPDATE `UserWebsiteSummary` SET `status` = ?, `verified_at` = ?, `website` = ? WHERE 1;
 
 --
 -- DELETE template for table `UserWebsiteSummary`

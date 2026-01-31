@@ -15,6 +15,11 @@ module.exports = {
                 type: 'number',
             },
             {
+                key: `${keyPrefix}exceptions`,
+                label: `Customer list errors - [${labelPrefix}exceptions]`,
+                dict: true,
+            },
+            {
                 key: `${keyPrefix}id`,
                 label: `Customer list ID. - [${labelPrefix}id]`,
                 type: 'string',
@@ -60,11 +65,6 @@ module.exports = {
                 label: `Last update time. Unix timestamp in seconds. - [${labelPrefix}updated_time]`,
                 type: 'number',
             },
-            {
-                key: `${keyPrefix}exceptions`,
-                label: `Customer list errors - [${labelPrefix}exceptions]`,
-                dict: true,
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -72,6 +72,7 @@ module.exports = {
         return {
             'ad_account_id': bundle.inputData?.[`${keyPrefix}ad_account_id`],
             'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
+            'exceptions': bundle.inputData?.[`${keyPrefix}exceptions`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'num_batches': bundle.inputData?.[`${keyPrefix}num_batches`],
@@ -80,7 +81,6 @@ module.exports = {
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'type': bundle.inputData?.[`${keyPrefix}type`],
             'updated_time': bundle.inputData?.[`${keyPrefix}updated_time`],
-            'exceptions': bundle.inputData?.[`${keyPrefix}exceptions`],
         }
     },
 }

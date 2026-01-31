@@ -1,12 +1,17 @@
 namespace OpenAPI
 
 open OpenAPI.Model.Board
+open OpenAPI.Model.BoardCreate
+open OpenAPI.Model.BoardPrivacyFilter
 open OpenAPI.Model.BoardSection
 open OpenAPI.Model.BoardSectionsList200Response
-open OpenAPI.Model.BoardUpdate
+open OpenAPI.Model.BoardWithUpdatePrivacy
+open OpenAPI.Model.BoardWithUpdatePrivacyUpdate
 open OpenAPI.Model.BoardsList200Response
 open OpenAPI.Model.BoardsListPins200Response
+open OpenAPI.Model.CreativeType
 open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -273,9 +278,14 @@ module BoardsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type BoardsCreateBodyParams = Board
+    type BoardsCreateBodyParams = BoardCreate
     //#endregion
 
+
+    type BoardsCreateStatusCode200Response = {
+      content:Board;
+      
+    }
 
     type BoardsCreateStatusCode201Response = {
       content:Board;
@@ -283,15 +293,35 @@ module BoardsApiHandlerParams =
     }
 
     type BoardsCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BoardsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BoardsCreateResult = BoardsCreateStatusCode201 of BoardsCreateStatusCode201Response|BoardsCreateStatusCode400 of BoardsCreateStatusCode400Response|BoardsCreateDefaultStatusCode of BoardsCreateDefaultStatusCodeResponse
+    type BoardsCreateResult = BoardsCreateStatusCode200 of BoardsCreateStatusCode200Response|BoardsCreateStatusCode201 of BoardsCreateStatusCode201Response|BoardsCreateStatusCode400 of BoardsCreateStatusCode400Response|BoardsCreateStatusCode401 of BoardsCreateStatusCode401Response|BoardsCreateStatusCode403 of BoardsCreateStatusCode403Response|BoardsCreateStatusCode404 of BoardsCreateStatusCode404Response|BoardsCreateStatusCode429 of BoardsCreateStatusCode429Response|BoardsCreateDefaultStatusCode of BoardsCreateDefaultStatusCodeResponse
 
     type BoardsCreateArgs = {
       queryParams:Result<BoardsCreateQueryParams,string>;
@@ -318,31 +348,36 @@ module BoardsApiHandlerParams =
       
     }
 
+    type BoardsDeleteStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsDeleteStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
     type BoardsDeleteStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BoardsDeleteStatusCode404Response = {
-      content:Error;
-      
-    }
-
-    type BoardsDeleteStatusCode409Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BoardsDeleteStatusCode429Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BoardsDeleteDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BoardsDeleteResult = BoardsDeleteStatusCode204 of BoardsDeleteStatusCode204Response|BoardsDeleteStatusCode403 of BoardsDeleteStatusCode403Response|BoardsDeleteStatusCode404 of BoardsDeleteStatusCode404Response|BoardsDeleteStatusCode409 of BoardsDeleteStatusCode409Response|BoardsDeleteStatusCode429 of BoardsDeleteStatusCode429Response|BoardsDeleteDefaultStatusCode of BoardsDeleteDefaultStatusCodeResponse
+    type BoardsDeleteResult = BoardsDeleteStatusCode204 of BoardsDeleteStatusCode204Response|BoardsDeleteStatusCode400 of BoardsDeleteStatusCode400Response|BoardsDeleteStatusCode401 of BoardsDeleteStatusCode401Response|BoardsDeleteStatusCode403 of BoardsDeleteStatusCode403Response|BoardsDeleteStatusCode404 of BoardsDeleteStatusCode404Response|BoardsDeleteStatusCode429 of BoardsDeleteStatusCode429Response|BoardsDeleteDefaultStatusCode of BoardsDeleteDefaultStatusCodeResponse
 
     type BoardsDeleteArgs = {
       pathParams:BoardsDeletePathParams;
@@ -369,16 +404,36 @@ module BoardsApiHandlerParams =
       
     }
 
+    type BoardsGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
     type BoardsGetStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BoardsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BoardsGetResult = BoardsGetStatusCode200 of BoardsGetStatusCode200Response|BoardsGetStatusCode404 of BoardsGetStatusCode404Response|BoardsGetDefaultStatusCode of BoardsGetDefaultStatusCodeResponse
+    type BoardsGetResult = BoardsGetStatusCode200 of BoardsGetStatusCode200Response|BoardsGetStatusCode400 of BoardsGetStatusCode400Response|BoardsGetStatusCode401 of BoardsGetStatusCode401Response|BoardsGetStatusCode403 of BoardsGetStatusCode403Response|BoardsGetStatusCode404 of BoardsGetStatusCode404Response|BoardsGetStatusCode429 of BoardsGetStatusCode429Response|BoardsGetDefaultStatusCode of BoardsGetDefaultStatusCodeResponse
 
     type BoardsGetArgs = {
       pathParams:BoardsGetPathParams;
@@ -391,13 +446,13 @@ module BoardsApiHandlerParams =
       adAccountId : string option;
 
 
+      privacy : BoardPrivacyFilter option;
+
+
       bookmark : string option;
 
 
       pageSize : int option;
-
-
-      privacy : string option;
 
     }
     //#endregion
@@ -408,11 +463,36 @@ module BoardsApiHandlerParams =
       
     }
 
-    type BoardsListDefaultStatusCodeResponse = {
-      content:Error;
+    type BoardsListStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type BoardsListResult = BoardsListStatusCode200 of BoardsListStatusCode200Response|BoardsListDefaultStatusCode of BoardsListDefaultStatusCodeResponse
+
+    type BoardsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsListStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsListDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type BoardsListResult = BoardsListStatusCode200 of BoardsListStatusCode200Response|BoardsListStatusCode400 of BoardsListStatusCode400Response|BoardsListStatusCode401 of BoardsListStatusCode401Response|BoardsListStatusCode403 of BoardsListStatusCode403Response|BoardsListStatusCode404 of BoardsListStatusCode404Response|BoardsListStatusCode429 of BoardsListStatusCode429Response|BoardsListDefaultStatusCode of BoardsListDefaultStatusCodeResponse
 
     type BoardsListArgs = {
       queryParams:Result<BoardsListQueryParams,string>;
@@ -433,7 +513,7 @@ module BoardsApiHandlerParams =
       pageSize : int option;
 
 
-      creativeTypes : string[] option;
+      creativeTypes : CreativeType[] option;
 
 
       adAccountId : string option;
@@ -482,35 +562,45 @@ module BoardsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type BoardsUpdateBodyParams = BoardUpdate
+    type BoardsUpdateBodyParams = BoardWithUpdatePrivacyUpdate
     //#endregion
 
 
     type BoardsUpdateStatusCode200Response = {
-      content:Board;
+      content:BoardWithUpdatePrivacy;
       
     }
 
     type BoardsUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsUpdateStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type BoardsUpdateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BoardsUpdateStatusCode404Response = {
+      content:PinterestLibError;
       
     }
 
     type BoardsUpdateStatusCode429Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BoardsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BoardsUpdateResult = BoardsUpdateStatusCode200 of BoardsUpdateStatusCode200Response|BoardsUpdateStatusCode400 of BoardsUpdateStatusCode400Response|BoardsUpdateStatusCode403 of BoardsUpdateStatusCode403Response|BoardsUpdateStatusCode429 of BoardsUpdateStatusCode429Response|BoardsUpdateDefaultStatusCode of BoardsUpdateDefaultStatusCodeResponse
+    type BoardsUpdateResult = BoardsUpdateStatusCode200 of BoardsUpdateStatusCode200Response|BoardsUpdateStatusCode400 of BoardsUpdateStatusCode400Response|BoardsUpdateStatusCode401 of BoardsUpdateStatusCode401Response|BoardsUpdateStatusCode403 of BoardsUpdateStatusCode403Response|BoardsUpdateStatusCode404 of BoardsUpdateStatusCode404Response|BoardsUpdateStatusCode429 of BoardsUpdateStatusCode429Response|BoardsUpdateDefaultStatusCode of BoardsUpdateDefaultStatusCodeResponse
 
     type BoardsUpdateArgs = {
       pathParams:BoardsUpdatePathParams;

@@ -5,15 +5,15 @@
   "name": "InviteExceptionResponse",
   "fields": [
     {
-      "name": "invite_or_request_id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier of the invite/request.",
-      "default": null
-    },
-    {
       "name": "code",
       "type": ["null", "int"],
       "doc": "Error code associated with the error in performing the action on the invite/request.",
+      "default": null
+    },
+    {
+      "name": "invite_or_request_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the invite/request.",
       "default": null
     },
     {

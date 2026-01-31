@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `SSIOAccountItem`
 --
-SELECT `id`, `io_terms_id`, `io_terms`, `us_terms_id`, `us_terms`, `row_terms_id`, `row_terms`, `io_type`, `addresses` FROM `SSIOAccountItem` WHERE 1;
+SELECT `addresses`, `id`, `io_terms`, `io_terms_id`, `io_type`, `row_terms`, `row_terms_id`, `us_terms`, `us_terms_id` FROM `SSIOAccountItem` WHERE 1;
 
 --
 -- INSERT template for table `SSIOAccountItem`
 --
-INSERT INTO `SSIOAccountItem`(`id`, `io_terms_id`, `io_terms`, `us_terms_id`, `us_terms`, `row_terms_id`, `row_terms`, `io_type`, `addresses`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `SSIOAccountItem`(`addresses`, `id`, `io_terms`, `io_terms_id`, `io_type`, `row_terms`, `row_terms_id`, `us_terms`, `us_terms_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `SSIOAccountItem`
 --
-UPDATE `SSIOAccountItem` SET `id` = ?, `io_terms_id` = ?, `io_terms` = ?, `us_terms_id` = ?, `us_terms` = ?, `row_terms_id` = ?, `row_terms` = ?, `io_type` = ?, `addresses` = ? WHERE 1;
+UPDATE `SSIOAccountItem` SET `addresses` = ?, `id` = ?, `io_terms` = ?, `io_terms_id` = ?, `io_type` = ?, `row_terms` = ?, `row_terms_id` = ?, `us_terms` = ?, `us_terms_id` = ? WHERE 1;
 
 --
 -- DELETE template for table `SSIOAccountItem`

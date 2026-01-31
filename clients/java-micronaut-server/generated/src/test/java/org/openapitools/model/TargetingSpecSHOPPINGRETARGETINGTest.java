@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,18 +8,26 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 /**
- * Model tests for TargetingSpecSHOPPINGRETARGETING
+ * Model tests for TargetingSpecShoppingRetargeting
  */
 @MicronautTest
-public class TargetingSpecSHOPPINGRETARGETINGTest {
-    private final TargetingSpecSHOPPINGRETARGETING model = null;
+public class TargetingSpecShoppingRetargetingTest {
+    private final TargetingSpecShoppingRetargeting model = null;
 
     /**
-     * Model tests for TargetingSpecSHOPPINGRETARGETING
+     * Model tests for TargetingSpecShoppingRetargeting
      */
     @Test
-    public void testTargetingSpecSHOPPINGRETARGETING() {
-        // TODO: test TargetingSpecSHOPPINGRETARGETING
+    public void testTargetingSpecShoppingRetargeting() {
+        // TODO: test TargetingSpecShoppingRetargeting
+    }
+
+    /**
+     * Test the property 'exclusionWindow'
+     */
+    @Test
+    public void exclusionWindowTest() {
+        // TODO: test exclusionWindow
     }
 
     /**
@@ -37,14 +44,6 @@ public class TargetingSpecSHOPPINGRETARGETINGTest {
     @Test
     public void tagTypesTest() {
         // TODO: test tagTypes
-    }
-
-    /**
-     * Test the property 'exclusionWindow'
-     */
-    @Test
-    public void exclusionWindowTest() {
-        // TODO: test exclusionWindow
     }
 
 }

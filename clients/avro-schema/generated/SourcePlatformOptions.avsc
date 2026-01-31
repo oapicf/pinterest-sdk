@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "List of source platforms for a conversion event.",
+  "name": "SourcePlatformOptions",
+  "symbols": [
+    "WEB",
+    "MOBILE",
+    "MOBILE_ANDROID",
+    "MOBILE_IOS",
+    "OFFLINE",
+    "PINTEREST_WEB",
+    "PINTEREST_ANDROID",
+    "PINTEREST_IOS",
+    "POINT_OF_SALE"
+  ]
+}

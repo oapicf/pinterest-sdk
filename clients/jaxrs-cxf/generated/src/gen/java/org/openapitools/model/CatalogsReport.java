@@ -51,13 +51,6 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
   private ReportStatusEnum reportStatus;
 
  /**
-  * URL to download the report
-  */
-  @ApiModelProperty(value = "URL to download the report")
-
-  private String url;
-
- /**
   * Size of the report in bytes
   */
   @ApiModelProperty(value = "Size of the report in bytes")
@@ -65,6 +58,13 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
   @Valid
 
   private BigDecimal size;
+
+ /**
+  * URL to download the report
+  */
+  @ApiModelProperty(value = "URL to download the report")
+
+  private String url;
  /**
    * Get reportStatus
    * @return reportStatus
@@ -87,24 +87,6 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
   }
 
  /**
-   * URL to download the report
-   * @return url
-  **/
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public CatalogsReport url(String url) {
-    this.url = url;
-    return this;
-  }
-
- /**
    * Size of the report in bytes
    * @return size
   **/
@@ -122,6 +104,24 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
     return this;
   }
 
+ /**
+   * URL to download the report
+   * @return url
+  **/
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public CatalogsReport url(String url) {
+    this.url = url;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -132,13 +132,13 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(this.reportStatus, catalogsReport.reportStatus) &&
-        Objects.equals(this.url, catalogsReport.url) &&
-        Objects.equals(this.size, catalogsReport.size);
+        Objects.equals(this.size, catalogsReport.size) &&
+        Objects.equals(this.url, catalogsReport.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -147,8 +147,8 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
     sb.append("class CatalogsReport {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

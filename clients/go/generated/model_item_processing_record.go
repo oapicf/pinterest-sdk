@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,13 +20,13 @@ var _ MappedNullable = &ItemProcessingRecord{}
 
 // ItemProcessingRecord Object describing an item processing record
 type ItemProcessingRecord struct {
-	// The catalog item id in the merchant namespace
-	ItemId *string `json:"item_id,omitempty"`
 	// Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	Errors []ItemValidationEvent `json:"errors,omitempty"`
+	// The catalog item id in the merchant namespace
+	ItemId *string `json:"item_id,omitempty"`
+	Status *ItemProcessingStatus `json:"status,omitempty"`
 	// Array with the validation warnings for the item processing record
 	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
-	Status *ItemProcessingStatus `json:"status,omitempty"`
 }
 
 // NewItemProcessingRecord instantiates a new ItemProcessingRecord object
@@ -44,38 +44,6 @@ func NewItemProcessingRecord() *ItemProcessingRecord {
 func NewItemProcessingRecordWithDefaults() *ItemProcessingRecord {
 	this := ItemProcessingRecord{}
 	return &this
-}
-
-// GetItemId returns the ItemId field value if set, zero value otherwise.
-func (o *ItemProcessingRecord) GetItemId() string {
-	if o == nil || IsNil(o.ItemId) {
-		var ret string
-		return ret
-	}
-	return *o.ItemId
-}
-
-// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ItemProcessingRecord) GetItemIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemId) {
-		return nil, false
-	}
-	return o.ItemId, true
-}
-
-// HasItemId returns a boolean if a field has been set.
-func (o *ItemProcessingRecord) HasItemId() bool {
-	if o != nil && !IsNil(o.ItemId) {
-		return true
-	}
-
-	return false
-}
-
-// SetItemId gets a reference to the given string and assigns it to the ItemId field.
-func (o *ItemProcessingRecord) SetItemId(v string) {
-	o.ItemId = &v
 }
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
@@ -110,36 +78,36 @@ func (o *ItemProcessingRecord) SetErrors(v []ItemValidationEvent) {
 	o.Errors = v
 }
 
-// GetWarnings returns the Warnings field value if set, zero value otherwise.
-func (o *ItemProcessingRecord) GetWarnings() []ItemValidationEvent {
-	if o == nil || IsNil(o.Warnings) {
-		var ret []ItemValidationEvent
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *ItemProcessingRecord) GetItemId() string {
+	if o == nil || IsNil(o.ItemId) {
+		var ret string
 		return ret
 	}
-	return o.Warnings
+	return *o.ItemId
 }
 
-// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ItemProcessingRecord) GetWarningsOk() ([]ItemValidationEvent, bool) {
-	if o == nil || IsNil(o.Warnings) {
+func (o *ItemProcessingRecord) GetItemIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ItemId) {
 		return nil, false
 	}
-	return o.Warnings, true
+	return o.ItemId, true
 }
 
-// HasWarnings returns a boolean if a field has been set.
-func (o *ItemProcessingRecord) HasWarnings() bool {
-	if o != nil && !IsNil(o.Warnings) {
+// HasItemId returns a boolean if a field has been set.
+func (o *ItemProcessingRecord) HasItemId() bool {
+	if o != nil && !IsNil(o.ItemId) {
 		return true
 	}
 
 	return false
 }
 
-// SetWarnings gets a reference to the given []ItemValidationEvent and assigns it to the Warnings field.
-func (o *ItemProcessingRecord) SetWarnings(v []ItemValidationEvent) {
-	o.Warnings = v
+// SetItemId gets a reference to the given string and assigns it to the ItemId field.
+func (o *ItemProcessingRecord) SetItemId(v string) {
+	o.ItemId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -174,6 +142,38 @@ func (o *ItemProcessingRecord) SetStatus(v ItemProcessingStatus) {
 	o.Status = &v
 }
 
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *ItemProcessingRecord) GetWarnings() []ItemValidationEvent {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []ItemValidationEvent
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemProcessingRecord) GetWarningsOk() ([]ItemValidationEvent, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *ItemProcessingRecord) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []ItemValidationEvent and assigns it to the Warnings field.
+func (o *ItemProcessingRecord) SetWarnings(v []ItemValidationEvent) {
+	o.Warnings = v
+}
+
 func (o ItemProcessingRecord) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -184,17 +184,17 @@ func (o ItemProcessingRecord) MarshalJSON() ([]byte, error) {
 
 func (o ItemProcessingRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ItemId) {
-		toSerialize["item_id"] = o.ItemId
-	}
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !IsNil(o.Warnings) {
-		toSerialize["warnings"] = o.Warnings
+	if !IsNil(o.ItemId) {
+		toSerialize["item_id"] = o.ItemId
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
 	}
 	return toSerialize, nil
 }

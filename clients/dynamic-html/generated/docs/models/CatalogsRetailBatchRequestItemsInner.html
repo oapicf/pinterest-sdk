@@ -1,6 +1,11 @@
 
 <h2>CatalogsRetailBatchRequestItemsInner</h2>
 <ul class="parameter">
+  <li class="param-required-true">attributes : ItemAttributesRequest
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">itemUnderscoreid : String
     <br/>The catalog item id in the merchant namespace
   </li>
@@ -16,12 +21,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">attributes : ItemAttributesRequest
-    <br/>
+  <li class="param-required-false">updateUnderscoremask : List
+    <br/>The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">updateUnderscoremask : List
-    <br/>The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+  <li class="param-required-false">lastUnderscoreupdatedUnderscoretime : Long
+    <br/>The millisecond timestamp when the item was lastly modified by the merchant.
   </li>
 </ul>

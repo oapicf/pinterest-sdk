@@ -21,14 +21,6 @@ public class AdAccountCreateSubscriptionRequestTest {
     }
 
     /**
-     * Test the property 'webhookUrl'
-     */
-    @Test
-    public void webhookUrlTest() {
-        // TODO: test webhookUrl
-    }
-
-    /**
      * Test the property 'leadFormId'
      */
     @Test
@@ -45,6 +37,14 @@ public class AdAccountCreateSubscriptionRequestTest {
     }
 
     /**
+     * Test the property 'partnerMetadata'
+     */
+    @Test
+    public void partnerMetadataTest() {
+        // TODO: test partnerMetadata
+    }
+
+    /**
      * Test the property 'partnerRefreshToken'
      */
     @Test
@@ -53,11 +53,11 @@ public class AdAccountCreateSubscriptionRequestTest {
     }
 
     /**
-     * Test the property 'partnerMetadata'
+     * Test the property 'webhookUrl'
      */
     @Test
-    public void partnerMetadataTest() {
-        // TODO: test partnerMetadata
+    public void webhookUrlTest() {
+        // TODO: test webhookUrl
     }
 
 }

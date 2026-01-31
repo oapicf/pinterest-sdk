@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TitleKeywordsFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TitleKeywordsFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+}
+resourceTypes {
+
+  TitleKeywordsFilter {
+    title = TitleKeywordsFilter
+    description = TitleKeywordsFilter
+    derivedFrom = Root
+    properties {
+        title_keywords {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TitleKeywordsFilter {
+    title = TitleKeywordsFilter
+    description = TitleKeywordsFilter
+    implements = openapi_server.resourceTypes.TitleKeywordsFilter
+
+  }
+}

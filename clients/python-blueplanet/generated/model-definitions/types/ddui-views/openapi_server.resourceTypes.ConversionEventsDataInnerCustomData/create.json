@@ -1,0 +1,31 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "content_brand" },
+      {"model": "content_category" },
+      {"model": "content_ids" },
+      {"model": "content_name" },
+      {"model": "contents" },
+      {"model": "currency" },
+      {"model": "external_measurement_id" },
+      {"model": "external_measurement_vendor_id" },
+      {"model": "np" },
+      {"model": "num_items" },
+      {"model": "opt_out_type" },
+      {"model": "order_id" },
+      {"model": "predicted_ltv" },
+      {"model": "search_string" },
+      {"model": "value" },
+    ]
+  }]
+}

@@ -13,11 +13,11 @@ import CatalogsItemsDeleteBatchRequest._
 
 case class CatalogsItemsDeleteBatchRequest (
   country: Country,
+/* Array with catalogs items */
+  items: List[ItemDeleteBatchRecord],
 /* We recommend using the CatalogsLocale values. */
   language: Language,
-operation: BatchOperation,
-/* Array with catalogs items */
-  items: List[ItemDeleteBatchRecord])
+operation: BatchOperation)
 
 object CatalogsItemsDeleteBatchRequest {
   import DateTimeCodecs._

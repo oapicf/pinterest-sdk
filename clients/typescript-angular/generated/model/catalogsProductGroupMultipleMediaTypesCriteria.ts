@@ -11,7 +11,7 @@ import { MediaType } from './mediaType';
 
 
 export interface CatalogsProductGroupMultipleMediaTypesCriteria { 
-    values: Array<MediaType>;
     negated?: boolean;
+    values: Array<MediaType>;
 }
 

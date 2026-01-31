@@ -21,6 +21,14 @@ public class DeleteAssetGroupResponseExceptionsInnerTest {
     }
 
     /**
+     * Test the property 'assetGroupId'
+     */
+    @Test
+    public void assetGroupIdTest() {
+        // TODO: test assetGroupId
+    }
+
+    /**
      * Test the property 'code'
      */
     @Test
@@ -34,14 +42,6 @@ public class DeleteAssetGroupResponseExceptionsInnerTest {
     @Test
     public void messageTest() {
         // TODO: test message
-    }
-
-    /**
-     * Test the property 'assetGroupId'
-     */
-    @Test
-    public void assetGroupIdTest() {
-        // TODO: test assetGroupId
     }
 
 }

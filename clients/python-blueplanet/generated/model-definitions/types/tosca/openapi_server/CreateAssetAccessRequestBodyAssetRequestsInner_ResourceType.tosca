@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CreateAssetAccessRequestBodyAssetRequestsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CreateAssetAccessRequestBodyAssetRequestsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Permissions = openapi_server.resourceTypes.Permissions
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CreateAssetAccessRequestBodyAssetRequestsInner {
+    title = CreateAssetAccessRequestBodyAssetRequestsInner
+    description = CreateAssetAccessRequestBodyAssetRequestsInner
+    derivedFrom = Root
+    properties {
+        asset_id_to_permissions {
+          # TODO
+          description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. "
+          optional = true
+        }
+        partner_id {
+          type =  string
+          description = "Unique identifier of a business partner to request asset access to."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CreateAssetAccessRequestBodyAssetRequestsInner {
+    title = CreateAssetAccessRequestBodyAssetRequestsInner
+    description = CreateAssetAccessRequestBodyAssetRequestsInner
+    implements = openapi_server.resourceTypes.CreateAssetAccessRequestBodyAssetRequestsInner
+
+  }
+}

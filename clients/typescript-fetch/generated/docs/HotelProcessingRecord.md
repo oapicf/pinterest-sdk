@@ -7,10 +7,10 @@ Object describing an item processing record
 
 Name | Type
 ------------ | -------------
-`hotelId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
-`warnings` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
+`hotelId` | string
 `status` | [ItemProcessingStatus](ItemProcessingStatus.md)
+`warnings` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { HotelProcessingRecord } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "hotelId": DS0294-M,
   "errors": null,
-  "warnings": null,
+  "hotelId": DS0294-M,
   "status": null,
+  "warnings": null,
 } satisfies HotelProcessingRecord
 
 console.log(example)

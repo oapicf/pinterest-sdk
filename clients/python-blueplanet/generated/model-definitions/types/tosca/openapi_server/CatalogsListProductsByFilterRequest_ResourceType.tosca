@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsListProductsByFilterRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsListProductsByFilterRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  CatalogsListProductsByFeedBasedFilter = openapi_server.resourceTypes.CatalogsListProductsByFeedBasedFilter
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsVerticalsListProductsByCatalogBasedFilterRequest = openapi_server.resourceTypes.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsListProductsByFilterRequest {
+    title = CatalogsListProductsByFilterRequest
+    description = CatalogsListProductsByFilterRequest
+    derivedFrom = Root
+    properties {
+        feed_id {
+          type =  string
+          description = "Catalog Feed id pertaining to the catalog product group filter."
+          optional = true
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsListProductsByFilterRequest {
+    title = CatalogsListProductsByFilterRequest
+    description = CatalogsListProductsByFilterRequest
+    implements = openapi_server.resourceTypes.CatalogsListProductsByFilterRequest
+
+  }
+}

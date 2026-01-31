@@ -6,7 +6,6 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/audience.h"
-#include "../model/audience_create_custom_request.h"
 #include "../model/audience_create_request.h"
 #include "../model/audience_update_request.h"
 #include "../model/audiences_list_200_response.h"
@@ -21,18 +20,10 @@ typedef enum  { pinterest_rest_api_audiencesList_OWNERSHIPTYPE_NULL = 0, pintere
 
 // Create audience
 //
-// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 //
 audience_t*
 AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audience_create_request_t *audience_create_request);
-
-
-// Create custom audience
-//
-// Create a custom audience and find the audiences you want your ads to reach.
-//
-audience_t*
-AudiencesAPI_audiencesCreateCustom(apiClient_t *apiClient, char *ad_account_id, audience_create_custom_request_t *audience_create_custom_request);
 
 
 // Get audience

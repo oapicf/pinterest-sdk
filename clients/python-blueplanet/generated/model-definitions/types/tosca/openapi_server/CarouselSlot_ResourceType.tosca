@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CarouselSlot"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CarouselSlot"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CarouselSlot {
+    title = CarouselSlot
+    description = CarouselSlot
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = "Carousel Pin slot description."
+          optional = false
+        }
+        link {
+          type =  string
+          description = "Carousel Pin slot link."
+          optional = false
+        }
+        title {
+          type =  string
+          description = "Carousel Pin slot title."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CarouselSlot {
+    title = CarouselSlot
+    description = CarouselSlot
+    implements = openapi_server.resourceTypes.CarouselSlot
+
+  }
+}

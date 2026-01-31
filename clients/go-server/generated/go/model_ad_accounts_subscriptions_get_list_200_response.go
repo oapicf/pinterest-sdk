@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,9 +16,9 @@ package openapi
 
 type AdAccountsSubscriptionsGetList200Response struct {
 
-	Items []AdAccountGetSubscriptionResponse `json:"items"`
-
 	Bookmark *string `json:"bookmark,omitempty"`
+
+	Items []LeadSubscription `json:"items"`
 }
 
 // AssertAdAccountsSubscriptionsGetList200ResponseRequired checks if the required fields are not zero-ed
@@ -33,7 +33,7 @@ func AssertAdAccountsSubscriptionsGetList200ResponseRequired(obj AdAccountsSubsc
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertAdAccountGetSubscriptionResponseRequired(el); err != nil {
+		if err := AssertLeadSubscriptionRequired(el); err != nil {
 			return err
 		}
 	}
@@ -43,7 +43,7 @@ func AssertAdAccountsSubscriptionsGetList200ResponseRequired(obj AdAccountsSubsc
 // AssertAdAccountsSubscriptionsGetList200ResponseConstraints checks if the values respects the defined constraints
 func AssertAdAccountsSubscriptionsGetList200ResponseConstraints(obj AdAccountsSubscriptionsGetList200Response) error {
 	for _, el := range obj.Items {
-		if err := AssertAdAccountGetSubscriptionResponseConstraints(el); err != nil {
+		if err := AssertLeadSubscriptionConstraints(el); err != nil {
 			return err
 		}
 	}

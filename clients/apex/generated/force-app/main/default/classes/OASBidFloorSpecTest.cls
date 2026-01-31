@@ -73,21 +73,21 @@ private class OASBidFloorSpecTest {
     private static void maintainRenamedProperties() {
         OASBidFloorSpec bidFloorSpec = new OASBidFloorSpec();
         Map<String, String> x-property-mappings = bidFloorSpec.getx-property-mappings();
+        System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
+        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
         System.assertEquals('r_currency', x-property-mappings.get('currency'));
         System.assertEquals('objectiveType', x-property-mappings.get('objective_type'));
-        System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
         System.assertEquals('optimizationGoalMetadata', x-property-mappings.get('optimization_goal_metadata'));
-        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASBidFloorSpec bidFloorSpec = new OASBidFloorSpec();
         System.assertEquals(new List<OASCountry>(), bidFloorSpec.countries);
+        System.assertEquals(null, bidFloorSpec.billableEvent);
+        System.assertEquals(null, bidFloorSpec.creativeType);
         System.assertEquals(null, bidFloorSpec.r_currency);
         System.assertEquals(null, bidFloorSpec.objectiveType);
-        System.assertEquals(null, bidFloorSpec.billableEvent);
         System.assertEquals(null, bidFloorSpec.optimizationGoalMetadata);
-        System.assertEquals(null, bidFloorSpec.creativeType);
     }
 }

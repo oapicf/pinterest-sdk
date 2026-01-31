@@ -7,11 +7,11 @@ Request object for creating a creative assets product group.
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
-`name` | string
 `description` | string
 `filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
-`catalogId` | string
+`name` | string
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { CatalogsCreativeAssetsProductGroupCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": 2680059592705,
   "catalogType": null,
-  "name": null,
   "description": null,
   "filters": null,
-  "catalogId": 2680059592705,
+  "name": null,
 } satisfies CatalogsCreativeAssetsProductGroupCreateRequest
 
 console.log(example)

@@ -16,6 +16,22 @@ export interface Audience {
      */
     ad_account_id?: string;
     /**
+     * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+     */
+    audience_type?: string;
+    /**
+     * The company that created this audience.
+     */
+    created_by_company_name?: string | null;
+    /**
+     * Creation time. Unix timestamp in seconds.
+     */
+    created_timestamp?: number | null;
+    /**
+     * Audience description.
+     */
+    description?: string | null;
+    /**
      * Audience ID.
      */
     id?: string;
@@ -23,14 +39,6 @@ export interface Audience {
      * Audience name.
      */
     name?: string;
-    /**
-     * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-     */
-    audience_type?: string;
-    /**
-     * Audience description.
-     */
-    description?: string | null;
     rule?: AudienceRule;
     /**
      * Audience size.
@@ -44,10 +52,6 @@ export interface Audience {
      * Always \"audience\".
      */
     type?: string;
-    /**
-     * Creation time. Unix timestamp in seconds.
-     */
-    created_timestamp?: number | null;
     /**
      * Last update time. Unix timestamp in seconds.
      */

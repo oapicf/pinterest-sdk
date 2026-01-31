@@ -5,14 +5,14 @@
   "name": "DeletePartnerAssetAccessBodyAccessesInner",
   "fields": [
     {
-      "name": "partner_id",
-      "type": "string",
-      "doc": "Unique identifier of a business partner to update asset access to."
-    },
-    {
       "name": "asset_id",
       "type": "string",
       "doc": "Unique identifier of the business asset."
+    },
+    {
+      "name": "partner_id",
+      "type": "string",
+      "doc": "Unique identifier of a business partner to update asset access to."
     },
     {
       "name": "partner_type",

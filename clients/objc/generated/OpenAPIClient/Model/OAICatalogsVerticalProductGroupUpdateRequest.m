@@ -50,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"country": @"country", @"locale": @"locale" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"country": @"country", @"_description": @"description", @"filters": @"filters", @"locale": @"locale", @"name": @"name" }];
 }
 
 /**
@@ -60,7 +60,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"catalogType", @"name", @"_description", @"filters", @"country", @"locale"];
+  NSArray *optionalProperties = @[@"catalogType", @"country", @"_description", @"filters", @"locale", @"name"];
   return [optionalProperties containsObject:propertyName];
 }
 

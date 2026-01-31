@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,10 +23,10 @@ type CreativeAssetsProcessingRecord struct {
 	// Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	Errors []ItemValidationEvent `json:"errors,omitempty"`
 
+	Status ItemProcessingStatus `json:"status,omitempty"`
+
 	// Array with the validation warnings for the item processing record
 	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
-
-	Status ItemProcessingStatus `json:"status,omitempty"`
 }
 
 // AssertCreativeAssetsProcessingRecordRequired checks if the required fields are not zero-ed

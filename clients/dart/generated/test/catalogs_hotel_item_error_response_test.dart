@@ -21,15 +21,15 @@ void main() {
       // TODO
     });
 
-    // The catalog hotel id in the merchant namespace
-    // String hotelId
-    test('to test the property `hotelId`', () async {
-      // TODO
-    });
-
     // Array with the errors for the item id requested
     // List<ItemValidationEvent> errors (default value: const [])
     test('to test the property `errors`', () async {
+      // TODO
+    });
+
+    // The catalog hotel id in the merchant namespace
+    // String hotelId
+    test('to test the property `hotelId`', () async {
       // TODO
     });
 

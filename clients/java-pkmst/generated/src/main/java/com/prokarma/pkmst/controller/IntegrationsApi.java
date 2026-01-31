@@ -5,7 +5,6 @@
  */
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.DetailedError;
 import com.prokarma.pkmst.model.Error;
 import com.prokarma.pkmst.model.IntegrationLogsRequest;
 import com.prokarma.pkmst.model.IntegrationLogsSuccessResponse;
@@ -14,6 +13,7 @@ import com.prokarma.pkmst.model.IntegrationRecord;
 import com.prokarma.pkmst.model.IntegrationRequest;
 import com.prokarma.pkmst.model.IntegrationRequestPatch;
 import com.prokarma.pkmst.model.IntegrationsGetList200Response;
+import com.prokarma.pkmst.model.IntegrationsLogsPost400Response;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "Integrations", description = "the Integrations API")
 public interface IntegrationsApi {
 
@@ -78,7 +78,7 @@ public interface IntegrationsApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<IntegrationMetadata> integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true ) @PathVariable("external_business_id") String externalBusinessId,@ApiParam(value = "Parameters to get create/update the Integration Metadata"  )   @RequestBody IntegrationRequestPatch integrationRequestPatch, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<IntegrationMetadata> integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true ) @PathVariable("external_business_id") String externalBusinessId,@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true )   @RequestBody IntegrationRequestPatch integrationRequestPatch, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Create commerce integration", notes = "Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = IntegrationMetadata.class, authorizations = {
@@ -96,7 +96,7 @@ public interface IntegrationsApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<IntegrationMetadata> integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata"  )   @RequestBody IntegrationRequest integrationRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<IntegrationMetadata> integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true )   @RequestBody IntegrationRequest integrationRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Get integration metadata", notes = "Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = IntegrationRecord.class, authorizations = {
@@ -136,7 +136,7 @@ public interface IntegrationsApi {
          }, tags={ "integrations", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
-        @ApiResponse(code = 400, message = "Bad request.", response = DetailedError.class),
+        @ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     @RequestMapping(
         method = RequestMethod.POST,

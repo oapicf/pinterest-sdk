@@ -56,18 +56,20 @@ const keywords/create = ({ adUnderscoreaccountUnderscoreid, keywordsRequest }) =
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * campaignUnderscoreid String Campaign Id to use to filter the results. (optional)
 * adUnderscoregroupUnderscoreid String Ad group Id. (optional)
+* adUnderscoregroupUnderscoreids List List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
 * matchUnderscoretypes List Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
 * returns keywords_get_200_response
 * */
-const keywords/get = ({ adUnderscoreaccountUnderscoreid, campaignUnderscoreid, adUnderscoregroupUnderscoreid, matchUnderscoretypes, pageUnderscoresize, bookmark }) => new Promise(
+const keywords/get = ({ adUnderscoreaccountUnderscoreid, campaignUnderscoreid, adUnderscoregroupUnderscoreid, adUnderscoregroupUnderscoreids, matchUnderscoretypes, pageUnderscoresize, bookmark }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
         campaignUnderscoreid,
         adUnderscoregroupUnderscoreid,
+        adUnderscoregroupUnderscoreids,
         matchUnderscoretypes,
         pageUnderscoresize,
         bookmark,
@@ -115,9 +117,11 @@ const keywords/update = ({ adUnderscoreaccountUnderscoreid, keywordUpdateBody })
 * includeUnderscorekeywords List If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied. (optional)
 * normalizeUnderscoreagainstUnderscoregroup Boolean Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional)
 * limit Integer The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (optional)
+* includeUnderscoreprediction Boolean <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (optional)
+* includeUnderscoredemographics Boolean <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional)
 * returns TrendingKeywordsResponse
 * */
-const trending_keywords/list = ({ region, trendUnderscoretype, interests, genders, ages, includeUnderscorekeywords, normalizeUnderscoreagainstUnderscoregroup, limit }) => new Promise(
+const trending_keywords/list = ({ region, trendUnderscoretype, interests, genders, ages, includeUnderscorekeywords, normalizeUnderscoreagainstUnderscoregroup, limit, includeUnderscoreprediction, includeUnderscoredemographics }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -129,6 +133,8 @@ const trending_keywords/list = ({ region, trendUnderscoretype, interests, gender
         includeUnderscorekeywords,
         normalizeUnderscoreagainstUnderscoregroup,
         limit,
+        includeUnderscoreprediction,
+        includeUnderscoredemographics,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

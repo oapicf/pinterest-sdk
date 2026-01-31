@@ -22,14 +22,14 @@ delete_partner_asset_access_body_accesses_inner_t* instantiate_delete_partner_as
   delete_partner_asset_access_body_accesses_inner_t* delete_partner_asset_access_body_accesses_inner = NULL;
   if (include_optional) {
     delete_partner_asset_access_body_accesses_inner = delete_partner_asset_access_body_accesses_inner_create(
-      "1234567890123",
       "549755885175",
+      "1234567890123",
       pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_"INTERNAL"
     );
   } else {
     delete_partner_asset_access_body_accesses_inner = delete_partner_asset_access_body_accesses_inner_create(
-      "1234567890123",
       "549755885175",
+      "1234567890123",
       pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_"INTERNAL"
     );
   }

@@ -1,30 +1,12 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Base64-encoded image media source",
+  "doc": "Image Base64-based media source.",
   "name": "PinMediaSourceImageBase64",
   "fields": [
     {
-      "name": "source_type",
-      "type": {
-        "type": "enum",
-        "name": "PinMediaSourceImageBase64_sourceUnderscoretype",
-        "symbols": [
-          "image_base64"
-        ]
-      },
-      "doc": ""
-    },
-    {
       "name": "content_type",
-      "type": {
-        "type": "enum",
-        "name": "PinMediaSourceImageBase64_contentUnderscoretype",
-        "symbols": [
-          "image_jpeg",
-          "image_png"
-        ]
-      },
+      "type": "model.ContentType",
       "doc": ""
     },
     {
@@ -37,6 +19,17 @@
       "type": ["boolean", "null"],
       "doc": "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.",
       "default": true
+    },
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourceImageBase64_sourceUnderscoretype",
+        "symbols": [
+          "image_base64"
+        ]
+      },
+      "doc": "The source type of the media."
     }
   ]
 

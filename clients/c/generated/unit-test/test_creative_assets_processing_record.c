@@ -24,15 +24,15 @@ creative_assets_processing_record_t* instantiate_creative_assets_processing_reco
     creative_assets_processing_record = creative_assets_processing_record_create(
       "DS0294-M",
       list_createList(),
-      list_createList(),
-      pinterest_rest_api_creative_assets_processing_record__"SUCCESS"
+      pinterest_rest_api_creative_assets_processing_record__"SUCCESS",
+      list_createList()
     );
   } else {
     creative_assets_processing_record = creative_assets_processing_record_create(
       "DS0294-M",
       list_createList(),
-      list_createList(),
-      pinterest_rest_api_creative_assets_processing_record__"SUCCESS"
+      pinterest_rest_api_creative_assets_processing_record__"SUCCESS",
+      list_createList()
     );
   }
 

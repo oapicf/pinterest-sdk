@@ -8,30 +8,30 @@ import org.openapitools._
 
 /**
  * 
- * @param title The name of the creative assets.
- * @param description Brief description of the creative assets.
- * @param link Link to the creative assets page.
- * @param iosUnderscoredeepUnderscorelink IOS deep link to the creative assets page.
  * @param androidUnderscoredeepUnderscorelink Link to the creative assets page.
- * @param googleUnderscoreproductUnderscorecategory The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
  * @param customUnderscorelabelUnderscore0 Custom grouping of creative assets.
  * @param customUnderscorelabelUnderscore1 Custom grouping of creative assets.
  * @param customUnderscorelabelUnderscore2 Custom grouping of creative assets.
  * @param customUnderscorelabelUnderscore3 Custom grouping of creative assets.
  * @param customUnderscorelabelUnderscore4 Custom grouping of creative assets.
+ * @param description Brief description of the creative assets.
+ * @param googleUnderscoreproductUnderscorecategory The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+ * @param iosUnderscoredeepUnderscorelink IOS deep link to the creative assets page.
+ * @param link Link to the creative assets page.
+ * @param title The name of the creative assets.
  * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
  */
-case class CatalogsUpdatableCreativeAssetsAttributes(title: Option[String],
-                description: Option[String],
-                link: Option[String],
-                iosUnderscoredeepUnderscorelink: Option[String],
-                androidUnderscoredeepUnderscorelink: Option[String],
-                googleUnderscoreproductUnderscorecategory: Option[String],
+case class CatalogsUpdatableCreativeAssetsAttributes(androidUnderscoredeepUnderscorelink: Option[String],
                 customUnderscorelabelUnderscore0: Option[String],
                 customUnderscorelabelUnderscore1: Option[String],
                 customUnderscorelabelUnderscore2: Option[String],
                 customUnderscorelabelUnderscore3: Option[String],
                 customUnderscorelabelUnderscore4: Option[String],
+                description: Option[String],
+                googleUnderscoreproductUnderscorecategory: Option[String],
+                iosUnderscoredeepUnderscorelink: Option[String],
+                link: Option[String],
+                title: Option[String],
                 visibility: Option[String]
                 )
 

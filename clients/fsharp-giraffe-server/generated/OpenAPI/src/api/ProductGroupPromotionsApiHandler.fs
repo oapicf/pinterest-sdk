@@ -10,10 +10,12 @@ open ProductGroupPromotionsApiServiceImplementation
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.ProductGroupAnalyticsResponseInner
+open OpenAPI.Model.ProductGroupPromotion
 open OpenAPI.Model.ProductGroupPromotionCreateRequest
 open OpenAPI.Model.ProductGroupPromotionResponse
 open OpenAPI.Model.ProductGroupPromotionUpdateRequest
 open OpenAPI.Model.ProductGroupPromotionsList200Response
+open OpenAPI.Model.ReportingTimeZone
 
 module ProductGroupPromotionsApiHandler =
 

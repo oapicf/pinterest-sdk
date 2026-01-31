@@ -14,8 +14,8 @@
 | **image_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
 | **image_link_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
 | **invalid_domain** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **itemid_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
 | **item_main_image_download_failure** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
+| **itemid_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
 | **link_format_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
 | **link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
 | **list_price_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
@@ -44,8 +44,8 @@ instance = PinterestSdkClient::CatalogsItemValidationErrors.new(
   image_link_length_too_long: null,
   image_link_missing: null,
   invalid_domain: null,
-  itemid_missing: null,
   item_main_image_download_failure: null,
+  itemid_missing: null,
   link_format_invalid: null,
   link_length_too_long: null,
   list_price_invalid: null,

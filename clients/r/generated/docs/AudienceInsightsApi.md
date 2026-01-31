@@ -28,6 +28,8 @@ var_audience_insight_type <- AudienceInsightType$new() # AudienceInsightType | T
 api_instance <- AudienceInsightsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$AudienceInsightsGet(var_ad_account_id, var_audience_insight_typedata_file = "result.txt")
 result <- api_instance$AudienceInsightsGet(var_ad_account_id, var_audience_insight_type)
@@ -47,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -79,6 +81,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- AudienceInsightsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$AudienceInsightsScopeAndTypeGet(var_ad_account_iddata_file = "result.txt")
 result <- api_instance$AudienceInsightsScopeAndTypeGet(var_ad_account_id)
@@ -97,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

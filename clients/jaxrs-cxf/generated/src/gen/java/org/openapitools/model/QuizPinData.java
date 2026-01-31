@@ -35,6 +35,12 @@ public class QuizPinData  {
 
   private List<@Valid QuizPinResult> results = new ArrayList<>();
 
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private QuizPinResult tieBreakerCustomResult;
+
 public enum TieBreakerTypeEnum {
 
 RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
@@ -73,12 +79,6 @@ RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
   @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
 
   private TieBreakerTypeEnum tieBreakerType;
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private QuizPinResult tieBreakerCustomResult;
  /**
    * Get questions
    * @return questions
@@ -126,6 +126,24 @@ RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
   }
 
  /**
+   * Get tieBreakerCustomResult
+   * @return tieBreakerCustomResult
+  **/
+  @JsonProperty("tie_breaker_custom_result")
+  public QuizPinResult getTieBreakerCustomResult() {
+    return tieBreakerCustomResult;
+  }
+
+  public void setTieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
+    this.tieBreakerCustomResult = tieBreakerCustomResult;
+  }
+
+  public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
+    this.tieBreakerCustomResult = tieBreakerCustomResult;
+    return this;
+  }
+
+ /**
    * Quiz ad tie breaker type, default is RANDOM
    * @return tieBreakerType
   **/
@@ -146,24 +164,6 @@ RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
     return this;
   }
 
- /**
-   * Get tieBreakerCustomResult
-   * @return tieBreakerCustomResult
-  **/
-  @JsonProperty("tie_breaker_custom_result")
-  public QuizPinResult getTieBreakerCustomResult() {
-    return tieBreakerCustomResult;
-  }
-
-  public void setTieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
-    this.tieBreakerCustomResult = tieBreakerCustomResult;
-  }
-
-  public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
-    this.tieBreakerCustomResult = tieBreakerCustomResult;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -175,13 +175,13 @@ RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
     QuizPinData quizPinData = (QuizPinData) o;
     return Objects.equals(this.questions, quizPinData.questions) &&
         Objects.equals(this.results, quizPinData.results) &&
-        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType) &&
-        Objects.equals(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult);
+        Objects.equals(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult) &&
+        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questions, results, tieBreakerType, tieBreakerCustomResult);
+    return Objects.hash(questions, results, tieBreakerCustomResult, tieBreakerType);
   }
 
   @Override
@@ -191,8 +191,8 @@ RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
     
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("    tieBreakerCustomResult: ").append(toIndentedString(tieBreakerCustomResult)).append("\n");
+    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

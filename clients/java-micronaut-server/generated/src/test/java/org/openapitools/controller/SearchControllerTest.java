@@ -1,9 +1,9 @@
 package org.openapitools.controller;
 
 import org.openapitools.model.Error;
-import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.SearchPartnerPins200Response;
 import org.openapitools.model.SearchUserBoardsGet200Response;
+import org.openapitools.model.SearchUserPinsList200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -54,7 +54,7 @@ public class SearchControllerTest {
      *
      * The method should: Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -87,7 +87,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/partner/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@50ebfc4f");
+            .accept("[Ljava.lang.String;@6ef5a77b");
         request.getParameters()
             .add("term", "example") // The query parameter format should be 
             .add("country_code", "US") // The query parameter format should be 
@@ -139,7 +139,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@32dcaffb");
+            .accept("[Ljava.lang.String;@1dfe9cba");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -171,7 +171,7 @@ public class SearchControllerTest {
         String bookmark = "example";
 
         // when
-        PinsList200Response result = controller.searchUserPinsList(query, adAccountId, bookmark).block();
+        SearchUserPinsList200Response result = controller.searchUserPinsList(query, adAccountId, bookmark).block();
 
         // then
         Assertions.assertTrue(true);
@@ -189,14 +189,14 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@505e3cd4");
+            .accept("[Ljava.lang.String;@6d8ef668");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("query", "Plants") // The query parameter format should be 
             .add("bookmark", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, PinsList200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, SearchUserPinsList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

@@ -8,8 +8,8 @@
 
 (def order-lines-list-200-response-data
   {
-   (ds/req :items) (s/coll-of order-line-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of order-line-spec)
    })
 
 (def order-lines-list-200-response-spec

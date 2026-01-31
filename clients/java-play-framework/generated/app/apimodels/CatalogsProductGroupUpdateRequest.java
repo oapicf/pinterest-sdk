@@ -11,42 +11,25 @@ import javax.validation.Valid;
 /**
  * Request object for updating a product group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupUpdateRequest   {
-  @JsonProperty("name")
-  
-  private String name;
-
   @JsonProperty("description")
   
   private String description;
-
-  @JsonProperty("is_featured")
-  
-  private Boolean isFeatured;
 
   @JsonProperty("filters")
   @Valid
 
   private CatalogsProductGroupFiltersRequest filters;
 
-  public CatalogsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
+  @JsonProperty("is_featured")
+  
+  private Boolean isFeatured;
 
-   /**
-   * Get name
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  @JsonProperty("name")
+  
+  private String name;
 
   public CatalogsProductGroupUpdateRequest description(String description) {
     this.description = description;
@@ -63,23 +46,6 @@ public class CatalogsProductGroupUpdateRequest   {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public CatalogsProductGroupUpdateRequest isFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-    return this;
-  }
-
-   /**
-   * boolean indicator of whether the product group is being featured or not
-   * @return isFeatured
-  **/
-  public Boolean getIsFeatured() {
-    return isFeatured;
-  }
-
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
   }
 
   public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
@@ -99,6 +65,40 @@ public class CatalogsProductGroupUpdateRequest   {
     this.filters = filters;
   }
 
+  public CatalogsProductGroupUpdateRequest isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+   /**
+   * boolean indicator of whether the product group is being featured or not
+   * @return isFeatured
+  **/
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  public CatalogsProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,15 +109,15 @@ public class CatalogsProductGroupUpdateRequest   {
       return false;
     }
     CatalogsProductGroupUpdateRequest catalogsProductGroupUpdateRequest = (CatalogsProductGroupUpdateRequest) o;
-    return Objects.equals(name, catalogsProductGroupUpdateRequest.name) &&
-        Objects.equals(description, catalogsProductGroupUpdateRequest.description) &&
+    return Objects.equals(description, catalogsProductGroupUpdateRequest.description) &&
+        Objects.equals(filters, catalogsProductGroupUpdateRequest.filters) &&
         Objects.equals(isFeatured, catalogsProductGroupUpdateRequest.isFeatured) &&
-        Objects.equals(filters, catalogsProductGroupUpdateRequest.filters);
+        Objects.equals(name, catalogsProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters);
+    return Objects.hash(description, filters, isFeatured, name);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -126,10 +126,10 @@ public class CatalogsProductGroupUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

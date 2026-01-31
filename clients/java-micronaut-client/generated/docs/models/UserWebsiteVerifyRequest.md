@@ -10,9 +10,8 @@ The class is defined in **[UserWebsiteVerifyRequest.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**website** | `String` |  |  [optional property]
 **verificationMethod** | [**VerificationMethodEnum**](#VerificationMethodEnum) |  |  [optional property]
-
+**website** | `String` |  |  [optional property]
 
 ## VerificationMethodEnum
 
@@ -21,5 +20,6 @@ Name | Value
 FILENAME | `"FILENAME"`
 METATAG | `"METATAG"`
 DNSTXT | `"DNSTXT"`
+
 
 

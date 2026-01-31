@@ -13,41 +13,41 @@ import AnyCodable
 public struct AdAccountCreateSubscriptionRequest: Codable, JSONEncodable, Hashable {
 
     public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Standard HTTPS webhook URL. */
-    public var webhookUrl: String
     /** Lead form ID. */
     public var leadFormId: String?
     /** Partner access token. Only for clients that requires authentication. We recommend to avoid this param. */
     public var partnerAccessToken: String?
+    public var partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata?
     /** Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     public var partnerRefreshToken: String?
-    public var partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata?
+    /** Standard HTTPS webhook URL. */
+    public var webhookUrl: String
 
-    public init(webhookUrl: String, leadFormId: String? = nil, partnerAccessToken: String? = nil, partnerRefreshToken: String? = nil, partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = nil) {
-        self.webhookUrl = webhookUrl
+    public init(leadFormId: String? = nil, partnerAccessToken: String? = nil, partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = nil, partnerRefreshToken: String? = nil, webhookUrl: String) {
         self.leadFormId = leadFormId
         self.partnerAccessToken = partnerAccessToken
-        self.partnerRefreshToken = partnerRefreshToken
         self.partnerMetadata = partnerMetadata
+        self.partnerRefreshToken = partnerRefreshToken
+        self.webhookUrl = webhookUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case webhookUrl = "webhook_url"
         case leadFormId = "lead_form_id"
         case partnerAccessToken = "partner_access_token"
-        case partnerRefreshToken = "partner_refresh_token"
         case partnerMetadata = "partner_metadata"
+        case partnerRefreshToken = "partner_refresh_token"
+        case webhookUrl = "webhook_url"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(webhookUrl, forKey: .webhookUrl)
         try container.encodeIfPresent(leadFormId, forKey: .leadFormId)
         try container.encodeIfPresent(partnerAccessToken, forKey: .partnerAccessToken)
-        try container.encodeIfPresent(partnerRefreshToken, forKey: .partnerRefreshToken)
         try container.encodeIfPresent(partnerMetadata, forKey: .partnerMetadata)
+        try container.encodeIfPresent(partnerRefreshToken, forKey: .partnerRefreshToken)
+        try container.encode(webhookUrl, forKey: .webhookUrl)
     }
 }
 

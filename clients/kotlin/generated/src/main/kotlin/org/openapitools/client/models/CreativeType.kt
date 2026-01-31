@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+ * Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  *
- * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ
+ * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION
  */
 
 @JsonClass(generateAdapter = false)
@@ -56,7 +56,16 @@ enum class CreativeType(val value: kotlin.String) {
     SHOWCASE("SHOWCASE"),
 
     @Json(name = "QUIZ")
-    QUIZ("QUIZ");
+    QUIZ("QUIZ"),
+
+    @Json(name = "COLLAGE")
+    COLLAGE("COLLAGE"),
+
+    @Json(name = "MAX_WIDTH_REGULAR_COLLECTION")
+    MAX_WIDTH_REGULAR_COLLECTION("MAX_WIDTH_REGULAR_COLLECTION"),
+
+    @Json(name = "MAX_WIDTH_VIDEO_COLLECTION")
+    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

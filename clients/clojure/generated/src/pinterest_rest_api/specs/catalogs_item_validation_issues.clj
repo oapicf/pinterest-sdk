@@ -9,9 +9,9 @@
 
 (def catalogs-item-validation-issues-data
   {
-   (ds/req :item_number) int?
-   (ds/req :item_id) string?
    (ds/req :errors) catalogs-item-validation-errors-spec
+   (ds/req :item_id) string?
+   (ds/req :item_number) int?
    (ds/req :warnings) catalogs-item-validation-warnings-spec
    })
 

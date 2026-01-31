@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsHotelBatchItem._
 
 case class CatalogsHotelBatchItem (
-  /* The catalog hotel id in the merchant namespace */
+  attributes: CatalogsUpdatableHotelAttributes,
+/* The catalog hotel id in the merchant namespace */
   hotelId: String,
-operation: Operation,
-attributes: CatalogsUpdatableHotelAttributes)
+operation: Operation)
 
 object CatalogsHotelBatchItem {
   import DateTimeCodecs._

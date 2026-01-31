@@ -5,16 +5,16 @@
 -export_type([openapi_targeting_spec_shopping_retargeting/0]).
 
 -type openapi_targeting_spec_shopping_retargeting() ::
-    #{ 'lookback_window' => integer(),
-       'tag_types' => list(),
-       'exclusion_window' => integer()
+    #{ 'exclusion_window' => integer(),
+       'lookback_window' => integer(),
+       'tag_types' => list()
      }.
 
-encode(#{ 'lookback_window' := LookbackWindow,
-          'tag_types' := TagTypes,
-          'exclusion_window' := ExclusionWindow
+encode(#{ 'exclusion_window' := ExclusionWindow,
+          'lookback_window' := LookbackWindow,
+          'tag_types' := TagTypes
         }) ->
-    #{ 'lookback_window' => LookbackWindow,
-       'tag_types' => TagTypes,
-       'exclusion_window' => ExclusionWindow
+    #{ 'exclusion_window' => ExclusionWindow,
+       'lookback_window' => LookbackWindow,
+       'tag_types' => TagTypes
      }.

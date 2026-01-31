@@ -31,7 +31,7 @@ boards_user_follows/list() ->
   openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 
 %% @doc Follow user
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 -spec follow_user/update(binary(), openapi_follow_user_request:openapi_follow_user_request()) ->
   openapi_utils:response().
 follow_user/update(Username, OpenapiFollowUserRequest) ->

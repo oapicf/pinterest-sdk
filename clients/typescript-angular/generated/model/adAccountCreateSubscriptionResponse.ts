@@ -11,20 +11,40 @@
 
 export interface AdAccountCreateSubscriptionResponse { 
     /**
-     * Subscription ID.
+     * The Ad Account ID that this lead form belongs to.
      */
-    id?: string;
+    ad_account_id?: string;
     /**
-     * Base64 encoded key for client to decrypt lead data.
+     * API version.
      */
-    cryptographic_key?: string | null;
+    api_version?: string;
+    /**
+     * Subscription creation time. Unix timestamp in milliseconds.
+     */
+    created_time?: number;
     /**
      * Lead data encryption algorithm.
      */
     cryptographic_algorithm?: string | null;
     /**
-     * Subscription creation time. Unix timestamp in milliseconds.
+     * Base64 encoded key for client to decrypt lead data.
      */
-    created_time?: number;
+    cryptographic_key?: string | null;
+    /**
+     * Subscription ID.
+     */
+    id?: string;
+    /**
+     * Lead form ID.
+     */
+    lead_form_id?: string | null;
+    /**
+     * User account used to subscribe lead data.
+     */
+    user_account_id?: string;
+    /**
+     * Standard HTTPS webhook URL.
+     */
+    webhook_url?: string;
 }
 

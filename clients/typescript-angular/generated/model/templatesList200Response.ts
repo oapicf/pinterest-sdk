@@ -11,7 +11,7 @@ import { TemplateResponse } from './templateResponse';
 
 
 export interface TemplatesList200Response { 
-    items: Array<TemplateResponse>;
     bookmark?: string | null;
+    items: Array<TemplateResponse>;
 }
 

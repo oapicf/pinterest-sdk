@@ -13,67 +13,72 @@ import AnyCodable
 public struct AssetGroupBinding: Codable, JSONEncodable, Hashable {
 
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Asset Group ID. */
-    public var id: String?
-    /** Asset Group name */
-    public var assetGroupName: String?
-    /** Asset group description */
-    public var assetGroupDescription: String?
-    /** Asset group types */
-    public var assetGroupTypes: [String]?
     /** A list of ad account IDs under the asset group */
     public var adAccountsIds: [String]?
-    /** A list of profile IDs under asset group */
-    public var profilesIds: [String]?
-    /** The creation time of the asset group */
-    public var createdTime: Int?
-    /** The last update time of the asset group */
-    public var updatedTime: Int?
-    /** The data of the business that owns the asset group. */
-    public var owner: BusinessAccessUserSummary?
+    /** Asset group description */
+    public var assetGroupDescription: String?
+    /** Asset Group name */
+    public var assetGroupName: String?
+    /** Asset group types */
+    public var assetGroupTypes: [String]?
+    /** A list of catalog IDs under asset group */
+    public var catalogsIds: [String]?
     /** The data of the user that created the asset group. */
     public var createdBy: BusinessAccessUserSummary?
+    /** The creation time of the asset group */
+    public var createdTime: Int?
+    /** Asset Group ID. */
+    public var id: String?
+    /** The data of the business that owns the asset group. */
+    public var owner: BusinessAccessUserSummary?
+    /** A list of profile IDs under asset group */
+    public var profilesIds: [String]?
+    /** The last update time of the asset group */
+    public var updatedTime: Int?
 
-    public init(id: String? = nil, assetGroupName: String? = nil, assetGroupDescription: String? = nil, assetGroupTypes: [String]? = nil, adAccountsIds: [String]? = nil, profilesIds: [String]? = nil, createdTime: Int? = nil, updatedTime: Int? = nil, owner: BusinessAccessUserSummary? = nil, createdBy: BusinessAccessUserSummary? = nil) {
-        self.id = id
-        self.assetGroupName = assetGroupName
-        self.assetGroupDescription = assetGroupDescription
-        self.assetGroupTypes = assetGroupTypes
+    public init(adAccountsIds: [String]? = nil, assetGroupDescription: String? = nil, assetGroupName: String? = nil, assetGroupTypes: [String]? = nil, catalogsIds: [String]? = nil, createdBy: BusinessAccessUserSummary? = nil, createdTime: Int? = nil, id: String? = nil, owner: BusinessAccessUserSummary? = nil, profilesIds: [String]? = nil, updatedTime: Int? = nil) {
         self.adAccountsIds = adAccountsIds
-        self.profilesIds = profilesIds
-        self.createdTime = createdTime
-        self.updatedTime = updatedTime
-        self.owner = owner
+        self.assetGroupDescription = assetGroupDescription
+        self.assetGroupName = assetGroupName
+        self.assetGroupTypes = assetGroupTypes
+        self.catalogsIds = catalogsIds
         self.createdBy = createdBy
+        self.createdTime = createdTime
+        self.id = id
+        self.owner = owner
+        self.profilesIds = profilesIds
+        self.updatedTime = updatedTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case assetGroupName = "asset_group_name"
-        case assetGroupDescription = "asset_group_description"
-        case assetGroupTypes = "asset_group_types"
         case adAccountsIds = "ad_accounts_ids"
-        case profilesIds = "profiles_ids"
-        case createdTime = "created_time"
-        case updatedTime = "updated_time"
-        case owner
+        case assetGroupDescription = "asset_group_description"
+        case assetGroupName = "asset_group_name"
+        case assetGroupTypes = "asset_group_types"
+        case catalogsIds = "catalogs_ids"
         case createdBy = "created_by"
+        case createdTime = "created_time"
+        case id
+        case owner
+        case profilesIds = "profiles_ids"
+        case updatedTime = "updated_time"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(assetGroupName, forKey: .assetGroupName)
-        try container.encodeIfPresent(assetGroupDescription, forKey: .assetGroupDescription)
-        try container.encodeIfPresent(assetGroupTypes, forKey: .assetGroupTypes)
         try container.encodeIfPresent(adAccountsIds, forKey: .adAccountsIds)
-        try container.encodeIfPresent(profilesIds, forKey: .profilesIds)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
-        try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
-        try container.encodeIfPresent(owner, forKey: .owner)
+        try container.encodeIfPresent(assetGroupDescription, forKey: .assetGroupDescription)
+        try container.encodeIfPresent(assetGroupName, forKey: .assetGroupName)
+        try container.encodeIfPresent(assetGroupTypes, forKey: .assetGroupTypes)
+        try container.encodeIfPresent(catalogsIds, forKey: .catalogsIds)
         try container.encodeIfPresent(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(owner, forKey: .owner)
+        try container.encodeIfPresent(profilesIds, forKey: .profilesIds)
+        try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
     }
 }
 

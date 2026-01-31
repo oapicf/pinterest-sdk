@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum GetBusinessAssetTypeResponse {
-    AD_ACCOUNT, PROFILE, ASSET_GROUP, CONVERSION_TAG
+    AD_ACCOUNT, PROFILE, ASSET_GROUP, CONVERSION_TAG, CATALOG
 }

@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CreateMMMReportRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CreateMMMReportRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MMMReportingColumn = openapi_server.resourceTypes.MMMReportingColumn
+  MMMReportingTargetingType = openapi_server.resourceTypes.MMMReportingTargetingType
+  TargetingAdvertiserCountry = openapi_server.resourceTypes.TargetingAdvertiserCountry
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CreateMMMReportRequest {
+    title = CreateMMMReportRequest
+    description = CreateMMMReportRequest
+    derivedFrom = Root
+    properties {
+        countries {
+          type = array
+          items.type = TargetingAdvertiserCountry
+          description = "A List of countries for filtering"
+          optional = false
+        }
+        columns {
+          type = array
+          items.type = MMMReportingColumn
+          description = "Metric and entity columns"
+          optional = true
+        }
+        end_date {
+          type =  string
+          description = "Metric report end date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+        granularity {
+          type =  string
+          description = "DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly."
+          enum = ["DAY", "WEEK"]
+          optional = true
+        }
+        level {
+          type =  string
+          description = "Level of the report"
+          enum = ["CAMPAIGN_TARGETING", "AD_GROUP_TARGETING"]
+          optional = true
+        }
+        report_name {
+          type =  string
+          description = "Name of the Marketing Mix Modeling (MMM) report"
+          optional = true
+        }
+        start_date {
+          type =  string
+          description = "Metric report start date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+        targeting_types {
+          type = array
+          items.type = MMMReportingTargetingType
+          description = "List of targeting types"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CreateMMMReportRequest {
+    title = CreateMMMReportRequest
+    description = CreateMMMReportRequest
+    implements = openapi_server.resourceTypes.CreateMMMReportRequest
+
+  }
+}

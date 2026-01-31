@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -27,31 +27,14 @@ import org.openapitools.model.Country;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MultipleProductGroupsInner   {
   
-  private String name;
   private String description;
-  private Boolean isFeatured = false;
-  private CatalogsProductGroupFiltersRequest filters;
   private String feedId;
-
-  /**
-   */
-  public MultipleProductGroupsInner name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private CatalogsProductGroupFiltersRequest filters;
+  private Boolean isFeatured = false;
+  private String name;
 
   /**
    */
@@ -68,6 +51,41 @@ public class MultipleProductGroupsInner   {
   }
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  /**
+   * Catalog Feed id pertaining to the catalog product group.
+   */
+  public MultipleProductGroupsInner feedId(String feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+  @JsonProperty("feed_id")
+  public String getFeedId() {
+    return feedId;
+  }
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
+  }
+
+  /**
+   */
+  public MultipleProductGroupsInner filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
   /**
@@ -90,37 +108,19 @@ public class MultipleProductGroupsInner   {
 
   /**
    */
-  public MultipleProductGroupsInner filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public MultipleProductGroupsInner name(String name) {
+    this.name = name;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
-  }
-
-  /**
-   * Catalog Feed id pertaining to the catalog product group.
-   */
-  public MultipleProductGroupsInner feedId(String feedId) {
-    this.feedId = feedId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
-  @JsonProperty("feed_id")
-  public String getFeedId() {
-    return feedId;
-  }
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -133,16 +133,16 @@ public class MultipleProductGroupsInner   {
       return false;
     }
     MultipleProductGroupsInner multipleProductGroupsInner = (MultipleProductGroupsInner) o;
-    return Objects.equals(name, multipleProductGroupsInner.name) &&
-        Objects.equals(description, multipleProductGroupsInner.description) &&
-        Objects.equals(isFeatured, multipleProductGroupsInner.isFeatured) &&
+    return Objects.equals(description, multipleProductGroupsInner.description) &&
+        Objects.equals(feedId, multipleProductGroupsInner.feedId) &&
         Objects.equals(filters, multipleProductGroupsInner.filters) &&
-        Objects.equals(feedId, multipleProductGroupsInner.feedId);
+        Objects.equals(isFeatured, multipleProductGroupsInner.isFeatured) &&
+        Objects.equals(name, multipleProductGroupsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -150,11 +150,11 @@ public class MultipleProductGroupsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MultipleProductGroupsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

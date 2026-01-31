@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &DeliveryMetricsResponseItemsInner{}
 
 // DeliveryMetricsResponseItemsInner struct for DeliveryMetricsResponseItemsInner
 type DeliveryMetricsResponseItemsInner struct {
-	// Metric's name.
-	Name *string `json:"name,omitempty"`
 	// Category name
 	Category *string `json:"category,omitempty"`
 	// How the metric is defined.
 	Definition *string `json:"definition,omitempty"`
 	// Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
 	DisplayName *string `json:"display_name,omitempty"`
+	// Metric's name.
+	Name *string `json:"name,omitempty"`
 }
 
 // NewDeliveryMetricsResponseItemsInner instantiates a new DeliveryMetricsResponseItemsInner object
@@ -45,38 +45,6 @@ func NewDeliveryMetricsResponseItemsInner() *DeliveryMetricsResponseItemsInner {
 func NewDeliveryMetricsResponseItemsInnerWithDefaults() *DeliveryMetricsResponseItemsInner {
 	this := DeliveryMetricsResponseItemsInner{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *DeliveryMetricsResponseItemsInner) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeliveryMetricsResponseItemsInner) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *DeliveryMetricsResponseItemsInner) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *DeliveryMetricsResponseItemsInner) SetName(v string) {
-	o.Name = &v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -175,6 +143,38 @@ func (o *DeliveryMetricsResponseItemsInner) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *DeliveryMetricsResponseItemsInner) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeliveryMetricsResponseItemsInner) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *DeliveryMetricsResponseItemsInner) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *DeliveryMetricsResponseItemsInner) SetName(v string) {
+	o.Name = &v
+}
+
 func (o DeliveryMetricsResponseItemsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -185,9 +185,6 @@ func (o DeliveryMetricsResponseItemsInner) MarshalJSON() ([]byte, error) {
 
 func (o DeliveryMetricsResponseItemsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category
 	}
@@ -196,6 +193,9 @@ func (o DeliveryMetricsResponseItemsInner) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.DisplayName) {
 		toSerialize["display_name"] = o.DisplayName
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

@@ -61,7 +61,7 @@ Protected Interface BoardsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BoardsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Board)
+		Sub BoardsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BoardWithUpdatePrivacy)
 		  
 		End Sub
 	#tag EndMethod

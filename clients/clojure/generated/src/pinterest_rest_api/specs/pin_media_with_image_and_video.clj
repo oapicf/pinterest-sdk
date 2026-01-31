@@ -8,8 +8,8 @@
 
 (def pin-media-with-image-and-video-data
   {
-   (ds/opt :media_type) string?
    (ds/opt :items) (s/coll-of pin-media-metadata-spec)
+   (ds/req :media_type) string?
    })
 
 (def pin-media-with-image-and-video-spec

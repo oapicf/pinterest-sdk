@@ -25,12 +25,6 @@ class CatalogsReportDistributionStatsTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsReportDistributionStats
         //val modelInstance = CatalogsReportDistributionStats()
 
-        // to test the property `reportType`
-        should("test reportType") {
-            // uncomment below to test the property
-            //modelInstance.reportType shouldBe ("TODO")
-        }
-
         // to test the property `catalogId` - ID of the catalog entity.
         should("test catalogId") {
             // uncomment below to test the property
@@ -49,6 +43,18 @@ class CatalogsReportDistributionStatsTest : ShouldSpec() {
             //modelInstance.codeLabel shouldBe ("TODO")
         }
 
+        // to test the property `ineligibleForAds` - Indicates if issue makes items ineligible for ads distribution
+        should("test ineligibleForAds") {
+            // uncomment below to test the property
+            //modelInstance.ineligibleForAds shouldBe ("TODO")
+        }
+
+        // to test the property `ineligibleForOrganic` - Indicates if issue makes items ineligible for organic distribution
+        should("test ineligibleForOrganic") {
+            // uncomment below to test the property
+            //modelInstance.ineligibleForOrganic shouldBe ("TODO")
+        }
+
         // to test the property `message` - Title message describing the diagnostic issue
         should("test message") {
             // uncomment below to test the property
@@ -61,16 +67,10 @@ class CatalogsReportDistributionStatsTest : ShouldSpec() {
             //modelInstance.occurrences shouldBe ("TODO")
         }
 
-        // to test the property `ineligibleForAds` - Indicates if issue makes items ineligible for ads distribution
-        should("test ineligibleForAds") {
+        // to test the property `reportType`
+        should("test reportType") {
             // uncomment below to test the property
-            //modelInstance.ineligibleForAds shouldBe ("TODO")
-        }
-
-        // to test the property `ineligibleForOrganic` - Indicates if issue makes items ineligible for organic distribution
-        should("test ineligibleForOrganic") {
-            // uncomment below to test the property
-            //modelInstance.ineligibleForOrganic shouldBe ("TODO")
+            //modelInstance.reportType shouldBe ("TODO")
         }
 
     }

@@ -2,12 +2,12 @@
 Protected Class QuizPinResult
 
 	#tag Property, Flags = &h0
-		organic_pin_id As Xoson.O.OptionalString
+		android_deep_link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		android_deep_link As Xoson.O.OptionalString
+		destination_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -17,7 +17,7 @@ Protected Class QuizPinResult
 
 
 	#tag Property, Flags = &h0
-		destination_url As Xoson.O.OptionalString
+		organic_pin_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -63,7 +63,7 @@ Protected Class QuizPinResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="organic_pin_id"
+			Name="android_deep_link"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -71,7 +71,7 @@ Protected Class QuizPinResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="android_deep_link"
+			Name="destination_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -87,7 +87,7 @@ Protected Class QuizPinResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="destination_url"
+			Name="organic_pin_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

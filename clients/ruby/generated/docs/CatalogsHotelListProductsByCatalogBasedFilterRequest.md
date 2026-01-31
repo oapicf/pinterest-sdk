@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalog_type** | **String** |  |  |
 | **catalog_id** | **String** | Catalog id pertaining to the hotel product group. |  |
+| **catalog_type** | **String** |  |  |
 | **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  |  |
 
 ## Example
@@ -14,8 +14,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsHotelListProductsByCatalogBasedFilterRequest.new(
-  catalog_type: null,
   catalog_id: 2680059592705,
+  catalog_type: null,
   filters: null
 )
 ```

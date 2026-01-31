@@ -20,15 +20,15 @@ typedef struct integrations_get_list_200_response_t integrations_get_list_200_re
 
 
 typedef struct integrations_get_list_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } integrations_get_list_200_response_t;
 
 __attribute__((deprecated)) integrations_get_list_200_response_t *integrations_get_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void integrations_get_list_200_response_free(integrations_get_list_200_response_t *integrations_get_list_200_response);

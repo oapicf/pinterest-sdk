@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemType** | **String** |  |  [optional]
-**title** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
+**images** | [**ImageSize**](ImageSize.md) |  |  [optional]
+**itemType** | **String** |  |  [optional]
 **link** | **String** |  |  [optional]
-**images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  |  [optional]
+**title** | **String** |  |  [optional]
 
 
 

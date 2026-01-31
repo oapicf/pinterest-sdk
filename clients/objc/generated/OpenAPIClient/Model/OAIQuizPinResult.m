@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"organicPinId": @"organic_pin_id", @"androidDeepLink": @"android_deep_link", @"iosDeepLink": @"ios_deep_link", @"destinationUrl": @"destination_url", @"resultId": @"result_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"androidDeepLink": @"android_deep_link", @"destinationUrl": @"destination_url", @"iosDeepLink": @"ios_deep_link", @"organicPinId": @"organic_pin_id", @"resultId": @"result_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"organicPinId", @"androidDeepLink", @"iosDeepLink", @"destinationUrl", @"resultId"];
+  NSArray *optionalProperties = @[@"androidDeepLink", @"destinationUrl", @"iosDeepLink", @"organicPinId", @"resultId"];
   return [optionalProperties containsObject:propertyName];
 }
 

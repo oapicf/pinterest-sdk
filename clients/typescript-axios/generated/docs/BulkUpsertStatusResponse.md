@@ -6,8 +6,8 @@ ID of the bulk request.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**BulkUpsertStatus**](BulkUpsertStatus.md) |  | [optional] [default to undefined]
 **result_url** | **string** |  | [optional] [default to undefined]
+**status** | [**BulkUpsertStatus**](BulkUpsertStatus.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { BulkUpsertStatusResponse } from './api';
 
 const instance: BulkUpsertStatusResponse = {
-    status,
     result_url,
+    status,
 };
 ```
 

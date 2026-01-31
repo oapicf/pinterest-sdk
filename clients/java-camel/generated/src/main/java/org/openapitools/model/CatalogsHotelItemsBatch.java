@@ -33,23 +33,23 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemsBatch", description = "Object describing the catalogs hotel items batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
 
   private String batchId;
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private Date createdTime;
+  private CatalogsType catalogType;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<Date> completedTime = JsonNullable.<Date>undefined();
 
-  private BatchOperationStatus status;
-
-  private CatalogsType catalogType;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private Date createdTime;
 
   @Valid
   private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
+
+  private BatchOperationStatus status;
 
   public CatalogsHotelItemsBatch() {
     super();
@@ -82,24 +82,24 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     this.batchId = batchId;
   }
 
-  public CatalogsHotelItemsBatch createdTime(Date createdTime) {
-    this.createdTime = createdTime;
+  public CatalogsHotelItemsBatch catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   /**
-   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-   * @return createdTime
+   * Get catalogType
+   * @return catalogType
    */
-  @Valid 
-  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_time")
-  public Date getCreatedTime() {
-    return createdTime;
+  @NotNull @Valid 
+  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setCreatedTime(Date createdTime) {
-    this.createdTime = createdTime;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsHotelItemsBatch completedTime(Date completedTime) {
@@ -122,44 +122,24 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     this.completedTime = completedTime;
   }
 
-  public CatalogsHotelItemsBatch status(BatchOperationStatus status) {
-    this.status = status;
+  public CatalogsHotelItemsBatch createdTime(Date createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
   /**
-   * Get status
-   * @return status
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+   * @return createdTime
    */
   @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
+  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_time")
+  public Date getCreatedTime() {
+    return createdTime;
   }
 
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
-  }
-
-  public CatalogsHotelItemsBatch catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  /**
-   * Get catalogType
-   * @return catalogType
-   */
-  @NotNull @Valid 
-  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
   }
 
   public CatalogsHotelItemsBatch items(List<@Valid HotelProcessingRecord> items) {
@@ -190,6 +170,26 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     this.items = items;
   }
 
+  public CatalogsHotelItemsBatch status(BatchOperationStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -200,11 +200,11 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     }
     CatalogsHotelItemsBatch catalogsHotelItemsBatch = (CatalogsHotelItemsBatch) o;
     return Objects.equals(this.batchId, catalogsHotelItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsHotelItemsBatch.createdTime) &&
-        equalsNullable(this.completedTime, catalogsHotelItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsHotelItemsBatch.status) &&
         Objects.equals(this.catalogType, catalogsHotelItemsBatch.catalogType) &&
-        Objects.equals(this.items, catalogsHotelItemsBatch.items);
+        equalsNullable(this.completedTime, catalogsHotelItemsBatch.completedTime) &&
+        Objects.equals(this.createdTime, catalogsHotelItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsHotelItemsBatch.items) &&
+        Objects.equals(this.status, catalogsHotelItemsBatch.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -213,7 +213,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, hashCodeNullable(completedTime), status, catalogType, items);
+    return Objects.hash(batchId, catalogType, hashCodeNullable(completedTime), createdTime, items, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -228,11 +228,11 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsBatch {\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

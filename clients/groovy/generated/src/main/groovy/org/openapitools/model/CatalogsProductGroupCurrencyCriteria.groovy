@@ -8,7 +8,7 @@ import org.openapitools.model.NonNullableCatalogsCurrency;
 @Canonical
 class CatalogsProductGroupCurrencyCriteria {
     
-    NonNullableCatalogsCurrency values
-    
     Boolean negated = false
+    
+    NonNullableCatalogsCurrency values
 }

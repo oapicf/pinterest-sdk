@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceDefinitionScope"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceDefinitionScope"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AudienceDefinitionScope {
+    title = AudienceDefinitionScope
+    description = AudienceDefinitionScope
+    derivedFrom = Root
+    properties {
+        scope {
+          type =  string
+          description = ""
+          enum = ["PARTNER", "PINTEREST"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceDefinitionScope {
+    title = AudienceDefinitionScope
+    description = AudienceDefinitionScope
+    implements = openapi_server.resourceTypes.AudienceDefinitionScope
+
+  }
+}

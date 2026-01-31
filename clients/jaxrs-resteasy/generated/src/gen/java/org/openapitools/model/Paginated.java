@@ -14,11 +14,23 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Paginated   {
   
-  private List<Object> items = new ArrayList<>();
   private String bookmark;
+  private List<Object> items = new ArrayList<>();
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   /**
    **/
@@ -33,18 +45,6 @@ public class Paginated   {
     this.items = items;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -55,13 +55,13 @@ public class Paginated   {
       return false;
     }
     Paginated paginated = (Paginated) o;
-    return Objects.equals(this.items, paginated.items) &&
-        Objects.equals(this.bookmark, paginated.bookmark);
+    return Objects.equals(this.bookmark, paginated.bookmark) &&
+        Objects.equals(this.items, paginated.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -69,8 +69,8 @@ public class Paginated   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Paginated {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

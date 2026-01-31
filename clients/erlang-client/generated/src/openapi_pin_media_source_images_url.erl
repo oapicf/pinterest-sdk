@@ -5,16 +5,16 @@
 -export_type([openapi_pin_media_source_images_url/0]).
 
 -type openapi_pin_media_source_images_url() ::
-    #{ 'source_type' => binary(),
+    #{ 'index' => integer(),
        'items' := list(),
-       'index' => integer()
+       'source_type' := binary()
      }.
 
-encode(#{ 'source_type' := SourceType,
+encode(#{ 'index' := Index,
           'items' := Items,
-          'index' := Index
+          'source_type' := SourceType
         }) ->
-    #{ 'source_type' => SourceType,
+    #{ 'index' => Index,
        'items' => Items,
-       'index' => Index
+       'source_type' => SourceType
      }.

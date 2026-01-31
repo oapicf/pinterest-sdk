@@ -22,8 +22,8 @@ integration_log_client_request_t* instantiate_integration_log_client_request(int
   integration_log_client_request_t* integration_log_client_request = NULL;
   if (include_optional) {
     integration_log_client_request = integration_log_client_request_create(
-      pinterest_rest_api_integration_log_client_request_METHOD_GET,
       "0",
+      pinterest_rest_api_integration_log_client_request_METHOD_GET,
       "0",
       list_createList(),
       list_createList(),
@@ -31,8 +31,8 @@ integration_log_client_request_t* instantiate_integration_log_client_request(int
     );
   } else {
     integration_log_client_request = integration_log_client_request_create(
-      pinterest_rest_api_integration_log_client_request_METHOD_GET,
       "0",
+      pinterest_rest_api_integration_log_client_request_METHOD_GET,
       "0",
       list_createList(),
       list_createList(),

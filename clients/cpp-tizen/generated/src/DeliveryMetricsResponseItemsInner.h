@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Metric's name.
-	 */
-	std::string getName();
-
-	/*! \brief Set Metric's name.
-	 */
-	void setName(std::string  name);
 	/*! \brief Get Category name
 	 */
 	std::string getCategory();
@@ -73,12 +66,19 @@ public:
 	/*! \brief Set Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
 	 */
 	void setDisplayName(std::string  display_name);
+	/*! \brief Get Metric's name.
+	 */
+	std::string getName();
+
+	/*! \brief Set Metric's name.
+	 */
+	void setName(std::string  name);
 
 private:
-	std::string name;
 	std::string category;
 	std::string definition;
 	std::string display_name;
+	std::string name;
 	void __init();
 	void __cleanup();
 

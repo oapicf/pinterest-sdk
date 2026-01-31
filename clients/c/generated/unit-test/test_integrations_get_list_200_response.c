@@ -22,13 +22,13 @@ integrations_get_list_200_response_t* instantiate_integrations_get_list_200_resp
   integrations_get_list_200_response_t* integrations_get_list_200_response = NULL;
   if (include_optional) {
     integrations_get_list_200_response = integrations_get_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     integrations_get_list_200_response = integrations_get_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

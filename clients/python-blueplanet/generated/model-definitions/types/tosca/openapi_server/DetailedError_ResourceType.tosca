@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DetailedError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DetailedError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DetailedError {
+    title = DetailedError
+    description = DetailedError
+    derivedFrom = Root
+    properties {
+        code {
+          type =  integer
+          description = ""
+          optional = true
+        }
+        details {
+          type =  
+          description = ""
+          optional = true
+        }
+        message {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DetailedError {
+    title = DetailedError
+    description = DetailedError
+    implements = openapi_server.resourceTypes.DetailedError
+
+  }
+}

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Metric\&#39;s name. | [optional] [default to undefined]
 **category** | **string** | Category name | [optional] [default to undefined]
 **definition** | **string** | How the metric is defined. | [optional] [default to undefined]
 **display_name** | **string** | Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. | [optional] [default to undefined]
+**name** | **string** | Metric\&#39;s name. | [optional] [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { DeliveryMetricsResponseItemsInner } from './api';
 
 const instance: DeliveryMetricsResponseItemsInner = {
-    name,
     category,
     definition,
     display_name,
+    name,
 };
 ```
 

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.",
+  "name": "TrendingKeywordDemographicsAgeDistribution",
+  "fields": [
+    {
+      "name": "age_distribution",
+      "type": ["null", {
+        "type": "enum",
+        "name": "TrendingKeywordDemographicsAgeDistribution_ageUnderscoredistribution",
+        "symbols": [
+          "_18_24",
+          "_25_34",
+          "_35_44",
+          "_45_49",
+          "_50_54",
+          "_55_64",
+          "_65_"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

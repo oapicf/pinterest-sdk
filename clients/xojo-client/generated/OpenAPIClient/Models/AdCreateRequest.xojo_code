@@ -55,10 +55,33 @@ Protected Class AdCreateRequest
 
 
 	#tag Property, Flags = &h0
+		customizable_cta_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Destination URL.
 		#tag EndNote
 		destination_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		disclosure_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+		#tag EndNote
+		disclosure_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		grid_click_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -88,9 +111,25 @@ Protected Class AdCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Lead form ID for lead ad generation.
+		#tag EndNote
+		lead_form_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Name of the ad - 255 chars max.
 		#tag EndNote
 		name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+		#tag EndNote
+		quiz_pin_data As OpenAPIClient.Models.QuizPinData
 	#tag EndProperty
 
 
@@ -114,110 +153,13 @@ Protected Class AdCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Lead form ID for lead ad generation.
-		#tag EndNote
-		lead_form_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		grid_click_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-		#tag EndNote
-		customizable_cta_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-		#tag EndNote
-		quiz_pin_data As OpenAPIClient.Models.QuizPinData
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Pin ID.
 		#tag EndNote
 		pin_id As String
 	#tag EndProperty
 
 
-    #tag Enum, Name = Customizable_cta_typeEnum, Type = Integer, Flags = &h0
-        
-        GetOffer
-        LearnMore
-        OrderNow
-        ShopNow
-        SignUp
-        Subscribe
-        BuyNow
-        ContactUs
-        GetQuote
-        VisitSite
-        ApplyNow
-        BookNow
-        RequestDemo
-        RegisterNow
-        FindADealer
-        AddToCart
-        WatchNow
-        ReadMore
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Customizable_cta_typeEnumToString(value As Customizable_cta_typeEnum) As String
-		  Select Case value
-		    
-		    Case Customizable_cta_typeEnum.GetOffer
-		      Return "GET_OFFER"
-		    Case Customizable_cta_typeEnum.LearnMore
-		      Return "LEARN_MORE"
-		    Case Customizable_cta_typeEnum.OrderNow
-		      Return "ORDER_NOW"
-		    Case Customizable_cta_typeEnum.ShopNow
-		      Return "SHOP_NOW"
-		    Case Customizable_cta_typeEnum.SignUp
-		      Return "SIGN_UP"
-		    Case Customizable_cta_typeEnum.Subscribe
-		      Return "SUBSCRIBE"
-		    Case Customizable_cta_typeEnum.BuyNow
-		      Return "BUY_NOW"
-		    Case Customizable_cta_typeEnum.ContactUs
-		      Return "CONTACT_US"
-		    Case Customizable_cta_typeEnum.GetQuote
-		      Return "GET_QUOTE"
-		    Case Customizable_cta_typeEnum.VisitSite
-		      Return "VISIT_SITE"
-		    Case Customizable_cta_typeEnum.ApplyNow
-		      Return "APPLY_NOW"
-		    Case Customizable_cta_typeEnum.BookNow
-		      Return "BOOK_NOW"
-		    Case Customizable_cta_typeEnum.RequestDemo
-		      Return "REQUEST_DEMO"
-		    Case Customizable_cta_typeEnum.RegisterNow
-		      Return "REGISTER_NOW"
-		    Case Customizable_cta_typeEnum.FindADealer
-		      Return "FIND_A_DEALER"
-		    Case Customizable_cta_typeEnum.AddToCart
-		      Return "ADD_TO_CART"
-		    Case Customizable_cta_typeEnum.WatchNow
-		      Return "WATCH_NOW"
-		    Case Customizable_cta_typeEnum.ReadMore
-		      Return "READ_MORE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -310,11 +252,43 @@ Protected Class AdCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="customizable_cta_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CustomizableCTAType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="destination_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="disclosure_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="DisclosureType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="disclosure_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="grid_click_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="GridClickType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -342,11 +316,27 @@ Protected Class AdCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="lead_form_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="quiz_pin_data"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="QuizPinData"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -371,30 +361,6 @@ Protected Class AdCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="lead_form_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="grid_click_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="GridClickType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="quiz_pin_data"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="QuizPinData"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

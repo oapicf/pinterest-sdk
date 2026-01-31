@@ -2,15 +2,15 @@ package org.openapitools.server.model
 
 
 /**
- * = Video and image =
+ * = Object containing video and image definitions. =
  *
  * Pin with a mix of images and videos.
  *
- * @param mediaType  for example: ''null''
  * @param items  for example: ''null''
+ * @param mediaType  for example: ''null''
 */
 final case class PinMediaWithImageAndVideo (
-  mediaType: Option[String] = None,
-  items: Option[Seq[PinMediaMetadata]] = None
+  items: Option[Seq[PinMediaMetadata]] = None,
+  mediaType: String
 )
 

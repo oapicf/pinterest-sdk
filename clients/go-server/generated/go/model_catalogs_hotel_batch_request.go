@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,18 +17,18 @@ package openapi
 // CatalogsHotelBatchRequest - Request object to update catalogs hotel items
 type CatalogsHotelBatchRequest struct {
 
+	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-
 	// Array with catalogs item operations
 	Items []CatalogsHotelBatchItem `json:"items"`
 
-	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 }
 
 // AssertCatalogsHotelBatchRequestRequired checks if the required fields are not zero-ed
@@ -36,8 +36,8 @@ func AssertCatalogsHotelBatchRequestRequired(obj CatalogsHotelBatchRequest) erro
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
-		"language": obj.Language,
 		"items": obj.Items,
+		"language": obj.Language,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -45,26 +45,26 @@ func AssertCatalogsHotelBatchRequestRequired(obj CatalogsHotelBatchRequest) erro
 		}
 	}
 
-	if err := AssertstringRequired(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsHotelBatchItemRequired(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringRequired(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }
 
 // AssertCatalogsHotelBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsHotelBatchRequestConstraints(obj CatalogsHotelBatchRequest) error {
-	if err := AssertstringConstraints(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsHotelBatchItemConstraints(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringConstraints(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }

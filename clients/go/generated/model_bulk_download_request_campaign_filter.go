@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &BulkDownloadRequestCampaignFilter{}
 
 // BulkDownloadRequestCampaignFilter struct for BulkDownloadRequestCampaignFilter
 type BulkDownloadRequestCampaignFilter struct {
-	// Unix UTC timestamp.
-	StartTime *string `json:"start_time,omitempty" validate:"regexp=^\\\\d+$"`
+	CampaignStatus []CampaignSummaryStatus `json:"campaign_status,omitempty"`
 	// Unix UTC timestamp.
 	EndTime *string `json:"end_time,omitempty" validate:"regexp=^\\\\d+$"`
 	// Campaign name
 	Name *string `json:"name,omitempty"`
-	CampaignStatus []CampaignSummaryStatus `json:"campaign_status,omitempty"`
 	ObjectiveType []ObjectiveType `json:"objective_type,omitempty"`
+	// Unix UTC timestamp.
+	StartTime *string `json:"start_time,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewBulkDownloadRequestCampaignFilter instantiates a new BulkDownloadRequestCampaignFilter object
@@ -47,36 +47,36 @@ func NewBulkDownloadRequestCampaignFilterWithDefaults() *BulkDownloadRequestCamp
 	return &this
 }
 
-// GetStartTime returns the StartTime field value if set, zero value otherwise.
-func (o *BulkDownloadRequestCampaignFilter) GetStartTime() string {
-	if o == nil || IsNil(o.StartTime) {
-		var ret string
+// GetCampaignStatus returns the CampaignStatus field value if set, zero value otherwise.
+func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatus() []CampaignSummaryStatus {
+	if o == nil || IsNil(o.CampaignStatus) {
+		var ret []CampaignSummaryStatus
 		return ret
 	}
-	return *o.StartTime
+	return o.CampaignStatus
 }
 
-// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
+// GetCampaignStatusOk returns a tuple with the CampaignStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkDownloadRequestCampaignFilter) GetStartTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.StartTime) {
+func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatusOk() ([]CampaignSummaryStatus, bool) {
+	if o == nil || IsNil(o.CampaignStatus) {
 		return nil, false
 	}
-	return o.StartTime, true
+	return o.CampaignStatus, true
 }
 
-// HasStartTime returns a boolean if a field has been set.
-func (o *BulkDownloadRequestCampaignFilter) HasStartTime() bool {
-	if o != nil && !IsNil(o.StartTime) {
+// HasCampaignStatus returns a boolean if a field has been set.
+func (o *BulkDownloadRequestCampaignFilter) HasCampaignStatus() bool {
+	if o != nil && !IsNil(o.CampaignStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetStartTime gets a reference to the given string and assigns it to the StartTime field.
-func (o *BulkDownloadRequestCampaignFilter) SetStartTime(v string) {
-	o.StartTime = &v
+// SetCampaignStatus gets a reference to the given []CampaignSummaryStatus and assigns it to the CampaignStatus field.
+func (o *BulkDownloadRequestCampaignFilter) SetCampaignStatus(v []CampaignSummaryStatus) {
+	o.CampaignStatus = v
 }
 
 // GetEndTime returns the EndTime field value if set, zero value otherwise.
@@ -143,38 +143,6 @@ func (o *BulkDownloadRequestCampaignFilter) SetName(v string) {
 	o.Name = &v
 }
 
-// GetCampaignStatus returns the CampaignStatus field value if set, zero value otherwise.
-func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatus() []CampaignSummaryStatus {
-	if o == nil || IsNil(o.CampaignStatus) {
-		var ret []CampaignSummaryStatus
-		return ret
-	}
-	return o.CampaignStatus
-}
-
-// GetCampaignStatusOk returns a tuple with the CampaignStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkDownloadRequestCampaignFilter) GetCampaignStatusOk() ([]CampaignSummaryStatus, bool) {
-	if o == nil || IsNil(o.CampaignStatus) {
-		return nil, false
-	}
-	return o.CampaignStatus, true
-}
-
-// HasCampaignStatus returns a boolean if a field has been set.
-func (o *BulkDownloadRequestCampaignFilter) HasCampaignStatus() bool {
-	if o != nil && !IsNil(o.CampaignStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetCampaignStatus gets a reference to the given []CampaignSummaryStatus and assigns it to the CampaignStatus field.
-func (o *BulkDownloadRequestCampaignFilter) SetCampaignStatus(v []CampaignSummaryStatus) {
-	o.CampaignStatus = v
-}
-
 // GetObjectiveType returns the ObjectiveType field value if set, zero value otherwise.
 func (o *BulkDownloadRequestCampaignFilter) GetObjectiveType() []ObjectiveType {
 	if o == nil || IsNil(o.ObjectiveType) {
@@ -207,6 +175,38 @@ func (o *BulkDownloadRequestCampaignFilter) SetObjectiveType(v []ObjectiveType) 
 	o.ObjectiveType = v
 }
 
+// GetStartTime returns the StartTime field value if set, zero value otherwise.
+func (o *BulkDownloadRequestCampaignFilter) GetStartTime() string {
+	if o == nil || IsNil(o.StartTime) {
+		var ret string
+		return ret
+	}
+	return *o.StartTime
+}
+
+// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkDownloadRequestCampaignFilter) GetStartTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.StartTime) {
+		return nil, false
+	}
+	return o.StartTime, true
+}
+
+// HasStartTime returns a boolean if a field has been set.
+func (o *BulkDownloadRequestCampaignFilter) HasStartTime() bool {
+	if o != nil && !IsNil(o.StartTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartTime gets a reference to the given string and assigns it to the StartTime field.
+func (o *BulkDownloadRequestCampaignFilter) SetStartTime(v string) {
+	o.StartTime = &v
+}
+
 func (o BulkDownloadRequestCampaignFilter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -217,8 +217,8 @@ func (o BulkDownloadRequestCampaignFilter) MarshalJSON() ([]byte, error) {
 
 func (o BulkDownloadRequestCampaignFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StartTime) {
-		toSerialize["start_time"] = o.StartTime
+	if !IsNil(o.CampaignStatus) {
+		toSerialize["campaign_status"] = o.CampaignStatus
 	}
 	if !IsNil(o.EndTime) {
 		toSerialize["end_time"] = o.EndTime
@@ -226,11 +226,11 @@ func (o BulkDownloadRequestCampaignFilter) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.CampaignStatus) {
-		toSerialize["campaign_status"] = o.CampaignStatus
-	}
 	if !IsNil(o.ObjectiveType) {
 		toSerialize["objective_type"] = o.ObjectiveType
+	}
+	if !IsNil(o.StartTime) {
+		toSerialize["start_time"] = o.StartTime
 	}
 	return toSerialize, nil
 }

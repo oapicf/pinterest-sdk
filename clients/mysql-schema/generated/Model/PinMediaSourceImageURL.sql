@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaSourceImageURL`
 --
-SELECT `source_type`, `url`, `is_standard` FROM `PinMediaSourceImageURL` WHERE 1;
+SELECT `is_standard`, `source_type`, `url` FROM `PinMediaSourceImageURL` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaSourceImageURL`
 --
-INSERT INTO `PinMediaSourceImageURL`(`source_type`, `url`, `is_standard`) VALUES (?, ?, ?);
+INSERT INTO `PinMediaSourceImageURL`(`is_standard`, `source_type`, `url`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `PinMediaSourceImageURL`
 --
-UPDATE `PinMediaSourceImageURL` SET `source_type` = ?, `url` = ?, `is_standard` = ? WHERE 1;
+UPDATE `PinMediaSourceImageURL` SET `is_standard` = ?, `source_type` = ?, `url` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaSourceImageURL`

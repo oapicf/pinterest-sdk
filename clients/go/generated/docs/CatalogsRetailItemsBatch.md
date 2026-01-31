@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BatchId** | Pointer to **string** | Id of the catalogs items batch | [optional] 
-**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**CreatedTime** | **NullableTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion. | [readonly] 
 **Items** | Pointer to [**[]ItemProcessingRecord**](ItemProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
+**Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 
 ## Methods
 
 ### NewCatalogsRetailItemsBatch
 
-`func NewCatalogsRetailItemsBatch(catalogType CatalogsType, ) *CatalogsRetailItemsBatch`
+`func NewCatalogsRetailItemsBatch(catalogType CatalogsType, createdTime NullableTime, ) *CatalogsRetailItemsBatch`
 
 NewCatalogsRetailItemsBatch instantiates a new CatalogsRetailItemsBatch object
 This constructor will assign default values to properties that have it defined,
@@ -55,30 +55,25 @@ SetBatchId sets BatchId field to given value.
 
 HasBatchId returns a boolean if a field has been set.
 
-### GetCreatedTime
+### GetCatalogType
 
-`func (o *CatalogsRetailItemsBatch) GetCreatedTime() time.Time`
+`func (o *CatalogsRetailItemsBatch) GetCatalogType() CatalogsType`
 
-GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
-### GetCreatedTimeOk
+### GetCatalogTypeOk
 
-`func (o *CatalogsRetailItemsBatch) GetCreatedTimeOk() (*time.Time, bool)`
+`func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool)`
 
-GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedTime
+### SetCatalogType
 
-`func (o *CatalogsRetailItemsBatch) SetCreatedTime(v time.Time)`
+`func (o *CatalogsRetailItemsBatch) SetCatalogType(v CatalogsType)`
 
-SetCreatedTime sets CreatedTime field to given value.
+SetCatalogType sets CatalogType field to given value.
 
-### HasCreatedTime
-
-`func (o *CatalogsRetailItemsBatch) HasCreatedTime() bool`
-
-HasCreatedTime returns a boolean if a field has been set.
 
 ### GetCompletedTime
 
@@ -115,51 +110,36 @@ HasCompletedTime returns a boolean if a field has been set.
 `func (o *CatalogsRetailItemsBatch) UnsetCompletedTime()`
 
 UnsetCompletedTime ensures that no value is present for CompletedTime, not even an explicit nil
-### GetStatus
+### GetCreatedTime
 
-`func (o *CatalogsRetailItemsBatch) GetStatus() BatchOperationStatus`
+`func (o *CatalogsRetailItemsBatch) GetCreatedTime() time.Time`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetCreatedTimeOk
 
-`func (o *CatalogsRetailItemsBatch) GetStatusOk() (*BatchOperationStatus, bool)`
+`func (o *CatalogsRetailItemsBatch) GetCreatedTimeOk() (*time.Time, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetCreatedTime
 
-`func (o *CatalogsRetailItemsBatch) SetStatus(v BatchOperationStatus)`
+`func (o *CatalogsRetailItemsBatch) SetCreatedTime(v time.Time)`
 
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *CatalogsRetailItemsBatch) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
-### GetCatalogType
-
-`func (o *CatalogsRetailItemsBatch) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsRetailItemsBatch) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
+SetCreatedTime sets CreatedTime field to given value.
 
 
+### SetCreatedTimeNil
+
+`func (o *CatalogsRetailItemsBatch) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *CatalogsRetailItemsBatch) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetItems
 
 `func (o *CatalogsRetailItemsBatch) GetItems() []ItemProcessingRecord`
@@ -184,6 +164,31 @@ SetItems sets Items field to given value.
 `func (o *CatalogsRetailItemsBatch) HasItems() bool`
 
 HasItems returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *CatalogsRetailItemsBatch) GetStatus() BatchOperationStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsRetailItemsBatch) GetStatusOk() (*BatchOperationStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsRetailItemsBatch) SetStatus(v BatchOperationStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CatalogsRetailItemsBatch) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

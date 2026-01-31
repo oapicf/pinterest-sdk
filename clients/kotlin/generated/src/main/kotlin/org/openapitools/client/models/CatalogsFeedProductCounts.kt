@@ -22,20 +22,20 @@ import com.squareup.moshi.JsonClass
 /**
  * The counts can be null early in the process.
  *
- * @param original The number of products in the feed file.
  * @param ingested The number of products successfully ingested from the feed file.
+ * @param original The number of products in the feed file.
  */
 
 
 data class CatalogsFeedProductCounts (
 
-    /* The number of products in the feed file. */
-    @Json(name = "original")
-    val original: kotlin.Int? = null,
-
     /* The number of products successfully ingested from the feed file. */
     @Json(name = "ingested")
-    val ingested: kotlin.Int? = null
+    val ingested: kotlin.Int? = null,
+
+    /* The number of products in the feed file. */
+    @Json(name = "original")
+    val original: kotlin.Int? = null
 
 ) {
 

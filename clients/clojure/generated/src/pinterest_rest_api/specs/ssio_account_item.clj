@@ -8,15 +8,15 @@
 
 (def ssio-account-item-data
   {
-   (ds/opt :id) string?
-   (ds/opt :io_terms_id) string?
-   (ds/opt :io_terms) string?
-   (ds/opt :us_terms_id) string?
-   (ds/opt :us_terms) string?
-   (ds/opt :row_terms_id) string?
-   (ds/opt :row_terms) string?
-   (ds/opt :io_type) string?
    (ds/opt :addresses) (s/coll-of ssio-account-address-spec)
+   (ds/opt :id) string?
+   (ds/opt :io_terms) string?
+   (ds/opt :io_terms_id) string?
+   (ds/opt :io_type) string?
+   (ds/opt :row_terms) string?
+   (ds/opt :row_terms_id) string?
+   (ds/opt :us_terms) string?
+   (ds/opt :us_terms_id) string?
    })
 
 (def ssio-account-item-spec

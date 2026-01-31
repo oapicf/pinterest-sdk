@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
-**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
 **FeedId** | **string** | Catalog Feed id pertaining to the catalog product group. | 
+**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
+**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewMultipleProductGroupsInner
 
-`func NewMultipleProductGroupsInner(name string, filters CatalogsProductGroupFiltersRequest, feedId string, ) *MultipleProductGroupsInner`
+`func NewMultipleProductGroupsInner(feedId string, filters CatalogsProductGroupFiltersRequest, name string, ) *MultipleProductGroupsInner`
 
 NewMultipleProductGroupsInner instantiates a new MultipleProductGroupsInner object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +28,6 @@ will change when the set of required properties is changed
 NewMultipleProductGroupsInnerWithDefaults instantiates a new MultipleProductGroupsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *MultipleProductGroupsInner) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *MultipleProductGroupsInner) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *MultipleProductGroupsInner) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -84,6 +64,46 @@ HasDescription returns a boolean if a field has been set.
 `func (o *MultipleProductGroupsInner) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetFeedId
+
+`func (o *MultipleProductGroupsInner) GetFeedId() string`
+
+GetFeedId returns the FeedId field if non-nil, zero value otherwise.
+
+### GetFeedIdOk
+
+`func (o *MultipleProductGroupsInner) GetFeedIdOk() (*string, bool)`
+
+GetFeedIdOk returns a tuple with the FeedId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeedId
+
+`func (o *MultipleProductGroupsInner) SetFeedId(v string)`
+
+SetFeedId sets FeedId field to given value.
+
+
+### GetFilters
+
+`func (o *MultipleProductGroupsInner) GetFilters() CatalogsProductGroupFiltersRequest`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *MultipleProductGroupsInner) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *MultipleProductGroupsInner) SetFilters(v CatalogsProductGroupFiltersRequest)`
+
+SetFilters sets Filters field to given value.
+
+
 ### GetIsFeatured
 
 `func (o *MultipleProductGroupsInner) GetIsFeatured() bool`
@@ -109,44 +129,24 @@ SetIsFeatured sets IsFeatured field to given value.
 
 HasIsFeatured returns a boolean if a field has been set.
 
-### GetFilters
+### GetName
 
-`func (o *MultipleProductGroupsInner) GetFilters() CatalogsProductGroupFiltersRequest`
+`func (o *MultipleProductGroupsInner) GetName() string`
 
-GetFilters returns the Filters field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetFiltersOk
+### GetNameOk
 
-`func (o *MultipleProductGroupsInner) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool)`
+`func (o *MultipleProductGroupsInner) GetNameOk() (*string, bool)`
 
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilters
+### SetName
 
-`func (o *MultipleProductGroupsInner) SetFilters(v CatalogsProductGroupFiltersRequest)`
+`func (o *MultipleProductGroupsInner) SetName(v string)`
 
-SetFilters sets Filters field to given value.
-
-
-### GetFeedId
-
-`func (o *MultipleProductGroupsInner) GetFeedId() string`
-
-GetFeedId returns the FeedId field if non-nil, zero value otherwise.
-
-### GetFeedIdOk
-
-`func (o *MultipleProductGroupsInner) GetFeedIdOk() (*string, bool)`
-
-GetFeedIdOk returns a tuple with the FeedId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeedId
-
-`func (o *MultipleProductGroupsInner) SetFeedId(v string)`
-
-SetFeedId sets FeedId field to given value.
+SetName sets Name field to given value.
 
 
 

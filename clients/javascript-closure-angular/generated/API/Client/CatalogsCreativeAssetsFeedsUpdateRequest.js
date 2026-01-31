@@ -7,23 +7,10 @@ goog.provide('API.Client.CatalogsCreativeAssetsFeedsUpdateRequest');
 API.Client.CatalogsCreativeAssetsFeedsUpdateRequest = function() {}
 
 /**
- * @type {!API.Client.NullableCurrency}
+ * @type {!API.Client.CatalogsType}
  * @export
  */
-API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.defaultCurrency;
-
-/**
- * A human-friendly name associated to a given feed.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.format;
+API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsFeedCredentials}
@@ -32,11 +19,30 @@ API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.format;
 API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.credentials;
 
 /**
+ * @type {!API.Client.NullableCurrency}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.defaultCurrency;
+
+/**
+ * @type {!API.Client.CatalogsFormat}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.format;
+
+/**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.location;
+
+/**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.name;
 
 /**
  * @type {!API.Client.CatalogsFeedProcessingSchedule}
@@ -49,10 +55,4 @@ API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.preferredProcessin
  * @export
  */
 API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.status;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsCreativeAssetsFeedsUpdateRequest.prototype.catalogType;
 

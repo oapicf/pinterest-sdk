@@ -26,6 +26,12 @@ class CatalogsCreateRetailItemTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsCreateRetailItem
         //val modelInstance = CatalogsCreateRetailItem()
 
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
+        }
+
         // to test the property `itemId` - The catalog item id in the merchant namespace
         should("test itemId") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class CatalogsCreateRetailItemTest : ShouldSpec() {
         should("test operation") {
             // uncomment below to test the property
             //modelInstance.operation shouldBe ("TODO")
-        }
-
-        // to test the property `attributes`
-        should("test attributes") {
-            // uncomment below to test the property
-            //modelInstance.attributes shouldBe ("TODO")
         }
 
     }

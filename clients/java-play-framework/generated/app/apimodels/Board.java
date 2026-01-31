@@ -2,6 +2,7 @@ package apimodels;
 
 import apimodels.BoardMedia;
 import apimodels.BoardOwner;
+import apimodels.BoardPrivacy;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -13,127 +14,67 @@ import javax.validation.Valid;
 /**
  * Board
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class Board   {
-  @JsonProperty("id")
-  
-  private String id;
-
-  @JsonProperty("created_at")
-  @Valid
-
-  private OffsetDateTime createdAt;
-
   @JsonProperty("board_pins_modified_at")
   @Valid
 
   private OffsetDateTime boardPinsModifiedAt;
-
-  @JsonProperty("name")
-  @NotNull
-
-  private String name;
-
-  @JsonProperty("description")
-  
-  private String description;
 
   @JsonProperty("collaborator_count")
   @Min(0)
 
   private Integer collaboratorCount;
 
-  @JsonProperty("pin_count")
-  @Min(0)
+  @JsonProperty("created_at")
+  @Valid
 
-  private Integer pinCount;
+  private OffsetDateTime createdAt;
+
+  @JsonProperty("description")
+  
+  private String description;
 
   @JsonProperty("follower_count")
   @Min(0)
 
   private Integer followerCount;
 
+  @JsonProperty("id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String id;
+
+  @JsonProperty("is_ads_only")
+  
+  private Boolean isAdsOnly = false;
+
   @JsonProperty("media")
   @Valid
 
   private BoardMedia media;
+
+  @JsonProperty("name")
+  @NotNull
+
+  private String name;
 
   @JsonProperty("owner")
   @Valid
 
   private BoardOwner owner;
 
-  /**
-   * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
-   */
-  public enum PrivacyEnum {
-    PUBLIC("PUBLIC"),
-    
-    PROTECTED("PROTECTED"),
-    
-    SECRET("SECRET");
+  @JsonProperty("pin_count")
+  @Min(0)
 
-    private final String value;
-
-    PrivacyEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PrivacyEnum fromValue(String value) {
-      for (PrivacyEnum b : PrivacyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+  private Integer pinCount;
 
   @JsonProperty("privacy")
-  
-  private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
+  @Valid
 
-  public Board id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Board createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Date and time of board creation.
-   * @return createdAt
-  **/
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public Board boardPinsModifiedAt(OffsetDateTime boardPinsModifiedAt) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
@@ -150,40 +91,6 @@ public class Board   {
 
   public void setBoardPinsModifiedAt(OffsetDateTime boardPinsModifiedAt) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
-  }
-
-  public Board name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Board description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public Board collaboratorCount(Integer collaboratorCount) {
@@ -204,22 +111,38 @@ public class Board   {
     this.collaboratorCount = collaboratorCount;
   }
 
-  public Board pinCount(Integer pinCount) {
-    this.pinCount = pinCount;
+  public Board createdAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Count of pins on the board.
-   * minimum: 0
-   * @return pinCount
+   * Date and time of board creation.
+   * @return createdAt
   **/
-  public Integer getPinCount() {
-    return pinCount;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
-  public void setPinCount(Integer pinCount) {
-    this.pinCount = pinCount;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public Board description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public Board followerCount(Integer followerCount) {
@@ -240,13 +163,47 @@ public class Board   {
     this.followerCount = followerCount;
   }
 
+  public Board id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public Board isAdsOnly(Boolean isAdsOnly) {
+    this.isAdsOnly = isAdsOnly;
+    return this;
+  }
+
+   /**
+   * If set to `true`, the board will be ad-only and can store ad-only Pins.
+   * @return isAdsOnly
+  **/
+  public Boolean getIsAdsOnly() {
+    return isAdsOnly;
+  }
+
+  public void setIsAdsOnly(Boolean isAdsOnly) {
+    this.isAdsOnly = isAdsOnly;
+  }
+
   public Board media(BoardMedia media) {
     this.media = media;
     return this;
   }
 
    /**
-   * Get media
+   * Board media.
    * @return media
   **/
   public BoardMedia getMedia() {
@@ -255,6 +212,23 @@ public class Board   {
 
   public void setMedia(BoardMedia media) {
     this.media = media;
+  }
+
+  public Board name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Board owner(BoardOwner owner) {
@@ -274,20 +248,38 @@ public class Board   {
     this.owner = owner;
   }
 
-  public Board privacy(PrivacyEnum privacy) {
+  public Board pinCount(Integer pinCount) {
+    this.pinCount = pinCount;
+    return this;
+  }
+
+   /**
+   * Count of Pins on the board.
+   * minimum: 0
+   * @return pinCount
+  **/
+  public Integer getPinCount() {
+    return pinCount;
+  }
+
+  public void setPinCount(Integer pinCount) {
+    this.pinCount = pinCount;
+  }
+
+  public Board privacy(BoardPrivacy privacy) {
     this.privacy = privacy;
     return this;
   }
 
    /**
-   * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+   *     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
    * @return privacy
   **/
-  public PrivacyEnum getPrivacy() {
+  public BoardPrivacy getPrivacy() {
     return privacy;
   }
 
-  public void setPrivacy(PrivacyEnum privacy) {
+  public void setPrivacy(BoardPrivacy privacy) {
     this.privacy = privacy;
   }
 
@@ -301,22 +293,23 @@ public class Board   {
       return false;
     }
     Board board = (Board) o;
-    return Objects.equals(id, board.id) &&
-        Objects.equals(createdAt, board.createdAt) &&
-        Objects.equals(boardPinsModifiedAt, board.boardPinsModifiedAt) &&
-        Objects.equals(name, board.name) &&
-        Objects.equals(description, board.description) &&
+    return Objects.equals(boardPinsModifiedAt, board.boardPinsModifiedAt) &&
         Objects.equals(collaboratorCount, board.collaboratorCount) &&
-        Objects.equals(pinCount, board.pinCount) &&
+        Objects.equals(createdAt, board.createdAt) &&
+        Objects.equals(description, board.description) &&
         Objects.equals(followerCount, board.followerCount) &&
+        Objects.equals(id, board.id) &&
+        Objects.equals(isAdsOnly, board.isAdsOnly) &&
         Objects.equals(media, board.media) &&
+        Objects.equals(name, board.name) &&
         Objects.equals(owner, board.owner) &&
+        Objects.equals(pinCount, board.pinCount) &&
         Objects.equals(privacy, board.privacy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, boardPinsModifiedAt, name, description, collaboratorCount, pinCount, followerCount, media, owner, privacy);
+    return Objects.hash(boardPinsModifiedAt, collaboratorCount, createdAt, description, followerCount, id, isAdsOnly, media, name, owner, pinCount, privacy);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -325,16 +318,17 @@ public class Board   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Board {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    boardPinsModifiedAt: ").append(toIndentedString(boardPinsModifiedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    collaboratorCount: ").append(toIndentedString(collaboratorCount)).append("\n");
-    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    followerCount: ").append(toIndentedString(followerCount)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isAdsOnly: ").append(toIndentedString(isAdsOnly)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
     sb.append("    privacy: ").append(toIndentedString(privacy)).append("\n");
     sb.append("}");
     return sb.toString();

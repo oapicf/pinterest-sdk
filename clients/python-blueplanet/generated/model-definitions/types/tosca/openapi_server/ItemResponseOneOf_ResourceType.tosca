@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemResponseOneOf"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemResponseOneOf"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
+  CatalogsCreativeAssetsItemResponse = openapi_server.resourceTypes.CatalogsCreativeAssetsItemResponse
+  CatalogsHotelItemResponse = openapi_server.resourceTypes.CatalogsHotelItemResponse
+  CatalogsRetailItemResponse = openapi_server.resourceTypes.CatalogsRetailItemResponse
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  Pin = openapi_server.resourceTypes.Pin
+}
+resourceTypes {
+
+  ItemResponseOneOf {
+    title = ItemResponseOneOf
+    description = ItemResponseOneOf
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        attributes {
+          type = CatalogsCreativeAssetsAttributes
+          description = ""
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "The catalog retail item id in the merchant namespace"
+          optional = false
+        }
+        pins {
+          type = array
+          items.type = Pin
+          description = "The pins mapped to the item"
+          optional = false
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = false
+        }
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemResponseOneOf {
+    title = ItemResponseOneOf
+    description = ItemResponseOneOf
+    implements = openapi_server.resourceTypes.ItemResponseOneOf
+
+  }
+}

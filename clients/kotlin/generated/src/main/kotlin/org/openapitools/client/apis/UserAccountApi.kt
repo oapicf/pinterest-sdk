@@ -160,7 +160,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * POST /user_account/following/{username}
      * Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
      * @param followUserRequest Follow a user.
      * @return UserSummary
@@ -193,7 +193,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * POST /user_account/following/{username}
      * Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
      * @param followUserRequest Follow a user.
      * @return ApiResponse<UserSummary?>
@@ -1338,7 +1338,9 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun userAccountFollowedInterests(username: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : UserAccountFollowedInterests200Response {
+        @Suppress("DEPRECATION")
         val localVarResponse = userAccountFollowedInterestsWithHttpInfo(username = username, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
@@ -1369,7 +1371,9 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun userAccountFollowedInterestsWithHttpInfo(username: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<UserAccountFollowedInterests200Response?> {
+        @Suppress("DEPRECATION")
         val localVariableConfig = userAccountFollowedInterestsRequestConfig(username = username, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, UserAccountFollowedInterests200Response>(
@@ -1385,6 +1389,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
+    @Deprecated(message = "This operation is deprecated.")
     fun userAccountFollowedInterestsRequestConfig(username: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()

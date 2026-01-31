@@ -32,10 +32,10 @@ class AudienceDemographicsTest : ShouldSpec() {
             //modelInstance.ages shouldBe ("TODO")
         }
 
-        // to test the property `genders` - Gender distribution.
-        should("test genders") {
+        // to test the property `countries` - Country area distribution.
+        should("test countries") {
             // uncomment below to test the property
-            //modelInstance.genders shouldBe ("TODO")
+            //modelInstance.countries shouldBe ("TODO")
         }
 
         // to test the property `devices` - Device usage distribution.
@@ -44,16 +44,16 @@ class AudienceDemographicsTest : ShouldSpec() {
             //modelInstance.devices shouldBe ("TODO")
         }
 
+        // to test the property `genders` - Gender distribution.
+        should("test genders") {
+            // uncomment below to test the property
+            //modelInstance.genders shouldBe ("TODO")
+        }
+
         // to test the property `metros` - Geographic metro area distribution.
         should("test metros") {
             // uncomment below to test the property
             //modelInstance.metros shouldBe ("TODO")
-        }
-
-        // to test the property `countries` - Country area distribution.
-        should("test countries") {
-            // uncomment below to test the property
-            //modelInstance.countries shouldBe ("TODO")
         }
 
     }

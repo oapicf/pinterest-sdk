@@ -7,23 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(IntegrationMetadata, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // String externalBusinessId
-    test('to test the property `externalBusinessId`', () async {
-      // TODO
-    });
-
-    // String connectedMerchantId
-    test('to test the property `connectedMerchantId`', () async {
-      // TODO
-    });
-
-    // String connectedUserId
-    test('to test the property `connectedUserId`', () async {
+    // String additionalId1
+    test('to test the property `additionalId1`', () async {
       // TODO
     });
 
@@ -37,13 +22,43 @@ void main() {
       // TODO
     });
 
+    // String connectedMerchantId
+    test('to test the property `connectedMerchantId`', () async {
+      // TODO
+    });
+
     // String connectedTagId
     test('to test the property `connectedTagId`', () async {
       // TODO
     });
 
+    // String connectedUserId
+    test('to test the property `connectedUserId`', () async {
+      // TODO
+    });
+
+    // num createdTimestamp
+    test('to test the property `createdTimestamp`', () async {
+      // TODO
+    });
+
+    // String externalBusinessId
+    test('to test the property `externalBusinessId`', () async {
+      // TODO
+    });
+
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
     // num partnerAccessTokenExpiry
     test('to test the property `partnerAccessTokenExpiry`', () async {
+      // TODO
+    });
+
+    // String partnerMetadata
+    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 
@@ -57,23 +72,8 @@ void main() {
       // TODO
     });
 
-    // num createdTimestamp
-    test('to test the property `createdTimestamp`', () async {
-      // TODO
-    });
-
     // num updatedTimestamp
     test('to test the property `updatedTimestamp`', () async {
-      // TODO
-    });
-
-    // String additionalId1
-    test('to test the property `additionalId1`', () async {
-      // TODO
-    });
-
-    // String partnerMetadata
-    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 

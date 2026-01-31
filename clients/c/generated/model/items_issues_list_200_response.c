@@ -6,27 +6,27 @@
 
 
 static items_issues_list_200_response_t *items_issues_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     items_issues_list_200_response_t *items_issues_list_200_response_local_var = malloc(sizeof(items_issues_list_200_response_t));
     if (!items_issues_list_200_response_local_var) {
         return NULL;
     }
-    items_issues_list_200_response_local_var->items = items;
     items_issues_list_200_response_local_var->bookmark = bookmark;
+    items_issues_list_200_response_local_var->items = items;
 
     items_issues_list_200_response_local_var->_library_owned = 1;
     return items_issues_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) items_issues_list_200_response_t *items_issues_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return items_issues_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void items_issues_list_200_response_free(items_issues_list_200_response_t *items
         return ;
     }
     listEntry_t *listEntry;
+    if (items_issues_list_200_response->bookmark) {
+        free(items_issues_list_200_response->bookmark);
+        items_issues_list_200_response->bookmark = NULL;
+    }
     if (items_issues_list_200_response->items) {
         list_ForEach(listEntry, items_issues_list_200_response->items) {
             catalogs_item_validation_issues_free(listEntry->data);
@@ -46,15 +50,19 @@ void items_issues_list_200_response_free(items_issues_list_200_response_t *items
         list_freeList(items_issues_list_200_response->items);
         items_issues_list_200_response->items = NULL;
     }
-    if (items_issues_list_200_response->bookmark) {
-        free(items_issues_list_200_response->bookmark);
-        items_issues_list_200_response->bookmark = NULL;
-    }
     free(items_issues_list_200_response);
 }
 
 cJSON *items_issues_list_200_response_convertToJSON(items_issues_list_200_response_t *items_issues_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // items_issues_list_200_response->bookmark
+    if(items_issues_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", items_issues_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // items_issues_list_200_response->items
     if (!items_issues_list_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *items_issues_list_200_response_convertToJSON(items_issues_list_200_respon
     }
     }
 
-
-    // items_issues_list_200_response->bookmark
-    if(items_issues_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", items_issues_list_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ items_issues_list_200_response_t *items_issues_list_200_response_parseFromJSON(c
 
     // define the local list for items_issues_list_200_response->items
     list_t *itemsList = NULL;
+
+    // items_issues_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(items_issues_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // items_issues_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(items_issues_list_200_responseJSON, "items");
@@ -126,22 +138,10 @@ items_issues_list_200_response_t *items_issues_list_200_response_parseFromJSON(c
         list_addElement(itemsList, itemsItem);
     }
 
-    // items_issues_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(items_issues_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     items_issues_list_200_response_local_var = items_issues_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return items_issues_list_200_response_local_var;

@@ -14,6 +14,7 @@
    (ds/opt :cpa_goal_value_in_micro_currency) string?
    (ds/opt :is_roas_optimized) boolean?
    (ds/opt :learning_mode_type) string?
+   (ds/opt :reporting_event) string?
    })
 
 (def optimization-goal-metadata-conversion-tag-v3-goal-metadata-spec

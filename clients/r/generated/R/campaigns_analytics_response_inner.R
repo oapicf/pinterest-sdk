@@ -7,7 +7,7 @@
 #' @title CampaignsAnalyticsResponseInner
 #' @description CampaignsAnalyticsResponseInner Class
 #' @format An \code{R6Class} generator object
-#' @field CAMPAIGN_ID The ID of the campaing that this metrics belongs to. character
+#' @field CAMPAIGN_ID The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true. character [optional]
 #' @field DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) character [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
@@ -26,12 +26,12 @@ CampaignsAnalyticsResponseInner <- R6::R6Class(
     #' @description
     #' Initialize a new CampaignsAnalyticsResponseInner class.
     #'
-    #' @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to.
+    #' @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
     #' @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
-    initialize = function(`CAMPAIGN_ID`, `DATE` = NULL, additional_properties = NULL, ...) {
-      if (!missing(`CAMPAIGN_ID`)) {
+    initialize = function(`CAMPAIGN_ID` = NULL, `DATE` = NULL, additional_properties = NULL, ...) {
+      if (!is.null(`CAMPAIGN_ID`)) {
         if (!(is.character(`CAMPAIGN_ID`) && length(`CAMPAIGN_ID`) == 1)) {
           stop(paste("Error! Invalid data for `CAMPAIGN_ID`. Must be a string:", `CAMPAIGN_ID`))
         }
@@ -158,14 +158,6 @@ CampaignsAnalyticsResponseInner <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `CAMPAIGN_ID`
-      if (!is.null(input_json$`CAMPAIGN_ID`)) {
-        if (!(is.character(input_json$`CAMPAIGN_ID`) && length(input_json$`CAMPAIGN_ID`) == 1)) {
-          stop(paste("Error! Invalid data for `CAMPAIGN_ID`. Must be a string:", input_json$`CAMPAIGN_ID`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CampaignsAnalyticsResponseInner: the required field `CAMPAIGN_ID` is missing."))
-      }
     },
 
     #' @description
@@ -181,11 +173,6 @@ CampaignsAnalyticsResponseInner <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `CAMPAIGN_ID` is null
-      if (is.null(self$`CAMPAIGN_ID`)) {
-        return(FALSE)
-      }
-
       if (!str_detect(self$`CAMPAIGN_ID`, "^\\d+$")) {
         return(FALSE)
       }
@@ -199,11 +186,6 @@ CampaignsAnalyticsResponseInner <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `CAMPAIGN_ID` is null
-      if (is.null(self$`CAMPAIGN_ID`)) {
-        invalid_fields["CAMPAIGN_ID"] <- "Non-nullable required field `CAMPAIGN_ID` cannot be null."
-      }
-
       if (!str_detect(self$`CAMPAIGN_ID`, "^\\d+$")) {
         invalid_fields["CAMPAIGN_ID"] <- "Invalid value for `CAMPAIGN_ID`, must conform to the pattern ^\\d+$."
       }

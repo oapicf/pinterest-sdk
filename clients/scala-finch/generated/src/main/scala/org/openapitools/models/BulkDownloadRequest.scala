@@ -12,17 +12,17 @@ import scala.collection.immutable.Seq
 
 /**
  * Ad entities to get in bulk request.
- * @param entityUnderscoretypes All entity types specified will be downloaded. Fewer types result in faster downloads.
- * @param entityUnderscoreids All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
- * @param updatedUnderscoresince Unix UTC timestamp to retrieve all entities that have changed since this time.
  * @param campaignUnderscorefilter 
+ * @param entityUnderscoreids All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
+ * @param entityUnderscoretypes All entity types specified will be downloaded. Fewer types result in faster downloads.
  * @param outputUnderscoreformat 
+ * @param updatedUnderscoresince Unix UTC timestamp to retrieve all entities that have changed since this time.
  */
-case class BulkDownloadRequest(entityUnderscoretypes: Option[Seq[BulkEntityType]],
+case class BulkDownloadRequest(campaignUnderscorefilter: Option[BulkDownloadRequestCampaignFilter],
                 entityUnderscoreids: Option[Seq[String]],
-                updatedUnderscoresince: Option[String],
-                campaignUnderscorefilter: Option[BulkDownloadRequestCampaignFilter],
-                outputUnderscoreformat: Option[BulkOutputFormat]
+                entityUnderscoretypes: Option[Seq[BulkEntityType]],
+                outputUnderscoreformat: Option[BulkOutputFormat],
+                updatedUnderscoresince: Option[String]
                 )
 
 object BulkDownloadRequest {

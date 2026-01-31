@@ -9,6 +9,8 @@ const (
 	ANALYST BusinessAccessRole = "ANALYST"
 	SOS_READER BusinessAccessRole = "SOS_READER"
 	FINANCE_MANAGER BusinessAccessRole = "FINANCE_MANAGER"
+	FINANCE_VIEW BusinessAccessRole = "FINANCE_VIEW"
+	FINANCE_EDIT BusinessAccessRole = "FINANCE_EDIT"
 	AUDIENCE_MANAGER BusinessAccessRole = "AUDIENCE_MANAGER"
 	CAMPAIGN_MANAGER BusinessAccessRole = "CAMPAIGN_MANAGER"
 	CATALOGS_MANAGER BusinessAccessRole = "CATALOGS_MANAGER"

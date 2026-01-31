@@ -20,10 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateAssetGroupBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetGroupBody   {
-  private String assetGroupName;
   private String assetGroupDescription;
+  private String assetGroupName;
   private @Valid List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
   public CreateAssetGroupBody() {
@@ -31,33 +31,13 @@ public class CreateAssetGroupBody   {
 
   @JsonCreator
   public CreateAssetGroupBody(
-    @JsonProperty(required = true, value = "asset_group_name") String assetGroupName,
     @JsonProperty(required = true, value = "asset_group_description") String assetGroupDescription,
+    @JsonProperty(required = true, value = "asset_group_name") String assetGroupName,
     @JsonProperty(required = true, value = "asset_group_types") List<AssetGroupType> assetGroupTypes
   ) {
-    this.assetGroupName = assetGroupName;
     this.assetGroupDescription = assetGroupDescription;
+    this.assetGroupName = assetGroupName;
     this.assetGroupTypes = assetGroupTypes;
-  }
-
-  /**
-   * Asset Group name
-   **/
-  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
-  @JsonProperty(required = true, value = "asset_group_name")
-  @NotNull public String getAssetGroupName() {
-    return assetGroupName;
-  }
-
-  @JsonProperty(required = true, value = "asset_group_name")
-  public void setAssetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
   }
 
   /**
@@ -78,6 +58,26 @@ public class CreateAssetGroupBody   {
   @JsonProperty(required = true, value = "asset_group_description")
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+  }
+
+  /**
+   * Asset Group name
+   **/
+  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
+  @JsonProperty(required = true, value = "asset_group_name")
+  @NotNull public String getAssetGroupName() {
+    return assetGroupName;
+  }
+
+  @JsonProperty(required = true, value = "asset_group_name")
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
   }
 
   /**
@@ -126,14 +126,14 @@ public class CreateAssetGroupBody   {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(this.assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @Override
@@ -141,8 +141,8 @@ public class CreateAssetGroupBody   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
     
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

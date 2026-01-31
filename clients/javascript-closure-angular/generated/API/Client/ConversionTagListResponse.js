@@ -6,7 +6,7 @@ goog.provide('API.Client.ConversionTagListResponse');
 API.Client.ConversionTagListResponse = function() {}
 
 /**
- * @type {!Array<!API.Client.ConversionTagResponse>}
+ * @type {!Array<!API.Client.ConversionTag>}
  * @export
  */
 API.Client.ConversionTagListResponse.prototype.items;

@@ -25,8 +25,8 @@ import com.squareup.moshi.JsonClass
  * Object describing a hotel item error
  *
  * @param catalogType 
- * @param hotelId The catalog hotel id in the merchant namespace
  * @param errors Array with the errors for the item id requested
+ * @param hotelId The catalog hotel id in the merchant namespace
  */
 
 
@@ -35,13 +35,13 @@ data class CatalogsHotelItemErrorResponse (
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
 
-    /* The catalog hotel id in the merchant namespace */
-    @Json(name = "hotel_id")
-    val hotelId: kotlin.String? = null,
-
     /* Array with the errors for the item id requested */
     @Json(name = "errors")
-    val errors: kotlin.collections.List<ItemValidationEvent>? = null
+    val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    /* The catalog hotel id in the merchant namespace */
+    @Json(name = "hotel_id")
+    val hotelId: kotlin.String? = null
 
 ) {
 

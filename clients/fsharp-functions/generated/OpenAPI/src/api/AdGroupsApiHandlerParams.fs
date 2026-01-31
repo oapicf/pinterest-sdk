@@ -8,13 +8,14 @@ open OpenAPI.Model.AdGroupResponse
 open OpenAPI.Model.AdGroupUpdateRequest
 open OpenAPI.Model.AdGroupsAnalyticsResponseInner
 open OpenAPI.Model.AdGroupsList200Response
-open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.AdsAnalyticsAdGroupTargetingType
 open OpenAPI.Model.BidFloor
 open OpenAPI.Model.BidFloorRequest
 open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 open System.Collections.Generic
 open System
 
@@ -55,6 +56,12 @@ module AdGroupsApiHandlerParams =
 
 
       conversionReportTime : string option;
+
+
+      aggregateReportRows : bool option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion
@@ -271,7 +278,7 @@ module AdGroupsApiHandlerParams =
       endDate : DateTime ;
 
 
-      targetingTypes : AdsAnalyticsTargetingType[] ;
+      targetingTypes : AdsAnalyticsAdGroupTargetingType[] ;
 
 
       columns : string[] ;
@@ -292,7 +299,10 @@ module AdGroupsApiHandlerParams =
       conversionReportTime : string option;
 
 
-      attributionTypes : ConversionReportAttributionType option;
+      attributionTypes : ConversionReportAttributionType[] option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,20 +16,15 @@ package openapi
 
 type UpdateAssetGroupResponse struct {
 
-	// A list of successfully edited asset groups.
-	UpdatedAssetGroups []AssetGroupBinding `json:"updated_asset_groups,omitempty"`
-
 	// A list of errors associated with the asset groups. Will be returned if there is an error.
 	Exceptions *[]UpdateAssetGroupResponseExceptionsInner `json:"exceptions,omitempty"`
+
+	// A list of successfully edited asset groups.
+	UpdatedAssetGroups []AssetGroupBinding `json:"updated_asset_groups,omitempty"`
 }
 
 // AssertUpdateAssetGroupResponseRequired checks if the required fields are not zero-ed
 func AssertUpdateAssetGroupResponseRequired(obj UpdateAssetGroupResponse) error {
-	for _, el := range obj.UpdatedAssetGroups {
-		if err := AssertAssetGroupBindingRequired(el); err != nil {
-			return err
-		}
-	}
 	if obj.Exceptions != nil {
 		for _, el := range *obj.Exceptions {
 			if err := AssertUpdateAssetGroupResponseExceptionsInnerRequired(el); err != nil {
@@ -37,16 +32,16 @@ func AssertUpdateAssetGroupResponseRequired(obj UpdateAssetGroupResponse) error 
 			}
 		}
 	}
+	for _, el := range obj.UpdatedAssetGroups {
+		if err := AssertAssetGroupBindingRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertUpdateAssetGroupResponseConstraints checks if the values respects the defined constraints
 func AssertUpdateAssetGroupResponseConstraints(obj UpdateAssetGroupResponse) error {
-	for _, el := range obj.UpdatedAssetGroups {
-		if err := AssertAssetGroupBindingConstraints(el); err != nil {
-			return err
-		}
-	}
     if obj.Exceptions != nil {
      	for _, el := range *obj.Exceptions {
      		if err := AssertUpdateAssetGroupResponseExceptionsInnerConstraints(el); err != nil {
@@ -54,5 +49,10 @@ func AssertUpdateAssetGroupResponseConstraints(obj UpdateAssetGroupResponse) err
      		}
      	}
     }
+	for _, el := range obj.UpdatedAssetGroups {
+		if err := AssertAssetGroupBindingConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

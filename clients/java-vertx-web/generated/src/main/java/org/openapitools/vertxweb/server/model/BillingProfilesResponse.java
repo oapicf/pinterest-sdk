@@ -8,7 +8,30 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillingProfilesResponse   {
   
-  private String id;
+  private String advertiserId;
+
+
+  public enum BillingTypeEnum {
+    CREDIT_CARD("CREDIT_CARD"),
+    INVOICE("INVOICE"),
+    INTERNAL("INTERNAL"),
+    RECURRING("RECURRING"),
+    PREPAID("PREPAID");
+
+    private String value;
+
+    BillingTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private BillingTypeEnum billingType;
 
 
   public enum CardTypeEnum {
@@ -33,32 +56,7 @@ public class BillingProfilesResponse   {
   }
 
   private CardTypeEnum cardType;
-
-
-  public enum StatusEnum {
-    UNSPECIFIED("UNSPECIFIED"),
-    VALID("VALID"),
-    INVALID("INVALID"),
-    PENDING("PENDING"),
-    DELETED("DELETED"),
-    SECONDARY("SECONDARY"),
-    PENDING_SECONDARY("PENDING_SECONDARY");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private StatusEnum status;
-  private String advertiserId;
+  private String id;
 
 
   public enum PaymentMethodBrandEnum {
@@ -87,42 +85,41 @@ public class BillingProfilesResponse   {
 
   private PaymentMethodBrandEnum paymentMethodBrand;
 
+
+  public enum StatusEnum {
+    UNSPECIFIED("UNSPECIFIED"),
+    VALID("VALID"),
+    INVALID("INVALID"),
+    PENDING("PENDING"),
+    DELETED("DELETED"),
+    SECONDARY("SECONDARY"),
+    PENDING_SECONDARY("PENDING_SECONDARY");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private StatusEnum status;
+
   public BillingProfilesResponse () {
 
   }
 
-  public BillingProfilesResponse (String id, CardTypeEnum cardType, StatusEnum status, String advertiserId, PaymentMethodBrandEnum paymentMethodBrand) {
-    this.id = id;
-    this.cardType = cardType;
-    this.status = status;
+  public BillingProfilesResponse (String advertiserId, BillingTypeEnum billingType, CardTypeEnum cardType, String id, PaymentMethodBrandEnum paymentMethodBrand, StatusEnum status) {
     this.advertiserId = advertiserId;
-    this.paymentMethodBrand = paymentMethodBrand;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-    
-  @JsonProperty("card_type")
-  public CardTypeEnum getCardType() {
-    return cardType;
-  }
-  public void setCardType(CardTypeEnum cardType) {
+    this.billingType = billingType;
     this.cardType = cardType;
-  }
-
-    
-  @JsonProperty("status")
-  public StatusEnum getStatus() {
-    return status;
-  }
-  public void setStatus(StatusEnum status) {
+    this.id = id;
+    this.paymentMethodBrand = paymentMethodBrand;
     this.status = status;
   }
 
@@ -136,12 +133,48 @@ public class BillingProfilesResponse   {
   }
 
     
+  @JsonProperty("billing_type")
+  public BillingTypeEnum getBillingType() {
+    return billingType;
+  }
+  public void setBillingType(BillingTypeEnum billingType) {
+    this.billingType = billingType;
+  }
+
+    
+  @JsonProperty("card_type")
+  public CardTypeEnum getCardType() {
+    return cardType;
+  }
+  public void setCardType(CardTypeEnum cardType) {
+    this.cardType = cardType;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
   @JsonProperty("payment_method_brand")
   public PaymentMethodBrandEnum getPaymentMethodBrand() {
     return paymentMethodBrand;
   }
   public void setPaymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
+  }
+
+    
+  @JsonProperty("status")
+  public StatusEnum getStatus() {
+    return status;
+  }
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -154,16 +187,17 @@ public class BillingProfilesResponse   {
       return false;
     }
     BillingProfilesResponse billingProfilesResponse = (BillingProfilesResponse) o;
-    return Objects.equals(id, billingProfilesResponse.id) &&
+    return Objects.equals(advertiserId, billingProfilesResponse.advertiserId) &&
+        Objects.equals(billingType, billingProfilesResponse.billingType) &&
         Objects.equals(cardType, billingProfilesResponse.cardType) &&
-        Objects.equals(status, billingProfilesResponse.status) &&
-        Objects.equals(advertiserId, billingProfilesResponse.advertiserId) &&
-        Objects.equals(paymentMethodBrand, billingProfilesResponse.paymentMethodBrand);
+        Objects.equals(id, billingProfilesResponse.id) &&
+        Objects.equals(paymentMethodBrand, billingProfilesResponse.paymentMethodBrand) &&
+        Objects.equals(status, billingProfilesResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cardType, status, advertiserId, paymentMethodBrand);
+    return Objects.hash(advertiserId, billingType, cardType, id, paymentMethodBrand, status);
   }
 
   @Override
@@ -171,11 +205,12 @@ public class BillingProfilesResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingProfilesResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    billingType: ").append(toIndentedString(billingType)).append("\n");
+    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentMethodBrand: ").append(toIndentedString(paymentMethodBrand)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

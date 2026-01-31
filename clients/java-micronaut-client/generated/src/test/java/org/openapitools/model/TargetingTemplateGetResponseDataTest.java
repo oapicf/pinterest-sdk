@@ -29,35 +29,11 @@ public class TargetingTemplateGetResponseDataTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'autoTargetingEnabled'
      */
     @Test
     public void autoTargetingEnabledTest() {
         // TODO: test autoTargetingEnabled
-    }
-
-    /**
-     * Test the property 'targetingAttributes'
-     */
-    @Test
-    public void targetingAttributesTest() {
-        // TODO: test targetingAttributes
-    }
-
-    /**
-     * Test the property 'placementGroup'
-     */
-    @Test
-    public void placementGroupTest() {
-        // TODO: test placementGroup
     }
 
     /**
@@ -69,35 +45,35 @@ public class TargetingTemplateGetResponseDataTest {
     }
 
     /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'placementGroup'
+     */
+    @Test
+    public void placementGroupTest() {
+        // TODO: test placementGroup
+    }
+
+    /**
+     * Test the property 'targetingAttributes'
+     */
+    @Test
+    public void targetingAttributesTest() {
+        // TODO: test targetingAttributes
+    }
+
+    /**
      * Test the property 'trackingUrls'
      */
     @Test
     public void trackingUrlsTest() {
         // TODO: test trackingUrls
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'createdTime'
-     */
-    @Test
-    public void createdTimeTest() {
-        // TODO: test createdTime
-    }
-
-    /**
-     * Test the property 'updatedTime'
-     */
-    @Test
-    public void updatedTimeTest() {
-        // TODO: test updatedTime
     }
 
     /**
@@ -109,11 +85,19 @@ public class TargetingTemplateGetResponseDataTest {
     }
 
     /**
-     * Test the property 'status'
+     * Test the property 'createdTime'
      */
     @Test
-    public void statusTest() {
-        // TODO: test status
+    public void createdTimeTest() {
+        // TODO: test createdTime
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -122,6 +106,22 @@ public class TargetingTemplateGetResponseDataTest {
     @Test
     public void sizingTest() {
         // TODO: test sizing
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'updatedTime'
+     */
+    @Test
+    public void updatedTimeTest() {
+        // TODO: test updatedTime
     }
 
     /**

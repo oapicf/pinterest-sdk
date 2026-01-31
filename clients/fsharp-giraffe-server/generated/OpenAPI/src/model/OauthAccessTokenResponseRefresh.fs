@@ -12,10 +12,13 @@ module OauthAccessTokenResponseRefresh =
   //#endregion
 
   type OauthAccessTokenResponseRefresh = {
-    ResponseType : ResponseTypeEnum;
     AccessToken : string;
-    TokenType : string;
     ExpiresIn : int;
+    ResponseType : ResponseTypeEnum;
     Scope : string;
+    TokenType : string;
+    RefreshToken : string;
+    RefreshTokenExpiresAt : int;
+    RefreshTokenExpiresIn : int;
   }
   //#endregion

@@ -17,7 +17,6 @@ open AudiencesApiHandlerTestsHelper
 open OpenAPI.AudiencesApiHandler
 open OpenAPI.AudiencesApiHandlerParams
 open OpenAPI.Model.Audience
-open OpenAPI.Model.AudienceCreateCustomRequest
 open OpenAPI.Model.AudienceCreateRequest
 open OpenAPI.Model.AudienceUpdateRequest
 open OpenAPI.Model.AudiencesList200Response
@@ -65,50 +64,6 @@ module AudiencesApiHandlerTests =
       let examples = Map.empty.Add("application/json", getAudiencesCreateExample "application/json")
       // or pass a body of type AudienceCreateRequest
       let body = obj() :?> AudienceCreateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
-
-      body
-        |> HttpPost client path
-        |> isStatus (enum<HttpStatusCode>(0))
-        |> readText
-        |> shouldEqual "TESTME"
-      }
-
-  [<Fact>]
-  let ``AudiencesCreateCustom - Create custom audience returns 200 where Success`` () =
-    task {
-      use server = new TestServer(createHost())
-      use client = server.CreateClient()
-
-      // add your setup code here
-
-      let path = "/v5/ad_accounts/{ad_account_id}/audiences/custom".Replace("adAccountId", "ADDME")
-
-      // use an example requestBody provided by the spec
-      let examples = Map.empty.Add("application/json", getAudiencesCreateCustomExample "application/json")
-      // or pass a body of type AudienceCreateCustomRequest
-      let body = obj() :?> AudienceCreateCustomRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
-
-      body
-        |> HttpPost client path
-        |> isStatus (enum<HttpStatusCode>(200))
-        |> readText
-        |> shouldEqual "TESTME"
-      }
-
-  [<Fact>]
-  let ``AudiencesCreateCustom - Create custom audience returns 0 where Unexpected error`` () =
-    task {
-      use server = new TestServer(createHost())
-      use client = server.CreateClient()
-
-      // add your setup code here
-
-      let path = "/v5/ad_accounts/{ad_account_id}/audiences/custom".Replace("adAccountId", "ADDME")
-
-      // use an example requestBody provided by the spec
-      let examples = Map.empty.Add("application/json", getAudiencesCreateCustomExample "application/json")
-      // or pass a body of type AudienceCreateCustomRequest
-      let body = obj() :?> AudienceCreateCustomRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path

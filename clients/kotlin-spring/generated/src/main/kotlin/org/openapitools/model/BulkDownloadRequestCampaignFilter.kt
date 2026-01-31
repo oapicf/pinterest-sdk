@@ -17,17 +17,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param startTime Unix UTC timestamp.
+ * @param campaignStatus 
  * @param endTime Unix UTC timestamp.
  * @param name Campaign name
- * @param campaignStatus 
  * @param objectiveType 
+ * @param startTime Unix UTC timestamp.
  */
 data class BulkDownloadRequestCampaignFilter(
 
-    @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "1622848072", description = "Unix UTC timestamp.")
-    @get:JsonProperty("start_time") val startTime: kotlin.String? = null,
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("campaign_status") val campaignStatus: kotlin.collections.List<CampaignSummaryStatus>? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1622848072", description = "Unix UTC timestamp.")
@@ -38,11 +38,11 @@ data class BulkDownloadRequestCampaignFilter(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("campaign_status") val campaignStatus: kotlin.collections.List<CampaignSummaryStatus>? = null,
+    @get:JsonProperty("objective_type") val objectiveType: kotlin.collections.List<ObjectiveType>? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("objective_type") val objectiveType: kotlin.collections.List<ObjectiveType>? = null
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "1622848072", description = "Unix UTC timestamp.")
+    @get:JsonProperty("start_time") val startTime: kotlin.String? = null
 ) {
 
 }

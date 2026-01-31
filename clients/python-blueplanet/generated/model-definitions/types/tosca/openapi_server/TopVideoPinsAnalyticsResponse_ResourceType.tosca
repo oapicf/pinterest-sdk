@@ -1,0 +1,49 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TopVideoPinsAnalyticsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TopVideoPinsAnalyticsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TopPinsAnalyticsResponseDateAvailability = openapi_server.resourceTypes.TopPinsAnalyticsResponseDateAvailability
+  TopVideoPinsAnalyticsResponsePinsInner = openapi_server.resourceTypes.TopVideoPinsAnalyticsResponsePinsInner
+}
+resourceTypes {
+
+  TopVideoPinsAnalyticsResponse {
+    title = TopVideoPinsAnalyticsResponse
+    description = TopVideoPinsAnalyticsResponse
+    derivedFrom = Root
+    properties {
+        date_availability {
+          type = TopPinsAnalyticsResponseDateAvailability
+          description = ""
+          optional = false
+        }
+        pins {
+          type = array
+          items.type = TopVideoPinsAnalyticsResponsePinsInner
+          description = ""
+          optional = false
+        }
+        sort_by {
+          type =  string
+          description = ""
+          enum = ["SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TopVideoPinsAnalyticsResponse {
+    title = TopVideoPinsAnalyticsResponse
+    description = TopVideoPinsAnalyticsResponse
+    implements = openapi_server.resourceTypes.TopVideoPinsAnalyticsResponse
+
+  }
+}

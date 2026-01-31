@@ -6,16 +6,16 @@
 
 
 static advanced_auction_items_get_record_t *advanced_auction_items_get_record_create_internal(
-    char *item_id,
     pinterest_rest_api_country__e country,
+    char *item_id,
     pinterest_rest_api_language__e language
     ) {
     advanced_auction_items_get_record_t *advanced_auction_items_get_record_local_var = malloc(sizeof(advanced_auction_items_get_record_t));
     if (!advanced_auction_items_get_record_local_var) {
         return NULL;
     }
-    advanced_auction_items_get_record_local_var->item_id = item_id;
     advanced_auction_items_get_record_local_var->country = country;
+    advanced_auction_items_get_record_local_var->item_id = item_id;
     advanced_auction_items_get_record_local_var->language = language;
 
     advanced_auction_items_get_record_local_var->_library_owned = 1;
@@ -23,13 +23,13 @@ static advanced_auction_items_get_record_t *advanced_auction_items_get_record_cr
 }
 
 __attribute__((deprecated)) advanced_auction_items_get_record_t *advanced_auction_items_get_record_create(
-    char *item_id,
     pinterest_rest_api_country__e country,
+    char *item_id,
     pinterest_rest_api_language__e language
     ) {
     return advanced_auction_items_get_record_create_internal (
-        item_id,
         country,
+        item_id,
         language
         );
 }
@@ -53,15 +53,6 @@ void advanced_auction_items_get_record_free(advanced_auction_items_get_record_t 
 cJSON *advanced_auction_items_get_record_convertToJSON(advanced_auction_items_get_record_t *advanced_auction_items_get_record) {
     cJSON *item = cJSON_CreateObject();
 
-    // advanced_auction_items_get_record->item_id
-    if (!advanced_auction_items_get_record->item_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "item_id", advanced_auction_items_get_record->item_id) == NULL) {
-    goto fail; //String
-    }
-
-
     // advanced_auction_items_get_record->country
     if (pinterest_rest_api_country__NULL == advanced_auction_items_get_record->country) {
         goto fail;
@@ -73,6 +64,15 @@ cJSON *advanced_auction_items_get_record_convertToJSON(advanced_auction_items_ge
     cJSON_AddItemToObject(item, "country", country_local_JSON);
     if(item->child == NULL) {
         goto fail;
+    }
+
+
+    // advanced_auction_items_get_record->item_id
+    if (!advanced_auction_items_get_record->item_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "item_id", advanced_auction_items_get_record->item_id) == NULL) {
+    goto fail; //String
     }
 
 
@@ -107,6 +107,18 @@ advanced_auction_items_get_record_t *advanced_auction_items_get_record_parseFrom
     // define the local variable for advanced_auction_items_get_record->language
     pinterest_rest_api_language__e language_local_nonprim = 0;
 
+    // advanced_auction_items_get_record->country
+    cJSON *country = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_get_recordJSON, "country");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
+    if (!country) {
+        goto end;
+    }
+
+    
+    country_local_nonprim = country_parseFromJSON(country); //custom
+
     // advanced_auction_items_get_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_get_recordJSON, "item_id");
     if (cJSON_IsNull(item_id)) {
@@ -122,18 +134,6 @@ advanced_auction_items_get_record_t *advanced_auction_items_get_record_parseFrom
     goto end; //String
     }
 
-    // advanced_auction_items_get_record->country
-    cJSON *country = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_get_recordJSON, "country");
-    if (cJSON_IsNull(country)) {
-        country = NULL;
-    }
-    if (!country) {
-        goto end;
-    }
-
-    
-    country_local_nonprim = country_parseFromJSON(country); //custom
-
     // advanced_auction_items_get_record->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_get_recordJSON, "language");
     if (cJSON_IsNull(language)) {
@@ -148,8 +148,8 @@ advanced_auction_items_get_record_t *advanced_auction_items_get_record_parseFrom
 
 
     advanced_auction_items_get_record_local_var = advanced_auction_items_get_record_create_internal (
-        strdup(item_id->valuestring),
         country_local_nonprim,
+        strdup(item_id->valuestring),
         language_local_nonprim
         );
 

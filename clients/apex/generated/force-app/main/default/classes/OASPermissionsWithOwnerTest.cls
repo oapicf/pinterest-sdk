@@ -6,6 +6,8 @@ private class OASPermissionsWithOwnerTest {
             OASPermissionsWithOwner.ADMIN,
             OASPermissionsWithOwner.ANALYST,
             OASPermissionsWithOwner.FINANCE_MANAGER,
+            OASPermissionsWithOwner.FINANCE_EDIT,
+            OASPermissionsWithOwner.FINANCE_VIEW,
             OASPermissionsWithOwner.AUDIENCE_MANAGER,
             OASPermissionsWithOwner.CAMPAIGN_MANAGER,
             OASPermissionsWithOwner.CATALOGS_MANAGER,

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,12 @@ var _ MappedNullable = &GetBusinessAssetsResponse{}
 
 // GetBusinessAssetsResponse An object containing the permissions a business has on the asset.
 type GetBusinessAssetsResponse struct {
+	AssetGroupInfo *AssetGroupBinding `json:"asset_group_info,omitempty"`
 	// Unique identifier of a business asset.
 	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	AssetType *string `json:"asset_type,omitempty"`
-	AssetGroupInfo *AssetGroupBinding `json:"asset_group_info,omitempty"`
+	CatalogInfo NullableGetBusinessAssetsResponseCatalogInfo `json:"catalog_info,omitempty"`
 }
 
 // NewGetBusinessAssetsResponse instantiates a new GetBusinessAssetsResponse object
@@ -42,6 +43,38 @@ func NewGetBusinessAssetsResponse() *GetBusinessAssetsResponse {
 func NewGetBusinessAssetsResponseWithDefaults() *GetBusinessAssetsResponse {
 	this := GetBusinessAssetsResponse{}
 	return &this
+}
+
+// GetAssetGroupInfo returns the AssetGroupInfo field value if set, zero value otherwise.
+func (o *GetBusinessAssetsResponse) GetAssetGroupInfo() AssetGroupBinding {
+	if o == nil || IsNil(o.AssetGroupInfo) {
+		var ret AssetGroupBinding
+		return ret
+	}
+	return *o.AssetGroupInfo
+}
+
+// GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetBusinessAssetsResponse) GetAssetGroupInfoOk() (*AssetGroupBinding, bool) {
+	if o == nil || IsNil(o.AssetGroupInfo) {
+		return nil, false
+	}
+	return o.AssetGroupInfo, true
+}
+
+// HasAssetGroupInfo returns a boolean if a field has been set.
+func (o *GetBusinessAssetsResponse) HasAssetGroupInfo() bool {
+	if o != nil && !IsNil(o.AssetGroupInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssetGroupInfo gets a reference to the given AssetGroupBinding and assigns it to the AssetGroupInfo field.
+func (o *GetBusinessAssetsResponse) SetAssetGroupInfo(v AssetGroupBinding) {
+	o.AssetGroupInfo = &v
 }
 
 // GetAssetId returns the AssetId field value if set, zero value otherwise.
@@ -108,36 +141,46 @@ func (o *GetBusinessAssetsResponse) SetAssetType(v string) {
 	o.AssetType = &v
 }
 
-// GetAssetGroupInfo returns the AssetGroupInfo field value if set, zero value otherwise.
-func (o *GetBusinessAssetsResponse) GetAssetGroupInfo() AssetGroupBinding {
-	if o == nil || IsNil(o.AssetGroupInfo) {
-		var ret AssetGroupBinding
+// GetCatalogInfo returns the CatalogInfo field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetBusinessAssetsResponse) GetCatalogInfo() GetBusinessAssetsResponseCatalogInfo {
+	if o == nil || IsNil(o.CatalogInfo.Get()) {
+		var ret GetBusinessAssetsResponseCatalogInfo
 		return ret
 	}
-	return *o.AssetGroupInfo
+	return *o.CatalogInfo.Get()
 }
 
-// GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field value if set, nil otherwise
+// GetCatalogInfoOk returns a tuple with the CatalogInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetBusinessAssetsResponse) GetAssetGroupInfoOk() (*AssetGroupBinding, bool) {
-	if o == nil || IsNil(o.AssetGroupInfo) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetBusinessAssetsResponse) GetCatalogInfoOk() (*GetBusinessAssetsResponseCatalogInfo, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AssetGroupInfo, true
+	return o.CatalogInfo.Get(), o.CatalogInfo.IsSet()
 }
 
-// HasAssetGroupInfo returns a boolean if a field has been set.
-func (o *GetBusinessAssetsResponse) HasAssetGroupInfo() bool {
-	if o != nil && !IsNil(o.AssetGroupInfo) {
+// HasCatalogInfo returns a boolean if a field has been set.
+func (o *GetBusinessAssetsResponse) HasCatalogInfo() bool {
+	if o != nil && o.CatalogInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAssetGroupInfo gets a reference to the given AssetGroupBinding and assigns it to the AssetGroupInfo field.
-func (o *GetBusinessAssetsResponse) SetAssetGroupInfo(v AssetGroupBinding) {
-	o.AssetGroupInfo = &v
+// SetCatalogInfo gets a reference to the given NullableGetBusinessAssetsResponseCatalogInfo and assigns it to the CatalogInfo field.
+func (o *GetBusinessAssetsResponse) SetCatalogInfo(v GetBusinessAssetsResponseCatalogInfo) {
+	o.CatalogInfo.Set(&v)
+}
+// SetCatalogInfoNil sets the value for CatalogInfo to be an explicit nil
+func (o *GetBusinessAssetsResponse) SetCatalogInfoNil() {
+	o.CatalogInfo.Set(nil)
+}
+
+// UnsetCatalogInfo ensures that no value is present for CatalogInfo, not even an explicit nil
+func (o *GetBusinessAssetsResponse) UnsetCatalogInfo() {
+	o.CatalogInfo.Unset()
 }
 
 func (o GetBusinessAssetsResponse) MarshalJSON() ([]byte, error) {
@@ -150,14 +193,17 @@ func (o GetBusinessAssetsResponse) MarshalJSON() ([]byte, error) {
 
 func (o GetBusinessAssetsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AssetGroupInfo) {
+		toSerialize["asset_group_info"] = o.AssetGroupInfo
+	}
 	if !IsNil(o.AssetId) {
 		toSerialize["asset_id"] = o.AssetId
 	}
 	if !IsNil(o.AssetType) {
 		toSerialize["asset_type"] = o.AssetType
 	}
-	if !IsNil(o.AssetGroupInfo) {
-		toSerialize["asset_group_info"] = o.AssetGroupInfo
+	if o.CatalogInfo.IsSet() {
+		toSerialize["catalog_info"] = o.CatalogInfo.Get()
 	}
 	return toSerialize, nil
 }

@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CreateAssetInvitesRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CreateAssetInvitesRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CreateAssetInvitesRequestItem = openapi_server.resourceTypes.CreateAssetInvitesRequestItem
+}
+resourceTypes {
+
+  CreateAssetInvitesRequest {
+    title = CreateAssetInvitesRequest
+    description = CreateAssetInvitesRequest
+    derivedFrom = Root
+    properties {
+        invites {
+          type = array
+          items.type = CreateAssetInvitesRequestItem
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CreateAssetInvitesRequest {
+    title = CreateAssetInvitesRequest
+    description = CreateAssetInvitesRequest
+    implements = openapi_server.resourceTypes.CreateAssetInvitesRequest
+
+  }
+}

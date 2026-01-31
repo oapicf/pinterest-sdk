@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**values** | **List&lt;MediaType&gt;** |  |  |
 |**negated** | **Boolean** |  |  [optional] |
+|**values** | **List&lt;MediaType&gt;** |  |  |
 
 
 

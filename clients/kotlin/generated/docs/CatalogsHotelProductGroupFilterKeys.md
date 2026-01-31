@@ -7,12 +7,13 @@
 | **PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  |  |
 | **HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
 | **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **CUSTOM_LABEL_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **CUSTOM_LABEL_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **CUSTOM_LABEL_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **CUSTOM_LABEL_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **CUSTOM_LABEL_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
+| **CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
 | **COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  |  |
+| **TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
 
 
 

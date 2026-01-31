@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.MediaUpload
-import org.openapitools.client.models.MediaUploadAllOfUploadParameters
+import org.openapitools.client.models.MediaUploadParameters
 import org.openapitools.client.models.MediaUploadType
 
 class MediaUploadTest : ShouldSpec() {
@@ -39,16 +39,16 @@ class MediaUploadTest : ShouldSpec() {
             //modelInstance.mediaType shouldBe ("TODO")
         }
 
+        // to test the property `uploadParameters` - The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+        should("test uploadParameters") {
+            // uncomment below to test the property
+            //modelInstance.uploadParameters shouldBe ("TODO")
+        }
+
         // to test the property `uploadUrl` - The URL where you will POST your media file.
         should("test uploadUrl") {
             // uncomment below to test the property
             //modelInstance.uploadUrl shouldBe ("TODO")
-        }
-
-        // to test the property `uploadParameters`
-        should("test uploadParameters") {
-            // uncomment below to test the property
-            //modelInstance.uploadParameters shouldBe ("TODO")
         }
 
     }

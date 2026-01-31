@@ -9,12 +9,13 @@ Name | Type
 `pRICE` | [CatalogsProductGroupPricingCurrencyCriteria](CatalogsProductGroupPricingCurrencyCriteria.md)
 `hOTELID` | [CatalogsProductGroupMultipleStringCriteria](.md)
 `bRAND` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL0` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL1` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL2` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL3` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL4` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`cUSTOMLABEL0` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL1` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL3` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL4` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
 `cOUNTRY` | [CatalogsProductGroupMultipleCountriesCriteria](.md)
+`tITLEKEYWORDS` | [CatalogsProductGroupMultipleStringCriteria](.md)
 
 ## Example
 
@@ -32,6 +33,7 @@ const example = {
   "cUSTOMLABEL3": null,
   "cUSTOMLABEL4": null,
   "cOUNTRY": null,
+  "tITLEKEYWORDS": null,
 } satisfies CatalogsHotelProductGroupFilterKeys
 
 console.log(example)

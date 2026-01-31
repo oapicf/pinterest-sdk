@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **item_id** | **String** | The catalog item id in the merchant namespace | [optional] |
 | **attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [optional] |
+| **item_id** | **String** | The catalog item id in the merchant namespace | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ItemUpsertBatchRecord.new(
-  item_id: DS0294-M,
-  attributes: null
+  attributes: null,
+  item_id: DS0294-M
 )
 ```
 

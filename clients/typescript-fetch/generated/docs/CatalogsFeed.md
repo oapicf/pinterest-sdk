@@ -10,17 +10,17 @@ Name | Type
 `createdAt` | Date
 `id` | string
 `updatedAt` | Date
-`name` | string
-`format` | [CatalogsFormat](CatalogsFormat.md)
 `catalogType` | [CatalogsType](CatalogsType.md)
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
-`location` | string
-`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
-`status` | [CatalogsStatus](CatalogsStatus.md)
+`defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
+`defaultCountry` | [Country](Country.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
 `defaultLocale` | string
-`defaultCountry` | [Country](Country.md)
-`defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
+`format` | [CatalogsFormat](CatalogsFormat.md)
+`location` | string
+`name` | string
+`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
+`status` | [CatalogsStatus](CatalogsStatus.md)
 `catalogId` | string
 
 ## Example
@@ -33,17 +33,17 @@ const example = {
   "createdAt": 2022-03-14T15:15:22Z,
   "id": null,
   "updatedAt": 2022-03-14T15:16:34Z,
-  "name": null,
-  "format": null,
   "catalogType": null,
   "credentials": null,
-  "location": null,
-  "preferredProcessingSchedule": null,
-  "status": null,
+  "defaultAvailability": null,
+  "defaultCountry": null,
   "defaultCurrency": null,
   "defaultLocale": en-US,
-  "defaultCountry": null,
-  "defaultAvailability": null,
+  "format": null,
+  "location": null,
+  "name": null,
+  "preferredProcessingSchedule": null,
+  "status": null,
   "catalogId": null,
 } satisfies CatalogsFeed
 

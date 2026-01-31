@@ -9,10 +9,10 @@
 -export_type([openapi_ssio_account_address/0]).
 
 -type openapi_ssio_account_address() ::
-  [ {'display', binary() }
-  | {'purpose', binary() }
-  | {'address_id', binary() }
+  [ {'address_id', binary() }
+  | {'display', binary() }
   | {'order_legal_entity', binary() }
+  | {'purpose', binary() }
   ].
 
 
@@ -20,10 +20,10 @@ openapi_ssio_account_address() ->
     openapi_ssio_account_address([]).
 
 openapi_ssio_account_address(Fields) ->
-  Default = [ {'display', binary() }
-            , {'purpose', binary() }
-            , {'address_id', binary() }
+  Default = [ {'address_id', binary() }
+            , {'display', binary() }
             , {'order_legal_entity', binary() }
+            , {'purpose', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

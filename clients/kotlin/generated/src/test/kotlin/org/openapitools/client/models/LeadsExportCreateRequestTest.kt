@@ -25,10 +25,10 @@ class LeadsExportCreateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of LeadsExportCreateRequest
         //val modelInstance = LeadsExportCreateRequest()
 
-        // to test the property `startDate` - Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-        should("test startDate") {
+        // to test the property `adId` - ID for the ad collecting leads
+        should("test adId") {
             // uncomment below to test the property
-            //modelInstance.startDate shouldBe ("TODO")
+            //modelInstance.adId shouldBe ("TODO")
         }
 
         // to test the property `endDate` - Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
@@ -37,10 +37,10 @@ class LeadsExportCreateRequestTest : ShouldSpec() {
             //modelInstance.endDate shouldBe ("TODO")
         }
 
-        // to test the property `adId` - ID for the ad collecting leads
-        should("test adId") {
+        // to test the property `startDate` - Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+        should("test startDate") {
             // uncomment below to test the property
-            //modelInstance.adId shouldBe ("TODO")
+            //modelInstance.startDate shouldBe ("TODO")
         }
 
     }

@@ -14,19 +14,19 @@ public struct CatalogsProductGroupPricingCriteria: Codable, JSONEncodable, Hasha
 
     public static let valuesRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var inclusion: Bool? = true
-    public var values: Double
     public var negated: Bool? = false
+    public var values: Double
 
-    public init(inclusion: Bool? = true, values: Double, negated: Bool? = false) {
+    public init(inclusion: Bool? = true, negated: Bool? = false, values: Double) {
         self.inclusion = inclusion
-        self.values = values
         self.negated = negated
+        self.values = values
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case inclusion
-        case values
         case negated
+        case values
     }
 
     // Encodable protocol methods
@@ -34,8 +34,8 @@ public struct CatalogsProductGroupPricingCriteria: Codable, JSONEncodable, Hasha
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(inclusion, forKey: .inclusion)
-        try container.encode(values, forKey: .values)
         try container.encodeIfPresent(negated, forKey: .negated)
+        try container.encode(values, forKey: .values)
     }
 }
 

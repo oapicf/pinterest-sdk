@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExportStatus** | Pointer to [**LeadsExportStatus**](LeadsExportStatus.md) |  | [optional] 
 **DownloadUrl** | Pointer to **NullableString** |  | [optional] 
+**ExportStatus** | Pointer to [**LeadsExportStatus**](LeadsExportStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewLeadsExportResponseDataWithDefaults instantiates a new LeadsExportResponseData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetExportStatus
-
-`func (o *LeadsExportResponseData) GetExportStatus() LeadsExportStatus`
-
-GetExportStatus returns the ExportStatus field if non-nil, zero value otherwise.
-
-### GetExportStatusOk
-
-`func (o *LeadsExportResponseData) GetExportStatusOk() (*LeadsExportStatus, bool)`
-
-GetExportStatusOk returns a tuple with the ExportStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExportStatus
-
-`func (o *LeadsExportResponseData) SetExportStatus(v LeadsExportStatus)`
-
-SetExportStatus sets ExportStatus field to given value.
-
-### HasExportStatus
-
-`func (o *LeadsExportResponseData) HasExportStatus() bool`
-
-HasExportStatus returns a boolean if a field has been set.
 
 ### GetDownloadUrl
 
@@ -86,6 +61,31 @@ HasDownloadUrl returns a boolean if a field has been set.
 `func (o *LeadsExportResponseData) UnsetDownloadUrl()`
 
 UnsetDownloadUrl ensures that no value is present for DownloadUrl, not even an explicit nil
+### GetExportStatus
+
+`func (o *LeadsExportResponseData) GetExportStatus() LeadsExportStatus`
+
+GetExportStatus returns the ExportStatus field if non-nil, zero value otherwise.
+
+### GetExportStatusOk
+
+`func (o *LeadsExportResponseData) GetExportStatusOk() (*LeadsExportStatus, bool)`
+
+GetExportStatusOk returns a tuple with the ExportStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportStatus
+
+`func (o *LeadsExportResponseData) SetExportStatus(v LeadsExportStatus)`
+
+SetExportStatus sets ExportStatus field to given value.
+
+### HasExportStatus
+
+`func (o *LeadsExportResponseData) HasExportStatus() bool`
+
+HasExportStatus returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

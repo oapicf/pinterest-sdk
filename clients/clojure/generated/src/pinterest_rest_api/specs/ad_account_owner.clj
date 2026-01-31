@@ -7,8 +7,8 @@
 
 (def ad-account-owner-data
   {
-   (ds/opt :username) string?
    (ds/opt :id) string?
+   (ds/opt :username) string?
    })
 
 (def ad-account-owner-spec

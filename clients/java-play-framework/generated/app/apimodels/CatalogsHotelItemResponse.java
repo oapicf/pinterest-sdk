@@ -16,9 +16,14 @@ import javax.validation.Valid;
 /**
  * Object describing a hotel record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelItemResponse   {
+  @JsonProperty("attributes")
+  @Valid
+
+  private CatalogsHotelAttributes attributes;
+
   @JsonProperty("catalog_type")
   @NotNull
 @Valid
@@ -35,10 +40,22 @@ public class CatalogsHotelItemResponse   {
 
   private List<@Valid Pin> pins = null;
 
-  @JsonProperty("attributes")
-  @Valid
+  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
 
-  private CatalogsHotelAttributes attributes;
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsHotelItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -99,23 +116,6 @@ public class CatalogsHotelItemResponse   {
     this.pins = pins;
   }
 
-  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -126,15 +126,15 @@ public class CatalogsHotelItemResponse   {
       return false;
     }
     CatalogsHotelItemResponse catalogsHotelItemResponse = (CatalogsHotelItemResponse) o;
-    return Objects.equals(catalogType, catalogsHotelItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsHotelItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsHotelItemResponse.catalogType) &&
         Objects.equals(hotelId, catalogsHotelItemResponse.hotelId) &&
-        Objects.equals(pins, catalogsHotelItemResponse.pins) &&
-        Objects.equals(attributes, catalogsHotelItemResponse.attributes);
+        Objects.equals(pins, catalogsHotelItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, pins, attributes);
+    return Objects.hash(attributes, catalogType, hotelId, pins);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -143,10 +143,10 @@ public class CatalogsHotelItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

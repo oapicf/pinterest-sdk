@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `UpdateAssetGroupResponse`
 --
-SELECT `updated_asset_groups`, `exceptions` FROM `UpdateAssetGroupResponse` WHERE 1;
+SELECT `exceptions`, `updated_asset_groups` FROM `UpdateAssetGroupResponse` WHERE 1;
 
 --
 -- INSERT template for table `UpdateAssetGroupResponse`
 --
-INSERT INTO `UpdateAssetGroupResponse`(`updated_asset_groups`, `exceptions`) VALUES (?, ?);
+INSERT INTO `UpdateAssetGroupResponse`(`exceptions`, `updated_asset_groups`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `UpdateAssetGroupResponse`
 --
-UPDATE `UpdateAssetGroupResponse` SET `updated_asset_groups` = ?, `exceptions` = ? WHERE 1;
+UPDATE `UpdateAssetGroupResponse` SET `exceptions` = ?, `updated_asset_groups` = ? WHERE 1;
 
 --
 -- DELETE template for table `UpdateAssetGroupResponse`

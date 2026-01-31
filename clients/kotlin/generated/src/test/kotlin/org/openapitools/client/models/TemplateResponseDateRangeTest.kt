@@ -28,6 +28,12 @@ class TemplateResponseDateRangeTest : ShouldSpec() {
         // uncomment below to create an instance of TemplateResponseDateRange
         //val modelInstance = TemplateResponseDateRange()
 
+        // to test the property `absoluteDateRange`
+        should("test absoluteDateRange") {
+            // uncomment below to test the property
+            //modelInstance.absoluteDateRange shouldBe ("TODO")
+        }
+
         // to test the property `dynamicDateRange`
         should("test dynamicDateRange") {
             // uncomment below to test the property
@@ -38,12 +44,6 @@ class TemplateResponseDateRangeTest : ShouldSpec() {
         should("test relativeDateRange") {
             // uncomment below to test the property
             //modelInstance.relativeDateRange shouldBe ("TODO")
-        }
-
-        // to test the property `absoluteDateRange`
-        should("test absoluteDateRange") {
-            // uncomment below to test the property
-            //modelInstance.absoluteDateRange shouldBe ("TODO")
         }
 
     }

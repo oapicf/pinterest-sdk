@@ -55,7 +55,7 @@ public class CustomerListsControllerTest {
      *
      * The method should: Create customer lists
      *
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt;  &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the &lt;a href&#x3D;\&quot;#operation/create_audience_handler\&quot;&gt;create audience endpoint&lt;/a&gt; before it can be used.&lt;/p&gt;
+     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -89,7 +89,7 @@ public class CustomerListsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@498785eb");
+            .accept("[Ljava.lang.String;@7b1806be");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerList.class);
@@ -137,7 +137,7 @@ public class CustomerListsControllerTest {
             put("customer_list_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4e4c5b5a");
+            .accept("[Ljava.lang.String;@480d5d48");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerList.class);
@@ -186,7 +186,7 @@ public class CustomerListsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6bdebaef");
+            .accept("[Ljava.lang.String;@2344c39b");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -204,7 +204,7 @@ public class CustomerListsControllerTest {
      *
      * The method should: Update customer list
      *
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -214,7 +214,7 @@ public class CustomerListsControllerTest {
         // given
         String adAccountId = "example";
         String customerListId = "example";
-        CustomerListUpdateRequest customerListUpdateRequest = new CustomerListUpdateRequest("email2@pinterest.com,email6@pinterest.com,", org.openapitools.model.UserListOperationType.fromValue("ADD"));
+        CustomerListUpdateRequest customerListUpdateRequest = new CustomerListUpdateRequest(org.openapitools.model.UserListOperationType.fromValue("ADD"), "email2@pinterest.com,email6@pinterest.com,");
 
         // when
         CustomerList result = controller.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest).block();
@@ -233,14 +233,14 @@ public class CustomerListsControllerTest {
     @Disabled("Not Implemented")
     void customerListsUpdateClientApiTest() throws IOException {
         // given
-        CustomerListUpdateRequest body = new CustomerListUpdateRequest("email2@pinterest.com,email6@pinterest.com,", org.openapitools.model.UserListOperationType.fromValue("ADD"));
+        CustomerListUpdateRequest body = new CustomerListUpdateRequest(org.openapitools.model.UserListOperationType.fromValue("ADD"), "email2@pinterest.com,email6@pinterest.com,");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
             put("customer_list_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@7a8495a");
+            .accept("[Ljava.lang.String;@6aeef08d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerList.class);

@@ -6,13 +6,13 @@
 
 Name | Type
 ------------ | -------------
+`country` | [Country](Country.md)
+`createdTime` | number
+`currency` | [Currency](Currency.md)
 `id` | string
 `name` | string
 `owner` | [AdAccountOwner](AdAccountOwner.md)
-`country` | [Country](Country.md)
-`currency` | [Currency](Currency.md)
 `permissions` | [Array&lt;BusinessAccessRole&gt;](BusinessAccessRole.md)
-`createdTime` | number
 `updatedTime` | number
 
 ## Example
@@ -22,14 +22,14 @@ import type { AdAccount } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "country": null,
+  "createdTime": null,
+  "currency": null,
   "id": null,
   "name": null,
   "owner": null,
-  "country": null,
-  "currency": null,
   "permissions": null,
-  "createdTime": 1451431341,
-  "updatedTime": 1451431341,
+  "updatedTime": null,
 } satisfies AdAccount
 
 console.log(example)

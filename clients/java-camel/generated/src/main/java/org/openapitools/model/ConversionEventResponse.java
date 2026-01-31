@@ -20,16 +20,36 @@ import javax.annotation.Generated;
  * ConversionEventResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventResponse {
+
+  private String adAccountId;
 
   private ConversionTagType conversionEvent;
 
   private String conversionTagId;
 
-  private String adAccountId;
-
   private Integer createdTime;
+
+  public ConversionEventResponse adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
+  }
+
+  /**
+   * Id of the ad account.
+   * @return adAccountId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "ad_account_id", example = "549757463328", description = "Id of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
 
   public ConversionEventResponse conversionEvent(ConversionTagType conversionEvent) {
     this.conversionEvent = conversionEvent;
@@ -71,26 +91,6 @@ public class ConversionEventResponse {
     this.conversionTagId = conversionTagId;
   }
 
-  public ConversionEventResponse adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
-  /**
-   * Id of the ad account.
-   * @return adAccountId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "ad_account_id", example = "549757463328", description = "Id of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
   public ConversionEventResponse createdTime(Integer createdTime) {
     this.createdTime = createdTime;
     return this;
@@ -120,24 +120,24 @@ public class ConversionEventResponse {
       return false;
     }
     ConversionEventResponse conversionEventResponse = (ConversionEventResponse) o;
-    return Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
+    return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
+        Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.createdTime, conversionEventResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversionEvent, conversionTagId, adAccountId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventResponse {\n");
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();

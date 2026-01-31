@@ -9,8 +9,8 @@ module UserWebsiteSummary =
 
 
   type UserWebsiteSummary = {
-    Website : string;
     Status : string;
     VerifiedAt : string;
+    Website : string;
   }
   //#endregion

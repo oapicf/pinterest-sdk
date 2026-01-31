@@ -8,9 +8,9 @@ Request object to create catalogs items
 Name | Type
 ------------ | -------------
 `country` | [Country](Country.md)
+`items` | [Array&lt;ItemCreateBatchRecord&gt;](ItemCreateBatchRecord.md)
 `language` | string
 `operation` | [BatchOperation](BatchOperation.md)
-`items` | [Array&lt;ItemCreateBatchRecord&gt;](ItemCreateBatchRecord.md)
 
 ## Example
 
@@ -20,9 +20,9 @@ import type { CatalogsItemsCreateBatchRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "country": null,
+  "items": null,
   "language": null,
   "operation": null,
-  "items": null,
 } satisfies CatalogsItemsCreateBatchRequest
 
 console.log(example)

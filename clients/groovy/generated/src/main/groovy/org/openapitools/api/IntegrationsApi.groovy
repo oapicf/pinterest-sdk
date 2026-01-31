@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.DetailedError
 import org.openapitools.model.Error
 import org.openapitools.model.IntegrationLogsRequest
 import org.openapitools.model.IntegrationLogsSuccessResponse
@@ -10,6 +9,7 @@ import org.openapitools.model.IntegrationRecord
 import org.openapitools.model.IntegrationRequest
 import org.openapitools.model.IntegrationRequestPatch
 import org.openapitools.model.IntegrationsGetList200Response
+import org.openapitools.model.IntegrationsLogsPost400Response
 
 class IntegrationsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -77,6 +77,10 @@ class IntegrationsApi {
         if (externalBusinessId == null) {
             throw new RuntimeException("missing required params externalBusinessId")
         }
+        // verify required params are set
+        if (integrationRequestPatch == null) {
+            throw new RuntimeException("missing required params integrationRequestPatch")
+        }
 
 
 
@@ -99,6 +103,10 @@ class IntegrationsApi {
         def bodyParams
         def contentType
 
+        // verify required params are set
+        if (integrationRequest == null) {
+            throw new RuntimeException("missing required params integrationRequest")
+        }
 
 
 

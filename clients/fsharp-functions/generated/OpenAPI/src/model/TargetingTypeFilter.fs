@@ -3,7 +3,6 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AdsAnalyticsTargetingType
 
 module TargetingTypeFilter =
 
@@ -12,7 +11,7 @@ module TargetingTypeFilter =
   [<CLIMutable>]
   type TargetingTypeFilter = {
     [<JsonProperty(PropertyName = "targeting_types")>]
-    TargetingTypes : AdsAnalyticsTargetingType[];
+    TargetingTypes : string[];
   }
 
   //#endregion

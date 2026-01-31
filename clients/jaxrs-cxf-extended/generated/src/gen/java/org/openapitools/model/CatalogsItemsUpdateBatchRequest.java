@@ -27,6 +27,13 @@ public class CatalogsItemsUpdateBatchRequest  {
   @Valid
   private Country country;
 
+ /**
+  * Array with catalogs items
+  */
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @Valid
+  private List<@Valid ItemUpdateBatchRecord> items = new ArrayList<>();
+
 public enum LanguageEnum {
 
     @JsonProperty("af-ZA") AF_ZA(String.valueOf("af-ZA")),
@@ -171,13 +178,6 @@ public enum LanguageEnum {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private BatchOperation operation;
-
- /**
-  * Array with catalogs items
-  */
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @Valid
-  private List<@Valid ItemUpdateBatchRecord> items = new ArrayList<>();
  /**
   * Get country
   * @return country
@@ -200,6 +200,39 @@ public enum LanguageEnum {
    */
   public CatalogsItemsUpdateBatchRequest country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+  * Array with catalogs items
+  * @return items
+  */
+  @JsonProperty("items")
+  @NotNull
+ @Size(min=1,max=1000)  public List<@Valid ItemUpdateBatchRecord> getItems() {
+    return items;
+  }
+
+  /**
+   * Sets the <code>items</code> property.
+   */
+ public void setItems(List<@Valid ItemUpdateBatchRecord> items) {
+    this.items = items;
+  }
+
+  /**
+   * Sets the <code>items</code> property.
+   */
+  public CatalogsItemsUpdateBatchRequest items(List<@Valid ItemUpdateBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>items</code> list.
+   */
+  public CatalogsItemsUpdateBatchRequest addItemsItem(ItemUpdateBatchRecord itemsItem) {
+    this.items.add(itemsItem);
     return this;
   }
 
@@ -253,39 +286,6 @@ public enum LanguageEnum {
     return this;
   }
 
- /**
-  * Array with catalogs items
-  * @return items
-  */
-  @JsonProperty("items")
-  @NotNull
- @Size(min=1,max=1000)  public List<@Valid ItemUpdateBatchRecord> getItems() {
-    return items;
-  }
-
-  /**
-   * Sets the <code>items</code> property.
-   */
- public void setItems(List<@Valid ItemUpdateBatchRecord> items) {
-    this.items = items;
-  }
-
-  /**
-   * Sets the <code>items</code> property.
-   */
-  public CatalogsItemsUpdateBatchRequest items(List<@Valid ItemUpdateBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>items</code> list.
-   */
-  public CatalogsItemsUpdateBatchRequest addItemsItem(ItemUpdateBatchRecord itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -297,14 +297,14 @@ public enum LanguageEnum {
     }
     CatalogsItemsUpdateBatchRequest catalogsItemsUpdateBatchRequest = (CatalogsItemsUpdateBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsUpdateBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsUpdateBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsUpdateBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsUpdateBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsUpdateBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsUpdateBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -313,9 +313,9 @@ public enum LanguageEnum {
     sb.append("class CatalogsItemsUpdateBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

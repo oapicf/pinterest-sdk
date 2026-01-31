@@ -14,12 +14,12 @@ module CatalogsHotelAddress =
     Addr1 : string;
     [<JsonProperty(PropertyName = "city")>]
     City : string;
-    [<JsonProperty(PropertyName = "region")>]
-    Region : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : string;
     [<JsonProperty(PropertyName = "postal_code")>]
     PostalCode : string;
+    [<JsonProperty(PropertyName = "region")>]
+    Region : string;
   }
 
   //#endregion

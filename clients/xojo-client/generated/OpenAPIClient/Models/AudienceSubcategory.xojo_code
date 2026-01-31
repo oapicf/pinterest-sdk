@@ -3,6 +3,22 @@ Protected Class AudienceSubcategory
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Subinterest ID.
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Subinterest affinity index.
+		#tag EndNote
+		index As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Interest unique key (same as ID).
 		#tag EndNote
 		key As Xoson.O.OptionalString
@@ -22,22 +38,6 @@ Protected Class AudienceSubcategory
 			Subinterest's percent of category's total audience.
 		#tag EndNote
 		ratio As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Subinterest affinity index.
-		#tag EndNote
-		index As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Subinterest ID.
-		#tag EndNote
-		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -78,6 +78,22 @@ Protected Class AudienceSubcategory
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="index"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="key"
 			Visible=false
 			Group="Behavior"
@@ -99,22 +115,6 @@ Protected Class AudienceSubcategory
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="index"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

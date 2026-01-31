@@ -10,7 +10,7 @@ module CatalogsProductGroupPricingCriteria =
 
   type CatalogsProductGroupPricingCriteria = {
     Inclusion : bool;
-    Values : decimal;
     Negated : bool;
+    Values : decimal;
   }
   //#endregion

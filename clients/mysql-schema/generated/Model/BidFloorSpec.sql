@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `BidFloorSpec`
 --
-SELECT `countries`, `currency`, `objective_type`, `billable_event`, `optimization_goal_metadata`, `creative_type` FROM `BidFloorSpec` WHERE 1;
+SELECT `billable_event`, `countries`, `creative_type`, `currency`, `objective_type`, `optimization_goal_metadata` FROM `BidFloorSpec` WHERE 1;
 
 --
 -- INSERT template for table `BidFloorSpec`
 --
-INSERT INTO `BidFloorSpec`(`countries`, `currency`, `objective_type`, `billable_event`, `optimization_goal_metadata`, `creative_type`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `BidFloorSpec`(`billable_event`, `countries`, `creative_type`, `currency`, `objective_type`, `optimization_goal_metadata`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `BidFloorSpec`
 --
-UPDATE `BidFloorSpec` SET `countries` = ?, `currency` = ?, `objective_type` = ?, `billable_event` = ?, `optimization_goal_metadata` = ?, `creative_type` = ? WHERE 1;
+UPDATE `BidFloorSpec` SET `billable_event` = ?, `countries` = ?, `creative_type` = ?, `currency` = ?, `objective_type` = ?, `optimization_goal_metadata` = ? WHERE 1;
 
 --
 -- DELETE template for table `BidFloorSpec`

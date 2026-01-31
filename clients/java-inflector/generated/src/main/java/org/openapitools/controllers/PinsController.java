@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.openapitools.model.*;
 
+import org.openapitools.model.CreativeType;
 import java.util.Date;
 import org.openapitools.model.Error;
 import java.util.List;
@@ -20,8 +21,9 @@ import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
+import org.openapitools.model.PinterestLibError;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -54,13 +56,13 @@ public class PinsController  {
   */
 
   /*
-    public ResponseContext pinsGet(RequestContext request , String pinId, Boolean pinMetrics, String adAccountId) {
+    public ResponseContext pinsGet(RequestContext request , String pinId, String adAccountId, Boolean pinMetrics) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext pinsList(RequestContext request , String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) {
+    public ResponseContext pinsList(RequestContext request , String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes, String adAccountId, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

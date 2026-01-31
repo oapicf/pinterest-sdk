@@ -5,25 +5,25 @@
 -export_type([openapi_ssio_account_response/0]).
 
 -type openapi_ssio_account_response() ::
-    #{ 'eligible' => boolean(),
+    #{ 'billto_infos' => list(),
        'can_edit' => boolean(),
-       'billto_infos' => list(),
        'currency' => binary(),
-       'pmp_names' => list(),
-       'error' => binary()
+       'eligible' => boolean(),
+       'error' => binary(),
+       'pmp_names' => list()
      }.
 
-encode(#{ 'eligible' := Eligible,
+encode(#{ 'billto_infos' := BilltoInfos,
           'can_edit' := CanEdit,
-          'billto_infos' := BilltoInfos,
           'currency' := Currency,
-          'pmp_names' := PmpNames,
-          'error' := Error
+          'eligible' := Eligible,
+          'error' := Error,
+          'pmp_names' := PmpNames
         }) ->
-    #{ 'eligible' => Eligible,
+    #{ 'billto_infos' => BilltoInfos,
        'can_edit' => CanEdit,
-       'billto_infos' => BilltoInfos,
        'currency' => Currency,
-       'pmp_names' => PmpNames,
-       'error' => Error
+       'eligible' => Eligible,
+       'error' => Error,
+       'pmp_names' => PmpNames
      }.

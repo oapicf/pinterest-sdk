@@ -103,7 +103,7 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Business id
+$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
 $cancel_invites_body = new \OpenAPI\Client\Model\CancelInvitesBody(); // \OpenAPI\Client\Model\CancelInvitesBody | A list with invite ids
 
 try {
@@ -118,7 +118,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **business_id** | **string**| Business id | |
+| **business_id** | **string**| Unique identifier of the requesting business. | |
 | **cancel_invites_body** | [**\OpenAPI\Client\Model\CancelInvitesBody**](../Model/CancelInvitesBody.md)| A list with invite ids | |
 
 ### Return type
@@ -227,7 +227,7 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Business id
+$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
 $create_membership_or_partnership_invites_body = new \OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody(); // \OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 
 try {
@@ -242,7 +242,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **business_id** | **string**| Business id | |
+| **business_id** | **string**| Unique identifier of the requesting business. | |
 | **create_membership_or_partnership_invites_body** | [**\OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody**](../Model/CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
 
 ### Return type

@@ -8,9 +8,9 @@ Request object to update catalogs items
 Name | Type
 ------------ | -------------
 `country` | [Country](Country.md)
+`items` | [Array&lt;ItemUpdateBatchRecord&gt;](ItemUpdateBatchRecord.md)
 `language` | string
 `operation` | [BatchOperation](BatchOperation.md)
-`items` | [Array&lt;ItemUpdateBatchRecord&gt;](ItemUpdateBatchRecord.md)
 
 ## Example
 
@@ -20,9 +20,9 @@ import type { CatalogsItemsUpdateBatchRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "country": null,
+  "items": null,
   "language": null,
   "operation": null,
-  "items": null,
 } satisfies CatalogsItemsUpdateBatchRequest
 
 console.log(example)

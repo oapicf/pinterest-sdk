@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &TemplateResponseDateRange{}
 
 // TemplateResponseDateRange struct for TemplateResponseDateRange
 type TemplateResponseDateRange struct {
+	AbsoluteDateRange NullableTemplateResponseDateRangeAbsoluteDateRange `json:"absolute_date_range,omitempty"`
 	DynamicDateRange NullableTemplateResponseDateRangeDynamicDateRange `json:"dynamic_date_range,omitempty"`
 	RelativeDateRange NullableTemplateResponseDateRangeRelativeDateRange `json:"relative_date_range,omitempty"`
-	AbsoluteDateRange NullableTemplateResponseDateRangeAbsoluteDateRange `json:"absolute_date_range,omitempty"`
 }
 
 // NewTemplateResponseDateRange instantiates a new TemplateResponseDateRange object
@@ -40,6 +40,48 @@ func NewTemplateResponseDateRange() *TemplateResponseDateRange {
 func NewTemplateResponseDateRangeWithDefaults() *TemplateResponseDateRange {
 	this := TemplateResponseDateRange{}
 	return &this
+}
+
+// GetAbsoluteDateRange returns the AbsoluteDateRange field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateResponseDateRange) GetAbsoluteDateRange() TemplateResponseDateRangeAbsoluteDateRange {
+	if o == nil || IsNil(o.AbsoluteDateRange.Get()) {
+		var ret TemplateResponseDateRangeAbsoluteDateRange
+		return ret
+	}
+	return *o.AbsoluteDateRange.Get()
+}
+
+// GetAbsoluteDateRangeOk returns a tuple with the AbsoluteDateRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateResponseDateRange) GetAbsoluteDateRangeOk() (*TemplateResponseDateRangeAbsoluteDateRange, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AbsoluteDateRange.Get(), o.AbsoluteDateRange.IsSet()
+}
+
+// HasAbsoluteDateRange returns a boolean if a field has been set.
+func (o *TemplateResponseDateRange) HasAbsoluteDateRange() bool {
+	if o != nil && o.AbsoluteDateRange.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAbsoluteDateRange gets a reference to the given NullableTemplateResponseDateRangeAbsoluteDateRange and assigns it to the AbsoluteDateRange field.
+func (o *TemplateResponseDateRange) SetAbsoluteDateRange(v TemplateResponseDateRangeAbsoluteDateRange) {
+	o.AbsoluteDateRange.Set(&v)
+}
+// SetAbsoluteDateRangeNil sets the value for AbsoluteDateRange to be an explicit nil
+func (o *TemplateResponseDateRange) SetAbsoluteDateRangeNil() {
+	o.AbsoluteDateRange.Set(nil)
+}
+
+// UnsetAbsoluteDateRange ensures that no value is present for AbsoluteDateRange, not even an explicit nil
+func (o *TemplateResponseDateRange) UnsetAbsoluteDateRange() {
+	o.AbsoluteDateRange.Unset()
 }
 
 // GetDynamicDateRange returns the DynamicDateRange field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -126,48 +168,6 @@ func (o *TemplateResponseDateRange) UnsetRelativeDateRange() {
 	o.RelativeDateRange.Unset()
 }
 
-// GetAbsoluteDateRange returns the AbsoluteDateRange field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateResponseDateRange) GetAbsoluteDateRange() TemplateResponseDateRangeAbsoluteDateRange {
-	if o == nil || IsNil(o.AbsoluteDateRange.Get()) {
-		var ret TemplateResponseDateRangeAbsoluteDateRange
-		return ret
-	}
-	return *o.AbsoluteDateRange.Get()
-}
-
-// GetAbsoluteDateRangeOk returns a tuple with the AbsoluteDateRange field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateResponseDateRange) GetAbsoluteDateRangeOk() (*TemplateResponseDateRangeAbsoluteDateRange, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AbsoluteDateRange.Get(), o.AbsoluteDateRange.IsSet()
-}
-
-// HasAbsoluteDateRange returns a boolean if a field has been set.
-func (o *TemplateResponseDateRange) HasAbsoluteDateRange() bool {
-	if o != nil && o.AbsoluteDateRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAbsoluteDateRange gets a reference to the given NullableTemplateResponseDateRangeAbsoluteDateRange and assigns it to the AbsoluteDateRange field.
-func (o *TemplateResponseDateRange) SetAbsoluteDateRange(v TemplateResponseDateRangeAbsoluteDateRange) {
-	o.AbsoluteDateRange.Set(&v)
-}
-// SetAbsoluteDateRangeNil sets the value for AbsoluteDateRange to be an explicit nil
-func (o *TemplateResponseDateRange) SetAbsoluteDateRangeNil() {
-	o.AbsoluteDateRange.Set(nil)
-}
-
-// UnsetAbsoluteDateRange ensures that no value is present for AbsoluteDateRange, not even an explicit nil
-func (o *TemplateResponseDateRange) UnsetAbsoluteDateRange() {
-	o.AbsoluteDateRange.Unset()
-}
-
 func (o TemplateResponseDateRange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -178,14 +178,14 @@ func (o TemplateResponseDateRange) MarshalJSON() ([]byte, error) {
 
 func (o TemplateResponseDateRange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AbsoluteDateRange.IsSet() {
+		toSerialize["absolute_date_range"] = o.AbsoluteDateRange.Get()
+	}
 	if o.DynamicDateRange.IsSet() {
 		toSerialize["dynamic_date_range"] = o.DynamicDateRange.Get()
 	}
 	if o.RelativeDateRange.IsSet() {
 		toSerialize["relative_date_range"] = o.RelativeDateRange.Get()
-	}
-	if o.AbsoluteDateRange.IsSet() {
-		toSerialize["absolute_date_range"] = o.AbsoluteDateRange.Get()
 	}
 	return toSerialize, nil
 }

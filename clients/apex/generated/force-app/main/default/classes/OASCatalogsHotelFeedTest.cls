@@ -75,10 +75,10 @@ private class OASCatalogsHotelFeedTest {
         Map<String, String> x-property-mappings = catalogsHotelFeed.getx-property-mappings();
         System.assertEquals('createdAt', x-property-mappings.get('created_at'));
         System.assertEquals('updatedAt', x-property-mappings.get('updated_at'));
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
-        System.assertEquals('preferredProcessingSchedule', x-property-mappings.get('preferred_processing_schedule'));
         System.assertEquals('defaultCurrency', x-property-mappings.get('default_currency'));
         System.assertEquals('defaultLocale', x-property-mappings.get('default_locale'));
-        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('preferredProcessingSchedule', x-property-mappings.get('preferred_processing_schedule'));
     }
 }

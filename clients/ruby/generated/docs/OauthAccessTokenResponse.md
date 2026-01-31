@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **response_type** | **String** |  | [optional] |
 | **access_token** | **String** |  |  |
-| **token_type** | **String** |  | [default to &#39;bearer&#39;] |
 | **expires_in** | **Integer** |  |  |
+| **response_type** | **String** |  | [optional] |
 | **scope** | **String** |  |  |
+| **token_type** | **String** |  | [default to &#39;bearer&#39;] |
 
 ## Example
 
@@ -16,11 +16,11 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::OauthAccessTokenResponse.new(
-  response_type: null,
   access_token: null,
-  token_type: null,
   expires_in: null,
-  scope: null
+  response_type: null,
+  scope: null,
+  token_type: null
 )
 ```
 

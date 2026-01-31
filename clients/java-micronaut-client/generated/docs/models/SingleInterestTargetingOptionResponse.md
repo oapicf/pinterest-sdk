@@ -8,10 +8,10 @@ The class is defined in **[SingleInterestTargetingOptionResponse.java](../../src
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | `String` |  |  [optional property]
-**name** | `String` |  |  [optional property]
 **childInterests** | `List&lt;String&gt;` |  |  [optional property]
+**id** | `String` |  |  [optional property]
 **level** | `Integer` |  |  [optional property]
+**name** | `String` |  |  [optional property]
 
 
 

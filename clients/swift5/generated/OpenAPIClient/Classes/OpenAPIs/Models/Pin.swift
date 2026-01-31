@@ -10,111 +10,104 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Pin */
+/** Pin model containing properties related to a Pinterest Pin. */
 public struct Pin: Codable, JSONEncodable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
     public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var id: String?
-    public var createdAt: Date?
-    public var link: String?
-    public var title: String?
-    public var description: String?
-    /** Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". */
-    public var dominantColor: String?
+    public static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     public var altText: String?
-    public var creativeType: CreativeType?
     /** The board to which this Pin belongs. */
     public var boardId: String?
+    public var boardOwner: BoardOwner?
     /** The board section to which this Pin belongs. */
     public var boardSectionId: String?
-    public var boardOwner: BoardOwner?
-    /** Whether the \"operation user_account\" is the Pin owner. */
-    public var isOwner: Bool?
-    public var media: PinMedia?
-    public var mediaSource: PinMediaSource?
-    /** The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
-    public var parentPinId: String?
-    /** Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
-    public var isStandard: Bool?
+    public var createdAt: Date?
+    public var creativeType: CreativeType?
+    public var description: String?
+    /** Dominant pin color. Hex number, e.g. `#6E7874`. */
+    public var dominantColor: String?
     /** Whether the Pin has been promoted or not. */
     public var hasBeenPromoted: Bool?
-    /** Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    public var note: String?
+    public var id: String
+    /** Whether the \"operation user_account\" is the Pin owner. */
+    public var isOwner: Bool?
+    /** Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. */
+    public var isStandard: Bool?
+    public var link: String?
+    public var media: PinMedia?
+    /** The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
+    public var parentPinId: String?
     /** Pin metrics with associated time intervals if any. */
     public var pinMetrics: AnyCodable?
+    public var title: String?
 
-    public init(id: String? = nil, createdAt: Date? = nil, link: String? = nil, title: String? = nil, description: String? = nil, dominantColor: String? = nil, altText: String? = nil, creativeType: CreativeType? = nil, boardId: String? = nil, boardSectionId: String? = nil, boardOwner: BoardOwner? = nil, isOwner: Bool? = nil, media: PinMedia? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, isStandard: Bool? = nil, hasBeenPromoted: Bool? = nil, note: String? = nil, pinMetrics: AnyCodable? = nil) {
-        self.id = id
+    public init(altText: String? = nil, boardId: String? = nil, boardOwner: BoardOwner? = nil, boardSectionId: String? = nil, createdAt: Date? = nil, creativeType: CreativeType? = nil, description: String? = nil, dominantColor: String? = nil, hasBeenPromoted: Bool? = nil, id: String, isOwner: Bool? = nil, isStandard: Bool? = nil, link: String? = nil, media: PinMedia? = nil, parentPinId: String? = nil, pinMetrics: AnyCodable? = nil, title: String? = nil) {
+        self.altText = altText
+        self.boardId = boardId
+        self.boardOwner = boardOwner
+        self.boardSectionId = boardSectionId
         self.createdAt = createdAt
-        self.link = link
-        self.title = title
+        self.creativeType = creativeType
         self.description = description
         self.dominantColor = dominantColor
-        self.altText = altText
-        self.creativeType = creativeType
-        self.boardId = boardId
-        self.boardSectionId = boardSectionId
-        self.boardOwner = boardOwner
-        self.isOwner = isOwner
-        self.media = media
-        self.mediaSource = mediaSource
-        self.parentPinId = parentPinId
-        self.isStandard = isStandard
         self.hasBeenPromoted = hasBeenPromoted
-        self.note = note
+        self.id = id
+        self.isOwner = isOwner
+        self.isStandard = isStandard
+        self.link = link
+        self.media = media
+        self.parentPinId = parentPinId
         self.pinMetrics = pinMetrics
+        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
+        case altText = "alt_text"
+        case boardId = "board_id"
+        case boardOwner = "board_owner"
+        case boardSectionId = "board_section_id"
         case createdAt = "created_at"
-        case link
-        case title
+        case creativeType = "creative_type"
         case description
         case dominantColor = "dominant_color"
-        case altText = "alt_text"
-        case creativeType = "creative_type"
-        case boardId = "board_id"
-        case boardSectionId = "board_section_id"
-        case boardOwner = "board_owner"
-        case isOwner = "is_owner"
-        case media
-        case mediaSource = "media_source"
-        case parentPinId = "parent_pin_id"
-        case isStandard = "is_standard"
         case hasBeenPromoted = "has_been_promoted"
-        case note
+        case id
+        case isOwner = "is_owner"
+        case isStandard = "is_standard"
+        case link
+        case media
+        case parentPinId = "parent_pin_id"
         case pinMetrics = "pin_metrics"
+        case title
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(altText, forKey: .altText)
+        try container.encodeIfPresent(boardId, forKey: .boardId)
+        try container.encodeIfPresent(boardOwner, forKey: .boardOwner)
+        try container.encodeIfPresent(boardSectionId, forKey: .boardSectionId)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(link, forKey: .link)
-        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(creativeType, forKey: .creativeType)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(dominantColor, forKey: .dominantColor)
-        try container.encodeIfPresent(altText, forKey: .altText)
-        try container.encodeIfPresent(creativeType, forKey: .creativeType)
-        try container.encodeIfPresent(boardId, forKey: .boardId)
-        try container.encodeIfPresent(boardSectionId, forKey: .boardSectionId)
-        try container.encodeIfPresent(boardOwner, forKey: .boardOwner)
-        try container.encodeIfPresent(isOwner, forKey: .isOwner)
-        try container.encodeIfPresent(media, forKey: .media)
-        try container.encodeIfPresent(mediaSource, forKey: .mediaSource)
-        try container.encodeIfPresent(parentPinId, forKey: .parentPinId)
-        try container.encodeIfPresent(isStandard, forKey: .isStandard)
         try container.encodeIfPresent(hasBeenPromoted, forKey: .hasBeenPromoted)
-        try container.encodeIfPresent(note, forKey: .note)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(isOwner, forKey: .isOwner)
+        try container.encodeIfPresent(isStandard, forKey: .isStandard)
+        try container.encodeIfPresent(link, forKey: .link)
+        try container.encodeIfPresent(media, forKey: .media)
+        try container.encodeIfPresent(parentPinId, forKey: .parentPinId)
         try container.encodeIfPresent(pinMetrics, forKey: .pinMetrics)
+        try container.encodeIfPresent(title, forKey: .title)
     }
 }
 

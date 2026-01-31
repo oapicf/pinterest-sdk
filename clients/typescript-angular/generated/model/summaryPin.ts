@@ -14,10 +14,11 @@ import { PinMedia } from './pinMedia';
  * Summarized pin information
  */
 export interface SummaryPin { 
-    readonly media?: PinMedia;
     alt_text?: string | null;
-    link?: string | null;
-    title?: string | null;
     description?: string | null;
+    id?: string;
+    link?: string | null;
+    readonly media?: PinMedia;
+    title?: string | null;
 }
 

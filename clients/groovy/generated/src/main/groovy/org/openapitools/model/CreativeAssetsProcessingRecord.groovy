@@ -14,8 +14,8 @@ class CreativeAssetsProcessingRecord {
     String creativeAssetsId
     /* Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
     List<ItemValidationEvent> errors = new ArrayList<>()
-    /* Array with the validation warnings for the item processing record */
-    List<ItemValidationEvent> warnings = new ArrayList<>()
     
     ItemProcessingStatus status
+    /* Array with the validation warnings for the item processing record */
+    List<ItemValidationEvent> warnings = new ArrayList<>()
 }

@@ -7,18 +7,18 @@ goog.provide('API.Client.TemplateResponse_date_range_dynamic_date_range');
 API.Client.TemplateResponseDateRangeDynamicDateRange = function() {}
 
 /**
- * The date range type
- * @type {!string}
- * @export
- */
-API.Client.TemplateResponseDateRangeDynamicDateRange.prototype.type;
-
-/**
  * The dynamic range type
  * @type {!string}
  * @export
  */
 API.Client.TemplateResponseDateRangeDynamicDateRange.prototype.range;
+
+/**
+ * The date range type
+ * @type {!string}
+ * @export
+ */
+API.Client.TemplateResponseDateRangeDynamicDateRange.prototype.type;
 
 /** @enum {string} */
 API.Client.TemplateResponseDateRangeDynamicDateRange.RangeEnum = { 
@@ -26,4 +26,5 @@ API.Client.TemplateResponseDateRangeDynamicDateRange.RangeEnum = {
   QUARTER_TO_DATE: 'QUARTER_TO_DATE',
   MONTH_TO_DATE: 'MONTH_TO_DATE',
   LAST_MONTH: 'LAST_MONTH',
+  LAST_QUARTER: 'LAST_QUARTER',
 }

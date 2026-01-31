@@ -15,8 +15,8 @@ module CatalogsHotelProductGroupUpdateRequest =
 
   type CatalogsHotelProductGroupUpdateRequest = {
     CatalogType : CatalogTypeEnum;
-    Name : string;
     Description : string option;
     Filters : CatalogsHotelProductGroupFilters;
+    Name : string;
   }
   //#endregion

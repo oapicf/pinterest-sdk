@@ -2,6 +2,11 @@
 Protected Class CatalogsUpdateRetailItem
 
 	#tag Property, Flags = &h0
+		Escapedattributes As OpenAPIClient.Models.UpdatableItemAttributes
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			The catalog item id in the merchant namespace
 		#tag EndNote
@@ -11,11 +16,6 @@ Protected Class CatalogsUpdateRetailItem
 
 	#tag Property, Flags = &h0
 		operation As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.UpdatableItemAttributes
 	#tag EndProperty
 
 
@@ -81,19 +81,19 @@ Protected Class CatalogsUpdateRetailItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Escapedattributes"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="UpdatableItemAttributes"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

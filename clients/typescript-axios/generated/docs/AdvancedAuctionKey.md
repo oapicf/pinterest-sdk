@@ -6,8 +6,8 @@ Object uniquely identifying a retail catalog item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_id** | **string** | The catalog retail item id in the merchant namespace | [default to undefined]
 **country** | [**Country**](Country.md) |  | [default to undefined]
+**item_id** | **string** | The catalog retail item id in the merchant namespace | [default to undefined]
 **language** | [**Language**](Language.md) |  | [default to undefined]
 
 ## Example
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { AdvancedAuctionKey } from './api';
 
 const instance: AdvancedAuctionKey = {
-    item_id,
     country,
+    item_id,
     language,
 };
 ```

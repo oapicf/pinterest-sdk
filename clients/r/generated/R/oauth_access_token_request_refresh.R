@@ -9,7 +9,6 @@
 #' @format An \code{R6Class} generator object
 #' @field refresh_token  character
 #' @field scope  character [optional]
-#' @field refresh_on Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". character [optional]
 #' @field grant_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -19,7 +18,6 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
   public = list(
     `refresh_token` = NULL,
     `scope` = NULL,
-    `refresh_on` = NULL,
     `grant_type` = NULL,
 
     #' @description
@@ -28,9 +26,8 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
     #' @param refresh_token refresh_token
     #' @param grant_type grant_type
     #' @param scope scope
-    #' @param refresh_on Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
     #' @param ... Other optional arguments.
-    initialize = function(`refresh_token`, `grant_type`, `scope` = NULL, `refresh_on` = NULL, ...) {
+    initialize = function(`refresh_token`, `grant_type`, `scope` = NULL, ...) {
       if (!missing(`refresh_token`)) {
         if (!(is.character(`refresh_token`) && length(`refresh_token`) == 1)) {
           stop(paste("Error! Invalid data for `refresh_token`. Must be a string:", `refresh_token`))
@@ -51,12 +48,6 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
           stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
         }
         self$`scope` <- `scope`
-      }
-      if (!is.null(`refresh_on`)) {
-        if (!(is.logical(`refresh_on`) && length(`refresh_on`) == 1)) {
-          stop(paste("Error! Invalid data for `refresh_on`. Must be a boolean:", `refresh_on`))
-        }
-        self$`refresh_on` <- `refresh_on`
       }
     },
 
@@ -99,10 +90,6 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
         OauthAccessTokenRequestRefreshObject[["scope"]] <-
           self$`scope`
       }
-      if (!is.null(self$`refresh_on`)) {
-        OauthAccessTokenRequestRefreshObject[["refresh_on"]] <-
-          self$`refresh_on`
-      }
       if (!is.null(self$`grant_type`)) {
         OauthAccessTokenRequestRefreshObject[["grant_type"]] <-
           self$`grant_type`
@@ -122,9 +109,6 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
       }
       if (!is.null(this_object$`scope`)) {
         self$`scope` <- this_object$`scope`
-      }
-      if (!is.null(this_object$`refresh_on`)) {
-        self$`refresh_on` <- this_object$`refresh_on`
       }
       if (!is.null(this_object$`grant_type`)) {
         if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
@@ -155,7 +139,6 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`refresh_token` <- this_object$`refresh_token`
       self$`scope` <- this_object$`scope`
-      self$`refresh_on` <- this_object$`refresh_on`
       if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
         stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
       }

@@ -29,6 +29,7 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 
 module AdsApiHandlerTests =
 
@@ -110,7 +111,7 @@ module AdsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics".Replace("adAccountId", "ADDME") + "?adIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics".Replace("adAccountId", "ADDME") + "?adIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -127,7 +128,7 @@ module AdsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics".Replace("adAccountId", "ADDME") + "?adIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics".Replace("adAccountId", "ADDME") + "?adIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -144,7 +145,7 @@ module AdsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ads/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&pinIds=ADDME&campaignIds=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ads/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&pinIds=ADDME&campaignIds=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -161,7 +162,7 @@ module AdsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ads/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&pinIds=ADDME&campaignIds=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ads/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&pinIds=ADDME&campaignIds=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -178,7 +179,7 @@ module AdsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/ads/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&pinIds=ADDME&campaignIds=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/ads/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&adIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&pinIds=ADDME&campaignIds=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

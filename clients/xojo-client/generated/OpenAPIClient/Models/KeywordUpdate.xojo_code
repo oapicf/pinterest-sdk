@@ -3,14 +3,6 @@ Protected Class KeywordUpdate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Keyword ID.
-		#tag EndNote
-		id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Is keyword archived?
 		#tag EndNote
 		archived As Xoson.O.OptionalBoolean
@@ -22,6 +14,14 @@ Protected Class KeywordUpdate
 			</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 		#tag EndNote
 		bid As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Keyword ID.
+		#tag EndNote
+		id As String
 	#tag EndProperty
 
 
@@ -62,14 +62,6 @@ Protected Class KeywordUpdate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="archived"
 			Visible=false
 			Group="Behavior"
@@ -83,6 +75,14 @@ Protected Class KeywordUpdate
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

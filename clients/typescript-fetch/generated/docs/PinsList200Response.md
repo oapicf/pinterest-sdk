@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;Pin&gt;](Pin.md)
 `bookmark` | string
+`items` | [Array&lt;Pin&gt;](Pin.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PinsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies PinsList200Response
 
 console.log(example)

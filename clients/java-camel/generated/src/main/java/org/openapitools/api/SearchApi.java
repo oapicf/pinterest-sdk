@@ -140,7 +140,7 @@ public class SearchApi extends RouteBuilder {
                 .description("Search user's Pins")
                 .id("searchUserPinsListApi")
                 .produces("application/json")
-                .outType(PinsList200Response.class)
+                .outType(SearchUserPinsList200Response.class)
                 .param()
                     .name("adAccountId")
                     .type(RestParamType.query)

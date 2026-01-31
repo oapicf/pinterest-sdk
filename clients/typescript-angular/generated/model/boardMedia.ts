@@ -9,12 +9,9 @@
  */
 
 
-/**
- * Board media.
- */
 export interface BoardMedia { 
     /**
-     * Board cover image.
+     * Board cover image
      */
     image_cover_url?: string | null;
     /**

@@ -37,22 +37,6 @@ public class AdAccountGetSubscriptionResponseTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'userAccountId'
-     */
-    @Test
-    public void userAccountIdTest() {
-        // TODO: test userAccountId
-    }
-
-    /**
      * Test the property 'adAccountId'
      */
     @Test
@@ -69,11 +53,11 @@ public class AdAccountGetSubscriptionResponseTest {
     }
 
     /**
-     * Test the property 'cryptographicKey'
+     * Test the property 'createdTime'
      */
     @Test
-    public void cryptographicKeyTest() {
-        // TODO: test cryptographicKey
+    public void createdTimeTest() {
+        // TODO: test createdTime
     }
 
     /**
@@ -85,11 +69,27 @@ public class AdAccountGetSubscriptionResponseTest {
     }
 
     /**
-     * Test the property 'createdTime'
+     * Test the property 'cryptographicKey'
      */
     @Test
-    public void createdTimeTest() {
-        // TODO: test createdTime
+    public void cryptographicKeyTest() {
+        // TODO: test cryptographicKey
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'userAccountId'
+     */
+    @Test
+    public void userAccountIdTest() {
+        // TODO: test userAccountId
     }
 
 }

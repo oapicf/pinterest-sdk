@@ -1,0 +1,50 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendingPin"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendingPin"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TrendingPin {
+    title = TrendingPin
+    description = TrendingPin
+    derivedFrom = Root
+    properties {
+        height {
+          type =  integer
+          description = "Height of the pin image in pixels"
+          optional = true
+        }
+        id {
+          type =  string
+          description = "Unique identifier for the pin"
+          optional = true
+        }
+        src {
+          type =  string
+          description = "URL of the pin image"
+          optional = true
+        }
+        width {
+          type =  integer
+          description = "Width of the pin image in pixels"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendingPin {
+    title = TrendingPin
+    description = TrendingPin
+    implements = openapi_server.resourceTypes.TrendingPin
+
+  }
+}

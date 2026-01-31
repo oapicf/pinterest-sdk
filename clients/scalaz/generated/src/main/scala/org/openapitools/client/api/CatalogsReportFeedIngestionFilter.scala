@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import CatalogsReportFeedIngestionFilter._
 
 case class CatalogsReportFeedIngestionFilter (
-  reportType: ReportType,
-/* ID of the feed entity. */
+  /* ID of the feed entity. */
   feedId: String,
 /* Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. */
-  processingResultId: Option[String])
+  processingResultId: Option[String],
+reportType: ReportType)
 
 object CatalogsReportFeedIngestionFilter {
   import DateTimeCodecs._

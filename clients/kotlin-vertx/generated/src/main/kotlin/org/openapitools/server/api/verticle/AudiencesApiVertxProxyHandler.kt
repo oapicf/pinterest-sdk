@@ -17,7 +17,6 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.Audience
-import org.openapitools.server.api.model.AudienceCreateCustomRequest
 import org.openapitools.server.api.model.AudienceCreateRequest
 import org.openapitools.server.api.model.AudienceUpdateRequest
 import org.openapitools.server.api.model.AudiencesList200Response
@@ -90,27 +89,6 @@ class AudiencesApiVertxProxyHandler(private val vertx: Vertx, private val servic
                     }
                 }
         
-                "audiencesCreateCustom" -> {
-                    val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
-                    val audienceCreateCustomRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (audienceCreateCustomRequestParam == null) {
-                        throw IllegalArgumentException("audienceCreateCustomRequest is required")
-                    }
-                    val audienceCreateCustomRequest = Gson().fromJson(audienceCreateCustomRequestParam.encode(), AudienceCreateCustomRequest::class.java)
-                    GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.audiencesCreateCustom(adAccountId,audienceCreateCustomRequest,context)
-                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
-                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
-                        msg.reply(res.toJson())
-                    }.invokeOnCompletion{
-                        it?.let{ throw it }
-                    }
-                }
-        
                 "audiencesGet" -> {
                     val params = context.params
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
@@ -162,7 +140,10 @@ class AudiencesApiVertxProxyHandler(private val vertx: Vertx, private val servic
                         throw IllegalArgumentException("audienceId is required")
                     }
                     val audienceUpdateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    val audienceUpdateRequest = if(audienceUpdateRequestParam ==null) null else Gson().fromJson(audienceUpdateRequestParam.encode(), AudienceUpdateRequest::class.java)
+                    if (audienceUpdateRequestParam == null) {
+                        throw IllegalArgumentException("audienceUpdateRequest is required")
+                    }
+                    val audienceUpdateRequest = Gson().fromJson(audienceUpdateRequestParam.encode(), AudienceUpdateRequest::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.audiencesUpdate(adAccountId,audienceId,audienceUpdateRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()

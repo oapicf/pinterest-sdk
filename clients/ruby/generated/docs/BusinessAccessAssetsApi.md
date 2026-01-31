@@ -39,7 +39,7 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_asset_group_body = PinterestSdkClient::CreateAssetGroupBody.new({asset_group_name: 'Canada Ad Accounts', asset_group_description: 'Asset groups that has ad accounts shared in Canada', asset_group_types: ["BRAND", "LOCATION_OR_LANGUAGE", "PRODUCT_LINE", "OTHER"]}) # CreateAssetGroupBody | 
+create_asset_group_body = PinterestSdkClient::CreateAssetGroupBody.new({asset_group_description: 'Asset groups that has ad accounts shared in Canada', asset_group_name: 'Canada Ad Accounts', asset_group_types: ["BRAND", "LOCATION_OR_LANGUAGE", "PRODUCT_LINE", "OTHER"]}) # CreateAssetGroupBody | 
 
 begin
   # Create a new asset group.
@@ -254,6 +254,7 @@ api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
 asset_id = '729090764583391194' # String | Unique identifier of a business asset.
 opts = {
+  fetch_system_users: true, # Boolean | Fetches system users if True. Fetches regular user employees if False.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
   page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   start_index: 0 # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
@@ -292,6 +293,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **asset_id** | **String** | Unique identifier of a business asset. |  |
+| **fetch_system_users** | **Boolean** | Fetches system users if True. Fetches regular user employees if False. | [optional][default to false] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
 | **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
@@ -801,7 +803,7 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-delete_partner_asset_access_body = PinterestSdkClient::DeletePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::DeletePartnerAssetAccessBodyAccessesInner.new({partner_id: '1234567890123', asset_id: '549755885175'})]}) # DeletePartnerAssetAccessBody | 
+delete_partner_asset_access_body = PinterestSdkClient::DeletePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::DeletePartnerAssetAccessBodyAccessesInner.new({asset_id: '549755885175', partner_id: '1234567890123'})]}) # DeletePartnerAssetAccessBody | 
 
 begin
   # Delete partner access to asset
@@ -872,7 +874,7 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-update_partner_asset_access_body = PinterestSdkClient::UpdatePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::UpdatePartnerAssetAccessBodyAccessesInner.new({partner_id: '1234567890123', asset_id: '549755885175', permissions: ["ANALYST", "ADMIN"]})]}) # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+update_partner_asset_access_body = PinterestSdkClient::UpdatePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::UpdatePartnerAssetAccessBodyAccessesInner.new({asset_id: '549755885175', partner_id: '1234567890123', permissions: ["ANALYST", "ADMIN"]})]}) # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
 
 begin
   # Assign/Update partner asset permissions

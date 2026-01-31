@@ -1,6 +1,5 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.DetailedError
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.IntegrationLogsRequest
 import org.openapitools.server.api.model.IntegrationLogsSuccessResponse
@@ -9,6 +8,7 @@ import org.openapitools.server.api.model.IntegrationRecord
 import org.openapitools.server.api.model.IntegrationRequest
 import org.openapitools.server.api.model.IntegrationRequestPatch
 import org.openapitools.server.api.model.IntegrationsGetList200Response
+import org.openapitools.server.api.model.IntegrationsLogsPost400Response
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray

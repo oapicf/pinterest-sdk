@@ -22,6 +22,30 @@ void main() {
       // TODO
     });
 
+    // <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+    // String audienceType
+    test('to test the property `audienceType`', () async {
+      // TODO
+    });
+
+    // The company that created this audience.
+    // String createdByCompanyName
+    test('to test the property `createdByCompanyName`', () async {
+      // TODO
+    });
+
+    // Creation time. Unix timestamp in seconds.
+    // int createdTimestamp
+    test('to test the property `createdTimestamp`', () async {
+      // TODO
+    });
+
+    // Audience description.
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
     // Audience ID.
     // String id
     test('to test the property `id`', () async {
@@ -31,18 +55,6 @@ void main() {
     // Audience name.
     // String name
     test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-    // String audienceType
-    test('to test the property `audienceType`', () async {
-      // TODO
-    });
-
-    // Audience description.
-    // String description
-    test('to test the property `description`', () async {
       // TODO
     });
 
@@ -66,12 +78,6 @@ void main() {
     // Always \"audience\".
     // String type
     test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // Creation time. Unix timestamp in seconds.
-    // int createdTimestamp
-    test('to test the property `createdTimestamp`', () async {
       // TODO
     });
 

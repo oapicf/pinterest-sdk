@@ -20,19 +20,19 @@ public class CatalogsFeedProductCountsTest {
     }
 
     /**
-     * Test the property 'original'
-     */
-    @Test
-    public void originalTest() {
-        // TODO: test original
-    }
-
-    /**
      * Test the property 'ingested'
      */
     @Test
     public void ingestedTest() {
         // TODO: test ingested
+    }
+
+    /**
+     * Test the property 'original'
+     */
+    @Test
+    public void originalTest() {
+        // TODO: test original
     }
 
 }

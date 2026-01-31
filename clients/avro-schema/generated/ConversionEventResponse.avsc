@@ -5,6 +5,12 @@
   "name": "ConversionEventResponse",
   "fields": [
     {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Id of the ad account.",
+      "default": null
+    },
+    {
       "name": "conversion_event",
       "type": ["null", "model.ConversionTagType"],
       "doc": "",
@@ -14,12 +20,6 @@
       "name": "conversion_tag_id",
       "type": ["null", "string"],
       "doc": "Id of the tag.",
-      "default": null
-    },
-    {
-      "name": "ad_account_id",
-      "type": ["null", "string"],
-      "doc": "Id of the ad account.",
       "default": null
     },
     {

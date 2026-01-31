@@ -11,7 +11,7 @@ module CatalogsProductGroupPinsList200Response =
 
 
   type catalogs_product_group_pins_list_200_response = {
-    Items : CatalogsProduct[];
     Bookmark : string option;
+    Items : CatalogsProduct[];
   }
   //#endregion

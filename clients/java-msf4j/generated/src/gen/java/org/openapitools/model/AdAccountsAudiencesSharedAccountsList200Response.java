@@ -15,13 +15,31 @@ import org.openapitools.model.SharedAudienceAccount;
 /**
  * AdAccountsAudiencesSharedAccountsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsAudiencesSharedAccountsList200Response   {
+  @JsonProperty("bookmark")
+  private String bookmark;
+
   @JsonProperty("items")
   private List<@Valid SharedAudienceAccount> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  private String bookmark;
+  public AdAccountsAudiencesSharedAccountsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+   /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  @ApiModelProperty(value = "")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public AdAccountsAudiencesSharedAccountsList200Response items(List<@Valid SharedAudienceAccount> items) {
     this.items = items;
@@ -46,24 +64,6 @@ public class AdAccountsAudiencesSharedAccountsList200Response   {
     this.items = items;
   }
 
-  public AdAccountsAudiencesSharedAccountsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-   /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @ApiModelProperty(value = "")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -74,13 +74,13 @@ public class AdAccountsAudiencesSharedAccountsList200Response   {
       return false;
     }
     AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList200Response = (AdAccountsAudiencesSharedAccountsList200Response) o;
-    return Objects.equals(this.items, adAccountsAudiencesSharedAccountsList200Response.items) &&
-        Objects.equals(this.bookmark, adAccountsAudiencesSharedAccountsList200Response.bookmark);
+    return Objects.equals(this.bookmark, adAccountsAudiencesSharedAccountsList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsAudiencesSharedAccountsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -88,8 +88,8 @@ public class AdAccountsAudiencesSharedAccountsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsAudiencesSharedAccountsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -29,7 +29,7 @@ public class AdvancedAuctionProcessedItems  {
   */
   @ApiModelProperty(value = "Array of advanced auction processed items")
 
-  private List<AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private List<AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
  /**
    * Catalog id pertaining to all items
    * @return catalogId
@@ -53,20 +53,20 @@ public class AdvancedAuctionProcessedItems  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<AdvancedAuctionProcessedItem> getItems() {
+  public List<AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 
-  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     this.items.add(itemsItem);
     return this;
   }

@@ -6,33 +6,33 @@ import play.api.libs.json._
   * Represents the Swagger definition for AdAccountGetSubscriptionResponse.
   * @param leadFormId Lead form ID.
   * @param webhookUrl Standard HTTPS webhook URL.
-  * @param id Subscription ID.
-  * @param userAccountId User account used to subscribe lead data.
   * @param adAccountId The Ad Account ID that this lead form belongs to.
   * @param apiVersion API version.
-  * @param cryptographicKey Base64 encoded key for client to decrypt lead data.
+  * @param createdTime Lead subscription creation time. Unix timestamp in milliseconds.
   * @param cryptographicAlgorithm Lead data encryption algorithm.
-  * @param createdTime Lead form creation time. Unix timestamp in milliseconds.
+  * @param cryptographicKey Base64 encoded key for client to decrypt lead data.
+  * @param id Subscription ID.
+  * @param userAccountId User account used to subscribe lead data.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AdAccountGetSubscriptionResponse(
   leadFormId: Option[String],
   webhookUrl: Option[String],
-  id: Option[String],
-  userAccountId: Option[String],
   adAccountId: Option[String],
   apiVersion: Option[String],
-  cryptographicKey: Option[String],
+  createdTime: Option[Int],
   cryptographicAlgorithm: Option[String],
-  createdTime: Option[Int]
+  cryptographicKey: Option[String],
+  id: Option[String],
+  userAccountId: Option[String]
   additionalProperties: 
 )
 
 object AdAccountGetSubscriptionResponse {
   implicit lazy val adAccountGetSubscriptionResponseJsonFormat: Format[AdAccountGetSubscriptionResponse] = {
     val realJsonFormat = Json.format[AdAccountGetSubscriptionResponse]
-    val declaredPropNames = Set("leadFormId", "webhookUrl", "id", "userAccountId", "adAccountId", "apiVersion", "cryptographicKey", "cryptographicAlgorithm", "createdTime")
+    val declaredPropNames = Set("leadFormId", "webhookUrl", "adAccountId", "apiVersion", "createdTime", "cryptographicAlgorithm", "cryptographicKey", "id", "userAccountId")
     
     Format(
       Reads {

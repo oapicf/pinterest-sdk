@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class AnalyticsMetricsResponse (
-    /* The metric name and value over the requested period for each requested metric */
-    _summaryMetrics: Option[Map[String, Number]],
     /* Array with the requested daily metric records */
-    _dailyMetrics: Option[List[AnalyticsDailyMetrics]]
+    _dailyMetrics: Option[List[AnalyticsDailyMetrics]],
+    /* The metric name and value over the requested period for each requested metric */
+    _summaryMetrics: Option[Map[String, Number]]
 )
 object AnalyticsMetricsResponse {
-    def toStringBody(var_summaryMetrics: Object, var_dailyMetrics: Object) =
+    def toStringBody(var_dailyMetrics: Object, var_summaryMetrics: Object) =
         s"""
         | {
-        | "summaryMetrics":$var_summaryMetrics,"dailyMetrics":$var_dailyMetrics
+        | "dailyMetrics":$var_dailyMetrics,"summaryMetrics":$var_summaryMetrics
         | }
         """.stripMargin
 }

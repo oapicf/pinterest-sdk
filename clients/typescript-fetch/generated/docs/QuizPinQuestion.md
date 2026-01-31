@@ -7,9 +7,9 @@ A specific quiz inquiry.
 
 Name | Type
 ------------ | -------------
+`options` | [Array&lt;QuizPinOption&gt;](QuizPinOption.md)
 `questionId` | number
 `questionText` | string
-`options` | [Array&lt;QuizPinOption&gt;](QuizPinOption.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { QuizPinQuestion } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "options": null,
   "questionId": null,
   "questionText": null,
-  "options": null,
 } satisfies QuizPinQuestion
 
 console.log(example)

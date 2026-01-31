@@ -23,14 +23,14 @@ get_mmm_report_response_data_t* instantiate_get_mmm_report_response_data(int inc
   if (include_optional) {
     get_mmm_report_response_data = get_mmm_report_response_data_create(
       pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_DOES_NOT_EXIST,
-      "0",
-      1.337
+      1.337,
+      "0"
     );
   } else {
     get_mmm_report_response_data = get_mmm_report_response_data_create(
       pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_DOES_NOT_EXIST,
-      "0",
-      1.337
+      1.337,
+      "0"
     );
   }
 

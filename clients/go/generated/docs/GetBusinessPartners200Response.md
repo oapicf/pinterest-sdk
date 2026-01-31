@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]UserBusinessRoleBinding**](UserBusinessRoleBinding.md) | List of business partners. | 
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
+**Items** | [**[]UserBusinessRoleBinding**](UserBusinessRoleBinding.md) | List of business partners. | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewGetBusinessPartners200ResponseWithDefaults instantiates a new GetBusinessPartners200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItems
-
-`func (o *GetBusinessPartners200Response) GetItems() []UserBusinessRoleBinding`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *GetBusinessPartners200Response) GetItemsOk() (*[]UserBusinessRoleBinding, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *GetBusinessPartners200Response) SetItems(v []UserBusinessRoleBinding)`
-
-SetItems sets Items field to given value.
-
 
 ### GetBookmark
 
@@ -81,6 +61,26 @@ HasBookmark returns a boolean if a field has been set.
 `func (o *GetBusinessPartners200Response) UnsetBookmark()`
 
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
+### GetItems
+
+`func (o *GetBusinessPartners200Response) GetItems() []UserBusinessRoleBinding`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *GetBusinessPartners200Response) GetItemsOk() (*[]UserBusinessRoleBinding, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *GetBusinessPartners200Response) SetItems(v []UserBusinessRoleBinding)`
+
+SetItems sets Items field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

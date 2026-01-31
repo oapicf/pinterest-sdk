@@ -5,34 +5,30 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
-import (
-	"errors"
-)
-
 
 
 type ImageDetails struct {
 
-	Width int32 `json:"width"`
-
 	Height *int32 `json:"height"`
 
 	Url string `json:"url"`
+
+	Width *int32 `json:"width"`
 }
 
 // AssertImageDetailsRequired checks if the required fields are not zero-ed
 func AssertImageDetailsRequired(obj ImageDetails) error {
 	elements := map[string]interface{}{
-		"width": obj.Width,
 		"height": obj.Height,
 		"url": obj.Url,
+		"width": obj.Width,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -45,11 +41,5 @@ func AssertImageDetailsRequired(obj ImageDetails) error {
 
 // AssertImageDetailsConstraints checks if the values respects the defined constraints
 func AssertImageDetailsConstraints(obj ImageDetails) error {
-	if obj.Width < 100 {
-		return &ParsingError{Param: "Width", Err: errors.New(errMsgMinValueConstraint)}
-	}
-	if obj.Height != nil && *obj.Height < 100 {
-		return &ParsingError{Param: "Height", Err: errors.New(errMsgMinValueConstraint)}
-	}
 	return nil
 }

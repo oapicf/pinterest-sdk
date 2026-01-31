@@ -14,27 +14,27 @@ import org.openapitools.vertxweb.server.model.ConversionApiResponseEventsInner;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionApiResponse   {
   
-  private Integer numEventsReceived;
-  private Integer numEventsProcessed;
   private List<ConversionApiResponseEventsInner> events = new ArrayList<>();
+  private Integer numEventsProcessed;
+  private Integer numEventsReceived;
 
   public ConversionApiResponse () {
 
   }
 
-  public ConversionApiResponse (Integer numEventsReceived, Integer numEventsProcessed, List<ConversionApiResponseEventsInner> events) {
-    this.numEventsReceived = numEventsReceived;
-    this.numEventsProcessed = numEventsProcessed;
+  public ConversionApiResponse (List<ConversionApiResponseEventsInner> events, Integer numEventsProcessed, Integer numEventsReceived) {
     this.events = events;
+    this.numEventsProcessed = numEventsProcessed;
+    this.numEventsReceived = numEventsReceived;
   }
 
     
-  @JsonProperty("num_events_received")
-  public Integer getNumEventsReceived() {
-    return numEventsReceived;
+  @JsonProperty("events")
+  public List<ConversionApiResponseEventsInner> getEvents() {
+    return events;
   }
-  public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
+  public void setEvents(List<ConversionApiResponseEventsInner> events) {
+    this.events = events;
   }
 
     
@@ -47,12 +47,12 @@ public class ConversionApiResponse   {
   }
 
     
-  @JsonProperty("events")
-  public List<ConversionApiResponseEventsInner> getEvents() {
-    return events;
+  @JsonProperty("num_events_received")
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
   }
-  public void setEvents(List<ConversionApiResponseEventsInner> events) {
-    this.events = events;
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
   }
 
 
@@ -65,14 +65,14 @@ public class ConversionApiResponse   {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(events, conversionApiResponse.events) &&
         Objects.equals(numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(events, conversionApiResponse.events);
+        Objects.equals(numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
@@ -80,9 +80,9 @@ public class ConversionApiResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
     
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

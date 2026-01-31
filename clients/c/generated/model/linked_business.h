@@ -19,21 +19,21 @@ typedef struct linked_business_t linked_business_t;
 
 
 typedef struct linked_business_t {
-    char *username; // string
-    char *image_small_url; // string
-    char *image_medium_url; // string
     char *image_large_url; // string
+    char *image_medium_url; // string
+    char *image_small_url; // string
     char *image_xlarge_url; // string
+    char *username; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } linked_business_t;
 
 __attribute__((deprecated)) linked_business_t *linked_business_create(
-    char *username,
-    char *image_small_url,
-    char *image_medium_url,
     char *image_large_url,
-    char *image_xlarge_url
+    char *image_medium_url,
+    char *image_small_url,
+    char *image_xlarge_url,
+    char *username
 );
 
 void linked_business_free(linked_business_t *linked_business);

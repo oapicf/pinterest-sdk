@@ -7,9 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TemplateResponseDateRangeAbsoluteDateRange, () {
-    // The date range type
-    // String type
-    test('to test the property `type`', () async {
+    // The end date of the date range
+    // num endDate
+    test('to test the property `endDate`', () async {
       // TODO
     });
 
@@ -19,9 +19,9 @@ void main() {
       // TODO
     });
 
-    // The end date of the date range
-    // num endDate
-    test('to test the property `endDate`', () async {
+    // The date range type
+    // String type
+    test('to test the property `type`', () async {
       // TODO
     });
 

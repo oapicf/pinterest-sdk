@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsHotelReportParametersReport
+import org.openapitools.client.models.CatalogsReportAllItemsFilter
 import org.openapitools.client.models.CatalogsReportDistributionIssueFilter
 import org.openapitools.client.models.CatalogsReportFeedIngestionFilter
 

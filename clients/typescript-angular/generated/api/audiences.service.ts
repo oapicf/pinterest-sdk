@@ -19,8 +19,6 @@ import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 // @ts-ignore
 import { Audience } from '../model/audience';
 // @ts-ignore
-import { AudienceCreateCustomRequest } from '../model/audienceCreateCustomRequest';
-// @ts-ignore
 import { AudienceCreateRequest } from '../model/audienceCreateRequest';
 // @ts-ignore
 import { AudienceUpdateRequest } from '../model/audienceUpdateRequest';
@@ -45,7 +43,7 @@ export class AudiencesService extends BaseService {
 
     /**
      * Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
      * @endpoint post /ad_accounts/{ad_account_id}/audiences
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
@@ -118,80 +116,6 @@ export class AudiencesService extends BaseService {
     }
 
     /**
-     * Create custom audience
-     * Create a custom audience and find the audiences you want your ads to reach.
-     * @endpoint post /ad_accounts/{ad_account_id}/audiences/custom
-     * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateCustomRequest Custom audience to create.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     * @param options additional options
-     */
-    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Audience>;
-    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Audience>>;
-    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Audience>>;
-    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new Error('Required parameter adAccountId was null or undefined when calling audiencesCreateCustom.');
-        }
-        if (audienceCreateCustomRequest === null || audienceCreateCustomRequest === undefined) {
-            throw new Error('Required parameter audienceCreateCustomRequest was null or undefined when calling audiencesCreateCustom.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        // authentication (pinterest_oauth2) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
-
-        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
-            'application/json'
-        ]);
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
-
-        const localVarTransferCache: boolean = options?.transferCache ?? true;
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/custom`;
-        const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Audience>('post', `${basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: audienceCreateCustomRequest,
-                responseType: <any>responseType_,
-                ...(withCredentials ? { withCredentials } : {}),
-                headers: localVarHeaders,
-                observe: observe,
-                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Get audience
      * Get a specific audience given the audience ID.
      * @endpoint get /ad_accounts/{ad_account_id}/audiences/{audience_id}
@@ -213,6 +137,9 @@ export class AudiencesService extends BaseService {
         }
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
@@ -316,6 +243,9 @@ export class AudiencesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
+
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
@@ -369,15 +299,18 @@ export class AudiencesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Audience>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Audience>>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Audience>>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Audience>;
+    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Audience>>;
+    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Audience>>;
+    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesUpdate.');
         }
         if (audienceId === null || audienceId === undefined) {
             throw new Error('Required parameter audienceId was null or undefined when calling audiencesUpdate.');
+        }
+        if (audienceUpdateRequest === null || audienceUpdateRequest === undefined) {
+            throw new Error('Required parameter audienceUpdateRequest was null or undefined when calling audiencesUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;

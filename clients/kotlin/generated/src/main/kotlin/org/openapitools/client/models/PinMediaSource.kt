@@ -15,11 +15,12 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.ContentType
 import org.openapitools.client.models.PinMediaSourceImageBase64
 import org.openapitools.client.models.PinMediaSourceImageURL
 import org.openapitools.client.models.PinMediaSourceImagesBase64
 import org.openapitools.client.models.PinMediaSourceImagesURL
-import org.openapitools.client.models.PinMediaSourceImagesURLItemsInner
+import org.openapitools.client.models.PinMediaSourceImagesURLItem
 import org.openapitools.client.models.PinMediaSourcePinURL
 import org.openapitools.client.models.PinMediaSourceVideoID
 
@@ -27,18 +28,19 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  *
- * @param sourceType 
  * @param contentType 
  * @param `data` 
+ * @param sourceType 
  * @param url 
  * @param mediaId 
  * @param items Array with image objects.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
- * @param coverImageUrl Cover image url.
  * @param coverImageContentType Content type for cover image Base64.
  * @param coverImageData Cover image Base64.
+ * @param coverImageKeyFrameTime Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+ * @param coverImageUrl Cover image URL.
  * @param index 
  * @param isAffiliateLink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
  */
@@ -46,31 +48,34 @@ import com.squareup.moshi.JsonClass
 
 interface PinMediaSource {
 
-    @Json(name = "source_type")
-    val sourceType: PinMediaSource.SourceType
     @Json(name = "content_type")
-    val contentType: PinMediaSource.ContentType
+    val contentType: ContentType
     @Json(name = "data")
     val `data`: kotlin.String
+    @Json(name = "source_type")
+    val sourceType: PinMediaSource.SourceType
     @Json(name = "url")
     val url: kotlin.String
     @Json(name = "media_id")
     val mediaId: kotlin.String
     /* Array with image objects. */
     @Json(name = "items")
-    val items: kotlin.collections.List<PinMediaSourceImagesURLItemsInner>
+    val items: kotlin.collections.List<PinMediaSourceImagesURLItem>
     /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
     @Json(name = "is_standard")
     val isStandard: kotlin.Boolean?
-    /* Cover image url. */
-    @Json(name = "cover_image_url")
-    val coverImageUrl: kotlin.String?
     /* Content type for cover image Base64. */
     @Json(name = "cover_image_content_type")
-    val coverImageContentType: PinMediaSource.CoverImageContentType?
+    val coverImageContentType: ContentType?
     /* Cover image Base64. */
     @Json(name = "cover_image_data")
     val coverImageData: kotlin.String?
+    /* Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. */
+    @Json(name = "cover_image_key_frame_time")
+    val coverImageKeyFrameTime: kotlin.Int?
+    /* Cover image URL. */
+    @Json(name = "cover_image_url")
+    val coverImageUrl: kotlin.String?
     @Json(name = "index")
     val index: kotlin.Int?
     /* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
@@ -84,26 +89,6 @@ interface PinMediaSource {
     @JsonClass(generateAdapter = false)
     enum class SourceType(val value: kotlin.String) {
         @Json(name = "pin_url") pin_url("pin_url");
-    }
-    /**
-     * 
-     *
-     * Values: imageSlashJpeg,imageSlashPng
-     */
-    @JsonClass(generateAdapter = false)
-    enum class ContentType(val value: kotlin.String) {
-        @Json(name = "image/jpeg") imageSlashJpeg("image/jpeg"),
-        @Json(name = "image/png") imageSlashPng("image/png");
-    }
-    /**
-     * Content type for cover image Base64.
-     *
-     * Values: imageSlashJpeg,imageSlashPng
-     */
-    @JsonClass(generateAdapter = false)
-    enum class CoverImageContentType(val value: kotlin.String) {
-        @Json(name = "image/jpeg") imageSlashJpeg("image/jpeg"),
-        @Json(name = "image/png") imageSlashPng("image/png");
     }
 
 }

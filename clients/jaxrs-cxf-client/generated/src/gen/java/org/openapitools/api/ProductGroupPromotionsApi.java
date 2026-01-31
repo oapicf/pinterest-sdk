@@ -4,10 +4,12 @@ import org.openapitools.model.Error;
 import org.openapitools.model.Granularity;
 import org.joda.time.LocalDate;
 import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.ProductGroupPromotion;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.model.ProductGroupPromotionResponse;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.ReportingTimeZone;
 
 import java.util.List;
 import java.util.Map;
@@ -57,9 +59,9 @@ public interface ProductGroupPromotionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get a product group promotion by id", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ProductGroupPromotionResponse.class),
+        @ApiResponse(code = 200, message = "Success", response = ProductGroupPromotion.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public ProductGroupPromotionResponse productGroupPromotionsGet(@PathParam("ad_account_id") String adAccountId, @PathParam("product_group_promotion_id") String productGroupPromotionId);
+    public ProductGroupPromotion productGroupPromotionsGet(@PathParam("ad_account_id") String adAccountId, @PathParam("product_group_promotion_id") String productGroupPromotionId);
 
     /**
      * Get product group promotions
@@ -95,7 +97,7 @@ public interface ProductGroupPromotionsApi  {
     /**
      * Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      */
     @GET
@@ -106,5 +108,5 @@ public interface ProductGroupPromotionsApi  {
         @ApiResponse(code = 200, message = "Success", response = ProductGroupAnalyticsResponseInner.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(@PathParam("ad_account_id") String adAccountId, @QueryParam("start_date") LocalDate startDate, @QueryParam("end_date") LocalDate endDate, @QueryParam("product_group_ids") List<String> productGroupIds, @QueryParam("columns") List<String> columns, @QueryParam("granularity") Granularity granularity, @QueryParam("click_window_days") @DefaultValue("30")Integer clickWindowDays, @QueryParam("engagement_window_days") @DefaultValue("30")Integer engagementWindowDays, @QueryParam("view_window_days") @DefaultValue("1")Integer viewWindowDays, @QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")String conversionReportTime);
+    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(@PathParam("ad_account_id") String adAccountId, @QueryParam("start_date") LocalDate startDate, @QueryParam("end_date") LocalDate endDate, @QueryParam("product_group_ids") List<String> productGroupIds, @QueryParam("columns") List<String> columns, @QueryParam("granularity") Granularity granularity, @QueryParam("click_window_days") @DefaultValue("30")Integer clickWindowDays, @QueryParam("engagement_window_days") @DefaultValue("30")Integer engagementWindowDays, @QueryParam("view_window_days") @DefaultValue("1")Integer viewWindowDays, @QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")String conversionReportTime, @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone);
 }

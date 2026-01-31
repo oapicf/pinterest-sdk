@@ -2,11 +2,13 @@ const utils = require('../utils/utils');
 const AvailabilityFilter = require('../models/AvailabilityFilter');
 const BrandFilter = require('../models/BrandFilter');
 const CatalogsProductGroupCurrencyCriteria = require('../models/CatalogsProductGroupCurrencyCriteria');
+const CatalogsProductGroupFilterOperatorTypeCriteria = require('../models/CatalogsProductGroupFilterOperatorTypeCriteria');
 const CatalogsProductGroupMultipleGenderCriteria = require('../models/CatalogsProductGroupMultipleGenderCriteria');
 const CatalogsProductGroupMultipleMediaTypesCriteria = require('../models/CatalogsProductGroupMultipleMediaTypesCriteria');
 const CatalogsProductGroupMultipleStringCriteria = require('../models/CatalogsProductGroupMultipleStringCriteria');
 const CatalogsProductGroupMultipleStringListCriteria = require('../models/CatalogsProductGroupMultipleStringListCriteria');
 const CatalogsProductGroupPricingCriteria = require('../models/CatalogsProductGroupPricingCriteria');
+const CatalogsProductGroupUint32Criteria = require('../models/CatalogsProductGroupUint32Criteria');
 const ConditionFilter = require('../models/ConditionFilter');
 const CurrencyFilter = require('../models/CurrencyFilter');
 const CustomLabel0Filter = require('../models/CustomLabel0Filter');
@@ -14,6 +16,11 @@ const CustomLabel1Filter = require('../models/CustomLabel1Filter');
 const CustomLabel2Filter = require('../models/CustomLabel2Filter');
 const CustomLabel3Filter = require('../models/CustomLabel3Filter');
 const CustomLabel4Filter = require('../models/CustomLabel4Filter');
+const CustomNumber0Filter = require('../models/CustomNumber0Filter');
+const CustomNumber1Filter = require('../models/CustomNumber1Filter');
+const CustomNumber2Filter = require('../models/CustomNumber2Filter');
+const CustomNumber3Filter = require('../models/CustomNumber3Filter');
+const CustomNumber4Filter = require('../models/CustomNumber4Filter');
 const GenderFilter = require('../models/GenderFilter');
 const GoogleProductCategory0Filter = require('../models/GoogleProductCategory0Filter');
 const GoogleProductCategory1Filter = require('../models/GoogleProductCategory1Filter');
@@ -33,6 +40,7 @@ const ProductType1Filter = require('../models/ProductType1Filter');
 const ProductType2Filter = require('../models/ProductType2Filter');
 const ProductType3Filter = require('../models/ProductType3Filter');
 const ProductType4Filter = require('../models/ProductType4Filter');
+const TitleKeywordsFilter = require('../models/TitleKeywordsFilter');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -71,6 +79,12 @@ module.exports = {
             'GOOGLE_PRODUCT_CATEGORY_1': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_1`)),
             'GOOGLE_PRODUCT_CATEGORY_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`)),
             'PRODUCT_GROUP': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}PRODUCT_GROUP`)),
+            'CUSTOM_NUMBER_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_0`)),
+            'CUSTOM_NUMBER_1': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_1`)),
+            'CUSTOM_NUMBER_2': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_2`)),
+            'CUSTOM_NUMBER_3': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_3`)),
+            'CUSTOM_NUMBER_4': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_4`)),
+            'TITLE_KEYWORDS': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}TITLE_KEYWORDS`)),
         }
     },
 }

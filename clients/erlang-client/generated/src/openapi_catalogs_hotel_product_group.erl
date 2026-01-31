@@ -5,31 +5,34 @@
 -export_type([openapi_catalogs_hotel_product_group/0]).
 
 -type openapi_catalogs_hotel_product_group() ::
-    #{ 'catalog_type' := binary(),
-       'id' := binary(),
-       'name' => binary(),
+    #{ 'catalog_id' := binary(),
+       'catalog_type' := binary(),
+       'created_at' => integer(),
        'description' => binary(),
        'filters' := openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters(),
-       'created_at' => integer(),
-       'updated_at' => integer(),
-       'catalog_id' := binary()
+       'id' := binary(),
+       'name' => binary(),
+       'type' := openapi_catalogs_hotel_product_group_type:openapi_catalogs_hotel_product_group_type(),
+       'updated_at' => integer()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
-          'id' := Id,
-          'name' := Name,
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
+          'created_at' := CreatedAt,
           'description' := Description,
           'filters' := Filters,
-          'created_at' := CreatedAt,
-          'updated_at' := UpdatedAt,
-          'catalog_id' := CatalogId
+          'id' := Id,
+          'name' := Name,
+          'type' := Type,
+          'updated_at' := UpdatedAt
         }) ->
-    #{ 'catalog_type' => CatalogType,
-       'id' => Id,
-       'name' => Name,
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
+       'created_at' => CreatedAt,
        'description' => Description,
        'filters' => Filters,
-       'created_at' => CreatedAt,
-       'updated_at' => UpdatedAt,
-       'catalog_id' => CatalogId
+       'id' => Id,
+       'name' => Name,
+       'type' => Type,
+       'updated_at' => UpdatedAt
      }.

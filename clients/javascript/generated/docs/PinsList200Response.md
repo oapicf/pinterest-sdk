@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[Pin]**](Pin.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[Pin]**](Pin.md) |  | 
 
 

@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`data` | [ProductGroupPromotionResponseElement](ProductGroupPromotionResponseElement.md)
+`data` | [ProductGroupPromotion](ProductGroupPromotion.md)
 `exceptions` | [Array&lt;Exception&gt;](Exception.md)
 
 ## Example

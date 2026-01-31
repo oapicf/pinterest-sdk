@@ -1,0 +1,27 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "created_time" },
+      {"model": "exceptions" },
+      {"model": "id" },
+      {"model": "name" },
+      {"model": "num_batches" },
+      {"model": "num_removed_user_records" },
+      {"model": "num_uploaded_user_records" },
+      {"model": "status" },
+      {"model": "type" },
+      {"model": "updated_time" },
+    ]
+  }]
+}

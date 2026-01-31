@@ -27,14 +27,34 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TemplateResponse_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRange {
+
+  private JsonNullable<TemplateResponseDateRangeAbsoluteDateRange> absoluteDateRange = JsonNullable.<TemplateResponseDateRangeAbsoluteDateRange>undefined();
 
   private JsonNullable<TemplateResponseDateRangeDynamicDateRange> dynamicDateRange = JsonNullable.<TemplateResponseDateRangeDynamicDateRange>undefined();
 
   private JsonNullable<TemplateResponseDateRangeRelativeDateRange> relativeDateRange = JsonNullable.<TemplateResponseDateRangeRelativeDateRange>undefined();
 
-  private JsonNullable<TemplateResponseDateRangeAbsoluteDateRange> absoluteDateRange = JsonNullable.<TemplateResponseDateRangeAbsoluteDateRange>undefined();
+  public TemplateResponseDateRange absoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
+    this.absoluteDateRange = JsonNullable.of(absoluteDateRange);
+    return this;
+  }
+
+  /**
+   * Get absoluteDateRange
+   * @return absoluteDateRange
+   */
+  @Valid 
+  @Schema(name = "absolute_date_range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("absolute_date_range")
+  public JsonNullable<TemplateResponseDateRangeAbsoluteDateRange> getAbsoluteDateRange() {
+    return absoluteDateRange;
+  }
+
+  public void setAbsoluteDateRange(JsonNullable<TemplateResponseDateRangeAbsoluteDateRange> absoluteDateRange) {
+    this.absoluteDateRange = absoluteDateRange;
+  }
 
   public TemplateResponseDateRange dynamicDateRange(TemplateResponseDateRangeDynamicDateRange dynamicDateRange) {
     this.dynamicDateRange = JsonNullable.of(dynamicDateRange);
@@ -76,26 +96,6 @@ public class TemplateResponseDateRange {
     this.relativeDateRange = relativeDateRange;
   }
 
-  public TemplateResponseDateRange absoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
-    this.absoluteDateRange = JsonNullable.of(absoluteDateRange);
-    return this;
-  }
-
-  /**
-   * Get absoluteDateRange
-   * @return absoluteDateRange
-   */
-  @Valid 
-  @Schema(name = "absolute_date_range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("absolute_date_range")
-  public JsonNullable<TemplateResponseDateRangeAbsoluteDateRange> getAbsoluteDateRange() {
-    return absoluteDateRange;
-  }
-
-  public void setAbsoluteDateRange(JsonNullable<TemplateResponseDateRangeAbsoluteDateRange> absoluteDateRange) {
-    this.absoluteDateRange = absoluteDateRange;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -105,9 +105,9 @@ public class TemplateResponseDateRange {
       return false;
     }
     TemplateResponseDateRange templateResponseDateRange = (TemplateResponseDateRange) o;
-    return equalsNullable(this.dynamicDateRange, templateResponseDateRange.dynamicDateRange) &&
-        equalsNullable(this.relativeDateRange, templateResponseDateRange.relativeDateRange) &&
-        equalsNullable(this.absoluteDateRange, templateResponseDateRange.absoluteDateRange);
+    return equalsNullable(this.absoluteDateRange, templateResponseDateRange.absoluteDateRange) &&
+        equalsNullable(this.dynamicDateRange, templateResponseDateRange.dynamicDateRange) &&
+        equalsNullable(this.relativeDateRange, templateResponseDateRange.relativeDateRange);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -116,7 +116,7 @@ public class TemplateResponseDateRange {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(dynamicDateRange), hashCodeNullable(relativeDateRange), hashCodeNullable(absoluteDateRange));
+    return Objects.hash(hashCodeNullable(absoluteDateRange), hashCodeNullable(dynamicDateRange), hashCodeNullable(relativeDateRange));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -130,9 +130,9 @@ public class TemplateResponseDateRange {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRange {\n");
+    sb.append("    absoluteDateRange: ").append(toIndentedString(absoluteDateRange)).append("\n");
     sb.append("    dynamicDateRange: ").append(toIndentedString(dynamicDateRange)).append("\n");
     sb.append("    relativeDateRange: ").append(toIndentedString(relativeDateRange)).append("\n");
-    sb.append("    absoluteDateRange: ").append(toIndentedString(absoluteDateRange)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,21 +28,21 @@ pinterest_rest_api_catalogs_hotel_product_group_create_request_CATALOGTYPE_e cat
 
 
 typedef struct catalogs_hotel_product_group_create_request_t {
+    char *catalog_id; // string
     pinterest_rest_api_catalogs_hotel_product_group_create_request_CATALOGTYPE_e catalog_type; //enum
-    char *name; // string
     char *description; // string
     struct catalogs_hotel_product_group_filters_t *filters; //model
-    char *catalog_id; // string
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_product_group_create_request_t;
 
 __attribute__((deprecated)) catalogs_hotel_product_group_create_request_t *catalogs_hotel_product_group_create_request_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_hotel_product_group_create_request_CATALOGTYPE_e catalog_type,
-    char *name,
     char *description,
     catalogs_hotel_product_group_filters_t *filters,
-    char *catalog_id
+    char *name
 );
 
 void catalogs_hotel_product_group_create_request_free(catalogs_hotel_product_group_create_request_t *catalogs_hotel_product_group_create_request);

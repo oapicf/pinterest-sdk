@@ -1,10 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdAccountCreateSubscriptionRequest;
-import org.openapitools.vertxweb.server.model.AdAccountCreateSubscriptionResponse;
-import org.openapitools.vertxweb.server.model.AdAccountGetSubscriptionResponse;
 import org.openapitools.vertxweb.server.model.AdAccountsSubscriptionsGetList200Response;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.LeadSubscription;
+import org.openapitools.vertxweb.server.model.LeadSubscriptionPostParamsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -16,7 +15,7 @@ import java.util.Map;
 
 public interface LeadAdsApi  {
     Future<ApiResponse<Void>> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId);
-    Future<ApiResponse<AdAccountGetSubscriptionResponse>> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId);
-    Future<ApiResponse<AdAccountsSubscriptionsGetList200Response>> adAccountsSubscriptionsGetList(String adAccountId, Integer pageSize, String bookmark);
-    Future<ApiResponse<AdAccountCreateSubscriptionResponse>> adAccountsSubscriptionsPost(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest);
+    Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId);
+    Future<ApiResponse<AdAccountsSubscriptionsGetList200Response>> adAccountsSubscriptionsGetList(String adAccountId, String bookmark, Integer pageSize);
+    Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsPost(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate);
 }

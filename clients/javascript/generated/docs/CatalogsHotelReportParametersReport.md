@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 
 * `DISTRIBUTION_ISSUES` (value: `"DISTRIBUTION_ISSUES"`)
 
+* `ALL_ITEMS` (value: `"ALL_ITEMS"`)
+
 
 
 

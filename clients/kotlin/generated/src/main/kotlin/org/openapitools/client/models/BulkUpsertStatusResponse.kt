@@ -23,18 +23,18 @@ import com.squareup.moshi.JsonClass
 /**
  * ID of the bulk request.
  *
- * @param status 
  * @param resultUrl 
+ * @param status 
  */
 
 
 data class BulkUpsertStatusResponse (
 
-    @Json(name = "status")
-    val status: BulkUpsertStatus? = null,
-
     @Json(name = "result_url")
-    val resultUrl: kotlin.String? = null
+    val resultUrl: kotlin.String? = null,
+
+    @Json(name = "status")
+    val status: BulkUpsertStatus? = null
 
 ) {
 

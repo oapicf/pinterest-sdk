@@ -24,19 +24,19 @@ public class RelatedTermsRelatedTermsListInnerTest {
     }
 
     /**
-     * Test the property 'term'
-     */
-    @Test
-    public void termTest() {
-        // TODO: test term
-    }
-
-    /**
      * Test the property 'relatedTerms'
      */
     @Test
     public void relatedTermsTest() {
         // TODO: test relatedTerms
+    }
+
+    /**
+     * Test the property 'term'
+     */
+    @Test
+    public void termTest() {
+        // TODO: test term
     }
 
 }

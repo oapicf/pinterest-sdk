@@ -14,11 +14,11 @@ import CatalogsRetailProductGroupUpdateRequest._
 case class CatalogsRetailProductGroupUpdateRequest (
   /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
   catalogType: Option[CatalogType],
-name: Option[String],
+country: Option[Country],
 description: Option[String],
 filters: Option[CatalogsProductGroupFiltersRequest],
-country: Option[Country],
-locale: Option[CatalogsLocale])
+locale: Option[CatalogsLocale],
+name: Option[String])
 
 object CatalogsRetailProductGroupUpdateRequest {
   import DateTimeCodecs._

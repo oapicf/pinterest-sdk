@@ -140,13 +140,18 @@ module.exports = {
                     type: 'string',
                 },
                 {
+                    key: 'ad_group_ids',
+                    label: 'List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.',
+                    type: 'string',
+                }
+                {
                     key: 'match_types',
                     label: 'Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt;',
                     type: 'string',
                 }
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -170,6 +175,7 @@ module.exports = {
                     params: {
                         'campaign_id': bundle.inputData?.['campaign_id'],
                         'ad_group_id': bundle.inputData?.['ad_group_id'],
+                        'ad_group_ids': bundle.inputData?.['ad_group_ids'],
                         'match_types': bundle.inputData?.['match_types'],
                         'page_size': bundle.inputData?.['page_size'],
                         'bookmark': bundle.inputData?.['bookmark'],
@@ -273,6 +279,16 @@ module.exports = {
                     label: 'The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.',
                     type: 'integer',
                 },
+                {
+                    key: 'include_prediction',
+                    label: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data.',
+                    type: 'boolean',
+                },
+                {
+                    key: 'include_demographics',
+                    label: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data.',
+                    type: 'boolean',
+                },
             ],
             outputFields: [
                 ...TrendingKeywordsResponse.fields('', false),
@@ -293,6 +309,8 @@ module.exports = {
                         'include_keywords': bundle.inputData?.['include_keywords'],
                         'normalize_against_group': bundle.inputData?.['normalize_against_group'],
                         'limit': bundle.inputData?.['limit'],
+                        'include_prediction': bundle.inputData?.['include_prediction'],
+                        'include_demographics': bundle.inputData?.['include_demographics'],
                     },
                     body: {
                     },

@@ -45,7 +45,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessAccessAssetsApiController extends Controller {
     private final BusinessAccessAssetsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -105,6 +105,13 @@ public class BusinessAccessAssetsApiController extends Controller {
 
     @ApiAction
     public Result businessAssetMembersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId) throws Exception {
+        String valuefetchSystemUsers = request.getQueryString("fetch_system_users");
+        Boolean fetchSystemUsers;
+        if (valuefetchSystemUsers != null) {
+            fetchSystemUsers = Boolean.valueOf(valuefetchSystemUsers);
+        } else {
+            fetchSystemUsers = false;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -126,7 +133,7 @@ public class BusinessAccessAssetsApiController extends Controller {
         } else {
             startIndex = 0;
         }
-        return imp.businessAssetMembersGetHttp(request, businessId, assetId, bookmark, pageSize, startIndex);
+        return imp.businessAssetMembersGetHttp(request, businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex);
     }
 
     @ApiAction

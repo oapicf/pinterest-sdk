@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`pRODUCTGROUPID` | string
 `dATE` | Date
+`pRODUCTGROUPID` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { ProductGroupAnalyticsResponseInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "pRODUCTGROUPID": null,
   "dATE": null,
+  "pRODUCTGROUPID": null,
 } satisfies ProductGroupAnalyticsResponseInner
 
 console.log(example)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[CampaignResponse]**](CampaignResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[CampaignResponse]**](CampaignResponse.md) |  | 
 
 

@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 ```powershell
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 <a id="Search-UserPinsList"></a>
 # **Search-UserPinsList**
-> PinsList200Response Search-UserPinsList<br>
+> SearchUserPinsList200Response Search-UserPinsList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Query] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md) (PSCustomObject)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md) (PSCustomObject)
 
 ### Authorization
 

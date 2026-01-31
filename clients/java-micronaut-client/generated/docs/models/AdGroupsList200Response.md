@@ -8,8 +8,8 @@ The class is defined in **[AdGroupsList200Response.java](../../src/main/java/org
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;AdGroupResponse&gt;`](AdGroupResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;AdGroupResponse&gt;`](AdGroupResponse.md) |  | 
 
 
 

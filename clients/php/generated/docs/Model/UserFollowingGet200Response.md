@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**\OpenAPI\Client\Model\UserSummary[]**](UserSummary.md) | Users |
 **bookmark** | **string** |  | [optional]
+**items** | [**\OpenAPI\Client\Model\UserSummary[]**](UserSummary.md) | Users |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

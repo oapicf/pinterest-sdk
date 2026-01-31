@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Object describing an item processing record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreativeAssetsProcessingRecord   {
   @JsonProperty("creative_assets_id")
@@ -26,15 +26,15 @@ public class CreativeAssetsProcessingRecord   {
 
   private List<@Valid ItemValidationEvent> errors = null;
 
-  @JsonProperty("warnings")
-  @Valid
-
-  private List<@Valid ItemValidationEvent> warnings = null;
-
   @JsonProperty("status")
   @Valid
 
   private ItemProcessingStatus status;
+
+  @JsonProperty("warnings")
+  @Valid
+
+  private List<@Valid ItemValidationEvent> warnings = null;
 
   public CreativeAssetsProcessingRecord creativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
@@ -78,6 +78,23 @@ public class CreativeAssetsProcessingRecord   {
     this.errors = errors;
   }
 
+  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
   public CreativeAssetsProcessingRecord warnings(List<@Valid ItemValidationEvent> warnings) {
     this.warnings = warnings;
     return this;
@@ -103,23 +120,6 @@ public class CreativeAssetsProcessingRecord   {
     this.warnings = warnings;
   }
 
-  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -132,13 +132,13 @@ public class CreativeAssetsProcessingRecord   {
     CreativeAssetsProcessingRecord creativeAssetsProcessingRecord = (CreativeAssetsProcessingRecord) o;
     return Objects.equals(creativeAssetsId, creativeAssetsProcessingRecord.creativeAssetsId) &&
         Objects.equals(errors, creativeAssetsProcessingRecord.errors) &&
-        Objects.equals(warnings, creativeAssetsProcessingRecord.warnings) &&
-        Objects.equals(status, creativeAssetsProcessingRecord.status);
+        Objects.equals(status, creativeAssetsProcessingRecord.status) &&
+        Objects.equals(warnings, creativeAssetsProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, errors, warnings, status);
+    return Objects.hash(creativeAssetsId, errors, status, warnings);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -149,8 +149,8 @@ public class CreativeAssetsProcessingRecord   {
     
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

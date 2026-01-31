@@ -1,0 +1,134 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VideoMetadataWithItemType   {
+  
+  private String coverImageUrl;
+  private BigDecimal duration;
+  private Integer height;
+  private String itemType;
+  private String videoUrl;
+  private Integer width;
+
+  public VideoMetadataWithItemType () {
+
+  }
+
+  public VideoMetadataWithItemType (String coverImageUrl, BigDecimal duration, Integer height, String itemType, String videoUrl, Integer width) {
+    this.coverImageUrl = coverImageUrl;
+    this.duration = duration;
+    this.height = height;
+    this.itemType = itemType;
+    this.videoUrl = videoUrl;
+    this.width = width;
+  }
+
+    
+  @JsonProperty("cover_image_url")
+  public String getCoverImageUrl() {
+    return coverImageUrl;
+  }
+  public void setCoverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
+  }
+
+    
+  @JsonProperty("duration")
+  public BigDecimal getDuration() {
+    return duration;
+  }
+  public void setDuration(BigDecimal duration) {
+    this.duration = duration;
+  }
+
+    
+  @JsonProperty("height")
+  public Integer getHeight() {
+    return height;
+  }
+  public void setHeight(Integer height) {
+    this.height = height;
+  }
+
+    
+  @JsonProperty("item_type")
+  public String getItemType() {
+    return itemType;
+  }
+  public void setItemType(String itemType) {
+    this.itemType = itemType;
+  }
+
+    
+  @JsonProperty("video_url")
+  public String getVideoUrl() {
+    return videoUrl;
+  }
+  public void setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+  }
+
+    
+  @JsonProperty("width")
+  public Integer getWidth() {
+    return width;
+  }
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VideoMetadataWithItemType videoMetadataWithItemType = (VideoMetadataWithItemType) o;
+    return Objects.equals(coverImageUrl, videoMetadataWithItemType.coverImageUrl) &&
+        Objects.equals(duration, videoMetadataWithItemType.duration) &&
+        Objects.equals(height, videoMetadataWithItemType.height) &&
+        Objects.equals(itemType, videoMetadataWithItemType.itemType) &&
+        Objects.equals(videoUrl, videoMetadataWithItemType.videoUrl) &&
+        Objects.equals(width, videoMetadataWithItemType.width);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(coverImageUrl, duration, height, itemType, videoUrl, width);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class VideoMetadataWithItemType {\n");
+    
+    sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

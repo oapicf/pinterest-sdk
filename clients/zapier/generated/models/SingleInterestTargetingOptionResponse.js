@@ -5,19 +5,14 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}name`,
-                label: `[${labelPrefix}name]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}child_interests`,
                 label: `[${labelPrefix}child_interests]`,
                 list: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}id`,
+                label: `[${labelPrefix}id]`,
                 type: 'string',
             },
             {
@@ -25,15 +20,20 @@ module.exports = {
                 label: `[${labelPrefix}level]`,
                 type: 'integer',
             },
+            {
+                key: `${keyPrefix}name`,
+                label: `[${labelPrefix}name]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'id': bundle.inputData?.[`${keyPrefix}id`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
             'child_interests': bundle.inputData?.[`${keyPrefix}child_interests`],
+            'id': bundle.inputData?.[`${keyPrefix}id`],
             'level': bundle.inputData?.[`${keyPrefix}level`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

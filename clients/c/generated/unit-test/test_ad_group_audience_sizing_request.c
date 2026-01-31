@@ -24,21 +24,21 @@ ad_group_audience_sizing_request_t* instantiate_ad_group_audience_sizing_request
   if (include_optional) {
     ad_group_audience_sizing_request = ad_group_audience_sizing_request_create(
       true,
+      list_createList(),
+      list_createList(),
       "ALL",
       list_createList(),
        // false, not to have infinite recursion
-      instantiate_targeting_spec(0),
-      list_createList(),
-      list_createList()
+      instantiate_targeting_spec(0)
     );
   } else {
     ad_group_audience_sizing_request = ad_group_audience_sizing_request_create(
       true,
+      list_createList(),
+      list_createList(),
       "ALL",
       list_createList(),
-      NULL,
-      list_createList(),
-      list_createList()
+      NULL
     );
   }
 

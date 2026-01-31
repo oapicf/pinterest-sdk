@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server KeywordsRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a KeywordsRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  KeywordsCommon = openapi_server.resourceTypes.KeywordsCommon
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  KeywordsRequest {
+    title = KeywordsRequest
+    description = KeywordsRequest
+    derivedFrom = Root
+    properties {
+        keywords {
+          type = array
+          items.type = KeywordsCommon
+          description = "Keyword JSON array. Each array element has 3 fields"
+          optional = true
+        }
+        parent_id {
+          type =  string
+          description = "Keyword parent entity ID (advertiser, campaign, ad group)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  KeywordsRequest {
+    title = KeywordsRequest
+    description = KeywordsRequest
+    implements = openapi_server.resourceTypes.KeywordsRequest
+
+  }
+}

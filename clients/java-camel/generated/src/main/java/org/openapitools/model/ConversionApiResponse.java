@@ -23,15 +23,15 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ConversionApiResponse", description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponse {
-
-  private Integer numEventsReceived;
-
-  private Integer numEventsProcessed;
 
   @Valid
   private List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
+
+  private Integer numEventsProcessed;
+
+  private Integer numEventsReceived;
 
   public ConversionApiResponse() {
     super();
@@ -40,50 +40,10 @@ public class ConversionApiResponse {
   /**
    * Constructor with only required parameters
    */
-  public ConversionApiResponse(Integer numEventsReceived, Integer numEventsProcessed, List<@Valid ConversionApiResponseEventsInner> events) {
-    this.numEventsReceived = numEventsReceived;
-    this.numEventsProcessed = numEventsProcessed;
+  public ConversionApiResponse(List<@Valid ConversionApiResponseEventsInner> events, Integer numEventsProcessed, Integer numEventsReceived) {
     this.events = events;
-  }
-
-  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-    return this;
-  }
-
-  /**
-   * Total number of events received in the request.
-   * @return numEventsReceived
-   */
-  @NotNull 
-  @Schema(name = "num_events_received", description = "Total number of events received in the request.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("num_events_received")
-  public Integer getNumEventsReceived() {
-    return numEventsReceived;
-  }
-
-  public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-  }
-
-  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
     this.numEventsProcessed = numEventsProcessed;
-    return this;
-  }
-
-  /**
-   * Number of events that were successfully processed from the events.
-   * @return numEventsProcessed
-   */
-  @NotNull 
-  @Schema(name = "num_events_processed", description = "Number of events that were successfully processed from the events.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("num_events_processed")
-  public Integer getNumEventsProcessed() {
-    return numEventsProcessed;
-  }
-
-  public void setNumEventsProcessed(Integer numEventsProcessed) {
-    this.numEventsProcessed = numEventsProcessed;
+    this.numEventsReceived = numEventsReceived;
   }
 
   public ConversionApiResponse events(List<@Valid ConversionApiResponseEventsInner> events) {
@@ -114,6 +74,46 @@ public class ConversionApiResponse {
     this.events = events;
   }
 
+  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+    return this;
+  }
+
+  /**
+   * Number of events that were successfully processed from the events.
+   * @return numEventsProcessed
+   */
+  @NotNull 
+  @Schema(name = "num_events_processed", description = "Number of events that were successfully processed from the events.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("num_events_processed")
+  public Integer getNumEventsProcessed() {
+    return numEventsProcessed;
+  }
+
+  public void setNumEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+  }
+
+  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+    return this;
+  }
+
+  /**
+   * Total number of events received in the request.
+   * @return numEventsReceived
+   */
+  @NotNull 
+  @Schema(name = "num_events_received", description = "Total number of events received in the request.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("num_events_received")
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
+  }
+
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,23 +123,23 @@ public class ConversionApiResponse {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(this.events, conversionApiResponse.events) &&
         Objects.equals(this.numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(this.events, conversionApiResponse.events);
+        Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

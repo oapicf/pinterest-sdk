@@ -12,59 +12,60 @@ import AnyCodable
 
 public struct ConversionTagResponse: Codable, JSONEncodable, Hashable {
 
-    /** Ad account ID. */
-    public var adAccountId: String?
     /** Tag code snippet. */
     public var codeSnippet: String?
+    public var configs: ConversionTagConfigs?
+    /** The enhanced match status of the tag */
     public var enhancedMatchStatus: EnhancedMatchStatusType?
     /** Tag ID. */
     public var id: String?
     /** Time for the last event fired. */
     public var lastFiredTimeMs: Double?
     /** Conversion tag name. */
-    public var name: String?
-    public var status: EntityStatus?
+    public var name: String
     /** Version number. */
     public var version: String?
-    public var configs: ConversionTagConfigs?
+    /** Ad account ID. */
+    public var adAccountId: String
+    public var status: EntityStatus?
 
-    public init(adAccountId: String? = nil, codeSnippet: String? = nil, enhancedMatchStatus: EnhancedMatchStatusType? = nil, id: String? = nil, lastFiredTimeMs: Double? = nil, name: String? = nil, status: EntityStatus? = nil, version: String? = nil, configs: ConversionTagConfigs? = nil) {
-        self.adAccountId = adAccountId
+    public init(codeSnippet: String? = nil, configs: ConversionTagConfigs? = nil, enhancedMatchStatus: EnhancedMatchStatusType? = nil, id: String? = nil, lastFiredTimeMs: Double? = nil, name: String, version: String? = nil, adAccountId: String, status: EntityStatus? = nil) {
         self.codeSnippet = codeSnippet
+        self.configs = configs
         self.enhancedMatchStatus = enhancedMatchStatus
         self.id = id
         self.lastFiredTimeMs = lastFiredTimeMs
         self.name = name
-        self.status = status
         self.version = version
-        self.configs = configs
+        self.adAccountId = adAccountId
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case adAccountId = "ad_account_id"
         case codeSnippet = "code_snippet"
+        case configs
         case enhancedMatchStatus = "enhanced_match_status"
         case id
         case lastFiredTimeMs = "last_fired_time_ms"
         case name
-        case status
         case version
-        case configs
+        case adAccountId = "ad_account_id"
+        case status
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(codeSnippet, forKey: .codeSnippet)
+        try container.encodeIfPresent(configs, forKey: .configs)
         try container.encodeIfPresent(enhancedMatchStatus, forKey: .enhancedMatchStatus)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(lastFiredTimeMs, forKey: .lastFiredTimeMs)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(status, forKey: .status)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(version, forKey: .version)
-        try container.encodeIfPresent(configs, forKey: .configs)
+        try container.encode(adAccountId, forKey: .adAccountId)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

@@ -14,13 +14,13 @@ module CatalogsCreativeAssetsProductGroup =
   //#endregion
 
   type CatalogsCreativeAssetsProductGroup = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
-    Id : string;
-    Name : string;
+    CreatedAt : int;
     Description : string option;
     Filters : CatalogsCreativeAssetsProductGroupFilters;
-    CreatedAt : int;
+    Id : string;
+    Name : string;
     UpdatedAt : int;
-    CatalogId : string;
   }
   //#endregion

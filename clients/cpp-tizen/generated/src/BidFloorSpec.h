@@ -54,11 +54,25 @@ public:
 
 	/*! \brief Get 
 	 */
+	ActionType getBillableEvent();
+
+	/*! \brief Set 
+	 */
+	void setBillableEvent(ActionType  billable_event);
+	/*! \brief Get 
+	 */
 	std::list<Country> getCountries();
 
 	/*! \brief Set 
 	 */
 	void setCountries(std::list <Country> countries);
+	/*! \brief Get 
+	 */
+	CreativeType getCreativeType();
+
+	/*! \brief Set 
+	 */
+	void setCreativeType(CreativeType  creative_type);
 	/*! \brief Get 
 	 */
 	Currency getCurrency();
@@ -75,33 +89,19 @@ public:
 	void setObjectiveType(ObjectiveType  objective_type);
 	/*! \brief Get 
 	 */
-	ActionType getBillableEvent();
-
-	/*! \brief Set 
-	 */
-	void setBillableEvent(ActionType  billable_event);
-	/*! \brief Get 
-	 */
 	OptimizationGoalMetadata getOptimizationGoalMetadata();
 
 	/*! \brief Set 
 	 */
 	void setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata);
-	/*! \brief Get 
-	 */
-	CreativeType getCreativeType();
-
-	/*! \brief Set 
-	 */
-	void setCreativeType(CreativeType  creative_type);
 
 private:
+	ActionType billable_event;
 	std::list <Country>countries;
+	CreativeType creative_type;
 	Currency currency;
 	ObjectiveType objective_type;
-	ActionType billable_event;
 	OptimizationGoalMetadata optimization_goal_metadata;
-	CreativeType creative_type;
 	void __init();
 	void __cleanup();
 

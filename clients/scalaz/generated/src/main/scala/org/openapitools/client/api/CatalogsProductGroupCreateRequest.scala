@@ -12,13 +12,13 @@ import org.joda.time.DateTime
 import CatalogsProductGroupCreateRequest._
 
 case class CatalogsProductGroupCreateRequest (
-  name: String,
-description: Option[String],
+  description: Option[String],
+/* Catalog Feed id pertaining to the catalog product group. */
+  feedId: String,
+filters: CatalogsProductGroupFiltersRequest,
 /* boolean indicator of whether the product group is being featured or not */
   isFeatured: Option[Boolean],
-filters: CatalogsProductGroupFiltersRequest,
-/* Catalog Feed id pertaining to the catalog product group. */
-  feedId: String)
+name: String)
 
 object CatalogsProductGroupCreateRequest {
   import DateTimeCodecs._

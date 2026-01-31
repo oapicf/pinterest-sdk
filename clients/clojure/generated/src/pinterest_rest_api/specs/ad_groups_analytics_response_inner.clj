@@ -7,7 +7,7 @@
 
 (def ad-groups-analytics-response-inner-data
   {
-   (ds/req :AD_GROUP_ID) string?
+   (ds/opt :AD_GROUP_ID) string?
    (ds/opt :DATE) inst?
    })
 

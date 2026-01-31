@@ -16,10 +16,10 @@ module CreativeAssetsProcessingRecord =
     CreativeAssetsId : string;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : ItemValidationEvent[];
-    [<JsonProperty(PropertyName = "warnings")>]
-    Warnings : ItemValidationEvent[];
     [<JsonProperty(PropertyName = "status")>]
     Status : ItemProcessingStatus;
+    [<JsonProperty(PropertyName = "warnings")>]
+    Warnings : ItemValidationEvent[];
   }
 
   //#endregion

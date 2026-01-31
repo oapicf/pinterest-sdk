@@ -1,0 +1,15 @@
+
+# Table `TargetingSpecOperationString`
+(mapped from: TargetingSpecOperationString)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+**field** | field | text NOT NULL |  | **kotlin.String** |  | 
+**operation** | operation | text NOT NULL |  | [**operation**](#Operation) |  | 
+**value** | value | text NOT NULL |  | **kotlin.String** |  | 
+
+
+
+
+

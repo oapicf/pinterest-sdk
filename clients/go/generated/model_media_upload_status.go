@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// MediaUploadStatus Media upload status
+// MediaUploadStatus the model 'MediaUploadStatus'
 type MediaUploadStatus string
 
 // List of MediaUploadStatus

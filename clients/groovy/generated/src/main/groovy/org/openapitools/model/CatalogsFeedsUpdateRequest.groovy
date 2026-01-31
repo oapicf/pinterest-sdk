@@ -14,17 +14,17 @@ import org.openapitools.model.ProductAvailabilityType;
 @Canonical
 class CatalogsFeedsUpdateRequest {
     
+    CatalogsFeedCredentials credentials
+    
     ProductAvailabilityType defaultAvailability
     
     NullableCurrency defaultCurrency
-    /* A human-friendly name associated to a given feed. */
-    String name
     
     CatalogsFormat format
-    
-    CatalogsFeedCredentials credentials
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     String location
+    /* A human-friendly name associated to a given feed. */
+    String name
     
     CatalogsFeedProcessingSchedule preferredProcessingSchedule
     

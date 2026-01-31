@@ -24,17 +24,17 @@ catalogs_product_group_update_request_t* instantiate_catalogs_product_group_upda
   if (include_optional) {
     catalogs_product_group_update_request = catalogs_product_group_update_request_create(
       "0",
-      "0",
-      1,
        // false, not to have infinite recursion
-      instantiate_catalogs_product_group_filters_request(0)
+      instantiate_catalogs_product_group_filters_request(0),
+      1,
+      "0"
     );
   } else {
     catalogs_product_group_update_request = catalogs_product_group_update_request_create(
       "0",
-      "0",
+      NULL,
       1,
-      NULL
+      "0"
     );
   }
 

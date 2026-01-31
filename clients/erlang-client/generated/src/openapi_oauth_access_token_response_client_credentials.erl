@@ -5,22 +5,22 @@
 -export_type([openapi_oauth_access_token_response_client_credentials/0]).
 
 -type openapi_oauth_access_token_response_client_credentials() ::
-    #{ 'response_type' => binary(),
-       'access_token' := binary(),
-       'token_type' := binary(),
+    #{ 'access_token' := binary(),
        'expires_in' := integer(),
-       'scope' := binary()
+       'response_type' => binary(),
+       'scope' := binary(),
+       'token_type' := binary()
      }.
 
-encode(#{ 'response_type' := ResponseType,
-          'access_token' := AccessToken,
-          'token_type' := TokenType,
+encode(#{ 'access_token' := AccessToken,
           'expires_in' := ExpiresIn,
-          'scope' := Scope
+          'response_type' := ResponseType,
+          'scope' := Scope,
+          'token_type' := TokenType
         }) ->
-    #{ 'response_type' => ResponseType,
-       'access_token' => AccessToken,
-       'token_type' => TokenType,
+    #{ 'access_token' => AccessToken,
        'expires_in' => ExpiresIn,
-       'scope' => Scope
+       'response_type' => ResponseType,
+       'scope' => Scope,
+       'token_type' => TokenType
      }.

@@ -7,16 +7,16 @@
 #' @title CatalogsProductGroupMultipleGenderCriteria
 #' @description CatalogsProductGroupMultipleGenderCriteria Class
 #' @format An \code{R6Class} generator object
-#' @field values  list(\link{Gender})
 #' @field negated  character [optional]
+#' @field values  list(\link{Gender})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupMultipleGenderCriteria <- R6::R6Class(
   "CatalogsProductGroupMultipleGenderCriteria",
   public = list(
-    `values` = NULL,
     `negated` = NULL,
+    `values` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupMultipleGenderCriteria class.
@@ -69,13 +69,13 @@ CatalogsProductGroupMultipleGenderCriteria <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupMultipleGenderCriteriaObject <- list()
-      if (!is.null(self$`values`)) {
-        CatalogsProductGroupMultipleGenderCriteriaObject[["values"]] <-
-          lapply(self$`values`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupMultipleGenderCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`values`)) {
+        CatalogsProductGroupMultipleGenderCriteriaObject[["values"]] <-
+          lapply(self$`values`, function(x) x$toSimpleType())
       }
       return(CatalogsProductGroupMultipleGenderCriteriaObject)
     },
@@ -87,11 +87,11 @@ CatalogsProductGroupMultipleGenderCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleGenderCriteria
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`values`)) {
-        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Gender]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`negated`)) {
         self$`negated` <- this_object$`negated`
+      }
+      if (!is.null(this_object$`values`)) {
+        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Gender]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ CatalogsProductGroupMultipleGenderCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleGenderCriteria
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Gender]", loadNamespace("openapi"))
       self$`negated` <- this_object$`negated`
+      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Gender]", loadNamespace("openapi"))
       self
     },
 

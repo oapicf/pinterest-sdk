@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`message` | string
 `reportStatus` | [BulkReportingJobStatus](BulkReportingJobStatus.md)
 `token` | string
-`message` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { AdsAnalyticsCreateAsyncResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "message": null,
   "reportStatus": null,
   "token": null,
-  "message": null,
 } satisfies AdsAnalyticsCreateAsyncResponse
 
 console.log(example)

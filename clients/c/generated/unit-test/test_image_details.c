@@ -22,15 +22,15 @@ image_details_t* instantiate_image_details(int include_optional) {
   image_details_t* image_details = NULL;
   if (include_optional) {
     image_details = image_details_create(
-      100,
-      100,
-      "0"
+      56,
+      "0",
+      56
     );
   } else {
     image_details = image_details_create(
-      100,
-      100,
-      "0"
+      56,
+      "0",
+      56
     );
   }
 

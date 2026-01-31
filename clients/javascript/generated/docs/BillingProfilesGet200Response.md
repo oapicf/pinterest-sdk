@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[BillingProfilesResponse]**](BillingProfilesResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[BillingProfilesResponse]**](BillingProfilesResponse.md) |  | 
 
 

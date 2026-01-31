@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AudienceSubcategory`
 --
-SELECT `key`, `name`, `ratio`, `index`, `id` FROM `AudienceSubcategory` WHERE 1;
+SELECT `id`, `index`, `key`, `name`, `ratio` FROM `AudienceSubcategory` WHERE 1;
 
 --
 -- INSERT template for table `AudienceSubcategory`
 --
-INSERT INTO `AudienceSubcategory`(`key`, `name`, `ratio`, `index`, `id`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `AudienceSubcategory`(`id`, `index`, `key`, `name`, `ratio`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AudienceSubcategory`
 --
-UPDATE `AudienceSubcategory` SET `key` = ?, `name` = ?, `ratio` = ?, `index` = ?, `id` = ? WHERE 1;
+UPDATE `AudienceSubcategory` SET `id` = ?, `index` = ?, `key` = ?, `name` = ?, `ratio` = ? WHERE 1;
 
 --
 -- DELETE template for table `AudienceSubcategory`

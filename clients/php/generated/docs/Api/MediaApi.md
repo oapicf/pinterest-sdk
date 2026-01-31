@@ -14,12 +14,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `mediaCreate()`
 
 ```php
-mediaCreate($media_upload_request): \OpenAPI\Client\Model\MediaUpload
+mediaCreate($media_upload_create): \OpenAPI\Client\Model\MediaUpload
 ```
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -38,10 +38,10 @@ $apiInstance = new OpenAPI\Client\Api\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$media_upload_request = new \OpenAPI\Client\Model\MediaUploadRequest(); // \OpenAPI\Client\Model\MediaUploadRequest | Create a media upload request
+$media_upload_create = new \OpenAPI\Client\Model\MediaUploadCreate(); // \OpenAPI\Client\Model\MediaUploadCreate
 
 try {
-    $result = $apiInstance->mediaCreate($media_upload_request);
+    $result = $apiInstance->mediaCreate($media_upload_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MediaApi->mediaCreate: ', $e->getMessage(), PHP_EOL;
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **media_upload_request** | [**\OpenAPI\Client\Model\MediaUploadRequest**](../Model/MediaUploadRequest.md)| Create a media upload request | |
+| **media_upload_create** | [**\OpenAPI\Client\Model\MediaUploadCreate**](../Model/MediaUploadCreate.md)|  | |
 
 ### Return type
 
@@ -74,12 +74,12 @@ try {
 ## `mediaGet()`
 
 ```php
-mediaGet($media_id): \OpenAPI\Client\Model\MediaUploadDetails
+mediaGet($media_id): \OpenAPI\Client\Model\Media
 ```
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -98,7 +98,7 @@ $apiInstance = new OpenAPI\Client\Api\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$media_id = 'media_id_example'; // string | Media identifier
+$media_id = 'media_id_example'; // string | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 
 try {
     $result = $apiInstance->mediaGet($media_id);
@@ -112,11 +112,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **media_id** | **string**| Media identifier | |
+| **media_id** | **string**| Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\MediaUploadDetails**](../Model/MediaUploadDetails.md)
+[**\OpenAPI\Client\Model\Media**](../Model/Media.md)
 
 ### Authorization
 
@@ -139,7 +139,7 @@ mediaList($bookmark, $page_size): \OpenAPI\Client\Model\MediaList200Response
 
 List media uploads
 
-List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -159,7 +159,7 @@ $apiInstance = new OpenAPI\Client\Api\MediaApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->mediaList($bookmark, $page_size);
@@ -174,7 +174,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 

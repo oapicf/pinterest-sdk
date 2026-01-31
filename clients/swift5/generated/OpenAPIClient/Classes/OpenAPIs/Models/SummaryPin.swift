@@ -15,37 +15,44 @@ public struct SummaryPin: Codable, JSONEncodable, Hashable {
 
     public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
     public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    public var media: PinMedia?
     public var altText: String?
-    public var link: String?
-    public var title: String?
     public var description: String?
+    public var id: String?
+    public var link: String?
+    public var media: PinMedia?
+    public var title: String?
 
-    public init(media: PinMedia? = nil, altText: String? = nil, link: String? = nil, title: String? = nil, description: String? = nil) {
-        self.media = media
+    public init(altText: String? = nil, description: String? = nil, id: String? = nil, link: String? = nil, media: PinMedia? = nil, title: String? = nil) {
         self.altText = altText
-        self.link = link
-        self.title = title
         self.description = description
+        self.id = id
+        self.link = link
+        self.media = media
+        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case media
         case altText = "alt_text"
-        case link
-        case title
         case description
+        case id
+        case link
+        case media
+        case title
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(media, forKey: .media)
         try container.encodeIfPresent(altText, forKey: .altText)
-        try container.encodeIfPresent(link, forKey: .link)
-        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(link, forKey: .link)
+        try container.encodeIfPresent(media, forKey: .media)
+        try container.encodeIfPresent(title, forKey: .title)
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension SummaryPin: Identifiable {}

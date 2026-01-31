@@ -1,0 +1,38 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "agency_link" },
+      {"model": "billing_contact_email" },
+      {"model": "billing_contact_firstname" },
+      {"model": "billing_contact_lastname" },
+      {"model": "budget_amount" },
+      {"model": "end_date" },
+      {"model": "media_contact_email" },
+      {"model": "media_contact_firstname" },
+      {"model": "media_contact_lastname" },
+      {"model": "po_number" },
+      {"model": "start_date" },
+      {"model": "user_email" },
+      {"model": "accepted_terms_id" },
+      {"model": "accepted_terms_time" },
+      {"model": "billto_billing_address_id" },
+      {"model": "billto_business_address_id" },
+      {"model": "billto_company_id" },
+      {"model": "currency_info" },
+      {"model": "estimated_monthly_spend" },
+      {"model": "order_line_type" },
+      {"model": "order_name" },
+      {"model": "pmp_id" },
+    ]
+  }]
+}

@@ -11,20 +11,20 @@
 
 export interface SSIOAccountAddress { 
     /**
-     * Address display
-     */
-    display?: string;
-    /**
-     * Purpose for which the address is used, usually Billing or Businness
-     */
-    purpose?: string;
-    /**
      * Salesforce id for address
      */
     address_id?: string;
     /**
+     * Address display
+     */
+    display?: string;
+    /**
      * Legal entity for this insertion order
      */
     order_legal_entity?: string;
+    /**
+     * Purpose for which the address is used, usually Billing or Businness
+     */
+    purpose?: string;
 }
 

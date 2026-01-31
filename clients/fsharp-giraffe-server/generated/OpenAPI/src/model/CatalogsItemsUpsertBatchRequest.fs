@@ -16,8 +16,8 @@ module CatalogsItemsUpsertBatchRequest =
 
   type CatalogsItemsUpsertBatchRequest = {
     Country : Country;
+    Items : ItemUpsertBatchRecord[];
     Language : LanguageEnum;
     Operation : BatchOperation;
-    Items : ItemUpsertBatchRecord[];
   }
   //#endregion

@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaId** | **String** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | [optional] 
-**MediaType** | [**MediaUploadType**](MediaUploadType.md) |  | [optional] 
-**UploadUrl** | **String** | The URL where you will POST your media file. | [optional] 
-**UploadParameters** | [**MediaUploadAllOfUploadParameters**](MediaUploadAllOfUploadParameters.md) |  | [optional] 
+**MediaId** | **String** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | [readonly] 
+**MediaType** | [**MediaUploadType**](MediaUploadType.md) |  | 
+**UploadParameters** | [**MediaUploadParameters**](MediaUploadParameters.md) | The list of parameter key/value pairs you will need to send with your POST request to upload your media file. | [optional] [readonly] 
+**UploadUrl** | **String** | The URL where you will POST your media file. | [optional] [readonly] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$MediaUpload = Initialize-PSOpenAPIToolsMediaUpload  -MediaId null `
+$MediaUpload = Initialize-PSOpenAPIToolsMediaUpload  -MediaId 12345 `
  -MediaType null `
- -UploadUrl https://pinterest-media-upload.s3-accelerate.amazonaws.com/ `
- -UploadParameters null
+ -UploadParameters null `
+ -UploadUrl https://pinterest-media-upload.s3-accelerate.amazonaws.com/
 ```
 
 - Convert the resource to JSON

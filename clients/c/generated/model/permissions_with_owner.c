@@ -5,13 +5,13 @@
 
 
 char* permissions_with_owner_permissions_with_owner_ToString(pinterest_rest_api_permissions_with_owner__e permissions_with_owner) {
-    char *permissions_with_ownerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
+    char *permissions_with_ownerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
     return permissions_with_ownerArray[permissions_with_owner];
 }
 
 pinterest_rest_api_permissions_with_owner__e permissions_with_owner_permissions_with_owner_FromString(char* permissions_with_owner) {
     int stringToReturn = 0;
-    char *permissions_with_ownerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
+    char *permissions_with_ownerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
     size_t sizeofArray = sizeof(permissions_with_ownerArray) / sizeof(permissions_with_ownerArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(permissions_with_owner, permissions_with_ownerArray[stringToReturn]) == 0) {

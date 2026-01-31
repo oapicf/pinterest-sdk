@@ -73,10 +73,10 @@ private class OASAudienceCategoryTest {
     private static void defaultValuesPopulated() {
         OASAudienceCategory audienceCategory = new OASAudienceCategory();
         System.assertEquals(new List<OASAudienceSubcategory>(), audienceCategory.subcategories);
+        System.assertEquals(null, audienceCategory.id);
+        System.assertEquals(null, audienceCategory.index);
         System.assertEquals(null, audienceCategory.key);
         System.assertEquals(null, audienceCategory.name);
         System.assertEquals(null, audienceCategory.ratio);
-        System.assertEquals(null, audienceCategory.index);
-        System.assertEquals(null, audienceCategory.id);
     }
 }

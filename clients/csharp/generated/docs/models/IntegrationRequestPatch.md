@@ -5,18 +5,18 @@ Schema used for updating the integration metadata.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectedMerchantId** | **string** |  | [optional] 
+**AdditionalId1** | **string** |  | [optional] 
 **ConnectedAdvertiserId** | **string** |  | [optional] 
 **ConnectedLbaId** | **string** |  | [optional] 
+**ConnectedMerchantId** | **string** |  | [optional] 
 **ConnectedTagId** | **string** |  | [optional] 
 **PartnerAccessToken** | **string** |  | [optional] 
-**PartnerRefreshToken** | **string** |  | [optional] 
-**PartnerPrimaryEmail** | **string** |  | [optional] 
 **PartnerAccessTokenExpiry** | **decimal** |  | [optional] 
+**PartnerMetadata** | **string** |  | [optional] 
+**PartnerPrimaryEmail** | **string** |  | [optional] 
+**PartnerRefreshToken** | **string** |  | [optional] 
 **PartnerRefreshTokenExpiry** | **decimal** |  | [optional] 
 **Scopes** | **string** |  | [optional] 
-**AdditionalId1** | **string** |  | [optional] 
-**PartnerMetadata** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -10,7 +10,7 @@ Protected Class CatalogsRetailProductGroupUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		name As Xoson.O.OptionalString
+		country As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -25,12 +25,12 @@ Protected Class CatalogsRetailProductGroupUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		country As Xoson.O.OptionalString
+		locale As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		locale As Xoson.O.OptionalString
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -88,11 +88,11 @@ Protected Class CatalogsRetailProductGroupUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="country"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Country"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -112,19 +112,19 @@ Protected Class CatalogsRetailProductGroupUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="country"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Country"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="locale"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsLocale"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

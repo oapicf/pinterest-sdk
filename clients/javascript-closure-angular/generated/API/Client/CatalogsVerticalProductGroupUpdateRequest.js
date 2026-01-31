@@ -13,10 +13,10 @@ API.Client.CatalogsVerticalProductGroupUpdateRequest = function() {}
 API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.catalogType;
 
 /**
- * @type {!string}
+ * @type {!API.Client.Country}
  * @export
  */
-API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.name;
+API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.country;
 
 /**
  * @type {!string}
@@ -31,16 +31,16 @@ API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.description;
 API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.filters;
 
 /**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.country;
-
-/**
  * @type {!API.Client.CatalogsLocale}
  * @export
  */
 API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.locale;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum = { 

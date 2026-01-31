@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
 `autoTargetingEnabled` | boolean
-`targetingAttributes` | [TargetingSpec](TargetingSpec.md)
-`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
 `keywords` | [Array&lt;TargetingTemplateKeyword&gt;](TargetingTemplateKeyword.md)
+`name` | string
+`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
+`targetingAttributes` | [TargetingSpec](TargetingSpec.md)
 `trackingUrls` | [TrackingUrls](TrackingUrls.md)
 
 ## Example
@@ -20,11 +20,11 @@ import type { TargetingTemplateCreate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": Gaming,
   "autoTargetingEnabled": null,
-  "targetingAttributes": null,
-  "placementGroup": null,
   "keywords": [{value=cats, match_type=EXACT_NEGATIVE}],
+  "name": Gaming,
+  "placementGroup": null,
+  "targetingAttributes": null,
   "trackingUrls": null,
 } satisfies TargetingTemplateCreate
 

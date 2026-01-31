@@ -13,14 +13,14 @@ module ConversionTagResponse =
 
 
   type ConversionTagResponse = {
-    AdAccountId : string;
     CodeSnippet : string;
+    Configs : ConversionTagConfigs;
     EnhancedMatchStatus : EnhancedMatchStatusType;
     Id : string;
     LastFiredTimeMs : decimal option;
     Name : string;
-    Status : EntityStatus;
     Version : string;
-    Configs : ConversionTagConfigs;
+    AdAccountId : string;
+    Status : EntityStatus;
   }
   //#endregion

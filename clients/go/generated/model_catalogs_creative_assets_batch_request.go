@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &CatalogsCreativeAssetsBatchRequest{}
 
 // CatalogsCreativeAssetsBatchRequest Request object to update catalogs creative assets items
 type CatalogsCreativeAssetsBatchRequest struct {
-	CatalogType string `json:"catalog_type"`
-	Country Country `json:"country"`
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-	// Array with creative assets item operations
-	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
 	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
+	Country Country `json:"country"`
+	// Array with creative assets item operations
+	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 }
 
 type _CatalogsCreativeAssetsBatchRequest CatalogsCreativeAssetsBatchRequest
@@ -38,12 +38,12 @@ type _CatalogsCreativeAssetsBatchRequest CatalogsCreativeAssetsBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsBatchRequest(catalogType string, country Country, language string, items []CatalogsCreativeAssetsBatchItem) *CatalogsCreativeAssetsBatchRequest {
+func NewCatalogsCreativeAssetsBatchRequest(catalogType string, country Country, items []CatalogsCreativeAssetsBatchItem, language string) *CatalogsCreativeAssetsBatchRequest {
 	this := CatalogsCreativeAssetsBatchRequest{}
 	this.CatalogType = catalogType
 	this.Country = country
-	this.Language = language
 	this.Items = items
+	this.Language = language
 	return &this
 }
 
@@ -53,6 +53,38 @@ func NewCatalogsCreativeAssetsBatchRequest(catalogType string, country Country, 
 func NewCatalogsCreativeAssetsBatchRequestWithDefaults() *CatalogsCreativeAssetsBatchRequest {
 	this := CatalogsCreativeAssetsBatchRequest{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsBatchRequest) GetCatalogId() string {
+	if o == nil || IsNil(o.CatalogId) {
+		var ret string
+		return ret
+	}
+	return *o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsBatchRequest) GetCatalogIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogId) {
+		return nil, false
+	}
+	return o.CatalogId, true
+}
+
+// HasCatalogId returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsBatchRequest) HasCatalogId() bool {
+	if o != nil && !IsNil(o.CatalogId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
+func (o *CatalogsCreativeAssetsBatchRequest) SetCatalogId(v string) {
+	o.CatalogId = &v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -103,30 +135,6 @@ func (o *CatalogsCreativeAssetsBatchRequest) SetCountry(v Country) {
 	o.Country = v
 }
 
-// GetLanguage returns the Language field value
-func (o *CatalogsCreativeAssetsBatchRequest) GetLanguage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Language
-}
-
-// GetLanguageOk returns a tuple with the Language field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsBatchRequest) GetLanguageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Language, true
-}
-
-// SetLanguage sets field value
-func (o *CatalogsCreativeAssetsBatchRequest) SetLanguage(v string) {
-	o.Language = v
-}
-
 // GetItems returns the Items field value
 func (o *CatalogsCreativeAssetsBatchRequest) GetItems() []CatalogsCreativeAssetsBatchItem {
 	if o == nil {
@@ -151,36 +159,28 @@ func (o *CatalogsCreativeAssetsBatchRequest) SetItems(v []CatalogsCreativeAssets
 	o.Items = v
 }
 
-// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsBatchRequest) GetCatalogId() string {
-	if o == nil || IsNil(o.CatalogId) {
+// GetLanguage returns the Language field value
+func (o *CatalogsCreativeAssetsBatchRequest) GetLanguage() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CatalogId
+
+	return o.Language
 }
 
-// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsBatchRequest) GetCatalogIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CatalogId) {
+func (o *CatalogsCreativeAssetsBatchRequest) GetLanguageOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CatalogId, true
+	return &o.Language, true
 }
 
-// HasCatalogId returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsBatchRequest) HasCatalogId() bool {
-	if o != nil && !IsNil(o.CatalogId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
-func (o *CatalogsCreativeAssetsBatchRequest) SetCatalogId(v string) {
-	o.CatalogId = &v
+// SetLanguage sets field value
+func (o *CatalogsCreativeAssetsBatchRequest) SetLanguage(v string) {
+	o.Language = v
 }
 
 func (o CatalogsCreativeAssetsBatchRequest) MarshalJSON() ([]byte, error) {
@@ -193,13 +193,13 @@ func (o CatalogsCreativeAssetsBatchRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsCreativeAssetsBatchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["country"] = o.Country
-	toSerialize["language"] = o.Language
-	toSerialize["items"] = o.Items
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
+	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["country"] = o.Country
+	toSerialize["items"] = o.Items
+	toSerialize["language"] = o.Language
 	return toSerialize, nil
 }
 
@@ -210,8 +210,8 @@ func (o *CatalogsCreativeAssetsBatchRequest) UnmarshalJSON(data []byte) (err err
 	requiredProperties := []string{
 		"catalog_type",
 		"country",
-		"language",
 		"items",
+		"language",
 	}
 
 	allProperties := make(map[string]interface{})

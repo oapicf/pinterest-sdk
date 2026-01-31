@@ -10,7 +10,7 @@
 
 
 export interface Paginated { 
-    items: Array<object>;
     bookmark?: string | null;
+    items: Array<object>;
 }
 

@@ -2,22 +2,22 @@
 Protected Class CreateMMMReportResponseData
 
 	#tag Property, Flags = &h0
-		report_status As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		token As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		message As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		report_status As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		status As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		token As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -58,22 +58,6 @@ Protected Class CreateMMMReportResponseData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="report_status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BulkReportingJobStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="token"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="message"
 			Visible=false
 			Group="Behavior"
@@ -82,7 +66,23 @@ Protected Class CreateMMMReportResponseData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="report_status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BulkReportingJobStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="token"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

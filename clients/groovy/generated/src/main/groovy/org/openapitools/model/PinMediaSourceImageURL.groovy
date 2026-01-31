@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class PinMediaSourceImageURL {
+    /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
+    Boolean isStandard = true
 
     enum SourceTypeEnum {
     
@@ -27,10 +29,8 @@ class PinMediaSourceImageURL {
         }
     }
 
-    
+    /* The source type of the media. */
     SourceTypeEnum sourceType
     
     String url
-    /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
-    Boolean isStandard = true
 }

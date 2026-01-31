@@ -150,17 +150,19 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         String assetId = requestParameters.pathParameter("asset_id") != null ? requestParameters.pathParameter("asset_id").getString() : null;
+        Boolean fetchSystemUsers = requestParameters.queryParameter("fetch_system_users") != null ? requestParameters.queryParameter("fetch_system_users").getBoolean() : false;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         Integer startIndex = requestParameters.queryParameter("start_index") != null ? requestParameters.queryParameter("start_index").getInteger() : 0;
 
         logger.debug("Parameter businessId is {}", businessId);
         logger.debug("Parameter assetId is {}", assetId);
+        logger.debug("Parameter fetchSystemUsers is {}", fetchSystemUsers);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter startIndex is {}", startIndex);
 
-        api.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
+        api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

@@ -23,10 +23,10 @@ import com.squareup.moshi.JsonClass
  * The terminated asset access.
  *
  * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
- * @param permissions Permission levels member or partner has on an asset.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
  * @param isSharedPartner If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
  * @param partnerId Unique identifier of a business partner.
+ * @param permissions Permission levels member or partner has on an asset.
  */
 
 
@@ -36,13 +36,9 @@ data class DeletePartnerAssetsResult (
     @Json(name = "asset_id")
     val assetId: kotlin.String? = null,
 
-    /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     @Json(name = "asset_type")
     val assetType: kotlin.String? = null,
-
-    /* Permission levels member or partner has on an asset. */
-    @Json(name = "permissions")
-    val permissions: kotlin.collections.List<kotlin.String>? = null,
 
     /* If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset. */
     @Json(name = "is_shared_partner")
@@ -50,7 +46,11 @@ data class DeletePartnerAssetsResult (
 
     /* Unique identifier of a business partner. */
     @Json(name = "partner_id")
-    val partnerId: kotlin.String? = null
+    val partnerId: kotlin.String? = null,
+
+    /* Permission levels member or partner has on an asset. */
+    @Json(name = "permissions")
+    val permissions: kotlin.collections.List<kotlin.String>? = null
 
 ) {
 

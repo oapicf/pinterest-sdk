@@ -4,22 +4,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Categories** | [**AudienceCategory[]**](AudienceCategory.md) | Category interest distribution | [optional] 
-**Demographics** | [**AudienceDemographics**](AudienceDemographics.md) |  | [optional] 
-**Type** | [**AudienceInsightType**](AudienceInsightType.md) |  | [optional] 
 **Date** | **String** | Generation date | [optional] 
+**Demographics** | [**AudienceDemographics**](AudienceDemographics.md) |  | [optional] 
 **Size** | **Int32** | Population count. | [optional] 
 **SizeIsUpperBound** | **Boolean** | Indicates whether the audience size has been rounded up to the next highest upper boundary. | [optional] 
+**Type** | [**AudienceInsightType**](AudienceInsightType.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $AudienceInsightsResponse = Initialize-PSOpenAPIToolsAudienceInsightsResponse  -Categories null `
- -Demographics null `
- -Type null `
  -Date 2022-10-09 `
+ -Demographics null `
  -Size 10000 `
- -SizeIsUpperBound true
+ -SizeIsUpperBound true `
+ -Type null
 ```
 
 - Convert the resource to JSON

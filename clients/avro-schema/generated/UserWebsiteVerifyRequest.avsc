@@ -5,12 +5,6 @@
   "name": "UserWebsiteVerifyRequest",
   "fields": [
     {
-      "name": "website",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "verification_method",
       "type": [{
         "type": "enum",
@@ -23,6 +17,12 @@
       }, "null"],
       "doc": "",
       "default": VerificationUnderscoremethodEnum.METATAG
+    },
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
     }
   ]
 

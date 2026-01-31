@@ -7,9 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 @Canonical
 class ImageDetails {
     
-    Integer width
-    
     Integer height
     
     String url
+    
+    Integer width
 }

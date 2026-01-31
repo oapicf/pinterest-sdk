@@ -17,31 +17,31 @@ public struct CatalogsReportFeedIngestionFilter: Codable, JSONEncodable, Hashabl
     }
     public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let processingResultIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var reportType: ReportType
     /** ID of the feed entity. */
     public var feedId: String
     /** Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. */
     public var processingResultId: String?
+    public var reportType: ReportType
 
-    public init(reportType: ReportType, feedId: String, processingResultId: String? = nil) {
-        self.reportType = reportType
+    public init(feedId: String, processingResultId: String? = nil, reportType: ReportType) {
         self.feedId = feedId
         self.processingResultId = processingResultId
+        self.reportType = reportType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case reportType = "report_type"
         case feedId = "feed_id"
         case processingResultId = "processing_result_id"
+        case reportType = "report_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(reportType, forKey: .reportType)
         try container.encode(feedId, forKey: .feedId)
         try container.encodeIfPresent(processingResultId, forKey: .processingResultId)
+        try container.encode(reportType, forKey: .reportType)
     }
 }
 

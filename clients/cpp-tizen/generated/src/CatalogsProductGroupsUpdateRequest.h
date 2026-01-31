@@ -52,18 +52,18 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getName();
-
-	/*! \brief Set 
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
+
+	/*! \brief Set 
+	 */
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
 	/*! \brief Get boolean indicator of whether the product group is being featured or not
 	 */
 	bool getIsFeatured();
@@ -73,11 +73,11 @@ public:
 	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
-	CatalogsCreativeAssetsProductGroupFilters getFilters();
+	std::string getName();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	void setName(std::string  name);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -101,10 +101,10 @@ public:
 	void setLocale(CatalogsLocale  locale);
 
 private:
-	std::string name;
 	std::string description;
-	bool is_featured;
 	CatalogsCreativeAssetsProductGroupFilters filters;
+	bool is_featured;
+	std::string name;
 	std::string catalog_type;
 	Country country;
 	CatalogsLocale locale;

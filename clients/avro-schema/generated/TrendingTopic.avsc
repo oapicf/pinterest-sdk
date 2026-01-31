@@ -1,0 +1,56 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Individual trending topic within an interest category",
+  "name": "TrendingTopic",
+  "fields": [
+    {
+      "name": "description",
+      "type": "string",
+      "doc": "Description of the trending topic"
+    },
+    {
+      "name": "percent_growth_mom",
+      "type": "int",
+      "doc": "Month-over-month growth percentage"
+    },
+    {
+      "name": "pins",
+      "type": {
+        "type": "array",
+        "items": "model.TrendingPin"
+      },
+      "doc": "Array of pin images related to this trend (up to 6)"
+    },
+    {
+      "name": "related_interests",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of related interest categories"
+    },
+    {
+      "name": "related_searches",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of related search terms"
+    },
+    {
+      "name": "time_series",
+      "type": {
+        "type": "map",
+        "items": "double"
+      },
+      "doc": "Time series data showing trend values over time, with dates as keys and values as numeric"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "doc": "Title of the trending topic"
+    }
+  ]
+
+}

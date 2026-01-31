@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **string** |  | 
-**ContentType** | **string** |  | 
+**ContentType** | [**ContentType**](ContentType.md) |  | 
 **Data** | **string** |  | 
 **IsStandard** | Pointer to **bool** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to true]
+**SourceType** | **string** | The source type of the media. | 
 
 ## Methods
 
 ### NewPinMediaSourceImageBase64
 
-`func NewPinMediaSourceImageBase64(sourceType string, contentType string, data string, ) *PinMediaSourceImageBase64`
+`func NewPinMediaSourceImageBase64(contentType ContentType, data string, sourceType string, ) *PinMediaSourceImageBase64`
 
 NewPinMediaSourceImageBase64 instantiates a new PinMediaSourceImageBase64 object
 This constructor will assign default values to properties that have it defined,
@@ -28,42 +28,22 @@ NewPinMediaSourceImageBase64WithDefaults instantiates a new PinMediaSourceImageB
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSourceType
-
-`func (o *PinMediaSourceImageBase64) GetSourceType() string`
-
-GetSourceType returns the SourceType field if non-nil, zero value otherwise.
-
-### GetSourceTypeOk
-
-`func (o *PinMediaSourceImageBase64) GetSourceTypeOk() (*string, bool)`
-
-GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceType
-
-`func (o *PinMediaSourceImageBase64) SetSourceType(v string)`
-
-SetSourceType sets SourceType field to given value.
-
-
 ### GetContentType
 
-`func (o *PinMediaSourceImageBase64) GetContentType() string`
+`func (o *PinMediaSourceImageBase64) GetContentType() ContentType`
 
 GetContentType returns the ContentType field if non-nil, zero value otherwise.
 
 ### GetContentTypeOk
 
-`func (o *PinMediaSourceImageBase64) GetContentTypeOk() (*string, bool)`
+`func (o *PinMediaSourceImageBase64) GetContentTypeOk() (*ContentType, bool)`
 
 GetContentTypeOk returns a tuple with the ContentType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContentType
 
-`func (o *PinMediaSourceImageBase64) SetContentType(v string)`
+`func (o *PinMediaSourceImageBase64) SetContentType(v ContentType)`
 
 SetContentType sets ContentType field to given value.
 
@@ -112,6 +92,26 @@ SetIsStandard sets IsStandard field to given value.
 `func (o *PinMediaSourceImageBase64) HasIsStandard() bool`
 
 HasIsStandard returns a boolean if a field has been set.
+
+### GetSourceType
+
+`func (o *PinMediaSourceImageBase64) GetSourceType() string`
+
+GetSourceType returns the SourceType field if non-nil, zero value otherwise.
+
+### GetSourceTypeOk
+
+`func (o *PinMediaSourceImageBase64) GetSourceTypeOk() (*string, bool)`
+
+GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceType
+
+`func (o *PinMediaSourceImageBase64) SetSourceType(v string)`
+
+SetSourceType sets SourceType field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

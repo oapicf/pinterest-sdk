@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PinUpdateCarouselSlotsInner;
+import org.openapitools.model.CarouselSlot;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -21,18 +21,21 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Pin fields for updates
+ * Resource create or update operation model.
  */
 
-@Schema(name = "PinUpdate", description = "Pin fields for updates")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "PinUpdate", description = "Resource create or update operation model.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinUpdate {
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
-  private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardId = JsonNullable.<String>undefined();
+  private String boardId;
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
+
+  @Valid
+  private List<@Valid CarouselSlot> carouselSlots = new ArrayList<>();
 
   private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
 
@@ -40,22 +43,17 @@ public class PinUpdate {
 
   private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
 
-  @Valid
-  private List<@Valid PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
-
-  private JsonNullable<String> note = JsonNullable.<String>undefined();
-
   public PinUpdate altText(String altText) {
     this.altText = JsonNullable.of(altText);
     return this;
   }
 
   /**
-   * Pin's alternative text.
+   * Get altText
    * @return altText
    */
   @Size(max = 500) 
-  @Schema(name = "alt_text", description = "Pin's alternative text.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("alt_text")
   public JsonNullable<@Size(max = 500) String> getAltText() {
     return altText;
@@ -66,22 +64,22 @@ public class PinUpdate {
   }
 
   public PinUpdate boardId(String boardId) {
-    this.boardId = JsonNullable.of(boardId);
+    this.boardId = boardId;
     return this;
   }
 
   /**
-   * The id of the board to move the Pin onto.
+   * The board to which this Pin belongs.
    * @return boardId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "board_id", description = "The id of the board to move the Pin onto.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_id", description = "The board to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_id")
-  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getBoardId() {
+  public String getBoardId() {
     return boardId;
   }
 
-  public void setBoardId(JsonNullable<String> boardId) {
+  public void setBoardId(String boardId) {
     this.boardId = boardId;
   }
 
@@ -91,11 +89,11 @@ public class PinUpdate {
   }
 
   /**
-   * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+   * The board section to which this Pin belongs.
    * @return boardSectionId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "board_section_id", description = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_section_id", description = "The board section to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_section_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getBoardSectionId() {
     return boardSectionId;
@@ -105,17 +103,45 @@ public class PinUpdate {
     this.boardSectionId = boardSectionId;
   }
 
+  public PinUpdate carouselSlots(List<@Valid CarouselSlot> carouselSlots) {
+    this.carouselSlots = carouselSlots;
+    return this;
+  }
+
+  public PinUpdate addCarouselSlotsItem(CarouselSlot carouselSlotsItem) {
+    if (this.carouselSlots == null) {
+      this.carouselSlots = new ArrayList<>();
+    }
+    this.carouselSlots.add(carouselSlotsItem);
+    return this;
+  }
+
+  /**
+   * Carousel Pin slots data.
+   * @return carouselSlots
+   */
+  @Valid 
+  @Schema(name = "carousel_slots", description = "Carousel Pin slots data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("carousel_slots")
+  public List<@Valid CarouselSlot> getCarouselSlots() {
+    return carouselSlots;
+  }
+
+  public void setCarouselSlots(List<@Valid CarouselSlot> carouselSlots) {
+    this.carouselSlots = carouselSlots;
+  }
+
   public PinUpdate description(String description) {
     this.description = JsonNullable.of(description);
     return this;
   }
 
   /**
-   * Pin description - 800 characters maximum.
+   * Get description
    * @return description
    */
   @Size(max = 800) 
-  @Schema(name = "description", description = "Pin description - 800 characters maximum.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public JsonNullable<@Size(max = 800) String> getDescription() {
     return description;
@@ -131,11 +157,11 @@ public class PinUpdate {
   }
 
   /**
-   * URL viewer is taken to when they click pin.
+   * Get link
    * @return link
    */
   @Size(max = 2048) 
-  @Schema(name = "link", example = "https://www.pinterest.com/", description = "URL viewer is taken to when they click pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
   public JsonNullable<@Size(max = 2048) String> getLink() {
     return link;
@@ -151,11 +177,11 @@ public class PinUpdate {
   }
 
   /**
-   * The native pin title that creators explicitly prefer to display.
+   * Get title
    * @return title
    */
   @Size(max = 100) 
-  @Schema(name = "title", description = "The native pin title that creators explicitly prefer to display.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
   public JsonNullable<@Size(max = 100) String> getTitle() {
     return title;
@@ -163,54 +189,6 @@ public class PinUpdate {
 
   public void setTitle(JsonNullable<String> title) {
     this.title = title;
-  }
-
-  public PinUpdate carouselSlots(List<@Valid PinUpdateCarouselSlotsInner> carouselSlots) {
-    this.carouselSlots = carouselSlots;
-    return this;
-  }
-
-  public PinUpdate addCarouselSlotsItem(PinUpdateCarouselSlotsInner carouselSlotsItem) {
-    if (this.carouselSlots == null) {
-      this.carouselSlots = new ArrayList<>();
-    }
-    this.carouselSlots.add(carouselSlotsItem);
-    return this;
-  }
-
-  /**
-   * Carousel Pin slots data.
-   * @return carouselSlots
-   */
-  @Valid 
-  @Schema(name = "carousel_slots", description = "Carousel Pin slots data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("carousel_slots")
-  public List<@Valid PinUpdateCarouselSlotsInner> getCarouselSlots() {
-    return carouselSlots;
-  }
-
-  public void setCarouselSlots(List<@Valid PinUpdateCarouselSlotsInner> carouselSlots) {
-    this.carouselSlots = carouselSlots;
-  }
-
-  public PinUpdate note(String note) {
-    this.note = JsonNullable.of(note);
-    return this;
-  }
-
-  /**
-   * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-   * @return note
-   */
-  
-  @Schema(name = "note", description = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("note")
-  public JsonNullable<String> getNote() {
-    return note;
-  }
-
-  public void setNote(JsonNullable<String> note) {
-    this.note = note;
   }
 
   @Override
@@ -223,13 +201,12 @@ public class PinUpdate {
     }
     PinUpdate pinUpdate = (PinUpdate) o;
     return equalsNullable(this.altText, pinUpdate.altText) &&
-        equalsNullable(this.boardId, pinUpdate.boardId) &&
+        Objects.equals(this.boardId, pinUpdate.boardId) &&
         equalsNullable(this.boardSectionId, pinUpdate.boardSectionId) &&
+        Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
         equalsNullable(this.description, pinUpdate.description) &&
         equalsNullable(this.link, pinUpdate.link) &&
-        equalsNullable(this.title, pinUpdate.title) &&
-        Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
-        equalsNullable(this.note, pinUpdate.note);
+        equalsNullable(this.title, pinUpdate.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -238,7 +215,7 @@ public class PinUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(altText), hashCodeNullable(boardId), hashCodeNullable(boardSectionId), hashCodeNullable(description), hashCodeNullable(link), hashCodeNullable(title), carouselSlots, hashCodeNullable(note));
+    return Objects.hash(hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), carouselSlots, hashCodeNullable(description), hashCodeNullable(link), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -255,11 +232,10 @@ public class PinUpdate {
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
+    sb.append("    carouselSlots: ").append(toIndentedString(carouselSlots)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    carouselSlots: ").append(toIndentedString(carouselSlots)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,33 +7,33 @@
 #' @title AnalyticsMetricsResponse
 #' @description AnalyticsMetricsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field summary_metrics The metric name and value over the requested period for each requested metric named list(numeric) [optional]
 #' @field daily_metrics Array with the requested daily metric records list(\link{AnalyticsDailyMetrics}) [optional]
+#' @field summary_metrics The metric name and value over the requested period for each requested metric named list(numeric) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AnalyticsMetricsResponse <- R6::R6Class(
   "AnalyticsMetricsResponse",
   public = list(
-    `summary_metrics` = NULL,
     `daily_metrics` = NULL,
+    `summary_metrics` = NULL,
 
     #' @description
     #' Initialize a new AnalyticsMetricsResponse class.
     #'
-    #' @param summary_metrics The metric name and value over the requested period for each requested metric
     #' @param daily_metrics Array with the requested daily metric records
+    #' @param summary_metrics The metric name and value over the requested period for each requested metric
     #' @param ... Other optional arguments.
-    initialize = function(`summary_metrics` = NULL, `daily_metrics` = NULL, ...) {
-      if (!is.null(`summary_metrics`)) {
-        stopifnot(is.vector(`summary_metrics`), length(`summary_metrics`) != 0)
-        sapply(`summary_metrics`, function(x) stopifnot(is.character(x)))
-        self$`summary_metrics` <- `summary_metrics`
-      }
+    initialize = function(`daily_metrics` = NULL, `summary_metrics` = NULL, ...) {
       if (!is.null(`daily_metrics`)) {
         stopifnot(is.vector(`daily_metrics`), length(`daily_metrics`) != 0)
         sapply(`daily_metrics`, function(x) stopifnot(R6::is.R6(x)))
         self$`daily_metrics` <- `daily_metrics`
+      }
+      if (!is.null(`summary_metrics`)) {
+        stopifnot(is.vector(`summary_metrics`), length(`summary_metrics`) != 0)
+        sapply(`summary_metrics`, function(x) stopifnot(is.character(x)))
+        self$`summary_metrics` <- `summary_metrics`
       }
     },
 
@@ -68,13 +68,13 @@ AnalyticsMetricsResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AnalyticsMetricsResponseObject <- list()
-      if (!is.null(self$`summary_metrics`)) {
-        AnalyticsMetricsResponseObject[["summary_metrics"]] <-
-          self$`summary_metrics`
-      }
       if (!is.null(self$`daily_metrics`)) {
         AnalyticsMetricsResponseObject[["daily_metrics"]] <-
           lapply(self$`daily_metrics`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`summary_metrics`)) {
+        AnalyticsMetricsResponseObject[["summary_metrics"]] <-
+          self$`summary_metrics`
       }
       return(AnalyticsMetricsResponseObject)
     },
@@ -86,11 +86,11 @@ AnalyticsMetricsResponse <- R6::R6Class(
     #' @return the instance of AnalyticsMetricsResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`summary_metrics`)) {
-        self$`summary_metrics` <- ApiClient$new()$deserializeObj(this_object$`summary_metrics`, "map(numeric)", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`daily_metrics`)) {
         self$`daily_metrics` <- ApiClient$new()$deserializeObj(this_object$`daily_metrics`, "array[AnalyticsDailyMetrics]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`summary_metrics`)) {
+        self$`summary_metrics` <- ApiClient$new()$deserializeObj(this_object$`summary_metrics`, "map(numeric)", loadNamespace("openapi"))
       }
       self
     },
@@ -113,8 +113,8 @@ AnalyticsMetricsResponse <- R6::R6Class(
     #' @return the instance of AnalyticsMetricsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`summary_metrics` <- ApiClient$new()$deserializeObj(this_object$`summary_metrics`, "map(numeric)", loadNamespace("openapi"))
       self$`daily_metrics` <- ApiClient$new()$deserializeObj(this_object$`daily_metrics`, "array[AnalyticsDailyMetrics]", loadNamespace("openapi"))
+      self$`summary_metrics` <- ApiClient$new()$deserializeObj(this_object$`summary_metrics`, "map(numeric)", loadNamespace("openapi"))
       self
     },
 

@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Score** | **Decimal** | Your hotel&#39;s rating. | [optional] 
-**NumberOfReviewers** | **Int32** | Total number of people who have rated this hotel. | [optional] 
 **MaxScore** | **Decimal** | Max value for the hotel rating score. | [optional] 
+**NumberOfReviewers** | **Int32** | Total number of people who have rated this hotel. | [optional] 
 **RatingSystem** | **String** | System you use for guest reviews. | [optional] 
+**Score** | **Decimal** | Your hotel&#39;s rating. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelGuestRatings = Initialize-PSOpenAPIToolsCatalogsHotelGuestRatings  -Score null `
+$CatalogsHotelGuestRatings = Initialize-PSOpenAPIToolsCatalogsHotelGuestRatings  -MaxScore null `
  -NumberOfReviewers null `
- -MaxScore null `
- -RatingSystem null
+ -RatingSystem null `
+ -Score null
 ```
 
 - Convert the resource to JSON

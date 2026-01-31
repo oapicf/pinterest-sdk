@@ -11,9 +11,10 @@ The class is defined in **[CatalogsItemsCreateBatchRequest.java](../../src/main/
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | `Country` |  | 
+**items** | [`List&lt;ItemCreateBatchRecord&gt;`](ItemCreateBatchRecord.md) | Array with catalogs items | 
 **language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **operation** | `BatchOperation` |  | 
-**items** | [`List&lt;ItemCreateBatchRecord&gt;`](ItemCreateBatchRecord.md) | Array with catalogs items | 
+
 
 
 ## LanguageEnum
@@ -127,7 +128,6 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
 
 
 

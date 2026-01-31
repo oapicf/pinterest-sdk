@@ -15,14 +15,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdsAnalyticsCreateAsyncResponse  {
   
   @ApiModelProperty(value = "")
+  private String message;
+
+  @ApiModelProperty(value = "")
   @Valid
   private BulkReportingJobStatus reportStatus;
 
   @ApiModelProperty(value = "")
   private String token;
+ /**
+  * Get message
+  * @return message
+  */
+  @JsonProperty("message")
+  public String getMessage() {
+    return message;
+  }
 
-  @ApiModelProperty(value = "")
-  private String message;
+  /**
+   * Sets the <code>message</code> property.
+   */
+ public void setMessage(String message) {
+    this.message = message;
+  }
+
+  /**
+   * Sets the <code>message</code> property.
+   */
+  public AdsAnalyticsCreateAsyncResponse message(String message) {
+    this.message = message;
+    return this;
+  }
+
  /**
   * Get reportStatus
   * @return reportStatus
@@ -71,30 +95,6 @@ public class AdsAnalyticsCreateAsyncResponse  {
     return this;
   }
 
- /**
-  * Get message
-  * @return message
-  */
-  @JsonProperty("message")
-  public String getMessage() {
-    return message;
-  }
-
-  /**
-   * Sets the <code>message</code> property.
-   */
- public void setMessage(String message) {
-    this.message = message;
-  }
-
-  /**
-   * Sets the <code>message</code> property.
-   */
-  public AdsAnalyticsCreateAsyncResponse message(String message) {
-    this.message = message;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -105,14 +105,14 @@ public class AdsAnalyticsCreateAsyncResponse  {
       return false;
     }
     AdsAnalyticsCreateAsyncResponse adsAnalyticsCreateAsyncResponse = (AdsAnalyticsCreateAsyncResponse) o;
-    return Objects.equals(this.reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
-        Objects.equals(this.token, adsAnalyticsCreateAsyncResponse.token) &&
-        Objects.equals(this.message, adsAnalyticsCreateAsyncResponse.message);
+    return Objects.equals(this.message, adsAnalyticsCreateAsyncResponse.message) &&
+        Objects.equals(this.reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
+        Objects.equals(this.token, adsAnalyticsCreateAsyncResponse.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, message);
+    return Objects.hash(message, reportStatus, token);
   }
 
   @Override
@@ -120,9 +120,9 @@ public class AdsAnalyticsCreateAsyncResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsAnalyticsCreateAsyncResponse {\n");
     
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

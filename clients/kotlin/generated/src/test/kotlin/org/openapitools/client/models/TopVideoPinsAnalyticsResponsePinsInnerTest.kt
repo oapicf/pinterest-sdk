@@ -26,16 +26,16 @@ class TopVideoPinsAnalyticsResponsePinsInnerTest : ShouldSpec() {
         // uncomment below to create an instance of TopVideoPinsAnalyticsResponsePinsInner
         //val modelInstance = TopVideoPinsAnalyticsResponsePinsInner()
 
-        // to test the property `metrics` - The metric name and daily value for each requested metric
-        should("test metrics") {
-            // uncomment below to test the property
-            //modelInstance.metrics shouldBe ("TODO")
-        }
-
         // to test the property `dataStatus`
         should("test dataStatus") {
             // uncomment below to test the property
             //modelInstance.dataStatus shouldBe ("TODO")
+        }
+
+        // to test the property `metrics` - The metric name and daily value for each requested metric
+        should("test metrics") {
+            // uncomment below to test the property
+            //modelInstance.metrics shouldBe ("TODO")
         }
 
         // to test the property `pinId` - The pin id

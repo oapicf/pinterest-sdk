@@ -14,12 +14,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  **/
-@ApiModel(description = "Image URL-based media source")
+@ApiModel(description = "Image URL-based media source.")
 @JsonTypeName("PinMediaSourceImageURL")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImageURL   {
+  private Boolean isStandard = true;
   public enum SourceTypeEnum {
 
     IMAGE_URL(String.valueOf("image_url"));
@@ -69,7 +70,6 @@ public class PinMediaSourceImageURL   {
 
   private SourceTypeEnum sourceType;
   private String url;
-  private Boolean isStandard = true;
 
   public PinMediaSourceImageURL() {
   }
@@ -84,6 +84,27 @@ public class PinMediaSourceImageURL   {
   }
 
   /**
+   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+   **/
+  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+  @JsonProperty("is_standard")
+  public Boolean getIsStandard() {
+    return isStandard;
+  }
+
+  @JsonProperty("is_standard")
+  public void setIsStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+  }
+
+  /**
+   * The source type of the media.
    **/
   public PinMediaSourceImageURL sourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
@@ -91,7 +112,7 @@ public class PinMediaSourceImageURL   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The source type of the media.")
   @JsonProperty(required = true, value = "source_type")
   @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -121,26 +142,6 @@ public class PinMediaSourceImageURL   {
     this.url = url;
   }
 
-  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-   **/
-  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
-  @JsonProperty("is_standard")
-  public Boolean getIsStandard() {
-    return isStandard;
-  }
-
-  @JsonProperty("is_standard")
-  public void setIsStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -151,14 +152,14 @@ public class PinMediaSourceImageURL   {
       return false;
     }
     PinMediaSourceImageURL pinMediaSourceImageURL = (PinMediaSourceImageURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImageURL.sourceType) &&
-        Objects.equals(this.url, pinMediaSourceImageURL.url) &&
-        Objects.equals(this.isStandard, pinMediaSourceImageURL.isStandard);
+    return Objects.equals(this.isStandard, pinMediaSourceImageURL.isStandard) &&
+        Objects.equals(this.sourceType, pinMediaSourceImageURL.sourceType) &&
+        Objects.equals(this.url, pinMediaSourceImageURL.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, url, isStandard);
+    return Objects.hash(isStandard, sourceType, url);
   }
 
   @Override
@@ -166,9 +167,9 @@ public class PinMediaSourceImageURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImageURL {\n");
     
+    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("}");
     return sb.toString();
   }

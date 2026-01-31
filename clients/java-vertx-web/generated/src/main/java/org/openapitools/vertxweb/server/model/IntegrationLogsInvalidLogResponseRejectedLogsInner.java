@@ -7,29 +7,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   
-  private Integer logIndex;
   private String field;
-  private String value;
+  private Integer logIndex;
   private String reason;
+  private String value;
 
   public IntegrationLogsInvalidLogResponseRejectedLogsInner () {
 
   }
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner (Integer logIndex, String field, String value, String reason) {
-    this.logIndex = logIndex;
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner (String field, Integer logIndex, String reason, String value) {
     this.field = field;
-    this.value = value;
-    this.reason = reason;
-  }
-
-    
-  @JsonProperty("log_index")
-  public Integer getLogIndex() {
-    return logIndex;
-  }
-  public void setLogIndex(Integer logIndex) {
     this.logIndex = logIndex;
+    this.reason = reason;
+    this.value = value;
   }
 
     
@@ -42,12 +33,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   }
 
     
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
+  @JsonProperty("log_index")
+  public Integer getLogIndex() {
+    return logIndex;
   }
-  public void setValue(String value) {
-    this.value = value;
+  public void setLogIndex(Integer logIndex) {
+    this.logIndex = logIndex;
   }
 
     
@@ -57,6 +48,15 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   }
   public void setReason(String reason) {
     this.reason = reason;
+  }
+
+    
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -69,15 +69,15 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
       return false;
     }
     IntegrationLogsInvalidLogResponseRejectedLogsInner integrationLogsInvalidLogResponseRejectedLogsInner = (IntegrationLogsInvalidLogResponseRejectedLogsInner) o;
-    return Objects.equals(logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
-        Objects.equals(field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
-        Objects.equals(value, integrationLogsInvalidLogResponseRejectedLogsInner.value) &&
-        Objects.equals(reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason);
+    return Objects.equals(field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
+        Objects.equals(logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
+        Objects.equals(reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason) &&
+        Objects.equals(value, integrationLogsInvalidLogResponseRejectedLogsInner.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logIndex, field, value, reason);
+    return Objects.hash(field, logIndex, reason, value);
   }
 
   @Override
@@ -85,10 +85,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogsInvalidLogResponseRejectedLogsInner {\n");
     
-    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

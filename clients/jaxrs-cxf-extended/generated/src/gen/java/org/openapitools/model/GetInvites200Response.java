@@ -16,15 +16,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetInvites200Response  {
   
+  @ApiModelProperty(value = "")
+  private String bookmark;
+
  /**
   * List of invite and request data.
   */
   @ApiModelProperty(required = true, value = "List of invite and request data.")
   @Valid
   private List<@Valid InviteResponse> items = new ArrayList<>();
+ /**
+  * Get bookmark
+  * @return bookmark
+  */
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
 
-  @ApiModelProperty(value = "")
-  private String bookmark;
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+ public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+  public GetInvites200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
   * List of invite and request data.
   * @return items
@@ -58,30 +82,6 @@ public class GetInvites200Response  {
     return this;
   }
 
- /**
-  * Get bookmark
-  * @return bookmark
-  */
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
- public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
-  public GetInvites200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,13 +92,13 @@ public class GetInvites200Response  {
       return false;
     }
     GetInvites200Response getInvites200Response = (GetInvites200Response) o;
-    return Objects.equals(this.items, getInvites200Response.items) &&
-        Objects.equals(this.bookmark, getInvites200Response.bookmark);
+    return Objects.equals(this.bookmark, getInvites200Response.bookmark) &&
+        Objects.equals(this.items, getInvites200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class GetInvites200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetInvites200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

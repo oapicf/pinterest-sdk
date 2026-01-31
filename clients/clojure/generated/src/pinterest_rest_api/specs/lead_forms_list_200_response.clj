@@ -8,8 +8,8 @@
 
 (def lead-forms-list-200-response-data
   {
-   (ds/req :items) (s/coll-of lead-form-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of lead-form-response-spec)
    })
 
 (def lead-forms-list-200-response-spec

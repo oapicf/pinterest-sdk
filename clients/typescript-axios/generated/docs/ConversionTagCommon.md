@@ -5,15 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_account_id** | **string** | Ad account ID. | [optional] [default to undefined]
-**code_snippet** | **string** | Tag code snippet. | [optional] [default to undefined]
-**enhanced_match_status** | [**EnhancedMatchStatusType**](EnhancedMatchStatusType.md) |  | [optional] [default to undefined]
-**id** | **string** | Tag ID. | [optional] [default to undefined]
-**last_fired_time_ms** | **number** | Time for the last event fired. | [optional] [default to undefined]
-**name** | **string** | Conversion tag name. | [optional] [default to undefined]
-**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [default to undefined]
-**version** | **string** | Version number. | [optional] [default to undefined]
-**configs** | [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] [default to undefined]
+**code_snippet** | **string** | Tag code snippet. | [optional] [readonly] [default to undefined]
+**configs** | [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] [readonly] [default to undefined]
+**enhanced_match_status** | [**EnhancedMatchStatusType**](EnhancedMatchStatusType.md) | The enhanced match status of the tag | [optional] [readonly] [default to undefined]
+**id** | **string** | Tag ID. | [optional] [readonly] [default to undefined]
+**last_fired_time_ms** | **number** | Time for the last event fired. | [optional] [readonly] [default to undefined]
+**name** | **string** | Conversion tag name. | [default to undefined]
+**version** | **string** | Version number. | [optional] [readonly] [default to undefined]
 
 ## Example
 
@@ -21,15 +19,13 @@ Name | Type | Description | Notes
 import { ConversionTagCommon } from './api';
 
 const instance: ConversionTagCommon = {
-    ad_account_id,
     code_snippet,
+    configs,
     enhanced_match_status,
     id,
     last_fired_time_ms,
     name,
-    status,
     version,
-    configs,
 };
 ```
 

@@ -23,24 +23,19 @@ CatalogsReportDistributionStats::~CatalogsReportDistributionStats()
 void
 CatalogsReportDistributionStats::__init()
 {
-	//report_type = std::string();
 	//catalog_id = std::string();
 	//code = int(0);
 	//code_label = std::string();
-	//message = std::string();
-	//occurrences = int(0);
 	//ineligible_for_ads = bool(false);
 	//ineligible_for_organic = bool(false);
+	//message = std::string();
+	//occurrences = int(0);
+	//report_type = std::string();
 }
 
 void
 CatalogsReportDistributionStats::__cleanup()
 {
-	//if(report_type != NULL) {
-	//
-	//delete report_type;
-	//report_type = NULL;
-	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
@@ -56,16 +51,6 @@ CatalogsReportDistributionStats::__cleanup()
 	//delete code_label;
 	//code_label = NULL;
 	//}
-	//if(message != NULL) {
-	//
-	//delete message;
-	//message = NULL;
-	//}
-	//if(occurrences != NULL) {
-	//
-	//delete occurrences;
-	//occurrences = NULL;
-	//}
 	//if(ineligible_for_ads != NULL) {
 	//
 	//delete ineligible_for_ads;
@@ -76,6 +61,21 @@ CatalogsReportDistributionStats::__cleanup()
 	//delete ineligible_for_organic;
 	//ineligible_for_organic = NULL;
 	//}
+	//if(message != NULL) {
+	//
+	//delete message;
+	//message = NULL;
+	//}
+	//if(occurrences != NULL) {
+	//
+	//delete occurrences;
+	//occurrences = NULL;
+	//}
+	//if(report_type != NULL) {
+	//
+	//delete report_type;
+	//report_type = NULL;
+	//}
 	//
 }
 
@@ -84,17 +84,6 @@ CatalogsReportDistributionStats::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *report_typeKey = "report_type";
-	node = json_object_get_member(pJsonObject, report_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&report_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *catalog_idKey = "catalog_id";
 	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
@@ -128,28 +117,6 @@ CatalogsReportDistributionStats::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *messageKey = "message";
-	node = json_object_get_member(pJsonObject, messageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&message, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *occurrencesKey = "occurrences";
-	node = json_object_get_member(pJsonObject, occurrencesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&occurrences, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *ineligible_for_adsKey = "ineligible_for_ads";
 	node = json_object_get_member(pJsonObject, ineligible_for_adsKey);
 	if (node !=NULL) {
@@ -172,6 +139,39 @@ CatalogsReportDistributionStats::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *messageKey = "message";
+	node = json_object_get_member(pJsonObject, messageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&message, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *occurrencesKey = "occurrences";
+	node = json_object_get_member(pJsonObject, occurrencesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&occurrences, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *report_typeKey = "report_type";
+	node = json_object_get_member(pJsonObject, report_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&report_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsReportDistributionStats::CatalogsReportDistributionStats(char* json)
@@ -184,15 +184,6 @@ CatalogsReportDistributionStats::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getReportType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *report_typeKey = "report_type";
-	json_object_set_member(pJsonObject, report_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
@@ -220,24 +211,6 @@ CatalogsReportDistributionStats::toJson()
 	}
 	const gchar *code_labelKey = "code_label";
 	json_object_set_member(pJsonObject, code_labelKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getMessage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *messageKey = "message";
-	json_object_set_member(pJsonObject, messageKey, node);
-	if (isprimitive("int")) {
-		int obj = getOccurrences();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *occurrencesKey = "occurrences";
-	json_object_set_member(pJsonObject, occurrencesKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIneligibleForAds();
 		node = converttoJson(&obj, "bool", "");
@@ -256,24 +229,39 @@ CatalogsReportDistributionStats::toJson()
 	}
 	const gchar *ineligible_for_organicKey = "ineligible_for_organic";
 	json_object_set_member(pJsonObject, ineligible_for_organicKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMessage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *messageKey = "message";
+	json_object_set_member(pJsonObject, messageKey, node);
+	if (isprimitive("int")) {
+		int obj = getOccurrences();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *occurrencesKey = "occurrences";
+	json_object_set_member(pJsonObject, occurrencesKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getReportType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *report_typeKey = "report_type";
+	json_object_set_member(pJsonObject, report_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-CatalogsReportDistributionStats::getReportType()
-{
-	return report_type;
-}
-
-void
-CatalogsReportDistributionStats::setReportType(std::string  report_type)
-{
-	this->report_type = report_type;
 }
 
 std::string
@@ -312,6 +300,30 @@ CatalogsReportDistributionStats::setCodeLabel(std::string  code_label)
 	this->code_label = code_label;
 }
 
+bool
+CatalogsReportDistributionStats::getIneligibleForAds()
+{
+	return ineligible_for_ads;
+}
+
+void
+CatalogsReportDistributionStats::setIneligibleForAds(bool  ineligible_for_ads)
+{
+	this->ineligible_for_ads = ineligible_for_ads;
+}
+
+bool
+CatalogsReportDistributionStats::getIneligibleForOrganic()
+{
+	return ineligible_for_organic;
+}
+
+void
+CatalogsReportDistributionStats::setIneligibleForOrganic(bool  ineligible_for_organic)
+{
+	this->ineligible_for_organic = ineligible_for_organic;
+}
+
 std::string
 CatalogsReportDistributionStats::getMessage()
 {
@@ -336,28 +348,16 @@ CatalogsReportDistributionStats::setOccurrences(int  occurrences)
 	this->occurrences = occurrences;
 }
 
-bool
-CatalogsReportDistributionStats::getIneligibleForAds()
+std::string
+CatalogsReportDistributionStats::getReportType()
 {
-	return ineligible_for_ads;
+	return report_type;
 }
 
 void
-CatalogsReportDistributionStats::setIneligibleForAds(bool  ineligible_for_ads)
+CatalogsReportDistributionStats::setReportType(std::string  report_type)
 {
-	this->ineligible_for_ads = ineligible_for_ads;
-}
-
-bool
-CatalogsReportDistributionStats::getIneligibleForOrganic()
-{
-	return ineligible_for_organic;
-}
-
-void
-CatalogsReportDistributionStats::setIneligibleForOrganic(bool  ineligible_for_organic)
-{
-	this->ineligible_for_organic = ineligible_for_organic;
+	this->report_type = report_type;
 }
 
 

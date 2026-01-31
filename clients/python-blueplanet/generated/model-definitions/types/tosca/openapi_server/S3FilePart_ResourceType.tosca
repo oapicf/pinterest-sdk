@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server S3FilePart"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a S3FilePart"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  S3FilePart {
+    title = S3FilePart
+    description = S3FilePart
+    derivedFrom = Root
+    properties {
+        part_number {
+          type =  integer
+          description = "Part number for upload."
+          optional = true
+        }
+        presigned_url {
+          type =  string
+          description = "Pre-signed URL."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  S3FilePart {
+    title = S3FilePart
+    description = S3FilePart
+    implements = openapi_server.resourceTypes.S3FilePart
+
+  }
+}

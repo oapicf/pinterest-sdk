@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | targeting template name | [optional] 
 **AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
-**TargetingAttributes** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
-**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] [default to ALL]
 **Keywords** | Pointer to [**[]TargetingTemplateKeyword**](TargetingTemplateKeyword.md) |  | [optional] 
+**Name** | Pointer to **string** | targeting template name | [optional] 
+**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] [default to ALL]
+**TargetingAttributes** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 **TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
-**Id** | Pointer to **string** | Targeting template ID. | [optional] 
-**CreatedTime** | Pointer to **int32** | Targeting template created time. Unix timestamp in seconds. | [optional] 
-**UpdatedTime** | Pointer to **int32** | Targeting template updated time.Unix timestamp in seconds. | [optional] 
 **AdAccountId** | Pointer to **string** | The ID of the advertiser that this targeting template belongs to. | [optional] 
-**Status** | Pointer to **string** | Indicate targeting template is active or Deleted | [optional] [default to "ACTIVE"]
+**CreatedTime** | Pointer to **int32** | Targeting template created time. Unix timestamp in seconds. | [optional] 
+**Id** | Pointer to **string** | Targeting template ID. | [optional] 
 **Sizing** | Pointer to [**NullableTargetingTemplateAudienceSizing**](TargetingTemplateAudienceSizing.md) |  | [optional] 
+**Status** | Pointer to **string** | Indicate targeting template is active or Deleted | [optional] [default to "ACTIVE"]
+**UpdatedTime** | Pointer to **int32** | Targeting template updated time.Unix timestamp in seconds. | [optional] 
 **Valid** | Pointer to **NullableBool** | Inform if the targeting template is valid (ex. would be false if has revoked audience) | [optional] 
 
 ## Methods
@@ -36,31 +36,6 @@ will change when the set of required properties is changed
 NewTargetingTemplateGetResponseDataWithDefaults instantiates a new TargetingTemplateGetResponseData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *TargetingTemplateGetResponseData) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *TargetingTemplateGetResponseData) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *TargetingTemplateGetResponseData) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *TargetingTemplateGetResponseData) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetAutoTargetingEnabled
 
@@ -87,30 +62,55 @@ SetAutoTargetingEnabled sets AutoTargetingEnabled field to given value.
 
 HasAutoTargetingEnabled returns a boolean if a field has been set.
 
-### GetTargetingAttributes
+### GetKeywords
 
-`func (o *TargetingTemplateGetResponseData) GetTargetingAttributes() TargetingSpec`
+`func (o *TargetingTemplateGetResponseData) GetKeywords() []TargetingTemplateKeyword`
 
-GetTargetingAttributes returns the TargetingAttributes field if non-nil, zero value otherwise.
+GetKeywords returns the Keywords field if non-nil, zero value otherwise.
 
-### GetTargetingAttributesOk
+### GetKeywordsOk
 
-`func (o *TargetingTemplateGetResponseData) GetTargetingAttributesOk() (*TargetingSpec, bool)`
+`func (o *TargetingTemplateGetResponseData) GetKeywordsOk() (*[]TargetingTemplateKeyword, bool)`
 
-GetTargetingAttributesOk returns a tuple with the TargetingAttributes field if it's non-nil, zero value otherwise
+GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTargetingAttributes
+### SetKeywords
 
-`func (o *TargetingTemplateGetResponseData) SetTargetingAttributes(v TargetingSpec)`
+`func (o *TargetingTemplateGetResponseData) SetKeywords(v []TargetingTemplateKeyword)`
 
-SetTargetingAttributes sets TargetingAttributes field to given value.
+SetKeywords sets Keywords field to given value.
 
-### HasTargetingAttributes
+### HasKeywords
 
-`func (o *TargetingTemplateGetResponseData) HasTargetingAttributes() bool`
+`func (o *TargetingTemplateGetResponseData) HasKeywords() bool`
 
-HasTargetingAttributes returns a boolean if a field has been set.
+HasKeywords returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *TargetingTemplateGetResponseData) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *TargetingTemplateGetResponseData) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *TargetingTemplateGetResponseData) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *TargetingTemplateGetResponseData) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetPlacementGroup
 
@@ -137,30 +137,30 @@ SetPlacementGroup sets PlacementGroup field to given value.
 
 HasPlacementGroup returns a boolean if a field has been set.
 
-### GetKeywords
+### GetTargetingAttributes
 
-`func (o *TargetingTemplateGetResponseData) GetKeywords() []TargetingTemplateKeyword`
+`func (o *TargetingTemplateGetResponseData) GetTargetingAttributes() TargetingSpec`
 
-GetKeywords returns the Keywords field if non-nil, zero value otherwise.
+GetTargetingAttributes returns the TargetingAttributes field if non-nil, zero value otherwise.
 
-### GetKeywordsOk
+### GetTargetingAttributesOk
 
-`func (o *TargetingTemplateGetResponseData) GetKeywordsOk() (*[]TargetingTemplateKeyword, bool)`
+`func (o *TargetingTemplateGetResponseData) GetTargetingAttributesOk() (*TargetingSpec, bool)`
 
-GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
+GetTargetingAttributesOk returns a tuple with the TargetingAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKeywords
+### SetTargetingAttributes
 
-`func (o *TargetingTemplateGetResponseData) SetKeywords(v []TargetingTemplateKeyword)`
+`func (o *TargetingTemplateGetResponseData) SetTargetingAttributes(v TargetingSpec)`
 
-SetKeywords sets Keywords field to given value.
+SetTargetingAttributes sets TargetingAttributes field to given value.
 
-### HasKeywords
+### HasTargetingAttributes
 
-`func (o *TargetingTemplateGetResponseData) HasKeywords() bool`
+`func (o *TargetingTemplateGetResponseData) HasTargetingAttributes() bool`
 
-HasKeywords returns a boolean if a field has been set.
+HasTargetingAttributes returns a boolean if a field has been set.
 
 ### GetTrackingUrls
 
@@ -197,30 +197,30 @@ HasTrackingUrls returns a boolean if a field has been set.
 `func (o *TargetingTemplateGetResponseData) UnsetTrackingUrls()`
 
 UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-### GetId
+### GetAdAccountId
 
-`func (o *TargetingTemplateGetResponseData) GetId() string`
+`func (o *TargetingTemplateGetResponseData) GetAdAccountId() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAdAccountIdOk
 
-`func (o *TargetingTemplateGetResponseData) GetIdOk() (*string, bool)`
+`func (o *TargetingTemplateGetResponseData) GetAdAccountIdOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAdAccountId
 
-`func (o *TargetingTemplateGetResponseData) SetId(v string)`
+`func (o *TargetingTemplateGetResponseData) SetAdAccountId(v string)`
 
-SetId sets Id field to given value.
+SetAdAccountId sets AdAccountId field to given value.
 
-### HasId
+### HasAdAccountId
 
-`func (o *TargetingTemplateGetResponseData) HasId() bool`
+`func (o *TargetingTemplateGetResponseData) HasAdAccountId() bool`
 
-HasId returns a boolean if a field has been set.
+HasAdAccountId returns a boolean if a field has been set.
 
 ### GetCreatedTime
 
@@ -247,80 +247,30 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
-### GetUpdatedTime
+### GetId
 
-`func (o *TargetingTemplateGetResponseData) GetUpdatedTime() int32`
+`func (o *TargetingTemplateGetResponseData) GetId() string`
 
-GetUpdatedTime returns the UpdatedTime field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetUpdatedTimeOk
+### GetIdOk
 
-`func (o *TargetingTemplateGetResponseData) GetUpdatedTimeOk() (*int32, bool)`
+`func (o *TargetingTemplateGetResponseData) GetIdOk() (*string, bool)`
 
-GetUpdatedTimeOk returns a tuple with the UpdatedTime field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUpdatedTime
+### SetId
 
-`func (o *TargetingTemplateGetResponseData) SetUpdatedTime(v int32)`
+`func (o *TargetingTemplateGetResponseData) SetId(v string)`
 
-SetUpdatedTime sets UpdatedTime field to given value.
+SetId sets Id field to given value.
 
-### HasUpdatedTime
+### HasId
 
-`func (o *TargetingTemplateGetResponseData) HasUpdatedTime() bool`
+`func (o *TargetingTemplateGetResponseData) HasId() bool`
 
-HasUpdatedTime returns a boolean if a field has been set.
-
-### GetAdAccountId
-
-`func (o *TargetingTemplateGetResponseData) GetAdAccountId() string`
-
-GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
-
-### GetAdAccountIdOk
-
-`func (o *TargetingTemplateGetResponseData) GetAdAccountIdOk() (*string, bool)`
-
-GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAccountId
-
-`func (o *TargetingTemplateGetResponseData) SetAdAccountId(v string)`
-
-SetAdAccountId sets AdAccountId field to given value.
-
-### HasAdAccountId
-
-`func (o *TargetingTemplateGetResponseData) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *TargetingTemplateGetResponseData) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *TargetingTemplateGetResponseData) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *TargetingTemplateGetResponseData) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *TargetingTemplateGetResponseData) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 ### GetSizing
 
@@ -357,6 +307,56 @@ HasSizing returns a boolean if a field has been set.
 `func (o *TargetingTemplateGetResponseData) UnsetSizing()`
 
 UnsetSizing ensures that no value is present for Sizing, not even an explicit nil
+### GetStatus
+
+`func (o *TargetingTemplateGetResponseData) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *TargetingTemplateGetResponseData) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *TargetingTemplateGetResponseData) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *TargetingTemplateGetResponseData) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
+### GetUpdatedTime
+
+`func (o *TargetingTemplateGetResponseData) GetUpdatedTime() int32`
+
+GetUpdatedTime returns the UpdatedTime field if non-nil, zero value otherwise.
+
+### GetUpdatedTimeOk
+
+`func (o *TargetingTemplateGetResponseData) GetUpdatedTimeOk() (*int32, bool)`
+
+GetUpdatedTimeOk returns a tuple with the UpdatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedTime
+
+`func (o *TargetingTemplateGetResponseData) SetUpdatedTime(v int32)`
+
+SetUpdatedTime sets UpdatedTime field to given value.
+
+### HasUpdatedTime
+
+`func (o *TargetingTemplateGetResponseData) HasUpdatedTime() bool`
+
+HasUpdatedTime returns a boolean if a field has been set.
+
 ### GetValid
 
 `func (o *TargetingTemplateGetResponseData) GetValid() bool`

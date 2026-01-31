@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CREATIVEUnderscoreASSETSUnderscoreID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
-**CUSTOMUnderscoreLABELUnderscore0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
-**CUSTOMUnderscoreLABELUnderscore1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
-**CUSTOMUnderscoreLABELUnderscore2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
-**CUSTOMUnderscoreLABELUnderscore3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
-**CUSTOMUnderscoreLABELUnderscore4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
+**CUSTOMUnderscoreLABELUnderscore0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to null]
+**CUSTOMUnderscoreLABELUnderscore1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to null]
+**CUSTOMUnderscoreLABELUnderscore2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to null]
+**CUSTOMUnderscoreLABELUnderscore3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to null]
+**CUSTOMUnderscoreLABELUnderscore4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to null]
 **GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to null]
 **GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to null]
 **GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to null]
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to null]
 **GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to null]
 **MEDIAUnderscoreTYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | [default to null]
+**TITLEUnderscoreKEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

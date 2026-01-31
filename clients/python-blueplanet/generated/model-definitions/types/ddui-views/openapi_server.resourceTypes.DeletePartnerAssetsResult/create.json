@@ -1,0 +1,21 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "asset_id" },
+      {"model": "asset_type" },
+      {"model": "is_shared_partner" },
+      {"model": "partner_id" },
+      {"model": "permissions" },
+    ]
+  }]
+}

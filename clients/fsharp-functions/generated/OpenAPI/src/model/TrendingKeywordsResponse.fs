@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.TrendingKeywordsResponseTrendsInner
+open OpenAPI.Model.TrendingKeyword
 
 module TrendingKeywordsResponse =
 
@@ -12,7 +12,7 @@ module TrendingKeywordsResponse =
   [<CLIMutable>]
   type TrendingKeywordsResponse = {
     [<JsonProperty(PropertyName = "trends")>]
-    Trends : TrendingKeywordsResponseTrendsInner[];
+    Trends : TrendingKeyword[];
   }
 
   //#endregion

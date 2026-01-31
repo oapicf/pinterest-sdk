@@ -23,23 +23,23 @@ PinAnalyticsMetricsResponse::~PinAnalyticsMetricsResponse()
 void
 PinAnalyticsMetricsResponse::__init()
 {
-	//new std::map()std::map> lifetime_metrics;
 	//new std::list()std::list> daily_metrics;
+	//new std::map()std::map> lifetime_metrics;
 	//new std::map()std::map> summary_metrics;
 }
 
 void
 PinAnalyticsMetricsResponse::__cleanup()
 {
-	//if(lifetime_metrics != NULL) {
-	//lifetime_metrics.RemoveAll(true);
-	//delete lifetime_metrics;
-	//lifetime_metrics = NULL;
-	//}
 	//if(daily_metrics != NULL) {
 	//daily_metrics.RemoveAll(true);
 	//delete daily_metrics;
 	//daily_metrics = NULL;
+	//}
+	//if(lifetime_metrics != NULL) {
+	//lifetime_metrics.RemoveAll(true);
+	//delete lifetime_metrics;
+	//lifetime_metrics = NULL;
 	//}
 	//if(summary_metrics != NULL) {
 	//summary_metrics.RemoveAll(true);
@@ -54,18 +54,6 @@ PinAnalyticsMetricsResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *lifetime_metricsKey = "lifetime_metrics";
-	node = json_object_get_member(pJsonObject, lifetime_metricsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			lifetime_metrics = new_map;
-		}
-		
-	}
 	const gchar *daily_metricsKey = "daily_metrics";
 	node = json_object_get_member(pJsonObject, daily_metricsKey);
 	if (node !=NULL) {
@@ -87,6 +75,18 @@ PinAnalyticsMetricsResponse::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			daily_metrics = new_list;
+		}
+		
+	}
+	const gchar *lifetime_metricsKey = "lifetime_metrics";
+	node = json_object_get_member(pJsonObject, lifetime_metricsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonObject* json_obj = json_node_get_object(node);
+			map<string,string> new_map;
+			json_object_foreach_member(json_obj,helper_func,&new_map);
+			lifetime_metrics = new_map;
 		}
 		
 	}
@@ -114,25 +114,6 @@ PinAnalyticsMetricsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-
-
-	{
-		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getLifetimeMetrics());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
-	}
-
-	const gchar *lifetime_metricsKey = "lifetime_metrics";
-	json_object_set_member(pJsonObject, lifetime_metricsKey, node);
 	if (isprimitive("PinAnalyticsMetricsResponse_daily_metrics_inner")) {
 		list<PinAnalyticsMetricsResponse_daily_metrics_inner> new_list = static_cast<list <PinAnalyticsMetricsResponse_daily_metrics_inner> > (getDailyMetrics());
 		node = converttoJson(&new_list, "PinAnalyticsMetricsResponse_daily_metrics_inner", "array");
@@ -162,6 +143,25 @@ PinAnalyticsMetricsResponse::toJson()
 
 	{
 		JsonObject* json_obj;
+		map<string, string> new_list = static_cast<map <string, string> > (getLifetimeMetrics());
+		json_obj = json_object_new();
+		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			string obj = (*it).first;
+			string obj2 = (*it).second;
+			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
+			json_object_set_member(json_obj, obj.c_str(), tempnode);
+		}
+	node = json_node_alloc();
+	json_node_init_object(node, json_obj);
+	json_object_unref(json_obj);
+	}
+
+	const gchar *lifetime_metricsKey = "lifetime_metrics";
+	json_object_set_member(pJsonObject, lifetime_metricsKey, node);
+
+
+	{
+		JsonObject* json_obj;
 		map<string, string> new_list = static_cast<map <string, string> > (getSummaryMetrics());
 		json_obj = json_object_new();
 		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
@@ -185,18 +185,6 @@ PinAnalyticsMetricsResponse::toJson()
 	return ret;
 }
 
-std::map<string, string>
-PinAnalyticsMetricsResponse::getLifetimeMetrics()
-{
-	return lifetime_metrics;
-}
-
-void
-PinAnalyticsMetricsResponse::setLifetimeMetrics(std::map <string, string> lifetime_metrics)
-{
-	this->lifetime_metrics = lifetime_metrics;
-}
-
 std::list<PinAnalyticsMetricsResponse_daily_metrics_inner>
 PinAnalyticsMetricsResponse::getDailyMetrics()
 {
@@ -207,6 +195,18 @@ void
 PinAnalyticsMetricsResponse::setDailyMetrics(std::list <PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics)
 {
 	this->daily_metrics = daily_metrics;
+}
+
+std::map<string, string>
+PinAnalyticsMetricsResponse::getLifetimeMetrics()
+{
+	return lifetime_metrics;
+}
+
+void
+PinAnalyticsMetricsResponse::setLifetimeMetrics(std::map <string, string> lifetime_metrics)
+{
+	this->lifetime_metrics = lifetime_metrics;
 }
 
 std::map<string, string>

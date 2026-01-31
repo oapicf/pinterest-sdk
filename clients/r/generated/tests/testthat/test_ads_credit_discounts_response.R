@@ -21,12 +21,12 @@ test_that("advertiser_id", {
   #expect_equal(model.instance$`advertiser_id`, "EXPECTED_RESULT")
 })
 
-test_that("discountType", {
-  # tests for the property `discountType` (character)
-  # The type of discount of this credit
+test_that("discountCurrency", {
+  # tests for the property `discountCurrency` (character)
+  # Currency value for the discount.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`discountType`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`discountCurrency`, "EXPECTED_RESULT")
 })
 
 test_that("discountInMicroCurrency", {
@@ -37,20 +37,12 @@ test_that("discountInMicroCurrency", {
   #expect_equal(model.instance$`discountInMicroCurrency`, "EXPECTED_RESULT")
 })
 
-test_that("discountCurrency", {
-  # tests for the property `discountCurrency` (character)
-  # Currency value for the discount.
+test_that("discountType", {
+  # tests for the property `discountType` (character)
+  # The type of discount of this credit
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`discountCurrency`, "EXPECTED_RESULT")
-})
-
-test_that("title", {
-  # tests for the property `title` (character)
-  # Human readable title of the offer code.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`discountType`, "EXPECTED_RESULT")
 })
 
 test_that("remainingDiscountInMicroCurrency", {
@@ -59,4 +51,12 @@ test_that("remainingDiscountInMicroCurrency", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`remainingDiscountInMicroCurrency`, "EXPECTED_RESULT")
+})
+
+test_that("title", {
+  # tests for the property `title` (character)
+  # Human readable title of the offer code.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })

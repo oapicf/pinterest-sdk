@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**QuestionType** | [**LeadFormQuestionType**](LeadFormQuestionType.md) |  | [optional] 
 **CustomQuestionFieldType** | [**LeadFormQuestionFieldType**](LeadFormQuestionFieldType.md) |  | [optional] 
 **CustomQuestionLabel** | **String** | Question label for a custom question. | [optional] 
 **CustomQuestionOptions** | **String[]** | Question options for a custom question. | [optional] 
+**QuestionType** | [**LeadFormQuestionType**](LeadFormQuestionType.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LeadFormQuestion = Initialize-PSOpenAPIToolsLeadFormQuestion  -QuestionType null `
- -CustomQuestionFieldType null `
+$LeadFormQuestion = Initialize-PSOpenAPIToolsLeadFormQuestion  -CustomQuestionFieldType null `
  -CustomQuestionLabel null `
- -CustomQuestionOptions null
+ -CustomQuestionOptions null `
+ -QuestionType null
 ```
 
 - Convert the resource to JSON

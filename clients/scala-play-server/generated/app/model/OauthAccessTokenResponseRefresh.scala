@@ -6,20 +6,23 @@ import play.api.libs.json._
   * A successful OAuth access token response for the refresh token flow.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class OauthAccessTokenResponseRefresh(
-  responseType: Option[OauthAccessTokenResponseRefresh.ResponseType.Value],
   accessToken: String,
-  tokenType: String,
   expiresIn: Int,
-  scope: String
+  responseType: Option[OauthAccessTokenResponseRefresh.ResponseType.Value],
+  scope: String,
+  tokenType: String,
+  refreshToken: String,
+  refreshTokenExpiresAt: Int,
+  refreshTokenExpiresIn: Int
   additionalProperties: 
 )
 
 object OauthAccessTokenResponseRefresh {
   implicit lazy val oauthAccessTokenResponseRefreshJsonFormat: Format[OauthAccessTokenResponseRefresh] = {
     val realJsonFormat = Json.format[OauthAccessTokenResponseRefresh]
-    val declaredPropNames = Set("responseType", "accessToken", "tokenType", "expiresIn", "scope")
+    val declaredPropNames = Set("accessToken", "expiresIn", "responseType", "scope", "tokenType", "refreshToken", "refreshTokenExpiresAt", "refreshTokenExpiresIn")
     
     Format(
       Reads {

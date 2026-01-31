@@ -13,15 +13,9 @@ void main() {
       // TODO
     });
 
-    // Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+    // Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
     // String assetType
     test('to test the property `assetType`', () async {
-      // TODO
-    });
-
-    // Permission levels member or partner has on an asset.
-    // BuiltList<String> permissions
-    test('to test the property `permissions`', () async {
       // TODO
     });
 
@@ -34,6 +28,12 @@ void main() {
     // Unique identifier of a business partner.
     // String partnerId
     test('to test the property `partnerId`', () async {
+      // TODO
+    });
+
+    // Permission levels member or partner has on an asset.
+    // BuiltList<String> permissions
+    test('to test the property `permissions`', () async {
       // TODO
     });
 

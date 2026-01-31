@@ -37,37 +37,37 @@ pinterest_rest_api_integration_log_LOGLEVEL_e integration_log_log_level_FromStri
 
 
 typedef struct integration_log_t {
-    int client_timestamp; //numeric
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_type; //enum
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_level; //enum
-    char *external_business_id; // string
     char *advertiser_id; // string
-    char *merchant_id; // string
-    char *tag_id; // string
-    char *feed_profile_id; // string
-    char *message; // string
     char *app_version_number; // string
-    char *platform_version_number; // string
+    int client_timestamp; //numeric
     struct integration_log_client_error_t *error; //model
+    pinterest_rest_api_integration_log_EVENTTYPE_e event_type; //enum
+    char *external_business_id; // string
+    char *feed_profile_id; // string
+    pinterest_rest_api_integration_log_LOGLEVEL_e log_level; //enum
+    char *merchant_id; // string
+    char *message; // string
+    char *platform_version_number; // string
     struct integration_log_client_request_t *request; //model
+    char *tag_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } integration_log_t;
 
 __attribute__((deprecated)) integration_log_t *integration_log_create(
-    int client_timestamp,
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_type,
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_level,
-    char *external_business_id,
     char *advertiser_id,
-    char *merchant_id,
-    char *tag_id,
-    char *feed_profile_id,
-    char *message,
     char *app_version_number,
-    char *platform_version_number,
+    int client_timestamp,
     integration_log_client_error_t *error,
-    integration_log_client_request_t *request
+    pinterest_rest_api_integration_log_EVENTTYPE_e event_type,
+    char *external_business_id,
+    char *feed_profile_id,
+    pinterest_rest_api_integration_log_LOGLEVEL_e log_level,
+    char *merchant_id,
+    char *message,
+    char *platform_version_number,
+    integration_log_client_request_t *request,
+    char *tag_id
 );
 
 void integration_log_free(integration_log_t *integration_log);

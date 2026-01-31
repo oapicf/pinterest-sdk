@@ -17,6 +17,11 @@ private class OASUpdateMaskFieldTypeTest {
             OASUpdateMaskFieldType.CUSTOM_LABEL_2,
             OASUpdateMaskFieldType.CUSTOM_LABEL_3,
             OASUpdateMaskFieldType.CUSTOM_LABEL_4,
+            OASUpdateMaskFieldType.CUSTOM_NUMBER_0,
+            OASUpdateMaskFieldType.CUSTOM_NUMBER_1,
+            OASUpdateMaskFieldType.CUSTOM_NUMBER_2,
+            OASUpdateMaskFieldType.CUSTOM_NUMBER_3,
+            OASUpdateMaskFieldType.CUSTOM_NUMBER_4,
             OASUpdateMaskFieldType.DESCRIPTION,
             OASUpdateMaskFieldType.FREE_SHIPPING_LABEL,
             OASUpdateMaskFieldType.FREE_SHIPPING_LIMIT,
@@ -45,7 +50,8 @@ private class OASUpdateMaskFieldTypeTest {
             OASUpdateMaskFieldType.TAX,
             OASUpdateMaskFieldType.TITLE,
             OASUpdateMaskFieldType.VARIANT_NAMES,
-            OASUpdateMaskFieldType.VARIANT_VALUES
+            OASUpdateMaskFieldType.VARIANT_VALUES,
+            OASUpdateMaskFieldType.PROMOTION_ID
         };
         Set<OASUpdateMaskFieldType> actual  = new Set<OASUpdateMaskFieldType>(OASUpdateMaskFieldType.values());
         System.assertEquals(expected, actual);

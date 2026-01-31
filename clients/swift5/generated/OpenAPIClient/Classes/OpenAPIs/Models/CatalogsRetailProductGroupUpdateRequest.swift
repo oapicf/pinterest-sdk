@@ -18,28 +18,28 @@ public struct CatalogsRetailProductGroupUpdateRequest: Codable, JSONEncodable, H
     }
     /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     public var catalogType: CatalogType?
-    public var name: String?
+    public var country: Country?
     public var description: String?
     public var filters: CatalogsProductGroupFiltersRequest?
-    public var country: Country?
     public var locale: CatalogsLocale?
+    public var name: String?
 
-    public init(catalogType: CatalogType? = nil, name: String? = nil, description: String? = nil, filters: CatalogsProductGroupFiltersRequest? = nil, country: Country? = nil, locale: CatalogsLocale? = nil) {
+    public init(catalogType: CatalogType? = nil, country: Country? = nil, description: String? = nil, filters: CatalogsProductGroupFiltersRequest? = nil, locale: CatalogsLocale? = nil, name: String? = nil) {
         self.catalogType = catalogType
-        self.name = name
+        self.country = country
         self.description = description
         self.filters = filters
-        self.country = country
         self.locale = locale
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case catalogType = "catalog_type"
-        case name
+        case country
         case description
         case filters
-        case country
         case locale
+        case name
     }
 
     // Encodable protocol methods
@@ -47,11 +47,11 @@ public struct CatalogsRetailProductGroupUpdateRequest: Codable, JSONEncodable, H
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(catalogType, forKey: .catalogType)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(country, forKey: .country)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(filters, forKey: .filters)
-        try container.encodeIfPresent(country, forKey: .country)
         try container.encodeIfPresent(locale, forKey: .locale)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

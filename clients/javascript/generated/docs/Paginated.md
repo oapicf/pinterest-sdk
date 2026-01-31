@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | **[Object]** |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | **[Object]** |  | 
 
 

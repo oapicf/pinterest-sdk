@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsReportFeedIngestionFilter   {
   
+  private String feedId;
+  private String processingResultId;
 
 
   public enum ReportTypeEnum {
@@ -27,25 +29,14 @@ public class CatalogsReportFeedIngestionFilter   {
   }
 
   private ReportTypeEnum reportType;
-  private String feedId;
-  private String processingResultId;
 
   public CatalogsReportFeedIngestionFilter () {
 
   }
 
-  public CatalogsReportFeedIngestionFilter (ReportTypeEnum reportType, String feedId, String processingResultId) {
-    this.reportType = reportType;
+  public CatalogsReportFeedIngestionFilter (String feedId, String processingResultId, ReportTypeEnum reportType) {
     this.feedId = feedId;
     this.processingResultId = processingResultId;
-  }
-
-    
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
@@ -67,6 +58,15 @@ public class CatalogsReportFeedIngestionFilter   {
     this.processingResultId = processingResultId;
   }
 
+    
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -77,14 +77,14 @@ public class CatalogsReportFeedIngestionFilter   {
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @Override
@@ -92,9 +92,9 @@ public class CatalogsReportFeedIngestionFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -13,10 +13,8 @@ import org.openapitools.model.TargetingAdvertiserCountry;
 class CreateMMMReportRequest {
     /* A List of countries for filtering */
     List<TargetingAdvertiserCountry> countries = new ArrayList<>()
-    /* Name of the Marketing Mix Modeling (MMM) report */
-    String reportName
-    /* Metric report start date (UTC). Format: YYYY-MM-DD */
-    String startDate
+    /* Metric and entity columns */
+    List<MMMReportingColumn> columns = new ArrayList<>()
     /* Metric report end date (UTC). Format: YYYY-MM-DD */
     String endDate
 
@@ -69,8 +67,10 @@ class CreateMMMReportRequest {
 
     /* Level of the report */
     LevelEnum level
+    /* Name of the Marketing Mix Modeling (MMM) report */
+    String reportName
+    /* Metric report start date (UTC). Format: YYYY-MM-DD */
+    String startDate
     /* List of targeting types */
     List<MMMReportingTargetingType> targetingTypes = new ArrayList<>()
-    /* Metric and entity columns */
-    List<MMMReportingColumn> columns = new ArrayList<>()
 }

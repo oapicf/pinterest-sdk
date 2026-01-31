@@ -7,18 +7,18 @@ goog.provide('API.Client.InviteExceptionResponse');
 API.Client.InviteExceptionResponse = function() {}
 
 /**
- * Unique identifier of the invite/request.
- * @type {!string}
- * @export
- */
-API.Client.InviteExceptionResponse.prototype.inviteOrRequestId;
-
-/**
  * Error code associated with the error in performing the action on the invite/request.
  * @type {!number}
  * @export
  */
 API.Client.InviteExceptionResponse.prototype.code;
+
+/**
+ * Unique identifier of the invite/request.
+ * @type {!string}
+ * @export
+ */
+API.Client.InviteExceptionResponse.prototype.inviteOrRequestId;
 
 /**
  * Error message associated with the error in performing the action on the invite/request.

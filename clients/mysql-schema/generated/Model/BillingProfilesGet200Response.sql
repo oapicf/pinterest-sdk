@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `billing_profiles_get_200_response`
 --
-SELECT `items`, `bookmark` FROM `billing_profiles_get_200_response` WHERE 1;
+SELECT `bookmark`, `items` FROM `billing_profiles_get_200_response` WHERE 1;
 
 --
 -- INSERT template for table `billing_profiles_get_200_response`
 --
-INSERT INTO `billing_profiles_get_200_response`(`items`, `bookmark`) VALUES (?, ?);
+INSERT INTO `billing_profiles_get_200_response`(`bookmark`, `items`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `billing_profiles_get_200_response`
 --
-UPDATE `billing_profiles_get_200_response` SET `items` = ?, `bookmark` = ? WHERE 1;
+UPDATE `billing_profiles_get_200_response` SET `bookmark` = ?, `items` = ? WHERE 1;
 
 --
 -- DELETE template for table `billing_profiles_get_200_response`

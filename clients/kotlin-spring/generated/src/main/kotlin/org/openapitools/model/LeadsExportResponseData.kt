@@ -18,17 +18,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param exportStatus 
  * @param downloadUrl 
+ * @param exportStatus 
  */
 data class LeadsExportResponseData(
 
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("download_url") val downloadUrl: kotlin.String? = null,
+
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("export_status") val exportStatus: LeadsExportStatus? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("download_url") val downloadUrl: kotlin.String? = null
+    @get:JsonProperty("export_status") val exportStatus: LeadsExportStatus? = null
 ) {
 
 }

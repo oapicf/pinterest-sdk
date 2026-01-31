@@ -32,13 +32,13 @@ pinterest_rest_api_multiple_product_groups_inner_CATALOGTYPE_e multiple_product_
 
 
 typedef struct multiple_product_groups_inner_t {
-    char *name; // string
     char *description; // string
-    int is_featured; //boolean
-    struct catalogs_creative_assets_product_group_filters_t *filters; //model
     char *feed_id; // string
-    pinterest_rest_api_multiple_product_groups_inner_CATALOGTYPE_e catalog_type; //enum
+    struct catalogs_creative_assets_product_group_filters_t *filters; //model
+    int is_featured; //boolean
+    char *name; // string
     char *catalog_id; // string
+    pinterest_rest_api_multiple_product_groups_inner_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
     pinterest_rest_api_catalogs_locale__e locale; //referenced enum
 
@@ -46,13 +46,13 @@ typedef struct multiple_product_groups_inner_t {
 } multiple_product_groups_inner_t;
 
 __attribute__((deprecated)) multiple_product_groups_inner_t *multiple_product_groups_inner_create(
-    char *name,
     char *description,
-    int is_featured,
-    catalogs_creative_assets_product_group_filters_t *filters,
     char *feed_id,
-    pinterest_rest_api_multiple_product_groups_inner_CATALOGTYPE_e catalog_type,
+    catalogs_creative_assets_product_group_filters_t *filters,
+    int is_featured,
+    char *name,
     char *catalog_id,
+    pinterest_rest_api_multiple_product_groups_inner_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
     pinterest_rest_api_catalogs_locale__e locale
 );

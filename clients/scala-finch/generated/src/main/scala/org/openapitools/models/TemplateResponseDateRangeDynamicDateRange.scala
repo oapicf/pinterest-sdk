@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * The dynamic date range of the template
- * @param _type The date range type
  * @param range The dynamic range type
+ * @param _type The date range type
  */
-case class TemplateResponseDateRangeDynamicDateRange(_type: Option[String],
-                range: Option[String]
+case class TemplateResponseDateRangeDynamicDateRange(range: Option[String],
+                _type: Option[String]
                 )
 
 object TemplateResponseDateRangeDynamicDateRange {

@@ -3,7 +3,7 @@ const Service = require('./Service');
 
 /**
 * Get advertiser entities in bulk
-* Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+* Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bulkDownloadRequest BulkDownloadRequest Parameters to get ad entities in bulk
@@ -51,7 +51,7 @@ const bulk_request/get = ({ adUnderscoreaccountUnderscoreid, bulkUnderscorereque
 );
 /**
 * Create/update ad entities in bulk
-* Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+* Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bulkUpsertRequest BulkUpsertRequest Parameters to get create/update ad entities in bulk

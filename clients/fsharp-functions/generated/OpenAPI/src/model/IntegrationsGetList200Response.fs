@@ -12,10 +12,10 @@ module IntegrationsGetList200Response =
 
   [<CLIMutable>]
   type IntegrationsGetList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : IntegrationRecord[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : IntegrationRecord[];
   }
 
   //#endregion

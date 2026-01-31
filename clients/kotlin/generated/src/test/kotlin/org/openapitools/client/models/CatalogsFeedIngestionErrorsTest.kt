@@ -25,40 +25,22 @@ class CatalogsFeedIngestionErrorsTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsFeedIngestionErrors
         //val modelInstance = CatalogsFeedIngestionErrors()
 
-        // to test the property `LINE_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-        should("test LINE_LEVEL_INTERNAL_ERROR") {
-            // uncomment below to test the property
-            //modelInstance.LINE_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
-        }
-
-        // to test the property `LARGE_PRODUCT_COUNT_DECREASE` - The product count has decreased by more than 99% compared to the last successful ingestion.
-        should("test LARGE_PRODUCT_COUNT_DECREASE") {
-            // uncomment below to test the property
-            //modelInstance.LARGE_PRODUCT_COUNT_DECREASE shouldBe ("TODO")
-        }
-
         // to test the property `ACCOUNT_FLAGGED` - We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
         should("test ACCOUNT_FLAGGED") {
             // uncomment below to test the property
             //modelInstance.ACCOUNT_FLAGGED shouldBe ("TODO")
         }
 
-        // to test the property `IMAGE_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-        should("test IMAGE_LEVEL_INTERNAL_ERROR") {
+        // to test the property `FETCH_GOOGLE_SHEET_NOT_SHARED` - Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.
+        should("test FETCH_GOOGLE_SHEET_NOT_SHARED") {
             // uncomment below to test the property
-            //modelInstance.IMAGE_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
+            //modelInstance.FETCH_GOOGLE_SHEET_NOT_SHARED shouldBe ("TODO")
         }
 
         // to test the property `IMAGE_FILE_NOT_ACCESSIBLE` - Image files are unreadable. Please upload new files to continue.
         should("test IMAGE_FILE_NOT_ACCESSIBLE") {
             // uncomment below to test the property
             //modelInstance.IMAGE_FILE_NOT_ACCESSIBLE shouldBe ("TODO")
-        }
-
-        // to test the property `IMAGE_MALFORMED_URL` - Image files are unreadable. Please check your link and upload new files to continue.
-        should("test IMAGE_MALFORMED_URL") {
-            // uncomment below to test the property
-            //modelInstance.IMAGE_MALFORMED_URL shouldBe ("TODO")
         }
 
         // to test the property `IMAGE_FILE_NOT_FOUND` - Image files are unreadable. Please upload new files to continue.
@@ -71,6 +53,30 @@ class CatalogsFeedIngestionErrorsTest : ShouldSpec() {
         should("test IMAGE_INVALID_FILE") {
             // uncomment below to test the property
             //modelInstance.IMAGE_INVALID_FILE shouldBe ("TODO")
+        }
+
+        // to test the property `IMAGE_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+        should("test IMAGE_LEVEL_INTERNAL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.IMAGE_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
+        }
+
+        // to test the property `IMAGE_MALFORMED_URL` - Image files are unreadable. Please check your link and upload new files to continue.
+        should("test IMAGE_MALFORMED_URL") {
+            // uncomment below to test the property
+            //modelInstance.IMAGE_MALFORMED_URL shouldBe ("TODO")
+        }
+
+        // to test the property `LARGE_PRODUCT_COUNT_DECREASE` - The product count has decreased by more than 99% compared to the last successful ingestion.
+        should("test LARGE_PRODUCT_COUNT_DECREASE") {
+            // uncomment below to test the property
+            //modelInstance.LARGE_PRODUCT_COUNT_DECREASE shouldBe ("TODO")
+        }
+
+        // to test the property `LINE_LEVEL_INTERNAL_ERROR` - We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+        should("test LINE_LEVEL_INTERNAL_ERROR") {
+            // uncomment below to test the property
+            //modelInstance.LINE_LEVEL_INTERNAL_ERROR shouldBe ("TODO")
         }
 
     }

@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * 
- * @param name Display name
  * @param id Salesforce id for PMP
+ * @param name Display name
  */
-case class SSIOAccountPMPName(name: Option[String],
-                id: Option[String]
+case class SSIOAccountPMPName(id: Option[String],
+                name: Option[String]
                 )
 
 object SSIOAccountPMPName {

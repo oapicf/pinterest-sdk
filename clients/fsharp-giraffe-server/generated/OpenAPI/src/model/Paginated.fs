@@ -10,7 +10,7 @@ module Paginated =
 
 
   type Paginated = {
-    Items : obj[];
     Bookmark : string option;
+    Items : obj[];
   }
   //#endregion

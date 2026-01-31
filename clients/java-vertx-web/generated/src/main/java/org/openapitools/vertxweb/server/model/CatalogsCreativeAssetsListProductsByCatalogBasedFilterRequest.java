@@ -12,6 +12,7 @@ import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsProductGroup
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -31,26 +32,16 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String catalogId;
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
   public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest () {
 
   }
 
-  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest (CatalogTypeEnum catalogType, String catalogId, CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.catalogType = catalogType;
+  public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest (String catalogId, CatalogTypeEnum catalogType, CatalogsCreativeAssetsProductGroupFilters filters) {
     this.catalogId = catalogId;
-    this.filters = filters;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+    this.filters = filters;
   }
 
     
@@ -60,6 +51,15 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -81,14 +81,14 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = (CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(filters, catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -96,8 +96,8 @@ public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

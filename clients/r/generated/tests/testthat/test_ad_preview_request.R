@@ -28,3 +28,83 @@ test_that("pin_id", {
   # uncomment below to test the property
   #expect_equal(model.instance$`pin_id`, "EXPECTED_RESULT")
 })
+
+test_that("catalog_product_group_id", {
+  # tests for the property `catalog_product_group_id` (character)
+  # Catalog Product Group Id.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_product_group_id`, "EXPECTED_RESULT")
+})
+
+test_that("creative_type", {
+  # tests for the property `creative_type` (character)
+  # Ad format of the shopping ad preview.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`creative_type`, "EXPECTED_RESULT")
+})
+
+test_that("customizable_cta_type", {
+  # tests for the property `customizable_cta_type` (CustomizableCTAType)
+  # Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`customizable_cta_type`, "EXPECTED_RESULT")
+})
+
+test_that("hero_image_title", {
+  # tests for the property `hero_image_title` (character)
+  # Title displayed below ad.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`hero_image_title`, "EXPECTED_RESULT")
+})
+
+test_that("hero_image_url", {
+  # tests for the property `hero_image_url` (character)
+  # Hero image URL.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`hero_image_url`, "EXPECTED_RESULT")
+})
+
+test_that("hero_pin_id", {
+  # tests for the property `hero_pin_id` (character)
+  # Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`hero_pin_id`, "EXPECTED_RESULT")
+})
+
+test_that("image_tag", {
+  # tests for the property `image_tag` (character)
+  # Multi image template tag.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`image_tag`, "EXPECTED_RESULT")
+})
+
+test_that("item_id", {
+  # tests for the property `item_id` (character)
+  # Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
+})
+
+test_that("preferred_media_type", {
+  # tests for the property `preferred_media_type` (character)
+  # Preferred media type.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`preferred_media_type`, "EXPECTED_RESULT")
+})
+
+test_that("video_tag", {
+  # tests for the property `video_tag` (character)
+  # Multi video template tag, image_tag and video_tag are mutual exclusive.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`video_tag`, "EXPECTED_RESULT")
+})

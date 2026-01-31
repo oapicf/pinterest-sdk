@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.PinMedia;
-import org.openapitools.model.PinMediaWithImageAllOfImages;
+import org.openapitools.model.ImageSize;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -22,19 +21,19 @@ public class PinMediaWithImageTest {
     }
 
     /**
-     * Test the property 'mediaType'
-     */
-    @Test
-    public void mediaTypeTest() {
-        // TODO: test mediaType
-    }
-
-    /**
      * Test the property 'images'
      */
     @Test
     public void imagesTest() {
         // TODO: test images
+    }
+
+    /**
+     * Test the property 'mediaType'
+     */
+    @Test
+    public void mediaTypeTest() {
+        // TODO: test mediaType
     }
 
 }

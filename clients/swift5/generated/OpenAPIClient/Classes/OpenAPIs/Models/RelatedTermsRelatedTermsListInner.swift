@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct RelatedTermsRelatedTermsListInner: Codable, JSONEncodable, Hashable {
 
-    public var term: String?
     public var relatedTerms: [String]?
+    public var term: String?
 
-    public init(term: String? = nil, relatedTerms: [String]? = nil) {
-        self.term = term
+    public init(relatedTerms: [String]? = nil, term: String? = nil) {
         self.relatedTerms = relatedTerms
+        self.term = term
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case term
         case relatedTerms = "related_terms"
+        case term
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(term, forKey: .term)
         try container.encodeIfPresent(relatedTerms, forKey: .relatedTerms)
+        try container.encodeIfPresent(term, forKey: .term)
     }
 }
 

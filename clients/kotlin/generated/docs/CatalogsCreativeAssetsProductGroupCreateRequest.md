@@ -4,10 +4,10 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogType** | [**inline**](#CatalogType) |  |  |
-| **name** | **kotlin.String** |  |  |
-| **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  |
 | **catalogId** | **kotlin.String** | Catalog id pertaining to the creative assets product group. |  |
+| **catalogType** | [**inline**](#CatalogType) |  |  |
+| **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  |
+| **name** | **kotlin.String** |  |  |
 | **description** | **kotlin.String** |  |  [optional] |
 
 

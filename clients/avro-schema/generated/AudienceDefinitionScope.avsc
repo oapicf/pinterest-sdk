@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Generated audience scope to request.",
+  "name": "AudienceDefinitionScope",
+  "fields": [
+    {
+      "name": "scope",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AudienceDefinitionScope_scope",
+        "symbols": [
+          "PARTNER",
+          "PINTEREST"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

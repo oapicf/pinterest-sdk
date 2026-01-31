@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateAssetGroupBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateAssetGroupBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdateAssetGroupBodyAssetGroupsToUpdateInner = openapi_server.resourceTypes.UpdateAssetGroupBodyAssetGroupsToUpdateInner
+}
+resourceTypes {
+
+  UpdateAssetGroupBody {
+    title = UpdateAssetGroupBody
+    description = UpdateAssetGroupBody
+    derivedFrom = Root
+    properties {
+        asset_groups_to_update {
+          type = array
+          items.type = UpdateAssetGroupBodyAssetGroupsToUpdateInner
+          description = "A list of asset groups and the data that will be used to update them."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateAssetGroupBody {
+    title = UpdateAssetGroupBody
+    description = UpdateAssetGroupBody
+    implements = openapi_server.resourceTypes.UpdateAssetGroupBody
+
+  }
+}

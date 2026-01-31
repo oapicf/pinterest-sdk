@@ -9,31 +9,31 @@ import org.openapitools.models.BigDecimal
 
 /**
  * Schema used for updating the integration metadata.
- * @param connectedUnderscoremerchantUnderscoreid 
+ * @param additionalUnderscoreidUnderscore1 
  * @param connectedUnderscoreadvertiserUnderscoreid 
  * @param connectedUnderscorelbaUnderscoreid 
+ * @param connectedUnderscoremerchantUnderscoreid 
  * @param connectedUnderscoretagUnderscoreid 
  * @param partnerUnderscoreaccessUnderscoretoken 
- * @param partnerUnderscorerefreshUnderscoretoken 
- * @param partnerUnderscoreprimaryUnderscoreemail 
  * @param partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry 
+ * @param partnerUnderscoremetadata 
+ * @param partnerUnderscoreprimaryUnderscoreemail 
+ * @param partnerUnderscorerefreshUnderscoretoken 
  * @param partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry 
  * @param scopes 
- * @param additionalUnderscoreidUnderscore1 
- * @param partnerUnderscoremetadata 
  */
-case class IntegrationRequestPatch(connectedUnderscoremerchantUnderscoreid: Option[String],
+case class IntegrationRequestPatch(additionalUnderscoreidUnderscore1: Option[String],
                 connectedUnderscoreadvertiserUnderscoreid: Option[String],
                 connectedUnderscorelbaUnderscoreid: Option[String],
+                connectedUnderscoremerchantUnderscoreid: Option[String],
                 connectedUnderscoretagUnderscoreid: Option[String],
                 partnerUnderscoreaccessUnderscoretoken: Option[String],
-                partnerUnderscorerefreshUnderscoretoken: Option[String],
-                partnerUnderscoreprimaryUnderscoreemail: Option[String],
                 partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry: Option[BigDecimal],
+                partnerUnderscoremetadata: Option[String],
+                partnerUnderscoreprimaryUnderscoreemail: Option[String],
+                partnerUnderscorerefreshUnderscoretoken: Option[String],
                 partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry: Option[BigDecimal],
-                scopes: Option[String],
-                additionalUnderscoreidUnderscore1: Option[String],
-                partnerUnderscoremetadata: Option[String]
+                scopes: Option[String]
                 )
 
 object IntegrationRequestPatch {

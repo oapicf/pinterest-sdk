@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,28 +16,16 @@ package openapi
 
 type CatalogsUpdatableHotelAttributes struct {
 
-	// The hotel's name.
-	Name *string `json:"name,omitempty"`
+	Address CatalogsHotelAddress `json:"address,omitempty"`
 
-	// Link to the product page
-	Link *string `json:"link,omitempty"`
-
-	// Brief description of the hotel.
-	Description *string `json:"description,omitempty"`
+	// Base price of the hotel room per night followed by the ISO currency code
+	BasePrice *string `json:"base_price,omitempty"`
 
 	// The brand to which this hotel belongs to.
 	Brand *string `json:"brand,omitempty"`
 
-	// Latitude of the hotel.
-	Latitude float32 `json:"latitude,omitempty"`
-
-	// Longitude of the hotel.
-	Longitude *float32 `json:"longitude,omitempty"`
-
-	// A list of neighborhoods where the hotel is located
-	Neighborhood *[]string `json:"neighborhood,omitempty"`
-
-	Address CatalogsHotelAddress `json:"address,omitempty"`
+	// The type of property. The category can be any type of internal description desired.
+	Category *string `json:"category,omitempty"`
 
 	// Custom grouping of hotels
 	CustomLabel0 *string `json:"custom_label_0,omitempty"`
@@ -54,16 +42,28 @@ type CatalogsUpdatableHotelAttributes struct {
 	// Custom grouping of hotels
 	CustomLabel4 *string `json:"custom_label_4,omitempty"`
 
-	// The type of property. The category can be any type of internal description desired.
-	Category *string `json:"category,omitempty"`
+	// Brief description of the hotel.
+	Description *string `json:"description,omitempty"`
 
-	// Base price of the hotel room per night followed by the ISO currency code
-	BasePrice *string `json:"base_price,omitempty"`
+	GuestRatings CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
+
+	// Latitude of the hotel.
+	Latitude float32 `json:"latitude,omitempty"`
+
+	// Link to the product page
+	Link *string `json:"link,omitempty"`
+
+	// Longitude of the hotel.
+	Longitude *float32 `json:"longitude,omitempty"`
+
+	// The hotel's name.
+	Name *string `json:"name,omitempty"`
+
+	// A list of neighborhoods where the hotel is located
+	Neighborhood *[]string `json:"neighborhood,omitempty"`
 
 	// Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	SalePrice *string `json:"sale_price,omitempty"`
-
-	GuestRatings CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 }
 
 // AssertCatalogsUpdatableHotelAttributesRequired checks if the required fields are not zero-ed

@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`term` | string
 `relatedTerms` | Array&lt;string&gt;
+`term` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { RelatedTermsRelatedTermsListInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "term": clothes,
   "relatedTerms": ["shoes","cute clothes"],
+  "term": clothes,
 } satisfies RelatedTermsRelatedTermsListInner
 
 console.log(example)

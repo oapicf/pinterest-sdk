@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ages** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Ages distribution. | [optional] 
-**Genders** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Gender distribution. | [optional] 
-**Devices** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Device usage distribution. | [optional] 
-**Metros** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Geographic metro area distribution. | [optional] 
 **Countries** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Country area distribution. | [optional] 
+**Devices** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Device usage distribution. | [optional] 
+**Genders** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Gender distribution. | [optional] 
+**Metros** | Pointer to [**[]AudienceDemographicValue**](AudienceDemographicValue.md) | Geographic metro area distribution. | [optional] 
 
 ## Methods
 
@@ -54,30 +54,30 @@ SetAges sets Ages field to given value.
 
 HasAges returns a boolean if a field has been set.
 
-### GetGenders
+### GetCountries
 
-`func (o *AudienceDemographics) GetGenders() []AudienceDemographicValue`
+`func (o *AudienceDemographics) GetCountries() []AudienceDemographicValue`
 
-GetGenders returns the Genders field if non-nil, zero value otherwise.
+GetCountries returns the Countries field if non-nil, zero value otherwise.
 
-### GetGendersOk
+### GetCountriesOk
 
-`func (o *AudienceDemographics) GetGendersOk() (*[]AudienceDemographicValue, bool)`
+`func (o *AudienceDemographics) GetCountriesOk() (*[]AudienceDemographicValue, bool)`
 
-GetGendersOk returns a tuple with the Genders field if it's non-nil, zero value otherwise
+GetCountriesOk returns a tuple with the Countries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGenders
+### SetCountries
 
-`func (o *AudienceDemographics) SetGenders(v []AudienceDemographicValue)`
+`func (o *AudienceDemographics) SetCountries(v []AudienceDemographicValue)`
 
-SetGenders sets Genders field to given value.
+SetCountries sets Countries field to given value.
 
-### HasGenders
+### HasCountries
 
-`func (o *AudienceDemographics) HasGenders() bool`
+`func (o *AudienceDemographics) HasCountries() bool`
 
-HasGenders returns a boolean if a field has been set.
+HasCountries returns a boolean if a field has been set.
 
 ### GetDevices
 
@@ -104,6 +104,31 @@ SetDevices sets Devices field to given value.
 
 HasDevices returns a boolean if a field has been set.
 
+### GetGenders
+
+`func (o *AudienceDemographics) GetGenders() []AudienceDemographicValue`
+
+GetGenders returns the Genders field if non-nil, zero value otherwise.
+
+### GetGendersOk
+
+`func (o *AudienceDemographics) GetGendersOk() (*[]AudienceDemographicValue, bool)`
+
+GetGendersOk returns a tuple with the Genders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenders
+
+`func (o *AudienceDemographics) SetGenders(v []AudienceDemographicValue)`
+
+SetGenders sets Genders field to given value.
+
+### HasGenders
+
+`func (o *AudienceDemographics) HasGenders() bool`
+
+HasGenders returns a boolean if a field has been set.
+
 ### GetMetros
 
 `func (o *AudienceDemographics) GetMetros() []AudienceDemographicValue`
@@ -128,31 +153,6 @@ SetMetros sets Metros field to given value.
 `func (o *AudienceDemographics) HasMetros() bool`
 
 HasMetros returns a boolean if a field has been set.
-
-### GetCountries
-
-`func (o *AudienceDemographics) GetCountries() []AudienceDemographicValue`
-
-GetCountries returns the Countries field if non-nil, zero value otherwise.
-
-### GetCountriesOk
-
-`func (o *AudienceDemographics) GetCountriesOk() (*[]AudienceDemographicValue, bool)`
-
-GetCountriesOk returns a tuple with the Countries field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountries
-
-`func (o *AudienceDemographics) SetCountries(v []AudienceDemographicValue)`
-
-SetCountries sets Countries field to given value.
-
-### HasCountries
-
-`func (o *AudienceDemographics) HasCountries() bool`
-
-HasCountries returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

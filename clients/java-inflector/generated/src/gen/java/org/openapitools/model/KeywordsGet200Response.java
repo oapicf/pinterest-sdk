@@ -16,30 +16,13 @@ import org.openapitools.model.Keyword;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordsGet200Response   {
-  @JsonProperty("items")
-  private List<Keyword> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   **/
-  public KeywordsGet200Response items(List<Keyword> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<Keyword> getItems() {
-    return items;
-  }
-  public void setItems(List<Keyword> items) {
-    this.items = items;
-  }
+  private List<Keyword> items = new ArrayList<>();
 
   /**
    **/
@@ -58,6 +41,23 @@ public class KeywordsGet200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public KeywordsGet200Response items(List<Keyword> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<Keyword> getItems() {
+    return items;
+  }
+  public void setItems(List<Keyword> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class KeywordsGet200Response   {
       return false;
     }
     KeywordsGet200Response keywordsGet200Response = (KeywordsGet200Response) o;
-    return Objects.equals(items, keywordsGet200Response.items) &&
-        Objects.equals(bookmark, keywordsGet200Response.bookmark);
+    return Objects.equals(bookmark, keywordsGet200Response.bookmark) &&
+        Objects.equals(items, keywordsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class KeywordsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

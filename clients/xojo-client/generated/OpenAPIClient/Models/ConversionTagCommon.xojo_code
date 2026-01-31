@@ -3,14 +3,6 @@ Protected Class ConversionTagCommon
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad account ID.
-		#tag EndNote
-		ad_account_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Tag code snippet.
 		#tag EndNote
 		code_snippet As Xoson.O.OptionalString
@@ -18,6 +10,14 @@ Protected Class ConversionTagCommon
 
 
 	#tag Property, Flags = &h0
+		configs As OpenAPIClient.Models.ConversionTagConfigs
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The enhanced match status of the tag
+		#tag EndNote
 		enhanced_match_status As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -42,12 +42,7 @@ Protected Class ConversionTagCommon
 		#tag Note
 			Conversion tag name.
 		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		status As Xoson.O.OptionalString
+		name As String
 	#tag EndProperty
 
 
@@ -56,11 +51,6 @@ Protected Class ConversionTagCommon
 			Version number.
 		#tag EndNote
 		version As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		configs As OpenAPIClient.Models.ConversionTagConfigs
 	#tag EndProperty
 
 
@@ -101,7 +91,7 @@ Protected Class ConversionTagCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ad_account_id"
+			Name="code_snippet"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -109,11 +99,11 @@ Protected Class ConversionTagCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="code_snippet"
+			Name="configs"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="ConversionTagConfigs"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -149,27 +139,11 @@ Protected Class ConversionTagCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="EntityStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="version"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="configs"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ConversionTagConfigs"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

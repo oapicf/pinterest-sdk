@@ -11,7 +11,7 @@ Protected Class AudiencesApi
 		  // Invokes AudiencesApiCallbackHandler.AudiencesCreateCallback(Audience) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/audiences
-		  // - Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>.
+		  // - Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" target="_blank">creating different kinds of audiences</a>.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -134,139 +134,6 @@ Protected Class AudiencesApi
 
 
 	#tag Method, Flags = &h0
-		Sub AudiencesCreateCustom(, adAccountId As String, audienceCreateCustomRequest As OpenAPIClient.Models.AudienceCreateCustomRequest)
-		  // Operation audiences/create_custom
-		  // Create custom audience
-		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter audienceCreateCustomRequest: (body) Custom audience to create. 
-		  //
-		  // Invokes AudiencesApiCallbackHandler.AudiencesCreateCustomCallback(Audience) on completion. 
-		  //
-		  // - POST /ad_accounts/{ad_account_id}/audiences/custom
-		  // - Create a custom audience and find the audiences you want your ads to reach.
-		  // - defaultResponse: Nil
-		  //
-		  // - OAuth:
-		  //   - type: oauth2
-		  //   - name: pinterest_oauth2
-		  //
-		  
-		  Dim localVarHTTPSocket As New HTTPSecureSocket
-		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(audienceCreateCustomRequest), "application/json")
-		  
-		  
-		  
-
-
-		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/audiences/custom"
-		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
-		  
-		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof me.AudiencesCreateCustom_handler
-		  AddHandler localVarHTTPSocket.Error, addressof Me.AudiencesCreateCustom_error
-		  
-		  
-		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
-		  if localVarHTTPSocket.LastErrorCode <> 0 then
-		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
-			Raise localVarException
-		  end if
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Function AudiencesCreateCustomPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Audience) As Boolean
-		  Dim contentType As String = Headers.Value("Content-Type")
-		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
-		  Content = DefineEncoding(Content, contentEncoding)
-		  
-		  If HTTPStatus > 199 and HTTPStatus < 300 then
-		    If contentType.LeftB(16) = "application/json" then
-		      
-			  outData = New OpenAPIClient.Models.Audience
-			  Try
-		        Xoson.fromJSON(outData, Content.toText())
-
-		      Catch e As JSONException
-		        error.Message = error.Message + " with JSON parse exception: " + e.Message
-		        error.ErrorNumber = kErrorInvalidJSON
-		        Return False
-		        
-		      Catch e As Xojo.Data.InvalidJSONException
-		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
-		        error.ErrorNumber = kErrorInvalidJSON
-		        Return False
-		        
-		      Catch e As Xoson.XosonException
-		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
-		        error.ErrorNumber = kErrorXosonProblem
-		        Return False
-
-		      End Try
-		      
-		      
-		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
-		      error.Message = "Unsupported media type: " + contentType
-		      error.ErrorNumber = kErrorUnsupportedMediaType
-		      Return False
-
-		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
-		      error.Message = "Unsupported media type: " + contentType
-		      error.ErrorNumber = kErrorUnsupportedMediaType
-		      Return False
-
-		    Else
-		      error.Message = "Unsupported media type: " + contentType
-		      error.ErrorNumber = kErrorUnsupportedMediaType
-		      Return False
-
-		    End If
-		  Else
-		    error.Message = error.Message + ". " + Content
-			error.ErrorNumber = kErrorHTTPFail
-		    Return False
-		  End If
-		  
-		  Return True
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub AudiencesCreateCustom_error(sender As HTTPSecureSocket, Code As Integer)
-		  If sender <> nil Then sender.Close()
-
-		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.Audience
-		  CallbackHandler.AudiencesCreateCustomCallback(error, data)
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub AudiencesCreateCustom_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
-		  #Pragma Unused URL
-		  
-
-		  If sender <> nil Then sender.Close()
-		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
-		  
-		  Dim data As OpenAPIClient.Models.Audience
-		  Call AudiencesCreateCustomPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
-		  
-		  CallbackHandler.AudiencesCreateCustomCallback(error, data)
-		End Sub
-	#tag EndMethod
-
-
-
-
-	#tag Method, Flags = &h0
 		Sub AudiencesGet(, adAccountId As String, audienceId As String)
 		  // Operation audiences/get
 		  // Get audience
@@ -283,10 +150,14 @@ Protected Class AudiencesApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -422,6 +293,9 @@ Protected Class AudiencesApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -437,6 +311,7 @@ Protected Class AudiencesApi
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ownership_type") + "=" + EncodeURLComponent(Ownership_typeEnum_AudiencesListToString(ownershipType))
 		  
 
+		  
 		  
 		  
 
@@ -574,13 +449,13 @@ Protected Class AudiencesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AudiencesUpdate(, adAccountId As String, audienceId As String, Optional audienceUpdateRequest As OpenAPIClient.Models.AudienceUpdateRequest)
+		Sub AudiencesUpdate(, adAccountId As String, audienceId As String, audienceUpdateRequest As OpenAPIClient.Models.AudienceUpdateRequest)
 		  // Operation audiences/update
 		  // Update audience
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter audienceId: (path) Unique identifier of an audience 
-		  // - parameter audienceUpdateRequest: (body) The audience to be updated. (optional)
+		  // - parameter audienceUpdateRequest: (body) The audience to be updated. 
 		  //
 		  // Invokes AudiencesApiCallbackHandler.AudiencesUpdateCallback(Audience) on completion. 
 		  //

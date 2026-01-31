@@ -1,9 +1,9 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Error;
-import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.SearchPartnerPins200Response;
 import org.openapitools.model.SearchUserBoardsGet200Response;
+import org.openapitools.model.SearchUserPinsList200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -29,7 +29,7 @@ public class SearchApiTest {
     /**
      * Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
      */
     @Test
     @Disabled("Not Implemented")
@@ -85,7 +85,7 @@ public class SearchApiTest {
         String bookmark = "example";
 
         // when
-        PinsList200Response body = api.searchUserPinsList(query, adAccountId, bookmark).block();
+        SearchUserPinsList200Response body = api.searchUserPinsList(query, adAccountId, bookmark).block();
 
         // then
         // TODO implement the searchUserPinsListTest()

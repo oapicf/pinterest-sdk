@@ -7,50 +7,44 @@
 #' @title UserWebsiteVerificationCode
 #' @description UserWebsiteVerificationCode Class
 #' @format An \code{R6Class} generator object
-#' @field verification_code Code to check against the user claiming the website character [optional]
 #' @field dns_txt_record DNS TXT record to check against for the website to be claimed character [optional]
-#' @field metatag Metatag the verification process searchs for the website to be claimed character [optional]
-#' @field filename File expected to find on the website being claimed character [optional]
 #' @field file_content A full html file to upload to the website in order for it to be claimed character [optional]
+#' @field filename File expected to find on the website being claimed character [optional]
+#' @field metatag Metatag the verification process searchs for the website to be claimed character [optional]
+#' @field verification_code Code to check against the user claiming the website character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UserWebsiteVerificationCode <- R6::R6Class(
   "UserWebsiteVerificationCode",
   public = list(
-    `verification_code` = NULL,
     `dns_txt_record` = NULL,
-    `metatag` = NULL,
-    `filename` = NULL,
     `file_content` = NULL,
+    `filename` = NULL,
+    `metatag` = NULL,
+    `verification_code` = NULL,
 
     #' @description
     #' Initialize a new UserWebsiteVerificationCode class.
     #'
-    #' @param verification_code Code to check against the user claiming the website
     #' @param dns_txt_record DNS TXT record to check against for the website to be claimed
-    #' @param metatag Metatag the verification process searchs for the website to be claimed
-    #' @param filename File expected to find on the website being claimed
     #' @param file_content A full html file to upload to the website in order for it to be claimed
+    #' @param filename File expected to find on the website being claimed
+    #' @param metatag Metatag the verification process searchs for the website to be claimed
+    #' @param verification_code Code to check against the user claiming the website
     #' @param ... Other optional arguments.
-    initialize = function(`verification_code` = NULL, `dns_txt_record` = NULL, `metatag` = NULL, `filename` = NULL, `file_content` = NULL, ...) {
-      if (!is.null(`verification_code`)) {
-        if (!(is.character(`verification_code`) && length(`verification_code`) == 1)) {
-          stop(paste("Error! Invalid data for `verification_code`. Must be a string:", `verification_code`))
-        }
-        self$`verification_code` <- `verification_code`
-      }
+    initialize = function(`dns_txt_record` = NULL, `file_content` = NULL, `filename` = NULL, `metatag` = NULL, `verification_code` = NULL, ...) {
       if (!is.null(`dns_txt_record`)) {
         if (!(is.character(`dns_txt_record`) && length(`dns_txt_record`) == 1)) {
           stop(paste("Error! Invalid data for `dns_txt_record`. Must be a string:", `dns_txt_record`))
         }
         self$`dns_txt_record` <- `dns_txt_record`
       }
-      if (!is.null(`metatag`)) {
-        if (!(is.character(`metatag`) && length(`metatag`) == 1)) {
-          stop(paste("Error! Invalid data for `metatag`. Must be a string:", `metatag`))
+      if (!is.null(`file_content`)) {
+        if (!(is.character(`file_content`) && length(`file_content`) == 1)) {
+          stop(paste("Error! Invalid data for `file_content`. Must be a string:", `file_content`))
         }
-        self$`metatag` <- `metatag`
+        self$`file_content` <- `file_content`
       }
       if (!is.null(`filename`)) {
         if (!(is.character(`filename`) && length(`filename`) == 1)) {
@@ -58,11 +52,17 @@ UserWebsiteVerificationCode <- R6::R6Class(
         }
         self$`filename` <- `filename`
       }
-      if (!is.null(`file_content`)) {
-        if (!(is.character(`file_content`) && length(`file_content`) == 1)) {
-          stop(paste("Error! Invalid data for `file_content`. Must be a string:", `file_content`))
+      if (!is.null(`metatag`)) {
+        if (!(is.character(`metatag`) && length(`metatag`) == 1)) {
+          stop(paste("Error! Invalid data for `metatag`. Must be a string:", `metatag`))
         }
-        self$`file_content` <- `file_content`
+        self$`metatag` <- `metatag`
+      }
+      if (!is.null(`verification_code`)) {
+        if (!(is.character(`verification_code`) && length(`verification_code`) == 1)) {
+          stop(paste("Error! Invalid data for `verification_code`. Must be a string:", `verification_code`))
+        }
+        self$`verification_code` <- `verification_code`
       }
     },
 
@@ -97,25 +97,25 @@ UserWebsiteVerificationCode <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       UserWebsiteVerificationCodeObject <- list()
-      if (!is.null(self$`verification_code`)) {
-        UserWebsiteVerificationCodeObject[["verification_code"]] <-
-          self$`verification_code`
-      }
       if (!is.null(self$`dns_txt_record`)) {
         UserWebsiteVerificationCodeObject[["dns_txt_record"]] <-
           self$`dns_txt_record`
       }
-      if (!is.null(self$`metatag`)) {
-        UserWebsiteVerificationCodeObject[["metatag"]] <-
-          self$`metatag`
+      if (!is.null(self$`file_content`)) {
+        UserWebsiteVerificationCodeObject[["file_content"]] <-
+          self$`file_content`
       }
       if (!is.null(self$`filename`)) {
         UserWebsiteVerificationCodeObject[["filename"]] <-
           self$`filename`
       }
-      if (!is.null(self$`file_content`)) {
-        UserWebsiteVerificationCodeObject[["file_content"]] <-
-          self$`file_content`
+      if (!is.null(self$`metatag`)) {
+        UserWebsiteVerificationCodeObject[["metatag"]] <-
+          self$`metatag`
+      }
+      if (!is.null(self$`verification_code`)) {
+        UserWebsiteVerificationCodeObject[["verification_code"]] <-
+          self$`verification_code`
       }
       return(UserWebsiteVerificationCodeObject)
     },
@@ -127,20 +127,20 @@ UserWebsiteVerificationCode <- R6::R6Class(
     #' @return the instance of UserWebsiteVerificationCode
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`verification_code`)) {
-        self$`verification_code` <- this_object$`verification_code`
-      }
       if (!is.null(this_object$`dns_txt_record`)) {
         self$`dns_txt_record` <- this_object$`dns_txt_record`
       }
-      if (!is.null(this_object$`metatag`)) {
-        self$`metatag` <- this_object$`metatag`
+      if (!is.null(this_object$`file_content`)) {
+        self$`file_content` <- this_object$`file_content`
       }
       if (!is.null(this_object$`filename`)) {
         self$`filename` <- this_object$`filename`
       }
-      if (!is.null(this_object$`file_content`)) {
-        self$`file_content` <- this_object$`file_content`
+      if (!is.null(this_object$`metatag`)) {
+        self$`metatag` <- this_object$`metatag`
+      }
+      if (!is.null(this_object$`verification_code`)) {
+        self$`verification_code` <- this_object$`verification_code`
       }
       self
     },
@@ -163,11 +163,11 @@ UserWebsiteVerificationCode <- R6::R6Class(
     #' @return the instance of UserWebsiteVerificationCode
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`verification_code` <- this_object$`verification_code`
       self$`dns_txt_record` <- this_object$`dns_txt_record`
-      self$`metatag` <- this_object$`metatag`
-      self$`filename` <- this_object$`filename`
       self$`file_content` <- this_object$`file_content`
+      self$`filename` <- this_object$`filename`
+      self$`metatag` <- this_object$`metatag`
+      self$`verification_code` <- this_object$`verification_code`
       self
     },
 

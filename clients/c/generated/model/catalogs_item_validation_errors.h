@@ -30,8 +30,8 @@ typedef struct catalogs_item_validation_errors_t {
     struct catalogs_item_validation_details_t *image_link_length_too_long; //model
     struct catalogs_item_validation_details_t *image_link_missing; //model
     struct catalogs_item_validation_details_t *invalid_domain; //model
-    struct catalogs_item_validation_details_t *itemid_missing; //model
     struct catalogs_item_validation_details_t *item_main_image_download_failure; //model
+    struct catalogs_item_validation_details_t *itemid_missing; //model
     struct catalogs_item_validation_details_t *link_format_invalid; //model
     struct catalogs_item_validation_details_t *link_length_too_long; //model
     struct catalogs_item_validation_details_t *list_price_invalid; //model
@@ -58,8 +58,8 @@ __attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_val
     catalogs_item_validation_details_t *image_link_length_too_long,
     catalogs_item_validation_details_t *image_link_missing,
     catalogs_item_validation_details_t *invalid_domain,
-    catalogs_item_validation_details_t *itemid_missing,
     catalogs_item_validation_details_t *item_main_image_download_failure,
+    catalogs_item_validation_details_t *itemid_missing,
     catalogs_item_validation_details_t *link_format_invalid,
     catalogs_item_validation_details_t *link_length_too_long,
     catalogs_item_validation_details_t *list_price_invalid,

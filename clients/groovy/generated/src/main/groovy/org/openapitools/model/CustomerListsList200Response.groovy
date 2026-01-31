@@ -11,7 +11,7 @@ import org.openapitools.model.CustomerList;
 @Canonical
 class CustomerListsList200Response {
     
-    List<CustomerList> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CustomerList> items = new ArrayList<>()
 }

@@ -57,13 +57,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(CatalogsType  catalog_type);
-	/*! \brief Get 
-	 */
-	std::list<std::string> getItemIds();
-
-	/*! \brief Set 
-	 */
-	void setItemIds(std::list <std::string> item_ids);
 	/*! \brief Get Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	std::string getCatalogId();
@@ -71,6 +64,13 @@ public:
 	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	std::list<std::string> getItemIds();
+
+	/*! \brief Set 
+	 */
+	void setItemIds(std::list <std::string> item_ids);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getHotelIds();
@@ -88,8 +88,8 @@ public:
 
 private:
 	CatalogsType catalog_type;
-	std::list <std::string>item_ids;
 	std::string catalog_id;
+	std::list <std::string>item_ids;
 	std::list <std::string>hotel_ids;
 	std::list <std::string>creative_assets_ids;
 	void __init();

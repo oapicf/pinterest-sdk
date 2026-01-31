@@ -5,13 +5,13 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}organic_pin_id`,
-                label: `[${labelPrefix}organic_pin_id]`,
+                key: `${keyPrefix}android_deep_link`,
+                label: `[${labelPrefix}android_deep_link]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}android_deep_link`,
-                label: `[${labelPrefix}android_deep_link]`,
+                key: `${keyPrefix}destination_url`,
+                label: `[${labelPrefix}destination_url]`,
                 type: 'string',
             },
             {
@@ -20,8 +20,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}destination_url`,
-                label: `[${labelPrefix}destination_url]`,
+                key: `${keyPrefix}organic_pin_id`,
+                label: `[${labelPrefix}organic_pin_id]`,
                 type: 'string',
             },
             {
@@ -34,10 +34,10 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'organic_pin_id': bundle.inputData?.[`${keyPrefix}organic_pin_id`],
             'android_deep_link': bundle.inputData?.[`${keyPrefix}android_deep_link`],
-            'ios_deep_link': bundle.inputData?.[`${keyPrefix}ios_deep_link`],
             'destination_url': bundle.inputData?.[`${keyPrefix}destination_url`],
+            'ios_deep_link': bundle.inputData?.[`${keyPrefix}ios_deep_link`],
+            'organic_pin_id': bundle.inputData?.[`${keyPrefix}organic_pin_id`],
             'result_id': bundle.inputData?.[`${keyPrefix}result_id`],
         }
     },

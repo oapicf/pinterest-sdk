@@ -3,106 +3,41 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.BoardOwner;
-import org.openapitools.vertxweb.server.model.PinMedia;
 import org.openapitools.vertxweb.server.model.PinMediaSource;
 
 /**
- * Pin
+ * Resource create operation model.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinCreate   {
   
-  private String id;
-  private OffsetDateTime createdAt;
-  private String link;
-  private String title;
-  private String description;
-  private String dominantColor;
   private String altText;
   private String boardId;
   private String boardSectionId;
-  private BoardOwner boardOwner;
-  private PinMedia media;
+  private String description;
+  private String dominantColor;
+  private String link;
   private PinMediaSource mediaSource;
   private String parentPinId;
-  private String note;
+  private String sponsorId;
+  private String title;
 
   public PinCreate () {
 
   }
 
-  public PinCreate (String id, OffsetDateTime createdAt, String link, String title, String description, String dominantColor, String altText, String boardId, String boardSectionId, BoardOwner boardOwner, PinMedia media, PinMediaSource mediaSource, String parentPinId, String note) {
-    this.id = id;
-    this.createdAt = createdAt;
-    this.link = link;
-    this.title = title;
-    this.description = description;
-    this.dominantColor = dominantColor;
+  public PinCreate (String altText, String boardId, String boardSectionId, String description, String dominantColor, String link, PinMediaSource mediaSource, String parentPinId, String sponsorId, String title) {
     this.altText = altText;
     this.boardId = boardId;
     this.boardSectionId = boardSectionId;
-    this.boardOwner = boardOwner;
-    this.media = media;
+    this.description = description;
+    this.dominantColor = dominantColor;
+    this.link = link;
     this.mediaSource = mediaSource;
     this.parentPinId = parentPinId;
-    this.note = note;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-    
-  @JsonProperty("created_at")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-    
-  @JsonProperty("link")
-  public String getLink() {
-    return link;
-  }
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-    
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
+    this.sponsorId = sponsorId;
     this.title = title;
-  }
-
-    
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-    
-  @JsonProperty("dominant_color")
-  public String getDominantColor() {
-    return dominantColor;
-  }
-  public void setDominantColor(String dominantColor) {
-    this.dominantColor = dominantColor;
   }
 
     
@@ -133,21 +68,30 @@ public class PinCreate   {
   }
 
     
-  @JsonProperty("board_owner")
-  public BoardOwner getBoardOwner() {
-    return boardOwner;
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
   }
-  public void setBoardOwner(BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
     
-  @JsonProperty("media")
-  public PinMedia getMedia() {
-    return media;
+  @JsonProperty("dominant_color")
+  public String getDominantColor() {
+    return dominantColor;
   }
-  public void setMedia(PinMedia media) {
-    this.media = media;
+  public void setDominantColor(String dominantColor) {
+    this.dominantColor = dominantColor;
+  }
+
+    
+  @JsonProperty("link")
+  public String getLink() {
+    return link;
+  }
+  public void setLink(String link) {
+    this.link = link;
   }
 
     
@@ -169,12 +113,21 @@ public class PinCreate   {
   }
 
     
-  @JsonProperty("note")
-  public String getNote() {
-    return note;
+  @JsonProperty("sponsor_id")
+  public String getSponsorId() {
+    return sponsorId;
   }
-  public void setNote(String note) {
-    this.note = note;
+  public void setSponsorId(String sponsorId) {
+    this.sponsorId = sponsorId;
+  }
+
+    
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -187,25 +140,21 @@ public class PinCreate   {
       return false;
     }
     PinCreate pinCreate = (PinCreate) o;
-    return Objects.equals(id, pinCreate.id) &&
-        Objects.equals(createdAt, pinCreate.createdAt) &&
-        Objects.equals(link, pinCreate.link) &&
-        Objects.equals(title, pinCreate.title) &&
-        Objects.equals(description, pinCreate.description) &&
-        Objects.equals(dominantColor, pinCreate.dominantColor) &&
-        Objects.equals(altText, pinCreate.altText) &&
+    return Objects.equals(altText, pinCreate.altText) &&
         Objects.equals(boardId, pinCreate.boardId) &&
         Objects.equals(boardSectionId, pinCreate.boardSectionId) &&
-        Objects.equals(boardOwner, pinCreate.boardOwner) &&
-        Objects.equals(media, pinCreate.media) &&
+        Objects.equals(description, pinCreate.description) &&
+        Objects.equals(dominantColor, pinCreate.dominantColor) &&
+        Objects.equals(link, pinCreate.link) &&
         Objects.equals(mediaSource, pinCreate.mediaSource) &&
         Objects.equals(parentPinId, pinCreate.parentPinId) &&
-        Objects.equals(note, pinCreate.note);
+        Objects.equals(sponsorId, pinCreate.sponsorId) &&
+        Objects.equals(title, pinCreate.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, link, title, description, dominantColor, altText, boardId, boardSectionId, boardOwner, media, mediaSource, parentPinId, note);
+    return Objects.hash(altText, boardId, boardSectionId, description, dominantColor, link, mediaSource, parentPinId, sponsorId, title);
   }
 
   @Override
@@ -213,20 +162,16 @@ public class PinCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinCreate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
-    sb.append("    boardOwner: ").append(toIndentedString(boardOwner)).append("\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    mediaSource: ").append(toIndentedString(mediaSource)).append("\n");
     sb.append("    parentPinId: ").append(toIndentedString(parentPinId)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    sponsorId: ").append(toIndentedString(sponsorId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

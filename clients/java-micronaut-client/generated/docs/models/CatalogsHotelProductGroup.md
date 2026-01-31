@@ -8,14 +8,16 @@ The class is defined in **[CatalogsHotelProductGroup.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the hotel product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
-**id** | `String` | ID of the hotel product group. | 
-**name** | `String` | Name of hotel product group |  [optional property]
+**createdAt** | `Integer` | Unix timestamp in seconds of when catalog product group was created. |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsHotelProductGroupFilters`](CatalogsHotelProductGroupFilters.md) |  | 
-**createdAt** | `Integer` | Unix timestamp in seconds of when catalog product group was created. |  [optional property]
+**id** | `String` | ID of the hotel product group. | 
+**name** | `String` | Name of hotel product group |  [optional property]
+**type** | `CatalogsHotelProductGroupType` |  | 
 **updatedAt** | `Integer` | Unix timestamp in seconds of last time catalog product group was updated. |  [optional property]
-**catalogId** | `String` | Catalog id pertaining to the hotel product group. | 
+
 
 ## CatalogTypeEnum
 

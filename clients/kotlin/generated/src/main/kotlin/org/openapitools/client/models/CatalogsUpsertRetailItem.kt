@@ -23,23 +23,23 @@ import com.squareup.moshi.JsonClass
 /**
  * An item to be upserted
  *
+ * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
 
 
 data class CatalogsUpsertRetailItem (
+
+    @Json(name = "attributes")
+    val attributes: ItemAttributesRequest,
 
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
     val itemId: kotlin.String,
 
     @Json(name = "operation")
-    val operation: CatalogsUpsertRetailItem.Operation,
-
-    @Json(name = "attributes")
-    val attributes: ItemAttributesRequest
+    val operation: CatalogsUpsertRetailItem.Operation
 
 ) {
 

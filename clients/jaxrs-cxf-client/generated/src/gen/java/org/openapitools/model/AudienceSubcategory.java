@@ -10,6 +10,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AudienceSubcategory  {
   
  /**
+  * Subinterest ID.
+  */
+  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+
+  private String id;
+
+ /**
+  * Subinterest affinity index.
+  */
+  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+
+  private BigDecimal index;
+
+ /**
   * Interest unique key (same as ID).
   */
   @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
@@ -29,20 +43,42 @@ public class AudienceSubcategory  {
   @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
 
   private BigDecimal ratio;
+ /**
+   * Subinterest ID.
+   * @return id
+  **/
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AudienceSubcategory id(String id) {
+    this.id = id;
+    return this;
+  }
 
  /**
-  * Subinterest affinity index.
-  */
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+   * Subinterest affinity index.
+   * @return index
+  **/
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
 
-  private BigDecimal index;
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
 
- /**
-  * Subinterest ID.
-  */
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  public AudienceSubcategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
 
-  private String id;
  /**
    * Interest unique key (same as ID).
    * @return key
@@ -97,42 +133,6 @@ public class AudienceSubcategory  {
     return this;
   }
 
- /**
-   * Subinterest affinity index.
-   * @return index
-  **/
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceSubcategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
- /**
-   * Subinterest ID.
-   * @return id
-  **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AudienceSubcategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -142,16 +142,16 @@ public class AudienceSubcategory  {
       return false;
     }
     AudienceSubcategory audienceSubcategory = (AudienceSubcategory) o;
-    return Objects.equals(this.key, audienceSubcategory.key) &&
-        Objects.equals(this.name, audienceSubcategory.name) &&
-        Objects.equals(this.ratio, audienceSubcategory.ratio) &&
+    return Objects.equals(this.id, audienceSubcategory.id) &&
         Objects.equals(this.index, audienceSubcategory.index) &&
-        Objects.equals(this.id, audienceSubcategory.id);
+        Objects.equals(this.key, audienceSubcategory.key) &&
+        Objects.equals(this.name, audienceSubcategory.name) &&
+        Objects.equals(this.ratio, audienceSubcategory.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -159,11 +159,11 @@ public class AudienceSubcategory  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSubcategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

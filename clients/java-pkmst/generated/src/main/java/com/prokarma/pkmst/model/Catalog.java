@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
  */
 @ApiModel(description = "Catalog entity")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Catalog   {
   @JsonProperty("created_at")
   private OffsetDateTime createdAt;
@@ -29,11 +29,11 @@ public class Catalog   {
   @JsonProperty("updated_at")
   private OffsetDateTime updatedAt;
 
-  @JsonProperty("name")
-  private String name;
-
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
+
+  @JsonProperty("name")
+  private String name;
 
   public Catalog createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
@@ -89,24 +89,6 @@ public class Catalog   {
     this.updatedAt = updatedAt;
   }
 
-  public Catalog name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * A human-friendly name associated to a catalog entity.
-   * @return name
-   */
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public Catalog catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
@@ -125,6 +107,24 @@ public class Catalog   {
     this.catalogType = catalogType;
   }
 
+  public Catalog name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * A human-friendly name associated to a catalog entity.
+   * @return name
+   */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -138,13 +138,13 @@ public class Catalog   {
     return Objects.equals(this.createdAt, catalog.createdAt) &&
         Objects.equals(this.id, catalog.id) &&
         Objects.equals(this.updatedAt, catalog.updatedAt) &&
-        Objects.equals(this.name, catalog.name) &&
-        Objects.equals(this.catalogType, catalog.catalogType);
+        Objects.equals(this.catalogType, catalog.catalogType) &&
+        Objects.equals(this.name, catalog.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, catalogType);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
   }
 
   @Override
@@ -155,8 +155,8 @@ public class Catalog   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

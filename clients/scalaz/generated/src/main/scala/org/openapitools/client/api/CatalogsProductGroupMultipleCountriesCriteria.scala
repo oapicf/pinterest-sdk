@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import CatalogsProductGroupMultipleCountriesCriteria._
 
 case class CatalogsProductGroupMultipleCountriesCriteria (
-  values: List[Country],
-negated: Option[Boolean])
+  negated: Option[Boolean],
+values: List[Country])
 
 object CatalogsProductGroupMultipleCountriesCriteria {
   import DateTimeCodecs._

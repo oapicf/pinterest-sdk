@@ -11,12 +11,12 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...ItemAttributesRequest.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}item_id`,
                 label: `The catalog item id in the merchant namespace - [${labelPrefix}item_id]`,
                 type: 'string',
             },
-            ...ItemAttributesRequest.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}update_mask`,
                 list: true,
@@ -28,8 +28,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'attributes': utils.removeIfEmpty(ItemAttributesRequest.mapping(bundle, `${keyPrefix}attributes`)),
+            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'update_mask': utils.childMapping(bundle.inputData?.[`${keyPrefix}update_mask`], `${keyPrefix}update_mask`, UpdateMaskFieldType),
         }
     },

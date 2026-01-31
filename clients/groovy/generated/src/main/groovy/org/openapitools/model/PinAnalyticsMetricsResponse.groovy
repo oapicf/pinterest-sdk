@@ -11,10 +11,10 @@ import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
 
 @Canonical
 class PinAnalyticsMetricsResponse {
-    /* The lifetime metric name and value. */
-    Map<String, Integer> lifetimeMetrics = new HashMap<>()
     /* Array with the requested daily metric records */
     List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>()
+    /* The lifetime metric name and value. */
+    Map<String, Integer> lifetimeMetrics = new HashMap<>()
     /* The metric name and value over the requested period for each requested metric */
     Map<String, BigDecimal> summaryMetrics = new HashMap<>()
 }

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"link": @"link", @"_description": @"description", @"brand": @"brand", @"latitude": @"latitude", @"longitude": @"longitude", @"neighborhood": @"neighborhood", @"address": @"address", @"customLabel0": @"custom_label_0", @"customLabel1": @"custom_label_1", @"customLabel2": @"custom_label_2", @"customLabel3": @"custom_label_3", @"customLabel4": @"custom_label_4", @"category": @"category", @"basePrice": @"base_price", @"salePrice": @"sale_price", @"guestRatings": @"guest_ratings" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"address": @"address", @"basePrice": @"base_price", @"brand": @"brand", @"category": @"category", @"customLabel0": @"custom_label_0", @"customLabel1": @"custom_label_1", @"customLabel2": @"custom_label_2", @"customLabel3": @"custom_label_3", @"customLabel4": @"custom_label_4", @"_description": @"description", @"guestRatings": @"guest_ratings", @"latitude": @"latitude", @"link": @"link", @"longitude": @"longitude", @"name": @"name", @"neighborhood": @"neighborhood", @"salePrice": @"sale_price" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"link", @"_description", @"brand", @"latitude", @"longitude", @"neighborhood", @"address", @"customLabel0", @"customLabel1", @"customLabel2", @"customLabel3", @"customLabel4", @"category", @"basePrice", @"salePrice", @"guestRatings"];
+  NSArray *optionalProperties = @[@"address", @"basePrice", @"brand", @"category", @"customLabel0", @"customLabel1", @"customLabel2", @"customLabel3", @"customLabel4", @"_description", @"guestRatings", @"latitude", @"link", @"longitude", @"name", @"neighborhood", @"salePrice"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -45,7 +45,7 @@ ResourcesAPI_interestTargetingOptionsGet(apiClient_t *apiClient, char *interest_
 
 // Get lead form questions
 //
-// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 void
 ResourcesAPI_leadFormQuestionsGet(apiClient_t *apiClient);

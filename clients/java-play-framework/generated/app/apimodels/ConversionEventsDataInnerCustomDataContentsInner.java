@@ -10,12 +10,24 @@ import javax.validation.Valid;
 /**
  * ConversionEventsDataInnerCustomDataContentsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionEventsDataInnerCustomDataContentsInner   {
   @JsonProperty("id")
   
   private String id;
+
+  @JsonProperty("item_brand")
+  
+  private String itemBrand;
+
+  @JsonProperty("item_category")
+  
+  private String itemCategory;
+
+  @JsonProperty("item_name")
+  
+  private String itemName;
 
   @JsonProperty("item_price")
   
@@ -24,18 +36,6 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   @JsonProperty("quantity")
   
   private Long quantity;
-
-  @JsonProperty("item_name")
-  
-  private String itemName;
-
-  @JsonProperty("item_category")
-  
-  private String itemCategory;
-
-  @JsonProperty("item_brand")
-  
-  private String itemBrand;
 
   public ConversionEventsDataInnerCustomDataContentsInner id(String id) {
     this.id = id;
@@ -52,6 +52,57 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(String itemBrand) {
+    this.itemBrand = itemBrand;
+    return this;
+  }
+
+   /**
+   * The brand of a product.
+   * @return itemBrand
+  **/
+  public String getItemBrand() {
+    return itemBrand;
+  }
+
+  public void setItemBrand(String itemBrand) {
+    this.itemBrand = itemBrand;
+  }
+
+  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(String itemCategory) {
+    this.itemCategory = itemCategory;
+    return this;
+  }
+
+   /**
+   * The category of a product.
+   * @return itemCategory
+  **/
+  public String getItemCategory() {
+    return itemCategory;
+  }
+
+  public void setItemCategory(String itemCategory) {
+    this.itemCategory = itemCategory;
+  }
+
+  public ConversionEventsDataInnerCustomDataContentsInner itemName(String itemName) {
+    this.itemName = itemName;
+    return this;
+  }
+
+   /**
+   * The name of a product.
+   * @return itemName
+  **/
+  public String getItemName() {
+    return itemName;
+  }
+
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
   }
 
   public ConversionEventsDataInnerCustomDataContentsInner itemPrice(String itemPrice) {
@@ -88,57 +139,6 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     this.quantity = quantity;
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemName(String itemName) {
-    this.itemName = itemName;
-    return this;
-  }
-
-   /**
-   * The name of a product.
-   * @return itemName
-  **/
-  public String getItemName() {
-    return itemName;
-  }
-
-  public void setItemName(String itemName) {
-    this.itemName = itemName;
-  }
-
-  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(String itemCategory) {
-    this.itemCategory = itemCategory;
-    return this;
-  }
-
-   /**
-   * The category of a product.
-   * @return itemCategory
-  **/
-  public String getItemCategory() {
-    return itemCategory;
-  }
-
-  public void setItemCategory(String itemCategory) {
-    this.itemCategory = itemCategory;
-  }
-
-  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(String itemBrand) {
-    this.itemBrand = itemBrand;
-    return this;
-  }
-
-   /**
-   * The brand of a product.
-   * @return itemBrand
-  **/
-  public String getItemBrand() {
-    return itemBrand;
-  }
-
-  public void setItemBrand(String itemBrand) {
-    this.itemBrand = itemBrand;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -150,16 +150,16 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     }
     ConversionEventsDataInnerCustomDataContentsInner conversionEventsDataInnerCustomDataContentsInner = (ConversionEventsDataInnerCustomDataContentsInner) o;
     return Objects.equals(id, conversionEventsDataInnerCustomDataContentsInner.id) &&
-        Objects.equals(itemPrice, conversionEventsDataInnerCustomDataContentsInner.itemPrice) &&
-        Objects.equals(quantity, conversionEventsDataInnerCustomDataContentsInner.quantity) &&
-        Objects.equals(itemName, conversionEventsDataInnerCustomDataContentsInner.itemName) &&
+        Objects.equals(itemBrand, conversionEventsDataInnerCustomDataContentsInner.itemBrand) &&
         Objects.equals(itemCategory, conversionEventsDataInnerCustomDataContentsInner.itemCategory) &&
-        Objects.equals(itemBrand, conversionEventsDataInnerCustomDataContentsInner.itemBrand);
+        Objects.equals(itemName, conversionEventsDataInnerCustomDataContentsInner.itemName) &&
+        Objects.equals(itemPrice, conversionEventsDataInnerCustomDataContentsInner.itemPrice) &&
+        Objects.equals(quantity, conversionEventsDataInnerCustomDataContentsInner.quantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, itemPrice, quantity, itemName, itemCategory, itemBrand);
+    return Objects.hash(id, itemBrand, itemCategory, itemName, itemPrice, quantity);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -169,11 +169,11 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     sb.append("class ConversionEventsDataInnerCustomDataContentsInner {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
+    sb.append("    itemCategory: ").append(toIndentedString(itemCategory)).append("\n");
+    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    itemPrice: ").append(toIndentedString(itemPrice)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
-    sb.append("    itemCategory: ").append(toIndentedString(itemCategory)).append("\n");
-    sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
     sb.append("}");
     return sb.toString();
   }

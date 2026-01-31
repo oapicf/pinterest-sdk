@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct TopPinsAnalyticsResponseDateAvailability: Codable, JSONEncodable, Hashable {
 
-    public var latestAvailableTimestamp: Double?
     public var isRealtime: Bool?
+    public var latestAvailableTimestamp: Double?
 
-    public init(latestAvailableTimestamp: Double? = nil, isRealtime: Bool? = nil) {
-        self.latestAvailableTimestamp = latestAvailableTimestamp
+    public init(isRealtime: Bool? = nil, latestAvailableTimestamp: Double? = nil) {
         self.isRealtime = isRealtime
+        self.latestAvailableTimestamp = latestAvailableTimestamp
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case latestAvailableTimestamp = "latest_available_timestamp"
         case isRealtime = "is_realtime"
+        case latestAvailableTimestamp = "latest_available_timestamp"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(latestAvailableTimestamp, forKey: .latestAvailableTimestamp)
         try container.encodeIfPresent(isRealtime, forKey: .isRealtime)
+        try container.encodeIfPresent(latestAvailableTimestamp, forKey: .latestAvailableTimestamp)
     }
 }
 

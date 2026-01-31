@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,31 +17,29 @@ package openapi
 // CatalogsVerticalProductGroupCreateRequest - Request object for creating a catalog based product group.
 type CatalogsVerticalProductGroupCreateRequest struct {
 
+	// Catalog id pertaining to the creative assets product group.
+	CatalogId string `json:"catalog_id"`
+
 	CatalogType string `json:"catalog_type"`
 
-	Name string `json:"name"`
+	Country Country `json:"country,omitempty"`
 
 	Description *string `json:"description,omitempty"`
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
-	// Catalog id pertaining to the creative assets product group.
-	CatalogId string `json:"catalog_id"`
+	Locale CatalogsLocale `json:"locale,omitempty"`
 
-	Country Country `json:"country"`
-
-	Locale CatalogsLocale `json:"locale"`
+	Name string `json:"name"`
 }
 
 // AssertCatalogsVerticalProductGroupCreateRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsVerticalProductGroupCreateRequestRequired(obj CatalogsVerticalProductGroupCreateRequest) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"name": obj.Name,
-		"filters": obj.Filters,
 		"catalog_id": obj.CatalogId,
-		"country": obj.Country,
-		"locale": obj.Locale,
+		"catalog_type": obj.CatalogType,
+		"filters": obj.Filters,
+		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

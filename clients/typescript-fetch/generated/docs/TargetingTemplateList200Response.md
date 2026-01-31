@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;TargetingTemplateResponseData&gt;](TargetingTemplateResponseData.md)
 `bookmark` | string
+`items` | [Array&lt;TargetingTemplateGetResponseData&gt;](TargetingTemplateGetResponseData.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { TargetingTemplateList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies TargetingTemplateList200Response
 
 console.log(example)

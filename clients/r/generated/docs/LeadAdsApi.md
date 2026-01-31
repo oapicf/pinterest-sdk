@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdAccountsSubscriptionsDelById**](LeadAdsApi.md#AdAccountsSubscriptionsDelById) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription
-[**AdAccountsSubscriptionsGetById**](LeadAdsApi.md#AdAccountsSubscriptionsGetById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription
+[**AdAccountsSubscriptionsGetById**](LeadAdsApi.md#AdAccountsSubscriptionsGetById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID
 [**AdAccountsSubscriptionsGetList**](LeadAdsApi.md#AdAccountsSubscriptionsGetList) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions
 [**AdAccountsSubscriptionsPost**](LeadAdsApi.md#AdAccountsSubscriptionsPost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Delete lead ads subscription
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
 ### Example
 ```R
@@ -56,24 +56,26 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Subscription deleted successfully |  -  |
-| **400** | Invalid input parameters. |  -  |
-| **403** | You are not authorized to delete this subscription. |  -  |
-| **404** | Subscription not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdAccountsSubscriptionsGetById**
-> AdAccountGetSubscriptionResponse AdAccountsSubscriptionsGetById(ad_account_id, subscription_id)
+> LeadSubscription AdAccountsSubscriptionsGetById(ad_account_id, subscription_id)
 
-Get lead ads subscription
+Get lead ads subscription by ID
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
 ### Example
 ```R
 library(openapi)
 
-# Get lead ads subscription
+# Get lead ads subscription by ID
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
@@ -82,6 +84,8 @@ var_subscription_id <- "subscription_id_example" # character | Unique identifier
 api_instance <- LeadAdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$AdAccountsSubscriptionsGetById(var_ad_account_id, var_subscription_iddata_file = "result.txt")
 result <- api_instance$AdAccountsSubscriptionsGetById(var_ad_account_id, var_subscription_id)
@@ -97,11 +101,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AdAccountGetSubscriptionResponse**](AdAccountGetSubscriptionResponse.md)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -111,18 +115,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid input parameters. |  -  |
-| **403** | Can&#39;t access this subscription. |  -  |
-| **404** | Subscription not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdAccountsSubscriptionsGetList**
-> AdAccountsSubscriptionsGetList200Response AdAccountsSubscriptionsGetList(ad_account_id, page_size = 25, bookmark = var.bookmark)
+> AdAccountsSubscriptionsGetList200Response AdAccountsSubscriptionsGetList(ad_account_id, bookmark = var.bookmark, page_size = 25)
 
 Get lead ads subscriptions
 
-Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
 ### Example
 ```R
@@ -132,15 +138,15 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- LeadAdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdAccountsSubscriptionsGetList(var_ad_account_id, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$AdAccountsSubscriptionsGetList(var_ad_account_id, page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$AdAccountsSubscriptionsGetList(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$AdAccountsSubscriptionsGetList(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -149,8 +155,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -168,16 +174,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Can&#39;t access this subscription. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdAccountsSubscriptionsPost**
-> AdAccountCreateSubscriptionResponse AdAccountsSubscriptionsPost(ad_account_id, ad_account_create_subscription_request)
+> LeadSubscription AdAccountsSubscriptionsPost(ad_account_id, lead_subscription_post_params_create)
 
 Create lead ads subscription
 
-Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 
 ### Example
 ```R
@@ -187,14 +197,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ad_account_create_subscription_request <- AdAccountCreateSubscriptionRequest$new("webhook_url_example", "lead_form_id_example", "partner_access_token_example", "partner_refresh_token_example", AdAccountCreateSubscriptionRequest_partner_metadata$new("subscriber_key_example")) # AdAccountCreateSubscriptionRequest | Subscription to create.
+var_lead_subscription_post_params_create <- LeadSubscriptionPostParamsCreate$new("webhook_url_example", "lead_form_id_example", "partner_access_token_example", LeadSubscriptionPostParamsCreate_allOf_partner_metadata$new("subscriber_key_example"), "partner_refresh_token_example") # LeadSubscriptionPostParamsCreate | 
 
 api_instance <- LeadAdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdAccountsSubscriptionsPost(var_ad_account_id, var_ad_account_create_subscription_requestdata_file = "result.txt")
-result <- api_instance$AdAccountsSubscriptionsPost(var_ad_account_id, var_ad_account_create_subscription_request)
+# result <- api_instance$AdAccountsSubscriptionsPost(var_ad_account_id, var_lead_subscription_post_params_createdata_file = "result.txt")
+result <- api_instance$AdAccountsSubscriptionsPost(var_ad_account_id, var_lead_subscription_post_params_create)
 dput(result)
 ```
 
@@ -203,11 +213,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ad_account_create_subscription_request** | [**AdAccountCreateSubscriptionRequest**](AdAccountCreateSubscriptionRequest.md)| Subscription to create. | 
+ **lead_subscription_post_params_create** | [**LeadSubscriptionPostParamsCreate**](LeadSubscriptionPostParamsCreate.md)|  | 
 
 ### Return type
 
-[**AdAccountCreateSubscriptionResponse**](AdAccountCreateSubscriptionResponse.md)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
@@ -221,8 +231,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid input parameters. |  -  |
-| **403** | Can&#39;t access this subscription. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **0** | An unexpected error response. |  -  |
 

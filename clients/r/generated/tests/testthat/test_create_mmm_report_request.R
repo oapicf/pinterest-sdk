@@ -13,20 +13,12 @@ test_that("countries", {
   #expect_equal(model.instance$`countries`, "EXPECTED_RESULT")
 })
 
-test_that("report_name", {
-  # tests for the property `report_name` (character)
-  # Name of the Marketing Mix Modeling (MMM) report
+test_that("columns", {
+  # tests for the property `columns` (array[MMMReportingColumn])
+  # Metric and entity columns
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`report_name`, "EXPECTED_RESULT")
-})
-
-test_that("start_date", {
-  # tests for the property `start_date` (character)
-  # Metric report start date (UTC). Format: YYYY-MM-DD
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`columns`, "EXPECTED_RESULT")
 })
 
 test_that("end_date", {
@@ -53,18 +45,26 @@ test_that("level", {
   #expect_equal(model.instance$`level`, "EXPECTED_RESULT")
 })
 
+test_that("report_name", {
+  # tests for the property `report_name` (character)
+  # Name of the Marketing Mix Modeling (MMM) report
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`report_name`, "EXPECTED_RESULT")
+})
+
+test_that("start_date", {
+  # tests for the property `start_date` (character)
+  # Metric report start date (UTC). Format: YYYY-MM-DD
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
+})
+
 test_that("targeting_types", {
   # tests for the property `targeting_types` (array[MMMReportingTargetingType])
   # List of targeting types
 
   # uncomment below to test the property
   #expect_equal(model.instance$`targeting_types`, "EXPECTED_RESULT")
-})
-
-test_that("columns", {
-  # tests for the property `columns` (array[MMMReportingColumn])
-  # Metric and entity columns
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`columns`, "EXPECTED_RESULT")
 })

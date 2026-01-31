@@ -80,16 +80,18 @@ private class OASAdResponseTest {
         System.assertEquals('carouselIosDeepLinks', x-property-mappings.get('carousel_ios_deep_links'));
         System.assertEquals('clickTrackingUrl', x-property-mappings.get('click_tracking_url'));
         System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
+        System.assertEquals('customizableCtaType', x-property-mappings.get('customizable_cta_type'));
         System.assertEquals('destinationUrl', x-property-mappings.get('destination_url'));
+        System.assertEquals('disclosureType', x-property-mappings.get('disclosure_type'));
+        System.assertEquals('disclosureUrl', x-property-mappings.get('disclosure_url'));
+        System.assertEquals('gridClickType', x-property-mappings.get('grid_click_type'));
         System.assertEquals('iosDeepLink', x-property-mappings.get('ios_deep_link'));
         System.assertEquals('isPinDeleted', x-property-mappings.get('is_pin_deleted'));
         System.assertEquals('isRemovable', x-property-mappings.get('is_removable'));
+        System.assertEquals('leadFormId', x-property-mappings.get('lead_form_id'));
+        System.assertEquals('quizPinData', x-property-mappings.get('quiz_pin_data'));
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('viewTrackingUrl', x-property-mappings.get('view_tracking_url'));
-        System.assertEquals('leadFormId', x-property-mappings.get('lead_form_id'));
-        System.assertEquals('gridClickType', x-property-mappings.get('grid_click_type'));
-        System.assertEquals('customizableCtaType', x-property-mappings.get('customizable_cta_type'));
-        System.assertEquals('quizPinData', x-property-mappings.get('quiz_pin_data'));
         System.assertEquals('pinId', x-property-mappings.get('pin_id'));
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('campaignId', x-property-mappings.get('campaign_id'));
@@ -98,8 +100,8 @@ private class OASAdResponseTest {
         System.assertEquals('rejectedReasons', x-property-mappings.get('rejected_reasons'));
         System.assertEquals('rejectionLabels', x-property-mappings.get('rejection_labels'));
         System.assertEquals('reviewStatus', x-property-mappings.get('review_status'));
-        System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
         System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
+        System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
     }
 
     @isTest
@@ -114,18 +116,20 @@ private class OASAdResponseTest {
         System.assertEquals(null, adResponse.androidDeepLink);
         System.assertEquals(null, adResponse.clickTrackingUrl);
         System.assertEquals(null, adResponse.creativeType);
+        System.assertEquals(null, adResponse.customizableCtaType);
         System.assertEquals(null, adResponse.destinationUrl);
+        System.assertEquals(null, adResponse.disclosureType);
+        System.assertEquals(null, adResponse.disclosureUrl);
+        System.assertEquals(null, adResponse.gridClickType);
         System.assertEquals(null, adResponse.iosDeepLink);
         System.assertEquals(null, adResponse.isPinDeleted);
         System.assertEquals(null, adResponse.isRemovable);
+        System.assertEquals(null, adResponse.leadFormId);
         System.assertEquals(null, adResponse.name);
+        System.assertEquals(null, adResponse.quizPinData);
         System.assertEquals(null, adResponse.status);
         System.assertEquals(null, adResponse.trackingUrls);
         System.assertEquals(null, adResponse.viewTrackingUrl);
-        System.assertEquals(null, adResponse.leadFormId);
-        System.assertEquals(null, adResponse.gridClickType);
-        System.assertEquals(null, adResponse.customizableCtaType);
-        System.assertEquals(null, adResponse.quizPinData);
         System.assertEquals(null, adResponse.pinId);
         System.assertEquals(null, adResponse.adAccountId);
         System.assertEquals(null, adResponse.campaignId);
@@ -133,8 +137,8 @@ private class OASAdResponseTest {
         System.assertEquals(null, adResponse.createdTime);
         System.assertEquals(null, adResponse.id);
         System.assertEquals(null, adResponse.reviewStatus);
+        System.assertEquals(null, adResponse.summaryStatus);
         System.assertEquals(null, adResponse.type);
         System.assertEquals(null, adResponse.updatedTime);
-        System.assertEquals(null, adResponse.summaryStatus);
     }
 }

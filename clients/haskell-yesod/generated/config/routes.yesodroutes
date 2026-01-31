@@ -17,16 +17,18 @@
 /ad_accounts/#Text/ads_credit/redeem AdAccountsByTextAdsCreditRedeemR POST
 /ad_accounts/#Text/ads/targeting_analytics AdAccountsByTextAdsTargetingAnalyticsR GET
 !/ad_accounts/#Text/ads/#Text AdAccountsByTextAdsByTextR GET
+/ad_accounts/#Text/advertiser_defined_events AdAccountsByTextAdvertiserDefinedEventsR GET
 /ad_accounts/#Text/analytics AdAccountsByTextAnalyticsR GET
 /ad_accounts/#Text/audience_insights AdAccountsByTextAudienceInsightsR GET
 /ad_accounts/#Text/audiences AdAccountsByTextAudiencesR GET POST
 /ad_accounts/#Text/audiences/#Text AdAccountsByTextAudiencesByTextR GET PATCH
-!/ad_accounts/#Text/audiences/custom AdAccountsByTextAudiencesCustomR POST
 /ad_accounts/#Text/audiences/shared/accounts AdAccountsByTextAudiencesSharedAccountsR GET
 /ad_accounts/#Text/audiences/ad_accounts/shared AdAccountsByTextAudiencesAdAccountsSharedR PATCH
 /ad_accounts/#Text/audiences/businesses/shared AdAccountsByTextAudiencesBusinessesSharedR PATCH
 /ad_accounts/#Text/bid_floor AdAccountsByTextBidFloorR POST
 /ad_accounts/#Text/billing_profiles AdAccountsByTextBillingProfilesR GET
+/ad_accounts/#Text/billing_invoices AdAccountsByTextBillingInvoicesR GET
+/ad_accounts/#Text/billing_invoice/#Text/download AdAccountsByTextBillingInvoiceByTextDownloadR GET
 /ad_accounts/#Text/bulk/download AdAccountsByTextBulkDownloadR POST
 /ad_accounts/#Text/bulk/upsert AdAccountsByTextBulkUpsertR POST
 !/ad_accounts/#Text/bulk/#Text AdAccountsByTextBulkByTextR GET
@@ -40,10 +42,15 @@
 !/ad_accounts/#Text/conversion_tags/#Text AdAccountsByTextConversionTagsByTextR GET
 /ad_accounts/#Text/customer_lists AdAccountsByTextCustomerListsR GET POST
 /ad_accounts/#Text/customer_lists/#Text AdAccountsByTextCustomerListsByTextR GET PATCH
+/ad_accounts/#Text/customer_lists/#Text/uploads AdAccountsByTextCustomerListsByTextUploadsR POST
+/ad_accounts/#Text/customer_lists/#Text/uploads/#Text AdAccountsByTextCustomerListsByTextUploadsByTextR GET
+/ad_accounts/#Text/customer_lists/#Text/uploads/#Text/run AdAccountsByTextCustomerListsByTextUploadsByTextRunR POST
 /ad_accounts/#Text/events AdAccountsByTextEventsR POST
+/ad_accounts/#Text/msot/events AdAccountsByTextMsotEventsR POST
 /ad_accounts/#Text/insights/audiences AdAccountsByTextInsightsAudiencesR GET
 /ad_accounts/#Text/keywords AdAccountsByTextKeywordsR GET POST PATCH
 /ad_accounts/#Text/keywords/metrics AdAccountsByTextKeywordsMetricsR GET
+/ad_accounts/#Text/labels AdAccountsByTextLabelsR GET POST PATCH
 /ad_accounts/#Text/lead_forms AdAccountsByTextLeadFormsR GET POST PATCH
 /ad_accounts/#Text/lead_forms/#Text AdAccountsByTextLeadFormsByTextR GET
 /ad_accounts/#Text/lead_forms/#Text/test AdAccountsByTextLeadFormsByTextTestR POST
@@ -54,10 +61,14 @@
 /ad_accounts/#Text/mmm_reports AdAccountsByTextMmmReportsR GET POST
 /ad_accounts/#Text/order_lines AdAccountsByTextOrderLinesR GET
 /ad_accounts/#Text/order_lines/#Text AdAccountsByTextOrderLinesByTextR GET
+/ad_accounts/#Text/pins/analytics AdAccountsByTextPinsAnalyticsR GET
 /ad_accounts/#Text/product_group_promotions AdAccountsByTextProductGroupPromotionsR GET POST PATCH
 /ad_accounts/#Text/product_group_promotions/#Text AdAccountsByTextProductGroupPromotionsByTextR GET
 /ad_accounts/#Text/product_groups/analytics AdAccountsByTextProductGroupsAnalyticsR GET
+/ad_accounts/#Text/promotions AdAccountsByTextPromotionsR GET POST PATCH
+/ad_accounts/#Text/promotions/#Text AdAccountsByTextPromotionsByTextR GET DELETE
 /ad_accounts/#Text/reports AdAccountsByTextReportsR GET POST
+/ad_accounts/#Text/reports/brand_category_sku AdAccountsByTextReportsBrandCategorySkuR GET POST
 /ad_accounts/#Text/sandbox AdAccountsByTextSandboxR DELETE
 /ad_accounts/#Text/ssio/accounts AdAccountsByTextSsioAccountsR GET
 /ad_accounts/#Text/ssio/insertion_orders AdAccountsByTextSsioInsertionOrdersR POST PATCH
@@ -79,6 +90,7 @@
 /boards/#Text/sections/#Text/pins BoardsByTextSectionsByTextPinsR GET
 /businesses/employers BusinessesEmployersR GET
 /businesses/invites BusinessesInvitesR PATCH
+/businesses/#Text/system_users/#Text BusinessesByTextSystemUsersByTextR PATCH
 /businesses/#Text/assets/#Text/members BusinessesByTextAssetsByTextMembersR GET
 /businesses/#Text/assets/#Text/partners BusinessesByTextAssetsByTextPartnersR GET
 /businesses/#Text/invites/assets/access BusinessesByTextInvitesAssetsAccessR POST
@@ -96,13 +108,16 @@
 /businesses/#Text/audiences/ad_accounts/shared BusinessesByTextAudiencesAdAccountsSharedR PATCH
 /businesses/#Text/audiences/businesses/shared BusinessesByTextAudiencesBusinessesSharedR PATCH
 /businesses/#Text/asset_groups BusinessesByTextAssetGroupsR POST DELETE PATCH
+/business_access/business_hierarchy/#Text/brand_accounts BusinessAccessBusinessHierarchyByTextBrandAccountsR POST
+/business_access/business_hierarchy/#Text/brand_accounts/#Text BusinessAccessBusinessHierarchyByTextBrandAccountsByTextR PATCH
 /catalogs CatalogsR GET POST
+/catalogs/available_filter_values CatalogsAvailableFilterValuesR GET
 /catalogs/feeds CatalogsFeedsR GET POST
 /catalogs/feeds/#Text CatalogsFeedsByTextR GET DELETE PATCH
 /catalogs/feeds/#Text/ingest CatalogsFeedsByTextIngestR POST
 /catalogs/feeds/#Text/processing_results CatalogsFeedsByTextProcessingResultsR GET
 /catalogs/processing_results/#Text/item_issues CatalogsProcessingResultsByTextItemIssuesR GET
-/catalogs/items CatalogsItemsR GET POST
+/catalogs/items CatalogsItemsR POST
 /catalogs/items/batch CatalogsItemsBatchR POST
 /catalogs/items/batch/#Text CatalogsItemsBatchByTextR GET
 /catalogs/product_groups/multiple CatalogsProductGroupsMultipleR POST DELETE
@@ -120,7 +135,10 @@
 !/integrations/#Text IntegrationsByTextR GET
 /media MediaR GET POST
 /media/#Text MediaByTextR GET
+/notifications NotificationsR POST
+/oauth/conversion_token OauthConversionTokenR POST
 /oauth/token OauthTokenR POST
+/oauth/token/revoke OauthTokenRevokeR POST
 /pins PinsR GET POST
 /pins/#Text PinsByTextR GET DELETE PATCH
 /pins/#Text/analytics PinsByTextAnalyticsR GET
@@ -150,3 +168,7 @@
 /user_account/websites UserAccountWebsitesR GET POST DELETE
 /user_account/websites/verification UserAccountWebsitesVerificationR GET
 /users/#Text/interests/follow UsersByTextInterestsFollowR GET
+/trends/topics/featured TrendsTopicsFeaturedR GET
+/trends/product_categories/details TrendsProductCategoriesDetailsR GET
+/trends/product_categories/trending TrendsProductCategoriesTrendingR GET
+/ad_accounts/#Text/conversion_eqs AdAccountsByTextConversionEqsR GET

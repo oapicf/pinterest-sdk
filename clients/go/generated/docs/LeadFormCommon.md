@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** | Internal name of the lead form. | [optional] 
-**PrivacyPolicyLink** | Pointer to **NullableString** | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. | [optional] 
-**HasAcceptedTerms** | Pointer to **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO | [optional] 
 **CompletionMessage** | Pointer to **NullableString** | A message for people who complete the form to let them know what happens next. | [optional] 
-**Status** | Pointer to [**LeadFormStatus**](LeadFormStatus.md) |  | [optional] 
 **DisclosureLanguage** | Pointer to **NullableString** | Additional disclosure language to be included in the lead form. | [optional] 
-**Questions** | Pointer to [**[]LeadFormQuestion**](LeadFormQuestion.md) | List of questions to be displayed on the lead form. | [optional] 
+**HasAcceptedTerms** | Pointer to **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO | [optional] 
+**Name** | Pointer to **NullableString** | Internal name of the lead form. | [optional] 
 **PolicyLinks** | Pointer to [**[]LeadFormCommonPolicyLinksInner**](LeadFormCommonPolicyLinksInner.md) | List of additional policy links to be displayed on the lead form. | [optional] 
+**PrivacyPolicyLink** | Pointer to **NullableString** | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. | [optional] 
+**Questions** | Pointer to [**[]LeadFormQuestion**](LeadFormQuestion.md) | List of questions to be displayed on the lead form. | [optional] 
+**Status** | Pointer to [**LeadFormStatus**](LeadFormStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -31,101 +31,6 @@ will change when the set of required properties is changed
 NewLeadFormCommonWithDefaults instantiates a new LeadFormCommon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *LeadFormCommon) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *LeadFormCommon) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *LeadFormCommon) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *LeadFormCommon) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *LeadFormCommon) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *LeadFormCommon) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
-### GetPrivacyPolicyLink
-
-`func (o *LeadFormCommon) GetPrivacyPolicyLink() string`
-
-GetPrivacyPolicyLink returns the PrivacyPolicyLink field if non-nil, zero value otherwise.
-
-### GetPrivacyPolicyLinkOk
-
-`func (o *LeadFormCommon) GetPrivacyPolicyLinkOk() (*string, bool)`
-
-GetPrivacyPolicyLinkOk returns a tuple with the PrivacyPolicyLink field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivacyPolicyLink
-
-`func (o *LeadFormCommon) SetPrivacyPolicyLink(v string)`
-
-SetPrivacyPolicyLink sets PrivacyPolicyLink field to given value.
-
-### HasPrivacyPolicyLink
-
-`func (o *LeadFormCommon) HasPrivacyPolicyLink() bool`
-
-HasPrivacyPolicyLink returns a boolean if a field has been set.
-
-### SetPrivacyPolicyLinkNil
-
-`func (o *LeadFormCommon) SetPrivacyPolicyLinkNil(b bool)`
-
- SetPrivacyPolicyLinkNil sets the value for PrivacyPolicyLink to be an explicit nil
-
-### UnsetPrivacyPolicyLink
-`func (o *LeadFormCommon) UnsetPrivacyPolicyLink()`
-
-UnsetPrivacyPolicyLink ensures that no value is present for PrivacyPolicyLink, not even an explicit nil
-### GetHasAcceptedTerms
-
-`func (o *LeadFormCommon) GetHasAcceptedTerms() bool`
-
-GetHasAcceptedTerms returns the HasAcceptedTerms field if non-nil, zero value otherwise.
-
-### GetHasAcceptedTermsOk
-
-`func (o *LeadFormCommon) GetHasAcceptedTermsOk() (*bool, bool)`
-
-GetHasAcceptedTermsOk returns a tuple with the HasAcceptedTerms field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHasAcceptedTerms
-
-`func (o *LeadFormCommon) SetHasAcceptedTerms(v bool)`
-
-SetHasAcceptedTerms sets HasAcceptedTerms field to given value.
-
-### HasHasAcceptedTerms
-
-`func (o *LeadFormCommon) HasHasAcceptedTerms() bool`
-
-HasHasAcceptedTerms returns a boolean if a field has been set.
 
 ### GetCompletionMessage
 
@@ -162,31 +67,6 @@ HasCompletionMessage returns a boolean if a field has been set.
 `func (o *LeadFormCommon) UnsetCompletionMessage()`
 
 UnsetCompletionMessage ensures that no value is present for CompletionMessage, not even an explicit nil
-### GetStatus
-
-`func (o *LeadFormCommon) GetStatus() LeadFormStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *LeadFormCommon) GetStatusOk() (*LeadFormStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *LeadFormCommon) SetStatus(v LeadFormStatus)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *LeadFormCommon) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
 ### GetDisclosureLanguage
 
 `func (o *LeadFormCommon) GetDisclosureLanguage() string`
@@ -222,6 +102,126 @@ HasDisclosureLanguage returns a boolean if a field has been set.
 `func (o *LeadFormCommon) UnsetDisclosureLanguage()`
 
 UnsetDisclosureLanguage ensures that no value is present for DisclosureLanguage, not even an explicit nil
+### GetHasAcceptedTerms
+
+`func (o *LeadFormCommon) GetHasAcceptedTerms() bool`
+
+GetHasAcceptedTerms returns the HasAcceptedTerms field if non-nil, zero value otherwise.
+
+### GetHasAcceptedTermsOk
+
+`func (o *LeadFormCommon) GetHasAcceptedTermsOk() (*bool, bool)`
+
+GetHasAcceptedTermsOk returns a tuple with the HasAcceptedTerms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasAcceptedTerms
+
+`func (o *LeadFormCommon) SetHasAcceptedTerms(v bool)`
+
+SetHasAcceptedTerms sets HasAcceptedTerms field to given value.
+
+### HasHasAcceptedTerms
+
+`func (o *LeadFormCommon) HasHasAcceptedTerms() bool`
+
+HasHasAcceptedTerms returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *LeadFormCommon) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *LeadFormCommon) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *LeadFormCommon) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *LeadFormCommon) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *LeadFormCommon) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *LeadFormCommon) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetPolicyLinks
+
+`func (o *LeadFormCommon) GetPolicyLinks() []LeadFormCommonPolicyLinksInner`
+
+GetPolicyLinks returns the PolicyLinks field if non-nil, zero value otherwise.
+
+### GetPolicyLinksOk
+
+`func (o *LeadFormCommon) GetPolicyLinksOk() (*[]LeadFormCommonPolicyLinksInner, bool)`
+
+GetPolicyLinksOk returns a tuple with the PolicyLinks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPolicyLinks
+
+`func (o *LeadFormCommon) SetPolicyLinks(v []LeadFormCommonPolicyLinksInner)`
+
+SetPolicyLinks sets PolicyLinks field to given value.
+
+### HasPolicyLinks
+
+`func (o *LeadFormCommon) HasPolicyLinks() bool`
+
+HasPolicyLinks returns a boolean if a field has been set.
+
+### GetPrivacyPolicyLink
+
+`func (o *LeadFormCommon) GetPrivacyPolicyLink() string`
+
+GetPrivacyPolicyLink returns the PrivacyPolicyLink field if non-nil, zero value otherwise.
+
+### GetPrivacyPolicyLinkOk
+
+`func (o *LeadFormCommon) GetPrivacyPolicyLinkOk() (*string, bool)`
+
+GetPrivacyPolicyLinkOk returns a tuple with the PrivacyPolicyLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivacyPolicyLink
+
+`func (o *LeadFormCommon) SetPrivacyPolicyLink(v string)`
+
+SetPrivacyPolicyLink sets PrivacyPolicyLink field to given value.
+
+### HasPrivacyPolicyLink
+
+`func (o *LeadFormCommon) HasPrivacyPolicyLink() bool`
+
+HasPrivacyPolicyLink returns a boolean if a field has been set.
+
+### SetPrivacyPolicyLinkNil
+
+`func (o *LeadFormCommon) SetPrivacyPolicyLinkNil(b bool)`
+
+ SetPrivacyPolicyLinkNil sets the value for PrivacyPolicyLink to be an explicit nil
+
+### UnsetPrivacyPolicyLink
+`func (o *LeadFormCommon) UnsetPrivacyPolicyLink()`
+
+UnsetPrivacyPolicyLink ensures that no value is present for PrivacyPolicyLink, not even an explicit nil
 ### GetQuestions
 
 `func (o *LeadFormCommon) GetQuestions() []LeadFormQuestion`
@@ -247,30 +247,30 @@ SetQuestions sets Questions field to given value.
 
 HasQuestions returns a boolean if a field has been set.
 
-### GetPolicyLinks
+### GetStatus
 
-`func (o *LeadFormCommon) GetPolicyLinks() []LeadFormCommonPolicyLinksInner`
+`func (o *LeadFormCommon) GetStatus() LeadFormStatus`
 
-GetPolicyLinks returns the PolicyLinks field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetPolicyLinksOk
+### GetStatusOk
 
-`func (o *LeadFormCommon) GetPolicyLinksOk() (*[]LeadFormCommonPolicyLinksInner, bool)`
+`func (o *LeadFormCommon) GetStatusOk() (*LeadFormStatus, bool)`
 
-GetPolicyLinksOk returns a tuple with the PolicyLinks field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPolicyLinks
+### SetStatus
 
-`func (o *LeadFormCommon) SetPolicyLinks(v []LeadFormCommonPolicyLinksInner)`
+`func (o *LeadFormCommon) SetStatus(v LeadFormStatus)`
 
-SetPolicyLinks sets PolicyLinks field to given value.
+SetStatus sets Status field to given value.
 
-### HasPolicyLinks
+### HasStatus
 
-`func (o *LeadFormCommon) HasPolicyLinks() bool`
+`func (o *LeadFormCommon) HasStatus() bool`
 
-HasPolicyLinks returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

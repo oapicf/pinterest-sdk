@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,22 +17,22 @@ package openapi
 // ConversionApiResponse - Schema describing the object in the response, which contains information about the events that were received and processed.
 type ConversionApiResponse struct {
 
-	// Total number of events received in the request.
-	NumEventsReceived int32 `json:"num_events_received"`
+	// Specific messages for each event received. The order will match the order in which the events were received in the request.
+	Events []ConversionApiResponseEventsInner `json:"events"`
 
 	// Number of events that were successfully processed from the events.
 	NumEventsProcessed int32 `json:"num_events_processed"`
 
-	// Specific messages for each event received. The order will match the order in which the events were received in the request.
-	Events []ConversionApiResponseEventsInner `json:"events"`
+	// Total number of events received in the request.
+	NumEventsReceived int32 `json:"num_events_received"`
 }
 
 // AssertConversionApiResponseRequired checks if the required fields are not zero-ed
 func AssertConversionApiResponseRequired(obj ConversionApiResponse) error {
 	elements := map[string]interface{}{
-		"num_events_received": obj.NumEventsReceived,
-		"num_events_processed": obj.NumEventsProcessed,
 		"events": obj.Events,
+		"num_events_processed": obj.NumEventsProcessed,
+		"num_events_received": obj.NumEventsReceived,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

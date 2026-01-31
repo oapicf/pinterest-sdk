@@ -39,7 +39,7 @@ void main() {
     //
     // Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     //
-    //Future<IntegrationMetadata> integrationsCommercePatch(String externalBusinessId, { IntegrationRequestPatch integrationRequestPatch }) async
+    //Future<IntegrationMetadata> integrationsCommercePatch(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) async
     test('test integrationsCommercePatch', () async {
       // TODO
     });
@@ -48,7 +48,7 @@ void main() {
     //
     // Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     //
-    //Future<IntegrationMetadata> integrationsCommercePost({ IntegrationRequest integrationRequest }) async
+    //Future<IntegrationMetadata> integrationsCommercePost(IntegrationRequest integrationRequest) async
     test('test integrationsCommercePost', () async {
       // TODO
     });

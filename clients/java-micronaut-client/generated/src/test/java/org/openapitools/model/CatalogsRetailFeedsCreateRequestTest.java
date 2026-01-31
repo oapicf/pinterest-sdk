@@ -30,59 +30,11 @@ public class CatalogsRetailFeedsCreateRequestTest {
     }
 
     /**
-     * Test the property 'defaultCurrency'
+     * Test the property 'catalogId'
      */
     @Test
-    public void defaultCurrencyTest() {
-        // TODO: test defaultCurrency
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property '_format'
-     */
-    @Test
-    public void _formatTest() {
-        // TODO: test _format
-    }
-
-    /**
-     * Test the property 'defaultLocale'
-     */
-    @Test
-    public void defaultLocaleTest() {
-        // TODO: test defaultLocale
-    }
-
-    /**
-     * Test the property 'credentials'
-     */
-    @Test
-    public void credentialsTest() {
-        // TODO: test credentials
-    }
-
-    /**
-     * Test the property 'location'
-     */
-    @Test
-    public void locationTest() {
-        // TODO: test location
-    }
-
-    /**
-     * Test the property 'preferredProcessingSchedule'
-     */
-    @Test
-    public void preferredProcessingScheduleTest() {
-        // TODO: test preferredProcessingSchedule
+    public void catalogIdTest() {
+        // TODO: test catalogId
     }
 
     /**
@@ -94,11 +46,11 @@ public class CatalogsRetailFeedsCreateRequestTest {
     }
 
     /**
-     * Test the property 'defaultCountry'
+     * Test the property 'credentials'
      */
     @Test
-    public void defaultCountryTest() {
-        // TODO: test defaultCountry
+    public void credentialsTest() {
+        // TODO: test credentials
     }
 
     /**
@@ -107,6 +59,62 @@ public class CatalogsRetailFeedsCreateRequestTest {
     @Test
     public void defaultAvailabilityTest() {
         // TODO: test defaultAvailability
+    }
+
+    /**
+     * Test the property 'defaultCountry'
+     */
+    @Test
+    public void defaultCountryTest() {
+        // TODO: test defaultCountry
+    }
+
+    /**
+     * Test the property 'defaultCurrency'
+     */
+    @Test
+    public void defaultCurrencyTest() {
+        // TODO: test defaultCurrency
+    }
+
+    /**
+     * Test the property 'defaultLocale'
+     */
+    @Test
+    public void defaultLocaleTest() {
+        // TODO: test defaultLocale
+    }
+
+    /**
+     * Test the property '_format'
+     */
+    @Test
+    public void _formatTest() {
+        // TODO: test _format
+    }
+
+    /**
+     * Test the property 'location'
+     */
+    @Test
+    public void locationTest() {
+        // TODO: test location
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'preferredProcessingSchedule'
+     */
+    @Test
+    public void preferredProcessingScheduleTest() {
+        // TODO: test preferredProcessingSchedule
     }
 
     /**

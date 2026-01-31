@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**log_index** | **number** | Index of the log in the batch. | [optional] [default to undefined]
 **field** | **string** | The field name containing an invalid value. | [default to undefined]
-**value** | **string** | The value that is invalid. | [default to undefined]
+**log_index** | **number** | Index of the log in the batch. | [optional] [default to undefined]
 **reason** | **string** | The reason the value is invalid. | [default to undefined]
+**value** | **string** | The value that is invalid. | [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { IntegrationLogsInvalidLogResponseRejectedLogsInner } from './api';
 
 const instance: IntegrationLogsInvalidLogResponseRejectedLogsInner = {
-    log_index,
     field,
-    value,
+    log_index,
     reason,
+    value,
 };
 ```
 

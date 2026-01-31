@@ -8,8 +8,8 @@ The class is defined in **[RelatedTermsRelatedTermsListInner.java](../../src/mai
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**term** | `String` |  |  [optional property]
 **relatedTerms** | `List&lt;String&gt;` |  |  [optional property]
+**term** | `String` |  |  [optional property]
 
 
 

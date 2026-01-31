@@ -24,33 +24,35 @@ board_t* instantiate_board(int include_optional) {
   board_t* board = NULL;
   if (include_optional) {
     board = board_create(
-      "549755885175",
-      "2020-01-01T20:10:40Z",
-      "2020-01-01T20:10:40Z",
-      "Summer Recipes",
-      "My favorite summer recipes",
+      "2013-10-20T19:20:30+01:00",
       17,
-      5,
+      "2013-10-20T19:20:30+01:00",
+      "My favorite summer recipes",
       13,
+      "549755885175",
+      true,
        // false, not to have infinite recursion
       instantiate_board_media(0),
+      "Summer recipes",
        // false, not to have infinite recursion
       instantiate_board_owner(0),
-      pinterest_rest_api_board_PRIVACY_"PUBLIC"
+      5,
+      PUBLIC
     );
   } else {
     board = board_create(
-      "549755885175",
-      "2020-01-01T20:10:40Z",
-      "2020-01-01T20:10:40Z",
-      "Summer Recipes",
-      "My favorite summer recipes",
+      "2013-10-20T19:20:30+01:00",
       17,
-      5,
+      "2013-10-20T19:20:30+01:00",
+      "My favorite summer recipes",
       13,
+      "549755885175",
+      true,
       NULL,
+      "Summer recipes",
       NULL,
-      pinterest_rest_api_board_PRIVACY_"PUBLIC"
+      5,
+      PUBLIC
     );
   }
 

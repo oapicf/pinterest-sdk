@@ -11,13 +11,37 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum ConversionTagsSlashCreateResponse {
-    /// Success
-    Status200_Success
-    (models::ConversionTagResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::ConversionTag)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::ConversionTag)
+    ,
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -26,7 +50,7 @@ pub enum ConversionTagsSlashCreateResponse {
 pub enum ConversionTagsSlashGetResponse {
     /// Success
     Status200_Success
-    (models::ConversionTagResponse)
+    (models::ConversionTag)
     ,
     /// Unexpected error
     Status0_UnexpectedError
@@ -37,13 +61,33 @@ pub enum ConversionTagsSlashGetResponse {
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum ConversionTagsSlashListResponse {
-    /// Success
-    Status200_Success
-    (models::ConversionTagListResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::ConversionTagsList200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -104,7 +148,7 @@ pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
       path_params: &models::ConversionTagsSlashGetPathParams,
     ) -> Result<ConversionTagsSlashGetResponse, E>;
 
-    /// Get conversion tags.
+    /// List conversion tags.
     ///
     /// ConversionTagsSlashList - GET /v5/ad_accounts/{ad_account_id}/conversion_tags
     async fn conversion_tags_slash_list(

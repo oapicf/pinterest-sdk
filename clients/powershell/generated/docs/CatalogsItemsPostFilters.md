@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**ItemIds** | **String[]** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**ItemIds** | **String[]** |  | 
 **HotelIds** | **String[]** |  | 
 **CreativeAssetsIds** | **String[]** |  | 
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $CatalogsItemsPostFilters = Initialize-PSOpenAPIToolsCatalogsItemsPostFilters  -CatalogType null `
- -ItemIds null `
  -CatalogId null `
+ -ItemIds null `
  -HotelIds null `
  -CreativeAssetsIds null
 ```

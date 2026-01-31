@@ -20,15 +20,15 @@ Protected Class Catalog
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			A human-friendly name associated to a catalog entity.
-		#tag EndNote
-		name As String
+		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		catalog_type As String
+		#tag Note
+			A human-friendly name associated to a catalog entity.
+		#tag EndNote
+		name As String
 	#tag EndProperty
 
 
@@ -93,19 +93,19 @@ Protected Class Catalog
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="catalog_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

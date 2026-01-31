@@ -10,36 +10,60 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
+/**
+ * Resource create operation model.
+ **/
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Resource create operation model.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCreate   {
+  @JsonProperty("aem_db_enabled")
+  private Boolean aemDbEnabled = false;
+
   @JsonProperty("aem_enabled")
   private Boolean aemEnabled = false;
 
-  @JsonProperty("md_frequency")
-  private BigDecimal mdFrequency = new BigDecimal("1");
+  @JsonProperty("aem_external_id_enabled")
+  private Boolean aemExternalIdEnabled = false;
 
   @JsonProperty("aem_fnln_enabled")
   private Boolean aemFnlnEnabled = false;
 
-  @JsonProperty("aem_ph_enabled")
-  private Boolean aemPhEnabled = false;
-
   @JsonProperty("aem_ge_enabled")
   private Boolean aemGeEnabled = false;
 
-  @JsonProperty("aem_db_enabled")
-  private Boolean aemDbEnabled = false;
-
   @JsonProperty("aem_loc_enabled")
   private Boolean aemLocEnabled = false;
+
+  @JsonProperty("aem_ph_enabled")
+  private Boolean aemPhEnabled = false;
+
+  @JsonProperty("md_frequency")
+  private BigDecimal mdFrequency = new BigDecimal("1");
 
   @JsonProperty("name")
   private String name;
 
   /**
-   * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+   * Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   **/
+  public ConversionTagCreate aemDbEnabled(Boolean aemDbEnabled) {
+    this.aemDbEnabled = aemDbEnabled;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+  @JsonProperty("aem_db_enabled")
+  public Boolean getAemDbEnabled() {
+    return aemDbEnabled;
+  }
+  public void setAemDbEnabled(Boolean aemDbEnabled) {
+    this.aemDbEnabled = aemDbEnabled;
+  }
+
+  /**
+   * Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
    **/
   public ConversionTagCreate aemEnabled(Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
@@ -47,13 +71,103 @@ public class ConversionTagCreate   {
   }
 
   
-  @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
   @JsonProperty("aem_enabled")
   public Boolean getAemEnabled() {
     return aemEnabled;
   }
   public void setAemEnabled(Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
+  }
+
+  /**
+   * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   **/
+  public ConversionTagCreate aemExternalIdEnabled(Boolean aemExternalIdEnabled) {
+    this.aemExternalIdEnabled = aemExternalIdEnabled;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+  @JsonProperty("aem_external_id_enabled")
+  public Boolean getAemExternalIdEnabled() {
+    return aemExternalIdEnabled;
+  }
+  public void setAemExternalIdEnabled(Boolean aemExternalIdEnabled) {
+    this.aemExternalIdEnabled = aemExternalIdEnabled;
+  }
+
+  /**
+   * Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   **/
+  public ConversionTagCreate aemFnlnEnabled(Boolean aemFnlnEnabled) {
+    this.aemFnlnEnabled = aemFnlnEnabled;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+  @JsonProperty("aem_fnln_enabled")
+  public Boolean getAemFnlnEnabled() {
+    return aemFnlnEnabled;
+  }
+  public void setAemFnlnEnabled(Boolean aemFnlnEnabled) {
+    this.aemFnlnEnabled = aemFnlnEnabled;
+  }
+
+  /**
+   * Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   **/
+  public ConversionTagCreate aemGeEnabled(Boolean aemGeEnabled) {
+    this.aemGeEnabled = aemGeEnabled;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+  @JsonProperty("aem_ge_enabled")
+  public Boolean getAemGeEnabled() {
+    return aemGeEnabled;
+  }
+  public void setAemGeEnabled(Boolean aemGeEnabled) {
+    this.aemGeEnabled = aemGeEnabled;
+  }
+
+  /**
+   * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   **/
+  public ConversionTagCreate aemLocEnabled(Boolean aemLocEnabled) {
+    this.aemLocEnabled = aemLocEnabled;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+  @JsonProperty("aem_loc_enabled")
+  public Boolean getAemLocEnabled() {
+    return aemLocEnabled;
+  }
+  public void setAemLocEnabled(Boolean aemLocEnabled) {
+    this.aemLocEnabled = aemLocEnabled;
+  }
+
+  /**
+   * Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   **/
+  public ConversionTagCreate aemPhEnabled(Boolean aemPhEnabled) {
+    this.aemPhEnabled = aemPhEnabled;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+  @JsonProperty("aem_ph_enabled")
+  public Boolean getAemPhEnabled() {
+    return aemPhEnabled;
+  }
+  public void setAemPhEnabled(Boolean aemPhEnabled) {
+    this.aemPhEnabled = aemPhEnabled;
   }
 
   /**
@@ -75,96 +189,6 @@ public class ConversionTagCreate   {
   }
 
   /**
-   * Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-   **/
-  public ConversionTagCreate aemFnlnEnabled(Boolean aemFnlnEnabled) {
-    this.aemFnlnEnabled = aemFnlnEnabled;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
-  @JsonProperty("aem_fnln_enabled")
-  public Boolean getAemFnlnEnabled() {
-    return aemFnlnEnabled;
-  }
-  public void setAemFnlnEnabled(Boolean aemFnlnEnabled) {
-    this.aemFnlnEnabled = aemFnlnEnabled;
-  }
-
-  /**
-   * Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-   **/
-  public ConversionTagCreate aemPhEnabled(Boolean aemPhEnabled) {
-    this.aemPhEnabled = aemPhEnabled;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
-  @JsonProperty("aem_ph_enabled")
-  public Boolean getAemPhEnabled() {
-    return aemPhEnabled;
-  }
-  public void setAemPhEnabled(Boolean aemPhEnabled) {
-    this.aemPhEnabled = aemPhEnabled;
-  }
-
-  /**
-   * Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-   **/
-  public ConversionTagCreate aemGeEnabled(Boolean aemGeEnabled) {
-    this.aemGeEnabled = aemGeEnabled;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
-  @JsonProperty("aem_ge_enabled")
-  public Boolean getAemGeEnabled() {
-    return aemGeEnabled;
-  }
-  public void setAemGeEnabled(Boolean aemGeEnabled) {
-    this.aemGeEnabled = aemGeEnabled;
-  }
-
-  /**
-   * Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-   **/
-  public ConversionTagCreate aemDbEnabled(Boolean aemDbEnabled) {
-    this.aemDbEnabled = aemDbEnabled;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
-  @JsonProperty("aem_db_enabled")
-  public Boolean getAemDbEnabled() {
-    return aemDbEnabled;
-  }
-  public void setAemDbEnabled(Boolean aemDbEnabled) {
-    this.aemDbEnabled = aemDbEnabled;
-  }
-
-  /**
-   * Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-   **/
-  public ConversionTagCreate aemLocEnabled(Boolean aemLocEnabled) {
-    this.aemLocEnabled = aemLocEnabled;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
-  @JsonProperty("aem_loc_enabled")
-  public Boolean getAemLocEnabled() {
-    return aemLocEnabled;
-  }
-  public void setAemLocEnabled(Boolean aemLocEnabled) {
-    this.aemLocEnabled = aemLocEnabled;
-  }
-
-  /**
    * Conversion tag name.
    **/
   public ConversionTagCreate name(String name) {
@@ -173,7 +197,7 @@ public class ConversionTagCreate   {
   }
 
   
-  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
+  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -192,19 +216,20 @@ public class ConversionTagCreate   {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return Objects.equals(aemEnabled, conversionTagCreate.aemEnabled) &&
-        Objects.equals(mdFrequency, conversionTagCreate.mdFrequency) &&
+    return Objects.equals(aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
+        Objects.equals(aemEnabled, conversionTagCreate.aemEnabled) &&
+        Objects.equals(aemExternalIdEnabled, conversionTagCreate.aemExternalIdEnabled) &&
         Objects.equals(aemFnlnEnabled, conversionTagCreate.aemFnlnEnabled) &&
-        Objects.equals(aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
         Objects.equals(aemGeEnabled, conversionTagCreate.aemGeEnabled) &&
-        Objects.equals(aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
         Objects.equals(aemLocEnabled, conversionTagCreate.aemLocEnabled) &&
+        Objects.equals(aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
+        Objects.equals(mdFrequency, conversionTagCreate.mdFrequency) &&
         Objects.equals(name, conversionTagCreate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled, name);
+    return Objects.hash(aemDbEnabled, aemEnabled, aemExternalIdEnabled, aemFnlnEnabled, aemGeEnabled, aemLocEnabled, aemPhEnabled, mdFrequency, name);
   }
 
   @Override
@@ -212,13 +237,14 @@ public class ConversionTagCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
     
-    sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
-    sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
-    sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
-    sb.append("    aemPhEnabled: ").append(toIndentedString(aemPhEnabled)).append("\n");
-    sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
+    sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
+    sb.append("    aemExternalIdEnabled: ").append(toIndentedString(aemExternalIdEnabled)).append("\n");
+    sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
+    sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    aemPhEnabled: ").append(toIndentedString(aemPhEnabled)).append("\n");
+    sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();

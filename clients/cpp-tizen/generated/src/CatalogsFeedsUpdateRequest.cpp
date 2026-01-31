@@ -23,12 +23,12 @@ CatalogsFeedsUpdateRequest::~CatalogsFeedsUpdateRequest()
 void
 CatalogsFeedsUpdateRequest::__init()
 {
+	//credentials = new CatalogsFeedCredentials();
 	//default_availability = new ProductAvailabilityType();
 	//default_currency = new NullableCurrency();
-	//name = std::string();
 	//format = new CatalogsFormat();
-	//credentials = new CatalogsFeedCredentials();
 	//location = std::string();
+	//name = std::string();
 	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
 	//status = new CatalogsStatus();
 }
@@ -36,6 +36,11 @@ CatalogsFeedsUpdateRequest::__init()
 void
 CatalogsFeedsUpdateRequest::__cleanup()
 {
+	//if(credentials != NULL) {
+	//
+	//delete credentials;
+	//credentials = NULL;
+	//}
 	//if(default_availability != NULL) {
 	//
 	//delete default_availability;
@@ -46,25 +51,20 @@ CatalogsFeedsUpdateRequest::__cleanup()
 	//delete default_currency;
 	//default_currency = NULL;
 	//}
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(format != NULL) {
 	//
 	//delete format;
 	//format = NULL;
 	//}
-	//if(credentials != NULL) {
-	//
-	//delete credentials;
-	//credentials = NULL;
-	//}
 	//if(location != NULL) {
 	//
 	//delete location;
 	//location = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
 	//}
 	//if(preferred_processing_schedule != NULL) {
 	//
@@ -84,6 +84,20 @@ CatalogsFeedsUpdateRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *credentialsKey = "credentials";
+	node = json_object_get_member(pJsonObject, credentialsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsFeedCredentials")) {
+			jsonToValue(&credentials, node, "CatalogsFeedCredentials", "CatalogsFeedCredentials");
+		} else {
+			
+			CatalogsFeedCredentials* obj = static_cast<CatalogsFeedCredentials*> (&credentials);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *default_availabilityKey = "default_availability";
 	node = json_object_get_member(pJsonObject, default_availabilityKey);
 	if (node !=NULL) {
@@ -112,17 +126,6 @@ CatalogsFeedsUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *formatKey = "format";
 	node = json_object_get_member(pJsonObject, formatKey);
 	if (node !=NULL) {
@@ -137,20 +140,6 @@ CatalogsFeedsUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *credentialsKey = "credentials";
-	node = json_object_get_member(pJsonObject, credentialsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsFeedCredentials")) {
-			jsonToValue(&credentials, node, "CatalogsFeedCredentials", "CatalogsFeedCredentials");
-		} else {
-			
-			CatalogsFeedCredentials* obj = static_cast<CatalogsFeedCredentials*> (&credentials);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *locationKey = "location";
 	node = json_object_get_member(pJsonObject, locationKey);
 	if (node !=NULL) {
@@ -158,6 +147,17 @@ CatalogsFeedsUpdateRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&location, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
@@ -202,6 +202,20 @@ CatalogsFeedsUpdateRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("CatalogsFeedCredentials")) {
+		CatalogsFeedCredentials obj = getCredentials();
+		node = converttoJson(&obj, "CatalogsFeedCredentials", "");
+	}
+	else {
+		
+		CatalogsFeedCredentials obj = static_cast<CatalogsFeedCredentials> (getCredentials());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *credentialsKey = "credentials";
+	json_object_set_member(pJsonObject, credentialsKey, node);
 	if (isprimitive("ProductAvailabilityType")) {
 		ProductAvailabilityType obj = getDefaultAvailability();
 		node = converttoJson(&obj, "ProductAvailabilityType", "");
@@ -230,15 +244,6 @@ CatalogsFeedsUpdateRequest::toJson()
 	}
 	const gchar *default_currencyKey = "default_currency";
 	json_object_set_member(pJsonObject, default_currencyKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("CatalogsFormat")) {
 		CatalogsFormat obj = getFormat();
 		node = converttoJson(&obj, "CatalogsFormat", "");
@@ -253,20 +258,6 @@ CatalogsFeedsUpdateRequest::toJson()
 	}
 	const gchar *formatKey = "format";
 	json_object_set_member(pJsonObject, formatKey, node);
-	if (isprimitive("CatalogsFeedCredentials")) {
-		CatalogsFeedCredentials obj = getCredentials();
-		node = converttoJson(&obj, "CatalogsFeedCredentials", "");
-	}
-	else {
-		
-		CatalogsFeedCredentials obj = static_cast<CatalogsFeedCredentials> (getCredentials());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *credentialsKey = "credentials";
-	json_object_set_member(pJsonObject, credentialsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getLocation();
 		node = converttoJson(&obj, "std::string", "");
@@ -276,6 +267,15 @@ CatalogsFeedsUpdateRequest::toJson()
 	}
 	const gchar *locationKey = "location";
 	json_object_set_member(pJsonObject, locationKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("CatalogsFeedProcessingSchedule")) {
 		CatalogsFeedProcessingSchedule obj = getPreferredProcessingSchedule();
 		node = converttoJson(&obj, "CatalogsFeedProcessingSchedule", "");
@@ -312,6 +312,18 @@ CatalogsFeedsUpdateRequest::toJson()
 	return ret;
 }
 
+CatalogsFeedCredentials
+CatalogsFeedsUpdateRequest::getCredentials()
+{
+	return credentials;
+}
+
+void
+CatalogsFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+{
+	this->credentials = credentials;
+}
+
 ProductAvailabilityType
 CatalogsFeedsUpdateRequest::getDefaultAvailability()
 {
@@ -336,18 +348,6 @@ CatalogsFeedsUpdateRequest::setDefaultCurrency(NullableCurrency  default_currenc
 	this->default_currency = default_currency;
 }
 
-std::string
-CatalogsFeedsUpdateRequest::getName()
-{
-	return name;
-}
-
-void
-CatalogsFeedsUpdateRequest::setName(std::string  name)
-{
-	this->name = name;
-}
-
 CatalogsFormat
 CatalogsFeedsUpdateRequest::getFormat()
 {
@@ -360,18 +360,6 @@ CatalogsFeedsUpdateRequest::setFormat(CatalogsFormat  format)
 	this->format = format;
 }
 
-CatalogsFeedCredentials
-CatalogsFeedsUpdateRequest::getCredentials()
-{
-	return credentials;
-}
-
-void
-CatalogsFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials  credentials)
-{
-	this->credentials = credentials;
-}
-
 std::string
 CatalogsFeedsUpdateRequest::getLocation()
 {
@@ -382,6 +370,18 @@ void
 CatalogsFeedsUpdateRequest::setLocation(std::string  location)
 {
 	this->location = location;
+}
+
+std::string
+CatalogsFeedsUpdateRequest::getName()
+{
+	return name;
+}
+
+void
+CatalogsFeedsUpdateRequest::setName(std::string  name)
+{
+	this->name = name;
 }
 
 CatalogsFeedProcessingSchedule

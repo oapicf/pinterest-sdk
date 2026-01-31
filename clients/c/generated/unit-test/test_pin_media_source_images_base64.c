@@ -22,15 +22,15 @@ pin_media_source_images_base64_t* instantiate_pin_media_source_images_base64(int
   pin_media_source_images_base64_t* pin_media_source_images_base64 = NULL;
   if (include_optional) {
     pin_media_source_images_base64 = pin_media_source_images_base64_create(
-      pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_multiple_image_base64,
+      0,
       list_createList(),
-      0
+      pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_multiple_image_base64
     );
   } else {
     pin_media_source_images_base64 = pin_media_source_images_base64_create(
-      pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_multiple_image_base64,
+      0,
       list_createList(),
-      0
+      pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_multiple_image_base64
     );
   }
 

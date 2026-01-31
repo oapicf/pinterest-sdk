@@ -7,14 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { MediaUploadDetails } from './mediaUploadDetails';
+import { Media } from './media';
 
 
 export interface MediaList200Response { 
-    /**
-     * Media
-     */
-    items: Array<MediaUploadDetails>;
     bookmark?: string | null;
+    items: Array<Media>;
 }
 

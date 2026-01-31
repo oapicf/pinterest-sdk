@@ -32,6 +32,30 @@ class AudienceTest : ShouldSpec() {
             //modelInstance.adAccountId shouldBe ("TODO")
         }
 
+        // to test the property `audienceType` - <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+        should("test audienceType") {
+            // uncomment below to test the property
+            //modelInstance.audienceType shouldBe ("TODO")
+        }
+
+        // to test the property `createdByCompanyName` - The company that created this audience.
+        should("test createdByCompanyName") {
+            // uncomment below to test the property
+            //modelInstance.createdByCompanyName shouldBe ("TODO")
+        }
+
+        // to test the property `createdTimestamp` - Creation time. Unix timestamp in seconds.
+        should("test createdTimestamp") {
+            // uncomment below to test the property
+            //modelInstance.createdTimestamp shouldBe ("TODO")
+        }
+
+        // to test the property `description` - Audience description.
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
         // to test the property `id` - Audience ID.
         should("test id") {
             // uncomment below to test the property
@@ -42,18 +66,6 @@ class AudienceTest : ShouldSpec() {
         should("test name") {
             // uncomment below to test the property
             //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `audienceType` - <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-        should("test audienceType") {
-            // uncomment below to test the property
-            //modelInstance.audienceType shouldBe ("TODO")
-        }
-
-        // to test the property `description` - Audience description.
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
         }
 
         // to test the property `rule`
@@ -78,12 +90,6 @@ class AudienceTest : ShouldSpec() {
         should("test type") {
             // uncomment below to test the property
             //modelInstance.type shouldBe ("TODO")
-        }
-
-        // to test the property `createdTimestamp` - Creation time. Unix timestamp in seconds.
-        should("test createdTimestamp") {
-            // uncomment below to test the property
-            //modelInstance.createdTimestamp shouldBe ("TODO")
         }
 
         // to test the property `updatedTimestamp` - Last update time. Unix timestamp in seconds.

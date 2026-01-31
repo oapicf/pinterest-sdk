@@ -13,13 +13,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportResponseData   {
   
-  private BulkReportingJobStatus reportStatus;
-  private String token;
   private String message;
+  private BulkReportingJobStatus reportStatus;
   private String status;
+  private String token;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("message")
+  public String getMessage() {
+    return message;
+  }
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
   /**
    **/
@@ -37,30 +49,6 @@ public class CreateMMMReportResponseData   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("token")
-  public String getToken() {
-    return token;
-  }
-  public void setToken(String token) {
-    this.token = token;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("message")
-  public String getMessage() {
-    return message;
-  }
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  /**
-   **/
-  
   @ApiModelProperty(example = "success", value = "")
   @JsonProperty("status")
   public String getStatus() {
@@ -68,6 +56,18 @@ public class CreateMMMReportResponseData   {
   }
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("token")
+  public String getToken() {
+    return token;
+  }
+  public void setToken(String token) {
+    this.token = token;
   }
 
 
@@ -80,15 +80,15 @@ public class CreateMMMReportResponseData   {
       return false;
     }
     CreateMMMReportResponseData createMMMReportResponseData = (CreateMMMReportResponseData) o;
-    return Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
-        Objects.equals(this.token, createMMMReportResponseData.token) &&
-        Objects.equals(this.message, createMMMReportResponseData.message) &&
-        Objects.equals(this.status, createMMMReportResponseData.status);
+    return Objects.equals(this.message, createMMMReportResponseData.message) &&
+        Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
+        Objects.equals(this.status, createMMMReportResponseData.status) &&
+        Objects.equals(this.token, createMMMReportResponseData.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, message, status);
+    return Objects.hash(message, reportStatus, status, token);
   }
 
   @Override
@@ -96,10 +96,10 @@ public class CreateMMMReportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportResponseData {\n");
     
-    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("}");
     return sb.toString();
   }

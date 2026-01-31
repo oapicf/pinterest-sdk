@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **bool** |  | [optional] [default to true]
-**values** | **float** |  | 
 **negated** | **bool** |  | [optional] [default to false]
+**values** | **float** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

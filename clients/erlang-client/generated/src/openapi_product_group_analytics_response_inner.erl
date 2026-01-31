@@ -5,13 +5,13 @@
 -export_type([openapi_product_group_analytics_response_inner/0]).
 
 -type openapi_product_group_analytics_response_inner() ::
-    #{ 'PRODUCT_GROUP_ID' := binary(),
-       'DATE' => calendar:date()
+    #{ 'DATE' => calendar:date(),
+       'PRODUCT_GROUP_ID' := binary()
      }.
 
-encode(#{ 'PRODUCT_GROUP_ID' := PRODUCTGROUPID,
-          'DATE' := DATE
+encode(#{ 'DATE' := DATE,
+          'PRODUCT_GROUP_ID' := PRODUCTGROUPID
         }) ->
-    #{ 'PRODUCT_GROUP_ID' => PRODUCTGROUPID,
-       'DATE' => DATE
+    #{ 'DATE' => DATE,
+       'PRODUCT_GROUP_ID' => PRODUCTGROUPID
      }.

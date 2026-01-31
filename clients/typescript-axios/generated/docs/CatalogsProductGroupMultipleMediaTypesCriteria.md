@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**Array&lt;MediaType&gt;**](MediaType.md) |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**values** | [**Array&lt;MediaType&gt;**](MediaType.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupMultipleMediaTypesCriteria } from './api';
 
 const instance: CatalogsProductGroupMultipleMediaTypesCriteria = {
-    values,
     negated,
+    values,
 };
 ```
 

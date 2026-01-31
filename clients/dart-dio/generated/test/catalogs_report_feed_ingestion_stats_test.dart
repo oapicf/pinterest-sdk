@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsReportFeedIngestionStats, () {
-    // String reportType
-    test('to test the property `reportType`', () async {
-      // TODO
-    });
-
     // ID of the catalog entity.
     // String catalogId
     test('to test the property `catalogId`', () async {
@@ -39,6 +34,11 @@ void main() {
     // Number of occurrences of the issue
     // int occurrences
     test('to test the property `occurrences`', () async {
+      // TODO
+    });
+
+    // String reportType
+    test('to test the property `reportType`', () async {
       // TODO
     });
 

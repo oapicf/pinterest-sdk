@@ -13,15 +13,15 @@ module.exports = {
                 ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
             },
             {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog - [${labelPrefix}catalog_id]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}item_ids`,
                 label: `[${labelPrefix}item_ids]`,
                 required: true,
                 list: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog - [${labelPrefix}catalog_id]`,
                 type: 'string',
             },
             {
@@ -44,8 +44,8 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'item_ids': bundle.inputData?.[`${keyPrefix}item_ids`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'item_ids': bundle.inputData?.[`${keyPrefix}item_ids`],
             'hotel_ids': bundle.inputData?.[`${keyPrefix}hotel_ids`],
             'creative_assets_ids': bundle.inputData?.[`${keyPrefix}creative_assets_ids`],
         }

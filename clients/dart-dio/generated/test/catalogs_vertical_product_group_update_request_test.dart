@@ -12,8 +12,8 @@ void main() {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
+    // Country country
+    test('to test the property `country`', () async {
       // TODO
     });
 
@@ -27,13 +27,13 @@ void main() {
       // TODO
     });
 
-    // Country country
-    test('to test the property `country`', () async {
+    // CatalogsLocale locale
+    test('to test the property `locale`', () async {
       // TODO
     });
 
-    // CatalogsLocale locale
-    test('to test the property `locale`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

@@ -23,20 +23,20 @@ BulkDownloadRequest_campaign_filter::~BulkDownloadRequest_campaign_filter()
 void
 BulkDownloadRequest_campaign_filter::__init()
 {
-	//start_time = std::string();
+	//new std::list()std::list> campaign_status;
 	//end_time = std::string();
 	//name = std::string();
-	//new std::list()std::list> campaign_status;
 	//new std::list()std::list> objective_type;
+	//start_time = std::string();
 }
 
 void
 BulkDownloadRequest_campaign_filter::__cleanup()
 {
-	//if(start_time != NULL) {
-	//
-	//delete start_time;
-	//start_time = NULL;
+	//if(campaign_status != NULL) {
+	//campaign_status.RemoveAll(true);
+	//delete campaign_status;
+	//campaign_status = NULL;
 	//}
 	//if(end_time != NULL) {
 	//
@@ -48,15 +48,15 @@ BulkDownloadRequest_campaign_filter::__cleanup()
 	//delete name;
 	//name = NULL;
 	//}
-	//if(campaign_status != NULL) {
-	//campaign_status.RemoveAll(true);
-	//delete campaign_status;
-	//campaign_status = NULL;
-	//}
 	//if(objective_type != NULL) {
 	//objective_type.RemoveAll(true);
 	//delete objective_type;
 	//objective_type = NULL;
+	//}
+	//if(start_time != NULL) {
+	//
+	//delete start_time;
+	//start_time = NULL;
 	//}
 	//
 }
@@ -66,39 +66,6 @@ BulkDownloadRequest_campaign_filter::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *start_timeKey = "start_time";
-	node = json_object_get_member(pJsonObject, start_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&start_time, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *end_timeKey = "end_time";
-	node = json_object_get_member(pJsonObject, end_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&end_time, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *campaign_statusKey = "campaign_status";
 	node = json_object_get_member(pJsonObject, campaign_statusKey);
 	if (node !=NULL) {
@@ -122,6 +89,28 @@ BulkDownloadRequest_campaign_filter::fromJson(char* jsonStr)
 			campaign_status = new_list;
 		}
 		
+	}
+	const gchar *end_timeKey = "end_time";
+	node = json_object_get_member(pJsonObject, end_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&end_time, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *objective_typeKey = "objective_type";
 	node = json_object_get_member(pJsonObject, objective_typeKey);
@@ -147,6 +136,17 @@ BulkDownloadRequest_campaign_filter::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *start_timeKey = "start_time";
+	node = json_object_get_member(pJsonObject, start_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&start_time, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 BulkDownloadRequest_campaign_filter::BulkDownloadRequest_campaign_filter(char* json)
@@ -159,33 +159,6 @@ BulkDownloadRequest_campaign_filter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getStartTime();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *start_timeKey = "start_time";
-	json_object_set_member(pJsonObject, start_timeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getEndTime();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *end_timeKey = "end_time";
-	json_object_set_member(pJsonObject, end_timeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("CampaignSummaryStatus")) {
 		list<CampaignSummaryStatus> new_list = static_cast<list <CampaignSummaryStatus> > (getCampaignStatus());
 		node = converttoJson(&new_list, "CampaignSummaryStatus", "array");
@@ -211,6 +184,24 @@ BulkDownloadRequest_campaign_filter::toJson()
 	
 	const gchar *campaign_statusKey = "campaign_status";
 	json_object_set_member(pJsonObject, campaign_statusKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getEndTime();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *end_timeKey = "end_time";
+	json_object_set_member(pJsonObject, end_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("ObjectiveType")) {
 		list<ObjectiveType> new_list = static_cast<list <ObjectiveType> > (getObjectiveType());
 		node = converttoJson(&new_list, "ObjectiveType", "array");
@@ -236,6 +227,15 @@ BulkDownloadRequest_campaign_filter::toJson()
 	
 	const gchar *objective_typeKey = "objective_type";
 	json_object_set_member(pJsonObject, objective_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getStartTime();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *start_timeKey = "start_time";
+	json_object_set_member(pJsonObject, start_timeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -244,16 +244,16 @@ BulkDownloadRequest_campaign_filter::toJson()
 	return ret;
 }
 
-std::string
-BulkDownloadRequest_campaign_filter::getStartTime()
+std::list<CampaignSummaryStatus>
+BulkDownloadRequest_campaign_filter::getCampaignStatus()
 {
-	return start_time;
+	return campaign_status;
 }
 
 void
-BulkDownloadRequest_campaign_filter::setStartTime(std::string  start_time)
+BulkDownloadRequest_campaign_filter::setCampaignStatus(std::list <CampaignSummaryStatus> campaign_status)
 {
-	this->start_time = start_time;
+	this->campaign_status = campaign_status;
 }
 
 std::string
@@ -280,18 +280,6 @@ BulkDownloadRequest_campaign_filter::setName(std::string  name)
 	this->name = name;
 }
 
-std::list<CampaignSummaryStatus>
-BulkDownloadRequest_campaign_filter::getCampaignStatus()
-{
-	return campaign_status;
-}
-
-void
-BulkDownloadRequest_campaign_filter::setCampaignStatus(std::list <CampaignSummaryStatus> campaign_status)
-{
-	this->campaign_status = campaign_status;
-}
-
 std::list<ObjectiveType>
 BulkDownloadRequest_campaign_filter::getObjectiveType()
 {
@@ -302,6 +290,18 @@ void
 BulkDownloadRequest_campaign_filter::setObjectiveType(std::list <ObjectiveType> objective_type)
 {
 	this->objective_type = objective_type;
+}
+
+std::string
+BulkDownloadRequest_campaign_filter::getStartTime()
+{
+	return start_time;
+}
+
+void
+BulkDownloadRequest_campaign_filter::setStartTime(std::string  start_time)
+{
+	this->start_time = start_time;
 }
 
 

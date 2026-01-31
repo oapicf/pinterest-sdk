@@ -19,19 +19,19 @@ typedef struct integration_logs_invalid_log_response_rejected_logs_inner_t integ
 
 
 typedef struct integration_logs_invalid_log_response_rejected_logs_inner_t {
-    int log_index; //numeric
     char *field; // string
-    char *value; // string
+    int log_index; //numeric
     char *reason; // string
+    char *value; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } integration_logs_invalid_log_response_rejected_logs_inner_t;
 
 __attribute__((deprecated)) integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_create(
-    int log_index,
     char *field,
-    char *value,
-    char *reason
+    int log_index,
+    char *reason,
+    char *value
 );
 
 void integration_logs_invalid_log_response_rejected_logs_inner_free(integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner);

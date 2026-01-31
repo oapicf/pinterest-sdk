@@ -15,18 +15,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateAssetGroupBody  {
   
  /**
-  * Asset Group name
-  */
-  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
-
-  private String assetGroupName;
-
- /**
   * Asset group description
   */
   @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", required = true, value = "Asset group description")
 
   private String assetGroupDescription;
+
+ /**
+  * Asset Group name
+  */
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
+
+  private String assetGroupName;
 
  /**
   * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
@@ -36,25 +36,6 @@ public class CreateAssetGroupBody  {
   @Valid
 
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
- /**
-   * Asset Group name
-   * @return assetGroupName
-  **/
-  @JsonProperty("asset_group_name")
-  @NotNull
-  public String getAssetGroupName() {
-    return assetGroupName;
-  }
-
-  public void setAssetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-  }
-
-  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-    return this;
-  }
-
  /**
    * Asset group description
    * @return assetGroupDescription
@@ -71,6 +52,25 @@ public class CreateAssetGroupBody  {
 
   public CreateAssetGroupBody assetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+    return this;
+  }
+
+ /**
+   * Asset Group name
+   * @return assetGroupName
+  **/
+  @JsonProperty("asset_group_name")
+  @NotNull
+  public String getAssetGroupName() {
+    return assetGroupName;
+  }
+
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
+  }
+
+  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
     return this;
   }
 
@@ -107,14 +107,14 @@ public class CreateAssetGroupBody  {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(this.assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @Override
@@ -122,8 +122,8 @@ public class CreateAssetGroupBody  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
     
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

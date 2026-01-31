@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemResponseOneOf1"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemResponseOneOf1"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsItemErrorResponse = openapi_server.resourceTypes.CatalogsCreativeAssetsItemErrorResponse
+  CatalogsHotelItemErrorResponse = openapi_server.resourceTypes.CatalogsHotelItemErrorResponse
+  CatalogsRetailItemErrorResponse = openapi_server.resourceTypes.CatalogsRetailItemErrorResponse
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
+}
+resourceTypes {
+
+  ItemResponseOneOf1 {
+    title = ItemResponseOneOf1
+    description = ItemResponseOneOf1
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        errors {
+          type = array
+          items.type = ItemValidationEvent
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = false
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = false
+        }
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemResponseOneOf1 {
+    title = ItemResponseOneOf1
+    description = ItemResponseOneOf1
+    implements = openapi_server.resourceTypes.ItemResponseOneOf1
+
+  }
+}

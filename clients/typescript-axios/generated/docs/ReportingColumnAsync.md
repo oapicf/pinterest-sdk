@@ -6,6 +6,10 @@ Reporting columns
 
 * `SpendInMicroDollar` (value: `'SPEND_IN_MICRO_DOLLAR'`)
 
+* `AdsCreditSpendInMicroDollar` (value: `'ADS_CREDIT_SPEND_IN_MICRO_DOLLAR'`)
+
+* `AdsCreditSpendInDollar` (value: `'ADS_CREDIT_SPEND_IN_DOLLAR'`)
+
 * `PaidImpression` (value: `'PAID_IMPRESSION'`)
 
 * `SpendInDollar` (value: `'SPEND_IN_DOLLAR'`)
@@ -22,11 +26,17 @@ Reporting columns
 
 * `OutboundCtr` (value: `'OUTBOUND_CTR'`)
 
+* `OutboundCtr1` (value: `'OUTBOUND_CTR_1'`)
+
 * `CostPerOutboundClick` (value: `'COST_PER_OUTBOUND_CLICK'`)
 
 * `CampaignName` (value: `'CAMPAIGN_NAME'`)
 
 * `CampaignStatus` (value: `'CAMPAIGN_STATUS'`)
+
+* `CampaignBrandLabel` (value: `'CAMPAIGN_BRAND_LABEL'`)
+
+* `CampaignCustomLabels` (value: `'CAMPAIGN_CUSTOM_LABELS'`)
 
 * `PinPromotionStatus` (value: `'PIN_PROMOTION_STATUS'`)
 
@@ -78,11 +88,43 @@ Reporting columns
 
 * `AdGroupStatus` (value: `'AD_GROUP_STATUS'`)
 
+* `AdGroupBudgetType` (value: `'AD_GROUP_BUDGET_TYPE'`)
+
+* `AdGroupBudgetInLocalCurrency` (value: `'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY'`)
+
 * `AdGroupEntityStatus` (value: `'AD_GROUP_ENTITY_STATUS'`)
+
+* `AdGroupBidMultiplier` (value: `'AD_GROUP_BID_MULTIPLIER'`)
 
 * `ProductGroupId` (value: `'PRODUCT_GROUP_ID'`)
 
 * `ProductGroupStatus` (value: `'PRODUCT_GROUP_STATUS'`)
+
+* `PromoId` (value: `'PROMO_ID'`)
+
+* `PromoName` (value: `'PROMO_NAME'`)
+
+* `ProductItemName` (value: `'PRODUCT_ITEM_NAME'`)
+
+* `ProductItemImageUrl` (value: `'PRODUCT_ITEM_IMAGE_URL'`)
+
+* `ProductItemPrice` (value: `'PRODUCT_ITEM_PRICE'`)
+
+* `ProductItemProductUrl` (value: `'PRODUCT_ITEM_PRODUCT_URL'`)
+
+* `ProductItemPinUrl` (value: `'PRODUCT_ITEM_PIN_URL'`)
+
+* `ProductItemBrand` (value: `'PRODUCT_ITEM_BRAND'`)
+
+* `ProductItemDescription` (value: `'PRODUCT_ITEM_DESCRIPTION'`)
+
+* `ProductItemSalePrice` (value: `'PRODUCT_ITEM_SALE_PRICE'`)
+
+* `ProductItemProductType` (value: `'PRODUCT_ITEM_PRODUCT_TYPE'`)
+
+* `ProductItemProductCategory` (value: `'PRODUCT_ITEM_PRODUCT_CATEGORY'`)
+
+* `ProductItemCurrency` (value: `'PRODUCT_ITEM_CURRENCY'`)
 
 * `OrderLineId` (value: `'ORDER_LINE_ID'`)
 
@@ -117,6 +159,8 @@ Reporting columns
 * `TotalImpressionFrequency` (value: `'TOTAL_IMPRESSION_FREQUENCY'`)
 
 * `CostPerOutboundClickInDollar` (value: `'COST_PER_OUTBOUND_CLICK_IN_DOLLAR'`)
+
+* `CostPerOutboundClickInDollar1` (value: `'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1'`)
 
 * `TotalEngagementPageVisit` (value: `'TOTAL_ENGAGEMENT_PAGE_VISIT'`)
 
@@ -330,7 +374,13 @@ Reporting columns
 
 * `CampaignLifetimeSpendCap` (value: `'CAMPAIGN_LIFETIME_SPEND_CAP'`)
 
+* `AdGroupOptimization` (value: `'AD_GROUP_OPTIMIZATION'`)
+
 * `CampaignDailySpendCap` (value: `'CAMPAIGN_DAILY_SPEND_CAP'`)
+
+* `CampaignBudgetOptimization` (value: `'CAMPAIGN_BUDGET_OPTIMIZATION'`)
+
+* `IsPremiereCampaign` (value: `'IS_PREMIERE_CAMPAIGN'`)
 
 * `TotalPageVisitDesktopActionToDesktopConversion` (value: `'TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION'`)
 
@@ -550,6 +600,10 @@ Reporting columns
 
 * `TotalAppInstall` (value: `'TOTAL_APP_INSTALL'`)
 
+* `TotalAddToWishlist` (value: `'TOTAL_ADD_TO_WISHLIST'`)
+
+* `TotalSubscribe` (value: `'TOTAL_SUBSCRIBE'`)
+
 * `TotalSignupValueInMicroDollar` (value: `'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR'`)
 
 * `TotalCheckoutValueInMicroDollar` (value: `'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR'`)
@@ -580,7 +634,13 @@ Reporting columns
 
 * `CustomRoas` (value: `'CUSTOM_ROAS'`)
 
+* `ProductGroupAdImageTag` (value: `'PRODUCT_GROUP_AD_IMAGE_TAG'`)
+
+* `ProductGroupAdVideoTag` (value: `'PRODUCT_GROUP_AD_VIDEO_TAG'`)
+
 * `Video3SecViews1` (value: `'VIDEO_3SEC_VIEWS_1'`)
+
+* `Video15SecUniqueViews1` (value: `'VIDEO_15SEC_UNIQUE_VIEWS_1'`)
 
 * `VideoP100Complete1` (value: `'VIDEO_P100_COMPLETE_1'`)
 
@@ -597,6 +657,8 @@ Reporting columns
 * `VideoMrcViews1` (value: `'VIDEO_MRC_VIEWS_1'`)
 
 * `Video3SecViews2` (value: `'VIDEO_3SEC_VIEWS_2'`)
+
+* `Video15SecUniqueViews2` (value: `'VIDEO_15SEC_UNIQUE_VIEWS_2'`)
 
 * `VideoP100Complete2` (value: `'VIDEO_P100_COMPLETE_2'`)
 
@@ -616,6 +678,8 @@ Reporting columns
 
 * `VideoLength` (value: `'VIDEO_LENGTH'`)
 
+* `VideoSpendInDollar` (value: `'VIDEO_SPEND_IN_DOLLAR'`)
+
 * `CpvInMicroDollar` (value: `'CPV_IN_MICRO_DOLLAR'`)
 
 * `EcpvInDollar` (value: `'ECPV_IN_DOLLAR'`)
@@ -629,6 +693,8 @@ Reporting columns
 * `EcpcvP95InDollar` (value: `'ECPCV_P95_IN_DOLLAR'`)
 
 * `TotalVideo3SecViews` (value: `'TOTAL_VIDEO_3SEC_VIEWS'`)
+
+* `TotalVideo15SecUniqueViews` (value: `'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS'`)
 
 * `TotalVideoP100Complete` (value: `'TOTAL_VIDEO_P100_COMPLETE'`)
 
@@ -1081,6 +1147,22 @@ Reporting columns
 * `TotalInappViewAppInstall` (value: `'TOTAL_INAPP_VIEW_APP_INSTALL'`)
 
 * `TotalInappViewAppInstallValueInMicroDollar` (value: `'TOTAL_INAPP_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR'`)
+
+* `TotalAppInstallConversionRate` (value: `'TOTAL_APP_INSTALL_CONVERSION_RATE'`)
+
+* `TotalInappAppInstallConversionRate` (value: `'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE'`)
+
+* `IdeaPinPageForward1` (value: `'IDEA_PIN_PAGE_FORWARD_1'`)
+
+* `IdeaPinPageForward2` (value: `'IDEA_PIN_PAGE_FORWARD_2'`)
+
+* `IdeaPinPageBackward1` (value: `'IDEA_PIN_PAGE_BACKWARD_1'`)
+
+* `IdeaPinPageBackward2` (value: `'IDEA_PIN_PAGE_BACKWARD_2'`)
+
+* `TotalIdeaPinPageForward` (value: `'TOTAL_IDEA_PIN_PAGE_FORWARD'`)
+
+* `TotalIdeaPinPageBackward` (value: `'TOTAL_IDEA_PIN_PAGE_BACKWARD'`)
 
 * `IdeaPinProductTagVisit1` (value: `'IDEA_PIN_PRODUCT_TAG_VISIT_1'`)
 

@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.TargetingTemplateResponseData;
+import apimodels.TargetingTemplateGetResponseData;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,43 +15,18 @@ import javax.validation.Valid;
 /**
  * TargetingTemplateList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TargetingTemplateList200Response   {
-  @JsonProperty("items")
-  @NotNull
-@Valid
-
-  private List<@Valid TargetingTemplateResponseData> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   
   private String bookmark;
 
-  public TargetingTemplateList200Response items(List<@Valid TargetingTemplateResponseData> items) {
-    this.items = items;
-    return this;
-  }
+  @JsonProperty("items")
+  @NotNull
+@Valid
 
-  public TargetingTemplateList200Response addItemsItem(TargetingTemplateResponseData itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Get items
-   * @return items
-  **/
-  public List<@Valid TargetingTemplateResponseData> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid TargetingTemplateResponseData> items) {
-    this.items = items;
-  }
+  private List<@Valid TargetingTemplateGetResponseData> items = new ArrayList<>();
 
   public TargetingTemplateList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -70,6 +45,31 @@ public class TargetingTemplateList200Response   {
     this.bookmark = bookmark;
   }
 
+  public TargetingTemplateList200Response items(List<@Valid TargetingTemplateGetResponseData> items) {
+    this.items = items;
+    return this;
+  }
+
+  public TargetingTemplateList200Response addItemsItem(TargetingTemplateGetResponseData itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  public List<@Valid TargetingTemplateGetResponseData> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid TargetingTemplateGetResponseData> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class TargetingTemplateList200Response   {
       return false;
     }
     TargetingTemplateList200Response targetingTemplateList200Response = (TargetingTemplateList200Response) o;
-    return Objects.equals(items, targetingTemplateList200Response.items) &&
-        Objects.equals(bookmark, targetingTemplateList200Response.bookmark);
+    return Objects.equals(bookmark, targetingTemplateList200Response.bookmark) &&
+        Objects.equals(items, targetingTemplateList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class TargetingTemplateList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -72,6 +72,6 @@ private class OASConversionTagListResponseTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASConversionTagListResponse conversionTagListResponse = new OASConversionTagListResponse();
-        System.assertEquals(new List<OASConversionTagResponse>(), conversionTagListResponse.items);
+        System.assertEquals(new List<OASConversionTag>(), conversionTagListResponse.items);
     }
 }

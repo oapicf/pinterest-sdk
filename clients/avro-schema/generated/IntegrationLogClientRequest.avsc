@@ -5,6 +5,11 @@
   "name": "IntegrationLogClientRequest",
   "fields": [
     {
+      "name": "host",
+      "type": "string",
+      "doc": "HTTP request host from host header."
+    },
+    {
       "name": "method",
       "type": {
         "type": "enum",
@@ -22,11 +27,6 @@
         ]
       },
       "doc": ""
-    },
-    {
-      "name": "host",
-      "type": "string",
-      "doc": "HTTP request host from host header."
     },
     {
       "name": "path",

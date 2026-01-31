@@ -19,7 +19,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TrackingUrls  {
   
   @ApiModelProperty(value = "")
-  private List<String> impression = new ArrayList<>();
+  private List<String> audienceVerification = new ArrayList<>();
+
+  @ApiModelProperty(value = "")
+  private List<String> buyableButton = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   private List<String> click = new ArrayList<>();
@@ -28,39 +31,68 @@ public class TrackingUrls  {
   private List<String> engagement = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<String> buyableButton = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-  private List<String> audienceVerification = new ArrayList<>();
+  private List<String> impression = new ArrayList<>();
  /**
-  * Get impression
-  * @return impression
+  * Get audienceVerification
+  * @return audienceVerification
   */
-  @JsonProperty("impression")
-  public List<String> getImpression() {
-    return impression;
+  @JsonProperty("audience_verification")
+  public List<String> getAudienceVerification() {
+    return audienceVerification;
   }
 
   /**
-   * Sets the <code>impression</code> property.
+   * Sets the <code>audienceVerification</code> property.
    */
- public void setImpression(List<String> impression) {
-    this.impression = impression;
+ public void setAudienceVerification(List<String> audienceVerification) {
+    this.audienceVerification = audienceVerification;
   }
 
   /**
-   * Sets the <code>impression</code> property.
+   * Sets the <code>audienceVerification</code> property.
    */
-  public TrackingUrls impression(List<String> impression) {
-    this.impression = impression;
+  public TrackingUrls audienceVerification(List<String> audienceVerification) {
+    this.audienceVerification = audienceVerification;
     return this;
   }
 
   /**
-   * Adds a new item to the <code>impression</code> list.
+   * Adds a new item to the <code>audienceVerification</code> list.
    */
-  public TrackingUrls addImpressionItem(String impressionItem) {
-    this.impression.add(impressionItem);
+  public TrackingUrls addAudienceVerificationItem(String audienceVerificationItem) {
+    this.audienceVerification.add(audienceVerificationItem);
+    return this;
+  }
+
+ /**
+  * Get buyableButton
+  * @return buyableButton
+  */
+  @JsonProperty("buyable_button")
+  public List<String> getBuyableButton() {
+    return buyableButton;
+  }
+
+  /**
+   * Sets the <code>buyableButton</code> property.
+   */
+ public void setBuyableButton(List<String> buyableButton) {
+    this.buyableButton = buyableButton;
+  }
+
+  /**
+   * Sets the <code>buyableButton</code> property.
+   */
+  public TrackingUrls buyableButton(List<String> buyableButton) {
+    this.buyableButton = buyableButton;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>buyableButton</code> list.
+   */
+  public TrackingUrls addBuyableButtonItem(String buyableButtonItem) {
+    this.buyableButton.add(buyableButtonItem);
     return this;
   }
 
@@ -129,66 +161,34 @@ public class TrackingUrls  {
   }
 
  /**
-  * Get buyableButton
-  * @return buyableButton
+  * Get impression
+  * @return impression
   */
-  @JsonProperty("buyable_button")
-  public List<String> getBuyableButton() {
-    return buyableButton;
+  @JsonProperty("impression")
+  public List<String> getImpression() {
+    return impression;
   }
 
   /**
-   * Sets the <code>buyableButton</code> property.
+   * Sets the <code>impression</code> property.
    */
- public void setBuyableButton(List<String> buyableButton) {
-    this.buyableButton = buyableButton;
+ public void setImpression(List<String> impression) {
+    this.impression = impression;
   }
 
   /**
-   * Sets the <code>buyableButton</code> property.
+   * Sets the <code>impression</code> property.
    */
-  public TrackingUrls buyableButton(List<String> buyableButton) {
-    this.buyableButton = buyableButton;
+  public TrackingUrls impression(List<String> impression) {
+    this.impression = impression;
     return this;
   }
 
   /**
-   * Adds a new item to the <code>buyableButton</code> list.
+   * Adds a new item to the <code>impression</code> list.
    */
-  public TrackingUrls addBuyableButtonItem(String buyableButtonItem) {
-    this.buyableButton.add(buyableButtonItem);
-    return this;
-  }
-
- /**
-  * Get audienceVerification
-  * @return audienceVerification
-  */
-  @JsonProperty("audience_verification")
-  public List<String> getAudienceVerification() {
-    return audienceVerification;
-  }
-
-  /**
-   * Sets the <code>audienceVerification</code> property.
-   */
- public void setAudienceVerification(List<String> audienceVerification) {
-    this.audienceVerification = audienceVerification;
-  }
-
-  /**
-   * Sets the <code>audienceVerification</code> property.
-   */
-  public TrackingUrls audienceVerification(List<String> audienceVerification) {
-    this.audienceVerification = audienceVerification;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>audienceVerification</code> list.
-   */
-  public TrackingUrls addAudienceVerificationItem(String audienceVerificationItem) {
-    this.audienceVerification.add(audienceVerificationItem);
+  public TrackingUrls addImpressionItem(String impressionItem) {
+    this.impression.add(impressionItem);
     return this;
   }
 
@@ -202,16 +202,16 @@ public class TrackingUrls  {
       return false;
     }
     TrackingUrls trackingUrls = (TrackingUrls) o;
-    return Objects.equals(this.impression, trackingUrls.impression) &&
+    return Objects.equals(this.audienceVerification, trackingUrls.audienceVerification) &&
+        Objects.equals(this.buyableButton, trackingUrls.buyableButton) &&
         Objects.equals(this.click, trackingUrls.click) &&
         Objects.equals(this.engagement, trackingUrls.engagement) &&
-        Objects.equals(this.buyableButton, trackingUrls.buyableButton) &&
-        Objects.equals(this.audienceVerification, trackingUrls.audienceVerification);
+        Objects.equals(this.impression, trackingUrls.impression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(impression, click, engagement, buyableButton, audienceVerification);
+    return Objects.hash(audienceVerification, buyableButton, click, engagement, impression);
   }
 
   @Override
@@ -219,11 +219,11 @@ public class TrackingUrls  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrackingUrls {\n");
     
-    sb.append("    impression: ").append(toIndentedString(impression)).append("\n");
+    sb.append("    audienceVerification: ").append(toIndentedString(audienceVerification)).append("\n");
+    sb.append("    buyableButton: ").append(toIndentedString(buyableButton)).append("\n");
     sb.append("    click: ").append(toIndentedString(click)).append("\n");
     sb.append("    engagement: ").append(toIndentedString(engagement)).append("\n");
-    sb.append("    buyableButton: ").append(toIndentedString(buyableButton)).append("\n");
-    sb.append("    audienceVerification: ").append(toIndentedString(audienceVerification)).append("\n");
+    sb.append("    impression: ").append(toIndentedString(impression)).append("\n");
     sb.append("}");
     return sb.toString();
   }

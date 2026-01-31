@@ -5,18 +5,18 @@ context("Test AdAccountOwner")
 
 model_instance <- AdAccountOwner$new()
 
-test_that("username", {
-  # tests for the property `username` (character)
-  # Public username for the user account
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
-})
-
 test_that("id", {
   # tests for the property `id` (character)
   # The owning account&#39;s user ID.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("username", {
+  # tests for the property `username` (character)
+  # Public username for the user account
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })

@@ -8,16 +8,16 @@ case class AudienceCreateRequest (
     /* Audience name. */
     _name: String,
     _rule: AudienceRule,
-    /* Audience description. */
-    _description: Option[String],
     /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
-    _audienceType: AudienceType
+    _audienceType: AudienceType,
+    /* Audience description. */
+    _description: Option[String]
 )
 object AudienceCreateRequest {
-    def toStringBody(var_adAccountId: Object, var_name: Object, var_rule: Object, var_description: Object, var_audienceType: Object) =
+    def toStringBody(var_adAccountId: Object, var_name: Object, var_rule: Object, var_audienceType: Object, var_description: Object) =
         s"""
         | {
-        | "adAccountId":$var_adAccountId,"name":$var_name,"rule":$var_rule,"description":$var_description,"audienceType":$var_audienceType
+        | "adAccountId":$var_adAccountId,"name":$var_name,"rule":$var_rule,"audienceType":$var_audienceType,"description":$var_description
         | }
         """.stripMargin
 }

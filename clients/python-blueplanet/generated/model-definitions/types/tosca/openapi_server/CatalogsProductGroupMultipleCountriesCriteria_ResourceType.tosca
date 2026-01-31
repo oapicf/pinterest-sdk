@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupMultipleCountriesCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupMultipleCountriesCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Country = openapi_server.resourceTypes.Country
+}
+resourceTypes {
+
+  CatalogsProductGroupMultipleCountriesCriteria {
+    title = CatalogsProductGroupMultipleCountriesCriteria
+    description = CatalogsProductGroupMultipleCountriesCriteria
+    derivedFrom = Root
+    properties {
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type = array
+          items.type = Country
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupMultipleCountriesCriteria {
+    title = CatalogsProductGroupMultipleCountriesCriteria
+    description = CatalogsProductGroupMultipleCountriesCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupMultipleCountriesCriteria
+
+  }
+}

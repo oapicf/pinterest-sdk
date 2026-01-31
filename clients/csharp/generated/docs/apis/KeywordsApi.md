@@ -33,7 +33,7 @@ See keyword metrics for a specified country, aggregated across all of Pinterest.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -89,7 +89,7 @@ Create keywords
 
 <a id="keywordsget"></a>
 # **KeywordsGet**
-> KeywordsGet200Response KeywordsGet (string adAccountId, string campaignId = null, string adGroupId = null, List<MatchType> matchTypes = null, int pageSize = null, string bookmark = null)
+> KeywordsGet200Response KeywordsGet (string adAccountId, string campaignId = null, string adGroupId = null, List<string> adGroupIds = null, List<MatchType> matchTypes = null, int pageSize = null, string bookmark = null)
 
 Get keywords
 
@@ -103,8 +103,9 @@ Get keywords
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **campaignId** | **string** | Campaign Id to use to filter the results. | [optional]  |
 | **adGroupId** | **string** | Ad group Id. | [optional]  |
+| **adGroupIds** | [**List&lt;string&gt;**](string.md) | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional]  |
 | **matchTypes** | [**List&lt;MatchType&gt;**](MatchType.md) | Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
 
 ### Return type
@@ -113,7 +114,7 @@ Get keywords
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -169,7 +170,7 @@ Update keywords
 
 <a id="trendingkeywordslist"></a>
 # **TrendingKeywordsList**
-> TrendingKeywordsResponse TrendingKeywordsList (TrendsSupportedRegion region, TrendType trendType, List<string> interests = null, List<string> genders = null, List<string> ages = null, List<string> includeKeywords = null, bool normalizeAgainstGroup = null, int limit = null)
+> TrendingKeywordsResponse TrendingKeywordsList (TrendsSupportedRegion region, TrendType trendType, List<string> interests = null, List<string> genders = null, List<string> ages = null, List<string> includeKeywords = null, bool normalizeAgainstGroup = null, int limit = null, bool includePrediction = null, bool includeDemographics = null)
 
 List trending keywords
 
@@ -188,6 +189,8 @@ List trending keywords
 | **includeKeywords** | [**List&lt;string&gt;**](string.md) | If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [optional]  |
 | **normalizeAgainstGroup** | **bool** | Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to false] |
 | **limit** | **int** | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [optional] [default to 50] |
+| **includePrediction** | **bool** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [optional] [default to false] |
+| **includeDemographics** | **bool** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [optional] [default to false] |
 
 ### Return type
 

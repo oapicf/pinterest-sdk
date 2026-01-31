@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "aem_db_enabled" },
+      {"model": "aem_enabled" },
+      {"model": "aem_external_id_enabled" },
+      {"model": "aem_fnln_enabled" },
+      {"model": "aem_ge_enabled" },
+      {"model": "aem_loc_enabled" },
+      {"model": "aem_ph_enabled" },
+      {"model": "md_frequency" },
+      {"model": "no_code_capi_domains" },
+    ]
+  }]
+}

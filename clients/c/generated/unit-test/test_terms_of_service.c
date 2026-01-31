@@ -22,17 +22,17 @@ terms_of_service_t* instantiate_terms_of_service(int include_optional) {
   terms_of_service_t* terms_of_service = NULL;
   if (include_optional) {
     terms_of_service = terms_of_service_create(
-      "2650449554526",
-      "example test",
+      "549755885175",
       true,
-      "549755885175"
+      "example test",
+      "2650449554526"
     );
   } else {
     terms_of_service = terms_of_service_create(
-      "2650449554526",
-      "example test",
+      "549755885175",
       true,
-      "549755885175"
+      "example test",
+      "2650449554526"
     );
   }
 

@@ -2,21 +2,22 @@ package models
 
 type AdAccount struct {
 
-	Id string `json:"id,omitempty"`
-
-	Name string `json:"name,omitempty"`
-
-	Owner AdAccountOwner `json:"owner,omitempty"`
-
 	Country Country `json:"country,omitempty"`
+
+	//  Creation time. Unix timestamp in seconds.
+	CreatedTime *int32 `json:"created_time,omitempty"`
 
 	Currency Currency `json:"currency,omitempty"`
 
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+
+	// Ad account name.
+	Name string `json:"name,omitempty"`
+
+	// Ad account owner
+	Owner AdAccountOwner `json:"owner,omitempty"`
+
 	Permissions []BusinessAccessRole `json:"permissions,omitempty"`
 
-	// Creation time. Unix timestamp in seconds.
-	CreatedTime *int32 `json:"created_time,omitempty"`
-
-	// Last update time. Unix timestamp in seconds.
 	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }

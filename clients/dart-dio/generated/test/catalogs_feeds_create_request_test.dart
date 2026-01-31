@@ -7,19 +7,23 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsFeedsCreateRequest, () {
+    // CatalogsFeedCredentials credentials
+    test('to test the property `credentials`', () async {
+      // TODO
+    });
+
+    // ProductAvailabilityType defaultAvailability
+    test('to test the property `defaultAvailability`', () async {
+      // TODO
+    });
+
+    // Country defaultCountry
+    test('to test the property `defaultCountry`', () async {
+      // TODO
+    });
+
     // NullableCurrency defaultCurrency
     test('to test the property `defaultCurrency`', () async {
-      // TODO
-    });
-
-    // A human-friendly name associated to a given feed.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // CatalogsFormat format
-    test('to test the property `format`', () async {
       // TODO
     });
 
@@ -28,8 +32,8 @@ void main() {
       // TODO
     });
 
-    // CatalogsFeedCredentials credentials
-    test('to test the property `credentials`', () async {
+    // CatalogsFormat format
+    test('to test the property `format`', () async {
       // TODO
     });
 
@@ -39,18 +43,14 @@ void main() {
       // TODO
     });
 
+    // A human-friendly name associated to a given feed.
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
     // CatalogsFeedProcessingSchedule preferredProcessingSchedule
     test('to test the property `preferredProcessingSchedule`', () async {
-      // TODO
-    });
-
-    // Country defaultCountry
-    test('to test the property `defaultCountry`', () async {
-      // TODO
-    });
-
-    // ProductAvailabilityType defaultAvailability
-    test('to test the property `defaultAvailability`', () async {
       // TODO
     });
 

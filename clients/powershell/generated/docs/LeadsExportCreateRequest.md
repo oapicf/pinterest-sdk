@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartDate** | **String** | Export leads collected on and after start date (UTC). Format: YYYY-MM-DD | 
-**EndDate** | **String** | Export leads collected on and before end date (UTC). Format: YYYY-MM-DD | 
 **AdId** | **String** | ID for the ad collecting leads | 
+**EndDate** | **String** | Export leads collected on and before end date (UTC). Format: YYYY-MM-DD | 
+**StartDate** | **String** | Export leads collected on and after start date (UTC). Format: YYYY-MM-DD | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LeadsExportCreateRequest = Initialize-PSOpenAPIToolsLeadsExportCreateRequest  -StartDate 2020-12-20 `
+$LeadsExportCreateRequest = Initialize-PSOpenAPIToolsLeadsExportCreateRequest  -AdId 687201361754 `
  -EndDate 2020-12-20 `
- -AdId 687201361754
+ -StartDate 2020-12-20
 ```
 
 - Convert the resource to JSON

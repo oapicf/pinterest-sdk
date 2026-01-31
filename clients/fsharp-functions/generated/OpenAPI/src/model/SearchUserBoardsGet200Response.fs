@@ -12,10 +12,10 @@ module SearchUserBoardsGet200Response =
 
   [<CLIMutable>]
   type SearchUserBoardsGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : Board[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : Board[];
   }
 
   //#endregion

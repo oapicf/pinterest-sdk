@@ -32,6 +32,16 @@ The field types supported by the update mask
 
 * `CustomLabel4` (value: `'custom_label_4'`)
 
+* `CustomNumber0` (value: `'custom_number_0'`)
+
+* `CustomNumber1` (value: `'custom_number_1'`)
+
+* `CustomNumber2` (value: `'custom_number_2'`)
+
+* `CustomNumber3` (value: `'custom_number_3'`)
+
+* `CustomNumber4` (value: `'custom_number_4'`)
+
 * `Description` (value: `'description'`)
 
 * `FreeShippingLabel` (value: `'free_shipping_label'`)
@@ -89,5 +99,7 @@ The field types supported by the update mask
 * `VariantNames` (value: `'variant_names'`)
 
 * `VariantValues` (value: `'variant_values'`)
+
+* `PromotionId` (value: `'promotion_id'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

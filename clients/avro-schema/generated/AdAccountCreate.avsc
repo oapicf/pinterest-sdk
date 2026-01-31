@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "AdAccountCreate",
+  "fields": [
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "currency",
+      "type": ["null", "model.Currency"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Ad account name.",
+      "default": null
+    },
+    {
+      "name": "owner_user_id",
+      "type": ["null", "string"],
+      "doc": "Advertiser's owning user ID.",
+      "default": null
+    }
+  ]
+
+}

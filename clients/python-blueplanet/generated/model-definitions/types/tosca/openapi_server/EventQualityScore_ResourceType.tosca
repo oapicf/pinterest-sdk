@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EventQualityScore"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EventQualityScore"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  IngestionSourceOptions = openapi_server.resourceTypes.IngestionSourceOptions
+  LookbackPeriodOptions = openapi_server.resourceTypes.LookbackPeriodOptions
+  OverallStatusOptions = openapi_server.resourceTypes.OverallStatusOptions
+  QualityComponents = openapi_server.resourceTypes.QualityComponents
+  SourcePlatformOptions = openapi_server.resourceTypes.SourcePlatformOptions
+}
+resourceTypes {
+
+  EventQualityScore {
+    title = EventQualityScore
+    description = EventQualityScore
+    derivedFrom = Root
+    properties {
+        ingestion_source {
+          type = IngestionSourceOptions
+          description = ""
+          optional = true
+        }
+        lookback_period {
+          type = LookbackPeriodOptions
+          description = ""
+          optional = true
+        }
+        overall_status {
+          type = OverallStatusOptions
+          description = ""
+          optional = true
+        }
+        quality_components {
+          type = QualityComponents
+          description = ""
+          optional = true
+        }
+        source_platform {
+          type = SourcePlatformOptions
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  EventQualityScore {
+    title = EventQualityScore
+    description = EventQualityScore
+    implements = openapi_server.resourceTypes.EventQualityScore
+
+  }
+}

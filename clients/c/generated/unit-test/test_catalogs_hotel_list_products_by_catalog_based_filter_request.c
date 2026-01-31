@@ -23,15 +23,15 @@ catalogs_hotel_list_products_by_catalog_based_filter_request_t* instantiate_cata
   catalogs_hotel_list_products_by_catalog_based_filter_request_t* catalogs_hotel_list_products_by_catalog_based_filter_request = NULL;
   if (include_optional) {
     catalogs_hotel_list_products_by_catalog_based_filter_request = catalogs_hotel_list_products_by_catalog_based_filter_request_create(
-      pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_HOTEL,
       "2680059592705",
+      pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_HOTEL,
        // false, not to have infinite recursion
       instantiate_catalogs_hotel_product_group_filters(0)
     );
   } else {
     catalogs_hotel_list_products_by_catalog_based_filter_request = catalogs_hotel_list_products_by_catalog_based_filter_request_create(
-      pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_HOTEL,
       "2680059592705",
+      pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_HOTEL,
       NULL
     );
   }

@@ -41,19 +41,19 @@ public class CreativeAssetsProcessingRecordTest {
     }
 
     /**
-     * Test the property 'warnings'
-     */
-    @Test
-    public void warningsTest() {
-        // TODO: test warnings
-    }
-
-    /**
      * Test the property 'status'
      */
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'warnings'
+     */
+    @Test
+    public void warningsTest() {
+        // TODO: test warnings
     }
 
 }

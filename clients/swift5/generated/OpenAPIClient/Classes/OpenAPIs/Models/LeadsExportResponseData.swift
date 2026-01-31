@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct LeadsExportResponseData: Codable, JSONEncodable, Hashable {
 
-    public var exportStatus: LeadsExportStatus?
     public var downloadUrl: String?
+    public var exportStatus: LeadsExportStatus?
 
-    public init(exportStatus: LeadsExportStatus? = nil, downloadUrl: String? = nil) {
-        self.exportStatus = exportStatus
+    public init(downloadUrl: String? = nil, exportStatus: LeadsExportStatus? = nil) {
         self.downloadUrl = downloadUrl
+        self.exportStatus = exportStatus
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case exportStatus = "export_status"
         case downloadUrl = "download_url"
+        case exportStatus = "export_status"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(exportStatus, forKey: .exportStatus)
         try container.encodeIfPresent(downloadUrl, forKey: .downloadUrl)
+        try container.encodeIfPresent(exportStatus, forKey: .exportStatus)
     }
 }
 

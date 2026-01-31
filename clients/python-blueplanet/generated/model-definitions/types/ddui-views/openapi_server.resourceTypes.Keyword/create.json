@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "bid" },
+      {"model": "match_type" },
+      {"model": "value" },
+      {"model": "archived" },
+      {"model": "id" },
+      {"model": "parent_id" },
+      {"model": "parent_type" },
+      {"model": "type" },
+    ]
+  }]
+}

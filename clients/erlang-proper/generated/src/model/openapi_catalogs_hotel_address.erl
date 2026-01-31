@@ -11,9 +11,9 @@
 -type openapi_catalogs_hotel_address() ::
   [ {'addr1', binary() }
   | {'city', binary() }
-  | {'region', binary() }
   | {'country', binary() }
   | {'postal_code', binary() }
+  | {'region', binary() }
   ].
 
 
@@ -23,9 +23,9 @@ openapi_catalogs_hotel_address() ->
 openapi_catalogs_hotel_address(Fields) ->
   Default = [ {'addr1', binary() }
             , {'city', binary() }
-            , {'region', binary() }
             , {'country', binary() }
             , {'postal_code', binary() }
+            , {'region', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

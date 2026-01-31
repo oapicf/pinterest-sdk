@@ -1,6 +1,7 @@
 package org.openapitools.api
 
 import org.openapitools.model.Catalog
+import org.openapitools.model.CatalogsAvailableFilterValues
 import org.openapitools.model.CatalogsCreateReportResponse
 import org.openapitools.model.CatalogsCreateRequest
 import org.openapitools.model.CatalogsFeed
@@ -8,10 +9,10 @@ import org.openapitools.model.CatalogsFeedIngestion
 import org.openapitools.model.CatalogsItemValidationIssue
 import org.openapitools.model.CatalogsItems
 import org.openapitools.model.CatalogsItemsBatch
-import org.openapitools.model.CatalogsItemsFilters
 import org.openapitools.model.CatalogsItemsRequest
 import org.openapitools.model.CatalogsList200Response
 import org.openapitools.model.CatalogsListProductsByFilterRequest
+import org.openapitools.model.CatalogsLocale
 import org.openapitools.model.CatalogsProductGroupPinsList200Response
 import org.openapitools.model.CatalogsProductGroupProductCountsVertical
 import org.openapitools.model.CatalogsProductGroupsList200Response
@@ -19,6 +20,7 @@ import org.openapitools.model.CatalogsProductGroupsUpdateRequest
 import org.openapitools.model.CatalogsReport
 import org.openapitools.model.CatalogsReportParameters
 import org.openapitools.model.CatalogsVerticalProductGroup
+import org.openapitools.model.Country
 import org.openapitools.model.Error
 import org.openapitools.model.FeedProcessingResultsList200Response
 import org.openapitools.model.FeedsCreateRequest
@@ -28,12 +30,32 @@ import org.openapitools.model.ItemsBatchPostRequest
 import org.openapitools.model.ItemsIssuesList200Response
 import org.openapitools.model.MultipleProductGroupsInner
 import org.openapitools.model.ReportsStats200Response
+import org.openapitools.model.ReportsStatsParametersParameter
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
 class CatalogsApiTest {
 
     private val api: CatalogsApiController = CatalogsApiController()
+
+    /**
+     * To test CatalogsApiController.catalogsAvailableFilterValues
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun catalogsAvailableFilterValuesTest() {
+        val catalogId: kotlin.String = TODO()
+        val feedId: kotlin.String? = TODO()
+        val country: Country? = TODO()
+        val language: CatalogsLocale? = TODO()
+        val adAccountId: kotlin.String? = TODO()
+        
+        val response: ResponseEntity<CatalogsAvailableFilterValues> = api.catalogsAvailableFilterValues(catalogId, feedId, country, language, adAccountId)
+
+        // TODO: test validations
+    }
 
     /**
      * To test CatalogsApiController.catalogsCreate
@@ -370,25 +392,6 @@ class CatalogsApiTest {
     }
 
     /**
-     * To test CatalogsApiController.itemsGet
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    fun itemsGetTest() {
-        val country: kotlin.String = TODO()
-        val language: kotlin.String = TODO()
-        val adAccountId: kotlin.String? = TODO()
-        val itemIds: kotlin.collections.List<kotlin.String>? = TODO()
-        val filters: CatalogsItemsFilters? = TODO()
-        
-        val response: ResponseEntity<CatalogsItems> = api.itemsGet(country, language, adAccountId, itemIds, filters)
-
-        // TODO: test validations
-    }
-
-    /**
      * To test CatalogsApiController.itemsIssuesList
      *
      * @throws ApiException
@@ -483,7 +486,7 @@ class CatalogsApiTest {
      */
     @Test
     fun reportsStatsTest() {
-        val parameters: CatalogsReportParameters = TODO()
+        val parameters: ReportsStatsParametersParameter = TODO()
         val adAccountId: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()

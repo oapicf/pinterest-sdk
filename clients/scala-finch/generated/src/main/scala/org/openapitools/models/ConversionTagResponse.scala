@@ -12,25 +12,25 @@ import org.openapitools.models.EntityStatus
 
 /**
  * 
- * @param adUnderscoreaccountUnderscoreid Ad account ID.
  * @param codeUnderscoresnippet Tag code snippet.
- * @param enhancedUnderscorematchUnderscorestatus 
+ * @param configs 
+ * @param enhancedUnderscorematchUnderscorestatus The enhanced match status of the tag
  * @param id Tag ID.
  * @param lastUnderscorefiredUnderscoretimeUnderscorems Time for the last event fired.
  * @param name Conversion tag name.
- * @param status 
  * @param version Version number.
- * @param configs 
+ * @param adUnderscoreaccountUnderscoreid Ad account ID.
+ * @param status 
  */
-case class ConversionTagResponse(adUnderscoreaccountUnderscoreid: Option[String],
-                codeUnderscoresnippet: Option[String],
+case class ConversionTagResponse(codeUnderscoresnippet: Option[String],
+                configs: Option[ConversionTagConfigs],
                 enhancedUnderscorematchUnderscorestatus: Option[EnhancedMatchStatusType],
                 id: Option[String],
                 lastUnderscorefiredUnderscoretimeUnderscorems: Option[BigDecimal],
-                name: Option[String],
-                status: Option[EntityStatus],
+                name: String,
                 version: Option[String],
-                configs: Option[ConversionTagConfigs]
+                adUnderscoreaccountUnderscoreid: String,
+                status: Option[EntityStatus]
                 )
 
 object ConversionTagResponse {

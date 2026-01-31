@@ -16,7 +16,7 @@ import org.openapitools.model.AdvancedAuctionItemsSubmitRequest;
 import org.openapitools.model.AdvancedAuctionProcessedItems;
 import org.openapitools.model.Error;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map

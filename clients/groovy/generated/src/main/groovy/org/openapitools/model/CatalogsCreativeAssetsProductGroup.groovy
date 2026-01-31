@@ -8,6 +8,8 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 
 @Canonical
 class CatalogsCreativeAssetsProductGroup {
+    /* Catalog id pertaining to the creative assets product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -31,18 +33,16 @@ class CatalogsCreativeAssetsProductGroup {
 
     
     CatalogTypeEnum catalogType
-    /* ID of the creative assets product group. */
-    String id
-    /* Name of creative assets product group */
-    String name
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    Integer createdAt
     
     String description
     
     CatalogsCreativeAssetsProductGroupFilters filters
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    Integer createdAt
+    /* ID of the creative assets product group. */
+    String id
+    /* Name of creative assets product group */
+    String name
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     Integer updatedAt
-    /* Catalog id pertaining to the creative assets product group. */
-    String catalogId
 }

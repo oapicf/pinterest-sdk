@@ -45,6 +45,14 @@ func (c *Container) AdAccountsList(ctx echo.Context) error {
 }
 
 
+// AnalyticsCreateConversionProductReport - Create a request for a brand, category, SKU report
+func (c *Container) AnalyticsCreateConversionProductReport(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // AnalyticsCreateMmmReport - Create a request for a Marketing Mix Modeling (MMM) report
 func (c *Container) AnalyticsCreateMmmReport(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
@@ -63,6 +71,14 @@ func (c *Container) AnalyticsCreateReport(ctx echo.Context) error {
 
 // AnalyticsCreateTemplateReport - Create async request for an analytics report using a template
 func (c *Container) AnalyticsCreateTemplateReport(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// AnalyticsGetConversionProductReport - Get advertiser brand, category, SKU report
+func (c *Container) AnalyticsGetConversionProductReport(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",
 	})

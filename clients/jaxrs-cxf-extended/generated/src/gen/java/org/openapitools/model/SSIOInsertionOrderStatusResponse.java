@@ -12,6 +12,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SSIOInsertionOrderStatusResponse  {
   
  /**
+  * Salesforce insertion order creation time
+  */
+  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
+  private String creationTime;
+
+ /**
   * Salesforce order id
   */
   @ApiModelProperty(example = "0Q01N0000015hekSAB", value = "Salesforce order id")
@@ -22,12 +28,30 @@ public class SSIOInsertionOrderStatusResponse  {
   */
   @ApiModelProperty(example = "Approved", value = "Salesforce insertion order status")
   private String status;
-
  /**
   * Salesforce insertion order creation time
+  * @return creationTime
   */
-  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
-  private String creationTime;
+  @JsonProperty("creation_time")
+  public String getCreationTime() {
+    return creationTime;
+  }
+
+  /**
+   * Sets the <code>creationTime</code> property.
+   */
+ public void setCreationTime(String creationTime) {
+    this.creationTime = creationTime;
+  }
+
+  /**
+   * Sets the <code>creationTime</code> property.
+   */
+  public SSIOInsertionOrderStatusResponse creationTime(String creationTime) {
+    this.creationTime = creationTime;
+    return this;
+  }
+
  /**
   * Salesforce order id
   * @return pinOrderId
@@ -76,30 +100,6 @@ public class SSIOInsertionOrderStatusResponse  {
     return this;
   }
 
- /**
-  * Salesforce insertion order creation time
-  * @return creationTime
-  */
-  @JsonProperty("creation_time")
-  public String getCreationTime() {
-    return creationTime;
-  }
-
-  /**
-   * Sets the <code>creationTime</code> property.
-   */
- public void setCreationTime(String creationTime) {
-    this.creationTime = creationTime;
-  }
-
-  /**
-   * Sets the <code>creationTime</code> property.
-   */
-  public SSIOInsertionOrderStatusResponse creationTime(String creationTime) {
-    this.creationTime = creationTime;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -110,14 +110,14 @@ public class SSIOInsertionOrderStatusResponse  {
       return false;
     }
     SSIOInsertionOrderStatusResponse ssIOInsertionOrderStatusResponse = (SSIOInsertionOrderStatusResponse) o;
-    return Objects.equals(this.pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
-        Objects.equals(this.status, ssIOInsertionOrderStatusResponse.status) &&
-        Objects.equals(this.creationTime, ssIOInsertionOrderStatusResponse.creationTime);
+    return Objects.equals(this.creationTime, ssIOInsertionOrderStatusResponse.creationTime) &&
+        Objects.equals(this.pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
+        Objects.equals(this.status, ssIOInsertionOrderStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pinOrderId, status, creationTime);
+    return Objects.hash(creationTime, pinOrderId, status);
   }
 
   @Override
@@ -125,9 +125,9 @@ public class SSIOInsertionOrderStatusResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderStatusResponse {\n");
     
+    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

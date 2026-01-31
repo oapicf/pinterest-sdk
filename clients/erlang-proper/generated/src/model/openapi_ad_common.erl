@@ -16,18 +16,20 @@
   | {'carousel_ios_deep_links', list(binary()) }
   | {'click_tracking_url', binary() }
   | {'creative_type', openapi_creative_type:openapi_creative_type() }
+  | {'customizable_cta_type', openapi_customizable_cta_type:openapi_customizable_cta_type() }
   | {'destination_url', binary() }
+  | {'disclosure_type', openapi_disclosure_type:openapi_disclosure_type() }
+  | {'disclosure_url', binary() }
+  | {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
   | {'ios_deep_link', binary() }
   | {'is_pin_deleted', boolean() }
   | {'is_removable', boolean() }
+  | {'lead_form_id', binary() }
   | {'name', binary() }
+  | {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
   | {'status', openapi_entity_status:openapi_entity_status() }
   | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
   | {'view_tracking_url', binary() }
-  | {'lead_form_id', binary() }
-  | {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
-  | {'customizable_cta_type', binary() }
-  | {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
   ].
 
 
@@ -42,18 +44,20 @@ openapi_ad_common(Fields) ->
             , {'carousel_ios_deep_links', list(binary()) }
             , {'click_tracking_url', binary() }
             , {'creative_type', openapi_creative_type:openapi_creative_type() }
+            , {'customizable_cta_type', openapi_customizable_cta_type:openapi_customizable_cta_type() }
             , {'destination_url', binary() }
+            , {'disclosure_type', openapi_disclosure_type:openapi_disclosure_type() }
+            , {'disclosure_url', binary() }
+            , {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
             , {'ios_deep_link', binary() }
             , {'is_pin_deleted', boolean() }
             , {'is_removable', boolean() }
+            , {'lead_form_id', binary() }
             , {'name', binary() }
+            , {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
             , {'status', openapi_entity_status:openapi_entity_status() }
             , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
             , {'view_tracking_url', binary() }
-            , {'lead_form_id', binary() }
-            , {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
-            , {'customizable_cta_type', elements([<<"GET_OFFER">>, <<"LEARN_MORE">>, <<"ORDER_NOW">>, <<"SHOP_NOW">>, <<"SIGN_UP">>, <<"SUBSCRIBE">>, <<"BUY_NOW">>, <<"CONTACT_US">>, <<"GET_QUOTE">>, <<"VISIT_SITE">>, <<"APPLY_NOW">>, <<"BOOK_NOW">>, <<"REQUEST_DEMO">>, <<"REGISTER_NOW">>, <<"FIND_A_DEALER">>, <<"ADD_TO_CART">>, <<"WATCH_NOW">>, <<"READ_MORE">>, <<"">>]) }
-            , {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

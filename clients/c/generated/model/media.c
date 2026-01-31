@@ -1,0 +1,172 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "media.h"
+
+
+
+static media_t *media_create_internal(
+    char *media_id,
+    media_upload_type_t *media_type,
+    media_upload_status_t *status
+    ) {
+    media_t *media_local_var = malloc(sizeof(media_t));
+    if (!media_local_var) {
+        return NULL;
+    }
+    media_local_var->media_id = media_id;
+    media_local_var->media_type = media_type;
+    media_local_var->status = status;
+
+    media_local_var->_library_owned = 1;
+    return media_local_var;
+}
+
+__attribute__((deprecated)) media_t *media_create(
+    char *media_id,
+    media_upload_type_t *media_type,
+    media_upload_status_t *status
+    ) {
+    return media_create_internal (
+        media_id,
+        media_type,
+        status
+        );
+}
+
+void media_free(media_t *media) {
+    if(NULL == media){
+        return ;
+    }
+    if(media->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "media_free");
+        return ;
+    }
+    listEntry_t *listEntry;
+    if (media->media_id) {
+        free(media->media_id);
+        media->media_id = NULL;
+    }
+    if (media->media_type) {
+        media_upload_type_free(media->media_type);
+        media->media_type = NULL;
+    }
+    if (media->status) {
+        media_upload_status_free(media->status);
+        media->status = NULL;
+    }
+    free(media);
+}
+
+cJSON *media_convertToJSON(media_t *media) {
+    cJSON *item = cJSON_CreateObject();
+
+    // media->media_id
+    if (!media->media_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "media_id", media->media_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // media->media_type
+    if (!media->media_type) {
+        goto fail;
+    }
+    cJSON *media_type_local_JSON = media_upload_type_convertToJSON(media->media_type);
+    if(media_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "media_type", media_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+
+
+    // media->status
+    if(media->status) {
+    cJSON *status_local_JSON = media_upload_status_convertToJSON(media->status);
+    if(status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
+    return item;
+fail:
+    if (item) {
+        cJSON_Delete(item);
+    }
+    return NULL;
+}
+
+media_t *media_parseFromJSON(cJSON *mediaJSON){
+
+    media_t *media_local_var = NULL;
+
+    // define the local variable for media->media_type
+    media_upload_type_t *media_type_local_nonprim = NULL;
+
+    // define the local variable for media->status
+    media_upload_status_t *status_local_nonprim = NULL;
+
+    // media->media_id
+    cJSON *media_id = cJSON_GetObjectItemCaseSensitive(mediaJSON, "media_id");
+    if (cJSON_IsNull(media_id)) {
+        media_id = NULL;
+    }
+    if (!media_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(media_id))
+    {
+    goto end; //String
+    }
+
+    // media->media_type
+    cJSON *media_type = cJSON_GetObjectItemCaseSensitive(mediaJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
+    if (!media_type) {
+        goto end;
+    }
+
+    
+    media_type_local_nonprim = media_upload_type_parseFromJSON(media_type); //custom
+
+    // media->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(mediaJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
+    if (status) { 
+    status_local_nonprim = media_upload_status_parseFromJSON(status); //custom
+    }
+
+
+    media_local_var = media_create_internal (
+        strdup(media_id->valuestring),
+        media_type_local_nonprim,
+        status ? status_local_nonprim : NULL
+        );
+
+    return media_local_var;
+end:
+    if (media_type_local_nonprim) {
+        media_upload_type_free(media_type_local_nonprim);
+        media_type_local_nonprim = NULL;
+    }
+    if (status_local_nonprim) {
+        media_upload_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
+    }
+    return NULL;
+
+}

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdAccountId** | Pointer to **string** | Id of the ad account. | [optional] 
 **ConversionEvent** | Pointer to [**ConversionTagType**](ConversionTagType.md) |  | [optional] 
 **ConversionTagId** | Pointer to **string** | Id of the tag. | [optional] 
-**AdAccountId** | Pointer to **string** | Id of the ad account. | [optional] 
 **CreatedTime** | Pointer to **int32** | Creation date in epoch format. | [optional] 
 
 ## Methods
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewConversionEventResponseWithDefaults instantiates a new ConversionEventResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAdAccountId
+
+`func (o *ConversionEventResponse) GetAdAccountId() string`
+
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
+
+### GetAdAccountIdOk
+
+`func (o *ConversionEventResponse) GetAdAccountIdOk() (*string, bool)`
+
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdAccountId
+
+`func (o *ConversionEventResponse) SetAdAccountId(v string)`
+
+SetAdAccountId sets AdAccountId field to given value.
+
+### HasAdAccountId
+
+`func (o *ConversionEventResponse) HasAdAccountId() bool`
+
+HasAdAccountId returns a boolean if a field has been set.
 
 ### GetConversionEvent
 
@@ -77,31 +102,6 @@ SetConversionTagId sets ConversionTagId field to given value.
 `func (o *ConversionEventResponse) HasConversionTagId() bool`
 
 HasConversionTagId returns a boolean if a field has been set.
-
-### GetAdAccountId
-
-`func (o *ConversionEventResponse) GetAdAccountId() string`
-
-GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
-
-### GetAdAccountIdOk
-
-`func (o *ConversionEventResponse) GetAdAccountIdOk() (*string, bool)`
-
-GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAccountId
-
-`func (o *ConversionEventResponse) SetAdAccountId(v string)`
-
-SetAdAccountId sets AdAccountId field to given value.
-
-### HasAdAccountId
-
-`func (o *ConversionEventResponse) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
 
 ### GetCreatedTime
 

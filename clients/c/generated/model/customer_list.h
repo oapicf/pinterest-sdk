@@ -30,6 +30,7 @@ pinterest_rest_api_customer_list_STATUS_e customer_list_status_FromString(char* 
 typedef struct customer_list_t {
     char *ad_account_id; // string
     double created_time; //numeric
+    object_t *exceptions; //object
     char *id; // string
     char *name; // string
     double num_batches; //numeric
@@ -38,7 +39,6 @@ typedef struct customer_list_t {
     pinterest_rest_api_customer_list_STATUS_e status; //enum
     char *type; // string
     double updated_time; //numeric
-    object_t *exceptions; //object
 
     int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_t;
@@ -46,6 +46,7 @@ typedef struct customer_list_t {
 __attribute__((deprecated)) customer_list_t *customer_list_create(
     char *ad_account_id,
     double created_time,
+    object_t *exceptions,
     char *id,
     char *name,
     double num_batches,
@@ -53,8 +54,7 @@ __attribute__((deprecated)) customer_list_t *customer_list_create(
     double num_uploaded_user_records,
     pinterest_rest_api_customer_list_STATUS_e status,
     char *type,
-    double updated_time,
-    object_t *exceptions
+    double updated_time
 );
 
 void customer_list_free(customer_list_t *customer_list);

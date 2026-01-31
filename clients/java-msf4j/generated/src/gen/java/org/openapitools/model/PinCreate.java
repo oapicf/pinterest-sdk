@@ -5,36 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.BoardOwner;
-import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
 
 /**
- * Pin
+ * Resource create operation model.
  */
-@ApiModel(description = "Pin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Resource create operation model.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinCreate   {
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty("created_at")
-  private Date createdAt;
-
-  @JsonProperty("link")
-  private String link;
-
-  @JsonProperty("title")
-  private String title;
-
-  @JsonProperty("description")
-  private String description;
-
-  @JsonProperty("dominant_color")
-  private String dominantColor;
-
   @JsonProperty("alt_text")
   private String altText;
 
@@ -44,11 +23,14 @@ public class PinCreate   {
   @JsonProperty("board_section_id")
   private String boardSectionId;
 
-  @JsonProperty("board_owner")
-  private BoardOwner boardOwner;
+  @JsonProperty("description")
+  private String description;
 
-  @JsonProperty("media")
-  private PinMedia media;
+  @JsonProperty("dominant_color")
+  private String dominantColor;
+
+  @JsonProperty("link")
+  private String link;
 
   @JsonProperty("media_source")
   private PinMediaSource mediaSource;
@@ -56,98 +38,11 @@ public class PinCreate   {
   @JsonProperty("parent_pin_id")
   private String parentPinId;
 
-  @JsonProperty("note")
-  private String note;
+  @JsonProperty("sponsor_id")
+  private String sponsorId;
 
-   /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(example = "813744226420795884", value = "")
-  public String getId() {
-    return id;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "")
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  public PinCreate link(String link) {
-    this.link = link;
-    return this;
-  }
-
-   /**
-   * Get link
-   * @return link
-  **/
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
-  public String getLink() {
-    return link;
-  }
-
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-  public PinCreate title(String title) {
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @ApiModelProperty(value = "")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public PinCreate description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @ApiModelProperty(value = "")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public PinCreate dominantColor(String dominantColor) {
-    this.dominantColor = dominantColor;
-    return this;
-  }
-
-   /**
-   * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-   * @return dominantColor
-  **/
-  @ApiModelProperty(example = "#6E7874", value = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".")
-  public String getDominantColor() {
-    return dominantColor;
-  }
-
-  public void setDominantColor(String dominantColor) {
-    this.dominantColor = dominantColor;
-  }
+  @JsonProperty("title")
+  private String title;
 
   public PinCreate altText(String altText) {
     this.altText = altText;
@@ -203,22 +98,58 @@ public class PinCreate   {
     this.boardSectionId = boardSectionId;
   }
 
-   /**
-   * Get boardOwner
-   * @return boardOwner
-  **/
-  @ApiModelProperty(value = "")
-  public BoardOwner getBoardOwner() {
-    return boardOwner;
+  public PinCreate description(String description) {
+    this.description = description;
+    return this;
   }
 
    /**
-   * Get media
-   * @return media
+   * Get description
+   * @return description
   **/
   @ApiModelProperty(value = "")
-  public PinMedia getMedia() {
-    return media;
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public PinCreate dominantColor(String dominantColor) {
+    this.dominantColor = dominantColor;
+    return this;
+  }
+
+   /**
+   * Dominant pin color. Hex number, e.g. `#6E7874`.
+   * @return dominantColor
+  **/
+  @ApiModelProperty(value = "Dominant pin color. Hex number, e.g. `#6E7874`.")
+  public String getDominantColor() {
+    return dominantColor;
+  }
+
+  public void setDominantColor(String dominantColor) {
+    this.dominantColor = dominantColor;
+  }
+
+  public PinCreate link(String link) {
+    this.link = link;
+    return this;
+  }
+
+   /**
+   * Get link
+   * @return link
+  **/
+  @ApiModelProperty(value = "")
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
   }
 
   public PinCreate mediaSource(PinMediaSource mediaSource) {
@@ -245,10 +176,10 @@ public class PinCreate   {
   }
 
    /**
-   * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+   * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
    * @return parentPinId
   **/
-  @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
+  @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).")
   public String getParentPinId() {
     return parentPinId;
   }
@@ -257,22 +188,40 @@ public class PinCreate   {
     this.parentPinId = parentPinId;
   }
 
-  public PinCreate note(String note) {
-    this.note = note;
+  public PinCreate sponsorId(String sponsorId) {
+    this.sponsorId = sponsorId;
     return this;
   }
 
    /**
-   * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-   * @return note
+   * The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
+   * @return sponsorId
   **/
-  @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
-  public String getNote() {
-    return note;
+  @ApiModelProperty(value = "The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.")
+  public String getSponsorId() {
+    return sponsorId;
   }
 
-  public void setNote(String note) {
-    this.note = note;
+  public void setSponsorId(String sponsorId) {
+    this.sponsorId = sponsorId;
+  }
+
+  public PinCreate title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @ApiModelProperty(value = "")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -285,25 +234,21 @@ public class PinCreate   {
       return false;
     }
     PinCreate pinCreate = (PinCreate) o;
-    return Objects.equals(this.id, pinCreate.id) &&
-        Objects.equals(this.createdAt, pinCreate.createdAt) &&
-        Objects.equals(this.link, pinCreate.link) &&
-        Objects.equals(this.title, pinCreate.title) &&
-        Objects.equals(this.description, pinCreate.description) &&
-        Objects.equals(this.dominantColor, pinCreate.dominantColor) &&
-        Objects.equals(this.altText, pinCreate.altText) &&
+    return Objects.equals(this.altText, pinCreate.altText) &&
         Objects.equals(this.boardId, pinCreate.boardId) &&
         Objects.equals(this.boardSectionId, pinCreate.boardSectionId) &&
-        Objects.equals(this.boardOwner, pinCreate.boardOwner) &&
-        Objects.equals(this.media, pinCreate.media) &&
+        Objects.equals(this.description, pinCreate.description) &&
+        Objects.equals(this.dominantColor, pinCreate.dominantColor) &&
+        Objects.equals(this.link, pinCreate.link) &&
         Objects.equals(this.mediaSource, pinCreate.mediaSource) &&
         Objects.equals(this.parentPinId, pinCreate.parentPinId) &&
-        Objects.equals(this.note, pinCreate.note);
+        Objects.equals(this.sponsorId, pinCreate.sponsorId) &&
+        Objects.equals(this.title, pinCreate.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, link, title, description, dominantColor, altText, boardId, boardSectionId, boardOwner, media, mediaSource, parentPinId, note);
+    return Objects.hash(altText, boardId, boardSectionId, description, dominantColor, link, mediaSource, parentPinId, sponsorId, title);
   }
 
   @Override
@@ -311,20 +256,16 @@ public class PinCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinCreate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
-    sb.append("    boardOwner: ").append(toIndentedString(boardOwner)).append("\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    mediaSource: ").append(toIndentedString(mediaSource)).append("\n");
     sb.append("    parentPinId: ").append(toIndentedString(parentPinId)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    sponsorId: ").append(toIndentedString(sponsorId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

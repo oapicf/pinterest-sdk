@@ -22,13 +22,13 @@ get_business_members_200_response_t* instantiate_get_business_members_200_respon
   get_business_members_200_response_t* get_business_members_200_response = NULL;
   if (include_optional) {
     get_business_members_200_response = get_business_members_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     get_business_members_200_response = get_business_members_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

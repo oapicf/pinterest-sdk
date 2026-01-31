@@ -27,9 +27,10 @@ CatalogsFeedProcessingResult::__init()
 	//id = std::string();
 	//updated_at = null;
 	//ingestion_details = new CatalogsFeedIngestionDetails();
-	//status = new CatalogsFeedProcessingStatus();
 	//product_counts = new CatalogsFeedProductCounts();
+	//status = new CatalogsFeedProcessingStatus();
 	//validation_details = new CatalogsFeedValidationDetails();
+	//video_counts = new CatalogsFeedVideoCounts();
 }
 
 void
@@ -55,20 +56,25 @@ CatalogsFeedProcessingResult::__cleanup()
 	//delete ingestion_details;
 	//ingestion_details = NULL;
 	//}
-	//if(status != NULL) {
-	//
-	//delete status;
-	//status = NULL;
-	//}
 	//if(product_counts != NULL) {
 	//
 	//delete product_counts;
 	//product_counts = NULL;
 	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
+	//}
 	//if(validation_details != NULL) {
 	//
 	//delete validation_details;
 	//validation_details = NULL;
+	//}
+	//if(video_counts != NULL) {
+	//
+	//delete video_counts;
+	//video_counts = NULL;
 	//}
 	//
 }
@@ -125,20 +131,6 @@ CatalogsFeedProcessingResult::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsFeedProcessingStatus")) {
-			jsonToValue(&status, node, "CatalogsFeedProcessingStatus", "CatalogsFeedProcessingStatus");
-		} else {
-			
-			CatalogsFeedProcessingStatus* obj = static_cast<CatalogsFeedProcessingStatus*> (&status);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *product_countsKey = "product_counts";
 	node = json_object_get_member(pJsonObject, product_countsKey);
 	if (node !=NULL) {
@@ -153,6 +145,20 @@ CatalogsFeedProcessingResult::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsFeedProcessingStatus")) {
+			jsonToValue(&status, node, "CatalogsFeedProcessingStatus", "CatalogsFeedProcessingStatus");
+		} else {
+			
+			CatalogsFeedProcessingStatus* obj = static_cast<CatalogsFeedProcessingStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *validation_detailsKey = "validation_details";
 	node = json_object_get_member(pJsonObject, validation_detailsKey);
 	if (node !=NULL) {
@@ -163,6 +169,20 @@ CatalogsFeedProcessingResult::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsFeedValidationDetails* obj = static_cast<CatalogsFeedValidationDetails*> (&validation_details);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *video_countsKey = "video_counts";
+	node = json_object_get_member(pJsonObject, video_countsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsFeedVideoCounts")) {
+			jsonToValue(&video_counts, node, "CatalogsFeedVideoCounts", "CatalogsFeedVideoCounts");
+		} else {
+			
+			CatalogsFeedVideoCounts* obj = static_cast<CatalogsFeedVideoCounts*> (&video_counts);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -220,20 +240,6 @@ CatalogsFeedProcessingResult::toJson()
 	}
 	const gchar *ingestion_detailsKey = "ingestion_details";
 	json_object_set_member(pJsonObject, ingestion_detailsKey, node);
-	if (isprimitive("CatalogsFeedProcessingStatus")) {
-		CatalogsFeedProcessingStatus obj = getStatus();
-		node = converttoJson(&obj, "CatalogsFeedProcessingStatus", "");
-	}
-	else {
-		
-		CatalogsFeedProcessingStatus obj = static_cast<CatalogsFeedProcessingStatus> (getStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("CatalogsFeedProductCounts")) {
 		CatalogsFeedProductCounts obj = getProductCounts();
 		node = converttoJson(&obj, "CatalogsFeedProductCounts", "");
@@ -248,6 +254,20 @@ CatalogsFeedProcessingResult::toJson()
 	}
 	const gchar *product_countsKey = "product_counts";
 	json_object_set_member(pJsonObject, product_countsKey, node);
+	if (isprimitive("CatalogsFeedProcessingStatus")) {
+		CatalogsFeedProcessingStatus obj = getStatus();
+		node = converttoJson(&obj, "CatalogsFeedProcessingStatus", "");
+	}
+	else {
+		
+		CatalogsFeedProcessingStatus obj = static_cast<CatalogsFeedProcessingStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("CatalogsFeedValidationDetails")) {
 		CatalogsFeedValidationDetails obj = getValidationDetails();
 		node = converttoJson(&obj, "CatalogsFeedValidationDetails", "");
@@ -262,6 +282,20 @@ CatalogsFeedProcessingResult::toJson()
 	}
 	const gchar *validation_detailsKey = "validation_details";
 	json_object_set_member(pJsonObject, validation_detailsKey, node);
+	if (isprimitive("CatalogsFeedVideoCounts")) {
+		CatalogsFeedVideoCounts obj = getVideoCounts();
+		node = converttoJson(&obj, "CatalogsFeedVideoCounts", "");
+	}
+	else {
+		
+		CatalogsFeedVideoCounts obj = static_cast<CatalogsFeedVideoCounts> (getVideoCounts());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *video_countsKey = "video_counts";
+	json_object_set_member(pJsonObject, video_countsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -318,18 +352,6 @@ CatalogsFeedProcessingResult::setIngestionDetails(CatalogsFeedIngestionDetails  
 	this->ingestion_details = ingestion_details;
 }
 
-CatalogsFeedProcessingStatus
-CatalogsFeedProcessingResult::getStatus()
-{
-	return status;
-}
-
-void
-CatalogsFeedProcessingResult::setStatus(CatalogsFeedProcessingStatus  status)
-{
-	this->status = status;
-}
-
 CatalogsFeedProductCounts
 CatalogsFeedProcessingResult::getProductCounts()
 {
@@ -342,6 +364,18 @@ CatalogsFeedProcessingResult::setProductCounts(CatalogsFeedProductCounts  produc
 	this->product_counts = product_counts;
 }
 
+CatalogsFeedProcessingStatus
+CatalogsFeedProcessingResult::getStatus()
+{
+	return status;
+}
+
+void
+CatalogsFeedProcessingResult::setStatus(CatalogsFeedProcessingStatus  status)
+{
+	this->status = status;
+}
+
 CatalogsFeedValidationDetails
 CatalogsFeedProcessingResult::getValidationDetails()
 {
@@ -352,6 +386,18 @@ void
 CatalogsFeedProcessingResult::setValidationDetails(CatalogsFeedValidationDetails  validation_details)
 {
 	this->validation_details = validation_details;
+}
+
+CatalogsFeedVideoCounts
+CatalogsFeedProcessingResult::getVideoCounts()
+{
+	return video_counts;
+}
+
+void
+CatalogsFeedProcessingResult::setVideoCounts(CatalogsFeedVideoCounts  video_counts)
+{
+	this->video_counts = video_counts;
 }
 
 

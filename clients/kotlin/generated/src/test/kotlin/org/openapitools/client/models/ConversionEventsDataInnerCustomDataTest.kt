@@ -26,16 +26,16 @@ class ConversionEventsDataInnerCustomDataTest : ShouldSpec() {
         // uncomment below to create an instance of ConversionEventsDataInnerCustomData
         //val modelInstance = ConversionEventsDataInnerCustomData()
 
-        // to test the property `currency` - The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
-        should("test currency") {
+        // to test the property `contentBrand` - The brand of the content associated with the event.
+        should("test contentBrand") {
             // uncomment below to test the property
-            //modelInstance.currency shouldBe ("TODO")
+            //modelInstance.contentBrand shouldBe ("TODO")
         }
 
-        // to test the property ``value`` - Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
-        should("test `value`") {
+        // to test the property `contentCategory` - The category of the content associated with the event.
+        should("test contentCategory") {
             // uncomment below to test the property
-            //modelInstance.`value` shouldBe ("TODO")
+            //modelInstance.contentCategory shouldBe ("TODO")
         }
 
         // to test the property `contentIds` - List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
@@ -50,22 +50,34 @@ class ConversionEventsDataInnerCustomDataTest : ShouldSpec() {
             //modelInstance.contentName shouldBe ("TODO")
         }
 
-        // to test the property `contentCategory` - The category of the content associated with the event.
-        should("test contentCategory") {
-            // uncomment below to test the property
-            //modelInstance.contentCategory shouldBe ("TODO")
-        }
-
-        // to test the property `contentBrand` - The brand of the content associated with the event.
-        should("test contentBrand") {
-            // uncomment below to test the property
-            //modelInstance.contentBrand shouldBe ("TODO")
-        }
-
         // to test the property `contents` - A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
         should("test contents") {
             // uncomment below to test the property
             //modelInstance.contents shouldBe ("TODO")
+        }
+
+        // to test the property `currency` - The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
+        }
+
+        // to test the property `externalMeasurementId` - Only use when instructed.
+        should("test externalMeasurementId") {
+            // uncomment below to test the property
+            //modelInstance.externalMeasurementId shouldBe ("TODO")
+        }
+
+        // to test the property `externalMeasurementVendorId` - Only use when instructed.
+        should("test externalMeasurementVendorId") {
+            // uncomment below to test the property
+            //modelInstance.externalMeasurementVendorId shouldBe ("TODO")
+        }
+
+        // to test the property `np` - Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+        should("test np") {
+            // uncomment below to test the property
+            //modelInstance.np shouldBe ("TODO")
         }
 
         // to test the property `numItems` - Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
@@ -74,10 +86,22 @@ class ConversionEventsDataInnerCustomDataTest : ShouldSpec() {
             //modelInstance.numItems shouldBe ("TODO")
         }
 
+        // to test the property `optOutType` - Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer's guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter.
+        should("test optOutType") {
+            // uncomment below to test the property
+            //modelInstance.optOutType shouldBe ("TODO")
+        }
+
         // to test the property `orderId` - The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
         should("test orderId") {
             // uncomment below to test the property
             //modelInstance.orderId shouldBe ("TODO")
+        }
+
+        // to test the property `predictedLtv` - Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+        should("test predictedLtv") {
+            // uncomment below to test the property
+            //modelInstance.predictedLtv shouldBe ("TODO")
         }
 
         // to test the property `searchString` - The search string related to the user conversion event.
@@ -86,16 +110,10 @@ class ConversionEventsDataInnerCustomDataTest : ShouldSpec() {
             //modelInstance.searchString shouldBe ("TODO")
         }
 
-        // to test the property `optOutType` - Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
-        should("test optOutType") {
+        // to test the property ``value`` - Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+        should("test `value`") {
             // uncomment below to test the property
-            //modelInstance.optOutType shouldBe ("TODO")
-        }
-
-        // to test the property `np` - Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
-        should("test np") {
-            // uncomment below to test the property
-            //modelInstance.np shouldBe ("TODO")
+            //modelInstance.`value` shouldBe ("TODO")
         }
 
     }

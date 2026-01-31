@@ -23,60 +23,65 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id Asset Group ID.
- * @param assetGroupName Asset Group name
- * @param assetGroupDescription Asset group description
- * @param assetGroupTypes Asset group types
  * @param adAccountsIds A list of ad account IDs under the asset group
- * @param profilesIds A list of profile IDs under asset group
- * @param createdTime The creation time of the asset group
- * @param updatedTime The last update time of the asset group
- * @param owner The data of the business that owns the asset group.
+ * @param assetGroupDescription Asset group description
+ * @param assetGroupName Asset Group name
+ * @param assetGroupTypes Asset group types
+ * @param catalogsIds A list of catalog IDs under asset group
  * @param createdBy The data of the user that created the asset group.
+ * @param createdTime The creation time of the asset group
+ * @param id Asset Group ID.
+ * @param owner The data of the business that owns the asset group.
+ * @param profilesIds A list of profile IDs under asset group
+ * @param updatedTime The last update time of the asset group
  */
 
 
 data class AssetGroupBinding (
 
-    /* Asset Group ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    /* Asset Group name */
-    @Json(name = "asset_group_name")
-    val assetGroupName: kotlin.String? = null,
+    /* A list of ad account IDs under the asset group */
+    @Json(name = "ad_accounts_ids")
+    val adAccountsIds: kotlin.collections.List<kotlin.String>? = null,
 
     /* Asset group description */
     @Json(name = "asset_group_description")
     val assetGroupDescription: kotlin.String? = null,
 
+    /* Asset Group name */
+    @Json(name = "asset_group_name")
+    val assetGroupName: kotlin.String? = null,
+
     /* Asset group types */
     @Json(name = "asset_group_types")
     val assetGroupTypes: kotlin.collections.List<kotlin.String>? = null,
 
-    /* A list of ad account IDs under the asset group */
-    @Json(name = "ad_accounts_ids")
-    val adAccountsIds: kotlin.collections.List<kotlin.String>? = null,
+    /* A list of catalog IDs under asset group */
+    @Json(name = "catalogs_ids")
+    val catalogsIds: kotlin.collections.List<kotlin.String>? = null,
 
-    /* A list of profile IDs under asset group */
-    @Json(name = "profiles_ids")
-    val profilesIds: kotlin.collections.List<kotlin.String>? = null,
+    /* The data of the user that created the asset group. */
+    @Json(name = "created_by")
+    val createdBy: BusinessAccessUserSummary? = null,
 
     /* The creation time of the asset group */
     @Json(name = "created_time")
     val createdTime: kotlin.Int? = null,
 
-    /* The last update time of the asset group */
-    @Json(name = "updated_time")
-    val updatedTime: kotlin.Int? = null,
+    /* Asset Group ID. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
 
     /* The data of the business that owns the asset group. */
     @Json(name = "owner")
     val owner: BusinessAccessUserSummary? = null,
 
-    /* The data of the user that created the asset group. */
-    @Json(name = "created_by")
-    val createdBy: BusinessAccessUserSummary? = null
+    /* A list of profile IDs under asset group */
+    @Json(name = "profiles_ids")
+    val profilesIds: kotlin.collections.List<kotlin.String>? = null,
+
+    /* The last update time of the asset group */
+    @Json(name = "updated_time")
+    val updatedTime: kotlin.Int? = null
 
 ) {
 

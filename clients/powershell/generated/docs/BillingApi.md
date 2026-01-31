@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Invoke-AdsCreditRedeem**](BillingApi.md#Invoke-AdsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**Invoke-AdsCreditsDiscountsGet**](BillingApi.md#Invoke-AdsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**Invoke-BillingInvoiceDownloadGet**](BillingApi.md#Invoke-BillingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**Invoke-BillingInvoicesGet**](BillingApi.md#Invoke-BillingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**Invoke-BillingProfilesGet**](BillingApi.md#Invoke-BillingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**Invoke-SsioAccountsGet**](BillingApi.md#Invoke-SsioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**Invoke-SsioInsertionOrderCreate**](BillingApi.md#Invoke-SsioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -23,7 +25,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -75,7 +77,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -120,6 +122,129 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="Invoke-BillingInvoiceDownloadGet"></a>
+# **Invoke-BillingInvoiceDownloadGet**
+> BillingInvoiceDownloadResponse Invoke-BillingInvoiceDownloadGet<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BillingInvoiceId] <String><br>
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+$BillingInvoiceId = "MyBillingInvoiceId" # String | Unique identifier of a billing invoice.
+
+# Get download url for a billing invoice
+try {
+    $Result = Invoke-BillingInvoiceDownloadGet -AdAccountId $AdAccountId -BillingInvoiceId $BillingInvoiceId
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-BillingInvoiceDownloadGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
+ **BillingInvoiceId** | **String**| Unique identifier of a billing invoice. | 
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-BillingInvoicesGet"></a>
+# **Invoke-BillingInvoicesGet**
+> BillingInvoicesGet200Response Invoke-BillingInvoicesGet<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Sort] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Status] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DocumentType] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDueDate] <System.Nullable[System.DateTime]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDueDate] <System.Nullable[System.DateTime]><br>
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$Sort = "DUE_DATE" # String | Field of which to sort billing invoices (optional) (default to "DUE_DATE")
+$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+$Status = "OPEN" # String | Status of billing invoices to filter by (optional)
+$DocumentType = "INVOICE" # String | Document type of billing invoices to filter by (optional)
+$StartDueDate = (Get-Date) # System.DateTime | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+$EndDueDate = (Get-Date) # System.DateTime | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+
+# Get billing invoices
+try {
+    $Result = Invoke-BillingInvoicesGet -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Sort $Sort -Order $Order -Status $Status -DocumentType $DocumentType -StartDueDate $StartDueDate -EndDueDate $EndDueDate
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-BillingInvoicesGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
+ **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **Sort** | **String**| Field of which to sort billing invoices | [optional] [default to &quot;DUE_DATE&quot;]
+ **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **Status** | **String**| Status of billing invoices to filter by | [optional] 
+ **DocumentType** | **String**| Document type of billing invoices to filter by | [optional] 
+ **StartDueDate** | **System.DateTime**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+ **EndDueDate** | **System.DateTime**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+
+### Return type
+
+[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="Invoke-BillingProfilesGet"></a>
 # **Invoke-BillingProfilesGet**
 > BillingProfilesGet200Response Invoke-BillingProfilesGet<br>
@@ -130,7 +255,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -243,7 +368,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$SSIOCreateInsertionOrderRequest = Initialize-SSIOCreateInsertionOrderRequest -StartDate "2020-12-20" -EndDate "2020-12-20" -PoNumber "MyPoNumber" -BudgetAmount 5000000 -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BillingContactEmail "test@example" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -MediaContactEmail "test@example" -AgencyLink "MyAgencyLink" -UserEmail "test@example" -AcceptedTermsTime 0 -PmpId "MyPmpId" -OrderName "MyOrderName" -OrderLineType "BUDGET" -AcceptedTermsId "MyAcceptedTermsId" -BilltoCompanyId "MyBilltoCompanyId" -BilltoBusinessAddressId "MyBilltoBusinessAddressId" -BilltoBillingAddressId "MyBilltoBillingAddressId" -EstimatedMonthlySpend 0 -CurrencyInfo "UNK" # SSIOCreateInsertionOrderRequest | Order line to create.
+$SSIOCreateInsertionOrderRequest = Initialize-SSIOCreateInsertionOrderRequest -AgencyLink "MyAgencyLink" -BillingContactEmail "test@example" -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BudgetAmount 5000000 -EndDate "2020-12-20" -MediaContactEmail "test@example" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -PoNumber "MyPoNumber" -StartDate "2020-12-20" -UserEmail "test@example" -AcceptedTermsId "MyAcceptedTermsId" -AcceptedTermsTime 0 -BilltoBillingAddressId "MyBilltoBillingAddressId" -BilltoBusinessAddressId "MyBilltoBusinessAddressId" -BilltoCompanyId "MyBilltoCompanyId" -CurrencyInfo "UNK" -EstimatedMonthlySpend 0 -OrderLineType "BUDGET" -OrderName "MyOrderName" -PmpId "MyPmpId" # SSIOCreateInsertionOrderRequest | Order line to create.
 
 # Create insertion order through SSIO.
 try {
@@ -294,7 +419,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$SSIOEditInsertionOrderRequest = Initialize-SSIOEditInsertionOrderRequest -StartDate "2020-12-20" -EndDate "2020-12-20" -PoNumber "MyPoNumber" -BudgetAmount 5000000 -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BillingContactEmail "test@example" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -MediaContactEmail "test@example" -AgencyLink "MyAgencyLink" -UserEmail "test@example" -OracleLineId "MyOracleLineId" -SalesforceOrderId "MySalesforceOrderId" -SalesforceOrderLineId "MySalesforceOrderLineId" -AdsManagerOrderLineId "MyAdsManagerOrderLineId" # SSIOEditInsertionOrderRequest | Order line to create.
+$SSIOEditInsertionOrderRequest = Initialize-SSIOEditInsertionOrderRequest -AgencyLink "MyAgencyLink" -BillingContactEmail "test@example" -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BudgetAmount 5000000 -EndDate "2020-12-20" -MediaContactEmail "test@example" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -PoNumber "MyPoNumber" -StartDate "2020-12-20" -UserEmail "test@example" -AdsManagerOrderLineId "MyAdsManagerOrderLineId" -OracleLineId "MyOracleLineId" -SalesforceOrderId "MySalesforceOrderId" -SalesforceOrderLineId "MySalesforceOrderLineId" # SSIOEditInsertionOrderRequest | Order line to create.
 
 # Edit insertion order through SSIO.
 try {

@@ -7,6 +7,8 @@ import org.openapitools.model.CatalogsHotelAttributes;
 
 @Canonical
 class CatalogsCreateHotelItem {
+    
+    CatalogsHotelAttributes attributes
     /* The catalog hotel id in the merchant namespace */
     String hotelId
 
@@ -32,6 +34,4 @@ class CatalogsCreateHotelItem {
 
     
     OperationEnum operation
-    
-    CatalogsHotelAttributes attributes
 }

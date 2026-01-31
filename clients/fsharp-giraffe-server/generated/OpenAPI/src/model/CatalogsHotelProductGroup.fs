@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.CatalogsHotelProductGroupFilters
+open OpenAPI.Model.CatalogsHotelProductGroupType
 open OpenAPI.Model.string option
 
 module CatalogsHotelProductGroup =
@@ -14,13 +15,14 @@ module CatalogsHotelProductGroup =
   //#endregion
 
   type CatalogsHotelProductGroup = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
-    Id : string;
-    Name : string;
+    CreatedAt : int;
     Description : string option;
     Filters : CatalogsHotelProductGroupFilters;
-    CreatedAt : int;
+    Id : string;
+    Name : string;
+    Type : CatalogsHotelProductGroupType;
     UpdatedAt : int;
-    CatalogId : string;
   }
   //#endregion

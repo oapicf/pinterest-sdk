@@ -16,12 +16,12 @@ import { ObjectiveType } from './objectiveType';
 
 
 export interface BidFloorSpec { 
+    billable_event: ActionType;
     countries?: Array<Country>;
+    creative_type?: CreativeType;
     currency: Currency;
     objective_type?: ObjectiveType;
-    billable_event: ActionType;
     optimization_goal_metadata?: OptimizationGoalMetadata;
-    creative_type?: CreativeType;
 }
 export namespace BidFloorSpec {
 }

@@ -1,6 +1,7 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.CreativeType
 import org.openapitools.model.Error
 import org.openapitools.model.Pin
 import org.openapitools.model.PinAnalyticsMetricsResponse
@@ -8,6 +9,7 @@ import org.openapitools.model.PinCreate
 import org.openapitools.model.PinUpdate
 import org.openapitools.model.PinsList200Response
 import org.openapitools.model.PinsSaveRequest
+import org.openapitools.model.PinterestLibError
 
 class PinsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -178,7 +180,7 @@ class PinsApi {
 
     }
 
-    def pinsGet ( String pinId, Boolean pinMetrics, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def pinsGet ( String pinId, String adAccountId, Boolean pinMetrics, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/${pin_id}"
 
         // params
@@ -192,11 +194,11 @@ class PinsApi {
             throw new RuntimeException("missing required params pinId")
         }
 
-        if (pinMetrics != null) {
-            queryParams.put("pin_metrics", pinMetrics)
-        }
         if (adAccountId != null) {
             queryParams.put("ad_account_id", adAccountId)
+        }
+        if (pinMetrics != null) {
+            queryParams.put("pin_metrics", pinMetrics)
         }
 
 
@@ -208,7 +210,7 @@ class PinsApi {
 
     }
 
-    def pinsList ( String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, Closure onSuccess, Closure onFailure)  {
+    def pinsList ( String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes, String adAccountId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins"
 
         // params
@@ -218,14 +220,11 @@ class PinsApi {
         def contentType
 
 
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (pinFilter != null) {
             queryParams.put("pin_filter", pinFilter)
+        }
+        if (pinMetrics != null) {
+            queryParams.put("pin_metrics", pinMetrics)
         }
         if (includeProtectedPins != null) {
             queryParams.put("include_protected_pins", includeProtectedPins)
@@ -239,8 +238,11 @@ class PinsApi {
         if (adAccountId != null) {
             queryParams.put("ad_account_id", adAccountId)
         }
-        if (pinMetrics != null) {
-            queryParams.put("pin_metrics", pinMetrics)
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
         }
 
 

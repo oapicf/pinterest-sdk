@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`trends` | [Array&lt;TrendingKeywordsResponseTrendsInner&gt;](TrendingKeywordsResponseTrendsInner.md)
+`trends` | [Array&lt;TrendingKeyword&gt;](TrendingKeyword.md)
 
 ## Example
 

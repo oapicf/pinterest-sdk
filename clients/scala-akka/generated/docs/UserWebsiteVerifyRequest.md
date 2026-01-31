@@ -8,8 +8,8 @@ User website verification request
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**website** | **String** |  |  [optional]
 **verificationMethod** | [**VerificationMethod**](#VerificationMethod) |  |  [optional]
+**website** | **String** |  |  [optional]
 
 
 ## Enum: VerificationMethod

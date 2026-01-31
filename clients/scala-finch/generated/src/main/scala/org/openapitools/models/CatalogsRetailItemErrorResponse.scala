@@ -12,12 +12,12 @@ import scala.collection.immutable.Seq
 /**
  * Object describing a retail item error
  * @param catalogUnderscoretype 
- * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param errors Array with the errors for the item id requested
+ * @param itemUnderscoreid The catalog item id in the merchant namespace
  */
 case class CatalogsRetailItemErrorResponse(catalogUnderscoretype: CatalogsType,
-                itemUnderscoreid: Option[String],
-                errors: Option[Seq[ItemValidationEvent]]
+                errors: Seq[ItemValidationEvent],
+                itemUnderscoreid: Option[String]
                 )
 
 object CatalogsRetailItemErrorResponse {

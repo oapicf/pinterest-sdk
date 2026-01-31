@@ -1,0 +1,388 @@
+package apimodels;
+
+import apimodels.EntityStatus;
+import apimodels.PromotionTemplateValue;
+import apimodels.PromotionType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import com.fasterxml.jackson.annotation.*;
+import java.util.Set;
+import javax.validation.*;
+import java.util.Objects;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+/**
+ * PromotionUpdateRequest
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
+public class PromotionUpdateRequest   {
+  /**
+   * Discount status based on the current time and start and end time of discount
+   */
+  public enum DiscountStatusEnum {
+    OTHER("OTHER"),
+    
+    ACTIVE("ACTIVE"),
+    
+    PAUSED("PAUSED"),
+    
+    SCHEDULED("SCHEDULED"),
+    
+    EXPIRED("EXPIRED");
+
+    private final String value;
+
+    DiscountStatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static DiscountStatusEnum fromValue(String value) {
+      for (DiscountStatusEnum b : DiscountStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("discount_status")
+  
+  private DiscountStatusEnum discountStatus;
+
+  @JsonProperty("end_time")
+  
+  private Integer endTime;
+
+  @JsonProperty("external_id")
+  @Size(max=64)
+
+  private String externalId;
+
+  @JsonProperty("platform_type")
+  
+  private String platformType;
+
+  @JsonProperty("promotion_code")
+  
+  private String promotionCode;
+
+  @JsonProperty("promotion_custom_id")
+  @Size(max=50)
+
+  private String promotionCustomId;
+
+  @JsonProperty("promotion_title")
+  
+  private String promotionTitle;
+
+  @JsonProperty("promotion_type")
+  @Valid
+
+  private PromotionType promotionType;
+
+  @JsonProperty("start_time")
+  
+  private Integer startTime;
+
+  @JsonProperty("template_values")
+  @Size(min=0,max=2)
+@Valid
+
+  private List<@Valid PromotionTemplateValue> templateValues = null;
+
+  @JsonProperty("id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String id;
+
+  @JsonProperty("status")
+  @Valid
+
+  private EntityStatus status;
+
+  public PromotionUpdateRequest discountStatus(DiscountStatusEnum discountStatus) {
+    this.discountStatus = discountStatus;
+    return this;
+  }
+
+   /**
+   * Discount status based on the current time and start and end time of discount
+   * @return discountStatus
+  **/
+  public DiscountStatusEnum getDiscountStatus() {
+    return discountStatus;
+  }
+
+  public void setDiscountStatus(DiscountStatusEnum discountStatus) {
+    this.discountStatus = discountStatus;
+  }
+
+  public PromotionUpdateRequest endTime(Integer endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+   /**
+   * Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
+   * @return endTime
+  **/
+  public Integer getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(Integer endTime) {
+    this.endTime = endTime;
+  }
+
+  public PromotionUpdateRequest externalId(String externalId) {
+    this.externalId = externalId;
+    return this;
+  }
+
+   /**
+   * Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
+   * @return externalId
+  **/
+  public String getExternalId() {
+    return externalId;
+  }
+
+  public void setExternalId(String externalId) {
+    this.externalId = externalId;
+  }
+
+  public PromotionUpdateRequest platformType(String platformType) {
+    this.platformType = platformType;
+    return this;
+  }
+
+   /**
+   * The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.
+   * @return platformType
+  **/
+  public String getPlatformType() {
+    return platformType;
+  }
+
+  public void setPlatformType(String platformType) {
+    this.platformType = platformType;
+  }
+
+  public PromotionUpdateRequest promotionCode(String promotionCode) {
+    this.promotionCode = promotionCode;
+    return this;
+  }
+
+   /**
+   * Code that can be used to redeem a promotion.
+   * @return promotionCode
+  **/
+  public String getPromotionCode() {
+    return promotionCode;
+  }
+
+  public void setPromotionCode(String promotionCode) {
+    this.promotionCode = promotionCode;
+  }
+
+  public PromotionUpdateRequest promotionCustomId(String promotionCustomId) {
+    this.promotionCustomId = promotionCustomId;
+    return this;
+  }
+
+   /**
+   * An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
+   * @return promotionCustomId
+  **/
+  public String getPromotionCustomId() {
+    return promotionCustomId;
+  }
+
+  public void setPromotionCustomId(String promotionCustomId) {
+    this.promotionCustomId = promotionCustomId;
+  }
+
+  public PromotionUpdateRequest promotionTitle(String promotionTitle) {
+    this.promotionTitle = promotionTitle;
+    return this;
+  }
+
+   /**
+   * Internal name for the promotion.
+   * @return promotionTitle
+  **/
+  public String getPromotionTitle() {
+    return promotionTitle;
+  }
+
+  public void setPromotionTitle(String promotionTitle) {
+    this.promotionTitle = promotionTitle;
+  }
+
+  public PromotionUpdateRequest promotionType(PromotionType promotionType) {
+    this.promotionType = promotionType;
+    return this;
+  }
+
+   /**
+   * Get promotionType
+   * @return promotionType
+  **/
+  public PromotionType getPromotionType() {
+    return promotionType;
+  }
+
+  public void setPromotionType(PromotionType promotionType) {
+    this.promotionType = promotionType;
+  }
+
+  public PromotionUpdateRequest startTime(Integer startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+   /**
+   * Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
+   * @return startTime
+  **/
+  public Integer getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+  public PromotionUpdateRequest templateValues(List<@Valid PromotionTemplateValue> templateValues) {
+    this.templateValues = templateValues;
+    return this;
+  }
+
+  public PromotionUpdateRequest addTemplateValuesItem(PromotionTemplateValue templateValuesItem) {
+    if (this.templateValues == null) {
+      this.templateValues = new ArrayList<>();
+    }
+    this.templateValues.add(templateValuesItem);
+    return this;
+  }
+
+   /**
+   * List of values to be inserted in the promotion type-specific template.
+   * @return templateValues
+  **/
+  public List<@Valid PromotionTemplateValue> getTemplateValues() {
+    return templateValues;
+  }
+
+  public void setTemplateValues(List<@Valid PromotionTemplateValue> templateValues) {
+    this.templateValues = templateValues;
+  }
+
+  public PromotionUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Promotion ID
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public PromotionUpdateRequest status(EntityStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public EntityStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(EntityStatus status) {
+    this.status = status;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PromotionUpdateRequest promotionUpdateRequest = (PromotionUpdateRequest) o;
+    return Objects.equals(discountStatus, promotionUpdateRequest.discountStatus) &&
+        Objects.equals(endTime, promotionUpdateRequest.endTime) &&
+        Objects.equals(externalId, promotionUpdateRequest.externalId) &&
+        Objects.equals(platformType, promotionUpdateRequest.platformType) &&
+        Objects.equals(promotionCode, promotionUpdateRequest.promotionCode) &&
+        Objects.equals(promotionCustomId, promotionUpdateRequest.promotionCustomId) &&
+        Objects.equals(promotionTitle, promotionUpdateRequest.promotionTitle) &&
+        Objects.equals(promotionType, promotionUpdateRequest.promotionType) &&
+        Objects.equals(startTime, promotionUpdateRequest.startTime) &&
+        Objects.equals(templateValues, promotionUpdateRequest.templateValues) &&
+        Objects.equals(id, promotionUpdateRequest.id) &&
+        Objects.equals(status, promotionUpdateRequest.status);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(discountStatus, endTime, externalId, platformType, promotionCode, promotionCustomId, promotionTitle, promotionType, startTime, templateValues, id, status);
+  }
+
+  @SuppressWarnings("StringBufferReplaceableByString")
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PromotionUpdateRequest {\n");
+    
+    sb.append("    discountStatus: ").append(toIndentedString(discountStatus)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
+    sb.append("    platformType: ").append(toIndentedString(platformType)).append("\n");
+    sb.append("    promotionCode: ").append(toIndentedString(promotionCode)).append("\n");
+    sb.append("    promotionCustomId: ").append(toIndentedString(promotionCustomId)).append("\n");
+    sb.append("    promotionTitle: ").append(toIndentedString(promotionTitle)).append("\n");
+    sb.append("    promotionType: ").append(toIndentedString(promotionType)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    templateValues: ").append(toIndentedString(templateValues)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

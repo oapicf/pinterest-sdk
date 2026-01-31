@@ -11,15 +11,17 @@ import scala.collection.immutable.Seq
 
 /**
  * A request object that can have multiple operations on a single retail batch
+ * @param catalogUnderscoreid Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
  * @param catalogUnderscoretype 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
+ * @param language We recommend using the CatalogsLocale values.
  */
-case class CatalogsRetailBatchRequest(catalogUnderscoretype: String,
+case class CatalogsRetailBatchRequest(catalogUnderscoreid: Option[String],
+                catalogUnderscoretype: String,
                 country: Country,
-                language: String,
-                items: Seq[CatalogsRetailBatchRequestItemsInner]
+                items: Seq[CatalogsRetailBatchRequestItemsInner],
+                language: String
                 )
 
 object CatalogsRetailBatchRequest {

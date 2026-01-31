@@ -8,10 +8,10 @@
 #' @description DeletePartnerAssetsResult Class
 #' @format An \code{R6Class} generator object
 #' @field asset_id Unique identifier of a business asset. character [optional]
-#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. character [optional]
-#' @field permissions Permission levels member or partner has on an asset. list(character) [optional]
+#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. character [optional]
 #' @field is_shared_partner If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset. character [optional]
 #' @field partner_id Unique identifier of a business partner. character [optional]
+#' @field permissions Permission levels member or partner has on an asset. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,20 +20,20 @@ DeletePartnerAssetsResult <- R6::R6Class(
   public = list(
     `asset_id` = NULL,
     `asset_type` = NULL,
-    `permissions` = NULL,
     `is_shared_partner` = NULL,
     `partner_id` = NULL,
+    `permissions` = NULL,
 
     #' @description
     #' Initialize a new DeletePartnerAssetsResult class.
     #'
     #' @param asset_id Unique identifier of a business asset.
-    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
-    #' @param permissions Permission levels member or partner has on an asset.
+    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
     #' @param is_shared_partner If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
     #' @param partner_id Unique identifier of a business partner.
+    #' @param permissions Permission levels member or partner has on an asset.
     #' @param ... Other optional arguments.
-    initialize = function(`asset_id` = NULL, `asset_type` = NULL, `permissions` = NULL, `is_shared_partner` = NULL, `partner_id` = NULL, ...) {
+    initialize = function(`asset_id` = NULL, `asset_type` = NULL, `is_shared_partner` = NULL, `partner_id` = NULL, `permissions` = NULL, ...) {
       if (!is.null(`asset_id`)) {
         if (!(is.character(`asset_id`) && length(`asset_id`) == 1)) {
           stop(paste("Error! Invalid data for `asset_id`. Must be a string:", `asset_id`))
@@ -46,11 +46,6 @@ DeletePartnerAssetsResult <- R6::R6Class(
         }
         self$`asset_type` <- `asset_type`
       }
-      if (!is.null(`permissions`)) {
-        stopifnot(is.vector(`permissions`), length(`permissions`) != 0)
-        sapply(`permissions`, function(x) stopifnot(is.character(x)))
-        self$`permissions` <- `permissions`
-      }
       if (!is.null(`is_shared_partner`)) {
         if (!(is.logical(`is_shared_partner`) && length(`is_shared_partner`) == 1)) {
           stop(paste("Error! Invalid data for `is_shared_partner`. Must be a boolean:", `is_shared_partner`))
@@ -62,6 +57,11 @@ DeletePartnerAssetsResult <- R6::R6Class(
           stop(paste("Error! Invalid data for `partner_id`. Must be a string:", `partner_id`))
         }
         self$`partner_id` <- `partner_id`
+      }
+      if (!is.null(`permissions`)) {
+        stopifnot(is.vector(`permissions`), length(`permissions`) != 0)
+        sapply(`permissions`, function(x) stopifnot(is.character(x)))
+        self$`permissions` <- `permissions`
       }
     },
 
@@ -104,10 +104,6 @@ DeletePartnerAssetsResult <- R6::R6Class(
         DeletePartnerAssetsResultObject[["asset_type"]] <-
           self$`asset_type`
       }
-      if (!is.null(self$`permissions`)) {
-        DeletePartnerAssetsResultObject[["permissions"]] <-
-          self$`permissions`
-      }
       if (!is.null(self$`is_shared_partner`)) {
         DeletePartnerAssetsResultObject[["is_shared_partner"]] <-
           self$`is_shared_partner`
@@ -115,6 +111,10 @@ DeletePartnerAssetsResult <- R6::R6Class(
       if (!is.null(self$`partner_id`)) {
         DeletePartnerAssetsResultObject[["partner_id"]] <-
           self$`partner_id`
+      }
+      if (!is.null(self$`permissions`)) {
+        DeletePartnerAssetsResultObject[["permissions"]] <-
+          self$`permissions`
       }
       return(DeletePartnerAssetsResultObject)
     },
@@ -132,14 +132,14 @@ DeletePartnerAssetsResult <- R6::R6Class(
       if (!is.null(this_object$`asset_type`)) {
         self$`asset_type` <- this_object$`asset_type`
       }
-      if (!is.null(this_object$`permissions`)) {
-        self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`is_shared_partner`)) {
         self$`is_shared_partner` <- this_object$`is_shared_partner`
       }
       if (!is.null(this_object$`partner_id`)) {
         self$`partner_id` <- this_object$`partner_id`
+      }
+      if (!is.null(this_object$`permissions`)) {
+        self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
       }
       self
     },
@@ -164,9 +164,9 @@ DeletePartnerAssetsResult <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`asset_id` <- this_object$`asset_id`
       self$`asset_type` <- this_object$`asset_type`
-      self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
       self$`is_shared_partner` <- this_object$`is_shared_partner`
       self$`partner_id` <- this_object$`partner_id`
+      self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
       self
     },
 

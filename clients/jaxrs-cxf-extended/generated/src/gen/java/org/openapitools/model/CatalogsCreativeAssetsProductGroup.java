@@ -14,6 +14,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsProductGroup  {
   
+ /**
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -47,6 +53,19 @@ public enum CatalogTypeEnum {
   private CatalogTypeEnum catalogType;
 
  /**
+  * Unix timestamp in seconds of when catalog product group was created.
+  */
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+  private Integer createdAt;
+
+  @ApiModelProperty(value = "")
+  private String description;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsCreativeAssetsProductGroupFilters filters;
+
+ /**
   * ID of the creative assets product group.
   */
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
@@ -58,30 +77,36 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
   private String name;
 
-  @ApiModelProperty(value = "")
-  private String description;
-
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsCreativeAssetsProductGroupFilters filters;
-
- /**
-  * Unix timestamp in seconds of when catalog product group was created.
-  */
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
-  private Integer createdAt;
-
  /**
   * Unix timestamp in seconds of last time catalog product group was updated.
   */
   @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
   private Integer updatedAt;
-
  /**
   * Catalog id pertaining to the creative assets product group.
+  * @return catalogId
   */
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
-  private String catalogId;
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -108,51 +133,26 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * ID of the creative assets product group.
-  * @return id
+  * Unix timestamp in seconds of when catalog product group was created.
+  * @return createdAt
   */
-  @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
   }
 
   /**
-   * Sets the <code>id</code> property.
+   * Sets the <code>createdAt</code> property.
    */
- public void setId(String id) {
-    this.id = id;
+ public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
   /**
-   * Sets the <code>id</code> property.
+   * Sets the <code>createdAt</code> property.
    */
-  public CatalogsCreativeAssetsProductGroup id(String id) {
-    this.id = id;
-    return this;
-  }
-
- /**
-  * Name of creative assets product group
-  * @return name
-  */
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public CatalogsCreativeAssetsProductGroup name(String name) {
-    this.name = name;
+  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
@@ -206,26 +206,51 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * Unix timestamp in seconds of when catalog product group was created.
-  * @return createdAt
+  * ID of the creative assets product group.
+  * @return id
   */
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
   }
 
   /**
-   * Sets the <code>createdAt</code> property.
+   * Sets the <code>id</code> property.
    */
- public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
+ public void setId(String id) {
+    this.id = id;
   }
 
   /**
-   * Sets the <code>createdAt</code> property.
+   * Sets the <code>id</code> property.
    */
-  public CatalogsCreativeAssetsProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsCreativeAssetsProductGroup id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+  * Name of creative assets product group
+  * @return name
+  */
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+ public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+  public CatalogsCreativeAssetsProductGroup name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -253,31 +278,6 @@ public enum CatalogTypeEnum {
     return this;
   }
 
- /**
-  * Catalog id pertaining to the creative assets product group.
-  * @return catalogId
-  */
-  @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  /**
-   * Sets the <code>catalogId</code> property.
-   */
- public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  /**
-   * Sets the <code>catalogId</code> property.
-   */
-  public CatalogsCreativeAssetsProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -288,19 +288,19 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup = (CatalogsCreativeAssetsProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsCreativeAssetsProductGroup.id) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroup.name) &&
+    return Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
+        Objects.equals(this.createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
         Objects.equals(this.description, catalogsCreativeAssetsProductGroup.description) &&
         Objects.equals(this.filters, catalogsCreativeAssetsProductGroup.filters) &&
-        Objects.equals(this.createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsCreativeAssetsProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsCreativeAssetsProductGroup.catalogId);
+        Objects.equals(this.id, catalogsCreativeAssetsProductGroup.id) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroup.name) &&
+        Objects.equals(this.updatedAt, catalogsCreativeAssetsProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, description, filters, id, name, updatedAt);
   }
 
   @Override
@@ -308,14 +308,14 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroup {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

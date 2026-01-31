@@ -9,13 +9,13 @@
 -export_type([openapi_multiple_product_groups_inner/0]).
 
 -type openapi_multiple_product_groups_inner() ::
-  [ {'name', binary() }
-  | {'description', binary() }
-  | {'is_featured', boolean() }
-  | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+  [ {'description', binary() }
   | {'feed_id', binary() }
-  | {'catalog_type', binary() }
+  | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+  | {'is_featured', boolean() }
+  | {'name', binary() }
   | {'catalog_id', binary() }
+  | {'catalog_type', binary() }
   | {'country', openapi_country:openapi_country() }
   | {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
   ].
@@ -25,13 +25,13 @@ openapi_multiple_product_groups_inner() ->
     openapi_multiple_product_groups_inner([]).
 
 openapi_multiple_product_groups_inner(Fields) ->
-  Default = [ {'name', binary() }
-            , {'description', binary() }
-            , {'is_featured', boolean() }
-            , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+  Default = [ {'description', binary() }
             , {'feed_id', binary() }
-            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
+            , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+            , {'is_featured', boolean() }
+            , {'name', binary() }
             , {'catalog_id', binary() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'country', openapi_country:openapi_country() }
             , {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
             ],

@@ -16,43 +16,18 @@ import javax.validation.Valid;
 /**
  * AnalyticsMetricsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AnalyticsMetricsResponse   {
-  @JsonProperty("summary_metrics")
-  @Valid
-
-  private Map<String, BigDecimal> summaryMetrics = null;
-
   @JsonProperty("daily_metrics")
   @Valid
 
   private List<@Valid AnalyticsDailyMetrics> dailyMetrics = null;
 
-  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
-    this.summaryMetrics = summaryMetrics;
-    return this;
-  }
+  @JsonProperty("summary_metrics")
+  @Valid
 
-  public AnalyticsMetricsResponse putSummaryMetricsItem(String key, BigDecimal summaryMetricsItem) {
-    if (this.summaryMetrics == null) {
-      this.summaryMetrics = new HashMap<>();
-    }
-    this.summaryMetrics.put(key, summaryMetricsItem);
-    return this;
-  }
-
-   /**
-   * The metric name and value over the requested period for each requested metric
-   * @return summaryMetrics
-  **/
-  public Map<String, BigDecimal> getSummaryMetrics() {
-    return summaryMetrics;
-  }
-
-  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
-    this.summaryMetrics = summaryMetrics;
-  }
+  private Map<String, BigDecimal> summaryMetrics = null;
 
   public AnalyticsMetricsResponse dailyMetrics(List<@Valid AnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
@@ -79,6 +54,31 @@ public class AnalyticsMetricsResponse   {
     this.dailyMetrics = dailyMetrics;
   }
 
+  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+    return this;
+  }
+
+  public AnalyticsMetricsResponse putSummaryMetricsItem(String key, BigDecimal summaryMetricsItem) {
+    if (this.summaryMetrics == null) {
+      this.summaryMetrics = new HashMap<>();
+    }
+    this.summaryMetrics.put(key, summaryMetricsItem);
+    return this;
+  }
+
+   /**
+   * The metric name and value over the requested period for each requested metric
+   * @return summaryMetrics
+  **/
+  public Map<String, BigDecimal> getSummaryMetrics() {
+    return summaryMetrics;
+  }
+
+  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -89,13 +89,13 @@ public class AnalyticsMetricsResponse   {
       return false;
     }
     AnalyticsMetricsResponse analyticsMetricsResponse = (AnalyticsMetricsResponse) o;
-    return Objects.equals(summaryMetrics, analyticsMetricsResponse.summaryMetrics) &&
-        Objects.equals(dailyMetrics, analyticsMetricsResponse.dailyMetrics);
+    return Objects.equals(dailyMetrics, analyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(summaryMetrics, analyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(summaryMetrics, dailyMetrics);
+    return Objects.hash(dailyMetrics, summaryMetrics);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -104,8 +104,8 @@ public class AnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AnalyticsMetricsResponse {\n");
     
-    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -13,11 +13,11 @@ Name | Type | Description | Notes
 **AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**cUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
 **MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
@@ -34,6 +34,12 @@ Name | Type | Description | Notes
 **gOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **gOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**cUSTOMNUMBER0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER4** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 
 

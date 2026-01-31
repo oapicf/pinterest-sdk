@@ -14,11 +14,11 @@ import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAss
  * Request object to list products for a given creative assets catalog_id and product group filter.
  */
 export interface CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest { 
-    catalog_type: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum;
     /**
      * Catalog id pertaining to the creative assets product group.
      */
     catalog_id: string;
+    catalog_type: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum;
     filters: CatalogsCreativeAssetsProductGroupFilters;
 }
 export namespace CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**NSArray&lt;OAICatalogsItemValidationIssues&gt;***](OAICatalogsItemValidationIssues.md) |  | 
 **bookmark** | **NSString*** |  | [optional] 
+**items** | [**NSArray&lt;OAICatalogsItemValidationIssues&gt;***](OAICatalogsItemValidationIssues.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

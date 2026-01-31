@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.prokarma.pkmst.model.TargetingTemplateResponseData;
+import com.prokarma.pkmst.model.TargetingTemplateGetResponseData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -20,40 +20,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * TargetingTemplateList200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateList200Response   {
-  @JsonProperty("items")
-  
-  private List<TargetingTemplateResponseData> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  public TargetingTemplateList200Response items(List<TargetingTemplateResponseData> items) {
-    this.items = items;
-    return this;
-  }
-
-  public TargetingTemplateList200Response addItemsItem(TargetingTemplateResponseData itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Get items
-   * @return items
-   */
-  @ApiModelProperty(required = true, value = "")
-  public List<TargetingTemplateResponseData> getItems() {
-    return items;
-  }
-
-  public void setItems(List<TargetingTemplateResponseData> items) {
-    this.items = items;
-  }
+  @JsonProperty("items")
+  
+  private List<TargetingTemplateGetResponseData> items = new ArrayList<>();
 
   public TargetingTemplateList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -73,6 +47,32 @@ public class TargetingTemplateList200Response   {
     this.bookmark = bookmark;
   }
 
+  public TargetingTemplateList200Response items(List<TargetingTemplateGetResponseData> items) {
+    this.items = items;
+    return this;
+  }
+
+  public TargetingTemplateList200Response addItemsItem(TargetingTemplateGetResponseData itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Get items
+   * @return items
+   */
+  @ApiModelProperty(required = true, value = "")
+  public List<TargetingTemplateGetResponseData> getItems() {
+    return items;
+  }
+
+  public void setItems(List<TargetingTemplateGetResponseData> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -83,13 +83,13 @@ public class TargetingTemplateList200Response   {
       return false;
     }
     TargetingTemplateList200Response targetingTemplateList200Response = (TargetingTemplateList200Response) o;
-    return Objects.equals(this.items, targetingTemplateList200Response.items) &&
-        Objects.equals(this.bookmark, targetingTemplateList200Response.bookmark);
+    return Objects.equals(this.bookmark, targetingTemplateList200Response.bookmark) &&
+        Objects.equals(this.items, targetingTemplateList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -97,8 +97,8 @@ public class TargetingTemplateList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

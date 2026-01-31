@@ -6,7 +6,7 @@ After the client have been generated, you have to change these following variabl
 - src/main.cpp | Change wifi password
 - lib/service/AbstractService.h | Change to your url
 
-# Documentation for Pinterest REST API 5.14.0 Tiny client cpp (Arduino) 
+# Documentation for Pinterest REST API 5.23.0 Tiny client cpp (Arduino) 
 
 The project is structured like this:
 ```
@@ -35,9 +35,11 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*adAccounts_create* | *POST* /ad_accounts | Create ad account.|
 |*adAccounts_get* | *GET* /ad_accounts/{ad_account_id} | Get ad account.|
 |*adAccounts_list* | *GET* /ad_accounts | List ad accounts.|
+|*analytics_createConversionProductReport* | *POST* /ad_accounts/{ad_account_id}/reports/brand_category_sku | Create a request for a brand, category, SKU report.|
 |*analytics_createMmmReport* | *POST* /ad_accounts/{ad_account_id}/mmm_reports | Create a request for a Marketing Mix Modeling (MMM) report.|
 |*analytics_createReport* | *POST* /ad_accounts/{ad_account_id}/reports | Create async request for an account analytics report.|
 |*analytics_createTemplateReport* | *POST* /ad_accounts/{ad_account_id}/templates/{template_id}/reports | Create async request for an analytics report using a template.|
+|*analytics_getConversionProductReport* | *GET* /ad_accounts/{ad_account_id}/reports/brand_category_sku | Get advertiser brand, category, SKU report.|
 |*analytics_getMmmReport* | *GET* /ad_accounts/{ad_account_id}/mmm_reports | Get advertiser Marketing Mix Modeling (MMM) report..|
 |*analytics_getReport* | *GET* /ad_accounts/{ad_account_id}/reports | Get the account analytics report created by the async call.|
 |*sandbox_delete* | *DELETE* /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox.|
@@ -93,7 +95,6 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |*audiences_create* | *POST* /ad_accounts/{ad_account_id}/audiences | Create audience.|
-|*audiences_createCustom* | *POST* /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience.|
 |*audiences_get* | *GET* /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience.|
 |*audiences_list* | *GET* /ad_accounts/{ad_account_id}/audiences | List audiences.|
 |*audiences_update* | *PATCH* /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience.|
@@ -103,6 +104,8 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |------------- | ------------- | -------------|
 |*adsCredit_redeem* | *POST* /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits.|
 |*adsCreditsDiscounts_get* | *GET* /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts.|
+|*billingInvoiceDownload_get* | *GET* /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice.|
+|*billingInvoices_get* | *GET* /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices.|
 |*billingProfiles_get* | *GET* /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles.|
 |*ssioAccounts_get* | *GET* /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information..|
 |*ssioInsertionOrder_create* | *POST* /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO..|
@@ -162,16 +165,20 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 ### BusinessAccessRelationshipsApi
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|*brandAccounts_create* | *POST* /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account.|
+|*brandAccounts_update* | *PATCH* /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account.|
 |*deleteBusinessMembership* | *DELETE* /businesses/{business_id}/members | Terminate business memberships.|
 |*deleteBusinessPartners* | *DELETE* /businesses/{business_id}/partners | Terminate business partnerships.|
 |*get_businessEmployers* | *GET* /businesses/employers | List business employers for user.|
 |*get_businessMembers* | *GET* /businesses/{business_id}/members | Get business members.|
 |*get_businessPartners* | *GET* /businesses/{business_id}/partners | Get business partners.|
+|*systemUser_update* | *PATCH* /businesses/{business_id}/system_users/{system_user_id} | Update a system user information..|
 |*update_businessMemberships* | *PATCH* /businesses/{business_id}/members | Update member's business role.|
 
 ### CampaignsApi
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|*adPins_analytics* | *GET* /ad_accounts/{ad_account_id}/pins/analytics | Get pins analytics.|
 |*campaignTargetingAnalytics_get* | *GET* /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns.|
 |*campaigns_analytics* | *GET* /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics.|
 |*campaigns_create* | *POST* /ad_accounts/{ad_account_id}/campaigns | Create campaigns.|
@@ -179,7 +186,26 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*campaigns_list* | *GET* /ad_accounts/{ad_account_id}/campaigns | List campaigns.|
 |*campaigns_update* | *PATCH* /ad_accounts/{ad_account_id}/campaigns | Update campaigns.|
 
-### CatalogsApi
+### CatalogFeedsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*feedProcessingResults_list* | *GET* /catalogs/feeds/{feed_id}/processing_results | List feed processing results.|
+|*feeds_create* | *POST* /catalogs/feeds | Create feed.|
+|*feeds_delete* | *DELETE* /catalogs/feeds/{feed_id} | Delete feed.|
+|*feeds_get* | *GET* /catalogs/feeds/{feed_id} | Get feed.|
+|*feeds_ingest* | *POST* /catalogs/feeds/{feed_id}/ingest | Ingest feed items.|
+|*feeds_list* | *GET* /catalogs/feeds | List feeds.|
+|*feeds_update* | *PATCH* /catalogs/feeds/{feed_id} | Update feed.|
+|*itemsIssues_list* | *GET* /catalogs/processing_results/{processing_result_id}/item_issues | List item issues.|
+
+### CatalogItemsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*itemsBatch_get* | *GET* /catalogs/items/batch/{batch_id} | Get item batch status.|
+|*itemsBatch_post* | *POST* /catalogs/items/batch | Operate on item batch.|
+|*items_post* | *POST* /catalogs/items | Get catalogs items (POST).|
+
+### CatalogProductGroupsApi
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |*catalogsProductGroupPins_list* | *GET* /catalogs/product_groups/{product_group_id}/products | List products by product group.|
@@ -191,24 +217,26 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*catalogsProductGroups_list* | *GET* /catalogs/product_groups | List product groups.|
 |*catalogsProductGroups_productCountsGet* | *GET* /catalogs/product_groups/{product_group_id}/product_counts | Get product counts.|
 |*catalogsProductGroups_update* | *PATCH* /catalogs/product_groups/{product_group_id} | Update single product group.|
-|*catalogs_create* | *POST* /catalogs | Create catalog.|
-|*catalogs_list* | *GET* /catalogs | List catalogs.|
-|*feedProcessingResults_list* | *GET* /catalogs/feeds/{feed_id}/processing_results | List feed processing results.|
-|*feeds_create* | *POST* /catalogs/feeds | Create feed.|
-|*feeds_delete* | *DELETE* /catalogs/feeds/{feed_id} | Delete feed.|
-|*feeds_get* | *GET* /catalogs/feeds/{feed_id} | Get feed.|
-|*feeds_ingest* | *POST* /catalogs/feeds/{feed_id}/ingest | Ingest feed items.|
-|*feeds_list* | *GET* /catalogs/feeds | List feeds.|
-|*feeds_update* | *PATCH* /catalogs/feeds/{feed_id} | Update feed.|
-|*itemsBatch_get* | *GET* /catalogs/items/batch/{batch_id} | Get item batch status.|
-|*itemsBatch_post* | *POST* /catalogs/items/batch | Operate on item batch.|
-|*itemsIssues_list* | *GET* /catalogs/processing_results/{processing_result_id}/item_issues | List item issues.|
-|*items_get* | *GET* /catalogs/items | Get catalogs items.|
-|*items_post* | *POST* /catalogs/items | Get catalogs items (POST).|
 |*productsByProductGroupFilter_list* | *POST* /catalogs/products/get_by_product_group_filters | List products by filter.|
+
+### CatalogReportsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
 |*reports_create* | *POST* /catalogs/reports | Build catalogs report.|
 |*reports_get* | *GET* /catalogs/reports | Get catalogs report.|
 |*reports_stats* | *GET* /catalogs/reports/stats | List report stats.|
+
+### CatalogsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*catalogs_availableFilterValues* | *GET* /catalogs/available_filter_values | List available filter values.|
+|*catalogs_create* | *POST* /catalogs | Create catalog.|
+|*catalogs_list* | *GET* /catalogs | List catalogs.|
+
+### ConversionEqsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*conversionEqs_list* | *GET* /ad_accounts/{ad_account_id}/conversion_eqs | Get event quality score (EQS).|
 
 ### ConversionEventsApi
 |Method | HTTP request | Description|
@@ -220,9 +248,21 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |------------- | ------------- | -------------|
 |*conversionTags_create* | *POST* /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag.|
 |*conversionTags_get* | *GET* /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag.|
-|*conversionTags_list* | *GET* /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags.|
+|*conversionTags_list* | *GET* /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags.|
 |*ocpmEligibleConversionTags_get* | *GET* /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags.|
 |*pageVisitConversionTags_get* | *GET* /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags.|
+
+### ConversionsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*advertiserDefinedEvents_get* | *GET* /ad_accounts/{ad_account_id}/advertiser_defined_events | Get advertiser defined events.|
+
+### CustomerListUploadsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*customerListUploads_create* | *POST* /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads | Create customer list upload.|
+|*customerListUploads_get* | *GET* /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id} | Get customer list upload.|
+|*customerListUploads_run* | *POST* /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run | Run customer list upload.|
 
 ### CustomerListsApi
 |Method | HTTP request | Description|
@@ -252,11 +292,18 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*keywords_update* | *PATCH* /ad_accounts/{ad_account_id}/keywords | Update keywords.|
 |*trendingKeywords_list* | *GET* /trends/keywords/{region}/top/{trend_type} | List trending keywords.|
 
+### LabelsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*labels_create* | *POST* /ad_accounts/{ad_account_id}/labels | Create labels.|
+|*labels_list* | *GET* /ad_accounts/{ad_account_id}/labels | List labels.|
+|*labels_update* | *PATCH* /ad_accounts/{ad_account_id}/labels | Update labels.|
+
 ### LeadAdsApi
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |*adAccountsSubscriptions_delById* | *DELETE* /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription.|
-|*adAccountsSubscriptions_getById* | *GET* /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription.|
+|*adAccountsSubscriptions_getById* | *GET* /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID.|
 |*adAccountsSubscriptions_getList* | *GET* /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions.|
 |*adAccountsSubscriptions_post* | *POST* /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription.|
 
@@ -282,10 +329,22 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*media_get* | *GET* /media/{media_id} | Get media upload details.|
 |*media_list* | *GET* /media | List media uploads.|
 
+### MsotEventsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*msotEvents_create* | *POST* /ad_accounts/{ad_account_id}/msot/events | Send Measurement Source Of Truth (MSOT) attributed conversion events.|
+
+### NotificationApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*notification_post* | *POST* /notifications | Receive notifications from external partners..|
+
 ### OauthApi
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|*oauth_conversionToken* | *POST* /oauth/conversion_token | Generate OAuth access token for conversion API.|
 |*oauth_token* | *POST* /oauth/token | Generate OAuth access token.|
+|*token_revoke* | *POST* /oauth/token/revoke | Revoke a token.|
 
 ### OrderLinesApi
 |Method | HTTP request | Description|
@@ -305,6 +364,13 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*pins_save* | *POST* /pins/{pin_id}/save | Save Pin.|
 |*pins_update* | *PATCH* /pins/{pin_id} | Update Pin.|
 
+### ProductCategoriesApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*trendsFeaturedTopics_list* | *GET* /trends/topics/featured | Get featured topics.|
+|*trendsProductCategoriesDetails_list* | *GET* /trends/product_categories/details | Get product category details.|
+|*trendsProductCategoriesTrending_list* | *GET* /trends/product_categories/trending | Get a list of growing Shopping Product Categories.|
+
 ### ProductGroupPromotionsApi
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
@@ -313,6 +379,15 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*productGroupPromotions_list* | *GET* /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions.|
 |*productGroupPromotions_update* | *PATCH* /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions.|
 |*productGroups_analytics* | *GET* /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics.|
+
+### PromotionsApi
+|Method | HTTP request | Description|
+|------------- | ------------- | -------------|
+|*promotions_create* | *POST* /ad_accounts/{ad_account_id}/promotions | Create promotions.|
+|*promotions_delete* | *DELETE* /ad_accounts/{ad_account_id}/promotions/{promotion_id} | Delete promotion by id.|
+|*promotions_get* | *GET* /ad_accounts/{ad_account_id}/promotions/{promotion_id} | Get promotion by id.|
+|*promotions_list* | *GET* /ad_accounts/{ad_account_id}/promotions | Get promotions.|
+|*promotions_update* | *PATCH* /ad_accounts/{ad_account_id}/promotions | Update promotions.|
 
 ### ResourcesApi
 |Method | HTTP request | Description|
@@ -375,11 +450,12 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*ActionType* | Ad group billable event type. For update, only draft ad groups may update billable event.|
 |*AdAccount* | |
 |*AdAccountAnalyticsResponse_inner* | |
-|*AdAccountCreateRequest* | |
+|*AdAccountCreate* | Resource create operation model.|
 |*AdAccountCreateSubscriptionRequest* | |
 |*AdAccountCreateSubscriptionRequest_partner_metadata* | Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.|
 |*AdAccountCreateSubscriptionResponse* | |
 |*AdAccountGetSubscriptionResponse* | |
+|*AdAccountOwner* | |
 |*AdAccountsCountryResponse* | |
 |*AdAccountsCountryResponseData* | |
 |*AdArrayResponse* | |
@@ -394,25 +470,29 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*AdGroupAudienceSizingResponse* | |
 |*AdGroupCommon* | |
 |*AdGroupCreateRequest* | |
+|*AdGroupIdFilter* | |
 |*AdGroupResponse* | |
 |*AdGroupSummaryStatus* | Summary status for ad group|
 |*AdGroupUpdateRequest* | |
 |*AdGroupsAnalyticsResponse_inner* | |
+|*AdPinAnalytics* | |
 |*AdPinId* | |
 |*AdPreviewCreateFromImage* | |
 |*AdPreviewCreateFromPin* | |
 |*AdPreviewRequest* | |
+|*AdPreviewShopping* | |
 |*AdPreviewURLResponse* | |
 |*AdResponse* | |
 |*AdUpdateRequest* | |
-|*Ad_account_owner* | |
 |*Ad_accounts_audiences_shared_accounts_list_200_response* | |
 |*Ad_accounts_list_200_response* | |
 |*Ad_accounts_subscriptions_get_list_200_response* | |
 |*Ad_groups_list_200_response* | |
+|*AdsAnalyticsAdGroupTargetingType* | Reporting targeting type for ad groups|
 |*AdsAnalyticsAdTargetingType* | Reporting targeting type for ads|
 |*AdsAnalyticsCampaignTargetingType* | Reporting targeting type for campaigns|
 |*AdsAnalyticsCreateAsyncRequest* | |
+|*AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics* | |
 |*AdsAnalyticsCreateAsyncResponse* | |
 |*AdsAnalyticsFilterColumn* | Reporting columns for sync reporting data filter|
 |*AdsAnalyticsFilterOperator* | Filter operator for sync reporting|
@@ -437,10 +517,15 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*AdvancedAuctionKey* | Object uniquely identifying a retail catalog item|
 |*AdvancedAuctionOperation* | |
 |*AdvancedAuctionOperationError* | Error which occurred when applying a bid options operation to a specific item.|
-|*AdvancedAuctionProcessedItem* | Object describing the result of an operation on an item bid option|
 |*AdvancedAuctionProcessedItems* | Response object containing the results of an operation on an item bid option|
+|*AdvertiserDefinedEvent* | |
+|*AdvertiserDefinedEventsResponse* | |
+|*AgeTrendsBucket* | |
+|*All_of* | |
+|*AmazonConnectRequest* | Request containing OTP and Amazon storefront info called by Amazon|
 |*AnalyticsDailyMetrics* | |
 |*AnalyticsMetricsResponse* | |
+|*Any_of* | |
 |*AppTypeMultipliers* | This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).|
 |*AssetGroupBinding* | |
 |*AssetGroupType* | Asset group type|
@@ -449,20 +534,19 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*AudienceAccountType* | |
 |*AudienceCategory* | |
 |*AudienceCommon* | |
-|*AudienceCreateCustomRequest* | |
 |*AudienceCreateRequest* | |
-|*AudienceDataParty* | Whether the data is owned by the partner (1p) or by the data provider (3p)|
 |*AudienceDefinition* | Queryable audience representation.|
 |*AudienceDefinitionResponse* | |
+|*AudienceDefinitionScope* | Generated audience scope to request.|
+|*AudienceDefinitionType* | Generated audience type to request.|
 |*AudienceDemographicValue* | Demographic detail for a single audience demographic|
 |*AudienceDemographics* | Audience demographics|
 |*AudienceInsightCategoryArrayResponse* | |
 |*AudienceInsightCategoryCommon* | |
 |*AudienceInsightType* | |
 |*AudienceInsightsResponse* | Audience interests and demographics.|
-|*AudienceRule* | JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.|
+|*AudienceRule* | JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.|
 |*AudienceShareType* | |
-|*AudienceSharingType* | Audience sharing type: [\"CUSTOM\", \"SYNDICATED\"]|
 |*AudienceSubcategory* | |
 |*AudienceType* | Audience type|
 |*AudienceUpdateOperationType* | Audience operation type (update or remove).|
@@ -479,24 +563,36 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*BidFloor* | |
 |*BidFloorRequest* | |
 |*BidFloorSpec* | |
+|*BillingInvoiceDownloadResponse* | |
+|*BillingInvoiceResponse* | |
 |*BillingProfilesResponse* | |
+|*Billing_invoices_get_200_response* | |
 |*Billing_profiles_get_200_response* | |
-|*Board* | Board|
+|*Board* | |
+|*BoardBase* | |
+|*BoardCreate* | Resource create operation model.|
+|*BoardMedia* | |
 |*BoardOwner* | |
+|*BoardPrivacy* | |
+|*BoardPrivacyFilter* | |
 |*BoardSection* | Sections help organize pins within a board.|
-|*BoardUpdate* | Board fields for updates|
-|*Board_media* | Board media.|
+|*BoardUpdatePrivacy* | |
+|*BoardWithUpdatePrivacy* | |
+|*BoardWithUpdatePrivacyUpdate* | Resource create or update operation model.|
 |*Board_sections_list_200_response* | |
 |*Boards_list_200_response* | |
 |*Boards_list_pins_200_response* | |
 |*Boards_user_follows_list_200_response* | |
 |*BookClosedResponse* | Creation fields|
 |*BrandFilter* | |
+|*Brand_accounts_create_200_response* | |
+|*Brand_accounts_create_request* | |
+|*Brand_accounts_update_request* | |
 |*BudgetType* | Budget type. If DAILY, an ad group's daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group `start_time` and `end_time` range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. For CBO campaigns, only \"CBO_ADGROUP\" is allowed. For WEB_SESSIONS campaigns, only \"LIFETIME\" is allowed. For update, only draft ad groups may update budget type.|
 |*BulkDownloadRequest* | Ad entities to get in bulk request.|
 |*BulkDownloadRequest_campaign_filter* | |
 |*BulkDownloadResponse* | |
-|*BulkEntityType* | Refers ads entity type|
+|*BulkEntityType* | Refers ads entity type. Schedule enum is only applicable to beta users|
 |*BulkOutputFormat* | Bulk file output format|
 |*BulkReportingJobStatus* | Possible status for a bulk reporting job|
 |*BulkUpsertRequest* | Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.|
@@ -523,6 +619,10 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*Business_members_asset_access_delete_request* | |
 |*Business_members_asset_access_delete_request_accesses_inner* | |
 |*Business_partner_asset_access_get_200_response* | |
+|*CampaignAudienceMultipliers* | This represents a mapping from Audience ID to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified audience in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All audience multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).|
+|*CampaignBidOptions* | Object describing the campaign level bid multipliers.|
+|*CampaignBidOptionsCreate* | Object describing the campaign level bid multipliers.|
+|*CampaignBidOptionsUpdate* | Object describing an update to the campaign level bid multipliers.|
 |*CampaignCommon* | Campaign Data|
 |*CampaignCreateCommon* | |
 |*CampaignCreateRequest* | |
@@ -530,6 +630,8 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CampaignCreateResponseData* | |
 |*CampaignCreateResponseItem* | |
 |*CampaignId* | |
+|*CampaignIdFilter* | |
+|*CampaignObjectivesFilter* | |
 |*CampaignResponse* | |
 |*CampaignSummaryStatus* | Summary status for campaign|
 |*CampaignUpdateRequest* | |
@@ -537,13 +639,16 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CampaignsAnalyticsResponse_inner* | |
 |*Campaigns_list_200_response* | |
 |*CancelInvitesBody* | Request body used to cancel invites|
+|*CarouselSlot* | |
 |*Catalog* | Catalog entity|
+|*CatalogsAvailableFilterValues* | Object holding available filter values for each filter key|
 |*CatalogsCreateCreativeAssetsItem* | A creative assets item to be created.|
 |*CatalogsCreateHotelItem* | A hotel item to be created.|
 |*CatalogsCreateReportResponse* | |
 |*CatalogsCreateRequest* | Request object for creating a catalog.|
 |*CatalogsCreateRetailItem* | An item to be created|
 |*CatalogsCreativeAssetsAttributes* | |
+|*CatalogsCreativeAssetsAvailableFilterValues* | |
 |*CatalogsCreativeAssetsBatchItem* | Creative assets batch item|
 |*CatalogsCreativeAssetsBatchRequest* | Request object to update catalogs creative assets items|
 |*CatalogsCreativeAssetsFeed* | Catalogs Creative Asset Feed object|
@@ -583,6 +688,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsFeedValidationDetails* | |
 |*CatalogsFeedValidationErrors* | |
 |*CatalogsFeedValidationWarnings* | |
+|*CatalogsFeedVideoCounts* | Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.|
 |*CatalogsFeedsCreateRequest* | Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.|
 |*CatalogsFeedsCreateRequest_default_locale* | The locale used within a feed for product descriptions.|
 |*CatalogsFeedsUpdateRequest* | Request object for updating a feed.|
@@ -590,6 +696,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsHotelAddress* | |
 |*CatalogsHotelAttributes* | |
 |*CatalogsHotelAttributes_allOf_main_image* | The main hotel image|
+|*CatalogsHotelAvailableFilterValues* | |
 |*CatalogsHotelBatchItem* | Hotel batch item|
 |*CatalogsHotelBatchRequest* | Request object to update catalogs hotel items|
 |*CatalogsHotelFeed* | Catalogs Hotel Feed object|
@@ -610,10 +717,13 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsHotelProductGroupFiltersAllOf* | |
 |*CatalogsHotelProductGroupFiltersAnyOf* | |
 |*CatalogsHotelProductGroupProductCounts* | Product counts for a Hotel CatalogsProductGroup|
+|*CatalogsHotelProductGroupType* | <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.|
 |*CatalogsHotelProductGroupUpdateRequest* | Request object for updating a hotel product group.|
 |*CatalogsHotelProductMetadata* | Hotel product metadata entity|
 |*CatalogsHotelReportParameters* | Parameters for hotel report|
 |*CatalogsHotelReportParameters_report* | |
+|*CatalogsHotelReportStatsParameters* | Parameters for hotel report|
+|*CatalogsHotelReportStatsParameters_report* | |
 |*CatalogsItemValidationDetails* | |
 |*CatalogsItemValidationErrors* | |
 |*CatalogsItemValidationIssue* | |
@@ -637,12 +747,11 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsProductGroupCreateRequest* | Request object for creating a product group.|
 |*CatalogsProductGroupCurrencyCriteria* | A currency filter. This filter cannot be negated|
 |*CatalogsProductGroupFilterKeys* | |
+|*CatalogsProductGroupFilterOperatorTypeCriteria* | |
 |*CatalogsProductGroupFilters* | Object holding a group of filters for a catalog product group|
 |*CatalogsProductGroupFiltersAllOf* | |
 |*CatalogsProductGroupFiltersAnyOf* | |
 |*CatalogsProductGroupFiltersRequest* | Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.|
-|*CatalogsProductGroupFiltersRequest_anyOf* | |
-|*CatalogsProductGroupFiltersRequest_anyOf_1* | |
 |*CatalogsProductGroupMultipleCountriesCriteria* | |
 |*CatalogsProductGroupMultipleGenderCriteria* | |
 |*CatalogsProductGroupMultipleMediaTypesCriteria* | |
@@ -652,14 +761,17 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsProductGroupProductCountsVertical* | Product counts for a CatalogsProductGroup|
 |*CatalogsProductGroupStatus* | |
 |*CatalogsProductGroupType* | <p>Catalog product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_PRODUCTS: Consists of every product in your latest successful feed upload. <br>BEST_DEALS: Consists of products with the deepest drop in price. <br>PINNER_FAVORITES: Consists of products that are resonating most with people on Pinterest, based on engagement. <br>TOP_SELLERS: Consists of products with the highest conversion rate, if you have the conversion tag installed. <br>BACK_IN_STOCK: Consists of products that were previously out of stock and are now in stock. <br>NEW_ARRIVALS: Consists of products that are new to your Catalog. <br>SHOPIFY_COLLECTION: Product groups created based on Shopify Product Collections. <br>I2PC: Product groups created based on predicted product category.</p>|
+|*CatalogsProductGroupUint32Criteria* | |
 |*CatalogsProductGroupUpdateRequest* | Request object for updating a product group.|
 |*CatalogsReport* | |
+|*CatalogsReportAllItemsFilter* | |
 |*CatalogsReportDistributionIssueFilter* | |
 |*CatalogsReportDistributionStats* | |
 |*CatalogsReportFeedIngestionFilter* | |
 |*CatalogsReportFeedIngestionStats* | |
 |*CatalogsReportParameters* | Report parameters|
 |*CatalogsReportStats* | Diagnostics aggregated numbers|
+|*CatalogsRetailAvailableFilterValues* | |
 |*CatalogsRetailBatchRequest* | A request object that can have multiple operations on a single retail batch|
 |*CatalogsRetailBatchRequest_items_inner* | |
 |*CatalogsRetailFeed* | Catalogs Retail Feed object|
@@ -678,6 +790,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsRetailProductGroupUpdateRequest* | Request object for updating a retail product group.|
 |*CatalogsRetailProductMetadata* | Retail product metadata entity|
 |*CatalogsRetailReportParameters* | Parameters for retail report|
+|*CatalogsRetailReportStatsParameters* | Parameters for retail report|
 |*CatalogsStatus* | Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.|
 |*CatalogsType* | Type of the catalog entity.|
 |*CatalogsUpdatableCreativeAssetsAttributes* | |
@@ -695,32 +808,43 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsVerticalProductGroupCreateRequest* | Request object for creating a catalog based product group.|
 |*CatalogsVerticalProductGroupUpdateRequest* | Request object for updating a catalog based product group.|
 |*CatalogsVerticalsListProductsByCatalogBasedFilterRequest* | Request object to list products for a given catalog_id and product group filter.|
+|*Catalogs_creative_assets_filter_values_map* | A map of filter attributes to their available values.|
+|*Catalogs_hotel_filter_values_map* | A map of filter attributes to their available values.|
 |*Catalogs_list_200_response* | |
 |*Catalogs_product_group_pins_list_200_response* | |
 |*Catalogs_product_group_pricing_currency_criteria* | |
 |*Catalogs_product_groups_list_200_response* | |
 |*Catalogs_product_groups_update_request* | |
+|*Catalogs_retail_filter_values_map* | A map of filter attributes to their available values.|
 |*ConditionFilter* | |
+|*ContentType* | |
+|*ConversionAccessTokenResponse* | A successful conversion access token response.|
 |*ConversionApiResponse* | Schema describing the object in the response, which contains information about the events that were received and processed.|
 |*ConversionApiResponse_events_inner* | |
 |*ConversionAttributionWindowDays* | |
+|*ConversionEventAppInfo* | Object containing information about the application where event occurred.|
+|*ConversionEventDeviceInfo* | Object containing information about the device where event occurred.|
 |*ConversionEventResponse* | |
 |*ConversionEvents* | A list of events (one or more) encapsulated by a data object.|
 |*ConversionEventsUserData* | Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.|
-|*ConversionEventsUserData_anyOf* | |
-|*ConversionEventsUserData_anyOf_1* | |
-|*ConversionEventsUserData_anyOf_2* | |
+|*ConversionEventsUserDataProperties* | |
 |*ConversionEvents_data_inner* | |
 |*ConversionEvents_data_inner_custom_data* | Object containing other custom data.|
 |*ConversionEvents_data_inner_custom_data_contents_inner* | |
+|*ConversionHealthSelectionItem* | User selection of conversion health criteria for a single feature|
+|*ConversionMSOTEvents* | Object containing the MSOT conversion events.|
+|*ConversionProductReportRequest* | Request for a brand, category, SKU report|
+|*ConversionProductReportingColumn* | Conversion Product Reporting columns|
 |*ConversionReportAttributionType* | Attribution type. Refers to the Pinterest Tag endpoints|
 |*ConversionReportTimeType* | Conversion report time type|
+|*ConversionTag* | |
 |*ConversionTagCommon* | |
 |*ConversionTagConfigs* | |
-|*ConversionTagCreate* | |
+|*ConversionTagCreate* | Resource create operation model.|
 |*ConversionTagListResponse* | |
 |*ConversionTagResponse* | |
 |*ConversionTagType* | conversion tag type|
+|*Conversion_tags_list_200_response* | |
 |*Country* | Country ID from ISO 3166-1 alpha-2.|
 |*CountryFilter* | |
 |*CreateAssetAccessRequestBody* | An object containing a list of all the asset access requests|
@@ -741,7 +865,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CreativeAssetsIdFilter* | |
 |*CreativeAssetsProcessingRecord* | Object describing an item processing record|
 |*CreativeAssetsVisibilityType* | Creative assets visibility.|
-|*CreativeType* | Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.|
+|*CreativeType* | Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.|
 |*Currency* | Currency Codes from ISO 4217|
 |*CurrencyFilter* | |
 |*CustomLabel0Filter* | |
@@ -749,10 +873,20 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CustomLabel2Filter* | |
 |*CustomLabel3Filter* | |
 |*CustomLabel4Filter* | |
+|*CustomNumber0Filter* | |
+|*CustomNumber1Filter* | |
+|*CustomNumber2Filter* | |
+|*CustomNumber3Filter* | |
+|*CustomNumber4Filter* | |
 |*CustomerList* | |
 |*CustomerListRequest* | |
 |*CustomerListUpdateRequest* | |
+|*CustomerListUpload* | |
+|*CustomerListUploadCreateRequest* | |
+|*CustomerListUploadCreateResponse* | |
+|*CustomerListUploadResponse* | |
 |*Customer_lists_list_200_response* | |
+|*CustomizableCTAType* | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)|
 |*DataOutputFormat* | Format of generated report|
 |*DataStatus* | Metrics availablity, e.g., \"READY\".|
 |*DeleteAssetGroupBody* | Request body used to delete asset groups|
@@ -773,10 +907,15 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*DeliveryMetricsResponse* | |
 |*DeliveryMetricsResponse_items_inner* | |
 |*DetailedError* | Used for including extra details to a base error|
-|*EnhancedMatchStatusType* | The enhanced match status of the tag|
+|*DisclosureType* | Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.|
+|*EnhancedMatchStatusType* | |
 |*EntityStatus* | Entity status|
 |*Error* | |
+|*ErrorDetail* | |
+|*EventData* |     Optional for VISITOR `audience_type`.     With the Pinterest tag, you can use event data to capture event details from your website.     This object lists all the available predefined event data fields in the Pinterest tag.     You can include these event data fields as part of a VISITOR audience’s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated.     Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs.     However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.     Examples per `event` type:     `pagevisit`     \"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }     `signup`     \"event_data\": { \"lead_type\": \"New release promotion\" }     `checkout`     \"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }     `addtocart`     \"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\", \"product_brand\": \"My brand\" }]}     `watchvideo`     \"event_data\": { \"video_title\": \"My Product Video 01\" }     `lead`     \"event_data\": { \"lead_type\": \"Newsletter\" }|
+|*EventQualityScore* | Schema for GET Conversion EQS response.|
 |*Exception* | |
+|*FeaturedTrend* | Featured trending topics for a specific interest and market|
 |*Feed_processing_results_list_200_response* | |
 |*Feeds_create_request* | |
 |*Feeds_list_200_response* | |
@@ -784,10 +923,13 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*FollowUserRequest* | |
 |*Followers_list_200_response* | |
 |*Gender* | |
+|*GenderBucket* | |
+|*GenderDemographics* | Gender demographic distribution|
 |*GenderFilter* | |
 |*GetAudiencesOrderBy* | |
 |*GetBusinessAssetTypeResponse* | Type of asset.|
 |*GetBusinessAssetsResponse* | An object containing the permissions a business has on the asset.|
+|*GetBusinessAssetsResponse_catalog_info* | An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.|
 |*GetMMMReportResponse* | |
 |*GetMMMReportResponseData* | |
 |*GetPartnerAssetsResponse* | An object containing the permissions a you/your business partner has on the asset.|
@@ -802,13 +944,16 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*GoogleProductCategory4Filter* | |
 |*GoogleProductCategory5Filter* | |
 |*GoogleProductCategory6Filter* | |
-|*Granularity* | Granularity|
+|*Granularity* | Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.|
 |*GridClickType* | Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.|
 |*HotelIdFilter* | |
 |*HotelProcessingRecord* | Object describing an item processing record|
 |*ImageDetails* | |
 |*ImageMetadata* | |
-|*ImageMetadata_images* | |
+|*ImageSize* | |
+|*Image_Base64* | Base64-encoded image media source|
+|*IngestionSourceOptions* | List of ingestion sources for a conversion event.|
+|*InnerProductCategoriesMetricsHighlights* | |
 |*IntegrationLog* | Schema for log sent from an integration application.|
 |*IntegrationLogClientError* | System error details included in the log sent by the client.|
 |*IntegrationLogClientRequest* | HTTP request details included in the log sent by the client.|
@@ -821,7 +966,9 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*IntegrationRequest* | Schema used for creating the integration metadata.|
 |*IntegrationRequestPatch* | Schema used for updating the integration metadata.|
 |*Integrations_get_list_200_response* | |
+|*Integrations_logs_post_400_response* | |
 |*Interest* | |
+|*InterestsEnum* | |
 |*InviteAssetsSummary* | Ad accounts and profiles the member/partner will be granted access to with this invite/request.|
 |*InviteAssetsSummary_ad_accounts_inner* | |
 |*InviteAssetsSummary_profiles_inner* | |
@@ -841,9 +988,9 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*ItemIdFilter* | |
 |*ItemProcessingRecord* | Object describing an item processing record|
 |*ItemProcessingStatus* | The status of the item processing record|
-|*ItemResponse* | Object describing an item record|
-|*ItemResponse_anyOf* | |
-|*ItemResponse_anyOf_1* | |
+|*ItemResponse* | Object describing an item record or error|
+|*ItemResponse_oneOf* | Successful item response|
+|*ItemResponse_oneOf_1* | Error item response|
 |*ItemUpdateBatchRecord* | Object describing an item batch record to update items|
 |*ItemUpsertBatchRecord* | Object describing an item batch record to upsert items|
 |*ItemValidationEvent* | Object describing an item validation event|
@@ -860,7 +1007,19 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*KeywordsRequest* | |
 |*KeywordsResponse* | |
 |*Keywords_get_200_response* | |
-|*Language* | Language code, which is among the offical ISO 639-1 language list.|
+|*Label* | |
+|*LabelBulkUpdateRequest* | |
+|*LabelCreateRequest* | |
+|*LabelCreateRequest_labels_inner* | |
+|*LabelError* | |
+|*LabelParentType* | Label parent entity type.|
+|*LabelStatus* | The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).|
+|*LabelType* | Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.|
+|*LabelUpdateRequest* | |
+|*LabelUpdateRequest_labels_inner* | |
+|*LabelsResponse* | |
+|*Labels_list_200_response* | |
+|*Language* | Language code, which is among the official ISO 639-1 language list.|
 |*LeadFormArrayResponse* | |
 |*LeadFormArrayResponse_items_inner* | |
 |*LeadFormCommon* | Creation fields|
@@ -874,6 +1033,9 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*LeadFormTestRequest* | Request to create test data for lead data test API.|
 |*LeadFormTestResponse* | Response for lead data test API.|
 |*LeadFormUpdateRequest* | |
+|*LeadSubscription* | |
+|*LeadSubscriptionPostParamsCreate* | |
+|*LeadSubscriptionPostParamsCreate_allOf_partner_metadata* | Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.|
 |*Lead_forms_list_200_response* | |
 |*LeadsExportCreateRequest* | |
 |*LeadsExportCreateResponse* | |
@@ -881,19 +1043,21 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*LeadsExportStatus* | Status of a leads export job|
 |*LineItem* | |
 |*LinkedBusiness* | |
+|*LocalStoreUpdate* | |
+|*LookbackPeriodOptions* | Days in lookback window in the GET Conversion EQS response.|
 |*MMMReportingColumn* | Marketing Mix Modeling (MMM) Reporting Columns|
 |*MMMReportingTargetingType* | Ad targeting types for MMM report|
 |*MatchType* | Keyword match type|
 |*MatchTypeResponse* | Keyword match type|
 |*MaxPriceFilter* | |
+|*Media* | |
 |*MediaType* | |
 |*MediaTypeFilter* | |
 |*MediaUpload* | Media upload that has been registered but not uploaded/processed yet.|
-|*MediaUploadDetails* | Media upload details|
-|*MediaUploadRequest* | Media upload request|
-|*MediaUploadStatus* | Media upload status|
+|*MediaUploadCreate* | Resource create operation model.|
+|*MediaUploadParameters* | |
+|*MediaUploadStatus* | |
 |*MediaUploadType* | |
-|*MediaUpload_allOf_upload_parameters* | The list of parameter key/value pairs you will need to send with your POST request to upload your media file.|
 |*Media_list_200_response* | |
 |*MemberBusinessRole* | The access level a member/partner has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. <br> - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.|
 |*MembersToDeleteBody* | |
@@ -902,8 +1066,11 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*MetricsResponse* | |
 |*MinPriceFilter* | |
 |*Multiple_product_groups_inner* | |
+|*NonDraftEntityStatus* | Entity status|
 |*NonNullableCatalogsCurrency* | Currency Codes from ISO 4217.|
 |*NonNullableProductAvailabilityType* | Product availability.|
+|*NotificationResponse* | |
+|*Notification_post_request* | Any valid JSON object|
 |*NullableCatalogsItemFieldType* | Product item fields|
 |*NullableCurrency* | Currency Codes from ISO 4217.|
 |*OauthAccessTokenRequestClientCredentials* | |
@@ -912,10 +1079,9 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*OauthAccessTokenResponse* | A successful OAuth access token response.|
 |*OauthAccessTokenResponseClientCredentials* | A successful OAuth client token response for the client token flow.|
 |*OauthAccessTokenResponseCode* | |
-|*OauthAccessTokenResponseEverlastingRefresh* | |
 |*OauthAccessTokenResponseIntegrationRefresh* | |
 |*OauthAccessTokenResponseRefresh* | A successful OAuth access token response for the refresh token flow.|
-|*ObjectiveType* | Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.|
+|*ObjectiveType* | Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. |
 |*OperationType* | Operation type to share a specific audience or revoke access to a previously shared audience|
 |*OptimizationGoalMetadata* | |
 |*OptimizationGoalMetadata_conversion_tag_v3_goal_metadata* | |
@@ -931,49 +1097,56 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*OrderLines* | Order Line|
 |*OrderLinesArrayResponse* | |
 |*Order_lines_list_200_response* | |
+|*OverallStatusOptions* | Overall status of event quality score.|
 |*PacingDeliveryType* | Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.|
 |*Page_visit_conversion_tags_get_200_response* | |
 |*Paginated* | |
 |*PartnerType* | |
 |*Permissions* | |
 |*PermissionsWithOwner* | |
-|*Pin* | Pin|
+|*Pin* | Pin model containing properties related to a Pinterest Pin.|
 |*PinAnalyticsMetricsResponse* | |
 |*PinAnalyticsMetricsResponse_daily_metrics_inner* | |
-|*PinCreate* | Pin|
-|*PinMedia* | Pin media objects.|
+|*PinCreate* | Resource create operation model.|
+|*PinMedia* | Pin media that can be an image, video, or a mix of both.|
 |*PinMediaMetadata* | |
-|*PinMediaSource* | Pin media source.|
-|*PinMediaSourceImageBase64* | Base64-encoded image media source|
-|*PinMediaSourceImageURL* | Image URL-based media source|
-|*PinMediaSourceImagesBase64* | Multiple Base64-encoded images media source|
-|*PinMediaSourceImagesBase64_items_inner* | |
-|*PinMediaSourceImagesURL* | Multiple images urls-based media source|
-|*PinMediaSourceImagesURL_items_inner* | |
+|*PinMediaSource* | Pin media source that can be an image, video, or a mix of both passed in as a request.|
+|*PinMediaSourceImageBase64* | Image Base64-based media source.|
+|*PinMediaSourceImageURL* | Image URL-based media source.|
+|*PinMediaSourceImagesBase64* | Multiple Base64-based images media source|
+|*PinMediaSourceImagesBase64Item* | |
+|*PinMediaSourceImagesURL* | Multiple URL-based images media source|
+|*PinMediaSourceImagesURLItem* | |
 |*PinMediaSourcePinURL* | Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.|
-|*PinMediaSourceVideoID* | Video ID-based media source|
+|*PinMediaSourceVideoID* | Video ID-based media source.|
 |*PinMediaWithImage* | Pin with image.|
 |*PinMediaWithImageAndVideo* | Pin with a mix of images and videos.|
-|*PinMediaWithImage_allOf_images* | |
 |*PinMediaWithImages* | Pin with multiple images.|
 |*PinMediaWithVideo* | Pin with video.|
 |*PinMediaWithVideos* | Pin with multiple videos.|
 |*PinPromotionSummaryStatus* | Summary status for pin promotions|
-|*PinUpdate* | Pin fields for updates|
-|*PinUpdate_carousel_slots_inner* | |
+|*PinUpdate* | Resource create or update operation model.|
 |*Pins_list_200_response* | |
 |*Pins_save_request* | |
-|*PinterestTagEventData* | Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }|
+|*Pinterest.Lib.Error* | Default error response|
+|*Pinterest.Lib.PaginationOrder* | |
+|*Pinterest.Lib.Status204* | The resource was successfully deleted.|
 |*PlacementGroupType* | Campaign placement group type|
 |*PlacementMultipliers* | This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).|
+|*PredictedTimeSeries* | A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.<br /> These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword. Similar to the historical `time_series`, normalization is applied independently to the predicted time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative predicted volume between keywords.<br /> **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.<br /> **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of `2024-01-07` would include predicted searches for the week ending on `2024-01-07`.|
 |*PriceFilter* | |
 |*ProductAvailabilityType* | Default availability for products in a feed.|
+|*ProductCategoriesDemographic* | Age and gender distribution who engaged with this product category in the past 3 months|
+|*ProductCategoriesEngagementType* | |
+|*ProductCategoriesMetricsHighlights* | Key performance metrics highlights for this product category|
+|*ProductCategoryDetailLookbackWindow* | |
+|*ProductCategoryDetails* | Product category details|
+|*ProductCategoryEnum* | List of product category details|
+|*ProductCategoryRegion* | |
 |*ProductGroupAnalyticsResponse_inner* | |
 |*ProductGroupPromotion* | |
 |*ProductGroupPromotionCreateRequest* | |
-|*ProductGroupPromotionCreateRequestElement* | |
 |*ProductGroupPromotionResponse* | |
-|*ProductGroupPromotionResponseElement* | |
 |*ProductGroupPromotionResponseItem* | |
 |*ProductGroupPromotionUpdateRequest* | |
 |*ProductGroupReferenceFilter* | |
@@ -984,17 +1157,34 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*ProductType3Filter* | |
 |*ProductType4Filter* | |
 |*Product_group_promotions_list_200_response* | |
+|*PromotionArrayElement* | |
+|*PromotionCommon* | |
+|*PromotionCreateRequest* | |
+|*PromotionResponse* | |
+|*PromotionTemplateValue* | |
+|*PromotionType* | Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.|
+|*PromotionUpdateRequest* | |
+|*PromotionsResponse* | |
+|*Promotions_list_200_response* | |
+|*QualityComponentDetails* | Metrics for a specific event type within a quality component.|
+|*QualityComponentIssue* | Details of an issue with a quality component.|
+|*QualityComponents* | Set of quality components, with each component containing a event coverage and details.|
 |*QuizPinData* | This field includes all quiz data including questions, options, and results.|
 |*QuizPinOption* |  This field contains multiple options to a quiz question.|
 |*QuizPinQuestion* | A specific quiz inquiry.|
 |*QuizPinResult* | The result, and link out, based on the user’s choice.|
+|*RecordCounts* | Record processing counts|
 |*RelatedTerms* | |
 |*RelatedTerms_related_terms_list_inner* | |
 |*ReportingColumnAsync* | Reporting columns|
+|*ReportingTimeZone* | [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.|
 |*Reports_stats_200_response* | |
+|*Reports_stats_parameters_parameter* | Report stats parameters|
 |*RespondToInvitesResponseArray* | |
 |*RespondToInvitesResponseArray_items_inner* | |
 |*Role* | An internal role type used on business access, EMPLOYEE, ADMIN.|
+|*S3FilePart* | |
+|*S3MultipartUploadData* | |
 |*SSIOAccountAddress* | |
 |*SSIOAccountItem* | |
 |*SSIOAccountPMPName* | |
@@ -1009,19 +1199,31 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*SSIOOrderLine* | |
 |*Search_partner_pins_200_response* | |
 |*Search_user_boards_get_200_response* | |
+|*Search_user_pins_list_200_response* | |
 |*SharedAudience* | |
 |*SharedAudienceAccount* | |
 |*SharedAudienceCommon* | |
 |*SharedAudienceResponse* | |
 |*SharedAudienceResponseCommon* | |
 |*SingleInterestTargetingOptionResponse* | |
+|*SourcePlatformOptions* | List of source platforms for a conversion event.|
 |*Ssio_insertion_orders_status_get_by_ad_account_200_response* | |
 |*Ssio_order_lines_get_by_ad_account_200_response* | |
 |*SummaryPin* | Summarized pin information|
+|*System_user_update_request* | |
 |*TargetingAdvertiserCountry* | Advertiser's ISO two character country code.|
-|*TargetingSpec* | Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`|
+|*TargetingSpec* | Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`|
+|*TargetingSpecAgeBucket* | |
 |*TargetingSpecAppType* | |
-|*TargetingSpec_SHOPPING_RETARGETING* | |
+|*TargetingSpecGender* | |
+|*TargetingSpecOperationAgeBucket* | |
+|*TargetingSpecOperationAppType* | |
+|*TargetingSpecOperationGender* | |
+|*TargetingSpecOperationList* | |
+|*TargetingSpecOperationMinMaxAge* | |
+|*TargetingSpecOperationShoppingRetargeting* | |
+|*TargetingSpecOperationString* | |
+|*TargetingSpecShoppingRetargeting* | |
 |*TargetingTemplateAudienceSizing* | Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. |
 |*TargetingTemplateAudienceSizing_reach_estimate* | |
 |*TargetingTemplateCommon* | |
@@ -1032,6 +1234,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*TargetingTemplateUpdateRequest* | |
 |*TargetingTypeFilter* | |
 |*Targeting_template_list_200_response* | |
+|*TemplateBasedReport* | |
 |*TemplateResponse* | Template fields|
 |*TemplateResponse_date_range* | |
 |*TemplateResponse_date_range_absolute_date_range* | The absolute date range of the template|
@@ -1039,6 +1242,8 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*TemplateResponse_date_range_relative_date_range* | The relative date range of the template|
 |*Templates_list_200_response* | |
 |*TermsOfService* | |
+|*TimeSeries* | A sequence of weekly observations of the relative search volume for this keyword over the past year.<br /> These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative volume between keywords.<br /> **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of `2023-10-31` would include searches that happened between `2023-10-25` and `2023-10-31`.|
+|*TitleKeywordsFilter* | |
 |*TopPinsAnalyticsResponse* | |
 |*TopPinsAnalyticsResponse_date_availability* | |
 |*TopPinsAnalyticsResponse_pins_inner* | Array with metrics, status, and pin id for the requested metric|
@@ -1046,11 +1251,17 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*TopVideoPinsAnalyticsResponse_pins_inner* | Array with metrics, status, and pin id for the requested metric|
 |*TrackingUrls* | Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.|
 |*TrendType* | |
+|*TrendingKeyword* | |
+|*TrendingKeyword_demographics* | A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.|
+|*TrendingKeyword_demographics_age_distribution* | This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.|
+|*TrendingKeyword_demographics_gender_distribution* | This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.|
 |*TrendingKeywordsResponse* | |
-|*TrendingKeywordsResponse_trends_inner* | |
-|*TrendingKeywordsResponse_trends_inner_time_series* | A sequence of weekly observations of the relative search volume for this keyword over the past year.<br /> These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative volume between keywords.<br /> **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of `2023-10-31` would include searches that happened between `2023-10-25` and `2023-10-31`.|
+|*TrendingPin* | Pin image data for trending topics|
+|*TrendingProductCategory* | Trending shopping product category|
+|*TrendingTopic* | Individual trending topic within an interest category|
 |*TrendsSupportedRegion* | |
 |*UpdatableItemAttributes* | |
+|*UpdatableItemAttributes_gtin* | The unique universal product identifier.|
 |*UpdateAssetGroupBody* | |
 |*UpdateAssetGroupBody_asset_groups_to_update_inner* | |
 |*UpdateAssetGroupResponse* | |
@@ -1085,5 +1296,6 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*User_following_get_200_response* | |
 |*User_websites_get_200_response* | |
 |*UsersForIndividualAssetResponse* | An object containing the permissions a business member has on the asset.|
-|*VideoMetadata* | |
+|*VerticalProductCategory* | List of verticals for product categories.|
+|*VideoMetadataWithItemType* | |
 

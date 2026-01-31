@@ -7,15 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AssetGroupBinding, () {
-    // Asset Group ID.
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // Asset Group name
-    // String assetGroupName
-    test('to test the property `assetGroupName`', () async {
+    // A list of ad account IDs under the asset group
+    // BuiltList<String> adAccountsIds
+    test('to test the property `adAccountsIds`', () async {
       // TODO
     });
 
@@ -25,21 +19,27 @@ void main() {
       // TODO
     });
 
+    // Asset Group name
+    // String assetGroupName
+    test('to test the property `assetGroupName`', () async {
+      // TODO
+    });
+
     // Asset group types
     // BuiltList<String> assetGroupTypes
     test('to test the property `assetGroupTypes`', () async {
       // TODO
     });
 
-    // A list of ad account IDs under the asset group
-    // BuiltList<String> adAccountsIds
-    test('to test the property `adAccountsIds`', () async {
+    // A list of catalog IDs under asset group
+    // BuiltList<String> catalogsIds
+    test('to test the property `catalogsIds`', () async {
       // TODO
     });
 
-    // A list of profile IDs under asset group
-    // BuiltList<String> profilesIds
-    test('to test the property `profilesIds`', () async {
+    // The data of the user that created the asset group.
+    // BusinessAccessUserSummary createdBy
+    test('to test the property `createdBy`', () async {
       // TODO
     });
 
@@ -49,9 +49,9 @@ void main() {
       // TODO
     });
 
-    // The last update time of the asset group
-    // int updatedTime
-    test('to test the property `updatedTime`', () async {
+    // Asset Group ID.
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
@@ -61,9 +61,15 @@ void main() {
       // TODO
     });
 
-    // The data of the user that created the asset group.
-    // BusinessAccessUserSummary createdBy
-    test('to test the property `createdBy`', () async {
+    // A list of profile IDs under asset group
+    // BuiltList<String> profilesIds
+    test('to test the property `profilesIds`', () async {
+      // TODO
+    });
+
+    // The last update time of the asset group
+    // int updatedTime
+    test('to test the property `updatedTime`', () async {
       // TODO
     });
 

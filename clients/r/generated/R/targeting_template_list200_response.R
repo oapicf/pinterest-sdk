@@ -7,16 +7,16 @@
 #' @title TargetingTemplateList200Response
 #' @description TargetingTemplateList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{TargetingTemplateResponseData})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{TargetingTemplateGetResponseData})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TargetingTemplateList200Response <- R6::R6Class(
   "TargetingTemplateList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new TargetingTemplateList200Response class.
@@ -69,13 +69,13 @@ TargetingTemplateList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TargetingTemplateList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        TargetingTemplateList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         TargetingTemplateList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        TargetingTemplateList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(TargetingTemplateList200ResponseObject)
     },
@@ -87,11 +87,11 @@ TargetingTemplateList200Response <- R6::R6Class(
     #' @return the instance of TargetingTemplateList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[TargetingTemplateResponseData]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[TargetingTemplateGetResponseData]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ TargetingTemplateList200Response <- R6::R6Class(
     #' @return the instance of TargetingTemplateList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[TargetingTemplateResponseData]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[TargetingTemplateGetResponseData]", loadNamespace("openapi"))
       self
     },
 

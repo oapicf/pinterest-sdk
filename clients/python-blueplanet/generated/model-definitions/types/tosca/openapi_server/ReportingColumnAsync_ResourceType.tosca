@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ReportingColumnAsync"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ReportingColumnAsync"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ReportingColumnAsync {
+    title = ReportingColumnAsync
+    description = ReportingColumnAsync
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ReportingColumnAsync {
+    title = ReportingColumnAsync
+    description = ReportingColumnAsync
+    implements = openapi_server.resourceTypes.ReportingColumnAsync
+
+  }
+}

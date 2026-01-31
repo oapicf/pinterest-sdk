@@ -11,12 +11,12 @@ module ImageDetails =
 
   [<CLIMutable>]
   type ImageDetails = {
-    [<JsonProperty(PropertyName = "width")>]
-    Width : int;
     [<JsonProperty(PropertyName = "height")>]
     Height : int option;
     [<JsonProperty(PropertyName = "url")>]
     Url : string;
+    [<JsonProperty(PropertyName = "width")>]
+    Width : int option;
   }
 
   //#endregion

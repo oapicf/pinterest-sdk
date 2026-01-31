@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"startDate": @"start_date", @"endDate": @"end_date", @"poNumber": @"po_number", @"budgetAmount": @"budget_amount", @"billingContactFirstname": @"billing_contact_firstname", @"billingContactLastname": @"billing_contact_lastname", @"billingContactEmail": @"billing_contact_email", @"mediaContactFirstname": @"media_contact_firstname", @"mediaContactLastname": @"media_contact_lastname", @"mediaContactEmail": @"media_contact_email", @"agencyLink": @"agency_link", @"userEmail": @"user_email", @"acceptedTermsTime": @"accepted_terms_time", @"pmpId": @"pmp_id", @"orderName": @"order_name", @"orderLineType": @"order_line_type", @"acceptedTermsId": @"accepted_terms_id", @"billtoCompanyId": @"billto_company_id", @"billtoBusinessAddressId": @"billto_business_address_id", @"billtoBillingAddressId": @"billto_billing_address_id", @"estimatedMonthlySpend": @"estimated_monthly_spend", @"currencyInfo": @"currency_info" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"agencyLink": @"agency_link", @"billingContactEmail": @"billing_contact_email", @"billingContactFirstname": @"billing_contact_firstname", @"billingContactLastname": @"billing_contact_lastname", @"budgetAmount": @"budget_amount", @"endDate": @"end_date", @"mediaContactEmail": @"media_contact_email", @"mediaContactFirstname": @"media_contact_firstname", @"mediaContactLastname": @"media_contact_lastname", @"poNumber": @"po_number", @"startDate": @"start_date", @"userEmail": @"user_email", @"acceptedTermsId": @"accepted_terms_id", @"acceptedTermsTime": @"accepted_terms_time", @"billtoBillingAddressId": @"billto_billing_address_id", @"billtoBusinessAddressId": @"billto_business_address_id", @"billtoCompanyId": @"billto_company_id", @"currencyInfo": @"currency_info", @"estimatedMonthlySpend": @"estimated_monthly_spend", @"orderLineType": @"order_line_type", @"orderName": @"order_name", @"pmpId": @"pmp_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"endDate", @"budgetAmount", @"agencyLink", @"userEmail", @"acceptedTermsTime", @"estimatedMonthlySpend", ];
+  NSArray *optionalProperties = @[@"agencyLink", @"budgetAmount", @"endDate", @"userEmail", @"acceptedTermsTime", @"estimatedMonthlySpend", ];
   return [optionalProperties containsObject:propertyName];
 }
 

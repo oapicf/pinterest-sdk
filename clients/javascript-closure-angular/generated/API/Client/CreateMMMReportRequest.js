@@ -13,18 +13,11 @@ API.Client.CreateMMMReportRequest = function() {}
 API.Client.CreateMMMReportRequest.prototype.countries;
 
 /**
- * Name of the Marketing Mix Modeling (MMM) report
- * @type {!string}
+ * Metric and entity columns
+ * @type {!Array<!API.Client.MMMReportingColumn>}
  * @export
  */
-API.Client.CreateMMMReportRequest.prototype.reportName;
-
-/**
- * Metric report start date (UTC). Format: YYYY-MM-DD
- * @type {!string}
- * @export
- */
-API.Client.CreateMMMReportRequest.prototype.startDate;
+API.Client.CreateMMMReportRequest.prototype.columns;
 
 /**
  * Metric report end date (UTC). Format: YYYY-MM-DD
@@ -48,18 +41,25 @@ API.Client.CreateMMMReportRequest.prototype.granularity;
 API.Client.CreateMMMReportRequest.prototype.level;
 
 /**
+ * Name of the Marketing Mix Modeling (MMM) report
+ * @type {!string}
+ * @export
+ */
+API.Client.CreateMMMReportRequest.prototype.reportName;
+
+/**
+ * Metric report start date (UTC). Format: YYYY-MM-DD
+ * @type {!string}
+ * @export
+ */
+API.Client.CreateMMMReportRequest.prototype.startDate;
+
+/**
  * List of targeting types
  * @type {!Array<!API.Client.MMMReportingTargetingType>}
  * @export
  */
 API.Client.CreateMMMReportRequest.prototype.targetingTypes;
-
-/**
- * Metric and entity columns
- * @type {!Array<!API.Client.MMMReportingColumn>}
- * @export
- */
-API.Client.CreateMMMReportRequest.prototype.columns;
 
 /** @enum {string} */
 API.Client.CreateMMMReportRequest.GranularityEnum = { 

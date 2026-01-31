@@ -9,18 +9,24 @@ import org.openapitools.model.AdCreateRequest;
 import org.openapitools.model.AdGroupCreateRequest;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
+import org.openapitools.model.LabelCreateRequest;
+import org.openapitools.model.MultipleProductGroupsInner;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 
 @Canonical
 class BulkUpsertRequestCreate {
     
-    List<CampaignCreateRequest> campaigns = new ArrayList<>()
-    
     List<AdGroupCreateRequest> adGroups = new ArrayList<>()
     
     List<AdCreateRequest> ads = new ArrayList<>()
     
-    List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>()
+    List<CampaignCreateRequest> campaigns = new ArrayList<>()
+    
+    List<MultipleProductGroupsInner> catalogProductGroups = new ArrayList<>()
     
     List<KeywordsRequest> keywords = new ArrayList<>()
+    
+    List<LabelCreateRequest> labels = new ArrayList<>()
+    
+    List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>()
 }

@@ -11,10 +11,10 @@ module ConversionApiResponseEventsInner =
 
   [<CLIMutable>]
   type ConversionApiResponseEventsInner = {
-    [<JsonProperty(PropertyName = "status")>]
-    Status : string;
     [<JsonProperty(PropertyName = "error_message")>]
     ErrorMessage : string option;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : string;
     [<JsonProperty(PropertyName = "warning_message")>]
     WarningMessage : string option;
   }

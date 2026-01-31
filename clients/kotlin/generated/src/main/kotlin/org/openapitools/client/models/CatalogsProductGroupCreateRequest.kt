@@ -23,9 +23,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a product group.
  *
- * @param name 
- * @param filters 
  * @param feedId Catalog Feed id pertaining to the catalog product group.
+ * @param filters 
+ * @param name 
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  */
@@ -33,15 +33,15 @@ import com.squareup.moshi.JsonClass
 
 data class CatalogsProductGroupCreateRequest (
 
-    @Json(name = "name")
-    val name: kotlin.String,
+    /* Catalog Feed id pertaining to the catalog product group. */
+    @Json(name = "feed_id")
+    val feedId: kotlin.String,
 
     @Json(name = "filters")
     val filters: CatalogsProductGroupFiltersRequest,
 
-    /* Catalog Feed id pertaining to the catalog product group. */
-    @Json(name = "feed_id")
-    val feedId: kotlin.String,
+    @Json(name = "name")
+    val name: kotlin.String,
 
     @Json(name = "description")
     val description: kotlin.String? = null,

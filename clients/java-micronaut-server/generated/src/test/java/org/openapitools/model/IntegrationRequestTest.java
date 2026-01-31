@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.jackson.nullable.JsonNullable;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -21,19 +20,11 @@ public class IntegrationRequestTest {
     }
 
     /**
-     * Test the property 'externalBusinessId'
+     * Test the property 'additionalId1'
      */
     @Test
-    public void externalBusinessIdTest() {
-        // TODO: test externalBusinessId
-    }
-
-    /**
-     * Test the property 'connectedMerchantId'
-     */
-    @Test
-    public void connectedMerchantIdTest() {
-        // TODO: test connectedMerchantId
+    public void additionalId1Test() {
+        // TODO: test additionalId1
     }
 
     /**
@@ -53,11 +44,27 @@ public class IntegrationRequestTest {
     }
 
     /**
+     * Test the property 'connectedMerchantId'
+     */
+    @Test
+    public void connectedMerchantIdTest() {
+        // TODO: test connectedMerchantId
+    }
+
+    /**
      * Test the property 'connectedTagId'
      */
     @Test
     public void connectedTagIdTest() {
         // TODO: test connectedTagId
+    }
+
+    /**
+     * Test the property 'externalBusinessId'
+     */
+    @Test
+    public void externalBusinessIdTest() {
+        // TODO: test externalBusinessId
     }
 
     /**
@@ -69,11 +76,19 @@ public class IntegrationRequestTest {
     }
 
     /**
-     * Test the property 'partnerRefreshToken'
+     * Test the property 'partnerAccessTokenExpiry'
      */
     @Test
-    public void partnerRefreshTokenTest() {
-        // TODO: test partnerRefreshToken
+    public void partnerAccessTokenExpiryTest() {
+        // TODO: test partnerAccessTokenExpiry
+    }
+
+    /**
+     * Test the property 'partnerMetadata'
+     */
+    @Test
+    public void partnerMetadataTest() {
+        // TODO: test partnerMetadata
     }
 
     /**
@@ -85,11 +100,11 @@ public class IntegrationRequestTest {
     }
 
     /**
-     * Test the property 'partnerAccessTokenExpiry'
+     * Test the property 'partnerRefreshToken'
      */
     @Test
-    public void partnerAccessTokenExpiryTest() {
-        // TODO: test partnerAccessTokenExpiry
+    public void partnerRefreshTokenTest() {
+        // TODO: test partnerRefreshToken
     }
 
     /**
@@ -106,22 +121,6 @@ public class IntegrationRequestTest {
     @Test
     public void scopesTest() {
         // TODO: test scopes
-    }
-
-    /**
-     * Test the property 'additionalId1'
-     */
-    @Test
-    public void additionalId1Test() {
-        // TODO: test additionalId1
-    }
-
-    /**
-     * Test the property 'partnerMetadata'
-     */
-    @Test
-    public void partnerMetadataTest() {
-        // TODO: test partnerMetadata
     }
 
 }

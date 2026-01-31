@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &OauthAccessTokenResponse{}
 
 // OauthAccessTokenResponse A successful OAuth access token response.
 type OauthAccessTokenResponse struct {
-	ResponseType *string `json:"response_type,omitempty"`
 	AccessToken string `json:"access_token"`
-	TokenType string `json:"token_type"`
 	ExpiresIn int32 `json:"expires_in"`
+	ResponseType *string `json:"response_type,omitempty"`
 	Scope string `json:"scope"`
+	TokenType string `json:"token_type"`
 }
 
 type _OauthAccessTokenResponse OauthAccessTokenResponse
@@ -35,12 +35,12 @@ type _OauthAccessTokenResponse OauthAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOauthAccessTokenResponse(accessToken string, tokenType string, expiresIn int32, scope string) *OauthAccessTokenResponse {
+func NewOauthAccessTokenResponse(accessToken string, expiresIn int32, scope string, tokenType string) *OauthAccessTokenResponse {
 	this := OauthAccessTokenResponse{}
 	this.AccessToken = accessToken
-	this.TokenType = tokenType
 	this.ExpiresIn = expiresIn
 	this.Scope = scope
+	this.TokenType = tokenType
 	return &this
 }
 
@@ -52,6 +52,54 @@ func NewOauthAccessTokenResponseWithDefaults() *OauthAccessTokenResponse {
 	var tokenType string = "bearer"
 	this.TokenType = tokenType
 	return &this
+}
+
+// GetAccessToken returns the AccessToken field value
+func (o *OauthAccessTokenResponse) GetAccessToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccessToken
+}
+
+// GetAccessTokenOk returns a tuple with the AccessToken field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenResponse) GetAccessTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccessToken, true
+}
+
+// SetAccessToken sets field value
+func (o *OauthAccessTokenResponse) SetAccessToken(v string) {
+	o.AccessToken = v
+}
+
+// GetExpiresIn returns the ExpiresIn field value
+func (o *OauthAccessTokenResponse) GetExpiresIn() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ExpiresIn
+}
+
+// GetExpiresInOk returns a tuple with the ExpiresIn field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenResponse) GetExpiresInOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExpiresIn, true
+}
+
+// SetExpiresIn sets field value
+func (o *OauthAccessTokenResponse) SetExpiresIn(v int32) {
+	o.ExpiresIn = v
 }
 
 // GetResponseType returns the ResponseType field value if set, zero value otherwise.
@@ -86,28 +134,28 @@ func (o *OauthAccessTokenResponse) SetResponseType(v string) {
 	o.ResponseType = &v
 }
 
-// GetAccessToken returns the AccessToken field value
-func (o *OauthAccessTokenResponse) GetAccessToken() string {
+// GetScope returns the Scope field value
+func (o *OauthAccessTokenResponse) GetScope() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AccessToken
+	return o.Scope
 }
 
-// GetAccessTokenOk returns a tuple with the AccessToken field value
+// GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *OauthAccessTokenResponse) GetAccessTokenOk() (*string, bool) {
+func (o *OauthAccessTokenResponse) GetScopeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccessToken, true
+	return &o.Scope, true
 }
 
-// SetAccessToken sets field value
-func (o *OauthAccessTokenResponse) SetAccessToken(v string) {
-	o.AccessToken = v
+// SetScope sets field value
+func (o *OauthAccessTokenResponse) SetScope(v string) {
+	o.Scope = v
 }
 
 // GetTokenType returns the TokenType field value
@@ -134,54 +182,6 @@ func (o *OauthAccessTokenResponse) SetTokenType(v string) {
 	o.TokenType = v
 }
 
-// GetExpiresIn returns the ExpiresIn field value
-func (o *OauthAccessTokenResponse) GetExpiresIn() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.ExpiresIn
-}
-
-// GetExpiresInOk returns a tuple with the ExpiresIn field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenResponse) GetExpiresInOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ExpiresIn, true
-}
-
-// SetExpiresIn sets field value
-func (o *OauthAccessTokenResponse) SetExpiresIn(v int32) {
-	o.ExpiresIn = v
-}
-
-// GetScope returns the Scope field value
-func (o *OauthAccessTokenResponse) GetScope() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Scope
-}
-
-// GetScopeOk returns a tuple with the Scope field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenResponse) GetScopeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Scope, true
-}
-
-// SetScope sets field value
-func (o *OauthAccessTokenResponse) SetScope(v string) {
-	o.Scope = v
-}
-
 func (o OauthAccessTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -192,13 +192,13 @@ func (o OauthAccessTokenResponse) MarshalJSON() ([]byte, error) {
 
 func (o OauthAccessTokenResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["access_token"] = o.AccessToken
+	toSerialize["expires_in"] = o.ExpiresIn
 	if !IsNil(o.ResponseType) {
 		toSerialize["response_type"] = o.ResponseType
 	}
-	toSerialize["access_token"] = o.AccessToken
-	toSerialize["token_type"] = o.TokenType
-	toSerialize["expires_in"] = o.ExpiresIn
 	toSerialize["scope"] = o.Scope
+	toSerialize["token_type"] = o.TokenType
 	return toSerialize, nil
 }
 
@@ -208,9 +208,9 @@ func (o *OauthAccessTokenResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"access_token",
-		"token_type",
 		"expires_in",
 		"scope",
+		"token_type",
 	}
 
 	allProperties := make(map[string]interface{})

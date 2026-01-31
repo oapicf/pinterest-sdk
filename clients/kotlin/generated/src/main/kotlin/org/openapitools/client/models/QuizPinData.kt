@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param questions 
  * @param results 
- * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
  * @param tieBreakerCustomResult 
+ * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
  */
 
 
@@ -39,12 +39,12 @@ data class QuizPinData (
     @Json(name = "results")
     val results: kotlin.collections.List<QuizPinResult>? = null,
 
+    @Json(name = "tie_breaker_custom_result")
+    val tieBreakerCustomResult: QuizPinResult? = null,
+
     /* Quiz ad tie breaker type, default is RANDOM */
     @Json(name = "tie_breaker_type")
-    val tieBreakerType: QuizPinData.TieBreakerType? = null,
-
-    @Json(name = "tie_breaker_custom_result")
-    val tieBreakerCustomResult: QuizPinResult? = null
+    val tieBreakerType: QuizPinData.TieBreakerType? = null
 
 ) {
 

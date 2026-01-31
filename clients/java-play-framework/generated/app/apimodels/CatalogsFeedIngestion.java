@@ -11,24 +11,24 @@ import javax.validation.Valid;
 /**
  * CatalogsFeedIngestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedIngestion   {
-  @JsonProperty("id")
+  @JsonProperty("created_at")
   @NotNull
+@Valid
 
-  private String id;
+  private OffsetDateTime createdAt;
 
   @JsonProperty("feed_id")
   @NotNull
 
   private String feedId;
 
-  @JsonProperty("created_at")
+  @JsonProperty("id")
   @NotNull
-@Valid
 
-  private OffsetDateTime createdAt;
+  private String id;
 
   @JsonProperty("status")
   @NotNull
@@ -36,21 +36,21 @@ public class CatalogsFeedIngestion   {
 
   private CatalogsFeedProcessingStatus status;
 
-  public CatalogsFeedIngestion id(String id) {
-    this.id = id;
+  public CatalogsFeedIngestion createdAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get createdAt
+   * @return createdAt
   **/
-  public String getId() {
-    return id;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
   public CatalogsFeedIngestion feedId(String feedId) {
@@ -70,21 +70,21 @@ public class CatalogsFeedIngestion   {
     this.feedId = feedId;
   }
 
-  public CatalogsFeedIngestion createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsFeedIngestion id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get id
+   * @return id
   **/
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public CatalogsFeedIngestion status(CatalogsFeedProcessingStatus status) {
@@ -114,15 +114,15 @@ public class CatalogsFeedIngestion   {
       return false;
     }
     CatalogsFeedIngestion catalogsFeedIngestion = (CatalogsFeedIngestion) o;
-    return Objects.equals(id, catalogsFeedIngestion.id) &&
+    return Objects.equals(createdAt, catalogsFeedIngestion.createdAt) &&
         Objects.equals(feedId, catalogsFeedIngestion.feedId) &&
-        Objects.equals(createdAt, catalogsFeedIngestion.createdAt) &&
+        Objects.equals(id, catalogsFeedIngestion.id) &&
         Objects.equals(status, catalogsFeedIngestion.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, feedId, createdAt, status);
+    return Objects.hash(createdAt, feedId, id, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -131,9 +131,9 @@ public class CatalogsFeedIngestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedIngestion {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -73,7 +73,7 @@ private class OASTemplateResponseDateRangeAbsoluteTest {
     private static void maintainRenamedProperties() {
         OASTemplateResponseDateRangeAbsolute templateResponseDateRangeAbsoluteDateRange = new OASTemplateResponseDateRangeAbsolute();
         Map<String, String> x-property-mappings = templateResponseDateRangeAbsoluteDateRange.getx-property-mappings();
-        System.assertEquals('startDate', x-property-mappings.get('start_date'));
         System.assertEquals('endDate', x-property-mappings.get('end_date'));
+        System.assertEquals('startDate', x-property-mappings.get('start_date'));
     }
 }

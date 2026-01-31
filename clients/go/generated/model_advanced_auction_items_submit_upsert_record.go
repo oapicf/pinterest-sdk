@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,13 @@ var _ MappedNullable = &AdvancedAuctionItemsSubmitUpsertRecord{}
 
 // AdvancedAuctionItemsSubmitUpsertRecord Object describing an item bid option upsert operation
 type AdvancedAuctionItemsSubmitUpsertRecord struct {
+	Country Country `json:"country"`
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
-	Country Country `json:"country"`
 	Language Language `json:"language"`
 	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
 	// The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
 	UpdateMask []UpdateMaskBidOptionField `json:"update_mask"`
 }
@@ -37,10 +39,10 @@ type _AdvancedAuctionItemsSubmitUpsertRecord AdvancedAuctionItemsSubmitUpsertRec
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdvancedAuctionItemsSubmitUpsertRecord(itemId string, country Country, language Language, bidOptions AdvancedAuctionBidOptions, updateMask []UpdateMaskBidOptionField) *AdvancedAuctionItemsSubmitUpsertRecord {
+func NewAdvancedAuctionItemsSubmitUpsertRecord(country Country, itemId string, language Language, bidOptions AdvancedAuctionBidOptions, updateMask []UpdateMaskBidOptionField) *AdvancedAuctionItemsSubmitUpsertRecord {
 	this := AdvancedAuctionItemsSubmitUpsertRecord{}
-	this.ItemId = itemId
 	this.Country = country
+	this.ItemId = itemId
 	this.Language = language
 	this.BidOptions = bidOptions
 	this.UpdateMask = updateMask
@@ -53,30 +55,6 @@ func NewAdvancedAuctionItemsSubmitUpsertRecord(itemId string, country Country, l
 func NewAdvancedAuctionItemsSubmitUpsertRecordWithDefaults() *AdvancedAuctionItemsSubmitUpsertRecord {
 	this := AdvancedAuctionItemsSubmitUpsertRecord{}
 	return &this
-}
-
-// GetItemId returns the ItemId field value
-func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ItemId
-}
-
-// GetItemIdOk returns a tuple with the ItemId field value
-// and a boolean to check if the value has been set.
-func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ItemId, true
-}
-
-// SetItemId sets field value
-func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetItemId(v string) {
-	o.ItemId = v
 }
 
 // GetCountry returns the Country field value
@@ -101,6 +79,30 @@ func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetCountryOk() (*Country, bool)
 // SetCountry sets field value
 func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetCountry(v Country) {
 	o.Country = v
+}
+
+// GetItemId returns the ItemId field value
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value
+// and a boolean to check if the value has been set.
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ItemId, true
+}
+
+// SetItemId sets field value
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetItemId(v string) {
+	o.ItemId = v
 }
 
 // GetLanguage returns the Language field value
@@ -151,6 +153,38 @@ func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetBidOptions(v AdvancedAuction
 	o.BidOptions = v
 }
 
+// GetErrors returns the Errors field value if set, zero value otherwise.
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetErrors() []AdvancedAuctionOperationError {
+	if o == nil || IsNil(o.Errors) {
+		var ret []AdvancedAuctionOperationError
+		return ret
+	}
+	return o.Errors
+}
+
+// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetErrorsOk() ([]AdvancedAuctionOperationError, bool) {
+	if o == nil || IsNil(o.Errors) {
+		return nil, false
+	}
+	return o.Errors, true
+}
+
+// HasErrors returns a boolean if a field has been set.
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) HasErrors() bool {
+	if o != nil && !IsNil(o.Errors) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrors gets a reference to the given []AdvancedAuctionOperationError and assigns it to the Errors field.
+func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetErrors(v []AdvancedAuctionOperationError) {
+	o.Errors = v
+}
+
 // GetUpdateMask returns the UpdateMask field value
 // If the value is explicit nil, the zero value for []UpdateMaskBidOptionField will be returned
 func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetUpdateMask() []UpdateMaskBidOptionField {
@@ -187,10 +221,13 @@ func (o AdvancedAuctionItemsSubmitUpsertRecord) MarshalJSON() ([]byte, error) {
 
 func (o AdvancedAuctionItemsSubmitUpsertRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["item_id"] = o.ItemId
 	toSerialize["country"] = o.Country
+	toSerialize["item_id"] = o.ItemId
 	toSerialize["language"] = o.Language
 	toSerialize["bid_options"] = o.BidOptions
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
 	if o.UpdateMask != nil {
 		toSerialize["update_mask"] = o.UpdateMask
 	}
@@ -202,8 +239,8 @@ func (o *AdvancedAuctionItemsSubmitUpsertRecord) UnmarshalJSON(data []byte) (err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"item_id",
 		"country",
+		"item_id",
 		"language",
 		"bid_options",
 		"update_mask",

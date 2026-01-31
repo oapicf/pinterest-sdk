@@ -19,16 +19,293 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.UpdatableItemAttributes
+import org.openapitools.client.models.UpdatableItemAttributesGtin
 
 class UpdatableItemAttributesTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of UpdatableItemAttributes
         //val modelInstance = UpdatableItemAttributes()
 
+        // to test the property `adImage0Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage0Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage0Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage0Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage0Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage0Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage10Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage10Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage10Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage10Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage10Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage10Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage11Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage11Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage11Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage11Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage11Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage11Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage12Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage12Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage12Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage12Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage12Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage12Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage13Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage13Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage13Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage13Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage13Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage13Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage14Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage14Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage14Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage14Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage14Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage14Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage15Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage15Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage15Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage15Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage15Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage15Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage16Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage16Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage16Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage16Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage16Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage16Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage17Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage17Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage17Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage17Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage17Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage17Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage18Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage18Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage18Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage18Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage18Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage18Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage19Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage19Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage19Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage19Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage19Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage19Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage1Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage1Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage1Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage1Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage1Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage1Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage2Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage2Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage2Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage2Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage2Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage2Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage3Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage3Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage3Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage3Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage3Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage3Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage4Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage4Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage4Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage4Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage4Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage4Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage5Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage5Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage5Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage5Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage5Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage5Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage6Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage6Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage6Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage6Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage6Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage6Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage7Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage7Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage7Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage7Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage7Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage7Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage8Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage8Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage8Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage8Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage8Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage8Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adImage9Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adImage9Link") {
+            // uncomment below to test the property
+            //modelInstance.adImage9Link shouldBe ("TODO")
+        }
+
+        // to test the property `adImage9Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+        should("test adImage9Tag") {
+            // uncomment below to test the property
+            //modelInstance.adImage9Tag shouldBe ("TODO")
+        }
+
         // to test the property `adLink` - Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
         should("test adLink") {
             // uncomment below to test the property
             //modelInstance.adLink shouldBe ("TODO")
+        }
+
+        // to test the property `adVideo0Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adVideo0Link") {
+            // uncomment below to test the property
+            //modelInstance.adVideo0Link shouldBe ("TODO")
+        }
+
+        // to test the property `adVideo0Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+        should("test adVideo0Tag") {
+            // uncomment below to test the property
+            //modelInstance.adVideo0Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adVideo1Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adVideo1Link") {
+            // uncomment below to test the property
+            //modelInstance.adVideo1Link shouldBe ("TODO")
+        }
+
+        // to test the property `adVideo1Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+        should("test adVideo1Tag") {
+            // uncomment below to test the property
+            //modelInstance.adVideo1Tag shouldBe ("TODO")
+        }
+
+        // to test the property `adVideo2Link` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+        should("test adVideo2Link") {
+            // uncomment below to test the property
+            //modelInstance.adVideo2Link shouldBe ("TODO")
+        }
+
+        // to test the property `adVideo2Tag` - <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+        should("test adVideo2Tag") {
+            // uncomment below to test the property
+            //modelInstance.adVideo2Tag shouldBe ("TODO")
         }
 
         // to test the property `adult` - Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
@@ -37,13 +314,19 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.adult shouldBe ("TODO")
         }
 
-        // to test the property `ageGroup` - The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+        // to test the property `ageGroup` - The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
         should("test ageGroup") {
             // uncomment below to test the property
             //modelInstance.ageGroup shouldBe ("TODO")
         }
 
-        // to test the property `availability` - The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+        // to test the property `androidDeepLink` - The deep link to the product on the Android app.
+        should("test androidDeepLink") {
+            // uncomment below to test the property
+            //modelInstance.androidDeepLink shouldBe ("TODO")
+        }
+
+        // to test the property `availability` - The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
         should("test availability") {
             // uncomment below to test the property
             //modelInstance.availability shouldBe ("TODO")
@@ -79,34 +362,64 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.condition shouldBe ("TODO")
         }
 
-        // to test the property `customLabel0` - <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+        // to test the property `customLabel0` - <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
         should("test customLabel0") {
             // uncomment below to test the property
             //modelInstance.customLabel0 shouldBe ("TODO")
         }
 
-        // to test the property `customLabel1` - <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+        // to test the property `customLabel1` - <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
         should("test customLabel1") {
             // uncomment below to test the property
             //modelInstance.customLabel1 shouldBe ("TODO")
         }
 
-        // to test the property `customLabel2` - <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+        // to test the property `customLabel2` - <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
         should("test customLabel2") {
             // uncomment below to test the property
             //modelInstance.customLabel2 shouldBe ("TODO")
         }
 
-        // to test the property `customLabel3` - <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+        // to test the property `customLabel3` - <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
         should("test customLabel3") {
             // uncomment below to test the property
             //modelInstance.customLabel3 shouldBe ("TODO")
         }
 
-        // to test the property `customLabel4` - <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+        // to test the property `customLabel4` - <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
         should("test customLabel4") {
             // uncomment below to test the property
             //modelInstance.customLabel4 shouldBe ("TODO")
+        }
+
+        // to test the property `customNumber0` - an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+        should("test customNumber0") {
+            // uncomment below to test the property
+            //modelInstance.customNumber0 shouldBe ("TODO")
+        }
+
+        // to test the property `customNumber1` - an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+        should("test customNumber1") {
+            // uncomment below to test the property
+            //modelInstance.customNumber1 shouldBe ("TODO")
+        }
+
+        // to test the property `customNumber2` - an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+        should("test customNumber2") {
+            // uncomment below to test the property
+            //modelInstance.customNumber2 shouldBe ("TODO")
+        }
+
+        // to test the property `customNumber3` - an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+        should("test customNumber3") {
+            // uncomment below to test the property
+            //modelInstance.customNumber3 shouldBe ("TODO")
+        }
+
+        // to test the property `customNumber4` - an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+        should("test customNumber4") {
+            // uncomment below to test the property
+            //modelInstance.customNumber4 shouldBe ("TODO")
         }
 
         // to test the property `description` - <p><= 10000 characters</p> <p>The description of the product.</p>
@@ -127,7 +440,7 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.freeShippingLimit shouldBe ("TODO")
         }
 
-        // to test the property `gender` - The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+        // to test the property `gender` - The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
         should("test gender") {
             // uncomment below to test the property
             //modelInstance.gender shouldBe ("TODO")
@@ -139,7 +452,7 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.googleProductCategory shouldBe ("TODO")
         }
 
-        // to test the property `gtin` - The unique universal product identifier.
+        // to test the property `gtin`
         should("test gtin") {
             // uncomment below to test the property
             //modelInstance.gtin shouldBe ("TODO")
@@ -149,6 +462,18 @@ class UpdatableItemAttributesTest : ShouldSpec() {
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `installmentPrice` - Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+        should("test installmentPrice") {
+            // uncomment below to test the property
+            //modelInstance.installmentPrice shouldBe ("TODO")
+        }
+
+        // to test the property `iosDeepLink` - The deep link to the product on the iOS app.
+        should("test iosDeepLink") {
+            // uncomment below to test the property
+            //modelInstance.iosDeepLink shouldBe ("TODO")
         }
 
         // to test the property `itemGroupId` - <p><= 127 characters</p> <p>The parent ID of the product.</p>
@@ -223,10 +548,22 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.productType shouldBe ("TODO")
         }
 
+        // to test the property `promotionId` - A unique identifier referencing the promotion associated with this catalog item.
+        should("test promotionId") {
+            // uncomment below to test the property
+            //modelInstance.promotionId shouldBe ("TODO")
+        }
+
         // to test the property `salePrice` - The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
         should("test salePrice") {
             // uncomment below to test the property
             //modelInstance.salePrice shouldBe ("TODO")
+        }
+
+        // to test the property `salePriceEffectiveDate` - Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
+        should("test salePriceEffectiveDate") {
+            // uncomment below to test the property
+            //modelInstance.salePriceEffectiveDate shouldBe ("TODO")
         }
 
         // to test the property `shipping` - Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
@@ -259,13 +596,13 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.propertySize shouldBe ("TODO")
         }
 
-        // to test the property `sizeSystem` - Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+        // to test the property `sizeSystem` - Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
         should("test sizeSystem") {
             // uncomment below to test the property
             //modelInstance.sizeSystem shouldBe ("TODO")
         }
 
-        // to test the property `sizeType` - Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+        // to test the property `sizeType` - Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
         should("test sizeType") {
             // uncomment below to test the property
             //modelInstance.sizeType shouldBe ("TODO")
@@ -281,6 +618,18 @@ class UpdatableItemAttributesTest : ShouldSpec() {
         should("test title") {
             // uncomment below to test the property
             //modelInstance.title shouldBe ("TODO")
+        }
+
+        // to test the property `unitPricingBaseMeasure` - Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+        should("test unitPricingBaseMeasure") {
+            // uncomment below to test the property
+            //modelInstance.unitPricingBaseMeasure shouldBe ("TODO")
+        }
+
+        // to test the property `unitPricingMeasure` - Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+        should("test unitPricingMeasure") {
+            // uncomment below to test the property
+            //modelInstance.unitPricingMeasure shouldBe ("TODO")
         }
 
         // to test the property `variantNames` - Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.

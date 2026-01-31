@@ -1,7 +1,7 @@
 /*
  * PinMediaSourceImageURL.h
  *
- * Image URL-based media source
+ * Image URL-based media source.
  */
 
 #ifndef _PinMediaSourceImageURL_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Image URL-based media source
+/*! \brief Image URL-based media source.
  *
  *  \ingroup Models
  *
@@ -45,11 +45,18 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+	 */
+	bool getIsStandard();
+
+	/*! \brief Set Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+	 */
+	void setIsStandard(bool  is_standard);
+	/*! \brief Get The source type of the media.
 	 */
 	std::string getSourceType();
 
-	/*! \brief Set 
+	/*! \brief Set The source type of the media.
 	 */
 	void setSourceType(std::string  source_type);
 	/*! \brief Get 
@@ -59,18 +66,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setUrl(std::string  url);
-	/*! \brief Get Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-	 */
-	bool getIsStandard();
-
-	/*! \brief Set Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-	 */
-	void setIsStandard(bool  is_standard);
 
 private:
+	bool is_standard;
 	std::string source_type;
 	std::string url;
-	bool is_standard;
 	void __init();
 	void __cleanup();
 

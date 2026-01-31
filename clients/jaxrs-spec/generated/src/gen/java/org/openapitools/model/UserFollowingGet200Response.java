@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("user_following_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserFollowingGet200Response   {
-  private @Valid List<@Valid UserSummary> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid UserSummary> items = new ArrayList<>();
 
   public UserFollowingGet200Response() {
   }
@@ -35,6 +35,25 @@ public class UserFollowingGet200Response   {
     @JsonProperty(required = true, value = "items") List<@Valid UserSummary> items
   ) {
     this.items = items;
+  }
+
+  /**
+   **/
+  public UserFollowingGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  @JsonProperty("bookmark")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
   }
 
   /**
@@ -73,25 +92,6 @@ public class UserFollowingGet200Response   {
 
     return this;
   }
-  /**
-   **/
-  public UserFollowingGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  @JsonProperty("bookmark")
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -102,13 +102,13 @@ public class UserFollowingGet200Response   {
       return false;
     }
     UserFollowingGet200Response userFollowingGet200Response = (UserFollowingGet200Response) o;
-    return Objects.equals(this.items, userFollowingGet200Response.items) &&
-        Objects.equals(this.bookmark, userFollowingGet200Response.bookmark);
+    return Objects.equals(this.bookmark, userFollowingGet200Response.bookmark) &&
+        Objects.equals(this.items, userFollowingGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -116,8 +116,8 @@ public class UserFollowingGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserFollowingGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

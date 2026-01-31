@@ -25,34 +25,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionBidOptions", description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionBidOptions {
-
-  private JsonNullable<Long> bidInMicroCurrency = JsonNullable.<Long>undefined();
 
   private JsonNullable<AppTypeMultipliers> appTypeMultipliers = JsonNullable.<AppTypeMultipliers>undefined();
 
+  private JsonNullable<Long> bidInMicroCurrency = JsonNullable.<Long>undefined();
+
   private JsonNullable<PlacementMultipliers> placementMultipliers = JsonNullable.<PlacementMultipliers>undefined();
-
-  public AdvancedAuctionBidOptions bidInMicroCurrency(Long bidInMicroCurrency) {
-    this.bidInMicroCurrency = JsonNullable.of(bidInMicroCurrency);
-    return this;
-  }
-
-  /**
-   * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
-   * @return bidInMicroCurrency
-   */
-  
-  @Schema(name = "bid_in_micro_currency", example = "5000000", description = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bid_in_micro_currency")
-  public JsonNullable<Long> getBidInMicroCurrency() {
-    return bidInMicroCurrency;
-  }
-
-  public void setBidInMicroCurrency(JsonNullable<Long> bidInMicroCurrency) {
-    this.bidInMicroCurrency = bidInMicroCurrency;
-  }
 
   public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
     this.appTypeMultipliers = JsonNullable.of(appTypeMultipliers);
@@ -72,6 +52,26 @@ public class AdvancedAuctionBidOptions {
 
   public void setAppTypeMultipliers(JsonNullable<AppTypeMultipliers> appTypeMultipliers) {
     this.appTypeMultipliers = appTypeMultipliers;
+  }
+
+  public AdvancedAuctionBidOptions bidInMicroCurrency(Long bidInMicroCurrency) {
+    this.bidInMicroCurrency = JsonNullable.of(bidInMicroCurrency);
+    return this;
+  }
+
+  /**
+   * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
+   * @return bidInMicroCurrency
+   */
+  
+  @Schema(name = "bid_in_micro_currency", example = "5000000", description = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bid_in_micro_currency")
+  public JsonNullable<Long> getBidInMicroCurrency() {
+    return bidInMicroCurrency;
+  }
+
+  public void setBidInMicroCurrency(JsonNullable<Long> bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
   public AdvancedAuctionBidOptions placementMultipliers(PlacementMultipliers placementMultipliers) {
@@ -103,8 +103,8 @@ public class AdvancedAuctionBidOptions {
       return false;
     }
     AdvancedAuctionBidOptions advancedAuctionBidOptions = (AdvancedAuctionBidOptions) o;
-    return equalsNullable(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
-        equalsNullable(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+    return equalsNullable(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+        equalsNullable(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
         equalsNullable(this.placementMultipliers, advancedAuctionBidOptions.placementMultipliers);
   }
 
@@ -114,7 +114,7 @@ public class AdvancedAuctionBidOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(bidInMicroCurrency), hashCodeNullable(appTypeMultipliers), hashCodeNullable(placementMultipliers));
+    return Objects.hash(hashCodeNullable(appTypeMultipliers), hashCodeNullable(bidInMicroCurrency), hashCodeNullable(placementMultipliers));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -128,8 +128,8 @@ public class AdvancedAuctionBidOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionBidOptions {\n");
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();

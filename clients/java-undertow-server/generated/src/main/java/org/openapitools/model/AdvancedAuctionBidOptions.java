@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,12 +26,29 @@ import org.openapitools.model.PlacementMultipliers;
  */
 
 @ApiModel(description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionBidOptions   {
   
-  private Long bidInMicroCurrency;
   private AppTypeMultipliers appTypeMultipliers;
+  private Long bidInMicroCurrency;
   private PlacementMultipliers placementMultipliers;
+
+  /**
+   */
+  public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+    this.appTypeMultipliers = appTypeMultipliers;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("app_type_multipliers")
+  public AppTypeMultipliers getAppTypeMultipliers() {
+    return appTypeMultipliers;
+  }
+  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+    this.appTypeMultipliers = appTypeMultipliers;
+  }
 
   /**
    * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
@@ -49,23 +66,6 @@ public class AdvancedAuctionBidOptions   {
   }
   public void setBidInMicroCurrency(Long bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
-  }
-
-  /**
-   */
-  public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
-    this.appTypeMultipliers = appTypeMultipliers;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("app_type_multipliers")
-  public AppTypeMultipliers getAppTypeMultipliers() {
-    return appTypeMultipliers;
-  }
-  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
-    this.appTypeMultipliers = appTypeMultipliers;
   }
 
   /**
@@ -95,14 +95,14 @@ public class AdvancedAuctionBidOptions   {
       return false;
     }
     AdvancedAuctionBidOptions advancedAuctionBidOptions = (AdvancedAuctionBidOptions) o;
-    return Objects.equals(bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
-        Objects.equals(appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+    return Objects.equals(appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+        Objects.equals(bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
         Objects.equals(placementMultipliers, advancedAuctionBidOptions.placementMultipliers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidInMicroCurrency, appTypeMultipliers, placementMultipliers);
+    return Objects.hash(appTypeMultipliers, bidInMicroCurrency, placementMultipliers);
   }
 
   @Override
@@ -110,8 +110,8 @@ public class AdvancedAuctionBidOptions   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionBidOptions {\n");
     
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();

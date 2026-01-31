@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GetMMMReportResponseData"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GetMMMReportResponseData"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  GetMMMReportResponseData {
+    title = GetMMMReportResponseData
+    description = GetMMMReportResponseData
+    derivedFrom = Root
+    properties {
+        report_status {
+          type =  string
+          description = ""
+          enum = ["DOES_NOT_EXIST", "FINISHED", "IN_PROGRESS", "EXPIRED", "FAILED", "CANCELLED"]
+          optional = false
+        }
+        size {
+          type =  
+          description = ""
+          optional = false
+        }
+        url {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GetMMMReportResponseData {
+    title = GetMMMReportResponseData
+    description = GetMMMReportResponseData
+    implements = openapi_server.resourceTypes.GetMMMReportResponseData
+
+  }
+}

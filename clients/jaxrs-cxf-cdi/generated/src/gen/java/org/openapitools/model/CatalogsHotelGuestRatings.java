@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,30 +20,30 @@ import java.util.Objects;
 @ApiModel(description = "If specified, you must provide all properties")
 public class CatalogsHotelGuestRatings   {
   
-  private BigDecimal score;
+  private BigDecimal maxScore;
 
   private Integer numberOfReviewers;
 
-  private BigDecimal maxScore;
-
   private String ratingSystem;
 
+  private BigDecimal score;
+
   /**
-   * Your hotel&#39;s rating.
+   * Max value for the hotel rating score.
    **/
-  public CatalogsHotelGuestRatings score(BigDecimal score) {
-    this.score = score;
+  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
+    this.maxScore = maxScore;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Your hotel's rating.")
-  @JsonProperty("score")
-  public BigDecimal getScore() {
-    return score;
+  @ApiModelProperty(value = "Max value for the hotel rating score.")
+  @JsonProperty("max_score")
+  public BigDecimal getMaxScore() {
+    return maxScore;
   }
-  public void setScore(BigDecimal score) {
-    this.score = score;
+  public void setMaxScore(BigDecimal maxScore) {
+    this.maxScore = maxScore;
   }
 
 
@@ -66,25 +67,6 @@ public class CatalogsHotelGuestRatings   {
 
 
   /**
-   * Max value for the hotel rating score.
-   **/
-  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Max value for the hotel rating score.")
-  @JsonProperty("max_score")
-  public BigDecimal getMaxScore() {
-    return maxScore;
-  }
-  public void setMaxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
-  }
-
-
-  /**
    * System you use for guest reviews.
    **/
   public CatalogsHotelGuestRatings ratingSystem(String ratingSystem) {
@@ -103,6 +85,25 @@ public class CatalogsHotelGuestRatings   {
   }
 
 
+  /**
+   * Your hotel&#39;s rating.
+   **/
+  public CatalogsHotelGuestRatings score(BigDecimal score) {
+    this.score = score;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Your hotel's rating.")
+  @JsonProperty("score")
+  public BigDecimal getScore() {
+    return score;
+  }
+  public void setScore(BigDecimal score) {
+    this.score = score;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,15 +114,15 @@ public class CatalogsHotelGuestRatings   {
       return false;
     }
     CatalogsHotelGuestRatings catalogsHotelGuestRatings = (CatalogsHotelGuestRatings) o;
-    return Objects.equals(this.score, catalogsHotelGuestRatings.score) &&
+    return Objects.equals(this.maxScore, catalogsHotelGuestRatings.maxScore) &&
         Objects.equals(this.numberOfReviewers, catalogsHotelGuestRatings.numberOfReviewers) &&
-        Objects.equals(this.maxScore, catalogsHotelGuestRatings.maxScore) &&
-        Objects.equals(this.ratingSystem, catalogsHotelGuestRatings.ratingSystem);
+        Objects.equals(this.ratingSystem, catalogsHotelGuestRatings.ratingSystem) &&
+        Objects.equals(this.score, catalogsHotelGuestRatings.score);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(score, numberOfReviewers, maxScore, ratingSystem);
+    return Objects.hash(maxScore, numberOfReviewers, ratingSystem, score);
   }
 
   @Override
@@ -129,10 +130,10 @@ public class CatalogsHotelGuestRatings   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelGuestRatings {\n");
     
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
-    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    maxScore: ").append(toIndentedString(maxScore)).append("\n");
+    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    ratingSystem: ").append(toIndentedString(ratingSystem)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("}");
     return sb.toString();
   }

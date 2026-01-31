@@ -12,24 +12,42 @@ import org.openapitools.vertxweb.server.model.AudienceSubcategory;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceCategory   {
   
+  private String id;
+  private BigDecimal index;
   private String key;
   private String name;
   private BigDecimal ratio;
-  private BigDecimal index;
-  private String id;
   private List<AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory () {
 
   }
 
-  public AudienceCategory (String key, String name, BigDecimal ratio, BigDecimal index, String id, List<AudienceSubcategory> subcategories) {
+  public AudienceCategory (String id, BigDecimal index, String key, String name, BigDecimal ratio, List<AudienceSubcategory> subcategories) {
+    this.id = id;
+    this.index = index;
     this.key = key;
     this.name = name;
     this.ratio = ratio;
-    this.index = index;
-    this.id = id;
     this.subcategories = subcategories;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+  public void setIndex(BigDecimal index) {
+    this.index = index;
   }
 
     
@@ -60,24 +78,6 @@ public class AudienceCategory   {
   }
 
     
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-    
   @JsonProperty("subcategories")
   public List<AudienceSubcategory> getSubcategories() {
     return subcategories;
@@ -96,17 +96,17 @@ public class AudienceCategory   {
       return false;
     }
     AudienceCategory audienceCategory = (AudienceCategory) o;
-    return Objects.equals(key, audienceCategory.key) &&
+    return Objects.equals(id, audienceCategory.id) &&
+        Objects.equals(index, audienceCategory.index) &&
+        Objects.equals(key, audienceCategory.key) &&
         Objects.equals(name, audienceCategory.name) &&
         Objects.equals(ratio, audienceCategory.ratio) &&
-        Objects.equals(index, audienceCategory.index) &&
-        Objects.equals(id, audienceCategory.id) &&
         Objects.equals(subcategories, audienceCategory.subcategories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id, subcategories);
+    return Objects.hash(id, index, key, name, ratio, subcategories);
   }
 
   @Override
@@ -114,11 +114,11 @@ public class AudienceCategory   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceCategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    subcategories: ").append(toIndentedString(subcategories)).append("\n");
     sb.append("}");
     return sb.toString();

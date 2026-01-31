@@ -12,8 +12,8 @@ module CreateAssetInvitesRequestItem =
 
 
   type CreateAssetInvitesRequestItem = {
+    AssetIdToPermissions : IDictionary<string, Permissions[]>;
     InviteId : string;
     InviteType : InviteType;
-    AssetIdToPermissions : IDictionary<string, Permissions[]>;
   }
   //#endregion

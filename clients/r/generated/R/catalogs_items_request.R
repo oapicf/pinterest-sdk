@@ -8,8 +8,8 @@
 #' @description CatalogsItemsRequest Class
 #' @format An \code{R6Class} generator object
 #' @field country  \link{Country}
-#' @field language We recommend using the CatalogsLocale values. character
 #' @field filters  \link{CatalogsItemsPostFilters}
+#' @field language We recommend using the CatalogsLocale values. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,23 +17,27 @@ CatalogsItemsRequest <- R6::R6Class(
   "CatalogsItemsRequest",
   public = list(
     `country` = NULL,
-    `language` = NULL,
     `filters` = NULL,
+    `language` = NULL,
 
     #' @description
     #' Initialize a new CatalogsItemsRequest class.
     #'
     #' @param country country
-    #' @param language We recommend using the CatalogsLocale values.
     #' @param filters filters
+    #' @param language We recommend using the CatalogsLocale values.
     #' @param ... Other optional arguments.
-    initialize = function(`country`, `language`, `filters`, ...) {
+    initialize = function(`country`, `filters`, `language`, ...) {
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`country`))
         self$`country` <- `country`
+      }
+      if (!missing(`filters`)) {
+        stopifnot(R6::is.R6(`filters`))
+        self$`filters` <- `filters`
       }
       if (!missing(`language`)) {
         if (!(`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
@@ -43,10 +47,6 @@ CatalogsItemsRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `language`. Must be a string:", `language`))
         }
         self$`language` <- `language`
-      }
-      if (!missing(`filters`)) {
-        stopifnot(R6::is.R6(`filters`))
-        self$`filters` <- `filters`
       }
     },
 
@@ -85,13 +85,13 @@ CatalogsItemsRequest <- R6::R6Class(
         CatalogsItemsRequestObject[["country"]] <-
           self$`country`$toSimpleType()
       }
-      if (!is.null(self$`language`)) {
-        CatalogsItemsRequestObject[["language"]] <-
-          self$`language`
-      }
       if (!is.null(self$`filters`)) {
         CatalogsItemsRequestObject[["filters"]] <-
           self$`filters`$toSimpleType()
+      }
+      if (!is.null(self$`language`)) {
+        CatalogsItemsRequestObject[["language"]] <-
+          self$`language`
       }
       return(CatalogsItemsRequestObject)
     },
@@ -108,16 +108,16 @@ CatalogsItemsRequest <- R6::R6Class(
         `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
         self$`country` <- `country_object`
       }
+      if (!is.null(this_object$`filters`)) {
+        `filters_object` <- CatalogsItemsPostFilters$new()
+        `filters_object`$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
+        self$`filters` <- `filters_object`
+      }
       if (!is.null(this_object$`language`)) {
         if (!is.null(this_object$`language`) && !(this_object$`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
           stop(paste("Error! \"", this_object$`language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
         }
         self$`language` <- this_object$`language`
-      }
-      if (!is.null(this_object$`filters`)) {
-        `filters_object` <- CatalogsItemsPostFilters$new()
-        `filters_object`$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
-        self$`filters` <- `filters_object`
       }
       self
     },
@@ -141,11 +141,11 @@ CatalogsItemsRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`filters` <- CatalogsItemsPostFilters$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`language`) && !(this_object$`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
         stop(paste("Error! \"", this_object$`language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
       }
       self$`language` <- this_object$`language`
-      self$`filters` <- CatalogsItemsPostFilters$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -161,6 +161,12 @@ CatalogsItemsRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsRequest: the required field `country` is missing."))
       }
+      # check the required field `filters`
+      if (!is.null(input_json$`filters`)) {
+        stopifnot(R6::is.R6(input_json$`filters`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsRequest: the required field `filters` is missing."))
+      }
       # check the required field `language`
       if (!is.null(input_json$`language`)) {
         if (!(is.character(input_json$`language`) && length(input_json$`language`) == 1)) {
@@ -168,12 +174,6 @@ CatalogsItemsRequest <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsRequest: the required field `language` is missing."))
-      }
-      # check the required field `filters`
-      if (!is.null(input_json$`filters`)) {
-        stopifnot(R6::is.R6(input_json$`filters`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsRequest: the required field `filters` is missing."))
       }
     },
 
@@ -195,13 +195,13 @@ CatalogsItemsRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `language` is null
-      if (is.null(self$`language`)) {
+      # check if the required `filters` is null
+      if (is.null(self$`filters`)) {
         return(FALSE)
       }
 
-      # check if the required `filters` is null
-      if (is.null(self$`filters`)) {
+      # check if the required `language` is null
+      if (is.null(self$`language`)) {
         return(FALSE)
       }
 
@@ -219,14 +219,14 @@ CatalogsItemsRequest <- R6::R6Class(
         invalid_fields["country"] <- "Non-nullable required field `country` cannot be null."
       }
 
-      # check if the required `language` is null
-      if (is.null(self$`language`)) {
-        invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
-      }
-
       # check if the required `filters` is null
       if (is.null(self$`filters`)) {
         invalid_fields["filters"] <- "Non-nullable required field `filters` cannot be null."
+      }
+
+      # check if the required `language` is null
+      if (is.null(self$`language`)) {
+        invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
       }
 
       invalid_fields

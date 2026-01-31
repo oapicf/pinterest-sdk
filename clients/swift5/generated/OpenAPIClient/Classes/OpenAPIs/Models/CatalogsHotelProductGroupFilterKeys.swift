@@ -15,14 +15,15 @@ public struct CatalogsHotelProductGroupFilterKeys: Codable, JSONEncodable, Hasha
     public var PRICE: CatalogsProductGroupPricingCurrencyCriteria
     public var HOTEL_ID: CatalogsProductGroupMultipleStringCriteria
     public var BRAND: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL0: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL1: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL2: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL3: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria
+    public var cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria
     public var COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
+    public var TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 
-    public init(PRICE: CatalogsProductGroupPricingCurrencyCriteria, HOTEL_ID: CatalogsProductGroupMultipleStringCriteria, BRAND: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL1: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL2: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL3: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria, COUNTRY: CatalogsProductGroupMultipleCountriesCriteria) {
+    public init(PRICE: CatalogsProductGroupPricingCurrencyCriteria, HOTEL_ID: CatalogsProductGroupMultipleStringCriteria, BRAND: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria, COUNTRY: CatalogsProductGroupMultipleCountriesCriteria, TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria) {
         self.PRICE = PRICE
         self.HOTEL_ID = HOTEL_ID
         self.BRAND = BRAND
@@ -32,6 +33,7 @@ public struct CatalogsHotelProductGroupFilterKeys: Codable, JSONEncodable, Hasha
         self.cUSTOMLABEL3 = cUSTOMLABEL3
         self.cUSTOMLABEL4 = cUSTOMLABEL4
         self.COUNTRY = COUNTRY
+        self.TITLE_KEYWORDS = TITLE_KEYWORDS
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +46,7 @@ public struct CatalogsHotelProductGroupFilterKeys: Codable, JSONEncodable, Hasha
         case cUSTOMLABEL3 = "CUSTOM_LABEL_3"
         case cUSTOMLABEL4 = "CUSTOM_LABEL_4"
         case COUNTRY
+        case TITLE_KEYWORDS
     }
 
     // Encodable protocol methods
@@ -59,6 +62,7 @@ public struct CatalogsHotelProductGroupFilterKeys: Codable, JSONEncodable, Hasha
         try container.encode(cUSTOMLABEL3, forKey: .cUSTOMLABEL3)
         try container.encode(cUSTOMLABEL4, forKey: .cUSTOMLABEL4)
         try container.encode(COUNTRY, forKey: .COUNTRY)
+        try container.encode(TITLE_KEYWORDS, forKey: .TITLE_KEYWORDS)
     }
 }
 

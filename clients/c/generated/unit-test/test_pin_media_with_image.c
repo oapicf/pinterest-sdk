@@ -16,21 +16,20 @@
 #include "../model/pin_media_with_image.h"
 pin_media_with_image_t* instantiate_pin_media_with_image(int include_optional);
 
-#include "test_pin_media_with_image_all_of_images.c"
+#include "test_image_size.c"
 
 
 pin_media_with_image_t* instantiate_pin_media_with_image(int include_optional) {
   pin_media_with_image_t* pin_media_with_image = NULL;
   if (include_optional) {
     pin_media_with_image = pin_media_with_image_create(
-      "0",
-       // false, not to have infinite recursion
-      instantiate_pin_media_with_image_all_of_images(0)
+      {"150x150":{"width":150,"height":150,"url":"https://i.pinimg.com/150x150/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"},"400x300":{"width":400,"height":300,"url":"https://i.pinimg.com/400x300/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"},"600x":{"width":600,"height":600,"url":"https://i.pinimg.com/600x/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"},"1200x":{"width":1200,"height":1200,"url":"https://i.pinimg.com/1200x/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"}},
+      pinterest_rest_api_pin_media_with_image_MEDIATYPE_image
     );
   } else {
     pin_media_with_image = pin_media_with_image_create(
-      "0",
-      NULL
+      {"150x150":{"width":150,"height":150,"url":"https://i.pinimg.com/150x150/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"},"400x300":{"width":400,"height":300,"url":"https://i.pinimg.com/400x300/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"},"600x":{"width":600,"height":600,"url":"https://i.pinimg.com/600x/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"},"1200x":{"width":1200,"height":1200,"url":"https://i.pinimg.com/1200x/0d/f6/f1/0df6f1f0bfe7aaca849c1bbc3607a34b.jpg"}},
+      pinterest_rest_api_pin_media_with_image_MEDIATYPE_image
     );
   }
 

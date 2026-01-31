@@ -9,17 +9,17 @@
 -export_type([openapi_order_line/0]).
 
 -type openapi_order_line() ::
-  [ {'id', binary() }
-  | {'type', binary() }
-  | {'ad_account_id', binary() }
+  [ {'ad_account_id', binary() }
+  | {'budget', integer() }
+  | {'end_time', integer() }
+  | {'id', binary() }
+  | {'name', binary() }
+  | {'paid_budget', integer() }
+  | {'paid_type', openapi_order_line_paid_type:openapi_order_line_paid_type() }
   | {'purchase_order_id', binary() }
   | {'start_time', integer() }
-  | {'end_time', integer() }
-  | {'budget', integer() }
-  | {'paid_budget', integer() }
   | {'status', openapi_order_line_status:openapi_order_line_status() }
-  | {'name', binary() }
-  | {'paid_type', openapi_order_line_paid_type:openapi_order_line_paid_type() }
+  | {'type', binary() }
   | {'campaign_ids', list(binary()) }
   ].
 
@@ -28,17 +28,17 @@ openapi_order_line() ->
     openapi_order_line([]).
 
 openapi_order_line(Fields) ->
-  Default = [ {'id', binary() }
-            , {'type', binary() }
-            , {'ad_account_id', binary() }
+  Default = [ {'ad_account_id', binary() }
+            , {'budget', integer() }
+            , {'end_time', integer() }
+            , {'id', binary() }
+            , {'name', binary() }
+            , {'paid_budget', integer() }
+            , {'paid_type', openapi_order_line_paid_type:openapi_order_line_paid_type() }
             , {'purchase_order_id', binary() }
             , {'start_time', integer() }
-            , {'end_time', integer() }
-            , {'budget', integer() }
-            , {'paid_budget', integer() }
             , {'status', openapi_order_line_status:openapi_order_line_status() }
-            , {'name', binary() }
-            , {'paid_type', openapi_order_line_paid_type:openapi_order_line_paid_type() }
+            , {'type', binary() }
             , {'campaign_ids', list(binary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -26,9 +26,10 @@ module AdAccountsApiHandlerTestsHelper =
   let mutable AdAccountsCreateBody = ""
 
   AdAccountsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;country&quot; : &quot;US&quot;,
-  &quot;owner_user_id&quot; : &quot;383791336903426391&quot;,
-  &quot;name&quot; : &quot;ACME Tools&quot;
+  &quot;country&quot; : &quot;AD&quot;,
+  &quot;owner_user_id&quot; : &quot;owner_user_id&quot;,
+  &quot;name&quot; : &quot;name&quot;,
+  &quot;currency&quot; : &quot;UNK&quot;
 }"
   AdAccountsCreateExamples <- AdAccountsCreateExamples.Add("application/json", AdAccountsCreateBody)
 
@@ -40,14 +41,40 @@ module AdAccountsApiHandlerTestsHelper =
   ()
 
 
+  let mutable AnalyticsCreateConversionProductReportExamples = Map.empty
+  let mutable AnalyticsCreateConversionProductReportBody = ""
+
+  AnalyticsCreateConversionProductReportBody <- WebUtility.HtmlDecode "{
+  &quot;end_date&quot; : &quot;2024-04-23&quot;,
+  &quot;conversion_product_attribution_type&quot; : &quot;DEFAULT&quot;,
+  &quot;level&quot; : &quot;ADVERTISER&quot;,
+  &quot;view_window_days&quot; : 6,
+  &quot;columns&quot; : [ &quot;AD_GROUP_ID&quot;, &quot;AD_GROUP_ID&quot; ],
+  &quot;campaign_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;click_window_days&quot; : 0,
+  &quot;conversion_report_time&quot; : &quot;TIME_OF_AD_ACTION&quot;,
+  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
+  &quot;product_sku_ids&quot; : [ &quot;WBC45678&quot;, &quot;WBC45679&quot; ],
+  &quot;granularity&quot; : &quot;WEEK&quot;,
+  &quot;ad_group_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;conversion_product_breakdown&quot; : &quot;PRODUCT_BRAND&quot;,
+  &quot;report_name&quot; : &quot;report_name&quot;,
+  &quot;start_date&quot; : &quot;2024-03-17&quot;
+}"
+  AnalyticsCreateConversionProductReportExamples <- AnalyticsCreateConversionProductReportExamples.Add("application/json", AnalyticsCreateConversionProductReportBody)
+
+  let getAnalyticsCreateConversionProductReportExample mediaType =
+    AnalyticsCreateConversionProductReportExamples.[mediaType]
+      |> getConverter mediaType
+
   let mutable AnalyticsCreateMmmReportExamples = Map.empty
   let mutable AnalyticsCreateMmmReportBody = ""
 
   AnalyticsCreateMmmReportBody <- WebUtility.HtmlDecode "{
   &quot;end_date&quot; : &quot;2020-12-20&quot;,
   &quot;level&quot; : &quot;CAMPAIGN_TARGETING&quot;,
-  &quot;granularity&quot; : &quot;DAY&quot;,
   &quot;columns&quot; : [ &quot;SPEND_IN_DOLLAR&quot;, &quot;SPEND_IN_DOLLAR&quot; ],
+  &quot;granularity&quot; : &quot;DAY&quot;,
   &quot;countries&quot; : [ &quot;US&quot;, &quot;US&quot; ],
   &quot;report_name&quot; : &quot;report_name&quot;,
   &quot;targeting_types&quot; : [ &quot;GENDER&quot; ],
@@ -77,19 +104,29 @@ module AdAccountsApiHandlerTestsHelper =
   } ],
   &quot;columns&quot; : [ &quot;SPEND_IN_MICRO_DOLLAR&quot;, &quot;SPEND_IN_MICRO_DOLLAR&quot; ],
   &quot;campaign_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;combine_targeting_types&quot; : false,
   &quot;click_window_days&quot; : 0,
   &quot;conversion_report_time&quot; : &quot;TIME_OF_AD_ACTION&quot;,
   &quot;product_group_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot;, &quot;VIDEO_VIEW&quot; ],
+  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot; ],
   &quot;product_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
+  &quot;reporting_timezone&quot; : &quot;&quot;,
   &quot;campaign_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
-  &quot;start_hour&quot; : 12,
+  &quot;start_hour&quot; : 5,
   &quot;ad_group_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;end_hour&quot; : 5,
+  &quot;end_hour&quot; : 12,
   &quot;targeting_types&quot; : [ &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot; ],
   &quot;start_date&quot; : &quot;2020-12-20&quot;,
+  &quot;custom_conversion_event_metrics&quot; : [ {
+    &quot;custom_event_metrics_type&quot; : &quot;ADE_COST_PER_ACTION&quot;,
+    &quot;custom_event_name&quot; : &quot;custom_event_name&quot;
+  }, {
+    &quot;custom_event_metrics_type&quot; : &quot;ADE_COST_PER_ACTION&quot;,
+    &quot;custom_event_name&quot; : &quot;custom_event_name&quot;
+  } ],
   &quot;level&quot; : &quot;CAMPAIGN&quot;,
   &quot;ad_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;campaign_brand_label&quot; : &quot;Brand&quot;,
   &quot;ad_statuses&quot; : [ &quot;APPROVED&quot;, &quot;PAUSED&quot; ],
   &quot;primary_sort&quot; : &quot;BY_ID&quot;,
   &quot;attribution_types&quot; : [ &quot;INDIVIDUAL&quot;, &quot;INDIVIDUAL&quot; ],
@@ -103,6 +140,8 @@ module AdAccountsApiHandlerTestsHelper =
   let getAnalyticsCreateReportExample mediaType =
     AnalyticsCreateReportExamples.[mediaType]
       |> getConverter mediaType
+  ()
+
   ()
 
   ()

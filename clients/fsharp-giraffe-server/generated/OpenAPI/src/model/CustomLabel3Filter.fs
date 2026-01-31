@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
+open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 
 module CustomLabel3Filter =
 
@@ -10,6 +10,6 @@ module CustomLabel3Filter =
 
 
   type CustomLabel3Filter = {
-    CUSTOMLABEL3 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL3 : CatalogsProductGroupFilterOperatorTypeCriteria;
   }
   //#endregion

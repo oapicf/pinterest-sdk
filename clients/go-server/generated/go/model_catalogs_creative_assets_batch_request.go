@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,18 +17,18 @@ package openapi
 // CatalogsCreativeAssetsBatchRequest - Request object to update catalogs creative assets items
 type CatalogsCreativeAssetsBatchRequest struct {
 
+	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-
 	// Array with creative assets item operations
 	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
 
-	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 }
 
 // AssertCatalogsCreativeAssetsBatchRequestRequired checks if the required fields are not zero-ed
@@ -36,8 +36,8 @@ func AssertCatalogsCreativeAssetsBatchRequestRequired(obj CatalogsCreativeAssets
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
-		"language": obj.Language,
 		"items": obj.Items,
+		"language": obj.Language,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -45,26 +45,26 @@ func AssertCatalogsCreativeAssetsBatchRequestRequired(obj CatalogsCreativeAssets
 		}
 	}
 
-	if err := AssertstringRequired(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsCreativeAssetsBatchItemRequired(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringRequired(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }
 
 // AssertCatalogsCreativeAssetsBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsCreativeAssetsBatchRequestConstraints(obj CatalogsCreativeAssetsBatchRequest) error {
-	if err := AssertstringConstraints(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsCreativeAssetsBatchItemConstraints(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringConstraints(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }

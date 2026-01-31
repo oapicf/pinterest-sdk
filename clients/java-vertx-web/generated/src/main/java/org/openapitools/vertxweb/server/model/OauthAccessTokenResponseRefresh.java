@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OauthAccessTokenResponseRefresh   {
   
+  private String accessToken;
+  private Integer expiresIn;
 
 
   public enum ResponseTypeEnum {
@@ -32,30 +34,25 @@ public class OauthAccessTokenResponseRefresh   {
   }
 
   private ResponseTypeEnum responseType;
-  private String accessToken;
-  private String tokenType = "bearer";
-  private Integer expiresIn;
   private String scope;
+  private String tokenType = "bearer";
+  private String refreshToken;
+  private Integer refreshTokenExpiresAt;
+  private Integer refreshTokenExpiresIn;
 
   public OauthAccessTokenResponseRefresh () {
 
   }
 
-  public OauthAccessTokenResponseRefresh (ResponseTypeEnum responseType, String accessToken, String tokenType, Integer expiresIn, String scope) {
-    this.responseType = responseType;
+  public OauthAccessTokenResponseRefresh (String accessToken, Integer expiresIn, ResponseTypeEnum responseType, String scope, String tokenType, String refreshToken, Integer refreshTokenExpiresAt, Integer refreshTokenExpiresIn) {
     this.accessToken = accessToken;
-    this.tokenType = tokenType;
     this.expiresIn = expiresIn;
-    this.scope = scope;
-  }
-
-    
-  @JsonProperty("response_type")
-  public ResponseTypeEnum getResponseType() {
-    return responseType;
-  }
-  public void setResponseType(ResponseTypeEnum responseType) {
     this.responseType = responseType;
+    this.scope = scope;
+    this.tokenType = tokenType;
+    this.refreshToken = refreshToken;
+    this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
   }
 
     
@@ -68,15 +65,6 @@ public class OauthAccessTokenResponseRefresh   {
   }
 
     
-  @JsonProperty("token_type")
-  public String getTokenType() {
-    return tokenType;
-  }
-  public void setTokenType(String tokenType) {
-    this.tokenType = tokenType;
-  }
-
-    
   @JsonProperty("expires_in")
   public Integer getExpiresIn() {
     return expiresIn;
@@ -86,12 +74,57 @@ public class OauthAccessTokenResponseRefresh   {
   }
 
     
+  @JsonProperty("response_type")
+  public ResponseTypeEnum getResponseType() {
+    return responseType;
+  }
+  public void setResponseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+  }
+
+    
   @JsonProperty("scope")
   public String getScope() {
     return scope;
   }
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+    
+  @JsonProperty("token_type")
+  public String getTokenType() {
+    return tokenType;
+  }
+  public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
+
+    
+  @JsonProperty("refresh_token")
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+    
+  @JsonProperty("refresh_token_expires_at")
+  public Integer getRefreshTokenExpiresAt() {
+    return refreshTokenExpiresAt;
+  }
+  public void setRefreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+    this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+  }
+
+    
+  @JsonProperty("refresh_token_expires_in")
+  public Integer getRefreshTokenExpiresIn() {
+    return refreshTokenExpiresIn;
+  }
+  public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
   }
 
 
@@ -104,16 +137,19 @@ public class OauthAccessTokenResponseRefresh   {
       return false;
     }
     OauthAccessTokenResponseRefresh oauthAccessTokenResponseRefresh = (OauthAccessTokenResponseRefresh) o;
-    return Objects.equals(responseType, oauthAccessTokenResponseRefresh.responseType) &&
-        Objects.equals(accessToken, oauthAccessTokenResponseRefresh.accessToken) &&
-        Objects.equals(tokenType, oauthAccessTokenResponseRefresh.tokenType) &&
+    return Objects.equals(accessToken, oauthAccessTokenResponseRefresh.accessToken) &&
         Objects.equals(expiresIn, oauthAccessTokenResponseRefresh.expiresIn) &&
-        Objects.equals(scope, oauthAccessTokenResponseRefresh.scope);
+        Objects.equals(responseType, oauthAccessTokenResponseRefresh.responseType) &&
+        Objects.equals(scope, oauthAccessTokenResponseRefresh.scope) &&
+        Objects.equals(tokenType, oauthAccessTokenResponseRefresh.tokenType) &&
+        Objects.equals(refreshToken, oauthAccessTokenResponseRefresh.refreshToken) &&
+        Objects.equals(refreshTokenExpiresAt, oauthAccessTokenResponseRefresh.refreshTokenExpiresAt) &&
+        Objects.equals(refreshTokenExpiresIn, oauthAccessTokenResponseRefresh.refreshTokenExpiresIn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseType, accessToken, tokenType, expiresIn, scope);
+    return Objects.hash(accessToken, expiresIn, responseType, scope, tokenType, refreshToken, refreshTokenExpiresAt, refreshTokenExpiresIn);
   }
 
   @Override
@@ -121,11 +157,14 @@ public class OauthAccessTokenResponseRefresh   {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponseRefresh {\n");
     
-    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
+    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    refreshTokenExpiresAt: ").append(toIndentedString(refreshTokenExpiresAt)).append("\n");
+    sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }

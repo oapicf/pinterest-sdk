@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **String** | The date range type | [optional] 
-**StartDate** | **Decimal** | The start date of the date range | [optional] 
 **EndDate** | **Decimal** | The end date of the date range | [optional] 
+**StartDate** | **Decimal** | The start date of the date range | [optional] 
+**Type** | **String** | The date range type | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TemplateResponseDateRangeAbsoluteDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRangeAbsoluteDateRange  -Type absolute `
+$TemplateResponseDateRangeAbsoluteDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRangeAbsoluteDateRange  -EndDate 6.027456183070403 `
  -StartDate 0.8008281904610115 `
- -EndDate 6.027456183070403
+ -Type absolute
 ```
 
 - Convert the resource to JSON

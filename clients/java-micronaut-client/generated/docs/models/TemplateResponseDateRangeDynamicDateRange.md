@@ -10,9 +10,8 @@ The class is defined in **[TemplateResponseDateRangeDynamicDateRange.java](../..
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | `String` | The date range type |  [optional property]
 **range** | [**RangeEnum**](#RangeEnum) | The dynamic range type |  [optional property]
-
+**type** | `String` | The date range type |  [optional property]
 
 ## RangeEnum
 
@@ -22,5 +21,7 @@ YEAR_TO_DATE | `"YEAR_TO_DATE"`
 QUARTER_TO_DATE | `"QUARTER_TO_DATE"`
 MONTH_TO_DATE | `"MONTH_TO_DATE"`
 LAST_MONTH | `"LAST_MONTH"`
+LAST_QUARTER | `"LAST_QUARTER"`
+
 
 

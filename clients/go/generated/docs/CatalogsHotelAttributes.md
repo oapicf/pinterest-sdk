@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** | The hotel&#39;s name. | [optional] 
-**Link** | Pointer to **NullableString** | Link to the product page | [optional] 
-**Description** | Pointer to **NullableString** | Brief description of the hotel. | [optional] 
-**Brand** | Pointer to **NullableString** | The brand to which this hotel belongs to. | [optional] 
-**Latitude** | Pointer to **float32** | Latitude of the hotel. | [optional] 
-**Longitude** | Pointer to **NullableFloat32** | Longitude of the hotel. | [optional] 
-**Neighborhood** | Pointer to **[]string** | A list of neighborhoods where the hotel is located | [optional] 
 **Address** | Pointer to [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] 
+**BasePrice** | Pointer to **NullableString** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
+**Brand** | Pointer to **NullableString** | The brand to which this hotel belongs to. | [optional] 
+**Category** | Pointer to **NullableString** | The type of property. The category can be any type of internal description desired. | [optional] 
 **CustomLabel0** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **CustomLabel1** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **CustomLabel2** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **CustomLabel3** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **CustomLabel4** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
-**Category** | Pointer to **NullableString** | The type of property. The category can be any type of internal description desired. | [optional] 
-**BasePrice** | Pointer to **NullableString** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
-**SalePrice** | Pointer to **NullableString** | Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. | [optional] 
+**Description** | Pointer to **NullableString** | Brief description of the hotel. | [optional] 
 **GuestRatings** | Pointer to [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] 
-**MainImage** | Pointer to [**CatalogsHotelAttributesAllOfMainImage**](CatalogsHotelAttributesAllOfMainImage.md) |  | [optional] 
+**Latitude** | Pointer to **float32** | Latitude of the hotel. | [optional] 
+**Link** | Pointer to **NullableString** | Link to the product page | [optional] 
+**Longitude** | Pointer to **NullableFloat32** | Longitude of the hotel. | [optional] 
+**Name** | Pointer to **NullableString** | The hotel&#39;s name. | [optional] 
+**Neighborhood** | Pointer to **[]string** | A list of neighborhoods where the hotel is located | [optional] 
+**SalePrice** | Pointer to **NullableString** | Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. | [optional] 
 **AdditionalImageLink** | Pointer to **[]string** | &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt; | [optional] 
+**MainImage** | Pointer to [**CatalogsHotelAttributesAllOfMainImage**](CatalogsHotelAttributesAllOfMainImage.md) |  | [optional] 
 
 ## Methods
 
@@ -43,111 +43,66 @@ NewCatalogsHotelAttributesWithDefaults instantiates a new CatalogsHotelAttribute
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetName
+### GetAddress
 
-`func (o *CatalogsHotelAttributes) GetName() string`
+`func (o *CatalogsHotelAttributes) GetAddress() CatalogsHotelAddress`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetAddress returns the Address field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetAddressOk
 
-`func (o *CatalogsHotelAttributes) GetNameOk() (*string, bool)`
+`func (o *CatalogsHotelAttributes) GetAddressOk() (*CatalogsHotelAddress, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetAddress
 
-`func (o *CatalogsHotelAttributes) SetName(v string)`
+`func (o *CatalogsHotelAttributes) SetAddress(v CatalogsHotelAddress)`
 
-SetName sets Name field to given value.
+SetAddress sets Address field to given value.
 
-### HasName
+### HasAddress
 
-`func (o *CatalogsHotelAttributes) HasName() bool`
+`func (o *CatalogsHotelAttributes) HasAddress() bool`
 
-HasName returns a boolean if a field has been set.
+HasAddress returns a boolean if a field has been set.
 
-### SetNameNil
+### GetBasePrice
 
-`func (o *CatalogsHotelAttributes) SetNameNil(b bool)`
+`func (o *CatalogsHotelAttributes) GetBasePrice() string`
 
- SetNameNil sets the value for Name to be an explicit nil
+GetBasePrice returns the BasePrice field if non-nil, zero value otherwise.
 
-### UnsetName
-`func (o *CatalogsHotelAttributes) UnsetName()`
+### GetBasePriceOk
 
-UnsetName ensures that no value is present for Name, not even an explicit nil
-### GetLink
+`func (o *CatalogsHotelAttributes) GetBasePriceOk() (*string, bool)`
 
-`func (o *CatalogsHotelAttributes) GetLink() string`
-
-GetLink returns the Link field if non-nil, zero value otherwise.
-
-### GetLinkOk
-
-`func (o *CatalogsHotelAttributes) GetLinkOk() (*string, bool)`
-
-GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
+GetBasePriceOk returns a tuple with the BasePrice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLink
+### SetBasePrice
 
-`func (o *CatalogsHotelAttributes) SetLink(v string)`
+`func (o *CatalogsHotelAttributes) SetBasePrice(v string)`
 
-SetLink sets Link field to given value.
+SetBasePrice sets BasePrice field to given value.
 
-### HasLink
+### HasBasePrice
 
-`func (o *CatalogsHotelAttributes) HasLink() bool`
+`func (o *CatalogsHotelAttributes) HasBasePrice() bool`
 
-HasLink returns a boolean if a field has been set.
+HasBasePrice returns a boolean if a field has been set.
 
-### SetLinkNil
+### SetBasePriceNil
 
-`func (o *CatalogsHotelAttributes) SetLinkNil(b bool)`
+`func (o *CatalogsHotelAttributes) SetBasePriceNil(b bool)`
 
- SetLinkNil sets the value for Link to be an explicit nil
+ SetBasePriceNil sets the value for BasePrice to be an explicit nil
 
-### UnsetLink
-`func (o *CatalogsHotelAttributes) UnsetLink()`
+### UnsetBasePrice
+`func (o *CatalogsHotelAttributes) UnsetBasePrice()`
 
-UnsetLink ensures that no value is present for Link, not even an explicit nil
-### GetDescription
-
-`func (o *CatalogsHotelAttributes) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *CatalogsHotelAttributes) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *CatalogsHotelAttributes) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *CatalogsHotelAttributes) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *CatalogsHotelAttributes) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *CatalogsHotelAttributes) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
+UnsetBasePrice ensures that no value is present for BasePrice, not even an explicit nil
 ### GetBrand
 
 `func (o *CatalogsHotelAttributes) GetBrand() string`
@@ -183,126 +138,41 @@ HasBrand returns a boolean if a field has been set.
 `func (o *CatalogsHotelAttributes) UnsetBrand()`
 
 UnsetBrand ensures that no value is present for Brand, not even an explicit nil
-### GetLatitude
+### GetCategory
 
-`func (o *CatalogsHotelAttributes) GetLatitude() float32`
+`func (o *CatalogsHotelAttributes) GetCategory() string`
 
-GetLatitude returns the Latitude field if non-nil, zero value otherwise.
+GetCategory returns the Category field if non-nil, zero value otherwise.
 
-### GetLatitudeOk
+### GetCategoryOk
 
-`func (o *CatalogsHotelAttributes) GetLatitudeOk() (*float32, bool)`
+`func (o *CatalogsHotelAttributes) GetCategoryOk() (*string, bool)`
 
-GetLatitudeOk returns a tuple with the Latitude field if it's non-nil, zero value otherwise
+GetCategoryOk returns a tuple with the Category field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLatitude
+### SetCategory
 
-`func (o *CatalogsHotelAttributes) SetLatitude(v float32)`
+`func (o *CatalogsHotelAttributes) SetCategory(v string)`
 
-SetLatitude sets Latitude field to given value.
+SetCategory sets Category field to given value.
 
-### HasLatitude
+### HasCategory
 
-`func (o *CatalogsHotelAttributes) HasLatitude() bool`
+`func (o *CatalogsHotelAttributes) HasCategory() bool`
 
-HasLatitude returns a boolean if a field has been set.
+HasCategory returns a boolean if a field has been set.
 
-### GetLongitude
+### SetCategoryNil
 
-`func (o *CatalogsHotelAttributes) GetLongitude() float32`
+`func (o *CatalogsHotelAttributes) SetCategoryNil(b bool)`
 
-GetLongitude returns the Longitude field if non-nil, zero value otherwise.
+ SetCategoryNil sets the value for Category to be an explicit nil
 
-### GetLongitudeOk
+### UnsetCategory
+`func (o *CatalogsHotelAttributes) UnsetCategory()`
 
-`func (o *CatalogsHotelAttributes) GetLongitudeOk() (*float32, bool)`
-
-GetLongitudeOk returns a tuple with the Longitude field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLongitude
-
-`func (o *CatalogsHotelAttributes) SetLongitude(v float32)`
-
-SetLongitude sets Longitude field to given value.
-
-### HasLongitude
-
-`func (o *CatalogsHotelAttributes) HasLongitude() bool`
-
-HasLongitude returns a boolean if a field has been set.
-
-### SetLongitudeNil
-
-`func (o *CatalogsHotelAttributes) SetLongitudeNil(b bool)`
-
- SetLongitudeNil sets the value for Longitude to be an explicit nil
-
-### UnsetLongitude
-`func (o *CatalogsHotelAttributes) UnsetLongitude()`
-
-UnsetLongitude ensures that no value is present for Longitude, not even an explicit nil
-### GetNeighborhood
-
-`func (o *CatalogsHotelAttributes) GetNeighborhood() []string`
-
-GetNeighborhood returns the Neighborhood field if non-nil, zero value otherwise.
-
-### GetNeighborhoodOk
-
-`func (o *CatalogsHotelAttributes) GetNeighborhoodOk() (*[]string, bool)`
-
-GetNeighborhoodOk returns a tuple with the Neighborhood field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNeighborhood
-
-`func (o *CatalogsHotelAttributes) SetNeighborhood(v []string)`
-
-SetNeighborhood sets Neighborhood field to given value.
-
-### HasNeighborhood
-
-`func (o *CatalogsHotelAttributes) HasNeighborhood() bool`
-
-HasNeighborhood returns a boolean if a field has been set.
-
-### SetNeighborhoodNil
-
-`func (o *CatalogsHotelAttributes) SetNeighborhoodNil(b bool)`
-
- SetNeighborhoodNil sets the value for Neighborhood to be an explicit nil
-
-### UnsetNeighborhood
-`func (o *CatalogsHotelAttributes) UnsetNeighborhood()`
-
-UnsetNeighborhood ensures that no value is present for Neighborhood, not even an explicit nil
-### GetAddress
-
-`func (o *CatalogsHotelAttributes) GetAddress() CatalogsHotelAddress`
-
-GetAddress returns the Address field if non-nil, zero value otherwise.
-
-### GetAddressOk
-
-`func (o *CatalogsHotelAttributes) GetAddressOk() (*CatalogsHotelAddress, bool)`
-
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddress
-
-`func (o *CatalogsHotelAttributes) SetAddress(v CatalogsHotelAddress)`
-
-SetAddress sets Address field to given value.
-
-### HasAddress
-
-`func (o *CatalogsHotelAttributes) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
-
+UnsetCategory ensures that no value is present for Category, not even an explicit nil
 ### GetCustomLabel0
 
 `func (o *CatalogsHotelAttributes) GetCustomLabel0() string`
@@ -478,76 +348,231 @@ HasCustomLabel4 returns a boolean if a field has been set.
 `func (o *CatalogsHotelAttributes) UnsetCustomLabel4()`
 
 UnsetCustomLabel4 ensures that no value is present for CustomLabel4, not even an explicit nil
-### GetCategory
+### GetDescription
 
-`func (o *CatalogsHotelAttributes) GetCategory() string`
+`func (o *CatalogsHotelAttributes) GetDescription() string`
 
-GetCategory returns the Category field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetCategoryOk
+### GetDescriptionOk
 
-`func (o *CatalogsHotelAttributes) GetCategoryOk() (*string, bool)`
+`func (o *CatalogsHotelAttributes) GetDescriptionOk() (*string, bool)`
 
-GetCategoryOk returns a tuple with the Category field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCategory
+### SetDescription
 
-`func (o *CatalogsHotelAttributes) SetCategory(v string)`
+`func (o *CatalogsHotelAttributes) SetDescription(v string)`
 
-SetCategory sets Category field to given value.
+SetDescription sets Description field to given value.
 
-### HasCategory
+### HasDescription
 
-`func (o *CatalogsHotelAttributes) HasCategory() bool`
+`func (o *CatalogsHotelAttributes) HasDescription() bool`
 
-HasCategory returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### SetCategoryNil
+### SetDescriptionNil
 
-`func (o *CatalogsHotelAttributes) SetCategoryNil(b bool)`
+`func (o *CatalogsHotelAttributes) SetDescriptionNil(b bool)`
 
- SetCategoryNil sets the value for Category to be an explicit nil
+ SetDescriptionNil sets the value for Description to be an explicit nil
 
-### UnsetCategory
-`func (o *CatalogsHotelAttributes) UnsetCategory()`
+### UnsetDescription
+`func (o *CatalogsHotelAttributes) UnsetDescription()`
 
-UnsetCategory ensures that no value is present for Category, not even an explicit nil
-### GetBasePrice
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetGuestRatings
 
-`func (o *CatalogsHotelAttributes) GetBasePrice() string`
+`func (o *CatalogsHotelAttributes) GetGuestRatings() CatalogsHotelGuestRatings`
 
-GetBasePrice returns the BasePrice field if non-nil, zero value otherwise.
+GetGuestRatings returns the GuestRatings field if non-nil, zero value otherwise.
 
-### GetBasePriceOk
+### GetGuestRatingsOk
 
-`func (o *CatalogsHotelAttributes) GetBasePriceOk() (*string, bool)`
+`func (o *CatalogsHotelAttributes) GetGuestRatingsOk() (*CatalogsHotelGuestRatings, bool)`
 
-GetBasePriceOk returns a tuple with the BasePrice field if it's non-nil, zero value otherwise
+GetGuestRatingsOk returns a tuple with the GuestRatings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBasePrice
+### SetGuestRatings
 
-`func (o *CatalogsHotelAttributes) SetBasePrice(v string)`
+`func (o *CatalogsHotelAttributes) SetGuestRatings(v CatalogsHotelGuestRatings)`
 
-SetBasePrice sets BasePrice field to given value.
+SetGuestRatings sets GuestRatings field to given value.
 
-### HasBasePrice
+### HasGuestRatings
 
-`func (o *CatalogsHotelAttributes) HasBasePrice() bool`
+`func (o *CatalogsHotelAttributes) HasGuestRatings() bool`
 
-HasBasePrice returns a boolean if a field has been set.
+HasGuestRatings returns a boolean if a field has been set.
 
-### SetBasePriceNil
+### GetLatitude
 
-`func (o *CatalogsHotelAttributes) SetBasePriceNil(b bool)`
+`func (o *CatalogsHotelAttributes) GetLatitude() float32`
 
- SetBasePriceNil sets the value for BasePrice to be an explicit nil
+GetLatitude returns the Latitude field if non-nil, zero value otherwise.
 
-### UnsetBasePrice
-`func (o *CatalogsHotelAttributes) UnsetBasePrice()`
+### GetLatitudeOk
 
-UnsetBasePrice ensures that no value is present for BasePrice, not even an explicit nil
+`func (o *CatalogsHotelAttributes) GetLatitudeOk() (*float32, bool)`
+
+GetLatitudeOk returns a tuple with the Latitude field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLatitude
+
+`func (o *CatalogsHotelAttributes) SetLatitude(v float32)`
+
+SetLatitude sets Latitude field to given value.
+
+### HasLatitude
+
+`func (o *CatalogsHotelAttributes) HasLatitude() bool`
+
+HasLatitude returns a boolean if a field has been set.
+
+### GetLink
+
+`func (o *CatalogsHotelAttributes) GetLink() string`
+
+GetLink returns the Link field if non-nil, zero value otherwise.
+
+### GetLinkOk
+
+`func (o *CatalogsHotelAttributes) GetLinkOk() (*string, bool)`
+
+GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLink
+
+`func (o *CatalogsHotelAttributes) SetLink(v string)`
+
+SetLink sets Link field to given value.
+
+### HasLink
+
+`func (o *CatalogsHotelAttributes) HasLink() bool`
+
+HasLink returns a boolean if a field has been set.
+
+### SetLinkNil
+
+`func (o *CatalogsHotelAttributes) SetLinkNil(b bool)`
+
+ SetLinkNil sets the value for Link to be an explicit nil
+
+### UnsetLink
+`func (o *CatalogsHotelAttributes) UnsetLink()`
+
+UnsetLink ensures that no value is present for Link, not even an explicit nil
+### GetLongitude
+
+`func (o *CatalogsHotelAttributes) GetLongitude() float32`
+
+GetLongitude returns the Longitude field if non-nil, zero value otherwise.
+
+### GetLongitudeOk
+
+`func (o *CatalogsHotelAttributes) GetLongitudeOk() (*float32, bool)`
+
+GetLongitudeOk returns a tuple with the Longitude field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLongitude
+
+`func (o *CatalogsHotelAttributes) SetLongitude(v float32)`
+
+SetLongitude sets Longitude field to given value.
+
+### HasLongitude
+
+`func (o *CatalogsHotelAttributes) HasLongitude() bool`
+
+HasLongitude returns a boolean if a field has been set.
+
+### SetLongitudeNil
+
+`func (o *CatalogsHotelAttributes) SetLongitudeNil(b bool)`
+
+ SetLongitudeNil sets the value for Longitude to be an explicit nil
+
+### UnsetLongitude
+`func (o *CatalogsHotelAttributes) UnsetLongitude()`
+
+UnsetLongitude ensures that no value is present for Longitude, not even an explicit nil
+### GetName
+
+`func (o *CatalogsHotelAttributes) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsHotelAttributes) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsHotelAttributes) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CatalogsHotelAttributes) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *CatalogsHotelAttributes) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CatalogsHotelAttributes) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetNeighborhood
+
+`func (o *CatalogsHotelAttributes) GetNeighborhood() []string`
+
+GetNeighborhood returns the Neighborhood field if non-nil, zero value otherwise.
+
+### GetNeighborhoodOk
+
+`func (o *CatalogsHotelAttributes) GetNeighborhoodOk() (*[]string, bool)`
+
+GetNeighborhoodOk returns a tuple with the Neighborhood field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNeighborhood
+
+`func (o *CatalogsHotelAttributes) SetNeighborhood(v []string)`
+
+SetNeighborhood sets Neighborhood field to given value.
+
+### HasNeighborhood
+
+`func (o *CatalogsHotelAttributes) HasNeighborhood() bool`
+
+HasNeighborhood returns a boolean if a field has been set.
+
+### SetNeighborhoodNil
+
+`func (o *CatalogsHotelAttributes) SetNeighborhoodNil(b bool)`
+
+ SetNeighborhoodNil sets the value for Neighborhood to be an explicit nil
+
+### UnsetNeighborhood
+`func (o *CatalogsHotelAttributes) UnsetNeighborhood()`
+
+UnsetNeighborhood ensures that no value is present for Neighborhood, not even an explicit nil
 ### GetSalePrice
 
 `func (o *CatalogsHotelAttributes) GetSalePrice() string`
@@ -583,56 +608,6 @@ HasSalePrice returns a boolean if a field has been set.
 `func (o *CatalogsHotelAttributes) UnsetSalePrice()`
 
 UnsetSalePrice ensures that no value is present for SalePrice, not even an explicit nil
-### GetGuestRatings
-
-`func (o *CatalogsHotelAttributes) GetGuestRatings() CatalogsHotelGuestRatings`
-
-GetGuestRatings returns the GuestRatings field if non-nil, zero value otherwise.
-
-### GetGuestRatingsOk
-
-`func (o *CatalogsHotelAttributes) GetGuestRatingsOk() (*CatalogsHotelGuestRatings, bool)`
-
-GetGuestRatingsOk returns a tuple with the GuestRatings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGuestRatings
-
-`func (o *CatalogsHotelAttributes) SetGuestRatings(v CatalogsHotelGuestRatings)`
-
-SetGuestRatings sets GuestRatings field to given value.
-
-### HasGuestRatings
-
-`func (o *CatalogsHotelAttributes) HasGuestRatings() bool`
-
-HasGuestRatings returns a boolean if a field has been set.
-
-### GetMainImage
-
-`func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelAttributesAllOfMainImage`
-
-GetMainImage returns the MainImage field if non-nil, zero value otherwise.
-
-### GetMainImageOk
-
-`func (o *CatalogsHotelAttributes) GetMainImageOk() (*CatalogsHotelAttributesAllOfMainImage, bool)`
-
-GetMainImageOk returns a tuple with the MainImage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMainImage
-
-`func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelAttributesAllOfMainImage)`
-
-SetMainImage sets MainImage field to given value.
-
-### HasMainImage
-
-`func (o *CatalogsHotelAttributes) HasMainImage() bool`
-
-HasMainImage returns a boolean if a field has been set.
-
 ### GetAdditionalImageLink
 
 `func (o *CatalogsHotelAttributes) GetAdditionalImageLink() []string`
@@ -668,6 +643,31 @@ HasAdditionalImageLink returns a boolean if a field has been set.
 `func (o *CatalogsHotelAttributes) UnsetAdditionalImageLink()`
 
 UnsetAdditionalImageLink ensures that no value is present for AdditionalImageLink, not even an explicit nil
+### GetMainImage
+
+`func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelAttributesAllOfMainImage`
+
+GetMainImage returns the MainImage field if non-nil, zero value otherwise.
+
+### GetMainImageOk
+
+`func (o *CatalogsHotelAttributes) GetMainImageOk() (*CatalogsHotelAttributesAllOfMainImage, bool)`
+
+GetMainImageOk returns a tuple with the MainImage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMainImage
+
+`func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelAttributesAllOfMainImage)`
+
+SetMainImage sets MainImage field to given value.
+
+### HasMainImage
+
+`func (o *CatalogsHotelAttributes) HasMainImage() bool`
+
+HasMainImage returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,6 +5,13 @@ context("Test TemplateResponseDateRange")
 
 model_instance <- TemplateResponseDateRange$new()
 
+test_that("absolute_date_range", {
+  # tests for the property `absolute_date_range` (TemplateResponseDateRangeAbsoluteDateRange)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`absolute_date_range`, "EXPECTED_RESULT")
+})
+
 test_that("dynamic_date_range", {
   # tests for the property `dynamic_date_range` (TemplateResponseDateRangeDynamicDateRange)
 
@@ -17,11 +24,4 @@ test_that("relative_date_range", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`relative_date_range`, "EXPECTED_RESULT")
-})
-
-test_that("absolute_date_range", {
-  # tests for the property `absolute_date_range` (TemplateResponseDateRangeAbsoluteDateRange)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`absolute_date_range`, "EXPECTED_RESULT")
 })

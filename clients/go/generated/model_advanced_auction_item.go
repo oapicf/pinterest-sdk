@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &AdvancedAuctionItem{}
 
 // AdvancedAuctionItem struct for AdvancedAuctionItem
 type AdvancedAuctionItem struct {
+	Country Country `json:"country"`
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
-	Country Country `json:"country"`
 	Language Language `json:"language"`
 	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
 }
@@ -35,10 +35,10 @@ type _AdvancedAuctionItem AdvancedAuctionItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdvancedAuctionItem(itemId string, country Country, language Language, bidOptions AdvancedAuctionBidOptions) *AdvancedAuctionItem {
+func NewAdvancedAuctionItem(country Country, itemId string, language Language, bidOptions AdvancedAuctionBidOptions) *AdvancedAuctionItem {
 	this := AdvancedAuctionItem{}
-	this.ItemId = itemId
 	this.Country = country
+	this.ItemId = itemId
 	this.Language = language
 	this.BidOptions = bidOptions
 	return &this
@@ -50,30 +50,6 @@ func NewAdvancedAuctionItem(itemId string, country Country, language Language, b
 func NewAdvancedAuctionItemWithDefaults() *AdvancedAuctionItem {
 	this := AdvancedAuctionItem{}
 	return &this
-}
-
-// GetItemId returns the ItemId field value
-func (o *AdvancedAuctionItem) GetItemId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ItemId
-}
-
-// GetItemIdOk returns a tuple with the ItemId field value
-// and a boolean to check if the value has been set.
-func (o *AdvancedAuctionItem) GetItemIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ItemId, true
-}
-
-// SetItemId sets field value
-func (o *AdvancedAuctionItem) SetItemId(v string) {
-	o.ItemId = v
 }
 
 // GetCountry returns the Country field value
@@ -98,6 +74,30 @@ func (o *AdvancedAuctionItem) GetCountryOk() (*Country, bool) {
 // SetCountry sets field value
 func (o *AdvancedAuctionItem) SetCountry(v Country) {
 	o.Country = v
+}
+
+// GetItemId returns the ItemId field value
+func (o *AdvancedAuctionItem) GetItemId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value
+// and a boolean to check if the value has been set.
+func (o *AdvancedAuctionItem) GetItemIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ItemId, true
+}
+
+// SetItemId sets field value
+func (o *AdvancedAuctionItem) SetItemId(v string) {
+	o.ItemId = v
 }
 
 // GetLanguage returns the Language field value
@@ -158,8 +158,8 @@ func (o AdvancedAuctionItem) MarshalJSON() ([]byte, error) {
 
 func (o AdvancedAuctionItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["item_id"] = o.ItemId
 	toSerialize["country"] = o.Country
+	toSerialize["item_id"] = o.ItemId
 	toSerialize["language"] = o.Language
 	toSerialize["bid_options"] = o.BidOptions
 	return toSerialize, nil
@@ -170,8 +170,8 @@ func (o *AdvancedAuctionItem) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"item_id",
 		"country",
+		"item_id",
 		"language",
 		"bid_options",
 	}

@@ -10,12 +10,12 @@
 
 
 export interface CatalogsCreativeAssetsItemsFilter { 
-    catalog_type: CatalogsCreativeAssetsItemsFilter.CatalogTypeEnum;
-    creative_assets_ids: Array<string>;
     /**
      * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
      */
     catalog_id?: string;
+    catalog_type: CatalogsCreativeAssetsItemsFilter.CatalogTypeEnum;
+    creative_assets_ids: Array<string>;
 }
 export namespace CatalogsCreativeAssetsItemsFilter {
     export const CatalogTypeEnum = {

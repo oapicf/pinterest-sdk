@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **string** | Whether the event was processed successfully. | [default to undefined]
 **error_message** | **string** | Error message containing more information about why the event failed to be processed. | [optional] [default to undefined]
+**status** | **string** | Whether the event was processed successfully. | [default to undefined]
 **warning_message** | **string** | Warning messages about any fields in the event which are not standard. These are not critical to event processing. | [optional] [default to undefined]
 
 ## Example
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { ConversionApiResponseEventsInner } from './api';
 
 const instance: ConversionApiResponseEventsInner = {
-    status,
     error_message,
+    status,
     warning_message,
 };
 ```

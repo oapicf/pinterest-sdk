@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MemberId** | **string** | Unique identifier of the member | 
 **BusinessRole** | [**BusinessRoleForMembers**](BusinessRoleForMembers.md) |  | 
+**MemberId** | **string** | Unique identifier of the member | 
 
 ## Methods
 
 ### NewMembersToDeleteBodyMembersInner
 
-`func NewMembersToDeleteBodyMembersInner(memberId string, businessRole BusinessRoleForMembers, ) *MembersToDeleteBodyMembersInner`
+`func NewMembersToDeleteBodyMembersInner(businessRole BusinessRoleForMembers, memberId string, ) *MembersToDeleteBodyMembersInner`
 
 NewMembersToDeleteBodyMembersInner instantiates a new MembersToDeleteBodyMembersInner object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewMembersToDeleteBodyMembersInnerWithDefaults instantiates a new MembersToDeleteBodyMembersInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMemberId
-
-`func (o *MembersToDeleteBodyMembersInner) GetMemberId() string`
-
-GetMemberId returns the MemberId field if non-nil, zero value otherwise.
-
-### GetMemberIdOk
-
-`func (o *MembersToDeleteBodyMembersInner) GetMemberIdOk() (*string, bool)`
-
-GetMemberIdOk returns a tuple with the MemberId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMemberId
-
-`func (o *MembersToDeleteBodyMembersInner) SetMemberId(v string)`
-
-SetMemberId sets MemberId field to given value.
-
 
 ### GetBusinessRole
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *MembersToDeleteBodyMembersInner) SetBusinessRole(v BusinessRoleForMembers)`
 
 SetBusinessRole sets BusinessRole field to given value.
+
+
+### GetMemberId
+
+`func (o *MembersToDeleteBodyMembersInner) GetMemberId() string`
+
+GetMemberId returns the MemberId field if non-nil, zero value otherwise.
+
+### GetMemberIdOk
+
+`func (o *MembersToDeleteBodyMembersInner) GetMemberIdOk() (*string, bool)`
+
+GetMemberIdOk returns a tuple with the MemberId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMemberId
+
+`func (o *MembersToDeleteBodyMembersInner) SetMemberId(v string)`
+
+SetMemberId sets MemberId field to given value.
 
 
 

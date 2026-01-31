@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsHotelItemResponse, () {
+    // CatalogsHotelAttributes attributes
+    test('to test the property `attributes`', () async {
+      // TODO
+    });
+
     // CatalogsType catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -21,11 +26,6 @@ void main() {
     // The pins mapped to the item
     // BuiltList<Pin> pins
     test('to test the property `pins`', () async {
-      // TODO
-    });
-
-    // CatalogsHotelAttributes attributes
-    test('to test the property `attributes`', () async {
       // TODO
     });
 

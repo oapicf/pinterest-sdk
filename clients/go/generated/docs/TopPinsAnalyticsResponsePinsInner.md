@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metrics** | Pointer to **map[string]float32** | The metric name and daily value for each requested metric | [optional] 
 **DataStatus** | Pointer to [**map[string]DataStatus**](DataStatus.md) |  | [optional] 
+**Metrics** | Pointer to **map[string]float32** | The metric name and daily value for each requested metric | [optional] 
 **PinId** | Pointer to **string** | The pin id | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewTopPinsAnalyticsResponsePinsInnerWithDefaults instantiates a new TopPinsAnalyticsResponsePinsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMetrics
-
-`func (o *TopPinsAnalyticsResponsePinsInner) GetMetrics() map[string]float32`
-
-GetMetrics returns the Metrics field if non-nil, zero value otherwise.
-
-### GetMetricsOk
-
-`func (o *TopPinsAnalyticsResponsePinsInner) GetMetricsOk() (*map[string]float32, bool)`
-
-GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetrics
-
-`func (o *TopPinsAnalyticsResponsePinsInner) SetMetrics(v map[string]float32)`
-
-SetMetrics sets Metrics field to given value.
-
-### HasMetrics
-
-`func (o *TopPinsAnalyticsResponsePinsInner) HasMetrics() bool`
-
-HasMetrics returns a boolean if a field has been set.
 
 ### GetDataStatus
 
@@ -76,6 +51,31 @@ SetDataStatus sets DataStatus field to given value.
 `func (o *TopPinsAnalyticsResponsePinsInner) HasDataStatus() bool`
 
 HasDataStatus returns a boolean if a field has been set.
+
+### GetMetrics
+
+`func (o *TopPinsAnalyticsResponsePinsInner) GetMetrics() map[string]float32`
+
+GetMetrics returns the Metrics field if non-nil, zero value otherwise.
+
+### GetMetricsOk
+
+`func (o *TopPinsAnalyticsResponsePinsInner) GetMetricsOk() (*map[string]float32, bool)`
+
+GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetrics
+
+`func (o *TopPinsAnalyticsResponsePinsInner) SetMetrics(v map[string]float32)`
+
+SetMetrics sets Metrics field to given value.
+
+### HasMetrics
+
+`func (o *TopPinsAnalyticsResponsePinsInner) HasMetrics() bool`
+
+HasMetrics returns a boolean if a field has been set.
 
 ### GetPinId
 

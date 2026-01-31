@@ -34,12 +34,12 @@ const request: BusinessAccessInviteApiAssetAccessRequestsCreateRequest = {
   createAssetAccessRequestBody: {
     assetRequests: [
       {
-        partnerId: "809944451643622187",
         assetIdToPermissions: {
           "key": [
             "ADMIN",
           ],
         },
+        partnerId: "809944451643622187",
       },
     ],
   },
@@ -96,7 +96,7 @@ const configuration = createConfiguration();
 const apiInstance = new BusinessAccessInviteApi(configuration);
 
 const request: BusinessAccessInviteApiCancelInvitesOrRequestsRequest = {
-    // Business id
+    // Unique identifier of the requesting business.
   businessId: "729090764583391194",
     // A list with invite ids
   cancelInvitesBody: {
@@ -114,7 +114,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cancelInvitesBody** | **CancelInvitesBody**| A list with invite ids |
- **businessId** | [**string**] | Business id | defaults to undefined
+ **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
 
 
 ### Return type
@@ -161,13 +161,13 @@ const request: BusinessAccessInviteApiCreateAssetInvitesRequest = {
   createAssetInvitesRequest: {
     invites: [
       {
-        inviteId: "1234567890123",
-        inviteType: "MEMBER_INVITE",
         assetIdToPermissions: {
           "key": [
             "ADMIN",
           ],
         },
+        inviteId: "1234567890123",
+        inviteType: "MEMBER_INVITE",
       },
     ],
   },
@@ -224,7 +224,7 @@ const configuration = createConfiguration();
 const apiInstance = new BusinessAccessInviteApi(configuration);
 
 const request: BusinessAccessInviteApiCreateMembershipOrPartnershipInvitesRequest = {
-    // Business id
+    // Unique identifier of the requesting business.
   businessId: "729090764583391194",
     // An object with the properties: invite_type, partners, members, business_role
   createMembershipOrPartnershipInvitesBody: {
@@ -245,7 +245,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createMembershipOrPartnershipInvitesBody** | **CreateMembershipOrPartnershipInvitesBody**| An object with the properties: invite_type, partners, members, business_role |
- **businessId** | [**string**] | Business id | defaults to undefined
+ **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
 
 
 ### Return type

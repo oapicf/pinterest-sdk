@@ -5,16 +5,16 @@
 -export_type([openapi_quiz_pin_question/0]).
 
 -type openapi_quiz_pin_question() ::
-    #{ 'question_id' => integer(),
-       'question_text' => binary(),
-       'options' => list()
+    #{ 'options' => list(),
+       'question_id' => integer(),
+       'question_text' => binary()
      }.
 
-encode(#{ 'question_id' := QuestionId,
-          'question_text' := QuestionText,
-          'options' := Options
+encode(#{ 'options' := Options,
+          'question_id' := QuestionId,
+          'question_text' := QuestionText
         }) ->
-    #{ 'question_id' => QuestionId,
-       'question_text' => QuestionText,
-       'options' => Options
+    #{ 'options' => Options,
+       'question_id' => QuestionId,
+       'question_text' => QuestionText
      }.

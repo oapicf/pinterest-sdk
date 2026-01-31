@@ -9,45 +9,28 @@ import javax.validation.Valid;
 /**
  * UserWebsiteVerificationCode
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UserWebsiteVerificationCode   {
-  @JsonProperty("verification_code")
-  
-  private String verificationCode;
-
   @JsonProperty("dns_txt_record")
   
   private String dnsTxtRecord;
-
-  @JsonProperty("metatag")
-  
-  private String metatag;
-
-  @JsonProperty("filename")
-  
-  private String filename;
 
   @JsonProperty("file_content")
   
   private String fileContent;
 
-  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-    return this;
-  }
+  @JsonProperty("filename")
+  
+  private String filename;
 
-   /**
-   * Code to check against the user claiming the website
-   * @return verificationCode
-  **/
-  public String getVerificationCode() {
-    return verificationCode;
-  }
+  @JsonProperty("metatag")
+  
+  private String metatag;
 
-  public void setVerificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-  }
+  @JsonProperty("verification_code")
+  
+  private String verificationCode;
 
   public UserWebsiteVerificationCode dnsTxtRecord(String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
@@ -64,40 +47,6 @@ public class UserWebsiteVerificationCode   {
 
   public void setDnsTxtRecord(String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
-  }
-
-  public UserWebsiteVerificationCode metatag(String metatag) {
-    this.metatag = metatag;
-    return this;
-  }
-
-   /**
-   * Metatag the verification process searchs for the website to be claimed
-   * @return metatag
-  **/
-  public String getMetatag() {
-    return metatag;
-  }
-
-  public void setMetatag(String metatag) {
-    this.metatag = metatag;
-  }
-
-  public UserWebsiteVerificationCode filename(String filename) {
-    this.filename = filename;
-    return this;
-  }
-
-   /**
-   * File expected to find on the website being claimed
-   * @return filename
-  **/
-  public String getFilename() {
-    return filename;
-  }
-
-  public void setFilename(String filename) {
-    this.filename = filename;
   }
 
   public UserWebsiteVerificationCode fileContent(String fileContent) {
@@ -117,6 +66,57 @@ public class UserWebsiteVerificationCode   {
     this.fileContent = fileContent;
   }
 
+  public UserWebsiteVerificationCode filename(String filename) {
+    this.filename = filename;
+    return this;
+  }
+
+   /**
+   * File expected to find on the website being claimed
+   * @return filename
+  **/
+  public String getFilename() {
+    return filename;
+  }
+
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
+
+  public UserWebsiteVerificationCode metatag(String metatag) {
+    this.metatag = metatag;
+    return this;
+  }
+
+   /**
+   * Metatag the verification process searchs for the website to be claimed
+   * @return metatag
+  **/
+  public String getMetatag() {
+    return metatag;
+  }
+
+  public void setMetatag(String metatag) {
+    this.metatag = metatag;
+  }
+
+  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+    return this;
+  }
+
+   /**
+   * Code to check against the user claiming the website
+   * @return verificationCode
+  **/
+  public String getVerificationCode() {
+    return verificationCode;
+  }
+
+  public void setVerificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -127,16 +127,16 @@ public class UserWebsiteVerificationCode   {
       return false;
     }
     UserWebsiteVerificationCode userWebsiteVerificationCode = (UserWebsiteVerificationCode) o;
-    return Objects.equals(verificationCode, userWebsiteVerificationCode.verificationCode) &&
-        Objects.equals(dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
-        Objects.equals(metatag, userWebsiteVerificationCode.metatag) &&
+    return Objects.equals(dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
+        Objects.equals(fileContent, userWebsiteVerificationCode.fileContent) &&
         Objects.equals(filename, userWebsiteVerificationCode.filename) &&
-        Objects.equals(fileContent, userWebsiteVerificationCode.fileContent);
+        Objects.equals(metatag, userWebsiteVerificationCode.metatag) &&
+        Objects.equals(verificationCode, userWebsiteVerificationCode.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verificationCode, dnsTxtRecord, metatag, filename, fileContent);
+    return Objects.hash(dnsTxtRecord, fileContent, filename, metatag, verificationCode);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -145,11 +145,11 @@ public class UserWebsiteVerificationCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerificationCode {\n");
     
-    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("    dnsTxtRecord: ").append(toIndentedString(dnsTxtRecord)).append("\n");
-    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
-    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
     sb.append("    fileContent: ").append(toIndentedString(fileContent)).append("\n");
+    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
+    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
+    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

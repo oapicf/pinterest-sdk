@@ -5,13 +5,13 @@
 
 
 char* enhanced_match_status_type_enhanced_match_status_type_ToString(pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type) {
-    char *enhanced_match_status_typeArray[] =  { "NULL", "UNKNOWN", "NOT_VALIDATED", "VALIDATING_IN_PROGRESS", "VALIDATION_COMPLETE", "" };
+    char *enhanced_match_status_typeArray[] =  { "NULL", "UNKNOWN", "NOT_VALIDATED", "VALIDATING_IN_PROGRESS", "VALIDATION_COMPLETE" };
     return enhanced_match_status_typeArray[enhanced_match_status_type];
 }
 
 pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type_enhanced_match_status_type_FromString(char* enhanced_match_status_type) {
     int stringToReturn = 0;
-    char *enhanced_match_status_typeArray[] =  { "NULL", "UNKNOWN", "NOT_VALIDATED", "VALIDATING_IN_PROGRESS", "VALIDATION_COMPLETE", "" };
+    char *enhanced_match_status_typeArray[] =  { "NULL", "UNKNOWN", "NOT_VALIDATED", "VALIDATING_IN_PROGRESS", "VALIDATION_COMPLETE" };
     size_t sizeofArray = sizeof(enhanced_match_status_typeArray) / sizeof(enhanced_match_status_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(enhanced_match_status_type, enhanced_match_status_typeArray[stringToReturn]) == 0) {

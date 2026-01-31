@@ -125,42 +125,42 @@ public struct CatalogsHotelBatchRequest: Codable, JSONEncodable, Hashable {
         case xx = "XX"
         case zh = "ZH"
     }
-    public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogType
-    public var country: Country
-    /** We recommend using the CatalogsLocale values. */
-    public var language: Language
-    /** Array with catalogs item operations */
-    public var items: [CatalogsHotelBatchItem]
+    public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     public var catalogId: String?
+    public var catalogType: CatalogType
+    public var country: Country
+    /** Array with catalogs item operations */
+    public var items: [CatalogsHotelBatchItem]
+    /** We recommend using the CatalogsLocale values. */
+    public var language: Language
 
-    public init(catalogType: CatalogType, country: Country, language: Language, items: [CatalogsHotelBatchItem], catalogId: String? = nil) {
+    public init(catalogId: String? = nil, catalogType: CatalogType, country: Country, items: [CatalogsHotelBatchItem], language: Language) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
         self.country = country
-        self.language = language
         self.items = items
-        self.catalogId = catalogId
+        self.language = language
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
         case country
-        case language
         case items
-        case catalogId = "catalog_id"
+        case language
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encode(country, forKey: .country)
-        try container.encode(language, forKey: .language)
         try container.encode(items, forKey: .items)
-        try container.encodeIfPresent(catalogId, forKey: .catalogId)
+        try container.encode(language, forKey: .language)
     }
 }
 

@@ -8,8 +8,8 @@ ID of the bulk request.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **BulkUpsertStatus** |  |  [optional]
 **resultUrl** | **String** |  |  [optional]
+**status** | **BulkUpsertStatus** |  |  [optional]
 
 
 

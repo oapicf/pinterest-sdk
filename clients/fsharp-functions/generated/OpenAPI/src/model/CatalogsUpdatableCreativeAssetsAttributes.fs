@@ -11,18 +11,8 @@ module CatalogsUpdatableCreativeAssetsAttributes =
 
   [<CLIMutable>]
   type CatalogsUpdatableCreativeAssetsAttributes = {
-    [<JsonProperty(PropertyName = "title")>]
-    Title : string;
-    [<JsonProperty(PropertyName = "description")>]
-    Description : string;
-    [<JsonProperty(PropertyName = "link")>]
-    Link : string;
-    [<JsonProperty(PropertyName = "ios_deep_link")>]
-    IosDeepLink : string option;
     [<JsonProperty(PropertyName = "android_deep_link")>]
     AndroidDeepLink : string option;
-    [<JsonProperty(PropertyName = "google_product_category")>]
-    GoogleProductCategory : string option;
     [<JsonProperty(PropertyName = "custom_label_0")>]
     CustomLabel0 : string option;
     [<JsonProperty(PropertyName = "custom_label_1")>]
@@ -33,6 +23,16 @@ module CatalogsUpdatableCreativeAssetsAttributes =
     CustomLabel3 : string option;
     [<JsonProperty(PropertyName = "custom_label_4")>]
     CustomLabel4 : string option;
+    [<JsonProperty(PropertyName = "description")>]
+    Description : string;
+    [<JsonProperty(PropertyName = "google_product_category")>]
+    GoogleProductCategory : string option;
+    [<JsonProperty(PropertyName = "ios_deep_link")>]
+    IosDeepLink : string option;
+    [<JsonProperty(PropertyName = "link")>]
+    Link : string;
+    [<JsonProperty(PropertyName = "title")>]
+    Title : string;
     [<JsonProperty(PropertyName = "visibility")>]
     Visibility : string option;
   }

@@ -6,32 +6,32 @@
 
 
 static catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_create_request_create_internal(
-    pinterest_rest_api_nullable_currency__e default_currency,
-    char *name,
-    pinterest_rest_api_catalogs_format__e format,
-    catalogs_feeds_create_request_default_locale_t *default_locale,
-    pinterest_rest_api_country__e default_country,
-    catalogs_feed_credentials_t *credentials,
-    char *location,
-    catalogs_feed_processing_schedule_t *preferred_processing_schedule,
-    pinterest_rest_api_catalogs_type__e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_type__e catalog_type,
+    catalogs_feed_credentials_t *credentials,
+    pinterest_rest_api_country__e default_country,
+    pinterest_rest_api_nullable_currency__e default_currency,
+    catalogs_feeds_create_request_default_locale_t *default_locale,
+    pinterest_rest_api_catalogs_format__e format,
+    char *location,
+    char *name,
+    catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     catalogs_status_t *status
     ) {
     catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_create_request_local_var = malloc(sizeof(catalogs_creative_assets_feeds_create_request_t));
     if (!catalogs_creative_assets_feeds_create_request_local_var) {
         return NULL;
     }
-    catalogs_creative_assets_feeds_create_request_local_var->default_currency = default_currency;
-    catalogs_creative_assets_feeds_create_request_local_var->name = name;
-    catalogs_creative_assets_feeds_create_request_local_var->format = format;
-    catalogs_creative_assets_feeds_create_request_local_var->default_locale = default_locale;
-    catalogs_creative_assets_feeds_create_request_local_var->default_country = default_country;
-    catalogs_creative_assets_feeds_create_request_local_var->credentials = credentials;
-    catalogs_creative_assets_feeds_create_request_local_var->location = location;
-    catalogs_creative_assets_feeds_create_request_local_var->preferred_processing_schedule = preferred_processing_schedule;
-    catalogs_creative_assets_feeds_create_request_local_var->catalog_type = catalog_type;
     catalogs_creative_assets_feeds_create_request_local_var->catalog_id = catalog_id;
+    catalogs_creative_assets_feeds_create_request_local_var->catalog_type = catalog_type;
+    catalogs_creative_assets_feeds_create_request_local_var->credentials = credentials;
+    catalogs_creative_assets_feeds_create_request_local_var->default_country = default_country;
+    catalogs_creative_assets_feeds_create_request_local_var->default_currency = default_currency;
+    catalogs_creative_assets_feeds_create_request_local_var->default_locale = default_locale;
+    catalogs_creative_assets_feeds_create_request_local_var->format = format;
+    catalogs_creative_assets_feeds_create_request_local_var->location = location;
+    catalogs_creative_assets_feeds_create_request_local_var->name = name;
+    catalogs_creative_assets_feeds_create_request_local_var->preferred_processing_schedule = preferred_processing_schedule;
     catalogs_creative_assets_feeds_create_request_local_var->status = status;
 
     catalogs_creative_assets_feeds_create_request_local_var->_library_owned = 1;
@@ -39,29 +39,29 @@ static catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets
 }
 
 __attribute__((deprecated)) catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_create_request_create(
-    pinterest_rest_api_nullable_currency__e default_currency,
-    char *name,
-    pinterest_rest_api_catalogs_format__e format,
-    catalogs_feeds_create_request_default_locale_t *default_locale,
-    pinterest_rest_api_country__e default_country,
-    catalogs_feed_credentials_t *credentials,
-    char *location,
-    catalogs_feed_processing_schedule_t *preferred_processing_schedule,
-    pinterest_rest_api_catalogs_type__e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_type__e catalog_type,
+    catalogs_feed_credentials_t *credentials,
+    pinterest_rest_api_country__e default_country,
+    pinterest_rest_api_nullable_currency__e default_currency,
+    catalogs_feeds_create_request_default_locale_t *default_locale,
+    pinterest_rest_api_catalogs_format__e format,
+    char *location,
+    char *name,
+    catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     catalogs_status_t *status
     ) {
     return catalogs_creative_assets_feeds_create_request_create_internal (
-        default_currency,
-        name,
-        format,
-        default_locale,
-        default_country,
-        credentials,
-        location,
-        preferred_processing_schedule,
-        catalog_type,
         catalog_id,
+        catalog_type,
+        credentials,
+        default_country,
+        default_currency,
+        default_locale,
+        format,
+        location,
+        name,
+        preferred_processing_schedule,
         status
         );
 }
@@ -75,29 +75,29 @@ void catalogs_creative_assets_feeds_create_request_free(catalogs_creative_assets
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_creative_assets_feeds_create_request->name) {
-        free(catalogs_creative_assets_feeds_create_request->name);
-        catalogs_creative_assets_feeds_create_request->name = NULL;
-    }
-    if (catalogs_creative_assets_feeds_create_request->default_locale) {
-        catalogs_feeds_create_request_default_locale_free(catalogs_creative_assets_feeds_create_request->default_locale);
-        catalogs_creative_assets_feeds_create_request->default_locale = NULL;
+    if (catalogs_creative_assets_feeds_create_request->catalog_id) {
+        free(catalogs_creative_assets_feeds_create_request->catalog_id);
+        catalogs_creative_assets_feeds_create_request->catalog_id = NULL;
     }
     if (catalogs_creative_assets_feeds_create_request->credentials) {
         catalogs_feed_credentials_free(catalogs_creative_assets_feeds_create_request->credentials);
         catalogs_creative_assets_feeds_create_request->credentials = NULL;
     }
+    if (catalogs_creative_assets_feeds_create_request->default_locale) {
+        catalogs_feeds_create_request_default_locale_free(catalogs_creative_assets_feeds_create_request->default_locale);
+        catalogs_creative_assets_feeds_create_request->default_locale = NULL;
+    }
     if (catalogs_creative_assets_feeds_create_request->location) {
         free(catalogs_creative_assets_feeds_create_request->location);
         catalogs_creative_assets_feeds_create_request->location = NULL;
     }
+    if (catalogs_creative_assets_feeds_create_request->name) {
+        free(catalogs_creative_assets_feeds_create_request->name);
+        catalogs_creative_assets_feeds_create_request->name = NULL;
+    }
     if (catalogs_creative_assets_feeds_create_request->preferred_processing_schedule) {
         catalogs_feed_processing_schedule_free(catalogs_creative_assets_feeds_create_request->preferred_processing_schedule);
         catalogs_creative_assets_feeds_create_request->preferred_processing_schedule = NULL;
-    }
-    if (catalogs_creative_assets_feeds_create_request->catalog_id) {
-        free(catalogs_creative_assets_feeds_create_request->catalog_id);
-        catalogs_creative_assets_feeds_create_request->catalog_id = NULL;
     }
     if (catalogs_creative_assets_feeds_create_request->status) {
         catalogs_status_free(catalogs_creative_assets_feeds_create_request->status);
@@ -109,101 +109,10 @@ void catalogs_creative_assets_feeds_create_request_free(catalogs_creative_assets
 cJSON *catalogs_creative_assets_feeds_create_request_convertToJSON(catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_create_request) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_creative_assets_feeds_create_request->default_currency
-    if(catalogs_creative_assets_feeds_create_request->default_currency != pinterest_rest_api_nullable_currency__NULL) {
-    cJSON *default_currency_local_JSON = nullable_currency_convertToJSON(catalogs_creative_assets_feeds_create_request->default_currency);
-    if(default_currency_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "default_currency", default_currency_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->name
-    if (!catalogs_creative_assets_feeds_create_request->name) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "name", catalogs_creative_assets_feeds_create_request->name) == NULL) {
+    // catalogs_creative_assets_feeds_create_request->catalog_id
+    if(catalogs_creative_assets_feeds_create_request->catalog_id) {
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_creative_assets_feeds_create_request->catalog_id) == NULL) {
     goto fail; //String
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->format
-    if (pinterest_rest_api_catalogs_format__NULL == catalogs_creative_assets_feeds_create_request->format) {
-        goto fail;
-    }
-    cJSON *format_local_JSON = catalogs_format_convertToJSON(catalogs_creative_assets_feeds_create_request->format);
-    if(format_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "format", format_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->default_locale
-    if (!catalogs_creative_assets_feeds_create_request->default_locale) {
-        goto fail;
-    }
-    cJSON *default_locale_local_JSON = catalogs_feeds_create_request_default_locale_convertToJSON(catalogs_creative_assets_feeds_create_request->default_locale);
-    if(default_locale_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "default_locale", default_locale_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->default_country
-    if (pinterest_rest_api_country__NULL == catalogs_creative_assets_feeds_create_request->default_country) {
-        goto fail;
-    }
-    cJSON *default_country_local_JSON = country_convertToJSON(catalogs_creative_assets_feeds_create_request->default_country);
-    if(default_country_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "default_country", default_country_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->credentials
-    if(catalogs_creative_assets_feeds_create_request->credentials) {
-    cJSON *credentials_local_JSON = catalogs_feed_credentials_convertToJSON(catalogs_creative_assets_feeds_create_request->credentials);
-    if(credentials_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "credentials", credentials_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->location
-    if (!catalogs_creative_assets_feeds_create_request->location) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "location", catalogs_creative_assets_feeds_create_request->location) == NULL) {
-    goto fail; //String
-    }
-
-
-    // catalogs_creative_assets_feeds_create_request->preferred_processing_schedule
-    if(catalogs_creative_assets_feeds_create_request->preferred_processing_schedule) {
-    cJSON *preferred_processing_schedule_local_JSON = catalogs_feed_processing_schedule_convertToJSON(catalogs_creative_assets_feeds_create_request->preferred_processing_schedule);
-    if(preferred_processing_schedule_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "preferred_processing_schedule", preferred_processing_schedule_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
     }
     }
 
@@ -222,10 +131,101 @@ cJSON *catalogs_creative_assets_feeds_create_request_convertToJSON(catalogs_crea
     }
 
 
-    // catalogs_creative_assets_feeds_create_request->catalog_id
-    if(catalogs_creative_assets_feeds_create_request->catalog_id) {
-    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_creative_assets_feeds_create_request->catalog_id) == NULL) {
+    // catalogs_creative_assets_feeds_create_request->credentials
+    if(catalogs_creative_assets_feeds_create_request->credentials) {
+    cJSON *credentials_local_JSON = catalogs_feed_credentials_convertToJSON(catalogs_creative_assets_feeds_create_request->credentials);
+    if(credentials_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "credentials", credentials_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->default_country
+    if (pinterest_rest_api_country__NULL == catalogs_creative_assets_feeds_create_request->default_country) {
+        goto fail;
+    }
+    cJSON *default_country_local_JSON = country_convertToJSON(catalogs_creative_assets_feeds_create_request->default_country);
+    if(default_country_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "default_country", default_country_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->default_currency
+    if(catalogs_creative_assets_feeds_create_request->default_currency != pinterest_rest_api_nullable_currency__NULL) {
+    cJSON *default_currency_local_JSON = nullable_currency_convertToJSON(catalogs_creative_assets_feeds_create_request->default_currency);
+    if(default_currency_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "default_currency", default_currency_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->default_locale
+    if (!catalogs_creative_assets_feeds_create_request->default_locale) {
+        goto fail;
+    }
+    cJSON *default_locale_local_JSON = catalogs_feeds_create_request_default_locale_convertToJSON(catalogs_creative_assets_feeds_create_request->default_locale);
+    if(default_locale_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "default_locale", default_locale_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->format
+    if (pinterest_rest_api_catalogs_format__NULL == catalogs_creative_assets_feeds_create_request->format) {
+        goto fail;
+    }
+    cJSON *format_local_JSON = catalogs_format_convertToJSON(catalogs_creative_assets_feeds_create_request->format);
+    if(format_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "format", format_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->location
+    if (!catalogs_creative_assets_feeds_create_request->location) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "location", catalogs_creative_assets_feeds_create_request->location) == NULL) {
     goto fail; //String
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->name
+    if (!catalogs_creative_assets_feeds_create_request->name) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "name", catalogs_creative_assets_feeds_create_request->name) == NULL) {
+    goto fail; //String
+    }
+
+
+    // catalogs_creative_assets_feeds_create_request->preferred_processing_schedule
+    if(catalogs_creative_assets_feeds_create_request->preferred_processing_schedule) {
+    cJSON *preferred_processing_schedule_local_JSON = catalogs_feed_processing_schedule_convertToJSON(catalogs_creative_assets_feeds_create_request->preferred_processing_schedule);
+    if(preferred_processing_schedule_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "preferred_processing_schedule", preferred_processing_schedule_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -254,29 +254,74 @@ catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_
 
     catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_create_request_local_var = NULL;
 
-    // define the local variable for catalogs_creative_assets_feeds_create_request->default_currency
-    pinterest_rest_api_nullable_currency__e default_currency_local_nonprim = 0;
-
-    // define the local variable for catalogs_creative_assets_feeds_create_request->format
-    pinterest_rest_api_catalogs_format__e format_local_nonprim = 0;
-
-    // define the local variable for catalogs_creative_assets_feeds_create_request->default_locale
-    catalogs_feeds_create_request_default_locale_t *default_locale_local_nonprim = NULL;
-
-    // define the local variable for catalogs_creative_assets_feeds_create_request->default_country
-    pinterest_rest_api_country__e default_country_local_nonprim = 0;
+    // define the local variable for catalogs_creative_assets_feeds_create_request->catalog_type
+    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
 
     // define the local variable for catalogs_creative_assets_feeds_create_request->credentials
     catalogs_feed_credentials_t *credentials_local_nonprim = NULL;
 
+    // define the local variable for catalogs_creative_assets_feeds_create_request->default_country
+    pinterest_rest_api_country__e default_country_local_nonprim = 0;
+
+    // define the local variable for catalogs_creative_assets_feeds_create_request->default_currency
+    pinterest_rest_api_nullable_currency__e default_currency_local_nonprim = 0;
+
+    // define the local variable for catalogs_creative_assets_feeds_create_request->default_locale
+    catalogs_feeds_create_request_default_locale_t *default_locale_local_nonprim = NULL;
+
+    // define the local variable for catalogs_creative_assets_feeds_create_request->format
+    pinterest_rest_api_catalogs_format__e format_local_nonprim = 0;
+
     // define the local variable for catalogs_creative_assets_feeds_create_request->preferred_processing_schedule
     catalogs_feed_processing_schedule_t *preferred_processing_schedule_local_nonprim = NULL;
 
-    // define the local variable for catalogs_creative_assets_feeds_create_request->catalog_type
-    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
-
     // define the local variable for catalogs_creative_assets_feeds_create_request->status
     catalogs_status_t *status_local_nonprim = NULL;
+
+    // catalogs_creative_assets_feeds_create_request->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (catalog_id) { 
+    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_creative_assets_feeds_create_request->catalog_type
+    cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
+    if (!catalog_type) {
+        goto end;
+    }
+
+    
+    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
+
+    // catalogs_creative_assets_feeds_create_request->credentials
+    cJSON *credentials = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "credentials");
+    if (cJSON_IsNull(credentials)) {
+        credentials = NULL;
+    }
+    if (credentials) { 
+    credentials_local_nonprim = catalogs_feed_credentials_parseFromJSON(credentials); //nonprimitive
+    }
+
+    // catalogs_creative_assets_feeds_create_request->default_country
+    cJSON *default_country = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "default_country");
+    if (cJSON_IsNull(default_country)) {
+        default_country = NULL;
+    }
+    if (!default_country) {
+        goto end;
+    }
+
+    
+    default_country_local_nonprim = country_parseFromJSON(default_country); //custom
 
     // catalogs_creative_assets_feeds_create_request->default_currency
     cJSON *default_currency = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "default_currency");
@@ -285,6 +330,45 @@ catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_
     }
     if (default_currency) { 
     default_currency_local_nonprim = nullable_currency_parseFromJSON(default_currency); //custom
+    }
+
+    // catalogs_creative_assets_feeds_create_request->default_locale
+    cJSON *default_locale = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "default_locale");
+    if (cJSON_IsNull(default_locale)) {
+        default_locale = NULL;
+    }
+    if (!default_locale) {
+        goto end;
+    }
+
+    
+    default_locale_local_nonprim = catalogs_feeds_create_request_default_locale_parseFromJSON(default_locale); //nonprimitive
+
+    // catalogs_creative_assets_feeds_create_request->format
+    cJSON *format = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "format");
+    if (cJSON_IsNull(format)) {
+        format = NULL;
+    }
+    if (!format) {
+        goto end;
+    }
+
+    
+    format_local_nonprim = catalogs_format_parseFromJSON(format); //custom
+
+    // catalogs_creative_assets_feeds_create_request->location
+    cJSON *location = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "location");
+    if (cJSON_IsNull(location)) {
+        location = NULL;
+    }
+    if (!location) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(location))
+    {
+    goto end; //String
     }
 
     // catalogs_creative_assets_feeds_create_request->name
@@ -302,66 +386,6 @@ catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_
     goto end; //String
     }
 
-    // catalogs_creative_assets_feeds_create_request->format
-    cJSON *format = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "format");
-    if (cJSON_IsNull(format)) {
-        format = NULL;
-    }
-    if (!format) {
-        goto end;
-    }
-
-    
-    format_local_nonprim = catalogs_format_parseFromJSON(format); //custom
-
-    // catalogs_creative_assets_feeds_create_request->default_locale
-    cJSON *default_locale = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "default_locale");
-    if (cJSON_IsNull(default_locale)) {
-        default_locale = NULL;
-    }
-    if (!default_locale) {
-        goto end;
-    }
-
-    
-    default_locale_local_nonprim = catalogs_feeds_create_request_default_locale_parseFromJSON(default_locale); //nonprimitive
-
-    // catalogs_creative_assets_feeds_create_request->default_country
-    cJSON *default_country = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "default_country");
-    if (cJSON_IsNull(default_country)) {
-        default_country = NULL;
-    }
-    if (!default_country) {
-        goto end;
-    }
-
-    
-    default_country_local_nonprim = country_parseFromJSON(default_country); //custom
-
-    // catalogs_creative_assets_feeds_create_request->credentials
-    cJSON *credentials = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "credentials");
-    if (cJSON_IsNull(credentials)) {
-        credentials = NULL;
-    }
-    if (credentials) { 
-    credentials_local_nonprim = catalogs_feed_credentials_parseFromJSON(credentials); //nonprimitive
-    }
-
-    // catalogs_creative_assets_feeds_create_request->location
-    cJSON *location = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "location");
-    if (cJSON_IsNull(location)) {
-        location = NULL;
-    }
-    if (!location) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(location))
-    {
-    goto end; //String
-    }
-
     // catalogs_creative_assets_feeds_create_request->preferred_processing_schedule
     cJSON *preferred_processing_schedule = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "preferred_processing_schedule");
     if (cJSON_IsNull(preferred_processing_schedule)) {
@@ -369,30 +393,6 @@ catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_
     }
     if (preferred_processing_schedule) { 
     preferred_processing_schedule_local_nonprim = catalogs_feed_processing_schedule_parseFromJSON(preferred_processing_schedule); //nonprimitive
-    }
-
-    // catalogs_creative_assets_feeds_create_request->catalog_type
-    cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "catalog_type");
-    if (cJSON_IsNull(catalog_type)) {
-        catalog_type = NULL;
-    }
-    if (!catalog_type) {
-        goto end;
-    }
-
-    
-    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
-
-    // catalogs_creative_assets_feeds_create_request->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_feeds_create_requestJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
-    }
-    if (catalog_id) { 
-    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
-    {
-    goto end; //String
-    }
     }
 
     // catalogs_creative_assets_feeds_create_request->status
@@ -406,44 +406,44 @@ catalogs_creative_assets_feeds_create_request_t *catalogs_creative_assets_feeds_
 
 
     catalogs_creative_assets_feeds_create_request_local_var = catalogs_creative_assets_feeds_create_request_create_internal (
-        default_currency ? default_currency_local_nonprim : 0,
-        strdup(name->valuestring),
-        format_local_nonprim,
-        default_locale_local_nonprim,
-        default_country_local_nonprim,
-        credentials ? credentials_local_nonprim : NULL,
-        strdup(location->valuestring),
-        preferred_processing_schedule ? preferred_processing_schedule_local_nonprim : NULL,
-        catalog_type_local_nonprim,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_type_local_nonprim,
+        credentials ? credentials_local_nonprim : NULL,
+        default_country_local_nonprim,
+        default_currency ? default_currency_local_nonprim : 0,
+        default_locale_local_nonprim,
+        format_local_nonprim,
+        strdup(location->valuestring),
+        strdup(name->valuestring),
+        preferred_processing_schedule ? preferred_processing_schedule_local_nonprim : NULL,
         status ? status_local_nonprim : NULL
         );
 
     return catalogs_creative_assets_feeds_create_request_local_var;
 end:
-    if (default_currency_local_nonprim) {
-        default_currency_local_nonprim = 0;
-    }
-    if (format_local_nonprim) {
-        format_local_nonprim = 0;
-    }
-    if (default_locale_local_nonprim) {
-        catalogs_feeds_create_request_default_locale_free(default_locale_local_nonprim);
-        default_locale_local_nonprim = NULL;
-    }
-    if (default_country_local_nonprim) {
-        default_country_local_nonprim = 0;
+    if (catalog_type_local_nonprim) {
+        catalog_type_local_nonprim = 0;
     }
     if (credentials_local_nonprim) {
         catalogs_feed_credentials_free(credentials_local_nonprim);
         credentials_local_nonprim = NULL;
     }
+    if (default_country_local_nonprim) {
+        default_country_local_nonprim = 0;
+    }
+    if (default_currency_local_nonprim) {
+        default_currency_local_nonprim = 0;
+    }
+    if (default_locale_local_nonprim) {
+        catalogs_feeds_create_request_default_locale_free(default_locale_local_nonprim);
+        default_locale_local_nonprim = NULL;
+    }
+    if (format_local_nonprim) {
+        format_local_nonprim = 0;
+    }
     if (preferred_processing_schedule_local_nonprim) {
         catalogs_feed_processing_schedule_free(preferred_processing_schedule_local_nonprim);
         preferred_processing_schedule_local_nonprim = NULL;
-    }
-    if (catalog_type_local_nonprim) {
-        catalog_type_local_nonprim = 0;
     }
     if (status_local_nonprim) {
         catalogs_status_free(status_local_nonprim);

@@ -7,31 +7,31 @@ Template fields
 
 Name | Type
 ------------ | -------------
-`id` | string
 `adAccountId` | string
 `adAccountIds` | Array&lt;string&gt;
-`userId` | string
-`name` | string
-`reportStartRelativeDaysInPast` | number
-`reportEndRelativeDaysInPast` | number
-`dateRange` | [TemplateResponseDateRange](TemplateResponseDateRange.md)
-`reportLevel` | [MetricsReportingLevel](MetricsReportingLevel.md)
-`reportFormat` | [DataOutputFormat](DataOutputFormat.md)
-`columns` | Array&lt;string&gt;
-`granularity` | [Granularity](Granularity.md)
-`viewWindowDays` | number
 `clickWindowDays` | number
-`engagementWindowDays` | number
+`columns` | Array&lt;string&gt;
 `conversionReportTimeType` | string
+`creationSource` | string
+`customColumnIds` | Array&lt;string&gt;
+`dateRange` | [TemplateResponseDateRange](TemplateResponseDateRange.md)
+`engagementWindowDays` | number
 `filtersJson` | string
+`granularity` | [Granularity](Granularity.md)
+`id` | string
+`ingestionSources` | Array&lt;string&gt;
+`isDeleted` | boolean
 `isOwnedByUser` | boolean
 `isScheduled` | boolean
-`creationSource` | string
-`isDeleted` | boolean
-`updatedTime` | number
-`customColumnIds` | Array&lt;string&gt;
+`name` | string
+`reportEndRelativeDaysInPast` | number
+`reportFormat` | [DataOutputFormat](DataOutputFormat.md)
+`reportLevel` | [MetricsReportingLevel](MetricsReportingLevel.md)
+`reportStartRelativeDaysInPast` | number
 `type` | string
-`ingestionSources` | Array&lt;string&gt;
+`updatedTime` | number
+`userId` | string
+`viewWindowDays` | number
 
 ## Example
 
@@ -40,31 +40,31 @@ import type { TemplateResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 6739202847590,
   "adAccountId": 547664674848,
   "adAccountIds": ["547664674848"],
-  "userId": 784762938748396,
-  "name": Week over week spend,
-  "reportStartRelativeDaysInPast": 7,
-  "reportEndRelativeDaysInPast": 7,
-  "dateRange": null,
-  "reportLevel": null,
-  "reportFormat": null,
-  "columns": ["SPEND_IN_DOLLAR"],
-  "granularity": null,
-  "viewWindowDays": 7,
   "clickWindowDays": 7,
-  "engagementWindowDays": 7,
+  "columns": ["SPEND_IN_DOLLAR"],
   "conversionReportTimeType": TIME_OF_AD_ACTION,
+  "creationSource": ADS_MANAGER_REPORT_BUILDER,
+  "customColumnIds": ["1597252063"],
+  "dateRange": null,
+  "engagementWindowDays": 7,
   "filtersJson": [{"field": "SPEND_IN_DOLLAR", "operator": "=", "value": 100}],
+  "granularity": null,
+  "id": 6739202847590,
+  "ingestionSources": null,
+  "isDeleted": false,
   "isOwnedByUser": true,
   "isScheduled": true,
-  "creationSource": ADS_MANAGER_REPORT_BUILDER,
-  "isDeleted": false,
-  "updatedTime": 1432744744,
-  "customColumnIds": ["1597252063"],
+  "name": Week over week spend,
+  "reportEndRelativeDaysInPast": 7,
+  "reportFormat": null,
+  "reportLevel": null,
+  "reportStartRelativeDaysInPast": 7,
   "type": BULK,
-  "ingestionSources": null,
+  "updatedTime": 1432744744,
+  "userId": 784762938748396,
+  "viewWindowDays": 7,
 } satisfies TemplateResponse
 
 console.log(example)

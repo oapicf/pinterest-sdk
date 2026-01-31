@@ -5,6 +5,11 @@
   "name": "CatalogsUpdateRetailItem",
   "fields": [
     {
+      "name": "attributes",
+      "type": "model.UpdatableItemAttributes",
+      "doc": ""
+    },
+    {
       "name": "item_id",
       "type": "string",
       "doc": "The catalog item id in the merchant namespace"
@@ -18,11 +23,6 @@
           "UPDATE"
         ]
       },
-      "doc": ""
-    },
-    {
-      "name": "attributes",
-      "type": "model.UpdatableItemAttributes",
       "doc": ""
     },
     {

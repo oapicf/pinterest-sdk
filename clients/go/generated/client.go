@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -43,7 +43,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Pinterest REST API API v5.14.0
+// APIClient manages communication with the Pinterest REST API API v5.23.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -79,17 +79,33 @@ type APIClient struct {
 
 	CampaignsAPI *CampaignsAPIService
 
+	CatalogFeedsAPI *CatalogFeedsAPIService
+
+	CatalogItemsAPI *CatalogItemsAPIService
+
+	CatalogProductGroupsAPI *CatalogProductGroupsAPIService
+
+	CatalogReportsAPI *CatalogReportsAPIService
+
 	CatalogsAPI *CatalogsAPIService
+
+	ConversionEqsAPI *ConversionEqsAPIService
 
 	ConversionEventsAPI *ConversionEventsAPIService
 
 	ConversionTagsAPI *ConversionTagsAPIService
+
+	ConversionsAPI *ConversionsAPIService
+
+	CustomerListUploadsAPI *CustomerListUploadsAPIService
 
 	CustomerListsAPI *CustomerListsAPIService
 
 	IntegrationsAPI *IntegrationsAPIService
 
 	KeywordsAPI *KeywordsAPIService
+
+	LabelsAPI *LabelsAPIService
 
 	LeadAdsAPI *LeadAdsAPIService
 
@@ -99,13 +115,21 @@ type APIClient struct {
 
 	MediaAPI *MediaAPIService
 
+	MsotEventsAPI *MsotEventsAPIService
+
+	NotificationAPI *NotificationAPIService
+
 	OauthAPI *OauthAPIService
 
 	OrderLinesAPI *OrderLinesAPIService
 
 	PinsAPI *PinsAPIService
 
+	ProductCategoriesAPI *ProductCategoriesAPIService
+
 	ProductGroupPromotionsAPI *ProductGroupPromotionsAPIService
+
+	PromotionsAPI *PromotionsAPIService
 
 	ResourcesAPI *ResourcesAPIService
 
@@ -150,20 +174,32 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BusinessAccessInviteAPI = (*BusinessAccessInviteAPIService)(&c.common)
 	c.BusinessAccessRelationshipsAPI = (*BusinessAccessRelationshipsAPIService)(&c.common)
 	c.CampaignsAPI = (*CampaignsAPIService)(&c.common)
+	c.CatalogFeedsAPI = (*CatalogFeedsAPIService)(&c.common)
+	c.CatalogItemsAPI = (*CatalogItemsAPIService)(&c.common)
+	c.CatalogProductGroupsAPI = (*CatalogProductGroupsAPIService)(&c.common)
+	c.CatalogReportsAPI = (*CatalogReportsAPIService)(&c.common)
 	c.CatalogsAPI = (*CatalogsAPIService)(&c.common)
+	c.ConversionEqsAPI = (*ConversionEqsAPIService)(&c.common)
 	c.ConversionEventsAPI = (*ConversionEventsAPIService)(&c.common)
 	c.ConversionTagsAPI = (*ConversionTagsAPIService)(&c.common)
+	c.ConversionsAPI = (*ConversionsAPIService)(&c.common)
+	c.CustomerListUploadsAPI = (*CustomerListUploadsAPIService)(&c.common)
 	c.CustomerListsAPI = (*CustomerListsAPIService)(&c.common)
 	c.IntegrationsAPI = (*IntegrationsAPIService)(&c.common)
 	c.KeywordsAPI = (*KeywordsAPIService)(&c.common)
+	c.LabelsAPI = (*LabelsAPIService)(&c.common)
 	c.LeadAdsAPI = (*LeadAdsAPIService)(&c.common)
 	c.LeadFormsAPI = (*LeadFormsAPIService)(&c.common)
 	c.LeadsExportAPI = (*LeadsExportAPIService)(&c.common)
 	c.MediaAPI = (*MediaAPIService)(&c.common)
+	c.MsotEventsAPI = (*MsotEventsAPIService)(&c.common)
+	c.NotificationAPI = (*NotificationAPIService)(&c.common)
 	c.OauthAPI = (*OauthAPIService)(&c.common)
 	c.OrderLinesAPI = (*OrderLinesAPIService)(&c.common)
 	c.PinsAPI = (*PinsAPIService)(&c.common)
+	c.ProductCategoriesAPI = (*ProductCategoriesAPIService)(&c.common)
 	c.ProductGroupPromotionsAPI = (*ProductGroupPromotionsAPIService)(&c.common)
+	c.PromotionsAPI = (*PromotionsAPIService)(&c.common)
 	c.ResourcesAPI = (*ResourcesAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
 	c.TargetingTemplateAPI = (*TargetingTemplateAPIService)(&c.common)

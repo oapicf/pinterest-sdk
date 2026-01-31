@@ -1,19 +1,19 @@
 #tag Interface
 Protected Interface ConversionTagsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub ConversionTagsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionTagResponse)
+		Sub ConversionTagsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionTag)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ConversionTagsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionTagResponse)
+		Sub ConversionTagsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionTag)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ConversionTagsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionTagListResponse)
+		Sub ConversionTagsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionTagsList200Response)
 		  
 		End Sub
 	#tag EndMethod

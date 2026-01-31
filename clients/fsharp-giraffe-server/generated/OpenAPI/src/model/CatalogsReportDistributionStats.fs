@@ -12,13 +12,13 @@ module CatalogsReportDistributionStats =
   //#endregion
 
   type CatalogsReportDistributionStats = {
-    ReportType : ReportTypeEnum;
     CatalogId : string;
     Code : int;
     CodeLabel : string;
-    Message : string;
-    Occurrences : int;
     IneligibleForAds : bool;
     IneligibleForOrganic : bool;
+    Message : string;
+    Occurrences : int;
+    ReportType : ReportTypeEnum;
   }
   //#endregion

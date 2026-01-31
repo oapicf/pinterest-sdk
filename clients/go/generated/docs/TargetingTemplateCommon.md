@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | targeting template name | [optional] 
 **AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
-**TargetingAttributes** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
-**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] [default to ALL]
 **Keywords** | Pointer to [**[]TargetingTemplateKeyword**](TargetingTemplateKeyword.md) |  | [optional] 
+**Name** | Pointer to **string** | targeting template name | [optional] 
+**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] [default to ALL]
+**TargetingAttributes** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 **TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 
 ## Methods
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewTargetingTemplateCommonWithDefaults instantiates a new TargetingTemplateCommon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *TargetingTemplateCommon) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *TargetingTemplateCommon) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *TargetingTemplateCommon) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *TargetingTemplateCommon) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetAutoTargetingEnabled
 
@@ -80,30 +55,55 @@ SetAutoTargetingEnabled sets AutoTargetingEnabled field to given value.
 
 HasAutoTargetingEnabled returns a boolean if a field has been set.
 
-### GetTargetingAttributes
+### GetKeywords
 
-`func (o *TargetingTemplateCommon) GetTargetingAttributes() TargetingSpec`
+`func (o *TargetingTemplateCommon) GetKeywords() []TargetingTemplateKeyword`
 
-GetTargetingAttributes returns the TargetingAttributes field if non-nil, zero value otherwise.
+GetKeywords returns the Keywords field if non-nil, zero value otherwise.
 
-### GetTargetingAttributesOk
+### GetKeywordsOk
 
-`func (o *TargetingTemplateCommon) GetTargetingAttributesOk() (*TargetingSpec, bool)`
+`func (o *TargetingTemplateCommon) GetKeywordsOk() (*[]TargetingTemplateKeyword, bool)`
 
-GetTargetingAttributesOk returns a tuple with the TargetingAttributes field if it's non-nil, zero value otherwise
+GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTargetingAttributes
+### SetKeywords
 
-`func (o *TargetingTemplateCommon) SetTargetingAttributes(v TargetingSpec)`
+`func (o *TargetingTemplateCommon) SetKeywords(v []TargetingTemplateKeyword)`
 
-SetTargetingAttributes sets TargetingAttributes field to given value.
+SetKeywords sets Keywords field to given value.
 
-### HasTargetingAttributes
+### HasKeywords
 
-`func (o *TargetingTemplateCommon) HasTargetingAttributes() bool`
+`func (o *TargetingTemplateCommon) HasKeywords() bool`
 
-HasTargetingAttributes returns a boolean if a field has been set.
+HasKeywords returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *TargetingTemplateCommon) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *TargetingTemplateCommon) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *TargetingTemplateCommon) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *TargetingTemplateCommon) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetPlacementGroup
 
@@ -130,30 +130,30 @@ SetPlacementGroup sets PlacementGroup field to given value.
 
 HasPlacementGroup returns a boolean if a field has been set.
 
-### GetKeywords
+### GetTargetingAttributes
 
-`func (o *TargetingTemplateCommon) GetKeywords() []TargetingTemplateKeyword`
+`func (o *TargetingTemplateCommon) GetTargetingAttributes() TargetingSpec`
 
-GetKeywords returns the Keywords field if non-nil, zero value otherwise.
+GetTargetingAttributes returns the TargetingAttributes field if non-nil, zero value otherwise.
 
-### GetKeywordsOk
+### GetTargetingAttributesOk
 
-`func (o *TargetingTemplateCommon) GetKeywordsOk() (*[]TargetingTemplateKeyword, bool)`
+`func (o *TargetingTemplateCommon) GetTargetingAttributesOk() (*TargetingSpec, bool)`
 
-GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
+GetTargetingAttributesOk returns a tuple with the TargetingAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKeywords
+### SetTargetingAttributes
 
-`func (o *TargetingTemplateCommon) SetKeywords(v []TargetingTemplateKeyword)`
+`func (o *TargetingTemplateCommon) SetTargetingAttributes(v TargetingSpec)`
 
-SetKeywords sets Keywords field to given value.
+SetTargetingAttributes sets TargetingAttributes field to given value.
 
-### HasKeywords
+### HasTargetingAttributes
 
-`func (o *TargetingTemplateCommon) HasKeywords() bool`
+`func (o *TargetingTemplateCommon) HasTargetingAttributes() bool`
 
-HasKeywords returns a boolean if a field has been set.
+HasTargetingAttributes returns a boolean if a field has been set.
 
 ### GetTrackingUrls
 

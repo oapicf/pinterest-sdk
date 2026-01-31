@@ -10,8 +10,8 @@ module ImageDetails =
 
 
   type ImageDetails = {
-    Width : int;
     Height : int option;
     Url : string;
+    Width : int option;
   }
   //#endregion

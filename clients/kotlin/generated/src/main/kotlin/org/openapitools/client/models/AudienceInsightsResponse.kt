@@ -26,11 +26,11 @@ import com.squareup.moshi.JsonClass
  * Audience interests and demographics.
  *
  * @param categories Category interest distribution
- * @param demographics 
- * @param type 
  * @param date Generation date
+ * @param demographics 
  * @param propertySize Population count.
  * @param sizeIsUpperBound Indicates whether the audience size has been rounded up to the next highest upper boundary.
+ * @param type 
  */
 
 
@@ -40,15 +40,12 @@ data class AudienceInsightsResponse (
     @Json(name = "categories")
     val categories: kotlin.collections.List<AudienceCategory>? = null,
 
-    @Json(name = "demographics")
-    val demographics: AudienceDemographics? = null,
-
-    @Json(name = "type")
-    val type: AudienceInsightType? = AudienceInsightType.YOUR_TOTAL_AUDIENCE,
-
     /* Generation date */
     @Json(name = "date")
     val date: kotlin.String? = null,
+
+    @Json(name = "demographics")
+    val demographics: AudienceDemographics? = null,
 
     /* Population count. */
     @Json(name = "size")
@@ -56,7 +53,10 @@ data class AudienceInsightsResponse (
 
     /* Indicates whether the audience size has been rounded up to the next highest upper boundary. */
     @Json(name = "size_is_upper_bound")
-    val sizeIsUpperBound: kotlin.Boolean? = null
+    val sizeIsUpperBound: kotlin.Boolean? = null,
+
+    @Json(name = "type")
+    val type: AudienceInsightType? = AudienceInsightType.YOUR_TOTAL_AUDIENCE
 
 ) {
 

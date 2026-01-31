@@ -11,7 +11,7 @@ import org.openapitools.model.LeadFormResponse;
 @Canonical
 class LeadFormsList200Response {
     
-    List<LeadFormResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<LeadFormResponse> items = new ArrayList<>()
 }

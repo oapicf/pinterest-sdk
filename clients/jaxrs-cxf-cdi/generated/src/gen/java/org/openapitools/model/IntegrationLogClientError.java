@@ -123,7 +123,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Human-readable description of the error.")
   @JsonProperty("message")
- @Size(max=512)  public String getMessage() {
+ @Size(max=8192)  public String getMessage() {
     return message;
   }
   public void setMessage(String message) {

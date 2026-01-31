@@ -13,8 +13,8 @@ module CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest =
   //#endregion
 
   type CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = {
-    CatalogType : CatalogTypeEnum;
     CatalogId : string;
+    CatalogType : CatalogTypeEnum;
     Filters : CatalogsCreativeAssetsProductGroupFilters;
   }
   //#endregion

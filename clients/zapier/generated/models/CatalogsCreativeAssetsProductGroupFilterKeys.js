@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsProductGroupFilterOperatorTypeCriteria = require('../models/CatalogsProductGroupFilterOperatorTypeCriteria');
 const CatalogsProductGroupMultipleMediaTypesCriteria = require('../models/CatalogsProductGroupMultipleMediaTypesCriteria');
 const CatalogsProductGroupMultipleStringCriteria = require('../models/CatalogsProductGroupMultipleStringCriteria');
 const CatalogsProductGroupMultipleStringListCriteria = require('../models/CatalogsProductGroupMultipleStringListCriteria');
@@ -16,6 +17,7 @@ const GoogleProductCategory4Filter = require('../models/GoogleProductCategory4Fi
 const GoogleProductCategory5Filter = require('../models/GoogleProductCategory5Filter');
 const GoogleProductCategory6Filter = require('../models/GoogleProductCategory6Filter');
 const MediaTypeFilter = require('../models/MediaTypeFilter');
+const TitleKeywordsFilter = require('../models/TitleKeywordsFilter');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -40,6 +42,7 @@ module.exports = {
             'GOOGLE_PRODUCT_CATEGORY_1': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_1`)),
             'GOOGLE_PRODUCT_CATEGORY_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`)),
             'MEDIA_TYPE': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}MEDIA_TYPE`)),
+            'TITLE_KEYWORDS': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}TITLE_KEYWORDS`)),
         }
     },
 }

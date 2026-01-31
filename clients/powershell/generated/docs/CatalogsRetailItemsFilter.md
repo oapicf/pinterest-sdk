@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] 
 **CatalogType** | **String** |  | 
 **ItemIds** | **String[]** |  | 
-**CatalogId** | **String** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsRetailItemsFilter = Initialize-PSOpenAPIToolsCatalogsRetailItemsFilter  -CatalogType null `
- -ItemIds null `
- -CatalogId null
+$CatalogsRetailItemsFilter = Initialize-PSOpenAPIToolsCatalogsRetailItemsFilter  -CatalogId null `
+ -CatalogType null `
+ -ItemIds null
 ```
 
 - Convert the resource to JSON

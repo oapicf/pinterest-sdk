@@ -6,21 +6,21 @@ import play.api.libs.json._
   * Represents the Swagger definition for AdsCreditDiscountsResponse.
   * @param active True if the offer code is currently active.
   * @param advertiserId Advertiser ID the offer was applied to.
-  * @param discountType The type of discount of this credit
-  * @param discountInMicroCurrency The discount applied in the offer’s currency value.
   * @param discountCurrency Currency value for the discount.
-  * @param title Human readable title of the offer code.
+  * @param discountInMicroCurrency The discount applied in the offer’s currency value.
+  * @param discountType The type of discount of this credit
   * @param remainingDiscountInMicroCurrency The credits left to spend.
+  * @param title Human readable title of the offer code.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AdsCreditDiscountsResponse(
   active: Option[Boolean],
   advertiserId: Option[String],
-  discountType: Option[AdsCreditDiscountsResponse.DiscountType.Value],
-  discountInMicroCurrency: Option[BigDecimal],
   discountCurrency: Option[String],
-  title: Option[String],
-  remainingDiscountInMicroCurrency: Option[BigDecimal]
+  discountInMicroCurrency: Option[BigDecimal],
+  discountType: Option[AdsCreditDiscountsResponse.DiscountType.Value],
+  remainingDiscountInMicroCurrency: Option[BigDecimal],
+  title: Option[String]
 )
 
 object AdsCreditDiscountsResponse {

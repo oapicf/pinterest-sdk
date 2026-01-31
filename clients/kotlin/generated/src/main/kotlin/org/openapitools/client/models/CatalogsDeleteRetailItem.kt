@@ -24,6 +24,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
+ * @param lastUpdatedTime The millisecond timestamp when the item was lastly modified by the merchant.
  */
 
 
@@ -34,7 +35,11 @@ data class CatalogsDeleteRetailItem (
     val itemId: kotlin.String,
 
     @Json(name = "operation")
-    val operation: CatalogsDeleteRetailItem.Operation
+    val operation: CatalogsDeleteRetailItem.Operation,
+
+    /* The millisecond timestamp when the item was lastly modified by the merchant. */
+    @Json(name = "last_updated_time")
+    val lastUpdatedTime: kotlin.Long? = null
 
 ) {
 

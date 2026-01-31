@@ -15,18 +15,35 @@ import javax.validation.Valid;
 /**
  * BusinessMemberAssetsGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BusinessMemberAssetsGet200Response   {
+  @JsonProperty("bookmark")
+  
+  private String bookmark;
+
   @JsonProperty("items")
   @NotNull
 @Valid
 
   private List<@Valid AssetIdPermissions> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  
-  private String bookmark;
+  public BusinessMemberAssetsGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+   /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public BusinessMemberAssetsGet200Response items(List<@Valid AssetIdPermissions> items) {
     this.items = items;
@@ -53,23 +70,6 @@ public class BusinessMemberAssetsGet200Response   {
     this.items = items;
   }
 
-  public BusinessMemberAssetsGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-   /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class BusinessMemberAssetsGet200Response   {
       return false;
     }
     BusinessMemberAssetsGet200Response businessMemberAssetsGet200Response = (BusinessMemberAssetsGet200Response) o;
-    return Objects.equals(items, businessMemberAssetsGet200Response.items) &&
-        Objects.equals(bookmark, businessMemberAssetsGet200Response.bookmark);
+    return Objects.equals(bookmark, businessMemberAssetsGet200Response.bookmark) &&
+        Objects.equals(items, businessMemberAssetsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class BusinessMemberAssetsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessMemberAssetsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

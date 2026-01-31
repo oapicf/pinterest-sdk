@@ -4,7 +4,7 @@ Exposes the following operation IDs:
 
 - `GET` to `/search/partner/pins`, OperationId: `search_partner_pins`:
 Search pins by a given search term.
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 - `GET` to `/search/boards`, OperationId: `search_user_boards/get`:
 Search user&#39;s boards.

@@ -32,11 +32,13 @@ catalogs_hotel_product_group_filter_keys_t* instantiate_catalogs_hotel_product_g
       0,
       0,
       0,
+      0,
       0
     );
   } else {
     catalogs_hotel_product_group_filter_keys = catalogs_hotel_product_group_filter_keys_create(
       NULL,
+      0,
       0,
       0,
       0,

@@ -45,7 +45,7 @@ class ResourcesApiController() {
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = AdAccountsCountryResponse::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
@@ -65,7 +65,7 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeliveryMetricsResponse::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read", "pins:read", "user_accounts:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read", "pins:read", "user_accounts:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read", "pins:read", "user_accounts:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
@@ -85,7 +85,7 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SingleInterestTargetingOptionResponse::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
@@ -103,7 +103,7 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
         operationId = "leadFormQuestionsGet",
         description = """Get a list of all lead form question type names. Some questions might not be used.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>""",
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>""",
         responses = [
             ApiResponse(responseCode = "200", description = "Success"),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
@@ -146,7 +146,7 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(array = ArraySchema(schema = Schema(implementation = kotlin.Any::class)))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],

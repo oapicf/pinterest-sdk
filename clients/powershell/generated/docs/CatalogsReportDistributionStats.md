@@ -3,27 +3,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | **String** |  | [optional] 
 **CatalogId** | **String** | ID of the catalog entity. | [optional] 
 **Code** | **Int32** | The event code that a diagnostics aggregated number references | [optional] 
 **CodeLabel** | **String** | A human-friendly label for the event code (e.g, &#39;SPAM&#39;) | [optional] 
-**Message** | **String** | Title message describing the diagnostic issue | [optional] 
-**Occurrences** | **Int32** | Number of occurrences of the issue | [optional] 
 **IneligibleForAds** | **Boolean** | Indicates if issue makes items ineligible for ads distribution | [optional] 
 **IneligibleForOrganic** | **Boolean** | Indicates if issue makes items ineligible for organic distribution | [optional] 
+**Message** | **String** | Title message describing the diagnostic issue | [optional] 
+**Occurrences** | **Int32** | Number of occurrences of the issue | [optional] 
+**ReportType** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsReportDistributionStats = Initialize-PSOpenAPIToolsCatalogsReportDistributionStats  -ReportType null `
- -CatalogId null `
+$CatalogsReportDistributionStats = Initialize-PSOpenAPIToolsCatalogsReportDistributionStats  -CatalogId null `
  -Code null `
  -CodeLabel SPAM `
+ -IneligibleForAds true `
+ -IneligibleForOrganic true `
  -Message null `
  -Occurrences 10 `
- -IneligibleForAds true `
- -IneligibleForOrganic true
+ -ReportType null
 ```
 
 - Convert the resource to JSON

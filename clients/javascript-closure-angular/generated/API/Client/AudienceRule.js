@@ -1,10 +1,31 @@
 goog.provide('API.Client.AudienceRule');
 
 /**
- * JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
+ * JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.
  * @record
  */
 API.Client.AudienceRule = function() {}
+
+/**
+ * Ad account ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.AudienceRule.prototype.adAccountId;
+
+/**
+ * Ad ID for engagement audience filter.
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.AudienceRule.prototype.adId;
+
+/**
+ * Campaign ID for engagement audience filter.
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.AudienceRule.prototype.campaignId;
 
 /**
  * Valid countries include: \"US\", \"CA\", and \"GB\".
@@ -35,6 +56,13 @@ API.Client.AudienceRule.prototype.engagementDomain;
 API.Client.AudienceRule.prototype.engagementType;
 
 /**
+ * Optional for ENGAGEMENT. Engager type value should be 1-2.
+ * @type {!number}
+ * @export
+ */
+API.Client.AudienceRule.prototype.engagerType;
+
+/**
  * A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
  * @type {!string}
  * @export
@@ -42,10 +70,31 @@ API.Client.AudienceRule.prototype.engagementType;
 API.Client.AudienceRule.prototype.event;
 
 /**
- * @type {!API.Client.PinterestTagEventData}
+ * @type {!API.Client.EventData}
  * @export
  */
 API.Client.AudienceRule.prototype.eventData;
+
+/**
+ * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
+ * @type {!API.Client.Object}
+ * @export
+ */
+API.Client.AudienceRule.prototype.eventSource;
+
+/**
+ * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+ * @type {!API.Client.Object}
+ * @export
+ */
+API.Client.AudienceRule.prototype.ingestionSource;
+
+/**
+ * Objective for engagement audience filter.
+ * @type {!Array<!API.Client.ObjectiveType>}
+ * @export
+ */
+API.Client.AudienceRule.prototype.objectiveType;
 
 /**
  * Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
@@ -95,53 +144,4 @@ API.Client.AudienceRule.prototype.url;
  * @export
  */
 API.Client.AudienceRule.prototype.visitorSourceId;
-
-/**
- * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
- * @type {!API.Client.Object}
- * @export
- */
-API.Client.AudienceRule.prototype.eventSource;
-
-/**
- * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
- * @type {!API.Client.Object}
- * @export
- */
-API.Client.AudienceRule.prototype.ingestionSource;
-
-/**
- * Optional for ENGAGEMENT. Engager type value should be 1-2.
- * @type {!number}
- * @export
- */
-API.Client.AudienceRule.prototype.engagerType;
-
-/**
- * Campaign ID for engagement audience filter.
- * @type {!Array<!string>}
- * @export
- */
-API.Client.AudienceRule.prototype.campaignId;
-
-/**
- * Ad ID for engagement audience filter.
- * @type {!Array<!string>}
- * @export
- */
-API.Client.AudienceRule.prototype.adId;
-
-/**
- * Objective for engagement audience filter.
- * @type {!Array<!API.Client.ObjectiveType>}
- * @export
- */
-API.Client.AudienceRule.prototype.objectiveType;
-
-/**
- * Ad account ID.
- * @type {!string}
- * @export
- */
-API.Client.AudienceRule.prototype.adAccountId;
 

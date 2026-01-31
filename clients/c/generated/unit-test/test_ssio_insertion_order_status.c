@@ -22,15 +22,15 @@ ssio_insertion_order_status_t* instantiate_ssio_insertion_order_status(int inclu
   ssio_insertion_order_status_t* ssio_insertion_order_status = NULL;
   if (include_optional) {
     ssio_insertion_order_status = ssio_insertion_order_status_create(
+      "2017-06-21T23:11:11.000Z",
       "0Q01N0000015hekSAB",
-      "Approved",
-      "2017-06-21T23:11:11.000Z"
+      "Approved"
     );
   } else {
     ssio_insertion_order_status = ssio_insertion_order_status_create(
+      "2017-06-21T23:11:11.000Z",
       "0Q01N0000015hekSAB",
-      "Approved",
-      "2017-06-21T23:11:11.000Z"
+      "Approved"
     );
   }
 

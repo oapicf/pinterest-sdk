@@ -13,16 +13,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetBusinessPartners200Response  {
   
+  @ApiModelProperty(value = "")
+
+  private String bookmark;
+
  /**
   * List of business partners.
   */
   @ApiModelProperty(required = true, value = "List of business partners.")
 
   private List<UserBusinessRoleBinding> items = new ArrayList<>();
+ /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
 
-  @ApiModelProperty(value = "")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
-  private String bookmark;
+  public GetBusinessPartners200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
    * List of business partners.
    * @return items
@@ -46,24 +64,6 @@ public class GetBusinessPartners200Response  {
     return this;
   }
 
- /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  public GetBusinessPartners200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -73,13 +73,13 @@ public class GetBusinessPartners200Response  {
       return false;
     }
     GetBusinessPartners200Response getBusinessPartners200Response = (GetBusinessPartners200Response) o;
-    return Objects.equals(this.items, getBusinessPartners200Response.items) &&
-        Objects.equals(this.bookmark, getBusinessPartners200Response.bookmark);
+    return Objects.equals(this.bookmark, getBusinessPartners200Response.bookmark) &&
+        Objects.equals(this.items, getBusinessPartners200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -87,8 +87,8 @@ public class GetBusinessPartners200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessPartners200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

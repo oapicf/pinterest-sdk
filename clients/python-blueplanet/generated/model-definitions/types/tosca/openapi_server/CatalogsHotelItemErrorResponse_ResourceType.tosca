@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelItemErrorResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelItemErrorResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
+}
+resourceTypes {
+
+  CatalogsHotelItemErrorResponse {
+    title = CatalogsHotelItemErrorResponse
+    description = CatalogsHotelItemErrorResponse
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        errors {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the errors for the item id requested"
+          optional = true
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelItemErrorResponse {
+    title = CatalogsHotelItemErrorResponse
+    description = CatalogsHotelItemErrorResponse
+    implements = openapi_server.resourceTypes.CatalogsHotelItemErrorResponse
+
+  }
+}

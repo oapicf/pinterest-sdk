@@ -5,13 +5,13 @@
 -export_type([openapi_template_response_date_range_dynamic_date_range/0]).
 
 -type openapi_template_response_date_range_dynamic_date_range() ::
-    #{ 'type' => binary(),
-       'range' => binary()
+    #{ 'range' => binary(),
+       'type' => binary()
      }.
 
-encode(#{ 'type' := Type,
-          'range' := Range
+encode(#{ 'range' := Range,
+          'type' := Type
         }) ->
-    #{ 'type' => Type,
-       'range' => Range
+    #{ 'range' => Range,
+       'type' => Type
      }.

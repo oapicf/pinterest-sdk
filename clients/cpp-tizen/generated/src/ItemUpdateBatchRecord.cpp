@@ -23,23 +23,23 @@ ItemUpdateBatchRecord::~ItemUpdateBatchRecord()
 void
 ItemUpdateBatchRecord::__init()
 {
-	//item_id = std::string();
 	//attributes = new UpdatableItemAttributes();
+	//item_id = std::string();
 	//new std::list()std::list> update_mask;
 }
 
 void
 ItemUpdateBatchRecord::__cleanup()
 {
-	//if(item_id != NULL) {
-	//
-	//delete item_id;
-	//item_id = NULL;
-	//}
 	//if(attributes != NULL) {
 	//
 	//delete attributes;
 	//attributes = NULL;
+	//}
+	//if(item_id != NULL) {
+	//
+	//delete item_id;
+	//item_id = NULL;
 	//}
 	//if(update_mask != NULL) {
 	//update_mask.RemoveAll(true);
@@ -54,17 +54,6 @@ ItemUpdateBatchRecord::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *item_idKey = "item_id";
-	node = json_object_get_member(pJsonObject, item_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&item_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *attributesKey = "attributes";
 	node = json_object_get_member(pJsonObject, attributesKey);
 	if (node !=NULL) {
@@ -76,6 +65,17 @@ ItemUpdateBatchRecord::fromJson(char* jsonStr)
 			
 			UpdatableItemAttributes* obj = static_cast<UpdatableItemAttributes*> (&attributes);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *item_idKey = "item_id";
+	node = json_object_get_member(pJsonObject, item_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&item_id, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -115,15 +115,6 @@ ItemUpdateBatchRecord::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getItemId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_idKey = "item_id";
-	json_object_set_member(pJsonObject, item_idKey, node);
 	if (isprimitive("UpdatableItemAttributes")) {
 		UpdatableItemAttributes obj = getAttributes();
 		node = converttoJson(&obj, "UpdatableItemAttributes", "");
@@ -138,6 +129,15 @@ ItemUpdateBatchRecord::toJson()
 	}
 	const gchar *attributesKey = "attributes";
 	json_object_set_member(pJsonObject, attributesKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_idKey = "item_id";
+	json_object_set_member(pJsonObject, item_idKey, node);
 	if (isprimitive("UpdateMaskFieldType")) {
 		list<UpdateMaskFieldType> new_list = static_cast<list <UpdateMaskFieldType> > (getUpdateMask());
 		node = converttoJson(&new_list, "UpdateMaskFieldType", "array");
@@ -171,18 +171,6 @@ ItemUpdateBatchRecord::toJson()
 	return ret;
 }
 
-std::string
-ItemUpdateBatchRecord::getItemId()
-{
-	return item_id;
-}
-
-void
-ItemUpdateBatchRecord::setItemId(std::string  item_id)
-{
-	this->item_id = item_id;
-}
-
 UpdatableItemAttributes
 ItemUpdateBatchRecord::getAttributes()
 {
@@ -193,6 +181,18 @@ void
 ItemUpdateBatchRecord::setAttributes(UpdatableItemAttributes  attributes)
 {
 	this->attributes = attributes;
+}
+
+std::string
+ItemUpdateBatchRecord::getItemId()
+{
+	return item_id;
+}
+
+void
+ItemUpdateBatchRecord::setItemId(std::string  item_id)
+{
+	this->item_id = item_id;
 }
 
 std::list<UpdateMaskFieldType>

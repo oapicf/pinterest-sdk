@@ -1,0 +1,11 @@
+# openapi::TrendingKeywordDemographics
+
+A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**age_distribution** | [**TrendingKeywordDemographicsAgeDistribution**](TrendingKeyword_demographics_age_distribution.md) |  | [optional] 
+**gender_distribution** | [**TrendingKeywordDemographicsGenderDistribution**](TrendingKeyword_demographics_gender_distribution.md) |  | [optional] 
+
+

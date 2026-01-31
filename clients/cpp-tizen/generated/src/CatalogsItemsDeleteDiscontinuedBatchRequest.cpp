@@ -24,9 +24,9 @@ void
 CatalogsItemsDeleteDiscontinuedBatchRequest::__init()
 {
 	//country = new Country();
+	//new std::list()std::list> items;
 	//language = std::string();
 	//operation = new BatchOperation();
-	//new std::list()std::list> items;
 }
 
 void
@@ -37,6 +37,11 @@ CatalogsItemsDeleteDiscontinuedBatchRequest::__cleanup()
 	//delete country;
 	//country = NULL;
 	//}
+	//if(items != NULL) {
+	//items.RemoveAll(true);
+	//delete items;
+	//items = NULL;
+	//}
 	//if(language != NULL) {
 	//
 	//delete language;
@@ -46,11 +51,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest::__cleanup()
 	//
 	//delete operation;
 	//operation = NULL;
-	//}
-	//if(items != NULL) {
-	//items.RemoveAll(true);
-	//delete items;
-	//items = NULL;
 	//}
 	//
 }
@@ -70,31 +70,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest::fromJson(char* jsonStr)
 		} else {
 			
 			Country* obj = static_cast<Country*> (&country);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *languageKey = "language";
-	node = json_object_get_member(pJsonObject, languageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&language, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *operationKey = "operation";
-	node = json_object_get_member(pJsonObject, operationKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("BatchOperation")) {
-			jsonToValue(&operation, node, "BatchOperation", "BatchOperation");
-		} else {
-			
-			BatchOperation* obj = static_cast<BatchOperation*> (&operation);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -123,6 +98,31 @@ CatalogsItemsDeleteDiscontinuedBatchRequest::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *languageKey = "language";
+	node = json_object_get_member(pJsonObject, languageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&language, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *operationKey = "operation";
+	node = json_object_get_member(pJsonObject, operationKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("BatchOperation")) {
+			jsonToValue(&operation, node, "BatchOperation", "BatchOperation");
+		} else {
+			
+			BatchOperation* obj = static_cast<BatchOperation*> (&operation);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 CatalogsItemsDeleteDiscontinuedBatchRequest::CatalogsItemsDeleteDiscontinuedBatchRequest(char* json)
@@ -149,29 +149,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLanguage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *languageKey = "language";
-	json_object_set_member(pJsonObject, languageKey, node);
-	if (isprimitive("BatchOperation")) {
-		BatchOperation obj = getOperation();
-		node = converttoJson(&obj, "BatchOperation", "");
-	}
-	else {
-		
-		BatchOperation obj = static_cast<BatchOperation> (getOperation());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *operationKey = "operation";
-	json_object_set_member(pJsonObject, operationKey, node);
 	if (isprimitive("ItemDeleteDiscontinuedBatchRecord")) {
 		list<ItemDeleteDiscontinuedBatchRecord> new_list = static_cast<list <ItemDeleteDiscontinuedBatchRecord> > (getItems());
 		node = converttoJson(&new_list, "ItemDeleteDiscontinuedBatchRecord", "array");
@@ -197,6 +174,29 @@ CatalogsItemsDeleteDiscontinuedBatchRequest::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLanguage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *languageKey = "language";
+	json_object_set_member(pJsonObject, languageKey, node);
+	if (isprimitive("BatchOperation")) {
+		BatchOperation obj = getOperation();
+		node = converttoJson(&obj, "BatchOperation", "");
+	}
+	else {
+		
+		BatchOperation obj = static_cast<BatchOperation> (getOperation());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *operationKey = "operation";
+	json_object_set_member(pJsonObject, operationKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -215,6 +215,18 @@ void
 CatalogsItemsDeleteDiscontinuedBatchRequest::setCountry(Country  country)
 {
 	this->country = country;
+}
+
+std::list<ItemDeleteDiscontinuedBatchRecord>
+CatalogsItemsDeleteDiscontinuedBatchRequest::getItems()
+{
+	return items;
+}
+
+void
+CatalogsItemsDeleteDiscontinuedBatchRequest::setItems(std::list <ItemDeleteDiscontinuedBatchRecord> items)
+{
+	this->items = items;
 }
 
 std::string
@@ -239,18 +251,6 @@ void
 CatalogsItemsDeleteDiscontinuedBatchRequest::setOperation(BatchOperation  operation)
 {
 	this->operation = operation;
-}
-
-std::list<ItemDeleteDiscontinuedBatchRecord>
-CatalogsItemsDeleteDiscontinuedBatchRequest::getItems()
-{
-	return items;
-}
-
-void
-CatalogsItemsDeleteDiscontinuedBatchRequest::setItems(std::list <ItemDeleteDiscontinuedBatchRecord> items)
-{
-	this->items = items;
 }
 
 

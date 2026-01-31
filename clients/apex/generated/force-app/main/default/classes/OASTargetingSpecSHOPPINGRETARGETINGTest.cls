@@ -1,88 +1,88 @@
 @isTest
-private class OASTargetingSpecSHOPPINGRETARGETINGTest {
+private class OASTargetingSpecShoppingRetargetingTest {
     @isTest
     private static void equalsSameInstance() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING1 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING2 = targetingSpecSHOPPINGRETARGETING1;
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING3 = new OASTargetingSpecSHOPPINGRETARGETING();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING4 = targetingSpecSHOPPINGRETARGETING3;
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting1 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting2 = targetingSpecShoppingRetargeting1;
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting3 = new OASTargetingSpecShoppingRetargeting();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting4 = targetingSpecShoppingRetargeting3;
 
-        System.assert(targetingSpecSHOPPINGRETARGETING1.equals(targetingSpecSHOPPINGRETARGETING2));
-        System.assert(targetingSpecSHOPPINGRETARGETING2.equals(targetingSpecSHOPPINGRETARGETING1));
-        System.assert(targetingSpecSHOPPINGRETARGETING1.equals(targetingSpecSHOPPINGRETARGETING1));
-        System.assert(targetingSpecSHOPPINGRETARGETING3.equals(targetingSpecSHOPPINGRETARGETING4));
-        System.assert(targetingSpecSHOPPINGRETARGETING4.equals(targetingSpecSHOPPINGRETARGETING3));
-        System.assert(targetingSpecSHOPPINGRETARGETING3.equals(targetingSpecSHOPPINGRETARGETING3));
+        System.assert(targetingSpecShoppingRetargeting1.equals(targetingSpecShoppingRetargeting2));
+        System.assert(targetingSpecShoppingRetargeting2.equals(targetingSpecShoppingRetargeting1));
+        System.assert(targetingSpecShoppingRetargeting1.equals(targetingSpecShoppingRetargeting1));
+        System.assert(targetingSpecShoppingRetargeting3.equals(targetingSpecShoppingRetargeting4));
+        System.assert(targetingSpecShoppingRetargeting4.equals(targetingSpecShoppingRetargeting3));
+        System.assert(targetingSpecShoppingRetargeting3.equals(targetingSpecShoppingRetargeting3));
     }
 
     @isTest
     private static void equalsIdenticalInstance() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING1 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING2 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING3 = new OASTargetingSpecSHOPPINGRETARGETING();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING4 = new OASTargetingSpecSHOPPINGRETARGETING();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting1 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting2 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting3 = new OASTargetingSpecShoppingRetargeting();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting4 = new OASTargetingSpecShoppingRetargeting();
 
-        System.assert(targetingSpecSHOPPINGRETARGETING1.equals(targetingSpecSHOPPINGRETARGETING2));
-        System.assert(targetingSpecSHOPPINGRETARGETING2.equals(targetingSpecSHOPPINGRETARGETING1));
-        System.assert(targetingSpecSHOPPINGRETARGETING3.equals(targetingSpecSHOPPINGRETARGETING4));
-        System.assert(targetingSpecSHOPPINGRETARGETING4.equals(targetingSpecSHOPPINGRETARGETING3));
+        System.assert(targetingSpecShoppingRetargeting1.equals(targetingSpecShoppingRetargeting2));
+        System.assert(targetingSpecShoppingRetargeting2.equals(targetingSpecShoppingRetargeting1));
+        System.assert(targetingSpecShoppingRetargeting3.equals(targetingSpecShoppingRetargeting4));
+        System.assert(targetingSpecShoppingRetargeting4.equals(targetingSpecShoppingRetargeting3));
     }
 
     @isTest
     private static void notEqualsDifferentType() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING1 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING2 = new OASTargetingSpecSHOPPINGRETARGETING();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting1 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting2 = new OASTargetingSpecShoppingRetargeting();
 
-        System.assertEquals(false, targetingSpecSHOPPINGRETARGETING1.equals('foo'));
-        System.assertEquals(false, targetingSpecSHOPPINGRETARGETING2.equals('foo'));
+        System.assertEquals(false, targetingSpecShoppingRetargeting1.equals('foo'));
+        System.assertEquals(false, targetingSpecShoppingRetargeting2.equals('foo'));
     }
 
     @isTest
     private static void notEqualsNull() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING1 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING2 = new OASTargetingSpecSHOPPINGRETARGETING();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING3;
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting1 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting2 = new OASTargetingSpecShoppingRetargeting();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting3;
 
-        System.assertEquals(false, targetingSpecSHOPPINGRETARGETING1.equals(targetingSpecSHOPPINGRETARGETING3));
-        System.assertEquals(false, targetingSpecSHOPPINGRETARGETING2.equals(targetingSpecSHOPPINGRETARGETING3));
+        System.assertEquals(false, targetingSpecShoppingRetargeting1.equals(targetingSpecShoppingRetargeting3));
+        System.assertEquals(false, targetingSpecShoppingRetargeting2.equals(targetingSpecShoppingRetargeting3));
     }
 
     @isTest
     private static void consistentHashCodeValue() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING1 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING2 = new OASTargetingSpecSHOPPINGRETARGETING();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting1 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting2 = new OASTargetingSpecShoppingRetargeting();
 
-        System.assertEquals(targetingSpecSHOPPINGRETARGETING1.hashCode(), targetingSpecSHOPPINGRETARGETING1.hashCode());
-        System.assertEquals(targetingSpecSHOPPINGRETARGETING2.hashCode(), targetingSpecSHOPPINGRETARGETING2.hashCode());
+        System.assertEquals(targetingSpecShoppingRetargeting1.hashCode(), targetingSpecShoppingRetargeting1.hashCode());
+        System.assertEquals(targetingSpecShoppingRetargeting2.hashCode(), targetingSpecShoppingRetargeting2.hashCode());
     }
 
     @isTest
     private static void equalInstancesHaveSameHashCode() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING1 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING2 = OASTargetingSpecSHOPPINGRETARGETING.getExample();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING3 = new OASTargetingSpecSHOPPINGRETARGETING();
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING4 = new OASTargetingSpecSHOPPINGRETARGETING();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting1 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting2 = OASTargetingSpecShoppingRetargeting.getExample();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting3 = new OASTargetingSpecShoppingRetargeting();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting4 = new OASTargetingSpecShoppingRetargeting();
 
-        System.assert(targetingSpecSHOPPINGRETARGETING1.equals(targetingSpecSHOPPINGRETARGETING2));
-        System.assert(targetingSpecSHOPPINGRETARGETING3.equals(targetingSpecSHOPPINGRETARGETING4));
-        System.assertEquals(targetingSpecSHOPPINGRETARGETING1.hashCode(), targetingSpecSHOPPINGRETARGETING2.hashCode());
-        System.assertEquals(targetingSpecSHOPPINGRETARGETING3.hashCode(), targetingSpecSHOPPINGRETARGETING4.hashCode());
+        System.assert(targetingSpecShoppingRetargeting1.equals(targetingSpecShoppingRetargeting2));
+        System.assert(targetingSpecShoppingRetargeting3.equals(targetingSpecShoppingRetargeting4));
+        System.assertEquals(targetingSpecShoppingRetargeting1.hashCode(), targetingSpecShoppingRetargeting2.hashCode());
+        System.assertEquals(targetingSpecShoppingRetargeting3.hashCode(), targetingSpecShoppingRetargeting4.hashCode());
     }
 
     @isTest
     private static void maintainRenamedProperties() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING = new OASTargetingSpecSHOPPINGRETARGETING();
-        Map<String, String> x-property-mappings = targetingSpecSHOPPINGRETARGETING.getx-property-mappings();
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting = new OASTargetingSpecShoppingRetargeting();
+        Map<String, String> x-property-mappings = targetingSpecShoppingRetargeting.getx-property-mappings();
+        System.assertEquals('exclusionWindow', x-property-mappings.get('exclusion_window'));
         System.assertEquals('lookbackWindow', x-property-mappings.get('lookback_window'));
         System.assertEquals('tagTypes', x-property-mappings.get('tag_types'));
-        System.assertEquals('exclusionWindow', x-property-mappings.get('exclusion_window'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
-        OASTargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING = new OASTargetingSpecSHOPPINGRETARGETING();
-        System.assertEquals(new List<Integer>(), targetingSpecSHOPPINGRETARGETING.tagTypes);
-        System.assertEquals(null, targetingSpecSHOPPINGRETARGETING.lookbackWindow);
-        System.assertEquals(null, targetingSpecSHOPPINGRETARGETING.exclusionWindow);
+        OASTargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting = new OASTargetingSpecShoppingRetargeting();
+        System.assertEquals(new List<Integer>(), targetingSpecShoppingRetargeting.tagTypes);
+        System.assertEquals(null, targetingSpecShoppingRetargeting.exclusionWindow);
+        System.assertEquals(null, targetingSpecShoppingRetargeting.lookbackWindow);
     }
 }

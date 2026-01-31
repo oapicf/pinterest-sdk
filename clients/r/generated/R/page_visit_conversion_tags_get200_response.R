@@ -7,16 +7,16 @@
 #' @title PageVisitConversionTagsGet200Response
 #' @description PageVisitConversionTagsGet200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{ConversionEventResponse})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{ConversionEventResponse})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PageVisitConversionTagsGet200Response <- R6::R6Class(
   "PageVisitConversionTagsGet200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new PageVisitConversionTagsGet200Response class.
@@ -69,13 +69,13 @@ PageVisitConversionTagsGet200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PageVisitConversionTagsGet200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        PageVisitConversionTagsGet200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         PageVisitConversionTagsGet200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        PageVisitConversionTagsGet200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(PageVisitConversionTagsGet200ResponseObject)
     },
@@ -87,11 +87,11 @@ PageVisitConversionTagsGet200Response <- R6::R6Class(
     #' @return the instance of PageVisitConversionTagsGet200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionEventResponse]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionEventResponse]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ PageVisitConversionTagsGet200Response <- R6::R6Class(
     #' @return the instance of PageVisitConversionTagsGet200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionEventResponse]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionEventResponse]", loadNamespace("openapi"))
       self
     },
 

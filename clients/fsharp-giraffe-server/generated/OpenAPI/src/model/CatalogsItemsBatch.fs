@@ -17,9 +17,9 @@ module CatalogsItemsBatch =
   type CatalogsItemsBatch = {
     CatalogType : CatalogsType;
     BatchId : string;
-    CreatedTime : Nullable<DateTime>;
     CompletedTime : Nullable<DateTime>;
-    Status : BatchOperationStatus;
+    CreatedTime : DateTime;
     Items : CreativeAssetsProcessingRecord[];
+    Status : BatchOperationStatus;
   }
   //#endregion

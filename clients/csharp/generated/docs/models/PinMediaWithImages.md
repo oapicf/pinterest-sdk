@@ -5,7 +5,7 @@ Pin with multiple images.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaType** | **string** |  | [optional] 
+**MediaType** | **string** |  | 
 **Items** | [**List&lt;ImageMetadata&gt;**](ImageMetadata.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

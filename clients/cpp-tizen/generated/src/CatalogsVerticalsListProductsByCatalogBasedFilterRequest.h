@@ -51,13 +51,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get Catalog id pertaining to the creative assets product group.
 	 */
 	std::string getCatalogId();
@@ -67,11 +60,11 @@ public:
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
-	CatalogsCreativeAssetsProductGroupFilters getFilters();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -81,6 +74,13 @@ public:
 	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
+
+	/*! \brief Set 
+	 */
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	/*! \brief Get 
+	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
@@ -88,10 +88,10 @@ public:
 	void setLocale(CatalogsLocale  locale);
 
 private:
-	std::string catalog_type;
 	std::string catalog_id;
-	CatalogsCreativeAssetsProductGroupFilters filters;
+	std::string catalog_type;
 	Country country;
+	CatalogsCreativeAssetsProductGroupFilters filters;
 	CatalogsLocale locale;
 	void __init();
 	void __cleanup();

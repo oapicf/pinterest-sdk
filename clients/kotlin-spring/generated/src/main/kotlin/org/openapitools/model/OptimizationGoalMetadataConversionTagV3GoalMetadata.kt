@@ -22,8 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param conversionEvent 
  * @param conversionTagId 
  * @param cpaGoalValueInMicroCurrency 
- * @param isRoasOptimized ROAS optimization is not supported
+ * @param isRoasOptimized Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
  * @param learningModeType Conversion learning model type
+ * @param reportingEvent Event name for custom or standard events mapped to an oCPM model
  */
 data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
 
@@ -42,11 +43,14 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
     @Schema(example = "null", description = "")
     @get:JsonProperty("cpa_goal_value_in_micro_currency") val cpaGoalValueInMicroCurrency: kotlin.String? = null,
 
-    @Schema(example = "null", description = "ROAS optimization is not supported")
+    @Schema(example = "null", description = "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.")
     @get:JsonProperty("is_roas_optimized") val isRoasOptimized: kotlin.Boolean? = null,
 
     @Schema(example = "ACTIVE", description = "Conversion learning model type")
-    @get:JsonProperty("learning_mode_type") val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null
+    @get:JsonProperty("learning_mode_type") val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null,
+
+    @Schema(example = "INITIATE_CHECKOUT", description = "Event name for custom or standard events mapped to an oCPM model")
+    @get:JsonProperty("reporting_event") val reportingEvent: kotlin.String? = null
 ) {
 
     /**

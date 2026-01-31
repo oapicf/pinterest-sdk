@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;GetBusinessAssetsResponse&gt;](GetBusinessAssetsResponse.md)
 `bookmark` | string
+`items` | [Array&lt;GetBusinessAssetsResponse&gt;](GetBusinessAssetsResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { BusinessAssetsGet200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies BusinessAssetsGet200Response
 
 console.log(example)

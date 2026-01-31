@@ -7,14 +7,14 @@ goog.provide('API.Client.CatalogsProductGroupCurrencyCriteria');
 API.Client.CatalogsProductGroupCurrencyCriteria = function() {}
 
 /**
- * @type {!API.Client.NonNullableCatalogsCurrency}
- * @export
- */
-API.Client.CatalogsProductGroupCurrencyCriteria.prototype.values;
-
-/**
  * @type {!boolean}
  * @export
  */
 API.Client.CatalogsProductGroupCurrencyCriteria.prototype.negated;
+
+/**
+ * @type {!API.Client.NonNullableCatalogsCurrency}
+ * @export
+ */
+API.Client.CatalogsProductGroupCurrencyCriteria.prototype.values;
 

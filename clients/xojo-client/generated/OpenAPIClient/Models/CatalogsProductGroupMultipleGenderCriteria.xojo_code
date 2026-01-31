@@ -2,12 +2,12 @@
 Protected Class CatalogsProductGroupMultipleGenderCriteria
 
 	#tag Property, Flags = &h0
-		values() As Gender
+		negated As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		negated As Xoson.O.OptionalBoolean
+		values() As Gender
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class CatalogsProductGroupMultipleGenderCriteria
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="values"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Gender"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="negated"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="values"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Gender"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

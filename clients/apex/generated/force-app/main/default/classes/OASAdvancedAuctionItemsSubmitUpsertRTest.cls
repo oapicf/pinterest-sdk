@@ -81,9 +81,10 @@ private class OASAdvancedAuctionItemsSubmitUpsertRTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASAdvancedAuctionItemsSubmitUpsertR advancedAuctionItemsSubmitUpsertRecord = new OASAdvancedAuctionItemsSubmitUpsertR();
+        System.assertEquals(new List<OASAdvancedAuctionOperationError>(), advancedAuctionItemsSubmitUpsertRecord.errors);
         System.assertEquals(new List<OASUpdateMaskBidOptionField>(), advancedAuctionItemsSubmitUpsertRecord.updateMask);
-        System.assertEquals(null, advancedAuctionItemsSubmitUpsertRecord.itemId);
         System.assertEquals(null, advancedAuctionItemsSubmitUpsertRecord.country);
+        System.assertEquals(null, advancedAuctionItemsSubmitUpsertRecord.itemId);
         System.assertEquals(null, advancedAuctionItemsSubmitUpsertRecord.language);
         System.assertEquals(null, advancedAuctionItemsSubmitUpsertRecord.bidOptions);
     }

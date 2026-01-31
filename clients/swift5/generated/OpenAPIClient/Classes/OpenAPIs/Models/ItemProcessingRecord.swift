@@ -13,36 +13,36 @@ import AnyCodable
 /** Object describing an item processing record */
 public struct ItemProcessingRecord: Codable, JSONEncodable, Hashable {
 
-    /** The catalog item id in the merchant namespace */
-    public var itemId: String?
     /** Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
     public var errors: [ItemValidationEvent]?
+    /** The catalog item id in the merchant namespace */
+    public var itemId: String?
+    public var status: ItemProcessingStatus?
     /** Array with the validation warnings for the item processing record */
     public var warnings: [ItemValidationEvent]?
-    public var status: ItemProcessingStatus?
 
-    public init(itemId: String? = nil, errors: [ItemValidationEvent]? = nil, warnings: [ItemValidationEvent]? = nil, status: ItemProcessingStatus? = nil) {
-        self.itemId = itemId
+    public init(errors: [ItemValidationEvent]? = nil, itemId: String? = nil, status: ItemProcessingStatus? = nil, warnings: [ItemValidationEvent]? = nil) {
         self.errors = errors
-        self.warnings = warnings
+        self.itemId = itemId
         self.status = status
+        self.warnings = warnings
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
         case errors
-        case warnings
+        case itemId = "item_id"
         case status
+        case warnings
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(errors, forKey: .errors)
-        try container.encodeIfPresent(warnings, forKey: .warnings)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(warnings, forKey: .warnings)
     }
 }
 

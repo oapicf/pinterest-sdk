@@ -13,18 +13,20 @@ Name | Type
 `carouselIosDeepLinks` | Array&lt;string&gt;
 `clickTrackingUrl` | string
 `creativeType` | [CreativeType](CreativeType.md)
+`customizableCtaType` | [CustomizableCTAType](CustomizableCTAType.md)
 `destinationUrl` | string
+`disclosureType` | [DisclosureType](DisclosureType.md)
+`disclosureUrl` | string
+`gridClickType` | [GridClickType](GridClickType.md)
 `iosDeepLink` | string
 `isPinDeleted` | boolean
 `isRemovable` | boolean
+`leadFormId` | string
 `name` | string
+`quizPinData` | [QuizPinData](QuizPinData.md)
 `status` | [EntityStatus](EntityStatus.md)
 `trackingUrls` | [TrackingUrls](TrackingUrls.md)
 `viewTrackingUrl` | string
-`leadFormId` | string
-`gridClickType` | [GridClickType](GridClickType.md)
-`customizableCtaType` | string
-`quizPinData` | [QuizPinData](QuizPinData.md)
 `pinId` | string
 `adAccountId` | string
 `campaignId` | string
@@ -34,9 +36,9 @@ Name | Type
 `rejectedReasons` | Array&lt;string&gt;
 `rejectionLabels` | Array&lt;string&gt;
 `reviewStatus` | string
+`summaryStatus` | [PinPromotionSummaryStatus](PinPromotionSummaryStatus.md)
 `type` | string
 `updatedTime` | number
-`summaryStatus` | [PinPromotionSummaryStatus](PinPromotionSummaryStatus.md)
 
 ## Example
 
@@ -52,18 +54,20 @@ const example = {
   "carouselIosDeepLinks": null,
   "clickTrackingUrl": null,
   "creativeType": null,
+  "customizableCtaType": null,
   "destinationUrl": null,
+  "disclosureType": null,
+  "disclosureUrl": null,
+  "gridClickType": null,
   "iosDeepLink": null,
   "isPinDeleted": false,
   "isRemovable": false,
+  "leadFormId": null,
   "name": null,
+  "quizPinData": null,
   "status": null,
   "trackingUrls": null,
   "viewTrackingUrl": null,
-  "leadFormId": null,
-  "gridClickType": null,
-  "customizableCtaType": LEARN_MORE,
-  "quizPinData": null,
   "pinId": 394205773611545468,
   "adAccountId": 549755885175,
   "campaignId": 626735565838,
@@ -73,9 +77,9 @@ const example = {
   "rejectedReasons": null,
   "rejectionLabels": null,
   "reviewStatus": PENDING,
+  "summaryStatus": null,
   "type": pinpromotion,
   "updatedTime": 1451431341,
-  "summaryStatus": null,
 } satisfies AdResponse
 
 console.log(example)

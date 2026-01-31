@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**frequency** | **Int** |  | [optional] 
+**frequency** | **Int** | Frequency target can only be between 2 and 20 | [optional] 
 **timerange** | **String** | User entity counts time range | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

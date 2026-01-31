@@ -6,11 +6,12 @@ Summarized pin information
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] [default to undefined]
 **alt_text** | **string** |  | [optional] [default to undefined]
-**link** | **string** |  | [optional] [default to undefined]
-**title** | **string** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
+**id** | **string** |  | [optional] [default to undefined]
+**link** | **string** |  | [optional] [default to undefined]
+**media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] [default to undefined]
+**title** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,11 +19,12 @@ Name | Type | Description | Notes
 import { SummaryPin } from './api';
 
 const instance: SummaryPin = {
-    media,
     alt_text,
-    link,
-    title,
     description,
+    id,
+    link,
+    media,
+    title,
 };
 ```
 

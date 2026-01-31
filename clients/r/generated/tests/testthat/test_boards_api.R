@@ -83,8 +83,8 @@ test_that("BoardsCreate", {
   # tests for BoardsCreate
   # base path: https://api.pinterest.com/v5
   # Create board
-  # Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-  # @param board Board Create a board using a single board json object.
+  # Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+  # @param board_create BoardCreate 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [Board]
 
@@ -96,8 +96,8 @@ test_that("BoardsDelete", {
   # tests for BoardsDelete
   # base path: https://api.pinterest.com/v5
   # Delete board
-  # Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-  # @param board_id character Unique identifier of a board.
+  # Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+  # @param board_id character 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [Void]
 
@@ -109,8 +109,8 @@ test_that("BoardsGet", {
   # tests for BoardsGet
   # base path: https://api.pinterest.com/v5
   # Get board
-  # Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-  # @param board_id character Unique identifier of a board.
+  # Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+  # @param board_id character 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [Board]
 
@@ -122,11 +122,11 @@ test_that("BoardsList", {
   # tests for BoardsList
   # base path: https://api.pinterest.com/v5
   # List boards
-  # Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+  # Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
+  # @param privacy BoardPrivacyFilter The privacy level of the board (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param privacy character Privacy setting for a board. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BoardsList200Response]
 
   # uncomment below to test the operation
@@ -141,9 +141,9 @@ test_that("BoardsListPins", {
   # @param board_id character Unique identifier of a board.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param creative_types array[character] Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+  # @param creative_types array[CreativeType] Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @param pin_metrics character Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
+  # @param pin_metrics character Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
   # @return [BoardsListPins200Response]
 
   # uncomment below to test the operation
@@ -154,11 +154,11 @@ test_that("BoardsUpdate", {
   # tests for BoardsUpdate
   # base path: https://api.pinterest.com/v5
   # Update board
-  # Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-  # @param board_id character Unique identifier of a board.
-  # @param board_update BoardUpdate Update a board.
+  # Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+  # @param board_id character 
+  # @param board_with_update_privacy_update BoardWithUpdatePrivacyUpdate 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [Board]
+  # @return [BoardWithUpdatePrivacy]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

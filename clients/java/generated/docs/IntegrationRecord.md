@@ -8,22 +8,22 @@ Integration record
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] |
-|**externalBusinessId** | **String** |  |  [optional] |
-|**connectedMerchantId** | **String** |  |  [optional] |
-|**connectedUserId** | **String** |  |  [optional] [readonly] |
+|**additionalId1** | **String** |  |  [optional] |
 |**connectedAdvertiserId** | **String** |  |  [optional] [readonly] |
 |**connectedLbaId** | **String** |  |  [optional] |
+|**connectedMerchantId** | **String** |  |  [optional] |
 |**connectedTagId** | **String** |  |  [optional] |
+|**connectedUserId** | **String** |  |  [optional] [readonly] |
+|**createdTime** | **Integer** |  |  [optional] |
+|**externalBusinessId** | **String** |  |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**partnerAccessToken** | **String** |  |  [optional] |
-|**partnerRefreshToken** | **String** |  |  [optional] |
-|**partnerPrimaryEmail** | **String** |  |  [optional] |
 |**partnerAccessTokenExpiry** | **Integer** |  |  [optional] |
+|**partnerMetadata** | **String** |  |  [optional] |
+|**partnerPrimaryEmail** | **String** |  |  [optional] |
+|**partnerRefreshToken** | **String** |  |  [optional] |
 |**partnerRefreshTokenExpiry** | **Integer** |  |  [optional] |
 |**scopes** | **String** |  |  [optional] |
-|**partnerMetadata** | **String** |  |  [optional] |
-|**additionalId1** | **String** |  |  [optional] |
-|**createdTime** | **Integer** |  |  [optional] |
 |**updatedTime** | **Integer** |  |  [optional] |
 
 

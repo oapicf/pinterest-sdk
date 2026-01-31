@@ -23,6 +23,18 @@ public class ExecuteReport {
     List<String> jsonFiles = null;
     Configuration configuration = null;
     ReportBuilder reportBuilder = null;
+    reportOutputDirectory = new File("./report/account_claiming-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/account_claiming-report-json/account_claiming.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
     reportOutputDirectory = new File("./report/ad_accounts-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/ad_accounts-report-json/ad_accounts.json");
@@ -155,9 +167,93 @@ public class ExecuteReport {
 
     reportBuilder = new ReportBuilder(jsonFiles, configuration);
     reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/catalog_feeds-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/catalog_feeds-report-json/catalog_feeds.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/catalog_items-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/catalog_items-report-json/catalog_items.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/catalog_product_groups-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/catalog_product_groups-report-json/catalog_product_groups.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/catalog_regions-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/catalog_regions-report-json/catalog_regions.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/catalog_reports-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/catalog_reports-report-json/catalog_reports.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/catalog_supplemental-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/catalog_supplemental-report-json/catalog_supplemental.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
     reportOutputDirectory = new File("./report/catalogs-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/catalogs-report-json/catalogs.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/conversion_eqs-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/conversion_eqs-report-json/conversion_eqs.json");
 
     configuration = new Configuration(reportOutputDirectory,projectName);
     // optionally only if you need
@@ -275,6 +371,18 @@ public class ExecuteReport {
 
     reportBuilder = new ReportBuilder(jsonFiles, configuration);
     reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/msot_events-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/msot_events-report-json/msot_events.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
     reportOutputDirectory = new File("./report/oauth-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/oauth-report-json/oauth.json");
@@ -314,6 +422,18 @@ public class ExecuteReport {
     reportOutputDirectory = new File("./report/product_group_promotions-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/product_group_promotions-report-json/product_group_promotions.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/promotions-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/promotions-report-json/promotions.json");
 
     configuration = new Configuration(reportOutputDirectory,projectName);
     // optionally only if you need

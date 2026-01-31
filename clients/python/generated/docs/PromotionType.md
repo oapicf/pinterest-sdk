@@ -1,0 +1,55 @@
+# PromotionType
+
+Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+
+## Enum
+
+* `VARIABLE` (value: `'VARIABLE'`)
+
+* `SITEWIDE` (value: `'SITEWIDE'`)
+
+* `CHECKOUT` (value: `'CHECKOUT'`)
+
+* `SAVE_X_ON_Y` (value: `'SAVE_X_ON_Y'`)
+
+* `BUY_X_GET_Y` (value: `'BUY_X_GET_Y'`)
+
+* `SPEND_X_SAVE_Y` (value: `'SPEND_X_SAVE_Y'`)
+
+* `FREE_SHIPPING` (value: `'FREE_SHIPPING'`)
+
+* `FREE_SHIPPING_MINIMUM` (value: `'FREE_SHIPPING_MINIMUM'`)
+
+* `FREE_SHIPPING_WITH_DISCOUNT` (value: `'FREE_SHIPPING_WITH_DISCOUNT'`)
+
+* `SITEWIDE_IN_STORES` (value: `'SITEWIDE_IN_STORES'`)
+
+* `EXTRA_PERCENT_OFF` (value: `'EXTRA_PERCENT_OFF'`)
+
+* `GIFT_WITH_PURCHASE` (value: `'GIFT_WITH_PURCHASE'`)
+
+* `GIFT_WITH_PURCHASE_MINIMUM` (value: `'GIFT_WITH_PURCHASE_MINIMUM'`)
+
+* `FIXED` (value: `'FIXED'`)
+
+* `PERCENT_OFF_CLEARANCE` (value: `'PERCENT_OFF_CLEARANCE'`)
+
+* `X_OFF_Y` (value: `'X_OFF_Y'`)
+
+* `GIFT_WITH_FIRST_PURCHASE` (value: `'GIFT_WITH_FIRST_PURCHASE'`)
+
+* `BUY_X_GET_ONE_FREE` (value: `'BUY_X_GET_ONE_FREE'`)
+
+* `CASH_BACK` (value: `'CASH_BACK'`)
+
+* `POINTS_ON_ALL_PURCHASES` (value: `'POINTS_ON_ALL_PURCHASES'`)
+
+* `BONUS` (value: `'BONUS'`)
+
+* `POINTS_WITH_PURCHASE` (value: `'POINTS_WITH_PURCHASE'`)
+
+* `CUSTOM` (value: `'CUSTOM'`)
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

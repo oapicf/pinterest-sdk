@@ -41,7 +41,7 @@ Update asset groups.
 Update a batch of asset groups with the specified parameters.
 <a name="BusinessAssetMembersGet"></a>
 # **BusinessAssetMembersGet**
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
 
 Get members with access to asset
 

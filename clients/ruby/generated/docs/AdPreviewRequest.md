@@ -15,7 +15,8 @@ PinterestSdkClient::AdPreviewRequest.openapi_one_of
 # =>
 # [
 #   :'AdPreviewCreateFromImage',
-#   :'AdPreviewCreateFromPin'
+#   :'AdPreviewCreateFromPin',
+#   :'AdPreviewShopping'
 # ]
 ```
 
@@ -45,5 +46,6 @@ PinterestSdkClient::AdPreviewRequest.build(data_that_doesnt_match)
 
 - `AdPreviewCreateFromImage`
 - `AdPreviewCreateFromPin`
+- `AdPreviewShopping`
 - `nil` (if no type matches)
 

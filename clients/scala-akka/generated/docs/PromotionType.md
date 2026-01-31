@@ -1,0 +1,9 @@
+
+
+# PromotionType
+
+## Enum
+
+
+
+

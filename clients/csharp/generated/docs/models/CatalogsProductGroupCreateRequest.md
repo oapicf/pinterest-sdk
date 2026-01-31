@@ -5,9 +5,9 @@ Request object for creating a product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
 **FeedId** | **string** | Catalog Feed id pertaining to the catalog product group. | 
+**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
+**Name** | **string** |  | 
 **Description** | **string** |  | [optional] 
 **IsFeatured** | **bool** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
 

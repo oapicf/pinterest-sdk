@@ -14,19 +14,19 @@ import AnyCodable
 public struct DetailedError: Codable, JSONEncodable, Hashable {
 
     public var code: Int
-    public var message: String
     public var details: AnyCodable
+    public var message: String
 
-    public init(code: Int, message: String, details: AnyCodable) {
+    public init(code: Int, details: AnyCodable, message: String) {
         self.code = code
-        self.message = message
         self.details = details
+        self.message = message
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case code
-        case message
         case details
+        case message
     }
 
     // Encodable protocol methods
@@ -34,8 +34,8 @@ public struct DetailedError: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(code, forKey: .code)
-        try container.encode(message, forKey: .message)
         try container.encode(details, forKey: .details)
+        try container.encode(message, forKey: .message)
     }
 }
 

@@ -7,7 +7,7 @@ Request object for creating a catalog.
 
 Name | Type
 ------------ | -------------
-`catalogType` | string
+`catalogType` | [CatalogsType](CatalogsType.md)
 `name` | string
 
 ## Example

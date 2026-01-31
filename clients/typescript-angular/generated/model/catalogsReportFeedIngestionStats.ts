@@ -10,7 +10,6 @@
 
 
 export interface CatalogsReportFeedIngestionStats { 
-    report_type?: CatalogsReportFeedIngestionStats.ReportTypeEnum;
     /**
      * ID of the catalog entity.
      */
@@ -31,6 +30,7 @@ export interface CatalogsReportFeedIngestionStats {
      * Number of occurrences of the issue
      */
     occurrences?: number;
+    report_type?: CatalogsReportFeedIngestionStats.ReportTypeEnum;
     /**
      * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
      */

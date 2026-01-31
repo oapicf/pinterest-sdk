@@ -14,6 +14,30 @@ module CampaignsApiHandlers =
     /// 
     /// </summary>
 
+    //#region AdPinsAnalytics
+    /// <summary>
+    /// Get pins analytics
+    /// </summary>
+   [<FunctionName("AdPinsAnalytics")>]
+    let AdPinsAnalytics
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/ad_accounts/{ad_account_id}/pins/analytics")>]
+        req:HttpRequest ) =
+
+      let result = CampaignsApiService.AdPinsAnalytics ()
+      match result with
+      | AdPinsAnalyticsStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | AdPinsAnalyticsStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | AdPinsAnalyticsDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region CampaignTargetingAnalyticsGet
     /// <summary>
     /// Get targeting analytics for campaigns

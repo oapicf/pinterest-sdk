@@ -45,7 +45,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class BusinessAccessAssetsApiController implements BusinessAccessAssetsApi {
     private final ObjectMapper objectMapper;
@@ -122,6 +122,7 @@ public class BusinessAccessAssetsApiController implements BusinessAccessAssetsAp
 
     public ResponseEntity<BusinessAssetMembersGet200Response> businessAssetMembersGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
         @ApiParam(value = "Unique identifier of a business asset.",required=true ) @PathVariable("asset_id") String assetId,
+        @ApiParam(value = "Fetches system users if True. Fetches regular user employees if False.", defaultValue = "false")  @RequestParam(value = "fetch_system_users", required = false, defaultValue="false") Boolean fetchSystemUsers,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
         @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,
@@ -164,7 +165,7 @@ public class BusinessAccessAssetsApiController implements BusinessAccessAssetsAp
         @ApiParam(value = "A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.")  @RequestParam(value = "permissions", required = false) List<PermissionsWithOwner> permissions,
         @ApiParam(value = "A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.")  @RequestParam(value = "child_asset_id", required = false) String childAssetId,
         @ApiParam(value = "An asset group unique identifier. Used to fetch assets contained within the specified asset group.")  @RequestParam(value = "asset_group_id", required = false) String assetGroupId,
-        @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues = "AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue = "AD_ACCOUNT")  @RequestParam(value = "asset_type", required = false, defaultValue="AD_ACCOUNT") String assetType,
+        @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues = "AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER", defaultValue = "AD_ACCOUNT")  @RequestParam(value = "asset_type", required = false, defaultValue="AD_ACCOUNT") String assetType,
         @ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
         @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
@@ -185,7 +186,7 @@ public class BusinessAccessAssetsApiController implements BusinessAccessAssetsAp
 
     public ResponseEntity<BusinessMemberAssetsGet200Response> businessMemberAssetsGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
         @ApiParam(value = "The member id to fetch assets for.",required=true ) @PathVariable("member_id") String memberId,
-        @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues = "AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue = "AD_ACCOUNT")  @RequestParam(value = "asset_type", required = false, defaultValue="AD_ACCOUNT") String assetType,
+        @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues = "AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER", defaultValue = "AD_ACCOUNT")  @RequestParam(value = "asset_type", required = false, defaultValue="AD_ACCOUNT") String assetType,
         @ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
         @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
@@ -241,7 +242,7 @@ public class BusinessAccessAssetsApiController implements BusinessAccessAssetsAp
     public ResponseEntity<BusinessPartnerAssetAccessGet200Response> businessPartnerAssetAccessGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
         @ApiParam(value = "The partner id to be bound to the Business",required=true ) @PathVariable("partner_id") String partnerId,
         @ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", allowableValues = "INTERNAL, EXTERNAL", defaultValue = "INTERNAL")  @RequestParam(value = "partner_type", required = false, defaultValue="INTERNAL") PartnerType partnerType,
-        @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues = "AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue = "AD_ACCOUNT")  @RequestParam(value = "asset_type", required = false, defaultValue="AD_ACCOUNT") String assetType,
+        @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues = "AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER", defaultValue = "AD_ACCOUNT")  @RequestParam(value = "asset_type", required = false, defaultValue="AD_ACCOUNT") String assetType,
         @ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,
         @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,

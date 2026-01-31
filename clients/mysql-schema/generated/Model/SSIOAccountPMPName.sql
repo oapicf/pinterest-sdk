@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `SSIOAccountPMPName`
 --
-SELECT `name`, `id` FROM `SSIOAccountPMPName` WHERE 1;
+SELECT `id`, `name` FROM `SSIOAccountPMPName` WHERE 1;
 
 --
 -- INSERT template for table `SSIOAccountPMPName`
 --
-INSERT INTO `SSIOAccountPMPName`(`name`, `id`) VALUES (?, ?);
+INSERT INTO `SSIOAccountPMPName`(`id`, `name`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `SSIOAccountPMPName`
 --
-UPDATE `SSIOAccountPMPName` SET `name` = ?, `id` = ? WHERE 1;
+UPDATE `SSIOAccountPMPName` SET `id` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `SSIOAccountPMPName`

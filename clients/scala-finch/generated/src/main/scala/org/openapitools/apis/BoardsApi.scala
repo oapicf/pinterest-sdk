@@ -4,12 +4,17 @@ import java.io._
 import org.openapitools._
 import org.openapitools.models._
 import org.openapitools.models.Board
+import org.openapitools.models.BoardCreate
+import org.openapitools.models.BoardPrivacyFilter
 import org.openapitools.models.BoardSection
 import org.openapitools.models.BoardSectionsList200Response
-import org.openapitools.models.BoardUpdate
+import org.openapitools.models.BoardWithUpdatePrivacy
+import org.openapitools.models.BoardWithUpdatePrivacyUpdate
 import org.openapitools.models.BoardsList200Response
 import org.openapitools.models.BoardsListPins200Response
+import org.openapitools.models.CreativeType
 import org.openapitools.models.Error
+import org.openapitools.models.PinterestLibError
 import scala.collection.immutable.Seq
 import io.finch.circe._
 import io.circe.generic.semiauto._
@@ -139,8 +144,8 @@ object BoardsApi {
         * @return An endpoint representing a Board
         */
         private def boards/create(da: DataAccessor): Endpoint[Board] =
-        post("boards" :: jsonBody[Board] :: paramOption("ad_account_id")) { (board: Board, adAccountId: Option[String]) =>
-          da.Boards_boards/create(board, adAccountId) match {
+        post("boards" :: jsonBody[BoardCreate] :: paramOption("ad_account_id")) { (boardCreate: BoardCreate, adAccountId: Option[String]) =>
+          da.Boards_boards/create(boardCreate, adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -181,8 +186,8 @@ object BoardsApi {
         * @return An endpoint representing a BoardsList200Response
         */
         private def boards/list(da: DataAccessor): Endpoint[BoardsList200Response] =
-        get("boards" :: paramOption("ad_account_id") :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("privacy")) { (adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int], privacy: Option[String]) =>
-          da.Boards_boards/list(adAccountId, bookmark, pageSize, privacy) match {
+        get("boards" :: paramOption("ad_account_id") :: paramOption("privacy").map(_.map(_.toBoardPrivacyFilter)) :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (adAccountId: Option[String], privacy: Option[BoardPrivacyFilter], bookmark: Option[String], pageSize: Option[Int]) =>
+          da.Boards_boards/list(adAccountId, privacy, bookmark, pageSize) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -195,7 +200,7 @@ object BoardsApi {
         * @return An endpoint representing a BoardsListPins200Response
         */
         private def boards/listPins(da: DataAccessor): Endpoint[BoardsListPins200Response] =
-        get("boards" :: string :: "pins" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: params("creative_types") :: paramOption("ad_account_id") :: paramOption("pin_metrics").map(_.map(_.toBoolean))) { (boardId: String, bookmark: Option[String], pageSize: Option[Int], creativeTypes: Seq[String], adAccountId: Option[String], pinMetrics: Option[Boolean]) =>
+        get("boards" :: string :: "pins" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: params("creative_types") :: paramOption("ad_account_id") :: paramOption("pin_metrics").map(_.map(_.toBoolean))) { (boardId: String, bookmark: Option[String], pageSize: Option[Int], creativeTypes: Seq[CreativeType], adAccountId: Option[String], pinMetrics: Option[Boolean]) =>
           da.Boards_boards/listPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
@@ -206,11 +211,11 @@ object BoardsApi {
 
         /**
         * 
-        * @return An endpoint representing a Board
+        * @return An endpoint representing a BoardWithUpdatePrivacy
         */
-        private def boards/update(da: DataAccessor): Endpoint[Board] =
-        patch("boards" :: string :: jsonBody[BoardUpdate] :: paramOption("ad_account_id")) { (boardId: String, boardUpdate: BoardUpdate, adAccountId: Option[String]) =>
-          da.Boards_boards/update(boardId, boardUpdate, adAccountId) match {
+        private def boards/update(da: DataAccessor): Endpoint[BoardWithUpdatePrivacy] =
+        patch("boards" :: string :: jsonBody[BoardWithUpdatePrivacyUpdate] :: paramOption("ad_account_id")) { (boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: Option[String]) =>
+          da.Boards_boards/update(boardId, boardWithUpdatePrivacyUpdate, adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

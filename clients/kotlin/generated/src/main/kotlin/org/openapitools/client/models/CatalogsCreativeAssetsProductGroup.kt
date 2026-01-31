@@ -23,43 +23,43 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogType 
- * @param id ID of the creative assets product group.
- * @param filters 
  * @param catalogId Catalog id pertaining to the creative assets product group.
- * @param name Name of creative assets product group
- * @param description 
+ * @param catalogType 
+ * @param filters 
+ * @param id ID of the creative assets product group.
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
+ * @param description 
+ * @param name Name of creative assets product group
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
 
 
 data class CatalogsCreativeAssetsProductGroup (
 
+    /* Catalog id pertaining to the creative assets product group. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String,
+
     @Json(name = "catalog_type")
     val catalogType: CatalogsCreativeAssetsProductGroup.CatalogType,
+
+    @Json(name = "filters")
+    val filters: CatalogsCreativeAssetsProductGroupFilters,
 
     /* ID of the creative assets product group. */
     @Json(name = "id")
     val id: kotlin.String,
 
-    @Json(name = "filters")
-    val filters: CatalogsCreativeAssetsProductGroupFilters,
-
-    /* Catalog id pertaining to the creative assets product group. */
-    @Json(name = "catalog_id")
-    val catalogId: kotlin.String,
-
-    /* Name of creative assets product group */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    @Json(name = "created_at")
+    val createdAt: kotlin.Int? = null,
 
     @Json(name = "description")
     val description: kotlin.String? = null,
 
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    @Json(name = "created_at")
-    val createdAt: kotlin.Int? = null,
+    /* Name of creative assets product group */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
 
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     @Json(name = "updated_at")

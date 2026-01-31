@@ -21,19 +21,19 @@ public class DeletePartnerAssetAccessBodyAccessesInnerTest {
     }
 
     /**
-     * Test the property 'partnerId'
-     */
-    @Test
-    public void partnerIdTest() {
-        // TODO: test partnerId
-    }
-
-    /**
      * Test the property 'assetId'
      */
     @Test
     public void assetIdTest() {
         // TODO: test assetId
+    }
+
+    /**
+     * Test the property 'partnerId'
+     */
+    @Test
+    public void partnerIdTest() {
+        // TODO: test partnerId
     }
 
     /**

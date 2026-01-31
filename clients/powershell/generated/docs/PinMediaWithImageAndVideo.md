@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaType** | **String** |  | [optional] 
 **Items** | [**PinMediaMetadata[]**](PinMediaMetadata.md) |  | [optional] 
+**MediaType** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaWithImageAndVideo = Initialize-PSOpenAPIToolsPinMediaWithImageAndVideo  -MediaType null `
- -Items null
+$PinMediaWithImageAndVideo = Initialize-PSOpenAPIToolsPinMediaWithImageAndVideo  -Items null `
+ -MediaType null
 ```
 
 - Convert the resource to JSON

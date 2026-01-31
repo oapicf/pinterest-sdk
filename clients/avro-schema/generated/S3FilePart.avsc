@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "S3FilePart",
+  "fields": [
+    {
+      "name": "part_number",
+      "type": "int",
+      "doc": "Part number for upload."
+    },
+    {
+      "name": "presigned_url",
+      "type": "string",
+      "doc": "Pre-signed URL."
+    }
+  ]
+
+}

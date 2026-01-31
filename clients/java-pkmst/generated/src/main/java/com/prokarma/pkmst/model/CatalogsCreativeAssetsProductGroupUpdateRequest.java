@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for updating a creative assets product group.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   /**
    * Gets or Sets catalogType
@@ -52,14 +52,14 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("name")
-  private String name;
-
   @JsonProperty("description")
   private String description;
 
   @JsonProperty("filters")
   private CatalogsCreativeAssetsProductGroupFilters filters;
+
+  @JsonProperty("name")
+  private String name;
 
   public CatalogsCreativeAssetsProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -77,24 +77,6 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @ApiModelProperty(value = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public CatalogsCreativeAssetsProductGroupUpdateRequest description(String description) {
@@ -133,6 +115,24 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
     this.filters = filters;
   }
 
+  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @ApiModelProperty(value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,14 +144,14 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
     }
     CatalogsCreativeAssetsProductGroupUpdateRequest catalogsCreativeAssetsProductGroupUpdateRequest = (CatalogsCreativeAssetsProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsCreativeAssetsProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, description, filters, name);
   }
 
   @Override
@@ -160,9 +160,9 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
     sb.append("class CatalogsCreativeAssetsProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

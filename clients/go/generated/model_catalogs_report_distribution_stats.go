@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,21 +20,21 @@ var _ MappedNullable = &CatalogsReportDistributionStats{}
 
 // CatalogsReportDistributionStats struct for CatalogsReportDistributionStats
 type CatalogsReportDistributionStats struct {
-	ReportType *string `json:"report_type,omitempty"`
 	// ID of the catalog entity.
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The event code that a diagnostics aggregated number references
 	Code *int32 `json:"code,omitempty"`
 	// A human-friendly label for the event code (e.g, 'SPAM')
 	CodeLabel *string `json:"code_label,omitempty"`
-	// Title message describing the diagnostic issue
-	Message *string `json:"message,omitempty"`
-	// Number of occurrences of the issue
-	Occurrences *int32 `json:"occurrences,omitempty"`
 	// Indicates if issue makes items ineligible for ads distribution
 	IneligibleForAds *bool `json:"ineligible_for_ads,omitempty"`
 	// Indicates if issue makes items ineligible for organic distribution
 	IneligibleForOrganic *bool `json:"ineligible_for_organic,omitempty"`
+	// Title message describing the diagnostic issue
+	Message *string `json:"message,omitempty"`
+	// Number of occurrences of the issue
+	Occurrences *int32 `json:"occurrences,omitempty"`
+	ReportType *string `json:"report_type,omitempty"`
 }
 
 // NewCatalogsReportDistributionStats instantiates a new CatalogsReportDistributionStats object
@@ -52,38 +52,6 @@ func NewCatalogsReportDistributionStats() *CatalogsReportDistributionStats {
 func NewCatalogsReportDistributionStatsWithDefaults() *CatalogsReportDistributionStats {
 	this := CatalogsReportDistributionStats{}
 	return &this
-}
-
-// GetReportType returns the ReportType field value if set, zero value otherwise.
-func (o *CatalogsReportDistributionStats) GetReportType() string {
-	if o == nil || IsNil(o.ReportType) {
-		var ret string
-		return ret
-	}
-	return *o.ReportType
-}
-
-// GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsReportDistributionStats) GetReportTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ReportType) {
-		return nil, false
-	}
-	return o.ReportType, true
-}
-
-// HasReportType returns a boolean if a field has been set.
-func (o *CatalogsReportDistributionStats) HasReportType() bool {
-	if o != nil && !IsNil(o.ReportType) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportType gets a reference to the given string and assigns it to the ReportType field.
-func (o *CatalogsReportDistributionStats) SetReportType(v string) {
-	o.ReportType = &v
 }
 
 // GetCatalogId returns the CatalogId field value if set, zero value otherwise.
@@ -182,70 +150,6 @@ func (o *CatalogsReportDistributionStats) SetCodeLabel(v string) {
 	o.CodeLabel = &v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
-func (o *CatalogsReportDistributionStats) GetMessage() string {
-	if o == nil || IsNil(o.Message) {
-		var ret string
-		return ret
-	}
-	return *o.Message
-}
-
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsReportDistributionStats) GetMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.Message) {
-		return nil, false
-	}
-	return o.Message, true
-}
-
-// HasMessage returns a boolean if a field has been set.
-func (o *CatalogsReportDistributionStats) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given string and assigns it to the Message field.
-func (o *CatalogsReportDistributionStats) SetMessage(v string) {
-	o.Message = &v
-}
-
-// GetOccurrences returns the Occurrences field value if set, zero value otherwise.
-func (o *CatalogsReportDistributionStats) GetOccurrences() int32 {
-	if o == nil || IsNil(o.Occurrences) {
-		var ret int32
-		return ret
-	}
-	return *o.Occurrences
-}
-
-// GetOccurrencesOk returns a tuple with the Occurrences field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsReportDistributionStats) GetOccurrencesOk() (*int32, bool) {
-	if o == nil || IsNil(o.Occurrences) {
-		return nil, false
-	}
-	return o.Occurrences, true
-}
-
-// HasOccurrences returns a boolean if a field has been set.
-func (o *CatalogsReportDistributionStats) HasOccurrences() bool {
-	if o != nil && !IsNil(o.Occurrences) {
-		return true
-	}
-
-	return false
-}
-
-// SetOccurrences gets a reference to the given int32 and assigns it to the Occurrences field.
-func (o *CatalogsReportDistributionStats) SetOccurrences(v int32) {
-	o.Occurrences = &v
-}
-
 // GetIneligibleForAds returns the IneligibleForAds field value if set, zero value otherwise.
 func (o *CatalogsReportDistributionStats) GetIneligibleForAds() bool {
 	if o == nil || IsNil(o.IneligibleForAds) {
@@ -310,6 +214,102 @@ func (o *CatalogsReportDistributionStats) SetIneligibleForOrganic(v bool) {
 	o.IneligibleForOrganic = &v
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *CatalogsReportDistributionStats) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsReportDistributionStats) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *CatalogsReportDistributionStats) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *CatalogsReportDistributionStats) SetMessage(v string) {
+	o.Message = &v
+}
+
+// GetOccurrences returns the Occurrences field value if set, zero value otherwise.
+func (o *CatalogsReportDistributionStats) GetOccurrences() int32 {
+	if o == nil || IsNil(o.Occurrences) {
+		var ret int32
+		return ret
+	}
+	return *o.Occurrences
+}
+
+// GetOccurrencesOk returns a tuple with the Occurrences field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsReportDistributionStats) GetOccurrencesOk() (*int32, bool) {
+	if o == nil || IsNil(o.Occurrences) {
+		return nil, false
+	}
+	return o.Occurrences, true
+}
+
+// HasOccurrences returns a boolean if a field has been set.
+func (o *CatalogsReportDistributionStats) HasOccurrences() bool {
+	if o != nil && !IsNil(o.Occurrences) {
+		return true
+	}
+
+	return false
+}
+
+// SetOccurrences gets a reference to the given int32 and assigns it to the Occurrences field.
+func (o *CatalogsReportDistributionStats) SetOccurrences(v int32) {
+	o.Occurrences = &v
+}
+
+// GetReportType returns the ReportType field value if set, zero value otherwise.
+func (o *CatalogsReportDistributionStats) GetReportType() string {
+	if o == nil || IsNil(o.ReportType) {
+		var ret string
+		return ret
+	}
+	return *o.ReportType
+}
+
+// GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsReportDistributionStats) GetReportTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ReportType) {
+		return nil, false
+	}
+	return o.ReportType, true
+}
+
+// HasReportType returns a boolean if a field has been set.
+func (o *CatalogsReportDistributionStats) HasReportType() bool {
+	if o != nil && !IsNil(o.ReportType) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportType gets a reference to the given string and assigns it to the ReportType field.
+func (o *CatalogsReportDistributionStats) SetReportType(v string) {
+	o.ReportType = &v
+}
+
 func (o CatalogsReportDistributionStats) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -320,9 +320,6 @@ func (o CatalogsReportDistributionStats) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsReportDistributionStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ReportType) {
-		toSerialize["report_type"] = o.ReportType
-	}
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
@@ -332,17 +329,20 @@ func (o CatalogsReportDistributionStats) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.CodeLabel) {
 		toSerialize["code_label"] = o.CodeLabel
 	}
+	if !IsNil(o.IneligibleForAds) {
+		toSerialize["ineligible_for_ads"] = o.IneligibleForAds
+	}
+	if !IsNil(o.IneligibleForOrganic) {
+		toSerialize["ineligible_for_organic"] = o.IneligibleForOrganic
+	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 	if !IsNil(o.Occurrences) {
 		toSerialize["occurrences"] = o.Occurrences
 	}
-	if !IsNil(o.IneligibleForAds) {
-		toSerialize["ineligible_for_ads"] = o.IneligibleForAds
-	}
-	if !IsNil(o.IneligibleForOrganic) {
-		toSerialize["ineligible_for_organic"] = o.IneligibleForOrganic
+	if !IsNil(o.ReportType) {
+		toSerialize["report_type"] = o.ReportType
 	}
 	return toSerialize, nil
 }

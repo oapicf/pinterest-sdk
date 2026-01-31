@@ -73,7 +73,7 @@ private class OASCatalogsHotelProductGroupCreateReTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelProductGroupCreateRe catalogsHotelProductGroupCreateRequest = new OASCatalogsHotelProductGroupCreateRe();
         Map<String, String> x-property-mappings = catalogsHotelProductGroupCreateRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 }

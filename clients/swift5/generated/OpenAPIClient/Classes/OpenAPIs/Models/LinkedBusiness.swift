@@ -12,42 +12,42 @@ import AnyCodable
 
 public struct LinkedBusiness: Codable, JSONEncodable, Hashable {
 
-    /** Username */
-    public var username: String?
-    /** image_small_url */
-    public var imageSmallUrl: String?
-    /** image_medium_url */
-    public var imageMediumUrl: String?
     /** image_large_url */
     public var imageLargeUrl: String?
+    /** image_medium_url */
+    public var imageMediumUrl: String?
+    /** image_small_url */
+    public var imageSmallUrl: String?
     /** image_xlarge_url */
     public var imageXlargeUrl: String?
+    /** Username */
+    public var username: String?
 
-    public init(username: String? = nil, imageSmallUrl: String? = nil, imageMediumUrl: String? = nil, imageLargeUrl: String? = nil, imageXlargeUrl: String? = nil) {
-        self.username = username
-        self.imageSmallUrl = imageSmallUrl
-        self.imageMediumUrl = imageMediumUrl
+    public init(imageLargeUrl: String? = nil, imageMediumUrl: String? = nil, imageSmallUrl: String? = nil, imageXlargeUrl: String? = nil, username: String? = nil) {
         self.imageLargeUrl = imageLargeUrl
+        self.imageMediumUrl = imageMediumUrl
+        self.imageSmallUrl = imageSmallUrl
         self.imageXlargeUrl = imageXlargeUrl
+        self.username = username
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case username
-        case imageSmallUrl = "image_small_url"
-        case imageMediumUrl = "image_medium_url"
         case imageLargeUrl = "image_large_url"
+        case imageMediumUrl = "image_medium_url"
+        case imageSmallUrl = "image_small_url"
         case imageXlargeUrl = "image_xlarge_url"
+        case username
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(username, forKey: .username)
-        try container.encodeIfPresent(imageSmallUrl, forKey: .imageSmallUrl)
-        try container.encodeIfPresent(imageMediumUrl, forKey: .imageMediumUrl)
         try container.encodeIfPresent(imageLargeUrl, forKey: .imageLargeUrl)
+        try container.encodeIfPresent(imageMediumUrl, forKey: .imageMediumUrl)
+        try container.encodeIfPresent(imageSmallUrl, forKey: .imageSmallUrl)
         try container.encodeIfPresent(imageXlargeUrl, forKey: .imageXlargeUrl)
+        try container.encodeIfPresent(username, forKey: .username)
     }
 }
 

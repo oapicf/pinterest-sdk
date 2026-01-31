@@ -7,8 +7,8 @@ Pin URL-based media source for product pin creation. Currently the field is only
 
 Name | Type
 ------------ | -------------
-`sourceType` | string
 `isAffiliateLink` | boolean
+`sourceType` | string
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { PinMediaSourcePinURL } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceType": null,
   "isAffiliateLink": null,
+  "sourceType": null,
 } satisfies PinMediaSourcePinURL
 
 console.log(example)

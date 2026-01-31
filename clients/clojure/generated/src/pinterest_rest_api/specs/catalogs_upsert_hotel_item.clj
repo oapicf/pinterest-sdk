@@ -8,9 +8,9 @@
 
 (def catalogs-upsert-hotel-item-data
   {
+   (ds/req :attributes) catalogs-hotel-attributes-spec
    (ds/req :hotel_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) catalogs-hotel-attributes-spec
    })
 
 (def catalogs-upsert-hotel-item-spec

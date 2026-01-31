@@ -16,10 +16,10 @@ module CatalogsItemsFilters =
   type CatalogsItemsFilters = {
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
-    [<JsonProperty(PropertyName = "item_ids")>]
-    ItemIds : string[];
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
+    [<JsonProperty(PropertyName = "item_ids")>]
+    ItemIds : string[];
     [<JsonProperty(PropertyName = "hotel_ids")>]
     HotelIds : string[];
     [<JsonProperty(PropertyName = "creative_assets_ids")>]

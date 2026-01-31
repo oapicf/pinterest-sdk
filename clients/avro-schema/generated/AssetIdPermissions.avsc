@@ -5,6 +5,12 @@
   "name": "AssetIdPermissions",
   "fields": [
     {
+      "name": "asset_group_info",
+      "type": ["null", "model.AssetGroupBinding"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "asset_id",
       "type": ["null", "string"],
       "doc": "Unique identifier of a business asset.",
@@ -13,7 +19,7 @@
     {
       "name": "asset_type",
       "type": ["null", "string"],
-      "doc": "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.",
+      "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
       "default": null
     },
     {
@@ -23,12 +29,6 @@
         "items": "string"
       }],
       "doc": "Permission levels member or partner has on an asset.",
-      "default": null
-    },
-    {
-      "name": "asset_group_info",
-      "type": ["null", "model.AssetGroupBinding"],
-      "doc": "",
       "default": null
     }
   ]

@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdatePartnerAssetsResultsResponseArray"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdatePartnerAssetsResultsResponseArray"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdatePartnerAssetsResult = openapi_server.resourceTypes.UpdatePartnerAssetsResult
+}
+resourceTypes {
+
+  UpdatePartnerAssetsResultsResponseArray {
+    title = UpdatePartnerAssetsResultsResponseArray
+    description = UpdatePartnerAssetsResultsResponseArray
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = UpdatePartnerAssetsResult
+          description = "List of assigned/updated partner asset access."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdatePartnerAssetsResultsResponseArray {
+    title = UpdatePartnerAssetsResultsResponseArray
+    description = UpdatePartnerAssetsResultsResponseArray
+    implements = openapi_server.resourceTypes.UpdatePartnerAssetsResultsResponseArray
+
+  }
+}

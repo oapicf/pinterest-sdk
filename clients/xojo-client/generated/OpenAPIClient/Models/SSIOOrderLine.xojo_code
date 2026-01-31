@@ -3,9 +3,17 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			OrderLineId in SFDC
+			The SFDC id for the terms
 		#tag EndNote
-		salesforce_order_line_id As Xoson.O.OptionalString
+		accepted_terms_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The UTC timestamp (to the nearest sec) of when terms were accepted
+		#tag EndNote
+		accepted_terms_time As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -19,33 +27,9 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The pin order id associated with the order line in SFDC
+			Agency link
 		#tag EndNote
-		pin_order_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Last modified date.
-		#tag EndNote
-		last_modified_date_time As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Start date of the order line.
-		#tag EndNote
-		start_date As Date
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			End date of the order line.
-		#tag EndNote
-		end_date As Date
+		agency_link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,6 +38,14 @@ Protected Class SSIOOrderLine
 			Bill To Company name
 		#tag EndNote
 		bill_to_company_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Billing contact email
+		#tag EndNote
+		billing_contact_email As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -75,9 +67,38 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Billing contact email
+			If Budget order line, the budget amount.
 		#tag EndNote
-		billing_contact_email As Xoson.O.OptionalString
+		budget_amount As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		currency_info As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			End date of the order line.
+		#tag EndNote
+		end_date As Date
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			If Ongoing (perpetual) order line, the estimated monthly spend
+		#tag EndNote
+		estimated_monthly_spend As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Last modified date.
+		#tag EndNote
+		last_modified_date_time As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -106,31 +127,18 @@ Protected Class SSIOOrderLine
 
 
 	#tag Property, Flags = &h0
-		currency_info As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Agency link
-		#tag EndNote
-		agency_link As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The po number
-		#tag EndNote
-		po_number As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			The order name
 		#tag EndNote
 		order_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The pin order id associated with the order line in SFDC
+		#tag EndNote
+		pin_order_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -144,33 +152,25 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The SFDC id for the terms
+			The po number
 		#tag EndNote
-		accepted_terms_id As Xoson.O.OptionalString
+		po_number As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The UTC timestamp (to the nearest sec) of when terms were accepted
+			OrderLineId in SFDC
 		#tag EndNote
-		accepted_terms_time As Xoson.O.OptionalString
+		salesforce_order_line_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			If Budget order line, the budget amount.
+			Start date of the order line.
 		#tag EndNote
-		budget_amount As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			If Ongoing (perpetual) order line, the estimated monthly spend
-		#tag EndNote
-		estimated_monthly_spend As Xoson.O.OptionalDouble
+		start_date As Date
 	#tag EndProperty
 
 
@@ -211,7 +211,15 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="salesforce_order_line_id"
+			Name="accepted_terms_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="accepted_terms_time"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -227,39 +235,23 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="pin_order_id"
+			Name="agency_link"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="last_modified_date_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="start_date"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="end_date"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="bill_to_company_name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="billing_contact_email"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -283,7 +275,39 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="billing_contact_email"
+			Name="budget_amount"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="currency_info"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Currency"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="end_date"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Date"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="estimated_monthly_spend"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="last_modified_date_time"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -315,31 +339,15 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="currency_info"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Currency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="agency_link"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="po_number"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="order_name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="pin_order_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -355,7 +363,7 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="accepted_terms_id"
+			Name="po_number"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -363,7 +371,7 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="accepted_terms_time"
+			Name="salesforce_order_line_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -371,19 +379,11 @@ Protected Class SSIOOrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="budget_amount"
+			Name="start_date"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="estimated_monthly_spend"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
+			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

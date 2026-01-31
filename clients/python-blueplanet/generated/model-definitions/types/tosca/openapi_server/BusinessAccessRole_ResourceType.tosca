@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessAccessRole"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessAccessRole"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BusinessAccessRole {
+    title = BusinessAccessRole
+    description = BusinessAccessRole
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessAccessRole {
+    title = BusinessAccessRole
+    description = BusinessAccessRole
+    implements = openapi_server.resourceTypes.BusinessAccessRole
+
+  }
+}

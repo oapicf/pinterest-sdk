@@ -10,17 +10,17 @@
 #' @field created_at  character
 #' @field id  character
 #' @field updated_at  character
-#' @field name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. character
-#' @field format  \link{CatalogsFormat}
+#' @field catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. character
 #' @field catalog_type  \link{CatalogsType}
 #' @field credentials  \link{CatalogsFeedCredentials}
-#' @field location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. character
-#' @field preferred_processing_schedule  \link{CatalogsFeedProcessingSchedule}
-#' @field status  \link{CatalogsStatus}
+#' @field default_country  \link{Country}
 #' @field default_currency  \link{NullableCurrency}
 #' @field default_locale The locale used within a feed for product descriptions. character
-#' @field default_country  \link{Country}
-#' @field catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. character
+#' @field format  \link{CatalogsFormat}
+#' @field location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. character
+#' @field name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. character
+#' @field preferred_processing_schedule  \link{CatalogsFeedProcessingSchedule}
+#' @field status  \link{CatalogsStatus}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -30,17 +30,17 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
     `created_at` = NULL,
     `id` = NULL,
     `updated_at` = NULL,
-    `name` = NULL,
-    `format` = NULL,
+    `catalog_id` = NULL,
     `catalog_type` = NULL,
     `credentials` = NULL,
-    `location` = NULL,
-    `preferred_processing_schedule` = NULL,
-    `status` = NULL,
+    `default_country` = NULL,
     `default_currency` = NULL,
     `default_locale` = NULL,
-    `default_country` = NULL,
-    `catalog_id` = NULL,
+    `format` = NULL,
+    `location` = NULL,
+    `name` = NULL,
+    `preferred_processing_schedule` = NULL,
+    `status` = NULL,
 
     #' @description
     #' Initialize a new CatalogsCreativeAssetsFeed class.
@@ -48,19 +48,19 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
     #' @param created_at created_at
     #' @param id id
     #' @param updated_at updated_at
-    #' @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-    #' @param format format
+    #' @param catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
     #' @param catalog_type catalog_type
     #' @param credentials credentials
-    #' @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-    #' @param preferred_processing_schedule preferred_processing_schedule
-    #' @param status status
+    #' @param default_country default_country
     #' @param default_currency default_currency
     #' @param default_locale The locale used within a feed for product descriptions.
-    #' @param default_country default_country
-    #' @param catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+    #' @param format format
+    #' @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+    #' @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+    #' @param preferred_processing_schedule preferred_processing_schedule
+    #' @param status status
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `id`, `updated_at`, `name`, `format`, `catalog_type`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `default_currency`, `default_locale`, `default_country`, `catalog_id`, ...) {
+    initialize = function(`created_at`, `id`, `updated_at`, `catalog_id`, `catalog_type`, `credentials`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -79,18 +79,11 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         }
         self$`updated_at` <- `updated_at`
       }
-      if (!missing(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+      if (!missing(`catalog_id`)) {
+        if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
         }
-        self$`name` <- `name`
-      }
-      if (!missing(`format`)) {
-        if (!(`format` %in% c())) {
-          stop(paste("Error! \"", `format`, "\" cannot be assigned to `format`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`format`))
-        self$`format` <- `format`
+        self$`catalog_id` <- `catalog_id`
       }
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
@@ -103,22 +96,12 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         stopifnot(R6::is.R6(`credentials`))
         self$`credentials` <- `credentials`
       }
-      if (!missing(`location`)) {
-        if (!(is.character(`location`) && length(`location`) == 1)) {
-          stop(paste("Error! Invalid data for `location`. Must be a string:", `location`))
+      if (!missing(`default_country`)) {
+        if (!(`default_country` %in% c())) {
+          stop(paste("Error! \"", `default_country`, "\" cannot be assigned to `default_country`. Must be .", sep = ""))
         }
-        self$`location` <- `location`
-      }
-      if (!missing(`preferred_processing_schedule`)) {
-        stopifnot(R6::is.R6(`preferred_processing_schedule`))
-        self$`preferred_processing_schedule` <- `preferred_processing_schedule`
-      }
-      if (!missing(`status`)) {
-        if (!(`status` %in% c())) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`status`))
-        self$`status` <- `status`
+        stopifnot(R6::is.R6(`default_country`))
+        self$`default_country` <- `default_country`
       }
       if (!missing(`default_currency`)) {
         if (!(`default_currency` %in% c())) {
@@ -133,18 +116,35 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         }
         self$`default_locale` <- `default_locale`
       }
-      if (!missing(`default_country`)) {
-        if (!(`default_country` %in% c())) {
-          stop(paste("Error! \"", `default_country`, "\" cannot be assigned to `default_country`. Must be .", sep = ""))
+      if (!missing(`format`)) {
+        if (!(`format` %in% c())) {
+          stop(paste("Error! \"", `format`, "\" cannot be assigned to `format`. Must be .", sep = ""))
         }
-        stopifnot(R6::is.R6(`default_country`))
-        self$`default_country` <- `default_country`
+        stopifnot(R6::is.R6(`format`))
+        self$`format` <- `format`
       }
-      if (!missing(`catalog_id`)) {
-        if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
-          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
+      if (!missing(`location`)) {
+        if (!(is.character(`location`) && length(`location`) == 1)) {
+          stop(paste("Error! Invalid data for `location`. Must be a string:", `location`))
         }
-        self$`catalog_id` <- `catalog_id`
+        self$`location` <- `location`
+      }
+      if (!missing(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
+      if (!missing(`preferred_processing_schedule`)) {
+        stopifnot(R6::is.R6(`preferred_processing_schedule`))
+        self$`preferred_processing_schedule` <- `preferred_processing_schedule`
+      }
+      if (!missing(`status`)) {
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`status`))
+        self$`status` <- `status`
       }
     },
 
@@ -191,13 +191,9 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         CatalogsCreativeAssetsFeedObject[["updated_at"]] <-
           self$`updated_at`
       }
-      if (!is.null(self$`name`)) {
-        CatalogsCreativeAssetsFeedObject[["name"]] <-
-          self$`name`
-      }
-      if (!is.null(self$`format`)) {
-        CatalogsCreativeAssetsFeedObject[["format"]] <-
-          self$`format`$toSimpleType()
+      if (!is.null(self$`catalog_id`)) {
+        CatalogsCreativeAssetsFeedObject[["catalog_id"]] <-
+          self$`catalog_id`
       }
       if (!is.null(self$`catalog_type`)) {
         CatalogsCreativeAssetsFeedObject[["catalog_type"]] <-
@@ -207,17 +203,9 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         CatalogsCreativeAssetsFeedObject[["credentials"]] <-
           self$`credentials`$toSimpleType()
       }
-      if (!is.null(self$`location`)) {
-        CatalogsCreativeAssetsFeedObject[["location"]] <-
-          self$`location`
-      }
-      if (!is.null(self$`preferred_processing_schedule`)) {
-        CatalogsCreativeAssetsFeedObject[["preferred_processing_schedule"]] <-
-          self$`preferred_processing_schedule`$toSimpleType()
-      }
-      if (!is.null(self$`status`)) {
-        CatalogsCreativeAssetsFeedObject[["status"]] <-
-          self$`status`$toSimpleType()
+      if (!is.null(self$`default_country`)) {
+        CatalogsCreativeAssetsFeedObject[["default_country"]] <-
+          self$`default_country`$toSimpleType()
       }
       if (!is.null(self$`default_currency`)) {
         CatalogsCreativeAssetsFeedObject[["default_currency"]] <-
@@ -227,13 +215,25 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         CatalogsCreativeAssetsFeedObject[["default_locale"]] <-
           self$`default_locale`
       }
-      if (!is.null(self$`default_country`)) {
-        CatalogsCreativeAssetsFeedObject[["default_country"]] <-
-          self$`default_country`$toSimpleType()
+      if (!is.null(self$`format`)) {
+        CatalogsCreativeAssetsFeedObject[["format"]] <-
+          self$`format`$toSimpleType()
       }
-      if (!is.null(self$`catalog_id`)) {
-        CatalogsCreativeAssetsFeedObject[["catalog_id"]] <-
-          self$`catalog_id`
+      if (!is.null(self$`location`)) {
+        CatalogsCreativeAssetsFeedObject[["location"]] <-
+          self$`location`
+      }
+      if (!is.null(self$`name`)) {
+        CatalogsCreativeAssetsFeedObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`preferred_processing_schedule`)) {
+        CatalogsCreativeAssetsFeedObject[["preferred_processing_schedule"]] <-
+          self$`preferred_processing_schedule`$toSimpleType()
+      }
+      if (!is.null(self$`status`)) {
+        CatalogsCreativeAssetsFeedObject[["status"]] <-
+          self$`status`$toSimpleType()
       }
       return(CatalogsCreativeAssetsFeedObject)
     },
@@ -254,13 +254,8 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
       if (!is.null(this_object$`updated_at`)) {
         self$`updated_at` <- this_object$`updated_at`
       }
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
-      if (!is.null(this_object$`format`)) {
-        `format_object` <- CatalogsFormat$new()
-        `format_object`$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
-        self$`format` <- `format_object`
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
       }
       if (!is.null(this_object$`catalog_type`)) {
         `catalog_type_object` <- CatalogsType$new()
@@ -272,8 +267,29 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         `credentials_object`$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
         self$`credentials` <- `credentials_object`
       }
+      if (!is.null(this_object$`default_country`)) {
+        `default_country_object` <- Country$new()
+        `default_country_object`$fromJSON(jsonlite::toJSON(this_object$`default_country`, auto_unbox = TRUE, digits = NA))
+        self$`default_country` <- `default_country_object`
+      }
+      if (!is.null(this_object$`default_currency`)) {
+        `default_currency_object` <- NullableCurrency$new()
+        `default_currency_object`$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
+        self$`default_currency` <- `default_currency_object`
+      }
+      if (!is.null(this_object$`default_locale`)) {
+        self$`default_locale` <- this_object$`default_locale`
+      }
+      if (!is.null(this_object$`format`)) {
+        `format_object` <- CatalogsFormat$new()
+        `format_object`$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
+        self$`format` <- `format_object`
+      }
       if (!is.null(this_object$`location`)) {
         self$`location` <- this_object$`location`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       if (!is.null(this_object$`preferred_processing_schedule`)) {
         `preferred_processing_schedule_object` <- CatalogsFeedProcessingSchedule$new()
@@ -284,22 +300,6 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         `status_object` <- CatalogsStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
-      }
-      if (!is.null(this_object$`default_currency`)) {
-        `default_currency_object` <- NullableCurrency$new()
-        `default_currency_object`$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
-        self$`default_currency` <- `default_currency_object`
-      }
-      if (!is.null(this_object$`default_locale`)) {
-        self$`default_locale` <- this_object$`default_locale`
-      }
-      if (!is.null(this_object$`default_country`)) {
-        `default_country_object` <- Country$new()
-        `default_country_object`$fromJSON(jsonlite::toJSON(this_object$`default_country`, auto_unbox = TRUE, digits = NA))
-        self$`default_country` <- `default_country_object`
-      }
-      if (!is.null(this_object$`catalog_id`)) {
-        self$`catalog_id` <- this_object$`catalog_id`
       }
       self
     },
@@ -325,17 +325,17 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
       self$`created_at` <- this_object$`created_at`
       self$`id` <- this_object$`id`
       self$`updated_at` <- this_object$`updated_at`
-      self$`name` <- this_object$`name`
-      self$`format` <- CatalogsFormat$new()$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
+      self$`catalog_id` <- this_object$`catalog_id`
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
       self$`credentials` <- CatalogsFeedCredentials$new()$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
-      self$`location` <- this_object$`location`
-      self$`preferred_processing_schedule` <- CatalogsFeedProcessingSchedule$new()$fromJSON(jsonlite::toJSON(this_object$`preferred_processing_schedule`, auto_unbox = TRUE, digits = NA))
-      self$`status` <- CatalogsStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`default_country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`default_country`, auto_unbox = TRUE, digits = NA))
       self$`default_currency` <- NullableCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
       self$`default_locale` <- this_object$`default_locale`
-      self$`default_country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`default_country`, auto_unbox = TRUE, digits = NA))
-      self$`catalog_id` <- this_object$`catalog_id`
+      self$`format` <- CatalogsFormat$new()$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
+      self$`location` <- this_object$`location`
+      self$`name` <- this_object$`name`
+      self$`preferred_processing_schedule` <- CatalogsFeedProcessingSchedule$new()$fromJSON(jsonlite::toJSON(this_object$`preferred_processing_schedule`, auto_unbox = TRUE, digits = NA))
+      self$`status` <- CatalogsStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -369,19 +369,13 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `updated_at` is missing."))
       }
-      # check the required field `name`
-      if (!is.null(input_json$`name`)) {
-        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+      # check the required field `catalog_id`
+      if (!is.null(input_json$`catalog_id`)) {
+        if (!(is.character(input_json$`catalog_id`) && length(input_json$`catalog_id`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", input_json$`catalog_id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `name` is missing."))
-      }
-      # check the required field `format`
-      if (!is.null(input_json$`format`)) {
-        stopifnot(R6::is.R6(input_json$`format`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `format` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `catalog_id` is missing."))
       }
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
@@ -395,25 +389,11 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `credentials` is missing."))
       }
-      # check the required field `location`
-      if (!is.null(input_json$`location`)) {
-        if (!(is.character(input_json$`location`) && length(input_json$`location`) == 1)) {
-          stop(paste("Error! Invalid data for `location`. Must be a string:", input_json$`location`))
-        }
+      # check the required field `default_country`
+      if (!is.null(input_json$`default_country`)) {
+        stopifnot(R6::is.R6(input_json$`default_country`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `location` is missing."))
-      }
-      # check the required field `preferred_processing_schedule`
-      if (!is.null(input_json$`preferred_processing_schedule`)) {
-        stopifnot(R6::is.R6(input_json$`preferred_processing_schedule`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `preferred_processing_schedule` is missing."))
-      }
-      # check the required field `status`
-      if (!is.null(input_json$`status`)) {
-        stopifnot(R6::is.R6(input_json$`status`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `status` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `default_country` is missing."))
       }
       # check the required field `default_currency`
       if (!is.null(input_json$`default_currency`)) {
@@ -429,19 +409,39 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `default_locale` is missing."))
       }
-      # check the required field `default_country`
-      if (!is.null(input_json$`default_country`)) {
-        stopifnot(R6::is.R6(input_json$`default_country`))
+      # check the required field `format`
+      if (!is.null(input_json$`format`)) {
+        stopifnot(R6::is.R6(input_json$`format`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `default_country` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `format` is missing."))
       }
-      # check the required field `catalog_id`
-      if (!is.null(input_json$`catalog_id`)) {
-        if (!(is.character(input_json$`catalog_id`) && length(input_json$`catalog_id`) == 1)) {
-          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", input_json$`catalog_id`))
+      # check the required field `location`
+      if (!is.null(input_json$`location`)) {
+        if (!(is.character(input_json$`location`) && length(input_json$`location`) == 1)) {
+          stop(paste("Error! Invalid data for `location`. Must be a string:", input_json$`location`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `catalog_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `location` is missing."))
+      }
+      # check the required field `name`
+      if (!is.null(input_json$`name`)) {
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `name` is missing."))
+      }
+      # check the required field `preferred_processing_schedule`
+      if (!is.null(input_json$`preferred_processing_schedule`)) {
+        stopifnot(R6::is.R6(input_json$`preferred_processing_schedule`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `preferred_processing_schedule` is missing."))
+      }
+      # check the required field `status`
+      if (!is.null(input_json$`status`)) {
+        stopifnot(R6::is.R6(input_json$`status`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsFeed: the required field `status` is missing."))
       }
     },
 
@@ -473,13 +473,32 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `format` is null
-      if (is.null(self$`format`)) {
+      # check if the required `catalog_id` is null
+      if (is.null(self$`catalog_id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
         return(FALSE)
       }
 
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
+        return(FALSE)
+      }
+
+      # check if the required `default_country` is null
+      if (is.null(self$`default_country`)) {
+        return(FALSE)
+      }
+
+      # check if the required `default_locale` is null
+      if (is.null(self$`default_locale`)) {
+        return(FALSE)
+      }
+
+      # check if the required `format` is null
+      if (is.null(self$`format`)) {
         return(FALSE)
       }
 
@@ -490,20 +509,6 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
 
       # check if the required `status` is null
       if (is.null(self$`status`)) {
-        return(FALSE)
-      }
-
-      # check if the required `default_locale` is null
-      if (is.null(self$`default_locale`)) {
-        return(FALSE)
-      }
-
-      # check if the required `default_country` is null
-      if (is.null(self$`default_country`)) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -531,14 +536,33 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
         invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
       }
 
-      # check if the required `format` is null
-      if (is.null(self$`format`)) {
-        invalid_fields["format"] <- "Non-nullable required field `format` cannot be null."
+      # check if the required `catalog_id` is null
+      if (is.null(self$`catalog_id`)) {
+        invalid_fields["catalog_id"] <- "Non-nullable required field `catalog_id` cannot be null."
+      }
+
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
 
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `default_country` is null
+      if (is.null(self$`default_country`)) {
+        invalid_fields["default_country"] <- "Non-nullable required field `default_country` cannot be null."
+      }
+
+      # check if the required `default_locale` is null
+      if (is.null(self$`default_locale`)) {
+        invalid_fields["default_locale"] <- "Non-nullable required field `default_locale` cannot be null."
+      }
+
+      # check if the required `format` is null
+      if (is.null(self$`format`)) {
+        invalid_fields["format"] <- "Non-nullable required field `format` cannot be null."
       }
 
       # check if the required `location` is null
@@ -549,20 +573,6 @@ CatalogsCreativeAssetsFeed <- R6::R6Class(
       # check if the required `status` is null
       if (is.null(self$`status`)) {
         invalid_fields["status"] <- "Non-nullable required field `status` cannot be null."
-      }
-
-      # check if the required `default_locale` is null
-      if (is.null(self$`default_locale`)) {
-        invalid_fields["default_locale"] <- "Non-nullable required field `default_locale` cannot be null."
-      }
-
-      # check if the required `default_country` is null
-      if (is.null(self$`default_country`)) {
-        invalid_fields["default_country"] <- "Non-nullable required field `default_country` cannot be null."
-      }
-
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

@@ -48,6 +48,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -84,7 +85,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "business_access_invite", description = "the business_access_invite API")
 public interface BusinessesApi {
@@ -193,7 +194,7 @@ public interface BusinessesApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"asset_group\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }";
+                    String exampleString = "{ \"asset_group\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -323,7 +324,7 @@ public interface BusinessesApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"updated_asset_groups\" : [ { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" }, { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } ], \"exceptions\" : [ { \"asset_group_id\" : \"666791336903426391\", \"code\" : 29, \"message\" : \"You are not permitted to access that resource.\" }, { \"asset_group_id\" : \"666791336903426391\", \"code\" : 29, \"message\" : \"You are not permitted to access that resource.\" } ] }";
+                    String exampleString = "{ \"updated_asset_groups\" : [ { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" }, { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } ], \"exceptions\" : [ { \"asset_group_id\" : \"666791336903426391\", \"code\" : 29, \"message\" : \"You are not permitted to access that resource.\" }, { \"asset_group_id\" : \"666791336903426391\", \"code\" : 29, \"message\" : \"You are not permitted to access that resource.\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -430,6 +431,7 @@ public interface BusinessesApi {
      *
      * @param businessId Unique identifier of the requesting business. (required)
      * @param assetId Unique identifier of a business asset. (required)
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
@@ -461,6 +463,7 @@ public interface BusinessesApi {
     default ResponseEntity<BusinessAssetMembersGet200Response> businessAssetMembersGet(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
         @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "asset_id", description = "Unique identifier of a business asset.", required = true, in = ParameterIn.PATH) @PathVariable("asset_id") String assetId,
+        @Parameter(name = "fetch_system_users", description = "Fetches system users if True. Fetches regular user employees if False.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "fetch_system_users", required = false, defaultValue = "false") Boolean fetchSystemUsers,
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
         @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
         @Min(value = 0) @Parameter(name = "start_index", description = "An index to start fetching the results from. Only the results starting from this index will be returned.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") Integer startIndex
@@ -596,7 +599,7 @@ public interface BusinessesApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }, { \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"catalog_info\" : { \"catalog_type\" : \"PRODUCT\", \"name\" : \"Canada Catalog\", \"id\" : \"4836859046874\" }, \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }, { \"catalog_info\" : { \"catalog_type\" : \"PRODUCT\", \"name\" : \"Canada Catalog\", \"id\" : \"4836859046874\" }, \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -659,7 +662,7 @@ public interface BusinessesApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }, { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }, { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -836,7 +839,7 @@ public interface BusinessesApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }, { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"profiles_ids\" : [ \"630433785246278264\" ], \"owner\" : \"{}\", \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } }, { \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ], \"asset_type\" : \"AD_ACCOUNT\", \"asset_id\" : \"549755885175\", \"asset_group_info\" : { \"owner\" : \"{}\", \"profiles_ids\" : [ \"630433785246278264\" ], \"created_time\" : 1646767577816, \"updated_time\" : 1646767577816, \"catalogs_ids\" : [ \"4836859046874\" ], \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ], \"ad_accounts_ids\" : [ \"549755885175\" ], \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\", \"id\" : \"666791336903426391\", \"created_by\" : \"{}\", \"asset_group_name\" : \"Canada Ad Accounts\" } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -857,7 +860,7 @@ public interface BusinessesApi {
      * DELETE /businesses/{business_id}/invites : Cancel invites/requests
      * Cancel membership/partnership invites and/or requests.
      *
-     * @param businessId Business id (required)
+     * @param businessId Unique identifier of the requesting business. (required)
      * @param cancelInvitesBody A list with invite ids (required)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
@@ -886,7 +889,7 @@ public interface BusinessesApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "business_id", description = "Business id", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
         @Parameter(name = "CancelInvitesBody", description = "A list with invite ids", required = true) @Valid @RequestBody CancelInvitesBody cancelInvitesBody
     ) {
         getRequest().ifPresent(request -> {
@@ -969,7 +972,7 @@ public interface BusinessesApi {
      * POST /businesses/{business_id}/invites : Create invites or requests
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
      *
-     * @param businessId Business id (required)
+     * @param businessId Unique identifier of the requesting business. (required)
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role (required)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
@@ -998,7 +1001,7 @@ public interface BusinessesApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<CreateInvitesResultsResponseArray> createMembershipOrPartnershipInvites(
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "business_id", description = "Business id", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
         @Parameter(name = "CreateMembershipOrPartnershipInvitesBody", description = "An object with the properties: invite_type, partners, members, business_role", required = true) @Valid @RequestBody CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody
     ) {
         getRequest().ifPresent(request -> {
@@ -1258,6 +1261,7 @@ public interface BusinessesApi {
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      *
      * @param businessId Unique identifier of the requesting business. (required)
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
      * @param memberIds A list of business members ids separated by comma. (optional)
@@ -1291,6 +1295,7 @@ public interface BusinessesApi {
     )
     default ResponseEntity<GetBusinessMembers200Response> getBusinessMembers(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
+        @Parameter(name = "fetch_system_users", description = "Fetches system users if True. Fetches regular user employees if False.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "fetch_system_users", required = false, defaultValue = "false") Boolean fetchSystemUsers,
         @Parameter(name = "assets_summary", description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", in = ParameterIn.QUERY) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") Boolean assetsSummary,
         @Parameter(name = "business_roles", description = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "business_roles", required = false) @Nullable List<MemberBusinessRole> businessRoles,
         @Size(max = 500) @Parameter(name = "member_ids", description = "A list of business members ids separated by comma.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "member_ids", required = false) @Nullable String memberIds,
@@ -1419,7 +1424,7 @@ public interface BusinessesApi {
         produces = { "application/json" }
     )
     default ResponseEntity<GetInvites200Response> getInvites(
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
         @Parameter(name = "is_member", description = "A boolean field to indicate whether the invite is to create a partnership or a membership.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "is_member", required = false, defaultValue = "true") Boolean isMember,
         @Size(min = 1) @Parameter(name = "invite_status", description = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "invite_status", required = false) @Nullable List<String> inviteStatus,
         @Parameter(name = "invite_type", description = "Invite type to filter invites by. Only invites of the specified type will be returned.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "invite_type", required = false) @Nullable InviteType inviteType,
@@ -1546,10 +1551,70 @@ public interface BusinessesApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" }, { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" }, { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_SYSTEM_USER_UPDATE = "/businesses/{business_id}/system_users/{system_user_id}";
+    /**
+     * PATCH /businesses/{business_id}/system_users/{system_user_id} : Update a system user information.
+     * Update a system user information such as name.
+     *
+     * @param businessId Unique identifier of the requesting business. (required)
+     * @param systemUserId Unique identifier of a system user. (required)
+     * @param systemUserUpdateRequest  (required)
+     * @return System user updated successfully. (status code 200)
+     *         or Invalid parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "systemUserUpdate",
+        summary = "Update a system user information.",
+        description = "Update a system user information such as name.",
+        tags = { "business_access_relationships" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "System user updated successfully."),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "biz_access:read", "biz_access:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.PATCH,
+        value = BusinessesApi.PATH_SYSTEM_USER_UPDATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<Void> systemUserUpdate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "business_id", description = "Unique identifier of the requesting business.", required = true, in = ParameterIn.PATH) @PathVariable("business_id") String businessId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) @Parameter(name = "system_user_id", description = "Unique identifier of a system user.", required = true, in = ParameterIn.PATH) @PathVariable("system_user_id") String systemUserId,
+        @Parameter(name = "SystemUserUpdateRequest", description = "", required = true) @Valid @RequestBody SystemUserUpdateRequest systemUserUpdateRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -1626,7 +1691,7 @@ public interface BusinessesApi {
     String PATH_UPDATE_BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE = "/businesses/{business_id}/audiences/ad_accounts/shared";
     /**
      * PATCH /businesses/{business_id}/audiences/ad_accounts/shared : Update audience sharing from a business to ad accounts
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * @param businessId Unique identifier of the requesting business. (required)
      * @param sharedAudience  (required)
@@ -1637,7 +1702,7 @@ public interface BusinessesApi {
     @Operation(
         operationId = "updateBusinessToAdAccountSharedAudience",
         summary = "Update audience sharing from a business to ad accounts",
-        description = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.",
+        description = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
         tags = { "audience_sharing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1691,7 +1756,7 @@ public interface BusinessesApi {
     String PATH_UPDATE_BUSINESS_TO_BUSINESS_SHARED_AUDIENCE = "/businesses/{business_id}/audiences/businesses/shared";
     /**
      * PATCH /businesses/{business_id}/audiences/businesses/shared : Update audience sharing between businesses
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * @param businessId Unique identifier of the requesting business. (required)
      * @param businessSharedAudience  (required)
@@ -1702,7 +1767,7 @@ public interface BusinessesApi {
     @Operation(
         operationId = "updateBusinessToBusinessSharedAudience",
         summary = "Update audience sharing between businesses",
-        description = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.",
+        description = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
         tags = { "audience_sharing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {

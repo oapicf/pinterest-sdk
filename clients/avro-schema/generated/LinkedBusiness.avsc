@@ -5,15 +5,9 @@
   "name": "LinkedBusiness",
   "fields": [
     {
-      "name": "username",
+      "name": "image_large_url",
       "type": ["null", "string"],
-      "doc": "Username",
-      "default": null
-    },
-    {
-      "name": "image_small_url",
-      "type": ["null", "string"],
-      "doc": "image_small_url",
+      "doc": "image_large_url",
       "default": null
     },
     {
@@ -23,15 +17,21 @@
       "default": null
     },
     {
-      "name": "image_large_url",
+      "name": "image_small_url",
       "type": ["null", "string"],
-      "doc": "image_large_url",
+      "doc": "image_small_url",
       "default": null
     },
     {
       "name": "image_xlarge_url",
       "type": ["null", "string"],
       "doc": "image_xlarge_url",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Username",
       "default": null
     }
   ]

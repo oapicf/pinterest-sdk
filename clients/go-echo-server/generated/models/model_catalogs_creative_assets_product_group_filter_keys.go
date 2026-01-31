@@ -4,15 +4,15 @@ type CatalogsCreativeAssetsProductGroupFilterKeys struct {
 
 	CREATIVE_ASSETS_ID CatalogsProductGroupMultipleStringCriteria `json:"CREATIVE_ASSETS_ID"`
 
-	CUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_0"`
+	CUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_0"`
 
-	CUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_1"`
+	CUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_1"`
 
-	CUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_2"`
+	CUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_2"`
 
-	CUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_3"`
+	CUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_3"`
 
-	CUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_4"`
+	CUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_4"`
 
 	GOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_6"`
 
@@ -29,4 +29,6 @@ type CatalogsCreativeAssetsProductGroupFilterKeys struct {
 	GOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_0"`
 
 	MEDIA_TYPE CatalogsProductGroupMultipleMediaTypesCriteria `json:"MEDIA_TYPE"`
+
+	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
 }

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VerificationCode** | Pointer to **string** | Code to check against the user claiming the website | [optional] 
 **DnsTxtRecord** | Pointer to **string** | DNS TXT record to check against for the website to be claimed | [optional] 
-**Metatag** | Pointer to **string** | Metatag the verification process searchs for the website to be claimed | [optional] 
-**Filename** | Pointer to **string** | File expected to find on the website being claimed | [optional] 
 **FileContent** | Pointer to **string** | A full html file to upload to the website in order for it to be claimed | [optional] 
+**Filename** | Pointer to **string** | File expected to find on the website being claimed | [optional] 
+**Metatag** | Pointer to **string** | Metatag the verification process searchs for the website to be claimed | [optional] 
+**VerificationCode** | Pointer to **string** | Code to check against the user claiming the website | [optional] 
 
 ## Methods
 
@@ -28,31 +28,6 @@ will change when the set of required properties is changed
 NewUserWebsiteVerificationCodeWithDefaults instantiates a new UserWebsiteVerificationCode object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVerificationCode
-
-`func (o *UserWebsiteVerificationCode) GetVerificationCode() string`
-
-GetVerificationCode returns the VerificationCode field if non-nil, zero value otherwise.
-
-### GetVerificationCodeOk
-
-`func (o *UserWebsiteVerificationCode) GetVerificationCodeOk() (*string, bool)`
-
-GetVerificationCodeOk returns a tuple with the VerificationCode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVerificationCode
-
-`func (o *UserWebsiteVerificationCode) SetVerificationCode(v string)`
-
-SetVerificationCode sets VerificationCode field to given value.
-
-### HasVerificationCode
-
-`func (o *UserWebsiteVerificationCode) HasVerificationCode() bool`
-
-HasVerificationCode returns a boolean if a field has been set.
 
 ### GetDnsTxtRecord
 
@@ -79,30 +54,30 @@ SetDnsTxtRecord sets DnsTxtRecord field to given value.
 
 HasDnsTxtRecord returns a boolean if a field has been set.
 
-### GetMetatag
+### GetFileContent
 
-`func (o *UserWebsiteVerificationCode) GetMetatag() string`
+`func (o *UserWebsiteVerificationCode) GetFileContent() string`
 
-GetMetatag returns the Metatag field if non-nil, zero value otherwise.
+GetFileContent returns the FileContent field if non-nil, zero value otherwise.
 
-### GetMetatagOk
+### GetFileContentOk
 
-`func (o *UserWebsiteVerificationCode) GetMetatagOk() (*string, bool)`
+`func (o *UserWebsiteVerificationCode) GetFileContentOk() (*string, bool)`
 
-GetMetatagOk returns a tuple with the Metatag field if it's non-nil, zero value otherwise
+GetFileContentOk returns a tuple with the FileContent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetatag
+### SetFileContent
 
-`func (o *UserWebsiteVerificationCode) SetMetatag(v string)`
+`func (o *UserWebsiteVerificationCode) SetFileContent(v string)`
 
-SetMetatag sets Metatag field to given value.
+SetFileContent sets FileContent field to given value.
 
-### HasMetatag
+### HasFileContent
 
-`func (o *UserWebsiteVerificationCode) HasMetatag() bool`
+`func (o *UserWebsiteVerificationCode) HasFileContent() bool`
 
-HasMetatag returns a boolean if a field has been set.
+HasFileContent returns a boolean if a field has been set.
 
 ### GetFilename
 
@@ -129,30 +104,55 @@ SetFilename sets Filename field to given value.
 
 HasFilename returns a boolean if a field has been set.
 
-### GetFileContent
+### GetMetatag
 
-`func (o *UserWebsiteVerificationCode) GetFileContent() string`
+`func (o *UserWebsiteVerificationCode) GetMetatag() string`
 
-GetFileContent returns the FileContent field if non-nil, zero value otherwise.
+GetMetatag returns the Metatag field if non-nil, zero value otherwise.
 
-### GetFileContentOk
+### GetMetatagOk
 
-`func (o *UserWebsiteVerificationCode) GetFileContentOk() (*string, bool)`
+`func (o *UserWebsiteVerificationCode) GetMetatagOk() (*string, bool)`
 
-GetFileContentOk returns a tuple with the FileContent field if it's non-nil, zero value otherwise
+GetMetatagOk returns a tuple with the Metatag field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFileContent
+### SetMetatag
 
-`func (o *UserWebsiteVerificationCode) SetFileContent(v string)`
+`func (o *UserWebsiteVerificationCode) SetMetatag(v string)`
 
-SetFileContent sets FileContent field to given value.
+SetMetatag sets Metatag field to given value.
 
-### HasFileContent
+### HasMetatag
 
-`func (o *UserWebsiteVerificationCode) HasFileContent() bool`
+`func (o *UserWebsiteVerificationCode) HasMetatag() bool`
 
-HasFileContent returns a boolean if a field has been set.
+HasMetatag returns a boolean if a field has been set.
+
+### GetVerificationCode
+
+`func (o *UserWebsiteVerificationCode) GetVerificationCode() string`
+
+GetVerificationCode returns the VerificationCode field if non-nil, zero value otherwise.
+
+### GetVerificationCodeOk
+
+`func (o *UserWebsiteVerificationCode) GetVerificationCodeOk() (*string, bool)`
+
+GetVerificationCodeOk returns a tuple with the VerificationCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerificationCode
+
+`func (o *UserWebsiteVerificationCode) SetVerificationCode(v string)`
+
+SetVerificationCode sets VerificationCode field to given value.
+
+### HasVerificationCode
+
+`func (o *UserWebsiteVerificationCode) HasVerificationCode() bool`
+
+HasVerificationCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,6 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -11,21 +11,21 @@ public class CustomLabel3Filter  {
   
   @ApiModelProperty(required = true, value = "")
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3;
  /**
    * Get CUSTOM_LABEL_3
    * @return CUSTOM_LABEL_3
   **/
   @JsonProperty("CUSTOM_LABEL_3")
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
   }
 
-  public void setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
+  public void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
   }
 
-  public CustomLabel3Filter CUSTOM_LABEL_3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
+  public CustomLabel3Filter CUSTOM_LABEL_3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
     return this;
   }

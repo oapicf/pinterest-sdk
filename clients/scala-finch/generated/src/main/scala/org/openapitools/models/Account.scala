@@ -8,31 +8,31 @@ import org.openapitools._
 
 /**
  * 
- * @param accountUnderscoretype Type of account
- * @param id User account ID.
- * @param profileUnderscoreimage 
- * @param websiteUnderscoreurl 
- * @param username 
  * @param about Profile about description.
- * @param businessUnderscorename 
+ * @param accountUnderscoretype Type of account
  * @param boardUnderscorecount User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
- * @param pinUnderscorecount User account pin count. This includes both created and saved pins.
+ * @param businessUnderscorename 
  * @param followerUnderscorecount User account follower count.
  * @param followingUnderscorecount User account following count.
+ * @param id User account ID.
  * @param monthlyUnderscoreviews User account monthly views.
+ * @param pinUnderscorecount User account pin count. This includes both created and saved pins.
+ * @param profileUnderscoreimage 
+ * @param username 
+ * @param websiteUnderscoreurl 
  */
-case class Account(accountUnderscoretype: Option[String],
-                id: Option[String],
-                profileUnderscoreimage: Option[String],
-                websiteUnderscoreurl: Option[String],
-                username: Option[String],
-                about: Option[String],
-                businessUnderscorename: Option[String],
+case class Account(about: Option[String],
+                accountUnderscoretype: Option[String],
                 boardUnderscorecount: Option[Int],
-                pinUnderscorecount: Option[Int],
+                businessUnderscorename: Option[String],
                 followerUnderscorecount: Option[Int],
                 followingUnderscorecount: Option[Int],
-                monthlyUnderscoreviews: Option[Int]
+                id: Option[String],
+                monthlyUnderscoreviews: Option[Int],
+                pinUnderscorecount: Option[Int],
+                profileUnderscoreimage: Option[String],
+                username: Option[String],
+                websiteUnderscoreurl: Option[String]
                 )
 
 object Account {

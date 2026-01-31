@@ -18,7 +18,7 @@ Mono<SearchPartnerPins200Response> SearchController.searchPartnerPins(termcountr
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
 ```java
-Mono<PinsList200Response> SearchController.searchUserPinsList(queryadAccountIdbookmark)
+Mono<SearchUserPinsList200Response> SearchController.searchUserPinsList(queryadAccountIdbookmark)
 ```
 
 Search user&#39;s Pins
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
 
 ### Return type
-[**PinsList200Response**](../../docs/models/PinsList200Response.md)
+[**SearchUserPinsList200Response**](../../docs/models/SearchUserPinsList200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `boards:read_secret`, `pins:read`, `pins:read_secret`

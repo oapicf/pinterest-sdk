@@ -8,9 +8,9 @@ The class is defined in **[UpdateAssetGroupResponseExceptionsInner.java](../../s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**assetGroupId** | `String` | Asset group id of the exception. |  [optional property]
 **code** | `Integer` | Error code associated with the error editing asset group. |  [optional property]
 **message** | `String` | Error message associated with the error editing asset group. |  [optional property]
-**assetGroupId** | `String` | Asset group id of the exception. |  [optional property]
 
 
 

@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;MediaUploadDetails&gt;](MediaUploadDetails.md)
 `bookmark` | string
+`items` | [Array&lt;Media&gt;](Media.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { MediaList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies MediaList200Response
 
 console.log(example)

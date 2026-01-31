@@ -5,13 +5,13 @@
 -export_type([openapi_bulk_upsert_status_response/0]).
 
 -type openapi_bulk_upsert_status_response() ::
-    #{ 'status' => openapi_bulk_upsert_status:openapi_bulk_upsert_status(),
-       'result_url' => binary()
+    #{ 'result_url' => binary(),
+       'status' => openapi_bulk_upsert_status:openapi_bulk_upsert_status()
      }.
 
-encode(#{ 'status' := Status,
-          'result_url' := ResultUrl
+encode(#{ 'result_url' := ResultUrl,
+          'status' := Status
         }) ->
-    #{ 'status' => Status,
-       'result_url' => ResultUrl
+    #{ 'result_url' => ResultUrl,
+       'status' => Status
      }.

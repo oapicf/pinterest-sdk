@@ -25,21 +25,24 @@ CampaignResponse::__init()
 {
 	//id = std::string();
 	//ad_account_id = std::string();
-	//name = std::string();
-	//status = std::string();
-	//lifetime_spend_cap = int(0);
 	//daily_spend_cap = int(0);
-	//order_line_id = std::string();
-	//tracking_urls = null;
-	//start_time = int(0);
 	//end_time = int(0);
+	//is_automated_campaign = bool(false);
 	//is_flexible_daily_budgets = bool(false);
-	//objective_type = new ObjectiveType();
+	//lifetime_spend_cap = int(0);
+	//name = std::string();
+	//order_line_id = std::string();
+	//start_time = int(0);
+	//status = std::string();
+	//tracking_urls = null;
+	//bid_options = new CampaignBidOptions();
 	//created_time = int(0);
-	//updated_time = int(0);
-	//type = std::string();
 	//is_campaign_budget_optimization = bool(false);
+	//is_performance_plus = bool(false);
+	//objective_type = new ObjectiveType();
 	//summary_status = new CampaignSummaryStatus();
+	//type = std::string();
+	//updated_time = int(0);
 }
 
 void
@@ -55,80 +58,95 @@ CampaignResponse::__cleanup()
 	//delete ad_account_id;
 	//ad_account_id = NULL;
 	//}
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
-	//if(status != NULL) {
-	//
-	//delete status;
-	//status = NULL;
-	//}
-	//if(lifetime_spend_cap != NULL) {
-	//
-	//delete lifetime_spend_cap;
-	//lifetime_spend_cap = NULL;
-	//}
 	//if(daily_spend_cap != NULL) {
 	//
 	//delete daily_spend_cap;
 	//daily_spend_cap = NULL;
-	//}
-	//if(order_line_id != NULL) {
-	//
-	//delete order_line_id;
-	//order_line_id = NULL;
-	//}
-	//if(tracking_urls != NULL) {
-	//
-	//delete tracking_urls;
-	//tracking_urls = NULL;
-	//}
-	//if(start_time != NULL) {
-	//
-	//delete start_time;
-	//start_time = NULL;
 	//}
 	//if(end_time != NULL) {
 	//
 	//delete end_time;
 	//end_time = NULL;
 	//}
+	//if(is_automated_campaign != NULL) {
+	//
+	//delete is_automated_campaign;
+	//is_automated_campaign = NULL;
+	//}
 	//if(is_flexible_daily_budgets != NULL) {
 	//
 	//delete is_flexible_daily_budgets;
 	//is_flexible_daily_budgets = NULL;
 	//}
-	//if(objective_type != NULL) {
+	//if(lifetime_spend_cap != NULL) {
 	//
-	//delete objective_type;
-	//objective_type = NULL;
+	//delete lifetime_spend_cap;
+	//lifetime_spend_cap = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(order_line_id != NULL) {
+	//
+	//delete order_line_id;
+	//order_line_id = NULL;
+	//}
+	//if(start_time != NULL) {
+	//
+	//delete start_time;
+	//start_time = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
+	//}
+	//if(tracking_urls != NULL) {
+	//
+	//delete tracking_urls;
+	//tracking_urls = NULL;
+	//}
+	//if(bid_options != NULL) {
+	//
+	//delete bid_options;
+	//bid_options = NULL;
 	//}
 	//if(created_time != NULL) {
 	//
 	//delete created_time;
 	//created_time = NULL;
 	//}
-	//if(updated_time != NULL) {
+	//if(is_campaign_budget_optimization != NULL) {
 	//
-	//delete updated_time;
-	//updated_time = NULL;
+	//delete is_campaign_budget_optimization;
+	//is_campaign_budget_optimization = NULL;
+	//}
+	//if(is_performance_plus != NULL) {
+	//
+	//delete is_performance_plus;
+	//is_performance_plus = NULL;
+	//}
+	//if(objective_type != NULL) {
+	//
+	//delete objective_type;
+	//objective_type = NULL;
+	//}
+	//if(summary_status != NULL) {
+	//
+	//delete summary_status;
+	//summary_status = NULL;
 	//}
 	//if(type != NULL) {
 	//
 	//delete type;
 	//type = NULL;
 	//}
-	//if(is_campaign_budget_optimization != NULL) {
+	//if(updated_time != NULL) {
 	//
-	//delete is_campaign_budget_optimization;
-	//is_campaign_budget_optimization = NULL;
-	//}
-	//if(summary_status != NULL) {
-	//
-	//delete summary_status;
-	//summary_status = NULL;
+	//delete updated_time;
+	//updated_time = NULL;
 	//}
 	//
 }
@@ -160,6 +178,61 @@ CampaignResponse::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *daily_spend_capKey = "daily_spend_cap";
+	node = json_object_get_member(pJsonObject, daily_spend_capKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&daily_spend_cap, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *end_timeKey = "end_time";
+	node = json_object_get_member(pJsonObject, end_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&end_time, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_automated_campaignKey = "is_automated_campaign";
+	node = json_object_get_member(pJsonObject, is_automated_campaignKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_automated_campaign, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
+	node = json_object_get_member(pJsonObject, is_flexible_daily_budgetsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_flexible_daily_budgets, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *lifetime_spend_capKey = "lifetime_spend_cap";
+	node = json_object_get_member(pJsonObject, lifetime_spend_capKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&lifetime_spend_cap, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *nameKey = "name";
 	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
@@ -167,6 +240,28 @@ CampaignResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *order_line_idKey = "order_line_id";
+	node = json_object_get_member(pJsonObject, order_line_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&order_line_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *start_timeKey = "start_time";
+	node = json_object_get_member(pJsonObject, start_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&start_time, node, "int", "");
 		} else {
 			
 		}
@@ -185,39 +280,6 @@ CampaignResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *lifetime_spend_capKey = "lifetime_spend_cap";
-	node = json_object_get_member(pJsonObject, lifetime_spend_capKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&lifetime_spend_cap, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *daily_spend_capKey = "daily_spend_cap";
-	node = json_object_get_member(pJsonObject, daily_spend_capKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&daily_spend_cap, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *order_line_idKey = "order_line_id";
-	node = json_object_get_member(pJsonObject, order_line_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&order_line_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *tracking_urlsKey = "tracking_urls";
 	node = json_object_get_member(pJsonObject, tracking_urlsKey);
 	if (node !=NULL) {
@@ -232,35 +294,49 @@ CampaignResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *start_timeKey = "start_time";
-	node = json_object_get_member(pJsonObject, start_timeKey);
+	const gchar *bid_optionsKey = "bid_options";
+	node = json_object_get_member(pJsonObject, bid_optionsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CampaignBidOptions")) {
+			jsonToValue(&bid_options, node, "CampaignBidOptions", "CampaignBidOptions");
+		} else {
+			
+			CampaignBidOptions* obj = static_cast<CampaignBidOptions*> (&bid_options);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&start_time, node, "int", "");
+			jsonToValue(&created_time, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *end_timeKey = "end_time";
-	node = json_object_get_member(pJsonObject, end_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&end_time, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
-	node = json_object_get_member(pJsonObject, is_flexible_daily_budgetsKey);
+	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
+	node = json_object_get_member(pJsonObject, is_campaign_budget_optimizationKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("bool")) {
-			jsonToValue(&is_flexible_daily_budgets, node, "bool", "");
+			jsonToValue(&is_campaign_budget_optimization, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_performance_plusKey = "is_performance_plus";
+	node = json_object_get_member(pJsonObject, is_performance_plusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_performance_plus, node, "bool", "");
 		} else {
 			
 		}
@@ -279,25 +355,17 @@ CampaignResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_timeKey = "created_time";
-	node = json_object_get_member(pJsonObject, created_timeKey);
+	const gchar *summary_statusKey = "summary_status";
+	node = json_object_get_member(pJsonObject, summary_statusKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&created_time, node, "int", "");
+		if (isprimitive("CampaignSummaryStatus")) {
+			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
 		} else {
 			
-		}
-	}
-	const gchar *updated_timeKey = "updated_time";
-	node = json_object_get_member(pJsonObject, updated_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&updated_time, node, "int", "");
-		} else {
+			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -312,28 +380,14 @@ CampaignResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
-	node = json_object_get_member(pJsonObject, is_campaign_budget_optimizationKey);
+	const gchar *updated_timeKey = "updated_time";
+	node = json_object_get_member(pJsonObject, updated_timeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_campaign_budget_optimization, node, "bool", "");
+		if (isprimitive("int")) {
+			jsonToValue(&updated_time, node, "int", "");
 		} else {
-			
-		}
-	}
-	const gchar *summary_statusKey = "summary_status";
-	node = json_object_get_member(pJsonObject, summary_statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CampaignSummaryStatus")) {
-			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
-		} else {
-			
-			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -367,6 +421,51 @@ CampaignResponse::toJson()
 	}
 	const gchar *ad_account_idKey = "ad_account_id";
 	json_object_set_member(pJsonObject, ad_account_idKey, node);
+	if (isprimitive("int")) {
+		int obj = getDailySpendCap();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *daily_spend_capKey = "daily_spend_cap";
+	json_object_set_member(pJsonObject, daily_spend_capKey, node);
+	if (isprimitive("int")) {
+		int obj = getEndTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *end_timeKey = "end_time";
+	json_object_set_member(pJsonObject, end_timeKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsAutomatedCampaign();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_automated_campaignKey = "is_automated_campaign";
+	json_object_set_member(pJsonObject, is_automated_campaignKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsFlexibleDailyBudgets();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
+	json_object_set_member(pJsonObject, is_flexible_daily_budgetsKey, node);
+	if (isprimitive("int")) {
+		int obj = getLifetimeSpendCap();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *lifetime_spend_capKey = "lifetime_spend_cap";
+	json_object_set_member(pJsonObject, lifetime_spend_capKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
@@ -376,6 +475,24 @@ CampaignResponse::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getOrderLineId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *order_line_idKey = "order_line_id";
+	json_object_set_member(pJsonObject, order_line_idKey, node);
+	if (isprimitive("int")) {
+		int obj = getStartTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *start_timeKey = "start_time";
+	json_object_set_member(pJsonObject, start_timeKey, node);
 	if (isprimitive("EntityStatus")) {
 		EntityStatus obj = getStatus();
 		node = converttoJson(&obj, "EntityStatus", "");
@@ -390,33 +507,6 @@ CampaignResponse::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("int")) {
-		int obj = getLifetimeSpendCap();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *lifetime_spend_capKey = "lifetime_spend_cap";
-	json_object_set_member(pJsonObject, lifetime_spend_capKey, node);
-	if (isprimitive("int")) {
-		int obj = getDailySpendCap();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *daily_spend_capKey = "daily_spend_cap";
-	json_object_set_member(pJsonObject, daily_spend_capKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getOrderLineId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *order_line_idKey = "order_line_id";
-	json_object_set_member(pJsonObject, order_line_idKey, node);
 	if (isprimitive("TrackingUrls")) {
 		TrackingUrls obj = getTrackingUrls();
 		node = converttoJson(&obj, "TrackingUrls", "");
@@ -431,33 +521,47 @@ CampaignResponse::toJson()
 	}
 	const gchar *tracking_urlsKey = "tracking_urls";
 	json_object_set_member(pJsonObject, tracking_urlsKey, node);
+	if (isprimitive("CampaignBidOptions")) {
+		CampaignBidOptions obj = getBidOptions();
+		node = converttoJson(&obj, "CampaignBidOptions", "");
+	}
+	else {
+		
+		CampaignBidOptions obj = static_cast<CampaignBidOptions> (getBidOptions());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *bid_optionsKey = "bid_options";
+	json_object_set_member(pJsonObject, bid_optionsKey, node);
 	if (isprimitive("int")) {
-		int obj = getStartTime();
+		int obj = getCreatedTime();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *start_timeKey = "start_time";
-	json_object_set_member(pJsonObject, start_timeKey, node);
-	if (isprimitive("int")) {
-		int obj = getEndTime();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *end_timeKey = "end_time";
-	json_object_set_member(pJsonObject, end_timeKey, node);
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
 	if (isprimitive("bool")) {
-		bool obj = getIsFlexibleDailyBudgets();
+		bool obj = getIsCampaignBudgetOptimization();
 		node = converttoJson(&obj, "bool", "");
 	}
 	else {
 		
 	}
-	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
-	json_object_set_member(pJsonObject, is_flexible_daily_budgetsKey, node);
+	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
+	json_object_set_member(pJsonObject, is_campaign_budget_optimizationKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsPerformancePlus();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_performance_plusKey = "is_performance_plus";
+	json_object_set_member(pJsonObject, is_performance_plusKey, node);
 	if (isprimitive("ObjectiveType")) {
 		ObjectiveType obj = getObjectiveType();
 		node = converttoJson(&obj, "ObjectiveType", "");
@@ -472,42 +576,6 @@ CampaignResponse::toJson()
 	}
 	const gchar *objective_typeKey = "objective_type";
 	json_object_set_member(pJsonObject, objective_typeKey, node);
-	if (isprimitive("int")) {
-		int obj = getCreatedTime();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *created_timeKey = "created_time";
-	json_object_set_member(pJsonObject, created_timeKey, node);
-	if (isprimitive("int")) {
-		int obj = getUpdatedTime();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *updated_timeKey = "updated_time";
-	json_object_set_member(pJsonObject, updated_timeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getIsCampaignBudgetOptimization();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
-	json_object_set_member(pJsonObject, is_campaign_budget_optimizationKey, node);
 	if (isprimitive("CampaignSummaryStatus")) {
 		CampaignSummaryStatus obj = getSummaryStatus();
 		node = converttoJson(&obj, "CampaignSummaryStatus", "");
@@ -522,6 +590,24 @@ CampaignResponse::toJson()
 	}
 	const gchar *summary_statusKey = "summary_status";
 	json_object_set_member(pJsonObject, summary_statusKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
+	if (isprimitive("int")) {
+		int obj = getUpdatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_timeKey = "updated_time";
+	json_object_set_member(pJsonObject, updated_timeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -554,42 +640,6 @@ CampaignResponse::setAdAccountId(std::string  ad_account_id)
 	this->ad_account_id = ad_account_id;
 }
 
-std::string
-CampaignResponse::getName()
-{
-	return name;
-}
-
-void
-CampaignResponse::setName(std::string  name)
-{
-	this->name = name;
-}
-
-EntityStatus
-CampaignResponse::getStatus()
-{
-	return status;
-}
-
-void
-CampaignResponse::setStatus(EntityStatus  status)
-{
-	this->status = status;
-}
-
-int
-CampaignResponse::getLifetimeSpendCap()
-{
-	return lifetime_spend_cap;
-}
-
-void
-CampaignResponse::setLifetimeSpendCap(int  lifetime_spend_cap)
-{
-	this->lifetime_spend_cap = lifetime_spend_cap;
-}
-
 int
 CampaignResponse::getDailySpendCap()
 {
@@ -600,42 +650,6 @@ void
 CampaignResponse::setDailySpendCap(int  daily_spend_cap)
 {
 	this->daily_spend_cap = daily_spend_cap;
-}
-
-std::string
-CampaignResponse::getOrderLineId()
-{
-	return order_line_id;
-}
-
-void
-CampaignResponse::setOrderLineId(std::string  order_line_id)
-{
-	this->order_line_id = order_line_id;
-}
-
-TrackingUrls
-CampaignResponse::getTrackingUrls()
-{
-	return tracking_urls;
-}
-
-void
-CampaignResponse::setTrackingUrls(TrackingUrls  tracking_urls)
-{
-	this->tracking_urls = tracking_urls;
-}
-
-int
-CampaignResponse::getStartTime()
-{
-	return start_time;
-}
-
-void
-CampaignResponse::setStartTime(int  start_time)
-{
-	this->start_time = start_time;
 }
 
 int
@@ -651,6 +665,18 @@ CampaignResponse::setEndTime(int  end_time)
 }
 
 bool
+CampaignResponse::getIsAutomatedCampaign()
+{
+	return is_automated_campaign;
+}
+
+void
+CampaignResponse::setIsAutomatedCampaign(bool  is_automated_campaign)
+{
+	this->is_automated_campaign = is_automated_campaign;
+}
+
+bool
 CampaignResponse::getIsFlexibleDailyBudgets()
 {
 	return is_flexible_daily_budgets;
@@ -662,16 +688,88 @@ CampaignResponse::setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets)
 	this->is_flexible_daily_budgets = is_flexible_daily_budgets;
 }
 
-ObjectiveType
-CampaignResponse::getObjectiveType()
+int
+CampaignResponse::getLifetimeSpendCap()
 {
-	return objective_type;
+	return lifetime_spend_cap;
 }
 
 void
-CampaignResponse::setObjectiveType(ObjectiveType  objective_type)
+CampaignResponse::setLifetimeSpendCap(int  lifetime_spend_cap)
 {
-	this->objective_type = objective_type;
+	this->lifetime_spend_cap = lifetime_spend_cap;
+}
+
+std::string
+CampaignResponse::getName()
+{
+	return name;
+}
+
+void
+CampaignResponse::setName(std::string  name)
+{
+	this->name = name;
+}
+
+std::string
+CampaignResponse::getOrderLineId()
+{
+	return order_line_id;
+}
+
+void
+CampaignResponse::setOrderLineId(std::string  order_line_id)
+{
+	this->order_line_id = order_line_id;
+}
+
+int
+CampaignResponse::getStartTime()
+{
+	return start_time;
+}
+
+void
+CampaignResponse::setStartTime(int  start_time)
+{
+	this->start_time = start_time;
+}
+
+EntityStatus
+CampaignResponse::getStatus()
+{
+	return status;
+}
+
+void
+CampaignResponse::setStatus(EntityStatus  status)
+{
+	this->status = status;
+}
+
+TrackingUrls
+CampaignResponse::getTrackingUrls()
+{
+	return tracking_urls;
+}
+
+void
+CampaignResponse::setTrackingUrls(TrackingUrls  tracking_urls)
+{
+	this->tracking_urls = tracking_urls;
+}
+
+CampaignBidOptions
+CampaignResponse::getBidOptions()
+{
+	return bid_options;
+}
+
+void
+CampaignResponse::setBidOptions(CampaignBidOptions  bid_options)
+{
+	this->bid_options = bid_options;
 }
 
 int
@@ -686,16 +784,52 @@ CampaignResponse::setCreatedTime(int  created_time)
 	this->created_time = created_time;
 }
 
-int
-CampaignResponse::getUpdatedTime()
+bool
+CampaignResponse::getIsCampaignBudgetOptimization()
 {
-	return updated_time;
+	return is_campaign_budget_optimization;
 }
 
 void
-CampaignResponse::setUpdatedTime(int  updated_time)
+CampaignResponse::setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization)
 {
-	this->updated_time = updated_time;
+	this->is_campaign_budget_optimization = is_campaign_budget_optimization;
+}
+
+bool
+CampaignResponse::getIsPerformancePlus()
+{
+	return is_performance_plus;
+}
+
+void
+CampaignResponse::setIsPerformancePlus(bool  is_performance_plus)
+{
+	this->is_performance_plus = is_performance_plus;
+}
+
+ObjectiveType
+CampaignResponse::getObjectiveType()
+{
+	return objective_type;
+}
+
+void
+CampaignResponse::setObjectiveType(ObjectiveType  objective_type)
+{
+	this->objective_type = objective_type;
+}
+
+CampaignSummaryStatus
+CampaignResponse::getSummaryStatus()
+{
+	return summary_status;
+}
+
+void
+CampaignResponse::setSummaryStatus(CampaignSummaryStatus  summary_status)
+{
+	this->summary_status = summary_status;
 }
 
 std::string
@@ -710,28 +844,16 @@ CampaignResponse::setType(std::string  type)
 	this->type = type;
 }
 
-bool
-CampaignResponse::getIsCampaignBudgetOptimization()
+int
+CampaignResponse::getUpdatedTime()
 {
-	return is_campaign_budget_optimization;
+	return updated_time;
 }
 
 void
-CampaignResponse::setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization)
+CampaignResponse::setUpdatedTime(int  updated_time)
 {
-	this->is_campaign_budget_optimization = is_campaign_budget_optimization;
-}
-
-CampaignSummaryStatus
-CampaignResponse::getSummaryStatus()
-{
-	return summary_status;
-}
-
-void
-CampaignResponse::setSummaryStatus(CampaignSummaryStatus  summary_status)
-{
-	this->summary_status = summary_status;
+	this->updated_time = updated_time;
 }
 
 

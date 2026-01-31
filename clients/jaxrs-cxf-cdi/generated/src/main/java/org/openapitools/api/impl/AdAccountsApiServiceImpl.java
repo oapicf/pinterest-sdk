@@ -7,10 +7,7 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import org.openapitools.model.AdAccount;
 import org.openapitools.model.AdAccountAnalyticsResponseInner;
-import org.openapitools.model.AdAccountCreateRequest;
-import org.openapitools.model.AdAccountCreateSubscriptionRequest;
-import org.openapitools.model.AdAccountCreateSubscriptionResponse;
-import org.openapitools.model.AdAccountGetSubscriptionResponse;
+import org.openapitools.model.AdAccountCreate;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
@@ -24,10 +21,12 @@ import org.openapitools.model.AdGroupResponse;
 import org.openapitools.model.AdGroupUpdateRequest;
 import org.openapitools.model.AdGroupsAnalyticsResponseInner;
 import org.openapitools.model.AdGroupsList200Response;
+import org.openapitools.model.AdPinAnalytics;
 import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
@@ -39,9 +38,9 @@ import org.openapitools.model.AdsCreditRedeemRequest;
 import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
+import org.openapitools.model.AdvertiserDefinedEventsResponse;
 import org.openapitools.model.Audience;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
@@ -50,6 +49,8 @@ import org.openapitools.model.AudienceUpdateRequest;
 import org.openapitools.model.AudiencesList200Response;
 import org.openapitools.model.BidFloor;
 import org.openapitools.model.BidFloorRequest;
+import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
 import org.openapitools.model.BulkDownloadRequest;
 import org.openapitools.model.BulkDownloadResponse;
@@ -68,25 +69,36 @@ import org.openapitools.model.CampaignsList200Response;
 import org.openapitools.model.ConversionApiResponse;
 import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionEvents;
+import org.openapitools.model.ConversionMSOTEvents;
+import org.openapitools.model.ConversionProductReportRequest;
 import org.openapitools.model.ConversionReportAttributionType;
+import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
-import org.openapitools.model.ConversionTagListResponse;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTagsList200Response;
 import org.openapitools.model.CreateMMMReportRequest;
 import org.openapitools.model.CreateMMMReportResponse;
 import org.openapitools.model.CustomerList;
 import org.openapitools.model.CustomerListRequest;
 import org.openapitools.model.CustomerListUpdateRequest;
+import org.openapitools.model.CustomerListUploadCreateRequest;
+import org.openapitools.model.CustomerListUploadCreateResponse;
+import org.openapitools.model.CustomerListUploadResponse;
 import org.openapitools.model.CustomerListsList200Response;
 import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
+import org.openapitools.model.EventQualityScore;
 import org.openapitools.model.GetMMMReportResponse;
 import org.openapitools.model.Granularity;
+import org.openapitools.model.IngestionSourceOptions;
 import org.openapitools.model.KeywordUpdateBody;
 import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LabelCreateRequest;
+import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabelsList200Response;
+import org.openapitools.model.LabelsResponse;
 import org.openapitools.model.LeadFormArrayResponse;
 import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
@@ -94,21 +106,32 @@ import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
 import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadSubscription;
+import org.openapitools.model.LeadSubscriptionPostParamsCreate;
 import org.openapitools.model.LeadsExportCreateRequest;
 import org.openapitools.model.LeadsExportCreateResponse;
 import org.openapitools.model.LeadsExportResponseData;
 import org.joda.time.LocalDate;
+import org.openapitools.model.LookbackPeriodOptions;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
 import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.ProductGroupPromotion;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.model.ProductGroupPromotionResponse;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.PromotionCreateRequest;
+import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PromotionsList200Response;
+import org.openapitools.model.PromotionsResponse;
+import org.openapitools.model.ReportingTimeZone;
 import org.openapitools.model.SSIOAccountResponse;
 import org.openapitools.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.model.SSIOCreateInsertionOrderResponse;
@@ -117,12 +140,14 @@ import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SourcePlatformOptions;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
 import org.openapitools.model.TargetingTemplateCreate;
 import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
 import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TemplateBasedReport;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
@@ -138,15 +163,15 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       @Override
-      public Response adAccountAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, SecurityContext securityContext) {
+      public Response adAccountAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adAccountTargetingAnalyticsGet(String adAccountId, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, SecurityContext securityContext) {
+      public Response adAccountTargetingAnalyticsGet(String adAccountId, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -156,7 +181,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adAccountsCreate(AdAccountCreateRequest adAccountCreateRequest, SecurityContext securityContext) {
+      public Response adAccountsCreate(AdAccountCreate adAccountCreate, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -166,7 +191,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adAccountsList(String bookmark, Integer pageSize, Boolean includeSharedAccounts, SecurityContext securityContext) {
+      public Response adAccountsList(Boolean includeSharedAccounts, String bookmark, Integer pageSize, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -181,17 +206,17 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adAccountsSubscriptionsGetList(String adAccountId, Integer pageSize, String bookmark, SecurityContext securityContext) {
+      public Response adAccountsSubscriptionsGetList(String adAccountId, String bookmark, Integer pageSize, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adAccountsSubscriptionsPost(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, SecurityContext securityContext) {
+      public Response adAccountsSubscriptionsPost(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, SecurityContext securityContext) {
+      public Response adGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Boolean aggregateReportRows, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -221,7 +246,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adGroupsTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, SecurityContext securityContext) {
+      public Response adGroupsTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -231,17 +256,22 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
+      public Response adPinsAnalytics(String adAccountId, String campaignId, List<@Pattern(regexp = "^\\d+$")String> pinIds, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
       public Response adPreviewsCreate(String adAccountId, AdPreviewRequest adPreviewRequest, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, SecurityContext securityContext) {
+      public Response adTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<@Pattern(regexp = "^\\d+$")String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<@Pattern(regexp = "^\\d+$")String> pinIds, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, SecurityContext securityContext) {
+      public Response adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<@Pattern(regexp = "^\\d+$")String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<@Pattern(regexp = "^\\d+$")String> pinIds, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -276,6 +306,16 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
+      public Response advertiserDefinedEventsGet(String adAccountId, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response analyticsCreateConversionProductReport(String adAccountId, ConversionProductReportRequest conversionProductReportRequest, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
       public Response analyticsCreateMmmReport(String adAccountId, CreateMMMReportRequest createMMMReportRequest, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
@@ -287,6 +327,11 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
   }
       @Override
       public Response analyticsCreateTemplateReport(String adAccountId, String templateId, LocalDate startDate, LocalDate endDate, Granularity granularity, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response analyticsGetConversionProductReport(String adAccountId, String token, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -316,11 +361,6 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response audiencesCreateCustom(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
       public Response audiencesGet(String adAccountId, String audienceId, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
@@ -332,6 +372,16 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
   }
       @Override
       public Response audiencesUpdate(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response billingInvoiceDownloadGet(String adAccountId, String billingInvoiceId, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response billingInvoicesGet(String adAccountId, String bookmark, Integer pageSize, String sort, String order, String status, String documentType, LocalDate startDueDate, LocalDate endDueDate, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -356,12 +406,12 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response campaignTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, SecurityContext securityContext) {
+      public Response campaignTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response campaignsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, SecurityContext securityContext) {
+      public Response campaignsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Boolean aggregateReportRows, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -386,6 +436,11 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
+      public Response conversionEqsList(LookbackPeriodOptions lookbackPeriod, String adAccountId, SourcePlatformOptions sourcePlatform, IngestionSourceOptions ingestionSource, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
       public Response conversionTagsCreate(String adAccountId, ConversionTagCreate conversionTagCreate, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
@@ -402,6 +457,21 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
   }
       @Override
       public Response countryKeywordsMetricsGet(String adAccountId, String countryCode, List<String> keywords, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response customerListUploadsCreate(String adAccountId, String customerListId, CustomerListUploadCreateRequest customerListUploadCreateRequest, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response customerListUploadsGet(String adAccountId, String customerListId, String customerListUploadId, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response customerListUploadsRun(String adAccountId, String customerListId, String customerListUploadId, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -436,12 +506,27 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response keywordsGet(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark, SecurityContext securityContext) {
+      public Response keywordsGet(String adAccountId, String campaignId, String adGroupId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
       public Response keywordsUpdate(String adAccountId, KeywordUpdateBody keywordUpdateBody, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response labelsCreate(String adAccountId, LabelCreateRequest labelCreateRequest, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response labelsList(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds, List<String> entityStatuses, List<String> labelTypes, Integer pageSize, String bookmark, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response labelsUpdate(String adAccountId, LabelUpdateRequest labelUpdateRequest, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -477,6 +562,11 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
   }
       @Override
       public Response leadsExportGet(String adAccountId, String leadsExportId, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response msotEventsCreate(String adAccountId, ConversionMSOTEvents conversionMSOTEvents, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -521,7 +611,32 @@ public class AdAccountsApiServiceImpl implements AdAccountsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, SecurityContext securityContext) {
+      public Response productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response promotionsCreate(String adAccountId, List<@Valid PromotionCreateRequest> promotionCreateRequest, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response promotionsDelete(String adAccountId, String promotionId, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response promotionsGet(String adAccountId, String promotionId, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response promotionsList(String adAccountId, Integer pageSize, String order, String bookmark, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response promotionsUpdate(String adAccountId, List<@Valid PromotionUpdateRequest> promotionUpdateRequest, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

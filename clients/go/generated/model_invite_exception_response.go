@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &InviteExceptionResponse{}
 
 // InviteExceptionResponse An exception object if there is an error performing the action. Will only be provided if there is an error.
 type InviteExceptionResponse struct {
-	// Unique identifier of the invite/request.
-	InviteOrRequestId NullableString `json:"invite_or_request_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Error code associated with the error in performing the action on the invite/request.
 	Code *int32 `json:"code,omitempty"`
+	// Unique identifier of the invite/request.
+	InviteOrRequestId NullableString `json:"invite_or_request_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Error message associated with the error in performing the action on the invite/request.
 	Message *string `json:"message,omitempty"`
 	// A list of users' usernames or emails OR a list of partner ids that caused the error.
@@ -45,6 +45,38 @@ func NewInviteExceptionResponse() *InviteExceptionResponse {
 func NewInviteExceptionResponseWithDefaults() *InviteExceptionResponse {
 	this := InviteExceptionResponse{}
 	return &this
+}
+
+// GetCode returns the Code field value if set, zero value otherwise.
+func (o *InviteExceptionResponse) GetCode() int32 {
+	if o == nil || IsNil(o.Code) {
+		var ret int32
+		return ret
+	}
+	return *o.Code
+}
+
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteExceptionResponse) GetCodeOk() (*int32, bool) {
+	if o == nil || IsNil(o.Code) {
+		return nil, false
+	}
+	return o.Code, true
+}
+
+// HasCode returns a boolean if a field has been set.
+func (o *InviteExceptionResponse) HasCode() bool {
+	if o != nil && !IsNil(o.Code) {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given int32 and assigns it to the Code field.
+func (o *InviteExceptionResponse) SetCode(v int32) {
+	o.Code = &v
 }
 
 // GetInviteOrRequestId returns the InviteOrRequestId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -87,38 +119,6 @@ func (o *InviteExceptionResponse) SetInviteOrRequestIdNil() {
 // UnsetInviteOrRequestId ensures that no value is present for InviteOrRequestId, not even an explicit nil
 func (o *InviteExceptionResponse) UnsetInviteOrRequestId() {
 	o.InviteOrRequestId.Unset()
-}
-
-// GetCode returns the Code field value if set, zero value otherwise.
-func (o *InviteExceptionResponse) GetCode() int32 {
-	if o == nil || IsNil(o.Code) {
-		var ret int32
-		return ret
-	}
-	return *o.Code
-}
-
-// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteExceptionResponse) GetCodeOk() (*int32, bool) {
-	if o == nil || IsNil(o.Code) {
-		return nil, false
-	}
-	return o.Code, true
-}
-
-// HasCode returns a boolean if a field has been set.
-func (o *InviteExceptionResponse) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
-		return true
-	}
-
-	return false
-}
-
-// SetCode gets a reference to the given int32 and assigns it to the Code field.
-func (o *InviteExceptionResponse) SetCode(v int32) {
-	o.Code = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
@@ -196,11 +196,11 @@ func (o InviteExceptionResponse) MarshalJSON() ([]byte, error) {
 
 func (o InviteExceptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.InviteOrRequestId.IsSet() {
-		toSerialize["invite_or_request_id"] = o.InviteOrRequestId.Get()
-	}
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
+	}
+	if o.InviteOrRequestId.IsSet() {
+		toSerialize["invite_or_request_id"] = o.InviteOrRequestId.Get()
 	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message

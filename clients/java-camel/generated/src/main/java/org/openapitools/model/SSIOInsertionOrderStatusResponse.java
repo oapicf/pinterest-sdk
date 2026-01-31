@@ -21,14 +21,34 @@ import javax.annotation.Generated;
  * SSIOInsertionOrderStatusResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOInsertionOrderStatusResponse {
+
+  private JsonNullable<String> creationTime = JsonNullable.<String>undefined();
 
   private String pinOrderId;
 
   private String status;
 
-  private JsonNullable<String> creationTime = JsonNullable.<String>undefined();
+  public SSIOInsertionOrderStatusResponse creationTime(String creationTime) {
+    this.creationTime = JsonNullable.of(creationTime);
+    return this;
+  }
+
+  /**
+   * Salesforce insertion order creation time
+   * @return creationTime
+   */
+  
+  @Schema(name = "creation_time", example = "2017-06-21T23:11:11.000Z", description = "Salesforce insertion order creation time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("creation_time")
+  public JsonNullable<String> getCreationTime() {
+    return creationTime;
+  }
+
+  public void setCreationTime(JsonNullable<String> creationTime) {
+    this.creationTime = creationTime;
+  }
 
   public SSIOInsertionOrderStatusResponse pinOrderId(String pinOrderId) {
     this.pinOrderId = pinOrderId;
@@ -70,26 +90,6 @@ public class SSIOInsertionOrderStatusResponse {
     this.status = status;
   }
 
-  public SSIOInsertionOrderStatusResponse creationTime(String creationTime) {
-    this.creationTime = JsonNullable.of(creationTime);
-    return this;
-  }
-
-  /**
-   * Salesforce insertion order creation time
-   * @return creationTime
-   */
-  
-  @Schema(name = "creation_time", example = "2017-06-21T23:11:11.000Z", description = "Salesforce insertion order creation time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("creation_time")
-  public JsonNullable<String> getCreationTime() {
-    return creationTime;
-  }
-
-  public void setCreationTime(JsonNullable<String> creationTime) {
-    this.creationTime = creationTime;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -99,9 +99,9 @@ public class SSIOInsertionOrderStatusResponse {
       return false;
     }
     SSIOInsertionOrderStatusResponse ssIOInsertionOrderStatusResponse = (SSIOInsertionOrderStatusResponse) o;
-    return Objects.equals(this.pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
-        Objects.equals(this.status, ssIOInsertionOrderStatusResponse.status) &&
-        equalsNullable(this.creationTime, ssIOInsertionOrderStatusResponse.creationTime);
+    return equalsNullable(this.creationTime, ssIOInsertionOrderStatusResponse.creationTime) &&
+        Objects.equals(this.pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
+        Objects.equals(this.status, ssIOInsertionOrderStatusResponse.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -110,7 +110,7 @@ public class SSIOInsertionOrderStatusResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pinOrderId, status, hashCodeNullable(creationTime));
+    return Objects.hash(hashCodeNullable(creationTime), pinOrderId, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -124,9 +124,9 @@ public class SSIOInsertionOrderStatusResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderStatusResponse {\n");
+    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

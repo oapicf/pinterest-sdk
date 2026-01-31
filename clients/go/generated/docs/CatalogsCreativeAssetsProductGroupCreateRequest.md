@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
 **CatalogType** | **string** |  | 
-**Name** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsProductGroupCreateRequest
 
-`func NewCatalogsCreativeAssetsProductGroupCreateRequest(catalogType string, name string, filters CatalogsCreativeAssetsProductGroupFilters, catalogId string, ) *CatalogsCreativeAssetsProductGroupCreateRequest`
+`func NewCatalogsCreativeAssetsProductGroupCreateRequest(catalogId string, catalogType string, filters CatalogsCreativeAssetsProductGroupFilters, name string, ) *CatalogsCreativeAssetsProductGroupCreateRequest`
 
 NewCatalogsCreativeAssetsProductGroupCreateRequest instantiates a new CatalogsCreativeAssetsProductGroupCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,26 @@ will change when the set of required properties is changed
 NewCatalogsCreativeAssetsProductGroupCreateRequestWithDefaults instantiates a new CatalogsCreativeAssetsProductGroupCreateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
 
 ### GetCatalogType
 
@@ -47,26 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsCreativeAssetsProductGroupCreateRequest) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
-
-
-### GetName
-
-`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) SetName(v string)`
-
-SetName sets Name field to given value.
 
 
 ### GetDescription
@@ -124,24 +124,24 @@ and a boolean to check if the value has been set.
 SetFilters sets Filters field to given value.
 
 
-### GetCatalogId
+### GetName
 
-`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetCatalogId() string`
+`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetName() string`
 
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetCatalogIdOk
+### GetNameOk
 
-`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetCatalogIdOk() (*string, bool)`
+`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) GetNameOk() (*string, bool)`
 
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCatalogId
+### SetName
 
-`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) SetCatalogId(v string)`
+`func (o *CatalogsCreativeAssetsProductGroupCreateRequest) SetName(v string)`
 
-SetCatalogId sets CatalogId field to given value.
+SetName sets Name field to given value.
 
 
 

@@ -19,15 +19,15 @@ module CatalogsHotelFeed =
     CreatedAt : DateTime;
     Id : string;
     UpdatedAt : DateTime;
-    Name : string option;
-    Format : CatalogsFormat;
+    CatalogId : string option;
     CatalogType : CatalogsType;
     Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
-    Status : CatalogsStatus;
     DefaultCurrency : NullableCurrency;
     DefaultLocale : string;
-    CatalogId : string option;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string option;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    Status : CatalogsStatus;
   }
   //#endregion

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsReportAllItemsFilter
 import org.openapitools.model.CatalogsReportDistributionIssueFilter
 import org.openapitools.model.CatalogsReportFeedIngestionFilter
 import javax.validation.constraints.DecimalMax
@@ -33,16 +34,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsReportAllItemsFilter::class, name = "ALL_ITEMS"),
       JsonSubTypes.Type(value = CatalogsReportDistributionIssueFilter::class, name = "DISTRIBUTION_ISSUES"),
       JsonSubTypes.Type(value = CatalogsReportFeedIngestionFilter::class, name = "FEED_INGESTION_ISSUES")
 )
 
 interface CatalogsHotelReportParametersReport {
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val reportType: CatalogsHotelReportParametersReport.ReportType
-
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "ID of the feed entity.")
         val feedId: kotlin.String
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val reportType: CatalogsHotelReportParametersReport.ReportType
 
                 @get:Schema(example = "null", description = "")
         val reportType: CatalogsHotelReportParametersReport.ReportType? 
@@ -56,12 +58,13 @@ interface CatalogsHotelReportParametersReport {
 
     /**
     * 
-    * Values: FEED_INGESTION_ISSUES,DISTRIBUTION_ISSUES
+    * Values: FEED_INGESTION_ISSUES,DISTRIBUTION_ISSUES,ALL_ITEMS
     */
     enum class ReportType(@get:JsonValue val value: kotlin.String) {
 
         FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-        DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
+        DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
+        ALL_ITEMS("ALL_ITEMS");
 
         companion object {
             @JvmStatic

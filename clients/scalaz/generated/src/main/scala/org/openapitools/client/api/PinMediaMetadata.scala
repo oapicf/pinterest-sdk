@@ -12,19 +12,19 @@ import org.joda.time.DateTime
 import PinMediaMetadata._
 
 case class PinMediaMetadata (
-  itemType: Option[String],
-title: Option[String],
-description: Option[String],
+  description: Option[String],
+images: Option[ImageSize],
+itemType: Option[String],
 link: Option[String],
-images: Option[ImageMetadataImages],
+title: Option[String],
 coverImageUrl: Option[String],
-/* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-  videoUrl: Option[String],
-/* Duration (in milliseconds) */
+/* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
   duration: Option[BigDecimal],
-/* Height (in pixels) */
+/* Height (in pixels). Field maybe null after creation due to video processing time. */
   height: Option[Integer],
-/* Width (in pixels) */
+/* Video url (720p).  **Note:** This field is limited and not available to all apps. */
+  videoUrl: Option[String],
+/* Width (in pixels). Field maybe null after creation due to video processing time. */
   width: Option[Integer])
 
 object PinMediaMetadata {

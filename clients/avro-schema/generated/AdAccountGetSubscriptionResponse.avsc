@@ -17,18 +17,6 @@
       "default": null
     },
     {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "Subscription ID.",
-      "default": null
-    },
-    {
-      "name": "user_account_id",
-      "type": ["null", "string"],
-      "doc": "User account used to subscribe lead data.",
-      "default": null
-    },
-    {
       "name": "ad_account_id",
       "type": ["null", "string"],
       "doc": "The Ad Account ID that this lead form belongs to.",
@@ -41,9 +29,9 @@
       "default": null
     },
     {
-      "name": "cryptographic_key",
-      "type": ["null", "string"],
-      "doc": "Base64 encoded key for client to decrypt lead data.",
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "Lead subscription creation time. Unix timestamp in milliseconds.",
       "default": null
     },
     {
@@ -53,9 +41,21 @@
       "default": null
     },
     {
-      "name": "created_time",
-      "type": ["null", "int"],
-      "doc": "Lead form creation time. Unix timestamp in milliseconds.",
+      "name": "cryptographic_key",
+      "type": ["null", "string"],
+      "doc": "Base64 encoded key for client to decrypt lead data.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Subscription ID.",
+      "default": null
+    },
+    {
+      "name": "user_account_id",
+      "type": ["null", "string"],
+      "doc": "User account used to subscribe lead data.",
       "default": null
     }
   ]

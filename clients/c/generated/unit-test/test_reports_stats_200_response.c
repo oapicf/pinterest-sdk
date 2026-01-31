@@ -22,13 +22,13 @@ reports_stats_200_response_t* instantiate_reports_stats_200_response(int include
   reports_stats_200_response_t* reports_stats_200_response = NULL;
   if (include_optional) {
     reports_stats_200_response = reports_stats_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     reports_stats_200_response = reports_stats_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

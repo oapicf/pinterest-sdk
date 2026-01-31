@@ -8,8 +8,8 @@ The class is defined in **[TargetingTemplateList200Response.java](../../src/main
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;TargetingTemplateResponseData&gt;`](TargetingTemplateResponseData.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;TargetingTemplateGetResponseData&gt;`](TargetingTemplateGetResponseData.md) |  | 
 
 
 

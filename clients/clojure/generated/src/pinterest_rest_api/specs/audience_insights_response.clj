@@ -11,11 +11,11 @@
 (def audience-insights-response-data
   {
    (ds/opt :categories) (s/coll-of audience-category-spec)
-   (ds/opt :demographics) audience-demographics-spec
-   (ds/opt :type) audience-insight-type-spec
    (ds/opt :date) string?
+   (ds/opt :demographics) audience-demographics-spec
    (ds/opt :size) int?
    (ds/opt :size_is_upper_bound) boolean?
+   (ds/opt :type) audience-insight-type-spec
    })
 
 (def audience-insights-response-spec

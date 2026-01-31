@@ -5,14 +5,14 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}partner_id`,
-                label: `Unique identifier of a business partner to update asset access to. - [${labelPrefix}partner_id]`,
+                key: `${keyPrefix}asset_id`,
+                label: `Unique identifier of the business asset. - [${labelPrefix}asset_id]`,
                 required: true,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}asset_id`,
-                label: `Unique identifier of the business asset. - [${labelPrefix}asset_id]`,
+                key: `${keyPrefix}partner_id`,
+                label: `Unique identifier of a business partner to update asset access to. - [${labelPrefix}partner_id]`,
                 required: true,
                 type: 'string',
             },
@@ -30,8 +30,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'partner_id': bundle.inputData?.[`${keyPrefix}partner_id`],
             'asset_id': bundle.inputData?.[`${keyPrefix}asset_id`],
+            'partner_id': bundle.inputData?.[`${keyPrefix}partner_id`],
             'partner_type': bundle.inputData?.[`${keyPrefix}partner_type`],
         }
     },

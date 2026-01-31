@@ -23,7 +23,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessAccessInviteApiControllerImp extends BusinessAccessInviteApiControllerImpInterface {
     @Override
     public CreateAssetAccessRequestResponse assetAccessRequestsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody) throws Exception {
@@ -32,7 +32,7 @@ public class BusinessAccessInviteApiControllerImp extends BusinessAccessInviteAp
     }
 
     @Override
-    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CancelInvitesBody cancelInvitesBody) throws Exception {
+    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesBody cancelInvitesBody) throws Exception {
         //Do your magic!!!
         return new DeleteInvitesResultsResponseArray();
     }
@@ -44,13 +44,13 @@ public class BusinessAccessInviteApiControllerImp extends BusinessAccessInviteAp
     }
 
     @Override
-    public CreateInvitesResultsResponseArray createMembershipOrPartnershipInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody) throws Exception {
+    public CreateInvitesResultsResponseArray createMembershipOrPartnershipInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody) throws Exception {
         //Do your magic!!!
         return new CreateInvitesResultsResponseArray();
     }
 
     @Override
-    public GetInvites200Response getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public GetInvites200Response getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new GetInvites200Response();
     }

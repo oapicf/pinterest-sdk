@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **string** | Username | [optional] [default to undefined]
-**image_small_url** | **string** | image_small_url | [optional] [default to undefined]
-**image_medium_url** | **string** | image_medium_url | [optional] [default to undefined]
 **image_large_url** | **string** | image_large_url | [optional] [default to undefined]
+**image_medium_url** | **string** | image_medium_url | [optional] [default to undefined]
+**image_small_url** | **string** | image_small_url | [optional] [default to undefined]
 **image_xlarge_url** | **string** | image_xlarge_url | [optional] [default to undefined]
+**username** | **string** | Username | [optional] [default to undefined]
 
 ## Example
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 import { LinkedBusiness } from './api';
 
 const instance: LinkedBusiness = {
-    username,
-    image_small_url,
-    image_medium_url,
     image_large_url,
+    image_medium_url,
+    image_small_url,
     image_xlarge_url,
+    username,
 };
 ```
 

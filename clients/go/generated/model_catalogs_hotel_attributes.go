@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,21 +20,13 @@ var _ MappedNullable = &CatalogsHotelAttributes{}
 
 // CatalogsHotelAttributes struct for CatalogsHotelAttributes
 type CatalogsHotelAttributes struct {
-	// The hotel's name.
-	Name NullableString `json:"name,omitempty"`
-	// Link to the product page
-	Link NullableString `json:"link,omitempty"`
-	// Brief description of the hotel.
-	Description NullableString `json:"description,omitempty"`
+	Address *CatalogsHotelAddress `json:"address,omitempty"`
+	// Base price of the hotel room per night followed by the ISO currency code
+	BasePrice NullableString `json:"base_price,omitempty"`
 	// The brand to which this hotel belongs to.
 	Brand NullableString `json:"brand,omitempty"`
-	// Latitude of the hotel.
-	Latitude *float32 `json:"latitude,omitempty"`
-	// Longitude of the hotel.
-	Longitude NullableFloat32 `json:"longitude,omitempty"`
-	// A list of neighborhoods where the hotel is located
-	Neighborhood []string `json:"neighborhood,omitempty"`
-	Address *CatalogsHotelAddress `json:"address,omitempty"`
+	// The type of property. The category can be any type of internal description desired.
+	Category NullableString `json:"category,omitempty"`
 	// Custom grouping of hotels
 	CustomLabel0 NullableString `json:"custom_label_0,omitempty"`
 	// Custom grouping of hotels
@@ -45,16 +37,24 @@ type CatalogsHotelAttributes struct {
 	CustomLabel3 NullableString `json:"custom_label_3,omitempty"`
 	// Custom grouping of hotels
 	CustomLabel4 NullableString `json:"custom_label_4,omitempty"`
-	// The type of property. The category can be any type of internal description desired.
-	Category NullableString `json:"category,omitempty"`
-	// Base price of the hotel room per night followed by the ISO currency code
-	BasePrice NullableString `json:"base_price,omitempty"`
+	// Brief description of the hotel.
+	Description NullableString `json:"description,omitempty"`
+	GuestRatings *CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
+	// Latitude of the hotel.
+	Latitude *float32 `json:"latitude,omitempty"`
+	// Link to the product page
+	Link NullableString `json:"link,omitempty"`
+	// Longitude of the hotel.
+	Longitude NullableFloat32 `json:"longitude,omitempty"`
+	// The hotel's name.
+	Name NullableString `json:"name,omitempty"`
+	// A list of neighborhoods where the hotel is located
+	Neighborhood []string `json:"neighborhood,omitempty"`
 	// Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	SalePrice NullableString `json:"sale_price,omitempty"`
-	GuestRatings *CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
-	MainImage *CatalogsHotelAttributesAllOfMainImage `json:"main_image,omitempty"`
 	// <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
 	AdditionalImageLink []string `json:"additional_image_link,omitempty"`
+	MainImage *CatalogsHotelAttributesAllOfMainImage `json:"main_image,omitempty"`
 }
 
 // NewCatalogsHotelAttributes instantiates a new CatalogsHotelAttributes object
@@ -74,130 +74,78 @@ func NewCatalogsHotelAttributesWithDefaults() *CatalogsHotelAttributes {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
-		var ret string
+// GetAddress returns the Address field value if set, zero value otherwise.
+func (o *CatalogsHotelAttributes) GetAddress() CatalogsHotelAddress {
+	if o == nil || IsNil(o.Address) {
+		var ret CatalogsHotelAddress
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Address
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetNameOk() (*string, bool) {
-	if o == nil {
+func (o *CatalogsHotelAttributes) GetAddressOk() (*CatalogsHotelAddress, bool) {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Address, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+// HasAddress returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *CatalogsHotelAttributes) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CatalogsHotelAttributes) SetNameNil() {
-	o.Name.Set(nil)
+// SetAddress gets a reference to the given CatalogsHotelAddress and assigns it to the Address field.
+func (o *CatalogsHotelAttributes) SetAddress(v CatalogsHotelAddress) {
+	o.Address = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CatalogsHotelAttributes) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetLink() string {
-	if o == nil || IsNil(o.Link.Get()) {
+// GetBasePrice returns the BasePrice field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetBasePrice() string {
+	if o == nil || IsNil(o.BasePrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Link.Get()
+	return *o.BasePrice.Get()
 }
 
-// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
+// GetBasePriceOk returns a tuple with the BasePrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetLinkOk() (*string, bool) {
+func (o *CatalogsHotelAttributes) GetBasePriceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Link.Get(), o.Link.IsSet()
+	return o.BasePrice.Get(), o.BasePrice.IsSet()
 }
 
-// HasLink returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasLink() bool {
-	if o != nil && o.Link.IsSet() {
+// HasBasePrice returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasBasePrice() bool {
+	if o != nil && o.BasePrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLink gets a reference to the given NullableString and assigns it to the Link field.
-func (o *CatalogsHotelAttributes) SetLink(v string) {
-	o.Link.Set(&v)
+// SetBasePrice gets a reference to the given NullableString and assigns it to the BasePrice field.
+func (o *CatalogsHotelAttributes) SetBasePrice(v string) {
+	o.BasePrice.Set(&v)
 }
-// SetLinkNil sets the value for Link to be an explicit nil
-func (o *CatalogsHotelAttributes) SetLinkNil() {
-	o.Link.Set(nil)
-}
-
-// UnsetLink ensures that no value is present for Link, not even an explicit nil
-func (o *CatalogsHotelAttributes) UnsetLink() {
-	o.Link.Unset()
+// SetBasePriceNil sets the value for BasePrice to be an explicit nil
+func (o *CatalogsHotelAttributes) SetBasePriceNil() {
+	o.BasePrice.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *CatalogsHotelAttributes) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *CatalogsHotelAttributes) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *CatalogsHotelAttributes) UnsetDescription() {
-	o.Description.Unset()
+// UnsetBasePrice ensures that no value is present for BasePrice, not even an explicit nil
+func (o *CatalogsHotelAttributes) UnsetBasePrice() {
+	o.BasePrice.Unset()
 }
 
 // GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -242,143 +190,46 @@ func (o *CatalogsHotelAttributes) UnsetBrand() {
 	o.Brand.Unset()
 }
 
-// GetLatitude returns the Latitude field value if set, zero value otherwise.
-func (o *CatalogsHotelAttributes) GetLatitude() float32 {
-	if o == nil || IsNil(o.Latitude) {
-		var ret float32
+// GetCategory returns the Category field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetCategory() string {
+	if o == nil || IsNil(o.Category.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.Latitude
+	return *o.Category.Get()
 }
 
-// GetLatitudeOk returns a tuple with the Latitude field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelAttributes) GetLatitudeOk() (*float32, bool) {
-	if o == nil || IsNil(o.Latitude) {
-		return nil, false
-	}
-	return o.Latitude, true
-}
-
-// HasLatitude returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasLatitude() bool {
-	if o != nil && !IsNil(o.Latitude) {
-		return true
-	}
-
-	return false
-}
-
-// SetLatitude gets a reference to the given float32 and assigns it to the Latitude field.
-func (o *CatalogsHotelAttributes) SetLatitude(v float32) {
-	o.Latitude = &v
-}
-
-// GetLongitude returns the Longitude field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetLongitude() float32 {
-	if o == nil || IsNil(o.Longitude.Get()) {
-		var ret float32
-		return ret
-	}
-	return *o.Longitude.Get()
-}
-
-// GetLongitudeOk returns a tuple with the Longitude field value if set, nil otherwise
+// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetLongitudeOk() (*float32, bool) {
+func (o *CatalogsHotelAttributes) GetCategoryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Longitude.Get(), o.Longitude.IsSet()
+	return o.Category.Get(), o.Category.IsSet()
 }
 
-// HasLongitude returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasLongitude() bool {
-	if o != nil && o.Longitude.IsSet() {
+// HasCategory returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasCategory() bool {
+	if o != nil && o.Category.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLongitude gets a reference to the given NullableFloat32 and assigns it to the Longitude field.
-func (o *CatalogsHotelAttributes) SetLongitude(v float32) {
-	o.Longitude.Set(&v)
+// SetCategory gets a reference to the given NullableString and assigns it to the Category field.
+func (o *CatalogsHotelAttributes) SetCategory(v string) {
+	o.Category.Set(&v)
 }
-// SetLongitudeNil sets the value for Longitude to be an explicit nil
-func (o *CatalogsHotelAttributes) SetLongitudeNil() {
-	o.Longitude.Set(nil)
-}
-
-// UnsetLongitude ensures that no value is present for Longitude, not even an explicit nil
-func (o *CatalogsHotelAttributes) UnsetLongitude() {
-	o.Longitude.Unset()
+// SetCategoryNil sets the value for Category to be an explicit nil
+func (o *CatalogsHotelAttributes) SetCategoryNil() {
+	o.Category.Set(nil)
 }
 
-// GetNeighborhood returns the Neighborhood field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetNeighborhood() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.Neighborhood
-}
-
-// GetNeighborhoodOk returns a tuple with the Neighborhood field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetNeighborhoodOk() ([]string, bool) {
-	if o == nil || IsNil(o.Neighborhood) {
-		return nil, false
-	}
-	return o.Neighborhood, true
-}
-
-// HasNeighborhood returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasNeighborhood() bool {
-	if o != nil && !IsNil(o.Neighborhood) {
-		return true
-	}
-
-	return false
-}
-
-// SetNeighborhood gets a reference to the given []string and assigns it to the Neighborhood field.
-func (o *CatalogsHotelAttributes) SetNeighborhood(v []string) {
-	o.Neighborhood = v
-}
-
-// GetAddress returns the Address field value if set, zero value otherwise.
-func (o *CatalogsHotelAttributes) GetAddress() CatalogsHotelAddress {
-	if o == nil || IsNil(o.Address) {
-		var ret CatalogsHotelAddress
-		return ret
-	}
-	return *o.Address
-}
-
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelAttributes) GetAddressOk() (*CatalogsHotelAddress, bool) {
-	if o == nil || IsNil(o.Address) {
-		return nil, false
-	}
-	return o.Address, true
-}
-
-// HasAddress returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given CatalogsHotelAddress and assigns it to the Address field.
-func (o *CatalogsHotelAttributes) SetAddress(v CatalogsHotelAddress) {
-	o.Address = &v
+// UnsetCategory ensures that no value is present for Category, not even an explicit nil
+func (o *CatalogsHotelAttributes) UnsetCategory() {
+	o.Category.Unset()
 }
 
 // GetCustomLabel0 returns the CustomLabel0 field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -591,88 +442,269 @@ func (o *CatalogsHotelAttributes) UnsetCustomLabel4() {
 	o.CustomLabel4.Unset()
 }
 
-// GetCategory returns the Category field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetCategory() string {
-	if o == nil || IsNil(o.Category.Get()) {
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Category.Get()
+	return *o.Description.Get()
 }
 
-// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetCategoryOk() (*string, bool) {
+func (o *CatalogsHotelAttributes) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Category.Get(), o.Category.IsSet()
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// HasCategory returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasCategory() bool {
-	if o != nil && o.Category.IsSet() {
+// HasDescription returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCategory gets a reference to the given NullableString and assigns it to the Category field.
-func (o *CatalogsHotelAttributes) SetCategory(v string) {
-	o.Category.Set(&v)
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *CatalogsHotelAttributes) SetDescription(v string) {
+	o.Description.Set(&v)
 }
-// SetCategoryNil sets the value for Category to be an explicit nil
-func (o *CatalogsHotelAttributes) SetCategoryNil() {
-	o.Category.Set(nil)
-}
-
-// UnsetCategory ensures that no value is present for Category, not even an explicit nil
-func (o *CatalogsHotelAttributes) UnsetCategory() {
-	o.Category.Unset()
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *CatalogsHotelAttributes) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetBasePrice returns the BasePrice field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetBasePrice() string {
-	if o == nil || IsNil(o.BasePrice.Get()) {
-		var ret string
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *CatalogsHotelAttributes) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetGuestRatings returns the GuestRatings field value if set, zero value otherwise.
+func (o *CatalogsHotelAttributes) GetGuestRatings() CatalogsHotelGuestRatings {
+	if o == nil || IsNil(o.GuestRatings) {
+		var ret CatalogsHotelGuestRatings
 		return ret
 	}
-	return *o.BasePrice.Get()
+	return *o.GuestRatings
 }
 
-// GetBasePriceOk returns a tuple with the BasePrice field value if set, nil otherwise
+// GetGuestRatingsOk returns a tuple with the GuestRatings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetBasePriceOk() (*string, bool) {
-	if o == nil {
+func (o *CatalogsHotelAttributes) GetGuestRatingsOk() (*CatalogsHotelGuestRatings, bool) {
+	if o == nil || IsNil(o.GuestRatings) {
 		return nil, false
 	}
-	return o.BasePrice.Get(), o.BasePrice.IsSet()
+	return o.GuestRatings, true
 }
 
-// HasBasePrice returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasBasePrice() bool {
-	if o != nil && o.BasePrice.IsSet() {
+// HasGuestRatings returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasGuestRatings() bool {
+	if o != nil && !IsNil(o.GuestRatings) {
 		return true
 	}
 
 	return false
 }
 
-// SetBasePrice gets a reference to the given NullableString and assigns it to the BasePrice field.
-func (o *CatalogsHotelAttributes) SetBasePrice(v string) {
-	o.BasePrice.Set(&v)
-}
-// SetBasePriceNil sets the value for BasePrice to be an explicit nil
-func (o *CatalogsHotelAttributes) SetBasePriceNil() {
-	o.BasePrice.Set(nil)
+// SetGuestRatings gets a reference to the given CatalogsHotelGuestRatings and assigns it to the GuestRatings field.
+func (o *CatalogsHotelAttributes) SetGuestRatings(v CatalogsHotelGuestRatings) {
+	o.GuestRatings = &v
 }
 
-// UnsetBasePrice ensures that no value is present for BasePrice, not even an explicit nil
-func (o *CatalogsHotelAttributes) UnsetBasePrice() {
-	o.BasePrice.Unset()
+// GetLatitude returns the Latitude field value if set, zero value otherwise.
+func (o *CatalogsHotelAttributes) GetLatitude() float32 {
+	if o == nil || IsNil(o.Latitude) {
+		var ret float32
+		return ret
+	}
+	return *o.Latitude
+}
+
+// GetLatitudeOk returns a tuple with the Latitude field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelAttributes) GetLatitudeOk() (*float32, bool) {
+	if o == nil || IsNil(o.Latitude) {
+		return nil, false
+	}
+	return o.Latitude, true
+}
+
+// HasLatitude returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasLatitude() bool {
+	if o != nil && !IsNil(o.Latitude) {
+		return true
+	}
+
+	return false
+}
+
+// SetLatitude gets a reference to the given float32 and assigns it to the Latitude field.
+func (o *CatalogsHotelAttributes) SetLatitude(v float32) {
+	o.Latitude = &v
+}
+
+// GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetLink() string {
+	if o == nil || IsNil(o.Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Link.Get()
+}
+
+// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelAttributes) GetLinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Link.Get(), o.Link.IsSet()
+}
+
+// HasLink returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasLink() bool {
+	if o != nil && o.Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLink gets a reference to the given NullableString and assigns it to the Link field.
+func (o *CatalogsHotelAttributes) SetLink(v string) {
+	o.Link.Set(&v)
+}
+// SetLinkNil sets the value for Link to be an explicit nil
+func (o *CatalogsHotelAttributes) SetLinkNil() {
+	o.Link.Set(nil)
+}
+
+// UnsetLink ensures that no value is present for Link, not even an explicit nil
+func (o *CatalogsHotelAttributes) UnsetLink() {
+	o.Link.Unset()
+}
+
+// GetLongitude returns the Longitude field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetLongitude() float32 {
+	if o == nil || IsNil(o.Longitude.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.Longitude.Get()
+}
+
+// GetLongitudeOk returns a tuple with the Longitude field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelAttributes) GetLongitudeOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Longitude.Get(), o.Longitude.IsSet()
+}
+
+// HasLongitude returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasLongitude() bool {
+	if o != nil && o.Longitude.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLongitude gets a reference to the given NullableFloat32 and assigns it to the Longitude field.
+func (o *CatalogsHotelAttributes) SetLongitude(v float32) {
+	o.Longitude.Set(&v)
+}
+// SetLongitudeNil sets the value for Longitude to be an explicit nil
+func (o *CatalogsHotelAttributes) SetLongitudeNil() {
+	o.Longitude.Set(nil)
+}
+
+// UnsetLongitude ensures that no value is present for Longitude, not even an explicit nil
+func (o *CatalogsHotelAttributes) UnsetLongitude() {
+	o.Longitude.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelAttributes) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *CatalogsHotelAttributes) SetName(v string) {
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CatalogsHotelAttributes) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CatalogsHotelAttributes) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetNeighborhood returns the Neighborhood field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetNeighborhood() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.Neighborhood
+}
+
+// GetNeighborhoodOk returns a tuple with the Neighborhood field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelAttributes) GetNeighborhoodOk() ([]string, bool) {
+	if o == nil || IsNil(o.Neighborhood) {
+		return nil, false
+	}
+	return o.Neighborhood, true
+}
+
+// HasNeighborhood returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasNeighborhood() bool {
+	if o != nil && !IsNil(o.Neighborhood) {
+		return true
+	}
+
+	return false
+}
+
+// SetNeighborhood gets a reference to the given []string and assigns it to the Neighborhood field.
+func (o *CatalogsHotelAttributes) SetNeighborhood(v []string) {
+	o.Neighborhood = v
 }
 
 // GetSalePrice returns the SalePrice field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -717,36 +749,37 @@ func (o *CatalogsHotelAttributes) UnsetSalePrice() {
 	o.SalePrice.Unset()
 }
 
-// GetGuestRatings returns the GuestRatings field value if set, zero value otherwise.
-func (o *CatalogsHotelAttributes) GetGuestRatings() CatalogsHotelGuestRatings {
-	if o == nil || IsNil(o.GuestRatings) {
-		var ret CatalogsHotelGuestRatings
+// GetAdditionalImageLink returns the AdditionalImageLink field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelAttributes) GetAdditionalImageLink() []string {
+	if o == nil {
+		var ret []string
 		return ret
 	}
-	return *o.GuestRatings
+	return o.AdditionalImageLink
 }
 
-// GetGuestRatingsOk returns a tuple with the GuestRatings field value if set, nil otherwise
+// GetAdditionalImageLinkOk returns a tuple with the AdditionalImageLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelAttributes) GetGuestRatingsOk() (*CatalogsHotelGuestRatings, bool) {
-	if o == nil || IsNil(o.GuestRatings) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelAttributes) GetAdditionalImageLinkOk() ([]string, bool) {
+	if o == nil || IsNil(o.AdditionalImageLink) {
 		return nil, false
 	}
-	return o.GuestRatings, true
+	return o.AdditionalImageLink, true
 }
 
-// HasGuestRatings returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasGuestRatings() bool {
-	if o != nil && !IsNil(o.GuestRatings) {
+// HasAdditionalImageLink returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasAdditionalImageLink() bool {
+	if o != nil && !IsNil(o.AdditionalImageLink) {
 		return true
 	}
 
 	return false
 }
 
-// SetGuestRatings gets a reference to the given CatalogsHotelGuestRatings and assigns it to the GuestRatings field.
-func (o *CatalogsHotelAttributes) SetGuestRatings(v CatalogsHotelGuestRatings) {
-	o.GuestRatings = &v
+// SetAdditionalImageLink gets a reference to the given []string and assigns it to the AdditionalImageLink field.
+func (o *CatalogsHotelAttributes) SetAdditionalImageLink(v []string) {
+	o.AdditionalImageLink = v
 }
 
 // GetMainImage returns the MainImage field value if set, zero value otherwise.
@@ -781,39 +814,6 @@ func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelAttributesAllOfMai
 	o.MainImage = &v
 }
 
-// GetAdditionalImageLink returns the AdditionalImageLink field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsHotelAttributes) GetAdditionalImageLink() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.AdditionalImageLink
-}
-
-// GetAdditionalImageLinkOk returns a tuple with the AdditionalImageLink field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsHotelAttributes) GetAdditionalImageLinkOk() ([]string, bool) {
-	if o == nil || IsNil(o.AdditionalImageLink) {
-		return nil, false
-	}
-	return o.AdditionalImageLink, true
-}
-
-// HasAdditionalImageLink returns a boolean if a field has been set.
-func (o *CatalogsHotelAttributes) HasAdditionalImageLink() bool {
-	if o != nil && !IsNil(o.AdditionalImageLink) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdditionalImageLink gets a reference to the given []string and assigns it to the AdditionalImageLink field.
-func (o *CatalogsHotelAttributes) SetAdditionalImageLink(v []string) {
-	o.AdditionalImageLink = v
-}
-
 func (o CatalogsHotelAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -824,29 +824,17 @@ func (o CatalogsHotelAttributes) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
-	if o.Link.IsSet() {
-		toSerialize["link"] = o.Link.Get()
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if o.BasePrice.IsSet() {
+		toSerialize["base_price"] = o.BasePrice.Get()
 	}
 	if o.Brand.IsSet() {
 		toSerialize["brand"] = o.Brand.Get()
 	}
-	if !IsNil(o.Latitude) {
-		toSerialize["latitude"] = o.Latitude
-	}
-	if o.Longitude.IsSet() {
-		toSerialize["longitude"] = o.Longitude.Get()
-	}
-	if o.Neighborhood != nil {
-		toSerialize["neighborhood"] = o.Neighborhood
-	}
-	if !IsNil(o.Address) {
-		toSerialize["address"] = o.Address
+	if o.Category.IsSet() {
+		toSerialize["category"] = o.Category.Get()
 	}
 	if o.CustomLabel0.IsSet() {
 		toSerialize["custom_label_0"] = o.CustomLabel0.Get()
@@ -863,23 +851,35 @@ func (o CatalogsHotelAttributes) ToMap() (map[string]interface{}, error) {
 	if o.CustomLabel4.IsSet() {
 		toSerialize["custom_label_4"] = o.CustomLabel4.Get()
 	}
-	if o.Category.IsSet() {
-		toSerialize["category"] = o.Category.Get()
-	}
-	if o.BasePrice.IsSet() {
-		toSerialize["base_price"] = o.BasePrice.Get()
-	}
-	if o.SalePrice.IsSet() {
-		toSerialize["sale_price"] = o.SalePrice.Get()
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.GuestRatings) {
 		toSerialize["guest_ratings"] = o.GuestRatings
 	}
-	if !IsNil(o.MainImage) {
-		toSerialize["main_image"] = o.MainImage
+	if !IsNil(o.Latitude) {
+		toSerialize["latitude"] = o.Latitude
+	}
+	if o.Link.IsSet() {
+		toSerialize["link"] = o.Link.Get()
+	}
+	if o.Longitude.IsSet() {
+		toSerialize["longitude"] = o.Longitude.Get()
+	}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
+	if o.Neighborhood != nil {
+		toSerialize["neighborhood"] = o.Neighborhood
+	}
+	if o.SalePrice.IsSet() {
+		toSerialize["sale_price"] = o.SalePrice.Get()
 	}
 	if o.AdditionalImageLink != nil {
 		toSerialize["additional_image_link"] = o.AdditionalImageLink
+	}
+	if !IsNil(o.MainImage) {
+		toSerialize["main_image"] = o.MainImage
 	}
 	return toSerialize, nil
 }

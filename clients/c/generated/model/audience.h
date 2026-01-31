@@ -21,15 +21,16 @@ typedef struct audience_t audience_t;
 
 typedef struct audience_t {
     char *ad_account_id; // string
+    char *audience_type; // string
+    char *created_by_company_name; // string
+    int created_timestamp; //numeric
+    char *description; // string
     char *id; // string
     char *name; // string
-    char *audience_type; // string
-    char *description; // string
     struct audience_rule_t *rule; //model
     int size; //numeric
     char *status; // string
     char *type; // string
-    int created_timestamp; //numeric
     int updated_timestamp; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -37,15 +38,16 @@ typedef struct audience_t {
 
 __attribute__((deprecated)) audience_t *audience_create(
     char *ad_account_id,
+    char *audience_type,
+    char *created_by_company_name,
+    int created_timestamp,
+    char *description,
     char *id,
     char *name,
-    char *audience_type,
-    char *description,
     audience_rule_t *rule,
     int size,
     char *status,
     char *type,
-    int created_timestamp,
     int updated_timestamp
 );
 

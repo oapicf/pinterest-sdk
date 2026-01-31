@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of employers. | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of employers. | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { GetBusinessEmployers200Response } from './api';
 
 const instance: GetBusinessEmployers200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,30 +24,12 @@ import org.openapitools.model.AssetGroupType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetGroupBody   {
   
-  private String assetGroupName;
   private String assetGroupDescription;
+  private String assetGroupName;
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
-
-  /**
-   * Asset Group name
-   */
-  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
-  @JsonProperty("asset_group_name")
-  public String getAssetGroupName() {
-    return assetGroupName;
-  }
-  public void setAssetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-  }
 
   /**
    * Asset group description
@@ -65,6 +47,24 @@ public class CreateAssetGroupBody   {
   }
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+  }
+
+  /**
+   * Asset Group name
+   */
+  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
+  @JsonProperty("asset_group_name")
+  public String getAssetGroupName() {
+    return assetGroupName;
+  }
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
   }
 
   /**
@@ -95,14 +95,14 @@ public class CreateAssetGroupBody   {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @Override
@@ -110,8 +110,8 @@ public class CreateAssetGroupBody   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
     
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

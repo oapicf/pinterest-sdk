@@ -1,7 +1,7 @@
 /*
  * pin_media_source_video_id.h
  *
- * Video ID-based media source
+ * Video ID-based media source.
  */
 
 #ifndef _pin_media_source_video_id_H_
@@ -15,6 +15,7 @@
 
 typedef struct pin_media_source_video_id_t pin_media_source_video_id_t;
 
+#include "content_type.h"
 
 // Enum SOURCETYPE for pin_media_source_video_id
 
@@ -24,34 +25,28 @@ char* pin_media_source_video_id_source_type_ToString(pinterest_rest_api_pin_medi
 
 pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e pin_media_source_video_id_source_type_FromString(char* source_type);
 
-// Enum COVERIMAGECONTENTTYPE for pin_media_source_video_id
-
-typedef enum  { pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_NULL = 0, pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_image/jpeg, pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_image/png } pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e;
-
-char* pin_media_source_video_id_cover_image_content_type_ToString(pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_type);
-
-pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e pin_media_source_video_id_cover_image_content_type_FromString(char* cover_image_content_type);
-
 
 
 typedef struct pin_media_source_video_id_t {
-    pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type; //enum
-    char *cover_image_url; // string
-    pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_type; //enum
+    content_type_t *cover_image_content_type; // custom
     char *cover_image_data; // string
-    char *media_id; // string
+    int cover_image_key_frame_time; //numeric
+    char *cover_image_url; // string
     int is_standard; //boolean
+    char *media_id; // string
+    pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_video_id_t;
 
 __attribute__((deprecated)) pin_media_source_video_id_t *pin_media_source_video_id_create(
-    pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type,
-    char *cover_image_url,
-    pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_type,
+    content_type_t *cover_image_content_type,
     char *cover_image_data,
+    int cover_image_key_frame_time,
+    char *cover_image_url,
+    int is_standard,
     char *media_id,
-    int is_standard
+    pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type
 );
 
 void pin_media_source_video_id_free(pin_media_source_video_id_t *pin_media_source_video_id);

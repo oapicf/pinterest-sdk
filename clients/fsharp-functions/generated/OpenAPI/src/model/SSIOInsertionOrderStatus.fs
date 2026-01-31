@@ -11,12 +11,12 @@ module SSIOInsertionOrderStatus =
 
   [<CLIMutable>]
   type SSIOInsertionOrderStatus = {
+    [<JsonProperty(PropertyName = "creation_time")>]
+    CreationTime : string option;
     [<JsonProperty(PropertyName = "pin_order_id")>]
     PinOrderId : string;
     [<JsonProperty(PropertyName = "status")>]
     Status : string;
-    [<JsonProperty(PropertyName = "creation_time")>]
-    CreationTime : string option;
   }
 
   //#endregion

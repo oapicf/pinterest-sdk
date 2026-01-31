@@ -5,20 +5,12 @@ context("Test LinkedBusiness")
 
 model_instance <- LinkedBusiness$new()
 
-test_that("username", {
-  # tests for the property `username` (character)
-  # Username
+test_that("image_large_url", {
+  # tests for the property `image_large_url` (character)
+  # image_large_url
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
-})
-
-test_that("image_small_url", {
-  # tests for the property `image_small_url` (character)
-  # image_small_url
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`image_small_url`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`image_large_url`, "EXPECTED_RESULT")
 })
 
 test_that("image_medium_url", {
@@ -29,12 +21,12 @@ test_that("image_medium_url", {
   #expect_equal(model.instance$`image_medium_url`, "EXPECTED_RESULT")
 })
 
-test_that("image_large_url", {
-  # tests for the property `image_large_url` (character)
-  # image_large_url
+test_that("image_small_url", {
+  # tests for the property `image_small_url` (character)
+  # image_small_url
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`image_large_url`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`image_small_url`, "EXPECTED_RESULT")
 })
 
 test_that("image_xlarge_url", {
@@ -43,4 +35,12 @@ test_that("image_xlarge_url", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`image_xlarge_url`, "EXPECTED_RESULT")
+})
+
+test_that("username", {
+  # tests for the property `username` (character)
+  # Username
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })

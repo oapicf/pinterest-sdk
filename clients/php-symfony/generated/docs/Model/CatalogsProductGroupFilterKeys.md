@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **aVAILABILITY** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **bRAND** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **cONDITION** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL0** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL1** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL2** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL3** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**cUSTOMLABEL4** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**cUSTOMLABEL0** | [**OpenAPI\Server\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL1** | [**OpenAPI\Server\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL2** | [**OpenAPI\Server\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL3** | [**OpenAPI\Server\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL4** | [**OpenAPI\Server\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **iTEMGROUPID** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **gENDER** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
 **mEDIATYPE** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
@@ -31,6 +31,12 @@ Name | Type | Description | Notes
 **gOOGLEPRODUCTCATEGORY1** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **gOOGLEPRODUCTCATEGORY0** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **pRODUCTGROUP** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**cUSTOMNUMBER0** | [**OpenAPI\Server\Model\CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER1** | [**OpenAPI\Server\Model\CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER2** | [**OpenAPI\Server\Model\CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER3** | [**OpenAPI\Server\Model\CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER4** | [**OpenAPI\Server\Model\CatalogsProductGroupUint32Criteria**](.md) |  | 
+**tITLEKEYWORDS** | [**OpenAPI\Server\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

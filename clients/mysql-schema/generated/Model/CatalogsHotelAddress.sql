@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsHotelAddress`
 --
-SELECT `addr1`, `city`, `region`, `country`, `postal_code` FROM `CatalogsHotelAddress` WHERE 1;
+SELECT `addr1`, `city`, `country`, `postal_code`, `region` FROM `CatalogsHotelAddress` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsHotelAddress`
 --
-INSERT INTO `CatalogsHotelAddress`(`addr1`, `city`, `region`, `country`, `postal_code`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `CatalogsHotelAddress`(`addr1`, `city`, `country`, `postal_code`, `region`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsHotelAddress`
 --
-UPDATE `CatalogsHotelAddress` SET `addr1` = ?, `city` = ?, `region` = ?, `country` = ?, `postal_code` = ? WHERE 1;
+UPDATE `CatalogsHotelAddress` SET `addr1` = ?, `city` = ?, `country` = ?, `postal_code` = ?, `region` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsHotelAddress`

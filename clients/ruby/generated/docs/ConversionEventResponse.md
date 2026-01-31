@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ad_account_id** | **String** | Id of the ad account. | [optional] |
 | **conversion_event** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] |
 | **conversion_tag_id** | **String** | Id of the tag. | [optional] |
-| **ad_account_id** | **String** | Id of the ad account. | [optional] |
 | **created_time** | **Integer** | Creation date in epoch format. | [optional] |
 
 ## Example
@@ -15,9 +15,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ConversionEventResponse.new(
+  ad_account_id: 549757463328,
   conversion_event: null,
   conversion_tag_id: 2614324385652,
-  ad_account_id: 549757463328,
   created_time: 1564768710
 )
 ```

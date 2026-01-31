@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "VideoMetadataWithItemType",
+  "fields": [
+    {
+      "name": "cover_image_url",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "duration",
+      "type": ["null", "double"],
+      "doc": "Duration (in miliseconds). Field maybe null after creation due to video processing time.",
+      "default": null
+    },
+    {
+      "name": "height",
+      "type": ["null", "int"],
+      "doc": "Height (in pixels). Field maybe null after creation due to video processing time.",
+      "default": null
+    },
+    {
+      "name": "item_type",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "video_url",
+      "type": ["null", "string"],
+      "doc": "Video url (720p).  **Note:** This field is limited and not available to all apps.",
+      "default": null
+    },
+    {
+      "name": "width",
+      "type": ["null", "int"],
+      "doc": "Width (in pixels). Field maybe null after creation due to video processing time.",
+      "default": null
+    }
+  ]
+
+}

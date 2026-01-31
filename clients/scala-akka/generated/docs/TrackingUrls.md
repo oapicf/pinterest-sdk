@@ -8,11 +8,11 @@ Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,00
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**impression** | **Seq&lt;String&gt;** |  |  [optional]
+**audienceVerification** | **Seq&lt;String&gt;** |  |  [optional]
+**buyableButton** | **Seq&lt;String&gt;** |  |  [optional]
 **click** | **Seq&lt;String&gt;** |  |  [optional]
 **engagement** | **Seq&lt;String&gt;** |  |  [optional]
-**buyableButton** | **Seq&lt;String&gt;** |  |  [optional]
-**audienceVerification** | **Seq&lt;String&gt;** |  |  [optional]
+**impression** | **Seq&lt;String&gt;** |  |  [optional]
 
 
 

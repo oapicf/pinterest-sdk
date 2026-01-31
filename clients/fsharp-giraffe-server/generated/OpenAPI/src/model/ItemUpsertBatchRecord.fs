@@ -10,7 +10,7 @@ module ItemUpsertBatchRecord =
 
 
   type ItemUpsertBatchRecord = {
-    ItemId : string;
     Attributes : ItemAttributesRequest;
+    ItemId : string;
   }
   //#endregion

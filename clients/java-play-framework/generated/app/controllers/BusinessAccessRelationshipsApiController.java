@@ -1,5 +1,8 @@
 package controllers;
 
+import apimodels.BrandAccountsCreate200Response;
+import apimodels.BrandAccountsCreateRequest;
+import apimodels.BrandAccountsUpdateRequest;
 import apimodels.DeletePartnersRequest;
 import apimodels.DeletePartnersResponse;
 import apimodels.DeletedMembersResponse;
@@ -10,6 +13,7 @@ import apimodels.GetBusinessPartners200Response;
 import apimodels.MemberBusinessRole;
 import apimodels.MembersToDeleteBody;
 import apimodels.PartnerType;
+import apimodels.SystemUserUpdateRequest;
 import apimodels.UpdateMemberBusinessRoleBody;
 import apimodels.UpdateMemberResultsResponseArray;
 
@@ -35,7 +39,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessAccessRelationshipsApiController extends Controller {
     private final BusinessAccessRelationshipsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -46,6 +50,36 @@ public class BusinessAccessRelationshipsApiController extends Controller {
         this.imp = imp;
         mapper = new ObjectMapper();
         this.configuration = configuration;
+    }
+
+    @ApiAction
+    public Result brandAccountsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId) throws Exception {
+        JsonNode nodebrandAccountsCreateRequest = request.body().asJson();
+        BrandAccountsCreateRequest brandAccountsCreateRequest;
+        if (nodebrandAccountsCreateRequest != null) {
+            brandAccountsCreateRequest = mapper.readValue(nodebrandAccountsCreateRequest.toString(), BrandAccountsCreateRequest.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(brandAccountsCreateRequest);
+            }
+        } else {
+            throw new IllegalArgumentException("'BrandAccountsCreateRequest' parameter is required");
+        }
+        return imp.brandAccountsCreateHttp(request, businessHierarchyId, brandAccountsCreateRequest);
+    }
+
+    @ApiAction
+    public Result brandAccountsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String brandAccountId) throws Exception {
+        JsonNode nodebrandAccountsUpdateRequest = request.body().asJson();
+        BrandAccountsUpdateRequest brandAccountsUpdateRequest;
+        if (nodebrandAccountsUpdateRequest != null) {
+            brandAccountsUpdateRequest = mapper.readValue(nodebrandAccountsUpdateRequest.toString(), BrandAccountsUpdateRequest.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(brandAccountsUpdateRequest);
+            }
+        } else {
+            throw new IllegalArgumentException("'BrandAccountsUpdateRequest' parameter is required");
+        }
+        return imp.brandAccountsUpdateHttp(request, businessHierarchyId, brandAccountId, brandAccountsUpdateRequest);
     }
 
     @ApiAction
@@ -99,6 +133,13 @@ public class BusinessAccessRelationshipsApiController extends Controller {
 
     @ApiAction
     public Result getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
+        String valuefetchSystemUsers = request.getQueryString("fetch_system_users");
+        Boolean fetchSystemUsers;
+        if (valuefetchSystemUsers != null) {
+            fetchSystemUsers = Boolean.valueOf(valuefetchSystemUsers);
+        } else {
+            fetchSystemUsers = false;
+        }
         String valueassetsSummary = request.getQueryString("assets_summary");
         Boolean assetsSummary;
         if (valueassetsSummary != null) {
@@ -143,7 +184,7 @@ public class BusinessAccessRelationshipsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        return imp.getBusinessMembersHttp(request, businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
+        return imp.getBusinessMembersHttp(request, businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
     }
 
     @ApiAction
@@ -191,6 +232,21 @@ public class BusinessAccessRelationshipsApiController extends Controller {
             bookmark = null;
         }
         return imp.getBusinessPartnersHttp(request, businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark);
+    }
+
+    @ApiAction
+    public Result systemUserUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId) throws Exception {
+        JsonNode nodesystemUserUpdateRequest = request.body().asJson();
+        SystemUserUpdateRequest systemUserUpdateRequest;
+        if (nodesystemUserUpdateRequest != null) {
+            systemUserUpdateRequest = mapper.readValue(nodesystemUserUpdateRequest.toString(), SystemUserUpdateRequest.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(systemUserUpdateRequest);
+            }
+        } else {
+            throw new IllegalArgumentException("'SystemUserUpdateRequest' parameter is required");
+        }
+        return imp.systemUserUpdateHttp(request, businessId, systemUserId, systemUserUpdateRequest);
     }
 
     @ApiAction

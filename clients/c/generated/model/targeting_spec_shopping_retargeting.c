@@ -6,31 +6,31 @@
 
 
 static targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create_internal(
+    int exclusion_window,
     int lookback_window,
-    list_t *tag_types,
-    int exclusion_window
+    list_t *tag_types
     ) {
     targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_local_var = malloc(sizeof(targeting_spec_shopping_retargeting_t));
     if (!targeting_spec_shopping_retargeting_local_var) {
         return NULL;
     }
+    targeting_spec_shopping_retargeting_local_var->exclusion_window = exclusion_window;
     targeting_spec_shopping_retargeting_local_var->lookback_window = lookback_window;
     targeting_spec_shopping_retargeting_local_var->tag_types = tag_types;
-    targeting_spec_shopping_retargeting_local_var->exclusion_window = exclusion_window;
 
     targeting_spec_shopping_retargeting_local_var->_library_owned = 1;
     return targeting_spec_shopping_retargeting_local_var;
 }
 
 __attribute__((deprecated)) targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create(
+    int exclusion_window,
     int lookback_window,
-    list_t *tag_types,
-    int exclusion_window
+    list_t *tag_types
     ) {
     return targeting_spec_shopping_retargeting_create_internal (
+        exclusion_window,
         lookback_window,
-        tag_types,
-        exclusion_window
+        tag_types
         );
 }
 
@@ -56,6 +56,14 @@ void targeting_spec_shopping_retargeting_free(targeting_spec_shopping_retargetin
 cJSON *targeting_spec_shopping_retargeting_convertToJSON(targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting) {
     cJSON *item = cJSON_CreateObject();
 
+    // targeting_spec_shopping_retargeting->exclusion_window
+    if(targeting_spec_shopping_retargeting->exclusion_window) {
+    if(cJSON_AddNumberToObject(item, "exclusion_window", targeting_spec_shopping_retargeting->exclusion_window) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
     // targeting_spec_shopping_retargeting->lookback_window
     if(targeting_spec_shopping_retargeting->lookback_window) {
     if(cJSON_AddNumberToObject(item, "lookback_window", targeting_spec_shopping_retargeting->lookback_window) == NULL) {
@@ -80,14 +88,6 @@ cJSON *targeting_spec_shopping_retargeting_convertToJSON(targeting_spec_shopping
     }
     }
 
-
-    // targeting_spec_shopping_retargeting->exclusion_window
-    if(targeting_spec_shopping_retargeting->exclusion_window) {
-    if(cJSON_AddNumberToObject(item, "exclusion_window", targeting_spec_shopping_retargeting->exclusion_window) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -102,6 +102,18 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
 
     // define the local list for targeting_spec_shopping_retargeting->tag_types
     list_t *tag_typesList = NULL;
+
+    // targeting_spec_shopping_retargeting->exclusion_window
+    cJSON *exclusion_window = cJSON_GetObjectItemCaseSensitive(targeting_spec_shopping_retargetingJSON, "exclusion_window");
+    if (cJSON_IsNull(exclusion_window)) {
+        exclusion_window = NULL;
+    }
+    if (exclusion_window) { 
+    if(!cJSON_IsNumber(exclusion_window))
+    {
+    goto end; //Numeric
+    }
+    }
 
     // targeting_spec_shopping_retargeting->lookback_window
     cJSON *lookback_window = cJSON_GetObjectItemCaseSensitive(targeting_spec_shopping_retargetingJSON, "lookback_window");
@@ -143,23 +155,11 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
     }
     }
 
-    // targeting_spec_shopping_retargeting->exclusion_window
-    cJSON *exclusion_window = cJSON_GetObjectItemCaseSensitive(targeting_spec_shopping_retargetingJSON, "exclusion_window");
-    if (cJSON_IsNull(exclusion_window)) {
-        exclusion_window = NULL;
-    }
-    if (exclusion_window) { 
-    if(!cJSON_IsNumber(exclusion_window))
-    {
-    goto end; //Numeric
-    }
-    }
-
 
     targeting_spec_shopping_retargeting_local_var = targeting_spec_shopping_retargeting_create_internal (
+        exclusion_window ? exclusion_window->valuedouble : 0,
         lookback_window ? lookback_window->valuedouble : 0,
-        tag_types ? tag_typesList : NULL,
-        exclusion_window ? exclusion_window->valuedouble : 0
+        tag_types ? tag_typesList : NULL
         );
 
     return targeting_spec_shopping_retargeting_local_var;

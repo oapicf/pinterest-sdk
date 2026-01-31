@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsUpsertHotelItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsUpsertHotelItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsHotelAttributes = openapi_server.resourceTypes.CatalogsHotelAttributes
+}
+resourceTypes {
+
+  CatalogsUpsertHotelItem {
+    title = CatalogsUpsertHotelItem
+    description = CatalogsUpsertHotelItem
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = CatalogsHotelAttributes
+          description = ""
+          optional = true
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["UPSERT"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsUpsertHotelItem {
+    title = CatalogsUpsertHotelItem
+    description = CatalogsUpsertHotelItem
+    implements = openapi_server.resourceTypes.CatalogsUpsertHotelItem
+
+  }
+}

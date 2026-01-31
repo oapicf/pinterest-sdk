@@ -21,7 +21,6 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.DetailedError
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.IntegrationLogsRequest
 import org.openapitools.client.api.IntegrationLogsSuccessResponse
@@ -30,6 +29,7 @@ import org.openapitools.client.api.IntegrationRecord
 import org.openapitools.client.api.IntegrationRequest
 import org.openapitools.client.api.IntegrationRequestPatch
 import org.openapitools.client.api.IntegrationsGetList200Response
+import org.openapitools.client.api.IntegrationsLogsPost400Response
 
 object IntegrationsApi {
 

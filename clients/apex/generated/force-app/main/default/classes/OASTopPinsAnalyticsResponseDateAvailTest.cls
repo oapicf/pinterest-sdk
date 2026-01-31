@@ -73,7 +73,7 @@ private class OASTopPinsAnalyticsResponseDateAvailTest {
     private static void maintainRenamedProperties() {
         OASTopPinsAnalyticsResponseDateAvail topPinsAnalyticsResponseDateAvailability = new OASTopPinsAnalyticsResponseDateAvail();
         Map<String, String> x-property-mappings = topPinsAnalyticsResponseDateAvailability.getx-property-mappings();
-        System.assertEquals('latestAvailableTimestamp', x-property-mappings.get('latest_available_timestamp'));
         System.assertEquals('isRealtime', x-property-mappings.get('is_realtime'));
+        System.assertEquals('latestAvailableTimestamp', x-property-mappings.get('latest_available_timestamp'));
     }
 }

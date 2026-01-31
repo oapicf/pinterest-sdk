@@ -12,27 +12,27 @@ module SSIOOrderLine =
 
 
   type SSIOOrderLine = {
-    SalesforceOrderLineId : string option;
+    AcceptedTermsId : string option;
+    AcceptedTermsTime : string option;
     AdsManagerOrderLineId : string option;
-    PinOrderId : string option;
-    LastModifiedDateTime : string option;
-    StartDate : DateTime;
-    EndDate : DateTime;
+    AgencyLink : string option;
     BillToCompanyName : string option;
+    BillingContactEmail : string option;
     BillingContactFirstname : string option;
     BillingContactLastname : string option;
-    BillingContactEmail : string option;
+    BudgetAmount : decimal option;
+    CurrencyInfo : Currency;
+    EndDate : DateTime;
+    EstimatedMonthlySpend : decimal option;
+    LastModifiedDateTime : string option;
     MediaContactEmail : string option;
     MediaContactFirstname : string option;
     MediaContactLastname : string option;
-    CurrencyInfo : Currency;
-    AgencyLink : string option;
-    PoNumber : string option;
     OrderName : string option;
+    PinOrderId : string option;
     PmpName : string option;
-    AcceptedTermsId : string option;
-    AcceptedTermsTime : string option;
-    BudgetAmount : decimal option;
-    EstimatedMonthlySpend : decimal option;
+    PoNumber : string option;
+    SalesforceOrderLineId : string option;
+    StartDate : DateTime;
   }
   //#endregion

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &ProductGroupPromotionsList200Response{}
 
 // ProductGroupPromotionsList200Response struct for ProductGroupPromotionsList200Response
 type ProductGroupPromotionsList200Response struct {
-	Items []ProductGroupPromotionResponseItem `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []ProductGroupPromotion `json:"items"`
 }
 
 type _ProductGroupPromotionsList200Response ProductGroupPromotionsList200Response
@@ -32,7 +32,7 @@ type _ProductGroupPromotionsList200Response ProductGroupPromotionsList200Respons
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductGroupPromotionsList200Response(items []ProductGroupPromotionResponseItem) *ProductGroupPromotionsList200Response {
+func NewProductGroupPromotionsList200Response(items []ProductGroupPromotion) *ProductGroupPromotionsList200Response {
 	this := ProductGroupPromotionsList200Response{}
 	this.Items = items
 	return &this
@@ -44,30 +44,6 @@ func NewProductGroupPromotionsList200Response(items []ProductGroupPromotionRespo
 func NewProductGroupPromotionsList200ResponseWithDefaults() *ProductGroupPromotionsList200Response {
 	this := ProductGroupPromotionsList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *ProductGroupPromotionsList200Response) GetItems() []ProductGroupPromotionResponseItem {
-	if o == nil {
-		var ret []ProductGroupPromotionResponseItem
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *ProductGroupPromotionsList200Response) GetItemsOk() ([]ProductGroupPromotionResponseItem, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *ProductGroupPromotionsList200Response) SetItems(v []ProductGroupPromotionResponseItem) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *ProductGroupPromotionsList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *ProductGroupPromotionsList200Response) GetItems() []ProductGroupPromotion {
+	if o == nil {
+		var ret []ProductGroupPromotion
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *ProductGroupPromotionsList200Response) GetItemsOk() ([]ProductGroupPromotion, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *ProductGroupPromotionsList200Response) SetItems(v []ProductGroupPromotion) {
+	o.Items = v
+}
+
 func (o ProductGroupPromotionsList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o ProductGroupPromotionsList200Response) MarshalJSON() ([]byte, error) {
 
 func (o ProductGroupPromotionsList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

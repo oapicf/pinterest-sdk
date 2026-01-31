@@ -23,19 +23,14 @@ ImageDetails::~ImageDetails()
 void
 ImageDetails::__init()
 {
-	//width = int(0);
 	//height = int(0);
 	//url = std::string();
+	//width = int(0);
 }
 
 void
 ImageDetails::__cleanup()
 {
-	//if(width != NULL) {
-	//
-	//delete width;
-	//width = NULL;
-	//}
 	//if(height != NULL) {
 	//
 	//delete height;
@@ -46,6 +41,11 @@ ImageDetails::__cleanup()
 	//delete url;
 	//url = NULL;
 	//}
+	//if(width != NULL) {
+	//
+	//delete width;
+	//width = NULL;
+	//}
 	//
 }
 
@@ -54,17 +54,6 @@ ImageDetails::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *widthKey = "width";
-	node = json_object_get_member(pJsonObject, widthKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&width, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *heightKey = "height";
 	node = json_object_get_member(pJsonObject, heightKey);
 	if (node !=NULL) {
@@ -87,6 +76,17 @@ ImageDetails::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *widthKey = "width";
+	node = json_object_get_member(pJsonObject, widthKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&width, node, "int", "");
+		} else {
+			
+		}
+	}
 }
 
 ImageDetails::ImageDetails(char* json)
@@ -99,15 +99,6 @@ ImageDetails::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("int")) {
-		int obj = getWidth();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *widthKey = "width";
-	json_object_set_member(pJsonObject, widthKey, node);
 	if (isprimitive("int")) {
 		int obj = getHeight();
 		node = converttoJson(&obj, "int", "");
@@ -126,24 +117,21 @@ ImageDetails::toJson()
 	}
 	const gchar *urlKey = "url";
 	json_object_set_member(pJsonObject, urlKey, node);
+	if (isprimitive("int")) {
+		int obj = getWidth();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *widthKey = "width";
+	json_object_set_member(pJsonObject, widthKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-int
-ImageDetails::getWidth()
-{
-	return width;
-}
-
-void
-ImageDetails::setWidth(int  width)
-{
-	this->width = width;
 }
 
 int
@@ -168,6 +156,18 @@ void
 ImageDetails::setUrl(std::string  url)
 {
 	this->url = url;
+}
+
+int
+ImageDetails::getWidth()
+{
+	return width;
+}
+
+void
+ImageDetails::setWidth(int  width)
+{
+	this->width = width;
 }
 
 

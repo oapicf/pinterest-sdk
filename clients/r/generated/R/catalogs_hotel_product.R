@@ -197,6 +197,11 @@ CatalogsHotelProduct <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `pin` is null
+      if (is.null(self$`pin`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -214,6 +219,11 @@ CatalogsHotelProduct <- R6::R6Class(
       # check if the required `metadata` is null
       if (is.null(self$`metadata`)) {
         invalid_fields["metadata"] <- "Non-nullable required field `metadata` cannot be null."
+      }
+
+      # check if the required `pin` is null
+      if (is.null(self$`pin`)) {
+        invalid_fields["pin"] <- "Non-nullable required field `pin` cannot be null."
       }
 
       invalid_fields

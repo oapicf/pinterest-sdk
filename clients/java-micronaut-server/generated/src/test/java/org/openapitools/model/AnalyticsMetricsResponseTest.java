@@ -27,19 +27,19 @@ public class AnalyticsMetricsResponseTest {
     }
 
     /**
-     * Test the property 'summaryMetrics'
-     */
-    @Test
-    public void summaryMetricsTest() {
-        // TODO: test summaryMetrics
-    }
-
-    /**
      * Test the property 'dailyMetrics'
      */
     @Test
     public void dailyMetricsTest() {
         // TODO: test dailyMetrics
+    }
+
+    /**
+     * Test the property 'summaryMetrics'
+     */
+    @Test
+    public void summaryMetricsTest() {
+        // TODO: test summaryMetrics
     }
 
 }

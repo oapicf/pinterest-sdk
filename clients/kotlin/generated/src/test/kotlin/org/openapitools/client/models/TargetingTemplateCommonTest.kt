@@ -29,22 +29,22 @@ class TargetingTemplateCommonTest : ShouldSpec() {
         // uncomment below to create an instance of TargetingTemplateCommon
         //val modelInstance = TargetingTemplateCommon()
 
-        // to test the property `name` - targeting template name
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `autoTargetingEnabled` - Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
         should("test autoTargetingEnabled") {
             // uncomment below to test the property
             //modelInstance.autoTargetingEnabled shouldBe ("TODO")
         }
 
-        // to test the property `targetingAttributes`
-        should("test targetingAttributes") {
+        // to test the property `keywords`
+        should("test keywords") {
             // uncomment below to test the property
-            //modelInstance.targetingAttributes shouldBe ("TODO")
+            //modelInstance.keywords shouldBe ("TODO")
+        }
+
+        // to test the property `name` - targeting template name
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `placementGroup`
@@ -53,10 +53,10 @@ class TargetingTemplateCommonTest : ShouldSpec() {
             //modelInstance.placementGroup shouldBe ("TODO")
         }
 
-        // to test the property `keywords`
-        should("test keywords") {
+        // to test the property `targetingAttributes`
+        should("test targetingAttributes") {
             // uncomment below to test the property
-            //modelInstance.keywords shouldBe ("TODO")
+            //modelInstance.targetingAttributes shouldBe ("TODO")
         }
 
         // to test the property `trackingUrls`

@@ -25,6 +25,14 @@ public class CatalogsRetailBatchRequestTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -41,19 +49,19 @@ public class CatalogsRetailBatchRequestTest {
     }
 
     /**
-     * Test the property 'language'
-     */
-    @Test
-    public void languageTest() {
-        // TODO: test language
-    }
-
-    /**
      * Test the property 'items'
      */
     @Test
     public void itemsTest() {
         // TODO: test items
+    }
+
+    /**
+     * Test the property 'language'
+     */
+    @Test
+    public void languageTest() {
+        // TODO: test language
     }
 
 }

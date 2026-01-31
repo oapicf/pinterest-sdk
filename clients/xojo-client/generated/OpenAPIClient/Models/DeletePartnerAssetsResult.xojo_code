@@ -11,17 +11,9 @@ Protected Class DeletePartnerAssetsResult
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+			Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 		#tag EndNote
 		asset_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Permission levels member or partner has on an asset.
-		#tag EndNote
-		permissions() As String
 	#tag EndProperty
 
 
@@ -38,6 +30,14 @@ Protected Class DeletePartnerAssetsResult
 			Unique identifier of a business partner.
 		#tag EndNote
 		partner_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Permission levels member or partner has on an asset.
+		#tag EndNote
+		permissions() As String
 	#tag EndProperty
 
 
@@ -94,14 +94,6 @@ Protected Class DeletePartnerAssetsResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="permissions"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="is_shared_partner"
 			Visible=false
 			Group="Behavior"
@@ -111,6 +103,14 @@ Protected Class DeletePartnerAssetsResult
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="partner_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="permissions"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

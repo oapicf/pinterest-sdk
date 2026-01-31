@@ -4,10 +4,12 @@ import org.openapitools.api.ApiUtils
 import org.openapitools.model.Error
 import org.openapitools.model.Granularity
 import org.openapitools.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.model.ProductGroupPromotion
 import org.openapitools.model.ProductGroupPromotionCreateRequest
 import org.openapitools.model.ProductGroupPromotionResponse
 import org.openapitools.model.ProductGroupPromotionUpdateRequest
 import org.openapitools.model.ProductGroupPromotionsList200Response
+import org.openapitools.model.ReportingTimeZone
 
 class ProductGroupPromotionsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -68,7 +70,7 @@ class ProductGroupPromotionsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
-                    ProductGroupPromotionResponse.class )
+                    ProductGroupPromotion.class )
 
     }
 
@@ -144,7 +146,7 @@ class ProductGroupPromotionsApi {
 
     }
 
-    def productGroupsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Closure onSuccess, Closure onFailure)  {
+    def productGroupsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/product_groups/analytics"
 
         // params
@@ -204,6 +206,9 @@ class ProductGroupPromotionsApi {
         }
         if (conversionReportTime != null) {
             queryParams.put("conversion_report_time", conversionReportTime)
+        }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
         }
 
 

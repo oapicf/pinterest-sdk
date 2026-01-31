@@ -15,20 +15,20 @@
 
 typedef struct ad_accounts_subscriptions_get_list_200_response_t ad_accounts_subscriptions_get_list_200_response_t;
 
-#include "ad_account_get_subscription_response.h"
+#include "lead_subscription.h"
 
 
 
 typedef struct ad_accounts_subscriptions_get_list_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_accounts_subscriptions_get_list_200_response_t;
 
 __attribute__((deprecated)) ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void ad_accounts_subscriptions_get_list_200_response_free(ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get_list_200_response);

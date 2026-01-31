@@ -15,21 +15,21 @@ import org.openapitools.vertxweb.server.model.AudienceDemographicValue;
 public class AudienceDemographics   {
   
   private List<AudienceDemographicValue> ages = new ArrayList<>();
-  private List<AudienceDemographicValue> genders = new ArrayList<>();
-  private List<AudienceDemographicValue> devices = new ArrayList<>();
-  private List<AudienceDemographicValue> metros = new ArrayList<>();
   private List<AudienceDemographicValue> countries = new ArrayList<>();
+  private List<AudienceDemographicValue> devices = new ArrayList<>();
+  private List<AudienceDemographicValue> genders = new ArrayList<>();
+  private List<AudienceDemographicValue> metros = new ArrayList<>();
 
   public AudienceDemographics () {
 
   }
 
-  public AudienceDemographics (List<AudienceDemographicValue> ages, List<AudienceDemographicValue> genders, List<AudienceDemographicValue> devices, List<AudienceDemographicValue> metros, List<AudienceDemographicValue> countries) {
+  public AudienceDemographics (List<AudienceDemographicValue> ages, List<AudienceDemographicValue> countries, List<AudienceDemographicValue> devices, List<AudienceDemographicValue> genders, List<AudienceDemographicValue> metros) {
     this.ages = ages;
-    this.genders = genders;
-    this.devices = devices;
-    this.metros = metros;
     this.countries = countries;
+    this.devices = devices;
+    this.genders = genders;
+    this.metros = metros;
   }
 
     
@@ -42,12 +42,12 @@ public class AudienceDemographics   {
   }
 
     
-  @JsonProperty("genders")
-  public List<AudienceDemographicValue> getGenders() {
-    return genders;
+  @JsonProperty("countries")
+  public List<AudienceDemographicValue> getCountries() {
+    return countries;
   }
-  public void setGenders(List<AudienceDemographicValue> genders) {
-    this.genders = genders;
+  public void setCountries(List<AudienceDemographicValue> countries) {
+    this.countries = countries;
   }
 
     
@@ -60,21 +60,21 @@ public class AudienceDemographics   {
   }
 
     
+  @JsonProperty("genders")
+  public List<AudienceDemographicValue> getGenders() {
+    return genders;
+  }
+  public void setGenders(List<AudienceDemographicValue> genders) {
+    this.genders = genders;
+  }
+
+    
   @JsonProperty("metros")
   public List<AudienceDemographicValue> getMetros() {
     return metros;
   }
   public void setMetros(List<AudienceDemographicValue> metros) {
     this.metros = metros;
-  }
-
-    
-  @JsonProperty("countries")
-  public List<AudienceDemographicValue> getCountries() {
-    return countries;
-  }
-  public void setCountries(List<AudienceDemographicValue> countries) {
-    this.countries = countries;
   }
 
 
@@ -88,15 +88,15 @@ public class AudienceDemographics   {
     }
     AudienceDemographics audienceDemographics = (AudienceDemographics) o;
     return Objects.equals(ages, audienceDemographics.ages) &&
-        Objects.equals(genders, audienceDemographics.genders) &&
+        Objects.equals(countries, audienceDemographics.countries) &&
         Objects.equals(devices, audienceDemographics.devices) &&
-        Objects.equals(metros, audienceDemographics.metros) &&
-        Objects.equals(countries, audienceDemographics.countries);
+        Objects.equals(genders, audienceDemographics.genders) &&
+        Objects.equals(metros, audienceDemographics.metros);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ages, genders, devices, metros, countries);
+    return Objects.hash(ages, countries, devices, genders, metros);
   }
 
   @Override
@@ -105,10 +105,10 @@ public class AudienceDemographics   {
     sb.append("class AudienceDemographics {\n");
     
     sb.append("    ages: ").append(toIndentedString(ages)).append("\n");
-    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
-    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
-    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
+    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
+    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
+    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("}");
     return sb.toString();
   }

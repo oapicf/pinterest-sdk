@@ -6,12 +6,6 @@ goog.provide('API.Client.LeadFormQuestion');
 API.Client.LeadFormQuestion = function() {}
 
 /**
- * @type {!API.Client.LeadFormQuestionType}
- * @export
- */
-API.Client.LeadFormQuestion.prototype.questionType;
-
-/**
  * @type {!API.Client.LeadFormQuestionFieldType}
  * @export
  */
@@ -30,4 +24,10 @@ API.Client.LeadFormQuestion.prototype.customQuestionLabel;
  * @export
  */
 API.Client.LeadFormQuestion.prototype.customQuestionOptions;
+
+/**
+ * @type {!API.Client.LeadFormQuestionType}
+ * @export
+ */
+API.Client.LeadFormQuestion.prototype.questionType;
 

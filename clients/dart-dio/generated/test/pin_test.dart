@@ -7,44 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(Pin, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // DateTime createdAt
-    test('to test the property `createdAt`', () async {
-      // TODO
-    });
-
-    // String link
-    test('to test the property `link`', () async {
-      // TODO
-    });
-
-    // String title
-    test('to test the property `title`', () async {
-      // TODO
-    });
-
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-    // String dominantColor
-    test('to test the property `dominantColor`', () async {
-      // TODO
-    });
-
     // String altText
     test('to test the property `altText`', () async {
-      // TODO
-    });
-
-    // CreativeType creativeType
-    test('to test the property `creativeType`', () async {
       // TODO
     });
 
@@ -54,42 +18,35 @@ void main() {
       // TODO
     });
 
+    // BoardOwner boardOwner
+    test('to test the property `boardOwner`', () async {
+      // TODO
+    });
+
     // The board section to which this Pin belongs.
     // String boardSectionId
     test('to test the property `boardSectionId`', () async {
       // TODO
     });
 
-    // BoardOwner boardOwner
-    test('to test the property `boardOwner`', () async {
+    // DateTime createdAt
+    test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // Whether the \"operation user_account\" is the Pin owner.
-    // bool isOwner
-    test('to test the property `isOwner`', () async {
+    // CreativeType creativeType
+    test('to test the property `creativeType`', () async {
       // TODO
     });
 
-    // PinMedia media
-    test('to test the property `media`', () async {
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
-    // PinMediaSource mediaSource
-    test('to test the property `mediaSource`', () async {
-      // TODO
-    });
-
-    // The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-    // String parentPinId
-    test('to test the property `parentPinId`', () async {
-      // TODO
-    });
-
-    // Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
-    // bool isStandard
-    test('to test the property `isStandard`', () async {
+    // Dominant pin color. Hex number, e.g. `#6E7874`.
+    // String dominantColor
+    test('to test the property `dominantColor`', () async {
       // TODO
     });
 
@@ -99,15 +56,47 @@ void main() {
       // TODO
     });
 
-    // Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-    // String note
-    test('to test the property `note`', () async {
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // Whether the \"operation user_account\" is the Pin owner.
+    // bool isOwner
+    test('to test the property `isOwner`', () async {
+      // TODO
+    });
+
+    // Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+    // bool isStandard
+    test('to test the property `isStandard`', () async {
+      // TODO
+    });
+
+    // String link
+    test('to test the property `link`', () async {
+      // TODO
+    });
+
+    // PinMedia media
+    test('to test the property `media`', () async {
+      // TODO
+    });
+
+    // The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
+    // String parentPinId
+    test('to test the property `parentPinId`', () async {
       // TODO
     });
 
     // Pin metrics with associated time intervals if any.
     // JsonObject pinMetrics
     test('to test the property `pinMetrics`', () async {
+      // TODO
+    });
+
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 

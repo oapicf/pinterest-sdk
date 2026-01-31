@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelItemsPostFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelItemsPostFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsHotelItemsPostFilter {
+    title = CatalogsHotelItemsPostFilter
+    description = CatalogsHotelItemsPostFilter
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog"
+          optional = false
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["HOTEL"]
+          optional = true
+        }
+        hotel_ids {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelItemsPostFilter {
+    title = CatalogsHotelItemsPostFilter
+    description = CatalogsHotelItemsPostFilter
+    implements = openapi_server.resourceTypes.CatalogsHotelItemsPostFilter
+
+  }
+}

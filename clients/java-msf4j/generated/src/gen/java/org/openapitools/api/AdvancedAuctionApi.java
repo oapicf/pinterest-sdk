@@ -30,7 +30,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the advanced_auction API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionApi  {
    private final AdvancedAuctionApiService delegate = AdvancedAuctionApiServiceFactory.getAdvancedAuctionApi();
 
@@ -74,6 +74,8 @@ public class AdvancedAuctionApi  {
     }, tags={ "advanced_auction", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Response containing the results of the item bid options operations", response = AdvancedAuctionProcessedItems.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 206, message = "Response containing the results of the item bid options operations (where some/all operation results have errors)", response = AdvancedAuctionProcessedItems.class),
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid request parameters.", response = AdvancedAuctionProcessedItems.class),
         

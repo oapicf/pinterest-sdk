@@ -34,13 +34,13 @@ class CatalogsRetailProductGroupUpdateRequest {
     /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     CatalogTypeEnum catalogType
     
-    String name
+    Country country
     
     String description
     
     CatalogsProductGroupFiltersRequest filters
     
-    Country country
-    
     CatalogsLocale locale
+    
+    String name
 }

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionTagResponse`
 --
-SELECT `ad_account_id`, `code_snippet`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `status`, `version`, `configs` FROM `ConversionTagResponse` WHERE 1;
+SELECT `code_snippet`, `configs`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `version`, `ad_account_id`, `status` FROM `ConversionTagResponse` WHERE 1;
 
 --
 -- INSERT template for table `ConversionTagResponse`
 --
-INSERT INTO `ConversionTagResponse`(`ad_account_id`, `code_snippet`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `status`, `version`, `configs`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `ConversionTagResponse`(`code_snippet`, `configs`, `enhanced_match_status`, `id`, `last_fired_time_ms`, `name`, `version`, `ad_account_id`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionTagResponse`
 --
-UPDATE `ConversionTagResponse` SET `ad_account_id` = ?, `code_snippet` = ?, `enhanced_match_status` = ?, `id` = ?, `last_fired_time_ms` = ?, `name` = ?, `status` = ?, `version` = ?, `configs` = ? WHERE 1;
+UPDATE `ConversionTagResponse` SET `code_snippet` = ?, `configs` = ?, `enhanced_match_status` = ?, `id` = ?, `last_fired_time_ms` = ?, `name` = ?, `version` = ?, `ad_account_id` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionTagResponse`

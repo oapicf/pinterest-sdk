@@ -5,6 +5,11 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}creation_time`,
+                label: `Salesforce insertion order creation time - [${labelPrefix}creation_time]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}pin_order_id`,
                 label: `Salesforce order id - [${labelPrefix}pin_order_id]`,
                 type: 'string',
@@ -14,19 +19,14 @@ module.exports = {
                 label: `Salesforce insertion order status - [${labelPrefix}status]`,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}creation_time`,
-                label: `Salesforce insertion order creation time - [${labelPrefix}creation_time]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'creation_time': bundle.inputData?.[`${keyPrefix}creation_time`],
             'pin_order_id': bundle.inputData?.[`${keyPrefix}pin_order_id`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
-            'creation_time': bundle.inputData?.[`${keyPrefix}creation_time`],
         }
     },
 }

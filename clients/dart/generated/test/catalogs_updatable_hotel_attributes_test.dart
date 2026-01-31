@@ -16,21 +16,14 @@ void main() {
   // final instance = CatalogsUpdatableHotelAttributes();
 
   group('test CatalogsUpdatableHotelAttributes', () {
-    // The hotel's name.
-    // String name
-    test('to test the property `name`', () async {
+    // CatalogsHotelAddress address
+    test('to test the property `address`', () async {
       // TODO
     });
 
-    // Link to the product page
-    // String link
-    test('to test the property `link`', () async {
-      // TODO
-    });
-
-    // Brief description of the hotel.
-    // String description
-    test('to test the property `description`', () async {
+    // Base price of the hotel room per night followed by the ISO currency code
+    // String basePrice
+    test('to test the property `basePrice`', () async {
       // TODO
     });
 
@@ -40,26 +33,9 @@ void main() {
       // TODO
     });
 
-    // Latitude of the hotel.
-    // num latitude
-    test('to test the property `latitude`', () async {
-      // TODO
-    });
-
-    // Longitude of the hotel.
-    // num longitude
-    test('to test the property `longitude`', () async {
-      // TODO
-    });
-
-    // A list of neighborhoods where the hotel is located
-    // List<String> neighborhood (default value: const [])
-    test('to test the property `neighborhood`', () async {
-      // TODO
-    });
-
-    // CatalogsHotelAddress address
-    test('to test the property `address`', () async {
+    // The type of property. The category can be any type of internal description desired.
+    // String category
+    test('to test the property `category`', () async {
       // TODO
     });
 
@@ -93,26 +69,50 @@ void main() {
       // TODO
     });
 
-    // The type of property. The category can be any type of internal description desired.
-    // String category
-    test('to test the property `category`', () async {
+    // Brief description of the hotel.
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
-    // Base price of the hotel room per night followed by the ISO currency code
-    // String basePrice
-    test('to test the property `basePrice`', () async {
+    // CatalogsHotelGuestRatings guestRatings
+    test('to test the property `guestRatings`', () async {
+      // TODO
+    });
+
+    // Latitude of the hotel.
+    // num latitude
+    test('to test the property `latitude`', () async {
+      // TODO
+    });
+
+    // Link to the product page
+    // String link
+    test('to test the property `link`', () async {
+      // TODO
+    });
+
+    // Longitude of the hotel.
+    // num longitude
+    test('to test the property `longitude`', () async {
+      // TODO
+    });
+
+    // The hotel's name.
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // A list of neighborhoods where the hotel is located
+    // List<String> neighborhood (default value: const [])
+    test('to test the property `neighborhood`', () async {
       // TODO
     });
 
     // Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
     // String salePrice
     test('to test the property `salePrice`', () async {
-      // TODO
-    });
-
-    // CatalogsHotelGuestRatings guestRatings
-    test('to test the property `guestRatings`', () async {
       // TODO
     });
 

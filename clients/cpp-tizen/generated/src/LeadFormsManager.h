@@ -63,7 +63,7 @@ bool leadFormGetAsync(char * accessToken,
 
 /*! \brief Create lead form test data. *Synchronous*
  *
- * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param leadFormId Unique identifier of a lead form. *Required*
  * \param leadFormTestRequest Subscription to create. *Required*
@@ -78,7 +78,7 @@ bool leadFormTestCreateSync(char * accessToken,
 
 /*! \brief Create lead form test data. *Asynchronous*
  *
- * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param leadFormId Unique identifier of a lead form. *Required*
  * \param leadFormTestRequest Subscription to create. *Required*
@@ -94,7 +94,7 @@ bool leadFormTestCreateAsync(char * accessToken,
 
 /*! \brief Create lead forms. *Synchronous*
  *
- * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+ * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -108,7 +108,7 @@ bool leadFormsCreateSync(char * accessToken,
 
 /*! \brief Create lead forms. *Asynchronous*
  *
- * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+ * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. *Required*
  * \param handler The callback function to be invoked on completion. *Required*

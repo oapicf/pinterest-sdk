@@ -22,14 +22,14 @@ top_video_pins_analytics_response_pins_inner_t* instantiate_top_video_pins_analy
   top_video_pins_analytics_response_pins_inner_t* top_video_pins_analytics_response_pins_inner = NULL;
   if (include_optional) {
     top_video_pins_analytics_response_pins_inner = top_video_pins_analytics_response_pins_inner_create(
-      {"IMPRESSION":7,"QUARTILE_95_PERCENT_VIEW":2,"SAVE":1,"VIDEO_10S_VIEW":5,"VIDEO_AVG_WATCH_TIME":86989,"VIDEO_MRC_VIEW":2,"VIDEO_START":2,"VIDEO_V50_WATCH_TIME":173979,"OUTBOUND_CLICK":2},
       list_createList(),
+      {"IMPRESSION":7,"QUARTILE_95_PERCENT_VIEW":2,"SAVE":1,"VIDEO_10S_VIEW":5,"VIDEO_AVG_WATCH_TIME":86989,"VIDEO_MRC_VIEW":2,"VIDEO_START":2,"VIDEO_V50_WATCH_TIME":173979,"OUTBOUND_CLICK":2},
       "642396334344813594"
     );
   } else {
     top_video_pins_analytics_response_pins_inner = top_video_pins_analytics_response_pins_inner_create(
-      {"IMPRESSION":7,"QUARTILE_95_PERCENT_VIEW":2,"SAVE":1,"VIDEO_10S_VIEW":5,"VIDEO_AVG_WATCH_TIME":86989,"VIDEO_MRC_VIEW":2,"VIDEO_START":2,"VIDEO_V50_WATCH_TIME":173979,"OUTBOUND_CLICK":2},
       list_createList(),
+      {"IMPRESSION":7,"QUARTILE_95_PERCENT_VIEW":2,"SAVE":1,"VIDEO_10S_VIEW":5,"VIDEO_AVG_WATCH_TIME":86989,"VIDEO_MRC_VIEW":2,"VIDEO_START":2,"VIDEO_V50_WATCH_TIME":173979,"OUTBOUND_CLICK":2},
       "642396334344813594"
     );
   }

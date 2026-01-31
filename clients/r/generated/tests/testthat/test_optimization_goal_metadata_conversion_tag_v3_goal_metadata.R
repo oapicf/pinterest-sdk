@@ -35,7 +35,7 @@ test_that("cpa_goal_value_in_micro_currency", {
 
 test_that("is_roas_optimized", {
   # tests for the property `is_roas_optimized` (character)
-  # ROAS optimization is not supported
+  # Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when &#x60;conversion_event&#x60; is set to &#x60;\&quot;CHECKOUT\&quot;&#x60; and &#x60;bid_strategy_type&#x60; is set to &#x60;\&quot;AUTOMATIC_BID\&quot;&#x60;. &lt;br&gt;This parameter is not enabled for all advertisers. &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\&quot;&gt;Learn more&lt;/a&gt;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_roas_optimized`, "EXPECTED_RESULT")
@@ -47,4 +47,12 @@ test_that("learning_mode_type", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`learning_mode_type`, "EXPECTED_RESULT")
+})
+
+test_that("reporting_event", {
+  # tests for the property `reporting_event` (character)
+  # Event name for custom or standard events mapped to an oCPM model
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`reporting_event`, "EXPECTED_RESULT")
 })

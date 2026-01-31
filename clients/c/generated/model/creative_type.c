@@ -5,13 +5,13 @@
 
 
 char* creative_type_creative_type_ToString(pinterest_rest_api_creative_type__e creative_type) {
-    char *creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ" };
+    char *creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ", "COLLAGE", "MAX_WIDTH_REGULAR_COLLECTION", "MAX_WIDTH_VIDEO_COLLECTION" };
     return creative_typeArray[creative_type];
 }
 
 pinterest_rest_api_creative_type__e creative_type_creative_type_FromString(char* creative_type) {
     int stringToReturn = 0;
-    char *creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ" };
+    char *creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ", "COLLAGE", "MAX_WIDTH_REGULAR_COLLECTION", "MAX_WIDTH_VIDEO_COLLECTION" };
     size_t sizeofArray = sizeof(creative_typeArray) / sizeof(creative_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(creative_type, creative_typeArray[stringToReturn]) == 0) {

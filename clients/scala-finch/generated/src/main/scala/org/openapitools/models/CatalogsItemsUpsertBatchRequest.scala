@@ -13,14 +13,14 @@ import scala.collection.immutable.Seq
 /**
  * Request object to upsert catalogs items
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 case class CatalogsItemsUpsertBatchRequest(country: Country,
+                items: Seq[ItemUpsertBatchRecord],
                 language: String,
-                operation: BatchOperation,
-                items: Seq[ItemUpsertBatchRecord]
+                operation: BatchOperation
                 )
 
 object CatalogsItemsUpsertBatchRequest {

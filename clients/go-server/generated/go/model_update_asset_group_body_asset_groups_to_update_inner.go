@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,12 +19,6 @@ type UpdateAssetGroupBodyAssetGroupsToUpdateInner struct {
 	// Unique identifier of the asset group to update.
 	AssetGroupId string `json:"asset_group_id"`
 
-	// Asset Group name
-	Name string `json:"name,omitempty"`
-
-	// Asset group description
-	Description string `json:"description,omitempty"`
-
 	// Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
 	AssetGroupTypes []AssetGroupType `json:"asset_group_types,omitempty"`
 
@@ -33,6 +27,12 @@ type UpdateAssetGroupBodyAssetGroupsToUpdateInner struct {
 
 	// A list of asset ids to remove from the asset group.
 	AssetsToRemove []string `json:"assets_to_remove,omitempty"`
+
+	// Asset group description
+	Description string `json:"description,omitempty"`
+
+	// Asset Group name
+	Name string `json:"name,omitempty"`
 }
 
 // AssertUpdateAssetGroupBodyAssetGroupsToUpdateInnerRequired checks if the required fields are not zero-ed

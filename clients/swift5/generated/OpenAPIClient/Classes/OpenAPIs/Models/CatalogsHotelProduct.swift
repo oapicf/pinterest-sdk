@@ -17,9 +17,9 @@ public struct CatalogsHotelProduct: Codable, JSONEncodable, Hashable {
     }
     public var catalogType: CatalogType
     public var metadata: CatalogsHotelProductMetadata
-    public var pin: Pin?
+    public var pin: Pin
 
-    public init(catalogType: CatalogType, metadata: CatalogsHotelProductMetadata, pin: Pin?) {
+    public init(catalogType: CatalogType, metadata: CatalogsHotelProductMetadata, pin: Pin) {
         self.catalogType = catalogType
         self.metadata = metadata
         self.pin = pin

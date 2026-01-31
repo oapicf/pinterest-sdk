@@ -5,11 +5,18 @@ context("Test TrackingUrls")
 
 model_instance <- TrackingUrls$new()
 
-test_that("impression", {
-  # tests for the property `impression` (array[character])
+test_that("audience_verification", {
+  # tests for the property `audience_verification` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`impression`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`audience_verification`, "EXPECTED_RESULT")
+})
+
+test_that("buyable_button", {
+  # tests for the property `buyable_button` (array[character])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`buyable_button`, "EXPECTED_RESULT")
 })
 
 test_that("click", {
@@ -26,16 +33,9 @@ test_that("engagement", {
   #expect_equal(model.instance$`engagement`, "EXPECTED_RESULT")
 })
 
-test_that("buyable_button", {
-  # tests for the property `buyable_button` (array[character])
+test_that("impression", {
+  # tests for the property `impression` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`buyable_button`, "EXPECTED_RESULT")
-})
-
-test_that("audience_verification", {
-  # tests for the property `audience_verification` (array[character])
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`audience_verification`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`impression`, "EXPECTED_RESULT")
 })

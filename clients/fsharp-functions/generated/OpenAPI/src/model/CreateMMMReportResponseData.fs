@@ -12,14 +12,14 @@ module CreateMMMReportResponseData =
 
   [<CLIMutable>]
   type CreateMMMReportResponseData = {
-    [<JsonProperty(PropertyName = "report_status")>]
-    ReportStatus : BulkReportingJobStatus;
-    [<JsonProperty(PropertyName = "token")>]
-    Token : string;
     [<JsonProperty(PropertyName = "message")>]
     Message : string option;
+    [<JsonProperty(PropertyName = "report_status")>]
+    ReportStatus : BulkReportingJobStatus;
     [<JsonProperty(PropertyName = "status")>]
     Status : string;
+    [<JsonProperty(PropertyName = "token")>]
+    Token : string;
   }
 
   //#endregion

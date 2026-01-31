@@ -4,13 +4,120 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](BusinessAccessRelationshipsApi.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](BusinessAccessRelationshipsApi.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+
+## brandAccountsCreate
+
+> BrandAccountsCreate200Response brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+
+```javascript
+import PinterestSdk from 'pinterest-sdk';
+let defaultClient = PinterestSdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
+pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
+let businessHierarchyId = "7009386637860"; // String | business hierarchy node id
+let brandAccountsCreateRequest = new PinterestSdk.BrandAccountsCreateRequest(); // BrandAccountsCreateRequest | 
+apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **String**| business hierarchy node id | 
+ **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## brandAccountsUpdate
+
+> BrandAccountsCreate200Response brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+
+```javascript
+import PinterestSdk from 'pinterest-sdk';
+let defaultClient = PinterestSdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
+pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
+let businessHierarchyId = "7009386637860"; // String | business hierarchy node id
+let brandAccountId = "729090764583391194"; // String | Unique identifier of a brand account.
+let brandAccountsUpdateRequest = new PinterestSdk.BrandAccountsUpdateRequest(); // BrandAccountsUpdateRequest | 
+apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **String**| business hierarchy node id | 
+ **brandAccountId** | **String**| Unique identifier of a brand account. | 
+ **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## deleteBusinessMembership
@@ -188,6 +295,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
 let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
 let opts = {
+  'fetchSystemUsers': false, // Boolean | Fetches system users if True. Fetches regular user employees if False.
   'assetsSummary': false, // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   'businessRoles': [new PinterestSdk.MemberBusinessRole()], // [MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
   'memberIds': "00101010101,2222220101", // String | A list of business members ids separated by comma.
@@ -210,6 +318,7 @@ apiInstance.getBusinessMembers(businessId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
+ **fetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **assetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
  **businessRoles** | [**[MemberBusinessRole]**](MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
  **memberIds** | **String**| A list of business members ids separated by comma. | [optional] 
@@ -291,6 +400,59 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## systemUserUpdate
+
+> systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+
+```javascript
+import PinterestSdk from 'pinterest-sdk';
+let defaultClient = PinterestSdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
+pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
+let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let systemUserId = "729090764583391194"; // String | Unique identifier of a system user.
+let systemUserUpdateRequest = new PinterestSdk.SystemUserUpdateRequest(); // SystemUserUpdateRequest | 
+apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessId** | **String**| Unique identifier of the requesting business. | 
+ **systemUserId** | **String**| Unique identifier of a system user. | 
+ **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

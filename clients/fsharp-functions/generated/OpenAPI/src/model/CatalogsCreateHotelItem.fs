@@ -11,12 +11,12 @@ module CatalogsCreateHotelItem =
 
   [<CLIMutable>]
   type CatalogsCreateHotelItem = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsHotelAttributes;
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsHotelAttributes;
   }
 
   //#endregion

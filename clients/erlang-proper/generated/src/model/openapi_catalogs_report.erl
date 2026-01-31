@@ -10,8 +10,8 @@
 
 -type openapi_catalogs_report() ::
   [ {'report_status', binary() }
-  | {'url', binary() }
   | {'size', integer() }
+  | {'url', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_catalogs_report() ->
 
 openapi_catalogs_report(Fields) ->
   Default = [ {'report_status', elements([<<"FINISHED">>, <<"IN_PROGRESS">>]) }
-            , {'url', binary() }
             , {'size', integer() }
+            , {'url', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

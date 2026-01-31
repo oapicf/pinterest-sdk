@@ -3,6 +3,7 @@ package org.openapitools.client.model
 
 
 case class OptimizationGoalMetadataFrequencyGoalMetadata (
+    /* Frequency target can only be between 2 and 20 */
     _frequency: Option[Integer],
     /* User entity counts time range */
     _timerange: Option[String]

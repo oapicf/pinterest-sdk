@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinCreate`
 --
-SELECT `id`, `created_at`, `link`, `title`, `description`, `dominant_color`, `alt_text`, `board_id`, `board_section_id`, `board_owner`, `media`, `media_source`, `parent_pin_id`, `note` FROM `PinCreate` WHERE 1;
+SELECT `alt_text`, `board_id`, `board_section_id`, `description`, `dominant_color`, `link`, `media_source`, `parent_pin_id`, `sponsor_id`, `title` FROM `PinCreate` WHERE 1;
 
 --
 -- INSERT template for table `PinCreate`
 --
-INSERT INTO `PinCreate`(`id`, `created_at`, `link`, `title`, `description`, `dominant_color`, `alt_text`, `board_id`, `board_section_id`, `board_owner`, `media`, `media_source`, `parent_pin_id`, `note`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `PinCreate`(`alt_text`, `board_id`, `board_section_id`, `description`, `dominant_color`, `link`, `media_source`, `parent_pin_id`, `sponsor_id`, `title`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `PinCreate`
 --
-UPDATE `PinCreate` SET `id` = ?, `created_at` = ?, `link` = ?, `title` = ?, `description` = ?, `dominant_color` = ?, `alt_text` = ?, `board_id` = ?, `board_section_id` = ?, `board_owner` = ?, `media` = ?, `media_source` = ?, `parent_pin_id` = ?, `note` = ? WHERE 1;
+UPDATE `PinCreate` SET `alt_text` = ?, `board_id` = ?, `board_section_id` = ?, `description` = ?, `dominant_color` = ?, `link` = ?, `media_source` = ?, `parent_pin_id` = ?, `sponsor_id` = ?, `title` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinCreate`

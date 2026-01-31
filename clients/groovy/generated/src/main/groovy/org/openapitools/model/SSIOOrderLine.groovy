@@ -9,48 +9,48 @@ import org.openapitools.model.Currency;
 
 @Canonical
 class SSIOOrderLine {
-    /* OrderLineId in SFDC */
-    String salesforceOrderLineId
+    /* The SFDC id for the terms */
+    String acceptedTermsId
+    /* The UTC timestamp (to the nearest sec) of when terms were accepted */
+    String acceptedTermsTime
     /* Ads manager OrderLineId */
     String adsManagerOrderLineId
-    /* The pin order id associated with the order line in SFDC */
-    String pinOrderId
-    /* Last modified date. */
-    String lastModifiedDateTime
-    /* Start date of the order line. */
-    Date startDate
-    /* End date of the order line. */
-    Date endDate
+    /* Agency link */
+    String agencyLink
     /* Bill To Company name */
     String billToCompanyName
+    /* Billing contact email */
+    String billingContactEmail
     /* Billing contact first name */
     String billingContactFirstname
     /* Billing contact last name */
     String billingContactLastname
-    /* Billing contact email */
-    String billingContactEmail
+    /* If Budget order line, the budget amount. */
+    BigDecimal budgetAmount
+    
+    Currency currencyInfo
+    /* End date of the order line. */
+    Date endDate
+    /* If Ongoing (perpetual) order line, the estimated monthly spend */
+    BigDecimal estimatedMonthlySpend
+    /* Last modified date. */
+    String lastModifiedDateTime
     /* Billing media email */
     String mediaContactEmail
     /* Billing contact first name */
     String mediaContactFirstname
     /* Billing contact first name */
     String mediaContactLastname
-    
-    Currency currencyInfo
-    /* Agency link */
-    String agencyLink
-    /* The po number */
-    String poNumber
     /* The order name */
     String orderName
+    /* The pin order id associated with the order line in SFDC */
+    String pinOrderId
     /* The Pinterest marketing partner name */
     String pmpName
-    /* The SFDC id for the terms */
-    String acceptedTermsId
-    /* The UTC timestamp (to the nearest sec) of when terms were accepted */
-    String acceptedTermsTime
-    /* If Budget order line, the budget amount. */
-    BigDecimal budgetAmount
-    /* If Ongoing (perpetual) order line, the estimated monthly spend */
-    BigDecimal estimatedMonthlySpend
+    /* The po number */
+    String poNumber
+    /* OrderLineId in SFDC */
+    String salesforceOrderLineId
+    /* Start date of the order line. */
+    Date startDate
 }

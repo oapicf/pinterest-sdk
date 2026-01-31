@@ -40,6 +40,40 @@ pub enum AdsCreditsDiscountsSlashGetResponse {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
+pub enum BillingInvoiceDownloadSlashGetResponse {
+    /// Successfully fetched Billing invoice information for a given ad account
+    Status200_SuccessfullyFetchedBillingInvoiceInformationForAGivenAdAccount
+    (models::BillingInvoiceDownloadResponse)
+    ,
+    /// Invalid request parameter.
+    Status400_InvalidRequestParameter
+    (models::Error)
+    ,
+    /// Unexpected error
+    Status0_UnexpectedError
+    (models::Error)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
+pub enum BillingInvoicesSlashGetResponse {
+    /// Success
+    Status200_Success
+    (models::BillingInvoicesGet200Response)
+    ,
+    /// Invalid request parameter.
+    Status400_InvalidRequestParameter
+    (models::Error)
+    ,
+    /// Unexpected error
+    Status0_UnexpectedError
+    (models::Error)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
 pub enum BillingProfilesSlashGetResponse {
     /// Success
     Status200_Success
@@ -184,6 +218,31 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
       path_params: &models::AdsCreditsDiscountsSlashGetPathParams,
       query_params: &models::AdsCreditsDiscountsSlashGetQueryParams,
     ) -> Result<AdsCreditsDiscountsSlashGetResponse, E>;
+
+    /// Get download url for a billing invoice.
+    ///
+    /// BillingInvoiceDownloadSlashGet - GET /v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download
+    async fn billing_invoice_download_slash_get(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BillingInvoiceDownloadSlashGetPathParams,
+    ) -> Result<BillingInvoiceDownloadSlashGetResponse, E>;
+
+    /// Get billing invoices.
+    ///
+    /// BillingInvoicesSlashGet - GET /v5/ad_accounts/{ad_account_id}/billing_invoices
+    async fn billing_invoices_slash_get(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BillingInvoicesSlashGetPathParams,
+      query_params: &models::BillingInvoicesSlashGetQueryParams,
+    ) -> Result<BillingInvoicesSlashGetResponse, E>;
 
     /// Get billing profiles.
     ///

@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomLabel4Filter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomLabel4Filter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupFilterOperatorTypeCriteria = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
+}
+resourceTypes {
+
+  CustomLabel4Filter {
+    title = CustomLabel4Filter
+    description = CustomLabel4Filter
+    derivedFrom = Root
+    properties {
+        custom_label_4 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomLabel4Filter {
+    title = CustomLabel4Filter
+    description = CustomLabel4Filter
+    implements = openapi_server.resourceTypes.CustomLabel4Filter
+
+  }
+}

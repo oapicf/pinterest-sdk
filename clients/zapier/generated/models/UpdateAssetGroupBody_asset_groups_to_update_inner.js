@@ -12,16 +12,6 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}name`,
-                label: `Asset Group name - [${labelPrefix}name]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}description`,
-                label: `Asset group description - [${labelPrefix}description]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}asset_group_types`,
                 list: true,
                 type: 'string',
@@ -39,17 +29,27 @@ module.exports = {
                 list: true,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}description`,
+                label: `Asset group description - [${labelPrefix}description]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}name`,
+                label: `Asset Group name - [${labelPrefix}name]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'asset_group_id': bundle.inputData?.[`${keyPrefix}asset_group_id`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
-            'description': bundle.inputData?.[`${keyPrefix}description`],
             'asset_group_types': utils.childMapping(bundle.inputData?.[`${keyPrefix}asset_group_types`], `${keyPrefix}asset_group_types`, AssetGroupType),
             'assets_to_add': bundle.inputData?.[`${keyPrefix}assets_to_add`],
             'assets_to_remove': bundle.inputData?.[`${keyPrefix}assets_to_remove`],
+            'description': bundle.inputData?.[`${keyPrefix}description`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

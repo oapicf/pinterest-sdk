@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**IntegrationRecord[]**](IntegrationRecord.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**IntegrationRecord[]**](IntegrationRecord.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IntegrationsGetList200Response = Initialize-PSOpenAPIToolsIntegrationsGetList200Response  -Items null `
- -Bookmark null
+$IntegrationsGetList200Response = Initialize-PSOpenAPIToolsIntegrationsGetList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

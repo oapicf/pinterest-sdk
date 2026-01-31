@@ -92,7 +92,7 @@ pub enum IntegrationsLogsSlashPostResponse {
     ,
     /// Bad request.
     Status400_BadRequest
-    (models::DetailedError)
+    (models::IntegrationsLogsPost400Response)
     ,
     /// Unexpected error
     Status0_UnexpectedError
@@ -170,7 +170,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::IntegrationsCommerceSlashPatchPathParams,
-            body: &Option<models::IntegrationRequestPatch>,
+            body: &models::IntegrationRequestPatch,
     ) -> Result<IntegrationsCommerceSlashPatchResponse, E>;
 
     /// Create commerce integration.
@@ -182,7 +182,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
-            body: &Option<models::IntegrationRequest>,
+            body: &models::IntegrationRequest,
     ) -> Result<IntegrationsCommerceSlashPostResponse, E>;
 
     /// Receives batched logs from integration applications..

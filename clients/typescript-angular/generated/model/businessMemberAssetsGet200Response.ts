@@ -11,10 +11,10 @@ import { AssetIdPermissions } from './assetIdPermissions';
 
 
 export interface BusinessMemberAssetsGet200Response { 
+    bookmark?: string | null;
     /**
      * List asset permissions the given member was granted.
      */
     items: Array<AssetIdPermissions>;
-    bookmark?: string | null;
 }
 

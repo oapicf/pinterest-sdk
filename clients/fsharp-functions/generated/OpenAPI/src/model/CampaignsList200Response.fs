@@ -12,10 +12,10 @@ module CampaignsList200Response =
 
   [<CLIMutable>]
   type CampaignsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : CampaignResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : CampaignResponse[];
   }
 
   //#endregion

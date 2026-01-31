@@ -50,7 +50,7 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadataTest : ShouldSpec() {
             //modelInstance.cpaGoalValueInMicroCurrency shouldBe ("TODO")
         }
 
-        // to test the property `isRoasOptimized` - ROAS optimization is not supported
+        // to test the property `isRoasOptimized` - Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
         should("test isRoasOptimized") {
             // uncomment below to test the property
             //modelInstance.isRoasOptimized shouldBe ("TODO")
@@ -60,6 +60,12 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadataTest : ShouldSpec() {
         should("test learningModeType") {
             // uncomment below to test the property
             //modelInstance.learningModeType shouldBe ("TODO")
+        }
+
+        // to test the property `reportingEvent` - Event name for custom or standard events mapped to an oCPM model
+        should("test reportingEvent") {
+            // uncomment below to test the property
+            //modelInstance.reportingEvent shouldBe ("TODO")
         }
 
     }

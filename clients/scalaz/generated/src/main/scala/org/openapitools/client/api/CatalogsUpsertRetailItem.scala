@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsUpsertRetailItem._
 
 case class CatalogsUpsertRetailItem (
-  /* The catalog item id in the merchant namespace */
+  attributes: ItemAttributesRequest,
+/* The catalog item id in the merchant namespace */
   itemId: String,
-operation: Operation,
-attributes: ItemAttributesRequest)
+operation: Operation)
 
 object CatalogsUpsertRetailItem {
   import DateTimeCodecs._

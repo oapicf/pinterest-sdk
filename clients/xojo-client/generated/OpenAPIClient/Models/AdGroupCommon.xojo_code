@@ -3,17 +3,30 @@ Protected Class AdGroupCommon
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad group name.
+			Enable auto-targeting for ad group. Default value is True. Also known as <a href="https://help.pinterest.com/en/business/article/performance-plus-targeting" target="_blank">"Pinterest Performance+ targeting"</a>.
 		#tag EndNote
-		name As Xoson.O.OptionalString
+		auto_targeting_enabled As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad group/entity status.
+			Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 		#tag EndNote
-		status As Xoson.O.OptionalString
+		bid_in_micro_currency As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as "Pinterest Performance+ bidding".
+		#tag EndNote
+		bid_strategy_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		billable_event As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -26,44 +39,31 @@ Protected Class AdGroupCommon
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-		#tag EndNote
-		bid_in_micro_currency As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `"WEB_CONVERSION"`.
-		#tag EndNote
-		optimization_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadata
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		budget_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad group start time. Unix timestamp in seconds. Defaults to current time.
+			Campaign ID of the ad group.
 		#tag EndNote
-		start_time As Xoson.O.OptionalInteger
+		campaign_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad group end time. Unix timestamp in seconds.
+			Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href="/docs/api-features/managing-ads/#step-2-create-an-ad-group" target="blank">scheduling ads</a>. For certain organizations (<a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 		#tag EndNote
 		end_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		targeting_spec As OpenAPIClient.Models.TargetingSpec
+		#tag Note
+			Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
+		#tag EndNote
+		is_creative_optimization As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -77,17 +77,22 @@ Protected Class AdGroupCommon
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Third-party tracking URLs.<br> JSON object with the format: {"<a href="/docs/redoc/#section/Tracking-URL-event">Tracking event enum</a>":[URL string array],...}<br> For example: {"impression": ["URL1", "URL2"], "click": ["URL1", "URL2", "URL3"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href="https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking" target="_blank">Third-party and dynamic tracking</a>.
+			Ad group name.
 		#tag EndNote
-		tracking_urls As OpenAPIClient.Models.TrackingUrls
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Enable auto-targeting for ad group. Also known as <a href="https://help.pinterest.com/en/business/article/expanded-targeting" target="_blank">"expanded targeting"</a>.
+			Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `"WEB_CONVERSION"`.
 		#tag EndNote
-		auto_targeting_enabled As Xoson.O.OptionalBoolean
+		optimization_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadata
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		pacing_delivery_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -100,28 +105,39 @@ Protected Class AdGroupCommon
 
 
 	#tag Property, Flags = &h0
-		pacing_delivery_type As Xoson.O.OptionalString
+		#tag Note
+			Specify if the promotion is applied at ad group or item level
+		#tag EndNote
+		promotion_application_level As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Campaign ID of the ad group.
+			Promotion ID. To clear this field, set to null.
 		#tag EndNote
-		campaign_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		billable_event As Xoson.O.OptionalString
+		promotion_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+			Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href="/docs/api-features/managing-ads/#step-2-create-an-ad-group" target="blank">scheduling ads</a>. For certain organizations (<a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 		#tag EndNote
-		bid_strategy_type As Xoson.O.OptionalString
+		start_time As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Ad group/entity status.
+		#tag EndNote
+		status As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		targeting_spec As OpenAPIClient.Models.TargetingSpec
 	#tag EndProperty
 
 
@@ -133,11 +149,27 @@ Protected Class AdGroupCommon
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			Third-party tracking URLs.<br> JSON object with the format: {"<a href="/docs/redoc/#section/Tracking-URL-event">Tracking event enum</a>":[URL string array],...}<br> For example: {"impression": ["URL1", "URL2"], "click": ["URL1", "URL2", "URL3"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href="https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking" target="_blank">Third-party and dynamic tracking</a>.
+		#tag EndNote
+		tracking_urls As OpenAPIClient.Models.TrackingUrls
+	#tag EndProperty
+
+
     #tag Enum, Name = Bid_strategy_typeEnum, Type = Integer, Flags = &h0
         
         AutomaticBid
         MaxBid
         TargetAvg
+        
+    #tag EndEnum
+
+    #tag Enum, Name = Promotion_application_levelEnum, Type = Integer, Flags = &h0
+        
+        None
+        Item
+        AdGroup
         
     #tag EndEnum
 
@@ -152,6 +184,21 @@ Protected Class AdGroupCommon
 		      Return "MAX_BID"
 		    Case Bid_strategy_typeEnum.TargetAvg
 		      Return "TARGET_AVG"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h0
+		Shared Function Promotion_application_levelEnumToString(value As Promotion_application_levelEnum) As String
+		  Select Case value
+		    
+		    Case Promotion_application_levelEnum.None
+		      Return "NONE"
+		    Case Promotion_application_levelEnum.Item
+		      Return "ITEM"
+		    Case Promotion_application_levelEnum.AdGroup
+		      Return "AD_GROUP"
 		    
 		  End Select
 		  Return ""
@@ -193,27 +240,11 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="auto_targeting_enabled"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="EntityStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="budget_in_micro_currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -225,11 +256,19 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="optimization_goal_metadata"
+			Name="billable_event"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="OptimizationGoalMetadata"
+			Type="ActionType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="budget_in_micro_currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -241,11 +280,11 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="start_time"
+			Name="campaign_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -257,11 +296,11 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="targeting_spec"
+			Name="is_creative_optimization"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TargetingSpec"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -273,27 +312,19 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="tracking_urls"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TrackingUrls"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="auto_targeting_enabled"
+			Name="optimization_goal_metadata"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="placement_group"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="PlacementGroupType"
+			Type="OptimizationGoalMetadata"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -305,7 +336,15 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="campaign_id"
+			Name="placement_group"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="PlacementGroupType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="promotion_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -313,11 +352,27 @@ Protected Class AdGroupCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="billable_event"
+			Name="start_time"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ActionType"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="EntityStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="targeting_spec"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingSpec"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -326,6 +381,14 @@ Protected Class AdGroupCommon
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="tracking_urls"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TrackingUrls"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

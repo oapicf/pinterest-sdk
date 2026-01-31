@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,18 +20,20 @@ import (
 // checks if the PinMediaSourceVideoID type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PinMediaSourceVideoID{}
 
-// PinMediaSourceVideoID Video ID-based media source
+// PinMediaSourceVideoID Video ID-based media source.
 type PinMediaSourceVideoID struct {
-	SourceType string `json:"source_type"`
-	// Cover image url.
-	CoverImageUrl *string `json:"cover_image_url,omitempty"`
 	// Content type for cover image Base64.
-	CoverImageContentType *string `json:"cover_image_content_type,omitempty"`
+	CoverImageContentType *ContentType `json:"cover_image_content_type,omitempty"`
 	// Cover image Base64.
 	CoverImageData *string `json:"cover_image_data,omitempty"`
-	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+	// Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+	CoverImageKeyFrameTime *int32 `json:"cover_image_key_frame_time,omitempty"`
+	// Cover image URL.
+	CoverImageUrl *string `json:"cover_image_url,omitempty"`
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard *bool `json:"is_standard,omitempty"`
+	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+	SourceType string `json:"source_type"`
 }
 
 type _PinMediaSourceVideoID PinMediaSourceVideoID
@@ -40,12 +42,12 @@ type _PinMediaSourceVideoID PinMediaSourceVideoID
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPinMediaSourceVideoID(sourceType string, mediaId string) *PinMediaSourceVideoID {
+func NewPinMediaSourceVideoID(mediaId string, sourceType string) *PinMediaSourceVideoID {
 	this := PinMediaSourceVideoID{}
-	this.SourceType = sourceType
-	this.MediaId = mediaId
 	var isStandard bool = true
 	this.IsStandard = &isStandard
+	this.MediaId = mediaId
+	this.SourceType = sourceType
 	return &this
 }
 
@@ -59,66 +61,10 @@ func NewPinMediaSourceVideoIDWithDefaults() *PinMediaSourceVideoID {
 	return &this
 }
 
-// GetSourceType returns the SourceType field value
-func (o *PinMediaSourceVideoID) GetSourceType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SourceType
-}
-
-// GetSourceTypeOk returns a tuple with the SourceType field value
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourceVideoID) GetSourceTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SourceType, true
-}
-
-// SetSourceType sets field value
-func (o *PinMediaSourceVideoID) SetSourceType(v string) {
-	o.SourceType = v
-}
-
-// GetCoverImageUrl returns the CoverImageUrl field value if set, zero value otherwise.
-func (o *PinMediaSourceVideoID) GetCoverImageUrl() string {
-	if o == nil || IsNil(o.CoverImageUrl) {
-		var ret string
-		return ret
-	}
-	return *o.CoverImageUrl
-}
-
-// GetCoverImageUrlOk returns a tuple with the CoverImageUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourceVideoID) GetCoverImageUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.CoverImageUrl) {
-		return nil, false
-	}
-	return o.CoverImageUrl, true
-}
-
-// HasCoverImageUrl returns a boolean if a field has been set.
-func (o *PinMediaSourceVideoID) HasCoverImageUrl() bool {
-	if o != nil && !IsNil(o.CoverImageUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetCoverImageUrl gets a reference to the given string and assigns it to the CoverImageUrl field.
-func (o *PinMediaSourceVideoID) SetCoverImageUrl(v string) {
-	o.CoverImageUrl = &v
-}
-
 // GetCoverImageContentType returns the CoverImageContentType field value if set, zero value otherwise.
-func (o *PinMediaSourceVideoID) GetCoverImageContentType() string {
+func (o *PinMediaSourceVideoID) GetCoverImageContentType() ContentType {
 	if o == nil || IsNil(o.CoverImageContentType) {
-		var ret string
+		var ret ContentType
 		return ret
 	}
 	return *o.CoverImageContentType
@@ -126,7 +72,7 @@ func (o *PinMediaSourceVideoID) GetCoverImageContentType() string {
 
 // GetCoverImageContentTypeOk returns a tuple with the CoverImageContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PinMediaSourceVideoID) GetCoverImageContentTypeOk() (*string, bool) {
+func (o *PinMediaSourceVideoID) GetCoverImageContentTypeOk() (*ContentType, bool) {
 	if o == nil || IsNil(o.CoverImageContentType) {
 		return nil, false
 	}
@@ -142,8 +88,8 @@ func (o *PinMediaSourceVideoID) HasCoverImageContentType() bool {
 	return false
 }
 
-// SetCoverImageContentType gets a reference to the given string and assigns it to the CoverImageContentType field.
-func (o *PinMediaSourceVideoID) SetCoverImageContentType(v string) {
+// SetCoverImageContentType gets a reference to the given ContentType and assigns it to the CoverImageContentType field.
+func (o *PinMediaSourceVideoID) SetCoverImageContentType(v ContentType) {
 	o.CoverImageContentType = &v
 }
 
@@ -179,28 +125,68 @@ func (o *PinMediaSourceVideoID) SetCoverImageData(v string) {
 	o.CoverImageData = &v
 }
 
-// GetMediaId returns the MediaId field value
-func (o *PinMediaSourceVideoID) GetMediaId() string {
-	if o == nil {
+// GetCoverImageKeyFrameTime returns the CoverImageKeyFrameTime field value if set, zero value otherwise.
+func (o *PinMediaSourceVideoID) GetCoverImageKeyFrameTime() int32 {
+	if o == nil || IsNil(o.CoverImageKeyFrameTime) {
+		var ret int32
+		return ret
+	}
+	return *o.CoverImageKeyFrameTime
+}
+
+// GetCoverImageKeyFrameTimeOk returns a tuple with the CoverImageKeyFrameTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceVideoID) GetCoverImageKeyFrameTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.CoverImageKeyFrameTime) {
+		return nil, false
+	}
+	return o.CoverImageKeyFrameTime, true
+}
+
+// HasCoverImageKeyFrameTime returns a boolean if a field has been set.
+func (o *PinMediaSourceVideoID) HasCoverImageKeyFrameTime() bool {
+	if o != nil && !IsNil(o.CoverImageKeyFrameTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetCoverImageKeyFrameTime gets a reference to the given int32 and assigns it to the CoverImageKeyFrameTime field.
+func (o *PinMediaSourceVideoID) SetCoverImageKeyFrameTime(v int32) {
+	o.CoverImageKeyFrameTime = &v
+}
+
+// GetCoverImageUrl returns the CoverImageUrl field value if set, zero value otherwise.
+func (o *PinMediaSourceVideoID) GetCoverImageUrl() string {
+	if o == nil || IsNil(o.CoverImageUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.MediaId
+	return *o.CoverImageUrl
 }
 
-// GetMediaIdOk returns a tuple with the MediaId field value
+// GetCoverImageUrlOk returns a tuple with the CoverImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PinMediaSourceVideoID) GetMediaIdOk() (*string, bool) {
-	if o == nil {
+func (o *PinMediaSourceVideoID) GetCoverImageUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.CoverImageUrl) {
 		return nil, false
 	}
-	return &o.MediaId, true
+	return o.CoverImageUrl, true
 }
 
-// SetMediaId sets field value
-func (o *PinMediaSourceVideoID) SetMediaId(v string) {
-	o.MediaId = v
+// HasCoverImageUrl returns a boolean if a field has been set.
+func (o *PinMediaSourceVideoID) HasCoverImageUrl() bool {
+	if o != nil && !IsNil(o.CoverImageUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetCoverImageUrl gets a reference to the given string and assigns it to the CoverImageUrl field.
+func (o *PinMediaSourceVideoID) SetCoverImageUrl(v string) {
+	o.CoverImageUrl = &v
 }
 
 // GetIsStandard returns the IsStandard field value if set, zero value otherwise.
@@ -235,6 +221,54 @@ func (o *PinMediaSourceVideoID) SetIsStandard(v bool) {
 	o.IsStandard = &v
 }
 
+// GetMediaId returns the MediaId field value
+func (o *PinMediaSourceVideoID) GetMediaId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MediaId
+}
+
+// GetMediaIdOk returns a tuple with the MediaId field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceVideoID) GetMediaIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MediaId, true
+}
+
+// SetMediaId sets field value
+func (o *PinMediaSourceVideoID) SetMediaId(v string) {
+	o.MediaId = v
+}
+
+// GetSourceType returns the SourceType field value
+func (o *PinMediaSourceVideoID) GetSourceType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SourceType
+}
+
+// GetSourceTypeOk returns a tuple with the SourceType field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceVideoID) GetSourceTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceType, true
+}
+
+// SetSourceType sets field value
+func (o *PinMediaSourceVideoID) SetSourceType(v string) {
+	o.SourceType = v
+}
+
 func (o PinMediaSourceVideoID) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -245,20 +279,23 @@ func (o PinMediaSourceVideoID) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaSourceVideoID) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["source_type"] = o.SourceType
-	if !IsNil(o.CoverImageUrl) {
-		toSerialize["cover_image_url"] = o.CoverImageUrl
-	}
 	if !IsNil(o.CoverImageContentType) {
 		toSerialize["cover_image_content_type"] = o.CoverImageContentType
 	}
 	if !IsNil(o.CoverImageData) {
 		toSerialize["cover_image_data"] = o.CoverImageData
 	}
-	toSerialize["media_id"] = o.MediaId
+	if !IsNil(o.CoverImageKeyFrameTime) {
+		toSerialize["cover_image_key_frame_time"] = o.CoverImageKeyFrameTime
+	}
+	if !IsNil(o.CoverImageUrl) {
+		toSerialize["cover_image_url"] = o.CoverImageUrl
+	}
 	if !IsNil(o.IsStandard) {
 		toSerialize["is_standard"] = o.IsStandard
 	}
+	toSerialize["media_id"] = o.MediaId
+	toSerialize["source_type"] = o.SourceType
 	return toSerialize, nil
 }
 
@@ -267,8 +304,8 @@ func (o *PinMediaSourceVideoID) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"source_type",
 		"media_id",
+		"source_type",
 	}
 
 	allProperties := make(map[string]interface{})

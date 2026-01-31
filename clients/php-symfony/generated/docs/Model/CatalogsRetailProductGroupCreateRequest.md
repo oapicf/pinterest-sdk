@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **string** | Catalog id pertaining to the retail product group. | 
 **catalogType** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
-**name** | **string** |  | 
+**country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | [optional] 
 **description** | **string** |  | [optional] 
 **filters** | [**OpenAPI\Server\Model\CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
-**catalogId** | **string** | Catalog id pertaining to the retail product group. | 
-**country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | 
-**locale** | [**OpenAPI\Server\Model\CatalogsLocale**](CatalogsLocale.md) |  | 
+**locale** | [**OpenAPI\Server\Model\CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**name** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

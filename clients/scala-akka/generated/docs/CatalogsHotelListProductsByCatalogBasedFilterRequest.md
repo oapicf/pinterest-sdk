@@ -8,8 +8,8 @@ Request object to list products for a given hotel catalog_id and product group f
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **catalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 
 

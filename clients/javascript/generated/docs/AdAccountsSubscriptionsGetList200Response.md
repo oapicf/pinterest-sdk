@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[AdAccountGetSubscriptionResponse]**](AdAccountGetSubscriptionResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[LeadSubscription]**](LeadSubscription.md) |  | 
 
 

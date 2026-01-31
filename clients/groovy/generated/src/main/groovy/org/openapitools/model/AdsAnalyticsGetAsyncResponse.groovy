@@ -12,7 +12,7 @@ class AdsAnalyticsGetAsyncResponse {
     
     BulkReportingJobStatus reportStatus
     
-    String url
-    
     BigDecimal size
+    
+    String url
 }

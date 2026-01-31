@@ -15,11 +15,11 @@ Name | Type | Description | Notes
 **availability** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **brand** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **condition** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**custom_label_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **item_group_id** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **gender** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
 **media_type** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
@@ -36,6 +36,12 @@ Name | Type | Description | Notes
 **google_product_category_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **google_product_category_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
 **product_group** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**custom_number_0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_4** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**title_keywords** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

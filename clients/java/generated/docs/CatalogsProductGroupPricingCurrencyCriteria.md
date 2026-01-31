@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**operator** | [**OperatorEnum**](#OperatorEnum) |  |  |
-|**value** | **BigDecimal** |  |  |
 |**currency** | **NonNullableCatalogsCurrency** |  |  |
 |**negated** | **Boolean** |  |  [optional] |
+|**operator** | [**OperatorEnum**](#OperatorEnum) |  |  |
+|**value** | **BigDecimal** |  |  |
 
 
 

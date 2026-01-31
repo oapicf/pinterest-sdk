@@ -196,7 +196,7 @@ import (
 )
 
 func main() {
-	pinCreate := *openapiclient.NewPinCreate() // PinCreate | Create a new Pin.
+	pinCreate := *openapiclient.NewPinCreate() // PinCreate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -222,7 +222,7 @@ Other parameters are passed through a pointer to a apiPinsCreateRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinCreate** | [**PinCreate**](PinCreate.md) | Create a new Pin. | 
+ **pinCreate** | [**PinCreate**](PinCreate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -264,7 +264,7 @@ import (
 )
 
 func main() {
-	pinId := "pinId_example" // string | Unique identifier of a Pin.
+	pinId := "pinId_example" // string | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -283,7 +283,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pinId** | **string** | Unique identifier of a Pin. | 
+**pinId** | **string** |  | 
 
 ### Other Parameters
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ## PinsGet
 
-> Pin PinsGet(ctx, pinId).PinMetrics(pinMetrics).AdAccountId(adAccountId).Execute()
+> Pin PinsGet(ctx, pinId).AdAccountId(adAccountId).PinMetrics(pinMetrics).Execute()
 
 Get Pin
 
@@ -334,13 +334,13 @@ import (
 )
 
 func main() {
-	pinId := "pinId_example" // string | Unique identifier of a Pin.
-	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+	pinId := "pinId_example" // string | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PinsAPI.PinsGet(context.Background(), pinId).PinMetrics(pinMetrics).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.PinsAPI.PinsGet(context.Background(), pinId).AdAccountId(adAccountId).PinMetrics(pinMetrics).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PinsAPI.PinsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,7 +356,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pinId** | **string** | Unique identifier of a Pin. | 
+**pinId** | **string** |  | 
 
 ### Other Parameters
 
@@ -366,8 +366,8 @@ Other parameters are passed through a pointer to a apiPinsGetRequest struct via 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
 
 ### Return type
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 ## PinsList
 
-> PinsList200Response PinsList(ctx).Bookmark(bookmark).PageSize(pageSize).PinFilter(pinFilter).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).PinMetrics(pinMetrics).Execute()
+> PinsList200Response PinsList(ctx).PinFilter(pinFilter).PinMetrics(pinMetrics).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List Pins
 
@@ -408,18 +408,18 @@ import (
 )
 
 func main() {
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	pinFilter := "pinFilter_example" // string | Pin filter. (optional)
-	includeProtectedPins := true // bool | Specify if return pins from protected boards (optional) (default to false)
+	pinFilter := "pinFilter_example" // string | The filter to apply to the pins (optional)
+	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+	includeProtectedPins := true // bool | Whether to include protected pins in the results (optional) (default to false)
 	pinType := "pinType_example" // string | The type of pins to return, currently only enabled for private pins (optional)
-	creativeTypes := []string{"REGULAR"} // []string | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+	creativeTypes := []openapiclient.CreativeType{openapiclient.CreativeType("REGULAR")} // []CreativeType | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
-	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PinsAPI.PinsList(context.Background()).Bookmark(bookmark).PageSize(pageSize).PinFilter(pinFilter).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).PinMetrics(pinMetrics).Execute()
+	resp, r, err := apiClient.PinsAPI.PinsList(context.Background()).PinFilter(pinFilter).PinMetrics(pinMetrics).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PinsAPI.PinsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -440,14 +440,14 @@ Other parameters are passed through a pointer to a apiPinsListRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **pinFilter** | **string** | Pin filter. | 
- **includeProtectedPins** | **bool** | Specify if return pins from protected boards | [default to false]
+ **pinFilter** | **string** | The filter to apply to the pins | 
+ **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
+ **includeProtectedPins** | **bool** | Whether to include protected pins in the results | [default to false]
  **pinType** | **string** | The type of pins to return, currently only enabled for private pins | 
- **creativeTypes** | **[]string** | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | 
+ **creativeTypes** | [**[]CreativeType**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
- **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -562,7 +562,7 @@ import (
 )
 
 func main() {
-	pinId := "pinId_example" // string | Unique identifier of a Pin.
+	pinId := "pinId_example" // string | 
 	pinUpdate := *openapiclient.NewPinUpdate() // PinUpdate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
@@ -584,7 +584,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pinId** | **string** | Unique identifier of a Pin. | 
+**pinId** | **string** |  | 
 
 ### Other Parameters
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

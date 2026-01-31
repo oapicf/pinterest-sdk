@@ -9,8 +9,8 @@
 -export_type([openapi_user_summary/0]).
 
 -type openapi_user_summary() ::
-  [ {'username', binary() }
-  | {'type', binary() }
+  [ {'type', binary() }
+  | {'username', binary() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_user_summary() ->
     openapi_user_summary([]).
 
 openapi_user_summary(Fields) ->
-  Default = [ {'username', binary() }
-            , {'type', binary() }
+  Default = [ {'type', binary() }
+            , {'username', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

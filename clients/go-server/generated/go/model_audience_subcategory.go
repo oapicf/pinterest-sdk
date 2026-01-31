@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,6 +16,12 @@ package openapi
 
 type AudienceSubcategory struct {
 
+	// Subinterest ID.
+	Id string `json:"id,omitempty"`
+
+	// Subinterest affinity index.
+	Index float32 `json:"index,omitempty"`
+
 	// Interest unique key (same as ID).
 	Key string `json:"key,omitempty"`
 
@@ -24,12 +30,6 @@ type AudienceSubcategory struct {
 
 	// Subinterest's percent of category's total audience.
 	Ratio float32 `json:"ratio,omitempty"`
-
-	// Subinterest affinity index.
-	Index float32 `json:"index,omitempty"`
-
-	// Subinterest ID.
-	Id string `json:"id,omitempty"`
 }
 
 // AssertAudienceSubcategoryRequired checks if the required fields are not zero-ed

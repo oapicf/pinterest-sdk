@@ -11,9 +11,9 @@ module ItemProcessingRecord =
 
 
   type ItemProcessingRecord = {
-    ItemId : string;
     Errors : ItemValidationEvent[];
-    Warnings : ItemValidationEvent[];
+    ItemId : string;
     Status : ItemProcessingStatus;
+    Warnings : ItemValidationEvent[];
   }
   //#endregion

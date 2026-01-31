@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for updating a retail product group.")
 @JsonTypeName("CatalogsRetailProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupUpdateRequest   {
   public enum CatalogTypeEnum {
 
@@ -72,11 +72,11 @@ public class CatalogsRetailProductGroupUpdateRequest   {
 }
 
   private CatalogTypeEnum catalogType;
-  private String name;
+  private Country country;
   private String description;
   private CatalogsProductGroupFiltersRequest filters;
-  private Country country;
   private CatalogsLocale locale;
+  private String name;
 
   public CatalogsRetailProductGroupUpdateRequest() {
   }
@@ -103,21 +103,21 @@ public class CatalogsRetailProductGroupUpdateRequest   {
 
   /**
    **/
-  public CatalogsRetailProductGroupUpdateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
+  @JsonProperty("country")
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   /**
@@ -160,25 +160,6 @@ public class CatalogsRetailProductGroupUpdateRequest   {
 
   /**
    **/
-  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-
-  @JsonProperty("country")
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-  /**
-   **/
   public CatalogsRetailProductGroupUpdateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
     return this;
@@ -196,6 +177,25 @@ public class CatalogsRetailProductGroupUpdateRequest   {
     this.locale = locale;
   }
 
+  /**
+   **/
+  public CatalogsRetailProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -207,16 +207,16 @@ public class CatalogsRetailProductGroupUpdateRequest   {
     }
     CatalogsRetailProductGroupUpdateRequest catalogsRetailProductGroupUpdateRequest = (CatalogsRetailProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsRetailProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name) &&
+        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
         Objects.equals(this.description, catalogsRetailProductGroupUpdateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupUpdateRequest.filters) &&
-        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, country, locale);
+    return Objects.hash(catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -225,11 +225,11 @@ public class CatalogsRetailProductGroupUpdateRequest   {
     sb.append("class CatalogsRetailProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

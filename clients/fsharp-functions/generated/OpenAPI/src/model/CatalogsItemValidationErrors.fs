@@ -31,10 +31,10 @@ module CatalogsItemValidationErrors =
     IMAGE_LINK_MISSING : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "INVALID_DOMAIN")>]
     INVALID_DOMAIN : CatalogsItemValidationDetails;
-    [<JsonProperty(PropertyName = "ITEMID_MISSING")>]
-    ITEMID_MISSING : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")>]
     ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "ITEMID_MISSING")>]
+    ITEMID_MISSING : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "LINK_FORMAT_INVALID")>]
     LINK_FORMAT_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "LINK_LENGTH_TOO_LONG")>]

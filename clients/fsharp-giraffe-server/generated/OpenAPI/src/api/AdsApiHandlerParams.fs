@@ -13,6 +13,7 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 open System.Collections.Generic
 open System
 
@@ -91,7 +92,10 @@ module AdsApiHandlerParams =
       conversionReportTime : string option;
 
 
-      attributionTypes : ConversionReportAttributionType option;
+      attributionTypes : ConversionReportAttributionType[] option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion
@@ -153,6 +157,9 @@ module AdsApiHandlerParams =
 
 
       campaignIds : string[] option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion

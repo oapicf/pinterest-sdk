@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;SSIOInsertionOrderStatus&gt;](SSIOInsertionOrderStatus.md)
 `bookmark` | string
+`items` | [Array&lt;SSIOInsertionOrderStatus&gt;](SSIOInsertionOrderStatus.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { SsioInsertionOrdersStatusGetByAdAccount200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies SsioInsertionOrdersStatusGetByAdAccount200Response
 
 console.log(example)

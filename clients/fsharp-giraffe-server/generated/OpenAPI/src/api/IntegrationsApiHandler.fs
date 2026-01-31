@@ -7,7 +7,6 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open IntegrationsApiHandlerParams
 open IntegrationsApiServiceInterface
 open IntegrationsApiServiceImplementation
-open OpenAPI.Model.DetailedError
 open OpenAPI.Model.Error
 open OpenAPI.Model.IntegrationLogsRequest
 open OpenAPI.Model.IntegrationLogsSuccessResponse
@@ -16,6 +15,7 @@ open OpenAPI.Model.IntegrationRecord
 open OpenAPI.Model.IntegrationRequest
 open OpenAPI.Model.IntegrationRequestPatch
 open OpenAPI.Model.IntegrationsGetList200Response
+open OpenAPI.Model.IntegrationsLogsPost400Response
 
 module IntegrationsApiHandler =
 

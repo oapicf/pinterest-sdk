@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**inviteUnderscoreorUnderscorerequestUnderscoreid** | **string** |  | [optional] [default to null]
 **code** | **integer** |  | [optional] [default to null]
+**inviteUnderscoreorUnderscorerequestUnderscoreid** | **string** |  | [optional] [default to null]
 **message** | **string** |  | [optional] [default to null]
 **usersUnderscoreorUnderscorepartnerUnderscoreids** | **array[string]** |  | [optional] [default to null]
 

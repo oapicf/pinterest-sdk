@@ -23,14 +23,19 @@ CatalogsRetailItemsPostFilter::~CatalogsRetailItemsPostFilter()
 void
 CatalogsRetailItemsPostFilter::__init()
 {
+	//catalog_id = std::string();
 	//catalog_type = std::string();
 	//new std::list()std::list> item_ids;
-	//catalog_id = std::string();
 }
 
 void
 CatalogsRetailItemsPostFilter::__cleanup()
 {
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
@@ -41,11 +46,6 @@ CatalogsRetailItemsPostFilter::__cleanup()
 	//delete item_ids;
 	//item_ids = NULL;
 	//}
-	//if(catalog_id != NULL) {
-	//
-	//delete catalog_id;
-	//catalog_id = NULL;
-	//}
 	//
 }
 
@@ -54,6 +54,17 @@ CatalogsRetailItemsPostFilter::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -87,17 +98,6 @@ CatalogsRetailItemsPostFilter::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 CatalogsRetailItemsPostFilter::CatalogsRetailItemsPostFilter(char* json)
@@ -110,6 +110,15 @@ CatalogsRetailItemsPostFilter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogType();
 		node = converttoJson(&obj, "std::string", "");
@@ -134,21 +143,24 @@ CatalogsRetailItemsPostFilter::toJson()
 	
 	const gchar *item_idsKey = "item_ids";
 	json_object_set_member(pJsonObject, item_idsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+CatalogsRetailItemsPostFilter::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+CatalogsRetailItemsPostFilter::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
 }
 
 std::string
@@ -173,18 +185,6 @@ void
 CatalogsRetailItemsPostFilter::setItemIds(std::list <std::string> item_ids)
 {
 	this->item_ids = item_ids;
-}
-
-std::string
-CatalogsRetailItemsPostFilter::getCatalogId()
-{
-	return catalog_id;
-}
-
-void
-CatalogsRetailItemsPostFilter::setCatalogId(std::string  catalog_id)
-{
-	this->catalog_id = catalog_id;
 }
 
 

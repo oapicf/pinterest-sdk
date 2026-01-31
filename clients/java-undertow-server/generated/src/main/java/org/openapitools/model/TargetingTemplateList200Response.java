@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,34 +19,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingTemplateResponseData;
+import org.openapitools.model.TargetingTemplateGetResponseData;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateList200Response   {
   
-  private List<TargetingTemplateResponseData> items = new ArrayList<>();
   private String bookmark;
-
-  /**
-   */
-  public TargetingTemplateList200Response items(List<TargetingTemplateResponseData> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
-  public List<TargetingTemplateResponseData> getItems() {
-    return items;
-  }
-  public void setItems(List<TargetingTemplateResponseData> items) {
-    this.items = items;
-  }
+  private List<TargetingTemplateGetResponseData> items = new ArrayList<>();
 
   /**
    */
@@ -65,6 +48,23 @@ public class TargetingTemplateList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   */
+  public TargetingTemplateList200Response items(List<TargetingTemplateGetResponseData> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<TargetingTemplateGetResponseData> getItems() {
+    return items;
+  }
+  public void setItems(List<TargetingTemplateGetResponseData> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -75,13 +75,13 @@ public class TargetingTemplateList200Response   {
       return false;
     }
     TargetingTemplateList200Response targetingTemplateList200Response = (TargetingTemplateList200Response) o;
-    return Objects.equals(items, targetingTemplateList200Response.items) &&
-        Objects.equals(bookmark, targetingTemplateList200Response.bookmark);
+    return Objects.equals(bookmark, targetingTemplateList200Response.bookmark) &&
+        Objects.equals(items, targetingTemplateList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class TargetingTemplateList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

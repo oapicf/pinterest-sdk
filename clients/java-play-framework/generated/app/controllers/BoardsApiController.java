@@ -1,12 +1,17 @@
 package controllers;
 
 import apimodels.Board;
+import apimodels.BoardCreate;
+import apimodels.BoardPrivacyFilter;
 import apimodels.BoardSection;
 import apimodels.BoardSectionsList200Response;
-import apimodels.BoardUpdate;
+import apimodels.BoardWithUpdatePrivacy;
+import apimodels.BoardWithUpdatePrivacyUpdate;
 import apimodels.BoardsList200Response;
 import apimodels.BoardsListPins200Response;
+import apimodels.CreativeType;
 import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -30,7 +35,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardsApiController extends Controller {
     private final BoardsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -153,15 +158,15 @@ public class BoardsApiController extends Controller {
 
     @ApiAction
     public Result boardsCreate(Http.Request request) throws Exception {
-        JsonNode nodeboard = request.body().asJson();
-        Board board;
-        if (nodeboard != null) {
-            board = mapper.readValue(nodeboard.toString(), Board.class);
+        JsonNode nodeboardCreate = request.body().asJson();
+        BoardCreate boardCreate;
+        if (nodeboardCreate != null) {
+            boardCreate = mapper.readValue(nodeboardCreate.toString(), BoardCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(board);
+                OpenAPIUtils.validate(boardCreate);
             }
         } else {
-            throw new IllegalArgumentException("'Board' parameter is required");
+            throw new IllegalArgumentException("'BoardCreate' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -170,7 +175,7 @@ public class BoardsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.boardsCreateHttp(request, board, adAccountId);
+        return imp.boardsCreateHttp(request, boardCreate, adAccountId);
     }
 
     @ApiAction
@@ -206,6 +211,13 @@ public class BoardsApiController extends Controller {
         } else {
             adAccountId = null;
         }
+        String valueprivacy = request.getQueryString("privacy");
+        BoardPrivacyFilter privacy;
+        if (valueprivacy != null) {
+            privacy = valueprivacy;
+        } else {
+            privacy = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -220,14 +232,7 @@ public class BoardsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valueprivacy = request.getQueryString("privacy");
-        String privacy;
-        if (valueprivacy != null) {
-            privacy = valueprivacy;
-        } else {
-            privacy = null;
-        }
-        return imp.boardsListHttp(request, adAccountId, bookmark, pageSize, privacy);
+        return imp.boardsListHttp(request, adAccountId, privacy, bookmark, pageSize);
     }
 
     @ApiAction
@@ -248,7 +253,7 @@ public class BoardsApiController extends Controller {
         }
         String[] creativeTypesArray = request.queryString().get("creative_types");
         List<String> creativeTypesList = OpenAPIUtils.parametersToList("multi", creativeTypesArray);
-        List<String> creativeTypes = new ArrayList<>();
+        List<CreativeType> creativeTypes = new ArrayList<>();
         for (String curParam : creativeTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -274,15 +279,15 @@ public class BoardsApiController extends Controller {
 
     @ApiAction
     public Result boardsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId) throws Exception {
-        JsonNode nodeboardUpdate = request.body().asJson();
-        BoardUpdate boardUpdate;
-        if (nodeboardUpdate != null) {
-            boardUpdate = mapper.readValue(nodeboardUpdate.toString(), BoardUpdate.class);
+        JsonNode nodeboardWithUpdatePrivacyUpdate = request.body().asJson();
+        BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate;
+        if (nodeboardWithUpdatePrivacyUpdate != null) {
+            boardWithUpdatePrivacyUpdate = mapper.readValue(nodeboardWithUpdatePrivacyUpdate.toString(), BoardWithUpdatePrivacyUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(boardUpdate);
+                OpenAPIUtils.validate(boardWithUpdatePrivacyUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'BoardUpdate' parameter is required");
+            throw new IllegalArgumentException("'BoardWithUpdatePrivacyUpdate' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -291,7 +296,7 @@ public class BoardsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.boardsUpdateHttp(request, boardId, boardUpdate, adAccountId);
+        return imp.boardsUpdateHttp(request, boardId, boardWithUpdatePrivacyUpdate, adAccountId);
     }
 
 }

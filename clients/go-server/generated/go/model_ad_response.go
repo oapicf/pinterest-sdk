@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -36,8 +36,17 @@ type AdResponse struct {
 
 	CreativeType CreativeType `json:"creative_type,omitempty"`
 
+	CustomizableCtaType *CustomizableCtaType `json:"customizable_cta_type,omitempty"`
+
 	// Destination URL.
 	DestinationUrl *string `json:"destination_url,omitempty"`
+
+	DisclosureType *DisclosureType `json:"disclosure_type,omitempty"`
+
+	// URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+	DisclosureUrl *string `json:"disclosure_url,omitempty"`
+
+	GridClickType *GridClickType `json:"grid_click_type,omitempty"`
 
 	// Deep link URL for iOS devices.
 	IosDeepLink *string `json:"ios_deep_link,omitempty"`
@@ -48,8 +57,14 @@ type AdResponse struct {
 	// Is pin repinnable?
 	IsRemovable bool `json:"is_removable,omitempty"`
 
+	// Lead form ID for lead ad generation.
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+
 	// Name of the ad - 255 chars max.
 	Name *string `json:"name,omitempty"`
+
+	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	QuizPinData *QuizPinData `json:"quiz_pin_data,omitempty"`
 
 	Status EntityStatus `json:"status,omitempty"`
 
@@ -57,17 +72,6 @@ type AdResponse struct {
 
 	// Tracking URL for ad impressions.
 	ViewTrackingUrl *string `json:"view_tracking_url,omitempty"`
-
-	// Lead form ID for lead ad generation.
-	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
-
-	GridClickType *GridClickType `json:"grid_click_type,omitempty"`
-
-	// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-	CustomizableCtaType *string `json:"customizable_cta_type,omitempty"`
-
-	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	QuizPinData *QuizPinData `json:"quiz_pin_data,omitempty"`
 
 	// Pin ID.
 	PinId string `json:"pin_id,omitempty" validate:"regexp=^\\\\d+$"`
@@ -96,25 +100,25 @@ type AdResponse struct {
 	// Ad review status
 	ReviewStatus string `json:"review_status,omitempty"`
 
+	// Ad summary status
+	SummaryStatus PinPromotionSummaryStatus `json:"summary_status,omitempty"`
+
 	// Always \"ad\".
 	Type string `json:"type,omitempty"`
 
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTime int32 `json:"updated_time,omitempty"`
-
-	// Ad summary status
-	SummaryStatus PinPromotionSummaryStatus `json:"summary_status,omitempty"`
 }
 
 // AssertAdResponseRequired checks if the required fields are not zero-ed
 func AssertAdResponseRequired(obj AdResponse) error {
-	if obj.TrackingUrls != nil {
-		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
+	if obj.QuizPinData != nil {
+		if err := AssertQuizPinDataRequired(*obj.QuizPinData); err != nil {
 			return err
 		}
 	}
-	if obj.QuizPinData != nil {
-		if err := AssertQuizPinDataRequired(*obj.QuizPinData); err != nil {
+	if obj.TrackingUrls != nil {
+		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
 			return err
 		}
 	}
@@ -123,13 +127,13 @@ func AssertAdResponseRequired(obj AdResponse) error {
 
 // AssertAdResponseConstraints checks if the values respects the defined constraints
 func AssertAdResponseConstraints(obj AdResponse) error {
-    if obj.TrackingUrls != nil {
-     	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {
+    if obj.QuizPinData != nil {
+     	if err := AssertQuizPinDataConstraints(*obj.QuizPinData); err != nil {
      		return err
      	}
     }
-    if obj.QuizPinData != nil {
-     	if err := AssertQuizPinDataConstraints(*obj.QuizPinData); err != nil {
+    if obj.TrackingUrls != nil {
+     	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {
      		return err
      	}
     }

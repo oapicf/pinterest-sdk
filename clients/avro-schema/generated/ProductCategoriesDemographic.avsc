@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Age and gender distribution who engaged with this product category in the past 3 months",
+  "name": "ProductCategoriesDemographic",
+  "fields": [
+    {
+      "name": "age",
+      "type": {
+        "type": "map",
+        "items": "double"
+      },
+      "doc": "Age demographic distribution"
+    },
+    {
+      "name": "gender",
+      "type": "model.GenderDemographics",
+      "doc": ""
+    }
+  ]
+
+}

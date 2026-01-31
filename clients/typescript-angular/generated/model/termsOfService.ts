@@ -11,20 +11,20 @@
 
 export interface TermsOfService { 
     /**
-     * The ID of the terms of service
+     * The ID of the ad account.
      */
-    id?: string;
-    /**
-     * The terms of service content
-     */
-    html?: string | null;
+    ad_account_id?: string;
     /**
      * Whether the ad account has accepted terms of service.
      */
     has_accepted?: boolean;
     /**
-     * The ID of the ad account.
+     * The terms of service content
      */
-    ad_account_id?: string;
+    html?: string | null;
+    /**
+     * The ID of the terms of service
+     */
+    id?: string;
 }
 

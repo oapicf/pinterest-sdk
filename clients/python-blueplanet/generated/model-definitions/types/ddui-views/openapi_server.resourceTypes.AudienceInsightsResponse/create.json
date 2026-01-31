@@ -1,0 +1,22 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "categories" },
+      {"model": "_date" },
+      {"model": "demographics" },
+      {"model": "size" },
+      {"model": "size_is_upper_bound" },
+      {"model": "type" },
+    ]
+  }]
+}

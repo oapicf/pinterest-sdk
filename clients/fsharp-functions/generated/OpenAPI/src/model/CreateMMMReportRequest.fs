@@ -15,20 +15,20 @@ module CreateMMMReportRequest =
   type CreateMMMReportRequest = {
     [<JsonProperty(PropertyName = "countries")>]
     Countries : TargetingAdvertiserCountry[];
-    [<JsonProperty(PropertyName = "report_name")>]
-    ReportName : string;
-    [<JsonProperty(PropertyName = "start_date")>]
-    StartDate : string;
+    [<JsonProperty(PropertyName = "columns")>]
+    Columns : MMMReportingColumn[];
     [<JsonProperty(PropertyName = "end_date")>]
     EndDate : string;
     [<JsonProperty(PropertyName = "granularity")>]
     Granularity : string;
     [<JsonProperty(PropertyName = "level")>]
     Level : string;
+    [<JsonProperty(PropertyName = "report_name")>]
+    ReportName : string;
+    [<JsonProperty(PropertyName = "start_date")>]
+    StartDate : string;
     [<JsonProperty(PropertyName = "targeting_types")>]
     TargetingTypes : MMMReportingTargetingType[];
-    [<JsonProperty(PropertyName = "columns")>]
-    Columns : MMMReportingColumn[];
   }
 
   //#endregion

@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * The terminated asset access.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class DeletePartnerAssetsResult   {
   @JsonProperty("asset_id")
@@ -24,10 +24,6 @@ public class DeletePartnerAssetsResult   {
   
   private String assetType;
 
-  @JsonProperty("permissions")
-  
-  private List<String> permissions = null;
-
   @JsonProperty("is_shared_partner")
   
   private Boolean isSharedPartner;
@@ -36,6 +32,10 @@ public class DeletePartnerAssetsResult   {
   @Pattern(regexp="^\\d+$")
 
   private String partnerId;
+
+  @JsonProperty("permissions")
+  
+  private List<String> permissions = null;
 
   public DeletePartnerAssetsResult assetId(String assetId) {
     this.assetId = assetId;
@@ -60,7 +60,7 @@ public class DeletePartnerAssetsResult   {
   }
 
    /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
   **/
   public String getAssetType() {
@@ -69,31 +69,6 @@ public class DeletePartnerAssetsResult   {
 
   public void setAssetType(String assetType) {
     this.assetType = assetType;
-  }
-
-  public DeletePartnerAssetsResult permissions(List<String> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  public DeletePartnerAssetsResult addPermissionsItem(String permissionsItem) {
-    if (this.permissions == null) {
-      this.permissions = new ArrayList<>();
-    }
-    this.permissions.add(permissionsItem);
-    return this;
-  }
-
-   /**
-   * Permission levels member or partner has on an asset.
-   * @return permissions
-  **/
-  public List<String> getPermissions() {
-    return permissions;
-  }
-
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
   }
 
   public DeletePartnerAssetsResult isSharedPartner(Boolean isSharedPartner) {
@@ -130,6 +105,31 @@ public class DeletePartnerAssetsResult   {
     this.partnerId = partnerId;
   }
 
+  public DeletePartnerAssetsResult permissions(List<String> permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
+  public DeletePartnerAssetsResult addPermissionsItem(String permissionsItem) {
+    if (this.permissions == null) {
+      this.permissions = new ArrayList<>();
+    }
+    this.permissions.add(permissionsItem);
+    return this;
+  }
+
+   /**
+   * Permission levels member or partner has on an asset.
+   * @return permissions
+  **/
+  public List<String> getPermissions() {
+    return permissions;
+  }
+
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,14 +142,14 @@ public class DeletePartnerAssetsResult   {
     DeletePartnerAssetsResult deletePartnerAssetsResult = (DeletePartnerAssetsResult) o;
     return Objects.equals(assetId, deletePartnerAssetsResult.assetId) &&
         Objects.equals(assetType, deletePartnerAssetsResult.assetType) &&
-        Objects.equals(permissions, deletePartnerAssetsResult.permissions) &&
         Objects.equals(isSharedPartner, deletePartnerAssetsResult.isSharedPartner) &&
-        Objects.equals(partnerId, deletePartnerAssetsResult.partnerId);
+        Objects.equals(partnerId, deletePartnerAssetsResult.partnerId) &&
+        Objects.equals(permissions, deletePartnerAssetsResult.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, isSharedPartner, partnerId);
+    return Objects.hash(assetId, assetType, isSharedPartner, partnerId, permissions);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -160,9 +160,9 @@ public class DeletePartnerAssetsResult   {
     
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    isSharedPartner: ").append(toIndentedString(isSharedPartner)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

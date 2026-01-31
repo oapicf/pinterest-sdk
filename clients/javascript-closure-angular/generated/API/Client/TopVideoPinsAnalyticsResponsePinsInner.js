@@ -7,17 +7,17 @@ goog.provide('API.Client.TopVideoPinsAnalyticsResponse_pins_inner');
 API.Client.TopVideoPinsAnalyticsResponsePinsInner = function() {}
 
 /**
+ * @type {!Object<!string, API.Client.DataStatus>}
+ * @export
+ */
+API.Client.TopVideoPinsAnalyticsResponsePinsInner.prototype.dataStatus;
+
+/**
  * The metric name and daily value for each requested metric
  * @type {!Object<!string, number>}
  * @export
  */
 API.Client.TopVideoPinsAnalyticsResponsePinsInner.prototype.metrics;
-
-/**
- * @type {!Object<!string, API.Client.DataStatus>}
- * @export
- */
-API.Client.TopVideoPinsAnalyticsResponsePinsInner.prototype.dataStatus;
 
 /**
  * The pin id

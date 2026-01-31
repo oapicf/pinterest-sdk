@@ -13,22 +13,22 @@ import { SSIOAccountPMPName } from './sSIOAccountPMPName';
 
 export interface SSIOAccountResponse { 
     /**
-     * Advertiser eligible to create order lines
+     * An array of Salesforce account information that includes address, io terms, etc.
      */
-    eligible?: boolean;
+    billto_infos?: Array<SSIOAccountItem>;
     /**
      * Advertiser eligible to update order lines
      */
     can_edit?: boolean;
-    /**
-     * An array of Salesforce account information that includes address, io terms, etc.
-     */
-    billto_infos?: Array<SSIOAccountItem>;
     currency?: string;
-    pmp_names?: Array<SSIOAccountPMPName>;
+    /**
+     * Advertiser eligible to create order lines
+     */
+    eligible?: boolean;
     /**
      * Error indicator from Salesforce which could be \"No Error\"
      */
     error?: string;
+    pmp_names?: Array<SSIOAccountPMPName>;
 }
 

@@ -1,6 +1,5 @@
 package apimodels;
 
-import apimodels.AdsAnalyticsTargetingType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,21 +12,81 @@ import javax.validation.Valid;
 /**
  * TargetingTypeFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TargetingTypeFilter   {
+  /**
+   * Reporting targeting type
+   */
+  public enum TargetingTypesEnum {
+    KEYWORD("KEYWORD"),
+    
+    APPTYPE("APPTYPE"),
+    
+    GENDER("GENDER"),
+    
+    LOCATION("LOCATION"),
+    
+    PLACEMENT("PLACEMENT"),
+    
+    COUNTRY("COUNTRY"),
+    
+    TARGETED_INTEREST("TARGETED_INTEREST"),
+    
+    PINNER_INTEREST("PINNER_INTEREST"),
+    
+    AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
+    
+    GEO("GEO"),
+    
+    AGE_BUCKET("AGE_BUCKET"),
+    
+    REGION("REGION"),
+    
+    MEDIA_TYPE("MEDIA_TYPE"),
+    
+    AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+    
+    AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER"),
+    
+    CREATIVE_ENHANCEMENTS("CREATIVE_ENHANCEMENTS"),
+    
+    LOCAL_ADS_STORE_CODE("LOCAL_ADS_STORE_CODE");
+
+    private final String value;
+
+    TargetingTypesEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TargetingTypesEnum fromValue(String value) {
+      for (TargetingTypesEnum b : TargetingTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("targeting_types")
   @Size(min=1,max=5)
-@Valid
 
-  private List<AdsAnalyticsTargetingType> targetingTypes = null;
+  private List<TargetingTypesEnum> targetingTypes = null;
 
-  public TargetingTypeFilter targetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
+  public TargetingTypeFilter targetingTypes(List<TargetingTypesEnum> targetingTypes) {
     this.targetingTypes = targetingTypes;
     return this;
   }
 
-  public TargetingTypeFilter addTargetingTypesItem(AdsAnalyticsTargetingType targetingTypesItem) {
+  public TargetingTypeFilter addTargetingTypesItem(TargetingTypesEnum targetingTypesItem) {
     if (this.targetingTypes == null) {
       this.targetingTypes = new ArrayList<>();
     }
@@ -36,14 +95,14 @@ public class TargetingTypeFilter   {
   }
 
    /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
    * @return targetingTypes
   **/
-  public List<AdsAnalyticsTargetingType> getTargetingTypes() {
+  public List<TargetingTypesEnum> getTargetingTypes() {
     return targetingTypes;
   }
 
-  public void setTargetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
+  public void setTargetingTypes(List<TargetingTypesEnum> targetingTypes) {
     this.targetingTypes = targetingTypes;
   }
 

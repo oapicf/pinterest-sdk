@@ -13,32 +13,23 @@ import org.openapitools.model.AdCreateRequest;
 import org.openapitools.model.AdGroupCreateRequest;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
+import org.openapitools.model.LabelCreateRequest;
+import org.openapitools.model.MultipleProductGroupsInner;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertRequestCreate   {
   
-  private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
   private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
   private List<@Valid AdCreateRequest> ads = new ArrayList<>();
-  private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+  private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
+  private List<MultipleProductGroupsInner> catalogProductGroups = new ArrayList<>();
   private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("campaigns")
-  @Valid
-  public List<@Valid CampaignCreateRequest> getCampaigns() {
-    return campaigns;
-  }
-  public void setCampaigns(List<@Valid CampaignCreateRequest> campaigns) {
-    this.campaigns = campaigns;
-  }
+  private List<@Valid LabelCreateRequest> labels = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
 
   /**
    **/
@@ -70,13 +61,26 @@ public class BulkUpsertRequestCreate   {
    **/
   
   @ApiModelProperty(value = "")
-  @JsonProperty("product_groups")
+  @JsonProperty("campaigns")
   @Valid
-  public List<@Valid ProductGroupPromotionCreateRequest> getProductGroups() {
-    return productGroups;
+  public List<@Valid CampaignCreateRequest> getCampaigns() {
+    return campaigns;
   }
-  public void setProductGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public void setCampaigns(List<@Valid CampaignCreateRequest> campaigns) {
+    this.campaigns = campaigns;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("catalog_product_groups")
+  @Valid
+  public List<MultipleProductGroupsInner> getCatalogProductGroups() {
+    return catalogProductGroups;
+  }
+  public void setCatalogProductGroups(List<MultipleProductGroupsInner> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
   }
 
   /**
@@ -92,6 +96,32 @@ public class BulkUpsertRequestCreate   {
     this.keywords = keywords;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("labels")
+  @Valid
+  public List<@Valid LabelCreateRequest> getLabels() {
+    return labels;
+  }
+  public void setLabels(List<@Valid LabelCreateRequest> labels) {
+    this.labels = labels;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("product_groups")
+  @Valid
+  public List<@Valid ProductGroupPromotionCreateRequest> getProductGroups() {
+    return productGroups;
+  }
+  public void setProductGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
+    this.productGroups = productGroups;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -102,16 +132,18 @@ public class BulkUpsertRequestCreate   {
       return false;
     }
     BulkUpsertRequestCreate bulkUpsertRequestCreate = (BulkUpsertRequestCreate) o;
-    return Objects.equals(this.campaigns, bulkUpsertRequestCreate.campaigns) &&
-        Objects.equals(this.adGroups, bulkUpsertRequestCreate.adGroups) &&
+    return Objects.equals(this.adGroups, bulkUpsertRequestCreate.adGroups) &&
         Objects.equals(this.ads, bulkUpsertRequestCreate.ads) &&
-        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups) &&
-        Objects.equals(this.keywords, bulkUpsertRequestCreate.keywords);
+        Objects.equals(this.campaigns, bulkUpsertRequestCreate.campaigns) &&
+        Objects.equals(this.catalogProductGroups, bulkUpsertRequestCreate.catalogProductGroups) &&
+        Objects.equals(this.keywords, bulkUpsertRequestCreate.keywords) &&
+        Objects.equals(this.labels, bulkUpsertRequestCreate.labels) &&
+        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns, adGroups, ads, productGroups, keywords);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
   }
 
   @Override
@@ -119,11 +151,13 @@ public class BulkUpsertRequestCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertRequestCreate {\n");
     
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
     sb.append("    adGroups: ").append(toIndentedString(adGroups)).append("\n");
     sb.append("    ads: ").append(toIndentedString(ads)).append("\n");
-    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    catalogProductGroups: ").append(toIndentedString(catalogProductGroups)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

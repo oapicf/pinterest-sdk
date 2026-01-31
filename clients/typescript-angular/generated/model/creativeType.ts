@@ -10,7 +10,7 @@
 
 
 /**
- * Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+ * Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  */
 export const CreativeType = {
     Regular: 'REGULAR',
@@ -22,7 +22,10 @@ export const CreativeType = {
     Collection: 'COLLECTION',
     Idea: 'IDEA',
     Showcase: 'SHOWCASE',
-    Quiz: 'QUIZ'
+    Quiz: 'QUIZ',
+    Collage: 'COLLAGE',
+    MaxWidthRegularCollection: 'MAX_WIDTH_REGULAR_COLLECTION',
+    MaxWidthVideoCollection: 'MAX_WIDTH_VIDEO_COLLECTION'
 } as const;
 export type CreativeType = typeof CreativeType[keyof typeof CreativeType];
 

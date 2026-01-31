@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Billing ID. | [optional] 
-**CardType** | Pointer to **string** | Type of the card. | [optional] 
-**Status** | Pointer to **string** | Status of the billing. | [optional] 
 **AdvertiserId** | Pointer to **string** | Advertiser ID of the billing. | [optional] 
+**BillingType** | Pointer to **string** | Billing type of the advertiser | [optional] 
+**CardType** | Pointer to **string** | Type of the card. | [optional] 
+**Id** | Pointer to **string** | Billing ID. | [optional] 
 **PaymentMethodBrand** | Pointer to **string** | Brand of the payment method. | [optional] 
+**Status** | Pointer to **string** | Status of the billing. | [optional] 
 
 ## Methods
 
@@ -28,81 +29,6 @@ will change when the set of required properties is changed
 NewBillingProfilesResponseWithDefaults instantiates a new BillingProfilesResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *BillingProfilesResponse) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *BillingProfilesResponse) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *BillingProfilesResponse) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *BillingProfilesResponse) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetCardType
-
-`func (o *BillingProfilesResponse) GetCardType() string`
-
-GetCardType returns the CardType field if non-nil, zero value otherwise.
-
-### GetCardTypeOk
-
-`func (o *BillingProfilesResponse) GetCardTypeOk() (*string, bool)`
-
-GetCardTypeOk returns a tuple with the CardType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCardType
-
-`func (o *BillingProfilesResponse) SetCardType(v string)`
-
-SetCardType sets CardType field to given value.
-
-### HasCardType
-
-`func (o *BillingProfilesResponse) HasCardType() bool`
-
-HasCardType returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *BillingProfilesResponse) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *BillingProfilesResponse) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *BillingProfilesResponse) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *BillingProfilesResponse) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetAdvertiserId
 
@@ -129,6 +55,81 @@ SetAdvertiserId sets AdvertiserId field to given value.
 
 HasAdvertiserId returns a boolean if a field has been set.
 
+### GetBillingType
+
+`func (o *BillingProfilesResponse) GetBillingType() string`
+
+GetBillingType returns the BillingType field if non-nil, zero value otherwise.
+
+### GetBillingTypeOk
+
+`func (o *BillingProfilesResponse) GetBillingTypeOk() (*string, bool)`
+
+GetBillingTypeOk returns a tuple with the BillingType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingType
+
+`func (o *BillingProfilesResponse) SetBillingType(v string)`
+
+SetBillingType sets BillingType field to given value.
+
+### HasBillingType
+
+`func (o *BillingProfilesResponse) HasBillingType() bool`
+
+HasBillingType returns a boolean if a field has been set.
+
+### GetCardType
+
+`func (o *BillingProfilesResponse) GetCardType() string`
+
+GetCardType returns the CardType field if non-nil, zero value otherwise.
+
+### GetCardTypeOk
+
+`func (o *BillingProfilesResponse) GetCardTypeOk() (*string, bool)`
+
+GetCardTypeOk returns a tuple with the CardType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardType
+
+`func (o *BillingProfilesResponse) SetCardType(v string)`
+
+SetCardType sets CardType field to given value.
+
+### HasCardType
+
+`func (o *BillingProfilesResponse) HasCardType() bool`
+
+HasCardType returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *BillingProfilesResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *BillingProfilesResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *BillingProfilesResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *BillingProfilesResponse) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
 ### GetPaymentMethodBrand
 
 `func (o *BillingProfilesResponse) GetPaymentMethodBrand() string`
@@ -153,6 +154,31 @@ SetPaymentMethodBrand sets PaymentMethodBrand field to given value.
 `func (o *BillingProfilesResponse) HasPaymentMethodBrand() bool`
 
 HasPaymentMethodBrand returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *BillingProfilesResponse) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *BillingProfilesResponse) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *BillingProfilesResponse) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *BillingProfilesResponse) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

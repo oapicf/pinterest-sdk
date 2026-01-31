@@ -10,13 +10,14 @@
 
 
 export interface OauthAccessTokenResponseCode { 
-    refresh_token: string;
-    refresh_token_expires_in: number;
-    response_type?: OauthAccessTokenResponseCode.ResponseTypeEnum;
+    refresh_token?: string;
+    refresh_token_expires_at?: number;
+    refresh_token_expires_in?: number;
     access_token: string;
-    token_type: string;
     expires_in: number;
+    response_type?: OauthAccessTokenResponseCode.ResponseTypeEnum;
     scope: string;
+    token_type: string;
 }
 export namespace OauthAccessTokenResponseCode {
     export const ResponseTypeEnum = {

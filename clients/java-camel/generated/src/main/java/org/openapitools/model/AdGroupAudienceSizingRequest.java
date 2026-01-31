@@ -27,12 +27,10 @@ import javax.annotation.Generated;
  * AdGroupAudienceSizingRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupAudienceSizingRequest {
 
   private Boolean autoTargetingEnabled = true;
-
-  private PlacementGroupType placementGroup = "ALL";
 
   /**
    * Gets or Sets creativeTypes
@@ -84,13 +82,15 @@ public class AdGroupAudienceSizingRequest {
   @Valid
   private JsonNullable<List<CreativeTypesEnum>> creativeTypes = JsonNullable.<List<CreativeTypesEnum>>undefined();
 
-  private TargetingSpec targetingSpec;
+  @Valid
+  private JsonNullable<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>> keywords = JsonNullable.<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>>undefined();
+
+  private PlacementGroupType placementGroup = "ALL";
 
   @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> productGroupIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @Valid
-  private JsonNullable<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>> keywords = JsonNullable.<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>>undefined();
+  private TargetingSpec targetingSpec;
 
   public AdGroupAudienceSizingRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -98,11 +98,11 @@ public class AdGroupAudienceSizingRequest {
   }
 
   /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+   * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
    * @return autoTargetingEnabled
    */
   
-  @Schema(name = "auto_targeting_enabled", example = "true", description = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "auto_targeting_enabled", example = "true", description = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("auto_targeting_enabled")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
@@ -110,26 +110,6 @@ public class AdGroupAudienceSizingRequest {
 
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-  /**
-   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-   * @return placementGroup
-   */
-  @Valid 
-  @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
   public AdGroupAudienceSizingRequest creativeTypes(List<CreativeTypesEnum> creativeTypes) {
@@ -160,24 +140,52 @@ public class AdGroupAudienceSizingRequest {
     this.creativeTypes = creativeTypes;
   }
 
-  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public AdGroupAudienceSizingRequest keywords(List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = JsonNullable.of(keywords);
+    return this;
+  }
+
+  public AdGroupAudienceSizingRequest addKeywordsItem(AdGroupAudienceSizingRequestKeywordsInner keywordsItem) {
+    if (this.keywords == null || !this.keywords.isPresent()) {
+      this.keywords = JsonNullable.of(new ArrayList<>());
+    }
+    this.keywords.get().add(keywordsItem);
     return this;
   }
 
   /**
-   * Get targetingSpec
-   * @return targetingSpec
+   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+   * @return keywords
    */
   @Valid 
-  @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
+  @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("keywords")
+  public JsonNullable<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>> getKeywords() {
+    return keywords;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public void setKeywords(JsonNullable<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>> keywords) {
+    this.keywords = keywords;
+  }
+
+  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+  /**
+   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+   * @return placementGroup
+   */
+  @Valid 
+  @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
   }
 
   public AdGroupAudienceSizingRequest productGroupIds(List<@Pattern(regexp = "^\\d+$")String> productGroupIds) {
@@ -208,32 +216,24 @@ public class AdGroupAudienceSizingRequest {
     this.productGroupIds = productGroupIds;
   }
 
-  public AdGroupAudienceSizingRequest keywords(List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = JsonNullable.of(keywords);
-    return this;
-  }
-
-  public AdGroupAudienceSizingRequest addKeywordsItem(AdGroupAudienceSizingRequestKeywordsInner keywordsItem) {
-    if (this.keywords == null || !this.keywords.isPresent()) {
-      this.keywords = JsonNullable.of(new ArrayList<>());
-    }
-    this.keywords.get().add(keywordsItem);
+  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
     return this;
   }
 
   /**
-   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
-   * @return keywords
+   * Get targetingSpec
+   * @return targetingSpec
    */
   @Valid 
-  @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("keywords")
-  public JsonNullable<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>> getKeywords() {
-    return keywords;
+  @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("targeting_spec")
+  public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
   }
 
-  public void setKeywords(JsonNullable<List<@Valid AdGroupAudienceSizingRequestKeywordsInner>> keywords) {
-    this.keywords = keywords;
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
   }
 
   @Override
@@ -246,11 +246,11 @@ public class AdGroupAudienceSizingRequest {
     }
     AdGroupAudienceSizingRequest adGroupAudienceSizingRequest = (AdGroupAudienceSizingRequest) o;
     return Objects.equals(this.autoTargetingEnabled, adGroupAudienceSizingRequest.autoTargetingEnabled) &&
-        Objects.equals(this.placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         equalsNullable(this.creativeTypes, adGroupAudienceSizingRequest.creativeTypes) &&
-        Objects.equals(this.targetingSpec, adGroupAudienceSizingRequest.targetingSpec) &&
+        equalsNullable(this.keywords, adGroupAudienceSizingRequest.keywords) &&
+        Objects.equals(this.placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         equalsNullable(this.productGroupIds, adGroupAudienceSizingRequest.productGroupIds) &&
-        equalsNullable(this.keywords, adGroupAudienceSizingRequest.keywords);
+        Objects.equals(this.targetingSpec, adGroupAudienceSizingRequest.targetingSpec);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -259,7 +259,7 @@ public class AdGroupAudienceSizingRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, placementGroup, hashCodeNullable(creativeTypes), targetingSpec, hashCodeNullable(productGroupIds), hashCodeNullable(keywords));
+    return Objects.hash(autoTargetingEnabled, hashCodeNullable(creativeTypes), hashCodeNullable(keywords), placementGroup, hashCodeNullable(productGroupIds), targetingSpec);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -274,11 +274,11 @@ public class AdGroupAudienceSizingRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdGroupAudienceSizingRequest {\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    creativeTypes: ").append(toIndentedString(creativeTypes)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("}");
     return sb.toString();
   }

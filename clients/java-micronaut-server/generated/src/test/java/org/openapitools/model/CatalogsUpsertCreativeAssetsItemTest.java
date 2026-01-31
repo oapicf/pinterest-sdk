@@ -21,6 +21,14 @@ public class CatalogsUpsertCreativeAssetsItemTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'creativeAssetsId'
      */
     @Test
@@ -34,14 +42,6 @@ public class CatalogsUpsertCreativeAssetsItemTest {
     @Test
     public void operationTest() {
         // TODO: test operation
-    }
-
-    /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
     }
 
 }

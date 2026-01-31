@@ -1,6 +1,7 @@
 package org.openapitools.model;
 
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -21,11 +22,11 @@ public class CatalogsHotelGuestRatingsTest {
     }
 
     /**
-     * Test the property 'score'
+     * Test the property 'maxScore'
      */
     @Test
-    public void scoreTest() {
-        // TODO: test score
+    public void maxScoreTest() {
+        // TODO: test maxScore
     }
 
     /**
@@ -37,19 +38,19 @@ public class CatalogsHotelGuestRatingsTest {
     }
 
     /**
-     * Test the property 'maxScore'
-     */
-    @Test
-    public void maxScoreTest() {
-        // TODO: test maxScore
-    }
-
-    /**
      * Test the property 'ratingSystem'
      */
     @Test
     public void ratingSystemTest() {
         // TODO: test ratingSystem
+    }
+
+    /**
+     * Test the property 'score'
+     */
+    @Test
+    public void scoreTest() {
+        // TODO: test score
     }
 
 }

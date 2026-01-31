@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,10 +17,10 @@ package openapi
 // CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest - Request object to list products for a given creative assets catalog_id and product group filter.
 type CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest struct {
 
-	CatalogType string `json:"catalog_type"`
-
 	// Catalog id pertaining to the creative assets product group.
 	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+
+	CatalogType string `json:"catalog_type"`
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 }
@@ -28,8 +28,8 @@ type CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest struct {
 // AssertCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestRequired(obj CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
 		"catalog_id": obj.CatalogId,
+		"catalog_type": obj.CatalogType,
 		"filters": obj.Filters,
 	}
 	for name, el := range elements {

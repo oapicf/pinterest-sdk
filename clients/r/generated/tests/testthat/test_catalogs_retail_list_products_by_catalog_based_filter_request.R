@@ -5,14 +5,6 @@ context("Test CatalogsRetailListProductsByCatalogBasedFilterRequest")
 
 model_instance <- CatalogsRetailListProductsByCatalogBasedFilterRequest$new()
 
-test_that("catalog_type", {
-  # tests for the property `catalog_type` (character)
-  # Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
-})
-
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
   # Catalog id pertaining to the retail product group.
@@ -21,11 +13,12 @@ test_that("catalog_id", {
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
 })
 
-test_that("filters", {
-  # tests for the property `filters` (CatalogsProductGroupFilters)
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (character)
+  # Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
 test_that("country", {
@@ -33,6 +26,13 @@ test_that("country", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
+test_that("filters", {
+  # tests for the property `filters` (CatalogsProductGroupFilters)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })
 
 test_that("locale", {

@@ -6,8 +6,7 @@ context("Test CatalogsCreateRequest")
 model_instance <- CatalogsCreateRequest$new()
 
 test_that("catalog_type", {
-  # tests for the property `catalog_type` (character)
-  # Type of the catalog entity.
+  # tests for the property `catalog_type` (CatalogsType)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")

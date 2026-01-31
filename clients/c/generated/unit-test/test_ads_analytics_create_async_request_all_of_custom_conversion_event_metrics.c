@@ -1,0 +1,60 @@
+#ifndef ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_TEST
+#define ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/ads_analytics_create_async_request_all_of_custom_conversion_event_metrics.h"
+ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_t* instantiate_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics(int include_optional);
+
+
+
+ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_t* instantiate_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics(int include_optional) {
+  ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_t* ads_analytics_create_async_request_all_of_custom_conversion_event_metrics = NULL;
+  if (include_optional) {
+    ads_analytics_create_async_request_all_of_custom_conversion_event_metrics = ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_create(
+      pinterest_rest_api_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_CUSTOMEVENTMETRICSTYPE_"ADE_COST_PER_ACTION",
+      "0"
+    );
+  } else {
+    ads_analytics_create_async_request_all_of_custom_conversion_event_metrics = ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_create(
+      pinterest_rest_api_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_CUSTOMEVENTMETRICSTYPE_"ADE_COST_PER_ACTION",
+      "0"
+    );
+  }
+
+  return ads_analytics_create_async_request_all_of_custom_conversion_event_metrics;
+}
+
+
+#ifdef ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_MAIN
+
+void test_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics(int include_optional) {
+    ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_t* ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_1 = instantiate_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics(include_optional);
+
+	cJSON* jsonads_analytics_create_async_request_all_of_custom_conversion_event_metrics_1 = ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_convertToJSON(ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_1);
+	printf("ads_analytics_create_async_request_all_of_custom_conversion_event_metrics :\n%s\n", cJSON_Print(jsonads_analytics_create_async_request_all_of_custom_conversion_event_metrics_1));
+	ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_t* ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_2 = ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_parseFromJSON(jsonads_analytics_create_async_request_all_of_custom_conversion_event_metrics_1);
+	cJSON* jsonads_analytics_create_async_request_all_of_custom_conversion_event_metrics_2 = ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_convertToJSON(ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_2);
+	printf("repeating ads_analytics_create_async_request_all_of_custom_conversion_event_metrics:\n%s\n", cJSON_Print(jsonads_analytics_create_async_request_all_of_custom_conversion_event_metrics_2));
+}
+
+int main() {
+  test_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics(1);
+  test_ads_analytics_create_async_request_all_of_custom_conversion_event_metrics(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_MAIN
+#endif // ads_analytics_create_async_request_all_of_custom_conversion_event_metrics_TEST

@@ -20,28 +20,28 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object to list products for a given retail catalog_id and product group filter.
- * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
  * @param catalogId Catalog id pertaining to the retail product group.
- * @param filters 
+ * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
  * @param country 
+ * @param filters 
  * @param locale 
  */
 data class CatalogsRetailListProductsByCatalogBasedFilterRequest(
-
-    @Schema(example = "null", required = true, description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogType,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the retail product group.")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters,
+    @Schema(example = "null", required = true, description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")

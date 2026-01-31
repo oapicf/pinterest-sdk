@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ## integrationsCommercePatch
 
-> IntegrationMetadata integrationsCommercePatch(externalBusinessId, opts)
+> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
 
 Update commerce integration
 
@@ -131,10 +131,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.IntegrationsApi();
 let externalBusinessId = "externalBusinessId_example"; // String | External business ID for the integration.
-let opts = {
-  'integrationRequestPatch': new PinterestSdk.IntegrationRequestPatch() // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
-};
-apiInstance.integrationsCommercePatch(externalBusinessId, opts, (error, data, response) => {
+let integrationRequestPatch = new PinterestSdk.IntegrationRequestPatch(); // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatch, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -149,7 +147,7 @@ apiInstance.integrationsCommercePatch(externalBusinessId, opts, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **String**| External business ID for the integration. | 
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -167,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## integrationsCommercePost
 
-> IntegrationMetadata integrationsCommercePost(opts)
+> IntegrationMetadata integrationsCommercePost(integrationRequest)
 
 Create commerce integration
 
@@ -183,10 +181,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.IntegrationsApi();
-let opts = {
-  'integrationRequest': new PinterestSdk.IntegrationRequest() // IntegrationRequest | Parameters to get create/update the Integration Metadata
-};
-apiInstance.integrationsCommercePost(opts, (error, data, response) => {
+let integrationRequest = new PinterestSdk.IntegrationRequest(); // IntegrationRequest | Parameters to get create/update the Integration Metadata
+apiInstance.integrationsCommercePost(integrationRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -200,7 +196,7 @@ apiInstance.integrationsCommercePost(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 

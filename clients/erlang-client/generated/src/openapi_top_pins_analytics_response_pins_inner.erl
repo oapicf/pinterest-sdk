@@ -5,16 +5,16 @@
 -export_type([openapi_top_pins_analytics_response_pins_inner/0]).
 
 -type openapi_top_pins_analytics_response_pins_inner() ::
-    #{ 'metrics' => maps:map(),
-       'data_status' => maps:map(),
+    #{ 'data_status' => maps:map(),
+       'metrics' => maps:map(),
        'pin_id' => binary()
      }.
 
-encode(#{ 'metrics' := Metrics,
-          'data_status' := DataStatus,
+encode(#{ 'data_status' := DataStatus,
+          'metrics' := Metrics,
           'pin_id' := PinId
         }) ->
-    #{ 'metrics' => Metrics,
-       'data_status' => DataStatus,
+    #{ 'data_status' => DataStatus,
+       'metrics' => Metrics,
        'pin_id' => PinId
      }.

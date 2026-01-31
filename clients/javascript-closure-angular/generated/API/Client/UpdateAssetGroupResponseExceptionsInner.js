@@ -6,6 +6,13 @@ goog.provide('API.Client.UpdateAssetGroupResponse_exceptions_inner');
 API.Client.UpdateAssetGroupResponseExceptionsInner = function() {}
 
 /**
+ * Asset group id of the exception.
+ * @type {!string}
+ * @export
+ */
+API.Client.UpdateAssetGroupResponseExceptionsInner.prototype.assetGroupId;
+
+/**
  * Error code associated with the error editing asset group.
  * @type {!number}
  * @export
@@ -18,11 +25,4 @@ API.Client.UpdateAssetGroupResponseExceptionsInner.prototype.code;
  * @export
  */
 API.Client.UpdateAssetGroupResponseExceptionsInner.prototype.message;
-
-/**
- * Asset group id of the exception.
- * @type {!string}
- * @export
- */
-API.Client.UpdateAssetGroupResponseExceptionsInner.prototype.assetGroupId;
 

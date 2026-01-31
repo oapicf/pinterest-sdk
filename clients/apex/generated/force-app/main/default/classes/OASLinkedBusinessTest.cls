@@ -73,9 +73,9 @@ private class OASLinkedBusinessTest {
     private static void maintainRenamedProperties() {
         OASLinkedBusiness linkedBusiness = new OASLinkedBusiness();
         Map<String, String> x-property-mappings = linkedBusiness.getx-property-mappings();
-        System.assertEquals('imageSmallUrl', x-property-mappings.get('image_small_url'));
-        System.assertEquals('imageMediumUrl', x-property-mappings.get('image_medium_url'));
         System.assertEquals('imageLargeUrl', x-property-mappings.get('image_large_url'));
+        System.assertEquals('imageMediumUrl', x-property-mappings.get('image_medium_url'));
+        System.assertEquals('imageSmallUrl', x-property-mappings.get('image_small_url'));
         System.assertEquals('imageXlargeUrl', x-property-mappings.get('image_xlarge_url'));
     }
 }

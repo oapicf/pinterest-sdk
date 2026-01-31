@@ -6,12 +6,12 @@
 
 
 static catalogs_feeds_update_request_t *catalogs_feeds_update_request_create_internal(
+    catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_product_availability_type__e default_availability,
     pinterest_rest_api_nullable_currency__e default_currency,
-    char *name,
     pinterest_rest_api_catalogs_format__e format,
-    catalogs_feed_credentials_t *credentials,
     char *location,
+    char *name,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     pinterest_rest_api_catalogs_status__e status
     ) {
@@ -19,12 +19,12 @@ static catalogs_feeds_update_request_t *catalogs_feeds_update_request_create_int
     if (!catalogs_feeds_update_request_local_var) {
         return NULL;
     }
+    catalogs_feeds_update_request_local_var->credentials = credentials;
     catalogs_feeds_update_request_local_var->default_availability = default_availability;
     catalogs_feeds_update_request_local_var->default_currency = default_currency;
-    catalogs_feeds_update_request_local_var->name = name;
     catalogs_feeds_update_request_local_var->format = format;
-    catalogs_feeds_update_request_local_var->credentials = credentials;
     catalogs_feeds_update_request_local_var->location = location;
+    catalogs_feeds_update_request_local_var->name = name;
     catalogs_feeds_update_request_local_var->preferred_processing_schedule = preferred_processing_schedule;
     catalogs_feeds_update_request_local_var->status = status;
 
@@ -33,22 +33,22 @@ static catalogs_feeds_update_request_t *catalogs_feeds_update_request_create_int
 }
 
 __attribute__((deprecated)) catalogs_feeds_update_request_t *catalogs_feeds_update_request_create(
+    catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_product_availability_type__e default_availability,
     pinterest_rest_api_nullable_currency__e default_currency,
-    char *name,
     pinterest_rest_api_catalogs_format__e format,
-    catalogs_feed_credentials_t *credentials,
     char *location,
+    char *name,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     pinterest_rest_api_catalogs_status__e status
     ) {
     return catalogs_feeds_update_request_create_internal (
+        credentials,
         default_availability,
         default_currency,
-        name,
         format,
-        credentials,
         location,
+        name,
         preferred_processing_schedule,
         status
         );
@@ -63,10 +63,6 @@ void catalogs_feeds_update_request_free(catalogs_feeds_update_request_t *catalog
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_feeds_update_request->name) {
-        free(catalogs_feeds_update_request->name);
-        catalogs_feeds_update_request->name = NULL;
-    }
     if (catalogs_feeds_update_request->credentials) {
         catalogs_feed_credentials_free(catalogs_feeds_update_request->credentials);
         catalogs_feeds_update_request->credentials = NULL;
@@ -74,6 +70,10 @@ void catalogs_feeds_update_request_free(catalogs_feeds_update_request_t *catalog
     if (catalogs_feeds_update_request->location) {
         free(catalogs_feeds_update_request->location);
         catalogs_feeds_update_request->location = NULL;
+    }
+    if (catalogs_feeds_update_request->name) {
+        free(catalogs_feeds_update_request->name);
+        catalogs_feeds_update_request->name = NULL;
     }
     if (catalogs_feeds_update_request->preferred_processing_schedule) {
         catalogs_feed_processing_schedule_free(catalogs_feeds_update_request->preferred_processing_schedule);
@@ -84,6 +84,19 @@ void catalogs_feeds_update_request_free(catalogs_feeds_update_request_t *catalog
 
 cJSON *catalogs_feeds_update_request_convertToJSON(catalogs_feeds_update_request_t *catalogs_feeds_update_request) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_feeds_update_request->credentials
+    if(catalogs_feeds_update_request->credentials) {
+    cJSON *credentials_local_JSON = catalogs_feed_credentials_convertToJSON(catalogs_feeds_update_request->credentials);
+    if(credentials_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "credentials", credentials_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
 
     // catalogs_feeds_update_request->default_availability
     if(catalogs_feeds_update_request->default_availability != pinterest_rest_api_product_availability_type__NULL) {
@@ -111,14 +124,6 @@ cJSON *catalogs_feeds_update_request_convertToJSON(catalogs_feeds_update_request
     }
 
 
-    // catalogs_feeds_update_request->name
-    if(catalogs_feeds_update_request->name) {
-    if(cJSON_AddStringToObject(item, "name", catalogs_feeds_update_request->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // catalogs_feeds_update_request->format
     if(catalogs_feeds_update_request->format != pinterest_rest_api_catalogs_format__NULL) {
     cJSON *format_local_JSON = catalogs_format_convertToJSON(catalogs_feeds_update_request->format);
@@ -132,22 +137,17 @@ cJSON *catalogs_feeds_update_request_convertToJSON(catalogs_feeds_update_request
     }
 
 
-    // catalogs_feeds_update_request->credentials
-    if(catalogs_feeds_update_request->credentials) {
-    cJSON *credentials_local_JSON = catalogs_feed_credentials_convertToJSON(catalogs_feeds_update_request->credentials);
-    if(credentials_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "credentials", credentials_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
     // catalogs_feeds_update_request->location
     if(catalogs_feeds_update_request->location) {
     if(cJSON_AddStringToObject(item, "location", catalogs_feeds_update_request->location) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // catalogs_feeds_update_request->name
+    if(catalogs_feeds_update_request->name) {
+    if(cJSON_AddStringToObject(item, "name", catalogs_feeds_update_request->name) == NULL) {
     goto fail; //String
     }
     }
@@ -190,6 +190,9 @@ catalogs_feeds_update_request_t *catalogs_feeds_update_request_parseFromJSON(cJS
 
     catalogs_feeds_update_request_t *catalogs_feeds_update_request_local_var = NULL;
 
+    // define the local variable for catalogs_feeds_update_request->credentials
+    catalogs_feed_credentials_t *credentials_local_nonprim = NULL;
+
     // define the local variable for catalogs_feeds_update_request->default_availability
     pinterest_rest_api_product_availability_type__e default_availability_local_nonprim = 0;
 
@@ -199,14 +202,20 @@ catalogs_feeds_update_request_t *catalogs_feeds_update_request_parseFromJSON(cJS
     // define the local variable for catalogs_feeds_update_request->format
     pinterest_rest_api_catalogs_format__e format_local_nonprim = 0;
 
-    // define the local variable for catalogs_feeds_update_request->credentials
-    catalogs_feed_credentials_t *credentials_local_nonprim = NULL;
-
     // define the local variable for catalogs_feeds_update_request->preferred_processing_schedule
     catalogs_feed_processing_schedule_t *preferred_processing_schedule_local_nonprim = NULL;
 
     // define the local variable for catalogs_feeds_update_request->status
     pinterest_rest_api_catalogs_status__e status_local_nonprim = 0;
+
+    // catalogs_feeds_update_request->credentials
+    cJSON *credentials = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "credentials");
+    if (cJSON_IsNull(credentials)) {
+        credentials = NULL;
+    }
+    if (credentials) { 
+    credentials_local_nonprim = catalogs_feed_credentials_parseFromJSON(credentials); //nonprimitive
+    }
 
     // catalogs_feeds_update_request->default_availability
     cJSON *default_availability = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "default_availability");
@@ -226,18 +235,6 @@ catalogs_feeds_update_request_t *catalogs_feeds_update_request_parseFromJSON(cJS
     default_currency_local_nonprim = nullable_currency_parseFromJSON(default_currency); //custom
     }
 
-    // catalogs_feeds_update_request->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
-    }
-
     // catalogs_feeds_update_request->format
     cJSON *format = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "format");
     if (cJSON_IsNull(format)) {
@@ -247,15 +244,6 @@ catalogs_feeds_update_request_t *catalogs_feeds_update_request_parseFromJSON(cJS
     format_local_nonprim = catalogs_format_parseFromJSON(format); //custom
     }
 
-    // catalogs_feeds_update_request->credentials
-    cJSON *credentials = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "credentials");
-    if (cJSON_IsNull(credentials)) {
-        credentials = NULL;
-    }
-    if (credentials) { 
-    credentials_local_nonprim = catalogs_feed_credentials_parseFromJSON(credentials); //nonprimitive
-    }
-
     // catalogs_feeds_update_request->location
     cJSON *location = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "location");
     if (cJSON_IsNull(location)) {
@@ -263,6 +251,18 @@ catalogs_feeds_update_request_t *catalogs_feeds_update_request_parseFromJSON(cJS
     }
     if (location) { 
     if(!cJSON_IsString(location) && !cJSON_IsNull(location))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_feeds_update_request->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_update_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
+    if (name) { 
+    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
     goto end; //String
     }
@@ -288,18 +288,22 @@ catalogs_feeds_update_request_t *catalogs_feeds_update_request_parseFromJSON(cJS
 
 
     catalogs_feeds_update_request_local_var = catalogs_feeds_update_request_create_internal (
+        credentials ? credentials_local_nonprim : NULL,
         default_availability ? default_availability_local_nonprim : 0,
         default_currency ? default_currency_local_nonprim : 0,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         format ? format_local_nonprim : 0,
-        credentials ? credentials_local_nonprim : NULL,
         location && !cJSON_IsNull(location) ? strdup(location->valuestring) : NULL,
+        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         preferred_processing_schedule ? preferred_processing_schedule_local_nonprim : NULL,
         status ? status_local_nonprim : 0
         );
 
     return catalogs_feeds_update_request_local_var;
 end:
+    if (credentials_local_nonprim) {
+        catalogs_feed_credentials_free(credentials_local_nonprim);
+        credentials_local_nonprim = NULL;
+    }
     if (default_availability_local_nonprim) {
         default_availability_local_nonprim = 0;
     }
@@ -308,10 +312,6 @@ end:
     }
     if (format_local_nonprim) {
         format_local_nonprim = 0;
-    }
-    if (credentials_local_nonprim) {
-        catalogs_feed_credentials_free(credentials_local_nonprim);
-        credentials_local_nonprim = NULL;
     }
     if (preferred_processing_schedule_local_nonprim) {
         catalogs_feed_processing_schedule_free(preferred_processing_schedule_local_nonprim);

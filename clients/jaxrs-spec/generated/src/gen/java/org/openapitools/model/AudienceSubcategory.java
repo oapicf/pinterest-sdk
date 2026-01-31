@@ -17,15 +17,55 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AudienceSubcategory")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceSubcategory   {
+  private String id;
+  private BigDecimal index;
   private String key;
   private String name;
   private BigDecimal ratio;
-  private BigDecimal index;
-  private String id;
 
   public AudienceSubcategory() {
+  }
+
+  /**
+   * Subinterest ID.
+   **/
+  public AudienceSubcategory id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Subinterest affinity index.
+   **/
+  public AudienceSubcategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+  @JsonProperty("index")
+  @Valid public BigDecimal getIndex() {
+    return index;
+  }
+
+  @JsonProperty("index")
+  public void setIndex(BigDecimal index) {
+    this.index = index;
   }
 
   /**
@@ -88,46 +128,6 @@ public class AudienceSubcategory   {
     this.ratio = ratio;
   }
 
-  /**
-   * Subinterest affinity index.
-   **/
-  public AudienceSubcategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
-  @JsonProperty("index")
-  @Valid public BigDecimal getIndex() {
-    return index;
-  }
-
-  @JsonProperty("index")
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  /**
-   * Subinterest ID.
-   **/
-  public AudienceSubcategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  @JsonProperty("id")
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -138,16 +138,16 @@ public class AudienceSubcategory   {
       return false;
     }
     AudienceSubcategory audienceSubcategory = (AudienceSubcategory) o;
-    return Objects.equals(this.key, audienceSubcategory.key) &&
-        Objects.equals(this.name, audienceSubcategory.name) &&
-        Objects.equals(this.ratio, audienceSubcategory.ratio) &&
+    return Objects.equals(this.id, audienceSubcategory.id) &&
         Objects.equals(this.index, audienceSubcategory.index) &&
-        Objects.equals(this.id, audienceSubcategory.id);
+        Objects.equals(this.key, audienceSubcategory.key) &&
+        Objects.equals(this.name, audienceSubcategory.name) &&
+        Objects.equals(this.ratio, audienceSubcategory.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -155,11 +155,11 @@ public class AudienceSubcategory   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSubcategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

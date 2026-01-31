@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,20 +20,20 @@ var _ MappedNullable = &IntegrationRequest{}
 
 // IntegrationRequest Schema used for creating the integration metadata.
 type IntegrationRequest struct {
-	// External business ID for the integration.
-	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
-	ConnectedMerchantId *string `json:"connected_merchant_id,omitempty"`
+	AdditionalId1 *string `json:"additional_id_1,omitempty"`
 	ConnectedAdvertiserId *string `json:"connected_advertiser_id,omitempty"`
 	ConnectedLbaId *string `json:"connected_lba_id,omitempty"`
+	ConnectedMerchantId *string `json:"connected_merchant_id,omitempty"`
 	ConnectedTagId *string `json:"connected_tag_id,omitempty"`
+	// External business ID for the integration.
+	ExternalBusinessId *string `json:"external_business_id,omitempty"`
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
-	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
-	PartnerPrimaryEmail *string `json:"partner_primary_email,omitempty"`
 	PartnerAccessTokenExpiry *int32 `json:"partner_access_token_expiry,omitempty"`
+	PartnerMetadata *string `json:"partner_metadata,omitempty"`
+	PartnerPrimaryEmail *string `json:"partner_primary_email,omitempty"`
+	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
 	PartnerRefreshTokenExpiry *int32 `json:"partner_refresh_token_expiry,omitempty"`
 	Scopes *string `json:"scopes,omitempty"`
-	AdditionalId1 *string `json:"additional_id_1,omitempty"`
-	PartnerMetadata *string `json:"partner_metadata,omitempty"`
 }
 
 // NewIntegrationRequest instantiates a new IntegrationRequest object
@@ -53,78 +53,36 @@ func NewIntegrationRequestWithDefaults() *IntegrationRequest {
 	return &this
 }
 
-// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRequest) GetExternalBusinessId() string {
-	if o == nil || IsNil(o.ExternalBusinessId.Get()) {
+// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise.
+func (o *IntegrationRequest) GetAdditionalId1() string {
+	if o == nil || IsNil(o.AdditionalId1) {
 		var ret string
 		return ret
 	}
-	return *o.ExternalBusinessId.Get()
+	return *o.AdditionalId1
 }
 
-// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
+// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRequest) GetExternalBusinessIdOk() (*string, bool) {
-	if o == nil {
+func (o *IntegrationRequest) GetAdditionalId1Ok() (*string, bool) {
+	if o == nil || IsNil(o.AdditionalId1) {
 		return nil, false
 	}
-	return o.ExternalBusinessId.Get(), o.ExternalBusinessId.IsSet()
+	return o.AdditionalId1, true
 }
 
-// HasExternalBusinessId returns a boolean if a field has been set.
-func (o *IntegrationRequest) HasExternalBusinessId() bool {
-	if o != nil && o.ExternalBusinessId.IsSet() {
+// HasAdditionalId1 returns a boolean if a field has been set.
+func (o *IntegrationRequest) HasAdditionalId1() bool {
+	if o != nil && !IsNil(o.AdditionalId1) {
 		return true
 	}
 
 	return false
 }
 
-// SetExternalBusinessId gets a reference to the given NullableString and assigns it to the ExternalBusinessId field.
-func (o *IntegrationRequest) SetExternalBusinessId(v string) {
-	o.ExternalBusinessId.Set(&v)
-}
-// SetExternalBusinessIdNil sets the value for ExternalBusinessId to be an explicit nil
-func (o *IntegrationRequest) SetExternalBusinessIdNil() {
-	o.ExternalBusinessId.Set(nil)
-}
-
-// UnsetExternalBusinessId ensures that no value is present for ExternalBusinessId, not even an explicit nil
-func (o *IntegrationRequest) UnsetExternalBusinessId() {
-	o.ExternalBusinessId.Unset()
-}
-
-// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise.
-func (o *IntegrationRequest) GetConnectedMerchantId() string {
-	if o == nil || IsNil(o.ConnectedMerchantId) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectedMerchantId
-}
-
-// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRequest) GetConnectedMerchantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectedMerchantId) {
-		return nil, false
-	}
-	return o.ConnectedMerchantId, true
-}
-
-// HasConnectedMerchantId returns a boolean if a field has been set.
-func (o *IntegrationRequest) HasConnectedMerchantId() bool {
-	if o != nil && !IsNil(o.ConnectedMerchantId) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectedMerchantId gets a reference to the given string and assigns it to the ConnectedMerchantId field.
-func (o *IntegrationRequest) SetConnectedMerchantId(v string) {
-	o.ConnectedMerchantId = &v
+// SetAdditionalId1 gets a reference to the given string and assigns it to the AdditionalId1 field.
+func (o *IntegrationRequest) SetAdditionalId1(v string) {
+	o.AdditionalId1 = &v
 }
 
 // GetConnectedAdvertiserId returns the ConnectedAdvertiserId field value if set, zero value otherwise.
@@ -191,6 +149,38 @@ func (o *IntegrationRequest) SetConnectedLbaId(v string) {
 	o.ConnectedLbaId = &v
 }
 
+// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise.
+func (o *IntegrationRequest) GetConnectedMerchantId() string {
+	if o == nil || IsNil(o.ConnectedMerchantId) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedMerchantId
+}
+
+// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRequest) GetConnectedMerchantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectedMerchantId) {
+		return nil, false
+	}
+	return o.ConnectedMerchantId, true
+}
+
+// HasConnectedMerchantId returns a boolean if a field has been set.
+func (o *IntegrationRequest) HasConnectedMerchantId() bool {
+	if o != nil && !IsNil(o.ConnectedMerchantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedMerchantId gets a reference to the given string and assigns it to the ConnectedMerchantId field.
+func (o *IntegrationRequest) SetConnectedMerchantId(v string) {
+	o.ConnectedMerchantId = &v
+}
+
 // GetConnectedTagId returns the ConnectedTagId field value if set, zero value otherwise.
 func (o *IntegrationRequest) GetConnectedTagId() string {
 	if o == nil || IsNil(o.ConnectedTagId) {
@@ -221,6 +211,38 @@ func (o *IntegrationRequest) HasConnectedTagId() bool {
 // SetConnectedTagId gets a reference to the given string and assigns it to the ConnectedTagId field.
 func (o *IntegrationRequest) SetConnectedTagId(v string) {
 	o.ConnectedTagId = &v
+}
+
+// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise.
+func (o *IntegrationRequest) GetExternalBusinessId() string {
+	if o == nil || IsNil(o.ExternalBusinessId) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalBusinessId
+}
+
+// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRequest) GetExternalBusinessIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalBusinessId) {
+		return nil, false
+	}
+	return o.ExternalBusinessId, true
+}
+
+// HasExternalBusinessId returns a boolean if a field has been set.
+func (o *IntegrationRequest) HasExternalBusinessId() bool {
+	if o != nil && !IsNil(o.ExternalBusinessId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalBusinessId gets a reference to the given string and assigns it to the ExternalBusinessId field.
+func (o *IntegrationRequest) SetExternalBusinessId(v string) {
+	o.ExternalBusinessId = &v
 }
 
 // GetPartnerAccessToken returns the PartnerAccessToken field value if set, zero value otherwise.
@@ -255,36 +277,68 @@ func (o *IntegrationRequest) SetPartnerAccessToken(v string) {
 	o.PartnerAccessToken = &v
 }
 
-// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise.
-func (o *IntegrationRequest) GetPartnerRefreshToken() string {
-	if o == nil || IsNil(o.PartnerRefreshToken) {
-		var ret string
+// GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise.
+func (o *IntegrationRequest) GetPartnerAccessTokenExpiry() int32 {
+	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
+		var ret int32
 		return ret
 	}
-	return *o.PartnerRefreshToken
+	return *o.PartnerAccessTokenExpiry
 }
 
-// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
+// GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationRequest) GetPartnerRefreshTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerRefreshToken) {
+func (o *IntegrationRequest) GetPartnerAccessTokenExpiryOk() (*int32, bool) {
+	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
 		return nil, false
 	}
-	return o.PartnerRefreshToken, true
+	return o.PartnerAccessTokenExpiry, true
 }
 
-// HasPartnerRefreshToken returns a boolean if a field has been set.
-func (o *IntegrationRequest) HasPartnerRefreshToken() bool {
-	if o != nil && !IsNil(o.PartnerRefreshToken) {
+// HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
+func (o *IntegrationRequest) HasPartnerAccessTokenExpiry() bool {
+	if o != nil && !IsNil(o.PartnerAccessTokenExpiry) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerRefreshToken gets a reference to the given string and assigns it to the PartnerRefreshToken field.
-func (o *IntegrationRequest) SetPartnerRefreshToken(v string) {
-	o.PartnerRefreshToken = &v
+// SetPartnerAccessTokenExpiry gets a reference to the given int32 and assigns it to the PartnerAccessTokenExpiry field.
+func (o *IntegrationRequest) SetPartnerAccessTokenExpiry(v int32) {
+	o.PartnerAccessTokenExpiry = &v
+}
+
+// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
+func (o *IntegrationRequest) GetPartnerMetadata() string {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerMetadata
+}
+
+// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRequest) GetPartnerMetadataOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		return nil, false
+	}
+	return o.PartnerMetadata, true
+}
+
+// HasPartnerMetadata returns a boolean if a field has been set.
+func (o *IntegrationRequest) HasPartnerMetadata() bool {
+	if o != nil && !IsNil(o.PartnerMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerMetadata gets a reference to the given string and assigns it to the PartnerMetadata field.
+func (o *IntegrationRequest) SetPartnerMetadata(v string) {
+	o.PartnerMetadata = &v
 }
 
 // GetPartnerPrimaryEmail returns the PartnerPrimaryEmail field value if set, zero value otherwise.
@@ -319,36 +373,36 @@ func (o *IntegrationRequest) SetPartnerPrimaryEmail(v string) {
 	o.PartnerPrimaryEmail = &v
 }
 
-// GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise.
-func (o *IntegrationRequest) GetPartnerAccessTokenExpiry() int32 {
-	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
-		var ret int32
+// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise.
+func (o *IntegrationRequest) GetPartnerRefreshToken() string {
+	if o == nil || IsNil(o.PartnerRefreshToken) {
+		var ret string
 		return ret
 	}
-	return *o.PartnerAccessTokenExpiry
+	return *o.PartnerRefreshToken
 }
 
-// GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field value if set, nil otherwise
+// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationRequest) GetPartnerAccessTokenExpiryOk() (*int32, bool) {
-	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
+func (o *IntegrationRequest) GetPartnerRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerRefreshToken) {
 		return nil, false
 	}
-	return o.PartnerAccessTokenExpiry, true
+	return o.PartnerRefreshToken, true
 }
 
-// HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
-func (o *IntegrationRequest) HasPartnerAccessTokenExpiry() bool {
-	if o != nil && !IsNil(o.PartnerAccessTokenExpiry) {
+// HasPartnerRefreshToken returns a boolean if a field has been set.
+func (o *IntegrationRequest) HasPartnerRefreshToken() bool {
+	if o != nil && !IsNil(o.PartnerRefreshToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerAccessTokenExpiry gets a reference to the given int32 and assigns it to the PartnerAccessTokenExpiry field.
-func (o *IntegrationRequest) SetPartnerAccessTokenExpiry(v int32) {
-	o.PartnerAccessTokenExpiry = &v
+// SetPartnerRefreshToken gets a reference to the given string and assigns it to the PartnerRefreshToken field.
+func (o *IntegrationRequest) SetPartnerRefreshToken(v string) {
+	o.PartnerRefreshToken = &v
 }
 
 // GetPartnerRefreshTokenExpiry returns the PartnerRefreshTokenExpiry field value if set, zero value otherwise.
@@ -415,70 +469,6 @@ func (o *IntegrationRequest) SetScopes(v string) {
 	o.Scopes = &v
 }
 
-// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise.
-func (o *IntegrationRequest) GetAdditionalId1() string {
-	if o == nil || IsNil(o.AdditionalId1) {
-		var ret string
-		return ret
-	}
-	return *o.AdditionalId1
-}
-
-// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRequest) GetAdditionalId1Ok() (*string, bool) {
-	if o == nil || IsNil(o.AdditionalId1) {
-		return nil, false
-	}
-	return o.AdditionalId1, true
-}
-
-// HasAdditionalId1 returns a boolean if a field has been set.
-func (o *IntegrationRequest) HasAdditionalId1() bool {
-	if o != nil && !IsNil(o.AdditionalId1) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdditionalId1 gets a reference to the given string and assigns it to the AdditionalId1 field.
-func (o *IntegrationRequest) SetAdditionalId1(v string) {
-	o.AdditionalId1 = &v
-}
-
-// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
-func (o *IntegrationRequest) GetPartnerMetadata() string {
-	if o == nil || IsNil(o.PartnerMetadata) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerMetadata
-}
-
-// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRequest) GetPartnerMetadataOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerMetadata) {
-		return nil, false
-	}
-	return o.PartnerMetadata, true
-}
-
-// HasPartnerMetadata returns a boolean if a field has been set.
-func (o *IntegrationRequest) HasPartnerMetadata() bool {
-	if o != nil && !IsNil(o.PartnerMetadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerMetadata gets a reference to the given string and assigns it to the PartnerMetadata field.
-func (o *IntegrationRequest) SetPartnerMetadata(v string) {
-	o.PartnerMetadata = &v
-}
-
 func (o IntegrationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -489,11 +479,8 @@ func (o IntegrationRequest) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ExternalBusinessId.IsSet() {
-		toSerialize["external_business_id"] = o.ExternalBusinessId.Get()
-	}
-	if !IsNil(o.ConnectedMerchantId) {
-		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId
+	if !IsNil(o.AdditionalId1) {
+		toSerialize["additional_id_1"] = o.AdditionalId1
 	}
 	if !IsNil(o.ConnectedAdvertiserId) {
 		toSerialize["connected_advertiser_id"] = o.ConnectedAdvertiserId
@@ -501,32 +488,35 @@ func (o IntegrationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectedLbaId) {
 		toSerialize["connected_lba_id"] = o.ConnectedLbaId
 	}
+	if !IsNil(o.ConnectedMerchantId) {
+		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId
+	}
 	if !IsNil(o.ConnectedTagId) {
 		toSerialize["connected_tag_id"] = o.ConnectedTagId
+	}
+	if !IsNil(o.ExternalBusinessId) {
+		toSerialize["external_business_id"] = o.ExternalBusinessId
 	}
 	if !IsNil(o.PartnerAccessToken) {
 		toSerialize["partner_access_token"] = o.PartnerAccessToken
 	}
-	if !IsNil(o.PartnerRefreshToken) {
-		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
+	if !IsNil(o.PartnerAccessTokenExpiry) {
+		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry
+	}
+	if !IsNil(o.PartnerMetadata) {
+		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	if !IsNil(o.PartnerPrimaryEmail) {
 		toSerialize["partner_primary_email"] = o.PartnerPrimaryEmail
 	}
-	if !IsNil(o.PartnerAccessTokenExpiry) {
-		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry
+	if !IsNil(o.PartnerRefreshToken) {
+		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
 	}
 	if !IsNil(o.PartnerRefreshTokenExpiry) {
 		toSerialize["partner_refresh_token_expiry"] = o.PartnerRefreshTokenExpiry
 	}
 	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
-	}
-	if !IsNil(o.AdditionalId1) {
-		toSerialize["additional_id_1"] = o.AdditionalId1
-	}
-	if !IsNil(o.PartnerMetadata) {
-		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	return toSerialize, nil
 }

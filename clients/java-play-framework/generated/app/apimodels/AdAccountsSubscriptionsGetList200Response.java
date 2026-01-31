@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.AdAccountGetSubscriptionResponse;
+import apimodels.LeadSubscription;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,43 +15,18 @@ import javax.validation.Valid;
 /**
  * AdAccountsSubscriptionsGetList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdAccountsSubscriptionsGetList200Response   {
-  @JsonProperty("items")
-  @NotNull
-@Valid
-
-  private List<@Valid AdAccountGetSubscriptionResponse> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   
   private String bookmark;
 
-  public AdAccountsSubscriptionsGetList200Response items(List<@Valid AdAccountGetSubscriptionResponse> items) {
-    this.items = items;
-    return this;
-  }
+  @JsonProperty("items")
+  @NotNull
+@Valid
 
-  public AdAccountsSubscriptionsGetList200Response addItemsItem(AdAccountGetSubscriptionResponse itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Get items
-   * @return items
-  **/
-  public List<@Valid AdAccountGetSubscriptionResponse> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid AdAccountGetSubscriptionResponse> items) {
-    this.items = items;
-  }
+  private List<@Valid LeadSubscription> items = new ArrayList<>();
 
   public AdAccountsSubscriptionsGetList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -70,6 +45,31 @@ public class AdAccountsSubscriptionsGetList200Response   {
     this.bookmark = bookmark;
   }
 
+  public AdAccountsSubscriptionsGetList200Response items(List<@Valid LeadSubscription> items) {
+    this.items = items;
+    return this;
+  }
+
+  public AdAccountsSubscriptionsGetList200Response addItemsItem(LeadSubscription itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  public List<@Valid LeadSubscription> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid LeadSubscription> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class AdAccountsSubscriptionsGetList200Response   {
       return false;
     }
     AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList200Response = (AdAccountsSubscriptionsGetList200Response) o;
-    return Objects.equals(items, adAccountsSubscriptionsGetList200Response.items) &&
-        Objects.equals(bookmark, adAccountsSubscriptionsGetList200Response.bookmark);
+    return Objects.equals(bookmark, adAccountsSubscriptionsGetList200Response.bookmark) &&
+        Objects.equals(items, adAccountsSubscriptionsGetList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class AdAccountsSubscriptionsGetList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsSubscriptionsGetList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

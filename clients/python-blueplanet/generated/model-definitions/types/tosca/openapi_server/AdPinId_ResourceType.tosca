@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPinId"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPinId"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdPinId {
+    title = AdPinId
+    description = AdPinId
+    derivedFrom = Root
+    properties {
+        pin_id {
+          type =  string
+          description = "Pin ID."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPinId {
+    title = AdPinId
+    description = AdPinId
+    implements = openapi_server.resourceTypes.AdPinId
+
+  }
+}

@@ -8,8 +8,8 @@ The class is defined in **[AudiencesList200Response.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Audience&gt;`](Audience.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Audience&gt;`](Audience.md) |  | 
 
 
 

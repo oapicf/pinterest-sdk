@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsFeedsCreateRequest`
 --
-SELECT `default_currency`, `name`, `format`, `default_locale`, `default_country`, `credentials`, `location`, `preferred_processing_schedule`, `catalog_type`, `catalog_id`, `status` FROM `CatalogsCreativeAssetsFeedsCreateRequest` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `credentials`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status` FROM `CatalogsCreativeAssetsFeedsCreateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsFeedsCreateRequest`
 --
-INSERT INTO `CatalogsCreativeAssetsFeedsCreateRequest`(`default_currency`, `name`, `format`, `default_locale`, `default_country`, `credentials`, `location`, `preferred_processing_schedule`, `catalog_type`, `catalog_id`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsFeedsCreateRequest`(`catalog_id`, `catalog_type`, `credentials`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsFeedsCreateRequest`
 --
-UPDATE `CatalogsCreativeAssetsFeedsCreateRequest` SET `default_currency` = ?, `name` = ?, `format` = ?, `default_locale` = ?, `default_country` = ?, `credentials` = ?, `location` = ?, `preferred_processing_schedule` = ?, `catalog_type` = ?, `catalog_id` = ?, `status` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsFeedsCreateRequest` SET `catalog_id` = ?, `catalog_type` = ?, `credentials` = ?, `default_country` = ?, `default_currency` = ?, `default_locale` = ?, `format` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsFeedsCreateRequest`

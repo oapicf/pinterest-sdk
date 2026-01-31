@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &SSIOInsertionOrderStatus{}
 
 // SSIOInsertionOrderStatus struct for SSIOInsertionOrderStatus
 type SSIOInsertionOrderStatus struct {
+	// Salesforce insertion order creation time
+	CreationTime NullableString `json:"creation_time,omitempty"`
 	// Salesforce order id
 	PinOrderId *string `json:"pin_order_id,omitempty"`
 	// Salesforce insertion order status
 	Status *string `json:"status,omitempty"`
-	// Salesforce insertion order creation time
-	CreationTime NullableString `json:"creation_time,omitempty"`
 }
 
 // NewSSIOInsertionOrderStatus instantiates a new SSIOInsertionOrderStatus object
@@ -43,6 +43,48 @@ func NewSSIOInsertionOrderStatus() *SSIOInsertionOrderStatus {
 func NewSSIOInsertionOrderStatusWithDefaults() *SSIOInsertionOrderStatus {
 	this := SSIOInsertionOrderStatus{}
 	return &this
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOInsertionOrderStatus) GetCreationTime() string {
+	if o == nil || IsNil(o.CreationTime.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CreationTime.Get()
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOInsertionOrderStatus) GetCreationTimeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CreationTime.Get(), o.CreationTime.IsSet()
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *SSIOInsertionOrderStatus) HasCreationTime() bool {
+	if o != nil && o.CreationTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given NullableString and assigns it to the CreationTime field.
+func (o *SSIOInsertionOrderStatus) SetCreationTime(v string) {
+	o.CreationTime.Set(&v)
+}
+// SetCreationTimeNil sets the value for CreationTime to be an explicit nil
+func (o *SSIOInsertionOrderStatus) SetCreationTimeNil() {
+	o.CreationTime.Set(nil)
+}
+
+// UnsetCreationTime ensures that no value is present for CreationTime, not even an explicit nil
+func (o *SSIOInsertionOrderStatus) UnsetCreationTime() {
+	o.CreationTime.Unset()
 }
 
 // GetPinOrderId returns the PinOrderId field value if set, zero value otherwise.
@@ -109,48 +151,6 @@ func (o *SSIOInsertionOrderStatus) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetCreationTime returns the CreationTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOInsertionOrderStatus) GetCreationTime() string {
-	if o == nil || IsNil(o.CreationTime.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.CreationTime.Get()
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOInsertionOrderStatus) GetCreationTimeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CreationTime.Get(), o.CreationTime.IsSet()
-}
-
-// HasCreationTime returns a boolean if a field has been set.
-func (o *SSIOInsertionOrderStatus) HasCreationTime() bool {
-	if o != nil && o.CreationTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreationTime gets a reference to the given NullableString and assigns it to the CreationTime field.
-func (o *SSIOInsertionOrderStatus) SetCreationTime(v string) {
-	o.CreationTime.Set(&v)
-}
-// SetCreationTimeNil sets the value for CreationTime to be an explicit nil
-func (o *SSIOInsertionOrderStatus) SetCreationTimeNil() {
-	o.CreationTime.Set(nil)
-}
-
-// UnsetCreationTime ensures that no value is present for CreationTime, not even an explicit nil
-func (o *SSIOInsertionOrderStatus) UnsetCreationTime() {
-	o.CreationTime.Unset()
-}
-
 func (o SSIOInsertionOrderStatus) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -161,14 +161,14 @@ func (o SSIOInsertionOrderStatus) MarshalJSON() ([]byte, error) {
 
 func (o SSIOInsertionOrderStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CreationTime.IsSet() {
+		toSerialize["creation_time"] = o.CreationTime.Get()
+	}
 	if !IsNil(o.PinOrderId) {
 		toSerialize["pin_order_id"] = o.PinOrderId
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
-	}
-	if o.CreationTime.IsSet() {
-		toSerialize["creation_time"] = o.CreationTime.Get()
 	}
 	return toSerialize, nil
 }

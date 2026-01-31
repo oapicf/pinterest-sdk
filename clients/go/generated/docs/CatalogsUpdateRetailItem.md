@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**UpdatableItemAttributes**](UpdatableItemAttributes.md) |  | 
 **ItemId** | **string** | The catalog item id in the merchant namespace | 
 **Operation** | **string** |  | 
-**Attributes** | [**UpdatableItemAttributes**](UpdatableItemAttributes.md) |  | 
 **UpdateMask** | Pointer to [**[]UpdateMaskFieldType**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] 
 
 ## Methods
 
 ### NewCatalogsUpdateRetailItem
 
-`func NewCatalogsUpdateRetailItem(itemId string, operation string, attributes UpdatableItemAttributes, ) *CatalogsUpdateRetailItem`
+`func NewCatalogsUpdateRetailItem(attributes UpdatableItemAttributes, itemId string, operation string, ) *CatalogsUpdateRetailItem`
 
 NewCatalogsUpdateRetailItem instantiates a new CatalogsUpdateRetailItem object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +27,26 @@ will change when the set of required properties is changed
 NewCatalogsUpdateRetailItemWithDefaults instantiates a new CatalogsUpdateRetailItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *CatalogsUpdateRetailItem) GetAttributes() UpdatableItemAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *CatalogsUpdateRetailItem) GetAttributesOk() (*UpdatableItemAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *CatalogsUpdateRetailItem) SetAttributes(v UpdatableItemAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
 
 ### GetItemId
 
@@ -66,26 +86,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsUpdateRetailItem) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
-
-
-### GetAttributes
-
-`func (o *CatalogsUpdateRetailItem) GetAttributes() UpdatableItemAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *CatalogsUpdateRetailItem) GetAttributesOk() (*UpdatableItemAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *CatalogsUpdateRetailItem) SetAttributes(v UpdatableItemAttributes)`
-
-SetAttributes sets Attributes field to given value.
 
 
 ### GetUpdateMask

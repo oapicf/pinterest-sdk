@@ -12,9 +12,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An item to be upserted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="An item to be upserted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpsertRetailItem   {
   
+  private ItemAttributesRequest attributes;
   private String itemId;
 
   /**
@@ -36,7 +37,20 @@ public class CatalogsUpsertRetailItem   {
   }
 
   private OperationEnum operation;
-  private ItemAttributesRequest attributes;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  @Valid
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog item id in the merchant namespace
@@ -65,20 +79,6 @@ public class CatalogsUpsertRetailItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  @NotNull
-  @Valid
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -89,14 +89,14 @@ public class CatalogsUpsertRetailItem   {
       return false;
     }
     CatalogsUpsertRetailItem catalogsUpsertRetailItem = (CatalogsUpsertRetailItem) o;
-    return Objects.equals(this.itemId, catalogsUpsertRetailItem.itemId) &&
-        Objects.equals(this.operation, catalogsUpsertRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpsertRetailItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpsertRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsUpsertRetailItem.itemId) &&
+        Objects.equals(this.operation, catalogsUpsertRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -104,9 +104,9 @@ public class CatalogsUpsertRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -16,14 +16,14 @@ void main() {
   // final instance = BoardSectionsList200Response();
 
   group('test BoardSectionsList200Response', () {
-    // Board sections
-    // List<BoardSection> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // Board sections
+    // List<BoardSection> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

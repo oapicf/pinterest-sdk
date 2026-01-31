@@ -27,10 +27,10 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param batchId Id of the catalogs items batch
- * @param createdTime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
  * @param completedTime Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
- * @param status 
+ * @param createdTime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
  * @param items Array with the catalogs items processing records part of the catalogs items batch
+ * @param status 
  */
 
 
@@ -43,20 +43,20 @@ data class CatalogsCreativeAssetsItemsBatch (
     @Json(name = "batch_id")
     val batchId: kotlin.String? = null,
 
-    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
-    @Json(name = "created_time")
-    val createdTime: java.time.OffsetDateTime? = null,
-
     /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     @Json(name = "completed_time")
     val completedTime: java.time.OffsetDateTime? = null,
 
-    @Json(name = "status")
-    val status: BatchOperationStatus? = null,
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
+    @Json(name = "created_time")
+    val createdTime: java.time.OffsetDateTime? = null,
 
     /* Array with the catalogs items processing records part of the catalogs items batch */
     @Json(name = "items")
-    val items: kotlin.collections.List<CreativeAssetsProcessingRecord>? = null
+    val items: kotlin.collections.List<CreativeAssetsProcessingRecord>? = null,
+
+    @Json(name = "status")
+    val status: BatchOperationStatus? = null
 
 ) {
 

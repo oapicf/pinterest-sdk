@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	UserListType getListType();
+
+	/*! \brief Set 
+	 */
+	void setListType(UserListType  list_type);
 	/*! \brief Get Customer list name.
 	 */
 	std::string getName();
@@ -60,26 +67,11 @@ public:
 	/*! \brief Set Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
 	 */
 	void setRecords(std::string  records);
-	/*! \brief Get 
-	 */
-	UserListType getListType();
-
-	/*! \brief Set 
-	 */
-	void setListType(UserListType  list_type);
-	/*! \brief Get Customer list errors.
-	 */
-	std::string getExceptions();
-
-	/*! \brief Set Customer list errors.
-	 */
-	void setExceptions(std::string  exceptions);
 
 private:
+	UserListType list_type;
 	std::string name;
 	std::string records;
-	UserListType list_type;
-	std::string exceptions;
 	void __init();
 	void __cleanup();
 

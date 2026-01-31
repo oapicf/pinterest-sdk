@@ -14,14 +14,14 @@ import AudienceDemographics._
 case class AudienceDemographics (
   /* Ages distribution. */
   ages: Option[List[AudienceDemographicValue]],
-/* Gender distribution. */
-  genders: Option[List[AudienceDemographicValue]],
+/* Country area distribution. */
+  countries: Option[List[AudienceDemographicValue]],
 /* Device usage distribution. */
   devices: Option[List[AudienceDemographicValue]],
+/* Gender distribution. */
+  genders: Option[List[AudienceDemographicValue]],
 /* Geographic metro area distribution. */
-  metros: Option[List[AudienceDemographicValue]],
-/* Country area distribution. */
-  countries: Option[List[AudienceDemographicValue]])
+  metros: Option[List[AudienceDemographicValue]])
 
 object AudienceDemographics {
   import DateTimeCodecs._

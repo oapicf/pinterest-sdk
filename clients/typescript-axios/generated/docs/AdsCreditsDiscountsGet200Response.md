@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;AdsCreditDiscountsResponse&gt;**](AdsCreditDiscountsResponse.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;AdsCreditDiscountsResponse&gt;**](AdsCreditDiscountsResponse.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AdsCreditsDiscountsGet200Response } from './api';
 
 const instance: AdsCreditsDiscountsGet200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

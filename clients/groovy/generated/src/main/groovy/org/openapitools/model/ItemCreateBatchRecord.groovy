@@ -7,8 +7,8 @@ import org.openapitools.model.ItemAttributesRequest;
 
 @Canonical
 class ItemCreateBatchRecord {
-    /* The catalog item id in the merchant namespace */
-    String itemId
     
     ItemAttributesRequest attributes
+    /* The catalog item id in the merchant namespace */
+    String itemId
 }

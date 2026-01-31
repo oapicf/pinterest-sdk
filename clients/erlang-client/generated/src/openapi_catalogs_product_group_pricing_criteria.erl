@@ -6,15 +6,15 @@
 
 -type openapi_catalogs_product_group_pricing_criteria() ::
     #{ 'inclusion' => boolean(),
-       'values' := integer(),
-       'negated' => boolean()
+       'negated' => boolean(),
+       'values' := integer()
      }.
 
 encode(#{ 'inclusion' := Inclusion,
-          'values' := Values,
-          'negated' := Negated
+          'negated' := Negated,
+          'values' := Values
         }) ->
     #{ 'inclusion' => Inclusion,
-       'values' => Values,
-       'negated' => Negated
+       'negated' => Negated,
+       'values' => Values
      }.

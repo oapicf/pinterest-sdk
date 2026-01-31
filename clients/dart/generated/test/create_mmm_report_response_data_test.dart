@@ -16,23 +16,23 @@ void main() {
   // final instance = CreateMMMReportResponseData();
 
   group('test CreateMMMReportResponseData', () {
-    // BulkReportingJobStatus reportStatus
-    test('to test the property `reportStatus`', () async {
-      // TODO
-    });
-
-    // String token
-    test('to test the property `token`', () async {
-      // TODO
-    });
-
     // String message
     test('to test the property `message`', () async {
       // TODO
     });
 
+    // BulkReportingJobStatus reportStatus
+    test('to test the property `reportStatus`', () async {
+      // TODO
+    });
+
     // String status
     test('to test the property `status`', () async {
+      // TODO
+    });
+
+    // String token
+    test('to test the property `token`', () async {
       // TODO
     });
 

@@ -10,8 +10,8 @@ import org.openapitools.model.SSIOInsertionOrderStatus;
 
 @Canonical
 class SsioInsertionOrdersStatusGetByAdAccount200Response {
-    /* Insertion orders status by ad acount id */
-    List<SSIOInsertionOrderStatus> items = new ArrayList<>()
     
     String bookmark
+    /* Insertion orders status by ad acount id */
+    List<SSIOInsertionOrderStatus> items = new ArrayList<>()
 }

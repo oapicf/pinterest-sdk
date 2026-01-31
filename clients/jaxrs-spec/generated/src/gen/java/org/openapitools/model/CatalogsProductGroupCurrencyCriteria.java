@@ -19,10 +19,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "A currency filter. This filter cannot be negated")
 @JsonTypeName("CatalogsProductGroupCurrencyCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupCurrencyCriteria   {
-  private NonNullableCatalogsCurrency values;
   private Boolean negated = false;
+  private NonNullableCatalogsCurrency values;
 
   public CatalogsProductGroupCurrencyCriteria() {
   }
@@ -31,25 +31,6 @@ public class CatalogsProductGroupCurrencyCriteria   {
   public CatalogsProductGroupCurrencyCriteria(
     @JsonProperty(required = true, value = "values") NonNullableCatalogsCurrency values
   ) {
-    this.values = values;
-  }
-
-  /**
-   **/
-  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
-    this.values = values;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "values")
-  @NotNull public NonNullableCatalogsCurrency getValues() {
-    return values;
-  }
-
-  @JsonProperty(required = true, value = "values")
-  public void setValues(NonNullableCatalogsCurrency values) {
     this.values = values;
   }
 
@@ -72,6 +53,25 @@ public class CatalogsProductGroupCurrencyCriteria   {
     this.negated = negated;
   }
 
+  /**
+   **/
+  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
+    this.values = values;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "values")
+  @NotNull public NonNullableCatalogsCurrency getValues() {
+    return values;
+  }
+
+  @JsonProperty(required = true, value = "values")
+  public void setValues(NonNullableCatalogsCurrency values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -82,13 +82,13 @@ public class CatalogsProductGroupCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupCurrencyCriteria catalogsProductGroupCurrencyCriteria = (CatalogsProductGroupCurrencyCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -96,8 +96,8 @@ public class CatalogsProductGroupCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCurrencyCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

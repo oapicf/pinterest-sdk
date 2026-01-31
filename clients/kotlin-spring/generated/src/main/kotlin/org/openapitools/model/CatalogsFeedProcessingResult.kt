@@ -8,6 +8,7 @@ import org.openapitools.model.CatalogsFeedIngestionDetails
 import org.openapitools.model.CatalogsFeedProcessingStatus
 import org.openapitools.model.CatalogsFeedProductCounts
 import org.openapitools.model.CatalogsFeedValidationDetails
+import org.openapitools.model.CatalogsFeedVideoCounts
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,9 +26,10 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param id 
  * @param updatedAt 
  * @param ingestionDetails 
- * @param status 
  * @param productCounts 
+ * @param status 
  * @param validationDetails 
+ * @param videoCounts 
  */
 data class CatalogsFeedProcessingResult(
 
@@ -46,15 +48,19 @@ data class CatalogsFeedProcessingResult(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("status", required = true) val status: CatalogsFeedProcessingStatus,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("product_counts", required = true) val productCounts: CatalogsFeedProductCounts?,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("validation_details", required = true) val validationDetails: CatalogsFeedValidationDetails
+    @get:JsonProperty("status", required = true) val status: CatalogsFeedProcessingStatus,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("validation_details", required = true) val validationDetails: CatalogsFeedValidationDetails,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("video_counts") val videoCounts: CatalogsFeedVideoCounts? = null
 ) {
 
 }

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AD_GROUP_ID** | **string** | The ID of the ad group that this metrics belongs to. | 
+**AD_GROUP_ID** | Pointer to **string** | The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true. | [optional] 
 **DATE** | Pointer to **string** | Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;) | [optional] 
 
 ## Methods
 
 ### NewAdGroupsAnalyticsResponseInner
 
-`func NewAdGroupsAnalyticsResponseInner(aDGROUPID string, ) *AdGroupsAnalyticsResponseInner`
+`func NewAdGroupsAnalyticsResponseInner() *AdGroupsAnalyticsResponseInner`
 
 NewAdGroupsAnalyticsResponseInner instantiates a new AdGroupsAnalyticsResponseInner object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetAD_GROUP_ID sets AD_GROUP_ID field to given value.
 
+### HasAD_GROUP_ID
+
+`func (o *AdGroupsAnalyticsResponseInner) HasAD_GROUP_ID() bool`
+
+HasAD_GROUP_ID returns a boolean if a field has been set.
 
 ### GetDATE
 

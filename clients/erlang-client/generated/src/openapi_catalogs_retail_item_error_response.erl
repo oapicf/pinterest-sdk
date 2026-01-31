@@ -6,15 +6,15 @@
 
 -type openapi_catalogs_retail_item_error_response() ::
     #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
-       'item_id' => binary(),
-       'errors' => list()
+       'errors' := list(),
+       'item_id' => binary()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
-          'item_id' := ItemId,
-          'errors' := Errors
+          'errors' := Errors,
+          'item_id' := ItemId
         }) ->
     #{ 'catalog_type' => CatalogType,
-       'item_id' => ItemId,
-       'errors' => Errors
+       'errors' => Errors,
+       'item_id' => ItemId
      }.

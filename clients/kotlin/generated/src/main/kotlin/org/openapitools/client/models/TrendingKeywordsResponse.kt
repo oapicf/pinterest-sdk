@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.TrendingKeywordsResponseTrendsInner
+import org.openapitools.client.models.TrendingKeyword
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +31,7 @@ data class TrendingKeywordsResponse (
 
     /* The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend. */
     @Json(name = "trends")
-    val trends: kotlin.collections.List<TrendingKeywordsResponseTrendsInner>? = null
+    val trends: kotlin.collections.List<TrendingKeyword>? = null
 
 ) {
 

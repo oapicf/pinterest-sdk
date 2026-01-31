@@ -16,15 +16,15 @@ void main() {
   // final instance = CreateAssetGroupBody();
 
   group('test CreateAssetGroupBody', () {
-    // Asset Group name
-    // String assetGroupName
-    test('to test the property `assetGroupName`', () async {
-      // TODO
-    });
-
     // Asset group description
     // String assetGroupDescription
     test('to test the property `assetGroupDescription`', () async {
+      // TODO
+    });
+
+    // Asset Group name
+    // String assetGroupName
+    test('to test the property `assetGroupName`', () async {
       // TODO
     });
 

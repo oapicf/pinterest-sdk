@@ -12,60 +12,60 @@ import AnyCodable
 
 public struct SSIOInsertionOrderCommon: Codable, JSONEncodable, Hashable {
 
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    /** Starting date of time period. Format: YYYY-MM-DD */
-    public var startDate: String?
-    /** End date of time period. Format: YYYY-MM-DD */
-    public var endDate: String?
-    /** The po number */
-    public var poNumber: String?
-    /** If Budget order line, the budget amount. */
-    public var budgetAmount: Double?
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    /** URL link for agency */
+    public var agencyLink: String?
+    /** The billing contact email */
+    public var billingContactEmail: String?
     /** The billing contact first name */
     public var billingContactFirstname: String?
     /** The billing contact last name */
     public var billingContactLastname: String?
-    /** The billing contact email */
-    public var billingContactEmail: String?
+    /** If Budget order line, the budget amount. */
+    public var budgetAmount: Double?
+    /** End date of time period. Format: YYYY-MM-DD */
+    public var endDate: String?
+    /** The media contact email */
+    public var mediaContactEmail: String?
     /** The media contact first name */
     public var mediaContactFirstname: String?
     /** The media contact last name */
     public var mediaContactLastname: String?
-    /** The media contact email */
-    public var mediaContactEmail: String?
-    /** URL link for agency */
-    public var agencyLink: String?
+    /** The po number */
+    public var poNumber: String?
+    /** Starting date of time period. Format: YYYY-MM-DD */
+    public var startDate: String?
     /** The email of user submitting the insertion order */
     public var userEmail: String?
 
-    public init(startDate: String? = nil, endDate: String? = nil, poNumber: String? = nil, budgetAmount: Double? = nil, billingContactFirstname: String? = nil, billingContactLastname: String? = nil, billingContactEmail: String? = nil, mediaContactFirstname: String? = nil, mediaContactLastname: String? = nil, mediaContactEmail: String? = nil, agencyLink: String? = nil, userEmail: String? = nil) {
-        self.startDate = startDate
-        self.endDate = endDate
-        self.poNumber = poNumber
-        self.budgetAmount = budgetAmount
+    public init(agencyLink: String? = nil, billingContactEmail: String? = nil, billingContactFirstname: String? = nil, billingContactLastname: String? = nil, budgetAmount: Double? = nil, endDate: String? = nil, mediaContactEmail: String? = nil, mediaContactFirstname: String? = nil, mediaContactLastname: String? = nil, poNumber: String? = nil, startDate: String? = nil, userEmail: String? = nil) {
+        self.agencyLink = agencyLink
+        self.billingContactEmail = billingContactEmail
         self.billingContactFirstname = billingContactFirstname
         self.billingContactLastname = billingContactLastname
-        self.billingContactEmail = billingContactEmail
+        self.budgetAmount = budgetAmount
+        self.endDate = endDate
+        self.mediaContactEmail = mediaContactEmail
         self.mediaContactFirstname = mediaContactFirstname
         self.mediaContactLastname = mediaContactLastname
-        self.mediaContactEmail = mediaContactEmail
-        self.agencyLink = agencyLink
+        self.poNumber = poNumber
+        self.startDate = startDate
         self.userEmail = userEmail
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case startDate = "start_date"
-        case endDate = "end_date"
-        case poNumber = "po_number"
-        case budgetAmount = "budget_amount"
+        case agencyLink = "agency_link"
+        case billingContactEmail = "billing_contact_email"
         case billingContactFirstname = "billing_contact_firstname"
         case billingContactLastname = "billing_contact_lastname"
-        case billingContactEmail = "billing_contact_email"
+        case budgetAmount = "budget_amount"
+        case endDate = "end_date"
+        case mediaContactEmail = "media_contact_email"
         case mediaContactFirstname = "media_contact_firstname"
         case mediaContactLastname = "media_contact_lastname"
-        case mediaContactEmail = "media_contact_email"
-        case agencyLink = "agency_link"
+        case poNumber = "po_number"
+        case startDate = "start_date"
         case userEmail = "user_email"
     }
 
@@ -73,17 +73,17 @@ public struct SSIOInsertionOrderCommon: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(startDate, forKey: .startDate)
-        try container.encodeIfPresent(endDate, forKey: .endDate)
-        try container.encodeIfPresent(poNumber, forKey: .poNumber)
-        try container.encodeIfPresent(budgetAmount, forKey: .budgetAmount)
+        try container.encodeIfPresent(agencyLink, forKey: .agencyLink)
+        try container.encodeIfPresent(billingContactEmail, forKey: .billingContactEmail)
         try container.encodeIfPresent(billingContactFirstname, forKey: .billingContactFirstname)
         try container.encodeIfPresent(billingContactLastname, forKey: .billingContactLastname)
-        try container.encodeIfPresent(billingContactEmail, forKey: .billingContactEmail)
+        try container.encodeIfPresent(budgetAmount, forKey: .budgetAmount)
+        try container.encodeIfPresent(endDate, forKey: .endDate)
+        try container.encodeIfPresent(mediaContactEmail, forKey: .mediaContactEmail)
         try container.encodeIfPresent(mediaContactFirstname, forKey: .mediaContactFirstname)
         try container.encodeIfPresent(mediaContactLastname, forKey: .mediaContactLastname)
-        try container.encodeIfPresent(mediaContactEmail, forKey: .mediaContactEmail)
-        try container.encodeIfPresent(agencyLink, forKey: .agencyLink)
+        try container.encodeIfPresent(poNumber, forKey: .poNumber)
+        try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(userEmail, forKey: .userEmail)
     }
 }

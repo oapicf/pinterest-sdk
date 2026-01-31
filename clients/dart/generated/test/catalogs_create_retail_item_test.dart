@@ -16,6 +16,11 @@ void main() {
   // final instance = CatalogsCreateRetailItem();
 
   group('test CatalogsCreateRetailItem', () {
+    // ItemAttributesRequest attributes
+    test('to test the property `attributes`', () async {
+      // TODO
+    });
+
     // The catalog item id in the merchant namespace
     // String itemId
     test('to test the property `itemId`', () async {
@@ -24,11 +29,6 @@ void main() {
 
     // String operation
     test('to test the property `operation`', () async {
-      // TODO
-    });
-
-    // ItemAttributesRequest attributes
-    test('to test the property `attributes`', () async {
       // TODO
     });
 

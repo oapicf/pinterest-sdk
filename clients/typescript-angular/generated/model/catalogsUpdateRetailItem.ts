@@ -15,12 +15,12 @@ import { UpdateMaskFieldType } from './updateMaskFieldType';
  * An item to be updated
  */
 export interface CatalogsUpdateRetailItem { 
+    attributes: UpdatableItemAttributes;
     /**
      * The catalog item id in the merchant namespace
      */
     item_id: string;
     operation: CatalogsUpdateRetailItem.OperationEnum;
-    attributes: UpdatableItemAttributes;
     /**
      * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
      */

@@ -12,16 +12,16 @@ import org.joda.time.DateTime
 import CatalogsRetailProductMetadata._
 
 case class CatalogsRetailProductMetadata (
-  /* The user-created unique ID that represents the product. */
-  itemId: String,
+  availability: NonNullableProductAvailabilityType,
+currency: NonNullableCatalogsCurrency,
 /* The parent ID of the product. */
   itemGroupId: String,
-availability: NonNullableProductAvailabilityType,
+/* The user-created unique ID that represents the product. */
+  itemId: String,
 /* The price of the product. */
   price: BigDecimal,
 /* The discounted price of the product. */
-  salePrice: BigDecimal,
-currency: NonNullableCatalogsCurrency)
+  salePrice: BigDecimal)
 
 object CatalogsRetailProductMetadata {
   import DateTimeCodecs._

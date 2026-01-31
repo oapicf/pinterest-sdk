@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;TemplateResponse&gt;**](TemplateResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;TemplateResponse&gt;**](TemplateResponse.md) |  | 
 
 
 

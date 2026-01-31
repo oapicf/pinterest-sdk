@@ -7,8 +7,8 @@ Request object to list products for a given hotel catalog_id and product group f
 
 Name | Type
 ------------ | -------------
-`catalogType` | string
 `catalogId` | string
+`catalogType` | string
 `filters` | [CatalogsHotelProductGroupFilters](CatalogsHotelProductGroupFilters.md)
 
 ## Example
@@ -18,8 +18,8 @@ import type { CatalogsHotelListProductsByCatalogBasedFilterRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "catalogType": null,
   "catalogId": 2680059592705,
+  "catalogType": null,
   "filters": null,
 } satisfies CatalogsHotelListProductsByCatalogBasedFilterRequest
 

@@ -9,7 +9,6 @@ import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.Audience
-import org.openapitools.server.model.AudienceCreateCustomRequest
 import org.openapitools.server.model.AudienceCreateRequest
 import org.openapitools.server.model.AudienceUpdateRequest
 import org.openapitools.server.model.AudiencesList200Response
@@ -31,13 +30,6 @@ import AudiencesApiPatterns.adAccountIdPattern
       post {  
             entity(as[AudienceCreateRequest]){ audienceCreateRequest =>
               audiencesService.audiencesCreate(adAccountId = adAccountId, audienceCreateRequest = audienceCreateRequest)
-            }
-      }
-    } ~
-    path("ad_accounts" / adAccountIdPattern / "audiences" / "custom") { (adAccountId) => 
-      post {  
-            entity(as[AudienceCreateCustomRequest]){ audienceCreateCustomRequest =>
-              audiencesService.audiencesCreateCustom(adAccountId = adAccountId, audienceCreateCustomRequest = audienceCreateCustomRequest)
             }
       }
     } ~
@@ -81,17 +73,6 @@ trait AudiencesApiService {
   def audiencesCreate(adAccountId: String, audienceCreateRequest: AudienceCreateRequest)
       (implicit toEntityMarshallerAudience: ToEntityMarshaller[Audience], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def audiencesCreateCustom200(responseAudience: Audience)(implicit toEntityMarshallerAudience: ToEntityMarshaller[Audience]): Route =
-    complete((200, responseAudience))
-  def audiencesCreateCustomDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((statusCode, responseError))
-  /**
-   * Code: 200, Message: Success, DataType: Audience
-   * Code: 0, Message: Unexpected error, DataType: Error
-   */
-  def audiencesCreateCustom(adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest)
-      (implicit toEntityMarshallerAudience: ToEntityMarshaller[Audience], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
-
   def audiencesGet200(responseAudience: Audience)(implicit toEntityMarshallerAudience: ToEntityMarshaller[Audience]): Route =
     complete((200, responseAudience))
   def audiencesGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -128,7 +109,7 @@ trait AudiencesApiService {
    * Code: 200, Message: Success, DataType: Audience
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: Option[AudienceUpdateRequest])
+  def audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest)
       (implicit toEntityMarshallerAudience: ToEntityMarshaller[Audience], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
@@ -137,8 +118,6 @@ trait AudiencesApiMarshaller {
   implicit def fromEntityUnmarshallerAudienceUpdateRequest: FromEntityUnmarshaller[AudienceUpdateRequest]
 
   implicit def fromEntityUnmarshallerAudienceCreateRequest: FromEntityUnmarshaller[AudienceCreateRequest]
-
-  implicit def fromEntityUnmarshallerAudienceCreateCustomRequest: FromEntityUnmarshaller[AudienceCreateCustomRequest]
 
 
 

@@ -7,33 +7,42 @@
 #' @title AudienceSubcategory
 #' @description AudienceSubcategory Class
 #' @format An \code{R6Class} generator object
+#' @field id Subinterest ID. character [optional]
+#' @field index Subinterest affinity index. numeric [optional]
 #' @field key Interest unique key (same as ID). character [optional]
 #' @field name Subinterest name. character [optional]
 #' @field ratio Subinterest's percent of category's total audience. numeric [optional]
-#' @field index Subinterest affinity index. numeric [optional]
-#' @field id Subinterest ID. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AudienceSubcategory <- R6::R6Class(
   "AudienceSubcategory",
   public = list(
+    `id` = NULL,
+    `index` = NULL,
     `key` = NULL,
     `name` = NULL,
     `ratio` = NULL,
-    `index` = NULL,
-    `id` = NULL,
 
     #' @description
     #' Initialize a new AudienceSubcategory class.
     #'
+    #' @param id Subinterest ID.
+    #' @param index Subinterest affinity index.
     #' @param key Interest unique key (same as ID).
     #' @param name Subinterest name.
     #' @param ratio Subinterest's percent of category's total audience.
-    #' @param index Subinterest affinity index.
-    #' @param id Subinterest ID.
     #' @param ... Other optional arguments.
-    initialize = function(`key` = NULL, `name` = NULL, `ratio` = NULL, `index` = NULL, `id` = NULL, ...) {
+    initialize = function(`id` = NULL, `index` = NULL, `key` = NULL, `name` = NULL, `ratio` = NULL, ...) {
+      if (!is.null(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!is.null(`index`)) {
+        self$`index` <- `index`
+      }
       if (!is.null(`key`)) {
         if (!(is.character(`key`) && length(`key`) == 1)) {
           stop(paste("Error! Invalid data for `key`. Must be a string:", `key`))
@@ -48,15 +57,6 @@ AudienceSubcategory <- R6::R6Class(
       }
       if (!is.null(`ratio`)) {
         self$`ratio` <- `ratio`
-      }
-      if (!is.null(`index`)) {
-        self$`index` <- `index`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
       }
     },
 
@@ -91,6 +91,14 @@ AudienceSubcategory <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AudienceSubcategoryObject <- list()
+      if (!is.null(self$`id`)) {
+        AudienceSubcategoryObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`index`)) {
+        AudienceSubcategoryObject[["index"]] <-
+          self$`index`
+      }
       if (!is.null(self$`key`)) {
         AudienceSubcategoryObject[["key"]] <-
           self$`key`
@@ -103,14 +111,6 @@ AudienceSubcategory <- R6::R6Class(
         AudienceSubcategoryObject[["ratio"]] <-
           self$`ratio`
       }
-      if (!is.null(self$`index`)) {
-        AudienceSubcategoryObject[["index"]] <-
-          self$`index`
-      }
-      if (!is.null(self$`id`)) {
-        AudienceSubcategoryObject[["id"]] <-
-          self$`id`
-      }
       return(AudienceSubcategoryObject)
     },
 
@@ -121,6 +121,12 @@ AudienceSubcategory <- R6::R6Class(
     #' @return the instance of AudienceSubcategory
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`index`)) {
+        self$`index` <- this_object$`index`
+      }
       if (!is.null(this_object$`key`)) {
         self$`key` <- this_object$`key`
       }
@@ -129,12 +135,6 @@ AudienceSubcategory <- R6::R6Class(
       }
       if (!is.null(this_object$`ratio`)) {
         self$`ratio` <- this_object$`ratio`
-      }
-      if (!is.null(this_object$`index`)) {
-        self$`index` <- this_object$`index`
-      }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
       }
       self
     },
@@ -157,11 +157,11 @@ AudienceSubcategory <- R6::R6Class(
     #' @return the instance of AudienceSubcategory
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`id` <- this_object$`id`
+      self$`index` <- this_object$`index`
       self$`key` <- this_object$`key`
       self$`name` <- this_object$`name`
       self$`ratio` <- this_object$`ratio`
-      self$`index` <- this_object$`index`
-      self$`id` <- this_object$`id`
       self
     },
 

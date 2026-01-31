@@ -74,5 +74,6 @@ private class OASCatalogsDeleteRetailItemTest {
         OASCatalogsDeleteRetailItem catalogsDeleteRetailItem = new OASCatalogsDeleteRetailItem();
         Map<String, String> x-property-mappings = catalogsDeleteRetailItem.getx-property-mappings();
         System.assertEquals('itemId', x-property-mappings.get('item_id'));
+        System.assertEquals('lastUpdatedTime', x-property-mappings.get('last_updated_time'));
     }
 }

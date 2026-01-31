@@ -12,38 +12,66 @@ import AnyCodable
 
 public struct AdAccountCreateSubscriptionResponse: Codable, JSONEncodable, Hashable {
 
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Subscription ID. */
-    public var id: String?
-    /** Base64 encoded key for client to decrypt lead data. */
-    public var cryptographicKey: String?
-    /** Lead data encryption algorithm. */
-    public var cryptographicAlgorithm: String?
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let userAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    /** The Ad Account ID that this lead form belongs to. */
+    public var adAccountId: String?
+    /** API version. */
+    public var apiVersion: String?
     /** Subscription creation time. Unix timestamp in milliseconds. */
     public var createdTime: Int?
+    /** Lead data encryption algorithm. */
+    public var cryptographicAlgorithm: String?
+    /** Base64 encoded key for client to decrypt lead data. */
+    public var cryptographicKey: String?
+    /** Subscription ID. */
+    public var id: String?
+    /** Lead form ID. */
+    public var leadFormId: String?
+    /** User account used to subscribe lead data. */
+    public var userAccountId: String?
+    /** Standard HTTPS webhook URL. */
+    public var webhookUrl: String?
 
-    public init(id: String? = nil, cryptographicKey: String? = nil, cryptographicAlgorithm: String? = nil, createdTime: Int? = nil) {
-        self.id = id
-        self.cryptographicKey = cryptographicKey
-        self.cryptographicAlgorithm = cryptographicAlgorithm
+    public init(adAccountId: String? = nil, apiVersion: String? = nil, createdTime: Int? = nil, cryptographicAlgorithm: String? = nil, cryptographicKey: String? = nil, id: String? = nil, leadFormId: String? = nil, userAccountId: String? = nil, webhookUrl: String? = nil) {
+        self.adAccountId = adAccountId
+        self.apiVersion = apiVersion
         self.createdTime = createdTime
+        self.cryptographicAlgorithm = cryptographicAlgorithm
+        self.cryptographicKey = cryptographicKey
+        self.id = id
+        self.leadFormId = leadFormId
+        self.userAccountId = userAccountId
+        self.webhookUrl = webhookUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case cryptographicKey = "cryptographic_key"
-        case cryptographicAlgorithm = "cryptographic_algorithm"
+        case adAccountId = "ad_account_id"
+        case apiVersion = "api_version"
         case createdTime = "created_time"
+        case cryptographicAlgorithm = "cryptographic_algorithm"
+        case cryptographicKey = "cryptographic_key"
+        case id
+        case leadFormId = "lead_form_id"
+        case userAccountId = "user_account_id"
+        case webhookUrl = "webhook_url"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(cryptographicKey, forKey: .cryptographicKey)
-        try container.encodeIfPresent(cryptographicAlgorithm, forKey: .cryptographicAlgorithm)
+        try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
+        try container.encodeIfPresent(apiVersion, forKey: .apiVersion)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(cryptographicAlgorithm, forKey: .cryptographicAlgorithm)
+        try container.encodeIfPresent(cryptographicKey, forKey: .cryptographicKey)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(leadFormId, forKey: .leadFormId)
+        try container.encodeIfPresent(userAccountId, forKey: .userAccountId)
+        try container.encodeIfPresent(webhookUrl, forKey: .webhookUrl)
     }
 }
 

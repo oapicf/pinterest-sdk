@@ -2,20 +2,20 @@
 Protected Class CatalogsCreativeAssetsItemsPostFilter
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+		#tag EndNote
+		catalog_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		creative_assets_ids() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-		#tag EndNote
-		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -73,7 +73,7 @@ Protected Class CatalogsCreativeAssetsItemsPostFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="creative_assets_ids"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -81,7 +81,7 @@ Protected Class CatalogsCreativeAssetsItemsPostFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_id"
+			Name="creative_assets_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

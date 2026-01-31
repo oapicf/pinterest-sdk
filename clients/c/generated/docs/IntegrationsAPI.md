@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **external_business_id** | **char \*** | External business ID for the integration. | 
-**integration_request_patch** | **[integration_request_patch_t](integration_request_patch.md) \*** | Parameters to get create/update the Integration Metadata | [optional] 
+**integration_request_patch** | **[integration_request_patch_t](integration_request_patch.md) \*** | Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -119,7 +119,7 @@ integration_metadata_t* IntegrationsAPI_integrationsCommercePost(apiClient_t *ap
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**integration_request** | **[integration_request_t](integration_request.md) \*** | Parameters to get create/update the Integration Metadata | [optional] 
+**integration_request** | **[integration_request_t](integration_request.md) \*** | Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 

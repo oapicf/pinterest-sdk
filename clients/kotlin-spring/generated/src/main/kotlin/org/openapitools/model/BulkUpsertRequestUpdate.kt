@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.AdGroupUpdateRequest
 import org.openapitools.model.AdUpdateRequest
 import org.openapitools.model.CampaignUpdateRequest
+import org.openapitools.model.CatalogsProductGroupsUpdateRequest
 import org.openapitools.model.KeywordUpdate
+import org.openapitools.model.LabelBulkUpdateRequest
 import org.openapitools.model.ProductGroupPromotionUpdateRequest
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -20,17 +22,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request for creation of entities in bulk.
- * @param campaigns 
  * @param adGroups 
  * @param ads 
- * @param productGroups 
+ * @param campaigns 
+ * @param catalogProductGroups 
  * @param keywords 
+ * @param labels 
+ * @param productGroups 
  */
 data class BulkUpsertRequestUpdate(
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("campaigns") val campaigns: kotlin.collections.List<CampaignUpdateRequest>? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -42,11 +42,23 @@ data class BulkUpsertRequestUpdate(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("product_groups") val productGroups: kotlin.collections.List<ProductGroupPromotionUpdateRequest>? = null,
+    @get:JsonProperty("campaigns") val campaigns: kotlin.collections.List<CampaignUpdateRequest>? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("keywords") val keywords: kotlin.collections.List<KeywordUpdate>? = null
+    @get:JsonProperty("catalog_product_groups") val catalogProductGroups: kotlin.collections.List<CatalogsProductGroupsUpdateRequest>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("keywords") val keywords: kotlin.collections.List<KeywordUpdate>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("labels") val labels: kotlin.collections.List<LabelBulkUpdateRequest>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("product_groups") val productGroups: kotlin.collections.List<ProductGroupPromotionUpdateRequest>? = null
 ) {
 
 }

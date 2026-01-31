@@ -74,10 +74,10 @@ private class OASOrderLinesTest {
         OASOrderLines orderLines = new OASOrderLines();
         Map<String, String> x-property-mappings = orderLines.getx-property-mappings();
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
-        System.assertEquals('purchaseOrderId', x-property-mappings.get('purchase_order_id'));
-        System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
         System.assertEquals('paidBudget', x-property-mappings.get('paid_budget'));
         System.assertEquals('paidType', x-property-mappings.get('paid_type'));
+        System.assertEquals('purchaseOrderId', x-property-mappings.get('purchase_order_id'));
+        System.assertEquals('startTime', x-property-mappings.get('start_time'));
     }
 }

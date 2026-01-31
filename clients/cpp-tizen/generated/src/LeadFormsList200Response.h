@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<LeadFormResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <LeadFormResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<LeadFormResponse> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <LeadFormResponse> items);
 
 private:
-	std::list <LeadFormResponse>items;
 	std::string bookmark;
+	std::list <LeadFormResponse>items;
 	void __init();
 	void __cleanup();
 

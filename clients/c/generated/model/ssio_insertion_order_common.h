@@ -19,34 +19,34 @@ typedef struct ssio_insertion_order_common_t ssio_insertion_order_common_t;
 
 
 typedef struct ssio_insertion_order_common_t {
-    char *start_date; // string
-    char *end_date; // string
-    char *po_number; // string
-    double budget_amount; //numeric
+    char *agency_link; // string
+    char *billing_contact_email; // string
     char *billing_contact_firstname; // string
     char *billing_contact_lastname; // string
-    char *billing_contact_email; // string
+    double budget_amount; //numeric
+    char *end_date; // string
+    char *media_contact_email; // string
     char *media_contact_firstname; // string
     char *media_contact_lastname; // string
-    char *media_contact_email; // string
-    char *agency_link; // string
+    char *po_number; // string
+    char *start_date; // string
     char *user_email; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_insertion_order_common_t;
 
 __attribute__((deprecated)) ssio_insertion_order_common_t *ssio_insertion_order_common_create(
-    char *start_date,
-    char *end_date,
-    char *po_number,
-    double budget_amount,
+    char *agency_link,
+    char *billing_contact_email,
     char *billing_contact_firstname,
     char *billing_contact_lastname,
-    char *billing_contact_email,
+    double budget_amount,
+    char *end_date,
+    char *media_contact_email,
     char *media_contact_firstname,
     char *media_contact_lastname,
-    char *media_contact_email,
-    char *agency_link,
+    char *po_number,
+    char *start_date,
     char *user_email
 );
 

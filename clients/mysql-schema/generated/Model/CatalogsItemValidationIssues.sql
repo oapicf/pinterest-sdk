@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsItemValidationIssues`
 --
-SELECT `item_number`, `item_id`, `errors`, `warnings` FROM `CatalogsItemValidationIssues` WHERE 1;
+SELECT `errors`, `item_id`, `item_number`, `warnings` FROM `CatalogsItemValidationIssues` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsItemValidationIssues`
 --
-INSERT INTO `CatalogsItemValidationIssues`(`item_number`, `item_id`, `errors`, `warnings`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsItemValidationIssues`(`errors`, `item_id`, `item_number`, `warnings`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsItemValidationIssues`
 --
-UPDATE `CatalogsItemValidationIssues` SET `item_number` = ?, `item_id` = ?, `errors` = ?, `warnings` = ? WHERE 1;
+UPDATE `CatalogsItemValidationIssues` SET `errors` = ?, `item_id` = ?, `item_number` = ?, `warnings` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsItemValidationIssues`

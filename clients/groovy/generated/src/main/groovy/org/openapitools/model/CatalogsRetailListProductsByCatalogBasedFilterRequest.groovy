@@ -9,6 +9,8 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsRetailListProductsByCatalogBasedFilterRequest {
+    /* Catalog id pertaining to the retail product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -32,12 +34,10 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequest {
 
     /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     CatalogTypeEnum catalogType
-    /* Catalog id pertaining to the retail product group. */
-    String catalogId
-    
-    CatalogsProductGroupFilters filters
     
     Country country
+    
+    CatalogsProductGroupFilters filters
     
     CatalogsLocale locale
 }

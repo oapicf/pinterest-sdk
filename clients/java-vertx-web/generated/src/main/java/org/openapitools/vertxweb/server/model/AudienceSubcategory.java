@@ -8,22 +8,40 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceSubcategory   {
   
+  private String id;
+  private BigDecimal index;
   private String key;
   private String name;
   private BigDecimal ratio;
-  private BigDecimal index;
-  private String id;
 
   public AudienceSubcategory () {
 
   }
 
-  public AudienceSubcategory (String key, String name, BigDecimal ratio, BigDecimal index, String id) {
+  public AudienceSubcategory (String id, BigDecimal index, String key, String name, BigDecimal ratio) {
+    this.id = id;
+    this.index = index;
     this.key = key;
     this.name = name;
     this.ratio = ratio;
-    this.index = index;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
     this.id = id;
+  }
+
+    
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+  public void setIndex(BigDecimal index) {
+    this.index = index;
   }
 
     
@@ -53,24 +71,6 @@ public class AudienceSubcategory   {
     this.ratio = ratio;
   }
 
-    
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,16 +81,16 @@ public class AudienceSubcategory   {
       return false;
     }
     AudienceSubcategory audienceSubcategory = (AudienceSubcategory) o;
-    return Objects.equals(key, audienceSubcategory.key) &&
-        Objects.equals(name, audienceSubcategory.name) &&
-        Objects.equals(ratio, audienceSubcategory.ratio) &&
+    return Objects.equals(id, audienceSubcategory.id) &&
         Objects.equals(index, audienceSubcategory.index) &&
-        Objects.equals(id, audienceSubcategory.id);
+        Objects.equals(key, audienceSubcategory.key) &&
+        Objects.equals(name, audienceSubcategory.name) &&
+        Objects.equals(ratio, audienceSubcategory.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -98,11 +98,11 @@ public class AudienceSubcategory   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSubcategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

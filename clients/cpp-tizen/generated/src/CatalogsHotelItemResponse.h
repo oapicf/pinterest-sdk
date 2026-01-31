@@ -51,6 +51,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	CatalogsHotelAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsHotelAttributes  attributes);
+	/*! \brief Get 
+	 */
 	CatalogsType getCatalogType();
 
 	/*! \brief Set 
@@ -70,19 +77,12 @@ public:
 	/*! \brief Set The pins mapped to the item
 	 */
 	void setPins(std::list <Pin> pins);
-	/*! \brief Get 
-	 */
-	CatalogsHotelAttributes getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(CatalogsHotelAttributes  attributes);
 
 private:
+	CatalogsHotelAttributes attributes;
 	CatalogsType catalog_type;
 	std::string hotel_id;
 	std::list <Pin>pins;
-	CatalogsHotelAttributes attributes;
 	void __init();
 	void __cleanup();
 

@@ -5,11 +5,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.openapitools.model.EventData;
 import org.openapitools.model.ObjectiveType;
-import org.openapitools.model.PinterestTagEventData;
 
 @Canonical
 class AudienceRule {
+    /* Ad account ID. */
+    String adAccountId
+    /* Ad ID for engagement audience filter. */
+    List<String> adId = new ArrayList<>()
+    /* Campaign ID for engagement audience filter. */
+    List<String> campaignId = new ArrayList<>()
     /* Valid countries include: \"US\", \"CA\", and \"GB\". */
     String country
     /* Customer list ID. For CUSTOMER_LIST `audience_type`. */
@@ -18,10 +24,18 @@ class AudienceRule {
     List<String> engagementDomain = new ArrayList<>()
     /* Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.  */
     String engagementType
+    /* Optional for ENGAGEMENT. Engager type value should be 1-2. */
+    Integer engagerType
     /* A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event. */
     String event
     
-    PinterestTagEventData eventData
+    EventData eventData
+    /* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline */
+    Object eventSource
+    /* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api */
+    Object ingestionSource
+    /* Objective for engagement audience filter. */
+    List<ObjectiveType> objectiveType = new ArrayList<>()
     /* Percentage should be 1-10. The targeted audience should be this % size across Pinterest. */
     Integer percentage
     /* IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"] */
@@ -36,18 +50,4 @@ class AudienceRule {
     List<String> url = new ArrayList<>()
     /* The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`. */
     String visitorSourceId
-    /* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline */
-    Object eventSource
-    /* Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api */
-    Object ingestionSource
-    /* Optional for ENGAGEMENT. Engager type value should be 1-2. */
-    Integer engagerType
-    /* Campaign ID for engagement audience filter. */
-    List<String> campaignId = new ArrayList<>()
-    /* Ad ID for engagement audience filter. */
-    List<String> adId = new ArrayList<>()
-    /* Objective for engagement audience filter. */
-    List<ObjectiveType> objectiveType = new ArrayList<>()
-    /* Ad account ID. */
-    String adAccountId
 }

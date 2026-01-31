@@ -10,8 +10,14 @@ import java.math.BigDecimal;
 /**
  * AudienceSubcategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceSubcategory   {
+  @JsonProperty("id")
+  private String id;
+
+  @JsonProperty("index")
+  private BigDecimal index;
+
   @JsonProperty("key")
   private String key;
 
@@ -21,11 +27,41 @@ public class AudienceSubcategory   {
   @JsonProperty("ratio")
   private BigDecimal ratio;
 
-  @JsonProperty("index")
-  private BigDecimal index;
+  public AudienceSubcategory id(String id) {
+    this.id = id;
+    return this;
+  }
 
-  @JsonProperty("id")
-  private String id;
+   /**
+   * Subinterest ID.
+   * @return id
+  **/
+  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AudienceSubcategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
+   /**
+   * Subinterest affinity index.
+   * @return index
+  **/
+  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+  public BigDecimal getIndex() {
+    return index;
+  }
+
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
 
   public AudienceSubcategory key(String key) {
     this.key = key;
@@ -81,42 +117,6 @@ public class AudienceSubcategory   {
     this.ratio = ratio;
   }
 
-  public AudienceSubcategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
-   /**
-   * Subinterest affinity index.
-   * @return index
-  **/
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceSubcategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Subinterest ID.
-   * @return id
-  **/
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -127,16 +127,16 @@ public class AudienceSubcategory   {
       return false;
     }
     AudienceSubcategory audienceSubcategory = (AudienceSubcategory) o;
-    return Objects.equals(this.key, audienceSubcategory.key) &&
-        Objects.equals(this.name, audienceSubcategory.name) &&
-        Objects.equals(this.ratio, audienceSubcategory.ratio) &&
+    return Objects.equals(this.id, audienceSubcategory.id) &&
         Objects.equals(this.index, audienceSubcategory.index) &&
-        Objects.equals(this.id, audienceSubcategory.id);
+        Objects.equals(this.key, audienceSubcategory.key) &&
+        Objects.equals(this.name, audienceSubcategory.name) &&
+        Objects.equals(this.ratio, audienceSubcategory.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -144,11 +144,11 @@ public class AudienceSubcategory   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSubcategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

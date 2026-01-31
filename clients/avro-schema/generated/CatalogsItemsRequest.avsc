@@ -10,6 +10,11 @@
       "doc": ""
     },
     {
+      "name": "filters",
+      "type": "model.CatalogsItemsPostFilters",
+      "doc": ""
+    },
+    {
       "name": "language",
       "type": {
         "type": "enum",
@@ -125,11 +130,6 @@
         ]
       },
       "doc": "We recommend using the CatalogsLocale values."
-    },
-    {
-      "name": "filters",
-      "type": "model.CatalogsItemsPostFilters",
-      "doc": ""
     }
   ]
 

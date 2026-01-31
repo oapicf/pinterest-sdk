@@ -15,7 +15,7 @@
 
 typedef struct trending_keywords_response_t trending_keywords_response_t;
 
-#include "trending_keywords_response_trends_inner.h"
+#include "trending_keyword.h"
 
 
 

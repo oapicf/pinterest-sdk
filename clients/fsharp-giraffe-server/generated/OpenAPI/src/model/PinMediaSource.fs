@@ -2,11 +2,12 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.ContentType
 open OpenAPI.Model.PinMediaSourceImageBase64
 open OpenAPI.Model.PinMediaSourceImageURL
 open OpenAPI.Model.PinMediaSourceImagesBase64
 open OpenAPI.Model.PinMediaSourceImagesURL
-open OpenAPI.Model.PinMediaSourceImagesURLItemsInner
+open OpenAPI.Model.PinMediaSourceImagesURLItem
 open OpenAPI.Model.PinMediaSourcePinURL
 open OpenAPI.Model.PinMediaSourceVideoID
 
@@ -17,25 +18,20 @@ module PinMediaSource =
   //#region enums
   type SourceTypeEnum = PinUrlEnum of string  
   //#endregion
-  //#region enums
-  type ContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
-  //#endregion
-  //#region enums
-  type CoverImageContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
-  //#endregion
 
   type PinMediaSource = {
-    SourceType : SourceTypeEnum;
-    ContentType : ContentTypeEnum;
+    ContentType : ContentType;
     Data : string;
     IsStandard : bool;
+    SourceType : SourceTypeEnum;
     Url : string;
-    CoverImageUrl : string;
-    CoverImageContentType : CoverImageContentTypeEnum;
+    CoverImageContentType : ContentType;
     CoverImageData : string;
+    CoverImageKeyFrameTime : int;
+    CoverImageUrl : string;
     MediaId : string;
-    Items : PinMediaSourceImagesURLItemsInner[];
     Index : int;
+    Items : PinMediaSourceImagesURLItem[];
     IsAffiliateLink : bool;
   }
   //#endregion

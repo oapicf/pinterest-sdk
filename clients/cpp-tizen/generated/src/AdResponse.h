@@ -10,6 +10,8 @@
 
 #include <string>
 #include "CreativeType.h"
+#include "CustomizableCTAType.h"
+#include "DisclosureType.h"
 #include "EntityStatus.h"
 #include "GridClickType.h"
 #include "PinPromotionSummaryStatus.h"
@@ -101,6 +103,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCreativeType(CreativeType  creative_type);
+	/*! \brief Get 
+	 */
+	CustomizableCTAType getCustomizableCtaType();
+
+	/*! \brief Set 
+	 */
+	void setCustomizableCtaType(CustomizableCTAType  customizable_cta_type);
 	/*! \brief Get Destination URL.
 	 */
 	std::string getDestinationUrl();
@@ -108,6 +117,27 @@ public:
 	/*! \brief Set Destination URL.
 	 */
 	void setDestinationUrl(std::string  destination_url);
+	/*! \brief Get 
+	 */
+	DisclosureType getDisclosureType();
+
+	/*! \brief Set 
+	 */
+	void setDisclosureType(DisclosureType  disclosure_type);
+	/*! \brief Get URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+	 */
+	std::string getDisclosureUrl();
+
+	/*! \brief Set URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+	 */
+	void setDisclosureUrl(std::string  disclosure_url);
+	/*! \brief Get 
+	 */
+	GridClickType getGridClickType();
+
+	/*! \brief Set 
+	 */
+	void setGridClickType(GridClickType  grid_click_type);
 	/*! \brief Get Deep link URL for iOS devices.
 	 */
 	std::string getIosDeepLink();
@@ -129,6 +159,13 @@ public:
 	/*! \brief Set Is pin repinnable?
 	 */
 	void setIsRemovable(bool  is_removable);
+	/*! \brief Get Lead form ID for lead ad generation.
+	 */
+	std::string getLeadFormId();
+
+	/*! \brief Set Lead form ID for lead ad generation.
+	 */
+	void setLeadFormId(std::string  lead_form_id);
 	/*! \brief Get Name of the ad - 255 chars max.
 	 */
 	std::string getName();
@@ -136,6 +173,13 @@ public:
 	/*! \brief Set Name of the ad - 255 chars max.
 	 */
 	void setName(std::string  name);
+	/*! \brief Get Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	 */
+	QuizPinData getQuizPinData();
+
+	/*! \brief Set Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	 */
+	void setQuizPinData(QuizPinData  quiz_pin_data);
 	/*! \brief Get 
 	 */
 	EntityStatus getStatus();
@@ -157,34 +201,6 @@ public:
 	/*! \brief Set Tracking URL for ad impressions.
 	 */
 	void setViewTrackingUrl(std::string  view_tracking_url);
-	/*! \brief Get Lead form ID for lead ad generation.
-	 */
-	std::string getLeadFormId();
-
-	/*! \brief Set Lead form ID for lead ad generation.
-	 */
-	void setLeadFormId(std::string  lead_form_id);
-	/*! \brief Get 
-	 */
-	GridClickType getGridClickType();
-
-	/*! \brief Set 
-	 */
-	void setGridClickType(GridClickType  grid_click_type);
-	/*! \brief Get Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-	 */
-	std::string getCustomizableCtaType();
-
-	/*! \brief Set Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-	 */
-	void setCustomizableCtaType(std::string  customizable_cta_type);
-	/*! \brief Get Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	 */
-	QuizPinData getQuizPinData();
-
-	/*! \brief Set Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	 */
-	void setQuizPinData(QuizPinData  quiz_pin_data);
 	/*! \brief Get Pin ID.
 	 */
 	std::string getPinId();
@@ -248,6 +264,13 @@ public:
 	/*! \brief Set Ad review status
 	 */
 	void setReviewStatus(std::string  review_status);
+	/*! \brief Get Ad summary status
+	 */
+	PinPromotionSummaryStatus getSummaryStatus();
+
+	/*! \brief Set Ad summary status
+	 */
+	void setSummaryStatus(PinPromotionSummaryStatus  summary_status);
 	/*! \brief Get Always \"ad\".
 	 */
 	std::string getType();
@@ -262,13 +285,6 @@ public:
 	/*! \brief Set Last update time. Unix timestamp in seconds.
 	 */
 	void setUpdatedTime(int  updated_time);
-	/*! \brief Get Ad summary status
-	 */
-	PinPromotionSummaryStatus getSummaryStatus();
-
-	/*! \brief Set Ad summary status
-	 */
-	void setSummaryStatus(PinPromotionSummaryStatus  summary_status);
 
 private:
 	std::string ad_group_id;
@@ -278,18 +294,20 @@ private:
 	std::list <std::string>carousel_ios_deep_links;
 	std::string click_tracking_url;
 	CreativeType creative_type;
+	CustomizableCTAType customizable_cta_type;
 	std::string destination_url;
+	DisclosureType disclosure_type;
+	std::string disclosure_url;
+	GridClickType grid_click_type;
 	std::string ios_deep_link;
 	bool is_pin_deleted;
 	bool is_removable;
+	std::string lead_form_id;
 	std::string name;
+	QuizPinData quiz_pin_data;
 	EntityStatus status;
 	TrackingUrls tracking_urls;
 	std::string view_tracking_url;
-	std::string lead_form_id;
-	GridClickType grid_click_type;
-	std::string customizable_cta_type;
-	QuizPinData quiz_pin_data;
 	std::string pin_id;
 	std::string ad_account_id;
 	std::string campaign_id;
@@ -299,9 +317,9 @@ private:
 	std::list <std::string>rejected_reasons;
 	std::list <std::string>rejection_labels;
 	std::string review_status;
+	PinPromotionSummaryStatus summary_status;
 	std::string type;
 	int updated_time;
-	PinPromotionSummaryStatus summary_status;
 	void __init();
 	void __cleanup();
 

@@ -8,11 +8,11 @@ The class is defined in **[MultipleProductGroupsInner.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | `String` |  | 
 **description** | `String` |  |  [optional property]
-**isFeatured** | `Boolean` | boolean indicator of whether the product group is being featured or not |  [optional property]
-**filters** | [`CatalogsProductGroupFiltersRequest`](CatalogsProductGroupFiltersRequest.md) |  | 
 **feedId** | `String` | Catalog Feed id pertaining to the catalog product group. | 
+**filters** | [`CatalogsProductGroupFiltersRequest`](CatalogsProductGroupFiltersRequest.md) |  | 
+**isFeatured** | `Boolean` | boolean indicator of whether the product group is being featured or not |  [optional property]
+**name** | `String` |  | 
 
 
 

@@ -20,11 +20,12 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ConversionTagsApi
 import org.openapitools.client.models.ConversionEventResponse
+import org.openapitools.client.models.ConversionTag
 import org.openapitools.client.models.ConversionTagCreate
-import org.openapitools.client.models.ConversionTagListResponse
-import org.openapitools.client.models.ConversionTagResponse
+import org.openapitools.client.models.ConversionTagsList200Response
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.PageVisitConversionTagsGet200Response
+import org.openapitools.client.models.PinterestLibError
 
 class ConversionTagsApiTest : ShouldSpec() {
     init {
@@ -35,8 +36,8 @@ class ConversionTagsApiTest : ShouldSpec() {
         should("test conversionTagsCreate") {
             // uncomment below to test conversionTagsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val conversionTagCreate : ConversionTagCreate =  // ConversionTagCreate | Conversion Tag to create
-            //val result : ConversionTagResponse = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate)
+            //val conversionTagCreate : ConversionTagCreate =  // ConversionTagCreate | 
+            //val result : ConversionTag = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate)
             //result shouldBe ("TODO")
         }
 
@@ -45,7 +46,7 @@ class ConversionTagsApiTest : ShouldSpec() {
             // uncomment below to test conversionTagsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val conversionTagId : kotlin.String = 2617998078212 // kotlin.String | Id of the conversion tag.
-            //val result : ConversionTagResponse = apiInstance.conversionTagsGet(adAccountId, conversionTagId)
+            //val result : ConversionTag = apiInstance.conversionTagsGet(adAccountId, conversionTagId)
             //result shouldBe ("TODO")
         }
 
@@ -53,8 +54,8 @@ class ConversionTagsApiTest : ShouldSpec() {
         should("test conversionTagsList") {
             // uncomment below to test conversionTagsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val filterDeleted : kotlin.Boolean = true // kotlin.Boolean | Filter out deleted tags.
-            //val result : ConversionTagListResponse = apiInstance.conversionTagsList(adAccountId, filterDeleted)
+            //val filterDeleted : kotlin.Boolean = true // kotlin.Boolean | Filter by deleted status
+            //val result : ConversionTagsList200Response = apiInstance.conversionTagsList(adAccountId, filterDeleted)
             //result shouldBe ("TODO")
         }
 

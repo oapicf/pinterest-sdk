@@ -18,52 +18,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateMMMReportResponseData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportResponseData   {
-  private BulkReportingJobStatus reportStatus;
-  private String token;
   private String message;
+  private BulkReportingJobStatus reportStatus;
   private String status;
+  private String token;
 
   public CreateMMMReportResponseData() {
-  }
-
-  /**
-   **/
-  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
-    this.reportStatus = reportStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("report_status")
-  public BulkReportingJobStatus getReportStatus() {
-    return reportStatus;
-  }
-
-  @JsonProperty("report_status")
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
-    this.reportStatus = reportStatus;
-  }
-
-  /**
-   **/
-  public CreateMMMReportResponseData token(String token) {
-    this.token = token;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("token")
-  public String getToken() {
-    return token;
-  }
-
-  @JsonProperty("token")
-  public void setToken(String token) {
-    this.token = token;
   }
 
   /**
@@ -87,6 +49,25 @@ public class CreateMMMReportResponseData   {
 
   /**
    **/
+  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
+    this.reportStatus = reportStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_status")
+  public BulkReportingJobStatus getReportStatus() {
+    return reportStatus;
+  }
+
+  @JsonProperty("report_status")
+  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+    this.reportStatus = reportStatus;
+  }
+
+  /**
+   **/
   public CreateMMMReportResponseData status(String status) {
     this.status = status;
     return this;
@@ -104,6 +85,25 @@ public class CreateMMMReportResponseData   {
     this.status = status;
   }
 
+  /**
+   **/
+  public CreateMMMReportResponseData token(String token) {
+    this.token = token;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("token")
+  public String getToken() {
+    return token;
+  }
+
+  @JsonProperty("token")
+  public void setToken(String token) {
+    this.token = token;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,15 +114,15 @@ public class CreateMMMReportResponseData   {
       return false;
     }
     CreateMMMReportResponseData createMMMReportResponseData = (CreateMMMReportResponseData) o;
-    return Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
-        Objects.equals(this.token, createMMMReportResponseData.token) &&
-        Objects.equals(this.message, createMMMReportResponseData.message) &&
-        Objects.equals(this.status, createMMMReportResponseData.status);
+    return Objects.equals(this.message, createMMMReportResponseData.message) &&
+        Objects.equals(this.reportStatus, createMMMReportResponseData.reportStatus) &&
+        Objects.equals(this.status, createMMMReportResponseData.status) &&
+        Objects.equals(this.token, createMMMReportResponseData.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, message, status);
+    return Objects.hash(message, reportStatus, status, token);
   }
 
   @Override
@@ -130,10 +130,10 @@ public class CreateMMMReportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportResponseData {\n");
     
-    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("}");
     return sb.toString();
   }

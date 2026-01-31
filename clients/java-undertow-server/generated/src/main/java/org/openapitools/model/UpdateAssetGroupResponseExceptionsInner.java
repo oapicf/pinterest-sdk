@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,12 +20,30 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupResponseExceptionsInner   {
   
+  private String assetGroupId;
   private Integer code;
   private String message;
-  private String assetGroupId;
+
+  /**
+   * Asset group id of the exception.
+   */
+  public UpdateAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+  public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
 
   /**
    * Error code associated with the error editing asset group.
@@ -63,24 +81,6 @@ public class UpdateAssetGroupResponseExceptionsInner   {
     this.message = message;
   }
 
-  /**
-   * Asset group id of the exception.
-   */
-  public UpdateAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
-  @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-  public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -91,14 +91,14 @@ public class UpdateAssetGroupResponseExceptionsInner   {
       return false;
     }
     UpdateAssetGroupResponseExceptionsInner updateAssetGroupResponseExceptionsInner = (UpdateAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(code, updateAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(message, updateAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(code, updateAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(message, updateAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
@@ -106,9 +106,9 @@ public class UpdateAssetGroupResponseExceptionsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponseExceptionsInner {\n");
     
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

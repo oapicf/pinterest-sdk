@@ -23,28 +23,24 @@ conversion_tag_common_t* instantiate_conversion_tag_common(int include_optional)
   conversion_tag_common_t* conversion_tag_common = NULL;
   if (include_optional) {
     conversion_tag_common = conversion_tag_common_create(
-      "549755885175",
       "<script type=text/javascript> [...]",
-      pinterest_rest_api_conversion_tag_common__"VALIDATION_COMPLETE",
+       // false, not to have infinite recursion
+      instantiate_conversion_tag_configs(0),
+      UNKNOWN,
       "2617998078212",
       1599030000000,
       "ACME Checkout Test Tag",
-      pinterest_rest_api_conversion_tag_common__"ACTIVE",
-      "3",
-       // false, not to have infinite recursion
-      instantiate_conversion_tag_configs(0)
+      "3"
     );
   } else {
     conversion_tag_common = conversion_tag_common_create(
-      "549755885175",
       "<script type=text/javascript> [...]",
-      pinterest_rest_api_conversion_tag_common__"VALIDATION_COMPLETE",
+      NULL,
+      UNKNOWN,
       "2617998078212",
       1599030000000,
       "ACME Checkout Test Tag",
-      pinterest_rest_api_conversion_tag_common__"ACTIVE",
-      "3",
-      NULL
+      "3"
     );
   }
 

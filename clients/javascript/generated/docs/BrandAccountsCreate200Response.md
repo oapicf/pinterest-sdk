@@ -1,0 +1,9 @@
+# PinterestSdk.BrandAccountsCreate200Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**brandAccountId** | **String** | id of the newly created brand account | [optional] 
+
+

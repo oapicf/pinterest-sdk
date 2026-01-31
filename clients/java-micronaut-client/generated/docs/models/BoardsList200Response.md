@@ -8,8 +8,8 @@ The class is defined in **[BoardsList200Response.java](../../src/main/java/org/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;Board&gt;`](Board.md) | Boards | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;Board&gt;`](Board.md) |  | 
 
 
 

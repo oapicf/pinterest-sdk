@@ -4,8 +4,8 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;PinMediaSourceImagesURLItemsInner&gt;**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. |  |
-| **sourceType** | [**inline**](#SourceType) |  |  [optional] |
+| **items** | [**kotlin.collections.List&lt;PinMediaSourceImagesURLItem&gt;**](PinMediaSourceImagesURLItem.md) | Array with image objects. |  |
+| **sourceType** | [**inline**](#SourceType) | The source type of the media. |  |
 | **index** | **kotlin.Int** |  |  [optional] |
 
 

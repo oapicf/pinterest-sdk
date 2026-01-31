@@ -1,0 +1,22 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "billable_event" },
+      {"model": "countries" },
+      {"model": "creative_type" },
+      {"model": "currency" },
+      {"model": "objective_type" },
+      {"model": "optimization_goal_metadata" },
+    ]
+  }]
+}

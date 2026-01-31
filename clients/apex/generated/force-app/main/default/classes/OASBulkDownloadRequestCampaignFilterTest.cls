@@ -73,10 +73,10 @@ private class OASBulkDownloadRequestCampaignFilterTest {
     private static void maintainRenamedProperties() {
         OASBulkDownloadRequestCampaignFilter bulkDownloadRequestCampaignFilter = new OASBulkDownloadRequestCampaignFilter();
         Map<String, String> x-property-mappings = bulkDownloadRequestCampaignFilter.getx-property-mappings();
-        System.assertEquals('startTime', x-property-mappings.get('start_time'));
-        System.assertEquals('endTime', x-property-mappings.get('end_time'));
         System.assertEquals('campaignStatus', x-property-mappings.get('campaign_status'));
+        System.assertEquals('endTime', x-property-mappings.get('end_time'));
         System.assertEquals('objectiveType', x-property-mappings.get('objective_type'));
+        System.assertEquals('startTime', x-property-mappings.get('start_time'));
     }
 
     @isTest
@@ -84,8 +84,8 @@ private class OASBulkDownloadRequestCampaignFilterTest {
         OASBulkDownloadRequestCampaignFilter bulkDownloadRequestCampaignFilter = new OASBulkDownloadRequestCampaignFilter();
         System.assertEquals(new List<OASCampaignSummaryStatus>(), bulkDownloadRequestCampaignFilter.campaignStatus);
         System.assertEquals(new List<OASObjectiveType>(), bulkDownloadRequestCampaignFilter.objectiveType);
-        System.assertEquals(null, bulkDownloadRequestCampaignFilter.startTime);
         System.assertEquals(null, bulkDownloadRequestCampaignFilter.endTime);
         System.assertEquals(null, bulkDownloadRequestCampaignFilter.name);
+        System.assertEquals(null, bulkDownloadRequestCampaignFilter.startTime);
     }
 }

@@ -7,13 +7,13 @@
 Name | Type
 ------------ | -------------
 `countries` | [Array&lt;TargetingAdvertiserCountry&gt;](TargetingAdvertiserCountry.md)
-`reportName` | string
-`startDate` | string
+`columns` | [Array&lt;MMMReportingColumn&gt;](MMMReportingColumn.md)
 `endDate` | string
 `granularity` | string
 `level` | string
+`reportName` | string
+`startDate` | string
 `targetingTypes` | [Array&lt;MMMReportingTargetingType&gt;](MMMReportingTargetingType.md)
-`columns` | [Array&lt;MMMReportingColumn&gt;](MMMReportingColumn.md)
 
 ## Example
 
@@ -23,13 +23,13 @@ import type { CreateMMMReportRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "countries": null,
-  "reportName": null,
-  "startDate": 2020-12-20,
+  "columns": null,
   "endDate": 2020-12-20,
   "granularity": null,
   "level": null,
+  "reportName": null,
+  "startDate": 2020-12-20,
   "targetingTypes": ["GENDER"],
-  "columns": null,
 } satisfies CreateMMMReportRequest
 
 console.log(example)

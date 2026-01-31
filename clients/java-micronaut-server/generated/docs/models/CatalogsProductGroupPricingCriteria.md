@@ -9,8 +9,8 @@ The class is defined in **[CatalogsProductGroupPricingCriteria.java](../../src/m
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | `Boolean` |  |  [optional property]
-**values** | `BigDecimal` |  | 
 **negated** | `Boolean` |  |  [optional property]
+**values** | `BigDecimal` |  | 
 
 
 

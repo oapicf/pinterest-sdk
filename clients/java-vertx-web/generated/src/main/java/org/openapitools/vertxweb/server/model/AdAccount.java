@@ -16,28 +16,55 @@ import org.openapitools.vertxweb.server.model.Currency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdAccount   {
   
+  private Country country;
+  private Integer createdTime;
+  private Currency currency;
   private String id;
   private String name;
   private AdAccountOwner owner;
-  private Country country;
-  private Currency currency;
   private List<BusinessAccessRole> permissions = new ArrayList<>();
-  private Integer createdTime;
   private Integer updatedTime;
 
   public AdAccount () {
 
   }
 
-  public AdAccount (String id, String name, AdAccountOwner owner, Country country, Currency currency, List<BusinessAccessRole> permissions, Integer createdTime, Integer updatedTime) {
+  public AdAccount (Country country, Integer createdTime, Currency currency, String id, String name, AdAccountOwner owner, List<BusinessAccessRole> permissions, Integer updatedTime) {
+    this.country = country;
+    this.createdTime = createdTime;
+    this.currency = currency;
     this.id = id;
     this.name = name;
     this.owner = owner;
-    this.country = country;
-    this.currency = currency;
     this.permissions = permissions;
-    this.createdTime = createdTime;
     this.updatedTime = updatedTime;
+  }
+
+    
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
+  }
+  public void setCountry(Country country) {
+    this.country = country;
+  }
+
+    
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+    
+  @JsonProperty("currency")
+  public Currency getCurrency() {
+    return currency;
+  }
+  public void setCurrency(Currency currency) {
+    this.currency = currency;
   }
 
     
@@ -68,39 +95,12 @@ public class AdAccount   {
   }
 
     
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-    
-  @JsonProperty("currency")
-  public Currency getCurrency() {
-    return currency;
-  }
-  public void setCurrency(Currency currency) {
-    this.currency = currency;
-  }
-
-    
   @JsonProperty("permissions")
   public List<BusinessAccessRole> getPermissions() {
     return permissions;
   }
   public void setPermissions(List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
-  }
-
-    
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
   }
 
     
@@ -122,19 +122,19 @@ public class AdAccount   {
       return false;
     }
     AdAccount adAccount = (AdAccount) o;
-    return Objects.equals(id, adAccount.id) &&
+    return Objects.equals(country, adAccount.country) &&
+        Objects.equals(createdTime, adAccount.createdTime) &&
+        Objects.equals(currency, adAccount.currency) &&
+        Objects.equals(id, adAccount.id) &&
         Objects.equals(name, adAccount.name) &&
         Objects.equals(owner, adAccount.owner) &&
-        Objects.equals(country, adAccount.country) &&
-        Objects.equals(currency, adAccount.currency) &&
         Objects.equals(permissions, adAccount.permissions) &&
-        Objects.equals(createdTime, adAccount.createdTime) &&
         Objects.equals(updatedTime, adAccount.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, owner, country, currency, permissions, createdTime, updatedTime);
+    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, updatedTime);
   }
 
   @Override
@@ -142,13 +142,13 @@ public class AdAccount   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccount {\n");
     
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,5 +1,6 @@
 package org.openapitools.api;
 
+import org.openapitools.model.ConversionAccessTokenResponse;
 import org.openapitools.model.Error;
 import org.openapitools.model.OauthAccessTokenResponse;
 
@@ -20,18 +21,33 @@ import io.swagger.jaxrs.PATCH;
  * <p>Pinterest's REST API
  *
  */
-@Path("/oauth/token")
+@Path("/oauth")
 @Api(value = "/", description = "")
 public interface OauthApi  {
 
     /**
-     * Generate OAuth access token
+     * Generate OAuth access token for conversion API
      *
-     * Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&gt;Authentication&lt;/a&gt; for more.  &lt;strong&gt;Parameter &lt;i&gt;refresh_on&lt;/i&gt; and its corresponding response type &lt;i&gt;everlasting_refresh&lt;/i&gt; are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  &lt;strong&gt;Grant type &lt;i&gt;client_credentials&lt;/i&gt; and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.&lt;/strong&gt;
+     * Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
      *
      */
     @POST
-    
+    @Path("/conversion_token")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Generate OAuth access token for conversion API", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "response", response = ConversionAccessTokenResponse.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public ConversionAccessTokenResponse oauthConversionToken();
+
+    /**
+     * Generate OAuth access token
+     *
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+     *
+     */
+    @POST
+    @Path("/token")
     @Consumes({ "application/x-www-form-urlencoded" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Generate OAuth access token", tags={  })
@@ -39,4 +55,22 @@ public interface OauthApi  {
         @ApiResponse(code = 200, message = "response", response = OauthAccessTokenResponse.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public OauthAccessTokenResponse oauthToken(@Multipart(value = "grant_type")  String grantType);
+
+    /**
+     * Revoke a token
+     *
+     * Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+     *
+     */
+    @POST
+    @Path("/token/revoke")
+    @Consumes({ "application/x-www-form-urlencoded" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Revoke a token", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Successful token revocation. No content is returned."),
+        @ApiResponse(code = 401, message = "Client authentication error.", response = Error.class),
+        @ApiResponse(code = 403, message = "Client is not allowed to revoke token.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public void tokenRevoke(@Multipart(value = "token")  String token, @Multipart(value = "token_type_hint", required = false)  String tokenTypeHint);
 }

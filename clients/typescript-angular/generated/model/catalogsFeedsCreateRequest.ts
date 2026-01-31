@@ -21,21 +21,21 @@ import { NullableCurrency } from './nullableCurrency';
  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
 export interface CatalogsFeedsCreateRequest { 
-    default_currency?: NullableCurrency | null;
-    /**
-     * A human-friendly name associated to a given feed.
-     */
-    name: string;
-    format: CatalogsFormat;
-    default_locale?: CatalogsFeedsCreateRequestDefaultLocale;
     credentials?: CatalogsFeedCredentials | null;
+    default_availability?: ProductAvailabilityType | null;
+    default_country?: Country;
+    default_currency?: NullableCurrency | null;
+    default_locale?: CatalogsFeedsCreateRequestDefaultLocale;
+    format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
      */
     location: string;
+    /**
+     * A human-friendly name associated to a given feed.
+     */
+    name: string;
     preferred_processing_schedule?: CatalogsFeedProcessingSchedule | null;
-    default_country?: Country;
-    default_availability?: ProductAvailabilityType | null;
     status?: CatalogsStatus;
 }
 export namespace CatalogsFeedsCreateRequest {

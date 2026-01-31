@@ -4,12 +4,13 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **refreshToken** | **kotlin.String** |  |  |
-| **refreshTokenExpiresIn** | **kotlin.Int** |  |  |
 | **accessToken** | **kotlin.String** |  |  |
-| **tokenType** | **kotlin.String** |  |  |
 | **expiresIn** | **kotlin.Int** |  |  |
 | **scope** | **kotlin.String** |  |  |
+| **tokenType** | **kotlin.String** |  |  |
+| **refreshToken** | **kotlin.String** |  |  [optional] |
+| **refreshTokenExpiresAt** | **kotlin.Int** |  |  [optional] |
+| **refreshTokenExpiresIn** | **kotlin.Int** |  |  [optional] |
 | **responseType** | [**inline**](#ResponseType) |  |  [optional] |
 
 

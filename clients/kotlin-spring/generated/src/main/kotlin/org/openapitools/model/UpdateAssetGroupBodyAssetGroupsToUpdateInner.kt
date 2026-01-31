@@ -17,22 +17,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param assetGroupId Unique identifier of the asset group to update.
- * @param name Asset Group name
- * @param description Asset group description
  * @param assetGroupTypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  * @param assetsToAdd A list of asset ids to add to the asset group.
  * @param assetsToRemove A list of asset ids to remove from the asset group.
+ * @param description Asset group description
+ * @param name Asset Group name
  */
 data class UpdateAssetGroupBodyAssetGroupsToUpdateInner(
 
     @Schema(example = "666791336903426391", required = true, description = "Unique identifier of the asset group to update.")
     @get:JsonProperty("asset_group_id", required = true) val assetGroupId: kotlin.String,
-
-    @Schema(example = "Canada Ad Accounts", description = "Asset Group name")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
-    @Schema(example = "Asset groups that has ad accounts shared in Canada", description = "Asset group description")
-    @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
@@ -42,7 +36,13 @@ data class UpdateAssetGroupBodyAssetGroupsToUpdateInner(
     @get:JsonProperty("assets_to_add") val assetsToAdd: kotlin.collections.List<kotlin.String>? = null,
 
     @Schema(example = "null", description = "A list of asset ids to remove from the asset group.")
-    @get:JsonProperty("assets_to_remove") val assetsToRemove: kotlin.collections.List<kotlin.String>? = null
+    @get:JsonProperty("assets_to_remove") val assetsToRemove: kotlin.collections.List<kotlin.String>? = null,
+
+    @Schema(example = "Asset groups that has ad accounts shared in Canada", description = "Asset group description")
+    @get:JsonProperty("description") val description: kotlin.String? = null,
+
+    @Schema(example = "Canada Ad Accounts", description = "Asset Group name")
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
 }

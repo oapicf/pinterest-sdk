@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AudienceDefinition`
 --
-SELECT `date`, `type`, `scope` FROM `AudienceDefinition` WHERE 1;
+SELECT `date`, `scope`, `type` FROM `AudienceDefinition` WHERE 1;
 
 --
 -- INSERT template for table `AudienceDefinition`
 --
-INSERT INTO `AudienceDefinition`(`date`, `type`, `scope`) VALUES (?, ?, ?);
+INSERT INTO `AudienceDefinition`(`date`, `scope`, `type`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `AudienceDefinition`
 --
-UPDATE `AudienceDefinition` SET `date` = ?, `type` = ?, `scope` = ? WHERE 1;
+UPDATE `AudienceDefinition` SET `date` = ?, `scope` = ?, `type` = ? WHERE 1;
 
 --
 -- DELETE template for table `AudienceDefinition`

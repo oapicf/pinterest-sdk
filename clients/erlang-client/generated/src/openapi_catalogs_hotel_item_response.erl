@@ -5,19 +5,19 @@
 -export_type([openapi_catalogs_hotel_item_response/0]).
 
 -type openapi_catalogs_hotel_item_response() ::
-    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+    #{ 'attributes' => openapi_catalogs_hotel_attributes:openapi_catalogs_hotel_attributes(),
+       'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'hotel_id' => binary(),
-       'pins' => list(),
-       'attributes' => openapi_catalogs_hotel_attributes:openapi_catalogs_hotel_attributes()
+       'pins' => list()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
+encode(#{ 'attributes' := Attributes,
+          'catalog_type' := CatalogType,
           'hotel_id' := HotelId,
-          'pins' := Pins,
-          'attributes' := Attributes
+          'pins' := Pins
         }) ->
-    #{ 'catalog_type' => CatalogType,
+    #{ 'attributes' => Attributes,
+       'catalog_type' => CatalogType,
        'hotel_id' => HotelId,
-       'pins' => Pins,
-       'attributes' => Attributes
+       'pins' => Pins
      }.

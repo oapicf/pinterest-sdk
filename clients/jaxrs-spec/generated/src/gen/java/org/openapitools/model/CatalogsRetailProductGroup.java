@@ -20,8 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsRetailProductGroup")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroup   {
+  private String catalogId;
   public enum CatalogTypeEnum {
 
     RETAIL(String.valueOf("RETAIL"));
@@ -70,36 +71,57 @@ public class CatalogsRetailProductGroup   {
 }
 
   private CatalogTypeEnum catalogType;
-  private String id;
-  private String name;
-  private String description;
-  private CatalogsProductGroupFilters filters;
-  private Boolean isFeatured;
-  private CatalogsProductGroupType type;
-  private CatalogsProductGroupStatus status;
-  private Integer createdAt;
-  private Integer updatedAt;
-  private String catalogId;
-  private String feedId;
   private String country;
+  private Integer createdAt;
+  private String description;
+  private String feedId;
+  private CatalogsProductGroupFilters filters;
+  private String id;
+  private Boolean isFeatured;
   private String locale;
+  private String name;
+  private CatalogsProductGroupStatus status;
+  private CatalogsProductGroupType type;
+  private Integer updatedAt;
 
   public CatalogsRetailProductGroup() {
   }
 
   @JsonCreator
   public CatalogsRetailProductGroup(
-    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
-    @JsonProperty(required = true, value = "id") String id,
-    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFilters filters,
     @JsonProperty(required = true, value = "catalog_id") String catalogId,
-    @JsonProperty(required = true, value = "feed_id") String feedId
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "feed_id") String feedId,
+    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFilters filters,
+    @JsonProperty(required = true, value = "id") String id,
+    @JsonProperty(required = true, value = "type") CatalogsProductGroupType type
   ) {
-    this.catalogType = catalogType;
-    this.id = id;
-    this.filters = filters;
     this.catalogId = catalogId;
+    this.catalogType = catalogType;
     this.feedId = feedId;
+    this.filters = filters;
+    this.id = id;
+    this.type = type;
+  }
+
+  /**
+   * Catalog id pertaining to the retail product group.
+   **/
+  public CatalogsRetailProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
+  @JsonProperty(required = true, value = "catalog_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty(required = true, value = "catalog_id")
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   /**
@@ -122,139 +144,22 @@ public class CatalogsRetailProductGroup   {
   }
 
   /**
-   * ID of the catalog product group.
    **/
-  public CatalogsRetailProductGroup id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
-  @JsonProperty(required = true, value = "id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
-    return id;
-  }
-
-  @JsonProperty(required = true, value = "id")
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Name of catalog product group
-   **/
-  public CatalogsRetailProductGroup name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   **/
-  public CatalogsRetailProductGroup description(String description) {
-    this.description = description;
+  public CatalogsRetailProductGroup country(String country) {
+    this.country = country;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
   }
 
-  @JsonProperty("description")
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  /**
-   **/
-  public CatalogsRetailProductGroup filters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "filters")
-  @NotNull @Valid public CatalogsProductGroupFilters getFilters() {
-    return filters;
-  }
-
-  @JsonProperty(required = true, value = "filters")
-  public void setFilters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
-  }
-
-  /**
-   * boolean indicator of whether the product group is being featured or not
-   **/
-  public CatalogsRetailProductGroup isFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
-  @JsonProperty("is_featured")
-  public Boolean getIsFeatured() {
-    return isFeatured;
-  }
-
-  @JsonProperty("is_featured")
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-  }
-
-  /**
-   **/
-  public CatalogsRetailProductGroup type(CatalogsProductGroupType type) {
-    this.type = type;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("type")
-  public CatalogsProductGroupType getType() {
-    return type;
-  }
-
-  @JsonProperty("type")
-  public void setType(CatalogsProductGroupType type) {
-    this.type = type;
-  }
-
-  /**
-   **/
-  public CatalogsRetailProductGroup status(CatalogsProductGroupStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public CatalogsProductGroupStatus getStatus() {
-    return status;
-  }
-
-  @JsonProperty("status")
-  public void setStatus(CatalogsProductGroupStatus status) {
-    this.status = status;
+  @JsonProperty("country")
+  public void setCountry(String country) {
+    this.country = country;
   }
 
   /**
@@ -278,43 +183,22 @@ public class CatalogsRetailProductGroup   {
   }
 
   /**
-   * Unix timestamp in seconds of last time catalog product group was updated.
    **/
-  public CatalogsRetailProductGroup updatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
+  public CatalogsRetailProductGroup description(String description) {
+    this.description = description;
     return this;
   }
 
   
-  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
-  @JsonProperty("updated_at")
-  public Integer getUpdatedAt() {
-    return updatedAt;
+  @ApiModelProperty(value = "")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
   }
 
-  @JsonProperty("updated_at")
-  public void setUpdatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  /**
-   * Catalog id pertaining to the retail product group.
-   **/
-  public CatalogsRetailProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
-  @JsonProperty(required = true, value = "catalog_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
-    return catalogId;
-  }
-
-  @JsonProperty(required = true, value = "catalog_id")
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   /**
@@ -339,21 +223,61 @@ public class CatalogsRetailProductGroup   {
 
   /**
    **/
-  public CatalogsRetailProductGroup country(String country) {
-    this.country = country;
+  public CatalogsRetailProductGroup filters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("country")
-  public String getCountry() {
-    return country;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "filters")
+  @NotNull @Valid public CatalogsProductGroupFilters getFilters() {
+    return filters;
   }
 
-  @JsonProperty("country")
-  public void setCountry(String country) {
-    this.country = country;
+  @JsonProperty(required = true, value = "filters")
+  public void setFilters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
+  }
+
+  /**
+   * ID of the catalog product group.
+   **/
+  public CatalogsRetailProductGroup id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
+  @JsonProperty(required = true, value = "id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
+    return id;
+  }
+
+  @JsonProperty(required = true, value = "id")
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * boolean indicator of whether the product group is being featured or not
+   **/
+  public CatalogsRetailProductGroup isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+  @JsonProperty("is_featured")
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+
+  @JsonProperty("is_featured")
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
   }
 
   /**
@@ -375,6 +299,84 @@ public class CatalogsRetailProductGroup   {
     this.locale = locale;
   }
 
+  /**
+   * Name of catalog product group
+   **/
+  public CatalogsRetailProductGroup name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductGroup status(CatalogsProductGroupStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public CatalogsProductGroupStatus getStatus() {
+    return status;
+  }
+
+  @JsonProperty("status")
+  public void setStatus(CatalogsProductGroupStatus status) {
+    this.status = status;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductGroup type(CatalogsProductGroupType type) {
+    this.type = type;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "type")
+  @NotNull public CatalogsProductGroupType getType() {
+    return type;
+  }
+
+  @JsonProperty(required = true, value = "type")
+  public void setType(CatalogsProductGroupType type) {
+    this.type = type;
+  }
+
+  /**
+   * Unix timestamp in seconds of last time catalog product group was updated.
+   **/
+  public CatalogsRetailProductGroup updatedAt(Integer updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
+  @JsonProperty("updated_at")
+  public Integer getUpdatedAt() {
+    return updatedAt;
+  }
+
+  @JsonProperty("updated_at")
+  public void setUpdatedAt(Integer updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -385,25 +387,25 @@ public class CatalogsRetailProductGroup   {
       return false;
     }
     CatalogsRetailProductGroup catalogsRetailProductGroup = (CatalogsRetailProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsRetailProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsRetailProductGroup.id) &&
-        Objects.equals(this.name, catalogsRetailProductGroup.name) &&
-        Objects.equals(this.description, catalogsRetailProductGroup.description) &&
-        Objects.equals(this.filters, catalogsRetailProductGroup.filters) &&
-        Objects.equals(this.isFeatured, catalogsRetailProductGroup.isFeatured) &&
-        Objects.equals(this.type, catalogsRetailProductGroup.type) &&
-        Objects.equals(this.status, catalogsRetailProductGroup.status) &&
-        Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
-        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+    return Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailProductGroup.catalogType) &&
         Objects.equals(this.country, catalogsRetailProductGroup.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroup.locale);
+        Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
+        Objects.equals(this.description, catalogsRetailProductGroup.description) &&
+        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(this.filters, catalogsRetailProductGroup.filters) &&
+        Objects.equals(this.id, catalogsRetailProductGroup.id) &&
+        Objects.equals(this.isFeatured, catalogsRetailProductGroup.isFeatured) &&
+        Objects.equals(this.locale, catalogsRetailProductGroup.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroup.name) &&
+        Objects.equals(this.status, catalogsRetailProductGroup.status) &&
+        Objects.equals(this.type, catalogsRetailProductGroup.type) &&
+        Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, createdAt, description, feedId, filters, id, isFeatured, locale, name, status, type, updatedAt);
   }
 
   @Override
@@ -411,20 +413,20 @@ public class CatalogsRetailProductGroup   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroup {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

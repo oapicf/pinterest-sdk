@@ -13,18 +13,14 @@ import AnyCodable
 /** Keyword metrics JSON */
 public struct KeywordMetrics: Codable, JSONEncodable, Hashable {
 
-    /** Average cost per click */
-    public var avgCpcInMicroCurrency: Double?
     /** Keyword's search frequency. This value is based on keyword frequency in pepsi client response */
     public var keywordQueryVolume: String?
 
-    public init(avgCpcInMicroCurrency: Double? = nil, keywordQueryVolume: String? = nil) {
-        self.avgCpcInMicroCurrency = avgCpcInMicroCurrency
+    public init(keywordQueryVolume: String? = nil) {
         self.keywordQueryVolume = keywordQueryVolume
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case avgCpcInMicroCurrency = "avg_cpc_in_micro_currency"
         case keywordQueryVolume = "keyword_query_volume"
     }
 
@@ -32,7 +28,6 @@ public struct KeywordMetrics: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(avgCpcInMicroCurrency, forKey: .avgCpcInMicroCurrency)
         try container.encodeIfPresent(keywordQueryVolume, forKey: .keywordQueryVolume)
     }
 }

@@ -35,7 +35,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createAssetAccessRequestBody := *openapiclient.NewCreateAssetAccessRequestBody([]openapiclient.CreateAssetAccessRequestBodyAssetRequestsInner{*openapiclient.NewCreateAssetAccessRequestBodyAssetRequestsInner("809944451643622187", map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}})}) // CreateAssetAccessRequestBody | 
+	createAssetAccessRequestBody := *openapiclient.NewCreateAssetAccessRequestBody([]openapiclient.CreateAssetAccessRequestBodyAssetRequestsInner{*openapiclient.NewCreateAssetAccessRequestBodyAssetRequestsInner(map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}}, "809944451643622187")}) // CreateAssetAccessRequestBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Business id
+	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
 	cancelInvitesBody := *openapiclient.NewCancelInvitesBody([]string{"InviteIds_example"}) // CancelInvitesBody | A list with invite ids
 
 	configuration := openapiclient.NewConfiguration()
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**businessId** | **string** | Business id | 
+**businessId** | **string** | Unique identifier of the requesting business. | 
 
 ### Other Parameters
 
@@ -179,7 +179,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createAssetInvitesRequest := *openapiclient.NewCreateAssetInvitesRequest([]openapiclient.CreateAssetInvitesRequestItem{*openapiclient.NewCreateAssetInvitesRequestItem("1234567890123", openapiclient.InviteType("MEMBER_INVITE"), map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}})}) // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+	createAssetInvitesRequest := *openapiclient.NewCreateAssetInvitesRequest([]openapiclient.CreateAssetInvitesRequestItem{*openapiclient.NewCreateAssetInvitesRequestItem(map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}}, "1234567890123", openapiclient.InviteType("MEMBER_INVITE"))}) // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Business id
+	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
 	createMembershipOrPartnershipInvitesBody := *openapiclient.NewCreateMembershipOrPartnershipInvitesBody("BIZ_ADMIN", openapiclient.InviteType("MEMBER_INVITE")) // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 
 	configuration := openapiclient.NewConfiguration()
@@ -271,7 +271,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**businessId** | **string** | Business id | 
+**businessId** | **string** | Unique identifier of the requesting business. | 
 
 ### Other Parameters
 

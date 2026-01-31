@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsUpsertCreativeAssetsItem, () {
+    // CatalogsCreativeAssetsAttributes attributes
+    test('to test the property `attributes`', () async {
+      // TODO
+    });
+
     // The catalog creative assets id in the merchant namespace
     // String creativeAssetsId
     test('to test the property `creativeAssetsId`', () async {
@@ -15,11 +20,6 @@ void main() {
 
     // String operation
     test('to test the property `operation`', () async {
-      // TODO
-    });
-
-    // CatalogsCreativeAssetsAttributes attributes
-    test('to test the property `attributes`', () async {
       // TODO
     });
 

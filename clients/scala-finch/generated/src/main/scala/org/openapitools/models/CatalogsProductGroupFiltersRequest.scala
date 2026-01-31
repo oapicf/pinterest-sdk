@@ -5,9 +5,9 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
+import org.openapitools.models.AllOf
+import org.openapitools.models.AnyOf
 import org.openapitools.models.CatalogsProductGroupFilterKeys
-import org.openapitools.models.CatalogsProductGroupFiltersRequestAnyOf
-import org.openapitools.models.CatalogsProductGroupFiltersRequestAnyOf1
 import scala.collection.immutable.Seq
 
 /**

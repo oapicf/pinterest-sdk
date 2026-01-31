@@ -10,10 +10,7 @@ Protected Class CatalogsCreativeAssetsItemsBatch
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-		#tag EndNote
-		created_time As Date
+		catalog_type As String
 	#tag EndProperty
 
 
@@ -26,12 +23,10 @@ Protected Class CatalogsCreativeAssetsItemsBatch
 
 
 	#tag Property, Flags = &h0
-		status As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		catalog_type As String
+		#tag Note
+			Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+		#tag EndNote
+		created_time As Date
 	#tag EndProperty
 
 
@@ -40,6 +35,11 @@ Protected Class CatalogsCreativeAssetsItemsBatch
 			Array with the catalogs items processing records part of the catalogs items batch
 		#tag EndNote
 		items() As OpenAPIClient.Models.CreativeAssetsProcessingRecord
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -88,11 +88,11 @@ Protected Class CatalogsCreativeAssetsItemsBatch
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_time"
+			Name="catalog_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Date"
+			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -104,19 +104,11 @@ Protected Class CatalogsCreativeAssetsItemsBatch
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="status"
+			Name="created_time"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BatchOperationStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
+			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -125,6 +117,14 @@ Protected Class CatalogsCreativeAssetsItemsBatch
 			Group="Behavior"
 			InitialValue=""
 			Type="CreativeAssetsProcessingRecord"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BatchOperationStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

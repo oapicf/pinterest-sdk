@@ -1,6 +1,7 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.AdPinAnalytics
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.model.CampaignCreateRequest
 import org.openapitools.model.CampaignCreateResponse
@@ -13,13 +14,92 @@ import org.openapitools.model.ConversionReportAttributionType
 import org.openapitools.model.Error
 import org.openapitools.model.Granularity
 import org.openapitools.model.MetricsResponse
+import org.openapitools.model.ReportingTimeZone
 
 class CampaignsApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def campaignTargetingAnalyticsGet ( String adAccountId, List<String> campaignIds, Date startDate, Date endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
+    def adPinsAnalytics ( String adAccountId, String campaignId, List<String> pinIds, Date startDate, Date endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/pins/analytics"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (campaignId == null) {
+            throw new RuntimeException("missing required params campaignId")
+        }
+        // verify required params are set
+        if (pinIds == null) {
+            throw new RuntimeException("missing required params pinIds")
+        }
+        // verify required params are set
+        if (startDate == null) {
+            throw new RuntimeException("missing required params startDate")
+        }
+        // verify required params are set
+        if (endDate == null) {
+            throw new RuntimeException("missing required params endDate")
+        }
+        // verify required params are set
+        if (columns == null) {
+            throw new RuntimeException("missing required params columns")
+        }
+        // verify required params are set
+        if (granularity == null) {
+            throw new RuntimeException("missing required params granularity")
+        }
+
+        if (campaignId != null) {
+            queryParams.put("campaign_id", campaignId)
+        }
+        if (pinIds != null) {
+            queryParams.put("pin_ids", pinIds)
+        }
+        if (startDate != null) {
+            queryParams.put("start_date", startDate)
+        }
+        if (endDate != null) {
+            queryParams.put("end_date", endDate)
+        }
+        if (columns != null) {
+            queryParams.put("columns", columns)
+        }
+        if (granularity != null) {
+            queryParams.put("granularity", granularity)
+        }
+        if (clickWindowDays != null) {
+            queryParams.put("click_window_days", clickWindowDays)
+        }
+        if (engagementWindowDays != null) {
+            queryParams.put("engagement_window_days", engagementWindowDays)
+        }
+        if (viewWindowDays != null) {
+            queryParams.put("view_window_days", viewWindowDays)
+        }
+        if (conversionReportTime != null) {
+            queryParams.put("conversion_report_time", conversionReportTime)
+        }
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "array",
+                    AdPinAnalytics.class )
+
+    }
+
+    def campaignTargetingAnalyticsGet ( String adAccountId, List<String> campaignIds, Date startDate, Date endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/campaigns/targeting_analytics"
 
         // params
@@ -90,6 +170,9 @@ class CampaignsApi {
         if (attributionTypes != null) {
             queryParams.put("attribution_types", attributionTypes)
         }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
+        }
 
 
 
@@ -100,7 +183,7 @@ class CampaignsApi {
 
     }
 
-    def campaignsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Closure onSuccess, Closure onFailure)  {
+    def campaignsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Boolean aggregateReportRows, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/campaigns/analytics"
 
         // params
@@ -160,6 +243,12 @@ class CampaignsApi {
         }
         if (conversionReportTime != null) {
             queryParams.put("conversion_report_time", conversionReportTime)
+        }
+        if (aggregateReportRows != null) {
+            queryParams.put("aggregate_report_rows", aggregateReportRows)
+        }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
         }
 
 

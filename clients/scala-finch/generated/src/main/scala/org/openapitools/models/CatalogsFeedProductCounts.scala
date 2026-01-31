@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * The counts can be null early in the process.
- * @param original The number of products in the feed file.
  * @param ingested The number of products successfully ingested from the feed file.
+ * @param original The number of products in the feed file.
  */
-case class CatalogsFeedProductCounts(original: Option[Int],
-                ingested: Option[Int]
+case class CatalogsFeedProductCounts(ingested: Option[Int],
+                original: Option[Int]
                 )
 
 object CatalogsFeedProductCounts {

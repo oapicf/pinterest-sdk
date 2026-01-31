@@ -8,31 +8,31 @@ import java.math.BigDecimal;
 @Canonical
 class IntegrationMetadata {
     
-    String id
-    
-    String externalBusinessId
-    
-    String connectedMerchantId
-    
-    String connectedUserId
+    String additionalId1
     
     String connectedAdvertiserId
     
     String connectedLbaId
     
+    String connectedMerchantId
+    
     String connectedTagId
     
+    String connectedUserId
+    
+    BigDecimal createdTimestamp
+    
+    String externalBusinessId
+    
+    String id
+    
     BigDecimal partnerAccessTokenExpiry
+    
+    String partnerMetadata
     
     BigDecimal partnerRefreshTokenExpiry
     
     String scopes
     
-    BigDecimal createdTimestamp
-    
     BigDecimal updatedTimestamp
-    
-    String additionalId1
-    
-    String partnerMetadata
 }

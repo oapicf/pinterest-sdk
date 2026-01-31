@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BrandAccountsCreate200Response",
+  "fields": [
+    {
+      "name": "brand_account_id",
+      "type": ["null", "string"],
+      "doc": "id of the newly created brand account",
+      "default": null
+    }
+  ]
+
+}

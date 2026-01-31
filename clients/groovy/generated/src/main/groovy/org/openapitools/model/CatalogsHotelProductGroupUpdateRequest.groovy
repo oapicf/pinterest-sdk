@@ -32,9 +32,9 @@ class CatalogsHotelProductGroupUpdateRequest {
     
     CatalogTypeEnum catalogType
     
-    String name
-    
     String description
     
     CatalogsHotelProductGroupFilters filters
+    
+    String name
 }

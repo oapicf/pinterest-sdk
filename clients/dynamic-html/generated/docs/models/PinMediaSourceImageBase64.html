@@ -1,24 +1,8 @@
 
 <h2>PinMediaSourceImageBase64</h2>
 <ul class="parameter">
-  <li class="param-required-true">sourceUnderscoretype : String
+  <li class="param-required-true">contentUnderscoretype : ContentType
     <br/>
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>image_base64</dd>
-        </dt>
-      </dl>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">contentUnderscoretype : String
-    <br/>
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>image/jpeg</dd>
-            <dd>image/png</dd>
-        </dt>
-      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -29,5 +13,15 @@
 <ul class="parameter">
   <li class="param-required-false">isUnderscorestandard : Boolean
     <br/>Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">sourceUnderscoretype : String
+    <br/>The source type of the media.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>image_base64</dd>
+        </dt>
+      </dl>
   </li>
 </ul>

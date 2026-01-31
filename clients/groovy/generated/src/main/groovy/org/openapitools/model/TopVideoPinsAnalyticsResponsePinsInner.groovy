@@ -9,10 +9,10 @@ import org.openapitools.model.DataStatus;
 
 @Canonical
 class TopVideoPinsAnalyticsResponsePinsInner {
-    /* The metric name and daily value for each requested metric */
-    Map<String, BigDecimal> metrics = new HashMap<>()
     
     Map<String, DataStatus> dataStatus = new HashMap<>()
+    /* The metric name and daily value for each requested metric */
+    Map<String, BigDecimal> metrics = new HashMap<>()
     /* The pin id */
     String pinId
 }

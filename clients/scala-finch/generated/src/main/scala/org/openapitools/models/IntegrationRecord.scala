@@ -8,40 +8,40 @@ import org.openapitools._
 
 /**
  * Integration record
- * @param id 
- * @param externalUnderscorebusinessUnderscoreid 
- * @param connectedUnderscoremerchantUnderscoreid 
- * @param connectedUnderscoreuserUnderscoreid 
+ * @param additionalUnderscoreidUnderscore1 
  * @param connectedUnderscoreadvertiserUnderscoreid 
  * @param connectedUnderscorelbaUnderscoreid 
+ * @param connectedUnderscoremerchantUnderscoreid 
  * @param connectedUnderscoretagUnderscoreid 
+ * @param connectedUnderscoreuserUnderscoreid 
+ * @param createdUnderscoretime 
+ * @param externalUnderscorebusinessUnderscoreid 
+ * @param id 
  * @param partnerUnderscoreaccessUnderscoretoken 
- * @param partnerUnderscorerefreshUnderscoretoken 
- * @param partnerUnderscoreprimaryUnderscoreemail 
  * @param partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry 
+ * @param partnerUnderscoremetadata 
+ * @param partnerUnderscoreprimaryUnderscoreemail 
+ * @param partnerUnderscorerefreshUnderscoretoken 
  * @param partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry 
  * @param scopes 
- * @param partnerUnderscoremetadata 
- * @param additionalUnderscoreidUnderscore1 
- * @param createdUnderscoretime 
  * @param updatedUnderscoretime 
  */
-case class IntegrationRecord(id: Option[String],
-                externalUnderscorebusinessUnderscoreid: Option[String],
-                connectedUnderscoremerchantUnderscoreid: Option[String],
-                connectedUnderscoreuserUnderscoreid: Option[String],
+case class IntegrationRecord(additionalUnderscoreidUnderscore1: Option[String],
                 connectedUnderscoreadvertiserUnderscoreid: Option[String],
                 connectedUnderscorelbaUnderscoreid: Option[String],
+                connectedUnderscoremerchantUnderscoreid: Option[String],
                 connectedUnderscoretagUnderscoreid: Option[String],
+                connectedUnderscoreuserUnderscoreid: Option[String],
+                createdUnderscoretime: Option[Int],
+                externalUnderscorebusinessUnderscoreid: Option[String],
+                id: Option[String],
                 partnerUnderscoreaccessUnderscoretoken: Option[String],
-                partnerUnderscorerefreshUnderscoretoken: Option[String],
-                partnerUnderscoreprimaryUnderscoreemail: Option[String],
                 partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry: Option[Int],
+                partnerUnderscoremetadata: Option[String],
+                partnerUnderscoreprimaryUnderscoreemail: Option[String],
+                partnerUnderscorerefreshUnderscoretoken: Option[String],
                 partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry: Option[Int],
                 scopes: Option[String],
-                partnerUnderscoremetadata: Option[String],
-                additionalUnderscoreidUnderscore1: Option[String],
-                createdUnderscoretime: Option[Int],
                 updatedUnderscoretime: Option[Int]
                 )
 

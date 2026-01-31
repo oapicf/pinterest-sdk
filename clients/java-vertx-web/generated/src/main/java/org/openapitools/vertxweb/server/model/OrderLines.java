@@ -15,34 +15,61 @@ import org.openapitools.vertxweb.server.model.OrderLineStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderLines   {
   
-  private String id;
-  private String type;
   private String adAccountId;
+  private BigDecimal budget;
+  private BigDecimal endTime;
+  private String id;
+  private String name;
+  private BigDecimal paidBudget;
+  private OrderLinePaidType paidType;
   private String purchaseOrderId;
   private BigDecimal startTime;
-  private BigDecimal endTime;
-  private BigDecimal budget;
-  private BigDecimal paidBudget;
   private OrderLineStatus status;
-  private String name;
-  private OrderLinePaidType paidType;
+  private String type;
 
   public OrderLines () {
 
   }
 
-  public OrderLines (String id, String type, String adAccountId, String purchaseOrderId, BigDecimal startTime, BigDecimal endTime, BigDecimal budget, BigDecimal paidBudget, OrderLineStatus status, String name, OrderLinePaidType paidType) {
-    this.id = id;
-    this.type = type;
+  public OrderLines (String adAccountId, BigDecimal budget, BigDecimal endTime, String id, String name, BigDecimal paidBudget, OrderLinePaidType paidType, String purchaseOrderId, BigDecimal startTime, OrderLineStatus status, String type) {
     this.adAccountId = adAccountId;
+    this.budget = budget;
+    this.endTime = endTime;
+    this.id = id;
+    this.name = name;
+    this.paidBudget = paidBudget;
+    this.paidType = paidType;
     this.purchaseOrderId = purchaseOrderId;
     this.startTime = startTime;
-    this.endTime = endTime;
-    this.budget = budget;
-    this.paidBudget = paidBudget;
     this.status = status;
-    this.name = name;
-    this.paidType = paidType;
+    this.type = type;
+  }
+
+    
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
+
+    
+  @JsonProperty("budget")
+  public BigDecimal getBudget() {
+    return budget;
+  }
+  public void setBudget(BigDecimal budget) {
+    this.budget = budget;
+  }
+
+    
+  @JsonProperty("end_time")
+  public BigDecimal getEndTime() {
+    return endTime;
+  }
+  public void setEndTime(BigDecimal endTime) {
+    this.endTime = endTime;
   }
 
     
@@ -55,21 +82,30 @@ public class OrderLines   {
   }
 
     
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setName(String name) {
+    this.name = name;
   }
 
     
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @JsonProperty("paid_budget")
+  public BigDecimal getPaidBudget() {
+    return paidBudget;
   }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setPaidBudget(BigDecimal paidBudget) {
+    this.paidBudget = paidBudget;
+  }
+
+    
+  @JsonProperty("paid_type")
+  public OrderLinePaidType getPaidType() {
+    return paidType;
+  }
+  public void setPaidType(OrderLinePaidType paidType) {
+    this.paidType = paidType;
   }
 
     
@@ -91,33 +127,6 @@ public class OrderLines   {
   }
 
     
-  @JsonProperty("end_time")
-  public BigDecimal getEndTime() {
-    return endTime;
-  }
-  public void setEndTime(BigDecimal endTime) {
-    this.endTime = endTime;
-  }
-
-    
-  @JsonProperty("budget")
-  public BigDecimal getBudget() {
-    return budget;
-  }
-  public void setBudget(BigDecimal budget) {
-    this.budget = budget;
-  }
-
-    
-  @JsonProperty("paid_budget")
-  public BigDecimal getPaidBudget() {
-    return paidBudget;
-  }
-  public void setPaidBudget(BigDecimal paidBudget) {
-    this.paidBudget = paidBudget;
-  }
-
-    
   @JsonProperty("status")
   public OrderLineStatus getStatus() {
     return status;
@@ -127,21 +136,12 @@ public class OrderLines   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("paid_type")
-  public OrderLinePaidType getPaidType() {
-    return paidType;
-  }
-  public void setPaidType(OrderLinePaidType paidType) {
-    this.paidType = paidType;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -154,22 +154,22 @@ public class OrderLines   {
       return false;
     }
     OrderLines orderLines = (OrderLines) o;
-    return Objects.equals(id, orderLines.id) &&
-        Objects.equals(type, orderLines.type) &&
-        Objects.equals(adAccountId, orderLines.adAccountId) &&
+    return Objects.equals(adAccountId, orderLines.adAccountId) &&
+        Objects.equals(budget, orderLines.budget) &&
+        Objects.equals(endTime, orderLines.endTime) &&
+        Objects.equals(id, orderLines.id) &&
+        Objects.equals(name, orderLines.name) &&
+        Objects.equals(paidBudget, orderLines.paidBudget) &&
+        Objects.equals(paidType, orderLines.paidType) &&
         Objects.equals(purchaseOrderId, orderLines.purchaseOrderId) &&
         Objects.equals(startTime, orderLines.startTime) &&
-        Objects.equals(endTime, orderLines.endTime) &&
-        Objects.equals(budget, orderLines.budget) &&
-        Objects.equals(paidBudget, orderLines.paidBudget) &&
         Objects.equals(status, orderLines.status) &&
-        Objects.equals(name, orderLines.name) &&
-        Objects.equals(paidType, orderLines.paidType);
+        Objects.equals(type, orderLines.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, adAccountId, purchaseOrderId, startTime, endTime, budget, paidBudget, status, name, paidType);
+    return Objects.hash(adAccountId, budget, endTime, id, name, paidBudget, paidType, purchaseOrderId, startTime, status, type);
   }
 
   @Override
@@ -177,17 +177,17 @@ public class OrderLines   {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLines {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    paidBudget: ").append(toIndentedString(paidBudget)).append("\n");
+    sb.append("    paidType: ").append(toIndentedString(paidType)).append("\n");
     sb.append("    purchaseOrderId: ").append(toIndentedString(purchaseOrderId)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    paidBudget: ").append(toIndentedString(paidBudget)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    paidType: ").append(toIndentedString(paidType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

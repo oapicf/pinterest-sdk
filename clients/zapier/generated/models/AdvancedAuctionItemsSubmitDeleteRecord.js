@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const AdvancedAuctionOperationError = require('../models/AdvancedAuctionOperationError');
 const Country = require('../models/Country');
 const Language = require('../models/Language');
 
@@ -7,27 +8,33 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
                 key: `${keyPrefix}item_id`,
                 label: `The catalog retail item id in the merchant namespace - [${labelPrefix}item_id]`,
                 required: true,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}country`,
-                ...Country.fields(`${keyPrefix}country`, isInput),
-            },
-            {
                 key: `${keyPrefix}language`,
                 ...Language.fields(`${keyPrefix}language`, isInput),
+            },
+            {
+                key: `${keyPrefix}errors`,
+                label: `[${labelPrefix}errors]`,
+                children: AdvancedAuctionOperationError.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
+            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'language': bundle.inputData?.[`${keyPrefix}language`],
+            'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, AdvancedAuctionOperationError),
         }
     },
 }

@@ -24,28 +24,30 @@ campaign_common_t* instantiate_campaign_common(int include_optional) {
   if (include_optional) {
     campaign_common = campaign_common_create(
       "549755885175",
-      "ACME Tools",
-      "ACTIVE",
       1432744744,
-      1432744744,
-      "549755885175",
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      1580865126,
       1644023526,
-      true
+      true,
+      true,
+      1432744744,
+      "ACME Tools",
+      "549755885175",
+      1580865126,
+      "ACTIVE",
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}
     );
   } else {
     campaign_common = campaign_common_create(
       "549755885175",
-      "ACME Tools",
-      "ACTIVE",
       1432744744,
-      1432744744,
-      "549755885175",
-      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
-      1580865126,
       1644023526,
-      true
+      true,
+      true,
+      1432744744,
+      "ACME Tools",
+      "549755885175",
+      1580865126,
+      "ACTIVE",
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}
     );
   }
 

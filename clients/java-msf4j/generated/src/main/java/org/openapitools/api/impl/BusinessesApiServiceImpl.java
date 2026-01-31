@@ -46,6 +46,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -67,7 +68,7 @@ import org.wso2.msf4j.formparam.FileInfo;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApiServiceImpl extends BusinessesApiService {
     @Override
     public Response assetAccessRequestsCreate(String businessId
@@ -110,6 +111,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
     @Override
     public Response businessAssetMembersGet(String businessId
 , String assetId
+, Boolean fetchSystemUsers
 , String bookmark
 , Integer pageSize
 , Integer startIndex
@@ -228,6 +230,7 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
     }
     @Override
     public Response getBusinessMembers(String businessId
+, Boolean fetchSystemUsers
 , Boolean assetsSummary
 , List<MemberBusinessRole> businessRoles
 , String memberIds
@@ -272,6 +275,14 @@ public class BusinessesApiServiceImpl extends BusinessesApiService {
 , String bookmark
 , String order
 , Integer pageSize
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response systemUserUpdate(String businessId
+, String systemUserId
+, SystemUserUpdateRequest systemUserUpdateRequest
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

@@ -9,11 +9,11 @@ import org.openapitools.models.LeadsExportStatus
 
 /**
  * 
- * @param exportUnderscorestatus 
  * @param downloadUnderscoreurl 
+ * @param exportUnderscorestatus 
  */
-case class LeadsExportResponseData(exportUnderscorestatus: Option[LeadsExportStatus],
-                downloadUnderscoreurl: Option[String]
+case class LeadsExportResponseData(downloadUnderscoreurl: Option[String],
+                exportUnderscorestatus: Option[LeadsExportStatus]
                 )
 
 object LeadsExportResponseData {

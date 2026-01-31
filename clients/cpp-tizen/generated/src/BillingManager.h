@@ -8,7 +8,10 @@
 #include "AdsCreditRedeemRequest.h"
 #include "AdsCreditRedeemResponse.h"
 #include "Ads_credits_discounts_get_200_response.h"
+#include "BillingInvoiceDownloadResponse.h"
+#include "Billing_invoices_get_200_response.h"
 #include "Billing_profiles_get_200_response.h"
+#include "Date.h"
 #include "Error.h"
 #include "SSIOAccountResponse.h"
 #include "SSIOCreateInsertionOrderRequest.h"
@@ -38,7 +41,7 @@ public:
 
 /*! \brief Redeem ad credits. *Synchronous*
  *
- * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param adsCreditRedeemRequest Redeem ad credits request. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -52,7 +55,7 @@ bool adsCreditRedeemSync(char * accessToken,
 
 /*! \brief Redeem ad credits. *Asynchronous*
  *
- * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param adsCreditRedeemRequest Redeem ad credits request. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -67,7 +70,7 @@ bool adsCreditRedeemAsync(char * accessToken,
 
 /*! \brief Get ads credit discounts. *Synchronous*
  *
- * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
  * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
@@ -82,7 +85,7 @@ bool adsCreditsDiscountsGetSync(char * accessToken,
 
 /*! \brief Get ads credit discounts. *Asynchronous*
  *
- * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
  * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
@@ -96,9 +99,81 @@ bool adsCreditsDiscountsGetAsync(char * accessToken,
 	, void* userData);
 
 
+/*! \brief Get download url for a billing invoice. *Synchronous*
+ *
+ * Get download url for a billing invoice.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param billingInvoiceId Unique identifier of a billing invoice. *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool billingInvoiceDownloadGetSync(char * accessToken,
+	std::string adAccountId, std::string billingInvoiceId, 
+	void(* handler)(BillingInvoiceDownloadResponse, Error, void* )
+	, void* userData);
+
+/*! \brief Get download url for a billing invoice. *Asynchronous*
+ *
+ * Get download url for a billing invoice.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param billingInvoiceId Unique identifier of a billing invoice. *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool billingInvoiceDownloadGetAsync(char * accessToken,
+	std::string adAccountId, std::string billingInvoiceId, 
+	void(* handler)(BillingInvoiceDownloadResponse, Error, void* )
+	, void* userData);
+
+
+/*! \brief Get billing invoices. *Synchronous*
+ *
+ * Get billing invoices in the advertiser account.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param sort Field of which to sort billing invoices
+ * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param status Status of billing invoices to filter by
+ * \param documentType Document type of billing invoices to filter by
+ * \param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+ * \param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool billingInvoicesGetSync(char * accessToken,
+	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	void(* handler)(Billing_invoices_get_200_response, Error, void* )
+	, void* userData);
+
+/*! \brief Get billing invoices. *Asynchronous*
+ *
+ * Get billing invoices in the advertiser account.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param sort Field of which to sort billing invoices
+ * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param status Status of billing invoices to filter by
+ * \param documentType Document type of billing invoices to filter by
+ * \param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+ * \param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool billingInvoicesGetAsync(char * accessToken,
+	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	void(* handler)(Billing_invoices_get_200_response, Error, void* )
+	, void* userData);
+
+
 /*! \brief Get billing profiles. *Synchronous*
  *
- * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param isActive Return active billing profiles, if false return all billing profiles. *Required*
  * \param bookmark Cursor used to fetch the next page of items
@@ -114,7 +189,7 @@ bool billingProfilesGetSync(char * accessToken,
 
 /*! \brief Get billing profiles. *Asynchronous*
  *
- * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+ * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param isActive Return active billing profiles, if false return all billing profiles. *Required*
  * \param bookmark Cursor used to fetch the next page of items

@@ -12,6 +12,7 @@ Name | Type
 `cpaGoalValueInMicroCurrency` | string
 `isRoasOptimized` | boolean
 `learningModeType` | string
+`reportingEvent` | string
 
 ## Example
 
@@ -26,6 +27,7 @@ const example = {
   "cpaGoalValueInMicroCurrency": null,
   "isRoasOptimized": null,
   "learningModeType": ACTIVE,
+  "reportingEvent": INITIATE_CHECKOUT,
 } satisfies OptimizationGoalMetadataConversionTagV3GoalMetadata
 
 console.log(example)

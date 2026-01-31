@@ -73,7 +73,7 @@ private class OASTermsOfServiceTest {
     private static void maintainRenamedProperties() {
         OASTermsOfService termsOfService = new OASTermsOfService();
         Map<String, String> x-property-mappings = termsOfService.getx-property-mappings();
-        System.assertEquals('hasAccepted', x-property-mappings.get('has_accepted'));
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
+        System.assertEquals('hasAccepted', x-property-mappings.get('has_accepted'));
     }
 }

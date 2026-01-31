@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExportStatus** | [**LeadsExportStatus**](LeadsExportStatus.md) |  | [optional] 
 **DownloadUrl** | **String** |  | [optional] 
+**ExportStatus** | [**LeadsExportStatus**](LeadsExportStatus.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LeadsExportResponseData = Initialize-PSOpenAPIToolsLeadsExportResponseData  -ExportStatus null `
- -DownloadUrl null
+$LeadsExportResponseData = Initialize-PSOpenAPIToolsLeadsExportResponseData  -DownloadUrl null `
+ -ExportStatus null
 ```
 
 - Convert the resource to JSON

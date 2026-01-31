@@ -8,13 +8,8 @@ Request object for creating a catalog.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogType**](#CatalogType) | Type of the catalog entity. | 
+**catalogType** | **CatalogsType** |  | 
 **name** | **String** | A human-friendly name associated to a given catalog. | 
-
-
-## Enum: CatalogType
-Allowed values: [HOTEL]
-
 
 
 

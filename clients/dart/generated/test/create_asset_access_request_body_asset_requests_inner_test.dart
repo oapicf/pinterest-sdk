@@ -16,15 +16,15 @@ void main() {
   // final instance = CreateAssetAccessRequestBodyAssetRequestsInner();
 
   group('test CreateAssetAccessRequestBodyAssetRequestsInner', () {
-    // Unique identifier of a business partner to request asset access to.
-    // String partnerId
-    test('to test the property `partnerId`', () async {
-      // TODO
-    });
-
     // An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
     // Map<String, List<Permissions>> assetIdToPermissions (default value: const {})
     test('to test the property `assetIdToPermissions`', () async {
+      // TODO
+    });
+
+    // Unique identifier of a business partner to request asset access to.
+    // String partnerId
+    test('to test the property `partnerId`', () async {
       // TODO
     });
 

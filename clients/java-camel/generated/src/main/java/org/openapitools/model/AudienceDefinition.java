@@ -22,14 +22,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceDefinition", description = "Queryable audience representation.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDefinition {
 
   private JsonNullable<String> date = JsonNullable.<String>undefined();
 
-  private String type;
-
   private String scope;
+
+  private String type;
 
   public AudienceDefinition date(String date) {
     this.date = JsonNullable.of(date);
@@ -51,37 +51,17 @@ public class AudienceDefinition {
     this.date = date;
   }
 
-  public AudienceDefinition type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Generated audience type to request.
-   * @return type
-   */
-  
-  @Schema(name = "type", description = "Generated audience type to request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
   public AudienceDefinition scope(String scope) {
     this.scope = scope;
     return this;
   }
 
   /**
-   * Generated audience scope to request.
+   * Get scope
    * @return scope
    */
   
-  @Schema(name = "scope", description = "Generated audience scope to request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "scope", example = "PARTNER", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scope")
   public String getScope() {
     return scope;
@@ -89,6 +69,26 @@ public class AudienceDefinition {
 
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+  public AudienceDefinition type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  
+  @Schema(name = "type", example = "IMPRESSION_PLUS_ENGAGEMENT", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   @Override
@@ -101,8 +101,8 @@ public class AudienceDefinition {
     }
     AudienceDefinition audienceDefinition = (AudienceDefinition) o;
     return equalsNullable(this.date, audienceDefinition.date) &&
-        Objects.equals(this.type, audienceDefinition.type) &&
-        Objects.equals(this.scope, audienceDefinition.scope);
+        Objects.equals(this.scope, audienceDefinition.scope) &&
+        Objects.equals(this.type, audienceDefinition.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -111,7 +111,7 @@ public class AudienceDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(date), type, scope);
+    return Objects.hash(hashCodeNullable(date), scope, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -126,8 +126,8 @@ public class AudienceDefinition {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceDefinition {\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

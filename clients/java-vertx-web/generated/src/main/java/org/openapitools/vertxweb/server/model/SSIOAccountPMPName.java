@@ -7,24 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOAccountPMPName   {
   
-  private String name;
   private String id;
+  private String name;
 
   public SSIOAccountPMPName () {
 
   }
 
-  public SSIOAccountPMPName (String name, String id) {
-    this.name = name;
+  public SSIOAccountPMPName (String id, String name) {
     this.id = id;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
     this.name = name;
   }
 
@@ -37,6 +28,15 @@ public class SSIOAccountPMPName   {
     this.id = id;
   }
 
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -47,13 +47,13 @@ public class SSIOAccountPMPName   {
       return false;
     }
     SSIOAccountPMPName ssIOAccountPMPName = (SSIOAccountPMPName) o;
-    return Objects.equals(name, ssIOAccountPMPName.name) &&
-        Objects.equals(id, ssIOAccountPMPName.id);
+    return Objects.equals(id, ssIOAccountPMPName.id) &&
+        Objects.equals(name, ssIOAccountPMPName.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, id);
+    return Objects.hash(id, name);
   }
 
   @Override
@@ -61,8 +61,8 @@ public class SSIOAccountPMPName   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountPMPName {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

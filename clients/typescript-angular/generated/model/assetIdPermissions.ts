@@ -14,18 +14,18 @@ import { AssetGroupBinding } from './assetGroupBinding';
  * An object containing the permissions a business member has on the asset.
  */
 export interface AssetIdPermissions { 
+    asset_group_info?: AssetGroupBinding;
     /**
      * Unique identifier of a business asset.
      */
     asset_id?: string;
     /**
-     * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+     * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
      */
     asset_type?: string;
     /**
      * Permission levels member or partner has on an asset.
      */
     permissions?: Array<string>;
-    asset_group_info?: AssetGroupBinding;
 }
 

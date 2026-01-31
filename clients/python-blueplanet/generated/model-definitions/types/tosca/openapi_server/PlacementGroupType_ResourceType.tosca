@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PlacementGroupType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PlacementGroupType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PlacementGroupType {
+    title = PlacementGroupType
+    description = PlacementGroupType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  PlacementGroupType {
+    title = PlacementGroupType
+    description = PlacementGroupType
+    implements = openapi_server.resourceTypes.PlacementGroupType
+
+  }
+}

@@ -7,14 +7,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinMedia } from './pinMedia';
 import { ImageMetadata } from './imageMetadata';
 
 
 /**
  * Pin with multiple images.
  */
-export interface PinMediaWithImages extends PinMedia { 
+export interface PinMediaWithImages { 
     items?: Array<ImageMetadata>;
+    media_type: PinMediaWithImages.MediaTypeEnum;
 }
+export namespace PinMediaWithImages {
+    export const MediaTypeEnum = {
+        MultipleImages: 'multiple_images'
+    } as const;
+    export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
+}
+
 

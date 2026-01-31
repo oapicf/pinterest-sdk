@@ -3,17 +3,17 @@ Protected Class UserSummary
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Username
+			Always "user"
 		#tag EndNote
-		username As Xoson.O.OptionalString
+		type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Always "user"
+			Username
 		#tag EndNote
-		type As Xoson.O.OptionalString
+		username As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,7 +54,7 @@ Protected Class UserSummary
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="username"
+			Name="type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -62,7 +62,7 @@ Protected Class UserSummary
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="type"
+			Name="username"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

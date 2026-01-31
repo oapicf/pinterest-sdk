@@ -21,16 +21,36 @@ import javax.annotation.Generated;
  * ConversionEventResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventResponse {
+
+  private @Nullable String adAccountId;
 
   private @Nullable ConversionTagType conversionEvent;
 
   private @Nullable String conversionTagId;
 
-  private @Nullable String adAccountId;
-
   private @Nullable Integer createdTime;
+
+  public ConversionEventResponse adAccountId(@Nullable String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
+  }
+
+  /**
+   * Id of the ad account.
+   * @return adAccountId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "ad_account_id", example = "549757463328", description = "Id of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ad_account_id")
+  public @Nullable String getAdAccountId() {
+    return adAccountId;
+  }
+
+  public void setAdAccountId(@Nullable String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
 
   public ConversionEventResponse conversionEvent(@Nullable ConversionTagType conversionEvent) {
     this.conversionEvent = conversionEvent;
@@ -72,26 +92,6 @@ public class ConversionEventResponse {
     this.conversionTagId = conversionTagId;
   }
 
-  public ConversionEventResponse adAccountId(@Nullable String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
-  /**
-   * Id of the ad account.
-   * @return adAccountId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "ad_account_id", example = "549757463328", description = "Id of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("ad_account_id")
-  public @Nullable String getAdAccountId() {
-    return adAccountId;
-  }
-
-  public void setAdAccountId(@Nullable String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
   public ConversionEventResponse createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
@@ -121,24 +121,24 @@ public class ConversionEventResponse {
       return false;
     }
     ConversionEventResponse conversionEventResponse = (ConversionEventResponse) o;
-    return Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
+    return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
+        Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.createdTime, conversionEventResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversionEvent, conversionTagId, adAccountId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventResponse {\n");
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();

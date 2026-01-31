@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **catalogs_type_t \*** |  | 
-**item_ids** | **list_t \*** |  | 
 **catalog_id** | **char \*** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**item_ids** | **list_t \*** |  | 
 **hotel_ids** | **list_t \*** |  | 
 **creative_assets_ids** | **list_t \*** |  | 
 

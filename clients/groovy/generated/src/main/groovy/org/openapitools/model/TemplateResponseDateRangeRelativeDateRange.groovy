@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 
 @Canonical
 class TemplateResponseDateRangeRelativeDateRange {
-    /* The date range type */
-    String type
-    /* The start date of the date range */
-    BigDecimal startDaysInPast
     /* The end date of the date range */
     BigDecimal endDaysInPast
+    /* The start date of the date range */
+    BigDecimal startDaysInPast
+    /* The date range type */
+    String type
 }

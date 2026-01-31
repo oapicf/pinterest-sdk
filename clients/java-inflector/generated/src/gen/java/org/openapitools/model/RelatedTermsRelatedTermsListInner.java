@@ -14,30 +14,13 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class RelatedTermsRelatedTermsListInner   {
-  @JsonProperty("term")
-  private String term;
-
   @JsonProperty("related_terms")
   private List<String> relatedTerms = null;
 
-  /**
-   **/
-  public RelatedTermsRelatedTermsListInner term(String term) {
-    this.term = term;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "clothes", value = "")
   @JsonProperty("term")
-  public String getTerm() {
-    return term;
-  }
-  public void setTerm(String term) {
-    this.term = term;
-  }
+  private String term;
 
   /**
    **/
@@ -56,6 +39,23 @@ public class RelatedTermsRelatedTermsListInner   {
     this.relatedTerms = relatedTerms;
   }
 
+  /**
+   **/
+  public RelatedTermsRelatedTermsListInner term(String term) {
+    this.term = term;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "clothes", value = "")
+  @JsonProperty("term")
+  public String getTerm() {
+    return term;
+  }
+  public void setTerm(String term) {
+    this.term = term;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class RelatedTermsRelatedTermsListInner   {
       return false;
     }
     RelatedTermsRelatedTermsListInner relatedTermsRelatedTermsListInner = (RelatedTermsRelatedTermsListInner) o;
-    return Objects.equals(term, relatedTermsRelatedTermsListInner.term) &&
-        Objects.equals(relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms);
+    return Objects.equals(relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms) &&
+        Objects.equals(term, relatedTermsRelatedTermsListInner.term);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(term, relatedTerms);
+    return Objects.hash(relatedTerms, term);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class RelatedTermsRelatedTermsListInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class RelatedTermsRelatedTermsListInner {\n");
     
-    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("    relatedTerms: ").append(toIndentedString(relatedTerms)).append("\n");
+    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -21,34 +21,14 @@ import javax.annotation.Generated;
  * AdsCreditRedeemResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditRedeemResponse {
-
-  private Boolean success;
 
   private JsonNullable<Integer> errorCode = JsonNullable.<Integer>undefined();
 
   private JsonNullable<String> errorMessage = JsonNullable.<String>undefined();
 
-  public AdsCreditRedeemResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-  /**
-   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-   * @return success
-   */
-  
-  @Schema(name = "success", example = "false", description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
+  private Boolean success;
 
   public AdsCreditRedeemResponse errorCode(Integer errorCode) {
     this.errorCode = JsonNullable.of(errorCode);
@@ -90,6 +70,26 @@ public class AdsCreditRedeemResponse {
     this.errorMessage = errorMessage;
   }
 
+  public AdsCreditRedeemResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+  /**
+   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+   * @return success
+   */
+  
+  @Schema(name = "success", example = "false", description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
+  }
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -99,9 +99,9 @@ public class AdsCreditRedeemResponse {
       return false;
     }
     AdsCreditRedeemResponse adsCreditRedeemResponse = (AdsCreditRedeemResponse) o;
-    return Objects.equals(this.success, adsCreditRedeemResponse.success) &&
-        equalsNullable(this.errorCode, adsCreditRedeemResponse.errorCode) &&
-        equalsNullable(this.errorMessage, adsCreditRedeemResponse.errorMessage);
+    return equalsNullable(this.errorCode, adsCreditRedeemResponse.errorCode) &&
+        equalsNullable(this.errorMessage, adsCreditRedeemResponse.errorMessage) &&
+        Objects.equals(this.success, adsCreditRedeemResponse.success);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -110,7 +110,7 @@ public class AdsCreditRedeemResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, hashCodeNullable(errorCode), hashCodeNullable(errorMessage));
+    return Objects.hash(hashCodeNullable(errorCode), hashCodeNullable(errorMessage), success);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -124,9 +124,9 @@ public class AdsCreditRedeemResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditRedeemResponse {\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

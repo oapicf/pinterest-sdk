@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`partnerId` | string
 `assetId` | string
+`partnerId` | string
 `permissions` | [Array&lt;Permissions&gt;](Permissions.md)
 
 ## Example
@@ -17,8 +17,8 @@ import type { UpdatePartnerAssetAccessBodyAccessesInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "partnerId": 1234567890123,
   "assetId": 549755885175,
+  "partnerId": 1234567890123,
   "permissions": ["ANALYST","ADMIN"],
 } satisfies UpdatePartnerAssetAccessBodyAccessesInner
 

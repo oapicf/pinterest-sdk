@@ -3,17 +3,17 @@ Protected Class SSIOAccountPMPName
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Display name
+			Salesforce id for PMP
 		#tag EndNote
-		name As Xoson.O.OptionalString
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Salesforce id for PMP
+			Display name
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,7 +54,7 @@ Protected Class SSIOAccountPMPName
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -62,7 +62,7 @@ Protected Class SSIOAccountPMPName
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

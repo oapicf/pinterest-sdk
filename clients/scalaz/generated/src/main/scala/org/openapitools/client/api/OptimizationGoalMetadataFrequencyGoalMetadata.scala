@@ -12,6 +12,7 @@ import org.joda.time.DateTime
 import OptimizationGoalMetadataFrequencyGoalMetadata._
 
 case class OptimizationGoalMetadataFrequencyGoalMetadata (
+  /* Frequency target can only be between 2 and 20 */
   frequency: Option[Integer],
 /* User entity counts time range */
   timerange: Option[Timerange])

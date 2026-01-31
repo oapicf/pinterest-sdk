@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupArrayResponseElement"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupArrayResponseElement"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroupResponse = openapi_server.resourceTypes.AdGroupResponse
+  Exception = openapi_server.resourceTypes.Exception
+}
+resourceTypes {
+
+  AdGroupArrayResponseElement {
+    title = AdGroupArrayResponseElement
+    description = AdGroupArrayResponseElement
+    derivedFrom = Root
+    properties {
+        data {
+          type = AdGroupResponse
+          description = ""
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = Exception
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupArrayResponseElement {
+    title = AdGroupArrayResponseElement
+    description = AdGroupArrayResponseElement
+    implements = openapi_server.resourceTypes.AdGroupArrayResponseElement
+
+  }
+}

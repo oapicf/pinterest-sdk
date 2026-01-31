@@ -2,11 +2,11 @@ package org.openapitools.server.model
 
 
 /**
- * @param items  for example: ''null''
  * @param bookmark  for example: ''null''
+ * @param items  for example: ''null''
 */
 final case class ItemsIssuesList200Response (
-  items: Seq[CatalogsItemValidationIssues],
-  bookmark: Option[String] = None
+  bookmark: Option[String] = None,
+  items: Seq[CatalogsItemValidationIssues]
 )
 

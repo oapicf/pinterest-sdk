@@ -85,12 +85,13 @@ public class KeywordsApiTest {
         String adAccountId = "example";
         String campaignId = "example";
         String adGroupId = "123123123";
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = Arrays.asList("example");
         List<MatchType> matchTypes = Arrays.asList();
         Integer pageSize = 25;
         String bookmark = "example";
 
         // when
-        KeywordsGet200Response body = api.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark).block();
+        KeywordsGet200Response body = api.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark).block();
 
         // then
         // TODO implement the keywordsGetTest()
@@ -134,9 +135,11 @@ public class KeywordsApiTest {
         List<@Size(min = 1, max = 100)String> includeKeywords = Arrays.asList("example");
         Boolean normalizeAgainstGroup = false;
         Integer limit = 50;
+        Boolean includePrediction = false;
+        Boolean includeDemographics = false;
 
         // when
-        TrendingKeywordsResponse body = api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit).block();
+        TrendingKeywordsResponse body = api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics).block();
 
         // then
         // TODO implement the trendingKeywordsListTest()

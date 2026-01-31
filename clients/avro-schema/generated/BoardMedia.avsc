@@ -1,13 +1,13 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Board media.",
+  "doc": "",
   "name": "BoardMedia",
   "fields": [
     {
       "name": "image_cover_url",
       "type": ["null", "string"],
-      "doc": "Board cover image.",
+      "doc": "Board cover image",
       "default": null
     },
     {

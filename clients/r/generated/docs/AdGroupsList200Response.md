@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[AdGroupResponse]**](AdGroupResponse.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[AdGroupResponse]**](AdGroupResponse.md) |  | 
 
 

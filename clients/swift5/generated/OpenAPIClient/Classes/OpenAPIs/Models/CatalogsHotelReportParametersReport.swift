@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum CatalogsHotelReportParametersReport: Codable, JSONEncodable, Hashable {
+    case typeCatalogsReportAllItemsFilter(CatalogsReportAllItemsFilter)
     case typeCatalogsReportDistributionIssueFilter(CatalogsReportDistributionIssueFilter)
     case typeCatalogsReportFeedIngestionFilter(CatalogsReportFeedIngestionFilter)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsReportAllItemsFilter(let value):
+            try container.encode(value)
         case .typeCatalogsReportDistributionIssueFilter(let value):
             try container.encode(value)
         case .typeCatalogsReportFeedIngestionFilter(let value):
@@ -26,7 +29,9 @@ public enum CatalogsHotelReportParametersReport: Codable, JSONEncodable, Hashabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsReportDistributionIssueFilter.self) {
+        if let value = try? container.decode(CatalogsReportAllItemsFilter.self) {
+            self = .typeCatalogsReportAllItemsFilter(value)
+        } else if let value = try? container.decode(CatalogsReportDistributionIssueFilter.self) {
             self = .typeCatalogsReportDistributionIssueFilter(value)
         } else if let value = try? container.decode(CatalogsReportFeedIngestionFilter.self) {
             self = .typeCatalogsReportFeedIngestionFilter(value)

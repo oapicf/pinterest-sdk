@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,11 +17,11 @@ package openapi
 // InviteExceptionResponse - An exception object if there is an error performing the action. Will only be provided if there is an error.
 type InviteExceptionResponse struct {
 
-	// Unique identifier of the invite/request.
-	InviteOrRequestId *string `json:"invite_or_request_id,omitempty" validate:"regexp=^\\\\d+$"`
-
 	// Error code associated with the error in performing the action on the invite/request.
 	Code int32 `json:"code,omitempty"`
+
+	// Unique identifier of the invite/request.
+	InviteOrRequestId *string `json:"invite_or_request_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Error message associated with the error in performing the action on the invite/request.
 	Message string `json:"message,omitempty"`

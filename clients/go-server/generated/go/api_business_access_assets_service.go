@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,7 +30,7 @@ func NewBusinessAccessAssetsAPIService() *BusinessAccessAssetsAPIService {
 }
 
 // BusinessAssetMembersGet - Get members with access to asset
-func (s *BusinessAccessAssetsAPIService) BusinessAssetMembersGet(ctx context.Context, businessId string, assetId string, bookmark string, pageSize int32, startIndex int32) (ImplResponse, error) {
+func (s *BusinessAccessAssetsAPIService) BusinessAssetMembersGet(ctx context.Context, businessId string, assetId string, fetchSystemUsers bool, bookmark string, pageSize int32, startIndex int32) (ImplResponse, error) {
 	// TODO - update BusinessAssetMembersGet with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

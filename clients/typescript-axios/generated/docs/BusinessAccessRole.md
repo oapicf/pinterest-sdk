@@ -14,6 +14,10 @@ Permission role for business access.
 
 * `FinanceManager` (value: `'FINANCE_MANAGER'`)
 
+* `FinanceView` (value: `'FINANCE_VIEW'`)
+
+* `FinanceEdit` (value: `'FINANCE_EDIT'`)
+
 * `AudienceManager` (value: `'AUDIENCE_MANAGER'`)
 
 * `CampaignManager` (value: `'CAMPAIGN_MANAGER'`)

@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AdsAnalyticsCreateAsyncResponse, () {
+    // String message
+    test('to test the property `message`', () async {
+      // TODO
+    });
+
     // BulkReportingJobStatus reportStatus
     test('to test the property `reportStatus`', () async {
       // TODO
@@ -14,11 +19,6 @@ void main() {
 
     // String token
     test('to test the property `token`', () async {
-      // TODO
-    });
-
-    // String message
-    test('to test the property `message`', () async {
       // TODO
     });
 

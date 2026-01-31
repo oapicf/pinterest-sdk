@@ -7,6 +7,13 @@ goog.provide('API.Client.CatalogsHotelBatchRequest');
 API.Client.CatalogsHotelBatchRequest = function() {}
 
 /**
+ * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelBatchRequest.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
@@ -19,13 +26,6 @@ API.Client.CatalogsHotelBatchRequest.prototype.catalogType;
 API.Client.CatalogsHotelBatchRequest.prototype.country;
 
 /**
- * We recommend using the CatalogsLocale values.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelBatchRequest.prototype.language;
-
-/**
  * Array with catalogs item operations
  * @type {!Array<!API.Client.CatalogsHotelBatchItem>}
  * @export
@@ -33,11 +33,11 @@ API.Client.CatalogsHotelBatchRequest.prototype.language;
 API.Client.CatalogsHotelBatchRequest.prototype.items;
 
 /**
- * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelBatchRequest.prototype.catalogId;
+API.Client.CatalogsHotelBatchRequest.prototype.language;
 
 /** @enum {string} */
 API.Client.CatalogsHotelBatchRequest.CatalogTypeEnum = { 

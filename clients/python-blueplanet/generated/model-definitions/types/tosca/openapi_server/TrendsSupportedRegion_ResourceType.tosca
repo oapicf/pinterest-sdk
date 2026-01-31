@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendsSupportedRegion"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendsSupportedRegion"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TrendsSupportedRegion {
+    title = TrendsSupportedRegion
+    description = TrendsSupportedRegion
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendsSupportedRegion {
+    title = TrendsSupportedRegion
+    description = TrendsSupportedRegion
+    implements = openapi_server.resourceTypes.TrendsSupportedRegion
+
+  }
+}

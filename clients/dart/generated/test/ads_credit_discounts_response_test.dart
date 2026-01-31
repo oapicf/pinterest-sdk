@@ -28,9 +28,9 @@ void main() {
       // TODO
     });
 
-    // The type of discount of this credit
-    // String discountType
-    test('to test the property `discountType`', () async {
+    // Currency value for the discount.
+    // String discountCurrency
+    test('to test the property `discountCurrency`', () async {
       // TODO
     });
 
@@ -40,21 +40,21 @@ void main() {
       // TODO
     });
 
-    // Currency value for the discount.
-    // String discountCurrency
-    test('to test the property `discountCurrency`', () async {
-      // TODO
-    });
-
-    // Human readable title of the offer code.
-    // String title
-    test('to test the property `title`', () async {
+    // The type of discount of this credit
+    // String discountType
+    test('to test the property `discountType`', () async {
       // TODO
     });
 
     // The credits left to spend.
     // num remainingDiscountInMicroCurrency
     test('to test the property `remainingDiscountInMicroCurrency`', () async {
+      // TODO
+    });
+
+    // Human readable title of the offer code.
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 

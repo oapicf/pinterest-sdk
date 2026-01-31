@@ -4,7 +4,7 @@ package org.openapitools.client.model
 import java.util.HashMap
 
 case class AppTypeMultipliers (
-    _APP_TYPE: Option[TargetingSpecAppType]
+    _APP_TYPE: Option[String]
 )
 object AppTypeMultipliers {
     def toStringBody(var_APP_TYPE: Object) =

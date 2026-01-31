@@ -45,7 +45,7 @@ Mono<SearchPartnerPins200Response> SearchApi.searchPartnerPins(termcountryCodebo
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -100,7 +100,7 @@ Search for boards for the \&quot;operation user_account\&quot;. This includes bo
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
 ```java
-Mono<PinsList200Response> SearchApi.searchUserPinsList(queryadAccountIdbookmark)
+Mono<SearchUserPinsList200Response> SearchApi.searchUserPinsList(queryadAccountIdbookmark)
 ```
 
 Search user&#39;s Pins
@@ -116,7 +116,7 @@ Search for pins for the \&quot;operation user_account\&quot;. - By default, the 
 
 
 ### Return type
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `boards:read_secret`, `pins:read`, `pins:read_secret`

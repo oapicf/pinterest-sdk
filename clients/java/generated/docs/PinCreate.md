@@ -2,26 +2,22 @@
 
 # PinCreate
 
-Pin
+Resource create operation model.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] [readonly] |
-|**createdAt** | **OffsetDateTime** |  |  [optional] [readonly] |
-|**link** | **String** |  |  [optional] |
-|**title** | **String** |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**dominantColor** | **String** | Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;. |  [optional] |
 |**altText** | **String** |  |  [optional] |
 |**boardId** | **String** | The board to which this Pin belongs. |  [optional] |
 |**boardSectionId** | **String** | The board section to which this Pin belongs. |  [optional] |
-|**boardOwner** | [**BoardOwner**](BoardOwner.md) |  |  [optional] [readonly] |
-|**media** | [**PinMedia**](PinMedia.md) |  |  [optional] [readonly] |
+|**description** | **String** |  |  [optional] |
+|**dominantColor** | **String** | Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;. |  [optional] |
+|**link** | **String** |  |  [optional] |
 |**mediaSource** | [**PinMediaSource**](PinMediaSource.md) |  |  [optional] |
-|**parentPinId** | **String** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. |  [optional] |
-|**note** | **String** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. |  [optional] |
+|**parentPinId** | **String** | The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). |  [optional] |
+|**sponsorId** | **String** | The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. |  [optional] |
+|**title** | **String** |  |  [optional] |
 
 
 

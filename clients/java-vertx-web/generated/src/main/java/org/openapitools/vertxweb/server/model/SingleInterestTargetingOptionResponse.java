@@ -10,37 +10,19 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SingleInterestTargetingOptionResponse   {
   
-  private String id;
-  private String name;
   private List<String> childInterests = new ArrayList<>();
+  private String id;
   private Integer level;
+  private String name;
 
   public SingleInterestTargetingOptionResponse () {
 
   }
 
-  public SingleInterestTargetingOptionResponse (String id, String name, List<String> childInterests, Integer level) {
-    this.id = id;
-    this.name = name;
+  public SingleInterestTargetingOptionResponse (List<String> childInterests, String id, Integer level, String name) {
     this.childInterests = childInterests;
-    this.level = level;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
     this.id = id;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
+    this.level = level;
     this.name = name;
   }
 
@@ -54,12 +36,30 @@ public class SingleInterestTargetingOptionResponse   {
   }
 
     
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
   @JsonProperty("level")
   public Integer getLevel() {
     return level;
   }
   public void setLevel(Integer level) {
     this.level = level;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -72,15 +72,15 @@ public class SingleInterestTargetingOptionResponse   {
       return false;
     }
     SingleInterestTargetingOptionResponse singleInterestTargetingOptionResponse = (SingleInterestTargetingOptionResponse) o;
-    return Objects.equals(id, singleInterestTargetingOptionResponse.id) &&
-        Objects.equals(name, singleInterestTargetingOptionResponse.name) &&
-        Objects.equals(childInterests, singleInterestTargetingOptionResponse.childInterests) &&
-        Objects.equals(level, singleInterestTargetingOptionResponse.level);
+    return Objects.equals(childInterests, singleInterestTargetingOptionResponse.childInterests) &&
+        Objects.equals(id, singleInterestTargetingOptionResponse.id) &&
+        Objects.equals(level, singleInterestTargetingOptionResponse.level) &&
+        Objects.equals(name, singleInterestTargetingOptionResponse.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, childInterests, level);
+    return Objects.hash(childInterests, id, level, name);
   }
 
   @Override
@@ -88,10 +88,10 @@ public class SingleInterestTargetingOptionResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SingleInterestTargetingOptionResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    childInterests: ").append(toIndentedString(childInterests)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

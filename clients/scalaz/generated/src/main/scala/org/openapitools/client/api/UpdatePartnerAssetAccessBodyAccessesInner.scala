@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import UpdatePartnerAssetAccessBodyAccessesInner._
 
 case class UpdatePartnerAssetAccessBodyAccessesInner (
-  /* Unique identifier of a business partner to update asset access to. */
-  partnerId: String,
-/* Unique identifier of the business asset. */
+  /* Unique identifier of the business asset. */
   assetId: String,
+/* Unique identifier of a business partner to update asset access to. */
+  partnerId: String,
 /* A non-empty array of permissions to assign to the partner. */
   permissions: List[Permissions])
 

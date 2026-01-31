@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,6 +21,7 @@ import (
 type AdPreviewRequest struct {
 	AdPreviewCreateFromImage *AdPreviewCreateFromImage
 	AdPreviewCreateFromPin *AdPreviewCreateFromPin
+	AdPreviewShopping *AdPreviewShopping
 }
 
 // AdPreviewCreateFromImageAsAdPreviewRequest is a convenience function that returns AdPreviewCreateFromImage wrapped in AdPreviewRequest
@@ -34,6 +35,13 @@ func AdPreviewCreateFromImageAsAdPreviewRequest(v *AdPreviewCreateFromImage) AdP
 func AdPreviewCreateFromPinAsAdPreviewRequest(v *AdPreviewCreateFromPin) AdPreviewRequest {
 	return AdPreviewRequest{
 		AdPreviewCreateFromPin: v,
+	}
+}
+
+// AdPreviewShoppingAsAdPreviewRequest is a convenience function that returns AdPreviewShopping wrapped in AdPreviewRequest
+func AdPreviewShoppingAsAdPreviewRequest(v *AdPreviewShopping) AdPreviewRequest {
+	return AdPreviewRequest{
+		AdPreviewShopping: v,
 	}
 }
 
@@ -76,10 +84,28 @@ func (dst *AdPreviewRequest) UnmarshalJSON(data []byte) error {
 		dst.AdPreviewCreateFromPin = nil
 	}
 
+	// try to unmarshal data into AdPreviewShopping
+	err = newStrictDecoder(data).Decode(&dst.AdPreviewShopping)
+	if err == nil {
+		jsonAdPreviewShopping, _ := json.Marshal(dst.AdPreviewShopping)
+		if string(jsonAdPreviewShopping) == "{}" { // empty struct
+			dst.AdPreviewShopping = nil
+		} else {
+			if err = validator.Validate(dst.AdPreviewShopping); err != nil {
+				dst.AdPreviewShopping = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.AdPreviewShopping = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.AdPreviewCreateFromImage = nil
 		dst.AdPreviewCreateFromPin = nil
+		dst.AdPreviewShopping = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(AdPreviewRequest)")
 	} else if match == 1 {
@@ -99,6 +125,10 @@ func (src AdPreviewRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AdPreviewCreateFromPin)
 	}
 
+	if src.AdPreviewShopping != nil {
+		return json.Marshal(&src.AdPreviewShopping)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -115,6 +145,10 @@ func (obj *AdPreviewRequest) GetActualInstance() (interface{}) {
 		return obj.AdPreviewCreateFromPin
 	}
 
+	if obj.AdPreviewShopping != nil {
+		return obj.AdPreviewShopping
+	}
+
 	// all schemas are nil
 	return nil
 }
@@ -127,6 +161,10 @@ func (obj AdPreviewRequest) GetActualInstanceValue() (interface{}) {
 
 	if obj.AdPreviewCreateFromPin != nil {
 		return *obj.AdPreviewCreateFromPin
+	}
+
+	if obj.AdPreviewShopping != nil {
+		return *obj.AdPreviewShopping
 	}
 
 	// all schemas are nil

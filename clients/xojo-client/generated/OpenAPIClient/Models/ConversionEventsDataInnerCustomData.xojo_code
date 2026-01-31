@@ -3,17 +3,17 @@ Protected Class ConversionEventsDataInnerCustomData
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+			The brand of the content associated with the event.
 		#tag EndNote
-		currency As Xoson.O.OptionalString
+		content_brand As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+			The category of the content associated with the event.
 		#tag EndNote
-		value As Xoson.O.OptionalString
+		content_category As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -35,25 +35,41 @@ Protected Class ConversionEventsDataInnerCustomData
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The category of the content associated with the event.
-		#tag EndNote
-		content_category As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The brand of the content associated with the event.
-		#tag EndNote
-		content_brand As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href="https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs" target="_blank">here</a> (Install the Pinterest tag section).
 		#tag EndNote
 		contents() As OpenAPIClient.Models.ConversionEventsDataInnerCustomDataContentsInner
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+		#tag EndNote
+		currency As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Only use when instructed.
+		#tag EndNote
+		external_measurement_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Only use when instructed.
+		#tag EndNote
+		external_measurement_vendor_id As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+		#tag EndNote
+		np As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -67,9 +83,25 @@ Protected Class ConversionEventsDataInnerCustomData
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href="https://help.pinterest.com/en/business/article/limited-data-processing" target="_blank">limited data processing</a> and the developer's guide for <a href="/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events" target="_blank">tracking conversion events</a> for help with using this parameter.
+		#tag EndNote
+		opt_out_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
 		#tag EndNote
 		order_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+		#tag EndNote
+		predicted_ltv As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -83,17 +115,9 @@ Protected Class ConversionEventsDataInnerCustomData
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href="https://help.pinterest.com/en/business/article/limited-data-processing" target="_blank">Help Center</a> and <a href="/docs/api-features/conversion-overview/" target="_blank">dev site</a> for specific opt_out_type set up.
+			Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
 		#tag EndNote
-		opt_out_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
-		#tag EndNote
-		np As Xoson.O.OptionalString
+		value As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -134,7 +158,7 @@ Protected Class ConversionEventsDataInnerCustomData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="currency"
+			Name="content_brand"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -142,7 +166,7 @@ Protected Class ConversionEventsDataInnerCustomData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="value"
+			Name="content_category"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -166,27 +190,43 @@ Protected Class ConversionEventsDataInnerCustomData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="content_category"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="content_brand"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="contents"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="ConversionEventsDataInnerCustomDataContentsInner"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="external_measurement_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="external_measurement_vendor_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="np"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -198,7 +238,23 @@ Protected Class ConversionEventsDataInnerCustomData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="opt_out_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="order_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="predicted_ltv"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -214,15 +270,7 @@ Protected Class ConversionEventsDataInnerCustomData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="opt_out_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="np"
+			Name="value"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

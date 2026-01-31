@@ -15,9 +15,9 @@ import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAss
  */
 export interface CatalogsCreativeAssetsProductGroupUpdateRequest { 
     catalog_type?: CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnum;
-    name?: string;
     description?: string | null;
     filters?: CatalogsCreativeAssetsProductGroupFilters;
+    name?: string;
 }
 export namespace CatalogsCreativeAssetsProductGroupUpdateRequest {
     export const CatalogTypeEnum = {

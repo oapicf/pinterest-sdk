@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsAnalyticsGetAsyncResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsAnalyticsGetAsyncResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkReportingJobStatus = openapi_server.resourceTypes.BulkReportingJobStatus
+}
+resourceTypes {
+
+  AdsAnalyticsGetAsyncResponse {
+    title = AdsAnalyticsGetAsyncResponse
+    description = AdsAnalyticsGetAsyncResponse
+    derivedFrom = Root
+    properties {
+        report_status {
+          type = BulkReportingJobStatus
+          description = ""
+          optional = false
+        }
+        size {
+          type =  
+          description = ""
+          optional = false
+        }
+        url {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsAnalyticsGetAsyncResponse {
+    title = AdsAnalyticsGetAsyncResponse
+    description = AdsAnalyticsGetAsyncResponse
+    implements = openapi_server.resourceTypes.AdsAnalyticsGetAsyncResponse
+
+  }
+}

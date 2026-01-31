@@ -7,14 +7,18 @@ goog.provide('API.Client.PinMediaWithImageAndVideo');
 API.Client.PinMediaWithImageAndVideo = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.PinMediaWithImageAndVideo.prototype.mediaType;
-
-/**
  * @type {!Array<!API.Client.PinMediaMetadata>}
  * @export
  */
 API.Client.PinMediaWithImageAndVideo.prototype.items;
 
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.PinMediaWithImageAndVideo.prototype.mediaType;
+
+/** @enum {string} */
+API.Client.PinMediaWithImageAndVideo.MediaTypeEnum = { 
+  multiple_mixed: 'multiple_mixed',
+}

@@ -6,11 +6,11 @@ Request object for creating a creative assets product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
-**name** | **string** |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to undefined]
-**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | [default to undefined]
+**name** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -18,11 +18,11 @@ Name | Type | Description | Notes
 import { CatalogsCreativeAssetsProductGroupCreateRequest } from './api';
 
 const instance: CatalogsCreativeAssetsProductGroupCreateRequest = {
+    catalog_id,
     catalog_type,
-    name,
     description,
     filters,
-    catalog_id,
+    name,
 };
 ```
 

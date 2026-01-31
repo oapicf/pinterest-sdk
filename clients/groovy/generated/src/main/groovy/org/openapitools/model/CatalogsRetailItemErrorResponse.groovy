@@ -12,8 +12,8 @@ import org.openapitools.model.ItemValidationEvent;
 class CatalogsRetailItemErrorResponse {
     
     CatalogsType catalogType
-    /* The catalog item id in the merchant namespace */
-    String itemId
     /* Array with the errors for the item id requested */
     List<ItemValidationEvent> errors = new ArrayList<>()
+    /* The catalog item id in the merchant namespace */
+    String itemId
 }

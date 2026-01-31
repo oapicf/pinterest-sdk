@@ -1,6 +1,9 @@
 package api
 
 import play.api.libs.json._
+import model.BrandAccountsCreate200Response
+import model.BrandAccountsCreateRequest
+import model.BrandAccountsUpdateRequest
 import model.DeletePartnersRequest
 import model.DeletePartnersResponse
 import model.DeletedMembersResponse
@@ -11,11 +14,27 @@ import model.GetBusinessPartners200Response
 import model.MemberBusinessRole
 import model.MembersToDeleteBody
 import model.PartnerType
+import model.SystemUserUpdateRequest
 import model.UpdateMemberBusinessRoleBody
 import model.UpdateMemberResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait BusinessAccessRelationshipsApi {
+  /**
+    * Create a Brand Account
+    * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+    * @param businessHierarchyId business hierarchy node id
+    */
+  def brandAccountsCreate(businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest): BrandAccountsCreate200Response
+
+  /**
+    * Update a Brand Account
+    * Update an existing Brand Account
+    * @param businessHierarchyId business hierarchy node id
+    * @param brandAccountId Unique identifier of a brand account.
+    */
+  def brandAccountsUpdate(businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest): BrandAccountsCreate200Response
+
   /**
     * Terminate business memberships
     * Terminate memberships between the specified members and your business.
@@ -44,6 +63,7 @@ trait BusinessAccessRelationshipsApi {
     * Get business members
     * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
     * @param businessId Unique identifier of the requesting business.
+    * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
     * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
     * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
     * @param memberIds A list of business members ids separated by comma.
@@ -51,7 +71,7 @@ trait BusinessAccessRelationshipsApi {
     * @param bookmark Cursor used to fetch the next page of items
     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
     */
-  def getBusinessMembers(businessId: String, assetsSummary: Option[Boolean], businessRoles: Option[List[MemberBusinessRole]], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): GetBusinessMembers200Response
+  def getBusinessMembers(businessId: String, fetchSystemUsers: Option[Boolean], assetsSummary: Option[Boolean], businessRoles: Option[List[MemberBusinessRole]], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): GetBusinessMembers200Response
 
   /**
     * Get business partners
@@ -65,6 +85,14 @@ trait BusinessAccessRelationshipsApi {
     * @param bookmark Cursor used to fetch the next page of items
     */
   def getBusinessPartners(businessId: String, assetsSummary: Option[Boolean], partnerType: Option[PartnerType], partnerIds: Option[String], startIndex: Option[Int], pageSize: Option[Int], bookmark: Option[String]): GetBusinessPartners200Response
+
+  /**
+    * Update a system user information.
+    * Update a system user information such as name.
+    * @param businessId Unique identifier of the requesting business.
+    * @param systemUserId Unique identifier of a system user.
+    */
+  def systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest): Unit
 
   /**
     * Update member&#39;s business role

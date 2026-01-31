@@ -24,29 +24,29 @@ feeds_update_request_t* instantiate_feeds_update_request(int include_optional) {
   feeds_update_request_t* feeds_update_request = NULL;
   if (include_optional) {
     feeds_update_request = feeds_update_request_create(
-      pinterest_rest_api_feeds_update_request__"USD",
-      "0",
-      pinterest_rest_api_feeds_update_request__TSV,
+      pinterest_rest_api_feeds_update_request__RETAIL,
        // false, not to have infinite recursion
       instantiate_catalogs_feed_credentials(0),
+      pinterest_rest_api_feeds_update_request__IN_STOCK,
+      pinterest_rest_api_feeds_update_request__"USD",
+      pinterest_rest_api_feeds_update_request__TSV,
       "a",
+      "0",
        // false, not to have infinite recursion
       instantiate_catalogs_feed_processing_schedule(0),
-      pinterest_rest_api_feeds_update_request__ACTIVE,
-      pinterest_rest_api_feeds_update_request__RETAIL,
-      pinterest_rest_api_feeds_update_request__IN_STOCK
+      pinterest_rest_api_feeds_update_request__ACTIVE
     );
   } else {
     feeds_update_request = feeds_update_request_create(
-      pinterest_rest_api_feeds_update_request__"USD",
-      "0",
-      pinterest_rest_api_feeds_update_request__TSV,
-      NULL,
-      "a",
-      NULL,
-      pinterest_rest_api_feeds_update_request__ACTIVE,
       pinterest_rest_api_feeds_update_request__RETAIL,
-      pinterest_rest_api_feeds_update_request__IN_STOCK
+      NULL,
+      pinterest_rest_api_feeds_update_request__IN_STOCK,
+      pinterest_rest_api_feeds_update_request__"USD",
+      pinterest_rest_api_feeds_update_request__TSV,
+      "a",
+      "0",
+      NULL,
+      pinterest_rest_api_feeds_update_request__ACTIVE
     );
   }
 

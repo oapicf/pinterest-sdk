@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -30,8 +30,8 @@ type CatalogsItemValidationErrors struct {
 	IMAGE_LINK_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"IMAGE_LINK_LENGTH_TOO_LONG,omitempty"`
 	IMAGE_LINK_MISSING *CatalogsItemValidationDetails `json:"IMAGE_LINK_MISSING,omitempty"`
 	INVALID_DOMAIN *CatalogsItemValidationDetails `json:"INVALID_DOMAIN,omitempty"`
-	ITEMID_MISSING *CatalogsItemValidationDetails `json:"ITEMID_MISSING,omitempty"`
 	ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE *CatalogsItemValidationDetails `json:"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE,omitempty"`
+	ITEMID_MISSING *CatalogsItemValidationDetails `json:"ITEMID_MISSING,omitempty"`
 	LINK_FORMAT_INVALID *CatalogsItemValidationDetails `json:"LINK_FORMAT_INVALID,omitempty"`
 	LINK_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"LINK_LENGTH_TOO_LONG,omitempty"`
 	LIST_PRICE_INVALID *CatalogsItemValidationDetails `json:"LIST_PRICE_INVALID,omitempty"`
@@ -382,38 +382,6 @@ func (o *CatalogsItemValidationErrors) SetINVALID_DOMAIN(v CatalogsItemValidatio
 	o.INVALID_DOMAIN = &v
 }
 
-// GetITEMID_MISSING returns the ITEMID_MISSING field value if set, zero value otherwise.
-func (o *CatalogsItemValidationErrors) GetITEMID_MISSING() CatalogsItemValidationDetails {
-	if o == nil || IsNil(o.ITEMID_MISSING) {
-		var ret CatalogsItemValidationDetails
-		return ret
-	}
-	return *o.ITEMID_MISSING
-}
-
-// GetITEMID_MISSINGOk returns a tuple with the ITEMID_MISSING field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemValidationErrors) GetITEMID_MISSINGOk() (*CatalogsItemValidationDetails, bool) {
-	if o == nil || IsNil(o.ITEMID_MISSING) {
-		return nil, false
-	}
-	return o.ITEMID_MISSING, true
-}
-
-// HasITEMID_MISSING returns a boolean if a field has been set.
-func (o *CatalogsItemValidationErrors) HasITEMID_MISSING() bool {
-	if o != nil && !IsNil(o.ITEMID_MISSING) {
-		return true
-	}
-
-	return false
-}
-
-// SetITEMID_MISSING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ITEMID_MISSING field.
-func (o *CatalogsItemValidationErrors) SetITEMID_MISSING(v CatalogsItemValidationDetails) {
-	o.ITEMID_MISSING = &v
-}
-
 // GetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE returns the ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE field value if set, zero value otherwise.
 func (o *CatalogsItemValidationErrors) GetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE() CatalogsItemValidationDetails {
 	if o == nil || IsNil(o.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
@@ -444,6 +412,38 @@ func (o *CatalogsItemValidationErrors) HasITEM_MAIN_IMAGE_DOWNLOAD_FAILURE() boo
 // SetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE gets a reference to the given CatalogsItemValidationDetails and assigns it to the ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE field.
 func (o *CatalogsItemValidationErrors) SetITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(v CatalogsItemValidationDetails) {
 	o.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = &v
+}
+
+// GetITEMID_MISSING returns the ITEMID_MISSING field value if set, zero value otherwise.
+func (o *CatalogsItemValidationErrors) GetITEMID_MISSING() CatalogsItemValidationDetails {
+	if o == nil || IsNil(o.ITEMID_MISSING) {
+		var ret CatalogsItemValidationDetails
+		return ret
+	}
+	return *o.ITEMID_MISSING
+}
+
+// GetITEMID_MISSINGOk returns a tuple with the ITEMID_MISSING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemValidationErrors) GetITEMID_MISSINGOk() (*CatalogsItemValidationDetails, bool) {
+	if o == nil || IsNil(o.ITEMID_MISSING) {
+		return nil, false
+	}
+	return o.ITEMID_MISSING, true
+}
+
+// HasITEMID_MISSING returns a boolean if a field has been set.
+func (o *CatalogsItemValidationErrors) HasITEMID_MISSING() bool {
+	if o != nil && !IsNil(o.ITEMID_MISSING) {
+		return true
+	}
+
+	return false
+}
+
+// SetITEMID_MISSING gets a reference to the given CatalogsItemValidationDetails and assigns it to the ITEMID_MISSING field.
+func (o *CatalogsItemValidationErrors) SetITEMID_MISSING(v CatalogsItemValidationDetails) {
+	o.ITEMID_MISSING = &v
 }
 
 // GetLINK_FORMAT_INVALID returns the LINK_FORMAT_INVALID field value if set, zero value otherwise.
@@ -838,11 +838,11 @@ func (o CatalogsItemValidationErrors) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.INVALID_DOMAIN) {
 		toSerialize["INVALID_DOMAIN"] = o.INVALID_DOMAIN
 	}
-	if !IsNil(o.ITEMID_MISSING) {
-		toSerialize["ITEMID_MISSING"] = o.ITEMID_MISSING
-	}
 	if !IsNil(o.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
 		toSerialize["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"] = o.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+	}
+	if !IsNil(o.ITEMID_MISSING) {
+		toSerialize["ITEMID_MISSING"] = o.ITEMID_MISSING
 	}
 	if !IsNil(o.LINK_FORMAT_INVALID) {
 		toSerialize["LINK_FORMAT_INVALID"] = o.LINK_FORMAT_INVALID

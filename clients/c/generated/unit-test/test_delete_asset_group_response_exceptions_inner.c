@@ -22,15 +22,15 @@ delete_asset_group_response_exceptions_inner_t* instantiate_delete_asset_group_r
   delete_asset_group_response_exceptions_inner_t* delete_asset_group_response_exceptions_inner = NULL;
   if (include_optional) {
     delete_asset_group_response_exceptions_inner = delete_asset_group_response_exceptions_inner_create(
+      "666791336903426391",
       29,
-      "You are not permitted to access that resource.",
-      "666791336903426391"
+      "You are not permitted to access that resource."
     );
   } else {
     delete_asset_group_response_exceptions_inner = delete_asset_group_response_exceptions_inner_create(
+      "666791336903426391",
       29,
-      "You are not permitted to access that resource.",
-      "666791336903426391"
+      "You are not permitted to access that resource."
     );
   }
 

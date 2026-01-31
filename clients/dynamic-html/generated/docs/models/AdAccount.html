@@ -1,23 +1,13 @@
 
 <h2>AdAccount</h2>
 <ul class="parameter">
-  <li class="param-required-false">id : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">name : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">owner : Ad_account_owner
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">country : Country
     <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscoretime : Integer
+    <br/> Creation time. Unix timestamp in seconds.
   </li>
 </ul>
 <ul class="parameter">
@@ -26,17 +16,27 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-true">id : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Ad account name.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">owner : AdAccountOwner
+    <br/>Ad account owner
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">permissions : List
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">createdUnderscoretime : Integer
-    <br/>Creation time. Unix timestamp in seconds.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">updatedUnderscoretime : Integer
-    <br/>Last update time. Unix timestamp in seconds.
+    <br/>
   </li>
 </ul>

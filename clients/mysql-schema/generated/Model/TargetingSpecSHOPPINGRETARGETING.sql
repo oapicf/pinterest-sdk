@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'TargetingSpec_SHOPPING_RETARGETING' definition.
+-- Prepared SQL queries for 'TargetingSpecShoppingRetargeting' definition.
 --
 
 
 --
--- SELECT template for table `TargetingSpec_SHOPPING_RETARGETING`
+-- SELECT template for table `TargetingSpecShoppingRetargeting`
 --
-SELECT `lookback_window`, `tag_types`, `exclusion_window` FROM `TargetingSpec_SHOPPING_RETARGETING` WHERE 1;
+SELECT `exclusion_window`, `lookback_window`, `tag_types` FROM `TargetingSpecShoppingRetargeting` WHERE 1;
 
 --
--- INSERT template for table `TargetingSpec_SHOPPING_RETARGETING`
+-- INSERT template for table `TargetingSpecShoppingRetargeting`
 --
-INSERT INTO `TargetingSpec_SHOPPING_RETARGETING`(`lookback_window`, `tag_types`, `exclusion_window`) VALUES (?, ?, ?);
+INSERT INTO `TargetingSpecShoppingRetargeting`(`exclusion_window`, `lookback_window`, `tag_types`) VALUES (?, ?, ?);
 
 --
--- UPDATE template for table `TargetingSpec_SHOPPING_RETARGETING`
+-- UPDATE template for table `TargetingSpecShoppingRetargeting`
 --
-UPDATE `TargetingSpec_SHOPPING_RETARGETING` SET `lookback_window` = ?, `tag_types` = ?, `exclusion_window` = ? WHERE 1;
+UPDATE `TargetingSpecShoppingRetargeting` SET `exclusion_window` = ?, `lookback_window` = ?, `tag_types` = ? WHERE 1;
 
 --
--- DELETE template for table `TargetingSpec_SHOPPING_RETARGETING`
+-- DELETE template for table `TargetingSpecShoppingRetargeting`
 --
-DELETE FROM `TargetingSpec_SHOPPING_RETARGETING` WHERE 0;
+DELETE FROM `TargetingSpecShoppingRetargeting` WHERE 0;
 

@@ -15,9 +15,9 @@ import { CatalogsHotelProductGroupFilters } from './catalogsHotelProductGroupFil
  */
 export interface CatalogsHotelProductGroupUpdateRequest { 
     catalog_type?: CatalogsHotelProductGroupUpdateRequest.CatalogTypeEnum;
-    name?: string;
     description?: string | null;
     filters?: CatalogsHotelProductGroupFilters;
+    name?: string;
 }
 export namespace CatalogsHotelProductGroupUpdateRequest {
     export const CatalogTypeEnum = {

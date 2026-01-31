@@ -14,6 +14,26 @@ module OauthApiHandlers =
     /// 
     /// </summary>
 
+    //#region OauthConversionToken
+    /// <summary>
+    /// Generate OAuth access token for conversion API
+    /// </summary>
+   [<FunctionName("OauthConversionToken")>]
+    let OauthConversionToken
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/oauth/conversion_token")>]
+        req:HttpRequest ) =
+
+      let result = OauthApiService.OauthConversionToken ()
+      match result with
+      | OauthConversionTokenStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | OauthConversionTokenDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region OauthToken
     /// <summary>
     /// Generate OAuth access token
@@ -30,6 +50,34 @@ module OauthApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | OauthTokenDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region TokenRevoke
+    /// <summary>
+    /// Revoke a token
+    /// </summary>
+   [<FunctionName("TokenRevoke")>]
+    let TokenRevoke
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/oauth/token/revoke")>]
+        req:HttpRequest ) =
+
+      let result = OauthApiService.TokenRevoke ()
+      match result with
+      | TokenRevokeStatusCode200 resolved ->
+          let content = resolved.content
+          let responseContentType = "text/plain"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | TokenRevokeStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | TokenRevokeStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | TokenRevokeDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))

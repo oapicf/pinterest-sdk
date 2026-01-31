@@ -27,36 +27,36 @@ catalogs_creative_assets_feed_t* instantiate_catalogs_creative_assets_feed(int i
       "2022-03-14T15:15:22Z",
       "0",
       "2022-03-14T15:16:34Z",
-      "0",
-      pinterest_rest_api_catalogs_creative_assets_feed__TSV,
+      "a",
       pinterest_rest_api_catalogs_creative_assets_feed__RETAIL,
        // false, not to have infinite recursion
       instantiate_catalogs_feed_credentials(0),
+      pinterest_rest_api_catalogs_creative_assets_feed__AD,
+      pinterest_rest_api_catalogs_creative_assets_feed__"USD",
+      "en-US",
+      pinterest_rest_api_catalogs_creative_assets_feed__TSV,
+      "0",
       "0",
        // false, not to have infinite recursion
       instantiate_catalogs_feed_processing_schedule(0),
-      pinterest_rest_api_catalogs_creative_assets_feed__ACTIVE,
-      pinterest_rest_api_catalogs_creative_assets_feed__"USD",
-      "en-US",
-      pinterest_rest_api_catalogs_creative_assets_feed__"US",
-      "a"
+      pinterest_rest_api_catalogs_creative_assets_feed__ACTIVE
     );
   } else {
     catalogs_creative_assets_feed = catalogs_creative_assets_feed_create(
       "2022-03-14T15:15:22Z",
       "0",
       "2022-03-14T15:16:34Z",
-      "0",
-      pinterest_rest_api_catalogs_creative_assets_feed__TSV,
+      "a",
       pinterest_rest_api_catalogs_creative_assets_feed__RETAIL,
       NULL,
-      "0",
-      NULL,
-      pinterest_rest_api_catalogs_creative_assets_feed__ACTIVE,
+      pinterest_rest_api_catalogs_creative_assets_feed__AD,
       pinterest_rest_api_catalogs_creative_assets_feed__"USD",
       "en-US",
-      pinterest_rest_api_catalogs_creative_assets_feed__"US",
-      "a"
+      pinterest_rest_api_catalogs_creative_assets_feed__TSV,
+      "0",
+      "0",
+      NULL,
+      pinterest_rest_api_catalogs_creative_assets_feed__ACTIVE
     );
   }
 

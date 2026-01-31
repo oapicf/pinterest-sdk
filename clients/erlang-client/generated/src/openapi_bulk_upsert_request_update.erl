@@ -5,22 +5,28 @@
 -export_type([openapi_bulk_upsert_request_update/0]).
 
 -type openapi_bulk_upsert_request_update() ::
-    #{ 'campaigns' => list(),
-       'ad_groups' => list(),
+    #{ 'ad_groups' => list(),
        'ads' => list(),
-       'product_groups' => list(),
-       'keywords' => list()
+       'campaigns' => list(),
+       'catalog_product_groups' => list(),
+       'keywords' => list(),
+       'labels' => list(),
+       'product_groups' => list()
      }.
 
-encode(#{ 'campaigns' := Campaigns,
-          'ad_groups' := AdGroups,
+encode(#{ 'ad_groups' := AdGroups,
           'ads' := Ads,
-          'product_groups' := ProductGroups,
-          'keywords' := Keywords
+          'campaigns' := Campaigns,
+          'catalog_product_groups' := CatalogProductGroups,
+          'keywords' := Keywords,
+          'labels' := Labels,
+          'product_groups' := ProductGroups
         }) ->
-    #{ 'campaigns' => Campaigns,
-       'ad_groups' => AdGroups,
+    #{ 'ad_groups' => AdGroups,
        'ads' => Ads,
-       'product_groups' => ProductGroups,
-       'keywords' => Keywords
+       'campaigns' => Campaigns,
+       'catalog_product_groups' => CatalogProductGroups,
+       'keywords' => Keywords,
+       'labels' => Labels,
+       'product_groups' => ProductGroups
      }.

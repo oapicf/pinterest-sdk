@@ -21,16 +21,16 @@ typedef struct advanced_auction_items_get_record_t advanced_auction_items_get_re
 
 
 typedef struct advanced_auction_items_get_record_t {
-    char *item_id; // string
     pinterest_rest_api_country__e country; //referenced enum
+    char *item_id; // string
     pinterest_rest_api_language__e language; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } advanced_auction_items_get_record_t;
 
 __attribute__((deprecated)) advanced_auction_items_get_record_t *advanced_auction_items_get_record_create(
-    char *item_id,
     pinterest_rest_api_country__e country,
+    char *item_id,
     pinterest_rest_api_language__e language
 );
 

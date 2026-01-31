@@ -23,20 +23,20 @@ catalogs_hotel_items_batch_t* instantiate_catalogs_hotel_items_batch(int include
   if (include_optional) {
     catalogs_hotel_items_batch = catalogs_hotel_items_batch_create(
       "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e",
-      "2013-10-20T19:20:30+01:00",
-      "2013-10-20T19:20:30+01:00",
-      pinterest_rest_api_catalogs_hotel_items_batch__"PROCESSING",
       pinterest_rest_api_catalogs_hotel_items_batch__RETAIL,
-      list_createList()
+      "2013-10-20T19:20:30+01:00",
+      "2013-10-20T19:20:30+01:00",
+      list_createList(),
+      pinterest_rest_api_catalogs_hotel_items_batch__"PROCESSING"
     );
   } else {
     catalogs_hotel_items_batch = catalogs_hotel_items_batch_create(
       "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e",
-      "2013-10-20T19:20:30+01:00",
-      "2013-10-20T19:20:30+01:00",
-      pinterest_rest_api_catalogs_hotel_items_batch__"PROCESSING",
       pinterest_rest_api_catalogs_hotel_items_batch__RETAIL,
-      list_createList()
+      "2013-10-20T19:20:30+01:00",
+      "2013-10-20T19:20:30+01:00",
+      list_createList(),
+      pinterest_rest_api_catalogs_hotel_items_batch__"PROCESSING"
     );
   }
 

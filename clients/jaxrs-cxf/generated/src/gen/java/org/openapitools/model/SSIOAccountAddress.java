@@ -11,20 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SSIOAccountAddress  {
   
  /**
-  * Address display
-  */
-  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
-
-  private String display;
-
- /**
-  * Purpose for which the address is used, usually Billing or Businness
-  */
-  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
-
-  private String purpose;
-
- /**
   * Salesforce id for address
   */
   @ApiModelProperty(example = "a1C1N000004MUrLUAW", value = "Salesforce id for address")
@@ -32,47 +18,25 @@ public class SSIOAccountAddress  {
   private String addressId;
 
  /**
+  * Address display
+  */
+  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
+
+  private String display;
+
+ /**
   * Legal entity for this insertion order
   */
   @ApiModelProperty(example = "PIN US OU", value = "Legal entity for this insertion order")
 
   private String orderLegalEntity;
- /**
-   * Address display
-   * @return display
-  **/
-  @JsonProperty("display")
-  public String getDisplay() {
-    return display;
-  }
-
-  public void setDisplay(String display) {
-    this.display = display;
-  }
-
-  public SSIOAccountAddress display(String display) {
-    this.display = display;
-    return this;
-  }
 
  /**
-   * Purpose for which the address is used, usually Billing or Businness
-   * @return purpose
-  **/
-  @JsonProperty("purpose")
-  public String getPurpose() {
-    return purpose;
-  }
+  * Purpose for which the address is used, usually Billing or Businness
+  */
+  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
 
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
-
-  public SSIOAccountAddress purpose(String purpose) {
-    this.purpose = purpose;
-    return this;
-  }
-
+  private String purpose;
  /**
    * Salesforce id for address
    * @return addressId
@@ -88,6 +52,24 @@ public class SSIOAccountAddress  {
 
   public SSIOAccountAddress addressId(String addressId) {
     this.addressId = addressId;
+    return this;
+  }
+
+ /**
+   * Address display
+   * @return display
+  **/
+  @JsonProperty("display")
+  public String getDisplay() {
+    return display;
+  }
+
+  public void setDisplay(String display) {
+    this.display = display;
+  }
+
+  public SSIOAccountAddress display(String display) {
+    this.display = display;
     return this;
   }
 
@@ -109,6 +91,24 @@ public class SSIOAccountAddress  {
     return this;
   }
 
+ /**
+   * Purpose for which the address is used, usually Billing or Businness
+   * @return purpose
+  **/
+  @JsonProperty("purpose")
+  public String getPurpose() {
+    return purpose;
+  }
+
+  public void setPurpose(String purpose) {
+    this.purpose = purpose;
+  }
+
+  public SSIOAccountAddress purpose(String purpose) {
+    this.purpose = purpose;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -118,15 +118,15 @@ public class SSIOAccountAddress  {
       return false;
     }
     SSIOAccountAddress ssIOAccountAddress = (SSIOAccountAddress) o;
-    return Objects.equals(this.display, ssIOAccountAddress.display) &&
-        Objects.equals(this.purpose, ssIOAccountAddress.purpose) &&
-        Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
-        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity);
+    return Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
+        Objects.equals(this.display, ssIOAccountAddress.display) &&
+        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity) &&
+        Objects.equals(this.purpose, ssIOAccountAddress.purpose);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, purpose, addressId, orderLegalEntity);
+    return Objects.hash(addressId, display, orderLegalEntity, purpose);
   }
 
   @Override
@@ -134,10 +134,10 @@ public class SSIOAccountAddress  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountAddress {\n");
     
-    sb.append("    display: ").append(toIndentedString(display)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("    orderLegalEntity: ").append(toIndentedString(orderLegalEntity)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("}");
     return sb.toString();
   }

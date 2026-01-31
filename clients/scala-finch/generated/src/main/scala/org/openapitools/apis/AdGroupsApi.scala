@@ -11,7 +11,7 @@ import org.openapitools.models.AdGroupResponse
 import org.openapitools.models.AdGroupUpdateRequest
 import org.openapitools.models.AdGroupsAnalyticsResponseInner
 import org.openapitools.models.AdGroupsList200Response
-import org.openapitools.models.AdsAnalyticsTargetingType
+import org.openapitools.models.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.models.BidFloor
 import org.openapitools.models.BidFloorRequest
 import org.openapitools.models.ConversionReportAttributionType
@@ -19,6 +19,7 @@ import org.openapitools.models.Error
 import org.openapitools.models.Granularity
 import java.time.LocalDateTime
 import org.openapitools.models.MetricsResponse
+import org.openapitools.models.ReportingTimeZone
 import scala.collection.immutable.Seq
 import io.finch.circe._
 import io.circe.generic.semiauto._
@@ -75,8 +76,8 @@ object AdGroupsApi {
         * @return An endpoint representing a Seq[AdGroupsAnalyticsResponseInner]
         */
         private def adGroups/analytics(da: DataAccessor): Endpoint[Seq[AdGroupsAnalyticsResponseInner]] =
-        get("ad_accounts" :: string :: "ad_groups" :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("ad_group_ids") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time")) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, adGroupIds: Seq[String], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String]) =>
-          da.AdGroups_adGroups/analytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) match {
+        get("ad_accounts" :: string :: "ad_groups" :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("ad_group_ids") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("aggregate_report_rows").map(_.map(_.toBoolean)) :: paramOption("reporting_timezone").map(_.map(_.toReportingTimeZone))) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, adGroupIds: Seq[String], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], aggregateReportRows: Option[Boolean], reportingTimezone: Option[ReportingTimeZone]) =>
+          da.AdGroups_adGroups/analytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -173,8 +174,8 @@ object AdGroupsApi {
         * @return An endpoint representing a MetricsResponse
         */
         private def adGroupsTargetingAnalytics/get(da: DataAccessor): Endpoint[MetricsResponse] =
-        get("ad_accounts" :: string :: "ad_groups" :: "targeting_analytics" :: params("ad_group_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("attribution_types").map(_.map(_.toConversionReportAttributionType))) { (adAccountId: String, adGroupIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]) =>
-          da.AdGroups_adGroupsTargetingAnalytics/get(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes) match {
+        get("ad_accounts" :: string :: "ad_groups" :: "targeting_analytics" :: params("ad_group_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: params("attribution_types") :: paramOption("reporting_timezone").map(_.map(_.toReportingTimeZone))) { (adAccountId: String, adGroupIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsAdGroupTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Seq[ConversionReportAttributionType], reportingTimezone: Option[ReportingTimeZone]) =>
+          da.AdGroups_adGroupsTargetingAnalytics/get(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

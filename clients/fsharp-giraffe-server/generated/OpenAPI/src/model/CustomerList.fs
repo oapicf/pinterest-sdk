@@ -14,6 +14,7 @@ module CustomerList =
   type CustomerList = {
     AdAccountId : string;
     CreatedTime : decimal;
+    Exceptions : obj;
     Id : string;
     Name : string;
     NumBatches : decimal;
@@ -22,6 +23,5 @@ module CustomerList =
     Status : StatusEnum;
     Type : string;
     UpdatedTime : decimal;
-    Exceptions : obj;
   }
   //#endregion

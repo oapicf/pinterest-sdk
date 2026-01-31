@@ -19,13 +19,31 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AudienceRule
+import org.openapitools.client.models.EventData
 import org.openapitools.client.models.ObjectiveType
-import org.openapitools.client.models.PinterestTagEventData
 
 class AudienceRuleTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of AudienceRule
         //val modelInstance = AudienceRule()
+
+        // to test the property `adAccountId` - Ad account ID.
+        should("test adAccountId") {
+            // uncomment below to test the property
+            //modelInstance.adAccountId shouldBe ("TODO")
+        }
+
+        // to test the property `adId` - Ad ID for engagement audience filter.
+        should("test adId") {
+            // uncomment below to test the property
+            //modelInstance.adId shouldBe ("TODO")
+        }
+
+        // to test the property `campaignId` - Campaign ID for engagement audience filter.
+        should("test campaignId") {
+            // uncomment below to test the property
+            //modelInstance.campaignId shouldBe ("TODO")
+        }
 
         // to test the property `country` - Valid countries include: \"US\", \"CA\", and \"GB\".
         should("test country") {
@@ -51,6 +69,12 @@ class AudienceRuleTest : ShouldSpec() {
             //modelInstance.engagementType shouldBe ("TODO")
         }
 
+        // to test the property `engagerType` - Optional for ENGAGEMENT. Engager type value should be 1-2.
+        should("test engagerType") {
+            // uncomment below to test the property
+            //modelInstance.engagerType shouldBe ("TODO")
+        }
+
         // to test the property `event` - A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
         should("test event") {
             // uncomment below to test the property
@@ -61,6 +85,24 @@ class AudienceRuleTest : ShouldSpec() {
         should("test eventData") {
             // uncomment below to test the property
             //modelInstance.eventData shouldBe ("TODO")
+        }
+
+        // to test the property `eventSource` - Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
+        should("test eventSource") {
+            // uncomment below to test the property
+            //modelInstance.eventSource shouldBe ("TODO")
+        }
+
+        // to test the property `ingestionSource` - Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+        should("test ingestionSource") {
+            // uncomment below to test the property
+            //modelInstance.ingestionSource shouldBe ("TODO")
+        }
+
+        // to test the property `objectiveType` - Objective for engagement audience filter.
+        should("test objectiveType") {
+            // uncomment below to test the property
+            //modelInstance.objectiveType shouldBe ("TODO")
         }
 
         // to test the property `percentage` - Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
@@ -103,48 +145,6 @@ class AudienceRuleTest : ShouldSpec() {
         should("test visitorSourceId") {
             // uncomment below to test the property
             //modelInstance.visitorSourceId shouldBe ("TODO")
-        }
-
-        // to test the property `eventSource` - Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
-        should("test eventSource") {
-            // uncomment below to test the property
-            //modelInstance.eventSource shouldBe ("TODO")
-        }
-
-        // to test the property `ingestionSource` - Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-        should("test ingestionSource") {
-            // uncomment below to test the property
-            //modelInstance.ingestionSource shouldBe ("TODO")
-        }
-
-        // to test the property `engagerType` - Optional for ENGAGEMENT. Engager type value should be 1-2.
-        should("test engagerType") {
-            // uncomment below to test the property
-            //modelInstance.engagerType shouldBe ("TODO")
-        }
-
-        // to test the property `campaignId` - Campaign ID for engagement audience filter.
-        should("test campaignId") {
-            // uncomment below to test the property
-            //modelInstance.campaignId shouldBe ("TODO")
-        }
-
-        // to test the property `adId` - Ad ID for engagement audience filter.
-        should("test adId") {
-            // uncomment below to test the property
-            //modelInstance.adId shouldBe ("TODO")
-        }
-
-        // to test the property `objectiveType` - Objective for engagement audience filter.
-        should("test objectiveType") {
-            // uncomment below to test the property
-            //modelInstance.objectiveType shouldBe ("TODO")
-        }
-
-        // to test the property `adAccountId` - Ad account ID.
-        should("test adAccountId") {
-            // uncomment below to test the property
-            //modelInstance.adAccountId shouldBe ("TODO")
         }
 
     }

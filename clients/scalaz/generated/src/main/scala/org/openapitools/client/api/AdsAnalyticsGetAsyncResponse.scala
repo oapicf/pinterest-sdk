@@ -13,8 +13,8 @@ import AdsAnalyticsGetAsyncResponse._
 
 case class AdsAnalyticsGetAsyncResponse (
   reportStatus: Option[BulkReportingJobStatus],
-url: Option[String],
-size: Option[BigDecimal])
+size: Option[BigDecimal],
+url: Option[String])
 
 object AdsAnalyticsGetAsyncResponse {
   import DateTimeCodecs._

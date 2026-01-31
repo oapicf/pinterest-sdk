@@ -10,17 +10,19 @@ The class is defined in **[CatalogsCreativeAssetsBatchRequest.java](../../src/ma
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  [optional property]
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **items** | [`List&lt;CatalogsCreativeAssetsBatchItem&gt;`](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
-**catalogId** | `String` | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  [optional property]
+**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
+
 
 
 ## LanguageEnum
@@ -134,7 +136,5 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
-
 
 

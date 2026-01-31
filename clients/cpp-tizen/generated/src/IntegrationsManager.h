@@ -5,7 +5,6 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "DetailedError.h"
 #include "Error.h"
 #include "IntegrationLogsRequest.h"
 #include "IntegrationLogsSuccessResponse.h"
@@ -14,6 +13,7 @@
 #include "IntegrationRequest.h"
 #include "IntegrationRequestPatch.h"
 #include "Integrations_get_list_200_response.h"
+#include "Integrations_logs_post_400_response.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -90,7 +90,7 @@ bool integrationsCommerceGetAsync(char * accessToken,
  *
  * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param externalBusinessId External business ID for the integration. *Required*
- * \param integrationRequestPatch Parameters to get create/update the Integration Metadata
+ * \param integrationRequestPatch Parameters to get create/update the Integration Metadata *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -104,7 +104,7 @@ bool integrationsCommercePatchSync(char * accessToken,
  *
  * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param externalBusinessId External business ID for the integration. *Required*
- * \param integrationRequestPatch Parameters to get create/update the Integration Metadata
+ * \param integrationRequestPatch Parameters to get create/update the Integration Metadata *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -118,7 +118,7 @@ bool integrationsCommercePatchAsync(char * accessToken,
 /*! \brief Create commerce integration. *Synchronous*
  *
  * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param integrationRequest Parameters to get create/update the Integration Metadata
+ * \param integrationRequest Parameters to get create/update the Integration Metadata *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -131,7 +131,7 @@ bool integrationsCommercePostSync(char * accessToken,
 /*! \brief Create commerce integration. *Asynchronous*
  *
  * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param integrationRequest Parameters to get create/update the Integration Metadata
+ * \param integrationRequest Parameters to get create/update the Integration Metadata *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

@@ -2,12 +2,12 @@
 Protected Class Paginated
 
 	#tag Property, Flags = &h0
-		items() As Object
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		items() As Object
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class Paginated
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Object"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

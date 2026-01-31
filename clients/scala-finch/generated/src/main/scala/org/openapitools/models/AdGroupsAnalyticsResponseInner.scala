@@ -11,10 +11,10 @@ import scala.collection.immutable.HashMap
 
 /**
  * 
- * @param ADUnderscoreGROUPUnderscoreID The ID of the ad group that this metrics belongs to.
+ * @param ADUnderscoreGROUPUnderscoreID The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
-case class AdGroupsAnalyticsResponseInner(ADUnderscoreGROUPUnderscoreID: String,
+case class AdGroupsAnalyticsResponseInner(ADUnderscoreGROUPUnderscoreID: Option[String],
                 DATE: Option[LocalDateTime]
                 )
 

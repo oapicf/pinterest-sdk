@@ -6,10 +6,10 @@ Object describing an item processing record
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hotel_id** | **string** | The catalog hotel id in the merchant namespace | [optional] [default to undefined]
 **errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. | [optional] [default to undefined]
-**warnings** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the validation warnings for the item processing record | [optional] [default to undefined]
+**hotel_id** | **string** | The catalog hotel id in the merchant namespace | [optional] [default to undefined]
 **status** | [**ItemProcessingStatus**](ItemProcessingStatus.md) |  | [optional] [default to undefined]
+**warnings** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the validation warnings for the item processing record | [optional] [default to undefined]
 
 ## Example
 
@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 import { HotelProcessingRecord } from './api';
 
 const instance: HotelProcessingRecord = {
-    hotel_id,
     errors,
-    warnings,
+    hotel_id,
     status,
+    warnings,
 };
 ```
 

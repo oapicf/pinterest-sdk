@@ -7,22 +7,22 @@
 #' @title IntegrationRecord
 #' @description IntegrationRecord Class
 #' @format An \code{R6Class} generator object
-#' @field id  character [optional]
-#' @field external_business_id  character [optional]
-#' @field connected_merchant_id  character [optional]
-#' @field connected_user_id  character [optional]
+#' @field additional_id_1  character [optional]
 #' @field connected_advertiser_id  character [optional]
 #' @field connected_lba_id  character [optional]
+#' @field connected_merchant_id  character [optional]
 #' @field connected_tag_id  character [optional]
+#' @field connected_user_id  character [optional]
+#' @field created_time  integer [optional]
+#' @field external_business_id  character [optional]
+#' @field id  character [optional]
 #' @field partner_access_token  character [optional]
-#' @field partner_refresh_token  character [optional]
-#' @field partner_primary_email  character [optional]
 #' @field partner_access_token_expiry  integer [optional]
+#' @field partner_metadata  character [optional]
+#' @field partner_primary_email  character [optional]
+#' @field partner_refresh_token  character [optional]
 #' @field partner_refresh_token_expiry  integer [optional]
 #' @field scopes  character [optional]
-#' @field partner_metadata  character [optional]
-#' @field additional_id_1  character [optional]
-#' @field created_time  integer [optional]
 #' @field updated_time  integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -30,69 +30,51 @@
 IntegrationRecord <- R6::R6Class(
   "IntegrationRecord",
   public = list(
-    `id` = NULL,
-    `external_business_id` = NULL,
-    `connected_merchant_id` = NULL,
-    `connected_user_id` = NULL,
+    `additional_id_1` = NULL,
     `connected_advertiser_id` = NULL,
     `connected_lba_id` = NULL,
+    `connected_merchant_id` = NULL,
     `connected_tag_id` = NULL,
+    `connected_user_id` = NULL,
+    `created_time` = NULL,
+    `external_business_id` = NULL,
+    `id` = NULL,
     `partner_access_token` = NULL,
-    `partner_refresh_token` = NULL,
-    `partner_primary_email` = NULL,
     `partner_access_token_expiry` = NULL,
+    `partner_metadata` = NULL,
+    `partner_primary_email` = NULL,
+    `partner_refresh_token` = NULL,
     `partner_refresh_token_expiry` = NULL,
     `scopes` = NULL,
-    `partner_metadata` = NULL,
-    `additional_id_1` = NULL,
-    `created_time` = NULL,
     `updated_time` = NULL,
 
     #' @description
     #' Initialize a new IntegrationRecord class.
     #'
-    #' @param id id
-    #' @param external_business_id external_business_id
-    #' @param connected_merchant_id connected_merchant_id
-    #' @param connected_user_id connected_user_id
+    #' @param additional_id_1 additional_id_1
     #' @param connected_advertiser_id connected_advertiser_id
     #' @param connected_lba_id connected_lba_id
+    #' @param connected_merchant_id connected_merchant_id
     #' @param connected_tag_id connected_tag_id
+    #' @param connected_user_id connected_user_id
+    #' @param created_time created_time
+    #' @param external_business_id external_business_id
+    #' @param id id
     #' @param partner_access_token partner_access_token
-    #' @param partner_refresh_token partner_refresh_token
-    #' @param partner_primary_email partner_primary_email
     #' @param partner_access_token_expiry partner_access_token_expiry
+    #' @param partner_metadata partner_metadata
+    #' @param partner_primary_email partner_primary_email
+    #' @param partner_refresh_token partner_refresh_token
     #' @param partner_refresh_token_expiry partner_refresh_token_expiry
     #' @param scopes scopes
-    #' @param partner_metadata partner_metadata
-    #' @param additional_id_1 additional_id_1
-    #' @param created_time created_time
     #' @param updated_time updated_time
     #' @param ... Other optional arguments.
-    initialize = function(`id` = NULL, `external_business_id` = NULL, `connected_merchant_id` = NULL, `connected_user_id` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_tag_id` = NULL, `partner_access_token` = NULL, `partner_refresh_token` = NULL, `partner_primary_email` = NULL, `partner_access_token_expiry` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `partner_metadata` = NULL, `additional_id_1` = NULL, `created_time` = NULL, `updated_time` = NULL, ...) {
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+    initialize = function(`additional_id_1` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_merchant_id` = NULL, `connected_tag_id` = NULL, `connected_user_id` = NULL, `created_time` = NULL, `external_business_id` = NULL, `id` = NULL, `partner_access_token` = NULL, `partner_access_token_expiry` = NULL, `partner_metadata` = NULL, `partner_primary_email` = NULL, `partner_refresh_token` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `updated_time` = NULL, ...) {
+      if (!is.null(`additional_id_1`)) {
+        if (!(is.character(`additional_id_1`) && length(`additional_id_1`) == 1)) {
+          stop(paste("Error! Invalid data for `additional_id_1`. Must be a string:", `additional_id_1`))
         }
-        self$`id` <- `id`
-      }
-      if (!is.null(`external_business_id`)) {
-        if (!(is.character(`external_business_id`) && length(`external_business_id`) == 1)) {
-          stop(paste("Error! Invalid data for `external_business_id`. Must be a string:", `external_business_id`))
-        }
-        self$`external_business_id` <- `external_business_id`
-      }
-      if (!is.null(`connected_merchant_id`)) {
-        if (!(is.character(`connected_merchant_id`) && length(`connected_merchant_id`) == 1)) {
-          stop(paste("Error! Invalid data for `connected_merchant_id`. Must be a string:", `connected_merchant_id`))
-        }
-        self$`connected_merchant_id` <- `connected_merchant_id`
-      }
-      if (!is.null(`connected_user_id`)) {
-        if (!(is.character(`connected_user_id`) && length(`connected_user_id`) == 1)) {
-          stop(paste("Error! Invalid data for `connected_user_id`. Must be a string:", `connected_user_id`))
-        }
-        self$`connected_user_id` <- `connected_user_id`
+        self$`additional_id_1` <- `additional_id_1`
       }
       if (!is.null(`connected_advertiser_id`)) {
         if (!(is.character(`connected_advertiser_id`) && length(`connected_advertiser_id`) == 1)) {
@@ -106,11 +88,41 @@ IntegrationRecord <- R6::R6Class(
         }
         self$`connected_lba_id` <- `connected_lba_id`
       }
+      if (!is.null(`connected_merchant_id`)) {
+        if (!(is.character(`connected_merchant_id`) && length(`connected_merchant_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_merchant_id`. Must be a string:", `connected_merchant_id`))
+        }
+        self$`connected_merchant_id` <- `connected_merchant_id`
+      }
       if (!is.null(`connected_tag_id`)) {
         if (!(is.character(`connected_tag_id`) && length(`connected_tag_id`) == 1)) {
           stop(paste("Error! Invalid data for `connected_tag_id`. Must be a string:", `connected_tag_id`))
         }
         self$`connected_tag_id` <- `connected_tag_id`
+      }
+      if (!is.null(`connected_user_id`)) {
+        if (!(is.character(`connected_user_id`) && length(`connected_user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_user_id`. Must be a string:", `connected_user_id`))
+        }
+        self$`connected_user_id` <- `connected_user_id`
+      }
+      if (!is.null(`created_time`)) {
+        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
+        }
+        self$`created_time` <- `created_time`
+      }
+      if (!is.null(`external_business_id`)) {
+        if (!(is.character(`external_business_id`) && length(`external_business_id`) == 1)) {
+          stop(paste("Error! Invalid data for `external_business_id`. Must be a string:", `external_business_id`))
+        }
+        self$`external_business_id` <- `external_business_id`
+      }
+      if (!is.null(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
       }
       if (!is.null(`partner_access_token`)) {
         if (!(is.character(`partner_access_token`) && length(`partner_access_token`) == 1)) {
@@ -118,11 +130,17 @@ IntegrationRecord <- R6::R6Class(
         }
         self$`partner_access_token` <- `partner_access_token`
       }
-      if (!is.null(`partner_refresh_token`)) {
-        if (!(is.character(`partner_refresh_token`) && length(`partner_refresh_token`) == 1)) {
-          stop(paste("Error! Invalid data for `partner_refresh_token`. Must be a string:", `partner_refresh_token`))
+      if (!is.null(`partner_access_token_expiry`)) {
+        if (!(is.numeric(`partner_access_token_expiry`) && length(`partner_access_token_expiry`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_access_token_expiry`. Must be an integer:", `partner_access_token_expiry`))
         }
-        self$`partner_refresh_token` <- `partner_refresh_token`
+        self$`partner_access_token_expiry` <- `partner_access_token_expiry`
+      }
+      if (!is.null(`partner_metadata`)) {
+        if (!(is.character(`partner_metadata`) && length(`partner_metadata`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_metadata`. Must be a string:", `partner_metadata`))
+        }
+        self$`partner_metadata` <- `partner_metadata`
       }
       if (!is.null(`partner_primary_email`)) {
         if (!(is.character(`partner_primary_email`) && length(`partner_primary_email`) == 1)) {
@@ -130,11 +148,11 @@ IntegrationRecord <- R6::R6Class(
         }
         self$`partner_primary_email` <- `partner_primary_email`
       }
-      if (!is.null(`partner_access_token_expiry`)) {
-        if (!(is.numeric(`partner_access_token_expiry`) && length(`partner_access_token_expiry`) == 1)) {
-          stop(paste("Error! Invalid data for `partner_access_token_expiry`. Must be an integer:", `partner_access_token_expiry`))
+      if (!is.null(`partner_refresh_token`)) {
+        if (!(is.character(`partner_refresh_token`) && length(`partner_refresh_token`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_refresh_token`. Must be a string:", `partner_refresh_token`))
         }
-        self$`partner_access_token_expiry` <- `partner_access_token_expiry`
+        self$`partner_refresh_token` <- `partner_refresh_token`
       }
       if (!is.null(`partner_refresh_token_expiry`)) {
         if (!(is.numeric(`partner_refresh_token_expiry`) && length(`partner_refresh_token_expiry`) == 1)) {
@@ -147,24 +165,6 @@ IntegrationRecord <- R6::R6Class(
           stop(paste("Error! Invalid data for `scopes`. Must be a string:", `scopes`))
         }
         self$`scopes` <- `scopes`
-      }
-      if (!is.null(`partner_metadata`)) {
-        if (!(is.character(`partner_metadata`) && length(`partner_metadata`) == 1)) {
-          stop(paste("Error! Invalid data for `partner_metadata`. Must be a string:", `partner_metadata`))
-        }
-        self$`partner_metadata` <- `partner_metadata`
-      }
-      if (!is.null(`additional_id_1`)) {
-        if (!(is.character(`additional_id_1`) && length(`additional_id_1`) == 1)) {
-          stop(paste("Error! Invalid data for `additional_id_1`. Must be a string:", `additional_id_1`))
-        }
-        self$`additional_id_1` <- `additional_id_1`
-      }
-      if (!is.null(`created_time`)) {
-        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
-          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
-        }
-        self$`created_time` <- `created_time`
       }
       if (!is.null(`updated_time`)) {
         if (!(is.numeric(`updated_time`) && length(`updated_time`) == 1)) {
@@ -205,21 +205,9 @@ IntegrationRecord <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       IntegrationRecordObject <- list()
-      if (!is.null(self$`id`)) {
-        IntegrationRecordObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`external_business_id`)) {
-        IntegrationRecordObject[["external_business_id"]] <-
-          self$`external_business_id`
-      }
-      if (!is.null(self$`connected_merchant_id`)) {
-        IntegrationRecordObject[["connected_merchant_id"]] <-
-          self$`connected_merchant_id`
-      }
-      if (!is.null(self$`connected_user_id`)) {
-        IntegrationRecordObject[["connected_user_id"]] <-
-          self$`connected_user_id`
+      if (!is.null(self$`additional_id_1`)) {
+        IntegrationRecordObject[["additional_id_1"]] <-
+          self$`additional_id_1`
       }
       if (!is.null(self$`connected_advertiser_id`)) {
         IntegrationRecordObject[["connected_advertiser_id"]] <-
@@ -229,25 +217,49 @@ IntegrationRecord <- R6::R6Class(
         IntegrationRecordObject[["connected_lba_id"]] <-
           self$`connected_lba_id`
       }
+      if (!is.null(self$`connected_merchant_id`)) {
+        IntegrationRecordObject[["connected_merchant_id"]] <-
+          self$`connected_merchant_id`
+      }
       if (!is.null(self$`connected_tag_id`)) {
         IntegrationRecordObject[["connected_tag_id"]] <-
           self$`connected_tag_id`
+      }
+      if (!is.null(self$`connected_user_id`)) {
+        IntegrationRecordObject[["connected_user_id"]] <-
+          self$`connected_user_id`
+      }
+      if (!is.null(self$`created_time`)) {
+        IntegrationRecordObject[["created_time"]] <-
+          self$`created_time`
+      }
+      if (!is.null(self$`external_business_id`)) {
+        IntegrationRecordObject[["external_business_id"]] <-
+          self$`external_business_id`
+      }
+      if (!is.null(self$`id`)) {
+        IntegrationRecordObject[["id"]] <-
+          self$`id`
       }
       if (!is.null(self$`partner_access_token`)) {
         IntegrationRecordObject[["partner_access_token"]] <-
           self$`partner_access_token`
       }
-      if (!is.null(self$`partner_refresh_token`)) {
-        IntegrationRecordObject[["partner_refresh_token"]] <-
-          self$`partner_refresh_token`
+      if (!is.null(self$`partner_access_token_expiry`)) {
+        IntegrationRecordObject[["partner_access_token_expiry"]] <-
+          self$`partner_access_token_expiry`
+      }
+      if (!is.null(self$`partner_metadata`)) {
+        IntegrationRecordObject[["partner_metadata"]] <-
+          self$`partner_metadata`
       }
       if (!is.null(self$`partner_primary_email`)) {
         IntegrationRecordObject[["partner_primary_email"]] <-
           self$`partner_primary_email`
       }
-      if (!is.null(self$`partner_access_token_expiry`)) {
-        IntegrationRecordObject[["partner_access_token_expiry"]] <-
-          self$`partner_access_token_expiry`
+      if (!is.null(self$`partner_refresh_token`)) {
+        IntegrationRecordObject[["partner_refresh_token"]] <-
+          self$`partner_refresh_token`
       }
       if (!is.null(self$`partner_refresh_token_expiry`)) {
         IntegrationRecordObject[["partner_refresh_token_expiry"]] <-
@@ -256,18 +268,6 @@ IntegrationRecord <- R6::R6Class(
       if (!is.null(self$`scopes`)) {
         IntegrationRecordObject[["scopes"]] <-
           self$`scopes`
-      }
-      if (!is.null(self$`partner_metadata`)) {
-        IntegrationRecordObject[["partner_metadata"]] <-
-          self$`partner_metadata`
-      }
-      if (!is.null(self$`additional_id_1`)) {
-        IntegrationRecordObject[["additional_id_1"]] <-
-          self$`additional_id_1`
-      }
-      if (!is.null(self$`created_time`)) {
-        IntegrationRecordObject[["created_time"]] <-
-          self$`created_time`
       }
       if (!is.null(self$`updated_time`)) {
         IntegrationRecordObject[["updated_time"]] <-
@@ -283,17 +283,8 @@ IntegrationRecord <- R6::R6Class(
     #' @return the instance of IntegrationRecord
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
-      }
-      if (!is.null(this_object$`external_business_id`)) {
-        self$`external_business_id` <- this_object$`external_business_id`
-      }
-      if (!is.null(this_object$`connected_merchant_id`)) {
-        self$`connected_merchant_id` <- this_object$`connected_merchant_id`
-      }
-      if (!is.null(this_object$`connected_user_id`)) {
-        self$`connected_user_id` <- this_object$`connected_user_id`
+      if (!is.null(this_object$`additional_id_1`)) {
+        self$`additional_id_1` <- this_object$`additional_id_1`
       }
       if (!is.null(this_object$`connected_advertiser_id`)) {
         self$`connected_advertiser_id` <- this_object$`connected_advertiser_id`
@@ -301,35 +292,44 @@ IntegrationRecord <- R6::R6Class(
       if (!is.null(this_object$`connected_lba_id`)) {
         self$`connected_lba_id` <- this_object$`connected_lba_id`
       }
+      if (!is.null(this_object$`connected_merchant_id`)) {
+        self$`connected_merchant_id` <- this_object$`connected_merchant_id`
+      }
       if (!is.null(this_object$`connected_tag_id`)) {
         self$`connected_tag_id` <- this_object$`connected_tag_id`
+      }
+      if (!is.null(this_object$`connected_user_id`)) {
+        self$`connected_user_id` <- this_object$`connected_user_id`
+      }
+      if (!is.null(this_object$`created_time`)) {
+        self$`created_time` <- this_object$`created_time`
+      }
+      if (!is.null(this_object$`external_business_id`)) {
+        self$`external_business_id` <- this_object$`external_business_id`
+      }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`partner_access_token`)) {
         self$`partner_access_token` <- this_object$`partner_access_token`
       }
-      if (!is.null(this_object$`partner_refresh_token`)) {
-        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
+      if (!is.null(this_object$`partner_access_token_expiry`)) {
+        self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      }
+      if (!is.null(this_object$`partner_metadata`)) {
+        self$`partner_metadata` <- this_object$`partner_metadata`
       }
       if (!is.null(this_object$`partner_primary_email`)) {
         self$`partner_primary_email` <- this_object$`partner_primary_email`
       }
-      if (!is.null(this_object$`partner_access_token_expiry`)) {
-        self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      if (!is.null(this_object$`partner_refresh_token`)) {
+        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
       }
       if (!is.null(this_object$`partner_refresh_token_expiry`)) {
         self$`partner_refresh_token_expiry` <- this_object$`partner_refresh_token_expiry`
       }
       if (!is.null(this_object$`scopes`)) {
         self$`scopes` <- this_object$`scopes`
-      }
-      if (!is.null(this_object$`partner_metadata`)) {
-        self$`partner_metadata` <- this_object$`partner_metadata`
-      }
-      if (!is.null(this_object$`additional_id_1`)) {
-        self$`additional_id_1` <- this_object$`additional_id_1`
-      }
-      if (!is.null(this_object$`created_time`)) {
-        self$`created_time` <- this_object$`created_time`
       }
       if (!is.null(this_object$`updated_time`)) {
         self$`updated_time` <- this_object$`updated_time`
@@ -355,22 +355,22 @@ IntegrationRecord <- R6::R6Class(
     #' @return the instance of IntegrationRecord
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`id` <- this_object$`id`
-      self$`external_business_id` <- this_object$`external_business_id`
-      self$`connected_merchant_id` <- this_object$`connected_merchant_id`
-      self$`connected_user_id` <- this_object$`connected_user_id`
+      self$`additional_id_1` <- this_object$`additional_id_1`
       self$`connected_advertiser_id` <- this_object$`connected_advertiser_id`
       self$`connected_lba_id` <- this_object$`connected_lba_id`
+      self$`connected_merchant_id` <- this_object$`connected_merchant_id`
       self$`connected_tag_id` <- this_object$`connected_tag_id`
+      self$`connected_user_id` <- this_object$`connected_user_id`
+      self$`created_time` <- this_object$`created_time`
+      self$`external_business_id` <- this_object$`external_business_id`
+      self$`id` <- this_object$`id`
       self$`partner_access_token` <- this_object$`partner_access_token`
-      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
-      self$`partner_primary_email` <- this_object$`partner_primary_email`
       self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      self$`partner_metadata` <- this_object$`partner_metadata`
+      self$`partner_primary_email` <- this_object$`partner_primary_email`
+      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
       self$`partner_refresh_token_expiry` <- this_object$`partner_refresh_token_expiry`
       self$`scopes` <- this_object$`scopes`
-      self$`partner_metadata` <- this_object$`partner_metadata`
-      self$`additional_id_1` <- this_object$`additional_id_1`
-      self$`created_time` <- this_object$`created_time`
       self$`updated_time` <- this_object$`updated_time`
       self
     },

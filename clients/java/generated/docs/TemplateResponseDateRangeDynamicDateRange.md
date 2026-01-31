@@ -8,8 +8,8 @@ The dynamic date range of the template
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** | The date range type |  [optional] |
 |**range** | [**RangeEnum**](#RangeEnum) | The dynamic range type |  [optional] |
+|**type** | **String** | The date range type |  [optional] |
 
 
 
@@ -21,6 +21,7 @@ The dynamic date range of the template
 | QUARTER_TO_DATE | &quot;QUARTER_TO_DATE&quot; |
 | MONTH_TO_DATE | &quot;MONTH_TO_DATE&quot; |
 | LAST_MONTH | &quot;LAST_MONTH&quot; |
+| LAST_QUARTER | &quot;LAST_QUARTER&quot; |
 
 
 

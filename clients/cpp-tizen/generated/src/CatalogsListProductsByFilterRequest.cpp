@@ -25,8 +25,8 @@ CatalogsListProductsByFilterRequest::__init()
 {
 	//feed_id = std::string();
 	//filters = new CatalogsCreativeAssetsProductGroupFilters();
-	//catalog_type = std::string();
 	//catalog_id = std::string();
+	//catalog_type = std::string();
 	//country = new Country();
 	//locale = new CatalogsLocale();
 }
@@ -44,15 +44,15 @@ CatalogsListProductsByFilterRequest::__cleanup()
 	//delete filters;
 	//filters = NULL;
 	//}
-	//if(catalog_type != NULL) {
-	//
-	//delete catalog_type;
-	//catalog_type = NULL;
-	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
 	//catalog_id = NULL;
+	//}
+	//if(catalog_type != NULL) {
+	//
+	//delete catalog_type;
+	//catalog_type = NULL;
 	//}
 	//if(country != NULL) {
 	//
@@ -97,17 +97,6 @@ CatalogsListProductsByFilterRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *catalog_typeKey = "catalog_type";
-	node = json_object_get_member(pJsonObject, catalog_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *catalog_idKey = "catalog_id";
 	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
@@ -115,6 +104,17 @@ CatalogsListProductsByFilterRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
 			
 		}
@@ -183,15 +183,6 @@ CatalogsListProductsByFilterRequest::toJson()
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCatalogType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_typeKey = "catalog_type";
-	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -200,6 +191,15 @@ CatalogsListProductsByFilterRequest::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("Country")) {
 		Country obj = getCountry();
 		node = converttoJson(&obj, "Country", "");
@@ -261,18 +261,6 @@ CatalogsListProductsByFilterRequest::setFilters(CatalogsCreativeAssetsProductGro
 }
 
 std::string
-CatalogsListProductsByFilterRequest::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-CatalogsListProductsByFilterRequest::setCatalogType(std::string  catalog_type)
-{
-	this->catalog_type = catalog_type;
-}
-
-std::string
 CatalogsListProductsByFilterRequest::getCatalogId()
 {
 	return catalog_id;
@@ -282,6 +270,18 @@ void
 CatalogsListProductsByFilterRequest::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+std::string
+CatalogsListProductsByFilterRequest::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+CatalogsListProductsByFilterRequest::setCatalogType(std::string  catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 Country

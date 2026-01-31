@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  |  [optional]
+**index** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **key** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
 **ratio** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**index** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**id** | **String** |  |  [optional]
 
 
 

@@ -23,40 +23,46 @@ SummaryPin::~SummaryPin()
 void
 SummaryPin::__init()
 {
-	//media = null;
 	//alt_text = std::string();
-	//link = std::string();
-	//title = std::string();
 	//description = std::string();
+	//id = std::string();
+	//link = std::string();
+	//media = null;
+	//title = std::string();
 }
 
 void
 SummaryPin::__cleanup()
 {
-	//if(media != NULL) {
-	//
-	//delete media;
-	//media = NULL;
-	//}
 	//if(alt_text != NULL) {
 	//
 	//delete alt_text;
 	//alt_text = NULL;
+	//}
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
 	//}
 	//if(link != NULL) {
 	//
 	//delete link;
 	//link = NULL;
 	//}
+	//if(media != NULL) {
+	//
+	//delete media;
+	//media = NULL;
+	//}
 	//if(title != NULL) {
 	//
 	//delete title;
 	//title = NULL;
-	//}
-	//if(description != NULL) {
-	//
-	//delete description;
-	//description = NULL;
 	//}
 	//
 }
@@ -66,20 +72,6 @@ SummaryPin::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *mediaKey = "media";
-	node = json_object_get_member(pJsonObject, mediaKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("PinMedia")) {
-			jsonToValue(&media, node, "PinMedia", "PinMedia");
-		} else {
-			
-			PinMedia* obj = static_cast<PinMedia*> (&media);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *alt_textKey = "alt_text";
 	node = json_object_get_member(pJsonObject, alt_textKey);
 	if (node !=NULL) {
@@ -87,6 +79,28 @@ SummaryPin::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&alt_text, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
@@ -102,6 +116,20 @@ SummaryPin::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *mediaKey = "media";
+	node = json_object_get_member(pJsonObject, mediaKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("PinMedia")) {
+			jsonToValue(&media, node, "PinMedia", "PinMedia");
+		} else {
+			
+			PinMedia* obj = static_cast<PinMedia*> (&media);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *titleKey = "title";
 	node = json_object_get_member(pJsonObject, titleKey);
 	if (node !=NULL) {
@@ -109,17 +137,6 @@ SummaryPin::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&title, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *descriptionKey = "description";
-	node = json_object_get_member(pJsonObject, descriptionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&description, node, "std::string", "");
 		} else {
 			
 		}
@@ -136,6 +153,42 @@ SummaryPin::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getAltText();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *alt_textKey = "alt_text";
+	json_object_set_member(pJsonObject, alt_textKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *linkKey = "link";
+	json_object_set_member(pJsonObject, linkKey, node);
 	if (isprimitive("PinMedia")) {
 		PinMedia obj = getMedia();
 		node = converttoJson(&obj, "PinMedia", "");
@@ -151,24 +204,6 @@ SummaryPin::toJson()
 	const gchar *mediaKey = "media";
 	json_object_set_member(pJsonObject, mediaKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getAltText();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *alt_textKey = "alt_text";
-	json_object_set_member(pJsonObject, alt_textKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLink();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *linkKey = "link";
-	json_object_set_member(pJsonObject, linkKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getTitle();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -177,33 +212,12 @@ SummaryPin::toJson()
 	}
 	const gchar *titleKey = "title";
 	json_object_set_member(pJsonObject, titleKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDescription();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *descriptionKey = "description";
-	json_object_set_member(pJsonObject, descriptionKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-PinMedia
-SummaryPin::getMedia()
-{
-	return media;
-}
-
-void
-SummaryPin::setMedia(PinMedia  media)
-{
-	this->media = media;
 }
 
 std::string
@@ -219,6 +233,30 @@ SummaryPin::setAltText(std::string  alt_text)
 }
 
 std::string
+SummaryPin::getDescription()
+{
+	return description;
+}
+
+void
+SummaryPin::setDescription(std::string  description)
+{
+	this->description = description;
+}
+
+std::string
+SummaryPin::getId()
+{
+	return id;
+}
+
+void
+SummaryPin::setId(std::string  id)
+{
+	this->id = id;
+}
+
+std::string
 SummaryPin::getLink()
 {
 	return link;
@@ -228,6 +266,18 @@ void
 SummaryPin::setLink(std::string  link)
 {
 	this->link = link;
+}
+
+PinMedia
+SummaryPin::getMedia()
+{
+	return media;
+}
+
+void
+SummaryPin::setMedia(PinMedia  media)
+{
+	this->media = media;
 }
 
 std::string
@@ -240,18 +290,6 @@ void
 SummaryPin::setTitle(std::string  title)
 {
 	this->title = title;
-}
-
-std::string
-SummaryPin::getDescription()
-{
-	return description;
-}
-
-void
-SummaryPin::setDescription(std::string  description)
-{
-	this->description = description;
 }
 
 

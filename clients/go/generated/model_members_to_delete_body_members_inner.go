@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &MembersToDeleteBodyMembersInner{}
 
 // MembersToDeleteBodyMembersInner struct for MembersToDeleteBodyMembersInner
 type MembersToDeleteBodyMembersInner struct {
+	BusinessRole BusinessRoleForMembers `json:"business_role"`
 	// Unique identifier of the member
 	MemberId string `json:"member_id" validate:"regexp=^\\\\d+$"`
-	BusinessRole BusinessRoleForMembers `json:"business_role"`
 }
 
 type _MembersToDeleteBodyMembersInner MembersToDeleteBodyMembersInner
@@ -33,10 +33,10 @@ type _MembersToDeleteBodyMembersInner MembersToDeleteBodyMembersInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMembersToDeleteBodyMembersInner(memberId string, businessRole BusinessRoleForMembers) *MembersToDeleteBodyMembersInner {
+func NewMembersToDeleteBodyMembersInner(businessRole BusinessRoleForMembers, memberId string) *MembersToDeleteBodyMembersInner {
 	this := MembersToDeleteBodyMembersInner{}
-	this.MemberId = memberId
 	this.BusinessRole = businessRole
+	this.MemberId = memberId
 	return &this
 }
 
@@ -46,30 +46,6 @@ func NewMembersToDeleteBodyMembersInner(memberId string, businessRole BusinessRo
 func NewMembersToDeleteBodyMembersInnerWithDefaults() *MembersToDeleteBodyMembersInner {
 	this := MembersToDeleteBodyMembersInner{}
 	return &this
-}
-
-// GetMemberId returns the MemberId field value
-func (o *MembersToDeleteBodyMembersInner) GetMemberId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.MemberId
-}
-
-// GetMemberIdOk returns a tuple with the MemberId field value
-// and a boolean to check if the value has been set.
-func (o *MembersToDeleteBodyMembersInner) GetMemberIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MemberId, true
-}
-
-// SetMemberId sets field value
-func (o *MembersToDeleteBodyMembersInner) SetMemberId(v string) {
-	o.MemberId = v
 }
 
 // GetBusinessRole returns the BusinessRole field value
@@ -96,6 +72,30 @@ func (o *MembersToDeleteBodyMembersInner) SetBusinessRole(v BusinessRoleForMembe
 	o.BusinessRole = v
 }
 
+// GetMemberId returns the MemberId field value
+func (o *MembersToDeleteBodyMembersInner) GetMemberId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MemberId
+}
+
+// GetMemberIdOk returns a tuple with the MemberId field value
+// and a boolean to check if the value has been set.
+func (o *MembersToDeleteBodyMembersInner) GetMemberIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MemberId, true
+}
+
+// SetMemberId sets field value
+func (o *MembersToDeleteBodyMembersInner) SetMemberId(v string) {
+	o.MemberId = v
+}
+
 func (o MembersToDeleteBodyMembersInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -106,8 +106,8 @@ func (o MembersToDeleteBodyMembersInner) MarshalJSON() ([]byte, error) {
 
 func (o MembersToDeleteBodyMembersInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["member_id"] = o.MemberId
 	toSerialize["business_role"] = o.BusinessRole
+	toSerialize["member_id"] = o.MemberId
 	return toSerialize, nil
 }
 
@@ -116,8 +116,8 @@ func (o *MembersToDeleteBodyMembersInner) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"member_id",
 		"business_role",
+		"member_id",
 	}
 
 	allProperties := make(map[string]interface{})

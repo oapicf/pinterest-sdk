@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,9 +26,10 @@ import java.util.Map;
  */
 
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientRequest   {
   
+  private String host;
 
 
   public enum MethodEnum {
@@ -56,28 +57,10 @@ public class IntegrationLogClientRequest   {
   }
 
   private MethodEnum method;
-  private String host;
   private String path;
   private Map<String, String> requestHeaders = new HashMap<>();
   private Map<String, String> responseHeaders = new HashMap<>();
   private Integer responseStatusCode;
-
-  /**
-   */
-  public IntegrationLogClientRequest method(MethodEnum method) {
-    this.method = method;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("method")
-  public MethodEnum getMethod() {
-    return method;
-  }
-  public void setMethod(MethodEnum method) {
-    this.method = method;
-  }
 
   /**
    * HTTP request host from host header.
@@ -95,6 +78,23 @@ public class IntegrationLogClientRequest   {
   }
   public void setHost(String host) {
     this.host = host;
+  }
+
+  /**
+   */
+  public IntegrationLogClientRequest method(MethodEnum method) {
+    this.method = method;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("method")
+  public MethodEnum getMethod() {
+    return method;
+  }
+  public void setMethod(MethodEnum method) {
+    this.method = method;
   }
 
   /**
@@ -178,8 +178,8 @@ public class IntegrationLogClientRequest   {
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(method, integrationLogClientRequest.method) &&
-        Objects.equals(host, integrationLogClientRequest.host) &&
+    return Objects.equals(host, integrationLogClientRequest.host) &&
+        Objects.equals(method, integrationLogClientRequest.method) &&
         Objects.equals(path, integrationLogClientRequest.path) &&
         Objects.equals(requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -188,7 +188,7 @@ public class IntegrationLogClientRequest   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
@@ -196,8 +196,8 @@ public class IntegrationLogClientRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
     
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

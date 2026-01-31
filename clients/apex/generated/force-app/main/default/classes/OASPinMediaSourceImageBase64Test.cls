@@ -73,17 +73,17 @@ private class OASPinMediaSourceImageBase64Test {
     private static void maintainRenamedProperties() {
         OASPinMediaSourceImageBase64 pinMediaSourceImageBase64 = new OASPinMediaSourceImageBase64();
         Map<String, String> x-property-mappings = pinMediaSourceImageBase64.getx-property-mappings();
-        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
         System.assertEquals('contentType', x-property-mappings.get('content_type'));
         System.assertEquals('isStandard', x-property-mappings.get('is_standard'));
+        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASPinMediaSourceImageBase64 pinMediaSourceImageBase64 = new OASPinMediaSourceImageBase64();
         System.assertEquals(true, pinMediaSourceImageBase64.isStandard);
-        System.assertEquals(null, pinMediaSourceImageBase64.sourceType);
         System.assertEquals(null, pinMediaSourceImageBase64.contentType);
         System.assertEquals(null, pinMediaSourceImageBase64.data);
+        System.assertEquals(null, pinMediaSourceImageBase64.sourceType);
     }
 }

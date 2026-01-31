@@ -4,21 +4,21 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for multiple_product_groups_inner.
-  * @param isFeatured boolean indicator of whether the product group is being featured or not
   * @param feedId Catalog Feed id pertaining to the catalog product group.
+  * @param isFeatured boolean indicator of whether the product group is being featured or not
   * @param catalogId Catalog id pertaining to the creative assets product group.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class MultipleProductGroupsInner(
-  name: String,
   description: Option[String],
-  isFeatured: Option[Boolean],
-  filters: CatalogsCreativeAssetsProductGroupFilters,
   feedId: String,
-  catalogType: MultipleProductGroupsInner.CatalogType.Value,
+  filters: CatalogsCreativeAssetsProductGroupFilters,
+  isFeatured: Option[Boolean],
+  name: String,
   catalogId: String,
-  country: Country,
-  locale: CatalogsLocale
+  catalogType: MultipleProductGroupsInner.CatalogType.Value,
+  country: Option[Country],
+  locale: Option[CatalogsLocale]
 )
 
 object MultipleProductGroupsInner {

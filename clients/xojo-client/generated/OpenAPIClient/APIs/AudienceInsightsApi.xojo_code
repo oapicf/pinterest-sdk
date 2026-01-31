@@ -17,6 +17,9 @@ Protected Class AudienceInsightsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -26,6 +29,7 @@ Protected Class AudienceInsightsApi
 		  localVarQueryParams = localVarQueryParams + EncodeURLComponent("audience_insight_type") + "=" + EncodeURLComponent(Xoson.toJSON(audienceInsightType))
 		  
 
+		  
 		  
 		  
 
@@ -152,10 +156,14 @@ Protected Class AudienceInsightsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  

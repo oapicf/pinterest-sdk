@@ -47,6 +47,20 @@ public:
 
 	/*! \brief Get 
 	 */
+	std::string getId();
+
+	/*! \brief Set 
+	 */
+	void setId(std::string  id);
+	/*! \brief Get 
+	 */
+	long long getIndex();
+
+	/*! \brief Set 
+	 */
+	void setIndex(long long  index);
+	/*! \brief Get 
+	 */
 	std::string getKey();
 
 	/*! \brief Set 
@@ -66,27 +80,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setRatio(long long  ratio);
-	/*! \brief Get 
-	 */
-	long long getIndex();
-
-	/*! \brief Set 
-	 */
-	void setIndex(long long  index);
-	/*! \brief Get 
-	 */
-	std::string getId();
-
-	/*! \brief Set 
-	 */
-	void setId(std::string  id);
 
 private:
+	std::string id;
+	long long index;
 	std::string key;
 	std::string name;
 	long long ratio;
-	long long index;
-	std::string id;
 	void __init();
 	void __cleanup();
 

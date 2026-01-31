@@ -14,40 +14,22 @@ import io.swagger.annotations.ApiModelProperty;
  * UserWebsiteVerificationCode
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerificationCode   {
-  @JsonProperty("verification_code")
-  private String verificationCode;
-
   @JsonProperty("dns_txt_record")
   private String dnsTxtRecord;
-
-  @JsonProperty("metatag")
-  private String metatag;
-
-  @JsonProperty("filename")
-  private String filename;
 
   @JsonProperty("file_content")
   private String fileContent;
 
-  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-    return this;
-  }
+  @JsonProperty("filename")
+  private String filename;
 
-  /**
-   * Code to check against the user claiming the website
-   * @return verificationCode
-   */
-  @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
-  public String getVerificationCode() {
-    return verificationCode;
-  }
+  @JsonProperty("metatag")
+  private String metatag;
 
-  public void setVerificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-  }
+  @JsonProperty("verification_code")
+  private String verificationCode;
 
   public UserWebsiteVerificationCode dnsTxtRecord(String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
@@ -65,42 +47,6 @@ public class UserWebsiteVerificationCode   {
 
   public void setDnsTxtRecord(String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
-  }
-
-  public UserWebsiteVerificationCode metatag(String metatag) {
-    this.metatag = metatag;
-    return this;
-  }
-
-  /**
-   * Metatag the verification process searchs for the website to be claimed
-   * @return metatag
-   */
-  @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
-  public String getMetatag() {
-    return metatag;
-  }
-
-  public void setMetatag(String metatag) {
-    this.metatag = metatag;
-  }
-
-  public UserWebsiteVerificationCode filename(String filename) {
-    this.filename = filename;
-    return this;
-  }
-
-  /**
-   * File expected to find on the website being claimed
-   * @return filename
-   */
-  @ApiModelProperty(example = "pinterest-e1edc.html", value = "File expected to find on the website being claimed")
-  public String getFilename() {
-    return filename;
-  }
-
-  public void setFilename(String filename) {
-    this.filename = filename;
   }
 
   public UserWebsiteVerificationCode fileContent(String fileContent) {
@@ -121,6 +67,60 @@ public class UserWebsiteVerificationCode   {
     this.fileContent = fileContent;
   }
 
+  public UserWebsiteVerificationCode filename(String filename) {
+    this.filename = filename;
+    return this;
+  }
+
+  /**
+   * File expected to find on the website being claimed
+   * @return filename
+   */
+  @ApiModelProperty(example = "pinterest-e1edc.html", value = "File expected to find on the website being claimed")
+  public String getFilename() {
+    return filename;
+  }
+
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
+
+  public UserWebsiteVerificationCode metatag(String metatag) {
+    this.metatag = metatag;
+    return this;
+  }
+
+  /**
+   * Metatag the verification process searchs for the website to be claimed
+   * @return metatag
+   */
+  @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
+  public String getMetatag() {
+    return metatag;
+  }
+
+  public void setMetatag(String metatag) {
+    this.metatag = metatag;
+  }
+
+  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+    return this;
+  }
+
+  /**
+   * Code to check against the user claiming the website
+   * @return verificationCode
+   */
+  @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
+  public String getVerificationCode() {
+    return verificationCode;
+  }
+
+  public void setVerificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -131,16 +131,16 @@ public class UserWebsiteVerificationCode   {
       return false;
     }
     UserWebsiteVerificationCode userWebsiteVerificationCode = (UserWebsiteVerificationCode) o;
-    return Objects.equals(this.verificationCode, userWebsiteVerificationCode.verificationCode) &&
-        Objects.equals(this.dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
-        Objects.equals(this.metatag, userWebsiteVerificationCode.metatag) &&
+    return Objects.equals(this.dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
+        Objects.equals(this.fileContent, userWebsiteVerificationCode.fileContent) &&
         Objects.equals(this.filename, userWebsiteVerificationCode.filename) &&
-        Objects.equals(this.fileContent, userWebsiteVerificationCode.fileContent);
+        Objects.equals(this.metatag, userWebsiteVerificationCode.metatag) &&
+        Objects.equals(this.verificationCode, userWebsiteVerificationCode.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verificationCode, dnsTxtRecord, metatag, filename, fileContent);
+    return Objects.hash(dnsTxtRecord, fileContent, filename, metatag, verificationCode);
   }
 
   @Override
@@ -148,11 +148,11 @@ public class UserWebsiteVerificationCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerificationCode {\n");
     
-    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("    dnsTxtRecord: ").append(toIndentedString(dnsTxtRecord)).append("\n");
-    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
-    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
     sb.append("    fileContent: ").append(toIndentedString(fileContent)).append("\n");
+    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
+    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
+    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

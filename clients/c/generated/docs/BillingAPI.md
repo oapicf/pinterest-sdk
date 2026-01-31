@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**BillingAPI_adsCreditRedeem**](BillingAPI.md#BillingAPI_adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**BillingAPI_adsCreditsDiscountsGet**](BillingAPI.md#BillingAPI_adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**BillingAPI_billingInvoiceDownloadGet**](BillingAPI.md#BillingAPI_billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**BillingAPI_billingInvoicesGet**](BillingAPI.md#BillingAPI_billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**BillingAPI_billingProfilesGet**](BillingAPI.md#BillingAPI_billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**BillingAPI_ssioAccountsGet**](BillingAPI.md#BillingAPI_ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**BillingAPI_ssioInsertionOrderCreate**](BillingAPI.md#BillingAPI_ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -19,7 +21,7 @@ Method | HTTP request | Description
 ```c
 // Redeem ad credits
 //
-// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 ads_credit_redeem_response_t* BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_request_t *ads_credit_redeem_request);
 ```
@@ -51,7 +53,7 @@ Name | Type | Description  | Notes
 ```c
 // Get ads credit discounts
 //
-// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 ads_credits_discounts_get_200_response_t* BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size);
 ```
@@ -80,11 +82,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **BillingAPI_billingInvoiceDownloadGet**
+```c
+// Get download url for a billing invoice
+//
+// Get download url for a billing invoice.
+//
+billing_invoice_download_response_t* BillingAPI_billingInvoiceDownloadGet(apiClient_t *apiClient, char *ad_account_id, char *billing_invoice_id);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
+**billing_invoice_id** | **char \*** | Unique identifier of a billing invoice. | 
+
+### Return type
+
+[billing_invoice_download_response_t](billing_invoice_download_response.md) *
+
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BillingAPI_billingInvoicesGet**
+```c
+// Get billing invoices
+//
+// Get billing invoices in the advertiser account.
+//
+billing_invoices_get_200_response_t* BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_rest_api_billingInvoicesGet_sort_e sort, pinterest_rest_api_billingInvoicesGet_order_e order, pinterest_rest_api_billingInvoicesGet_status_e status, pinterest_rest_api_billingInvoicesGet_document_type_e document_type, char start_due_date, char end_due_date);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
+**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**sort** | **pinterest_rest_api_billingInvoicesGet_sort_e** | Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
+**order** | **pinterest_rest_api_billingInvoicesGet_order_e** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+**status** | **pinterest_rest_api_billingInvoicesGet_status_e** | Status of billing invoices to filter by | [optional] 
+**document_type** | **pinterest_rest_api_billingInvoicesGet_document_type_e** | Document type of billing invoices to filter by | [optional] 
+**start_due_date** | **char** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+**end_due_date** | **char** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+
+### Return type
+
+[billing_invoices_get_200_response_t](billing_invoices_get_200_response.md) *
+
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **BillingAPI_billingProfilesGet**
 ```c
 // Get billing profiles
 //
-// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 //
 billing_profiles_get_200_response_t* BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *is_active, char *bookmark, int *page_size);
 ```

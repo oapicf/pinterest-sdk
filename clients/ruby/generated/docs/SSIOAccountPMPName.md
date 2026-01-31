@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | Display name | [optional] |
 | **id** | **String** | Salesforce id for PMP | [optional] |
+| **name** | **String** | Display name | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::SSIOAccountPMPName.new(
-  name: Bidalgo,
-  id: 0011N00001LW2aSQAT
+  id: 0011N00001LW2aSQAT,
+  name: Bidalgo
 )
 ```
 

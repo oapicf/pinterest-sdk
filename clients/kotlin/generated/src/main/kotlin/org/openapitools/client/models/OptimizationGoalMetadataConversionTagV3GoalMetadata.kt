@@ -27,8 +27,9 @@ import com.squareup.moshi.JsonClass
  * @param conversionEvent 
  * @param conversionTagId 
  * @param cpaGoalValueInMicroCurrency 
- * @param isRoasOptimized ROAS optimization is not supported
+ * @param isRoasOptimized Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
  * @param learningModeType Conversion learning model type
+ * @param reportingEvent Event name for custom or standard events mapped to an oCPM model
  */
 
 
@@ -46,13 +47,17 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata (
     @Json(name = "cpa_goal_value_in_micro_currency")
     val cpaGoalValueInMicroCurrency: kotlin.String? = null,
 
-    /* ROAS optimization is not supported */
+    /* Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>. */
     @Json(name = "is_roas_optimized")
     val isRoasOptimized: kotlin.Boolean? = null,
 
     /* Conversion learning model type */
     @Json(name = "learning_mode_type")
-    val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null
+    val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null,
+
+    /* Event name for custom or standard events mapped to an oCPM model */
+    @Json(name = "reporting_event")
+    val reportingEvent: kotlin.String? = null
 
 ) {
 

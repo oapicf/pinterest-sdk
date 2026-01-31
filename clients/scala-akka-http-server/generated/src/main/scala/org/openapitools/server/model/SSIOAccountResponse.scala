@@ -2,19 +2,19 @@ package org.openapitools.server.model
 
 
 /**
- * @param eligible Advertiser eligible to create order lines for example: ''true''
- * @param canEdit Advertiser eligible to update order lines for example: ''true''
  * @param billtoInfos An array of Salesforce account information that includes address, io terms, etc. for example: ''null''
+ * @param canEdit Advertiser eligible to update order lines for example: ''true''
  * @param currency  for example: ''USD''
- * @param pmpNames  for example: ''null''
+ * @param eligible Advertiser eligible to create order lines for example: ''true''
  * @param error Error indicator from Salesforce which could be \"No Error\" for example: ''No Error''
+ * @param pmpNames  for example: ''null''
 */
 final case class SSIOAccountResponse (
-  eligible: Option[Boolean] = None,
-  canEdit: Option[Boolean] = None,
   billtoInfos: Option[Seq[SSIOAccountItem]] = None,
+  canEdit: Option[Boolean] = None,
   currency: Option[String] = None,
-  pmpNames: Option[Seq[SSIOAccountPMPName]] = None,
-  error: Option[String] = None
+  eligible: Option[Boolean] = None,
+  error: Option[String] = None,
+  pmpNames: Option[Seq[SSIOAccountPMPName]] = None
 )
 

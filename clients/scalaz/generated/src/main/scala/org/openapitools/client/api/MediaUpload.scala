@@ -13,11 +13,12 @@ import MediaUpload._
 
 case class MediaUpload (
   /* Unique identifier for this media upload. Used to track status and for attaching during Pin creation. */
-  mediaId: Option[String],
-mediaType: Option[MediaUploadType],
+  mediaId: String,
+mediaType: MediaUploadType,
+/* The list of parameter key/value pairs you will need to send with your POST request to upload your media file. */
+  uploadParameters: Option[MediaUploadParameters],
 /* The URL where you will POST your media file. */
-  uploadUrl: Option[String],
-uploadParameters: Option[MediaUploadAllOfUploadParameters])
+  uploadUrl: Option[String])
 
 object MediaUpload {
   import DateTimeCodecs._

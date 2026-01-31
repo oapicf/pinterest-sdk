@@ -20,19 +20,11 @@ public class LinkedBusinessTest {
     }
 
     /**
-     * Test the property 'username'
+     * Test the property 'imageLargeUrl'
      */
     @Test
-    public void usernameTest() {
-        // TODO: test username
-    }
-
-    /**
-     * Test the property 'imageSmallUrl'
-     */
-    @Test
-    public void imageSmallUrlTest() {
-        // TODO: test imageSmallUrl
+    public void imageLargeUrlTest() {
+        // TODO: test imageLargeUrl
     }
 
     /**
@@ -44,11 +36,11 @@ public class LinkedBusinessTest {
     }
 
     /**
-     * Test the property 'imageLargeUrl'
+     * Test the property 'imageSmallUrl'
      */
     @Test
-    public void imageLargeUrlTest() {
-        // TODO: test imageLargeUrl
+    public void imageSmallUrlTest() {
+        // TODO: test imageSmallUrl
     }
 
     /**
@@ -57,6 +49,14 @@ public class LinkedBusinessTest {
     @Test
     public void imageXlargeUrlTest() {
         // TODO: test imageXlargeUrl
+    }
+
+    /**
+     * Test the property 'username'
+     */
+    @Test
+    public void usernameTest() {
+        // TODO: test username
     }
 
 }

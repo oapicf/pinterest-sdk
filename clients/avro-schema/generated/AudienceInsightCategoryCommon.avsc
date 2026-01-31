@@ -5,6 +5,18 @@
   "name": "AudienceInsightCategoryCommon",
   "fields": [
     {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "index",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "key",
       "type": ["null", "string"],
       "doc": "",
@@ -19,18 +31,6 @@
     {
       "name": "ratio",
       "type": ["null", "double"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "index",
-      "type": ["null", "double"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "id",
-      "type": ["null", "string"],
       "doc": "",
       "default": null
     }

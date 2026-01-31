@@ -31,12 +31,6 @@ class OauthAccessTokenResponseClientCredentialsTest : ShouldSpec() {
             //modelInstance.accessToken shouldBe ("TODO")
         }
 
-        // to test the property `tokenType`
-        should("test tokenType") {
-            // uncomment below to test the property
-            //modelInstance.tokenType shouldBe ("TODO")
-        }
-
         // to test the property `expiresIn`
         should("test expiresIn") {
             // uncomment below to test the property
@@ -47,6 +41,12 @@ class OauthAccessTokenResponseClientCredentialsTest : ShouldSpec() {
         should("test scope") {
             // uncomment below to test the property
             //modelInstance.scope shouldBe ("TODO")
+        }
+
+        // to test the property `tokenType`
+        should("test tokenType") {
+            // uncomment below to test the property
+            //modelInstance.tokenType shouldBe ("TODO")
         }
 
         // to test the property `responseType`

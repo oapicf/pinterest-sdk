@@ -8,21 +8,24 @@ Name | Type
 ------------ | -------------
 `id` | string
 `adAccountId` | string
-`name` | string
-`status` | [EntityStatus](EntityStatus.md)
-`lifetimeSpendCap` | number
 `dailySpendCap` | number
-`orderLineId` | string
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`startTime` | number
 `endTime` | number
+`isAutomatedCampaign` | boolean
 `isFlexibleDailyBudgets` | boolean
-`objectiveType` | [ObjectiveType](ObjectiveType.md)
+`lifetimeSpendCap` | number
+`name` | string
+`orderLineId` | string
+`startTime` | number
+`status` | [EntityStatus](EntityStatus.md)
+`trackingUrls` | [TrackingUrls](TrackingUrls.md)
+`bidOptions` | [CampaignBidOptions](CampaignBidOptions.md)
 `createdTime` | number
-`updatedTime` | number
-`type` | string
 `isCampaignBudgetOptimization` | boolean
+`isPerformancePlus` | boolean
+`objectiveType` | [ObjectiveType](ObjectiveType.md)
 `summaryStatus` | [CampaignSummaryStatus](CampaignSummaryStatus.md)
+`type` | string
+`updatedTime` | number
 
 ## Example
 
@@ -33,21 +36,24 @@ import type { CampaignResponse } from ''
 const example = {
   "id": 549755885175,
   "adAccountId": 549755885175,
-  "name": ACME Tools,
-  "status": null,
-  "lifetimeSpendCap": 1432744744,
   "dailySpendCap": 1432744744,
-  "orderLineId": 549755885175,
-  "trackingUrls": null,
-  "startTime": 1580865126,
   "endTime": 1644023526,
+  "isAutomatedCampaign": true,
   "isFlexibleDailyBudgets": true,
-  "objectiveType": null,
+  "lifetimeSpendCap": 1432744744,
+  "name": ACME Tools,
+  "orderLineId": 549755885175,
+  "startTime": 1580865126,
+  "status": null,
+  "trackingUrls": null,
+  "bidOptions": null,
   "createdTime": 1432744744,
-  "updatedTime": 1432744744,
-  "type": campaign,
   "isCampaignBudgetOptimization": true,
+  "isPerformancePlus": true,
+  "objectiveType": null,
   "summaryStatus": null,
+  "type": campaign,
+  "updatedTime": 1432744744,
 } satisfies CampaignResponse
 
 console.log(example)

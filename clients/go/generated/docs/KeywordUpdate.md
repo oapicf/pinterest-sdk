@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Keyword ID. | 
 **Archived** | Pointer to **bool** | Is keyword archived? | [optional] 
 **Bid** | Pointer to **NullableInt32** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**Id** | **string** | Keyword ID. | 
 
 ## Methods
 
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewKeywordUpdateWithDefaults instantiates a new KeywordUpdate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *KeywordUpdate) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *KeywordUpdate) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *KeywordUpdate) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetArchived
 
@@ -107,6 +87,26 @@ HasBid returns a boolean if a field has been set.
 `func (o *KeywordUpdate) UnsetBid()`
 
 UnsetBid ensures that no value is present for Bid, not even an explicit nil
+### GetId
+
+`func (o *KeywordUpdate) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *KeywordUpdate) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *KeywordUpdate) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -137,7 +137,7 @@ Get all the members the requesting business has granted access to on the given a
 ### Example
 
 ```bash
- businessAssetMembersGet business_id=value asset_id=value  bookmark=value  page_size=value  start_index=value
+ businessAssetMembersGet business_id=value asset_id=value  fetch_system_users=value  bookmark=value  page_size=value  start_index=value
 ```
 
 ### Parameters
@@ -147,6 +147,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
  **assetId** | **string** | Unique identifier of a business asset. | [default to null]
+ **fetchSystemUsers** | **boolean** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
  **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]

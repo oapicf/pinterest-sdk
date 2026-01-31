@@ -33,8 +33,8 @@ class CatalogsReport {
 
     
     ReportStatusEnum reportStatus
-    /* URL to download the report */
-    String url
     /* Size of the report in bytes */
     BigDecimal size
+    /* URL to download the report */
+    String url
 }

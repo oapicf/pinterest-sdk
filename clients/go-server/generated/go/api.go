@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 import (
 	"context"
 	"net/http"
+	"reflect"
+	"reflect"
 	"reflect"
 	"reflect"
 	"reflect"
@@ -42,6 +44,8 @@ type AdAccountsAPIRouter interface {
 	AnalyticsCreateMmmReport(http.ResponseWriter, *http.Request)
 	AnalyticsGetReport(http.ResponseWriter, *http.Request)
 	AnalyticsCreateReport(http.ResponseWriter, *http.Request)
+	AnalyticsGetConversionProductReport(http.ResponseWriter, *http.Request)
+	AnalyticsCreateConversionProductReport(http.ResponseWriter, *http.Request)
 	SandboxDelete(http.ResponseWriter, *http.Request)
 	AdAccountTargetingAnalyticsGet(http.ResponseWriter, *http.Request)
 	TemplatesList(http.ResponseWriter, *http.Request)
@@ -106,7 +110,6 @@ type AudiencesAPIRouter interface {
 	AudiencesCreate(http.ResponseWriter, *http.Request)
 	AudiencesGet(http.ResponseWriter, *http.Request)
 	AudiencesUpdate(http.ResponseWriter, *http.Request)
-	AudiencesCreateCustom(http.ResponseWriter, *http.Request)
 }
 // BillingAPIRouter defines the required methods for binding the api requests to a responses for the BillingAPI
 // The BillingAPIRouter implementation should parse necessary information from the http request,
@@ -115,6 +118,8 @@ type BillingAPIRouter interface {
 	AdsCreditsDiscountsGet(http.ResponseWriter, *http.Request)
 	AdsCreditRedeem(http.ResponseWriter, *http.Request)
 	BillingProfilesGet(http.ResponseWriter, *http.Request)
+	BillingInvoicesGet(http.ResponseWriter, *http.Request)
+	BillingInvoiceDownloadGet(http.ResponseWriter, *http.Request)
 	SsioAccountsGet(http.ResponseWriter, *http.Request)
 	SsioInsertionOrderCreate(http.ResponseWriter, *http.Request)
 	SsioInsertionOrderEdit(http.ResponseWriter, *http.Request)
@@ -179,11 +184,14 @@ type BusinessAccessInviteAPIRouter interface {
 // pass the data to a BusinessAccessRelationshipsAPIServicer to perform the required actions, then write the service results to the http response.
 type BusinessAccessRelationshipsAPIRouter interface { 
 	GetBusinessEmployers(http.ResponseWriter, *http.Request)
+	SystemUserUpdate(http.ResponseWriter, *http.Request)
 	GetBusinessMembers(http.ResponseWriter, *http.Request)
 	DeleteBusinessMembership(http.ResponseWriter, *http.Request)
 	UpdateBusinessMemberships(http.ResponseWriter, *http.Request)
 	GetBusinessPartners(http.ResponseWriter, *http.Request)
 	DeleteBusinessPartners(http.ResponseWriter, *http.Request)
+	BrandAccountsCreate(http.ResponseWriter, *http.Request)
+	BrandAccountsUpdate(http.ResponseWriter, *http.Request)
 }
 // CampaignsAPIRouter defines the required methods for binding the api requests to a responses for the CampaignsAPI
 // The CampaignsAPIRouter implementation should parse necessary information from the http request,
@@ -195,13 +203,12 @@ type CampaignsAPIRouter interface {
 	CampaignsAnalytics(http.ResponseWriter, *http.Request)
 	CampaignTargetingAnalyticsGet(http.ResponseWriter, *http.Request)
 	CampaignsGet(http.ResponseWriter, *http.Request)
+	AdPinsAnalytics(http.ResponseWriter, *http.Request)
 }
-// CatalogsAPIRouter defines the required methods for binding the api requests to a responses for the CatalogsAPI
-// The CatalogsAPIRouter implementation should parse necessary information from the http request,
-// pass the data to a CatalogsAPIServicer to perform the required actions, then write the service results to the http response.
-type CatalogsAPIRouter interface { 
-	CatalogsList(http.ResponseWriter, *http.Request)
-	CatalogsCreate(http.ResponseWriter, *http.Request)
+// CatalogFeedsAPIRouter defines the required methods for binding the api requests to a responses for the CatalogFeedsAPI
+// The CatalogFeedsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a CatalogFeedsAPIServicer to perform the required actions, then write the service results to the http response.
+type CatalogFeedsAPIRouter interface { 
 	FeedsList(http.ResponseWriter, *http.Request)
 	FeedsCreate(http.ResponseWriter, *http.Request)
 	FeedsGet(http.ResponseWriter, *http.Request)
@@ -210,11 +217,19 @@ type CatalogsAPIRouter interface {
 	FeedsIngest(http.ResponseWriter, *http.Request)
 	FeedProcessingResultsList(http.ResponseWriter, *http.Request)
 	ItemsIssuesList(http.ResponseWriter, *http.Request)
-	// Deprecated
-	ItemsGet(http.ResponseWriter, *http.Request)
+}
+// CatalogItemsAPIRouter defines the required methods for binding the api requests to a responses for the CatalogItemsAPI
+// The CatalogItemsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a CatalogItemsAPIServicer to perform the required actions, then write the service results to the http response.
+type CatalogItemsAPIRouter interface { 
 	ItemsPost(http.ResponseWriter, *http.Request)
 	ItemsBatchPost(http.ResponseWriter, *http.Request)
 	ItemsBatchGet(http.ResponseWriter, *http.Request)
+}
+// CatalogProductGroupsAPIRouter defines the required methods for binding the api requests to a responses for the CatalogProductGroupsAPI
+// The CatalogProductGroupsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a CatalogProductGroupsAPIServicer to perform the required actions, then write the service results to the http response.
+type CatalogProductGroupsAPIRouter interface { 
 	CatalogsProductGroupsCreateMany(http.ResponseWriter, *http.Request)
 	CatalogsProductGroupsDeleteMany(http.ResponseWriter, *http.Request)
 	CatalogsProductGroupsList(http.ResponseWriter, *http.Request)
@@ -225,9 +240,28 @@ type CatalogsAPIRouter interface {
 	CatalogsProductGroupsProductCountsGet(http.ResponseWriter, *http.Request)
 	CatalogsProductGroupPinsList(http.ResponseWriter, *http.Request)
 	ProductsByProductGroupFilterList(http.ResponseWriter, *http.Request)
+}
+// CatalogReportsAPIRouter defines the required methods for binding the api requests to a responses for the CatalogReportsAPI
+// The CatalogReportsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a CatalogReportsAPIServicer to perform the required actions, then write the service results to the http response.
+type CatalogReportsAPIRouter interface { 
 	ReportsGet(http.ResponseWriter, *http.Request)
 	ReportsCreate(http.ResponseWriter, *http.Request)
 	ReportsStats(http.ResponseWriter, *http.Request)
+}
+// CatalogsAPIRouter defines the required methods for binding the api requests to a responses for the CatalogsAPI
+// The CatalogsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a CatalogsAPIServicer to perform the required actions, then write the service results to the http response.
+type CatalogsAPIRouter interface { 
+	CatalogsList(http.ResponseWriter, *http.Request)
+	CatalogsCreate(http.ResponseWriter, *http.Request)
+	CatalogsAvailableFilterValues(http.ResponseWriter, *http.Request)
+}
+// ConversionEqsAPIRouter defines the required methods for binding the api requests to a responses for the ConversionEqsAPI
+// The ConversionEqsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a ConversionEqsAPIServicer to perform the required actions, then write the service results to the http response.
+type ConversionEqsAPIRouter interface { 
+	ConversionEqsList(http.ResponseWriter, *http.Request)
 }
 // ConversionEventsAPIRouter defines the required methods for binding the api requests to a responses for the ConversionEventsAPI
 // The ConversionEventsAPIRouter implementation should parse necessary information from the http request,
@@ -244,6 +278,20 @@ type ConversionTagsAPIRouter interface {
 	OcpmEligibleConversionTagsGet(http.ResponseWriter, *http.Request)
 	PageVisitConversionTagsGet(http.ResponseWriter, *http.Request)
 	ConversionTagsGet(http.ResponseWriter, *http.Request)
+}
+// ConversionsAPIRouter defines the required methods for binding the api requests to a responses for the ConversionsAPI
+// The ConversionsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a ConversionsAPIServicer to perform the required actions, then write the service results to the http response.
+type ConversionsAPIRouter interface { 
+	AdvertiserDefinedEventsGet(http.ResponseWriter, *http.Request)
+}
+// CustomerListUploadsAPIRouter defines the required methods for binding the api requests to a responses for the CustomerListUploadsAPI
+// The CustomerListUploadsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a CustomerListUploadsAPIServicer to perform the required actions, then write the service results to the http response.
+type CustomerListUploadsAPIRouter interface { 
+	CustomerListUploadsCreate(http.ResponseWriter, *http.Request)
+	CustomerListUploadsGet(http.ResponseWriter, *http.Request)
+	CustomerListUploadsRun(http.ResponseWriter, *http.Request)
 }
 // CustomerListsAPIRouter defines the required methods for binding the api requests to a responses for the CustomerListsAPI
 // The CustomerListsAPIRouter implementation should parse necessary information from the http request,
@@ -275,6 +323,14 @@ type KeywordsAPIRouter interface {
 	KeywordsUpdate(http.ResponseWriter, *http.Request)
 	CountryKeywordsMetricsGet(http.ResponseWriter, *http.Request)
 	TrendingKeywordsList(http.ResponseWriter, *http.Request)
+}
+// LabelsAPIRouter defines the required methods for binding the api requests to a responses for the LabelsAPI
+// The LabelsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a LabelsAPIServicer to perform the required actions, then write the service results to the http response.
+type LabelsAPIRouter interface { 
+	LabelsList(http.ResponseWriter, *http.Request)
+	LabelsCreate(http.ResponseWriter, *http.Request)
+	LabelsUpdate(http.ResponseWriter, *http.Request)
 }
 // LeadAdsAPIRouter defines the required methods for binding the api requests to a responses for the LeadAdsAPI
 // The LeadAdsAPIRouter implementation should parse necessary information from the http request,
@@ -310,11 +366,25 @@ type MediaAPIRouter interface {
 	MediaCreate(http.ResponseWriter, *http.Request)
 	MediaGet(http.ResponseWriter, *http.Request)
 }
+// MsotEventsAPIRouter defines the required methods for binding the api requests to a responses for the MsotEventsAPI
+// The MsotEventsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a MsotEventsAPIServicer to perform the required actions, then write the service results to the http response.
+type MsotEventsAPIRouter interface { 
+	MsotEventsCreate(http.ResponseWriter, *http.Request)
+}
+// NotificationAPIRouter defines the required methods for binding the api requests to a responses for the NotificationAPI
+// The NotificationAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a NotificationAPIServicer to perform the required actions, then write the service results to the http response.
+type NotificationAPIRouter interface { 
+	NotificationPost(http.ResponseWriter, *http.Request)
+}
 // OauthAPIRouter defines the required methods for binding the api requests to a responses for the OauthAPI
 // The OauthAPIRouter implementation should parse necessary information from the http request,
 // pass the data to a OauthAPIServicer to perform the required actions, then write the service results to the http response.
 type OauthAPIRouter interface { 
+	OauthConversionToken(http.ResponseWriter, *http.Request)
 	OauthToken(http.ResponseWriter, *http.Request)
+	TokenRevoke(http.ResponseWriter, *http.Request)
 }
 // OrderLinesAPIRouter defines the required methods for binding the api requests to a responses for the OrderLinesAPI
 // The OrderLinesAPIRouter implementation should parse necessary information from the http request,
@@ -336,6 +406,14 @@ type PinsAPIRouter interface {
 	MultiPinsAnalytics(http.ResponseWriter, *http.Request)
 	PinsSave(http.ResponseWriter, *http.Request)
 }
+// ProductCategoriesAPIRouter defines the required methods for binding the api requests to a responses for the ProductCategoriesAPI
+// The ProductCategoriesAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a ProductCategoriesAPIServicer to perform the required actions, then write the service results to the http response.
+type ProductCategoriesAPIRouter interface { 
+	TrendsFeaturedTopicsList(http.ResponseWriter, *http.Request)
+	TrendsProductCategoriesDetailsList(http.ResponseWriter, *http.Request)
+	TrendsProductCategoriesTrendingList(http.ResponseWriter, *http.Request)
+}
 // ProductGroupPromotionsAPIRouter defines the required methods for binding the api requests to a responses for the ProductGroupPromotionsAPI
 // The ProductGroupPromotionsAPIRouter implementation should parse necessary information from the http request,
 // pass the data to a ProductGroupPromotionsAPIServicer to perform the required actions, then write the service results to the http response.
@@ -345,6 +423,16 @@ type ProductGroupPromotionsAPIRouter interface {
 	ProductGroupPromotionsUpdate(http.ResponseWriter, *http.Request)
 	ProductGroupPromotionsGet(http.ResponseWriter, *http.Request)
 	ProductGroupsAnalytics(http.ResponseWriter, *http.Request)
+}
+// PromotionsAPIRouter defines the required methods for binding the api requests to a responses for the PromotionsAPI
+// The PromotionsAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a PromotionsAPIServicer to perform the required actions, then write the service results to the http response.
+type PromotionsAPIRouter interface { 
+	PromotionsList(http.ResponseWriter, *http.Request)
+	PromotionsCreate(http.ResponseWriter, *http.Request)
+	PromotionsUpdate(http.ResponseWriter, *http.Request)
+	PromotionsGet(http.ResponseWriter, *http.Request)
+	PromotionsDelete(http.ResponseWriter, *http.Request)
 }
 // ResourcesAPIRouter defines the required methods for binding the api requests to a responses for the ResourcesAPI
 // The ResourcesAPIRouter implementation should parse necessary information from the http request,
@@ -403,6 +491,7 @@ type UserAccountAPIRouter interface {
 	VerifyWebsiteUpdate(http.ResponseWriter, *http.Request)
 	UnverifyWebsiteDelete(http.ResponseWriter, *http.Request)
 	WebsiteVerificationGet(http.ResponseWriter, *http.Request)
+	// Deprecated
 	UserAccountFollowedInterests(http.ResponseWriter, *http.Request)
 }
 
@@ -412,16 +501,18 @@ type UserAccountAPIRouter interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AdAccountsAPIServicer interface { 
-	AdAccountsList(context.Context, string, int32, bool) (ImplResponse, error)
-	AdAccountsCreate(context.Context, AdAccountCreateRequest) (ImplResponse, error)
+	AdAccountsList(context.Context, bool, string, int32) (ImplResponse, error)
+	AdAccountsCreate(context.Context, AdAccountCreate) (ImplResponse, error)
 	AdAccountsGet(context.Context, string) (ImplResponse, error)
-	AdAccountAnalytics(context.Context, string, string, string, []string, Granularity, int32, int32, int32, string) (ImplResponse, error)
+	AdAccountAnalytics(context.Context, string, string, string, []string, Granularity, int32, int32, int32, string, ReportingTimeZone) (ImplResponse, error)
 	AnalyticsGetMmmReport(context.Context, string, string) (ImplResponse, error)
 	AnalyticsCreateMmmReport(context.Context, string, CreateMmmReportRequest) (ImplResponse, error)
 	AnalyticsGetReport(context.Context, string, string) (ImplResponse, error)
 	AnalyticsCreateReport(context.Context, string, AdsAnalyticsCreateAsyncRequest) (ImplResponse, error)
+	AnalyticsGetConversionProductReport(context.Context, string, string) (ImplResponse, error)
+	AnalyticsCreateConversionProductReport(context.Context, string, ConversionProductReportRequest) (ImplResponse, error)
 	SandboxDelete(context.Context, string) (ImplResponse, error)
-	AdAccountTargetingAnalyticsGet(context.Context, string, string, string, []AdsAnalyticsTargetingType, []string, Granularity, int32, int32, int32, string, ConversionReportAttributionType) (ImplResponse, error)
+	AdAccountTargetingAnalyticsGet(context.Context, string, string, string, []AdsAnalyticsTargetingType, []string, Granularity, int32, int32, int32, string, []ConversionReportAttributionType, ReportingTimeZone) (ImplResponse, error)
 	TemplatesList(context.Context, string, int32, string, string) (ImplResponse, error)
 	AnalyticsCreateTemplateReport(context.Context, string, string, string, string, Granularity) (ImplResponse, error)
 }
@@ -435,8 +526,8 @@ type AdGroupsAPIServicer interface {
 	AdGroupsList(context.Context, string, []string, []string, []string, int32, string, string, bool) (ImplResponse, error)
 	AdGroupsCreate(context.Context, string, []AdGroupCreateRequest) (ImplResponse, error)
 	AdGroupsUpdate(context.Context, string, []AdGroupUpdateRequest) (ImplResponse, error)
-	AdGroupsAnalytics(context.Context, string, string, string, []string, []string, Granularity, int32, int32, int32, string) (ImplResponse, error)
-	AdGroupsTargetingAnalyticsGet(context.Context, string, []string, string, string, []AdsAnalyticsTargetingType, []string, Granularity, int32, int32, int32, string, ConversionReportAttributionType) (ImplResponse, error)
+	AdGroupsAnalytics(context.Context, string, string, string, []string, []string, Granularity, int32, int32, int32, string, bool, ReportingTimeZone) (ImplResponse, error)
+	AdGroupsTargetingAnalyticsGet(context.Context, string, []string, string, string, []AdsAnalyticsAdGroupTargetingType, []string, Granularity, int32, int32, int32, string, []ConversionReportAttributionType, ReportingTimeZone) (ImplResponse, error)
 	AdGroupsAudienceSizing(context.Context, string, AdGroupAudienceSizingRequest) (ImplResponse, error)
 	AdGroupsGet(context.Context, string, string) (ImplResponse, error)
 	AdGroupsBidFloorGet(context.Context, string, BidFloorRequest) (ImplResponse, error)
@@ -452,8 +543,8 @@ type AdsAPIServicer interface {
 	AdsList(context.Context, string, []string, []string, []string, []string, int32, string, string) (ImplResponse, error)
 	AdsCreate(context.Context, string, []AdCreateRequest) (ImplResponse, error)
 	AdsUpdate(context.Context, string, []AdUpdateRequest) (ImplResponse, error)
-	AdsAnalytics(context.Context, string, string, string, []string, Granularity, []string, int32, int32, int32, string, []string, []string) (ImplResponse, error)
-	AdTargetingAnalyticsGet(context.Context, string, []string, string, string, []AdsAnalyticsAdTargetingType, []string, Granularity, int32, int32, int32, string, ConversionReportAttributionType) (ImplResponse, error)
+	AdsAnalytics(context.Context, string, string, string, []string, Granularity, []string, int32, int32, int32, string, []string, []string, ReportingTimeZone) (ImplResponse, error)
+	AdTargetingAnalyticsGet(context.Context, string, []string, string, string, []AdsAnalyticsAdTargetingType, []string, Granularity, int32, int32, int32, string, []ConversionReportAttributionType, ReportingTimeZone) (ImplResponse, error)
 	AdsGet(context.Context, string, string) (ImplResponse, error)
 }
 
@@ -502,7 +593,6 @@ type AudiencesAPIServicer interface {
 	AudiencesCreate(context.Context, string, AudienceCreateRequest) (ImplResponse, error)
 	AudiencesGet(context.Context, string, string) (ImplResponse, error)
 	AudiencesUpdate(context.Context, string, string, AudienceUpdateRequest) (ImplResponse, error)
-	AudiencesCreateCustom(context.Context, string, AudienceCreateCustomRequest) (ImplResponse, error)
 }
 
 
@@ -514,6 +604,8 @@ type BillingAPIServicer interface {
 	AdsCreditsDiscountsGet(context.Context, string, string, int32) (ImplResponse, error)
 	AdsCreditRedeem(context.Context, string, AdsCreditRedeemRequest) (ImplResponse, error)
 	BillingProfilesGet(context.Context, string, bool, string, int32) (ImplResponse, error)
+	BillingInvoicesGet(context.Context, string, string, int32, string, string, string, string, string, string) (ImplResponse, error)
+	BillingInvoiceDownloadGet(context.Context, string, string) (ImplResponse, error)
 	SsioAccountsGet(context.Context, string) (ImplResponse, error)
 	SsioInsertionOrderCreate(context.Context, string, SsioCreateInsertionOrderRequest) (ImplResponse, error)
 	SsioInsertionOrderEdit(context.Context, string, SsioEditInsertionOrderRequest) (ImplResponse, error)
@@ -528,12 +620,12 @@ type BillingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type BoardsAPIServicer interface { 
-	BoardsList(context.Context, string, string, int32, string) (ImplResponse, error)
-	BoardsCreate(context.Context, Board, string) (ImplResponse, error)
+	BoardsList(context.Context, string, BoardPrivacyFilter, string, int32) (ImplResponse, error)
+	BoardsCreate(context.Context, BoardCreate, string) (ImplResponse, error)
 	BoardsGet(context.Context, string, string) (ImplResponse, error)
 	BoardsDelete(context.Context, string, string) (ImplResponse, error)
-	BoardsUpdate(context.Context, string, BoardUpdate, string) (ImplResponse, error)
-	BoardsListPins(context.Context, string, string, int32, []string, string, bool) (ImplResponse, error)
+	BoardsUpdate(context.Context, string, BoardWithUpdatePrivacyUpdate, string) (ImplResponse, error)
+	BoardsListPins(context.Context, string, string, int32, []CreativeType, string, bool) (ImplResponse, error)
 	BoardSectionsList(context.Context, string, string, string, int32) (ImplResponse, error)
 	BoardSectionsCreate(context.Context, string, BoardSection, string) (ImplResponse, error)
 	BoardSectionsDelete(context.Context, string, string, string) (ImplResponse, error)
@@ -558,7 +650,7 @@ type BulkAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type BusinessAccessAssetsAPIServicer interface { 
-	BusinessAssetMembersGet(context.Context, string, string, string, int32, int32) (ImplResponse, error)
+	BusinessAssetMembersGet(context.Context, string, string, bool, string, int32, int32) (ImplResponse, error)
 	BusinessAssetPartnersGet(context.Context, string, string, int32, string, int32) (ImplResponse, error)
 	BusinessAssetsGet(context.Context, string, []PermissionsWithOwner, string, string, string, int32, string, int32) (ImplResponse, error)
 	BusinessMemberAssetsGet(context.Context, string, string, string, int32, string, int32) (ImplResponse, error)
@@ -593,11 +685,14 @@ type BusinessAccessInviteAPIServicer interface {
 // and updated with the logic required for the API.
 type BusinessAccessRelationshipsAPIServicer interface { 
 	GetBusinessEmployers(context.Context, int32, string) (ImplResponse, error)
-	GetBusinessMembers(context.Context, string, bool, []MemberBusinessRole, string, int32, string, int32) (ImplResponse, error)
+	SystemUserUpdate(context.Context, string, string, SystemUserUpdateRequest) (ImplResponse, error)
+	GetBusinessMembers(context.Context, string, bool, bool, []MemberBusinessRole, string, int32, string, int32) (ImplResponse, error)
 	DeleteBusinessMembership(context.Context, string, MembersToDeleteBody) (ImplResponse, error)
 	UpdateBusinessMemberships(context.Context, string, []UpdateMemberBusinessRoleBody) (ImplResponse, error)
 	GetBusinessPartners(context.Context, string, bool, PartnerType, string, int32, int32, string) (ImplResponse, error)
 	DeleteBusinessPartners(context.Context, string, DeletePartnersRequest) (ImplResponse, error)
+	BrandAccountsCreate(context.Context, string, BrandAccountsCreateRequest) (ImplResponse, error)
+	BrandAccountsUpdate(context.Context, string, string, BrandAccountsUpdateRequest) (ImplResponse, error)
 }
 
 
@@ -609,19 +704,18 @@ type CampaignsAPIServicer interface {
 	CampaignsList(context.Context, string, []string, []string, int32, string, string) (ImplResponse, error)
 	CampaignsCreate(context.Context, string, []CampaignCreateRequest) (ImplResponse, error)
 	CampaignsUpdate(context.Context, string, []CampaignUpdateRequest) (ImplResponse, error)
-	CampaignsAnalytics(context.Context, string, string, string, []string, []string, Granularity, int32, int32, int32, string) (ImplResponse, error)
-	CampaignTargetingAnalyticsGet(context.Context, string, []string, string, string, []AdsAnalyticsCampaignTargetingType, []string, Granularity, int32, int32, int32, string, ConversionReportAttributionType) (ImplResponse, error)
+	CampaignsAnalytics(context.Context, string, string, string, []string, []string, Granularity, int32, int32, int32, string, bool, ReportingTimeZone) (ImplResponse, error)
+	CampaignTargetingAnalyticsGet(context.Context, string, []string, string, string, []AdsAnalyticsCampaignTargetingType, []string, Granularity, int32, int32, int32, string, []ConversionReportAttributionType, ReportingTimeZone) (ImplResponse, error)
 	CampaignsGet(context.Context, string, string) (ImplResponse, error)
+	AdPinsAnalytics(context.Context, string, string, []string, string, string, []string, Granularity, int32, int32, int32, string) (ImplResponse, error)
 }
 
 
-// CatalogsAPIServicer defines the api actions for the CatalogsAPI service
+// CatalogFeedsAPIServicer defines the api actions for the CatalogFeedsAPI service
 // This interface intended to stay up to date with the openapi yaml used to generate it,
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
-type CatalogsAPIServicer interface { 
-	CatalogsList(context.Context, string, int32, string) (ImplResponse, error)
-	CatalogsCreate(context.Context, CatalogsCreateRequest, string) (ImplResponse, error)
+type CatalogFeedsAPIServicer interface { 
 	FeedsList(context.Context, string, int32, string, string) (ImplResponse, error)
 	FeedsCreate(context.Context, FeedsCreateRequest, string) (ImplResponse, error)
 	FeedsGet(context.Context, string, string) (ImplResponse, error)
@@ -630,11 +724,25 @@ type CatalogsAPIServicer interface {
 	FeedsIngest(context.Context, string, string) (ImplResponse, error)
 	FeedProcessingResultsList(context.Context, string, string, int32, string) (ImplResponse, error)
 	ItemsIssuesList(context.Context, string, string, int32, []int32, CatalogsItemValidationIssue, string) (ImplResponse, error)
-	// Deprecated
-	ItemsGet(context.Context, string, string, string, []string, CatalogsItemsFilters) (ImplResponse, error)
+}
+
+
+// CatalogItemsAPIServicer defines the api actions for the CatalogItemsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type CatalogItemsAPIServicer interface { 
 	ItemsPost(context.Context, CatalogsItemsRequest, string) (ImplResponse, error)
 	ItemsBatchPost(context.Context, ItemsBatchPostRequest, string) (ImplResponse, error)
 	ItemsBatchGet(context.Context, string, string) (ImplResponse, error)
+}
+
+
+// CatalogProductGroupsAPIServicer defines the api actions for the CatalogProductGroupsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type CatalogProductGroupsAPIServicer interface { 
 	CatalogsProductGroupsCreateMany(context.Context, []MultipleProductGroupsInner, string) (ImplResponse, error)
 	CatalogsProductGroupsDeleteMany(context.Context, []int32, string) (ImplResponse, error)
 	CatalogsProductGroupsList(context.Context, []int32, string, string, string, int32, string) (ImplResponse, error)
@@ -645,9 +753,37 @@ type CatalogsAPIServicer interface {
 	CatalogsProductGroupsProductCountsGet(context.Context, string, string) (ImplResponse, error)
 	CatalogsProductGroupPinsList(context.Context, string, string, int32, string, bool) (ImplResponse, error)
 	ProductsByProductGroupFilterList(context.Context, CatalogsListProductsByFilterRequest, string, int32, string, bool) (ImplResponse, error)
+}
+
+
+// CatalogReportsAPIServicer defines the api actions for the CatalogReportsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type CatalogReportsAPIServicer interface { 
 	ReportsGet(context.Context, string, string) (ImplResponse, error)
 	ReportsCreate(context.Context, CatalogsReportParameters, string) (ImplResponse, error)
-	ReportsStats(context.Context, CatalogsReportParameters, string, int32, string) (ImplResponse, error)
+	ReportsStats(context.Context, ReportsStatsParametersParameter, string, int32, string) (ImplResponse, error)
+}
+
+
+// CatalogsAPIServicer defines the api actions for the CatalogsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type CatalogsAPIServicer interface { 
+	CatalogsList(context.Context, string, int32, string) (ImplResponse, error)
+	CatalogsCreate(context.Context, CatalogsCreateRequest, string) (ImplResponse, error)
+	CatalogsAvailableFilterValues(context.Context, string, string, Country, CatalogsLocale, string) (ImplResponse, error)
+}
+
+
+// ConversionEqsAPIServicer defines the api actions for the ConversionEqsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type ConversionEqsAPIServicer interface { 
+	ConversionEqsList(context.Context, LookbackPeriodOptions, string, SourcePlatformOptions, IngestionSourceOptions) (ImplResponse, error)
 }
 
 
@@ -670,6 +806,26 @@ type ConversionTagsAPIServicer interface {
 	OcpmEligibleConversionTagsGet(context.Context, string) (ImplResponse, error)
 	PageVisitConversionTagsGet(context.Context, string, int32, string, string) (ImplResponse, error)
 	ConversionTagsGet(context.Context, string, string) (ImplResponse, error)
+}
+
+
+// ConversionsAPIServicer defines the api actions for the ConversionsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type ConversionsAPIServicer interface { 
+	AdvertiserDefinedEventsGet(context.Context, string) (ImplResponse, error)
+}
+
+
+// CustomerListUploadsAPIServicer defines the api actions for the CustomerListUploadsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type CustomerListUploadsAPIServicer interface { 
+	CustomerListUploadsCreate(context.Context, string, string, CustomerListUploadCreateRequest) (ImplResponse, error)
+	CustomerListUploadsGet(context.Context, string, string, string) (ImplResponse, error)
+	CustomerListUploadsRun(context.Context, string, string, string) (ImplResponse, error)
 }
 
 
@@ -705,11 +861,22 @@ type IntegrationsAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type KeywordsAPIServicer interface { 
-	KeywordsGet(context.Context, string, string, string, []MatchType, int32, string) (ImplResponse, error)
+	KeywordsGet(context.Context, string, string, string, []string, []MatchType, int32, string) (ImplResponse, error)
 	KeywordsCreate(context.Context, string, KeywordsRequest) (ImplResponse, error)
 	KeywordsUpdate(context.Context, string, KeywordUpdateBody) (ImplResponse, error)
 	CountryKeywordsMetricsGet(context.Context, string, string, []string) (ImplResponse, error)
-	TrendingKeywordsList(context.Context, TrendsSupportedRegion, TrendType, []string, []string, []string, []string, bool, int32) (ImplResponse, error)
+	TrendingKeywordsList(context.Context, TrendsSupportedRegion, TrendType, []string, []string, []string, []string, bool, int32, bool, bool) (ImplResponse, error)
+}
+
+
+// LabelsAPIServicer defines the api actions for the LabelsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type LabelsAPIServicer interface { 
+	LabelsList(context.Context, string, []string, []string, []string, []string, int32, string) (ImplResponse, error)
+	LabelsCreate(context.Context, string, LabelCreateRequest) (ImplResponse, error)
+	LabelsUpdate(context.Context, string, LabelUpdateRequest) (ImplResponse, error)
 }
 
 
@@ -718,8 +885,8 @@ type KeywordsAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type LeadAdsAPIServicer interface { 
-	AdAccountsSubscriptionsGetList(context.Context, string, int32, string) (ImplResponse, error)
-	AdAccountsSubscriptionsPost(context.Context, string, AdAccountCreateSubscriptionRequest) (ImplResponse, error)
+	AdAccountsSubscriptionsGetList(context.Context, string, string, int32) (ImplResponse, error)
+	AdAccountsSubscriptionsPost(context.Context, string, LeadSubscriptionPostParamsCreate) (ImplResponse, error)
 	AdAccountsSubscriptionsGetById(context.Context, string, string) (ImplResponse, error)
 	AdAccountsSubscriptionsDelById(context.Context, string, string) (ImplResponse, error)
 }
@@ -754,8 +921,26 @@ type LeadsExportAPIServicer interface {
 // and updated with the logic required for the API.
 type MediaAPIServicer interface { 
 	MediaList(context.Context, string, int32) (ImplResponse, error)
-	MediaCreate(context.Context, MediaUploadRequest) (ImplResponse, error)
+	MediaCreate(context.Context, MediaUploadCreate) (ImplResponse, error)
 	MediaGet(context.Context, string) (ImplResponse, error)
+}
+
+
+// MsotEventsAPIServicer defines the api actions for the MsotEventsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type MsotEventsAPIServicer interface { 
+	MsotEventsCreate(context.Context, string, ConversionMsotEvents) (ImplResponse, error)
+}
+
+
+// NotificationAPIServicer defines the api actions for the NotificationAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type NotificationAPIServicer interface { 
+	NotificationPost(context.Context, NotificationPostRequest) (ImplResponse, error)
 }
 
 
@@ -764,7 +949,9 @@ type MediaAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type OauthAPIServicer interface { 
+	OauthConversionToken(context.Context) (ImplResponse, error)
 	OauthToken(context.Context, string) (ImplResponse, error)
+	TokenRevoke(context.Context, string, string) (ImplResponse, error)
 }
 
 
@@ -783,14 +970,25 @@ type OrderLinesAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PinsAPIServicer interface { 
-	PinsList(context.Context, string, int32, string, bool, string, []string, string, bool) (ImplResponse, error)
-	PinsCreate(context.Context, *PinCreate, string) (ImplResponse, error)
-	PinsGet(context.Context, string, bool, string) (ImplResponse, error)
+	PinsList(context.Context, string, bool, bool, string, []CreativeType, string, string, int32) (ImplResponse, error)
+	PinsCreate(context.Context, PinCreate, string) (ImplResponse, error)
+	PinsGet(context.Context, string, string, bool) (ImplResponse, error)
 	PinsDelete(context.Context, string, string) (ImplResponse, error)
-	PinsUpdate(context.Context, string, *PinUpdate, string) (ImplResponse, error)
+	PinsUpdate(context.Context, string, PinUpdate, string) (ImplResponse, error)
 	PinsAnalytics(context.Context, string, string, string, []string, string, string, string) (ImplResponse, error)
 	MultiPinsAnalytics(context.Context, []string, string, string, []string, string, string) (ImplResponse, error)
 	PinsSave(context.Context, string, PinsSaveRequest, string) (ImplResponse, error)
+}
+
+
+// ProductCategoriesAPIServicer defines the api actions for the ProductCategoriesAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type ProductCategoriesAPIServicer interface { 
+	TrendsFeaturedTopicsList(context.Context, ProductCategoryRegion, InterestsEnum) (ImplResponse, error)
+	TrendsProductCategoriesDetailsList(context.Context, []ProductCategoryEnum, ProductCategoryRegion, ProductCategoryDetailLookbackWindow, ProductCategoriesEngagementType) (ImplResponse, error)
+	TrendsProductCategoriesTrendingList(context.Context, ProductCategoryRegion, []VerticalProductCategory, []AgeTrendsBucket, []GenderBucket, ProductCategoriesEngagementType) (ImplResponse, error)
 }
 
 
@@ -803,7 +1001,20 @@ type ProductGroupPromotionsAPIServicer interface {
 	ProductGroupPromotionsCreate(context.Context, string, ProductGroupPromotionCreateRequest) (ImplResponse, error)
 	ProductGroupPromotionsUpdate(context.Context, string, ProductGroupPromotionUpdateRequest) (ImplResponse, error)
 	ProductGroupPromotionsGet(context.Context, string, string) (ImplResponse, error)
-	ProductGroupsAnalytics(context.Context, string, string, string, []string, []string, Granularity, int32, int32, int32, string) (ImplResponse, error)
+	ProductGroupsAnalytics(context.Context, string, string, string, []string, []string, Granularity, int32, int32, int32, string, ReportingTimeZone) (ImplResponse, error)
+}
+
+
+// PromotionsAPIServicer defines the api actions for the PromotionsAPI service
+// This interface intended to stay up to date with the openapi yaml used to generate it,
+// while the service implementation can be ignored with the .openapi-generator-ignore file
+// and updated with the logic required for the API.
+type PromotionsAPIServicer interface { 
+	PromotionsList(context.Context, string, int32, string, string) (ImplResponse, error)
+	PromotionsCreate(context.Context, string, []PromotionCreateRequest) (ImplResponse, error)
+	PromotionsUpdate(context.Context, string, []PromotionUpdateRequest) (ImplResponse, error)
+	PromotionsGet(context.Context, string, string) (ImplResponse, error)
+	PromotionsDelete(context.Context, string, string) (ImplResponse, error)
 }
 
 
@@ -880,5 +1091,6 @@ type UserAccountAPIServicer interface {
 	VerifyWebsiteUpdate(context.Context, UserWebsiteVerifyRequest, string) (ImplResponse, error)
 	UnverifyWebsiteDelete(context.Context, string) (ImplResponse, error)
 	WebsiteVerificationGet(context.Context, string) (ImplResponse, error)
+	// Deprecated
 	UserAccountFollowedInterests(context.Context, string, string, int32) (ImplResponse, error)
 }

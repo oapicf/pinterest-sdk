@@ -7,34 +7,34 @@
 #' @title RelatedTermsRelatedTermsListInner
 #' @description RelatedTermsRelatedTermsListInner Class
 #' @format An \code{R6Class} generator object
-#' @field term  character [optional]
 #' @field related_terms  list(character) [optional]
+#' @field term  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 RelatedTermsRelatedTermsListInner <- R6::R6Class(
   "RelatedTermsRelatedTermsListInner",
   public = list(
-    `term` = NULL,
     `related_terms` = NULL,
+    `term` = NULL,
 
     #' @description
     #' Initialize a new RelatedTermsRelatedTermsListInner class.
     #'
-    #' @param term term
     #' @param related_terms related_terms
+    #' @param term term
     #' @param ... Other optional arguments.
-    initialize = function(`term` = NULL, `related_terms` = NULL, ...) {
+    initialize = function(`related_terms` = NULL, `term` = NULL, ...) {
+      if (!is.null(`related_terms`)) {
+        stopifnot(is.vector(`related_terms`), length(`related_terms`) != 0)
+        sapply(`related_terms`, function(x) stopifnot(is.character(x)))
+        self$`related_terms` <- `related_terms`
+      }
       if (!is.null(`term`)) {
         if (!(is.character(`term`) && length(`term`) == 1)) {
           stop(paste("Error! Invalid data for `term`. Must be a string:", `term`))
         }
         self$`term` <- `term`
-      }
-      if (!is.null(`related_terms`)) {
-        stopifnot(is.vector(`related_terms`), length(`related_terms`) != 0)
-        sapply(`related_terms`, function(x) stopifnot(is.character(x)))
-        self$`related_terms` <- `related_terms`
       }
     },
 
@@ -69,13 +69,13 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       RelatedTermsRelatedTermsListInnerObject <- list()
-      if (!is.null(self$`term`)) {
-        RelatedTermsRelatedTermsListInnerObject[["term"]] <-
-          self$`term`
-      }
       if (!is.null(self$`related_terms`)) {
         RelatedTermsRelatedTermsListInnerObject[["related_terms"]] <-
           self$`related_terms`
+      }
+      if (!is.null(self$`term`)) {
+        RelatedTermsRelatedTermsListInnerObject[["term"]] <-
+          self$`term`
       }
       return(RelatedTermsRelatedTermsListInnerObject)
     },
@@ -87,11 +87,11 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
     #' @return the instance of RelatedTermsRelatedTermsListInner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`term`)) {
-        self$`term` <- this_object$`term`
-      }
       if (!is.null(this_object$`related_terms`)) {
         self$`related_terms` <- ApiClient$new()$deserializeObj(this_object$`related_terms`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`term`)) {
+        self$`term` <- this_object$`term`
       }
       self
     },
@@ -114,8 +114,8 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
     #' @return the instance of RelatedTermsRelatedTermsListInner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`term` <- this_object$`term`
       self$`related_terms` <- ApiClient$new()$deserializeObj(this_object$`related_terms`, "array[character]", loadNamespace("openapi"))
+      self$`term` <- this_object$`term`
       self
     },
 

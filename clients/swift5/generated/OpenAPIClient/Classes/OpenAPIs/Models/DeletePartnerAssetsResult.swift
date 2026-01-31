@@ -17,29 +17,29 @@ public struct DeletePartnerAssetsResult: Codable, JSONEncodable, Hashable {
     public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of a business asset. */
     public var assetId: String?
-    /** Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /** Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     public var assetType: String?
-    /** Permission levels member or partner has on an asset. */
-    public var permissions: [String]?
     /** If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset. */
     public var isSharedPartner: Bool?
     /** Unique identifier of a business partner. */
     public var partnerId: String?
+    /** Permission levels member or partner has on an asset. */
+    public var permissions: [String]?
 
-    public init(assetId: String? = nil, assetType: String? = nil, permissions: [String]? = nil, isSharedPartner: Bool? = nil, partnerId: String? = nil) {
+    public init(assetId: String? = nil, assetType: String? = nil, isSharedPartner: Bool? = nil, partnerId: String? = nil, permissions: [String]? = nil) {
         self.assetId = assetId
         self.assetType = assetType
-        self.permissions = permissions
         self.isSharedPartner = isSharedPartner
         self.partnerId = partnerId
+        self.permissions = permissions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case assetId = "asset_id"
         case assetType = "asset_type"
-        case permissions
         case isSharedPartner = "is_shared_partner"
         case partnerId = "partner_id"
+        case permissions
     }
 
     // Encodable protocol methods
@@ -48,9 +48,9 @@ public struct DeletePartnerAssetsResult: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetType, forKey: .assetType)
-        try container.encodeIfPresent(permissions, forKey: .permissions)
         try container.encodeIfPresent(isSharedPartner, forKey: .isSharedPartner)
         try container.encodeIfPresent(partnerId, forKey: .partnerId)
+        try container.encodeIfPresent(permissions, forKey: .permissions)
     }
 }
 

@@ -11,10 +11,10 @@ module MembersToDeleteBodyMembersInner =
 
   [<CLIMutable>]
   type MembersToDeleteBodyMembersInner = {
-    [<JsonProperty(PropertyName = "member_id")>]
-    MemberId : string;
     [<JsonProperty(PropertyName = "business_role")>]
     BusinessRole : BusinessRoleForMembers;
+    [<JsonProperty(PropertyName = "member_id")>]
+    MemberId : string;
   }
 
   //#endregion

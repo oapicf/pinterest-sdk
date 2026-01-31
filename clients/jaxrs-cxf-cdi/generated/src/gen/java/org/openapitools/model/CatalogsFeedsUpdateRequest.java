@@ -25,21 +25,39 @@ import java.util.Objects;
 @ApiModel(description = "Request object for updating a feed.")
 public class CatalogsFeedsUpdateRequest   {
   
+  private CatalogsFeedCredentials credentials;
+
   private ProductAvailabilityType defaultAvailability;
 
   private NullableCurrency defaultCurrency;
 
-  private String name;
-
   private CatalogsFormat format;
 
-  private CatalogsFeedCredentials credentials;
-
   private String location;
+
+  private String name;
 
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   private CatalogsStatus status;
+
+  /**
+   **/
+  public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
+
 
   /**
    **/
@@ -78,25 +96,6 @@ public class CatalogsFeedsUpdateRequest   {
 
 
   /**
-   * A human-friendly name associated to a given feed.
-   **/
-  public CatalogsFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  /**
    **/
   public CatalogsFeedsUpdateRequest format(CatalogsFormat format) {
     this.format = format;
@@ -111,24 +110,6 @@ public class CatalogsFeedsUpdateRequest   {
   }
   public void setFormat(CatalogsFormat format) {
     this.format = format;
-  }
-
-
-  /**
-   **/
-  public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
   }
 
 
@@ -148,6 +129,25 @@ public class CatalogsFeedsUpdateRequest   {
   }
   public void setLocation(String location) {
     this.location = location;
+  }
+
+
+  /**
+   * A human-friendly name associated to a given feed.
+   **/
+  public CatalogsFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -197,19 +197,19 @@ public class CatalogsFeedsUpdateRequest   {
       return false;
     }
     CatalogsFeedsUpdateRequest catalogsFeedsUpdateRequest = (CatalogsFeedsUpdateRequest) o;
-    return Objects.equals(this.defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
+    return Objects.equals(this.credentials, catalogsFeedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
         Objects.equals(this.defaultCurrency, catalogsFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(this.format, catalogsFeedsUpdateRequest.format) &&
-        Objects.equals(this.credentials, catalogsFeedsUpdateRequest.credentials) &&
         Objects.equals(this.location, catalogsFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsFeedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.status, catalogsFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultAvailability, defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -217,12 +217,12 @@ public class CatalogsFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedsUpdateRequest {\n");
     
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

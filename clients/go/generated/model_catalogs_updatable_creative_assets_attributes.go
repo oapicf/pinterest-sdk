@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,18 +20,8 @@ var _ MappedNullable = &CatalogsUpdatableCreativeAssetsAttributes{}
 
 // CatalogsUpdatableCreativeAssetsAttributes struct for CatalogsUpdatableCreativeAssetsAttributes
 type CatalogsUpdatableCreativeAssetsAttributes struct {
-	// The name of the creative assets.
-	Title *string `json:"title,omitempty"`
-	// Brief description of the creative assets.
-	Description *string `json:"description,omitempty"`
-	// Link to the creative assets page.
-	Link *string `json:"link,omitempty"`
-	// IOS deep link to the creative assets page.
-	IosDeepLink NullableString `json:"ios_deep_link,omitempty"`
 	// Link to the creative assets page.
 	AndroidDeepLink NullableString `json:"android_deep_link,omitempty"`
-	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-	GoogleProductCategory NullableString `json:"google_product_category,omitempty"`
 	// Custom grouping of creative assets.
 	CustomLabel0 NullableString `json:"custom_label_0,omitempty"`
 	// Custom grouping of creative assets.
@@ -42,6 +32,16 @@ type CatalogsUpdatableCreativeAssetsAttributes struct {
 	CustomLabel3 NullableString `json:"custom_label_3,omitempty"`
 	// Custom grouping of creative assets.
 	CustomLabel4 NullableString `json:"custom_label_4,omitempty"`
+	// Brief description of the creative assets.
+	Description *string `json:"description,omitempty"`
+	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+	GoogleProductCategory NullableString `json:"google_product_category,omitempty"`
+	// IOS deep link to the creative assets page.
+	IosDeepLink NullableString `json:"ios_deep_link,omitempty"`
+	// Link to the creative assets page.
+	Link *string `json:"link,omitempty"`
+	// The name of the creative assets.
+	Title *string `json:"title,omitempty"`
 	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
 	Visibility NullableString `json:"visibility,omitempty"`
 }
@@ -61,144 +61,6 @@ func NewCatalogsUpdatableCreativeAssetsAttributes() *CatalogsUpdatableCreativeAs
 func NewCatalogsUpdatableCreativeAssetsAttributesWithDefaults() *CatalogsUpdatableCreativeAssetsAttributes {
 	this := CatalogsUpdatableCreativeAssetsAttributes{}
 	return &this
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetLink returns the Link field value if set, zero value otherwise.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLink() string {
-	if o == nil || IsNil(o.Link) {
-		var ret string
-		return ret
-	}
-	return *o.Link
-}
-
-// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLinkOk() (*string, bool) {
-	if o == nil || IsNil(o.Link) {
-		return nil, false
-	}
-	return o.Link, true
-}
-
-// HasLink returns a boolean if a field has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) HasLink() bool {
-	if o != nil && !IsNil(o.Link) {
-		return true
-	}
-
-	return false
-}
-
-// SetLink gets a reference to the given string and assigns it to the Link field.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetLink(v string) {
-	o.Link = &v
-}
-
-// GetIosDeepLink returns the IosDeepLink field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLink() string {
-	if o == nil || IsNil(o.IosDeepLink.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.IosDeepLink.Get()
-}
-
-// GetIosDeepLinkOk returns a tuple with the IosDeepLink field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLinkOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.IosDeepLink.Get(), o.IosDeepLink.IsSet()
-}
-
-// HasIosDeepLink returns a boolean if a field has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) HasIosDeepLink() bool {
-	if o != nil && o.IosDeepLink.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIosDeepLink gets a reference to the given NullableString and assigns it to the IosDeepLink field.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLink(v string) {
-	o.IosDeepLink.Set(&v)
-}
-// SetIosDeepLinkNil sets the value for IosDeepLink to be an explicit nil
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLinkNil() {
-	o.IosDeepLink.Set(nil)
-}
-
-// UnsetIosDeepLink ensures that no value is present for IosDeepLink, not even an explicit nil
-func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetIosDeepLink() {
-	o.IosDeepLink.Unset()
 }
 
 // GetAndroidDeepLink returns the AndroidDeepLink field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -241,48 +103,6 @@ func (o *CatalogsUpdatableCreativeAssetsAttributes) SetAndroidDeepLinkNil() {
 // UnsetAndroidDeepLink ensures that no value is present for AndroidDeepLink, not even an explicit nil
 func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetAndroidDeepLink() {
 	o.AndroidDeepLink.Unset()
-}
-
-// GetGoogleProductCategory returns the GoogleProductCategory field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategory() string {
-	if o == nil || IsNil(o.GoogleProductCategory.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.GoogleProductCategory.Get()
-}
-
-// GetGoogleProductCategoryOk returns a tuple with the GoogleProductCategory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategoryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.GoogleProductCategory.Get(), o.GoogleProductCategory.IsSet()
-}
-
-// HasGoogleProductCategory returns a boolean if a field has been set.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) HasGoogleProductCategory() bool {
-	if o != nil && o.GoogleProductCategory.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGoogleProductCategory gets a reference to the given NullableString and assigns it to the GoogleProductCategory field.
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategory(v string) {
-	o.GoogleProductCategory.Set(&v)
-}
-// SetGoogleProductCategoryNil sets the value for GoogleProductCategory to be an explicit nil
-func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategoryNil() {
-	o.GoogleProductCategory.Set(nil)
-}
-
-// UnsetGoogleProductCategory ensures that no value is present for GoogleProductCategory, not even an explicit nil
-func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetGoogleProductCategory() {
-	o.GoogleProductCategory.Unset()
 }
 
 // GetCustomLabel0 returns the CustomLabel0 field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -495,6 +315,186 @@ func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetCustomLabel4() {
 	o.CustomLabel4.Unset()
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetGoogleProductCategory returns the GoogleProductCategory field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategory() string {
+	if o == nil || IsNil(o.GoogleProductCategory.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GoogleProductCategory.Get()
+}
+
+// GetGoogleProductCategoryOk returns a tuple with the GoogleProductCategory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategoryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GoogleProductCategory.Get(), o.GoogleProductCategory.IsSet()
+}
+
+// HasGoogleProductCategory returns a boolean if a field has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) HasGoogleProductCategory() bool {
+	if o != nil && o.GoogleProductCategory.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleProductCategory gets a reference to the given NullableString and assigns it to the GoogleProductCategory field.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategory(v string) {
+	o.GoogleProductCategory.Set(&v)
+}
+// SetGoogleProductCategoryNil sets the value for GoogleProductCategory to be an explicit nil
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategoryNil() {
+	o.GoogleProductCategory.Set(nil)
+}
+
+// UnsetGoogleProductCategory ensures that no value is present for GoogleProductCategory, not even an explicit nil
+func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetGoogleProductCategory() {
+	o.GoogleProductCategory.Unset()
+}
+
+// GetIosDeepLink returns the IosDeepLink field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLink() string {
+	if o == nil || IsNil(o.IosDeepLink.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IosDeepLink.Get()
+}
+
+// GetIosDeepLinkOk returns a tuple with the IosDeepLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IosDeepLink.Get(), o.IosDeepLink.IsSet()
+}
+
+// HasIosDeepLink returns a boolean if a field has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) HasIosDeepLink() bool {
+	if o != nil && o.IosDeepLink.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIosDeepLink gets a reference to the given NullableString and assigns it to the IosDeepLink field.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLink(v string) {
+	o.IosDeepLink.Set(&v)
+}
+// SetIosDeepLinkNil sets the value for IosDeepLink to be an explicit nil
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLinkNil() {
+	o.IosDeepLink.Set(nil)
+}
+
+// UnsetIosDeepLink ensures that no value is present for IosDeepLink, not even an explicit nil
+func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetIosDeepLink() {
+	o.IosDeepLink.Unset()
+}
+
+// GetLink returns the Link field value if set, zero value otherwise.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLink() string {
+	if o == nil || IsNil(o.Link) {
+		var ret string
+		return ret
+	}
+	return *o.Link
+}
+
+// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.Link) {
+		return nil, false
+	}
+	return o.Link, true
+}
+
+// HasLink returns a boolean if a field has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) HasLink() bool {
+	if o != nil && !IsNil(o.Link) {
+		return true
+	}
+
+	return false
+}
+
+// SetLink gets a reference to the given string and assigns it to the Link field.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetLink(v string) {
+	o.Link = &v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *CatalogsUpdatableCreativeAssetsAttributes) SetTitle(v string) {
+	o.Title = &v
+}
+
 // GetVisibility returns the Visibility field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsUpdatableCreativeAssetsAttributes) GetVisibility() string {
 	if o == nil || IsNil(o.Visibility.Get()) {
@@ -547,23 +547,8 @@ func (o CatalogsUpdatableCreativeAssetsAttributes) MarshalJSON() ([]byte, error)
 
 func (o CatalogsUpdatableCreativeAssetsAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Link) {
-		toSerialize["link"] = o.Link
-	}
-	if o.IosDeepLink.IsSet() {
-		toSerialize["ios_deep_link"] = o.IosDeepLink.Get()
-	}
 	if o.AndroidDeepLink.IsSet() {
 		toSerialize["android_deep_link"] = o.AndroidDeepLink.Get()
-	}
-	if o.GoogleProductCategory.IsSet() {
-		toSerialize["google_product_category"] = o.GoogleProductCategory.Get()
 	}
 	if o.CustomLabel0.IsSet() {
 		toSerialize["custom_label_0"] = o.CustomLabel0.Get()
@@ -579,6 +564,21 @@ func (o CatalogsUpdatableCreativeAssetsAttributes) ToMap() (map[string]interface
 	}
 	if o.CustomLabel4.IsSet() {
 		toSerialize["custom_label_4"] = o.CustomLabel4.Get()
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if o.GoogleProductCategory.IsSet() {
+		toSerialize["google_product_category"] = o.GoogleProductCategory.Get()
+	}
+	if o.IosDeepLink.IsSet() {
+		toSerialize["ios_deep_link"] = o.IosDeepLink.Get()
+	}
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
 	}
 	if o.Visibility.IsSet() {
 		toSerialize["visibility"] = o.Visibility.Get()

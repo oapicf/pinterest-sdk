@@ -13,17 +13,33 @@ import { OrderLineStatus } from './orderLineStatus';
 
 export interface OrderLine { 
     /**
+     * Ad account ID.
+     */
+    ad_account_id?: string;
+    /**
+     * Order line budget in micro currency.
+     */
+    budget?: number | null;
+    /**
+     * End time. Unix timestamp.
+     */
+    end_time?: number | null;
+    /**
      * Order line ID.
      */
     id?: string;
     /**
-     * Always \"orderline\".
+     * Order line name.
      */
-    type?: string;
+    name?: string | null;
     /**
-     * Ad account ID.
+     * Order line paid budget in micro currency.
      */
-    ad_account_id?: string;
+    paid_budget?: number | null;
+    /**
+     * Order line paid type.
+     */
+    paid_type?: OrderLinePaidType | null;
     /**
      * Purchase order ID.
      */
@@ -33,29 +49,13 @@ export interface OrderLine {
      */
     start_time?: number;
     /**
-     * End time. Unix timestamp.
-     */
-    end_time?: number | null;
-    /**
-     * Order line budget in micro currency.
-     */
-    budget?: number | null;
-    /**
-     * Order line paid budget in micro currency.
-     */
-    paid_budget?: number | null;
-    /**
      * Order line status.
      */
     status?: OrderLineStatus;
     /**
-     * Order line name.
+     * Always \"orderline\".
      */
-    name?: string | null;
-    /**
-     * Order line paid type.
-     */
-    paid_type?: OrderLinePaidType | null;
+    type?: string;
     /**
      * Associated List of campaign IDs.
      */

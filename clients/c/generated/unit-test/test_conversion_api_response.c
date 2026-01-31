@@ -22,15 +22,15 @@ conversion_api_response_t* instantiate_conversion_api_response(int include_optio
   conversion_api_response_t* conversion_api_response = NULL;
   if (include_optional) {
     conversion_api_response = conversion_api_response_create(
+      list_createList(),
       56,
-      56,
-      list_createList()
+      56
     );
   } else {
     conversion_api_response = conversion_api_response_create(
+      list_createList(),
       56,
-      56,
-      list_createList()
+      56
     );
   }
 

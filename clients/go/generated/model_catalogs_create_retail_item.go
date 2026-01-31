@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsCreateRetailItem{}
 
 // CatalogsCreateRetailItem An item to be created
 type CatalogsCreateRetailItem struct {
+	Attributes ItemAttributesRequest `json:"attributes"`
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id"`
 	Operation string `json:"operation"`
-	Attributes ItemAttributesRequest `json:"attributes"`
 }
 
 type _CatalogsCreateRetailItem CatalogsCreateRetailItem
@@ -34,11 +34,11 @@ type _CatalogsCreateRetailItem CatalogsCreateRetailItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreateRetailItem(itemId string, operation string, attributes ItemAttributesRequest) *CatalogsCreateRetailItem {
+func NewCatalogsCreateRetailItem(attributes ItemAttributesRequest, itemId string, operation string) *CatalogsCreateRetailItem {
 	this := CatalogsCreateRetailItem{}
+	this.Attributes = attributes
 	this.ItemId = itemId
 	this.Operation = operation
-	this.Attributes = attributes
 	return &this
 }
 
@@ -48,6 +48,30 @@ func NewCatalogsCreateRetailItem(itemId string, operation string, attributes Ite
 func NewCatalogsCreateRetailItemWithDefaults() *CatalogsCreateRetailItem {
 	this := CatalogsCreateRetailItem{}
 	return &this
+}
+
+// GetAttributes returns the Attributes field value
+func (o *CatalogsCreateRetailItem) GetAttributes() ItemAttributesRequest {
+	if o == nil {
+		var ret ItemAttributesRequest
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreateRetailItem) GetAttributesOk() (*ItemAttributesRequest, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *CatalogsCreateRetailItem) SetAttributes(v ItemAttributesRequest) {
+	o.Attributes = v
 }
 
 // GetItemId returns the ItemId field value
@@ -98,30 +122,6 @@ func (o *CatalogsCreateRetailItem) SetOperation(v string) {
 	o.Operation = v
 }
 
-// GetAttributes returns the Attributes field value
-func (o *CatalogsCreateRetailItem) GetAttributes() ItemAttributesRequest {
-	if o == nil {
-		var ret ItemAttributesRequest
-		return ret
-	}
-
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreateRetailItem) GetAttributesOk() (*ItemAttributesRequest, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Attributes, true
-}
-
-// SetAttributes sets field value
-func (o *CatalogsCreateRetailItem) SetAttributes(v ItemAttributesRequest) {
-	o.Attributes = v
-}
-
 func (o CatalogsCreateRetailItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -132,9 +132,9 @@ func (o CatalogsCreateRetailItem) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsCreateRetailItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["item_id"] = o.ItemId
 	toSerialize["operation"] = o.Operation
-	toSerialize["attributes"] = o.Attributes
 	return toSerialize, nil
 }
 
@@ -143,9 +143,9 @@ func (o *CatalogsCreateRetailItem) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"attributes",
 		"item_id",
 		"operation",
-		"attributes",
 	}
 
 	allProperties := make(map[string]interface{})

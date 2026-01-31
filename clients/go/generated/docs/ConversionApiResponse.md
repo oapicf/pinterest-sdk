@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NumEventsReceived** | **int32** | Total number of events received in the request. | 
-**NumEventsProcessed** | **int32** | Number of events that were successfully processed from the events. | 
 **Events** | [**[]ConversionApiResponseEventsInner**](ConversionApiResponseEventsInner.md) | Specific messages for each event received. The order will match the order in which the events were received in the request. | 
+**NumEventsProcessed** | **int32** | Number of events that were successfully processed from the events. | 
+**NumEventsReceived** | **int32** | Total number of events received in the request. | 
 
 ## Methods
 
 ### NewConversionApiResponse
 
-`func NewConversionApiResponse(numEventsReceived int32, numEventsProcessed int32, events []ConversionApiResponseEventsInner, ) *ConversionApiResponse`
+`func NewConversionApiResponse(events []ConversionApiResponseEventsInner, numEventsProcessed int32, numEventsReceived int32, ) *ConversionApiResponse`
 
 NewConversionApiResponse instantiates a new ConversionApiResponse object
 This constructor will assign default values to properties that have it defined,
@@ -27,24 +27,24 @@ NewConversionApiResponseWithDefaults instantiates a new ConversionApiResponse ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetNumEventsReceived
+### GetEvents
 
-`func (o *ConversionApiResponse) GetNumEventsReceived() int32`
+`func (o *ConversionApiResponse) GetEvents() []ConversionApiResponseEventsInner`
 
-GetNumEventsReceived returns the NumEventsReceived field if non-nil, zero value otherwise.
+GetEvents returns the Events field if non-nil, zero value otherwise.
 
-### GetNumEventsReceivedOk
+### GetEventsOk
 
-`func (o *ConversionApiResponse) GetNumEventsReceivedOk() (*int32, bool)`
+`func (o *ConversionApiResponse) GetEventsOk() (*[]ConversionApiResponseEventsInner, bool)`
 
-GetNumEventsReceivedOk returns a tuple with the NumEventsReceived field if it's non-nil, zero value otherwise
+GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNumEventsReceived
+### SetEvents
 
-`func (o *ConversionApiResponse) SetNumEventsReceived(v int32)`
+`func (o *ConversionApiResponse) SetEvents(v []ConversionApiResponseEventsInner)`
 
-SetNumEventsReceived sets NumEventsReceived field to given value.
+SetEvents sets Events field to given value.
 
 
 ### GetNumEventsProcessed
@@ -67,24 +67,24 @@ and a boolean to check if the value has been set.
 SetNumEventsProcessed sets NumEventsProcessed field to given value.
 
 
-### GetEvents
+### GetNumEventsReceived
 
-`func (o *ConversionApiResponse) GetEvents() []ConversionApiResponseEventsInner`
+`func (o *ConversionApiResponse) GetNumEventsReceived() int32`
 
-GetEvents returns the Events field if non-nil, zero value otherwise.
+GetNumEventsReceived returns the NumEventsReceived field if non-nil, zero value otherwise.
 
-### GetEventsOk
+### GetNumEventsReceivedOk
 
-`func (o *ConversionApiResponse) GetEventsOk() (*[]ConversionApiResponseEventsInner, bool)`
+`func (o *ConversionApiResponse) GetNumEventsReceivedOk() (*int32, bool)`
 
-GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
+GetNumEventsReceivedOk returns a tuple with the NumEventsReceived field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEvents
+### SetNumEventsReceived
 
-`func (o *ConversionApiResponse) SetEvents(v []ConversionApiResponseEventsInner)`
+`func (o *ConversionApiResponse) SetNumEventsReceived(v int32)`
 
-SetEvents sets Events field to given value.
+SetNumEventsReceived sets NumEventsReceived field to given value.
 
 
 

@@ -8,8 +8,8 @@
 
 (def ssio-insertion-orders-status-get-by-ad-account-200-response-data
   {
-   (ds/req :items) (s/coll-of ssio-insertion-order-status-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of ssio-insertion-order-status-spec)
    })
 
 (def ssio-insertion-orders-status-get-by-ad-account-200-response-spec

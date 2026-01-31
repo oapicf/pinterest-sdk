@@ -28,29 +28,29 @@ typedef struct feeds_update_request_t feeds_update_request_t;
 
 
 typedef struct feeds_update_request_t {
-    pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
-    char *name; // string
-    pinterest_rest_api_catalogs_format__e format; //referenced enum
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     struct catalogs_feed_credentials_t *credentials; //model
+    pinterest_rest_api_product_availability_type__e default_availability; //referenced enum
+    pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
+    pinterest_rest_api_catalogs_format__e format; //referenced enum
     char *location; // string
+    char *name; // string
     struct catalogs_feed_processing_schedule_t *preferred_processing_schedule; //model
     pinterest_rest_api_catalogs_status__e status; //referenced enum
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
-    pinterest_rest_api_product_availability_type__e default_availability; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } feeds_update_request_t;
 
 __attribute__((deprecated)) feeds_update_request_t *feeds_update_request_create(
-    pinterest_rest_api_nullable_currency__e default_currency,
-    char *name,
-    pinterest_rest_api_catalogs_format__e format,
-    catalogs_feed_credentials_t *credentials,
-    char *location,
-    catalogs_feed_processing_schedule_t *preferred_processing_schedule,
-    pinterest_rest_api_catalogs_status__e status,
     pinterest_rest_api_catalogs_type__e catalog_type,
-    pinterest_rest_api_product_availability_type__e default_availability
+    catalogs_feed_credentials_t *credentials,
+    pinterest_rest_api_product_availability_type__e default_availability,
+    pinterest_rest_api_nullable_currency__e default_currency,
+    pinterest_rest_api_catalogs_format__e format,
+    char *location,
+    char *name,
+    catalogs_feed_processing_schedule_t *preferred_processing_schedule,
+    pinterest_rest_api_catalogs_status__e status
 );
 
 void feeds_update_request_free(feeds_update_request_t *feeds_update_request);

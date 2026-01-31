@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CampaignBidOptionsUpdate;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.ObjectiveType;
 import org.openapitools.vertxweb.server.model.TrackingUrls;
@@ -14,39 +15,43 @@ public class CampaignUpdateRequest   {
   
   private String id;
   private String adAccountId;
-  private String name;
-  private EntityStatus status;
-  private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
-  private String orderLineId;
-  private TrackingUrls trackingUrls;
-  private Integer startTime;
   private Integer endTime;
-  private Boolean isFlexibleDailyBudgets;
-  private Integer defaultAdGroupBudgetInMicroCurrency;
   private Boolean isAutomatedCampaign;
+  private Boolean isFlexibleDailyBudgets;
+  private Integer lifetimeSpendCap;
+  private String name;
+  private String orderLineId;
+  private Integer startTime;
+  private EntityStatus status;
+  private TrackingUrls trackingUrls;
+  private Integer defaultAdGroupBudgetInMicroCurrency;
   private Boolean isCampaignBudgetOptimization;
+  private CampaignBidOptionsUpdate bidOptions;
+  private Boolean isPerformancePlus;
   private ObjectiveType objectiveType;
 
   public CampaignUpdateRequest () {
 
   }
 
-  public CampaignUpdateRequest (String id, String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, TrackingUrls trackingUrls, Integer startTime, Integer endTime, Boolean isFlexibleDailyBudgets, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isAutomatedCampaign, Boolean isCampaignBudgetOptimization, ObjectiveType objectiveType) {
+  public CampaignUpdateRequest (String id, String adAccountId, Integer dailySpendCap, Integer endTime, Boolean isAutomatedCampaign, Boolean isFlexibleDailyBudgets, Integer lifetimeSpendCap, String name, String orderLineId, Integer startTime, EntityStatus status, TrackingUrls trackingUrls, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isCampaignBudgetOptimization, CampaignBidOptionsUpdate bidOptions, Boolean isPerformancePlus, ObjectiveType objectiveType) {
     this.id = id;
     this.adAccountId = adAccountId;
-    this.name = name;
-    this.status = status;
-    this.lifetimeSpendCap = lifetimeSpendCap;
     this.dailySpendCap = dailySpendCap;
-    this.orderLineId = orderLineId;
-    this.trackingUrls = trackingUrls;
-    this.startTime = startTime;
     this.endTime = endTime;
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     this.isAutomatedCampaign = isAutomatedCampaign;
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
+    this.lifetimeSpendCap = lifetimeSpendCap;
+    this.name = name;
+    this.orderLineId = orderLineId;
+    this.startTime = startTime;
+    this.status = status;
+    this.trackingUrls = trackingUrls;
+    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+    this.bidOptions = bidOptions;
+    this.isPerformancePlus = isPerformancePlus;
     this.objectiveType = objectiveType;
   }
 
@@ -69,66 +74,12 @@ public class CampaignUpdateRequest   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
-  }
-  public void setStatus(EntityStatus status) {
-    this.status = status;
-  }
-
-    
-  @JsonProperty("lifetime_spend_cap")
-  public Integer getLifetimeSpendCap() {
-    return lifetimeSpendCap;
-  }
-  public void setLifetimeSpendCap(Integer lifetimeSpendCap) {
-    this.lifetimeSpendCap = lifetimeSpendCap;
-  }
-
-    
   @JsonProperty("daily_spend_cap")
   public Integer getDailySpendCap() {
     return dailySpendCap;
   }
   public void setDailySpendCap(Integer dailySpendCap) {
     this.dailySpendCap = dailySpendCap;
-  }
-
-    
-  @JsonProperty("order_line_id")
-  public String getOrderLineId() {
-    return orderLineId;
-  }
-  public void setOrderLineId(String orderLineId) {
-    this.orderLineId = orderLineId;
-  }
-
-    
-  @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
-    return trackingUrls;
-  }
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
-    this.trackingUrls = trackingUrls;
-  }
-
-    
-  @JsonProperty("start_time")
-  public Integer getStartTime() {
-    return startTime;
-  }
-  public void setStartTime(Integer startTime) {
-    this.startTime = startTime;
   }
 
     
@@ -141,12 +92,75 @@ public class CampaignUpdateRequest   {
   }
 
     
+  @JsonProperty("is_automated_campaign")
+  public Boolean getIsAutomatedCampaign() {
+    return isAutomatedCampaign;
+  }
+  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
+    this.isAutomatedCampaign = isAutomatedCampaign;
+  }
+
+    
   @JsonProperty("is_flexible_daily_budgets")
   public Boolean getIsFlexibleDailyBudgets() {
     return isFlexibleDailyBudgets;
   }
   public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
+  }
+
+    
+  @JsonProperty("lifetime_spend_cap")
+  public Integer getLifetimeSpendCap() {
+    return lifetimeSpendCap;
+  }
+  public void setLifetimeSpendCap(Integer lifetimeSpendCap) {
+    this.lifetimeSpendCap = lifetimeSpendCap;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
+  @JsonProperty("order_line_id")
+  public String getOrderLineId() {
+    return orderLineId;
+  }
+  public void setOrderLineId(String orderLineId) {
+    this.orderLineId = orderLineId;
+  }
+
+    
+  @JsonProperty("start_time")
+  public Integer getStartTime() {
+    return startTime;
+  }
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+    
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
+  }
+  public void setStatus(EntityStatus status) {
+    this.status = status;
+  }
+
+    
+  @JsonProperty("tracking_urls")
+  public TrackingUrls getTrackingUrls() {
+    return trackingUrls;
+  }
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
+    this.trackingUrls = trackingUrls;
   }
 
     
@@ -159,21 +173,30 @@ public class CampaignUpdateRequest   {
   }
 
     
-  @JsonProperty("is_automated_campaign")
-  public Boolean getIsAutomatedCampaign() {
-    return isAutomatedCampaign;
-  }
-  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
-    this.isAutomatedCampaign = isAutomatedCampaign;
-  }
-
-    
   @JsonProperty("is_campaign_budget_optimization")
   public Boolean getIsCampaignBudgetOptimization() {
     return isCampaignBudgetOptimization;
   }
   public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+  }
+
+    
+  @JsonProperty("bid_options")
+  public CampaignBidOptionsUpdate getBidOptions() {
+    return bidOptions;
+  }
+  public void setBidOptions(CampaignBidOptionsUpdate bidOptions) {
+    this.bidOptions = bidOptions;
+  }
+
+    
+  @JsonProperty("is_performance_plus")
+  public Boolean getIsPerformancePlus() {
+    return isPerformancePlus;
+  }
+  public void setIsPerformancePlus(Boolean isPerformancePlus) {
+    this.isPerformancePlus = isPerformancePlus;
   }
 
     
@@ -197,24 +220,26 @@ public class CampaignUpdateRequest   {
     CampaignUpdateRequest campaignUpdateRequest = (CampaignUpdateRequest) o;
     return Objects.equals(id, campaignUpdateRequest.id) &&
         Objects.equals(adAccountId, campaignUpdateRequest.adAccountId) &&
-        Objects.equals(name, campaignUpdateRequest.name) &&
-        Objects.equals(status, campaignUpdateRequest.status) &&
-        Objects.equals(lifetimeSpendCap, campaignUpdateRequest.lifetimeSpendCap) &&
         Objects.equals(dailySpendCap, campaignUpdateRequest.dailySpendCap) &&
-        Objects.equals(orderLineId, campaignUpdateRequest.orderLineId) &&
-        Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls) &&
-        Objects.equals(startTime, campaignUpdateRequest.startTime) &&
         Objects.equals(endTime, campaignUpdateRequest.endTime) &&
-        Objects.equals(isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
-        Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
+        Objects.equals(isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
+        Objects.equals(lifetimeSpendCap, campaignUpdateRequest.lifetimeSpendCap) &&
+        Objects.equals(name, campaignUpdateRequest.name) &&
+        Objects.equals(orderLineId, campaignUpdateRequest.orderLineId) &&
+        Objects.equals(startTime, campaignUpdateRequest.startTime) &&
+        Objects.equals(status, campaignUpdateRequest.status) &&
+        Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls) &&
+        Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(isCampaignBudgetOptimization, campaignUpdateRequest.isCampaignBudgetOptimization) &&
+        Objects.equals(bidOptions, campaignUpdateRequest.bidOptions) &&
+        Objects.equals(isPerformancePlus, campaignUpdateRequest.isPerformancePlus) &&
         Objects.equals(objectiveType, campaignUpdateRequest.objectiveType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
+    return Objects.hash(id, adAccountId, dailySpendCap, endTime, isAutomatedCampaign, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls, defaultAdGroupBudgetInMicroCurrency, isCampaignBudgetOptimization, bidOptions, isPerformancePlus, objectiveType);
   }
 
   @Override
@@ -224,18 +249,20 @@ public class CampaignUpdateRequest   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
     sb.append("    dailySpendCap: ").append(toIndentedString(dailySpendCap)).append("\n");
-    sb.append("    orderLineId: ").append(toIndentedString(orderLineId)).append("\n");
-    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
-    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
+    sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    orderLineId: ").append(toIndentedString(orderLineId)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
+    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    isPerformancePlus: ").append(toIndentedString(isPerformancePlus)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("}");
     return sb.toString();

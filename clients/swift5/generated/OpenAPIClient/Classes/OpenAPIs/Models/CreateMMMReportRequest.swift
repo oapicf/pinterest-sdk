@@ -20,46 +20,46 @@ public struct CreateMMMReportRequest: Codable, JSONEncodable, Hashable {
         case campaignTargeting = "CAMPAIGN_TARGETING"
         case adGroupTargeting = "AD_GROUP_TARGETING"
     }
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
     /** A List of countries for filtering */
     public var countries: [TargetingAdvertiserCountry]?
-    /** Name of the Marketing Mix Modeling (MMM) report */
-    public var reportName: String
-    /** Metric report start date (UTC). Format: YYYY-MM-DD */
-    public var startDate: String
+    /** Metric and entity columns */
+    public var columns: [MMMReportingColumn]
     /** Metric report end date (UTC). Format: YYYY-MM-DD */
     public var endDate: String
     /** DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly. */
     public var granularity: Granularity
     /** Level of the report */
     public var level: Level
+    /** Name of the Marketing Mix Modeling (MMM) report */
+    public var reportName: String
+    /** Metric report start date (UTC). Format: YYYY-MM-DD */
+    public var startDate: String
     /** List of targeting types */
     public var targetingTypes: [MMMReportingTargetingType]
-    /** Metric and entity columns */
-    public var columns: [MMMReportingColumn]
 
-    public init(countries: [TargetingAdvertiserCountry]? = nil, reportName: String, startDate: String, endDate: String, granularity: Granularity, level: Level, targetingTypes: [MMMReportingTargetingType], columns: [MMMReportingColumn]) {
+    public init(countries: [TargetingAdvertiserCountry]? = nil, columns: [MMMReportingColumn], endDate: String, granularity: Granularity, level: Level, reportName: String, startDate: String, targetingTypes: [MMMReportingTargetingType]) {
         self.countries = countries
-        self.reportName = reportName
-        self.startDate = startDate
+        self.columns = columns
         self.endDate = endDate
         self.granularity = granularity
         self.level = level
+        self.reportName = reportName
+        self.startDate = startDate
         self.targetingTypes = targetingTypes
-        self.columns = columns
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case countries
-        case reportName = "report_name"
-        case startDate = "start_date"
+        case columns
         case endDate = "end_date"
         case granularity
         case level
+        case reportName = "report_name"
+        case startDate = "start_date"
         case targetingTypes = "targeting_types"
-        case columns
     }
 
     // Encodable protocol methods
@@ -67,13 +67,13 @@ public struct CreateMMMReportRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(countries, forKey: .countries)
-        try container.encode(reportName, forKey: .reportName)
-        try container.encode(startDate, forKey: .startDate)
+        try container.encode(columns, forKey: .columns)
         try container.encode(endDate, forKey: .endDate)
         try container.encode(granularity, forKey: .granularity)
         try container.encode(level, forKey: .level)
+        try container.encode(reportName, forKey: .reportName)
+        try container.encode(startDate, forKey: .startDate)
         try container.encode(targetingTypes, forKey: .targetingTypes)
-        try container.encode(columns, forKey: .columns)
     }
 }
 

@@ -21,7 +21,7 @@ func (c *Container) ConversionTagsGet(ctx echo.Context) error {
 }
 
 
-// ConversionTagsList - Get conversion tags
+// ConversionTagsList - List conversion tags
 func (c *Container) ConversionTagsList(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",

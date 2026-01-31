@@ -1,44 +1,5 @@
 #tag Class
 Protected Class PinMediaWithVideo
-Inherits CodegenModel{name='PinMedia', schemaName='PinMedia', parent='null', parentSchema='null', interfaces=null, interfaceModels=[], allParents=null, parentModel=null, children=5, permits=5, anyOf=[], oneOf=[], allOf=[], classname='PinMedia', title='Pin media', description='Pin media objects.', classVarName='PinMedia', modelJson='{
-  "title" : "Pin media",
-  "type" : "object",
-  "properties" : {
-    "media_type" : {
-      "type" : "string"
-    }
-  },
-  "description" : "Pin media objects.",
-  "discriminator" : {
-    "propertyName" : "media_type",
-    "mapping" : {
-      "image" : "#/components/schemas/PinMediaWithImage",
-      "video" : "#/components/schemas/PinMediaWithVideo",
-      "multiple_images" : "#/components/schemas/PinMediaWithImages",
-      "multiple_videos" : "#/components/schemas/PinMediaWithVideos",
-      "multiple_mixed" : "#/components/schemas/PinMediaWithImageAndVideo"
-    }
-  }
-}', dataType='Object', xmlPrefix='null', xmlNamespace='null', xmlName='null', classFilename='PinMedia', unescapedDescription='Pin media objects.', discriminator=CodegenDiscriminator{propertyName='media_type', propertyBaseName='media_type', mapping={image=#/components/schemas/PinMediaWithImage, video=#/components/schemas/PinMediaWithVideo, multiple_images=#/components/schemas/PinMediaWithImages, multiple_videos=#/components/schemas/PinMediaWithVideos, multiple_mixed=#/components/schemas/PinMediaWithImageAndVideo}, mappedModels=[org.openapitools.codegen.CodegenDiscriminator$MappedModel@68983f4c, org.openapitools.codegen.CodegenDiscriminator$MappedModel@8a3884c7, org.openapitools.codegen.CodegenDiscriminator$MappedModel@7195ccbf, org.openapitools.codegen.CodegenDiscriminator$MappedModel@4937a0c7, org.openapitools.codegen.CodegenDiscriminator$MappedModel@7f45a34c], vendorExtensions={}}, defaultValue='null', arrayModelType='null', isAlias=false, isString=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isBoolean=false, isNumber=false, isNumeric=false, isFloat=false, isDouble=false, isDate=false, isDateTime=false, vars=[CodegenProperty{openApiType='string', baseName='media_type', complexType='null', getter='getMediaType', setter='setMediaType', description='null', dataType='String', datatypeWithEnum='String', dataFormat='null', name='media_type', min='null', max='null', defaultValue='Sample', defaultValueWithParam=' = data.media_type;', baseType='String', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='null', maxLength=null, minLength=null, pattern='null', example='Sample', jsonSchema='{
-  "type" : "string"
-}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=false, deprecated=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=true, isNumeric=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=true, isNew=false, isOverridden=null, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='mediaType', nameInPascalCase='MediaType', nameInSnakeCase='MEDIA_TYPE', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}], allVars=[CodegenProperty{openApiType='string', baseName='media_type', complexType='null', getter='getMediaType', setter='setMediaType', description='null', dataType='String', datatypeWithEnum='String', dataFormat='null', name='media_type', min='null', max='null', defaultValue='Sample', defaultValueWithParam=' = data.media_type;', baseType='String', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='null', maxLength=null, minLength=null, pattern='null', example='Sample', jsonSchema='{
-  "type" : "string"
-}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=false, deprecated=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=true, isNumeric=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=true, isNew=false, isOverridden=null, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='mediaType', nameInPascalCase='MediaType', nameInSnakeCase='MEDIA_TYPE', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}], nonNullableVars=[CodegenProperty{openApiType='string', baseName='media_type', complexType='null', getter='getMediaType', setter='setMediaType', description='null', dataType='String', datatypeWithEnum='String', dataFormat='null', name='media_type', min='null', max='null', defaultValue='Sample', defaultValueWithParam=' = data.media_type;', baseType='String', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='null', maxLength=null, minLength=null, pattern='null', example='Sample', jsonSchema='{
-  "type" : "string"
-}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=false, deprecated=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=true, isNumeric=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=false, isNew=false, isOverridden=null, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='mediaType', nameInPascalCase='MediaType', nameInSnakeCase='MEDIA_TYPE', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}], requiredVars=[], optionalVars=[CodegenProperty{openApiType='string', baseName='media_type', complexType='null', getter='getMediaType', setter='setMediaType', description='null', dataType='String', datatypeWithEnum='String', dataFormat='null', name='media_type', min='null', max='null', defaultValue='Sample', defaultValueWithParam=' = data.media_type;', baseType='String', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='null', maxLength=null, minLength=null, pattern='null', example='Sample', jsonSchema='{
-  "type" : "string"
-}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=false, deprecated=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=true, isNumeric=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=false, isNew=false, isOverridden=null, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='mediaType', nameInPascalCase='MediaType', nameInSnakeCase='MEDIA_TYPE', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}], readOnlyVars=[], readWriteVars=[CodegenProperty{openApiType='string', baseName='media_type', complexType='null', getter='getMediaType', setter='setMediaType', description='null', dataType='String', datatypeWithEnum='String', dataFormat='null', name='media_type', min='null', max='null', defaultValue='Sample', defaultValueWithParam=' = data.media_type;', baseType='String', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='null', maxLength=null, minLength=null, pattern='null', example='Sample', jsonSchema='{
-  "type" : "string"
-}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=false, deprecated=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=true, isNumeric=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=true, isNew=false, isOverridden=null, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='mediaType', nameInPascalCase='MediaType', nameInSnakeCase='MEDIA_TYPE', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}], parentVars=[], allowableValues=null, mandatory=[], allMandatory=[], imports=[], hasVars=true, emptyVars=false, hasMoreModels=false, hasEnums=false, isEnum=false, isNullable=false, hasRequired=false, hasOptional=true, isArray=false, hasChildren=true, isMap=false, isOptional=false, isDeprecated=false, hasReadOnly=false, hasOnlyReadOnly=false, externalDocumentation=null, vendorExtensions={x-xojo-project-id=0000000001A4BAFF}, additionalPropertiesType='null', isAdditionalPropertiesTrue='false', maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, maxItems=null, minItems=null, maxLength=null, minLength=null, exclusiveMinimum=false, exclusiveMaximum=false, minimum='null', maximum='null', pattern='null', multipleOf='null', items='null', additionalProperties='null', isModel='true', isNull='false', hasValidation='false', getAdditionalPropertiesIsAnyType=false, getHasDiscriminatorWithNonEmptyMapping=true, getIsAnyType=false, composedSchemas=null, hasMultipleTypes=false, isDecimal=false, isUUID=false, isURI=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}
-	#tag Property, Flags = &h0
-		media_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		images As OpenAPIClient.Models.PinMediaWithImageAllOfImages
-	#tag EndProperty
-
 
 	#tag Property, Flags = &h0
 		cover_image_url As Xoson.O.OptionalString
@@ -47,15 +8,7 @@ Inherits CodegenModel{name='PinMedia', schemaName='PinMedia', parent='null', par
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-		#tag EndNote
-		video_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Duration (in milliseconds)
+			Duration (in miliseconds). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		duration As Xoson.O.OptionalDouble
 	#tag EndProperty
@@ -63,21 +16,56 @@ Inherits CodegenModel{name='PinMedia', schemaName='PinMedia', parent='null', par
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Height (in pixels)
+			Height (in pixels). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		height As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		images As OpenAPIClient.Models.ImageSize
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		media_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
-			Width (in pixels)
+			Video url (720p).  **Note:** This field is limited and not available to all apps.
+		#tag EndNote
+		video_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Width (in pixels). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		width As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
+    #tag Enum, Name = Media_typeEnum, Type = Integer, Flags = &h0
+        
+        Video
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Media_typeEnumToString(value As Media_typeEnum) As String
+		  Select Case value
+		    
+		    Case Media_typeEnum.Video
+		      Return "video"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -114,31 +102,7 @@ Inherits CodegenModel{name='PinMedia', schemaName='PinMedia', parent='null', par
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="media_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="images"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="PinMediaWithImageAllOfImages"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="cover_image_url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="video_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -159,6 +123,22 @@ Inherits CodegenModel{name='PinMedia', schemaName='PinMedia', parent='null', par
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="images"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ImageSize"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="video_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

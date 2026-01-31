@@ -26,6 +26,14 @@ public class CatalogsUpdateRetailItemTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'itemId'
      */
     @Test
@@ -39,14 +47,6 @@ public class CatalogsUpdateRetailItemTest {
     @Test
     public void operationTest() {
         // TODO: test operation
-    }
-
-    /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
     }
 
     /**

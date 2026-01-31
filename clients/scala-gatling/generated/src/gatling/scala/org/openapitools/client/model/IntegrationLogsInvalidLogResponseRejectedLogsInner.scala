@@ -3,20 +3,20 @@ package org.openapitools.client.model
 
 
 case class IntegrationLogsInvalidLogResponseRejectedLogsInner (
-    /* Index of the log in the batch. */
-    _logIndex: Option[Integer],
     /* The field name containing an invalid value. */
     _field: String,
-    /* The value that is invalid. */
-    _value: String,
+    /* Index of the log in the batch. */
+    _logIndex: Option[Integer],
     /* The reason the value is invalid. */
-    _reason: String
+    _reason: String,
+    /* The value that is invalid. */
+    _value: String
 )
 object IntegrationLogsInvalidLogResponseRejectedLogsInner {
-    def toStringBody(var_logIndex: Object, var_field: Object, var_value: Object, var_reason: Object) =
+    def toStringBody(var_field: Object, var_logIndex: Object, var_reason: Object, var_value: Object) =
         s"""
         | {
-        | "logIndex":$var_logIndex,"field":$var_field,"value":$var_value,"reason":$var_reason
+        | "field":$var_field,"logIndex":$var_logIndex,"reason":$var_reason,"value":$var_value
         | }
         """.stripMargin
 }

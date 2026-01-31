@@ -23,23 +23,23 @@ AdvancedAuctionBidOptions::~AdvancedAuctionBidOptions()
 void
 AdvancedAuctionBidOptions::__init()
 {
-	//bid_in_micro_currency = long(0);
 	//app_type_multipliers = new AppTypeMultipliers();
+	//bid_in_micro_currency = long(0);
 	//placement_multipliers = new PlacementMultipliers();
 }
 
 void
 AdvancedAuctionBidOptions::__cleanup()
 {
-	//if(bid_in_micro_currency != NULL) {
-	//
-	//delete bid_in_micro_currency;
-	//bid_in_micro_currency = NULL;
-	//}
 	//if(app_type_multipliers != NULL) {
 	//
 	//delete app_type_multipliers;
 	//app_type_multipliers = NULL;
+	//}
+	//if(bid_in_micro_currency != NULL) {
+	//
+	//delete bid_in_micro_currency;
+	//bid_in_micro_currency = NULL;
 	//}
 	//if(placement_multipliers != NULL) {
 	//
@@ -54,17 +54,6 @@ AdvancedAuctionBidOptions::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
-	node = json_object_get_member(pJsonObject, bid_in_micro_currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&bid_in_micro_currency, node, "long long", "");
-		} else {
-			
-		}
-	}
 	const gchar *app_type_multipliersKey = "app_type_multipliers";
 	node = json_object_get_member(pJsonObject, app_type_multipliersKey);
 	if (node !=NULL) {
@@ -76,6 +65,17 @@ AdvancedAuctionBidOptions::fromJson(char* jsonStr)
 			
 			AppTypeMultipliers* obj = static_cast<AppTypeMultipliers*> (&app_type_multipliers);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
+	node = json_object_get_member(pJsonObject, bid_in_micro_currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&bid_in_micro_currency, node, "long long", "");
+		} else {
 			
 		}
 	}
@@ -105,15 +105,6 @@ AdvancedAuctionBidOptions::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("long long")) {
-		long long obj = getBidInMicroCurrency();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-	}
-	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
-	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
 	if (isprimitive("AppTypeMultipliers")) {
 		AppTypeMultipliers obj = getAppTypeMultipliers();
 		node = converttoJson(&obj, "AppTypeMultipliers", "");
@@ -128,6 +119,15 @@ AdvancedAuctionBidOptions::toJson()
 	}
 	const gchar *app_type_multipliersKey = "app_type_multipliers";
 	json_object_set_member(pJsonObject, app_type_multipliersKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getBidInMicroCurrency();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
+	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
 	if (isprimitive("PlacementMultipliers")) {
 		PlacementMultipliers obj = getPlacementMultipliers();
 		node = converttoJson(&obj, "PlacementMultipliers", "");
@@ -150,18 +150,6 @@ AdvancedAuctionBidOptions::toJson()
 	return ret;
 }
 
-long long
-AdvancedAuctionBidOptions::getBidInMicroCurrency()
-{
-	return bid_in_micro_currency;
-}
-
-void
-AdvancedAuctionBidOptions::setBidInMicroCurrency(long long  bid_in_micro_currency)
-{
-	this->bid_in_micro_currency = bid_in_micro_currency;
-}
-
 AppTypeMultipliers
 AdvancedAuctionBidOptions::getAppTypeMultipliers()
 {
@@ -172,6 +160,18 @@ void
 AdvancedAuctionBidOptions::setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers)
 {
 	this->app_type_multipliers = app_type_multipliers;
+}
+
+long long
+AdvancedAuctionBidOptions::getBidInMicroCurrency()
+{
+	return bid_in_micro_currency;
+}
+
+void
+AdvancedAuctionBidOptions::setBidInMicroCurrency(long long  bid_in_micro_currency)
+{
+	this->bid_in_micro_currency = bid_in_micro_currency;
 }
 
 PlacementMultipliers

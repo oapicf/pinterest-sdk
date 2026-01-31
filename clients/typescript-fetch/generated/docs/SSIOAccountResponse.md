@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
-`eligible` | boolean
-`canEdit` | boolean
 `billtoInfos` | [Array&lt;SSIOAccountItem&gt;](SSIOAccountItem.md)
+`canEdit` | boolean
 `currency` | string
-`pmpNames` | [Array&lt;SSIOAccountPMPName&gt;](SSIOAccountPMPName.md)
+`eligible` | boolean
 `error` | string
+`pmpNames` | [Array&lt;SSIOAccountPMPName&gt;](SSIOAccountPMPName.md)
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { SSIOAccountResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "eligible": true,
-  "canEdit": true,
   "billtoInfos": null,
+  "canEdit": true,
   "currency": USD,
-  "pmpNames": null,
+  "eligible": true,
   "error": No Error,
+  "pmpNames": null,
 } satisfies SSIOAccountResponse
 
 console.log(example)

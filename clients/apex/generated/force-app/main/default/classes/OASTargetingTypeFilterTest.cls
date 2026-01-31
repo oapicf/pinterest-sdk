@@ -79,6 +79,6 @@ private class OASTargetingTypeFilterTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASTargetingTypeFilter targetingTypeFilter = new OASTargetingTypeFilter();
-        System.assertEquals(new List<OASAdsAnalyticsTargetingType>(), targetingTypeFilter.targetingTypes);
+        System.assertEquals(new List<String>(), targetingTypeFilter.targetingTypes);
     }
 }

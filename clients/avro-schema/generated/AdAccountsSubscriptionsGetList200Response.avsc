@@ -5,18 +5,18 @@
   "name": "AdAccountsSubscriptionsGetList200Response",
   "fields": [
     {
-      "name": "items",
-      "type": {
-        "type": "array",
-        "items": "model.AdAccountGetSubscriptionResponse"
-      },
-      "doc": ""
-    },
-    {
       "name": "bookmark",
       "type": ["null", "string"],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.LeadSubscription"
+      },
+      "doc": ""
     }
   ]
 

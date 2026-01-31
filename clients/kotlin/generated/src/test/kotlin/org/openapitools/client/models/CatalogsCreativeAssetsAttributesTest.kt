@@ -25,40 +25,10 @@ class CatalogsCreativeAssetsAttributesTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsCreativeAssetsAttributes
         //val modelInstance = CatalogsCreativeAssetsAttributes()
 
-        // to test the property `title` - The name of the creative assets.
-        should("test title") {
-            // uncomment below to test the property
-            //modelInstance.title shouldBe ("TODO")
-        }
-
-        // to test the property `description` - Brief description of the creative assets.
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
-        }
-
-        // to test the property `link` - Link to the creative assets page.
-        should("test link") {
-            // uncomment below to test the property
-            //modelInstance.link shouldBe ("TODO")
-        }
-
-        // to test the property `iosDeepLink` - IOS deep link to the creative assets page.
-        should("test iosDeepLink") {
-            // uncomment below to test the property
-            //modelInstance.iosDeepLink shouldBe ("TODO")
-        }
-
         // to test the property `androidDeepLink` - Link to the creative assets page.
         should("test androidDeepLink") {
             // uncomment below to test the property
             //modelInstance.androidDeepLink shouldBe ("TODO")
-        }
-
-        // to test the property `googleProductCategory` - The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-        should("test googleProductCategory") {
-            // uncomment below to test the property
-            //modelInstance.googleProductCategory shouldBe ("TODO")
         }
 
         // to test the property `customLabel0` - Custom grouping of creative assets.
@@ -89,6 +59,36 @@ class CatalogsCreativeAssetsAttributesTest : ShouldSpec() {
         should("test customLabel4") {
             // uncomment below to test the property
             //modelInstance.customLabel4 shouldBe ("TODO")
+        }
+
+        // to test the property `description` - Brief description of the creative assets.
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `googleProductCategory` - The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+        should("test googleProductCategory") {
+            // uncomment below to test the property
+            //modelInstance.googleProductCategory shouldBe ("TODO")
+        }
+
+        // to test the property `iosDeepLink` - IOS deep link to the creative assets page.
+        should("test iosDeepLink") {
+            // uncomment below to test the property
+            //modelInstance.iosDeepLink shouldBe ("TODO")
+        }
+
+        // to test the property `link` - Link to the creative assets page.
+        should("test link") {
+            // uncomment below to test the property
+            //modelInstance.link shouldBe ("TODO")
+        }
+
+        // to test the property `title` - The name of the creative assets.
+        should("test title") {
+            // uncomment below to test the property
+            //modelInstance.title shouldBe ("TODO")
         }
 
         // to test the property `visibility` - Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.

@@ -14,12 +14,12 @@ module DeletePartnerAssetsResult =
     AssetId : string;
     [<JsonProperty(PropertyName = "asset_type")>]
     AssetType : string;
-    [<JsonProperty(PropertyName = "permissions")>]
-    Permissions : string[];
     [<JsonProperty(PropertyName = "is_shared_partner")>]
     IsSharedPartner : bool;
     [<JsonProperty(PropertyName = "partner_id")>]
     PartnerId : string;
+    [<JsonProperty(PropertyName = "permissions")>]
+    Permissions : string[];
   }
 
   //#endregion

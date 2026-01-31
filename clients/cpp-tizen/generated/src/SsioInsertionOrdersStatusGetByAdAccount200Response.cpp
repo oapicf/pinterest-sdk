@@ -23,22 +23,22 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::~Ssio_insertion_ord
 void
 Ssio_insertion_orders_status_get_by_ad_account_200_response::__init()
 {
-	//new std::list()std::list> items;
 	//bookmark = std::string();
+	//new std::list()std::list> items;
 }
 
 void
 Ssio_insertion_orders_status_get_by_ad_account_200_response::__cleanup()
 {
-	//if(items != NULL) {
-	//items.RemoveAll(true);
-	//delete items;
-	//items = NULL;
-	//}
 	//if(bookmark != NULL) {
 	//
 	//delete bookmark;
 	//bookmark = NULL;
+	//}
+	//if(items != NULL) {
+	//items.RemoveAll(true);
+	//delete items;
+	//items = NULL;
 	//}
 	//
 }
@@ -48,6 +48,17 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::fromJson(char* json
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *bookmarkKey = "bookmark";
+	node = json_object_get_member(pJsonObject, bookmarkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&bookmark, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *itemsKey = "items";
 	node = json_object_get_member(pJsonObject, itemsKey);
 	if (node !=NULL) {
@@ -72,17 +83,6 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::fromJson(char* json
 		}
 		
 	}
-	const gchar *bookmarkKey = "bookmark";
-	node = json_object_get_member(pJsonObject, bookmarkKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&bookmark, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 Ssio_insertion_orders_status_get_by_ad_account_200_response::Ssio_insertion_orders_status_get_by_ad_account_200_response(char* json)
@@ -95,6 +95,15 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getBookmark();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *bookmarkKey = "bookmark";
+	json_object_set_member(pJsonObject, bookmarkKey, node);
 	if (isprimitive("SSIOInsertionOrderStatus")) {
 		list<SSIOInsertionOrderStatus> new_list = static_cast<list <SSIOInsertionOrderStatus> > (getItems());
 		node = converttoJson(&new_list, "SSIOInsertionOrderStatus", "array");
@@ -120,33 +129,12 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBookmark();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *bookmarkKey = "bookmark";
-	json_object_set_member(pJsonObject, bookmarkKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::list<SSIOInsertionOrderStatus>
-Ssio_insertion_orders_status_get_by_ad_account_200_response::getItems()
-{
-	return items;
-}
-
-void
-Ssio_insertion_orders_status_get_by_ad_account_200_response::setItems(std::list <SSIOInsertionOrderStatus> items)
-{
-	this->items = items;
 }
 
 std::string
@@ -159,6 +147,18 @@ void
 Ssio_insertion_orders_status_get_by_ad_account_200_response::setBookmark(std::string  bookmark)
 {
 	this->bookmark = bookmark;
+}
+
+std::list<SSIOInsertionOrderStatus>
+Ssio_insertion_orders_status_get_by_ad_account_200_response::getItems()
+{
+	return items;
+}
+
+void
+Ssio_insertion_orders_status_get_by_ad_account_200_response::setItems(std::list <SSIOInsertionOrderStatus> items)
+{
+	this->items = items;
 }
 
 

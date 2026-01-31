@@ -23,19 +23,19 @@ public class AdvancedAuctionItemTest {
     }
 
     /**
-     * Test the property 'itemId'
-     */
-    @Test
-    public void itemIdTest() {
-        // TODO: test itemId
-    }
-
-    /**
      * Test the property 'country'
      */
     @Test
     public void countryTest() {
         // TODO: test country
+    }
+
+    /**
+     * Test the property 'itemId'
+     */
+    @Test
+    public void itemIdTest() {
+        // TODO: test itemId
     }
 
     /**

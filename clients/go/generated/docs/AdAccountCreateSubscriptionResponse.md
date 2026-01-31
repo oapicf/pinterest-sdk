@@ -4,10 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Subscription ID. | [optional] 
-**CryptographicKey** | Pointer to **NullableString** | Base64 encoded key for client to decrypt lead data. | [optional] 
-**CryptographicAlgorithm** | Pointer to **NullableString** | Lead data encryption algorithm. | [optional] 
+**AdAccountId** | Pointer to **string** | The Ad Account ID that this lead form belongs to. | [optional] 
+**ApiVersion** | Pointer to **string** | API version. | [optional] 
 **CreatedTime** | Pointer to **int32** | Subscription creation time. Unix timestamp in milliseconds. | [optional] 
+**CryptographicAlgorithm** | Pointer to **NullableString** | Lead data encryption algorithm. | [optional] 
+**CryptographicKey** | Pointer to **NullableString** | Base64 encoded key for client to decrypt lead data. | [optional] 
+**Id** | Pointer to **string** | Subscription ID. | [optional] 
+**LeadFormId** | Pointer to **NullableString** | Lead form ID. | [optional] 
+**UserAccountId** | Pointer to **string** | User account used to subscribe lead data. | [optional] 
+**WebhookUrl** | Pointer to **string** | Standard HTTPS webhook URL. | [optional] 
 
 ## Methods
 
@@ -28,66 +33,81 @@ NewAdAccountCreateSubscriptionResponseWithDefaults instantiates a new AdAccountC
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAdAccountId
 
-`func (o *AdAccountCreateSubscriptionResponse) GetId() string`
+`func (o *AdAccountCreateSubscriptionResponse) GetAdAccountId() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAdAccountIdOk
 
-`func (o *AdAccountCreateSubscriptionResponse) GetIdOk() (*string, bool)`
+`func (o *AdAccountCreateSubscriptionResponse) GetAdAccountIdOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAdAccountId
 
-`func (o *AdAccountCreateSubscriptionResponse) SetId(v string)`
+`func (o *AdAccountCreateSubscriptionResponse) SetAdAccountId(v string)`
 
-SetId sets Id field to given value.
+SetAdAccountId sets AdAccountId field to given value.
 
-### HasId
+### HasAdAccountId
 
-`func (o *AdAccountCreateSubscriptionResponse) HasId() bool`
+`func (o *AdAccountCreateSubscriptionResponse) HasAdAccountId() bool`
 
-HasId returns a boolean if a field has been set.
+HasAdAccountId returns a boolean if a field has been set.
 
-### GetCryptographicKey
+### GetApiVersion
 
-`func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKey() string`
+`func (o *AdAccountCreateSubscriptionResponse) GetApiVersion() string`
 
-GetCryptographicKey returns the CryptographicKey field if non-nil, zero value otherwise.
+GetApiVersion returns the ApiVersion field if non-nil, zero value otherwise.
 
-### GetCryptographicKeyOk
+### GetApiVersionOk
 
-`func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKeyOk() (*string, bool)`
+`func (o *AdAccountCreateSubscriptionResponse) GetApiVersionOk() (*string, bool)`
 
-GetCryptographicKeyOk returns a tuple with the CryptographicKey field if it's non-nil, zero value otherwise
+GetApiVersionOk returns a tuple with the ApiVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCryptographicKey
+### SetApiVersion
 
-`func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKey(v string)`
+`func (o *AdAccountCreateSubscriptionResponse) SetApiVersion(v string)`
 
-SetCryptographicKey sets CryptographicKey field to given value.
+SetApiVersion sets ApiVersion field to given value.
 
-### HasCryptographicKey
+### HasApiVersion
 
-`func (o *AdAccountCreateSubscriptionResponse) HasCryptographicKey() bool`
+`func (o *AdAccountCreateSubscriptionResponse) HasApiVersion() bool`
 
-HasCryptographicKey returns a boolean if a field has been set.
+HasApiVersion returns a boolean if a field has been set.
 
-### SetCryptographicKeyNil
+### GetCreatedTime
 
-`func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKeyNil(b bool)`
+`func (o *AdAccountCreateSubscriptionResponse) GetCreatedTime() int32`
 
- SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
+GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
 
-### UnsetCryptographicKey
-`func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicKey()`
+### GetCreatedTimeOk
 
-UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
+`func (o *AdAccountCreateSubscriptionResponse) GetCreatedTimeOk() (*int32, bool)`
+
+GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedTime
+
+`func (o *AdAccountCreateSubscriptionResponse) SetCreatedTime(v int32)`
+
+SetCreatedTime sets CreatedTime field to given value.
+
+### HasCreatedTime
+
+`func (o *AdAccountCreateSubscriptionResponse) HasCreatedTime() bool`
+
+HasCreatedTime returns a boolean if a field has been set.
+
 ### GetCryptographicAlgorithm
 
 `func (o *AdAccountCreateSubscriptionResponse) GetCryptographicAlgorithm() string`
@@ -123,30 +143,150 @@ HasCryptographicAlgorithm returns a boolean if a field has been set.
 `func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicAlgorithm()`
 
 UnsetCryptographicAlgorithm ensures that no value is present for CryptographicAlgorithm, not even an explicit nil
-### GetCreatedTime
+### GetCryptographicKey
 
-`func (o *AdAccountCreateSubscriptionResponse) GetCreatedTime() int32`
+`func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKey() string`
 
-GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
+GetCryptographicKey returns the CryptographicKey field if non-nil, zero value otherwise.
 
-### GetCreatedTimeOk
+### GetCryptographicKeyOk
 
-`func (o *AdAccountCreateSubscriptionResponse) GetCreatedTimeOk() (*int32, bool)`
+`func (o *AdAccountCreateSubscriptionResponse) GetCryptographicKeyOk() (*string, bool)`
 
-GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
+GetCryptographicKeyOk returns a tuple with the CryptographicKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedTime
+### SetCryptographicKey
 
-`func (o *AdAccountCreateSubscriptionResponse) SetCreatedTime(v int32)`
+`func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKey(v string)`
 
-SetCreatedTime sets CreatedTime field to given value.
+SetCryptographicKey sets CryptographicKey field to given value.
 
-### HasCreatedTime
+### HasCryptographicKey
 
-`func (o *AdAccountCreateSubscriptionResponse) HasCreatedTime() bool`
+`func (o *AdAccountCreateSubscriptionResponse) HasCryptographicKey() bool`
 
-HasCreatedTime returns a boolean if a field has been set.
+HasCryptographicKey returns a boolean if a field has been set.
+
+### SetCryptographicKeyNil
+
+`func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKeyNil(b bool)`
+
+ SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
+
+### UnsetCryptographicKey
+`func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicKey()`
+
+UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
+### GetId
+
+`func (o *AdAccountCreateSubscriptionResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AdAccountCreateSubscriptionResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AdAccountCreateSubscriptionResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *AdAccountCreateSubscriptionResponse) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetLeadFormId
+
+`func (o *AdAccountCreateSubscriptionResponse) GetLeadFormId() string`
+
+GetLeadFormId returns the LeadFormId field if non-nil, zero value otherwise.
+
+### GetLeadFormIdOk
+
+`func (o *AdAccountCreateSubscriptionResponse) GetLeadFormIdOk() (*string, bool)`
+
+GetLeadFormIdOk returns a tuple with the LeadFormId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLeadFormId
+
+`func (o *AdAccountCreateSubscriptionResponse) SetLeadFormId(v string)`
+
+SetLeadFormId sets LeadFormId field to given value.
+
+### HasLeadFormId
+
+`func (o *AdAccountCreateSubscriptionResponse) HasLeadFormId() bool`
+
+HasLeadFormId returns a boolean if a field has been set.
+
+### SetLeadFormIdNil
+
+`func (o *AdAccountCreateSubscriptionResponse) SetLeadFormIdNil(b bool)`
+
+ SetLeadFormIdNil sets the value for LeadFormId to be an explicit nil
+
+### UnsetLeadFormId
+`func (o *AdAccountCreateSubscriptionResponse) UnsetLeadFormId()`
+
+UnsetLeadFormId ensures that no value is present for LeadFormId, not even an explicit nil
+### GetUserAccountId
+
+`func (o *AdAccountCreateSubscriptionResponse) GetUserAccountId() string`
+
+GetUserAccountId returns the UserAccountId field if non-nil, zero value otherwise.
+
+### GetUserAccountIdOk
+
+`func (o *AdAccountCreateSubscriptionResponse) GetUserAccountIdOk() (*string, bool)`
+
+GetUserAccountIdOk returns a tuple with the UserAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserAccountId
+
+`func (o *AdAccountCreateSubscriptionResponse) SetUserAccountId(v string)`
+
+SetUserAccountId sets UserAccountId field to given value.
+
+### HasUserAccountId
+
+`func (o *AdAccountCreateSubscriptionResponse) HasUserAccountId() bool`
+
+HasUserAccountId returns a boolean if a field has been set.
+
+### GetWebhookUrl
+
+`func (o *AdAccountCreateSubscriptionResponse) GetWebhookUrl() string`
+
+GetWebhookUrl returns the WebhookUrl field if non-nil, zero value otherwise.
+
+### GetWebhookUrlOk
+
+`func (o *AdAccountCreateSubscriptionResponse) GetWebhookUrlOk() (*string, bool)`
+
+GetWebhookUrlOk returns a tuple with the WebhookUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookUrl
+
+`func (o *AdAccountCreateSubscriptionResponse) SetWebhookUrl(v string)`
+
+SetWebhookUrl sets WebhookUrl field to given value.
+
+### HasWebhookUrl
+
+`func (o *AdAccountCreateSubscriptionResponse) HasWebhookUrl() bool`
+
+HasWebhookUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

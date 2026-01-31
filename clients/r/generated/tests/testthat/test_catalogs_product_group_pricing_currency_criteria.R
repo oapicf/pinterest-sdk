@@ -5,20 +5,6 @@ context("Test CatalogsProductGroupPricingCurrencyCriteria")
 
 model_instance <- CatalogsProductGroupPricingCurrencyCriteria$new()
 
-test_that("operator", {
-  # tests for the property `operator` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`operator`, "EXPECTED_RESULT")
-})
-
-test_that("value", {
-  # tests for the property `value` (numeric)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
-})
-
 test_that("currency", {
   # tests for the property `currency` (NonNullableCatalogsCurrency)
 
@@ -31,4 +17,18 @@ test_that("negated", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`negated`, "EXPECTED_RESULT")
+})
+
+test_that("operator", {
+  # tests for the property `operator` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`operator`, "EXPECTED_RESULT")
+})
+
+test_that("value", {
+  # tests for the property `value` (numeric)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

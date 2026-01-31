@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TopVideoPinsAnalyticsResponsePinsInner, () {
-    // The metric name and daily value for each requested metric
-    // BuiltMap<String, num> metrics
-    test('to test the property `metrics`', () async {
+    // BuiltMap<String, DataStatus> dataStatus
+    test('to test the property `dataStatus`', () async {
       // TODO
     });
 
-    // BuiltMap<String, DataStatus> dataStatus
-    test('to test the property `dataStatus`', () async {
+    // The metric name and daily value for each requested metric
+    // BuiltMap<String, num> metrics
+    test('to test the property `metrics`', () async {
       // TODO
     });
 

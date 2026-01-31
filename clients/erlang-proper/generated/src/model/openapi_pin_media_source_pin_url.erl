@@ -9,8 +9,8 @@
 -export_type([openapi_pin_media_source_pin_url/0]).
 
 -type openapi_pin_media_source_pin_url() ::
-  [ {'source_type', binary() }
-  | {'is_affiliate_link', boolean() }
+  [ {'is_affiliate_link', boolean() }
+  | {'source_type', binary() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_pin_media_source_pin_url() ->
     openapi_pin_media_source_pin_url([]).
 
 openapi_pin_media_source_pin_url(Fields) ->
-  Default = [ {'source_type', elements([<<"pin_url">>]) }
-            , {'is_affiliate_link', boolean() }
+  Default = [ {'is_affiliate_link', boolean() }
+            , {'source_type', elements([<<"pin_url">>]) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

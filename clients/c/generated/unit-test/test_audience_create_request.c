@@ -27,16 +27,16 @@ audience_create_request_t* instantiate_audience_create_request(int include_optio
       "string",
        // false, not to have infinite recursion
       instantiate_audience_rule(0),
-      "string",
-      "ACTALIKE"
+      "ACTALIKE",
+      "string"
     );
   } else {
     audience_create_request = audience_create_request_create(
       "549755885175",
       "string",
       NULL,
-      "string",
-      "ACTALIKE"
+      "ACTALIKE",
+      "string"
     );
   }
 

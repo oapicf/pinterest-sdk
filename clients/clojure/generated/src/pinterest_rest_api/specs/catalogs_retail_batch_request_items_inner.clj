@@ -9,10 +9,11 @@
 
 (def catalogs-retail-batch-request-items-inner-data
   {
+   (ds/req :attributes) item-attributes-request-spec
    (ds/req :item_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) item-attributes-request-spec
    (ds/opt :update_mask) (s/coll-of update-mask-field-type-spec)
+   (ds/opt :last_updated_time) int?
    })
 
 (def catalogs-retail-batch-request-items-inner-spec

@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`exportStatus` | [LeadsExportStatus](LeadsExportStatus.md)
 `downloadUrl` | string
+`exportStatus` | [LeadsExportStatus](LeadsExportStatus.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { LeadsExportResponseData } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "exportStatus": null,
   "downloadUrl": null,
+  "exportStatus": null,
 } satisfies LeadsExportResponseData
 
 console.log(example)

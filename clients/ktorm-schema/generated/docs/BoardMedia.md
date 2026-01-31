@@ -1,11 +1,11 @@
 
-# Table `Board_media`
+# Table `BoardMedia`
 (mapped from: BoardMedia)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**imageCoverUrl** | image_cover_url | text |  | **kotlin.String** | Board cover image. |  [optional]
+**imageCoverUrl** | image_cover_url | text |  | **kotlin.String** | Board cover image |  [optional]
 **pinThumbnailUrls** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | Board pin thumbnail urls. |  [optional]
 
 

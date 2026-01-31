@@ -355,12 +355,12 @@ try {
 ## `boardsCreate()`
 
 ```php
-boardsCreate($board, $ad_account_id): \OpenAPI\Client\Model\Board
+boardsCreate($board_create, $ad_account_id): \OpenAPI\Client\Model\Board
 ```
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -372,6 +372,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -379,11 +382,11 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$board = new \OpenAPI\Client\Model\Board(); // \OpenAPI\Client\Model\Board | Create a board using a single board json object.
+$board_create = new \OpenAPI\Client\Model\BoardCreate(); // \OpenAPI\Client\Model\BoardCreate
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->boardsCreate($board, $ad_account_id);
+    $result = $apiInstance->boardsCreate($board_create, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardsCreate: ', $e->getMessage(), PHP_EOL;
@@ -394,7 +397,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **board** | [**\OpenAPI\Client\Model\Board**](../Model/Board.md)| Create a board using a single board json object. | |
+| **board_create** | [**\OpenAPI\Client\Model\BoardCreate**](../Model/BoardCreate.md)|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -403,7 +406,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -422,7 +425,7 @@ boardsDelete($board_id, $ad_account_id)
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -441,7 +444,7 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$board_id = 'board_id_example'; // string | Unique identifier of a board.
+$board_id = 'board_id_example'; // string
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
@@ -455,7 +458,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **board_id** | **string**| Unique identifier of a board. | |
+| **board_id** | **string**|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -483,7 +486,7 @@ boardsGet($board_id, $ad_account_id): \OpenAPI\Client\Model\Board
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -505,7 +508,7 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$board_id = 'board_id_example'; // string | Unique identifier of a board.
+$board_id = 'board_id_example'; // string
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
@@ -520,7 +523,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **board_id** | **string**| Unique identifier of a board. | |
+| **board_id** | **string**|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -543,12 +546,12 @@ try {
 ## `boardsList()`
 
 ```php
-boardsList($ad_account_id, $bookmark, $page_size, $privacy): \OpenAPI\Client\Model\BoardsList200Response
+boardsList($ad_account_id, $privacy, $bookmark, $page_size): \OpenAPI\Client\Model\BoardsList200Response
 ```
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 
@@ -571,12 +574,12 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
+$privacy = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\BoardPrivacyFilter(); // \OpenAPI\Client\Model\BoardPrivacyFilter | The privacy level of the board
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$privacy = 'privacy_example'; // string | Privacy setting for a board.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->boardsList($ad_account_id, $bookmark, $page_size, $privacy);
+    $result = $apiInstance->boardsList($ad_account_id, $privacy, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardsList: ', $e->getMessage(), PHP_EOL;
@@ -588,9 +591,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
+| **privacy** | [**\OpenAPI\Client\Model\BoardPrivacyFilter**](../Model/.md)| The privacy level of the board | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **privacy** | **string**| Privacy setting for a board. | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -642,9 +645,9 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
 $page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$creative_types = array('creative_types_example'); // string[] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+$creative_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\CreativeType()); // \OpenAPI\Client\Model\CreativeType[] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$pin_metrics = false; // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+$pin_metrics = false; // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 try {
     $result = $apiInstance->boardsListPins($board_id, $bookmark, $page_size, $creative_types, $ad_account_id, $pin_metrics);
@@ -661,9 +664,9 @@ try {
 | **board_id** | **string**| Unique identifier of a board. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
 | **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **creative_types** | [**string[]**](../Model/string.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
+| **creative_types** | [**\OpenAPI\Client\Model\CreativeType[]**](../Model/\OpenAPI\Client\Model\CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
-| **pin_metrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **pin_metrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
 
 ### Return type
 
@@ -685,12 +688,12 @@ try {
 ## `boardsUpdate()`
 
 ```php
-boardsUpdate($board_id, $board_update, $ad_account_id): \OpenAPI\Client\Model\Board
+boardsUpdate($board_id, $board_with_update_privacy_update, $ad_account_id): \OpenAPI\Client\Model\BoardWithUpdatePrivacy
 ```
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -702,6 +705,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -709,12 +715,12 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$board_id = 'board_id_example'; // string | Unique identifier of a board.
-$board_update = new \OpenAPI\Client\Model\BoardUpdate(); // \OpenAPI\Client\Model\BoardUpdate | Update a board.
+$board_id = 'board_id_example'; // string
+$board_with_update_privacy_update = new \OpenAPI\Client\Model\BoardWithUpdatePrivacyUpdate(); // \OpenAPI\Client\Model\BoardWithUpdatePrivacyUpdate
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->boardsUpdate($board_id, $board_update, $ad_account_id);
+    $result = $apiInstance->boardsUpdate($board_id, $board_with_update_privacy_update, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardsUpdate: ', $e->getMessage(), PHP_EOL;
@@ -725,17 +731,17 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **board_id** | **string**| Unique identifier of a board. | |
-| **board_update** | [**\OpenAPI\Client\Model\BoardUpdate**](../Model/BoardUpdate.md)| Update a board. | |
+| **board_id** | **string**|  | |
+| **board_with_update_privacy_update** | [**\OpenAPI\Client\Model\BoardWithUpdatePrivacyUpdate**](../Model/BoardWithUpdatePrivacyUpdate.md)|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\Board**](../Model/Board.md)
+[**\OpenAPI\Client\Model\BoardWithUpdatePrivacy**](../Model/BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,13 +20,14 @@ import (
 // checks if the PinMediaSourceImageBase64 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PinMediaSourceImageBase64{}
 
-// PinMediaSourceImageBase64 Base64-encoded image media source
+// PinMediaSourceImageBase64 Image Base64-based media source.
 type PinMediaSourceImageBase64 struct {
-	SourceType string `json:"source_type"`
-	ContentType string `json:"content_type"`
-	Data string `json:"data" validate:"regexp=[a-zA-Z0-9+\\/=]+"`
+	ContentType ContentType `json:"content_type"`
+	Data string `json:"data" validate:"regexp=^[a-zA-Z0-9+\\/=]+$"`
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard *bool `json:"is_standard,omitempty"`
+	// The source type of the media.
+	SourceType string `json:"source_type"`
 }
 
 type _PinMediaSourceImageBase64 PinMediaSourceImageBase64
@@ -35,13 +36,13 @@ type _PinMediaSourceImageBase64 PinMediaSourceImageBase64
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPinMediaSourceImageBase64(sourceType string, contentType string, data string) *PinMediaSourceImageBase64 {
+func NewPinMediaSourceImageBase64(contentType ContentType, data string, sourceType string) *PinMediaSourceImageBase64 {
 	this := PinMediaSourceImageBase64{}
-	this.SourceType = sourceType
 	this.ContentType = contentType
 	this.Data = data
 	var isStandard bool = true
 	this.IsStandard = &isStandard
+	this.SourceType = sourceType
 	return &this
 }
 
@@ -55,34 +56,10 @@ func NewPinMediaSourceImageBase64WithDefaults() *PinMediaSourceImageBase64 {
 	return &this
 }
 
-// GetSourceType returns the SourceType field value
-func (o *PinMediaSourceImageBase64) GetSourceType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SourceType
-}
-
-// GetSourceTypeOk returns a tuple with the SourceType field value
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourceImageBase64) GetSourceTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SourceType, true
-}
-
-// SetSourceType sets field value
-func (o *PinMediaSourceImageBase64) SetSourceType(v string) {
-	o.SourceType = v
-}
-
 // GetContentType returns the ContentType field value
-func (o *PinMediaSourceImageBase64) GetContentType() string {
+func (o *PinMediaSourceImageBase64) GetContentType() ContentType {
 	if o == nil {
-		var ret string
+		var ret ContentType
 		return ret
 	}
 
@@ -91,7 +68,7 @@ func (o *PinMediaSourceImageBase64) GetContentType() string {
 
 // GetContentTypeOk returns a tuple with the ContentType field value
 // and a boolean to check if the value has been set.
-func (o *PinMediaSourceImageBase64) GetContentTypeOk() (*string, bool) {
+func (o *PinMediaSourceImageBase64) GetContentTypeOk() (*ContentType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,7 +76,7 @@ func (o *PinMediaSourceImageBase64) GetContentTypeOk() (*string, bool) {
 }
 
 // SetContentType sets field value
-func (o *PinMediaSourceImageBase64) SetContentType(v string) {
+func (o *PinMediaSourceImageBase64) SetContentType(v ContentType) {
 	o.ContentType = v
 }
 
@@ -159,6 +136,30 @@ func (o *PinMediaSourceImageBase64) SetIsStandard(v bool) {
 	o.IsStandard = &v
 }
 
+// GetSourceType returns the SourceType field value
+func (o *PinMediaSourceImageBase64) GetSourceType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SourceType
+}
+
+// GetSourceTypeOk returns a tuple with the SourceType field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceImageBase64) GetSourceTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceType, true
+}
+
+// SetSourceType sets field value
+func (o *PinMediaSourceImageBase64) SetSourceType(v string) {
+	o.SourceType = v
+}
+
 func (o PinMediaSourceImageBase64) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -169,12 +170,12 @@ func (o PinMediaSourceImageBase64) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaSourceImageBase64) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["source_type"] = o.SourceType
 	toSerialize["content_type"] = o.ContentType
 	toSerialize["data"] = o.Data
 	if !IsNil(o.IsStandard) {
 		toSerialize["is_standard"] = o.IsStandard
 	}
+	toSerialize["source_type"] = o.SourceType
 	return toSerialize, nil
 }
 
@@ -183,9 +184,9 @@ func (o *PinMediaSourceImageBase64) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"source_type",
 		"content_type",
 		"data",
+		"source_type",
 	}
 
 	allProperties := make(map[string]interface{})

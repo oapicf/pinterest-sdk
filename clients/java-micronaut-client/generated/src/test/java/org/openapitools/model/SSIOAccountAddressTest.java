@@ -20,22 +20,6 @@ public class SSIOAccountAddressTest {
     }
 
     /**
-     * Test the property 'display'
-     */
-    @Test
-    public void displayTest() {
-        // TODO: test display
-    }
-
-    /**
-     * Test the property 'purpose'
-     */
-    @Test
-    public void purposeTest() {
-        // TODO: test purpose
-    }
-
-    /**
      * Test the property 'addressId'
      */
     @Test
@@ -44,11 +28,27 @@ public class SSIOAccountAddressTest {
     }
 
     /**
+     * Test the property 'display'
+     */
+    @Test
+    public void displayTest() {
+        // TODO: test display
+    }
+
+    /**
      * Test the property 'orderLegalEntity'
      */
     @Test
     public void orderLegalEntityTest() {
         // TODO: test orderLegalEntity
+    }
+
+    /**
+     * Test the property 'purpose'
+     */
+    @Test
+    public void purposeTest() {
+        // TODO: test purpose
     }
 
 }

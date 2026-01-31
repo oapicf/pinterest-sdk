@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsUpdateCreativeAssetsItem._
 
 case class CatalogsUpdateCreativeAssetsItem (
-  /* The catalog creative assets item id in the merchant namespace */
+  attributes: CatalogsUpdatableCreativeAssetsAttributes,
+/* The catalog creative assets item id in the merchant namespace */
   creativeAssetsId: String,
-operation: Operation,
-attributes: CatalogsUpdatableCreativeAssetsAttributes)
+operation: Operation)
 
 object CatalogsUpdateCreativeAssetsItem {
   import DateTimeCodecs._

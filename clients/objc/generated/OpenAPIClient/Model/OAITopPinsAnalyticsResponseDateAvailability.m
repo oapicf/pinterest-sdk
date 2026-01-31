@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"latestAvailableTimestamp": @"latest_available_timestamp", @"isRealtime": @"is_realtime" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"isRealtime": @"is_realtime", @"latestAvailableTimestamp": @"latest_available_timestamp" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"latestAvailableTimestamp", @"isRealtime"];
+  NSArray *optionalProperties = @[@"isRealtime", @"latestAvailableTimestamp"];
   return [optionalProperties containsObject:propertyName];
 }
 

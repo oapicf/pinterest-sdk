@@ -10,9 +10,9 @@ type AudienceCreateRequest struct {
 
 	Rule AudienceRule `json:"rule"`
 
-	// Audience description.
-	Description string `json:"description,omitempty"`
-
 	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 	AudienceType AudienceType `json:"audience_type"`
+
+	// Audience description.
+	Description string `json:"description,omitempty"`
 }

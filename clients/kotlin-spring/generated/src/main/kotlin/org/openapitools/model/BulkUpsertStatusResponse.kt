@@ -18,17 +18,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * ID of the bulk request.
- * @param status 
  * @param resultUrl 
+ * @param status 
  */
 data class BulkUpsertStatusResponse(
 
+    @Schema(example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", description = "")
+    @get:JsonProperty("result_url") val resultUrl: kotlin.String? = null,
+
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: BulkUpsertStatus? = null,
-
-    @Schema(example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", description = "")
-    @get:JsonProperty("result_url") val resultUrl: kotlin.String? = null
+    @get:JsonProperty("status") val status: BulkUpsertStatus? = null
 ) {
 
 }

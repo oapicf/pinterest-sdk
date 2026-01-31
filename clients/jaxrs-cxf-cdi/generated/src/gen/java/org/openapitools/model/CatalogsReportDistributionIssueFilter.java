@@ -15,6 +15,8 @@ import java.util.Objects;
 
 public class CatalogsReportDistributionIssueFilter   {
   
+  private String catalogId;
+
 
 public enum ReportTypeEnum {
 
@@ -48,7 +50,24 @@ public enum ReportTypeEnum {
 
   private ReportTypeEnum reportType;
 
-  private String catalogId;
+  /**
+   * Unique identifier of a catalog. If not given, oldest catalog will be used
+   **/
+  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
 
   /**
    **/
@@ -69,25 +88,6 @@ public enum ReportTypeEnum {
   }
 
 
-  /**
-   * Unique identifier of a catalog. If not given, oldest catalog will be used
-   **/
-  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -98,13 +98,13 @@ public enum ReportTypeEnum {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
@@ -112,8 +112,8 @@ public enum ReportTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

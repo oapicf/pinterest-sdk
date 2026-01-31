@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **string** | Whether the event was processed successfully. | 
 **ErrorMessage** | Pointer to **NullableString** | Error message containing more information about why the event failed to be processed. | [optional] 
+**Status** | **string** | Whether the event was processed successfully. | 
 **WarningMessage** | Pointer to **NullableString** | Warning messages about any fields in the event which are not standard. These are not critical to event processing. | [optional] 
 
 ## Methods
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewConversionApiResponseEventsInnerWithDefaults instantiates a new ConversionApiResponseEventsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetStatus
-
-`func (o *ConversionApiResponseEventsInner) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *ConversionApiResponseEventsInner) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *ConversionApiResponseEventsInner) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
 
 ### GetErrorMessage
 
@@ -82,6 +62,26 @@ HasErrorMessage returns a boolean if a field has been set.
 `func (o *ConversionApiResponseEventsInner) UnsetErrorMessage()`
 
 UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
+### GetStatus
+
+`func (o *ConversionApiResponseEventsInner) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ConversionApiResponseEventsInner) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ConversionApiResponseEventsInner) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+
 ### GetWarningMessage
 
 `func (o *ConversionApiResponseEventsInner) GetWarningMessage() string`

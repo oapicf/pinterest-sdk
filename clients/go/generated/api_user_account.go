@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -210,7 +210,7 @@ func (r ApiFollowUserUpdateRequest) Execute() (*UserSummary, *http.Response, err
 /*
 FollowUserUpdate Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 Use this request, as a signed-in user, to follow another user.
 
@@ -1519,6 +1519,8 @@ Get a list of a user's following interests in one place.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username A valid username
  @return ApiUserAccountFollowedInterestsRequest
+
+Deprecated
 */
 func (a *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context, username string) ApiUserAccountFollowedInterestsRequest {
 	return ApiUserAccountFollowedInterestsRequest{
@@ -1530,6 +1532,7 @@ func (a *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context
 
 // Execute executes the request
 //  @return UserAccountFollowedInterests200Response
+// Deprecated
 func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAccountFollowedInterestsRequest) (*UserAccountFollowedInterests200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

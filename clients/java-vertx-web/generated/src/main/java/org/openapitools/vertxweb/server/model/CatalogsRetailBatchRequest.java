@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailBatchRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -36,6 +37,7 @@ public class CatalogsRetailBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -161,17 +163,26 @@ public class CatalogsRetailBatchRequest   {
   }
 
   private LanguageEnum language;
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
   public CatalogsRetailBatchRequest () {
 
   }
 
-  public CatalogsRetailBatchRequest (CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest (String catalogId, CatalogTypeEnum catalogType, Country country, List<CatalogsRetailBatchRequestItemsInner> items, LanguageEnum language) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.country = country;
-    this.language = language;
     this.items = items;
+    this.language = language;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
     
@@ -193,21 +204,21 @@ public class CatalogsRetailBatchRequest   {
   }
 
     
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-    
   @JsonProperty("items")
   public List<CatalogsRetailBatchRequestItemsInner> getItems() {
     return items;
   }
   public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
     this.items = items;
+  }
+
+    
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -220,15 +231,16 @@ public class CatalogsRetailBatchRequest   {
       return false;
     }
     CatalogsRetailBatchRequest catalogsRetailBatchRequest = (CatalogsRetailBatchRequest) o;
-    return Objects.equals(catalogType, catalogsRetailBatchRequest.catalogType) &&
+    return Objects.equals(catalogId, catalogsRetailBatchRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsRetailBatchRequest.catalogType) &&
         Objects.equals(country, catalogsRetailBatchRequest.country) &&
-        Objects.equals(language, catalogsRetailBatchRequest.language) &&
-        Objects.equals(items, catalogsRetailBatchRequest.items);
+        Objects.equals(items, catalogsRetailBatchRequest.items) &&
+        Objects.equals(language, catalogsRetailBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -236,10 +248,11 @@ public class CatalogsRetailBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

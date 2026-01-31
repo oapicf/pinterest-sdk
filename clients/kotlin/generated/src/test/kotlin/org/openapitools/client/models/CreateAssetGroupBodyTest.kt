@@ -26,16 +26,16 @@ class CreateAssetGroupBodyTest : ShouldSpec() {
         // uncomment below to create an instance of CreateAssetGroupBody
         //val modelInstance = CreateAssetGroupBody()
 
-        // to test the property `assetGroupName` - Asset Group name
-        should("test assetGroupName") {
-            // uncomment below to test the property
-            //modelInstance.assetGroupName shouldBe ("TODO")
-        }
-
         // to test the property `assetGroupDescription` - Asset group description
         should("test assetGroupDescription") {
             // uncomment below to test the property
             //modelInstance.assetGroupDescription shouldBe ("TODO")
+        }
+
+        // to test the property `assetGroupName` - Asset Group name
+        should("test assetGroupName") {
+            // uncomment below to test the property
+            //modelInstance.assetGroupName shouldBe ("TODO")
         }
 
         // to test the property `assetGroupTypes` - Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.

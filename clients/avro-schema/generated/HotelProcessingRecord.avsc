@@ -5,12 +5,6 @@
   "name": "HotelProcessingRecord",
   "fields": [
     {
-      "name": "hotel_id",
-      "type": ["null", "string"],
-      "doc": "The catalog hotel id in the merchant namespace",
-      "default": null
-    },
-    {
       "name": "errors",
       "type": ["null", {
         "type": "array",
@@ -20,18 +14,24 @@
       "default": null
     },
     {
-      "name": "warnings",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.ItemValidationEvent"
-      }],
-      "doc": "Array with the validation warnings for the item processing record",
+      "name": "hotel_id",
+      "type": ["null", "string"],
+      "doc": "The catalog hotel id in the merchant namespace",
       "default": null
     },
     {
       "name": "status",
       "type": ["null", "model.ItemProcessingStatus"],
       "doc": "",
+      "default": null
+    },
+    {
+      "name": "warnings",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ItemValidationEvent"
+      }],
+      "doc": "Array with the validation warnings for the item processing record",
       "default": null
     }
   ]

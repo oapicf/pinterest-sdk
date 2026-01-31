@@ -1,16 +1,16 @@
 
 # ItemResponse
 
-Object describing an item record
+Object describing an item record or error
 
 ## Properties
 
 Name | Type
 ------------ | -------------
 `catalogType` | [CatalogsType](CatalogsType.md)
+`attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
 `itemId` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
-`attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
 `hotelId` | string
 `creativeAssetsId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
@@ -23,9 +23,9 @@ import type { ItemResponse } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
+  "attributes": null,
   "itemId": DS0294-M,
   "pins": null,
-  "attributes": null,
   "hotelId": DS0294-M,
   "creativeAssetsId": DS0294-M,
   "errors": null,

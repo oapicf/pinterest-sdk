@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Country = openapi_server.resourceTypes.Country
+  Currency = openapi_server.resourceTypes.Currency
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdAccountCreate {
+    title = AdAccountCreate
+    description = AdAccountCreate
+    derivedFrom = Root
+    properties {
+        country {
+          type = Country
+          description = ""
+          optional = false
+        }
+        currency {
+          type = Currency
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Ad account name."
+          optional = false
+        }
+        owner_user_id {
+          type =  string
+          description = "Advertiser&#39;s owning user ID."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountCreate {
+    title = AdAccountCreate
+    description = AdAccountCreate
+    implements = openapi_server.resourceTypes.AdAccountCreate
+
+  }
+}

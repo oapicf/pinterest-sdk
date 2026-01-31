@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -244,6 +244,7 @@ func (s *UserAccountAPIService) WebsiteVerificationGet(ctx context.Context, adAc
 }
 
 // UserAccountFollowedInterests - List following interests
+// Deprecated
 func (s *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context, username string, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update UserAccountFollowedInterests with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.

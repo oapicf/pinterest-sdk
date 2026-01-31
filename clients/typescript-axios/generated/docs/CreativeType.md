@@ -1,6 +1,6 @@
 # CreativeType
 
-Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 
 ## Enum
 
@@ -23,5 +23,11 @@ Ad creative type enum. For update, only draft ads may update creative type. </p>
 * `Showcase` (value: `'SHOWCASE'`)
 
 * `Quiz` (value: `'QUIZ'`)
+
+* `Collage` (value: `'COLLAGE'`)
+
+* `MaxWidthRegularCollection` (value: `'MAX_WIDTH_REGULAR_COLLECTION'`)
+
+* `MaxWidthVideoCollection` (value: `'MAX_WIDTH_VIDEO_COLLECTION'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

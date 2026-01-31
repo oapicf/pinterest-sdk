@@ -1,0 +1,104 @@
+package org.openapitools.model;
+
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CustomizableCTAType;
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+
+/**
+ * Model tests for AdPreviewShopping
+ */
+@MicronautTest
+public class AdPreviewShoppingTest {
+    private final AdPreviewShopping model = null;
+
+    /**
+     * Model tests for AdPreviewShopping
+     */
+    @Test
+    public void testAdPreviewShopping() {
+        // TODO: test AdPreviewShopping
+    }
+
+    /**
+     * Test the property 'catalogProductGroupId'
+     */
+    @Test
+    public void catalogProductGroupIdTest() {
+        // TODO: test catalogProductGroupId
+    }
+
+    /**
+     * Test the property 'creativeType'
+     */
+    @Test
+    public void creativeTypeTest() {
+        // TODO: test creativeType
+    }
+
+    /**
+     * Test the property 'customizableCtaType'
+     */
+    @Test
+    public void customizableCtaTypeTest() {
+        // TODO: test customizableCtaType
+    }
+
+    /**
+     * Test the property 'heroImageTitle'
+     */
+    @Test
+    public void heroImageTitleTest() {
+        // TODO: test heroImageTitle
+    }
+
+    /**
+     * Test the property 'heroImageUrl'
+     */
+    @Test
+    public void heroImageUrlTest() {
+        // TODO: test heroImageUrl
+    }
+
+    /**
+     * Test the property 'heroPinId'
+     */
+    @Test
+    public void heroPinIdTest() {
+        // TODO: test heroPinId
+    }
+
+    /**
+     * Test the property 'imageTag'
+     */
+    @Test
+    public void imageTagTest() {
+        // TODO: test imageTag
+    }
+
+    /**
+     * Test the property 'itemId'
+     */
+    @Test
+    public void itemIdTest() {
+        // TODO: test itemId
+    }
+
+    /**
+     * Test the property 'preferredMediaType'
+     */
+    @Test
+    public void preferredMediaTypeTest() {
+        // TODO: test preferredMediaType
+    }
+
+    /**
+     * Test the property 'videoTag'
+     */
+    @Test
+    public void videoTagTest() {
+        // TODO: test videoTag
+    }
+
+}

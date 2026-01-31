@@ -5,6 +5,13 @@ context("Test CatalogsRetailBatchRequestItemsInner")
 
 model_instance <- CatalogsRetailBatchRequestItemsInner$new()
 
+test_that("attributes", {
+  # tests for the property `attributes` (ItemAttributesRequest)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
+})
+
 test_that("item_id", {
   # tests for the property `item_id` (character)
   # The catalog item id in the merchant namespace
@@ -20,17 +27,18 @@ test_that("operation", {
   #expect_equal(model.instance$`operation`, "EXPECTED_RESULT")
 })
 
-test_that("attributes", {
-  # tests for the property `attributes` (ItemAttributesRequest)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
-})
-
 test_that("update_mask", {
   # tests for the property `update_mask` (array[UpdateMaskFieldType])
   # The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`update_mask`, "EXPECTED_RESULT")
+})
+
+test_that("last_updated_time", {
+  # tests for the property `last_updated_time` (integer)
+  # The millisecond timestamp when the item was lastly modified by the merchant.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`last_updated_time`, "EXPECTED_RESULT")
 })

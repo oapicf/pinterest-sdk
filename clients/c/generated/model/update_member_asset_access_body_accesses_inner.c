@@ -5,13 +5,13 @@
 
 
 char* update_member_asset_access_body_accesses_inner_permissions_ToString(pinterest_rest_api_update_member_asset_access_body_accesses_inner__e permissions) {
-    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     return permissionsArray[permissions - 1];
 }
 
 pinterest_rest_api_update_member_asset_access_body_accesses_inner__e update_member_asset_access_body_accesses_inner_permissions_FromString(char* permissions) {
     int stringToReturn = 0;
-    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *permissionsArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     size_t sizeofArray = sizeof(permissionsArray) / sizeof(permissionsArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(permissions, permissionsArray[stringToReturn]) == 0) {

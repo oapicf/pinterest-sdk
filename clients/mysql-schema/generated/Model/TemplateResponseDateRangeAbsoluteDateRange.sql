@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TemplateResponse_date_range_absolute_date_range`
 --
-SELECT `type`, `start_date`, `end_date` FROM `TemplateResponse_date_range_absolute_date_range` WHERE 1;
+SELECT `end_date`, `start_date`, `type` FROM `TemplateResponse_date_range_absolute_date_range` WHERE 1;
 
 --
 -- INSERT template for table `TemplateResponse_date_range_absolute_date_range`
 --
-INSERT INTO `TemplateResponse_date_range_absolute_date_range`(`type`, `start_date`, `end_date`) VALUES (?, ?, ?);
+INSERT INTO `TemplateResponse_date_range_absolute_date_range`(`end_date`, `start_date`, `type`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `TemplateResponse_date_range_absolute_date_range`
 --
-UPDATE `TemplateResponse_date_range_absolute_date_range` SET `type` = ?, `start_date` = ?, `end_date` = ? WHERE 1;
+UPDATE `TemplateResponse_date_range_absolute_date_range` SET `end_date` = ?, `start_date` = ?, `type` = ? WHERE 1;
 
 --
 -- DELETE template for table `TemplateResponse_date_range_absolute_date_range`

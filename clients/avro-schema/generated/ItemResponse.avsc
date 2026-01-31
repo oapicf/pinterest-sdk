@@ -1,13 +1,19 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Object describing an item record",
+  "doc": "Object describing an item record or error",
   "name": "ItemResponse",
   "fields": [
     {
       "name": "catalog_type",
       "type": "model.CatalogsType",
       "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": ["null", "model.CatalogsCreativeAssetsAttributes"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "item_id",
@@ -25,12 +31,6 @@
       "default": null
     },
     {
-      "name": "attributes",
-      "type": ["null", "model.CatalogsCreativeAssetsAttributes"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "hotel_id",
       "type": ["null", "string"],
       "doc": "The catalog hotel id in the merchant namespace",
@@ -44,12 +44,11 @@
     },
     {
       "name": "errors",
-      "type": ["null", {
+      "type": {
         "type": "array",
         "items": "model.ItemValidationEvent"
-      }],
-      "doc": "Array with the errors for the item id requested",
-      "default": null
+      },
+      "doc": "Array with the errors for the item id requested"
     }
   ]
 

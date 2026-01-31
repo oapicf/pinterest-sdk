@@ -53,6 +53,7 @@ feature -- Test routines
         do
             -- TODO: Initialize required params.
             -- l_external_business_id
+            -- l_integration_request_patch
 
             -- l_response := api.integrations_commerce_patch(l_external_business_id, l_integration_request_patch)
             assert ("not_implemented", False)
@@ -67,6 +68,7 @@ feature -- Test routines
             l_integration_request: INTEGRATION_REQUEST
         do
             -- TODO: Initialize required params.
+            -- l_integration_request
 
             -- l_response := api.integrations_commerce_post(l_integration_request)
             assert ("not_implemented", False)

@@ -1,9 +1,9 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.PinsList200Response
 import org.openapitools.server.api.model.SearchPartnerPins200Response
 import org.openapitools.server.api.model.SearchUserBoardsGet200Response
+import org.openapitools.server.api.model.SearchUserPinsList200Response
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -28,7 +28,7 @@ interface SearchApi  {
     suspend fun searchUserBoardsGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,query:kotlin.String?,context:OperationRequest):Response<SearchUserBoardsGet200Response>
     /* searchUserPinsList
      * Search user&#39;s Pins */
-    suspend fun searchUserPinsList(query:kotlin.String?,adAccountId:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<PinsList200Response>
+    suspend fun searchUserPinsList(query:kotlin.String?,adAccountId:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<SearchUserPinsList200Response>
     companion object {
         const val address = "SearchApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

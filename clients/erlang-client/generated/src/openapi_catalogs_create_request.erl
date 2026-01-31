@@ -5,7 +5,7 @@
 -export_type([openapi_catalogs_create_request/0]).
 
 -type openapi_catalogs_create_request() ::
-    #{ 'catalog_type' := binary(),
+    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'name' := binary()
      }.
 

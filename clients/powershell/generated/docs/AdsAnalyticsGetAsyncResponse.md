@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReportStatus** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] 
-**Url** | **String** |  | [optional] 
 **Size** | **Decimal** |  | [optional] 
+**Url** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $AdsAnalyticsGetAsyncResponse = Initialize-PSOpenAPIToolsAdsAnalyticsGetAsyncResponse  -ReportStatus null `
- -Url null `
- -Size null
+ -Size null `
+ -Url null
 ```
 
 - Convert the resource to JSON

@@ -1,8 +1,8 @@
 const samples = require('../samples/MediaApi');
-const Error = require('../models/Error');
+const Media = require('../models/Media');
 const MediaUpload = require('../models/MediaUpload');
-const MediaUploadDetails = require('../models/MediaUploadDetails');
-const MediaUploadRequest = require('../models/MediaUploadRequest');
+const MediaUploadCreate = require('../models/MediaUploadCreate');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const media_list_200_response = require('../models/media_list_200_response');
 const utils = require('../utils/utils');
 
@@ -12,12 +12,12 @@ module.exports = {
         noun: 'media',
         display: {
             label: 'Register media upload',
-            description: 'Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.',
+            description: 'Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.',
             hidden: false,
         },
         operation: {
             inputFields: [
-                ...MediaUploadRequest.fields(),
+                ...MediaUploadCreate.fields(),
             ],
             outputFields: [
                 ...MediaUpload.fields('', false),
@@ -34,7 +34,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...MediaUploadRequest.mapping(bundle),
+                        ...MediaUploadCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -43,7 +43,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['MediaUploadSample']
+            sample: samples['MediaUploadSample']samples['MediaUploadSample']
         }
     },
     media/get: {
@@ -51,20 +51,20 @@ module.exports = {
         noun: 'media',
         display: {
             label: 'Get media upload details',
-            description: 'Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.',
+            description: 'Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'media_id',
-                    label: 'Media identifier',
+                    label: 'Unique identifier for this media upload. Used to track status and for attaching during Pin creation.',
                     type: 'string',
                     required: true,
                 },
             ],
             outputFields: [
-                ...MediaUploadDetails.fields('', false),
+                ...Media.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -86,7 +86,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['MediaUploadDetailsSample']
+            sample: samples['MediaSample']
         }
     },
     media/list: {
@@ -94,7 +94,7 @@ module.exports = {
         noun: 'media',
         display: {
             label: 'List media uploads',
-            description: 'List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.',
+            description: 'List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.',
             hidden: false,
         },
         operation: {
@@ -106,7 +106,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],

@@ -14,8 +14,8 @@ import java.util.HashMap
 import CampaignsAnalyticsResponseInner._
 
 case class CampaignsAnalyticsResponseInner (
-  /* The ID of the campaing that this metrics belongs to. */
-  CAMPAIGN_ID: String,
+  /* The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true. */
+  CAMPAIGN_ID: Option[String],
 /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
   DATE: Option[LocalDate])
 

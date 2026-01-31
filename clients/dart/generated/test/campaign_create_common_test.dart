@@ -22,14 +22,27 @@ void main() {
       // TODO
     });
 
-    // Campaign name.
-    // String name
-    test('to test the property `name`', () async {
+    // Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+    // int dailySpendCap
+    test('to test the property `dailySpendCap`', () async {
       // TODO
     });
 
-    // EntityStatus status
-    test('to test the property `status`', () async {
+    // Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+    // int endTime
+    test('to test the property `endTime`', () async {
+      // TODO
+    });
+
+    // Specifies whether the campaign was created in the automated campaign flow
+    // bool isAutomatedCampaign
+    test('to test the property `isAutomatedCampaign`', () async {
+      // TODO
+    });
+
+    // Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+    // bool isFlexibleDailyBudgets
+    test('to test the property `isFlexibleDailyBudgets`', () async {
       // TODO
     });
 
@@ -39,9 +52,9 @@ void main() {
       // TODO
     });
 
-    // Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-    // int dailySpendCap
-    test('to test the property `dailySpendCap`', () async {
+    // Campaign name.
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 
@@ -51,26 +64,19 @@ void main() {
       // TODO
     });
 
-    // TrackingUrls trackingUrls
-    test('to test the property `trackingUrls`', () async {
-      // TODO
-    });
-
-    // Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+    // Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
     // int startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-    // int endTime
-    test('to test the property `endTime`', () async {
+    // EntityStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 
-    // Determine if a campaign has flexible daily budgets setup.
-    // bool isFlexibleDailyBudgets
-    test('to test the property `isFlexibleDailyBudgets`', () async {
+    // TrackingUrls trackingUrls
+    test('to test the property `trackingUrls`', () async {
       // TODO
     });
 
@@ -80,9 +86,9 @@ void main() {
       // TODO
     });
 
-    // Specifies whether the campaign was created in the automated campaign flow
-    // bool isAutomatedCampaign
-    test('to test the property `isAutomatedCampaign`', () async {
+    // Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+    // bool isCampaignBudgetOptimization
+    test('to test the property `isCampaignBudgetOptimization`', () async {
       // TODO
     });
 

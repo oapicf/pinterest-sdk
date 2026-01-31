@@ -8,12 +8,112 @@ const MembersToDeleteBody = require('../models/MembersToDeleteBody');
 const PartnerType = require('../models/PartnerType');
 const UpdateMemberBusinessRoleBody = require('../models/UpdateMemberBusinessRoleBody');
 const UpdateMemberResultsResponseArray = require('../models/UpdateMemberResultsResponseArray');
+const brand_accounts_create_200_response = require('../models/brand_accounts_create_200_response');
+const brand_accounts_create_request = require('../models/brand_accounts_create_request');
+const brand_accounts_update_request = require('../models/brand_accounts_update_request');
 const get_business_employers_200_response = require('../models/get_business_employers_200_response');
 const get_business_members_200_response = require('../models/get_business_members_200_response');
 const get_business_partners_200_response = require('../models/get_business_partners_200_response');
+const system_user_update_request = require('../models/system_user_update_request');
 const utils = require('../utils/utils');
 
 module.exports = {
+    brandAccounts/create: {
+        key: 'brandAccounts/create',
+        noun: 'business_access_relationships',
+        display: {
+            label: 'Create a Brand Account',
+            description: 'Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'business_hierarchy_id',
+                    label: 'business hierarchy node id',
+                    type: 'string',
+                    required: true,
+                },
+                ...brand_accounts_create_request.fields(),
+            ],
+            outputFields: [
+                ...brand_accounts_create_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts'),
+                    method: 'POST',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...brand_accounts_create_request.mapping(bundle),
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'brandAccounts/create', response.json);
+                    return results;
+                })
+            },
+            sample: samples['brand_accounts_create_200_responseSample']
+        }
+    },
+    brandAccounts/update: {
+        key: 'brandAccounts/update',
+        noun: 'business_access_relationships',
+        display: {
+            label: 'Update a Brand Account',
+            description: 'Update an existing Brand Account',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'business_hierarchy_id',
+                    label: 'business hierarchy node id',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'brand_account_id',
+                    label: 'Unique identifier of a brand account.',
+                    type: 'string',
+                    required: true,
+                },
+                ...brand_accounts_update_request.fields(),
+            ],
+            outputFields: [
+                ...brand_accounts_create_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'),
+                    method: 'PATCH',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...brand_accounts_update_request.mapping(bundle),
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'brandAccounts/update', response.json);
+                    return results;
+                })
+            },
+            sample: samples['brand_accounts_create_200_responseSample']
+        }
+    },
     deleteBusinessMembership: {
         key: 'deleteBusinessMembership',
         noun: 'business_access_relationships',
@@ -170,6 +270,11 @@ module.exports = {
                     required: true,
                 },
                 {
+                    key: 'fetch_system_users',
+                    label: 'Fetches system users if True. Fetches regular user employees if False.',
+                    type: 'boolean',
+                },
+                {
                     key: 'assets_summary',
                     label: 'Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are',
                     type: 'boolean',
@@ -213,6 +318,7 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'fetch_system_users': bundle.inputData?.['fetch_system_users'],
                         'assets_summary': bundle.inputData?.['assets_summary'],
                         'business_roles': bundle.inputData?.['business_roles'],
                         'member_ids': bundle.inputData?.['member_ids'],
@@ -305,6 +411,56 @@ module.exports = {
                 })
             },
             sample: samples['get_business_partners_200_responseSample']
+        }
+    },
+    systemUser/update: {
+        key: 'systemUser/update',
+        noun: 'business_access_relationships',
+        display: {
+            label: 'Update a system user information.',
+            description: 'Update a system user information such as name.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'business_id',
+                    label: 'Unique identifier of the requesting business.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'system_user_id',
+                    label: 'Unique identifier of a system user.',
+                    type: 'string',
+                    required: true,
+                },
+                ...system_user_update_request.fields(),
+            ],
+            outputFields: [
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/businesses/{business_id}/system_users/{system_user_id}'),
+                    method: 'PATCH',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...system_user_update_request.mapping(bundle),
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'systemUser/update', response.json);
+                    return results;
+                })
+            },
+            sample: { data: {} }
         }
     },
     update/businessMemberships: {

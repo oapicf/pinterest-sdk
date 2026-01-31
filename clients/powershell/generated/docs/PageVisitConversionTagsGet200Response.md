@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**ConversionEventResponse[]**](ConversionEventResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**ConversionEventResponse[]**](ConversionEventResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PageVisitConversionTagsGet200Response = Initialize-PSOpenAPIToolsPageVisitConversionTagsGet200Response  -Items null `
- -Bookmark null
+$PageVisitConversionTagsGet200Response = Initialize-PSOpenAPIToolsPageVisitConversionTagsGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

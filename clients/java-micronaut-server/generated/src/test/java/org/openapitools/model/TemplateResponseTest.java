@@ -29,14 +29,6 @@ public class TemplateResponseTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
      * Test the property 'adAccountId'
      */
     @Test
@@ -53,59 +45,11 @@ public class TemplateResponseTest {
     }
 
     /**
-     * Test the property 'userId'
+     * Test the property 'clickWindowDays'
      */
     @Test
-    public void userIdTest() {
-        // TODO: test userId
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'reportStartRelativeDaysInPast'
-     */
-    @Test
-    public void reportStartRelativeDaysInPastTest() {
-        // TODO: test reportStartRelativeDaysInPast
-    }
-
-    /**
-     * Test the property 'reportEndRelativeDaysInPast'
-     */
-    @Test
-    public void reportEndRelativeDaysInPastTest() {
-        // TODO: test reportEndRelativeDaysInPast
-    }
-
-    /**
-     * Test the property 'dateRange'
-     */
-    @Test
-    public void dateRangeTest() {
-        // TODO: test dateRange
-    }
-
-    /**
-     * Test the property 'reportLevel'
-     */
-    @Test
-    public void reportLevelTest() {
-        // TODO: test reportLevel
-    }
-
-    /**
-     * Test the property 'reportFormat'
-     */
-    @Test
-    public void reportFormatTest() {
-        // TODO: test reportFormat
+    public void clickWindowDaysTest() {
+        // TODO: test clickWindowDays
     }
 
     /**
@@ -117,27 +61,35 @@ public class TemplateResponseTest {
     }
 
     /**
-     * Test the property 'granularity'
+     * Test the property 'conversionReportTimeType'
      */
     @Test
-    public void granularityTest() {
-        // TODO: test granularity
+    public void conversionReportTimeTypeTest() {
+        // TODO: test conversionReportTimeType
     }
 
     /**
-     * Test the property 'viewWindowDays'
+     * Test the property 'creationSource'
      */
     @Test
-    public void viewWindowDaysTest() {
-        // TODO: test viewWindowDays
+    public void creationSourceTest() {
+        // TODO: test creationSource
     }
 
     /**
-     * Test the property 'clickWindowDays'
+     * Test the property 'customColumnIds'
      */
     @Test
-    public void clickWindowDaysTest() {
-        // TODO: test clickWindowDays
+    public void customColumnIdsTest() {
+        // TODO: test customColumnIds
+    }
+
+    /**
+     * Test the property 'dateRange'
+     */
+    @Test
+    public void dateRangeTest() {
+        // TODO: test dateRange
     }
 
     /**
@@ -149,19 +101,43 @@ public class TemplateResponseTest {
     }
 
     /**
-     * Test the property 'conversionReportTimeType'
-     */
-    @Test
-    public void conversionReportTimeTypeTest() {
-        // TODO: test conversionReportTimeType
-    }
-
-    /**
      * Test the property 'filtersJson'
      */
     @Test
     public void filtersJsonTest() {
         // TODO: test filtersJson
+    }
+
+    /**
+     * Test the property 'granularity'
+     */
+    @Test
+    public void granularityTest() {
+        // TODO: test granularity
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'ingestionSources'
+     */
+    @Test
+    public void ingestionSourcesTest() {
+        // TODO: test ingestionSources
+    }
+
+    /**
+     * Test the property 'isDeleted'
+     */
+    @Test
+    public void isDeletedTest() {
+        // TODO: test isDeleted
     }
 
     /**
@@ -181,35 +157,43 @@ public class TemplateResponseTest {
     }
 
     /**
-     * Test the property 'creationSource'
+     * Test the property 'name'
      */
     @Test
-    public void creationSourceTest() {
-        // TODO: test creationSource
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'isDeleted'
+     * Test the property 'reportEndRelativeDaysInPast'
      */
     @Test
-    public void isDeletedTest() {
-        // TODO: test isDeleted
+    public void reportEndRelativeDaysInPastTest() {
+        // TODO: test reportEndRelativeDaysInPast
     }
 
     /**
-     * Test the property 'updatedTime'
+     * Test the property 'reportFormat'
      */
     @Test
-    public void updatedTimeTest() {
-        // TODO: test updatedTime
+    public void reportFormatTest() {
+        // TODO: test reportFormat
     }
 
     /**
-     * Test the property 'customColumnIds'
+     * Test the property 'reportLevel'
      */
     @Test
-    public void customColumnIdsTest() {
-        // TODO: test customColumnIds
+    public void reportLevelTest() {
+        // TODO: test reportLevel
+    }
+
+    /**
+     * Test the property 'reportStartRelativeDaysInPast'
+     */
+    @Test
+    public void reportStartRelativeDaysInPastTest() {
+        // TODO: test reportStartRelativeDaysInPast
     }
 
     /**
@@ -221,11 +205,27 @@ public class TemplateResponseTest {
     }
 
     /**
-     * Test the property 'ingestionSources'
+     * Test the property 'updatedTime'
      */
     @Test
-    public void ingestionSourcesTest() {
-        // TODO: test ingestionSources
+    public void updatedTimeTest() {
+        // TODO: test updatedTime
+    }
+
+    /**
+     * Test the property 'userId'
+     */
+    @Test
+    public void userIdTest() {
+        // TODO: test userId
+    }
+
+    /**
+     * Test the property 'viewWindowDays'
+     */
+    @Test
+    public void viewWindowDaysTest() {
+        // TODO: test viewWindowDays
     }
 
 }

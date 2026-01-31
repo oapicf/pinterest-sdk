@@ -5,6 +5,12 @@
   "name": "CatalogsRetailItemResponse",
   "fields": [
     {
+      "name": "attributes",
+      "type": ["null", "model.ItemAttributes"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "catalog_type",
       "type": "model.CatalogsType",
       "doc": ""
@@ -22,12 +28,6 @@
         "items": "model.Pin"
       }],
       "doc": "The pins mapped to the item",
-      "default": null
-    },
-    {
-      "name": "attributes",
-      "type": ["null", "model.ItemAttributes"],
-      "doc": "",
       "default": null
     }
   ]

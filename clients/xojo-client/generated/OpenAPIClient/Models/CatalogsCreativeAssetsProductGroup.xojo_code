@@ -2,7 +2,33 @@
 Protected Class CatalogsCreativeAssetsProductGroup
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the creative assets product group.
+		#tag EndNote
+		catalog_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Unix timestamp in seconds of when catalog product group was created.
+		#tag EndNote
+		created_at As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
 	#tag EndProperty
 
 
@@ -23,36 +49,10 @@ Protected Class CatalogsCreativeAssetsProductGroup
 
 
 	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Unix timestamp in seconds of when catalog product group was created.
-		#tag EndNote
-		created_at As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Unix timestamp in seconds of last time catalog product group was updated.
 		#tag EndNote
 		updated_at As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Catalog id pertaining to the creative assets product group.
-		#tag EndNote
-		catalog_id As String
 	#tag EndProperty
 
 
@@ -110,7 +110,7 @@ Protected Class CatalogsCreativeAssetsProductGroup
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -118,11 +118,11 @@ Protected Class CatalogsCreativeAssetsProductGroup
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="created_at"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -142,11 +142,19 @@ Protected Class CatalogsCreativeAssetsProductGroup
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_at"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -155,14 +163,6 @@ Protected Class CatalogsCreativeAssetsProductGroup
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

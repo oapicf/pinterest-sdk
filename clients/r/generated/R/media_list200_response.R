@@ -7,21 +7,21 @@
 #' @title MediaList200Response
 #' @description MediaList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items Media list(\link{MediaUploadDetails})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{Media})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 MediaList200Response <- R6::R6Class(
   "MediaList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new MediaList200Response class.
     #'
-    #' @param items Media
+    #' @param items items
     #' @param bookmark bookmark
     #' @param ... Other optional arguments.
     initialize = function(`items`, `bookmark` = NULL, ...) {
@@ -69,13 +69,13 @@ MediaList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       MediaList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        MediaList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         MediaList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        MediaList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(MediaList200ResponseObject)
     },
@@ -87,11 +87,11 @@ MediaList200Response <- R6::R6Class(
     #' @return the instance of MediaList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[MediaUploadDetails]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Media]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ MediaList200Response <- R6::R6Class(
     #' @return the instance of MediaList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[MediaUploadDetails]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Media]", loadNamespace("openapi"))
       self
     },
 

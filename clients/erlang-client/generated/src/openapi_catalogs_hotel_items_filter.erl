@@ -5,16 +5,16 @@
 -export_type([openapi_catalogs_hotel_items_filter/0]).
 
 -type openapi_catalogs_hotel_items_filter() ::
-    #{ 'catalog_type' := binary(),
-       'hotel_ids' := list(),
-       'catalog_id' => binary()
+    #{ 'catalog_id' => binary(),
+       'catalog_type' := binary(),
+       'hotel_ids' := list()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
-          'hotel_ids' := HotelIds,
-          'catalog_id' := CatalogId
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
+          'hotel_ids' := HotelIds
         }) ->
-    #{ 'catalog_type' => CatalogType,
-       'hotel_ids' => HotelIds,
-       'catalog_id' => CatalogId
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
+       'hotel_ids' => HotelIds
      }.

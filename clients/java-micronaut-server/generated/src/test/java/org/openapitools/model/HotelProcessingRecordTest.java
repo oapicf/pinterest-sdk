@@ -25,14 +25,6 @@ public class HotelProcessingRecordTest {
     }
 
     /**
-     * Test the property 'hotelId'
-     */
-    @Test
-    public void hotelIdTest() {
-        // TODO: test hotelId
-    }
-
-    /**
      * Test the property 'errors'
      */
     @Test
@@ -41,11 +33,11 @@ public class HotelProcessingRecordTest {
     }
 
     /**
-     * Test the property 'warnings'
+     * Test the property 'hotelId'
      */
     @Test
-    public void warningsTest() {
-        // TODO: test warnings
+    public void hotelIdTest() {
+        // TODO: test hotelId
     }
 
     /**
@@ -54,6 +46,14 @@ public class HotelProcessingRecordTest {
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'warnings'
+     */
+    @Test
+    public void warningsTest() {
+        // TODO: test warnings
     }
 
 }

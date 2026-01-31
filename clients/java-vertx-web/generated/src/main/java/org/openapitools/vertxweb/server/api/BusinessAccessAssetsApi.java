@@ -35,7 +35,7 @@ public interface BusinessAccessAssetsApi  {
     Future<ApiResponse<CreateAssetGroupResponse>> assetGroupCreate(String businessId, CreateAssetGroupBody createAssetGroupBody);
     Future<ApiResponse<DeleteAssetGroupResponse>> assetGroupDelete(String businessId, DeleteAssetGroupBody deleteAssetGroupBody);
     Future<ApiResponse<UpdateAssetGroupResponse>> assetGroupUpdate(String businessId, UpdateAssetGroupBody updateAssetGroupBody);
-    Future<ApiResponse<BusinessAssetMembersGet200Response>> businessAssetMembersGet(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex);
+    Future<ApiResponse<BusinessAssetMembersGet200Response>> businessAssetMembersGet(String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex);
     Future<ApiResponse<BusinessAssetPartnersGet200Response>> businessAssetPartnersGet(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize);
     Future<ApiResponse<BusinessAssetsGet200Response>> businessAssetsGet(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize);
     Future<ApiResponse<BusinessMemberAssetsGet200Response>> businessMemberAssetsGet(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize);

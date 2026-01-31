@@ -2,15 +2,15 @@
 Protected Class BusinessPartnerAssetAccessGet200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List assets on which you granted access to your partner or assets on which your partner has granted you access.
-		#tag EndNote
-		items() As OpenAPIClient.Models.GetPartnerAssetsResponse
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		#tag Note
+			List assets on which you granted access to your partner or assets on which your partner has granted you access.
+		#tag EndNote
+		items() As OpenAPIClient.Models.GetPartnerAssetsResponse
 	#tag EndProperty
 
 
@@ -51,19 +51,19 @@ Protected Class BusinessPartnerAssetAccessGet200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="GetPartnerAssetsResponse"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="GetPartnerAssetsResponse"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

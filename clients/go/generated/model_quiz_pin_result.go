@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &QuizPinResult{}
 
 // QuizPinResult The result, and link out, based on the user’s choice.
 type QuizPinResult struct {
-	OrganicPinId *string `json:"organic_pin_id,omitempty"`
 	AndroidDeepLink *string `json:"android_deep_link,omitempty"`
-	IosDeepLink *string `json:"ios_deep_link,omitempty"`
 	DestinationUrl *string `json:"destination_url,omitempty"`
+	IosDeepLink *string `json:"ios_deep_link,omitempty"`
+	OrganicPinId *string `json:"organic_pin_id,omitempty"`
 	ResultId *float32 `json:"result_id,omitempty"`
 }
 
@@ -42,38 +42,6 @@ func NewQuizPinResult() *QuizPinResult {
 func NewQuizPinResultWithDefaults() *QuizPinResult {
 	this := QuizPinResult{}
 	return &this
-}
-
-// GetOrganicPinId returns the OrganicPinId field value if set, zero value otherwise.
-func (o *QuizPinResult) GetOrganicPinId() string {
-	if o == nil || IsNil(o.OrganicPinId) {
-		var ret string
-		return ret
-	}
-	return *o.OrganicPinId
-}
-
-// GetOrganicPinIdOk returns a tuple with the OrganicPinId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *QuizPinResult) GetOrganicPinIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganicPinId) {
-		return nil, false
-	}
-	return o.OrganicPinId, true
-}
-
-// HasOrganicPinId returns a boolean if a field has been set.
-func (o *QuizPinResult) HasOrganicPinId() bool {
-	if o != nil && !IsNil(o.OrganicPinId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganicPinId gets a reference to the given string and assigns it to the OrganicPinId field.
-func (o *QuizPinResult) SetOrganicPinId(v string) {
-	o.OrganicPinId = &v
 }
 
 // GetAndroidDeepLink returns the AndroidDeepLink field value if set, zero value otherwise.
@@ -108,6 +76,38 @@ func (o *QuizPinResult) SetAndroidDeepLink(v string) {
 	o.AndroidDeepLink = &v
 }
 
+// GetDestinationUrl returns the DestinationUrl field value if set, zero value otherwise.
+func (o *QuizPinResult) GetDestinationUrl() string {
+	if o == nil || IsNil(o.DestinationUrl) {
+		var ret string
+		return ret
+	}
+	return *o.DestinationUrl
+}
+
+// GetDestinationUrlOk returns a tuple with the DestinationUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QuizPinResult) GetDestinationUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.DestinationUrl) {
+		return nil, false
+	}
+	return o.DestinationUrl, true
+}
+
+// HasDestinationUrl returns a boolean if a field has been set.
+func (o *QuizPinResult) HasDestinationUrl() bool {
+	if o != nil && !IsNil(o.DestinationUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationUrl gets a reference to the given string and assigns it to the DestinationUrl field.
+func (o *QuizPinResult) SetDestinationUrl(v string) {
+	o.DestinationUrl = &v
+}
+
 // GetIosDeepLink returns the IosDeepLink field value if set, zero value otherwise.
 func (o *QuizPinResult) GetIosDeepLink() string {
 	if o == nil || IsNil(o.IosDeepLink) {
@@ -140,36 +140,36 @@ func (o *QuizPinResult) SetIosDeepLink(v string) {
 	o.IosDeepLink = &v
 }
 
-// GetDestinationUrl returns the DestinationUrl field value if set, zero value otherwise.
-func (o *QuizPinResult) GetDestinationUrl() string {
-	if o == nil || IsNil(o.DestinationUrl) {
+// GetOrganicPinId returns the OrganicPinId field value if set, zero value otherwise.
+func (o *QuizPinResult) GetOrganicPinId() string {
+	if o == nil || IsNil(o.OrganicPinId) {
 		var ret string
 		return ret
 	}
-	return *o.DestinationUrl
+	return *o.OrganicPinId
 }
 
-// GetDestinationUrlOk returns a tuple with the DestinationUrl field value if set, nil otherwise
+// GetOrganicPinIdOk returns a tuple with the OrganicPinId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *QuizPinResult) GetDestinationUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.DestinationUrl) {
+func (o *QuizPinResult) GetOrganicPinIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OrganicPinId) {
 		return nil, false
 	}
-	return o.DestinationUrl, true
+	return o.OrganicPinId, true
 }
 
-// HasDestinationUrl returns a boolean if a field has been set.
-func (o *QuizPinResult) HasDestinationUrl() bool {
-	if o != nil && !IsNil(o.DestinationUrl) {
+// HasOrganicPinId returns a boolean if a field has been set.
+func (o *QuizPinResult) HasOrganicPinId() bool {
+	if o != nil && !IsNil(o.OrganicPinId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationUrl gets a reference to the given string and assigns it to the DestinationUrl field.
-func (o *QuizPinResult) SetDestinationUrl(v string) {
-	o.DestinationUrl = &v
+// SetOrganicPinId gets a reference to the given string and assigns it to the OrganicPinId field.
+func (o *QuizPinResult) SetOrganicPinId(v string) {
+	o.OrganicPinId = &v
 }
 
 // GetResultId returns the ResultId field value if set, zero value otherwise.
@@ -214,17 +214,17 @@ func (o QuizPinResult) MarshalJSON() ([]byte, error) {
 
 func (o QuizPinResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OrganicPinId) {
-		toSerialize["organic_pin_id"] = o.OrganicPinId
-	}
 	if !IsNil(o.AndroidDeepLink) {
 		toSerialize["android_deep_link"] = o.AndroidDeepLink
+	}
+	if !IsNil(o.DestinationUrl) {
+		toSerialize["destination_url"] = o.DestinationUrl
 	}
 	if !IsNil(o.IosDeepLink) {
 		toSerialize["ios_deep_link"] = o.IosDeepLink
 	}
-	if !IsNil(o.DestinationUrl) {
-		toSerialize["destination_url"] = o.DestinationUrl
+	if !IsNil(o.OrganicPinId) {
+		toSerialize["organic_pin_id"] = o.OrganicPinId
 	}
 	if !IsNil(o.ResultId) {
 		toSerialize["result_id"] = o.ResultId

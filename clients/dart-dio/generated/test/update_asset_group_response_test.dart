@@ -7,15 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(UpdateAssetGroupResponse, () {
-    // A list of successfully edited asset groups.
-    // BuiltList<AssetGroupBinding> updatedAssetGroups
-    test('to test the property `updatedAssetGroups`', () async {
-      // TODO
-    });
-
     // A list of errors associated with the asset groups. Will be returned if there is an error.
     // BuiltList<UpdateAssetGroupResponseExceptionsInner> exceptions
     test('to test the property `exceptions`', () async {
+      // TODO
+    });
+
+    // A list of successfully edited asset groups.
+    // BuiltList<AssetGroupBinding> updatedAssetGroups
+    test('to test the property `updatedAssetGroups`', () async {
       // TODO
     });
 

@@ -8,11 +8,11 @@
 #' @description CatalogsRetailProductGroupUpdateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. character [optional]
-#' @field name  character [optional]
+#' @field country  \link{Country} [optional]
 #' @field description  character [optional]
 #' @field filters  \link{CatalogsProductGroupFiltersRequest} [optional]
-#' @field country  \link{Country} [optional]
 #' @field locale  \link{CatalogsLocale} [optional]
+#' @field name  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,23 +20,23 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
   "CatalogsRetailProductGroupUpdateRequest",
   public = list(
     `catalog_type` = NULL,
-    `name` = NULL,
+    `country` = NULL,
     `description` = NULL,
     `filters` = NULL,
-    `country` = NULL,
     `locale` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailProductGroupUpdateRequest class.
     #'
     #' @param catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-    #' @param name name
+    #' @param country country
     #' @param description description
     #' @param filters filters
-    #' @param country country
     #' @param locale locale
+    #' @param name name
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type` = NULL, `name` = NULL, `description` = NULL, `filters` = NULL, `country` = NULL, `locale` = NULL, ...) {
+    initialize = function(`catalog_type` = NULL, `country` = NULL, `description` = NULL, `filters` = NULL, `locale` = NULL, `name` = NULL, ...) {
       if (!is.null(`catalog_type`)) {
         if (!(`catalog_type` %in% c("RETAIL"))) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
@@ -46,11 +46,12 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         }
         self$`catalog_type` <- `catalog_type`
       }
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+      if (!is.null(`country`)) {
+        if (!(`country` %in% c())) {
+          stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
         }
-        self$`name` <- `name`
+        stopifnot(R6::is.R6(`country`))
+        self$`country` <- `country`
       }
       if (!is.null(`description`)) {
         if (!(is.character(`description`) && length(`description`) == 1)) {
@@ -62,19 +63,18 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`filters`))
         self$`filters` <- `filters`
       }
-      if (!is.null(`country`)) {
-        if (!(`country` %in% c())) {
-          stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`country`))
-        self$`country` <- `country`
-      }
       if (!is.null(`locale`)) {
         if (!(`locale` %in% c())) {
           stop(paste("Error! \"", `locale`, "\" cannot be assigned to `locale`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`locale`))
         self$`locale` <- `locale`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -113,9 +113,9 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         CatalogsRetailProductGroupUpdateRequestObject[["catalog_type"]] <-
           self$`catalog_type`
       }
-      if (!is.null(self$`name`)) {
-        CatalogsRetailProductGroupUpdateRequestObject[["name"]] <-
-          self$`name`
+      if (!is.null(self$`country`)) {
+        CatalogsRetailProductGroupUpdateRequestObject[["country"]] <-
+          self$`country`$toSimpleType()
       }
       if (!is.null(self$`description`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["description"]] <-
@@ -125,13 +125,13 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         CatalogsRetailProductGroupUpdateRequestObject[["filters"]] <-
           self$`filters`$toSimpleType()
       }
-      if (!is.null(self$`country`)) {
-        CatalogsRetailProductGroupUpdateRequestObject[["country"]] <-
-          self$`country`$toSimpleType()
-      }
       if (!is.null(self$`locale`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["locale"]] <-
           self$`locale`$toSimpleType()
+      }
+      if (!is.null(self$`name`)) {
+        CatalogsRetailProductGroupUpdateRequestObject[["name"]] <-
+          self$`name`
       }
       return(CatalogsRetailProductGroupUpdateRequestObject)
     },
@@ -149,8 +149,10 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         }
         self$`catalog_type` <- this_object$`catalog_type`
       }
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
+      if (!is.null(this_object$`country`)) {
+        `country_object` <- Country$new()
+        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+        self$`country` <- `country_object`
       }
       if (!is.null(this_object$`description`)) {
         self$`description` <- this_object$`description`
@@ -160,15 +162,13 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         `filters_object`$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
         self$`filters` <- `filters_object`
       }
-      if (!is.null(this_object$`country`)) {
-        `country_object` <- Country$new()
-        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
-        self$`country` <- `country_object`
-      }
       if (!is.null(this_object$`locale`)) {
         `locale_object` <- CatalogsLocale$new()
         `locale_object`$fromJSON(jsonlite::toJSON(this_object$`locale`, auto_unbox = TRUE, digits = NA))
         self$`locale` <- `locale_object`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -195,11 +195,11 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
-      self$`name` <- this_object$`name`
+      self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
       self$`description` <- this_object$`description`
       self$`filters` <- CatalogsProductGroupFiltersRequest$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
-      self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
       self$`locale` <- CatalogsLocale$new()$fromJSON(jsonlite::toJSON(this_object$`locale`, auto_unbox = TRUE, digits = NA))
+      self$`name` <- this_object$`name`
       self
     },
 

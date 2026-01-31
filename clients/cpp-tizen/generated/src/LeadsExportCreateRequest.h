@@ -45,20 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-	 */
-	std::string getStartDate();
-
-	/*! \brief Set Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-	 */
-	void setStartDate(std::string  start_date);
-	/*! \brief Get Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
-	 */
-	std::string getEndDate();
-
-	/*! \brief Set Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
-	 */
-	void setEndDate(std::string  end_date);
 	/*! \brief Get ID for the ad collecting leads
 	 */
 	std::string getAdId();
@@ -66,11 +52,25 @@ public:
 	/*! \brief Set ID for the ad collecting leads
 	 */
 	void setAdId(std::string  ad_id);
+	/*! \brief Get Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+	 */
+	std::string getEndDate();
+
+	/*! \brief Set Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+	 */
+	void setEndDate(std::string  end_date);
+	/*! \brief Get Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+	 */
+	std::string getStartDate();
+
+	/*! \brief Set Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+	 */
+	void setStartDate(std::string  start_date);
 
 private:
-	std::string start_date;
-	std::string end_date;
 	std::string ad_id;
+	std::string end_date;
+	std::string start_date;
 	void __init();
 	void __cleanup();
 

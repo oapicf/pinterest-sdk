@@ -73,16 +73,16 @@ private class OASCatalogsHotelItemsFilterTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelItemsFilter catalogsHotelItemsFilter = new OASCatalogsHotelItemsFilter();
         Map<String, String> x-property-mappings = catalogsHotelItemsFilter.getx-property-mappings();
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('hotelIds', x-property-mappings.get('hotel_ids'));
-        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsHotelItemsFilter catalogsHotelItemsFilter = new OASCatalogsHotelItemsFilter();
         System.assertEquals(new List<String>(), catalogsHotelItemsFilter.hotelIds);
-        System.assertEquals(null, catalogsHotelItemsFilter.catalogType);
         System.assertEquals(null, catalogsHotelItemsFilter.catalogId);
+        System.assertEquals(null, catalogsHotelItemsFilter.catalogType);
     }
 }

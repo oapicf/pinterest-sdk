@@ -25,7 +25,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdvancedAuctionItemsGetRecord = Initialize-AdvancedAuctionItemsGetRecord -ItemId "DS0294-M" -Country "AD" -Language "AM"
+$AdvancedAuctionItemsGetRecord = Initialize-AdvancedAuctionItemsGetRecord -Country "AD" -ItemId "DS0294-M" -Language "AM"
 $AdvancedAuctionItemsGetRequest = Initialize-AdvancedAuctionItemsGetRequest -CatalogId "2680059592705" -Items $AdvancedAuctionItemsGetRecord # AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
@@ -77,8 +77,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdvancedAuctionBidOptions = Initialize-AdvancedAuctionBidOptions -BidInMicroCurrency 5000000 -AppTypeMultipliers  -PlacementMultipliers 
-$AdvancedAuctionItemsSubmitRecord = Initialize-AdvancedAuctionItemsSubmitRecord -Operation "UPSERT" -ItemId "DS0294-M" -Country "AD" -Language "AM" -BidOptions $AdvancedAuctionBidOptions -UpdateMask "BID"
+$AdvancedAuctionBidOptions = Initialize-AdvancedAuctionBidOptions -AppTypeMultipliers  -BidInMicroCurrency 5000000 -PlacementMultipliers 
+$AdvancedAuctionOperationError = Initialize-AdvancedAuctionOperationError -Code 6 -Message "Bid in micro currency should be non-negative"
+$AdvancedAuctionItemsSubmitRecord = Initialize-AdvancedAuctionItemsSubmitRecord -Operation "UPSERT" -Country "AD" -ItemId "DS0294-M" -Language "AM" -BidOptions $AdvancedAuctionBidOptions -Errors $AdvancedAuctionOperationError -UpdateMask "BID"
 
 $AdvancedAuctionItemsSubmitRequest = Initialize-AdvancedAuctionItemsSubmitRequest -CatalogId "2680059592705" -Items $AdvancedAuctionItemsSubmitRecord # AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)

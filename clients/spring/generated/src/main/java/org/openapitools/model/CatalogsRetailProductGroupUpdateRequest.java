@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductGroupUpdateRequest", description = "Request object for updating a retail product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -68,15 +68,15 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
 
   private @Nullable CatalogTypeEnum catalogType;
 
-  private @Nullable String name;
+  private @Nullable Country country;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private @Nullable CatalogsProductGroupFiltersRequest filters;
 
-  private @Nullable Country country;
-
   private @Nullable CatalogsLocale locale;
+
+  private @Nullable String name;
 
   public CatalogsRetailProductGroupUpdateRequest catalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -98,24 +98,24 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest name(@Nullable String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupUpdateRequest country(@Nullable Country country) {
+    this.country = country;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
    */
-  
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public @Nullable String getName() {
-    return name;
+  @Valid 
+  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("country")
+  public @Nullable Country getCountry() {
+    return country;
   }
 
-  public void setName(@Nullable String name) {
-    this.name = name;
+  public void setCountry(@Nullable Country country) {
+    this.country = country;
   }
 
   public CatalogsRetailProductGroupUpdateRequest description(String description) {
@@ -158,26 +158,6 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.filters = filters;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest country(@Nullable Country country) {
-    this.country = country;
-    return this;
-  }
-
-  /**
-   * Get country
-   * @return country
-   */
-  @Valid 
-  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("country")
-  public @Nullable Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(@Nullable Country country) {
-    this.country = country;
-  }
-
   public CatalogsRetailProductGroupUpdateRequest locale(@Nullable CatalogsLocale locale) {
     this.locale = locale;
     return this;
@@ -198,6 +178,26 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.locale = locale;
   }
 
+  public CatalogsRetailProductGroupUpdateRequest name(@Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
+  }
+
+  public void setName(@Nullable String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -208,11 +208,11 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     }
     CatalogsRetailProductGroupUpdateRequest catalogsRetailProductGroupUpdateRequest = (CatalogsRetailProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsRetailProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name) &&
+        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
         equalsNullable(this.description, catalogsRetailProductGroupUpdateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupUpdateRequest.filters) &&
-        Objects.equals(this.country, catalogsRetailProductGroupUpdateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupUpdateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupUpdateRequest.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -221,7 +221,7 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, hashCodeNullable(description), filters, country, locale);
+    return Objects.hash(catalogType, country, hashCodeNullable(description), filters, locale, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -236,11 +236,11 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupUpdateRequest {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

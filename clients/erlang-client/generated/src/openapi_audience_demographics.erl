@@ -6,21 +6,21 @@
 
 -type openapi_audience_demographics() ::
     #{ 'ages' => list(),
-       'genders' => list(),
+       'countries' => list(),
        'devices' => list(),
-       'metros' => list(),
-       'countries' => list()
+       'genders' => list(),
+       'metros' => list()
      }.
 
 encode(#{ 'ages' := Ages,
-          'genders' := Genders,
+          'countries' := Countries,
           'devices' := Devices,
-          'metros' := Metros,
-          'countries' := Countries
+          'genders' := Genders,
+          'metros' := Metros
         }) ->
     #{ 'ages' => Ages,
-       'genders' => Genders,
+       'countries' => Countries,
        'devices' => Devices,
-       'metros' => Metros,
-       'countries' => Countries
+       'genders' => Genders,
+       'metros' => Metros
      }.

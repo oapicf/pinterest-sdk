@@ -5,33 +5,11 @@ context("Test MultipleProductGroupsInner")
 
 model_instance <- MultipleProductGroupsInner$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
-})
-
-test_that("is_featured", {
-  # tests for the property `is_featured` (character)
-  # boolean indicator of whether the product group is being featured or not
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`is_featured`, "EXPECTED_RESULT")
-})
-
-test_that("filters", {
-  # tests for the property `filters` (CatalogsCreativeAssetsProductGroupFilters)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })
 
 test_that("feed_id", {
@@ -42,11 +20,26 @@ test_that("feed_id", {
   #expect_equal(model.instance$`feed_id`, "EXPECTED_RESULT")
 })
 
-test_that("catalog_type", {
-  # tests for the property `catalog_type` (character)
+test_that("filters", {
+  # tests for the property `filters` (CatalogsCreativeAssetsProductGroupFilters)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
+})
+
+test_that("is_featured", {
+  # tests for the property `is_featured` (character)
+  # boolean indicator of whether the product group is being featured or not
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_featured`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("catalog_id", {
@@ -55,6 +48,13 @@ test_that("catalog_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
 test_that("country", {

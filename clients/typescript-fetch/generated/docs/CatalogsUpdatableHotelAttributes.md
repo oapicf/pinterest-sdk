@@ -6,23 +6,23 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
-`link` | string
-`description` | string
-`brand` | string
-`latitude` | number
-`longitude` | number
-`neighborhood` | Array&lt;string&gt;
 `address` | [CatalogsHotelAddress](CatalogsHotelAddress.md)
+`basePrice` | string
+`brand` | string
+`category` | string
 `customLabel0` | string
 `customLabel1` | string
 `customLabel2` | string
 `customLabel3` | string
 `customLabel4` | string
-`category` | string
-`basePrice` | string
-`salePrice` | string
+`description` | string
 `guestRatings` | [CatalogsHotelGuestRatings](CatalogsHotelGuestRatings.md)
+`latitude` | number
+`link` | string
+`longitude` | number
+`name` | string
+`neighborhood` | Array&lt;string&gt;
+`salePrice` | string
 
 ## Example
 
@@ -31,23 +31,23 @@ import type { CatalogsUpdatableHotelAttributes } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": null,
-  "link": null,
-  "description": null,
-  "brand": null,
-  "latitude": null,
-  "longitude": null,
-  "neighborhood": null,
   "address": null,
+  "basePrice": 100 USD,
+  "brand": null,
+  "category": null,
   "customLabel0": null,
   "customLabel1": null,
   "customLabel2": null,
   "customLabel3": null,
   "customLabel4": null,
-  "category": null,
-  "basePrice": 100 USD,
-  "salePrice": 90 USD,
+  "description": null,
   "guestRatings": null,
+  "latitude": null,
+  "link": null,
+  "longitude": null,
+  "name": null,
+  "neighborhood": null,
+  "salePrice": 90 USD,
 } satisfies CatalogsUpdatableHotelAttributes
 
 console.log(example)

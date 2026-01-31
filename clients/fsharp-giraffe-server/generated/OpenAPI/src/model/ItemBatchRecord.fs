@@ -16,8 +16,8 @@ module ItemBatchRecord =
 
 
   type ItemBatchRecord = {
-    ItemId : string;
     Attributes : ItemAttributesRequest;
+    ItemId : string;
     UpdateMask : UpdateMaskFieldType[];
   }
   //#endregion

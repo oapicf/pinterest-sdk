@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("templates_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplatesList200Response   {
-  private @Valid List<@Valid TemplateResponse> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid TemplateResponse> items = new ArrayList<>();
 
   public TemplatesList200Response() {
   }
@@ -35,6 +35,25 @@ public class TemplatesList200Response   {
     @JsonProperty(required = true, value = "items") List<@Valid TemplateResponse> items
   ) {
     this.items = items;
+  }
+
+  /**
+   **/
+  public TemplatesList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  @JsonProperty("bookmark")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
   }
 
   /**
@@ -72,25 +91,6 @@ public class TemplatesList200Response   {
 
     return this;
   }
-  /**
-   **/
-  public TemplatesList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  @JsonProperty("bookmark")
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -101,13 +101,13 @@ public class TemplatesList200Response   {
       return false;
     }
     TemplatesList200Response templatesList200Response = (TemplatesList200Response) o;
-    return Objects.equals(this.items, templatesList200Response.items) &&
-        Objects.equals(this.bookmark, templatesList200Response.bookmark);
+    return Objects.equals(this.bookmark, templatesList200Response.bookmark) &&
+        Objects.equals(this.items, templatesList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -115,8 +115,8 @@ public class TemplatesList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplatesList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

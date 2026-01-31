@@ -11,12 +11,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestRefresh   {
   
   private String refreshToken;
   private String scope;
-  private Boolean refreshOn;
 
   /**
    * Gets or Sets grantType
@@ -68,19 +67,6 @@ public class OauthAccessTokenRequestRefresh   {
   }
 
   /**
-   * Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.
-   **/
-  
-  @ApiModelProperty(value = "Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".")
-  @JsonProperty("refresh_on")
-  public Boolean getRefreshOn() {
-    return refreshOn;
-  }
-  public void setRefreshOn(Boolean refreshOn) {
-    this.refreshOn = refreshOn;
-  }
-
-  /**
    **/
   
   @ApiModelProperty(required = true, value = "")
@@ -105,13 +91,12 @@ public class OauthAccessTokenRequestRefresh   {
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
     return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
         Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, scope, refreshOn, grantType);
+    return Objects.hash(refreshToken, scope, grantType);
   }
 
   @Override
@@ -121,7 +106,6 @@ public class OauthAccessTokenRequestRefresh   {
     
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
     sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();

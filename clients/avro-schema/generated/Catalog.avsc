@@ -20,14 +20,14 @@
       "doc": ""
     },
     {
-      "name": "name",
-      "type": "string",
-      "doc": "A human-friendly name associated to a catalog entity."
-    },
-    {
       "name": "catalog_type",
       "type": "model.CatalogsType",
       "doc": ""
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "A human-friendly name associated to a catalog entity."
     }
   ]
 

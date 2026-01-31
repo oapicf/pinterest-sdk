@@ -4,29 +4,33 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class Board (
-    _id: Option[String],
-    /* Date and time of board creation. */
-    _createdAt: Option[OffsetDateTime],
     /* Date and time of last board pins modified. */
     _boardPinsModifiedAt: Option[OffsetDateTime],
-    _name: String,
-    _description: Option[String],
     /* Count of collaborators on the board. */
     _collaboratorCount: Option[Integer],
-    /* Count of pins on the board. */
-    _pinCount: Option[Integer],
+    /* Date and time of board creation. */
+    _createdAt: Option[OffsetDateTime],
+    _description: Option[String],
     /* Board follower count. */
     _followerCount: Option[Integer],
+    _id: String,
+    /* If set to `true`, the board will be ad-only and can store ad-only Pins. */
+    _isAdsOnly: Option[Boolean],
+    /* Board media. */
     _media: Option[BoardMedia],
+    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    _name: String,
     _owner: Option[BoardOwner],
-    /* Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a> */
-    _privacy: Option[String]
+    /* Count of Pins on the board. */
+    _pinCount: Option[Integer],
+    /*     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`.  */
+    _privacy: Option[BoardPrivacy]
 )
 object Board {
-    def toStringBody(var_id: Object, var_createdAt: Object, var_boardPinsModifiedAt: Object, var_name: Object, var_description: Object, var_collaboratorCount: Object, var_pinCount: Object, var_followerCount: Object, var_media: Object, var_owner: Object, var_privacy: Object) =
+    def toStringBody(var_boardPinsModifiedAt: Object, var_collaboratorCount: Object, var_createdAt: Object, var_description: Object, var_followerCount: Object, var_id: Object, var_isAdsOnly: Object, var_media: Object, var_name: Object, var_owner: Object, var_pinCount: Object, var_privacy: Object) =
         s"""
         | {
-        | "id":$var_id,"createdAt":$var_createdAt,"boardPinsModifiedAt":$var_boardPinsModifiedAt,"name":$var_name,"description":$var_description,"collaboratorCount":$var_collaboratorCount,"pinCount":$var_pinCount,"followerCount":$var_followerCount,"media":$var_media,"owner":$var_owner,"privacy":$var_privacy
+        | "boardPinsModifiedAt":$var_boardPinsModifiedAt,"collaboratorCount":$var_collaboratorCount,"createdAt":$var_createdAt,"description":$var_description,"followerCount":$var_followerCount,"id":$var_id,"isAdsOnly":$var_isAdsOnly,"media":$var_media,"name":$var_name,"owner":$var_owner,"pinCount":$var_pinCount,"privacy":$var_privacy
         | }
         """.stripMargin
 }

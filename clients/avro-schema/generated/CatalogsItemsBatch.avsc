@@ -16,22 +16,15 @@
       "default": null
     },
     {
-      "name": "created_time",
-      "type": ["null", "string"],
-      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss",
-      "default": null
-    },
-    {
       "name": "completed_time",
       "type": ["null", "string"],
       "doc": "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss",
       "default": null
     },
     {
-      "name": "status",
-      "type": ["null", "model.BatchOperationStatus"],
-      "doc": "",
-      "default": null
+      "name": "created_time",
+      "type": "string",
+      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss"
     },
     {
       "name": "items",
@@ -40,6 +33,12 @@
         "items": "model.CreativeAssetsProcessingRecord"
       }],
       "doc": "Array with the catalogs items processing records part of the catalogs items batch",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.BatchOperationStatus"],
+      "doc": "",
       "default": null
     }
   ]

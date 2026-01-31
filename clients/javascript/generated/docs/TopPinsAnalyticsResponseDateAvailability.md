@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**latestAvailableTimestamp** | **Number** |  | [optional] 
 **isRealtime** | **Boolean** |  | [optional] 
+**latestAvailableTimestamp** | **Number** |  | [optional] 
 
 

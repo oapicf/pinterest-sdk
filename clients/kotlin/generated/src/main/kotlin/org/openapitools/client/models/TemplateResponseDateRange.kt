@@ -25,22 +25,22 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param absoluteDateRange 
  * @param dynamicDateRange 
  * @param relativeDateRange 
- * @param absoluteDateRange 
  */
 
 
 data class TemplateResponseDateRange (
 
+    @Json(name = "absolute_date_range")
+    val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null,
+
     @Json(name = "dynamic_date_range")
     val dynamicDateRange: TemplateResponseDateRangeDynamicDateRange? = null,
 
     @Json(name = "relative_date_range")
-    val relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = null,
-
-    @Json(name = "absolute_date_range")
-    val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null
+    val relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = null
 
 ) {
 

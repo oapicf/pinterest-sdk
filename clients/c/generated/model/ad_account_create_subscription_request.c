@@ -6,39 +6,39 @@
 
 
 static ad_account_create_subscription_request_t *ad_account_create_subscription_request_create_internal(
-    char *webhook_url,
     char *lead_form_id,
     char *partner_access_token,
+    ad_account_create_subscription_request_partner_metadata_t *partner_metadata,
     char *partner_refresh_token,
-    ad_account_create_subscription_request_partner_metadata_t *partner_metadata
+    char *webhook_url
     ) {
     ad_account_create_subscription_request_t *ad_account_create_subscription_request_local_var = malloc(sizeof(ad_account_create_subscription_request_t));
     if (!ad_account_create_subscription_request_local_var) {
         return NULL;
     }
-    ad_account_create_subscription_request_local_var->webhook_url = webhook_url;
     ad_account_create_subscription_request_local_var->lead_form_id = lead_form_id;
     ad_account_create_subscription_request_local_var->partner_access_token = partner_access_token;
-    ad_account_create_subscription_request_local_var->partner_refresh_token = partner_refresh_token;
     ad_account_create_subscription_request_local_var->partner_metadata = partner_metadata;
+    ad_account_create_subscription_request_local_var->partner_refresh_token = partner_refresh_token;
+    ad_account_create_subscription_request_local_var->webhook_url = webhook_url;
 
     ad_account_create_subscription_request_local_var->_library_owned = 1;
     return ad_account_create_subscription_request_local_var;
 }
 
 __attribute__((deprecated)) ad_account_create_subscription_request_t *ad_account_create_subscription_request_create(
-    char *webhook_url,
     char *lead_form_id,
     char *partner_access_token,
+    ad_account_create_subscription_request_partner_metadata_t *partner_metadata,
     char *partner_refresh_token,
-    ad_account_create_subscription_request_partner_metadata_t *partner_metadata
+    char *webhook_url
     ) {
     return ad_account_create_subscription_request_create_internal (
-        webhook_url,
         lead_form_id,
         partner_access_token,
+        partner_metadata,
         partner_refresh_token,
-        partner_metadata
+        webhook_url
         );
 }
 
@@ -51,10 +51,6 @@ void ad_account_create_subscription_request_free(ad_account_create_subscription_
         return ;
     }
     listEntry_t *listEntry;
-    if (ad_account_create_subscription_request->webhook_url) {
-        free(ad_account_create_subscription_request->webhook_url);
-        ad_account_create_subscription_request->webhook_url = NULL;
-    }
     if (ad_account_create_subscription_request->lead_form_id) {
         free(ad_account_create_subscription_request->lead_form_id);
         ad_account_create_subscription_request->lead_form_id = NULL;
@@ -63,28 +59,23 @@ void ad_account_create_subscription_request_free(ad_account_create_subscription_
         free(ad_account_create_subscription_request->partner_access_token);
         ad_account_create_subscription_request->partner_access_token = NULL;
     }
+    if (ad_account_create_subscription_request->partner_metadata) {
+        ad_account_create_subscription_request_partner_metadata_free(ad_account_create_subscription_request->partner_metadata);
+        ad_account_create_subscription_request->partner_metadata = NULL;
+    }
     if (ad_account_create_subscription_request->partner_refresh_token) {
         free(ad_account_create_subscription_request->partner_refresh_token);
         ad_account_create_subscription_request->partner_refresh_token = NULL;
     }
-    if (ad_account_create_subscription_request->partner_metadata) {
-        ad_account_create_subscription_request_partner_metadata_free(ad_account_create_subscription_request->partner_metadata);
-        ad_account_create_subscription_request->partner_metadata = NULL;
+    if (ad_account_create_subscription_request->webhook_url) {
+        free(ad_account_create_subscription_request->webhook_url);
+        ad_account_create_subscription_request->webhook_url = NULL;
     }
     free(ad_account_create_subscription_request);
 }
 
 cJSON *ad_account_create_subscription_request_convertToJSON(ad_account_create_subscription_request_t *ad_account_create_subscription_request) {
     cJSON *item = cJSON_CreateObject();
-
-    // ad_account_create_subscription_request->webhook_url
-    if (!ad_account_create_subscription_request->webhook_url) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "webhook_url", ad_account_create_subscription_request->webhook_url) == NULL) {
-    goto fail; //String
-    }
-
 
     // ad_account_create_subscription_request->lead_form_id
     if(ad_account_create_subscription_request->lead_form_id) {
@@ -102,14 +93,6 @@ cJSON *ad_account_create_subscription_request_convertToJSON(ad_account_create_su
     }
 
 
-    // ad_account_create_subscription_request->partner_refresh_token
-    if(ad_account_create_subscription_request->partner_refresh_token) {
-    if(cJSON_AddStringToObject(item, "partner_refresh_token", ad_account_create_subscription_request->partner_refresh_token) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // ad_account_create_subscription_request->partner_metadata
     if(ad_account_create_subscription_request->partner_metadata) {
     cJSON *partner_metadata_local_JSON = ad_account_create_subscription_request_partner_metadata_convertToJSON(ad_account_create_subscription_request->partner_metadata);
@@ -120,6 +103,23 @@ cJSON *ad_account_create_subscription_request_convertToJSON(ad_account_create_su
     if(item->child == NULL) {
     goto fail;
     }
+    }
+
+
+    // ad_account_create_subscription_request->partner_refresh_token
+    if(ad_account_create_subscription_request->partner_refresh_token) {
+    if(cJSON_AddStringToObject(item, "partner_refresh_token", ad_account_create_subscription_request->partner_refresh_token) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // ad_account_create_subscription_request->webhook_url
+    if (!ad_account_create_subscription_request->webhook_url) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "webhook_url", ad_account_create_subscription_request->webhook_url) == NULL) {
+    goto fail; //String
     }
 
     return item;
@@ -136,21 +136,6 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
 
     // define the local variable for ad_account_create_subscription_request->partner_metadata
     ad_account_create_subscription_request_partner_metadata_t *partner_metadata_local_nonprim = NULL;
-
-    // ad_account_create_subscription_request->webhook_url
-    cJSON *webhook_url = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "webhook_url");
-    if (cJSON_IsNull(webhook_url)) {
-        webhook_url = NULL;
-    }
-    if (!webhook_url) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(webhook_url))
-    {
-    goto end; //String
-    }
 
     // ad_account_create_subscription_request->lead_form_id
     cJSON *lead_form_id = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "lead_form_id");
@@ -176,6 +161,15 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
     }
     }
 
+    // ad_account_create_subscription_request->partner_metadata
+    cJSON *partner_metadata = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "partner_metadata");
+    if (cJSON_IsNull(partner_metadata)) {
+        partner_metadata = NULL;
+    }
+    if (partner_metadata) { 
+    partner_metadata_local_nonprim = ad_account_create_subscription_request_partner_metadata_parseFromJSON(partner_metadata); //nonprimitive
+    }
+
     // ad_account_create_subscription_request->partner_refresh_token
     cJSON *partner_refresh_token = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "partner_refresh_token");
     if (cJSON_IsNull(partner_refresh_token)) {
@@ -188,22 +182,28 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
     }
     }
 
-    // ad_account_create_subscription_request->partner_metadata
-    cJSON *partner_metadata = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "partner_metadata");
-    if (cJSON_IsNull(partner_metadata)) {
-        partner_metadata = NULL;
+    // ad_account_create_subscription_request->webhook_url
+    cJSON *webhook_url = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "webhook_url");
+    if (cJSON_IsNull(webhook_url)) {
+        webhook_url = NULL;
     }
-    if (partner_metadata) { 
-    partner_metadata_local_nonprim = ad_account_create_subscription_request_partner_metadata_parseFromJSON(partner_metadata); //nonprimitive
+    if (!webhook_url) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(webhook_url))
+    {
+    goto end; //String
     }
 
 
     ad_account_create_subscription_request_local_var = ad_account_create_subscription_request_create_internal (
-        strdup(webhook_url->valuestring),
         lead_form_id && !cJSON_IsNull(lead_form_id) ? strdup(lead_form_id->valuestring) : NULL,
         partner_access_token && !cJSON_IsNull(partner_access_token) ? strdup(partner_access_token->valuestring) : NULL,
+        partner_metadata ? partner_metadata_local_nonprim : NULL,
         partner_refresh_token && !cJSON_IsNull(partner_refresh_token) ? strdup(partner_refresh_token->valuestring) : NULL,
-        partner_metadata ? partner_metadata_local_nonprim : NULL
+        strdup(webhook_url->valuestring)
         );
 
     return ad_account_create_subscription_request_local_var;

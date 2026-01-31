@@ -21,19 +21,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Request object for updating a retail product group.
  * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
- * @param name 
+ * @param country 
  * @param description 
  * @param filters 
- * @param country 
  * @param locale 
+ * @param name 
  */
 data class CatalogsRetailProductGroupUpdateRequest(
 
     @Schema(example = "null", description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
     @get:JsonProperty("catalog_type") val catalogType: CatalogsRetailProductGroupUpdateRequest.CatalogType? = null,
 
+    @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
+    @get:JsonProperty("country") val country: Country? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null,
@@ -44,11 +45,10 @@ data class CatalogsRetailProductGroupUpdateRequest(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("country") val country: Country? = null,
+    @get:JsonProperty("locale") val locale: CatalogsLocale? = null,
 
-    @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("locale") val locale: CatalogsLocale? = null
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
     /**

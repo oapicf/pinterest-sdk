@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.ItemDeleteBatchRecord;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemsBatchPostRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -36,6 +37,7 @@ public class ItemsBatchPostRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<ItemDeleteBatchRecord> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -161,21 +163,28 @@ public class ItemsBatchPostRequest   {
   }
 
   private LanguageEnum language;
-  private List<ItemDeleteBatchRecord> items = new ArrayList<>();
-  private String catalogId;
   private BatchOperation operation;
 
   public ItemsBatchPostRequest () {
 
   }
 
-  public ItemsBatchPostRequest (CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<ItemDeleteBatchRecord> items, String catalogId, BatchOperation operation) {
+  public ItemsBatchPostRequest (String catalogId, CatalogTypeEnum catalogType, Country country, List<ItemDeleteBatchRecord> items, LanguageEnum language, BatchOperation operation) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.country = country;
-    this.language = language;
     this.items = items;
-    this.catalogId = catalogId;
+    this.language = language;
     this.operation = operation;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
     
@@ -197,15 +206,6 @@ public class ItemsBatchPostRequest   {
   }
 
     
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-    
   @JsonProperty("items")
   public List<ItemDeleteBatchRecord> getItems() {
     return items;
@@ -215,12 +215,12 @@ public class ItemsBatchPostRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
     
@@ -242,17 +242,17 @@ public class ItemsBatchPostRequest   {
       return false;
     }
     ItemsBatchPostRequest itemsBatchPostRequest = (ItemsBatchPostRequest) o;
-    return Objects.equals(catalogType, itemsBatchPostRequest.catalogType) &&
+    return Objects.equals(catalogId, itemsBatchPostRequest.catalogId) &&
+        Objects.equals(catalogType, itemsBatchPostRequest.catalogType) &&
         Objects.equals(country, itemsBatchPostRequest.country) &&
-        Objects.equals(language, itemsBatchPostRequest.language) &&
         Objects.equals(items, itemsBatchPostRequest.items) &&
-        Objects.equals(catalogId, itemsBatchPostRequest.catalogId) &&
+        Objects.equals(language, itemsBatchPostRequest.language) &&
         Objects.equals(operation, itemsBatchPostRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId, operation);
+    return Objects.hash(catalogId, catalogType, country, items, language, operation);
   }
 
   @Override
@@ -260,11 +260,11 @@ public class ItemsBatchPostRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemsBatchPostRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

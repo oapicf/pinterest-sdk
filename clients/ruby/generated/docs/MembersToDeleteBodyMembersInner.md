@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **member_id** | **String** | Unique identifier of the member |  |
 | **business_role** | [**BusinessRoleForMembers**](BusinessRoleForMembers.md) |  |  |
+| **member_id** | **String** | Unique identifier of the member |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::MembersToDeleteBodyMembersInner.new(
-  member_id: 140943737684417,
-  business_role: null
+  business_role: null,
+  member_id: 140943737684417
 )
 ```
 

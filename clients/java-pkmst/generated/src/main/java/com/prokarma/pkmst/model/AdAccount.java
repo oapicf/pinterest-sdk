@@ -23,8 +23,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdAccount
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccount   {
+  @JsonProperty("country")
+  private Country country;
+
+  @JsonProperty("created_time")
+  private Integer createdTime;
+
+  @JsonProperty("currency")
+  private Currency currency;
+
   @JsonProperty("id")
   private String id;
 
@@ -34,75 +43,12 @@ public class AdAccount   {
   @JsonProperty("owner")
   private AdAccountOwner owner;
 
-  @JsonProperty("country")
-  private Country country;
-
-  @JsonProperty("currency")
-  private Currency currency;
-
   @JsonProperty("permissions")
   
   private List<BusinessAccessRole> permissions = null;
 
-  @JsonProperty("created_time")
-  private Integer createdTime;
-
   @JsonProperty("updated_time")
   private Integer updatedTime;
-
-  public AdAccount id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @ApiModelProperty(value = "")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AdAccount name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @ApiModelProperty(value = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public AdAccount owner(AdAccountOwner owner) {
-    this.owner = owner;
-    return this;
-  }
-
-  /**
-   * Get owner
-   * @return owner
-   */
-  @ApiModelProperty(value = "")
-  public AdAccountOwner getOwner() {
-    return owner;
-  }
-
-  public void setOwner(AdAccountOwner owner) {
-    this.owner = owner;
-  }
 
   public AdAccount country(Country country) {
     this.country = country;
@@ -120,6 +66,24 @@ public class AdAccount   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdAccount createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+  /**
+   *  Creation time. Unix timestamp in seconds.
+   * @return createdTime
+   */
+  @ApiModelProperty(readOnly = true, value = " Creation time. Unix timestamp in seconds.")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
   }
 
   public AdAccount currency(Currency currency) {
@@ -140,6 +104,60 @@ public class AdAccount   {
     this.currency = currency;
   }
 
+  public AdAccount id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @ApiModelProperty(required = true, value = "")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AdAccount name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Ad account name.
+   * @return name
+   */
+  @ApiModelProperty(value = "Ad account name.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public AdAccount owner(AdAccountOwner owner) {
+    this.owner = owner;
+    return this;
+  }
+
+  /**
+   * Ad account owner
+   * @return owner
+   */
+  @ApiModelProperty(readOnly = true, value = "Ad account owner")
+  public AdAccountOwner getOwner() {
+    return owner;
+  }
+
+  public void setOwner(AdAccountOwner owner) {
+    this.owner = owner;
+  }
+
   public AdAccount permissions(List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
     return this;
@@ -157,7 +175,7 @@ public class AdAccount   {
    * Get permissions
    * @return permissions
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(readOnly = true, value = "")
   public List<BusinessAccessRole> getPermissions() {
     return permissions;
   }
@@ -166,34 +184,16 @@ public class AdAccount   {
     this.permissions = permissions;
   }
 
-  public AdAccount createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  /**
-   * Creation time. Unix timestamp in seconds.
-   * @return createdTime
-   */
-  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
   public AdAccount updatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
 
   /**
-   * Last update time. Unix timestamp in seconds.
+   * Get updatedTime
    * @return updatedTime
    */
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+  @ApiModelProperty(readOnly = true, value = "")
   public Integer getUpdatedTime() {
     return updatedTime;
   }
@@ -212,19 +212,19 @@ public class AdAccount   {
       return false;
     }
     AdAccount adAccount = (AdAccount) o;
-    return Objects.equals(this.id, adAccount.id) &&
+    return Objects.equals(this.country, adAccount.country) &&
+        Objects.equals(this.createdTime, adAccount.createdTime) &&
+        Objects.equals(this.currency, adAccount.currency) &&
+        Objects.equals(this.id, adAccount.id) &&
         Objects.equals(this.name, adAccount.name) &&
         Objects.equals(this.owner, adAccount.owner) &&
-        Objects.equals(this.country, adAccount.country) &&
-        Objects.equals(this.currency, adAccount.currency) &&
         Objects.equals(this.permissions, adAccount.permissions) &&
-        Objects.equals(this.createdTime, adAccount.createdTime) &&
         Objects.equals(this.updatedTime, adAccount.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, owner, country, currency, permissions, createdTime, updatedTime);
+    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, updatedTime);
   }
 
   @Override
@@ -232,13 +232,13 @@ public class AdAccount   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccount {\n");
     
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

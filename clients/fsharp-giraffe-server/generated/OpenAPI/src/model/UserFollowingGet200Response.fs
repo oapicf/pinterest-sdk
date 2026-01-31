@@ -11,7 +11,7 @@ module UserFollowingGet200Response =
 
 
   type user_following_get_200_response = {
-    Items : UserSummary[];
     Bookmark : string option;
+    Items : UserSummary[];
   }
   //#endregion

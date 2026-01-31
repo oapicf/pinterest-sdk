@@ -10,5 +10,6 @@ public enum GetBusinessAssetTypeResponse {
   AD_ACCOUNT,
   PROFILE,
   ASSET_GROUP,
-  CONVERSION_TAG;
+  CONVERSION_TAG,
+  CATALOG;
 }

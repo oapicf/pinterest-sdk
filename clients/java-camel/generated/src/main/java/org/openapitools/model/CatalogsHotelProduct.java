@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * CatalogsHotelProduct
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProduct implements CatalogsProduct {
 
   /**
@@ -64,7 +64,7 @@ public class CatalogsHotelProduct implements CatalogsProduct {
 
   private CatalogsHotelProductMetadata metadata;
 
-  private JsonNullable<Pin> pin = JsonNullable.<Pin>undefined();
+  private Pin pin;
 
   public CatalogsHotelProduct() {
     super();
@@ -76,7 +76,7 @@ public class CatalogsHotelProduct implements CatalogsProduct {
   public CatalogsHotelProduct(CatalogTypeEnum catalogType, CatalogsHotelProductMetadata metadata, Pin pin) {
     this.catalogType = catalogType;
     this.metadata = metadata;
-    this.pin = JsonNullable.of(pin);
+    this.pin = pin;
   }
 
   public CatalogsHotelProduct catalogType(CatalogTypeEnum catalogType) {
@@ -120,7 +120,7 @@ public class CatalogsHotelProduct implements CatalogsProduct {
   }
 
   public CatalogsHotelProduct pin(Pin pin) {
-    this.pin = JsonNullable.of(pin);
+    this.pin = pin;
     return this;
   }
 
@@ -131,11 +131,11 @@ public class CatalogsHotelProduct implements CatalogsProduct {
   @NotNull @Valid 
   @Schema(name = "pin", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("pin")
-  public JsonNullable<Pin> getPin() {
+  public Pin getPin() {
     return pin;
   }
 
-  public void setPin(JsonNullable<Pin> pin) {
+  public void setPin(Pin pin) {
     this.pin = pin;
   }
 

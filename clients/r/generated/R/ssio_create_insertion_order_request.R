@@ -7,95 +7,89 @@
 #' @title SSIOCreateInsertionOrderRequest
 #' @description SSIOCreateInsertionOrderRequest Class
 #' @format An \code{R6Class} generator object
-#' @field start_date Starting date of time period. Format: YYYY-MM-DD character
-#' @field end_date End date of time period. Format: YYYY-MM-DD character [optional]
-#' @field po_number The po number character
-#' @field budget_amount If Budget order line, the budget amount. numeric [optional]
+#' @field agency_link URL link for agency character [optional]
+#' @field billing_contact_email The billing contact email character
 #' @field billing_contact_firstname The billing contact first name character
 #' @field billing_contact_lastname The billing contact last name character
-#' @field billing_contact_email The billing contact email character
+#' @field budget_amount If Budget order line, the budget amount. numeric [optional]
+#' @field end_date End date of time period. Format: YYYY-MM-DD character [optional]
+#' @field media_contact_email The media contact email character
 #' @field media_contact_firstname The media contact first name character
 #' @field media_contact_lastname The media contact last name character
-#' @field media_contact_email The media contact email character
-#' @field agency_link URL link for agency character [optional]
+#' @field po_number The po number character
+#' @field start_date Starting date of time period. Format: YYYY-MM-DD character
 #' @field user_email The email of user submitting the insertion order character [optional]
-#' @field accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted integer [optional]
-#' @field pmp_id The pmp id character
-#' @field order_name The order name character
-#' @field order_line_type Type can be Budget or Perpetual character
 #' @field accepted_terms_id The SFDC id for the terms character
-#' @field billto_company_id The bill-to company id character
-#' @field billto_business_address_id The bill-to business address id character
+#' @field accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted integer [optional]
 #' @field billto_billing_address_id The bill-to billing address id character
-#' @field estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend numeric [optional]
+#' @field billto_business_address_id The bill-to business address id character
+#' @field billto_company_id The bill-to company id character
 #' @field currency_info  \link{Currency}
+#' @field estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend numeric [optional]
+#' @field order_line_type Type can be Budget or Perpetual character
+#' @field order_name The order name character
+#' @field pmp_id The pmp id character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SSIOCreateInsertionOrderRequest <- R6::R6Class(
   "SSIOCreateInsertionOrderRequest",
   public = list(
-    `start_date` = NULL,
-    `end_date` = NULL,
-    `po_number` = NULL,
-    `budget_amount` = NULL,
+    `agency_link` = NULL,
+    `billing_contact_email` = NULL,
     `billing_contact_firstname` = NULL,
     `billing_contact_lastname` = NULL,
-    `billing_contact_email` = NULL,
+    `budget_amount` = NULL,
+    `end_date` = NULL,
+    `media_contact_email` = NULL,
     `media_contact_firstname` = NULL,
     `media_contact_lastname` = NULL,
-    `media_contact_email` = NULL,
-    `agency_link` = NULL,
+    `po_number` = NULL,
+    `start_date` = NULL,
     `user_email` = NULL,
-    `accepted_terms_time` = NULL,
-    `pmp_id` = NULL,
-    `order_name` = NULL,
-    `order_line_type` = NULL,
     `accepted_terms_id` = NULL,
-    `billto_company_id` = NULL,
-    `billto_business_address_id` = NULL,
+    `accepted_terms_time` = NULL,
     `billto_billing_address_id` = NULL,
-    `estimated_monthly_spend` = NULL,
+    `billto_business_address_id` = NULL,
+    `billto_company_id` = NULL,
     `currency_info` = NULL,
+    `estimated_monthly_spend` = NULL,
+    `order_line_type` = NULL,
+    `order_name` = NULL,
+    `pmp_id` = NULL,
 
     #' @description
     #' Initialize a new SSIOCreateInsertionOrderRequest class.
     #'
-    #' @param start_date Starting date of time period. Format: YYYY-MM-DD
-    #' @param po_number The po number
+    #' @param billing_contact_email The billing contact email
     #' @param billing_contact_firstname The billing contact first name
     #' @param billing_contact_lastname The billing contact last name
-    #' @param billing_contact_email The billing contact email
+    #' @param media_contact_email The media contact email
     #' @param media_contact_firstname The media contact first name
     #' @param media_contact_lastname The media contact last name
-    #' @param media_contact_email The media contact email
-    #' @param pmp_id The pmp id
-    #' @param order_name The order name
-    #' @param order_line_type Type can be Budget or Perpetual
+    #' @param po_number The po number
+    #' @param start_date Starting date of time period. Format: YYYY-MM-DD
     #' @param accepted_terms_id The SFDC id for the terms
-    #' @param billto_company_id The bill-to company id
-    #' @param billto_business_address_id The bill-to business address id
     #' @param billto_billing_address_id The bill-to billing address id
+    #' @param billto_business_address_id The bill-to business address id
+    #' @param billto_company_id The bill-to company id
     #' @param currency_info currency_info
-    #' @param end_date End date of time period. Format: YYYY-MM-DD
-    #' @param budget_amount If Budget order line, the budget amount.
+    #' @param order_line_type Type can be Budget or Perpetual
+    #' @param order_name The order name
+    #' @param pmp_id The pmp id
     #' @param agency_link URL link for agency
+    #' @param budget_amount If Budget order line, the budget amount.
+    #' @param end_date End date of time period. Format: YYYY-MM-DD
     #' @param user_email The email of user submitting the insertion order
     #' @param accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted
     #' @param estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend
     #' @param ... Other optional arguments.
-    initialize = function(`start_date`, `po_number`, `billing_contact_firstname`, `billing_contact_lastname`, `billing_contact_email`, `media_contact_firstname`, `media_contact_lastname`, `media_contact_email`, `pmp_id`, `order_name`, `order_line_type`, `accepted_terms_id`, `billto_company_id`, `billto_business_address_id`, `billto_billing_address_id`, `currency_info`, `end_date` = NULL, `budget_amount` = NULL, `agency_link` = NULL, `user_email` = NULL, `accepted_terms_time` = NULL, `estimated_monthly_spend` = NULL, ...) {
-      if (!missing(`start_date`)) {
-        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
+    initialize = function(`billing_contact_email`, `billing_contact_firstname`, `billing_contact_lastname`, `media_contact_email`, `media_contact_firstname`, `media_contact_lastname`, `po_number`, `start_date`, `accepted_terms_id`, `billto_billing_address_id`, `billto_business_address_id`, `billto_company_id`, `currency_info`, `order_line_type`, `order_name`, `pmp_id`, `agency_link` = NULL, `budget_amount` = NULL, `end_date` = NULL, `user_email` = NULL, `accepted_terms_time` = NULL, `estimated_monthly_spend` = NULL, ...) {
+      if (!missing(`billing_contact_email`)) {
+        if (!(is.character(`billing_contact_email`) && length(`billing_contact_email`) == 1)) {
+          stop(paste("Error! Invalid data for `billing_contact_email`. Must be a string:", `billing_contact_email`))
         }
-        self$`start_date` <- `start_date`
-      }
-      if (!missing(`po_number`)) {
-        if (!(is.character(`po_number`) && length(`po_number`) == 1)) {
-          stop(paste("Error! Invalid data for `po_number`. Must be a string:", `po_number`))
-        }
-        self$`po_number` <- `po_number`
+        self$`billing_contact_email` <- `billing_contact_email`
       }
       if (!missing(`billing_contact_firstname`)) {
         if (!(is.character(`billing_contact_firstname`) && length(`billing_contact_firstname`) == 1)) {
@@ -109,11 +103,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         }
         self$`billing_contact_lastname` <- `billing_contact_lastname`
       }
-      if (!missing(`billing_contact_email`)) {
-        if (!(is.character(`billing_contact_email`) && length(`billing_contact_email`) == 1)) {
-          stop(paste("Error! Invalid data for `billing_contact_email`. Must be a string:", `billing_contact_email`))
+      if (!missing(`media_contact_email`)) {
+        if (!(is.character(`media_contact_email`) && length(`media_contact_email`) == 1)) {
+          stop(paste("Error! Invalid data for `media_contact_email`. Must be a string:", `media_contact_email`))
         }
-        self$`billing_contact_email` <- `billing_contact_email`
+        self$`media_contact_email` <- `media_contact_email`
       }
       if (!missing(`media_contact_firstname`)) {
         if (!(is.character(`media_contact_firstname`) && length(`media_contact_firstname`) == 1)) {
@@ -127,23 +121,48 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         }
         self$`media_contact_lastname` <- `media_contact_lastname`
       }
-      if (!missing(`media_contact_email`)) {
-        if (!(is.character(`media_contact_email`) && length(`media_contact_email`) == 1)) {
-          stop(paste("Error! Invalid data for `media_contact_email`. Must be a string:", `media_contact_email`))
+      if (!missing(`po_number`)) {
+        if (!(is.character(`po_number`) && length(`po_number`) == 1)) {
+          stop(paste("Error! Invalid data for `po_number`. Must be a string:", `po_number`))
         }
-        self$`media_contact_email` <- `media_contact_email`
+        self$`po_number` <- `po_number`
       }
-      if (!missing(`pmp_id`)) {
-        if (!(is.character(`pmp_id`) && length(`pmp_id`) == 1)) {
-          stop(paste("Error! Invalid data for `pmp_id`. Must be a string:", `pmp_id`))
+      if (!missing(`start_date`)) {
+        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
         }
-        self$`pmp_id` <- `pmp_id`
+        self$`start_date` <- `start_date`
       }
-      if (!missing(`order_name`)) {
-        if (!(is.character(`order_name`) && length(`order_name`) == 1)) {
-          stop(paste("Error! Invalid data for `order_name`. Must be a string:", `order_name`))
+      if (!missing(`accepted_terms_id`)) {
+        if (!(is.character(`accepted_terms_id`) && length(`accepted_terms_id`) == 1)) {
+          stop(paste("Error! Invalid data for `accepted_terms_id`. Must be a string:", `accepted_terms_id`))
         }
-        self$`order_name` <- `order_name`
+        self$`accepted_terms_id` <- `accepted_terms_id`
+      }
+      if (!missing(`billto_billing_address_id`)) {
+        if (!(is.character(`billto_billing_address_id`) && length(`billto_billing_address_id`) == 1)) {
+          stop(paste("Error! Invalid data for `billto_billing_address_id`. Must be a string:", `billto_billing_address_id`))
+        }
+        self$`billto_billing_address_id` <- `billto_billing_address_id`
+      }
+      if (!missing(`billto_business_address_id`)) {
+        if (!(is.character(`billto_business_address_id`) && length(`billto_business_address_id`) == 1)) {
+          stop(paste("Error! Invalid data for `billto_business_address_id`. Must be a string:", `billto_business_address_id`))
+        }
+        self$`billto_business_address_id` <- `billto_business_address_id`
+      }
+      if (!missing(`billto_company_id`)) {
+        if (!(is.character(`billto_company_id`) && length(`billto_company_id`) == 1)) {
+          stop(paste("Error! Invalid data for `billto_company_id`. Must be a string:", `billto_company_id`))
+        }
+        self$`billto_company_id` <- `billto_company_id`
+      }
+      if (!missing(`currency_info`)) {
+        if (!(`currency_info` %in% c())) {
+          stop(paste("Error! \"", `currency_info`, "\" cannot be assigned to `currency_info`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`currency_info`))
+        self$`currency_info` <- `currency_info`
       }
       if (!missing(`order_line_type`)) {
         if (!(`order_line_type` %in% c("BUDGET", "PERPETUALS"))) {
@@ -154,51 +173,32 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         }
         self$`order_line_type` <- `order_line_type`
       }
-      if (!missing(`accepted_terms_id`)) {
-        if (!(is.character(`accepted_terms_id`) && length(`accepted_terms_id`) == 1)) {
-          stop(paste("Error! Invalid data for `accepted_terms_id`. Must be a string:", `accepted_terms_id`))
+      if (!missing(`order_name`)) {
+        if (!(is.character(`order_name`) && length(`order_name`) == 1)) {
+          stop(paste("Error! Invalid data for `order_name`. Must be a string:", `order_name`))
         }
-        self$`accepted_terms_id` <- `accepted_terms_id`
+        self$`order_name` <- `order_name`
       }
-      if (!missing(`billto_company_id`)) {
-        if (!(is.character(`billto_company_id`) && length(`billto_company_id`) == 1)) {
-          stop(paste("Error! Invalid data for `billto_company_id`. Must be a string:", `billto_company_id`))
+      if (!missing(`pmp_id`)) {
+        if (!(is.character(`pmp_id`) && length(`pmp_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pmp_id`. Must be a string:", `pmp_id`))
         }
-        self$`billto_company_id` <- `billto_company_id`
-      }
-      if (!missing(`billto_business_address_id`)) {
-        if (!(is.character(`billto_business_address_id`) && length(`billto_business_address_id`) == 1)) {
-          stop(paste("Error! Invalid data for `billto_business_address_id`. Must be a string:", `billto_business_address_id`))
-        }
-        self$`billto_business_address_id` <- `billto_business_address_id`
-      }
-      if (!missing(`billto_billing_address_id`)) {
-        if (!(is.character(`billto_billing_address_id`) && length(`billto_billing_address_id`) == 1)) {
-          stop(paste("Error! Invalid data for `billto_billing_address_id`. Must be a string:", `billto_billing_address_id`))
-        }
-        self$`billto_billing_address_id` <- `billto_billing_address_id`
-      }
-      if (!missing(`currency_info`)) {
-        if (!(`currency_info` %in% c())) {
-          stop(paste("Error! \"", `currency_info`, "\" cannot be assigned to `currency_info`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`currency_info`))
-        self$`currency_info` <- `currency_info`
-      }
-      if (!is.null(`end_date`)) {
-        if (!(is.character(`end_date`) && length(`end_date`) == 1)) {
-          stop(paste("Error! Invalid data for `end_date`. Must be a string:", `end_date`))
-        }
-        self$`end_date` <- `end_date`
-      }
-      if (!is.null(`budget_amount`)) {
-        self$`budget_amount` <- `budget_amount`
+        self$`pmp_id` <- `pmp_id`
       }
       if (!is.null(`agency_link`)) {
         if (!(is.character(`agency_link`) && length(`agency_link`) == 1)) {
           stop(paste("Error! Invalid data for `agency_link`. Must be a string:", `agency_link`))
         }
         self$`agency_link` <- `agency_link`
+      }
+      if (!is.null(`budget_amount`)) {
+        self$`budget_amount` <- `budget_amount`
+      }
+      if (!is.null(`end_date`)) {
+        if (!(is.character(`end_date`) && length(`end_date`) == 1)) {
+          stop(paste("Error! Invalid data for `end_date`. Must be a string:", `end_date`))
+        }
+        self$`end_date` <- `end_date`
       }
       if (!is.null(`user_email`)) {
         if (!(is.character(`user_email`) && length(`user_email`) == 1)) {
@@ -248,21 +248,13 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SSIOCreateInsertionOrderRequestObject <- list()
-      if (!is.null(self$`start_date`)) {
-        SSIOCreateInsertionOrderRequestObject[["start_date"]] <-
-          self$`start_date`
+      if (!is.null(self$`agency_link`)) {
+        SSIOCreateInsertionOrderRequestObject[["agency_link"]] <-
+          self$`agency_link`
       }
-      if (!is.null(self$`end_date`)) {
-        SSIOCreateInsertionOrderRequestObject[["end_date"]] <-
-          self$`end_date`
-      }
-      if (!is.null(self$`po_number`)) {
-        SSIOCreateInsertionOrderRequestObject[["po_number"]] <-
-          self$`po_number`
-      }
-      if (!is.null(self$`budget_amount`)) {
-        SSIOCreateInsertionOrderRequestObject[["budget_amount"]] <-
-          self$`budget_amount`
+      if (!is.null(self$`billing_contact_email`)) {
+        SSIOCreateInsertionOrderRequestObject[["billing_contact_email"]] <-
+          self$`billing_contact_email`
       }
       if (!is.null(self$`billing_contact_firstname`)) {
         SSIOCreateInsertionOrderRequestObject[["billing_contact_firstname"]] <-
@@ -272,9 +264,17 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         SSIOCreateInsertionOrderRequestObject[["billing_contact_lastname"]] <-
           self$`billing_contact_lastname`
       }
-      if (!is.null(self$`billing_contact_email`)) {
-        SSIOCreateInsertionOrderRequestObject[["billing_contact_email"]] <-
-          self$`billing_contact_email`
+      if (!is.null(self$`budget_amount`)) {
+        SSIOCreateInsertionOrderRequestObject[["budget_amount"]] <-
+          self$`budget_amount`
+      }
+      if (!is.null(self$`end_date`)) {
+        SSIOCreateInsertionOrderRequestObject[["end_date"]] <-
+          self$`end_date`
+      }
+      if (!is.null(self$`media_contact_email`)) {
+        SSIOCreateInsertionOrderRequestObject[["media_contact_email"]] <-
+          self$`media_contact_email`
       }
       if (!is.null(self$`media_contact_firstname`)) {
         SSIOCreateInsertionOrderRequestObject[["media_contact_firstname"]] <-
@@ -284,57 +284,57 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         SSIOCreateInsertionOrderRequestObject[["media_contact_lastname"]] <-
           self$`media_contact_lastname`
       }
-      if (!is.null(self$`media_contact_email`)) {
-        SSIOCreateInsertionOrderRequestObject[["media_contact_email"]] <-
-          self$`media_contact_email`
+      if (!is.null(self$`po_number`)) {
+        SSIOCreateInsertionOrderRequestObject[["po_number"]] <-
+          self$`po_number`
       }
-      if (!is.null(self$`agency_link`)) {
-        SSIOCreateInsertionOrderRequestObject[["agency_link"]] <-
-          self$`agency_link`
+      if (!is.null(self$`start_date`)) {
+        SSIOCreateInsertionOrderRequestObject[["start_date"]] <-
+          self$`start_date`
       }
       if (!is.null(self$`user_email`)) {
         SSIOCreateInsertionOrderRequestObject[["user_email"]] <-
           self$`user_email`
       }
-      if (!is.null(self$`accepted_terms_time`)) {
-        SSIOCreateInsertionOrderRequestObject[["accepted_terms_time"]] <-
-          self$`accepted_terms_time`
-      }
-      if (!is.null(self$`pmp_id`)) {
-        SSIOCreateInsertionOrderRequestObject[["pmp_id"]] <-
-          self$`pmp_id`
-      }
-      if (!is.null(self$`order_name`)) {
-        SSIOCreateInsertionOrderRequestObject[["order_name"]] <-
-          self$`order_name`
-      }
-      if (!is.null(self$`order_line_type`)) {
-        SSIOCreateInsertionOrderRequestObject[["order_line_type"]] <-
-          self$`order_line_type`
-      }
       if (!is.null(self$`accepted_terms_id`)) {
         SSIOCreateInsertionOrderRequestObject[["accepted_terms_id"]] <-
           self$`accepted_terms_id`
       }
-      if (!is.null(self$`billto_company_id`)) {
-        SSIOCreateInsertionOrderRequestObject[["billto_company_id"]] <-
-          self$`billto_company_id`
-      }
-      if (!is.null(self$`billto_business_address_id`)) {
-        SSIOCreateInsertionOrderRequestObject[["billto_business_address_id"]] <-
-          self$`billto_business_address_id`
+      if (!is.null(self$`accepted_terms_time`)) {
+        SSIOCreateInsertionOrderRequestObject[["accepted_terms_time"]] <-
+          self$`accepted_terms_time`
       }
       if (!is.null(self$`billto_billing_address_id`)) {
         SSIOCreateInsertionOrderRequestObject[["billto_billing_address_id"]] <-
           self$`billto_billing_address_id`
       }
-      if (!is.null(self$`estimated_monthly_spend`)) {
-        SSIOCreateInsertionOrderRequestObject[["estimated_monthly_spend"]] <-
-          self$`estimated_monthly_spend`
+      if (!is.null(self$`billto_business_address_id`)) {
+        SSIOCreateInsertionOrderRequestObject[["billto_business_address_id"]] <-
+          self$`billto_business_address_id`
+      }
+      if (!is.null(self$`billto_company_id`)) {
+        SSIOCreateInsertionOrderRequestObject[["billto_company_id"]] <-
+          self$`billto_company_id`
       }
       if (!is.null(self$`currency_info`)) {
         SSIOCreateInsertionOrderRequestObject[["currency_info"]] <-
           self$`currency_info`$toSimpleType()
+      }
+      if (!is.null(self$`estimated_monthly_spend`)) {
+        SSIOCreateInsertionOrderRequestObject[["estimated_monthly_spend"]] <-
+          self$`estimated_monthly_spend`
+      }
+      if (!is.null(self$`order_line_type`)) {
+        SSIOCreateInsertionOrderRequestObject[["order_line_type"]] <-
+          self$`order_line_type`
+      }
+      if (!is.null(self$`order_name`)) {
+        SSIOCreateInsertionOrderRequestObject[["order_name"]] <-
+          self$`order_name`
+      }
+      if (!is.null(self$`pmp_id`)) {
+        SSIOCreateInsertionOrderRequestObject[["pmp_id"]] <-
+          self$`pmp_id`
       }
       return(SSIOCreateInsertionOrderRequestObject)
     },
@@ -346,17 +346,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #' @return the instance of SSIOCreateInsertionOrderRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`start_date`)) {
-        self$`start_date` <- this_object$`start_date`
+      if (!is.null(this_object$`agency_link`)) {
+        self$`agency_link` <- this_object$`agency_link`
       }
-      if (!is.null(this_object$`end_date`)) {
-        self$`end_date` <- this_object$`end_date`
-      }
-      if (!is.null(this_object$`po_number`)) {
-        self$`po_number` <- this_object$`po_number`
-      }
-      if (!is.null(this_object$`budget_amount`)) {
-        self$`budget_amount` <- this_object$`budget_amount`
+      if (!is.null(this_object$`billing_contact_email`)) {
+        self$`billing_contact_email` <- this_object$`billing_contact_email`
       }
       if (!is.null(this_object$`billing_contact_firstname`)) {
         self$`billing_contact_firstname` <- this_object$`billing_contact_firstname`
@@ -364,8 +358,14 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       if (!is.null(this_object$`billing_contact_lastname`)) {
         self$`billing_contact_lastname` <- this_object$`billing_contact_lastname`
       }
-      if (!is.null(this_object$`billing_contact_email`)) {
-        self$`billing_contact_email` <- this_object$`billing_contact_email`
+      if (!is.null(this_object$`budget_amount`)) {
+        self$`budget_amount` <- this_object$`budget_amount`
+      }
+      if (!is.null(this_object$`end_date`)) {
+        self$`end_date` <- this_object$`end_date`
+      }
+      if (!is.null(this_object$`media_contact_email`)) {
+        self$`media_contact_email` <- this_object$`media_contact_email`
       }
       if (!is.null(this_object$`media_contact_firstname`)) {
         self$`media_contact_firstname` <- this_object$`media_contact_firstname`
@@ -373,23 +373,37 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       if (!is.null(this_object$`media_contact_lastname`)) {
         self$`media_contact_lastname` <- this_object$`media_contact_lastname`
       }
-      if (!is.null(this_object$`media_contact_email`)) {
-        self$`media_contact_email` <- this_object$`media_contact_email`
+      if (!is.null(this_object$`po_number`)) {
+        self$`po_number` <- this_object$`po_number`
       }
-      if (!is.null(this_object$`agency_link`)) {
-        self$`agency_link` <- this_object$`agency_link`
+      if (!is.null(this_object$`start_date`)) {
+        self$`start_date` <- this_object$`start_date`
       }
       if (!is.null(this_object$`user_email`)) {
         self$`user_email` <- this_object$`user_email`
       }
+      if (!is.null(this_object$`accepted_terms_id`)) {
+        self$`accepted_terms_id` <- this_object$`accepted_terms_id`
+      }
       if (!is.null(this_object$`accepted_terms_time`)) {
         self$`accepted_terms_time` <- this_object$`accepted_terms_time`
       }
-      if (!is.null(this_object$`pmp_id`)) {
-        self$`pmp_id` <- this_object$`pmp_id`
+      if (!is.null(this_object$`billto_billing_address_id`)) {
+        self$`billto_billing_address_id` <- this_object$`billto_billing_address_id`
       }
-      if (!is.null(this_object$`order_name`)) {
-        self$`order_name` <- this_object$`order_name`
+      if (!is.null(this_object$`billto_business_address_id`)) {
+        self$`billto_business_address_id` <- this_object$`billto_business_address_id`
+      }
+      if (!is.null(this_object$`billto_company_id`)) {
+        self$`billto_company_id` <- this_object$`billto_company_id`
+      }
+      if (!is.null(this_object$`currency_info`)) {
+        `currency_info_object` <- Currency$new()
+        `currency_info_object`$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
+        self$`currency_info` <- `currency_info_object`
+      }
+      if (!is.null(this_object$`estimated_monthly_spend`)) {
+        self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
       }
       if (!is.null(this_object$`order_line_type`)) {
         if (!is.null(this_object$`order_line_type`) && !(this_object$`order_line_type` %in% c("BUDGET", "PERPETUALS"))) {
@@ -397,25 +411,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         }
         self$`order_line_type` <- this_object$`order_line_type`
       }
-      if (!is.null(this_object$`accepted_terms_id`)) {
-        self$`accepted_terms_id` <- this_object$`accepted_terms_id`
+      if (!is.null(this_object$`order_name`)) {
+        self$`order_name` <- this_object$`order_name`
       }
-      if (!is.null(this_object$`billto_company_id`)) {
-        self$`billto_company_id` <- this_object$`billto_company_id`
-      }
-      if (!is.null(this_object$`billto_business_address_id`)) {
-        self$`billto_business_address_id` <- this_object$`billto_business_address_id`
-      }
-      if (!is.null(this_object$`billto_billing_address_id`)) {
-        self$`billto_billing_address_id` <- this_object$`billto_billing_address_id`
-      }
-      if (!is.null(this_object$`estimated_monthly_spend`)) {
-        self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
-      }
-      if (!is.null(this_object$`currency_info`)) {
-        `currency_info_object` <- Currency$new()
-        `currency_info_object`$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
-        self$`currency_info` <- `currency_info_object`
+      if (!is.null(this_object$`pmp_id`)) {
+        self$`pmp_id` <- this_object$`pmp_id`
       }
       self
     },
@@ -438,31 +438,31 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #' @return the instance of SSIOCreateInsertionOrderRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`start_date` <- this_object$`start_date`
-      self$`end_date` <- this_object$`end_date`
-      self$`po_number` <- this_object$`po_number`
-      self$`budget_amount` <- this_object$`budget_amount`
+      self$`agency_link` <- this_object$`agency_link`
+      self$`billing_contact_email` <- this_object$`billing_contact_email`
       self$`billing_contact_firstname` <- this_object$`billing_contact_firstname`
       self$`billing_contact_lastname` <- this_object$`billing_contact_lastname`
-      self$`billing_contact_email` <- this_object$`billing_contact_email`
+      self$`budget_amount` <- this_object$`budget_amount`
+      self$`end_date` <- this_object$`end_date`
+      self$`media_contact_email` <- this_object$`media_contact_email`
       self$`media_contact_firstname` <- this_object$`media_contact_firstname`
       self$`media_contact_lastname` <- this_object$`media_contact_lastname`
-      self$`media_contact_email` <- this_object$`media_contact_email`
-      self$`agency_link` <- this_object$`agency_link`
+      self$`po_number` <- this_object$`po_number`
+      self$`start_date` <- this_object$`start_date`
       self$`user_email` <- this_object$`user_email`
+      self$`accepted_terms_id` <- this_object$`accepted_terms_id`
       self$`accepted_terms_time` <- this_object$`accepted_terms_time`
-      self$`pmp_id` <- this_object$`pmp_id`
-      self$`order_name` <- this_object$`order_name`
+      self$`billto_billing_address_id` <- this_object$`billto_billing_address_id`
+      self$`billto_business_address_id` <- this_object$`billto_business_address_id`
+      self$`billto_company_id` <- this_object$`billto_company_id`
+      self$`currency_info` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
+      self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
       if (!is.null(this_object$`order_line_type`) && !(this_object$`order_line_type` %in% c("BUDGET", "PERPETUALS"))) {
         stop(paste("Error! \"", this_object$`order_line_type`, "\" cannot be assigned to `order_line_type`. Must be \"BUDGET\", \"PERPETUALS\".", sep = ""))
       }
       self$`order_line_type` <- this_object$`order_line_type`
-      self$`accepted_terms_id` <- this_object$`accepted_terms_id`
-      self$`billto_company_id` <- this_object$`billto_company_id`
-      self$`billto_business_address_id` <- this_object$`billto_business_address_id`
-      self$`billto_billing_address_id` <- this_object$`billto_billing_address_id`
-      self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
-      self$`currency_info` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
+      self$`order_name` <- this_object$`order_name`
+      self$`pmp_id` <- this_object$`pmp_id`
       self
     },
 
@@ -472,21 +472,13 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `start_date`
-      if (!is.null(input_json$`start_date`)) {
-        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
+      # check the required field `billing_contact_email`
+      if (!is.null(input_json$`billing_contact_email`)) {
+        if (!(is.character(input_json$`billing_contact_email`) && length(input_json$`billing_contact_email`) == 1)) {
+          stop(paste("Error! Invalid data for `billing_contact_email`. Must be a string:", input_json$`billing_contact_email`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `start_date` is missing."))
-      }
-      # check the required field `po_number`
-      if (!is.null(input_json$`po_number`)) {
-        if (!(is.character(input_json$`po_number`) && length(input_json$`po_number`) == 1)) {
-          stop(paste("Error! Invalid data for `po_number`. Must be a string:", input_json$`po_number`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `po_number` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billing_contact_email` is missing."))
       }
       # check the required field `billing_contact_firstname`
       if (!is.null(input_json$`billing_contact_firstname`)) {
@@ -504,13 +496,13 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billing_contact_lastname` is missing."))
       }
-      # check the required field `billing_contact_email`
-      if (!is.null(input_json$`billing_contact_email`)) {
-        if (!(is.character(input_json$`billing_contact_email`) && length(input_json$`billing_contact_email`) == 1)) {
-          stop(paste("Error! Invalid data for `billing_contact_email`. Must be a string:", input_json$`billing_contact_email`))
+      # check the required field `media_contact_email`
+      if (!is.null(input_json$`media_contact_email`)) {
+        if (!(is.character(input_json$`media_contact_email`) && length(input_json$`media_contact_email`) == 1)) {
+          stop(paste("Error! Invalid data for `media_contact_email`. Must be a string:", input_json$`media_contact_email`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billing_contact_email` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `media_contact_email` is missing."))
       }
       # check the required field `media_contact_firstname`
       if (!is.null(input_json$`media_contact_firstname`)) {
@@ -528,37 +520,21 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `media_contact_lastname` is missing."))
       }
-      # check the required field `media_contact_email`
-      if (!is.null(input_json$`media_contact_email`)) {
-        if (!(is.character(input_json$`media_contact_email`) && length(input_json$`media_contact_email`) == 1)) {
-          stop(paste("Error! Invalid data for `media_contact_email`. Must be a string:", input_json$`media_contact_email`))
+      # check the required field `po_number`
+      if (!is.null(input_json$`po_number`)) {
+        if (!(is.character(input_json$`po_number`) && length(input_json$`po_number`) == 1)) {
+          stop(paste("Error! Invalid data for `po_number`. Must be a string:", input_json$`po_number`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `media_contact_email` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `po_number` is missing."))
       }
-      # check the required field `pmp_id`
-      if (!is.null(input_json$`pmp_id`)) {
-        if (!(is.character(input_json$`pmp_id`) && length(input_json$`pmp_id`) == 1)) {
-          stop(paste("Error! Invalid data for `pmp_id`. Must be a string:", input_json$`pmp_id`))
+      # check the required field `start_date`
+      if (!is.null(input_json$`start_date`)) {
+        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `pmp_id` is missing."))
-      }
-      # check the required field `order_name`
-      if (!is.null(input_json$`order_name`)) {
-        if (!(is.character(input_json$`order_name`) && length(input_json$`order_name`) == 1)) {
-          stop(paste("Error! Invalid data for `order_name`. Must be a string:", input_json$`order_name`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `order_name` is missing."))
-      }
-      # check the required field `order_line_type`
-      if (!is.null(input_json$`order_line_type`)) {
-        if (!(is.character(input_json$`order_line_type`) && length(input_json$`order_line_type`) == 1)) {
-          stop(paste("Error! Invalid data for `order_line_type`. Must be a string:", input_json$`order_line_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `order_line_type` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `start_date` is missing."))
       }
       # check the required field `accepted_terms_id`
       if (!is.null(input_json$`accepted_terms_id`)) {
@@ -568,13 +544,13 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `accepted_terms_id` is missing."))
       }
-      # check the required field `billto_company_id`
-      if (!is.null(input_json$`billto_company_id`)) {
-        if (!(is.character(input_json$`billto_company_id`) && length(input_json$`billto_company_id`) == 1)) {
-          stop(paste("Error! Invalid data for `billto_company_id`. Must be a string:", input_json$`billto_company_id`))
+      # check the required field `billto_billing_address_id`
+      if (!is.null(input_json$`billto_billing_address_id`)) {
+        if (!(is.character(input_json$`billto_billing_address_id`) && length(input_json$`billto_billing_address_id`) == 1)) {
+          stop(paste("Error! Invalid data for `billto_billing_address_id`. Must be a string:", input_json$`billto_billing_address_id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billto_company_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billto_billing_address_id` is missing."))
       }
       # check the required field `billto_business_address_id`
       if (!is.null(input_json$`billto_business_address_id`)) {
@@ -584,19 +560,43 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billto_business_address_id` is missing."))
       }
-      # check the required field `billto_billing_address_id`
-      if (!is.null(input_json$`billto_billing_address_id`)) {
-        if (!(is.character(input_json$`billto_billing_address_id`) && length(input_json$`billto_billing_address_id`) == 1)) {
-          stop(paste("Error! Invalid data for `billto_billing_address_id`. Must be a string:", input_json$`billto_billing_address_id`))
+      # check the required field `billto_company_id`
+      if (!is.null(input_json$`billto_company_id`)) {
+        if (!(is.character(input_json$`billto_company_id`) && length(input_json$`billto_company_id`) == 1)) {
+          stop(paste("Error! Invalid data for `billto_company_id`. Must be a string:", input_json$`billto_company_id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billto_billing_address_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `billto_company_id` is missing."))
       }
       # check the required field `currency_info`
       if (!is.null(input_json$`currency_info`)) {
         stopifnot(R6::is.R6(input_json$`currency_info`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `currency_info` is missing."))
+      }
+      # check the required field `order_line_type`
+      if (!is.null(input_json$`order_line_type`)) {
+        if (!(is.character(input_json$`order_line_type`) && length(input_json$`order_line_type`) == 1)) {
+          stop(paste("Error! Invalid data for `order_line_type`. Must be a string:", input_json$`order_line_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `order_line_type` is missing."))
+      }
+      # check the required field `order_name`
+      if (!is.null(input_json$`order_name`)) {
+        if (!(is.character(input_json$`order_name`) && length(input_json$`order_name`) == 1)) {
+          stop(paste("Error! Invalid data for `order_name`. Must be a string:", input_json$`order_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `order_name` is missing."))
+      }
+      # check the required field `pmp_id`
+      if (!is.null(input_json$`pmp_id`)) {
+        if (!(is.character(input_json$`pmp_id`) && length(input_json$`pmp_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pmp_id`. Must be a string:", input_json$`pmp_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `pmp_id` is missing."))
       }
     },
 
@@ -613,21 +613,8 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`end_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        return(FALSE)
-      }
-
-      # check if the required `po_number` is null
-      if (is.null(self$`po_number`)) {
+      # check if the required `billing_contact_email` is null
+      if (is.null(self$`billing_contact_email`)) {
         return(FALSE)
       }
 
@@ -641,8 +628,12 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `billing_contact_email` is null
-      if (is.null(self$`billing_contact_email`)) {
+      if (!str_detect(self$`end_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        return(FALSE)
+      }
+
+      # check if the required `media_contact_email` is null
+      if (is.null(self$`media_contact_email`)) {
         return(FALSE)
       }
 
@@ -656,23 +647,17 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `media_contact_email` is null
-      if (is.null(self$`media_contact_email`)) {
+      # check if the required `po_number` is null
+      if (is.null(self$`po_number`)) {
         return(FALSE)
       }
 
-      # check if the required `pmp_id` is null
-      if (is.null(self$`pmp_id`)) {
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
         return(FALSE)
       }
 
-      # check if the required `order_name` is null
-      if (is.null(self$`order_name`)) {
-        return(FALSE)
-      }
-
-      # check if the required `order_line_type` is null
-      if (is.null(self$`order_line_type`)) {
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
         return(FALSE)
       }
 
@@ -681,8 +666,8 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `billto_company_id` is null
-      if (is.null(self$`billto_company_id`)) {
+      # check if the required `billto_billing_address_id` is null
+      if (is.null(self$`billto_billing_address_id`)) {
         return(FALSE)
       }
 
@@ -691,13 +676,28 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `billto_billing_address_id` is null
-      if (is.null(self$`billto_billing_address_id`)) {
+      # check if the required `billto_company_id` is null
+      if (is.null(self$`billto_company_id`)) {
         return(FALSE)
       }
 
       # check if the required `currency_info` is null
       if (is.null(self$`currency_info`)) {
+        return(FALSE)
+      }
+
+      # check if the required `order_line_type` is null
+      if (is.null(self$`order_line_type`)) {
+        return(FALSE)
+      }
+
+      # check if the required `order_name` is null
+      if (is.null(self$`order_name`)) {
+        return(FALSE)
+      }
+
+      # check if the required `pmp_id` is null
+      if (is.null(self$`pmp_id`)) {
         return(FALSE)
       }
 
@@ -710,22 +710,9 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
-      }
-
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
-      }
-
-      if (!str_detect(self$`end_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        invalid_fields["end_date"] <- "Invalid value for `end_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
-      }
-
-      # check if the required `po_number` is null
-      if (is.null(self$`po_number`)) {
-        invalid_fields["po_number"] <- "Non-nullable required field `po_number` cannot be null."
+      # check if the required `billing_contact_email` is null
+      if (is.null(self$`billing_contact_email`)) {
+        invalid_fields["billing_contact_email"] <- "Non-nullable required field `billing_contact_email` cannot be null."
       }
 
       # check if the required `billing_contact_firstname` is null
@@ -738,9 +725,13 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         invalid_fields["billing_contact_lastname"] <- "Non-nullable required field `billing_contact_lastname` cannot be null."
       }
 
-      # check if the required `billing_contact_email` is null
-      if (is.null(self$`billing_contact_email`)) {
-        invalid_fields["billing_contact_email"] <- "Non-nullable required field `billing_contact_email` cannot be null."
+      if (!str_detect(self$`end_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        invalid_fields["end_date"] <- "Invalid value for `end_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
+      }
+
+      # check if the required `media_contact_email` is null
+      if (is.null(self$`media_contact_email`)) {
+        invalid_fields["media_contact_email"] <- "Non-nullable required field `media_contact_email` cannot be null."
       }
 
       # check if the required `media_contact_firstname` is null
@@ -753,24 +744,18 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         invalid_fields["media_contact_lastname"] <- "Non-nullable required field `media_contact_lastname` cannot be null."
       }
 
-      # check if the required `media_contact_email` is null
-      if (is.null(self$`media_contact_email`)) {
-        invalid_fields["media_contact_email"] <- "Non-nullable required field `media_contact_email` cannot be null."
+      # check if the required `po_number` is null
+      if (is.null(self$`po_number`)) {
+        invalid_fields["po_number"] <- "Non-nullable required field `po_number` cannot be null."
       }
 
-      # check if the required `pmp_id` is null
-      if (is.null(self$`pmp_id`)) {
-        invalid_fields["pmp_id"] <- "Non-nullable required field `pmp_id` cannot be null."
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
+        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
       }
 
-      # check if the required `order_name` is null
-      if (is.null(self$`order_name`)) {
-        invalid_fields["order_name"] <- "Non-nullable required field `order_name` cannot be null."
-      }
-
-      # check if the required `order_line_type` is null
-      if (is.null(self$`order_line_type`)) {
-        invalid_fields["order_line_type"] <- "Non-nullable required field `order_line_type` cannot be null."
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
       }
 
       # check if the required `accepted_terms_id` is null
@@ -778,9 +763,9 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         invalid_fields["accepted_terms_id"] <- "Non-nullable required field `accepted_terms_id` cannot be null."
       }
 
-      # check if the required `billto_company_id` is null
-      if (is.null(self$`billto_company_id`)) {
-        invalid_fields["billto_company_id"] <- "Non-nullable required field `billto_company_id` cannot be null."
+      # check if the required `billto_billing_address_id` is null
+      if (is.null(self$`billto_billing_address_id`)) {
+        invalid_fields["billto_billing_address_id"] <- "Non-nullable required field `billto_billing_address_id` cannot be null."
       }
 
       # check if the required `billto_business_address_id` is null
@@ -788,14 +773,29 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         invalid_fields["billto_business_address_id"] <- "Non-nullable required field `billto_business_address_id` cannot be null."
       }
 
-      # check if the required `billto_billing_address_id` is null
-      if (is.null(self$`billto_billing_address_id`)) {
-        invalid_fields["billto_billing_address_id"] <- "Non-nullable required field `billto_billing_address_id` cannot be null."
+      # check if the required `billto_company_id` is null
+      if (is.null(self$`billto_company_id`)) {
+        invalid_fields["billto_company_id"] <- "Non-nullable required field `billto_company_id` cannot be null."
       }
 
       # check if the required `currency_info` is null
       if (is.null(self$`currency_info`)) {
         invalid_fields["currency_info"] <- "Non-nullable required field `currency_info` cannot be null."
+      }
+
+      # check if the required `order_line_type` is null
+      if (is.null(self$`order_line_type`)) {
+        invalid_fields["order_line_type"] <- "Non-nullable required field `order_line_type` cannot be null."
+      }
+
+      # check if the required `order_name` is null
+      if (is.null(self$`order_name`)) {
+        invalid_fields["order_name"] <- "Non-nullable required field `order_name` cannot be null."
+      }
+
+      # check if the required `pmp_id` is null
+      if (is.null(self$`pmp_id`)) {
+        invalid_fields["pmp_id"] <- "Non-nullable required field `pmp_id` cannot be null."
       }
 
       invalid_fields

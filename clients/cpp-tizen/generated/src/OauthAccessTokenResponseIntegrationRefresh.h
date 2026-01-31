@@ -61,25 +61,11 @@ public:
 	void setRefreshTokenExpiresIn(int  refresh_token_expires_in);
 	/*! \brief Get 
 	 */
-	std::string getResponseType();
-
-	/*! \brief Set 
-	 */
-	void setResponseType(std::string  response_type);
-	/*! \brief Get 
-	 */
 	std::string getAccessToken();
 
 	/*! \brief Set 
 	 */
 	void setAccessToken(std::string  access_token);
-	/*! \brief Get 
-	 */
-	std::string getTokenType();
-
-	/*! \brief Set 
-	 */
-	void setTokenType(std::string  token_type);
 	/*! \brief Get 
 	 */
 	int getExpiresIn();
@@ -89,20 +75,34 @@ public:
 	void setExpiresIn(int  expires_in);
 	/*! \brief Get 
 	 */
+	std::string getResponseType();
+
+	/*! \brief Set 
+	 */
+	void setResponseType(std::string  response_type);
+	/*! \brief Get 
+	 */
 	std::string getScope();
 
 	/*! \brief Set 
 	 */
 	void setScope(std::string  scope);
+	/*! \brief Get 
+	 */
+	std::string getTokenType();
+
+	/*! \brief Set 
+	 */
+	void setTokenType(std::string  token_type);
 
 private:
 	std::string refresh_token;
 	int refresh_token_expires_in;
-	std::string response_type;
 	std::string access_token;
-	std::string token_type;
 	int expires_in;
+	std::string response_type;
 	std::string scope;
+	std::string token_type;
 	void __init();
 	void __cleanup();
 

@@ -15,12 +15,24 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRange   {
   
+  private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
   private TemplateResponseDateRangeDynamicDateRange dynamicDateRange;
   private TemplateResponseDateRangeRelativeDateRange relativeDateRange;
-  private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("absolute_date_range")
+  public TemplateResponseDateRangeAbsoluteDateRange getAbsoluteDateRange() {
+    return absoluteDateRange;
+  }
+  public void setAbsoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
+    this.absoluteDateRange = absoluteDateRange;
+  }
 
   /**
    **/
@@ -46,18 +58,6 @@ public class TemplateResponseDateRange   {
     this.relativeDateRange = relativeDateRange;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("absolute_date_range")
-  public TemplateResponseDateRangeAbsoluteDateRange getAbsoluteDateRange() {
-    return absoluteDateRange;
-  }
-  public void setAbsoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
-    this.absoluteDateRange = absoluteDateRange;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -68,14 +68,14 @@ public class TemplateResponseDateRange   {
       return false;
     }
     TemplateResponseDateRange templateResponseDateRange = (TemplateResponseDateRange) o;
-    return Objects.equals(this.dynamicDateRange, templateResponseDateRange.dynamicDateRange) &&
-        Objects.equals(this.relativeDateRange, templateResponseDateRange.relativeDateRange) &&
-        Objects.equals(this.absoluteDateRange, templateResponseDateRange.absoluteDateRange);
+    return Objects.equals(this.absoluteDateRange, templateResponseDateRange.absoluteDateRange) &&
+        Objects.equals(this.dynamicDateRange, templateResponseDateRange.dynamicDateRange) &&
+        Objects.equals(this.relativeDateRange, templateResponseDateRange.relativeDateRange);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dynamicDateRange, relativeDateRange, absoluteDateRange);
+    return Objects.hash(absoluteDateRange, dynamicDateRange, relativeDateRange);
   }
 
   @Override
@@ -83,9 +83,9 @@ public class TemplateResponseDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRange {\n");
     
+    sb.append("    absoluteDateRange: ").append(toIndentedString(absoluteDateRange)).append("\n");
     sb.append("    dynamicDateRange: ").append(toIndentedString(dynamicDateRange)).append("\n");
     sb.append("    relativeDateRange: ").append(toIndentedString(relativeDateRange)).append("\n");
-    sb.append("    absoluteDateRange: ").append(toIndentedString(absoluteDateRange)).append("\n");
     sb.append("}");
     return sb.toString();
   }

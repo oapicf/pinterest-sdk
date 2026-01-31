@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,12 +16,12 @@ package openapi
 
 type ConversionTagResponse struct {
 
-	// Ad account ID.
-	AdAccountId string `json:"ad_account_id,omitempty"`
-
 	// Tag code snippet.
 	CodeSnippet string `json:"code_snippet,omitempty"`
 
+	Configs ConversionTagConfigs `json:"configs,omitempty"`
+
+	// The enhanced match status of the tag
 	EnhancedMatchStatus *EnhancedMatchStatusType `json:"enhanced_match_status,omitempty"`
 
 	// Tag ID.
@@ -31,18 +31,29 @@ type ConversionTagResponse struct {
 	LastFiredTimeMs *float32 `json:"last_fired_time_ms,omitempty"`
 
 	// Conversion tag name.
-	Name string `json:"name,omitempty"`
-
-	Status EntityStatus `json:"status,omitempty"`
+	Name string `json:"name"`
 
 	// Version number.
 	Version string `json:"version,omitempty"`
 
-	Configs ConversionTagConfigs `json:"configs,omitempty"`
+	// Ad account ID.
+	AdAccountId string `json:"ad_account_id"`
+
+	Status EntityStatus `json:"status,omitempty"`
 }
 
 // AssertConversionTagResponseRequired checks if the required fields are not zero-ed
 func AssertConversionTagResponseRequired(obj ConversionTagResponse) error {
+	elements := map[string]interface{}{
+		"name": obj.Name,
+		"ad_account_id": obj.AdAccountId,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	if err := AssertConversionTagConfigsRequired(obj.Configs); err != nil {
 		return err
 	}

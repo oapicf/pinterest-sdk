@@ -20,6 +20,8 @@ public struct OptimizationGoalMetadataFrequencyGoalMetadata: Codable, JSONEncoda
         case tenMinute = "TEN_MINUTE"
         case twentyFourHour = "TWENTY_FOUR_HOUR"
     }
+    public static let frequencyRule = NumericRule<Int>(minimum: 2, exclusiveMinimum: false, maximum: 20, exclusiveMaximum: false, multipleOf: nil)
+    /** Frequency target can only be between 2 and 20 */
     public var frequency: Int?
     /** User entity counts time range */
     public var timerange: Timerange?

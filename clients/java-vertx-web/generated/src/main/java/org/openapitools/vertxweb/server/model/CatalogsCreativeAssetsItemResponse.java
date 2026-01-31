@@ -18,19 +18,28 @@ import org.openapitools.vertxweb.server.model.Pin;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsItemResponse   {
   
+  private CatalogsCreativeAssetsAttributes attributes;
   private CatalogsType catalogType;
   private String creativeAssetsId;
   private List<Pin> pins;
-  private CatalogsCreativeAssetsAttributes attributes;
 
   public CatalogsCreativeAssetsItemResponse () {
 
   }
 
-  public CatalogsCreativeAssetsItemResponse (CatalogsType catalogType, String creativeAssetsId, List<Pin> pins, CatalogsCreativeAssetsAttributes attributes) {
+  public CatalogsCreativeAssetsItemResponse (CatalogsCreativeAssetsAttributes attributes, CatalogsType catalogType, String creativeAssetsId, List<Pin> pins) {
+    this.attributes = attributes;
     this.catalogType = catalogType;
     this.creativeAssetsId = creativeAssetsId;
     this.pins = pins;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -61,15 +70,6 @@ public class CatalogsCreativeAssetsItemResponse   {
     this.pins = pins;
   }
 
-    
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,15 +80,15 @@ public class CatalogsCreativeAssetsItemResponse   {
       return false;
     }
     CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse = (CatalogsCreativeAssetsItemResponse) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
-        Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins) &&
-        Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes);
+        Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, pins, attributes);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
   }
 
   @Override
@@ -96,10 +96,10 @@ public class CatalogsCreativeAssetsItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

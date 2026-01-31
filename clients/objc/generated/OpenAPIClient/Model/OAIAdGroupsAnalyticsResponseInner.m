@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"dATE"];
+  NSArray *optionalProperties = @[@"aDGROUPID", @"dATE"];
   return [optionalProperties containsObject:propertyName];
 }
 

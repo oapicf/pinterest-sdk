@@ -27,16 +27,16 @@ class UpdateAssetGroupResponseTest : ShouldSpec() {
         // uncomment below to create an instance of UpdateAssetGroupResponse
         //val modelInstance = UpdateAssetGroupResponse()
 
-        // to test the property `updatedAssetGroups` - A list of successfully edited asset groups.
-        should("test updatedAssetGroups") {
-            // uncomment below to test the property
-            //modelInstance.updatedAssetGroups shouldBe ("TODO")
-        }
-
         // to test the property `exceptions` - A list of errors associated with the asset groups. Will be returned if there is an error.
         should("test exceptions") {
             // uncomment below to test the property
             //modelInstance.exceptions shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAssetGroups` - A list of successfully edited asset groups.
+        should("test updatedAssetGroups") {
+            // uncomment below to test the property
+            //modelInstance.updatedAssetGroups shouldBe ("TODO")
         }
 
     }

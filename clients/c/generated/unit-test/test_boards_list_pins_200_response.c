@@ -22,13 +22,13 @@ boards_list_pins_200_response_t* instantiate_boards_list_pins_200_response(int i
   boards_list_pins_200_response_t* boards_list_pins_200_response = NULL;
   if (include_optional) {
     boards_list_pins_200_response = boards_list_pins_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     boards_list_pins_200_response = boards_list_pins_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

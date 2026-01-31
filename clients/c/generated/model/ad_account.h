@@ -22,7 +22,7 @@ typedef struct ad_account_t ad_account_t;
 
 // Enum  for ad_account
 
-typedef enum  { pinterest_rest_api_ad_account__NULL = 0, pinterest_rest_api_ad_account__OWNER, pinterest_rest_api_ad_account__ADMIN, pinterest_rest_api_ad_account__ANALYST, pinterest_rest_api_ad_account__SOS_READER, pinterest_rest_api_ad_account__FINANCE_MANAGER, pinterest_rest_api_ad_account__AUDIENCE_MANAGER, pinterest_rest_api_ad_account__CAMPAIGN_MANAGER, pinterest_rest_api_ad_account__CATALOGS_MANAGER, pinterest_rest_api_ad_account__RESTRICTED_OWNER, pinterest_rest_api_ad_account__PROFILE_MANAGER, pinterest_rest_api_ad_account__PROFILE_PUBLISHER, pinterest_rest_api_ad_account__RESOURCE_PINNER_LIST_OWNER, pinterest_rest_api_ad_account__RESOURCE_PINNER_LIST_READER, pinterest_rest_api_ad_account__BIZ_PINNER_LIST_SHARER, pinterest_rest_api_ad_account__RESOURCE_CONVERSION_TAGS_READER } pinterest_rest_api_ad_account__e;
+typedef enum  { pinterest_rest_api_ad_account__NULL = 0, pinterest_rest_api_ad_account__OWNER, pinterest_rest_api_ad_account__ADMIN, pinterest_rest_api_ad_account__ANALYST, pinterest_rest_api_ad_account__SOS_READER, pinterest_rest_api_ad_account__FINANCE_MANAGER, pinterest_rest_api_ad_account__FINANCE_VIEW, pinterest_rest_api_ad_account__FINANCE_EDIT, pinterest_rest_api_ad_account__AUDIENCE_MANAGER, pinterest_rest_api_ad_account__CAMPAIGN_MANAGER, pinterest_rest_api_ad_account__CATALOGS_MANAGER, pinterest_rest_api_ad_account__RESTRICTED_OWNER, pinterest_rest_api_ad_account__PROFILE_MANAGER, pinterest_rest_api_ad_account__PROFILE_PUBLISHER, pinterest_rest_api_ad_account__RESOURCE_PINNER_LIST_OWNER, pinterest_rest_api_ad_account__RESOURCE_PINNER_LIST_READER, pinterest_rest_api_ad_account__BIZ_PINNER_LIST_SHARER, pinterest_rest_api_ad_account__RESOURCE_CONVERSION_TAGS_READER } pinterest_rest_api_ad_account__e;
 
 char* ad_account_permissions_ToString(pinterest_rest_api_ad_account__e permissions);
 
@@ -31,26 +31,26 @@ pinterest_rest_api_ad_account__e ad_account_permissions_FromString(char* permiss
 
 
 typedef struct ad_account_t {
+    pinterest_rest_api_country__e country; //referenced enum
+    int created_time; //numeric
+    pinterest_rest_api_currency__e currency; //referenced enum
     char *id; // string
     char *name; // string
     struct ad_account_owner_t *owner; //model
-    pinterest_rest_api_country__e country; //referenced enum
-    pinterest_rest_api_currency__e currency; //referenced enum
     list_t *permissions; //nonprimitive container
-    int created_time; //numeric
     int updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_t;
 
 __attribute__((deprecated)) ad_account_t *ad_account_create(
+    pinterest_rest_api_country__e country,
+    int created_time,
+    pinterest_rest_api_currency__e currency,
     char *id,
     char *name,
     ad_account_owner_t *owner,
-    pinterest_rest_api_country__e country,
-    pinterest_rest_api_currency__e currency,
     list_t *permissions,
-    int created_time,
     int updated_time
 );
 

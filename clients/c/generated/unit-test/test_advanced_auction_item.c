@@ -23,16 +23,16 @@ advanced_auction_item_t* instantiate_advanced_auction_item(int include_optional)
   advanced_auction_item_t* advanced_auction_item = NULL;
   if (include_optional) {
     advanced_auction_item = advanced_auction_item_create(
+      pinterest_rest_api_advanced_auction_item__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_item__"US",
       pinterest_rest_api_advanced_auction_item__"EN",
        // false, not to have infinite recursion
       instantiate_advanced_auction_bid_options(0)
     );
   } else {
     advanced_auction_item = advanced_auction_item_create(
+      pinterest_rest_api_advanced_auction_item__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_item__"US",
       pinterest_rest_api_advanced_auction_item__"EN",
       NULL
     );

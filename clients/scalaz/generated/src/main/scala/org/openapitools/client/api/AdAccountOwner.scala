@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import AdAccountOwner._
 
 case class AdAccountOwner (
-  /* Public username for the user account */
-  username: Option[String],
-/* The owning account's user ID. */
-  id: Option[String])
+  /* The owning account's user ID. */
+  id: Option[String],
+/* Public username for the user account */
+  username: Option[String])
 
 object AdAccountOwner {
   import DateTimeCodecs._

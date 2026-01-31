@@ -4,43 +4,51 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for AdGroupUpdateRequest.
-  * @param name Ad group name.
-  * @param status Ad group/entity status.
+  * @param autoTargetingEnabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
+  * @param bidInMicroCurrency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
+  * @param bidStrategyType Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
   * @param budgetInMicroCurrency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
-  * @param bidInMicroCurrency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  * @param optimizationGoalMetadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-  * @param startTime Ad group start time. Unix timestamp in seconds. Defaults to current time.
-  * @param endTime Ad group end time. Unix timestamp in seconds.
-  * @param lifetimeFrequencyCap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  * @param trackingUrls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
   * @param campaignId Campaign ID of the ad group.
-  * @param bidStrategyType Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  * @param endTime Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+  * @param isCreativeOptimization Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
+  * @param lifetimeFrequencyCap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  * @param name Ad group name.
+  * @param optimizationGoalMetadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+  * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  * @param promotionApplicationLevel Specify if the promotion is applied at ad group or item level
+  * @param promotionId Promotion ID. To clear this field, set to null.
+  * @param startTime Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+  * @param status Ad group/entity status.
   * @param targetingTemplateIds Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+  * @param trackingUrls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+  * @param bidMultiplier <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
   * @param id Ad group ID.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AdGroupUpdateRequest(
-  name: Option[String],
-  status: Option[EntityStatus],
-  budgetInMicroCurrency: Option[Int],
-  bidInMicroCurrency: Option[Int],
-  optimizationGoalMetadata: Option[OptimizationGoalMetadata],
-  budgetType: Option[BudgetType],
-  startTime: Option[Int],
-  endTime: Option[Int],
-  targetingSpec: Option[TargetingSpec],
-  lifetimeFrequencyCap: Option[Int],
-  trackingUrls: Option[TrackingUrls],
   autoTargetingEnabled: Option[Boolean],
-  placementGroup: Option[PlacementGroupType],
-  pacingDeliveryType: Option[PacingDeliveryType],
-  campaignId: Option[String],
-  billableEvent: Option[ActionType],
+  bidInMicroCurrency: Option[Int],
   bidStrategyType: Option[AdGroupUpdateRequest.BidStrategyType.Value],
+  billableEvent: Option[ActionType],
+  budgetInMicroCurrency: Option[Int],
+  budgetType: Option[BudgetType],
+  campaignId: Option[String],
+  endTime: Option[Int],
+  isCreativeOptimization: Option[Boolean],
+  lifetimeFrequencyCap: Option[Int],
+  name: Option[String],
+  optimizationGoalMetadata: Option[OptimizationGoalMetadata],
+  pacingDeliveryType: Option[PacingDeliveryType],
+  placementGroup: Option[PlacementGroupType],
+  promotionApplicationLevel: Option[AdGroupUpdateRequest.PromotionApplicationLevel.Value],
+  promotionId: Option[String],
+  startTime: Option[Int],
+  status: Option[EntityStatus],
+  targetingSpec: Option[TargetingSpec],
   targetingTemplateIds: Option[List[String]],
+  trackingUrls: Option[TrackingUrls],
+  bidMultiplier: Option[BigDecimal],
   id: String
   additionalProperties: 
 )
@@ -48,7 +56,7 @@ case class AdGroupUpdateRequest(
 object AdGroupUpdateRequest {
   implicit lazy val adGroupUpdateRequestJsonFormat: Format[AdGroupUpdateRequest] = {
     val realJsonFormat = Json.format[AdGroupUpdateRequest]
-    val declaredPropNames = Set("name", "status", "budgetInMicroCurrency", "bidInMicroCurrency", "optimizationGoalMetadata", "budgetType", "startTime", "endTime", "targetingSpec", "lifetimeFrequencyCap", "trackingUrls", "autoTargetingEnabled", "placementGroup", "pacingDeliveryType", "campaignId", "billableEvent", "bidStrategyType", "targetingTemplateIds", "id")
+    val declaredPropNames = Set("autoTargetingEnabled", "bidInMicroCurrency", "bidStrategyType", "billableEvent", "budgetInMicroCurrency", "budgetType", "campaignId", "endTime", "isCreativeOptimization", "lifetimeFrequencyCap", "name", "optimizationGoalMetadata", "pacingDeliveryType", "placementGroup", "promotionApplicationLevel", "promotionId", "startTime", "status", "targetingSpec", "targetingTemplateIds", "trackingUrls", "bidMultiplier", "id")
     
     Format(
       Reads {
@@ -79,6 +87,16 @@ object AdGroupUpdateRequest {
 
     type BidStrategyType = Value
     implicit lazy val BidStrategyTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
+  }
+
+  // noinspection TypeAnnotation
+  object PromotionApplicationLevel extends Enumeration {
+    val NONE = Value("NONE")
+    val ITEM = Value("ITEM")
+    val ADGROUP = Value("AD_GROUP")
+
+    type PromotionApplicationLevel = Value
+    implicit lazy val PromotionApplicationLevelJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

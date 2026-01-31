@@ -11,9 +11,9 @@ module CreateMMMReportResponseData =
 
 
   type CreateMMMReportResponseData = {
-    ReportStatus : BulkReportingJobStatus;
-    Token : string;
     Message : string option;
+    ReportStatus : BulkReportingJobStatus;
     Status : string;
+    Token : string;
   }
   //#endregion

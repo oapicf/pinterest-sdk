@@ -7,16 +7,16 @@
 #' @title LeadFormsList200Response
 #' @description LeadFormsList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{LeadFormResponse})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{LeadFormResponse})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 LeadFormsList200Response <- R6::R6Class(
   "LeadFormsList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new LeadFormsList200Response class.
@@ -69,13 +69,13 @@ LeadFormsList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       LeadFormsList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        LeadFormsList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         LeadFormsList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        LeadFormsList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(LeadFormsList200ResponseObject)
     },
@@ -87,11 +87,11 @@ LeadFormsList200Response <- R6::R6Class(
     #' @return the instance of LeadFormsList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[LeadFormResponse]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[LeadFormResponse]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ LeadFormsList200Response <- R6::R6Class(
     #' @return the instance of LeadFormsList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[LeadFormResponse]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[LeadFormResponse]", loadNamespace("openapi"))
       self
     },
 

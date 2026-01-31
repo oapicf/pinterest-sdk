@@ -6,21 +6,21 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}values`,
-                ...NonNullableCatalogsCurrency.fields(`${keyPrefix}values`, isInput),
-            },
-            {
                 key: `${keyPrefix}negated`,
                 label: `[${labelPrefix}negated]`,
                 type: 'boolean',
+            },
+            {
+                key: `${keyPrefix}values`,
+                ...NonNullableCatalogsCurrency.fields(`${keyPrefix}values`, isInput),
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'values': bundle.inputData?.[`${keyPrefix}values`],
             'negated': bundle.inputData?.[`${keyPrefix}negated`],
+            'values': bundle.inputData?.[`${keyPrefix}values`],
         }
     },
 }

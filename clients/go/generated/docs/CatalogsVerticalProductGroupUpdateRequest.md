@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Country** | Pointer to [**Country**](Country.md) |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | Pointer to [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
-**Country** | Pointer to [**Country**](Country.md) |  | [optional] 
 **Locale** | Pointer to [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -55,30 +55,30 @@ SetCatalogType sets CatalogType field to given value.
 
 HasCatalogType returns a boolean if a field has been set.
 
-### GetName
+### GetCountry
 
-`func (o *CatalogsVerticalProductGroupUpdateRequest) GetName() string`
+`func (o *CatalogsVerticalProductGroupUpdateRequest) GetCountry() Country`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetCountry returns the Country field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetCountryOk
 
-`func (o *CatalogsVerticalProductGroupUpdateRequest) GetNameOk() (*string, bool)`
+`func (o *CatalogsVerticalProductGroupUpdateRequest) GetCountryOk() (*Country, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCountry
 
-`func (o *CatalogsVerticalProductGroupUpdateRequest) SetName(v string)`
+`func (o *CatalogsVerticalProductGroupUpdateRequest) SetCountry(v Country)`
 
-SetName sets Name field to given value.
+SetCountry sets Country field to given value.
 
-### HasName
+### HasCountry
 
-`func (o *CatalogsVerticalProductGroupUpdateRequest) HasName() bool`
+`func (o *CatalogsVerticalProductGroupUpdateRequest) HasCountry() bool`
 
-HasName returns a boolean if a field has been set.
+HasCountry returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -140,31 +140,6 @@ SetFilters sets Filters field to given value.
 
 HasFilters returns a boolean if a field has been set.
 
-### GetCountry
-
-`func (o *CatalogsVerticalProductGroupUpdateRequest) GetCountry() Country`
-
-GetCountry returns the Country field if non-nil, zero value otherwise.
-
-### GetCountryOk
-
-`func (o *CatalogsVerticalProductGroupUpdateRequest) GetCountryOk() (*Country, bool)`
-
-GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountry
-
-`func (o *CatalogsVerticalProductGroupUpdateRequest) SetCountry(v Country)`
-
-SetCountry sets Country field to given value.
-
-### HasCountry
-
-`func (o *CatalogsVerticalProductGroupUpdateRequest) HasCountry() bool`
-
-HasCountry returns a boolean if a field has been set.
-
 ### GetLocale
 
 `func (o *CatalogsVerticalProductGroupUpdateRequest) GetLocale() CatalogsLocale`
@@ -189,6 +164,31 @@ SetLocale sets Locale field to given value.
 `func (o *CatalogsVerticalProductGroupUpdateRequest) HasLocale() bool`
 
 HasLocale returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CatalogsVerticalProductGroupUpdateRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsVerticalProductGroupUpdateRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsVerticalProductGroupUpdateRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CatalogsVerticalProductGroupUpdateRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -10,10 +10,10 @@ module CatalogsFeedProductCounts =
 
   [<CLIMutable>]
   type CatalogsFeedProductCounts = {
-    [<JsonProperty(PropertyName = "original")>]
-    Original : int;
     [<JsonProperty(PropertyName = "ingested")>]
     Ingested : int;
+    [<JsonProperty(PropertyName = "original")>]
+    Original : int;
   }
 
   //#endregion

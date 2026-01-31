@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &ItemsIssuesList200Response{}
 
 // ItemsIssuesList200Response struct for ItemsIssuesList200Response
 type ItemsIssuesList200Response struct {
-	Items []CatalogsItemValidationIssues `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []CatalogsItemValidationIssues `json:"items"`
 }
 
 type _ItemsIssuesList200Response ItemsIssuesList200Response
@@ -44,30 +44,6 @@ func NewItemsIssuesList200Response(items []CatalogsItemValidationIssues) *ItemsI
 func NewItemsIssuesList200ResponseWithDefaults() *ItemsIssuesList200Response {
 	this := ItemsIssuesList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *ItemsIssuesList200Response) GetItems() []CatalogsItemValidationIssues {
-	if o == nil {
-		var ret []CatalogsItemValidationIssues
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *ItemsIssuesList200Response) GetItemsOk() ([]CatalogsItemValidationIssues, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *ItemsIssuesList200Response) SetItems(v []CatalogsItemValidationIssues) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *ItemsIssuesList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *ItemsIssuesList200Response) GetItems() []CatalogsItemValidationIssues {
+	if o == nil {
+		var ret []CatalogsItemValidationIssues
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *ItemsIssuesList200Response) GetItemsOk() ([]CatalogsItemValidationIssues, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *ItemsIssuesList200Response) SetItems(v []CatalogsItemValidationIssues) {
+	o.Items = v
+}
+
 func (o ItemsIssuesList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o ItemsIssuesList200Response) MarshalJSON() ([]byte, error) {
 
 func (o ItemsIssuesList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

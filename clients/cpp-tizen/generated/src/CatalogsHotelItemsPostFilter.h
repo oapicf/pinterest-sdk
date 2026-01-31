@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -60,18 +67,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setHotelIds(std::list <std::string> hotel_ids);
-	/*! \brief Get Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-	 */
-	std::string getCatalogId();
-
-	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-	 */
-	void setCatalogId(std::string  catalog_id);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
 	std::list <std::string>hotel_ids;
-	std::string catalog_id;
 	void __init();
 	void __cleanup();
 

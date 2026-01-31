@@ -6,11 +6,10 @@ goog.provide('API.Client.CatalogsItemValidationIssues');
 API.Client.CatalogsItemValidationIssues = function() {}
 
 /**
- * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
- * @type {!number}
+ * @type {!API.Client.CatalogsItemValidationErrors}
  * @export
  */
-API.Client.CatalogsItemValidationIssues.prototype.itemNumber;
+API.Client.CatalogsItemValidationIssues.prototype.errors;
 
 /**
  * The merchant-created unique ID that represents the product.
@@ -20,10 +19,11 @@ API.Client.CatalogsItemValidationIssues.prototype.itemNumber;
 API.Client.CatalogsItemValidationIssues.prototype.itemId;
 
 /**
- * @type {!API.Client.CatalogsItemValidationErrors}
+ * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+ * @type {!number}
  * @export
  */
-API.Client.CatalogsItemValidationIssues.prototype.errors;
+API.Client.CatalogsItemValidationIssues.prototype.itemNumber;
 
 /**
  * @type {!API.Client.CatalogsItemValidationWarnings}

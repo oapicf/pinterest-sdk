@@ -1,0 +1,32 @@
+package models
+
+// ConversionEventAppInfo - Object containing information about the application where event occurred.
+type ConversionEventAppInfo struct {
+
+	// App ID in Google Play Store, AppStore or other stores.
+	AppId string `json:"app_id,omitempty"`
+
+	// Name of the app. Primarily used for Mobile Apps.
+	AppName string `json:"app_name,omitempty"`
+
+	// App package name
+	AppPackageName string `json:"app_package_name,omitempty"`
+
+	// The name of the app distributor or store from which the app was installed. Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps
+	AppStore string `json:"app_store,omitempty"`
+
+	// App version. Primarily used for mobile apps
+	AppVersion string `json:"app_version,omitempty"`
+
+	// App install time. Unix timestamp in seconds
+	InstallTime int32 `json:"install_time,omitempty"`
+
+	// User Agent request header. Primarily used for Web events
+	UserAgent string `json:"user_agent,omitempty"`
+
+	// Inner height of the window or viewport.
+	WindowHeight int32 `json:"window_height,omitempty"`
+
+	// Inner width of the window or viewport.
+	WindowWidth int32 `json:"window_width,omitempty"`
+}

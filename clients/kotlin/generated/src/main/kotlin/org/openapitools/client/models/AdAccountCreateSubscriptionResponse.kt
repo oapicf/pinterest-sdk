@@ -22,30 +22,55 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id Subscription ID.
- * @param cryptographicKey Base64 encoded key for client to decrypt lead data.
- * @param cryptographicAlgorithm Lead data encryption algorithm.
+ * @param adAccountId The Ad Account ID that this lead form belongs to.
+ * @param apiVersion API version.
  * @param createdTime Subscription creation time. Unix timestamp in milliseconds.
+ * @param cryptographicAlgorithm Lead data encryption algorithm.
+ * @param cryptographicKey Base64 encoded key for client to decrypt lead data.
+ * @param id Subscription ID.
+ * @param leadFormId Lead form ID.
+ * @param userAccountId User account used to subscribe lead data.
+ * @param webhookUrl Standard HTTPS webhook URL.
  */
 
 
 data class AdAccountCreateSubscriptionResponse (
 
-    /* Subscription ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
+    /* The Ad Account ID that this lead form belongs to. */
+    @Json(name = "ad_account_id")
+    val adAccountId: kotlin.String? = null,
 
-    /* Base64 encoded key for client to decrypt lead data. */
-    @Json(name = "cryptographic_key")
-    val cryptographicKey: kotlin.String? = null,
+    /* API version. */
+    @Json(name = "api_version")
+    val apiVersion: kotlin.String? = null,
+
+    /* Subscription creation time. Unix timestamp in milliseconds. */
+    @Json(name = "created_time")
+    val createdTime: kotlin.Int? = null,
 
     /* Lead data encryption algorithm. */
     @Json(name = "cryptographic_algorithm")
     val cryptographicAlgorithm: kotlin.String? = null,
 
-    /* Subscription creation time. Unix timestamp in milliseconds. */
-    @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null
+    /* Base64 encoded key for client to decrypt lead data. */
+    @Json(name = "cryptographic_key")
+    val cryptographicKey: kotlin.String? = null,
+
+    /* Subscription ID. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    /* Lead form ID. */
+    @Json(name = "lead_form_id")
+    val leadFormId: kotlin.String? = null,
+
+    /* User account used to subscribe lead data. */
+    @Json(name = "user_account_id")
+    val userAccountId: kotlin.String? = null,
+
+    /* Standard HTTPS webhook URL. */
+    @Json(name = "webhook_url")
+    val webhookUrl: kotlin.String? = null
 
 ) {
 

@@ -13,14 +13,14 @@ import org.openapitools.models.CatalogsType
  * @param createdUnderscoreat 
  * @param id ID of the catalog entity.
  * @param updatedUnderscoreat 
- * @param name A human-friendly name associated to a catalog entity.
  * @param catalogUnderscoretype 
+ * @param name A human-friendly name associated to a catalog entity.
  */
 case class Catalog(createdUnderscoreat: ZonedDateTime,
                 id: String,
                 updatedUnderscoreat: ZonedDateTime,
-                name: String,
-                catalogUnderscoretype: CatalogsType
+                catalogUnderscoretype: CatalogsType,
+                name: String
                 )
 
 object Catalog {

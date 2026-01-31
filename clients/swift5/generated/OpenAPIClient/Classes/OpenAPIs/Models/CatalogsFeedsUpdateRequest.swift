@@ -14,35 +14,35 @@ import AnyCodable
 public struct CatalogsFeedsUpdateRequest: Codable, JSONEncodable, Hashable {
 
     public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public var credentials: CatalogsFeedCredentials?
     public var defaultAvailability: ProductAvailabilityType?
     public var defaultCurrency: NullableCurrency?
-    /** A human-friendly name associated to a given feed. */
-    public var name: String?
     public var format: CatalogsFormat?
-    public var credentials: CatalogsFeedCredentials?
     /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     public var location: String?
+    /** A human-friendly name associated to a given feed. */
+    public var name: String?
     public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     public var status: CatalogsStatus?
 
-    public init(defaultAvailability: ProductAvailabilityType? = nil, defaultCurrency: NullableCurrency? = nil, name: String? = nil, format: CatalogsFormat? = nil, credentials: CatalogsFeedCredentials? = nil, location: String? = nil, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, status: CatalogsStatus? = nil) {
+    public init(credentials: CatalogsFeedCredentials? = nil, defaultAvailability: ProductAvailabilityType? = nil, defaultCurrency: NullableCurrency? = nil, format: CatalogsFormat? = nil, location: String? = nil, name: String? = nil, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, status: CatalogsStatus? = nil) {
+        self.credentials = credentials
         self.defaultAvailability = defaultAvailability
         self.defaultCurrency = defaultCurrency
-        self.name = name
         self.format = format
-        self.credentials = credentials
         self.location = location
+        self.name = name
         self.preferredProcessingSchedule = preferredProcessingSchedule
         self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case credentials
         case defaultAvailability = "default_availability"
         case defaultCurrency = "default_currency"
-        case name
         case format
-        case credentials
         case location
+        case name
         case preferredProcessingSchedule = "preferred_processing_schedule"
         case status
     }
@@ -51,12 +51,12 @@ public struct CatalogsFeedsUpdateRequest: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(credentials, forKey: .credentials)
         try container.encodeIfPresent(defaultAvailability, forKey: .defaultAvailability)
         try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(format, forKey: .format)
-        try container.encodeIfPresent(credentials, forKey: .credentials)
         try container.encodeIfPresent(location, forKey: .location)
+        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
         try container.encodeIfPresent(status, forKey: .status)
     }

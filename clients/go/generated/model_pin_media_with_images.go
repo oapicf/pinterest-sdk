@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PinMediaWithImages type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,19 @@ var _ MappedNullable = &PinMediaWithImages{}
 
 // PinMediaWithImages Pin with multiple images.
 type PinMediaWithImages struct {
-	PinMedia
 	Items []ImageMetadata `json:"items,omitempty"`
+	MediaType string `json:"media_type"`
 }
+
+type _PinMediaWithImages PinMediaWithImages
 
 // NewPinMediaWithImages instantiates a new PinMediaWithImages object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPinMediaWithImages() *PinMediaWithImages {
+func NewPinMediaWithImages(mediaType string) *PinMediaWithImages {
 	this := PinMediaWithImages{}
+	this.MediaType = mediaType
 	return &this
 }
 
@@ -73,6 +78,30 @@ func (o *PinMediaWithImages) SetItems(v []ImageMetadata) {
 	o.Items = v
 }
 
+// GetMediaType returns the MediaType field value
+func (o *PinMediaWithImages) GetMediaType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MediaType
+}
+
+// GetMediaTypeOk returns a tuple with the MediaType field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaWithImages) GetMediaTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MediaType, true
+}
+
+// SetMediaType sets field value
+func (o *PinMediaWithImages) SetMediaType(v string) {
+	o.MediaType = v
+}
+
 func (o PinMediaWithImages) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -86,7 +115,45 @@ func (o PinMediaWithImages) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
+	toSerialize["media_type"] = o.MediaType
 	return toSerialize, nil
+}
+
+func (o *PinMediaWithImages) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"media_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPinMediaWithImages := _PinMediaWithImages{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPinMediaWithImages)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PinMediaWithImages(varPinMediaWithImages)
+
+	return err
 }
 
 type NullablePinMediaWithImages struct {

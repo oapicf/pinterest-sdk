@@ -20,16 +20,16 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Board media.
+ * 
  *
- * @param imageCoverUrl Board cover image.
+ * @param imageCoverUrl Board cover image
  * @param pinThumbnailUrls Board pin thumbnail urls.
  */
 
 
 data class BoardMedia (
 
-    /* Board cover image. */
+    /* Board cover image */
     @Json(name = "image_cover_url")
     val imageCoverUrl: kotlin.String? = null,
 

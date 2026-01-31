@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &CatalogsRetailListProductsByCatalogBasedFilterRequest{}
 
 // CatalogsRetailListProductsByCatalogBasedFilterRequest Request object to list products for a given retail catalog_id and product group filter.
 type CatalogsRetailListProductsByCatalogBasedFilterRequest struct {
-	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-	CatalogType string `json:"catalog_type"`
 	// Catalog id pertaining to the retail product group.
 	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
-	Filters CatalogsProductGroupFilters `json:"filters"`
+	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+	CatalogType string `json:"catalog_type"`
 	Country Country `json:"country"`
+	Filters CatalogsProductGroupFilters `json:"filters"`
 	Locale CatalogsLocale `json:"locale"`
 }
 
@@ -37,12 +37,12 @@ type _CatalogsRetailListProductsByCatalogBasedFilterRequest CatalogsRetailListPr
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailListProductsByCatalogBasedFilterRequest(catalogType string, catalogId string, filters CatalogsProductGroupFilters, country Country, locale CatalogsLocale) *CatalogsRetailListProductsByCatalogBasedFilterRequest {
+func NewCatalogsRetailListProductsByCatalogBasedFilterRequest(catalogId string, catalogType string, country Country, filters CatalogsProductGroupFilters, locale CatalogsLocale) *CatalogsRetailListProductsByCatalogBasedFilterRequest {
 	this := CatalogsRetailListProductsByCatalogBasedFilterRequest{}
-	this.CatalogType = catalogType
 	this.CatalogId = catalogId
-	this.Filters = filters
+	this.CatalogType = catalogType
 	this.Country = country
+	this.Filters = filters
 	this.Locale = locale
 	return &this
 }
@@ -53,30 +53,6 @@ func NewCatalogsRetailListProductsByCatalogBasedFilterRequest(catalogType string
 func NewCatalogsRetailListProductsByCatalogBasedFilterRequestWithDefaults() *CatalogsRetailListProductsByCatalogBasedFilterRequest {
 	this := CatalogsRetailListProductsByCatalogBasedFilterRequest{}
 	return &this
-}
-
-// GetCatalogType returns the CatalogType field value
-func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCatalogType(v string) {
-	o.CatalogType = v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -103,28 +79,28 @@ func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCatalogId(v s
 	o.CatalogId = v
 }
 
-// GetFilters returns the Filters field value
-func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFilters() CatalogsProductGroupFilters {
+// GetCatalogType returns the CatalogType field value
+func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsProductGroupFilters
+		var ret string
 		return ret
 	}
 
-	return o.Filters
+	return o.CatalogType
 }
 
-// GetFiltersOk returns a tuple with the Filters field value
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFiltersOk() (*CatalogsProductGroupFilters, bool) {
+func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Filters, true
+	return &o.CatalogType, true
 }
 
-// SetFilters sets field value
-func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetFilters(v CatalogsProductGroupFilters) {
-	o.Filters = v
+// SetCatalogType sets field value
+func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCatalogType(v string) {
+	o.CatalogType = v
 }
 
 // GetCountry returns the Country field value
@@ -149,6 +125,30 @@ func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetCountryOk() (
 // SetCountry sets field value
 func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetCountry(v Country) {
 	o.Country = v
+}
+
+// GetFilters returns the Filters field value
+func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFilters() CatalogsProductGroupFilters {
+	if o == nil {
+		var ret CatalogsProductGroupFilters
+		return ret
+	}
+
+	return o.Filters
+}
+
+// GetFiltersOk returns a tuple with the Filters field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) GetFiltersOk() (*CatalogsProductGroupFilters, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Filters, true
+}
+
+// SetFilters sets field value
+func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) SetFilters(v CatalogsProductGroupFilters) {
+	o.Filters = v
 }
 
 // GetLocale returns the Locale field value
@@ -185,10 +185,10 @@ func (o CatalogsRetailListProductsByCatalogBasedFilterRequest) MarshalJSON() ([]
 
 func (o CatalogsRetailListProductsByCatalogBasedFilterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["catalog_id"] = o.CatalogId
-	toSerialize["filters"] = o.Filters
+	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["country"] = o.Country
+	toSerialize["filters"] = o.Filters
 	toSerialize["locale"] = o.Locale
 	return toSerialize, nil
 }
@@ -198,10 +198,10 @@ func (o *CatalogsRetailListProductsByCatalogBasedFilterRequest) UnmarshalJSON(da
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
 		"catalog_id",
-		"filters",
+		"catalog_type",
 		"country",
+		"filters",
 		"locale",
 	}
 

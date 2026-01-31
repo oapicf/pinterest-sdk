@@ -13,15 +13,16 @@ module Audience =
 
   type Audience = {
     AdAccountId : string;
+    AudienceType : string;
+    CreatedByCompanyName : string option;
+    CreatedTimestamp : int option;
+    Description : string option;
     Id : string;
     Name : string;
-    AudienceType : string;
-    Description : string option;
     Rule : AudienceRule;
     Size : int option;
     Status : string;
     Type : string;
-    CreatedTimestamp : int option;
     UpdatedTimestamp : int option;
   }
   //#endregion

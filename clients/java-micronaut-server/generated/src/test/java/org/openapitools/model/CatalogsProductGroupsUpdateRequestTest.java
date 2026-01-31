@@ -27,19 +27,19 @@ public class CatalogsProductGroupsUpdateRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'filters'
+     */
+    @Test
+    public void filtersTest() {
+        // TODO: test filters
     }
 
     /**
@@ -51,11 +51,11 @@ public class CatalogsProductGroupsUpdateRequestTest {
     }
 
     /**
-     * Test the property 'filters'
+     * Test the property 'name'
      */
     @Test
-    public void filtersTest() {
-        // TODO: test filters
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**

@@ -5,14 +5,6 @@ context("Test AdsCreditRedeemResponse")
 
 model_instance <- AdsCreditRedeemResponse$new()
 
-test_that("success", {
-  # tests for the property `success` (character)
-  # Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`success`, "EXPECTED_RESULT")
-})
-
 test_that("errorCode", {
   # tests for the property `errorCode` (integer)
   # Error code type if error occurs
@@ -27,4 +19,12 @@ test_that("errorMessage", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`errorMessage`, "EXPECTED_RESULT")
+})
+
+test_that("success", {
+  # tests for the property `success` (character)
+  # Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`success`, "EXPECTED_RESULT")
 })

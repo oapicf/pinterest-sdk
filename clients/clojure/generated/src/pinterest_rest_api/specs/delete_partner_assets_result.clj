@@ -9,9 +9,9 @@
   {
    (ds/opt :asset_id) string?
    (ds/opt :asset_type) string?
-   (ds/opt :permissions) (s/coll-of string?)
    (ds/opt :is_shared_partner) boolean?
    (ds/opt :partner_id) string?
+   (ds/opt :permissions) (s/coll-of string?)
    })
 
 (def delete-partner-assets-result-spec

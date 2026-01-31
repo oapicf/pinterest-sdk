@@ -33,13 +33,6 @@ test_that("ingestion_details", {
   #expect_equal(model.instance$`ingestion_details`, "EXPECTED_RESULT")
 })
 
-test_that("status", {
-  # tests for the property `status` (CatalogsFeedProcessingStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
 test_that("product_counts", {
   # tests for the property `product_counts` (CatalogsFeedProductCounts)
 
@@ -47,9 +40,23 @@ test_that("product_counts", {
   #expect_equal(model.instance$`product_counts`, "EXPECTED_RESULT")
 })
 
+test_that("status", {
+  # tests for the property `status` (CatalogsFeedProcessingStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
 test_that("validation_details", {
   # tests for the property `validation_details` (CatalogsFeedValidationDetails)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`validation_details`, "EXPECTED_RESULT")
+})
+
+test_that("video_counts", {
+  # tests for the property `video_counts` (CatalogsFeedVideoCounts)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`video_counts`, "EXPECTED_RESULT")
 })

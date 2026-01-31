@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsReportAllItemsFilter",
+  "fields": [
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a catalog. If not given, oldest catalog will be used",
+      "default": null
+    },
+    {
+      "name": "report_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsReportAllItemsFilter_reportUnderscoretype",
+        "symbols": [
+          "ALL_ITEMS"
+        ]
+      },
+      "doc": ""
+    }
+  ]
+
+}

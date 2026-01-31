@@ -11,7 +11,7 @@ import org.openapitools.model.CatalogsVerticalProductGroup;
 @Canonical
 class CatalogsProductGroupsList200Response {
     
-    List<CatalogsVerticalProductGroup> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CatalogsVerticalProductGroup> items = new ArrayList<>()
 }

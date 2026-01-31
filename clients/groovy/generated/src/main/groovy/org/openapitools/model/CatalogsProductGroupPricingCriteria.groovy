@@ -10,7 +10,7 @@ class CatalogsProductGroupPricingCriteria {
     
     Boolean inclusion = true
     
-    BigDecimal values
-    
     Boolean negated = false
+    
+    BigDecimal values
 }

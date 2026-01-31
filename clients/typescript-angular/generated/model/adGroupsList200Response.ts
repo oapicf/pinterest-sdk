@@ -11,7 +11,7 @@ import { AdGroupResponse } from './adGroupResponse';
 
 
 export interface AdGroupsList200Response { 
-    items: Array<AdGroupResponse>;
     bookmark?: string | null;
+    items: Array<AdGroupResponse>;
 }
 

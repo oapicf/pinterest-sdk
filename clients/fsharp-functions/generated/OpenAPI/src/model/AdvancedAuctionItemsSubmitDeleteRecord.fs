@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AdvancedAuctionOperationError
 open OpenAPI.Model.Country
 open OpenAPI.Model.Language
 
@@ -12,12 +13,14 @@ module AdvancedAuctionItemsSubmitDeleteRecord =
 
   [<CLIMutable>]
   type AdvancedAuctionItemsSubmitDeleteRecord = {
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
     [<JsonProperty(PropertyName = "language")>]
     Language : Language;
+    [<JsonProperty(PropertyName = "errors")>]
+    Errors : AdvancedAuctionOperationError[];
   }
 
   //#endregion

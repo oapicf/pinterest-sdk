@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupsList200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupsList200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsVerticalProductGroup = openapi_server.resourceTypes.CatalogsVerticalProductGroup
+}
+resourceTypes {
+
+  CatalogsProductGroupsList200Response {
+    title = CatalogsProductGroupsList200Response
+    description = CatalogsProductGroupsList200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = CatalogsVerticalProductGroup
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupsList200Response {
+    title = CatalogsProductGroupsList200Response
+    description = CatalogsProductGroupsList200Response
+    implements = openapi_server.resourceTypes.CatalogsProductGroupsList200Response
+
+  }
+}

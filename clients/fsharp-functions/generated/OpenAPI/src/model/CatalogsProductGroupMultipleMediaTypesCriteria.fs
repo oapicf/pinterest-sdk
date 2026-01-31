@@ -11,10 +11,10 @@ module CatalogsProductGroupMultipleMediaTypesCriteria =
 
   [<CLIMutable>]
   type CatalogsProductGroupMultipleMediaTypesCriteria = {
-    [<JsonProperty(PropertyName = "values")>]
-    Values : MediaType[];
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
+    [<JsonProperty(PropertyName = "values")>]
+    Values : MediaType[];
   }
 
   //#endregion

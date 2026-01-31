@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &AdvancedAuctionBidOptions{}
 
 // AdvancedAuctionBidOptions Object describing a retail catalog item's bid options (bid price and bid multipliers).
 type AdvancedAuctionBidOptions struct {
+	AppTypeMultipliers NullableAppTypeMultipliers `json:"app_type_multipliers,omitempty"`
 	// Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
 	BidInMicroCurrency NullableInt64 `json:"bid_in_micro_currency,omitempty"`
-	AppTypeMultipliers NullableAppTypeMultipliers `json:"app_type_multipliers,omitempty"`
 	PlacementMultipliers NullablePlacementMultipliers `json:"placement_multipliers,omitempty"`
 }
 
@@ -41,48 +41,6 @@ func NewAdvancedAuctionBidOptions() *AdvancedAuctionBidOptions {
 func NewAdvancedAuctionBidOptionsWithDefaults() *AdvancedAuctionBidOptions {
 	this := AdvancedAuctionBidOptions{}
 	return &this
-}
-
-// GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrency() int64 {
-	if o == nil || IsNil(o.BidInMicroCurrency.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.BidInMicroCurrency.Get()
-}
-
-// GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrencyOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BidInMicroCurrency.Get(), o.BidInMicroCurrency.IsSet()
-}
-
-// HasBidInMicroCurrency returns a boolean if a field has been set.
-func (o *AdvancedAuctionBidOptions) HasBidInMicroCurrency() bool {
-	if o != nil && o.BidInMicroCurrency.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBidInMicroCurrency gets a reference to the given NullableInt64 and assigns it to the BidInMicroCurrency field.
-func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrency(v int64) {
-	o.BidInMicroCurrency.Set(&v)
-}
-// SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
-func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrencyNil() {
-	o.BidInMicroCurrency.Set(nil)
-}
-
-// UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
-func (o *AdvancedAuctionBidOptions) UnsetBidInMicroCurrency() {
-	o.BidInMicroCurrency.Unset()
 }
 
 // GetAppTypeMultipliers returns the AppTypeMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -125,6 +83,48 @@ func (o *AdvancedAuctionBidOptions) SetAppTypeMultipliersNil() {
 // UnsetAppTypeMultipliers ensures that no value is present for AppTypeMultipliers, not even an explicit nil
 func (o *AdvancedAuctionBidOptions) UnsetAppTypeMultipliers() {
 	o.AppTypeMultipliers.Unset()
+}
+
+// GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrency() int64 {
+	if o == nil || IsNil(o.BidInMicroCurrency.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.BidInMicroCurrency.Get()
+}
+
+// GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrencyOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BidInMicroCurrency.Get(), o.BidInMicroCurrency.IsSet()
+}
+
+// HasBidInMicroCurrency returns a boolean if a field has been set.
+func (o *AdvancedAuctionBidOptions) HasBidInMicroCurrency() bool {
+	if o != nil && o.BidInMicroCurrency.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBidInMicroCurrency gets a reference to the given NullableInt64 and assigns it to the BidInMicroCurrency field.
+func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrency(v int64) {
+	o.BidInMicroCurrency.Set(&v)
+}
+// SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
+func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrencyNil() {
+	o.BidInMicroCurrency.Set(nil)
+}
+
+// UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
+func (o *AdvancedAuctionBidOptions) UnsetBidInMicroCurrency() {
+	o.BidInMicroCurrency.Unset()
 }
 
 // GetPlacementMultipliers returns the PlacementMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -179,11 +179,11 @@ func (o AdvancedAuctionBidOptions) MarshalJSON() ([]byte, error) {
 
 func (o AdvancedAuctionBidOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BidInMicroCurrency.IsSet() {
-		toSerialize["bid_in_micro_currency"] = o.BidInMicroCurrency.Get()
-	}
 	if o.AppTypeMultipliers.IsSet() {
 		toSerialize["app_type_multipliers"] = o.AppTypeMultipliers.Get()
+	}
+	if o.BidInMicroCurrency.IsSet() {
+		toSerialize["bid_in_micro_currency"] = o.BidInMicroCurrency.Get()
 	}
 	if o.PlacementMultipliers.IsSet() {
 		toSerialize["placement_multipliers"] = o.PlacementMultipliers.Get()

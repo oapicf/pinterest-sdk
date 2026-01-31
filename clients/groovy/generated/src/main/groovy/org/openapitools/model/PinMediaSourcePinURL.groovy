@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class PinMediaSourcePinURL {
+    /* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
+    Boolean isAffiliateLink = false
 
     enum SourceTypeEnum {
     
@@ -29,6 +31,4 @@ class PinMediaSourcePinURL {
 
     
     SourceTypeEnum sourceType
-    /* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
-    Boolean isAffiliateLink = false
 }

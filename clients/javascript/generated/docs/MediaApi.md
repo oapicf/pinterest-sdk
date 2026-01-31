@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 ## mediaCreate
 
-> MediaUpload mediaCreate(mediaUploadRequest)
+> MediaUpload mediaCreate(mediaUploadCreate)
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -28,8 +28,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.MediaApi();
-let mediaUploadRequest = new PinterestSdk.MediaUploadRequest(); // MediaUploadRequest | Create a media upload request
-apiInstance.mediaCreate(mediaUploadRequest, (error, data, response) => {
+let mediaUploadCreate = new PinterestSdk.MediaUploadCreate(); // MediaUploadCreate | 
+apiInstance.mediaCreate(mediaUploadCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -43,7 +43,7 @@ apiInstance.mediaCreate(mediaUploadRequest, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaUploadRequest** | [**MediaUploadRequest**](MediaUploadRequest.md)| Create a media upload request | 
+ **mediaUploadCreate** | [**MediaUploadCreate**](MediaUploadCreate.md)|  | 
 
 ### Return type
 
@@ -61,11 +61,11 @@ Name | Type | Description  | Notes
 
 ## mediaGet
 
-> MediaUploadDetails mediaGet(mediaId)
+> Media mediaGet(mediaId)
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -77,7 +77,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.MediaApi();
-let mediaId = "mediaId_example"; // String | Media identifier
+let mediaId = "mediaId_example"; // String | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 apiInstance.mediaGet(mediaId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -92,11 +92,11 @@ apiInstance.mediaGet(mediaId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaId** | **String**| Media identifier | 
+ **mediaId** | **String**| Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | 
 
 ### Return type
 
-[**MediaUploadDetails**](MediaUploadDetails.md)
+[**Media**](Media.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 List media uploads
 
-List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 
@@ -128,7 +128,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.MediaApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.mediaList(opts, (error, data, response) => {
   if (error) {
@@ -145,7 +145,7 @@ apiInstance.mediaList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

@@ -7,16 +7,16 @@
 #' @title SearchPartnerPins200Response
 #' @description SearchPartnerPins200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{SummaryPin})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{SummaryPin})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SearchPartnerPins200Response <- R6::R6Class(
   "SearchPartnerPins200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new SearchPartnerPins200Response class.
@@ -69,13 +69,13 @@ SearchPartnerPins200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SearchPartnerPins200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        SearchPartnerPins200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         SearchPartnerPins200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        SearchPartnerPins200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(SearchPartnerPins200ResponseObject)
     },
@@ -87,11 +87,11 @@ SearchPartnerPins200Response <- R6::R6Class(
     #' @return the instance of SearchPartnerPins200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SummaryPin]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SummaryPin]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ SearchPartnerPins200Response <- R6::R6Class(
     #' @return the instance of SearchPartnerPins200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SummaryPin]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SummaryPin]", loadNamespace("openapi"))
       self
     },
 

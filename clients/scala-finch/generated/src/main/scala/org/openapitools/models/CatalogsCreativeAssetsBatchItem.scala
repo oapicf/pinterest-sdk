@@ -13,13 +13,13 @@ import org.openapitools.models.CatalogsUpsertCreativeAssetsItem
 
 /**
  * Creative assets batch item
+ * @param attributes 
  * @param creativeUnderscoreassetsUnderscoreid The catalog creative assets id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
-case class CatalogsCreativeAssetsBatchItem(creativeUnderscoreassetsUnderscoreid: String,
-                operation: String,
-                attributes: CatalogsUpdatableCreativeAssetsAttributes
+case class CatalogsCreativeAssetsBatchItem(attributes: CatalogsUpdatableCreativeAssetsAttributes,
+                creativeUnderscoreassetsUnderscoreid: String,
+                operation: String
                 )
 
 object CatalogsCreativeAssetsBatchItem {

@@ -1,10 +1,11 @@
 package org.openapitools.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.PinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,13 +19,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @ApiModel(description="Pin with multiple images.")
 
-public class PinMediaWithImages extends PinMedia {
+public class PinMediaWithImages  {
   
   @ApiModelProperty(value = "")
 
   @Valid
 
   private List<@Valid ImageMetadata> items = new ArrayList<>();
+
+public enum MediaTypeEnum {
+
+MULTIPLE_IMAGES(String.valueOf("multiple_images"));
+
+
+    private String value;
+
+    MediaTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String value) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  @ApiModelProperty(required = true, value = "")
+
+  private MediaTypeEnum mediaType;
  /**
    * Get items
    * @return items
@@ -48,6 +85,28 @@ public class PinMediaWithImages extends PinMedia {
     return this;
   }
 
+ /**
+   * Get mediaType
+   * @return mediaType
+  **/
+  @JsonProperty("media_type")
+  @NotNull
+  public String getMediaType() {
+    if (mediaType == null) {
+      return null;
+    }
+    return mediaType.value();
+  }
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+  public PinMediaWithImages mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -58,20 +117,21 @@ public class PinMediaWithImages extends PinMedia {
     }
     PinMediaWithImages pinMediaWithImages = (PinMediaWithImages) o;
     return Objects.equals(this.items, pinMediaWithImages.items) &&
-        super.equals(o);
+        Objects.equals(this.mediaType, pinMediaWithImages.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, super.hashCode());
+    return Objects.hash(items, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImages {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

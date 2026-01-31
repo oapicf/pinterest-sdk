@@ -327,14 +327,14 @@ open class BoardsAPI {
     /**
      Create board
      
-     - parameter board: (body) Create a board using a single board json object. 
+     - parameter boardCreate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func boardsCreate(board: Board, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Board?, _ error: Error?) -> Void)) -> RequestTask {
-        return boardsCreateWithRequestBuilder(board: board, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func boardsCreate(boardCreate: BoardCreate, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Board?, _ error: Error?) -> Void)) -> RequestTask {
+        return boardsCreateWithRequestBuilder(boardCreate: boardCreate, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -347,18 +347,21 @@ open class BoardsAPI {
     /**
      Create board
      - POST /boards
-     - Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     - Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter board: (body) Create a board using a single board json object. 
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter boardCreate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Board> 
      */
-    open class func boardsCreateWithRequestBuilder(board: Board, adAccountId: String? = nil) -> RequestBuilder<Board> {
+    open class func boardsCreateWithRequestBuilder(boardCreate: BoardCreate, adAccountId: String? = nil) -> RequestBuilder<Board> {
         let localVariablePath = "/boards"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: board)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: boardCreate)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -379,7 +382,7 @@ open class BoardsAPI {
     /**
      Delete board
      
-     - parameter boardId: (path) Unique identifier of a board. 
+     - parameter boardId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -399,11 +402,11 @@ open class BoardsAPI {
     /**
      Delete board
      - DELETE /boards/{board_id}
-     - Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     - Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter boardId: (path) Unique identifier of a board. 
+     - parameter boardId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -434,7 +437,7 @@ open class BoardsAPI {
     /**
      Get board
      
-     - parameter boardId: (path) Unique identifier of a board. 
+     - parameter boardId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -454,14 +457,14 @@ open class BoardsAPI {
     /**
      Get board
      - GET /boards/{board_id}
-     - Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     - Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - OAuth:
        - type: oauth2
        - name: client_credentials
-     - parameter boardId: (path) Unique identifier of a board. 
+     - parameter boardId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Board> 
      */
@@ -490,29 +493,18 @@ open class BoardsAPI {
     }
 
     /**
-     * enum for parameter privacy
-     */
-    public enum Privacy_boardsList: String, CaseIterable {
-        case all = "ALL"
-        case protected = "PROTECTED"
-        case _public = "PUBLIC"
-        case secret = "SECRET"
-        case publicAndSecret = "PUBLIC_AND_SECRET"
-    }
-
-    /**
      List boards
      
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter privacy: (query) The privacy level of the board (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter privacy: (query) Privacy setting for a board. (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func boardsList(adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, privacy: Privacy_boardsList? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BoardsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return boardsListWithRequestBuilder(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, privacy: privacy).execute(apiResponseQueue) { result in
+    open class func boardsList(adAccountId: String? = nil, privacy: BoardPrivacyFilter? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BoardsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return boardsListWithRequestBuilder(adAccountId: adAccountId, privacy: privacy, bookmark: bookmark, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -525,7 +517,7 @@ open class BoardsAPI {
     /**
      List boards
      - GET /boards
-     - Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     - Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -533,12 +525,12 @@ open class BoardsAPI {
        - type: oauth2
        - name: client_credentials
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter privacy: (query) The privacy level of the board (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter privacy: (query) Privacy setting for a board. (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - returns: RequestBuilder<BoardsList200Response> 
      */
-    open class func boardsListWithRequestBuilder(adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, privacy: Privacy_boardsList? = nil) -> RequestBuilder<BoardsList200Response> {
+    open class func boardsListWithRequestBuilder(adAccountId: String? = nil, privacy: BoardPrivacyFilter? = nil, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<BoardsList200Response> {
         let localVariablePath = "/boards"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -546,9 +538,9 @@ open class BoardsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+            "privacy": (wrappedValue: privacy?.encodeToJSON(), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
             "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
-            "privacy": (wrappedValue: privacy?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -563,33 +555,19 @@ open class BoardsAPI {
     }
 
     /**
-     * enum for parameter creativeTypes
-     */
-    public enum CreativeTypes_boardsListPins: String, CaseIterable {
-        case regular = "REGULAR"
-        case video = "VIDEO"
-        case shopping = "SHOPPING"
-        case carousel = "CAROUSEL"
-        case maxVideo = "MAX_VIDEO"
-        case shopThePin = "SHOP_THE_PIN"
-        case collection = "COLLECTION"
-        case idea = "IDEA"
-    }
-
-    /**
      List Pins on board
      
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     - parameter creativeTypes: (query) Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func boardsListPins(boardId: String, bookmark: String? = nil, pageSize: Int? = nil, creativeTypes: [CreativeTypes_boardsListPins]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BoardsListPins200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func boardsListPins(boardId: String, bookmark: String? = nil, pageSize: Int? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BoardsListPins200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return boardsListPinsWithRequestBuilder(boardId: boardId, bookmark: bookmark, pageSize: pageSize, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -613,12 +591,12 @@ open class BoardsAPI {
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     - parameter creativeTypes: (query) Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - returns: RequestBuilder<BoardsListPins200Response> 
      */
-    open class func boardsListPinsWithRequestBuilder(boardId: String, bookmark: String? = nil, pageSize: Int? = nil, creativeTypes: [CreativeTypes_boardsListPins]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil) -> RequestBuilder<BoardsListPins200Response> {
+    open class func boardsListPinsWithRequestBuilder(boardId: String, bookmark: String? = nil, pageSize: Int? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil) -> RequestBuilder<BoardsListPins200Response> {
         var localVariablePath = "/boards/{board_id}/pins"
         let boardIdPreEscape = "\(APIHelper.mapValueToPathItem(boardId))"
         let boardIdPostEscape = boardIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -649,15 +627,15 @@ open class BoardsAPI {
     /**
      Update board
      
-     - parameter boardId: (path) Unique identifier of a board. 
-     - parameter boardUpdate: (body) Update a board. 
+     - parameter boardId: (path)  
+     - parameter boardWithUpdatePrivacyUpdate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func boardsUpdate(boardId: String, boardUpdate: BoardUpdate, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Board?, _ error: Error?) -> Void)) -> RequestTask {
-        return boardsUpdateWithRequestBuilder(boardId: boardId, boardUpdate: boardUpdate, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func boardsUpdate(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BoardWithUpdatePrivacy?, _ error: Error?) -> Void)) -> RequestTask {
+        return boardsUpdateWithRequestBuilder(boardId: boardId, boardWithUpdatePrivacyUpdate: boardWithUpdatePrivacyUpdate, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -670,22 +648,25 @@ open class BoardsAPI {
     /**
      Update board
      - PATCH /boards/{board_id}
-     - Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+     - Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter boardId: (path) Unique identifier of a board. 
-     - parameter boardUpdate: (body) Update a board. 
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter boardId: (path)  
+     - parameter boardWithUpdatePrivacyUpdate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - returns: RequestBuilder<Board> 
+     - returns: RequestBuilder<BoardWithUpdatePrivacy> 
      */
-    open class func boardsUpdateWithRequestBuilder(boardId: String, boardUpdate: BoardUpdate, adAccountId: String? = nil) -> RequestBuilder<Board> {
+    open class func boardsUpdateWithRequestBuilder(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String? = nil) -> RequestBuilder<BoardWithUpdatePrivacy> {
         var localVariablePath = "/boards/{board_id}"
         let boardIdPreEscape = "\(APIHelper.mapValueToPathItem(boardId))"
         let boardIdPostEscape = boardIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{board_id}", with: boardIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: boardUpdate)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: boardWithUpdatePrivacyUpdate)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -698,7 +679,7 @@ open class BoardsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Board>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<BoardWithUpdatePrivacy>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

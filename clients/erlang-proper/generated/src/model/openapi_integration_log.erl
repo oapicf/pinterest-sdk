@@ -9,19 +9,19 @@
 -export_type([openapi_integration_log/0]).
 
 -type openapi_integration_log() ::
-  [ {'client_timestamp', integer() }
-  | {'event_type', binary() }
-  | {'log_level', binary() }
-  | {'external_business_id', binary() }
-  | {'advertiser_id', binary() }
-  | {'merchant_id', binary() }
-  | {'tag_id', binary() }
-  | {'feed_profile_id', binary() }
-  | {'message', binary() }
+  [ {'advertiser_id', binary() }
   | {'app_version_number', binary() }
-  | {'platform_version_number', binary() }
+  | {'client_timestamp', integer() }
   | {'error', openapi_integration_log_client_error:openapi_integration_log_client_error() }
+  | {'event_type', binary() }
+  | {'external_business_id', binary() }
+  | {'feed_profile_id', binary() }
+  | {'log_level', binary() }
+  | {'merchant_id', binary() }
+  | {'message', binary() }
+  | {'platform_version_number', binary() }
   | {'request', openapi_integration_log_client_request:openapi_integration_log_client_request() }
+  | {'tag_id', binary() }
   ].
 
 
@@ -29,19 +29,19 @@ openapi_integration_log() ->
     openapi_integration_log([]).
 
 openapi_integration_log(Fields) ->
-  Default = [ {'client_timestamp', integer() }
-            , {'event_type', elements([<<"APP">>, <<"API">>]) }
-            , {'log_level', elements([<<"INFO">>, <<"WARN">>, <<"ERROR">>]) }
-            , {'external_business_id', binary() }
-            , {'advertiser_id', binary() }
-            , {'merchant_id', binary() }
-            , {'tag_id', binary() }
-            , {'feed_profile_id', binary() }
-            , {'message', binary() }
+  Default = [ {'advertiser_id', binary() }
             , {'app_version_number', binary() }
-            , {'platform_version_number', binary() }
+            , {'client_timestamp', integer() }
             , {'error', openapi_integration_log_client_error:openapi_integration_log_client_error() }
+            , {'event_type', elements([<<"APP">>, <<"API">>]) }
+            , {'external_business_id', binary() }
+            , {'feed_profile_id', binary() }
+            , {'log_level', elements([<<"INFO">>, <<"WARN">>, <<"ERROR">>]) }
+            , {'merchant_id', binary() }
+            , {'message', binary() }
+            , {'platform_version_number', binary() }
             , {'request', openapi_integration_log_client_request:openapi_integration_log_client_request() }
+            , {'tag_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -11,10 +11,6 @@
 
 export interface DeliveryMetricsResponseItemsInner { 
     /**
-     * Metric\'s name.
-     */
-    name?: string;
-    /**
      * Category name
      */
     category?: DeliveryMetricsResponseItemsInner.CategoryEnum;
@@ -26,6 +22,10 @@ export interface DeliveryMetricsResponseItemsInner {
      * Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
      */
     display_name?: string;
+    /**
+     * Metric\'s name.
+     */
+    name?: string;
 }
 export namespace DeliveryMetricsResponseItemsInner {
     export const CategoryEnum = {

@@ -9,20 +9,22 @@ import org.openapitools._
 /**
  * 
  * @param refreshUnderscoretoken 
+ * @param refreshUnderscoretokenUnderscoreexpiresUnderscoreat 
  * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
- * @param responseUnderscoretype 
  * @param accessUnderscoretoken 
- * @param tokenUnderscoretype 
  * @param expiresUnderscorein 
+ * @param responseUnderscoretype 
  * @param scope 
+ * @param tokenUnderscoretype 
  */
-case class OauthAccessTokenResponseCode(refreshUnderscoretoken: String,
-                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int,
-                responseUnderscoretype: Option[String],
+case class OauthAccessTokenResponseCode(refreshUnderscoretoken: Option[String],
+                refreshUnderscoretokenUnderscoreexpiresUnderscoreat: Option[Int],
+                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Option[Int],
                 accessUnderscoretoken: String,
-                tokenUnderscoretype: String,
                 expiresUnderscorein: Int,
-                scope: String
+                responseUnderscoretype: Option[String],
+                scope: String,
+                tokenUnderscoretype: String
                 )
 
 object OauthAccessTokenResponseCode {

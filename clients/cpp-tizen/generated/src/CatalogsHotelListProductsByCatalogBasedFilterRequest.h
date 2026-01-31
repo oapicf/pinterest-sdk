@@ -46,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get Catalog id pertaining to the hotel product group.
 	 */
 	std::string getCatalogId();
@@ -62,6 +55,13 @@ public:
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
+	/*! \brief Get 
+	 */
 	CatalogsHotelProductGroupFilters getFilters();
 
 	/*! \brief Set 
@@ -69,8 +69,8 @@ public:
 	void setFilters(CatalogsHotelProductGroupFilters  filters);
 
 private:
-	std::string catalog_type;
 	std::string catalog_id;
+	std::string catalog_type;
 	CatalogsHotelProductGroupFilters filters;
 	void __init();
 	void __cleanup();

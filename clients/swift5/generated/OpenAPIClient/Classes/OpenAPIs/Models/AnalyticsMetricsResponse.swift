@@ -12,27 +12,27 @@ import AnyCodable
 
 public struct AnalyticsMetricsResponse: Codable, JSONEncodable, Hashable {
 
-    /** The metric name and value over the requested period for each requested metric */
-    public var summaryMetrics: [String: Double]?
     /** Array with the requested daily metric records */
     public var dailyMetrics: [AnalyticsDailyMetrics]?
+    /** The metric name and value over the requested period for each requested metric */
+    public var summaryMetrics: [String: Double]?
 
-    public init(summaryMetrics: [String: Double]? = nil, dailyMetrics: [AnalyticsDailyMetrics]? = nil) {
-        self.summaryMetrics = summaryMetrics
+    public init(dailyMetrics: [AnalyticsDailyMetrics]? = nil, summaryMetrics: [String: Double]? = nil) {
         self.dailyMetrics = dailyMetrics
+        self.summaryMetrics = summaryMetrics
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case summaryMetrics = "summary_metrics"
         case dailyMetrics = "daily_metrics"
+        case summaryMetrics = "summary_metrics"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(summaryMetrics, forKey: .summaryMetrics)
         try container.encodeIfPresent(dailyMetrics, forKey: .dailyMetrics)
+        try container.encodeIfPresent(summaryMetrics, forKey: .summaryMetrics)
     }
 }
 

@@ -1,7 +1,7 @@
 /*
  * item_response.h
  *
- * Object describing an item record
+ * Object describing an item record or error
  */
 
 #ifndef _item_response_H_
@@ -17,8 +17,8 @@ typedef struct item_response_t item_response_t;
 
 #include "catalogs_creative_assets_attributes.h"
 #include "catalogs_type.h"
-#include "item_response_any_of.h"
-#include "item_response_any_of_1.h"
+#include "item_response_one_of.h"
+#include "item_response_one_of_1.h"
 #include "item_validation_event.h"
 #include "pin.h"
 
@@ -26,9 +26,9 @@ typedef struct item_response_t item_response_t;
 
 typedef struct item_response_t {
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    struct catalogs_creative_assets_attributes_t *attributes; //model
     char *item_id; // string
     list_t *pins; //nonprimitive container
-    struct catalogs_creative_assets_attributes_t *attributes; //model
     char *hotel_id; // string
     char *creative_assets_id; // string
     list_t *errors; //nonprimitive container
@@ -38,9 +38,9 @@ typedef struct item_response_t {
 
 __attribute__((deprecated)) item_response_t *item_response_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
+    catalogs_creative_assets_attributes_t *attributes,
     char *item_id,
     list_t *pins,
-    catalogs_creative_assets_attributes_t *attributes,
     char *hotel_id,
     char *creative_assets_id,
     list_t *errors

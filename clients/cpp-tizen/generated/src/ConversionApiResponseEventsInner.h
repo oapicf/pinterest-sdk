@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Whether the event was processed successfully.
-	 */
-	std::string getStatus();
-
-	/*! \brief Set Whether the event was processed successfully.
-	 */
-	void setStatus(std::string  status);
 	/*! \brief Get Error message containing more information about why the event failed to be processed.
 	 */
 	std::string getErrorMessage();
@@ -59,6 +52,13 @@ public:
 	/*! \brief Set Error message containing more information about why the event failed to be processed.
 	 */
 	void setErrorMessage(std::string  error_message);
+	/*! \brief Get Whether the event was processed successfully.
+	 */
+	std::string getStatus();
+
+	/*! \brief Set Whether the event was processed successfully.
+	 */
+	void setStatus(std::string  status);
 	/*! \brief Get Warning messages about any fields in the event which are not standard. These are not critical to event processing.
 	 */
 	std::string getWarningMessage();
@@ -68,8 +68,8 @@ public:
 	void setWarningMessage(std::string  warning_message);
 
 private:
-	std::string status;
 	std::string error_message;
+	std::string status;
 	std::string warning_message;
 	void __init();
 	void __cleanup();

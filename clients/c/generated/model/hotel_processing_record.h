@@ -21,19 +21,19 @@ typedef struct hotel_processing_record_t hotel_processing_record_t;
 
 
 typedef struct hotel_processing_record_t {
-    char *hotel_id; // string
     list_t *errors; //nonprimitive container
-    list_t *warnings; //nonprimitive container
+    char *hotel_id; // string
     pinterest_rest_api_item_processing_status__e status; //referenced enum
+    list_t *warnings; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } hotel_processing_record_t;
 
 __attribute__((deprecated)) hotel_processing_record_t *hotel_processing_record_create(
-    char *hotel_id,
     list_t *errors,
-    list_t *warnings,
-    pinterest_rest_api_item_processing_status__e status
+    char *hotel_id,
+    pinterest_rest_api_item_processing_status__e status,
+    list_t *warnings
 );
 
 void hotel_processing_record_free(hotel_processing_record_t *hotel_processing_record);

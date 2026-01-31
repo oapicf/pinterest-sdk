@@ -5,19 +5,24 @@
   "name": "PinMediaWithVideos",
   "fields": [
     {
-      "name": "media_type",
-      "type": ["null", "string"],
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.VideoMetadataWithItemType"
+      }],
       "doc": "",
       "default": null
     },
     {
-      "name": "items",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.VideoMetadata"
-      }],
-      "doc": "",
-      "default": null
+      "name": "media_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaWithVideos_mediaUnderscoretype",
+        "symbols": [
+          "multiple_videos"
+        ]
+      },
+      "doc": ""
     }
   ]
 

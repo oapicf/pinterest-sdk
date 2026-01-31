@@ -47,11 +47,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getConnectedMerchantId();
+	std::string getAdditionalId1();
 
 	/*! \brief Set 
 	 */
-	void setConnectedMerchantId(std::string  connected_merchant_id);
+	void setAdditionalId1(std::string  additional_id_1);
 	/*! \brief Get 
 	 */
 	std::string getConnectedAdvertiserId();
@@ -68,6 +68,13 @@ public:
 	void setConnectedLbaId(std::string  connected_lba_id);
 	/*! \brief Get 
 	 */
+	std::string getConnectedMerchantId();
+
+	/*! \brief Set 
+	 */
+	void setConnectedMerchantId(std::string  connected_merchant_id);
+	/*! \brief Get 
+	 */
 	std::string getConnectedTagId();
 
 	/*! \brief Set 
@@ -82,11 +89,18 @@ public:
 	void setPartnerAccessToken(std::string  partner_access_token);
 	/*! \brief Get 
 	 */
-	std::string getPartnerRefreshToken();
+	long long getPartnerAccessTokenExpiry();
 
 	/*! \brief Set 
 	 */
-	void setPartnerRefreshToken(std::string  partner_refresh_token);
+	void setPartnerAccessTokenExpiry(long long  partner_access_token_expiry);
+	/*! \brief Get 
+	 */
+	std::string getPartnerMetadata();
+
+	/*! \brief Set 
+	 */
+	void setPartnerMetadata(std::string  partner_metadata);
 	/*! \brief Get 
 	 */
 	std::string getPartnerPrimaryEmail();
@@ -96,11 +110,11 @@ public:
 	void setPartnerPrimaryEmail(std::string  partner_primary_email);
 	/*! \brief Get 
 	 */
-	long long getPartnerAccessTokenExpiry();
+	std::string getPartnerRefreshToken();
 
 	/*! \brief Set 
 	 */
-	void setPartnerAccessTokenExpiry(long long  partner_access_token_expiry);
+	void setPartnerRefreshToken(std::string  partner_refresh_token);
 	/*! \brief Get 
 	 */
 	long long getPartnerRefreshTokenExpiry();
@@ -115,34 +129,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setScopes(std::string  scopes);
-	/*! \brief Get 
-	 */
-	std::string getAdditionalId1();
-
-	/*! \brief Set 
-	 */
-	void setAdditionalId1(std::string  additional_id_1);
-	/*! \brief Get 
-	 */
-	std::string getPartnerMetadata();
-
-	/*! \brief Set 
-	 */
-	void setPartnerMetadata(std::string  partner_metadata);
 
 private:
-	std::string connected_merchant_id;
+	std::string additional_id_1;
 	std::string connected_advertiser_id;
 	std::string connected_lba_id;
+	std::string connected_merchant_id;
 	std::string connected_tag_id;
 	std::string partner_access_token;
-	std::string partner_refresh_token;
-	std::string partner_primary_email;
 	long long partner_access_token_expiry;
+	std::string partner_metadata;
+	std::string partner_primary_email;
+	std::string partner_refresh_token;
 	long long partner_refresh_token_expiry;
 	std::string scopes;
-	std::string additional_id_1;
-	std::string partner_metadata;
 	void __init();
 	void __cleanup();
 

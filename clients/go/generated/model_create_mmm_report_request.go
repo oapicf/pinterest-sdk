@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,20 +24,20 @@ var _ MappedNullable = &CreateMMMReportRequest{}
 type CreateMMMReportRequest struct {
 	// A List of countries for filtering
 	Countries []TargetingAdvertiserCountry `json:"countries,omitempty"`
-	// Name of the Marketing Mix Modeling (MMM) report
-	ReportName string `json:"report_name"`
-	// Metric report start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// Metric and entity columns
+	Columns []MMMReportingColumn `json:"columns"`
 	// Metric report end date (UTC). Format: YYYY-MM-DD
 	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
 	Granularity string `json:"granularity"`
 	// Level of the report
 	Level string `json:"level"`
+	// Name of the Marketing Mix Modeling (MMM) report
+	ReportName string `json:"report_name"`
+	// Metric report start date (UTC). Format: YYYY-MM-DD
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// List of targeting types
 	TargetingTypes []MMMReportingTargetingType `json:"targeting_types"`
-	// Metric and entity columns
-	Columns []MMMReportingColumn `json:"columns"`
 }
 
 type _CreateMMMReportRequest CreateMMMReportRequest
@@ -46,15 +46,15 @@ type _CreateMMMReportRequest CreateMMMReportRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateMMMReportRequest(reportName string, startDate string, endDate string, granularity string, level string, targetingTypes []MMMReportingTargetingType, columns []MMMReportingColumn) *CreateMMMReportRequest {
+func NewCreateMMMReportRequest(columns []MMMReportingColumn, endDate string, granularity string, level string, reportName string, startDate string, targetingTypes []MMMReportingTargetingType) *CreateMMMReportRequest {
 	this := CreateMMMReportRequest{}
-	this.ReportName = reportName
-	this.StartDate = startDate
+	this.Columns = columns
 	this.EndDate = endDate
 	this.Granularity = granularity
 	this.Level = level
+	this.ReportName = reportName
+	this.StartDate = startDate
 	this.TargetingTypes = targetingTypes
-	this.Columns = columns
 	return &this
 }
 
@@ -98,52 +98,28 @@ func (o *CreateMMMReportRequest) SetCountries(v []TargetingAdvertiserCountry) {
 	o.Countries = v
 }
 
-// GetReportName returns the ReportName field value
-func (o *CreateMMMReportRequest) GetReportName() string {
+// GetColumns returns the Columns field value
+func (o *CreateMMMReportRequest) GetColumns() []MMMReportingColumn {
 	if o == nil {
-		var ret string
+		var ret []MMMReportingColumn
 		return ret
 	}
 
-	return o.ReportName
+	return o.Columns
 }
 
-// GetReportNameOk returns a tuple with the ReportName field value
+// GetColumnsOk returns a tuple with the Columns field value
 // and a boolean to check if the value has been set.
-func (o *CreateMMMReportRequest) GetReportNameOk() (*string, bool) {
+func (o *CreateMMMReportRequest) GetColumnsOk() ([]MMMReportingColumn, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ReportName, true
+	return o.Columns, true
 }
 
-// SetReportName sets field value
-func (o *CreateMMMReportRequest) SetReportName(v string) {
-	o.ReportName = v
-}
-
-// GetStartDate returns the StartDate field value
-func (o *CreateMMMReportRequest) GetStartDate() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.StartDate
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value
-// and a boolean to check if the value has been set.
-func (o *CreateMMMReportRequest) GetStartDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.StartDate, true
-}
-
-// SetStartDate sets field value
-func (o *CreateMMMReportRequest) SetStartDate(v string) {
-	o.StartDate = v
+// SetColumns sets field value
+func (o *CreateMMMReportRequest) SetColumns(v []MMMReportingColumn) {
+	o.Columns = v
 }
 
 // GetEndDate returns the EndDate field value
@@ -218,6 +194,54 @@ func (o *CreateMMMReportRequest) SetLevel(v string) {
 	o.Level = v
 }
 
+// GetReportName returns the ReportName field value
+func (o *CreateMMMReportRequest) GetReportName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ReportName
+}
+
+// GetReportNameOk returns a tuple with the ReportName field value
+// and a boolean to check if the value has been set.
+func (o *CreateMMMReportRequest) GetReportNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ReportName, true
+}
+
+// SetReportName sets field value
+func (o *CreateMMMReportRequest) SetReportName(v string) {
+	o.ReportName = v
+}
+
+// GetStartDate returns the StartDate field value
+func (o *CreateMMMReportRequest) GetStartDate() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value
+// and a boolean to check if the value has been set.
+func (o *CreateMMMReportRequest) GetStartDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.StartDate, true
+}
+
+// SetStartDate sets field value
+func (o *CreateMMMReportRequest) SetStartDate(v string) {
+	o.StartDate = v
+}
+
 // GetTargetingTypes returns the TargetingTypes field value
 func (o *CreateMMMReportRequest) GetTargetingTypes() []MMMReportingTargetingType {
 	if o == nil {
@@ -242,30 +266,6 @@ func (o *CreateMMMReportRequest) SetTargetingTypes(v []MMMReportingTargetingType
 	o.TargetingTypes = v
 }
 
-// GetColumns returns the Columns field value
-func (o *CreateMMMReportRequest) GetColumns() []MMMReportingColumn {
-	if o == nil {
-		var ret []MMMReportingColumn
-		return ret
-	}
-
-	return o.Columns
-}
-
-// GetColumnsOk returns a tuple with the Columns field value
-// and a boolean to check if the value has been set.
-func (o *CreateMMMReportRequest) GetColumnsOk() ([]MMMReportingColumn, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Columns, true
-}
-
-// SetColumns sets field value
-func (o *CreateMMMReportRequest) SetColumns(v []MMMReportingColumn) {
-	o.Columns = v
-}
-
 func (o CreateMMMReportRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -279,13 +279,13 @@ func (o CreateMMMReportRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Countries) {
 		toSerialize["countries"] = o.Countries
 	}
-	toSerialize["report_name"] = o.ReportName
-	toSerialize["start_date"] = o.StartDate
+	toSerialize["columns"] = o.Columns
 	toSerialize["end_date"] = o.EndDate
 	toSerialize["granularity"] = o.Granularity
 	toSerialize["level"] = o.Level
+	toSerialize["report_name"] = o.ReportName
+	toSerialize["start_date"] = o.StartDate
 	toSerialize["targeting_types"] = o.TargetingTypes
-	toSerialize["columns"] = o.Columns
 	return toSerialize, nil
 }
 
@@ -294,13 +294,13 @@ func (o *CreateMMMReportRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"report_name",
-		"start_date",
+		"columns",
 		"end_date",
 		"granularity",
 		"level",
+		"report_name",
+		"start_date",
 		"targeting_types",
-		"columns",
 	}
 
 	allProperties := make(map[string]interface{})

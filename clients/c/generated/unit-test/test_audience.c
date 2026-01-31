@@ -24,30 +24,32 @@ audience_t* instantiate_audience(int include_optional) {
   if (include_optional) {
     audience = audience_create(
       "549755885175",
+      "0",
+      "Pinterest",
+      1451431341,
+      "People who love making quilts.",
       "1234",
       "ACME Tools",
-      "0",
-      "People who love making quilts.",
        // false, not to have infinite recursion
       instantiate_audience_rule(0),
       1000,
       "0",
       "audience",
-      1451431341,
       1451431341
     );
   } else {
     audience = audience_create(
       "549755885175",
+      "0",
+      "Pinterest",
+      1451431341,
+      "People who love making quilts.",
       "1234",
       "ACME Tools",
-      "0",
-      "People who love making quilts.",
       NULL,
       1000,
       "0",
       "audience",
-      1451431341,
       1451431341
     );
   }

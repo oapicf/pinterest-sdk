@@ -4,14 +4,14 @@ package org.openapitools.client.model
 
 case class GetMMMReportResponseData (
     _reportStatus: Option[String],
-    _url: Option[String],
-    _size: Option[Number]
+    _size: Option[Number],
+    _url: Option[String]
 )
 object GetMMMReportResponseData {
-    def toStringBody(var_reportStatus: Object, var_url: Object, var_size: Object) =
+    def toStringBody(var_reportStatus: Object, var_size: Object, var_url: Object) =
         s"""
         | {
-        | "reportStatus":$var_reportStatus,"url":$var_url,"size":$var_size
+        | "reportStatus":$var_reportStatus,"size":$var_size,"url":$var_url
         | }
         """.stripMargin
 }

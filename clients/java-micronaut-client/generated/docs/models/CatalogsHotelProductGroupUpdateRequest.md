@@ -11,9 +11,9 @@ The class is defined in **[CatalogsHotelProductGroupUpdateRequest.java](../../sr
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional property]
-**name** | `String` |  |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsHotelProductGroupFilters`](CatalogsHotelProductGroupFilters.md) |  |  [optional property]
+**name** | `String` |  |  [optional property]
 
 ## CatalogTypeEnum
 

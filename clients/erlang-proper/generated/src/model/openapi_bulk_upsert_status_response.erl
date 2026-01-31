@@ -9,8 +9,8 @@
 -export_type([openapi_bulk_upsert_status_response/0]).
 
 -type openapi_bulk_upsert_status_response() ::
-  [ {'status', openapi_bulk_upsert_status:openapi_bulk_upsert_status() }
-  | {'result_url', binary() }
+  [ {'result_url', binary() }
+  | {'status', openapi_bulk_upsert_status:openapi_bulk_upsert_status() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_bulk_upsert_status_response() ->
     openapi_bulk_upsert_status_response([]).
 
 openapi_bulk_upsert_status_response(Fields) ->
-  Default = [ {'status', openapi_bulk_upsert_status:openapi_bulk_upsert_status() }
-            , {'result_url', binary() }
+  Default = [ {'result_url', binary() }
+            , {'status', openapi_bulk_upsert_status:openapi_bulk_upsert_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

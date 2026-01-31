@@ -25,28 +25,28 @@ module CatalogsRetailFeed =
     Id : string;
     [<JsonProperty(PropertyName = "updated_at")>]
     UpdatedAt : DateTime;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string option;
-    [<JsonProperty(PropertyName = "format")>]
-    Format : CatalogsFormat;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "credentials")>]
     Credentials : CatalogsFeedCredentials;
-    [<JsonProperty(PropertyName = "location")>]
-    Location : string;
-    [<JsonProperty(PropertyName = "preferred_processing_schedule")>]
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : CatalogsStatus;
+    [<JsonProperty(PropertyName = "default_availability")>]
+    DefaultAvailability : ProductAvailabilityType;
+    [<JsonProperty(PropertyName = "default_country")>]
+    DefaultCountry : Country;
     [<JsonProperty(PropertyName = "default_currency")>]
     DefaultCurrency : NullableCurrency;
     [<JsonProperty(PropertyName = "default_locale")>]
     DefaultLocale : string;
-    [<JsonProperty(PropertyName = "default_country")>]
-    DefaultCountry : Country;
-    [<JsonProperty(PropertyName = "default_availability")>]
-    DefaultAvailability : ProductAvailabilityType;
+    [<JsonProperty(PropertyName = "format")>]
+    Format : CatalogsFormat;
+    [<JsonProperty(PropertyName = "location")>]
+    Location : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string option;
+    [<JsonProperty(PropertyName = "preferred_processing_schedule")>]
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : CatalogsStatus;
   }
 
   //#endregion

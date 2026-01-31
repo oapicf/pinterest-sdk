@@ -26,7 +26,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a catalog based product group.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupCreateRequest.class, name = "CREATIVE_ASSETS"),
@@ -35,6 +35,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 })
 
 public class CatalogsVerticalProductGroupCreateRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -67,8 +70,8 @@ public class CatalogsVerticalProductGroupCreateRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("country")
+  private Country country;
 
   @JsonProperty("description")
   private String description;
@@ -76,14 +79,29 @@ public class CatalogsVerticalProductGroupCreateRequest   {
   @JsonProperty("filters")
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
-  @JsonProperty("country")
-  private Country country;
-
   @JsonProperty("locale")
   private CatalogsLocale locale;
+
+  @JsonProperty("name")
+  private String name;
+
+  public CatalogsVerticalProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+   */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsVerticalProductGroupCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -103,22 +121,22 @@ public class CatalogsVerticalProductGroupCreateRequest   {
     this.catalogType = catalogType;
   }
 
-  public CatalogsVerticalProductGroupCreateRequest name(String name) {
-    this.name = name;
+  public CatalogsVerticalProductGroupCreateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
    */
-  @ApiModelProperty(required = true, value = "")
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   public CatalogsVerticalProductGroupCreateRequest description(String description) {
@@ -157,42 +175,6 @@ public class CatalogsVerticalProductGroupCreateRequest   {
     this.filters = filters;
   }
 
-  public CatalogsVerticalProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the creative assets product group.
-   * @return catalogId
-   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsVerticalProductGroupCreateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  /**
-   * Get country
-   * @return country
-   */
-  @ApiModelProperty(required = true, value = "")
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
   public CatalogsVerticalProductGroupCreateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
     return this;
@@ -202,13 +184,31 @@ public class CatalogsVerticalProductGroupCreateRequest   {
    * Get locale
    * @return locale
    */
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public CatalogsLocale getLocale() {
     return locale;
   }
 
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+  public CatalogsVerticalProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @ApiModelProperty(required = true, value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -221,18 +221,18 @@ public class CatalogsVerticalProductGroupCreateRequest   {
       return false;
     }
     CatalogsVerticalProductGroupCreateRequest catalogsVerticalProductGroupCreateRequest = (CatalogsVerticalProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsVerticalProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsVerticalProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsVerticalProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsVerticalProductGroupCreateRequest.catalogType) &&
+        Objects.equals(this.country, catalogsVerticalProductGroupCreateRequest.country) &&
         Objects.equals(this.description, catalogsVerticalProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsVerticalProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsVerticalProductGroupCreateRequest.catalogId) &&
-        Objects.equals(this.country, catalogsVerticalProductGroupCreateRequest.country) &&
-        Objects.equals(this.locale, catalogsVerticalProductGroupCreateRequest.locale);
+        Objects.equals(this.locale, catalogsVerticalProductGroupCreateRequest.locale) &&
+        Objects.equals(this.name, catalogsVerticalProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -240,13 +240,13 @@ public class CatalogsVerticalProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

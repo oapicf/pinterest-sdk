@@ -17,7 +17,7 @@ public struct UpdatePartnerAssetsResult: Codable, JSONEncodable, Hashable {
     public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of a business asset. */
     public var assetId: String?
-    /** Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /** Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     public var assetType: String?
     /** Unique identifier of a business partner. */
     public var partnerId: String?

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MediaUpload type satisfies the MappedNullable interface at compile time
@@ -21,19 +23,24 @@ var _ MappedNullable = &MediaUpload{}
 // MediaUpload Media upload that has been registered but not uploaded/processed yet.
 type MediaUpload struct {
 	// Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-	MediaId *string `json:"media_id,omitempty"`
-	MediaType *MediaUploadType `json:"media_type,omitempty"`
+	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+	MediaType MediaUploadType `json:"media_type"`
+	// The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+	UploadParameters *MediaUploadParameters `json:"upload_parameters,omitempty"`
 	// The URL where you will POST your media file.
 	UploadUrl *string `json:"upload_url,omitempty"`
-	UploadParameters *MediaUploadAllOfUploadParameters `json:"upload_parameters,omitempty"`
 }
+
+type _MediaUpload MediaUpload
 
 // NewMediaUpload instantiates a new MediaUpload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMediaUpload() *MediaUpload {
+func NewMediaUpload(mediaId string, mediaType MediaUploadType) *MediaUpload {
 	this := MediaUpload{}
+	this.MediaId = mediaId
+	this.MediaType = mediaType
 	return &this
 }
 
@@ -45,68 +52,84 @@ func NewMediaUploadWithDefaults() *MediaUpload {
 	return &this
 }
 
-// GetMediaId returns the MediaId field value if set, zero value otherwise.
+// GetMediaId returns the MediaId field value
 func (o *MediaUpload) GetMediaId() string {
-	if o == nil || IsNil(o.MediaId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MediaId
+
+	return o.MediaId
 }
 
-// GetMediaIdOk returns a tuple with the MediaId field value if set, nil otherwise
+// GetMediaIdOk returns a tuple with the MediaId field value
 // and a boolean to check if the value has been set.
 func (o *MediaUpload) GetMediaIdOk() (*string, bool) {
-	if o == nil || IsNil(o.MediaId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MediaId, true
+	return &o.MediaId, true
 }
 
-// HasMediaId returns a boolean if a field has been set.
-func (o *MediaUpload) HasMediaId() bool {
-	if o != nil && !IsNil(o.MediaId) {
-		return true
-	}
-
-	return false
-}
-
-// SetMediaId gets a reference to the given string and assigns it to the MediaId field.
+// SetMediaId sets field value
 func (o *MediaUpload) SetMediaId(v string) {
-	o.MediaId = &v
+	o.MediaId = v
 }
 
-// GetMediaType returns the MediaType field value if set, zero value otherwise.
+// GetMediaType returns the MediaType field value
 func (o *MediaUpload) GetMediaType() MediaUploadType {
-	if o == nil || IsNil(o.MediaType) {
+	if o == nil {
 		var ret MediaUploadType
 		return ret
 	}
-	return *o.MediaType
+
+	return o.MediaType
 }
 
-// GetMediaTypeOk returns a tuple with the MediaType field value if set, nil otherwise
+// GetMediaTypeOk returns a tuple with the MediaType field value
 // and a boolean to check if the value has been set.
 func (o *MediaUpload) GetMediaTypeOk() (*MediaUploadType, bool) {
-	if o == nil || IsNil(o.MediaType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MediaType, true
+	return &o.MediaType, true
 }
 
-// HasMediaType returns a boolean if a field has been set.
-func (o *MediaUpload) HasMediaType() bool {
-	if o != nil && !IsNil(o.MediaType) {
+// SetMediaType sets field value
+func (o *MediaUpload) SetMediaType(v MediaUploadType) {
+	o.MediaType = v
+}
+
+// GetUploadParameters returns the UploadParameters field value if set, zero value otherwise.
+func (o *MediaUpload) GetUploadParameters() MediaUploadParameters {
+	if o == nil || IsNil(o.UploadParameters) {
+		var ret MediaUploadParameters
+		return ret
+	}
+	return *o.UploadParameters
+}
+
+// GetUploadParametersOk returns a tuple with the UploadParameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MediaUpload) GetUploadParametersOk() (*MediaUploadParameters, bool) {
+	if o == nil || IsNil(o.UploadParameters) {
+		return nil, false
+	}
+	return o.UploadParameters, true
+}
+
+// HasUploadParameters returns a boolean if a field has been set.
+func (o *MediaUpload) HasUploadParameters() bool {
+	if o != nil && !IsNil(o.UploadParameters) {
 		return true
 	}
 
 	return false
 }
 
-// SetMediaType gets a reference to the given MediaUploadType and assigns it to the MediaType field.
-func (o *MediaUpload) SetMediaType(v MediaUploadType) {
-	o.MediaType = &v
+// SetUploadParameters gets a reference to the given MediaUploadParameters and assigns it to the UploadParameters field.
+func (o *MediaUpload) SetUploadParameters(v MediaUploadParameters) {
+	o.UploadParameters = &v
 }
 
 // GetUploadUrl returns the UploadUrl field value if set, zero value otherwise.
@@ -141,38 +164,6 @@ func (o *MediaUpload) SetUploadUrl(v string) {
 	o.UploadUrl = &v
 }
 
-// GetUploadParameters returns the UploadParameters field value if set, zero value otherwise.
-func (o *MediaUpload) GetUploadParameters() MediaUploadAllOfUploadParameters {
-	if o == nil || IsNil(o.UploadParameters) {
-		var ret MediaUploadAllOfUploadParameters
-		return ret
-	}
-	return *o.UploadParameters
-}
-
-// GetUploadParametersOk returns a tuple with the UploadParameters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MediaUpload) GetUploadParametersOk() (*MediaUploadAllOfUploadParameters, bool) {
-	if o == nil || IsNil(o.UploadParameters) {
-		return nil, false
-	}
-	return o.UploadParameters, true
-}
-
-// HasUploadParameters returns a boolean if a field has been set.
-func (o *MediaUpload) HasUploadParameters() bool {
-	if o != nil && !IsNil(o.UploadParameters) {
-		return true
-	}
-
-	return false
-}
-
-// SetUploadParameters gets a reference to the given MediaUploadAllOfUploadParameters and assigns it to the UploadParameters field.
-func (o *MediaUpload) SetUploadParameters(v MediaUploadAllOfUploadParameters) {
-	o.UploadParameters = &v
-}
-
 func (o MediaUpload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,19 +174,53 @@ func (o MediaUpload) MarshalJSON() ([]byte, error) {
 
 func (o MediaUpload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MediaId) {
-		toSerialize["media_id"] = o.MediaId
-	}
-	if !IsNil(o.MediaType) {
-		toSerialize["media_type"] = o.MediaType
+	toSerialize["media_id"] = o.MediaId
+	toSerialize["media_type"] = o.MediaType
+	if !IsNil(o.UploadParameters) {
+		toSerialize["upload_parameters"] = o.UploadParameters
 	}
 	if !IsNil(o.UploadUrl) {
 		toSerialize["upload_url"] = o.UploadUrl
 	}
-	if !IsNil(o.UploadParameters) {
-		toSerialize["upload_parameters"] = o.UploadParameters
-	}
 	return toSerialize, nil
+}
+
+func (o *MediaUpload) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"media_id",
+		"media_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMediaUpload := _MediaUpload{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMediaUpload)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MediaUpload(varMediaUpload)
+
+	return err
 }
 
 type NullableMediaUpload struct {

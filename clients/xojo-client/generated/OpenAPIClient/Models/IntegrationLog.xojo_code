@@ -2,59 +2,7 @@
 Protected Class IntegrationLog
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Timestamp in milliseconds of when the log was executed at the client.
-		#tag EndNote
-		client_timestamp As Integer
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Log event type
-		#tag EndNote
-		event_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Log level type
-		#tag EndNote
-		log_level As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		external_business_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		advertiser_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		merchant_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		tag_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		feed_profile_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Explanation of the event that occured.
-		#tag EndNote
-		message As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -68,9 +16,9 @@ Protected Class IntegrationLog
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Version number of the platform the integration application is running on.
+			Timestamp in milliseconds of when the log was executed at the client.
 		#tag EndNote
-		platform_version_number As Xoson.O.OptionalString
+		client_timestamp As Integer
 	#tag EndProperty
 
 
@@ -80,7 +28,59 @@ Protected Class IntegrationLog
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Log event type
+		#tag EndNote
+		event_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		external_business_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		feed_profile_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Log level type
+		#tag EndNote
+		log_level As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		merchant_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Explanation of the event that occured.
+		#tag EndNote
+		message As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Version number of the platform the integration application is running on.
+		#tag EndNote
+		platform_version_number As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		request As OpenAPIClient.Models.IntegrationLogClientRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		tag_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -164,55 +164,7 @@ Protected Class IntegrationLog
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="client_timestamp"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="external_business_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="advertiser_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="merchant_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="tag_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="feed_profile_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="message"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -228,11 +180,11 @@ Protected Class IntegrationLog
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="platform_version_number"
+			Name="client_timestamp"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -244,11 +196,59 @@ Protected Class IntegrationLog
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="external_business_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="feed_profile_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="merchant_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="message"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="platform_version_number"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="request"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="IntegrationLogClientRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="tag_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

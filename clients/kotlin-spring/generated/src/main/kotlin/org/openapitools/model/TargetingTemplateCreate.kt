@@ -24,8 +24,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param name Name of targeting template.
  * @param targetingAttributes 
  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param placementGroup 
  * @param keywords 
+ * @param placementGroup 
  * @param trackingUrls 
  */
 data class TargetingTemplateCreate(
@@ -41,12 +41,12 @@ data class TargetingTemplateCreate(
     @get:JsonProperty("auto_targeting_enabled") val autoTargetingEnabled: kotlin.Boolean? = true,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("placement_group") val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
-
-    @field:Valid
     @Schema(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", description = "")
     @get:JsonProperty("keywords") val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("placement_group") val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
 
     @field:Valid
     @Schema(example = "null", description = "")

@@ -1,7 +1,7 @@
 /*
  * EnhancedMatchStatusType.h
  *
- * The enhanced match status of the tag
+ * 
  */
 
 #ifndef _EnhancedMatchStatusType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief The enhanced match status of the tag
+/*! \brief 
  *
  *  \ingroup Models
  *

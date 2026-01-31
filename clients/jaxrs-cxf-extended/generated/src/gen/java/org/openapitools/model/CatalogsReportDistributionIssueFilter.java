@@ -12,6 +12,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsReportDistributionIssueFilter  {
   
+ /**
+  * Unique identifier of a catalog. If not given, oldest catalog will be used
+  */
+  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
+  private String catalogId;
+
 public enum ReportTypeEnum {
 
     @JsonProperty("DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
@@ -43,12 +49,30 @@ public enum ReportTypeEnum {
 
   @ApiModelProperty(required = true, value = "")
   private ReportTypeEnum reportType;
-
  /**
   * Unique identifier of a catalog. If not given, oldest catalog will be used
+  * @return catalogId
   */
-  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
-  private String catalogId;
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
   * Get reportType
   * @return reportType
@@ -74,30 +98,6 @@ public enum ReportTypeEnum {
     return this;
   }
 
- /**
-  * Unique identifier of a catalog. If not given, oldest catalog will be used
-  * @return catalogId
-  */
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  /**
-   * Sets the <code>catalogId</code> property.
-   */
- public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  /**
-   * Sets the <code>catalogId</code> property.
-   */
-  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -108,13 +108,13 @@ public enum ReportTypeEnum {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
@@ -122,8 +122,8 @@ public enum ReportTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

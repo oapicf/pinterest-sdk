@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adsCreditRedeem**](OAIBillingApi.md#adscreditredeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**adsCreditsDiscountsGet**](OAIBillingApi.md#adscreditsdiscountsget) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billingInvoiceDownloadGet**](OAIBillingApi.md#billinginvoicedownloadget) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoicesGet**](OAIBillingApi.md#billinginvoicesget) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billingProfilesGet**](OAIBillingApi.md#billingprofilesget) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssioAccountsGet**](OAIBillingApi.md#ssioaccountsget) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**ssioInsertionOrderCreate**](OAIBillingApi.md#ssioinsertionordercreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -24,7 +26,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -84,7 +86,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -137,6 +139,152 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **billingInvoiceDownloadGet**
+```objc
+-(NSURLSessionTask*) billingInvoiceDownloadGetWithAdAccountId: (NSString*) adAccountId
+    billingInvoiceId: (NSString*) billingInvoiceId
+        completionHandler: (void (^)(OAIBillingInvoiceDownloadResponse* output, NSError* error)) handler;
+```
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSString* billingInvoiceId = @"billingInvoiceId_example"; // Unique identifier of a billing invoice.
+
+OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
+
+// Get download url for a billing invoice
+[apiInstance billingInvoiceDownloadGetWithAdAccountId:adAccountId
+              billingInvoiceId:billingInvoiceId
+          completionHandler: ^(OAIBillingInvoiceDownloadResponse* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIBillingApi->billingInvoiceDownloadGet: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **billingInvoiceId** | **NSString***| Unique identifier of a billing invoice. | 
+
+### Return type
+
+[**OAIBillingInvoiceDownloadResponse***](OAIBillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **billingInvoicesGet**
+```objc
+-(NSURLSessionTask*) billingInvoicesGetWithAdAccountId: (NSString*) adAccountId
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    sort: (NSString*) sort
+    order: (NSString*) order
+    status: (NSString*) status
+    documentType: (NSString*) documentType
+    startDueDate: (NSDate*) startDueDate
+    endDueDate: (NSDate*) endDueDate
+        completionHandler: (void (^)(OAIBillingInvoicesGet200Response* output, NSError* error)) handler;
+```
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSString* sort = DUE_DATE; // Field of which to sort billing invoices (optional) (default to @"DUE_DATE")
+NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+NSString* status = OPEN; // Status of billing invoices to filter by (optional)
+NSString* documentType = INVOICE; // Document type of billing invoices to filter by (optional)
+NSDate* startDueDate = Sun Jan 01 00:00:00 UTC 2023; // Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+NSDate* endDueDate = Mon Jan 01 00:00:00 UTC 2024; // Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+
+OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
+
+// Get billing invoices
+[apiInstance billingInvoicesGetWithAdAccountId:adAccountId
+              bookmark:bookmark
+              pageSize:pageSize
+              sort:sort
+              order:order
+              status:status
+              documentType:documentType
+              startDueDate:startDueDate
+              endDueDate:endDueDate
+          completionHandler: ^(OAIBillingInvoicesGet200Response* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIBillingApi->billingInvoicesGet: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **sort** | **NSString***| Field of which to sort billing invoices | [optional] [default to @&quot;DUE_DATE&quot;]
+ **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **status** | **NSString***| Status of billing invoices to filter by | [optional] 
+ **documentType** | **NSString***| Document type of billing invoices to filter by | [optional] 
+ **startDueDate** | **NSDate***| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+ **endDueDate** | **NSDate***| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+
+### Return type
+
+[**OAIBillingInvoicesGet200Response***](OAIBillingInvoicesGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **billingProfilesGet**
 ```objc
 -(NSURLSessionTask*) billingProfilesGetWithAdAccountId: (NSString*) adAccountId
@@ -148,7 +296,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example
 ```objc

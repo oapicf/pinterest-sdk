@@ -7,6 +7,7 @@ Pin with a mix of images and videos.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**Array&lt;PinMediaMetadata&gt;**](PinMediaMetadata.md) |  | [optional] [default to undefined]
+**media_type** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -15,6 +16,7 @@ import { PinMediaWithImageAndVideo } from './api';
 
 const instance: PinMediaWithImageAndVideo = {
     items,
+    media_type,
 };
 ```
 

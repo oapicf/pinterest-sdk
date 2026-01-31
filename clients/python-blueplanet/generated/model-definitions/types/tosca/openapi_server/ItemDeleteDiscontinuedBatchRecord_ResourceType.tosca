@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemDeleteDiscontinuedBatchRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemDeleteDiscontinuedBatchRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ItemDeleteDiscontinuedBatchRecord {
+    title = ItemDeleteDiscontinuedBatchRecord
+    description = ItemDeleteDiscontinuedBatchRecord
+    derivedFrom = Root
+    properties {
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemDeleteDiscontinuedBatchRecord {
+    title = ItemDeleteDiscontinuedBatchRecord
+    description = ItemDeleteDiscontinuedBatchRecord
+    implements = openapi_server.resourceTypes.ItemDeleteDiscontinuedBatchRecord
+
+  }
+}

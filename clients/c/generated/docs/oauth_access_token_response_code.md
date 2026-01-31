@@ -3,13 +3,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**refresh_token** | **char \*** |  | 
-**refresh_token_expires_in** | **int** |  | 
-**response_type** | **pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e** |  | [optional] 
+**refresh_token** | **char \*** |  | [optional] 
+**refresh_token_expires_at** | **int** |  | [optional] 
+**refresh_token_expires_in** | **int** |  | [optional] 
 **access_token** | **char \*** |  | 
-**token_type** | **char \*** |  | [default to 'bearer']
 **expires_in** | **int** |  | 
+**response_type** | **pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e** |  | [optional] 
 **scope** | **char \*** |  | 
+**token_type** | **char \*** |  | [default to 'bearer']
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

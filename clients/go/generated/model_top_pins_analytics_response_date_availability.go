@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &TopPinsAnalyticsResponseDateAvailability{}
 
 // TopPinsAnalyticsResponseDateAvailability struct for TopPinsAnalyticsResponseDateAvailability
 type TopPinsAnalyticsResponseDateAvailability struct {
-	LatestAvailableTimestamp *float32 `json:"latest_available_timestamp,omitempty"`
 	IsRealtime *bool `json:"is_realtime,omitempty"`
+	LatestAvailableTimestamp *float32 `json:"latest_available_timestamp,omitempty"`
 }
 
 // NewTopPinsAnalyticsResponseDateAvailability instantiates a new TopPinsAnalyticsResponseDateAvailability object
@@ -39,38 +39,6 @@ func NewTopPinsAnalyticsResponseDateAvailability() *TopPinsAnalyticsResponseDate
 func NewTopPinsAnalyticsResponseDateAvailabilityWithDefaults() *TopPinsAnalyticsResponseDateAvailability {
 	this := TopPinsAnalyticsResponseDateAvailability{}
 	return &this
-}
-
-// GetLatestAvailableTimestamp returns the LatestAvailableTimestamp field value if set, zero value otherwise.
-func (o *TopPinsAnalyticsResponseDateAvailability) GetLatestAvailableTimestamp() float32 {
-	if o == nil || IsNil(o.LatestAvailableTimestamp) {
-		var ret float32
-		return ret
-	}
-	return *o.LatestAvailableTimestamp
-}
-
-// GetLatestAvailableTimestampOk returns a tuple with the LatestAvailableTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TopPinsAnalyticsResponseDateAvailability) GetLatestAvailableTimestampOk() (*float32, bool) {
-	if o == nil || IsNil(o.LatestAvailableTimestamp) {
-		return nil, false
-	}
-	return o.LatestAvailableTimestamp, true
-}
-
-// HasLatestAvailableTimestamp returns a boolean if a field has been set.
-func (o *TopPinsAnalyticsResponseDateAvailability) HasLatestAvailableTimestamp() bool {
-	if o != nil && !IsNil(o.LatestAvailableTimestamp) {
-		return true
-	}
-
-	return false
-}
-
-// SetLatestAvailableTimestamp gets a reference to the given float32 and assigns it to the LatestAvailableTimestamp field.
-func (o *TopPinsAnalyticsResponseDateAvailability) SetLatestAvailableTimestamp(v float32) {
-	o.LatestAvailableTimestamp = &v
 }
 
 // GetIsRealtime returns the IsRealtime field value if set, zero value otherwise.
@@ -105,6 +73,38 @@ func (o *TopPinsAnalyticsResponseDateAvailability) SetIsRealtime(v bool) {
 	o.IsRealtime = &v
 }
 
+// GetLatestAvailableTimestamp returns the LatestAvailableTimestamp field value if set, zero value otherwise.
+func (o *TopPinsAnalyticsResponseDateAvailability) GetLatestAvailableTimestamp() float32 {
+	if o == nil || IsNil(o.LatestAvailableTimestamp) {
+		var ret float32
+		return ret
+	}
+	return *o.LatestAvailableTimestamp
+}
+
+// GetLatestAvailableTimestampOk returns a tuple with the LatestAvailableTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TopPinsAnalyticsResponseDateAvailability) GetLatestAvailableTimestampOk() (*float32, bool) {
+	if o == nil || IsNil(o.LatestAvailableTimestamp) {
+		return nil, false
+	}
+	return o.LatestAvailableTimestamp, true
+}
+
+// HasLatestAvailableTimestamp returns a boolean if a field has been set.
+func (o *TopPinsAnalyticsResponseDateAvailability) HasLatestAvailableTimestamp() bool {
+	if o != nil && !IsNil(o.LatestAvailableTimestamp) {
+		return true
+	}
+
+	return false
+}
+
+// SetLatestAvailableTimestamp gets a reference to the given float32 and assigns it to the LatestAvailableTimestamp field.
+func (o *TopPinsAnalyticsResponseDateAvailability) SetLatestAvailableTimestamp(v float32) {
+	o.LatestAvailableTimestamp = &v
+}
+
 func (o TopPinsAnalyticsResponseDateAvailability) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -115,11 +115,11 @@ func (o TopPinsAnalyticsResponseDateAvailability) MarshalJSON() ([]byte, error) 
 
 func (o TopPinsAnalyticsResponseDateAvailability) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LatestAvailableTimestamp) {
-		toSerialize["latest_available_timestamp"] = o.LatestAvailableTimestamp
-	}
 	if !IsNil(o.IsRealtime) {
 		toSerialize["is_realtime"] = o.IsRealtime
+	}
+	if !IsNil(o.LatestAvailableTimestamp) {
+		toSerialize["latest_available_timestamp"] = o.LatestAvailableTimestamp
 	}
 	return toSerialize, nil
 }

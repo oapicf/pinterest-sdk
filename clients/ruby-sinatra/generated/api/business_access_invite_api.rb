@@ -39,7 +39,7 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/invites', {
   "parameters" => [
     {
       "name" => "business_id",
-      "description" => "Business id",
+      "description" => "Unique identifier of the requesting business.",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -95,7 +95,7 @@ MyApp.add_route('POST', '/v5/businesses/{business_id}/invites', {
   "parameters" => [
     {
       "name" => "business_id",
-      "description" => "Business id",
+      "description" => "Unique identifier of the requesting business.",
       "dataType" => "String",
       "paramType" => "path",
     },

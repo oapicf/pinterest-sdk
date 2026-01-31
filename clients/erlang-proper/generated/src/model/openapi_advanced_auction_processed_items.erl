@@ -10,7 +10,7 @@
 
 -type openapi_advanced_auction_processed_items() ::
   [ {'catalog_id', binary() }
-  | {'items', list(openapi_advanced_auction_processed_item:openapi_advanced_auction_processed_item()) }
+  | {'items', list(openapi_advanced_auction_items_submit_record:openapi_advanced_auction_items_submit_record()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_advanced_auction_processed_items() ->
 
 openapi_advanced_auction_processed_items(Fields) ->
   Default = [ {'catalog_id', binary() }
-            , {'items', list(openapi_advanced_auction_processed_item:openapi_advanced_auction_processed_item()) }
+            , {'items', list(openapi_advanced_auction_items_submit_record:openapi_advanced_auction_items_submit_record()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

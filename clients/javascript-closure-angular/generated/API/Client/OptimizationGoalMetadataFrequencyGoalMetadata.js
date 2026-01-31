@@ -6,6 +6,7 @@ goog.provide('API.Client.OptimizationGoalMetadata_frequency_goal_metadata');
 API.Client.OptimizationGoalMetadataFrequencyGoalMetadata = function() {}
 
 /**
+ * Frequency target can only be between 2 and 20
  * @type {!number}
  * @export
  */

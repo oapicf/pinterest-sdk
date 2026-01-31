@@ -8,11 +8,14 @@ A successful OAuth access token response for the refresh token flow.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional] |
 |**accessToken** | **String** |  |  |
-|**tokenType** | **String** |  |  |
 |**expiresIn** | **Integer** |  |  |
+|**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional] |
 |**scope** | **String** |  |  |
+|**tokenType** | **String** |  |  |
+|**refreshToken** | **String** |  |  |
+|**refreshTokenExpiresAt** | **Integer** |  |  |
+|**refreshTokenExpiresIn** | **Integer** |  |  |
 
 
 

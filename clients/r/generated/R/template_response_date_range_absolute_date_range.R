@@ -7,38 +7,38 @@
 #' @title TemplateResponseDateRangeAbsoluteDateRange
 #' @description TemplateResponseDateRangeAbsoluteDateRange Class
 #' @format An \code{R6Class} generator object
-#' @field type The date range type character [optional]
-#' @field start_date The start date of the date range numeric [optional]
 #' @field end_date The end date of the date range numeric [optional]
+#' @field start_date The start date of the date range numeric [optional]
+#' @field type The date range type character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TemplateResponseDateRangeAbsoluteDateRange <- R6::R6Class(
   "TemplateResponseDateRangeAbsoluteDateRange",
   public = list(
-    `type` = NULL,
-    `start_date` = NULL,
     `end_date` = NULL,
+    `start_date` = NULL,
+    `type` = NULL,
 
     #' @description
     #' Initialize a new TemplateResponseDateRangeAbsoluteDateRange class.
     #'
-    #' @param type The date range type
-    #' @param start_date The start date of the date range
     #' @param end_date The end date of the date range
+    #' @param start_date The start date of the date range
+    #' @param type The date range type
     #' @param ... Other optional arguments.
-    initialize = function(`type` = NULL, `start_date` = NULL, `end_date` = NULL, ...) {
+    initialize = function(`end_date` = NULL, `start_date` = NULL, `type` = NULL, ...) {
+      if (!is.null(`end_date`)) {
+        self$`end_date` <- `end_date`
+      }
+      if (!is.null(`start_date`)) {
+        self$`start_date` <- `start_date`
+      }
       if (!is.null(`type`)) {
         if (!(is.character(`type`) && length(`type`) == 1)) {
           stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
         }
         self$`type` <- `type`
-      }
-      if (!is.null(`start_date`)) {
-        self$`start_date` <- `start_date`
-      }
-      if (!is.null(`end_date`)) {
-        self$`end_date` <- `end_date`
       }
     },
 
@@ -73,17 +73,17 @@ TemplateResponseDateRangeAbsoluteDateRange <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TemplateResponseDateRangeAbsoluteDateRangeObject <- list()
-      if (!is.null(self$`type`)) {
-        TemplateResponseDateRangeAbsoluteDateRangeObject[["type"]] <-
-          self$`type`
+      if (!is.null(self$`end_date`)) {
+        TemplateResponseDateRangeAbsoluteDateRangeObject[["end_date"]] <-
+          self$`end_date`
       }
       if (!is.null(self$`start_date`)) {
         TemplateResponseDateRangeAbsoluteDateRangeObject[["start_date"]] <-
           self$`start_date`
       }
-      if (!is.null(self$`end_date`)) {
-        TemplateResponseDateRangeAbsoluteDateRangeObject[["end_date"]] <-
-          self$`end_date`
+      if (!is.null(self$`type`)) {
+        TemplateResponseDateRangeAbsoluteDateRangeObject[["type"]] <-
+          self$`type`
       }
       return(TemplateResponseDateRangeAbsoluteDateRangeObject)
     },
@@ -95,14 +95,14 @@ TemplateResponseDateRangeAbsoluteDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRangeAbsoluteDateRange
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`)) {
-        self$`type` <- this_object$`type`
+      if (!is.null(this_object$`end_date`)) {
+        self$`end_date` <- this_object$`end_date`
       }
       if (!is.null(this_object$`start_date`)) {
         self$`start_date` <- this_object$`start_date`
       }
-      if (!is.null(this_object$`end_date`)) {
-        self$`end_date` <- this_object$`end_date`
+      if (!is.null(this_object$`type`)) {
+        self$`type` <- this_object$`type`
       }
       self
     },
@@ -125,9 +125,9 @@ TemplateResponseDateRangeAbsoluteDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRangeAbsoluteDateRange
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`type` <- this_object$`type`
-      self$`start_date` <- this_object$`start_date`
       self$`end_date` <- this_object$`end_date`
+      self$`start_date` <- this_object$`start_date`
+      self$`type` <- this_object$`type`
       self
     },
 

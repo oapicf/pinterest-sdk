@@ -11,10 +11,10 @@ module CatalogsProductGroupMultipleGenderCriteria =
 
   [<CLIMutable>]
   type CatalogsProductGroupMultipleGenderCriteria = {
-    [<JsonProperty(PropertyName = "values")>]
-    Values : Gender[];
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
+    [<JsonProperty(PropertyName = "values")>]
+    Values : Gender[];
   }
 
   //#endregion

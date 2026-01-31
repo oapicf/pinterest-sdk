@@ -23,20 +23,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param partnerId Unique identifier of a business partner to request asset access to.
  * @param assetIdToPermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+ * @param partnerId Unique identifier of a business partner to request asset access to.
  */
 
 
 data class CreateAssetAccessRequestBodyAssetRequestsInner (
 
-    /* Unique identifier of a business partner to request asset access to. */
-    @Json(name = "partner_id")
-    val partnerId: kotlin.String,
-
     /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
     @Json(name = "asset_id_to_permissions")
-    val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>
+    val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>,
+
+    /* Unique identifier of a business partner to request asset access to. */
+    @Json(name = "partner_id")
+    val partnerId: kotlin.String
 
 ) {
 

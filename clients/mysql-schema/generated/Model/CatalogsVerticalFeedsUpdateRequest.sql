@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsVerticalFeedsUpdateRequest`
 --
-SELECT `default_currency`, `name`, `format`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `catalog_type`, `default_availability` FROM `CatalogsVerticalFeedsUpdateRequest` WHERE 1;
+SELECT `catalog_type`, `credentials`, `default_availability`, `default_currency`, `format`, `location`, `name`, `preferred_processing_schedule`, `status` FROM `CatalogsVerticalFeedsUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsVerticalFeedsUpdateRequest`
 --
-INSERT INTO `CatalogsVerticalFeedsUpdateRequest`(`default_currency`, `name`, `format`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `catalog_type`, `default_availability`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsVerticalFeedsUpdateRequest`(`catalog_type`, `credentials`, `default_availability`, `default_currency`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsVerticalFeedsUpdateRequest`
 --
-UPDATE `CatalogsVerticalFeedsUpdateRequest` SET `default_currency` = ?, `name` = ?, `format` = ?, `credentials` = ?, `location` = ?, `preferred_processing_schedule` = ?, `status` = ?, `catalog_type` = ?, `default_availability` = ? WHERE 1;
+UPDATE `CatalogsVerticalFeedsUpdateRequest` SET `catalog_type` = ?, `credentials` = ?, `default_availability` = ?, `default_currency` = ?, `format` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsVerticalFeedsUpdateRequest`

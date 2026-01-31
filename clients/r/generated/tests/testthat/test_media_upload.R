@@ -20,17 +20,18 @@ test_that("media_type", {
   #expect_equal(model.instance$`media_type`, "EXPECTED_RESULT")
 })
 
+test_that("upload_parameters", {
+  # tests for the property `upload_parameters` (MediaUploadParameters)
+  # The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`upload_parameters`, "EXPECTED_RESULT")
+})
+
 test_that("upload_url", {
   # tests for the property `upload_url` (character)
   # The URL where you will POST your media file.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`upload_url`, "EXPECTED_RESULT")
-})
-
-test_that("upload_parameters", {
-  # tests for the property `upload_parameters` (MediaUploadAllOfUploadParameters)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`upload_parameters`, "EXPECTED_RESULT")
 })

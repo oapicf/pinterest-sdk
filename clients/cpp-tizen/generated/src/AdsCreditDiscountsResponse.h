@@ -59,20 +59,6 @@ public:
 	/*! \brief Set Advertiser ID the offer was applied to.
 	 */
 	void setAdvertiserId(std::string  advertiser_id);
-	/*! \brief Get The type of discount of this credit
-	 */
-	std::string getDiscountType();
-
-	/*! \brief Set The type of discount of this credit
-	 */
-	void setDiscountType(std::string  discountType);
-	/*! \brief Get The discount applied in the offer’s currency value.
-	 */
-	long long getDiscountInMicroCurrency();
-
-	/*! \brief Set The discount applied in the offer’s currency value.
-	 */
-	void setDiscountInMicroCurrency(long long  discountInMicroCurrency);
 	/*! \brief Get Currency value for the discount.
 	 */
 	std::string getDiscountCurrency();
@@ -80,13 +66,20 @@ public:
 	/*! \brief Set Currency value for the discount.
 	 */
 	void setDiscountCurrency(std::string  discountCurrency);
-	/*! \brief Get Human readable title of the offer code.
+	/*! \brief Get The discount applied in the offer’s currency value.
 	 */
-	std::string getTitle();
+	long long getDiscountInMicroCurrency();
 
-	/*! \brief Set Human readable title of the offer code.
+	/*! \brief Set The discount applied in the offer’s currency value.
 	 */
-	void setTitle(std::string  title);
+	void setDiscountInMicroCurrency(long long  discountInMicroCurrency);
+	/*! \brief Get The type of discount of this credit
+	 */
+	std::string getDiscountType();
+
+	/*! \brief Set The type of discount of this credit
+	 */
+	void setDiscountType(std::string  discountType);
 	/*! \brief Get The credits left to spend.
 	 */
 	long long getRemainingDiscountInMicroCurrency();
@@ -94,15 +87,22 @@ public:
 	/*! \brief Set The credits left to spend.
 	 */
 	void setRemainingDiscountInMicroCurrency(long long  remainingDiscountInMicroCurrency);
+	/*! \brief Get Human readable title of the offer code.
+	 */
+	std::string getTitle();
+
+	/*! \brief Set Human readable title of the offer code.
+	 */
+	void setTitle(std::string  title);
 
 private:
 	bool active;
 	std::string advertiser_id;
-	std::string discountType;
-	long long discountInMicroCurrency;
 	std::string discountCurrency;
-	std::string title;
+	long long discountInMicroCurrency;
+	std::string discountType;
 	long long remainingDiscountInMicroCurrency;
+	std::string title;
 	void __init();
 	void __cleanup();
 

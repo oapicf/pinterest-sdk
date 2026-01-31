@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Label parent entity type.",
+  "name": "LabelParentType",
+  "symbols": [
+    "CAMPAIGN"
+  ]
+}

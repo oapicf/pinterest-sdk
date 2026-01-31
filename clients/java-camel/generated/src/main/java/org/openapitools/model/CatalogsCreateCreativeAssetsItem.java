@@ -21,8 +21,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreateCreativeAssetsItem", description = "A creative assets item to be created.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateCreativeAssetsItem {
+
+  private CatalogsCreativeAssetsAttributes attributes;
 
   private String creativeAssetsId;
 
@@ -61,8 +63,6 @@ public class CatalogsCreateCreativeAssetsItem {
 
   private OperationEnum operation;
 
-  private CatalogsCreativeAssetsAttributes attributes;
-
   public CatalogsCreateCreativeAssetsItem() {
     super();
   }
@@ -70,9 +70,29 @@ public class CatalogsCreateCreativeAssetsItem {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreateCreativeAssetsItem(String creativeAssetsId, OperationEnum operation, CatalogsCreativeAssetsAttributes attributes) {
+  public CatalogsCreateCreativeAssetsItem(CatalogsCreativeAssetsAttributes attributes, String creativeAssetsId, OperationEnum operation) {
+    this.attributes = attributes;
     this.creativeAssetsId = creativeAssetsId;
     this.operation = operation;
+  }
+
+  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -116,26 +136,6 @@ public class CatalogsCreateCreativeAssetsItem {
     this.operation = operation;
   }
 
-  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -145,23 +145,23 @@ public class CatalogsCreateCreativeAssetsItem {
       return false;
     }
     CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem = (CatalogsCreateCreativeAssetsItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreateCreativeAssetsItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateCreativeAssetsItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateCreativeAssetsItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreateCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateCreativeAssetsItem {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

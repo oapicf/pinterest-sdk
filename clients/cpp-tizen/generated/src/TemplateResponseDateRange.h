@@ -50,6 +50,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	TemplateResponse_date_range_absolute_date_range getAbsoluteDateRange();
+
+	/*! \brief Set 
+	 */
+	void setAbsoluteDateRange(TemplateResponse_date_range_absolute_date_range  absolute_date_range);
+	/*! \brief Get 
+	 */
 	TemplateResponse_date_range_dynamic_date_range getDynamicDateRange();
 
 	/*! \brief Set 
@@ -62,18 +69,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setRelativeDateRange(TemplateResponse_date_range_relative_date_range  relative_date_range);
-	/*! \brief Get 
-	 */
-	TemplateResponse_date_range_absolute_date_range getAbsoluteDateRange();
-
-	/*! \brief Set 
-	 */
-	void setAbsoluteDateRange(TemplateResponse_date_range_absolute_date_range  absolute_date_range);
 
 private:
+	TemplateResponse_date_range_absolute_date_range absolute_date_range;
 	TemplateResponse_date_range_dynamic_date_range dynamic_date_range;
 	TemplateResponse_date_range_relative_date_range relative_date_range;
-	TemplateResponse_date_range_absolute_date_range absolute_date_range;
 	void __init();
 	void __cleanup();
 

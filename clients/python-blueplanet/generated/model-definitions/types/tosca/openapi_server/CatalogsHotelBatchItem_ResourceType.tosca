@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelBatchItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelBatchItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreateHotelItem = openapi_server.resourceTypes.CatalogsCreateHotelItem
+  CatalogsDeleteHotelItem = openapi_server.resourceTypes.CatalogsDeleteHotelItem
+  CatalogsUpdatableHotelAttributes = openapi_server.resourceTypes.CatalogsUpdatableHotelAttributes
+  CatalogsUpdateHotelItem = openapi_server.resourceTypes.CatalogsUpdateHotelItem
+  CatalogsUpsertHotelItem = openapi_server.resourceTypes.CatalogsUpsertHotelItem
+}
+resourceTypes {
+
+  CatalogsHotelBatchItem {
+    title = CatalogsHotelBatchItem
+    description = CatalogsHotelBatchItem
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = CatalogsUpdatableHotelAttributes
+          description = ""
+          optional = true
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["DELETE"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelBatchItem {
+    title = CatalogsHotelBatchItem
+    description = CatalogsHotelBatchItem
+    implements = openapi_server.resourceTypes.CatalogsHotelBatchItem
+
+  }
+}

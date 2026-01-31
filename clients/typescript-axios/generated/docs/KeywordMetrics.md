@@ -6,7 +6,6 @@ Keyword metrics JSON
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**avg_cpc_in_micro_currency** | **number** | Average cost per click | [optional] [default to undefined]
 **keyword_query_volume** | **string** | Keyword\&#39;s search frequency. This value is based on keyword frequency in pepsi client response | [optional] [default to undefined]
 
 ## Example
@@ -15,7 +14,6 @@ Name | Type | Description | Notes
 import { KeywordMetrics } from './api';
 
 const instance: KeywordMetrics = {
-    avg_cpc_in_micro_currency,
     keyword_query_volume,
 };
 ```

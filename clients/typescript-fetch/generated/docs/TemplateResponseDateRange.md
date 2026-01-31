@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`absoluteDateRange` | [TemplateResponseDateRangeAbsoluteDateRange](TemplateResponseDateRangeAbsoluteDateRange.md)
 `dynamicDateRange` | [TemplateResponseDateRangeDynamicDateRange](TemplateResponseDateRangeDynamicDateRange.md)
 `relativeDateRange` | [TemplateResponseDateRangeRelativeDateRange](TemplateResponseDateRangeRelativeDateRange.md)
-`absoluteDateRange` | [TemplateResponseDateRangeAbsoluteDateRange](TemplateResponseDateRangeAbsoluteDateRange.md)
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { TemplateResponseDateRange } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "absoluteDateRange": null,
   "dynamicDateRange": null,
   "relativeDateRange": null,
-  "absoluteDateRange": null,
 } satisfies TemplateResponseDateRange
 
 console.log(example)

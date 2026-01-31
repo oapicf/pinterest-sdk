@@ -17,12 +17,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param frequency 
+ * @param frequency Frequency target can only be between 2 and 20
  * @param timerange User entity counts time range
  */
 data class OptimizationGoalMetadataFrequencyGoalMetadata(
 
-    @Schema(example = "null", description = "")
+    @get:Min(value=2)
+    @get:Max(value=20)
+    @Schema(example = "null", description = "Frequency target can only be between 2 and 20")
     @get:JsonProperty("frequency") val frequency: kotlin.Int? = null,
 
     @Schema(example = "DAY", description = "User entity counts time range")

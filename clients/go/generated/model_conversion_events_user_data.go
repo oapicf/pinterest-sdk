@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -19,51 +19,23 @@ import (
 
 // ConversionEventsUserData Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
 type ConversionEventsUserData struct {
-	ConversionEventsUserDataAnyOf *ConversionEventsUserDataAnyOf
-	ConversionEventsUserDataAnyOf1 *ConversionEventsUserDataAnyOf1
-	ConversionEventsUserDataAnyOf2 *ConversionEventsUserDataAnyOf2
+	ConversionEventsUserDataProperties *ConversionEventsUserDataProperties
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *ConversionEventsUserData) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into ConversionEventsUserDataAnyOf
-	err = json.Unmarshal(data, &dst.ConversionEventsUserDataAnyOf);
+	// try to unmarshal JSON data into ConversionEventsUserDataProperties
+	err = json.Unmarshal(data, &dst.ConversionEventsUserDataProperties);
 	if err == nil {
-		jsonConversionEventsUserDataAnyOf, _ := json.Marshal(dst.ConversionEventsUserDataAnyOf)
-		if string(jsonConversionEventsUserDataAnyOf) == "{}" { // empty struct
-			dst.ConversionEventsUserDataAnyOf = nil
+		jsonConversionEventsUserDataProperties, _ := json.Marshal(dst.ConversionEventsUserDataProperties)
+		if string(jsonConversionEventsUserDataProperties) == "{}" { // empty struct
+			dst.ConversionEventsUserDataProperties = nil
 		} else {
-			return nil // data stored in dst.ConversionEventsUserDataAnyOf, return on the first match
+			return nil // data stored in dst.ConversionEventsUserDataProperties, return on the first match
 		}
 	} else {
-		dst.ConversionEventsUserDataAnyOf = nil
-	}
-
-	// try to unmarshal JSON data into ConversionEventsUserDataAnyOf1
-	err = json.Unmarshal(data, &dst.ConversionEventsUserDataAnyOf1);
-	if err == nil {
-		jsonConversionEventsUserDataAnyOf1, _ := json.Marshal(dst.ConversionEventsUserDataAnyOf1)
-		if string(jsonConversionEventsUserDataAnyOf1) == "{}" { // empty struct
-			dst.ConversionEventsUserDataAnyOf1 = nil
-		} else {
-			return nil // data stored in dst.ConversionEventsUserDataAnyOf1, return on the first match
-		}
-	} else {
-		dst.ConversionEventsUserDataAnyOf1 = nil
-	}
-
-	// try to unmarshal JSON data into ConversionEventsUserDataAnyOf2
-	err = json.Unmarshal(data, &dst.ConversionEventsUserDataAnyOf2);
-	if err == nil {
-		jsonConversionEventsUserDataAnyOf2, _ := json.Marshal(dst.ConversionEventsUserDataAnyOf2)
-		if string(jsonConversionEventsUserDataAnyOf2) == "{}" { // empty struct
-			dst.ConversionEventsUserDataAnyOf2 = nil
-		} else {
-			return nil // data stored in dst.ConversionEventsUserDataAnyOf2, return on the first match
-		}
-	} else {
-		dst.ConversionEventsUserDataAnyOf2 = nil
+		dst.ConversionEventsUserDataProperties = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(ConversionEventsUserData)")
@@ -71,16 +43,8 @@ func (dst *ConversionEventsUserData) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ConversionEventsUserData) MarshalJSON() ([]byte, error) {
-	if src.ConversionEventsUserDataAnyOf != nil {
-		return json.Marshal(&src.ConversionEventsUserDataAnyOf)
-	}
-
-	if src.ConversionEventsUserDataAnyOf1 != nil {
-		return json.Marshal(&src.ConversionEventsUserDataAnyOf1)
-	}
-
-	if src.ConversionEventsUserDataAnyOf2 != nil {
-		return json.Marshal(&src.ConversionEventsUserDataAnyOf2)
+	if src.ConversionEventsUserDataProperties != nil {
+		return json.Marshal(&src.ConversionEventsUserDataProperties)
 	}
 
 	return nil, nil // no data in anyOf schemas

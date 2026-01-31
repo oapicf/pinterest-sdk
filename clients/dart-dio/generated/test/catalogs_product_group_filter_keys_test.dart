@@ -42,27 +42,27 @@ void main() {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL0
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL0
     test('to test the property `cUSTOMLABEL0`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL1
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL1
     test('to test the property `cUSTOMLABEL1`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL2
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL2
     test('to test the property `cUSTOMLABEL2`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL3
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL3
     test('to test the property `cUSTOMLABEL3`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL4
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL4
     test('to test the property `cUSTOMLABEL4`', () async {
       // TODO
     });
@@ -144,6 +144,36 @@ void main() {
 
     // CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP
     test('to test the property `PRODUCT_GROUP`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupUint32Criteria cUSTOMNUMBER0
+    test('to test the property `cUSTOMNUMBER0`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupUint32Criteria cUSTOMNUMBER1
+    test('to test the property `cUSTOMNUMBER1`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupUint32Criteria cUSTOMNUMBER2
+    test('to test the property `cUSTOMNUMBER2`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupUint32Criteria cUSTOMNUMBER3
+    test('to test the property `cUSTOMNUMBER3`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupUint32Criteria cUSTOMNUMBER4
+    test('to test the property `cUSTOMNUMBER4`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS
+    test('to test the property `TITLE_KEYWORDS`', () async {
       // TODO
     });
 

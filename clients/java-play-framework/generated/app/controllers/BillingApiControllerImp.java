@@ -3,8 +3,11 @@ package controllers;
 import apimodels.AdsCreditRedeemRequest;
 import apimodels.AdsCreditRedeemResponse;
 import apimodels.AdsCreditsDiscountsGet200Response;
+import apimodels.BillingInvoiceDownloadResponse;
+import apimodels.BillingInvoicesGet200Response;
 import apimodels.BillingProfilesGet200Response;
 import apimodels.Error;
+import java.time.LocalDate;
 import apimodels.SSIOAccountResponse;
 import apimodels.SSIOCreateInsertionOrderRequest;
 import apimodels.SSIOCreateInsertionOrderResponse;
@@ -23,7 +26,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BillingApiControllerImp extends BillingApiControllerImpInterface {
     @Override
     public AdsCreditRedeemResponse adsCreditRedeem(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) throws Exception {
@@ -35,6 +38,18 @@ public class BillingApiControllerImp extends BillingApiControllerImpInterface {
     public AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new AdsCreditsDiscountsGet200Response();
+    }
+
+    @Override
+    public BillingInvoiceDownloadResponse billingInvoiceDownloadGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String billingInvoiceId) throws Exception {
+        //Do your magic!!!
+        return new BillingInvoiceDownloadResponse();
+    }
+
+    @Override
+    public BillingInvoicesGet200Response billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String sort, String order, String status, String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate endDueDate) throws Exception {
+        //Do your magic!!!
+        return new BillingInvoicesGet200Response();
     }
 
     @Override

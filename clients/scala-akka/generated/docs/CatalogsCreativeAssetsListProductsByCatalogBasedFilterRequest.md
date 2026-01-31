@@ -8,8 +8,8 @@ Request object to list products for a given creative assets catalog_id and produ
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 
 

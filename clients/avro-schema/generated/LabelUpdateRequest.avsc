@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LabelUpdateRequest",
+  "fields": [
+    {
+      "name": "labels",
+      "type": {
+        "type": "array",
+        "items": "model.LabelUpdateRequestLabelsInner"
+      },
+      "doc": "Labels that you are applying to the campaign."
+    }
+  ]
+
+}

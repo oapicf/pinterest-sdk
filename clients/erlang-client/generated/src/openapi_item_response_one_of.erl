@@ -1,0 +1,29 @@
+-module(openapi_item_response_one_of).
+
+-export([encode/1]).
+
+-export_type([openapi_item_response_one_of/0]).
+
+-type openapi_item_response_one_of() ::
+    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+       'attributes' => openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes(),
+       'item_id' => binary(),
+       'pins' => list(),
+       'hotel_id' => binary(),
+       'creative_assets_id' => binary()
+     }.
+
+encode(#{ 'catalog_type' := CatalogType,
+          'attributes' := Attributes,
+          'item_id' := ItemId,
+          'pins' := Pins,
+          'hotel_id' := HotelId,
+          'creative_assets_id' := CreativeAssetsId
+        }) ->
+    #{ 'catalog_type' => CatalogType,
+       'attributes' => Attributes,
+       'item_id' => ItemId,
+       'pins' => Pins,
+       'hotel_id' => HotelId,
+       'creative_assets_id' => CreativeAssetsId
+     }.

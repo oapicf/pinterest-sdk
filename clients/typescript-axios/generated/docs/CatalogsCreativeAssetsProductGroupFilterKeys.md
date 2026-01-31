@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
 **GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
 **GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
 **GOOGLE_PRODUCT_CATEGORY_4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **GOOGLE_PRODUCT_CATEGORY_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
 **GOOGLE_PRODUCT_CATEGORY_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
 **MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | [default to undefined]
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
 
 ## Example
 
@@ -40,6 +41,7 @@ const instance: CatalogsCreativeAssetsProductGroupFilterKeys = {
     GOOGLE_PRODUCT_CATEGORY_1,
     GOOGLE_PRODUCT_CATEGORY_0,
     MEDIA_TYPE,
+    TITLE_KEYWORDS,
 };
 ```
 

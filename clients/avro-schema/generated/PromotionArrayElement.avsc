@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PromotionArrayElement",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.PromotionResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exception",
+      "type": ["null", "model.Exception"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **String** | The date range type | [optional] 
 **Range** | **String** | The dynamic range type | [optional] 
+**Type** | **String** | The date range type | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TemplateResponseDateRangeDynamicDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRangeDynamicDateRange  -Type dynamic `
- -Range YEAR_TO_DATE
+$TemplateResponseDateRangeDynamicDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRangeDynamicDateRange  -Range YEAR_TO_DATE `
+ -Type dynamic
 ```
 
 - Convert the resource to JSON

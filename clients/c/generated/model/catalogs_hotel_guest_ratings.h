@@ -19,19 +19,19 @@ typedef struct catalogs_hotel_guest_ratings_t catalogs_hotel_guest_ratings_t;
 
 
 typedef struct catalogs_hotel_guest_ratings_t {
-    double score; //numeric
-    int number_of_reviewers; //numeric
     double max_score; //numeric
+    int number_of_reviewers; //numeric
     char *rating_system; // string
+    double score; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_guest_ratings_t;
 
 __attribute__((deprecated)) catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_create(
-    double score,
-    int number_of_reviewers,
     double max_score,
-    char *rating_system
+    int number_of_reviewers,
+    char *rating_system,
+    double score
 );
 
 void catalogs_hotel_guest_ratings_free(catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings);

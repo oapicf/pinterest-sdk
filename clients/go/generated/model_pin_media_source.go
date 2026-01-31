@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -17,7 +17,7 @@ import (
 	"gopkg.in/validator.v2"
 )
 
-// PinMediaSource - Pin media source.
+// PinMediaSource - Pin media source that can be an image, video, or a mix of both passed in as a request.
 type PinMediaSource struct {
 	PinMediaSourceImageBase64 *PinMediaSourceImageBase64
 	PinMediaSourceImageURL *PinMediaSourceImageURL

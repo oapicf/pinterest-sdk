@@ -14,32 +14,32 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param name targeting template name
  * @param autoUnderscoretargetingUnderscoreenabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param targetingUnderscoreattributes 
- * @param placementUnderscoregroup 
  * @param keywords 
+ * @param name targeting template name
+ * @param placementUnderscoregroup 
+ * @param targetingUnderscoreattributes 
  * @param trackingUnderscoreurls 
- * @param id Targeting template ID.
- * @param createdUnderscoretime Targeting template created time. Unix timestamp in seconds.
- * @param updatedUnderscoretime Targeting template updated time.Unix timestamp in seconds.
  * @param adUnderscoreaccountUnderscoreid The ID of the advertiser that this targeting template belongs to.
- * @param status Indicate targeting template is active or Deleted
+ * @param createdUnderscoretime Targeting template created time. Unix timestamp in seconds.
+ * @param id Targeting template ID.
  * @param sizing 
+ * @param status Indicate targeting template is active or Deleted
+ * @param updatedUnderscoretime Targeting template updated time.Unix timestamp in seconds.
  * @param valid Inform if the targeting template is valid (ex. would be false if has revoked audience)
  */
-case class TargetingTemplateGetResponseData(name: Option[String],
-                autoUnderscoretargetingUnderscoreenabled: Option[Boolean],
-                targetingUnderscoreattributes: Option[TargetingSpec],
-                placementUnderscoregroup: Option[PlacementGroupType],
+case class TargetingTemplateGetResponseData(autoUnderscoretargetingUnderscoreenabled: Option[Boolean],
                 keywords: Option[Seq[TargetingTemplateKeyword]],
+                name: Option[String],
+                placementUnderscoregroup: Option[PlacementGroupType],
+                targetingUnderscoreattributes: Option[TargetingSpec],
                 trackingUnderscoreurls: Option[TrackingUrls],
-                id: Option[String],
-                createdUnderscoretime: Option[Int],
-                updatedUnderscoretime: Option[Int],
                 adUnderscoreaccountUnderscoreid: Option[String],
-                status: Option[String],
+                createdUnderscoretime: Option[Int],
+                id: Option[String],
                 sizing: Option[TargetingTemplateAudienceSizing],
+                status: Option[String],
+                updatedUnderscoretime: Option[Int],
                 valid: Option[Boolean]
                 )
 

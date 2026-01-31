@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `SSIOAccountResponse`
 --
-SELECT `eligible`, `can_edit`, `billto_infos`, `currency`, `pmp_names`, `error` FROM `SSIOAccountResponse` WHERE 1;
+SELECT `billto_infos`, `can_edit`, `currency`, `eligible`, `error`, `pmp_names` FROM `SSIOAccountResponse` WHERE 1;
 
 --
 -- INSERT template for table `SSIOAccountResponse`
 --
-INSERT INTO `SSIOAccountResponse`(`eligible`, `can_edit`, `billto_infos`, `currency`, `pmp_names`, `error`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `SSIOAccountResponse`(`billto_infos`, `can_edit`, `currency`, `eligible`, `error`, `pmp_names`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `SSIOAccountResponse`
 --
-UPDATE `SSIOAccountResponse` SET `eligible` = ?, `can_edit` = ?, `billto_infos` = ?, `currency` = ?, `pmp_names` = ?, `error` = ? WHERE 1;
+UPDATE `SSIOAccountResponse` SET `billto_infos` = ?, `can_edit` = ?, `currency` = ?, `eligible` = ?, `error` = ?, `pmp_names` = ? WHERE 1;
 
 --
 -- DELETE template for table `SSIOAccountResponse`

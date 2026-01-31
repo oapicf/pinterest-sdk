@@ -1,4 +1,4 @@
-(defproject pinterest-rest-api "5.14.0"
+(defproject pinterest-rest-api "5.23.0"
   :description "Pinterest's REST API"
   :url "https://github.com/oapicf/pinterest-sdk"
   :license {:name "MIT"

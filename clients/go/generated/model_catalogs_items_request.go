@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &CatalogsItemsRequest{}
 // CatalogsItemsRequest Request object of catalogs items
 type CatalogsItemsRequest struct {
 	Country Country `json:"country"`
+	Filters CatalogsItemsPostFilters `json:"filters"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
-	Filters CatalogsItemsPostFilters `json:"filters"`
 }
 
 type _CatalogsItemsRequest CatalogsItemsRequest
@@ -34,11 +34,11 @@ type _CatalogsItemsRequest CatalogsItemsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsRequest(country Country, language string, filters CatalogsItemsPostFilters) *CatalogsItemsRequest {
+func NewCatalogsItemsRequest(country Country, filters CatalogsItemsPostFilters, language string) *CatalogsItemsRequest {
 	this := CatalogsItemsRequest{}
 	this.Country = country
-	this.Language = language
 	this.Filters = filters
+	this.Language = language
 	return &this
 }
 
@@ -74,30 +74,6 @@ func (o *CatalogsItemsRequest) SetCountry(v Country) {
 	o.Country = v
 }
 
-// GetLanguage returns the Language field value
-func (o *CatalogsItemsRequest) GetLanguage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Language
-}
-
-// GetLanguageOk returns a tuple with the Language field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemsRequest) GetLanguageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Language, true
-}
-
-// SetLanguage sets field value
-func (o *CatalogsItemsRequest) SetLanguage(v string) {
-	o.Language = v
-}
-
 // GetFilters returns the Filters field value
 func (o *CatalogsItemsRequest) GetFilters() CatalogsItemsPostFilters {
 	if o == nil {
@@ -122,6 +98,30 @@ func (o *CatalogsItemsRequest) SetFilters(v CatalogsItemsPostFilters) {
 	o.Filters = v
 }
 
+// GetLanguage returns the Language field value
+func (o *CatalogsItemsRequest) GetLanguage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Language
+}
+
+// GetLanguageOk returns a tuple with the Language field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemsRequest) GetLanguageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Language, true
+}
+
+// SetLanguage sets field value
+func (o *CatalogsItemsRequest) SetLanguage(v string) {
+	o.Language = v
+}
+
 func (o CatalogsItemsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,8 +133,8 @@ func (o CatalogsItemsRequest) MarshalJSON() ([]byte, error) {
 func (o CatalogsItemsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
-	toSerialize["language"] = o.Language
 	toSerialize["filters"] = o.Filters
+	toSerialize["language"] = o.Language
 	return toSerialize, nil
 }
 
@@ -144,8 +144,8 @@ func (o *CatalogsItemsRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"country",
-		"language",
 		"filters",
+		"language",
 	}
 
 	allProperties := make(map[string]interface{})

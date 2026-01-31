@@ -18,7 +18,7 @@ export interface UpdatePartnerAssetsResult {
      */
     asset_id?: string;
     /**
-     * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+     * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
      */
     asset_type?: string;
     /**

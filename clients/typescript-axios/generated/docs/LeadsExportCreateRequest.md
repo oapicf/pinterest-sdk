@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**start_date** | **string** | Export leads collected on and after start date (UTC). Format: YYYY-MM-DD | [default to undefined]
-**end_date** | **string** | Export leads collected on and before end date (UTC). Format: YYYY-MM-DD | [default to undefined]
 **ad_id** | **string** | ID for the ad collecting leads | [default to undefined]
+**end_date** | **string** | Export leads collected on and before end date (UTC). Format: YYYY-MM-DD | [default to undefined]
+**start_date** | **string** | Export leads collected on and after start date (UTC). Format: YYYY-MM-DD | [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { LeadsExportCreateRequest } from './api';
 
 const instance: LeadsExportCreateRequest = {
-    start_date,
-    end_date,
     ad_id,
+    end_date,
+    start_date,
 };
 ```
 

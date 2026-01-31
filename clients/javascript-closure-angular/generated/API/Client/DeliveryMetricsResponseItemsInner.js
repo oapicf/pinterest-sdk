@@ -6,13 +6,6 @@ goog.provide('API.Client.DeliveryMetricsResponse_items_inner');
 API.Client.DeliveryMetricsResponseItemsInner = function() {}
 
 /**
- * Metric's name.
- * @type {!string}
- * @export
- */
-API.Client.DeliveryMetricsResponseItemsInner.prototype.name;
-
-/**
  * Category name
  * @type {!string}
  * @export
@@ -32,6 +25,13 @@ API.Client.DeliveryMetricsResponseItemsInner.prototype.definition;
  * @export
  */
 API.Client.DeliveryMetricsResponseItemsInner.prototype.displayName;
+
+/**
+ * Metric's name.
+ * @type {!string}
+ * @export
+ */
+API.Client.DeliveryMetricsResponseItemsInner.prototype.name;
 
 /** @enum {string} */
 API.Client.DeliveryMetricsResponseItemsInner.CategoryEnum = { 

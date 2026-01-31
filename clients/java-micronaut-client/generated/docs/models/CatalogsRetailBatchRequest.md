@@ -10,16 +10,19 @@ The class is defined in **[CatalogsRetailBatchRequest.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog |  [optional property]
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **items** | [`List&lt;CatalogsRetailBatchRequestItemsInner&gt;`](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 RETAIL | `"RETAIL"`
+
 
 
 ## LanguageEnum
@@ -133,6 +136,5 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
 
 

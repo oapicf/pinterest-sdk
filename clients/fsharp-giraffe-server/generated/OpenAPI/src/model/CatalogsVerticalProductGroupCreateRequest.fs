@@ -19,12 +19,12 @@ module CatalogsVerticalProductGroupCreateRequest =
   //#endregion
 
   type CatalogsVerticalProductGroupCreateRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
-    Name : string;
+    Country : Country;
     Description : string option;
     Filters : CatalogsCreativeAssetsProductGroupFilters;
-    CatalogId : string;
-    Country : Country;
     Locale : CatalogsLocale;
+    Name : string;
   }
   //#endregion

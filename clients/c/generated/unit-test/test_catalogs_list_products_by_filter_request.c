@@ -26,18 +26,18 @@ catalogs_list_products_by_filter_request_t* instantiate_catalogs_list_products_b
       "2680059592705",
        // false, not to have infinite recursion
       instantiate_catalogs_creative_assets_product_group_filters(0),
-      pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_CREATIVE_ASSETS,
       "2680059592705",
-      pinterest_rest_api_catalogs_list_products_by_filter_request__"US",
+      pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_CREATIVE_ASSETS,
+      pinterest_rest_api_catalogs_list_products_by_filter_request__AD,
       pinterest_rest_api_catalogs_list_products_by_filter_request__af-ZA
     );
   } else {
     catalogs_list_products_by_filter_request = catalogs_list_products_by_filter_request_create(
       "2680059592705",
       NULL,
-      pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_CREATIVE_ASSETS,
       "2680059592705",
-      pinterest_rest_api_catalogs_list_products_by_filter_request__"US",
+      pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_CREATIVE_ASSETS,
+      pinterest_rest_api_catalogs_list_products_by_filter_request__AD,
       pinterest_rest_api_catalogs_list_products_by_filter_request__af-ZA
     );
   }

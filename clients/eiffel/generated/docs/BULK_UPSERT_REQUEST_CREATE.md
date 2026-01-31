@@ -3,11 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaigns** | [**LIST [CAMPAIGN_CREATE_REQUEST]**](CampaignCreateRequest.md) |  | [optional] [default to null]
 **ad_groups** | [**LIST [AD_GROUP_CREATE_REQUEST]**](AdGroupCreateRequest.md) |  | [optional] [default to null]
 **ads** | [**LIST [AD_CREATE_REQUEST]**](AdCreateRequest.md) |  | [optional] [default to null]
-**product_groups** | [**LIST [PRODUCT_GROUP_PROMOTION_CREATE_REQUEST]**](ProductGroupPromotionCreateRequest.md) |  | [optional] [default to null]
+**campaigns** | [**LIST [CAMPAIGN_CREATE_REQUEST]**](CampaignCreateRequest.md) |  | [optional] [default to null]
+**catalog_product_groups** | [**LIST [MULTIPLE_PRODUCT_GROUPS_INNER]**](multiple_product_groups_inner.md) |  | [optional] [default to null]
 **keywords** | [**LIST [KEYWORDS_REQUEST]**](KeywordsRequest.md) |  | [optional] [default to null]
+**labels** | [**LIST [LABEL_CREATE_REQUEST]**](LabelCreateRequest.md) |  | [optional] [default to null]
+**product_groups** | [**LIST [PRODUCT_GROUP_PROMOTION_CREATE_REQUEST]**](ProductGroupPromotionCreateRequest.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

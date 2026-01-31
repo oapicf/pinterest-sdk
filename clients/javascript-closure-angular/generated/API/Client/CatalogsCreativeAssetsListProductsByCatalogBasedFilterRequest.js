@@ -7,17 +7,17 @@ goog.provide('API.Client.CatalogsCreativeAssetsListProductsByCatalogBasedFilterR
 API.Client.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.prototype.catalogType;
-
-/**
  * Catalog id pertaining to the creative assets product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.prototype.catalogId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}

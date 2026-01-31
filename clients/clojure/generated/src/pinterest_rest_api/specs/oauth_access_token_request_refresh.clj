@@ -9,7 +9,6 @@
   {
    (ds/req :refresh_token) string?
    (ds/opt :scope) string?
-   (ds/opt :refresh_on) boolean?
    (ds/req :grant_type) string?
    })
 

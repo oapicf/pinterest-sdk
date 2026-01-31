@@ -28,6 +28,12 @@ void main() {
       // TODO
     });
 
+    // Customer list errors
+    // Object exceptions
+    test('to test the property `exceptions`', () async {
+      // TODO
+    });
+
     // Customer list ID.
     // String id
     test('to test the property `id`', () async {
@@ -73,12 +79,6 @@ void main() {
     // Last update time. Unix timestamp in seconds.
     // num updatedTime
     test('to test the property `updatedTime`', () async {
-      // TODO
-    });
-
-    // Customer list errors
-    // Object exceptions
-    test('to test the property `exceptions`', () async {
       // TODO
     });
 

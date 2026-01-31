@@ -3,8 +3,11 @@ package api
 import model.AdsCreditRedeemRequest
 import model.AdsCreditRedeemResponse
 import model.AdsCreditsDiscountsGet200Response
+import model.BillingInvoiceDownloadResponse
+import model.BillingInvoicesGet200Response
 import model.BillingProfilesGet200Response
 import model.Error
+import java.time.LocalDate
 import model.SSIOAccountResponse
 import model.SSIOCreateInsertionOrderRequest
 import model.SSIOCreateInsertionOrderResponse
@@ -17,7 +20,7 @@ import model.SsioOrderLinesGetByAdAccount200Response
 /**
   * Provides a default implementation for [[BillingApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class BillingApiImpl extends BillingApi {
   /**
     * @inheritdoc
@@ -34,7 +37,25 @@ class BillingApiImpl extends BillingApi {
   override def adsCreditsDiscountsGet(adAccountId: String, bookmark: Option[String], pageSize: Option[Int]): AdsCreditsDiscountsGet200Response = {
     // TODO: Implement better logic
 
-    AdsCreditsDiscountsGet200Response(List.empty[AdsCreditDiscountsResponse], None)
+    AdsCreditsDiscountsGet200Response(None, List.empty[AdsCreditDiscountsResponse])
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String): BillingInvoiceDownloadResponse = {
+    // TODO: Implement better logic
+
+    BillingInvoiceDownloadResponse(None, None)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def billingInvoicesGet(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], sort: Option[String], order: Option[String], status: Option[String], documentType: Option[String], startDueDate: Option[LocalDate], endDueDate: Option[LocalDate]): BillingInvoicesGet200Response = {
+    // TODO: Implement better logic
+
+    BillingInvoicesGet200Response(None, List.empty[BillingInvoiceResponse])
   }
 
   /**
@@ -43,7 +64,7 @@ class BillingApiImpl extends BillingApi {
   override def billingProfilesGet(adAccountId: String, isActive: Boolean, bookmark: Option[String], pageSize: Option[Int]): BillingProfilesGet200Response = {
     // TODO: Implement better logic
 
-    BillingProfilesGet200Response(List.empty[BillingProfilesResponse], None)
+    BillingProfilesGet200Response(None, List.empty[BillingProfilesResponse])
   }
 
   /**
@@ -79,7 +100,7 @@ class BillingApiImpl extends BillingApi {
   override def ssioInsertionOrdersStatusGetByAdAccount(adAccountId: String, bookmark: Option[String], pageSize: Option[Int]): SsioInsertionOrdersStatusGetByAdAccount200Response = {
     // TODO: Implement better logic
 
-    SsioInsertionOrdersStatusGetByAdAccount200Response(List.empty[SSIOInsertionOrderStatus], None)
+    SsioInsertionOrdersStatusGetByAdAccount200Response(None, List.empty[SSIOInsertionOrderStatus])
   }
 
   /**
@@ -97,6 +118,6 @@ class BillingApiImpl extends BillingApi {
   override def ssioOrderLinesGetByAdAccount(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], pinOrderId: Option[String]): SsioOrderLinesGetByAdAccount200Response = {
     // TODO: Implement better logic
 
-    SsioOrderLinesGetByAdAccount200Response(List.empty[SSIOOrderLine], None)
+    SsioOrderLinesGetByAdAccount200Response(None, List.empty[SSIOOrderLine])
   }
 }

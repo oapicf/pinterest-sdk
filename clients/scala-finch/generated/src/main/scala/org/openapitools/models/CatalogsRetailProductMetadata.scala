@@ -11,19 +11,19 @@ import org.openapitools.models.NonNullableProductAvailabilityType
 
 /**
  * Retail product metadata entity
- * @param itemUnderscoreid The user-created unique ID that represents the product.
- * @param itemUnderscoregroupUnderscoreid The parent ID of the product.
  * @param availability 
+ * @param currency 
+ * @param itemUnderscoregroupUnderscoreid The parent ID of the product.
+ * @param itemUnderscoreid The user-created unique ID that represents the product.
  * @param price The price of the product.
  * @param saleUnderscoreprice The discounted price of the product.
- * @param currency 
  */
-case class CatalogsRetailProductMetadata(itemUnderscoreid: String,
+case class CatalogsRetailProductMetadata(availability: NonNullableProductAvailabilityType,
+                currency: NonNullableCatalogsCurrency,
                 itemUnderscoregroupUnderscoreid: String,
-                availability: NonNullableProductAvailabilityType,
+                itemUnderscoreid: String,
                 price: BigDecimal,
-                saleUnderscoreprice: BigDecimal,
-                currency: NonNullableCatalogsCurrency
+                saleUnderscoreprice: BigDecimal
                 )
 
 object CatalogsRetailProductMetadata {

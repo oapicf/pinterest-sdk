@@ -49,6 +49,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	std::list<QuizPinOption> getOptions();
+
+	/*! \brief Set 
+	 */
+	void setOptions(std::list <QuizPinOption> options);
+	/*! \brief Get 
+	 */
 	long long getQuestionId();
 
 	/*! \brief Set 
@@ -61,18 +68,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setQuestionText(std::string  question_text);
-	/*! \brief Get 
-	 */
-	std::list<QuizPinOption> getOptions();
-
-	/*! \brief Set 
-	 */
-	void setOptions(std::list <QuizPinOption> options);
 
 private:
+	std::list <QuizPinOption>options;
 	long long question_id;
 	std::string question_text;
-	std::list <QuizPinOption>options;
 	void __init();
 	void __cleanup();
 

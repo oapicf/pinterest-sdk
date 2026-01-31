@@ -12,10 +12,10 @@ module TopPinsAnalyticsResponsePinsInner =
 
   [<CLIMutable>]
   type TopPinsAnalyticsResponsePinsInner = {
-    [<JsonProperty(PropertyName = "metrics")>]
-    Metrics : IDictionary<string, decimal>;
     [<JsonProperty(PropertyName = "data_status")>]
     DataStatus : IDictionary<string, DataStatus>;
+    [<JsonProperty(PropertyName = "metrics")>]
+    Metrics : IDictionary<string, decimal>;
     [<JsonProperty(PropertyName = "pin_id")>]
     PinId : string;
   }

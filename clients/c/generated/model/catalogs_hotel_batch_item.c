@@ -23,31 +23,31 @@ pinterest_rest_api_catalogs_hotel_batch_item_OPERATION_e catalogs_hotel_batch_it
 }
 
 static catalogs_hotel_batch_item_t *catalogs_hotel_batch_item_create_internal(
+    catalogs_updatable_hotel_attributes_t *attributes,
     char *hotel_id,
-    pinterest_rest_api_catalogs_hotel_batch_item_OPERATION_e operation,
-    catalogs_updatable_hotel_attributes_t *attributes
+    pinterest_rest_api_catalogs_hotel_batch_item_OPERATION_e operation
     ) {
     catalogs_hotel_batch_item_t *catalogs_hotel_batch_item_local_var = malloc(sizeof(catalogs_hotel_batch_item_t));
     if (!catalogs_hotel_batch_item_local_var) {
         return NULL;
     }
+    catalogs_hotel_batch_item_local_var->attributes = attributes;
     catalogs_hotel_batch_item_local_var->hotel_id = hotel_id;
     catalogs_hotel_batch_item_local_var->operation = operation;
-    catalogs_hotel_batch_item_local_var->attributes = attributes;
 
     catalogs_hotel_batch_item_local_var->_library_owned = 1;
     return catalogs_hotel_batch_item_local_var;
 }
 
 __attribute__((deprecated)) catalogs_hotel_batch_item_t *catalogs_hotel_batch_item_create(
+    catalogs_updatable_hotel_attributes_t *attributes,
     char *hotel_id,
-    pinterest_rest_api_catalogs_hotel_batch_item_OPERATION_e operation,
-    catalogs_updatable_hotel_attributes_t *attributes
+    pinterest_rest_api_catalogs_hotel_batch_item_OPERATION_e operation
     ) {
     return catalogs_hotel_batch_item_create_internal (
+        attributes,
         hotel_id,
-        operation,
-        attributes
+        operation
         );
 }
 
@@ -60,19 +60,33 @@ void catalogs_hotel_batch_item_free(catalogs_hotel_batch_item_t *catalogs_hotel_
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_hotel_batch_item->hotel_id) {
-        free(catalogs_hotel_batch_item->hotel_id);
-        catalogs_hotel_batch_item->hotel_id = NULL;
-    }
     if (catalogs_hotel_batch_item->attributes) {
         catalogs_updatable_hotel_attributes_free(catalogs_hotel_batch_item->attributes);
         catalogs_hotel_batch_item->attributes = NULL;
+    }
+    if (catalogs_hotel_batch_item->hotel_id) {
+        free(catalogs_hotel_batch_item->hotel_id);
+        catalogs_hotel_batch_item->hotel_id = NULL;
     }
     free(catalogs_hotel_batch_item);
 }
 
 cJSON *catalogs_hotel_batch_item_convertToJSON(catalogs_hotel_batch_item_t *catalogs_hotel_batch_item) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_hotel_batch_item->attributes
+    if (!catalogs_hotel_batch_item->attributes) {
+        goto fail;
+    }
+    cJSON *attributes_local_JSON = catalogs_updatable_hotel_attributes_convertToJSON(catalogs_hotel_batch_item->attributes);
+    if(attributes_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+
 
     // catalogs_hotel_batch_item->hotel_id
     if (!catalogs_hotel_batch_item->hotel_id) {
@@ -92,20 +106,6 @@ cJSON *catalogs_hotel_batch_item_convertToJSON(catalogs_hotel_batch_item_t *cata
     goto fail; //Enum
     }
 
-
-    // catalogs_hotel_batch_item->attributes
-    if (!catalogs_hotel_batch_item->attributes) {
-        goto fail;
-    }
-    cJSON *attributes_local_JSON = catalogs_updatable_hotel_attributes_convertToJSON(catalogs_hotel_batch_item->attributes);
-    if(attributes_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-
     return item;
 fail:
     if (item) {
@@ -120,6 +120,18 @@ catalogs_hotel_batch_item_t *catalogs_hotel_batch_item_parseFromJSON(cJSON *cata
 
     // define the local variable for catalogs_hotel_batch_item->attributes
     catalogs_updatable_hotel_attributes_t *attributes_local_nonprim = NULL;
+
+    // catalogs_hotel_batch_item->attributes
+    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_batch_itemJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
+    if (!attributes) {
+        goto end;
+    }
+
+    
+    attributes_local_nonprim = catalogs_updatable_hotel_attributes_parseFromJSON(attributes); //nonprimitive
 
     // catalogs_hotel_batch_item->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_batch_itemJSON, "hotel_id");
@@ -153,23 +165,11 @@ catalogs_hotel_batch_item_t *catalogs_hotel_batch_item_parseFromJSON(cJSON *cata
     }
     operationVariable = catalogs_hotel_batch_item_operation_FromString(operation->valuestring);
 
-    // catalogs_hotel_batch_item->attributes
-    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_batch_itemJSON, "attributes");
-    if (cJSON_IsNull(attributes)) {
-        attributes = NULL;
-    }
-    if (!attributes) {
-        goto end;
-    }
-
-    
-    attributes_local_nonprim = catalogs_updatable_hotel_attributes_parseFromJSON(attributes); //nonprimitive
-
 
     catalogs_hotel_batch_item_local_var = catalogs_hotel_batch_item_create_internal (
+        attributes_local_nonprim,
         strdup(hotel_id->valuestring),
-        operationVariable,
-        attributes_local_nonprim
+        operationVariable
         );
 
     return catalogs_hotel_batch_item_local_var;

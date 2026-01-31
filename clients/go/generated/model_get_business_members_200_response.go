@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &GetBusinessMembers200Response{}
 
 // GetBusinessMembers200Response struct for GetBusinessMembers200Response
 type GetBusinessMembers200Response struct {
+	Bookmark NullableString `json:"bookmark,omitempty"`
 	// List of business members.
 	Items []UserBusinessRoleBinding `json:"items"`
-	Bookmark NullableString `json:"bookmark,omitempty"`
 }
 
 type _GetBusinessMembers200Response GetBusinessMembers200Response
@@ -45,30 +45,6 @@ func NewGetBusinessMembers200Response(items []UserBusinessRoleBinding) *GetBusin
 func NewGetBusinessMembers200ResponseWithDefaults() *GetBusinessMembers200Response {
 	this := GetBusinessMembers200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *GetBusinessMembers200Response) GetItems() []UserBusinessRoleBinding {
-	if o == nil {
-		var ret []UserBusinessRoleBinding
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *GetBusinessMembers200Response) GetItemsOk() ([]UserBusinessRoleBinding, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *GetBusinessMembers200Response) SetItems(v []UserBusinessRoleBinding) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -113,6 +89,30 @@ func (o *GetBusinessMembers200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *GetBusinessMembers200Response) GetItems() []UserBusinessRoleBinding {
+	if o == nil {
+		var ret []UserBusinessRoleBinding
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *GetBusinessMembers200Response) GetItemsOk() ([]UserBusinessRoleBinding, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *GetBusinessMembers200Response) SetItems(v []UserBusinessRoleBinding) {
+	o.Items = v
+}
+
 func (o GetBusinessMembers200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,10 +123,10 @@ func (o GetBusinessMembers200Response) MarshalJSON() ([]byte, error) {
 
 func (o GetBusinessMembers200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

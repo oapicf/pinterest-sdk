@@ -10,8 +10,8 @@
 
 -type openapi_detailed_error() ::
   [ {'code', integer() }
-  | {'message', binary() }
   | {'details', map() }
+  | {'message', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_detailed_error() ->
 
 openapi_detailed_error(Fields) ->
   Default = [ {'code', integer() }
-            , {'message', binary() }
             , {'details', map() }
+            , {'message', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

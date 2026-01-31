@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets PermissionsWithOwner
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum PermissionsWithOwner {
   
   ADMIN("ADMIN"),
@@ -28,6 +28,10 @@ public enum PermissionsWithOwner {
   ANALYST("ANALYST"),
   
   FINANCE_MANAGER("FINANCE_MANAGER"),
+  
+  FINANCE_EDIT("FINANCE_EDIT"),
+  
+  FINANCE_VIEW("FINANCE_VIEW"),
   
   AUDIENCE_MANAGER("AUDIENCE_MANAGER"),
   

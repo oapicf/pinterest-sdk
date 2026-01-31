@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;ProductGroupPromotionResponseItem&gt;**](ProductGroupPromotionResponseItem.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ProductGroupPromotionsList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

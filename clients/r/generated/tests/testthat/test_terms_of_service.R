@@ -5,20 +5,12 @@ context("Test TermsOfService")
 
 model_instance <- TermsOfService$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # The ID of the terms of service
+test_that("ad_account_id", {
+  # tests for the property `ad_account_id` (character)
+  # The ID of the ad account.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("html", {
-  # tests for the property `html` (character)
-  # The terms of service content
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`html`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
 })
 
 test_that("has_accepted", {
@@ -29,10 +21,18 @@ test_that("has_accepted", {
   #expect_equal(model.instance$`has_accepted`, "EXPECTED_RESULT")
 })
 
-test_that("ad_account_id", {
-  # tests for the property `ad_account_id` (character)
-  # The ID of the ad account.
+test_that("html", {
+  # tests for the property `html` (character)
+  # The terms of service content
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`html`, "EXPECTED_RESULT")
+})
+
+test_that("id", {
+  # tests for the property `id` (character)
+  # The ID of the terms of service
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })

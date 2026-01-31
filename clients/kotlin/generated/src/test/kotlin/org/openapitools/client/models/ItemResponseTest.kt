@@ -21,8 +21,8 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.models.ItemResponse
 import org.openapitools.client.models.CatalogsCreativeAssetsAttributes
 import org.openapitools.client.models.CatalogsType
-import org.openapitools.client.models.ItemResponseAnyOf
-import org.openapitools.client.models.ItemResponseAnyOf1
+import org.openapitools.client.models.ItemResponseOneOf
+import org.openapitools.client.models.ItemResponseOneOf1
 import org.openapitools.client.models.ItemValidationEvent
 import org.openapitools.client.models.Pin
 
@@ -37,6 +37,18 @@ class ItemResponseTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
+        // to test the property `errors` - Array with the errors for the item id requested
+        should("test errors") {
+            // uncomment below to test the property
+            //modelInstance.errors shouldBe ("TODO")
+        }
+
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
+        }
+
         // to test the property `itemId` - The catalog item id in the merchant namespace
         should("test itemId") {
             // uncomment below to test the property
@@ -49,12 +61,6 @@ class ItemResponseTest : ShouldSpec() {
             //modelInstance.pins shouldBe ("TODO")
         }
 
-        // to test the property `attributes`
-        should("test attributes") {
-            // uncomment below to test the property
-            //modelInstance.attributes shouldBe ("TODO")
-        }
-
         // to test the property `hotelId` - The catalog hotel id in the merchant namespace
         should("test hotelId") {
             // uncomment below to test the property
@@ -65,12 +71,6 @@ class ItemResponseTest : ShouldSpec() {
         should("test creativeAssetsId") {
             // uncomment below to test the property
             //modelInstance.creativeAssetsId shouldBe ("TODO")
-        }
-
-        // to test the property `errors` - Array with the errors for the item id requested
-        should("test errors") {
-            // uncomment below to test the property
-            //modelInstance.errors shouldBe ("TODO")
         }
 
     }

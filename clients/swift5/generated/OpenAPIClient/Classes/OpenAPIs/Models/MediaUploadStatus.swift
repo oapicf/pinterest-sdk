@@ -10,7 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Media upload status */
 public enum MediaUploadStatus: String, Codable, CaseIterable {
     case registered = "registered"
     case processing = "processing"

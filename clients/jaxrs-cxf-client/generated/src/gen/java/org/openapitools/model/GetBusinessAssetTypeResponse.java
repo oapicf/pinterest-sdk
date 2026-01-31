@@ -13,7 +13,9 @@ public enum GetBusinessAssetTypeResponse {
   
   ASSET_GROUP("ASSET_GROUP"),
   
-  CONVERSION_TAG("CONVERSION_TAG");
+  CONVERSION_TAG("CONVERSION_TAG"),
+  
+  CATALOG("CATALOG");
 
   private String value;
 

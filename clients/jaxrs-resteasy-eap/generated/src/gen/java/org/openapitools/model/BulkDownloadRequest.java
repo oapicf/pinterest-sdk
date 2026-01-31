@@ -17,26 +17,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Ad entities to get in bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Ad entities to get in bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequest   {
   
-  private List<BulkEntityType> entityTypes = new ArrayList<>();
-  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
-  private String updatedSince;
   private BulkDownloadRequestCampaignFilter campaignFilter;
+  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
   private BulkOutputFormat outputFormat = "JSON";
+  private String updatedSince;
 
   /**
-   * All entity types specified will be downloaded. Fewer types result in faster downloads.
    **/
   
-  @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
-  @JsonProperty("entity_types")
- @Size(min=1,max=5)  public List<BulkEntityType> getEntityTypes() {
-    return entityTypes;
+  @ApiModelProperty(value = "")
+  @JsonProperty("campaign_filter")
+  public BulkDownloadRequestCampaignFilter getCampaignFilter() {
+    return campaignFilter;
   }
-  public void setEntityTypes(List<BulkEntityType> entityTypes) {
-    this.entityTypes = entityTypes;
+  public void setCampaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+    this.campaignFilter = campaignFilter;
   }
 
   /**
@@ -53,28 +52,16 @@ public class BulkDownloadRequest   {
   }
 
   /**
-   * Unix UTC timestamp to retrieve all entities that have changed since this time.
+   * All entity types specified will be downloaded. Fewer types result in faster downloads.
    **/
   
-  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
-  @JsonProperty("updated_since")
- @Pattern(regexp="^\\d+$")  public String getUpdatedSince() {
-    return updatedSince;
+  @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
+  @JsonProperty("entity_types")
+ @Size(min=1,max=6)  public List<BulkEntityType> getEntityTypes() {
+    return entityTypes;
   }
-  public void setUpdatedSince(String updatedSince) {
-    this.updatedSince = updatedSince;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("campaign_filter")
-  public BulkDownloadRequestCampaignFilter getCampaignFilter() {
-    return campaignFilter;
-  }
-  public void setCampaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
-    this.campaignFilter = campaignFilter;
+  public void setEntityTypes(List<BulkEntityType> entityTypes) {
+    this.entityTypes = entityTypes;
   }
 
   /**
@@ -89,6 +76,19 @@ public class BulkDownloadRequest   {
     this.outputFormat = outputFormat;
   }
 
+  /**
+   * Unix UTC timestamp to retrieve all entities that have changed since this time.
+   **/
+  
+  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
+  @JsonProperty("updated_since")
+ @Pattern(regexp="^\\d+$")  public String getUpdatedSince() {
+    return updatedSince;
+  }
+  public void setUpdatedSince(String updatedSince) {
+    this.updatedSince = updatedSince;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -99,16 +99,16 @@ public class BulkDownloadRequest   {
       return false;
     }
     BulkDownloadRequest bulkDownloadRequest = (BulkDownloadRequest) o;
-    return Objects.equals(this.entityTypes, bulkDownloadRequest.entityTypes) &&
+    return Objects.equals(this.campaignFilter, bulkDownloadRequest.campaignFilter) &&
         Objects.equals(this.entityIds, bulkDownloadRequest.entityIds) &&
-        Objects.equals(this.updatedSince, bulkDownloadRequest.updatedSince) &&
-        Objects.equals(this.campaignFilter, bulkDownloadRequest.campaignFilter) &&
-        Objects.equals(this.outputFormat, bulkDownloadRequest.outputFormat);
+        Objects.equals(this.entityTypes, bulkDownloadRequest.entityTypes) &&
+        Objects.equals(this.outputFormat, bulkDownloadRequest.outputFormat) &&
+        Objects.equals(this.updatedSince, bulkDownloadRequest.updatedSince);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityTypes, entityIds, updatedSince, campaignFilter, outputFormat);
+    return Objects.hash(campaignFilter, entityIds, entityTypes, outputFormat, updatedSince);
   }
 
   @Override
@@ -116,11 +116,11 @@ public class BulkDownloadRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequest {\n");
     
-    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
-    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
-    sb.append("    updatedSince: ").append(toIndentedString(updatedSince)).append("\n");
     sb.append("    campaignFilter: ").append(toIndentedString(campaignFilter)).append("\n");
+    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
+    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
     sb.append("    outputFormat: ").append(toIndentedString(outputFormat)).append("\n");
+    sb.append("    updatedSince: ").append(toIndentedString(updatedSince)).append("\n");
     sb.append("}");
     return sb.toString();
   }

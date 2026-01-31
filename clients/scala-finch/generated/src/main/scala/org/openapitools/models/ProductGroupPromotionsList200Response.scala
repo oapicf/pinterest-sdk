@@ -5,16 +5,16 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ProductGroupPromotionResponseItem
+import org.openapitools.models.ProductGroupPromotion
 import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items 
  * @param bookmark 
+ * @param items 
  */
-case class ProductGroupPromotionsList200Response(items: Seq[ProductGroupPromotionResponseItem],
-                bookmark: Option[String]
+case class ProductGroupPromotionsList200Response(bookmark: Option[String],
+                items: Seq[ProductGroupPromotion]
                 )
 
 object ProductGroupPromotionsList200Response {

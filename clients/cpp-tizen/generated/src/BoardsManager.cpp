@@ -1009,6 +1009,31 @@ static bool boardsCreateProcessor(MemoryStruct_s p_chunk, long code, char* error
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1029,7 +1054,7 @@ static bool boardsCreateProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool boardsCreateHelper(char * accessToken,
-	std::shared_ptr<Board> board, std::string adAccountId, 
+	std::shared_ptr<BoardCreate> boardCreate, std::string adAccountId, 
 	void(* handler)(Board, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1057,11 +1082,11 @@ static bool boardsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Board")) {
-		node = converttoJson(&board, "Board", "");
+	if (isprimitive("BoardCreate")) {
+		node = converttoJson(&boardCreate, "BoardCreate", "");
 	}
 	
-	char *jsonStr =  board.toJson();
+	char *jsonStr =  boardCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1120,22 +1145,22 @@ static bool boardsCreateHelper(char * accessToken,
 
 
 bool BoardsManager::boardsCreateAsync(char * accessToken,
-	std::shared_ptr<Board> board, std::string adAccountId, 
+	std::shared_ptr<BoardCreate> boardCreate, std::string adAccountId, 
 	void(* handler)(Board, Error, void* )
 	, void* userData)
 {
 	return boardsCreateHelper(accessToken,
-	board, adAccountId, 
+	boardCreate, adAccountId, 
 	handler, userData, true);
 }
 
 bool BoardsManager::boardsCreateSync(char * accessToken,
-	std::shared_ptr<Board> board, std::string adAccountId, 
+	std::shared_ptr<BoardCreate> boardCreate, std::string adAccountId, 
 	void(* handler)(Board, Error, void* )
 	, void* userData)
 {
 	return boardsCreateHelper(accessToken,
-	board, adAccountId, 
+	boardCreate, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1322,6 +1347,26 @@ static bool boardsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1486,6 +1531,31 @@ static bool boardsListProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1506,7 +1576,7 @@ static bool boardsListProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool boardsListHelper(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string privacy, 
+	std::string adAccountId, BoardPrivacyFilter privacy, std::string bookmark, int pageSize, 
 	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1531,6 +1601,13 @@ static bool boardsListHelper(char * accessToken,
 	}
 
 
+	itemAtq = stringify(&privacy, "BoardPrivacyFilter");
+	queryParams.insert(pair<string, string>("privacy", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("privacy");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -1542,13 +1619,6 @@ static bool boardsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&privacy, "std::string");
-	queryParams.insert(pair<string, string>("privacy", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("privacy");
 	}
 
 	string mBody = "";
@@ -1605,22 +1675,22 @@ static bool boardsListHelper(char * accessToken,
 
 
 bool BoardsManager::boardsListAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string privacy, 
+	std::string adAccountId, BoardPrivacyFilter privacy, std::string bookmark, int pageSize, 
 	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsListHelper(accessToken,
-	adAccountId, bookmark, pageSize, privacy, 
+	adAccountId, privacy, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BoardsManager::boardsListSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string privacy, 
+	std::string adAccountId, BoardPrivacyFilter privacy, std::string bookmark, int pageSize, 
 	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsListHelper(accessToken,
-	adAccountId, bookmark, pageSize, privacy, 
+	adAccountId, privacy, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -1690,7 +1760,7 @@ static bool boardsListPinsProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool boardsListPinsHelper(char * accessToken,
-	std::string boardId, std::string bookmark, int pageSize, std::list<std::string> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string boardId, std::string bookmark, int pageSize, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Boards_list_pins_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1722,8 +1792,8 @@ static bool boardsListPinsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = creativeTypes.begin(); queryIter != creativeTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<CreativeType>::iterator queryIter = creativeTypes.begin(); queryIter != creativeTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "CreativeType");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -1804,7 +1874,7 @@ static bool boardsListPinsHelper(char * accessToken,
 
 
 bool BoardsManager::boardsListPinsAsync(char * accessToken,
-	std::string boardId, std::string bookmark, int pageSize, std::list<std::string> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string boardId, std::string bookmark, int pageSize, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Boards_list_pins_200_response, Error, void* )
 	, void* userData)
 {
@@ -1814,7 +1884,7 @@ bool BoardsManager::boardsListPinsAsync(char * accessToken,
 }
 
 bool BoardsManager::boardsListPinsSync(char * accessToken,
-	std::string boardId, std::string bookmark, int pageSize, std::list<std::string> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string boardId, std::string bookmark, int pageSize, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Boards_list_pins_200_response, Error, void* )
 	, void* userData)
 {
@@ -1826,14 +1896,14 @@ bool BoardsManager::boardsListPinsSync(char * accessToken,
 static bool boardsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Board, Error, void* )
-	= reinterpret_cast<void(*)(Board, Error, void* )> (voidHandler);
+	void(* handler)(BoardWithUpdatePrivacy, Error, void* )
+	= reinterpret_cast<void(*)(BoardWithUpdatePrivacy, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Board out;
+	BoardWithUpdatePrivacy out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1841,18 +1911,28 @@ static bool boardsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 
 
-		if (isprimitive("Board")) {
+		if (isprimitive("BoardWithUpdatePrivacy")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Board", "Board");
+			jsonToValue(&out, pJson, "BoardWithUpdatePrivacy", "BoardWithUpdatePrivacy");
 			json_node_free(pJson);
 
-			if ("Board" == "std::string") {
+			if ("BoardWithUpdatePrivacy" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1899,8 +1979,8 @@ static bool boardsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool boardsUpdateHelper(char * accessToken,
-	std::string boardId, std::shared_ptr<BoardUpdate> boardUpdate, std::string adAccountId, 
-	void(* handler)(Board, Error, void* )
+	std::string boardId, std::shared_ptr<BoardWithUpdatePrivacyUpdate> boardWithUpdatePrivacyUpdate, std::string adAccountId, 
+	void(* handler)(BoardWithUpdatePrivacy, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1927,11 +2007,11 @@ static bool boardsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("BoardUpdate")) {
-		node = converttoJson(&boardUpdate, "BoardUpdate", "");
+	if (isprimitive("BoardWithUpdatePrivacyUpdate")) {
+		node = converttoJson(&boardWithUpdatePrivacyUpdate, "BoardWithUpdatePrivacyUpdate", "");
 	}
 	
-	char *jsonStr =  boardUpdate.toJson();
+	char *jsonStr =  boardWithUpdatePrivacyUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1996,22 +2076,22 @@ static bool boardsUpdateHelper(char * accessToken,
 
 
 bool BoardsManager::boardsUpdateAsync(char * accessToken,
-	std::string boardId, std::shared_ptr<BoardUpdate> boardUpdate, std::string adAccountId, 
-	void(* handler)(Board, Error, void* )
+	std::string boardId, std::shared_ptr<BoardWithUpdatePrivacyUpdate> boardWithUpdatePrivacyUpdate, std::string adAccountId, 
+	void(* handler)(BoardWithUpdatePrivacy, Error, void* )
 	, void* userData)
 {
 	return boardsUpdateHelper(accessToken,
-	boardId, boardUpdate, adAccountId, 
+	boardId, boardWithUpdatePrivacyUpdate, adAccountId, 
 	handler, userData, true);
 }
 
 bool BoardsManager::boardsUpdateSync(char * accessToken,
-	std::string boardId, std::shared_ptr<BoardUpdate> boardUpdate, std::string adAccountId, 
-	void(* handler)(Board, Error, void* )
+	std::string boardId, std::shared_ptr<BoardWithUpdatePrivacyUpdate> boardWithUpdatePrivacyUpdate, std::string adAccountId, 
+	void(* handler)(BoardWithUpdatePrivacy, Error, void* )
 	, void* userData)
 {
 	return boardsUpdateHelper(accessToken,
-	boardId, boardUpdate, adAccountId, 
+	boardId, boardWithUpdatePrivacyUpdate, adAccountId, 
 	handler, userData, false);
 }
 

@@ -9,8 +9,10 @@
  */
 import { QuizPinData } from './quizPinData';
 import { EntityStatus } from './entityStatus';
+import { DisclosureType } from './disclosureType';
 import { TrackingUrls } from './trackingUrls';
 import { PinPromotionSummaryStatus } from './pinPromotionSummaryStatus';
+import { CustomizableCTAType } from './customizableCTAType';
 import { GridClickType } from './gridClickType';
 import { CreativeType } from './creativeType';
 
@@ -41,10 +43,17 @@ export interface AdResponse {
      */
     click_tracking_url?: string | null;
     creative_type?: CreativeType;
+    customizable_cta_type?: CustomizableCTAType | null;
     /**
      * Destination URL.
      */
     destination_url?: string | null;
+    disclosure_type?: DisclosureType | null;
+    /**
+     * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+     */
+    disclosure_url?: string | null;
+    grid_click_type?: GridClickType | null;
     /**
      * Deep link URL for iOS devices.
      */
@@ -58,28 +67,23 @@ export interface AdResponse {
      */
     is_removable?: boolean;
     /**
+     * Lead form ID for lead ad generation.
+     */
+    lead_form_id?: string | null;
+    /**
      * Name of the ad - 255 chars max.
      */
     name?: string | null;
+    /**
+     * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+     */
+    quiz_pin_data?: QuizPinData | null;
     status?: EntityStatus;
     tracking_urls?: TrackingUrls | null;
     /**
      * Tracking URL for ad impressions.
      */
     view_tracking_url?: string | null;
-    /**
-     * Lead form ID for lead ad generation.
-     */
-    lead_form_id?: string | null;
-    grid_click_type?: GridClickType | null;
-    /**
-     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-     */
-    customizable_cta_type?: AdResponse.CustomizableCtaTypeEnum | null;
-    /**
-     * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-     */
-    quiz_pin_data?: QuizPinData | null;
     /**
      * Pin ID.
      */
@@ -117,6 +121,10 @@ export interface AdResponse {
      */
     review_status?: AdResponse.ReviewStatusEnum;
     /**
+     * Ad summary status
+     */
+    summary_status?: PinPromotionSummaryStatus;
+    /**
      * Always \"ad\".
      */
     type?: string;
@@ -124,33 +132,8 @@ export interface AdResponse {
      * Last update time. Unix timestamp in seconds.
      */
     updated_time?: number;
-    /**
-     * Ad summary status
-     */
-    summary_status?: PinPromotionSummaryStatus;
 }
 export namespace AdResponse {
-    export const CustomizableCtaTypeEnum = {
-        GetOffer: 'GET_OFFER',
-        LearnMore: 'LEARN_MORE',
-        OrderNow: 'ORDER_NOW',
-        ShopNow: 'SHOP_NOW',
-        SignUp: 'SIGN_UP',
-        Subscribe: 'SUBSCRIBE',
-        BuyNow: 'BUY_NOW',
-        ContactUs: 'CONTACT_US',
-        GetQuote: 'GET_QUOTE',
-        VisitSite: 'VISIT_SITE',
-        ApplyNow: 'APPLY_NOW',
-        BookNow: 'BOOK_NOW',
-        RequestDemo: 'REQUEST_DEMO',
-        RegisterNow: 'REGISTER_NOW',
-        FindADealer: 'FIND_A_DEALER',
-        AddToCart: 'ADD_TO_CART',
-        WatchNow: 'WATCH_NOW',
-        ReadMore: 'READ_MORE'
-    } as const;
-    export type CustomizableCtaTypeEnum = typeof CustomizableCtaTypeEnum[keyof typeof CustomizableCtaTypeEnum];
     export const RejectedReasonsEnum = {
         Hashtags: 'HASHTAGS',
         PromotionsAndPrices: 'PROMOTIONS_AND_PRICES',

@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsItemsBatch"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsItemsBatch"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BatchOperationStatus = openapi_server.resourceTypes.BatchOperationStatus
+  CatalogsCreativeAssetsItemsBatch = openapi_server.resourceTypes.CatalogsCreativeAssetsItemsBatch
+  CatalogsHotelItemsBatch = openapi_server.resourceTypes.CatalogsHotelItemsBatch
+  CatalogsRetailItemsBatch = openapi_server.resourceTypes.CatalogsRetailItemsBatch
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  CreativeAssetsProcessingRecord = openapi_server.resourceTypes.CreativeAssetsProcessingRecord
+}
+resourceTypes {
+
+  CatalogsItemsBatch {
+    title = CatalogsItemsBatch
+    description = CatalogsItemsBatch
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        batch_id {
+          type =  string
+          description = "Id of the catalogs items batch"
+          optional = false
+        }
+        completed_time {
+          type =  string
+          description = "Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss"
+          optional = false
+        }
+        created_time {
+          type =  string
+          description = "Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss"
+          optional = true
+        }
+        items {
+          type = array
+          items.type = CreativeAssetsProcessingRecord
+          description = "Array with the catalogs items processing records part of the catalogs items batch"
+          optional = false
+        }
+        status {
+          type = BatchOperationStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsItemsBatch {
+    title = CatalogsItemsBatch
+    description = CatalogsItemsBatch
+    implements = openapi_server.resourceTypes.CatalogsItemsBatch
+
+  }
+}

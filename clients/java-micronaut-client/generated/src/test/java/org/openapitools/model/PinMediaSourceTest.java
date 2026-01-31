@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.ContentType;
 import org.openapitools.model.PinMediaSourceImageBase64;
 import org.openapitools.model.PinMediaSourceImageURL;
 import org.openapitools.model.PinMediaSourceImagesBase64;
 import org.openapitools.model.PinMediaSourceImagesURL;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 import org.openapitools.model.PinMediaSourcePinURL;
 import org.openapitools.model.PinMediaSourceVideoID;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -30,14 +31,6 @@ public class PinMediaSourceTest {
     @Test
     public void testPinMediaSource() {
         // TODO: test PinMediaSource
-    }
-
-    /**
-     * Test the property 'sourceType'
-     */
-    @Test
-    public void sourceTypeTest() {
-        // TODO: test sourceType
     }
 
     /**
@@ -65,19 +58,19 @@ public class PinMediaSourceTest {
     }
 
     /**
+     * Test the property 'sourceType'
+     */
+    @Test
+    public void sourceTypeTest() {
+        // TODO: test sourceType
+    }
+
+    /**
      * Test the property 'url'
      */
     @Test
     public void urlTest() {
         // TODO: test url
-    }
-
-    /**
-     * Test the property 'coverImageUrl'
-     */
-    @Test
-    public void coverImageUrlTest() {
-        // TODO: test coverImageUrl
     }
 
     /**
@@ -97,6 +90,22 @@ public class PinMediaSourceTest {
     }
 
     /**
+     * Test the property 'coverImageKeyFrameTime'
+     */
+    @Test
+    public void coverImageKeyFrameTimeTest() {
+        // TODO: test coverImageKeyFrameTime
+    }
+
+    /**
+     * Test the property 'coverImageUrl'
+     */
+    @Test
+    public void coverImageUrlTest() {
+        // TODO: test coverImageUrl
+    }
+
+    /**
      * Test the property 'mediaId'
      */
     @Test
@@ -105,19 +114,19 @@ public class PinMediaSourceTest {
     }
 
     /**
-     * Test the property 'items'
-     */
-    @Test
-    public void itemsTest() {
-        // TODO: test items
-    }
-
-    /**
      * Test the property 'index'
      */
     @Test
     public void indexTest() {
         // TODO: test index
+    }
+
+    /**
+     * Test the property 'items'
+     */
+    @Test
+    public void itemsTest() {
+        // TODO: test items
     }
 
     /**

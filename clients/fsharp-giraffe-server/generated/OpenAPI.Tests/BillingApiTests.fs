@@ -19,6 +19,8 @@ open OpenAPI.BillingApiHandlerParams
 open OpenAPI.Model.AdsCreditRedeemRequest
 open OpenAPI.Model.AdsCreditRedeemResponse
 open OpenAPI.Model.AdsCreditsDiscountsGet200Response
+open OpenAPI.Model.BillingInvoiceDownloadResponse
+open OpenAPI.Model.BillingInvoicesGet200Response
 open OpenAPI.Model.BillingProfilesGet200Response
 open OpenAPI.Model.Error
 open OpenAPI.Model.SSIOAccountResponse
@@ -128,6 +130,108 @@ module BillingApiHandlerTests =
       // add your setup code here
 
       let path = "/v5/ad_accounts/{ad_account_id}/ads_credit/discounts".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(0))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BillingInvoiceDownloadGet - Get download url for a billing invoice returns 200 where Successfully fetched Billing invoice information for a given ad account`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download".Replace("adAccountId", "ADDME").Replace("billingInvoiceId", "ADDME")
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BillingInvoiceDownloadGet - Get download url for a billing invoice returns 400 where Invalid request parameter.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download".Replace("adAccountId", "ADDME").Replace("billingInvoiceId", "ADDME")
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BillingInvoiceDownloadGet - Get download url for a billing invoice returns 0 where Unexpected error`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download".Replace("adAccountId", "ADDME").Replace("billingInvoiceId", "ADDME")
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(0))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BillingInvoicesGet - Get billing invoices returns 200 where Success`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/billing_invoices".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&sort=ADDME&order=ADDME&status=ADDME&documentType=ADDME&startDueDate=ADDME&endDueDate=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BillingInvoicesGet - Get billing invoices returns 400 where Invalid request parameter.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/billing_invoices".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&sort=ADDME&order=ADDME&status=ADDME&documentType=ADDME&startDueDate=ADDME&endDueDate=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``BillingInvoicesGet - Get billing invoices returns 0 where Unexpected error`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/billing_invoices".Replace("adAccountId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&sort=ADDME&order=ADDME&status=ADDME&documentType=ADDME&startDueDate=ADDME&endDueDate=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

@@ -7,8 +7,8 @@
 #' @title IntegrationLogClientRequest
 #' @description IntegrationLogClientRequest Class
 #' @format An \code{R6Class} generator object
-#' @field method  character
 #' @field host HTTP request host from host header. character
+#' @field method  character
 #' @field path HTTP request path. character
 #' @field request_headers HTTP request headers as key-value pairs. named list(character) [optional]
 #' @field response_headers HTTP response headers as key-value pairs. named list(character) [optional]
@@ -19,8 +19,8 @@
 IntegrationLogClientRequest <- R6::R6Class(
   "IntegrationLogClientRequest",
   public = list(
-    `method` = NULL,
     `host` = NULL,
+    `method` = NULL,
     `path` = NULL,
     `request_headers` = NULL,
     `response_headers` = NULL,
@@ -29,14 +29,20 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @description
     #' Initialize a new IntegrationLogClientRequest class.
     #'
-    #' @param method method
     #' @param host HTTP request host from host header.
+    #' @param method method
     #' @param path HTTP request path.
     #' @param request_headers HTTP request headers as key-value pairs.
     #' @param response_headers HTTP response headers as key-value pairs.
     #' @param response_status_code response_status_code
     #' @param ... Other optional arguments.
-    initialize = function(`method`, `host`, `path`, `request_headers` = NULL, `response_headers` = NULL, `response_status_code` = NULL, ...) {
+    initialize = function(`host`, `method`, `path`, `request_headers` = NULL, `response_headers` = NULL, `response_status_code` = NULL, ...) {
+      if (!missing(`host`)) {
+        if (!(is.character(`host`) && length(`host`) == 1)) {
+          stop(paste("Error! Invalid data for `host`. Must be a string:", `host`))
+        }
+        self$`host` <- `host`
+      }
       if (!missing(`method`)) {
         if (!(`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
           stop(paste("Error! \"", `method`, "\" cannot be assigned to `method`. Must be \"GET\", \"HEAD\", \"POST\", \"PUT\", \"DELETE\", \"CONNECT\", \"OPTIONS\", \"TRACE\", \"PATCH\".", sep = ""))
@@ -45,12 +51,6 @@ IntegrationLogClientRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `method`. Must be a string:", `method`))
         }
         self$`method` <- `method`
-      }
-      if (!missing(`host`)) {
-        if (!(is.character(`host`) && length(`host`) == 1)) {
-          stop(paste("Error! Invalid data for `host`. Must be a string:", `host`))
-        }
-        self$`host` <- `host`
       }
       if (!missing(`path`)) {
         if (!(is.character(`path`) && length(`path`) == 1)) {
@@ -107,13 +107,13 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       IntegrationLogClientRequestObject <- list()
-      if (!is.null(self$`method`)) {
-        IntegrationLogClientRequestObject[["method"]] <-
-          self$`method`
-      }
       if (!is.null(self$`host`)) {
         IntegrationLogClientRequestObject[["host"]] <-
           self$`host`
+      }
+      if (!is.null(self$`method`)) {
+        IntegrationLogClientRequestObject[["method"]] <-
+          self$`method`
       }
       if (!is.null(self$`path`)) {
         IntegrationLogClientRequestObject[["path"]] <-
@@ -141,14 +141,14 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @return the instance of IntegrationLogClientRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`host`)) {
+        self$`host` <- this_object$`host`
+      }
       if (!is.null(this_object$`method`)) {
         if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
           stop(paste("Error! \"", this_object$`method`, "\" cannot be assigned to `method`. Must be \"GET\", \"HEAD\", \"POST\", \"PUT\", \"DELETE\", \"CONNECT\", \"OPTIONS\", \"TRACE\", \"PATCH\".", sep = ""))
         }
         self$`method` <- this_object$`method`
-      }
-      if (!is.null(this_object$`host`)) {
-        self$`host` <- this_object$`host`
       }
       if (!is.null(this_object$`path`)) {
         self$`path` <- this_object$`path`
@@ -183,11 +183,11 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @return the instance of IntegrationLogClientRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`host` <- this_object$`host`
       if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
         stop(paste("Error! \"", this_object$`method`, "\" cannot be assigned to `method`. Must be \"GET\", \"HEAD\", \"POST\", \"PUT\", \"DELETE\", \"CONNECT\", \"OPTIONS\", \"TRACE\", \"PATCH\".", sep = ""))
       }
       self$`method` <- this_object$`method`
-      self$`host` <- this_object$`host`
       self$`path` <- this_object$`path`
       self$`request_headers` <- ApiClient$new()$deserializeObj(this_object$`request_headers`, "map(character)", loadNamespace("openapi"))
       self$`response_headers` <- ApiClient$new()$deserializeObj(this_object$`response_headers`, "map(character)", loadNamespace("openapi"))
@@ -201,14 +201,6 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `method`
-      if (!is.null(input_json$`method`)) {
-        if (!(is.character(input_json$`method`) && length(input_json$`method`) == 1)) {
-          stop(paste("Error! Invalid data for `method`. Must be a string:", input_json$`method`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for IntegrationLogClientRequest: the required field `method` is missing."))
-      }
       # check the required field `host`
       if (!is.null(input_json$`host`)) {
         if (!(is.character(input_json$`host`) && length(input_json$`host`) == 1)) {
@@ -216,6 +208,14 @@ IntegrationLogClientRequest <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLogClientRequest: the required field `host` is missing."))
+      }
+      # check the required field `method`
+      if (!is.null(input_json$`method`)) {
+        if (!(is.character(input_json$`method`) && length(input_json$`method`) == 1)) {
+          stop(paste("Error! Invalid data for `method`. Must be a string:", input_json$`method`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for IntegrationLogClientRequest: the required field `method` is missing."))
       }
       # check the required field `path`
       if (!is.null(input_json$`path`)) {
@@ -240,13 +240,13 @@ IntegrationLogClientRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `method` is null
-      if (is.null(self$`method`)) {
+      # check if the required `host` is null
+      if (is.null(self$`host`)) {
         return(FALSE)
       }
 
-      # check if the required `host` is null
-      if (is.null(self$`host`)) {
+      # check if the required `method` is null
+      if (is.null(self$`method`)) {
         return(FALSE)
       }
 
@@ -264,14 +264,14 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `method` is null
-      if (is.null(self$`method`)) {
-        invalid_fields["method"] <- "Non-nullable required field `method` cannot be null."
-      }
-
       # check if the required `host` is null
       if (is.null(self$`host`)) {
         invalid_fields["host"] <- "Non-nullable required field `host` cannot be null."
+      }
+
+      # check if the required `method` is null
+      if (is.null(self$`method`)) {
+        invalid_fields["method"] <- "Non-nullable required field `method` cannot be null."
       }
 
       # check if the required `path` is null

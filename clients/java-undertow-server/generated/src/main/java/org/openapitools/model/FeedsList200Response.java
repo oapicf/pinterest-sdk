@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,28 +25,11 @@ import org.openapitools.model.CatalogsFeed;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class FeedsList200Response   {
   
-  private List<CatalogsFeed> items = new ArrayList<>();
   private String bookmark;
-
-  /**
-   */
-  public FeedsList200Response items(List<CatalogsFeed> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
-  public List<CatalogsFeed> getItems() {
-    return items;
-  }
-  public void setItems(List<CatalogsFeed> items) {
-    this.items = items;
-  }
+  private List<CatalogsFeed> items = new ArrayList<>();
 
   /**
    */
@@ -65,6 +48,23 @@ public class FeedsList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   */
+  public FeedsList200Response items(List<CatalogsFeed> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<CatalogsFeed> getItems() {
+    return items;
+  }
+  public void setItems(List<CatalogsFeed> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -75,13 +75,13 @@ public class FeedsList200Response   {
       return false;
     }
     FeedsList200Response feedsList200Response = (FeedsList200Response) o;
-    return Objects.equals(items, feedsList200Response.items) &&
-        Objects.equals(bookmark, feedsList200Response.bookmark);
+    return Objects.equals(bookmark, feedsList200Response.bookmark) &&
+        Objects.equals(items, feedsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class FeedsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeedsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

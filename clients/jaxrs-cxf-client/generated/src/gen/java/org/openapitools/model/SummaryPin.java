@@ -17,11 +17,15 @@ public class SummaryPin  {
   
   @ApiModelProperty(value = "")
 
-  private PinMedia media;
+  private String altText;
 
   @ApiModelProperty(value = "")
 
-  private String altText;
+  private String description;
+
+  @ApiModelProperty(value = "")
+
+  private String id;
 
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
 
@@ -29,21 +33,11 @@ public class SummaryPin  {
 
   @ApiModelProperty(value = "")
 
-  private String title;
+  private PinMedia media;
 
   @ApiModelProperty(value = "")
 
-  private String description;
- /**
-   * Get media
-   * @return media
-  **/
-  @JsonProperty("media")
-  public PinMedia getMedia() {
-    return media;
-  }
-
-
+  private String title;
  /**
    * Get altText
    * @return altText
@@ -59,6 +53,42 @@ public class SummaryPin  {
 
   public SummaryPin altText(String altText) {
     this.altText = altText;
+    return this;
+  }
+
+ /**
+   * Get description
+   * @return description
+  **/
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public SummaryPin description(String description) {
+    this.description = description;
+    return this;
+  }
+
+ /**
+   * Get id
+   * @return id
+  **/
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public SummaryPin id(String id) {
+    this.id = id;
     return this;
   }
 
@@ -81,6 +111,16 @@ public class SummaryPin  {
   }
 
  /**
+   * Get media
+   * @return media
+  **/
+  @JsonProperty("media")
+  public PinMedia getMedia() {
+    return media;
+  }
+
+
+ /**
    * Get title
    * @return title
   **/
@@ -98,24 +138,6 @@ public class SummaryPin  {
     return this;
   }
 
- /**
-   * Get description
-   * @return description
-  **/
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public SummaryPin description(String description) {
-    this.description = description;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -125,16 +147,17 @@ public class SummaryPin  {
       return false;
     }
     SummaryPin summaryPin = (SummaryPin) o;
-    return Objects.equals(this.media, summaryPin.media) &&
-        Objects.equals(this.altText, summaryPin.altText) &&
+    return Objects.equals(this.altText, summaryPin.altText) &&
+        Objects.equals(this.description, summaryPin.description) &&
+        Objects.equals(this.id, summaryPin.id) &&
         Objects.equals(this.link, summaryPin.link) &&
-        Objects.equals(this.title, summaryPin.title) &&
-        Objects.equals(this.description, summaryPin.description);
+        Objects.equals(this.media, summaryPin.media) &&
+        Objects.equals(this.title, summaryPin.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(media, altText, link, title, description);
+    return Objects.hash(altText, description, id, link, media, title);
   }
 
   @Override
@@ -142,11 +165,12 @@ public class SummaryPin  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SummaryPin {\n");
     
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

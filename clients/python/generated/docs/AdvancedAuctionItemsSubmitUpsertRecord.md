@@ -1,0 +1,35 @@
+# AdvancedAuctionItemsSubmitUpsertRecord
+
+Object describing an item bid option upsert operation
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**country** | [**Country**](Country.md) |  | 
+**item_id** | **str** | The catalog retail item id in the merchant namespace | 
+**language** | [**Language**](Language.md) |  | 
+**bid_options** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
+**errors** | [**List[AdvancedAuctionOperationError]**](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. | [optional] 
+**update_mask** | [**List[UpdateMaskBidOptionField]**](UpdateMaskBidOptionField.md) | The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;. | 
+
+## Example
+
+```python
+from pinterestsdk.models.advanced_auction_items_submit_upsert_record import AdvancedAuctionItemsSubmitUpsertRecord
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of AdvancedAuctionItemsSubmitUpsertRecord from a JSON string
+advanced_auction_items_submit_upsert_record_instance = AdvancedAuctionItemsSubmitUpsertRecord.from_json(json)
+# print the JSON string representation of the object
+print(AdvancedAuctionItemsSubmitUpsertRecord.to_json())
+
+# convert the object into a dict
+advanced_auction_items_submit_upsert_record_dict = advanced_auction_items_submit_upsert_record_instance.to_dict()
+# create an instance of AdvancedAuctionItemsSubmitUpsertRecord from a dict
+advanced_auction_items_submit_upsert_record_from_dict = AdvancedAuctionItemsSubmitUpsertRecord.from_dict(advanced_auction_items_submit_upsert_record_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

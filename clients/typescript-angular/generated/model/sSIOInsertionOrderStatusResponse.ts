@@ -11,6 +11,10 @@
 
 export interface SSIOInsertionOrderStatusResponse { 
     /**
+     * Salesforce insertion order creation time
+     */
+    creation_time?: string | null;
+    /**
      * Salesforce order id
      */
     pin_order_id?: string;
@@ -18,9 +22,5 @@ export interface SSIOInsertionOrderStatusResponse {
      * Salesforce insertion order status
      */
     status?: string;
-    /**
-     * Salesforce insertion order creation time
-     */
-    creation_time?: string | null;
 }
 

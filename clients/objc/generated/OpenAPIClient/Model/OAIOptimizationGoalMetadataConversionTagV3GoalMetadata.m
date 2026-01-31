@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"attributionWindows": @"attribution_windows", @"conversionEvent": @"conversion_event", @"conversionTagId": @"conversion_tag_id", @"cpaGoalValueInMicroCurrency": @"cpa_goal_value_in_micro_currency", @"isRoasOptimized": @"is_roas_optimized", @"learningModeType": @"learning_mode_type" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"attributionWindows": @"attribution_windows", @"conversionEvent": @"conversion_event", @"conversionTagId": @"conversion_tag_id", @"cpaGoalValueInMicroCurrency": @"cpa_goal_value_in_micro_currency", @"isRoasOptimized": @"is_roas_optimized", @"learningModeType": @"learning_mode_type", @"reportingEvent": @"reporting_event" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"attributionWindows", @"conversionEvent", @"conversionTagId", @"cpaGoalValueInMicroCurrency", @"isRoasOptimized", @"learningModeType"];
+  NSArray *optionalProperties = @[@"attributionWindows", @"conversionEvent", @"conversionTagId", @"cpaGoalValueInMicroCurrency", @"isRoasOptimized", @"learningModeType", @"reportingEvent"];
   return [optionalProperties containsObject:propertyName];
 }
 

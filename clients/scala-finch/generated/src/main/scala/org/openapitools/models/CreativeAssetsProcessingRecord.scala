@@ -13,13 +13,13 @@ import scala.collection.immutable.Seq
  * Object describing an item processing record
  * @param creativeUnderscoreassetsUnderscoreid The catalog creative assets id in the merchant namespace
  * @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
- * @param warnings Array with the validation warnings for the item processing record
  * @param status 
+ * @param warnings Array with the validation warnings for the item processing record
  */
 case class CreativeAssetsProcessingRecord(creativeUnderscoreassetsUnderscoreid: Option[String],
                 errors: Option[Seq[ItemValidationEvent]],
-                warnings: Option[Seq[ItemValidationEvent]],
-                status: Option[ItemProcessingStatus]
+                status: Option[ItemProcessingStatus],
+                warnings: Option[Seq[ItemValidationEvent]]
                 )
 
 object CreativeAssetsProcessingRecord {

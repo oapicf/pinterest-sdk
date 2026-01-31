@@ -48,31 +48,31 @@ API.Client.CatalogsProductGroupFilterKeys.prototype.BRAND;
 API.Client.CatalogsProductGroupFilterKeys.prototype.CONDITION;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMLABEL0;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMLABEL1;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMLABEL2;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMLABEL3;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMLABEL4;
@@ -172,4 +172,40 @@ API.Client.CatalogsProductGroupFilterKeys.prototype.gOOGLEPRODUCTCATEGORY0;
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.PRODUCT_GROUP;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupUint32Criteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMNUMBER0;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupUint32Criteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMNUMBER1;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupUint32Criteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMNUMBER2;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupUint32Criteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMNUMBER3;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupUint32Criteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMNUMBER4;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.TITLE_KEYWORDS;
 

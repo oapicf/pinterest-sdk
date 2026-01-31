@@ -11,7 +11,7 @@ import org.openapitools.model.CatalogsItemValidationIssues;
 @Canonical
 class ItemsIssuesList200Response {
     
-    List<CatalogsItemValidationIssues> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CatalogsItemValidationIssues> items = new ArrayList<>()
 }

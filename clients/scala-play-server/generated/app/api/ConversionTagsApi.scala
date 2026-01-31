@@ -2,21 +2,20 @@ package api
 
 import play.api.libs.json._
 import model.ConversionEventResponse
+import model.ConversionTag
 import model.ConversionTagCreate
-import model.ConversionTagListResponse
-import model.ConversionTagResponse
+import model.ConversionTagsList200Response
 import model.Error
 import model.PageVisitConversionTagsGet200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait ConversionTagsApi {
   /**
     * Create conversion tag
-    * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+    * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
     * @param adAccountId Unique identifier of an ad account.
-    * @param conversionTagCreate Conversion Tag to create
     */
-  def conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate): ConversionTagResponse
+  def conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate): ConversionTag
 
   /**
     * Get conversion tag
@@ -24,15 +23,15 @@ trait ConversionTagsApi {
     * @param adAccountId Unique identifier of an ad account.
     * @param conversionTagId Id of the conversion tag.
     */
-  def conversionTagsGet(adAccountId: String, conversionTagId: String): ConversionTagResponse
+  def conversionTagsGet(adAccountId: String, conversionTagId: String): ConversionTag
 
   /**
-    * Get conversion tags
+    * List conversion tags
     * List conversion tags associated with an ad account.
     * @param adAccountId Unique identifier of an ad account.
-    * @param filterDeleted Filter out deleted tags.
+    * @param filterDeleted Filter by deleted status
     */
-  def conversionTagsList(adAccountId: String, filterDeleted: Option[Boolean]): ConversionTagListResponse
+  def conversionTagsList(adAccountId: String, filterDeleted: Option[Boolean]): ConversionTagsList200Response
 
   /**
     * Get Ocpm eligible conversion tags

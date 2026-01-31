@@ -5,31 +5,31 @@
 -export_type([openapi_catalogs_hotel_feeds_update_request/0]).
 
 -type openapi_catalogs_hotel_feeds_update_request() ::
-    #{ 'default_currency' => openapi_nullable_currency:openapi_nullable_currency(),
-       'name' => binary(),
-       'format' => openapi_catalogs_format:openapi_catalogs_format(),
+    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'credentials' => openapi_catalogs_feed_credentials:openapi_catalogs_feed_credentials(),
+       'default_currency' => openapi_nullable_currency:openapi_nullable_currency(),
+       'format' => openapi_catalogs_format:openapi_catalogs_format(),
        'location' => binary(),
+       'name' => binary(),
        'preferred_processing_schedule' => openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule(),
-       'status' => openapi_catalogs_status:openapi_catalogs_status(),
-       'catalog_type' := openapi_catalogs_type:openapi_catalogs_type()
+       'status' => openapi_catalogs_status:openapi_catalogs_status()
      }.
 
-encode(#{ 'default_currency' := DefaultCurrency,
-          'name' := Name,
-          'format' := Format,
+encode(#{ 'catalog_type' := CatalogType,
           'credentials' := Credentials,
+          'default_currency' := DefaultCurrency,
+          'format' := Format,
           'location' := Location,
+          'name' := Name,
           'preferred_processing_schedule' := PreferredProcessingSchedule,
-          'status' := Status,
-          'catalog_type' := CatalogType
+          'status' := Status
         }) ->
-    #{ 'default_currency' => DefaultCurrency,
-       'name' => Name,
-       'format' => Format,
+    #{ 'catalog_type' => CatalogType,
        'credentials' => Credentials,
+       'default_currency' => DefaultCurrency,
+       'format' => Format,
        'location' => Location,
+       'name' => Name,
        'preferred_processing_schedule' => PreferredProcessingSchedule,
-       'status' => Status,
-       'catalog_type' => CatalogType
+       'status' => Status
      }.

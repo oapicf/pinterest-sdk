@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConversionTagResponse type satisfies the MappedNullable interface at compile time
@@ -20,29 +22,34 @@ var _ MappedNullable = &ConversionTagResponse{}
 
 // ConversionTagResponse struct for ConversionTagResponse
 type ConversionTagResponse struct {
-	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty"`
 	// Tag code snippet.
 	CodeSnippet *string `json:"code_snippet,omitempty"`
+	Configs *ConversionTagConfigs `json:"configs,omitempty"`
+	// The enhanced match status of the tag
 	EnhancedMatchStatus NullableEnhancedMatchStatusType `json:"enhanced_match_status,omitempty"`
 	// Tag ID.
 	Id *string `json:"id,omitempty"`
 	// Time for the last event fired.
 	LastFiredTimeMs NullableFloat32 `json:"last_fired_time_ms,omitempty"`
 	// Conversion tag name.
-	Name *string `json:"name,omitempty"`
-	Status *EntityStatus `json:"status,omitempty"`
+	Name string `json:"name"`
 	// Version number.
 	Version *string `json:"version,omitempty"`
-	Configs *ConversionTagConfigs `json:"configs,omitempty"`
+	// Ad account ID.
+	AdAccountId string `json:"ad_account_id"`
+	Status *EntityStatus `json:"status,omitempty"`
 }
+
+type _ConversionTagResponse ConversionTagResponse
 
 // NewConversionTagResponse instantiates a new ConversionTagResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConversionTagResponse() *ConversionTagResponse {
+func NewConversionTagResponse(name string, adAccountId string) *ConversionTagResponse {
 	this := ConversionTagResponse{}
+	this.Name = name
+	this.AdAccountId = adAccountId
 	return &this
 }
 
@@ -52,38 +59,6 @@ func NewConversionTagResponse() *ConversionTagResponse {
 func NewConversionTagResponseWithDefaults() *ConversionTagResponse {
 	this := ConversionTagResponse{}
 	return &this
-}
-
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
-func (o *ConversionTagResponse) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
-		var ret string
-		return ret
-	}
-	return *o.AdAccountId
-}
-
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionTagResponse) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
-		return nil, false
-	}
-	return o.AdAccountId, true
-}
-
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *ConversionTagResponse) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
-func (o *ConversionTagResponse) SetAdAccountId(v string) {
-	o.AdAccountId = &v
 }
 
 // GetCodeSnippet returns the CodeSnippet field value if set, zero value otherwise.
@@ -116,6 +91,38 @@ func (o *ConversionTagResponse) HasCodeSnippet() bool {
 // SetCodeSnippet gets a reference to the given string and assigns it to the CodeSnippet field.
 func (o *ConversionTagResponse) SetCodeSnippet(v string) {
 	o.CodeSnippet = &v
+}
+
+// GetConfigs returns the Configs field value if set, zero value otherwise.
+func (o *ConversionTagResponse) GetConfigs() ConversionTagConfigs {
+	if o == nil || IsNil(o.Configs) {
+		var ret ConversionTagConfigs
+		return ret
+	}
+	return *o.Configs
+}
+
+// GetConfigsOk returns a tuple with the Configs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionTagResponse) GetConfigsOk() (*ConversionTagConfigs, bool) {
+	if o == nil || IsNil(o.Configs) {
+		return nil, false
+	}
+	return o.Configs, true
+}
+
+// HasConfigs returns a boolean if a field has been set.
+func (o *ConversionTagResponse) HasConfigs() bool {
+	if o != nil && !IsNil(o.Configs) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigs gets a reference to the given ConversionTagConfigs and assigns it to the Configs field.
+func (o *ConversionTagResponse) SetConfigs(v ConversionTagConfigs) {
+	o.Configs = &v
 }
 
 // GetEnhancedMatchStatus returns the EnhancedMatchStatus field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -234,68 +241,28 @@ func (o *ConversionTagResponse) UnsetLastFiredTimeMs() {
 	o.LastFiredTimeMs.Unset()
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ConversionTagResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ConversionTagResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ConversionTagResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ConversionTagResponse) SetName(v string) {
-	o.Name = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ConversionTagResponse) GetStatus() EntityStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret EntityStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionTagResponse) GetStatusOk() (*EntityStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ConversionTagResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given EntityStatus and assigns it to the Status field.
-func (o *ConversionTagResponse) SetStatus(v EntityStatus) {
-	o.Status = &v
+	o.Name = v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
@@ -330,36 +297,60 @@ func (o *ConversionTagResponse) SetVersion(v string) {
 	o.Version = &v
 }
 
-// GetConfigs returns the Configs field value if set, zero value otherwise.
-func (o *ConversionTagResponse) GetConfigs() ConversionTagConfigs {
-	if o == nil || IsNil(o.Configs) {
-		var ret ConversionTagConfigs
+// GetAdAccountId returns the AdAccountId field value
+func (o *ConversionTagResponse) GetAdAccountId() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.Configs
+
+	return o.AdAccountId
 }
 
-// GetConfigsOk returns a tuple with the Configs field value if set, nil otherwise
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value
 // and a boolean to check if the value has been set.
-func (o *ConversionTagResponse) GetConfigsOk() (*ConversionTagConfigs, bool) {
-	if o == nil || IsNil(o.Configs) {
+func (o *ConversionTagResponse) GetAdAccountIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Configs, true
+	return &o.AdAccountId, true
 }
 
-// HasConfigs returns a boolean if a field has been set.
-func (o *ConversionTagResponse) HasConfigs() bool {
-	if o != nil && !IsNil(o.Configs) {
+// SetAdAccountId sets field value
+func (o *ConversionTagResponse) SetAdAccountId(v string) {
+	o.AdAccountId = v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ConversionTagResponse) GetStatus() EntityStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret EntityStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionTagResponse) GetStatusOk() (*EntityStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ConversionTagResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetConfigs gets a reference to the given ConversionTagConfigs and assigns it to the Configs field.
-func (o *ConversionTagResponse) SetConfigs(v ConversionTagConfigs) {
-	o.Configs = &v
+// SetStatus gets a reference to the given EntityStatus and assigns it to the Status field.
+func (o *ConversionTagResponse) SetStatus(v EntityStatus) {
+	o.Status = &v
 }
 
 func (o ConversionTagResponse) MarshalJSON() ([]byte, error) {
@@ -372,11 +363,11 @@ func (o ConversionTagResponse) MarshalJSON() ([]byte, error) {
 
 func (o ConversionTagResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AdAccountId) {
-		toSerialize["ad_account_id"] = o.AdAccountId
-	}
 	if !IsNil(o.CodeSnippet) {
 		toSerialize["code_snippet"] = o.CodeSnippet
+	}
+	if !IsNil(o.Configs) {
+		toSerialize["configs"] = o.Configs
 	}
 	if o.EnhancedMatchStatus.IsSet() {
 		toSerialize["enhanced_match_status"] = o.EnhancedMatchStatus.Get()
@@ -387,19 +378,53 @@ func (o ConversionTagResponse) ToMap() (map[string]interface{}, error) {
 	if o.LastFiredTimeMs.IsSet() {
 		toSerialize["last_fired_time_ms"] = o.LastFiredTimeMs.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-	if !IsNil(o.Configs) {
-		toSerialize["configs"] = o.Configs
+	toSerialize["ad_account_id"] = o.AdAccountId
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
+}
+
+func (o *ConversionTagResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"ad_account_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConversionTagResponse := _ConversionTagResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConversionTagResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConversionTagResponse(varConversionTagResponse)
+
+	return err
 }
 
 type NullableConversionTagResponse struct {

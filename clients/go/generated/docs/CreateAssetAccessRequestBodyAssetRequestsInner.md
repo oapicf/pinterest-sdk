@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PartnerId** | **string** | Unique identifier of a business partner to request asset access to. | 
 **AssetIdToPermissions** | [**map[string][]Permissions**](array.md) | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  | 
+**PartnerId** | **string** | Unique identifier of a business partner to request asset access to. | 
 
 ## Methods
 
 ### NewCreateAssetAccessRequestBodyAssetRequestsInner
 
-`func NewCreateAssetAccessRequestBodyAssetRequestsInner(partnerId string, assetIdToPermissions map[string][]Permissions, ) *CreateAssetAccessRequestBodyAssetRequestsInner`
+`func NewCreateAssetAccessRequestBodyAssetRequestsInner(assetIdToPermissions map[string][]Permissions, partnerId string, ) *CreateAssetAccessRequestBodyAssetRequestsInner`
 
 NewCreateAssetAccessRequestBodyAssetRequestsInner instantiates a new CreateAssetAccessRequestBodyAssetRequestsInner object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewCreateAssetAccessRequestBodyAssetRequestsInnerWithDefaults instantiates a new CreateAssetAccessRequestBodyAssetRequestsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPartnerId
-
-`func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerId() string`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerIdOk() (*string, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *CreateAssetAccessRequestBodyAssetRequestsInner) SetPartnerId(v string)`
-
-SetPartnerId sets PartnerId field to given value.
-
 
 ### GetAssetIdToPermissions
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *CreateAssetAccessRequestBodyAssetRequestsInner) SetAssetIdToPermissions(v map[string][]Permissions)`
 
 SetAssetIdToPermissions sets AssetIdToPermissions field to given value.
+
+
+### GetPartnerId
+
+`func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerId() string`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerIdOk() (*string, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *CreateAssetAccessRequestBodyAssetRequestsInner) SetPartnerId(v string)`
+
+SetPartnerId sets PartnerId field to given value.
 
 
 

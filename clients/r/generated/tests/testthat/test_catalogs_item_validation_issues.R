@@ -5,12 +5,11 @@ context("Test CatalogsItemValidationIssues")
 
 model_instance <- CatalogsItemValidationIssues$new()
 
-test_that("item_number", {
-  # tests for the property `item_number` (integer)
-  # Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.
+test_that("errors", {
+  # tests for the property `errors` (CatalogsItemValidationErrors)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`item_number`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
 
 test_that("item_id", {
@@ -21,11 +20,12 @@ test_that("item_id", {
   #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })
 
-test_that("errors", {
-  # tests for the property `errors` (CatalogsItemValidationErrors)
+test_that("item_number", {
+  # tests for the property `item_number` (integer)
+  # Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`item_number`, "EXPECTED_RESULT")
 })
 
 test_that("warnings", {

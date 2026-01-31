@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **impression** | **Array&lt;String&gt;** |  | [optional] |
+| **audience_verification** | **Array&lt;String&gt;** |  | [optional] |
+| **buyable_button** | **Array&lt;String&gt;** |  | [optional] |
 | **click** | **Array&lt;String&gt;** |  | [optional] |
 | **engagement** | **Array&lt;String&gt;** |  | [optional] |
-| **buyable_button** | **Array&lt;String&gt;** |  | [optional] |
-| **audience_verification** | **Array&lt;String&gt;** |  | [optional] |
+| **impression** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -16,11 +16,11 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::TrackingUrls.new(
-  impression: null,
+  audience_verification: null,
+  buyable_button: null,
   click: null,
   engagement: null,
-  buyable_button: null,
-  audience_verification: null
+  impression: null
 )
 ```
 

@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "This field includes all quiz data including questions, options, and results.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinData   {
   @JsonProperty("questions")
   
@@ -31,6 +31,9 @@ public class QuizPinData   {
   @JsonProperty("results")
   
   private List<QuizPinResult> results = null;
+
+  @JsonProperty("tie_breaker_custom_result")
+  private QuizPinResult tieBreakerCustomResult;
 
   /**
    * Quiz ad tie breaker type, default is RANDOM
@@ -65,9 +68,6 @@ public class QuizPinData   {
 
   @JsonProperty("tie_breaker_type")
   private TieBreakerTypeEnum tieBreakerType;
-
-  @JsonProperty("tie_breaker_custom_result")
-  private QuizPinResult tieBreakerCustomResult;
 
   public QuizPinData questions(List<QuizPinQuestion> questions) {
     this.questions = questions;
@@ -121,24 +121,6 @@ public class QuizPinData   {
     this.results = results;
   }
 
-  public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
-    this.tieBreakerType = tieBreakerType;
-    return this;
-  }
-
-  /**
-   * Quiz ad tie breaker type, default is RANDOM
-   * @return tieBreakerType
-   */
-  @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
-  public TieBreakerTypeEnum getTieBreakerType() {
-    return tieBreakerType;
-  }
-
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
-    this.tieBreakerType = tieBreakerType;
-  }
-
   public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
     this.tieBreakerCustomResult = tieBreakerCustomResult;
     return this;
@@ -157,6 +139,24 @@ public class QuizPinData   {
     this.tieBreakerCustomResult = tieBreakerCustomResult;
   }
 
+  public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+    this.tieBreakerType = tieBreakerType;
+    return this;
+  }
+
+  /**
+   * Quiz ad tie breaker type, default is RANDOM
+   * @return tieBreakerType
+   */
+  @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
+  public TieBreakerTypeEnum getTieBreakerType() {
+    return tieBreakerType;
+  }
+
+  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+    this.tieBreakerType = tieBreakerType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,13 +169,13 @@ public class QuizPinData   {
     QuizPinData quizPinData = (QuizPinData) o;
     return Objects.equals(this.questions, quizPinData.questions) &&
         Objects.equals(this.results, quizPinData.results) &&
-        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType) &&
-        Objects.equals(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult);
+        Objects.equals(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult) &&
+        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questions, results, tieBreakerType, tieBreakerCustomResult);
+    return Objects.hash(questions, results, tieBreakerCustomResult, tieBreakerType);
   }
 
   @Override
@@ -185,8 +185,8 @@ public class QuizPinData   {
     
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("    tieBreakerCustomResult: ").append(toIndentedString(tieBreakerCustomResult)).append("\n");
+    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

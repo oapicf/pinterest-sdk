@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,6 @@ var _ MappedNullable = &CatalogsReportFeedIngestionStats{}
 
 // CatalogsReportFeedIngestionStats struct for CatalogsReportFeedIngestionStats
 type CatalogsReportFeedIngestionStats struct {
-	ReportType *string `json:"report_type,omitempty"`
 	// ID of the catalog entity.
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The event code that a diagnostics aggregated number references
@@ -31,6 +30,7 @@ type CatalogsReportFeedIngestionStats struct {
 	Message *string `json:"message,omitempty"`
 	// Number of occurrences of the issue
 	Occurrences *int32 `json:"occurrences,omitempty"`
+	ReportType *string `json:"report_type,omitempty"`
 	// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 	Severity *string `json:"severity,omitempty"`
 }
@@ -50,38 +50,6 @@ func NewCatalogsReportFeedIngestionStats() *CatalogsReportFeedIngestionStats {
 func NewCatalogsReportFeedIngestionStatsWithDefaults() *CatalogsReportFeedIngestionStats {
 	this := CatalogsReportFeedIngestionStats{}
 	return &this
-}
-
-// GetReportType returns the ReportType field value if set, zero value otherwise.
-func (o *CatalogsReportFeedIngestionStats) GetReportType() string {
-	if o == nil || IsNil(o.ReportType) {
-		var ret string
-		return ret
-	}
-	return *o.ReportType
-}
-
-// GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsReportFeedIngestionStats) GetReportTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ReportType) {
-		return nil, false
-	}
-	return o.ReportType, true
-}
-
-// HasReportType returns a boolean if a field has been set.
-func (o *CatalogsReportFeedIngestionStats) HasReportType() bool {
-	if o != nil && !IsNil(o.ReportType) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportType gets a reference to the given string and assigns it to the ReportType field.
-func (o *CatalogsReportFeedIngestionStats) SetReportType(v string) {
-	o.ReportType = &v
 }
 
 // GetCatalogId returns the CatalogId field value if set, zero value otherwise.
@@ -244,6 +212,38 @@ func (o *CatalogsReportFeedIngestionStats) SetOccurrences(v int32) {
 	o.Occurrences = &v
 }
 
+// GetReportType returns the ReportType field value if set, zero value otherwise.
+func (o *CatalogsReportFeedIngestionStats) GetReportType() string {
+	if o == nil || IsNil(o.ReportType) {
+		var ret string
+		return ret
+	}
+	return *o.ReportType
+}
+
+// GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsReportFeedIngestionStats) GetReportTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ReportType) {
+		return nil, false
+	}
+	return o.ReportType, true
+}
+
+// HasReportType returns a boolean if a field has been set.
+func (o *CatalogsReportFeedIngestionStats) HasReportType() bool {
+	if o != nil && !IsNil(o.ReportType) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportType gets a reference to the given string and assigns it to the ReportType field.
+func (o *CatalogsReportFeedIngestionStats) SetReportType(v string) {
+	o.ReportType = &v
+}
+
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *CatalogsReportFeedIngestionStats) GetSeverity() string {
 	if o == nil || IsNil(o.Severity) {
@@ -286,9 +286,6 @@ func (o CatalogsReportFeedIngestionStats) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsReportFeedIngestionStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ReportType) {
-		toSerialize["report_type"] = o.ReportType
-	}
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
@@ -303,6 +300,9 @@ func (o CatalogsReportFeedIngestionStats) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.Occurrences) {
 		toSerialize["occurrences"] = o.Occurrences
+	}
+	if !IsNil(o.ReportType) {
+		toSerialize["report_type"] = o.ReportType
 	}
 	if !IsNil(o.Severity) {
 		toSerialize["severity"] = o.Severity

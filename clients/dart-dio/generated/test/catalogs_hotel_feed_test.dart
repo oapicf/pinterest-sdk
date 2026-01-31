@@ -22,14 +22,9 @@ void main() {
       // TODO
     });
 
-    // A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // CatalogsFormat format
-    test('to test the property `format`', () async {
+    // Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
       // TODO
     });
 
@@ -40,22 +35,6 @@ void main() {
 
     // CatalogsFeedCredentials credentials
     test('to test the property `credentials`', () async {
-      // TODO
-    });
-
-    // The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-    // String location
-    test('to test the property `location`', () async {
-      // TODO
-    });
-
-    // CatalogsFeedProcessingSchedule preferredProcessingSchedule
-    test('to test the property `preferredProcessingSchedule`', () async {
-      // TODO
-    });
-
-    // CatalogsStatus status
-    test('to test the property `status`', () async {
       // TODO
     });
 
@@ -70,9 +49,30 @@ void main() {
       // TODO
     });
 
-    // Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-    // String catalogId
-    test('to test the property `catalogId`', () async {
+    // CatalogsFormat format
+    test('to test the property `format`', () async {
+      // TODO
+    });
+
+    // The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+    // String location
+    test('to test the property `location`', () async {
+      // TODO
+    });
+
+    // A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // CatalogsFeedProcessingSchedule preferredProcessingSchedule
+    test('to test the property `preferredProcessingSchedule`', () async {
+      // TODO
+    });
+
+    // CatalogsStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 

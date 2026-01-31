@@ -1,6 +1,9 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
+import org.openapitools.model.BrandAccountsCreate200Response;
+import org.openapitools.model.BrandAccountsCreateRequest;
+import org.openapitools.model.BrandAccountsUpdateRequest;
 import org.openapitools.model.DeletePartnersRequest;
 import org.openapitools.model.DeletePartnersResponse;
 import org.openapitools.model.DeletedMembersResponse;
@@ -11,6 +14,7 @@ import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.MemberBusinessRole;
 import org.openapitools.model.MembersToDeleteBody;
 import org.openapitools.model.PartnerType;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateMemberBusinessRoleBody;
 import org.openapitools.model.UpdateMemberResultsResponseArray;
 
@@ -33,6 +37,30 @@ import org.apache.cxf.jaxrs.ext.multipart.*;
  *
  */
 public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccessRelationshipsApi {
+    /**
+     * Create a Brand Account
+     *
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     *
+     */
+    public BrandAccountsCreate200Response brandAccountsCreate(String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) {
+        // TODO: Implement...
+
+        return null;
+    }
+
+    /**
+     * Update a Brand Account
+     *
+     * Update an existing Brand Account
+     *
+     */
+    public BrandAccountsCreate200Response brandAccountsUpdate(String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) {
+        // TODO: Implement...
+
+        return null;
+    }
+
     /**
      * Terminate business memberships
      *
@@ -75,7 +103,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      *
      */
-    public GetBusinessMembers200Response getBusinessMembers(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) {
+    public GetBusinessMembers200Response getBusinessMembers(String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;
@@ -91,6 +119,18 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
         // TODO: Implement...
 
         return null;
+    }
+
+    /**
+     * Update a system user information.
+     *
+     * Update a system user information such as name.
+     *
+     */
+    public void systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) {
+        // TODO: Implement...
+
+        
     }
 
     /**

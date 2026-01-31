@@ -10,27 +10,29 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param id Asset Group ID.
- * @param assetUnderscoregroupUnderscorename Asset Group name
- * @param assetUnderscoregroupUnderscoredescription Asset group description
- * @param assetUnderscoregroupUnderscoretypes Asset group types
  * @param adUnderscoreaccountsUnderscoreids A list of ad account IDs under the asset group
- * @param profilesUnderscoreids A list of profile IDs under asset group
- * @param createdUnderscoretime The creation time of the asset group
- * @param updatedUnderscoretime The last update time of the asset group
- * @param owner The data of the business that owns the asset group.
+ * @param assetUnderscoregroupUnderscoredescription Asset group description
+ * @param assetUnderscoregroupUnderscorename Asset Group name
+ * @param assetUnderscoregroupUnderscoretypes Asset group types
+ * @param catalogsUnderscoreids A list of catalog IDs under asset group
  * @param createdUnderscoreby The data of the user that created the asset group.
+ * @param createdUnderscoretime The creation time of the asset group
+ * @param id Asset Group ID.
+ * @param owner The data of the business that owns the asset group.
+ * @param profilesUnderscoreids A list of profile IDs under asset group
+ * @param updatedUnderscoretime The last update time of the asset group
  */
-case class AssetGroupBinding(id: Option[String],
-                assetUnderscoregroupUnderscorename: Option[String],
+case class AssetGroupBinding(adUnderscoreaccountsUnderscoreids: Option[Seq[String]],
                 assetUnderscoregroupUnderscoredescription: Option[String],
+                assetUnderscoregroupUnderscorename: Option[String],
                 assetUnderscoregroupUnderscoretypes: Option[Seq[String]],
-                adUnderscoreaccountsUnderscoreids: Option[Seq[String]],
-                profilesUnderscoreids: Option[Seq[String]],
+                catalogsUnderscoreids: Option[Seq[String]],
+                createdUnderscoreby: Option[BusinessAccessUserSummary],
                 createdUnderscoretime: Option[Int],
-                updatedUnderscoretime: Option[Int],
+                id: Option[String],
                 owner: Option[BusinessAccessUserSummary],
-                createdUnderscoreby: Option[BusinessAccessUserSummary]
+                profilesUnderscoreids: Option[Seq[String]],
+                updatedUnderscoretime: Option[Int]
                 )
 
 object AssetGroupBinding {

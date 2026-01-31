@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **boolean** | Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true). | [optional] [default to undefined]
 **errorCode** | **number** | Error code type if error occurs | [optional] [default to undefined]
 **errorMessage** | **string** | Reason for failure | [optional] [default to undefined]
+**success** | **boolean** | Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true). | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { AdsCreditRedeemResponse } from './api';
 
 const instance: AdsCreditRedeemResponse = {
-    success,
     errorCode,
     errorMessage,
+    success,
 };
 ```
 

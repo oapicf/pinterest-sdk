@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The lifetime metric name and value.
-	 */
-	std::map<std::string, std::string> getLifetimeMetrics();
-
-	/*! \brief Set The lifetime metric name and value.
-	 */
-	void setLifetimeMetrics(std::map <std::string, std::string> lifetime_metrics);
 	/*! \brief Get Array with the requested daily metric records
 	 */
 	std::list<PinAnalyticsMetricsResponse_daily_metrics_inner> getDailyMetrics();
@@ -62,6 +55,13 @@ public:
 	/*! \brief Set Array with the requested daily metric records
 	 */
 	void setDailyMetrics(std::list <PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics);
+	/*! \brief Get The lifetime metric name and value.
+	 */
+	std::map<std::string, std::string> getLifetimeMetrics();
+
+	/*! \brief Set The lifetime metric name and value.
+	 */
+	void setLifetimeMetrics(std::map <std::string, std::string> lifetime_metrics);
 	/*! \brief Get The metric name and value over the requested period for each requested metric
 	 */
 	std::map<std::string, std::string> getSummaryMetrics();
@@ -71,8 +71,8 @@ public:
 	void setSummaryMetrics(std::map <std::string, std::string> summary_metrics);
 
 private:
-	std::map <std::string, std::string>lifetime_metrics;
 	std::list <PinAnalyticsMetricsResponse_daily_metrics_inner>daily_metrics;
+	std::map <std::string, std::string>lifetime_metrics;
 	std::map <std::string, std::string>summary_metrics;
 	void __init();
 	void __cleanup();

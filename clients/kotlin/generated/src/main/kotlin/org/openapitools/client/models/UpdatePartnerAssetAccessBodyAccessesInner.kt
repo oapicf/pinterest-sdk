@@ -23,21 +23,21 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param assetId Unique identifier of the business asset.
+ * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param permissions A non-empty array of permissions to assign to the partner.
  */
 
 
 data class UpdatePartnerAssetAccessBodyAccessesInner (
 
-    /* Unique identifier of a business partner to update asset access to. */
-    @Json(name = "partner_id")
-    val partnerId: kotlin.String,
-
     /* Unique identifier of the business asset. */
     @Json(name = "asset_id")
     val assetId: kotlin.String,
+
+    /* Unique identifier of a business partner to update asset access to. */
+    @Json(name = "partner_id")
+    val partnerId: kotlin.String,
 
     /* A non-empty array of permissions to assign to the partner. */
     @Json(name = "permissions")

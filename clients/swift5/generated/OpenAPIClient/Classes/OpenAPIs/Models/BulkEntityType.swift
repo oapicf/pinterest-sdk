@@ -10,11 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Refers ads entity type */
+/** Refers ads entity type. Schedule enum is only applicable to beta users */
 public enum BulkEntityType: String, Codable, CaseIterable {
     case campaign = "CAMPAIGN"
     case adGroup = "AD_GROUP"
     case productGroup = "PRODUCT_GROUP"
     case ad = "AD"
     case keyword = "KEYWORD"
+    case label = "LABEL"
+    case schedule = "SCHEDULE"
 }

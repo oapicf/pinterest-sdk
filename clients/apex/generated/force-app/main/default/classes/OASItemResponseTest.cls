@@ -85,8 +85,8 @@ private class OASItemResponseTest {
         System.assertEquals(new List<OASPin>(), itemResponse.pins);
         System.assertEquals(new List<OASItemValidationEvent>(), itemResponse.errors);
         System.assertEquals(null, itemResponse.catalogType);
-        System.assertEquals(null, itemResponse.itemId);
         System.assertEquals(null, itemResponse.attributes);
+        System.assertEquals(null, itemResponse.itemId);
         System.assertEquals(null, itemResponse.hotelId);
         System.assertEquals(null, itemResponse.creativeAssetsId);
     }

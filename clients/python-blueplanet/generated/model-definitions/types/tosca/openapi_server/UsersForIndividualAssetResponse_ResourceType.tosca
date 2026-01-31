@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UsersForIndividualAssetResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UsersForIndividualAssetResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  UsersForIndividualAssetResponse {
+    title = UsersForIndividualAssetResponse
+    description = UsersForIndividualAssetResponse
+    derivedFrom = Root
+    properties {
+        asset_id {
+          type =  string
+          description = "Unique identifier of a business asset."
+          optional = false
+        }
+        member_id {
+          type =  string
+          description = "Unique identifier of the business member with asset access."
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels member or partner has on an asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UsersForIndividualAssetResponse {
+    title = UsersForIndividualAssetResponse
+    description = UsersForIndividualAssetResponse
+    implements = openapi_server.resourceTypes.UsersForIndividualAssetResponse
+
+  }
+}

@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsUpdateRetailItem._
 
 case class CatalogsUpdateRetailItem (
-  /* The catalog item id in the merchant namespace */
+  attributes: UpdatableItemAttributes,
+/* The catalog item id in the merchant namespace */
   itemId: String,
 operation: Operation,
-attributes: UpdatableItemAttributes,
 /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
   updateMask: Option[List[UpdateMaskFieldType]])
 

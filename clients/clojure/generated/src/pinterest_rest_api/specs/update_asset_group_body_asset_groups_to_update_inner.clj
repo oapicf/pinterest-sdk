@@ -9,11 +9,11 @@
 (def update-asset-group-body-asset-groups-to-update-inner-data
   {
    (ds/req :asset_group_id) string?
-   (ds/opt :name) string?
-   (ds/opt :description) string?
    (ds/opt :asset_group_types) (s/coll-of asset-group-type-spec)
    (ds/opt :assets_to_add) (s/coll-of string?)
    (ds/opt :assets_to_remove) (s/coll-of string?)
+   (ds/opt :description) string?
+   (ds/opt :name) string?
    })
 
 (def update-asset-group-body-asset-groups-to-update-inner-spec

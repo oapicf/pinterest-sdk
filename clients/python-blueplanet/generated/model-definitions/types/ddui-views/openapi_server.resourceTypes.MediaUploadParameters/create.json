@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "content_type" },
+      {"model": "key" },
+      {"model": "policy" },
+      {"model": "x_amz_algorithm" },
+      {"model": "x_amz_credential" },
+      {"model": "x_amz_date" },
+      {"model": "x_amz_security_token" },
+      {"model": "x_amz_signature" },
+    ]
+  }]
+}

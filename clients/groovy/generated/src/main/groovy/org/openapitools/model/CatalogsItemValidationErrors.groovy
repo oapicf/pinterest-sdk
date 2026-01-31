@@ -28,9 +28,9 @@ class CatalogsItemValidationErrors {
     
     CatalogsItemValidationDetails INVALID_DOMAIN
     
-    CatalogsItemValidationDetails ITEMID_MISSING
-    
     CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+    
+    CatalogsItemValidationDetails ITEMID_MISSING
     
     CatalogsItemValidationDetails LINK_FORMAT_INVALID
     

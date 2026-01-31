@@ -88,6 +88,13 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/keywords', {
       "paramType" => "query",
     },
     {
+      "name" => "ad_group_ids",
+      "description" => "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.",
+      "dataType" => "Array<String>",
+      "collectionFormat" => "multi",
+      "paramType" => "query",
+    },
+    {
       "name" => "match_types",
       "description" => "Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt;",
       "dataType" => "Array<MatchType>",
@@ -96,7 +103,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/keywords', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -201,6 +208,22 @@ MyApp.add_route('GET', '/v5/trends/keywords/{region}/top/{trend_type}', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "50",
+      "paramType" => "query",
+    },
+    {
+      "name" => "include_prediction",
+      "description" => "&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
+      "paramType" => "query",
+    },
+    {
+      "name" => "include_demographics",
+      "description" => "&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
       "paramType" => "query",
     },
     {

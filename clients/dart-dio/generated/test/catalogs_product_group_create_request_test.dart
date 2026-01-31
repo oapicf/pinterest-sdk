@@ -7,13 +7,19 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsProductGroupCreateRequest, () {
-    // String name
-    test('to test the property `name`', () async {
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
-    // String description
-    test('to test the property `description`', () async {
+    // Catalog Feed id pertaining to the catalog product group.
+    // String feedId
+    test('to test the property `feedId`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupFiltersRequest filters
+    test('to test the property `filters`', () async {
       // TODO
     });
 
@@ -23,14 +29,8 @@ void main() {
       // TODO
     });
 
-    // CatalogsProductGroupFiltersRequest filters
-    test('to test the property `filters`', () async {
-      // TODO
-    });
-
-    // Catalog Feed id pertaining to the catalog product group.
-    // String feedId
-    test('to test the property `feedId`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

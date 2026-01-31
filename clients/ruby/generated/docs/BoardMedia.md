@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **image_cover_url** | **String** | Board cover image. | [optional] |
+| **image_cover_url** | **String** | Board cover image | [optional] |
 | **pin_thumbnail_urls** | **Array&lt;String&gt;** | Board pin thumbnail urls. | [optional] |
 
 ## Example

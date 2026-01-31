@@ -60,10 +60,11 @@ class KeywordsApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val campaignId : kotlin.String = campaignId_example // kotlin.String | Campaign Id to use to filter the results.
             //val adGroupId : kotlin.String = 123123123 // kotlin.String | Ad group Id.
+            //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
             //val matchTypes : kotlin.collections.List<MatchType> =  // kotlin.collections.List<MatchType> | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : KeywordsGet200Response = apiInstance.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark)
+            //val result : KeywordsGet200Response = apiInstance.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark)
             //result shouldBe ("TODO")
         }
 
@@ -87,7 +88,9 @@ class KeywordsApiTest : ShouldSpec() {
             //val includeKeywords : kotlin.collections.List<kotlin.String> = ["recipes","dessert"] // kotlin.collections.List<kotlin.String> | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.
             //val normalizeAgainstGroup : kotlin.Boolean = true // kotlin.Boolean | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
             //val limit : kotlin.Int = 25 // kotlin.Int | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
-            //val result : TrendingKeywordsResponse = apiInstance.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
+            //val includePrediction : kotlin.Boolean = true // kotlin.Boolean | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.
+            //val includeDemographics : kotlin.Boolean = true // kotlin.Boolean | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.
+            //val result : TrendingKeywordsResponse = apiInstance.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics)
             //result shouldBe ("TODO")
         }
 

@@ -10,8 +10,8 @@ import org.openapitools.model.CatalogsProduct;
 
 @Canonical
 class CatalogsProductGroupPinsList200Response {
-    /* Pins */
-    List<CatalogsProduct> items = new ArrayList<>()
     
     String bookmark
+    /* Pins */
+    List<CatalogsProduct> items = new ArrayList<>()
 }

@@ -6,6 +6,27 @@ goog.provide('API.Client.OrderLine');
 API.Client.OrderLine = function() {}
 
 /**
+ * Ad account ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.OrderLine.prototype.adAccountId;
+
+/**
+ * Order line budget in micro currency.
+ * @type {!number}
+ * @export
+ */
+API.Client.OrderLine.prototype.budget;
+
+/**
+ * End time. Unix timestamp.
+ * @type {!number}
+ * @export
+ */
+API.Client.OrderLine.prototype.endTime;
+
+/**
  * Order line ID.
  * @type {!string}
  * @export
@@ -13,18 +34,25 @@ API.Client.OrderLine = function() {}
 API.Client.OrderLine.prototype.id;
 
 /**
- * Always \"orderline\".
+ * Order line name.
  * @type {!string}
  * @export
  */
-API.Client.OrderLine.prototype.type;
+API.Client.OrderLine.prototype.name;
 
 /**
- * Ad account ID.
- * @type {!string}
+ * Order line paid budget in micro currency.
+ * @type {!number}
  * @export
  */
-API.Client.OrderLine.prototype.adAccountId;
+API.Client.OrderLine.prototype.paidBudget;
+
+/**
+ * Order line paid type.
+ * @type {!API.Client.OrderLinePaidType}
+ * @export
+ */
+API.Client.OrderLine.prototype.paidType;
 
 /**
  * Purchase order ID.
@@ -41,27 +69,6 @@ API.Client.OrderLine.prototype.purchaseOrderId;
 API.Client.OrderLine.prototype.startTime;
 
 /**
- * End time. Unix timestamp.
- * @type {!number}
- * @export
- */
-API.Client.OrderLine.prototype.endTime;
-
-/**
- * Order line budget in micro currency.
- * @type {!number}
- * @export
- */
-API.Client.OrderLine.prototype.budget;
-
-/**
- * Order line paid budget in micro currency.
- * @type {!number}
- * @export
- */
-API.Client.OrderLine.prototype.paidBudget;
-
-/**
  * Order line status.
  * @type {!API.Client.OrderLineStatus}
  * @export
@@ -69,18 +76,11 @@ API.Client.OrderLine.prototype.paidBudget;
 API.Client.OrderLine.prototype.status;
 
 /**
- * Order line name.
+ * Always \"orderline\".
  * @type {!string}
  * @export
  */
-API.Client.OrderLine.prototype.name;
-
-/**
- * Order line paid type.
- * @type {!API.Client.OrderLinePaidType}
- * @export
- */
-API.Client.OrderLine.prototype.paidType;
+API.Client.OrderLine.prototype.type;
 
 /**
  * Associated List of campaign IDs.

@@ -1,7 +1,7 @@
 /*
  * pin_media_source_images_base64.h
  *
- * Multiple Base64-encoded images media source
+ * Multiple Base64-based images media source
  */
 
 #ifndef _pin_media_source_images_base64_H_
@@ -15,7 +15,7 @@
 
 typedef struct pin_media_source_images_base64_t pin_media_source_images_base64_t;
 
-#include "pin_media_source_images_base64_items_inner.h"
+#include "pin_media_source_images_base64_item.h"
 
 // Enum SOURCETYPE for pin_media_source_images_base64
 
@@ -28,17 +28,17 @@ pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_e pin_media_source_
 
 
 typedef struct pin_media_source_images_base64_t {
-    pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_e source_type; //enum
-    list_t *items; //nonprimitive container
     int index; //numeric
+    list_t *items; //nonprimitive container
+    pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_e source_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_images_base64_t;
 
 __attribute__((deprecated)) pin_media_source_images_base64_t *pin_media_source_images_base64_create(
-    pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_e source_type,
+    int index,
     list_t *items,
-    int index
+    pinterest_rest_api_pin_media_source_images_base64_SOURCETYPE_e source_type
 );
 
 void pin_media_source_images_base64_free(pin_media_source_images_base64_t *pin_media_source_images_base64);

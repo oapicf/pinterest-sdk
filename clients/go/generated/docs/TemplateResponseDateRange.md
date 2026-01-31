@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AbsoluteDateRange** | Pointer to [**NullableTemplateResponseDateRangeAbsoluteDateRange**](TemplateResponseDateRangeAbsoluteDateRange.md) |  | [optional] 
 **DynamicDateRange** | Pointer to [**NullableTemplateResponseDateRangeDynamicDateRange**](TemplateResponseDateRangeDynamicDateRange.md) |  | [optional] 
 **RelativeDateRange** | Pointer to [**NullableTemplateResponseDateRangeRelativeDateRange**](TemplateResponseDateRangeRelativeDateRange.md) |  | [optional] 
-**AbsoluteDateRange** | Pointer to [**NullableTemplateResponseDateRangeAbsoluteDateRange**](TemplateResponseDateRangeAbsoluteDateRange.md) |  | [optional] 
 
 ## Methods
 
@@ -27,6 +27,41 @@ NewTemplateResponseDateRangeWithDefaults instantiates a new TemplateResponseDate
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAbsoluteDateRange
+
+`func (o *TemplateResponseDateRange) GetAbsoluteDateRange() TemplateResponseDateRangeAbsoluteDateRange`
+
+GetAbsoluteDateRange returns the AbsoluteDateRange field if non-nil, zero value otherwise.
+
+### GetAbsoluteDateRangeOk
+
+`func (o *TemplateResponseDateRange) GetAbsoluteDateRangeOk() (*TemplateResponseDateRangeAbsoluteDateRange, bool)`
+
+GetAbsoluteDateRangeOk returns a tuple with the AbsoluteDateRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAbsoluteDateRange
+
+`func (o *TemplateResponseDateRange) SetAbsoluteDateRange(v TemplateResponseDateRangeAbsoluteDateRange)`
+
+SetAbsoluteDateRange sets AbsoluteDateRange field to given value.
+
+### HasAbsoluteDateRange
+
+`func (o *TemplateResponseDateRange) HasAbsoluteDateRange() bool`
+
+HasAbsoluteDateRange returns a boolean if a field has been set.
+
+### SetAbsoluteDateRangeNil
+
+`func (o *TemplateResponseDateRange) SetAbsoluteDateRangeNil(b bool)`
+
+ SetAbsoluteDateRangeNil sets the value for AbsoluteDateRange to be an explicit nil
+
+### UnsetAbsoluteDateRange
+`func (o *TemplateResponseDateRange) UnsetAbsoluteDateRange()`
+
+UnsetAbsoluteDateRange ensures that no value is present for AbsoluteDateRange, not even an explicit nil
 ### GetDynamicDateRange
 
 `func (o *TemplateResponseDateRange) GetDynamicDateRange() TemplateResponseDateRangeDynamicDateRange`
@@ -97,41 +132,6 @@ HasRelativeDateRange returns a boolean if a field has been set.
 `func (o *TemplateResponseDateRange) UnsetRelativeDateRange()`
 
 UnsetRelativeDateRange ensures that no value is present for RelativeDateRange, not even an explicit nil
-### GetAbsoluteDateRange
-
-`func (o *TemplateResponseDateRange) GetAbsoluteDateRange() TemplateResponseDateRangeAbsoluteDateRange`
-
-GetAbsoluteDateRange returns the AbsoluteDateRange field if non-nil, zero value otherwise.
-
-### GetAbsoluteDateRangeOk
-
-`func (o *TemplateResponseDateRange) GetAbsoluteDateRangeOk() (*TemplateResponseDateRangeAbsoluteDateRange, bool)`
-
-GetAbsoluteDateRangeOk returns a tuple with the AbsoluteDateRange field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAbsoluteDateRange
-
-`func (o *TemplateResponseDateRange) SetAbsoluteDateRange(v TemplateResponseDateRangeAbsoluteDateRange)`
-
-SetAbsoluteDateRange sets AbsoluteDateRange field to given value.
-
-### HasAbsoluteDateRange
-
-`func (o *TemplateResponseDateRange) HasAbsoluteDateRange() bool`
-
-HasAbsoluteDateRange returns a boolean if a field has been set.
-
-### SetAbsoluteDateRangeNil
-
-`func (o *TemplateResponseDateRange) SetAbsoluteDateRangeNil(b bool)`
-
- SetAbsoluteDateRangeNil sets the value for AbsoluteDateRange to be an explicit nil
-
-### UnsetAbsoluteDateRange
-`func (o *TemplateResponseDateRange) UnsetAbsoluteDateRange()`
-
-UnsetAbsoluteDateRange ensures that no value is present for AbsoluteDateRange, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

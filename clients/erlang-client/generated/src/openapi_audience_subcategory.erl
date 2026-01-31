@@ -5,22 +5,22 @@
 -export_type([openapi_audience_subcategory/0]).
 
 -type openapi_audience_subcategory() ::
-    #{ 'key' => binary(),
-       'name' => binary(),
-       'ratio' => integer(),
+    #{ 'id' => binary(),
        'index' => integer(),
-       'id' => binary()
+       'key' => binary(),
+       'name' => binary(),
+       'ratio' => integer()
      }.
 
-encode(#{ 'key' := Key,
-          'name' := Name,
-          'ratio' := Ratio,
+encode(#{ 'id' := Id,
           'index' := Index,
-          'id' := Id
+          'key' := Key,
+          'name' := Name,
+          'ratio' := Ratio
         }) ->
-    #{ 'key' => Key,
-       'name' => Name,
-       'ratio' => Ratio,
+    #{ 'id' => Id,
        'index' => Index,
-       'id' => Id
+       'key' => Key,
+       'name' => Name,
+       'ratio' => Ratio
      }.

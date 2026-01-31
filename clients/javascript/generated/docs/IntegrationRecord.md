@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**externalBusinessId** | **String** |  | [optional] 
-**connectedMerchantId** | **String** |  | [optional] 
-**connectedUserId** | **String** |  | [optional] [readonly] 
+**additionalId1** | **String** |  | [optional] 
 **connectedAdvertiserId** | **String** |  | [optional] [readonly] 
 **connectedLbaId** | **String** |  | [optional] 
+**connectedMerchantId** | **String** |  | [optional] 
 **connectedTagId** | **String** |  | [optional] 
+**connectedUserId** | **String** |  | [optional] [readonly] 
+**createdTime** | **Number** |  | [optional] 
+**externalBusinessId** | **String** |  | [optional] 
+**id** | **String** |  | [optional] 
 **partnerAccessToken** | **String** |  | [optional] 
-**partnerRefreshToken** | **String** |  | [optional] 
-**partnerPrimaryEmail** | **String** |  | [optional] 
 **partnerAccessTokenExpiry** | **Number** |  | [optional] 
+**partnerMetadata** | **String** |  | [optional] 
+**partnerPrimaryEmail** | **String** |  | [optional] 
+**partnerRefreshToken** | **String** |  | [optional] 
 **partnerRefreshTokenExpiry** | **Number** |  | [optional] 
 **scopes** | **String** |  | [optional] 
-**partnerMetadata** | **String** |  | [optional] 
-**additionalId1** | **String** |  | [optional] 
-**createdTime** | **Number** |  | [optional] 
 **updatedTime** | **Number** |  | [optional] 
 
 

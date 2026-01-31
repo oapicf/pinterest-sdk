@@ -20,9 +20,9 @@ public class AdsAnalyticsGetAsyncResponse   {
   
   private BulkReportingJobStatus reportStatus;
 
-  private String url;
-
   private BigDecimal size;
+
+  private String url;
 
   /**
    **/
@@ -44,24 +44,6 @@ public class AdsAnalyticsGetAsyncResponse   {
 
   /**
    **/
-  public AdsAnalyticsGetAsyncResponse url(String url) {
-    this.url = url;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-
-  /**
-   **/
   public AdsAnalyticsGetAsyncResponse size(BigDecimal size) {
     this.size = size;
     return this;
@@ -78,6 +60,24 @@ public class AdsAnalyticsGetAsyncResponse   {
   }
 
 
+  /**
+   **/
+  public AdsAnalyticsGetAsyncResponse url(String url) {
+    this.url = url;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -89,13 +89,13 @@ public class AdsAnalyticsGetAsyncResponse   {
     }
     AdsAnalyticsGetAsyncResponse adsAnalyticsGetAsyncResponse = (AdsAnalyticsGetAsyncResponse) o;
     return Objects.equals(this.reportStatus, adsAnalyticsGetAsyncResponse.reportStatus) &&
-        Objects.equals(this.url, adsAnalyticsGetAsyncResponse.url) &&
-        Objects.equals(this.size, adsAnalyticsGetAsyncResponse.size);
+        Objects.equals(this.size, adsAnalyticsGetAsyncResponse.size) &&
+        Objects.equals(this.url, adsAnalyticsGetAsyncResponse.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -104,8 +104,8 @@ public class AdsAnalyticsGetAsyncResponse   {
     sb.append("class AdsAnalyticsGetAsyncResponse {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

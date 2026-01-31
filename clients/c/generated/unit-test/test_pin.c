@@ -18,56 +18,51 @@ pin_t* instantiate_pin(int include_optional);
 
 #include "test_board_owner.c"
 #include "test_pin_media.c"
-#include "test_pin_media_source.c"
 
 
 pin_t* instantiate_pin(int include_optional) {
   pin_t* pin = NULL;
   if (include_optional) {
     pin = pin_create(
-      "813744226420795884",
-      "2020-01-01T20:10:40Z",
-      "https://www.pinterest.com/",
       "0",
-      "0",
-      "#6E7874",
-      "0",
-      "REGULAR",
-      "a",
       "a",
        // false, not to have infinite recursion
       instantiate_board_owner(0),
+      "a",
+      "2013-10-20T19:20:30+01:00",
+      REGULAR,
+      "0",
+      "0",
       1,
-       // false, not to have infinite recursion
-      instantiate_pin_media(0),
-      null,
       "a",
       1,
       1,
       "0",
-      {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}}
+       // false, not to have infinite recursion
+      instantiate_pin_media(0),
+      "a",
+      {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}},
+      "0"
     );
   } else {
     pin = pin_create(
-      "813744226420795884",
-      "2020-01-01T20:10:40Z",
-      "https://www.pinterest.com/",
       "0",
-      "0",
-      "#6E7874",
-      "0",
-      "REGULAR",
-      "a",
       "a",
       NULL,
+      "a",
+      "2013-10-20T19:20:30+01:00",
+      REGULAR,
+      "0",
+      "0",
       1,
-      NULL,
-      null,
       "a",
       1,
       1,
       "0",
-      {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}}
+      NULL,
+      "a",
+      {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}},
+      "0"
     );
   }
 

@@ -7,7 +7,7 @@
 #' @title CatalogsCreateRequest
 #' @description CatalogsCreateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_type Type of the catalog entity. character
+#' @field catalog_type  \link{CatalogsType}
 #' @field name A human-friendly name associated to a given catalog. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,17 +21,15 @@ CatalogsCreateRequest <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsCreateRequest class.
     #'
-    #' @param catalog_type Type of the catalog entity.
+    #' @param catalog_type catalog_type
     #' @param name A human-friendly name associated to a given catalog.
     #' @param ... Other optional arguments.
     initialize = function(`catalog_type`, `name`, ...) {
       if (!missing(`catalog_type`)) {
-        if (!(`catalog_type` %in% c("HOTEL"))) {
-          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+        if (!(`catalog_type` %in% c())) {
+          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`catalog_type`) && length(`catalog_type`) == 1)) {
-          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
-        }
+        stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
       }
       if (!missing(`name`)) {
@@ -75,7 +73,7 @@ CatalogsCreateRequest <- R6::R6Class(
       CatalogsCreateRequestObject <- list()
       if (!is.null(self$`catalog_type`)) {
         CatalogsCreateRequestObject[["catalog_type"]] <-
-          self$`catalog_type`
+          self$`catalog_type`$toSimpleType()
       }
       if (!is.null(self$`name`)) {
         CatalogsCreateRequestObject[["name"]] <-
@@ -92,10 +90,9 @@ CatalogsCreateRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
-        if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
-          stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
-        }
-        self$`catalog_type` <- this_object$`catalog_type`
+        `catalog_type_object` <- CatalogsType$new()
+        `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+        self$`catalog_type` <- `catalog_type_object`
       }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
@@ -121,10 +118,7 @@ CatalogsCreateRequest <- R6::R6Class(
     #' @return the instance of CatalogsCreateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
-        stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
-      }
-      self$`catalog_type` <- this_object$`catalog_type`
+      self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
       self$`name` <- this_object$`name`
       self
     },
@@ -137,9 +131,7 @@ CatalogsCreateRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
-        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
-          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
-        }
+        stopifnot(R6::is.R6(input_json$`catalog_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreateRequest: the required field `catalog_type` is missing."))
       }

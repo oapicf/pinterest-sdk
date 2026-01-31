@@ -49,6 +49,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -67,7 +68,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public abstract class BusinessesApiService {
     public abstract Response assetAccessRequestsCreate(String businessId
  ,CreateAssetAccessRequestBody createAssetAccessRequestBody
@@ -89,6 +90,7 @@ public abstract class BusinessesApiService {
  ) throws NotFoundException;
     public abstract Response businessAssetMembersGet(String businessId
  ,String assetId
+ ,Boolean fetchSystemUsers
  ,String bookmark
  ,Integer pageSize
  ,Integer startIndex
@@ -151,6 +153,7 @@ public abstract class BusinessesApiService {
  ,String bookmark
  ) throws NotFoundException;
     public abstract Response getBusinessMembers(String businessId
+ ,Boolean fetchSystemUsers
  ,Boolean assetsSummary
  ,List<MemberBusinessRole> businessRoles
  ,String memberIds
@@ -179,6 +182,10 @@ public abstract class BusinessesApiService {
  ,String bookmark
  ,String order
  ,Integer pageSize
+ ) throws NotFoundException;
+    public abstract Response systemUserUpdate(String businessId
+ ,String systemUserId
+ ,SystemUserUpdateRequest systemUserUpdateRequest
  ) throws NotFoundException;
     public abstract Response updateBusinessMemberships(String businessId
  ,List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody

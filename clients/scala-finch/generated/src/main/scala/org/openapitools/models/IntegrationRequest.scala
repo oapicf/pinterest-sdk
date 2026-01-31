@@ -8,33 +8,33 @@ import org.openapitools._
 
 /**
  * Schema used for creating the integration metadata.
- * @param externalUnderscorebusinessUnderscoreid External business ID for the integration.
- * @param connectedUnderscoremerchantUnderscoreid 
+ * @param additionalUnderscoreidUnderscore1 
  * @param connectedUnderscoreadvertiserUnderscoreid 
  * @param connectedUnderscorelbaUnderscoreid 
+ * @param connectedUnderscoremerchantUnderscoreid 
  * @param connectedUnderscoretagUnderscoreid 
+ * @param externalUnderscorebusinessUnderscoreid External business ID for the integration.
  * @param partnerUnderscoreaccessUnderscoretoken 
- * @param partnerUnderscorerefreshUnderscoretoken 
- * @param partnerUnderscoreprimaryUnderscoreemail 
  * @param partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry 
+ * @param partnerUnderscoremetadata 
+ * @param partnerUnderscoreprimaryUnderscoreemail 
+ * @param partnerUnderscorerefreshUnderscoretoken 
  * @param partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry 
  * @param scopes 
- * @param additionalUnderscoreidUnderscore1 
- * @param partnerUnderscoremetadata 
  */
-case class IntegrationRequest(externalUnderscorebusinessUnderscoreid: Option[String],
-                connectedUnderscoremerchantUnderscoreid: Option[String],
+case class IntegrationRequest(additionalUnderscoreidUnderscore1: Option[String],
                 connectedUnderscoreadvertiserUnderscoreid: Option[String],
                 connectedUnderscorelbaUnderscoreid: Option[String],
+                connectedUnderscoremerchantUnderscoreid: Option[String],
                 connectedUnderscoretagUnderscoreid: Option[String],
+                externalUnderscorebusinessUnderscoreid: Option[String],
                 partnerUnderscoreaccessUnderscoretoken: Option[String],
-                partnerUnderscorerefreshUnderscoretoken: Option[String],
-                partnerUnderscoreprimaryUnderscoreemail: Option[String],
                 partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry: Option[Int],
+                partnerUnderscoremetadata: Option[String],
+                partnerUnderscoreprimaryUnderscoreemail: Option[String],
+                partnerUnderscorerefreshUnderscoretoken: Option[String],
                 partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry: Option[Int],
-                scopes: Option[String],
-                additionalUnderscoreidUnderscore1: Option[String],
-                partnerUnderscoremetadata: Option[String]
+                scopes: Option[String]
                 )
 
 object IntegrationRequest {

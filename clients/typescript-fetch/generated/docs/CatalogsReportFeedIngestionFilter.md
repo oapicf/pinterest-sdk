@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`reportType` | string
 `feedId` | string
 `processingResultId` | string
+`reportType` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { CatalogsReportFeedIngestionFilter } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportType": null,
   "feedId": null,
   "processingResultId": null,
+  "reportType": null,
 } satisfies CatalogsReportFeedIngestionFilter
 
 console.log(example)

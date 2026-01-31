@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **code** | **Integer** |  |  |
-| **message** | **String** |  |  |
 | **details** | **Object** |  |  |
+| **message** | **String** |  |  |
 
 ## Example
 
@@ -15,8 +15,8 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::DetailedError.new(
   code: null,
-  message: null,
-  details: null
+  details: null,
+  message: null
 )
 ```
 

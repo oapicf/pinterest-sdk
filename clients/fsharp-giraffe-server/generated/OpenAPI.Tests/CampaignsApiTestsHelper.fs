@@ -21,17 +21,40 @@ module CampaignsApiHandlerTestsHelper =
 
   ()
 
+  ()
+
 
   let mutable CampaignsCreateExamples = Map.empty
   let mutable CampaignsCreateBody = ""
 
   CampaignsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;bid_options&quot; : {
+    &quot;placement_multipliers&quot; : {
+      &quot;browse&quot; : 0.9,
+      &quot;search&quot; : 1.2,
+      &quot;related_pins&quot; : 1.1
+    },
+    &quot;app_type_multipliers&quot; : {
+      &quot;android_mobile&quot; : 1.1,
+      &quot;android_tablet&quot; : 1.1,
+      &quot;ipad&quot; : 1.2,
+      &quot;iphone&quot; : 1.2,
+      &quot;web&quot; : 0.9,
+      &quot;web_mobile&quot; : 0.8
+    },
+    &quot;audience_multipliers&quot; : {
+      &quot;123&quot; : 1.1,
+      &quot;456&quot; : 1.2
+    }
+  },
   &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
   &quot;lifetime_spend_cap&quot; : 1432744744,
   &quot;end_time&quot; : 1644023526,
   &quot;is_flexible_daily_budgets&quot; : false,
   &quot;daily_spend_cap&quot; : 1432744744,
   &quot;objective_type&quot; : &quot;AWARENESS&quot;,
+  &quot;is_campaign_budget_optimization&quot; : true,
+  &quot;is_performance_plus&quot; : true,
   &quot;tracking_urls&quot; : &quot;{}&quot;,
   &quot;ad_account_id&quot; : &quot;549755885175&quot;,
   &quot;is_automated_campaign&quot; : false,
@@ -54,6 +77,26 @@ module CampaignsApiHandlerTestsHelper =
   let mutable CampaignsUpdateBody = ""
 
   CampaignsUpdateBody <- WebUtility.HtmlDecode "{
+  &quot;bid_options&quot; : {
+    &quot;placement_multipliers&quot; : {
+      &quot;browse&quot; : 0.9,
+      &quot;search&quot; : 1.2,
+      &quot;related_pins&quot; : 1.1
+    },
+    &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ],
+    &quot;app_type_multipliers&quot; : {
+      &quot;android_mobile&quot; : 1.1,
+      &quot;android_tablet&quot; : 1.1,
+      &quot;ipad&quot; : 1.2,
+      &quot;iphone&quot; : 1.2,
+      &quot;web&quot; : 0.9,
+      &quot;web_mobile&quot; : 0.8
+    },
+    &quot;audience_multipliers&quot; : {
+      &quot;123&quot; : 1.1,
+      &quot;456&quot; : 1.2
+    }
+  },
   &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
   &quot;lifetime_spend_cap&quot; : 1432744744,
   &quot;end_time&quot; : 1644023526,
@@ -61,6 +104,7 @@ module CampaignsApiHandlerTestsHelper =
   &quot;daily_spend_cap&quot; : 1432744744,
   &quot;objective_type&quot; : &quot;objective_type&quot;,
   &quot;is_campaign_budget_optimization&quot; : true,
+  &quot;is_performance_plus&quot; : true,
   &quot;tracking_urls&quot; : &quot;{}&quot;,
   &quot;ad_account_id&quot; : &quot;549755885175&quot;,
   &quot;is_automated_campaign&quot; : true,

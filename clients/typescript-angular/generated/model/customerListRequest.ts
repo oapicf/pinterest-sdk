@@ -11,6 +11,7 @@ import { UserListType } from './userListType';
 
 
 export interface CustomerListRequest { 
+    list_type?: UserListType;
     /**
      * Customer list name.
      */
@@ -19,11 +20,6 @@ export interface CustomerListRequest {
      * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
      */
     records: string;
-    list_type?: UserListType;
-    /**
-     * Customer list errors.
-     */
-    exceptions?: object;
 }
 export namespace CustomerListRequest {
 }

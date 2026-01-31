@@ -33,23 +33,23 @@ pinterest_rest_api_bid_floor_spec__e bid_floor_spec_countries_FromString(char* c
 
 
 typedef struct bid_floor_spec_t {
+    pinterest_rest_api_action_type__e billable_event; //referenced enum
     list_t *countries; //nonprimitive container
+    pinterest_rest_api_creative_type__e creative_type; //referenced enum
     pinterest_rest_api_currency__e currency; //referenced enum
     pinterest_rest_api_objective_type__e objective_type; //referenced enum
-    pinterest_rest_api_action_type__e billable_event; //referenced enum
     struct optimization_goal_metadata_t *optimization_goal_metadata; //model
-    pinterest_rest_api_creative_type__e creative_type; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } bid_floor_spec_t;
 
 __attribute__((deprecated)) bid_floor_spec_t *bid_floor_spec_create(
+    pinterest_rest_api_action_type__e billable_event,
     list_t *countries,
+    pinterest_rest_api_creative_type__e creative_type,
     pinterest_rest_api_currency__e currency,
     pinterest_rest_api_objective_type__e objective_type,
-    pinterest_rest_api_action_type__e billable_event,
-    optimization_goal_metadata_t *optimization_goal_metadata,
-    pinterest_rest_api_creative_type__e creative_type
+    optimization_goal_metadata_t *optimization_goal_metadata
 );
 
 void bid_floor_spec_free(bid_floor_spec_t *bid_floor_spec);

@@ -6,32 +6,18 @@ goog.provide('API.Client.SSIOInsertionOrderCommon');
 API.Client.SSIOInsertionOrderCommon = function() {}
 
 /**
- * Starting date of time period. Format: YYYY-MM-DD
+ * URL link for agency
  * @type {!string}
  * @export
  */
-API.Client.SSIOInsertionOrderCommon.prototype.startDate;
+API.Client.SSIOInsertionOrderCommon.prototype.agencyLink;
 
 /**
- * End date of time period. Format: YYYY-MM-DD
+ * The billing contact email
  * @type {!string}
  * @export
  */
-API.Client.SSIOInsertionOrderCommon.prototype.endDate;
-
-/**
- * The po number
- * @type {!string}
- * @export
- */
-API.Client.SSIOInsertionOrderCommon.prototype.poNumber;
-
-/**
- * If Budget order line, the budget amount.
- * @type {!number}
- * @export
- */
-API.Client.SSIOInsertionOrderCommon.prototype.budgetAmount;
+API.Client.SSIOInsertionOrderCommon.prototype.billingContactEmail;
 
 /**
  * The billing contact first name
@@ -48,11 +34,25 @@ API.Client.SSIOInsertionOrderCommon.prototype.billingContactFirstname;
 API.Client.SSIOInsertionOrderCommon.prototype.billingContactLastname;
 
 /**
- * The billing contact email
+ * If Budget order line, the budget amount.
+ * @type {!number}
+ * @export
+ */
+API.Client.SSIOInsertionOrderCommon.prototype.budgetAmount;
+
+/**
+ * End date of time period. Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.SSIOInsertionOrderCommon.prototype.billingContactEmail;
+API.Client.SSIOInsertionOrderCommon.prototype.endDate;
+
+/**
+ * The media contact email
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOInsertionOrderCommon.prototype.mediaContactEmail;
 
 /**
  * The media contact first name
@@ -69,18 +69,18 @@ API.Client.SSIOInsertionOrderCommon.prototype.mediaContactFirstname;
 API.Client.SSIOInsertionOrderCommon.prototype.mediaContactLastname;
 
 /**
- * The media contact email
+ * The po number
  * @type {!string}
  * @export
  */
-API.Client.SSIOInsertionOrderCommon.prototype.mediaContactEmail;
+API.Client.SSIOInsertionOrderCommon.prototype.poNumber;
 
 /**
- * URL link for agency
+ * Starting date of time period. Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.SSIOInsertionOrderCommon.prototype.agencyLink;
+API.Client.SSIOInsertionOrderCommon.prototype.startDate;
 
 /**
  * The email of user submitting the insertion order

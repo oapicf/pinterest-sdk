@@ -3,17 +3,17 @@ Protected Class InviteExceptionResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Unique identifier of the invite/request.
+			Error code associated with the error in performing the action on the invite/request.
 		#tag EndNote
-		invite_or_request_id As Xoson.O.OptionalString
+		code As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Error code associated with the error in performing the action on the invite/request.
+			Unique identifier of the invite/request.
 		#tag EndNote
-		code As Xoson.O.OptionalInteger
+		invite_or_request_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -70,19 +70,19 @@ Protected Class InviteExceptionResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="invite_or_request_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="code"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="invite_or_request_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

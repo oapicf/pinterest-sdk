@@ -8,11 +8,11 @@
 
 (def ad-account-create-subscription-request-data
   {
-   (ds/req :webhook_url) string?
    (ds/opt :lead_form_id) string?
    (ds/opt :partner_access_token) string?
-   (ds/opt :partner_refresh_token) string?
    (ds/opt :partner_metadata) ad-account-create-subscription-request-partner-metadata-spec
+   (ds/opt :partner_refresh_token) string?
+   (ds/req :webhook_url) string?
    })
 
 (def ad-account-create-subscription-request-spec

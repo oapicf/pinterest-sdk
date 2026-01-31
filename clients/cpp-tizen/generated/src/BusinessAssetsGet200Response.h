@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List of assets the requesting business has access to.
-	 */
-	std::list<GetBusinessAssetsResponse> getItems();
-
-	/*! \brief Set List of assets the requesting business has access to.
-	 */
-	void setItems(std::list <GetBusinessAssetsResponse> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get List of assets the requesting business has access to.
+	 */
+	std::list<GetBusinessAssetsResponse> getItems();
+
+	/*! \brief Set List of assets the requesting business has access to.
+	 */
+	void setItems(std::list <GetBusinessAssetsResponse> items);
 
 private:
-	std::list <GetBusinessAssetsResponse>items;
 	std::string bookmark;
+	std::list <GetBusinessAssetsResponse>items;
 	void __init();
 	void __cleanup();
 

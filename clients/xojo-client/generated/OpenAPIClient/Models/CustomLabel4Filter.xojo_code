@@ -2,7 +2,7 @@
 Protected Class CustomLabel4Filter
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_4 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_4 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class CustomLabel4Filter
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

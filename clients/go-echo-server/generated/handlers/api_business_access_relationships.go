@@ -5,6 +5,22 @@ import (
 	"net/http"
 )
 
+// BrandAccountsCreate - Create a Brand Account
+func (c *Container) BrandAccountsCreate(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// BrandAccountsUpdate - Update a Brand Account
+func (c *Container) BrandAccountsUpdate(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // DeleteBusinessMembership - Terminate business memberships
 func (c *Container) DeleteBusinessMembership(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
@@ -39,6 +55,14 @@ func (c *Container) GetBusinessMembers(ctx echo.Context) error {
 
 // GetBusinessPartners - Get business partners
 func (c *Container) GetBusinessPartners(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// SystemUserUpdate - Update a system user information.
+func (c *Container) SystemUserUpdate(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",
 	})

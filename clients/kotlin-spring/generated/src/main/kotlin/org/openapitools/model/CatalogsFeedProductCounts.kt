@@ -15,16 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * The counts can be null early in the process.
- * @param original The number of products in the feed file.
  * @param ingested The number of products successfully ingested from the feed file.
+ * @param original The number of products in the feed file.
  */
 data class CatalogsFeedProductCounts(
 
-    @Schema(example = "null", description = "The number of products in the feed file.")
-    @get:JsonProperty("original") val original: kotlin.Int? = null,
-
     @Schema(example = "null", description = "The number of products successfully ingested from the feed file.")
-    @get:JsonProperty("ingested") val ingested: kotlin.Int? = null
+    @get:JsonProperty("ingested") val ingested: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "The number of products in the feed file.")
+    @get:JsonProperty("original") val original: kotlin.Int? = null
 ) {
 
 }

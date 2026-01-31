@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media_type** | Option<**String**> |  | [optional]
 **items** | Option<[**Vec<models::PinMediaMetadata>**](PinMediaMetadata.md)> |  | [optional]
+**media_type** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

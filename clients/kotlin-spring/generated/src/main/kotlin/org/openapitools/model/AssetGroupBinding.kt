@@ -16,51 +16,55 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param id Asset Group ID.
- * @param assetGroupName Asset Group name
- * @param assetGroupDescription Asset group description
- * @param assetGroupTypes Asset group types
  * @param adAccountsIds A list of ad account IDs under the asset group
- * @param profilesIds A list of profile IDs under asset group
- * @param createdTime The creation time of the asset group
- * @param updatedTime The last update time of the asset group
- * @param owner The data of the business that owns the asset group.
+ * @param assetGroupDescription Asset group description
+ * @param assetGroupName Asset Group name
+ * @param assetGroupTypes Asset group types
+ * @param catalogsIds A list of catalog IDs under asset group
  * @param createdBy The data of the user that created the asset group.
+ * @param createdTime The creation time of the asset group
+ * @param id Asset Group ID.
+ * @param owner The data of the business that owns the asset group.
+ * @param profilesIds A list of profile IDs under asset group
+ * @param updatedTime The last update time of the asset group
  */
 data class AssetGroupBinding(
+
+    @Schema(example = "[\"549755885175\"]", description = "A list of ad account IDs under the asset group")
+    @get:JsonProperty("ad_accounts_ids") val adAccountsIds: kotlin.collections.List<kotlin.String>? = null,
+
+    @Schema(example = "Asset group that has ad accounts used in Canada", description = "Asset group description")
+    @get:JsonProperty("asset_group_description") val assetGroupDescription: kotlin.String? = null,
+
+    @Schema(example = "Canada Ad Accounts", description = "Asset Group name")
+    @get:JsonProperty("asset_group_name") val assetGroupName: kotlin.String? = null,
+
+    @Schema(example = "[\"LOCATION_OR_LANGUAGE\"]", description = "Asset group types")
+    @get:JsonProperty("asset_group_types") val assetGroupTypes: kotlin.collections.List<kotlin.String>? = null,
+
+    @Schema(example = "[\"4836859046874\"]", description = "A list of catalog IDs under asset group")
+    @get:JsonProperty("catalogs_ids") val catalogsIds: kotlin.collections.List<kotlin.String>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "The data of the user that created the asset group.")
+    @get:JsonProperty("created_by") val createdBy: BusinessAccessUserSummary? = null,
+
+    @Schema(example = "1646767577816", description = "The creation time of the asset group")
+    @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "666791336903426391", description = "Asset Group ID.")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
-    @Schema(example = "Canada Ad Accounts", description = "Asset Group name")
-    @get:JsonProperty("asset_group_name") val assetGroupName: kotlin.String? = null,
-
-    @Schema(example = "Asset group that has ad accounts used in Canada", description = "Asset group description")
-    @get:JsonProperty("asset_group_description") val assetGroupDescription: kotlin.String? = null,
-
-    @Schema(example = "[\"LOCATION_OR_LANGUAGE\"]", description = "Asset group types")
-    @get:JsonProperty("asset_group_types") val assetGroupTypes: kotlin.collections.List<kotlin.String>? = null,
-
-    @Schema(example = "[\"549755885175\"]", description = "A list of ad account IDs under the asset group")
-    @get:JsonProperty("ad_accounts_ids") val adAccountsIds: kotlin.collections.List<kotlin.String>? = null,
-
-    @Schema(example = "[\"630433785246278264\"]", description = "A list of profile IDs under asset group")
-    @get:JsonProperty("profiles_ids") val profilesIds: kotlin.collections.List<kotlin.String>? = null,
-
-    @Schema(example = "1646767577816", description = "The creation time of the asset group")
-    @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null,
-
-    @Schema(example = "1646767577816", description = "The last update time of the asset group")
-    @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null,
-
     @field:Valid
     @Schema(example = "null", description = "The data of the business that owns the asset group.")
     @get:JsonProperty("owner") val owner: BusinessAccessUserSummary? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "The data of the user that created the asset group.")
-    @get:JsonProperty("created_by") val createdBy: BusinessAccessUserSummary? = null
+    @Schema(example = "[\"630433785246278264\"]", description = "A list of profile IDs under asset group")
+    @get:JsonProperty("profiles_ids") val profilesIds: kotlin.collections.List<kotlin.String>? = null,
+
+    @Schema(example = "1646767577816", description = "The last update time of the asset group")
+    @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null
 ) {
 
 }

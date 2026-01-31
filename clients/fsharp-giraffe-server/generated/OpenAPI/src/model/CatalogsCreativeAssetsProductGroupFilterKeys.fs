@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleMediaTypesCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringListCriteria
@@ -19,6 +20,7 @@ open OpenAPI.Model.GoogleProductCategory4Filter
 open OpenAPI.Model.GoogleProductCategory5Filter
 open OpenAPI.Model.GoogleProductCategory6Filter
 open OpenAPI.Model.MediaTypeFilter
+open OpenAPI.Model.TitleKeywordsFilter
 
 module CatalogsCreativeAssetsProductGroupFilterKeys =
 
@@ -27,11 +29,11 @@ module CatalogsCreativeAssetsProductGroupFilterKeys =
 
   type CatalogsCreativeAssetsProductGroupFilterKeys = {
     CREATIVE_ASSETS_ID : CatalogsProductGroupMultipleStringCriteria;
-    CUSTOMLABEL0 : CatalogsProductGroupMultipleStringCriteria;
-    CUSTOMLABEL1 : CatalogsProductGroupMultipleStringCriteria;
-    CUSTOMLABEL2 : CatalogsProductGroupMultipleStringCriteria;
-    CUSTOMLABEL3 : CatalogsProductGroupMultipleStringCriteria;
-    CUSTOMLABEL4 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL0 : CatalogsProductGroupFilterOperatorTypeCriteria;
+    CUSTOMLABEL1 : CatalogsProductGroupFilterOperatorTypeCriteria;
+    CUSTOMLABEL2 : CatalogsProductGroupFilterOperatorTypeCriteria;
+    CUSTOMLABEL3 : CatalogsProductGroupFilterOperatorTypeCriteria;
+    CUSTOMLABEL4 : CatalogsProductGroupFilterOperatorTypeCriteria;
     GOOGLEPRODUCTCATEGORY6 : CatalogsProductGroupMultipleStringListCriteria;
     GOOGLEPRODUCTCATEGORY5 : CatalogsProductGroupMultipleStringListCriteria;
     GOOGLEPRODUCTCATEGORY4 : CatalogsProductGroupMultipleStringListCriteria;
@@ -40,5 +42,6 @@ module CatalogsCreativeAssetsProductGroupFilterKeys =
     GOOGLEPRODUCTCATEGORY1 : CatalogsProductGroupMultipleStringListCriteria;
     GOOGLEPRODUCTCATEGORY0 : CatalogsProductGroupMultipleStringListCriteria;
     MEDIA_TYPE : CatalogsProductGroupMultipleMediaTypesCriteria;
+    TITLE_KEYWORDS : CatalogsProductGroupMultipleStringCriteria;
   }
   //#endregion

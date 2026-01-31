@@ -55,35 +55,35 @@ test_that("CONDITION", {
 })
 
 test_that("CUSTOM_LABEL_0", {
-  # tests for the property `CUSTOM_LABEL_0` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_0` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_0`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_1", {
-  # tests for the property `CUSTOM_LABEL_1` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_1` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_1`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_2", {
-  # tests for the property `CUSTOM_LABEL_2` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_2` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_2`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_3", {
-  # tests for the property `CUSTOM_LABEL_3` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_3` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_3`, "EXPECTED_RESULT")
 })
 
 test_that("CUSTOM_LABEL_4", {
-  # tests for the property `CUSTOM_LABEL_4` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_4` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_4`, "EXPECTED_RESULT")
@@ -199,4 +199,46 @@ test_that("PRODUCT_GROUP", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`PRODUCT_GROUP`, "EXPECTED_RESULT")
+})
+
+test_that("CUSTOM_NUMBER_0", {
+  # tests for the property `CUSTOM_NUMBER_0` (CatalogsProductGroupUint32Criteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`CUSTOM_NUMBER_0`, "EXPECTED_RESULT")
+})
+
+test_that("CUSTOM_NUMBER_1", {
+  # tests for the property `CUSTOM_NUMBER_1` (CatalogsProductGroupUint32Criteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`CUSTOM_NUMBER_1`, "EXPECTED_RESULT")
+})
+
+test_that("CUSTOM_NUMBER_2", {
+  # tests for the property `CUSTOM_NUMBER_2` (CatalogsProductGroupUint32Criteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`CUSTOM_NUMBER_2`, "EXPECTED_RESULT")
+})
+
+test_that("CUSTOM_NUMBER_3", {
+  # tests for the property `CUSTOM_NUMBER_3` (CatalogsProductGroupUint32Criteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`CUSTOM_NUMBER_3`, "EXPECTED_RESULT")
+})
+
+test_that("CUSTOM_NUMBER_4", {
+  # tests for the property `CUSTOM_NUMBER_4` (CatalogsProductGroupUint32Criteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`CUSTOM_NUMBER_4`, "EXPECTED_RESULT")
+})
+
+test_that("TITLE_KEYWORDS", {
+  # tests for the property `TITLE_KEYWORDS` (CatalogsProductGroupMultipleStringCriteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`TITLE_KEYWORDS`, "EXPECTED_RESULT")
 })

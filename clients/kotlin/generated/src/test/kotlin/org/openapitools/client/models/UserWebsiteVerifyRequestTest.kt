@@ -25,16 +25,16 @@ class UserWebsiteVerifyRequestTest : ShouldSpec() {
         // uncomment below to create an instance of UserWebsiteVerifyRequest
         //val modelInstance = UserWebsiteVerifyRequest()
 
-        // to test the property `website`
-        should("test website") {
-            // uncomment below to test the property
-            //modelInstance.website shouldBe ("TODO")
-        }
-
         // to test the property `verificationMethod`
         should("test verificationMethod") {
             // uncomment below to test the property
             //modelInstance.verificationMethod shouldBe ("TODO")
+        }
+
+        // to test the property `website`
+        should("test website") {
+            // uncomment below to test the property
+            //modelInstance.website shouldBe ("TODO")
         }
 
     }

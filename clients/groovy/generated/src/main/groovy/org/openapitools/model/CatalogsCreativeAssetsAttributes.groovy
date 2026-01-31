@@ -7,18 +7,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class CatalogsCreativeAssetsAttributes {
-    /* The name of the creative assets. */
-    String title
-    /* Brief description of the creative assets. */
-    String description
-    /* Link to the creative assets page. */
-    String link
-    /* IOS deep link to the creative assets page. */
-    String iosDeepLink
     /* Link to the creative assets page. */
     String androidDeepLink
-    /* The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
-    String googleProductCategory
     /* Custom grouping of creative assets. */
     String customLabel0
     /* Custom grouping of creative assets. */
@@ -29,6 +19,16 @@ class CatalogsCreativeAssetsAttributes {
     String customLabel3
     /* Custom grouping of creative assets. */
     String customLabel4
+    /* Brief description of the creative assets. */
+    String description
+    /* The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
+    String googleProductCategory
+    /* IOS deep link to the creative assets page. */
+    String iosDeepLink
+    /* Link to the creative assets page. */
+    String link
+    /* The name of the creative assets. */
+    String title
     /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
     String visibility
     /* The creative assets image. */

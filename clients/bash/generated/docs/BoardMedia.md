@@ -1,4 +1,4 @@
-# Board_media
+# BoardMedia
 
 ## Properties
 Name | Type | Description | Notes

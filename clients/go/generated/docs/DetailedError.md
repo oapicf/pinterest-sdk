@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **int32** |  | 
-**Message** | **string** |  | 
 **Details** | **map[string]interface{}** |  | 
+**Message** | **string** |  | 
 
 ## Methods
 
 ### NewDetailedError
 
-`func NewDetailedError(code int32, message string, details map[string]interface{}, ) *DetailedError`
+`func NewDetailedError(code int32, details map[string]interface{}, message string, ) *DetailedError`
 
 NewDetailedError instantiates a new DetailedError object
 This constructor will assign default values to properties that have it defined,
@@ -47,26 +47,6 @@ and a boolean to check if the value has been set.
 SetCode sets Code field to given value.
 
 
-### GetMessage
-
-`func (o *DetailedError) GetMessage() string`
-
-GetMessage returns the Message field if non-nil, zero value otherwise.
-
-### GetMessageOk
-
-`func (o *DetailedError) GetMessageOk() (*string, bool)`
-
-GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMessage
-
-`func (o *DetailedError) SetMessage(v string)`
-
-SetMessage sets Message field to given value.
-
-
 ### GetDetails
 
 `func (o *DetailedError) GetDetails() map[string]interface{}`
@@ -85,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *DetailedError) SetDetails(v map[string]interface{})`
 
 SetDetails sets Details field to given value.
+
+
+### GetMessage
+
+`func (o *DetailedError) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *DetailedError) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *DetailedError) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
 
 
 

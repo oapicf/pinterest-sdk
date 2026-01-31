@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
 **Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. | [optional] 
-**Warnings** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the validation warnings for the item processing record | [optional] 
+**HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
 **Status** | Pointer to [**ItemProcessingStatus**](ItemProcessingStatus.md) |  | [optional] 
+**Warnings** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the validation warnings for the item processing record | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewHotelProcessingRecordWithDefaults instantiates a new HotelProcessingRecord object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetHotelId
-
-`func (o *HotelProcessingRecord) GetHotelId() string`
-
-GetHotelId returns the HotelId field if non-nil, zero value otherwise.
-
-### GetHotelIdOk
-
-`func (o *HotelProcessingRecord) GetHotelIdOk() (*string, bool)`
-
-GetHotelIdOk returns a tuple with the HotelId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHotelId
-
-`func (o *HotelProcessingRecord) SetHotelId(v string)`
-
-SetHotelId sets HotelId field to given value.
-
-### HasHotelId
-
-`func (o *HotelProcessingRecord) HasHotelId() bool`
-
-HasHotelId returns a boolean if a field has been set.
 
 ### GetErrors
 
@@ -78,30 +53,30 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
-### GetWarnings
+### GetHotelId
 
-`func (o *HotelProcessingRecord) GetWarnings() []ItemValidationEvent`
+`func (o *HotelProcessingRecord) GetHotelId() string`
 
-GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+GetHotelId returns the HotelId field if non-nil, zero value otherwise.
 
-### GetWarningsOk
+### GetHotelIdOk
 
-`func (o *HotelProcessingRecord) GetWarningsOk() (*[]ItemValidationEvent, bool)`
+`func (o *HotelProcessingRecord) GetHotelIdOk() (*string, bool)`
 
-GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+GetHotelIdOk returns a tuple with the HotelId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWarnings
+### SetHotelId
 
-`func (o *HotelProcessingRecord) SetWarnings(v []ItemValidationEvent)`
+`func (o *HotelProcessingRecord) SetHotelId(v string)`
 
-SetWarnings sets Warnings field to given value.
+SetHotelId sets HotelId field to given value.
 
-### HasWarnings
+### HasHotelId
 
-`func (o *HotelProcessingRecord) HasWarnings() bool`
+`func (o *HotelProcessingRecord) HasHotelId() bool`
 
-HasWarnings returns a boolean if a field has been set.
+HasHotelId returns a boolean if a field has been set.
 
 ### GetStatus
 
@@ -127,6 +102,31 @@ SetStatus sets Status field to given value.
 `func (o *HotelProcessingRecord) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetWarnings
+
+`func (o *HotelProcessingRecord) GetWarnings() []ItemValidationEvent`
+
+GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+
+### GetWarningsOk
+
+`func (o *HotelProcessingRecord) GetWarningsOk() (*[]ItemValidationEvent, bool)`
+
+GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnings
+
+`func (o *HotelProcessingRecord) SetWarnings(v []ItemValidationEvent)`
+
+SetWarnings sets Warnings field to given value.
+
+### HasWarnings
+
+`func (o *HotelProcessingRecord) HasWarnings() bool`
+
+HasWarnings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

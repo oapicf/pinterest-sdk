@@ -37,13 +37,13 @@ class CatalogsVerticalProductGroupUpdateRequest {
     
     CatalogTypeEnum catalogType
     
-    String name
+    Country country
     
     String description
     
     CatalogsCreativeAssetsProductGroupFilters filters
     
-    Country country
-    
     CatalogsLocale locale
+    
+    String name
 }

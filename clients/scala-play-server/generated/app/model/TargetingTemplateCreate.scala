@@ -4,17 +4,17 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for TargetingTemplateCreate.
-  * @param name Name of targeting template.
   * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  * @param name Name of targeting template.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class TargetingTemplateCreate(
-  name: String,
   autoTargetingEnabled: Option[Boolean],
-  targetingAttributes: TargetingSpec,
-  placementGroup: Option[PlacementGroupType],
   keywords: Option[List[TargetingTemplateKeyword]],
+  name: String,
+  placementGroup: Option[PlacementGroupType],
+  targetingAttributes: TargetingSpec,
   trackingUrls: Option[TrackingUrls]
   additionalProperties: 
 )
@@ -22,7 +22,7 @@ case class TargetingTemplateCreate(
 object TargetingTemplateCreate {
   implicit lazy val targetingTemplateCreateJsonFormat: Format[TargetingTemplateCreate] = {
     val realJsonFormat = Json.format[TargetingTemplateCreate]
-    val declaredPropNames = Set("name", "autoTargetingEnabled", "targetingAttributes", "placementGroup", "keywords", "trackingUrls")
+    val declaredPropNames = Set("autoTargetingEnabled", "keywords", "name", "placementGroup", "targetingAttributes", "trackingUrls")
     
     Format(
       Reads {

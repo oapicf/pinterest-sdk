@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.CatalogsItemValidationIssues;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemsIssuesList200Response   {
   
-  private List<CatalogsItemValidationIssues> items = new ArrayList<>();
   private String bookmark;
+  private List<CatalogsItemValidationIssues> items = new ArrayList<>();
 
   public ItemsIssuesList200Response () {
 
   }
 
-  public ItemsIssuesList200Response (List<CatalogsItemValidationIssues> items, String bookmark) {
-    this.items = items;
+  public ItemsIssuesList200Response (String bookmark, List<CatalogsItemValidationIssues> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<CatalogsItemValidationIssues> getItems() {
-    return items;
-  }
-  public void setItems(List<CatalogsItemValidationIssues> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class ItemsIssuesList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<CatalogsItemValidationIssues> getItems() {
+    return items;
+  }
+  public void setItems(List<CatalogsItemValidationIssues> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class ItemsIssuesList200Response   {
       return false;
     }
     ItemsIssuesList200Response itemsIssuesList200Response = (ItemsIssuesList200Response) o;
-    return Objects.equals(items, itemsIssuesList200Response.items) &&
-        Objects.equals(bookmark, itemsIssuesList200Response.bookmark);
+    return Objects.equals(bookmark, itemsIssuesList200Response.bookmark) &&
+        Objects.equals(items, itemsIssuesList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class ItemsIssuesList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemsIssuesList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

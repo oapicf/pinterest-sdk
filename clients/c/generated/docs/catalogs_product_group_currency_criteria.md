@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | **non_nullable_catalogs_currency_t \*** |  | 
 **negated** | **int** |  | [optional] [default to false]
+**values** | **non_nullable_catalogs_currency_t \*** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

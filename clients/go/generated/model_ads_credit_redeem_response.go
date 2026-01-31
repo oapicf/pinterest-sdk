@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &AdsCreditRedeemResponse{}
 
 // AdsCreditRedeemResponse struct for AdsCreditRedeemResponse
 type AdsCreditRedeemResponse struct {
-	// Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-	Success *bool `json:"success,omitempty"`
 	// Error code type if error occurs
 	ErrorCode NullableInt32 `json:"errorCode,omitempty"`
 	// Reason for failure
 	ErrorMessage NullableString `json:"errorMessage,omitempty"`
+	// Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+	Success *bool `json:"success,omitempty"`
 }
 
 // NewAdsCreditRedeemResponse instantiates a new AdsCreditRedeemResponse object
@@ -43,38 +43,6 @@ func NewAdsCreditRedeemResponse() *AdsCreditRedeemResponse {
 func NewAdsCreditRedeemResponseWithDefaults() *AdsCreditRedeemResponse {
 	this := AdsCreditRedeemResponse{}
 	return &this
-}
-
-// GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *AdsCreditRedeemResponse) GetSuccess() bool {
-	if o == nil || IsNil(o.Success) {
-		var ret bool
-		return ret
-	}
-	return *o.Success
-}
-
-// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdsCreditRedeemResponse) GetSuccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.Success) {
-		return nil, false
-	}
-	return o.Success, true
-}
-
-// HasSuccess returns a boolean if a field has been set.
-func (o *AdsCreditRedeemResponse) HasSuccess() bool {
-	if o != nil && !IsNil(o.Success) {
-		return true
-	}
-
-	return false
-}
-
-// SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *AdsCreditRedeemResponse) SetSuccess(v bool) {
-	o.Success = &v
 }
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -161,6 +129,38 @@ func (o *AdsCreditRedeemResponse) UnsetErrorMessage() {
 	o.ErrorMessage.Unset()
 }
 
+// GetSuccess returns the Success field value if set, zero value otherwise.
+func (o *AdsCreditRedeemResponse) GetSuccess() bool {
+	if o == nil || IsNil(o.Success) {
+		var ret bool
+		return ret
+	}
+	return *o.Success
+}
+
+// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsCreditRedeemResponse) GetSuccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.Success) {
+		return nil, false
+	}
+	return o.Success, true
+}
+
+// HasSuccess returns a boolean if a field has been set.
+func (o *AdsCreditRedeemResponse) HasSuccess() bool {
+	if o != nil && !IsNil(o.Success) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuccess gets a reference to the given bool and assigns it to the Success field.
+func (o *AdsCreditRedeemResponse) SetSuccess(v bool) {
+	o.Success = &v
+}
+
 func (o AdsCreditRedeemResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -171,14 +171,14 @@ func (o AdsCreditRedeemResponse) MarshalJSON() ([]byte, error) {
 
 func (o AdsCreditRedeemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Success) {
-		toSerialize["success"] = o.Success
-	}
 	if o.ErrorCode.IsSet() {
 		toSerialize["errorCode"] = o.ErrorCode.Get()
 	}
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
+	}
+	if !IsNil(o.Success) {
+		toSerialize["success"] = o.Success
 	}
 	return toSerialize, nil
 }

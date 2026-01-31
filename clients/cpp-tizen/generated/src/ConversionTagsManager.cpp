@@ -51,14 +51,14 @@ static gpointer __ConversionTagsManagerthreadFunc(gpointer data)
 static bool conversionTagsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ConversionTagResponse, Error, void* )
-	= reinterpret_cast<void(*)(ConversionTagResponse, Error, void* )> (voidHandler);
+	void(* handler)(ConversionTag, Error, void* )
+	= reinterpret_cast<void(*)(ConversionTag, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ConversionTagResponse out;
+	ConversionTag out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,48 @@ static bool conversionTagsCreateProcessor(MemoryStruct_s p_chunk, long code, cha
 
 
 
-		if (isprimitive("ConversionTagResponse")) {
+		if (isprimitive("ConversionTag")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ConversionTagResponse", "ConversionTagResponse");
+			jsonToValue(&out, pJson, "ConversionTag", "ConversionTag");
 			json_node_free(pJson);
 
-			if ("ConversionTagResponse" == "std::string") {
+			if ("ConversionTag" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -110,7 +140,7 @@ static bool conversionTagsCreateProcessor(MemoryStruct_s p_chunk, long code, cha
 
 static bool conversionTagsCreateHelper(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ConversionTagCreate> conversionTagCreate, 
-	void(* handler)(ConversionTagResponse, Error, void* )
+	void(* handler)(ConversionTag, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -200,7 +230,7 @@ static bool conversionTagsCreateHelper(char * accessToken,
 
 bool ConversionTagsManager::conversionTagsCreateAsync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ConversionTagCreate> conversionTagCreate, 
-	void(* handler)(ConversionTagResponse, Error, void* )
+	void(* handler)(ConversionTag, Error, void* )
 	, void* userData)
 {
 	return conversionTagsCreateHelper(accessToken,
@@ -210,7 +240,7 @@ bool ConversionTagsManager::conversionTagsCreateAsync(char * accessToken,
 
 bool ConversionTagsManager::conversionTagsCreateSync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ConversionTagCreate> conversionTagCreate, 
-	void(* handler)(ConversionTagResponse, Error, void* )
+	void(* handler)(ConversionTag, Error, void* )
 	, void* userData)
 {
 	return conversionTagsCreateHelper(accessToken,
@@ -221,14 +251,14 @@ bool ConversionTagsManager::conversionTagsCreateSync(char * accessToken,
 static bool conversionTagsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ConversionTagResponse, Error, void* )
-	= reinterpret_cast<void(*)(ConversionTagResponse, Error, void* )> (voidHandler);
+	void(* handler)(ConversionTag, Error, void* )
+	= reinterpret_cast<void(*)(ConversionTag, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ConversionTagResponse out;
+	ConversionTag out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -236,12 +266,12 @@ static bool conversionTagsGetProcessor(MemoryStruct_s p_chunk, long code, char* 
 
 
 
-		if (isprimitive("ConversionTagResponse")) {
+		if (isprimitive("ConversionTag")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ConversionTagResponse", "ConversionTagResponse");
+			jsonToValue(&out, pJson, "ConversionTag", "ConversionTag");
 			json_node_free(pJson);
 
-			if ("ConversionTagResponse" == "std::string") {
+			if ("ConversionTag" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -280,7 +310,7 @@ static bool conversionTagsGetProcessor(MemoryStruct_s p_chunk, long code, char* 
 
 static bool conversionTagsGetHelper(char * accessToken,
 	std::string adAccountId, std::string conversionTagId, 
-	void(* handler)(ConversionTagResponse, Error, void* )
+	void(* handler)(ConversionTag, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -363,7 +393,7 @@ static bool conversionTagsGetHelper(char * accessToken,
 
 bool ConversionTagsManager::conversionTagsGetAsync(char * accessToken,
 	std::string adAccountId, std::string conversionTagId, 
-	void(* handler)(ConversionTagResponse, Error, void* )
+	void(* handler)(ConversionTag, Error, void* )
 	, void* userData)
 {
 	return conversionTagsGetHelper(accessToken,
@@ -373,7 +403,7 @@ bool ConversionTagsManager::conversionTagsGetAsync(char * accessToken,
 
 bool ConversionTagsManager::conversionTagsGetSync(char * accessToken,
 	std::string adAccountId, std::string conversionTagId, 
-	void(* handler)(ConversionTagResponse, Error, void* )
+	void(* handler)(ConversionTag, Error, void* )
 	, void* userData)
 {
 	return conversionTagsGetHelper(accessToken,
@@ -384,14 +414,14 @@ bool ConversionTagsManager::conversionTagsGetSync(char * accessToken,
 static bool conversionTagsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ConversionTagListResponse, Error, void* )
-	= reinterpret_cast<void(*)(ConversionTagListResponse, Error, void* )> (voidHandler);
+	void(* handler)(Conversion_tags_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Conversion_tags_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ConversionTagListResponse out;
+	Conversion_tags_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -399,18 +429,43 @@ static bool conversionTagsListProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("ConversionTagListResponse")) {
+		if (isprimitive("Conversion_tags_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ConversionTagListResponse", "ConversionTagListResponse");
+			jsonToValue(&out, pJson, "Conversion_tags_list_200_response", "Conversion_tags_list_200_response");
 			json_node_free(pJson);
 
-			if ("ConversionTagListResponse" == "std::string") {
+			if ("Conversion_tags_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -443,7 +498,7 @@ static bool conversionTagsListProcessor(MemoryStruct_s p_chunk, long code, char*
 
 static bool conversionTagsListHelper(char * accessToken,
 	std::string adAccountId, bool filterDeleted, 
-	void(* handler)(ConversionTagListResponse, Error, void* )
+	void(* handler)(Conversion_tags_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -527,7 +582,7 @@ static bool conversionTagsListHelper(char * accessToken,
 
 bool ConversionTagsManager::conversionTagsListAsync(char * accessToken,
 	std::string adAccountId, bool filterDeleted, 
-	void(* handler)(ConversionTagListResponse, Error, void* )
+	void(* handler)(Conversion_tags_list_200_response, Error, void* )
 	, void* userData)
 {
 	return conversionTagsListHelper(accessToken,
@@ -537,7 +592,7 @@ bool ConversionTagsManager::conversionTagsListAsync(char * accessToken,
 
 bool ConversionTagsManager::conversionTagsListSync(char * accessToken,
 	std::string adAccountId, bool filterDeleted, 
-	void(* handler)(ConversionTagListResponse, Error, void* )
+	void(* handler)(Conversion_tags_list_200_response, Error, void* )
 	, void* userData)
 {
 	return conversionTagsListHelper(accessToken,

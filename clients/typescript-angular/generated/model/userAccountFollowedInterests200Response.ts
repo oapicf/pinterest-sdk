@@ -11,7 +11,7 @@ import { Interest } from './interest';
 
 
 export interface UserAccountFollowedInterests200Response { 
-    items: Array<Interest>;
     bookmark?: string | null;
+    items: Array<Interest>;
 }
 

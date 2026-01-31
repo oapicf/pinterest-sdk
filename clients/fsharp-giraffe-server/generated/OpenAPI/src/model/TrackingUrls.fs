@@ -9,10 +9,10 @@ module TrackingUrls =
 
 
   type TrackingUrls = {
-    Impression : string[];
+    AudienceVerification : string[];
+    BuyableButton : string[];
     Click : string[];
     Engagement : string[];
-    BuyableButton : string[];
-    AudienceVerification : string[];
+    Impression : string[];
   }
   //#endregion

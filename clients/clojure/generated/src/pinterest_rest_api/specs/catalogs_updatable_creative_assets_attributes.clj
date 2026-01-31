@@ -7,17 +7,17 @@
 
 (def catalogs-updatable-creative-assets-attributes-data
   {
-   (ds/opt :title) string?
-   (ds/opt :description) string?
-   (ds/opt :link) string?
-   (ds/opt :ios_deep_link) string?
    (ds/opt :android_deep_link) string?
-   (ds/opt :google_product_category) string?
    (ds/opt :custom_label_0) string?
    (ds/opt :custom_label_1) string?
    (ds/opt :custom_label_2) string?
    (ds/opt :custom_label_3) string?
    (ds/opt :custom_label_4) string?
+   (ds/opt :description) string?
+   (ds/opt :google_product_category) string?
+   (ds/opt :ios_deep_link) string?
+   (ds/opt :link) string?
+   (ds/opt :title) string?
    (ds/opt :visibility) string?
    })
 

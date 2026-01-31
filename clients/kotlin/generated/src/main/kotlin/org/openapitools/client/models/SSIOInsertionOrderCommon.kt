@@ -22,38 +22,30 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param startDate Starting date of time period. Format: YYYY-MM-DD
- * @param endDate End date of time period. Format: YYYY-MM-DD
- * @param poNumber The po number
- * @param budgetAmount If Budget order line, the budget amount.
+ * @param agencyLink URL link for agency
+ * @param billingContactEmail The billing contact email
  * @param billingContactFirstname The billing contact first name
  * @param billingContactLastname The billing contact last name
- * @param billingContactEmail The billing contact email
+ * @param budgetAmount If Budget order line, the budget amount.
+ * @param endDate End date of time period. Format: YYYY-MM-DD
+ * @param mediaContactEmail The media contact email
  * @param mediaContactFirstname The media contact first name
  * @param mediaContactLastname The media contact last name
- * @param mediaContactEmail The media contact email
- * @param agencyLink URL link for agency
+ * @param poNumber The po number
+ * @param startDate Starting date of time period. Format: YYYY-MM-DD
  * @param userEmail The email of user submitting the insertion order
  */
 
 
 data class SSIOInsertionOrderCommon (
 
-    /* Starting date of time period. Format: YYYY-MM-DD */
-    @Json(name = "start_date")
-    val startDate: kotlin.String? = null,
+    /* URL link for agency */
+    @Json(name = "agency_link")
+    val agencyLink: kotlin.String? = null,
 
-    /* End date of time period. Format: YYYY-MM-DD */
-    @Json(name = "end_date")
-    val endDate: kotlin.String? = null,
-
-    /* The po number */
-    @Json(name = "po_number")
-    val poNumber: kotlin.String? = null,
-
-    /* If Budget order line, the budget amount. */
-    @Json(name = "budget_amount")
-    val budgetAmount: java.math.BigDecimal? = null,
+    /* The billing contact email */
+    @Json(name = "billing_contact_email")
+    val billingContactEmail: kotlin.String? = null,
 
     /* The billing contact first name */
     @Json(name = "billing_contact_firstname")
@@ -63,9 +55,17 @@ data class SSIOInsertionOrderCommon (
     @Json(name = "billing_contact_lastname")
     val billingContactLastname: kotlin.String? = null,
 
-    /* The billing contact email */
-    @Json(name = "billing_contact_email")
-    val billingContactEmail: kotlin.String? = null,
+    /* If Budget order line, the budget amount. */
+    @Json(name = "budget_amount")
+    val budgetAmount: java.math.BigDecimal? = null,
+
+    /* End date of time period. Format: YYYY-MM-DD */
+    @Json(name = "end_date")
+    val endDate: kotlin.String? = null,
+
+    /* The media contact email */
+    @Json(name = "media_contact_email")
+    val mediaContactEmail: kotlin.String? = null,
 
     /* The media contact first name */
     @Json(name = "media_contact_firstname")
@@ -75,13 +75,13 @@ data class SSIOInsertionOrderCommon (
     @Json(name = "media_contact_lastname")
     val mediaContactLastname: kotlin.String? = null,
 
-    /* The media contact email */
-    @Json(name = "media_contact_email")
-    val mediaContactEmail: kotlin.String? = null,
+    /* The po number */
+    @Json(name = "po_number")
+    val poNumber: kotlin.String? = null,
 
-    /* URL link for agency */
-    @Json(name = "agency_link")
-    val agencyLink: kotlin.String? = null,
+    /* Starting date of time period. Format: YYYY-MM-DD */
+    @Json(name = "start_date")
+    val startDate: kotlin.String? = null,
 
     /* The email of user submitting the insertion order */
     @Json(name = "user_email")

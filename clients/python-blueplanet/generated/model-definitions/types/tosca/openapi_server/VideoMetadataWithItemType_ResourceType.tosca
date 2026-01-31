@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server VideoMetadataWithItemType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a VideoMetadataWithItemType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  VideoMetadataWithItemType {
+    title = VideoMetadataWithItemType
+    description = VideoMetadataWithItemType
+    derivedFrom = Root
+    properties {
+        cover_image_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        duration {
+          type =  
+          description = "Duration (in miliseconds). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        height {
+          type =  integer
+          description = "Height (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        item_type {
+          type =  string
+          description = ""
+          optional = false
+        }
+        video_url {
+          type =  string
+          description = "Video url (720p).  **Note:** This field is limited and not available to all apps."
+          optional = false
+        }
+        width {
+          type =  integer
+          description = "Width (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  VideoMetadataWithItemType {
+    title = VideoMetadataWithItemType
+    description = VideoMetadataWithItemType
+    implements = openapi_server.resourceTypes.VideoMetadataWithItemType
+
+  }
+}

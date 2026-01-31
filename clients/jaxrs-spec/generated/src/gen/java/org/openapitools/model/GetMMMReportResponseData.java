@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("GetMMMReportResponseData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetMMMReportResponseData   {
   public enum ReportStatusEnum {
 
@@ -68,8 +68,8 @@ public class GetMMMReportResponseData   {
 }
 
   private ReportStatusEnum reportStatus;
-  private String url;
   private BigDecimal size;
+  private String url;
 
   public GetMMMReportResponseData() {
   }
@@ -95,25 +95,6 @@ public class GetMMMReportResponseData   {
 
   /**
    **/
-  public GetMMMReportResponseData url(String url) {
-    this.url = url;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-
-  @JsonProperty("url")
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  /**
-   **/
   public GetMMMReportResponseData size(BigDecimal size) {
     this.size = size;
     return this;
@@ -131,6 +112,25 @@ public class GetMMMReportResponseData   {
     this.size = size;
   }
 
+  /**
+   **/
+  public GetMMMReportResponseData url(String url) {
+    this.url = url;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+
+  @JsonProperty("url")
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,13 +142,13 @@ public class GetMMMReportResponseData   {
     }
     GetMMMReportResponseData getMMMReportResponseData = (GetMMMReportResponseData) o;
     return Objects.equals(this.reportStatus, getMMMReportResponseData.reportStatus) &&
-        Objects.equals(this.url, getMMMReportResponseData.url) &&
-        Objects.equals(this.size, getMMMReportResponseData.size);
+        Objects.equals(this.size, getMMMReportResponseData.size) &&
+        Objects.equals(this.url, getMMMReportResponseData.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -157,8 +157,8 @@ public class GetMMMReportResponseData   {
     sb.append("class GetMMMReportResponseData {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

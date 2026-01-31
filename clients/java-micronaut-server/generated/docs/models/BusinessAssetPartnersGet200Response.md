@@ -8,8 +8,8 @@ The class is defined in **[BusinessAssetPartnersGet200Response.java](../../src/m
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;UserSingleAssetBinding&gt;`](UserSingleAssetBinding.md) | List of partners with permissions to the asset. | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;UserSingleAssetBinding&gt;`](UserSingleAssetBinding.md) | List of partners with permissions to the asset. | 
 
 
 

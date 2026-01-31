@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;AdAccountGetSubscriptionResponse&gt;](AdAccountGetSubscriptionResponse.md)
 `bookmark` | string
+`items` | [Array&lt;LeadSubscription&gt;](LeadSubscription.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { AdAccountsSubscriptionsGetList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies AdAccountsSubscriptionsGetList200Response
 
 console.log(example)

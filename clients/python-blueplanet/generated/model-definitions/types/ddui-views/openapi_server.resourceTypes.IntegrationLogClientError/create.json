@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "cause" },
+      {"model": "column_number" },
+      {"model": "file_name" },
+      {"model": "line_number" },
+      {"model": "message" },
+      {"model": "message_detail" },
+      {"model": "name" },
+      {"model": "number" },
+      {"model": "stack_trace" },
+    ]
+  }]
+}

@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import CatalogsVerticalBatchRequest._
 
 case class CatalogsVerticalBatchRequest (
-  catalogType: CatalogType,
+  /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
+  catalogId: Option[String],
+catalogType: CatalogType,
 country: Country,
-/* We recommend using the CatalogsLocale values. */
-  language: Language,
 /* Array with creative assets item operations */
   items: List[CatalogsCreativeAssetsBatchItem],
-/* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
-  catalogId: Option[String])
+/* We recommend using the CatalogsLocale values. */
+  language: Language)
 
 object CatalogsVerticalBatchRequest {
   import DateTimeCodecs._

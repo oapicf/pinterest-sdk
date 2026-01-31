@@ -15,19 +15,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * An exception object if there is an error performing the action. Will only be provided if there is an error.
- * @param inviteOrRequestId Unique identifier of the invite/request.
  * @param code Error code associated with the error in performing the action on the invite/request.
+ * @param inviteOrRequestId Unique identifier of the invite/request.
  * @param message Error message associated with the error in performing the action on the invite/request.
  * @param usersOrPartnerIds A list of users' usernames or emails OR a list of partner ids that caused the error.
  */
 data class InviteExceptionResponse(
 
+    @Schema(example = "403", description = "Error code associated with the error in performing the action on the invite/request.")
+    @get:JsonProperty("code") val code: kotlin.Int? = null,
+
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "383791336903426391", description = "Unique identifier of the invite/request.")
     @get:JsonProperty("invite_or_request_id") val inviteOrRequestId: kotlin.String? = null,
-
-    @Schema(example = "403", description = "Error code associated with the error in performing the action on the invite/request.")
-    @get:JsonProperty("code") val code: kotlin.Int? = null,
 
     @Schema(example = "You hit the maximum number of pending invites allowed.", description = "Error message associated with the error in performing the action on the invite/request.")
     @get:JsonProperty("message") val message: kotlin.String? = null,

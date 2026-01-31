@@ -1,11 +1,10 @@
 #import "OAILeadAdsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIAdAccountCreateSubscriptionRequest.h"
-#import "OAIAdAccountCreateSubscriptionResponse.h"
-#import "OAIAdAccountGetSubscriptionResponse.h"
 #import "OAIAdAccountsSubscriptionsGetList200Response.h"
-#import "OAIError.h"
+#import "OAILeadSubscription.h"
+#import "OAILeadSubscriptionPostParamsCreate.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAILeadAdsApi ()
@@ -55,7 +54,7 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
 
 ///
 /// Delete lead ads subscription
-/// Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param subscriptionId Unique identifier of a subscription. 
@@ -139,17 +138,17 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Get lead ads subscription
-/// Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Get lead ads subscription by ID
+/// Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param subscriptionId Unique identifier of a subscription. 
 ///
-///  @returns OAIAdAccountGetSubscriptionResponse*
+///  @returns OAILeadSubscription*
 ///
 -(NSURLSessionTask*) adAccountsSubscriptionsGetByIdWithAdAccountId: (NSString*) adAccountId
     subscriptionId: (NSString*) subscriptionId
-    completionHandler: (void (^)(OAIAdAccountGetSubscriptionResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAILeadSubscription* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -198,7 +197,7 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -215,28 +214,28 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAdAccountGetSubscriptionResponse*"
+                              responseType: @"OAILeadSubscription*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAdAccountGetSubscriptionResponse*)data, error);
+                                    handler((OAILeadSubscription*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get lead ads subscriptions
-/// Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIAdAccountsSubscriptionsGetList200Response*
 ///
 -(NSURLSessionTask*) adAccountsSubscriptionsGetListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIAdAccountsSubscriptionsGetList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -257,11 +256,11 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
-    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -305,16 +304,16 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create lead ads subscription
-/// Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+/// Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param adAccountCreateSubscriptionRequest Subscription to create. 
+///  @param leadSubscriptionPostParamsCreate  
 ///
-///  @returns OAIAdAccountCreateSubscriptionResponse*
+///  @returns OAILeadSubscription*
 ///
 -(NSURLSessionTask*) adAccountsSubscriptionsPostWithAdAccountId: (NSString*) adAccountId
-    adAccountCreateSubscriptionRequest: (OAIAdAccountCreateSubscriptionRequest*) adAccountCreateSubscriptionRequest
-    completionHandler: (void (^)(OAIAdAccountCreateSubscriptionResponse* output, NSError* error)) handler {
+    leadSubscriptionPostParamsCreate: (OAILeadSubscriptionPostParamsCreate*) leadSubscriptionPostParamsCreate
+    completionHandler: (void (^)(OAILeadSubscription* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -326,11 +325,11 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'adAccountCreateSubscriptionRequest' is set
-    if (adAccountCreateSubscriptionRequest == nil) {
-        NSParameterAssert(adAccountCreateSubscriptionRequest);
+    // verify the required parameter 'leadSubscriptionPostParamsCreate' is set
+    if (leadSubscriptionPostParamsCreate == nil) {
+        NSParameterAssert(leadSubscriptionPostParamsCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountCreateSubscriptionRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadSubscriptionPostParamsCreate"] };
             NSError* error = [NSError errorWithDomain:kOAILeadAdsApiErrorDomain code:kOAILeadAdsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -365,7 +364,7 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = adAccountCreateSubscriptionRequest;
+    bodyParam = leadSubscriptionPostParamsCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -378,10 +377,10 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAdAccountCreateSubscriptionResponse*"
+                              responseType: @"OAILeadSubscription*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAdAccountCreateSubscriptionResponse*)data, error);
+                                    handler((OAILeadSubscription*)data, error);
                                 }
                             }];
 }

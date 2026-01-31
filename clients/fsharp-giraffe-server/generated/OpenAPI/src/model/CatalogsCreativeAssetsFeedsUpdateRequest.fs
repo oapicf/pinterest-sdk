@@ -15,13 +15,13 @@ module CatalogsCreativeAssetsFeedsUpdateRequest =
 
 
   type CatalogsCreativeAssetsFeedsUpdateRequest = {
-    DefaultCurrency : NullableCurrency;
-    Name : string;
-    Format : CatalogsFormat;
+    CatalogType : CatalogsType;
     Credentials : CatalogsFeedCredentials;
+    DefaultCurrency : NullableCurrency;
+    Format : CatalogsFormat;
     Location : string;
+    Name : string;
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
-    CatalogType : CatalogsType;
   }
   //#endregion

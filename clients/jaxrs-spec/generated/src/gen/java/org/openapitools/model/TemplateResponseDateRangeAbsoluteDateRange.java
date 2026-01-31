@@ -20,33 +20,33 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "The absolute date range of the template")
 @JsonTypeName("TemplateResponse_date_range_absolute_date_range")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeAbsoluteDateRange   {
-  private String type;
-  private BigDecimal startDate;
   private BigDecimal endDate;
+  private BigDecimal startDate;
+  private String type;
 
   public TemplateResponseDateRangeAbsoluteDateRange() {
   }
 
   /**
-   * The date range type
+   * The end date of the date range
    **/
-  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
-    this.type = type;
+  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
+    this.endDate = endDate;
     return this;
   }
 
   
-  @ApiModelProperty(example = "absolute", value = "The date range type")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
+  @JsonProperty("end_date")
+  @Valid public BigDecimal getEndDate() {
+    return endDate;
   }
 
-  @JsonProperty("type")
-  public void setType(String type) {
-    this.type = type;
+  @JsonProperty("end_date")
+  public void setEndDate(BigDecimal endDate) {
+    this.endDate = endDate;
   }
 
   /**
@@ -70,23 +70,23 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
   }
 
   /**
-   * The end date of the date range
+   * The date range type
    **/
-  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
+    this.type = type;
     return this;
   }
 
   
-  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
-  @JsonProperty("end_date")
-  @Valid public BigDecimal getEndDate() {
-    return endDate;
+  @ApiModelProperty(example = "absolute", value = "The date range type")
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
 
-  @JsonProperty("end_date")
-  public void setEndDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  @JsonProperty("type")
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -99,14 +99,14 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
       return false;
     }
     TemplateResponseDateRangeAbsoluteDateRange templateResponseDateRangeAbsoluteDateRange = (TemplateResponseDateRangeAbsoluteDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type) &&
+    return Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate) &&
         Objects.equals(this.startDate, templateResponseDateRangeAbsoluteDateRange.startDate) &&
-        Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate);
+        Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDate, endDate);
+    return Objects.hash(endDate, startDate, type);
   }
 
   @Override
@@ -114,9 +114,9 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeAbsoluteDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

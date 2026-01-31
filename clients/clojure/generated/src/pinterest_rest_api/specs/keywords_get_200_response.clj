@@ -8,8 +8,8 @@
 
 (def keywords-get-200-response-data
   {
-   (ds/req :items) (s/coll-of keyword-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of keyword-spec)
    })
 
 (def keywords-get-200-response-spec

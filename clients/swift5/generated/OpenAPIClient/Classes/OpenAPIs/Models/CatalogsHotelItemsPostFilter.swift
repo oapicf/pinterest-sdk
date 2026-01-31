@@ -15,32 +15,32 @@ public struct CatalogsHotelItemsPostFilter: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    public static let hotelIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogType
-    public var hotelIds: [String]
+    public static let hotelIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     public var catalogId: String?
+    public var catalogType: CatalogType
+    public var hotelIds: [String]
 
-    public init(catalogType: CatalogType, hotelIds: [String], catalogId: String? = nil) {
+    public init(catalogId: String? = nil, catalogType: CatalogType, hotelIds: [String]) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
         self.hotelIds = hotelIds
-        self.catalogId = catalogId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
         case hotelIds = "hotel_ids"
-        case catalogId = "catalog_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encode(hotelIds, forKey: .hotelIds)
-        try container.encodeIfPresent(catalogId, forKey: .catalogId)
     }
 }
 

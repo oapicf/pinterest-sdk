@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("DeleteAssetGroupResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeleteAssetGroupResponse   {
   private @Valid List<@Pattern(regexp = "^\\d+$")String> deletedAssetGroups = new ArrayList<>();
   private @Valid List<@Valid DeleteAssetGroupResponseExceptionsInner> exceptions;

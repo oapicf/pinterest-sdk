@@ -20,15 +20,15 @@ typedef struct catalogs_product_group_currency_criteria_t catalogs_product_group
 
 
 typedef struct catalogs_product_group_currency_criteria_t {
-    pinterest_rest_api_non_nullable_catalogs_currency__e values; //referenced enum
     int negated; //boolean
+    pinterest_rest_api_non_nullable_catalogs_currency__e values; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_currency_criteria_t;
 
 __attribute__((deprecated)) catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_criteria_create(
-    pinterest_rest_api_non_nullable_catalogs_currency__e values,
-    int negated
+    int negated,
+    pinterest_rest_api_non_nullable_catalogs_currency__e values
 );
 
 void catalogs_product_group_currency_criteria_free(catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_criteria);

@@ -17,11 +17,29 @@ import java.util.Objects;
 
 public class AdsAnalyticsCreateAsyncResponse   {
   
+  private String message;
+
   private BulkReportingJobStatus reportStatus;
 
   private String token;
 
-  private String message;
+  /**
+   **/
+  public AdsAnalyticsCreateAsyncResponse message(String message) {
+    this.message = message;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("message")
+  public String getMessage() {
+    return message;
+  }
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
 
   /**
    **/
@@ -59,24 +77,6 @@ public class AdsAnalyticsCreateAsyncResponse   {
   }
 
 
-  /**
-   **/
-  public AdsAnalyticsCreateAsyncResponse message(String message) {
-    this.message = message;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("message")
-  public String getMessage() {
-    return message;
-  }
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -87,14 +87,14 @@ public class AdsAnalyticsCreateAsyncResponse   {
       return false;
     }
     AdsAnalyticsCreateAsyncResponse adsAnalyticsCreateAsyncResponse = (AdsAnalyticsCreateAsyncResponse) o;
-    return Objects.equals(this.reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
-        Objects.equals(this.token, adsAnalyticsCreateAsyncResponse.token) &&
-        Objects.equals(this.message, adsAnalyticsCreateAsyncResponse.message);
+    return Objects.equals(this.message, adsAnalyticsCreateAsyncResponse.message) &&
+        Objects.equals(this.reportStatus, adsAnalyticsCreateAsyncResponse.reportStatus) &&
+        Objects.equals(this.token, adsAnalyticsCreateAsyncResponse.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, token, message);
+    return Objects.hash(message, reportStatus, token);
   }
 
   @Override
@@ -102,9 +102,9 @@ public class AdsAnalyticsCreateAsyncResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsAnalyticsCreateAsyncResponse {\n");
     
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

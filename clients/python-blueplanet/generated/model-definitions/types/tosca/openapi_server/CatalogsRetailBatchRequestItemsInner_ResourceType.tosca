@@ -1,0 +1,63 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailBatchRequestItemsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailBatchRequestItemsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreateRetailItem = openapi_server.resourceTypes.CatalogsCreateRetailItem
+  CatalogsDeleteRetailItem = openapi_server.resourceTypes.CatalogsDeleteRetailItem
+  CatalogsUpdateRetailItem = openapi_server.resourceTypes.CatalogsUpdateRetailItem
+  CatalogsUpsertRetailItem = openapi_server.resourceTypes.CatalogsUpsertRetailItem
+  ItemAttributesRequest = openapi_server.resourceTypes.ItemAttributesRequest
+  UpdateMaskFieldType = openapi_server.resourceTypes.UpdateMaskFieldType
+}
+resourceTypes {
+
+  CatalogsRetailBatchRequestItemsInner {
+    title = CatalogsRetailBatchRequestItemsInner
+    description = CatalogsRetailBatchRequestItemsInner
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = ItemAttributesRequest
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["DELETE"]
+          optional = true
+        }
+        update_mask {
+          type = array
+          items.type = UpdateMaskFieldType
+          description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item."
+          optional = false
+        }
+        last_updated_time {
+          type =  integer
+          description = "The millisecond timestamp when the item was lastly modified by the merchant."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailBatchRequestItemsInner {
+    title = CatalogsRetailBatchRequestItemsInner
+    description = CatalogsRetailBatchRequestItemsInner
+    implements = openapi_server.resourceTypes.CatalogsRetailBatchRequestItemsInner
+
+  }
+}

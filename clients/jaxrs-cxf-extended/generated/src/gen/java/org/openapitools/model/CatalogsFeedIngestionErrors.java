@@ -13,10 +13,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeedIngestionErrors  {
   
  /**
-  * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+  * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
   */
-  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.")
-  private Integer LINE_LEVEL_INTERNAL_ERROR;
+  @ApiModelProperty(value = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.")
+  private Integer ACCOUNT_FLAGGED;
+
+ /**
+  * Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.
+  */
+  @ApiModelProperty(value = "Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.")
+  private Integer FETCH_GOOGLE_SHEET_NOT_SHARED;
+
+ /**
+  * Image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
+  private Integer IMAGE_FILE_NOT_ACCESSIBLE;
+
+ /**
+  * Image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
+  private Integer IMAGE_FILE_NOT_FOUND;
+
+ /**
+  * Image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
+  private Integer IMAGE_INVALID_FILE;
+
+ /**
+  * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+  */
+  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.")
+  private Integer IMAGE_LEVEL_INTERNAL_ERROR;
+
+ /**
+  * Image files are unreadable. Please check your link and upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please check your link and upload new files to continue.")
+  private Integer IMAGE_MALFORMED_URL;
 
 public enum LARGEPRODUCTCOUNTDECREASEEnum {
 
@@ -54,88 +90,10 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
   private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
 
  /**
-  * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
-  */
-  @ApiModelProperty(value = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.")
-  private Integer ACCOUNT_FLAGGED;
-
- /**
-  * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-  */
-  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.")
-  private Integer IMAGE_LEVEL_INTERNAL_ERROR;
-
- /**
-  * Image files are unreadable. Please upload new files to continue.
-  */
-  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
-  private Integer IMAGE_FILE_NOT_ACCESSIBLE;
-
- /**
-  * Image files are unreadable. Please check your link and upload new files to continue.
-  */
-  @ApiModelProperty(value = "Image files are unreadable. Please check your link and upload new files to continue.")
-  private Integer IMAGE_MALFORMED_URL;
-
- /**
-  * Image files are unreadable. Please upload new files to continue.
-  */
-  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
-  private Integer IMAGE_FILE_NOT_FOUND;
-
- /**
-  * Image files are unreadable. Please upload new files to continue.
-  */
-  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
-  private Integer IMAGE_INVALID_FILE;
- /**
   * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-  * @return LINE_LEVEL_INTERNAL_ERROR
   */
-  @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
-  public Integer getLINELEVELINTERNALERROR() {
-    return LINE_LEVEL_INTERNAL_ERROR;
-  }
-
-  /**
-   * Sets the <code>LINE_LEVEL_INTERNAL_ERROR</code> property.
-   */
- public void setLINELEVELINTERNALERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
-    this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
-  }
-
-  /**
-   * Sets the <code>LINE_LEVEL_INTERNAL_ERROR</code> property.
-   */
-  public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
-    this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
-    return this;
-  }
-
- /**
-  * The product count has decreased by more than 99% compared to the last successful ingestion.
-  * @return LARGE_PRODUCT_COUNT_DECREASE
-  */
-  @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public Integer getLARGEPRODUCTCOUNTDECREASE() {
-    return LARGE_PRODUCT_COUNT_DECREASE == null ? null : LARGE_PRODUCT_COUNT_DECREASE.value();
-  }
-
-  /**
-   * Sets the <code>LARGE_PRODUCT_COUNT_DECREASE</code> property.
-   */
- public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
-    this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
-  }
-
-  /**
-   * Sets the <code>LARGE_PRODUCT_COUNT_DECREASE</code> property.
-   */
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
-    this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
-    return this;
-  }
-
+  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.")
+  private Integer LINE_LEVEL_INTERNAL_ERROR;
  /**
   * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
   * @return ACCOUNT_FLAGGED
@@ -161,26 +119,26 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
   }
 
  /**
-  * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-  * @return IMAGE_LEVEL_INTERNAL_ERROR
+  * Update your Google Sheets sharing settings to &#39;Anyone with link&#39; as a Viewer so that Pinterest can access your file.
+  * @return FETCH_GOOGLE_SHEET_NOT_SHARED
   */
-  @JsonProperty("IMAGE_LEVEL_INTERNAL_ERROR")
-  public Integer getIMAGELEVELINTERNALERROR() {
-    return IMAGE_LEVEL_INTERNAL_ERROR;
+  @JsonProperty("FETCH_GOOGLE_SHEET_NOT_SHARED")
+  public Integer getFETCHGOOGLESHEETNOTSHARED() {
+    return FETCH_GOOGLE_SHEET_NOT_SHARED;
   }
 
   /**
-   * Sets the <code>IMAGE_LEVEL_INTERNAL_ERROR</code> property.
+   * Sets the <code>FETCH_GOOGLE_SHEET_NOT_SHARED</code> property.
    */
- public void setIMAGELEVELINTERNALERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
-    this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
+ public void setFETCHGOOGLESHEETNOTSHARED(Integer FETCH_GOOGLE_SHEET_NOT_SHARED) {
+    this.FETCH_GOOGLE_SHEET_NOT_SHARED = FETCH_GOOGLE_SHEET_NOT_SHARED;
   }
 
   /**
-   * Sets the <code>IMAGE_LEVEL_INTERNAL_ERROR</code> property.
+   * Sets the <code>FETCH_GOOGLE_SHEET_NOT_SHARED</code> property.
    */
-  public CatalogsFeedIngestionErrors IMAGE_LEVEL_INTERNAL_ERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
-    this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
+  public CatalogsFeedIngestionErrors FETCH_GOOGLE_SHEET_NOT_SHARED(Integer FETCH_GOOGLE_SHEET_NOT_SHARED) {
+    this.FETCH_GOOGLE_SHEET_NOT_SHARED = FETCH_GOOGLE_SHEET_NOT_SHARED;
     return this;
   }
 
@@ -205,30 +163,6 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
    */
   public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_ACCESSIBLE(Integer IMAGE_FILE_NOT_ACCESSIBLE) {
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
-    return this;
-  }
-
- /**
-  * Image files are unreadable. Please check your link and upload new files to continue.
-  * @return IMAGE_MALFORMED_URL
-  */
-  @JsonProperty("IMAGE_MALFORMED_URL")
-  public Integer getIMAGEMALFORMEDURL() {
-    return IMAGE_MALFORMED_URL;
-  }
-
-  /**
-   * Sets the <code>IMAGE_MALFORMED_URL</code> property.
-   */
- public void setIMAGEMALFORMEDURL(Integer IMAGE_MALFORMED_URL) {
-    this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
-  }
-
-  /**
-   * Sets the <code>IMAGE_MALFORMED_URL</code> property.
-   */
-  public CatalogsFeedIngestionErrors IMAGE_MALFORMED_URL(Integer IMAGE_MALFORMED_URL) {
-    this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
     return this;
   }
 
@@ -280,6 +214,102 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
     return this;
   }
 
+ /**
+  * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+  * @return IMAGE_LEVEL_INTERNAL_ERROR
+  */
+  @JsonProperty("IMAGE_LEVEL_INTERNAL_ERROR")
+  public Integer getIMAGELEVELINTERNALERROR() {
+    return IMAGE_LEVEL_INTERNAL_ERROR;
+  }
+
+  /**
+   * Sets the <code>IMAGE_LEVEL_INTERNAL_ERROR</code> property.
+   */
+ public void setIMAGELEVELINTERNALERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
+    this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
+  }
+
+  /**
+   * Sets the <code>IMAGE_LEVEL_INTERNAL_ERROR</code> property.
+   */
+  public CatalogsFeedIngestionErrors IMAGE_LEVEL_INTERNAL_ERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
+    this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
+    return this;
+  }
+
+ /**
+  * Image files are unreadable. Please check your link and upload new files to continue.
+  * @return IMAGE_MALFORMED_URL
+  */
+  @JsonProperty("IMAGE_MALFORMED_URL")
+  public Integer getIMAGEMALFORMEDURL() {
+    return IMAGE_MALFORMED_URL;
+  }
+
+  /**
+   * Sets the <code>IMAGE_MALFORMED_URL</code> property.
+   */
+ public void setIMAGEMALFORMEDURL(Integer IMAGE_MALFORMED_URL) {
+    this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
+  }
+
+  /**
+   * Sets the <code>IMAGE_MALFORMED_URL</code> property.
+   */
+  public CatalogsFeedIngestionErrors IMAGE_MALFORMED_URL(Integer IMAGE_MALFORMED_URL) {
+    this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
+    return this;
+  }
+
+ /**
+  * The product count has decreased by more than 99% compared to the last successful ingestion.
+  * @return LARGE_PRODUCT_COUNT_DECREASE
+  */
+  @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
+  public Integer getLARGEPRODUCTCOUNTDECREASE() {
+    return LARGE_PRODUCT_COUNT_DECREASE == null ? null : LARGE_PRODUCT_COUNT_DECREASE.value();
+  }
+
+  /**
+   * Sets the <code>LARGE_PRODUCT_COUNT_DECREASE</code> property.
+   */
+ public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+    this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
+  }
+
+  /**
+   * Sets the <code>LARGE_PRODUCT_COUNT_DECREASE</code> property.
+   */
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+    this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
+    return this;
+  }
+
+ /**
+  * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+  * @return LINE_LEVEL_INTERNAL_ERROR
+  */
+  @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
+  public Integer getLINELEVELINTERNALERROR() {
+    return LINE_LEVEL_INTERNAL_ERROR;
+  }
+
+  /**
+   * Sets the <code>LINE_LEVEL_INTERNAL_ERROR</code> property.
+   */
+ public void setLINELEVELINTERNALERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
+    this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
+  }
+
+  /**
+   * Sets the <code>LINE_LEVEL_INTERNAL_ERROR</code> property.
+   */
+  public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
+    this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -290,19 +320,20 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
       return false;
     }
     CatalogsFeedIngestionErrors catalogsFeedIngestionErrors = (CatalogsFeedIngestionErrors) o;
-    return Objects.equals(this.LINE_LEVEL_INTERNAL_ERROR, catalogsFeedIngestionErrors.LINE_LEVEL_INTERNAL_ERROR) &&
-        Objects.equals(this.LARGE_PRODUCT_COUNT_DECREASE, catalogsFeedIngestionErrors.LARGE_PRODUCT_COUNT_DECREASE) &&
-        Objects.equals(this.ACCOUNT_FLAGGED, catalogsFeedIngestionErrors.ACCOUNT_FLAGGED) &&
-        Objects.equals(this.IMAGE_LEVEL_INTERNAL_ERROR, catalogsFeedIngestionErrors.IMAGE_LEVEL_INTERNAL_ERROR) &&
+    return Objects.equals(this.ACCOUNT_FLAGGED, catalogsFeedIngestionErrors.ACCOUNT_FLAGGED) &&
+        Objects.equals(this.FETCH_GOOGLE_SHEET_NOT_SHARED, catalogsFeedIngestionErrors.FETCH_GOOGLE_SHEET_NOT_SHARED) &&
         Objects.equals(this.IMAGE_FILE_NOT_ACCESSIBLE, catalogsFeedIngestionErrors.IMAGE_FILE_NOT_ACCESSIBLE) &&
-        Objects.equals(this.IMAGE_MALFORMED_URL, catalogsFeedIngestionErrors.IMAGE_MALFORMED_URL) &&
         Objects.equals(this.IMAGE_FILE_NOT_FOUND, catalogsFeedIngestionErrors.IMAGE_FILE_NOT_FOUND) &&
-        Objects.equals(this.IMAGE_INVALID_FILE, catalogsFeedIngestionErrors.IMAGE_INVALID_FILE);
+        Objects.equals(this.IMAGE_INVALID_FILE, catalogsFeedIngestionErrors.IMAGE_INVALID_FILE) &&
+        Objects.equals(this.IMAGE_LEVEL_INTERNAL_ERROR, catalogsFeedIngestionErrors.IMAGE_LEVEL_INTERNAL_ERROR) &&
+        Objects.equals(this.IMAGE_MALFORMED_URL, catalogsFeedIngestionErrors.IMAGE_MALFORMED_URL) &&
+        Objects.equals(this.LARGE_PRODUCT_COUNT_DECREASE, catalogsFeedIngestionErrors.LARGE_PRODUCT_COUNT_DECREASE) &&
+        Objects.equals(this.LINE_LEVEL_INTERNAL_ERROR, catalogsFeedIngestionErrors.LINE_LEVEL_INTERNAL_ERROR);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(LINE_LEVEL_INTERNAL_ERROR, LARGE_PRODUCT_COUNT_DECREASE, ACCOUNT_FLAGGED, IMAGE_LEVEL_INTERNAL_ERROR, IMAGE_FILE_NOT_ACCESSIBLE, IMAGE_MALFORMED_URL, IMAGE_FILE_NOT_FOUND, IMAGE_INVALID_FILE);
+    return Objects.hash(ACCOUNT_FLAGGED, FETCH_GOOGLE_SHEET_NOT_SHARED, IMAGE_FILE_NOT_ACCESSIBLE, IMAGE_FILE_NOT_FOUND, IMAGE_INVALID_FILE, IMAGE_LEVEL_INTERNAL_ERROR, IMAGE_MALFORMED_URL, LARGE_PRODUCT_COUNT_DECREASE, LINE_LEVEL_INTERNAL_ERROR);
   }
 
   @Override
@@ -310,14 +341,15 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedIngestionErrors {\n");
     
-    sb.append("    LINE_LEVEL_INTERNAL_ERROR: ").append(toIndentedString(LINE_LEVEL_INTERNAL_ERROR)).append("\n");
-    sb.append("    LARGE_PRODUCT_COUNT_DECREASE: ").append(toIndentedString(LARGE_PRODUCT_COUNT_DECREASE)).append("\n");
     sb.append("    ACCOUNT_FLAGGED: ").append(toIndentedString(ACCOUNT_FLAGGED)).append("\n");
-    sb.append("    IMAGE_LEVEL_INTERNAL_ERROR: ").append(toIndentedString(IMAGE_LEVEL_INTERNAL_ERROR)).append("\n");
+    sb.append("    FETCH_GOOGLE_SHEET_NOT_SHARED: ").append(toIndentedString(FETCH_GOOGLE_SHEET_NOT_SHARED)).append("\n");
     sb.append("    IMAGE_FILE_NOT_ACCESSIBLE: ").append(toIndentedString(IMAGE_FILE_NOT_ACCESSIBLE)).append("\n");
-    sb.append("    IMAGE_MALFORMED_URL: ").append(toIndentedString(IMAGE_MALFORMED_URL)).append("\n");
     sb.append("    IMAGE_FILE_NOT_FOUND: ").append(toIndentedString(IMAGE_FILE_NOT_FOUND)).append("\n");
     sb.append("    IMAGE_INVALID_FILE: ").append(toIndentedString(IMAGE_INVALID_FILE)).append("\n");
+    sb.append("    IMAGE_LEVEL_INTERNAL_ERROR: ").append(toIndentedString(IMAGE_LEVEL_INTERNAL_ERROR)).append("\n");
+    sb.append("    IMAGE_MALFORMED_URL: ").append(toIndentedString(IMAGE_MALFORMED_URL)).append("\n");
+    sb.append("    LARGE_PRODUCT_COUNT_DECREASE: ").append(toIndentedString(LARGE_PRODUCT_COUNT_DECREASE)).append("\n");
+    sb.append("    LINE_LEVEL_INTERNAL_ERROR: ").append(toIndentedString(LINE_LEVEL_INTERNAL_ERROR)).append("\n");
     sb.append("}");
     return sb.toString();
   }

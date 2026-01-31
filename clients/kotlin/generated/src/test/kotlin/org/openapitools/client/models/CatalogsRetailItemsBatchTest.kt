@@ -34,16 +34,16 @@ class CatalogsRetailItemsBatchTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
+        // to test the property `createdTime` - Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+        should("test createdTime") {
+            // uncomment below to test the property
+            //modelInstance.createdTime shouldBe ("TODO")
+        }
+
         // to test the property `batchId` - Id of the catalogs items batch
         should("test batchId") {
             // uncomment below to test the property
             //modelInstance.batchId shouldBe ("TODO")
-        }
-
-        // to test the property `createdTime` - Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-        should("test createdTime") {
-            // uncomment below to test the property
-            //modelInstance.createdTime shouldBe ("TODO")
         }
 
         // to test the property `completedTime` - Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
@@ -52,16 +52,16 @@ class CatalogsRetailItemsBatchTest : ShouldSpec() {
             //modelInstance.completedTime shouldBe ("TODO")
         }
 
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
         // to test the property `items` - Array with the catalogs items processing records part of the catalogs items batch
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

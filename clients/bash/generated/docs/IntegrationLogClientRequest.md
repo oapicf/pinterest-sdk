@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **string** |  | [default to null]
 **host** | **string** |  | [default to null]
+**method** | **string** |  | [default to null]
 **path** | **string** |  | [default to null]
 **requestUnderscoreheaders** | **map[String, string]** |  | [optional] [default to null]
 **responseUnderscoreheaders** | **map[String, string]** |  | [optional] [default to null]

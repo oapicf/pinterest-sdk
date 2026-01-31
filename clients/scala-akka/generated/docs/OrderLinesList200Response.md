@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;OrderLine&gt;**](OrderLine.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;OrderLine&gt;**](OrderLine.md) |  | 
 
 
 

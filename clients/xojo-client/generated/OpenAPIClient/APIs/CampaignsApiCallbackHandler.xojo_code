@@ -1,6 +1,12 @@
 #tag Interface
 Protected Interface CampaignsApiCallbackHandler
 	#tag Method, Flags = &h0
+		Sub AdPinsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As AdPinAnalytics)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub CampaignTargetingAnalyticsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.MetricsResponse)
 		  
 		End Sub

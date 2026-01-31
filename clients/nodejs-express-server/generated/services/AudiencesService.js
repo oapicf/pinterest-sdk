@@ -3,7 +3,7 @@ const Service = require('./Service');
 
 /**
 * Create audience
-* Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+* Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * audienceCreateRequest AudienceCreateRequest List of ads to create, size limit [1, 30]
@@ -15,29 +15,6 @@ const audiences/create = ({ adUnderscoreaccountUnderscoreid, audienceCreateReque
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
         audienceCreateRequest,
-      }));
-    } catch (e) {
-      reject(Service.rejectResponse(
-        e.message || 'Invalid input',
-        e.status || 405,
-      ));
-    }
-  },
-);
-/**
-* Create custom audience
-* Create a custom audience and find the audiences you want your ads to reach.
-*
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* audienceCreateCustomRequest AudienceCreateCustomRequest Custom audience to create.
-* returns Audience
-* */
-const audiences/create_custom = ({ adUnderscoreaccountUnderscoreid, audienceCreateCustomRequest }) => new Promise(
-  async (resolve, reject) => {
-    try {
-      resolve(Service.successResponse({
-        adUnderscoreaccountUnderscoreid,
-        audienceCreateCustomRequest,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -105,7 +82,7 @@ const audiences/list = ({ adUnderscoreaccountUnderscoreid, bookmark, order, page
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * audienceUnderscoreid String Unique identifier of an audience
-* audienceUpdateRequest AudienceUpdateRequest The audience to be updated. (optional)
+* audienceUpdateRequest AudienceUpdateRequest The audience to be updated.
 * returns Audience
 * */
 const audiences/update = ({ adUnderscoreaccountUnderscoreid, audienceUnderscoreid, audienceUpdateRequest }) => new Promise(
@@ -127,7 +104,6 @@ const audiences/update = ({ adUnderscoreaccountUnderscoreid, audienceUnderscorei
 
 module.exports = {
   audiences/create,
-  audiences/create_custom,
   audiences/get,
   audiences/list,
   audiences/update,

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Options** | Pointer to [**[]QuizPinOption**](QuizPinOption.md) |  | [optional] 
 **QuestionId** | Pointer to **float32** |  | [optional] 
 **QuestionText** | Pointer to **string** |  | [optional] 
-**Options** | Pointer to [**[]QuizPinOption**](QuizPinOption.md) |  | [optional] 
 
 ## Methods
 
@@ -26,6 +26,31 @@ will change when the set of required properties is changed
 NewQuizPinQuestionWithDefaults instantiates a new QuizPinQuestion object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetOptions
+
+`func (o *QuizPinQuestion) GetOptions() []QuizPinOption`
+
+GetOptions returns the Options field if non-nil, zero value otherwise.
+
+### GetOptionsOk
+
+`func (o *QuizPinQuestion) GetOptionsOk() (*[]QuizPinOption, bool)`
+
+GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptions
+
+`func (o *QuizPinQuestion) SetOptions(v []QuizPinOption)`
+
+SetOptions sets Options field to given value.
+
+### HasOptions
+
+`func (o *QuizPinQuestion) HasOptions() bool`
+
+HasOptions returns a boolean if a field has been set.
 
 ### GetQuestionId
 
@@ -76,31 +101,6 @@ SetQuestionText sets QuestionText field to given value.
 `func (o *QuizPinQuestion) HasQuestionText() bool`
 
 HasQuestionText returns a boolean if a field has been set.
-
-### GetOptions
-
-`func (o *QuizPinQuestion) GetOptions() []QuizPinOption`
-
-GetOptions returns the Options field if non-nil, zero value otherwise.
-
-### GetOptionsOk
-
-`func (o *QuizPinQuestion) GetOptionsOk() (*[]QuizPinOption, bool)`
-
-GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOptions
-
-`func (o *QuizPinQuestion) SetOptions(v []QuizPinOption)`
-
-SetOptions sets Options field to given value.
-
-### HasOptions
-
-`func (o *QuizPinQuestion) HasOptions() bool`
-
-HasOptions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

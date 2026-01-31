@@ -12,11 +12,11 @@ import org.openapitools.model.LeadFormQuestionType;
 @Canonical
 class LeadFormQuestion {
     
-    LeadFormQuestionType questionType
-    
     LeadFormQuestionFieldType customQuestionFieldType
     /* Question label for a custom question. */
     String customQuestionLabel
     /* Question options for a custom question. */
     List<String> customQuestionOptions
+    
+    LeadFormQuestionType questionType
 }

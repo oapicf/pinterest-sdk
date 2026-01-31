@@ -11,54 +11,36 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TermsOfService   {
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty("html")
-  private String html;
+  @JsonProperty("ad_account_id")
+  private String adAccountId;
 
   @JsonProperty("has_accepted")
   private Boolean hasAccepted;
 
-  @JsonProperty("ad_account_id")
-  private String adAccountId;
-
-  /**
-   * The ID of the terms of service
-   **/
-  public TermsOfService id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * The terms of service content
-   **/
-  public TermsOfService html(String html) {
-    this.html = html;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "example test", value = "The terms of service content")
   @JsonProperty("html")
-  public String getHtml() {
-    return html;
+  private String html;
+
+  @JsonProperty("id")
+  private String id;
+
+  /**
+   * The ID of the ad account.
+   **/
+  public TermsOfService adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
   }
-  public void setHtml(String html) {
-    this.html = html;
+
+  
+  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
   /**
@@ -80,21 +62,39 @@ public class TermsOfService   {
   }
 
   /**
-   * The ID of the ad account.
+   * The terms of service content
    **/
-  public TermsOfService adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public TermsOfService html(String html) {
+    this.html = html;
     return this;
   }
 
   
-  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @ApiModelProperty(example = "example test", value = "The terms of service content")
+  @JsonProperty("html")
+  public String getHtml() {
+    return html;
   }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setHtml(String html) {
+    this.html = html;
+  }
+
+  /**
+   * The ID of the terms of service
+   **/
+  public TermsOfService id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -107,15 +107,15 @@ public class TermsOfService   {
       return false;
     }
     TermsOfService termsOfService = (TermsOfService) o;
-    return Objects.equals(id, termsOfService.id) &&
-        Objects.equals(html, termsOfService.html) &&
+    return Objects.equals(adAccountId, termsOfService.adAccountId) &&
         Objects.equals(hasAccepted, termsOfService.hasAccepted) &&
-        Objects.equals(adAccountId, termsOfService.adAccountId);
+        Objects.equals(html, termsOfService.html) &&
+        Objects.equals(id, termsOfService.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, html, hasAccepted, adAccountId);
+    return Objects.hash(adAccountId, hasAccepted, html, id);
   }
 
   @Override
@@ -123,10 +123,10 @@ public class TermsOfService   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TermsOfService {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    html: ").append(toIndentedString(html)).append("\n");
-    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
+    sb.append("    html: ").append(toIndentedString(html)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

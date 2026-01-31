@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**SystemCollectionsHashtable[]**](SystemCollectionsHashtable.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**SystemCollectionsHashtable[]**](SystemCollectionsHashtable.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$Paginated = Initialize-PSOpenAPIToolsPaginated  -Items null `
- -Bookmark null
+$Paginated = Initialize-PSOpenAPIToolsPaginated  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

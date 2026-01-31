@@ -5,22 +5,22 @@
 -export_type([openapi_catalogs_product_group_create_request/0]).
 
 -type openapi_catalogs_product_group_create_request() ::
-    #{ 'name' := binary(),
-       'description' => binary(),
-       'is_featured' => boolean(),
+    #{ 'description' => binary(),
+       'feed_id' := binary(),
        'filters' := openapi_catalogs_product_group_filters_request:openapi_catalogs_product_group_filters_request(),
-       'feed_id' := binary()
+       'is_featured' => boolean(),
+       'name' := binary()
      }.
 
-encode(#{ 'name' := Name,
-          'description' := Description,
-          'is_featured' := IsFeatured,
+encode(#{ 'description' := Description,
+          'feed_id' := FeedId,
           'filters' := Filters,
-          'feed_id' := FeedId
+          'is_featured' := IsFeatured,
+          'name' := Name
         }) ->
-    #{ 'name' => Name,
-       'description' => Description,
-       'is_featured' => IsFeatured,
+    #{ 'description' => Description,
+       'feed_id' => FeedId,
        'filters' => Filters,
-       'feed_id' => FeedId
+       'is_featured' => IsFeatured,
+       'name' => Name
      }.

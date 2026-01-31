@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &IntegrationLogClientRequest{}
 
 // IntegrationLogClientRequest HTTP request details included in the log sent by the client.
 type IntegrationLogClientRequest struct {
-	Method string `json:"method"`
 	// HTTP request host from host header.
 	Host string `json:"host"`
+	Method string `json:"method"`
 	// HTTP request path.
 	Path string `json:"path"`
 	// HTTP request headers as key-value pairs.
@@ -40,10 +40,10 @@ type _IntegrationLogClientRequest IntegrationLogClientRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegrationLogClientRequest(method string, host string, path string) *IntegrationLogClientRequest {
+func NewIntegrationLogClientRequest(host string, method string, path string) *IntegrationLogClientRequest {
 	this := IntegrationLogClientRequest{}
-	this.Method = method
 	this.Host = host
+	this.Method = method
 	this.Path = path
 	return &this
 }
@@ -54,30 +54,6 @@ func NewIntegrationLogClientRequest(method string, host string, path string) *In
 func NewIntegrationLogClientRequestWithDefaults() *IntegrationLogClientRequest {
 	this := IntegrationLogClientRequest{}
 	return &this
-}
-
-// GetMethod returns the Method field value
-func (o *IntegrationLogClientRequest) GetMethod() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Method
-}
-
-// GetMethodOk returns a tuple with the Method field value
-// and a boolean to check if the value has been set.
-func (o *IntegrationLogClientRequest) GetMethodOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Method, true
-}
-
-// SetMethod sets field value
-func (o *IntegrationLogClientRequest) SetMethod(v string) {
-	o.Method = v
 }
 
 // GetHost returns the Host field value
@@ -102,6 +78,30 @@ func (o *IntegrationLogClientRequest) GetHostOk() (*string, bool) {
 // SetHost sets field value
 func (o *IntegrationLogClientRequest) SetHost(v string) {
 	o.Host = v
+}
+
+// GetMethod returns the Method field value
+func (o *IntegrationLogClientRequest) GetMethod() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Method
+}
+
+// GetMethodOk returns a tuple with the Method field value
+// and a boolean to check if the value has been set.
+func (o *IntegrationLogClientRequest) GetMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Method, true
+}
+
+// SetMethod sets field value
+func (o *IntegrationLogClientRequest) SetMethod(v string) {
+	o.Method = v
 }
 
 // GetPath returns the Path field value
@@ -234,8 +234,8 @@ func (o IntegrationLogClientRequest) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationLogClientRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["method"] = o.Method
 	toSerialize["host"] = o.Host
+	toSerialize["method"] = o.Method
 	toSerialize["path"] = o.Path
 	if !IsNil(o.RequestHeaders) {
 		toSerialize["request_headers"] = o.RequestHeaders
@@ -254,8 +254,8 @@ func (o *IntegrationLogClientRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"method",
 		"host",
+		"method",
 		"path",
 	}
 

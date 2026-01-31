@@ -9,11 +9,11 @@
 -export_type([openapi_catalogs_hotel_product_group_create_request/0]).
 
 -type openapi_catalogs_hotel_product_group_create_request() ::
-  [ {'catalog_type', binary() }
-  | {'name', binary() }
+  [ {'catalog_id', binary() }
+  | {'catalog_type', binary() }
   | {'description', binary() }
   | {'filters', openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters() }
-  | {'catalog_id', binary() }
+  | {'name', binary() }
   ].
 
 
@@ -21,11 +21,11 @@ openapi_catalogs_hotel_product_group_create_request() ->
     openapi_catalogs_hotel_product_group_create_request([]).
 
 openapi_catalogs_hotel_product_group_create_request(Fields) ->
-  Default = [ {'catalog_type', elements([<<"HOTEL">>]) }
-            , {'name', binary() }
+  Default = [ {'catalog_id', binary() }
+            , {'catalog_type', elements([<<"HOTEL">>]) }
             , {'description', binary() }
             , {'filters', openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters() }
-            , {'catalog_id', binary() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

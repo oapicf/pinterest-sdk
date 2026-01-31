@@ -9,9 +9,9 @@ use WWW::OpenAPIClient::Object::CatalogsItemsCreateBatchRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
+**items** | [**ARRAY[ItemCreateBatchRecord]**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 **language** | **string** | We recommend using the CatalogsLocale values. | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
-**items** | [**ARRAY[ItemCreateBatchRecord]**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

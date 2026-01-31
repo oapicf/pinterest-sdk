@@ -17,11 +17,12 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.ConversionEventResponse
+import org.openapitools.server.api.model.ConversionTag
 import org.openapitools.server.api.model.ConversionTagCreate
-import org.openapitools.server.api.model.ConversionTagListResponse
-import org.openapitools.server.api.model.ConversionTagResponse
+import org.openapitools.server.api.model.ConversionTagsList200Response
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.PageVisitConversionTagsGet200Response
+import org.openapitools.server.api.model.PinterestLibError
 
 class ConversionTagsApiVertxProxyHandler(private val vertx: Vertx, private val service: ConversionTagsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long

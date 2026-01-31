@@ -22,37 +22,37 @@ integration_metadata_t* instantiate_integration_metadata(int include_optional) {
   integration_metadata_t* integration_metadata = NULL;
   if (include_optional) {
     integration_metadata = integration_metadata_create(
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      1.337,
+      "0",
       "a",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      1.337,
       1.337,
       "0",
       1.337,
-      1.337,
       "0",
-      "0"
+      1.337
     );
   } else {
     integration_metadata = integration_metadata_create(
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      1.337,
+      "0",
       "a",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      1.337,
       1.337,
       "0",
       1.337,
-      1.337,
       "0",
-      "0"
+      1.337
     );
   }
 

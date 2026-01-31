@@ -12,35 +12,35 @@ import AnyCodable
 
 public struct LeadsExportCreateRequest: Codable, JSONEncodable, Hashable {
 
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let adIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Export leads collected on and after start date (UTC). Format: YYYY-MM-DD */
-    public var startDate: String
-    /** Export leads collected on and before end date (UTC). Format: YYYY-MM-DD */
-    public var endDate: String
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     /** ID for the ad collecting leads */
     public var adId: String
+    /** Export leads collected on and before end date (UTC). Format: YYYY-MM-DD */
+    public var endDate: String
+    /** Export leads collected on and after start date (UTC). Format: YYYY-MM-DD */
+    public var startDate: String
 
-    public init(startDate: String, endDate: String, adId: String) {
-        self.startDate = startDate
-        self.endDate = endDate
+    public init(adId: String, endDate: String, startDate: String) {
         self.adId = adId
+        self.endDate = endDate
+        self.startDate = startDate
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case startDate = "start_date"
-        case endDate = "end_date"
         case adId = "ad_id"
+        case endDate = "end_date"
+        case startDate = "start_date"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(startDate, forKey: .startDate)
-        try container.encode(endDate, forKey: .endDate)
         try container.encode(adId, forKey: .adId)
+        try container.encode(endDate, forKey: .endDate)
+        try container.encode(startDate, forKey: .startDate)
     }
 }
 

@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server S3MultipartUploadData"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a S3MultipartUploadData"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  S3FilePart = openapi_server.resourceTypes.S3FilePart
+}
+resourceTypes {
+
+  S3MultipartUploadData {
+    title = S3MultipartUploadData
+    description = S3MultipartUploadData
+    derivedFrom = Root
+    properties {
+        file_parts {
+          type = array
+          items.type = S3FilePart
+          description = "Array of file parts with pre-signed URLs."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  S3MultipartUploadData {
+    title = S3MultipartUploadData
+    description = S3MultipartUploadData
+    implements = openapi_server.resourceTypes.S3MultipartUploadData
+
+  }
+}

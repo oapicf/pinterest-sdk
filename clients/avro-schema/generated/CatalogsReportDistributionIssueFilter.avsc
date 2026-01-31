@@ -5,6 +5,12 @@
   "name": "CatalogsReportDistributionIssueFilter",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a catalog. If not given, oldest catalog will be used",
+      "default": null
+    },
+    {
       "name": "report_type",
       "type": {
         "type": "enum",
@@ -14,12 +20,6 @@
         ]
       },
       "doc": ""
-    },
-    {
-      "name": "catalog_id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier of a catalog. If not given, oldest catalog will be used",
-      "default": null
     }
   ]
 

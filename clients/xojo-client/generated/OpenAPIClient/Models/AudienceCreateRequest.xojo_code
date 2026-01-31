@@ -24,17 +24,17 @@ Protected Class AudienceCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Audience description.
+			<a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 		#tag EndNote
-		description As Xoson.O.OptionalString
+		audience_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			<a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+			Audience description.
 		#tag EndNote
-		audience_type As String
+		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -99,19 +99,19 @@ Protected Class AudienceCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="description"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="audience_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="AudienceType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -8,9 +8,9 @@ Creative assets batch item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
 **creativeAssetsId** | **String** | The catalog creative assets id in the merchant namespace | 
 **operation** | [**Operation**](#Operation) |  | 
-**attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
 
 
 ## Enum: Operation

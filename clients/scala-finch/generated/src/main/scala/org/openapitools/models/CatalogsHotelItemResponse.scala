@@ -12,15 +12,15 @@ import scala.collection.immutable.Seq
 
 /**
  * Object describing a hotel record
+ * @param attributes 
  * @param catalogUnderscoretype 
  * @param hotelUnderscoreid The catalog hotel id in the merchant namespace
  * @param pins The pins mapped to the item
- * @param attributes 
  */
-case class CatalogsHotelItemResponse(catalogUnderscoretype: CatalogsType,
+case class CatalogsHotelItemResponse(attributes: Option[CatalogsHotelAttributes],
+                catalogUnderscoretype: CatalogsType,
                 hotelUnderscoreid: Option[String],
-                pins: Option[Seq[Pin]],
-                attributes: Option[CatalogsHotelAttributes]
+                pins: Option[Seq[Pin]]
                 )
 
 object CatalogsHotelItemResponse {

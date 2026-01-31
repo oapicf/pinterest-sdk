@@ -10,6 +10,14 @@ Protected Class CatalogsDeleteRetailItem
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			The millisecond timestamp when the item was lastly modified by the merchant.
+		#tag EndNote
+		last_updated_time As Xoson.O.OptionalInt64
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		operation As String
 	#tag EndProperty
 
@@ -73,6 +81,14 @@ Protected Class CatalogsDeleteRetailItem
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="last_updated_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Int64"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

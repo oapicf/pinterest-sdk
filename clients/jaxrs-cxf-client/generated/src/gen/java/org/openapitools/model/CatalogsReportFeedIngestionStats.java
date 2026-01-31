@@ -8,40 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsReportFeedIngestionStats  {
   
-public enum ReportTypeEnum {
-
-FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES"));
-
-
-    private String value;
-
-    ReportTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static ReportTypeEnum fromValue(String value) {
-        for (ReportTypeEnum b : ReportTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  @ApiModelProperty(value = "")
-
-  private ReportTypeEnum reportType;
-
  /**
   * ID of the catalog entity.
   */
@@ -76,6 +42,40 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES"));
   @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
 
   private Integer occurrences;
+
+public enum ReportTypeEnum {
+
+FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES"));
+
+
+    private String value;
+
+    ReportTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ReportTypeEnum fromValue(String value) {
+        for (ReportTypeEnum b : ReportTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  @ApiModelProperty(value = "")
+
+  private ReportTypeEnum reportType;
 
 public enum SeverityEnum {
 
@@ -113,27 +113,6 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
   @ApiModelProperty(value = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
 
   private SeverityEnum severity;
- /**
-   * Get reportType
-   * @return reportType
-  **/
-  @JsonProperty("report_type")
-  public String getReportType() {
-    if (reportType == null) {
-      return null;
-    }
-    return reportType.value();
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
  /**
    * ID of the catalog entity.
    * @return catalogId
@@ -225,6 +204,27 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
   }
 
  /**
+   * Get reportType
+   * @return reportType
+  **/
+  @JsonProperty("report_type")
+  public String getReportType() {
+    if (reportType == null) {
+      return null;
+    }
+    return reportType.value();
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+ /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    * @return severity
   **/
@@ -254,18 +254,18 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
       return false;
     }
     CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats = (CatalogsReportFeedIngestionStats) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportFeedIngestionStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportFeedIngestionStats.catalogId) &&
         Objects.equals(this.code, catalogsReportFeedIngestionStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportFeedIngestionStats.codeLabel) &&
         Objects.equals(this.message, catalogsReportFeedIngestionStats.message) &&
         Objects.equals(this.occurrences, catalogsReportFeedIngestionStats.occurrences) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionStats.reportType) &&
         Objects.equals(this.severity, catalogsReportFeedIngestionStats.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity);
   }
 
   @Override
@@ -273,12 +273,12 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

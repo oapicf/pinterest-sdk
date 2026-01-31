@@ -8,26 +8,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class KeywordUpdate   {
   
-  private String id;
   private Boolean archived;
   private Integer bid;
+  private String id;
 
   public KeywordUpdate () {
 
   }
 
-  public KeywordUpdate (String id, Boolean archived, Integer bid) {
-    this.id = id;
+  public KeywordUpdate (Boolean archived, Integer bid, String id) {
     this.archived = archived;
     this.bid = bid;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
     this.id = id;
   }
 
@@ -49,6 +40,15 @@ public class KeywordUpdate   {
     this.bid = bid;
   }
 
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -59,14 +59,14 @@ public class KeywordUpdate   {
       return false;
     }
     KeywordUpdate keywordUpdate = (KeywordUpdate) o;
-    return Objects.equals(id, keywordUpdate.id) &&
-        Objects.equals(archived, keywordUpdate.archived) &&
-        Objects.equals(bid, keywordUpdate.bid);
+    return Objects.equals(archived, keywordUpdate.archived) &&
+        Objects.equals(bid, keywordUpdate.bid) &&
+        Objects.equals(id, keywordUpdate.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, archived, bid);
+    return Objects.hash(archived, bid, id);
   }
 
   @Override
@@ -74,9 +74,9 @@ public class KeywordUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordUpdate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

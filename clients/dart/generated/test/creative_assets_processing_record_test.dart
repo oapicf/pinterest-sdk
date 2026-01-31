@@ -28,14 +28,14 @@ void main() {
       // TODO
     });
 
-    // Array with the validation warnings for the item processing record
-    // List<ItemValidationEvent> warnings (default value: const [])
-    test('to test the property `warnings`', () async {
+    // ItemProcessingStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 
-    // ItemProcessingStatus status
-    test('to test the property `status`', () async {
+    // Array with the validation warnings for the item processing record
+    // List<ItemValidationEvent> warnings (default value: const [])
+    test('to test the property `warnings`', () async {
       // TODO
     });
 

@@ -55,11 +55,36 @@ API.Client.AdCommon.prototype.clickTrackingUrl;
 API.Client.AdCommon.prototype.creativeType;
 
 /**
+ * @type {!API.Client.CustomizableCTAType}
+ * @export
+ */
+API.Client.AdCommon.prototype.customizableCtaType;
+
+/**
  * Destination URL.
  * @type {!string}
  * @export
  */
 API.Client.AdCommon.prototype.destinationUrl;
+
+/**
+ * @type {!API.Client.DisclosureType}
+ * @export
+ */
+API.Client.AdCommon.prototype.disclosureType;
+
+/**
+ * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdCommon.prototype.disclosureUrl;
+
+/**
+ * @type {!API.Client.GridClickType}
+ * @export
+ */
+API.Client.AdCommon.prototype.gridClickType;
 
 /**
  * Deep link URL for iOS devices.
@@ -83,11 +108,25 @@ API.Client.AdCommon.prototype.isPinDeleted;
 API.Client.AdCommon.prototype.isRemovable;
 
 /**
+ * Lead form ID for lead ad generation.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdCommon.prototype.leadFormId;
+
+/**
  * Name of the ad - 255 chars max.
  * @type {!string}
  * @export
  */
 API.Client.AdCommon.prototype.name;
+
+/**
+ * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+ * @type {!API.Client.QuizPinData}
+ * @export
+ */
+API.Client.AdCommon.prototype.quizPinData;
 
 /**
  * @type {!API.Client.EntityStatus}
@@ -108,52 +147,3 @@ API.Client.AdCommon.prototype.trackingUrls;
  */
 API.Client.AdCommon.prototype.viewTrackingUrl;
 
-/**
- * Lead form ID for lead ad generation.
- * @type {!string}
- * @export
- */
-API.Client.AdCommon.prototype.leadFormId;
-
-/**
- * @type {!API.Client.GridClickType}
- * @export
- */
-API.Client.AdCommon.prototype.gridClickType;
-
-/**
- * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
- * @type {!string}
- * @export
- */
-API.Client.AdCommon.prototype.customizableCtaType;
-
-/**
- * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
- * @type {!API.Client.QuizPinData}
- * @export
- */
-API.Client.AdCommon.prototype.quizPinData;
-
-/** @enum {string} */
-API.Client.AdCommon.CustomizableCtaTypeEnum = { 
-  GET_OFFER: 'GET_OFFER',
-  LEARN_MORE: 'LEARN_MORE',
-  ORDER_NOW: 'ORDER_NOW',
-  SHOP_NOW: 'SHOP_NOW',
-  SIGN_UP: 'SIGN_UP',
-  SUBSCRIBE: 'SUBSCRIBE',
-  BUY_NOW: 'BUY_NOW',
-  CONTACT_US: 'CONTACT_US',
-  GET_QUOTE: 'GET_QUOTE',
-  VISIT_SITE: 'VISIT_SITE',
-  APPLY_NOW: 'APPLY_NOW',
-  BOOK_NOW: 'BOOK_NOW',
-  REQUEST_DEMO: 'REQUEST_DEMO',
-  REGISTER_NOW: 'REGISTER_NOW',
-  FIND_A_DEALER: 'FIND_A_DEALER',
-  ADD_TO_CART: 'ADD_TO_CART',
-  WATCH_NOW: 'WATCH_NOW',
-  READ_MORE: 'READ_MORE',
-  : '',
-}

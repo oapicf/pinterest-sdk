@@ -17,11 +17,11 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { PinsList200Response } from '../model/pinsList200Response';
-// @ts-ignore
 import { SearchPartnerPins200Response } from '../model/searchPartnerPins200Response';
 // @ts-ignore
 import { SearchUserBoardsGet200Response } from '../model/searchUserBoardsGet200Response';
+// @ts-ignore
+import { SearchUserPinsList200Response } from '../model/searchUserPinsList200Response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -41,7 +41,7 @@ export class SearchService extends BaseService {
 
     /**
      * Search pins by a given search term
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
      * @endpoint get /search/partner/pins
      * @param term Search term to look up pins.
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2)
@@ -267,9 +267,9 @@ export class SearchService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PinsList200Response>;
-    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PinsList200Response>>;
-    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PinsList200Response>>;
+    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SearchUserPinsList200Response>;
+    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SearchUserPinsList200Response>>;
+    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SearchUserPinsList200Response>>;
     public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (query === null || query === undefined) {
             throw new Error('Required parameter query was null or undefined when calling searchUserPinsList.');
@@ -334,7 +334,7 @@ export class SearchService extends BaseService {
 
         let localVarPath = `/search/pins`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<PinsList200Response>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SearchUserPinsList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),

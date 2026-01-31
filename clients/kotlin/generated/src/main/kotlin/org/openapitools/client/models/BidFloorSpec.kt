@@ -28,34 +28,34 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param currency 
  * @param billableEvent 
+ * @param currency 
  * @param countries 
+ * @param creativeType 
  * @param objectiveType 
  * @param optimizationGoalMetadata 
- * @param creativeType 
  */
 
 
 data class BidFloorSpec (
 
-    @Json(name = "currency")
-    val currency: Currency,
-
     @Json(name = "billable_event")
     val billableEvent: ActionType,
 
+    @Json(name = "currency")
+    val currency: Currency,
+
     @Json(name = "countries")
     val countries: kotlin.collections.List<Country>? = null,
+
+    @Json(name = "creative_type")
+    val creativeType: CreativeType? = null,
 
     @Json(name = "objective_type")
     val objectiveType: ObjectiveType? = null,
 
     @Json(name = "optimization_goal_metadata")
-    val optimizationGoalMetadata: OptimizationGoalMetadata? = null,
-
-    @Json(name = "creative_type")
-    val creativeType: CreativeType? = null
+    val optimizationGoalMetadata: OptimizationGoalMetadata? = null
 
 ) {
 

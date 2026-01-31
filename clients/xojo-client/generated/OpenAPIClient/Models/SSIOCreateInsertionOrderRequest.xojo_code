@@ -3,33 +3,17 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Starting date of time period. Format: YYYY-MM-DD
+			URL link for agency
 		#tag EndNote
-		start_date As String
+		agency_link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			End date of time period. Format: YYYY-MM-DD
+			The billing contact email
 		#tag EndNote
-		end_date As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The po number
-		#tag EndNote
-		po_number As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			If Budget order line, the budget amount.
-		#tag EndNote
-		budget_amount As Xoson.O.OptionalDouble
+		billing_contact_email As String
 	#tag EndProperty
 
 
@@ -51,9 +35,25 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The billing contact email
+			If Budget order line, the budget amount.
 		#tag EndNote
-		billing_contact_email As String
+		budget_amount As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			End date of time period. Format: YYYY-MM-DD
+		#tag EndNote
+		end_date As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The media contact email
+		#tag EndNote
+		media_contact_email As String
 	#tag EndProperty
 
 
@@ -75,17 +75,17 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The media contact email
+			The po number
 		#tag EndNote
-		media_contact_email As String
+		po_number As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			URL link for agency
+			Starting date of time period. Format: YYYY-MM-DD
 		#tag EndNote
-		agency_link As Xoson.O.OptionalString
+		start_date As String
 	#tag EndProperty
 
 
@@ -99,38 +99,6 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The UTC timestamp (to the nearest sec) of when terms were accepted
-		#tag EndNote
-		accepted_terms_time As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The pmp id
-		#tag EndNote
-		pmp_id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The order name
-		#tag EndNote
-		order_name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Type can be Budget or Perpetual
-		#tag EndNote
-		order_line_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			The SFDC id for the terms
 		#tag EndNote
 		accepted_terms_id As String
@@ -139,17 +107,9 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The bill-to company id
+			The UTC timestamp (to the nearest sec) of when terms were accepted
 		#tag EndNote
-		billto_company_id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The bill-to business address id
-		#tag EndNote
-		billto_business_address_id As String
+		accepted_terms_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -163,6 +123,27 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			The bill-to business address id
+		#tag EndNote
+		billto_business_address_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The bill-to company id
+		#tag EndNote
+		billto_company_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		currency_info As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			If Ongoing (perpetual) order line, the estimated monthly spend
 		#tag EndNote
 		estimated_monthly_spend As Xoson.O.OptionalDouble
@@ -170,7 +151,26 @@ Protected Class SSIOCreateInsertionOrderRequest
 
 
 	#tag Property, Flags = &h0
-		currency_info As String
+		#tag Note
+			Type can be Budget or Perpetual
+		#tag EndNote
+		order_line_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The order name
+		#tag EndNote
+		order_name As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The pmp id
+		#tag EndNote
+		pmp_id As String
 	#tag EndProperty
 
 
@@ -231,7 +231,7 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="start_date"
+			Name="agency_link"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -239,27 +239,11 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="end_date"
+			Name="billing_contact_email"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="po_number"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="budget_amount"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -279,7 +263,23 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="billing_contact_email"
+			Name="budget_amount"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="end_date"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="media_contact_email"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -303,7 +303,7 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="media_contact_email"
+			Name="po_number"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -311,7 +311,7 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="agency_link"
+			Name="start_date"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -327,30 +327,6 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="accepted_terms_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="pmp_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="order_name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="accepted_terms_id"
 			Visible=false
 			Group="Behavior"
@@ -359,7 +335,15 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="billto_company_id"
+			Name="accepted_terms_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="billto_billing_address_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -375,11 +359,19 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="billto_billing_address_id"
+			Name="billto_company_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="currency_info"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Currency"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -391,11 +383,19 @@ Protected Class SSIOCreateInsertionOrderRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="currency_info"
+			Name="order_name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Currency"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="pmp_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

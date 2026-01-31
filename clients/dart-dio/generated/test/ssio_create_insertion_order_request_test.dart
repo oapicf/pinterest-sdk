@@ -7,27 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(SSIOCreateInsertionOrderRequest, () {
-    // Starting date of time period. Format: YYYY-MM-DD
-    // String startDate
-    test('to test the property `startDate`', () async {
+    // URL link for agency
+    // String agencyLink
+    test('to test the property `agencyLink`', () async {
       // TODO
     });
 
-    // End date of time period. Format: YYYY-MM-DD
-    // String endDate
-    test('to test the property `endDate`', () async {
-      // TODO
-    });
-
-    // The po number
-    // String poNumber
-    test('to test the property `poNumber`', () async {
-      // TODO
-    });
-
-    // If Budget order line, the budget amount.
-    // num budgetAmount
-    test('to test the property `budgetAmount`', () async {
+    // The billing contact email
+    // String billingContactEmail
+    test('to test the property `billingContactEmail`', () async {
       // TODO
     });
 
@@ -43,9 +31,21 @@ void main() {
       // TODO
     });
 
-    // The billing contact email
-    // String billingContactEmail
-    test('to test the property `billingContactEmail`', () async {
+    // If Budget order line, the budget amount.
+    // num budgetAmount
+    test('to test the property `budgetAmount`', () async {
+      // TODO
+    });
+
+    // End date of time period. Format: YYYY-MM-DD
+    // String endDate
+    test('to test the property `endDate`', () async {
+      // TODO
+    });
+
+    // The media contact email
+    // String mediaContactEmail
+    test('to test the property `mediaContactEmail`', () async {
       // TODO
     });
 
@@ -61,15 +61,15 @@ void main() {
       // TODO
     });
 
-    // The media contact email
-    // String mediaContactEmail
-    test('to test the property `mediaContactEmail`', () async {
+    // The po number
+    // String poNumber
+    test('to test the property `poNumber`', () async {
       // TODO
     });
 
-    // URL link for agency
-    // String agencyLink
-    test('to test the property `agencyLink`', () async {
+    // Starting date of time period. Format: YYYY-MM-DD
+    // String startDate
+    test('to test the property `startDate`', () async {
       // TODO
     });
 
@@ -79,45 +79,15 @@ void main() {
       // TODO
     });
 
-    // The UTC timestamp (to the nearest sec) of when terms were accepted
-    // int acceptedTermsTime
-    test('to test the property `acceptedTermsTime`', () async {
-      // TODO
-    });
-
-    // The pmp id
-    // String pmpId
-    test('to test the property `pmpId`', () async {
-      // TODO
-    });
-
-    // The order name
-    // String orderName
-    test('to test the property `orderName`', () async {
-      // TODO
-    });
-
-    // Type can be Budget or Perpetual
-    // String orderLineType
-    test('to test the property `orderLineType`', () async {
-      // TODO
-    });
-
     // The SFDC id for the terms
     // String acceptedTermsId
     test('to test the property `acceptedTermsId`', () async {
       // TODO
     });
 
-    // The bill-to company id
-    // String billtoCompanyId
-    test('to test the property `billtoCompanyId`', () async {
-      // TODO
-    });
-
-    // The bill-to business address id
-    // String billtoBusinessAddressId
-    test('to test the property `billtoBusinessAddressId`', () async {
+    // The UTC timestamp (to the nearest sec) of when terms were accepted
+    // int acceptedTermsTime
+    test('to test the property `acceptedTermsTime`', () async {
       // TODO
     });
 
@@ -127,14 +97,44 @@ void main() {
       // TODO
     });
 
+    // The bill-to business address id
+    // String billtoBusinessAddressId
+    test('to test the property `billtoBusinessAddressId`', () async {
+      // TODO
+    });
+
+    // The bill-to company id
+    // String billtoCompanyId
+    test('to test the property `billtoCompanyId`', () async {
+      // TODO
+    });
+
+    // Currency currencyInfo
+    test('to test the property `currencyInfo`', () async {
+      // TODO
+    });
+
     // If Ongoing (perpetual) order line, the estimated monthly spend
     // num estimatedMonthlySpend
     test('to test the property `estimatedMonthlySpend`', () async {
       // TODO
     });
 
-    // Currency currencyInfo
-    test('to test the property `currencyInfo`', () async {
+    // Type can be Budget or Perpetual
+    // String orderLineType
+    test('to test the property `orderLineType`', () async {
+      // TODO
+    });
+
+    // The order name
+    // String orderName
+    test('to test the property `orderName`', () async {
+      // TODO
+    });
+
+    // The pmp id
+    // String pmpId
+    test('to test the property `pmpId`', () async {
       // TODO
     });
 

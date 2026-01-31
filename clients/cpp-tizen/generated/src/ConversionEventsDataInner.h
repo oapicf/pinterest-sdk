@@ -9,6 +9,8 @@
 
 
 #include <string>
+#include "ConversionEventAppInfo.h"
+#include "ConversionEventDeviceInfo.h"
 #include "ConversionEventsUserData.h"
 #include "ConversionEvents_data_inner_custom_data.h"
 #include "Object.h"
@@ -47,69 +49,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-	 */
-	std::string getEventName();
-
-	/*! \brief Set <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-	 */
-	void setEventName(std::string  event_name);
-	/*! \brief Get <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+	/*! \brief Get <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
 	 */
 	std::string getActionSource();
 
-	/*! \brief Set <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+	/*! \brief Set <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
 	 */
 	void setActionSource(std::string  action_source);
-	/*! \brief Get The time when the event happened. Unix timestamp in seconds.
-	 */
-	long long getEventTime();
-
-	/*! \brief Set The time when the event happened. Unix timestamp in seconds.
-	 */
-	void setEventTime(long long  event_time);
-	/*! \brief Get A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-	 */
-	std::string getEventId();
-
-	/*! \brief Set A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-	 */
-	void setEventId(std::string  event_id);
-	/*! \brief Get URL of the web conversion event.
-	 */
-	std::string getEventSourceUrl();
-
-	/*! \brief Set URL of the web conversion event.
-	 */
-	void setEventSourceUrl(std::string  event_source_url);
-	/*! \brief Get When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-	 */
-	bool getOptOut();
-
-	/*! \brief Set When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-	 */
-	void setOptOut(bool  opt_out);
-	/*! \brief Get The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
-	 */
-	std::string getPartnerName();
-
-	/*! \brief Set The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
-	 */
-	void setPartnerName(std::string  partner_name);
-	/*! \brief Get 
-	 */
-	ConversionEventsUserData getUserData();
-
-	/*! \brief Set 
-	 */
-	void setUserData(ConversionEventsUserData  user_data);
-	/*! \brief Get 
-	 */
-	ConversionEvents_data_inner_custom_data getCustomData();
-
-	/*! \brief Set 
-	 */
-	void setCustomData(ConversionEvents_data_inner_custom_data  custom_data);
 	/*! \brief Get The app store app ID.
 	 */
 	std::string getAppId();
@@ -117,6 +63,13 @@ public:
 	/*! \brief Set The app store app ID.
 	 */
 	void setAppId(std::string  app_id);
+	/*! \brief Get 
+	 */
+	ConversionEventAppInfo getAppInfo();
+
+	/*! \brief Set 
+	 */
+	void setAppInfo(ConversionEventAppInfo  app_info);
 	/*! \brief Get Name of the app.
 	 */
 	std::string getAppName();
@@ -131,6 +84,13 @@ public:
 	/*! \brief Set Version of the app.
 	 */
 	void setAppVersion(std::string  app_version);
+	/*! \brief Get 
+	 */
+	ConversionEvents_data_inner_custom_data getCustomData();
+
+	/*! \brief Set 
+	 */
+	void setCustomData(ConversionEvents_data_inner_custom_data  custom_data);
 	/*! \brief Get Brand of the user device.
 	 */
 	std::string getDeviceBrand();
@@ -145,6 +105,13 @@ public:
 	/*! \brief Set User device's mobile carrier.
 	 */
 	void setDeviceCarrier(std::string  device_carrier);
+	/*! \brief Get 
+	 */
+	ConversionEventDeviceInfo getDeviceInfo();
+
+	/*! \brief Set 
+	 */
+	void setDeviceInfo(ConversionEventDeviceInfo  device_info);
 	/*! \brief Get Model of the user device.
 	 */
 	std::string getDeviceModel();
@@ -159,20 +126,34 @@ public:
 	/*! \brief Set Type of the user device.
 	 */
 	void setDeviceType(std::string  device_type);
-	/*! \brief Get Version of the device operating system.
+	/*! \brief Get A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
 	 */
-	std::string getOsVersion();
+	std::string getEventId();
 
-	/*! \brief Set Version of the device operating system.
+	/*! \brief Set A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
 	 */
-	void setOsVersion(std::string  os_version);
-	/*! \brief Get Whether the event occurred when the user device was connected to wifi.
+	void setEventId(std::string  event_id);
+	/*! \brief Get <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
 	 */
-	bool getWifi();
+	std::string getEventName();
 
-	/*! \brief Set Whether the event occurred when the user device was connected to wifi.
+	/*! \brief Set <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
 	 */
-	void setWifi(bool  wifi);
+	void setEventName(std::string  event_name);
+	/*! \brief Get URL of the web conversion event.
+	 */
+	std::string getEventSourceUrl();
+
+	/*! \brief Set URL of the web conversion event.
+	 */
+	void setEventSourceUrl(std::string  event_source_url);
+	/*! \brief Get The time when the event happened. Unix timestamp in seconds.
+	 */
+	long long getEventTime();
+
+	/*! \brief Set The time when the event happened. Unix timestamp in seconds.
+	 */
+	void setEventTime(long long  event_time);
 	/*! \brief Get Two-character ISO-639-1 language code indicating the user's language.
 	 */
 	std::string getLanguage();
@@ -180,27 +161,64 @@ public:
 	/*! \brief Set Two-character ISO-639-1 language code indicating the user's language.
 	 */
 	void setLanguage(std::string  language);
+	/*! \brief Get When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+	 */
+	bool getOptOut();
+
+	/*! \brief Set When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+	 */
+	void setOptOut(bool  opt_out);
+	/*! \brief Get Version of the device operating system.
+	 */
+	std::string getOsVersion();
+
+	/*! \brief Set Version of the device operating system.
+	 */
+	void setOsVersion(std::string  os_version);
+	/*! \brief Get The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+	 */
+	std::string getPartnerName();
+
+	/*! \brief Set The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+	 */
+	void setPartnerName(std::string  partner_name);
+	/*! \brief Get 
+	 */
+	ConversionEventsUserData getUserData();
+
+	/*! \brief Set 
+	 */
+	void setUserData(ConversionEventsUserData  user_data);
+	/*! \brief Get Whether the event occurred when the user device was connected to wifi.
+	 */
+	bool getWifi();
+
+	/*! \brief Set Whether the event occurred when the user device was connected to wifi.
+	 */
+	void setWifi(bool  wifi);
 
 private:
-	std::string event_name;
 	std::string action_source;
-	long long event_time;
-	std::string event_id;
-	std::string event_source_url;
-	bool opt_out;
-	std::string partner_name;
-	ConversionEventsUserData user_data;
-	ConversionEvents_data_inner_custom_data custom_data;
 	std::string app_id;
+	ConversionEventAppInfo app_info;
 	std::string app_name;
 	std::string app_version;
+	ConversionEvents_data_inner_custom_data custom_data;
 	std::string device_brand;
 	std::string device_carrier;
+	ConversionEventDeviceInfo device_info;
 	std::string device_model;
 	std::string device_type;
-	std::string os_version;
-	bool wifi;
+	std::string event_id;
+	std::string event_name;
+	std::string event_source_url;
+	long long event_time;
 	std::string language;
+	bool opt_out;
+	std::string os_version;
+	std::string partner_name;
+	ConversionEventsUserData user_data;
+	bool wifi;
 	void __init();
 	void __cleanup();
 

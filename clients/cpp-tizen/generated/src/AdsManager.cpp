@@ -284,7 +284,7 @@ static bool adTargetingAnalyticsGetProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool adTargetingAnalyticsGetHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsAdTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsAdTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -359,11 +359,20 @@ static bool adTargetingAnalyticsGetHelper(char * accessToken,
 		queryParams.erase("conversion_report_time");
 	}
 
+	for (std::list
+	<ConversionReportAttributionType>::iterator queryIter = attributionTypes.begin(); queryIter != attributionTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "ConversionReportAttributionType");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("attributionTypes", itemAt));
+	}
+	
 
-	itemAtq = stringify(&attributionTypes, "ConversionReportAttributionType");
-	queryParams.insert(pair<string, string>("attribution_types", itemAtq));
+	itemAtq = stringify(&reportingTimezone, "ReportingTimeZone");
+	queryParams.insert(pair<string, string>("reporting_timezone", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("attribution_types");
+		queryParams.erase("reporting_timezone");
 	}
 
 	string mBody = "";
@@ -426,22 +435,22 @@ static bool adTargetingAnalyticsGetHelper(char * accessToken,
 
 
 bool AdsManager::adTargetingAnalyticsGetAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsAdTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsAdTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
 	return adTargetingAnalyticsGetHelper(accessToken,
-	adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, 
+	adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool AdsManager::adTargetingAnalyticsGetSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsAdTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsAdTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
 	return adTargetingAnalyticsGetHelper(accessToken,
-	adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, 
+	adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, 
 	handler, userData, false);
 }
 
@@ -493,7 +502,7 @@ static bool adsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool adsAnalyticsHelper(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, std::list<std::string> adIds, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<std::string> pinIds, std::list<std::string> campaignIds, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, std::list<std::string> adIds, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<std::string> pinIds, std::list<std::string> campaignIds, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -583,6 +592,13 @@ static bool adsAnalyticsHelper(char * accessToken,
 		queryParams.insert(pair<string, string>("campaignIds", itemAt));
 	}
 	
+
+	itemAtq = stringify(&reportingTimezone, "ReportingTimeZone");
+	queryParams.insert(pair<string, string>("reporting_timezone", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("reporting_timezone");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -643,22 +659,22 @@ static bool adsAnalyticsHelper(char * accessToken,
 
 
 bool AdsManager::adsAnalyticsAsync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, std::list<std::string> adIds, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<std::string> pinIds, std::list<std::string> campaignIds, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, std::list<std::string> adIds, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<std::string> pinIds, std::list<std::string> campaignIds, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, 
+	adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool AdsManager::adsAnalyticsSync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, std::list<std::string> adIds, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<std::string> pinIds, std::list<std::string> campaignIds, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, std::list<std::string> adIds, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<std::string> pinIds, std::list<std::string> campaignIds, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, 
+	adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone, 
 	handler, userData, false);
 }
 

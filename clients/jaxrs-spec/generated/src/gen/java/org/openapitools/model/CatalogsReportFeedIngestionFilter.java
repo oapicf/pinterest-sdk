@@ -16,8 +16,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsReportFeedIngestionFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionFilter   {
+  private String feedId;
+  private String processingResultId;
   public enum ReportTypeEnum {
 
     FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES"));
@@ -66,37 +68,16 @@ public class CatalogsReportFeedIngestionFilter   {
 }
 
   private ReportTypeEnum reportType;
-  private String feedId;
-  private String processingResultId;
 
   public CatalogsReportFeedIngestionFilter() {
   }
 
   @JsonCreator
   public CatalogsReportFeedIngestionFilter(
-    @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType,
-    @JsonProperty(required = true, value = "feed_id") String feedId
+    @JsonProperty(required = true, value = "feed_id") String feedId,
+    @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType
   ) {
-    this.reportType = reportType;
     this.feedId = feedId;
-  }
-
-  /**
-   **/
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "report_type")
-  @NotNull public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  @JsonProperty(required = true, value = "report_type")
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
@@ -140,6 +121,25 @@ public class CatalogsReportFeedIngestionFilter   {
     this.processingResultId = processingResultId;
   }
 
+  /**
+   **/
+  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "report_type")
+  @NotNull public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  @JsonProperty(required = true, value = "report_type")
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -150,14 +150,14 @@ public class CatalogsReportFeedIngestionFilter   {
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @Override
@@ -165,9 +165,9 @@ public class CatalogsReportFeedIngestionFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,9 +7,9 @@ A creative assets item to be updated.
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsUpdatableCreativeAssetsAttributes](CatalogsUpdatableCreativeAssetsAttributes.md)
 `creativeAssetsId` | string
 `operation` | string
-`attributes` | [CatalogsUpdatableCreativeAssetsAttributes](CatalogsUpdatableCreativeAssetsAttributes.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CatalogsUpdateCreativeAssetsItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "creativeAssetsId": DS0294-M,
   "operation": null,
-  "attributes": null,
 } satisfies CatalogsUpdateCreativeAssetsItem
 
 console.log(example)

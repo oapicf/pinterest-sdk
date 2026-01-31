@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "AdAccountGetSubscriptionResponse.h"
+#include "LeadSubscription.h"
 #include <list>
 #include "Object.h"
 
@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<AdAccountGetSubscriptionResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <AdAccountGetSubscriptionResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<LeadSubscription> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <LeadSubscription> items);
 
 private:
-	std::list <AdAccountGetSubscriptionResponse>items;
 	std::string bookmark;
+	std::list <LeadSubscription>items;
 	void __init();
 	void __cleanup();
 

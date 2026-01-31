@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsVerticalProductGroup[]**](CatalogsVerticalProductGroup.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CatalogsVerticalProductGroup[]**](CatalogsVerticalProductGroup.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupsList200Response = Initialize-PSOpenAPIToolsCatalogsProductGroupsList200Response  -Items null `
- -Bookmark null
+$CatalogsProductGroupsList200Response = Initialize-PSOpenAPIToolsCatalogsProductGroupsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

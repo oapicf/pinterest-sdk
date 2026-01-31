@@ -6,31 +6,31 @@
 
 
 static keyword_update_t *keyword_update_create_internal(
-    char *id,
     int archived,
-    int bid
+    int bid,
+    char *id
     ) {
     keyword_update_t *keyword_update_local_var = malloc(sizeof(keyword_update_t));
     if (!keyword_update_local_var) {
         return NULL;
     }
-    keyword_update_local_var->id = id;
     keyword_update_local_var->archived = archived;
     keyword_update_local_var->bid = bid;
+    keyword_update_local_var->id = id;
 
     keyword_update_local_var->_library_owned = 1;
     return keyword_update_local_var;
 }
 
 __attribute__((deprecated)) keyword_update_t *keyword_update_create(
-    char *id,
     int archived,
-    int bid
+    int bid,
+    char *id
     ) {
     return keyword_update_create_internal (
-        id,
         archived,
-        bid
+        bid,
+        id
         );
 }
 
@@ -53,15 +53,6 @@ void keyword_update_free(keyword_update_t *keyword_update) {
 cJSON *keyword_update_convertToJSON(keyword_update_t *keyword_update) {
     cJSON *item = cJSON_CreateObject();
 
-    // keyword_update->id
-    if (!keyword_update->id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "id", keyword_update->id) == NULL) {
-    goto fail; //String
-    }
-
-
     // keyword_update->archived
     if(keyword_update->archived) {
     if(cJSON_AddBoolToObject(item, "archived", keyword_update->archived) == NULL) {
@@ -77,6 +68,15 @@ cJSON *keyword_update_convertToJSON(keyword_update_t *keyword_update) {
     }
     }
 
+
+    // keyword_update->id
+    if (!keyword_update->id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "id", keyword_update->id) == NULL) {
+    goto fail; //String
+    }
+
     return item;
 fail:
     if (item) {
@@ -88,21 +88,6 @@ fail:
 keyword_update_t *keyword_update_parseFromJSON(cJSON *keyword_updateJSON){
 
     keyword_update_t *keyword_update_local_var = NULL;
-
-    // keyword_update->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(keyword_updateJSON, "id");
-    if (cJSON_IsNull(id)) {
-        id = NULL;
-    }
-    if (!id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(id))
-    {
-    goto end; //String
-    }
 
     // keyword_update->archived
     cJSON *archived = cJSON_GetObjectItemCaseSensitive(keyword_updateJSON, "archived");
@@ -128,11 +113,26 @@ keyword_update_t *keyword_update_parseFromJSON(cJSON *keyword_updateJSON){
     }
     }
 
+    // keyword_update->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(keyword_updateJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (!id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(id))
+    {
+    goto end; //String
+    }
+
 
     keyword_update_local_var = keyword_update_create_internal (
-        strdup(id->valuestring),
         archived ? archived->valueint : 0,
-        bid ? bid->valuedouble : 0
+        bid ? bid->valuedouble : 0,
+        strdup(id->valuestring)
         );
 
     return keyword_update_local_var;

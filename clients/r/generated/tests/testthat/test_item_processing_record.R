@@ -5,14 +5,6 @@ context("Test ItemProcessingRecord")
 
 model_instance <- ItemProcessingRecord$new()
 
-test_that("item_id", {
-  # tests for the property `item_id` (character)
-  # The catalog item id in the merchant namespace
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
-})
-
 test_that("errors", {
   # tests for the property `errors` (array[ItemValidationEvent])
   # Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
@@ -21,12 +13,12 @@ test_that("errors", {
   #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
 
-test_that("warnings", {
-  # tests for the property `warnings` (array[ItemValidationEvent])
-  # Array with the validation warnings for the item processing record
+test_that("item_id", {
+  # tests for the property `item_id` (character)
+  # The catalog item id in the merchant namespace
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`warnings`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
@@ -34,4 +26,12 @@ test_that("status", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
+test_that("warnings", {
+  # tests for the property `warnings` (array[ItemValidationEvent])
+  # Array with the validation warnings for the item processing record
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`warnings`, "EXPECTED_RESULT")
 })

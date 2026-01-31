@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ItemProcessingRecord`
 --
-SELECT `item_id`, `errors`, `warnings`, `status` FROM `ItemProcessingRecord` WHERE 1;
+SELECT `errors`, `item_id`, `status`, `warnings` FROM `ItemProcessingRecord` WHERE 1;
 
 --
 -- INSERT template for table `ItemProcessingRecord`
 --
-INSERT INTO `ItemProcessingRecord`(`item_id`, `errors`, `warnings`, `status`) VALUES (?, ?, ?, ?);
+INSERT INTO `ItemProcessingRecord`(`errors`, `item_id`, `status`, `warnings`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ItemProcessingRecord`
 --
-UPDATE `ItemProcessingRecord` SET `item_id` = ?, `errors` = ?, `warnings` = ?, `status` = ? WHERE 1;
+UPDATE `ItemProcessingRecord` SET `errors` = ?, `item_id` = ?, `status` = ?, `warnings` = ? WHERE 1;
 
 --
 -- DELETE template for table `ItemProcessingRecord`

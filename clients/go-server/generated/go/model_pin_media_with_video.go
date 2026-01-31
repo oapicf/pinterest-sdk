@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,26 +17,37 @@ package openapi
 // PinMediaWithVideo - Pin with video.
 type PinMediaWithVideo struct {
 
-	Images PinMediaWithImageAllOfImages `json:"images,omitempty"`
-
 	CoverImageUrl string `json:"cover_image_url,omitempty"`
 
-	// Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	// Duration (in miliseconds). Field maybe null after creation due to video processing time.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// Height (in pixels). Field maybe null after creation due to video processing time.
+	Height *int32 `json:"height,omitempty"`
+
+	Images ImageSize `json:"images,omitempty"`
+
+	MediaType string `json:"media_type"`
+
+	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl *string `json:"video_url,omitempty"`
 
-	// Duration (in milliseconds)
-	Duration float32 `json:"duration,omitempty"`
-
-	// Height (in pixels)
-	Height int32 `json:"height,omitempty"`
-
-	// Width (in pixels)
-	Width int32 `json:"width,omitempty"`
+	// Width (in pixels). Field maybe null after creation due to video processing time.
+	Width *int32 `json:"width,omitempty"`
 }
 
 // AssertPinMediaWithVideoRequired checks if the required fields are not zero-ed
 func AssertPinMediaWithVideoRequired(obj PinMediaWithVideo) error {
-	if err := AssertPinMediaWithImageAllOfImagesRequired(obj.Images); err != nil {
+	elements := map[string]interface{}{
+		"media_type": obj.MediaType,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
+	if err := AssertImageSizeRequired(obj.Images); err != nil {
 		return err
 	}
 	return nil
@@ -44,7 +55,7 @@ func AssertPinMediaWithVideoRequired(obj PinMediaWithVideo) error {
 
 // AssertPinMediaWithVideoConstraints checks if the values respects the defined constraints
 func AssertPinMediaWithVideoConstraints(obj PinMediaWithVideo) error {
-	if err := AssertPinMediaWithImageAllOfImagesConstraints(obj.Images); err != nil {
+	if err := AssertImageSizeConstraints(obj.Images); err != nil {
 		return err
 	}
 	return nil

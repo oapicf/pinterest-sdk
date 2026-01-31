@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.MediaUploadAllOfUploadParameters;
+import apimodels.MediaUploadParameters;
 import apimodels.MediaUploadType;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -11,26 +11,29 @@ import javax.validation.Valid;
 /**
  * Media upload that has been registered but not uploaded/processed yet.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class MediaUpload   {
   @JsonProperty("media_id")
-  
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
   private String mediaId;
 
   @JsonProperty("media_type")
-  @Valid
+  @NotNull
+@Valid
 
   private MediaUploadType mediaType;
-
-  @JsonProperty("upload_url")
-  
-  private String uploadUrl;
 
   @JsonProperty("upload_parameters")
   @Valid
 
-  private MediaUploadAllOfUploadParameters uploadParameters;
+  private MediaUploadParameters uploadParameters;
+
+  @JsonProperty("upload_url")
+  
+  private String uploadUrl;
 
   public MediaUpload mediaId(String mediaId) {
     this.mediaId = mediaId;
@@ -66,6 +69,23 @@ public class MediaUpload   {
     this.mediaType = mediaType;
   }
 
+  public MediaUpload uploadParameters(MediaUploadParameters uploadParameters) {
+    this.uploadParameters = uploadParameters;
+    return this;
+  }
+
+   /**
+   * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+   * @return uploadParameters
+  **/
+  public MediaUploadParameters getUploadParameters() {
+    return uploadParameters;
+  }
+
+  public void setUploadParameters(MediaUploadParameters uploadParameters) {
+    this.uploadParameters = uploadParameters;
+  }
+
   public MediaUpload uploadUrl(String uploadUrl) {
     this.uploadUrl = uploadUrl;
     return this;
@@ -83,23 +103,6 @@ public class MediaUpload   {
     this.uploadUrl = uploadUrl;
   }
 
-  public MediaUpload uploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
-    this.uploadParameters = uploadParameters;
-    return this;
-  }
-
-   /**
-   * Get uploadParameters
-   * @return uploadParameters
-  **/
-  public MediaUploadAllOfUploadParameters getUploadParameters() {
-    return uploadParameters;
-  }
-
-  public void setUploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
-    this.uploadParameters = uploadParameters;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -112,13 +115,13 @@ public class MediaUpload   {
     MediaUpload mediaUpload = (MediaUpload) o;
     return Objects.equals(mediaId, mediaUpload.mediaId) &&
         Objects.equals(mediaType, mediaUpload.mediaType) &&
-        Objects.equals(uploadUrl, mediaUpload.uploadUrl) &&
-        Objects.equals(uploadParameters, mediaUpload.uploadParameters);
+        Objects.equals(uploadParameters, mediaUpload.uploadParameters) &&
+        Objects.equals(uploadUrl, mediaUpload.uploadUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mediaId, mediaType, uploadUrl, uploadParameters);
+    return Objects.hash(mediaId, mediaType, uploadParameters, uploadUrl);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -129,8 +132,8 @@ public class MediaUpload   {
     
     sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
-    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("    uploadParameters: ").append(toIndentedString(uploadParameters)).append("\n");
+    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

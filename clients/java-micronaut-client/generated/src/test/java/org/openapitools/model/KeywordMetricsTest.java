@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import java.math.BigDecimal;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -18,14 +17,6 @@ public class KeywordMetricsTest {
     @Test
     public void testKeywordMetrics() {
         // TODO: test KeywordMetrics
-    }
-
-    /**
-     * Test the property 'avgCpcInMicroCurrency'
-     */
-    @Test
-    public void avgCpcInMicroCurrencyTest() {
-        // TODO: test avgCpcInMicroCurrency
     }
 
     /**

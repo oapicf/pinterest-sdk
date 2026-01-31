@@ -11,9 +11,9 @@ import org.openapitools.model.TemplateResponseDateRangeRelativeDateRange;
 @Canonical
 class TemplateResponseDateRange {
     
+    TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange
+    
     TemplateResponseDateRangeDynamicDateRange dynamicDateRange
     
     TemplateResponseDateRangeRelativeDateRange relativeDateRange
-    
-    TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange
 }

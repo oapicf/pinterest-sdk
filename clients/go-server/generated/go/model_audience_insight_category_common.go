@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,15 +16,15 @@ package openapi
 
 type AudienceInsightCategoryCommon struct {
 
+	Id string `json:"id,omitempty"`
+
+	Index float32 `json:"index,omitempty"`
+
 	Key string `json:"key,omitempty"`
 
 	Name string `json:"name,omitempty"`
 
 	Ratio float32 `json:"ratio,omitempty"`
-
-	Index float32 `json:"index,omitempty"`
-
-	Id string `json:"id,omitempty"`
 }
 
 // AssertAudienceInsightCategoryCommonRequired checks if the required fields are not zero-ed

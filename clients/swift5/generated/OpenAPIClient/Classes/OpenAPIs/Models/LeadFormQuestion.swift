@@ -13,35 +13,35 @@ import AnyCodable
 public struct LeadFormQuestion: Codable, JSONEncodable, Hashable {
 
     public static let customQuestionOptionsRule = ArrayRule(minItems: 0, maxItems: 5, uniqueItems: false)
-    public var questionType: LeadFormQuestionType?
     public var customQuestionFieldType: LeadFormQuestionFieldType?
     /** Question label for a custom question. */
     public var customQuestionLabel: String?
     /** Question options for a custom question. */
     public var customQuestionOptions: [String]?
+    public var questionType: LeadFormQuestionType?
 
-    public init(questionType: LeadFormQuestionType? = nil, customQuestionFieldType: LeadFormQuestionFieldType? = nil, customQuestionLabel: String? = nil, customQuestionOptions: [String]? = nil) {
-        self.questionType = questionType
+    public init(customQuestionFieldType: LeadFormQuestionFieldType? = nil, customQuestionLabel: String? = nil, customQuestionOptions: [String]? = nil, questionType: LeadFormQuestionType? = nil) {
         self.customQuestionFieldType = customQuestionFieldType
         self.customQuestionLabel = customQuestionLabel
         self.customQuestionOptions = customQuestionOptions
+        self.questionType = questionType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case questionType = "question_type"
         case customQuestionFieldType = "custom_question_field_type"
         case customQuestionLabel = "custom_question_label"
         case customQuestionOptions = "custom_question_options"
+        case questionType = "question_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(questionType, forKey: .questionType)
         try container.encodeIfPresent(customQuestionFieldType, forKey: .customQuestionFieldType)
         try container.encodeIfPresent(customQuestionLabel, forKey: .customQuestionLabel)
         try container.encodeIfPresent(customQuestionOptions, forKey: .customQuestionOptions)
+        try container.encodeIfPresent(questionType, forKey: .questionType)
     }
 }
 

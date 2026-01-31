@@ -2,12 +2,12 @@
 Protected Class AdGroupsList200Response
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.AdGroupResponse
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		items() As OpenAPIClient.Models.AdGroupResponse
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class AdGroupsList200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdGroupResponse"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdGroupResponse"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

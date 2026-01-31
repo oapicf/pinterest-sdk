@@ -1,6 +1,7 @@
 const samples = require('../samples/BillingApi');
 const AdsCreditRedeemRequest = require('../models/AdsCreditRedeemRequest');
 const AdsCreditRedeemResponse = require('../models/AdsCreditRedeemResponse');
+const BillingInvoiceDownloadResponse = require('../models/BillingInvoiceDownloadResponse');
 const Error = require('../models/Error');
 const SSIOAccountResponse = require('../models/SSIOAccountResponse');
 const SSIOCreateInsertionOrderRequest = require('../models/SSIOCreateInsertionOrderRequest');
@@ -9,6 +10,7 @@ const SSIOEditInsertionOrderRequest = require('../models/SSIOEditInsertionOrderR
 const SSIOEditInsertionOrderResponse = require('../models/SSIOEditInsertionOrderResponse');
 const SSIOInsertionOrderStatusResponse = require('../models/SSIOInsertionOrderStatusResponse');
 const ads_credits_discounts_get_200_response = require('../models/ads_credits_discounts_get_200_response');
+const billing_invoices_get_200_response = require('../models/billing_invoices_get_200_response');
 const billing_profiles_get_200_response = require('../models/billing_profiles_get_200_response');
 const ssio_insertion_orders_status_get_by_ad_account_200_response = require('../models/ssio_insertion_orders_status_get_by_ad_account_200_response');
 const ssio_order_lines_get_by_ad_account_200_response = require('../models/ssio_order_lines_get_by_ad_account_200_response');
@@ -20,7 +22,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Redeem ad credits',
-            description: 'Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
             hidden: false,
         },
         operation: {
@@ -65,7 +67,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get ads credit discounts',
-            description: 'Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
             hidden: false,
         },
         operation: {
@@ -115,12 +117,171 @@ module.exports = {
             sample: samples['ads_credits_discounts_get_200_responseSample']
         }
     },
+    billingInvoiceDownload/get: {
+        key: 'billingInvoiceDownload/get',
+        noun: 'billing',
+        display: {
+            label: 'Get download url for a billing invoice',
+            description: 'Get download url for a billing invoice.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'billing_invoice_id',
+                    label: 'Unique identifier of a billing invoice.',
+                    type: 'string',
+                    required: true,
+                },
+            ],
+            outputFields: [
+                ...BillingInvoiceDownloadResponse.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'billingInvoiceDownload/get', response.json);
+                    return results;
+                })
+            },
+            sample: samples['BillingInvoiceDownloadResponseSample']
+        }
+    },
+    billingInvoices/get: {
+        key: 'billingInvoices/get',
+        noun: 'billing',
+        display: {
+            label: 'Get billing invoices',
+            description: 'Get billing invoices in the advertiser account.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    type: 'integer',
+                },
+                {
+                    key: 'sort',
+                    label: 'Field of which to sort billing invoices',
+                    type: 'string',
+                    choices: [
+                        'DUE_DATE',
+                        'BILLING_PERIOD',
+                        'DOCUMENT_TYPE',
+                        'TOTAL_AMOUNT',
+                        'INVOICE_NUMBER',
+                    ],
+                },
+                {
+                    key: 'order',
+                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
+                    type: 'string',
+                    choices: [
+                        'ASCENDING',
+                        'DESCENDING',
+                    ],
+                },
+                {
+                    key: 'status',
+                    label: 'Status of billing invoices to filter by',
+                    type: 'string',
+                    choices: [
+                        'OPEN',
+                        'CLOSED',
+                    ],
+                },
+                {
+                    key: 'document_type',
+                    label: 'Document type of billing invoices to filter by',
+                    type: 'string',
+                    choices: [
+                        'INVOICE',
+                        'CREDIT_MEMO',
+                    ],
+                },
+                {
+                    key: 'start_due_date',
+                    label: 'Starting point for due dates when searching for invoices. Format: YYYY-MM-DD',
+                    type: 'string',
+                },
+                {
+                    key: 'end_due_date',
+                    label: 'Ending point for due dates when searching for invoices. Format: YYYY-MM-DD',
+                    type: 'string',
+                },
+            ],
+            outputFields: [
+                ...billing_invoices_get_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/billing_invoices'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                        'sort': bundle.inputData?.['sort'],
+                        'order': bundle.inputData?.['order'],
+                        'status': bundle.inputData?.['status'],
+                        'document_type': bundle.inputData?.['document_type'],
+                        'start_due_date': bundle.inputData?.['start_due_date'],
+                        'end_due_date': bundle.inputData?.['end_due_date'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'billingInvoices/get', response.json);
+                    return results;
+                })
+            },
+            sample: samples['billing_invoices_get_200_responseSample']
+        }
+    },
     billingProfiles/get: {
         key: 'billingProfiles/get',
         noun: 'billing',
         display: {
             label: 'Get billing profiles',
-            description: 'Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
             hidden: false,
         },
         operation: {

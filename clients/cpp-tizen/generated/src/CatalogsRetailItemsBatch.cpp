@@ -24,11 +24,11 @@ void
 CatalogsRetailItemsBatch::__init()
 {
 	//batch_id = std::string();
-	//created_time = null;
-	//completed_time = null;
-	//status = new BatchOperationStatus();
 	//catalog_type = new CatalogsType();
+	//completed_time = null;
+	//created_time = null;
 	//new std::list()std::list> items;
+	//status = new BatchOperationStatus();
 }
 
 void
@@ -39,30 +39,30 @@ CatalogsRetailItemsBatch::__cleanup()
 	//delete batch_id;
 	//batch_id = NULL;
 	//}
-	//if(created_time != NULL) {
+	//if(catalog_type != NULL) {
 	//
-	//delete created_time;
-	//created_time = NULL;
+	//delete catalog_type;
+	//catalog_type = NULL;
 	//}
 	//if(completed_time != NULL) {
 	//
 	//delete completed_time;
 	//completed_time = NULL;
 	//}
-	//if(status != NULL) {
+	//if(created_time != NULL) {
 	//
-	//delete status;
-	//status = NULL;
-	//}
-	//if(catalog_type != NULL) {
-	//
-	//delete catalog_type;
-	//catalog_type = NULL;
+	//delete created_time;
+	//created_time = NULL;
 	//}
 	//if(items != NULL) {
 	//items.RemoveAll(true);
 	//delete items;
 	//items = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//
 }
@@ -83,14 +83,17 @@ CatalogsRetailItemsBatch::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_timeKey = "created_time";
-	node = json_object_get_member(pJsonObject, created_timeKey);
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_time, node, "std::string", "");
+		if (isprimitive("CatalogsType")) {
+			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
 		} else {
+			
+			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -105,31 +108,14 @@ CatalogsRetailItemsBatch::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BatchOperationStatus")) {
-			jsonToValue(&status, node, "BatchOperationStatus", "BatchOperationStatus");
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_time, node, "std::string", "");
 		} else {
-			
-			BatchOperationStatus* obj = static_cast<BatchOperationStatus*> (&status);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *catalog_typeKey = "catalog_type";
-	node = json_object_get_member(pJsonObject, catalog_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
-		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -157,6 +143,20 @@ CatalogsRetailItemsBatch::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("BatchOperationStatus")) {
+			jsonToValue(&status, node, "BatchOperationStatus", "BatchOperationStatus");
+		} else {
+			
+			BatchOperationStatus* obj = static_cast<BatchOperationStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 CatalogsRetailItemsBatch::CatalogsRetailItemsBatch(char* json)
@@ -178,38 +178,6 @@ CatalogsRetailItemsBatch::toJson()
 	}
 	const gchar *batch_idKey = "batch_id";
 	json_object_set_member(pJsonObject, batch_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCreatedTime();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *created_timeKey = "created_time";
-	json_object_set_member(pJsonObject, created_timeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCompletedTime();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *completed_timeKey = "completed_time";
-	json_object_set_member(pJsonObject, completed_timeKey, node);
-	if (isprimitive("BatchOperationStatus")) {
-		BatchOperationStatus obj = getStatus();
-		node = converttoJson(&obj, "BatchOperationStatus", "");
-	}
-	else {
-		
-		BatchOperationStatus obj = static_cast<BatchOperationStatus> (getStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("CatalogsType")) {
 		CatalogsType obj = getCatalogType();
 		node = converttoJson(&obj, "CatalogsType", "");
@@ -224,6 +192,24 @@ CatalogsRetailItemsBatch::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCompletedTime();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *completed_timeKey = "completed_time";
+	json_object_set_member(pJsonObject, completed_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreatedTime();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
 	if (isprimitive("ItemProcessingRecord")) {
 		list<ItemProcessingRecord> new_list = static_cast<list <ItemProcessingRecord> > (getItems());
 		node = converttoJson(&new_list, "ItemProcessingRecord", "array");
@@ -249,6 +235,20 @@ CatalogsRetailItemsBatch::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
+	if (isprimitive("BatchOperationStatus")) {
+		BatchOperationStatus obj = getStatus();
+		node = converttoJson(&obj, "BatchOperationStatus", "");
+	}
+	else {
+		
+		BatchOperationStatus obj = static_cast<BatchOperationStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -269,16 +269,16 @@ CatalogsRetailItemsBatch::setBatchId(std::string  batch_id)
 	this->batch_id = batch_id;
 }
 
-std::string
-CatalogsRetailItemsBatch::getCreatedTime()
+CatalogsType
+CatalogsRetailItemsBatch::getCatalogType()
 {
-	return created_time;
+	return catalog_type;
 }
 
 void
-CatalogsRetailItemsBatch::setCreatedTime(std::string  created_time)
+CatalogsRetailItemsBatch::setCatalogType(CatalogsType  catalog_type)
 {
-	this->created_time = created_time;
+	this->catalog_type = catalog_type;
 }
 
 std::string
@@ -293,28 +293,16 @@ CatalogsRetailItemsBatch::setCompletedTime(std::string  completed_time)
 	this->completed_time = completed_time;
 }
 
-BatchOperationStatus
-CatalogsRetailItemsBatch::getStatus()
+std::string
+CatalogsRetailItemsBatch::getCreatedTime()
 {
-	return status;
+	return created_time;
 }
 
 void
-CatalogsRetailItemsBatch::setStatus(BatchOperationStatus  status)
+CatalogsRetailItemsBatch::setCreatedTime(std::string  created_time)
 {
-	this->status = status;
-}
-
-CatalogsType
-CatalogsRetailItemsBatch::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-CatalogsRetailItemsBatch::setCatalogType(CatalogsType  catalog_type)
-{
-	this->catalog_type = catalog_type;
+	this->created_time = created_time;
 }
 
 std::list<ItemProcessingRecord>
@@ -327,6 +315,18 @@ void
 CatalogsRetailItemsBatch::setItems(std::list <ItemProcessingRecord> items)
 {
 	this->items = items;
+}
+
+BatchOperationStatus
+CatalogsRetailItemsBatch::getStatus()
+{
+	return status;
+}
+
+void
+CatalogsRetailItemsBatch::setStatus(BatchOperationStatus  status)
+{
+	this->status = status;
 }
 
 

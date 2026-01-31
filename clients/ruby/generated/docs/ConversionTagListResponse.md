@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;ConversionTagResponse&gt;**](ConversionTagResponse.md) |  | [optional] |
+| **items** | [**Array&lt;ConversionTag&gt;**](ConversionTag.md) |  | [optional] |
 
 ## Example
 

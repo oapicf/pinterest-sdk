@@ -27,35 +27,35 @@ pinterest_rest_api_account_ACCOUNTTYPE_e account_account_type_FromString(char* a
 
 
 typedef struct account_t {
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_type; //enum
-    char *id; // string
-    char *profile_image; // string
-    char *website_url; // string
-    char *username; // string
     char *about; // string
-    char *business_name; // string
+    pinterest_rest_api_account_ACCOUNTTYPE_e account_type; //enum
     int board_count; //numeric
-    int pin_count; //numeric
+    char *business_name; // string
     int follower_count; //numeric
     int following_count; //numeric
+    char *id; // string
     int monthly_views; //numeric
+    int pin_count; //numeric
+    char *profile_image; // string
+    char *username; // string
+    char *website_url; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } account_t;
 
 __attribute__((deprecated)) account_t *account_create(
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
-    char *id,
-    char *profile_image,
-    char *website_url,
-    char *username,
     char *about,
-    char *business_name,
+    pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
     int board_count,
-    int pin_count,
+    char *business_name,
     int follower_count,
     int following_count,
-    int monthly_views
+    char *id,
+    int monthly_views,
+    int pin_count,
+    char *profile_image,
+    char *username,
+    char *website_url
 );
 
 void account_free(account_t *account);

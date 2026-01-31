@@ -29,19 +29,19 @@ public class AudienceDefinitionTest {
     }
 
     /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
      * Test the property 'scope'
      */
     @Test
     public void scopeTest() {
         // TODO: test scope
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

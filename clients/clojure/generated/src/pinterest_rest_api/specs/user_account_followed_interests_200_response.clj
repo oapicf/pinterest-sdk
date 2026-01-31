@@ -8,8 +8,8 @@
 
 (def user-account-followed-interests-200-response-data
   {
-   (ds/req :items) (s/coll-of interest-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of interest-spec)
    })
 
 (def user-account-followed-interests-200-response-spec

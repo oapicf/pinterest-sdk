@@ -62,18 +62,20 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   private LearningModeTypeEnum learningModeType;
+  private String reportingEvent;
 
   public OptimizationGoalMetadataConversionTagV3GoalMetadata () {
 
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata (OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows, ConversionEventEnum conversionEvent, String conversionTagId, String cpaGoalValueInMicroCurrency, Boolean isRoasOptimized, LearningModeTypeEnum learningModeType) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata (OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows, ConversionEventEnum conversionEvent, String conversionTagId, String cpaGoalValueInMicroCurrency, Boolean isRoasOptimized, LearningModeTypeEnum learningModeType, String reportingEvent) {
     this.attributionWindows = attributionWindows;
     this.conversionEvent = conversionEvent;
     this.conversionTagId = conversionTagId;
     this.cpaGoalValueInMicroCurrency = cpaGoalValueInMicroCurrency;
     this.isRoasOptimized = isRoasOptimized;
     this.learningModeType = learningModeType;
+    this.reportingEvent = reportingEvent;
   }
 
     
@@ -130,6 +132,15 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     this.learningModeType = learningModeType;
   }
 
+    
+  @JsonProperty("reporting_event")
+  public String getReportingEvent() {
+    return reportingEvent;
+  }
+  public void setReportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -145,12 +156,13 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
         Objects.equals(conversionTagId, optimizationGoalMetadataConversionTagV3GoalMetadata.conversionTagId) &&
         Objects.equals(cpaGoalValueInMicroCurrency, optimizationGoalMetadataConversionTagV3GoalMetadata.cpaGoalValueInMicroCurrency) &&
         Objects.equals(isRoasOptimized, optimizationGoalMetadataConversionTagV3GoalMetadata.isRoasOptimized) &&
-        Objects.equals(learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType);
+        Objects.equals(learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType) &&
+        Objects.equals(reportingEvent, optimizationGoalMetadataConversionTagV3GoalMetadata.reportingEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType);
+    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType, reportingEvent);
   }
 
   @Override
@@ -164,6 +176,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     sb.append("    cpaGoalValueInMicroCurrency: ").append(toIndentedString(cpaGoalValueInMicroCurrency)).append("\n");
     sb.append("    isRoasOptimized: ").append(toIndentedString(isRoasOptimized)).append("\n");
     sb.append("    learningModeType: ").append(toIndentedString(learningModeType)).append("\n");
+    sb.append("    reportingEvent: ").append(toIndentedString(reportingEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

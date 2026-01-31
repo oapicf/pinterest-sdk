@@ -1,0 +1,85 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FeedsUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FeedsUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsFeedCredentials = openapi_server.resourceTypes.CatalogsFeedCredentials
+  CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
+  CatalogsFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsFeedsUpdateRequest
+  CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
+  CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  CatalogsVerticalFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsVerticalFeedsUpdateRequest
+  NullableCurrency = openapi_server.resourceTypes.NullableCurrency
+  ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  FeedsUpdateRequest {
+    title = FeedsUpdateRequest
+    description = FeedsUpdateRequest
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        credentials {
+          type = CatalogsFeedCredentials
+          description = ""
+          optional = false
+        }
+        default_availability {
+          type = ProductAvailabilityType
+          description = ""
+          optional = false
+        }
+        default_currency {
+          type = NullableCurrency
+          description = ""
+          optional = false
+        }
+        format {
+          type = CatalogsFormat
+          description = ""
+          optional = false
+        }
+        location {
+          type =  string
+          description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "A human-friendly name associated to a given feed."
+          optional = false
+        }
+        preferred_processing_schedule {
+          type = CatalogsFeedProcessingSchedule
+          description = ""
+          optional = false
+        }
+        status {
+          type = CatalogsStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  FeedsUpdateRequest {
+    title = FeedsUpdateRequest
+    description = FeedsUpdateRequest
+    implements = openapi_server.resourceTypes.FeedsUpdateRequest
+
+  }
+}

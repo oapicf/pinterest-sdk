@@ -10,24 +10,15 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object>  {
   
-  private String PRODUCT_GROUP_ID;
   private LocalDate DATE;
+  private String PRODUCT_GROUP_ID;
 
   public ProductGroupAnalyticsResponseInner () {
 
   }
 
-  public ProductGroupAnalyticsResponseInner (String PRODUCT_GROUP_ID, LocalDate DATE) {
-    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
+  public ProductGroupAnalyticsResponseInner (LocalDate DATE, String PRODUCT_GROUP_ID) {
     this.DATE = DATE;
-  }
-
-    
-  @JsonProperty("PRODUCT_GROUP_ID")
-  public String getPRODUCTGROUPID() {
-    return PRODUCT_GROUP_ID;
-  }
-  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }
 
@@ -40,6 +31,15 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
     this.DATE = DATE;
   }
 
+    
+  @JsonProperty("PRODUCT_GROUP_ID")
+  public String getPRODUCTGROUPID() {
+    return PRODUCT_GROUP_ID;
+  }
+  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
+    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -50,13 +50,13 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
       return false;
     }
     ProductGroupAnalyticsResponseInner productGroupAnalyticsResponseInner = (ProductGroupAnalyticsResponseInner) o;
-    return super.equals(o) && Objects.equals(PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID) &&
-        Objects.equals(DATE, productGroupAnalyticsResponseInner.DATE);
+    return super.equals(o) && Objects.equals(DATE, productGroupAnalyticsResponseInner.DATE) &&
+        Objects.equals(PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), PRODUCT_GROUP_ID, super.hashCode(), DATE);
+    return Objects.hash(super.hashCode(), DATE, super.hashCode(), PRODUCT_GROUP_ID);
   }
 
   @Override
@@ -64,8 +64,8 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductGroupAnalyticsResponseInner {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
+    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

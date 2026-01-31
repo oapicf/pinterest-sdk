@@ -1,7 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
+import org.openapitools.model.ImageSize;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -14,15 +14,17 @@ public class ImageMetadata  {
   
   @ApiModelProperty(value = "")
 
-  private String itemType;
-
-  @ApiModelProperty(value = "")
-
-  private String title;
-
-  @ApiModelProperty(value = "")
-
   private String description;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private ImageSize images;
+
+  @ApiModelProperty(value = "")
+
+  private String itemType;
 
   @ApiModelProperty(value = "")
 
@@ -30,45 +32,7 @@ public class ImageMetadata  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
-  private ImageMetadataImages images;
- /**
-   * Get itemType
-   * @return itemType
-  **/
-  @JsonProperty("item_type")
-  public String getItemType() {
-    return itemType;
-  }
-
-  public void setItemType(String itemType) {
-    this.itemType = itemType;
-  }
-
-  public ImageMetadata itemType(String itemType) {
-    this.itemType = itemType;
-    return this;
-  }
-
- /**
-   * Get title
-   * @return title
-  **/
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public ImageMetadata title(String title) {
-    this.title = title;
-    return this;
-  }
-
+  private String title;
  /**
    * Get description
    * @return description
@@ -84,6 +48,42 @@ public class ImageMetadata  {
 
   public ImageMetadata description(String description) {
     this.description = description;
+    return this;
+  }
+
+ /**
+   * Get images
+   * @return images
+  **/
+  @JsonProperty("images")
+  public ImageSize getImages() {
+    return images;
+  }
+
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+  public ImageMetadata images(ImageSize images) {
+    this.images = images;
+    return this;
+  }
+
+ /**
+   * Get itemType
+   * @return itemType
+  **/
+  @JsonProperty("item_type")
+  public String getItemType() {
+    return itemType;
+  }
+
+  public void setItemType(String itemType) {
+    this.itemType = itemType;
+  }
+
+  public ImageMetadata itemType(String itemType) {
+    this.itemType = itemType;
     return this;
   }
 
@@ -106,20 +106,20 @@ public class ImageMetadata  {
   }
 
  /**
-   * Get images
-   * @return images
+   * Get title
+   * @return title
   **/
-  @JsonProperty("images")
-  public ImageMetadataImages getImages() {
-    return images;
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
   }
 
-  public void setImages(ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
-  public ImageMetadata images(ImageMetadataImages images) {
-    this.images = images;
+  public ImageMetadata title(String title) {
+    this.title = title;
     return this;
   }
 
@@ -132,16 +132,16 @@ public class ImageMetadata  {
       return false;
     }
     ImageMetadata imageMetadata = (ImageMetadata) o;
-    return Objects.equals(this.itemType, imageMetadata.itemType) &&
-        Objects.equals(this.title, imageMetadata.title) &&
-        Objects.equals(this.description, imageMetadata.description) &&
+    return Objects.equals(this.description, imageMetadata.description) &&
+        Objects.equals(this.images, imageMetadata.images) &&
+        Objects.equals(this.itemType, imageMetadata.itemType) &&
         Objects.equals(this.link, imageMetadata.link) &&
-        Objects.equals(this.images, imageMetadata.images);
+        Objects.equals(this.title, imageMetadata.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, title, description, link, images);
+    return Objects.hash(description, images, itemType, link, title);
   }
 
   @Override
@@ -149,11 +149,11 @@ public class ImageMetadata  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageMetadata {\n");
     
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

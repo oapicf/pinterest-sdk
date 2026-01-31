@@ -21,53 +21,71 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Retail product metadata entity")
 @JsonTypeName("CatalogsRetailProductMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductMetadata   {
-  private String itemId;
-  private String itemGroupId;
   private NonNullableProductAvailabilityType availability;
+  private NonNullableCatalogsCurrency currency;
+  private String itemGroupId;
+  private String itemId;
   private BigDecimal price;
   private BigDecimal salePrice;
-  private NonNullableCatalogsCurrency currency;
 
   public CatalogsRetailProductMetadata() {
   }
 
   @JsonCreator
   public CatalogsRetailProductMetadata(
-    @JsonProperty(required = true, value = "item_id") String itemId,
-    @JsonProperty(required = true, value = "item_group_id") String itemGroupId,
     @JsonProperty(required = true, value = "availability") NonNullableProductAvailabilityType availability,
+    @JsonProperty(required = true, value = "currency") NonNullableCatalogsCurrency currency,
+    @JsonProperty(required = true, value = "item_group_id") String itemGroupId,
+    @JsonProperty(required = true, value = "item_id") String itemId,
     @JsonProperty(required = true, value = "price") BigDecimal price,
-    @JsonProperty(required = true, value = "sale_price") BigDecimal salePrice,
-    @JsonProperty(required = true, value = "currency") NonNullableCatalogsCurrency currency
+    @JsonProperty(required = true, value = "sale_price") BigDecimal salePrice
   ) {
-    this.itemId = itemId;
-    this.itemGroupId = itemGroupId;
     this.availability = availability;
+    this.currency = currency;
+    this.itemGroupId = itemGroupId;
+    this.itemId = itemId;
     this.price = price;
     this.salePrice = salePrice;
-    this.currency = currency;
   }
 
   /**
-   * The user-created unique ID that represents the product.
    **/
-  public CatalogsRetailProductMetadata itemId(String itemId) {
-    this.itemId = itemId;
+  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
     return this;
   }
 
   
-  @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
-  @JsonProperty(required = true, value = "item_id")
-  @NotNull public String getItemId() {
-    return itemId;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "availability")
+  @NotNull public NonNullableProductAvailabilityType getAvailability() {
+    return availability;
   }
 
-  @JsonProperty(required = true, value = "item_id")
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
+  @JsonProperty(required = true, value = "availability")
+  public void setAvailability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "currency")
+  @NotNull public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
+
+  @JsonProperty(required = true, value = "currency")
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
   }
 
   /**
@@ -91,22 +109,23 @@ public class CatalogsRetailProductMetadata   {
   }
 
   /**
+   * The user-created unique ID that represents the product.
    **/
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public CatalogsRetailProductMetadata itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "availability")
-  @NotNull public NonNullableProductAvailabilityType getAvailability() {
-    return availability;
+  @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
+  @JsonProperty(required = true, value = "item_id")
+  @NotNull public String getItemId() {
+    return itemId;
   }
 
-  @JsonProperty(required = true, value = "availability")
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  @JsonProperty(required = true, value = "item_id")
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   /**
@@ -149,25 +168,6 @@ public class CatalogsRetailProductMetadata   {
     this.salePrice = salePrice;
   }
 
-  /**
-   **/
-  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "currency")
-  @NotNull public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-
-  @JsonProperty(required = true, value = "currency")
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -178,17 +178,17 @@ public class CatalogsRetailProductMetadata   {
       return false;
     }
     CatalogsRetailProductMetadata catalogsRetailProductMetadata = (CatalogsRetailProductMetadata) o;
-    return Objects.equals(this.itemId, catalogsRetailProductMetadata.itemId) &&
+    return Objects.equals(this.availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(this.currency, catalogsRetailProductMetadata.currency) &&
         Objects.equals(this.itemGroupId, catalogsRetailProductMetadata.itemGroupId) &&
-        Objects.equals(this.availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(this.itemId, catalogsRetailProductMetadata.itemId) &&
         Objects.equals(this.price, catalogsRetailProductMetadata.price) &&
-        Objects.equals(this.salePrice, catalogsRetailProductMetadata.salePrice) &&
-        Objects.equals(this.currency, catalogsRetailProductMetadata.currency);
+        Objects.equals(this.salePrice, catalogsRetailProductMetadata.salePrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, itemGroupId, availability, price, salePrice, currency);
+    return Objects.hash(availability, currency, itemGroupId, itemId, price, salePrice);
   }
 
   @Override
@@ -196,12 +196,12 @@ public class CatalogsRetailProductMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductMetadata {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

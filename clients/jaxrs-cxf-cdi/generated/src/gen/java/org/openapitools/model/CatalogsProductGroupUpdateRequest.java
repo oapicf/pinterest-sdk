@@ -20,31 +20,13 @@ import java.util.Objects;
 @ApiModel(description = "Request object for updating a product group.")
 public class CatalogsProductGroupUpdateRequest   {
   
-  private String name;
-
   private String description;
-
-  private Boolean isFeatured;
 
   private CatalogsProductGroupFiltersRequest filters;
 
-  /**
-   **/
-  public CatalogsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
+  private Boolean isFeatured;
 
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
+  private String name;
 
   /**
    **/
@@ -61,6 +43,24 @@ public class CatalogsProductGroupUpdateRequest   {
   }
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  /**
+   **/
+  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
 
@@ -85,19 +85,19 @@ public class CatalogsProductGroupUpdateRequest   {
 
   /**
    **/
-  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -111,15 +111,15 @@ public class CatalogsProductGroupUpdateRequest   {
       return false;
     }
     CatalogsProductGroupUpdateRequest catalogsProductGroupUpdateRequest = (CatalogsProductGroupUpdateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupUpdateRequest.name) &&
-        Objects.equals(this.description, catalogsProductGroupUpdateRequest.description) &&
+    return Objects.equals(this.description, catalogsProductGroupUpdateRequest.description) &&
+        Objects.equals(this.filters, catalogsProductGroupUpdateRequest.filters) &&
         Objects.equals(this.isFeatured, catalogsProductGroupUpdateRequest.isFeatured) &&
-        Objects.equals(this.filters, catalogsProductGroupUpdateRequest.filters);
+        Objects.equals(this.name, catalogsProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters);
+    return Objects.hash(description, filters, isFeatured, name);
   }
 
   @Override
@@ -127,10 +127,10 @@ public class CatalogsProductGroupUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -140,7 +140,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* externalBusinessId = @"externalBusinessId_example"; // External business ID for the integration.
-OAIIntegrationRequestPatch* integrationRequestPatch = [[OAIIntegrationRequestPatch alloc] init]; // Parameters to get create/update the Integration Metadata (optional)
+OAIIntegrationRequestPatch* integrationRequestPatch = [[OAIIntegrationRequestPatch alloc] init]; // Parameters to get create/update the Integration Metadata
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
@@ -162,7 +162,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **NSString***| External business ID for the integration. | 
- **integrationRequestPatch** | [**OAIIntegrationRequestPatch***](OAIIntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integrationRequestPatch** | [**OAIIntegrationRequestPatch***](OAIIntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -197,7 +197,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAIIntegrationRequest* integrationRequest = [[OAIIntegrationRequest alloc] init]; // Parameters to get create/update the Integration Metadata (optional)
+OAIIntegrationRequest* integrationRequest = [[OAIIntegrationRequest alloc] init]; // Parameters to get create/update the Integration Metadata
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
@@ -217,7 +217,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**OAIIntegrationRequest***](OAIIntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integrationRequest** | [**OAIIntegrationRequest***](OAIIntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 

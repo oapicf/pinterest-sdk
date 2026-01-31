@@ -3,27 +3,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **String** |  | 
 **Description** | **String** |  | [optional] 
-**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to $false]
-**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 **FeedId** | **String** | Catalog Feed id pertaining to the catalog product group. | 
-**CatalogType** | **String** |  | 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to $false]
+**Name** | **String** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
-**Country** | [**Country**](Country.md) |  | 
-**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
+**CatalogType** | **String** |  | 
+**Country** | [**Country**](Country.md) |  | [optional] 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$MultipleProductGroupsInner = Initialize-PSOpenAPIToolsMultipleProductGroupsInner  -Name null `
- -Description null `
- -IsFeatured null `
- -Filters null `
+$MultipleProductGroupsInner = Initialize-PSOpenAPIToolsMultipleProductGroupsInner  -Description null `
  -FeedId 2680059592705 `
- -CatalogType null `
+ -Filters null `
+ -IsFeatured null `
+ -Name null `
  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Country null `
  -Locale null
 ```

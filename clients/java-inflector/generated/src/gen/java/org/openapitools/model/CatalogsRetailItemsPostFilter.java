@@ -14,8 +14,11 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsPostFilter   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -51,8 +54,23 @@ public class CatalogsRetailItemsPostFilter   {
   @JsonProperty("item_ids")
   private List<String> itemIds = new ArrayList<>();
 
+  /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   **/
+  public CatalogsRetailItemsPostFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
   @JsonProperty("catalog_id")
-  private String catalogId;
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -88,24 +106,6 @@ public class CatalogsRetailItemsPostFilter   {
     this.itemIds = itemIds;
   }
 
-  /**
-   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-   **/
-  public CatalogsRetailItemsPostFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +116,14 @@ public class CatalogsRetailItemsPostFilter   {
       return false;
     }
     CatalogsRetailItemsPostFilter catalogsRetailItemsPostFilter = (CatalogsRetailItemsPostFilter) o;
-    return Objects.equals(catalogType, catalogsRetailItemsPostFilter.catalogType) &&
-        Objects.equals(itemIds, catalogsRetailItemsPostFilter.itemIds) &&
-        Objects.equals(catalogId, catalogsRetailItemsPostFilter.catalogId);
+    return Objects.equals(catalogId, catalogsRetailItemsPostFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsRetailItemsPostFilter.catalogType) &&
+        Objects.equals(itemIds, catalogsRetailItemsPostFilter.itemIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId);
+    return Objects.hash(catalogId, catalogType, itemIds);
   }
 
   @Override
@@ -131,9 +131,9 @@ public class CatalogsRetailItemsPostFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemsPostFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

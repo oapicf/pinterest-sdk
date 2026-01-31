@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateMemberAssetsResultsResponseArray"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateMemberAssetsResultsResponseArray"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdateMemberAssetsResultsResponseArrayItemsInner = openapi_server.resourceTypes.UpdateMemberAssetsResultsResponseArrayItemsInner
+}
+resourceTypes {
+
+  UpdateMemberAssetsResultsResponseArray {
+    title = UpdateMemberAssetsResultsResponseArray
+    description = UpdateMemberAssetsResultsResponseArray
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = UpdateMemberAssetsResultsResponseArrayItemsInner
+          description = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateMemberAssetsResultsResponseArray {
+    title = UpdateMemberAssetsResultsResponseArray
+    description = UpdateMemberAssetsResultsResponseArray
+    implements = openapi_server.resourceTypes.UpdateMemberAssetsResultsResponseArray
+
+  }
+}

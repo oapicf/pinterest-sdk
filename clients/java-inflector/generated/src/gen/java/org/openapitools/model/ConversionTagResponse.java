@@ -16,13 +16,13 @@ import org.openapitools.model.EntityStatus;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagResponse   {
-  @JsonProperty("ad_account_id")
-  private String adAccountId;
-
   @JsonProperty("code_snippet")
   private String codeSnippet;
+
+  @JsonProperty("configs")
+  private ConversionTagConfigs configs;
 
   @JsonProperty("enhanced_match_status")
   private EnhancedMatchStatusType enhancedMatchStatus;
@@ -36,32 +36,14 @@ public class ConversionTagResponse   {
   @JsonProperty("name")
   private String name;
 
-  @JsonProperty("status")
-  private EntityStatus status;
-
   @JsonProperty("version")
   private String version;
 
-  @JsonProperty("configs")
-  private ConversionTagConfigs configs;
-
-  /**
-   * Ad account ID.
-   **/
-  public ConversionTagResponse adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
+  private String adAccountId;
+
+  @JsonProperty("status")
+  private EntityStatus status;
 
   /**
    * Tag code snippet.
@@ -83,13 +65,31 @@ public class ConversionTagResponse   {
 
   /**
    **/
+  public ConversionTagResponse configs(ConversionTagConfigs configs) {
+    this.configs = configs;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("configs")
+  public ConversionTagConfigs getConfigs() {
+    return configs;
+  }
+  public void setConfigs(ConversionTagConfigs configs) {
+    this.configs = configs;
+  }
+
+  /**
+   * The enhanced match status of the tag
+   **/
   public ConversionTagResponse enhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
     this.enhancedMatchStatus = enhancedMatchStatus;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The enhanced match status of the tag")
   @JsonProperty("enhanced_match_status")
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -143,30 +143,13 @@ public class ConversionTagResponse   {
   }
 
   
-  @ApiModelProperty(example = "ACME Checkout Test Tag", value = "Conversion tag name.")
+  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
-  }
-
-  /**
-   **/
-  public ConversionTagResponse status(EntityStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
-  }
-  public void setStatus(EntityStatus status) {
-    this.status = status;
   }
 
   /**
@@ -188,20 +171,38 @@ public class ConversionTagResponse   {
   }
 
   /**
+   * Ad account ID.
    **/
-  public ConversionTagResponse configs(ConversionTagConfigs configs) {
-    this.configs = configs;
+  public ConversionTagResponse adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "549755885175", required = true, value = "Ad account ID.")
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
+
+  /**
+   **/
+  public ConversionTagResponse status(EntityStatus status) {
+    this.status = status;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("configs")
-  public ConversionTagConfigs getConfigs() {
-    return configs;
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
   }
-  public void setConfigs(ConversionTagConfigs configs) {
-    this.configs = configs;
+  public void setStatus(EntityStatus status) {
+    this.status = status;
   }
 
 
@@ -214,20 +215,20 @@ public class ConversionTagResponse   {
       return false;
     }
     ConversionTagResponse conversionTagResponse = (ConversionTagResponse) o;
-    return Objects.equals(adAccountId, conversionTagResponse.adAccountId) &&
-        Objects.equals(codeSnippet, conversionTagResponse.codeSnippet) &&
+    return Objects.equals(codeSnippet, conversionTagResponse.codeSnippet) &&
+        Objects.equals(configs, conversionTagResponse.configs) &&
         Objects.equals(enhancedMatchStatus, conversionTagResponse.enhancedMatchStatus) &&
         Objects.equals(id, conversionTagResponse.id) &&
         Objects.equals(lastFiredTimeMs, conversionTagResponse.lastFiredTimeMs) &&
         Objects.equals(name, conversionTagResponse.name) &&
-        Objects.equals(status, conversionTagResponse.status) &&
         Objects.equals(version, conversionTagResponse.version) &&
-        Objects.equals(configs, conversionTagResponse.configs);
+        Objects.equals(adAccountId, conversionTagResponse.adAccountId) &&
+        Objects.equals(status, conversionTagResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, codeSnippet, enhancedMatchStatus, id, lastFiredTimeMs, name, status, version, configs);
+    return Objects.hash(codeSnippet, configs, enhancedMatchStatus, id, lastFiredTimeMs, name, version, adAccountId, status);
   }
 
   @Override
@@ -235,15 +236,15 @@ public class ConversionTagResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagResponse {\n");
     
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    codeSnippet: ").append(toIndentedString(codeSnippet)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("    enhancedMatchStatus: ").append(toIndentedString(enhancedMatchStatus)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lastFiredTimeMs: ").append(toIndentedString(lastFiredTimeMs)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

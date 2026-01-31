@@ -1,0 +1,47 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Successful item response",
+  "name": "ItemResponseOneOf",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": ["null", "model.CatalogsCreativeAssetsAttributes"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "item_id",
+      "type": ["null", "string"],
+      "doc": "The catalog retail item id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "pins",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Pin"
+      }],
+      "doc": "The pins mapped to the item",
+      "default": null
+    },
+    {
+      "name": "hotel_id",
+      "type": ["null", "string"],
+      "doc": "The catalog hotel id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "creative_assets_id",
+      "type": ["null", "string"],
+      "doc": "The catalog creative assets id in the merchant namespace",
+      "default": null
+    }
+  ]
+
+}

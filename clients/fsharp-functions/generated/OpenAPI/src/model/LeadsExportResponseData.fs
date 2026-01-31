@@ -12,10 +12,10 @@ module LeadsExportResponseData =
 
   [<CLIMutable>]
   type LeadsExportResponseData = {
-    [<JsonProperty(PropertyName = "export_status")>]
-    ExportStatus : LeadsExportStatus;
     [<JsonProperty(PropertyName = "download_url")>]
     DownloadUrl : string option;
+    [<JsonProperty(PropertyName = "export_status")>]
+    ExportStatus : LeadsExportStatus;
   }
 
   //#endregion

@@ -14,7 +14,7 @@ import java.util.Map;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   @JsonProperty("AD_GROUP_ID")
   private String AD_GROUP_ID;
@@ -23,7 +23,7 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   private Date DATE;
 
   /**
-   * The ID of the ad group that this metrics belongs to.
+   * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    **/
   public AdGroupsAnalyticsResponseInner AD_GROUP_ID(String AD_GROUP_ID) {
     this.AD_GROUP_ID = AD_GROUP_ID;
@@ -31,7 +31,7 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   }
 
   
-  @ApiModelProperty(required = true, value = "The ID of the ad group that this metrics belongs to.")
+  @ApiModelProperty(value = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
   @JsonProperty("AD_GROUP_ID")
   public String getADGROUPID() {
     return AD_GROUP_ID;

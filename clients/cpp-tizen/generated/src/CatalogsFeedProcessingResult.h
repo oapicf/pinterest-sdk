@@ -13,6 +13,7 @@
 #include "CatalogsFeedProcessingStatus.h"
 #include "CatalogsFeedProductCounts.h"
 #include "CatalogsFeedValidationDetails.h"
+#include "CatalogsFeedVideoCounts.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -79,13 +80,6 @@ public:
 	void setIngestionDetails(CatalogsFeedIngestionDetails  ingestion_details);
 	/*! \brief Get 
 	 */
-	CatalogsFeedProcessingStatus getStatus();
-
-	/*! \brief Set 
-	 */
-	void setStatus(CatalogsFeedProcessingStatus  status);
-	/*! \brief Get 
-	 */
 	CatalogsFeedProductCounts getProductCounts();
 
 	/*! \brief Set 
@@ -93,20 +87,35 @@ public:
 	void setProductCounts(CatalogsFeedProductCounts  product_counts);
 	/*! \brief Get 
 	 */
+	CatalogsFeedProcessingStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(CatalogsFeedProcessingStatus  status);
+	/*! \brief Get 
+	 */
 	CatalogsFeedValidationDetails getValidationDetails();
 
 	/*! \brief Set 
 	 */
 	void setValidationDetails(CatalogsFeedValidationDetails  validation_details);
+	/*! \brief Get 
+	 */
+	CatalogsFeedVideoCounts getVideoCounts();
+
+	/*! \brief Set 
+	 */
+	void setVideoCounts(CatalogsFeedVideoCounts  video_counts);
 
 private:
 	std::string created_at;
 	std::string id;
 	std::string updated_at;
 	CatalogsFeedIngestionDetails ingestion_details;
-	CatalogsFeedProcessingStatus status;
 	CatalogsFeedProductCounts product_counts;
+	CatalogsFeedProcessingStatus status;
 	CatalogsFeedValidationDetails validation_details;
+	CatalogsFeedVideoCounts video_counts;
 	void __init();
 	void __cleanup();
 

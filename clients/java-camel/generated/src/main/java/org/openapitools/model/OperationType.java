@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Operation type to share a specific audience or revoke access to a previously shared audience
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum OperationType {
   
   SHARE("SHARE"),

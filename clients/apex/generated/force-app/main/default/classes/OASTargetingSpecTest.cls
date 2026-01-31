@@ -72,16 +72,18 @@ private class OASTargetingSpecTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASTargetingSpec targetingSpec = new OASTargetingSpec();
-        System.assertEquals(new List<String>(), targetingSpec.AGE_BUCKET);
-        System.assertEquals(new List<String>(), targetingSpec.APPTYPE);
+        System.assertEquals(new List<OASTargetingSpecAgeBucket>(), targetingSpec.AGE_BUCKET);
+        System.assertEquals(new List<OASTargetingSpecAppType>(), targetingSpec.APPTYPE);
         System.assertEquals(new List<String>(), targetingSpec.AUDIENCE_EXCLUDE);
         System.assertEquals(new List<String>(), targetingSpec.AUDIENCE_INCLUDE);
-        System.assertEquals(new List<String>(), targetingSpec.GENDER);
+        System.assertEquals(new List<OASTargetingSpecGender>(), targetingSpec.GENDER);
         System.assertEquals(new List<String>(), targetingSpec.GEO);
         System.assertEquals(new List<String>(), targetingSpec.INTEREST);
         System.assertEquals(new List<String>(), targetingSpec.LOCALE);
         System.assertEquals(new List<String>(), targetingSpec.LOCATION);
-        System.assertEquals(new List<OASTargetingSpecSHOPPINGRETARGETING>(), targetingSpec.SHOPPING_RETARGETING);
+        System.assertEquals(new List<OASTargetingSpecShoppingRetargeting>(), targetingSpec.SHOPPING_RETARGETING);
         System.assertEquals(new List<String>(), targetingSpec.TARGETING_STRATEGY);
+        System.assertEquals(null, targetingSpec.MAXIMUM_AGE);
+        System.assertEquals(null, targetingSpec.MINIMUM_AGE);
     }
 }

@@ -11,7 +11,7 @@ module CreateAssetAccessRequestBodyAssetRequestsInner =
 
 
   type CreateAssetAccessRequestBody_asset_requests_inner = {
-    PartnerId : string;
     AssetIdToPermissions : IDictionary<string, Permissions[]>;
+    PartnerId : string;
   }
   //#endregion

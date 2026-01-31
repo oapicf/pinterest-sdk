@@ -4,32 +4,32 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for SSIOInsertionOrderCommon.
-  * @param startDate Starting date of time period. Format: YYYY-MM-DD
-  * @param endDate End date of time period. Format: YYYY-MM-DD
-  * @param poNumber The po number
-  * @param budgetAmount If Budget order line, the budget amount.
+  * @param agencyLink URL link for agency
+  * @param billingContactEmail The billing contact email
   * @param billingContactFirstname The billing contact first name
   * @param billingContactLastname The billing contact last name
-  * @param billingContactEmail The billing contact email
+  * @param budgetAmount If Budget order line, the budget amount.
+  * @param endDate End date of time period. Format: YYYY-MM-DD
+  * @param mediaContactEmail The media contact email
   * @param mediaContactFirstname The media contact first name
   * @param mediaContactLastname The media contact last name
-  * @param mediaContactEmail The media contact email
-  * @param agencyLink URL link for agency
+  * @param poNumber The po number
+  * @param startDate Starting date of time period. Format: YYYY-MM-DD
   * @param userEmail The email of user submitting the insertion order
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class SSIOInsertionOrderCommon(
-  startDate: Option[String],
-  endDate: Option[String],
-  poNumber: Option[String],
-  budgetAmount: Option[BigDecimal],
+  agencyLink: Option[String],
+  billingContactEmail: Option[String],
   billingContactFirstname: Option[String],
   billingContactLastname: Option[String],
-  billingContactEmail: Option[String],
+  budgetAmount: Option[BigDecimal],
+  endDate: Option[String],
+  mediaContactEmail: Option[String],
   mediaContactFirstname: Option[String],
   mediaContactLastname: Option[String],
-  mediaContactEmail: Option[String],
-  agencyLink: Option[String],
+  poNumber: Option[String],
+  startDate: Option[String],
   userEmail: Option[String]
 )
 

@@ -13,10 +13,10 @@
 (def audience-demographics-data
   {
    (ds/opt :ages) (s/coll-of audience-demographic-value-spec)
-   (ds/opt :genders) (s/coll-of audience-demographic-value-spec)
-   (ds/opt :devices) (s/coll-of audience-demographic-value-spec)
-   (ds/opt :metros) (s/coll-of audience-demographic-value-spec)
    (ds/opt :countries) (s/coll-of audience-demographic-value-spec)
+   (ds/opt :devices) (s/coll-of audience-demographic-value-spec)
+   (ds/opt :genders) (s/coll-of audience-demographic-value-spec)
+   (ds/opt :metros) (s/coll-of audience-demographic-value-spec)
    })
 
 (def audience-demographics-spec

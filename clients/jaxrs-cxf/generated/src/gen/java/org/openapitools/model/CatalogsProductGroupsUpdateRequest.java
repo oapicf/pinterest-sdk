@@ -21,11 +21,13 @@ public class CatalogsProductGroupsUpdateRequest  {
   
   @ApiModelProperty(value = "")
 
-  private String name;
+  private String description;
 
   @ApiModelProperty(value = "")
 
-  private String description;
+  @Valid
+
+  private CatalogsProductGroupFiltersRequest filters;
 
  /**
   * boolean indicator of whether the product group is being featured or not
@@ -36,27 +38,7 @@ public class CatalogsProductGroupsUpdateRequest  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
-  private CatalogsProductGroupFiltersRequest filters;
- /**
-   * Get name
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsProductGroupsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
+  private String name;
  /**
    * Get description
    * @return description
@@ -72,6 +54,24 @@ public class CatalogsProductGroupsUpdateRequest  {
 
   public CatalogsProductGroupsUpdateRequest description(String description) {
     this.description = description;
+    return this;
+  }
+
+ /**
+   * Get filters
+   * @return filters
+  **/
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+  public CatalogsProductGroupsUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
     return this;
   }
 
@@ -94,20 +94,20 @@ public class CatalogsProductGroupsUpdateRequest  {
   }
 
  /**
-   * Get filters
-   * @return filters
+   * Get name
+   * @return name
   **/
-  @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public CatalogsProductGroupsUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupsUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -120,15 +120,15 @@ public class CatalogsProductGroupsUpdateRequest  {
       return false;
     }
     CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest = (CatalogsProductGroupsUpdateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupsUpdateRequest.name) &&
-        Objects.equals(this.description, catalogsProductGroupsUpdateRequest.description) &&
+    return Objects.equals(this.description, catalogsProductGroupsUpdateRequest.description) &&
+        Objects.equals(this.filters, catalogsProductGroupsUpdateRequest.filters) &&
         Objects.equals(this.isFeatured, catalogsProductGroupsUpdateRequest.isFeatured) &&
-        Objects.equals(this.filters, catalogsProductGroupsUpdateRequest.filters);
+        Objects.equals(this.name, catalogsProductGroupsUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters);
+    return Objects.hash(description, filters, isFeatured, name);
   }
 
   @Override
@@ -136,10 +136,10 @@ public class CatalogsProductGroupsUpdateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupsUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

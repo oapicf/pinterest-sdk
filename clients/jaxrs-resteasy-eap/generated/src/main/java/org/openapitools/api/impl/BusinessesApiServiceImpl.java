@@ -46,6 +46,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -65,7 +66,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApiServiceImpl implements BusinessesApi {
       public Response assetAccessRequestsCreate(String businessId,CreateAssetAccessRequestBody createAssetAccessRequestBody,SecurityContext securityContext) {
       // do some magic!
@@ -87,7 +88,7 @@ public class BusinessesApiServiceImpl implements BusinessesApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response businessAssetMembersGet(String businessId,String assetId,String bookmark,Integer pageSize,Integer startIndex,SecurityContext securityContext) {
+      public Response businessAssetMembersGet(String businessId,String assetId,Boolean fetchSystemUsers,String bookmark,Integer pageSize,Integer startIndex,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -143,7 +144,7 @@ public class BusinessesApiServiceImpl implements BusinessesApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response getBusinessMembers(String businessId,Boolean assetsSummary,List<MemberBusinessRole> businessRoles,String memberIds,Integer startIndex,String bookmark,Integer pageSize,SecurityContext securityContext) {
+      public Response getBusinessMembers(String businessId,Boolean fetchSystemUsers,Boolean assetsSummary,List<MemberBusinessRole> businessRoles,String memberIds,Integer startIndex,String bookmark,Integer pageSize,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -160,6 +161,10 @@ public class BusinessesApiServiceImpl implements BusinessesApi {
       return Response.ok().build();
   }
       public Response sharedAudiencesForBusinessList(String businessId,String bookmark,String order,Integer pageSize,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response systemUserUpdate(String businessId,String systemUserId,SystemUserUpdateRequest systemUserUpdateRequest,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

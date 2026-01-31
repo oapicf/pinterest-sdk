@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,7 +22,7 @@ data class CustomLabel1Filter(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+    @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria
 ) {
 
 }

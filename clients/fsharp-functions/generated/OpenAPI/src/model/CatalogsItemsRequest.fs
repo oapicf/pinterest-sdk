@@ -14,10 +14,10 @@ module CatalogsItemsRequest =
   type CatalogsItemsRequest = {
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
-    [<JsonProperty(PropertyName = "language")>]
-    Language : string;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsItemsPostFilters;
+    [<JsonProperty(PropertyName = "language")>]
+    Language : string;
   }
 
   //#endregion

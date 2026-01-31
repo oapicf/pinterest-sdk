@@ -5,14 +5,6 @@ context("Test TargetingTemplateCreate")
 
 model_instance <- TargetingTemplateCreate$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Name of targeting template.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("auto_targeting_enabled", {
   # tests for the property `auto_targeting_enabled` (character)
   # Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
@@ -21,11 +13,19 @@ test_that("auto_targeting_enabled", {
   #expect_equal(model.instance$`auto_targeting_enabled`, "EXPECTED_RESULT")
 })
 
-test_that("targeting_attributes", {
-  # tests for the property `targeting_attributes` (TargetingSpec)
+test_that("keywords", {
+  # tests for the property `keywords` (array[TargetingTemplateKeyword])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`targeting_attributes`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`keywords`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Name of targeting template.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("placement_group", {
@@ -35,11 +35,11 @@ test_that("placement_group", {
   #expect_equal(model.instance$`placement_group`, "EXPECTED_RESULT")
 })
 
-test_that("keywords", {
-  # tests for the property `keywords` (array[TargetingTemplateKeyword])
+test_that("targeting_attributes", {
+  # tests for the property `targeting_attributes` (TargetingSpec)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`keywords`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`targeting_attributes`, "EXPECTED_RESULT")
 })
 
 test_that("tracking_urls", {

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,47 +23,13 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SingleInterestTargetingOptionResponse   {
   
-  private String id;
-  private String name;
   private List<String> childInterests = new ArrayList<>();
+  private String id;
   private Integer level;
-
-  /**
-   */
-  public SingleInterestTargetingOptionResponse id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "945391946569", value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   */
-  public SingleInterestTargetingOptionResponse name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Dress", value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private String name;
 
   /**
    */
@@ -84,6 +50,23 @@ public class SingleInterestTargetingOptionResponse   {
 
   /**
    */
+  public SingleInterestTargetingOptionResponse id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "945391946569", value = "")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   */
   public SingleInterestTargetingOptionResponse level(Integer level) {
     this.level = level;
     return this;
@@ -99,6 +82,23 @@ public class SingleInterestTargetingOptionResponse   {
     this.level = level;
   }
 
+  /**
+   */
+  public SingleInterestTargetingOptionResponse name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Dress", value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,15 +109,15 @@ public class SingleInterestTargetingOptionResponse   {
       return false;
     }
     SingleInterestTargetingOptionResponse singleInterestTargetingOptionResponse = (SingleInterestTargetingOptionResponse) o;
-    return Objects.equals(id, singleInterestTargetingOptionResponse.id) &&
-        Objects.equals(name, singleInterestTargetingOptionResponse.name) &&
-        Objects.equals(childInterests, singleInterestTargetingOptionResponse.childInterests) &&
-        Objects.equals(level, singleInterestTargetingOptionResponse.level);
+    return Objects.equals(childInterests, singleInterestTargetingOptionResponse.childInterests) &&
+        Objects.equals(id, singleInterestTargetingOptionResponse.id) &&
+        Objects.equals(level, singleInterestTargetingOptionResponse.level) &&
+        Objects.equals(name, singleInterestTargetingOptionResponse.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, childInterests, level);
+    return Objects.hash(childInterests, id, level, name);
   }
 
   @Override
@@ -125,10 +125,10 @@ public class SingleInterestTargetingOptionResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SingleInterestTargetingOptionResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    childInterests: ").append(toIndentedString(childInterests)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The date range type | [optional] 
-**StartDate** | Pointer to **float32** | The start date of the date range | [optional] 
 **EndDate** | Pointer to **float32** | The end date of the date range | [optional] 
+**StartDate** | Pointer to **float32** | The start date of the date range | [optional] 
+**Type** | Pointer to **string** | The date range type | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewTemplateResponseDateRangeAbsoluteDateRangeWithDefaults instantiates a new Tem
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetType
+### GetEndDate
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetType() string`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetEndDate() float32`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetEndDateOk
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetTypeOk() (*string, bool)`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetEndDateOk() (*float32, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetEndDate
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) SetType(v string)`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) SetEndDate(v float32)`
 
-SetType sets Type field to given value.
+SetEndDate sets EndDate field to given value.
 
-### HasType
+### HasEndDate
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) HasType() bool`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) HasEndDate() bool`
 
-HasType returns a boolean if a field has been set.
+HasEndDate returns a boolean if a field has been set.
 
 ### GetStartDate
 
@@ -77,30 +77,30 @@ SetStartDate sets StartDate field to given value.
 
 HasStartDate returns a boolean if a field has been set.
 
-### GetEndDate
+### GetType
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetEndDate() float32`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetType() string`
 
-GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetEndDateOk
+### GetTypeOk
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetEndDateOk() (*float32, bool)`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) GetTypeOk() (*string, bool)`
 
-GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndDate
+### SetType
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) SetEndDate(v float32)`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) SetType(v string)`
 
-SetEndDate sets EndDate field to given value.
+SetType sets Type field to given value.
 
-### HasEndDate
+### HasType
 
-`func (o *TemplateResponseDateRangeAbsoluteDateRange) HasEndDate() bool`
+`func (o *TemplateResponseDateRangeAbsoluteDateRange) HasType() bool`
 
-HasEndDate returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

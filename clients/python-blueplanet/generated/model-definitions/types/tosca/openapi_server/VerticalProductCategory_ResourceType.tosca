@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server VerticalProductCategory"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a VerticalProductCategory"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  VerticalProductCategory {
+    title = VerticalProductCategory
+    description = VerticalProductCategory
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  VerticalProductCategory {
+    title = VerticalProductCategory
+    description = VerticalProductCategory
+    implements = openapi_server.resourceTypes.VerticalProductCategory
+
+  }
+}

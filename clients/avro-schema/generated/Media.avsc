@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Media",
+  "fields": [
+    {
+      "name": "media_id",
+      "type": "string",
+      "doc": "Unique identifier for this media upload. Used to track status and for attaching during Pin creation."
+    },
+    {
+      "name": "media_type",
+      "type": "model.MediaUploadType",
+      "doc": ""
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.MediaUploadStatus"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

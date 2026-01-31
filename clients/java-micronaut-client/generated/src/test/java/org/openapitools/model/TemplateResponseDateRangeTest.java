@@ -25,6 +25,14 @@ public class TemplateResponseDateRangeTest {
     }
 
     /**
+     * Test the property 'absoluteDateRange'
+     */
+    @Test
+    public void absoluteDateRangeTest() {
+        // TODO: test absoluteDateRange
+    }
+
+    /**
      * Test the property 'dynamicDateRange'
      */
     @Test
@@ -38,14 +46,6 @@ public class TemplateResponseDateRangeTest {
     @Test
     public void relativeDateRangeTest() {
         // TODO: test relativeDateRange
-    }
-
-    /**
-     * Test the property 'absoluteDateRange'
-     */
-    @Test
-    public void absoluteDateRangeTest() {
-        // TODO: test absoluteDateRange
     }
 
 }

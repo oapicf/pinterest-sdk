@@ -12,10 +12,10 @@ module LeadFormsList200Response =
 
   [<CLIMutable>]
   type LeadFormsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : LeadFormResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : LeadFormResponse[];
   }
 
   //#endregion

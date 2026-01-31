@@ -14,8 +14,8 @@ import { BulkUpsertStatus } from './bulkUpsertStatus';
  * ID of the bulk request.
  */
 export interface BulkUpsertStatusResponse { 
-    status?: BulkUpsertStatus;
     result_url?: string;
+    status?: BulkUpsertStatus;
 }
 export namespace BulkUpsertStatusResponse {
 }

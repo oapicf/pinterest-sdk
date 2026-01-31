@@ -8,22 +8,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 
 /**
  * ConversionTagListResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagListResponse   {
   @JsonProperty("items")
-  private List<@Valid ConversionTagResponse> items = null;
+  private List<@Valid ConversionTag> items = null;
 
-  public ConversionTagListResponse items(List<@Valid ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<@Valid ConversionTag> items) {
     this.items = items;
     return this;
   }
 
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -36,11 +36,11 @@ public class ConversionTagListResponse   {
    * @return items
   **/
   @ApiModelProperty(value = "")
-  public List<@Valid ConversionTagResponse> getItems() {
+  public List<@Valid ConversionTag> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid ConversionTagResponse> items) {
+  public void setItems(List<@Valid ConversionTag> items) {
     this.items = items;
   }
 

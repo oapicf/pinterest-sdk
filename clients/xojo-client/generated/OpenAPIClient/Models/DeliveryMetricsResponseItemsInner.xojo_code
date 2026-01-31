@@ -3,14 +3,6 @@ Protected Class DeliveryMetricsResponseItemsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Metric's name.
-		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Category name
 		#tag EndNote
 		category As Xoson.O.OptionalString
@@ -30,6 +22,14 @@ Protected Class DeliveryMetricsResponseItemsInner
 			Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
 		#tag EndNote
 		display_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Metric's name.
+		#tag EndNote
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -90,14 +90,6 @@ Protected Class DeliveryMetricsResponseItemsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="definition"
 			Visible=false
 			Group="Behavior"
@@ -107,6 +99,14 @@ Protected Class DeliveryMetricsResponseItemsInner
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="display_name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

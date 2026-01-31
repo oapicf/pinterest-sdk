@@ -16,13 +16,13 @@ void main() {
   // final instance = PinMediaWithImage();
 
   group('test PinMediaWithImage', () {
-    // String mediaType
-    test('to test the property `mediaType`', () async {
+    // ImageSize images
+    test('to test the property `images`', () async {
       // TODO
     });
 
-    // PinMediaWithImageAllOfImages images
-    test('to test the property `images`', () async {
+    // String mediaType
+    test('to test the property `mediaType`', () async {
       // TODO
     });
 

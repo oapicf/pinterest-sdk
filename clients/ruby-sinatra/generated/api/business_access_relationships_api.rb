@@ -1,6 +1,68 @@
 require 'json'
 
 
+MyApp.add_route('POST', '/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts', {
+  "resourcePath" => "/BusinessAccessRelationships",
+  "summary" => "Create a Brand Account",
+  "nickname" => "brand_accounts/create",
+  "responseClass" => "brand_accounts_create_200_response",
+  "endpoint" => "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+  "notes" => "Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.",
+  "parameters" => [
+    {
+      "name" => "business_hierarchy_id",
+      "description" => "business hierarchy node id",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
+    {
+      "name" => "body",
+      "description" => "",
+      "dataType" => "BrandAccountsCreateRequest",
+      "paramType" => "body",
+    }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('PATCH', '/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}', {
+  "resourcePath" => "/BusinessAccessRelationships",
+  "summary" => "Update a Brand Account",
+  "nickname" => "brand_accounts/update",
+  "responseClass" => "brand_accounts_create_200_response",
+  "endpoint" => "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+  "notes" => "Update an existing Brand Account",
+  "parameters" => [
+    {
+      "name" => "business_hierarchy_id",
+      "description" => "business hierarchy node id",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
+    {
+      "name" => "brand_account_id",
+      "description" => "Unique identifier of a brand account.",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
+    {
+      "name" => "body",
+      "description" => "",
+      "dataType" => "BrandAccountsUpdateRequest",
+      "paramType" => "body",
+    }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
 MyApp.add_route('DELETE', '/v5/businesses/{business_id}/members', {
   "resourcePath" => "/BusinessAccessRelationships",
   "summary" => "Terminate business memberships",
@@ -96,6 +158,14 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/members', {
   "endpoint" => "/businesses/{business_id}/members",
   "notes" => "Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE",
   "parameters" => [
+    {
+      "name" => "fetch_system_users",
+      "description" => "Fetches system users if True. Fetches regular user employees if False.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
+      "paramType" => "query",
+    },
     {
       "name" => "assets_summary",
       "description" => "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are",
@@ -214,6 +284,40 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/partners', {
       "dataType" => "String",
       "paramType" => "path",
     },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('PATCH', '/v5/businesses/{business_id}/system_users/{system_user_id}', {
+  "resourcePath" => "/BusinessAccessRelationships",
+  "summary" => "Update a system user information.",
+  "nickname" => "system_user/update",
+  "responseClass" => "void",
+  "endpoint" => "/businesses/{business_id}/system_users/{system_user_id}",
+  "notes" => "Update a system user information such as name.",
+  "parameters" => [
+    {
+      "name" => "business_id",
+      "description" => "Unique identifier of the requesting business.",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
+    {
+      "name" => "system_user_id",
+      "description" => "Unique identifier of a system user.",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
+    {
+      "name" => "body",
+      "description" => "",
+      "dataType" => "SystemUserUpdateRequest",
+      "paramType" => "body",
+    }
     ]}) do
   cross_origin
   # the guts live here

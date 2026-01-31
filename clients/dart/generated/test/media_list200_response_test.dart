@@ -16,14 +16,13 @@ void main() {
   // final instance = MediaList200Response();
 
   group('test MediaList200Response', () {
-    // Media
-    // List<MediaUploadDetails> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<Media> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

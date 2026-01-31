@@ -25,8 +25,10 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionApiResponse_events_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponseEventsInner {
+
+  private JsonNullable<String> errorMessage = JsonNullable.<String>undefined();
 
   /**
    * Whether the event was processed successfully.
@@ -65,8 +67,6 @@ public class ConversionApiResponseEventsInner {
 
   private StatusEnum status;
 
-  private JsonNullable<String> errorMessage = JsonNullable.<String>undefined();
-
   private JsonNullable<String> warningMessage = JsonNullable.<String>undefined();
 
   public ConversionApiResponseEventsInner() {
@@ -77,26 +77,6 @@ public class ConversionApiResponseEventsInner {
    * Constructor with only required parameters
    */
   public ConversionApiResponseEventsInner(StatusEnum status) {
-    this.status = status;
-  }
-
-  public ConversionApiResponseEventsInner status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Whether the event was processed successfully.
-   * @return status
-   */
-  @NotNull 
-  @Schema(name = "status", example = "processed", description = "Whether the event was processed successfully.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("status")
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
@@ -118,6 +98,26 @@ public class ConversionApiResponseEventsInner {
 
   public void setErrorMessage(JsonNullable<String> errorMessage) {
     this.errorMessage = errorMessage;
+  }
+
+  public ConversionApiResponseEventsInner status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Whether the event was processed successfully.
+   * @return status
+   */
+  @NotNull 
+  @Schema(name = "status", example = "processed", description = "Whether the event was processed successfully.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("status")
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   public ConversionApiResponseEventsInner warningMessage(String warningMessage) {
@@ -149,8 +149,8 @@ public class ConversionApiResponseEventsInner {
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
-        equalsNullable(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return equalsNullable(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
         equalsNullable(this.warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
@@ -160,7 +160,7 @@ public class ConversionApiResponseEventsInner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, hashCodeNullable(errorMessage), hashCodeNullable(warningMessage));
+    return Objects.hash(hashCodeNullable(errorMessage), status, hashCodeNullable(warningMessage));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -174,8 +174,8 @@ public class ConversionApiResponseEventsInner {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -73,24 +73,24 @@ private class OASLeadFormUpdateRequestTest {
     private static void maintainRenamedProperties() {
         OASLeadFormUpdateRequest leadFormUpdateRequest = new OASLeadFormUpdateRequest();
         Map<String, String> x-property-mappings = leadFormUpdateRequest.getx-property-mappings();
-        System.assertEquals('privacyPolicyLink', x-property-mappings.get('privacy_policy_link'));
-        System.assertEquals('hasAcceptedTerms', x-property-mappings.get('has_accepted_terms'));
         System.assertEquals('completionMessage', x-property-mappings.get('completion_message'));
         System.assertEquals('disclosureLanguage', x-property-mappings.get('disclosure_language'));
+        System.assertEquals('hasAcceptedTerms', x-property-mappings.get('has_accepted_terms'));
         System.assertEquals('policyLinks', x-property-mappings.get('policy_links'));
+        System.assertEquals('privacyPolicyLink', x-property-mappings.get('privacy_policy_link'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASLeadFormUpdateRequest leadFormUpdateRequest = new OASLeadFormUpdateRequest();
-        System.assertEquals(new List<OASLeadFormQuestion>(), leadFormUpdateRequest.questions);
         System.assertEquals(new List<OASLeadFormCommonPolicyLinksInner>(), leadFormUpdateRequest.policyLinks);
+        System.assertEquals(new List<OASLeadFormQuestion>(), leadFormUpdateRequest.questions);
+        System.assertEquals(null, leadFormUpdateRequest.completionMessage);
+        System.assertEquals(null, leadFormUpdateRequest.disclosureLanguage);
+        System.assertEquals(null, leadFormUpdateRequest.hasAcceptedTerms);
         System.assertEquals(null, leadFormUpdateRequest.name);
         System.assertEquals(null, leadFormUpdateRequest.privacyPolicyLink);
-        System.assertEquals(null, leadFormUpdateRequest.hasAcceptedTerms);
-        System.assertEquals(null, leadFormUpdateRequest.completionMessage);
         System.assertEquals(null, leadFormUpdateRequest.status);
-        System.assertEquals(null, leadFormUpdateRequest.disclosureLanguage);
         System.assertEquals(null, leadFormUpdateRequest.id);
     }
 }

@@ -19,19 +19,29 @@ typedef struct ad_account_create_subscription_response_t ad_account_create_subsc
 
 
 typedef struct ad_account_create_subscription_response_t {
-    char *id; // string
-    char *cryptographic_key; // string
-    char *cryptographic_algorithm; // string
+    char *ad_account_id; // string
+    char *api_version; // string
     int created_time; //numeric
+    char *cryptographic_algorithm; // string
+    char *cryptographic_key; // string
+    char *id; // string
+    char *lead_form_id; // string
+    char *user_account_id; // string
+    char *webhook_url; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_create_subscription_response_t;
 
 __attribute__((deprecated)) ad_account_create_subscription_response_t *ad_account_create_subscription_response_create(
-    char *id,
-    char *cryptographic_key,
+    char *ad_account_id,
+    char *api_version,
+    int created_time,
     char *cryptographic_algorithm,
-    int created_time
+    char *cryptographic_key,
+    char *id,
+    char *lead_form_id,
+    char *user_account_id,
+    char *webhook_url
 );
 
 void ad_account_create_subscription_response_free(ad_account_create_subscription_response_t *ad_account_create_subscription_response);

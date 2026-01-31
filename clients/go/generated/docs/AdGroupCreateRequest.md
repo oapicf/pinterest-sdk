@@ -4,30 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Ad group name. | 
-**Status** | Pointer to [**EntityStatus**](EntityStatus.md) | Ad group/entity status. | [optional] 
-**BudgetInMicroCurrency** | Pointer to **NullableInt32** | Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. | [optional] 
-**BidInMicroCurrency** | Pointer to **NullableInt32** | Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. | [optional] 
-**OptimizationGoalMetadata** | Pointer to [**NullableOptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;. | [optional] 
-**BudgetType** | Pointer to [**BudgetType**](BudgetType.md) |  | [optional] [default to DAILY]
-**StartTime** | Pointer to **NullableInt32** | Ad group start time. Unix timestamp in seconds. Defaults to current time. | [optional] 
-**EndTime** | Pointer to **NullableInt32** | Ad group end time. Unix timestamp in seconds. | [optional] 
-**TargetingSpec** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
-**LifetimeFrequencyCap** | Pointer to **int32** | Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field. | [optional] 
-**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) | Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;. | [optional] 
-**AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group.Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] 
-**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] 
-**PacingDeliveryType** | Pointer to [**PacingDeliveryType**](PacingDeliveryType.md) |  | [optional] [default to STANDARD]
-**CampaignId** | **string** | Campaign ID of the ad group. | 
+**AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;. | [optional] 
+**BidInMicroCurrency** | Pointer to **NullableInt32** | Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. | [optional] 
+**BidStrategyType** | Pointer to **NullableString** | Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;. | [optional] 
 **BillableEvent** | [**ActionType**](ActionType.md) |  | 
-**BidStrategyType** | Pointer to **NullableString** | Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID. | [optional] 
+**BudgetInMicroCurrency** | Pointer to **NullableInt32** | Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. | [optional] 
+**BudgetType** | Pointer to [**BudgetType**](BudgetType.md) |  | [optional] [default to DAILY]
+**CampaignId** | **string** | Campaign ID of the ad group. | 
+**EndTime** | Pointer to **NullableInt32** | Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. | [optional] 
+**IsCreativeOptimization** | Pointer to **NullableBool** | Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale. | [optional] 
+**LifetimeFrequencyCap** | Pointer to **int32** | Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field. | [optional] 
+**Name** | **string** | Ad group name. | 
+**OptimizationGoalMetadata** | Pointer to [**NullableOptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;. | [optional] 
+**PacingDeliveryType** | Pointer to [**PacingDeliveryType**](PacingDeliveryType.md) |  | [optional] [default to STANDARD]
+**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] 
+**PromotionApplicationLevel** | Pointer to **NullableString** | Specify if the promotion is applied at ad group or item level | [optional] 
+**PromotionId** | Pointer to **NullableString** | Promotion ID. To clear this field, set to null. | [optional] [default to "0"]
+**StartTime** | Pointer to **NullableInt32** | Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. | [optional] 
+**Status** | Pointer to [**EntityStatus**](EntityStatus.md) | Ad group/entity status. | [optional] 
+**TargetingSpec** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 **TargetingTemplateIds** | Pointer to **[]string** | Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;]. | [optional] 
+**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) | Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;. | [optional] 
+**BidMultiplier** | Pointer to **float32** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;. | [optional] 
 
 ## Methods
 
 ### NewAdGroupCreateRequest
 
-`func NewAdGroupCreateRequest(name string, campaignId string, billableEvent ActionType, ) *AdGroupCreateRequest`
+`func NewAdGroupCreateRequest(billableEvent ActionType, campaignId string, name string, ) *AdGroupCreateRequest`
 
 NewAdGroupCreateRequest instantiates a new AdGroupCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -42,50 +46,120 @@ NewAdGroupCreateRequestWithDefaults instantiates a new AdGroupCreateRequest obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetName
+### GetAutoTargetingEnabled
 
-`func (o *AdGroupCreateRequest) GetName() string`
+`func (o *AdGroupCreateRequest) GetAutoTargetingEnabled() bool`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetAutoTargetingEnabled returns the AutoTargetingEnabled field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetAutoTargetingEnabledOk
 
-`func (o *AdGroupCreateRequest) GetNameOk() (*string, bool)`
+`func (o *AdGroupCreateRequest) GetAutoTargetingEnabledOk() (*bool, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetAutoTargetingEnabledOk returns a tuple with the AutoTargetingEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetAutoTargetingEnabled
 
-`func (o *AdGroupCreateRequest) SetName(v string)`
+`func (o *AdGroupCreateRequest) SetAutoTargetingEnabled(v bool)`
 
-SetName sets Name field to given value.
+SetAutoTargetingEnabled sets AutoTargetingEnabled field to given value.
 
+### HasAutoTargetingEnabled
 
-### GetStatus
+`func (o *AdGroupCreateRequest) HasAutoTargetingEnabled() bool`
 
-`func (o *AdGroupCreateRequest) GetStatus() EntityStatus`
+HasAutoTargetingEnabled returns a boolean if a field has been set.
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+### GetBidInMicroCurrency
 
-### GetStatusOk
+`func (o *AdGroupCreateRequest) GetBidInMicroCurrency() int32`
 
-`func (o *AdGroupCreateRequest) GetStatusOk() (*EntityStatus, bool)`
+GetBidInMicroCurrency returns the BidInMicroCurrency field if non-nil, zero value otherwise.
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+### GetBidInMicroCurrencyOk
+
+`func (o *AdGroupCreateRequest) GetBidInMicroCurrencyOk() (*int32, bool)`
+
+GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetBidInMicroCurrency
 
-`func (o *AdGroupCreateRequest) SetStatus(v EntityStatus)`
+`func (o *AdGroupCreateRequest) SetBidInMicroCurrency(v int32)`
 
-SetStatus sets Status field to given value.
+SetBidInMicroCurrency sets BidInMicroCurrency field to given value.
 
-### HasStatus
+### HasBidInMicroCurrency
 
-`func (o *AdGroupCreateRequest) HasStatus() bool`
+`func (o *AdGroupCreateRequest) HasBidInMicroCurrency() bool`
 
-HasStatus returns a boolean if a field has been set.
+HasBidInMicroCurrency returns a boolean if a field has been set.
+
+### SetBidInMicroCurrencyNil
+
+`func (o *AdGroupCreateRequest) SetBidInMicroCurrencyNil(b bool)`
+
+ SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
+
+### UnsetBidInMicroCurrency
+`func (o *AdGroupCreateRequest) UnsetBidInMicroCurrency()`
+
+UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
+### GetBidStrategyType
+
+`func (o *AdGroupCreateRequest) GetBidStrategyType() string`
+
+GetBidStrategyType returns the BidStrategyType field if non-nil, zero value otherwise.
+
+### GetBidStrategyTypeOk
+
+`func (o *AdGroupCreateRequest) GetBidStrategyTypeOk() (*string, bool)`
+
+GetBidStrategyTypeOk returns a tuple with the BidStrategyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBidStrategyType
+
+`func (o *AdGroupCreateRequest) SetBidStrategyType(v string)`
+
+SetBidStrategyType sets BidStrategyType field to given value.
+
+### HasBidStrategyType
+
+`func (o *AdGroupCreateRequest) HasBidStrategyType() bool`
+
+HasBidStrategyType returns a boolean if a field has been set.
+
+### SetBidStrategyTypeNil
+
+`func (o *AdGroupCreateRequest) SetBidStrategyTypeNil(b bool)`
+
+ SetBidStrategyTypeNil sets the value for BidStrategyType to be an explicit nil
+
+### UnsetBidStrategyType
+`func (o *AdGroupCreateRequest) UnsetBidStrategyType()`
+
+UnsetBidStrategyType ensures that no value is present for BidStrategyType, not even an explicit nil
+### GetBillableEvent
+
+`func (o *AdGroupCreateRequest) GetBillableEvent() ActionType`
+
+GetBillableEvent returns the BillableEvent field if non-nil, zero value otherwise.
+
+### GetBillableEventOk
+
+`func (o *AdGroupCreateRequest) GetBillableEventOk() (*ActionType, bool)`
+
+GetBillableEventOk returns a tuple with the BillableEvent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillableEvent
+
+`func (o *AdGroupCreateRequest) SetBillableEvent(v ActionType)`
+
+SetBillableEvent sets BillableEvent field to given value.
+
 
 ### GetBudgetInMicroCurrency
 
@@ -122,76 +196,6 @@ HasBudgetInMicroCurrency returns a boolean if a field has been set.
 `func (o *AdGroupCreateRequest) UnsetBudgetInMicroCurrency()`
 
 UnsetBudgetInMicroCurrency ensures that no value is present for BudgetInMicroCurrency, not even an explicit nil
-### GetBidInMicroCurrency
-
-`func (o *AdGroupCreateRequest) GetBidInMicroCurrency() int32`
-
-GetBidInMicroCurrency returns the BidInMicroCurrency field if non-nil, zero value otherwise.
-
-### GetBidInMicroCurrencyOk
-
-`func (o *AdGroupCreateRequest) GetBidInMicroCurrencyOk() (*int32, bool)`
-
-GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBidInMicroCurrency
-
-`func (o *AdGroupCreateRequest) SetBidInMicroCurrency(v int32)`
-
-SetBidInMicroCurrency sets BidInMicroCurrency field to given value.
-
-### HasBidInMicroCurrency
-
-`func (o *AdGroupCreateRequest) HasBidInMicroCurrency() bool`
-
-HasBidInMicroCurrency returns a boolean if a field has been set.
-
-### SetBidInMicroCurrencyNil
-
-`func (o *AdGroupCreateRequest) SetBidInMicroCurrencyNil(b bool)`
-
- SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
-
-### UnsetBidInMicroCurrency
-`func (o *AdGroupCreateRequest) UnsetBidInMicroCurrency()`
-
-UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
-### GetOptimizationGoalMetadata
-
-`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadata() OptimizationGoalMetadata`
-
-GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field if non-nil, zero value otherwise.
-
-### GetOptimizationGoalMetadataOk
-
-`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool)`
-
-GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOptimizationGoalMetadata
-
-`func (o *AdGroupCreateRequest) SetOptimizationGoalMetadata(v OptimizationGoalMetadata)`
-
-SetOptimizationGoalMetadata sets OptimizationGoalMetadata field to given value.
-
-### HasOptimizationGoalMetadata
-
-`func (o *AdGroupCreateRequest) HasOptimizationGoalMetadata() bool`
-
-HasOptimizationGoalMetadata returns a boolean if a field has been set.
-
-### SetOptimizationGoalMetadataNil
-
-`func (o *AdGroupCreateRequest) SetOptimizationGoalMetadataNil(b bool)`
-
- SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
-
-### UnsetOptimizationGoalMetadata
-`func (o *AdGroupCreateRequest) UnsetOptimizationGoalMetadata()`
-
-UnsetOptimizationGoalMetadata ensures that no value is present for OptimizationGoalMetadata, not even an explicit nil
 ### GetBudgetType
 
 `func (o *AdGroupCreateRequest) GetBudgetType() BudgetType`
@@ -217,41 +221,26 @@ SetBudgetType sets BudgetType field to given value.
 
 HasBudgetType returns a boolean if a field has been set.
 
-### GetStartTime
+### GetCampaignId
 
-`func (o *AdGroupCreateRequest) GetStartTime() int32`
+`func (o *AdGroupCreateRequest) GetCampaignId() string`
 
-GetStartTime returns the StartTime field if non-nil, zero value otherwise.
+GetCampaignId returns the CampaignId field if non-nil, zero value otherwise.
 
-### GetStartTimeOk
+### GetCampaignIdOk
 
-`func (o *AdGroupCreateRequest) GetStartTimeOk() (*int32, bool)`
+`func (o *AdGroupCreateRequest) GetCampaignIdOk() (*string, bool)`
 
-GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
+GetCampaignIdOk returns a tuple with the CampaignId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartTime
+### SetCampaignId
 
-`func (o *AdGroupCreateRequest) SetStartTime(v int32)`
+`func (o *AdGroupCreateRequest) SetCampaignId(v string)`
 
-SetStartTime sets StartTime field to given value.
+SetCampaignId sets CampaignId field to given value.
 
-### HasStartTime
 
-`func (o *AdGroupCreateRequest) HasStartTime() bool`
-
-HasStartTime returns a boolean if a field has been set.
-
-### SetStartTimeNil
-
-`func (o *AdGroupCreateRequest) SetStartTimeNil(b bool)`
-
- SetStartTimeNil sets the value for StartTime to be an explicit nil
-
-### UnsetStartTime
-`func (o *AdGroupCreateRequest) UnsetStartTime()`
-
-UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
 ### GetEndTime
 
 `func (o *AdGroupCreateRequest) GetEndTime() int32`
@@ -287,31 +276,41 @@ HasEndTime returns a boolean if a field has been set.
 `func (o *AdGroupCreateRequest) UnsetEndTime()`
 
 UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-### GetTargetingSpec
+### GetIsCreativeOptimization
 
-`func (o *AdGroupCreateRequest) GetTargetingSpec() TargetingSpec`
+`func (o *AdGroupCreateRequest) GetIsCreativeOptimization() bool`
 
-GetTargetingSpec returns the TargetingSpec field if non-nil, zero value otherwise.
+GetIsCreativeOptimization returns the IsCreativeOptimization field if non-nil, zero value otherwise.
 
-### GetTargetingSpecOk
+### GetIsCreativeOptimizationOk
 
-`func (o *AdGroupCreateRequest) GetTargetingSpecOk() (*TargetingSpec, bool)`
+`func (o *AdGroupCreateRequest) GetIsCreativeOptimizationOk() (*bool, bool)`
 
-GetTargetingSpecOk returns a tuple with the TargetingSpec field if it's non-nil, zero value otherwise
+GetIsCreativeOptimizationOk returns a tuple with the IsCreativeOptimization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTargetingSpec
+### SetIsCreativeOptimization
 
-`func (o *AdGroupCreateRequest) SetTargetingSpec(v TargetingSpec)`
+`func (o *AdGroupCreateRequest) SetIsCreativeOptimization(v bool)`
 
-SetTargetingSpec sets TargetingSpec field to given value.
+SetIsCreativeOptimization sets IsCreativeOptimization field to given value.
 
-### HasTargetingSpec
+### HasIsCreativeOptimization
 
-`func (o *AdGroupCreateRequest) HasTargetingSpec() bool`
+`func (o *AdGroupCreateRequest) HasIsCreativeOptimization() bool`
 
-HasTargetingSpec returns a boolean if a field has been set.
+HasIsCreativeOptimization returns a boolean if a field has been set.
 
+### SetIsCreativeOptimizationNil
+
+`func (o *AdGroupCreateRequest) SetIsCreativeOptimizationNil(b bool)`
+
+ SetIsCreativeOptimizationNil sets the value for IsCreativeOptimization to be an explicit nil
+
+### UnsetIsCreativeOptimization
+`func (o *AdGroupCreateRequest) UnsetIsCreativeOptimization()`
+
+UnsetIsCreativeOptimization ensures that no value is present for IsCreativeOptimization, not even an explicit nil
 ### GetLifetimeFrequencyCap
 
 `func (o *AdGroupCreateRequest) GetLifetimeFrequencyCap() int32`
@@ -337,65 +336,85 @@ SetLifetimeFrequencyCap sets LifetimeFrequencyCap field to given value.
 
 HasLifetimeFrequencyCap returns a boolean if a field has been set.
 
-### GetTrackingUrls
+### GetName
 
-`func (o *AdGroupCreateRequest) GetTrackingUrls() TrackingUrls`
+`func (o *AdGroupCreateRequest) GetName() string`
 
-GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetTrackingUrlsOk
+### GetNameOk
 
-`func (o *AdGroupCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
+`func (o *AdGroupCreateRequest) GetNameOk() (*string, bool)`
 
-GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTrackingUrls
+### SetName
 
-`func (o *AdGroupCreateRequest) SetTrackingUrls(v TrackingUrls)`
+`func (o *AdGroupCreateRequest) SetName(v string)`
 
-SetTrackingUrls sets TrackingUrls field to given value.
+SetName sets Name field to given value.
 
-### HasTrackingUrls
 
-`func (o *AdGroupCreateRequest) HasTrackingUrls() bool`
+### GetOptimizationGoalMetadata
 
-HasTrackingUrls returns a boolean if a field has been set.
+`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadata() OptimizationGoalMetadata`
 
-### SetTrackingUrlsNil
+GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field if non-nil, zero value otherwise.
 
-`func (o *AdGroupCreateRequest) SetTrackingUrlsNil(b bool)`
+### GetOptimizationGoalMetadataOk
 
- SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
+`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool)`
 
-### UnsetTrackingUrls
-`func (o *AdGroupCreateRequest) UnsetTrackingUrls()`
-
-UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-### GetAutoTargetingEnabled
-
-`func (o *AdGroupCreateRequest) GetAutoTargetingEnabled() bool`
-
-GetAutoTargetingEnabled returns the AutoTargetingEnabled field if non-nil, zero value otherwise.
-
-### GetAutoTargetingEnabledOk
-
-`func (o *AdGroupCreateRequest) GetAutoTargetingEnabledOk() (*bool, bool)`
-
-GetAutoTargetingEnabledOk returns a tuple with the AutoTargetingEnabled field if it's non-nil, zero value otherwise
+GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAutoTargetingEnabled
+### SetOptimizationGoalMetadata
 
-`func (o *AdGroupCreateRequest) SetAutoTargetingEnabled(v bool)`
+`func (o *AdGroupCreateRequest) SetOptimizationGoalMetadata(v OptimizationGoalMetadata)`
 
-SetAutoTargetingEnabled sets AutoTargetingEnabled field to given value.
+SetOptimizationGoalMetadata sets OptimizationGoalMetadata field to given value.
 
-### HasAutoTargetingEnabled
+### HasOptimizationGoalMetadata
 
-`func (o *AdGroupCreateRequest) HasAutoTargetingEnabled() bool`
+`func (o *AdGroupCreateRequest) HasOptimizationGoalMetadata() bool`
 
-HasAutoTargetingEnabled returns a boolean if a field has been set.
+HasOptimizationGoalMetadata returns a boolean if a field has been set.
+
+### SetOptimizationGoalMetadataNil
+
+`func (o *AdGroupCreateRequest) SetOptimizationGoalMetadataNil(b bool)`
+
+ SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
+
+### UnsetOptimizationGoalMetadata
+`func (o *AdGroupCreateRequest) UnsetOptimizationGoalMetadata()`
+
+UnsetOptimizationGoalMetadata ensures that no value is present for OptimizationGoalMetadata, not even an explicit nil
+### GetPacingDeliveryType
+
+`func (o *AdGroupCreateRequest) GetPacingDeliveryType() PacingDeliveryType`
+
+GetPacingDeliveryType returns the PacingDeliveryType field if non-nil, zero value otherwise.
+
+### GetPacingDeliveryTypeOk
+
+`func (o *AdGroupCreateRequest) GetPacingDeliveryTypeOk() (*PacingDeliveryType, bool)`
+
+GetPacingDeliveryTypeOk returns a tuple with the PacingDeliveryType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPacingDeliveryType
+
+`func (o *AdGroupCreateRequest) SetPacingDeliveryType(v PacingDeliveryType)`
+
+SetPacingDeliveryType sets PacingDeliveryType field to given value.
+
+### HasPacingDeliveryType
+
+`func (o *AdGroupCreateRequest) HasPacingDeliveryType() bool`
+
+HasPacingDeliveryType returns a boolean if a field has been set.
 
 ### GetPlacementGroup
 
@@ -422,106 +441,161 @@ SetPlacementGroup sets PlacementGroup field to given value.
 
 HasPlacementGroup returns a boolean if a field has been set.
 
-### GetPacingDeliveryType
+### GetPromotionApplicationLevel
 
-`func (o *AdGroupCreateRequest) GetPacingDeliveryType() PacingDeliveryType`
+`func (o *AdGroupCreateRequest) GetPromotionApplicationLevel() string`
 
-GetPacingDeliveryType returns the PacingDeliveryType field if non-nil, zero value otherwise.
+GetPromotionApplicationLevel returns the PromotionApplicationLevel field if non-nil, zero value otherwise.
 
-### GetPacingDeliveryTypeOk
+### GetPromotionApplicationLevelOk
 
-`func (o *AdGroupCreateRequest) GetPacingDeliveryTypeOk() (*PacingDeliveryType, bool)`
+`func (o *AdGroupCreateRequest) GetPromotionApplicationLevelOk() (*string, bool)`
 
-GetPacingDeliveryTypeOk returns a tuple with the PacingDeliveryType field if it's non-nil, zero value otherwise
+GetPromotionApplicationLevelOk returns a tuple with the PromotionApplicationLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPacingDeliveryType
+### SetPromotionApplicationLevel
 
-`func (o *AdGroupCreateRequest) SetPacingDeliveryType(v PacingDeliveryType)`
+`func (o *AdGroupCreateRequest) SetPromotionApplicationLevel(v string)`
 
-SetPacingDeliveryType sets PacingDeliveryType field to given value.
+SetPromotionApplicationLevel sets PromotionApplicationLevel field to given value.
 
-### HasPacingDeliveryType
+### HasPromotionApplicationLevel
 
-`func (o *AdGroupCreateRequest) HasPacingDeliveryType() bool`
+`func (o *AdGroupCreateRequest) HasPromotionApplicationLevel() bool`
 
-HasPacingDeliveryType returns a boolean if a field has been set.
+HasPromotionApplicationLevel returns a boolean if a field has been set.
 
-### GetCampaignId
+### SetPromotionApplicationLevelNil
 
-`func (o *AdGroupCreateRequest) GetCampaignId() string`
+`func (o *AdGroupCreateRequest) SetPromotionApplicationLevelNil(b bool)`
 
-GetCampaignId returns the CampaignId field if non-nil, zero value otherwise.
+ SetPromotionApplicationLevelNil sets the value for PromotionApplicationLevel to be an explicit nil
 
-### GetCampaignIdOk
+### UnsetPromotionApplicationLevel
+`func (o *AdGroupCreateRequest) UnsetPromotionApplicationLevel()`
 
-`func (o *AdGroupCreateRequest) GetCampaignIdOk() (*string, bool)`
+UnsetPromotionApplicationLevel ensures that no value is present for PromotionApplicationLevel, not even an explicit nil
+### GetPromotionId
 
-GetCampaignIdOk returns a tuple with the CampaignId field if it's non-nil, zero value otherwise
+`func (o *AdGroupCreateRequest) GetPromotionId() string`
+
+GetPromotionId returns the PromotionId field if non-nil, zero value otherwise.
+
+### GetPromotionIdOk
+
+`func (o *AdGroupCreateRequest) GetPromotionIdOk() (*string, bool)`
+
+GetPromotionIdOk returns a tuple with the PromotionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCampaignId
+### SetPromotionId
 
-`func (o *AdGroupCreateRequest) SetCampaignId(v string)`
+`func (o *AdGroupCreateRequest) SetPromotionId(v string)`
 
-SetCampaignId sets CampaignId field to given value.
+SetPromotionId sets PromotionId field to given value.
 
+### HasPromotionId
 
-### GetBillableEvent
+`func (o *AdGroupCreateRequest) HasPromotionId() bool`
 
-`func (o *AdGroupCreateRequest) GetBillableEvent() ActionType`
+HasPromotionId returns a boolean if a field has been set.
 
-GetBillableEvent returns the BillableEvent field if non-nil, zero value otherwise.
+### SetPromotionIdNil
 
-### GetBillableEventOk
+`func (o *AdGroupCreateRequest) SetPromotionIdNil(b bool)`
 
-`func (o *AdGroupCreateRequest) GetBillableEventOk() (*ActionType, bool)`
+ SetPromotionIdNil sets the value for PromotionId to be an explicit nil
 
-GetBillableEventOk returns a tuple with the BillableEvent field if it's non-nil, zero value otherwise
+### UnsetPromotionId
+`func (o *AdGroupCreateRequest) UnsetPromotionId()`
+
+UnsetPromotionId ensures that no value is present for PromotionId, not even an explicit nil
+### GetStartTime
+
+`func (o *AdGroupCreateRequest) GetStartTime() int32`
+
+GetStartTime returns the StartTime field if non-nil, zero value otherwise.
+
+### GetStartTimeOk
+
+`func (o *AdGroupCreateRequest) GetStartTimeOk() (*int32, bool)`
+
+GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillableEvent
+### SetStartTime
 
-`func (o *AdGroupCreateRequest) SetBillableEvent(v ActionType)`
+`func (o *AdGroupCreateRequest) SetStartTime(v int32)`
 
-SetBillableEvent sets BillableEvent field to given value.
+SetStartTime sets StartTime field to given value.
 
+### HasStartTime
 
-### GetBidStrategyType
+`func (o *AdGroupCreateRequest) HasStartTime() bool`
 
-`func (o *AdGroupCreateRequest) GetBidStrategyType() string`
+HasStartTime returns a boolean if a field has been set.
 
-GetBidStrategyType returns the BidStrategyType field if non-nil, zero value otherwise.
+### SetStartTimeNil
 
-### GetBidStrategyTypeOk
+`func (o *AdGroupCreateRequest) SetStartTimeNil(b bool)`
 
-`func (o *AdGroupCreateRequest) GetBidStrategyTypeOk() (*string, bool)`
+ SetStartTimeNil sets the value for StartTime to be an explicit nil
 
-GetBidStrategyTypeOk returns a tuple with the BidStrategyType field if it's non-nil, zero value otherwise
+### UnsetStartTime
+`func (o *AdGroupCreateRequest) UnsetStartTime()`
+
+UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
+### GetStatus
+
+`func (o *AdGroupCreateRequest) GetStatus() EntityStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *AdGroupCreateRequest) GetStatusOk() (*EntityStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBidStrategyType
+### SetStatus
 
-`func (o *AdGroupCreateRequest) SetBidStrategyType(v string)`
+`func (o *AdGroupCreateRequest) SetStatus(v EntityStatus)`
 
-SetBidStrategyType sets BidStrategyType field to given value.
+SetStatus sets Status field to given value.
 
-### HasBidStrategyType
+### HasStatus
 
-`func (o *AdGroupCreateRequest) HasBidStrategyType() bool`
+`func (o *AdGroupCreateRequest) HasStatus() bool`
 
-HasBidStrategyType returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
-### SetBidStrategyTypeNil
+### GetTargetingSpec
 
-`func (o *AdGroupCreateRequest) SetBidStrategyTypeNil(b bool)`
+`func (o *AdGroupCreateRequest) GetTargetingSpec() TargetingSpec`
 
- SetBidStrategyTypeNil sets the value for BidStrategyType to be an explicit nil
+GetTargetingSpec returns the TargetingSpec field if non-nil, zero value otherwise.
 
-### UnsetBidStrategyType
-`func (o *AdGroupCreateRequest) UnsetBidStrategyType()`
+### GetTargetingSpecOk
 
-UnsetBidStrategyType ensures that no value is present for BidStrategyType, not even an explicit nil
+`func (o *AdGroupCreateRequest) GetTargetingSpecOk() (*TargetingSpec, bool)`
+
+GetTargetingSpecOk returns a tuple with the TargetingSpec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetingSpec
+
+`func (o *AdGroupCreateRequest) SetTargetingSpec(v TargetingSpec)`
+
+SetTargetingSpec sets TargetingSpec field to given value.
+
+### HasTargetingSpec
+
+`func (o *AdGroupCreateRequest) HasTargetingSpec() bool`
+
+HasTargetingSpec returns a boolean if a field has been set.
+
 ### GetTargetingTemplateIds
 
 `func (o *AdGroupCreateRequest) GetTargetingTemplateIds() []string`
@@ -557,6 +631,66 @@ HasTargetingTemplateIds returns a boolean if a field has been set.
 `func (o *AdGroupCreateRequest) UnsetTargetingTemplateIds()`
 
 UnsetTargetingTemplateIds ensures that no value is present for TargetingTemplateIds, not even an explicit nil
+### GetTrackingUrls
+
+`func (o *AdGroupCreateRequest) GetTrackingUrls() TrackingUrls`
+
+GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
+
+### GetTrackingUrlsOk
+
+`func (o *AdGroupCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
+
+GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrackingUrls
+
+`func (o *AdGroupCreateRequest) SetTrackingUrls(v TrackingUrls)`
+
+SetTrackingUrls sets TrackingUrls field to given value.
+
+### HasTrackingUrls
+
+`func (o *AdGroupCreateRequest) HasTrackingUrls() bool`
+
+HasTrackingUrls returns a boolean if a field has been set.
+
+### SetTrackingUrlsNil
+
+`func (o *AdGroupCreateRequest) SetTrackingUrlsNil(b bool)`
+
+ SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
+
+### UnsetTrackingUrls
+`func (o *AdGroupCreateRequest) UnsetTrackingUrls()`
+
+UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
+### GetBidMultiplier
+
+`func (o *AdGroupCreateRequest) GetBidMultiplier() float32`
+
+GetBidMultiplier returns the BidMultiplier field if non-nil, zero value otherwise.
+
+### GetBidMultiplierOk
+
+`func (o *AdGroupCreateRequest) GetBidMultiplierOk() (*float32, bool)`
+
+GetBidMultiplierOk returns a tuple with the BidMultiplier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBidMultiplier
+
+`func (o *AdGroupCreateRequest) SetBidMultiplier(v float32)`
+
+SetBidMultiplier sets BidMultiplier field to given value.
+
+### HasBidMultiplier
+
+`func (o *AdGroupCreateRequest) HasBidMultiplier() bool`
+
+HasBidMultiplier returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

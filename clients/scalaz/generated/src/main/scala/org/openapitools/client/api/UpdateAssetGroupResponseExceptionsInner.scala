@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import UpdateAssetGroupResponseExceptionsInner._
 
 case class UpdateAssetGroupResponseExceptionsInner (
-  /* Error code associated with the error editing asset group. */
+  /* Asset group id of the exception. */
+  assetGroupId: Option[String],
+/* Error code associated with the error editing asset group. */
   code: Option[Integer],
 /* Error message associated with the error editing asset group. */
-  message: Option[String],
-/* Asset group id of the exception. */
-  assetGroupId: Option[String])
+  message: Option[String])
 
 object UpdateAssetGroupResponseExceptionsInner {
   import DateTimeCodecs._

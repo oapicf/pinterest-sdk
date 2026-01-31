@@ -5,18 +5,18 @@ context("Test AnalyticsMetricsResponse")
 
 model_instance <- AnalyticsMetricsResponse$new()
 
-test_that("summary_metrics", {
-  # tests for the property `summary_metrics` (map(numeric))
-  # The metric name and value over the requested period for each requested metric
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`summary_metrics`, "EXPECTED_RESULT")
-})
-
 test_that("daily_metrics", {
   # tests for the property `daily_metrics` (array[AnalyticsDailyMetrics])
   # Array with the requested daily metric records
 
   # uncomment below to test the property
   #expect_equal(model.instance$`daily_metrics`, "EXPECTED_RESULT")
+})
+
+test_that("summary_metrics", {
+  # tests for the property `summary_metrics` (map(numeric))
+  # The metric name and value over the requested period for each requested metric
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`summary_metrics`, "EXPECTED_RESULT")
 })

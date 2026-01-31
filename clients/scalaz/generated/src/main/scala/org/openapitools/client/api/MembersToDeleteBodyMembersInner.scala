@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import MembersToDeleteBodyMembersInner._
 
 case class MembersToDeleteBodyMembersInner (
-  /* Unique identifier of the member */
-  memberId: String,
-businessRole: BusinessRoleForMembers)
+  businessRole: BusinessRoleForMembers,
+/* Unique identifier of the member */
+  memberId: String)
 
 object MembersToDeleteBodyMembersInner {
   import DateTimeCodecs._

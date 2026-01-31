@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[ConversionTagResponse]**](ConversionTagResponse.md) |  | [optional] 
+**items** | [**[ConversionTag]**](ConversionTag.md) |  | [optional] 
 
 

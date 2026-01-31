@@ -6,7 +6,7 @@ context("Test CustomLabel4Filter")
 model_instance <- CustomLabel4Filter$new()
 
 test_that("CUSTOM_LABEL_4", {
-  # tests for the property `CUSTOM_LABEL_4` (CatalogsProductGroupMultipleStringCriteria)
+  # tests for the property `CUSTOM_LABEL_4` (CatalogsProductGroupFilterOperatorTypeCriteria)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CUSTOM_LABEL_4`, "EXPECTED_RESULT")

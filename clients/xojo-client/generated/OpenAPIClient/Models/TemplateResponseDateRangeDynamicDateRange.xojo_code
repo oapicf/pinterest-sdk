@@ -3,17 +3,17 @@ Protected Class TemplateResponseDateRangeDynamicDateRange
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The date range type
+			The dynamic range type
 		#tag EndNote
-		type As Xoson.O.OptionalString
+		range As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The dynamic range type
+			The date range type
 		#tag EndNote
-		range As Xoson.O.OptionalString
+		type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -23,6 +23,7 @@ Protected Class TemplateResponseDateRangeDynamicDateRange
         QuarterToDate
         MonthToDate
         LastMonth
+        LastQuarter
         
     #tag EndEnum
 
@@ -39,6 +40,8 @@ Protected Class TemplateResponseDateRangeDynamicDateRange
 		      Return "MONTH_TO_DATE"
 		    Case RangeEnum.LastMonth
 		      Return "LAST_MONTH"
+		    Case RangeEnum.LastQuarter
+		      Return "LAST_QUARTER"
 		    
 		  End Select
 		  Return ""

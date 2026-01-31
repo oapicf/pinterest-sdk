@@ -6,31 +6,35 @@
 
 
 static get_business_assets_response_t *get_business_assets_response_create_internal(
+    asset_group_binding_t *asset_group_info,
     char *asset_id,
     char *asset_type,
-    asset_group_binding_t *asset_group_info
+    get_business_assets_response_catalog_info_t *catalog_info
     ) {
     get_business_assets_response_t *get_business_assets_response_local_var = malloc(sizeof(get_business_assets_response_t));
     if (!get_business_assets_response_local_var) {
         return NULL;
     }
+    get_business_assets_response_local_var->asset_group_info = asset_group_info;
     get_business_assets_response_local_var->asset_id = asset_id;
     get_business_assets_response_local_var->asset_type = asset_type;
-    get_business_assets_response_local_var->asset_group_info = asset_group_info;
+    get_business_assets_response_local_var->catalog_info = catalog_info;
 
     get_business_assets_response_local_var->_library_owned = 1;
     return get_business_assets_response_local_var;
 }
 
 __attribute__((deprecated)) get_business_assets_response_t *get_business_assets_response_create(
+    asset_group_binding_t *asset_group_info,
     char *asset_id,
     char *asset_type,
-    asset_group_binding_t *asset_group_info
+    get_business_assets_response_catalog_info_t *catalog_info
     ) {
     return get_business_assets_response_create_internal (
+        asset_group_info,
         asset_id,
         asset_type,
-        asset_group_info
+        catalog_info
         );
 }
 
@@ -43,6 +47,10 @@ void get_business_assets_response_free(get_business_assets_response_t *get_busin
         return ;
     }
     listEntry_t *listEntry;
+    if (get_business_assets_response->asset_group_info) {
+        asset_group_binding_free(get_business_assets_response->asset_group_info);
+        get_business_assets_response->asset_group_info = NULL;
+    }
     if (get_business_assets_response->asset_id) {
         free(get_business_assets_response->asset_id);
         get_business_assets_response->asset_id = NULL;
@@ -51,15 +59,28 @@ void get_business_assets_response_free(get_business_assets_response_t *get_busin
         free(get_business_assets_response->asset_type);
         get_business_assets_response->asset_type = NULL;
     }
-    if (get_business_assets_response->asset_group_info) {
-        asset_group_binding_free(get_business_assets_response->asset_group_info);
-        get_business_assets_response->asset_group_info = NULL;
+    if (get_business_assets_response->catalog_info) {
+        get_business_assets_response_catalog_info_free(get_business_assets_response->catalog_info);
+        get_business_assets_response->catalog_info = NULL;
     }
     free(get_business_assets_response);
 }
 
 cJSON *get_business_assets_response_convertToJSON(get_business_assets_response_t *get_business_assets_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // get_business_assets_response->asset_group_info
+    if(get_business_assets_response->asset_group_info) {
+    cJSON *asset_group_info_local_JSON = asset_group_binding_convertToJSON(get_business_assets_response->asset_group_info);
+    if(asset_group_info_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "asset_group_info", asset_group_info_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
 
     // get_business_assets_response->asset_id
     if(get_business_assets_response->asset_id) {
@@ -77,13 +98,13 @@ cJSON *get_business_assets_response_convertToJSON(get_business_assets_response_t
     }
 
 
-    // get_business_assets_response->asset_group_info
-    if(get_business_assets_response->asset_group_info) {
-    cJSON *asset_group_info_local_JSON = asset_group_binding_convertToJSON(get_business_assets_response->asset_group_info);
-    if(asset_group_info_local_JSON == NULL) {
+    // get_business_assets_response->catalog_info
+    if(get_business_assets_response->catalog_info) {
+    cJSON *catalog_info_local_JSON = get_business_assets_response_catalog_info_convertToJSON(get_business_assets_response->catalog_info);
+    if(catalog_info_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "asset_group_info", asset_group_info_local_JSON);
+    cJSON_AddItemToObject(item, "catalog_info", catalog_info_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -103,6 +124,18 @@ get_business_assets_response_t *get_business_assets_response_parseFromJSON(cJSON
 
     // define the local variable for get_business_assets_response->asset_group_info
     asset_group_binding_t *asset_group_info_local_nonprim = NULL;
+
+    // define the local variable for get_business_assets_response->catalog_info
+    get_business_assets_response_catalog_info_t *catalog_info_local_nonprim = NULL;
+
+    // get_business_assets_response->asset_group_info
+    cJSON *asset_group_info = cJSON_GetObjectItemCaseSensitive(get_business_assets_responseJSON, "asset_group_info");
+    if (cJSON_IsNull(asset_group_info)) {
+        asset_group_info = NULL;
+    }
+    if (asset_group_info) { 
+    asset_group_info_local_nonprim = asset_group_binding_parseFromJSON(asset_group_info); //nonprimitive
+    }
 
     // get_business_assets_response->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(get_business_assets_responseJSON, "asset_id");
@@ -128,20 +161,21 @@ get_business_assets_response_t *get_business_assets_response_parseFromJSON(cJSON
     }
     }
 
-    // get_business_assets_response->asset_group_info
-    cJSON *asset_group_info = cJSON_GetObjectItemCaseSensitive(get_business_assets_responseJSON, "asset_group_info");
-    if (cJSON_IsNull(asset_group_info)) {
-        asset_group_info = NULL;
+    // get_business_assets_response->catalog_info
+    cJSON *catalog_info = cJSON_GetObjectItemCaseSensitive(get_business_assets_responseJSON, "catalog_info");
+    if (cJSON_IsNull(catalog_info)) {
+        catalog_info = NULL;
     }
-    if (asset_group_info) { 
-    asset_group_info_local_nonprim = asset_group_binding_parseFromJSON(asset_group_info); //nonprimitive
+    if (catalog_info) { 
+    catalog_info_local_nonprim = get_business_assets_response_catalog_info_parseFromJSON(catalog_info); //nonprimitive
     }
 
 
     get_business_assets_response_local_var = get_business_assets_response_create_internal (
+        asset_group_info ? asset_group_info_local_nonprim : NULL,
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_type && !cJSON_IsNull(asset_type) ? strdup(asset_type->valuestring) : NULL,
-        asset_group_info ? asset_group_info_local_nonprim : NULL
+        catalog_info ? catalog_info_local_nonprim : NULL
         );
 
     return get_business_assets_response_local_var;
@@ -149,6 +183,10 @@ end:
     if (asset_group_info_local_nonprim) {
         asset_group_binding_free(asset_group_info_local_nonprim);
         asset_group_info_local_nonprim = NULL;
+    }
+    if (catalog_info_local_nonprim) {
+        get_business_assets_response_catalog_info_free(catalog_info_local_nonprim);
+        catalog_info_local_nonprim = NULL;
     }
     return NULL;
 

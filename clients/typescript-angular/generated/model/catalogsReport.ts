@@ -12,13 +12,13 @@
 export interface CatalogsReport { 
     report_status?: CatalogsReport.ReportStatusEnum;
     /**
-     * URL to download the report
-     */
-    url?: string | null;
-    /**
      * Size of the report in bytes
      */
     size?: number | null;
+    /**
+     * URL to download the report
+     */
+    url?: string | null;
 }
 export namespace CatalogsReport {
     export const ReportStatusEnum = {

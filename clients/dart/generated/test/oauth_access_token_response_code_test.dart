@@ -21,13 +21,13 @@ void main() {
       // TODO
     });
 
-    // int refreshTokenExpiresIn
-    test('to test the property `refreshTokenExpiresIn`', () async {
+    // int refreshTokenExpiresAt
+    test('to test the property `refreshTokenExpiresAt`', () async {
       // TODO
     });
 
-    // String responseType
-    test('to test the property `responseType`', () async {
+    // int refreshTokenExpiresIn
+    test('to test the property `refreshTokenExpiresIn`', () async {
       // TODO
     });
 
@@ -36,18 +36,23 @@ void main() {
       // TODO
     });
 
-    // String tokenType (default value: 'bearer')
-    test('to test the property `tokenType`', () async {
-      // TODO
-    });
-
     // int expiresIn
     test('to test the property `expiresIn`', () async {
       // TODO
     });
 
+    // String responseType
+    test('to test the property `responseType`', () async {
+      // TODO
+    });
+
     // String scope
     test('to test the property `scope`', () async {
+      // TODO
+    });
+
+    // String tokenType (default value: 'bearer')
+    test('to test the property `tokenType`', () async {
       // TODO
     });
 

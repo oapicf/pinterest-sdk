@@ -6,8 +6,11 @@ import org.openapitools.models._
 import org.openapitools.models.AdsCreditRedeemRequest
 import org.openapitools.models.AdsCreditRedeemResponse
 import org.openapitools.models.AdsCreditsDiscountsGet200Response
+import org.openapitools.models.BillingInvoiceDownloadResponse
+import org.openapitools.models.BillingInvoicesGet200Response
 import org.openapitools.models.BillingProfilesGet200Response
 import org.openapitools.models.Error
+import java.time.LocalDateTime
 import org.openapitools.models.SSIOAccountResponse
 import org.openapitools.models.SSIOCreateInsertionOrderRequest
 import org.openapitools.models.SSIOCreateInsertionOrderResponse
@@ -38,6 +41,8 @@ object BillingApi {
     def endpoints(da: DataAccessor) =
         adsCredit/redeem(da) :+:
         adsCreditsDiscounts/get(da) :+:
+        billingInvoiceDownload/get(da) :+:
+        billingInvoices/get(da) :+:
         billingProfiles/get(da) :+:
         ssioAccounts/get(da) :+:
         ssioInsertionOrder/create(da) :+:
@@ -88,6 +93,34 @@ object BillingApi {
         private def adsCreditsDiscounts/get(da: DataAccessor): Endpoint[AdsCreditsDiscountsGet200Response] =
         get("ad_accounts" :: string :: "ads_credit" :: "discounts" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (adAccountId: String, bookmark: Option[String], pageSize: Option[Int]) =>
           da.Billing_adsCreditsDiscounts/get(adAccountId, bookmark, pageSize) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a BillingInvoiceDownloadResponse
+        */
+        private def billingInvoiceDownload/get(da: DataAccessor): Endpoint[BillingInvoiceDownloadResponse] =
+        get("ad_accounts" :: string :: "billing_invoice" :: string :: "download") { (adAccountId: String, billingInvoiceId: String) =>
+          da.Billing_billingInvoiceDownload/get(adAccountId, billingInvoiceId) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a BillingInvoicesGet200Response
+        */
+        private def billingInvoices/get(da: DataAccessor): Endpoint[BillingInvoicesGet200Response] =
+        get("ad_accounts" :: string :: "billing_invoices" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("sort") :: paramOption("order") :: paramOption("status") :: paramOption("document_type") :: paramOption("start_due_date").map(_.map(_.toLocalDateTime)) :: paramOption("end_due_date").map(_.map(_.toLocalDateTime))) { (adAccountId: String, bookmark: Option[String], pageSize: Option[Int], sort: Option[String], order: Option[String], status: Option[String], documentType: Option[String], startDueDate: Option[LocalDateTime], endDueDate: Option[LocalDateTime]) =>
+          da.Billing_billingInvoices/get(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

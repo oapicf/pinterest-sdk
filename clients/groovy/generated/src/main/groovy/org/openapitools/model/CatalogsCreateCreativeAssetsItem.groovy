@@ -7,6 +7,8 @@ import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 
 @Canonical
 class CatalogsCreateCreativeAssetsItem {
+    
+    CatalogsCreativeAssetsAttributes attributes
     /* The catalog creative assets id in the merchant namespace */
     String creativeAssetsId
 
@@ -32,6 +34,4 @@ class CatalogsCreateCreativeAssetsItem {
 
     
     OperationEnum operation
-    
-    CatalogsCreativeAssetsAttributes attributes
 }

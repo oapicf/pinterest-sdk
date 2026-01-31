@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(RelatedTermsRelatedTermsListInner, () {
-    // String term
-    test('to test the property `term`', () async {
+    // BuiltList<String> relatedTerms
+    test('to test the property `relatedTerms`', () async {
       // TODO
     });
 
-    // BuiltList<String> relatedTerms
-    test('to test the property `relatedTerms`', () async {
+    // String term
+    test('to test the property `term`', () async {
       // TODO
     });
 

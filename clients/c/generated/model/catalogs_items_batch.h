@@ -27,10 +27,10 @@ typedef struct catalogs_items_batch_t catalogs_items_batch_t;
 typedef struct catalogs_items_batch_t {
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *batch_id; // string
-    char *created_time; //date time
     char *completed_time; //date time
-    pinterest_rest_api_batch_operation_status__e status; //referenced enum
+    char *created_time; //date time
     list_t *items; //nonprimitive container
+    pinterest_rest_api_batch_operation_status__e status; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_items_batch_t;
@@ -38,10 +38,10 @@ typedef struct catalogs_items_batch_t {
 __attribute__((deprecated)) catalogs_items_batch_t *catalogs_items_batch_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
     char *batch_id,
-    char *created_time,
     char *completed_time,
-    pinterest_rest_api_batch_operation_status__e status,
-    list_t *items
+    char *created_time,
+    list_t *items,
+    pinterest_rest_api_batch_operation_status__e status
 );
 
 void catalogs_items_batch_free(catalogs_items_batch_t *catalogs_items_batch);

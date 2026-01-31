@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductCategoryRegion"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductCategoryRegion"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ProductCategoryRegion {
+    title = ProductCategoryRegion
+    description = ProductCategoryRegion
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductCategoryRegion {
+    title = ProductCategoryRegion
+    description = ProductCategoryRegion
+    implements = openapi_server.resourceTypes.ProductCategoryRegion
+
+  }
+}

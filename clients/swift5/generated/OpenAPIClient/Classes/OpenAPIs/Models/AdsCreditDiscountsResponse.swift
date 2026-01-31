@@ -39,35 +39,35 @@ public struct AdsCreditDiscountsResponse: Codable, JSONEncodable, Hashable {
     public var active: Bool?
     /** Advertiser ID the offer was applied to. */
     public var advertiserId: String?
-    /** The type of discount of this credit */
-    public var discountType: DiscountType?
-    /** The discount applied in the offer’s currency value. */
-    public var discountInMicroCurrency: Double?
     /** Currency value for the discount. */
     public var discountCurrency: String?
-    /** Human readable title of the offer code. */
-    public var title: String?
+    /** The discount applied in the offer’s currency value. */
+    public var discountInMicroCurrency: Double?
+    /** The type of discount of this credit */
+    public var discountType: DiscountType?
     /** The credits left to spend. */
     public var remainingDiscountInMicroCurrency: Double?
+    /** Human readable title of the offer code. */
+    public var title: String?
 
-    public init(active: Bool? = nil, advertiserId: String? = nil, discountType: DiscountType? = nil, discountInMicroCurrency: Double? = nil, discountCurrency: String? = nil, title: String? = nil, remainingDiscountInMicroCurrency: Double? = nil) {
+    public init(active: Bool? = nil, advertiserId: String? = nil, discountCurrency: String? = nil, discountInMicroCurrency: Double? = nil, discountType: DiscountType? = nil, remainingDiscountInMicroCurrency: Double? = nil, title: String? = nil) {
         self.active = active
         self.advertiserId = advertiserId
-        self.discountType = discountType
-        self.discountInMicroCurrency = discountInMicroCurrency
         self.discountCurrency = discountCurrency
-        self.title = title
+        self.discountInMicroCurrency = discountInMicroCurrency
+        self.discountType = discountType
         self.remainingDiscountInMicroCurrency = remainingDiscountInMicroCurrency
+        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case active
         case advertiserId = "advertiser_id"
-        case discountType
-        case discountInMicroCurrency
         case discountCurrency
-        case title
+        case discountInMicroCurrency
+        case discountType
         case remainingDiscountInMicroCurrency
+        case title
     }
 
     // Encodable protocol methods
@@ -76,11 +76,11 @@ public struct AdsCreditDiscountsResponse: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(active, forKey: .active)
         try container.encodeIfPresent(advertiserId, forKey: .advertiserId)
-        try container.encodeIfPresent(discountType, forKey: .discountType)
-        try container.encodeIfPresent(discountInMicroCurrency, forKey: .discountInMicroCurrency)
         try container.encodeIfPresent(discountCurrency, forKey: .discountCurrency)
-        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(discountInMicroCurrency, forKey: .discountInMicroCurrency)
+        try container.encodeIfPresent(discountType, forKey: .discountType)
         try container.encodeIfPresent(remainingDiscountInMicroCurrency, forKey: .remainingDiscountInMicroCurrency)
+        try container.encodeIfPresent(title, forKey: .title)
     }
 }
 

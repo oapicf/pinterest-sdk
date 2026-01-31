@@ -81,10 +81,10 @@ private class OASAudienceInsightsResponseTest {
     private static void defaultValuesPopulated() {
         OASAudienceInsightsResponse audienceInsightsResponse = new OASAudienceInsightsResponse();
         System.assertEquals(new List<OASAudienceCategory>(), audienceInsightsResponse.categories);
-        System.assertEquals(null, audienceInsightsResponse.demographics);
-        System.assertEquals(null, audienceInsightsResponse.type);
         System.assertEquals(null, audienceInsightsResponse.r_date);
+        System.assertEquals(null, audienceInsightsResponse.demographics);
         System.assertEquals(null, audienceInsightsResponse.size);
         System.assertEquals(null, audienceInsightsResponse.sizeIsUpperBound);
+        System.assertEquals(null, audienceInsightsResponse.type);
     }
 }

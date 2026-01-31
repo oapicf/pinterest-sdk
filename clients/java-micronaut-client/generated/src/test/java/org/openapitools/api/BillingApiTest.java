@@ -3,8 +3,11 @@ package org.openapitools.api;
 import org.openapitools.model.AdsCreditRedeemRequest;
 import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
 import org.openapitools.model.Error;
+import java.time.LocalDate;
 import org.openapitools.model.SSIOAccountResponse;
 import org.openapitools.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.model.SSIOCreateInsertionOrderResponse;
@@ -38,7 +41,7 @@ public class BillingApiTest {
     /**
      * Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @Test
     @Disabled("Not Implemented")
@@ -58,7 +61,7 @@ public class BillingApiTest {
     /**
      * Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @Test
     @Disabled("Not Implemented")
@@ -77,9 +80,56 @@ public class BillingApiTest {
 
     
     /**
+     * Get download url for a billing invoice
+     *
+     * Get download url for a billing invoice.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void billingInvoiceDownloadGetTest() {
+        // given
+        String adAccountId = "example";
+        String billingInvoiceId = "example";
+
+        // when
+        BillingInvoiceDownloadResponse body = api.billingInvoiceDownloadGet(adAccountId, billingInvoiceId).block();
+
+        // then
+        // TODO implement the billingInvoiceDownloadGetTest()
+    }
+
+    
+    /**
+     * Get billing invoices
+     *
+     * Get billing invoices in the advertiser account.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void billingInvoicesGetTest() {
+        // given
+        String adAccountId = "example";
+        String bookmark = "example";
+        Integer pageSize = 25;
+        String sort = "DUE_DATE";
+        String order = "ASCENDING";
+        String status = "OPEN";
+        String documentType = "INVOICE";
+        LocalDate startDueDate = LocalDate.of(2001, 2, 3);
+        LocalDate endDueDate = LocalDate.of(2001, 2, 3);
+
+        // when
+        BillingInvoicesGet200Response body = api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate).block();
+
+        // then
+        // TODO implement the billingInvoicesGetTest()
+    }
+
+    
+    /**
      * Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @Test
     @Disabled("Not Implemented")

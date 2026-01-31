@@ -14,12 +14,12 @@ import { CatalogsCreativeAssetsAttributes } from './catalogsCreativeAssetsAttrib
  * A creative assets item to be upserted.
  */
 export interface CatalogsUpsertCreativeAssetsItem { 
+    attributes: CatalogsCreativeAssetsAttributes;
     /**
      * The catalog creative assets id in the merchant namespace
      */
     creative_assets_id: string;
     operation: CatalogsUpsertCreativeAssetsItem.OperationEnum;
-    attributes: CatalogsCreativeAssetsAttributes;
 }
 export namespace CatalogsUpsertCreativeAssetsItem {
     export const OperationEnum = {

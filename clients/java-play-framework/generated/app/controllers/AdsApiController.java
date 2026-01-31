@@ -14,6 +14,7 @@ import apimodels.Error;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.MetricsResponse;
+import apimodels.ReportingTimeZone;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -37,7 +38,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsApiController extends Controller {
     private final AdsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -152,14 +153,23 @@ public class AdsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        String valueattributionTypes = request.getQueryString("attribution_types");
-        ConversionReportAttributionType attributionTypes;
-        if (valueattributionTypes != null) {
-            attributionTypes = valueattributionTypes;
-        } else {
-            attributionTypes = null;
+        String[] attributionTypesArray = request.queryString().get("attribution_types");
+        List<String> attributionTypesList = OpenAPIUtils.parametersToList("csv", attributionTypesArray);
+        List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+        for (String curParam : attributionTypesList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                attributionTypes.add(curParam);
+            }
         }
-        return imp.adTargetingAnalyticsGetHttp(request, adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes);
+        String valuereportingTimezone = request.getQueryString("reporting_timezone");
+        ReportingTimeZone reportingTimezone;
+        if (valuereportingTimezone != null) {
+            reportingTimezone = valuereportingTimezone;
+        } else {
+            reportingTimezone = null;
+        }
+        return imp.adTargetingAnalyticsGetHttp(request, adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone);
     }
 
     @ApiAction
@@ -252,7 +262,14 @@ public class AdsApiController extends Controller {
                 campaignIds.add(curParam);
             }
         }
-        return imp.adsAnalyticsHttp(request, adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds);
+        String valuereportingTimezone = request.getQueryString("reporting_timezone");
+        ReportingTimeZone reportingTimezone;
+        if (valuereportingTimezone != null) {
+            reportingTimezone = valuereportingTimezone;
+        } else {
+            reportingTimezone = null;
+        }
+        return imp.adsAnalyticsHttp(request, adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone);
     }
 
     @ApiAction

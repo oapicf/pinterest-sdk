@@ -12,27 +12,27 @@ import AnyCodable
 
 public struct AdAccountOwner: Codable, JSONEncodable, Hashable {
 
-    /** Public username for the user account */
-    public var username: String?
     /** The owning account's user ID. */
     public var id: String?
+    /** Public username for the user account */
+    public var username: String?
 
-    public init(username: String? = nil, id: String? = nil) {
-        self.username = username
+    public init(id: String? = nil, username: String? = nil) {
         self.id = id
+        self.username = username
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case username
         case id
+        case username
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(username, forKey: .username)
     }
 }
 

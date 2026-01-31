@@ -7,16 +7,16 @@
 #' @title IntegrationsGetList200Response
 #' @description IntegrationsGetList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{IntegrationRecord})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{IntegrationRecord})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 IntegrationsGetList200Response <- R6::R6Class(
   "IntegrationsGetList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new IntegrationsGetList200Response class.
@@ -69,13 +69,13 @@ IntegrationsGetList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       IntegrationsGetList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        IntegrationsGetList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         IntegrationsGetList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        IntegrationsGetList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(IntegrationsGetList200ResponseObject)
     },
@@ -87,11 +87,11 @@ IntegrationsGetList200Response <- R6::R6Class(
     #' @return the instance of IntegrationsGetList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[IntegrationRecord]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[IntegrationRecord]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ IntegrationsGetList200Response <- R6::R6Class(
     #' @return the instance of IntegrationsGetList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[IntegrationRecord]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[IntegrationRecord]", loadNamespace("openapi"))
       self
     },
 

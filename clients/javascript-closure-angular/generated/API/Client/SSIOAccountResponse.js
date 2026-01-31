@@ -6,11 +6,11 @@ goog.provide('API.Client.SSIOAccountResponse');
 API.Client.SSIOAccountResponse = function() {}
 
 /**
- * Advertiser eligible to create order lines
- * @type {!boolean}
+ * An array of Salesforce account information that includes address, io terms, etc.
+ * @type {!Array<!API.Client.SSIOAccountItem>}
  * @export
  */
-API.Client.SSIOAccountResponse.prototype.eligible;
+API.Client.SSIOAccountResponse.prototype.billtoInfos;
 
 /**
  * Advertiser eligible to update order lines
@@ -20,23 +20,17 @@ API.Client.SSIOAccountResponse.prototype.eligible;
 API.Client.SSIOAccountResponse.prototype.canEdit;
 
 /**
- * An array of Salesforce account information that includes address, io terms, etc.
- * @type {!Array<!API.Client.SSIOAccountItem>}
- * @export
- */
-API.Client.SSIOAccountResponse.prototype.billtoInfos;
-
-/**
  * @type {!string}
  * @export
  */
 API.Client.SSIOAccountResponse.prototype.currency;
 
 /**
- * @type {!Array<!API.Client.SSIOAccountPMPName>}
+ * Advertiser eligible to create order lines
+ * @type {!boolean}
  * @export
  */
-API.Client.SSIOAccountResponse.prototype.pmpNames;
+API.Client.SSIOAccountResponse.prototype.eligible;
 
 /**
  * Error indicator from Salesforce which could be \"No Error\"
@@ -44,4 +38,10 @@ API.Client.SSIOAccountResponse.prototype.pmpNames;
  * @export
  */
 API.Client.SSIOAccountResponse.prototype.error;
+
+/**
+ * @type {!Array<!API.Client.SSIOAccountPMPName>}
+ * @export
+ */
+API.Client.SSIOAccountResponse.prototype.pmpNames;
 

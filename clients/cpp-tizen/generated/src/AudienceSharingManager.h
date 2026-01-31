@@ -136,7 +136,7 @@ bool sharedAudiencesForBusinessListAsync(char * accessToken,
 
 /*! \brief Update audience sharing between ad accounts. *Synchronous*
  *
- * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param sharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -150,7 +150,7 @@ bool updateAdAccountToAdAccountSharedAudienceSync(char * accessToken,
 
 /*! \brief Update audience sharing between ad accounts. *Asynchronous*
  *
- * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param sharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -165,7 +165,7 @@ bool updateAdAccountToAdAccountSharedAudienceAsync(char * accessToken,
 
 /*! \brief Update audience sharing from an ad account to businesses. *Synchronous*
  *
- * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param businessSharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -179,7 +179,7 @@ bool updateAdAccountToBusinessSharedAudienceSync(char * accessToken,
 
 /*! \brief Update audience sharing from an ad account to businesses. *Asynchronous*
  *
- * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param businessSharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -194,7 +194,7 @@ bool updateAdAccountToBusinessSharedAudienceAsync(char * accessToken,
 
 /*! \brief Update audience sharing from a business to ad accounts. *Synchronous*
  *
- * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param sharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -208,7 +208,7 @@ bool updateBusinessToAdAccountSharedAudienceSync(char * accessToken,
 
 /*! \brief Update audience sharing from a business to ad accounts. *Asynchronous*
  *
- * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param sharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -223,7 +223,7 @@ bool updateBusinessToAdAccountSharedAudienceAsync(char * accessToken,
 
 /*! \brief Update audience sharing between businesses. *Synchronous*
  *
- * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param businessSharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -237,7 +237,7 @@ bool updateBusinessToBusinessSharedAudienceSync(char * accessToken,
 
 /*! \brief Update audience sharing between businesses. *Asynchronous*
  *
- * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+ * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param businessSharedAudience  *Required*
  * \param handler The callback function to be invoked on completion. *Required*

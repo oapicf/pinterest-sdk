@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdvancedAuctionProcessedItem } from './advancedAuctionProcessedItem';
+import { AdvancedAuctionItemsSubmitRecord } from './advancedAuctionItemsSubmitRecord';
 
 
 /**
@@ -21,6 +21,6 @@ export interface AdvancedAuctionProcessedItems {
     /**
      * Array of advanced auction processed items
      */
-    items?: Array<AdvancedAuctionProcessedItem>;
+    items?: Array<AdvancedAuctionItemsSubmitRecord>;
 }
 

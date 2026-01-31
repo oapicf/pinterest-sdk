@@ -23,12 +23,12 @@ import javax.annotation.Generated;
  * CreateAssetGroupBody
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetGroupBody {
 
-  private String assetGroupName;
-
   private String assetGroupDescription;
+
+  private String assetGroupName;
 
   @Valid
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
@@ -40,30 +40,10 @@ public class CreateAssetGroupBody {
   /**
    * Constructor with only required parameters
    */
-  public CreateAssetGroupBody(String assetGroupName, String assetGroupDescription, List<AssetGroupType> assetGroupTypes) {
-    this.assetGroupName = assetGroupName;
+  public CreateAssetGroupBody(String assetGroupDescription, String assetGroupName, List<AssetGroupType> assetGroupTypes) {
     this.assetGroupDescription = assetGroupDescription;
+    this.assetGroupName = assetGroupName;
     this.assetGroupTypes = assetGroupTypes;
-  }
-
-  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-    return this;
-  }
-
-  /**
-   * Asset Group name
-   * @return assetGroupName
-   */
-  @NotNull 
-  @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("asset_group_name")
-  public String getAssetGroupName() {
-    return assetGroupName;
-  }
-
-  public void setAssetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
   }
 
   public CreateAssetGroupBody assetGroupDescription(String assetGroupDescription) {
@@ -84,6 +64,26 @@ public class CreateAssetGroupBody {
 
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+  }
+
+  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
+    return this;
+  }
+
+  /**
+   * Asset Group name
+   * @return assetGroupName
+   */
+  @NotNull 
+  @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("asset_group_name")
+  public String getAssetGroupName() {
+    return assetGroupName;
+  }
+
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
   }
 
   public CreateAssetGroupBody assetGroupTypes(List<AssetGroupType> assetGroupTypes) {
@@ -123,22 +123,22 @@ public class CreateAssetGroupBody {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(this.assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

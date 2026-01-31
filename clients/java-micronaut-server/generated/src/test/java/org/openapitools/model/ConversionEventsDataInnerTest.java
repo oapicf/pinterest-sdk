@@ -2,6 +2,8 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.ConversionEventAppInfo;
+import org.openapitools.model.ConversionEventDeviceInfo;
 import org.openapitools.model.ConversionEventsDataInnerCustomData;
 import org.openapitools.model.ConversionEventsUserData;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -24,14 +26,6 @@ public class ConversionEventsDataInnerTest {
     }
 
     /**
-     * Test the property 'eventName'
-     */
-    @Test
-    public void eventNameTest() {
-        // TODO: test eventName
-    }
-
-    /**
      * Test the property 'actionSource'
      */
     @Test
@@ -40,67 +34,19 @@ public class ConversionEventsDataInnerTest {
     }
 
     /**
-     * Test the property 'eventTime'
-     */
-    @Test
-    public void eventTimeTest() {
-        // TODO: test eventTime
-    }
-
-    /**
-     * Test the property 'eventId'
-     */
-    @Test
-    public void eventIdTest() {
-        // TODO: test eventId
-    }
-
-    /**
-     * Test the property 'eventSourceUrl'
-     */
-    @Test
-    public void eventSourceUrlTest() {
-        // TODO: test eventSourceUrl
-    }
-
-    /**
-     * Test the property 'optOut'
-     */
-    @Test
-    public void optOutTest() {
-        // TODO: test optOut
-    }
-
-    /**
-     * Test the property 'partnerName'
-     */
-    @Test
-    public void partnerNameTest() {
-        // TODO: test partnerName
-    }
-
-    /**
-     * Test the property 'userData'
-     */
-    @Test
-    public void userDataTest() {
-        // TODO: test userData
-    }
-
-    /**
-     * Test the property 'customData'
-     */
-    @Test
-    public void customDataTest() {
-        // TODO: test customData
-    }
-
-    /**
      * Test the property 'appId'
      */
     @Test
     public void appIdTest() {
         // TODO: test appId
+    }
+
+    /**
+     * Test the property 'appInfo'
+     */
+    @Test
+    public void appInfoTest() {
+        // TODO: test appInfo
     }
 
     /**
@@ -120,6 +66,14 @@ public class ConversionEventsDataInnerTest {
     }
 
     /**
+     * Test the property 'customData'
+     */
+    @Test
+    public void customDataTest() {
+        // TODO: test customData
+    }
+
+    /**
      * Test the property 'deviceBrand'
      */
     @Test
@@ -133,6 +87,14 @@ public class ConversionEventsDataInnerTest {
     @Test
     public void deviceCarrierTest() {
         // TODO: test deviceCarrier
+    }
+
+    /**
+     * Test the property 'deviceInfo'
+     */
+    @Test
+    public void deviceInfoTest() {
+        // TODO: test deviceInfo
     }
 
     /**
@@ -152,19 +114,35 @@ public class ConversionEventsDataInnerTest {
     }
 
     /**
-     * Test the property 'osVersion'
+     * Test the property 'eventId'
      */
     @Test
-    public void osVersionTest() {
-        // TODO: test osVersion
+    public void eventIdTest() {
+        // TODO: test eventId
     }
 
     /**
-     * Test the property 'wifi'
+     * Test the property 'eventName'
      */
     @Test
-    public void wifiTest() {
-        // TODO: test wifi
+    public void eventNameTest() {
+        // TODO: test eventName
+    }
+
+    /**
+     * Test the property 'eventSourceUrl'
+     */
+    @Test
+    public void eventSourceUrlTest() {
+        // TODO: test eventSourceUrl
+    }
+
+    /**
+     * Test the property 'eventTime'
+     */
+    @Test
+    public void eventTimeTest() {
+        // TODO: test eventTime
     }
 
     /**
@@ -173,6 +151,46 @@ public class ConversionEventsDataInnerTest {
     @Test
     public void languageTest() {
         // TODO: test language
+    }
+
+    /**
+     * Test the property 'optOut'
+     */
+    @Test
+    public void optOutTest() {
+        // TODO: test optOut
+    }
+
+    /**
+     * Test the property 'osVersion'
+     */
+    @Test
+    public void osVersionTest() {
+        // TODO: test osVersion
+    }
+
+    /**
+     * Test the property 'partnerName'
+     */
+    @Test
+    public void partnerNameTest() {
+        // TODO: test partnerName
+    }
+
+    /**
+     * Test the property 'userData'
+     */
+    @Test
+    public void userDataTest() {
+        // TODO: test userData
+    }
+
+    /**
+     * Test the property 'wifi'
+     */
+    @Test
+    public void wifiTest() {
+        // TODO: test wifi
     }
 
 }

@@ -17,22 +17,22 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param itemNumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
- * @param itemId The merchant-created unique ID that represents the product.
  * @param errors 
+ * @param itemId The merchant-created unique ID that represents the product.
+ * @param itemNumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
  * @param warnings 
  */
 data class CatalogsItemValidationIssues(
 
-    @Schema(example = "0", required = true, description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
-    @get:JsonProperty("item_number", required = true) val itemNumber: kotlin.Int,
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("errors", required = true) val errors: CatalogsItemValidationErrors,
 
     @Schema(example = "DS0294-L", required = true, description = "The merchant-created unique ID that represents the product.")
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String?,
 
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("errors", required = true) val errors: CatalogsItemValidationErrors,
+    @Schema(example = "0", required = true, description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
+    @get:JsonProperty("item_number", required = true) val itemNumber: kotlin.Int,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")

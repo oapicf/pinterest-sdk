@@ -56,13 +56,28 @@ class OauthApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val oauthConversionTokenPerSecond = config.getDouble("performance.operationsPerSecond.oauthConversionToken") * rateMultiplier * instanceMultiplier
     val oauthTokenPerSecond = config.getDouble("performance.operationsPerSecond.oauthToken") * rateMultiplier * instanceMultiplier
+    val tokenRevokePerSecond = config.getDouble("performance.operationsPerSecond.tokenRevoke") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
 
     // Setup all scenarios
+
+    
+    val scnoauthConversionToken = scenario("oauthConversionTokenSimulation")
+        .exec(http("oauthConversionToken")
+        .httpRequest("POST","/oauth/conversion_token")
+)
+
+    // Run scnoauthConversionToken with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnoauthConversionToken.inject(
+        rampUsersPerSec(1) to(oauthConversionTokenPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(oauthConversionTokenPerSecond) during(durationSeconds),
+        rampUsersPerSec(oauthConversionTokenPerSecond) to(1) during(rampDownSeconds)
+    )
 
     
     val scnoauthToken = scenario("oauthTokenSimulation")
@@ -75,6 +90,19 @@ class OauthApiSimulation extends Simulation {
         rampUsersPerSec(1) to(oauthTokenPerSecond) during(rampUpSeconds),
         constantUsersPerSec(oauthTokenPerSecond) during(durationSeconds),
         rampUsersPerSec(oauthTokenPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scntokenRevoke = scenario("tokenRevokeSimulation")
+        .exec(http("tokenRevoke")
+        .httpRequest("POST","/oauth/token/revoke")
+)
+
+    // Run scntokenRevoke with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scntokenRevoke.inject(
+        rampUsersPerSec(1) to(tokenRevokePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(tokenRevokePerSecond) during(durationSeconds),
+        rampUsersPerSec(tokenRevokePerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

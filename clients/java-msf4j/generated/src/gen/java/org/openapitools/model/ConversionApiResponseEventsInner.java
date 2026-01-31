@@ -12,8 +12,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ConversionApiResponseEventsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponseEventsInner   {
+  @JsonProperty("error_message")
+  private String errorMessage;
+
   /**
    * Whether the event was processed successfully.
    */
@@ -48,29 +51,8 @@ public class ConversionApiResponseEventsInner   {
   @JsonProperty("status")
   private StatusEnum status;
 
-  @JsonProperty("error_message")
-  private String errorMessage;
-
   @JsonProperty("warning_message")
   private String warningMessage;
-
-  public ConversionApiResponseEventsInner status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Whether the event was processed successfully.
-   * @return status
-  **/
-  @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
 
   public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
@@ -88,6 +70,24 @@ public class ConversionApiResponseEventsInner   {
 
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
+  }
+
+  public ConversionApiResponseEventsInner status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Whether the event was processed successfully.
+   * @return status
+  **/
+  @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   public ConversionApiResponseEventsInner warningMessage(String warningMessage) {
@@ -118,14 +118,14 @@ public class ConversionApiResponseEventsInner   {
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
-        Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
         Objects.equals(this.warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, warningMessage);
+    return Objects.hash(errorMessage, status, warningMessage);
   }
 
   @Override
@@ -133,8 +133,8 @@ public class ConversionApiResponseEventsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

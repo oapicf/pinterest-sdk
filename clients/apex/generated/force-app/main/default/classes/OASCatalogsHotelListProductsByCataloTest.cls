@@ -73,7 +73,7 @@ private class OASCatalogsHotelListProductsByCataloTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelListProductsByCatalo catalogsHotelListProductsByCatalogBasedFilterRequest = new OASCatalogsHotelListProductsByCatalo();
         Map<String, String> x-property-mappings = catalogsHotelListProductsByCatalogBasedFilterRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 }

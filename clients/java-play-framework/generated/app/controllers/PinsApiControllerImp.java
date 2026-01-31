@@ -1,5 +1,6 @@
 package controllers;
 
+import apimodels.CreativeType;
 import apimodels.Error;
 import java.time.LocalDate;
 import java.util.Map;
@@ -9,6 +10,7 @@ import apimodels.PinCreate;
 import apimodels.PinUpdate;
 import apimodels.PinsList200Response;
 import apimodels.PinsSaveRequest;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -19,7 +21,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApiControllerImp extends PinsApiControllerImpInterface {
     @Override
     public Map<String, Map<String> multiPinsAnalytics(Http.Request request, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> pinIds, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<String> metricTypes, String appTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
@@ -40,18 +42,18 @@ public class PinsApiControllerImp extends PinsApiControllerImpInterface {
     }
 
     @Override
-    public void pinsDelete(Http.Request request, String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public void pinsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
     }
 
     @Override
-    public Pin pinsGet(Http.Request request, String pinId, Boolean pinMetrics,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Pin pinsGet(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
         //Do your magic!!!
         return new Pin();
     }
 
     @Override
-    public PinsList200Response pinsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
+    public PinsList200Response pinsList(Http.Request request, String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new PinsList200Response();
     }
@@ -63,7 +65,7 @@ public class PinsApiControllerImp extends PinsApiControllerImpInterface {
     }
 
     @Override
-    public Pin pinsUpdate(Http.Request request, String pinId, PinUpdate pinUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Pin pinsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId, PinUpdate pinUpdate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new Pin();
     }

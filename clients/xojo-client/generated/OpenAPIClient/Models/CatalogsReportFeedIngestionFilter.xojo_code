@@ -2,11 +2,6 @@
 Protected Class CatalogsReportFeedIngestionFilter
 
 	#tag Property, Flags = &h0
-		report_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			ID of the feed entity.
 		#tag EndNote
@@ -19,6 +14,11 @@ Protected Class CatalogsReportFeedIngestionFilter
 			Unique identifier of a feed processing result. It can be acquired from the "id" field of the "items" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
 		#tag EndNote
 		processing_result_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		report_type As String
 	#tag EndProperty
 
 

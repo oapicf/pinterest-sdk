@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AbsoluteDateRange** | [**TemplateResponseDateRangeAbsoluteDateRange**](TemplateResponseDateRangeAbsoluteDateRange.md) |  | [optional] 
 **DynamicDateRange** | [**TemplateResponseDateRangeDynamicDateRange**](TemplateResponseDateRangeDynamicDateRange.md) |  | [optional] 
 **RelativeDateRange** | [**TemplateResponseDateRangeRelativeDateRange**](TemplateResponseDateRangeRelativeDateRange.md) |  | [optional] 
-**AbsoluteDateRange** | [**TemplateResponseDateRangeAbsoluteDateRange**](TemplateResponseDateRangeAbsoluteDateRange.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TemplateResponseDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRange  -DynamicDateRange null `
- -RelativeDateRange null `
- -AbsoluteDateRange null
+$TemplateResponseDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRange  -AbsoluteDateRange null `
+ -DynamicDateRange null `
+ -RelativeDateRange null
 ```
 
 - Convert the resource to JSON

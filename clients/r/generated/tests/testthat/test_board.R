@@ -5,41 +5,12 @@ context("Test Board")
 
 model_instance <- Board$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("created_at", {
-  # tests for the property `created_at` (character)
-  # Date and time of board creation.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
-})
-
 test_that("board_pins_modified_at", {
   # tests for the property `board_pins_modified_at` (character)
   # Date and time of last board pins modified.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`board_pins_modified_at`, "EXPECTED_RESULT")
-})
-
-test_that("name", {
-  # tests for the property `name` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("description", {
-  # tests for the property `description` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("collaborator_count", {
@@ -50,12 +21,19 @@ test_that("collaborator_count", {
   #expect_equal(model.instance$`collaborator_count`, "EXPECTED_RESULT")
 })
 
-test_that("pin_count", {
-  # tests for the property `pin_count` (integer)
-  # Count of pins on the board.
+test_that("created_at", {
+  # tests for the property `created_at` (character)
+  # Date and time of board creation.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`pin_count`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+})
+
+test_that("description", {
+  # tests for the property `description` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("follower_count", {
@@ -66,11 +44,35 @@ test_that("follower_count", {
   #expect_equal(model.instance$`follower_count`, "EXPECTED_RESULT")
 })
 
+test_that("id", {
+  # tests for the property `id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("is_ads_only", {
+  # tests for the property `is_ads_only` (character)
+  # If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_ads_only`, "EXPECTED_RESULT")
+})
+
 test_that("media", {
   # tests for the property `media` (BoardMedia)
+  # Board media.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  #      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("owner", {
@@ -80,9 +82,17 @@ test_that("owner", {
   #expect_equal(model.instance$`owner`, "EXPECTED_RESULT")
 })
 
+test_that("pin_count", {
+  # tests for the property `pin_count` (integer)
+  # Count of Pins on the board.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`pin_count`, "EXPECTED_RESULT")
+})
+
 test_that("privacy", {
-  # tests for the property `privacy` (character)
-  # Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt;
+  # tests for the property `privacy` (BoardPrivacy)
+  #     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;. 
 
   # uncomment below to test the property
   #expect_equal(model.instance$`privacy`, "EXPECTED_RESULT")

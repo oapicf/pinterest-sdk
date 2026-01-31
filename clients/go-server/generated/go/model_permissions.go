@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -25,10 +25,14 @@ const (
 	ADMIN Permissions = "ADMIN"
 	ANALYST Permissions = "ANALYST"
 	FINANCE_MANAGER Permissions = "FINANCE_MANAGER"
+	FINANCE_EDIT Permissions = "FINANCE_EDIT"
+	FINANCE_VIEW Permissions = "FINANCE_VIEW"
 	AUDIENCE_MANAGER Permissions = "AUDIENCE_MANAGER"
 	CAMPAIGN_MANAGER Permissions = "CAMPAIGN_MANAGER"
 	CATALOGS_MANAGER Permissions = "CATALOGS_MANAGER"
+	CATALOGS_VIEWER Permissions = "CATALOGS_VIEWER"
 	PROFILE_PUBLISHER Permissions = "PROFILE_PUBLISHER"
+	CONSUMER_USER Permissions = "CONSUMER_USER"
 )
 
 // AllowedPermissionsEnumValues is all the allowed values of Permissions enum
@@ -36,10 +40,14 @@ var AllowedPermissionsEnumValues = []Permissions{
 	"ADMIN",
 	"ANALYST",
 	"FINANCE_MANAGER",
+	"FINANCE_EDIT",
+	"FINANCE_VIEW",
 	"AUDIENCE_MANAGER",
 	"CAMPAIGN_MANAGER",
 	"CATALOGS_MANAGER",
+	"CATALOGS_VIEWER",
 	"PROFILE_PUBLISHER",
+	"CONSUMER_USER",
 }
 
 // validPermissionsEnumValue provides a map of Permissionss for fast verification of use input
@@ -47,10 +55,14 @@ var validPermissionsEnumValues = map[Permissions]struct{}{
 	"ADMIN": {},
 	"ANALYST": {},
 	"FINANCE_MANAGER": {},
+	"FINANCE_EDIT": {},
+	"FINANCE_VIEW": {},
 	"AUDIENCE_MANAGER": {},
 	"CAMPAIGN_MANAGER": {},
 	"CATALOGS_MANAGER": {},
+	"CATALOGS_VIEWER": {},
 	"PROFILE_PUBLISHER": {},
+	"CONSUMER_USER": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

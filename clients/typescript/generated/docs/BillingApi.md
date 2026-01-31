@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adsCreditRedeem**](BillingApi.md#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**adsCreditsDiscountsGet**](BillingApi.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billingInvoiceDownloadGet**](BillingApi.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoicesGet**](BillingApi.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billingProfilesGet**](BillingApi.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssioAccountsGet**](BillingApi.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**ssioInsertionOrderCreate**](BillingApi.md#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -18,7 +20,7 @@ Method | HTTP request | Description
 # **adsCreditRedeem**
 > AdsCreditRedeemResponse adsCreditRedeem(adsCreditRedeemRequest)
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
 
 ### Example
 
@@ -79,7 +81,7 @@ Name | Type | Description  | Notes
 # **adsCreditsDiscountsGet**
 > AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet()
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
 
 ### Example
 
@@ -136,10 +138,147 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **billingInvoiceDownloadGet**
+> BillingInvoiceDownloadResponse billingInvoiceDownloadGet()
+
+Get download url for a billing invoice.
+
+### Example
+
+
+```typescript
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiBillingInvoiceDownloadGetRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
+
+const request: BillingApiBillingInvoiceDownloadGetRequest = {
+    // Unique identifier of an ad account.
+  adAccountId: "4",
+    // Unique identifier of a billing invoice.
+  billingInvoiceId: "4",
+};
+
+const data = await apiInstance.billingInvoiceDownloadGet(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
+ **billingInvoiceId** | [**string**] | Unique identifier of a billing invoice. | defaults to undefined
+
+
+### Return type
+
+**BillingInvoiceDownloadResponse**
+
+### Authorization
+
+[pinterest_oauth2](README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully fetched Billing invoice information for a given ad account |  -  |
+**400** | Invalid request parameter. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **billingInvoicesGet**
+> BillingInvoicesGet200Response billingInvoicesGet()
+
+Get billing invoices in the advertiser account.
+
+### Example
+
+
+```typescript
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiBillingInvoicesGetRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
+
+const request: BillingApiBillingInvoicesGetRequest = {
+    // Unique identifier of an ad account.
+  adAccountId: "4",
+    // Cursor used to fetch the next page of items (optional)
+  bookmark: "bookmark_example",
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+  pageSize: 25,
+    // Field of which to sort billing invoices (optional)
+  sort: "DUE_DATE",
+    // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+  order: "ASCENDING",
+    // Status of billing invoices to filter by (optional)
+  status: "OPEN",
+    // Document type of billing invoices to filter by (optional)
+  documentType: "INVOICE",
+    // Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+  startDueDate: new Date('Sun Jan 01 00:00:00 UTC 2023').toISOString().split('T')[0];,
+    // Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+  endDueDate: new Date('Mon Jan 01 00:00:00 UTC 2024').toISOString().split('T')[0];,
+};
+
+const data = await apiInstance.billingInvoicesGet(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
+ **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **sort** | [**&#39;DUE_DATE&#39; | &#39;BILLING_PERIOD&#39; | &#39;DOCUMENT_TYPE&#39; | &#39;TOTAL_AMOUNT&#39; | &#39;INVOICE_NUMBER&#39;**]**Array<&#39;DUE_DATE&#39; &#124; &#39;BILLING_PERIOD&#39; &#124; &#39;DOCUMENT_TYPE&#39; &#124; &#39;TOTAL_AMOUNT&#39; &#124; &#39;INVOICE_NUMBER&#39;>** | Field of which to sort billing invoices | (optional) defaults to 'DUE_DATE'
+ **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined
+ **status** | [**&#39;OPEN&#39; | &#39;CLOSED&#39;**]**Array<&#39;OPEN&#39; &#124; &#39;CLOSED&#39;>** | Status of billing invoices to filter by | (optional) defaults to undefined
+ **documentType** | [**&#39;INVOICE&#39; | &#39;CREDIT_MEMO&#39;**]**Array<&#39;INVOICE&#39; &#124; &#39;CREDIT_MEMO&#39;>** | Document type of billing invoices to filter by | (optional) defaults to undefined
+ **startDueDate** | [**string**] | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | (optional) defaults to undefined
+ **endDueDate** | [**string**] | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | (optional) defaults to undefined
+
+
+### Return type
+
+**BillingInvoicesGet200Response**
+
+### Authorization
+
+[pinterest_oauth2](README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Invalid request parameter. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **billingProfilesGet**
 > BillingProfilesGet200Response billingProfilesGet()
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
 
 ### Example
 

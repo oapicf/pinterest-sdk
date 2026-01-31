@@ -11,7 +11,7 @@ import org.openapitools.model.CatalogsReportStats;
 @Canonical
 class ReportsStats200Response {
     
-    List<CatalogsReportStats> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CatalogsReportStats> items = new ArrayList<>()
 }

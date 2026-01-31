@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'Board_media' definition.
+-- Prepared SQL queries for 'BoardMedia' definition.
 --
 
 
 --
--- SELECT template for table `Board_media`
+-- SELECT template for table `BoardMedia`
 --
-SELECT `image_cover_url`, `pin_thumbnail_urls` FROM `Board_media` WHERE 1;
+SELECT `image_cover_url`, `pin_thumbnail_urls` FROM `BoardMedia` WHERE 1;
 
 --
--- INSERT template for table `Board_media`
+-- INSERT template for table `BoardMedia`
 --
-INSERT INTO `Board_media`(`image_cover_url`, `pin_thumbnail_urls`) VALUES (?, ?);
+INSERT INTO `BoardMedia`(`image_cover_url`, `pin_thumbnail_urls`) VALUES (?, ?);
 
 --
--- UPDATE template for table `Board_media`
+-- UPDATE template for table `BoardMedia`
 --
-UPDATE `Board_media` SET `image_cover_url` = ?, `pin_thumbnail_urls` = ? WHERE 1;
+UPDATE `BoardMedia` SET `image_cover_url` = ?, `pin_thumbnail_urls` = ? WHERE 1;
 
 --
--- DELETE template for table `Board_media`
+-- DELETE template for table `BoardMedia`
 --
-DELETE FROM `Board_media` WHERE 0;
+DELETE FROM `BoardMedia` WHERE 0;
 

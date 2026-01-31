@@ -11,10 +11,6 @@
 
 export interface KeywordUpdate { 
     /**
-     * Keyword ID.
-     */
-    id: string;
-    /**
      * Is keyword archived?
      */
     archived?: boolean;
@@ -22,5 +18,9 @@ export interface KeywordUpdate {
      * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
      */
     bid?: number | null;
+    /**
+     * Keyword ID.
+     */
+    id: string;
 }
 

@@ -16,15 +16,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SsioInsertionOrdersStatusGetByAdAccount200Response  {
   
+  @ApiModelProperty(value = "")
+  private String bookmark;
+
  /**
   * Insertion orders status by ad acount id
   */
   @ApiModelProperty(required = true, value = "Insertion orders status by ad acount id")
   @Valid
   private List<@Valid SSIOInsertionOrderStatus> items = new ArrayList<>();
+ /**
+  * Get bookmark
+  * @return bookmark
+  */
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
 
-  @ApiModelProperty(value = "")
-  private String bookmark;
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+ public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+  public SsioInsertionOrdersStatusGetByAdAccount200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
   * Insertion orders status by ad acount id
   * @return items
@@ -58,30 +82,6 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response  {
     return this;
   }
 
- /**
-  * Get bookmark
-  * @return bookmark
-  */
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
- public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
-  public SsioInsertionOrdersStatusGetByAdAccount200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,13 +92,13 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response  {
       return false;
     }
     SsioInsertionOrdersStatusGetByAdAccount200Response ssioInsertionOrdersStatusGetByAdAccount200Response = (SsioInsertionOrdersStatusGetByAdAccount200Response) o;
-    return Objects.equals(this.items, ssioInsertionOrdersStatusGetByAdAccount200Response.items) &&
-        Objects.equals(this.bookmark, ssioInsertionOrdersStatusGetByAdAccount200Response.bookmark);
+    return Objects.equals(this.bookmark, ssioInsertionOrdersStatusGetByAdAccount200Response.bookmark) &&
+        Objects.equals(this.items, ssioInsertionOrdersStatusGetByAdAccount200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SsioInsertionOrdersStatusGetByAdAccount200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

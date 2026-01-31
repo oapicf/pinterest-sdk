@@ -3,18 +3,18 @@ package org.openapitools.client.model
 
 
 case class BidFloorSpec (
+    _billableEvent: ActionType,
     _countries: Option[List[Country]],
+    _creativeType: Option[CreativeType],
     _currency: Currency,
     _objectiveType: Option[ObjectiveType],
-    _billableEvent: ActionType,
-    _optimizationGoalMetadata: Option[OptimizationGoalMetadata],
-    _creativeType: Option[CreativeType]
+    _optimizationGoalMetadata: Option[OptimizationGoalMetadata]
 )
 object BidFloorSpec {
-    def toStringBody(var_countries: Object, var_currency: Object, var_objectiveType: Object, var_billableEvent: Object, var_optimizationGoalMetadata: Object, var_creativeType: Object) =
+    def toStringBody(var_billableEvent: Object, var_countries: Object, var_creativeType: Object, var_currency: Object, var_objectiveType: Object, var_optimizationGoalMetadata: Object) =
         s"""
         | {
-        | "countries":$var_countries,"currency":$var_currency,"objectiveType":$var_objectiveType,"billableEvent":$var_billableEvent,"optimizationGoalMetadata":$var_optimizationGoalMetadata,"creativeType":$var_creativeType
+        | "billableEvent":$var_billableEvent,"countries":$var_countries,"creativeType":$var_creativeType,"currency":$var_currency,"objectiveType":$var_objectiveType,"optimizationGoalMetadata":$var_optimizationGoalMetadata
         | }
         """.stripMargin
 }

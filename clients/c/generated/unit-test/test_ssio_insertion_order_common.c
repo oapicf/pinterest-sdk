@@ -22,32 +22,32 @@ ssio_insertion_order_common_t* instantiate_ssio_insertion_order_common(int inclu
   ssio_insertion_order_common_t* ssio_insertion_order_common = NULL;
   if (include_optional) {
     ssio_insertion_order_common = ssio_insertion_order_common_create(
-      "2020-12-20",
-      "2020-12-20",
+      "0",
+      "test@example",
+      "0",
       "0",
       5000000,
-      "0",
-      "0",
+      "2020-12-20",
       "test@example",
       "0",
       "0",
-      "test@example",
       "0",
+      "2020-12-20",
       "test@example"
     );
   } else {
     ssio_insertion_order_common = ssio_insertion_order_common_create(
-      "2020-12-20",
-      "2020-12-20",
+      "0",
+      "test@example",
+      "0",
       "0",
       5000000,
-      "0",
-      "0",
+      "2020-12-20",
       "test@example",
       "0",
       "0",
-      "test@example",
       "0",
+      "2020-12-20",
       "test@example"
     );
   }

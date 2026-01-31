@@ -23,62 +23,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object declaring an asset role update to an invite.")
 @JsonTypeName("CreateAssetInvitesRequestItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetInvitesRequestItem   {
+  private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
   private String inviteId;
   private InviteType inviteType;
-  private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   public CreateAssetInvitesRequestItem() {
   }
 
   @JsonCreator
   public CreateAssetInvitesRequestItem(
+    @JsonProperty(required = true, value = "asset_id_to_permissions") Map<String, List<Permissions>> assetIdToPermissions,
     @JsonProperty(required = true, value = "invite_id") String inviteId,
-    @JsonProperty(required = true, value = "invite_type") InviteType inviteType,
-    @JsonProperty(required = true, value = "asset_id_to_permissions") Map<String, List<Permissions>> assetIdToPermissions
+    @JsonProperty(required = true, value = "invite_type") InviteType inviteType
   ) {
-    this.inviteId = inviteId;
-    this.inviteType = inviteType;
     this.assetIdToPermissions = assetIdToPermissions;
-  }
-
-  /**
-   * Unique identifier of an invite.
-   **/
-  public CreateAssetInvitesRequestItem inviteId(String inviteId) {
     this.inviteId = inviteId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of an invite.")
-  @JsonProperty(required = true, value = "invite_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getInviteId() {
-    return inviteId;
-  }
-
-  @JsonProperty(required = true, value = "invite_id")
-  public void setInviteId(String inviteId) {
-    this.inviteId = inviteId;
-  }
-
-  /**
-   **/
-  public CreateAssetInvitesRequestItem inviteType(InviteType inviteType) {
-    this.inviteType = inviteType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "invite_type")
-  @NotNull public InviteType getInviteType() {
-    return inviteType;
-  }
-
-  @JsonProperty(required = true, value = "invite_type")
-  public void setInviteType(InviteType inviteType) {
     this.inviteType = inviteType;
   }
 
@@ -118,6 +79,45 @@ public class CreateAssetInvitesRequestItem   {
 
     return this;
   }
+  /**
+   * Unique identifier of an invite.
+   **/
+  public CreateAssetInvitesRequestItem inviteId(String inviteId) {
+    this.inviteId = inviteId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of an invite.")
+  @JsonProperty(required = true, value = "invite_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getInviteId() {
+    return inviteId;
+  }
+
+  @JsonProperty(required = true, value = "invite_id")
+  public void setInviteId(String inviteId) {
+    this.inviteId = inviteId;
+  }
+
+  /**
+   **/
+  public CreateAssetInvitesRequestItem inviteType(InviteType inviteType) {
+    this.inviteType = inviteType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "invite_type")
+  @NotNull public InviteType getInviteType() {
+    return inviteType;
+  }
+
+  @JsonProperty(required = true, value = "invite_type")
+  public void setInviteType(InviteType inviteType) {
+    this.inviteType = inviteType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -128,14 +128,14 @@ public class CreateAssetInvitesRequestItem   {
       return false;
     }
     CreateAssetInvitesRequestItem createAssetInvitesRequestItem = (CreateAssetInvitesRequestItem) o;
-    return Objects.equals(this.inviteId, createAssetInvitesRequestItem.inviteId) &&
-        Objects.equals(this.inviteType, createAssetInvitesRequestItem.inviteType) &&
-        Objects.equals(this.assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions);
+    return Objects.equals(this.assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions) &&
+        Objects.equals(this.inviteId, createAssetInvitesRequestItem.inviteId) &&
+        Objects.equals(this.inviteType, createAssetInvitesRequestItem.inviteType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteId, inviteType, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, inviteId, inviteType);
   }
 
   @Override
@@ -143,9 +143,9 @@ public class CreateAssetInvitesRequestItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetInvitesRequestItem {\n");
     
+    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
     sb.append("    inviteId: ").append(toIndentedString(inviteId)).append("\n");
     sb.append("    inviteType: ").append(toIndentedString(inviteType)).append("\n");
-    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

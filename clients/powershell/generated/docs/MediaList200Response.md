@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**MediaUploadDetails[]**](MediaUploadDetails.md) | Media | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Media[]**](Media.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$MediaList200Response = Initialize-PSOpenAPIToolsMediaList200Response  -Items null `
- -Bookmark null
+$MediaList200Response = Initialize-PSOpenAPIToolsMediaList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

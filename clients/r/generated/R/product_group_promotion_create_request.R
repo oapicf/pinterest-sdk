@@ -8,7 +8,7 @@
 #' @description ProductGroupPromotionCreateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field ad_group_id ID of the Ad Group the Product Group Promotion belongs to. character
-#' @field product_group_promotion  list(\link{ProductGroupPromotionCreateRequestElement})
+#' @field product_group_promotion  list(\link{ProductGroupPromotion})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -91,7 +91,7 @@ ProductGroupPromotionCreateRequest <- R6::R6Class(
         self$`ad_group_id` <- this_object$`ad_group_id`
       }
       if (!is.null(this_object$`product_group_promotion`)) {
-        self$`product_group_promotion` <- ApiClient$new()$deserializeObj(this_object$`product_group_promotion`, "array[ProductGroupPromotionCreateRequestElement]", loadNamespace("openapi"))
+        self$`product_group_promotion` <- ApiClient$new()$deserializeObj(this_object$`product_group_promotion`, "array[ProductGroupPromotion]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +115,7 @@ ProductGroupPromotionCreateRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_group_id` <- this_object$`ad_group_id`
-      self$`product_group_promotion` <- ApiClient$new()$deserializeObj(this_object$`product_group_promotion`, "array[ProductGroupPromotionCreateRequestElement]", loadNamespace("openapi"))
+      self$`product_group_promotion` <- ApiClient$new()$deserializeObj(this_object$`product_group_promotion`, "array[ProductGroupPromotion]", loadNamespace("openapi"))
       self
     },
 

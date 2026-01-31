@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 ### Example
 ```kotlin
@@ -123,7 +123,7 @@ Configure client_credentials:
 
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
-> PinsList200Response searchUserPinsList(query, adAccountId, bookmark)
+> SearchUserPinsList200Response searchUserPinsList(query, adAccountId, bookmark)
 
 Search user&#39;s Pins
 
@@ -140,7 +140,7 @@ val query : kotlin.String = Plants // kotlin.String | Search query. Can contain 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
 try {
-    val result : PinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
+    val result : SearchUserPinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling SearchApi#searchUserPinsList")
@@ -160,7 +160,7 @@ try {
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 

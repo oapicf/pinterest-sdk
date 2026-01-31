@@ -14,17 +14,17 @@ module Account =
   //#endregion
 
   type Account = {
-    AccountType : AccountTypeEnum;
-    Id : string;
-    ProfileImage : string;
-    WebsiteUrl : string;
-    Username : string;
     About : string;
-    BusinessName : string option;
+    AccountType : AccountTypeEnum;
     BoardCount : int option;
-    PinCount : int option;
+    BusinessName : string option;
     FollowerCount : int option;
     FollowingCount : int option;
+    Id : string;
     MonthlyViews : int option;
+    PinCount : int option;
+    ProfileImage : string;
+    Username : string;
+    WebsiteUrl : string;
   }
   //#endregion

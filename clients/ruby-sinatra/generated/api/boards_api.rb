@@ -212,7 +212,7 @@ MyApp.add_route('POST', '/v5/boards', {
   "nickname" => "boards/create",
   "responseClass" => "Board",
   "endpoint" => "/boards",
-  "notes" => "Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+  "notes" => "Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -223,8 +223,8 @@ MyApp.add_route('POST', '/v5/boards', {
     },
     {
       "name" => "body",
-      "description" => "Create a board using a single board json object.",
-      "dataType" => "Board",
+      "description" => "",
+      "dataType" => "BoardCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -241,7 +241,7 @@ MyApp.add_route('DELETE', '/v5/boards/{board_id}', {
   "nickname" => "boards/delete",
   "responseClass" => "void",
   "endpoint" => "/boards/{board_id}",
-  "notes" => "Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+  "notes" => "Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -252,7 +252,7 @@ MyApp.add_route('DELETE', '/v5/boards/{board_id}', {
     },
     {
       "name" => "board_id",
-      "description" => "Unique identifier of a board.",
+      "description" => "",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -270,7 +270,7 @@ MyApp.add_route('GET', '/v5/boards/{board_id}', {
   "nickname" => "boards/get",
   "responseClass" => "Board",
   "endpoint" => "/boards/{board_id}",
-  "notes" => "Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+  "notes" => "Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -281,7 +281,7 @@ MyApp.add_route('GET', '/v5/boards/{board_id}', {
     },
     {
       "name" => "board_id",
-      "description" => "Unique identifier of a board.",
+      "description" => "",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -299,13 +299,20 @@ MyApp.add_route('GET', '/v5/boards', {
   "nickname" => "boards/list",
   "responseClass" => "boards_list_200_response",
   "endpoint" => "/boards",
-  "notes" => "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.",
+  "notes" => "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.",
   "parameters" => [
     {
       "name" => "ad_account_id",
       "description" => "Unique identifier of an ad account.",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "privacy",
+      "description" => "The privacy level of the board",
+      "dataType" => "BoardPrivacyFilter",
+      "allowableValues" => "[ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET]",
       "paramType" => "query",
     },
     {
@@ -317,17 +324,10 @@ MyApp.add_route('GET', '/v5/boards', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
-      "paramType" => "query",
-    },
-    {
-      "name" => "privacy",
-      "description" => "Privacy setting for a board.",
-      "dataType" => "String",
-      "allowableValues" => "[ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET]",
       "paramType" => "query",
     },
     ]}) do
@@ -363,8 +363,8 @@ MyApp.add_route('GET', '/v5/boards/{board_id}/pins', {
     },
     {
       "name" => "creative_types",
-      "description" => "Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.",
-      "dataType" => "Array<String>",
+      "description" => "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.",
+      "dataType" => "Array<CreativeType>",
       "collectionFormat" => "multi",
       "paramType" => "query",
     },
@@ -377,7 +377,7 @@ MyApp.add_route('GET', '/v5/boards/{board_id}/pins', {
     },
     {
       "name" => "pin_metrics",
-      "description" => "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
+      "description" => "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
       "dataType" => "Boolean",
       "allowableValues" => "",
       "defaultValue" => "false",
@@ -401,9 +401,9 @@ MyApp.add_route('PATCH', '/v5/boards/{board_id}', {
   "resourcePath" => "/Boards",
   "summary" => "Update board",
   "nickname" => "boards/update",
-  "responseClass" => "Board",
+  "responseClass" => "BoardWithUpdatePrivacy",
   "endpoint" => "/boards/{board_id}",
-  "notes" => "Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
+  "notes" => "Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -414,14 +414,14 @@ MyApp.add_route('PATCH', '/v5/boards/{board_id}', {
     },
     {
       "name" => "board_id",
-      "description" => "Unique identifier of a board.",
+      "description" => "",
       "dataType" => "String",
       "paramType" => "path",
     },
     {
       "name" => "body",
-      "description" => "Update a board.",
-      "dataType" => "BoardUpdate",
+      "description" => "",
+      "dataType" => "BoardWithUpdatePrivacyUpdate",
       "paramType" => "body",
     }
     ]}) do

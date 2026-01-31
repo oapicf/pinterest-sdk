@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ProductGroupPromotionResponseElement**](ProductGroupPromotionResponseElement.md) |  |  [optional]
+**data** | [**ProductGroupPromotion**](ProductGroupPromotion.md) |  |  [optional]
 **exceptions** | [**List&lt;Exception&gt;**](Exception.md) |  |  [optional]
 
 

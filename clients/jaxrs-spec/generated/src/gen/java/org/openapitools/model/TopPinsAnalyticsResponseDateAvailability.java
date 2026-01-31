@@ -18,31 +18,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TopPinsAnalyticsResponse_date_availability")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopPinsAnalyticsResponseDateAvailability   {
-  private BigDecimal latestAvailableTimestamp;
   private Boolean isRealtime;
+  private BigDecimal latestAvailableTimestamp;
 
   public TopPinsAnalyticsResponseDateAvailability() {
-  }
-
-  /**
-   **/
-  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
-    this.latestAvailableTimestamp = latestAvailableTimestamp;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1649116799000", value = "")
-  @JsonProperty("latest_available_timestamp")
-  @Valid public BigDecimal getLatestAvailableTimestamp() {
-    return latestAvailableTimestamp;
-  }
-
-  @JsonProperty("latest_available_timestamp")
-  public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
-    this.latestAvailableTimestamp = latestAvailableTimestamp;
   }
 
   /**
@@ -64,6 +45,25 @@ public class TopPinsAnalyticsResponseDateAvailability   {
     this.isRealtime = isRealtime;
   }
 
+  /**
+   **/
+  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+    this.latestAvailableTimestamp = latestAvailableTimestamp;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1649116799000", value = "")
+  @JsonProperty("latest_available_timestamp")
+  @Valid public BigDecimal getLatestAvailableTimestamp() {
+    return latestAvailableTimestamp;
+  }
+
+  @JsonProperty("latest_available_timestamp")
+  public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+    this.latestAvailableTimestamp = latestAvailableTimestamp;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -74,13 +74,13 @@ public class TopPinsAnalyticsResponseDateAvailability   {
       return false;
     }
     TopPinsAnalyticsResponseDateAvailability topPinsAnalyticsResponseDateAvailability = (TopPinsAnalyticsResponseDateAvailability) o;
-    return Objects.equals(this.latestAvailableTimestamp, topPinsAnalyticsResponseDateAvailability.latestAvailableTimestamp) &&
-        Objects.equals(this.isRealtime, topPinsAnalyticsResponseDateAvailability.isRealtime);
+    return Objects.equals(this.isRealtime, topPinsAnalyticsResponseDateAvailability.isRealtime) &&
+        Objects.equals(this.latestAvailableTimestamp, topPinsAnalyticsResponseDateAvailability.latestAvailableTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(latestAvailableTimestamp, isRealtime);
+    return Objects.hash(isRealtime, latestAvailableTimestamp);
   }
 
   @Override
@@ -88,8 +88,8 @@ public class TopPinsAnalyticsResponseDateAvailability   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponseDateAvailability {\n");
     
-    sb.append("    latestAvailableTimestamp: ").append(toIndentedString(latestAvailableTimestamp)).append("\n");
     sb.append("    isRealtime: ").append(toIndentedString(isRealtime)).append("\n");
+    sb.append("    latestAvailableTimestamp: ").append(toIndentedString(latestAvailableTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

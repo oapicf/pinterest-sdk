@@ -15,15 +15,15 @@ import org.openapitools.models.Country
  * Request object to list products for a given product group filter.
  * @param feedUnderscoreid Catalog Feed id pertaining to the catalog product group filter.
  * @param filters 
- * @param catalogUnderscoretype 
  * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
+ * @param catalogUnderscoretype 
  * @param country 
  * @param locale 
  */
 case class CatalogsListProductsByFilterRequest(feedUnderscoreid: String,
                 filters: CatalogsCreativeAssetsProductGroupFilters,
-                catalogUnderscoretype: String,
                 catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 country: Country,
                 locale: CatalogsLocale
                 )

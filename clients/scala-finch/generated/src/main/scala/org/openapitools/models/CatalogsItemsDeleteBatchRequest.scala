@@ -13,14 +13,14 @@ import scala.collection.immutable.Seq
 /**
  * Request object to delete catalogs items
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 case class CatalogsItemsDeleteBatchRequest(country: Country,
+                items: Seq[ItemDeleteBatchRecord],
                 language: String,
-                operation: BatchOperation,
-                items: Seq[ItemDeleteBatchRecord]
+                operation: BatchOperation
                 )
 
 object CatalogsItemsDeleteBatchRequest {

@@ -11,7 +11,9 @@ import java.util.List;
 import org.openapitools.model.AdGroupUpdateRequest;
 import org.openapitools.model.AdUpdateRequest;
 import org.openapitools.model.CampaignUpdateRequest;
+import org.openapitools.model.CatalogsProductGroupsUpdateRequest;
 import org.openapitools.model.KeywordUpdate;
+import org.openapitools.model.LabelBulkUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 
 
@@ -21,39 +23,28 @@ import org.openapitools.model.ProductGroupPromotionUpdateRequest;
  **/
 
 @ApiModel(description = "Request for creation of entities in bulk.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertRequestUpdate   {
-  @JsonProperty("campaigns")
-  private List<CampaignUpdateRequest> campaigns = null;
-
   @JsonProperty("ad_groups")
   private List<AdGroupUpdateRequest> adGroups = null;
 
   @JsonProperty("ads")
   private List<AdUpdateRequest> ads = null;
 
-  @JsonProperty("product_groups")
-  private List<ProductGroupPromotionUpdateRequest> productGroups = null;
+  @JsonProperty("campaigns")
+  private List<CampaignUpdateRequest> campaigns = null;
+
+  @JsonProperty("catalog_product_groups")
+  private List<CatalogsProductGroupsUpdateRequest> catalogProductGroups = null;
 
   @JsonProperty("keywords")
   private List<KeywordUpdate> keywords = null;
 
-  /**
-   **/
-  public BulkUpsertRequestUpdate campaigns(List<CampaignUpdateRequest> campaigns) {
-    this.campaigns = campaigns;
-    return this;
-  }
+  @JsonProperty("labels")
+  private List<LabelBulkUpdateRequest> labels = null;
 
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("campaigns")
-  public List<CampaignUpdateRequest> getCampaigns() {
-    return campaigns;
-  }
-  public void setCampaigns(List<CampaignUpdateRequest> campaigns) {
-    this.campaigns = campaigns;
-  }
+  @JsonProperty("product_groups")
+  private List<ProductGroupPromotionUpdateRequest> productGroups = null;
 
   /**
    **/
@@ -91,19 +82,36 @@ public class BulkUpsertRequestUpdate   {
 
   /**
    **/
-  public BulkUpsertRequestUpdate productGroups(List<ProductGroupPromotionUpdateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public BulkUpsertRequestUpdate campaigns(List<CampaignUpdateRequest> campaigns) {
+    this.campaigns = campaigns;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("product_groups")
-  public List<ProductGroupPromotionUpdateRequest> getProductGroups() {
-    return productGroups;
+  @JsonProperty("campaigns")
+  public List<CampaignUpdateRequest> getCampaigns() {
+    return campaigns;
   }
-  public void setProductGroups(List<ProductGroupPromotionUpdateRequest> productGroups) {
-    this.productGroups = productGroups;
+  public void setCampaigns(List<CampaignUpdateRequest> campaigns) {
+    this.campaigns = campaigns;
+  }
+
+  /**
+   **/
+  public BulkUpsertRequestUpdate catalogProductGroups(List<CatalogsProductGroupsUpdateRequest> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("catalog_product_groups")
+  public List<CatalogsProductGroupsUpdateRequest> getCatalogProductGroups() {
+    return catalogProductGroups;
+  }
+  public void setCatalogProductGroups(List<CatalogsProductGroupsUpdateRequest> catalogProductGroups) {
+    this.catalogProductGroups = catalogProductGroups;
   }
 
   /**
@@ -123,6 +131,40 @@ public class BulkUpsertRequestUpdate   {
     this.keywords = keywords;
   }
 
+  /**
+   **/
+  public BulkUpsertRequestUpdate labels(List<LabelBulkUpdateRequest> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("labels")
+  public List<LabelBulkUpdateRequest> getLabels() {
+    return labels;
+  }
+  public void setLabels(List<LabelBulkUpdateRequest> labels) {
+    this.labels = labels;
+  }
+
+  /**
+   **/
+  public BulkUpsertRequestUpdate productGroups(List<ProductGroupPromotionUpdateRequest> productGroups) {
+    this.productGroups = productGroups;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("product_groups")
+  public List<ProductGroupPromotionUpdateRequest> getProductGroups() {
+    return productGroups;
+  }
+  public void setProductGroups(List<ProductGroupPromotionUpdateRequest> productGroups) {
+    this.productGroups = productGroups;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -133,16 +175,18 @@ public class BulkUpsertRequestUpdate   {
       return false;
     }
     BulkUpsertRequestUpdate bulkUpsertRequestUpdate = (BulkUpsertRequestUpdate) o;
-    return Objects.equals(campaigns, bulkUpsertRequestUpdate.campaigns) &&
-        Objects.equals(adGroups, bulkUpsertRequestUpdate.adGroups) &&
+    return Objects.equals(adGroups, bulkUpsertRequestUpdate.adGroups) &&
         Objects.equals(ads, bulkUpsertRequestUpdate.ads) &&
-        Objects.equals(productGroups, bulkUpsertRequestUpdate.productGroups) &&
-        Objects.equals(keywords, bulkUpsertRequestUpdate.keywords);
+        Objects.equals(campaigns, bulkUpsertRequestUpdate.campaigns) &&
+        Objects.equals(catalogProductGroups, bulkUpsertRequestUpdate.catalogProductGroups) &&
+        Objects.equals(keywords, bulkUpsertRequestUpdate.keywords) &&
+        Objects.equals(labels, bulkUpsertRequestUpdate.labels) &&
+        Objects.equals(productGroups, bulkUpsertRequestUpdate.productGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns, adGroups, ads, productGroups, keywords);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
   }
 
   @Override
@@ -150,11 +194,13 @@ public class BulkUpsertRequestUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertRequestUpdate {\n");
     
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
     sb.append("    adGroups: ").append(toIndentedString(adGroups)).append("\n");
     sb.append("    ads: ").append(toIndentedString(ads)).append("\n");
-    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    catalogProductGroups: ").append(toIndentedString(catalogProductGroups)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

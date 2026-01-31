@@ -11,6 +11,8 @@ import org.openapitools.model.CatalogsUpsertCreativeAssetsItem;
 
 @Canonical
 class CatalogsCreativeAssetsBatchItem {
+    
+    CatalogsUpdatableCreativeAssetsAttributes attributes
     /* The catalog creative assets id in the merchant namespace */
     String creativeAssetsId
 
@@ -36,6 +38,4 @@ class CatalogsCreativeAssetsBatchItem {
 
     
     OperationEnum operation
-    
-    CatalogsUpdatableCreativeAssetsAttributes attributes
 }

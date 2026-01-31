@@ -23,21 +23,18 @@ BulkUpsertRequestCreate::~BulkUpsertRequestCreate()
 void
 BulkUpsertRequestCreate::__init()
 {
-	//new std::list()std::list> campaigns;
 	//new std::list()std::list> ad_groups;
 	//new std::list()std::list> ads;
-	//new std::list()std::list> product_groups;
+	//new std::list()std::list> campaigns;
+	//new std::list()std::list> catalog_product_groups;
 	//new std::list()std::list> keywords;
+	//new std::list()std::list> labels;
+	//new std::list()std::list> product_groups;
 }
 
 void
 BulkUpsertRequestCreate::__cleanup()
 {
-	//if(campaigns != NULL) {
-	//campaigns.RemoveAll(true);
-	//delete campaigns;
-	//campaigns = NULL;
-	//}
 	//if(ad_groups != NULL) {
 	//ad_groups.RemoveAll(true);
 	//delete ad_groups;
@@ -48,15 +45,30 @@ BulkUpsertRequestCreate::__cleanup()
 	//delete ads;
 	//ads = NULL;
 	//}
-	//if(product_groups != NULL) {
-	//product_groups.RemoveAll(true);
-	//delete product_groups;
-	//product_groups = NULL;
+	//if(campaigns != NULL) {
+	//campaigns.RemoveAll(true);
+	//delete campaigns;
+	//campaigns = NULL;
+	//}
+	//if(catalog_product_groups != NULL) {
+	//catalog_product_groups.RemoveAll(true);
+	//delete catalog_product_groups;
+	//catalog_product_groups = NULL;
 	//}
 	//if(keywords != NULL) {
 	//keywords.RemoveAll(true);
 	//delete keywords;
 	//keywords = NULL;
+	//}
+	//if(labels != NULL) {
+	//labels.RemoveAll(true);
+	//delete labels;
+	//labels = NULL;
+	//}
+	//if(product_groups != NULL) {
+	//product_groups.RemoveAll(true);
+	//delete product_groups;
+	//product_groups = NULL;
 	//}
 	//
 }
@@ -66,30 +78,6 @@ BulkUpsertRequestCreate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *campaignsKey = "campaigns";
-	node = json_object_get_member(pJsonObject, campaignsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<CampaignCreateRequest> new_list;
-			CampaignCreateRequest inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CampaignCreateRequest")) {
-					jsonToValue(&inst, temp_json, "CampaignCreateRequest", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			campaigns = new_list;
-		}
-		
-	}
 	const gchar *ad_groupsKey = "ad_groups";
 	node = json_object_get_member(pJsonObject, ad_groupsKey);
 	if (node !=NULL) {
@@ -138,19 +126,19 @@ BulkUpsertRequestCreate::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *product_groupsKey = "product_groups";
-	node = json_object_get_member(pJsonObject, product_groupsKey);
+	const gchar *campaignsKey = "campaigns";
+	node = json_object_get_member(pJsonObject, campaignsKey);
 	if (node !=NULL) {
 	
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<ProductGroupPromotionCreateRequest> new_list;
-			ProductGroupPromotionCreateRequest inst;
+			list<CampaignCreateRequest> new_list;
+			CampaignCreateRequest inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ProductGroupPromotionCreateRequest")) {
-					jsonToValue(&inst, temp_json, "ProductGroupPromotionCreateRequest", "");
+				if (isprimitive("CampaignCreateRequest")) {
+					jsonToValue(&inst, temp_json, "CampaignCreateRequest", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -158,7 +146,31 @@ BulkUpsertRequestCreate::fromJson(char* jsonStr)
 				}
 				new_list.push_back(inst);
 			}
-			product_groups = new_list;
+			campaigns = new_list;
+		}
+		
+	}
+	const gchar *catalog_product_groupsKey = "catalog_product_groups";
+	node = json_object_get_member(pJsonObject, catalog_product_groupsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<Multiple_product_groups_inner> new_list;
+			Multiple_product_groups_inner inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("Multiple_product_groups_inner")) {
+					jsonToValue(&inst, temp_json, "Multiple_product_groups_inner", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			catalog_product_groups = new_list;
 		}
 		
 	}
@@ -186,6 +198,54 @@ BulkUpsertRequestCreate::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *labelsKey = "labels";
+	node = json_object_get_member(pJsonObject, labelsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<LabelCreateRequest> new_list;
+			LabelCreateRequest inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("LabelCreateRequest")) {
+					jsonToValue(&inst, temp_json, "LabelCreateRequest", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			labels = new_list;
+		}
+		
+	}
+	const gchar *product_groupsKey = "product_groups";
+	node = json_object_get_member(pJsonObject, product_groupsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<ProductGroupPromotionCreateRequest> new_list;
+			ProductGroupPromotionCreateRequest inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("ProductGroupPromotionCreateRequest")) {
+					jsonToValue(&inst, temp_json, "ProductGroupPromotionCreateRequest", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			product_groups = new_list;
+		}
+		
+	}
 }
 
 BulkUpsertRequestCreate::BulkUpsertRequestCreate(char* json)
@@ -198,31 +258,6 @@ BulkUpsertRequestCreate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CampaignCreateRequest")) {
-		list<CampaignCreateRequest> new_list = static_cast<list <CampaignCreateRequest> > (getCampaigns());
-		node = converttoJson(&new_list, "CampaignCreateRequest", "array");
-	} else {
-		node = json_node_alloc();
-		list<CampaignCreateRequest> new_list = static_cast<list <CampaignCreateRequest> > (getCampaigns());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-		for (list<CampaignCreateRequest>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			CampaignCreateRequest obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
-		
-	}
-
-
-	
-	const gchar *campaignsKey = "campaigns";
-	json_object_set_member(pJsonObject, campaignsKey, node);
 	if (isprimitive("AdGroupCreateRequest")) {
 		list<AdGroupCreateRequest> new_list = static_cast<list <AdGroupCreateRequest> > (getAdGroups());
 		node = converttoJson(&new_list, "AdGroupCreateRequest", "array");
@@ -273,18 +308,18 @@ BulkUpsertRequestCreate::toJson()
 	
 	const gchar *adsKey = "ads";
 	json_object_set_member(pJsonObject, adsKey, node);
-	if (isprimitive("ProductGroupPromotionCreateRequest")) {
-		list<ProductGroupPromotionCreateRequest> new_list = static_cast<list <ProductGroupPromotionCreateRequest> > (getProductGroups());
-		node = converttoJson(&new_list, "ProductGroupPromotionCreateRequest", "array");
+	if (isprimitive("CampaignCreateRequest")) {
+		list<CampaignCreateRequest> new_list = static_cast<list <CampaignCreateRequest> > (getCampaigns());
+		node = converttoJson(&new_list, "CampaignCreateRequest", "array");
 	} else {
 		node = json_node_alloc();
-		list<ProductGroupPromotionCreateRequest> new_list = static_cast<list <ProductGroupPromotionCreateRequest> > (getProductGroups());
+		list<CampaignCreateRequest> new_list = static_cast<list <CampaignCreateRequest> > (getCampaigns());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<ProductGroupPromotionCreateRequest>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<CampaignCreateRequest>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			ProductGroupPromotionCreateRequest obj = *it;
+			CampaignCreateRequest obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -296,8 +331,33 @@ BulkUpsertRequestCreate::toJson()
 
 
 	
-	const gchar *product_groupsKey = "product_groups";
-	json_object_set_member(pJsonObject, product_groupsKey, node);
+	const gchar *campaignsKey = "campaigns";
+	json_object_set_member(pJsonObject, campaignsKey, node);
+	if (isprimitive("Multiple_product_groups_inner")) {
+		list<Multiple_product_groups_inner> new_list = static_cast<list <Multiple_product_groups_inner> > (getCatalogProductGroups());
+		node = converttoJson(&new_list, "Multiple_product_groups_inner", "array");
+	} else {
+		node = json_node_alloc();
+		list<Multiple_product_groups_inner> new_list = static_cast<list <Multiple_product_groups_inner> > (getCatalogProductGroups());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<Multiple_product_groups_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			Multiple_product_groups_inner obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *catalog_product_groupsKey = "catalog_product_groups";
+	json_object_set_member(pJsonObject, catalog_product_groupsKey, node);
 	if (isprimitive("KeywordsRequest")) {
 		list<KeywordsRequest> new_list = static_cast<list <KeywordsRequest> > (getKeywords());
 		node = converttoJson(&new_list, "KeywordsRequest", "array");
@@ -323,24 +383,62 @@ BulkUpsertRequestCreate::toJson()
 	
 	const gchar *keywordsKey = "keywords";
 	json_object_set_member(pJsonObject, keywordsKey, node);
+	if (isprimitive("LabelCreateRequest")) {
+		list<LabelCreateRequest> new_list = static_cast<list <LabelCreateRequest> > (getLabels());
+		node = converttoJson(&new_list, "LabelCreateRequest", "array");
+	} else {
+		node = json_node_alloc();
+		list<LabelCreateRequest> new_list = static_cast<list <LabelCreateRequest> > (getLabels());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<LabelCreateRequest>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			LabelCreateRequest obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *labelsKey = "labels";
+	json_object_set_member(pJsonObject, labelsKey, node);
+	if (isprimitive("ProductGroupPromotionCreateRequest")) {
+		list<ProductGroupPromotionCreateRequest> new_list = static_cast<list <ProductGroupPromotionCreateRequest> > (getProductGroups());
+		node = converttoJson(&new_list, "ProductGroupPromotionCreateRequest", "array");
+	} else {
+		node = json_node_alloc();
+		list<ProductGroupPromotionCreateRequest> new_list = static_cast<list <ProductGroupPromotionCreateRequest> > (getProductGroups());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<ProductGroupPromotionCreateRequest>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			ProductGroupPromotionCreateRequest obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *product_groupsKey = "product_groups";
+	json_object_set_member(pJsonObject, product_groupsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::list<CampaignCreateRequest>
-BulkUpsertRequestCreate::getCampaigns()
-{
-	return campaigns;
-}
-
-void
-BulkUpsertRequestCreate::setCampaigns(std::list <CampaignCreateRequest> campaigns)
-{
-	this->campaigns = campaigns;
 }
 
 std::list<AdGroupCreateRequest>
@@ -367,16 +465,28 @@ BulkUpsertRequestCreate::setAds(std::list <AdCreateRequest> ads)
 	this->ads = ads;
 }
 
-std::list<ProductGroupPromotionCreateRequest>
-BulkUpsertRequestCreate::getProductGroups()
+std::list<CampaignCreateRequest>
+BulkUpsertRequestCreate::getCampaigns()
 {
-	return product_groups;
+	return campaigns;
 }
 
 void
-BulkUpsertRequestCreate::setProductGroups(std::list <ProductGroupPromotionCreateRequest> product_groups)
+BulkUpsertRequestCreate::setCampaigns(std::list <CampaignCreateRequest> campaigns)
 {
-	this->product_groups = product_groups;
+	this->campaigns = campaigns;
+}
+
+std::list<Multiple_product_groups_inner>
+BulkUpsertRequestCreate::getCatalogProductGroups()
+{
+	return catalog_product_groups;
+}
+
+void
+BulkUpsertRequestCreate::setCatalogProductGroups(std::list <Multiple_product_groups_inner> catalog_product_groups)
+{
+	this->catalog_product_groups = catalog_product_groups;
 }
 
 std::list<KeywordsRequest>
@@ -389,6 +499,30 @@ void
 BulkUpsertRequestCreate::setKeywords(std::list <KeywordsRequest> keywords)
 {
 	this->keywords = keywords;
+}
+
+std::list<LabelCreateRequest>
+BulkUpsertRequestCreate::getLabels()
+{
+	return labels;
+}
+
+void
+BulkUpsertRequestCreate::setLabels(std::list <LabelCreateRequest> labels)
+{
+	this->labels = labels;
+}
+
+std::list<ProductGroupPromotionCreateRequest>
+BulkUpsertRequestCreate::getProductGroups()
+{
+	return product_groups;
+}
+
+void
+BulkUpsertRequestCreate::setProductGroups(std::list <ProductGroupPromotionCreateRequest> product_groups)
+{
+	this->product_groups = product_groups;
 }
 
 

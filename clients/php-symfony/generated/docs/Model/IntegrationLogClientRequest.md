@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **string** |  | 
 **host** | **string** | HTTP request host from host header. | 
+**method** | **string** |  | 
 **path** | **string** | HTTP request path. | 
 **requestHeaders** | **string** | HTTP request headers as key-value pairs. | [optional] 
 **responseHeaders** | **string** | HTTP response headers as key-value pairs. | [optional] 

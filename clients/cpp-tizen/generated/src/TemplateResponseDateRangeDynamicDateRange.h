@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The date range type
-	 */
-	std::string getType();
-
-	/*! \brief Set The date range type
-	 */
-	void setType(std::string  type);
 	/*! \brief Get The dynamic range type
 	 */
 	std::string getRange();
@@ -59,10 +52,17 @@ public:
 	/*! \brief Set The dynamic range type
 	 */
 	void setRange(std::string  range);
+	/*! \brief Get The date range type
+	 */
+	std::string getType();
+
+	/*! \brief Set The date range type
+	 */
+	void setType(std::string  type);
 
 private:
-	std::string type;
 	std::string range;
+	std::string type;
 	void __init();
 	void __cleanup();
 

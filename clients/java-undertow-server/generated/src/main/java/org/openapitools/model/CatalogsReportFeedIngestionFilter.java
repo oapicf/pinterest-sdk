@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,9 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionFilter   {
   
+  private String feedId;
+  private String processingResultId;
 
 
   public enum ReportTypeEnum {
@@ -43,25 +45,6 @@ public class CatalogsReportFeedIngestionFilter   {
   }
 
   private ReportTypeEnum reportType;
-  private String feedId;
-  private String processingResultId;
-
-  /**
-   */
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the feed entity.
@@ -99,6 +82,23 @@ public class CatalogsReportFeedIngestionFilter   {
     this.processingResultId = processingResultId;
   }
 
+  /**
+   */
+  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,14 +109,14 @@ public class CatalogsReportFeedIngestionFilter   {
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @Override
@@ -124,9 +124,9 @@ public class CatalogsReportFeedIngestionFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

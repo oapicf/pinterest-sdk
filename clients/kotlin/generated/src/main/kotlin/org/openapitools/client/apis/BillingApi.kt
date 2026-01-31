@@ -22,6 +22,8 @@ import okhttp3.HttpUrl
 import org.openapitools.client.models.AdsCreditRedeemRequest
 import org.openapitools.client.models.AdsCreditRedeemResponse
 import org.openapitools.client.models.AdsCreditsDiscountsGet200Response
+import org.openapitools.client.models.BillingInvoiceDownloadResponse
+import org.openapitools.client.models.BillingInvoicesGet200Response
 import org.openapitools.client.models.BillingProfilesGet200Response
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.SSIOAccountResponse
@@ -60,7 +62,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/ads_credit/redeem
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
      * @return AdsCreditRedeemResponse
@@ -93,7 +95,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/ads_credit/redeem
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
      * @return ApiResponse<AdsCreditRedeemResponse?>
@@ -137,7 +139,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ads_credit/discounts
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -171,7 +173,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ads_credit/discounts
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -222,9 +224,279 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download
+     * Get download url for a billing invoice
+     * Get download url for a billing invoice.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param billingInvoiceId Unique identifier of a billing invoice.
+     * @return BillingInvoiceDownloadResponse
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun billingInvoiceDownloadGet(adAccountId: kotlin.String, billingInvoiceId: kotlin.String) : BillingInvoiceDownloadResponse {
+        val localVarResponse = billingInvoiceDownloadGetWithHttpInfo(adAccountId = adAccountId, billingInvoiceId = billingInvoiceId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BillingInvoiceDownloadResponse
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download
+     * Get download url for a billing invoice
+     * Get download url for a billing invoice.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param billingInvoiceId Unique identifier of a billing invoice.
+     * @return ApiResponse<BillingInvoiceDownloadResponse?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun billingInvoiceDownloadGetWithHttpInfo(adAccountId: kotlin.String, billingInvoiceId: kotlin.String) : ApiResponse<BillingInvoiceDownloadResponse?> {
+        val localVariableConfig = billingInvoiceDownloadGetRequestConfig(adAccountId = adAccountId, billingInvoiceId = billingInvoiceId)
+
+        return request<Unit, BillingInvoiceDownloadResponse>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation billingInvoiceDownloadGet
+     *
+     * @param adAccountId Unique identifier of an ad account.
+     * @param billingInvoiceId Unique identifier of a billing invoice.
+     * @return RequestConfig
+     */
+    fun billingInvoiceDownloadGetRequestConfig(adAccountId: kotlin.String, billingInvoiceId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"billing_invoice_id"+"}", encodeURIComponent(billingInvoiceId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * enum for parameter sort
+     */
+     enum class SortBillingInvoicesGet(val value: kotlin.String) {
+         @Json(name = "DUE_DATE") DUE_DATE("DUE_DATE"),
+         @Json(name = "BILLING_PERIOD") BILLING_PERIOD("BILLING_PERIOD"),
+         @Json(name = "DOCUMENT_TYPE") DOCUMENT_TYPE("DOCUMENT_TYPE"),
+         @Json(name = "TOTAL_AMOUNT") TOTAL_AMOUNT("TOTAL_AMOUNT"),
+         @Json(name = "INVOICE_NUMBER") INVOICE_NUMBER("INVOICE_NUMBER");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
+     * enum for parameter order
+     */
+     enum class OrderBillingInvoicesGet(val value: kotlin.String) {
+         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
+     * enum for parameter status
+     */
+     enum class StatusBillingInvoicesGet(val value: kotlin.String) {
+         @Json(name = "OPEN") OPEN("OPEN"),
+         @Json(name = "CLOSED") CLOSED("CLOSED");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
+     * enum for parameter documentType
+     */
+     enum class DocumentTypeBillingInvoicesGet(val value: kotlin.String) {
+         @Json(name = "INVOICE") INVOICE("INVOICE"),
+         @Json(name = "CREDIT_MEMO") CREDIT_MEMO("CREDIT_MEMO");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
+     * GET /ad_accounts/{ad_account_id}/billing_invoices
+     * Get billing invoices
+     * Get billing invoices in the advertiser account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sort Field of which to sort billing invoices (optional, default to Sort.DUE_DATE)
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param status Status of billing invoices to filter by (optional)
+     * @param documentType Document type of billing invoices to filter by (optional)
+     * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @return BillingInvoicesGet200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun billingInvoicesGet(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, sort: SortBillingInvoicesGet? = SortBillingInvoicesGet.DUE_DATE, order: OrderBillingInvoicesGet? = null, status: StatusBillingInvoicesGet? = null, documentType: DocumentTypeBillingInvoicesGet? = null, startDueDate: java.time.LocalDate? = null, endDueDate: java.time.LocalDate? = null) : BillingInvoicesGet200Response {
+        val localVarResponse = billingInvoicesGetWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, sort = sort, order = order, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BillingInvoicesGet200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /ad_accounts/{ad_account_id}/billing_invoices
+     * Get billing invoices
+     * Get billing invoices in the advertiser account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sort Field of which to sort billing invoices (optional, default to Sort.DUE_DATE)
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param status Status of billing invoices to filter by (optional)
+     * @param documentType Document type of billing invoices to filter by (optional)
+     * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @return ApiResponse<BillingInvoicesGet200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun billingInvoicesGetWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, sort: SortBillingInvoicesGet?, order: OrderBillingInvoicesGet?, status: StatusBillingInvoicesGet?, documentType: DocumentTypeBillingInvoicesGet?, startDueDate: java.time.LocalDate?, endDueDate: java.time.LocalDate?) : ApiResponse<BillingInvoicesGet200Response?> {
+        val localVariableConfig = billingInvoicesGetRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, sort = sort, order = order, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
+
+        return request<Unit, BillingInvoicesGet200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation billingInvoicesGet
+     *
+     * @param adAccountId Unique identifier of an ad account.
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sort Field of which to sort billing invoices (optional, default to Sort.DUE_DATE)
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param status Status of billing invoices to filter by (optional)
+     * @param documentType Document type of billing invoices to filter by (optional)
+     * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @return RequestConfig
+     */
+    fun billingInvoicesGetRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, sort: SortBillingInvoicesGet?, order: OrderBillingInvoicesGet?, status: StatusBillingInvoicesGet?, documentType: DocumentTypeBillingInvoicesGet?, startDueDate: java.time.LocalDate?, endDueDate: java.time.LocalDate?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.value))
+                }
+                if (order != null) {
+                    put("order", listOf(order.value))
+                }
+                if (status != null) {
+                    put("status", listOf(status.value))
+                }
+                if (documentType != null) {
+                    put("document_type", listOf(documentType.value))
+                }
+                if (startDueDate != null) {
+                    put("start_due_date", listOf(parseDateToQueryString(startDueDate)))
+                }
+                if (endDueDate != null) {
+                    put("end_due_date", listOf(parseDateToQueryString(endDueDate)))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/ad_accounts/{ad_account_id}/billing_invoices".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * GET /ad_accounts/{ad_account_id}/billing_profiles
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -259,7 +531,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/billing_profiles
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)

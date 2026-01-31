@@ -22,23 +22,27 @@ conversion_tag_configs_t* instantiate_conversion_tag_configs(int include_optiona
   conversion_tag_configs_t* conversion_tag_configs = NULL;
   if (include_optional) {
     conversion_tag_configs = conversion_tag_configs_create(
-      true,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       0.6,
-      true,
-      true,
-      true,
-      true,
-      true
+      ["https://sub.exampledomain.com"]
     );
   } else {
     conversion_tag_configs = conversion_tag_configs_create(
-      true,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       0.6,
-      true,
-      true,
-      true,
-      true,
-      true
+      ["https://sub.exampledomain.com"]
     );
   }
 

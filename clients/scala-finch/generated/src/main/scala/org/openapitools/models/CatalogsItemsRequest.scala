@@ -11,12 +11,12 @@ import org.openapitools.models.Country
 /**
  * Request object of catalogs items
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param filters 
+ * @param language We recommend using the CatalogsLocale values.
  */
 case class CatalogsItemsRequest(country: Country,
-                language: String,
-                filters: CatalogsItemsPostFilters
+                filters: CatalogsItemsPostFilters,
+                language: String
                 )
 
 object CatalogsItemsRequest {

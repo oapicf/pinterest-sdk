@@ -9,8 +9,8 @@
 -export_type([openapi_analytics_metrics_response/0]).
 
 -type openapi_analytics_metrics_response() ::
-  [ {'summary_metrics', map() }
-  | {'daily_metrics', list(openapi_analytics_daily_metrics:openapi_analytics_daily_metrics()) }
+  [ {'daily_metrics', list(openapi_analytics_daily_metrics:openapi_analytics_daily_metrics()) }
+  | {'summary_metrics', map() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_analytics_metrics_response() ->
     openapi_analytics_metrics_response([]).
 
 openapi_analytics_metrics_response(Fields) ->
-  Default = [ {'summary_metrics', map() }
-            , {'daily_metrics', list(openapi_analytics_daily_metrics:openapi_analytics_daily_metrics()) }
+  Default = [ {'daily_metrics', list(openapi_analytics_daily_metrics:openapi_analytics_daily_metrics()) }
+            , {'summary_metrics', map() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -7,16 +7,16 @@
 
 static catalogs_items_request_t *catalogs_items_request_create_internal(
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language,
-    catalogs_items_post_filters_t *filters
+    catalogs_items_post_filters_t *filters,
+    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language
     ) {
     catalogs_items_request_t *catalogs_items_request_local_var = malloc(sizeof(catalogs_items_request_t));
     if (!catalogs_items_request_local_var) {
         return NULL;
     }
     catalogs_items_request_local_var->country = country;
-    catalogs_items_request_local_var->language = language;
     catalogs_items_request_local_var->filters = filters;
+    catalogs_items_request_local_var->language = language;
 
     catalogs_items_request_local_var->_library_owned = 1;
     return catalogs_items_request_local_var;
@@ -24,13 +24,13 @@ static catalogs_items_request_t *catalogs_items_request_create_internal(
 
 __attribute__((deprecated)) catalogs_items_request_t *catalogs_items_request_create(
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language,
-    catalogs_items_post_filters_t *filters
+    catalogs_items_post_filters_t *filters,
+    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language
     ) {
     return catalogs_items_request_create_internal (
         country,
-        language,
-        filters
+        filters,
+        language
         );
 }
 
@@ -67,16 +67,6 @@ cJSON *catalogs_items_request_convertToJSON(catalogs_items_request_t *catalogs_i
     }
 
 
-    // catalogs_items_request->language
-    if (pinterest_rest_api_catalogs_items_request_LANGUAGE_NULL == catalogs_items_request->language) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "language", catalogs_items_request_language_ToString(catalogs_items_request->language)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
     // catalogs_items_request->filters
     if (!catalogs_items_request->filters) {
         goto fail;
@@ -88,6 +78,16 @@ cJSON *catalogs_items_request_convertToJSON(catalogs_items_request_t *catalogs_i
     cJSON_AddItemToObject(item, "filters", filters_local_JSON);
     if(item->child == NULL) {
     goto fail;
+    }
+
+
+    // catalogs_items_request->language
+    if (pinterest_rest_api_catalogs_items_request_LANGUAGE_NULL == catalogs_items_request->language) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "language", catalogs_items_request_language_ToString(catalogs_items_request->language)) == NULL)
+    {
+    goto fail; //Enum
     }
 
     return item;
@@ -120,6 +120,18 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
     
     country_local_nonprim = country_parseFromJSON(country); //custom
 
+    // catalogs_items_request->filters
+    cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_items_requestJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
+    if (!filters) {
+        goto end;
+    }
+
+    
+    filters_local_nonprim = catalogs_items_post_filters_parseFromJSON(filters); //nonprimitive
+
     // catalogs_items_request->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(catalogs_items_requestJSON, "language");
     if (cJSON_IsNull(language)) {
@@ -137,23 +149,11 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
     }
     languageVariable = catalogs_items_request_language_FromString(language->valuestring);
 
-    // catalogs_items_request->filters
-    cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_items_requestJSON, "filters");
-    if (cJSON_IsNull(filters)) {
-        filters = NULL;
-    }
-    if (!filters) {
-        goto end;
-    }
-
-    
-    filters_local_nonprim = catalogs_items_post_filters_parseFromJSON(filters); //nonprimitive
-
 
     catalogs_items_request_local_var = catalogs_items_request_create_internal (
         country_local_nonprim,
-        languageVariable,
-        filters_local_nonprim
+        filters_local_nonprim,
+        languageVariable
         );
 
     return catalogs_items_request_local_var;

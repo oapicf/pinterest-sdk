@@ -52,13 +52,13 @@ DOES_NOT_EXIST(String.valueOf("DOES_NOT_EXIST")), FINISHED(String.valueOf("FINIS
 
   @ApiModelProperty(value = "")
 
-  private String url;
-
-  @ApiModelProperty(value = "")
-
   @Valid
 
   private BigDecimal size;
+
+  @ApiModelProperty(value = "")
+
+  private String url;
  /**
    * Get reportStatus
    * @return reportStatus
@@ -81,24 +81,6 @@ DOES_NOT_EXIST(String.valueOf("DOES_NOT_EXIST")), FINISHED(String.valueOf("FINIS
   }
 
  /**
-   * Get url
-   * @return url
-  **/
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public GetMMMReportResponseData url(String url) {
-    this.url = url;
-    return this;
-  }
-
- /**
    * Get size
    * @return size
   **/
@@ -116,6 +98,24 @@ DOES_NOT_EXIST(String.valueOf("DOES_NOT_EXIST")), FINISHED(String.valueOf("FINIS
     return this;
   }
 
+ /**
+   * Get url
+   * @return url
+  **/
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public GetMMMReportResponseData url(String url) {
+    this.url = url;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,13 +126,13 @@ DOES_NOT_EXIST(String.valueOf("DOES_NOT_EXIST")), FINISHED(String.valueOf("FINIS
     }
     GetMMMReportResponseData getMMMReportResponseData = (GetMMMReportResponseData) o;
     return Objects.equals(this.reportStatus, getMMMReportResponseData.reportStatus) &&
-        Objects.equals(this.url, getMMMReportResponseData.url) &&
-        Objects.equals(this.size, getMMMReportResponseData.size);
+        Objects.equals(this.size, getMMMReportResponseData.size) &&
+        Objects.equals(this.url, getMMMReportResponseData.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -141,8 +141,8 @@ DOES_NOT_EXIST(String.valueOf("DOES_NOT_EXIST")), FINISHED(String.valueOf("FINIS
     sb.append("class GetMMMReportResponseData {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

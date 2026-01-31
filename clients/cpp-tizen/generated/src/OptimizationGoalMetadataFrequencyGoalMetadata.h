@@ -45,11 +45,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Frequency target can only be between 2 and 20
 	 */
 	int getFrequency();
 
-	/*! \brief Set 
+	/*! \brief Set Frequency target can only be between 2 and 20
 	 */
 	void setFrequency(int  frequency);
 	/*! \brief Get User entity counts time range

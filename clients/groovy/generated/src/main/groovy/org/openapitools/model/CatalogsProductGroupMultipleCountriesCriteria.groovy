@@ -10,7 +10,7 @@ import org.openapitools.model.Country;
 @Canonical
 class CatalogsProductGroupMultipleCountriesCriteria {
     
-    List<Country> values = new ArrayList<>()
-    
     Boolean negated = false
+    
+    List<Country> values = new ArrayList<>()
 }

@@ -8,8 +8,8 @@ The class is defined in **[AdsCreditsDiscountsGet200Response.java](../../src/mai
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;AdsCreditDiscountsResponse&gt;`](AdsCreditDiscountsResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;AdsCreditDiscountsResponse&gt;`](AdsCreditDiscountsResponse.md) |  | 
 
 
 

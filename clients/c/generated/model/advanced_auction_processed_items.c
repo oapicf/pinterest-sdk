@@ -45,7 +45,7 @@ void advanced_auction_processed_items_free(advanced_auction_processed_items_t *a
     }
     if (advanced_auction_processed_items->items) {
         list_ForEach(listEntry, advanced_auction_processed_items->items) {
-            advanced_auction_processed_item_free(listEntry->data);
+            advanced_auction_items_submit_record_free(listEntry->data);
         }
         list_freeList(advanced_auction_processed_items->items);
         advanced_auction_processed_items->items = NULL;
@@ -74,7 +74,7 @@ cJSON *advanced_auction_processed_items_convertToJSON(advanced_auction_processed
     listEntry_t *itemsListEntry;
     if (advanced_auction_processed_items->items) {
     list_ForEach(itemsListEntry, advanced_auction_processed_items->items) {
-    cJSON *itemLocal = advanced_auction_processed_item_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = advanced_auction_items_submit_record_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -128,7 +128,7 @@ advanced_auction_processed_items_t *advanced_auction_processed_items_parseFromJS
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        advanced_auction_processed_item_t *itemsItem = advanced_auction_processed_item_parseFromJSON(items_local_nonprimitive);
+        advanced_auction_items_submit_record_t *itemsItem = advanced_auction_items_submit_record_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
@@ -145,7 +145,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            advanced_auction_processed_item_free(listEntry->data);
+            advanced_auction_items_submit_record_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

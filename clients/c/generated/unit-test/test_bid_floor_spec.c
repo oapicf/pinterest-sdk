@@ -23,22 +23,22 @@ bid_floor_spec_t* instantiate_bid_floor_spec(int include_optional) {
   bid_floor_spec_t* bid_floor_spec = NULL;
   if (include_optional) {
     bid_floor_spec = bid_floor_spec_create(
-      list_createList(),
-      pinterest_rest_api_bid_floor_spec__"USD",
-      pinterest_rest_api_bid_floor_spec__AWARENESS,
       pinterest_rest_api_bid_floor_spec__"CLICKTHROUGH",
+      list_createList(),
+      pinterest_rest_api_bid_floor_spec__REGULAR,
+      pinterest_rest_api_bid_floor_spec__UNK,
+      pinterest_rest_api_bid_floor_spec__AWARENESS,
        // false, not to have infinite recursion
-      instantiate_optimization_goal_metadata(0),
-      pinterest_rest_api_bid_floor_spec__"REGULAR"
+      instantiate_optimization_goal_metadata(0)
     );
   } else {
     bid_floor_spec = bid_floor_spec_create(
-      list_createList(),
-      pinterest_rest_api_bid_floor_spec__"USD",
-      pinterest_rest_api_bid_floor_spec__AWARENESS,
       pinterest_rest_api_bid_floor_spec__"CLICKTHROUGH",
-      NULL,
-      pinterest_rest_api_bid_floor_spec__"REGULAR"
+      list_createList(),
+      pinterest_rest_api_bid_floor_spec__REGULAR,
+      pinterest_rest_api_bid_floor_spec__UNK,
+      pinterest_rest_api_bid_floor_spec__AWARENESS,
+      NULL
     );
   }
 

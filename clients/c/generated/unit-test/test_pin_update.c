@@ -25,10 +25,9 @@ pin_update_t* instantiate_pin_update(int include_optional) {
       "0",
       "a",
       "a",
-      "0",
-      "https://www.pinterest.com/",
-      "0",
       list_createList(),
+      "0",
+      "0",
       "0"
     );
   } else {
@@ -36,10 +35,9 @@ pin_update_t* instantiate_pin_update(int include_optional) {
       "0",
       "a",
       "a",
-      "0",
-      "https://www.pinterest.com/",
-      "0",
       list_createList(),
+      "0",
+      "0",
       "0"
     );
   }

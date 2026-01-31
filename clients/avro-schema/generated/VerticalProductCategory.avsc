@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "List of verticals for product categories.",
+  "name": "VerticalProductCategory",
+  "symbols": [
+    "FASHION",
+    "HOME_DECOR",
+    "BEAUTY"
+  ]
+}

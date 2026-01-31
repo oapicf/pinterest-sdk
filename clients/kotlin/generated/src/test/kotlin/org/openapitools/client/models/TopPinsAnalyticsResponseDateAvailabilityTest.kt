@@ -25,16 +25,16 @@ class TopPinsAnalyticsResponseDateAvailabilityTest : ShouldSpec() {
         // uncomment below to create an instance of TopPinsAnalyticsResponseDateAvailability
         //val modelInstance = TopPinsAnalyticsResponseDateAvailability()
 
-        // to test the property `latestAvailableTimestamp`
-        should("test latestAvailableTimestamp") {
-            // uncomment below to test the property
-            //modelInstance.latestAvailableTimestamp shouldBe ("TODO")
-        }
-
         // to test the property `isRealtime`
         should("test isRealtime") {
             // uncomment below to test the property
             //modelInstance.isRealtime shouldBe ("TODO")
+        }
+
+        // to test the property `latestAvailableTimestamp`
+        should("test latestAvailableTimestamp") {
+            // uncomment below to test the property
+            //modelInstance.latestAvailableTimestamp shouldBe ("TODO")
         }
 
     }

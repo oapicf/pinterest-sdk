@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CampaignResponse[]**](CampaignResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CampaignResponse[]**](CampaignResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CampaignsList200Response = Initialize-PSOpenAPIToolsCampaignsList200Response  -Items null `
- -Bookmark null
+$CampaignsList200Response = Initialize-PSOpenAPIToolsCampaignsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

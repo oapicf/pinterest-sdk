@@ -16,8 +16,6 @@
 #include "../model/pin_create.h"
 pin_create_t* instantiate_pin_create(int include_optional);
 
-#include "test_board_owner.c"
-#include "test_pin_media.c"
 #include "test_pin_media_source.c"
 
 
@@ -25,37 +23,28 @@ pin_create_t* instantiate_pin_create(int include_optional) {
   pin_create_t* pin_create = NULL;
   if (include_optional) {
     pin_create = pin_create_create(
-      "813744226420795884",
-      "2020-01-01T20:10:40Z",
-      "https://www.pinterest.com/",
-      "0",
-      "0",
-      "#6E7874",
       "0",
       "a",
       "a",
+      "0",
+      "0",
+      "0",
        // false, not to have infinite recursion
-      instantiate_board_owner(0),
-       // false, not to have infinite recursion
-      instantiate_pin_media(0),
-      null,
+      instantiate_pin_media_source(0),
+      "a",
       "a",
       "0"
     );
   } else {
     pin_create = pin_create_create(
-      "813744226420795884",
-      "2020-01-01T20:10:40Z",
-      "https://www.pinterest.com/",
-      "0",
-      "0",
-      "#6E7874",
       "0",
       "a",
       "a",
+      "0",
+      "0",
+      "0",
       NULL,
-      NULL,
-      null,
+      "a",
       "a",
       "0"
     );

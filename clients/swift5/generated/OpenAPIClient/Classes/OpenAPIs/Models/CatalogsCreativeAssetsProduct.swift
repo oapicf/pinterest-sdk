@@ -17,9 +17,9 @@ public struct CatalogsCreativeAssetsProduct: Codable, JSONEncodable, Hashable {
     }
     public var catalogType: CatalogType
     public var metadata: CatalogsCreativeAssetsProductMetadata
-    public var pin: Pin?
+    public var pin: Pin
 
-    public init(catalogType: CatalogType, metadata: CatalogsCreativeAssetsProductMetadata, pin: Pin?) {
+    public init(catalogType: CatalogType, metadata: CatalogsCreativeAssetsProductMetadata, pin: Pin) {
         self.catalogType = catalogType
         self.metadata = metadata
         self.pin = pin

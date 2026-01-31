@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsType = require('../models/CatalogsType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -6,12 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_type`,
-                label: `Type of the catalog entity. - [${labelPrefix}catalog_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'HOTEL',
-                ],
+                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
             },
             {
                 key: `${keyPrefix}name`,

@@ -47,6 +47,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Interest ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set Interest ID.
+	 */
+	void setId(std::string  id);
+	/*! \brief Get Interest affinity index.
+	 */
+	long long getIndex();
+
+	/*! \brief Set Interest affinity index.
+	 */
+	void setIndex(long long  index);
 	/*! \brief Get Interest unique key (same as ID).
 	 */
 	std::string getKey();
@@ -68,20 +82,6 @@ public:
 	/*! \brief Set Interest's percent of category's total audience.
 	 */
 	void setRatio(long long  ratio);
-	/*! \brief Get Interest affinity index.
-	 */
-	long long getIndex();
-
-	/*! \brief Set Interest affinity index.
-	 */
-	void setIndex(long long  index);
-	/*! \brief Get Interest ID.
-	 */
-	std::string getId();
-
-	/*! \brief Set Interest ID.
-	 */
-	void setId(std::string  id);
 	/*! \brief Get Subcategory interest distribution
 	 */
 	std::list<AudienceSubcategory> getSubcategories();
@@ -91,11 +91,11 @@ public:
 	void setSubcategories(std::list <AudienceSubcategory> subcategories);
 
 private:
+	std::string id;
+	long long index;
 	std::string key;
 	std::string name;
 	long long ratio;
-	long long index;
-	std::string id;
 	std::list <AudienceSubcategory>subcategories;
 	void __init();
 	void __cleanup();

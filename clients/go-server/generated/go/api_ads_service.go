@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -92,7 +92,7 @@ func (s *AdsAPIService) AdsUpdate(ctx context.Context, adAccountId string, adUpd
 }
 
 // AdsAnalytics - Get ad analytics
-func (s *AdsAPIService) AdsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, columns []string, granularity Granularity, adIds []string, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, pinIds []string, campaignIds []string) (ImplResponse, error) {
+func (s *AdsAPIService) AdsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, columns []string, granularity Granularity, adIds []string, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, pinIds []string, campaignIds []string, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdsAnalytics with the required logic for this service method.
 	// Add api_ads_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -109,7 +109,7 @@ func (s *AdsAPIService) AdsAnalytics(ctx context.Context, adAccountId string, st
 }
 
 // AdTargetingAnalyticsGet - Get targeting analytics for ads
-func (s *AdsAPIService) AdTargetingAnalyticsGet(ctx context.Context, adAccountId string, adIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsAdTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes ConversionReportAttributionType) (ImplResponse, error) {
+func (s *AdsAPIService) AdTargetingAnalyticsGet(ctx context.Context, adAccountId string, adIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsAdTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdTargetingAnalyticsGet with the required logic for this service method.
 	// Add api_ads_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

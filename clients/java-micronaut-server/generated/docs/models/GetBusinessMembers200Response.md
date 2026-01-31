@@ -8,8 +8,8 @@ The class is defined in **[GetBusinessMembers200Response.java](../../src/main/ja
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;UserBusinessRoleBinding&gt;`](UserBusinessRoleBinding.md) | List of business members. | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;UserBusinessRoleBinding&gt;`](UserBusinessRoleBinding.md) | List of business members. | 
 
 
 

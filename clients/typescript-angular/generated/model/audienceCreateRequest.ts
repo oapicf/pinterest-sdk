@@ -22,13 +22,13 @@ export interface AudienceCreateRequest {
     name: string;
     rule: AudienceRule;
     /**
-     * Audience description.
-     */
-    description?: string;
-    /**
      * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
      */
     audience_type: AudienceType;
+    /**
+     * Audience description.
+     */
+    description?: string;
 }
 export namespace AudienceCreateRequest {
 }

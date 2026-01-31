@@ -2,10 +2,7 @@
 Protected Class BulkDownloadRequest
 
 	#tag Property, Flags = &h0
-		#tag Note
-			All entity types specified will be downloaded. Fewer types result in faster downloads.
-		#tag EndNote
-		entity_types() As BulkEntityType
+		campaign_filter As OpenAPIClient.Models.BulkDownloadRequestCampaignFilter
 	#tag EndProperty
 
 
@@ -19,19 +16,22 @@ Protected Class BulkDownloadRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Unix UTC timestamp to retrieve all entities that have changed since this time.
+			All entity types specified will be downloaded. Fewer types result in faster downloads.
 		#tag EndNote
-		updated_since As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		campaign_filter As OpenAPIClient.Models.BulkDownloadRequestCampaignFilter
+		entity_types() As BulkEntityType
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		output_format As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Unix UTC timestamp to retrieve all entities that have changed since this time.
+		#tag EndNote
+		updated_since As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -72,11 +72,11 @@ Protected Class BulkDownloadRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="entity_types"
+			Name="campaign_filter"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BulkEntityType"
+			Type="BulkDownloadRequestCampaignFilter"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -88,19 +88,11 @@ Protected Class BulkDownloadRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="updated_since"
+			Name="entity_types"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="campaign_filter"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BulkDownloadRequestCampaignFilter"
+			Type="BulkEntityType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -109,6 +101,14 @@ Protected Class BulkDownloadRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="BulkOutputFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="updated_since"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

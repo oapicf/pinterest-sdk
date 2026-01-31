@@ -22,14 +22,14 @@ ads_analytics_create_async_response_t* instantiate_ads_analytics_create_async_re
   ads_analytics_create_async_response_t* ads_analytics_create_async_response = NULL;
   if (include_optional) {
     ads_analytics_create_async_response = ads_analytics_create_async_response_create(
-      "FINISHED",
       "0",
+      "FINISHED",
       "0"
     );
   } else {
     ads_analytics_create_async_response = ads_analytics_create_async_response_create(
-      "FINISHED",
       "0",
+      "FINISHED",
       "0"
     );
   }

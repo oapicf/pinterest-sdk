@@ -14,34 +14,34 @@ import { LeadFormStatus } from './leadFormStatus';
 
 export interface LeadFormCreateRequest { 
     /**
-     * Internal name of the lead form.
-     */
-    name?: string | null;
-    /**
-     * A link to the advertiser\'s privacy policy. This will be included in the lead form\'s disclosure language.
-     */
-    privacy_policy_link?: string | null;
-    /**
-     * Whether the advertiser has accepted Pinterest\'s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest\'s <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-     */
-    has_accepted_terms?: boolean;
-    /**
      * A message for people who complete the form to let them know what happens next.
      */
     completion_message?: string | null;
-    status?: LeadFormStatus;
     /**
      * Additional disclosure language to be included in the lead form.
      */
     disclosure_language?: string | null;
     /**
-     * List of questions to be displayed on the lead form.
+     * Whether the advertiser has accepted Pinterest\'s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest\'s <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
      */
-    questions?: Array<LeadFormQuestion>;
+    has_accepted_terms?: boolean;
+    /**
+     * Internal name of the lead form.
+     */
+    name?: string | null;
     /**
      * List of additional policy links to be displayed on the lead form.
      */
     policy_links?: Array<LeadFormCommonPolicyLinksInner>;
+    /**
+     * A link to the advertiser\'s privacy policy. This will be included in the lead form\'s disclosure language.
+     */
+    privacy_policy_link?: string | null;
+    /**
+     * List of questions to be displayed on the lead form.
+     */
+    questions?: Array<LeadFormQuestion>;
+    status?: LeadFormStatus;
 }
 export namespace LeadFormCreateRequest {
 }

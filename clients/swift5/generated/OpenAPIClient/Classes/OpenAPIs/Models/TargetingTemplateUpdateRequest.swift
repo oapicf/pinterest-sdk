@@ -14,28 +14,33 @@ public struct TargetingTemplateUpdateRequest: Codable, JSONEncodable, Hashable {
 
     public enum OperationType: String, Codable, CaseIterable {
         case remove = "REMOVE"
+        case update = "UPDATE"
     }
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var operationType: OperationType
     /** Targeting template ID */
     public var id: String
+    public var operationType: OperationType
+    public var targetingAttributes: TargetingSpec?
 
-    public init(operationType: OperationType, id: String) {
-        self.operationType = operationType
+    public init(id: String, operationType: OperationType, targetingAttributes: TargetingSpec? = nil) {
         self.id = id
+        self.operationType = operationType
+        self.targetingAttributes = targetingAttributes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case operationType = "operation_type"
         case id
+        case operationType = "operation_type"
+        case targetingAttributes = "targeting_attributes"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(operationType, forKey: .operationType)
         try container.encode(id, forKey: .id)
+        try container.encode(operationType, forKey: .operationType)
+        try container.encodeIfPresent(targetingAttributes, forKey: .targetingAttributes)
     }
 }
 

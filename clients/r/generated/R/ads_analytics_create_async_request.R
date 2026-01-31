@@ -7,17 +7,18 @@
 #' @title AdsAnalyticsCreateAsyncRequest
 #' @description AdsAnalyticsCreateAsyncRequest Class
 #' @format An \code{R6Class} generator object
-#' @field start_date Metric report start date (UTC). Format: YYYY-MM-DD character
-#' @field end_date Metric report end date (UTC). Format: YYYY-MM-DD character
-#' @field granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly \link{Granularity}
-#' @field click_window_days Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. \link{ConversionAttributionWindowDays} [optional]
-#' @field engagement_window_days Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. \link{ConversionAttributionWindowDays} [optional]
-#' @field view_window_days Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. \link{ConversionAttributionWindowDays} [optional]
-#' @field conversion_report_time The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. \link{ConversionReportTimeType} [optional]
 #' @field attribution_types List of types of attribution for the conversion report list(\link{ConversionReportAttributionType}) [optional]
+#' @field click_window_days Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. \link{ConversionAttributionWindowDays} [optional]
+#' @field conversion_report_time The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. \link{ConversionReportTimeType} [optional]
+#' @field end_date Metric report end date (UTC). Format: YYYY-MM-DD character
+#' @field engagement_window_days Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. \link{ConversionAttributionWindowDays} [optional]
+#' @field granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly \link{Granularity}
+#' @field start_date Metric report start date (UTC). Format: YYYY-MM-DD character
+#' @field view_window_days Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. \link{ConversionAttributionWindowDays} [optional]
 #' @field campaign_ids List of campaign ids list(character) [optional]
 #' @field campaign_statuses List of status values for filtering list(\link{CampaignSummaryStatus}) [optional]
 #' @field campaign_objective_types List of values for filtering. [\"WEB_SESSIONS\"] in BETA. list(\link{ObjectiveType}) [optional]
+#' @field campaign_brand_label Campaign brand label for filtering. character [optional]
 #' @field ad_group_ids List of ad group ids list(character) [optional]
 #' @field ad_group_statuses List of values for filtering list(\link{AdGroupSummaryStatus}) [optional]
 #' @field ad_ids List of ad ids [This parameter is no supported for Product Item Level Reports] list(character) [optional]
@@ -25,31 +26,35 @@
 #' @field product_group_ids List of product group ids list(character) [optional]
 #' @field product_group_statuses List of values for filtering list(\link{ProductGroupSummaryStatus}) [optional]
 #' @field product_item_ids List of product item ids list(character) [optional]
-#' @field targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. list(\link{AdsAnalyticsTargetingType}) [optional]
+#' @field targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. list(character) [optional]
 #' @field metrics_filters List of metrics filters list(\link{AdsAnalyticsMetricsFilter}) [optional]
 #' @field columns Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. list(\link{ReportingColumnAsync})
-#' @field level Level of the report \link{MetricsReportingLevel}
-#' @field report_format Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. \link{DataOutputFormat} [optional]
-#' @field primary_sort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. character [optional]
-#' @field start_hour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. integer [optional]
+#' @field combine_targeting_types Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users. character [optional]
+#' @field custom_conversion_event_metrics List of advertiser-defined custom conversion event metrics to include in the report list(\link{AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics}) [optional]
 #' @field end_hour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. integer [optional]
+#' @field level Level of the report \link{MetricsReportingLevel}
+#' @field primary_sort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. character [optional]
+#' @field report_format Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. \link{DataOutputFormat} [optional]
+#' @field reporting_timezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. \link{ReportingTimeZone} [optional]
+#' @field start_hour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
   "AdsAnalyticsCreateAsyncRequest",
   public = list(
-    `start_date` = NULL,
-    `end_date` = NULL,
-    `granularity` = NULL,
-    `click_window_days` = NULL,
-    `engagement_window_days` = NULL,
-    `view_window_days` = NULL,
-    `conversion_report_time` = NULL,
     `attribution_types` = NULL,
+    `click_window_days` = NULL,
+    `conversion_report_time` = NULL,
+    `end_date` = NULL,
+    `engagement_window_days` = NULL,
+    `granularity` = NULL,
+    `start_date` = NULL,
+    `view_window_days` = NULL,
     `campaign_ids` = NULL,
     `campaign_statuses` = NULL,
     `campaign_objective_types` = NULL,
+    `campaign_brand_label` = NULL,
     `ad_group_ids` = NULL,
     `ad_group_statuses` = NULL,
     `ad_ids` = NULL,
@@ -60,28 +65,32 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     `targeting_types` = NULL,
     `metrics_filters` = NULL,
     `columns` = NULL,
-    `level` = NULL,
-    `report_format` = NULL,
-    `primary_sort` = NULL,
-    `start_hour` = NULL,
+    `combine_targeting_types` = NULL,
+    `custom_conversion_event_metrics` = NULL,
     `end_hour` = NULL,
+    `level` = NULL,
+    `primary_sort` = NULL,
+    `report_format` = NULL,
+    `reporting_timezone` = NULL,
+    `start_hour` = NULL,
 
     #' @description
     #' Initialize a new AdsAnalyticsCreateAsyncRequest class.
     #'
-    #' @param start_date Metric report start date (UTC). Format: YYYY-MM-DD
     #' @param end_date Metric report end date (UTC). Format: YYYY-MM-DD
     #' @param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+    #' @param start_date Metric report start date (UTC). Format: YYYY-MM-DD
     #' @param columns Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
     #' @param level Level of the report
+    #' @param attribution_types List of types of attribution for the conversion report
     #' @param click_window_days Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.. Default to ConversionAttributionWindowDays_30_.
+    #' @param conversion_report_time The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.. Default to "TIME_OF_AD_ACTION".
     #' @param engagement_window_days Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.. Default to ConversionAttributionWindowDays_30_.
     #' @param view_window_days Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.. Default to ConversionAttributionWindowDays_1_.
-    #' @param conversion_report_time The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.. Default to "TIME_OF_AD_ACTION".
-    #' @param attribution_types List of types of attribution for the conversion report
     #' @param campaign_ids List of campaign ids
     #' @param campaign_statuses List of status values for filtering
     #' @param campaign_objective_types List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
+    #' @param campaign_brand_label Campaign brand label for filtering.
     #' @param ad_group_ids List of ad group ids
     #' @param ad_group_statuses List of values for filtering
     #' @param ad_ids List of ad ids [This parameter is no supported for Product Item Level Reports]
@@ -89,20 +98,17 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @param product_group_ids List of product group ids
     #' @param product_group_statuses List of values for filtering
     #' @param product_item_ids List of product item ids
-    #' @param targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+    #' @param targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
     #' @param metrics_filters List of metrics filters
-    #' @param report_format Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.. Default to "JSON".
-    #' @param primary_sort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-    #' @param start_hour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+    #' @param combine_targeting_types Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.. Default to FALSE.
+    #' @param custom_conversion_event_metrics List of advertiser-defined custom conversion event metrics to include in the report
     #' @param end_hour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+    #' @param primary_sort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+    #' @param report_format Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.. Default to "JSON".
+    #' @param reporting_timezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+    #' @param start_hour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
     #' @param ... Other optional arguments.
-    initialize = function(`start_date`, `end_date`, `granularity`, `columns`, `level`, `click_window_days` = ConversionAttributionWindowDays_30_, `engagement_window_days` = ConversionAttributionWindowDays_30_, `view_window_days` = ConversionAttributionWindowDays_1_, `conversion_report_time` = "TIME_OF_AD_ACTION", `attribution_types` = NULL, `campaign_ids` = NULL, `campaign_statuses` = NULL, `campaign_objective_types` = NULL, `ad_group_ids` = NULL, `ad_group_statuses` = NULL, `ad_ids` = NULL, `ad_statuses` = NULL, `product_group_ids` = NULL, `product_group_statuses` = NULL, `product_item_ids` = NULL, `targeting_types` = NULL, `metrics_filters` = NULL, `report_format` = "JSON", `primary_sort` = NULL, `start_hour` = NULL, `end_hour` = NULL, ...) {
-      if (!missing(`start_date`)) {
-        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
-        }
-        self$`start_date` <- `start_date`
-      }
+    initialize = function(`end_date`, `granularity`, `start_date`, `columns`, `level`, `attribution_types` = NULL, `click_window_days` = ConversionAttributionWindowDays_30_, `conversion_report_time` = "TIME_OF_AD_ACTION", `engagement_window_days` = ConversionAttributionWindowDays_30_, `view_window_days` = ConversionAttributionWindowDays_1_, `campaign_ids` = NULL, `campaign_statuses` = NULL, `campaign_objective_types` = NULL, `campaign_brand_label` = NULL, `ad_group_ids` = NULL, `ad_group_statuses` = NULL, `ad_ids` = NULL, `ad_statuses` = NULL, `product_group_ids` = NULL, `product_group_statuses` = NULL, `product_item_ids` = NULL, `targeting_types` = NULL, `metrics_filters` = NULL, `combine_targeting_types` = FALSE, `custom_conversion_event_metrics` = NULL, `end_hour` = NULL, `primary_sort` = NULL, `report_format` = "JSON", `reporting_timezone` = NULL, `start_hour` = NULL, ...) {
       if (!missing(`end_date`)) {
         if (!(is.character(`end_date`) && length(`end_date`) == 1)) {
           stop(paste("Error! Invalid data for `end_date`. Must be a string:", `end_date`))
@@ -116,6 +122,12 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`granularity`))
         self$`granularity` <- `granularity`
       }
+      if (!missing(`start_date`)) {
+        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
+        }
+        self$`start_date` <- `start_date`
+      }
       if (!missing(`columns`)) {
         stopifnot(is.vector(`columns`), length(`columns`) != 0)
         sapply(`columns`, function(x) stopifnot(R6::is.R6(x)))
@@ -128,12 +140,24 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`level`))
         self$`level` <- `level`
       }
+      if (!is.null(`attribution_types`)) {
+        stopifnot(is.vector(`attribution_types`), length(`attribution_types`) != 0)
+        sapply(`attribution_types`, function(x) stopifnot(R6::is.R6(x)))
+        self$`attribution_types` <- `attribution_types`
+      }
       if (!is.null(`click_window_days`)) {
         if (!(`click_window_days` %in% c())) {
           stop(paste("Error! \"", `click_window_days`, "\" cannot be assigned to `click_window_days`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`click_window_days`))
         self$`click_window_days` <- `click_window_days`
+      }
+      if (!is.null(`conversion_report_time`)) {
+        if (!(`conversion_report_time` %in% c())) {
+          stop(paste("Error! \"", `conversion_report_time`, "\" cannot be assigned to `conversion_report_time`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`conversion_report_time`))
+        self$`conversion_report_time` <- `conversion_report_time`
       }
       if (!is.null(`engagement_window_days`)) {
         if (!(`engagement_window_days` %in% c())) {
@@ -149,18 +173,6 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`view_window_days`))
         self$`view_window_days` <- `view_window_days`
       }
-      if (!is.null(`conversion_report_time`)) {
-        if (!(`conversion_report_time` %in% c())) {
-          stop(paste("Error! \"", `conversion_report_time`, "\" cannot be assigned to `conversion_report_time`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`conversion_report_time`))
-        self$`conversion_report_time` <- `conversion_report_time`
-      }
-      if (!is.null(`attribution_types`)) {
-        stopifnot(is.vector(`attribution_types`), length(`attribution_types`) != 0)
-        sapply(`attribution_types`, function(x) stopifnot(R6::is.R6(x)))
-        self$`attribution_types` <- `attribution_types`
-      }
       if (!is.null(`campaign_ids`)) {
         stopifnot(is.vector(`campaign_ids`), length(`campaign_ids`) != 0)
         sapply(`campaign_ids`, function(x) stopifnot(is.character(x)))
@@ -175,6 +187,12 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stopifnot(is.vector(`campaign_objective_types`), length(`campaign_objective_types`) != 0)
         sapply(`campaign_objective_types`, function(x) stopifnot(R6::is.R6(x)))
         self$`campaign_objective_types` <- `campaign_objective_types`
+      }
+      if (!is.null(`campaign_brand_label`)) {
+        if (!(is.character(`campaign_brand_label`) && length(`campaign_brand_label`) == 1)) {
+          stop(paste("Error! Invalid data for `campaign_brand_label`. Must be a string:", `campaign_brand_label`))
+        }
+        self$`campaign_brand_label` <- `campaign_brand_label`
       }
       if (!is.null(`ad_group_ids`)) {
         stopifnot(is.vector(`ad_group_ids`), length(`ad_group_ids`) != 0)
@@ -213,7 +231,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(`targeting_types`)) {
         stopifnot(is.vector(`targeting_types`), length(`targeting_types`) != 0)
-        sapply(`targeting_types`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`targeting_types`, function(x) stopifnot(is.character(x)))
         self$`targeting_types` <- `targeting_types`
       }
       if (!is.null(`metrics_filters`)) {
@@ -221,12 +239,22 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         sapply(`metrics_filters`, function(x) stopifnot(R6::is.R6(x)))
         self$`metrics_filters` <- `metrics_filters`
       }
-      if (!is.null(`report_format`)) {
-        if (!(`report_format` %in% c())) {
-          stop(paste("Error! \"", `report_format`, "\" cannot be assigned to `report_format`. Must be .", sep = ""))
+      if (!is.null(`combine_targeting_types`)) {
+        if (!(is.logical(`combine_targeting_types`) && length(`combine_targeting_types`) == 1)) {
+          stop(paste("Error! Invalid data for `combine_targeting_types`. Must be a boolean:", `combine_targeting_types`))
         }
-        stopifnot(R6::is.R6(`report_format`))
-        self$`report_format` <- `report_format`
+        self$`combine_targeting_types` <- `combine_targeting_types`
+      }
+      if (!is.null(`custom_conversion_event_metrics`)) {
+        stopifnot(is.vector(`custom_conversion_event_metrics`), length(`custom_conversion_event_metrics`) != 0)
+        sapply(`custom_conversion_event_metrics`, function(x) stopifnot(R6::is.R6(x)))
+        self$`custom_conversion_event_metrics` <- `custom_conversion_event_metrics`
+      }
+      if (!is.null(`end_hour`)) {
+        if (!(is.numeric(`end_hour`) && length(`end_hour`) == 1)) {
+          stop(paste("Error! Invalid data for `end_hour`. Must be an integer:", `end_hour`))
+        }
+        self$`end_hour` <- `end_hour`
       }
       if (!is.null(`primary_sort`)) {
         if (!(`primary_sort` %in% c("BY_ID", "BY_DATE"))) {
@@ -237,17 +265,25 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         }
         self$`primary_sort` <- `primary_sort`
       }
+      if (!is.null(`report_format`)) {
+        if (!(`report_format` %in% c())) {
+          stop(paste("Error! \"", `report_format`, "\" cannot be assigned to `report_format`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`report_format`))
+        self$`report_format` <- `report_format`
+      }
+      if (!is.null(`reporting_timezone`)) {
+        if (!(`reporting_timezone` %in% c())) {
+          stop(paste("Error! \"", `reporting_timezone`, "\" cannot be assigned to `reporting_timezone`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`reporting_timezone`))
+        self$`reporting_timezone` <- `reporting_timezone`
+      }
       if (!is.null(`start_hour`)) {
         if (!(is.numeric(`start_hour`) && length(`start_hour`) == 1)) {
           stop(paste("Error! Invalid data for `start_hour`. Must be an integer:", `start_hour`))
         }
         self$`start_hour` <- `start_hour`
-      }
-      if (!is.null(`end_hour`)) {
-        if (!(is.numeric(`end_hour`) && length(`end_hour`) == 1)) {
-          stop(paste("Error! Invalid data for `end_hour`. Must be an integer:", `end_hour`))
-        }
-        self$`end_hour` <- `end_hour`
       }
     },
 
@@ -282,37 +318,37 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdsAnalyticsCreateAsyncRequestObject <- list()
-      if (!is.null(self$`start_date`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["start_date"]] <-
-          self$`start_date`
-      }
-      if (!is.null(self$`end_date`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["end_date"]] <-
-          self$`end_date`
-      }
-      if (!is.null(self$`granularity`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["granularity"]] <-
-          self$`granularity`$toSimpleType()
+      if (!is.null(self$`attribution_types`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["attribution_types"]] <-
+          lapply(self$`attribution_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`click_window_days`)) {
         AdsAnalyticsCreateAsyncRequestObject[["click_window_days"]] <-
           self$`click_window_days`$toSimpleType()
       }
-      if (!is.null(self$`engagement_window_days`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["engagement_window_days"]] <-
-          self$`engagement_window_days`$toSimpleType()
-      }
-      if (!is.null(self$`view_window_days`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["view_window_days"]] <-
-          self$`view_window_days`$toSimpleType()
-      }
       if (!is.null(self$`conversion_report_time`)) {
         AdsAnalyticsCreateAsyncRequestObject[["conversion_report_time"]] <-
           self$`conversion_report_time`$toSimpleType()
       }
-      if (!is.null(self$`attribution_types`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["attribution_types"]] <-
-          lapply(self$`attribution_types`, function(x) x$toSimpleType())
+      if (!is.null(self$`end_date`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["end_date"]] <-
+          self$`end_date`
+      }
+      if (!is.null(self$`engagement_window_days`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["engagement_window_days"]] <-
+          self$`engagement_window_days`$toSimpleType()
+      }
+      if (!is.null(self$`granularity`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["granularity"]] <-
+          self$`granularity`$toSimpleType()
+      }
+      if (!is.null(self$`start_date`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["start_date"]] <-
+          self$`start_date`
+      }
+      if (!is.null(self$`view_window_days`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["view_window_days"]] <-
+          self$`view_window_days`$toSimpleType()
       }
       if (!is.null(self$`campaign_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["campaign_ids"]] <-
@@ -325,6 +361,10 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       if (!is.null(self$`campaign_objective_types`)) {
         AdsAnalyticsCreateAsyncRequestObject[["campaign_objective_types"]] <-
           lapply(self$`campaign_objective_types`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`campaign_brand_label`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["campaign_brand_label"]] <-
+          self$`campaign_brand_label`
       }
       if (!is.null(self$`ad_group_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["ad_group_ids"]] <-
@@ -356,7 +396,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`targeting_types`)) {
         AdsAnalyticsCreateAsyncRequestObject[["targeting_types"]] <-
-          lapply(self$`targeting_types`, function(x) x$toSimpleType())
+          self$`targeting_types`
       }
       if (!is.null(self$`metrics_filters`)) {
         AdsAnalyticsCreateAsyncRequestObject[["metrics_filters"]] <-
@@ -366,25 +406,37 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         AdsAnalyticsCreateAsyncRequestObject[["columns"]] <-
           lapply(self$`columns`, function(x) x$toSimpleType())
       }
+      if (!is.null(self$`combine_targeting_types`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["combine_targeting_types"]] <-
+          self$`combine_targeting_types`
+      }
+      if (!is.null(self$`custom_conversion_event_metrics`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["custom_conversion_event_metrics"]] <-
+          lapply(self$`custom_conversion_event_metrics`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`end_hour`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["end_hour"]] <-
+          self$`end_hour`
+      }
       if (!is.null(self$`level`)) {
         AdsAnalyticsCreateAsyncRequestObject[["level"]] <-
           self$`level`$toSimpleType()
-      }
-      if (!is.null(self$`report_format`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["report_format"]] <-
-          self$`report_format`$toSimpleType()
       }
       if (!is.null(self$`primary_sort`)) {
         AdsAnalyticsCreateAsyncRequestObject[["primary_sort"]] <-
           self$`primary_sort`
       }
+      if (!is.null(self$`report_format`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["report_format"]] <-
+          self$`report_format`$toSimpleType()
+      }
+      if (!is.null(self$`reporting_timezone`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["reporting_timezone"]] <-
+          self$`reporting_timezone`$toSimpleType()
+      }
       if (!is.null(self$`start_hour`)) {
         AdsAnalyticsCreateAsyncRequestObject[["start_hour"]] <-
           self$`start_hour`
-      }
-      if (!is.null(self$`end_hour`)) {
-        AdsAnalyticsCreateAsyncRequestObject[["end_hour"]] <-
-          self$`end_hour`
       }
       return(AdsAnalyticsCreateAsyncRequestObject)
     },
@@ -396,39 +448,39 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @return the instance of AdsAnalyticsCreateAsyncRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`start_date`)) {
-        self$`start_date` <- this_object$`start_date`
-      }
-      if (!is.null(this_object$`end_date`)) {
-        self$`end_date` <- this_object$`end_date`
-      }
-      if (!is.null(this_object$`granularity`)) {
-        `granularity_object` <- Granularity$new()
-        `granularity_object`$fromJSON(jsonlite::toJSON(this_object$`granularity`, auto_unbox = TRUE, digits = NA))
-        self$`granularity` <- `granularity_object`
+      if (!is.null(this_object$`attribution_types`)) {
+        self$`attribution_types` <- ApiClient$new()$deserializeObj(this_object$`attribution_types`, "array[ConversionReportAttributionType]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`click_window_days`)) {
         `click_window_days_object` <- ConversionAttributionWindowDays$new()
         `click_window_days_object`$fromJSON(jsonlite::toJSON(this_object$`click_window_days`, auto_unbox = TRUE, digits = NA))
         self$`click_window_days` <- `click_window_days_object`
       }
-      if (!is.null(this_object$`engagement_window_days`)) {
-        `engagement_window_days_object` <- ConversionAttributionWindowDays$new()
-        `engagement_window_days_object`$fromJSON(jsonlite::toJSON(this_object$`engagement_window_days`, auto_unbox = TRUE, digits = NA))
-        self$`engagement_window_days` <- `engagement_window_days_object`
-      }
-      if (!is.null(this_object$`view_window_days`)) {
-        `view_window_days_object` <- ConversionAttributionWindowDays$new()
-        `view_window_days_object`$fromJSON(jsonlite::toJSON(this_object$`view_window_days`, auto_unbox = TRUE, digits = NA))
-        self$`view_window_days` <- `view_window_days_object`
-      }
       if (!is.null(this_object$`conversion_report_time`)) {
         `conversion_report_time_object` <- ConversionReportTimeType$new()
         `conversion_report_time_object`$fromJSON(jsonlite::toJSON(this_object$`conversion_report_time`, auto_unbox = TRUE, digits = NA))
         self$`conversion_report_time` <- `conversion_report_time_object`
       }
-      if (!is.null(this_object$`attribution_types`)) {
-        self$`attribution_types` <- ApiClient$new()$deserializeObj(this_object$`attribution_types`, "array[ConversionReportAttributionType]", loadNamespace("openapi"))
+      if (!is.null(this_object$`end_date`)) {
+        self$`end_date` <- this_object$`end_date`
+      }
+      if (!is.null(this_object$`engagement_window_days`)) {
+        `engagement_window_days_object` <- ConversionAttributionWindowDays$new()
+        `engagement_window_days_object`$fromJSON(jsonlite::toJSON(this_object$`engagement_window_days`, auto_unbox = TRUE, digits = NA))
+        self$`engagement_window_days` <- `engagement_window_days_object`
+      }
+      if (!is.null(this_object$`granularity`)) {
+        `granularity_object` <- Granularity$new()
+        `granularity_object`$fromJSON(jsonlite::toJSON(this_object$`granularity`, auto_unbox = TRUE, digits = NA))
+        self$`granularity` <- `granularity_object`
+      }
+      if (!is.null(this_object$`start_date`)) {
+        self$`start_date` <- this_object$`start_date`
+      }
+      if (!is.null(this_object$`view_window_days`)) {
+        `view_window_days_object` <- ConversionAttributionWindowDays$new()
+        `view_window_days_object`$fromJSON(jsonlite::toJSON(this_object$`view_window_days`, auto_unbox = TRUE, digits = NA))
+        self$`view_window_days` <- `view_window_days_object`
       }
       if (!is.null(this_object$`campaign_ids`)) {
         self$`campaign_ids` <- ApiClient$new()$deserializeObj(this_object$`campaign_ids`, "array[character]", loadNamespace("openapi"))
@@ -438,6 +490,9 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(this_object$`campaign_objective_types`)) {
         self$`campaign_objective_types` <- ApiClient$new()$deserializeObj(this_object$`campaign_objective_types`, "array[ObjectiveType]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`campaign_brand_label`)) {
+        self$`campaign_brand_label` <- this_object$`campaign_brand_label`
       }
       if (!is.null(this_object$`ad_group_ids`)) {
         self$`ad_group_ids` <- ApiClient$new()$deserializeObj(this_object$`ad_group_ids`, "array[character]", loadNamespace("openapi"))
@@ -461,7 +516,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         self$`product_item_ids` <- ApiClient$new()$deserializeObj(this_object$`product_item_ids`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`targeting_types`)) {
-        self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[AdsAnalyticsTargetingType]", loadNamespace("openapi"))
+        self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`metrics_filters`)) {
         self$`metrics_filters` <- ApiClient$new()$deserializeObj(this_object$`metrics_filters`, "array[AdsAnalyticsMetricsFilter]", loadNamespace("openapi"))
@@ -469,15 +524,19 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       if (!is.null(this_object$`columns`)) {
         self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[ReportingColumnAsync]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`combine_targeting_types`)) {
+        self$`combine_targeting_types` <- this_object$`combine_targeting_types`
+      }
+      if (!is.null(this_object$`custom_conversion_event_metrics`)) {
+        self$`custom_conversion_event_metrics` <- ApiClient$new()$deserializeObj(this_object$`custom_conversion_event_metrics`, "array[AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`end_hour`)) {
+        self$`end_hour` <- this_object$`end_hour`
+      }
       if (!is.null(this_object$`level`)) {
         `level_object` <- MetricsReportingLevel$new()
         `level_object`$fromJSON(jsonlite::toJSON(this_object$`level`, auto_unbox = TRUE, digits = NA))
         self$`level` <- `level_object`
-      }
-      if (!is.null(this_object$`report_format`)) {
-        `report_format_object` <- DataOutputFormat$new()
-        `report_format_object`$fromJSON(jsonlite::toJSON(this_object$`report_format`, auto_unbox = TRUE, digits = NA))
-        self$`report_format` <- `report_format_object`
       }
       if (!is.null(this_object$`primary_sort`)) {
         if (!is.null(this_object$`primary_sort`) && !(this_object$`primary_sort` %in% c("BY_ID", "BY_DATE"))) {
@@ -485,11 +544,18 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         }
         self$`primary_sort` <- this_object$`primary_sort`
       }
+      if (!is.null(this_object$`report_format`)) {
+        `report_format_object` <- DataOutputFormat$new()
+        `report_format_object`$fromJSON(jsonlite::toJSON(this_object$`report_format`, auto_unbox = TRUE, digits = NA))
+        self$`report_format` <- `report_format_object`
+      }
+      if (!is.null(this_object$`reporting_timezone`)) {
+        `reporting_timezone_object` <- ReportingTimeZone$new()
+        `reporting_timezone_object`$fromJSON(jsonlite::toJSON(this_object$`reporting_timezone`, auto_unbox = TRUE, digits = NA))
+        self$`reporting_timezone` <- `reporting_timezone_object`
+      }
       if (!is.null(this_object$`start_hour`)) {
         self$`start_hour` <- this_object$`start_hour`
-      }
-      if (!is.null(this_object$`end_hour`)) {
-        self$`end_hour` <- this_object$`end_hour`
       }
       self
     },
@@ -512,17 +578,18 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @return the instance of AdsAnalyticsCreateAsyncRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`start_date` <- this_object$`start_date`
-      self$`end_date` <- this_object$`end_date`
-      self$`granularity` <- Granularity$new()$fromJSON(jsonlite::toJSON(this_object$`granularity`, auto_unbox = TRUE, digits = NA))
-      self$`click_window_days` <- ConversionAttributionWindowDays$new()$fromJSON(jsonlite::toJSON(this_object$`click_window_days`, auto_unbox = TRUE, digits = NA))
-      self$`engagement_window_days` <- ConversionAttributionWindowDays$new()$fromJSON(jsonlite::toJSON(this_object$`engagement_window_days`, auto_unbox = TRUE, digits = NA))
-      self$`view_window_days` <- ConversionAttributionWindowDays$new()$fromJSON(jsonlite::toJSON(this_object$`view_window_days`, auto_unbox = TRUE, digits = NA))
-      self$`conversion_report_time` <- ConversionReportTimeType$new()$fromJSON(jsonlite::toJSON(this_object$`conversion_report_time`, auto_unbox = TRUE, digits = NA))
       self$`attribution_types` <- ApiClient$new()$deserializeObj(this_object$`attribution_types`, "array[ConversionReportAttributionType]", loadNamespace("openapi"))
+      self$`click_window_days` <- ConversionAttributionWindowDays$new()$fromJSON(jsonlite::toJSON(this_object$`click_window_days`, auto_unbox = TRUE, digits = NA))
+      self$`conversion_report_time` <- ConversionReportTimeType$new()$fromJSON(jsonlite::toJSON(this_object$`conversion_report_time`, auto_unbox = TRUE, digits = NA))
+      self$`end_date` <- this_object$`end_date`
+      self$`engagement_window_days` <- ConversionAttributionWindowDays$new()$fromJSON(jsonlite::toJSON(this_object$`engagement_window_days`, auto_unbox = TRUE, digits = NA))
+      self$`granularity` <- Granularity$new()$fromJSON(jsonlite::toJSON(this_object$`granularity`, auto_unbox = TRUE, digits = NA))
+      self$`start_date` <- this_object$`start_date`
+      self$`view_window_days` <- ConversionAttributionWindowDays$new()$fromJSON(jsonlite::toJSON(this_object$`view_window_days`, auto_unbox = TRUE, digits = NA))
       self$`campaign_ids` <- ApiClient$new()$deserializeObj(this_object$`campaign_ids`, "array[character]", loadNamespace("openapi"))
       self$`campaign_statuses` <- ApiClient$new()$deserializeObj(this_object$`campaign_statuses`, "array[CampaignSummaryStatus]", loadNamespace("openapi"))
       self$`campaign_objective_types` <- ApiClient$new()$deserializeObj(this_object$`campaign_objective_types`, "array[ObjectiveType]", loadNamespace("openapi"))
+      self$`campaign_brand_label` <- this_object$`campaign_brand_label`
       self$`ad_group_ids` <- ApiClient$new()$deserializeObj(this_object$`ad_group_ids`, "array[character]", loadNamespace("openapi"))
       self$`ad_group_statuses` <- ApiClient$new()$deserializeObj(this_object$`ad_group_statuses`, "array[AdGroupSummaryStatus]", loadNamespace("openapi"))
       self$`ad_ids` <- ApiClient$new()$deserializeObj(this_object$`ad_ids`, "array[character]", loadNamespace("openapi"))
@@ -530,17 +597,20 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       self$`product_group_ids` <- ApiClient$new()$deserializeObj(this_object$`product_group_ids`, "array[character]", loadNamespace("openapi"))
       self$`product_group_statuses` <- ApiClient$new()$deserializeObj(this_object$`product_group_statuses`, "array[ProductGroupSummaryStatus]", loadNamespace("openapi"))
       self$`product_item_ids` <- ApiClient$new()$deserializeObj(this_object$`product_item_ids`, "array[character]", loadNamespace("openapi"))
-      self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[AdsAnalyticsTargetingType]", loadNamespace("openapi"))
+      self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[character]", loadNamespace("openapi"))
       self$`metrics_filters` <- ApiClient$new()$deserializeObj(this_object$`metrics_filters`, "array[AdsAnalyticsMetricsFilter]", loadNamespace("openapi"))
       self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[ReportingColumnAsync]", loadNamespace("openapi"))
+      self$`combine_targeting_types` <- this_object$`combine_targeting_types`
+      self$`custom_conversion_event_metrics` <- ApiClient$new()$deserializeObj(this_object$`custom_conversion_event_metrics`, "array[AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics]", loadNamespace("openapi"))
+      self$`end_hour` <- this_object$`end_hour`
       self$`level` <- MetricsReportingLevel$new()$fromJSON(jsonlite::toJSON(this_object$`level`, auto_unbox = TRUE, digits = NA))
-      self$`report_format` <- DataOutputFormat$new()$fromJSON(jsonlite::toJSON(this_object$`report_format`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`primary_sort`) && !(this_object$`primary_sort` %in% c("BY_ID", "BY_DATE"))) {
         stop(paste("Error! \"", this_object$`primary_sort`, "\" cannot be assigned to `primary_sort`. Must be \"BY_ID\", \"BY_DATE\".", sep = ""))
       }
       self$`primary_sort` <- this_object$`primary_sort`
+      self$`report_format` <- DataOutputFormat$new()$fromJSON(jsonlite::toJSON(this_object$`report_format`, auto_unbox = TRUE, digits = NA))
+      self$`reporting_timezone` <- ReportingTimeZone$new()$fromJSON(jsonlite::toJSON(this_object$`reporting_timezone`, auto_unbox = TRUE, digits = NA))
       self$`start_hour` <- this_object$`start_hour`
-      self$`end_hour` <- this_object$`end_hour`
       self
     },
 
@@ -550,14 +620,6 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `start_date`
-      if (!is.null(input_json$`start_date`)) {
-        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for AdsAnalyticsCreateAsyncRequest: the required field `start_date` is missing."))
-      }
       # check the required field `end_date`
       if (!is.null(input_json$`end_date`)) {
         if (!(is.character(input_json$`end_date`) && length(input_json$`end_date`) == 1)) {
@@ -571,6 +633,14 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`granularity`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AdsAnalyticsCreateAsyncRequest: the required field `granularity` is missing."))
+      }
+      # check the required field `start_date`
+      if (!is.null(input_json$`start_date`)) {
+        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdsAnalyticsCreateAsyncRequest: the required field `start_date` is missing."))
       }
       # check the required field `columns`
       if (!is.null(input_json$`columns`)) {
@@ -600,15 +670,6 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        return(FALSE)
-      }
-
       # check if the required `end_date` is null
       if (is.null(self$`end_date`)) {
         return(FALSE)
@@ -620,6 +681,15 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
 
       # check if the required `granularity` is null
       if (is.null(self$`granularity`)) {
+        return(FALSE)
+      }
+
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
         return(FALSE)
       }
 
@@ -709,6 +779,13 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      if (self$`end_hour` > 23) {
+        return(FALSE)
+      }
+      if (self$`end_hour` < 0) {
+        return(FALSE)
+      }
+
       # check if the required `level` is null
       if (is.null(self$`level`)) {
         return(FALSE)
@@ -721,13 +798,6 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      if (self$`end_hour` > 23) {
-        return(FALSE)
-      }
-      if (self$`end_hour` < 0) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -737,15 +807,6 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
-      }
-
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
-      }
-
       # check if the required `end_date` is null
       if (is.null(self$`end_date`)) {
         invalid_fields["end_date"] <- "Non-nullable required field `end_date` cannot be null."
@@ -758,6 +819,15 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       # check if the required `granularity` is null
       if (is.null(self$`granularity`)) {
         invalid_fields["granularity"] <- "Non-nullable required field `granularity` cannot be null."
+      }
+
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
+        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
+      }
+
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
       }
 
       if (length(self$`campaign_ids`) > 500) {
@@ -846,6 +916,13 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         invalid_fields["columns"] <- "Non-nullable required field `columns` cannot be null."
       }
 
+      if (self$`end_hour` > 23) {
+        invalid_fields["end_hour"] <- "Invalid value for `end_hour`, must be smaller than or equal to 23."
+      }
+      if (self$`end_hour` < 0) {
+        invalid_fields["end_hour"] <- "Invalid value for `end_hour`, must be bigger than or equal to 0."
+      }
+
       # check if the required `level` is null
       if (is.null(self$`level`)) {
         invalid_fields["level"] <- "Non-nullable required field `level` cannot be null."
@@ -856,13 +933,6 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (self$`start_hour` < 0) {
         invalid_fields["start_hour"] <- "Invalid value for `start_hour`, must be bigger than or equal to 0."
-      }
-
-      if (self$`end_hour` > 23) {
-        invalid_fields["end_hour"] <- "Invalid value for `end_hour`, must be smaller than or equal to 23."
-      }
-      if (self$`end_hour` < 0) {
-        invalid_fields["end_hour"] <- "Invalid value for `end_hour`, must be bigger than or equal to 0."
       }
 
       invalid_fields

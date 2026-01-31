@@ -24,15 +24,16 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param adAccountId Ad account ID.
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+ * @param createdByCompanyName The company that created this audience.
+ * @param createdTimestamp Creation time. Unix timestamp in seconds.
+ * @param description Audience description.
  * @param id Audience ID.
  * @param name Audience name.
- * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
- * @param description Audience description.
  * @param rule 
  * @param propertySize Audience size.
  * @param status Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
  * @param type Always \"audience\".
- * @param createdTimestamp Creation time. Unix timestamp in seconds.
  * @param updatedTimestamp Last update time. Unix timestamp in seconds.
  */
 
@@ -43,6 +44,22 @@ data class Audience (
     @Json(name = "ad_account_id")
     val adAccountId: kotlin.String? = null,
 
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
+    @Json(name = "audience_type")
+    val audienceType: kotlin.String? = null,
+
+    /* The company that created this audience. */
+    @Json(name = "created_by_company_name")
+    val createdByCompanyName: kotlin.String? = null,
+
+    /* Creation time. Unix timestamp in seconds. */
+    @Json(name = "created_timestamp")
+    val createdTimestamp: kotlin.Int? = null,
+
+    /* Audience description. */
+    @Json(name = "description")
+    val description: kotlin.String? = null,
+
     /* Audience ID. */
     @Json(name = "id")
     val id: kotlin.String? = null,
@@ -50,14 +67,6 @@ data class Audience (
     /* Audience name. */
     @Json(name = "name")
     val name: kotlin.String? = null,
-
-    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
-    @Json(name = "audience_type")
-    val audienceType: kotlin.String? = null,
-
-    /* Audience description. */
-    @Json(name = "description")
-    val description: kotlin.String? = null,
 
     @Json(name = "rule")
     val rule: AudienceRule? = null,
@@ -73,10 +82,6 @@ data class Audience (
     /* Always \"audience\". */
     @Json(name = "type")
     val type: kotlin.String? = null,
-
-    /* Creation time. Unix timestamp in seconds. */
-    @Json(name = "created_timestamp")
-    val createdTimestamp: kotlin.Int? = null,
 
     /* Last update time. Unix timestamp in seconds. */
     @Json(name = "updated_timestamp")

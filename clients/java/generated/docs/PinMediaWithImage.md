@@ -8,7 +8,16 @@ Pin with image.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  |  [optional] |
+|**images** | [**ImageSize**](ImageSize.md) |  |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  |  |
+
+
+
+## Enum: MediaTypeEnum
+
+| Name | Value |
+|---- | -----|
+| IMAGE | &quot;image&quot; |
 
 
 

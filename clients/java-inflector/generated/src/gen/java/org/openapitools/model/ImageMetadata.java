@@ -6,62 +6,28 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
+import org.openapitools.model.ImageSize;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageMetadata   {
-  @JsonProperty("item_type")
-  private String itemType;
-
-  @JsonProperty("title")
-  private String title;
-
   @JsonProperty("description")
   private String description;
+
+  @JsonProperty("images")
+  private ImageSize images;
+
+  @JsonProperty("item_type")
+  private String itemType;
 
   @JsonProperty("link")
   private String link;
 
-  @JsonProperty("images")
-  private ImageMetadataImages images;
-
-  /**
-   **/
-  public ImageMetadata itemType(String itemType) {
-    this.itemType = itemType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("item_type")
-  public String getItemType() {
-    return itemType;
-  }
-  public void setItemType(String itemType) {
-    this.itemType = itemType;
-  }
-
-  /**
-   **/
-  public ImageMetadata title(String title) {
-    this.title = title;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
   @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
-  }
+  private String title;
 
   /**
    **/
@@ -78,6 +44,40 @@ public class ImageMetadata   {
   }
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  /**
+   **/
+  public ImageMetadata images(ImageSize images) {
+    this.images = images;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("images")
+  public ImageSize getImages() {
+    return images;
+  }
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+  /**
+   **/
+  public ImageMetadata itemType(String itemType) {
+    this.itemType = itemType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("item_type")
+  public String getItemType() {
+    return itemType;
+  }
+  public void setItemType(String itemType) {
+    this.itemType = itemType;
   }
 
   /**
@@ -99,19 +99,19 @@ public class ImageMetadata   {
 
   /**
    **/
-  public ImageMetadata images(ImageMetadataImages images) {
-    this.images = images;
+  public ImageMetadata title(String title) {
+    this.title = title;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("images")
-  public ImageMetadataImages getImages() {
-    return images;
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
   }
-  public void setImages(ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -124,16 +124,16 @@ public class ImageMetadata   {
       return false;
     }
     ImageMetadata imageMetadata = (ImageMetadata) o;
-    return Objects.equals(itemType, imageMetadata.itemType) &&
-        Objects.equals(title, imageMetadata.title) &&
-        Objects.equals(description, imageMetadata.description) &&
+    return Objects.equals(description, imageMetadata.description) &&
+        Objects.equals(images, imageMetadata.images) &&
+        Objects.equals(itemType, imageMetadata.itemType) &&
         Objects.equals(link, imageMetadata.link) &&
-        Objects.equals(images, imageMetadata.images);
+        Objects.equals(title, imageMetadata.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, title, description, link, images);
+    return Objects.hash(description, images, itemType, link, title);
   }
 
   @Override
@@ -141,11 +141,11 @@ public class ImageMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageMetadata {\n");
     
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

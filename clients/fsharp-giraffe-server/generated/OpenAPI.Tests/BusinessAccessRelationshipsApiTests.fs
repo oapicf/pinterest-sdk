@@ -16,6 +16,9 @@ open TestHelper
 open BusinessAccessRelationshipsApiHandlerTestsHelper
 open OpenAPI.BusinessAccessRelationshipsApiHandler
 open OpenAPI.BusinessAccessRelationshipsApiHandlerParams
+open OpenAPI.Model.BrandAccountsCreate200Response
+open OpenAPI.Model.BrandAccountsCreateRequest
+open OpenAPI.Model.BrandAccountsUpdateRequest
 open OpenAPI.Model.DeletePartnersRequest
 open OpenAPI.Model.DeletePartnersResponse
 open OpenAPI.Model.DeletedMembersResponse
@@ -26,6 +29,7 @@ open OpenAPI.Model.GetBusinessPartners200Response
 open OpenAPI.Model.MemberBusinessRole
 open OpenAPI.Model.MembersToDeleteBody
 open OpenAPI.Model.PartnerType
+open OpenAPI.Model.SystemUserUpdateRequest
 open OpenAPI.Model.UpdateMemberBusinessRoleBody
 open OpenAPI.Model.UpdateMemberResultsResponseArray
 
@@ -34,6 +38,248 @@ module BusinessAccessRelationshipsApiHandlerTests =
   // ---------------------------------
   // Tests
   // ---------------------------------
+
+  [<Fact>]
+  let ``BrandAccountsCreate - Create a Brand Account returns 200 where Success`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".Replace("businessHierarchyId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsCreateExample "application/json")
+      // or pass a body of type BrandAccountsCreateRequest
+      let body = obj() :?> BrandAccountsCreateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsCreate - Create a Brand Account returns 400 where Invalid parameters.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".Replace("businessHierarchyId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsCreateExample "application/json")
+      // or pass a body of type BrandAccountsCreateRequest
+      let body = obj() :?> BrandAccountsCreateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsCreate - Create a Brand Account returns 0 where Unexpected error`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".Replace("businessHierarchyId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsCreateExample "application/json")
+      // or pass a body of type BrandAccountsCreateRequest
+      let body = obj() :?> BrandAccountsCreateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(0))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 200 where Success`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 400 where Invalid parameters.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 401 where Not authenticated to update Brand Account`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 403 where Not authorized to update Brand Account`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 404 where Brand account not found`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 409 where This account is not a brand account.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(409))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 429 where This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``BrandAccountsUpdate - Update a Brand Account returns 0 where Unexpected error`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".Replace("businessHierarchyId", "ADDME").Replace("brandAccountId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getBrandAccountsUpdateExample "application/json")
+      // or pass a body of type BrandAccountsUpdateRequest
+      let body = obj() :?> BrandAccountsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(0))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
 
   [<Fact>]
   let ``DeleteBusinessMembership - Terminate business memberships returns 200 where Success`` () =
@@ -187,7 +433,7 @@ module BusinessAccessRelationshipsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/businesses/{business_id}/members".Replace("businessId", "ADDME") + "?assetsSummary=ADDME&businessRoles=ADDME&memberIds=ADDME&startIndex=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/businesses/{business_id}/members".Replace("businessId", "ADDME") + "?fetchSystemUsers=ADDME&assetsSummary=ADDME&businessRoles=ADDME&memberIds=ADDME&startIndex=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -204,7 +450,7 @@ module BusinessAccessRelationshipsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/businesses/{business_id}/members".Replace("businessId", "ADDME") + "?assetsSummary=ADDME&businessRoles=ADDME&memberIds=ADDME&startIndex=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/businesses/{business_id}/members".Replace("businessId", "ADDME") + "?fetchSystemUsers=ADDME&assetsSummary=ADDME&businessRoles=ADDME&memberIds=ADDME&startIndex=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -245,6 +491,72 @@ module BusinessAccessRelationshipsApiHandlerTests =
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
+      }
+
+  [<Fact>]
+  let ``SystemUserUpdate - Update a system user information. returns 200 where System user updated successfully.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/businesses/{business_id}/system_users/{system_user_id}".Replace("businessId", "ADDME").Replace("systemUserId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getSystemUserUpdateExample "application/json")
+      // or pass a body of type SystemUserUpdateRequest
+      let body = obj() :?> SystemUserUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``SystemUserUpdate - Update a system user information. returns 400 where Invalid parameters.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/businesses/{business_id}/system_users/{system_user_id}".Replace("businessId", "ADDME").Replace("systemUserId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getSystemUserUpdateExample "application/json")
+      // or pass a body of type SystemUserUpdateRequest
+      let body = obj() :?> SystemUserUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``SystemUserUpdate - Update a system user information. returns 0 where Unexpected error`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/businesses/{business_id}/system_users/{system_user_id}".Replace("businessId", "ADDME").Replace("systemUserId", "ADDME")
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getSystemUserUpdateExample "application/json")
+      // or pass a body of type SystemUserUpdateRequest
+      let body = obj() :?> SystemUserUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPatch client path
+        |> isStatus (enum<HttpStatusCode>(0))
+        |> readText
+        |> shouldEqual "TESTME"
       }
 
   [<Fact>]

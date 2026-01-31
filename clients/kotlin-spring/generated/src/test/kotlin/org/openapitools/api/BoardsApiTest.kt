@@ -1,12 +1,17 @@
 package org.openapitools.api
 
 import org.openapitools.model.Board
+import org.openapitools.model.BoardCreate
+import org.openapitools.model.BoardPrivacyFilter
 import org.openapitools.model.BoardSection
 import org.openapitools.model.BoardSectionsList200Response
-import org.openapitools.model.BoardUpdate
+import org.openapitools.model.BoardWithUpdatePrivacy
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate
 import org.openapitools.model.BoardsList200Response
 import org.openapitools.model.BoardsListPins200Response
+import org.openapitools.model.CreativeType
 import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -111,10 +116,10 @@ class BoardsApiTest {
      */
     @Test
     fun boardsCreateTest() {
-        val board: Board = TODO()
+        val boardCreate: BoardCreate = TODO()
         val adAccountId: kotlin.String? = TODO()
         
-        val response: ResponseEntity<Board> = api.boardsCreate(board, adAccountId)
+        val response: ResponseEntity<Board> = api.boardsCreate(boardCreate, adAccountId)
 
         // TODO: test validations
     }
@@ -160,11 +165,11 @@ class BoardsApiTest {
     @Test
     fun boardsListTest() {
         val adAccountId: kotlin.String? = TODO()
+        val privacy: BoardPrivacyFilter? = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
-        val privacy: kotlin.String? = TODO()
         
-        val response: ResponseEntity<BoardsList200Response> = api.boardsList(adAccountId, bookmark, pageSize, privacy)
+        val response: ResponseEntity<BoardsList200Response> = api.boardsList(adAccountId, privacy, bookmark, pageSize)
 
         // TODO: test validations
     }
@@ -180,7 +185,7 @@ class BoardsApiTest {
         val boardId: kotlin.String = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
-        val creativeTypes: kotlin.collections.List<kotlin.String>? = TODO()
+        val creativeTypes: kotlin.collections.List<CreativeType>? = TODO()
         val adAccountId: kotlin.String? = TODO()
         val pinMetrics: kotlin.Boolean = TODO()
         
@@ -198,10 +203,10 @@ class BoardsApiTest {
     @Test
     fun boardsUpdateTest() {
         val boardId: kotlin.String = TODO()
-        val boardUpdate: BoardUpdate = TODO()
+        val boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate = TODO()
         val adAccountId: kotlin.String? = TODO()
         
-        val response: ResponseEntity<Board> = api.boardsUpdate(boardId, boardUpdate, adAccountId)
+        val response: ResponseEntity<BoardWithUpdatePrivacy> = api.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
 
         // TODO: test validations
     }

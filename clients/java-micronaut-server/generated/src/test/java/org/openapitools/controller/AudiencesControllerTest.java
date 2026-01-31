@@ -1,7 +1,6 @@
 package org.openapitools.controller;
 
 import org.openapitools.model.Audience;
-import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceUpdateRequest;
 import org.openapitools.model.AudiencesList200Response;
@@ -56,7 +55,7 @@ public class AudiencesControllerTest {
      *
      * The method should: Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -90,55 +89,7 @@ public class AudiencesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@116278cd");
-
-        // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
-
-        // then
-        Assertions.assertEquals(HttpStatus.OK, response.status());
-    }
-
-    /**
-     * This test is used to validate the implementation of audiencesCreateCustom() method
-     *
-     * The method should: Create custom audience
-     *
-     * Create a custom audience and find the audiences you want your ads to reach.
-     *
-     * TODO fill in the parameters and test return value.
-     */
-    @Test
-    @Disabled("Not Implemented")
-    void audiencesCreateCustomMethodTest() {
-        // given
-        String adAccountId = "example";
-        AudienceCreateCustomRequest audienceCreateCustomRequest = new AudienceCreateCustomRequest();
-
-        // when
-        Audience result = controller.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest).block();
-
-        // then
-        Assertions.assertTrue(true);
-    }
-
-    /**
-     * This test is used to check that the api available to client through
-     * '/ad_accounts/{ad_account_id}/audiences/custom' to the features of audiencesCreateCustom() works as desired.
-     *
-     * TODO fill in the request parameters and test response.
-     */
-    @Test
-    @Disabled("Not Implemented")
-    void audiencesCreateCustomClientApiTest() throws IOException {
-        // given
-        AudienceCreateCustomRequest body = new AudienceCreateCustomRequest();
-        String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/audiences/custom").expand(new HashMap<String, Object>(){{
-            // Fill in the path variables
-            put("ad_account_id", "example");
-        }});
-        MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4d582a6c");
+            .accept("[Ljava.lang.String;@24332ee3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
@@ -186,7 +137,7 @@ public class AudiencesControllerTest {
             put("audience_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@bd69b3c");
+            .accept("[Ljava.lang.String;@3754d1eb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
@@ -236,7 +187,7 @@ public class AudiencesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@178659ef");
+            .accept("[Ljava.lang.String;@5813a30e");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -291,7 +242,7 @@ public class AudiencesControllerTest {
             put("audience_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@1520efc2");
+            .accept("[Ljava.lang.String;@1d6932");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);

@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import ItemsBatchPostRequest._
 
 case class ItemsBatchPostRequest (
-  catalogType: CatalogType,
+  /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
+  catalogId: Option[String],
+catalogType: CatalogType,
 country: Country,
-/* We recommend using the CatalogsLocale values. */
-  language: Language,
 /* Array with catalogs items */
   items: List[ItemDeleteBatchRecord],
-/* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
-  catalogId: Option[String],
+/* We recommend using the CatalogsLocale values. */
+  language: Language,
 operation: BatchOperation)
 
 object ItemsBatchPostRequest {

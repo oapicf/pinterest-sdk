@@ -51,6 +51,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	CatalogsCreativeAssetsAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
+	/*! \brief Get 
+	 */
 	CatalogsType getCatalogType();
 
 	/*! \brief Set 
@@ -70,19 +77,12 @@ public:
 	/*! \brief Set The pins mapped to the item
 	 */
 	void setPins(std::list <Pin> pins);
-	/*! \brief Get 
-	 */
-	CatalogsCreativeAssetsAttributes getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
 
 private:
+	CatalogsCreativeAssetsAttributes attributes;
 	CatalogsType catalog_type;
 	std::string creative_assets_id;
 	std::list <Pin>pins;
-	CatalogsCreativeAssetsAttributes attributes;
 	void __init();
 	void __cleanup();
 

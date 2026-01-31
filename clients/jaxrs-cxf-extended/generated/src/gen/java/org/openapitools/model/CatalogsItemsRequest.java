@@ -23,6 +23,10 @@ public class CatalogsItemsRequest  {
   @Valid
   private Country country;
 
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsItemsPostFilters filters;
+
 public enum LanguageEnum {
 
     @JsonProperty("af-ZA") AF_ZA(String.valueOf("af-ZA")),
@@ -163,10 +167,6 @@ public enum LanguageEnum {
   */
   @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
   private LanguageEnum language;
-
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsItemsPostFilters filters;
  /**
   * Get country
   * @return country
@@ -189,31 +189,6 @@ public enum LanguageEnum {
    */
   public CatalogsItemsRequest country(Country country) {
     this.country = country;
-    return this;
-  }
-
- /**
-  * We recommend using the CatalogsLocale values.
-  * @return language
-  */
-  @JsonProperty("language")
-  @NotNull
-  public String getLanguage() {
-    return language == null ? null : language.value();
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
- public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
-  public CatalogsItemsRequest language(LanguageEnum language) {
-    this.language = language;
     return this;
   }
 
@@ -242,6 +217,31 @@ public enum LanguageEnum {
     return this;
   }
 
+ /**
+  * We recommend using the CatalogsLocale values.
+  * @return language
+  */
+  @JsonProperty("language")
+  @NotNull
+  public String getLanguage() {
+    return language == null ? null : language.value();
+  }
+
+  /**
+   * Sets the <code>language</code> property.
+   */
+ public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
+  /**
+   * Sets the <code>language</code> property.
+   */
+  public CatalogsItemsRequest language(LanguageEnum language) {
+    this.language = language;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -253,13 +253,13 @@ public enum LanguageEnum {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(this.country, catalogsItemsRequest.country) &&
-        Objects.equals(this.language, catalogsItemsRequest.language) &&
-        Objects.equals(this.filters, catalogsItemsRequest.filters);
+        Objects.equals(this.filters, catalogsItemsRequest.filters) &&
+        Objects.equals(this.language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -268,8 +268,8 @@ public enum LanguageEnum {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

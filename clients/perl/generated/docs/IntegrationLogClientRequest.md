@@ -8,8 +8,8 @@ use WWW::OpenAPIClient::Object::IntegrationLogClientRequest;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **string** |  | 
 **host** | **string** | HTTP request host from host header. | 
+**method** | **string** |  | 
 **path** | **string** | HTTP request path. | 
 **request_headers** | **HASH[string,string]** | HTTP request headers as key-value pairs. | [optional] 
 **response_headers** | **HASH[string,string]** | HTTP response headers as key-value pairs. | [optional] 

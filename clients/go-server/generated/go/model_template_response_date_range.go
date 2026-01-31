@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,15 +16,20 @@ package openapi
 
 type TemplateResponseDateRange struct {
 
+	AbsoluteDateRange *TemplateResponseDateRangeAbsoluteDateRange `json:"absolute_date_range,omitempty"`
+
 	DynamicDateRange *TemplateResponseDateRangeDynamicDateRange `json:"dynamic_date_range,omitempty"`
 
 	RelativeDateRange *TemplateResponseDateRangeRelativeDateRange `json:"relative_date_range,omitempty"`
-
-	AbsoluteDateRange *TemplateResponseDateRangeAbsoluteDateRange `json:"absolute_date_range,omitempty"`
 }
 
 // AssertTemplateResponseDateRangeRequired checks if the required fields are not zero-ed
 func AssertTemplateResponseDateRangeRequired(obj TemplateResponseDateRange) error {
+	if obj.AbsoluteDateRange != nil {
+		if err := AssertTemplateResponseDateRangeAbsoluteDateRangeRequired(*obj.AbsoluteDateRange); err != nil {
+			return err
+		}
+	}
 	if obj.DynamicDateRange != nil {
 		if err := AssertTemplateResponseDateRangeDynamicDateRangeRequired(*obj.DynamicDateRange); err != nil {
 			return err
@@ -35,16 +40,16 @@ func AssertTemplateResponseDateRangeRequired(obj TemplateResponseDateRange) erro
 			return err
 		}
 	}
-	if obj.AbsoluteDateRange != nil {
-		if err := AssertTemplateResponseDateRangeAbsoluteDateRangeRequired(*obj.AbsoluteDateRange); err != nil {
-			return err
-		}
-	}
 	return nil
 }
 
 // AssertTemplateResponseDateRangeConstraints checks if the values respects the defined constraints
 func AssertTemplateResponseDateRangeConstraints(obj TemplateResponseDateRange) error {
+    if obj.AbsoluteDateRange != nil {
+     	if err := AssertTemplateResponseDateRangeAbsoluteDateRangeConstraints(*obj.AbsoluteDateRange); err != nil {
+     		return err
+     	}
+    }
     if obj.DynamicDateRange != nil {
      	if err := AssertTemplateResponseDateRangeDynamicDateRangeConstraints(*obj.DynamicDateRange); err != nil {
      		return err
@@ -52,11 +57,6 @@ func AssertTemplateResponseDateRangeConstraints(obj TemplateResponseDateRange) e
     }
     if obj.RelativeDateRange != nil {
      	if err := AssertTemplateResponseDateRangeRelativeDateRangeConstraints(*obj.RelativeDateRange); err != nil {
-     		return err
-     	}
-    }
-    if obj.AbsoluteDateRange != nil {
-     	if err := AssertTemplateResponseDateRangeAbsoluteDateRangeConstraints(*obj.AbsoluteDateRange); err != nil {
      		return err
      	}
     }

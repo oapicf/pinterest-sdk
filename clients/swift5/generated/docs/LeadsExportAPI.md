@@ -23,7 +23,7 @@ Create a request to export leads collected from a lead ad
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let leadsExportCreateRequest = LeadsExportCreateRequest(startDate: "startDate_example", endDate: "endDate_example", adId: "adId_example") // LeadsExportCreateRequest | 
+let leadsExportCreateRequest = LeadsExportCreateRequest(adId: "adId_example", endDate: "endDate_example", startDate: "startDate_example") // LeadsExportCreateRequest | 
 
 // Create a request to export leads collected from a lead ad
 LeadsExportAPI.leadsExportCreate(adAccountId: adAccountId, leadsExportCreateRequest: leadsExportCreateRequest) { (response, error) in

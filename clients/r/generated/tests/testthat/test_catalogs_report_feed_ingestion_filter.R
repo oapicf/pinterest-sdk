@@ -5,13 +5,6 @@ context("Test CatalogsReportFeedIngestionFilter")
 
 model_instance <- CatalogsReportFeedIngestionFilter$new()
 
-test_that("report_type", {
-  # tests for the property `report_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_type`, "EXPECTED_RESULT")
-})
-
 test_that("feed_id", {
   # tests for the property `feed_id` (character)
   # ID of the feed entity.
@@ -26,4 +19,11 @@ test_that("processing_result_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`processing_result_id`, "EXPECTED_RESULT")
+})
+
+test_that("report_type", {
+  # tests for the property `report_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`report_type`, "EXPECTED_RESULT")
 })

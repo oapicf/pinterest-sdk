@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemIdFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemIdFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+}
+resourceTypes {
+
+  ItemIdFilter {
+    title = ItemIdFilter
+    description = ItemIdFilter
+    derivedFrom = Root
+    properties {
+        item_id {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemIdFilter {
+    title = ItemIdFilter
+    description = ItemIdFilter
+    implements = openapi_server.resourceTypes.ItemIdFilter
+
+  }
+}

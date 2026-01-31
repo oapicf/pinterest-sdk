@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,20 +17,20 @@ package openapi
 // CatalogsCreateRetailItem - An item to be created
 type CatalogsCreateRetailItem struct {
 
+	Attributes ItemAttributesRequest `json:"attributes"`
+
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id"`
 
 	Operation string `json:"operation"`
-
-	Attributes ItemAttributesRequest `json:"attributes"`
 }
 
 // AssertCatalogsCreateRetailItemRequired checks if the required fields are not zero-ed
 func AssertCatalogsCreateRetailItemRequired(obj CatalogsCreateRetailItem) error {
 	elements := map[string]interface{}{
+		"attributes": obj.Attributes,
 		"item_id": obj.ItemId,
 		"operation": obj.Operation,
-		"attributes": obj.Attributes,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

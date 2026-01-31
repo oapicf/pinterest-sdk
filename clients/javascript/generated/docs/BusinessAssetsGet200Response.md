@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[GetBusinessAssetsResponse]**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[GetBusinessAssetsResponse]**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
 
 

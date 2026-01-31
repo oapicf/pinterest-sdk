@@ -26,6 +26,12 @@ class QuizPinQuestionTest : ShouldSpec() {
         // uncomment below to create an instance of QuizPinQuestion
         //val modelInstance = QuizPinQuestion()
 
+        // to test the property `options`
+        should("test options") {
+            // uncomment below to test the property
+            //modelInstance.options shouldBe ("TODO")
+        }
+
         // to test the property `questionId`
         should("test questionId") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class QuizPinQuestionTest : ShouldSpec() {
         should("test questionText") {
             // uncomment below to test the property
             //modelInstance.questionText shouldBe ("TODO")
-        }
-
-        // to test the property `options`
-        should("test options") {
-            // uncomment below to test the property
-            //modelInstance.options shouldBe ("TODO")
         }
 
     }

@@ -6,9 +6,9 @@
 #include <list>
 #include <glib.h>
 #include "Error.h"
-#include "Pins_list_200_response.h"
 #include "Search_partner_pins_200_response.h"
 #include "Search_user_boards_get_200_response.h"
+#include "Search_user_pins_list_200_response.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -29,7 +29,7 @@ public:
 
 /*! \brief Search pins by a given search term. *Synchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+ * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
  * \param term Search term to look up pins. *Required*
  * \param countryCode Two letter country code (ISO 3166-1 alpha-2) *Required*
  * \param bookmark Cursor used to fetch the next page of items
@@ -46,7 +46,7 @@ bool searchPartnerPinsSync(char * accessToken,
 
 /*! \brief Search pins by a given search term. *Asynchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+ * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
  * \param term Search term to look up pins. *Required*
  * \param countryCode Two letter country code (ISO 3166-1 alpha-2) *Required*
  * \param bookmark Cursor used to fetch the next page of items
@@ -107,7 +107,7 @@ bool searchUserBoardsGetAsync(char * accessToken,
  */
 bool searchUserPinsListSync(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Pins_list_200_response, Error, void* )
+	void(* handler)(Search_user_pins_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief Search user's Pins. *Asynchronous*
@@ -122,7 +122,7 @@ bool searchUserPinsListSync(char * accessToken,
  */
 bool searchUserPinsListAsync(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Pins_list_200_response, Error, void* )
+	void(* handler)(Search_user_pins_list_200_response, Error, void* )
 	, void* userData);
 
 

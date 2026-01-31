@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
+import org.openapitools.model.TrendingKeyword;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -22,18 +22,18 @@ import javax.annotation.Generated;
  * TrendingKeywordsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrendingKeywordsResponse {
 
   @Valid
-  private List<@Valid TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
+  private List<@Valid TrendingKeyword> trends = new ArrayList<>();
 
-  public TrendingKeywordsResponse trends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse trends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
     return this;
   }
 
-  public TrendingKeywordsResponse addTrendsItem(TrendingKeywordsResponseTrendsInner trendsItem) {
+  public TrendingKeywordsResponse addTrendsItem(TrendingKeyword trendsItem) {
     if (this.trends == null) {
       this.trends = new ArrayList<>();
     }
@@ -48,11 +48,11 @@ public class TrendingKeywordsResponse {
   @Valid 
   @Schema(name = "trends", description = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("trends")
-  public List<@Valid TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<@Valid TrendingKeyword> getTrends() {
     return trends;
   }
 
-  public void setTrends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
   }
 

@@ -114,7 +114,7 @@ async function example() {
   const api = new BusinessAccessInviteApi(config);
 
   const body = {
-    // string | Business id
+    // string | Unique identifier of the requesting business.
     businessId: 729090764583391194,
     // CancelInvitesBody | A list with invite ids
     cancelInvitesBody: ...,
@@ -137,7 +137,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **businessId** | `string` | Business id | [Defaults to `undefined`] |
+| **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **cancelInvitesBody** | [CancelInvitesBody](CancelInvitesBody.md) | A list with invite ids | |
 
 ### Return type
@@ -264,7 +264,7 @@ async function example() {
   const api = new BusinessAccessInviteApi(config);
 
   const body = {
-    // string | Business id
+    // string | Unique identifier of the requesting business.
     businessId: 729090764583391194,
     // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
     createMembershipOrPartnershipInvitesBody: ...,
@@ -287,7 +287,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **businessId** | `string` | Business id | [Defaults to `undefined`] |
+| **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **createMembershipOrPartnershipInvitesBody** | [CreateMembershipOrPartnershipInvitesBody](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role | |
 
 ### Return type

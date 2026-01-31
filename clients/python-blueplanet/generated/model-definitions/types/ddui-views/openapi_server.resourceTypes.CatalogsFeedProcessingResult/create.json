@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "created_at" },
+      {"model": "id" },
+      {"model": "updated_at" },
+      {"model": "ingestion_details" },
+      {"model": "product_counts" },
+      {"model": "status" },
+      {"model": "validation_details" },
+      {"model": "video_counts" },
+    ]
+  }]
+}

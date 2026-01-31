@@ -12,36 +12,35 @@ import org.openapitools.model.CatalogsItemValidationWarnings;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationIssues   {
-  @JsonProperty("item_number")
-  private Integer itemNumber;
+  @JsonProperty("errors")
+  private CatalogsItemValidationErrors errors;
 
   @JsonProperty("item_id")
   private String itemId;
 
-  @JsonProperty("errors")
-  private CatalogsItemValidationErrors errors;
+  @JsonProperty("item_number")
+  private Integer itemNumber;
 
   @JsonProperty("warnings")
   private CatalogsItemValidationWarnings warnings;
 
   /**
-   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
    **/
-  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
     return this;
   }
 
   
-  @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
-  @JsonProperty("item_number")
-  public Integer getItemNumber() {
-    return itemNumber;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("errors")
+  public CatalogsItemValidationErrors getErrors() {
+    return errors;
   }
-  public void setItemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public void setErrors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
   }
 
   /**
@@ -63,20 +62,21 @@ public class CatalogsItemValidationIssues   {
   }
 
   /**
+   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
    **/
-  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("errors")
-  public CatalogsItemValidationErrors getErrors() {
-    return errors;
+  @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
+  @JsonProperty("item_number")
+  public Integer getItemNumber() {
+    return itemNumber;
   }
-  public void setErrors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public void setItemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
   }
 
   /**
@@ -106,15 +106,15 @@ public class CatalogsItemValidationIssues   {
       return false;
     }
     CatalogsItemValidationIssues catalogsItemValidationIssues = (CatalogsItemValidationIssues) o;
-    return Objects.equals(itemNumber, catalogsItemValidationIssues.itemNumber) &&
+    return Objects.equals(errors, catalogsItemValidationIssues.errors) &&
         Objects.equals(itemId, catalogsItemValidationIssues.itemId) &&
-        Objects.equals(errors, catalogsItemValidationIssues.errors) &&
+        Objects.equals(itemNumber, catalogsItemValidationIssues.itemNumber) &&
         Objects.equals(warnings, catalogsItemValidationIssues.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemNumber, itemId, errors, warnings);
+    return Objects.hash(errors, itemId, itemNumber, warnings);
   }
 
   @Override
@@ -122,9 +122,9 @@ public class CatalogsItemValidationIssues   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemValidationIssues {\n");
     
-    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();

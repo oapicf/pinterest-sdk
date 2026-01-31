@@ -5,43 +5,43 @@
 -export_type([openapi_account/0]).
 
 -type openapi_account() ::
-    #{ 'account_type' => binary(),
-       'id' => binary(),
-       'profile_image' => binary(),
-       'website_url' => binary(),
-       'username' => binary(),
-       'about' => binary(),
-       'business_name' => binary(),
+    #{ 'about' => binary(),
+       'account_type' => binary(),
        'board_count' => integer(),
-       'pin_count' => integer(),
+       'business_name' => binary(),
        'follower_count' => integer(),
        'following_count' => integer(),
-       'monthly_views' => integer()
+       'id' => binary(),
+       'monthly_views' => integer(),
+       'pin_count' => integer(),
+       'profile_image' => binary(),
+       'username' => binary(),
+       'website_url' => binary()
      }.
 
-encode(#{ 'account_type' := AccountType,
-          'id' := Id,
-          'profile_image' := ProfileImage,
-          'website_url' := WebsiteUrl,
-          'username' := Username,
-          'about' := About,
-          'business_name' := BusinessName,
+encode(#{ 'about' := About,
+          'account_type' := AccountType,
           'board_count' := BoardCount,
-          'pin_count' := PinCount,
+          'business_name' := BusinessName,
           'follower_count' := FollowerCount,
           'following_count' := FollowingCount,
-          'monthly_views' := MonthlyViews
+          'id' := Id,
+          'monthly_views' := MonthlyViews,
+          'pin_count' := PinCount,
+          'profile_image' := ProfileImage,
+          'username' := Username,
+          'website_url' := WebsiteUrl
         }) ->
-    #{ 'account_type' => AccountType,
-       'id' => Id,
-       'profile_image' => ProfileImage,
-       'website_url' => WebsiteUrl,
-       'username' => Username,
-       'about' => About,
-       'business_name' => BusinessName,
+    #{ 'about' => About,
+       'account_type' => AccountType,
        'board_count' => BoardCount,
-       'pin_count' => PinCount,
+       'business_name' => BusinessName,
        'follower_count' => FollowerCount,
        'following_count' => FollowingCount,
-       'monthly_views' => MonthlyViews
+       'id' => Id,
+       'monthly_views' => MonthlyViews,
+       'pin_count' => PinCount,
+       'profile_image' => ProfileImage,
+       'username' => Username,
+       'website_url' => WebsiteUrl
      }.

@@ -24,22 +24,22 @@ pinterest_rest_api_update_asset_group_body_asset_groups_to_update_inner__e updat
 
 static update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_create_internal(
     char *asset_group_id,
-    char *name,
-    char *description,
     list_t *asset_group_types,
     list_t *assets_to_add,
-    list_t *assets_to_remove
+    list_t *assets_to_remove,
+    char *description,
+    char *name
     ) {
     update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_local_var = malloc(sizeof(update_asset_group_body_asset_groups_to_update_inner_t));
     if (!update_asset_group_body_asset_groups_to_update_inner_local_var) {
         return NULL;
     }
     update_asset_group_body_asset_groups_to_update_inner_local_var->asset_group_id = asset_group_id;
-    update_asset_group_body_asset_groups_to_update_inner_local_var->name = name;
-    update_asset_group_body_asset_groups_to_update_inner_local_var->description = description;
     update_asset_group_body_asset_groups_to_update_inner_local_var->asset_group_types = asset_group_types;
     update_asset_group_body_asset_groups_to_update_inner_local_var->assets_to_add = assets_to_add;
     update_asset_group_body_asset_groups_to_update_inner_local_var->assets_to_remove = assets_to_remove;
+    update_asset_group_body_asset_groups_to_update_inner_local_var->description = description;
+    update_asset_group_body_asset_groups_to_update_inner_local_var->name = name;
 
     update_asset_group_body_asset_groups_to_update_inner_local_var->_library_owned = 1;
     return update_asset_group_body_asset_groups_to_update_inner_local_var;
@@ -47,19 +47,19 @@ static update_asset_group_body_asset_groups_to_update_inner_t *update_asset_grou
 
 __attribute__((deprecated)) update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_create(
     char *asset_group_id,
-    char *name,
-    char *description,
     list_t *asset_group_types,
     list_t *assets_to_add,
-    list_t *assets_to_remove
+    list_t *assets_to_remove,
+    char *description,
+    char *name
     ) {
     return update_asset_group_body_asset_groups_to_update_inner_create_internal (
         asset_group_id,
-        name,
-        description,
         asset_group_types,
         assets_to_add,
-        assets_to_remove
+        assets_to_remove,
+        description,
+        name
         );
 }
 
@@ -75,14 +75,6 @@ void update_asset_group_body_asset_groups_to_update_inner_free(update_asset_grou
     if (update_asset_group_body_asset_groups_to_update_inner->asset_group_id) {
         free(update_asset_group_body_asset_groups_to_update_inner->asset_group_id);
         update_asset_group_body_asset_groups_to_update_inner->asset_group_id = NULL;
-    }
-    if (update_asset_group_body_asset_groups_to_update_inner->name) {
-        free(update_asset_group_body_asset_groups_to_update_inner->name);
-        update_asset_group_body_asset_groups_to_update_inner->name = NULL;
-    }
-    if (update_asset_group_body_asset_groups_to_update_inner->description) {
-        free(update_asset_group_body_asset_groups_to_update_inner->description);
-        update_asset_group_body_asset_groups_to_update_inner->description = NULL;
     }
     if (update_asset_group_body_asset_groups_to_update_inner->asset_group_types) {
         list_ForEach(listEntry, update_asset_group_body_asset_groups_to_update_inner->asset_group_types) {
@@ -105,6 +97,14 @@ void update_asset_group_body_asset_groups_to_update_inner_free(update_asset_grou
         list_freeList(update_asset_group_body_asset_groups_to_update_inner->assets_to_remove);
         update_asset_group_body_asset_groups_to_update_inner->assets_to_remove = NULL;
     }
+    if (update_asset_group_body_asset_groups_to_update_inner->description) {
+        free(update_asset_group_body_asset_groups_to_update_inner->description);
+        update_asset_group_body_asset_groups_to_update_inner->description = NULL;
+    }
+    if (update_asset_group_body_asset_groups_to_update_inner->name) {
+        free(update_asset_group_body_asset_groups_to_update_inner->name);
+        update_asset_group_body_asset_groups_to_update_inner->name = NULL;
+    }
     free(update_asset_group_body_asset_groups_to_update_inner);
 }
 
@@ -117,22 +117,6 @@ cJSON *update_asset_group_body_asset_groups_to_update_inner_convertToJSON(update
     }
     if(cJSON_AddStringToObject(item, "asset_group_id", update_asset_group_body_asset_groups_to_update_inner->asset_group_id) == NULL) {
     goto fail; //String
-    }
-
-
-    // update_asset_group_body_asset_groups_to_update_inner->name
-    if(update_asset_group_body_asset_groups_to_update_inner->name) {
-    if(cJSON_AddStringToObject(item, "name", update_asset_group_body_asset_groups_to_update_inner->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // update_asset_group_body_asset_groups_to_update_inner->description
-    if(update_asset_group_body_asset_groups_to_update_inner->description) {
-    if(cJSON_AddStringToObject(item, "description", update_asset_group_body_asset_groups_to_update_inner->description) == NULL) {
-    goto fail; //String
-    }
     }
 
 
@@ -189,6 +173,22 @@ cJSON *update_asset_group_body_asset_groups_to_update_inner_convertToJSON(update
     }
     }
 
+
+    // update_asset_group_body_asset_groups_to_update_inner->description
+    if(update_asset_group_body_asset_groups_to_update_inner->description) {
+    if(cJSON_AddStringToObject(item, "description", update_asset_group_body_asset_groups_to_update_inner->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // update_asset_group_body_asset_groups_to_update_inner->name
+    if(update_asset_group_body_asset_groups_to_update_inner->name) {
+    if(cJSON_AddStringToObject(item, "name", update_asset_group_body_asset_groups_to_update_inner->name) == NULL) {
+    goto fail; //String
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -223,30 +223,6 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
     if(!cJSON_IsString(asset_group_id))
     {
     goto end; //String
-    }
-
-    // update_asset_group_body_asset_groups_to_update_inner->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
-    }
-
-    // update_asset_group_body_asset_groups_to_update_inner->description
-    cJSON *description = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "description");
-    if (cJSON_IsNull(description)) {
-        description = NULL;
-    }
-    if (description) { 
-    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
-    {
-    goto end; //String
-    }
     }
 
     // update_asset_group_body_asset_groups_to_update_inner->asset_group_types
@@ -317,14 +293,38 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
     }
     }
 
+    // update_asset_group_body_asset_groups_to_update_inner->description
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
+    if (description) { 
+    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
+    // update_asset_group_body_asset_groups_to_update_inner->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
+    if (name) { 
+    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
+    {
+    goto end; //String
+    }
+    }
+
 
     update_asset_group_body_asset_groups_to_update_inner_local_var = update_asset_group_body_asset_groups_to_update_inner_create_internal (
         strdup(asset_group_id->valuestring),
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         asset_group_types ? asset_group_typesList : NULL,
         assets_to_add ? assets_to_addList : NULL,
-        assets_to_remove ? assets_to_removeList : NULL
+        assets_to_remove ? assets_to_removeList : NULL,
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL
         );
 
     return update_asset_group_body_asset_groups_to_update_inner_local_var;

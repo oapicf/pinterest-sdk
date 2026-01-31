@@ -55,7 +55,7 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     String conversionTagId
     
     String cpaGoalValueInMicroCurrency
-    /* ROAS optimization is not supported */
+    /* Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>. */
     Boolean isRoasOptimized
 
     enum LearningModeTypeEnum {
@@ -82,4 +82,6 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
     /* Conversion learning model type */
     LearningModeTypeEnum learningModeType
+    /* Event name for custom or standard events mapped to an oCPM model */
+    String reportingEvent
 }

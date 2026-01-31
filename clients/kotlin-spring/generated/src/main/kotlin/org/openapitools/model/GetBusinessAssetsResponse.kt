@@ -3,6 +3,7 @@ package org.openapitools.model
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.AssetGroupBinding
+import org.openapitools.model.GetBusinessAssetsResponseCatalogInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,23 +17,28 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * An object containing the permissions a business has on the asset.
- * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
  * @param assetGroupInfo 
+ * @param assetId Unique identifier of a business asset.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param catalogInfo 
  */
 data class GetBusinessAssetsResponse(
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(min=1,max=20)
     @Schema(example = "549755885175", description = "Unique identifier of a business asset.")
     @get:JsonProperty("asset_id") val assetId: kotlin.String? = null,
 
-    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
     @get:JsonProperty("asset_type") val assetType: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null
+    @get:JsonProperty("catalog_info") val catalogInfo: GetBusinessAssetsResponseCatalogInfo? = null
 ) {
 
 }

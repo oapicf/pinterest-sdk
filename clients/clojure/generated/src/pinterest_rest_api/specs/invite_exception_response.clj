@@ -7,8 +7,8 @@
 
 (def invite-exception-response-data
   {
-   (ds/opt :invite_or_request_id) string?
    (ds/opt :code) int?
+   (ds/opt :invite_or_request_id) string?
    (ds/opt :message) string?
    (ds/opt :users_or_partner_ids) (s/coll-of string?)
    })

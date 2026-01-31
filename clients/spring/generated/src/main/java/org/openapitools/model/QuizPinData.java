@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinData", description = "This field includes all quiz data including questions, options, and results.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinData {
 
   @Valid
@@ -36,6 +36,8 @@ public class QuizPinData {
 
   @Valid
   private List<@Valid QuizPinResult> results = new ArrayList<>();
+
+  private JsonNullable<QuizPinResult> tieBreakerCustomResult = JsonNullable.<QuizPinResult>undefined();
 
   /**
    * Quiz ad tie breaker type, default is RANDOM
@@ -73,8 +75,6 @@ public class QuizPinData {
   }
 
   private @Nullable TieBreakerTypeEnum tieBreakerType;
-
-  private JsonNullable<QuizPinResult> tieBreakerCustomResult = JsonNullable.<QuizPinResult>undefined();
 
   public QuizPinData questions(List<@Valid QuizPinQuestion> questions) {
     this.questions = questions;
@@ -132,26 +132,6 @@ public class QuizPinData {
     this.results = results;
   }
 
-  public QuizPinData tieBreakerType(@Nullable TieBreakerTypeEnum tieBreakerType) {
-    this.tieBreakerType = tieBreakerType;
-    return this;
-  }
-
-  /**
-   * Quiz ad tie breaker type, default is RANDOM
-   * @return tieBreakerType
-   */
-  
-  @Schema(name = "tie_breaker_type", description = "Quiz ad tie breaker type, default is RANDOM", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("tie_breaker_type")
-  public @Nullable TieBreakerTypeEnum getTieBreakerType() {
-    return tieBreakerType;
-  }
-
-  public void setTieBreakerType(@Nullable TieBreakerTypeEnum tieBreakerType) {
-    this.tieBreakerType = tieBreakerType;
-  }
-
   public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
     this.tieBreakerCustomResult = JsonNullable.of(tieBreakerCustomResult);
     return this;
@@ -172,6 +152,26 @@ public class QuizPinData {
     this.tieBreakerCustomResult = tieBreakerCustomResult;
   }
 
+  public QuizPinData tieBreakerType(@Nullable TieBreakerTypeEnum tieBreakerType) {
+    this.tieBreakerType = tieBreakerType;
+    return this;
+  }
+
+  /**
+   * Quiz ad tie breaker type, default is RANDOM
+   * @return tieBreakerType
+   */
+  
+  @Schema(name = "tie_breaker_type", description = "Quiz ad tie breaker type, default is RANDOM", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("tie_breaker_type")
+  public @Nullable TieBreakerTypeEnum getTieBreakerType() {
+    return tieBreakerType;
+  }
+
+  public void setTieBreakerType(@Nullable TieBreakerTypeEnum tieBreakerType) {
+    this.tieBreakerType = tieBreakerType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -183,8 +183,8 @@ public class QuizPinData {
     QuizPinData quizPinData = (QuizPinData) o;
     return Objects.equals(this.questions, quizPinData.questions) &&
         Objects.equals(this.results, quizPinData.results) &&
-        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType) &&
-        equalsNullable(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult);
+        equalsNullable(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult) &&
+        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -193,7 +193,7 @@ public class QuizPinData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(questions, results, tieBreakerType, hashCodeNullable(tieBreakerCustomResult));
+    return Objects.hash(questions, results, hashCodeNullable(tieBreakerCustomResult), tieBreakerType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -209,8 +209,8 @@ public class QuizPinData {
     sb.append("class QuizPinData {\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("    tieBreakerCustomResult: ").append(toIndentedString(tieBreakerCustomResult)).append("\n");
+    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

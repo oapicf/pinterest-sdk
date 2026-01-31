@@ -13,18 +13,16 @@ test_that("date", {
   #expect_equal(model.instance$`date`, "EXPECTED_RESULT")
 })
 
-test_that("type", {
-  # tests for the property `type` (character)
-  # Generated audience type to request.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
-})
-
 test_that("scope", {
   # tests for the property `scope` (character)
-  # Generated audience scope to request.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
+})
+
+test_that("type", {
+  # tests for the property `type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

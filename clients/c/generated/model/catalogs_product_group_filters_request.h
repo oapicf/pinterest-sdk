@@ -15,9 +15,9 @@
 
 typedef struct catalogs_product_group_filters_request_t catalogs_product_group_filters_request_t;
 
+#include "all_of.h"
+#include "any_of.h"
 #include "catalogs_product_group_filter_keys.h"
-#include "catalogs_product_group_filters_request_any_of.h"
-#include "catalogs_product_group_filters_request_any_of_1.h"
 
 
 

@@ -10,12 +10,12 @@ import org.openapitools.models.BigDecimal
 /**
  * 
  * @param reportUnderscorestatus 
- * @param url 
  * @param size 
+ * @param url 
  */
 case class GetMMMReportResponseData(reportUnderscorestatus: Option[String],
-                url: Option[String],
-                size: Option[BigDecimal]
+                size: Option[BigDecimal],
+                url: Option[String]
                 )
 
 object GetMMMReportResponseData {

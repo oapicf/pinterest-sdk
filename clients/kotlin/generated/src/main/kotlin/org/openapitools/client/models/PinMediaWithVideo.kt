@@ -15,8 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PinMedia
-import org.openapitools.client.models.PinMediaWithImageAllOfImages
+import org.openapitools.client.models.ImageSize
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -25,44 +24,53 @@ import com.squareup.moshi.JsonClass
  * Pin with video.
  *
  * @param mediaType 
- * @param images 
  * @param coverImageUrl 
- * @param videoUrl Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
- * @param duration Duration (in milliseconds)
- * @param height Height (in pixels)
- * @param width Width (in pixels)
+ * @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
+ * @param height Height (in pixels). Field maybe null after creation due to video processing time.
+ * @param images 
+ * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps.
+ * @param width Width (in pixels). Field maybe null after creation due to video processing time.
  */
 
 
 data class PinMediaWithVideo (
 
     @Json(name = "media_type")
-    override val mediaType: kotlin.String? = null,
-
-    @Json(name = "images")
-    val images: PinMediaWithImageAllOfImages? = null,
+    val mediaType: PinMediaWithVideo.MediaType,
 
     @Json(name = "cover_image_url")
     val coverImageUrl: kotlin.String? = null,
 
-    /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-    @Json(name = "video_url")
-    val videoUrl: kotlin.String? = null,
-
-    /* Duration (in milliseconds) */
+    /* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     @Json(name = "duration")
     val duration: java.math.BigDecimal? = null,
 
-    /* Height (in pixels) */
+    /* Height (in pixels). Field maybe null after creation due to video processing time. */
     @Json(name = "height")
     val height: kotlin.Int? = null,
 
-    /* Width (in pixels) */
+    @Json(name = "images")
+    val images: ImageSize? = null,
+
+    /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    @Json(name = "video_url")
+    val videoUrl: kotlin.String? = null,
+
+    /* Width (in pixels). Field maybe null after creation due to video processing time. */
     @Json(name = "width")
     val width: kotlin.Int? = null
 
-) : PinMedia {
+) {
 
+    /**
+     * 
+     *
+     * Values: video
+     */
+    @JsonClass(generateAdapter = false)
+    enum class MediaType(val value: kotlin.String) {
+        @Json(name = "video") video("video");
+    }
 
 }
 

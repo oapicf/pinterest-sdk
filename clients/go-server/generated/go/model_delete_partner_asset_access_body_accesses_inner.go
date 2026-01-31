@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type DeletePartnerAssetAccessBodyAccessesInner struct {
 
-	// Unique identifier of a business partner to update asset access to.
-	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
-
 	// Unique identifier of the business asset.
 	AssetId string `json:"asset_id" validate:"regexp=^\\\\d+$"`
+
+	// Unique identifier of a business partner to update asset access to.
+	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 
 	// If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
 	PartnerType string `json:"partner_type,omitempty"`
@@ -29,8 +29,8 @@ type DeletePartnerAssetAccessBodyAccessesInner struct {
 // AssertDeletePartnerAssetAccessBodyAccessesInnerRequired checks if the required fields are not zero-ed
 func AssertDeletePartnerAssetAccessBodyAccessesInnerRequired(obj DeletePartnerAssetAccessBodyAccessesInner) error {
 	elements := map[string]interface{}{
-		"partner_id": obj.PartnerId,
 		"asset_id": obj.AssetId,
+		"partner_id": obj.PartnerId,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

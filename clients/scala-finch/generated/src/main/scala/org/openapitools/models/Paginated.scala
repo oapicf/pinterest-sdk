@@ -9,11 +9,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items 
  * @param bookmark 
+ * @param items 
  */
-case class Paginated(items: Seq[Object],
-                bookmark: Option[String]
+case class Paginated(bookmark: Option[String],
+                items: Seq[Object]
                 )
 
 object Paginated {

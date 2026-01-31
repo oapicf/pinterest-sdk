@@ -5,6 +5,14 @@ context("Test DeleteAssetGroupResponseExceptionsInner")
 
 model_instance <- DeleteAssetGroupResponseExceptionsInner$new()
 
+test_that("asset_group_id", {
+  # tests for the property `asset_group_id` (character)
+  # Asset group id of the exception.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset_group_id`, "EXPECTED_RESULT")
+})
+
 test_that("code", {
   # tests for the property `code` (integer)
   # Error code associated with the error deleting asset group.
@@ -19,12 +27,4 @@ test_that("message", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
-})
-
-test_that("asset_group_id", {
-  # tests for the property `asset_group_id` (character)
-  # Asset group id of the exception.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset_group_id`, "EXPECTED_RESULT")
 })

@@ -1,1 +1,1 @@
-match_types,page_size,bookmark,campaign_id,ad_group_id
+campaign_id,match_types,bookmark,ad_group_ids,page_size,ad_group_id

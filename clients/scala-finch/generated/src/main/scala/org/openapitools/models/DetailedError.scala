@@ -9,12 +9,12 @@ import org.openapitools._
 /**
  * Used for including extra details to a base error
  * @param code 
- * @param message 
  * @param details 
+ * @param message 
  */
 case class DetailedError(code: Int,
-                message: String,
-                details: Object
+                details: Object,
+                message: String
                 )
 
 object DetailedError {

@@ -11,9 +11,9 @@ module HotelProcessingRecord =
 
 
   type HotelProcessingRecord = {
-    HotelId : string;
     Errors : ItemValidationEvent[];
-    Warnings : ItemValidationEvent[];
+    HotelId : string;
     Status : ItemProcessingStatus;
+    Warnings : ItemValidationEvent[];
   }
   //#endregion

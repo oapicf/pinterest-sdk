@@ -10,9 +10,9 @@ The class is defined in **[TemplateResponseDateRangeAbsoluteDateRange.java](../.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | `String` | The date range type |  [optional property]
-**startDate** | `BigDecimal` | The start date of the date range |  [optional property]
 **endDate** | `BigDecimal` | The end date of the date range |  [optional property]
+**startDate** | `BigDecimal` | The start date of the date range |  [optional property]
+**type** | `String` | The date range type |  [optional property]
 
 
 

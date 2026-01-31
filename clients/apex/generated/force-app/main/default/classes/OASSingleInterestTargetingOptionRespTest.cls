@@ -81,7 +81,7 @@ private class OASSingleInterestTargetingOptionRespTest {
         OASSingleInterestTargetingOptionResp singleInterestTargetingOptionResponse = new OASSingleInterestTargetingOptionResp();
         System.assertEquals(new List<String>(), singleInterestTargetingOptionResponse.childInterests);
         System.assertEquals(null, singleInterestTargetingOptionResponse.id);
-        System.assertEquals(null, singleInterestTargetingOptionResponse.name);
         System.assertEquals(null, singleInterestTargetingOptionResponse.level);
+        System.assertEquals(null, singleInterestTargetingOptionResponse.name);
     }
 }

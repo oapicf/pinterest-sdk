@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,18 +16,18 @@ package openapi
 
 type ItemsBatchPostRequest struct {
 
+	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	CatalogId string `json:"catalog_id,omitempty"`
+
 	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
-	// We recommend using the CatalogsLocale values.
-	Language string `json:"language"`
-
 	// Array with catalogs items
 	Items []ItemDeleteBatchRecord `json:"items"`
 
-	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-	CatalogId string `json:"catalog_id,omitempty"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	Operation BatchOperation `json:"operation"`
 }
@@ -37,8 +37,8 @@ func AssertItemsBatchPostRequestRequired(obj ItemsBatchPostRequest) error {
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
-		"language": obj.Language,
 		"items": obj.Items,
+		"language": obj.Language,
 		"operation": obj.Operation,
 	}
 	for name, el := range elements {

@@ -25,32 +25,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemUpsertBatchRecord", description = "Object describing an item batch record to upsert items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemUpsertBatchRecord implements ItemBatchRecord {
-
-  private String itemId;
 
   private ItemAttributesRequest attributes;
 
-  public ItemUpsertBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-   */
-  
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
+  private String itemId;
 
   public ItemUpsertBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
@@ -72,6 +52,26 @@ public class ItemUpsertBatchRecord implements ItemBatchRecord {
     this.attributes = attributes;
   }
 
+  public ItemUpsertBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+   */
+  
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -81,21 +81,21 @@ public class ItemUpsertBatchRecord implements ItemBatchRecord {
       return false;
     }
     ItemUpsertBatchRecord itemUpsertBatchRecord = (ItemUpsertBatchRecord) o;
-    return Objects.equals(this.itemId, itemUpsertBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemUpsertBatchRecord.attributes);
+    return Objects.equals(this.attributes, itemUpsertBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemUpsertBatchRecord.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes);
+    return Objects.hash(attributes, itemId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemUpsertBatchRecord {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

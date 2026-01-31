@@ -16,15 +16,15 @@ void main() {
   // final instance = UpdateAssetGroupResponse();
 
   group('test UpdateAssetGroupResponse', () {
-    // A list of successfully edited asset groups.
-    // List<AssetGroupBinding> updatedAssetGroups (default value: const [])
-    test('to test the property `updatedAssetGroups`', () async {
-      // TODO
-    });
-
     // A list of errors associated with the asset groups. Will be returned if there is an error.
     // List<UpdateAssetGroupResponseExceptionsInner> exceptions (default value: const [])
     test('to test the property `exceptions`', () async {
+      // TODO
+    });
+
+    // A list of successfully edited asset groups.
+    // List<AssetGroupBinding> updatedAssetGroups (default value: const [])
+    test('to test the property `updatedAssetGroups`', () async {
       // TODO
     });
 

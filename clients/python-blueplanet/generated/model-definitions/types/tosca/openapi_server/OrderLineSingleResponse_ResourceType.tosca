@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OrderLineSingleResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OrderLineSingleResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OrderLineResponse = openapi_server.resourceTypes.OrderLineResponse
+}
+resourceTypes {
+
+  OrderLineSingleResponse {
+    title = OrderLineSingleResponse
+    description = OrderLineSingleResponse
+    derivedFrom = Root
+    properties {
+        data {
+          type = OrderLineResponse
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OrderLineSingleResponse {
+    title = OrderLineSingleResponse
+    description = OrderLineSingleResponse
+    implements = openapi_server.resourceTypes.OrderLineSingleResponse
+
+  }
+}

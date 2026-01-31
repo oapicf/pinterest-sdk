@@ -31,22 +31,28 @@ class BidFloorSpecTest : ShouldSpec() {
         // uncomment below to create an instance of BidFloorSpec
         //val modelInstance = BidFloorSpec()
 
-        // to test the property `currency`
-        should("test currency") {
-            // uncomment below to test the property
-            //modelInstance.currency shouldBe ("TODO")
-        }
-
         // to test the property `billableEvent`
         should("test billableEvent") {
             // uncomment below to test the property
             //modelInstance.billableEvent shouldBe ("TODO")
         }
 
+        // to test the property `currency`
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
+        }
+
         // to test the property `countries`
         should("test countries") {
             // uncomment below to test the property
             //modelInstance.countries shouldBe ("TODO")
+        }
+
+        // to test the property `creativeType`
+        should("test creativeType") {
+            // uncomment below to test the property
+            //modelInstance.creativeType shouldBe ("TODO")
         }
 
         // to test the property `objectiveType`
@@ -59,12 +65,6 @@ class BidFloorSpecTest : ShouldSpec() {
         should("test optimizationGoalMetadata") {
             // uncomment below to test the property
             //modelInstance.optimizationGoalMetadata shouldBe ("TODO")
-        }
-
-        // to test the property `creativeType`
-        should("test creativeType") {
-            // uncomment below to test the property
-            //modelInstance.creativeType shouldBe ("TODO")
         }
 
     }

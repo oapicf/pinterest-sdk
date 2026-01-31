@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,8 @@ var _ MappedNullable = &AudienceDefinition{}
 type AudienceDefinition struct {
 	// Generation date
 	Date NullableString `json:"date,omitempty"`
-	// Generated audience type to request.
-	Type *string `json:"type,omitempty"`
-	// Generated audience scope to request.
 	Scope *string `json:"scope,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewAudienceDefinition instantiates a new AudienceDefinition object
@@ -87,38 +85,6 @@ func (o *AudienceDefinition) UnsetDate() {
 	o.Date.Unset()
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AudienceDefinition) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceDefinition) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AudienceDefinition) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *AudienceDefinition) SetType(v string) {
-	o.Type = &v
-}
-
 // GetScope returns the Scope field value if set, zero value otherwise.
 func (o *AudienceDefinition) GetScope() string {
 	if o == nil || IsNil(o.Scope) {
@@ -151,6 +117,38 @@ func (o *AudienceDefinition) SetScope(v string) {
 	o.Scope = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AudienceDefinition) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceDefinition) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AudienceDefinition) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AudienceDefinition) SetType(v string) {
+	o.Type = &v
+}
+
 func (o AudienceDefinition) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -164,11 +162,11 @@ func (o AudienceDefinition) ToMap() (map[string]interface{}, error) {
 	if o.Date.IsSet() {
 		toSerialize["date"] = o.Date.Get()
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if !IsNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

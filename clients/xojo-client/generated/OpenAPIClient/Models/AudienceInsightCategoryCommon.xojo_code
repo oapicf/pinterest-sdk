@@ -2,6 +2,16 @@
 Protected Class AudienceInsightCategoryCommon
 
 	#tag Property, Flags = &h0
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		index As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		key As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -13,16 +23,6 @@ Protected Class AudienceInsightCategoryCommon
 
 	#tag Property, Flags = &h0
 		ratio As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		index As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -63,6 +63,22 @@ Protected Class AudienceInsightCategoryCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="index"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="key"
 			Visible=false
 			Group="Behavior"
@@ -84,22 +100,6 @@ Protected Class AudienceInsightCategoryCommon
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="index"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

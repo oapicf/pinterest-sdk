@@ -25,6 +25,7 @@ CustomerList::__init()
 {
 	//ad_account_id = std::string();
 	//created_time = double(0);
+	//exceptions = null;
 	//id = std::string();
 	//name = std::string();
 	//num_batches = double(0);
@@ -33,7 +34,6 @@ CustomerList::__init()
 	//status = std::string();
 	//type = std::string();
 	//updated_time = double(0);
-	//exceptions = null;
 }
 
 void
@@ -48,6 +48,11 @@ CustomerList::__cleanup()
 	//
 	//delete created_time;
 	//created_time = NULL;
+	//}
+	//if(exceptions != NULL) {
+	//
+	//delete exceptions;
+	//exceptions = NULL;
 	//}
 	//if(id != NULL) {
 	//
@@ -89,11 +94,6 @@ CustomerList::__cleanup()
 	//delete updated_time;
 	//updated_time = NULL;
 	//}
-	//if(exceptions != NULL) {
-	//
-	//delete exceptions;
-	//exceptions = NULL;
-	//}
 	//
 }
 
@@ -123,6 +123,20 @@ CustomerList::fromJson(char* jsonStr)
 		} else {
 			
 			long long* obj = static_cast<long long*> (&created_time);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *exceptionsKey = "exceptions";
+	node = json_object_get_member(pJsonObject, exceptionsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&exceptions, node, "std::string", "");
+		} else {
+			
+			std::string* obj = static_cast<std::string*> (&exceptions);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -227,20 +241,6 @@ CustomerList::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *exceptionsKey = "exceptions";
-	node = json_object_get_member(pJsonObject, exceptionsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&exceptions, node, "std::string", "");
-		} else {
-			
-			std::string* obj = static_cast<std::string*> (&exceptions);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CustomerList::CustomerList(char* json)
@@ -276,6 +276,20 @@ CustomerList::toJson()
 	}
 	const gchar *created_timeKey = "created_time";
 	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getExceptions();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+		std::string obj = static_cast<std::string> (getExceptions());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *exceptionsKey = "exceptions";
+	json_object_set_member(pJsonObject, exceptionsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
@@ -368,20 +382,6 @@ CustomerList::toJson()
 	}
 	const gchar *updated_timeKey = "updated_time";
 	json_object_set_member(pJsonObject, updated_timeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getExceptions();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-		std::string obj = static_cast<std::string> (getExceptions());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *exceptionsKey = "exceptions";
-	json_object_set_member(pJsonObject, exceptionsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -412,6 +412,18 @@ void
 CustomerList::setCreatedTime(long long  created_time)
 {
 	this->created_time = created_time;
+}
+
+std::string
+CustomerList::getExceptions()
+{
+	return exceptions;
+}
+
+void
+CustomerList::setExceptions(std::string  exceptions)
+{
+	this->exceptions = exceptions;
 }
 
 std::string
@@ -508,18 +520,6 @@ void
 CustomerList::setUpdatedTime(long long  updated_time)
 {
 	this->updated_time = updated_time;
-}
-
-std::string
-CustomerList::getExceptions()
-{
-	return exceptions;
-}
-
-void
-CustomerList::setExceptions(std::string  exceptions)
-{
-	this->exceptions = exceptions;
 }
 
 

@@ -7,28 +7,28 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**salesforceOrderLineId** | **String** | OrderLineId in SFDC |  [optional] |
+|**acceptedTermsId** | **String** | The SFDC id for the terms |  [optional] |
+|**acceptedTermsTime** | **String** | The UTC timestamp (to the nearest sec) of when terms were accepted |  [optional] |
 |**adsManagerOrderLineId** | **String** | Ads manager OrderLineId |  [optional] |
-|**pinOrderId** | **String** | The pin order id associated with the order line in SFDC |  [optional] |
-|**lastModifiedDateTime** | **String** | Last modified date. |  [optional] |
-|**startDate** | **LocalDate** | Start date of the order line. |  [optional] |
-|**endDate** | **LocalDate** | End date of the order line. |  [optional] |
+|**agencyLink** | **String** | Agency link |  [optional] |
 |**billToCompanyName** | **String** | Bill To Company name |  [optional] |
+|**billingContactEmail** | **String** | Billing contact email |  [optional] |
 |**billingContactFirstname** | **String** | Billing contact first name |  [optional] |
 |**billingContactLastname** | **String** | Billing contact last name |  [optional] |
-|**billingContactEmail** | **String** | Billing contact email |  [optional] |
+|**budgetAmount** | **BigDecimal** | If Budget order line, the budget amount. |  [optional] |
+|**currencyInfo** | **Currency** |  |  [optional] |
+|**endDate** | **LocalDate** | End date of the order line. |  [optional] |
+|**estimatedMonthlySpend** | **BigDecimal** | If Ongoing (perpetual) order line, the estimated monthly spend |  [optional] |
+|**lastModifiedDateTime** | **String** | Last modified date. |  [optional] |
 |**mediaContactEmail** | **String** | Billing media email |  [optional] |
 |**mediaContactFirstname** | **String** | Billing contact first name |  [optional] |
 |**mediaContactLastname** | **String** | Billing contact first name |  [optional] |
-|**currencyInfo** | **Currency** |  |  [optional] |
-|**agencyLink** | **String** | Agency link |  [optional] |
-|**poNumber** | **String** | The po number |  [optional] |
 |**orderName** | **String** | The order name |  [optional] |
+|**pinOrderId** | **String** | The pin order id associated with the order line in SFDC |  [optional] |
 |**pmpName** | **String** | The Pinterest marketing partner name |  [optional] |
-|**acceptedTermsId** | **String** | The SFDC id for the terms |  [optional] |
-|**acceptedTermsTime** | **String** | The UTC timestamp (to the nearest sec) of when terms were accepted |  [optional] |
-|**budgetAmount** | **BigDecimal** | If Budget order line, the budget amount. |  [optional] |
-|**estimatedMonthlySpend** | **BigDecimal** | If Ongoing (perpetual) order line, the estimated monthly spend |  [optional] |
+|**poNumber** | **String** | The po number |  [optional] |
+|**salesforceOrderLineId** | **String** | OrderLineId in SFDC |  [optional] |
+|**startDate** | **LocalDate** | Start date of the order line. |  [optional] |
 
 
 

@@ -6,6 +6,10 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}list_type`,
+                ...UserListType.fields(`${keyPrefix}list_type`, isInput),
+            },
+            {
                 key: `${keyPrefix}name`,
                 label: `Customer list name. - [${labelPrefix}name]`,
                 required: true,
@@ -17,24 +21,14 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}list_type`,
-                ...UserListType.fields(`${keyPrefix}list_type`, isInput),
-            },
-            {
-                key: `${keyPrefix}exceptions`,
-                label: `Customer list errors. - [${labelPrefix}exceptions]`,
-                dict: true,
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'list_type': bundle.inputData?.[`${keyPrefix}list_type`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'records': bundle.inputData?.[`${keyPrefix}records`],
-            'list_type': bundle.inputData?.[`${keyPrefix}list_type`],
-            'exceptions': bundle.inputData?.[`${keyPrefix}exceptions`],
         }
     },
 }

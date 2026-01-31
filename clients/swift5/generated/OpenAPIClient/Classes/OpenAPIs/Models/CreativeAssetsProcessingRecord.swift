@@ -17,22 +17,22 @@ public struct CreativeAssetsProcessingRecord: Codable, JSONEncodable, Hashable {
     public var creativeAssetsId: String?
     /** Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
     public var errors: [ItemValidationEvent]?
+    public var status: ItemProcessingStatus?
     /** Array with the validation warnings for the item processing record */
     public var warnings: [ItemValidationEvent]?
-    public var status: ItemProcessingStatus?
 
-    public init(creativeAssetsId: String? = nil, errors: [ItemValidationEvent]? = nil, warnings: [ItemValidationEvent]? = nil, status: ItemProcessingStatus? = nil) {
+    public init(creativeAssetsId: String? = nil, errors: [ItemValidationEvent]? = nil, status: ItemProcessingStatus? = nil, warnings: [ItemValidationEvent]? = nil) {
         self.creativeAssetsId = creativeAssetsId
         self.errors = errors
-        self.warnings = warnings
         self.status = status
+        self.warnings = warnings
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case creativeAssetsId = "creative_assets_id"
         case errors
-        case warnings
         case status
+        case warnings
     }
 
     // Encodable protocol methods
@@ -41,8 +41,8 @@ public struct CreativeAssetsProcessingRecord: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(creativeAssetsId, forKey: .creativeAssetsId)
         try container.encodeIfPresent(errors, forKey: .errors)
-        try container.encodeIfPresent(warnings, forKey: .warnings)
         try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(warnings, forKey: .warnings)
     }
 }
 

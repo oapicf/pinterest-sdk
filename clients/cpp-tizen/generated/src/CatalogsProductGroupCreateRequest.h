@@ -48,18 +48,25 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getName();
-
-	/*! \brief Set 
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
+	 */
+	std::string getFeedId();
+
+	/*! \brief Set Catalog Feed id pertaining to the catalog product group.
+	 */
+	void setFeedId(std::string  feed_id);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupFiltersRequest getFilters();
+
+	/*! \brief Set 
+	 */
+	void setFilters(CatalogsProductGroupFiltersRequest  filters);
 	/*! \brief Get boolean indicator of whether the product group is being featured or not
 	 */
 	bool getIsFeatured();
@@ -69,25 +76,18 @@ public:
 	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupFiltersRequest getFilters();
+	std::string getName();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFiltersRequest  filters);
-	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
-	 */
-	std::string getFeedId();
-
-	/*! \brief Set Catalog Feed id pertaining to the catalog product group.
-	 */
-	void setFeedId(std::string  feed_id);
+	void setName(std::string  name);
 
 private:
-	std::string name;
 	std::string description;
-	bool is_featured;
-	CatalogsProductGroupFiltersRequest filters;
 	std::string feed_id;
+	CatalogsProductGroupFiltersRequest filters;
+	bool is_featured;
+	std::string name;
 	void __init();
 	void __cleanup();
 

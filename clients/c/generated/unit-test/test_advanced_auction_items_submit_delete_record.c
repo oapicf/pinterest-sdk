@@ -22,15 +22,17 @@ advanced_auction_items_submit_delete_record_t* instantiate_advanced_auction_item
   advanced_auction_items_submit_delete_record_t* advanced_auction_items_submit_delete_record = NULL;
   if (include_optional) {
     advanced_auction_items_submit_delete_record = advanced_auction_items_submit_delete_record_create(
+      pinterest_rest_api_advanced_auction_items_submit_delete_record__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_items_submit_delete_record__"US",
-      pinterest_rest_api_advanced_auction_items_submit_delete_record__"EN"
+      pinterest_rest_api_advanced_auction_items_submit_delete_record__"EN",
+      list_createList()
     );
   } else {
     advanced_auction_items_submit_delete_record = advanced_auction_items_submit_delete_record_create(
+      pinterest_rest_api_advanced_auction_items_submit_delete_record__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_items_submit_delete_record__"US",
-      pinterest_rest_api_advanced_auction_items_submit_delete_record__"EN"
+      pinterest_rest_api_advanced_auction_items_submit_delete_record__"EN",
+      list_createList()
     );
   }
 

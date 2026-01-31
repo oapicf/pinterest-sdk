@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLogsSuccessResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLogsSuccessResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  IntegrationLogsSuccessResponse {
+    title = IntegrationLogsSuccessResponse
+    description = IntegrationLogsSuccessResponse
+    derivedFrom = Root
+    properties {
+        message {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLogsSuccessResponse {
+    title = IntegrationLogsSuccessResponse
+    description = IntegrationLogsSuccessResponse
+    implements = openapi_server.resourceTypes.IntegrationLogsSuccessResponse
+
+  }
+}

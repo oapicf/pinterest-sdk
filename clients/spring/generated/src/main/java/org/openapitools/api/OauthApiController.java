@@ -1,6 +1,8 @@
 package org.openapitools.api;
 
+import org.openapitools.model.ConversionAccessTokenResponse;
 import org.openapitools.model.Error;
+import org.springframework.lang.Nullable;
 import org.openapitools.model.OauthAccessTokenResponse;
 
 
@@ -27,7 +29,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-25T14:29:26.456489381Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class OauthApiController implements OauthApi {

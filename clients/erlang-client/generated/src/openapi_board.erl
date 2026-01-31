@@ -5,40 +5,43 @@
 -export_type([openapi_board/0]).
 
 -type openapi_board() ::
-    #{ 'id' => binary(),
-       'created_at' => openapi_date_time:openapi_date_time(),
-       'board_pins_modified_at' => openapi_date_time:openapi_date_time(),
-       'name' := binary(),
-       'description' => binary(),
+    #{ 'board_pins_modified_at' => openapi_date_time:openapi_date_time(),
        'collaborator_count' => integer(),
-       'pin_count' => integer(),
+       'created_at' => openapi_date_time:openapi_date_time(),
+       'description' => binary(),
        'follower_count' => integer(),
+       'id' := binary(),
+       'is_ads_only' => boolean(),
        'media' => openapi_board_media:openapi_board_media(),
+       'name' := binary(),
        'owner' => openapi_board_owner:openapi_board_owner(),
-       'privacy' => binary()
+       'pin_count' => integer(),
+       'privacy' => openapi_board_privacy:openapi_board_privacy()
      }.
 
-encode(#{ 'id' := Id,
-          'created_at' := CreatedAt,
-          'board_pins_modified_at' := BoardPinsModifiedAt,
-          'name' := Name,
-          'description' := Description,
+encode(#{ 'board_pins_modified_at' := BoardPinsModifiedAt,
           'collaborator_count' := CollaboratorCount,
-          'pin_count' := PinCount,
+          'created_at' := CreatedAt,
+          'description' := Description,
           'follower_count' := FollowerCount,
+          'id' := Id,
+          'is_ads_only' := IsAdsOnly,
           'media' := Media,
+          'name' := Name,
           'owner' := Owner,
+          'pin_count' := PinCount,
           'privacy' := Privacy
         }) ->
-    #{ 'id' => Id,
-       'created_at' => CreatedAt,
-       'board_pins_modified_at' => BoardPinsModifiedAt,
-       'name' => Name,
-       'description' => Description,
+    #{ 'board_pins_modified_at' => BoardPinsModifiedAt,
        'collaborator_count' => CollaboratorCount,
-       'pin_count' => PinCount,
+       'created_at' => CreatedAt,
+       'description' => Description,
        'follower_count' => FollowerCount,
+       'id' => Id,
+       'is_ads_only' => IsAdsOnly,
        'media' => Media,
+       'name' => Name,
        'owner' => Owner,
+       'pin_count' => PinCount,
        'privacy' => Privacy
      }.

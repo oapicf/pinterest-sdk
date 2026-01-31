@@ -75,7 +75,7 @@ private class OASMediaUploadTest {
         Map<String, String> x-property-mappings = mediaUpload.getx-property-mappings();
         System.assertEquals('mediaId', x-property-mappings.get('media_id'));
         System.assertEquals('mediaType', x-property-mappings.get('media_type'));
-        System.assertEquals('uploadUrl', x-property-mappings.get('upload_url'));
         System.assertEquals('uploadParameters', x-property-mappings.get('upload_parameters'));
+        System.assertEquals('uploadUrl', x-property-mappings.get('upload_url'));
     }
 }

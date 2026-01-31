@@ -16,6 +16,7 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsHotelProductGroupFilters
+import org.openapitools.client.models.CatalogsHotelProductGroupType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,43 +24,47 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogType 
- * @param id ID of the hotel product group.
- * @param filters 
  * @param catalogId Catalog id pertaining to the hotel product group.
- * @param name Name of hotel product group
- * @param description 
+ * @param catalogType 
+ * @param filters 
+ * @param id ID of the hotel product group.
+ * @param type 
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
+ * @param description 
+ * @param name Name of hotel product group
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
 
 
 data class CatalogsHotelProductGroup (
 
+    /* Catalog id pertaining to the hotel product group. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String,
+
     @Json(name = "catalog_type")
     val catalogType: CatalogsHotelProductGroup.CatalogType,
+
+    @Json(name = "filters")
+    val filters: CatalogsHotelProductGroupFilters,
 
     /* ID of the hotel product group. */
     @Json(name = "id")
     val id: kotlin.String,
 
-    @Json(name = "filters")
-    val filters: CatalogsHotelProductGroupFilters,
-
-    /* Catalog id pertaining to the hotel product group. */
-    @Json(name = "catalog_id")
-    val catalogId: kotlin.String,
-
-    /* Name of hotel product group */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    @Json(name = "description")
-    val description: kotlin.String? = null,
+    @Json(name = "type")
+    val type: CatalogsHotelProductGroupType,
 
     /* Unix timestamp in seconds of when catalog product group was created. */
     @Json(name = "created_at")
     val createdAt: kotlin.Int? = null,
+
+    @Json(name = "description")
+    val description: kotlin.String? = null,
+
+    /* Name of hotel product group */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
 
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     @Json(name = "updated_at")

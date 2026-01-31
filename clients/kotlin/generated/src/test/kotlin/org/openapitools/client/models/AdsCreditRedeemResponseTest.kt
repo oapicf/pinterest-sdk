@@ -25,12 +25,6 @@ class AdsCreditRedeemResponseTest : ShouldSpec() {
         // uncomment below to create an instance of AdsCreditRedeemResponse
         //val modelInstance = AdsCreditRedeemResponse()
 
-        // to test the property `success` - Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-        should("test success") {
-            // uncomment below to test the property
-            //modelInstance.success shouldBe ("TODO")
-        }
-
         // to test the property `errorCode` - Error code type if error occurs
         should("test errorCode") {
             // uncomment below to test the property
@@ -41,6 +35,12 @@ class AdsCreditRedeemResponseTest : ShouldSpec() {
         should("test errorMessage") {
             // uncomment below to test the property
             //modelInstance.errorMessage shouldBe ("TODO")
+        }
+
+        // to test the property `success` - Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+        should("test success") {
+            // uncomment below to test the property
+            //modelInstance.success shouldBe ("TODO")
         }
 
     }

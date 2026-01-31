@@ -20,6 +20,86 @@ public class CatalogsFeedValidationErrorsTest {
     }
 
     /**
+     * Test the property 'ADULT_INVALID'
+     */
+    @Test
+    public void ADULT_INVALIDTest() {
+        // TODO: test ADULT_INVALID
+    }
+
+    /**
+     * Test the property 'ADWORDS_FORMAT_INVALID'
+     */
+    @Test
+    public void ADWORDS_FORMAT_INVALIDTest() {
+        // TODO: test ADWORDS_FORMAT_INVALID
+    }
+
+    /**
+     * Test the property 'AVAILABILITY_INVALID'
+     */
+    @Test
+    public void AVAILABILITY_INVALIDTest() {
+        // TODO: test AVAILABILITY_INVALID
+    }
+
+    /**
+     * Test the property 'BLOCKLISTED_IMAGE_SIGNATURE'
+     */
+    @Test
+    public void BLOCKLISTED_IMAGE_SIGNATURETest() {
+        // TODO: test BLOCKLISTED_IMAGE_SIGNATURE
+    }
+
+    /**
+     * Test the property 'DELIMITER_ERROR'
+     */
+    @Test
+    public void DELIMITER_ERRORTest() {
+        // TODO: test DELIMITER_ERROR
+    }
+
+    /**
+     * Test the property 'DESCRIPTION_MISSING'
+     */
+    @Test
+    public void DESCRIPTION_MISSINGTest() {
+        // TODO: test DESCRIPTION_MISSING
+    }
+
+    /**
+     * Test the property 'DUPLICATE_PRODUCTS'
+     */
+    @Test
+    public void DUPLICATE_PRODUCTSTest() {
+        // TODO: test DUPLICATE_PRODUCTS
+    }
+
+    /**
+     * Test the property 'ENCODING_ERROR'
+     */
+    @Test
+    public void ENCODING_ERRORTest() {
+        // TODO: test ENCODING_ERROR
+    }
+
+    /**
+     * Test the property 'FEED_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void FEED_LENGTH_TOO_LONGTest() {
+        // TODO: test FEED_LENGTH_TOO_LONG
+    }
+
+    /**
+     * Test the property 'FEED_TOO_SMALL'
+     */
+    @Test
+    public void FEED_TOO_SMALLTest() {
+        // TODO: test FEED_TOO_SMALL
+    }
+
+    /**
      * Test the property 'FETCH_ERROR'
      */
     @Test
@@ -36,147 +116,11 @@ public class CatalogsFeedValidationErrorsTest {
     }
 
     /**
-     * Test the property 'ENCODING_ERROR'
-     */
-    @Test
-    public void ENCODING_ERRORTest() {
-        // TODO: test ENCODING_ERROR
-    }
-
-    /**
-     * Test the property 'DELIMITER_ERROR'
-     */
-    @Test
-    public void DELIMITER_ERRORTest() {
-        // TODO: test DELIMITER_ERROR
-    }
-
-    /**
-     * Test the property 'REQUIRED_COLUMNS_MISSING'
-     */
-    @Test
-    public void REQUIRED_COLUMNS_MISSINGTest() {
-        // TODO: test REQUIRED_COLUMNS_MISSING
-    }
-
-    /**
-     * Test the property 'DUPLICATE_PRODUCTS'
-     */
-    @Test
-    public void DUPLICATE_PRODUCTSTest() {
-        // TODO: test DUPLICATE_PRODUCTS
-    }
-
-    /**
      * Test the property 'IMAGE_LINK_INVALID'
      */
     @Test
     public void IMAGE_LINK_INVALIDTest() {
         // TODO: test IMAGE_LINK_INVALID
-    }
-
-    /**
-     * Test the property 'ITEMID_MISSING'
-     */
-    @Test
-    public void ITEMID_MISSINGTest() {
-        // TODO: test ITEMID_MISSING
-    }
-
-    /**
-     * Test the property 'TITLE_MISSING'
-     */
-    @Test
-    public void TITLE_MISSINGTest() {
-        // TODO: test TITLE_MISSING
-    }
-
-    /**
-     * Test the property 'DESCRIPTION_MISSING'
-     */
-    @Test
-    public void DESCRIPTION_MISSINGTest() {
-        // TODO: test DESCRIPTION_MISSING
-    }
-
-    /**
-     * Test the property 'PRODUCT_LINK_MISSING'
-     */
-    @Test
-    public void PRODUCT_LINK_MISSINGTest() {
-        // TODO: test PRODUCT_LINK_MISSING
-    }
-
-    /**
-     * Test the property 'IMAGE_LINK_MISSING'
-     */
-    @Test
-    public void IMAGE_LINK_MISSINGTest() {
-        // TODO: test IMAGE_LINK_MISSING
-    }
-
-    /**
-     * Test the property 'AVAILABILITY_INVALID'
-     */
-    @Test
-    public void AVAILABILITY_INVALIDTest() {
-        // TODO: test AVAILABILITY_INVALID
-    }
-
-    /**
-     * Test the property 'PRODUCT_PRICE_INVALID'
-     */
-    @Test
-    public void PRODUCT_PRICE_INVALIDTest() {
-        // TODO: test PRODUCT_PRICE_INVALID
-    }
-
-    /**
-     * Test the property 'LINK_FORMAT_INVALID'
-     */
-    @Test
-    public void LINK_FORMAT_INVALIDTest() {
-        // TODO: test LINK_FORMAT_INVALID
-    }
-
-    /**
-     * Test the property 'PARSE_LINE_ERROR'
-     */
-    @Test
-    public void PARSE_LINE_ERRORTest() {
-        // TODO: test PARSE_LINE_ERROR
-    }
-
-    /**
-     * Test the property 'ADWORDS_FORMAT_INVALID'
-     */
-    @Test
-    public void ADWORDS_FORMAT_INVALIDTest() {
-        // TODO: test ADWORDS_FORMAT_INVALID
-    }
-
-    /**
-     * Test the property 'INTERNAL_SERVICE_ERROR'
-     */
-    @Test
-    public void INTERNAL_SERVICE_ERRORTest() {
-        // TODO: test INTERNAL_SERVICE_ERROR
-    }
-
-    /**
-     * Test the property 'NO_VERIFIED_DOMAIN'
-     */
-    @Test
-    public void NO_VERIFIED_DOMAINTest() {
-        // TODO: test NO_VERIFIED_DOMAIN
-    }
-
-    /**
-     * Test the property 'ADULT_INVALID'
-     */
-    @Test
-    public void ADULT_INVALIDTest() {
-        // TODO: test ADULT_INVALID
     }
 
     /**
@@ -188,59 +132,27 @@ public class CatalogsFeedValidationErrorsTest {
     }
 
     /**
+     * Test the property 'IMAGE_LINK_MISSING'
+     */
+    @Test
+    public void IMAGE_LINK_MISSINGTest() {
+        // TODO: test IMAGE_LINK_MISSING
+    }
+
+    /**
+     * Test the property 'INTERNAL_SERVICE_ERROR'
+     */
+    @Test
+    public void INTERNAL_SERVICE_ERRORTest() {
+        // TODO: test INTERNAL_SERVICE_ERROR
+    }
+
+    /**
      * Test the property 'INVALID_DOMAIN'
      */
     @Test
     public void INVALID_DOMAINTest() {
         // TODO: test INVALID_DOMAIN
-    }
-
-    /**
-     * Test the property 'FEED_LENGTH_TOO_LONG'
-     */
-    @Test
-    public void FEED_LENGTH_TOO_LONGTest() {
-        // TODO: test FEED_LENGTH_TOO_LONG
-    }
-
-    /**
-     * Test the property 'LINK_LENGTH_TOO_LONG'
-     */
-    @Test
-    public void LINK_LENGTH_TOO_LONGTest() {
-        // TODO: test LINK_LENGTH_TOO_LONG
-    }
-
-    /**
-     * Test the property 'MALFORMED_XML'
-     */
-    @Test
-    public void MALFORMED_XMLTest() {
-        // TODO: test MALFORMED_XML
-    }
-
-    /**
-     * Test the property 'PRICE_MISSING'
-     */
-    @Test
-    public void PRICE_MISSINGTest() {
-        // TODO: test PRICE_MISSING
-    }
-
-    /**
-     * Test the property 'FEED_TOO_SMALL'
-     */
-    @Test
-    public void FEED_TOO_SMALLTest() {
-        // TODO: test FEED_TOO_SMALL
-    }
-
-    /**
-     * Test the property 'MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED'
-     */
-    @Test
-    public void MAX_ITEMS_PER_ITEM_GROUP_EXCEEDEDTest() {
-        // TODO: test MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
     }
 
     /**
@@ -252,19 +164,27 @@ public class CatalogsFeedValidationErrorsTest {
     }
 
     /**
-     * Test the property 'PINJOIN_CONTENT_UNSAFE'
+     * Test the property 'ITEMID_MISSING'
      */
     @Test
-    public void PINJOIN_CONTENT_UNSAFETest() {
-        // TODO: test PINJOIN_CONTENT_UNSAFE
+    public void ITEMID_MISSINGTest() {
+        // TODO: test ITEMID_MISSING
     }
 
     /**
-     * Test the property 'BLOCKLISTED_IMAGE_SIGNATURE'
+     * Test the property 'LINK_FORMAT_INVALID'
      */
     @Test
-    public void BLOCKLISTED_IMAGE_SIGNATURETest() {
-        // TODO: test BLOCKLISTED_IMAGE_SIGNATURE
+    public void LINK_FORMAT_INVALIDTest() {
+        // TODO: test LINK_FORMAT_INVALID
+    }
+
+    /**
+     * Test the property 'LINK_LENGTH_TOO_LONG'
+     */
+    @Test
+    public void LINK_LENGTH_TOO_LONGTest() {
+        // TODO: test LINK_LENGTH_TOO_LONG
     }
 
     /**
@@ -276,11 +196,91 @@ public class CatalogsFeedValidationErrorsTest {
     }
 
     /**
+     * Test the property 'MALFORMED_XML'
+     */
+    @Test
+    public void MALFORMED_XMLTest() {
+        // TODO: test MALFORMED_XML
+    }
+
+    /**
+     * Test the property 'MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED'
+     */
+    @Test
+    public void MAX_ITEMS_PER_ITEM_GROUP_EXCEEDEDTest() {
+        // TODO: test MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
+    }
+
+    /**
+     * Test the property 'NO_VERIFIED_DOMAIN'
+     */
+    @Test
+    public void NO_VERIFIED_DOMAINTest() {
+        // TODO: test NO_VERIFIED_DOMAIN
+    }
+
+    /**
+     * Test the property 'PARSE_LINE_ERROR'
+     */
+    @Test
+    public void PARSE_LINE_ERRORTest() {
+        // TODO: test PARSE_LINE_ERROR
+    }
+
+    /**
+     * Test the property 'PINJOIN_CONTENT_UNSAFE'
+     */
+    @Test
+    public void PINJOIN_CONTENT_UNSAFETest() {
+        // TODO: test PINJOIN_CONTENT_UNSAFE
+    }
+
+    /**
      * Test the property 'PRICE_CANNOT_BE_DETERMINED'
      */
     @Test
     public void PRICE_CANNOT_BE_DETERMINEDTest() {
         // TODO: test PRICE_CANNOT_BE_DETERMINED
+    }
+
+    /**
+     * Test the property 'PRICE_MISSING'
+     */
+    @Test
+    public void PRICE_MISSINGTest() {
+        // TODO: test PRICE_MISSING
+    }
+
+    /**
+     * Test the property 'PRODUCT_LINK_MISSING'
+     */
+    @Test
+    public void PRODUCT_LINK_MISSINGTest() {
+        // TODO: test PRODUCT_LINK_MISSING
+    }
+
+    /**
+     * Test the property 'PRODUCT_PRICE_INVALID'
+     */
+    @Test
+    public void PRODUCT_PRICE_INVALIDTest() {
+        // TODO: test PRODUCT_PRICE_INVALID
+    }
+
+    /**
+     * Test the property 'REQUIRED_COLUMNS_MISSING'
+     */
+    @Test
+    public void REQUIRED_COLUMNS_MISSINGTest() {
+        // TODO: test REQUIRED_COLUMNS_MISSING
+    }
+
+    /**
+     * Test the property 'TITLE_MISSING'
+     */
+    @Test
+    public void TITLE_MISSINGTest() {
+        // TODO: test TITLE_MISSING
     }
 
 }

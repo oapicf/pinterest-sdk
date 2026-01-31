@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsHotelProductGroupType;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,8 +28,10 @@ import javax.annotation.Generated;
  * CatalogsHotelProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -65,19 +68,19 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
 
   private CatalogTypeEnum catalogType;
 
-  private String id;
-
-  private @Nullable String name;
+  private @Nullable Integer createdAt;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsHotelProductGroupFilters filters;
 
-  private @Nullable Integer createdAt;
+  private String id;
+
+  private @Nullable String name;
+
+  private CatalogsHotelProductGroupType type;
 
   private @Nullable Integer updatedAt;
-
-  private String catalogId;
 
   public CatalogsHotelProductGroup() {
     super();
@@ -86,10 +89,31 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelProductGroup(CatalogTypeEnum catalogType, String id, CatalogsHotelProductGroupFilters filters, String catalogId) {
+  public CatalogsHotelProductGroup(String catalogId, CatalogTypeEnum catalogType, CatalogsHotelProductGroupFilters filters, String id, CatalogsHotelProductGroupType type) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.id = id;
     this.filters = filters;
+    this.id = id;
+    this.type = type;
+  }
+
+  public CatalogsHotelProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the hotel product group.
+   * @return catalogId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -113,44 +137,24 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelProductGroup id(String id) {
-    this.id = id;
+  public CatalogsHotelProductGroup createdAt(@Nullable Integer createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * ID of the hotel product group.
-   * @return id
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "443727193917", description = "ID of the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CatalogsHotelProductGroup name(@Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Name of hotel product group
-   * @return name
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
    */
   
-  @Schema(name = "name", example = "Most Popular", description = "Name of hotel product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public @Nullable String getName() {
-    return name;
+  @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_at")
+  public @Nullable Integer getCreatedAt() {
+    return createdAt;
   }
 
-  public void setName(@Nullable String name) {
-    this.name = name;
+  public void setCreatedAt(@Nullable Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
   public CatalogsHotelProductGroup description(String description) {
@@ -193,24 +197,64 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
     this.filters = filters;
   }
 
-  public CatalogsHotelProductGroup createdAt(@Nullable Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsHotelProductGroup id(String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
+   * ID of the hotel product group.
+   * @return id
    */
-  
-  @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_at")
-  public @Nullable Integer getCreatedAt() {
-    return createdAt;
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "443727193917", description = "ID of the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(@Nullable Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public CatalogsHotelProductGroup name(@Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name of hotel product group
+   * @return name
+   */
+  
+  @Schema(name = "name", example = "Most Popular", description = "Name of hotel product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
+  }
+
+  public void setName(@Nullable String name) {
+    this.name = name;
+  }
+
+  public CatalogsHotelProductGroup type(CatalogsHotelProductGroupType type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @NotNull @Valid 
+  @Schema(name = "type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("type")
+  public CatalogsHotelProductGroupType getType() {
+    return type;
+  }
+
+  public void setType(CatalogsHotelProductGroupType type) {
+    this.type = type;
   }
 
   public CatalogsHotelProductGroup updatedAt(@Nullable Integer updatedAt) {
@@ -233,26 +277,6 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsHotelProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the hotel product group.
-   * @return catalogId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -262,14 +286,15 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
       return false;
     }
     CatalogsHotelProductGroup catalogsHotelProductGroup = (CatalogsHotelProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsHotelProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsHotelProductGroup.id) &&
-        Objects.equals(this.name, catalogsHotelProductGroup.name) &&
+    return Objects.equals(this.catalogId, catalogsHotelProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelProductGroup.catalogType) &&
+        Objects.equals(this.createdAt, catalogsHotelProductGroup.createdAt) &&
         equalsNullable(this.description, catalogsHotelProductGroup.description) &&
         Objects.equals(this.filters, catalogsHotelProductGroup.filters) &&
-        Objects.equals(this.createdAt, catalogsHotelProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsHotelProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsHotelProductGroup.catalogId);
+        Objects.equals(this.id, catalogsHotelProductGroup.id) &&
+        Objects.equals(this.name, catalogsHotelProductGroup.name) &&
+        Objects.equals(this.type, catalogsHotelProductGroup.type) &&
+        Objects.equals(this.updatedAt, catalogsHotelProductGroup.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -278,7 +303,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, hashCodeNullable(description), filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, hashCodeNullable(description), filters, id, name, type, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -292,14 +317,15 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroup {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

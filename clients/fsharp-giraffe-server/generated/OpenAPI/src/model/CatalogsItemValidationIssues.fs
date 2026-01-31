@@ -12,9 +12,9 @@ module CatalogsItemValidationIssues =
 
 
   type CatalogsItemValidationIssues = {
-    ItemNumber : int;
-    ItemId : string option;
     Errors : CatalogsItemValidationErrors;
+    ItemId : string option;
+    ItemNumber : int;
     Warnings : CatalogsItemValidationWarnings;
   }
   //#endregion

@@ -9,13 +9,9 @@ import javax.validation.Valid;
 /**
  * User website verification request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UserWebsiteVerifyRequest   {
-  @JsonProperty("website")
-  
-  private String website;
-
   /**
    * Gets or Sets verificationMethod
    */
@@ -53,22 +49,9 @@ public class UserWebsiteVerifyRequest   {
   
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
 
-  public UserWebsiteVerifyRequest website(String website) {
-    this.website = website;
-    return this;
-  }
-
-   /**
-   * Get website
-   * @return website
-  **/
-  public String getWebsite() {
-    return website;
-  }
-
-  public void setWebsite(String website) {
-    this.website = website;
-  }
+  @JsonProperty("website")
+  
+  private String website;
 
   public UserWebsiteVerifyRequest verificationMethod(VerificationMethodEnum verificationMethod) {
     this.verificationMethod = verificationMethod;
@@ -87,6 +70,23 @@ public class UserWebsiteVerifyRequest   {
     this.verificationMethod = verificationMethod;
   }
 
+  public UserWebsiteVerifyRequest website(String website) {
+    this.website = website;
+    return this;
+  }
+
+   /**
+   * Get website
+   * @return website
+  **/
+  public String getWebsite() {
+    return website;
+  }
+
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,13 +97,13 @@ public class UserWebsiteVerifyRequest   {
       return false;
     }
     UserWebsiteVerifyRequest userWebsiteVerifyRequest = (UserWebsiteVerifyRequest) o;
-    return Objects.equals(website, userWebsiteVerifyRequest.website) &&
-        Objects.equals(verificationMethod, userWebsiteVerifyRequest.verificationMethod);
+    return Objects.equals(verificationMethod, userWebsiteVerifyRequest.verificationMethod) &&
+        Objects.equals(website, userWebsiteVerifyRequest.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, verificationMethod);
+    return Objects.hash(verificationMethod, website);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -112,8 +112,8 @@ public class UserWebsiteVerifyRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerifyRequest {\n");
     
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

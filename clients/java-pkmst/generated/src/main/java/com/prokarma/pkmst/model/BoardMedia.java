@@ -3,7 +3,6 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -16,11 +15,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  *
  */
 /**
- * Board media.
+ * BoardMedia
  */
-@ApiModel(description = "Board media.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardMedia   {
   @JsonProperty("image_cover_url")
   private String imageCoverUrl;
@@ -35,10 +33,10 @@ public class BoardMedia   {
   }
 
   /**
-   * Board cover image.
+   * Board cover image
    * @return imageCoverUrl
    */
-  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image.")
+  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image")
   public String getImageCoverUrl() {
     return imageCoverUrl;
   }

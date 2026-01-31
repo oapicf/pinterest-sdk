@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  |  [optional]
-**items** | [**List&lt;PinMediaSourceImagesBase64ItemsInner&gt;**](PinMediaSourceImagesBase64ItemsInner.md) | Array with image objects. | 
 **index** | **Integer** |  |  [optional]
+**items** | [**List&lt;PinMediaSourceImagesBase64Item&gt;**](PinMediaSourceImagesBase64Item.md) | Array with image objects. | 
+**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) | The source type of the media. | 
 
 
 ## Enum: SourceTypeEnum

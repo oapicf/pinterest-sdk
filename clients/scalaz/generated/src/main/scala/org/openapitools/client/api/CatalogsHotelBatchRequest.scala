@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import CatalogsHotelBatchRequest._
 
 case class CatalogsHotelBatchRequest (
-  catalogType: CatalogType,
+  /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+  catalogId: Option[String],
+catalogType: CatalogType,
 country: Country,
-/* We recommend using the CatalogsLocale values. */
-  language: Language,
 /* Array with catalogs item operations */
   items: List[CatalogsHotelBatchItem],
-/* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
-  catalogId: Option[String])
+/* We recommend using the CatalogsLocale values. */
+  language: Language)
 
 object CatalogsHotelBatchRequest {
   import DateTimeCodecs._

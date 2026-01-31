@@ -15,7 +15,7 @@ public struct IntegrationLogClientError: Codable, JSONEncodable, Hashable {
 
     public static let causeRule = StringRule(minLength: nil, maxLength: 512, pattern: nil)
     public static let fileNameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
-    public static let messageRule = StringRule(minLength: nil, maxLength: 512, pattern: nil)
+    public static let messageRule = StringRule(minLength: nil, maxLength: 8192, pattern: nil)
     public static let messageDetailRule = StringRule(minLength: nil, maxLength: 1024, pattern: nil)
     public static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
     /** Original cause of the error. */

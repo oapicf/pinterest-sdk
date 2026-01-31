@@ -8,12 +8,13 @@ open ConversionTagsApiHandlerParams
 open ConversionTagsApiServiceInterface
 open ConversionTagsApiServiceImplementation
 open OpenAPI.Model.ConversionEventResponse
+open OpenAPI.Model.ConversionTag
 open OpenAPI.Model.ConversionTagCreate
-open OpenAPI.Model.ConversionTagListResponse
-open OpenAPI.Model.ConversionTagResponse
+open OpenAPI.Model.ConversionTagsList200Response
 open OpenAPI.Model.Error
 open System.Collections.Generic
 open OpenAPI.Model.PageVisitConversionTagsGet200Response
+open OpenAPI.Model.PinterestLibError
 
 module ConversionTagsApiHandler =
 
@@ -36,6 +37,18 @@ module ConversionTagsApiHandler =
           return! (match result with
                       | ConversionTagsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ConversionTagsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | ConversionTagsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | ConversionTagsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ConversionTagsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ConversionTagsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ConversionTagsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ConversionTagsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -63,7 +76,7 @@ module ConversionTagsApiHandler =
 
     //#region ConversionTagsList
     /// <summary>
-    /// Get conversion tags
+    /// List conversion tags
     /// </summary>
 
     let ConversionTagsList (pathParams:ConversionTagsListPathParams) : HttpHandler =
@@ -75,6 +88,16 @@ module ConversionTagsApiHandler =
           return! (match result with
                       | ConversionTagsListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ConversionTagsListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | ConversionTagsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ConversionTagsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ConversionTagsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ConversionTagsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ConversionTagsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

@@ -6,6 +6,11 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}options`,
+                label: `[${labelPrefix}options]`,
+                children: QuizPinOption.fields(`${keyPrefix}options${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
                 key: `${keyPrefix}question_id`,
                 label: `[${labelPrefix}question_id]`,
                 type: 'number',
@@ -15,19 +20,14 @@ module.exports = {
                 label: `[${labelPrefix}question_text]`,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}options`,
-                label: `[${labelPrefix}options]`,
-                children: QuizPinOption.fields(`${keyPrefix}options${!isInput ? '[]' : ''}`, isInput, true), 
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'options': utils.childMapping(bundle.inputData?.[`${keyPrefix}options`], `${keyPrefix}options`, QuizPinOption),
             'question_id': bundle.inputData?.[`${keyPrefix}question_id`],
             'question_text': bundle.inputData?.[`${keyPrefix}question_text`],
-            'options': utils.childMapping(bundle.inputData?.[`${keyPrefix}options`], `${keyPrefix}options`, QuizPinOption),
         }
     },
 }

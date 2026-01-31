@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -167,6 +167,72 @@ func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
+	var pinFilterParam string
+	if query.Has("pin_filter") {
+		param := query.Get("pin_filter")
+
+		pinFilterParam = param
+	} else {
+	}
+	var pinMetricsParam bool
+	if query.Has("pin_metrics") {
+		param, err := parseBoolParameter(
+			query.Get("pin_metrics"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "pin_metrics", Err: err}, nil)
+			return
+		}
+
+		pinMetricsParam = param
+	} else {
+		var param bool = false
+		pinMetricsParam = param
+	}
+	var includeProtectedPinsParam bool
+	if query.Has("include_protected_pins") {
+		param, err := parseBoolParameter(
+			query.Get("include_protected_pins"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "include_protected_pins", Err: err}, nil)
+			return
+		}
+
+		includeProtectedPinsParam = param
+	} else {
+		var param bool = false
+		includeProtectedPinsParam = param
+	}
+	var pinTypeParam string
+	if query.Has("pin_type") {
+		param := query.Get("pin_type")
+
+		pinTypeParam = param
+	} else {
+	}
+	var creativeTypesParam []CreativeType
+	if query.Has("creative_types") {
+		paramSplits := strings.Split(query.Get("creative_types"), ",")
+		creativeTypesParam = make([]CreativeType, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewCreativeTypeFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "creative_types", Err: err}, nil)
+				return
+			}
+			creativeTypesParam = append(creativeTypesParam, paramEnum)
+		}
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -192,64 +258,7 @@ func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var pinFilterParam string
-	if query.Has("pin_filter") {
-		param := query.Get("pin_filter")
-
-		pinFilterParam = param
-	} else {
-	}
-	var includeProtectedPinsParam bool
-	if query.Has("include_protected_pins") {
-		param, err := parseBoolParameter(
-			query.Get("include_protected_pins"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "include_protected_pins", Err: err}, nil)
-			return
-		}
-
-		includeProtectedPinsParam = param
-	} else {
-		var param bool = false
-		includeProtectedPinsParam = param
-	}
-	var pinTypeParam string
-	if query.Has("pin_type") {
-		param := query.Get("pin_type")
-
-		pinTypeParam = param
-	} else {
-	}
-	var creativeTypesParam []string
-	if query.Has("creative_types") {
-		creativeTypesParam = strings.Split(query.Get("creative_types"), ",")
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	var pinMetricsParam bool
-	if query.Has("pin_metrics") {
-		param, err := parseBoolParameter(
-			query.Get("pin_metrics"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "pin_metrics", Err: err}, nil)
-			return
-		}
-
-		pinMetricsParam = param
-	} else {
-		var param bool = false
-		pinMetricsParam = param
-	}
-	result, err := c.service.PinsList(r.Context(), bookmarkParam, pageSizeParam, pinFilterParam, includeProtectedPinsParam, pinTypeParam, creativeTypesParam, adAccountIdParam, pinMetricsParam)
+	result, err := c.service.PinsList(r.Context(), pinFilterParam, pinMetricsParam, includeProtectedPinsParam, pinTypeParam, creativeTypesParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -288,7 +297,7 @@ func (c *PinsAPIController) PinsCreate(w http.ResponseWriter, r *http.Request) {
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.PinsCreate(r.Context(), &pinCreateParam, adAccountIdParam)
+	result, err := c.service.PinsCreate(r.Context(), pinCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -311,6 +320,13 @@ func (c *PinsAPIController) PinsGet(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{"pin_id"}, nil)
 		return
 	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
 	var pinMetricsParam bool
 	if query.Has("pin_metrics") {
 		param, err := parseBoolParameter(
@@ -327,14 +343,7 @@ func (c *PinsAPIController) PinsGet(w http.ResponseWriter, r *http.Request) {
 		var param bool = false
 		pinMetricsParam = param
 	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.PinsGet(r.Context(), pinIdParam, pinMetricsParam, adAccountIdParam)
+	result, err := c.service.PinsGet(r.Context(), pinIdParam, adAccountIdParam, pinMetricsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -409,7 +418,7 @@ func (c *PinsAPIController) PinsUpdate(w http.ResponseWriter, r *http.Request) {
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.PinsUpdate(r.Context(), pinIdParam, &pinUpdateParam, adAccountIdParam)
+	result, err := c.service.PinsUpdate(r.Context(), pinIdParam, pinUpdateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

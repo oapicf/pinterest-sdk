@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdatePartnerResultsResponseArrayItemsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdatePartnerResultsResponseArrayItemsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BusinessAccessError = openapi_server.resourceTypes.BusinessAccessError
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  UpdatePartnerResultsResponseArrayItemsInner {
+    title = UpdatePartnerResultsResponseArrayItemsInner
+    description = UpdatePartnerResultsResponseArrayItemsInner
+    derivedFrom = Root
+    properties {
+        exception {
+          type = BusinessAccessError
+          description = ""
+          optional = false
+        }
+        member_or_partner_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdatePartnerResultsResponseArrayItemsInner {
+    title = UpdatePartnerResultsResponseArrayItemsInner
+    description = UpdatePartnerResultsResponseArrayItemsInner
+    implements = openapi_server.resourceTypes.UpdatePartnerResultsResponseArrayItemsInner
+
+  }
+}

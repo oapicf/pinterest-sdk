@@ -3,6 +3,14 @@ Protected Class UpdateAssetGroupResponseExceptionsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Asset group id of the exception.
+		#tag EndNote
+		asset_group_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Error code associated with the error editing asset group.
 		#tag EndNote
 		code As Xoson.O.OptionalInteger
@@ -14,14 +22,6 @@ Protected Class UpdateAssetGroupResponseExceptionsInner
 			Error message associated with the error editing asset group.
 		#tag EndNote
 		message As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Asset group id of the exception.
-		#tag EndNote
-		asset_group_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -62,6 +62,14 @@ Protected Class UpdateAssetGroupResponseExceptionsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="asset_group_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="code"
 			Visible=false
 			Group="Behavior"
@@ -71,14 +79,6 @@ Protected Class UpdateAssetGroupResponseExceptionsInner
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="message"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="asset_group_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -23,8 +23,8 @@ import com.squareup.moshi.JsonClass
  * Used for including extra details to a base error
  *
  * @param code 
- * @param message 
  * @param details 
+ * @param message 
  */
 
 
@@ -33,11 +33,11 @@ data class DetailedError (
     @Json(name = "code")
     val code: kotlin.Int,
 
-    @Json(name = "message")
-    val message: kotlin.String,
-
     @Json(name = "details")
-    val details: kotlin.Any
+    val details: kotlin.Any,
+
+    @Json(name = "message")
+    val message: kotlin.String
 
 ) {
 

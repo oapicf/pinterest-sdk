@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `UserSummary`
 --
-SELECT `username`, `type` FROM `UserSummary` WHERE 1;
+SELECT `type`, `username` FROM `UserSummary` WHERE 1;
 
 --
 -- INSERT template for table `UserSummary`
 --
-INSERT INTO `UserSummary`(`username`, `type`) VALUES (?, ?);
+INSERT INTO `UserSummary`(`type`, `username`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `UserSummary`
 --
-UPDATE `UserSummary` SET `username` = ?, `type` = ? WHERE 1;
+UPDATE `UserSummary` SET `type` = ?, `username` = ? WHERE 1;
 
 --
 -- DELETE template for table `UserSummary`

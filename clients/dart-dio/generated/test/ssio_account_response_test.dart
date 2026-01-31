@@ -7,9 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(SSIOAccountResponse, () {
-    // Advertiser eligible to create order lines
-    // bool eligible
-    test('to test the property `eligible`', () async {
+    // An array of Salesforce account information that includes address, io terms, etc.
+    // BuiltList<SSIOAccountItem> billtoInfos
+    test('to test the property `billtoInfos`', () async {
       // TODO
     });
 
@@ -19,25 +19,25 @@ void main() {
       // TODO
     });
 
-    // An array of Salesforce account information that includes address, io terms, etc.
-    // BuiltList<SSIOAccountItem> billtoInfos
-    test('to test the property `billtoInfos`', () async {
-      // TODO
-    });
-
     // String currency
     test('to test the property `currency`', () async {
       // TODO
     });
 
-    // BuiltList<SSIOAccountPMPName> pmpNames
-    test('to test the property `pmpNames`', () async {
+    // Advertiser eligible to create order lines
+    // bool eligible
+    test('to test the property `eligible`', () async {
       // TODO
     });
 
     // Error indicator from Salesforce which could be \"No Error\"
     // String error
     test('to test the property `error`', () async {
+      // TODO
+    });
+
+    // BuiltList<SSIOAccountPMPName> pmpNames
+    test('to test the property `pmpNames`', () async {
       // TODO
     });
 

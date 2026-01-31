@@ -7,16 +7,16 @@
 #' @title ItemsIssuesList200Response
 #' @description ItemsIssuesList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{CatalogsItemValidationIssues})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{CatalogsItemValidationIssues})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ItemsIssuesList200Response <- R6::R6Class(
   "ItemsIssuesList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new ItemsIssuesList200Response class.
@@ -69,13 +69,13 @@ ItemsIssuesList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ItemsIssuesList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        ItemsIssuesList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         ItemsIssuesList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        ItemsIssuesList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(ItemsIssuesList200ResponseObject)
     },
@@ -87,11 +87,11 @@ ItemsIssuesList200Response <- R6::R6Class(
     #' @return the instance of ItemsIssuesList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsItemValidationIssues]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsItemValidationIssues]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ ItemsIssuesList200Response <- R6::R6Class(
     #' @return the instance of ItemsIssuesList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsItemValidationIssues]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsItemValidationIssues]", loadNamespace("openapi"))
       self
     },
 

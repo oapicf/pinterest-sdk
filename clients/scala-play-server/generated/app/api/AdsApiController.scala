@@ -18,8 +18,9 @@ import model.Error
 import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
+import model.ReportingTimeZone
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends AbstractController(cc) {
   /**
@@ -40,7 +41,7 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/ads/targeting_analytics?adIds=[value]&startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]
+    * GET /v5/ad_accounts/:adAccountId/ads/targeting_analytics?adIds=[value]&startDate=[value]&endDate=[value]&targetingTypes=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&attributionTypes=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adTargetingAnalyticsGet(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -94,9 +95,13 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
       val attributionTypes = request.getQueryString("attribution_types")
+        .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
+        
+      val reportingTimezone = request.getQueryString("reporting_timezone")
         .map(value => )
         
-      api.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
+      api.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
     }
 
     val result = executeApi()
@@ -105,7 +110,7 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/ads/analytics?startDate=[value]&endDate=[value]&adIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&pinIds=[value]&campaignIds=[value]
+    * GET /v5/ad_accounts/:adAccountId/ads/analytics?startDate=[value]&endDate=[value]&adIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&pinIds=[value]&campaignIds=[value]&reportingTimezone=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -154,7 +159,10 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
       val campaignIds = request.queryString.get("campaign_ids")
         .map(_.toList)
         
-      api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
+      val reportingTimezone = request.getQueryString("reporting_timezone")
+        .map(value => )
+        
+      api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone)
     }
 
     val result = executeApi()

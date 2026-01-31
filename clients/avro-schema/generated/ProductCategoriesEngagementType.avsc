@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "ProductCategoriesEngagementType",
+  "symbols": [
+    "ENGAGEMENT",
+    "OUTBOUND_CLICK",
+    "SAVE"
+  ]
+}

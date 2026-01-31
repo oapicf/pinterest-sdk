@@ -3,22 +3,23 @@ package org.openapitools.client.model
 
 
 case class AdAccount (
-    _id: Option[String],
-    _name: Option[String],
-    _owner: Option[AdAccountOwner],
     _country: Option[Country],
-    _currency: Option[Currency],
-    _permissions: Option[List[BusinessAccessRole]],
-    /* Creation time. Unix timestamp in seconds. */
+    /*  Creation time. Unix timestamp in seconds. */
     _createdTime: Option[Integer],
-    /* Last update time. Unix timestamp in seconds. */
+    _currency: Option[Currency],
+    _id: String,
+    /* Ad account name. */
+    _name: Option[String],
+    /* Ad account owner */
+    _owner: Option[AdAccountOwner],
+    _permissions: Option[List[BusinessAccessRole]],
     _updatedTime: Option[Integer]
 )
 object AdAccount {
-    def toStringBody(var_id: Object, var_name: Object, var_owner: Object, var_country: Object, var_currency: Object, var_permissions: Object, var_createdTime: Object, var_updatedTime: Object) =
+    def toStringBody(var_country: Object, var_createdTime: Object, var_currency: Object, var_id: Object, var_name: Object, var_owner: Object, var_permissions: Object, var_updatedTime: Object) =
         s"""
         | {
-        | "id":$var_id,"name":$var_name,"owner":$var_owner,"country":$var_country,"currency":$var_currency,"permissions":$var_permissions,"createdTime":$var_createdTime,"updatedTime":$var_updatedTime
+        | "country":$var_country,"createdTime":$var_createdTime,"currency":$var_currency,"id":$var_id,"name":$var_name,"owner":$var_owner,"permissions":$var_permissions,"updatedTime":$var_updatedTime
         | }
         """.stripMargin
 }

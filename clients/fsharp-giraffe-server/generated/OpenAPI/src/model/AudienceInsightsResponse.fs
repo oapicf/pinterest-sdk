@@ -14,10 +14,10 @@ module AudienceInsightsResponse =
 
   type AudienceInsightsResponse = {
     Categories : AudienceCategory[];
-    Demographics : AudienceDemographics;
-    Type : AudienceInsightType;
     Date : string option;
+    Demographics : AudienceDemographics;
     Size : int;
     SizeIsUpperBound : bool;
+    Type : AudienceInsightType;
   }
   //#endregion

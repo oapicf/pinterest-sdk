@@ -5,9 +5,12 @@
   "name": "BulkDownloadRequestCampaignFilter",
   "fields": [
     {
-      "name": "start_time",
-      "type": ["null", "string"],
-      "doc": "Unix UTC timestamp.",
+      "name": "campaign_status",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignSummaryStatus"
+      }],
+      "doc": "",
       "default": null
     },
     {
@@ -23,21 +26,18 @@
       "default": null
     },
     {
-      "name": "campaign_status",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.CampaignSummaryStatus"
-      }],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "objective_type",
       "type": ["null", {
         "type": "array",
         "items": "model.ObjectiveType"
       }],
       "doc": "",
+      "default": null
+    },
+    {
+      "name": "start_time",
+      "type": ["null", "string"],
+      "doc": "Unix UTC timestamp.",
       "default": null
     }
   ]

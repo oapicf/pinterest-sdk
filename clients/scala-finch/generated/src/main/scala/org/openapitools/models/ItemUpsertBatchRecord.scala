@@ -9,11 +9,11 @@ import org.openapitools.models.ItemAttributesRequest
 
 /**
  * Object describing an item batch record to upsert items
- * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param attributes 
+ * @param itemUnderscoreid The catalog item id in the merchant namespace
  */
-case class ItemUpsertBatchRecord(itemUnderscoreid: Option[String],
-                attributes: Option[ItemAttributesRequest]
+case class ItemUpsertBatchRecord(attributes: Option[ItemAttributesRequest],
+                itemUnderscoreid: Option[String]
                 )
 
 object ItemUpsertBatchRecord {

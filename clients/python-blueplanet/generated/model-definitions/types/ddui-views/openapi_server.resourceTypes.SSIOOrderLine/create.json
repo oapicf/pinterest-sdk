@@ -1,0 +1,38 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "accepted_terms_id" },
+      {"model": "accepted_terms_time" },
+      {"model": "ads_manager_order_line_id" },
+      {"model": "agency_link" },
+      {"model": "bill_to_company_name" },
+      {"model": "billing_contact_email" },
+      {"model": "billing_contact_firstname" },
+      {"model": "billing_contact_lastname" },
+      {"model": "budget_amount" },
+      {"model": "currency_info" },
+      {"model": "end_date" },
+      {"model": "estimated_monthly_spend" },
+      {"model": "last_modified_date_time" },
+      {"model": "media_contact_email" },
+      {"model": "media_contact_firstname" },
+      {"model": "media_contact_lastname" },
+      {"model": "order_name" },
+      {"model": "pin_order_id" },
+      {"model": "pmp_name" },
+      {"model": "po_number" },
+      {"model": "salesforce_order_line_id" },
+      {"model": "start_date" },
+    ]
+  }]
+}

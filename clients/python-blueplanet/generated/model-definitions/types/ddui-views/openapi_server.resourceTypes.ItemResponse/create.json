@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "catalog_type" },
+      {"model": "attributes" },
+      {"model": "item_id" },
+      {"model": "pins" },
+      {"model": "hotel_id" },
+      {"model": "creative_assets_id" },
+      {"model": "errors" },
+    ]
+  }]
+}

@@ -1,12 +1,17 @@
 package org.openapitools.controller;
 
 import org.openapitools.model.Board;
+import org.openapitools.model.BoardCreate;
+import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
 import org.openapitools.model.BoardSectionsList200Response;
-import org.openapitools.model.BoardUpdate;
+import org.openapitools.model.BoardWithUpdatePrivacy;
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -92,7 +97,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@73be117d");
+            .accept("[Ljava.lang.String;@3e7b836e");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -143,7 +148,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@259615df");
+            .accept("[Ljava.lang.String;@2d06e5cd");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -194,7 +199,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@57cbaefb");
+            .accept("[Ljava.lang.String;@1e032081");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -249,7 +254,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6c9b69a0");
+            .accept("[Ljava.lang.String;@6507e78d");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -304,7 +309,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@6fadb8b7");
+            .accept("[Ljava.lang.String;@70578b0");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -320,7 +325,7 @@ public class BoardsControllerTest {
      *
      * The method should: Create board
      *
-     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -328,11 +333,11 @@ public class BoardsControllerTest {
     @Disabled("Not Implemented")
     void boardsCreateMethodTest() {
         // given
-        Board board = new Board("Summer Recipes");
+        BoardCreate boardCreate = new BoardCreate("Summer recipes");
         String adAccountId = "example";
 
         // when
-        Board result = controller.boardsCreate(board, adAccountId).block();
+        Board result = controller.boardsCreate(boardCreate, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -348,10 +353,10 @@ public class BoardsControllerTest {
     @Disabled("Not Implemented")
     void boardsCreateClientApiTest() throws IOException {
         // given
-        Board body = new Board("Summer Recipes");
+        BoardCreate body = new BoardCreate("Summer recipes");
         String uri = UriTemplate.of("/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7a807070");
+            .accept("[Ljava.lang.String;@1d37dd10");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -367,7 +372,7 @@ public class BoardsControllerTest {
      *
      * The method should: Delete board
      *
-     * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -400,7 +405,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@7036a5ad");
+            .accept("[Ljava.lang.String;@1ab7f11f");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -416,7 +421,7 @@ public class BoardsControllerTest {
      *
      * The method should: Get board
      *
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -449,7 +454,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@47d70462");
+            .accept("[Ljava.lang.String;@40d6564b");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -465,7 +470,7 @@ public class BoardsControllerTest {
      *
      * The method should: List boards
      *
-     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -474,12 +479,12 @@ public class BoardsControllerTest {
     void boardsListMethodTest() {
         // given
         String adAccountId = "example";
+        BoardPrivacyFilter privacy = BoardPrivacyFilter.fromValue("ALL");
         String bookmark = "example";
         Integer pageSize = 25;
-        String privacy = "example";
 
         // when
-        BoardsList200Response result = controller.boardsList(adAccountId, bookmark, pageSize, privacy).block();
+        BoardsList200Response result = controller.boardsList(adAccountId, privacy, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -497,12 +502,12 @@ public class BoardsControllerTest {
         // given
         String uri = UriTemplate.of("/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@453d742f");
+            .accept("[Ljava.lang.String;@6c3a7619");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
+            .add("privacy", String.valueOf(BoardPrivacyFilter.fromValue("ALL"))) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("privacy", "example"); // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BoardsList200Response.class);
@@ -527,7 +532,7 @@ public class BoardsControllerTest {
         String boardId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        List<String> creativeTypes = Arrays.asList("example");
+        List<CreativeType> creativeTypes = Arrays.asList();
         String adAccountId = "example";
         Boolean pinMetrics = false;
 
@@ -553,11 +558,11 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3cc78f08");
+            .accept("[Ljava.lang.String;@4f46e9d3");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("creative_types", Arrays.asList("example")) // The query format should be multi
+            .add("creative_types", Arrays.asList()) // The query format should be multi
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("pin_metrics", String.valueOf(false)); // The query parameter format should be 
 
@@ -573,7 +578,7 @@ public class BoardsControllerTest {
      *
      * The method should: Update board
      *
-     * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -582,11 +587,11 @@ public class BoardsControllerTest {
     void boardsUpdateMethodTest() {
         // given
         String boardId = "example";
-        BoardUpdate boardUpdate = new BoardUpdate();
+        BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate = new BoardWithUpdatePrivacyUpdate();
         String adAccountId = "example";
 
         // when
-        Board result = controller.boardsUpdate(boardId, boardUpdate, adAccountId).block();
+        BoardWithUpdatePrivacy result = controller.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -602,18 +607,18 @@ public class BoardsControllerTest {
     @Disabled("Not Implemented")
     void boardsUpdateClientApiTest() throws IOException {
         // given
-        BoardUpdate body = new BoardUpdate();
+        BoardWithUpdatePrivacyUpdate body = new BoardWithUpdatePrivacyUpdate();
         String uri = UriTemplate.of("/boards/{board_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@79994ef0");
+            .accept("[Ljava.lang.String;@6a5cd62d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, Board.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BoardWithUpdatePrivacy.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

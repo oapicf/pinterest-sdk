@@ -9,13 +9,13 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param catalogUnderscoreid Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
  * @param catalogUnderscoretype 
  * @param itemUnderscoreids 
- * @param catalogUnderscoreid Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
  */
-case class CatalogsRetailItemsFilter(catalogUnderscoretype: String,
-                itemUnderscoreids: Seq[String],
-                catalogUnderscoreid: Option[String]
+case class CatalogsRetailItemsFilter(catalogUnderscoreid: Option[String],
+                catalogUnderscoretype: String,
+                itemUnderscoreids: Seq[String]
                 )
 
 object CatalogsRetailItemsFilter {

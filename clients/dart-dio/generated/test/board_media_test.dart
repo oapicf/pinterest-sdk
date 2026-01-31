@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BoardMedia, () {
-    // Board cover image.
+    // Board cover image
     // String imageCoverUrl
     test('to test the property `imageCoverUrl`', () async {
       // TODO

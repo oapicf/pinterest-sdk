@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsProductGroupMultipleStringListCriteria`
 --
-SELECT `values`, `negated` FROM `CatalogsProductGroupMultipleStringListCriteria` WHERE 1;
+SELECT `negated`, `values` FROM `CatalogsProductGroupMultipleStringListCriteria` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsProductGroupMultipleStringListCriteria`
 --
-INSERT INTO `CatalogsProductGroupMultipleStringListCriteria`(`values`, `negated`) VALUES (?, ?);
+INSERT INTO `CatalogsProductGroupMultipleStringListCriteria`(`negated`, `values`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CatalogsProductGroupMultipleStringListCriteria`
 --
-UPDATE `CatalogsProductGroupMultipleStringListCriteria` SET `values` = ?, `negated` = ? WHERE 1;
+UPDATE `CatalogsProductGroupMultipleStringListCriteria` SET `negated` = ?, `values` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsProductGroupMultipleStringListCriteria`

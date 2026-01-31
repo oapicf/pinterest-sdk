@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,15 +14,16 @@ package openapi
 
 
 
-// PinMediaSourceImageUrl - Image URL-based media source
+// PinMediaSourceImageUrl - Image URL-based media source.
 type PinMediaSourceImageUrl struct {
-
-	SourceType string `json:"source_type"`
-
-	Url string `json:"url"`
 
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard bool `json:"is_standard,omitempty"`
+
+	// The source type of the media.
+	SourceType string `json:"source_type"`
+
+	Url string `json:"url"`
 }
 
 // AssertPinMediaSourceImageUrlRequired checks if the required fields are not zero-ed

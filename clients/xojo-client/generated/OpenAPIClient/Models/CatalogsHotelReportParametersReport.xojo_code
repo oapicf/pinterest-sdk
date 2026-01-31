@@ -34,6 +34,7 @@ Protected Class CatalogsHotelReportParametersReport
         
         FeedIngestionIssues
         DistributionIssues
+        AllItems
         
     #tag EndEnum
 
@@ -46,6 +47,8 @@ Protected Class CatalogsHotelReportParametersReport
 		      Return "FEED_INGESTION_ISSUES"
 		    Case Report_typeEnum.DistributionIssues
 		      Return "DISTRIBUTION_ISSUES"
+		    Case Report_typeEnum.AllItems
+		      Return "ALL_ITEMS"
 		    
 		  End Select
 		  Return ""

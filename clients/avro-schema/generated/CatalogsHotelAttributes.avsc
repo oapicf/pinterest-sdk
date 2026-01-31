@@ -5,21 +5,15 @@
   "name": "CatalogsHotelAttributes",
   "fields": [
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "The hotel's name.",
+      "name": "address",
+      "type": ["null", "model.CatalogsHotelAddress"],
+      "doc": "",
       "default": null
     },
     {
-      "name": "link",
+      "name": "base_price",
       "type": ["null", "string"],
-      "doc": "Link to the product page",
-      "default": null
-    },
-    {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "Brief description of the hotel.",
+      "doc": "Base price of the hotel room per night followed by the ISO currency code",
       "default": null
     },
     {
@@ -29,30 +23,9 @@
       "default": null
     },
     {
-      "name": "latitude",
-      "type": ["null", "double"],
-      "doc": "Latitude of the hotel.",
-      "default": null
-    },
-    {
-      "name": "longitude",
-      "type": ["null", "double"],
-      "doc": "Longitude of the hotel.",
-      "default": null
-    },
-    {
-      "name": "neighborhood",
-      "type": ["null", {
-        "type": "array",
-        "items": "string"
-      }],
-      "doc": "A list of neighborhoods where the hotel is located",
-      "default": null
-    },
-    {
-      "name": "address",
-      "type": ["null", "model.CatalogsHotelAddress"],
-      "doc": "",
+      "name": "category",
+      "type": ["null", "string"],
+      "doc": "The type of property. The category can be any type of internal description desired.",
       "default": null
     },
     {
@@ -86,21 +59,9 @@
       "default": null
     },
     {
-      "name": "category",
+      "name": "description",
       "type": ["null", "string"],
-      "doc": "The type of property. The category can be any type of internal description desired.",
-      "default": null
-    },
-    {
-      "name": "base_price",
-      "type": ["null", "string"],
-      "doc": "Base price of the hotel room per night followed by the ISO currency code",
-      "default": null
-    },
-    {
-      "name": "sale_price",
-      "type": ["null", "string"],
-      "doc": "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.",
+      "doc": "Brief description of the hotel.",
       "default": null
     },
     {
@@ -110,9 +71,42 @@
       "default": null
     },
     {
-      "name": "main_image",
-      "type": ["null", "model.CatalogsHotelAttributesAllOfMainImage"],
-      "doc": "",
+      "name": "latitude",
+      "type": ["null", "double"],
+      "doc": "Latitude of the hotel.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Link to the product page",
+      "default": null
+    },
+    {
+      "name": "longitude",
+      "type": ["null", "double"],
+      "doc": "Longitude of the hotel.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "The hotel's name.",
+      "default": null
+    },
+    {
+      "name": "neighborhood",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of neighborhoods where the hotel is located",
+      "default": null
+    },
+    {
+      "name": "sale_price",
+      "type": ["null", "string"],
+      "doc": "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.",
       "default": null
     },
     {
@@ -122,6 +116,12 @@
         "items": "string"
       }],
       "doc": "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>",
+      "default": null
+    },
+    {
+      "name": "main_image",
+      "type": ["null", "model.CatalogsHotelAttributesAllOfMainImage"],
+      "doc": "",
       "default": null
     }
   ]

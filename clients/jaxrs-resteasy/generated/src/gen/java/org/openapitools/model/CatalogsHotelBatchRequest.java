@@ -16,9 +16,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object to update catalogs hotel items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object to update catalogs hotel items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelBatchRequest   {
   
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -40,6 +41,7 @@ public class CatalogsHotelBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -272,8 +274,19 @@ public class CatalogsHotelBatchRequest   {
   }
 
   private LanguageEnum language;
-  private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
-  private String catalogId;
+
+  /**
+   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   **/
+  
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -303,20 +316,6 @@ public class CatalogsHotelBatchRequest   {
   }
 
   /**
-   * We recommend using the CatalogsLocale values.
-   **/
-  
-  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
-  @JsonProperty("language")
-  @NotNull
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
    * Array with catalogs item operations
    **/
   
@@ -332,16 +331,17 @@ public class CatalogsHotelBatchRequest   {
   }
 
   /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * We recommend using the CatalogsLocale values.
    **/
   
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
+  @JsonProperty("language")
+  @NotNull
+  public LanguageEnum getLanguage() {
+    return language;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -354,16 +354,16 @@ public class CatalogsHotelBatchRequest   {
       return false;
     }
     CatalogsHotelBatchRequest catalogsHotelBatchRequest = (CatalogsHotelBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsHotelBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsHotelBatchRequest.country) &&
-        Objects.equals(this.language, catalogsHotelBatchRequest.language) &&
         Objects.equals(this.items, catalogsHotelBatchRequest.items) &&
-        Objects.equals(this.catalogId, catalogsHotelBatchRequest.catalogId);
+        Objects.equals(this.language, catalogsHotelBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -371,11 +371,11 @@ public class CatalogsHotelBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

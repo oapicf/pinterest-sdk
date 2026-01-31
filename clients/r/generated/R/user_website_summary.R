@@ -7,33 +7,27 @@
 #' @title UserWebsiteSummary
 #' @description UserWebsiteSummary Class
 #' @format An \code{R6Class} generator object
-#' @field website Website with path or domain only character [optional]
 #' @field status Status of the verification process character [optional]
 #' @field verified_at UTC timestamp when the verification happened - sometimes missing character [optional]
+#' @field website Website with path or domain only character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UserWebsiteSummary <- R6::R6Class(
   "UserWebsiteSummary",
   public = list(
-    `website` = NULL,
     `status` = NULL,
     `verified_at` = NULL,
+    `website` = NULL,
 
     #' @description
     #' Initialize a new UserWebsiteSummary class.
     #'
-    #' @param website Website with path or domain only
     #' @param status Status of the verification process
     #' @param verified_at UTC timestamp when the verification happened - sometimes missing
+    #' @param website Website with path or domain only
     #' @param ... Other optional arguments.
-    initialize = function(`website` = NULL, `status` = NULL, `verified_at` = NULL, ...) {
-      if (!is.null(`website`)) {
-        if (!(is.character(`website`) && length(`website`) == 1)) {
-          stop(paste("Error! Invalid data for `website`. Must be a string:", `website`))
-        }
-        self$`website` <- `website`
-      }
+    initialize = function(`status` = NULL, `verified_at` = NULL, `website` = NULL, ...) {
       if (!is.null(`status`)) {
         if (!(is.character(`status`) && length(`status`) == 1)) {
           stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
@@ -45,6 +39,12 @@ UserWebsiteSummary <- R6::R6Class(
           stop(paste("Error! Invalid data for `verified_at`. Must be a string:", `verified_at`))
         }
         self$`verified_at` <- `verified_at`
+      }
+      if (!is.null(`website`)) {
+        if (!(is.character(`website`) && length(`website`) == 1)) {
+          stop(paste("Error! Invalid data for `website`. Must be a string:", `website`))
+        }
+        self$`website` <- `website`
       }
     },
 
@@ -79,10 +79,6 @@ UserWebsiteSummary <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       UserWebsiteSummaryObject <- list()
-      if (!is.null(self$`website`)) {
-        UserWebsiteSummaryObject[["website"]] <-
-          self$`website`
-      }
       if (!is.null(self$`status`)) {
         UserWebsiteSummaryObject[["status"]] <-
           self$`status`
@@ -90,6 +86,10 @@ UserWebsiteSummary <- R6::R6Class(
       if (!is.null(self$`verified_at`)) {
         UserWebsiteSummaryObject[["verified_at"]] <-
           self$`verified_at`
+      }
+      if (!is.null(self$`website`)) {
+        UserWebsiteSummaryObject[["website"]] <-
+          self$`website`
       }
       return(UserWebsiteSummaryObject)
     },
@@ -101,14 +101,14 @@ UserWebsiteSummary <- R6::R6Class(
     #' @return the instance of UserWebsiteSummary
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`website`)) {
-        self$`website` <- this_object$`website`
-      }
       if (!is.null(this_object$`status`)) {
         self$`status` <- this_object$`status`
       }
       if (!is.null(this_object$`verified_at`)) {
         self$`verified_at` <- this_object$`verified_at`
+      }
+      if (!is.null(this_object$`website`)) {
+        self$`website` <- this_object$`website`
       }
       self
     },
@@ -131,9 +131,9 @@ UserWebsiteSummary <- R6::R6Class(
     #' @return the instance of UserWebsiteSummary
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`website` <- this_object$`website`
       self$`status` <- this_object$`status`
       self$`verified_at` <- this_object$`verified_at`
+      self$`website` <- this_object$`website`
       self
     },
 

@@ -74,8 +74,8 @@ private class OASCatalogsItemsPostFiltersTest {
         OASCatalogsItemsPostFilters catalogsItemsPostFilters = new OASCatalogsItemsPostFilters();
         Map<String, String> x-property-mappings = catalogsItemsPostFilters.getx-property-mappings();
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
-        System.assertEquals('itemIds', x-property-mappings.get('item_ids'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('itemIds', x-property-mappings.get('item_ids'));
         System.assertEquals('hotelIds', x-property-mappings.get('hotel_ids'));
         System.assertEquals('creativeAssetsIds', x-property-mappings.get('creative_assets_ids'));
     }

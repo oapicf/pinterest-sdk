@@ -11,10 +11,10 @@ module CreateAssetGroupBody =
 
   [<CLIMutable>]
   type CreateAssetGroupBody = {
-    [<JsonProperty(PropertyName = "asset_group_name")>]
-    AssetGroupName : string;
     [<JsonProperty(PropertyName = "asset_group_description")>]
     AssetGroupDescription : string;
+    [<JsonProperty(PropertyName = "asset_group_name")>]
+    AssetGroupName : string;
     [<JsonProperty(PropertyName = "asset_group_types")>]
     AssetGroupTypes : AssetGroupType[];
   }

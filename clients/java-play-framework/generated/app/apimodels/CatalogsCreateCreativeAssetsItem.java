@@ -10,9 +10,15 @@ import javax.validation.Valid;
 /**
  * A creative assets item to be created.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreateCreativeAssetsItem   {
+  @JsonProperty("attributes")
+  @NotNull
+@Valid
+
+  private CatalogsCreativeAssetsAttributes attributes;
+
   @JsonProperty("creative_assets_id")
   @NotNull
 
@@ -52,11 +58,22 @@ public class CatalogsCreateCreativeAssetsItem   {
 
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  @NotNull
-@Valid
+  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
 
-  private CatalogsCreativeAssetsAttributes attributes;
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsCreateCreativeAssetsItem creativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
@@ -92,23 +109,6 @@ public class CatalogsCreateCreativeAssetsItem   {
     this.operation = operation;
   }
 
-  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -119,14 +119,14 @@ public class CatalogsCreateCreativeAssetsItem   {
       return false;
     }
     CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem = (CatalogsCreateCreativeAssetsItem) o;
-    return Objects.equals(creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(operation, catalogsCreateCreativeAssetsItem.operation) &&
-        Objects.equals(attributes, catalogsCreateCreativeAssetsItem.attributes);
+    return Objects.equals(attributes, catalogsCreateCreativeAssetsItem.attributes) &&
+        Objects.equals(creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(operation, catalogsCreateCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -135,9 +135,9 @@ public class CatalogsCreateCreativeAssetsItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

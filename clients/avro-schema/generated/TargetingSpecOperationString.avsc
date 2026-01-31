@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationString",
+  "fields": [
+    {
+      "name": "field",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationString_operation",
+        "symbols": [
+          "SET"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

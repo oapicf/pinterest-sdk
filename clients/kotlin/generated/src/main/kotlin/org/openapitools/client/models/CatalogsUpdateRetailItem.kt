@@ -24,14 +24,17 @@ import com.squareup.moshi.JsonClass
 /**
  * An item to be updated
  *
+ * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  * @param updateMask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
  */
 
 
 data class CatalogsUpdateRetailItem (
+
+    @Json(name = "attributes")
+    val attributes: UpdatableItemAttributes,
 
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
@@ -39,9 +42,6 @@ data class CatalogsUpdateRetailItem (
 
     @Json(name = "operation")
     val operation: CatalogsUpdateRetailItem.Operation,
-
-    @Json(name = "attributes")
-    val attributes: UpdatableItemAttributes,
 
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     @Json(name = "update_mask")

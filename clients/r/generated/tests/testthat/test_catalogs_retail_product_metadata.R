@@ -5,12 +5,18 @@ context("Test CatalogsRetailProductMetadata")
 
 model_instance <- CatalogsRetailProductMetadata$new()
 
-test_that("item_id", {
-  # tests for the property `item_id` (character)
-  # The user-created unique ID that represents the product.
+test_that("availability", {
+  # tests for the property `availability` (NonNullableProductAvailabilityType)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`availability`, "EXPECTED_RESULT")
+})
+
+test_that("currency", {
+  # tests for the property `currency` (NonNullableCatalogsCurrency)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
 })
 
 test_that("item_group_id", {
@@ -21,11 +27,12 @@ test_that("item_group_id", {
   #expect_equal(model.instance$`item_group_id`, "EXPECTED_RESULT")
 })
 
-test_that("availability", {
-  # tests for the property `availability` (NonNullableProductAvailabilityType)
+test_that("item_id", {
+  # tests for the property `item_id` (character)
+  # The user-created unique ID that represents the product.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`availability`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })
 
 test_that("price", {
@@ -42,11 +49,4 @@ test_that("sale_price", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`sale_price`, "EXPECTED_RESULT")
-})
-
-test_that("currency", {
-  # tests for the property `currency` (NonNullableCatalogsCurrency)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
 })

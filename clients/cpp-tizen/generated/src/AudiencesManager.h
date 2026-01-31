@@ -6,7 +6,6 @@
 #include <list>
 #include <glib.h>
 #include "Audience.h"
-#include "AudienceCreateCustomRequest.h"
 #include "AudienceCreateRequest.h"
 #include "AudienceUpdateRequest.h"
 #include "Audiences_list_200_response.h"
@@ -31,7 +30,7 @@ public:
 
 /*! \brief Create audience. *Synchronous*
  *
- * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+ * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param audienceCreateRequest List of ads to create, size limit [1, 30] *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -45,7 +44,7 @@ bool audiencesCreateSync(char * accessToken,
 
 /*! \brief Create audience. *Asynchronous*
  *
- * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+ * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param audienceCreateRequest List of ads to create, size limit [1, 30] *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -54,35 +53,6 @@ bool audiencesCreateSync(char * accessToken,
  */
 bool audiencesCreateAsync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<AudienceCreateRequest> audienceCreateRequest, 
-	void(* handler)(Audience, Error, void* )
-	, void* userData);
-
-
-/*! \brief Create custom audience. *Synchronous*
- *
- * Create a custom audience and find the audiences you want your ads to reach.
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceCreateCustomRequest Custom audience to create. *Required*
- * \param handler The callback function to be invoked on completion. *Required*
- * \param accessToken The Authorization token. *Required*
- * \param userData The user data to be passed to the callback function.
- */
-bool audiencesCreateCustomSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateCustomRequest> audienceCreateCustomRequest, 
-	void(* handler)(Audience, Error, void* )
-	, void* userData);
-
-/*! \brief Create custom audience. *Asynchronous*
- *
- * Create a custom audience and find the audiences you want your ads to reach.
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceCreateCustomRequest Custom audience to create. *Required*
- * \param handler The callback function to be invoked on completion. *Required*
- * \param accessToken The Authorization token. *Required*
- * \param userData The user data to be passed to the callback function.
- */
-bool audiencesCreateCustomAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateCustomRequest> audienceCreateCustomRequest, 
 	void(* handler)(Audience, Error, void* )
 	, void* userData);
 
@@ -156,7 +126,7 @@ bool audiencesListAsync(char * accessToken,
  * Update (edit or remove) an existing targeting audience.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param audienceId Unique identifier of an audience *Required*
- * \param audienceUpdateRequest The audience to be updated.
+ * \param audienceUpdateRequest The audience to be updated. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -171,7 +141,7 @@ bool audiencesUpdateSync(char * accessToken,
  * Update (edit or remove) an existing targeting audience.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param audienceId Unique identifier of an audience *Required*
- * \param audienceUpdateRequest The audience to be updated.
+ * \param audienceUpdateRequest The audience to be updated. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

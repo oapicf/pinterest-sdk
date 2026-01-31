@@ -11,7 +11,7 @@ module GetInvites200Response =
 
 
   type get_invites_200_response = {
-    Items : InviteResponse[];
     Bookmark : string option;
+    Items : InviteResponse[];
   }
   //#endregion

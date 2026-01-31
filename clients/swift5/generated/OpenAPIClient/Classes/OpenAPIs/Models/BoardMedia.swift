@@ -10,10 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Board media. */
 public struct BoardMedia: Codable, JSONEncodable, Hashable {
 
-    /** Board cover image. */
+    /** Board cover image */
     public var imageCoverUrl: String?
     /** Board pin thumbnail urls. */
     public var pinThumbnailUrls: [String]?

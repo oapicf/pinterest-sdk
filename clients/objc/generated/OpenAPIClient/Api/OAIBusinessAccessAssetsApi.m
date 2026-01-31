@@ -326,6 +326,8 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param assetId Unique identifier of a business asset. 
 ///
+///  @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to @(NO))
+///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
 ///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
@@ -336,6 +338,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) businessAssetMembersGetWithBusinessId: (NSString*) businessId
     assetId: (NSString*) assetId
+    fetchSystemUsers: (NSNumber*) fetchSystemUsers
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
     startIndex: (NSNumber*) startIndex
@@ -373,6 +376,9 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (fetchSystemUsers != nil) {
+        queryParams[@"fetch_system_users"] = [fetchSystemUsers isEqual:@(YES)] ? @"true" : @"false";
+    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }

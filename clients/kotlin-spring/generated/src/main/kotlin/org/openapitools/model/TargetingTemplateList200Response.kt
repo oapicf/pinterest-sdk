@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.TargetingTemplateResponseData
+import org.openapitools.model.TargetingTemplateGetResponseData
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,7 +23,7 @@ data class TargetingTemplateList200Response(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<TargetingTemplateResponseData>,
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<TargetingTemplateGetResponseData>,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null

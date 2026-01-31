@@ -17,13 +17,7 @@ export interface AudienceDefinition {
      * Generation date
      */
     date?: string | null;
-    /**
-     * Generated audience type to request.
-     */
-    type?: string;
-    /**
-     * Generated audience scope to request.
-     */
     scope?: string;
+    type?: string;
 }
 

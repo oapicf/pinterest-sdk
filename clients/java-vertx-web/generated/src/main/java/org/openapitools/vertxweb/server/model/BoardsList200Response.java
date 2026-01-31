@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.Board;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BoardsList200Response   {
   
-  private List<Board> items = new ArrayList<>();
   private String bookmark;
+  private List<Board> items = new ArrayList<>();
 
   public BoardsList200Response () {
 
   }
 
-  public BoardsList200Response (List<Board> items, String bookmark) {
-    this.items = items;
+  public BoardsList200Response (String bookmark, List<Board> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<Board> getItems() {
-    return items;
-  }
-  public void setItems(List<Board> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class BoardsList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<Board> getItems() {
+    return items;
+  }
+  public void setItems(List<Board> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class BoardsList200Response   {
       return false;
     }
     BoardsList200Response boardsList200Response = (BoardsList200Response) o;
-    return Objects.equals(items, boardsList200Response.items) &&
-        Objects.equals(bookmark, boardsList200Response.bookmark);
+    return Objects.equals(bookmark, boardsList200Response.bookmark) &&
+        Objects.equals(items, boardsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class BoardsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

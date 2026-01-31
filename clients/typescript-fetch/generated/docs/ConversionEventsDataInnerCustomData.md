@@ -7,18 +7,21 @@ Object containing other custom data.
 
 Name | Type
 ------------ | -------------
-`currency` | string
-`value` | string
+`contentBrand` | string
+`contentCategory` | string
 `contentIds` | Array&lt;string&gt;
 `contentName` | string
-`contentCategory` | string
-`contentBrand` | string
 `contents` | [Array&lt;ConversionEventsDataInnerCustomDataContentsInner&gt;](ConversionEventsDataInnerCustomDataContentsInner.md)
-`numItems` | number
-`orderId` | string
-`searchString` | string
-`optOutType` | string
+`currency` | string
+`externalMeasurementId` | string
+`externalMeasurementVendorId` | number
 `np` | string
+`numItems` | number
+`optOutType` | string
+`orderId` | string
+`predictedLtv` | string
+`searchString` | string
+`value` | string
 
 ## Example
 
@@ -27,18 +30,21 @@ import type { ConversionEventsDataInnerCustomData } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "currency": USD,
-  "value": 72.39,
-  "contentIds": ["red-pinterest-shirt-logo-1","purple-pinterest-shirt-logo-3"],
-  "contentName": pinterest-themed-clothing,
-  "contentCategory": shirts,
   "contentBrand": pinterest-brand,
-  "contents": null,
-  "numItems": 2,
-  "orderId": my_order_id,
-  "searchString": sample string,
-  "optOutType": LDP,
+  "contentCategory": shirts,
+  "contentIds": ["product-id-001","product-id-002"],
+  "contentName": pinterest-themed-clothing,
+  "contents": [{"id":"product-id-001","item_price":"14.99","quantity":3,"item_name":"pinterest-shirt-girl","item_category":"pinterest-clothing-shirts","item_brand":"pinterest"},{"id":"product-id-002","item_price":"13.71","quantity":2,"item_name":"pinterest-shirt-men","item_category":"pinterest-clothing-shirts","item_brand":"pinterest"}],
+  "currency": USD,
+  "externalMeasurementId": rbos-cb7a9e56-4988-4ca0-801b-05c79b29785f,
+  "externalMeasurementVendorId": 1,
   "np": ss-company,
+  "numItems": 5,
+  "optOutType": LDP,
+  "orderId": my_order_id,
+  "predictedLtv": 2794.82,
+  "searchString": sample string,
+  "value": 72.39,
 } satisfies ConversionEventsDataInnerCustomData
 
 console.log(example)

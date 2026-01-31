@@ -2,17 +2,17 @@ package org.openapitools.server.model
 
 
 /**
- * = Images urls =
+ * = Object containing images url definitions =
  *
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  *
- * @param sourceType  for example: ''null''
- * @param items Array with image objects. for example: ''null''
  * @param index  for example: ''null''
+ * @param items Array with image objects. for example: ''null''
+ * @param sourceType The source type of the media. for example: ''null''
 */
 final case class PinMediaSourceImagesURL (
-  sourceType: Option[String] = None,
-  items: Seq[PinMediaSourceImagesURLItemsInner],
-  index: Option[Int] = None
+  index: Option[Int] = None,
+  items: Seq[PinMediaSourceImagesURLItem],
+  sourceType: String
 )
 

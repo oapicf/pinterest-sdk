@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**reportStatus** | **BulkReportingJobStatus** |  |  [optional] |
-|**token** | **String** |  |  [optional] |
 |**message** | **String** |  |  [optional] |
+|**reportStatus** | **BulkReportingJobStatus** |  |  [optional] |
 |**status** | **String** |  |  [optional] |
+|**token** | **String** |  |  [optional] |
 
 
 

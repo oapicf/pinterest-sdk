@@ -5,19 +5,19 @@
 -export_type([openapi_catalogs_feed_ingestion/0]).
 
 -type openapi_catalogs_feed_ingestion() ::
-    #{ 'id' := binary(),
+    #{ 'created_at' := openapi_date_time:openapi_date_time(),
        'feed_id' := binary(),
-       'created_at' := openapi_date_time:openapi_date_time(),
+       'id' := binary(),
        'status' := openapi_catalogs_feed_processing_status:openapi_catalogs_feed_processing_status()
      }.
 
-encode(#{ 'id' := Id,
+encode(#{ 'created_at' := CreatedAt,
           'feed_id' := FeedId,
-          'created_at' := CreatedAt,
+          'id' := Id,
           'status' := Status
         }) ->
-    #{ 'id' => Id,
+    #{ 'created_at' => CreatedAt,
        'feed_id' => FeedId,
-       'created_at' => CreatedAt,
+       'id' => Id,
        'status' => Status
      }.

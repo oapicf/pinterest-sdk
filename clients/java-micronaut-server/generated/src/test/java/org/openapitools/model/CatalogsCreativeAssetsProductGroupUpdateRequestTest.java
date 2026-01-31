@@ -30,14 +30,6 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
@@ -51,6 +43,14 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequestTest {
     @Test
     public void filtersTest() {
         // TODO: test filters
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
 }

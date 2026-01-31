@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * OptimizationGoalMetadataConversionTagV3GoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   @JsonProperty("attribution_windows")
@@ -120,6 +120,10 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   
   private LearningModeTypeEnum learningModeType;
 
+  @JsonProperty("reporting_event")
+  
+  private String reportingEvent;
+
   public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
     this.attributionWindows = attributionWindows;
     return this;
@@ -194,7 +198,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
    /**
-   * ROAS optimization is not supported
+   * Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
    * @return isRoasOptimized
   **/
   public Boolean getIsRoasOptimized() {
@@ -222,6 +226,23 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     this.learningModeType = learningModeType;
   }
 
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata reportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+    return this;
+  }
+
+   /**
+   * Event name for custom or standard events mapped to an oCPM model
+   * @return reportingEvent
+  **/
+  public String getReportingEvent() {
+    return reportingEvent;
+  }
+
+  public void setReportingEvent(String reportingEvent) {
+    this.reportingEvent = reportingEvent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -237,12 +258,13 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
         Objects.equals(conversionTagId, optimizationGoalMetadataConversionTagV3GoalMetadata.conversionTagId) &&
         Objects.equals(cpaGoalValueInMicroCurrency, optimizationGoalMetadataConversionTagV3GoalMetadata.cpaGoalValueInMicroCurrency) &&
         Objects.equals(isRoasOptimized, optimizationGoalMetadataConversionTagV3GoalMetadata.isRoasOptimized) &&
-        Objects.equals(learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType);
+        Objects.equals(learningModeType, optimizationGoalMetadataConversionTagV3GoalMetadata.learningModeType) &&
+        Objects.equals(reportingEvent, optimizationGoalMetadataConversionTagV3GoalMetadata.reportingEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType);
+    return Objects.hash(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, learningModeType, reportingEvent);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -257,6 +279,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     sb.append("    cpaGoalValueInMicroCurrency: ").append(toIndentedString(cpaGoalValueInMicroCurrency)).append("\n");
     sb.append("    isRoasOptimized: ").append(toIndentedString(isRoasOptimized)).append("\n");
     sb.append("    learningModeType: ").append(toIndentedString(learningModeType)).append("\n");
+    sb.append("    reportingEvent: ").append(toIndentedString(reportingEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

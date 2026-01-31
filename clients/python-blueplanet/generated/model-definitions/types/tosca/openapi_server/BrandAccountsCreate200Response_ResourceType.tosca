@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BrandAccountsCreate200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BrandAccountsCreate200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BrandAccountsCreate200Response {
+    title = BrandAccountsCreate200Response
+    description = BrandAccountsCreate200Response
+    derivedFrom = Root
+    properties {
+        brand_account_id {
+          type =  string
+          description = "id of the newly created brand account"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BrandAccountsCreate200Response {
+    title = BrandAccountsCreate200Response
+    description = BrandAccountsCreate200Response
+    implements = openapi_server.resourceTypes.BrandAccountsCreate200Response
+
+  }
+}

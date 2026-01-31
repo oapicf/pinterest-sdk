@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -124,6 +124,13 @@ func (c *LeadAdsAPIController) AdAccountsSubscriptionsGetList(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -142,14 +149,7 @@ func (c *LeadAdsAPIController) AdAccountsSubscriptionsGetList(w http.ResponseWri
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.AdAccountsSubscriptionsGetList(r.Context(), adAccountIdParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.AdAccountsSubscriptionsGetList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -167,22 +167,22 @@ func (c *LeadAdsAPIController) AdAccountsSubscriptionsPost(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var adAccountCreateSubscriptionRequestParam AdAccountCreateSubscriptionRequest
+	var leadSubscriptionPostParamsCreateParam LeadSubscriptionPostParamsCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&adAccountCreateSubscriptionRequestParam); err != nil {
+	if err := d.Decode(&leadSubscriptionPostParamsCreateParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertAdAccountCreateSubscriptionRequestRequired(adAccountCreateSubscriptionRequestParam); err != nil {
+	if err := AssertLeadSubscriptionPostParamsCreateRequired(leadSubscriptionPostParamsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertAdAccountCreateSubscriptionRequestConstraints(adAccountCreateSubscriptionRequestParam); err != nil {
+	if err := AssertLeadSubscriptionPostParamsCreateConstraints(leadSubscriptionPostParamsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AdAccountsSubscriptionsPost(r.Context(), adAccountIdParam, adAccountCreateSubscriptionRequestParam)
+	result, err := c.service.AdAccountsSubscriptionsPost(r.Context(), adAccountIdParam, leadSubscriptionPostParamsCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -192,7 +192,7 @@ func (c *LeadAdsAPIController) AdAccountsSubscriptionsPost(w http.ResponseWriter
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// AdAccountsSubscriptionsGetById - Get lead ads subscription
+// AdAccountsSubscriptionsGetById - Get lead ads subscription by ID
 func (c *LeadAdsAPIController) AdAccountsSubscriptionsGetById(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	adAccountIdParam := params["ad_account_id"]

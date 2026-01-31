@@ -9,7 +9,6 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { Audience } from '../models/Audience';
-import { AudienceCreateCustomRequest } from '../models/AudienceCreateCustomRequest';
 import { AudienceCreateRequest } from '../models/AudienceCreateRequest';
 import { AudienceUpdateRequest } from '../models/AudienceUpdateRequest';
 import { AudiencesList200Response } from '../models/AudiencesList200Response';
@@ -20,7 +19,7 @@ import { AudiencesList200Response } from '../models/AudiencesList200Response';
 export class AudiencesApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
      * Create audience
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
@@ -76,62 +75,6 @@ export class AudiencesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Create a custom audience and find the audiences you want your ads to reach.
-     * Create custom audience
-     * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateCustomRequest Custom audience to create.
-     */
-    public async audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'adAccountId' is not null or undefined
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new RequiredError("AudiencesApi", "audiencesCreateCustom", "adAccountId");
-        }
-
-
-        // verify required parameter 'audienceCreateCustomRequest' is not null or undefined
-        if (audienceCreateCustomRequest === null || audienceCreateCustomRequest === undefined) {
-            throw new RequiredError("AudiencesApi", "audiencesCreateCustom", "audienceCreateCustomRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/ad_accounts/{ad_account_id}/audiences/custom'
-            .replace('{' + 'ad_account_id' + '}', encodeURIComponent(String(adAccountId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(audienceCreateCustomRequest, "AudienceCreateCustomRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["pinterest_oauth2"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Get a specific audience given the audience ID.
      * Get audience
      * @param adAccountId Unique identifier of an ad account.
@@ -165,6 +108,11 @@ export class AudiencesApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -234,6 +182,11 @@ export class AudiencesApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -250,7 +203,7 @@ export class AudiencesApiRequestFactory extends BaseAPIRequestFactory {
      * @param audienceId Unique identifier of an audience
      * @param audienceUpdateRequest The audience to be updated.
      */
-    public async audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'adAccountId' is not null or undefined
@@ -264,6 +217,11 @@ export class AudiencesApiRequestFactory extends BaseAPIRequestFactory {
             throw new RequiredError("AudiencesApi", "audiencesUpdate", "audienceId");
         }
 
+
+        // verify required parameter 'audienceUpdateRequest' is not null or undefined
+        if (audienceUpdateRequest === null || audienceUpdateRequest === undefined) {
+            throw new RequiredError("AudiencesApi", "audiencesUpdate", "audienceUpdateRequest");
+        }
 
 
         // Path Params
@@ -314,42 +272,6 @@ export class AudiencesApiResponseProcessor {
      * @throws ApiException if the response code was not in [200, 299]
      */
      public async audiencesCreateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Audience >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Audience = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Audience", ""
-            ) as Audience;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Audience = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Audience", ""
-            ) as Audience;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to audiencesCreateCustom
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async audiencesCreateCustomWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Audience >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Audience = ObjectSerializer.deserialize(

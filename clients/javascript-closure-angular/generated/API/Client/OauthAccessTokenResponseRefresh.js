@@ -10,19 +10,7 @@ API.Client.OauthAccessTokenResponseRefresh = function() {}
  * @type {!string}
  * @export
  */
-API.Client.OauthAccessTokenResponseRefresh.prototype.responseType;
-
-/**
- * @type {!string}
- * @export
- */
 API.Client.OauthAccessTokenResponseRefresh.prototype.accessToken;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.OauthAccessTokenResponseRefresh.prototype.tokenType;
 
 /**
  * @type {!number}
@@ -34,7 +22,37 @@ API.Client.OauthAccessTokenResponseRefresh.prototype.expiresIn;
  * @type {!string}
  * @export
  */
+API.Client.OauthAccessTokenResponseRefresh.prototype.responseType;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.OauthAccessTokenResponseRefresh.prototype.scope;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseRefresh.prototype.tokenType;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseRefresh.prototype.refreshToken;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseRefresh.prototype.refreshTokenExpiresAt;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseRefresh.prototype.refreshTokenExpiresIn;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenResponseRefresh.ResponseTypeEnum = { 

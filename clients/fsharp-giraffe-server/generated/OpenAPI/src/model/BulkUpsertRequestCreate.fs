@@ -6,6 +6,8 @@ open OpenAPI.Model.AdCreateRequest
 open OpenAPI.Model.AdGroupCreateRequest
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.KeywordsRequest
+open OpenAPI.Model.LabelCreateRequest
+open OpenAPI.Model.MultipleProductGroupsInner
 open OpenAPI.Model.ProductGroupPromotionCreateRequest
 
 module BulkUpsertRequestCreate =
@@ -14,10 +16,12 @@ module BulkUpsertRequestCreate =
 
 
   type BulkUpsertRequestCreate = {
-    Campaigns : CampaignCreateRequest[];
     AdGroups : AdGroupCreateRequest[];
     Ads : AdCreateRequest[];
-    ProductGroups : ProductGroupPromotionCreateRequest[];
+    Campaigns : CampaignCreateRequest[];
+    CatalogProductGroups : MultipleProductGroupsInner[];
     Keywords : KeywordsRequest[];
+    Labels : LabelCreateRequest[];
+    ProductGroups : ProductGroupPromotionCreateRequest[];
   }
   //#endregion

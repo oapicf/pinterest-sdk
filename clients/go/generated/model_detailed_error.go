@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,8 +23,8 @@ var _ MappedNullable = &DetailedError{}
 // DetailedError Used for including extra details to a base error
 type DetailedError struct {
 	Code int32 `json:"code"`
-	Message string `json:"message"`
 	Details map[string]interface{} `json:"details"`
+	Message string `json:"message"`
 }
 
 type _DetailedError DetailedError
@@ -33,11 +33,11 @@ type _DetailedError DetailedError
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDetailedError(code int32, message string, details map[string]interface{}) *DetailedError {
+func NewDetailedError(code int32, details map[string]interface{}, message string) *DetailedError {
 	this := DetailedError{}
 	this.Code = code
-	this.Message = message
 	this.Details = details
+	this.Message = message
 	return &this
 }
 
@@ -73,30 +73,6 @@ func (o *DetailedError) SetCode(v int32) {
 	o.Code = v
 }
 
-// GetMessage returns the Message field value
-func (o *DetailedError) GetMessage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Message
-}
-
-// GetMessageOk returns a tuple with the Message field value
-// and a boolean to check if the value has been set.
-func (o *DetailedError) GetMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Message, true
-}
-
-// SetMessage sets field value
-func (o *DetailedError) SetMessage(v string) {
-	o.Message = v
-}
-
 // GetDetails returns the Details field value
 func (o *DetailedError) GetDetails() map[string]interface{} {
 	if o == nil {
@@ -121,6 +97,30 @@ func (o *DetailedError) SetDetails(v map[string]interface{}) {
 	o.Details = v
 }
 
+// GetMessage returns the Message field value
+func (o *DetailedError) GetMessage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value
+// and a boolean to check if the value has been set.
+func (o *DetailedError) GetMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Message, true
+}
+
+// SetMessage sets field value
+func (o *DetailedError) SetMessage(v string) {
+	o.Message = v
+}
+
 func (o DetailedError) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -132,8 +132,8 @@ func (o DetailedError) MarshalJSON() ([]byte, error) {
 func (o DetailedError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["code"] = o.Code
-	toSerialize["message"] = o.Message
 	toSerialize["details"] = o.Details
+	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }
 
@@ -143,8 +143,8 @@ func (o *DetailedError) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"code",
-		"message",
 		"details",
+		"message",
 	}
 
 	allProperties := make(map[string]interface{})

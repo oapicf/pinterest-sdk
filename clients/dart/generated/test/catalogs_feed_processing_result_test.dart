@@ -36,18 +36,23 @@ void main() {
       // TODO
     });
 
-    // CatalogsFeedProcessingStatus status
-    test('to test the property `status`', () async {
-      // TODO
-    });
-
     // CatalogsFeedProductCounts productCounts
     test('to test the property `productCounts`', () async {
       // TODO
     });
 
+    // CatalogsFeedProcessingStatus status
+    test('to test the property `status`', () async {
+      // TODO
+    });
+
     // CatalogsFeedValidationDetails validationDetails
     test('to test the property `validationDetails`', () async {
+      // TODO
+    });
+
+    // CatalogsFeedVideoCounts videoCounts
+    test('to test the property `videoCounts`', () async {
       // TODO
     });
 

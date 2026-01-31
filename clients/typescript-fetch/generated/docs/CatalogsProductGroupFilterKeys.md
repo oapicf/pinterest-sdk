@@ -13,11 +13,11 @@ Name | Type
 `aVAILABILITY` | [CatalogsProductGroupMultipleStringCriteria](.md)
 `bRAND` | [CatalogsProductGroupMultipleStringCriteria](.md)
 `cONDITION` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL0` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL1` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL2` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL3` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL4` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`cUSTOMLABEL0` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL1` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL3` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL4` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
 `iTEMGROUPID` | [CatalogsProductGroupMultipleStringCriteria](.md)
 `gENDER` | [CatalogsProductGroupMultipleGenderCriteria](.md)
 `mEDIATYPE` | [CatalogsProductGroupMultipleMediaTypesCriteria](.md)
@@ -34,6 +34,12 @@ Name | Type
 `gOOGLEPRODUCTCATEGORY1` | [CatalogsProductGroupMultipleStringListCriteria](.md)
 `gOOGLEPRODUCTCATEGORY0` | [CatalogsProductGroupMultipleStringListCriteria](.md)
 `pRODUCTGROUP` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`cUSTOMNUMBER0` | [CatalogsProductGroupUint32Criteria](.md)
+`cUSTOMNUMBER1` | [CatalogsProductGroupUint32Criteria](.md)
+`cUSTOMNUMBER2` | [CatalogsProductGroupUint32Criteria](.md)
+`cUSTOMNUMBER3` | [CatalogsProductGroupUint32Criteria](.md)
+`cUSTOMNUMBER4` | [CatalogsProductGroupUint32Criteria](.md)
+`tITLEKEYWORDS` | [CatalogsProductGroupMultipleStringCriteria](.md)
 
 ## Example
 
@@ -70,6 +76,12 @@ const example = {
   "gOOGLEPRODUCTCATEGORY1": null,
   "gOOGLEPRODUCTCATEGORY0": null,
   "pRODUCTGROUP": null,
+  "cUSTOMNUMBER0": null,
+  "cUSTOMNUMBER1": null,
+  "cUSTOMNUMBER2": null,
+  "cUSTOMNUMBER3": null,
+  "cUSTOMNUMBER4": null,
+  "tITLEKEYWORDS": null,
 } satisfies CatalogsProductGroupFilterKeys
 
 console.log(example)

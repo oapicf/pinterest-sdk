@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -22,9 +22,9 @@ type CatalogsProductGroupPricingCriteria struct {
 
 	Inclusion bool `json:"inclusion,omitempty"`
 
-	Values float32 `json:"values"`
-
 	Negated bool `json:"negated,omitempty"`
+
+	Values float32 `json:"values"`
 }
 
 // AssertCatalogsProductGroupPricingCriteriaRequired checks if the required fields are not zero-ed

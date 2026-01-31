@@ -11,7 +11,7 @@ module AdsCreditsDiscountsGet200Response =
 
 
   type ads_credits_discounts_get_200_response = {
-    Items : AdsCreditDiscountsResponse[];
     Bookmark : string option;
+    Items : AdsCreditDiscountsResponse[];
   }
   //#endregion

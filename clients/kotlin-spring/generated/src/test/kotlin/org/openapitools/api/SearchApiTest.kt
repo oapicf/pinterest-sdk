@@ -1,9 +1,9 @@
 package org.openapitools.api
 
 import org.openapitools.model.Error
-import org.openapitools.model.PinsList200Response
 import org.openapitools.model.SearchPartnerPins200Response
 import org.openapitools.model.SearchUserBoardsGet200Response
+import org.openapitools.model.SearchUserPinsList200Response
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -60,7 +60,7 @@ class SearchApiTest {
         val adAccountId: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
         
-        val response: ResponseEntity<PinsList200Response> = api.searchUserPinsList(query, adAccountId, bookmark)
+        val response: ResponseEntity<SearchUserPinsList200Response> = api.searchUserPinsList(query, adAccountId, bookmark)
 
         // TODO: test validations
     }

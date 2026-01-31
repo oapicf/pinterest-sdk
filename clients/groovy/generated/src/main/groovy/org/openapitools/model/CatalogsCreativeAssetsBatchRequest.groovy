@@ -10,6 +10,8 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsCreativeAssetsBatchRequest {
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -35,6 +37,8 @@ class CatalogsCreativeAssetsBatchRequest {
     CatalogTypeEnum catalogType
     
     Country country
+    /* Array with creative assets item operations */
+    List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -270,8 +274,4 @@ class CatalogsCreativeAssetsBatchRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
-    /* Array with creative assets item operations */
-    List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>()
-    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
-    String catalogId
 }

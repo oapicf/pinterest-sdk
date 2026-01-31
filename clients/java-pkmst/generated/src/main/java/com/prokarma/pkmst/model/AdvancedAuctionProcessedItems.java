@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.AdvancedAuctionProcessedItem;
+import com.prokarma.pkmst.model.AdvancedAuctionItemsSubmitRecord;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -19,14 +19,14 @@ import java.util.List;
  */
 @ApiModel(description = "Response object containing the results of an operation on an item bid option")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems   {
   @JsonProperty("catalog_id")
   private String catalogId;
 
   @JsonProperty("items")
   
-  private List<AdvancedAuctionProcessedItem> items = null;
+  private List<AdvancedAuctionItemsSubmitRecord> items = null;
 
   public AdvancedAuctionProcessedItems catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -46,12 +46,12 @@ public class AdvancedAuctionProcessedItems   {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -64,11 +64,11 @@ public class AdvancedAuctionProcessedItems   {
    * @return items
    */
   @ApiModelProperty(value = "Array of advanced auction processed items")
-  public List<AdvancedAuctionProcessedItem> getItems() {
+  public List<AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

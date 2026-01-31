@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,21 +18,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
+import org.openapitools.model.TrendingKeyword;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrendingKeywordsResponse   {
   
-  private List<TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
+  private List<TrendingKeyword> trends = new ArrayList<>();
 
   /**
    * The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
    */
-  public TrendingKeywordsResponse trends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse trends(List<TrendingKeyword> trends) {
     this.trends = trends;
     return this;
   }
@@ -40,10 +40,10 @@ public class TrendingKeywordsResponse   {
   
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
   @JsonProperty("trends")
-  public List<TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<TrendingKeyword> getTrends() {
     return trends;
   }
-  public void setTrends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<TrendingKeyword> trends) {
     this.trends = trends;
   }
 

@@ -23,16 +23,16 @@ pinterest_rest_api_top_video_pins_analytics_response_pins_inner__e top_video_pin
 }
 
 static top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_response_pins_inner_create_internal(
-    list_t* metrics,
     list_t* data_status,
+    list_t* metrics,
     char *pin_id
     ) {
     top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_response_pins_inner_local_var = malloc(sizeof(top_video_pins_analytics_response_pins_inner_t));
     if (!top_video_pins_analytics_response_pins_inner_local_var) {
         return NULL;
     }
-    top_video_pins_analytics_response_pins_inner_local_var->metrics = metrics;
     top_video_pins_analytics_response_pins_inner_local_var->data_status = data_status;
+    top_video_pins_analytics_response_pins_inner_local_var->metrics = metrics;
     top_video_pins_analytics_response_pins_inner_local_var->pin_id = pin_id;
 
     top_video_pins_analytics_response_pins_inner_local_var->_library_owned = 1;
@@ -40,13 +40,13 @@ static top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_
 }
 
 __attribute__((deprecated)) top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_response_pins_inner_create(
-    list_t* metrics,
     list_t* data_status,
+    list_t* metrics,
     char *pin_id
     ) {
     return top_video_pins_analytics_response_pins_inner_create_internal (
-        metrics,
         data_status,
+        metrics,
         pin_id
         );
 }
@@ -60,16 +60,6 @@ void top_video_pins_analytics_response_pins_inner_free(top_video_pins_analytics_
         return ;
     }
     listEntry_t *listEntry;
-    if (top_video_pins_analytics_response_pins_inner->metrics) {
-        list_ForEach(listEntry, top_video_pins_analytics_response_pins_inner->metrics) {
-            keyValuePair_t *localKeyValue = listEntry->data;
-            free (localKeyValue->key);
-            free (localKeyValue->value);
-            keyValuePair_free(localKeyValue);
-        }
-        list_freeList(top_video_pins_analytics_response_pins_inner->metrics);
-        top_video_pins_analytics_response_pins_inner->metrics = NULL;
-    }
     if (top_video_pins_analytics_response_pins_inner->data_status) {
         list_ForEach(listEntry, top_video_pins_analytics_response_pins_inner->data_status) {
             keyValuePair_t *localKeyValue = listEntry->data;
@@ -80,6 +70,16 @@ void top_video_pins_analytics_response_pins_inner_free(top_video_pins_analytics_
         list_freeList(top_video_pins_analytics_response_pins_inner->data_status);
         top_video_pins_analytics_response_pins_inner->data_status = NULL;
     }
+    if (top_video_pins_analytics_response_pins_inner->metrics) {
+        list_ForEach(listEntry, top_video_pins_analytics_response_pins_inner->metrics) {
+            keyValuePair_t *localKeyValue = listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(top_video_pins_analytics_response_pins_inner->metrics);
+        top_video_pins_analytics_response_pins_inner->metrics = NULL;
+    }
     if (top_video_pins_analytics_response_pins_inner->pin_id) {
         free(top_video_pins_analytics_response_pins_inner->pin_id);
         top_video_pins_analytics_response_pins_inner->pin_id = NULL;
@@ -89,6 +89,22 @@ void top_video_pins_analytics_response_pins_inner_free(top_video_pins_analytics_
 
 cJSON *top_video_pins_analytics_response_pins_inner_convertToJSON(top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_response_pins_inner) {
     cJSON *item = cJSON_CreateObject();
+
+    // top_video_pins_analytics_response_pins_inner->data_status
+    if(top_video_pins_analytics_response_pins_inner->data_status != pinterest_rest_api_list_t*_DATASTATUS_NULL) {
+    cJSON *data_status = cJSON_AddObjectToObject(item, "data_status");
+    if(data_status == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = data_status;
+    listEntry_t *data_statusListEntry;
+    if (top_video_pins_analytics_response_pins_inner->data_status) {
+    list_ForEach(data_statusListEntry, top_video_pins_analytics_response_pins_inner->data_status) {
+        keyValuePair_t *localKeyValue = data_statusListEntry->data;
+    }
+    }
+    }
+
 
     // top_video_pins_analytics_response_pins_inner->metrics
     if(top_video_pins_analytics_response_pins_inner->metrics) {
@@ -105,22 +121,6 @@ cJSON *top_video_pins_analytics_response_pins_inner_convertToJSON(top_video_pins
         {
             goto fail;
         }
-    }
-    }
-    }
-
-
-    // top_video_pins_analytics_response_pins_inner->data_status
-    if(top_video_pins_analytics_response_pins_inner->data_status != pinterest_rest_api_list_t*_DATASTATUS_NULL) {
-    cJSON *data_status = cJSON_AddObjectToObject(item, "data_status");
-    if(data_status == NULL) {
-        goto fail; //primitive map container
-    }
-    cJSON *localMapObject = data_status;
-    listEntry_t *data_statusListEntry;
-    if (top_video_pins_analytics_response_pins_inner->data_status) {
-    list_ForEach(data_statusListEntry, top_video_pins_analytics_response_pins_inner->data_status) {
-        keyValuePair_t *localKeyValue = data_statusListEntry->data;
     }
     }
     }
@@ -145,11 +145,22 @@ top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_respons
 
     top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_response_pins_inner_local_var = NULL;
 
+    // define the local map for top_video_pins_analytics_response_pins_inner->data_status
+    list_t *data_statusList = NULL;
+
     // define the local map for top_video_pins_analytics_response_pins_inner->metrics
     list_t *metricsList = NULL;
 
-    // define the local map for top_video_pins_analytics_response_pins_inner->data_status
-    list_t *data_statusList = NULL;
+    // top_video_pins_analytics_response_pins_inner->data_status
+    cJSON *data_status = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_response_pins_innerJSON, "data_status");
+    if (cJSON_IsNull(data_status)) {
+        data_status = NULL;
+    }
+    if (data_status) { 
+
+    // The data type of the elements in top_video_pins_analytics_response_pins_inner->data_status is currently not supported.
+
+    }
 
     // top_video_pins_analytics_response_pins_inner->metrics
     cJSON *metrics = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_response_pins_innerJSON, "metrics");
@@ -179,17 +190,6 @@ top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_respons
     }
     }
 
-    // top_video_pins_analytics_response_pins_inner->data_status
-    cJSON *data_status = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_response_pins_innerJSON, "data_status");
-    if (cJSON_IsNull(data_status)) {
-        data_status = NULL;
-    }
-    if (data_status) { 
-
-    // The data type of the elements in top_video_pins_analytics_response_pins_inner->data_status is currently not supported.
-
-    }
-
     // top_video_pins_analytics_response_pins_inner->pin_id
     cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_response_pins_innerJSON, "pin_id");
     if (cJSON_IsNull(pin_id)) {
@@ -204,13 +204,16 @@ top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_respons
 
 
     top_video_pins_analytics_response_pins_inner_local_var = top_video_pins_analytics_response_pins_inner_create_internal (
-        metrics ? metricsList : NULL,
         data_status ? data_statusList : NULL,
+        metrics ? metricsList : NULL,
         pin_id && !cJSON_IsNull(pin_id) ? strdup(pin_id->valuestring) : NULL
         );
 
     return top_video_pins_analytics_response_pins_inner_local_var;
 end:
+
+    // The data type of the elements in top_video_pins_analytics_response_pins_inner->data_status is currently not supported.
+
     if (metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, metricsList) {
@@ -223,9 +226,6 @@ end:
         list_freeList(metricsList);
         metricsList = NULL;
     }
-
-    // The data type of the elements in top_video_pins_analytics_response_pins_inner->data_status is currently not supported.
-
     return NULL;
 
 }

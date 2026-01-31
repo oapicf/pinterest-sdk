@@ -22,24 +22,24 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param productBrand Product brand. For example, \"Parker\".
- * @param productCategory Product category. For example, \"Shoes\".
+ * @param productBrand Product brand. For example, 'Parker'.
+ * @param productCategory Product category. For example, 'Shoes'.
  * @param productId Product ID. For example, 1414.
- * @param productName Product name. For example, \"Parker Boots\".
- * @param productPrice Product price. For example, \"99.99\".
+ * @param productName Product name. For example, 'Parker Boots'.
+ * @param productPrice Product price. For example, '99.99'.
  * @param productQuantity Product quantity. For example, 2.
- * @param productVariant Product variant. For example, \"Red\".
- * @param productVariantId Product variant ID. For example, \"1414-34832\".
+ * @param productVariant Product variant. For example, 'Red'.
+ * @param productVariantId Product variant ID. For example, '1414-34832'.
  */
 
 
 data class LineItem (
 
-    /* Product brand. For example, \"Parker\". */
+    /* Product brand. For example, 'Parker'. */
     @Json(name = "product_brand")
     val productBrand: kotlin.String? = null,
 
-    /* Product category. For example, \"Shoes\". */
+    /* Product category. For example, 'Shoes'. */
     @Json(name = "product_category")
     val productCategory: kotlin.String? = null,
 
@@ -47,11 +47,11 @@ data class LineItem (
     @Json(name = "product_id")
     val productId: kotlin.Int? = null,
 
-    /* Product name. For example, \"Parker Boots\". */
+    /* Product name. For example, 'Parker Boots'. */
     @Json(name = "product_name")
     val productName: kotlin.String? = null,
 
-    /* Product price. For example, \"99.99\". */
+    /* Product price. For example, '99.99'. */
     @Json(name = "product_price")
     val productPrice: kotlin.String? = null,
 
@@ -59,11 +59,11 @@ data class LineItem (
     @Json(name = "product_quantity")
     val productQuantity: kotlin.Int? = null,
 
-    /* Product variant. For example, \"Red\". */
+    /* Product variant. For example, 'Red'. */
     @Json(name = "product_variant")
     val productVariant: kotlin.String? = null,
 
-    /* Product variant ID. For example, \"1414-34832\". */
+    /* Product variant ID. For example, '1414-34832'. */
     @Json(name = "product_variant_id")
     val productVariantId: kotlin.String? = null
 

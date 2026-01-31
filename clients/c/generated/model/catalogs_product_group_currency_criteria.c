@@ -6,27 +6,27 @@
 
 
 static catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_criteria_create_internal(
-    pinterest_rest_api_non_nullable_catalogs_currency__e values,
-    int negated
+    int negated,
+    pinterest_rest_api_non_nullable_catalogs_currency__e values
     ) {
     catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_criteria_local_var = malloc(sizeof(catalogs_product_group_currency_criteria_t));
     if (!catalogs_product_group_currency_criteria_local_var) {
         return NULL;
     }
-    catalogs_product_group_currency_criteria_local_var->values = values;
     catalogs_product_group_currency_criteria_local_var->negated = negated;
+    catalogs_product_group_currency_criteria_local_var->values = values;
 
     catalogs_product_group_currency_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_currency_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_criteria_create(
-    pinterest_rest_api_non_nullable_catalogs_currency__e values,
-    int negated
+    int negated,
+    pinterest_rest_api_non_nullable_catalogs_currency__e values
     ) {
     return catalogs_product_group_currency_criteria_create_internal (
-        values,
-        negated
+        negated,
+        values
         );
 }
 
@@ -45,6 +45,14 @@ void catalogs_product_group_currency_criteria_free(catalogs_product_group_curren
 cJSON *catalogs_product_group_currency_criteria_convertToJSON(catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_criteria) {
     cJSON *item = cJSON_CreateObject();
 
+    // catalogs_product_group_currency_criteria->negated
+    if(catalogs_product_group_currency_criteria->negated) {
+    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_currency_criteria->negated) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // catalogs_product_group_currency_criteria->values
     if (pinterest_rest_api_non_nullable_catalogs_currency__NULL == catalogs_product_group_currency_criteria->values) {
         goto fail;
@@ -56,14 +64,6 @@ cJSON *catalogs_product_group_currency_criteria_convertToJSON(catalogs_product_g
     cJSON_AddItemToObject(item, "values", values_local_JSON);
     if(item->child == NULL) {
         goto fail;
-    }
-
-
-    // catalogs_product_group_currency_criteria->negated
-    if(catalogs_product_group_currency_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_currency_criteria->negated) == NULL) {
-    goto fail; //Bool
-    }
     }
 
     return item;
@@ -81,18 +81,6 @@ catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_crit
     // define the local variable for catalogs_product_group_currency_criteria->values
     pinterest_rest_api_non_nullable_catalogs_currency__e values_local_nonprim = 0;
 
-    // catalogs_product_group_currency_criteria->values
-    cJSON *values = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_currency_criteriaJSON, "values");
-    if (cJSON_IsNull(values)) {
-        values = NULL;
-    }
-    if (!values) {
-        goto end;
-    }
-
-    
-    values_local_nonprim = non_nullable_catalogs_currency_parseFromJSON(values); //custom
-
     // catalogs_product_group_currency_criteria->negated
     cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_currency_criteriaJSON, "negated");
     if (cJSON_IsNull(negated)) {
@@ -105,10 +93,22 @@ catalogs_product_group_currency_criteria_t *catalogs_product_group_currency_crit
     }
     }
 
+    // catalogs_product_group_currency_criteria->values
+    cJSON *values = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_currency_criteriaJSON, "values");
+    if (cJSON_IsNull(values)) {
+        values = NULL;
+    }
+    if (!values) {
+        goto end;
+    }
+
+    
+    values_local_nonprim = non_nullable_catalogs_currency_parseFromJSON(values); //custom
+
 
     catalogs_product_group_currency_criteria_local_var = catalogs_product_group_currency_criteria_create_internal (
-        values_local_nonprim,
-        negated ? negated->valueint : 0
+        negated ? negated->valueint : 0,
+        values_local_nonprim
         );
 
     return catalogs_product_group_currency_criteria_local_var;

@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedIngestion"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedIngestion"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsFeedProcessingStatus = openapi_server.resourceTypes.CatalogsFeedProcessingStatus
+}
+resourceTypes {
+
+  CatalogsFeedIngestion {
+    title = CatalogsFeedIngestion
+    description = CatalogsFeedIngestion
+    derivedFrom = Root
+    properties {
+        created_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        feed_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        status {
+          type = CatalogsFeedProcessingStatus
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedIngestion {
+    title = CatalogsFeedIngestion
+    description = CatalogsFeedIngestion
+    implements = openapi_server.resourceTypes.CatalogsFeedIngestion
+
+  }
+}

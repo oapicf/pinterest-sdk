@@ -23,28 +23,28 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for updating a product group.
  *
- * @param name 
  * @param description 
- * @param isFeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
+ * @param isFeatured boolean indicator of whether the product group is being featured or not
+ * @param name 
  */
 
 
 data class CatalogsProductGroupUpdateRequest (
 
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     @Json(name = "description")
     val description: kotlin.String? = null,
+
+    @Json(name = "filters")
+    val filters: CatalogsProductGroupFiltersRequest? = null,
 
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
     @Deprecated(message = "This property is deprecated.")
     val isFeatured: kotlin.Boolean? = null,
 
-    @Json(name = "filters")
-    val filters: CatalogsProductGroupFiltersRequest? = null
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

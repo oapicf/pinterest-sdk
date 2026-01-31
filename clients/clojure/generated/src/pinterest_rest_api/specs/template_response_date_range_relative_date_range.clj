@@ -7,9 +7,9 @@
 
 (def template-response-date-range-relative-date-range-data
   {
-   (ds/opt :type) string?
-   (ds/opt :start_days_in_past) float?
    (ds/opt :end_days_in_past) float?
+   (ds/opt :start_days_in_past) float?
+   (ds/opt :type) string?
    })
 
 (def template-response-date-range-relative-date-range-spec

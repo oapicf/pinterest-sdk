@@ -18,5 +18,6 @@ Name | Value
 ---- | -----
 SEARCH | `"SEARCH"`
 BROWSE | `"BROWSE"`
+RELATED_PINS | `"RELATED_PINS"`
 
 

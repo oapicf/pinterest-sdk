@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &BulkDownloadRequest{}
 
 // BulkDownloadRequest Ad entities to get in bulk request.
 type BulkDownloadRequest struct {
-	// All entity types specified will be downloaded. Fewer types result in faster downloads.
-	EntityTypes []BulkEntityType `json:"entity_types,omitempty"`
+	CampaignFilter *BulkDownloadRequestCampaignFilter `json:"campaign_filter,omitempty"`
 	// All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
 	EntityIds []string `json:"entity_ids,omitempty"`
+	// All entity types specified will be downloaded. Fewer types result in faster downloads.
+	EntityTypes []BulkEntityType `json:"entity_types,omitempty"`
+	OutputFormat *BulkOutputFormat `json:"output_format,omitempty"`
 	// Unix UTC timestamp to retrieve all entities that have changed since this time.
 	UpdatedSince *string `json:"updated_since,omitempty" validate:"regexp=^\\\\d+$"`
-	CampaignFilter *BulkDownloadRequestCampaignFilter `json:"campaign_filter,omitempty"`
-	OutputFormat *BulkOutputFormat `json:"output_format,omitempty"`
 }
 
 // NewBulkDownloadRequest instantiates a new BulkDownloadRequest object
@@ -49,102 +49,6 @@ func NewBulkDownloadRequestWithDefaults() *BulkDownloadRequest {
 	var outputFormat BulkOutputFormat = JSON
 	this.OutputFormat = &outputFormat
 	return &this
-}
-
-// GetEntityTypes returns the EntityTypes field value if set, zero value otherwise.
-func (o *BulkDownloadRequest) GetEntityTypes() []BulkEntityType {
-	if o == nil || IsNil(o.EntityTypes) {
-		var ret []BulkEntityType
-		return ret
-	}
-	return o.EntityTypes
-}
-
-// GetEntityTypesOk returns a tuple with the EntityTypes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkDownloadRequest) GetEntityTypesOk() ([]BulkEntityType, bool) {
-	if o == nil || IsNil(o.EntityTypes) {
-		return nil, false
-	}
-	return o.EntityTypes, true
-}
-
-// HasEntityTypes returns a boolean if a field has been set.
-func (o *BulkDownloadRequest) HasEntityTypes() bool {
-	if o != nil && !IsNil(o.EntityTypes) {
-		return true
-	}
-
-	return false
-}
-
-// SetEntityTypes gets a reference to the given []BulkEntityType and assigns it to the EntityTypes field.
-func (o *BulkDownloadRequest) SetEntityTypes(v []BulkEntityType) {
-	o.EntityTypes = v
-}
-
-// GetEntityIds returns the EntityIds field value if set, zero value otherwise.
-func (o *BulkDownloadRequest) GetEntityIds() []string {
-	if o == nil || IsNil(o.EntityIds) {
-		var ret []string
-		return ret
-	}
-	return o.EntityIds
-}
-
-// GetEntityIdsOk returns a tuple with the EntityIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkDownloadRequest) GetEntityIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.EntityIds) {
-		return nil, false
-	}
-	return o.EntityIds, true
-}
-
-// HasEntityIds returns a boolean if a field has been set.
-func (o *BulkDownloadRequest) HasEntityIds() bool {
-	if o != nil && !IsNil(o.EntityIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetEntityIds gets a reference to the given []string and assigns it to the EntityIds field.
-func (o *BulkDownloadRequest) SetEntityIds(v []string) {
-	o.EntityIds = v
-}
-
-// GetUpdatedSince returns the UpdatedSince field value if set, zero value otherwise.
-func (o *BulkDownloadRequest) GetUpdatedSince() string {
-	if o == nil || IsNil(o.UpdatedSince) {
-		var ret string
-		return ret
-	}
-	return *o.UpdatedSince
-}
-
-// GetUpdatedSinceOk returns a tuple with the UpdatedSince field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkDownloadRequest) GetUpdatedSinceOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedSince) {
-		return nil, false
-	}
-	return o.UpdatedSince, true
-}
-
-// HasUpdatedSince returns a boolean if a field has been set.
-func (o *BulkDownloadRequest) HasUpdatedSince() bool {
-	if o != nil && !IsNil(o.UpdatedSince) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedSince gets a reference to the given string and assigns it to the UpdatedSince field.
-func (o *BulkDownloadRequest) SetUpdatedSince(v string) {
-	o.UpdatedSince = &v
 }
 
 // GetCampaignFilter returns the CampaignFilter field value if set, zero value otherwise.
@@ -179,6 +83,70 @@ func (o *BulkDownloadRequest) SetCampaignFilter(v BulkDownloadRequestCampaignFil
 	o.CampaignFilter = &v
 }
 
+// GetEntityIds returns the EntityIds field value if set, zero value otherwise.
+func (o *BulkDownloadRequest) GetEntityIds() []string {
+	if o == nil || IsNil(o.EntityIds) {
+		var ret []string
+		return ret
+	}
+	return o.EntityIds
+}
+
+// GetEntityIdsOk returns a tuple with the EntityIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkDownloadRequest) GetEntityIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.EntityIds) {
+		return nil, false
+	}
+	return o.EntityIds, true
+}
+
+// HasEntityIds returns a boolean if a field has been set.
+func (o *BulkDownloadRequest) HasEntityIds() bool {
+	if o != nil && !IsNil(o.EntityIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntityIds gets a reference to the given []string and assigns it to the EntityIds field.
+func (o *BulkDownloadRequest) SetEntityIds(v []string) {
+	o.EntityIds = v
+}
+
+// GetEntityTypes returns the EntityTypes field value if set, zero value otherwise.
+func (o *BulkDownloadRequest) GetEntityTypes() []BulkEntityType {
+	if o == nil || IsNil(o.EntityTypes) {
+		var ret []BulkEntityType
+		return ret
+	}
+	return o.EntityTypes
+}
+
+// GetEntityTypesOk returns a tuple with the EntityTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkDownloadRequest) GetEntityTypesOk() ([]BulkEntityType, bool) {
+	if o == nil || IsNil(o.EntityTypes) {
+		return nil, false
+	}
+	return o.EntityTypes, true
+}
+
+// HasEntityTypes returns a boolean if a field has been set.
+func (o *BulkDownloadRequest) HasEntityTypes() bool {
+	if o != nil && !IsNil(o.EntityTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntityTypes gets a reference to the given []BulkEntityType and assigns it to the EntityTypes field.
+func (o *BulkDownloadRequest) SetEntityTypes(v []BulkEntityType) {
+	o.EntityTypes = v
+}
+
 // GetOutputFormat returns the OutputFormat field value if set, zero value otherwise.
 func (o *BulkDownloadRequest) GetOutputFormat() BulkOutputFormat {
 	if o == nil || IsNil(o.OutputFormat) {
@@ -211,6 +179,38 @@ func (o *BulkDownloadRequest) SetOutputFormat(v BulkOutputFormat) {
 	o.OutputFormat = &v
 }
 
+// GetUpdatedSince returns the UpdatedSince field value if set, zero value otherwise.
+func (o *BulkDownloadRequest) GetUpdatedSince() string {
+	if o == nil || IsNil(o.UpdatedSince) {
+		var ret string
+		return ret
+	}
+	return *o.UpdatedSince
+}
+
+// GetUpdatedSinceOk returns a tuple with the UpdatedSince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkDownloadRequest) GetUpdatedSinceOk() (*string, bool) {
+	if o == nil || IsNil(o.UpdatedSince) {
+		return nil, false
+	}
+	return o.UpdatedSince, true
+}
+
+// HasUpdatedSince returns a boolean if a field has been set.
+func (o *BulkDownloadRequest) HasUpdatedSince() bool {
+	if o != nil && !IsNil(o.UpdatedSince) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedSince gets a reference to the given string and assigns it to the UpdatedSince field.
+func (o *BulkDownloadRequest) SetUpdatedSince(v string) {
+	o.UpdatedSince = &v
+}
+
 func (o BulkDownloadRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -221,20 +221,20 @@ func (o BulkDownloadRequest) MarshalJSON() ([]byte, error) {
 
 func (o BulkDownloadRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EntityTypes) {
-		toSerialize["entity_types"] = o.EntityTypes
+	if !IsNil(o.CampaignFilter) {
+		toSerialize["campaign_filter"] = o.CampaignFilter
 	}
 	if !IsNil(o.EntityIds) {
 		toSerialize["entity_ids"] = o.EntityIds
 	}
-	if !IsNil(o.UpdatedSince) {
-		toSerialize["updated_since"] = o.UpdatedSince
-	}
-	if !IsNil(o.CampaignFilter) {
-		toSerialize["campaign_filter"] = o.CampaignFilter
+	if !IsNil(o.EntityTypes) {
+		toSerialize["entity_types"] = o.EntityTypes
 	}
 	if !IsNil(o.OutputFormat) {
 		toSerialize["output_format"] = o.OutputFormat
+	}
+	if !IsNil(o.UpdatedSince) {
+		toSerialize["updated_since"] = o.UpdatedSince
 	}
 	return toSerialize, nil
 }

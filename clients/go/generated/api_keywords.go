@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -303,6 +303,7 @@ type ApiKeywordsGetRequest struct {
 	adAccountId string
 	campaignId *string
 	adGroupId *string
+	adGroupIds *[]string
 	matchTypes *[]MatchType
 	pageSize *int32
 	bookmark *string
@@ -320,13 +321,19 @@ func (r ApiKeywordsGetRequest) AdGroupId(adGroupId string) ApiKeywordsGetRequest
 	return r
 }
 
+// List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
+func (r ApiKeywordsGetRequest) AdGroupIds(adGroupIds []string) ApiKeywordsGetRequest {
+	r.adGroupIds = &adGroupIds
+	return r
+}
+
 // Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt;
 func (r ApiKeywordsGetRequest) MatchTypes(matchTypes []MatchType) ApiKeywordsGetRequest {
 	r.matchTypes = &matchTypes
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiKeywordsGetRequest) PageSize(pageSize int32) ApiKeywordsGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -392,6 +399,17 @@ func (a *KeywordsAPIService) KeywordsGetExecute(r ApiKeywordsGetRequest) (*Keywo
 	}
 	if r.adGroupId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_id", r.adGroupId, "form", "")
+	}
+	if r.adGroupIds != nil {
+		t := *r.adGroupIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "form", "multi")
+		}
 	}
 	if r.matchTypes != nil {
 		t := *r.matchTypes
@@ -612,6 +630,8 @@ type ApiTrendingKeywordsListRequest struct {
 	includeKeywords *[]string
 	normalizeAgainstGroup *bool
 	limit *int32
+	includePrediction *bool
+	includeDemographics *bool
 }
 
 // If set, filters the results to trends associated with the specified interests.&lt;br /&gt; If unset, trends for all interests will be returned.&lt;br /&gt; The list of supported interests is: - &#x60;animals&#x60; - Animals - &#x60;architecture&#x60; - Architecture - &#x60;art&#x60; - Art - &#x60;beauty&#x60; - Beauty - &#x60;childrens_fashion&#x60; - Children&#39;s Fashion - &#x60;design&#x60; - Design - &#x60;diy_and_crafts&#x60; - DIY &amp; Crafts - &#x60;education&#x60; - Education - &#x60;electronics&#x60; - Electronics - &#x60;entertainment&#x60; - Entertainment - &#x60;event_planning&#x60; - Event Planning - &#x60;finance&#x60; - Finance - &#x60;food_and_drinks&#x60; - Food &amp; Drink - &#x60;gardening&#x60; - Gardening - &#x60;health&#x60; - Health - &#x60;home_decor&#x60; - Home Decor - &#x60;mens_fashion&#x60; - Men&#39;s Fashion - &#x60;parenting&#x60; - Parenting - &#x60;quotes&#x60; - Quotes - &#x60;sport&#x60; - Sports - &#x60;travel&#x60; - Travel - &#x60;vehicles&#x60; - Vehicles - &#x60;wedding&#x60; - Wedding - &#x60;womens_fashion&#x60; - Women&#39;s Fashion
@@ -647,6 +667,18 @@ func (r ApiTrendingKeywordsListRequest) NormalizeAgainstGroup(normalizeAgainstGr
 // The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.
 func (r ApiTrendingKeywordsListRequest) Limit(limit int32) ApiTrendingKeywordsListRequest {
 	r.limit = &limit
+	return r
+}
+
+// &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data.
+func (r ApiTrendingKeywordsListRequest) IncludePrediction(includePrediction bool) ApiTrendingKeywordsListRequest {
+	r.includePrediction = &includePrediction
+	return r
+}
+
+// &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data.
+func (r ApiTrendingKeywordsListRequest) IncludeDemographics(includeDemographics bool) ApiTrendingKeywordsListRequest {
+	r.includeDemographics = &includeDemographics
 	return r
 }
 
@@ -754,6 +786,20 @@ func (a *KeywordsAPIService) TrendingKeywordsListExecute(r ApiTrendingKeywordsLi
         var defaultValue int32 = 50
         parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
         r.limit = &defaultValue
+	}
+	if r.includePrediction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_prediction", r.includePrediction, "form", "")
+	} else {
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_prediction", defaultValue, "form", "")
+        r.includePrediction = &defaultValue
+	}
+	if r.includeDemographics != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_demographics", r.includeDemographics, "form", "")
+	} else {
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_demographics", defaultValue, "form", "")
+        r.includeDemographics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

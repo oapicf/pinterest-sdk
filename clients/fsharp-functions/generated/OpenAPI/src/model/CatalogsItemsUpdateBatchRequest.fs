@@ -15,12 +15,12 @@ module CatalogsItemsUpdateBatchRequest =
   type CatalogsItemsUpdateBatchRequest = {
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : ItemUpdateBatchRecord[];
     [<JsonProperty(PropertyName = "language")>]
     Language : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : BatchOperation;
-    [<JsonProperty(PropertyName = "items")>]
-    Items : ItemUpdateBatchRecord[];
   }
 
   //#endregion

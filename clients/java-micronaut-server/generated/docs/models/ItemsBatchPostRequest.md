@@ -8,18 +8,20 @@ The class is defined in **[ItemsBatchPostRequest.java](../../src/main/java/org/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  [optional property]
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **items** | [`List&lt;ItemDeleteBatchRecord&gt;`](ItemDeleteBatchRecord.md) | Array with catalogs items | 
-**catalogId** | `String` | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  [optional property]
+**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **operation** | `BatchOperation` |  | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
+
 
 
 ## LanguageEnum
@@ -133,8 +135,6 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
-
 
 
 

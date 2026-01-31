@@ -5,18 +5,18 @@
   "name": "CatalogsProductGroupMultipleCountriesCriteria",
   "fields": [
     {
+      "name": "negated",
+      "type": ["boolean", "null"],
+      "doc": "",
+      "default": false
+    },
+    {
       "name": "values",
       "type": {
         "type": "array",
         "items": "model.Country"
       },
       "doc": ""
-    },
-    {
-      "name": "negated",
-      "type": ["boolean", "null"],
-      "doc": "",
-      "default": false
     }
   ]
 

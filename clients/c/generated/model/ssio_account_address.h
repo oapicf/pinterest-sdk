@@ -19,19 +19,19 @@ typedef struct ssio_account_address_t ssio_account_address_t;
 
 
 typedef struct ssio_account_address_t {
-    char *display; // string
-    char *purpose; // string
     char *address_id; // string
+    char *display; // string
     char *order_legal_entity; // string
+    char *purpose; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_address_t;
 
 __attribute__((deprecated)) ssio_account_address_t *ssio_account_address_create(
-    char *display,
-    char *purpose,
     char *address_id,
-    char *order_legal_entity
+    char *display,
+    char *order_legal_entity,
+    char *purpose
 );
 
 void ssio_account_address_free(ssio_account_address_t *ssio_account_address);

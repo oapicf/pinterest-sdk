@@ -20,8 +20,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Request object of catalogs items
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param filters 
+ * @param language We recommend using the CatalogsLocale values.
  */
 data class CatalogsItemsRequest(
 
@@ -29,12 +29,12 @@ data class CatalogsItemsRequest(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
 
-    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
-    @get:JsonProperty("language", required = true) val language: CatalogsItemsRequest.Language,
-
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("filters", required = true) val filters: CatalogsItemsPostFilters
+    @get:JsonProperty("filters", required = true) val filters: CatalogsItemsPostFilters,
+
+    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
+    @get:JsonProperty("language", required = true) val language: CatalogsItemsRequest.Language
 ) {
 
     /**

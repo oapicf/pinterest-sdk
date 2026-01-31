@@ -1,0 +1,88 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardBase"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardBase"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BoardMedia = openapi_server.resourceTypes.BoardMedia
+  BoardOwner = openapi_server.resourceTypes.BoardOwner
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BoardBase {
+    title = BoardBase
+    description = BoardBase
+    derivedFrom = Root
+    properties {
+        board_pins_modified_at {
+          type =  string
+          description = "Date and time of last board pins modified."
+          optional = false
+        }
+        collaborator_count {
+          type =  integer
+          description = "Count of collaborators on the board."
+          optional = false
+        }
+        created_at {
+          type =  string
+          description = "Date and time of board creation."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        follower_count {
+          type =  integer
+          description = "Board follower count."
+          optional = false
+        }
+        id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        is_ads_only {
+          type =  boolean
+          description = "If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins."
+          optional = false
+        }
+        media {
+          type = BoardMedia
+          description = "Board media."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;."
+          optional = true
+        }
+        owner {
+          type = BoardOwner
+          description = ""
+          optional = false
+        }
+        pin_count {
+          type =  integer
+          description = "Count of Pins on the board."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardBase {
+    title = BoardBase
+    description = BoardBase
+    implements = openapi_server.resourceTypes.BoardBase
+
+  }
+}

@@ -11,29 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdAccountGetSubscriptionResponse;
+import org.openapitools.model.LeadSubscription;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsSubscriptionsGetList200Response   {
   
-  private List<@Valid AdAccountGetSubscriptionResponse> items = new ArrayList<>();
   private String bookmark;
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
-  @NotNull
-  public List<@Valid AdAccountGetSubscriptionResponse> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid AdAccountGetSubscriptionResponse> items) {
-    this.items = items;
-  }
+  private List<@Valid LeadSubscription> items = new ArrayList<>();
 
   /**
    **/
@@ -47,6 +34,19 @@ public class AdAccountsSubscriptionsGetList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  @NotNull
+  public List<@Valid LeadSubscription> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid LeadSubscription> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -57,13 +57,13 @@ public class AdAccountsSubscriptionsGetList200Response   {
       return false;
     }
     AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList200Response = (AdAccountsSubscriptionsGetList200Response) o;
-    return Objects.equals(this.items, adAccountsSubscriptionsGetList200Response.items) &&
-        Objects.equals(this.bookmark, adAccountsSubscriptionsGetList200Response.bookmark);
+    return Objects.equals(this.bookmark, adAccountsSubscriptionsGetList200Response.bookmark) &&
+        Objects.equals(this.items, adAccountsSubscriptionsGetList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -71,8 +71,8 @@ public class AdAccountsSubscriptionsGetList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsSubscriptionsGetList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

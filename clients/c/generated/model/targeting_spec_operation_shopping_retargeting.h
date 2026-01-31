@@ -1,0 +1,59 @@
+/*
+ * targeting_spec_operation_shopping_retargeting.h
+ *
+ * 
+ */
+
+#ifndef _targeting_spec_operation_shopping_retargeting_H_
+#define _targeting_spec_operation_shopping_retargeting_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct targeting_spec_operation_shopping_retargeting_t targeting_spec_operation_shopping_retargeting_t;
+
+#include "targeting_spec_shopping_retargeting.h"
+
+// Enum FIELD for targeting_spec_operation_shopping_retargeting
+
+typedef enum  { pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_NULL = 0, pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_SHOPPING_RETARGETING } pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_e;
+
+char* targeting_spec_operation_shopping_retargeting_field_ToString(pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_e field);
+
+pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_e targeting_spec_operation_shopping_retargeting_field_FromString(char* field);
+
+// Enum OPERATION for targeting_spec_operation_shopping_retargeting
+
+typedef enum  { pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_NULL = 0, pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_SET } pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_e;
+
+char* targeting_spec_operation_shopping_retargeting_operation_ToString(pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_e operation);
+
+pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_e targeting_spec_operation_shopping_retargeting_operation_FromString(char* operation);
+
+
+
+typedef struct targeting_spec_operation_shopping_retargeting_t {
+    pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_e field; //enum
+    pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_e operation; //enum
+    list_t *values; //nonprimitive container
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} targeting_spec_operation_shopping_retargeting_t;
+
+__attribute__((deprecated)) targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation_shopping_retargeting_create(
+    pinterest_rest_api_targeting_spec_operation_shopping_retargeting_FIELD_e field,
+    pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_e operation,
+    list_t *values
+);
+
+void targeting_spec_operation_shopping_retargeting_free(targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation_shopping_retargeting);
+
+targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation_shopping_retargeting_parseFromJSON(cJSON *targeting_spec_operation_shopping_retargetingJSON);
+
+cJSON *targeting_spec_operation_shopping_retargeting_convertToJSON(targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation_shopping_retargeting);
+
+#endif /* _targeting_spec_operation_shopping_retargeting_H_ */
+

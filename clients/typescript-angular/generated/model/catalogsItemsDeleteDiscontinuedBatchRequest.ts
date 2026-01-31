@@ -18,14 +18,14 @@ import { BatchOperation } from './batchOperation';
 export interface CatalogsItemsDeleteDiscontinuedBatchRequest { 
     country: Country;
     /**
+     * Array with catalogs items
+     */
+    items: Array<ItemDeleteDiscontinuedBatchRecord>;
+    /**
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum;
     operation: BatchOperation;
-    /**
-     * Array with catalogs items
-     */
-    items: Array<ItemDeleteDiscontinuedBatchRecord>;
 }
 export namespace CatalogsItemsDeleteDiscontinuedBatchRequest {
     export const LanguageEnum = {

@@ -13,6 +13,34 @@ API.Client.Audience = function() {}
 API.Client.Audience.prototype.adAccountId;
 
 /**
+ * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+ * @type {!string}
+ * @export
+ */
+API.Client.Audience.prototype.audienceType;
+
+/**
+ * The company that created this audience.
+ * @type {!string}
+ * @export
+ */
+API.Client.Audience.prototype.createdByCompanyName;
+
+/**
+ * Creation time. Unix timestamp in seconds.
+ * @type {!number}
+ * @export
+ */
+API.Client.Audience.prototype.createdTimestamp;
+
+/**
+ * Audience description.
+ * @type {!string}
+ * @export
+ */
+API.Client.Audience.prototype.description;
+
+/**
  * Audience ID.
  * @type {!string}
  * @export
@@ -25,20 +53,6 @@ API.Client.Audience.prototype.id;
  * @export
  */
 API.Client.Audience.prototype.name;
-
-/**
- * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
- * @type {!string}
- * @export
- */
-API.Client.Audience.prototype.audienceType;
-
-/**
- * Audience description.
- * @type {!string}
- * @export
- */
-API.Client.Audience.prototype.description;
 
 /**
  * @type {!API.Client.AudienceRule}
@@ -66,13 +80,6 @@ API.Client.Audience.prototype.status;
  * @export
  */
 API.Client.Audience.prototype.type;
-
-/**
- * Creation time. Unix timestamp in seconds.
- * @type {!number}
- * @export
- */
-API.Client.Audience.prototype.createdTimestamp;
 
 /**
  * Last update time. Unix timestamp in seconds.

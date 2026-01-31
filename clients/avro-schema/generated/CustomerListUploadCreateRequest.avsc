@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerListUploadCreateRequest",
+  "fields": [
+    {
+      "name": "operation",
+      "type": "model.UserListOperationType",
+      "doc": ""
+    },
+    {
+      "name": "total_parts",
+      "type": "int",
+      "doc": "Number of parts to upload the file in."
+    }
+  ]
+
+}

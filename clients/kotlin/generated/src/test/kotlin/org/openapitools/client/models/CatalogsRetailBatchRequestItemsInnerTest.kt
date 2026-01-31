@@ -31,6 +31,12 @@ class CatalogsRetailBatchRequestItemsInnerTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsRetailBatchRequestItemsInner
         //val modelInstance = CatalogsRetailBatchRequestItemsInner()
 
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
+        }
+
         // to test the property `itemId` - The catalog item id in the merchant namespace
         should("test itemId") {
             // uncomment below to test the property
@@ -43,16 +49,16 @@ class CatalogsRetailBatchRequestItemsInnerTest : ShouldSpec() {
             //modelInstance.operation shouldBe ("TODO")
         }
 
-        // to test the property `attributes`
-        should("test attributes") {
-            // uncomment below to test the property
-            //modelInstance.attributes shouldBe ("TODO")
-        }
-
         // to test the property `updateMask` - The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
         should("test updateMask") {
             // uncomment below to test the property
             //modelInstance.updateMask shouldBe ("TODO")
+        }
+
+        // to test the property `lastUpdatedTime` - The millisecond timestamp when the item was lastly modified by the merchant.
+        should("test lastUpdatedTime") {
+            // uncomment below to test the property
+            //modelInstance.lastUpdatedTime shouldBe ("TODO")
         }
 
     }

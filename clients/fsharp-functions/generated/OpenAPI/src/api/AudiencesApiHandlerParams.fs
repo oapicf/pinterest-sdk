@@ -1,7 +1,6 @@
 namespace OpenAPI
 
 open OpenAPI.Model.Audience
-open OpenAPI.Model.AudienceCreateCustomRequest
 open OpenAPI.Model.AudienceCreateRequest
 open OpenAPI.Model.AudienceUpdateRequest
 open OpenAPI.Model.AudiencesList200Response
@@ -38,34 +37,6 @@ module AudiencesApiHandlerParams =
     type AudiencesCreateArgs = {
       pathParams:AudiencesCreatePathParams;
       bodyParams:AudiencesCreateBodyParams
-    }
-    //#region Path parameters
-    [<CLIMutable>]
-    type AudiencesCreateCustomPathParams = {
-      adAccountId : string ;
-    }
-    //#endregion
-
-    //#region Body parameters
-    [<CLIMutable>]
-    type AudiencesCreateCustomBodyParams = AudienceCreateCustomRequest
-    //#endregion
-
-
-    type AudiencesCreateCustomStatusCode200Response = {
-      content:Audience;
-      
-    }
-
-    type AudiencesCreateCustomDefaultStatusCodeResponse = {
-      content:Error;
-      
-    }
-    type AudiencesCreateCustomResult = AudiencesCreateCustomStatusCode200 of AudiencesCreateCustomStatusCode200Response|AudiencesCreateCustomDefaultStatusCode of AudiencesCreateCustomDefaultStatusCodeResponse
-
-    type AudiencesCreateCustomArgs = {
-      pathParams:AudiencesCreateCustomPathParams;
-      bodyParams:AudiencesCreateCustomBodyParams
     }
     //#region Path parameters
     [<CLIMutable>]

@@ -3,37 +3,37 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExternalBusinessId** | **String** | External business ID for the integration. | [optional] 
-**ConnectedMerchantId** | **String** |  | [optional] 
+**AdditionalId1** | **String** |  | [optional] 
 **ConnectedAdvertiserId** | **String** |  | [optional] 
 **ConnectedLbaId** | **String** |  | [optional] 
+**ConnectedMerchantId** | **String** |  | [optional] 
 **ConnectedTagId** | **String** |  | [optional] 
+**ExternalBusinessId** | **String** | External business ID for the integration. | [optional] 
 **PartnerAccessToken** | **String** |  | [optional] 
-**PartnerRefreshToken** | **String** |  | [optional] 
-**PartnerPrimaryEmail** | **String** |  | [optional] 
 **PartnerAccessTokenExpiry** | **Int32** |  | [optional] 
+**PartnerMetadata** | **String** |  | [optional] 
+**PartnerPrimaryEmail** | **String** |  | [optional] 
+**PartnerRefreshToken** | **String** |  | [optional] 
 **PartnerRefreshTokenExpiry** | **Int32** |  | [optional] 
 **Scopes** | **String** |  | [optional] 
-**AdditionalId1** | **String** |  | [optional] 
-**PartnerMetadata** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IntegrationRequest = Initialize-PSOpenAPIToolsIntegrationRequest  -ExternalBusinessId null `
- -ConnectedMerchantId null `
+$IntegrationRequest = Initialize-PSOpenAPIToolsIntegrationRequest  -AdditionalId1 null `
  -ConnectedAdvertiserId null `
  -ConnectedLbaId null `
+ -ConnectedMerchantId null `
  -ConnectedTagId null `
+ -ExternalBusinessId null `
  -PartnerAccessToken null `
- -PartnerRefreshToken null `
- -PartnerPrimaryEmail null `
  -PartnerAccessTokenExpiry null `
+ -PartnerMetadata null `
+ -PartnerPrimaryEmail null `
+ -PartnerRefreshToken null `
  -PartnerRefreshTokenExpiry null `
- -Scopes null `
- -AdditionalId1 null `
- -PartnerMetadata null
+ -Scopes null
 ```
 
 - Convert the resource to JSON

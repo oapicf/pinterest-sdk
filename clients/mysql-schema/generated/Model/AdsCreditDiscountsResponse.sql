@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdsCreditDiscountsResponse`
 --
-SELECT `active`, `advertiser_id`, `discountType`, `discountInMicroCurrency`, `discountCurrency`, `title`, `remainingDiscountInMicroCurrency` FROM `AdsCreditDiscountsResponse` WHERE 1;
+SELECT `active`, `advertiser_id`, `discountCurrency`, `discountInMicroCurrency`, `discountType`, `remainingDiscountInMicroCurrency`, `title` FROM `AdsCreditDiscountsResponse` WHERE 1;
 
 --
 -- INSERT template for table `AdsCreditDiscountsResponse`
 --
-INSERT INTO `AdsCreditDiscountsResponse`(`active`, `advertiser_id`, `discountType`, `discountInMicroCurrency`, `discountCurrency`, `title`, `remainingDiscountInMicroCurrency`) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `AdsCreditDiscountsResponse`(`active`, `advertiser_id`, `discountCurrency`, `discountInMicroCurrency`, `discountType`, `remainingDiscountInMicroCurrency`, `title`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdsCreditDiscountsResponse`
 --
-UPDATE `AdsCreditDiscountsResponse` SET `active` = ?, `advertiser_id` = ?, `discountType` = ?, `discountInMicroCurrency` = ?, `discountCurrency` = ?, `title` = ?, `remainingDiscountInMicroCurrency` = ? WHERE 1;
+UPDATE `AdsCreditDiscountsResponse` SET `active` = ?, `advertiser_id` = ?, `discountCurrency` = ?, `discountInMicroCurrency` = ?, `discountType` = ?, `remainingDiscountInMicroCurrency` = ?, `title` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdsCreditDiscountsResponse`

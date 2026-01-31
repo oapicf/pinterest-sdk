@@ -8,11 +8,11 @@ Object describing the catalogs hotel items batch
 Name | Type
 ------------ | -------------
 `batchId` | string
-`createdTime` | Date
-`completedTime` | Date
-`status` | [BatchOperationStatus](BatchOperationStatus.md)
 `catalogType` | [CatalogsType](CatalogsType.md)
+`completedTime` | Date
+`createdTime` | Date
 `items` | [Array&lt;HotelProcessingRecord&gt;](HotelProcessingRecord.md)
+`status` | [BatchOperationStatus](BatchOperationStatus.md)
 
 ## Example
 
@@ -22,11 +22,11 @@ import type { CatalogsHotelItemsBatch } from ''
 // TODO: Update the object below with actual values
 const example = {
   "batchId": 595953100599279259-66753b9bb65c46c49bd8503b27fecf9e,
-  "createdTime": null,
-  "completedTime": null,
-  "status": null,
   "catalogType": null,
+  "completedTime": null,
+  "createdTime": null,
   "items": null,
+  "status": null,
 } satisfies CatalogsHotelItemsBatch
 
 console.log(example)

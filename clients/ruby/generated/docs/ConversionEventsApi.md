@@ -31,7 +31,7 @@ end
 
 api_instance = PinterestSdkClient::ConversionEventsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-conversion_events = PinterestSdkClient::ConversionEvents.new({data: [PinterestSdkClient::ConversionEventsDataInner.new({event_name: 'checkout', action_source: 'app_ios', event_time: 1451431341, event_id: 'eventId0001', user_data: PinterestSdkClient::ConversionEventsUserData.new({em: [411e44ce1261728ffd2c0686e44e3fffe413c0e2c5adc498bc7da883d476b9c8,  09831ea51bd1b7b32a836683a00a9ccaf3d05f59499f42d9883412ed79289969], hashed_maids: [0192518eb84137ccfe82c8b6322d29631dae7e28ed9d0f6dd5f245d73a58c5f1,  837b850ac46d62b2272a71de73c27801ff011ac1e36c5432620c8755cf90db46], client_ip_address: '216.3.128.12', client_user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'})})]}) # ConversionEvents | Conversion events.
+conversion_events = PinterestSdkClient::ConversionEvents.new({data: [PinterestSdkClient::ConversionEventsDataInner.new({action_source: 'app_ios', event_id: 'eventId0001', event_name: 'checkout', event_time: 1451431341, user_data: PinterestSdkClient::ConversionEventsUserData.new})]}) # ConversionEvents | Conversion events.
 opts = {
   test: true # Boolean | Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
 }

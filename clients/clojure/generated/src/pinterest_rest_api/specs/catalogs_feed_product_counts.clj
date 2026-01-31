@@ -7,8 +7,8 @@
 
 (def catalogs-feed-product-counts-data
   {
-   (ds/opt :original) int?
    (ds/opt :ingested) int?
+   (ds/opt :original) int?
    })
 
 (def catalogs-feed-product-counts-spec

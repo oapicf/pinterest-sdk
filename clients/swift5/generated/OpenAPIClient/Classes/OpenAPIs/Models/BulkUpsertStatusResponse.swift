@@ -13,25 +13,25 @@ import AnyCodable
 /** ID of the bulk request. */
 public struct BulkUpsertStatusResponse: Codable, JSONEncodable, Hashable {
 
-    public var status: BulkUpsertStatus?
     public var resultUrl: String?
+    public var status: BulkUpsertStatus?
 
-    public init(status: BulkUpsertStatus? = nil, resultUrl: String? = nil) {
-        self.status = status
+    public init(resultUrl: String? = nil, status: BulkUpsertStatus? = nil) {
         self.resultUrl = resultUrl
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case status
         case resultUrl = "result_url"
+        case status
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(resultUrl, forKey: .resultUrl)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

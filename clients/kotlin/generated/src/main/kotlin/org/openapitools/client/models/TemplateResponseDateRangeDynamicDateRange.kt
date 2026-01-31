@@ -22,34 +22,35 @@ import com.squareup.moshi.JsonClass
 /**
  * The dynamic date range of the template
  *
- * @param type The date range type
  * @param range The dynamic range type
+ * @param type The date range type
  */
 
 
 data class TemplateResponseDateRangeDynamicDateRange (
 
-    /* The date range type */
-    @Json(name = "type")
-    val type: kotlin.String? = null,
-
     /* The dynamic range type */
     @Json(name = "range")
-    val range: TemplateResponseDateRangeDynamicDateRange.Range? = null
+    val range: TemplateResponseDateRangeDynamicDateRange.Range? = null,
+
+    /* The date range type */
+    @Json(name = "type")
+    val type: kotlin.String? = null
 
 ) {
 
     /**
      * The dynamic range type
      *
-     * Values: YEAR_TO_DATE,QUARTER_TO_DATE,MONTH_TO_DATE,LAST_MONTH
+     * Values: YEAR_TO_DATE,QUARTER_TO_DATE,MONTH_TO_DATE,LAST_MONTH,LAST_QUARTER
      */
     @JsonClass(generateAdapter = false)
     enum class Range(val value: kotlin.String) {
         @Json(name = "YEAR_TO_DATE") YEAR_TO_DATE("YEAR_TO_DATE"),
         @Json(name = "QUARTER_TO_DATE") QUARTER_TO_DATE("QUARTER_TO_DATE"),
         @Json(name = "MONTH_TO_DATE") MONTH_TO_DATE("MONTH_TO_DATE"),
-        @Json(name = "LAST_MONTH") LAST_MONTH("LAST_MONTH");
+        @Json(name = "LAST_MONTH") LAST_MONTH("LAST_MONTH"),
+        @Json(name = "LAST_QUARTER") LAST_QUARTER("LAST_QUARTER");
     }
 
 }

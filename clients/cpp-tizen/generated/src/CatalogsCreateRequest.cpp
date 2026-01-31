@@ -23,7 +23,7 @@ CatalogsCreateRequest::~CatalogsCreateRequest()
 void
 CatalogsCreateRequest::__init()
 {
-	//catalog_type = std::string();
+	//catalog_type = new CatalogsType();
 	//name = std::string();
 }
 
@@ -53,9 +53,12 @@ CatalogsCreateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_type, node, "std::string", "");
+		if (isprimitive("CatalogsType")) {
+			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
 		} else {
+			
+			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -82,11 +85,16 @@ CatalogsCreateRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("CatalogsType")) {
+		CatalogsType obj = getCatalogType();
+		node = converttoJson(&obj, "CatalogsType", "");
 	}
 	else {
+		
+		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
@@ -108,14 +116,14 @@ CatalogsCreateRequest::toJson()
 	return ret;
 }
 
-std::string
+CatalogsType
 CatalogsCreateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreateRequest::setCatalogType(std::string  catalog_type)
+CatalogsCreateRequest::setCatalogType(CatalogsType  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }

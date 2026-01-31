@@ -3,15 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OperationType** | **String** |  | 
 **Id** | **String** | Targeting template ID | 
+**OperationType** | **String** |  | 
+**TargetingAttributes** | [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TargetingTemplateUpdateRequest = Initialize-PSOpenAPIToolsTargetingTemplateUpdateRequest  -OperationType null `
- -Id 643
+$TargetingTemplateUpdateRequest = Initialize-PSOpenAPIToolsTargetingTemplateUpdateRequest  -Id 643 `
+ -OperationType null `
+ -TargetingAttributes null
 ```
 
 - Convert the resource to JSON

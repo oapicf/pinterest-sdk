@@ -19,37 +19,19 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing an item processing record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class HotelProcessingRecord   {
-  @JsonProperty("hotel_id")
-  private String hotelId;
-
   @JsonProperty("errors")
   private List<ItemValidationEvent> errors = null;
 
-  @JsonProperty("warnings")
-  private List<ItemValidationEvent> warnings = null;
+  @JsonProperty("hotel_id")
+  private String hotelId;
 
   @JsonProperty("status")
   private ItemProcessingStatus status;
 
-  /**
-   * The catalog hotel id in the merchant namespace
-   **/
-  public HotelProcessingRecord hotelId(String hotelId) {
-    this.hotelId = hotelId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-  public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
-  }
+  @JsonProperty("warnings")
+  private List<ItemValidationEvent> warnings = null;
 
   /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
@@ -70,21 +52,21 @@ public class HotelProcessingRecord   {
   }
 
   /**
-   * Array with the validation warnings for the item processing record
+   * The catalog hotel id in the merchant namespace
    **/
-  public HotelProcessingRecord warnings(List<ItemValidationEvent> warnings) {
-    this.warnings = warnings;
+  public HotelProcessingRecord hotelId(String hotelId) {
+    this.hotelId = hotelId;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @JsonProperty("warnings")
-  public List<ItemValidationEvent> getWarnings() {
-    return warnings;
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
   }
-  public void setWarnings(List<ItemValidationEvent> warnings) {
-    this.warnings = warnings;
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
   }
 
   /**
@@ -104,6 +86,24 @@ public class HotelProcessingRecord   {
     this.status = status;
   }
 
+  /**
+   * Array with the validation warnings for the item processing record
+   **/
+  public HotelProcessingRecord warnings(List<ItemValidationEvent> warnings) {
+    this.warnings = warnings;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
+  @JsonProperty("warnings")
+  public List<ItemValidationEvent> getWarnings() {
+    return warnings;
+  }
+  public void setWarnings(List<ItemValidationEvent> warnings) {
+    this.warnings = warnings;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,15 +114,15 @@ public class HotelProcessingRecord   {
       return false;
     }
     HotelProcessingRecord hotelProcessingRecord = (HotelProcessingRecord) o;
-    return Objects.equals(hotelId, hotelProcessingRecord.hotelId) &&
-        Objects.equals(errors, hotelProcessingRecord.errors) &&
-        Objects.equals(warnings, hotelProcessingRecord.warnings) &&
-        Objects.equals(status, hotelProcessingRecord.status);
+    return Objects.equals(errors, hotelProcessingRecord.errors) &&
+        Objects.equals(hotelId, hotelProcessingRecord.hotelId) &&
+        Objects.equals(status, hotelProcessingRecord.status) &&
+        Objects.equals(warnings, hotelProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, errors, warnings, status);
+    return Objects.hash(errors, hotelId, status, warnings);
   }
 
   @Override
@@ -130,10 +130,10 @@ public class HotelProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class HotelProcessingRecord {\n");
     
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

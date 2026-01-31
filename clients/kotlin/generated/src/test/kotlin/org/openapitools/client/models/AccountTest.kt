@@ -25,46 +25,16 @@ class AccountTest : ShouldSpec() {
         // uncomment below to create an instance of Account
         //val modelInstance = Account()
 
-        // to test the property `accountType` - Type of account
-        should("test accountType") {
-            // uncomment below to test the property
-            //modelInstance.accountType shouldBe ("TODO")
-        }
-
-        // to test the property `id` - User account ID.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `profileImage`
-        should("test profileImage") {
-            // uncomment below to test the property
-            //modelInstance.profileImage shouldBe ("TODO")
-        }
-
-        // to test the property `websiteUrl`
-        should("test websiteUrl") {
-            // uncomment below to test the property
-            //modelInstance.websiteUrl shouldBe ("TODO")
-        }
-
-        // to test the property `username`
-        should("test username") {
-            // uncomment below to test the property
-            //modelInstance.username shouldBe ("TODO")
-        }
-
         // to test the property `about` - Profile about description.
         should("test about") {
             // uncomment below to test the property
             //modelInstance.about shouldBe ("TODO")
         }
 
-        // to test the property `businessName`
-        should("test businessName") {
+        // to test the property `accountType` - Type of account
+        should("test accountType") {
             // uncomment below to test the property
-            //modelInstance.businessName shouldBe ("TODO")
+            //modelInstance.accountType shouldBe ("TODO")
         }
 
         // to test the property `boardCount` - User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
@@ -73,10 +43,10 @@ class AccountTest : ShouldSpec() {
             //modelInstance.boardCount shouldBe ("TODO")
         }
 
-        // to test the property `pinCount` - User account pin count. This includes both created and saved pins.
-        should("test pinCount") {
+        // to test the property `businessName`
+        should("test businessName") {
             // uncomment below to test the property
-            //modelInstance.pinCount shouldBe ("TODO")
+            //modelInstance.businessName shouldBe ("TODO")
         }
 
         // to test the property `followerCount` - User account follower count.
@@ -91,10 +61,40 @@ class AccountTest : ShouldSpec() {
             //modelInstance.followingCount shouldBe ("TODO")
         }
 
+        // to test the property `id` - User account ID.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
         // to test the property `monthlyViews` - User account monthly views.
         should("test monthlyViews") {
             // uncomment below to test the property
             //modelInstance.monthlyViews shouldBe ("TODO")
+        }
+
+        // to test the property `pinCount` - User account pin count. This includes both created and saved pins.
+        should("test pinCount") {
+            // uncomment below to test the property
+            //modelInstance.pinCount shouldBe ("TODO")
+        }
+
+        // to test the property `profileImage`
+        should("test profileImage") {
+            // uncomment below to test the property
+            //modelInstance.profileImage shouldBe ("TODO")
+        }
+
+        // to test the property `username`
+        should("test username") {
+            // uncomment below to test the property
+            //modelInstance.username shouldBe ("TODO")
+        }
+
+        // to test the property `websiteUrl`
+        should("test websiteUrl") {
+            // uncomment below to test the property
+            //modelInstance.websiteUrl shouldBe ("TODO")
         }
 
     }

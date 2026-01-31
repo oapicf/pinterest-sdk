@@ -5,16 +5,16 @@ context("Test RelatedTermsRelatedTermsListInner")
 
 model_instance <- RelatedTermsRelatedTermsListInner$new()
 
-test_that("term", {
-  # tests for the property `term` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`term`, "EXPECTED_RESULT")
-})
-
 test_that("related_terms", {
   # tests for the property `related_terms` (array[character])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`related_terms`, "EXPECTED_RESULT")
+})
+
+test_that("term", {
+  # tests for the property `term` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`term`, "EXPECTED_RESULT")
 })

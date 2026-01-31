@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &IntegrationsGetList200Response{}
 
 // IntegrationsGetList200Response struct for IntegrationsGetList200Response
 type IntegrationsGetList200Response struct {
-	Items []IntegrationRecord `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []IntegrationRecord `json:"items"`
 }
 
 type _IntegrationsGetList200Response IntegrationsGetList200Response
@@ -44,30 +44,6 @@ func NewIntegrationsGetList200Response(items []IntegrationRecord) *IntegrationsG
 func NewIntegrationsGetList200ResponseWithDefaults() *IntegrationsGetList200Response {
 	this := IntegrationsGetList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *IntegrationsGetList200Response) GetItems() []IntegrationRecord {
-	if o == nil {
-		var ret []IntegrationRecord
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *IntegrationsGetList200Response) GetItemsOk() ([]IntegrationRecord, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *IntegrationsGetList200Response) SetItems(v []IntegrationRecord) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *IntegrationsGetList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *IntegrationsGetList200Response) GetItems() []IntegrationRecord {
+	if o == nil {
+		var ret []IntegrationRecord
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *IntegrationsGetList200Response) GetItemsOk() ([]IntegrationRecord, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *IntegrationsGetList200Response) SetItems(v []IntegrationRecord) {
+	o.Items = v
+}
+
 func (o IntegrationsGetList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o IntegrationsGetList200Response) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationsGetList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

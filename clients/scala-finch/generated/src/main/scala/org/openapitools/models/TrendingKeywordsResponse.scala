@@ -5,14 +5,14 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.TrendingKeywordsResponseTrendsInner
+import org.openapitools.models.TrendingKeyword
 import scala.collection.immutable.Seq
 
 /**
  * 
  * @param trends The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
  */
-case class TrendingKeywordsResponse(trends: Option[Seq[TrendingKeywordsResponseTrendsInner]]
+case class TrendingKeywordsResponse(trends: Option[Seq[TrendingKeyword]]
                 )
 
 object TrendingKeywordsResponse {

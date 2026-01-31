@@ -2,11 +2,13 @@ package org.openapitools.server.model
 
 
 /**
- * @param operationType  for example: ''null''
  * @param id Targeting template ID for example: ''643''
+ * @param operationType  for example: ''null''
+ * @param targetingAttributes  for example: ''null''
 */
 final case class TargetingTemplateUpdateRequest (
+  id: String,
   operationType: String,
-  id: String
+  targetingAttributes: Option[TargetingSpec] = None
 )
 

@@ -5,13 +5,13 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}original`,
-                label: `The number of products in the feed file. - [${labelPrefix}original]`,
+                key: `${keyPrefix}ingested`,
+                label: `The number of products successfully ingested from the feed file. - [${labelPrefix}ingested]`,
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}ingested`,
-                label: `The number of products successfully ingested from the feed file. - [${labelPrefix}ingested]`,
+                key: `${keyPrefix}original`,
+                label: `The number of products in the feed file. - [${labelPrefix}original]`,
                 type: 'integer',
             },
         ]
@@ -19,8 +19,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'original': bundle.inputData?.[`${keyPrefix}original`],
             'ingested': bundle.inputData?.[`${keyPrefix}ingested`],
+            'original': bundle.inputData?.[`${keyPrefix}original`],
         }
     },
 }

@@ -23,75 +23,11 @@ public class IntegrationLogTest {
     }
 
     /**
-     * Test the property 'clientTimestamp'
-     */
-    @Test
-    public void clientTimestampTest() {
-        // TODO: test clientTimestamp
-    }
-
-    /**
-     * Test the property 'eventType'
-     */
-    @Test
-    public void eventTypeTest() {
-        // TODO: test eventType
-    }
-
-    /**
-     * Test the property 'logLevel'
-     */
-    @Test
-    public void logLevelTest() {
-        // TODO: test logLevel
-    }
-
-    /**
-     * Test the property 'externalBusinessId'
-     */
-    @Test
-    public void externalBusinessIdTest() {
-        // TODO: test externalBusinessId
-    }
-
-    /**
      * Test the property 'advertiserId'
      */
     @Test
     public void advertiserIdTest() {
         // TODO: test advertiserId
-    }
-
-    /**
-     * Test the property 'merchantId'
-     */
-    @Test
-    public void merchantIdTest() {
-        // TODO: test merchantId
-    }
-
-    /**
-     * Test the property 'tagId'
-     */
-    @Test
-    public void tagIdTest() {
-        // TODO: test tagId
-    }
-
-    /**
-     * Test the property 'feedProfileId'
-     */
-    @Test
-    public void feedProfileIdTest() {
-        // TODO: test feedProfileId
-    }
-
-    /**
-     * Test the property 'message'
-     */
-    @Test
-    public void messageTest() {
-        // TODO: test message
     }
 
     /**
@@ -103,11 +39,11 @@ public class IntegrationLogTest {
     }
 
     /**
-     * Test the property 'platformVersionNumber'
+     * Test the property 'clientTimestamp'
      */
     @Test
-    public void platformVersionNumberTest() {
-        // TODO: test platformVersionNumber
+    public void clientTimestampTest() {
+        // TODO: test clientTimestamp
     }
 
     /**
@@ -119,11 +55,75 @@ public class IntegrationLogTest {
     }
 
     /**
+     * Test the property 'eventType'
+     */
+    @Test
+    public void eventTypeTest() {
+        // TODO: test eventType
+    }
+
+    /**
+     * Test the property 'externalBusinessId'
+     */
+    @Test
+    public void externalBusinessIdTest() {
+        // TODO: test externalBusinessId
+    }
+
+    /**
+     * Test the property 'feedProfileId'
+     */
+    @Test
+    public void feedProfileIdTest() {
+        // TODO: test feedProfileId
+    }
+
+    /**
+     * Test the property 'logLevel'
+     */
+    @Test
+    public void logLevelTest() {
+        // TODO: test logLevel
+    }
+
+    /**
+     * Test the property 'merchantId'
+     */
+    @Test
+    public void merchantIdTest() {
+        // TODO: test merchantId
+    }
+
+    /**
+     * Test the property 'message'
+     */
+    @Test
+    public void messageTest() {
+        // TODO: test message
+    }
+
+    /**
+     * Test the property 'platformVersionNumber'
+     */
+    @Test
+    public void platformVersionNumberTest() {
+        // TODO: test platformVersionNumber
+    }
+
+    /**
      * Test the property 'request'
      */
     @Test
     public void requestTest() {
         // TODO: test request
+    }
+
+    /**
+     * Test the property 'tagId'
+     */
+    @Test
+    public void tagIdTest() {
+        // TODO: test tagId
     }
 
 }

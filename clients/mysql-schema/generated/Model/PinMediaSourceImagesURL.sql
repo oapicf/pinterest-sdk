@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaSourceImagesURL`
 --
-SELECT `source_type`, `items`, `index` FROM `PinMediaSourceImagesURL` WHERE 1;
+SELECT `index`, `items`, `source_type` FROM `PinMediaSourceImagesURL` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaSourceImagesURL`
 --
-INSERT INTO `PinMediaSourceImagesURL`(`source_type`, `items`, `index`) VALUES (?, ?, ?);
+INSERT INTO `PinMediaSourceImagesURL`(`index`, `items`, `source_type`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `PinMediaSourceImagesURL`
 --
-UPDATE `PinMediaSourceImagesURL` SET `source_type` = ?, `items` = ?, `index` = ? WHERE 1;
+UPDATE `PinMediaSourceImagesURL` SET `index` = ?, `items` = ?, `source_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaSourceImagesURL`

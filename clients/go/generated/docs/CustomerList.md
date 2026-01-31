@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdAccountId** | Pointer to **string** | Associated ad account ID. | [optional] 
 **CreatedTime** | Pointer to **float32** | Creation time. Unix timestamp in seconds. | [optional] 
+**Exceptions** | Pointer to **map[string]interface{}** | Customer list errors | [optional] 
 **Id** | Pointer to **string** | Customer list ID. | [optional] 
 **Name** | Pointer to **string** | Customer list name. | [optional] 
 **NumBatches** | Pointer to **float32** | Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. | [optional] 
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. | [optional] 
 **Type** | Pointer to **string** | Always \&quot;customerlist\&quot;. | [optional] 
 **UpdatedTime** | Pointer to **float32** | Last update time. Unix timestamp in seconds. | [optional] 
-**Exceptions** | Pointer to **map[string]interface{}** | Customer list errors | [optional] 
 
 ## Methods
 
@@ -84,6 +84,31 @@ SetCreatedTime sets CreatedTime field to given value.
 `func (o *CustomerList) HasCreatedTime() bool`
 
 HasCreatedTime returns a boolean if a field has been set.
+
+### GetExceptions
+
+`func (o *CustomerList) GetExceptions() map[string]interface{}`
+
+GetExceptions returns the Exceptions field if non-nil, zero value otherwise.
+
+### GetExceptionsOk
+
+`func (o *CustomerList) GetExceptionsOk() (*map[string]interface{}, bool)`
+
+GetExceptionsOk returns a tuple with the Exceptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExceptions
+
+`func (o *CustomerList) SetExceptions(v map[string]interface{})`
+
+SetExceptions sets Exceptions field to given value.
+
+### HasExceptions
+
+`func (o *CustomerList) HasExceptions() bool`
+
+HasExceptions returns a boolean if a field has been set.
 
 ### GetId
 
@@ -284,31 +309,6 @@ SetUpdatedTime sets UpdatedTime field to given value.
 `func (o *CustomerList) HasUpdatedTime() bool`
 
 HasUpdatedTime returns a boolean if a field has been set.
-
-### GetExceptions
-
-`func (o *CustomerList) GetExceptions() map[string]interface{}`
-
-GetExceptions returns the Exceptions field if non-nil, zero value otherwise.
-
-### GetExceptionsOk
-
-`func (o *CustomerList) GetExceptionsOk() (*map[string]interface{}, bool)`
-
-GetExceptionsOk returns a tuple with the Exceptions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExceptions
-
-`func (o *CustomerList) SetExceptions(v map[string]interface{})`
-
-SetExceptions sets Exceptions field to given value.
-
-### HasExceptions
-
-`func (o *CustomerList) HasExceptions() bool`
-
-HasExceptions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

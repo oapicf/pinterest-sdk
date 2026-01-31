@@ -6,11 +6,13 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.AvailabilityFilter;
 import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 import org.openapitools.model.CatalogsProductGroupPricingCriteria;
+import org.openapitools.model.CatalogsProductGroupUint32Criteria;
 import org.openapitools.model.ConditionFilter;
 import org.openapitools.model.CurrencyFilter;
 import org.openapitools.model.CustomLabel0Filter;
@@ -18,6 +20,11 @@ import org.openapitools.model.CustomLabel1Filter;
 import org.openapitools.model.CustomLabel2Filter;
 import org.openapitools.model.CustomLabel3Filter;
 import org.openapitools.model.CustomLabel4Filter;
+import org.openapitools.model.CustomNumber0Filter;
+import org.openapitools.model.CustomNumber1Filter;
+import org.openapitools.model.CustomNumber2Filter;
+import org.openapitools.model.CustomNumber3Filter;
+import org.openapitools.model.CustomNumber4Filter;
 import org.openapitools.model.GenderFilter;
 import org.openapitools.model.GoogleProductCategory0Filter;
 import org.openapitools.model.GoogleProductCategory1Filter;
@@ -37,6 +44,7 @@ import org.openapitools.model.ProductType1Filter;
 import org.openapitools.model.ProductType2Filter;
 import org.openapitools.model.ProductType3Filter;
 import org.openapitools.model.ProductType4Filter;
+import org.openapitools.model.TitleKeywordsFilter;
 
 @Canonical
 class CatalogsProductGroupFilterKeys {
@@ -55,15 +63,15 @@ class CatalogsProductGroupFilterKeys {
     
     CatalogsProductGroupMultipleStringCriteria CONDITION
     
-    CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0
+    CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0
     
-    CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1
+    CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1
     
-    CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2
+    CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2
     
-    CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3
+    CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3
     
-    CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4
+    CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4
     
     CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID
     
@@ -96,4 +104,16 @@ class CatalogsProductGroupFilterKeys {
     CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0
     
     CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP
+    
+    CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0
+    
+    CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1
+    
+    CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2
+    
+    CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3
+    
+    CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4
+    
+    CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS
 }

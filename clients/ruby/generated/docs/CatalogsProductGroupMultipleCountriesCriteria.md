@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **values** | [**Array&lt;Country&gt;**](Country.md) |  |  |
 | **negated** | **Boolean** |  | [optional][default to false] |
+| **values** | [**Array&lt;Country&gt;**](Country.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsProductGroupMultipleCountriesCriteria.new(
-  values: null,
-  negated: null
+  negated: null,
+  values: null
 )
 ```
 

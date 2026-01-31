@@ -7,13 +7,6 @@ goog.provide('API.Client.HotelProcessingRecord');
 API.Client.HotelProcessingRecord = function() {}
 
 /**
- * The catalog hotel id in the merchant namespace
- * @type {!string}
- * @export
- */
-API.Client.HotelProcessingRecord.prototype.hotelId;
-
-/**
  * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
  * @type {!Array<!API.Client.ItemValidationEvent>}
  * @export
@@ -21,15 +14,22 @@ API.Client.HotelProcessingRecord.prototype.hotelId;
 API.Client.HotelProcessingRecord.prototype.errors;
 
 /**
- * Array with the validation warnings for the item processing record
- * @type {!Array<!API.Client.ItemValidationEvent>}
+ * The catalog hotel id in the merchant namespace
+ * @type {!string}
  * @export
  */
-API.Client.HotelProcessingRecord.prototype.warnings;
+API.Client.HotelProcessingRecord.prototype.hotelId;
 
 /**
  * @type {!API.Client.ItemProcessingStatus}
  * @export
  */
 API.Client.HotelProcessingRecord.prototype.status;
+
+/**
+ * Array with the validation warnings for the item processing record
+ * @type {!Array<!API.Client.ItemValidationEvent>}
+ * @export
+ */
+API.Client.HotelProcessingRecord.prototype.warnings;
 

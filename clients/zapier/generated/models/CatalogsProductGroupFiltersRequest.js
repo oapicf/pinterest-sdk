@@ -1,7 +1,7 @@
 const utils = require('../utils/utils');
 const CatalogsProductGroupFilterKeys = require('../models/CatalogsProductGroupFilterKeys');
-const CatalogsProductGroupFiltersRequest_anyOf = require('../models/CatalogsProductGroupFiltersRequest_anyOf');
-const CatalogsProductGroupFiltersRequest_anyOf_1 = require('../models/CatalogsProductGroupFiltersRequest_anyOf_1');
+const all_of = require('../models/all_of');
+const any_of = require('../models/any_of');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {

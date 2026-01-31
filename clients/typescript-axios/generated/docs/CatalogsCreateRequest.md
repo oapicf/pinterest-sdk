@@ -6,7 +6,7 @@ Request object for creating a catalog.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **string** | Type of the catalog entity. | [default to undefined]
+**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
 **name** | **string** | A human-friendly name associated to a given catalog. | [default to undefined]
 
 ## Example

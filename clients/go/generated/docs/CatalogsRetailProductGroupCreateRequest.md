@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
 **CatalogType** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
-**Name** | **string** |  | 
+**Country** | Pointer to [**Country**](Country.md) |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
-**CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
-**Country** | [**Country**](Country.md) |  | 
-**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
+**Locale** | Pointer to [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewCatalogsRetailProductGroupCreateRequest
 
-`func NewCatalogsRetailProductGroupCreateRequest(catalogType string, name string, filters CatalogsProductGroupFiltersRequest, catalogId string, country Country, locale CatalogsLocale, ) *CatalogsRetailProductGroupCreateRequest`
+`func NewCatalogsRetailProductGroupCreateRequest(catalogId string, catalogType string, filters CatalogsProductGroupFiltersRequest, name string, ) *CatalogsRetailProductGroupCreateRequest`
 
 NewCatalogsRetailProductGroupCreateRequest instantiates a new CatalogsRetailProductGroupCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +30,26 @@ will change when the set of required properties is changed
 NewCatalogsRetailProductGroupCreateRequestWithDefaults instantiates a new CatalogsRetailProductGroupCreateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsRetailProductGroupCreateRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
 
 ### GetCatalogType
 
@@ -51,25 +71,30 @@ and a boolean to check if the value has been set.
 SetCatalogType sets CatalogType field to given value.
 
 
-### GetName
+### GetCountry
 
-`func (o *CatalogsRetailProductGroupCreateRequest) GetName() string`
+`func (o *CatalogsRetailProductGroupCreateRequest) GetCountry() Country`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetCountry returns the Country field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetCountryOk
 
-`func (o *CatalogsRetailProductGroupCreateRequest) GetNameOk() (*string, bool)`
+`func (o *CatalogsRetailProductGroupCreateRequest) GetCountryOk() (*Country, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCountry
 
-`func (o *CatalogsRetailProductGroupCreateRequest) SetName(v string)`
+`func (o *CatalogsRetailProductGroupCreateRequest) SetCountry(v Country)`
 
-SetName sets Name field to given value.
+SetCountry sets Country field to given value.
 
+### HasCountry
+
+`func (o *CatalogsRetailProductGroupCreateRequest) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -126,46 +151,6 @@ and a boolean to check if the value has been set.
 SetFilters sets Filters field to given value.
 
 
-### GetCatalogId
-
-`func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsRetailProductGroupCreateRequest) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
-
-
-### GetCountry
-
-`func (o *CatalogsRetailProductGroupCreateRequest) GetCountry() Country`
-
-GetCountry returns the Country field if non-nil, zero value otherwise.
-
-### GetCountryOk
-
-`func (o *CatalogsRetailProductGroupCreateRequest) GetCountryOk() (*Country, bool)`
-
-GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountry
-
-`func (o *CatalogsRetailProductGroupCreateRequest) SetCountry(v Country)`
-
-SetCountry sets Country field to given value.
-
-
 ### GetLocale
 
 `func (o *CatalogsRetailProductGroupCreateRequest) GetLocale() CatalogsLocale`
@@ -184,6 +169,31 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsRetailProductGroupCreateRequest) SetLocale(v CatalogsLocale)`
 
 SetLocale sets Locale field to given value.
+
+### HasLocale
+
+`func (o *CatalogsRetailProductGroupCreateRequest) HasLocale() bool`
+
+HasLocale returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CatalogsRetailProductGroupCreateRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsRetailProductGroupCreateRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsRetailProductGroupCreateRequest) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 

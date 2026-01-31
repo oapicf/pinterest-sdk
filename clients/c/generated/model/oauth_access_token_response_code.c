@@ -24,24 +24,26 @@ pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e oauth_access_
 
 static oauth_access_token_response_code_t *oauth_access_token_response_code_create_internal(
     char *refresh_token,
+    int refresh_token_expires_at,
     int refresh_token_expires_in,
-    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
     char *access_token,
-    char *token_type,
     int expires_in,
-    char *scope
+    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
+    char *scope,
+    char *token_type
     ) {
     oauth_access_token_response_code_t *oauth_access_token_response_code_local_var = malloc(sizeof(oauth_access_token_response_code_t));
     if (!oauth_access_token_response_code_local_var) {
         return NULL;
     }
     oauth_access_token_response_code_local_var->refresh_token = refresh_token;
+    oauth_access_token_response_code_local_var->refresh_token_expires_at = refresh_token_expires_at;
     oauth_access_token_response_code_local_var->refresh_token_expires_in = refresh_token_expires_in;
-    oauth_access_token_response_code_local_var->response_type = response_type;
     oauth_access_token_response_code_local_var->access_token = access_token;
-    oauth_access_token_response_code_local_var->token_type = token_type;
     oauth_access_token_response_code_local_var->expires_in = expires_in;
+    oauth_access_token_response_code_local_var->response_type = response_type;
     oauth_access_token_response_code_local_var->scope = scope;
+    oauth_access_token_response_code_local_var->token_type = token_type;
 
     oauth_access_token_response_code_local_var->_library_owned = 1;
     return oauth_access_token_response_code_local_var;
@@ -49,21 +51,23 @@ static oauth_access_token_response_code_t *oauth_access_token_response_code_crea
 
 __attribute__((deprecated)) oauth_access_token_response_code_t *oauth_access_token_response_code_create(
     char *refresh_token,
+    int refresh_token_expires_at,
     int refresh_token_expires_in,
-    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
     char *access_token,
-    char *token_type,
     int expires_in,
-    char *scope
+    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
+    char *scope,
+    char *token_type
     ) {
     return oauth_access_token_response_code_create_internal (
         refresh_token,
+        refresh_token_expires_at,
         refresh_token_expires_in,
-        response_type,
         access_token,
-        token_type,
         expires_in,
-        scope
+        response_type,
+        scope,
+        token_type
         );
 }
 
@@ -84,13 +88,13 @@ void oauth_access_token_response_code_free(oauth_access_token_response_code_t *o
         free(oauth_access_token_response_code->access_token);
         oauth_access_token_response_code->access_token = NULL;
     }
-    if (oauth_access_token_response_code->token_type) {
-        free(oauth_access_token_response_code->token_type);
-        oauth_access_token_response_code->token_type = NULL;
-    }
     if (oauth_access_token_response_code->scope) {
         free(oauth_access_token_response_code->scope);
         oauth_access_token_response_code->scope = NULL;
+    }
+    if (oauth_access_token_response_code->token_type) {
+        free(oauth_access_token_response_code->token_type);
+        oauth_access_token_response_code->token_type = NULL;
     }
     free(oauth_access_token_response_code);
 }
@@ -99,28 +103,25 @@ cJSON *oauth_access_token_response_code_convertToJSON(oauth_access_token_respons
     cJSON *item = cJSON_CreateObject();
 
     // oauth_access_token_response_code->refresh_token
-    if (!oauth_access_token_response_code->refresh_token) {
-        goto fail;
-    }
+    if(oauth_access_token_response_code->refresh_token) {
     if(cJSON_AddStringToObject(item, "refresh_token", oauth_access_token_response_code->refresh_token) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // oauth_access_token_response_code->refresh_token_expires_at
+    if(oauth_access_token_response_code->refresh_token_expires_at) {
+    if(cJSON_AddNumberToObject(item, "refresh_token_expires_at", oauth_access_token_response_code->refresh_token_expires_at) == NULL) {
+    goto fail; //Numeric
+    }
     }
 
 
     // oauth_access_token_response_code->refresh_token_expires_in
-    if (!oauth_access_token_response_code->refresh_token_expires_in) {
-        goto fail;
-    }
+    if(oauth_access_token_response_code->refresh_token_expires_in) {
     if(cJSON_AddNumberToObject(item, "refresh_token_expires_in", oauth_access_token_response_code->refresh_token_expires_in) == NULL) {
     goto fail; //Numeric
-    }
-
-
-    // oauth_access_token_response_code->response_type
-    if(oauth_access_token_response_code->response_type != pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "response_type", oauth_access_token_response_code_response_type_ToString(oauth_access_token_response_code->response_type)) == NULL)
-    {
-    goto fail; //Enum
     }
     }
 
@@ -134,15 +135,6 @@ cJSON *oauth_access_token_response_code_convertToJSON(oauth_access_token_respons
     }
 
 
-    // oauth_access_token_response_code->token_type
-    if (!oauth_access_token_response_code->token_type) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "token_type", oauth_access_token_response_code->token_type) == NULL) {
-    goto fail; //String
-    }
-
-
     // oauth_access_token_response_code->expires_in
     if (!oauth_access_token_response_code->expires_in) {
         goto fail;
@@ -152,11 +144,29 @@ cJSON *oauth_access_token_response_code_convertToJSON(oauth_access_token_respons
     }
 
 
+    // oauth_access_token_response_code->response_type
+    if(oauth_access_token_response_code->response_type != pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "response_type", oauth_access_token_response_code_response_type_ToString(oauth_access_token_response_code->response_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // oauth_access_token_response_code->scope
     if (!oauth_access_token_response_code->scope) {
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "scope", oauth_access_token_response_code->scope) == NULL) {
+    goto fail; //String
+    }
+
+
+    // oauth_access_token_response_code->token_type
+    if (!oauth_access_token_response_code->token_type) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "token_type", oauth_access_token_response_code->token_type) == NULL) {
     goto fail; //String
     }
 
@@ -177,14 +187,23 @@ oauth_access_token_response_code_t *oauth_access_token_response_code_parseFromJS
     if (cJSON_IsNull(refresh_token)) {
         refresh_token = NULL;
     }
-    if (!refresh_token) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(refresh_token))
+    if (refresh_token) { 
+    if(!cJSON_IsString(refresh_token) && !cJSON_IsNull(refresh_token))
     {
     goto end; //String
+    }
+    }
+
+    // oauth_access_token_response_code->refresh_token_expires_at
+    cJSON *refresh_token_expires_at = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_codeJSON, "refresh_token_expires_at");
+    if (cJSON_IsNull(refresh_token_expires_at)) {
+        refresh_token_expires_at = NULL;
+    }
+    if (refresh_token_expires_at) { 
+    if(!cJSON_IsNumber(refresh_token_expires_at))
+    {
+    goto end; //Numeric
+    }
     }
 
     // oauth_access_token_response_code->refresh_token_expires_in
@@ -192,28 +211,11 @@ oauth_access_token_response_code_t *oauth_access_token_response_code_parseFromJS
     if (cJSON_IsNull(refresh_token_expires_in)) {
         refresh_token_expires_in = NULL;
     }
-    if (!refresh_token_expires_in) {
-        goto end;
-    }
-
-    
+    if (refresh_token_expires_in) { 
     if(!cJSON_IsNumber(refresh_token_expires_in))
     {
     goto end; //Numeric
     }
-
-    // oauth_access_token_response_code->response_type
-    cJSON *response_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_codeJSON, "response_type");
-    if (cJSON_IsNull(response_type)) {
-        response_type = NULL;
-    }
-    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_typeVariable;
-    if (response_type) { 
-    if(!cJSON_IsString(response_type))
-    {
-    goto end; //Enum
-    }
-    response_typeVariable = oauth_access_token_response_code_response_type_FromString(response_type->valuestring);
     }
 
     // oauth_access_token_response_code->access_token
@@ -227,21 +229,6 @@ oauth_access_token_response_code_t *oauth_access_token_response_code_parseFromJS
 
     
     if(!cJSON_IsString(access_token))
-    {
-    goto end; //String
-    }
-
-    // oauth_access_token_response_code->token_type
-    cJSON *token_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_codeJSON, "token_type");
-    if (cJSON_IsNull(token_type)) {
-        token_type = NULL;
-    }
-    if (!token_type) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(token_type))
     {
     goto end; //String
     }
@@ -261,6 +248,20 @@ oauth_access_token_response_code_t *oauth_access_token_response_code_parseFromJS
     goto end; //Numeric
     }
 
+    // oauth_access_token_response_code->response_type
+    cJSON *response_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_codeJSON, "response_type");
+    if (cJSON_IsNull(response_type)) {
+        response_type = NULL;
+    }
+    pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_typeVariable;
+    if (response_type) { 
+    if(!cJSON_IsString(response_type))
+    {
+    goto end; //Enum
+    }
+    response_typeVariable = oauth_access_token_response_code_response_type_FromString(response_type->valuestring);
+    }
+
     // oauth_access_token_response_code->scope
     cJSON *scope = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_codeJSON, "scope");
     if (cJSON_IsNull(scope)) {
@@ -276,15 +277,31 @@ oauth_access_token_response_code_t *oauth_access_token_response_code_parseFromJS
     goto end; //String
     }
 
+    // oauth_access_token_response_code->token_type
+    cJSON *token_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_codeJSON, "token_type");
+    if (cJSON_IsNull(token_type)) {
+        token_type = NULL;
+    }
+    if (!token_type) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(token_type))
+    {
+    goto end; //String
+    }
+
 
     oauth_access_token_response_code_local_var = oauth_access_token_response_code_create_internal (
-        strdup(refresh_token->valuestring),
-        refresh_token_expires_in->valuedouble,
-        response_type ? response_typeVariable : pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_NULL,
+        refresh_token && !cJSON_IsNull(refresh_token) ? strdup(refresh_token->valuestring) : NULL,
+        refresh_token_expires_at ? refresh_token_expires_at->valuedouble : 0,
+        refresh_token_expires_in ? refresh_token_expires_in->valuedouble : 0,
         strdup(access_token->valuestring),
-        strdup(token_type->valuestring),
         expires_in->valuedouble,
-        strdup(scope->valuestring)
+        response_type ? response_typeVariable : pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_NULL,
+        strdup(scope->valuestring),
+        strdup(token_type->valuestring)
         );
 
     return oauth_access_token_response_code_local_var;

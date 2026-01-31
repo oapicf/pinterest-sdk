@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adsCreditRedeem**](BillingApi.md#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**adsCreditsDiscountsGet**](BillingApi.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billingInvoiceDownloadGet**](BillingApi.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoicesGet**](BillingApi.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billingProfilesGet**](BillingApi.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssioAccountsGet**](BillingApi.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**ssioInsertionOrderCreate**](BillingApi.md#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -22,7 +24,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -73,7 +75,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -122,13 +124,131 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## billingInvoiceDownloadGet
+
+> BillingInvoiceDownloadResponse billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+
+```javascript
+import PinterestSdk from 'pinterest-sdk';
+let defaultClient = PinterestSdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
+pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new PinterestSdk.BillingApi();
+let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+let billingInvoiceId = "billingInvoiceId_example"; // String | Unique identifier of a billing invoice.
+apiInstance.billingInvoiceDownloadGet(adAccountId, billingInvoiceId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. | 
+ **billingInvoiceId** | **String**| Unique identifier of a billing invoice. | 
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## billingInvoicesGet
+
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, opts)
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+
+```javascript
+import PinterestSdk from 'pinterest-sdk';
+let defaultClient = PinterestSdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: pinterest_oauth2
+let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
+pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new PinterestSdk.BillingApi();
+let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+let opts = {
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'sort': "DUE_DATE", // String | Field of which to sort billing invoices
+  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+  'status': "OPEN", // String | Status of billing invoices to filter by
+  'documentType': "INVOICE", // String | Document type of billing invoices to filter by
+  'startDueDate': new Date("Sun Jan 01 00:00:00 UTC 2023"), // Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+  'endDueDate': new Date("Mon Jan 01 00:00:00 UTC 2024") // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+};
+apiInstance.billingInvoicesGet(adAccountId, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. | 
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort** | **String**| Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
+ **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **status** | **String**| Status of billing invoices to filter by | [optional] 
+ **documentType** | **String**| Document type of billing invoices to filter by | [optional] 
+ **startDueDate** | **Date**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+ **endDueDate** | **Date**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
+
+### Return type
+
+[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## billingProfilesGet
 
 > BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, opts)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 

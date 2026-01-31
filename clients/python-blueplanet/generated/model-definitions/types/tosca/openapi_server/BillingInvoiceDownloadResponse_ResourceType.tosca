@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BillingInvoiceDownloadResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BillingInvoiceDownloadResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BillingInvoiceDownloadResponse {
+    title = BillingInvoiceDownloadResponse
+    description = BillingInvoiceDownloadResponse
+    derivedFrom = Root
+    properties {
+        download_url {
+          type =  string
+          description = "The download url for the billing invoice"
+          optional = false
+        }
+        id {
+          type =  string
+          description = "The billing invoice id"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BillingInvoiceDownloadResponse {
+    title = BillingInvoiceDownloadResponse
+    description = BillingInvoiceDownloadResponse
+    implements = openapi_server.resourceTypes.BillingInvoiceDownloadResponse
+
+  }
+}

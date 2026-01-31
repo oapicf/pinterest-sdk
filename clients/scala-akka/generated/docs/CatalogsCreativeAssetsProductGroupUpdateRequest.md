@@ -9,9 +9,9 @@ Request object for updating a creative assets product group.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogType**](#CatalogType) |  |  [optional]
-**name** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 ## Enum: CatalogType

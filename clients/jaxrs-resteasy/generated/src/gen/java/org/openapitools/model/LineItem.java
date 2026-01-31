@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LineItem   {
   
   private String productBrand;
@@ -23,10 +23,10 @@ public class LineItem   {
   private String productVariantId;
 
   /**
-   * Product brand. For example, \&quot;Parker\&quot;.
+   * Product brand. For example, &#39;Parker&#39;.
    **/
   
-  @ApiModelProperty(example = "Parker", value = "Product brand. For example, \"Parker\".")
+  @ApiModelProperty(example = "Parker", value = "Product brand. For example, 'Parker'.")
   @JsonProperty("product_brand")
   public String getProductBrand() {
     return productBrand;
@@ -36,10 +36,10 @@ public class LineItem   {
   }
 
   /**
-   * Product category. For example, \&quot;Shoes\&quot;.
+   * Product category. For example, &#39;Shoes&#39;.
    **/
   
-  @ApiModelProperty(example = "Shoes", value = "Product category. For example, \"Shoes\".")
+  @ApiModelProperty(example = "Shoes", value = "Product category. For example, 'Shoes'.")
   @JsonProperty("product_category")
   public String getProductCategory() {
     return productCategory;
@@ -62,10 +62,10 @@ public class LineItem   {
   }
 
   /**
-   * Product name. For example, \&quot;Parker Boots\&quot;.
+   * Product name. For example, &#39;Parker Boots&#39;.
    **/
   
-  @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, \"Parker Boots\".")
+  @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, 'Parker Boots'.")
   @JsonProperty("product_name")
   public String getProductName() {
     return productName;
@@ -75,10 +75,10 @@ public class LineItem   {
   }
 
   /**
-   * Product price. For example, \&quot;99.99\&quot;.
+   * Product price. For example, &#39;99.99&#39;.
    **/
   
-  @ApiModelProperty(example = "99.99", value = "Product price. For example, \"99.99\".")
+  @ApiModelProperty(example = "99.99", value = "Product price. For example, '99.99'.")
   @JsonProperty("product_price")
   public String getProductPrice() {
     return productPrice;
@@ -101,10 +101,10 @@ public class LineItem   {
   }
 
   /**
-   * Product variant. For example, \&quot;Red\&quot;.
+   * Product variant. For example, &#39;Red&#39;.
    **/
   
-  @ApiModelProperty(example = "Red", value = "Product variant. For example, \"Red\".")
+  @ApiModelProperty(example = "Red", value = "Product variant. For example, 'Red'.")
   @JsonProperty("product_variant")
   public String getProductVariant() {
     return productVariant;
@@ -114,10 +114,10 @@ public class LineItem   {
   }
 
   /**
-   * Product variant ID. For example, \&quot;1414-34832\&quot;.
+   * Product variant ID. For example, &#39;1414-34832&#39;.
    **/
   
-  @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, \"1414-34832\".")
+  @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, '1414-34832'.")
   @JsonProperty("product_variant_id")
   public String getProductVariantId() {
     return productVariantId;

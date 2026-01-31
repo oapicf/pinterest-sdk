@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**[Country]**](Country.md) |  | 
 **negated** | **Boolean** |  | [optional] [default to false]
+**values** | [**[Country]**](Country.md) |  | 
 
 

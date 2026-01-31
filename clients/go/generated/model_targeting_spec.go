@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,28 +18,32 @@ import (
 // checks if the TargetingSpec type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TargetingSpec{}
 
-// TargetingSpec Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
+// TargetingSpec Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`
 type TargetingSpec struct {
-	// Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
-	AGE_BUCKET []string `json:"AGE_BUCKET,omitempty"`
+	// **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
+	AGE_BUCKET []TargetingSpecAgeBucket `json:"AGE_BUCKET,omitempty"`
 	// Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
-	APPTYPE []string `json:"APPTYPE,omitempty"`
+	APPTYPE []TargetingSpecAppType `json:"APPTYPE,omitempty"`
 	// Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
 	AUDIENCE_EXCLUDE []string `json:"AUDIENCE_EXCLUDE,omitempty"`
 	// Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
 	AUDIENCE_INCLUDE []string `json:"AUDIENCE_INCLUDE,omitempty"`
 	// Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-	GENDER []string `json:"GENDER,omitempty"`
+	GENDER []TargetingSpecGender `json:"GENDER,omitempty"`
 	// Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
 	GEO []string `json:"GEO,omitempty"`
 	// Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
 	INTEREST []string `json:"INTEREST,omitempty"`
-	// 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+	// 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
 	LOCALE []string `json:"LOCALE,omitempty"`
-	// 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+	// 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
 	LOCATION []string `json:"LOCATION,omitempty"`
+	// Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+	MAXIMUM_AGE *string `json:"MAXIMUM_AGE,omitempty" validate:"regexp=^\\\\d+\\\\+?$"`
+	// Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+	MINIMUM_AGE *string `json:"MINIMUM_AGE,omitempty" validate:"regexp=^\\\\d+$"`
 	// Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
-	SHOPPING_RETARGETING []TargetingSpecSHOPPINGRETARGETING `json:"SHOPPING_RETARGETING,omitempty"`
+	SHOPPING_RETARGETING []TargetingSpecShoppingRetargeting `json:"SHOPPING_RETARGETING,omitempty"`
 	// 
 	TARGETING_STRATEGY []string `json:"TARGETING_STRATEGY,omitempty"`
 }
@@ -62,9 +66,9 @@ func NewTargetingSpecWithDefaults() *TargetingSpec {
 }
 
 // GetAGE_BUCKET returns the AGE_BUCKET field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TargetingSpec) GetAGE_BUCKET() []string {
+func (o *TargetingSpec) GetAGE_BUCKET() []TargetingSpecAgeBucket {
 	if o == nil {
-		var ret []string
+		var ret []TargetingSpecAgeBucket
 		return ret
 	}
 	return o.AGE_BUCKET
@@ -73,7 +77,7 @@ func (o *TargetingSpec) GetAGE_BUCKET() []string {
 // GetAGE_BUCKETOk returns a tuple with the AGE_BUCKET field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TargetingSpec) GetAGE_BUCKETOk() ([]string, bool) {
+func (o *TargetingSpec) GetAGE_BUCKETOk() ([]TargetingSpecAgeBucket, bool) {
 	if o == nil || IsNil(o.AGE_BUCKET) {
 		return nil, false
 	}
@@ -89,15 +93,15 @@ func (o *TargetingSpec) HasAGE_BUCKET() bool {
 	return false
 }
 
-// SetAGE_BUCKET gets a reference to the given []string and assigns it to the AGE_BUCKET field.
-func (o *TargetingSpec) SetAGE_BUCKET(v []string) {
+// SetAGE_BUCKET gets a reference to the given []TargetingSpecAgeBucket and assigns it to the AGE_BUCKET field.
+func (o *TargetingSpec) SetAGE_BUCKET(v []TargetingSpecAgeBucket) {
 	o.AGE_BUCKET = v
 }
 
 // GetAPPTYPE returns the APPTYPE field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TargetingSpec) GetAPPTYPE() []string {
+func (o *TargetingSpec) GetAPPTYPE() []TargetingSpecAppType {
 	if o == nil {
-		var ret []string
+		var ret []TargetingSpecAppType
 		return ret
 	}
 	return o.APPTYPE
@@ -106,7 +110,7 @@ func (o *TargetingSpec) GetAPPTYPE() []string {
 // GetAPPTYPEOk returns a tuple with the APPTYPE field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TargetingSpec) GetAPPTYPEOk() ([]string, bool) {
+func (o *TargetingSpec) GetAPPTYPEOk() ([]TargetingSpecAppType, bool) {
 	if o == nil || IsNil(o.APPTYPE) {
 		return nil, false
 	}
@@ -122,8 +126,8 @@ func (o *TargetingSpec) HasAPPTYPE() bool {
 	return false
 }
 
-// SetAPPTYPE gets a reference to the given []string and assigns it to the APPTYPE field.
-func (o *TargetingSpec) SetAPPTYPE(v []string) {
+// SetAPPTYPE gets a reference to the given []TargetingSpecAppType and assigns it to the APPTYPE field.
+func (o *TargetingSpec) SetAPPTYPE(v []TargetingSpecAppType) {
 	o.APPTYPE = v
 }
 
@@ -194,9 +198,9 @@ func (o *TargetingSpec) SetAUDIENCE_INCLUDE(v []string) {
 }
 
 // GetGENDER returns the GENDER field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TargetingSpec) GetGENDER() []string {
+func (o *TargetingSpec) GetGENDER() []TargetingSpecGender {
 	if o == nil {
-		var ret []string
+		var ret []TargetingSpecGender
 		return ret
 	}
 	return o.GENDER
@@ -205,7 +209,7 @@ func (o *TargetingSpec) GetGENDER() []string {
 // GetGENDEROk returns a tuple with the GENDER field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TargetingSpec) GetGENDEROk() ([]string, bool) {
+func (o *TargetingSpec) GetGENDEROk() ([]TargetingSpecGender, bool) {
 	if o == nil || IsNil(o.GENDER) {
 		return nil, false
 	}
@@ -221,8 +225,8 @@ func (o *TargetingSpec) HasGENDER() bool {
 	return false
 }
 
-// SetGENDER gets a reference to the given []string and assigns it to the GENDER field.
-func (o *TargetingSpec) SetGENDER(v []string) {
+// SetGENDER gets a reference to the given []TargetingSpecGender and assigns it to the GENDER field.
+func (o *TargetingSpec) SetGENDER(v []TargetingSpecGender) {
 	o.GENDER = v
 }
 
@@ -357,10 +361,74 @@ func (o *TargetingSpec) SetLOCATION(v []string) {
 	o.LOCATION = v
 }
 
+// GetMAXIMUM_AGE returns the MAXIMUM_AGE field value if set, zero value otherwise.
+func (o *TargetingSpec) GetMAXIMUM_AGE() string {
+	if o == nil || IsNil(o.MAXIMUM_AGE) {
+		var ret string
+		return ret
+	}
+	return *o.MAXIMUM_AGE
+}
+
+// GetMAXIMUM_AGEOk returns a tuple with the MAXIMUM_AGE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingSpec) GetMAXIMUM_AGEOk() (*string, bool) {
+	if o == nil || IsNil(o.MAXIMUM_AGE) {
+		return nil, false
+	}
+	return o.MAXIMUM_AGE, true
+}
+
+// HasMAXIMUM_AGE returns a boolean if a field has been set.
+func (o *TargetingSpec) HasMAXIMUM_AGE() bool {
+	if o != nil && !IsNil(o.MAXIMUM_AGE) {
+		return true
+	}
+
+	return false
+}
+
+// SetMAXIMUM_AGE gets a reference to the given string and assigns it to the MAXIMUM_AGE field.
+func (o *TargetingSpec) SetMAXIMUM_AGE(v string) {
+	o.MAXIMUM_AGE = &v
+}
+
+// GetMINIMUM_AGE returns the MINIMUM_AGE field value if set, zero value otherwise.
+func (o *TargetingSpec) GetMINIMUM_AGE() string {
+	if o == nil || IsNil(o.MINIMUM_AGE) {
+		var ret string
+		return ret
+	}
+	return *o.MINIMUM_AGE
+}
+
+// GetMINIMUM_AGEOk returns a tuple with the MINIMUM_AGE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingSpec) GetMINIMUM_AGEOk() (*string, bool) {
+	if o == nil || IsNil(o.MINIMUM_AGE) {
+		return nil, false
+	}
+	return o.MINIMUM_AGE, true
+}
+
+// HasMINIMUM_AGE returns a boolean if a field has been set.
+func (o *TargetingSpec) HasMINIMUM_AGE() bool {
+	if o != nil && !IsNil(o.MINIMUM_AGE) {
+		return true
+	}
+
+	return false
+}
+
+// SetMINIMUM_AGE gets a reference to the given string and assigns it to the MINIMUM_AGE field.
+func (o *TargetingSpec) SetMINIMUM_AGE(v string) {
+	o.MINIMUM_AGE = &v
+}
+
 // GetSHOPPING_RETARGETING returns the SHOPPING_RETARGETING field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TargetingSpec) GetSHOPPING_RETARGETING() []TargetingSpecSHOPPINGRETARGETING {
+func (o *TargetingSpec) GetSHOPPING_RETARGETING() []TargetingSpecShoppingRetargeting {
 	if o == nil {
-		var ret []TargetingSpecSHOPPINGRETARGETING
+		var ret []TargetingSpecShoppingRetargeting
 		return ret
 	}
 	return o.SHOPPING_RETARGETING
@@ -369,7 +437,7 @@ func (o *TargetingSpec) GetSHOPPING_RETARGETING() []TargetingSpecSHOPPINGRETARGE
 // GetSHOPPING_RETARGETINGOk returns a tuple with the SHOPPING_RETARGETING field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TargetingSpec) GetSHOPPING_RETARGETINGOk() ([]TargetingSpecSHOPPINGRETARGETING, bool) {
+func (o *TargetingSpec) GetSHOPPING_RETARGETINGOk() ([]TargetingSpecShoppingRetargeting, bool) {
 	if o == nil || IsNil(o.SHOPPING_RETARGETING) {
 		return nil, false
 	}
@@ -385,8 +453,8 @@ func (o *TargetingSpec) HasSHOPPING_RETARGETING() bool {
 	return false
 }
 
-// SetSHOPPING_RETARGETING gets a reference to the given []TargetingSpecSHOPPINGRETARGETING and assigns it to the SHOPPING_RETARGETING field.
-func (o *TargetingSpec) SetSHOPPING_RETARGETING(v []TargetingSpecSHOPPINGRETARGETING) {
+// SetSHOPPING_RETARGETING gets a reference to the given []TargetingSpecShoppingRetargeting and assigns it to the SHOPPING_RETARGETING field.
+func (o *TargetingSpec) SetSHOPPING_RETARGETING(v []TargetingSpecShoppingRetargeting) {
 	o.SHOPPING_RETARGETING = v
 }
 
@@ -459,6 +527,12 @@ func (o TargetingSpec) ToMap() (map[string]interface{}, error) {
 	}
 	if o.LOCATION != nil {
 		toSerialize["LOCATION"] = o.LOCATION
+	}
+	if !IsNil(o.MAXIMUM_AGE) {
+		toSerialize["MAXIMUM_AGE"] = o.MAXIMUM_AGE
+	}
+	if !IsNil(o.MINIMUM_AGE) {
+		toSerialize["MINIMUM_AGE"] = o.MINIMUM_AGE
 	}
 	if o.SHOPPING_RETARGETING != nil {
 		toSerialize["SHOPPING_RETARGETING"] = o.SHOPPING_RETARGETING

@@ -16,6 +16,11 @@ void main() {
   // final instance = QuizPinQuestion();
 
   group('test QuizPinQuestion', () {
+    // List<QuizPinOption> options (default value: const [])
+    test('to test the property `options`', () async {
+      // TODO
+    });
+
     // num questionId
     test('to test the property `questionId`', () async {
       // TODO
@@ -23,11 +28,6 @@ void main() {
 
     // String questionText
     test('to test the property `questionText`', () async {
-      // TODO
-    });
-
-    // List<QuizPinOption> options (default value: const [])
-    test('to test the property `options`', () async {
       // TODO
     });
 

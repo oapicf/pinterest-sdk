@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionEvents_data_inner_custom_data_contents_inner`
 --
-SELECT `id`, `item_price`, `quantity`, `item_name`, `item_category`, `item_brand` FROM `ConversionEvents_data_inner_custom_data_contents_inner` WHERE 1;
+SELECT `id`, `item_brand`, `item_category`, `item_name`, `item_price`, `quantity` FROM `ConversionEvents_data_inner_custom_data_contents_inner` WHERE 1;
 
 --
 -- INSERT template for table `ConversionEvents_data_inner_custom_data_contents_inner`
 --
-INSERT INTO `ConversionEvents_data_inner_custom_data_contents_inner`(`id`, `item_price`, `quantity`, `item_name`, `item_category`, `item_brand`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `ConversionEvents_data_inner_custom_data_contents_inner`(`id`, `item_brand`, `item_category`, `item_name`, `item_price`, `quantity`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionEvents_data_inner_custom_data_contents_inner`
 --
-UPDATE `ConversionEvents_data_inner_custom_data_contents_inner` SET `id` = ?, `item_price` = ?, `quantity` = ?, `item_name` = ?, `item_category` = ?, `item_brand` = ? WHERE 1;
+UPDATE `ConversionEvents_data_inner_custom_data_contents_inner` SET `id` = ?, `item_brand` = ?, `item_category` = ?, `item_name` = ?, `item_price` = ?, `quantity` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionEvents_data_inner_custom_data_contents_inner`

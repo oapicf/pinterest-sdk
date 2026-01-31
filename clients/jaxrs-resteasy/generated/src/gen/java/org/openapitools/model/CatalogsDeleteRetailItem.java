@@ -11,10 +11,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An item to be deleted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="An item to be deleted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsDeleteRetailItem   {
   
   private String itemId;
+  private Long lastUpdatedTime;
 
   /**
    * Gets or Sets operation
@@ -51,6 +52,19 @@ public class CatalogsDeleteRetailItem   {
   }
 
   /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   **/
+  
+  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
+  /**
    **/
   
   @ApiModelProperty(required = true, value = "")
@@ -74,12 +88,13 @@ public class CatalogsDeleteRetailItem   {
     }
     CatalogsDeleteRetailItem catalogsDeleteRetailItem = (CatalogsDeleteRetailItem) o;
     return Objects.equals(this.itemId, catalogsDeleteRetailItem.itemId) &&
+        Objects.equals(this.lastUpdatedTime, catalogsDeleteRetailItem.lastUpdatedTime) &&
         Objects.equals(this.operation, catalogsDeleteRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation);
+    return Objects.hash(itemId, lastUpdatedTime, operation);
   }
 
   @Override
@@ -88,6 +103,7 @@ public class CatalogsDeleteRetailItem   {
     sb.append("class CatalogsDeleteRetailItem {\n");
     
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

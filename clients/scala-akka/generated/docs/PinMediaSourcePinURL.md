@@ -8,8 +8,8 @@ Pin URL-based media source for product pin creation. Currently the field is only
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceType**](#SourceType) |  | 
 **isAffiliateLink** | **Boolean** | This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. |  [optional]
+**sourceType** | [**SourceType**](#SourceType) |  | 
 
 
 ## Enum: SourceType

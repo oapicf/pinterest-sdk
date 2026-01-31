@@ -9,11 +9,11 @@ import org.openapitools.models.BusinessRoleForMembers
 
 /**
  * 
- * @param memberUnderscoreid Unique identifier of the member
  * @param businessUnderscorerole 
+ * @param memberUnderscoreid Unique identifier of the member
  */
-case class MembersToDeleteBodyMembersInner(memberUnderscoreid: String,
-                businessUnderscorerole: BusinessRoleForMembers
+case class MembersToDeleteBodyMembersInner(businessUnderscorerole: BusinessRoleForMembers,
+                memberUnderscoreid: String
                 )
 
 object MembersToDeleteBodyMembersInner {

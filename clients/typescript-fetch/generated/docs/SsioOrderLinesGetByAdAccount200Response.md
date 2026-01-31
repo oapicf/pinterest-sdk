@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;SSIOOrderLine&gt;](SSIOOrderLine.md)
 `bookmark` | string
+`items` | [Array&lt;SSIOOrderLine&gt;](SSIOOrderLine.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { SsioOrderLinesGetByAdAccount200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies SsioOrderLinesGetByAdAccount200Response
 
 console.log(example)

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,13 +16,13 @@ package openapi
 
 type CatalogsItemValidationIssues struct {
 
-	// Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-	ItemNumber int32 `json:"item_number"`
+	Errors CatalogsItemValidationErrors `json:"errors"`
 
 	// The merchant-created unique ID that represents the product.
 	ItemId *string `json:"item_id"`
 
-	Errors CatalogsItemValidationErrors `json:"errors"`
+	// Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+	ItemNumber int32 `json:"item_number"`
 
 	Warnings CatalogsItemValidationWarnings `json:"warnings"`
 }
@@ -30,9 +30,9 @@ type CatalogsItemValidationIssues struct {
 // AssertCatalogsItemValidationIssuesRequired checks if the required fields are not zero-ed
 func AssertCatalogsItemValidationIssuesRequired(obj CatalogsItemValidationIssues) error {
 	elements := map[string]interface{}{
-		"item_number": obj.ItemNumber,
-		"item_id": obj.ItemId,
 		"errors": obj.Errors,
+		"item_id": obj.ItemId,
+		"item_number": obj.ItemNumber,
 		"warnings": obj.Warnings,
 	}
 	for name, el := range elements {

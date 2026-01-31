@@ -23,37 +23,22 @@ PinMediaWithVideo::~PinMediaWithVideo()
 void
 PinMediaWithVideo::__init()
 {
-	//media_type = std::string();
-	//images = new PinMediaWithImage_allOf_images();
 	//cover_image_url = std::string();
-	//video_url = std::string();
 	//duration = double(0);
 	//height = int(0);
+	//images = new ImageSize();
+	//media_type = std::string();
+	//video_url = std::string();
 	//width = int(0);
 }
 
 void
 PinMediaWithVideo::__cleanup()
 {
-	//if(media_type != NULL) {
-	//
-	//delete media_type;
-	//media_type = NULL;
-	//}
-	//if(images != NULL) {
-	//
-	//delete images;
-	//images = NULL;
-	//}
 	//if(cover_image_url != NULL) {
 	//
 	//delete cover_image_url;
 	//cover_image_url = NULL;
-	//}
-	//if(video_url != NULL) {
-	//
-	//delete video_url;
-	//video_url = NULL;
 	//}
 	//if(duration != NULL) {
 	//
@@ -64,6 +49,21 @@ PinMediaWithVideo::__cleanup()
 	//
 	//delete height;
 	//height = NULL;
+	//}
+	//if(images != NULL) {
+	//
+	//delete images;
+	//images = NULL;
+	//}
+	//if(media_type != NULL) {
+	//
+	//delete media_type;
+	//media_type = NULL;
+	//}
+	//if(video_url != NULL) {
+	//
+	//delete video_url;
+	//video_url = NULL;
 	//}
 	//if(width != NULL) {
 	//
@@ -78,31 +78,6 @@ PinMediaWithVideo::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *media_typeKey = "media_type";
-	node = json_object_get_member(pJsonObject, media_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&media_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *imagesKey = "images";
-	node = json_object_get_member(pJsonObject, imagesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("PinMediaWithImage_allOf_images")) {
-			jsonToValue(&images, node, "PinMediaWithImage_allOf_images", "PinMediaWithImage_allOf_images");
-		} else {
-			
-			PinMediaWithImage_allOf_images* obj = static_cast<PinMediaWithImage_allOf_images*> (&images);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *cover_image_urlKey = "cover_image_url";
 	node = json_object_get_member(pJsonObject, cover_image_urlKey);
 	if (node !=NULL) {
@@ -110,17 +85,6 @@ PinMediaWithVideo::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&cover_image_url, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *video_urlKey = "video_url";
-	node = json_object_get_member(pJsonObject, video_urlKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&video_url, node, "std::string", "");
 		} else {
 			
 		}
@@ -150,6 +114,42 @@ PinMediaWithVideo::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *imagesKey = "images";
+	node = json_object_get_member(pJsonObject, imagesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ImageSize")) {
+			jsonToValue(&images, node, "ImageSize", "ImageSize");
+		} else {
+			
+			ImageSize* obj = static_cast<ImageSize*> (&images);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *media_typeKey = "media_type";
+	node = json_object_get_member(pJsonObject, media_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&media_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *video_urlKey = "video_url";
+	node = json_object_get_member(pJsonObject, video_urlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&video_url, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *widthKey = "width";
 	node = json_object_get_member(pJsonObject, widthKey);
 	if (node !=NULL) {
@@ -174,29 +174,6 @@ PinMediaWithVideo::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getMediaType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *media_typeKey = "media_type";
-	json_object_set_member(pJsonObject, media_typeKey, node);
-	if (isprimitive("PinMediaWithImage_allOf_images")) {
-		PinMediaWithImage_allOf_images obj = getImages();
-		node = converttoJson(&obj, "PinMediaWithImage_allOf_images", "");
-	}
-	else {
-		
-		PinMediaWithImage_allOf_images obj = static_cast<PinMediaWithImage_allOf_images> (getImages());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *imagesKey = "images";
-	json_object_set_member(pJsonObject, imagesKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCoverImageUrl();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -205,15 +182,6 @@ PinMediaWithVideo::toJson()
 	}
 	const gchar *cover_image_urlKey = "cover_image_url";
 	json_object_set_member(pJsonObject, cover_image_urlKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getVideoUrl();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *video_urlKey = "video_url";
-	json_object_set_member(pJsonObject, video_urlKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getDuration();
 		node = converttoJson(&obj, "long long", "");
@@ -237,6 +205,38 @@ PinMediaWithVideo::toJson()
 	}
 	const gchar *heightKey = "height";
 	json_object_set_member(pJsonObject, heightKey, node);
+	if (isprimitive("ImageSize")) {
+		ImageSize obj = getImages();
+		node = converttoJson(&obj, "ImageSize", "");
+	}
+	else {
+		
+		ImageSize obj = static_cast<ImageSize> (getImages());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *imagesKey = "images";
+	json_object_set_member(pJsonObject, imagesKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMediaType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *media_typeKey = "media_type";
+	json_object_set_member(pJsonObject, media_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getVideoUrl();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *video_urlKey = "video_url";
+	json_object_set_member(pJsonObject, video_urlKey, node);
 	if (isprimitive("int")) {
 		int obj = getWidth();
 		node = converttoJson(&obj, "int", "");
@@ -255,30 +255,6 @@ PinMediaWithVideo::toJson()
 }
 
 std::string
-PinMediaWithVideo::getMediaType()
-{
-	return media_type;
-}
-
-void
-PinMediaWithVideo::setMediaType(std::string  media_type)
-{
-	this->media_type = media_type;
-}
-
-PinMediaWithImage_allOf_images
-PinMediaWithVideo::getImages()
-{
-	return images;
-}
-
-void
-PinMediaWithVideo::setImages(PinMediaWithImage_allOf_images  images)
-{
-	this->images = images;
-}
-
-std::string
 PinMediaWithVideo::getCoverImageUrl()
 {
 	return cover_image_url;
@@ -288,18 +264,6 @@ void
 PinMediaWithVideo::setCoverImageUrl(std::string  cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
-}
-
-std::string
-PinMediaWithVideo::getVideoUrl()
-{
-	return video_url;
-}
-
-void
-PinMediaWithVideo::setVideoUrl(std::string  video_url)
-{
-	this->video_url = video_url;
 }
 
 long long
@@ -324,6 +288,42 @@ void
 PinMediaWithVideo::setHeight(int  height)
 {
 	this->height = height;
+}
+
+ImageSize
+PinMediaWithVideo::getImages()
+{
+	return images;
+}
+
+void
+PinMediaWithVideo::setImages(ImageSize  images)
+{
+	this->images = images;
+}
+
+std::string
+PinMediaWithVideo::getMediaType()
+{
+	return media_type;
+}
+
+void
+PinMediaWithVideo::setMediaType(std::string  media_type)
+{
+	this->media_type = media_type;
+}
+
+std::string
+PinMediaWithVideo::getVideoUrl()
+{
+	return video_url;
+}
+
+void
+PinMediaWithVideo::setVideoUrl(std::string  video_url)
+{
+	this->video_url = video_url;
 }
 
 int

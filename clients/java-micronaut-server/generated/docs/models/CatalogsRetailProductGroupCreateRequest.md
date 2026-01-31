@@ -10,20 +10,20 @@ The class is defined in **[CatalogsRetailProductGroupCreateRequest.java](../../s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the retail product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
-**name** | `String` |  | 
+**country** | `Country` |  |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsProductGroupFiltersRequest`](CatalogsProductGroupFiltersRequest.md) |  | 
-**catalogId** | `String` | Catalog id pertaining to the retail product group. | 
-**country** | `Country` |  | 
-**locale** | `CatalogsLocale` |  | 
+**locale** | `CatalogsLocale` |  |  [optional property]
+**name** | `String` |  | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 RETAIL | `"RETAIL"`
-
 
 
 

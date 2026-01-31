@@ -14,6 +14,8 @@
        'INTEREST' => list(),
        'LOCALE' => list(),
        'LOCATION' => list(),
+       'MAXIMUM_AGE' => binary(),
+       'MINIMUM_AGE' => binary(),
        'SHOPPING_RETARGETING' => list(),
        'TARGETING_STRATEGY' => list()
      }.
@@ -27,6 +29,8 @@ encode(#{ 'AGE_BUCKET' := AGEBUCKET,
           'INTEREST' := INTEREST,
           'LOCALE' := LOCALE,
           'LOCATION' := LOCATION,
+          'MAXIMUM_AGE' := MAXIMUMAGE,
+          'MINIMUM_AGE' := MINIMUMAGE,
           'SHOPPING_RETARGETING' := SHOPPINGRETARGETING,
           'TARGETING_STRATEGY' := TARGETINGSTRATEGY
         }) ->
@@ -39,6 +43,8 @@ encode(#{ 'AGE_BUCKET' := AGEBUCKET,
        'INTEREST' => INTEREST,
        'LOCALE' => LOCALE,
        'LOCATION' => LOCATION,
+       'MAXIMUM_AGE' => MAXIMUMAGE,
+       'MINIMUM_AGE' => MINIMUMAGE,
        'SHOPPING_RETARGETING' => SHOPPINGRETARGETING,
        'TARGETING_STRATEGY' => TARGETINGSTRATEGY
      }.

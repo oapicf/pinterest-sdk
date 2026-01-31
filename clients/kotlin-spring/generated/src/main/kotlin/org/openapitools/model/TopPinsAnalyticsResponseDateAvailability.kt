@@ -15,16 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param latestAvailableTimestamp 
  * @param isRealtime 
+ * @param latestAvailableTimestamp 
  */
 data class TopPinsAnalyticsResponseDateAvailability(
 
-    @Schema(example = "1649116799000", description = "")
-    @get:JsonProperty("latest_available_timestamp") val latestAvailableTimestamp: java.math.BigDecimal? = null,
-
     @Schema(example = "false", description = "")
-    @get:JsonProperty("is_realtime") val isRealtime: kotlin.Boolean? = null
+    @get:JsonProperty("is_realtime") val isRealtime: kotlin.Boolean? = null,
+
+    @Schema(example = "1649116799000", description = "")
+    @get:JsonProperty("latest_available_timestamp") val latestAvailableTimestamp: java.math.BigDecimal? = null
 ) {
 
 }

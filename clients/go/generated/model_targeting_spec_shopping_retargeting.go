@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -15,102 +15,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the TargetingSpecSHOPPINGRETARGETING type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TargetingSpecSHOPPINGRETARGETING{}
+// checks if the TargetingSpecShoppingRetargeting type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TargetingSpecShoppingRetargeting{}
 
-// TargetingSpecSHOPPINGRETARGETING struct for TargetingSpecSHOPPINGRETARGETING
-type TargetingSpecSHOPPINGRETARGETING struct {
+// TargetingSpecShoppingRetargeting struct for TargetingSpecShoppingRetargeting
+type TargetingSpecShoppingRetargeting struct {
+	// Number of days ago to stop lookback timeframe for dynamic retargeting
+	ExclusionWindow *int32 `json:"exclusion_window,omitempty"`
 	// Number of days ago to start lookback timeframe for dynamic retargeting
 	LookbackWindow *int32 `json:"lookback_window,omitempty"`
 	// Event types to target for dynamic retargeting
 	TagTypes []int32 `json:"tag_types,omitempty"`
-	// Number of days ago to stop lookback timeframe for dynamic retargeting
-	ExclusionWindow *int32 `json:"exclusion_window,omitempty"`
 }
 
-// NewTargetingSpecSHOPPINGRETARGETING instantiates a new TargetingSpecSHOPPINGRETARGETING object
+// NewTargetingSpecShoppingRetargeting instantiates a new TargetingSpecShoppingRetargeting object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetingSpecSHOPPINGRETARGETING() *TargetingSpecSHOPPINGRETARGETING {
-	this := TargetingSpecSHOPPINGRETARGETING{}
+func NewTargetingSpecShoppingRetargeting() *TargetingSpecShoppingRetargeting {
+	this := TargetingSpecShoppingRetargeting{}
 	return &this
 }
 
-// NewTargetingSpecSHOPPINGRETARGETINGWithDefaults instantiates a new TargetingSpecSHOPPINGRETARGETING object
+// NewTargetingSpecShoppingRetargetingWithDefaults instantiates a new TargetingSpecShoppingRetargeting object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTargetingSpecSHOPPINGRETARGETINGWithDefaults() *TargetingSpecSHOPPINGRETARGETING {
-	this := TargetingSpecSHOPPINGRETARGETING{}
+func NewTargetingSpecShoppingRetargetingWithDefaults() *TargetingSpecShoppingRetargeting {
+	this := TargetingSpecShoppingRetargeting{}
 	return &this
-}
-
-// GetLookbackWindow returns the LookbackWindow field value if set, zero value otherwise.
-func (o *TargetingSpecSHOPPINGRETARGETING) GetLookbackWindow() int32 {
-	if o == nil || IsNil(o.LookbackWindow) {
-		var ret int32
-		return ret
-	}
-	return *o.LookbackWindow
-}
-
-// GetLookbackWindowOk returns a tuple with the LookbackWindow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetingSpecSHOPPINGRETARGETING) GetLookbackWindowOk() (*int32, bool) {
-	if o == nil || IsNil(o.LookbackWindow) {
-		return nil, false
-	}
-	return o.LookbackWindow, true
-}
-
-// HasLookbackWindow returns a boolean if a field has been set.
-func (o *TargetingSpecSHOPPINGRETARGETING) HasLookbackWindow() bool {
-	if o != nil && !IsNil(o.LookbackWindow) {
-		return true
-	}
-
-	return false
-}
-
-// SetLookbackWindow gets a reference to the given int32 and assigns it to the LookbackWindow field.
-func (o *TargetingSpecSHOPPINGRETARGETING) SetLookbackWindow(v int32) {
-	o.LookbackWindow = &v
-}
-
-// GetTagTypes returns the TagTypes field value if set, zero value otherwise.
-func (o *TargetingSpecSHOPPINGRETARGETING) GetTagTypes() []int32 {
-	if o == nil || IsNil(o.TagTypes) {
-		var ret []int32
-		return ret
-	}
-	return o.TagTypes
-}
-
-// GetTagTypesOk returns a tuple with the TagTypes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetingSpecSHOPPINGRETARGETING) GetTagTypesOk() ([]int32, bool) {
-	if o == nil || IsNil(o.TagTypes) {
-		return nil, false
-	}
-	return o.TagTypes, true
-}
-
-// HasTagTypes returns a boolean if a field has been set.
-func (o *TargetingSpecSHOPPINGRETARGETING) HasTagTypes() bool {
-	if o != nil && !IsNil(o.TagTypes) {
-		return true
-	}
-
-	return false
-}
-
-// SetTagTypes gets a reference to the given []int32 and assigns it to the TagTypes field.
-func (o *TargetingSpecSHOPPINGRETARGETING) SetTagTypes(v []int32) {
-	o.TagTypes = v
 }
 
 // GetExclusionWindow returns the ExclusionWindow field value if set, zero value otherwise.
-func (o *TargetingSpecSHOPPINGRETARGETING) GetExclusionWindow() int32 {
+func (o *TargetingSpecShoppingRetargeting) GetExclusionWindow() int32 {
 	if o == nil || IsNil(o.ExclusionWindow) {
 		var ret int32
 		return ret
@@ -120,7 +56,7 @@ func (o *TargetingSpecSHOPPINGRETARGETING) GetExclusionWindow() int32 {
 
 // GetExclusionWindowOk returns a tuple with the ExclusionWindow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetingSpecSHOPPINGRETARGETING) GetExclusionWindowOk() (*int32, bool) {
+func (o *TargetingSpecShoppingRetargeting) GetExclusionWindowOk() (*int32, bool) {
 	if o == nil || IsNil(o.ExclusionWindow) {
 		return nil, false
 	}
@@ -128,7 +64,7 @@ func (o *TargetingSpecSHOPPINGRETARGETING) GetExclusionWindowOk() (*int32, bool)
 }
 
 // HasExclusionWindow returns a boolean if a field has been set.
-func (o *TargetingSpecSHOPPINGRETARGETING) HasExclusionWindow() bool {
+func (o *TargetingSpecShoppingRetargeting) HasExclusionWindow() bool {
 	if o != nil && !IsNil(o.ExclusionWindow) {
 		return true
 	}
@@ -137,11 +73,75 @@ func (o *TargetingSpecSHOPPINGRETARGETING) HasExclusionWindow() bool {
 }
 
 // SetExclusionWindow gets a reference to the given int32 and assigns it to the ExclusionWindow field.
-func (o *TargetingSpecSHOPPINGRETARGETING) SetExclusionWindow(v int32) {
+func (o *TargetingSpecShoppingRetargeting) SetExclusionWindow(v int32) {
 	o.ExclusionWindow = &v
 }
 
-func (o TargetingSpecSHOPPINGRETARGETING) MarshalJSON() ([]byte, error) {
+// GetLookbackWindow returns the LookbackWindow field value if set, zero value otherwise.
+func (o *TargetingSpecShoppingRetargeting) GetLookbackWindow() int32 {
+	if o == nil || IsNil(o.LookbackWindow) {
+		var ret int32
+		return ret
+	}
+	return *o.LookbackWindow
+}
+
+// GetLookbackWindowOk returns a tuple with the LookbackWindow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingSpecShoppingRetargeting) GetLookbackWindowOk() (*int32, bool) {
+	if o == nil || IsNil(o.LookbackWindow) {
+		return nil, false
+	}
+	return o.LookbackWindow, true
+}
+
+// HasLookbackWindow returns a boolean if a field has been set.
+func (o *TargetingSpecShoppingRetargeting) HasLookbackWindow() bool {
+	if o != nil && !IsNil(o.LookbackWindow) {
+		return true
+	}
+
+	return false
+}
+
+// SetLookbackWindow gets a reference to the given int32 and assigns it to the LookbackWindow field.
+func (o *TargetingSpecShoppingRetargeting) SetLookbackWindow(v int32) {
+	o.LookbackWindow = &v
+}
+
+// GetTagTypes returns the TagTypes field value if set, zero value otherwise.
+func (o *TargetingSpecShoppingRetargeting) GetTagTypes() []int32 {
+	if o == nil || IsNil(o.TagTypes) {
+		var ret []int32
+		return ret
+	}
+	return o.TagTypes
+}
+
+// GetTagTypesOk returns a tuple with the TagTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingSpecShoppingRetargeting) GetTagTypesOk() ([]int32, bool) {
+	if o == nil || IsNil(o.TagTypes) {
+		return nil, false
+	}
+	return o.TagTypes, true
+}
+
+// HasTagTypes returns a boolean if a field has been set.
+func (o *TargetingSpecShoppingRetargeting) HasTagTypes() bool {
+	if o != nil && !IsNil(o.TagTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetTagTypes gets a reference to the given []int32 and assigns it to the TagTypes field.
+func (o *TargetingSpecShoppingRetargeting) SetTagTypes(v []int32) {
+	o.TagTypes = v
+}
+
+func (o TargetingSpecShoppingRetargeting) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -149,52 +149,52 @@ func (o TargetingSpecSHOPPINGRETARGETING) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TargetingSpecSHOPPINGRETARGETING) ToMap() (map[string]interface{}, error) {
+func (o TargetingSpecShoppingRetargeting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExclusionWindow) {
+		toSerialize["exclusion_window"] = o.ExclusionWindow
+	}
 	if !IsNil(o.LookbackWindow) {
 		toSerialize["lookback_window"] = o.LookbackWindow
 	}
 	if !IsNil(o.TagTypes) {
 		toSerialize["tag_types"] = o.TagTypes
 	}
-	if !IsNil(o.ExclusionWindow) {
-		toSerialize["exclusion_window"] = o.ExclusionWindow
-	}
 	return toSerialize, nil
 }
 
-type NullableTargetingSpecSHOPPINGRETARGETING struct {
-	value *TargetingSpecSHOPPINGRETARGETING
+type NullableTargetingSpecShoppingRetargeting struct {
+	value *TargetingSpecShoppingRetargeting
 	isSet bool
 }
 
-func (v NullableTargetingSpecSHOPPINGRETARGETING) Get() *TargetingSpecSHOPPINGRETARGETING {
+func (v NullableTargetingSpecShoppingRetargeting) Get() *TargetingSpecShoppingRetargeting {
 	return v.value
 }
 
-func (v *NullableTargetingSpecSHOPPINGRETARGETING) Set(val *TargetingSpecSHOPPINGRETARGETING) {
+func (v *NullableTargetingSpecShoppingRetargeting) Set(val *TargetingSpecShoppingRetargeting) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTargetingSpecSHOPPINGRETARGETING) IsSet() bool {
+func (v NullableTargetingSpecShoppingRetargeting) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTargetingSpecSHOPPINGRETARGETING) Unset() {
+func (v *NullableTargetingSpecShoppingRetargeting) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTargetingSpecSHOPPINGRETARGETING(val *TargetingSpecSHOPPINGRETARGETING) *NullableTargetingSpecSHOPPINGRETARGETING {
-	return &NullableTargetingSpecSHOPPINGRETARGETING{value: val, isSet: true}
+func NewNullableTargetingSpecShoppingRetargeting(val *TargetingSpecShoppingRetargeting) *NullableTargetingSpecShoppingRetargeting {
+	return &NullableTargetingSpecShoppingRetargeting{value: val, isSet: true}
 }
 
-func (v NullableTargetingSpecSHOPPINGRETARGETING) MarshalJSON() ([]byte, error) {
+func (v NullableTargetingSpecShoppingRetargeting) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTargetingSpecSHOPPINGRETARGETING) UnmarshalJSON(src []byte) error {
+func (v *NullableTargetingSpecShoppingRetargeting) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

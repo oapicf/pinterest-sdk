@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  | 
 
 
 

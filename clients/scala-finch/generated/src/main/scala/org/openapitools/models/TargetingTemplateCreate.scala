@@ -13,18 +13,18 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param name Name of targeting template.
  * @param autoUnderscoretargetingUnderscoreenabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param targetingUnderscoreattributes 
- * @param placementUnderscoregroup 
  * @param keywords 
+ * @param name Name of targeting template.
+ * @param placementUnderscoregroup 
+ * @param targetingUnderscoreattributes 
  * @param trackingUnderscoreurls 
  */
-case class TargetingTemplateCreate(name: String,
-                autoUnderscoretargetingUnderscoreenabled: Option[Boolean],
-                targetingUnderscoreattributes: TargetingSpec,
-                placementUnderscoregroup: Option[PlacementGroupType],
+case class TargetingTemplateCreate(autoUnderscoretargetingUnderscoreenabled: Option[Boolean],
                 keywords: Option[Seq[TargetingTemplateKeyword]],
+                name: String,
+                placementUnderscoregroup: Option[PlacementGroupType],
+                targetingUnderscoreattributes: TargetingSpec,
                 trackingUnderscoreurls: Option[TrackingUrls]
                 )
 

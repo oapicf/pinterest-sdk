@@ -15,11 +15,11 @@ Name | Type | Description | Notes
 **AVAILABILITY** | `CatalogsProductGroupMultipleStringCriteria` |  | 
 **BRAND** | `CatalogsProductGroupMultipleStringCriteria` |  | 
 **CONDITION** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**CUSTOM_LABEL_0** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**CUSTOM_LABEL_1** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**CUSTOM_LABEL_2** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**CUSTOM_LABEL_3** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**CUSTOM_LABEL_4** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**CUSTOM_LABEL_0** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
+**CUSTOM_LABEL_1** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
+**CUSTOM_LABEL_2** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
+**CUSTOM_LABEL_3** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
+**CUSTOM_LABEL_4** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
 **ITEM_GROUP_ID** | `CatalogsProductGroupMultipleStringCriteria` |  | 
 **GENDER** | `CatalogsProductGroupMultipleGenderCriteria` |  | 
 **MEDIA_TYPE** | `CatalogsProductGroupMultipleMediaTypesCriteria` |  | 
@@ -36,6 +36,18 @@ Name | Type | Description | Notes
 **GOOGLE_PRODUCT_CATEGORY_1** | `CatalogsProductGroupMultipleStringListCriteria` |  | 
 **GOOGLE_PRODUCT_CATEGORY_0** | `CatalogsProductGroupMultipleStringListCriteria` |  | 
 **PRODUCT_GROUP** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**CUSTOM_NUMBER_0** | `CatalogsProductGroupUint32Criteria` |  | 
+**CUSTOM_NUMBER_1** | `CatalogsProductGroupUint32Criteria` |  | 
+**CUSTOM_NUMBER_2** | `CatalogsProductGroupUint32Criteria` |  | 
+**CUSTOM_NUMBER_3** | `CatalogsProductGroupUint32Criteria` |  | 
+**CUSTOM_NUMBER_4** | `CatalogsProductGroupUint32Criteria` |  | 
+**TITLE_KEYWORDS** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+
+
+
+
+
+
 
 
 

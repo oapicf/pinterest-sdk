@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[CatalogsReportStats]**](CatalogsReportStats.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[CatalogsReportStats]**](CatalogsReportStats.md) |  | 
 
 

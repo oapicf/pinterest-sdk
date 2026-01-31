@@ -19,50 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinCreate
-import org.openapitools.client.models.BoardOwner
-import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaSource
 
 class PinCreateTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinCreate
         //val modelInstance = PinCreate()
-
-        // to test the property `id`
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `createdAt`
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
-        // to test the property `link`
-        should("test link") {
-            // uncomment below to test the property
-            //modelInstance.link shouldBe ("TODO")
-        }
-
-        // to test the property `title`
-        should("test title") {
-            // uncomment below to test the property
-            //modelInstance.title shouldBe ("TODO")
-        }
-
-        // to test the property `description`
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
-        }
-
-        // to test the property `dominantColor` - Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-        should("test dominantColor") {
-            // uncomment below to test the property
-            //modelInstance.dominantColor shouldBe ("TODO")
-        }
 
         // to test the property `altText`
         should("test altText") {
@@ -82,16 +44,22 @@ class PinCreateTest : ShouldSpec() {
             //modelInstance.boardSectionId shouldBe ("TODO")
         }
 
-        // to test the property `boardOwner`
-        should("test boardOwner") {
+        // to test the property `description`
+        should("test description") {
             // uncomment below to test the property
-            //modelInstance.boardOwner shouldBe ("TODO")
+            //modelInstance.description shouldBe ("TODO")
         }
 
-        // to test the property `media`
-        should("test media") {
+        // to test the property `dominantColor` - Dominant pin color. Hex number, e.g. `#6E7874`.
+        should("test dominantColor") {
             // uncomment below to test the property
-            //modelInstance.media shouldBe ("TODO")
+            //modelInstance.dominantColor shouldBe ("TODO")
+        }
+
+        // to test the property `link`
+        should("test link") {
+            // uncomment below to test the property
+            //modelInstance.link shouldBe ("TODO")
         }
 
         // to test the property `mediaSource`
@@ -100,16 +68,22 @@ class PinCreateTest : ShouldSpec() {
             //modelInstance.mediaSource shouldBe ("TODO")
         }
 
-        // to test the property `parentPinId` - The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+        // to test the property `parentPinId` - The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
         should("test parentPinId") {
             // uncomment below to test the property
             //modelInstance.parentPinId shouldBe ("TODO")
         }
 
-        // to test the property `note` - Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-        should("test note") {
+        // to test the property `sponsorId` - The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
+        should("test sponsorId") {
             // uncomment below to test the property
-            //modelInstance.note shouldBe ("TODO")
+            //modelInstance.sponsorId shouldBe ("TODO")
+        }
+
+        // to test the property `title`
+        should("test title") {
+            // uncomment below to test the property
+            //modelInstance.title shouldBe ("TODO")
         }
 
     }

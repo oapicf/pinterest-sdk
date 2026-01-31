@@ -9,9 +9,9 @@
 
 (def catalogs-update-retail-item-data
   {
+   (ds/req :attributes) updatable-item-attributes-spec
    (ds/req :item_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) updatable-item-attributes-spec
    (ds/opt :update_mask) (s/coll-of update-mask-field-type-spec)
    })
 

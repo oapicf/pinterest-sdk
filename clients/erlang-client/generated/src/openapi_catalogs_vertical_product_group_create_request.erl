@@ -5,28 +5,28 @@
 -export_type([openapi_catalogs_vertical_product_group_create_request/0]).
 
 -type openapi_catalogs_vertical_product_group_create_request() ::
-    #{ 'catalog_type' := binary(),
-       'name' := binary(),
+    #{ 'catalog_id' := binary(),
+       'catalog_type' := binary(),
+       'country' => openapi_country:openapi_country(),
        'description' => binary(),
        'filters' := openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters(),
-       'catalog_id' := binary(),
-       'country' := openapi_country:openapi_country(),
-       'locale' := openapi_catalogs_locale:openapi_catalogs_locale()
+       'locale' => openapi_catalogs_locale:openapi_catalogs_locale(),
+       'name' := binary()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
-          'name' := Name,
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
+          'country' := Country,
           'description' := Description,
           'filters' := Filters,
-          'catalog_id' := CatalogId,
-          'country' := Country,
-          'locale' := Locale
+          'locale' := Locale,
+          'name' := Name
         }) ->
-    #{ 'catalog_type' => CatalogType,
-       'name' => Name,
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
+       'country' => Country,
        'description' => Description,
        'filters' => Filters,
-       'catalog_id' => CatalogId,
-       'country' => Country,
-       'locale' => Locale
+       'locale' => Locale,
+       'name' => Name
      }.

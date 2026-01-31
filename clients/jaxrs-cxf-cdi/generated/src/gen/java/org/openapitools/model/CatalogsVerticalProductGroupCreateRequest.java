@@ -34,6 +34,8 @@ import java.util.Objects;
 
 public class CatalogsVerticalProductGroupCreateRequest   {
   
+  private String catalogId;
+
 
 public enum CatalogTypeEnum {
 
@@ -67,17 +69,35 @@ public enum CatalogTypeEnum {
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
+  private Country country;
 
   private String description;
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  private String catalogId;
-
-  private Country country;
-
   private CatalogsLocale locale;
+
+  private String name;
+
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   **/
+  public CatalogsVerticalProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
 
   /**
    **/
@@ -100,20 +120,19 @@ public enum CatalogTypeEnum {
 
   /**
    **/
-  public CatalogsVerticalProductGroupCreateRequest name(String name) {
-    this.name = name;
+  public CatalogsVerticalProductGroupCreateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "")
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
 
@@ -155,45 +174,6 @@ public enum CatalogTypeEnum {
 
 
   /**
-   * Catalog id pertaining to the creative assets product group.
-   **/
-  public CatalogsVerticalProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
-  @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-
-  /**
-   **/
-  public CatalogsVerticalProductGroupCreateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
-  @NotNull
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-
-  /**
    **/
   public CatalogsVerticalProductGroupCreateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
@@ -201,14 +181,32 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("locale")
-  @NotNull
   public CatalogsLocale getLocale() {
     return locale;
   }
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+
+  /**
+   **/
+  public CatalogsVerticalProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("name")
+  @NotNull
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -222,18 +220,18 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsVerticalProductGroupCreateRequest catalogsVerticalProductGroupCreateRequest = (CatalogsVerticalProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsVerticalProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsVerticalProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsVerticalProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsVerticalProductGroupCreateRequest.catalogType) &&
+        Objects.equals(this.country, catalogsVerticalProductGroupCreateRequest.country) &&
         Objects.equals(this.description, catalogsVerticalProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsVerticalProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsVerticalProductGroupCreateRequest.catalogId) &&
-        Objects.equals(this.country, catalogsVerticalProductGroupCreateRequest.country) &&
-        Objects.equals(this.locale, catalogsVerticalProductGroupCreateRequest.locale);
+        Objects.equals(this.locale, catalogsVerticalProductGroupCreateRequest.locale) &&
+        Objects.equals(this.name, catalogsVerticalProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -241,13 +239,13 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

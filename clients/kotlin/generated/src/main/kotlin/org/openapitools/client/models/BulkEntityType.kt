@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Refers ads entity type
+ * Refers ads entity type. Schedule enum is only applicable to beta users
  *
- * Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD
+ * Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE
  */
 
 @JsonClass(generateAdapter = false)
@@ -41,7 +41,13 @@ enum class BulkEntityType(val value: kotlin.String) {
     AD("AD"),
 
     @Json(name = "KEYWORD")
-    KEYWORD("KEYWORD");
+    KEYWORD("KEYWORD"),
+
+    @Json(name = "LABEL")
+    LABEL("LABEL"),
+
+    @Json(name = "SCHEDULE")
+    SCHEDULE("SCHEDULE");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

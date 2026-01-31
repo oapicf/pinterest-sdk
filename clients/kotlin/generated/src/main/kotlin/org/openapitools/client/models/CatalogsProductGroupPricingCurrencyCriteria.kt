@@ -23,23 +23,23 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param currency 
  * @param `operator` 
  * @param `value` 
- * @param currency 
  * @param negated 
  */
 
 
 data class CatalogsProductGroupPricingCurrencyCriteria (
 
+    @Json(name = "currency")
+    val currency: NonNullableCatalogsCurrency,
+
     @Json(name = "operator")
     val `operator`: CatalogsProductGroupPricingCurrencyCriteria.`Operator`,
 
     @Json(name = "value")
     val `value`: java.math.BigDecimal,
-
-    @Json(name = "currency")
-    val currency: NonNullableCatalogsCurrency,
 
     @Json(name = "negated")
     val negated: kotlin.Boolean? = false

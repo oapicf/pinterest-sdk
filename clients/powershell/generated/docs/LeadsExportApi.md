@@ -26,7 +26,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$LeadsExportCreateRequest = Initialize-LeadsExportCreateRequest -StartDate "2020-12-20" -EndDate "2020-12-20" -AdId "687201361754" # LeadsExportCreateRequest | 
+$LeadsExportCreateRequest = Initialize-LeadsExportCreateRequest -AdId "687201361754" -EndDate "2020-12-20" -StartDate "2020-12-20" # LeadsExportCreateRequest | 
 
 # Create a request to export leads collected from a lead ad
 try {

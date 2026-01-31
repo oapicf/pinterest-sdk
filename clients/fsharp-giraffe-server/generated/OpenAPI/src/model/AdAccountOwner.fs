@@ -8,8 +8,8 @@ module AdAccountOwner =
   //#region AdAccountOwner
 
 
-  type Ad_account_owner = {
-    Username : string;
+  type AdAccountOwner = {
     Id : string;
+    Username : string;
   }
   //#endregion

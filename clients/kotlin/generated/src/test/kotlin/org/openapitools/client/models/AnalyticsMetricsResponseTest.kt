@@ -26,16 +26,16 @@ class AnalyticsMetricsResponseTest : ShouldSpec() {
         // uncomment below to create an instance of AnalyticsMetricsResponse
         //val modelInstance = AnalyticsMetricsResponse()
 
-        // to test the property `summaryMetrics` - The metric name and value over the requested period for each requested metric
-        should("test summaryMetrics") {
-            // uncomment below to test the property
-            //modelInstance.summaryMetrics shouldBe ("TODO")
-        }
-
         // to test the property `dailyMetrics` - Array with the requested daily metric records
         should("test dailyMetrics") {
             // uncomment below to test the property
             //modelInstance.dailyMetrics shouldBe ("TODO")
+        }
+
+        // to test the property `summaryMetrics` - The metric name and value over the requested period for each requested metric
+        should("test summaryMetrics") {
+            // uncomment below to test the property
+            //modelInstance.summaryMetrics shouldBe ("TODO")
         }
 
     }

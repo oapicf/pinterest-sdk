@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,12 +16,12 @@ package openapi
 
 type CatalogsCreativeAssetsItemsFilter struct {
 
+	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
 	CreativeAssetsIds []string `json:"creative_assets_ids"`
-
-	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // AssertCatalogsCreativeAssetsItemsFilterRequired checks if the required fields are not zero-ed

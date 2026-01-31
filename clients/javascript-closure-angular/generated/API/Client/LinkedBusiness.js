@@ -6,18 +6,11 @@ goog.provide('API.Client.LinkedBusiness');
 API.Client.LinkedBusiness = function() {}
 
 /**
- * Username
+ * image_large_url
  * @type {!string}
  * @export
  */
-API.Client.LinkedBusiness.prototype.username;
-
-/**
- * image_small_url
- * @type {!string}
- * @export
- */
-API.Client.LinkedBusiness.prototype.imageSmallUrl;
+API.Client.LinkedBusiness.prototype.imageLargeUrl;
 
 /**
  * image_medium_url
@@ -27,11 +20,11 @@ API.Client.LinkedBusiness.prototype.imageSmallUrl;
 API.Client.LinkedBusiness.prototype.imageMediumUrl;
 
 /**
- * image_large_url
+ * image_small_url
  * @type {!string}
  * @export
  */
-API.Client.LinkedBusiness.prototype.imageLargeUrl;
+API.Client.LinkedBusiness.prototype.imageSmallUrl;
 
 /**
  * image_xlarge_url
@@ -39,4 +32,11 @@ API.Client.LinkedBusiness.prototype.imageLargeUrl;
  * @export
  */
 API.Client.LinkedBusiness.prototype.imageXlargeUrl;
+
+/**
+ * Username
+ * @type {!string}
+ * @export
+ */
+API.Client.LinkedBusiness.prototype.username;
 

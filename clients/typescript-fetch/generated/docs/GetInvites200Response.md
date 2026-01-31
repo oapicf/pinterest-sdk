@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;InviteResponse&gt;](InviteResponse.md)
 `bookmark` | string
+`items` | [Array&lt;InviteResponse&gt;](InviteResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetInvites200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies GetInvites200Response
 
 console.log(example)

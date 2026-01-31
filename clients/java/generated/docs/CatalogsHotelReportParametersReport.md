@@ -20,6 +20,7 @@
 |---- | -----|
 | FEED_INGESTION_ISSUES | &quot;FEED_INGESTION_ISSUES&quot; |
 | DISTRIBUTION_ISSUES | &quot;DISTRIBUTION_ISSUES&quot; |
+| ALL_ITEMS | &quot;ALL_ITEMS&quot; |
 
 
 

@@ -6,11 +6,11 @@
 
 -type openapi_catalogs_creative_assets_product_group_filter_keys() ::
     #{ 'CREATIVE_ASSETS_ID' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
-       'CUSTOM_LABEL_0' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
-       'CUSTOM_LABEL_1' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
-       'CUSTOM_LABEL_2' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
-       'CUSTOM_LABEL_3' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
-       'CUSTOM_LABEL_4' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
+       'CUSTOM_LABEL_0' := openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria(),
+       'CUSTOM_LABEL_1' := openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria(),
+       'CUSTOM_LABEL_2' := openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria(),
+       'CUSTOM_LABEL_3' := openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria(),
+       'CUSTOM_LABEL_4' := openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_6' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_5' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_4' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
@@ -18,7 +18,8 @@
        'GOOGLE_PRODUCT_CATEGORY_2' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_1' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_0' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
-       'MEDIA_TYPE' := openapi_catalogs_product_group_multiple_media_types_criteria:openapi_catalogs_product_group_multiple_media_types_criteria()
+       'MEDIA_TYPE' := openapi_catalogs_product_group_multiple_media_types_criteria:openapi_catalogs_product_group_multiple_media_types_criteria(),
+       'TITLE_KEYWORDS' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria()
      }.
 
 encode(#{ 'CREATIVE_ASSETS_ID' := CREATIVEASSETSID,
@@ -34,7 +35,8 @@ encode(#{ 'CREATIVE_ASSETS_ID' := CREATIVEASSETSID,
           'GOOGLE_PRODUCT_CATEGORY_2' := GOOGLEPRODUCTCATEGORY2,
           'GOOGLE_PRODUCT_CATEGORY_1' := GOOGLEPRODUCTCATEGORY1,
           'GOOGLE_PRODUCT_CATEGORY_0' := GOOGLEPRODUCTCATEGORY0,
-          'MEDIA_TYPE' := MEDIATYPE
+          'MEDIA_TYPE' := MEDIATYPE,
+          'TITLE_KEYWORDS' := TITLEKEYWORDS
         }) ->
     #{ 'CREATIVE_ASSETS_ID' => CREATIVEASSETSID,
        'CUSTOM_LABEL_0' => CUSTOMLABEL0,
@@ -49,5 +51,6 @@ encode(#{ 'CREATIVE_ASSETS_ID' := CREATIVEASSETSID,
        'GOOGLE_PRODUCT_CATEGORY_2' => GOOGLEPRODUCTCATEGORY2,
        'GOOGLE_PRODUCT_CATEGORY_1' => GOOGLEPRODUCTCATEGORY1,
        'GOOGLE_PRODUCT_CATEGORY_0' => GOOGLEPRODUCTCATEGORY0,
-       'MEDIA_TYPE' => MEDIATYPE
+       'MEDIA_TYPE' => MEDIATYPE,
+       'TITLE_KEYWORDS' => TITLEKEYWORDS
      }.

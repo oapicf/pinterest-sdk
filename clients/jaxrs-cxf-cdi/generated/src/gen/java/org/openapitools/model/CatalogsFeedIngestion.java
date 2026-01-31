@@ -16,30 +16,30 @@ import java.util.Objects;
 
 public class CatalogsFeedIngestion   {
   
-  private String id;
+  private java.util.Date createdAt;
 
   private String feedId;
 
-  private java.util.Date createdAt;
+  private String id;
 
   private CatalogsFeedProcessingStatus status;
 
   /**
    **/
-  public CatalogsFeedIngestion id(String id) {
-    this.id = id;
+  public CatalogsFeedIngestion createdAt(java.util.Date createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   
-  @ApiModelProperty(example = "01234", required = true, value = "")
-  @JsonProperty("id")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @JsonProperty("created_at")
   @NotNull
-  public String getId() {
-    return id;
+  public java.util.Date getCreatedAt() {
+    return createdAt;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(java.util.Date createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -64,20 +64,20 @@ public class CatalogsFeedIngestion   {
 
   /**
    **/
-  public CatalogsFeedIngestion createdAt(java.util.Date createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsFeedIngestion id(String id) {
+    this.id = id;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("created_at")
+  @ApiModelProperty(example = "01234", required = true, value = "")
+  @JsonProperty("id")
   @NotNull
-  public java.util.Date getCreatedAt() {
-    return createdAt;
+  public String getId() {
+    return id;
   }
-  public void setCreatedAt(java.util.Date createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -110,15 +110,15 @@ public class CatalogsFeedIngestion   {
       return false;
     }
     CatalogsFeedIngestion catalogsFeedIngestion = (CatalogsFeedIngestion) o;
-    return Objects.equals(this.id, catalogsFeedIngestion.id) &&
+    return Objects.equals(this.createdAt, catalogsFeedIngestion.createdAt) &&
         Objects.equals(this.feedId, catalogsFeedIngestion.feedId) &&
-        Objects.equals(this.createdAt, catalogsFeedIngestion.createdAt) &&
+        Objects.equals(this.id, catalogsFeedIngestion.id) &&
         Objects.equals(this.status, catalogsFeedIngestion.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, feedId, createdAt, status);
+    return Objects.hash(createdAt, feedId, id, status);
   }
 
   @Override
@@ -126,9 +126,9 @@ public class CatalogsFeedIngestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedIngestion {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

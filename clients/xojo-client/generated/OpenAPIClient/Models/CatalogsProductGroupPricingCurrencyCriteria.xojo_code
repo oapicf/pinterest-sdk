@@ -2,22 +2,22 @@
 Protected Class CatalogsProductGroupPricingCurrencyCriteria
 
 	#tag Property, Flags = &h0
-		operator As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		value As Double
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		currency As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		negated As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		operator As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		value As Double
 	#tag EndProperty
 
 
@@ -84,14 +84,6 @@ Protected Class CatalogsProductGroupPricingCurrencyCriteria
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="value"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="currency"
 			Visible=false
 			Group="Behavior"
@@ -105,6 +97,14 @@ Protected Class CatalogsProductGroupPricingCurrencyCriteria
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="value"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -20,6 +20,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest  {
   
+ /**
+  * Catalog id pertaining to the retail product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("RETAIL") RETAIL(String.valueOf("RETAIL"));
@@ -55,11 +61,9 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
   private CatalogTypeEnum catalogType;
 
- /**
-  * Catalog id pertaining to the retail product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
-  private String catalogId;
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private Country country;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -67,36 +71,7 @@ public enum CatalogTypeEnum {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private Country country;
-
-  @ApiModelProperty(required = true, value = "")
-  @Valid
   private CatalogsLocale locale;
- /**
-  * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public String getCatalogType() {
-    return catalogType == null ? null : catalogType.value();
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
  /**
   * Catalog id pertaining to the retail product group.
   * @return catalogId
@@ -123,27 +98,27 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * Get filters
-  * @return filters
+  * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  * @return catalogType
   */
-  @JsonProperty("filters")
+  @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsProductGroupFilters getFilters() {
-    return filters;
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
   }
 
   /**
-   * Sets the <code>filters</code> property.
+   * Sets the <code>catalogType</code> property.
    */
- public void setFilters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
+ public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
-   * Sets the <code>filters</code> property.
+   * Sets the <code>catalogType</code> property.
    */
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
-    this.filters = filters;
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
@@ -169,6 +144,31 @@ public enum CatalogTypeEnum {
    */
   public CatalogsRetailListProductsByCatalogBasedFilterRequest country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+  * Get filters
+  * @return filters
+  */
+  @JsonProperty("filters")
+  @NotNull
+  public CatalogsProductGroupFilters getFilters() {
+    return filters;
+  }
+
+  /**
+   * Sets the <code>filters</code> property.
+   */
+ public void setFilters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
+  }
+
+  /**
+   * Sets the <code>filters</code> property.
+   */
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
+    this.filters = filters;
     return this;
   }
 
@@ -207,16 +207,16 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsRetailListProductsByCatalogBasedFilterRequest catalogsRetailListProductsByCatalogBasedFilterRequest = (CatalogsRetailListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
-        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
+    return Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailListProductsByCatalogBasedFilterRequest.country) &&
+        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
         Objects.equals(this.locale, catalogsRetailListProductsByCatalogBasedFilterRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters, country, locale);
+    return Objects.hash(catalogId, catalogType, country, filters, locale);
   }
 
   @Override
@@ -224,10 +224,10 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();

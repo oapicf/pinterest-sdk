@@ -1,7 +1,7 @@
 
 # PinUpdate
 
-Pin fields for updates
+Resource create or update operation model.
 
 ## Properties
 
@@ -10,11 +10,10 @@ Name | Type
 `altText` | string
 `boardId` | string
 `boardSectionId` | string
+`carouselSlots` | [Array&lt;CarouselSlot&gt;](CarouselSlot.md)
 `description` | string
 `link` | string
 `title` | string
-`carouselSlots` | [Array&lt;PinUpdateCarouselSlotsInner&gt;](PinUpdateCarouselSlotsInner.md)
-`note` | string
 
 ## Example
 
@@ -26,11 +25,10 @@ const example = {
   "altText": null,
   "boardId": null,
   "boardSectionId": null,
-  "description": null,
-  "link": https://www.pinterest.com/,
-  "title": null,
   "carouselSlots": null,
-  "note": null,
+  "description": null,
+  "link": null,
+  "title": null,
 } satisfies PinUpdate
 
 console.log(example)

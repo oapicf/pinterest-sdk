@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import SearchUserBoardsGet200Response._
 
 case class SearchUserBoardsGet200Response (
-  /* items */
-  items: List[Board],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* items */
+  items: List[Board])
 
 object SearchUserBoardsGet200Response {
   import DateTimeCodecs._

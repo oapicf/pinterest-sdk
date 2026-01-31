@@ -14,16 +14,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeletePartnerAssetAccessBodyAccessesInner  {
   
  /**
-  * Unique identifier of a business partner to update asset access to.
-  */
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
-  private String partnerId;
-
- /**
   * Unique identifier of the business asset.
   */
   @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of the business asset.")
   private String assetId;
+
+ /**
+  * Unique identifier of a business partner to update asset access to.
+  */
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
+  private String partnerId;
 
 public enum PartnerTypeEnum {
 
@@ -61,31 +61,6 @@ public enum PartnerTypeEnum {
   @ApiModelProperty(example = "INTERNAL", value = "If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.")
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
  /**
-  * Unique identifier of a business partner to update asset access to.
-  * @return partnerId
-  */
-  @JsonProperty("partner_id")
-  @NotNull
- @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
-    return partnerId;
-  }
-
-  /**
-   * Sets the <code>partnerId</code> property.
-   */
- public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
-  /**
-   * Sets the <code>partnerId</code> property.
-   */
-  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
- /**
   * Unique identifier of the business asset.
   * @return assetId
   */
@@ -107,6 +82,31 @@ public enum PartnerTypeEnum {
    */
   public DeletePartnerAssetAccessBodyAccessesInner assetId(String assetId) {
     this.assetId = assetId;
+    return this;
+  }
+
+ /**
+  * Unique identifier of a business partner to update asset access to.
+  * @return partnerId
+  */
+  @JsonProperty("partner_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
+    return partnerId;
+  }
+
+  /**
+   * Sets the <code>partnerId</code> property.
+   */
+ public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
+  /**
+   * Sets the <code>partnerId</code> property.
+   */
+  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
     return this;
   }
 
@@ -144,14 +144,14 @@ public enum PartnerTypeEnum {
       return false;
     }
     DeletePartnerAssetAccessBodyAccessesInner deletePartnerAssetAccessBodyAccessesInner = (DeletePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(this.partnerType, deletePartnerAssetAccessBodyAccessesInner.partnerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, partnerType);
+    return Objects.hash(assetId, partnerId, partnerType);
   }
 
   @Override
@@ -159,8 +159,8 @@ public enum PartnerTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeletePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    partnerType: ").append(toIndentedString(partnerType)).append("\n");
     sb.append("}");
     return sb.toString();

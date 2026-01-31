@@ -6,6 +6,8 @@ Feature | HTTP request | Description
 ------------- | ------------- | -------------
 [**ads_credit_redeem**](BILLING_API.md#ads_credit_redeem) | **Post** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**ads_credits_discounts_get**](BILLING_API.md#ads_credits_discounts_get) | **Get** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billing_invoice_download_get**](BILLING_API.md#billing_invoice_download_get) | **Get** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billing_invoices_get**](BILLING_API.md#billing_invoices_get) | **Get** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billing_profiles_get**](BILLING_API.md#billing_profiles_get) | **Get** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssio_accounts_get**](BILLING_API.md#ssio_accounts_get) | **Get** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**ssio_insertion_order_create**](BILLING_API.md#ssio_insertion_order_create) | **Post** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -21,7 +23,7 @@ Feature | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 
 ### Parameters
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 
 ### Parameters
@@ -78,13 +80,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **billing_invoice_download_get**
+> billing_invoice_download_get (ad_account_id: STRING_32 ; billing_invoice_id: STRING_32 ): detachable BILLING_INVOICE_DOWNLOAD_RESPONSE
+
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
+ **billing_invoice_id** | **STRING_32**| Unique identifier of a billing invoice. | [default to null]
+
+### Return type
+
+[**BILLING_INVOICE_DOWNLOAD_RESPONSE**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **billing_invoices_get**
+> billing_invoices_get (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; sort:  detachable STRING_32 ; order:  detachable STRING_32 ; status:  detachable STRING_32 ; document_type:  detachable STRING_32 ; start_due_date:  detachable DATE ; end_due_date:  detachable DATE ): detachable BILLING_INVOICES_GET_200_RESPONSE
+
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
+ **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort** | **STRING_32**| Field of which to sort billing invoices | [optional] [default to DUE_DATE]
+ **order** | **STRING_32**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
+ **status** | **STRING_32**| Status of billing invoices to filter by | [optional] [default to null]
+ **document_type** | **STRING_32**| Document type of billing invoices to filter by | [optional] [default to null]
+ **start_due_date** | **DATE**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
+ **end_due_date** | **DATE**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
+
+### Return type
+
+[**BILLING_INVOICES_GET_200_RESPONSE**](billing_invoices_get_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **billing_profiles_get**
 > billing_profiles_get (ad_account_id: STRING_32 ; is_active: BOOLEAN ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable BILLING_PROFILES_GET_200_RESPONSE
 
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 
 ### Parameters

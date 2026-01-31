@@ -14,10 +14,10 @@ import org.openapitools.model.CatalogsType;
 class CatalogsItemsPostFilters {
     
     CatalogsType catalogType
-    
-    List<String> itemIds = new ArrayList<>()
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     String catalogId
+    
+    List<String> itemIds = new ArrayList<>()
     
     List<String> hotelIds = new ArrayList<>()
     

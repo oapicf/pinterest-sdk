@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **String** |  | [optional] 
+**Index** | **Decimal** |  | [optional] 
 **Key** | **String** |  | [optional] 
 **Name** | **String** |  | [optional] 
 **Ratio** | **Decimal** |  | [optional] 
-**Index** | **Decimal** |  | [optional] 
-**Id** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AudienceInsightCategoryCommon = Initialize-PSOpenAPIToolsAudienceInsightCategoryCommon  -Key 549755885175 `
- -Name travel `
- -Ratio 0.551 `
+$AudienceInsightCategoryCommon = Initialize-PSOpenAPIToolsAudienceInsightCategoryCommon  -Id 549755885175 `
  -Index 1.2 `
- -Id 549755885175
+ -Key 549755885175 `
+ -Name travel `
+ -Ratio 0.551
 ```
 
 - Convert the resource to JSON

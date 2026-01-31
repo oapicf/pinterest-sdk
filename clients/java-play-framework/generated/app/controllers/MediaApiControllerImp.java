@@ -1,10 +1,10 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.Media;
 import apimodels.MediaList200Response;
 import apimodels.MediaUpload;
-import apimodels.MediaUploadDetails;
-import apimodels.MediaUploadRequest;
+import apimodels.MediaUploadCreate;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -15,18 +15,18 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaApiControllerImp extends MediaApiControllerImpInterface {
     @Override
-    public MediaUpload mediaCreate(Http.Request request, MediaUploadRequest mediaUploadRequest) throws Exception {
+    public MediaUpload mediaCreate(Http.Request request, MediaUploadCreate mediaUploadCreate) throws Exception {
         //Do your magic!!!
         return new MediaUpload();
     }
 
     @Override
-    public MediaUploadDetails mediaGet(Http.Request request,  @Pattern(regexp="^\\d+$")String mediaId) throws Exception {
+    public Media mediaGet(Http.Request request,  @Pattern(regexp="^\\d+$")String mediaId) throws Exception {
         //Do your magic!!!
-        return new MediaUploadDetails();
+        return new Media();
     }
 
     @Override

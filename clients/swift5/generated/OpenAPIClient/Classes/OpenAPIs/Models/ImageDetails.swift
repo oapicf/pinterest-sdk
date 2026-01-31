@@ -12,31 +12,29 @@ import AnyCodable
 
 public struct ImageDetails: Codable, JSONEncodable, Hashable {
 
-    public static let widthRule = NumericRule<Int>(minimum: 100, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    public static let heightRule = NumericRule<Int>(minimum: 100, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    public var width: Int
     public var height: Int?
     public var url: String
+    public var width: Int?
 
-    public init(width: Int, height: Int?, url: String) {
-        self.width = width
+    public init(height: Int?, url: String, width: Int?) {
         self.height = height
         self.url = url
+        self.width = width
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case width
         case height
         case url
+        case width
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(width, forKey: .width)
         try container.encode(height, forKey: .height)
         try container.encode(url, forKey: .url)
+        try container.encode(width, forKey: .width)
     }
 }
 

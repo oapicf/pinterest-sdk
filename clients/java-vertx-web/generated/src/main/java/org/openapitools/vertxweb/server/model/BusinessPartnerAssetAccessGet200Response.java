@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.GetPartnerAssetsResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BusinessPartnerAssetAccessGet200Response   {
   
-  private List<GetPartnerAssetsResponse> items = new ArrayList<>();
   private String bookmark;
+  private List<GetPartnerAssetsResponse> items = new ArrayList<>();
 
   public BusinessPartnerAssetAccessGet200Response () {
 
   }
 
-  public BusinessPartnerAssetAccessGet200Response (List<GetPartnerAssetsResponse> items, String bookmark) {
-    this.items = items;
+  public BusinessPartnerAssetAccessGet200Response (String bookmark, List<GetPartnerAssetsResponse> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<GetPartnerAssetsResponse> getItems() {
-    return items;
-  }
-  public void setItems(List<GetPartnerAssetsResponse> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class BusinessPartnerAssetAccessGet200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<GetPartnerAssetsResponse> getItems() {
+    return items;
+  }
+  public void setItems(List<GetPartnerAssetsResponse> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class BusinessPartnerAssetAccessGet200Response   {
       return false;
     }
     BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet200Response = (BusinessPartnerAssetAccessGet200Response) o;
-    return Objects.equals(items, businessPartnerAssetAccessGet200Response.items) &&
-        Objects.equals(bookmark, businessPartnerAssetAccessGet200Response.bookmark);
+    return Objects.equals(bookmark, businessPartnerAssetAccessGet200Response.bookmark) &&
+        Objects.equals(items, businessPartnerAssetAccessGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class BusinessPartnerAssetAccessGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessPartnerAssetAccessGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

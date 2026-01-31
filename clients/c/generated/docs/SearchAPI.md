@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ```c
 // Search pins by a given search term
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 //
 search_partner_pins_200_response_t* SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_code, char *bookmark, char *locale, int *limit);
 ```
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 //
 // Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 //
-pins_list_200_response_t* SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_account_id, char *bookmark);
+search_user_pins_list_200_response_t* SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_account_id, char *bookmark);
 ```
 
 ### Parameters
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[pins_list_200_response_t](pins_list_200_response.md) *
+[search_user_pins_list_200_response_t](search_user_pins_list_200_response.md) *
 
 
 ### Authorization

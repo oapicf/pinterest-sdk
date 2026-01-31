@@ -19,6 +19,7 @@ typedef struct advanced_auction_items_submit_record_t advanced_auction_items_sub
 #include "advanced_auction_items_submit_delete_record.h"
 #include "advanced_auction_items_submit_upsert_record.h"
 #include "advanced_auction_operation.h"
+#include "advanced_auction_operation_error.h"
 #include "country.h"
 #include "language.h"
 #include "update_mask_bid_option_field.h"
@@ -35,10 +36,11 @@ pinterest_rest_api_advanced_auction_items_submit_record__e advanced_auction_item
 
 typedef struct advanced_auction_items_submit_record_t {
     pinterest_rest_api_advanced_auction_operation__e operation; //referenced enum
-    char *item_id; // string
     pinterest_rest_api_country__e country; //referenced enum
+    char *item_id; // string
     pinterest_rest_api_language__e language; //referenced enum
     struct advanced_auction_bid_options_t *bid_options; //model
+    list_t *errors; //nonprimitive container
     list_t *update_mask; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -46,10 +48,11 @@ typedef struct advanced_auction_items_submit_record_t {
 
 __attribute__((deprecated)) advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_create(
     pinterest_rest_api_advanced_auction_operation__e operation,
-    char *item_id,
     pinterest_rest_api_country__e country,
+    char *item_id,
     pinterest_rest_api_language__e language,
     advanced_auction_bid_options_t *bid_options,
+    list_t *errors,
     list_t *update_mask
 );
 

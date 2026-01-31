@@ -13,11 +13,11 @@
  * HTTP request details included in the log sent by the client.
  */
 export interface IntegrationLogClientRequest { 
-    method: IntegrationLogClientRequest.MethodEnum;
     /**
      * HTTP request host from host header.
      */
     host: string;
+    method: IntegrationLogClientRequest.MethodEnum;
     /**
      * HTTP request path.
      */

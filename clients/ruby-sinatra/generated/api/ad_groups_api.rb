@@ -7,7 +7,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/analytics', {
   "nickname" => "ad_groups/analytics",
   "responseClass" => "Array<AdGroupsAnalyticsResponse_inner>",
   "endpoint" => "/ad_accounts/{ad_account_id}/ad_groups/analytics",
-  "notes" => "Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+  "notes" => "Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
   "parameters" => [
     {
       "name" => "start_date",
@@ -54,7 +54,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/analytics', {
     },
     {
       "name" => "engagement_window_days",
-      "description" => "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.",
+      "description" => "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.",
       "dataType" => "Integer",
       "allowableValues" => "[0, 1, 7, 14, 30, 60]",
       "defaultValue" => "30",
@@ -74,6 +74,21 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/analytics', {
       "dataType" => "String",
       "allowableValues" => "[TIME_OF_AD_ACTION, TIME_OF_CONVERSION]",
       "defaultValue" => "'TIME_OF_AD_ACTION'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "aggregate_report_rows",
+      "description" => "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
+      "paramType" => "query",
+    },
+    {
+      "name" => "reporting_timezone",
+      "description" => "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.",
+      "dataType" => "ReportingTimeZone",
+      "allowableValues" => "[PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE]",
       "paramType" => "query",
     },
     {
@@ -124,7 +139,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/ad_groups', {
   "nickname" => "ad_groups/create",
   "responseClass" => "AdGroupArrayResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/ad_groups",
-  "notes" => "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.",
+  "notes" => "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. ",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -152,7 +167,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}'
   "nickname" => "ad_groups/get",
   "responseClass" => "AdGroupResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}",
-  "notes" => "Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.",
+  "notes" => "Get a specific ad group given the ad group ID.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -281,7 +296,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/bid_floor', {
   "nickname" => "ad_groups_bid_floor/get",
   "responseClass" => "BidFloor",
   "endpoint" => "/ad_accounts/{ad_account_id}/bid_floor",
-  "notes" => "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.",
+  "notes" => "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -309,7 +324,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_anal
   "nickname" => "ad_groups_targeting_analytics/get",
   "responseClass" => "MetricsResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
-  "notes" => "Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+  "notes" => "Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
   "parameters" => [
     {
       "name" => "ad_group_ids",
@@ -334,8 +349,8 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_anal
     },
     {
       "name" => "targeting_types",
-      "description" => "Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.",
-      "dataType" => "Array<AdsAnalyticsTargetingType>",
+      "description" => "Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.",
+      "dataType" => "Array<AdsAnalyticsAdGroupTargetingType>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },
@@ -363,7 +378,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_anal
     },
     {
       "name" => "engagement_window_days",
-      "description" => "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.",
+      "description" => "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.",
       "dataType" => "Integer",
       "allowableValues" => "[0, 1, 7, 14, 30, 60]",
       "defaultValue" => "30",
@@ -388,8 +403,15 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_anal
     {
       "name" => "attribution_types",
       "description" => "List of types of attribution for the conversion report",
-      "dataType" => "ConversionReportAttributionType",
-      "allowableValues" => "[INDIVIDUAL, HOUSEHOLD]",
+      "dataType" => "Array<ConversionReportAttributionType>",
+      "collectionFormat" => "csv",
+      "paramType" => "query",
+    },
+    {
+      "name" => "reporting_timezone",
+      "description" => "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.",
+      "dataType" => "ReportingTimeZone",
+      "allowableValues" => "[PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE]",
       "paramType" => "query",
     },
     {

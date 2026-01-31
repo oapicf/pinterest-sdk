@@ -15,31 +15,13 @@ import org.openapitools.model.Permissions;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetAccessRequestBodyAssetRequestsInner   {
-  @JsonProperty("partner_id")
-  private String partnerId;
-
   @JsonProperty("asset_id_to_permissions")
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
-  /**
-   * Unique identifier of a business partner to request asset access to.
-   **/
-  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
   @JsonProperty("partner_id")
-  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
+  private String partnerId;
 
   /**
    * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
@@ -59,6 +41,24 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
     this.assetIdToPermissions = assetIdToPermissions;
   }
 
+  /**
+   * Unique identifier of a business partner to request asset access to.
+   **/
+  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
+  @JsonProperty("partner_id")
+  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -69,13 +69,13 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
       return false;
     }
     CreateAssetAccessRequestBodyAssetRequestsInner createAssetAccessRequestBodyAssetRequestsInner = (CreateAssetAccessRequestBodyAssetRequestsInner) o;
-    return Objects.equals(partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId) &&
-        Objects.equals(assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions);
+    return Objects.equals(assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions) &&
+        Objects.equals(partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, partnerId);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetAccessRequestBodyAssetRequestsInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
+ * @param creationUnderscoretime Salesforce insertion order creation time
  * @param pinUnderscoreorderUnderscoreid Salesforce order id
  * @param status Salesforce insertion order status
- * @param creationUnderscoretime Salesforce insertion order creation time
  */
-case class SSIOInsertionOrderStatusResponse(pinUnderscoreorderUnderscoreid: Option[String],
-                status: Option[String],
-                creationUnderscoretime: Option[String]
+case class SSIOInsertionOrderStatusResponse(creationUnderscoretime: Option[String],
+                pinUnderscoreorderUnderscoreid: Option[String],
+                status: Option[String]
                 )
 
 object SSIOInsertionOrderStatusResponse {

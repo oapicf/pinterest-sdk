@@ -34,7 +34,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 
 ## keywords_slash_get
 
-> models::KeywordsGet200Response keywords_slash_get(ad_account_id, campaign_id, ad_group_id, match_types, page_size, bookmark)
+> models::KeywordsGet200Response keywords_slash_get(ad_account_id, campaign_id, ad_group_id, ad_group_ids, match_types, page_size, bookmark)
 Get keywords
 
 <p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
@@ -90,8 +90,9 @@ Name | Type | Description  | Required | Notes
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **campaign_id** | Option<**String**> | Campaign Id to use to filter the results. |  |
 **ad_group_id** | Option<**String**> | Ad group Id. |  |
+**ad_group_ids** | Option<[**Vec<String>**](String.md)> | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. |  |
 **match_types** | Option<[**Vec<models::MatchType>**](models::MatchType.md)> | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 
 ### Return type
@@ -100,7 +101,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -143,7 +144,7 @@ Name | Type | Description  | Required | Notes
 
 ## trending_keywords_slash_list
 
-> models::TrendingKeywordsResponse trending_keywords_slash_list(region, trend_type, interests, genders, ages, include_keywords, normalize_against_group, limit)
+> models::TrendingKeywordsResponse trending_keywords_slash_list(region, trend_type, interests, genders, ages, include_keywords, normalize_against_group, limit, include_prediction, include_demographics)
 List trending keywords
 
 <p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>. 
@@ -161,6 +162,8 @@ Name | Type | Description  | Required | Notes
 **include_keywords** | Option<[**Vec<String>**](String.md)> | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied. |  |
 **normalize_against_group** | Option<**bool**> | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. |  |[default to false]
 **limit** | Option<**i32**> | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. |  |[default to 50]
+**include_prediction** | Option<**bool**> | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. |  |[default to false]
+**include_demographics** | Option<**bool**> | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. |  |[default to false]
 
 ### Return type
 

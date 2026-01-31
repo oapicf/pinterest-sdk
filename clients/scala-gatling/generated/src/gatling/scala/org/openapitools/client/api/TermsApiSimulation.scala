@@ -87,8 +87,8 @@ class TermsApiSimulation extends Simulation {
         .feed(terms_suggested/listQUERYFeeder)
         .exec(http("termsSuggestedList")
         .httpRequest("GET","/terms/suggested")
-        .queryParam("limit","${limit}")
         .queryParam("term","${term}")
+        .queryParam("limit","${limit}")
 )
 
     // Run scntermsSuggestedList with warm up and reach a constant rate for entire duration

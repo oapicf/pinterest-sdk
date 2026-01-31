@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AudienceDemographics`
 --
-SELECT `ages`, `genders`, `devices`, `metros`, `countries` FROM `AudienceDemographics` WHERE 1;
+SELECT `ages`, `countries`, `devices`, `genders`, `metros` FROM `AudienceDemographics` WHERE 1;
 
 --
 -- INSERT template for table `AudienceDemographics`
 --
-INSERT INTO `AudienceDemographics`(`ages`, `genders`, `devices`, `metros`, `countries`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `AudienceDemographics`(`ages`, `countries`, `devices`, `genders`, `metros`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AudienceDemographics`
 --
-UPDATE `AudienceDemographics` SET `ages` = ?, `genders` = ?, `devices` = ?, `metros` = ?, `countries` = ? WHERE 1;
+UPDATE `AudienceDemographics` SET `ages` = ?, `countries` = ?, `devices` = ?, `genders` = ?, `metros` = ? WHERE 1;
 
 --
 -- DELETE template for table `AudienceDemographics`

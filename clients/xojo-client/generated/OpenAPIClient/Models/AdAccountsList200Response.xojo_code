@@ -2,15 +2,12 @@
 Protected Class AdAccountsList200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Ad accounts
-		#tag EndNote
-		items() As OpenAPIClient.Models.AdAccount
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		items() As OpenAPIClient.Models.AdAccount
 	#tag EndProperty
 
 
@@ -51,19 +48,19 @@ Protected Class AdAccountsList200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdAccount"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdAccount"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

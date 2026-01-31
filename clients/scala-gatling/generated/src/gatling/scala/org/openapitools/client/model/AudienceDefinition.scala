@@ -5,16 +5,14 @@ package org.openapitools.client.model
 case class AudienceDefinition (
     /* Generation date */
     _date: Option[String],
-    /* Generated audience type to request. */
-    _type: Option[String],
-    /* Generated audience scope to request. */
-    _scope: Option[String]
+    _scope: Option[String],
+    _type: Option[String]
 )
 object AudienceDefinition {
-    def toStringBody(var_date: Object, var_type: Object, var_scope: Object) =
+    def toStringBody(var_date: Object, var_scope: Object, var_type: Object) =
         s"""
         | {
-        | "date":$var_date,"type":$var_type,"scope":$var_scope
+        | "date":$var_date,"scope":$var_scope,"type":$var_type
         | }
         """.stripMargin
 }

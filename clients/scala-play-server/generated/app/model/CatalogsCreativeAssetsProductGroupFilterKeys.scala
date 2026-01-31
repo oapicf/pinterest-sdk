@@ -5,14 +5,14 @@ import play.api.libs.json._
 /**
   * Represents the Swagger definition for CatalogsCreativeAssetsProductGroupFilterKeys.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsCreativeAssetsProductGroupFilterKeys(
   CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
-  CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+  CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
+  CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
   GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria,
@@ -20,7 +20,8 @@ case class CatalogsCreativeAssetsProductGroupFilterKeys(
   GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
-  MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+  MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
+  TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 )
 
 object CatalogsCreativeAssetsProductGroupFilterKeys {

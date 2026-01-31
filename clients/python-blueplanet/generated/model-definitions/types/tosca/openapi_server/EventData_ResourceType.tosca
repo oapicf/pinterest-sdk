@@ -1,0 +1,87 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EventData"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EventData"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Currency = openapi_server.resourceTypes.Currency
+  LineItem = openapi_server.resourceTypes.LineItem
+}
+resourceTypes {
+
+  EventData {
+    title = EventData
+    description = EventData
+    derivedFrom = Root
+    properties {
+        currency {
+          type = Currency
+          description = "Currency. For example, &#39;USD&#39;."
+          optional = false
+        }
+        lead_type {
+          type =  string
+          description = "Promotion code. For example, &#39;Newsletter&#39;."
+          optional = false
+        }
+        line_items {
+          type = LineItem
+          description = ""
+          optional = false
+        }
+        order_id {
+          type =  string
+          description = "Order ID. For example, &#39;X-151481&#39;."
+          optional = false
+        }
+        order_quantity {
+          type =  integer
+          description = "Order quantity. For example, 1."
+          optional = false
+        }
+        page_name {
+          type =  string
+          description = "Page name. For example, &#39;Our Favorite Pins on Pinterest&#39;."
+          optional = false
+        }
+        promo_code {
+          type =  string
+          description = "Promotion code. For example, &#39;WINTER10&#39;."
+          optional = false
+        }
+        _property {
+          type =  string
+          description = "Property. For example, &#39;Athleta&#39;."
+          optional = false
+        }
+        search_query {
+          type =  string
+          description = "Search query string. For example, &#39;boots&#39;."
+          optional = false
+        }
+        value {
+          type =  string
+          description = "Product value. For example, &#39;199.98&#39;."
+          optional = false
+        }
+        video_title {
+          type =  string
+          description = "Video title. For example, &#39;How to style your Parker Boots&#39;."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  EventData {
+    title = EventData
+    description = EventData
+    implements = openapi_server.resourceTypes.EventData
+
+  }
+}

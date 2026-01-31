@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &DeletePartnerAssetsResult{}
 type DeletePartnerAssetsResult struct {
 	// Unique identifier of a business asset.
 	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	AssetType *string `json:"asset_type,omitempty"`
-	// Permission levels member or partner has on an asset.
-	Permissions []string `json:"permissions,omitempty"`
 	// If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
 	IsSharedPartner *bool `json:"is_shared_partner,omitempty"`
 	// Unique identifier of a business partner.
 	PartnerId *string `json:"partner_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Permission levels member or partner has on an asset.
+	Permissions []string `json:"permissions,omitempty"`
 }
 
 // NewDeletePartnerAssetsResult instantiates a new DeletePartnerAssetsResult object
@@ -113,38 +113,6 @@ func (o *DeletePartnerAssetsResult) SetAssetType(v string) {
 	o.AssetType = &v
 }
 
-// GetPermissions returns the Permissions field value if set, zero value otherwise.
-func (o *DeletePartnerAssetsResult) GetPermissions() []string {
-	if o == nil || IsNil(o.Permissions) {
-		var ret []string
-		return ret
-	}
-	return o.Permissions
-}
-
-// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeletePartnerAssetsResult) GetPermissionsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Permissions) {
-		return nil, false
-	}
-	return o.Permissions, true
-}
-
-// HasPermissions returns a boolean if a field has been set.
-func (o *DeletePartnerAssetsResult) HasPermissions() bool {
-	if o != nil && !IsNil(o.Permissions) {
-		return true
-	}
-
-	return false
-}
-
-// SetPermissions gets a reference to the given []string and assigns it to the Permissions field.
-func (o *DeletePartnerAssetsResult) SetPermissions(v []string) {
-	o.Permissions = v
-}
-
 // GetIsSharedPartner returns the IsSharedPartner field value if set, zero value otherwise.
 func (o *DeletePartnerAssetsResult) GetIsSharedPartner() bool {
 	if o == nil || IsNil(o.IsSharedPartner) {
@@ -209,6 +177,38 @@ func (o *DeletePartnerAssetsResult) SetPartnerId(v string) {
 	o.PartnerId = &v
 }
 
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *DeletePartnerAssetsResult) GetPermissions() []string {
+	if o == nil || IsNil(o.Permissions) {
+		var ret []string
+		return ret
+	}
+	return o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeletePartnerAssetsResult) GetPermissionsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *DeletePartnerAssetsResult) HasPermissions() bool {
+	if o != nil && !IsNil(o.Permissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []string and assigns it to the Permissions field.
+func (o *DeletePartnerAssetsResult) SetPermissions(v []string) {
+	o.Permissions = v
+}
+
 func (o DeletePartnerAssetsResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -225,14 +225,14 @@ func (o DeletePartnerAssetsResult) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AssetType) {
 		toSerialize["asset_type"] = o.AssetType
 	}
-	if !IsNil(o.Permissions) {
-		toSerialize["permissions"] = o.Permissions
-	}
 	if !IsNil(o.IsSharedPartner) {
 		toSerialize["is_shared_partner"] = o.IsSharedPartner
 	}
 	if !IsNil(o.PartnerId) {
 		toSerialize["partner_id"] = o.PartnerId
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
 	}
 	return toSerialize, nil
 }

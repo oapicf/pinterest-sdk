@@ -6,28 +6,28 @@
 
 Name | Type
 ------------ | -------------
-`salesforceOrderLineId` | string
+`acceptedTermsId` | string
+`acceptedTermsTime` | string
 `adsManagerOrderLineId` | string
-`pinOrderId` | string
-`lastModifiedDateTime` | string
-`startDate` | Date
-`endDate` | Date
+`agencyLink` | string
 `billToCompanyName` | string
+`billingContactEmail` | string
 `billingContactFirstname` | string
 `billingContactLastname` | string
-`billingContactEmail` | string
+`budgetAmount` | number
+`currencyInfo` | [Currency](Currency.md)
+`endDate` | Date
+`estimatedMonthlySpend` | number
+`lastModifiedDateTime` | string
 `mediaContactEmail` | string
 `mediaContactFirstname` | string
 `mediaContactLastname` | string
-`currencyInfo` | [Currency](Currency.md)
-`agencyLink` | string
-`poNumber` | string
 `orderName` | string
+`pinOrderId` | string
 `pmpName` | string
-`acceptedTermsId` | string
-`acceptedTermsTime` | string
-`budgetAmount` | number
-`estimatedMonthlySpend` | number
+`poNumber` | string
+`salesforceOrderLineId` | string
+`startDate` | Date
 
 ## Example
 
@@ -36,28 +36,28 @@ import type { SSIOOrderLine } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "salesforceOrderLineId": null,
+  "acceptedTermsId": null,
+  "acceptedTermsTime": 2020-10-06T13:07:04.000Z,
   "adsManagerOrderLineId": null,
-  "pinOrderId": null,
-  "lastModifiedDateTime": 2020-10-06T13:07:04.000Z,
-  "startDate": Thu Mar 01 00:00:00 UTC 2018,
-  "endDate": Mon Oct 05 00:00:00 UTC 2020,
+  "agencyLink": ,
   "billToCompanyName": Home Depot Inc.,
+  "billingContactEmail": mail@test.com,
   "billingContactFirstname": Mary,
   "billingContactLastname": Smith,
-  "billingContactEmail": mail@test.com,
+  "budgetAmount": 5000000,
+  "currencyInfo": null,
+  "endDate": Mon Oct 05 00:00:00 UTC 2020,
+  "estimatedMonthlySpend": null,
+  "lastModifiedDateTime": 2020-10-06T13:07:04.000Z,
   "mediaContactEmail": mail@test.com,
   "mediaContactFirstname": John,
   "mediaContactLastname": Doe,
-  "currencyInfo": null,
-  "agencyLink": ,
-  "poNumber": null,
   "orderName": null,
+  "pinOrderId": null,
   "pmpName": null,
-  "acceptedTermsId": null,
-  "acceptedTermsTime": 2020-10-06T13:07:04.000Z,
-  "budgetAmount": 5000000,
-  "estimatedMonthlySpend": null,
+  "poNumber": null,
+  "salesforceOrderLineId": null,
+  "startDate": Thu Mar 01 00:00:00 UTC 2018,
 } satisfies SSIOOrderLine
 
 console.log(example)

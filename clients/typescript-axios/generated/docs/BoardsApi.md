@@ -334,9 +334,9 @@ const { status, data } = await apiInstance.boardSectionsUpdate(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boardsCreate**
-> Board boardsCreate(board)
+> Board boardsCreate(boardCreate)
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -344,17 +344,17 @@ Create a board owned by the \"operation user_account\". Optional: Business Acces
 import {
     BoardsApi,
     Configuration,
-    Board
+    BoardCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new BoardsApi(configuration);
 
-let board: Board; //Create a board using a single board json object.
+let boardCreate: BoardCreate; //
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.boardsCreate(
-    board,
+    boardCreate,
     adAccountId
 );
 ```
@@ -363,7 +363,7 @@ const { status, data } = await apiInstance.boardsCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **board** | **Board**| Create a board using a single board json object. | |
+| **boardCreate** | **BoardCreate**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
 
@@ -373,7 +373,7 @@ const { status, data } = await apiInstance.boardsCreate(
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -384,16 +384,21 @@ const { status, data } = await apiInstance.boardsCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | response |  -  |
-|**400** | The board name is invalid or duplicated. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boardsDelete**
 > boardsDelete()
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -406,7 +411,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new BoardsApi(configuration);
 
-let boardId: string; //Unique identifier of a board. (default to undefined)
+let boardId: string; // (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.boardsDelete(
@@ -419,7 +424,7 @@ const { status, data } = await apiInstance.boardsDelete(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | [**string**] | Unique identifier of a board. | defaults to undefined|
+| **boardId** | [**string**] |  | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
 
@@ -440,19 +445,20 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Board deleted successfully |  -  |
-|**403** | Not authorized to delete the board. |  -  |
-|**404** | Board not found. |  -  |
-|**409** | Could not get exclusive access to delete the board. |  -  |
-|**429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-|**0** | Unexpected error |  -  |
+|**204** | Resource deleted successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boardsGet**
 > Board boardsGet()
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -465,7 +471,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new BoardsApi(configuration);
 
-let boardId: string; //Unique identifier of a board. (default to undefined)
+let boardId: string; // (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.boardsGet(
@@ -478,7 +484,7 @@ const { status, data } = await apiInstance.boardsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | [**string**] | Unique identifier of a board. | defaults to undefined|
+| **boardId** | [**string**] |  | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
 
@@ -499,16 +505,20 @@ const { status, data } = await apiInstance.boardsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**404** | Board not found. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boardsList**
 > BoardsList200Response boardsList()
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 
@@ -522,15 +532,15 @@ const configuration = new Configuration();
 const apiInstance = new BoardsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
+let privacy: BoardPrivacyFilter; //The privacy level of the board (optional) (default to undefined)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
-let privacy: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET'; //Privacy setting for a board. (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 const { status, data } = await apiInstance.boardsList(
     adAccountId,
+    privacy,
     bookmark,
-    pageSize,
-    privacy
+    pageSize
 );
 ```
 
@@ -539,9 +549,9 @@ const { status, data } = await apiInstance.boardsList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
+| **privacy** | **BoardPrivacyFilter** | The privacy level of the board | (optional) defaults to undefined|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
-| **privacy** | [**&#39;ALL&#39; | &#39;PROTECTED&#39; | &#39;PUBLIC&#39; | &#39;SECRET&#39; | &#39;PUBLIC_AND_SECRET&#39;**]**Array<&#39;ALL&#39; &#124; &#39;PROTECTED&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;SECRET&#39; &#124; &#39;PUBLIC_AND_SECRET&#39;>** | Privacy setting for a board. | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 
 
 ### Return type
@@ -561,8 +571,13 @@ const { status, data } = await apiInstance.boardsList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -585,9 +600,9 @@ const apiInstance = new BoardsApi(configuration);
 let boardId: string; //Unique identifier of a board. (default to undefined)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
 let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
-let creativeTypes: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>; //Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional) (default to undefined)
+let creativeTypes: Array<CreativeType>; //Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional) (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
-let pinMetrics: boolean; //Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+let pinMetrics: boolean; //Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
 const { status, data } = await apiInstance.boardsListPins(
     boardId,
@@ -606,9 +621,9 @@ const { status, data } = await apiInstance.boardsListPins(
 | **boardId** | [**string**] | Unique identifier of a board. | defaults to undefined|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
-| **creativeTypes** | **Array<&#39;REGULAR&#39; &#124; &#39;VIDEO&#39; &#124; &#39;SHOPPING&#39; &#124; &#39;CAROUSEL&#39; &#124; &#39;MAX_VIDEO&#39; &#124; &#39;SHOP_THE_PIN&#39; &#124; &#39;COLLECTION&#39; &#124; &#39;IDEA&#39;>** | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | (optional) defaults to undefined|
+| **creativeTypes** | **Array&lt;CreativeType&gt;** | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | (optional) defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
-| **pinMetrics** | [**boolean**] | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | (optional) defaults to false|
+| **pinMetrics** | [**boolean**] | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | (optional) defaults to false|
 
 
 ### Return type
@@ -635,9 +650,9 @@ const { status, data } = await apiInstance.boardsListPins(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boardsUpdate**
-> Board boardsUpdate(boardUpdate)
+> BoardWithUpdatePrivacy boardsUpdate(boardWithUpdatePrivacyUpdate)
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 
@@ -645,19 +660,19 @@ Update a board owned by the \"operating user_account\". - Optional: Business Acc
 import {
     BoardsApi,
     Configuration,
-    BoardUpdate
+    BoardWithUpdatePrivacyUpdate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new BoardsApi(configuration);
 
-let boardId: string; //Unique identifier of a board. (default to undefined)
-let boardUpdate: BoardUpdate; //Update a board.
+let boardId: string; // (default to undefined)
+let boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate; //
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.boardsUpdate(
     boardId,
-    boardUpdate,
+    boardWithUpdatePrivacyUpdate,
     adAccountId
 );
 ```
@@ -666,18 +681,18 @@ const { status, data } = await apiInstance.boardsUpdate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **boardUpdate** | **BoardUpdate**| Update a board. | |
-| **boardId** | [**string**] | Unique identifier of a board. | defaults to undefined|
+| **boardWithUpdatePrivacyUpdate** | **BoardWithUpdatePrivacyUpdate**|  | |
+| **boardId** | [**string**] |  | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
 
 ### Return type
 
-**Board**
+**BoardWithUpdatePrivacy**
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -688,11 +703,13 @@ const { status, data } = await apiInstance.boardsUpdate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**400** | Invalid board parameters. |  -  |
-|**403** | Not authorized to update the board. |  -  |
-|**429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

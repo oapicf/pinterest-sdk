@@ -8,20 +8,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagListResponse   {
   @JsonProperty("items")
-  private List<ConversionTagResponse> items = null;
+  private List<ConversionTag> items = null;
 
   /**
    **/
-  public ConversionTagListResponse items(List<ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<ConversionTag> items) {
     this.items = items;
     return this;
   }
@@ -29,10 +29,10 @@ public class ConversionTagListResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<ConversionTagResponse> getItems() {
+  public List<ConversionTag> getItems() {
     return items;
   }
-  public void setItems(List<ConversionTagResponse> items) {
+  public void setItems(List<ConversionTag> items) {
     this.items = items;
   }
 

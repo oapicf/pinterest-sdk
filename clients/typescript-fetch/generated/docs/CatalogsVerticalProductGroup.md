@@ -6,20 +6,20 @@
 
 Name | Type
 ------------ | -------------
-`catalogType` | string
-`id` | string
-`name` | string
-`description` | string
-`filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
-`isFeatured` | boolean
-`type` | [CatalogsProductGroupType](CatalogsProductGroupType.md)
-`status` | [CatalogsProductGroupStatus](CatalogsProductGroupStatus.md)
-`createdAt` | number
-`updatedAt` | number
 `catalogId` | string
-`feedId` | string
+`catalogType` | string
 `country` | string
+`createdAt` | number
+`description` | string
+`feedId` | string
+`filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
+`id` | string
+`isFeatured` | boolean
 `locale` | string
+`name` | string
+`status` | [CatalogsProductGroupStatus](CatalogsProductGroupStatus.md)
+`type` | [CatalogsHotelProductGroupType](CatalogsHotelProductGroupType.md)
+`updatedAt` | number
 
 ## Example
 
@@ -28,20 +28,20 @@ import type { CatalogsVerticalProductGroup } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "catalogType": null,
-  "id": 443727193917,
-  "name": Most Popular,
-  "description": null,
-  "filters": null,
-  "isFeatured": null,
-  "type": null,
-  "status": null,
-  "createdAt": 1621350033000,
-  "updatedAt": 1622742155000,
   "catalogId": null,
-  "feedId": 2680059592705,
+  "catalogType": null,
   "country": null,
+  "createdAt": 1621350033000,
+  "description": null,
+  "feedId": 2680059592705,
+  "filters": null,
+  "id": 443727193917,
+  "isFeatured": null,
   "locale": null,
+  "name": Most Popular,
+  "status": null,
+  "type": null,
+  "updatedAt": 1622742155000,
 } satisfies CatalogsVerticalProductGroup
 
 console.log(example)

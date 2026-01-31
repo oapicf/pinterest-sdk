@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ConversionTagResponse
+open OpenAPI.Model.ConversionTag
 
 module ConversionTagListResponse =
 
@@ -10,6 +10,6 @@ module ConversionTagListResponse =
 
 
   type ConversionTagListResponse = {
-    Items : ConversionTagResponse[];
+    Items : ConversionTag[];
   }
   //#endregion

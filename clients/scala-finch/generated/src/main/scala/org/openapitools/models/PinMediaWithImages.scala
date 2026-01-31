@@ -6,16 +6,15 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.ImageMetadata
-import org.openapitools.models.PinMedia
 import scala.collection.immutable.Seq
 
 /**
  * Pin with multiple images.
- * @param mediaUnderscoretype 
  * @param items 
+ * @param mediaUnderscoretype 
  */
-case class PinMediaWithImages(mediaUnderscoretype: Option[String],
-                items: Option[Seq[ImageMetadata]]
+case class PinMediaWithImages(items: Option[Seq[ImageMetadata]],
+                mediaUnderscoretype: String
                 )
 
 object PinMediaWithImages {

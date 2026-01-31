@@ -16,42 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateAssetAccessRequestBodyAssetRequestsInner  {
   
  /**
-  * Unique identifier of a business partner to request asset access to.
-  */
-  @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
-  private String partnerId;
-
- /**
   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
   */
   @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ")
   @Valid
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+
  /**
   * Unique identifier of a business partner to request asset access to.
-  * @return partnerId
   */
-  @JsonProperty("partner_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getPartnerId() {
-    return partnerId;
-  }
-
-  /**
-   * Sets the <code>partnerId</code> property.
-   */
- public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
-  /**
-   * Sets the <code>partnerId</code> property.
-   */
-  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
+  @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
+  private String partnerId;
  /**
   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
   * @return assetIdToPermissions
@@ -85,6 +60,31 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner  {
     return this;
   }
 
+ /**
+  * Unique identifier of a business partner to request asset access to.
+  * @return partnerId
+  */
+  @JsonProperty("partner_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getPartnerId() {
+    return partnerId;
+  }
+
+  /**
+   * Sets the <code>partnerId</code> property.
+   */
+ public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
+  /**
+   * Sets the <code>partnerId</code> property.
+   */
+  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -95,13 +95,13 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner  {
       return false;
     }
     CreateAssetAccessRequestBodyAssetRequestsInner createAssetAccessRequestBodyAssetRequestsInner = (CreateAssetAccessRequestBodyAssetRequestsInner) o;
-    return Objects.equals(this.partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId) &&
-        Objects.equals(this.assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions);
+    return Objects.equals(this.assetIdToPermissions, createAssetAccessRequestBodyAssetRequestsInner.assetIdToPermissions) &&
+        Objects.equals(this.partnerId, createAssetAccessRequestBodyAssetRequestsInner.partnerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetIdToPermissions);
+    return Objects.hash(assetIdToPermissions, partnerId);
   }
 
   @Override
@@ -109,8 +109,8 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetAccessRequestBodyAssetRequestsInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,8 +23,8 @@ IntegrationLogClientRequest::~IntegrationLogClientRequest()
 void
 IntegrationLogClientRequest::__init()
 {
-	//method = std::string();
 	//host = std::string();
+	//method = std::string();
 	//path = std::string();
 	//new std::map()std::map> request_headers;
 	//new std::map()std::map> response_headers;
@@ -34,15 +34,15 @@ IntegrationLogClientRequest::__init()
 void
 IntegrationLogClientRequest::__cleanup()
 {
-	//if(method != NULL) {
-	//
-	//delete method;
-	//method = NULL;
-	//}
 	//if(host != NULL) {
 	//
 	//delete host;
 	//host = NULL;
+	//}
+	//if(method != NULL) {
+	//
+	//delete method;
+	//method = NULL;
 	//}
 	//if(path != NULL) {
 	//
@@ -72,17 +72,6 @@ IntegrationLogClientRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *methodKey = "method";
-	node = json_object_get_member(pJsonObject, methodKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&method, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *hostKey = "host";
 	node = json_object_get_member(pJsonObject, hostKey);
 	if (node !=NULL) {
@@ -90,6 +79,17 @@ IntegrationLogClientRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&host, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *methodKey = "method";
+	node = json_object_get_member(pJsonObject, methodKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&method, node, "std::string", "");
 		} else {
 			
 		}
@@ -153,15 +153,6 @@ IntegrationLogClientRequest::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getMethod();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *methodKey = "method";
-	json_object_set_member(pJsonObject, methodKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getHost();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -170,6 +161,15 @@ IntegrationLogClientRequest::toJson()
 	}
 	const gchar *hostKey = "host";
 	json_object_set_member(pJsonObject, hostKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMethod();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *methodKey = "method";
+	json_object_set_member(pJsonObject, methodKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getPath();
 		node = converttoJson(&obj, "std::string", "");
@@ -235,18 +235,6 @@ IntegrationLogClientRequest::toJson()
 }
 
 std::string
-IntegrationLogClientRequest::getMethod()
-{
-	return method;
-}
-
-void
-IntegrationLogClientRequest::setMethod(std::string  method)
-{
-	this->method = method;
-}
-
-std::string
 IntegrationLogClientRequest::getHost()
 {
 	return host;
@@ -256,6 +244,18 @@ void
 IntegrationLogClientRequest::setHost(std::string  host)
 {
 	this->host = host;
+}
+
+std::string
+IntegrationLogClientRequest::getMethod()
+{
+	return method;
+}
+
+void
+IntegrationLogClientRequest::setMethod(std::string  method)
+{
+	this->method = method;
 }
 
 std::string

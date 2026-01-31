@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ import (
 // PinMediaMetadata struct for PinMediaMetadata
 type PinMediaMetadata struct {
 	ImageMetadata *ImageMetadata
-	VideoMetadata *VideoMetadata
+	VideoMetadataWithItemType *VideoMetadataWithItemType
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -39,17 +39,17 @@ func (dst *PinMediaMetadata) UnmarshalJSON(data []byte) error {
 		dst.ImageMetadata = nil
 	}
 
-	// try to unmarshal JSON data into VideoMetadata
-	err = json.Unmarshal(data, &dst.VideoMetadata);
+	// try to unmarshal JSON data into VideoMetadataWithItemType
+	err = json.Unmarshal(data, &dst.VideoMetadataWithItemType);
 	if err == nil {
-		jsonVideoMetadata, _ := json.Marshal(dst.VideoMetadata)
-		if string(jsonVideoMetadata) == "{}" { // empty struct
-			dst.VideoMetadata = nil
+		jsonVideoMetadataWithItemType, _ := json.Marshal(dst.VideoMetadataWithItemType)
+		if string(jsonVideoMetadataWithItemType) == "{}" { // empty struct
+			dst.VideoMetadataWithItemType = nil
 		} else {
-			return nil // data stored in dst.VideoMetadata, return on the first match
+			return nil // data stored in dst.VideoMetadataWithItemType, return on the first match
 		}
 	} else {
-		dst.VideoMetadata = nil
+		dst.VideoMetadataWithItemType = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(PinMediaMetadata)")
@@ -61,8 +61,8 @@ func (src PinMediaMetadata) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ImageMetadata)
 	}
 
-	if src.VideoMetadata != nil {
-		return json.Marshal(&src.VideoMetadata)
+	if src.VideoMetadataWithItemType != nil {
+		return json.Marshal(&src.VideoMetadataWithItemType)
 	}
 
 	return nil, nil // no data in anyOf schemas

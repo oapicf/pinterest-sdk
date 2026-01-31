@@ -10,8 +10,8 @@ import org.openapitools.model.UserBusinessRoleBinding;
 
 @Canonical
 class GetBusinessEmployers200Response {
-    /* List of employers. */
-    List<UserBusinessRoleBinding> items = new ArrayList<>()
     
     String bookmark
+    /* List of employers. */
+    List<UserBusinessRoleBinding> items = new ArrayList<>()
 }

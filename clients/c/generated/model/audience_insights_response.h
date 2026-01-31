@@ -23,22 +23,22 @@ typedef struct audience_insights_response_t audience_insights_response_t;
 
 typedef struct audience_insights_response_t {
     list_t *categories; //nonprimitive container
-    struct audience_demographics_t *demographics; //model
-    pinterest_rest_api_audience_insight_type__e type; //referenced enum
     char *date; // string
+    struct audience_demographics_t *demographics; //model
     int size; //numeric
     int size_is_upper_bound; //boolean
+    pinterest_rest_api_audience_insight_type__e type; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_insights_response_t;
 
 __attribute__((deprecated)) audience_insights_response_t *audience_insights_response_create(
     list_t *categories,
-    audience_demographics_t *demographics,
-    pinterest_rest_api_audience_insight_type__e type,
     char *date,
+    audience_demographics_t *demographics,
     int size,
-    int size_is_upper_bound
+    int size_is_upper_bound,
+    pinterest_rest_api_audience_insight_type__e type
 );
 
 void audience_insights_response_free(audience_insights_response_t *audience_insights_response);

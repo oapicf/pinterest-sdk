@@ -10,18 +10,18 @@ The class is defined in **[IntegrationRequestPatch.java](../../src/main/java/org
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**connectedMerchantId** | `String` |  |  [optional property]
+**additionalId1** | `String` |  |  [optional property]
 **connectedAdvertiserId** | `String` |  |  [optional property]
 **connectedLbaId** | `String` |  |  [optional property]
+**connectedMerchantId** | `String` |  |  [optional property]
 **connectedTagId** | `String` |  |  [optional property]
 **partnerAccessToken** | `String` |  |  [optional property]
-**partnerRefreshToken** | `String` |  |  [optional property]
-**partnerPrimaryEmail** | `String` |  |  [optional property]
 **partnerAccessTokenExpiry** | `BigDecimal` |  |  [optional property]
+**partnerMetadata** | `String` |  |  [optional property]
+**partnerPrimaryEmail** | `String` |  |  [optional property]
+**partnerRefreshToken** | `String` |  |  [optional property]
 **partnerRefreshTokenExpiry** | `BigDecimal` |  |  [optional property]
 **scopes** | `String` |  |  [optional property]
-**additionalId1** | `String` |  |  [optional property]
-**partnerMetadata** | `String` |  |  [optional property]
 
 
 

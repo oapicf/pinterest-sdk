@@ -1,0 +1,46 @@
+/*
+ * trending_keyword_demographics_gender_distribution.h
+ *
+ * This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
+ */
+
+#ifndef _trending_keyword_demographics_gender_distribution_H_
+#define _trending_keyword_demographics_gender_distribution_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct trending_keyword_demographics_gender_distribution_t trending_keyword_demographics_gender_distribution_t;
+
+
+// Enum GENDERDISTRIBUTION for trending_keyword_demographics_gender_distribution
+
+typedef enum  { pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_NULL = 0, pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_male, pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_female, pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_unspecified } pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_e;
+
+char* trending_keyword_demographics_gender_distribution_gender_distribution_ToString(pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_e gender_distribution);
+
+pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_e trending_keyword_demographics_gender_distribution_gender_distribution_FromString(char* gender_distribution);
+
+
+
+typedef struct trending_keyword_demographics_gender_distribution_t {
+    pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_e gender_distribution; //enum
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} trending_keyword_demographics_gender_distribution_t;
+
+__attribute__((deprecated)) trending_keyword_demographics_gender_distribution_t *trending_keyword_demographics_gender_distribution_create(
+    pinterest_rest_api_trending_keyword_demographics_gender_distribution_GENDERDISTRIBUTION_e gender_distribution
+);
+
+void trending_keyword_demographics_gender_distribution_free(trending_keyword_demographics_gender_distribution_t *trending_keyword_demographics_gender_distribution);
+
+trending_keyword_demographics_gender_distribution_t *trending_keyword_demographics_gender_distribution_parseFromJSON(cJSON *trending_keyword_demographics_gender_distributionJSON);
+
+cJSON *trending_keyword_demographics_gender_distribution_convertToJSON(trending_keyword_demographics_gender_distribution_t *trending_keyword_demographics_gender_distribution);
+
+#endif /* _trending_keyword_demographics_gender_distribution_H_ */
+

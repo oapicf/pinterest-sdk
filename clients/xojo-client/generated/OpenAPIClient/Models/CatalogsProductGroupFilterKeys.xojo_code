@@ -37,27 +37,27 @@ Protected Class CatalogsProductGroupFilterKeys
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_0 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_0 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_1 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_1 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_2 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_2 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_3 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_3 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_4 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_4 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
@@ -138,6 +138,36 @@ Protected Class CatalogsProductGroupFilterKeys
 
 	#tag Property, Flags = &h0
 		PRODUCT_GROUP As CatalogsProductGroupMultipleStringCriteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		CUSTOM_NUMBER_0 As CatalogsProductGroupUint32Criteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		CUSTOM_NUMBER_1 As CatalogsProductGroupUint32Criteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		CUSTOM_NUMBER_2 As CatalogsProductGroupUint32Criteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		CUSTOM_NUMBER_3 As CatalogsProductGroupUint32Criteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		CUSTOM_NUMBER_4 As CatalogsProductGroupUint32Criteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		TITLE_KEYWORDS As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
@@ -238,7 +268,7 @@ Protected Class CatalogsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -246,7 +276,7 @@ Protected Class CatalogsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -254,7 +284,7 @@ Protected Class CatalogsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -262,7 +292,7 @@ Protected Class CatalogsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -270,7 +300,7 @@ Protected Class CatalogsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -395,6 +425,54 @@ Protected Class CatalogsProductGroupFilterKeys
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="PRODUCT_GROUP"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupMultipleStringCriteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CUSTOM_NUMBER_0"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupUint32Criteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CUSTOM_NUMBER_1"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupUint32Criteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CUSTOM_NUMBER_2"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupUint32Criteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CUSTOM_NUMBER_3"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupUint32Criteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CUSTOM_NUMBER_4"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupUint32Criteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TITLE_KEYWORDS"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

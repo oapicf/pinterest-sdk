@@ -16,20 +16,20 @@ case class CatalogsRetailFeed (
   createdAt: OffsetDateTime,
 id: String,
 updatedAt: OffsetDateTime,
-/* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
-  name: String,
-format: CatalogsFormat,
 catalogType: CatalogsType,
 credentials: CatalogsFeedCredentials,
-/* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-  location: String,
-preferredProcessingSchedule: CatalogsFeedProcessingSchedule,
-status: CatalogsStatus,
+defaultAvailability: ProductAvailabilityType,
+defaultCountry: Country,
 defaultCurrency: NullableCurrency,
 /* The locale used within a feed for product descriptions. */
   defaultLocale: String,
-defaultCountry: Country,
-defaultAvailability: ProductAvailabilityType)
+format: CatalogsFormat,
+/* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+  location: String,
+/* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
+  name: String,
+preferredProcessingSchedule: CatalogsFeedProcessingSchedule,
+status: CatalogsStatus)
 
 object CatalogsRetailFeed {
   import DateTimeCodecs._

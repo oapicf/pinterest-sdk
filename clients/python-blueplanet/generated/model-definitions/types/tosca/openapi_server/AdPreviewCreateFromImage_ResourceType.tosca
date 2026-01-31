@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPreviewCreateFromImage"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPreviewCreateFromImage"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdPreviewCreateFromImage {
+    title = AdPreviewCreateFromImage
+    description = AdPreviewCreateFromImage
+    derivedFrom = Root
+    properties {
+        image_url {
+          type =  string
+          description = "Image URL."
+          optional = true
+        }
+        title {
+          type =  string
+          description = "Title displayed below ad."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPreviewCreateFromImage {
+    title = AdPreviewCreateFromImage
+    description = AdPreviewCreateFromImage
+    implements = openapi_server.resourceTypes.AdPreviewCreateFromImage
+
+  }
+}

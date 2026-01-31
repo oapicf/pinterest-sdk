@@ -13,6 +13,8 @@ module BulkEntityType =
   let PRODUCTGROUPEnum = "PRODUCT_GROUP"
   let ADEnum = "AD"
   let KEYWORDEnum = "KEYWORD"
+  let LABELEnum = "LABEL"
+  let SCHEDULEEnum = "SCHEDULE"
   type BulkEntityType = string
 
   //#endregion

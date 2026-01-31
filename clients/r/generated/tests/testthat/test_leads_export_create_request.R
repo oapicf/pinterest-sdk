@@ -5,12 +5,12 @@ context("Test LeadsExportCreateRequest")
 
 model_instance <- LeadsExportCreateRequest$new()
 
-test_that("start_date", {
-  # tests for the property `start_date` (character)
-  # Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+test_that("ad_id", {
+  # tests for the property `ad_id` (character)
+  # ID for the ad collecting leads
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ad_id`, "EXPECTED_RESULT")
 })
 
 test_that("end_date", {
@@ -21,10 +21,10 @@ test_that("end_date", {
   #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
 })
 
-test_that("ad_id", {
-  # tests for the property `ad_id` (character)
-  # ID for the ad collecting leads
+test_that("start_date", {
+  # tests for the property `start_date` (character)
+  # Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ad_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
 })

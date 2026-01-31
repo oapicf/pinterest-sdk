@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignCreateResponseItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignCreateResponseItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignCreateResponseData = openapi_server.resourceTypes.CampaignCreateResponseData
+  Exception = openapi_server.resourceTypes.Exception
+}
+resourceTypes {
+
+  CampaignCreateResponseItem {
+    title = CampaignCreateResponseItem
+    description = CampaignCreateResponseItem
+    derivedFrom = Root
+    properties {
+        data {
+          type = CampaignCreateResponseData
+          description = ""
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = Exception
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignCreateResponseItem {
+    title = CampaignCreateResponseItem
+    description = CampaignCreateResponseItem
+    implements = openapi_server.resourceTypes.CampaignCreateResponseItem
+
+  }
+}

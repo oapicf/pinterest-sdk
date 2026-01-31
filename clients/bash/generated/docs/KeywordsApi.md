@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -102,7 +102,7 @@ Get keywords
 ### Example
 
 ```bash
- keywordsGet ad_account_id=value  campaign_id=value  ad_group_id=value  Specify as:  match_types=value1 match_types=value2 match_types=...  page_size=value  bookmark=value
+ keywordsGet ad_account_id=value  campaign_id=value  ad_group_id=value  Specify as:  ad_group_ids=value1 ad_group_ids=value2 ad_group_ids=...  Specify as:  match_types=value1 match_types=value2 match_types=...  page_size=value  bookmark=value
 ```
 
 ### Parameters
@@ -113,8 +113,9 @@ Name | Type | Description  | Notes
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **campaignId** | **string** | Campaign Id to use to filter the results. | [optional] [default to null]
  **adGroupId** | **string** | Ad group Id. | [optional] [default to null]
+ **adGroupIds** | [**array[string]**](string.md) | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] [default to null]
  **matchTypes** | [**array[MatchType]**](MatchType.md) | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
 
 ### Return type
@@ -123,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -178,7 +179,7 @@ List trending keywords
 ### Example
 
 ```bash
- trendingKeywordsList region=value trend_type=value  Specify as:  interests=value1 interests=value2 interests=...  Specify as:  genders=value1 genders=value2 genders=...  Specify as:  ages=value1 ages=value2 ages=...  Specify as:  include_keywords=value1 include_keywords=value2 include_keywords=...  normalize_against_group=value  limit=value
+ trendingKeywordsList region=value trend_type=value  Specify as:  interests=value1 interests=value2 interests=...  Specify as:  genders=value1 genders=value2 genders=...  Specify as:  ages=value1 ages=value2 ages=...  Specify as:  include_keywords=value1 include_keywords=value2 include_keywords=...  normalize_against_group=value  limit=value  include_prediction=value  include_demographics=value
 ```
 
 ### Parameters
@@ -249,6 +250,12 @@ If unset, no keyword filtering logic is applied. | [optional] [default to null]
 By default ('false'), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br />
 If set to 'true', the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to false]
  **limit** | **integer** | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a 'limit' of 50 will return the top 50 trends. | [optional] [default to 50]
+ **includePrediction** | **boolean** | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>
+Including predicted weekly search volume data for the next 90 days.
+By default ('false'), the response will not include predicted data. | [optional] [default to false]
+ **includeDemographics** | **boolean** | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>
+Including the age and gender distribution for each keyword.
+By default ('false'), the response will not include demographics data. | [optional] [default to false]
 
 ### Return type
 

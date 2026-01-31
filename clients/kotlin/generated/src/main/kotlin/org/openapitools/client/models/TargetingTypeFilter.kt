@@ -15,7 +15,6 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AdsAnalyticsTargetingType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,18 +22,43 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  */
 
 
 data class TargetingTypeFilter (
 
-    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
+    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
     @Json(name = "targeting_types")
-    val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>? = null
+    val targetingTypes: kotlin.collections.List<TargetingTypeFilter.TargetingTypes>? = null
 
 ) {
 
+    /**
+     * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+     *
+     * Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,MEDIA_TYPE,AGE_BUCKET_AND_GENDER,AUDIENCE_MULTIPLIER,CREATIVE_ENHANCEMENTS,LOCAL_ADS_STORE_CODE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class TargetingTypes(val value: kotlin.String) {
+        @Json(name = "KEYWORD") KEYWORD("KEYWORD"),
+        @Json(name = "APPTYPE") APPTYPE("APPTYPE"),
+        @Json(name = "GENDER") GENDER("GENDER"),
+        @Json(name = "LOCATION") LOCATION("LOCATION"),
+        @Json(name = "PLACEMENT") PLACEMENT("PLACEMENT"),
+        @Json(name = "COUNTRY") COUNTRY("COUNTRY"),
+        @Json(name = "TARGETED_INTEREST") TARGETED_INTEREST("TARGETED_INTEREST"),
+        @Json(name = "PINNER_INTEREST") PINNER_INTEREST("PINNER_INTEREST"),
+        @Json(name = "AUDIENCE_INCLUDE") AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
+        @Json(name = "GEO") GEO("GEO"),
+        @Json(name = "AGE_BUCKET") AGE_BUCKET("AGE_BUCKET"),
+        @Json(name = "REGION") REGION("REGION"),
+        @Json(name = "MEDIA_TYPE") MEDIA_TYPE("MEDIA_TYPE"),
+        @Json(name = "AGE_BUCKET_AND_GENDER") AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+        @Json(name = "AUDIENCE_MULTIPLIER") AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER"),
+        @Json(name = "CREATIVE_ENHANCEMENTS") CREATIVE_ENHANCEMENTS("CREATIVE_ENHANCEMENTS"),
+        @Json(name = "LOCAL_ADS_STORE_CODE") LOCAL_ADS_STORE_CODE("LOCAL_ADS_STORE_CODE");
+    }
 
 }
 

@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class RelatedTermsRelatedTermsListInner (
-    _term: Option[String],
-    _relatedTerms: Option[List[String]]
+    _relatedTerms: Option[List[String]],
+    _term: Option[String]
 )
 object RelatedTermsRelatedTermsListInner {
-    def toStringBody(var_term: Object, var_relatedTerms: Object) =
+    def toStringBody(var_relatedTerms: Object, var_term: Object) =
         s"""
         | {
-        | "term":$var_term,"relatedTerms":$var_relatedTerms
+        | "relatedTerms":$var_relatedTerms,"term":$var_term
         | }
         """.stripMargin
 }

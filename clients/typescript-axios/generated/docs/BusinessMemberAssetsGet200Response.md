@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;AssetIdPermissions&gt;**](AssetIdPermissions.md) | List asset permissions the given member was granted. | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;AssetIdPermissions&gt;**](AssetIdPermissions.md) | List asset permissions the given member was granted. | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { BusinessMemberAssetsGet200Response } from './api';
 
 const instance: BusinessMemberAssetsGet200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

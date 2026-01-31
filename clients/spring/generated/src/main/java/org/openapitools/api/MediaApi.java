@@ -5,12 +5,12 @@
  */
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.Media;
 import org.openapitools.model.MediaList200Response;
 import org.openapitools.model.MediaUpload;
-import org.openapitools.model.MediaUploadDetails;
-import org.openapitools.model.MediaUploadRequest;
+import org.openapitools.model.MediaUploadCreate;
 import org.springframework.lang.Nullable;
+import org.openapitools.model.PinterestLibError;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "media", description = "Register and manage media uploads.")
 public interface MediaApi {
@@ -50,23 +50,47 @@ public interface MediaApi {
     String PATH_MEDIA_CREATE = "/media";
     /**
      * POST /media : Register media upload
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
-     * @param mediaUploadRequest Create a media upload request (required)
-     * @return response (status code 201)
-     *         or Unexpected error (status code 200)
+     * @param mediaUploadCreate  (required)
+     * @return The request has succeeded. (status code 200)
+     *         or Resource create operation completed successfully. (status code 201)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "mediaCreate",
         summary = "Register media upload",
-        description = "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+        description = "Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.",
         tags = { "media" },
         responses = {
-            @ApiResponse(responseCode = "201", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = MediaUpload.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = MediaUpload.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -80,17 +104,47 @@ public interface MediaApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<MediaUpload> mediaCreate(
-        @Parameter(name = "MediaUploadRequest", description = "Create a media upload request", required = true) @Valid @RequestBody MediaUploadRequest mediaUploadRequest
+        @Parameter(name = "MediaUploadCreate", description = "", required = true) @Valid @RequestBody MediaUploadCreate mediaUploadCreate
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"media_id\" : \"12345\", \"media_type\" : \"video\", \"upload_url\" : \"https://pinterest-media-upload.s3-accelerate.amazonaws.com/\", \"upload_parameters\" : { \"x-amz-data\" : \"20220127T185143Z\", \"x-amz-signature\" : \"fcd6309a6aaee213348666a72abed8b44552a43acb6b340e8e1b288d21a5fe92\", \"key\" : \"uploads/11/aa/22/3:video:203014033110991560:5212123920968240771\", \"policy\" : \"eyJleHBpcmF0aW9uIjoiMj..==\", \"x-amz-credential\" : \"ASIA6QZJ64OPIKV7FRVX/20220127/us-east-1/s3/aws4_request\", \"x-amz-security-token\" : \"IQoJb3JpZ2luX2VjEJr...==\", \"x-amz-algorithm\" : \"AWS4-HMAC-SHA256\", \"Content-Type\" : \"multipart/form-data\" } }";
+                    String exampleString = "{ \"media_type\" : \"video\", \"upload_parameters\" : \"\", \"media_id\" : \"12345\", \"upload_url\" : \"https://pinterest-media-upload.s3-accelerate.amazonaws.com/\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"media_type\" : \"video\", \"upload_parameters\" : \"\", \"media_id\" : \"12345\", \"upload_url\" : \"https://pinterest-media-upload.s3-accelerate.amazonaws.com/\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -104,27 +158,43 @@ public interface MediaApi {
     String PATH_MEDIA_GET = "/media/{media_id}";
     /**
      * GET /media/{media_id} : Get media upload details
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
-     * @param mediaId Media identifier (required)
-     * @return response (status code 200)
-     *         or Media upload not found (status code 404)
-     *         or Unexpected error (status code 200)
+     * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation. (required)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "mediaGet",
         summary = "Get media upload details",
-        description = "Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+        description = "Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.",
         tags = { "media" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = MediaUploadDetails.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Media.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Media upload not found", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -136,23 +206,43 @@ public interface MediaApi {
         value = MediaApi.PATH_MEDIA_GET,
         produces = { "application/json" }
     )
-    default ResponseEntity<MediaUploadDetails> mediaGet(
-        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "media_id", description = "Media identifier", required = true, in = ParameterIn.PATH) @PathVariable("media_id") String mediaId
+    default ResponseEntity<Media> mediaGet(
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "media_id", description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.", required = true, in = ParameterIn.PATH) @PathVariable("media_id") String mediaId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"media_id\" : \"12345\", \"media_type\" : \"video\", \"status\" : \"succeeded\" }";
+                    String exampleString = "{ \"media_type\" : \"video\", \"media_id\" : \"12345\", \"status\" : \"\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -166,24 +256,44 @@ public interface MediaApi {
     String PATH_MEDIA_LIST = "/media";
     /**
      * GET /media : List media uploads
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return response (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "mediaList",
         summary = "List media uploads",
-        description = "List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+        description = "List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.",
         tags = { "media" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = MediaList200Response.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -197,17 +307,42 @@ public interface MediaApi {
     )
     default ResponseEntity<MediaList200Response> mediaList(
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
-        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"media_id\" : \"12345\", \"media_type\" : \"video\", \"status\" : \"succeeded\" }, { \"media_id\" : \"12345\", \"media_type\" : \"video\", \"status\" : \"succeeded\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"media_type\" : \"video\", \"media_id\" : \"12345\", \"status\" : \"\" }, { \"media_type\" : \"video\", \"media_id\" : \"12345\", \"status\" : \"\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

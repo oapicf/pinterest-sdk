@@ -7,9 +7,9 @@
 
 (def targeting-spec-shopping-retargeting-data
   {
+   (ds/opt :exclusion_window) int?
    (ds/opt :lookback_window) int?
    (ds/opt :tag_types) (s/coll-of int?)
-   (ds/opt :exclusion_window) int?
    })
 
 (def targeting-spec-shopping-retargeting-spec

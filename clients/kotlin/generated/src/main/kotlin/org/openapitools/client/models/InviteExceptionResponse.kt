@@ -22,8 +22,8 @@ import com.squareup.moshi.JsonClass
 /**
  * An exception object if there is an error performing the action. Will only be provided if there is an error.
  *
- * @param inviteOrRequestId Unique identifier of the invite/request.
  * @param code Error code associated with the error in performing the action on the invite/request.
+ * @param inviteOrRequestId Unique identifier of the invite/request.
  * @param message Error message associated with the error in performing the action on the invite/request.
  * @param usersOrPartnerIds A list of users' usernames or emails OR a list of partner ids that caused the error.
  */
@@ -31,13 +31,13 @@ import com.squareup.moshi.JsonClass
 
 data class InviteExceptionResponse (
 
-    /* Unique identifier of the invite/request. */
-    @Json(name = "invite_or_request_id")
-    val inviteOrRequestId: kotlin.String? = null,
-
     /* Error code associated with the error in performing the action on the invite/request. */
     @Json(name = "code")
     val code: kotlin.Int? = null,
+
+    /* Unique identifier of the invite/request. */
+    @Json(name = "invite_or_request_id")
+    val inviteOrRequestId: kotlin.String? = null,
 
     /* Error message associated with the error in performing the action on the invite/request. */
     @Json(name = "message")

@@ -12,17 +12,17 @@ API.Client.CatalogsItemsFilters = function() {}
 API.Client.CatalogsItemsFilters.prototype.catalogType;
 
 /**
- * @type {!Array<!string>}
- * @export
- */
-API.Client.CatalogsItemsFilters.prototype.itemIds;
-
-/**
  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsFilters.prototype.catalogId;
+
+/**
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.CatalogsItemsFilters.prototype.itemIds;
 
 /**
  * @type {!Array<!string>}

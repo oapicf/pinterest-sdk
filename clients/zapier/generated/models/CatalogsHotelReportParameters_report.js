@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsReportAllItemsFilter = require('../models/CatalogsReportAllItemsFilter');
 const CatalogsReportDistributionIssueFilter = require('../models/CatalogsReportDistributionIssueFilter');
 const CatalogsReportFeedIngestionFilter = require('../models/CatalogsReportFeedIngestionFilter');
 
@@ -13,6 +14,7 @@ module.exports = {
                 choices: [
                     'FEED_INGESTION_ISSUES',
                     'DISTRIBUTION_ISSUES',
+                    'ALL_ITEMS',
                 ],
             },
             {

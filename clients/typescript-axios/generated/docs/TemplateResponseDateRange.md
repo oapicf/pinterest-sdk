@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**absolute_date_range** | [**TemplateResponseDateRangeAbsoluteDateRange**](TemplateResponseDateRangeAbsoluteDateRange.md) |  | [optional] [default to undefined]
 **dynamic_date_range** | [**TemplateResponseDateRangeDynamicDateRange**](TemplateResponseDateRangeDynamicDateRange.md) |  | [optional] [default to undefined]
 **relative_date_range** | [**TemplateResponseDateRangeRelativeDateRange**](TemplateResponseDateRangeRelativeDateRange.md) |  | [optional] [default to undefined]
-**absolute_date_range** | [**TemplateResponseDateRangeAbsoluteDateRange**](TemplateResponseDateRangeAbsoluteDateRange.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { TemplateResponseDateRange } from './api';
 
 const instance: TemplateResponseDateRange = {
+    absolute_date_range,
     dynamic_date_range,
     relative_date_range,
-    absolute_date_range,
 };
 ```
 

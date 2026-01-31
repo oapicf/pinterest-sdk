@@ -12,10 +12,10 @@ module AnalyticsMetricsResponse =
 
   [<CLIMutable>]
   type AnalyticsMetricsResponse = {
-    [<JsonProperty(PropertyName = "summary_metrics")>]
-    SummaryMetrics : IDictionary<string, decimal>;
     [<JsonProperty(PropertyName = "daily_metrics")>]
     DailyMetrics : AnalyticsDailyMetrics[];
+    [<JsonProperty(PropertyName = "summary_metrics")>]
+    SummaryMetrics : IDictionary<string, decimal>;
   }
 
   //#endregion

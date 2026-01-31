@@ -9,7 +9,7 @@ import javax.validation.Valid;
 /**
  * OauthAccessTokenRequestRefresh
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OauthAccessTokenRequestRefresh   {
   @JsonProperty("refresh_token")
@@ -20,10 +20,6 @@ public class OauthAccessTokenRequestRefresh   {
   @JsonProperty("scope")
   
   private String scope;
-
-  @JsonProperty("refresh_on")
-  
-  private Boolean refreshOn;
 
   /**
    * Gets or Sets grantType
@@ -97,23 +93,6 @@ public class OauthAccessTokenRequestRefresh   {
     this.scope = scope;
   }
 
-  public OauthAccessTokenRequestRefresh refreshOn(Boolean refreshOn) {
-    this.refreshOn = refreshOn;
-    return this;
-  }
-
-   /**
-   * Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
-   * @return refreshOn
-  **/
-  public Boolean getRefreshOn() {
-    return refreshOn;
-  }
-
-  public void setRefreshOn(Boolean refreshOn) {
-    this.refreshOn = refreshOn;
-  }
-
   public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
     return this;
@@ -143,13 +122,12 @@ public class OauthAccessTokenRequestRefresh   {
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
     return Objects.equals(refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
         Objects.equals(grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, scope, refreshOn, grantType);
+    return Objects.hash(refreshToken, scope, grantType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -160,7 +138,6 @@ public class OauthAccessTokenRequestRefresh   {
     
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
     sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();

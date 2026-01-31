@@ -8,8 +8,8 @@
 
 (def catalogs-product-group-multiple-gender-criteria-data
   {
-   (ds/req :values) (s/coll-of gender-spec)
    (ds/opt :negated) boolean?
+   (ds/req :values) (s/coll-of gender-spec)
    })
 
 (def catalogs-product-group-multiple-gender-criteria-spec

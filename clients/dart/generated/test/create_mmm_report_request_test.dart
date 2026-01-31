@@ -22,15 +22,9 @@ void main() {
       // TODO
     });
 
-    // Name of the Marketing Mix Modeling (MMM) report
-    // String reportName
-    test('to test the property `reportName`', () async {
-      // TODO
-    });
-
-    // Metric report start date (UTC). Format: YYYY-MM-DD
-    // String startDate
-    test('to test the property `startDate`', () async {
+    // Metric and entity columns
+    // List<MMMReportingColumn> columns (default value: const [])
+    test('to test the property `columns`', () async {
       // TODO
     });
 
@@ -52,15 +46,21 @@ void main() {
       // TODO
     });
 
-    // List of targeting types
-    // List<MMMReportingTargetingType> targetingTypes (default value: const [])
-    test('to test the property `targetingTypes`', () async {
+    // Name of the Marketing Mix Modeling (MMM) report
+    // String reportName
+    test('to test the property `reportName`', () async {
       // TODO
     });
 
-    // Metric and entity columns
-    // List<MMMReportingColumn> columns (default value: const [])
-    test('to test the property `columns`', () async {
+    // Metric report start date (UTC). Format: YYYY-MM-DD
+    // String startDate
+    test('to test the property `startDate`', () async {
+      // TODO
+    });
+
+    // List of targeting types
+    // List<MMMReportingTargetingType> targetingTypes (default value: const [])
+    test('to test the property `targetingTypes`', () async {
       // TODO
     });
 

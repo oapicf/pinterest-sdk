@@ -1,0 +1,89 @@
+
+<h2>ConversionMSOTEvents</h2>
+<ul class="parameter">
+  <li class="param-required-false">actionUnderscoretimestamps : List
+    <br/>Timestamp(s) when the ad action(s) happened. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">adUnderscoregroupUnderscoreid : String
+    <br/>The ID of the ad group that was attributed to the conversion event.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">attributionUnderscoremodel : String
+    <br/>The attribution model used to attribute the conversion event.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>first_touch</dd>
+            <dd>last_touch</dd>
+            <dd>multi_touch</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">attributionUnderscorescope : String
+    <br/>Ad event type.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>view</dd>
+            <dd>engagement</dd>
+            <dd>click</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">attributionUnderscorescore : Double
+    <br/>Credit given to the attributed ad actions. Allowed values are &gt; 0 and &lt;&#x3D; 1.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">campaignUnderscoreid : String
+    <br/>The ID of the campaign that was attributed to the conversion event.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">currency : Currency
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">eventUnderscoreid : String
+    <br/>A unique id string that identifies this event. If you are already sending us events through Conversions API, then this id should match the event_id sent through Conversions API.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">eventUnderscorename : String
+    <br/>Type of user event.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>add_to_cart</dd>
+            <dd>checkout</dd>
+            <dd>lead</dd>
+            <dd>signup</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">eventUnderscoretimestamp : Long
+    <br/>The time when the event occurred. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">totalUnderscoreeventUnderscoretouchpoints : Integer
+    <br/>Total number of ad events including other non-Pinterest ad platforms.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">totalUnderscoreevents : Integer
+    <br/>Total number of conversion events that are reported in one API call. &lt;p&gt;If you are sending one API request for one attributed conversion event then this value should be 1.&lt;/p&gt; &lt;p&gt;If you are sending multiple attributed conversion events in one API request then this value should be the total number of attributed conversion events in the request.&lt;/p&gt;
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">value : Double
+    <br/>Order value of the conversion event. Required if &lt;code&gt;event_name&lt;/code&gt; is &#39;add_to_cart&#39; or &#39;checkout&#39;.
+  </li>
+</ul>

@@ -10,6 +10,12 @@
       "doc": "The catalog item id in the merchant namespace"
     },
     {
+      "name": "last_updated_time",
+      "type": ["null", "long"],
+      "doc": "The millisecond timestamp when the item was lastly modified by the merchant.",
+      "default": null
+    },
+    {
       "name": "operation",
       "type": {
         "type": "enum",

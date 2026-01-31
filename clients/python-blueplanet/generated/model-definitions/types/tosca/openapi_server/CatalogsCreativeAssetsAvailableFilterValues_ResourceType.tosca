@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsAvailableFilterValues"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsAvailableFilterValues"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsFilterValuesMap = openapi_server.resourceTypes.CatalogsCreativeAssetsFilterValuesMap
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsAvailableFilterValues {
+    title = CatalogsCreativeAssetsAvailableFilterValues
+    description = CatalogsCreativeAssetsAvailableFilterValues
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        filter_values {
+          type = CatalogsCreativeAssetsFilterValuesMap
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsAvailableFilterValues {
+    title = CatalogsCreativeAssetsAvailableFilterValues
+    description = CatalogsCreativeAssetsAvailableFilterValues
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsAvailableFilterValues
+
+  }
+}

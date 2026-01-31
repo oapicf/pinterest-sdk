@@ -7,12 +7,12 @@ package org.openapitools.server.model
  * Used for including extra details to a base error
  *
  * @param code  for example: ''null''
- * @param message  for example: ''null''
  * @param details  for example: ''null''
+ * @param message  for example: ''null''
 */
 final case class DetailedError (
   code: Int,
-  message: String,
-  details: Any
+  details: Any,
+  message: String
 )
 

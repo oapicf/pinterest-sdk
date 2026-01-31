@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
@@ -32,6 +33,7 @@ import org.openapitools.client.models.GoogleProductCategory4Filter
 import org.openapitools.client.models.GoogleProductCategory5Filter
 import org.openapitools.client.models.GoogleProductCategory6Filter
 import org.openapitools.client.models.MediaTypeFilter
+import org.openapitools.client.models.TitleKeywordsFilter
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -53,6 +55,7 @@ import com.squareup.moshi.JsonClass
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param MEDIA_TYPE 
+ * @param TITLE_KEYWORDS 
  */
 
 
@@ -62,19 +65,19 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys (
     val CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria,
 
     @Json(name = "CUSTOM_LABEL_0")
-    val CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_1")
-    val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_2")
-    val CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_3")
-    val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_4")
-    val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "GOOGLE_PRODUCT_CATEGORY_6")
     val GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria,
@@ -98,7 +101,10 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys (
     val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 
     @Json(name = "MEDIA_TYPE")
-    val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+    val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
+
+    @Json(name = "TITLE_KEYWORDS")
+    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 
 ) {
 

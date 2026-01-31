@@ -15,14 +15,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param AD_GROUP_ID The ID of the ad group that this metrics belongs to.
+ * @param AD_GROUP_ID The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
 data class AdGroupsAnalyticsResponseInner(
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "The ID of the ad group that this metrics belongs to.")
-    @get:JsonProperty("AD_GROUP_ID", required = true) val AD_GROUP_ID: kotlin.String,
+    @Schema(example = "null", description = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
+    @get:JsonProperty("AD_GROUP_ID") val AD_GROUP_ID: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")

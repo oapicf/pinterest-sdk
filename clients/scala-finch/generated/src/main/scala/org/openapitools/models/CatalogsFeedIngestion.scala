@@ -10,14 +10,14 @@ import org.openapitools.models.CatalogsFeedProcessingStatus
 
 /**
  * 
- * @param id 
- * @param feedUnderscoreid 
  * @param createdUnderscoreat 
+ * @param feedUnderscoreid 
+ * @param id 
  * @param status 
  */
-case class CatalogsFeedIngestion(id: String,
+case class CatalogsFeedIngestion(createdUnderscoreat: ZonedDateTime,
                 feedUnderscoreid: String,
-                createdUnderscoreat: ZonedDateTime,
+                id: String,
                 status: CatalogsFeedProcessingStatus
                 )
 

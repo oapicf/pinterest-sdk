@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Overall status of event quality score.",
+  "name": "OverallStatusOptions",
+  "symbols": [
+    "NEEDS_IMPROVEMENT",
+    "FAIR",
+    "GOOD"
+  ]
+}

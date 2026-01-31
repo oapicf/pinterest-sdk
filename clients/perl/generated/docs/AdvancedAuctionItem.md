@@ -8,8 +8,8 @@ use WWW::OpenAPIClient::Object::AdvancedAuctionItem;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_id** | **string** | The catalog retail item id in the merchant namespace | 
 **country** | [**Country**](Country.md) |  | 
+**item_id** | **string** | The catalog retail item id in the merchant namespace | 
 **language** | [**Language**](Language.md) |  | 
 **bid_options** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 

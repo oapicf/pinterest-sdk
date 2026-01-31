@@ -1,0 +1,29 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "age_bucket" },
+      {"model": "apptype" },
+      {"model": "audience_exclude" },
+      {"model": "audience_include" },
+      {"model": "gender" },
+      {"model": "geo" },
+      {"model": "interest" },
+      {"model": "locale" },
+      {"model": "location" },
+      {"model": "maximum_age" },
+      {"model": "minimum_age" },
+      {"model": "shopping_retargeting" },
+      {"model": "targeting_strategy" },
+    ]
+  }]
+}

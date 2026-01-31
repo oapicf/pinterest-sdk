@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,16 +17,16 @@ package openapi
 // AssetIdPermissions - An object containing the permissions a business member has on the asset.
 type AssetIdPermissions struct {
 
+	AssetGroupInfo AssetGroupBinding `json:"asset_group_info,omitempty"`
+
 	// Unique identifier of a business asset.
 	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	// Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	AssetType string `json:"asset_type,omitempty"`
 
 	// Permission levels member or partner has on an asset.
 	Permissions []string `json:"permissions,omitempty"`
-
-	AssetGroupInfo AssetGroupBinding `json:"asset_group_info,omitempty"`
 }
 
 // AssertAssetIdPermissionsRequired checks if the required fields are not zero-ed

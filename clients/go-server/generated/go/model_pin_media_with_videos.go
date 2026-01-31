@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,13 +17,24 @@ package openapi
 // PinMediaWithVideos - Pin with multiple videos.
 type PinMediaWithVideos struct {
 
-	Items []VideoMetadata `json:"items,omitempty"`
+	Items []VideoMetadataWithItemType `json:"items,omitempty"`
+
+	MediaType string `json:"media_type"`
 }
 
 // AssertPinMediaWithVideosRequired checks if the required fields are not zero-ed
 func AssertPinMediaWithVideosRequired(obj PinMediaWithVideos) error {
+	elements := map[string]interface{}{
+		"media_type": obj.MediaType,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	for _, el := range obj.Items {
-		if err := AssertVideoMetadataRequired(el); err != nil {
+		if err := AssertVideoMetadataWithItemTypeRequired(el); err != nil {
 			return err
 		}
 	}
@@ -33,7 +44,7 @@ func AssertPinMediaWithVideosRequired(obj PinMediaWithVideos) error {
 // AssertPinMediaWithVideosConstraints checks if the values respects the defined constraints
 func AssertPinMediaWithVideosConstraints(obj PinMediaWithVideos) error {
 	for _, el := range obj.Items {
-		if err := AssertVideoMetadataConstraints(el); err != nil {
+		if err := AssertVideoMetadataWithItemTypeConstraints(el); err != nil {
 			return err
 		}
 	}

@@ -52,19 +52,11 @@ public class CatalogsCreativeAssetsFeedTest {
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'catalogId'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property '_format'
-     */
-    @Test
-    public void _formatTest() {
-        // TODO: test _format
+    public void catalogIdTest() {
+        // TODO: test catalogId
     }
 
     /**
@@ -84,27 +76,11 @@ public class CatalogsCreativeAssetsFeedTest {
     }
 
     /**
-     * Test the property 'location'
+     * Test the property 'defaultCountry'
      */
     @Test
-    public void locationTest() {
-        // TODO: test location
-    }
-
-    /**
-     * Test the property 'preferredProcessingSchedule'
-     */
-    @Test
-    public void preferredProcessingScheduleTest() {
-        // TODO: test preferredProcessingSchedule
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
+    public void defaultCountryTest() {
+        // TODO: test defaultCountry
     }
 
     /**
@@ -124,19 +100,43 @@ public class CatalogsCreativeAssetsFeedTest {
     }
 
     /**
-     * Test the property 'defaultCountry'
+     * Test the property '_format'
      */
     @Test
-    public void defaultCountryTest() {
-        // TODO: test defaultCountry
+    public void _formatTest() {
+        // TODO: test _format
     }
 
     /**
-     * Test the property 'catalogId'
+     * Test the property 'location'
      */
     @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
+    public void locationTest() {
+        // TODO: test location
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'preferredProcessingSchedule'
+     */
+    @Test
+    public void preferredProcessingScheduleTest() {
+        // TODO: test preferredProcessingSchedule
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

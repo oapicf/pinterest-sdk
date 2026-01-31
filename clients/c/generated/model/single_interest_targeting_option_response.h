@@ -19,19 +19,19 @@ typedef struct single_interest_targeting_option_response_t single_interest_targe
 
 
 typedef struct single_interest_targeting_option_response_t {
-    char *id; // string
-    char *name; // string
     list_t *child_interests; //primitive container
+    char *id; // string
     int level; //numeric
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } single_interest_targeting_option_response_t;
 
 __attribute__((deprecated)) single_interest_targeting_option_response_t *single_interest_targeting_option_response_create(
-    char *id,
-    char *name,
     list_t *child_interests,
-    int level
+    char *id,
+    int level,
+    char *name
 );
 
 void single_interest_targeting_option_response_free(single_interest_targeting_option_response_t *single_interest_targeting_option_response);

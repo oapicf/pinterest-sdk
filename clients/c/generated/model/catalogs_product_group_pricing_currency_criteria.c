@@ -23,35 +23,35 @@ pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e c
 }
 
 static catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_create_internal(
-    pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e _operator,
-    double value,
     pinterest_rest_api_non_nullable_catalogs_currency__e currency,
-    int negated
+    int negated,
+    pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e _operator,
+    double value
     ) {
     catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_local_var = malloc(sizeof(catalogs_product_group_pricing_currency_criteria_t));
     if (!catalogs_product_group_pricing_currency_criteria_local_var) {
         return NULL;
     }
-    catalogs_product_group_pricing_currency_criteria_local_var->_operator = _operator;
-    catalogs_product_group_pricing_currency_criteria_local_var->value = value;
     catalogs_product_group_pricing_currency_criteria_local_var->currency = currency;
     catalogs_product_group_pricing_currency_criteria_local_var->negated = negated;
+    catalogs_product_group_pricing_currency_criteria_local_var->_operator = _operator;
+    catalogs_product_group_pricing_currency_criteria_local_var->value = value;
 
     catalogs_product_group_pricing_currency_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_pricing_currency_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_create(
-    pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e _operator,
-    double value,
     pinterest_rest_api_non_nullable_catalogs_currency__e currency,
-    int negated
+    int negated,
+    pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e _operator,
+    double value
     ) {
     return catalogs_product_group_pricing_currency_criteria_create_internal (
-        _operator,
-        value,
         currency,
-        negated
+        negated,
+        _operator,
+        value
         );
 }
 
@@ -69,25 +69,6 @@ void catalogs_product_group_pricing_currency_criteria_free(catalogs_product_grou
 
 cJSON *catalogs_product_group_pricing_currency_criteria_convertToJSON(catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria) {
     cJSON *item = cJSON_CreateObject();
-
-    // catalogs_product_group_pricing_currency_criteria->_operator
-    if (pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_NULL == catalogs_product_group_pricing_currency_criteria->_operator) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "operator", catalogs_product_group_pricing_currency_criteria__operator_ToString(catalogs_product_group_pricing_currency_criteria->_operator)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
-    // catalogs_product_group_pricing_currency_criteria->value
-    if (!catalogs_product_group_pricing_currency_criteria->value) {
-        goto fail;
-    }
-    if(cJSON_AddNumberToObject(item, "value", catalogs_product_group_pricing_currency_criteria->value) == NULL) {
-    goto fail; //Numeric
-    }
-
 
     // catalogs_product_group_pricing_currency_criteria->currency
     if (pinterest_rest_api_non_nullable_catalogs_currency__NULL == catalogs_product_group_pricing_currency_criteria->currency) {
@@ -110,6 +91,25 @@ cJSON *catalogs_product_group_pricing_currency_criteria_convertToJSON(catalogs_p
     }
     }
 
+
+    // catalogs_product_group_pricing_currency_criteria->_operator
+    if (pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_NULL == catalogs_product_group_pricing_currency_criteria->_operator) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "operator", catalogs_product_group_pricing_currency_criteria__operator_ToString(catalogs_product_group_pricing_currency_criteria->_operator)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
+
+    // catalogs_product_group_pricing_currency_criteria->value
+    if (!catalogs_product_group_pricing_currency_criteria->value) {
+        goto fail;
+    }
+    if(cJSON_AddNumberToObject(item, "value", catalogs_product_group_pricing_currency_criteria->value) == NULL) {
+    goto fail; //Numeric
+    }
+
     return item;
 fail:
     if (item) {
@@ -124,6 +124,30 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
 
     // define the local variable for catalogs_product_group_pricing_currency_criteria->currency
     pinterest_rest_api_non_nullable_catalogs_currency__e currency_local_nonprim = 0;
+
+    // catalogs_product_group_pricing_currency_criteria->currency
+    cJSON *currency = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "currency");
+    if (cJSON_IsNull(currency)) {
+        currency = NULL;
+    }
+    if (!currency) {
+        goto end;
+    }
+
+    
+    currency_local_nonprim = non_nullable_catalogs_currency_parseFromJSON(currency); //custom
+
+    // catalogs_product_group_pricing_currency_criteria->negated
+    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "negated");
+    if (cJSON_IsNull(negated)) {
+        negated = NULL;
+    }
+    if (negated) { 
+    if(!cJSON_IsBool(negated))
+    {
+    goto end; //Bool
+    }
+    }
 
     // catalogs_product_group_pricing_currency_criteria->_operator
     cJSON *_operator = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "operator");
@@ -157,36 +181,12 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
     goto end; //Numeric
     }
 
-    // catalogs_product_group_pricing_currency_criteria->currency
-    cJSON *currency = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "currency");
-    if (cJSON_IsNull(currency)) {
-        currency = NULL;
-    }
-    if (!currency) {
-        goto end;
-    }
-
-    
-    currency_local_nonprim = non_nullable_catalogs_currency_parseFromJSON(currency); //custom
-
-    // catalogs_product_group_pricing_currency_criteria->negated
-    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "negated");
-    if (cJSON_IsNull(negated)) {
-        negated = NULL;
-    }
-    if (negated) { 
-    if(!cJSON_IsBool(negated))
-    {
-    goto end; //Bool
-    }
-    }
-
 
     catalogs_product_group_pricing_currency_criteria_local_var = catalogs_product_group_pricing_currency_criteria_create_internal (
-        _operatorVariable,
-        value->valuedouble,
         currency_local_nonprim,
-        negated ? negated->valueint : 0
+        negated ? negated->valueint : 0,
+        _operatorVariable,
+        value->valuedouble
         );
 
     return catalogs_product_group_pricing_currency_criteria_local_var;

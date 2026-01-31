@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**Array&lt;Gender&gt;**](Gender.md) |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**values** | [**Array&lt;Gender&gt;**](Gender.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupMultipleGenderCriteria } from './api';
 
 const instance: CatalogsProductGroupMultipleGenderCriteria = {
-    values,
     negated,
+    values,
 };
 ```
 

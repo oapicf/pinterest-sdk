@@ -6,15 +6,15 @@ goog.provide('API.Client.MembersToDeleteBody_members_inner');
 API.Client.MembersToDeleteBodyMembersInner = function() {}
 
 /**
+ * @type {!API.Client.BusinessRoleForMembers}
+ * @export
+ */
+API.Client.MembersToDeleteBodyMembersInner.prototype.businessRole;
+
+/**
  * Unique identifier of the member
  * @type {!string}
  * @export
  */
 API.Client.MembersToDeleteBodyMembersInner.prototype.memberId;
-
-/**
- * @type {!API.Client.BusinessRoleForMembers}
- * @export
- */
-API.Client.MembersToDeleteBodyMembersInner.prototype.businessRole;
 

@@ -9,9 +9,9 @@
 -export_type([openapi_ads_credit_redeem_response/0]).
 
 -type openapi_ads_credit_redeem_response() ::
-  [ {'success', boolean() }
-  | {'errorCode', integer() }
+  [ {'errorCode', integer() }
   | {'errorMessage', binary() }
+  | {'success', boolean() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_ads_credit_redeem_response() ->
     openapi_ads_credit_redeem_response([]).
 
 openapi_ads_credit_redeem_response(Fields) ->
-  Default = [ {'success', boolean() }
-            , {'errorCode', integer() }
+  Default = [ {'errorCode', integer() }
             , {'errorMessage', binary() }
+            , {'success', boolean() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -151,6 +151,10 @@ func (c *KeywordsAPIController) KeywordsGet(w http.ResponseWriter, r *http.Reque
 		adGroupIdParam = param
 	} else {
 	}
+	var adGroupIdsParam []string
+	if query.Has("ad_group_ids") {
+		adGroupIdsParam = strings.Split(query.Get("ad_group_ids"), ",")
+	}
 	var matchTypesParam []MatchType
 	if query.Has("match_types") {
 		paramSplits := strings.Split(query.Get("match_types"), ",")
@@ -170,7 +174,6 @@ func (c *KeywordsAPIController) KeywordsGet(w http.ResponseWriter, r *http.Reque
 			query.Get("page_size"),
 			WithParse[int32](parseInt32),
 			WithMinimum[int32](1),
-			WithMaximum[int32](250),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
@@ -189,7 +192,7 @@ func (c *KeywordsAPIController) KeywordsGet(w http.ResponseWriter, r *http.Reque
 		bookmarkParam = param
 	} else {
 	}
-	result, err := c.service.KeywordsGet(r.Context(), adAccountIdParam, campaignIdParam, adGroupIdParam, matchTypesParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.KeywordsGet(r.Context(), adAccountIdParam, campaignIdParam, adGroupIdParam, adGroupIdsParam, matchTypesParam, pageSizeParam, bookmarkParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -369,7 +372,39 @@ func (c *KeywordsAPIController) TrendingKeywordsList(w http.ResponseWriter, r *h
 		var param int32 = 50
 		limitParam = param
 	}
-	result, err := c.service.TrendingKeywordsList(r.Context(), regionParam, trendTypeParam, interestsParam, gendersParam, agesParam, includeKeywordsParam, normalizeAgainstGroupParam, limitParam)
+	var includePredictionParam bool
+	if query.Has("include_prediction") {
+		param, err := parseBoolParameter(
+			query.Get("include_prediction"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "include_prediction", Err: err}, nil)
+			return
+		}
+
+		includePredictionParam = param
+	} else {
+		var param bool = false
+		includePredictionParam = param
+	}
+	var includeDemographicsParam bool
+	if query.Has("include_demographics") {
+		param, err := parseBoolParameter(
+			query.Get("include_demographics"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "include_demographics", Err: err}, nil)
+			return
+		}
+
+		includeDemographicsParam = param
+	} else {
+		var param bool = false
+		includeDemographicsParam = param
+	}
+	result, err := c.service.TrendingKeywordsList(r.Context(), regionParam, trendTypeParam, interestsParam, gendersParam, agesParam, includeKeywordsParam, normalizeAgainstGroupParam, limitParam, includePredictionParam, includeDemographicsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

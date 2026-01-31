@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**memberId** | **String** | Unique identifier of the member |  |
 |**businessRole** | **BusinessRoleForMembers** |  |  |
+|**memberId** | **String** | Unique identifier of the member |  |
 
 
 

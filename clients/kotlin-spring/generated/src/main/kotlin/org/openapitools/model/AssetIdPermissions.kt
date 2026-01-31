@@ -16,27 +16,27 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * An object containing the permissions a business member has on the asset.
- * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
- * @param permissions Permission levels member or partner has on an asset.
  * @param assetGroupInfo 
+ * @param assetId Unique identifier of a business asset.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param permissions Permission levels member or partner has on an asset.
  */
 data class AssetIdPermissions(
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(min=1,max=20)
     @Schema(example = "549755885175", description = "Unique identifier of a business asset.")
     @get:JsonProperty("asset_id") val assetId: kotlin.String? = null,
 
-    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
     @get:JsonProperty("asset_type") val assetType: kotlin.String? = null,
 
     @Schema(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.")
-    @get:JsonProperty("permissions") val permissions: kotlin.collections.List<kotlin.String>? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null
+    @get:JsonProperty("permissions") val permissions: kotlin.collections.List<kotlin.String>? = null
 ) {
 
 }

@@ -25,10 +25,10 @@ CatalogsItemsBatch::__init()
 {
 	//catalog_type = new CatalogsType();
 	//batch_id = std::string();
-	//created_time = null;
 	//completed_time = null;
-	//status = new BatchOperationStatus();
+	//created_time = null;
 	//new std::list()std::list> items;
+	//status = new BatchOperationStatus();
 }
 
 void
@@ -44,25 +44,25 @@ CatalogsItemsBatch::__cleanup()
 	//delete batch_id;
 	//batch_id = NULL;
 	//}
-	//if(created_time != NULL) {
-	//
-	//delete created_time;
-	//created_time = NULL;
-	//}
 	//if(completed_time != NULL) {
 	//
 	//delete completed_time;
 	//completed_time = NULL;
 	//}
-	//if(status != NULL) {
+	//if(created_time != NULL) {
 	//
-	//delete status;
-	//status = NULL;
+	//delete created_time;
+	//created_time = NULL;
 	//}
 	//if(items != NULL) {
 	//items.RemoveAll(true);
 	//delete items;
 	//items = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//
 }
@@ -97,17 +97,6 @@ CatalogsItemsBatch::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_timeKey = "created_time";
-	node = json_object_get_member(pJsonObject, created_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_time, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *completed_timeKey = "completed_time";
 	node = json_object_get_member(pJsonObject, completed_timeKey);
 	if (node !=NULL) {
@@ -119,17 +108,14 @@ CatalogsItemsBatch::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BatchOperationStatus")) {
-			jsonToValue(&status, node, "BatchOperationStatus", "BatchOperationStatus");
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_time, node, "std::string", "");
 		} else {
-			
-			BatchOperationStatus* obj = static_cast<BatchOperationStatus*> (&status);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -156,6 +142,20 @@ CatalogsItemsBatch::fromJson(char* jsonStr)
 			items = new_list;
 		}
 		
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("BatchOperationStatus")) {
+			jsonToValue(&status, node, "BatchOperationStatus", "BatchOperationStatus");
+		} else {
+			
+			BatchOperationStatus* obj = static_cast<BatchOperationStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
 	}
 }
 
@@ -193,15 +193,6 @@ CatalogsItemsBatch::toJson()
 	const gchar *batch_idKey = "batch_id";
 	json_object_set_member(pJsonObject, batch_idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCreatedTime();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *created_timeKey = "created_time";
-	json_object_set_member(pJsonObject, created_timeKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCompletedTime();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -210,20 +201,15 @@ CatalogsItemsBatch::toJson()
 	}
 	const gchar *completed_timeKey = "completed_time";
 	json_object_set_member(pJsonObject, completed_timeKey, node);
-	if (isprimitive("BatchOperationStatus")) {
-		BatchOperationStatus obj = getStatus();
-		node = converttoJson(&obj, "BatchOperationStatus", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCreatedTime();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		BatchOperationStatus obj = static_cast<BatchOperationStatus> (getStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
 	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
 	if (isprimitive("CreativeAssetsProcessingRecord")) {
 		list<CreativeAssetsProcessingRecord> new_list = static_cast<list <CreativeAssetsProcessingRecord> > (getItems());
 		node = converttoJson(&new_list, "CreativeAssetsProcessingRecord", "array");
@@ -249,6 +235,20 @@ CatalogsItemsBatch::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
+	if (isprimitive("BatchOperationStatus")) {
+		BatchOperationStatus obj = getStatus();
+		node = converttoJson(&obj, "BatchOperationStatus", "");
+	}
+	else {
+		
+		BatchOperationStatus obj = static_cast<BatchOperationStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -282,18 +282,6 @@ CatalogsItemsBatch::setBatchId(std::string  batch_id)
 }
 
 std::string
-CatalogsItemsBatch::getCreatedTime()
-{
-	return created_time;
-}
-
-void
-CatalogsItemsBatch::setCreatedTime(std::string  created_time)
-{
-	this->created_time = created_time;
-}
-
-std::string
 CatalogsItemsBatch::getCompletedTime()
 {
 	return completed_time;
@@ -305,16 +293,16 @@ CatalogsItemsBatch::setCompletedTime(std::string  completed_time)
 	this->completed_time = completed_time;
 }
 
-BatchOperationStatus
-CatalogsItemsBatch::getStatus()
+std::string
+CatalogsItemsBatch::getCreatedTime()
 {
-	return status;
+	return created_time;
 }
 
 void
-CatalogsItemsBatch::setStatus(BatchOperationStatus  status)
+CatalogsItemsBatch::setCreatedTime(std::string  created_time)
 {
-	this->status = status;
+	this->created_time = created_time;
 }
 
 std::list<CreativeAssetsProcessingRecord>
@@ -327,6 +315,18 @@ void
 CatalogsItemsBatch::setItems(std::list <CreativeAssetsProcessingRecord> items)
 {
 	this->items = items;
+}
+
+BatchOperationStatus
+CatalogsItemsBatch::getStatus()
+{
+	return status;
+}
+
+void
+CatalogsItemsBatch::setStatus(BatchOperationStatus  status)
+{
+	this->status = status;
 }
 
 

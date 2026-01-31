@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**list_t**](ssio_order_line.md) \* | SSIO order lines by ad acount id | 
 **bookmark** | **char \*** |  | [optional] 
+**items** | [**list_t**](ssio_order_line.md) \* | SSIO order lines by ad acount id | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

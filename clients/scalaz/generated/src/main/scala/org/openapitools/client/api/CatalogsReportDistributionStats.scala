@@ -12,21 +12,21 @@ import org.joda.time.DateTime
 import CatalogsReportDistributionStats._
 
 case class CatalogsReportDistributionStats (
-  reportType: Option[ReportType],
-/* ID of the catalog entity. */
+  /* ID of the catalog entity. */
   catalogId: Option[String],
 /* The event code that a diagnostics aggregated number references */
   code: Option[Integer],
 /* A human-friendly label for the event code (e.g, 'SPAM') */
   codeLabel: Option[String],
+/* Indicates if issue makes items ineligible for ads distribution */
+  ineligibleForAds: Option[Boolean],
+/* Indicates if issue makes items ineligible for organic distribution */
+  ineligibleForOrganic: Option[Boolean],
 /* Title message describing the diagnostic issue */
   message: Option[String],
 /* Number of occurrences of the issue */
   occurrences: Option[Integer],
-/* Indicates if issue makes items ineligible for ads distribution */
-  ineligibleForAds: Option[Boolean],
-/* Indicates if issue makes items ineligible for organic distribution */
-  ineligibleForOrganic: Option[Boolean])
+reportType: Option[ReportType])
 
 object CatalogsReportDistributionStats {
   import DateTimeCodecs._

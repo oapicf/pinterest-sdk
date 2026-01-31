@@ -15,6 +15,8 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.ConversionEventAppInfo
+import org.openapitools.client.models.ConversionEventDeviceInfo
 import org.openapitools.client.models.ConversionEventsDataInnerCustomData
 import org.openapitools.client.models.ConversionEventsUserData
 
@@ -24,67 +26,57 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param eventName <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
- * @param actionSource <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
- * @param eventTime The time when the event happened. Unix timestamp in seconds.
+ * @param actionSource <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
  * @param eventId A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
+ * @param eventName <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
+ * @param eventTime The time when the event happened. Unix timestamp in seconds.
  * @param userData 
- * @param eventSourceUrl URL of the web conversion event.
- * @param optOut When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
- * @param partnerName The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
- * @param customData 
  * @param appId The app store app ID.
+ * @param appInfo 
  * @param appName Name of the app.
  * @param appVersion Version of the app.
+ * @param customData 
  * @param deviceBrand Brand of the user device.
  * @param deviceCarrier User device's mobile carrier.
+ * @param deviceInfo 
  * @param deviceModel Model of the user device.
  * @param deviceType Type of the user device.
- * @param osVersion Version of the device operating system.
- * @param wifi Whether the event occurred when the user device was connected to wifi.
+ * @param eventSourceUrl URL of the web conversion event.
  * @param language Two-character ISO-639-1 language code indicating the user's language.
+ * @param optOut When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+ * @param osVersion Version of the device operating system.
+ * @param partnerName The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+ * @param wifi Whether the event occurred when the user device was connected to wifi.
  */
 
 
 data class ConversionEventsDataInner (
 
-    /* <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p>  */
-    @Json(name = "event_name")
-    val eventName: kotlin.String,
-
-    /* <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p>  */
+    /* <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline` */
     @Json(name = "action_source")
     val actionSource: kotlin.String,
-
-    /* The time when the event happened. Unix timestamp in seconds. */
-    @Json(name = "event_time")
-    val eventTime: kotlin.Long,
 
     /* A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. */
     @Json(name = "event_id")
     val eventId: kotlin.String,
 
+    /* <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video` */
+    @Json(name = "event_name")
+    val eventName: kotlin.String,
+
+    /* The time when the event happened. Unix timestamp in seconds. */
+    @Json(name = "event_time")
+    val eventTime: kotlin.Long,
+
     @Json(name = "user_data")
     val userData: ConversionEventsUserData,
-
-    /* URL of the web conversion event. */
-    @Json(name = "event_source_url")
-    val eventSourceUrl: kotlin.String? = null,
-
-    /* When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. */
-    @Json(name = "opt_out")
-    val optOut: kotlin.Boolean? = null,
-
-    /* The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’ */
-    @Json(name = "partner_name")
-    val partnerName: kotlin.String? = null,
-
-    @Json(name = "custom_data")
-    val customData: ConversionEventsDataInnerCustomData? = null,
 
     /* The app store app ID. */
     @Json(name = "app_id")
     val appId: kotlin.String? = null,
+
+    @Json(name = "app_info")
+    val appInfo: ConversionEventAppInfo? = null,
 
     /* Name of the app. */
     @Json(name = "app_name")
@@ -94,6 +86,9 @@ data class ConversionEventsDataInner (
     @Json(name = "app_version")
     val appVersion: kotlin.String? = null,
 
+    @Json(name = "custom_data")
+    val customData: ConversionEventsDataInnerCustomData? = null,
+
     /* Brand of the user device. */
     @Json(name = "device_brand")
     val deviceBrand: kotlin.String? = null,
@@ -101,6 +96,9 @@ data class ConversionEventsDataInner (
     /* User device's mobile carrier. */
     @Json(name = "device_carrier")
     val deviceCarrier: kotlin.String? = null,
+
+    @Json(name = "device_info")
+    val deviceInfo: ConversionEventDeviceInfo? = null,
 
     /* Model of the user device. */
     @Json(name = "device_model")
@@ -110,17 +108,29 @@ data class ConversionEventsDataInner (
     @Json(name = "device_type")
     val deviceType: kotlin.String? = null,
 
+    /* URL of the web conversion event. */
+    @Json(name = "event_source_url")
+    val eventSourceUrl: kotlin.String? = null,
+
+    /* Two-character ISO-639-1 language code indicating the user's language. */
+    @Json(name = "language")
+    val language: kotlin.String? = null,
+
+    /* When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. */
+    @Json(name = "opt_out")
+    val optOut: kotlin.Boolean? = null,
+
     /* Version of the device operating system. */
     @Json(name = "os_version")
     val osVersion: kotlin.String? = null,
 
+    /* The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’ */
+    @Json(name = "partner_name")
+    val partnerName: kotlin.String? = null,
+
     /* Whether the event occurred when the user device was connected to wifi. */
     @Json(name = "wifi")
-    val wifi: kotlin.Boolean? = null,
-
-    /* Two-character ISO-639-1 language code indicating the user's language. */
-    @Json(name = "language")
-    val language: kotlin.String? = null
+    val wifi: kotlin.Boolean? = null
 
 ) {
 

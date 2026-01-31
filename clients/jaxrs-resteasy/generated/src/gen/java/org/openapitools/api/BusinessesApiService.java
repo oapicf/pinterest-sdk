@@ -47,6 +47,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -67,7 +68,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface BusinessesApiService {
       Response assetAccessRequestsCreate(String businessId,CreateAssetAccessRequestBody createAssetAccessRequestBody,SecurityContext securityContext)
       throws NotFoundException;
@@ -79,7 +80,7 @@ public interface BusinessesApiService {
       throws NotFoundException;
       Response businessAccountAudiencesSharedAccountsList(String businessId,String audienceId,AudienceAccountType accountType,Integer pageSize,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
-      Response businessAssetMembersGet(String businessId,String assetId,String bookmark,Integer pageSize,Integer startIndex,SecurityContext securityContext)
+      Response businessAssetMembersGet(String businessId,String assetId,Boolean fetchSystemUsers,String bookmark,Integer pageSize,Integer startIndex,SecurityContext securityContext)
       throws NotFoundException;
       Response businessAssetPartnersGet(String businessId,String assetId,Integer startIndex,String bookmark,Integer pageSize,SecurityContext securityContext)
       throws NotFoundException;
@@ -107,7 +108,7 @@ public interface BusinessesApiService {
       throws NotFoundException;
       Response getBusinessEmployers(Integer pageSize,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
-      Response getBusinessMembers(String businessId,Boolean assetsSummary,List<MemberBusinessRole> businessRoles,String memberIds,Integer startIndex,String bookmark,Integer pageSize,SecurityContext securityContext)
+      Response getBusinessMembers(String businessId,Boolean fetchSystemUsers,Boolean assetsSummary,List<MemberBusinessRole> businessRoles,String memberIds,Integer startIndex,String bookmark,Integer pageSize,SecurityContext securityContext)
       throws NotFoundException;
       Response getBusinessPartners(String businessId,Boolean assetsSummary,PartnerType partnerType,String partnerIds,Integer startIndex,Integer pageSize,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
@@ -116,6 +117,8 @@ public interface BusinessesApiService {
       Response respondBusinessAccessInvites(AuthRespondInvitesBody authRespondInvitesBody,SecurityContext securityContext)
       throws NotFoundException;
       Response sharedAudiencesForBusinessList(String businessId,String bookmark,String order,Integer pageSize,SecurityContext securityContext)
+      throws NotFoundException;
+      Response systemUserUpdate(String businessId,String systemUserId,SystemUserUpdateRequest systemUserUpdateRequest,SecurityContext securityContext)
       throws NotFoundException;
       Response updateBusinessMemberships(String businessId,List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody,SecurityContext securityContext)
       throws NotFoundException;

@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_asset_members_get**
-> business_asset_members_get (business_id: STRING_32 ; asset_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; start_index:  detachable INTEGER_32 ): detachable BUSINESS_ASSET_MEMBERS_GET_200_RESPONSE
+> business_asset_members_get (business_id: STRING_32 ; asset_id: STRING_32 ; fetch_system_users:  detachable BOOLEAN ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; start_index:  detachable INTEGER_32 ): detachable BUSINESS_ASSET_MEMBERS_GET_200_RESPONSE
 
 
 Get members with access to asset
@@ -126,6 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
  **asset_id** | **STRING_32**| Unique identifier of a business asset. | [default to null]
+ **fetch_system_users** | **BOOLEAN**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
  **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **start_index** | **INTEGER_32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]

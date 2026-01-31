@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &CatalogsReportFeedIngestionFilter{}
 
 // CatalogsReportFeedIngestionFilter struct for CatalogsReportFeedIngestionFilter
 type CatalogsReportFeedIngestionFilter struct {
-	ReportType string `json:"report_type"`
 	// ID of the feed entity.
 	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
 	// Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
 	ProcessingResultId *string `json:"processing_result_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ReportType string `json:"report_type"`
 }
 
 type _CatalogsReportFeedIngestionFilter CatalogsReportFeedIngestionFilter
@@ -35,10 +35,10 @@ type _CatalogsReportFeedIngestionFilter CatalogsReportFeedIngestionFilter
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsReportFeedIngestionFilter(reportType string, feedId string) *CatalogsReportFeedIngestionFilter {
+func NewCatalogsReportFeedIngestionFilter(feedId string, reportType string) *CatalogsReportFeedIngestionFilter {
 	this := CatalogsReportFeedIngestionFilter{}
-	this.ReportType = reportType
 	this.FeedId = feedId
+	this.ReportType = reportType
 	return &this
 }
 
@@ -48,30 +48,6 @@ func NewCatalogsReportFeedIngestionFilter(reportType string, feedId string) *Cat
 func NewCatalogsReportFeedIngestionFilterWithDefaults() *CatalogsReportFeedIngestionFilter {
 	this := CatalogsReportFeedIngestionFilter{}
 	return &this
-}
-
-// GetReportType returns the ReportType field value
-func (o *CatalogsReportFeedIngestionFilter) GetReportType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ReportType
-}
-
-// GetReportTypeOk returns a tuple with the ReportType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsReportFeedIngestionFilter) GetReportTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ReportType, true
-}
-
-// SetReportType sets field value
-func (o *CatalogsReportFeedIngestionFilter) SetReportType(v string) {
-	o.ReportType = v
 }
 
 // GetFeedId returns the FeedId field value
@@ -130,6 +106,30 @@ func (o *CatalogsReportFeedIngestionFilter) SetProcessingResultId(v string) {
 	o.ProcessingResultId = &v
 }
 
+// GetReportType returns the ReportType field value
+func (o *CatalogsReportFeedIngestionFilter) GetReportType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ReportType
+}
+
+// GetReportTypeOk returns a tuple with the ReportType field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsReportFeedIngestionFilter) GetReportTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ReportType, true
+}
+
+// SetReportType sets field value
+func (o *CatalogsReportFeedIngestionFilter) SetReportType(v string) {
+	o.ReportType = v
+}
+
 func (o CatalogsReportFeedIngestionFilter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -140,11 +140,11 @@ func (o CatalogsReportFeedIngestionFilter) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsReportFeedIngestionFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["report_type"] = o.ReportType
 	toSerialize["feed_id"] = o.FeedId
 	if !IsNil(o.ProcessingResultId) {
 		toSerialize["processing_result_id"] = o.ProcessingResultId
 	}
+	toSerialize["report_type"] = o.ReportType
 	return toSerialize, nil
 }
 
@@ -153,8 +153,8 @@ func (o *CatalogsReportFeedIngestionFilter) UnmarshalJSON(data []byte) (err erro
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"report_type",
 		"feed_id",
+		"report_type",
 	}
 
 	allProperties := make(map[string]interface{})

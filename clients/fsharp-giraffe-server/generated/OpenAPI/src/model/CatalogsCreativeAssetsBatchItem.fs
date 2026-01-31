@@ -17,8 +17,8 @@ module CatalogsCreativeAssetsBatchItem =
   //#endregion
 
   type CatalogsCreativeAssetsBatchItem = {
+    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
     CreativeAssetsId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
   }
   //#endregion

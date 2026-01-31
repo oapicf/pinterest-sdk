@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsRetailItemResponse');
 API.Client.CatalogsRetailItemResponse = function() {}
 
 /**
+ * @type {!API.Client.ItemAttributes}
+ * @export
+ */
+API.Client.CatalogsRetailItemResponse.prototype.attributes;
+
+/**
  * @type {!API.Client.CatalogsType}
  * @export
  */
@@ -25,10 +31,4 @@ API.Client.CatalogsRetailItemResponse.prototype.itemId;
  * @export
  */
 API.Client.CatalogsRetailItemResponse.prototype.pins;
-
-/**
- * @type {!API.Client.ItemAttributes}
- * @export
- */
-API.Client.CatalogsRetailItemResponse.prototype.attributes;
 

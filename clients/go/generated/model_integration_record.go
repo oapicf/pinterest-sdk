@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,22 +20,22 @@ var _ MappedNullable = &IntegrationRecord{}
 
 // IntegrationRecord Integration record
 type IntegrationRecord struct {
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
-	ConnectedMerchantId NullableString `json:"connected_merchant_id,omitempty"`
-	ConnectedUserId *string `json:"connected_user_id,omitempty"`
+	AdditionalId1 NullableString `json:"additional_id_1,omitempty"`
 	ConnectedAdvertiserId NullableString `json:"connected_advertiser_id,omitempty"`
 	ConnectedLbaId NullableString `json:"connected_lba_id,omitempty"`
+	ConnectedMerchantId NullableString `json:"connected_merchant_id,omitempty"`
 	ConnectedTagId NullableString `json:"connected_tag_id,omitempty"`
+	ConnectedUserId *string `json:"connected_user_id,omitempty"`
+	CreatedTime *int32 `json:"created_time,omitempty"`
+	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	PartnerAccessToken NullableString `json:"partner_access_token,omitempty"`
-	PartnerRefreshToken NullableString `json:"partner_refresh_token,omitempty"`
-	PartnerPrimaryEmail NullableString `json:"partner_primary_email,omitempty"`
 	PartnerAccessTokenExpiry NullableInt32 `json:"partner_access_token_expiry,omitempty"`
+	PartnerMetadata NullableString `json:"partner_metadata,omitempty"`
+	PartnerPrimaryEmail NullableString `json:"partner_primary_email,omitempty"`
+	PartnerRefreshToken NullableString `json:"partner_refresh_token,omitempty"`
 	PartnerRefreshTokenExpiry NullableInt32 `json:"partner_refresh_token_expiry,omitempty"`
 	Scopes NullableString `json:"scopes,omitempty"`
-	PartnerMetadata NullableString `json:"partner_metadata,omitempty"`
-	AdditionalId1 NullableString `json:"additional_id_1,omitempty"`
-	CreatedTime *int32 `json:"created_time,omitempty"`
 	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }
 
@@ -56,152 +56,46 @@ func NewIntegrationRecordWithDefaults() *IntegrationRecord {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *IntegrationRecord) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationRecord) GetAdditionalId1() string {
+	if o == nil || IsNil(o.AdditionalId1.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.AdditionalId1.Get()
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRecord) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *IntegrationRecord) SetId(v string) {
-	o.Id = &v
-}
-
-// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRecord) GetExternalBusinessId() string {
-	if o == nil || IsNil(o.ExternalBusinessId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ExternalBusinessId.Get()
-}
-
-// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
+// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRecord) GetExternalBusinessIdOk() (*string, bool) {
+func (o *IntegrationRecord) GetAdditionalId1Ok() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExternalBusinessId.Get(), o.ExternalBusinessId.IsSet()
+	return o.AdditionalId1.Get(), o.AdditionalId1.IsSet()
 }
 
-// HasExternalBusinessId returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasExternalBusinessId() bool {
-	if o != nil && o.ExternalBusinessId.IsSet() {
+// HasAdditionalId1 returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasAdditionalId1() bool {
+	if o != nil && o.AdditionalId1.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExternalBusinessId gets a reference to the given NullableString and assigns it to the ExternalBusinessId field.
-func (o *IntegrationRecord) SetExternalBusinessId(v string) {
-	o.ExternalBusinessId.Set(&v)
+// SetAdditionalId1 gets a reference to the given NullableString and assigns it to the AdditionalId1 field.
+func (o *IntegrationRecord) SetAdditionalId1(v string) {
+	o.AdditionalId1.Set(&v)
 }
-// SetExternalBusinessIdNil sets the value for ExternalBusinessId to be an explicit nil
-func (o *IntegrationRecord) SetExternalBusinessIdNil() {
-	o.ExternalBusinessId.Set(nil)
-}
-
-// UnsetExternalBusinessId ensures that no value is present for ExternalBusinessId, not even an explicit nil
-func (o *IntegrationRecord) UnsetExternalBusinessId() {
-	o.ExternalBusinessId.Unset()
+// SetAdditionalId1Nil sets the value for AdditionalId1 to be an explicit nil
+func (o *IntegrationRecord) SetAdditionalId1Nil() {
+	o.AdditionalId1.Set(nil)
 }
 
-// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRecord) GetConnectedMerchantId() string {
-	if o == nil || IsNil(o.ConnectedMerchantId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectedMerchantId.Get()
-}
-
-// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRecord) GetConnectedMerchantIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ConnectedMerchantId.Get(), o.ConnectedMerchantId.IsSet()
-}
-
-// HasConnectedMerchantId returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasConnectedMerchantId() bool {
-	if o != nil && o.ConnectedMerchantId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectedMerchantId gets a reference to the given NullableString and assigns it to the ConnectedMerchantId field.
-func (o *IntegrationRecord) SetConnectedMerchantId(v string) {
-	o.ConnectedMerchantId.Set(&v)
-}
-// SetConnectedMerchantIdNil sets the value for ConnectedMerchantId to be an explicit nil
-func (o *IntegrationRecord) SetConnectedMerchantIdNil() {
-	o.ConnectedMerchantId.Set(nil)
-}
-
-// UnsetConnectedMerchantId ensures that no value is present for ConnectedMerchantId, not even an explicit nil
-func (o *IntegrationRecord) UnsetConnectedMerchantId() {
-	o.ConnectedMerchantId.Unset()
-}
-
-// GetConnectedUserId returns the ConnectedUserId field value if set, zero value otherwise.
-func (o *IntegrationRecord) GetConnectedUserId() string {
-	if o == nil || IsNil(o.ConnectedUserId) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectedUserId
-}
-
-// GetConnectedUserIdOk returns a tuple with the ConnectedUserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRecord) GetConnectedUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectedUserId) {
-		return nil, false
-	}
-	return o.ConnectedUserId, true
-}
-
-// HasConnectedUserId returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasConnectedUserId() bool {
-	if o != nil && !IsNil(o.ConnectedUserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectedUserId gets a reference to the given string and assigns it to the ConnectedUserId field.
-func (o *IntegrationRecord) SetConnectedUserId(v string) {
-	o.ConnectedUserId = &v
+// UnsetAdditionalId1 ensures that no value is present for AdditionalId1, not even an explicit nil
+func (o *IntegrationRecord) UnsetAdditionalId1() {
+	o.AdditionalId1.Unset()
 }
 
 // GetConnectedAdvertiserId returns the ConnectedAdvertiserId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -288,6 +182,48 @@ func (o *IntegrationRecord) UnsetConnectedLbaId() {
 	o.ConnectedLbaId.Unset()
 }
 
+// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationRecord) GetConnectedMerchantId() string {
+	if o == nil || IsNil(o.ConnectedMerchantId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedMerchantId.Get()
+}
+
+// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IntegrationRecord) GetConnectedMerchantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ConnectedMerchantId.Get(), o.ConnectedMerchantId.IsSet()
+}
+
+// HasConnectedMerchantId returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasConnectedMerchantId() bool {
+	if o != nil && o.ConnectedMerchantId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedMerchantId gets a reference to the given NullableString and assigns it to the ConnectedMerchantId field.
+func (o *IntegrationRecord) SetConnectedMerchantId(v string) {
+	o.ConnectedMerchantId.Set(&v)
+}
+// SetConnectedMerchantIdNil sets the value for ConnectedMerchantId to be an explicit nil
+func (o *IntegrationRecord) SetConnectedMerchantIdNil() {
+	o.ConnectedMerchantId.Set(nil)
+}
+
+// UnsetConnectedMerchantId ensures that no value is present for ConnectedMerchantId, not even an explicit nil
+func (o *IntegrationRecord) UnsetConnectedMerchantId() {
+	o.ConnectedMerchantId.Unset()
+}
+
 // GetConnectedTagId returns the ConnectedTagId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IntegrationRecord) GetConnectedTagId() string {
 	if o == nil || IsNil(o.ConnectedTagId.Get()) {
@@ -328,6 +264,144 @@ func (o *IntegrationRecord) SetConnectedTagIdNil() {
 // UnsetConnectedTagId ensures that no value is present for ConnectedTagId, not even an explicit nil
 func (o *IntegrationRecord) UnsetConnectedTagId() {
 	o.ConnectedTagId.Unset()
+}
+
+// GetConnectedUserId returns the ConnectedUserId field value if set, zero value otherwise.
+func (o *IntegrationRecord) GetConnectedUserId() string {
+	if o == nil || IsNil(o.ConnectedUserId) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedUserId
+}
+
+// GetConnectedUserIdOk returns a tuple with the ConnectedUserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRecord) GetConnectedUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectedUserId) {
+		return nil, false
+	}
+	return o.ConnectedUserId, true
+}
+
+// HasConnectedUserId returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasConnectedUserId() bool {
+	if o != nil && !IsNil(o.ConnectedUserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedUserId gets a reference to the given string and assigns it to the ConnectedUserId field.
+func (o *IntegrationRecord) SetConnectedUserId(v string) {
+	o.ConnectedUserId = &v
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+func (o *IntegrationRecord) GetCreatedTime() int32 {
+	if o == nil || IsNil(o.CreatedTime) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedTime
+}
+
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRecord) GetCreatedTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.CreatedTime) {
+		return nil, false
+	}
+	return o.CreatedTime, true
+}
+
+// HasCreatedTime returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasCreatedTime() bool {
+	if o != nil && !IsNil(o.CreatedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTime gets a reference to the given int32 and assigns it to the CreatedTime field.
+func (o *IntegrationRecord) SetCreatedTime(v int32) {
+	o.CreatedTime = &v
+}
+
+// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationRecord) GetExternalBusinessId() string {
+	if o == nil || IsNil(o.ExternalBusinessId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalBusinessId.Get()
+}
+
+// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IntegrationRecord) GetExternalBusinessIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalBusinessId.Get(), o.ExternalBusinessId.IsSet()
+}
+
+// HasExternalBusinessId returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasExternalBusinessId() bool {
+	if o != nil && o.ExternalBusinessId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalBusinessId gets a reference to the given NullableString and assigns it to the ExternalBusinessId field.
+func (o *IntegrationRecord) SetExternalBusinessId(v string) {
+	o.ExternalBusinessId.Set(&v)
+}
+// SetExternalBusinessIdNil sets the value for ExternalBusinessId to be an explicit nil
+func (o *IntegrationRecord) SetExternalBusinessIdNil() {
+	o.ExternalBusinessId.Set(nil)
+}
+
+// UnsetExternalBusinessId ensures that no value is present for ExternalBusinessId, not even an explicit nil
+func (o *IntegrationRecord) UnsetExternalBusinessId() {
+	o.ExternalBusinessId.Unset()
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *IntegrationRecord) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationRecord) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *IntegrationRecord) SetId(v string) {
+	o.Id = &v
 }
 
 // GetPartnerAccessToken returns the PartnerAccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -372,46 +446,88 @@ func (o *IntegrationRecord) UnsetPartnerAccessToken() {
 	o.PartnerAccessToken.Unset()
 }
 
-// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRecord) GetPartnerRefreshToken() string {
-	if o == nil || IsNil(o.PartnerRefreshToken.Get()) {
-		var ret string
+// GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationRecord) GetPartnerAccessTokenExpiry() int32 {
+	if o == nil || IsNil(o.PartnerAccessTokenExpiry.Get()) {
+		var ret int32
 		return ret
 	}
-	return *o.PartnerRefreshToken.Get()
+	return *o.PartnerAccessTokenExpiry.Get()
 }
 
-// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
+// GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRecord) GetPartnerRefreshTokenOk() (*string, bool) {
+func (o *IntegrationRecord) GetPartnerAccessTokenExpiryOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PartnerRefreshToken.Get(), o.PartnerRefreshToken.IsSet()
+	return o.PartnerAccessTokenExpiry.Get(), o.PartnerAccessTokenExpiry.IsSet()
 }
 
-// HasPartnerRefreshToken returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasPartnerRefreshToken() bool {
-	if o != nil && o.PartnerRefreshToken.IsSet() {
+// HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasPartnerAccessTokenExpiry() bool {
+	if o != nil && o.PartnerAccessTokenExpiry.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerRefreshToken gets a reference to the given NullableString and assigns it to the PartnerRefreshToken field.
-func (o *IntegrationRecord) SetPartnerRefreshToken(v string) {
-	o.PartnerRefreshToken.Set(&v)
+// SetPartnerAccessTokenExpiry gets a reference to the given NullableInt32 and assigns it to the PartnerAccessTokenExpiry field.
+func (o *IntegrationRecord) SetPartnerAccessTokenExpiry(v int32) {
+	o.PartnerAccessTokenExpiry.Set(&v)
 }
-// SetPartnerRefreshTokenNil sets the value for PartnerRefreshToken to be an explicit nil
-func (o *IntegrationRecord) SetPartnerRefreshTokenNil() {
-	o.PartnerRefreshToken.Set(nil)
+// SetPartnerAccessTokenExpiryNil sets the value for PartnerAccessTokenExpiry to be an explicit nil
+func (o *IntegrationRecord) SetPartnerAccessTokenExpiryNil() {
+	o.PartnerAccessTokenExpiry.Set(nil)
 }
 
-// UnsetPartnerRefreshToken ensures that no value is present for PartnerRefreshToken, not even an explicit nil
-func (o *IntegrationRecord) UnsetPartnerRefreshToken() {
-	o.PartnerRefreshToken.Unset()
+// UnsetPartnerAccessTokenExpiry ensures that no value is present for PartnerAccessTokenExpiry, not even an explicit nil
+func (o *IntegrationRecord) UnsetPartnerAccessTokenExpiry() {
+	o.PartnerAccessTokenExpiry.Unset()
+}
+
+// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationRecord) GetPartnerMetadata() string {
+	if o == nil || IsNil(o.PartnerMetadata.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerMetadata.Get()
+}
+
+// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IntegrationRecord) GetPartnerMetadataOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PartnerMetadata.Get(), o.PartnerMetadata.IsSet()
+}
+
+// HasPartnerMetadata returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasPartnerMetadata() bool {
+	if o != nil && o.PartnerMetadata.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerMetadata gets a reference to the given NullableString and assigns it to the PartnerMetadata field.
+func (o *IntegrationRecord) SetPartnerMetadata(v string) {
+	o.PartnerMetadata.Set(&v)
+}
+// SetPartnerMetadataNil sets the value for PartnerMetadata to be an explicit nil
+func (o *IntegrationRecord) SetPartnerMetadataNil() {
+	o.PartnerMetadata.Set(nil)
+}
+
+// UnsetPartnerMetadata ensures that no value is present for PartnerMetadata, not even an explicit nil
+func (o *IntegrationRecord) UnsetPartnerMetadata() {
+	o.PartnerMetadata.Unset()
 }
 
 // GetPartnerPrimaryEmail returns the PartnerPrimaryEmail field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -456,46 +572,46 @@ func (o *IntegrationRecord) UnsetPartnerPrimaryEmail() {
 	o.PartnerPrimaryEmail.Unset()
 }
 
-// GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRecord) GetPartnerAccessTokenExpiry() int32 {
-	if o == nil || IsNil(o.PartnerAccessTokenExpiry.Get()) {
-		var ret int32
+// GetPartnerRefreshToken returns the PartnerRefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationRecord) GetPartnerRefreshToken() string {
+	if o == nil || IsNil(o.PartnerRefreshToken.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.PartnerAccessTokenExpiry.Get()
+	return *o.PartnerRefreshToken.Get()
 }
 
-// GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field value if set, nil otherwise
+// GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRecord) GetPartnerAccessTokenExpiryOk() (*int32, bool) {
+func (o *IntegrationRecord) GetPartnerRefreshTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PartnerAccessTokenExpiry.Get(), o.PartnerAccessTokenExpiry.IsSet()
+	return o.PartnerRefreshToken.Get(), o.PartnerRefreshToken.IsSet()
 }
 
-// HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasPartnerAccessTokenExpiry() bool {
-	if o != nil && o.PartnerAccessTokenExpiry.IsSet() {
+// HasPartnerRefreshToken returns a boolean if a field has been set.
+func (o *IntegrationRecord) HasPartnerRefreshToken() bool {
+	if o != nil && o.PartnerRefreshToken.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerAccessTokenExpiry gets a reference to the given NullableInt32 and assigns it to the PartnerAccessTokenExpiry field.
-func (o *IntegrationRecord) SetPartnerAccessTokenExpiry(v int32) {
-	o.PartnerAccessTokenExpiry.Set(&v)
+// SetPartnerRefreshToken gets a reference to the given NullableString and assigns it to the PartnerRefreshToken field.
+func (o *IntegrationRecord) SetPartnerRefreshToken(v string) {
+	o.PartnerRefreshToken.Set(&v)
 }
-// SetPartnerAccessTokenExpiryNil sets the value for PartnerAccessTokenExpiry to be an explicit nil
-func (o *IntegrationRecord) SetPartnerAccessTokenExpiryNil() {
-	o.PartnerAccessTokenExpiry.Set(nil)
+// SetPartnerRefreshTokenNil sets the value for PartnerRefreshToken to be an explicit nil
+func (o *IntegrationRecord) SetPartnerRefreshTokenNil() {
+	o.PartnerRefreshToken.Set(nil)
 }
 
-// UnsetPartnerAccessTokenExpiry ensures that no value is present for PartnerAccessTokenExpiry, not even an explicit nil
-func (o *IntegrationRecord) UnsetPartnerAccessTokenExpiry() {
-	o.PartnerAccessTokenExpiry.Unset()
+// UnsetPartnerRefreshToken ensures that no value is present for PartnerRefreshToken, not even an explicit nil
+func (o *IntegrationRecord) UnsetPartnerRefreshToken() {
+	o.PartnerRefreshToken.Unset()
 }
 
 // GetPartnerRefreshTokenExpiry returns the PartnerRefreshTokenExpiry field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -582,122 +698,6 @@ func (o *IntegrationRecord) UnsetScopes() {
 	o.Scopes.Unset()
 }
 
-// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRecord) GetPartnerMetadata() string {
-	if o == nil || IsNil(o.PartnerMetadata.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerMetadata.Get()
-}
-
-// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRecord) GetPartnerMetadataOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PartnerMetadata.Get(), o.PartnerMetadata.IsSet()
-}
-
-// HasPartnerMetadata returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasPartnerMetadata() bool {
-	if o != nil && o.PartnerMetadata.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerMetadata gets a reference to the given NullableString and assigns it to the PartnerMetadata field.
-func (o *IntegrationRecord) SetPartnerMetadata(v string) {
-	o.PartnerMetadata.Set(&v)
-}
-// SetPartnerMetadataNil sets the value for PartnerMetadata to be an explicit nil
-func (o *IntegrationRecord) SetPartnerMetadataNil() {
-	o.PartnerMetadata.Set(nil)
-}
-
-// UnsetPartnerMetadata ensures that no value is present for PartnerMetadata, not even an explicit nil
-func (o *IntegrationRecord) UnsetPartnerMetadata() {
-	o.PartnerMetadata.Unset()
-}
-
-// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationRecord) GetAdditionalId1() string {
-	if o == nil || IsNil(o.AdditionalId1.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AdditionalId1.Get()
-}
-
-// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationRecord) GetAdditionalId1Ok() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AdditionalId1.Get(), o.AdditionalId1.IsSet()
-}
-
-// HasAdditionalId1 returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasAdditionalId1() bool {
-	if o != nil && o.AdditionalId1.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAdditionalId1 gets a reference to the given NullableString and assigns it to the AdditionalId1 field.
-func (o *IntegrationRecord) SetAdditionalId1(v string) {
-	o.AdditionalId1.Set(&v)
-}
-// SetAdditionalId1Nil sets the value for AdditionalId1 to be an explicit nil
-func (o *IntegrationRecord) SetAdditionalId1Nil() {
-	o.AdditionalId1.Set(nil)
-}
-
-// UnsetAdditionalId1 ensures that no value is present for AdditionalId1, not even an explicit nil
-func (o *IntegrationRecord) UnsetAdditionalId1() {
-	o.AdditionalId1.Unset()
-}
-
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
-func (o *IntegrationRecord) GetCreatedTime() int32 {
-	if o == nil || IsNil(o.CreatedTime) {
-		var ret int32
-		return ret
-	}
-	return *o.CreatedTime
-}
-
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationRecord) GetCreatedTimeOk() (*int32, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
-		return nil, false
-	}
-	return o.CreatedTime, true
-}
-
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTime gets a reference to the given int32 and assigns it to the CreatedTime field.
-func (o *IntegrationRecord) SetCreatedTime(v int32) {
-	o.CreatedTime = &v
-}
-
 // GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
 func (o *IntegrationRecord) GetUpdatedTime() int32 {
 	if o == nil || IsNil(o.UpdatedTime) {
@@ -740,17 +740,8 @@ func (o IntegrationRecord) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.ExternalBusinessId.IsSet() {
-		toSerialize["external_business_id"] = o.ExternalBusinessId.Get()
-	}
-	if o.ConnectedMerchantId.IsSet() {
-		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId.Get()
-	}
-	if !IsNil(o.ConnectedUserId) {
-		toSerialize["connected_user_id"] = o.ConnectedUserId
+	if o.AdditionalId1.IsSet() {
+		toSerialize["additional_id_1"] = o.AdditionalId1.Get()
 	}
 	if o.ConnectedAdvertiserId.IsSet() {
 		toSerialize["connected_advertiser_id"] = o.ConnectedAdvertiserId.Get()
@@ -758,35 +749,44 @@ func (o IntegrationRecord) ToMap() (map[string]interface{}, error) {
 	if o.ConnectedLbaId.IsSet() {
 		toSerialize["connected_lba_id"] = o.ConnectedLbaId.Get()
 	}
+	if o.ConnectedMerchantId.IsSet() {
+		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId.Get()
+	}
 	if o.ConnectedTagId.IsSet() {
 		toSerialize["connected_tag_id"] = o.ConnectedTagId.Get()
+	}
+	if !IsNil(o.ConnectedUserId) {
+		toSerialize["connected_user_id"] = o.ConnectedUserId
+	}
+	if !IsNil(o.CreatedTime) {
+		toSerialize["created_time"] = o.CreatedTime
+	}
+	if o.ExternalBusinessId.IsSet() {
+		toSerialize["external_business_id"] = o.ExternalBusinessId.Get()
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if o.PartnerAccessToken.IsSet() {
 		toSerialize["partner_access_token"] = o.PartnerAccessToken.Get()
 	}
-	if o.PartnerRefreshToken.IsSet() {
-		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken.Get()
+	if o.PartnerAccessTokenExpiry.IsSet() {
+		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry.Get()
+	}
+	if o.PartnerMetadata.IsSet() {
+		toSerialize["partner_metadata"] = o.PartnerMetadata.Get()
 	}
 	if o.PartnerPrimaryEmail.IsSet() {
 		toSerialize["partner_primary_email"] = o.PartnerPrimaryEmail.Get()
 	}
-	if o.PartnerAccessTokenExpiry.IsSet() {
-		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry.Get()
+	if o.PartnerRefreshToken.IsSet() {
+		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken.Get()
 	}
 	if o.PartnerRefreshTokenExpiry.IsSet() {
 		toSerialize["partner_refresh_token_expiry"] = o.PartnerRefreshTokenExpiry.Get()
 	}
 	if o.Scopes.IsSet() {
 		toSerialize["scopes"] = o.Scopes.Get()
-	}
-	if o.PartnerMetadata.IsSet() {
-		toSerialize["partner_metadata"] = o.PartnerMetadata.Get()
-	}
-	if o.AdditionalId1.IsSet() {
-		toSerialize["additional_id_1"] = o.AdditionalId1.Get()
-	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
 	}
 	if !IsNil(o.UpdatedTime) {
 		toSerialize["updated_time"] = o.UpdatedTime

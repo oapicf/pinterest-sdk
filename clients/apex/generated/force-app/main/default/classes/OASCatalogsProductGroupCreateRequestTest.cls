@@ -73,17 +73,17 @@ private class OASCatalogsProductGroupCreateRequestTest {
     private static void maintainRenamedProperties() {
         OASCatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest = new OASCatalogsProductGroupCreateRequest();
         Map<String, String> x-property-mappings = catalogsProductGroupCreateRequest.getx-property-mappings();
-        System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
         System.assertEquals('feedId', x-property-mappings.get('feed_id'));
+        System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest = new OASCatalogsProductGroupCreateRequest();
         System.assertEquals(false, catalogsProductGroupCreateRequest.isFeatured);
-        System.assertEquals(null, catalogsProductGroupCreateRequest.name);
         System.assertEquals(null, catalogsProductGroupCreateRequest.description);
-        System.assertEquals(null, catalogsProductGroupCreateRequest.filters);
         System.assertEquals(null, catalogsProductGroupCreateRequest.feedId);
+        System.assertEquals(null, catalogsProductGroupCreateRequest.filters);
+        System.assertEquals(null, catalogsProductGroupCreateRequest.name);
     }
 }

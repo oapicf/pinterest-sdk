@@ -3,6 +3,8 @@ package models
 // CatalogsHotelItemResponse - Object describing a hotel record
 type CatalogsHotelItemResponse struct {
 
+	Attributes CatalogsHotelAttributes `json:"attributes,omitempty"`
+
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	// The catalog hotel id in the merchant namespace
@@ -10,6 +12,4 @@ type CatalogsHotelItemResponse struct {
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes CatalogsHotelAttributes `json:"attributes,omitempty"`
 }

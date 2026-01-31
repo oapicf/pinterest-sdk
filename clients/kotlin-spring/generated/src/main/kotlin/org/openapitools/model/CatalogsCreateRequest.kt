@@ -4,6 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -17,35 +18,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object for creating a catalog.
- * @param catalogType Type of the catalog entity.
+ * @param catalogType 
  * @param name A human-friendly name associated to a given catalog.
  */
 data class CatalogsCreateRequest(
 
-    @Schema(example = "null", required = true, description = "Type of the catalog entity.")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsCreateRequest.CatalogType,
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
 
     @Schema(example = "null", required = true, description = "A human-friendly name associated to a given catalog.")
     @get:JsonProperty("name", required = true) val name: kotlin.String
 ) {
-
-    /**
-    * Type of the catalog entity.
-    * Values: HOTEL
-    */
-    enum class CatalogType(@get:JsonValue val value: kotlin.String) {
-
-        HOTEL("HOTEL");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreateRequest'")
-            }
-        }
-    }
 
 }
 

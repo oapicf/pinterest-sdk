@@ -10,14 +10,14 @@ module SSIOAccountItem =
 
 
   type SSIOAccountItem = {
-    Id : string;
-    IoTermsId : string;
-    IoTerms : string;
-    UsTermsId : string;
-    UsTerms : string;
-    RowTermsId : string;
-    RowTerms : string;
-    IoType : string;
     Addresses : SSIOAccountAddress[];
+    Id : string;
+    IoTerms : string;
+    IoTermsId : string;
+    IoType : string;
+    RowTerms : string;
+    RowTermsId : string;
+    UsTerms : string;
+    UsTermsId : string;
   }
   //#endregion

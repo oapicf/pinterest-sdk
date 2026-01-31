@@ -9,8 +9,8 @@
 -export_type([openapi_targeting_template_list_200_response/0]).
 
 -type openapi_targeting_template_list_200_response() ::
-  [ {'items', list(openapi_targeting_template_response_data:openapi_targeting_template_response_data()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_targeting_template_get_response_data:openapi_targeting_template_get_response_data()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_targeting_template_list_200_response() ->
     openapi_targeting_template_list_200_response([]).
 
 openapi_targeting_template_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_targeting_template_response_data:openapi_targeting_template_response_data()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_targeting_template_get_response_data:openapi_targeting_template_get_response_data()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

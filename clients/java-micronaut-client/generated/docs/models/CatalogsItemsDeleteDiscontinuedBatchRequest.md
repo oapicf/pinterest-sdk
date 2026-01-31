@@ -11,9 +11,10 @@ The class is defined in **[CatalogsItemsDeleteDiscontinuedBatchRequest.java](../
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | `Country` |  | 
+**items** | [`List&lt;ItemDeleteDiscontinuedBatchRecord&gt;`](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 **language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **operation** | `BatchOperation` |  | 
-**items** | [`List&lt;ItemDeleteDiscontinuedBatchRecord&gt;`](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
+
 
 
 ## LanguageEnum
@@ -127,7 +128,6 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
 
 
 

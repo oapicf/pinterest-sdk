@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`success` | boolean
 `errorCode` | number
 `errorMessage` | string
+`success` | boolean
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { AdsCreditRedeemResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "success": false,
   "errorCode": 2708,
   "errorMessage": The offer has already been redeemed by this advertiser,
+  "success": false,
 } satisfies AdsCreditRedeemResponse
 
 console.log(example)

@@ -10,6 +10,7 @@
   {
    (ds/opt :ad_account_id) string?
    (ds/opt :created_time) float?
+   (ds/opt :exceptions) any?
    (ds/opt :id) string?
    (ds/opt :name) string?
    (ds/opt :num_batches) float?
@@ -18,7 +19,6 @@
    (ds/opt :status) string?
    (ds/opt :type) string?
    (ds/opt :updated_time) float?
-   (ds/opt :exceptions) any?
    })
 
 (def customer-list-spec

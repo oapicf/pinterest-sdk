@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CreateMMMReportResponseData._
 
 case class CreateMMMReportResponseData (
-  reportStatus: Option[BulkReportingJobStatus],
-token: Option[String],
-message: Option[String],
-status: Option[String])
+  message: Option[String],
+reportStatus: Option[BulkReportingJobStatus],
+status: Option[String],
+token: Option[String])
 
 object CreateMMMReportResponseData {
   import DateTimeCodecs._

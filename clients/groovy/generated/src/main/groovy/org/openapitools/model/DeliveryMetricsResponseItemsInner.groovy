@@ -6,8 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class DeliveryMetricsResponseItemsInner {
-    /* Metric's name. */
-    String name
 
     enum CategoryEnum {
     
@@ -37,4 +35,6 @@ class DeliveryMetricsResponseItemsInner {
     String definition
     /* Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. */
     String displayName
+    /* Metric's name. */
+    String name
 }

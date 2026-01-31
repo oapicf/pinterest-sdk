@@ -23,14 +23,14 @@ catalogs_report_t* instantiate_catalogs_report(int include_optional) {
   if (include_optional) {
     catalogs_report = catalogs_report_create(
       pinterest_rest_api_catalogs_report_REPORTSTATUS_FINISHED,
-      "0",
-      1.337
+      1.337,
+      "0"
     );
   } else {
     catalogs_report = catalogs_report_create(
       pinterest_rest_api_catalogs_report_REPORTSTATUS_FINISHED,
-      "0",
-      1.337
+      1.337,
+      "0"
     );
   }
 

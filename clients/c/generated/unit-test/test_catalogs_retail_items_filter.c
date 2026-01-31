@@ -22,15 +22,15 @@ catalogs_retail_items_filter_t* instantiate_catalogs_retail_items_filter(int inc
   catalogs_retail_items_filter_t* catalogs_retail_items_filter = NULL;
   if (include_optional) {
     catalogs_retail_items_filter = catalogs_retail_items_filter_create(
+      "a",
       pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_RETAIL,
-      list_createList(),
-      "a"
+      list_createList()
     );
   } else {
     catalogs_retail_items_filter = catalogs_retail_items_filter_create(
+      "a",
       pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_RETAIL,
-      list_createList(),
-      "a"
+      list_createList()
     );
   }
 

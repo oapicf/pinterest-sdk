@@ -27,41 +27,42 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param id 
- * @param name 
- * @param owner 
  * @param country 
+ * @param createdTime  Creation time. Unix timestamp in seconds.
  * @param currency 
+ * @param name Ad account name.
+ * @param owner Ad account owner
  * @param permissions 
- * @param createdTime Creation time. Unix timestamp in seconds.
- * @param updatedTime Last update time. Unix timestamp in seconds.
+ * @param updatedTime 
  */
 
 
 data class AdAccount (
 
     @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    @Json(name = "owner")
-    val owner: AdAccountOwner? = null,
+    val id: kotlin.String,
 
     @Json(name = "country")
     val country: Country? = null,
 
+    /*  Creation time. Unix timestamp in seconds. */
+    @Json(name = "created_time")
+    val createdTime: kotlin.Int? = null,
+
     @Json(name = "currency")
     val currency: Currency? = null,
+
+    /* Ad account name. */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
+
+    /* Ad account owner */
+    @Json(name = "owner")
+    val owner: AdAccountOwner? = null,
 
     @Json(name = "permissions")
     val permissions: kotlin.collections.List<BusinessAccessRole>? = null,
 
-    /* Creation time. Unix timestamp in seconds. */
-    @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null,
-
-    /* Last update time. Unix timestamp in seconds. */
     @Json(name = "updated_time")
     val updatedTime: kotlin.Int? = null
 

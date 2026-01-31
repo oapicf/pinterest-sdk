@@ -5,7 +5,7 @@ Pin with multiple videos.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media_type** | **character** |  | [optional] 
-**items** | [**array[VideoMetadata]**](VideoMetadata.md) |  | [optional] 
+**items** | [**array[VideoMetadataWithItemType]**](VideoMetadataWithItemType.md) |  | [optional] 
+**media_type** | **character** |  | [Enum: [multiple_videos]] 
 
 

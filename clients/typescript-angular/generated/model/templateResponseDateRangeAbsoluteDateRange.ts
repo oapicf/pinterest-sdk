@@ -14,16 +14,16 @@
  */
 export interface TemplateResponseDateRangeAbsoluteDateRange { 
     /**
-     * The date range type
+     * The end date of the date range
      */
-    type?: string;
+    end_date?: number;
     /**
      * The start date of the date range
      */
     start_date?: number;
     /**
-     * The end date of the date range
+     * The date range type
      */
-    end_date?: number;
+    type?: string;
 }
 

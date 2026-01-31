@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "S3MultipartUploadData",
+  "fields": [
+    {
+      "name": "file_parts",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.S3FilePart"
+      }],
+      "doc": "Array of file parts with pre-signed URLs.",
+      "default": null
+    }
+  ]
+
+}

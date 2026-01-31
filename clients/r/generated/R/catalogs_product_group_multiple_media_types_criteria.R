@@ -7,16 +7,16 @@
 #' @title CatalogsProductGroupMultipleMediaTypesCriteria
 #' @description CatalogsProductGroupMultipleMediaTypesCriteria Class
 #' @format An \code{R6Class} generator object
-#' @field values  list(\link{MediaType})
 #' @field negated  character [optional]
+#' @field values  list(\link{MediaType})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupMultipleMediaTypesCriteria <- R6::R6Class(
   "CatalogsProductGroupMultipleMediaTypesCriteria",
   public = list(
-    `values` = NULL,
     `negated` = NULL,
+    `values` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupMultipleMediaTypesCriteria class.
@@ -69,13 +69,13 @@ CatalogsProductGroupMultipleMediaTypesCriteria <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupMultipleMediaTypesCriteriaObject <- list()
-      if (!is.null(self$`values`)) {
-        CatalogsProductGroupMultipleMediaTypesCriteriaObject[["values"]] <-
-          lapply(self$`values`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupMultipleMediaTypesCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`values`)) {
+        CatalogsProductGroupMultipleMediaTypesCriteriaObject[["values"]] <-
+          lapply(self$`values`, function(x) x$toSimpleType())
       }
       return(CatalogsProductGroupMultipleMediaTypesCriteriaObject)
     },
@@ -87,11 +87,11 @@ CatalogsProductGroupMultipleMediaTypesCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleMediaTypesCriteria
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`values`)) {
-        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[MediaType]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`negated`)) {
         self$`negated` <- this_object$`negated`
+      }
+      if (!is.null(this_object$`values`)) {
+        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[MediaType]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ CatalogsProductGroupMultipleMediaTypesCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleMediaTypesCriteria
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[MediaType]", loadNamespace("openapi"))
       self$`negated` <- this_object$`negated`
+      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[MediaType]", loadNamespace("openapi"))
       self
     },
 

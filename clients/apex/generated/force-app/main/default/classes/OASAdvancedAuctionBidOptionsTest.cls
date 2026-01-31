@@ -73,8 +73,8 @@ private class OASAdvancedAuctionBidOptionsTest {
     private static void maintainRenamedProperties() {
         OASAdvancedAuctionBidOptions advancedAuctionBidOptions = new OASAdvancedAuctionBidOptions();
         Map<String, String> x-property-mappings = advancedAuctionBidOptions.getx-property-mappings();
-        System.assertEquals('bidInMicroCurrency', x-property-mappings.get('bid_in_micro_currency'));
         System.assertEquals('appTypeMultipliers', x-property-mappings.get('app_type_multipliers'));
+        System.assertEquals('bidInMicroCurrency', x-property-mappings.get('bid_in_micro_currency'));
         System.assertEquals('placementMultipliers', x-property-mappings.get('placement_multipliers'));
     }
 }

@@ -13,8 +13,8 @@ import { TemplateResponseDateRangeDynamicDateRange } from './templateResponseDat
 
 
 export interface TemplateResponseDateRange { 
+    absolute_date_range?: TemplateResponseDateRangeAbsoluteDateRange | null;
     dynamic_date_range?: TemplateResponseDateRangeDynamicDateRange | null;
     relative_date_range?: TemplateResponseDateRangeRelativeDateRange | null;
-    absolute_date_range?: TemplateResponseDateRangeAbsoluteDateRange | null;
 }
 

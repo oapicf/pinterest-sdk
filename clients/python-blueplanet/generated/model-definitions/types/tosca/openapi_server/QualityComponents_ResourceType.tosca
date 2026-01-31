@@ -1,0 +1,86 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QualityComponents"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QualityComponents"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  QualityComponentDetails = openapi_server.resourceTypes.QualityComponentDetails
+}
+resourceTypes {
+
+  QualityComponents {
+    title = QualityComponents
+    description = QualityComponents
+    derivedFrom = Root
+    properties {
+        advertiser_external_id {
+          # TODO
+          description = ""
+          optional = false
+        }
+        click_id_epik {
+          # TODO
+          description = ""
+          optional = false
+        }
+        external_event_id {
+          # TODO
+          description = "Dedup components."
+          optional = false
+        }
+        hashed_email {
+          # TODO
+          description = "User matching identifiers."
+          optional = false
+        }
+        hashed_maid {
+          # TODO
+          description = ""
+          optional = false
+        }
+        ip_address {
+          # TODO
+          description = ""
+          optional = false
+        }
+        order_id {
+          # TODO
+          description = ""
+          optional = false
+        }
+        order_value {
+          # TODO
+          description = ""
+          optional = false
+        }
+        product_id {
+          # TODO
+          description = "Product/event metadata."
+          optional = false
+        }
+        source_url {
+          # TODO
+          description = ""
+          optional = false
+        }
+        user_agent {
+          # TODO
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  QualityComponents {
+    title = QualityComponents
+    description = QualityComponents
+    implements = openapi_server.resourceTypes.QualityComponents
+
+  }
+}

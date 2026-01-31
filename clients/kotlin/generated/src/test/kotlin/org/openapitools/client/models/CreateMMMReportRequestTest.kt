@@ -28,16 +28,10 @@ class CreateMMMReportRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CreateMMMReportRequest
         //val modelInstance = CreateMMMReportRequest()
 
-        // to test the property `reportName` - Name of the Marketing Mix Modeling (MMM) report
-        should("test reportName") {
+        // to test the property `columns` - Metric and entity columns
+        should("test columns") {
             // uncomment below to test the property
-            //modelInstance.reportName shouldBe ("TODO")
-        }
-
-        // to test the property `startDate` - Metric report start date (UTC). Format: YYYY-MM-DD
-        should("test startDate") {
-            // uncomment below to test the property
-            //modelInstance.startDate shouldBe ("TODO")
+            //modelInstance.columns shouldBe ("TODO")
         }
 
         // to test the property `endDate` - Metric report end date (UTC). Format: YYYY-MM-DD
@@ -58,16 +52,22 @@ class CreateMMMReportRequestTest : ShouldSpec() {
             //modelInstance.level shouldBe ("TODO")
         }
 
+        // to test the property `reportName` - Name of the Marketing Mix Modeling (MMM) report
+        should("test reportName") {
+            // uncomment below to test the property
+            //modelInstance.reportName shouldBe ("TODO")
+        }
+
+        // to test the property `startDate` - Metric report start date (UTC). Format: YYYY-MM-DD
+        should("test startDate") {
+            // uncomment below to test the property
+            //modelInstance.startDate shouldBe ("TODO")
+        }
+
         // to test the property `targetingTypes` - List of targeting types
         should("test targetingTypes") {
             // uncomment below to test the property
             //modelInstance.targetingTypes shouldBe ("TODO")
-        }
-
-        // to test the property `columns` - Metric and entity columns
-        should("test columns") {
-            // uncomment below to test the property
-            //modelInstance.columns shouldBe ("TODO")
         }
 
         // to test the property `countries` - A List of countries for filtering

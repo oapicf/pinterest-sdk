@@ -20,6 +20,26 @@ public class OauthApi extends RouteBuilder {
         
 
         /**
+        POST /oauth/conversion_token : Generate OAuth access token for conversion API
+        **/
+        rest()
+            .securityDefinitions()
+                .oauth2("pinterest_oauth2")
+                    .flow("accessCode")
+                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
+                    .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:write","Create, update, or delete ads, ad groups, campaigns etc.")
+                
+            .endSecurityDefinition()
+            .post("/oauth/conversion_token")
+                .description("Generate OAuth access token for conversion API")
+                .id("oauthConversionTokenApi")
+                .produces("application/json")
+                .outType(ConversionAccessTokenResponse.class)
+                .to("direct:oauthConversionToken");
+        
+
+        /**
         POST /oauth/token : Generate OAuth access token
         **/
         rest()
@@ -40,6 +60,36 @@ public class OauthApi extends RouteBuilder {
                     .required(true)
                 .endParam()
                 .to("direct:oauthToken");
+        
+
+        /**
+        POST /oauth/token/revoke : Revoke a token
+        **/
+        rest()
+            .securityDefinitions()
+                .basicAuth("basic").end()
+            .post("/oauth/token/revoke")
+                .description("Revoke a token")
+                .id("tokenRevokeApi")
+                .clientRequestValidation(false)
+                .bindingMode(RestBindingMode.off)
+                .produces("application/json")
+                .outType(Void.class)
+                .consumes("application/x-www-form-urlencoded")
+                
+                .param()
+                    .name("token")
+                    .type(RestParamType.formData)
+                    .required(true)
+                    .description("The token to revoke.")
+                .endParam()
+                .param()
+                    .name("tokenTypeHint")
+                    .type(RestParamType.formData)
+                    .required(false)
+                    .description("The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.")
+                .endParam()
+                .to("direct:tokenRevoke");
         
     }
 }

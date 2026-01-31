@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionEventsUserData`
 --
-SELECT `ph`, `ge`, `db`, `ln`, `fn`, `ct`, `st`, `zp`, `country`, `external_id`, `click_id`, `partner_id`, `em`, `hashed_maids`, `client_ip_address`, `client_user_agent` FROM `ConversionEventsUserData` WHERE 1;
+SELECT `click_id`, `client_ip_address`, `client_user_agent`, `country`, `ct`, `db`, `em`, `external_id`, `fn`, `ge`, `hashed_maids`, `ln`, `partner_id`, `ph`, `st`, `zp` FROM `ConversionEventsUserData` WHERE 1;
 
 --
 -- INSERT template for table `ConversionEventsUserData`
 --
-INSERT INTO `ConversionEventsUserData`(`ph`, `ge`, `db`, `ln`, `fn`, `ct`, `st`, `zp`, `country`, `external_id`, `click_id`, `partner_id`, `em`, `hashed_maids`, `client_ip_address`, `client_user_agent`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `ConversionEventsUserData`(`click_id`, `client_ip_address`, `client_user_agent`, `country`, `ct`, `db`, `em`, `external_id`, `fn`, `ge`, `hashed_maids`, `ln`, `partner_id`, `ph`, `st`, `zp`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionEventsUserData`
 --
-UPDATE `ConversionEventsUserData` SET `ph` = ?, `ge` = ?, `db` = ?, `ln` = ?, `fn` = ?, `ct` = ?, `st` = ?, `zp` = ?, `country` = ?, `external_id` = ?, `click_id` = ?, `partner_id` = ?, `em` = ?, `hashed_maids` = ?, `client_ip_address` = ?, `client_user_agent` = ? WHERE 1;
+UPDATE `ConversionEventsUserData` SET `click_id` = ?, `client_ip_address` = ?, `client_user_agent` = ?, `country` = ?, `ct` = ?, `db` = ?, `em` = ?, `external_id` = ?, `fn` = ?, `ge` = ?, `hashed_maids` = ?, `ln` = ?, `partner_id` = ?, `ph` = ?, `st` = ?, `zp` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionEventsUserData`

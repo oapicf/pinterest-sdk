@@ -12,10 +12,10 @@ module BillingProfilesGet200Response =
 
   [<CLIMutable>]
   type BillingProfilesGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : BillingProfilesResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : BillingProfilesResponse[];
   }
 
   //#endregion

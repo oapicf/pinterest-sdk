@@ -11,7 +11,7 @@ import org.openapitools.model.Pin;
 @Canonical
 class PinsList200Response {
     
-    List<Pin> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Pin> items = new ArrayList<>()
 }

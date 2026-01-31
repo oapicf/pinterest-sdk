@@ -5,19 +5,19 @@
 -export_type([openapi_catalogs_item_validation_issues/0]).
 
 -type openapi_catalogs_item_validation_issues() ::
-    #{ 'item_number' := integer(),
+    #{ 'errors' := openapi_catalogs_item_validation_errors:openapi_catalogs_item_validation_errors(),
        'item_id' := binary(),
-       'errors' := openapi_catalogs_item_validation_errors:openapi_catalogs_item_validation_errors(),
+       'item_number' := integer(),
        'warnings' := openapi_catalogs_item_validation_warnings:openapi_catalogs_item_validation_warnings()
      }.
 
-encode(#{ 'item_number' := ItemNumber,
+encode(#{ 'errors' := Errors,
           'item_id' := ItemId,
-          'errors' := Errors,
+          'item_number' := ItemNumber,
           'warnings' := Warnings
         }) ->
-    #{ 'item_number' => ItemNumber,
+    #{ 'errors' => Errors,
        'item_id' => ItemId,
-       'errors' => Errors,
+       'item_number' => ItemNumber,
        'warnings' => Warnings
      }.

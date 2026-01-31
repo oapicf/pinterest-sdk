@@ -13,8 +13,8 @@
 | **IMAGE\_LINK\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **IMAGE\_LINK\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **INVALID\_DOMAIN** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **ITEMID\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **ITEM\_MAIN\_IMAGE\_DOWNLOAD\_FAILURE** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
+| **ITEMID\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **LINK\_FORMAT\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **LINK\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **LIST\_PRICE\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |

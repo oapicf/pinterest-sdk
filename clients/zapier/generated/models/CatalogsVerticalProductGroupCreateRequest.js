@@ -11,6 +11,12 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
+                required: true,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}catalog_type`,
                 label: `[${labelPrefix}catalog_type]`,
                 required: true,
@@ -20,10 +26,8 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}name`,
-                label: `[${labelPrefix}name]`,
-                required: true,
-                type: 'string',
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
             },
             {
                 key: `${keyPrefix}description`,
@@ -32,31 +36,27 @@ module.exports = {
             },
             ...CatalogsCreativeAssetsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
             {
-                key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
-                required: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}country`,
-                ...Country.fields(`${keyPrefix}country`, isInput),
-            },
-            {
                 key: `${keyPrefix}locale`,
                 ...CatalogsLocale.fields(`${keyPrefix}locale`, isInput),
+            },
+            {
+                key: `${keyPrefix}name`,
+                label: `[${labelPrefix}name]`,
+                required: true,
+                type: 'string',
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
+            'country': bundle.inputData?.[`${keyPrefix}country`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'filters': utils.removeIfEmpty(CatalogsCreativeAssetsProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
-            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
-            'country': bundle.inputData?.[`${keyPrefix}country`],
             'locale': bundle.inputData?.[`${keyPrefix}locale`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

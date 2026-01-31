@@ -33,8 +33,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Creative assets batch item")
 @JsonTypeName("CatalogsCreativeAssetsBatchItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsBatchItem   {
+  private CatalogsUpdatableCreativeAssetsAttributes attributes;
   private String creativeAssetsId;
   public enum OperationEnum {
 
@@ -84,19 +85,37 @@ public class CatalogsCreativeAssetsBatchItem   {
 }
 
   private OperationEnum operation;
-  private CatalogsUpdatableCreativeAssetsAttributes attributes;
 
   public CatalogsCreativeAssetsBatchItem() {
   }
 
   @JsonCreator
   public CatalogsCreativeAssetsBatchItem(
+    @JsonProperty(required = true, value = "attributes") CatalogsUpdatableCreativeAssetsAttributes attributes,
     @JsonProperty(required = true, value = "creative_assets_id") String creativeAssetsId,
-    @JsonProperty(required = true, value = "operation") OperationEnum operation,
-    @JsonProperty(required = true, value = "attributes") CatalogsUpdatableCreativeAssetsAttributes attributes
+    @JsonProperty(required = true, value = "operation") OperationEnum operation
   ) {
+    this.attributes = attributes;
     this.creativeAssetsId = creativeAssetsId;
     this.operation = operation;
+  }
+
+  /**
+   **/
+  public CatalogsCreativeAssetsBatchItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "attributes")
+  @NotNull @Valid public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty(required = true, value = "attributes")
+  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -139,25 +158,6 @@ public class CatalogsCreativeAssetsBatchItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  public CatalogsCreativeAssetsBatchItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "attributes")
-  @NotNull @Valid public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  @JsonProperty(required = true, value = "attributes")
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -168,14 +168,14 @@ public class CatalogsCreativeAssetsBatchItem   {
       return false;
     }
     CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem = (CatalogsCreativeAssetsBatchItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreativeAssetsBatchItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreativeAssetsBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -183,9 +183,9 @@ public class CatalogsCreativeAssetsBatchItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BusinessAssetsGet200Response, () {
-    // List of assets the requesting business has access to.
-    // BuiltList<GetBusinessAssetsResponse> items
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List of assets the requesting business has access to.
+    // BuiltList<GetBusinessAssetsResponse> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

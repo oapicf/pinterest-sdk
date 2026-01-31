@@ -16,13 +16,13 @@ void main() {
   // final instance = IntegrationsGetList200Response();
 
   group('test IntegrationsGetList200Response', () {
-    // List<IntegrationRecord> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<IntegrationRecord> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

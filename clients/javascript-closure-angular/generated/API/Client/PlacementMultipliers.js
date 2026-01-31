@@ -16,4 +16,5 @@ API.Client.PlacementMultipliers.prototype.PLACEMENT;
 API.Client.PlacementMultipliers.PLACEMENTEnum = { 
   SEARCH: 'SEARCH',
   BROWSE: 'BROWSE',
+  RELATED_PINS: 'RELATED_PINS',
 }

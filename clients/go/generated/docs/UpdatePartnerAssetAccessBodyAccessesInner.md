@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PartnerId** | **string** | Unique identifier of a business partner to update asset access to. | 
 **AssetId** | **string** | Unique identifier of the business asset. | 
+**PartnerId** | **string** | Unique identifier of a business partner to update asset access to. | 
 **Permissions** | [**[]Permissions**](Permissions.md) | A non-empty array of permissions to assign to the partner. | 
 
 ## Methods
 
 ### NewUpdatePartnerAssetAccessBodyAccessesInner
 
-`func NewUpdatePartnerAssetAccessBodyAccessesInner(partnerId string, assetId string, permissions []Permissions, ) *UpdatePartnerAssetAccessBodyAccessesInner`
+`func NewUpdatePartnerAssetAccessBodyAccessesInner(assetId string, partnerId string, permissions []Permissions, ) *UpdatePartnerAssetAccessBodyAccessesInner`
 
 NewUpdatePartnerAssetAccessBodyAccessesInner instantiates a new UpdatePartnerAssetAccessBodyAccessesInner object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewUpdatePartnerAssetAccessBodyAccessesInnerWithDefaults instantiates a new UpdatePartnerAssetAccessBodyAccessesInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPartnerId
-
-`func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerId() string`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *UpdatePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string)`
-
-SetPartnerId sets PartnerId field to given value.
-
 
 ### GetAssetId
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *UpdatePartnerAssetAccessBodyAccessesInner) SetAssetId(v string)`
 
 SetAssetId sets AssetId field to given value.
+
+
+### GetPartnerId
+
+`func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerId() string`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *UpdatePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *UpdatePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string)`
+
+SetPartnerId sets PartnerId field to given value.
 
 
 ### GetPermissions

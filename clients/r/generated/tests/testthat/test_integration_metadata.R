@@ -5,32 +5,11 @@ context("Test IntegrationMetadata")
 
 model_instance <- IntegrationMetadata$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
+test_that("additional_id_1", {
+  # tests for the property `additional_id_1` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("external_business_id", {
-  # tests for the property `external_business_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`external_business_id`, "EXPECTED_RESULT")
-})
-
-test_that("connected_merchant_id", {
-  # tests for the property `connected_merchant_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`connected_merchant_id`, "EXPECTED_RESULT")
-})
-
-test_that("connected_user_id", {
-  # tests for the property `connected_user_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`connected_user_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`additional_id_1`, "EXPECTED_RESULT")
 })
 
 test_that("connected_advertiser_id", {
@@ -47,6 +26,13 @@ test_that("connected_lba_id", {
   #expect_equal(model.instance$`connected_lba_id`, "EXPECTED_RESULT")
 })
 
+test_that("connected_merchant_id", {
+  # tests for the property `connected_merchant_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`connected_merchant_id`, "EXPECTED_RESULT")
+})
+
 test_that("connected_tag_id", {
   # tests for the property `connected_tag_id` (character)
 
@@ -54,11 +40,46 @@ test_that("connected_tag_id", {
   #expect_equal(model.instance$`connected_tag_id`, "EXPECTED_RESULT")
 })
 
+test_that("connected_user_id", {
+  # tests for the property `connected_user_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`connected_user_id`, "EXPECTED_RESULT")
+})
+
+test_that("created_timestamp", {
+  # tests for the property `created_timestamp` (numeric)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_timestamp`, "EXPECTED_RESULT")
+})
+
+test_that("external_business_id", {
+  # tests for the property `external_business_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`external_business_id`, "EXPECTED_RESULT")
+})
+
+test_that("id", {
+  # tests for the property `id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
 test_that("partner_access_token_expiry", {
   # tests for the property `partner_access_token_expiry` (numeric)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`partner_access_token_expiry`, "EXPECTED_RESULT")
+})
+
+test_that("partner_metadata", {
+  # tests for the property `partner_metadata` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`partner_metadata`, "EXPECTED_RESULT")
 })
 
 test_that("partner_refresh_token_expiry", {
@@ -75,30 +96,9 @@ test_that("scopes", {
   #expect_equal(model.instance$`scopes`, "EXPECTED_RESULT")
 })
 
-test_that("created_timestamp", {
-  # tests for the property `created_timestamp` (numeric)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_timestamp`, "EXPECTED_RESULT")
-})
-
 test_that("updated_timestamp", {
   # tests for the property `updated_timestamp` (numeric)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`updated_timestamp`, "EXPECTED_RESULT")
-})
-
-test_that("additional_id_1", {
-  # tests for the property `additional_id_1` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`additional_id_1`, "EXPECTED_RESULT")
-})
-
-test_that("partner_metadata", {
-  # tests for the property `partner_metadata` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`partner_metadata`, "EXPECTED_RESULT")
 })

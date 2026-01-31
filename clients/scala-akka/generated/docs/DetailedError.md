@@ -9,8 +9,8 @@ Used for including extra details to a base error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Int** |  | 
-**message** | **String** |  | 
 **details** | **Any** |  | 
+**message** | **String** |  | 
 
 
 

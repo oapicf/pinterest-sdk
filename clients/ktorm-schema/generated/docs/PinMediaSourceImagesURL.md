@@ -5,19 +5,19 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;PinMediaSourceImagesURLItemsInner&gt;**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | 
-**sourceType** | source_type | text |  | [**source_type**](#SourceType) |  |  [optional]
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;PinMediaSourceImagesURLItem&gt;**](PinMediaSourceImagesURLItem.md) | Array with image objects. | 
+**sourceType** | source_type | text NOT NULL |  | [**source_type**](#SourceType) | The source type of the media. | 
 **index** | index | int UNSIGNED |  | **kotlin.Int** |  |  [optional]
 
 
-# **Table `PinMediaSourceImagesURLPinMediaSourceImagesURLItemsInner`**
-(mapped from: PinMediaSourceImagesURLPinMediaSourceImagesURLItemsInner)
+# **Table `PinMediaSourceImagesURLPinMediaSourceImagesURLItem`**
+(mapped from: PinMediaSourceImagesURLPinMediaSourceImagesURLItem)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 pinMediaSourceImagesURL | pinMediaSourceImagesURL | long | | kotlin.Long | Primary Key | *one*
-pinMediaSourceImagesURLItemsInner | pinMediaSourceImagesURLItemsInner | long | | kotlin.Long | Foreign Key | *many*
+pinMediaSourceImagesURLItem | pinMediaSourceImagesURLItem | long | | kotlin.Long | Foreign Key | *many*
 
 
 

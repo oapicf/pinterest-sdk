@@ -17,10 +17,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object to upsert catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object to upsert catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsUpsertBatchRequest   {
   
   private Country country;
+  private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -254,7 +255,6 @@ public class CatalogsItemsUpsertBatchRequest   {
 
   private LanguageEnum language;
   private BatchOperation operation;
-  private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
   /**
    **/
@@ -267,6 +267,20 @@ public class CatalogsItemsUpsertBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   * Array with catalogs items
+   **/
+  
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @JsonProperty("items")
+  @NotNull
+ @Size(min=1,max=1000)  public List<@Valid ItemUpsertBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
+    this.items = items;
   }
 
   /**
@@ -296,20 +310,6 @@ public class CatalogsItemsUpsertBatchRequest   {
     this.operation = operation;
   }
 
-  /**
-   * Array with catalogs items
-   **/
-  
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
-  @NotNull
- @Size(min=1,max=1000)  public List<@Valid ItemUpsertBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -321,14 +321,14 @@ public class CatalogsItemsUpsertBatchRequest   {
     }
     CatalogsItemsUpsertBatchRequest catalogsItemsUpsertBatchRequest = (CatalogsItemsUpsertBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsUpsertBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsUpsertBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsUpsertBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsUpsertBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsUpsertBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsUpsertBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -337,9 +337,9 @@ public class CatalogsItemsUpsertBatchRequest   {
     sb.append("class CatalogsItemsUpsertBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

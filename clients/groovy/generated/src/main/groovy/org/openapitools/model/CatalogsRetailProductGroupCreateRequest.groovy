@@ -10,6 +10,8 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsRetailProductGroupCreateRequest {
+    /* Catalog id pertaining to the retail product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -34,15 +36,13 @@ class CatalogsRetailProductGroupCreateRequest {
     /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     CatalogTypeEnum catalogType
     
-    String name
+    Country country
     
     String description
     
     CatalogsProductGroupFiltersRequest filters
-    /* Catalog id pertaining to the retail product group. */
-    String catalogId
-    
-    Country country
     
     CatalogsLocale locale
+    
+    String name
 }

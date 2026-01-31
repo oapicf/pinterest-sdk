@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,24 +16,24 @@ package openapi
 
 type BidFloorSpec struct {
 
+	BillableEvent ActionType `json:"billable_event"`
+
 	Countries []Country `json:"countries,omitempty"`
+
+	CreativeType CreativeType `json:"creative_type,omitempty"`
 
 	Currency Currency `json:"currency"`
 
 	ObjectiveType ObjectiveType `json:"objective_type,omitempty"`
 
-	BillableEvent ActionType `json:"billable_event"`
-
 	OptimizationGoalMetadata OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
-
-	CreativeType CreativeType `json:"creative_type,omitempty"`
 }
 
 // AssertBidFloorSpecRequired checks if the required fields are not zero-ed
 func AssertBidFloorSpecRequired(obj BidFloorSpec) error {
 	elements := map[string]interface{}{
-		"currency": obj.Currency,
 		"billable_event": obj.BillableEvent,
+		"currency": obj.Currency,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

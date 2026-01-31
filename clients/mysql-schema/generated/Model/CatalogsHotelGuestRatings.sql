@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsHotelGuestRatings`
 --
-SELECT `score`, `number_of_reviewers`, `max_score`, `rating_system` FROM `CatalogsHotelGuestRatings` WHERE 1;
+SELECT `max_score`, `number_of_reviewers`, `rating_system`, `score` FROM `CatalogsHotelGuestRatings` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsHotelGuestRatings`
 --
-INSERT INTO `CatalogsHotelGuestRatings`(`score`, `number_of_reviewers`, `max_score`, `rating_system`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsHotelGuestRatings`(`max_score`, `number_of_reviewers`, `rating_system`, `score`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsHotelGuestRatings`
 --
-UPDATE `CatalogsHotelGuestRatings` SET `score` = ?, `number_of_reviewers` = ?, `max_score` = ?, `rating_system` = ? WHERE 1;
+UPDATE `CatalogsHotelGuestRatings` SET `max_score` = ?, `number_of_reviewers` = ?, `rating_system` = ?, `score` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsHotelGuestRatings`

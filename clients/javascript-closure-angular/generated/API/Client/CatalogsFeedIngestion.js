@@ -6,10 +6,10 @@ goog.provide('API.Client.CatalogsFeedIngestion');
 API.Client.CatalogsFeedIngestion = function() {}
 
 /**
- * @type {!string}
+ * @type {!Date}
  * @export
  */
-API.Client.CatalogsFeedIngestion.prototype.id;
+API.Client.CatalogsFeedIngestion.prototype.createdAt;
 
 /**
  * @type {!string}
@@ -18,10 +18,10 @@ API.Client.CatalogsFeedIngestion.prototype.id;
 API.Client.CatalogsFeedIngestion.prototype.feedId;
 
 /**
- * @type {!Date}
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsFeedIngestion.prototype.createdAt;
+API.Client.CatalogsFeedIngestion.prototype.id;
 
 /**
  * @type {!API.Client.CatalogsFeedProcessingStatus}

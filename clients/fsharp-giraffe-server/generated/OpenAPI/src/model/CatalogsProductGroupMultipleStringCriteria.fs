@@ -9,7 +9,7 @@ module CatalogsProductGroupMultipleStringCriteria =
 
 
   type CatalogsProductGroupMultipleStringCriteria = {
-    Values : string[];
     Negated : bool;
+    Values : string[];
   }
   //#endregion

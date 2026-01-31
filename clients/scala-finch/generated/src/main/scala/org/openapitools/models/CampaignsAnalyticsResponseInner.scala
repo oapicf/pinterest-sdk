@@ -11,10 +11,10 @@ import scala.collection.immutable.HashMap
 
 /**
  * 
- * @param CAMPAIGNUnderscoreID The ID of the campaing that this metrics belongs to.
+ * @param CAMPAIGNUnderscoreID The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
-case class CampaignsAnalyticsResponseInner(CAMPAIGNUnderscoreID: String,
+case class CampaignsAnalyticsResponseInner(CAMPAIGNUnderscoreID: Option[String],
                 DATE: Option[LocalDateTime]
                 )
 

@@ -6,8 +6,8 @@ Request object to list products for a given hotel catalog_id and product group f
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **string** |  | [default to undefined]
 **catalog_id** | **string** | Catalog id pertaining to the hotel product group. | [default to undefined]
+**catalog_type** | **string** |  | [default to undefined]
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [default to undefined]
 
 ## Example
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { CatalogsHotelListProductsByCatalogBasedFilterRequest } from './api';
 
 const instance: CatalogsHotelListProductsByCatalogBasedFilterRequest = {
-    catalog_type,
     catalog_id,
+    catalog_type,
     filters,
 };
 ```

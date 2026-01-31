@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * User website verification request
  *
- * @param website 
  * @param verificationMethod 
+ * @param website 
  */
 
 
 data class UserWebsiteVerifyRequest (
 
-    @Json(name = "website")
-    val website: kotlin.String? = null,
-
     @Json(name = "verification_method")
-    val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG
+    val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG,
+
+    @Json(name = "website")
+    val website: kotlin.String? = null
 
 ) {
 

@@ -11,12 +11,12 @@ module ConversionApiResponse =
 
   [<CLIMutable>]
   type ConversionApiResponse = {
-    [<JsonProperty(PropertyName = "num_events_received")>]
-    NumEventsReceived : int;
-    [<JsonProperty(PropertyName = "num_events_processed")>]
-    NumEventsProcessed : int;
     [<JsonProperty(PropertyName = "events")>]
     Events : ConversionApiResponseEventsInner[];
+    [<JsonProperty(PropertyName = "num_events_processed")>]
+    NumEventsProcessed : int;
+    [<JsonProperty(PropertyName = "num_events_received")>]
+    NumEventsReceived : int;
   }
 
   //#endregion

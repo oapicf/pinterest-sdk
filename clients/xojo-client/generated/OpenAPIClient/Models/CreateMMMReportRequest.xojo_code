@@ -11,17 +11,9 @@ Protected Class CreateMMMReportRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Name of the Marketing Mix Modeling (MMM) report
+			Metric and entity columns
 		#tag EndNote
-		report_name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Metric report start date (UTC). Format: YYYY-MM-DD
-		#tag EndNote
-		start_date As String
+		columns() As MMMReportingColumn
 	#tag EndProperty
 
 
@@ -51,17 +43,25 @@ Protected Class CreateMMMReportRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			List of targeting types
+			Name of the Marketing Mix Modeling (MMM) report
 		#tag EndNote
-		targeting_types() As MMMReportingTargetingType
+		report_name As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Metric and entity columns
+			Metric report start date (UTC). Format: YYYY-MM-DD
 		#tag EndNote
-		columns() As MMMReportingColumn
+		start_date As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			List of targeting types
+		#tag EndNote
+		targeting_types() As MMMReportingTargetingType
 	#tag EndProperty
 
 
@@ -150,6 +150,22 @@ Protected Class CreateMMMReportRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="columns"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MMMReportingColumn"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="end_date"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="report_name"
 			Visible=false
 			Group="Behavior"
@@ -166,27 +182,11 @@ Protected Class CreateMMMReportRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="end_date"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="targeting_types"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="MMMReportingTargetingType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="columns"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="MMMReportingColumn"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

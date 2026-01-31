@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**audiencesCreate**](AudiencesApi.md#audiencesCreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
-[**audiencesCreateCustom**](AudiencesApi.md#audiencesCreateCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**audiencesGet**](AudiencesApi.md#audiencesGet) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 [**audiencesList**](AudiencesApi.md#audiencesList) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
 [**audiencesUpdate**](AudiencesApi.md#audiencesUpdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
@@ -14,7 +13,7 @@ Method | HTTP request | Description
 # **audiencesCreate**
 > Audience audiencesCreate(audienceCreateRequest)
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 
 ### Example
 
@@ -43,63 +42,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **audienceCreateRequest** | **AudienceCreateRequest**| List of ads to create, size limit [1, 30] |
- **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
-
-
-### Return type
-
-**Audience**
-
-### Authorization
-
-[pinterest_oauth2](README.md#pinterest_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **audiencesCreateCustom**
-> Audience audiencesCreateCustom(audienceCreateCustomRequest)
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AudiencesApi } from '';
-import type { AudiencesApiAudiencesCreateCustomRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new AudiencesApi(configuration);
-
-const request: AudiencesApiAudiencesCreateCustomRequest = {
-    // Unique identifier of an ad account.
-  adAccountId: "4",
-    // Custom audience to create.
-  audienceCreateCustomRequest: ,
-};
-
-const data = await apiInstance.audiencesCreateCustom(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **audienceCreateCustomRequest** | **AudienceCreateCustomRequest**| Custom audience to create. |
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
 
 
@@ -166,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -233,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -251,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **audiencesUpdate**
-> Audience audiencesUpdate()
+> Audience audiencesUpdate(audienceUpdateRequest)
 
 Update (edit or remove) an existing targeting audience.
 
@@ -270,7 +212,7 @@ const request: AudiencesApiAudiencesUpdateRequest = {
   adAccountId: "4",
     // Unique identifier of an audience
   audienceId: "4",
-    // The audience to be updated. (optional)
+    // The audience to be updated.
   audienceUpdateRequest: ,
 };
 

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CreateAssetInvitesRequestItem`
 --
-SELECT `invite_id`, `invite_type`, `asset_id_to_permissions` FROM `CreateAssetInvitesRequestItem` WHERE 1;
+SELECT `asset_id_to_permissions`, `invite_id`, `invite_type` FROM `CreateAssetInvitesRequestItem` WHERE 1;
 
 --
 -- INSERT template for table `CreateAssetInvitesRequestItem`
 --
-INSERT INTO `CreateAssetInvitesRequestItem`(`invite_id`, `invite_type`, `asset_id_to_permissions`) VALUES (?, ?, ?);
+INSERT INTO `CreateAssetInvitesRequestItem`(`asset_id_to_permissions`, `invite_id`, `invite_type`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CreateAssetInvitesRequestItem`
 --
-UPDATE `CreateAssetInvitesRequestItem` SET `invite_id` = ?, `invite_type` = ?, `asset_id_to_permissions` = ? WHERE 1;
+UPDATE `CreateAssetInvitesRequestItem` SET `asset_id_to_permissions` = ?, `invite_id` = ?, `invite_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `CreateAssetInvitesRequestItem`

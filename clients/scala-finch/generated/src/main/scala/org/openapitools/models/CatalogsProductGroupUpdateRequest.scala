@@ -9,15 +9,15 @@ import org.openapitools.models.CatalogsProductGroupFiltersRequest
 
 /**
  * Request object for updating a product group.
- * @param name 
  * @param description 
- * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
+ * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
+ * @param name 
  */
-case class CatalogsProductGroupUpdateRequest(name: Option[String],
-                description: Option[String],
+case class CatalogsProductGroupUpdateRequest(description: Option[String],
+                filters: Option[CatalogsProductGroupFiltersRequest],
                 isUnderscorefeatured: Option[Boolean],
-                filters: Option[CatalogsProductGroupFiltersRequest]
+                name: Option[String]
                 )
 
 object CatalogsProductGroupUpdateRequest {

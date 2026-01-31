@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import AdsCreditRedeemResponse._
 
 case class AdsCreditRedeemResponse (
-  /* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
-  success: Option[Boolean],
-/* Error code type if error occurs */
+  /* Error code type if error occurs */
   errorCode: Option[Integer],
 /* Reason for failure */
-  errorMessage: Option[String])
+  errorMessage: Option[String],
+/* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
+  success: Option[Boolean])
 
 object AdsCreditRedeemResponse {
   import DateTimeCodecs._

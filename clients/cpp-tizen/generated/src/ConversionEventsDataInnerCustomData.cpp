@@ -23,32 +23,35 @@ ConversionEvents_data_inner_custom_data::~ConversionEvents_data_inner_custom_dat
 void
 ConversionEvents_data_inner_custom_data::__init()
 {
-	//currency = std::string();
-	//value = std::string();
+	//content_brand = std::string();
+	//content_category = std::string();
 	//new std::list()std::list> content_ids;
 	//content_name = std::string();
-	//content_category = std::string();
-	//content_brand = std::string();
 	//new std::list()std::list> contents;
-	//num_items = long(0);
-	//order_id = std::string();
-	//search_string = std::string();
-	//opt_out_type = std::string();
+	//currency = std::string();
+	//external_measurement_id = std::string();
+	//external_measurement_vendor_id = int(0);
 	//np = std::string();
+	//num_items = long(0);
+	//opt_out_type = std::string();
+	//order_id = std::string();
+	//predicted_ltv = std::string();
+	//search_string = std::string();
+	//value = std::string();
 }
 
 void
 ConversionEvents_data_inner_custom_data::__cleanup()
 {
-	//if(currency != NULL) {
+	//if(content_brand != NULL) {
 	//
-	//delete currency;
-	//currency = NULL;
+	//delete content_brand;
+	//content_brand = NULL;
 	//}
-	//if(value != NULL) {
+	//if(content_category != NULL) {
 	//
-	//delete value;
-	//value = NULL;
+	//delete content_category;
+	//content_category = NULL;
 	//}
 	//if(content_ids != NULL) {
 	//content_ids.RemoveAll(true);
@@ -60,45 +63,60 @@ ConversionEvents_data_inner_custom_data::__cleanup()
 	//delete content_name;
 	//content_name = NULL;
 	//}
-	//if(content_category != NULL) {
-	//
-	//delete content_category;
-	//content_category = NULL;
-	//}
-	//if(content_brand != NULL) {
-	//
-	//delete content_brand;
-	//content_brand = NULL;
-	//}
 	//if(contents != NULL) {
 	//contents.RemoveAll(true);
 	//delete contents;
 	//contents = NULL;
+	//}
+	//if(currency != NULL) {
+	//
+	//delete currency;
+	//currency = NULL;
+	//}
+	//if(external_measurement_id != NULL) {
+	//
+	//delete external_measurement_id;
+	//external_measurement_id = NULL;
+	//}
+	//if(external_measurement_vendor_id != NULL) {
+	//
+	//delete external_measurement_vendor_id;
+	//external_measurement_vendor_id = NULL;
+	//}
+	//if(np != NULL) {
+	//
+	//delete np;
+	//np = NULL;
 	//}
 	//if(num_items != NULL) {
 	//
 	//delete num_items;
 	//num_items = NULL;
 	//}
+	//if(opt_out_type != NULL) {
+	//
+	//delete opt_out_type;
+	//opt_out_type = NULL;
+	//}
 	//if(order_id != NULL) {
 	//
 	//delete order_id;
 	//order_id = NULL;
+	//}
+	//if(predicted_ltv != NULL) {
+	//
+	//delete predicted_ltv;
+	//predicted_ltv = NULL;
 	//}
 	//if(search_string != NULL) {
 	//
 	//delete search_string;
 	//search_string = NULL;
 	//}
-	//if(opt_out_type != NULL) {
+	//if(value != NULL) {
 	//
-	//delete opt_out_type;
-	//opt_out_type = NULL;
-	//}
-	//if(np != NULL) {
-	//
-	//delete np;
-	//np = NULL;
+	//delete value;
+	//value = NULL;
 	//}
 	//
 }
@@ -108,24 +126,24 @@ ConversionEvents_data_inner_custom_data::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *currencyKey = "currency";
-	node = json_object_get_member(pJsonObject, currencyKey);
+	const gchar *content_brandKey = "content_brand";
+	node = json_object_get_member(pJsonObject, content_brandKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&currency, node, "std::string", "");
+			jsonToValue(&content_brand, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *valueKey = "value";
-	node = json_object_get_member(pJsonObject, valueKey);
+	const gchar *content_categoryKey = "content_category";
+	node = json_object_get_member(pJsonObject, content_categoryKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&value, node, "std::string", "");
+			jsonToValue(&content_category, node, "std::string", "");
 		} else {
 			
 		}
@@ -163,28 +181,6 @@ ConversionEvents_data_inner_custom_data::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *content_categoryKey = "content_category";
-	node = json_object_get_member(pJsonObject, content_categoryKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&content_category, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *content_brandKey = "content_brand";
-	node = json_object_get_member(pJsonObject, content_brandKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&content_brand, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *contentsKey = "contents";
 	node = json_object_get_member(pJsonObject, contentsKey);
 	if (node !=NULL) {
@@ -209,6 +205,50 @@ ConversionEvents_data_inner_custom_data::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *currencyKey = "currency";
+	node = json_object_get_member(pJsonObject, currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&currency, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *external_measurement_idKey = "external_measurement_id";
+	node = json_object_get_member(pJsonObject, external_measurement_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&external_measurement_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *external_measurement_vendor_idKey = "external_measurement_vendor_id";
+	node = json_object_get_member(pJsonObject, external_measurement_vendor_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&external_measurement_vendor_id, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *npKey = "np";
+	node = json_object_get_member(pJsonObject, npKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&np, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *num_itemsKey = "num_items";
 	node = json_object_get_member(pJsonObject, num_itemsKey);
 	if (node !=NULL) {
@@ -216,28 +256,6 @@ ConversionEvents_data_inner_custom_data::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&num_items, node, "long long", "");
-		} else {
-			
-		}
-	}
-	const gchar *order_idKey = "order_id";
-	node = json_object_get_member(pJsonObject, order_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&order_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *search_stringKey = "search_string";
-	node = json_object_get_member(pJsonObject, search_stringKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&search_string, node, "std::string", "");
 		} else {
 			
 		}
@@ -253,13 +271,46 @@ ConversionEvents_data_inner_custom_data::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *npKey = "np";
-	node = json_object_get_member(pJsonObject, npKey);
+	const gchar *order_idKey = "order_id";
+	node = json_object_get_member(pJsonObject, order_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&np, node, "std::string", "");
+			jsonToValue(&order_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *predicted_ltvKey = "predicted_ltv";
+	node = json_object_get_member(pJsonObject, predicted_ltvKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&predicted_ltv, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *search_stringKey = "search_string";
+	node = json_object_get_member(pJsonObject, search_stringKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&search_string, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *valueKey = "value";
+	node = json_object_get_member(pJsonObject, valueKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&value, node, "std::string", "");
 		} else {
 			
 		}
@@ -277,23 +328,23 @@ ConversionEvents_data_inner_custom_data::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getCurrency();
+		std::string obj = getContentBrand();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *currencyKey = "currency";
-	json_object_set_member(pJsonObject, currencyKey, node);
+	const gchar *content_brandKey = "content_brand";
+	json_object_set_member(pJsonObject, content_brandKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getValue();
+		std::string obj = getContentCategory();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *valueKey = "value";
-	json_object_set_member(pJsonObject, valueKey, node);
+	const gchar *content_categoryKey = "content_category";
+	json_object_set_member(pJsonObject, content_categoryKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getContentIds());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -318,24 +369,6 @@ ConversionEvents_data_inner_custom_data::toJson()
 	}
 	const gchar *content_nameKey = "content_name";
 	json_object_set_member(pJsonObject, content_nameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getContentCategory();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *content_categoryKey = "content_category";
-	json_object_set_member(pJsonObject, content_categoryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getContentBrand();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *content_brandKey = "content_brand";
-	json_object_set_member(pJsonObject, content_brandKey, node);
 	if (isprimitive("ConversionEvents_data_inner_custom_data_contents_inner")) {
 		list<ConversionEvents_data_inner_custom_data_contents_inner> new_list = static_cast<list <ConversionEvents_data_inner_custom_data_contents_inner> > (getContents());
 		node = converttoJson(&new_list, "ConversionEvents_data_inner_custom_data_contents_inner", "array");
@@ -361,6 +394,42 @@ ConversionEvents_data_inner_custom_data::toJson()
 	
 	const gchar *contentsKey = "contents";
 	json_object_set_member(pJsonObject, contentsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCurrency();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *currencyKey = "currency";
+	json_object_set_member(pJsonObject, currencyKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getExternalMeasurementId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *external_measurement_idKey = "external_measurement_id";
+	json_object_set_member(pJsonObject, external_measurement_idKey, node);
+	if (isprimitive("int")) {
+		int obj = getExternalMeasurementVendorId();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *external_measurement_vendor_idKey = "external_measurement_vendor_id";
+	json_object_set_member(pJsonObject, external_measurement_vendor_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getNp();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *npKey = "np";
+	json_object_set_member(pJsonObject, npKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getNumItems();
 		node = converttoJson(&obj, "long long", "");
@@ -371,6 +440,15 @@ ConversionEvents_data_inner_custom_data::toJson()
 	const gchar *num_itemsKey = "num_items";
 	json_object_set_member(pJsonObject, num_itemsKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getOptOutType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *opt_out_typeKey = "opt_out_type";
+	json_object_set_member(pJsonObject, opt_out_typeKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getOrderId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -379,6 +457,15 @@ ConversionEvents_data_inner_custom_data::toJson()
 	}
 	const gchar *order_idKey = "order_id";
 	json_object_set_member(pJsonObject, order_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPredictedLtv();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *predicted_ltvKey = "predicted_ltv";
+	json_object_set_member(pJsonObject, predicted_ltvKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getSearchString();
 		node = converttoJson(&obj, "std::string", "");
@@ -389,23 +476,14 @@ ConversionEvents_data_inner_custom_data::toJson()
 	const gchar *search_stringKey = "search_string";
 	json_object_set_member(pJsonObject, search_stringKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getOptOutType();
+		std::string obj = getValue();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *opt_out_typeKey = "opt_out_type";
-	json_object_set_member(pJsonObject, opt_out_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getNp();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *npKey = "np";
-	json_object_set_member(pJsonObject, npKey, node);
+	const gchar *valueKey = "value";
+	json_object_set_member(pJsonObject, valueKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -415,27 +493,27 @@ ConversionEvents_data_inner_custom_data::toJson()
 }
 
 std::string
-ConversionEvents_data_inner_custom_data::getCurrency()
+ConversionEvents_data_inner_custom_data::getContentBrand()
 {
-	return currency;
+	return content_brand;
 }
 
 void
-ConversionEvents_data_inner_custom_data::setCurrency(std::string  currency)
+ConversionEvents_data_inner_custom_data::setContentBrand(std::string  content_brand)
 {
-	this->currency = currency;
+	this->content_brand = content_brand;
 }
 
 std::string
-ConversionEvents_data_inner_custom_data::getValue()
+ConversionEvents_data_inner_custom_data::getContentCategory()
 {
-	return value;
+	return content_category;
 }
 
 void
-ConversionEvents_data_inner_custom_data::setValue(std::string  value)
+ConversionEvents_data_inner_custom_data::setContentCategory(std::string  content_category)
 {
-	this->value = value;
+	this->content_category = content_category;
 }
 
 std::list<std::string>
@@ -462,30 +540,6 @@ ConversionEvents_data_inner_custom_data::setContentName(std::string  content_nam
 	this->content_name = content_name;
 }
 
-std::string
-ConversionEvents_data_inner_custom_data::getContentCategory()
-{
-	return content_category;
-}
-
-void
-ConversionEvents_data_inner_custom_data::setContentCategory(std::string  content_category)
-{
-	this->content_category = content_category;
-}
-
-std::string
-ConversionEvents_data_inner_custom_data::getContentBrand()
-{
-	return content_brand;
-}
-
-void
-ConversionEvents_data_inner_custom_data::setContentBrand(std::string  content_brand)
-{
-	this->content_brand = content_brand;
-}
-
 std::list<ConversionEvents_data_inner_custom_data_contents_inner>
 ConversionEvents_data_inner_custom_data::getContents()
 {
@@ -496,6 +550,54 @@ void
 ConversionEvents_data_inner_custom_data::setContents(std::list <ConversionEvents_data_inner_custom_data_contents_inner> contents)
 {
 	this->contents = contents;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getCurrency()
+{
+	return currency;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setCurrency(std::string  currency)
+{
+	this->currency = currency;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getExternalMeasurementId()
+{
+	return external_measurement_id;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setExternalMeasurementId(std::string  external_measurement_id)
+{
+	this->external_measurement_id = external_measurement_id;
+}
+
+int
+ConversionEvents_data_inner_custom_data::getExternalMeasurementVendorId()
+{
+	return external_measurement_vendor_id;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setExternalMeasurementVendorId(int  external_measurement_vendor_id)
+{
+	this->external_measurement_vendor_id = external_measurement_vendor_id;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getNp()
+{
+	return np;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setNp(std::string  np)
+{
+	this->np = np;
 }
 
 long long
@@ -511,6 +613,18 @@ ConversionEvents_data_inner_custom_data::setNumItems(long long  num_items)
 }
 
 std::string
+ConversionEvents_data_inner_custom_data::getOptOutType()
+{
+	return opt_out_type;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setOptOutType(std::string  opt_out_type)
+{
+	this->opt_out_type = opt_out_type;
+}
+
+std::string
 ConversionEvents_data_inner_custom_data::getOrderId()
 {
 	return order_id;
@@ -520,6 +634,18 @@ void
 ConversionEvents_data_inner_custom_data::setOrderId(std::string  order_id)
 {
 	this->order_id = order_id;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getPredictedLtv()
+{
+	return predicted_ltv;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setPredictedLtv(std::string  predicted_ltv)
+{
+	this->predicted_ltv = predicted_ltv;
 }
 
 std::string
@@ -535,27 +661,15 @@ ConversionEvents_data_inner_custom_data::setSearchString(std::string  search_str
 }
 
 std::string
-ConversionEvents_data_inner_custom_data::getOptOutType()
+ConversionEvents_data_inner_custom_data::getValue()
 {
-	return opt_out_type;
+	return value;
 }
 
 void
-ConversionEvents_data_inner_custom_data::setOptOutType(std::string  opt_out_type)
+ConversionEvents_data_inner_custom_data::setValue(std::string  value)
 {
-	this->opt_out_type = opt_out_type;
-}
-
-std::string
-ConversionEvents_data_inner_custom_data::getNp()
-{
-	return np;
-}
-
-void
-ConversionEvents_data_inner_custom_data::setNp(std::string  np)
-{
-	this->np = np;
+	this->value = value;
 }
 
 

@@ -7,46 +7,19 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsRetailProductGroup, () {
+    // Catalog id pertaining to the retail product group.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
     });
 
-    // ID of the catalog product group.
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // Name of catalog product group
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // CatalogsProductGroupFilters filters
-    test('to test the property `filters`', () async {
-      // TODO
-    });
-
-    // boolean indicator of whether the product group is being featured or not
-    // bool isFeatured
-    test('to test the property `isFeatured`', () async {
-      // TODO
-    });
-
-    // CatalogsProductGroupType type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // CatalogsProductGroupStatus status
-    test('to test the property `status`', () async {
+    // String country
+    test('to test the property `country`', () async {
       // TODO
     });
 
@@ -56,15 +29,8 @@ void main() {
       // TODO
     });
 
-    // Unix timestamp in seconds of last time catalog product group was updated.
-    // int updatedAt
-    test('to test the property `updatedAt`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the retail product group.
-    // String catalogId
-    test('to test the property `catalogId`', () async {
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
@@ -74,13 +40,47 @@ void main() {
       // TODO
     });
 
-    // String country
-    test('to test the property `country`', () async {
+    // CatalogsProductGroupFilters filters
+    test('to test the property `filters`', () async {
+      // TODO
+    });
+
+    // ID of the catalog product group.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // boolean indicator of whether the product group is being featured or not
+    // bool isFeatured
+    test('to test the property `isFeatured`', () async {
       // TODO
     });
 
     // String locale
     test('to test the property `locale`', () async {
+      // TODO
+    });
+
+    // Name of catalog product group
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupStatus status
+    test('to test the property `status`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupType type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
+    // Unix timestamp in seconds of last time catalog product group was updated.
+    // int updatedAt
+    test('to test the property `updatedAt`', () async {
       // TODO
     });
 

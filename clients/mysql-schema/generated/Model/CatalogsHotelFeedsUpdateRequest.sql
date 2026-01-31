@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsHotelFeedsUpdateRequest`
 --
-SELECT `default_currency`, `name`, `format`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `catalog_type` FROM `CatalogsHotelFeedsUpdateRequest` WHERE 1;
+SELECT `catalog_type`, `credentials`, `default_currency`, `format`, `location`, `name`, `preferred_processing_schedule`, `status` FROM `CatalogsHotelFeedsUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsHotelFeedsUpdateRequest`
 --
-INSERT INTO `CatalogsHotelFeedsUpdateRequest`(`default_currency`, `name`, `format`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `catalog_type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsHotelFeedsUpdateRequest`(`catalog_type`, `credentials`, `default_currency`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsHotelFeedsUpdateRequest`
 --
-UPDATE `CatalogsHotelFeedsUpdateRequest` SET `default_currency` = ?, `name` = ?, `format` = ?, `credentials` = ?, `location` = ?, `preferred_processing_schedule` = ?, `status` = ?, `catalog_type` = ? WHERE 1;
+UPDATE `CatalogsHotelFeedsUpdateRequest` SET `catalog_type` = ?, `credentials` = ?, `default_currency` = ?, `format` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsHotelFeedsUpdateRequest`

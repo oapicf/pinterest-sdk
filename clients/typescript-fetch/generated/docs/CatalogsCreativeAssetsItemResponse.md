@@ -7,10 +7,10 @@ Object describing a hotel record
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
 `catalogType` | [CatalogsType](CatalogsType.md)
 `creativeAssetsId` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
-`attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { CatalogsCreativeAssetsItemResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "catalogType": null,
   "creativeAssetsId": DS0294-M,
   "pins": null,
-  "attributes": null,
 } satisfies CatalogsCreativeAssetsItemResponse
 
 console.log(example)

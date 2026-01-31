@@ -24,19 +24,19 @@ public class InviteExceptionResponseTest {
     }
 
     /**
-     * Test the property 'inviteOrRequestId'
-     */
-    @Test
-    public void inviteOrRequestIdTest() {
-        // TODO: test inviteOrRequestId
-    }
-
-    /**
      * Test the property 'code'
      */
     @Test
     public void codeTest() {
         // TODO: test code
+    }
+
+    /**
+     * Test the property 'inviteOrRequestId'
+     */
+    @Test
+    public void inviteOrRequestIdTest() {
+        // TODO: test inviteOrRequestId
     }
 
     /**

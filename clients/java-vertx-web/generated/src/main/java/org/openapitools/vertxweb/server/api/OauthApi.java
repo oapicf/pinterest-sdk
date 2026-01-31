@@ -1,5 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.ConversionAccessTokenResponse;
 import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.OauthAccessTokenResponse;
 
@@ -12,5 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface OauthApi  {
+    Future<ApiResponse<ConversionAccessTokenResponse>> oauthConversionToken();
     Future<ApiResponse<OauthAccessTokenResponse>> oauthToken(JsonObject formBody);
+    Future<ApiResponse<Void>> tokenRevoke(JsonObject formBody);
 }

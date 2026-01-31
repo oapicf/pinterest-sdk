@@ -10,18 +10,20 @@ Name | Type | Description | Notes
 **carouselIosDeepLinks** | **NSArray&lt;NSString*&gt;*** | Comma-separated deep links for the carousel pin on iOS. | [optional] 
 **clickTrackingUrl** | **NSString*** | Tracking url for the ad clicks. | [optional] 
 **creativeType** | [**OAICreativeType***](OAICreativeType.md) |  | 
+**customizableCtaType** | [**OAICustomizableCTAType***](OAICustomizableCTAType.md) |  | [optional] 
 **destinationUrl** | **NSString*** | Destination URL. | [optional] 
+**disclosureType** | [**OAIDisclosureType***](OAIDisclosureType.md) |  | [optional] 
+**disclosureUrl** | **NSString*** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
+**gridClickType** | [**OAIGridClickType***](OAIGridClickType.md) |  | [optional] 
 **iosDeepLink** | **NSString*** | Deep link URL for iOS devices. | [optional] 
 **isPinDeleted** | **NSNumber*** | Is original pin deleted? | [optional] 
 **isRemovable** | **NSNumber*** | Is pin repinnable? | [optional] 
+**leadFormId** | **NSString*** | Lead form ID for lead ad generation. | [optional] 
 **name** | **NSString*** | Name of the ad - 255 chars max. | [optional] 
+**quizPinData** | [**OAIQuizPinData***](OAIQuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **status** | [**OAIEntityStatus***](OAIEntityStatus.md) |  | [optional] 
 **trackingUrls** | [**OAITrackingUrls***](OAITrackingUrls.md) |  | [optional] 
 **viewTrackingUrl** | **NSString*** | Tracking URL for ad impressions. | [optional] 
-**leadFormId** | **NSString*** | Lead form ID for lead ad generation. | [optional] 
-**gridClickType** | [**OAIGridClickType***](OAIGridClickType.md) |  | [optional] 
-**customizableCtaType** | **NSString*** | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) | [optional] 
-**quizPinData** | [**OAIQuizPinData***](OAIQuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **pinId** | **NSString*** | Pin ID. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PriceFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PriceFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupPricingCurrencyCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCurrencyCriteria
+}
+resourceTypes {
+
+  PriceFilter {
+    title = PriceFilter
+    description = PriceFilter
+    derivedFrom = Root
+    properties {
+        price {
+          type = CatalogsProductGroupPricingCurrencyCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PriceFilter {
+    title = PriceFilter
+    description = PriceFilter
+    implements = openapi_server.resourceTypes.PriceFilter
+
+  }
+}

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**TargetingTemplateResponseData[]**](TargetingTemplateResponseData.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**TargetingTemplateGetResponseData[]**](TargetingTemplateGetResponseData.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TargetingTemplateList200Response = Initialize-PSOpenAPIToolsTargetingTemplateList200Response  -Items null `
- -Bookmark null
+$TargetingTemplateList200Response = Initialize-PSOpenAPIToolsTargetingTemplateList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

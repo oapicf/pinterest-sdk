@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupFiltersRequest = openapi_server.resourceTypes.CatalogsProductGroupFiltersRequest
+}
+resourceTypes {
+
+  CatalogsProductGroupUpdateRequest {
+    title = CatalogsProductGroupUpdateRequest
+    description = CatalogsProductGroupUpdateRequest
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsProductGroupFiltersRequest
+          description = ""
+          optional = false
+        }
+        is_featured {
+          type =  boolean
+          description = "boolean indicator of whether the product group is being featured or not"
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupUpdateRequest {
+    title = CatalogsProductGroupUpdateRequest
+    description = CatalogsProductGroupUpdateRequest
+    implements = openapi_server.resourceTypes.CatalogsProductGroupUpdateRequest
+
+  }
+}

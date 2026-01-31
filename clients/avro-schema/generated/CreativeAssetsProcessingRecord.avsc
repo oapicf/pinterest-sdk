@@ -20,18 +20,18 @@
       "default": null
     },
     {
+      "name": "status",
+      "type": ["null", "model.ItemProcessingStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "warnings",
       "type": ["null", {
         "type": "array",
         "items": "model.ItemValidationEvent"
       }],
       "doc": "Array with the validation warnings for the item processing record",
-      "default": null
-    },
-    {
-      "name": "status",
-      "type": ["null", "model.ItemProcessingStatus"],
-      "doc": "",
       "default": null
     }
   ]

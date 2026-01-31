@@ -10,8 +10,8 @@ Name | Type
 `createdAt` | Date
 `id` | string
 `updatedAt` | Date
-`name` | string
 `catalogType` | [CatalogsType](CatalogsType.md)
+`name` | string
 
 ## Example
 
@@ -23,8 +23,8 @@ const example = {
   "createdAt": 2022-03-14T15:15:22Z,
   "id": 864344156814050986,
   "updatedAt": 2022-03-14T15:16:34Z,
-  "name": null,
   "catalogType": null,
+  "name": null,
 } satisfies Catalog
 
 console.log(example)

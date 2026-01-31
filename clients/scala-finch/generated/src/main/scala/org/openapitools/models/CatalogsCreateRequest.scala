@@ -5,13 +5,14 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
+import org.openapitools.models.CatalogsType
 
 /**
  * Request object for creating a catalog.
- * @param catalogUnderscoretype Type of the catalog entity.
+ * @param catalogUnderscoretype 
  * @param name A human-friendly name associated to a given catalog.
  */
-case class CatalogsCreateRequest(catalogUnderscoretype: String,
+case class CatalogsCreateRequest(catalogUnderscoretype: CatalogsType,
                 name: String
                 )
 

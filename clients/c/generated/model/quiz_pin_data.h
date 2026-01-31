@@ -31,8 +31,8 @@ pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e quiz_pin_data_tie_breaker_type
 typedef struct quiz_pin_data_t {
     list_t *questions; //nonprimitive container
     list_t *results; //nonprimitive container
-    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type; //enum
     struct quiz_pin_result_t *tie_breaker_custom_result; //model
+    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_data_t;
@@ -40,8 +40,8 @@ typedef struct quiz_pin_data_t {
 __attribute__((deprecated)) quiz_pin_data_t *quiz_pin_data_create(
     list_t *questions,
     list_t *results,
-    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type,
-    quiz_pin_result_t *tie_breaker_custom_result
+    quiz_pin_result_t *tie_breaker_custom_result,
+    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type
 );
 
 void quiz_pin_data_free(quiz_pin_data_t *quiz_pin_data);

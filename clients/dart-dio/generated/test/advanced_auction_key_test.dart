@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AdvancedAuctionKey, () {
-    // The catalog retail item id in the merchant namespace
-    // String itemId
-    test('to test the property `itemId`', () async {
+    // Country country
+    test('to test the property `country`', () async {
       // TODO
     });
 
-    // Country country
-    test('to test the property `country`', () async {
+    // The catalog retail item id in the merchant namespace
+    // String itemId
+    test('to test the property `itemId`', () async {
       // TODO
     });
 

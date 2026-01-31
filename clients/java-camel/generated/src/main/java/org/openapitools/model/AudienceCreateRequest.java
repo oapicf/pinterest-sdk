@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * AudienceCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest {
 
   private String adAccountId;
@@ -30,9 +30,9 @@ public class AudienceCreateRequest {
 
   private AudienceRule rule;
 
-  private String description;
-
   private AudienceType audienceType;
+
+  private String description;
 
   public AudienceCreateRequest() {
     super();
@@ -107,26 +107,6 @@ public class AudienceCreateRequest {
     this.rule = rule;
   }
 
-  public AudienceCreateRequest description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Audience description.
-   * @return description
-   */
-  
-  @Schema(name = "description", example = "string", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
   public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
@@ -147,6 +127,26 @@ public class AudienceCreateRequest {
     this.audienceType = audienceType;
   }
 
+  public AudienceCreateRequest description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Audience description.
+   * @return description
+   */
+  
+  @Schema(name = "description", example = "string", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -159,13 +159,13 @@ public class AudienceCreateRequest {
     return Objects.equals(this.adAccountId, audienceCreateRequest.adAccountId) &&
         Objects.equals(this.name, audienceCreateRequest.name) &&
         Objects.equals(this.rule, audienceCreateRequest.rule) &&
-        Objects.equals(this.description, audienceCreateRequest.description) &&
-        Objects.equals(this.audienceType, audienceCreateRequest.audienceType);
+        Objects.equals(this.audienceType, audienceCreateRequest.audienceType) &&
+        Objects.equals(this.description, audienceCreateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, rule, description, audienceType);
+    return Objects.hash(adAccountId, name, rule, audienceType, description);
   }
 
   @Override
@@ -175,8 +175,8 @@ public class AudienceCreateRequest {
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

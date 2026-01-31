@@ -9,8 +9,8 @@
 -export_type([openapi_get_invites_200_response/0]).
 
 -type openapi_get_invites_200_response() ::
-  [ {'items', list(openapi_invite_response:openapi_invite_response()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_invite_response:openapi_invite_response()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_get_invites_200_response() ->
     openapi_get_invites_200_response([]).
 
 openapi_get_invites_200_response(Fields) ->
-  Default = [ {'items', list(openapi_invite_response:openapi_invite_response()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_invite_response:openapi_invite_response()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

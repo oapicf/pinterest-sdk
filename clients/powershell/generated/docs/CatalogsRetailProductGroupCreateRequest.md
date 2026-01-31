@@ -3,25 +3,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the retail product group. | 
 **CatalogType** | **String** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
-**Name** | **String** |  | 
+**Country** | [**Country**](Country.md) |  | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
-**CatalogId** | **String** | Catalog id pertaining to the retail product group. | 
-**Country** | [**Country**](Country.md) |  | 
-**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**Name** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsRetailProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsRetailProductGroupCreateRequest  -CatalogType null `
- -Name null `
+$CatalogsRetailProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsRetailProductGroupCreateRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
+ -Country null `
  -Description null `
  -Filters null `
- -CatalogId 2680059592705 `
- -Country null `
- -Locale null
+ -Locale null `
+ -Name null
 ```
 
 - Convert the resource to JSON

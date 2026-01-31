@@ -26,7 +26,7 @@ class BoardsList200ResponseTest : ShouldSpec() {
         // uncomment below to create an instance of BoardsList200Response
         //val modelInstance = BoardsList200Response()
 
-        // to test the property `items` - Boards
+        // to test the property `items`
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")

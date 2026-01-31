@@ -8,9 +8,9 @@ open SearchApiHandlerParams
 open SearchApiServiceInterface
 open SearchApiServiceImplementation
 open OpenAPI.Model.Error
-open OpenAPI.Model.PinsList200Response
 open OpenAPI.Model.SearchPartnerPins200Response
 open OpenAPI.Model.SearchUserBoardsGet200Response
+open OpenAPI.Model.SearchUserPinsList200Response
 
 module SearchApiHandler =
 

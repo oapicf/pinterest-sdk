@@ -9,8 +9,8 @@
 -export_type([openapi_get_business_partners_200_response/0]).
 
 -type openapi_get_business_partners_200_response() ::
-  [ {'items', list(openapi_user_business_role_binding:openapi_user_business_role_binding()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_user_business_role_binding:openapi_user_business_role_binding()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_get_business_partners_200_response() ->
     openapi_get_business_partners_200_response([]).
 
 openapi_get_business_partners_200_response(Fields) ->
-  Default = [ {'items', list(openapi_user_business_role_binding:openapi_user_business_role_binding()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_user_business_role_binding:openapi_user_business_role_binding()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

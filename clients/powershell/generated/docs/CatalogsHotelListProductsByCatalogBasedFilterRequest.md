@@ -3,16 +3,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **String** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**CatalogType** | **String** |  | 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelListProductsByCatalogBasedFilterRequest = Initialize-PSOpenAPIToolsCatalogsHotelListProductsByCatalogBasedFilterRequest  -CatalogType null `
- -CatalogId 2680059592705 `
+$CatalogsHotelListProductsByCatalogBasedFilterRequest = Initialize-PSOpenAPIToolsCatalogsHotelListProductsByCatalogBasedFilterRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Filters null
 ```
 

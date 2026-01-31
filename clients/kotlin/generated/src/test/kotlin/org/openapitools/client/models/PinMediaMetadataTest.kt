@@ -20,36 +20,18 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaMetadata
 import org.openapitools.client.models.ImageMetadata
-import org.openapitools.client.models.ImageMetadataImages
-import org.openapitools.client.models.VideoMetadata
+import org.openapitools.client.models.ImageSize
+import org.openapitools.client.models.VideoMetadataWithItemType
 
 class PinMediaMetadataTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinMediaMetadata
         //val modelInstance = PinMediaMetadata()
 
-        // to test the property `itemType`
-        should("test itemType") {
-            // uncomment below to test the property
-            //modelInstance.itemType shouldBe ("TODO")
-        }
-
-        // to test the property `title`
-        should("test title") {
-            // uncomment below to test the property
-            //modelInstance.title shouldBe ("TODO")
-        }
-
         // to test the property `description`
         should("test description") {
             // uncomment below to test the property
             //modelInstance.description shouldBe ("TODO")
-        }
-
-        // to test the property `link`
-        should("test link") {
-            // uncomment below to test the property
-            //modelInstance.link shouldBe ("TODO")
         }
 
         // to test the property `images`
@@ -58,31 +40,49 @@ class PinMediaMetadataTest : ShouldSpec() {
             //modelInstance.images shouldBe ("TODO")
         }
 
+        // to test the property `itemType`
+        should("test itemType") {
+            // uncomment below to test the property
+            //modelInstance.itemType shouldBe ("TODO")
+        }
+
+        // to test the property `link`
+        should("test link") {
+            // uncomment below to test the property
+            //modelInstance.link shouldBe ("TODO")
+        }
+
+        // to test the property `title`
+        should("test title") {
+            // uncomment below to test the property
+            //modelInstance.title shouldBe ("TODO")
+        }
+
         // to test the property `coverImageUrl`
         should("test coverImageUrl") {
             // uncomment below to test the property
             //modelInstance.coverImageUrl shouldBe ("TODO")
         }
 
-        // to test the property `videoUrl` - Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-        should("test videoUrl") {
-            // uncomment below to test the property
-            //modelInstance.videoUrl shouldBe ("TODO")
-        }
-
-        // to test the property `duration` - Duration (in milliseconds)
+        // to test the property `duration` - Duration (in miliseconds). Field maybe null after creation due to video processing time.
         should("test duration") {
             // uncomment below to test the property
             //modelInstance.duration shouldBe ("TODO")
         }
 
-        // to test the property `height` - Height (in pixels)
+        // to test the property `height` - Height (in pixels). Field maybe null after creation due to video processing time.
         should("test height") {
             // uncomment below to test the property
             //modelInstance.height shouldBe ("TODO")
         }
 
-        // to test the property `width` - Width (in pixels)
+        // to test the property `videoUrl` - Video url (720p).  **Note:** This field is limited and not available to all apps.
+        should("test videoUrl") {
+            // uncomment below to test the property
+            //modelInstance.videoUrl shouldBe ("TODO")
+        }
+
+        // to test the property `width` - Width (in pixels). Field maybe null after creation due to video processing time.
         should("test width") {
             // uncomment below to test the property
             //modelInstance.width shouldBe ("TODO")

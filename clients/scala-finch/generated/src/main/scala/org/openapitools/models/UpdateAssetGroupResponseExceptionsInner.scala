@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
+ * @param assetUnderscoregroupUnderscoreid Asset group id of the exception.
  * @param code Error code associated with the error editing asset group.
  * @param message Error message associated with the error editing asset group.
- * @param assetUnderscoregroupUnderscoreid Asset group id of the exception.
  */
-case class UpdateAssetGroupResponseExceptionsInner(code: Option[Int],
-                message: Option[String],
-                assetUnderscoregroupUnderscoreid: Option[String]
+case class UpdateAssetGroupResponseExceptionsInner(assetUnderscoregroupUnderscoreid: Option[String],
+                code: Option[Int],
+                message: Option[String]
                 )
 
 object UpdateAssetGroupResponseExceptionsInner {

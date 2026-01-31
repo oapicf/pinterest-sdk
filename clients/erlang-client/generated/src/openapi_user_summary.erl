@@ -5,13 +5,13 @@
 -export_type([openapi_user_summary/0]).
 
 -type openapi_user_summary() ::
-    #{ 'username' => binary(),
-       'type' => binary()
+    #{ 'type' => binary(),
+       'username' => binary()
      }.
 
-encode(#{ 'username' := Username,
-          'type' := Type
+encode(#{ 'type' := Type,
+          'username' := Username
         }) ->
-    #{ 'username' => Username,
-       'type' => Type
+    #{ 'type' => Type,
+       'username' => Username
      }.

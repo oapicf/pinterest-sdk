@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ProductGroupPromotionCreateRequestElement
+open OpenAPI.Model.ProductGroupPromotion
 
 module ProductGroupPromotionCreateRequest =
 
@@ -11,6 +11,6 @@ module ProductGroupPromotionCreateRequest =
 
   type ProductGroupPromotionCreateRequest = {
     AdGroupId : string;
-    ProductGroupPromotion : ProductGroupPromotionCreateRequestElement[];
+    ProductGroupPromotion : ProductGroupPromotion[];
   }
   //#endregion

@@ -5,7 +5,6 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/detailed_error.h"
 #include "../model/error.h"
 #include "../model/integration_logs_request.h"
 #include "../model/integration_logs_success_response.h"
@@ -14,6 +13,7 @@
 #include "../model/integration_request.h"
 #include "../model/integration_request_patch.h"
 #include "../model/integrations_get_list_200_response.h"
+#include "../model/integrations_logs_post_400_response.h"
 
 
 // Delete commerce integration

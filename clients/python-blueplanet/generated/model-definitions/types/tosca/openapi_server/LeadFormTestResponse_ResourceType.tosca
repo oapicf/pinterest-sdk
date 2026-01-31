@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadFormTestResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadFormTestResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LeadFormTestResponse {
+    title = LeadFormTestResponse
+    description = LeadFormTestResponse
+    derivedFrom = Root
+    properties {
+        subscription_id {
+          type =  string
+          description = "Subscription ID."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadFormTestResponse {
+    title = LeadFormTestResponse
+    description = LeadFormTestResponse
+    implements = openapi_server.resourceTypes.LeadFormTestResponse
+
+  }
+}

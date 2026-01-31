@@ -21,29 +21,6 @@ test_that("ad_account_id", {
   #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
 })
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Campaign name.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("status", {
-  # tests for the property `status` (EntityStatus)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
-test_that("lifetime_spend_cap", {
-  # tests for the property `lifetime_spend_cap` (integer)
-  # Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`lifetime_spend_cap`, "EXPECTED_RESULT")
-})
-
 test_that("daily_spend_cap", {
   # tests for the property `daily_spend_cap` (integer)
   # Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.
@@ -52,51 +29,12 @@ test_that("daily_spend_cap", {
   #expect_equal(model.instance$`daily_spend_cap`, "EXPECTED_RESULT")
 })
 
-test_that("order_line_id", {
-  # tests for the property `order_line_id` (character)
-  # Order line ID that appears on the invoice.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`order_line_id`, "EXPECTED_RESULT")
-})
-
-test_that("tracking_urls", {
-  # tests for the property `tracking_urls` (TrackingUrls)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
-})
-
-test_that("start_time", {
-  # tests for the property `start_time` (integer)
-  # Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
-})
-
 test_that("end_time", {
   # tests for the property `end_time` (integer)
-  # Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  # Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`end_time`, "EXPECTED_RESULT")
-})
-
-test_that("is_flexible_daily_budgets", {
-  # tests for the property `is_flexible_daily_budgets` (character)
-  # Determine if a campaign has flexible daily budgets setup.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`is_flexible_daily_budgets`, "EXPECTED_RESULT")
-})
-
-test_that("default_ad_group_budget_in_micro_currency", {
-  # tests for the property `default_ad_group_budget_in_micro_currency` (integer)
-  # When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`default_ad_group_budget_in_micro_currency`, "EXPECTED_RESULT")
 })
 
 test_that("is_automated_campaign", {
@@ -107,12 +45,89 @@ test_that("is_automated_campaign", {
   #expect_equal(model.instance$`is_automated_campaign`, "EXPECTED_RESULT")
 })
 
+test_that("is_flexible_daily_budgets", {
+  # tests for the property `is_flexible_daily_budgets` (character)
+  # Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_flexible_daily_budgets`, "EXPECTED_RESULT")
+})
+
+test_that("lifetime_spend_cap", {
+  # tests for the property `lifetime_spend_cap` (integer)
+  # Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`lifetime_spend_cap`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Campaign name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
+test_that("order_line_id", {
+  # tests for the property `order_line_id` (character)
+  # Order line ID that appears on the invoice.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`order_line_id`, "EXPECTED_RESULT")
+})
+
+test_that("start_time", {
+  # tests for the property `start_time` (integer)
+  # Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (EntityStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
+test_that("tracking_urls", {
+  # tests for the property `tracking_urls` (TrackingUrls)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
+})
+
+test_that("default_ad_group_budget_in_micro_currency", {
+  # tests for the property `default_ad_group_budget_in_micro_currency` (integer)
+  # When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`default_ad_group_budget_in_micro_currency`, "EXPECTED_RESULT")
+})
+
 test_that("is_campaign_budget_optimization", {
   # tests for the property `is_campaign_budget_optimization` (character)
   # Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_campaign_budget_optimization`, "EXPECTED_RESULT")
+})
+
+test_that("bid_options", {
+  # tests for the property `bid_options` (CampaignBidOptionsUpdate)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`bid_options`, "EXPECTED_RESULT")
+})
+
+test_that("is_performance_plus", {
+  # tests for the property `is_performance_plus` (character)
+  # Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;. This field is immutable, except only for campaigns in draft status which may update this field.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_performance_plus`, "EXPECTED_RESULT")
 })
 
 test_that("objective_type", {

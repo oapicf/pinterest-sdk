@@ -25,10 +25,10 @@ class TemplateResponseDateRangeRelativeDateRangeTest : ShouldSpec() {
         // uncomment below to create an instance of TemplateResponseDateRangeRelativeDateRange
         //val modelInstance = TemplateResponseDateRangeRelativeDateRange()
 
-        // to test the property `type` - The date range type
-        should("test type") {
+        // to test the property `endDaysInPast` - The end date of the date range
+        should("test endDaysInPast") {
             // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
+            //modelInstance.endDaysInPast shouldBe ("TODO")
         }
 
         // to test the property `startDaysInPast` - The start date of the date range
@@ -37,10 +37,10 @@ class TemplateResponseDateRangeRelativeDateRangeTest : ShouldSpec() {
             //modelInstance.startDaysInPast shouldBe ("TODO")
         }
 
-        // to test the property `endDaysInPast` - The end date of the date range
-        should("test endDaysInPast") {
+        // to test the property `type` - The date range type
+        should("test type") {
             // uncomment below to test the property
-            //modelInstance.endDaysInPast shouldBe ("TODO")
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

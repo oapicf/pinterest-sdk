@@ -7,10 +7,12 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}item_id`,
-                label: `The user-created unique ID that represents the product. - [${labelPrefix}item_id]`,
-                required: true,
-                type: 'string',
+                key: `${keyPrefix}availability`,
+                ...NonNullableProductAvailabilityType.fields(`${keyPrefix}availability`, isInput),
+            },
+            {
+                key: `${keyPrefix}currency`,
+                ...NonNullableCatalogsCurrency.fields(`${keyPrefix}currency`, isInput),
             },
             {
                 key: `${keyPrefix}item_group_id`,
@@ -19,8 +21,10 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}availability`,
-                ...NonNullableProductAvailabilityType.fields(`${keyPrefix}availability`, isInput),
+                key: `${keyPrefix}item_id`,
+                label: `The user-created unique ID that represents the product. - [${labelPrefix}item_id]`,
+                required: true,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}price`,
@@ -34,21 +38,17 @@ module.exports = {
                 required: true,
                 type: 'number',
             },
-            {
-                key: `${keyPrefix}currency`,
-                ...NonNullableCatalogsCurrency.fields(`${keyPrefix}currency`, isInput),
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
-            'item_group_id': bundle.inputData?.[`${keyPrefix}item_group_id`],
             'availability': bundle.inputData?.[`${keyPrefix}availability`],
+            'currency': bundle.inputData?.[`${keyPrefix}currency`],
+            'item_group_id': bundle.inputData?.[`${keyPrefix}item_group_id`],
+            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'price': bundle.inputData?.[`${keyPrefix}price`],
             'sale_price': bundle.inputData?.[`${keyPrefix}sale_price`],
-            'currency': bundle.inputData?.[`${keyPrefix}currency`],
         }
     },
 }

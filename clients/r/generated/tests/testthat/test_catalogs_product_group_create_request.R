@@ -5,18 +5,26 @@ context("Test CatalogsProductGroupCreateRequest")
 
 model_instance <- CatalogsProductGroupCreateRequest$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
+test_that("feed_id", {
+  # tests for the property `feed_id` (character)
+  # Catalog Feed id pertaining to the catalog product group.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`feed_id`, "EXPECTED_RESULT")
+})
+
+test_that("filters", {
+  # tests for the property `filters` (CatalogsProductGroupFiltersRequest)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })
 
 test_that("is_featured", {
@@ -27,17 +35,9 @@ test_that("is_featured", {
   #expect_equal(model.instance$`is_featured`, "EXPECTED_RESULT")
 })
 
-test_that("filters", {
-  # tests for the property `filters` (CatalogsProductGroupFiltersRequest)
+test_that("name", {
+  # tests for the property `name` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
-})
-
-test_that("feed_id", {
-  # tests for the property `feed_id` (character)
-  # Catalog Feed id pertaining to the catalog product group.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`feed_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })

@@ -7,8 +7,8 @@ User website verification request
 
 Name | Type
 ------------ | -------------
-`website` | string
 `verificationMethod` | string
+`website` | string
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { UserWebsiteVerifyRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "website": pintest-website-12345678.test/test_1,
   "verificationMethod": null,
+  "website": pintest-website-12345678.test/test_1,
 } satisfies UserWebsiteVerifyRequest
 
 console.log(example)

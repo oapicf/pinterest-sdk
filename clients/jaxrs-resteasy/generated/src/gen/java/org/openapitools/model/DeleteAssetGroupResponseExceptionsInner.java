@@ -11,12 +11,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeleteAssetGroupResponseExceptionsInner   {
   
+  private String assetGroupId;
   private Integer code;
   private String message;
-  private String assetGroupId;
+
+  /**
+   * Asset group id of the exception.
+   **/
+  
+  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+  public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
 
   /**
    * Error code associated with the error deleting asset group.
@@ -44,19 +57,6 @@ public class DeleteAssetGroupResponseExceptionsInner   {
     this.message = message;
   }
 
-  /**
-   * Asset group id of the exception.
-   **/
-  
-  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
-  @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-  public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -67,14 +67,14 @@ public class DeleteAssetGroupResponseExceptionsInner   {
       return false;
     }
     DeleteAssetGroupResponseExceptionsInner deleteAssetGroupResponseExceptionsInner = (DeleteAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(this.code, deleteAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(this.message, deleteAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(this.assetGroupId, deleteAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(this.assetGroupId, deleteAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(this.code, deleteAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(this.message, deleteAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
@@ -82,9 +82,9 @@ public class DeleteAssetGroupResponseExceptionsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteAssetGroupResponseExceptionsInner {\n");
     
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -27,31 +27,31 @@ type CatalogsCreativeAssetsFeed struct {
 
 	UpdatedAt time.Time `json:"updated_at"`
 
-	// A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-	Name *string `json:"name"`
-
-	Format CatalogsFormat `json:"format"`
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	Credentials *CatalogsFeedCredentials `json:"credentials"`
 
-	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location"`
-
-	PreferredProcessingSchedule *CatalogsFeedProcessingSchedule `json:"preferred_processing_schedule"`
-
-	Status CatalogsStatus `json:"status"`
+	DefaultCountry Country `json:"default_country"`
 
 	DefaultCurrency *NullableCurrency `json:"default_currency"`
 
 	// The locale used within a feed for product descriptions.
 	DefaultLocale string `json:"default_locale"`
 
-	DefaultCountry Country `json:"default_country"`
+	Format CatalogsFormat `json:"format"`
 
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-	CatalogId *string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+	Location string `json:"location"`
+
+	// A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+	Name *string `json:"name"`
+
+	PreferredProcessingSchedule *CatalogsFeedProcessingSchedule `json:"preferred_processing_schedule"`
+
+	Status CatalogsStatus `json:"status"`
 }
 
 // AssertCatalogsCreativeAssetsFeedRequired checks if the required fields are not zero-ed
@@ -60,17 +60,17 @@ func AssertCatalogsCreativeAssetsFeedRequired(obj CatalogsCreativeAssetsFeed) er
 		"created_at": obj.CreatedAt,
 		"id": obj.Id,
 		"updated_at": obj.UpdatedAt,
-		"name": obj.Name,
-		"format": obj.Format,
+		"catalog_id": obj.CatalogId,
 		"catalog_type": obj.CatalogType,
 		"credentials": obj.Credentials,
-		"location": obj.Location,
-		"preferred_processing_schedule": obj.PreferredProcessingSchedule,
-		"status": obj.Status,
+		"default_country": obj.DefaultCountry,
 		"default_currency": obj.DefaultCurrency,
 		"default_locale": obj.DefaultLocale,
-		"default_country": obj.DefaultCountry,
-		"catalog_id": obj.CatalogId,
+		"format": obj.Format,
+		"location": obj.Location,
+		"name": obj.Name,
+		"preferred_processing_schedule": obj.PreferredProcessingSchedule,
+		"status": obj.Status,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,27 +16,37 @@ package openapi
 
 type AdAccount struct {
 
-	Id string `json:"id,omitempty"`
-
-	Name string `json:"name,omitempty"`
-
-	Owner AdAccountOwner `json:"owner,omitempty"`
-
 	Country Country `json:"country,omitempty"`
+
+	//  Creation time. Unix timestamp in seconds.
+	CreatedTime *int32 `json:"created_time,omitempty"`
 
 	Currency Currency `json:"currency,omitempty"`
 
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+
+	// Ad account name.
+	Name string `json:"name,omitempty"`
+
+	// Ad account owner
+	Owner AdAccountOwner `json:"owner,omitempty"`
+
 	Permissions []BusinessAccessRole `json:"permissions,omitempty"`
 
-	// Creation time. Unix timestamp in seconds.
-	CreatedTime *int32 `json:"created_time,omitempty"`
-
-	// Last update time. Unix timestamp in seconds.
 	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }
 
 // AssertAdAccountRequired checks if the required fields are not zero-ed
 func AssertAdAccountRequired(obj AdAccount) error {
+	elements := map[string]interface{}{
+		"id": obj.Id,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	if err := AssertAdAccountOwnerRequired(obj.Owner); err != nil {
 		return err
 	}

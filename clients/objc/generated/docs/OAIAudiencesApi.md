@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**audiencesCreate**](OAIAudiencesApi.md#audiencescreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
-[**audiencesCreateCustom**](OAIAudiencesApi.md#audiencescreatecustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**audiencesGet**](OAIAudiencesApi.md#audiencesget) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 [**audiencesList**](OAIAudiencesApi.md#audienceslist) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
 [**audiencesUpdate**](OAIAudiencesApi.md#audiencesupdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
@@ -20,7 +19,7 @@ Method | HTTP request | Description
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 
 ### Example
 ```objc
@@ -70,65 +69,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **audiencesCreateCustom**
-```objc
--(NSURLSessionTask*) audiencesCreateCustomWithAdAccountId: (NSString*) adAccountId
-    audienceCreateCustomRequest: (OAIAudienceCreateCustomRequest*) audienceCreateCustomRequest
-        completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler;
-```
-
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Example
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIAudienceCreateCustomRequest* audienceCreateCustomRequest = [[OAIAudienceCreateCustomRequest alloc] init]; // Custom audience to create.
-
-OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
-
-// Create custom audience
-[apiInstance audiencesCreateCustomWithAdAccountId:adAccountId
-              audienceCreateCustomRequest:audienceCreateCustomRequest
-          completionHandler: ^(OAIAudience* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling OAIAudiencesApi->audiencesCreateCustom: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **audienceCreateCustomRequest** | [**OAIAudienceCreateCustomRequest***](OAIAudienceCreateCustomRequest.md)| Custom audience to create. | 
-
-### Return type
-
-[**OAIAudience***](OAIAudience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **audiencesGet**
 ```objc
 -(NSURLSessionTask*) audiencesGetWithAdAccountId: (NSString*) adAccountId
@@ -145,6 +85,9 @@ Get a specific audience given the audience ID.
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -179,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -207,6 +150,9 @@ Get list of audiences for the ad account.
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -250,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -281,7 +227,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* audienceId = @"audienceId_example"; // Unique identifier of an audience
-OAIAudienceUpdateRequest* audienceUpdateRequest = [[OAIAudienceUpdateRequest alloc] init]; // The audience to be updated. (optional)
+OAIAudienceUpdateRequest* audienceUpdateRequest = [[OAIAudienceUpdateRequest alloc] init]; // The audience to be updated.
 
 OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
@@ -305,7 +251,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **audienceId** | **NSString***| Unique identifier of an audience | 
- **audienceUpdateRequest** | [**OAIAudienceUpdateRequest***](OAIAudienceUpdateRequest.md)| The audience to be updated. | [optional] 
+ **audienceUpdateRequest** | [**OAIAudienceUpdateRequest***](OAIAudienceUpdateRequest.md)| The audience to be updated. | 
 
 ### Return type
 

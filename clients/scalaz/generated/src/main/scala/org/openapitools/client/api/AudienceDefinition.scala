@@ -14,10 +14,8 @@ import AudienceDefinition._
 case class AudienceDefinition (
   /* Generation date */
   date: Option[String],
-/* Generated audience type to request. */
-  `type`: Option[String],
-/* Generated audience scope to request. */
-  scope: Option[String])
+scope: Option[String],
+`type`: Option[String])
 
 object AudienceDefinition {
   import DateTimeCodecs._

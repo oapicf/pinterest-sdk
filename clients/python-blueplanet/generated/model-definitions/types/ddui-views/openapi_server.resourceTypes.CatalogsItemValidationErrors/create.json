@@ -1,0 +1,39 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "adult_invalid" },
+      {"model": "adwords_format_invalid" },
+      {"model": "availability_invalid" },
+      {"model": "blocklisted_image_signature" },
+      {"model": "description_missing" },
+      {"model": "duplicate_products" },
+      {"model": "image_link_invalid" },
+      {"model": "image_link_length_too_long" },
+      {"model": "image_link_missing" },
+      {"model": "invalid_domain" },
+      {"model": "item_main_image_download_failure" },
+      {"model": "itemid_missing" },
+      {"model": "link_format_invalid" },
+      {"model": "link_length_too_long" },
+      {"model": "list_price_invalid" },
+      {"model": "max_items_per_item_group_exceeded" },
+      {"model": "parse_line_error" },
+      {"model": "pinjoin_content_unsafe" },
+      {"model": "price_cannot_be_determined" },
+      {"model": "price_missing" },
+      {"model": "product_link_missing" },
+      {"model": "product_price_invalid" },
+      {"model": "title_missing" },
+    ]
+  }]
+}

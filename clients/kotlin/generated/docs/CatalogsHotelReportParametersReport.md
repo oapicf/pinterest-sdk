@@ -14,7 +14,7 @@
 ## Enum: report_type
 | Name | Value |
 | ---- | ----- |
-| reportType | FEED_INGESTION_ISSUES, DISTRIBUTION_ISSUES |
+| reportType | FEED_INGESTION_ISSUES, DISTRIBUTION_ISSUES, ALL_ITEMS |
 
 
 

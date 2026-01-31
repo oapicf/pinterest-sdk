@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QualityComponentDetails"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QualityComponentDetails"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  QualityComponentIssue = openapi_server.resourceTypes.QualityComponentIssue
+}
+resourceTypes {
+
+  QualityComponentDetails {
+    title = QualityComponentDetails
+    description = QualityComponentDetails
+    derivedFrom = Root
+    properties {
+        coverage {
+          type =  
+          description = "Coverage percentage for this event type."
+          optional = true
+        }
+        issues {
+          type = array
+          items.type = QualityComponentIssue
+          description = "List of issues detected for this event type, if any."
+          optional = false
+        }
+        overlap {
+          type =  
+          description = "Overlap percentage for this event type. Only populated for external_event_id"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  QualityComponentDetails {
+    title = QualityComponentDetails
+    description = QualityComponentDetails
+    implements = openapi_server.resourceTypes.QualityComponentDetails
+
+  }
+}

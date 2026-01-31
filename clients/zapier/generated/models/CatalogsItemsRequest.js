@@ -10,6 +10,7 @@ module.exports = {
                 key: `${keyPrefix}country`,
                 ...Country.fields(`${keyPrefix}country`, isInput),
             },
+            ...CatalogsItemsPostFilters.fields(`${keyPrefix}filters`, isInput),
             {
                 key: `${keyPrefix}language`,
                 label: `We recommend using the CatalogsLocale values. - [${labelPrefix}language]`,
@@ -125,15 +126,14 @@ module.exports = {
                     'ZH',
                 ],
             },
-            ...CatalogsItemsPostFilters.fields(`${keyPrefix}filters`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'country': bundle.inputData?.[`${keyPrefix}country`],
-            'language': bundle.inputData?.[`${keyPrefix}language`],
             'filters': utils.removeIfEmpty(CatalogsItemsPostFilters.mapping(bundle, `${keyPrefix}filters`)),
+            'language': bundle.inputData?.[`${keyPrefix}language`],
         }
     },
 }

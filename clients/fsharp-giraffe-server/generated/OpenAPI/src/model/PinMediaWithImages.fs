@@ -3,14 +3,17 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.ImageMetadata
-open OpenAPI.Model.PinMedia
 
 module PinMediaWithImages =
 
   //#region PinMediaWithImages
 
+  //#region enums
+  type MediaTypeEnum = MultipleImagesEnum of string  
+  //#endregion
 
   type PinMediaWithImages = {
     Items : ImageMetadata[];
+    MediaType : MediaTypeEnum;
   }
   //#endregion

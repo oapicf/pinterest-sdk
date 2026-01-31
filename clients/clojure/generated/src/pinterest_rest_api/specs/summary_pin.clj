@@ -8,11 +8,12 @@
 
 (def summary-pin-data
   {
-   (ds/opt :media) pin-media-spec
    (ds/opt :alt_text) string?
-   (ds/opt :link) string?
-   (ds/opt :title) string?
    (ds/opt :description) string?
+   (ds/opt :id) string?
+   (ds/opt :link) string?
+   (ds/opt :media) pin-media-spec
+   (ds/opt :title) string?
    })
 
 (def summary-pin-spec

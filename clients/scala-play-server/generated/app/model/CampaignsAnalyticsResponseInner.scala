@@ -5,13 +5,13 @@ import java.time.LocalDate
 
 /**
   * Represents the Swagger definition for CampaignsAnalyticsResponse_inner.
-  * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to.
+  * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
   * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CampaignsAnalyticsResponseInner(
-  CAMPAIGN_ID: String,
+  CAMPAIGN_ID: Option[String],
   DATE: Option[LocalDate]
   additionalProperties: Map[String, OasAnyTypeNotMapped]
 )

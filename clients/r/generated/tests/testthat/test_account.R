@@ -5,43 +5,6 @@ context("Test Account")
 
 model_instance <- Account$new()
 
-test_that("account_type", {
-  # tests for the property `account_type` (character)
-  # Type of account
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`account_type`, "EXPECTED_RESULT")
-})
-
-test_that("id", {
-  # tests for the property `id` (character)
-  # User account ID.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("profile_image", {
-  # tests for the property `profile_image` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`profile_image`, "EXPECTED_RESULT")
-})
-
-test_that("website_url", {
-  # tests for the property `website_url` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`website_url`, "EXPECTED_RESULT")
-})
-
-test_that("username", {
-  # tests for the property `username` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
-})
-
 test_that("about", {
   # tests for the property `about` (character)
   # Profile about description.
@@ -50,11 +13,12 @@ test_that("about", {
   #expect_equal(model.instance$`about`, "EXPECTED_RESULT")
 })
 
-test_that("business_name", {
-  # tests for the property `business_name` (character)
+test_that("account_type", {
+  # tests for the property `account_type` (character)
+  # Type of account
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`business_name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`account_type`, "EXPECTED_RESULT")
 })
 
 test_that("board_count", {
@@ -65,12 +29,11 @@ test_that("board_count", {
   #expect_equal(model.instance$`board_count`, "EXPECTED_RESULT")
 })
 
-test_that("pin_count", {
-  # tests for the property `pin_count` (integer)
-  # User account pin count. This includes both created and saved pins.
+test_that("business_name", {
+  # tests for the property `business_name` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`pin_count`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`business_name`, "EXPECTED_RESULT")
 })
 
 test_that("follower_count", {
@@ -89,10 +52,47 @@ test_that("following_count", {
   #expect_equal(model.instance$`following_count`, "EXPECTED_RESULT")
 })
 
+test_that("id", {
+  # tests for the property `id` (character)
+  # User account ID.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
 test_that("monthly_views", {
   # tests for the property `monthly_views` (integer)
   # User account monthly views.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`monthly_views`, "EXPECTED_RESULT")
+})
+
+test_that("pin_count", {
+  # tests for the property `pin_count` (integer)
+  # User account pin count. This includes both created and saved pins.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`pin_count`, "EXPECTED_RESULT")
+})
+
+test_that("profile_image", {
+  # tests for the property `profile_image` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`profile_image`, "EXPECTED_RESULT")
+})
+
+test_that("username", {
+  # tests for the property `username` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
+})
+
+test_that("website_url", {
+  # tests for the property `website_url` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`website_url`, "EXPECTED_RESULT")
 })

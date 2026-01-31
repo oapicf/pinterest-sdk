@@ -9,14 +9,14 @@
 -export_type([openapi_lead_form_common/0]).
 
 -type openapi_lead_form_common() ::
-  [ {'name', binary() }
-  | {'privacy_policy_link', binary() }
-  | {'has_accepted_terms', boolean() }
-  | {'completion_message', binary() }
-  | {'status', openapi_lead_form_status:openapi_lead_form_status() }
+  [ {'completion_message', binary() }
   | {'disclosure_language', binary() }
-  | {'questions', list(openapi_lead_form_question:openapi_lead_form_question()) }
+  | {'has_accepted_terms', boolean() }
+  | {'name', binary() }
   | {'policy_links', list(openapi_lead_form_common_policy_links_inner:openapi_lead_form_common_policy_links_inner()) }
+  | {'privacy_policy_link', binary() }
+  | {'questions', list(openapi_lead_form_question:openapi_lead_form_question()) }
+  | {'status', openapi_lead_form_status:openapi_lead_form_status() }
   ].
 
 
@@ -24,14 +24,14 @@ openapi_lead_form_common() ->
     openapi_lead_form_common([]).
 
 openapi_lead_form_common(Fields) ->
-  Default = [ {'name', binary() }
-            , {'privacy_policy_link', binary() }
-            , {'has_accepted_terms', boolean() }
-            , {'completion_message', binary() }
-            , {'status', openapi_lead_form_status:openapi_lead_form_status() }
+  Default = [ {'completion_message', binary() }
             , {'disclosure_language', binary() }
-            , {'questions', list(openapi_lead_form_question:openapi_lead_form_question(), 0, 10) }
+            , {'has_accepted_terms', boolean() }
+            , {'name', binary() }
             , {'policy_links', list(openapi_lead_form_common_policy_links_inner:openapi_lead_form_common_policy_links_inner(), 0, 3) }
+            , {'privacy_policy_link', binary() }
+            , {'questions', list(openapi_lead_form_question:openapi_lead_form_question(), 0, 10) }
+            , {'status', openapi_lead_form_status:openapi_lead_form_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

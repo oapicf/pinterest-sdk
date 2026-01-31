@@ -10,22 +10,22 @@ import javax.validation.Valid;
 /**
  * DeletePartnerAssetAccessBodyAccessesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class DeletePartnerAssetAccessBodyAccessesInner   {
-  @JsonProperty("partner_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-@Size(max=25)
-
-  private String partnerId;
-
   @JsonProperty("asset_id")
   @NotNull
 @Pattern(regexp="^\\d+$")
 @Size(max=25)
 
   private String assetId;
+
+  @JsonProperty("partner_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+@Size(max=25)
+
+  private String partnerId;
 
   /**
    * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
@@ -62,23 +62,6 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
   
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
 
-  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of a business partner to update asset access to.
-   * @return partnerId
-  **/
-  public String getPartnerId() {
-    return partnerId;
-  }
-
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
   public DeletePartnerAssetAccessBodyAccessesInner assetId(String assetId) {
     this.assetId = assetId;
     return this;
@@ -94,6 +77,23 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
 
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of a business partner to update asset access to.
+   * @return partnerId
+  **/
+  public String getPartnerId() {
+    return partnerId;
+  }
+
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
   public DeletePartnerAssetAccessBodyAccessesInner partnerType(PartnerTypeEnum partnerType) {
@@ -123,14 +123,14 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
       return false;
     }
     DeletePartnerAssetAccessBodyAccessesInner deletePartnerAssetAccessBodyAccessesInner = (DeletePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(partnerType, deletePartnerAssetAccessBodyAccessesInner.partnerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, partnerType);
+    return Objects.hash(assetId, partnerId, partnerType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -139,8 +139,8 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeletePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    partnerType: ").append(toIndentedString(partnerType)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -73,8 +73,8 @@ private class OASPinMediaSourcePinURLTest {
     private static void maintainRenamedProperties() {
         OASPinMediaSourcePinURL pinMediaSourcePinURL = new OASPinMediaSourcePinURL();
         Map<String, String> x-property-mappings = pinMediaSourcePinURL.getx-property-mappings();
-        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
         System.assertEquals('isAffiliateLink', x-property-mappings.get('is_affiliate_link'));
+        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
     }
 
     @isTest

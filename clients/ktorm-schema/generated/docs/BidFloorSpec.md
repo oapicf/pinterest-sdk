@@ -5,12 +5,12 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**currency** | currency | long NOT NULL |  | [**Currency**](Currency.md) |  |  [foreignkey]
 **billableEvent** | billable_event | long NOT NULL |  | [**ActionType**](ActionType.md) |  |  [foreignkey]
+**currency** | currency | long NOT NULL |  | [**Currency**](Currency.md) |  |  [foreignkey]
 **countries** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Country&gt;**](Country.md) |  |  [optional]
+**creativeType** | creative_type | long |  | [**CreativeType**](CreativeType.md) |  |  [optional] [foreignkey]
 **objectiveType** | objective_type | long |  | [**ObjectiveType**](ObjectiveType.md) |  |  [optional] [foreignkey]
 **optimizationGoalMetadata** | optimization_goal_metadata | long |  | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  |  [optional] [foreignkey]
-**creativeType** | creative_type | long |  | [**CreativeType**](CreativeType.md) |  |  [optional] [foreignkey]
 
 
 

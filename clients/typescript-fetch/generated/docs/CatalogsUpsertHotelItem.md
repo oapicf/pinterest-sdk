@@ -7,9 +7,9 @@ A hotel item to be upserted.
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsHotelAttributes](CatalogsHotelAttributes.md)
 `hotelId` | string
 `operation` | string
-`attributes` | [CatalogsHotelAttributes](CatalogsHotelAttributes.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CatalogsUpsertHotelItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "hotelId": DS0294-M,
   "operation": null,
-  "attributes": null,
 } satisfies CatalogsUpsertHotelItem
 
 console.log(example)

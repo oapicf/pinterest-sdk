@@ -7,6 +7,27 @@ goog.provide('API.Client.OrderLines');
 API.Client.OrderLines = function() {}
 
 /**
+ * Ad account ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.OrderLines.prototype.adAccountId;
+
+/**
+ * Order line budget in micro currency.
+ * @type {!number}
+ * @export
+ */
+API.Client.OrderLines.prototype.budget;
+
+/**
+ * End time. Unix timestamp.
+ * @type {!number}
+ * @export
+ */
+API.Client.OrderLines.prototype.endTime;
+
+/**
  * Order line ID.
  * @type {!string}
  * @export
@@ -14,18 +35,25 @@ API.Client.OrderLines = function() {}
 API.Client.OrderLines.prototype.id;
 
 /**
- * Always \"orderline\".
+ * Order line name.
  * @type {!string}
  * @export
  */
-API.Client.OrderLines.prototype.type;
+API.Client.OrderLines.prototype.name;
 
 /**
- * Ad account ID.
- * @type {!string}
+ * Order line paid budget in micro currency.
+ * @type {!number}
  * @export
  */
-API.Client.OrderLines.prototype.adAccountId;
+API.Client.OrderLines.prototype.paidBudget;
+
+/**
+ * Order line paid type.
+ * @type {!API.Client.OrderLinePaidType}
+ * @export
+ */
+API.Client.OrderLines.prototype.paidType;
 
 /**
  * Purchase order ID.
@@ -42,27 +70,6 @@ API.Client.OrderLines.prototype.purchaseOrderId;
 API.Client.OrderLines.prototype.startTime;
 
 /**
- * End time. Unix timestamp.
- * @type {!number}
- * @export
- */
-API.Client.OrderLines.prototype.endTime;
-
-/**
- * Order line budget in micro currency.
- * @type {!number}
- * @export
- */
-API.Client.OrderLines.prototype.budget;
-
-/**
- * Order line paid budget in micro currency.
- * @type {!number}
- * @export
- */
-API.Client.OrderLines.prototype.paidBudget;
-
-/**
  * Order line status.
  * @type {!API.Client.OrderLineStatus}
  * @export
@@ -70,16 +77,9 @@ API.Client.OrderLines.prototype.paidBudget;
 API.Client.OrderLines.prototype.status;
 
 /**
- * Order line name.
+ * Always \"orderline\".
  * @type {!string}
  * @export
  */
-API.Client.OrderLines.prototype.name;
-
-/**
- * Order line paid type.
- * @type {!API.Client.OrderLinePaidType}
- * @export
- */
-API.Client.OrderLines.prototype.paidType;
+API.Client.OrderLines.prototype.type;
 

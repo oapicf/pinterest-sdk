@@ -47,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	AppTypeMultipliers getAppTypeMultipliers();
+
+	/*! \brief Set 
+	 */
+	void setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers);
 	/*! \brief Get Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
 	 */
 	long long getBidInMicroCurrency();
@@ -56,13 +63,6 @@ public:
 	void setBidInMicroCurrency(long long  bid_in_micro_currency);
 	/*! \brief Get 
 	 */
-	AppTypeMultipliers getAppTypeMultipliers();
-
-	/*! \brief Set 
-	 */
-	void setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers);
-	/*! \brief Get 
-	 */
 	PlacementMultipliers getPlacementMultipliers();
 
 	/*! \brief Set 
@@ -70,8 +70,8 @@ public:
 	void setPlacementMultipliers(PlacementMultipliers  placement_multipliers);
 
 private:
-	long long bid_in_micro_currency;
 	AppTypeMultipliers app_type_multipliers;
+	long long bid_in_micro_currency;
 	PlacementMultipliers placement_multipliers;
 	void __init();
 	void __cleanup();

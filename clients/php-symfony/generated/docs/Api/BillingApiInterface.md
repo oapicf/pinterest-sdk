@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adsCreditRedeem**](BillingApiInterface.md#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**adsCreditsDiscountsGet**](BillingApiInterface.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billingInvoiceDownloadGet**](BillingApiInterface.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoicesGet**](BillingApiInterface.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billingProfilesGet**](BillingApiInterface.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssioAccountsGet**](BillingApiInterface.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**ssioInsertionOrderCreate**](BillingApiInterface.md#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -31,7 +33,7 @@ services:
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example Implementation
 ```php
@@ -94,7 +96,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example Implementation
 ```php
@@ -153,12 +155,145 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+## **billingInvoiceDownloadGet**
+> OpenAPI\Server\Model\BillingInvoiceDownloadResponse billingInvoiceDownloadGet($adAccountId, $billingInvoiceId)
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example Implementation
+```php
+<?php
+// src/Acme/MyBundle/Api/BillingApiInterface.php
+
+namespace Acme\MyBundle\Api;
+
+use OpenAPI\Server\Api\BillingApiInterface;
+
+class BillingApi implements BillingApiInterface
+{
+
+    /**
+     * Configure OAuth2 access token for authorization: pinterest_oauth2
+     */
+    public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    // ...
+
+    /**
+     * Implementation of BillingApiInterface#billingInvoiceDownloadGet
+     */
+    public function billingInvoiceDownloadGet(string $adAccountId, string $billingInvoiceId, int &$responseCode, array &$responseHeaders): array|object|null
+    {
+        // Implement the operation ...
+    }
+
+    // ...
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **string**| Unique identifier of an ad account. |
+ **billingInvoiceId** | **string**| Unique identifier of a billing invoice. |
+
+### Return type
+
+[**OpenAPI\Server\Model\BillingInvoiceDownloadResponse**](../Model/BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+## **billingInvoicesGet**
+> OpenAPI\Server\Model\BillingInvoicesGet200Response billingInvoicesGet($adAccountId, $bookmark, $pageSize, $sort, $order, $status, $documentType, $startDueDate, $endDueDate)
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example Implementation
+```php
+<?php
+// src/Acme/MyBundle/Api/BillingApiInterface.php
+
+namespace Acme\MyBundle\Api;
+
+use OpenAPI\Server\Api\BillingApiInterface;
+
+class BillingApi implements BillingApiInterface
+{
+
+    /**
+     * Configure OAuth2 access token for authorization: pinterest_oauth2
+     */
+    public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    // ...
+
+    /**
+     * Implementation of BillingApiInterface#billingInvoicesGet
+     */
+    public function billingInvoicesGet(string $adAccountId, ?string $bookmark, int $pageSize, string $sort, ?string $order, ?string $status, ?string $documentType, ?\DateTime $startDueDate, ?\DateTime $endDueDate, int &$responseCode, array &$responseHeaders): array|object|null
+    {
+        // Implement the operation ...
+    }
+
+    // ...
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **string**| Unique identifier of an ad account. |
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort** | **string**| Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
+ **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
+ **status** | **string**| Status of billing invoices to filter by | [optional]
+ **documentType** | **string**| Document type of billing invoices to filter by | [optional]
+ **startDueDate** | **\DateTime**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
+ **endDueDate** | **\DateTime**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
+
+### Return type
+
+[**OpenAPI\Server\Model\BillingInvoicesGet200Response**](../Model/BillingInvoicesGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 ## **billingProfilesGet**
 > OpenAPI\Server\Model\BillingProfilesGet200Response billingProfilesGet($adAccountId, $isActive, $bookmark, $pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Example Implementation
 ```php

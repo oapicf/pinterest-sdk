@@ -7,10 +7,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
 **childInterests** | **Seq&lt;String&gt;** |  |  [optional]
+**id** | **String** |  |  [optional]
 **level** | **Int** |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 

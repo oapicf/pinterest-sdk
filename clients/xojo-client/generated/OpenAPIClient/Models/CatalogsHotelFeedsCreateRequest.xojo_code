@@ -2,20 +2,25 @@
 Protected Class CatalogsHotelFeedsCreateRequest
 
 	#tag Property, Flags = &h0
-		default_currency As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
-			A human-friendly name associated to a given feed.
+			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
 		#tag EndNote
-		name As String
+		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		format As String
+		catalog_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		default_currency As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -25,7 +30,7 @@ Protected Class CatalogsHotelFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		credentials As OpenAPIClient.Models.CatalogsFeedCredentials
+		format As String
 	#tag EndProperty
 
 
@@ -38,20 +43,15 @@ Protected Class CatalogsHotelFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		catalog_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+			A human-friendly name associated to a given feed.
 		#tag EndNote
-		catalog_id As Xoson.O.OptionalString
+		name As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		preferred_processing_schedule As OpenAPIClient.Models.CatalogsFeedProcessingSchedule
 	#tag EndProperty
 
 
@@ -97,15 +97,7 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="default_currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="NullableCurrency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="name"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -113,19 +105,11 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="format"
+			Name="catalog_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsFormat"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="default_locale"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsFeedsCreateRequestDefaultLocale"
+			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -137,7 +121,39 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="default_currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NullableCurrency"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="default_locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFeedsCreateRequestDefaultLocale"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="format"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="location"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -150,22 +166,6 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsFeedProcessingSchedule"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

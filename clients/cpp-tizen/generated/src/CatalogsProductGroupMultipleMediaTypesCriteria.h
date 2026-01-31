@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<MediaType> getValues();
-
-	/*! \brief Set 
-	 */
-	void setValues(std::list <MediaType> values);
-	/*! \brief Get 
-	 */
 	bool getNegated();
 
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	std::list<MediaType> getValues();
+
+	/*! \brief Set 
+	 */
+	void setValues(std::list <MediaType> values);
 
 private:
-	std::list <MediaType>values;
 	bool negated;
+	std::list <MediaType>values;
 	void __init();
 	void __cleanup();
 

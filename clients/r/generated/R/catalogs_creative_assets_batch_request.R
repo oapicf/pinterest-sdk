@@ -7,33 +7,33 @@
 #' @title CatalogsCreativeAssetsBatchRequest
 #' @description CatalogsCreativeAssetsBatchRequest Class
 #' @format An \code{R6Class} generator object
+#' @field catalog_id Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog character [optional]
 #' @field catalog_type  character
 #' @field country  \link{Country}
-#' @field language We recommend using the CatalogsLocale values. character
 #' @field items Array with creative assets item operations list(\link{CatalogsCreativeAssetsBatchItem})
-#' @field catalog_id Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog character [optional]
+#' @field language We recommend using the CatalogsLocale values. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
   "CatalogsCreativeAssetsBatchRequest",
   public = list(
+    `catalog_id` = NULL,
     `catalog_type` = NULL,
     `country` = NULL,
-    `language` = NULL,
     `items` = NULL,
-    `catalog_id` = NULL,
+    `language` = NULL,
 
     #' @description
     #' Initialize a new CatalogsCreativeAssetsBatchRequest class.
     #'
     #' @param catalog_type catalog_type
     #' @param country country
-    #' @param language We recommend using the CatalogsLocale values.
     #' @param items Array with creative assets item operations
+    #' @param language We recommend using the CatalogsLocale values.
     #' @param catalog_id Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `country`, `language`, `items`, `catalog_id` = NULL, ...) {
+    initialize = function(`catalog_type`, `country`, `items`, `language`, `catalog_id` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c("CREATIVE_ASSETS"))) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"CREATIVE_ASSETS\".", sep = ""))
@@ -50,6 +50,11 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`country`))
         self$`country` <- `country`
       }
+      if (!missing(`items`)) {
+        stopifnot(is.vector(`items`), length(`items`) != 0)
+        sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
+        self$`items` <- `items`
+      }
       if (!missing(`language`)) {
         if (!(`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
           stop(paste("Error! \"", `language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
@@ -58,11 +63,6 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `language`. Must be a string:", `language`))
         }
         self$`language` <- `language`
-      }
-      if (!missing(`items`)) {
-        stopifnot(is.vector(`items`), length(`items`) != 0)
-        sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
-        self$`items` <- `items`
       }
       if (!is.null(`catalog_id`)) {
         if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
@@ -103,6 +103,10 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsCreativeAssetsBatchRequestObject <- list()
+      if (!is.null(self$`catalog_id`)) {
+        CatalogsCreativeAssetsBatchRequestObject[["catalog_id"]] <-
+          self$`catalog_id`
+      }
       if (!is.null(self$`catalog_type`)) {
         CatalogsCreativeAssetsBatchRequestObject[["catalog_type"]] <-
           self$`catalog_type`
@@ -111,17 +115,13 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
         CatalogsCreativeAssetsBatchRequestObject[["country"]] <-
           self$`country`$toSimpleType()
       }
-      if (!is.null(self$`language`)) {
-        CatalogsCreativeAssetsBatchRequestObject[["language"]] <-
-          self$`language`
-      }
       if (!is.null(self$`items`)) {
         CatalogsCreativeAssetsBatchRequestObject[["items"]] <-
           lapply(self$`items`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`catalog_id`)) {
-        CatalogsCreativeAssetsBatchRequestObject[["catalog_id"]] <-
-          self$`catalog_id`
+      if (!is.null(self$`language`)) {
+        CatalogsCreativeAssetsBatchRequestObject[["language"]] <-
+          self$`language`
       }
       return(CatalogsCreativeAssetsBatchRequestObject)
     },
@@ -133,6 +133,9 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
     #' @return the instance of CatalogsCreativeAssetsBatchRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
+      }
       if (!is.null(this_object$`catalog_type`)) {
         if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("CREATIVE_ASSETS"))) {
           stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"CREATIVE_ASSETS\".", sep = ""))
@@ -144,17 +147,14 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
         `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
         self$`country` <- `country_object`
       }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsCreativeAssetsBatchItem]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`language`)) {
         if (!is.null(this_object$`language`) && !(this_object$`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
           stop(paste("Error! \"", this_object$`language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
         }
         self$`language` <- this_object$`language`
-      }
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsCreativeAssetsBatchItem]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`catalog_id`)) {
-        self$`catalog_id` <- this_object$`catalog_id`
       }
       self
     },
@@ -177,17 +177,17 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
     #' @return the instance of CatalogsCreativeAssetsBatchRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`catalog_id` <- this_object$`catalog_id`
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("CREATIVE_ASSETS"))) {
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"CREATIVE_ASSETS\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsCreativeAssetsBatchItem]", loadNamespace("openapi"))
       if (!is.null(this_object$`language`) && !(this_object$`language` %in% c("af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"))) {
         stop(paste("Error! \"", this_object$`language`, "\" cannot be assigned to `language`. Must be \"af-ZA\", \"ar-SA\", \"bg-BG\", \"bn-IN\", \"cs-CZ\", \"da-DK\", \"de\", \"el-GR\", \"en-AU\", \"en-CA\", \"en-GB\", \"en-IN\", \"en-US\", \"es-419\", \"es-AR\", \"es-ES\", \"es-MX\", \"fi-FI\", \"fr\", \"fr-CA\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it\", \"ja\", \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \"sk-SK\", \"sv-SE\", \"te-IN\", \"th-TH\", \"tl-PH\", \"tr\", \"uk-UA\", \"vi-VN\", \"zh-CN\", \"zh-TW\", \"AM\", \"AR\", \"AZ\", \"BG\", \"BN\", \"BS\", \"CA\", \"CS\", \"DA\", \"DV\", \"DZ\", \"DE\", \"EL\", \"EN\", \"ES\", \"ET\", \"FA\", \"FI\", \"FR\", \"HE\", \"HI\", \"HR\", \"HU\", \"HY\", \"ID\", \"IN\", \"IS\", \"IT\", \"IW\", \"JA\", \"KA\", \"KM\", \"KO\", \"LO\", \"LT\", \"LV\", \"MK\", \"MN\", \"MS\", \"MY\", \"NB\", \"NE\", \"NL\", \"NO\", \"PL\", \"PT\", \"RO\", \"RU\", \"SK\", \"SL\", \"SQ\", \"SR\", \"SV\", \"TL\", \"UK\", \"VI\", \"TE\", \"TH\", \"TR\", \"XX\", \"ZH\".", sep = ""))
       }
       self$`language` <- this_object$`language`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsCreativeAssetsBatchItem]", loadNamespace("openapi"))
-      self$`catalog_id` <- this_object$`catalog_id`
       self
     },
 
@@ -211,6 +211,13 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsBatchRequest: the required field `country` is missing."))
       }
+      # check the required field `items`
+      if (!is.null(input_json$`items`)) {
+        stopifnot(is.vector(input_json$`items`), length(input_json$`items`) != 0)
+        tmp <- sapply(input_json$`items`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsBatchRequest: the required field `items` is missing."))
+      }
       # check the required field `language`
       if (!is.null(input_json$`language`)) {
         if (!(is.character(input_json$`language`) && length(input_json$`language`) == 1)) {
@@ -218,13 +225,6 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsBatchRequest: the required field `language` is missing."))
-      }
-      # check the required field `items`
-      if (!is.null(input_json$`items`)) {
-        stopifnot(is.vector(input_json$`items`), length(input_json$`items`) != 0)
-        tmp <- sapply(input_json$`items`, function(x) stopifnot(R6::is.R6(x)))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsBatchRequest: the required field `items` is missing."))
       }
     },
 
@@ -241,6 +241,10 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         return(FALSE)
@@ -248,11 +252,6 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
 
       # check if the required `country` is null
       if (is.null(self$`country`)) {
-        return(FALSE)
-      }
-
-      # check if the required `language` is null
-      if (is.null(self$`language`)) {
         return(FALSE)
       }
 
@@ -268,7 +267,8 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+      # check if the required `language` is null
+      if (is.null(self$`language`)) {
         return(FALSE)
       }
 
@@ -281,6 +281,10 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
@@ -289,11 +293,6 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
       # check if the required `country` is null
       if (is.null(self$`country`)) {
         invalid_fields["country"] <- "Non-nullable required field `country` cannot be null."
-      }
-
-      # check if the required `language` is null
-      if (is.null(self$`language`)) {
-        invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
       }
 
       # check if the required `items` is null
@@ -308,8 +307,9 @@ CatalogsCreativeAssetsBatchRequest <- R6::R6Class(
         invalid_fields["items"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
-        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
+      # check if the required `language` is null
+      if (is.null(self$`language`)) {
+        invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
       }
 
       invalid_fields

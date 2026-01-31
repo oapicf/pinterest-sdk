@@ -10,8 +10,8 @@ import org.openapitools.model.InviteResponse;
 
 @Canonical
 class GetInvites200Response {
-    /* List of invite and request data. */
-    List<InviteResponse> items = new ArrayList<>()
     
     String bookmark
+    /* List of invite and request data. */
+    List<InviteResponse> items = new ArrayList<>()
 }

@@ -1,7 +1,6 @@
 
 # EnhancedMatchStatusType
 
-The enhanced match status of the tag
 
 ## Properties
 

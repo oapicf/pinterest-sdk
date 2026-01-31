@@ -23,8 +23,8 @@ import com.squareup.moshi.JsonClass
  * Queryable audience representation.
  *
  * @param date Generation date
- * @param type Generated audience type to request.
- * @param scope Generated audience scope to request.
+ * @param scope 
+ * @param type 
  */
 
 
@@ -34,13 +34,11 @@ data class AudienceDefinition (
     @Json(name = "date")
     val date: kotlin.String? = null,
 
-    /* Generated audience type to request. */
-    @Json(name = "type")
-    val type: kotlin.String? = null,
-
-    /* Generated audience scope to request. */
     @Json(name = "scope")
-    val scope: kotlin.String? = null
+    val scope: kotlin.String? = null,
+
+    @Json(name = "type")
+    val type: kotlin.String? = null
 
 ) {
 

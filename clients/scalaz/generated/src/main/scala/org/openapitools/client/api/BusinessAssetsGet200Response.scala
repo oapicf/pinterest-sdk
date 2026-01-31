@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import BusinessAssetsGet200Response._
 
 case class BusinessAssetsGet200Response (
-  /* List of assets the requesting business has access to. */
-  items: List[GetBusinessAssetsResponse],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* List of assets the requesting business has access to. */
+  items: List[GetBusinessAssetsResponse])
 
 object BusinessAssetsGet200Response {
   import DateTimeCodecs._

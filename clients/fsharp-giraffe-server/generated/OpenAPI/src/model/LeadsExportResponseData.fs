@@ -11,7 +11,7 @@ module LeadsExportResponseData =
 
 
   type LeadsExportResponseData = {
-    ExportStatus : LeadsExportStatus;
     DownloadUrl : string option;
+    ExportStatus : LeadsExportStatus;
   }
   //#endregion

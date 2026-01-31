@@ -13,8 +13,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
+import org.openapitools.model.CatalogsHotelProductGroupType;
 import org.openapitools.model.CatalogsProductGroupStatus;
-import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsRetailProductGroup.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsVerticalProductGroup {
     public String getCatalogType();
 }

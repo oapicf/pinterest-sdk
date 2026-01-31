@@ -3,6 +3,8 @@ package models
 // CatalogsCreativeAssetsItemResponse - Object describing a hotel record
 type CatalogsCreativeAssetsItemResponse struct {
 
+	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
+
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	// The catalog creative assets id in the merchant namespace
@@ -10,6 +12,4 @@ type CatalogsCreativeAssetsItemResponse struct {
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 }

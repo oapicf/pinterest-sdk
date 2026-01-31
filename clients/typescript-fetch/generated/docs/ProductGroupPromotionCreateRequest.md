@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `adGroupId` | string
-`productGroupPromotion` | [Array&lt;ProductGroupPromotionCreateRequestElement&gt;](ProductGroupPromotionCreateRequestElement.md)
+`productGroupPromotion` | [Array&lt;ProductGroupPromotion&gt;](ProductGroupPromotion.md)
 
 ## Example
 

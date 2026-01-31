@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,42 +22,44 @@ var _ MappedNullable = &ConversionEventsDataInner{}
 
 // ConversionEventsDataInner struct for ConversionEventsDataInner
 type ConversionEventsDataInner struct {
-	// <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-	EventName string `json:"event_name"`
-	// <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+	// <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
 	ActionSource string `json:"action_source"`
-	// The time when the event happened. Unix timestamp in seconds.
-	EventTime int64 `json:"event_time"`
-	// A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-	EventId string `json:"event_id"`
-	// URL of the web conversion event.
-	EventSourceUrl NullableString `json:"event_source_url,omitempty"`
-	// When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-	OptOut *bool `json:"opt_out,omitempty"`
-	// The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
-	PartnerName NullableString `json:"partner_name,omitempty"`
-	UserData ConversionEventsUserData `json:"user_data"`
-	CustomData *ConversionEventsDataInnerCustomData `json:"custom_data,omitempty"`
 	// The app store app ID.
 	AppId NullableString `json:"app_id,omitempty"`
+	AppInfo *ConversionEventAppInfo `json:"app_info,omitempty"`
 	// Name of the app.
 	AppName NullableString `json:"app_name,omitempty"`
 	// Version of the app.
 	AppVersion NullableString `json:"app_version,omitempty"`
+	CustomData *ConversionEventsDataInnerCustomData `json:"custom_data,omitempty"`
 	// Brand of the user device.
 	DeviceBrand NullableString `json:"device_brand,omitempty"`
 	// User device's mobile carrier.
 	DeviceCarrier NullableString `json:"device_carrier,omitempty"`
+	DeviceInfo *ConversionEventDeviceInfo `json:"device_info,omitempty"`
 	// Model of the user device.
 	DeviceModel NullableString `json:"device_model,omitempty"`
 	// Type of the user device.
 	DeviceType NullableString `json:"device_type,omitempty"`
-	// Version of the device operating system.
-	OsVersion NullableString `json:"os_version,omitempty"`
-	// Whether the event occurred when the user device was connected to wifi.
-	Wifi *bool `json:"wifi,omitempty"`
+	// A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
+	EventId string `json:"event_id"`
+	// <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
+	EventName string `json:"event_name"`
+	// URL of the web conversion event.
+	EventSourceUrl NullableString `json:"event_source_url,omitempty"`
+	// The time when the event happened. Unix timestamp in seconds.
+	EventTime int64 `json:"event_time"`
 	// Two-character ISO-639-1 language code indicating the user's language.
 	Language NullableString `json:"language,omitempty"`
+	// When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+	OptOut *bool `json:"opt_out,omitempty"`
+	// Version of the device operating system.
+	OsVersion NullableString `json:"os_version,omitempty"`
+	// The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+	PartnerName NullableString `json:"partner_name,omitempty"`
+	UserData ConversionEventsUserData `json:"user_data"`
+	// Whether the event occurred when the user device was connected to wifi.
+	Wifi *bool `json:"wifi,omitempty"`
 }
 
 type _ConversionEventsDataInner ConversionEventsDataInner
@@ -66,12 +68,12 @@ type _ConversionEventsDataInner ConversionEventsDataInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConversionEventsDataInner(eventName string, actionSource string, eventTime int64, eventId string, userData ConversionEventsUserData) *ConversionEventsDataInner {
+func NewConversionEventsDataInner(actionSource string, eventId string, eventName string, eventTime int64, userData ConversionEventsUserData) *ConversionEventsDataInner {
 	this := ConversionEventsDataInner{}
-	this.EventName = eventName
 	this.ActionSource = actionSource
-	this.EventTime = eventTime
 	this.EventId = eventId
+	this.EventName = eventName
+	this.EventTime = eventTime
 	this.UserData = userData
 	return &this
 }
@@ -82,30 +84,6 @@ func NewConversionEventsDataInner(eventName string, actionSource string, eventTi
 func NewConversionEventsDataInnerWithDefaults() *ConversionEventsDataInner {
 	this := ConversionEventsDataInner{}
 	return &this
-}
-
-// GetEventName returns the EventName field value
-func (o *ConversionEventsDataInner) GetEventName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.EventName
-}
-
-// GetEventNameOk returns a tuple with the EventName field value
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetEventNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EventName, true
-}
-
-// SetEventName sets field value
-func (o *ConversionEventsDataInner) SetEventName(v string) {
-	o.EventName = v
 }
 
 // GetActionSource returns the ActionSource field value
@@ -130,226 +108,6 @@ func (o *ConversionEventsDataInner) GetActionSourceOk() (*string, bool) {
 // SetActionSource sets field value
 func (o *ConversionEventsDataInner) SetActionSource(v string) {
 	o.ActionSource = v
-}
-
-// GetEventTime returns the EventTime field value
-func (o *ConversionEventsDataInner) GetEventTime() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.EventTime
-}
-
-// GetEventTimeOk returns a tuple with the EventTime field value
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetEventTimeOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EventTime, true
-}
-
-// SetEventTime sets field value
-func (o *ConversionEventsDataInner) SetEventTime(v int64) {
-	o.EventTime = v
-}
-
-// GetEventId returns the EventId field value
-func (o *ConversionEventsDataInner) GetEventId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.EventId
-}
-
-// GetEventIdOk returns a tuple with the EventId field value
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetEventIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EventId, true
-}
-
-// SetEventId sets field value
-func (o *ConversionEventsDataInner) SetEventId(v string) {
-	o.EventId = v
-}
-
-// GetEventSourceUrl returns the EventSourceUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInner) GetEventSourceUrl() string {
-	if o == nil || IsNil(o.EventSourceUrl.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.EventSourceUrl.Get()
-}
-
-// GetEventSourceUrlOk returns a tuple with the EventSourceUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInner) GetEventSourceUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EventSourceUrl.Get(), o.EventSourceUrl.IsSet()
-}
-
-// HasEventSourceUrl returns a boolean if a field has been set.
-func (o *ConversionEventsDataInner) HasEventSourceUrl() bool {
-	if o != nil && o.EventSourceUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEventSourceUrl gets a reference to the given NullableString and assigns it to the EventSourceUrl field.
-func (o *ConversionEventsDataInner) SetEventSourceUrl(v string) {
-	o.EventSourceUrl.Set(&v)
-}
-// SetEventSourceUrlNil sets the value for EventSourceUrl to be an explicit nil
-func (o *ConversionEventsDataInner) SetEventSourceUrlNil() {
-	o.EventSourceUrl.Set(nil)
-}
-
-// UnsetEventSourceUrl ensures that no value is present for EventSourceUrl, not even an explicit nil
-func (o *ConversionEventsDataInner) UnsetEventSourceUrl() {
-	o.EventSourceUrl.Unset()
-}
-
-// GetOptOut returns the OptOut field value if set, zero value otherwise.
-func (o *ConversionEventsDataInner) GetOptOut() bool {
-	if o == nil || IsNil(o.OptOut) {
-		var ret bool
-		return ret
-	}
-	return *o.OptOut
-}
-
-// GetOptOutOk returns a tuple with the OptOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetOptOutOk() (*bool, bool) {
-	if o == nil || IsNil(o.OptOut) {
-		return nil, false
-	}
-	return o.OptOut, true
-}
-
-// HasOptOut returns a boolean if a field has been set.
-func (o *ConversionEventsDataInner) HasOptOut() bool {
-	if o != nil && !IsNil(o.OptOut) {
-		return true
-	}
-
-	return false
-}
-
-// SetOptOut gets a reference to the given bool and assigns it to the OptOut field.
-func (o *ConversionEventsDataInner) SetOptOut(v bool) {
-	o.OptOut = &v
-}
-
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInner) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerName.Get()
-}
-
-// GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInner) GetPartnerNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PartnerName.Get(), o.PartnerName.IsSet()
-}
-
-// HasPartnerName returns a boolean if a field has been set.
-func (o *ConversionEventsDataInner) HasPartnerName() bool {
-	if o != nil && o.PartnerName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
-func (o *ConversionEventsDataInner) SetPartnerName(v string) {
-	o.PartnerName.Set(&v)
-}
-// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
-func (o *ConversionEventsDataInner) SetPartnerNameNil() {
-	o.PartnerName.Set(nil)
-}
-
-// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
-func (o *ConversionEventsDataInner) UnsetPartnerName() {
-	o.PartnerName.Unset()
-}
-
-// GetUserData returns the UserData field value
-func (o *ConversionEventsDataInner) GetUserData() ConversionEventsUserData {
-	if o == nil {
-		var ret ConversionEventsUserData
-		return ret
-	}
-
-	return o.UserData
-}
-
-// GetUserDataOk returns a tuple with the UserData field value
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetUserDataOk() (*ConversionEventsUserData, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UserData, true
-}
-
-// SetUserData sets field value
-func (o *ConversionEventsDataInner) SetUserData(v ConversionEventsUserData) {
-	o.UserData = v
-}
-
-// GetCustomData returns the CustomData field value if set, zero value otherwise.
-func (o *ConversionEventsDataInner) GetCustomData() ConversionEventsDataInnerCustomData {
-	if o == nil || IsNil(o.CustomData) {
-		var ret ConversionEventsDataInnerCustomData
-		return ret
-	}
-	return *o.CustomData
-}
-
-// GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetCustomDataOk() (*ConversionEventsDataInnerCustomData, bool) {
-	if o == nil || IsNil(o.CustomData) {
-		return nil, false
-	}
-	return o.CustomData, true
-}
-
-// HasCustomData returns a boolean if a field has been set.
-func (o *ConversionEventsDataInner) HasCustomData() bool {
-	if o != nil && !IsNil(o.CustomData) {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomData gets a reference to the given ConversionEventsDataInnerCustomData and assigns it to the CustomData field.
-func (o *ConversionEventsDataInner) SetCustomData(v ConversionEventsDataInnerCustomData) {
-	o.CustomData = &v
 }
 
 // GetAppId returns the AppId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -392,6 +150,38 @@ func (o *ConversionEventsDataInner) SetAppIdNil() {
 // UnsetAppId ensures that no value is present for AppId, not even an explicit nil
 func (o *ConversionEventsDataInner) UnsetAppId() {
 	o.AppId.Unset()
+}
+
+// GetAppInfo returns the AppInfo field value if set, zero value otherwise.
+func (o *ConversionEventsDataInner) GetAppInfo() ConversionEventAppInfo {
+	if o == nil || IsNil(o.AppInfo) {
+		var ret ConversionEventAppInfo
+		return ret
+	}
+	return *o.AppInfo
+}
+
+// GetAppInfoOk returns a tuple with the AppInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetAppInfoOk() (*ConversionEventAppInfo, bool) {
+	if o == nil || IsNil(o.AppInfo) {
+		return nil, false
+	}
+	return o.AppInfo, true
+}
+
+// HasAppInfo returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasAppInfo() bool {
+	if o != nil && !IsNil(o.AppInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppInfo gets a reference to the given ConversionEventAppInfo and assigns it to the AppInfo field.
+func (o *ConversionEventsDataInner) SetAppInfo(v ConversionEventAppInfo) {
+	o.AppInfo = &v
 }
 
 // GetAppName returns the AppName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -478,6 +268,38 @@ func (o *ConversionEventsDataInner) UnsetAppVersion() {
 	o.AppVersion.Unset()
 }
 
+// GetCustomData returns the CustomData field value if set, zero value otherwise.
+func (o *ConversionEventsDataInner) GetCustomData() ConversionEventsDataInnerCustomData {
+	if o == nil || IsNil(o.CustomData) {
+		var ret ConversionEventsDataInnerCustomData
+		return ret
+	}
+	return *o.CustomData
+}
+
+// GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetCustomDataOk() (*ConversionEventsDataInnerCustomData, bool) {
+	if o == nil || IsNil(o.CustomData) {
+		return nil, false
+	}
+	return o.CustomData, true
+}
+
+// HasCustomData returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasCustomData() bool {
+	if o != nil && !IsNil(o.CustomData) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomData gets a reference to the given ConversionEventsDataInnerCustomData and assigns it to the CustomData field.
+func (o *ConversionEventsDataInner) SetCustomData(v ConversionEventsDataInnerCustomData) {
+	o.CustomData = &v
+}
+
 // GetDeviceBrand returns the DeviceBrand field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConversionEventsDataInner) GetDeviceBrand() string {
 	if o == nil || IsNil(o.DeviceBrand.Get()) {
@@ -560,6 +382,38 @@ func (o *ConversionEventsDataInner) SetDeviceCarrierNil() {
 // UnsetDeviceCarrier ensures that no value is present for DeviceCarrier, not even an explicit nil
 func (o *ConversionEventsDataInner) UnsetDeviceCarrier() {
 	o.DeviceCarrier.Unset()
+}
+
+// GetDeviceInfo returns the DeviceInfo field value if set, zero value otherwise.
+func (o *ConversionEventsDataInner) GetDeviceInfo() ConversionEventDeviceInfo {
+	if o == nil || IsNil(o.DeviceInfo) {
+		var ret ConversionEventDeviceInfo
+		return ret
+	}
+	return *o.DeviceInfo
+}
+
+// GetDeviceInfoOk returns a tuple with the DeviceInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetDeviceInfoOk() (*ConversionEventDeviceInfo, bool) {
+	if o == nil || IsNil(o.DeviceInfo) {
+		return nil, false
+	}
+	return o.DeviceInfo, true
+}
+
+// HasDeviceInfo returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasDeviceInfo() bool {
+	if o != nil && !IsNil(o.DeviceInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceInfo gets a reference to the given ConversionEventDeviceInfo and assigns it to the DeviceInfo field.
+func (o *ConversionEventsDataInner) SetDeviceInfo(v ConversionEventDeviceInfo) {
+	o.DeviceInfo = &v
 }
 
 // GetDeviceModel returns the DeviceModel field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -646,78 +500,118 @@ func (o *ConversionEventsDataInner) UnsetDeviceType() {
 	o.DeviceType.Unset()
 }
 
-// GetOsVersion returns the OsVersion field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInner) GetOsVersion() string {
-	if o == nil || IsNil(o.OsVersion.Get()) {
+// GetEventId returns the EventId field value
+func (o *ConversionEventsDataInner) GetEventId() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OsVersion.Get()
+
+	return o.EventId
 }
 
-// GetOsVersionOk returns a tuple with the OsVersion field value if set, nil otherwise
+// GetEventIdOk returns a tuple with the EventId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInner) GetOsVersionOk() (*string, bool) {
+func (o *ConversionEventsDataInner) GetEventIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OsVersion.Get(), o.OsVersion.IsSet()
+	return &o.EventId, true
 }
 
-// HasOsVersion returns a boolean if a field has been set.
-func (o *ConversionEventsDataInner) HasOsVersion() bool {
-	if o != nil && o.OsVersion.IsSet() {
-		return true
-	}
-
-	return false
+// SetEventId sets field value
+func (o *ConversionEventsDataInner) SetEventId(v string) {
+	o.EventId = v
 }
 
-// SetOsVersion gets a reference to the given NullableString and assigns it to the OsVersion field.
-func (o *ConversionEventsDataInner) SetOsVersion(v string) {
-	o.OsVersion.Set(&v)
-}
-// SetOsVersionNil sets the value for OsVersion to be an explicit nil
-func (o *ConversionEventsDataInner) SetOsVersionNil() {
-	o.OsVersion.Set(nil)
-}
-
-// UnsetOsVersion ensures that no value is present for OsVersion, not even an explicit nil
-func (o *ConversionEventsDataInner) UnsetOsVersion() {
-	o.OsVersion.Unset()
-}
-
-// GetWifi returns the Wifi field value if set, zero value otherwise.
-func (o *ConversionEventsDataInner) GetWifi() bool {
-	if o == nil || IsNil(o.Wifi) {
-		var ret bool
+// GetEventName returns the EventName field value
+func (o *ConversionEventsDataInner) GetEventName() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.Wifi
+
+	return o.EventName
 }
 
-// GetWifiOk returns a tuple with the Wifi field value if set, nil otherwise
+// GetEventNameOk returns a tuple with the EventName field value
 // and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInner) GetWifiOk() (*bool, bool) {
-	if o == nil || IsNil(o.Wifi) {
+func (o *ConversionEventsDataInner) GetEventNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Wifi, true
+	return &o.EventName, true
 }
 
-// HasWifi returns a boolean if a field has been set.
-func (o *ConversionEventsDataInner) HasWifi() bool {
-	if o != nil && !IsNil(o.Wifi) {
+// SetEventName sets field value
+func (o *ConversionEventsDataInner) SetEventName(v string) {
+	o.EventName = v
+}
+
+// GetEventSourceUrl returns the EventSourceUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInner) GetEventSourceUrl() string {
+	if o == nil || IsNil(o.EventSourceUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EventSourceUrl.Get()
+}
+
+// GetEventSourceUrlOk returns a tuple with the EventSourceUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInner) GetEventSourceUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EventSourceUrl.Get(), o.EventSourceUrl.IsSet()
+}
+
+// HasEventSourceUrl returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasEventSourceUrl() bool {
+	if o != nil && o.EventSourceUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWifi gets a reference to the given bool and assigns it to the Wifi field.
-func (o *ConversionEventsDataInner) SetWifi(v bool) {
-	o.Wifi = &v
+// SetEventSourceUrl gets a reference to the given NullableString and assigns it to the EventSourceUrl field.
+func (o *ConversionEventsDataInner) SetEventSourceUrl(v string) {
+	o.EventSourceUrl.Set(&v)
+}
+// SetEventSourceUrlNil sets the value for EventSourceUrl to be an explicit nil
+func (o *ConversionEventsDataInner) SetEventSourceUrlNil() {
+	o.EventSourceUrl.Set(nil)
+}
+
+// UnsetEventSourceUrl ensures that no value is present for EventSourceUrl, not even an explicit nil
+func (o *ConversionEventsDataInner) UnsetEventSourceUrl() {
+	o.EventSourceUrl.Unset()
+}
+
+// GetEventTime returns the EventTime field value
+func (o *ConversionEventsDataInner) GetEventTime() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.EventTime
+}
+
+// GetEventTimeOk returns a tuple with the EventTime field value
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetEventTimeOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EventTime, true
+}
+
+// SetEventTime sets field value
+func (o *ConversionEventsDataInner) SetEventTime(v int64) {
+	o.EventTime = v
 }
 
 // GetLanguage returns the Language field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -762,6 +656,178 @@ func (o *ConversionEventsDataInner) UnsetLanguage() {
 	o.Language.Unset()
 }
 
+// GetOptOut returns the OptOut field value if set, zero value otherwise.
+func (o *ConversionEventsDataInner) GetOptOut() bool {
+	if o == nil || IsNil(o.OptOut) {
+		var ret bool
+		return ret
+	}
+	return *o.OptOut
+}
+
+// GetOptOutOk returns a tuple with the OptOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetOptOutOk() (*bool, bool) {
+	if o == nil || IsNil(o.OptOut) {
+		return nil, false
+	}
+	return o.OptOut, true
+}
+
+// HasOptOut returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasOptOut() bool {
+	if o != nil && !IsNil(o.OptOut) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptOut gets a reference to the given bool and assigns it to the OptOut field.
+func (o *ConversionEventsDataInner) SetOptOut(v bool) {
+	o.OptOut = &v
+}
+
+// GetOsVersion returns the OsVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInner) GetOsVersion() string {
+	if o == nil || IsNil(o.OsVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OsVersion.Get()
+}
+
+// GetOsVersionOk returns a tuple with the OsVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInner) GetOsVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OsVersion.Get(), o.OsVersion.IsSet()
+}
+
+// HasOsVersion returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasOsVersion() bool {
+	if o != nil && o.OsVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOsVersion gets a reference to the given NullableString and assigns it to the OsVersion field.
+func (o *ConversionEventsDataInner) SetOsVersion(v string) {
+	o.OsVersion.Set(&v)
+}
+// SetOsVersionNil sets the value for OsVersion to be an explicit nil
+func (o *ConversionEventsDataInner) SetOsVersionNil() {
+	o.OsVersion.Set(nil)
+}
+
+// UnsetOsVersion ensures that no value is present for OsVersion, not even an explicit nil
+func (o *ConversionEventsDataInner) UnsetOsVersion() {
+	o.OsVersion.Unset()
+}
+
+// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInner) GetPartnerName() string {
+	if o == nil || IsNil(o.PartnerName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerName.Get()
+}
+
+// GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInner) GetPartnerNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PartnerName.Get(), o.PartnerName.IsSet()
+}
+
+// HasPartnerName returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasPartnerName() bool {
+	if o != nil && o.PartnerName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
+func (o *ConversionEventsDataInner) SetPartnerName(v string) {
+	o.PartnerName.Set(&v)
+}
+// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
+func (o *ConversionEventsDataInner) SetPartnerNameNil() {
+	o.PartnerName.Set(nil)
+}
+
+// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
+func (o *ConversionEventsDataInner) UnsetPartnerName() {
+	o.PartnerName.Unset()
+}
+
+// GetUserData returns the UserData field value
+func (o *ConversionEventsDataInner) GetUserData() ConversionEventsUserData {
+	if o == nil {
+		var ret ConversionEventsUserData
+		return ret
+	}
+
+	return o.UserData
+}
+
+// GetUserDataOk returns a tuple with the UserData field value
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetUserDataOk() (*ConversionEventsUserData, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UserData, true
+}
+
+// SetUserData sets field value
+func (o *ConversionEventsDataInner) SetUserData(v ConversionEventsUserData) {
+	o.UserData = v
+}
+
+// GetWifi returns the Wifi field value if set, zero value otherwise.
+func (o *ConversionEventsDataInner) GetWifi() bool {
+	if o == nil || IsNil(o.Wifi) {
+		var ret bool
+		return ret
+	}
+	return *o.Wifi
+}
+
+// GetWifiOk returns a tuple with the Wifi field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInner) GetWifiOk() (*bool, bool) {
+	if o == nil || IsNil(o.Wifi) {
+		return nil, false
+	}
+	return o.Wifi, true
+}
+
+// HasWifi returns a boolean if a field has been set.
+func (o *ConversionEventsDataInner) HasWifi() bool {
+	if o != nil && !IsNil(o.Wifi) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifi gets a reference to the given bool and assigns it to the Wifi field.
+func (o *ConversionEventsDataInner) SetWifi(v bool) {
+	o.Wifi = &v
+}
+
 func (o ConversionEventsDataInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -772,25 +838,12 @@ func (o ConversionEventsDataInner) MarshalJSON() ([]byte, error) {
 
 func (o ConversionEventsDataInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["event_name"] = o.EventName
 	toSerialize["action_source"] = o.ActionSource
-	toSerialize["event_time"] = o.EventTime
-	toSerialize["event_id"] = o.EventId
-	if o.EventSourceUrl.IsSet() {
-		toSerialize["event_source_url"] = o.EventSourceUrl.Get()
-	}
-	if !IsNil(o.OptOut) {
-		toSerialize["opt_out"] = o.OptOut
-	}
-	if o.PartnerName.IsSet() {
-		toSerialize["partner_name"] = o.PartnerName.Get()
-	}
-	toSerialize["user_data"] = o.UserData
-	if !IsNil(o.CustomData) {
-		toSerialize["custom_data"] = o.CustomData
-	}
 	if o.AppId.IsSet() {
 		toSerialize["app_id"] = o.AppId.Get()
+	}
+	if !IsNil(o.AppInfo) {
+		toSerialize["app_info"] = o.AppInfo
 	}
 	if o.AppName.IsSet() {
 		toSerialize["app_name"] = o.AppName.Get()
@@ -798,11 +851,17 @@ func (o ConversionEventsDataInner) ToMap() (map[string]interface{}, error) {
 	if o.AppVersion.IsSet() {
 		toSerialize["app_version"] = o.AppVersion.Get()
 	}
+	if !IsNil(o.CustomData) {
+		toSerialize["custom_data"] = o.CustomData
+	}
 	if o.DeviceBrand.IsSet() {
 		toSerialize["device_brand"] = o.DeviceBrand.Get()
 	}
 	if o.DeviceCarrier.IsSet() {
 		toSerialize["device_carrier"] = o.DeviceCarrier.Get()
+	}
+	if !IsNil(o.DeviceInfo) {
+		toSerialize["device_info"] = o.DeviceInfo
 	}
 	if o.DeviceModel.IsSet() {
 		toSerialize["device_model"] = o.DeviceModel.Get()
@@ -810,14 +869,27 @@ func (o ConversionEventsDataInner) ToMap() (map[string]interface{}, error) {
 	if o.DeviceType.IsSet() {
 		toSerialize["device_type"] = o.DeviceType.Get()
 	}
+	toSerialize["event_id"] = o.EventId
+	toSerialize["event_name"] = o.EventName
+	if o.EventSourceUrl.IsSet() {
+		toSerialize["event_source_url"] = o.EventSourceUrl.Get()
+	}
+	toSerialize["event_time"] = o.EventTime
+	if o.Language.IsSet() {
+		toSerialize["language"] = o.Language.Get()
+	}
+	if !IsNil(o.OptOut) {
+		toSerialize["opt_out"] = o.OptOut
+	}
 	if o.OsVersion.IsSet() {
 		toSerialize["os_version"] = o.OsVersion.Get()
 	}
+	if o.PartnerName.IsSet() {
+		toSerialize["partner_name"] = o.PartnerName.Get()
+	}
+	toSerialize["user_data"] = o.UserData
 	if !IsNil(o.Wifi) {
 		toSerialize["wifi"] = o.Wifi
-	}
-	if o.Language.IsSet() {
-		toSerialize["language"] = o.Language.Get()
 	}
 	return toSerialize, nil
 }
@@ -827,10 +899,10 @@ func (o *ConversionEventsDataInner) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"event_name",
 		"action_source",
-		"event_time",
 		"event_id",
+		"event_name",
+		"event_time",
 		"user_data",
 	}
 

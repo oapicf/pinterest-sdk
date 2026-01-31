@@ -10,10 +10,10 @@ module TopPinsAnalyticsResponseDateAvailability =
 
   [<CLIMutable>]
   type TopPinsAnalyticsResponseDateAvailability = {
-    [<JsonProperty(PropertyName = "latest_available_timestamp")>]
-    LatestAvailableTimestamp : decimal;
     [<JsonProperty(PropertyName = "is_realtime")>]
     IsRealtime : bool;
+    [<JsonProperty(PropertyName = "latest_available_timestamp")>]
+    LatestAvailableTimestamp : decimal;
   }
 
   //#endregion

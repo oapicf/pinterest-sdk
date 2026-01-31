@@ -6,8 +6,8 @@ Request object of catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | **Country** |  | 
-**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  | 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

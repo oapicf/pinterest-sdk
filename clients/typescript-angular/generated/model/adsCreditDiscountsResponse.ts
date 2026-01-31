@@ -19,25 +19,25 @@ export interface AdsCreditDiscountsResponse {
      */
     advertiser_id?: string;
     /**
-     * The type of discount of this credit
+     * Currency value for the discount.
      */
-    discountType?: AdsCreditDiscountsResponse.DiscountTypeEnum | null;
+    discountCurrency?: string | null;
     /**
      * The discount applied in the offer’s currency value.
      */
     discountInMicroCurrency?: number | null;
     /**
-     * Currency value for the discount.
+     * The type of discount of this credit
      */
-    discountCurrency?: string | null;
-    /**
-     * Human readable title of the offer code.
-     */
-    title?: string | null;
+    discountType?: AdsCreditDiscountsResponse.DiscountTypeEnum | null;
     /**
      * The credits left to spend.
      */
     remainingDiscountInMicroCurrency?: number | null;
+    /**
+     * Human readable title of the offer code.
+     */
+    title?: string | null;
 }
 export namespace AdsCreditDiscountsResponse {
     export const DiscountTypeEnum = {

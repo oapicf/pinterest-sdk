@@ -23,21 +23,21 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param lifetimeMetrics The lifetime metric name and value.
  * @param dailyMetrics Array with the requested daily metric records
+ * @param lifetimeMetrics The lifetime metric name and value.
  * @param summaryMetrics The metric name and value over the requested period for each requested metric
  */
 
 
 data class PinAnalyticsMetricsResponse (
 
-    /* The lifetime metric name and value. */
-    @Json(name = "lifetime_metrics")
-    val lifetimeMetrics: kotlin.collections.Map<kotlin.String, kotlin.Int>? = null,
-
     /* Array with the requested daily metric records */
     @Json(name = "daily_metrics")
     val dailyMetrics: kotlin.collections.List<PinAnalyticsMetricsResponseDailyMetricsInner>? = null,
+
+    /* The lifetime metric name and value. */
+    @Json(name = "lifetime_metrics")
+    val lifetimeMetrics: kotlin.collections.Map<kotlin.String, kotlin.Int>? = null,
 
     /* The metric name and value over the requested period for each requested metric */
     @Json(name = "summary_metrics")

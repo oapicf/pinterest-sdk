@@ -47,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	AssetGroupBinding getAssetGroupInfo();
+
+	/*! \brief Set 
+	 */
+	void setAssetGroupInfo(AssetGroupBinding  asset_group_info);
 	/*! \brief Get Unique identifier of a business asset.
 	 */
 	std::string getAssetId();
@@ -54,11 +61,11 @@ public:
 	/*! \brief Set Unique identifier of a business asset.
 	 */
 	void setAssetId(std::string  asset_id);
-	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	 */
 	std::string getAssetType();
 
-	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	 */
 	void setAssetType(std::string  asset_type);
 	/*! \brief Get Permission levels member or partner has on an asset.
@@ -68,19 +75,12 @@ public:
 	/*! \brief Set Permission levels member or partner has on an asset.
 	 */
 	void setPermissions(std::list <std::string> permissions);
-	/*! \brief Get 
-	 */
-	AssetGroupBinding getAssetGroupInfo();
-
-	/*! \brief Set 
-	 */
-	void setAssetGroupInfo(AssetGroupBinding  asset_group_info);
 
 private:
+	AssetGroupBinding asset_group_info;
 	std::string asset_id;
 	std::string asset_type;
 	std::list <std::string>permissions;
-	AssetGroupBinding asset_group_info;
 	void __init();
 	void __cleanup();
 

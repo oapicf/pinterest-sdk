@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductBrand** | **String** | Product brand. For example, &quot;&quot;Parker&quot;&quot;. | [optional] 
-**ProductCategory** | **String** | Product category. For example, &quot;&quot;Shoes&quot;&quot;. | [optional] 
+**ProductBrand** | **String** | Product brand. For example, &#39;Parker&#39;. | [optional] 
+**ProductCategory** | **String** | Product category. For example, &#39;Shoes&#39;. | [optional] 
 **ProductId** | **Int32** | Product ID. For example, 1414. | [optional] 
-**ProductName** | **String** | Product name. For example, &quot;&quot;Parker Boots&quot;&quot;. | [optional] 
-**ProductPrice** | **String** | Product price. For example, &quot;&quot;99.99&quot;&quot;. | [optional] 
+**ProductName** | **String** | Product name. For example, &#39;Parker Boots&#39;. | [optional] 
+**ProductPrice** | **String** | Product price. For example, &#39;99.99&#39;. | [optional] 
 **ProductQuantity** | **Int32** | Product quantity. For example, 2. | [optional] 
-**ProductVariant** | **String** | Product variant. For example, &quot;&quot;Red&quot;&quot;. | [optional] 
-**ProductVariantId** | **String** | Product variant ID. For example, &quot;&quot;1414-34832&quot;&quot;. | [optional] 
+**ProductVariant** | **String** | Product variant. For example, &#39;Red&#39;. | [optional] 
+**ProductVariantId** | **String** | Product variant ID. For example, &#39;1414-34832&#39;. | [optional] 
 
 ## Examples
 

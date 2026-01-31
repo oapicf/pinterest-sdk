@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Options** | [**QuizPinOption[]**](QuizPinOption.md) |  | [optional] 
 **QuestionId** | **Decimal** |  | [optional] 
 **QuestionText** | **String** |  | [optional] 
-**Options** | [**QuizPinOption[]**](QuizPinOption.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$QuizPinQuestion = Initialize-PSOpenAPIToolsQuizPinQuestion  -QuestionId null `
- -QuestionText null `
- -Options null
+$QuizPinQuestion = Initialize-PSOpenAPIToolsQuizPinQuestion  -Options null `
+ -QuestionId null `
+ -QuestionText null
 ```
 
 - Convert the resource to JSON

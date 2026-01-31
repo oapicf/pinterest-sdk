@@ -26,11 +26,11 @@ module KeywordsApiHandlerTestsHelper =
   KeywordsCreateBody <- WebUtility.HtmlDecode "{
   &quot;keywords&quot; : [ {
     &quot;match_type&quot; : &quot;BROAD&quot;,
-    &quot;bid&quot; : 0,
+    &quot;bid&quot; : 6,
     &quot;value&quot; : &quot;value&quot;
   }, {
     &quot;match_type&quot; : &quot;BROAD&quot;,
-    &quot;bid&quot; : 0,
+    &quot;bid&quot; : 6,
     &quot;value&quot; : &quot;value&quot;
   } ],
   &quot;parent_id&quot; : &quot;383791336903426391&quot;
@@ -50,11 +50,11 @@ module KeywordsApiHandlerTestsHelper =
   &quot;keywords&quot; : [ {
     &quot;archived&quot; : false,
     &quot;id&quot; : &quot;2886364308355&quot;,
-    &quot;bid&quot; : 6
+    &quot;bid&quot; : 1
   }, {
     &quot;archived&quot; : false,
     &quot;id&quot; : &quot;2886364308355&quot;,
-    &quot;bid&quot; : 6
+    &quot;bid&quot; : 1
   } ]
 }"
   KeywordsUpdateExamples <- KeywordsUpdateExamples.Add("application/json", KeywordsUpdateBody)

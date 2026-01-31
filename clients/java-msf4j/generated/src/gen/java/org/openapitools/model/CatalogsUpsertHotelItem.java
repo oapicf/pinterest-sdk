@@ -12,8 +12,11 @@ import org.openapitools.model.CatalogsHotelAttributes;
  * A hotel item to be upserted.
  */
 @ApiModel(description = "A hotel item to be upserted.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpsertHotelItem   {
+  @JsonProperty("attributes")
+  private CatalogsHotelAttributes attributes;
+
   @JsonProperty("hotel_id")
   private String hotelId;
 
@@ -49,8 +52,23 @@ public class CatalogsUpsertHotelItem   {
   @JsonProperty("operation")
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  private CatalogsHotelAttributes attributes;
+  public CatalogsUpsertHotelItem attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsUpsertHotelItem hotelId(String hotelId) {
     this.hotelId = hotelId;
@@ -88,24 +106,6 @@ public class CatalogsUpsertHotelItem   {
     this.operation = operation;
   }
 
-  public CatalogsUpsertHotelItem attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +116,14 @@ public class CatalogsUpsertHotelItem   {
       return false;
     }
     CatalogsUpsertHotelItem catalogsUpsertHotelItem = (CatalogsUpsertHotelItem) o;
-    return Objects.equals(this.hotelId, catalogsUpsertHotelItem.hotelId) &&
-        Objects.equals(this.operation, catalogsUpsertHotelItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpsertHotelItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpsertHotelItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsUpsertHotelItem.hotelId) &&
+        Objects.equals(this.operation, catalogsUpsertHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -131,9 +131,9 @@ public class CatalogsUpsertHotelItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

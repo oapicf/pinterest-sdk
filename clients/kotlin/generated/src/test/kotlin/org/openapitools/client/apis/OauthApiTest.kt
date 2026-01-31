@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.OauthApi
+import org.openapitools.client.models.ConversionAccessTokenResponse
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.OauthAccessTokenResponse
 
@@ -27,12 +28,27 @@ class OauthApiTest : ShouldSpec() {
         // uncomment below to create an instance of OauthApi
         //val apiInstance = OauthApi()
 
+        // to test oauthConversionToken
+        should("test oauthConversionToken") {
+            // uncomment below to test oauthConversionToken
+            //val result : ConversionAccessTokenResponse = apiInstance.oauthConversionToken()
+            //result shouldBe ("TODO")
+        }
+
         // to test oauthToken
         should("test oauthToken") {
             // uncomment below to test oauthToken
             //val grantType : kotlin.String = grantType_example // kotlin.String | 
             //val result : OauthAccessTokenResponse = apiInstance.oauthToken(grantType)
             //result shouldBe ("TODO")
+        }
+
+        // to test tokenRevoke
+        should("test tokenRevoke") {
+            // uncomment below to test tokenRevoke
+            //val token : kotlin.String = token_example // kotlin.String | The token to revoke.
+            //val tokenTypeHint : kotlin.String = tokenTypeHint_example // kotlin.String | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+            //apiInstance.tokenRevoke(token, tokenTypeHint)
         }
 
     }

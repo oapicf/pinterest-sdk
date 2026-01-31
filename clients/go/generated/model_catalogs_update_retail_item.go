@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsUpdateRetailItem{}
 
 // CatalogsUpdateRetailItem An item to be updated
 type CatalogsUpdateRetailItem struct {
+	Attributes UpdatableItemAttributes `json:"attributes"`
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id"`
 	Operation string `json:"operation"`
-	Attributes UpdatableItemAttributes `json:"attributes"`
 	// The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	UpdateMask []UpdateMaskFieldType `json:"update_mask,omitempty"`
 }
@@ -36,11 +36,11 @@ type _CatalogsUpdateRetailItem CatalogsUpdateRetailItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsUpdateRetailItem(itemId string, operation string, attributes UpdatableItemAttributes) *CatalogsUpdateRetailItem {
+func NewCatalogsUpdateRetailItem(attributes UpdatableItemAttributes, itemId string, operation string) *CatalogsUpdateRetailItem {
 	this := CatalogsUpdateRetailItem{}
+	this.Attributes = attributes
 	this.ItemId = itemId
 	this.Operation = operation
-	this.Attributes = attributes
 	return &this
 }
 
@@ -50,6 +50,30 @@ func NewCatalogsUpdateRetailItem(itemId string, operation string, attributes Upd
 func NewCatalogsUpdateRetailItemWithDefaults() *CatalogsUpdateRetailItem {
 	this := CatalogsUpdateRetailItem{}
 	return &this
+}
+
+// GetAttributes returns the Attributes field value
+func (o *CatalogsUpdateRetailItem) GetAttributes() UpdatableItemAttributes {
+	if o == nil {
+		var ret UpdatableItemAttributes
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsUpdateRetailItem) GetAttributesOk() (*UpdatableItemAttributes, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *CatalogsUpdateRetailItem) SetAttributes(v UpdatableItemAttributes) {
+	o.Attributes = v
 }
 
 // GetItemId returns the ItemId field value
@@ -100,30 +124,6 @@ func (o *CatalogsUpdateRetailItem) SetOperation(v string) {
 	o.Operation = v
 }
 
-// GetAttributes returns the Attributes field value
-func (o *CatalogsUpdateRetailItem) GetAttributes() UpdatableItemAttributes {
-	if o == nil {
-		var ret UpdatableItemAttributes
-		return ret
-	}
-
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsUpdateRetailItem) GetAttributesOk() (*UpdatableItemAttributes, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Attributes, true
-}
-
-// SetAttributes sets field value
-func (o *CatalogsUpdateRetailItem) SetAttributes(v UpdatableItemAttributes) {
-	o.Attributes = v
-}
-
 // GetUpdateMask returns the UpdateMask field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsUpdateRetailItem) GetUpdateMask() []UpdateMaskFieldType {
 	if o == nil {
@@ -167,9 +167,9 @@ func (o CatalogsUpdateRetailItem) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsUpdateRetailItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["item_id"] = o.ItemId
 	toSerialize["operation"] = o.Operation
-	toSerialize["attributes"] = o.Attributes
 	if o.UpdateMask != nil {
 		toSerialize["update_mask"] = o.UpdateMask
 	}
@@ -181,9 +181,9 @@ func (o *CatalogsUpdateRetailItem) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"attributes",
 		"item_id",
 		"operation",
-		"attributes",
 	}
 
 	allProperties := make(map[string]interface{})

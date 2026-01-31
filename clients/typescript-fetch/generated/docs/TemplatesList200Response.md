@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;TemplateResponse&gt;](TemplateResponse.md)
 `bookmark` | string
+`items` | [Array&lt;TemplateResponse&gt;](TemplateResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { TemplatesList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies TemplatesList200Response
 
 console.log(example)

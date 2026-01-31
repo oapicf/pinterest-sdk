@@ -19,14 +19,6 @@ Protected Class CatalogsHotelAddress
 
 	#tag Property, Flags = &h0
 		#tag Note
-			State, county, province, where the hotel is located.
-		#tag EndNote
-		region As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Country where the hotel is located.
 		#tag EndNote
 		country As Xoson.O.OptionalString
@@ -38,6 +30,14 @@ Protected Class CatalogsHotelAddress
 			Required for countries with a postal code system. Postal or zip code of the hotel.
 		#tag EndNote
 		postal_code As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			State, county, province, where the hotel is located.
+		#tag EndNote
+		region As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -94,14 +94,6 @@ Protected Class CatalogsHotelAddress
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="region"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
@@ -111,6 +103,14 @@ Protected Class CatalogsHotelAddress
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="postal_code"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="region"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

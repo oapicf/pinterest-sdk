@@ -7,8 +7,8 @@ Array with metrics, status, and pin id for the requested metric
 
 Name | Type
 ------------ | -------------
-`metrics` | { [key: string]: number; }
 `dataStatus` | [{ [key: string]: DataStatus; }](DataStatus.md)
+`metrics` | { [key: string]: number; }
 `pinId` | string
 
 ## Example
@@ -18,8 +18,8 @@ import type { TopVideoPinsAnalyticsResponsePinsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "metrics": {"IMPRESSION":7,"QUARTILE_95_PERCENT_VIEW":2,"SAVE":1,"VIDEO_10S_VIEW":5,"VIDEO_AVG_WATCH_TIME":86989,"VIDEO_MRC_VIEW":2,"VIDEO_START":2,"VIDEO_V50_WATCH_TIME":173979,"OUTBOUND_CLICK":2},
   "dataStatus": null,
+  "metrics": {"IMPRESSION":7,"QUARTILE_95_PERCENT_VIEW":2,"SAVE":1,"VIDEO_10S_VIEW":5,"VIDEO_AVG_WATCH_TIME":86989,"VIDEO_MRC_VIEW":2,"VIDEO_START":2,"VIDEO_V50_WATCH_TIME":173979,"OUTBOUND_CLICK":2},
   "pinId": 642396334344813594,
 } satisfies TopVideoPinsAnalyticsResponsePinsInner
 

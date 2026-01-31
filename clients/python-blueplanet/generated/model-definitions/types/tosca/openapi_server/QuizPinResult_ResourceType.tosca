@@ -1,0 +1,55 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QuizPinResult"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QuizPinResult"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  QuizPinResult {
+    title = QuizPinResult
+    description = QuizPinResult
+    derivedFrom = Root
+    properties {
+        android_deep_link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        destination_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        ios_deep_link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        organic_pin_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        result_id {
+          type =  
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  QuizPinResult {
+    title = QuizPinResult
+    description = QuizPinResult
+    implements = openapi_server.resourceTypes.QuizPinResult
+
+  }
+}

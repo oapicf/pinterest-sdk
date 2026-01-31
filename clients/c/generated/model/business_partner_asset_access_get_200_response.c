@@ -6,27 +6,27 @@
 
 
 static business_partner_asset_access_get_200_response_t *business_partner_asset_access_get_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     business_partner_asset_access_get_200_response_t *business_partner_asset_access_get_200_response_local_var = malloc(sizeof(business_partner_asset_access_get_200_response_t));
     if (!business_partner_asset_access_get_200_response_local_var) {
         return NULL;
     }
-    business_partner_asset_access_get_200_response_local_var->items = items;
     business_partner_asset_access_get_200_response_local_var->bookmark = bookmark;
+    business_partner_asset_access_get_200_response_local_var->items = items;
 
     business_partner_asset_access_get_200_response_local_var->_library_owned = 1;
     return business_partner_asset_access_get_200_response_local_var;
 }
 
 __attribute__((deprecated)) business_partner_asset_access_get_200_response_t *business_partner_asset_access_get_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return business_partner_asset_access_get_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void business_partner_asset_access_get_200_response_free(business_partner_asset_
         return ;
     }
     listEntry_t *listEntry;
+    if (business_partner_asset_access_get_200_response->bookmark) {
+        free(business_partner_asset_access_get_200_response->bookmark);
+        business_partner_asset_access_get_200_response->bookmark = NULL;
+    }
     if (business_partner_asset_access_get_200_response->items) {
         list_ForEach(listEntry, business_partner_asset_access_get_200_response->items) {
             get_partner_assets_response_free(listEntry->data);
@@ -46,15 +50,19 @@ void business_partner_asset_access_get_200_response_free(business_partner_asset_
         list_freeList(business_partner_asset_access_get_200_response->items);
         business_partner_asset_access_get_200_response->items = NULL;
     }
-    if (business_partner_asset_access_get_200_response->bookmark) {
-        free(business_partner_asset_access_get_200_response->bookmark);
-        business_partner_asset_access_get_200_response->bookmark = NULL;
-    }
     free(business_partner_asset_access_get_200_response);
 }
 
 cJSON *business_partner_asset_access_get_200_response_convertToJSON(business_partner_asset_access_get_200_response_t *business_partner_asset_access_get_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // business_partner_asset_access_get_200_response->bookmark
+    if(business_partner_asset_access_get_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", business_partner_asset_access_get_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // business_partner_asset_access_get_200_response->items
     if (!business_partner_asset_access_get_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *business_partner_asset_access_get_200_response_convertToJSON(business_par
     }
     }
 
-
-    // business_partner_asset_access_get_200_response->bookmark
-    if(business_partner_asset_access_get_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", business_partner_asset_access_get_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ business_partner_asset_access_get_200_response_t *business_partner_asset_access_
 
     // define the local list for business_partner_asset_access_get_200_response->items
     list_t *itemsList = NULL;
+
+    // business_partner_asset_access_get_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(business_partner_asset_access_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // business_partner_asset_access_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(business_partner_asset_access_get_200_responseJSON, "items");
@@ -126,22 +138,10 @@ business_partner_asset_access_get_200_response_t *business_partner_asset_access_
         list_addElement(itemsList, itemsItem);
     }
 
-    // business_partner_asset_access_get_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(business_partner_asset_access_get_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     business_partner_asset_access_get_200_response_local_var = business_partner_asset_access_get_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return business_partner_asset_access_get_200_response_local_var;

@@ -1,13 +1,12 @@
 package org.openapitools.model;
 
 import java.util.Objects;
-import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Media upload status
+ * Gets or Sets MediaUploadStatus
  */
 public enum MediaUploadStatus {
   

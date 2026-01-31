@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,23 +17,23 @@ package openapi
 // CatalogsHotelFeedsUpdateRequest - Request object for updating a feed.
 type CatalogsHotelFeedsUpdateRequest struct {
 
-	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
-
-	// A human-friendly name associated to a given feed.
-	Name string `json:"name,omitempty"`
-
-	Format CatalogsFormat `json:"format,omitempty"`
+	CatalogType CatalogsType `json:"catalog_type"`
 
 	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
+
+	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
+
+	Format CatalogsFormat `json:"format,omitempty"`
 
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	Location string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
 
+	// A human-friendly name associated to a given feed.
+	Name string `json:"name,omitempty"`
+
 	PreferredProcessingSchedule *CatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
 
 	Status CatalogsStatus `json:"status,omitempty"`
-
-	CatalogType CatalogsType `json:"catalog_type"`
 }
 
 // AssertCatalogsHotelFeedsUpdateRequestRequired checks if the required fields are not zero-ed

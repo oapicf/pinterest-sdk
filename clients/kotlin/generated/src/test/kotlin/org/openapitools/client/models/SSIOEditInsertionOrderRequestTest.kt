@@ -25,28 +25,16 @@ class SSIOEditInsertionOrderRequestTest : ShouldSpec() {
         // uncomment below to create an instance of SSIOEditInsertionOrderRequest
         //val modelInstance = SSIOEditInsertionOrderRequest()
 
-        // to test the property `startDate` - Starting date of time period. Format: YYYY-MM-DD
-        should("test startDate") {
+        // to test the property `agencyLink` - URL link for agency
+        should("test agencyLink") {
             // uncomment below to test the property
-            //modelInstance.startDate shouldBe ("TODO")
+            //modelInstance.agencyLink shouldBe ("TODO")
         }
 
-        // to test the property `endDate` - End date of time period. Format: YYYY-MM-DD
-        should("test endDate") {
+        // to test the property `billingContactEmail` - The billing contact email
+        should("test billingContactEmail") {
             // uncomment below to test the property
-            //modelInstance.endDate shouldBe ("TODO")
-        }
-
-        // to test the property `poNumber` - The po number
-        should("test poNumber") {
-            // uncomment below to test the property
-            //modelInstance.poNumber shouldBe ("TODO")
-        }
-
-        // to test the property `budgetAmount` - If Budget order line, the budget amount.
-        should("test budgetAmount") {
-            // uncomment below to test the property
-            //modelInstance.budgetAmount shouldBe ("TODO")
+            //modelInstance.billingContactEmail shouldBe ("TODO")
         }
 
         // to test the property `billingContactFirstname` - The billing contact first name
@@ -61,10 +49,22 @@ class SSIOEditInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.billingContactLastname shouldBe ("TODO")
         }
 
-        // to test the property `billingContactEmail` - The billing contact email
-        should("test billingContactEmail") {
+        // to test the property `budgetAmount` - If Budget order line, the budget amount.
+        should("test budgetAmount") {
             // uncomment below to test the property
-            //modelInstance.billingContactEmail shouldBe ("TODO")
+            //modelInstance.budgetAmount shouldBe ("TODO")
+        }
+
+        // to test the property `endDate` - End date of time period. Format: YYYY-MM-DD
+        should("test endDate") {
+            // uncomment below to test the property
+            //modelInstance.endDate shouldBe ("TODO")
+        }
+
+        // to test the property `mediaContactEmail` - The media contact email
+        should("test mediaContactEmail") {
+            // uncomment below to test the property
+            //modelInstance.mediaContactEmail shouldBe ("TODO")
         }
 
         // to test the property `mediaContactFirstname` - The media contact first name
@@ -79,22 +79,28 @@ class SSIOEditInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.mediaContactLastname shouldBe ("TODO")
         }
 
-        // to test the property `mediaContactEmail` - The media contact email
-        should("test mediaContactEmail") {
+        // to test the property `poNumber` - The po number
+        should("test poNumber") {
             // uncomment below to test the property
-            //modelInstance.mediaContactEmail shouldBe ("TODO")
+            //modelInstance.poNumber shouldBe ("TODO")
         }
 
-        // to test the property `agencyLink` - URL link for agency
-        should("test agencyLink") {
+        // to test the property `startDate` - Starting date of time period. Format: YYYY-MM-DD
+        should("test startDate") {
             // uncomment below to test the property
-            //modelInstance.agencyLink shouldBe ("TODO")
+            //modelInstance.startDate shouldBe ("TODO")
         }
 
         // to test the property `userEmail` - The email of user submitting the insertion order
         should("test userEmail") {
             // uncomment below to test the property
             //modelInstance.userEmail shouldBe ("TODO")
+        }
+
+        // to test the property `adsManagerOrderLineId` - Ads manager OrderLineId
+        should("test adsManagerOrderLineId") {
+            // uncomment below to test the property
+            //modelInstance.adsManagerOrderLineId shouldBe ("TODO")
         }
 
         // to test the property `oracleLineId` - LineId in the Oracle DB
@@ -113,12 +119,6 @@ class SSIOEditInsertionOrderRequestTest : ShouldSpec() {
         should("test salesforceOrderLineId") {
             // uncomment below to test the property
             //modelInstance.salesforceOrderLineId shouldBe ("TODO")
-        }
-
-        // to test the property `adsManagerOrderLineId` - Ads manager OrderLineId
-        should("test adsManagerOrderLineId") {
-            // uncomment below to test the property
-            //modelInstance.adsManagerOrderLineId shouldBe ("TODO")
         }
 
     }

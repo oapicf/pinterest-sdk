@@ -10,37 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MediaUploadDetails;
+import org.openapitools.model.Media;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaList200Response   {
-  @JsonProperty("items")
-  private List<MediaUploadDetails> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   * Media
-   **/
-  public MediaList200Response items(List<MediaUploadDetails> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Media")
   @JsonProperty("items")
-  public List<MediaUploadDetails> getItems() {
-    return items;
-  }
-  public void setItems(List<MediaUploadDetails> items) {
-    this.items = items;
-  }
+  private List<Media> items = new ArrayList<>();
 
   /**
    **/
@@ -59,6 +41,23 @@ public class MediaList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public MediaList200Response items(List<Media> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<Media> getItems() {
+    return items;
+  }
+  public void setItems(List<Media> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -69,13 +68,13 @@ public class MediaList200Response   {
       return false;
     }
     MediaList200Response mediaList200Response = (MediaList200Response) o;
-    return Objects.equals(items, mediaList200Response.items) &&
-        Objects.equals(bookmark, mediaList200Response.bookmark);
+    return Objects.equals(bookmark, mediaList200Response.bookmark) &&
+        Objects.equals(items, mediaList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -83,8 +82,8 @@ public class MediaList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MediaList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

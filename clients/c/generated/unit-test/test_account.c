@@ -22,33 +22,33 @@ account_t* instantiate_account(int include_optional) {
   account_t* account = NULL;
   if (include_optional) {
     account = account_create(
+      "0",
       pinterest_rest_api_account_ACCOUNTTYPE_PINNER,
-      "2783136121146311751",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       14,
-      339,
+      "0",
       10,
       347,
-      163
+      "2783136121146311751",
+      163,
+      339,
+      "0",
+      "0",
+      "0"
     );
   } else {
     account = account_create(
+      "0",
       pinterest_rest_api_account_ACCOUNTTYPE_PINNER,
-      "2783136121146311751",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       14,
-      339,
+      "0",
       10,
       347,
-      163
+      "2783136121146311751",
+      163,
+      339,
+      "0",
+      "0",
+      "0"
     );
   }
 

@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import PinMediaSourcePinURL._
 
 case class PinMediaSourcePinURL (
-  sourceType: SourceType,
-/* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
-  isAffiliateLink: Option[Boolean])
+  /* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
+  isAffiliateLink: Option[Boolean],
+sourceType: SourceType)
 
 object PinMediaSourcePinURL {
   import DateTimeCodecs._

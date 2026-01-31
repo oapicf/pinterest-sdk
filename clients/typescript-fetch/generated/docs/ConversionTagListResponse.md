@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;ConversionTagResponse&gt;](ConversionTagResponse.md)
+`items` | [Array&lt;ConversionTag&gt;](ConversionTag.md)
 
 ## Example
 

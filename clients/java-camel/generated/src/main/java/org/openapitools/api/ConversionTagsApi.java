@@ -35,7 +35,7 @@ public class ConversionTagsApi extends RouteBuilder {
                 .description("Create conversion tag")
                 .id("conversionTagsCreateApi")
                 .produces("application/json")
-                .outType(ConversionTagResponse.class)
+                .outType(ConversionTag.class)
                 .consumes("application/json")
                 .type(ConversionTagCreate.class)
                 
@@ -49,7 +49,6 @@ public class ConversionTagsApi extends RouteBuilder {
                     .name("conversionTagCreate")
                     .type(RestParamType.body)
                     .required(true)
-                    .description("Conversion Tag to create")
                 .endParam()
                 .to("direct:conversionTagsCreate");
         
@@ -64,13 +63,18 @@ public class ConversionTagsApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}")
                 .description("Get conversion tag")
                 .id("conversionTagsGetApi")
                 .produces("application/json")
-                .outType(ConversionTagResponse.class)
+                .outType(ConversionTag.class)
                 .param()
                     .name("adAccountId")
                     .type(RestParamType.path)
@@ -87,7 +91,7 @@ public class ConversionTagsApi extends RouteBuilder {
         
 
         /**
-        GET /ad_accounts/{ad_account_id}/conversion_tags : Get conversion tags
+        GET /ad_accounts/{ad_account_id}/conversion_tags : List conversion tags
         **/
         rest()
             .securityDefinitions()
@@ -96,13 +100,18 @@ public class ConversionTagsApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts/{ad_account_id}/conversion_tags")
-                .description("Get conversion tags")
+                .description("List conversion tags")
                 .id("conversionTagsListApi")
                 .produces("application/json")
-                .outType(ConversionTagListResponse.class)
+                .outType(ConversionTagsList200Response.class)
                 .param()
                     .name("adAccountId")
                     .type(RestParamType.path)
@@ -113,7 +122,7 @@ public class ConversionTagsApi extends RouteBuilder {
                     .name("filterDeleted")
                     .type(RestParamType.query)
                     .required(false)
-                    .description("Filter out deleted tags.")
+                    .description("Filter by deleted status")
                 .endParam()
                 .to("direct:conversionTagsList");
         
@@ -127,6 +136,11 @@ public class ConversionTagsApi extends RouteBuilder {
                     .flow("accessCode")
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
@@ -152,6 +166,11 @@ public class ConversionTagsApi extends RouteBuilder {
                     .flow("accessCode")
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()

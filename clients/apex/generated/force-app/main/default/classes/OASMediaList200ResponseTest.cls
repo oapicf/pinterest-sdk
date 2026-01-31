@@ -72,7 +72,7 @@ private class OASMediaList200ResponseTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASMediaList200Response mediaList200Response = new OASMediaList200Response();
-        System.assertEquals(new List<OASMediaUploadDetails>(), mediaList200Response.items);
+        System.assertEquals(new List<OASMedia>(), mediaList200Response.items);
         System.assertEquals(null, mediaList200Response.bookmark);
     }
 }

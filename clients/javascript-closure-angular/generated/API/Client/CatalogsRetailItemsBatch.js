@@ -14,11 +14,10 @@ API.Client.CatalogsRetailItemsBatch = function() {}
 API.Client.CatalogsRetailItemsBatch.prototype.batchId;
 
 /**
- * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
- * @type {!Date}
+ * @type {!API.Client.CatalogsType}
  * @export
  */
-API.Client.CatalogsRetailItemsBatch.prototype.createdTime;
+API.Client.CatalogsRetailItemsBatch.prototype.catalogType;
 
 /**
  * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
@@ -28,16 +27,11 @@ API.Client.CatalogsRetailItemsBatch.prototype.createdTime;
 API.Client.CatalogsRetailItemsBatch.prototype.completedTime;
 
 /**
- * @type {!API.Client.BatchOperationStatus}
+ * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+ * @type {!Date}
  * @export
  */
-API.Client.CatalogsRetailItemsBatch.prototype.status;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsRetailItemsBatch.prototype.catalogType;
+API.Client.CatalogsRetailItemsBatch.prototype.createdTime;
 
 /**
  * Array with the catalogs items processing records part of the catalogs items batch
@@ -45,4 +39,10 @@ API.Client.CatalogsRetailItemsBatch.prototype.catalogType;
  * @export
  */
 API.Client.CatalogsRetailItemsBatch.prototype.items;
+
+/**
+ * @type {!API.Client.BatchOperationStatus}
+ * @export
+ */
+API.Client.CatalogsRetailItemsBatch.prototype.status;
 

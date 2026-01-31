@@ -16,26 +16,26 @@ public struct CatalogsReportDistributionIssueFilter: Codable, JSONEncodable, Has
         case distributionIssues = "DISTRIBUTION_ISSUES"
     }
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var reportType: ReportType
     /** Unique identifier of a catalog. If not given, oldest catalog will be used */
     public var catalogId: String?
+    public var reportType: ReportType
 
-    public init(reportType: ReportType, catalogId: String? = nil) {
-        self.reportType = reportType
+    public init(catalogId: String? = nil, reportType: ReportType) {
         self.catalogId = catalogId
+        self.reportType = reportType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case reportType = "report_type"
         case catalogId = "catalog_id"
+        case reportType = "report_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(reportType, forKey: .reportType)
         try container.encodeIfPresent(catalogId, forKey: .catalogId)
+        try container.encode(reportType, forKey: .reportType)
     }
 }
 

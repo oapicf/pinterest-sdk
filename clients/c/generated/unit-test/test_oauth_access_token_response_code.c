@@ -24,21 +24,23 @@ oauth_access_token_response_code_t* instantiate_oauth_access_token_response_code
     oauth_access_token_response_code = oauth_access_token_response_code_create(
       "0",
       56,
+      56,
+      "0",
+      56,
       pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_authorization_code,
       "0",
-      "bearer",
-      56,
-      "0"
+      "bearer"
     );
   } else {
     oauth_access_token_response_code = oauth_access_token_response_code_create(
       "0",
       56,
+      56,
+      "0",
+      56,
       pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_authorization_code,
       "0",
-      "bearer",
-      56,
-      "0"
+      "bearer"
     );
   }
 

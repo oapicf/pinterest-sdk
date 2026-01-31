@@ -25,12 +25,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing a hotel record")
 @JsonTypeName("CatalogsCreativeAssetsItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemResponse   {
+  private CatalogsCreativeAssetsAttributes attributes;
   private CatalogsType catalogType;
   private String creativeAssetsId;
   private @Valid List<@Valid Pin> pins;
-  private CatalogsCreativeAssetsAttributes attributes;
 
   public CatalogsCreativeAssetsItemResponse() {
   }
@@ -40,6 +40,25 @@ public class CatalogsCreativeAssetsItemResponse   {
     @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
   ) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   **/
+  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty("attributes")
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   /**
@@ -117,25 +136,6 @@ public class CatalogsCreativeAssetsItemResponse   {
 
     return this;
   }
-  /**
-   **/
-  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  @JsonProperty("attributes")
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -146,15 +146,15 @@ public class CatalogsCreativeAssetsItemResponse   {
       return false;
     }
     CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse = (CatalogsCreativeAssetsItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
-        Objects.equals(this.pins, catalogsCreativeAssetsItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes);
+        Objects.equals(this.pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, pins, attributes);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
   }
 
   @Override
@@ -162,10 +162,10 @@ public class CatalogsCreativeAssetsItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

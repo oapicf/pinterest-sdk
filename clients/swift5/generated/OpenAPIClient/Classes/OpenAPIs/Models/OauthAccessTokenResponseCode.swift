@@ -17,45 +17,49 @@ public struct OauthAccessTokenResponseCode: Codable, JSONEncodable, Hashable {
         case refreshToken = "refresh_token"
         case clientCredentials = "client_credentials"
     }
-    public var refreshToken: String
-    public var refreshTokenExpiresIn: Int
-    public var responseType: ResponseType?
+    public var refreshToken: String?
+    public var refreshTokenExpiresAt: Int?
+    public var refreshTokenExpiresIn: Int?
     public var accessToken: String
-    public var tokenType: String = "bearer"
     public var expiresIn: Int
+    public var responseType: ResponseType?
     public var scope: String
+    public var tokenType: String = "bearer"
 
-    public init(refreshToken: String, refreshTokenExpiresIn: Int, responseType: ResponseType? = nil, accessToken: String, tokenType: String = "bearer", expiresIn: Int, scope: String) {
+    public init(refreshToken: String? = nil, refreshTokenExpiresAt: Int? = nil, refreshTokenExpiresIn: Int? = nil, accessToken: String, expiresIn: Int, responseType: ResponseType? = nil, scope: String, tokenType: String = "bearer") {
         self.refreshToken = refreshToken
+        self.refreshTokenExpiresAt = refreshTokenExpiresAt
         self.refreshTokenExpiresIn = refreshTokenExpiresIn
-        self.responseType = responseType
         self.accessToken = accessToken
-        self.tokenType = tokenType
         self.expiresIn = expiresIn
+        self.responseType = responseType
         self.scope = scope
+        self.tokenType = tokenType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case refreshToken = "refresh_token"
+        case refreshTokenExpiresAt = "refresh_token_expires_at"
         case refreshTokenExpiresIn = "refresh_token_expires_in"
-        case responseType = "response_type"
         case accessToken = "access_token"
-        case tokenType = "token_type"
         case expiresIn = "expires_in"
+        case responseType = "response_type"
         case scope
+        case tokenType = "token_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(refreshToken, forKey: .refreshToken)
-        try container.encode(refreshTokenExpiresIn, forKey: .refreshTokenExpiresIn)
-        try container.encodeIfPresent(responseType, forKey: .responseType)
+        try container.encodeIfPresent(refreshToken, forKey: .refreshToken)
+        try container.encodeIfPresent(refreshTokenExpiresAt, forKey: .refreshTokenExpiresAt)
+        try container.encodeIfPresent(refreshTokenExpiresIn, forKey: .refreshTokenExpiresIn)
         try container.encode(accessToken, forKey: .accessToken)
-        try container.encode(tokenType, forKey: .tokenType)
         try container.encode(expiresIn, forKey: .expiresIn)
+        try container.encodeIfPresent(responseType, forKey: .responseType)
         try container.encode(scope, forKey: .scope)
+        try container.encode(tokenType, forKey: .tokenType)
     }
 }
 

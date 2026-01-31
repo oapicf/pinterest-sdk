@@ -13,6 +13,115 @@ import AnyCodable
 open class BusinessAccessRelationshipsAPI {
 
     /**
+     Create a Brand Account
+     
+     - parameter businessHierarchyId: (path) business hierarchy node id 
+     - parameter brandAccountsCreateRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func brandAccountsCreate(businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BrandAccountsCreate200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return brandAccountsCreateWithRequestBuilder(businessHierarchyId: businessHierarchyId, brandAccountsCreateRequest: brandAccountsCreateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a Brand Account
+     - POST /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+     - Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter businessHierarchyId: (path) business hierarchy node id 
+     - parameter brandAccountsCreateRequest: (body)  
+     - returns: RequestBuilder<BrandAccountsCreate200Response> 
+     */
+    open class func brandAccountsCreateWithRequestBuilder(businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest) -> RequestBuilder<BrandAccountsCreate200Response> {
+        var localVariablePath = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts"
+        let businessHierarchyIdPreEscape = "\(APIHelper.mapValueToPathItem(businessHierarchyId))"
+        let businessHierarchyIdPostEscape = businessHierarchyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{business_hierarchy_id}", with: businessHierarchyIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: brandAccountsCreateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BrandAccountsCreate200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Update a Brand Account
+     
+     - parameter businessHierarchyId: (path) business hierarchy node id 
+     - parameter brandAccountId: (path) Unique identifier of a brand account. 
+     - parameter brandAccountsUpdateRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func brandAccountsUpdate(businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BrandAccountsCreate200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return brandAccountsUpdateWithRequestBuilder(businessHierarchyId: businessHierarchyId, brandAccountId: brandAccountId, brandAccountsUpdateRequest: brandAccountsUpdateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a Brand Account
+     - PATCH /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+     - Update an existing Brand Account
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter businessHierarchyId: (path) business hierarchy node id 
+     - parameter brandAccountId: (path) Unique identifier of a brand account. 
+     - parameter brandAccountsUpdateRequest: (body)  
+     - returns: RequestBuilder<BrandAccountsCreate200Response> 
+     */
+    open class func brandAccountsUpdateWithRequestBuilder(businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest) -> RequestBuilder<BrandAccountsCreate200Response> {
+        var localVariablePath = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"
+        let businessHierarchyIdPreEscape = "\(APIHelper.mapValueToPathItem(businessHierarchyId))"
+        let businessHierarchyIdPostEscape = businessHierarchyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{business_hierarchy_id}", with: businessHierarchyIdPostEscape, options: .literal, range: nil)
+        let brandAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(brandAccountId))"
+        let brandAccountIdPostEscape = brandAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{brand_account_id}", with: brandAccountIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: brandAccountsUpdateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BrandAccountsCreate200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Terminate business memberships
      
      - parameter businessId: (path) Business id 
@@ -173,6 +282,7 @@ open class BusinessAccessRelationshipsAPI {
      Get business members
      
      - parameter businessId: (path) Unique identifier of the requesting business. 
+     - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      - parameter assetsSummary: (query) Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
      - parameter businessRoles: (query) A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
      - parameter memberIds: (query) A list of business members ids separated by comma. (optional)
@@ -183,8 +293,8 @@ open class BusinessAccessRelationshipsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBusinessMembers(businessId: String, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetBusinessMembers200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBusinessMembersWithRequestBuilder(businessId: businessId, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize).execute(apiResponseQueue) { result in
+    open class func getBusinessMembers(businessId: String, fetchSystemUsers: Bool? = nil, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetBusinessMembers200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBusinessMembersWithRequestBuilder(businessId: businessId, fetchSystemUsers: fetchSystemUsers, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -202,6 +312,7 @@ open class BusinessAccessRelationshipsAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter businessId: (path) Unique identifier of the requesting business. 
+     - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      - parameter assetsSummary: (query) Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
      - parameter businessRoles: (query) A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
      - parameter memberIds: (query) A list of business members ids separated by comma. (optional)
@@ -210,7 +321,7 @@ open class BusinessAccessRelationshipsAPI {
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<GetBusinessMembers200Response> 
      */
-    open class func getBusinessMembersWithRequestBuilder(businessId: String, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<GetBusinessMembers200Response> {
+    open class func getBusinessMembersWithRequestBuilder(businessId: String, fetchSystemUsers: Bool? = nil, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<GetBusinessMembers200Response> {
         var localVariablePath = "/businesses/{business_id}/members"
         let businessIdPreEscape = "\(APIHelper.mapValueToPathItem(businessId))"
         let businessIdPostEscape = businessIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -220,6 +331,7 @@ open class BusinessAccessRelationshipsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "fetch_system_users": (wrappedValue: fetchSystemUsers?.encodeToJSON(), isExplode: true),
             "assets_summary": (wrappedValue: assetsSummary?.encodeToJSON(), isExplode: true),
             "business_roles": (wrappedValue: businessRoles?.encodeToJSON(), isExplode: true),
             "member_ids": (wrappedValue: memberIds?.encodeToJSON(), isExplode: true),
@@ -307,6 +419,63 @@ open class BusinessAccessRelationshipsAPI {
         let localVariableRequestBuilder: RequestBuilder<GetBusinessPartners200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Update a system user information.
+     
+     - parameter businessId: (path) Unique identifier of the requesting business. 
+     - parameter systemUserId: (path) Unique identifier of a system user. 
+     - parameter systemUserUpdateRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return systemUserUpdateWithRequestBuilder(businessId: businessId, systemUserId: systemUserId, systemUserUpdateRequest: systemUserUpdateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a system user information.
+     - PATCH /businesses/{business_id}/system_users/{system_user_id}
+     - Update a system user information such as name.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter businessId: (path) Unique identifier of the requesting business. 
+     - parameter systemUserId: (path) Unique identifier of a system user. 
+     - parameter systemUserUpdateRequest: (body)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func systemUserUpdateWithRequestBuilder(businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest) -> RequestBuilder<Void> {
+        var localVariablePath = "/businesses/{business_id}/system_users/{system_user_id}"
+        let businessIdPreEscape = "\(APIHelper.mapValueToPathItem(businessId))"
+        let businessIdPostEscape = businessIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{business_id}", with: businessIdPostEscape, options: .literal, range: nil)
+        let systemUserIdPreEscape = "\(APIHelper.mapValueToPathItem(systemUserId))"
+        let systemUserIdPostEscape = systemUserIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{system_user_id}", with: systemUserIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: systemUserUpdateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**

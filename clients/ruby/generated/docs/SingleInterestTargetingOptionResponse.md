@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
 | **child_interests** | **Array&lt;String&gt;** |  | [optional] |
+| **id** | **String** |  | [optional] |
 | **level** | **Integer** |  | [optional] |
+| **name** | **String** |  | [optional] |
 
 ## Example
 
@@ -15,10 +15,10 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::SingleInterestTargetingOptionResponse.new(
-  id: 945391946569,
-  name: Dress,
   child_interests: null,
-  level: 2
+  id: 945391946569,
+  level: 2,
+  name: Dress
 )
 ```
 

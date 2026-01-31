@@ -5,15 +5,26 @@
   "name": "CatalogsRetailFeedsUpdateRequest",
   "fields": [
     {
-      "name": "default_currency",
-      "type": ["null", "model.NullableCurrency"],
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "credentials",
+      "type": ["null", "model.CatalogsFeedCredentials"],
       "doc": "",
       "default": null
     },
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "A human-friendly name associated to a given feed.",
+      "name": "default_availability",
+      "type": ["null", "model.ProductAvailabilityType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "default_currency",
+      "type": ["null", "model.NullableCurrency"],
+      "doc": "",
       "default": null
     },
     {
@@ -23,15 +34,15 @@
       "default": null
     },
     {
-      "name": "credentials",
-      "type": ["null", "model.CatalogsFeedCredentials"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "location",
       "type": ["null", "string"],
       "doc": "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "A human-friendly name associated to a given feed.",
       "default": null
     },
     {
@@ -43,17 +54,6 @@
     {
       "name": "status",
       "type": ["null", "model.CatalogsStatus"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
-    },
-    {
-      "name": "default_availability",
-      "type": ["null", "model.ProductAvailabilityType"],
       "doc": "",
       "default": null
     }

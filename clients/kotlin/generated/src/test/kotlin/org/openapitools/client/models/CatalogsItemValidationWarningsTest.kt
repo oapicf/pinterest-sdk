@@ -26,6 +26,846 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsItemValidationWarnings
         //val modelInstance = CatalogsItemValidationWarnings()
 
+        // to test the property `AD_IMAGE_0_LINK_DUPLICATED`
+        should("test AD_IMAGE_0_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_0_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_0_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_0_LINK_REQUIRED`
+        should("test AD_IMAGE_0_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_0_LINK_WARNING`
+        should("test AD_IMAGE_0_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_0_TAG_DUPLICATED`
+        should("test AD_IMAGE_0_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_0_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_0_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_0_TAG_REQUIRED`
+        should("test AD_IMAGE_0_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_0_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_LINK_DUPLICATED`
+        should("test AD_IMAGE_10_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_10_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_LINK_REQUIRED`
+        should("test AD_IMAGE_10_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_LINK_WARNING`
+        should("test AD_IMAGE_10_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_TAG_DUPLICATED`
+        should("test AD_IMAGE_10_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_10_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_10_TAG_REQUIRED`
+        should("test AD_IMAGE_10_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_10_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_LINK_DUPLICATED`
+        should("test AD_IMAGE_11_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_11_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_LINK_REQUIRED`
+        should("test AD_IMAGE_11_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_LINK_WARNING`
+        should("test AD_IMAGE_11_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_TAG_DUPLICATED`
+        should("test AD_IMAGE_11_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_11_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_11_TAG_REQUIRED`
+        should("test AD_IMAGE_11_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_11_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_LINK_DUPLICATED`
+        should("test AD_IMAGE_12_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_12_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_LINK_REQUIRED`
+        should("test AD_IMAGE_12_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_LINK_WARNING`
+        should("test AD_IMAGE_12_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_TAG_DUPLICATED`
+        should("test AD_IMAGE_12_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_12_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_12_TAG_REQUIRED`
+        should("test AD_IMAGE_12_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_12_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_LINK_DUPLICATED`
+        should("test AD_IMAGE_13_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_13_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_LINK_REQUIRED`
+        should("test AD_IMAGE_13_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_LINK_WARNING`
+        should("test AD_IMAGE_13_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_TAG_DUPLICATED`
+        should("test AD_IMAGE_13_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_13_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_13_TAG_REQUIRED`
+        should("test AD_IMAGE_13_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_13_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_LINK_DUPLICATED`
+        should("test AD_IMAGE_14_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_14_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_LINK_REQUIRED`
+        should("test AD_IMAGE_14_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_LINK_WARNING`
+        should("test AD_IMAGE_14_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_TAG_DUPLICATED`
+        should("test AD_IMAGE_14_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_14_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_14_TAG_REQUIRED`
+        should("test AD_IMAGE_14_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_14_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_LINK_DUPLICATED`
+        should("test AD_IMAGE_15_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_15_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_LINK_REQUIRED`
+        should("test AD_IMAGE_15_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_LINK_WARNING`
+        should("test AD_IMAGE_15_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_TAG_DUPLICATED`
+        should("test AD_IMAGE_15_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_15_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_15_TAG_REQUIRED`
+        should("test AD_IMAGE_15_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_15_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_LINK_DUPLICATED`
+        should("test AD_IMAGE_16_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_16_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_LINK_REQUIRED`
+        should("test AD_IMAGE_16_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_LINK_WARNING`
+        should("test AD_IMAGE_16_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_TAG_DUPLICATED`
+        should("test AD_IMAGE_16_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_16_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_16_TAG_REQUIRED`
+        should("test AD_IMAGE_16_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_16_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_LINK_DUPLICATED`
+        should("test AD_IMAGE_17_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_17_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_LINK_REQUIRED`
+        should("test AD_IMAGE_17_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_LINK_WARNING`
+        should("test AD_IMAGE_17_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_TAG_DUPLICATED`
+        should("test AD_IMAGE_17_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_17_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_17_TAG_REQUIRED`
+        should("test AD_IMAGE_17_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_17_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_LINK_DUPLICATED`
+        should("test AD_IMAGE_18_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_18_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_LINK_REQUIRED`
+        should("test AD_IMAGE_18_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_LINK_WARNING`
+        should("test AD_IMAGE_18_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_TAG_DUPLICATED`
+        should("test AD_IMAGE_18_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_18_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_18_TAG_REQUIRED`
+        should("test AD_IMAGE_18_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_18_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_LINK_DUPLICATED`
+        should("test AD_IMAGE_19_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_19_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_LINK_REQUIRED`
+        should("test AD_IMAGE_19_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_LINK_WARNING`
+        should("test AD_IMAGE_19_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_TAG_DUPLICATED`
+        should("test AD_IMAGE_19_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_19_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_19_TAG_REQUIRED`
+        should("test AD_IMAGE_19_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_19_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_LINK_DUPLICATED`
+        should("test AD_IMAGE_1_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_1_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_LINK_REQUIRED`
+        should("test AD_IMAGE_1_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_LINK_WARNING`
+        should("test AD_IMAGE_1_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_TAG_DUPLICATED`
+        should("test AD_IMAGE_1_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_1_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_1_TAG_REQUIRED`
+        should("test AD_IMAGE_1_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_1_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_LINK_DUPLICATED`
+        should("test AD_IMAGE_2_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_2_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_LINK_REQUIRED`
+        should("test AD_IMAGE_2_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_LINK_WARNING`
+        should("test AD_IMAGE_2_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_TAG_DUPLICATED`
+        should("test AD_IMAGE_2_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_2_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_2_TAG_REQUIRED`
+        should("test AD_IMAGE_2_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_2_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_LINK_DUPLICATED`
+        should("test AD_IMAGE_3_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_3_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_LINK_REQUIRED`
+        should("test AD_IMAGE_3_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_LINK_WARNING`
+        should("test AD_IMAGE_3_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_TAG_DUPLICATED`
+        should("test AD_IMAGE_3_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_3_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_3_TAG_REQUIRED`
+        should("test AD_IMAGE_3_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_3_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_LINK_DUPLICATED`
+        should("test AD_IMAGE_4_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_4_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_LINK_REQUIRED`
+        should("test AD_IMAGE_4_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_LINK_WARNING`
+        should("test AD_IMAGE_4_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_TAG_DUPLICATED`
+        should("test AD_IMAGE_4_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_4_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_4_TAG_REQUIRED`
+        should("test AD_IMAGE_4_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_4_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_LINK_DUPLICATED`
+        should("test AD_IMAGE_5_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_5_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_LINK_REQUIRED`
+        should("test AD_IMAGE_5_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_LINK_WARNING`
+        should("test AD_IMAGE_5_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_TAG_DUPLICATED`
+        should("test AD_IMAGE_5_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_5_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_5_TAG_REQUIRED`
+        should("test AD_IMAGE_5_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_5_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_LINK_DUPLICATED`
+        should("test AD_IMAGE_6_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_6_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_LINK_REQUIRED`
+        should("test AD_IMAGE_6_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_LINK_WARNING`
+        should("test AD_IMAGE_6_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_TAG_DUPLICATED`
+        should("test AD_IMAGE_6_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_6_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_6_TAG_REQUIRED`
+        should("test AD_IMAGE_6_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_6_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_LINK_DUPLICATED`
+        should("test AD_IMAGE_7_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_7_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_LINK_REQUIRED`
+        should("test AD_IMAGE_7_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_LINK_WARNING`
+        should("test AD_IMAGE_7_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_TAG_DUPLICATED`
+        should("test AD_IMAGE_7_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_7_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_7_TAG_REQUIRED`
+        should("test AD_IMAGE_7_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_7_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_LINK_DUPLICATED`
+        should("test AD_IMAGE_8_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_8_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_LINK_REQUIRED`
+        should("test AD_IMAGE_8_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_LINK_WARNING`
+        should("test AD_IMAGE_8_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_TAG_DUPLICATED`
+        should("test AD_IMAGE_8_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_8_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_8_TAG_REQUIRED`
+        should("test AD_IMAGE_8_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_8_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_LINK_DUPLICATED`
+        should("test AD_IMAGE_9_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_LINK_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_9_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_LINK_REQUIRED`
+        should("test AD_IMAGE_9_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_LINK_WARNING`
+        should("test AD_IMAGE_9_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_TAG_DUPLICATED`
+        should("test AD_IMAGE_9_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_TAG_LENGTH_TOO_LONG`
+        should("test AD_IMAGE_9_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_IMAGE_9_TAG_REQUIRED`
+        should("test AD_IMAGE_9_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_IMAGE_9_TAG_REQUIRED shouldBe ("TODO")
+        }
+
         // to test the property `AD_LINK_FORMAT_WARNING`
         should("test AD_LINK_FORMAT_WARNING") {
             // uncomment below to test the property
@@ -36,6 +876,132 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
         should("test AD_LINK_SAME_AS_LINK") {
             // uncomment below to test the property
             //modelInstance.AD_LINK_SAME_AS_LINK shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_LINK_DUPLICATED`
+        should("test AD_VIDEO_0_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_LINK_LENGTH_TOO_LONG`
+        should("test AD_VIDEO_0_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_LINK_REQUIRED`
+        should("test AD_VIDEO_0_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_LINK_WARNING`
+        should("test AD_VIDEO_0_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_TAG_DUPLICATED`
+        should("test AD_VIDEO_0_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_TAG_LENGTH_TOO_LONG`
+        should("test AD_VIDEO_0_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_0_TAG_REQUIRED`
+        should("test AD_VIDEO_0_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_0_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_LINK_DUPLICATED`
+        should("test AD_VIDEO_1_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_LINK_LENGTH_TOO_LONG`
+        should("test AD_VIDEO_1_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_LINK_REQUIRED`
+        should("test AD_VIDEO_1_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_LINK_WARNING`
+        should("test AD_VIDEO_1_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_TAG_DUPLICATED`
+        should("test AD_VIDEO_1_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_TAG_LENGTH_TOO_LONG`
+        should("test AD_VIDEO_1_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_1_TAG_REQUIRED`
+        should("test AD_VIDEO_1_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_1_TAG_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_LINK_DUPLICATED`
+        should("test AD_VIDEO_2_LINK_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_LINK_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_LINK_LENGTH_TOO_LONG`
+        should("test AD_VIDEO_2_LINK_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_LINK_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_LINK_REQUIRED`
+        should("test AD_VIDEO_2_LINK_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_LINK_REQUIRED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_LINK_WARNING`
+        should("test AD_VIDEO_2_LINK_WARNING") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_LINK_WARNING shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_TAG_DUPLICATED`
+        should("test AD_VIDEO_2_TAG_DUPLICATED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_TAG_DUPLICATED shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_TAG_LENGTH_TOO_LONG`
+        should("test AD_VIDEO_2_TAG_LENGTH_TOO_LONG") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_TAG_LENGTH_TOO_LONG shouldBe ("TODO")
+        }
+
+        // to test the property `AD_VIDEO_2_TAG_REQUIRED`
+        should("test AD_VIDEO_2_TAG_REQUIRED") {
+            // uncomment below to test the property
+            //modelInstance.AD_VIDEO_2_TAG_REQUIRED shouldBe ("TODO")
         }
 
         // to test the property `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`
@@ -66,12 +1032,6 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
         should("test AGE_GROUP_INVALID") {
             // uncomment below to test the property
             //modelInstance.AGE_GROUP_INVALID shouldBe ("TODO")
-        }
-
-        // to test the property `SIZE_SYSTEM_INVALID`
-        should("test SIZE_SYSTEM_INVALID") {
-            // uncomment below to test the property
-            //modelInstance.SIZE_SYSTEM_INVALID shouldBe ("TODO")
         }
 
         // to test the property `ANDROID_DEEP_LINK_INVALID`
@@ -206,16 +1166,16 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
             //modelInstance.PRODUCT_TYPE_LENGTH_TOO_LONG shouldBe ("TODO")
         }
 
+        // to test the property `SALE_DATE_INVALID`
+        should("test SALE_DATE_INVALID") {
+            // uncomment below to test the property
+            //modelInstance.SALE_DATE_INVALID shouldBe ("TODO")
+        }
+
         // to test the property `SALES_PRICE_INVALID`
         should("test SALES_PRICE_INVALID") {
             // uncomment below to test the property
             //modelInstance.SALES_PRICE_INVALID shouldBe ("TODO")
-        }
-
-        // to test the property `SALES_PRICE_TOO_LOW`
-        should("test SALES_PRICE_TOO_LOW") {
-            // uncomment below to test the property
-            //modelInstance.SALES_PRICE_TOO_LOW shouldBe ("TODO")
         }
 
         // to test the property `SALES_PRICE_TOO_HIGH`
@@ -224,22 +1184,22 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
             //modelInstance.SALES_PRICE_TOO_HIGH shouldBe ("TODO")
         }
 
-        // to test the property `SALE_DATE_INVALID`
-        should("test SALE_DATE_INVALID") {
+        // to test the property `SALES_PRICE_TOO_LOW`
+        should("test SALES_PRICE_TOO_LOW") {
             // uncomment below to test the property
-            //modelInstance.SALE_DATE_INVALID shouldBe ("TODO")
-        }
-
-        // to test the property `SHIPPING_INVALID`
-        should("test SHIPPING_INVALID") {
-            // uncomment below to test the property
-            //modelInstance.SHIPPING_INVALID shouldBe ("TODO")
+            //modelInstance.SALES_PRICE_TOO_LOW shouldBe ("TODO")
         }
 
         // to test the property `SHIPPING_HEIGHT_INVALID`
         should("test SHIPPING_HEIGHT_INVALID") {
             // uncomment below to test the property
             //modelInstance.SHIPPING_HEIGHT_INVALID shouldBe ("TODO")
+        }
+
+        // to test the property `SHIPPING_INVALID`
+        should("test SHIPPING_INVALID") {
+            // uncomment below to test the property
+            //modelInstance.SHIPPING_INVALID shouldBe ("TODO")
         }
 
         // to test the property `SHIPPING_WEIGHT_INVALID`
@@ -252,6 +1212,12 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
         should("test SHIPPING_WIDTH_INVALID") {
             // uncomment below to test the property
             //modelInstance.SHIPPING_WIDTH_INVALID shouldBe ("TODO")
+        }
+
+        // to test the property `SIZE_SYSTEM_INVALID`
+        should("test SIZE_SYSTEM_INVALID") {
+            // uncomment below to test the property
+            //modelInstance.SIZE_SYSTEM_INVALID shouldBe ("TODO")
         }
 
         // to test the property `SIZE_TYPE_INVALID`
@@ -282,6 +1248,12 @@ class CatalogsItemValidationWarningsTest : ShouldSpec() {
         should("test UTM_SOURCE_AUTO_CORRECTED") {
             // uncomment below to test the property
             //modelInstance.UTM_SOURCE_AUTO_CORRECTED shouldBe ("TODO")
+        }
+
+        // to test the property `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`
+        should("test VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED") {
+            // uncomment below to test the property
+            //modelInstance.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED shouldBe ("TODO")
         }
 
         // to test the property `WEIGHT_UNIT_INVALID`

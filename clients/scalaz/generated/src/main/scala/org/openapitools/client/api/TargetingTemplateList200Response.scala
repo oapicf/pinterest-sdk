@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import TargetingTemplateList200Response._
 
 case class TargetingTemplateList200Response (
-  items: List[TargetingTemplateResponseData],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[TargetingTemplateGetResponseData])
 
 object TargetingTemplateList200Response {
   import DateTimeCodecs._

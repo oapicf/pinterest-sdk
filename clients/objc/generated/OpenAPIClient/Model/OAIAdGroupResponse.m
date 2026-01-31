@@ -6,6 +6,7 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
+    self.promotionId = @"0";
     self.type = @"adgroup";
     
   }
@@ -18,7 +19,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"status": @"status", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"bidInMicroCurrency": @"bid_in_micro_currency", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"budgetType": @"budget_type", @"startTime": @"start_time", @"endTime": @"end_time", @"targetingSpec": @"targeting_spec", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"trackingUrls": @"tracking_urls", @"autoTargetingEnabled": @"auto_targeting_enabled", @"placementGroup": @"placement_group", @"pacingDeliveryType": @"pacing_delivery_type", @"campaignId": @"campaign_id", @"billableEvent": @"billable_event", @"bidStrategyType": @"bid_strategy_type", @"targetingTemplateIds": @"targeting_template_ids", @"_id": @"id", @"adAccountId": @"ad_account_id", @"createdTime": @"created_time", @"updatedTime": @"updated_time", @"type": @"type", @"conversionLearningModeType": @"conversion_learning_mode_type", @"summaryStatus": @"summary_status", @"feedProfileId": @"feed_profile_id", @"dcaAssets": @"dca_assets" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"autoTargetingEnabled": @"auto_targeting_enabled", @"bidInMicroCurrency": @"bid_in_micro_currency", @"bidStrategyType": @"bid_strategy_type", @"billableEvent": @"billable_event", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"budgetType": @"budget_type", @"campaignId": @"campaign_id", @"endTime": @"end_time", @"isCreativeOptimization": @"is_creative_optimization", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"name": @"name", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"pacingDeliveryType": @"pacing_delivery_type", @"placementGroup": @"placement_group", @"promotionApplicationLevel": @"promotion_application_level", @"promotionId": @"promotion_id", @"startTime": @"start_time", @"status": @"status", @"targetingSpec": @"targeting_spec", @"targetingTemplateIds": @"targeting_template_ids", @"trackingUrls": @"tracking_urls", @"adAccountId": @"ad_account_id", @"bidMultiplier": @"bid_multiplier", @"conversionLearningModeType": @"conversion_learning_mode_type", @"createdTime": @"created_time", @"dcaAssets": @"dca_assets", @"feedProfileId": @"feed_profile_id", @"_id": @"id", @"summaryStatus": @"summary_status", @"type": @"type", @"updatedTime": @"updated_time" }];
 }
 
 /**
@@ -28,7 +29,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"status", @"budgetInMicroCurrency", @"bidInMicroCurrency", @"optimizationGoalMetadata", @"budgetType", @"startTime", @"endTime", @"targetingSpec", @"lifetimeFrequencyCap", @"trackingUrls", @"autoTargetingEnabled", @"placementGroup", @"pacingDeliveryType", @"campaignId", @"billableEvent", @"bidStrategyType", @"targetingTemplateIds", @"_id", @"adAccountId", @"createdTime", @"updatedTime", @"type", @"conversionLearningModeType", @"summaryStatus", @"feedProfileId", @"dcaAssets"];
+  NSArray *optionalProperties = @[@"autoTargetingEnabled", @"bidInMicroCurrency", @"bidStrategyType", @"billableEvent", @"budgetInMicroCurrency", @"budgetType", @"campaignId", @"endTime", @"isCreativeOptimization", @"lifetimeFrequencyCap", @"name", @"optimizationGoalMetadata", @"pacingDeliveryType", @"placementGroup", @"promotionApplicationLevel", @"promotionId", @"startTime", @"status", @"targetingSpec", @"targetingTemplateIds", @"trackingUrls", @"adAccountId", @"bidMultiplier", @"conversionLearningModeType", @"createdTime", @"dcaAssets", @"feedProfileId", @"_id", @"summaryStatus", @"type", @"updatedTime"];
   return [optionalProperties containsObject:propertyName];
 }
 

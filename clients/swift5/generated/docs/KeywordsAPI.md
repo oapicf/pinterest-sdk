@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 # **keywordsGet**
 ```swift
-    open class func keywordsGet(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, matchTypes: [MatchType]? = nil, pageSize: Int? = nil, bookmark: String? = nil, completion: @escaping (_ data: KeywordsGet200Response?, _ error: Error?) -> Void)
+    open class func keywordsGet(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, adGroupIds: [String]? = nil, matchTypes: [MatchType]? = nil, pageSize: Int? = nil, bookmark: String? = nil, completion: @escaping (_ data: KeywordsGet200Response?, _ error: Error?) -> Void)
 ```
 
 Get keywords
@@ -134,12 +134,13 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let campaignId = "campaignId_example" // String | Campaign Id to use to filter the results. (optional)
 let adGroupId = "adGroupId_example" // String | Ad group Id. (optional)
+let adGroupIds = ["inner_example"] // [String] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
 let matchTypes = [MatchType()] // [MatchType] | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
 
 // Get keywords
-KeywordsAPI.keywordsGet(adAccountId: adAccountId, campaignId: campaignId, adGroupId: adGroupId, matchTypes: matchTypes, pageSize: pageSize, bookmark: bookmark) { (response, error) in
+KeywordsAPI.keywordsGet(adAccountId: adAccountId, campaignId: campaignId, adGroupId: adGroupId, adGroupIds: adGroupIds, matchTypes: matchTypes, pageSize: pageSize, bookmark: bookmark) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -158,8 +159,9 @@ Name | Type | Description  | Notes
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **campaignId** | **String** | Campaign Id to use to filter the results. | [optional] 
  **adGroupId** | **String** | Ad group Id. | [optional] 
+ **adGroupIds** | [**[String]**](String.md) | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
  **matchTypes** | [**[MatchType]**](MatchType.md) | Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
 
 ### Return type
@@ -168,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -192,7 +194,7 @@ Update keywords
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let keywordUpdateBody = KeywordUpdateBody(keywords: [KeywordUpdate(id: "id_example", archived: false, bid: 123)]) // KeywordUpdateBody | 
+let keywordUpdateBody = KeywordUpdateBody(keywords: [KeywordUpdate(archived: false, bid: 123, id: "id_example")]) // KeywordUpdateBody | 
 
 // Update keywords
 KeywordsAPI.keywordsUpdate(adAccountId: adAccountId, keywordUpdateBody: keywordUpdateBody) { (response, error) in
@@ -231,7 +233,7 @@ Name | Type | Description  | Notes
 
 # **trendingKeywordsList**
 ```swift
-    open class func trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: [Interests_trendingKeywordsList]? = nil, genders: [Genders_trendingKeywordsList]? = nil, ages: [Ages_trendingKeywordsList]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, completion: @escaping (_ data: TrendingKeywordsResponse?, _ error: Error?) -> Void)
+    open class func trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: [Interests_trendingKeywordsList]? = nil, genders: [Genders_trendingKeywordsList]? = nil, ages: [Ages_trendingKeywordsList]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, includePrediction: Bool? = nil, includeDemographics: Bool? = nil, completion: @escaping (_ data: TrendingKeywordsResponse?, _ error: Error?) -> Void)
 ```
 
 List trending keywords
@@ -251,9 +253,11 @@ let ages = ["ages_example"] // [String] | If set, filters the results to trends 
 let includeKeywords = ["inner_example"] // [String] | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied. (optional)
 let normalizeAgainstGroup = true // Bool | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional) (default to false)
 let limit = 987 // Int | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (optional) (default to 50)
+let includePrediction = true // Bool | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (optional) (default to false)
+let includeDemographics = true // Bool | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional) (default to false)
 
 // List trending keywords
-KeywordsAPI.trendingKeywordsList(region: region, trendType: trendType, interests: interests, genders: genders, ages: ages, includeKeywords: includeKeywords, normalizeAgainstGroup: normalizeAgainstGroup, limit: limit) { (response, error) in
+KeywordsAPI.trendingKeywordsList(region: region, trendType: trendType, interests: interests, genders: genders, ages: ages, includeKeywords: includeKeywords, normalizeAgainstGroup: normalizeAgainstGroup, limit: limit, includePrediction: includePrediction, includeDemographics: includeDemographics) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -277,6 +281,8 @@ Name | Type | Description  | Notes
  **includeKeywords** | [**[String]**](String.md) | If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [optional] 
  **normalizeAgainstGroup** | **Bool** | Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to false]
  **limit** | **Int** | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [optional] [default to 50]
+ **includePrediction** | **Bool** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [optional] [default to false]
+ **includeDemographics** | **Bool** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [optional] [default to false]
 
 ### Return type
 

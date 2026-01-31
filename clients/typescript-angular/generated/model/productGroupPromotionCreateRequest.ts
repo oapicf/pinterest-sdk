@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ProductGroupPromotionCreateRequestElement } from './productGroupPromotionCreateRequestElement';
+import { ProductGroupPromotion } from './productGroupPromotion';
 
 
 export interface ProductGroupPromotionCreateRequest { 
@@ -15,6 +15,6 @@ export interface ProductGroupPromotionCreateRequest {
      * ID of the Ad Group the Product Group Promotion belongs to.
      */
     ad_group_id: string;
-    product_group_promotion: Array<ProductGroupPromotionCreateRequestElement>;
+    product_group_promotion: Array<ProductGroupPromotion>;
 }
 

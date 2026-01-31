@@ -11,26 +11,14 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="The result, and link out, based on the user’s choice.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="The result, and link out, based on the user’s choice.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinResult   {
   
-  private String organicPinId;
   private String androidDeepLink;
-  private String iosDeepLink;
   private String destinationUrl;
+  private String iosDeepLink;
+  private String organicPinId;
   private BigDecimal resultId;
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("organic_pin_id")
-  public String getOrganicPinId() {
-    return organicPinId;
-  }
-  public void setOrganicPinId(String organicPinId) {
-    this.organicPinId = organicPinId;
-  }
 
   /**
    **/
@@ -42,6 +30,18 @@ public class QuizPinResult   {
   }
   public void setAndroidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("destination_url")
+  public String getDestinationUrl() {
+    return destinationUrl;
+  }
+  public void setDestinationUrl(String destinationUrl) {
+    this.destinationUrl = destinationUrl;
   }
 
   /**
@@ -60,12 +60,12 @@ public class QuizPinResult   {
    **/
   
   @ApiModelProperty(value = "")
-  @JsonProperty("destination_url")
-  public String getDestinationUrl() {
-    return destinationUrl;
+  @JsonProperty("organic_pin_id")
+  public String getOrganicPinId() {
+    return organicPinId;
   }
-  public void setDestinationUrl(String destinationUrl) {
-    this.destinationUrl = destinationUrl;
+  public void setOrganicPinId(String organicPinId) {
+    this.organicPinId = organicPinId;
   }
 
   /**
@@ -91,16 +91,16 @@ public class QuizPinResult   {
       return false;
     }
     QuizPinResult quizPinResult = (QuizPinResult) o;
-    return Objects.equals(this.organicPinId, quizPinResult.organicPinId) &&
-        Objects.equals(this.androidDeepLink, quizPinResult.androidDeepLink) &&
-        Objects.equals(this.iosDeepLink, quizPinResult.iosDeepLink) &&
+    return Objects.equals(this.androidDeepLink, quizPinResult.androidDeepLink) &&
         Objects.equals(this.destinationUrl, quizPinResult.destinationUrl) &&
+        Objects.equals(this.iosDeepLink, quizPinResult.iosDeepLink) &&
+        Objects.equals(this.organicPinId, quizPinResult.organicPinId) &&
         Objects.equals(this.resultId, quizPinResult.resultId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(organicPinId, androidDeepLink, iosDeepLink, destinationUrl, resultId);
+    return Objects.hash(androidDeepLink, destinationUrl, iosDeepLink, organicPinId, resultId);
   }
 
   @Override
@@ -108,10 +108,10 @@ public class QuizPinResult   {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinResult {\n");
     
-    sb.append("    organicPinId: ").append(toIndentedString(organicPinId)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
-    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    destinationUrl: ").append(toIndentedString(destinationUrl)).append("\n");
+    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    organicPinId: ").append(toIndentedString(organicPinId)).append("\n");
     sb.append("    resultId: ").append(toIndentedString(resultId)).append("\n");
     sb.append("}");
     return sb.toString();

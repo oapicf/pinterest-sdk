@@ -50,9 +50,9 @@ public enum ReportStatusEnum {
 
   private ReportStatusEnum reportStatus;
 
-  private String url;
-
   private BigDecimal size;
+
+  private String url;
 
   /**
    **/
@@ -69,25 +69,6 @@ public enum ReportStatusEnum {
   }
   public void setReportStatus(ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
-  }
-
-
-  /**
-   * URL to download the report
-   **/
-  public CatalogsReport url(String url) {
-    this.url = url;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "URL to download the report")
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
   }
 
 
@@ -110,6 +91,25 @@ public enum ReportStatusEnum {
   }
 
 
+  /**
+   * URL to download the report
+   **/
+  public CatalogsReport url(String url) {
+    this.url = url;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "URL to download the report")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -121,13 +121,13 @@ public enum ReportStatusEnum {
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(this.reportStatus, catalogsReport.reportStatus) &&
-        Objects.equals(this.url, catalogsReport.url) &&
-        Objects.equals(this.size, catalogsReport.size);
+        Objects.equals(this.size, catalogsReport.size) &&
+        Objects.equals(this.url, catalogsReport.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -136,8 +136,8 @@ public enum ReportStatusEnum {
     sb.append("class CatalogsReport {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

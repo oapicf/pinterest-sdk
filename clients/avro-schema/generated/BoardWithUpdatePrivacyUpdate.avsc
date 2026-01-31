@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create or update operation model.",
+  "name": "BoardWithUpdatePrivacyUpdate",
+  "fields": [
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".",
+      "default": null
+    },
+    {
+      "name": "privacy",
+      "type": ["null", "model.BoardUpdatePrivacy"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

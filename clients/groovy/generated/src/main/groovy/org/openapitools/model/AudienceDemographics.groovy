@@ -11,12 +11,12 @@ import org.openapitools.model.AudienceDemographicValue;
 class AudienceDemographics {
     /* Ages distribution. */
     List<AudienceDemographicValue> ages = new ArrayList<>()
-    /* Gender distribution. */
-    List<AudienceDemographicValue> genders = new ArrayList<>()
-    /* Device usage distribution. */
-    List<AudienceDemographicValue> devices = new ArrayList<>()
-    /* Geographic metro area distribution. */
-    List<AudienceDemographicValue> metros = new ArrayList<>()
     /* Country area distribution. */
     List<AudienceDemographicValue> countries = new ArrayList<>()
+    /* Device usage distribution. */
+    List<AudienceDemographicValue> devices = new ArrayList<>()
+    /* Gender distribution. */
+    List<AudienceDemographicValue> genders = new ArrayList<>()
+    /* Geographic metro area distribution. */
+    List<AudienceDemographicValue> metros = new ArrayList<>()
 }

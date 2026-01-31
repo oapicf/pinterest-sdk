@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedValidationDetails"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedValidationDetails"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsFeedValidationErrors = openapi_server.resourceTypes.CatalogsFeedValidationErrors
+  CatalogsFeedValidationWarnings = openapi_server.resourceTypes.CatalogsFeedValidationWarnings
+}
+resourceTypes {
+
+  CatalogsFeedValidationDetails {
+    title = CatalogsFeedValidationDetails
+    description = CatalogsFeedValidationDetails
+    derivedFrom = Root
+    properties {
+        errors {
+          type = CatalogsFeedValidationErrors
+          description = ""
+          optional = true
+        }
+        warnings {
+          type = CatalogsFeedValidationWarnings
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedValidationDetails {
+    title = CatalogsFeedValidationDetails
+    description = CatalogsFeedValidationDetails
+    implements = openapi_server.resourceTypes.CatalogsFeedValidationDetails
+
+  }
+}

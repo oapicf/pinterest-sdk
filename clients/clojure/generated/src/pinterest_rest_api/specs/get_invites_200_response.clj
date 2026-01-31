@@ -8,8 +8,8 @@
 
 (def get-invites-200-response-data
   {
-   (ds/req :items) (s/coll-of invite-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of invite-response-spec)
    })
 
 (def get-invites-200-response-spec

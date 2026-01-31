@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "addresses" },
+      {"model": "id" },
+      {"model": "io_terms" },
+      {"model": "io_terms_id" },
+      {"model": "io_type" },
+      {"model": "row_terms" },
+      {"model": "row_terms_id" },
+      {"model": "us_terms" },
+      {"model": "us_terms_id" },
+    ]
+  }]
+}

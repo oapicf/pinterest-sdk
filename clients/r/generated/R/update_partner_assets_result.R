@@ -8,7 +8,7 @@
 #' @description UpdatePartnerAssetsResult Class
 #' @format An \code{R6Class} generator object
 #' @field asset_id Unique identifier of a business asset. character [optional]
-#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. character [optional]
+#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. character [optional]
 #' @field partner_id Unique identifier of a business partner. character [optional]
 #' @field permissions Permission levels member or partner has on an asset. list(character) [optional]
 #' @importFrom R6 R6Class
@@ -26,7 +26,7 @@ UpdatePartnerAssetsResult <- R6::R6Class(
     #' Initialize a new UpdatePartnerAssetsResult class.
     #'
     #' @param asset_id Unique identifier of a business asset.
-    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
     #' @param partner_id Unique identifier of a business partner.
     #' @param permissions Permission levels member or partner has on an asset.
     #' @param ... Other optional arguments.

@@ -10,8 +10,8 @@
 
 (def advanced-auction-item-data
   {
-   (ds/req :item_id) string?
    (ds/req :country) country-spec
+   (ds/req :item_id) string?
    (ds/req :language) language-spec
    (ds/req :bid_options) advanced-auction-bid-options-spec
    })

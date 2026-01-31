@@ -38,8 +38,8 @@ const request: BusinessAccessAssetsApiAssetGroupCreateRequest = {
   businessId: "729090764583391194",
   
   createAssetGroupBody: {
-    assetGroupName: "Canada Ad Accounts",
     assetGroupDescription: "Asset groups that has ad accounts shared in Canada",
+    assetGroupName: "Canada Ad Accounts",
     assetGroupTypes: [
       "["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"]",
     ],
@@ -165,8 +165,6 @@ const request: BusinessAccessAssetsApiAssetGroupUpdateRequest = {
     assetGroupsToUpdate: [
       {
         assetGroupId: "666791336903426391",
-        name: "Canada Ad Accounts",
-        description: "Asset groups that has ad accounts shared in Canada",
         assetGroupTypes: [
           "["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"]",
         ],
@@ -176,6 +174,8 @@ const request: BusinessAccessAssetsApiAssetGroupUpdateRequest = {
         assetsToRemove: [
           "549755885175",
         ],
+        description: "Asset groups that has ad accounts shared in Canada",
+        name: "Canada Ad Accounts",
       },
     ],
   },
@@ -237,6 +237,8 @@ const request: BusinessAccessAssetsApiBusinessAssetMembersGetRequest = {
   businessId: "729090764583391194",
     // Unique identifier of a business asset.
   assetId: "729090764583391194",
+    // Fetches system users if True. Fetches regular user employees if False. (optional)
+  fetchSystemUsers: false,
     // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
     // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
@@ -256,6 +258,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
  **assetId** | [**string**] | Unique identifier of a business asset. | defaults to undefined
+ **fetchSystemUsers** | [**boolean**] | Fetches system users if True. Fetches regular user employees if False. | (optional) defaults to false
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
  **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0
@@ -398,7 +401,7 @@ Name | Type | Description  | Notes
  **permissions** | **Array&lt;PermissionsWithOwner&gt;** | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | (optional) defaults to undefined
  **childAssetId** | [**string**] | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | (optional) defaults to undefined
  **assetGroupId** | [**string**] | An asset group unique identifier. Used to fetch assets contained within the specified asset group. | (optional) defaults to undefined
- **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'
+ **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39; &#124; &#39;CATALOG&#39; &#124; &#39;CONSUMER&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'
  **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
  **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
@@ -467,7 +470,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
  **memberId** | [**string**] | The member id to fetch assets for. | defaults to undefined
- **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'
+ **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39; &#124; &#39;CATALOG&#39; &#124; &#39;CONSUMER&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'
  **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
  **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
@@ -670,7 +673,7 @@ Name | Type | Description  | Notes
  **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
  **partnerId** | [**string**] | The partner id to be bound to the Business | defaults to undefined
  **partnerType** | **PartnerType** | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | (optional) defaults to undefined
- **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'
+ **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39; &#124; &#39;CATALOG&#39; &#124; &#39;CONSUMER&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'
  **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0
  **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
@@ -720,8 +723,8 @@ const request: BusinessAccessAssetsApiDeletePartnerAssetAccessHandlerImplRequest
   deletePartnerAssetAccessBody: {
     accesses: [
       {
-        partnerId: "1234567890123",
         assetId: "549755885175",
+        partnerId: "1234567890123",
         partnerType: "INTERNAL",
       },
     ],
@@ -785,8 +788,8 @@ const request: BusinessAccessAssetsApiUpdatePartnerAssetAccessHandlerImplRequest
   updatePartnerAssetAccessBody: {
     accesses: [
       {
-        partnerId: "1234567890123",
         assetId: "549755885175",
+        partnerId: "1234567890123",
         permissions: [
           "["ANALYST","ADMIN"]",
         ],

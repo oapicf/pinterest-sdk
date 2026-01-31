@@ -16,15 +16,15 @@ void main() {
   // final instance = ConversionApiResponseEventsInner();
 
   group('test ConversionApiResponseEventsInner', () {
-    // Whether the event was processed successfully.
-    // String status
-    test('to test the property `status`', () async {
-      // TODO
-    });
-
     // Error message containing more information about why the event failed to be processed.
     // String errorMessage
     test('to test the property `errorMessage`', () async {
+      // TODO
+    });
+
+    // Whether the event was processed successfully.
+    // String status
+    test('to test the property `status`', () async {
       // TODO
     });
 

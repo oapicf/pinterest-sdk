@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,51 +16,52 @@ package openapi
 
 type CatalogsRetailProductGroup struct {
 
+	// Catalog id pertaining to the retail product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
-	// ID of the catalog product group.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Country *string `json:"country,omitempty"`
 
-	// Name of catalog product group
-	Name string `json:"name,omitempty"`
+	// Unix timestamp in seconds of when catalog product group was created.
+	CreatedAt int32 `json:"created_at,omitempty"`
 
 	Description *string `json:"description,omitempty"`
 
+	// id of the catalogs feed belonging to this catalog product group
+	FeedId *string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+
 	Filters CatalogsProductGroupFilters `json:"filters"`
+
+	// ID of the catalog product group.
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured bool `json:"is_featured,omitempty"`
 
-	Type CatalogsProductGroupType `json:"type,omitempty"`
+	Locale *string `json:"locale,omitempty"`
+
+	// Name of catalog product group
+	Name string `json:"name,omitempty"`
 
 	Status CatalogsProductGroupStatus `json:"status,omitempty"`
 
-	// Unix timestamp in seconds of when catalog product group was created.
-	CreatedAt int32 `json:"created_at,omitempty"`
+	Type CatalogsProductGroupType `json:"type"`
 
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
-
-	// Catalog id pertaining to the retail product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
-
-	// id of the catalogs feed belonging to this catalog product group
-	FeedId *string `json:"feed_id" validate:"regexp=^\\\\d+$"`
-
-	Country *string `json:"country,omitempty"`
-
-	Locale *string `json:"locale,omitempty"`
 }
 
 // AssertCatalogsRetailProductGroupRequired checks if the required fields are not zero-ed
 func AssertCatalogsRetailProductGroupRequired(obj CatalogsRetailProductGroup) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"id": obj.Id,
-		"filters": obj.Filters,
 		"catalog_id": obj.CatalogId,
+		"catalog_type": obj.CatalogType,
 		"feed_id": obj.FeedId,
+		"filters": obj.Filters,
+		"id": obj.Id,
+		"type": obj.Type,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

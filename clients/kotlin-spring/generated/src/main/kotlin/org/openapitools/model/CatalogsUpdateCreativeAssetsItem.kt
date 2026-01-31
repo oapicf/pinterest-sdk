@@ -18,21 +18,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * A creative assets item to be updated.
+ * @param attributes 
  * @param creativeAssetsId The catalog creative assets item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
 data class CatalogsUpdateCreativeAssetsItem(
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("attributes", required = true) val attributes: CatalogsUpdatableCreativeAssetsAttributes,
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog creative assets item id in the merchant namespace")
     @get:JsonProperty("creative_assets_id", required = true) val creativeAssetsId: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: CatalogsUpdateCreativeAssetsItem.Operation,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("attributes", required = true) val attributes: CatalogsUpdatableCreativeAssetsAttributes
+    @get:JsonProperty("operation", required = true) val operation: CatalogsUpdateCreativeAssetsItem.Operation
 ) {
 
     /**

@@ -9,10 +9,10 @@
 -export_type([openapi_single_interest_targeting_option_response/0]).
 
 -type openapi_single_interest_targeting_option_response() ::
-  [ {'id', binary() }
-  | {'name', binary() }
-  | {'child_interests', list(binary()) }
+  [ {'child_interests', list(binary()) }
+  | {'id', binary() }
   | {'level', integer() }
+  | {'name', binary() }
   ].
 
 
@@ -20,10 +20,10 @@ openapi_single_interest_targeting_option_response() ->
     openapi_single_interest_targeting_option_response([]).
 
 openapi_single_interest_targeting_option_response(Fields) ->
-  Default = [ {'id', binary() }
-            , {'name', binary() }
-            , {'child_interests', list(binary()) }
+  Default = [ {'child_interests', list(binary()) }
+            , {'id', binary() }
             , {'level', integer() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

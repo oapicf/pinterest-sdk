@@ -4,34 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartDate** | **string** | Starting date of time period. Format: YYYY-MM-DD | 
-**EndDate** | Pointer to **string** | End date of time period. Format: YYYY-MM-DD | [optional] 
-**PoNumber** | **string** | The po number | 
-**BudgetAmount** | Pointer to **float32** | If Budget order line, the budget amount. | [optional] 
+**AgencyLink** | Pointer to **string** | URL link for agency | [optional] 
+**BillingContactEmail** | **string** | The billing contact email | 
 **BillingContactFirstname** | **string** | The billing contact first name | 
 **BillingContactLastname** | **string** | The billing contact last name | 
-**BillingContactEmail** | **string** | The billing contact email | 
+**BudgetAmount** | Pointer to **float32** | If Budget order line, the budget amount. | [optional] 
+**EndDate** | Pointer to **string** | End date of time period. Format: YYYY-MM-DD | [optional] 
+**MediaContactEmail** | **string** | The media contact email | 
 **MediaContactFirstname** | **string** | The media contact first name | 
 **MediaContactLastname** | **string** | The media contact last name | 
-**MediaContactEmail** | **string** | The media contact email | 
-**AgencyLink** | Pointer to **string** | URL link for agency | [optional] 
+**PoNumber** | **string** | The po number | 
+**StartDate** | **string** | Starting date of time period. Format: YYYY-MM-DD | 
 **UserEmail** | Pointer to **string** | The email of user submitting the insertion order | [optional] 
-**AcceptedTermsTime** | Pointer to **int32** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
-**PmpId** | **string** | The pmp id | 
-**OrderName** | **string** | The order name | 
-**OrderLineType** | **string** | Type can be Budget or Perpetual | 
 **AcceptedTermsId** | **string** | The SFDC id for the terms | 
-**BilltoCompanyId** | **string** | The bill-to company id | 
-**BilltoBusinessAddressId** | **string** | The bill-to business address id | 
+**AcceptedTermsTime** | Pointer to **int32** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
 **BilltoBillingAddressId** | **string** | The bill-to billing address id | 
-**EstimatedMonthlySpend** | Pointer to **float32** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**BilltoBusinessAddressId** | **string** | The bill-to business address id | 
+**BilltoCompanyId** | **string** | The bill-to company id | 
 **CurrencyInfo** | [**Currency**](Currency.md) |  | 
+**EstimatedMonthlySpend** | Pointer to **float32** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**OrderLineType** | **string** | Type can be Budget or Perpetual | 
+**OrderName** | **string** | The order name | 
+**PmpId** | **string** | The pmp id | 
 
 ## Methods
 
 ### NewSSIOCreateInsertionOrderRequest
 
-`func NewSSIOCreateInsertionOrderRequest(startDate string, poNumber string, billingContactFirstname string, billingContactLastname string, billingContactEmail string, mediaContactFirstname string, mediaContactLastname string, mediaContactEmail string, pmpId string, orderName string, orderLineType string, acceptedTermsId string, billtoCompanyId string, billtoBusinessAddressId string, billtoBillingAddressId string, currencyInfo Currency, ) *SSIOCreateInsertionOrderRequest`
+`func NewSSIOCreateInsertionOrderRequest(billingContactEmail string, billingContactFirstname string, billingContactLastname string, mediaContactEmail string, mediaContactFirstname string, mediaContactLastname string, poNumber string, startDate string, acceptedTermsId string, billtoBillingAddressId string, billtoBusinessAddressId string, billtoCompanyId string, currencyInfo Currency, orderLineType string, orderName string, pmpId string, ) *SSIOCreateInsertionOrderRequest`
 
 NewSSIOCreateInsertionOrderRequest instantiates a new SSIOCreateInsertionOrderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,95 +46,50 @@ NewSSIOCreateInsertionOrderRequestWithDefaults instantiates a new SSIOCreateInse
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStartDate
+### GetAgencyLink
 
-`func (o *SSIOCreateInsertionOrderRequest) GetStartDate() string`
+`func (o *SSIOCreateInsertionOrderRequest) GetAgencyLink() string`
 
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+GetAgencyLink returns the AgencyLink field if non-nil, zero value otherwise.
 
-### GetStartDateOk
+### GetAgencyLinkOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetStartDateOk() (*string, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetAgencyLinkOk() (*string, bool)`
 
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+GetAgencyLinkOk returns a tuple with the AgencyLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartDate
+### SetAgencyLink
 
-`func (o *SSIOCreateInsertionOrderRequest) SetStartDate(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetAgencyLink(v string)`
 
-SetStartDate sets StartDate field to given value.
+SetAgencyLink sets AgencyLink field to given value.
 
+### HasAgencyLink
 
-### GetEndDate
+`func (o *SSIOCreateInsertionOrderRequest) HasAgencyLink() bool`
 
-`func (o *SSIOCreateInsertionOrderRequest) GetEndDate() string`
+HasAgencyLink returns a boolean if a field has been set.
 
-GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+### GetBillingContactEmail
 
-### GetEndDateOk
+`func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmail() string`
 
-`func (o *SSIOCreateInsertionOrderRequest) GetEndDateOk() (*string, bool)`
+GetBillingContactEmail returns the BillingContactEmail field if non-nil, zero value otherwise.
 
-GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+### GetBillingContactEmailOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmailOk() (*string, bool)`
+
+GetBillingContactEmailOk returns a tuple with the BillingContactEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndDate
+### SetBillingContactEmail
 
-`func (o *SSIOCreateInsertionOrderRequest) SetEndDate(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetBillingContactEmail(v string)`
 
-SetEndDate sets EndDate field to given value.
+SetBillingContactEmail sets BillingContactEmail field to given value.
 
-### HasEndDate
-
-`func (o *SSIOCreateInsertionOrderRequest) HasEndDate() bool`
-
-HasEndDate returns a boolean if a field has been set.
-
-### GetPoNumber
-
-`func (o *SSIOCreateInsertionOrderRequest) GetPoNumber() string`
-
-GetPoNumber returns the PoNumber field if non-nil, zero value otherwise.
-
-### GetPoNumberOk
-
-`func (o *SSIOCreateInsertionOrderRequest) GetPoNumberOk() (*string, bool)`
-
-GetPoNumberOk returns a tuple with the PoNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPoNumber
-
-`func (o *SSIOCreateInsertionOrderRequest) SetPoNumber(v string)`
-
-SetPoNumber sets PoNumber field to given value.
-
-
-### GetBudgetAmount
-
-`func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmount() float32`
-
-GetBudgetAmount returns the BudgetAmount field if non-nil, zero value otherwise.
-
-### GetBudgetAmountOk
-
-`func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmountOk() (*float32, bool)`
-
-GetBudgetAmountOk returns a tuple with the BudgetAmount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBudgetAmount
-
-`func (o *SSIOCreateInsertionOrderRequest) SetBudgetAmount(v float32)`
-
-SetBudgetAmount sets BudgetAmount field to given value.
-
-### HasBudgetAmount
-
-`func (o *SSIOCreateInsertionOrderRequest) HasBudgetAmount() bool`
-
-HasBudgetAmount returns a boolean if a field has been set.
 
 ### GetBillingContactFirstname
 
@@ -176,24 +131,74 @@ and a boolean to check if the value has been set.
 SetBillingContactLastname sets BillingContactLastname field to given value.
 
 
-### GetBillingContactEmail
+### GetBudgetAmount
 
-`func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmail() string`
+`func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmount() float32`
 
-GetBillingContactEmail returns the BillingContactEmail field if non-nil, zero value otherwise.
+GetBudgetAmount returns the BudgetAmount field if non-nil, zero value otherwise.
 
-### GetBillingContactEmailOk
+### GetBudgetAmountOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmailOk() (*string, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmountOk() (*float32, bool)`
 
-GetBillingContactEmailOk returns a tuple with the BillingContactEmail field if it's non-nil, zero value otherwise
+GetBudgetAmountOk returns a tuple with the BudgetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillingContactEmail
+### SetBudgetAmount
 
-`func (o *SSIOCreateInsertionOrderRequest) SetBillingContactEmail(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetBudgetAmount(v float32)`
 
-SetBillingContactEmail sets BillingContactEmail field to given value.
+SetBudgetAmount sets BudgetAmount field to given value.
+
+### HasBudgetAmount
+
+`func (o *SSIOCreateInsertionOrderRequest) HasBudgetAmount() bool`
+
+HasBudgetAmount returns a boolean if a field has been set.
+
+### GetEndDate
+
+`func (o *SSIOCreateInsertionOrderRequest) GetEndDate() string`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetEndDateOk() (*string, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *SSIOCreateInsertionOrderRequest) SetEndDate(v string)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *SSIOCreateInsertionOrderRequest) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
+
+### GetMediaContactEmail
+
+`func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmail() string`
+
+GetMediaContactEmail returns the MediaContactEmail field if non-nil, zero value otherwise.
+
+### GetMediaContactEmailOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmailOk() (*string, bool)`
+
+GetMediaContactEmailOk returns a tuple with the MediaContactEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaContactEmail
+
+`func (o *SSIOCreateInsertionOrderRequest) SetMediaContactEmail(v string)`
+
+SetMediaContactEmail sets MediaContactEmail field to given value.
 
 
 ### GetMediaContactFirstname
@@ -236,50 +241,45 @@ and a boolean to check if the value has been set.
 SetMediaContactLastname sets MediaContactLastname field to given value.
 
 
-### GetMediaContactEmail
+### GetPoNumber
 
-`func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmail() string`
+`func (o *SSIOCreateInsertionOrderRequest) GetPoNumber() string`
 
-GetMediaContactEmail returns the MediaContactEmail field if non-nil, zero value otherwise.
+GetPoNumber returns the PoNumber field if non-nil, zero value otherwise.
 
-### GetMediaContactEmailOk
+### GetPoNumberOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmailOk() (*string, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetPoNumberOk() (*string, bool)`
 
-GetMediaContactEmailOk returns a tuple with the MediaContactEmail field if it's non-nil, zero value otherwise
+GetPoNumberOk returns a tuple with the PoNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMediaContactEmail
+### SetPoNumber
 
-`func (o *SSIOCreateInsertionOrderRequest) SetMediaContactEmail(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetPoNumber(v string)`
 
-SetMediaContactEmail sets MediaContactEmail field to given value.
+SetPoNumber sets PoNumber field to given value.
 
 
-### GetAgencyLink
+### GetStartDate
 
-`func (o *SSIOCreateInsertionOrderRequest) GetAgencyLink() string`
+`func (o *SSIOCreateInsertionOrderRequest) GetStartDate() string`
 
-GetAgencyLink returns the AgencyLink field if non-nil, zero value otherwise.
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
-### GetAgencyLinkOk
+### GetStartDateOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetAgencyLinkOk() (*string, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetStartDateOk() (*string, bool)`
 
-GetAgencyLinkOk returns a tuple with the AgencyLink field if it's non-nil, zero value otherwise
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAgencyLink
+### SetStartDate
 
-`func (o *SSIOCreateInsertionOrderRequest) SetAgencyLink(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetStartDate(v string)`
 
-SetAgencyLink sets AgencyLink field to given value.
+SetStartDate sets StartDate field to given value.
 
-### HasAgencyLink
-
-`func (o *SSIOCreateInsertionOrderRequest) HasAgencyLink() bool`
-
-HasAgencyLink returns a boolean if a field has been set.
 
 ### GetUserEmail
 
@@ -306,6 +306,26 @@ SetUserEmail sets UserEmail field to given value.
 
 HasUserEmail returns a boolean if a field has been set.
 
+### GetAcceptedTermsId
+
+`func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsId() string`
+
+GetAcceptedTermsId returns the AcceptedTermsId field if non-nil, zero value otherwise.
+
+### GetAcceptedTermsIdOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsIdOk() (*string, bool)`
+
+GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcceptedTermsId
+
+`func (o *SSIOCreateInsertionOrderRequest) SetAcceptedTermsId(v string)`
+
+SetAcceptedTermsId sets AcceptedTermsId field to given value.
+
+
 ### GetAcceptedTermsTime
 
 `func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsTime() int32`
@@ -331,104 +351,24 @@ SetAcceptedTermsTime sets AcceptedTermsTime field to given value.
 
 HasAcceptedTermsTime returns a boolean if a field has been set.
 
-### GetPmpId
+### GetBilltoBillingAddressId
 
-`func (o *SSIOCreateInsertionOrderRequest) GetPmpId() string`
+`func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressId() string`
 
-GetPmpId returns the PmpId field if non-nil, zero value otherwise.
+GetBilltoBillingAddressId returns the BilltoBillingAddressId field if non-nil, zero value otherwise.
 
-### GetPmpIdOk
+### GetBilltoBillingAddressIdOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetPmpIdOk() (*string, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressIdOk() (*string, bool)`
 
-GetPmpIdOk returns a tuple with the PmpId field if it's non-nil, zero value otherwise
+GetBilltoBillingAddressIdOk returns a tuple with the BilltoBillingAddressId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPmpId
+### SetBilltoBillingAddressId
 
-`func (o *SSIOCreateInsertionOrderRequest) SetPmpId(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetBilltoBillingAddressId(v string)`
 
-SetPmpId sets PmpId field to given value.
-
-
-### GetOrderName
-
-`func (o *SSIOCreateInsertionOrderRequest) GetOrderName() string`
-
-GetOrderName returns the OrderName field if non-nil, zero value otherwise.
-
-### GetOrderNameOk
-
-`func (o *SSIOCreateInsertionOrderRequest) GetOrderNameOk() (*string, bool)`
-
-GetOrderNameOk returns a tuple with the OrderName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrderName
-
-`func (o *SSIOCreateInsertionOrderRequest) SetOrderName(v string)`
-
-SetOrderName sets OrderName field to given value.
-
-
-### GetOrderLineType
-
-`func (o *SSIOCreateInsertionOrderRequest) GetOrderLineType() string`
-
-GetOrderLineType returns the OrderLineType field if non-nil, zero value otherwise.
-
-### GetOrderLineTypeOk
-
-`func (o *SSIOCreateInsertionOrderRequest) GetOrderLineTypeOk() (*string, bool)`
-
-GetOrderLineTypeOk returns a tuple with the OrderLineType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrderLineType
-
-`func (o *SSIOCreateInsertionOrderRequest) SetOrderLineType(v string)`
-
-SetOrderLineType sets OrderLineType field to given value.
-
-
-### GetAcceptedTermsId
-
-`func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsId() string`
-
-GetAcceptedTermsId returns the AcceptedTermsId field if non-nil, zero value otherwise.
-
-### GetAcceptedTermsIdOk
-
-`func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsIdOk() (*string, bool)`
-
-GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAcceptedTermsId
-
-`func (o *SSIOCreateInsertionOrderRequest) SetAcceptedTermsId(v string)`
-
-SetAcceptedTermsId sets AcceptedTermsId field to given value.
-
-
-### GetBilltoCompanyId
-
-`func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyId() string`
-
-GetBilltoCompanyId returns the BilltoCompanyId field if non-nil, zero value otherwise.
-
-### GetBilltoCompanyIdOk
-
-`func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyIdOk() (*string, bool)`
-
-GetBilltoCompanyIdOk returns a tuple with the BilltoCompanyId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBilltoCompanyId
-
-`func (o *SSIOCreateInsertionOrderRequest) SetBilltoCompanyId(v string)`
-
-SetBilltoCompanyId sets BilltoCompanyId field to given value.
+SetBilltoBillingAddressId sets BilltoBillingAddressId field to given value.
 
 
 ### GetBilltoBusinessAddressId
@@ -451,24 +391,44 @@ and a boolean to check if the value has been set.
 SetBilltoBusinessAddressId sets BilltoBusinessAddressId field to given value.
 
 
-### GetBilltoBillingAddressId
+### GetBilltoCompanyId
 
-`func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressId() string`
+`func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyId() string`
 
-GetBilltoBillingAddressId returns the BilltoBillingAddressId field if non-nil, zero value otherwise.
+GetBilltoCompanyId returns the BilltoCompanyId field if non-nil, zero value otherwise.
 
-### GetBilltoBillingAddressIdOk
+### GetBilltoCompanyIdOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressIdOk() (*string, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyIdOk() (*string, bool)`
 
-GetBilltoBillingAddressIdOk returns a tuple with the BilltoBillingAddressId field if it's non-nil, zero value otherwise
+GetBilltoCompanyIdOk returns a tuple with the BilltoCompanyId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBilltoBillingAddressId
+### SetBilltoCompanyId
 
-`func (o *SSIOCreateInsertionOrderRequest) SetBilltoBillingAddressId(v string)`
+`func (o *SSIOCreateInsertionOrderRequest) SetBilltoCompanyId(v string)`
 
-SetBilltoBillingAddressId sets BilltoBillingAddressId field to given value.
+SetBilltoCompanyId sets BilltoCompanyId field to given value.
+
+
+### GetCurrencyInfo
+
+`func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfo() Currency`
+
+GetCurrencyInfo returns the CurrencyInfo field if non-nil, zero value otherwise.
+
+### GetCurrencyInfoOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfoOk() (*Currency, bool)`
+
+GetCurrencyInfoOk returns a tuple with the CurrencyInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrencyInfo
+
+`func (o *SSIOCreateInsertionOrderRequest) SetCurrencyInfo(v Currency)`
+
+SetCurrencyInfo sets CurrencyInfo field to given value.
 
 
 ### GetEstimatedMonthlySpend
@@ -496,24 +456,64 @@ SetEstimatedMonthlySpend sets EstimatedMonthlySpend field to given value.
 
 HasEstimatedMonthlySpend returns a boolean if a field has been set.
 
-### GetCurrencyInfo
+### GetOrderLineType
 
-`func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfo() Currency`
+`func (o *SSIOCreateInsertionOrderRequest) GetOrderLineType() string`
 
-GetCurrencyInfo returns the CurrencyInfo field if non-nil, zero value otherwise.
+GetOrderLineType returns the OrderLineType field if non-nil, zero value otherwise.
 
-### GetCurrencyInfoOk
+### GetOrderLineTypeOk
 
-`func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfoOk() (*Currency, bool)`
+`func (o *SSIOCreateInsertionOrderRequest) GetOrderLineTypeOk() (*string, bool)`
 
-GetCurrencyInfoOk returns a tuple with the CurrencyInfo field if it's non-nil, zero value otherwise
+GetOrderLineTypeOk returns a tuple with the OrderLineType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCurrencyInfo
+### SetOrderLineType
 
-`func (o *SSIOCreateInsertionOrderRequest) SetCurrencyInfo(v Currency)`
+`func (o *SSIOCreateInsertionOrderRequest) SetOrderLineType(v string)`
 
-SetCurrencyInfo sets CurrencyInfo field to given value.
+SetOrderLineType sets OrderLineType field to given value.
+
+
+### GetOrderName
+
+`func (o *SSIOCreateInsertionOrderRequest) GetOrderName() string`
+
+GetOrderName returns the OrderName field if non-nil, zero value otherwise.
+
+### GetOrderNameOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetOrderNameOk() (*string, bool)`
+
+GetOrderNameOk returns a tuple with the OrderName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderName
+
+`func (o *SSIOCreateInsertionOrderRequest) SetOrderName(v string)`
+
+SetOrderName sets OrderName field to given value.
+
+
+### GetPmpId
+
+`func (o *SSIOCreateInsertionOrderRequest) GetPmpId() string`
+
+GetPmpId returns the PmpId field if non-nil, zero value otherwise.
+
+### GetPmpIdOk
+
+`func (o *SSIOCreateInsertionOrderRequest) GetPmpIdOk() (*string, bool)`
+
+GetPmpIdOk returns a tuple with the PmpId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPmpId
+
+`func (o *SSIOCreateInsertionOrderRequest) SetPmpId(v string)`
+
+SetPmpId sets PmpId field to given value.
 
 
 

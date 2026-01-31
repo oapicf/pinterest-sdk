@@ -14,14 +14,18 @@ import Audience._
 case class Audience (
   /* Ad account ID. */
   adAccountId: Option[String],
+/* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
+  audienceType: Option[String],
+/* The company that created this audience. */
+  createdByCompanyName: Option[String],
+/* Creation time. Unix timestamp in seconds. */
+  createdTimestamp: Option[Integer],
+/* Audience description. */
+  description: Option[String],
 /* Audience ID. */
   id: Option[String],
 /* Audience name. */
   name: Option[String],
-/* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
-  audienceType: Option[String],
-/* Audience description. */
-  description: Option[String],
 rule: Option[AudienceRule],
 /* Audience size. */
   size: Option[Integer],
@@ -29,8 +33,6 @@ rule: Option[AudienceRule],
   status: Option[String],
 /* Always \"audience\". */
   `type`: Option[String],
-/* Creation time. Unix timestamp in seconds. */
-  createdTimestamp: Option[Integer],
 /* Last update time. Unix timestamp in seconds. */
   updatedTimestamp: Option[Integer])
 

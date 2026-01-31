@@ -29,6 +29,12 @@
             [pinterest-rest-api.specs. :refer :all]
             [pinterest-rest-api.specs. :refer :all]
             [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -42,11 +48,11 @@
    (ds/req :AVAILABILITY) catalogs-product-group-multiple-string-criteria-spec
    (ds/req :BRAND) catalogs-product-group-multiple-string-criteria-spec
    (ds/req :CONDITION) catalogs-product-group-multiple-string-criteria-spec
-   (ds/req :CUSTOM_LABEL_0) catalogs-product-group-multiple-string-criteria-spec
-   (ds/req :CUSTOM_LABEL_1) catalogs-product-group-multiple-string-criteria-spec
-   (ds/req :CUSTOM_LABEL_2) catalogs-product-group-multiple-string-criteria-spec
-   (ds/req :CUSTOM_LABEL_3) catalogs-product-group-multiple-string-criteria-spec
-   (ds/req :CUSTOM_LABEL_4) catalogs-product-group-multiple-string-criteria-spec
+   (ds/req :CUSTOM_LABEL_0) catalogs-product-group-filter-operator-type-criteria-spec
+   (ds/req :CUSTOM_LABEL_1) catalogs-product-group-filter-operator-type-criteria-spec
+   (ds/req :CUSTOM_LABEL_2) catalogs-product-group-filter-operator-type-criteria-spec
+   (ds/req :CUSTOM_LABEL_3) catalogs-product-group-filter-operator-type-criteria-spec
+   (ds/req :CUSTOM_LABEL_4) catalogs-product-group-filter-operator-type-criteria-spec
    (ds/req :ITEM_GROUP_ID) catalogs-product-group-multiple-string-criteria-spec
    (ds/req :GENDER) catalogs-product-group-multiple-gender-criteria-spec
    (ds/req :MEDIA_TYPE) catalogs-product-group-multiple-media-types-criteria-spec
@@ -63,6 +69,12 @@
    (ds/req :GOOGLE_PRODUCT_CATEGORY_1) catalogs-product-group-multiple-string-list-criteria-spec
    (ds/req :GOOGLE_PRODUCT_CATEGORY_0) catalogs-product-group-multiple-string-list-criteria-spec
    (ds/req :PRODUCT_GROUP) catalogs-product-group-multiple-string-criteria-spec
+   (ds/req :CUSTOM_NUMBER_0) catalogs-product-group-uint32-criteria-spec
+   (ds/req :CUSTOM_NUMBER_1) catalogs-product-group-uint32-criteria-spec
+   (ds/req :CUSTOM_NUMBER_2) catalogs-product-group-uint32-criteria-spec
+   (ds/req :CUSTOM_NUMBER_3) catalogs-product-group-uint32-criteria-spec
+   (ds/req :CUSTOM_NUMBER_4) catalogs-product-group-uint32-criteria-spec
+   (ds/req :TITLE_KEYWORDS) catalogs-product-group-multiple-string-criteria-spec
    })
 
 (def catalogs-product-group-filter-keys-spec

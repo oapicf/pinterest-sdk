@@ -14,12 +14,12 @@ import { CatalogsHotelAttributes } from './catalogsHotelAttributes';
  * A hotel item to be created.
  */
 export interface CatalogsCreateHotelItem { 
+    attributes: CatalogsHotelAttributes;
     /**
      * The catalog hotel id in the merchant namespace
      */
     hotel_id: string;
     operation: CatalogsCreateHotelItem.OperationEnum;
-    attributes: CatalogsHotelAttributes;
 }
 export namespace CatalogsCreateHotelItem {
     export const OperationEnum = {

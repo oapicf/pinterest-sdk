@@ -7,9 +7,9 @@
 
 (def template-response-date-range-absolute-date-range-data
   {
-   (ds/opt :type) string?
-   (ds/opt :start_date) float?
    (ds/opt :end_date) float?
+   (ds/opt :start_date) float?
+   (ds/opt :type) string?
    })
 
 (def template-response-date-range-absolute-date-range-spec

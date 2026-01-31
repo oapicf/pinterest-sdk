@@ -22,22 +22,22 @@ catalogs_report_feed_ingestion_stats_t* instantiate_catalogs_report_feed_ingesti
   catalogs_report_feed_ingestion_stats_t* catalogs_report_feed_ingestion_stats = NULL;
   if (include_optional) {
     catalogs_report_feed_ingestion_stats = catalogs_report_feed_ingestion_stats_create(
-      pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_FEED_INGESTION_ISSUES,
       "a",
       112,
       "AVAILABILITY_INVALID",
       "0",
       10,
+      pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_FEED_INGESTION_ISSUES,
       pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_WARN
     );
   } else {
     catalogs_report_feed_ingestion_stats = catalogs_report_feed_ingestion_stats_create(
-      pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_FEED_INGESTION_ISSUES,
       "a",
       112,
       "AVAILABILITY_INVALID",
       "0",
       10,
+      pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_FEED_INGESTION_ISSUES,
       pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_WARN
     );
   }

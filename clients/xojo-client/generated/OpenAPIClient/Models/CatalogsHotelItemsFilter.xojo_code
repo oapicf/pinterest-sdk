@@ -2,20 +2,20 @@
 Protected Class CatalogsHotelItemsFilter
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+		#tag EndNote
+		catalog_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		hotel_ids() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-		#tag EndNote
-		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -73,7 +73,7 @@ Protected Class CatalogsHotelItemsFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="hotel_ids"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -81,7 +81,7 @@ Protected Class CatalogsHotelItemsFilter
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_id"
+			Name="hotel_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

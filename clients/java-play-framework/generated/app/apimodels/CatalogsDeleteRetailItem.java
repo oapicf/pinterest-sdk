@@ -9,13 +9,17 @@ import javax.validation.Valid;
 /**
  * An item to be deleted
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsDeleteRetailItem   {
   @JsonProperty("item_id")
   @NotNull
 
   private String itemId;
+
+  @JsonProperty("last_updated_time")
+  
+  private Long lastUpdatedTime;
 
   /**
    * Gets or Sets operation
@@ -68,6 +72,23 @@ public class CatalogsDeleteRetailItem   {
     this.itemId = itemId;
   }
 
+  public CatalogsDeleteRetailItem lastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+    return this;
+  }
+
+   /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   * @return lastUpdatedTime
+  **/
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
   public CatalogsDeleteRetailItem operation(OperationEnum operation) {
     this.operation = operation;
     return this;
@@ -96,12 +117,13 @@ public class CatalogsDeleteRetailItem   {
     }
     CatalogsDeleteRetailItem catalogsDeleteRetailItem = (CatalogsDeleteRetailItem) o;
     return Objects.equals(itemId, catalogsDeleteRetailItem.itemId) &&
+        Objects.equals(lastUpdatedTime, catalogsDeleteRetailItem.lastUpdatedTime) &&
         Objects.equals(operation, catalogsDeleteRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation);
+    return Objects.hash(itemId, lastUpdatedTime, operation);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -111,6 +133,7 @@ public class CatalogsDeleteRetailItem   {
     sb.append("class CatalogsDeleteRetailItem {\n");
     
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

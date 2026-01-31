@@ -22,17 +22,13 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param website Website with path or domain only
  * @param status Status of the verification process
  * @param verifiedAt UTC timestamp when the verification happened - sometimes missing
+ * @param website Website with path or domain only
  */
 
 
 data class UserWebsiteSummary (
-
-    /* Website with path or domain only */
-    @Json(name = "website")
-    val website: kotlin.String? = null,
 
     /* Status of the verification process */
     @Json(name = "status")
@@ -40,7 +36,11 @@ data class UserWebsiteSummary (
 
     /* UTC timestamp when the verification happened - sometimes missing */
     @Json(name = "verified_at")
-    val verifiedAt: kotlin.String? = null
+    val verifiedAt: kotlin.String? = null,
+
+    /* Website with path or domain only */
+    @Json(name = "website")
+    val website: kotlin.String? = null
 
 ) {
 

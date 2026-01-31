@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "ContentType",
+  "symbols": [
+    "image_jpeg",
+    "image_png"
+  ]
+}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,6 +20,7 @@ var _ MappedNullable = &OptimizationGoalMetadataFrequencyGoalMetadata{}
 
 // OptimizationGoalMetadataFrequencyGoalMetadata struct for OptimizationGoalMetadataFrequencyGoalMetadata
 type OptimizationGoalMetadataFrequencyGoalMetadata struct {
+	// Frequency target can only be between 2 and 20
 	Frequency *int32 `json:"frequency,omitempty"`
 	// User entity counts time range
 	Timerange *string `json:"timerange,omitempty"`

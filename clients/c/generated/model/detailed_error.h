@@ -21,16 +21,16 @@ typedef struct detailed_error_t detailed_error_t;
 
 typedef struct detailed_error_t {
     int code; //numeric
-    char *message; // string
     object_t *details; //object
+    char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } detailed_error_t;
 
 __attribute__((deprecated)) detailed_error_t *detailed_error_create(
     int code,
-    char *message,
-    object_t *details
+    object_t *details,
+    char *message
 );
 
 void detailed_error_free(detailed_error_t *detailed_error);

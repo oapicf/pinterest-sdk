@@ -19,10 +19,12 @@ import com.google.gson.Gson
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.Granularity
 import org.openapitools.server.api.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.server.api.model.ProductGroupPromotion
 import org.openapitools.server.api.model.ProductGroupPromotionCreateRequest
 import org.openapitools.server.api.model.ProductGroupPromotionResponse
 import org.openapitools.server.api.model.ProductGroupPromotionUpdateRequest
 import org.openapitools.server.api.model.ProductGroupPromotionsList200Response
+import org.openapitools.server.api.model.ReportingTimeZone
 
 class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, private val service: ProductGroupPromotionsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -195,8 +197,10 @@ class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, priva
                     val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
                     val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
+                    val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
+                    val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.productGroupsAnalytics(adAccountId,startDate,endDate,productGroupIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,context)
+                        val result = service.productGroupsAnalytics(adAccountId,startDate,endDate,productGroupIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,reportingTimezone,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

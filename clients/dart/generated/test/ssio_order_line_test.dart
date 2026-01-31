@@ -16,9 +16,15 @@ void main() {
   // final instance = SSIOOrderLine();
 
   group('test SSIOOrderLine', () {
-    // OrderLineId in SFDC
-    // String salesforceOrderLineId
-    test('to test the property `salesforceOrderLineId`', () async {
+    // The SFDC id for the terms
+    // String acceptedTermsId
+    test('to test the property `acceptedTermsId`', () async {
+      // TODO
+    });
+
+    // The UTC timestamp (to the nearest sec) of when terms were accepted
+    // String acceptedTermsTime
+    test('to test the property `acceptedTermsTime`', () async {
       // TODO
     });
 
@@ -28,33 +34,21 @@ void main() {
       // TODO
     });
 
-    // The pin order id associated with the order line in SFDC
-    // String pinOrderId
-    test('to test the property `pinOrderId`', () async {
-      // TODO
-    });
-
-    // Last modified date.
-    // String lastModifiedDateTime
-    test('to test the property `lastModifiedDateTime`', () async {
-      // TODO
-    });
-
-    // Start date of the order line.
-    // DateTime startDate
-    test('to test the property `startDate`', () async {
-      // TODO
-    });
-
-    // End date of the order line.
-    // DateTime endDate
-    test('to test the property `endDate`', () async {
+    // Agency link
+    // String agencyLink
+    test('to test the property `agencyLink`', () async {
       // TODO
     });
 
     // Bill To Company name
     // String billToCompanyName
     test('to test the property `billToCompanyName`', () async {
+      // TODO
+    });
+
+    // Billing contact email
+    // String billingContactEmail
+    test('to test the property `billingContactEmail`', () async {
       // TODO
     });
 
@@ -70,9 +64,32 @@ void main() {
       // TODO
     });
 
-    // Billing contact email
-    // String billingContactEmail
-    test('to test the property `billingContactEmail`', () async {
+    // If Budget order line, the budget amount.
+    // num budgetAmount
+    test('to test the property `budgetAmount`', () async {
+      // TODO
+    });
+
+    // Currency currencyInfo
+    test('to test the property `currencyInfo`', () async {
+      // TODO
+    });
+
+    // End date of the order line.
+    // DateTime endDate
+    test('to test the property `endDate`', () async {
+      // TODO
+    });
+
+    // If Ongoing (perpetual) order line, the estimated monthly spend
+    // num estimatedMonthlySpend
+    test('to test the property `estimatedMonthlySpend`', () async {
+      // TODO
+    });
+
+    // Last modified date.
+    // String lastModifiedDateTime
+    test('to test the property `lastModifiedDateTime`', () async {
       // TODO
     });
 
@@ -94,26 +111,15 @@ void main() {
       // TODO
     });
 
-    // Currency currencyInfo
-    test('to test the property `currencyInfo`', () async {
-      // TODO
-    });
-
-    // Agency link
-    // String agencyLink
-    test('to test the property `agencyLink`', () async {
-      // TODO
-    });
-
-    // The po number
-    // String poNumber
-    test('to test the property `poNumber`', () async {
-      // TODO
-    });
-
     // The order name
     // String orderName
     test('to test the property `orderName`', () async {
+      // TODO
+    });
+
+    // The pin order id associated with the order line in SFDC
+    // String pinOrderId
+    test('to test the property `pinOrderId`', () async {
       // TODO
     });
 
@@ -123,27 +129,21 @@ void main() {
       // TODO
     });
 
-    // The SFDC id for the terms
-    // String acceptedTermsId
-    test('to test the property `acceptedTermsId`', () async {
+    // The po number
+    // String poNumber
+    test('to test the property `poNumber`', () async {
       // TODO
     });
 
-    // The UTC timestamp (to the nearest sec) of when terms were accepted
-    // String acceptedTermsTime
-    test('to test the property `acceptedTermsTime`', () async {
+    // OrderLineId in SFDC
+    // String salesforceOrderLineId
+    test('to test the property `salesforceOrderLineId`', () async {
       // TODO
     });
 
-    // If Budget order line, the budget amount.
-    // num budgetAmount
-    test('to test the property `budgetAmount`', () async {
-      // TODO
-    });
-
-    // If Ongoing (perpetual) order line, the estimated monthly spend
-    // num estimatedMonthlySpend
-    test('to test the property `estimatedMonthlySpend`', () async {
+    // Start date of the order line.
+    // DateTime startDate
+    test('to test the property `startDate`', () async {
       // TODO
     });
 

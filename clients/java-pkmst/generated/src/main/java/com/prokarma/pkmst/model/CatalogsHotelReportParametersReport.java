@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsReportAllItemsFilter;
 import com.prokarma.pkmst.model.CatalogsReportDistributionIssueFilter;
 import com.prokarma.pkmst.model.CatalogsReportFeedIngestionFilter;
 import io.swagger.annotations.ApiModel;
@@ -21,9 +22,10 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsHotelReportParametersReport
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsReportAllItemsFilter.class, name = "ALL_ITEMS"),
   @JsonSubTypes.Type(value = CatalogsReportDistributionIssueFilter.class, name = "DISTRIBUTION_ISSUES"),
   @JsonSubTypes.Type(value = CatalogsReportFeedIngestionFilter.class, name = "FEED_INGESTION_ISSUES"),
 })
@@ -35,7 +37,9 @@ public class CatalogsHotelReportParametersReport   {
   public enum ReportTypeEnum {
     FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
     
-    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
+    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
+    
+    ALL_ITEMS("ALL_ITEMS");
 
     private String value;
 

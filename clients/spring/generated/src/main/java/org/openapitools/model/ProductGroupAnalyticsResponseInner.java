@@ -27,13 +27,13 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
  */
 
 @JsonTypeName("ProductGroupAnalyticsResponse_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupAnalyticsResponseInner {
-
-  private String PRODUCT_GROUP_ID;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private @Nullable LocalDate DATE;
+
+  private String PRODUCT_GROUP_ID;
 
   public ProductGroupAnalyticsResponseInner() {
     super();
@@ -43,26 +43,6 @@ public class ProductGroupAnalyticsResponseInner {
    * Constructor with only required parameters
    */
   public ProductGroupAnalyticsResponseInner(String PRODUCT_GROUP_ID) {
-    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
-  }
-
-  public ProductGroupAnalyticsResponseInner PRODUCT_GROUP_ID(String PRODUCT_GROUP_ID) {
-    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
-    return this;
-  }
-
-  /**
-   * The ID of the product group that this metrics belongs to.
-   * @return PRODUCT_GROUP_ID
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "PRODUCT_GROUP_ID", description = "The ID of the product group that this metrics belongs to.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("PRODUCT_GROUP_ID")
-  public String getPRODUCTGROUPID() {
-    return PRODUCT_GROUP_ID;
-  }
-
-  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }
 
@@ -84,6 +64,26 @@ public class ProductGroupAnalyticsResponseInner {
 
   public void setDATE(@Nullable LocalDate DATE) {
     this.DATE = DATE;
+  }
+
+  public ProductGroupAnalyticsResponseInner PRODUCT_GROUP_ID(String PRODUCT_GROUP_ID) {
+    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
+    return this;
+  }
+
+  /**
+   * The ID of the product group that this metrics belongs to.
+   * @return PRODUCT_GROUP_ID
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "PRODUCT_GROUP_ID", description = "The ID of the product group that this metrics belongs to.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("PRODUCT_GROUP_ID")
+  public String getPRODUCTGROUPID() {
+    return PRODUCT_GROUP_ID;
+  }
+
+  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
+    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }
     /**
     * A container for additional, undeclared properties.
@@ -132,22 +132,22 @@ public class ProductGroupAnalyticsResponseInner {
       return false;
     }
     ProductGroupAnalyticsResponseInner productGroupAnalyticsResponseInner = (ProductGroupAnalyticsResponseInner) o;
-    return Objects.equals(this.PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID) &&
-        Objects.equals(this.DATE, productGroupAnalyticsResponseInner.DATE) &&
+    return Objects.equals(this.DATE, productGroupAnalyticsResponseInner.DATE) &&
+        Objects.equals(this.PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID) &&
     Objects.equals(this.additionalProperties, productGroupAnalyticsResponseInner.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(PRODUCT_GROUP_ID, DATE, additionalProperties);
+    return Objects.hash(DATE, PRODUCT_GROUP_ID, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductGroupAnalyticsResponseInner {\n");
-    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
+    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");

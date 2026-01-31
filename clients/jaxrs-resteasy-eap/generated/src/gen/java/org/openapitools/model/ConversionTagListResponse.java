@@ -9,25 +9,25 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagListResponse   {
   
-  private List<@Valid ConversionTagResponse> items = new ArrayList<>();
+  private List<@Valid ConversionTag> items = new ArrayList<>();
 
   /**
    **/
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<@Valid ConversionTagResponse> getItems() {
+  public List<@Valid ConversionTag> getItems() {
     return items;
   }
-  public void setItems(List<@Valid ConversionTagResponse> items) {
+  public void setItems(List<@Valid ConversionTag> items) {
     this.items = items;
   }
 

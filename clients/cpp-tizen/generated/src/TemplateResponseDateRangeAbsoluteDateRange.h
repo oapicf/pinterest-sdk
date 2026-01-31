@@ -45,20 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The date range type
-	 */
-	std::string getType();
-
-	/*! \brief Set The date range type
-	 */
-	void setType(std::string  type);
-	/*! \brief Get The start date of the date range
-	 */
-	long long getStartDate();
-
-	/*! \brief Set The start date of the date range
-	 */
-	void setStartDate(long long  start_date);
 	/*! \brief Get The end date of the date range
 	 */
 	long long getEndDate();
@@ -66,11 +52,25 @@ public:
 	/*! \brief Set The end date of the date range
 	 */
 	void setEndDate(long long  end_date);
+	/*! \brief Get The start date of the date range
+	 */
+	long long getStartDate();
+
+	/*! \brief Set The start date of the date range
+	 */
+	void setStartDate(long long  start_date);
+	/*! \brief Get The date range type
+	 */
+	std::string getType();
+
+	/*! \brief Set The date range type
+	 */
+	void setType(std::string  type);
 
 private:
-	std::string type;
-	long long start_date;
 	long long end_date;
+	long long start_date;
+	std::string type;
 	void __init();
 	void __cleanup();
 

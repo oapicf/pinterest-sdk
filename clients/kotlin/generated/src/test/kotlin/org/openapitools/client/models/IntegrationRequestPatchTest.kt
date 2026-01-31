@@ -25,10 +25,10 @@ class IntegrationRequestPatchTest : ShouldSpec() {
         // uncomment below to create an instance of IntegrationRequestPatch
         //val modelInstance = IntegrationRequestPatch()
 
-        // to test the property `connectedMerchantId`
-        should("test connectedMerchantId") {
+        // to test the property `additionalId1`
+        should("test additionalId1") {
             // uncomment below to test the property
-            //modelInstance.connectedMerchantId shouldBe ("TODO")
+            //modelInstance.additionalId1 shouldBe ("TODO")
         }
 
         // to test the property `connectedAdvertiserId`
@@ -43,6 +43,12 @@ class IntegrationRequestPatchTest : ShouldSpec() {
             //modelInstance.connectedLbaId shouldBe ("TODO")
         }
 
+        // to test the property `connectedMerchantId`
+        should("test connectedMerchantId") {
+            // uncomment below to test the property
+            //modelInstance.connectedMerchantId shouldBe ("TODO")
+        }
+
         // to test the property `connectedTagId`
         should("test connectedTagId") {
             // uncomment below to test the property
@@ -55,10 +61,16 @@ class IntegrationRequestPatchTest : ShouldSpec() {
             //modelInstance.partnerAccessToken shouldBe ("TODO")
         }
 
-        // to test the property `partnerRefreshToken`
-        should("test partnerRefreshToken") {
+        // to test the property `partnerAccessTokenExpiry`
+        should("test partnerAccessTokenExpiry") {
             // uncomment below to test the property
-            //modelInstance.partnerRefreshToken shouldBe ("TODO")
+            //modelInstance.partnerAccessTokenExpiry shouldBe ("TODO")
+        }
+
+        // to test the property `partnerMetadata`
+        should("test partnerMetadata") {
+            // uncomment below to test the property
+            //modelInstance.partnerMetadata shouldBe ("TODO")
         }
 
         // to test the property `partnerPrimaryEmail`
@@ -67,10 +79,10 @@ class IntegrationRequestPatchTest : ShouldSpec() {
             //modelInstance.partnerPrimaryEmail shouldBe ("TODO")
         }
 
-        // to test the property `partnerAccessTokenExpiry`
-        should("test partnerAccessTokenExpiry") {
+        // to test the property `partnerRefreshToken`
+        should("test partnerRefreshToken") {
             // uncomment below to test the property
-            //modelInstance.partnerAccessTokenExpiry shouldBe ("TODO")
+            //modelInstance.partnerRefreshToken shouldBe ("TODO")
         }
 
         // to test the property `partnerRefreshTokenExpiry`
@@ -83,18 +95,6 @@ class IntegrationRequestPatchTest : ShouldSpec() {
         should("test scopes") {
             // uncomment below to test the property
             //modelInstance.scopes shouldBe ("TODO")
-        }
-
-        // to test the property `additionalId1`
-        should("test additionalId1") {
-            // uncomment below to test the property
-            //modelInstance.additionalId1 shouldBe ("TODO")
-        }
-
-        // to test the property `partnerMetadata`
-        should("test partnerMetadata") {
-            // uncomment below to test the property
-            //modelInstance.partnerMetadata shouldBe ("TODO")
         }
 
     }

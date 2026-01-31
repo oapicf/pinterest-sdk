@@ -20,26 +20,26 @@ class CatalogsRetailFeed {
     String id
     
     Date updatedAt
-    /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
-    String name
-    
-    CatalogsFormat format
     
     CatalogsType catalogType
     
     CatalogsFeedCredentials credentials
-    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-    String location
     
-    CatalogsFeedProcessingSchedule preferredProcessingSchedule
+    ProductAvailabilityType defaultAvailability
     
-    CatalogsStatus status
+    Country defaultCountry
     
     NullableCurrency defaultCurrency
     /* The locale used within a feed for product descriptions. */
     String defaultLocale
     
-    Country defaultCountry
+    CatalogsFormat format
+    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+    String location
+    /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
+    String name
     
-    ProductAvailabilityType defaultAvailability
+    CatalogsFeedProcessingSchedule preferredProcessingSchedule
+    
+    CatalogsStatus status
 }

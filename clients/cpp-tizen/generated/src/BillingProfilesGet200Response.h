@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<BillingProfilesResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <BillingProfilesResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<BillingProfilesResponse> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <BillingProfilesResponse> items);
 
 private:
-	std::list <BillingProfilesResponse>items;
 	std::string bookmark;
+	std::list <BillingProfilesResponse>items;
 	void __init();
 	void __cleanup();
 

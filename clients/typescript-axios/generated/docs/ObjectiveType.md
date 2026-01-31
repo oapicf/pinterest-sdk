@@ -1,6 +1,6 @@
 # ObjectiveType
 
-Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
+Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
 
 ## Enum
 
@@ -8,13 +8,9 @@ Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"W
 
 * `Consideration` (value: `'CONSIDERATION'`)
 
-* `VideoView` (value: `'VIDEO_VIEW'`)
-
 * `WebConversion` (value: `'WEB_CONVERSION'`)
 
 * `CatalogSales` (value: `'CATALOG_SALES'`)
-
-* `WebSessions` (value: `'WEB_SESSIONS'`)
 
 * `VideoCompletion` (value: `'VIDEO_COMPLETION'`)
 

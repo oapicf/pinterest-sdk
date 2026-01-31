@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &CatalogsHotelGuestRatings{}
 
 // CatalogsHotelGuestRatings If specified, you must provide all properties
 type CatalogsHotelGuestRatings struct {
-	// Your hotel's rating.
-	Score *float32 `json:"score,omitempty"`
-	// Total number of people who have rated this hotel.
-	NumberOfReviewers *int32 `json:"number_of_reviewers,omitempty"`
 	// Max value for the hotel rating score.
-	MaxScore *float32 `json:"max_score,omitempty"`
+	MaxScore NullableFloat32 `json:"max_score,omitempty"`
+	// Total number of people who have rated this hotel.
+	NumberOfReviewers NullableInt32 `json:"number_of_reviewers,omitempty"`
 	// System you use for guest reviews.
-	RatingSystem *string `json:"rating_system,omitempty"`
+	RatingSystem NullableString `json:"rating_system,omitempty"`
+	// Your hotel's rating.
+	Score NullableFloat32 `json:"score,omitempty"`
 }
 
 // NewCatalogsHotelGuestRatings instantiates a new CatalogsHotelGuestRatings object
@@ -47,132 +47,172 @@ func NewCatalogsHotelGuestRatingsWithDefaults() *CatalogsHotelGuestRatings {
 	return &this
 }
 
-// GetScore returns the Score field value if set, zero value otherwise.
-func (o *CatalogsHotelGuestRatings) GetScore() float32 {
-	if o == nil || IsNil(o.Score) {
-		var ret float32
-		return ret
-	}
-	return *o.Score
-}
-
-// GetScoreOk returns a tuple with the Score field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelGuestRatings) GetScoreOk() (*float32, bool) {
-	if o == nil || IsNil(o.Score) {
-		return nil, false
-	}
-	return o.Score, true
-}
-
-// HasScore returns a boolean if a field has been set.
-func (o *CatalogsHotelGuestRatings) HasScore() bool {
-	if o != nil && !IsNil(o.Score) {
-		return true
-	}
-
-	return false
-}
-
-// SetScore gets a reference to the given float32 and assigns it to the Score field.
-func (o *CatalogsHotelGuestRatings) SetScore(v float32) {
-	o.Score = &v
-}
-
-// GetNumberOfReviewers returns the NumberOfReviewers field value if set, zero value otherwise.
-func (o *CatalogsHotelGuestRatings) GetNumberOfReviewers() int32 {
-	if o == nil || IsNil(o.NumberOfReviewers) {
-		var ret int32
-		return ret
-	}
-	return *o.NumberOfReviewers
-}
-
-// GetNumberOfReviewersOk returns a tuple with the NumberOfReviewers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelGuestRatings) GetNumberOfReviewersOk() (*int32, bool) {
-	if o == nil || IsNil(o.NumberOfReviewers) {
-		return nil, false
-	}
-	return o.NumberOfReviewers, true
-}
-
-// HasNumberOfReviewers returns a boolean if a field has been set.
-func (o *CatalogsHotelGuestRatings) HasNumberOfReviewers() bool {
-	if o != nil && !IsNil(o.NumberOfReviewers) {
-		return true
-	}
-
-	return false
-}
-
-// SetNumberOfReviewers gets a reference to the given int32 and assigns it to the NumberOfReviewers field.
-func (o *CatalogsHotelGuestRatings) SetNumberOfReviewers(v int32) {
-	o.NumberOfReviewers = &v
-}
-
-// GetMaxScore returns the MaxScore field value if set, zero value otherwise.
+// GetMaxScore returns the MaxScore field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsHotelGuestRatings) GetMaxScore() float32 {
-	if o == nil || IsNil(o.MaxScore) {
+	if o == nil || IsNil(o.MaxScore.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.MaxScore
+	return *o.MaxScore.Get()
 }
 
 // GetMaxScoreOk returns a tuple with the MaxScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogsHotelGuestRatings) GetMaxScoreOk() (*float32, bool) {
-	if o == nil || IsNil(o.MaxScore) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxScore, true
+	return o.MaxScore.Get(), o.MaxScore.IsSet()
 }
 
 // HasMaxScore returns a boolean if a field has been set.
 func (o *CatalogsHotelGuestRatings) HasMaxScore() bool {
-	if o != nil && !IsNil(o.MaxScore) {
+	if o != nil && o.MaxScore.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxScore gets a reference to the given float32 and assigns it to the MaxScore field.
+// SetMaxScore gets a reference to the given NullableFloat32 and assigns it to the MaxScore field.
 func (o *CatalogsHotelGuestRatings) SetMaxScore(v float32) {
-	o.MaxScore = &v
+	o.MaxScore.Set(&v)
+}
+// SetMaxScoreNil sets the value for MaxScore to be an explicit nil
+func (o *CatalogsHotelGuestRatings) SetMaxScoreNil() {
+	o.MaxScore.Set(nil)
 }
 
-// GetRatingSystem returns the RatingSystem field value if set, zero value otherwise.
+// UnsetMaxScore ensures that no value is present for MaxScore, not even an explicit nil
+func (o *CatalogsHotelGuestRatings) UnsetMaxScore() {
+	o.MaxScore.Unset()
+}
+
+// GetNumberOfReviewers returns the NumberOfReviewers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelGuestRatings) GetNumberOfReviewers() int32 {
+	if o == nil || IsNil(o.NumberOfReviewers.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NumberOfReviewers.Get()
+}
+
+// GetNumberOfReviewersOk returns a tuple with the NumberOfReviewers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelGuestRatings) GetNumberOfReviewersOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NumberOfReviewers.Get(), o.NumberOfReviewers.IsSet()
+}
+
+// HasNumberOfReviewers returns a boolean if a field has been set.
+func (o *CatalogsHotelGuestRatings) HasNumberOfReviewers() bool {
+	if o != nil && o.NumberOfReviewers.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberOfReviewers gets a reference to the given NullableInt32 and assigns it to the NumberOfReviewers field.
+func (o *CatalogsHotelGuestRatings) SetNumberOfReviewers(v int32) {
+	o.NumberOfReviewers.Set(&v)
+}
+// SetNumberOfReviewersNil sets the value for NumberOfReviewers to be an explicit nil
+func (o *CatalogsHotelGuestRatings) SetNumberOfReviewersNil() {
+	o.NumberOfReviewers.Set(nil)
+}
+
+// UnsetNumberOfReviewers ensures that no value is present for NumberOfReviewers, not even an explicit nil
+func (o *CatalogsHotelGuestRatings) UnsetNumberOfReviewers() {
+	o.NumberOfReviewers.Unset()
+}
+
+// GetRatingSystem returns the RatingSystem field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsHotelGuestRatings) GetRatingSystem() string {
-	if o == nil || IsNil(o.RatingSystem) {
+	if o == nil || IsNil(o.RatingSystem.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RatingSystem
+	return *o.RatingSystem.Get()
 }
 
 // GetRatingSystemOk returns a tuple with the RatingSystem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogsHotelGuestRatings) GetRatingSystemOk() (*string, bool) {
-	if o == nil || IsNil(o.RatingSystem) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RatingSystem, true
+	return o.RatingSystem.Get(), o.RatingSystem.IsSet()
 }
 
 // HasRatingSystem returns a boolean if a field has been set.
 func (o *CatalogsHotelGuestRatings) HasRatingSystem() bool {
-	if o != nil && !IsNil(o.RatingSystem) {
+	if o != nil && o.RatingSystem.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRatingSystem gets a reference to the given string and assigns it to the RatingSystem field.
+// SetRatingSystem gets a reference to the given NullableString and assigns it to the RatingSystem field.
 func (o *CatalogsHotelGuestRatings) SetRatingSystem(v string) {
-	o.RatingSystem = &v
+	o.RatingSystem.Set(&v)
+}
+// SetRatingSystemNil sets the value for RatingSystem to be an explicit nil
+func (o *CatalogsHotelGuestRatings) SetRatingSystemNil() {
+	o.RatingSystem.Set(nil)
+}
+
+// UnsetRatingSystem ensures that no value is present for RatingSystem, not even an explicit nil
+func (o *CatalogsHotelGuestRatings) UnsetRatingSystem() {
+	o.RatingSystem.Unset()
+}
+
+// GetScore returns the Score field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelGuestRatings) GetScore() float32 {
+	if o == nil || IsNil(o.Score.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.Score.Get()
+}
+
+// GetScoreOk returns a tuple with the Score field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsHotelGuestRatings) GetScoreOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Score.Get(), o.Score.IsSet()
+}
+
+// HasScore returns a boolean if a field has been set.
+func (o *CatalogsHotelGuestRatings) HasScore() bool {
+	if o != nil && o.Score.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetScore gets a reference to the given NullableFloat32 and assigns it to the Score field.
+func (o *CatalogsHotelGuestRatings) SetScore(v float32) {
+	o.Score.Set(&v)
+}
+// SetScoreNil sets the value for Score to be an explicit nil
+func (o *CatalogsHotelGuestRatings) SetScoreNil() {
+	o.Score.Set(nil)
+}
+
+// UnsetScore ensures that no value is present for Score, not even an explicit nil
+func (o *CatalogsHotelGuestRatings) UnsetScore() {
+	o.Score.Unset()
 }
 
 func (o CatalogsHotelGuestRatings) MarshalJSON() ([]byte, error) {
@@ -185,17 +225,17 @@ func (o CatalogsHotelGuestRatings) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelGuestRatings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Score) {
-		toSerialize["score"] = o.Score
+	if o.MaxScore.IsSet() {
+		toSerialize["max_score"] = o.MaxScore.Get()
 	}
-	if !IsNil(o.NumberOfReviewers) {
-		toSerialize["number_of_reviewers"] = o.NumberOfReviewers
+	if o.NumberOfReviewers.IsSet() {
+		toSerialize["number_of_reviewers"] = o.NumberOfReviewers.Get()
 	}
-	if !IsNil(o.MaxScore) {
-		toSerialize["max_score"] = o.MaxScore
+	if o.RatingSystem.IsSet() {
+		toSerialize["rating_system"] = o.RatingSystem.Get()
 	}
-	if !IsNil(o.RatingSystem) {
-		toSerialize["rating_system"] = o.RatingSystem
+	if o.Score.IsSet() {
+		toSerialize["score"] = o.Score.Get()
 	}
 	return toSerialize, nil
 }

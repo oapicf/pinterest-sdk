@@ -2,9 +2,9 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.Error
-import org.openapitools.model.PinsList200Response
 import org.openapitools.model.SearchPartnerPins200Response
 import org.openapitools.model.SearchUserBoardsGet200Response
+import org.openapitools.model.SearchUserPinsList200Response
 
 class SearchApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -115,7 +115,7 @@ class SearchApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
-                    PinsList200Response.class )
+                    SearchUserPinsList200Response.class )
 
     }
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &CatalogsProductGroupCreateRequest{}
 
 // CatalogsProductGroupCreateRequest Request object for creating a product group.
 type CatalogsProductGroupCreateRequest struct {
-	Name string `json:"name"`
 	Description NullableString `json:"description,omitempty"`
+	// Catalog Feed id pertaining to the catalog product group.
+	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured *bool `json:"is_featured,omitempty"`
-	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
-	// Catalog Feed id pertaining to the catalog product group.
-	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	Name string `json:"name"`
 }
 
 type _CatalogsProductGroupCreateRequest CatalogsProductGroupCreateRequest
@@ -38,13 +38,13 @@ type _CatalogsProductGroupCreateRequest CatalogsProductGroupCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsProductGroupCreateRequest(name string, filters CatalogsProductGroupFiltersRequest, feedId string) *CatalogsProductGroupCreateRequest {
+func NewCatalogsProductGroupCreateRequest(feedId string, filters CatalogsProductGroupFiltersRequest, name string) *CatalogsProductGroupCreateRequest {
 	this := CatalogsProductGroupCreateRequest{}
-	this.Name = name
+	this.FeedId = feedId
+	this.Filters = filters
 	var isFeatured bool = false
 	this.IsFeatured = &isFeatured
-	this.Filters = filters
-	this.FeedId = feedId
+	this.Name = name
 	return &this
 }
 
@@ -56,30 +56,6 @@ func NewCatalogsProductGroupCreateRequestWithDefaults() *CatalogsProductGroupCre
 	var isFeatured bool = false
 	this.IsFeatured = &isFeatured
 	return &this
-}
-
-// GetName returns the Name field value
-func (o *CatalogsProductGroupCreateRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *CatalogsProductGroupCreateRequest) SetName(v string) {
-	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -124,6 +100,54 @@ func (o *CatalogsProductGroupCreateRequest) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetFeedId returns the FeedId field value
+func (o *CatalogsProductGroupCreateRequest) GetFeedId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.FeedId
+}
+
+// GetFeedIdOk returns a tuple with the FeedId field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupCreateRequest) GetFeedIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FeedId, true
+}
+
+// SetFeedId sets field value
+func (o *CatalogsProductGroupCreateRequest) SetFeedId(v string) {
+	o.FeedId = v
+}
+
+// GetFilters returns the Filters field value
+func (o *CatalogsProductGroupCreateRequest) GetFilters() CatalogsProductGroupFiltersRequest {
+	if o == nil {
+		var ret CatalogsProductGroupFiltersRequest
+		return ret
+	}
+
+	return o.Filters
+}
+
+// GetFiltersOk returns a tuple with the Filters field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupCreateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Filters, true
+}
+
+// SetFilters sets field value
+func (o *CatalogsProductGroupCreateRequest) SetFilters(v CatalogsProductGroupFiltersRequest) {
+	o.Filters = v
+}
+
 // GetIsFeatured returns the IsFeatured field value if set, zero value otherwise.
 // Deprecated
 func (o *CatalogsProductGroupCreateRequest) GetIsFeatured() bool {
@@ -159,52 +183,28 @@ func (o *CatalogsProductGroupCreateRequest) SetIsFeatured(v bool) {
 	o.IsFeatured = &v
 }
 
-// GetFilters returns the Filters field value
-func (o *CatalogsProductGroupCreateRequest) GetFilters() CatalogsProductGroupFiltersRequest {
-	if o == nil {
-		var ret CatalogsProductGroupFiltersRequest
-		return ret
-	}
-
-	return o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupCreateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Filters, true
-}
-
-// SetFilters sets field value
-func (o *CatalogsProductGroupCreateRequest) SetFilters(v CatalogsProductGroupFiltersRequest) {
-	o.Filters = v
-}
-
-// GetFeedId returns the FeedId field value
-func (o *CatalogsProductGroupCreateRequest) GetFeedId() string {
+// GetName returns the Name field value
+func (o *CatalogsProductGroupCreateRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.FeedId
+	return o.Name
 }
 
-// GetFeedIdOk returns a tuple with the FeedId field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupCreateRequest) GetFeedIdOk() (*string, bool) {
+func (o *CatalogsProductGroupCreateRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FeedId, true
+	return &o.Name, true
 }
 
-// SetFeedId sets field value
-func (o *CatalogsProductGroupCreateRequest) SetFeedId(v string) {
-	o.FeedId = v
+// SetName sets field value
+func (o *CatalogsProductGroupCreateRequest) SetName(v string) {
+	o.Name = v
 }
 
 func (o CatalogsProductGroupCreateRequest) MarshalJSON() ([]byte, error) {
@@ -217,15 +217,15 @@ func (o CatalogsProductGroupCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsProductGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+	toSerialize["feed_id"] = o.FeedId
+	toSerialize["filters"] = o.Filters
 	if !IsNil(o.IsFeatured) {
 		toSerialize["is_featured"] = o.IsFeatured
 	}
-	toSerialize["filters"] = o.Filters
-	toSerialize["feed_id"] = o.FeedId
+	toSerialize["name"] = o.Name
 	return toSerialize, nil
 }
 
@@ -234,9 +234,9 @@ func (o *CatalogsProductGroupCreateRequest) UnmarshalJSON(data []byte) (err erro
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"filters",
 		"feed_id",
+		"filters",
+		"name",
 	}
 
 	allProperties := make(map[string]interface{})

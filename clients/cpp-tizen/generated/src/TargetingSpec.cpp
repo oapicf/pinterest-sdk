@@ -32,6 +32,8 @@ TargetingSpec::__init()
 	//new std::list()std::list> iNTEREST;
 	//new std::list()std::list> lOCALE;
 	//new std::list()std::list> lOCATION;
+	//mAXIMUM_AGE = std::string();
+	//mINIMUM_AGE = std::string();
 	//new std::list()std::list> sHOPPING_RETARGETING;
 	//new std::list()std::list> tARGETING_STRATEGY;
 }
@@ -84,6 +86,16 @@ TargetingSpec::__cleanup()
 	//delete lOCATION;
 	//lOCATION = NULL;
 	//}
+	//if(mAXIMUM_AGE != NULL) {
+	//
+	//delete mAXIMUM_AGE;
+	//mAXIMUM_AGE = NULL;
+	//}
+	//if(mINIMUM_AGE != NULL) {
+	//
+	//delete mINIMUM_AGE;
+	//mINIMUM_AGE = NULL;
+	//}
 	//if(sHOPPING_RETARGETING != NULL) {
 	//sHOPPING_RETARGETING.RemoveAll(true);
 	//delete sHOPPING_RETARGETING;
@@ -109,13 +121,15 @@ TargetingSpec::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
+			list<TargetingSpecAgeBucket> new_list;
+			TargetingSpecAgeBucket inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
+				if (isprimitive("TargetingSpecAgeBucket")) {
+					jsonToValue(&inst, temp_json, "TargetingSpecAgeBucket", "");
 				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
 					
 				}
 				new_list.push_back(inst);
@@ -131,13 +145,15 @@ TargetingSpec::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
+			list<TargetingSpecAppType> new_list;
+			TargetingSpecAppType inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
+				if (isprimitive("TargetingSpecAppType")) {
+					jsonToValue(&inst, temp_json, "TargetingSpecAppType", "");
 				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
 					
 				}
 				new_list.push_back(inst);
@@ -197,13 +213,15 @@ TargetingSpec::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
+			list<TargetingSpecGender> new_list;
+			TargetingSpecGender inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
+				if (isprimitive("TargetingSpecGender")) {
+					jsonToValue(&inst, temp_json, "TargetingSpecGender", "");
 				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
 					
 				}
 				new_list.push_back(inst);
@@ -300,6 +318,28 @@ TargetingSpec::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *mAXIMUM_AGEKey = "MAXIMUM_AGE";
+	node = json_object_get_member(pJsonObject, mAXIMUM_AGEKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&mAXIMUM_AGE, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *mINIMUM_AGEKey = "MINIMUM_AGE";
+	node = json_object_get_member(pJsonObject, mINIMUM_AGEKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&mINIMUM_AGE, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *sHOPPING_RETARGETINGKey = "SHOPPING_RETARGETING";
 	node = json_object_get_member(pJsonObject, sHOPPING_RETARGETINGKey);
 	if (node !=NULL) {
@@ -307,12 +347,12 @@ TargetingSpec::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<TargetingSpec_SHOPPING_RETARGETING> new_list;
-			TargetingSpec_SHOPPING_RETARGETING inst;
+			list<TargetingSpecShoppingRetargeting> new_list;
+			TargetingSpecShoppingRetargeting inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TargetingSpec_SHOPPING_RETARGETING")) {
-					jsonToValue(&inst, temp_json, "TargetingSpec_SHOPPING_RETARGETING", "");
+				if (isprimitive("TargetingSpecShoppingRetargeting")) {
+					jsonToValue(&inst, temp_json, "TargetingSpecShoppingRetargeting", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -358,14 +398,24 @@ TargetingSpec::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getAGEBUCKET());
-		node = converttoJson(&new_list, "std::string", "array");
+	if (isprimitive("TargetingSpecAgeBucket")) {
+		list<TargetingSpecAgeBucket> new_list = static_cast<list <TargetingSpecAgeBucket> > (getAGEBUCKET());
+		node = converttoJson(&new_list, "TargetingSpecAgeBucket", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getAGEBUCKET());
+		list<TargetingSpecAgeBucket> new_list = static_cast<list <TargetingSpecAgeBucket> > (getAGEBUCKET());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
+		
+		for (list<TargetingSpecAgeBucket>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			TargetingSpecAgeBucket obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
 
@@ -373,14 +423,24 @@ TargetingSpec::toJson()
 	
 	const gchar *aGE_BUCKETKey = "AGE_BUCKET";
 	json_object_set_member(pJsonObject, aGE_BUCKETKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getAPPTYPE());
-		node = converttoJson(&new_list, "std::string", "array");
+	if (isprimitive("TargetingSpecAppType")) {
+		list<TargetingSpecAppType> new_list = static_cast<list <TargetingSpecAppType> > (getAPPTYPE());
+		node = converttoJson(&new_list, "TargetingSpecAppType", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getAPPTYPE());
+		list<TargetingSpecAppType> new_list = static_cast<list <TargetingSpecAppType> > (getAPPTYPE());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
+		
+		for (list<TargetingSpecAppType>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			TargetingSpecAppType obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
 
@@ -418,14 +478,24 @@ TargetingSpec::toJson()
 	
 	const gchar *aUDIENCE_INCLUDEKey = "AUDIENCE_INCLUDE";
 	json_object_set_member(pJsonObject, aUDIENCE_INCLUDEKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getGENDER());
-		node = converttoJson(&new_list, "std::string", "array");
+	if (isprimitive("TargetingSpecGender")) {
+		list<TargetingSpecGender> new_list = static_cast<list <TargetingSpecGender> > (getGENDER());
+		node = converttoJson(&new_list, "TargetingSpecGender", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getGENDER());
+		list<TargetingSpecGender> new_list = static_cast<list <TargetingSpecGender> > (getGENDER());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
+		
+		for (list<TargetingSpecGender>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			TargetingSpecGender obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
 
@@ -493,18 +563,36 @@ TargetingSpec::toJson()
 	
 	const gchar *lOCATIONKey = "LOCATION";
 	json_object_set_member(pJsonObject, lOCATIONKey, node);
-	if (isprimitive("TargetingSpec_SHOPPING_RETARGETING")) {
-		list<TargetingSpec_SHOPPING_RETARGETING> new_list = static_cast<list <TargetingSpec_SHOPPING_RETARGETING> > (getSHOPPINGRETARGETING());
-		node = converttoJson(&new_list, "TargetingSpec_SHOPPING_RETARGETING", "array");
+	if (isprimitive("std::string")) {
+		std::string obj = getMAXIMUMAGE();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *mAXIMUM_AGEKey = "MAXIMUM_AGE";
+	json_object_set_member(pJsonObject, mAXIMUM_AGEKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMINIMUMAGE();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *mINIMUM_AGEKey = "MINIMUM_AGE";
+	json_object_set_member(pJsonObject, mINIMUM_AGEKey, node);
+	if (isprimitive("TargetingSpecShoppingRetargeting")) {
+		list<TargetingSpecShoppingRetargeting> new_list = static_cast<list <TargetingSpecShoppingRetargeting> > (getSHOPPINGRETARGETING());
+		node = converttoJson(&new_list, "TargetingSpecShoppingRetargeting", "array");
 	} else {
 		node = json_node_alloc();
-		list<TargetingSpec_SHOPPING_RETARGETING> new_list = static_cast<list <TargetingSpec_SHOPPING_RETARGETING> > (getSHOPPINGRETARGETING());
+		list<TargetingSpecShoppingRetargeting> new_list = static_cast<list <TargetingSpecShoppingRetargeting> > (getSHOPPINGRETARGETING());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<TargetingSpec_SHOPPING_RETARGETING>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<TargetingSpecShoppingRetargeting>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			TargetingSpec_SHOPPING_RETARGETING obj = *it;
+			TargetingSpecShoppingRetargeting obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -541,26 +629,26 @@ TargetingSpec::toJson()
 	return ret;
 }
 
-std::list<std::string>
+std::list<TargetingSpecAgeBucket>
 TargetingSpec::getAGEBUCKET()
 {
 	return aGE_BUCKET;
 }
 
 void
-TargetingSpec::setAGEBUCKET(std::list <std::string> aGE_BUCKET)
+TargetingSpec::setAGEBUCKET(std::list <TargetingSpecAgeBucket> aGE_BUCKET)
 {
 	this->aGE_BUCKET = aGE_BUCKET;
 }
 
-std::list<std::string>
+std::list<TargetingSpecAppType>
 TargetingSpec::getAPPTYPE()
 {
 	return aPPTYPE;
 }
 
 void
-TargetingSpec::setAPPTYPE(std::list <std::string> aPPTYPE)
+TargetingSpec::setAPPTYPE(std::list <TargetingSpecAppType> aPPTYPE)
 {
 	this->aPPTYPE = aPPTYPE;
 }
@@ -589,14 +677,14 @@ TargetingSpec::setAUDIENCEINCLUDE(std::list <std::string> aUDIENCE_INCLUDE)
 	this->aUDIENCE_INCLUDE = aUDIENCE_INCLUDE;
 }
 
-std::list<std::string>
+std::list<TargetingSpecGender>
 TargetingSpec::getGENDER()
 {
 	return gENDER;
 }
 
 void
-TargetingSpec::setGENDER(std::list <std::string> gENDER)
+TargetingSpec::setGENDER(std::list <TargetingSpecGender> gENDER)
 {
 	this->gENDER = gENDER;
 }
@@ -649,14 +737,38 @@ TargetingSpec::setLOCATION(std::list <std::string> lOCATION)
 	this->lOCATION = lOCATION;
 }
 
-std::list<TargetingSpec_SHOPPING_RETARGETING>
+std::string
+TargetingSpec::getMAXIMUMAGE()
+{
+	return mAXIMUM_AGE;
+}
+
+void
+TargetingSpec::setMAXIMUMAGE(std::string  mAXIMUM_AGE)
+{
+	this->mAXIMUM_AGE = mAXIMUM_AGE;
+}
+
+std::string
+TargetingSpec::getMINIMUMAGE()
+{
+	return mINIMUM_AGE;
+}
+
+void
+TargetingSpec::setMINIMUMAGE(std::string  mINIMUM_AGE)
+{
+	this->mINIMUM_AGE = mINIMUM_AGE;
+}
+
+std::list<TargetingSpecShoppingRetargeting>
 TargetingSpec::getSHOPPINGRETARGETING()
 {
 	return sHOPPING_RETARGETING;
 }
 
 void
-TargetingSpec::setSHOPPINGRETARGETING(std::list <TargetingSpec_SHOPPING_RETARGETING> sHOPPING_RETARGETING)
+TargetingSpec::setSHOPPINGRETARGETING(std::list <TargetingSpecShoppingRetargeting> sHOPPING_RETARGETING)
 {
 	this->sHOPPING_RETARGETING = sHOPPING_RETARGETING;
 }

@@ -11,13 +11,13 @@
 
 export interface DeletePartnerAssetAccessBodyAccessesInner { 
     /**
-     * Unique identifier of a business partner to update asset access to.
-     */
-    partner_id: string;
-    /**
      * Unique identifier of the business asset.
      */
     asset_id: string;
+    /**
+     * Unique identifier of a business partner to update asset access to.
+     */
+    partner_id: string;
     /**
      * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner\'s business asset.
      */

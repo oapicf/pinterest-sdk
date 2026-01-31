@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.ContentType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -22,12 +23,24 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Video ID-based media source
+ * Video ID-based media source.
  */
 
-@Schema(name = "PinMediaSourceVideoID", description = "Video ID-based media source")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "PinMediaSourceVideoID", description = "Video ID-based media source.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceVideoID implements PinMediaSource {
+
+  private ContentType coverImageContentType;
+
+  private String coverImageData;
+
+  private Integer coverImageKeyFrameTime;
+
+  private String coverImageUrl;
+
+  private Boolean isStandard = true;
+
+  private String mediaId;
 
   /**
    * Gets or Sets sourceType
@@ -64,51 +77,6 @@ public class PinMediaSourceVideoID implements PinMediaSource {
 
   private SourceTypeEnum sourceType;
 
-  private String coverImageUrl;
-
-  /**
-   * Content type for cover image Base64.
-   */
-  public enum CoverImageContentTypeEnum {
-    IMAGE_JPEG("image/jpeg"),
-    
-    IMAGE_PNG("image/png");
-
-    private final String value;
-
-    CoverImageContentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CoverImageContentTypeEnum fromValue(String value) {
-      for (CoverImageContentTypeEnum b : CoverImageContentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private CoverImageContentTypeEnum coverImageContentType;
-
-  private String coverImageData;
-
-  private String mediaId;
-
-  private Boolean isStandard = true;
-
   public PinMediaSourceVideoID() {
     super();
   }
@@ -116,52 +84,12 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Constructor with only required parameters
    */
-  public PinMediaSourceVideoID(SourceTypeEnum sourceType, String mediaId) {
-    this.sourceType = sourceType;
+  public PinMediaSourceVideoID(String mediaId, SourceTypeEnum sourceType) {
     this.mediaId = mediaId;
-  }
-
-  public PinMediaSourceVideoID sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-  /**
-   * Get sourceType
-   * @return sourceType
-   */
-  @NotNull 
-  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-
-  public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
-  public PinMediaSourceVideoID coverImageUrl(String coverImageUrl) {
-    this.coverImageUrl = coverImageUrl;
-    return this;
-  }
-
-  /**
-   * Cover image url.
-   * @return coverImageUrl
-   */
-  
-  @Schema(name = "cover_image_url", description = "Cover image url.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("cover_image_url")
-  public String getCoverImageUrl() {
-    return coverImageUrl;
-  }
-
-  public void setCoverImageUrl(String coverImageUrl) {
-    this.coverImageUrl = coverImageUrl;
-  }
-
-  public PinMediaSourceVideoID coverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public PinMediaSourceVideoID coverImageContentType(ContentType coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
     return this;
   }
@@ -170,14 +98,14 @@ public class PinMediaSourceVideoID implements PinMediaSource {
    * Content type for cover image Base64.
    * @return coverImageContentType
    */
-  
+  @Valid 
   @Schema(name = "cover_image_content_type", description = "Content type for cover image Base64.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_content_type")
-  public CoverImageContentTypeEnum getCoverImageContentType() {
+  public ContentType getCoverImageContentType() {
     return coverImageContentType;
   }
 
-  public void setCoverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public void setCoverImageContentType(ContentType coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
   }
 
@@ -201,24 +129,45 @@ public class PinMediaSourceVideoID implements PinMediaSource {
     this.coverImageData = coverImageData;
   }
 
-  public PinMediaSourceVideoID mediaId(String mediaId) {
-    this.mediaId = mediaId;
+  public PinMediaSourceVideoID coverImageKeyFrameTime(Integer coverImageKeyFrameTime) {
+    this.coverImageKeyFrameTime = coverImageKeyFrameTime;
     return this;
   }
 
   /**
-   * Get mediaId
-   * @return mediaId
+   * Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+   * minimum: 0
+   * @return coverImageKeyFrameTime
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "media_id", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("media_id")
-  public String getMediaId() {
-    return mediaId;
+  @Min(value = 0) 
+  @Schema(name = "cover_image_key_frame_time", description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("cover_image_key_frame_time")
+  public Integer getCoverImageKeyFrameTime() {
+    return coverImageKeyFrameTime;
   }
 
-  public void setMediaId(String mediaId) {
-    this.mediaId = mediaId;
+  public void setCoverImageKeyFrameTime(Integer coverImageKeyFrameTime) {
+    this.coverImageKeyFrameTime = coverImageKeyFrameTime;
+  }
+
+  public PinMediaSourceVideoID coverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
+    return this;
+  }
+
+  /**
+   * Cover image URL.
+   * @return coverImageUrl
+   */
+  
+  @Schema(name = "cover_image_url", description = "Cover image URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("cover_image_url")
+  public String getCoverImageUrl() {
+    return coverImageUrl;
+  }
+
+  public void setCoverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
   }
 
   public PinMediaSourceVideoID isStandard(Boolean isStandard) {
@@ -241,6 +190,46 @@ public class PinMediaSourceVideoID implements PinMediaSource {
     this.isStandard = isStandard;
   }
 
+  public PinMediaSourceVideoID mediaId(String mediaId) {
+    this.mediaId = mediaId;
+    return this;
+  }
+
+  /**
+   * Get mediaId
+   * @return mediaId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "media_id", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("media_id")
+  public String getMediaId() {
+    return mediaId;
+  }
+
+  public void setMediaId(String mediaId) {
+    this.mediaId = mediaId;
+  }
+
+  public PinMediaSourceVideoID sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  /**
+   * Get sourceType
+   * @return sourceType
+   */
+  @NotNull 
+  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -250,29 +239,31 @@ public class PinMediaSourceVideoID implements PinMediaSource {
       return false;
     }
     PinMediaSourceVideoID pinMediaSourceVideoID = (PinMediaSourceVideoID) o;
-    return Objects.equals(this.sourceType, pinMediaSourceVideoID.sourceType) &&
-        Objects.equals(this.coverImageUrl, pinMediaSourceVideoID.coverImageUrl) &&
-        Objects.equals(this.coverImageContentType, pinMediaSourceVideoID.coverImageContentType) &&
+    return Objects.equals(this.coverImageContentType, pinMediaSourceVideoID.coverImageContentType) &&
         Objects.equals(this.coverImageData, pinMediaSourceVideoID.coverImageData) &&
+        Objects.equals(this.coverImageKeyFrameTime, pinMediaSourceVideoID.coverImageKeyFrameTime) &&
+        Objects.equals(this.coverImageUrl, pinMediaSourceVideoID.coverImageUrl) &&
+        Objects.equals(this.isStandard, pinMediaSourceVideoID.isStandard) &&
         Objects.equals(this.mediaId, pinMediaSourceVideoID.mediaId) &&
-        Objects.equals(this.isStandard, pinMediaSourceVideoID.isStandard);
+        Objects.equals(this.sourceType, pinMediaSourceVideoID.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, coverImageUrl, coverImageContentType, coverImageData, mediaId, isStandard);
+    return Objects.hash(coverImageContentType, coverImageData, coverImageKeyFrameTime, coverImageUrl, isStandard, mediaId, sourceType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceVideoID {\n");
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
     sb.append("    coverImageContentType: ").append(toIndentedString(coverImageContentType)).append("\n");
     sb.append("    coverImageData: ").append(toIndentedString(coverImageData)).append("\n");
-    sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
+    sb.append("    coverImageKeyFrameTime: ").append(toIndentedString(coverImageKeyFrameTime)).append("\n");
+    sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
     sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
+    sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

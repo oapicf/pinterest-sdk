@@ -4,16 +4,16 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class CatalogsFeedIngestion (
-    _id: String,
-    _feedId: String,
     _createdAt: OffsetDateTime,
+    _feedId: String,
+    _id: String,
     _status: CatalogsFeedProcessingStatus
 )
 object CatalogsFeedIngestion {
-    def toStringBody(var_id: Object, var_feedId: Object, var_createdAt: Object, var_status: Object) =
+    def toStringBody(var_createdAt: Object, var_feedId: Object, var_id: Object, var_status: Object) =
         s"""
         | {
-        | "id":$var_id,"feedId":$var_feedId,"createdAt":$var_createdAt,"status":$var_status
+        | "createdAt":$var_createdAt,"feedId":$var_feedId,"id":$var_id,"status":$var_status
         | }
         """.stripMargin
 }

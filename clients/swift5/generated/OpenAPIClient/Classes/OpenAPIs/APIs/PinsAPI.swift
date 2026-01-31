@@ -70,7 +70,7 @@ open class PinsAPI {
     /**
      Get multiple Pin analytics
      - GET /pins/analytics
-     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -226,7 +226,7 @@ open class PinsAPI {
     /**
      Create Pin
      
-     - parameter pinCreate: (body) Create a new Pin. 
+     - parameter pinCreate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -246,11 +246,14 @@ open class PinsAPI {
     /**
      Create Pin
      - POST /pins
-     - Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+     -   Create a Pin on a board or board section owned by the \"operation user_account\".   Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter pinCreate: (body) Create a new Pin. 
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter pinCreate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Pin> 
      */
@@ -278,7 +281,7 @@ open class PinsAPI {
     /**
      Delete Pin
      
-     - parameter pinId: (path) Unique identifier of a Pin. 
+     - parameter pinId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -298,11 +301,14 @@ open class PinsAPI {
     /**
      Delete Pin
      - DELETE /pins/{pin_id}
-     - Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     -    Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter pinId: (path) Unique identifier of a Pin. 
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter pinId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -333,15 +339,15 @@ open class PinsAPI {
     /**
      Get Pin
      
-     - parameter pinId: (path) Unique identifier of a Pin. 
-     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter pinId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func pinsGet(pinId: String, pinMetrics: Bool? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Pin?, _ error: Error?) -> Void)) -> RequestTask {
-        return pinsGetWithRequestBuilder(pinId: pinId, pinMetrics: pinMetrics, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func pinsGet(pinId: String, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Pin?, _ error: Error?) -> Void)) -> RequestTask {
+        return pinsGetWithRequestBuilder(pinId: pinId, adAccountId: adAccountId, pinMetrics: pinMetrics).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -354,19 +360,19 @@ open class PinsAPI {
     /**
      Get Pin
      - GET /pins/{pin_id}
-     - Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     -    Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - OAuth:
        - type: oauth2
        - name: client_credentials
-     - parameter pinId: (path) Unique identifier of a Pin. 
-     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter pinId: (path)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - returns: RequestBuilder<Pin> 
      */
-    open class func pinsGetWithRequestBuilder(pinId: String, pinMetrics: Bool? = nil, adAccountId: String? = nil) -> RequestBuilder<Pin> {
+    open class func pinsGetWithRequestBuilder(pinId: String, adAccountId: String? = nil, pinMetrics: Bool? = nil) -> RequestBuilder<Pin> {
         var localVariablePath = "/pins/{pin_id}"
         let pinIdPreEscape = "\(APIHelper.mapValueToPathItem(pinId))"
         let pinIdPostEscape = pinIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -376,8 +382,8 @@ open class PinsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "pin_metrics": (wrappedValue: pinMetrics?.encodeToJSON(), isExplode: true),
             "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+            "pin_metrics": (wrappedValue: pinMetrics?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -408,36 +414,22 @@ open class PinsAPI {
     }
 
     /**
-     * enum for parameter creativeTypes
-     */
-    public enum CreativeTypes_pinsList: String, CaseIterable {
-        case regular = "REGULAR"
-        case video = "VIDEO"
-        case shopping = "SHOPPING"
-        case carousel = "CAROUSEL"
-        case maxVideo = "MAX_VIDEO"
-        case shopThePin = "SHOP_THE_PIN"
-        case collection = "COLLECTION"
-        case idea = "IDEA"
-    }
-
-    /**
      List Pins
      
-     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter pinFilter: (query) Pin filter. (optional)
-     - parameter includeProtectedPins: (query) Specify if return pins from protected boards (optional, default to false)
+     - parameter pinFilter: (query) The filter to apply to the pins (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter includeProtectedPins: (query) Whether to include protected pins in the results (optional, default to false)
      - parameter pinType: (query) The type of pins to return, currently only enabled for private pins (optional)
-     - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     - parameter creativeTypes: (query) Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func pinsList(bookmark: String? = nil, pageSize: Int? = nil, pinFilter: PinFilter_pinsList? = nil, includeProtectedPins: Bool? = nil, pinType: PinType_pinsList? = nil, creativeTypes: [CreativeTypes_pinsList]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return pinsListWithRequestBuilder(bookmark: bookmark, pageSize: pageSize, pinFilter: pinFilter, includeProtectedPins: includeProtectedPins, pinType: pinType, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics).execute(apiResponseQueue) { result in
+    open class func pinsList(pinFilter: PinFilter_pinsList? = nil, pinMetrics: Bool? = nil, includeProtectedPins: Bool? = nil, pinType: PinType_pinsList? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return pinsListWithRequestBuilder(pinFilter: pinFilter, pinMetrics: pinMetrics, includeProtectedPins: includeProtectedPins, pinType: pinType, creativeTypes: creativeTypes, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -450,38 +442,38 @@ open class PinsAPI {
     /**
      List Pins
      - GET /pins
-     - Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
+     -      Get a list of the Pins owned by the \"operation user_account\".     - By default, the \"operation user_account\" is the token user_account.     - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an `ad_account_id` to use the owner of that ad_account as the \"operation user_account\".      Disclaimer: There are known performance issues when filtering by field `creative_type` and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - OAuth:
        - type: oauth2
        - name: client_credentials
-     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter pinFilter: (query) Pin filter. (optional)
-     - parameter includeProtectedPins: (query) Specify if return pins from protected boards (optional, default to false)
+     - parameter pinFilter: (query) The filter to apply to the pins (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter includeProtectedPins: (query) Whether to include protected pins in the results (optional, default to false)
      - parameter pinType: (query) The type of pins to return, currently only enabled for private pins (optional)
-     - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     - parameter creativeTypes: (query) Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - returns: RequestBuilder<PinsList200Response> 
      */
-    open class func pinsListWithRequestBuilder(bookmark: String? = nil, pageSize: Int? = nil, pinFilter: PinFilter_pinsList? = nil, includeProtectedPins: Bool? = nil, pinType: PinType_pinsList? = nil, creativeTypes: [CreativeTypes_pinsList]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil) -> RequestBuilder<PinsList200Response> {
+    open class func pinsListWithRequestBuilder(pinFilter: PinFilter_pinsList? = nil, pinMetrics: Bool? = nil, includeProtectedPins: Bool? = nil, pinType: PinType_pinsList? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<PinsList200Response> {
         let localVariablePath = "/pins"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
-            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "pin_filter": (wrappedValue: pinFilter?.encodeToJSON(), isExplode: true),
+            "pin_metrics": (wrappedValue: pinMetrics?.encodeToJSON(), isExplode: true),
             "include_protected_pins": (wrappedValue: includeProtectedPins?.encodeToJSON(), isExplode: true),
             "pin_type": (wrappedValue: pinType?.encodeToJSON(), isExplode: true),
             "creative_types": (wrappedValue: creativeTypes?.encodeToJSON(), isExplode: true),
             "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
-            "pin_metrics": (wrappedValue: pinMetrics?.encodeToJSON(), isExplode: true),
+            "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
+            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -555,7 +547,7 @@ open class PinsAPI {
     /**
      Update Pin
      
-     - parameter pinId: (path) Unique identifier of a Pin. 
+     - parameter pinId: (path)  
      - parameter pinUpdate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -576,11 +568,14 @@ open class PinsAPI {
     /**
      Update Pin
      - PATCH /pins/{pin_id}
-     - Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter pinId: (path) Unique identifier of a Pin. 
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter pinId: (path)  
      - parameter pinUpdate: (body)  
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Pin> 

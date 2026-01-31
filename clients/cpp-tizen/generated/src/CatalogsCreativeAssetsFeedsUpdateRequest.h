@@ -53,25 +53,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	NullableCurrency getDefaultCurrency();
+	CatalogsType getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setDefaultCurrency(NullableCurrency  default_currency);
-	/*! \brief Get A human-friendly name associated to a given feed.
-	 */
-	std::string getName();
-
-	/*! \brief Set A human-friendly name associated to a given feed.
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
-	CatalogsFormat getFormat();
-
-	/*! \brief Set 
-	 */
-	void setFormat(CatalogsFormat  format);
+	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
@@ -79,6 +65,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setCredentials(CatalogsFeedCredentials  credentials);
+	/*! \brief Get 
+	 */
+	NullableCurrency getDefaultCurrency();
+
+	/*! \brief Set 
+	 */
+	void setDefaultCurrency(NullableCurrency  default_currency);
+	/*! \brief Get 
+	 */
+	CatalogsFormat getFormat();
+
+	/*! \brief Set 
+	 */
+	void setFormat(CatalogsFormat  format);
 	/*! \brief Get The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
 	std::string getLocation();
@@ -86,6 +86,13 @@ public:
 	/*! \brief Set The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
 	void setLocation(std::string  location);
+	/*! \brief Get A human-friendly name associated to a given feed.
+	 */
+	std::string getName();
+
+	/*! \brief Set A human-friendly name associated to a given feed.
+	 */
+	void setName(std::string  name);
 	/*! \brief Get 
 	 */
 	CatalogsFeedProcessingSchedule getPreferredProcessingSchedule();
@@ -100,23 +107,16 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(CatalogsStatus  status);
-	/*! \brief Get 
-	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
 
 private:
-	NullableCurrency default_currency;
-	std::string name;
-	CatalogsFormat format;
+	CatalogsType catalog_type;
 	CatalogsFeedCredentials credentials;
+	NullableCurrency default_currency;
+	CatalogsFormat format;
 	std::string location;
+	std::string name;
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	CatalogsStatus status;
-	CatalogsType catalog_type;
 	void __init();
 	void __cleanup();
 

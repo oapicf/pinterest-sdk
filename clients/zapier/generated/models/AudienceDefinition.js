@@ -10,13 +10,13 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}type`,
-                label: `Generated audience type to request. - [${labelPrefix}type]`,
+                key: `${keyPrefix}scope`,
+                label: `[${labelPrefix}scope]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}scope`,
-                label: `Generated audience scope to request. - [${labelPrefix}scope]`,
+                key: `${keyPrefix}type`,
+                label: `[${labelPrefix}type]`,
                 type: 'string',
             },
         ]
@@ -25,8 +25,8 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'date': bundle.inputData?.[`${keyPrefix}date`],
-            'type': bundle.inputData?.[`${keyPrefix}type`],
             'scope': bundle.inputData?.[`${keyPrefix}scope`],
+            'type': bundle.inputData?.[`${keyPrefix}type`],
         }
     },
 }

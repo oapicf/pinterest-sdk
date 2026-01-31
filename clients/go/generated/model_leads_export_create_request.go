@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &LeadsExportCreateRequest{}
 
 // LeadsExportCreateRequest struct for LeadsExportCreateRequest
 type LeadsExportCreateRequest struct {
-	// Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
-	// Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
-	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// ID for the ad collecting leads
 	AdId string `json:"ad_id" validate:"regexp=^\\\\d+$"`
+	// Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 }
 
 type _LeadsExportCreateRequest LeadsExportCreateRequest
@@ -36,11 +36,11 @@ type _LeadsExportCreateRequest LeadsExportCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLeadsExportCreateRequest(startDate string, endDate string, adId string) *LeadsExportCreateRequest {
+func NewLeadsExportCreateRequest(adId string, endDate string, startDate string) *LeadsExportCreateRequest {
 	this := LeadsExportCreateRequest{}
-	this.StartDate = startDate
-	this.EndDate = endDate
 	this.AdId = adId
+	this.EndDate = endDate
+	this.StartDate = startDate
 	return &this
 }
 
@@ -50,54 +50,6 @@ func NewLeadsExportCreateRequest(startDate string, endDate string, adId string) 
 func NewLeadsExportCreateRequestWithDefaults() *LeadsExportCreateRequest {
 	this := LeadsExportCreateRequest{}
 	return &this
-}
-
-// GetStartDate returns the StartDate field value
-func (o *LeadsExportCreateRequest) GetStartDate() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.StartDate
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value
-// and a boolean to check if the value has been set.
-func (o *LeadsExportCreateRequest) GetStartDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.StartDate, true
-}
-
-// SetStartDate sets field value
-func (o *LeadsExportCreateRequest) SetStartDate(v string) {
-	o.StartDate = v
-}
-
-// GetEndDate returns the EndDate field value
-func (o *LeadsExportCreateRequest) GetEndDate() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.EndDate
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value
-// and a boolean to check if the value has been set.
-func (o *LeadsExportCreateRequest) GetEndDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EndDate, true
-}
-
-// SetEndDate sets field value
-func (o *LeadsExportCreateRequest) SetEndDate(v string) {
-	o.EndDate = v
 }
 
 // GetAdId returns the AdId field value
@@ -124,6 +76,54 @@ func (o *LeadsExportCreateRequest) SetAdId(v string) {
 	o.AdId = v
 }
 
+// GetEndDate returns the EndDate field value
+func (o *LeadsExportCreateRequest) GetEndDate() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value
+// and a boolean to check if the value has been set.
+func (o *LeadsExportCreateRequest) GetEndDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EndDate, true
+}
+
+// SetEndDate sets field value
+func (o *LeadsExportCreateRequest) SetEndDate(v string) {
+	o.EndDate = v
+}
+
+// GetStartDate returns the StartDate field value
+func (o *LeadsExportCreateRequest) GetStartDate() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value
+// and a boolean to check if the value has been set.
+func (o *LeadsExportCreateRequest) GetStartDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.StartDate, true
+}
+
+// SetStartDate sets field value
+func (o *LeadsExportCreateRequest) SetStartDate(v string) {
+	o.StartDate = v
+}
+
 func (o LeadsExportCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -134,9 +134,9 @@ func (o LeadsExportCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o LeadsExportCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["start_date"] = o.StartDate
-	toSerialize["end_date"] = o.EndDate
 	toSerialize["ad_id"] = o.AdId
+	toSerialize["end_date"] = o.EndDate
+	toSerialize["start_date"] = o.StartDate
 	return toSerialize, nil
 }
 
@@ -145,9 +145,9 @@ func (o *LeadsExportCreateRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"start_date",
-		"end_date",
 		"ad_id",
+		"end_date",
+		"start_date",
 	}
 
 	allProperties := make(map[string]interface{})

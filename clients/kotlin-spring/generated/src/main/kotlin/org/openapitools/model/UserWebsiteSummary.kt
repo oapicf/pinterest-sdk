@@ -15,20 +15,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param website Website with path or domain only
  * @param status Status of the verification process
  * @param verifiedAt UTC timestamp when the verification happened - sometimes missing
+ * @param website Website with path or domain only
  */
 data class UserWebsiteSummary(
-
-    @Schema(example = "mysite.test", description = "Website with path or domain only")
-    @get:JsonProperty("website") val website: kotlin.String? = null,
 
     @Schema(example = "success", description = "Status of the verification process")
     @get:JsonProperty("status") val status: kotlin.String? = null,
 
     @Schema(example = "2022-12-14T21:03:01.602000", description = "UTC timestamp when the verification happened - sometimes missing")
-    @get:JsonProperty("verified_at") val verifiedAt: kotlin.String? = null
+    @get:JsonProperty("verified_at") val verifiedAt: kotlin.String? = null,
+
+    @Schema(example = "mysite.test", description = "Website with path or domain only")
+    @get:JsonProperty("website") val website: kotlin.String? = null
 ) {
 
 }

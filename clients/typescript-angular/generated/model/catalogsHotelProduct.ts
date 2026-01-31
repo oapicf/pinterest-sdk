@@ -14,7 +14,7 @@ import { CatalogsHotelProductMetadata } from './catalogsHotelProductMetadata';
 export interface CatalogsHotelProduct { 
     catalog_type: CatalogsHotelProduct.CatalogTypeEnum;
     metadata: CatalogsHotelProductMetadata;
-    pin: Pin | null;
+    pin: Pin;
 }
 export namespace CatalogsHotelProduct {
     export const CatalogTypeEnum = {

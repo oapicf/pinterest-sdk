@@ -1,0 +1,55 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QuizPinData"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QuizPinData"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  QuizPinQuestion = openapi_server.resourceTypes.QuizPinQuestion
+  QuizPinResult = openapi_server.resourceTypes.QuizPinResult
+}
+resourceTypes {
+
+  QuizPinData {
+    title = QuizPinData
+    description = QuizPinData
+    derivedFrom = Root
+    properties {
+        questions {
+          type = array
+          items.type = QuizPinQuestion
+          description = ""
+          optional = false
+        }
+        results {
+          type = array
+          items.type = QuizPinResult
+          description = ""
+          optional = false
+        }
+        tie_breaker_custom_result {
+          type = QuizPinResult
+          description = ""
+          optional = false
+        }
+        tie_breaker_type {
+          type =  string
+          description = "Quiz ad tie breaker type, default is RANDOM"
+          enum = ["RANDOM", "CUSTOM"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  QuizPinData {
+    title = QuizPinData
+    description = QuizPinData
+    implements = openapi_server.resourceTypes.QuizPinData
+
+  }
+}

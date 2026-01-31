@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"salesforceOrderLineId": @"salesforce_order_line_id", @"adsManagerOrderLineId": @"ads_manager_order_line_id", @"pinOrderId": @"pin_order_id", @"lastModifiedDateTime": @"last_modified_date_time", @"startDate": @"start_date", @"endDate": @"end_date", @"billToCompanyName": @"bill_to_company_name", @"billingContactFirstname": @"billing_contact_firstname", @"billingContactLastname": @"billing_contact_lastname", @"billingContactEmail": @"billing_contact_email", @"mediaContactEmail": @"media_contact_email", @"mediaContactFirstname": @"media_contact_firstname", @"mediaContactLastname": @"media_contact_lastname", @"currencyInfo": @"currency_info", @"agencyLink": @"agency_link", @"poNumber": @"po_number", @"orderName": @"order_name", @"pmpName": @"pmp_name", @"acceptedTermsId": @"accepted_terms_id", @"acceptedTermsTime": @"accepted_terms_time", @"budgetAmount": @"budget_amount", @"estimatedMonthlySpend": @"estimated_monthly_spend" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"acceptedTermsId": @"accepted_terms_id", @"acceptedTermsTime": @"accepted_terms_time", @"adsManagerOrderLineId": @"ads_manager_order_line_id", @"agencyLink": @"agency_link", @"billToCompanyName": @"bill_to_company_name", @"billingContactEmail": @"billing_contact_email", @"billingContactFirstname": @"billing_contact_firstname", @"billingContactLastname": @"billing_contact_lastname", @"budgetAmount": @"budget_amount", @"currencyInfo": @"currency_info", @"endDate": @"end_date", @"estimatedMonthlySpend": @"estimated_monthly_spend", @"lastModifiedDateTime": @"last_modified_date_time", @"mediaContactEmail": @"media_contact_email", @"mediaContactFirstname": @"media_contact_firstname", @"mediaContactLastname": @"media_contact_lastname", @"orderName": @"order_name", @"pinOrderId": @"pin_order_id", @"pmpName": @"pmp_name", @"poNumber": @"po_number", @"salesforceOrderLineId": @"salesforce_order_line_id", @"startDate": @"start_date" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"salesforceOrderLineId", @"adsManagerOrderLineId", @"pinOrderId", @"lastModifiedDateTime", @"startDate", @"endDate", @"billToCompanyName", @"billingContactFirstname", @"billingContactLastname", @"billingContactEmail", @"mediaContactEmail", @"mediaContactFirstname", @"mediaContactLastname", @"currencyInfo", @"agencyLink", @"poNumber", @"orderName", @"pmpName", @"acceptedTermsId", @"acceptedTermsTime", @"budgetAmount", @"estimatedMonthlySpend"];
+  NSArray *optionalProperties = @[@"acceptedTermsId", @"acceptedTermsTime", @"adsManagerOrderLineId", @"agencyLink", @"billToCompanyName", @"billingContactEmail", @"billingContactFirstname", @"billingContactLastname", @"budgetAmount", @"currencyInfo", @"endDate", @"estimatedMonthlySpend", @"lastModifiedDateTime", @"mediaContactEmail", @"mediaContactFirstname", @"mediaContactLastname", @"orderName", @"pinOrderId", @"pmpName", @"poNumber", @"salesforceOrderLineId", @"startDate"];
   return [optionalProperties containsObject:propertyName];
 }
 

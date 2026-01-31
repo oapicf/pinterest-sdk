@@ -6,7 +6,7 @@ case class AdvancedAuctionProcessedItems (
     /* Catalog id pertaining to all items */
     _catalogId: Option[String],
     /* Array of advanced auction processed items */
-    _items: Option[List[AdvancedAuctionProcessedItem]]
+    _items: Option[List[AdvancedAuctionItemsSubmitRecord]]
 )
 object AdvancedAuctionProcessedItems {
     def toStringBody(var_catalogId: Object, var_items: Object) =

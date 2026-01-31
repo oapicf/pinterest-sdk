@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemId** | **string** | The catalog retail item id in the merchant namespace | 
 **country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | 
+**itemId** | **string** | The catalog retail item id in the merchant namespace | 
 **language** | [**OpenAPI\Server\Model\Language**](Language.md) |  | 
 **bidOptions** | [**OpenAPI\Server\Model\AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 

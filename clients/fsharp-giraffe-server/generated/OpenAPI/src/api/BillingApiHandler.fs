@@ -10,6 +10,8 @@ open BillingApiServiceImplementation
 open OpenAPI.Model.AdsCreditRedeemRequest
 open OpenAPI.Model.AdsCreditRedeemResponse
 open OpenAPI.Model.AdsCreditsDiscountsGet200Response
+open OpenAPI.Model.BillingInvoiceDownloadResponse
+open OpenAPI.Model.BillingInvoicesGet200Response
 open OpenAPI.Model.BillingProfilesGet200Response
 open OpenAPI.Model.Error
 open OpenAPI.Model.SSIOAccountResponse
@@ -65,6 +67,49 @@ module BillingApiHandler =
                       | AdsCreditsDiscountsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
                       | AdsCreditsDiscountsGetDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region BillingInvoiceDownloadGet
+    /// <summary>
+    /// Get download url for a billing invoice
+    /// </summary>
+
+    let BillingInvoiceDownloadGet (pathParams:BillingInvoiceDownloadGetPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let serviceArgs = {    pathParams=pathParams;  } : BillingInvoiceDownloadGetArgs
+          let result = BillingApiService.BillingInvoiceDownloadGet ctx serviceArgs
+          return! (match result with
+                      | BillingInvoiceDownloadGetStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | BillingInvoiceDownloadGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BillingInvoiceDownloadGetDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region BillingInvoicesGet
+    /// <summary>
+    /// Get billing invoices
+    /// </summary>
+
+    let BillingInvoicesGet (pathParams:BillingInvoicesGetPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<BillingInvoicesGetQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : BillingInvoicesGetArgs
+          let result = BillingApiService.BillingInvoicesGet ctx serviceArgs
+          return! (match result with
+                      | BillingInvoicesGetStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | BillingInvoicesGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BillingInvoicesGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }

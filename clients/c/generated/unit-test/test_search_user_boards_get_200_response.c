@@ -22,13 +22,13 @@ search_user_boards_get_200_response_t* instantiate_search_user_boards_get_200_re
   search_user_boards_get_200_response_t* search_user_boards_get_200_response = NULL;
   if (include_optional) {
     search_user_boards_get_200_response = search_user_boards_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     search_user_boards_get_200_response = search_user_boards_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

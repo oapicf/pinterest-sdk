@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error. |  -  |
 
 # **IntegrationsCommercePatch**
-> IntegrationMetadata IntegrationsCommercePatch(external_business_id, integration_request_patch = var.integration_request_patch)
+> IntegrationMetadata IntegrationsCommercePatch(external_business_id, integration_request_patch)
 
 Update commerce integration
 
@@ -127,14 +127,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_external_business_id <- "external_business_id_example" # character | External business ID for the integration.
-var_integration_request_patch <- IntegrationRequestPatch$new("connected_merchant_id_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_tag_id_example", "partner_access_token_example", "partner_refresh_token_example", "partner_primary_email_example", 123, 123, "scopes_example", "additional_id_1_example", "partner_metadata_example") # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata (Optional)
+var_integration_request_patch <- IntegrationRequestPatch$new("additional_id_1_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_merchant_id_example", "connected_tag_id_example", "partner_access_token_example", 123, "partner_metadata_example", "partner_primary_email_example", "partner_refresh_token_example", 123, "scopes_example") # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$IntegrationsCommercePatch(var_external_business_id, integration_request_patch = var_integration_request_patchdata_file = "result.txt")
-result <- api_instance$IntegrationsCommercePatch(var_external_business_id, integration_request_patch = var_integration_request_patch)
+# result <- api_instance$IntegrationsCommercePatch(var_external_business_id, var_integration_request_patchdata_file = "result.txt")
+result <- api_instance$IntegrationsCommercePatch(var_external_business_id, var_integration_request_patch)
 dput(result)
 ```
 
@@ -143,7 +143,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_business_id** | **character**| External business ID for the integration. | 
- **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error. |  -  |
 
 # **IntegrationsCommercePost**
-> IntegrationMetadata IntegrationsCommercePost(integration_request = var.integration_request)
+> IntegrationMetadata IntegrationsCommercePost(integration_request)
 
 Create commerce integration
 
@@ -180,14 +180,14 @@ library(openapi)
 # Create commerce integration
 #
 # prepare function argument(s)
-var_integration_request <- IntegrationRequest$new("external_business_id_example", "connected_merchant_id_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_tag_id_example", "partner_access_token_example", "partner_refresh_token_example", "partner_primary_email_example", 123, 123, "scopes_example", "additional_id_1_example", "partner_metadata_example") # IntegrationRequest | Parameters to get create/update the Integration Metadata (Optional)
+var_integration_request <- IntegrationRequest$new("additional_id_1_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_merchant_id_example", "connected_tag_id_example", "external_business_id_example", "partner_access_token_example", 123, "partner_metadata_example", "partner_primary_email_example", "partner_refresh_token_example", 123, "scopes_example") # IntegrationRequest | Parameters to get create/update the Integration Metadata
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$IntegrationsCommercePost(integration_request = var_integration_requestdata_file = "result.txt")
-result <- api_instance$IntegrationsCommercePost(integration_request = var_integration_request)
+# result <- api_instance$IntegrationsCommercePost(var_integration_requestdata_file = "result.txt")
+result <- api_instance$IntegrationsCommercePost(var_integration_request)
 dput(result)
 ```
 
@@ -195,7 +195,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_request** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integration_request** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -335,7 +335,7 @@ library(openapi)
 # Receives batched logs from integration applications.
 #
 # prepare function argument(s)
-var_integration_logs_request <- IntegrationLogsRequest$new(c(IntegrationLog$new(123, "APP", "INFO", "external_business_id_example", "advertiser_id_example", "merchant_id_example", "tag_id_example", "feed_profile_id_example", "message_example", "app_version_number_example", "platform_version_number_example", IntegrationLogClientError$new("cause_example", 123, "file_name_example", 123, "message_example", "message_detail_example", "name_example", 123, "stack_trace_example"), IntegrationLogClientRequest$new("GET", "host_example", "path_example", c(key = "inner_example"), c(key = "inner_example"), 123)))) # IntegrationLogsRequest | Ingest log information from external integration application.
+var_integration_logs_request <- IntegrationLogsRequest$new(c(IntegrationLog$new(123, "APP", "INFO", "advertiser_id_example", "app_version_number_example", IntegrationLogClientError$new("cause_example", 123, "file_name_example", 123, "message_example", "message_detail_example", "name_example", 123, "stack_trace_example"), "external_business_id_example", "feed_profile_id_example", "merchant_id_example", "message_example", "platform_version_number_example", IntegrationLogClientRequest$new("host_example", "GET", "path_example", c(key = "inner_example"), c(key = "inner_example"), 123), "tag_id_example"))) # IntegrationLogsRequest | Ingest log information from external integration application.
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

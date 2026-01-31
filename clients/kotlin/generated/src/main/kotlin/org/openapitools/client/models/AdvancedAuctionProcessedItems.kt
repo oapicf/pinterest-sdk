@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AdvancedAuctionProcessedItem
+import org.openapitools.client.models.AdvancedAuctionItemsSubmitRecord
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -36,7 +36,7 @@ data class AdvancedAuctionProcessedItems (
 
     /* Array of advanced auction processed items */
     @Json(name = "items")
-    val items: kotlin.collections.List<AdvancedAuctionProcessedItem>? = null
+    val items: kotlin.collections.List<AdvancedAuctionItemsSubmitRecord>? = null
 
 ) {
 

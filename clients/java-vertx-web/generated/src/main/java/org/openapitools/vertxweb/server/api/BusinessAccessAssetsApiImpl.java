@@ -47,7 +47,7 @@ public class BusinessAccessAssetsApiImpl implements BusinessAccessAssetsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BusinessAssetMembersGet200Response>> businessAssetMembersGet(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex) {
+    public Future<ApiResponse<BusinessAssetMembersGet200Response>> businessAssetMembersGet(String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex) {
         return Future.failedFuture(new HttpException(501));
     }
 

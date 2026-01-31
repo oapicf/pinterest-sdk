@@ -7,51 +7,42 @@
 #' @title CatalogsReportDistributionStats
 #' @description CatalogsReportDistributionStats Class
 #' @format An \code{R6Class} generator object
-#' @field report_type  character [optional]
 #' @field catalog_id ID of the catalog entity. character [optional]
 #' @field code The event code that a diagnostics aggregated number references integer [optional]
 #' @field code_label A human-friendly label for the event code (e.g, 'SPAM') character [optional]
-#' @field message Title message describing the diagnostic issue character [optional]
-#' @field occurrences Number of occurrences of the issue integer [optional]
 #' @field ineligible_for_ads Indicates if issue makes items ineligible for ads distribution character [optional]
 #' @field ineligible_for_organic Indicates if issue makes items ineligible for organic distribution character [optional]
+#' @field message Title message describing the diagnostic issue character [optional]
+#' @field occurrences Number of occurrences of the issue integer [optional]
+#' @field report_type  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsReportDistributionStats <- R6::R6Class(
   "CatalogsReportDistributionStats",
   public = list(
-    `report_type` = NULL,
     `catalog_id` = NULL,
     `code` = NULL,
     `code_label` = NULL,
-    `message` = NULL,
-    `occurrences` = NULL,
     `ineligible_for_ads` = NULL,
     `ineligible_for_organic` = NULL,
+    `message` = NULL,
+    `occurrences` = NULL,
+    `report_type` = NULL,
 
     #' @description
     #' Initialize a new CatalogsReportDistributionStats class.
     #'
-    #' @param report_type report_type
     #' @param catalog_id ID of the catalog entity.
     #' @param code The event code that a diagnostics aggregated number references
     #' @param code_label A human-friendly label for the event code (e.g, 'SPAM')
-    #' @param message Title message describing the diagnostic issue
-    #' @param occurrences Number of occurrences of the issue
     #' @param ineligible_for_ads Indicates if issue makes items ineligible for ads distribution
     #' @param ineligible_for_organic Indicates if issue makes items ineligible for organic distribution
+    #' @param message Title message describing the diagnostic issue
+    #' @param occurrences Number of occurrences of the issue
+    #' @param report_type report_type
     #' @param ... Other optional arguments.
-    initialize = function(`report_type` = NULL, `catalog_id` = NULL, `code` = NULL, `code_label` = NULL, `message` = NULL, `occurrences` = NULL, `ineligible_for_ads` = NULL, `ineligible_for_organic` = NULL, ...) {
-      if (!is.null(`report_type`)) {
-        if (!(`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
-          stop(paste("Error! \"", `report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
-        }
-        if (!(is.character(`report_type`) && length(`report_type`) == 1)) {
-          stop(paste("Error! Invalid data for `report_type`. Must be a string:", `report_type`))
-        }
-        self$`report_type` <- `report_type`
-      }
+    initialize = function(`catalog_id` = NULL, `code` = NULL, `code_label` = NULL, `ineligible_for_ads` = NULL, `ineligible_for_organic` = NULL, `message` = NULL, `occurrences` = NULL, `report_type` = NULL, ...) {
       if (!is.null(`catalog_id`)) {
         if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
           stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
@@ -70,6 +61,18 @@ CatalogsReportDistributionStats <- R6::R6Class(
         }
         self$`code_label` <- `code_label`
       }
+      if (!is.null(`ineligible_for_ads`)) {
+        if (!(is.logical(`ineligible_for_ads`) && length(`ineligible_for_ads`) == 1)) {
+          stop(paste("Error! Invalid data for `ineligible_for_ads`. Must be a boolean:", `ineligible_for_ads`))
+        }
+        self$`ineligible_for_ads` <- `ineligible_for_ads`
+      }
+      if (!is.null(`ineligible_for_organic`)) {
+        if (!(is.logical(`ineligible_for_organic`) && length(`ineligible_for_organic`) == 1)) {
+          stop(paste("Error! Invalid data for `ineligible_for_organic`. Must be a boolean:", `ineligible_for_organic`))
+        }
+        self$`ineligible_for_organic` <- `ineligible_for_organic`
+      }
       if (!is.null(`message`)) {
         if (!(is.character(`message`) && length(`message`) == 1)) {
           stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
@@ -82,17 +85,14 @@ CatalogsReportDistributionStats <- R6::R6Class(
         }
         self$`occurrences` <- `occurrences`
       }
-      if (!is.null(`ineligible_for_ads`)) {
-        if (!(is.logical(`ineligible_for_ads`) && length(`ineligible_for_ads`) == 1)) {
-          stop(paste("Error! Invalid data for `ineligible_for_ads`. Must be a boolean:", `ineligible_for_ads`))
+      if (!is.null(`report_type`)) {
+        if (!(`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
+          stop(paste("Error! \"", `report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
         }
-        self$`ineligible_for_ads` <- `ineligible_for_ads`
-      }
-      if (!is.null(`ineligible_for_organic`)) {
-        if (!(is.logical(`ineligible_for_organic`) && length(`ineligible_for_organic`) == 1)) {
-          stop(paste("Error! Invalid data for `ineligible_for_organic`. Must be a boolean:", `ineligible_for_organic`))
+        if (!(is.character(`report_type`) && length(`report_type`) == 1)) {
+          stop(paste("Error! Invalid data for `report_type`. Must be a string:", `report_type`))
         }
-        self$`ineligible_for_organic` <- `ineligible_for_organic`
+        self$`report_type` <- `report_type`
       }
     },
 
@@ -127,10 +127,6 @@ CatalogsReportDistributionStats <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsReportDistributionStatsObject <- list()
-      if (!is.null(self$`report_type`)) {
-        CatalogsReportDistributionStatsObject[["report_type"]] <-
-          self$`report_type`
-      }
       if (!is.null(self$`catalog_id`)) {
         CatalogsReportDistributionStatsObject[["catalog_id"]] <-
           self$`catalog_id`
@@ -143,6 +139,14 @@ CatalogsReportDistributionStats <- R6::R6Class(
         CatalogsReportDistributionStatsObject[["code_label"]] <-
           self$`code_label`
       }
+      if (!is.null(self$`ineligible_for_ads`)) {
+        CatalogsReportDistributionStatsObject[["ineligible_for_ads"]] <-
+          self$`ineligible_for_ads`
+      }
+      if (!is.null(self$`ineligible_for_organic`)) {
+        CatalogsReportDistributionStatsObject[["ineligible_for_organic"]] <-
+          self$`ineligible_for_organic`
+      }
       if (!is.null(self$`message`)) {
         CatalogsReportDistributionStatsObject[["message"]] <-
           self$`message`
@@ -151,13 +155,9 @@ CatalogsReportDistributionStats <- R6::R6Class(
         CatalogsReportDistributionStatsObject[["occurrences"]] <-
           self$`occurrences`
       }
-      if (!is.null(self$`ineligible_for_ads`)) {
-        CatalogsReportDistributionStatsObject[["ineligible_for_ads"]] <-
-          self$`ineligible_for_ads`
-      }
-      if (!is.null(self$`ineligible_for_organic`)) {
-        CatalogsReportDistributionStatsObject[["ineligible_for_organic"]] <-
-          self$`ineligible_for_organic`
+      if (!is.null(self$`report_type`)) {
+        CatalogsReportDistributionStatsObject[["report_type"]] <-
+          self$`report_type`
       }
       return(CatalogsReportDistributionStatsObject)
     },
@@ -169,12 +169,6 @@ CatalogsReportDistributionStats <- R6::R6Class(
     #' @return the instance of CatalogsReportDistributionStats
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`report_type`)) {
-        if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
-          stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
-        }
-        self$`report_type` <- this_object$`report_type`
-      }
       if (!is.null(this_object$`catalog_id`)) {
         self$`catalog_id` <- this_object$`catalog_id`
       }
@@ -184,17 +178,23 @@ CatalogsReportDistributionStats <- R6::R6Class(
       if (!is.null(this_object$`code_label`)) {
         self$`code_label` <- this_object$`code_label`
       }
+      if (!is.null(this_object$`ineligible_for_ads`)) {
+        self$`ineligible_for_ads` <- this_object$`ineligible_for_ads`
+      }
+      if (!is.null(this_object$`ineligible_for_organic`)) {
+        self$`ineligible_for_organic` <- this_object$`ineligible_for_organic`
+      }
       if (!is.null(this_object$`message`)) {
         self$`message` <- this_object$`message`
       }
       if (!is.null(this_object$`occurrences`)) {
         self$`occurrences` <- this_object$`occurrences`
       }
-      if (!is.null(this_object$`ineligible_for_ads`)) {
-        self$`ineligible_for_ads` <- this_object$`ineligible_for_ads`
-      }
-      if (!is.null(this_object$`ineligible_for_organic`)) {
-        self$`ineligible_for_organic` <- this_object$`ineligible_for_organic`
+      if (!is.null(this_object$`report_type`)) {
+        if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
+          stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
+        }
+        self$`report_type` <- this_object$`report_type`
       }
       self
     },
@@ -217,17 +217,17 @@ CatalogsReportDistributionStats <- R6::R6Class(
     #' @return the instance of CatalogsReportDistributionStats
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`catalog_id` <- this_object$`catalog_id`
+      self$`code` <- this_object$`code`
+      self$`code_label` <- this_object$`code_label`
+      self$`ineligible_for_ads` <- this_object$`ineligible_for_ads`
+      self$`ineligible_for_organic` <- this_object$`ineligible_for_organic`
+      self$`message` <- this_object$`message`
+      self$`occurrences` <- this_object$`occurrences`
       if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("DISTRIBUTION_ISSUES"))) {
         stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"DISTRIBUTION_ISSUES\".", sep = ""))
       }
       self$`report_type` <- this_object$`report_type`
-      self$`catalog_id` <- this_object$`catalog_id`
-      self$`code` <- this_object$`code`
-      self$`code_label` <- this_object$`code_label`
-      self$`message` <- this_object$`message`
-      self$`occurrences` <- this_object$`occurrences`
-      self$`ineligible_for_ads` <- this_object$`ineligible_for_ads`
-      self$`ineligible_for_organic` <- this_object$`ineligible_for_organic`
       self
     },
 

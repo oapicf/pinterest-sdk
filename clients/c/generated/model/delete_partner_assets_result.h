@@ -21,9 +21,9 @@ typedef struct delete_partner_assets_result_t delete_partner_assets_result_t;
 typedef struct delete_partner_assets_result_t {
     char *asset_id; // string
     char *asset_type; // string
-    list_t *permissions; //primitive container
     int is_shared_partner; //boolean
     char *partner_id; // string
+    list_t *permissions; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } delete_partner_assets_result_t;
@@ -31,9 +31,9 @@ typedef struct delete_partner_assets_result_t {
 __attribute__((deprecated)) delete_partner_assets_result_t *delete_partner_assets_result_create(
     char *asset_id,
     char *asset_type,
-    list_t *permissions,
     int is_shared_partner,
-    char *partner_id
+    char *partner_id,
+    list_t *permissions
 );
 
 void delete_partner_assets_result_free(delete_partner_assets_result_t *delete_partner_assets_result);

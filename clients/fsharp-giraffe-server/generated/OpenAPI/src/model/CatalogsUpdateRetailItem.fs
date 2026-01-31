@@ -14,9 +14,9 @@ module CatalogsUpdateRetailItem =
   //#endregion
 
   type CatalogsUpdateRetailItem = {
+    Attributes : UpdatableItemAttributes;
     ItemId : string;
     Operation : OperationEnum;
-    Attributes : UpdatableItemAttributes;
     UpdateMask : UpdateMaskFieldType[];
   }
   //#endregion

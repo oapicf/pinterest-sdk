@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.UserSingleAssetBinding;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BusinessAssetMembersGet200Response   {
   
-  private List<UserSingleAssetBinding> items = new ArrayList<>();
   private String bookmark;
+  private List<UserSingleAssetBinding> items = new ArrayList<>();
 
   public BusinessAssetMembersGet200Response () {
 
   }
 
-  public BusinessAssetMembersGet200Response (List<UserSingleAssetBinding> items, String bookmark) {
-    this.items = items;
+  public BusinessAssetMembersGet200Response (String bookmark, List<UserSingleAssetBinding> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<UserSingleAssetBinding> getItems() {
-    return items;
-  }
-  public void setItems(List<UserSingleAssetBinding> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class BusinessAssetMembersGet200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<UserSingleAssetBinding> getItems() {
+    return items;
+  }
+  public void setItems(List<UserSingleAssetBinding> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class BusinessAssetMembersGet200Response   {
       return false;
     }
     BusinessAssetMembersGet200Response businessAssetMembersGet200Response = (BusinessAssetMembersGet200Response) o;
-    return Objects.equals(items, businessAssetMembersGet200Response.items) &&
-        Objects.equals(bookmark, businessAssetMembersGet200Response.bookmark);
+    return Objects.equals(bookmark, businessAssetMembersGet200Response.bookmark) &&
+        Objects.equals(items, businessAssetMembersGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class BusinessAssetMembersGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessAssetMembersGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

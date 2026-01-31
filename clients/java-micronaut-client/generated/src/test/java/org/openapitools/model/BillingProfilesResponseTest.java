@@ -20,11 +20,19 @@ public class BillingProfilesResponseTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'advertiserId'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
+    public void advertiserIdTest() {
+        // TODO: test advertiserId
+    }
+
+    /**
+     * Test the property 'billingType'
+     */
+    @Test
+    public void billingTypeTest() {
+        // TODO: test billingType
     }
 
     /**
@@ -36,19 +44,11 @@ public class BillingProfilesResponseTest {
     }
 
     /**
-     * Test the property 'status'
+     * Test the property 'id'
      */
     @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'advertiserId'
-     */
-    @Test
-    public void advertiserIdTest() {
-        // TODO: test advertiserId
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -57,6 +57,14 @@ public class BillingProfilesResponseTest {
     @Test
     public void paymentMethodBrandTest() {
         // TODO: test paymentMethodBrand
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

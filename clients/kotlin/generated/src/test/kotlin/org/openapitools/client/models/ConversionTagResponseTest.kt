@@ -28,6 +28,12 @@ class ConversionTagResponseTest : ShouldSpec() {
         // uncomment below to create an instance of ConversionTagResponse
         //val modelInstance = ConversionTagResponse()
 
+        // to test the property `name` - Conversion tag name.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
         // to test the property `adAccountId` - Ad account ID.
         should("test adAccountId") {
             // uncomment below to test the property
@@ -40,7 +46,13 @@ class ConversionTagResponseTest : ShouldSpec() {
             //modelInstance.codeSnippet shouldBe ("TODO")
         }
 
-        // to test the property `enhancedMatchStatus`
+        // to test the property `configs`
+        should("test configs") {
+            // uncomment below to test the property
+            //modelInstance.configs shouldBe ("TODO")
+        }
+
+        // to test the property `enhancedMatchStatus` - The enhanced match status of the tag
         should("test enhancedMatchStatus") {
             // uncomment below to test the property
             //modelInstance.enhancedMatchStatus shouldBe ("TODO")
@@ -58,28 +70,16 @@ class ConversionTagResponseTest : ShouldSpec() {
             //modelInstance.lastFiredTimeMs shouldBe ("TODO")
         }
 
-        // to test the property `name` - Conversion tag name.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
         // to test the property `version` - Version number.
         should("test version") {
             // uncomment below to test the property
             //modelInstance.version shouldBe ("TODO")
         }
 
-        // to test the property `configs`
-        should("test configs") {
+        // to test the property `status`
+        should("test status") {
             // uncomment below to test the property
-            //modelInstance.configs shouldBe ("TODO")
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

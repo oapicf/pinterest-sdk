@@ -48,6 +48,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	std::string getMessage();
+
+	/*! \brief Set 
+	 */
+	void setMessage(std::string  message);
+	/*! \brief Get 
+	 */
 	BulkReportingJobStatus getReportStatus();
 
 	/*! \brief Set 
@@ -60,18 +67,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setToken(std::string  token);
-	/*! \brief Get 
-	 */
-	std::string getMessage();
-
-	/*! \brief Set 
-	 */
-	void setMessage(std::string  message);
 
 private:
+	std::string message;
 	BulkReportingJobStatus report_status;
 	std::string token;
-	std::string message;
 	void __init();
 	void __cleanup();
 

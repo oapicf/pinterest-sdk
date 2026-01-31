@@ -21,10 +21,8 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "UserWebsiteVerifyRequest", description = "User website verification request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerifyRequest {
-
-  private @Nullable String website;
 
   /**
    * Gets or Sets verificationMethod
@@ -65,25 +63,7 @@ public class UserWebsiteVerifyRequest {
 
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
 
-  public UserWebsiteVerifyRequest website(@Nullable String website) {
-    this.website = website;
-    return this;
-  }
-
-  /**
-   * Get website
-   * @return website
-   */
-  
-  @Schema(name = "website", example = "pintest-website-12345678.test/test_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("website")
-  public @Nullable String getWebsite() {
-    return website;
-  }
-
-  public void setWebsite(@Nullable String website) {
-    this.website = website;
-  }
+  private @Nullable String website;
 
   public UserWebsiteVerifyRequest verificationMethod(VerificationMethodEnum verificationMethod) {
     this.verificationMethod = verificationMethod;
@@ -105,6 +85,26 @@ public class UserWebsiteVerifyRequest {
     this.verificationMethod = verificationMethod;
   }
 
+  public UserWebsiteVerifyRequest website(@Nullable String website) {
+    this.website = website;
+    return this;
+  }
+
+  /**
+   * Get website
+   * @return website
+   */
+  
+  @Schema(name = "website", example = "pintest-website-12345678.test/test_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("website")
+  public @Nullable String getWebsite() {
+    return website;
+  }
+
+  public void setWebsite(@Nullable String website) {
+    this.website = website;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -114,21 +114,21 @@ public class UserWebsiteVerifyRequest {
       return false;
     }
     UserWebsiteVerifyRequest userWebsiteVerifyRequest = (UserWebsiteVerifyRequest) o;
-    return Objects.equals(this.website, userWebsiteVerifyRequest.website) &&
-        Objects.equals(this.verificationMethod, userWebsiteVerifyRequest.verificationMethod);
+    return Objects.equals(this.verificationMethod, userWebsiteVerifyRequest.verificationMethod) &&
+        Objects.equals(this.website, userWebsiteVerifyRequest.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, verificationMethod);
+    return Objects.hash(verificationMethod, website);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerifyRequest {\n");
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

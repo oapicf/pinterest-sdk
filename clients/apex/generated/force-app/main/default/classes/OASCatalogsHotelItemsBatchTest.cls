@@ -74,9 +74,9 @@ private class OASCatalogsHotelItemsBatchTest {
         OASCatalogsHotelItemsBatch catalogsHotelItemsBatch = new OASCatalogsHotelItemsBatch();
         Map<String, String> x-property-mappings = catalogsHotelItemsBatch.getx-property-mappings();
         System.assertEquals('batchId', x-property-mappings.get('batch_id'));
-        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
-        System.assertEquals('completedTime', x-property-mappings.get('completed_time'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+        System.assertEquals('completedTime', x-property-mappings.get('completed_time'));
+        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
     }
 
     @isTest
@@ -84,9 +84,9 @@ private class OASCatalogsHotelItemsBatchTest {
         OASCatalogsHotelItemsBatch catalogsHotelItemsBatch = new OASCatalogsHotelItemsBatch();
         System.assertEquals(new List<OASHotelProcessingRecord>(), catalogsHotelItemsBatch.items);
         System.assertEquals(null, catalogsHotelItemsBatch.batchId);
-        System.assertEquals(null, catalogsHotelItemsBatch.createdTime);
-        System.assertEquals(null, catalogsHotelItemsBatch.completedTime);
-        System.assertEquals(null, catalogsHotelItemsBatch.status);
         System.assertEquals(null, catalogsHotelItemsBatch.catalogType);
+        System.assertEquals(null, catalogsHotelItemsBatch.completedTime);
+        System.assertEquals(null, catalogsHotelItemsBatch.createdTime);
+        System.assertEquals(null, catalogsHotelItemsBatch.status);
     }
 }

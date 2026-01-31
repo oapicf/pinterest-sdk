@@ -4,12 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
+**AdId** | Pointer to **[]string** | Ad ID for engagement audience filter. | [optional] 
+**CampaignId** | Pointer to **[]string** | Campaign ID for engagement audience filter. | [optional] 
 **Country** | Pointer to **string** | Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. | [optional] 
 **CustomerListId** | Pointer to **string** | Customer list ID. For CUSTOMER_LIST &#x60;audience_type&#x60;. | [optional] 
 **EngagementDomain** | Pointer to **[]string** | The audience account&#39;s verified domain. **Required** for ENGAGEMENT &#x60;audience_type&#x60;. | [optional] 
 **EngagementType** | Pointer to **string** | Engagement type enum. Optional for ENGAGEMENT &#x60;audience_type&#x60;. Supported values are &#x60;click&#x60;, &#x60;save&#x60;, &#x60;closeup&#x60;, &#x60;comment&#x60; and &#x60;like&#x60;. All engagements are included if this field is not set.  | [optional] 
+**EngagerType** | Pointer to **int32** | Optional for ENGAGEMENT. Engager type value should be 1-2. | [optional] 
 **Event** | Pointer to **string** | A Pinterest tag event. Optional for VISITOR &#x60;audience_type&#x60;. Possible values are &#x60;pagevisit&#x60;, &#x60;signup&#x60;, &#x60;checkout&#x60;, &#x60;viewcategory&#x60;, &#x60;search&#x60;, &#x60;addtocart&#x60;, &#x60;watchvideo&#x60;, &#x60;lead&#x60;, and &#x60;custom&#x60;. This field also accepts a partner-defined Pinterest tag event. | [optional] 
-**EventData** | Pointer to [**PinterestTagEventData**](PinterestTagEventData.md) |  | [optional] 
+**EventData** | Pointer to [**EventData**](EventData.md) |  | [optional] 
+**EventSource** | Pointer to **map[string]interface{}** | Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline | [optional] 
+**IngestionSource** | Pointer to **map[string]interface{}** | Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api | [optional] 
+**ObjectiveType** | Pointer to [**[]ObjectiveType**](ObjectiveType.md) | Objective for engagement audience filter. | [optional] 
 **Percentage** | Pointer to **int32** | Percentage should be 1-10. The targeted audience should be this % size across Pinterest. | [optional] 
 **PinId** | Pointer to **[]string** | IDs of engaged organic pins. Optional for ENGAGEMENT &#x60;audience_type&#x60;. For example, \&quot;pin_id:\&quot;: [\&quot;34567\&quot;] | [optional] 
 **Prefill** | Pointer to **bool** | Optional for VISITOR &#x60;audience_type&#x60;. If &#x60;true&#x60;, the specified rule on existing engagement data is applied to pre-populate the audience. If &#x60;false&#x60;, the audience is empty at creation time. The default is &#x60;true&#x60;. | [optional] 
@@ -17,13 +24,6 @@ Name | Type | Description | Notes
 **SeedId** | Pointer to **[]string** | Audience ID(s). For ACTALIKE &#x60;audience_type&#x60;.  | [optional] 
 **Url** | Pointer to **[]string** | Optional for ENGAGEMENT or VISITOR &#x60;audience_type&#x60;. For ENGAGEMENT, it is the engaged pin&#39;s URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ &#x3D;, !&#x3D;, contains, not_contains].&lt;br&gt;Example 1:  \&quot;url\&quot;: \&quot;http://www.myonlinestore123.com/view_item/shoe\&quot;&lt;br&gt;Example 2: \&quot;url\&quot;: {\&quot;contains\&quot;: \&quot;/view_item/shoe\&quot;} | [optional] 
 **VisitorSourceId** | Pointer to **string** | The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR &#x60;audience_type&#x60;. | [optional] 
-**EventSource** | Pointer to **map[string]interface{}** | Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline | [optional] 
-**IngestionSource** | Pointer to **map[string]interface{}** | Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api | [optional] 
-**EngagerType** | Pointer to **int32** | Optional for ENGAGEMENT. Engager type value should be 1-2. | [optional] 
-**CampaignId** | Pointer to **[]string** | Campaign ID for engagement audience filter. | [optional] 
-**AdId** | Pointer to **[]string** | Ad ID for engagement audience filter. | [optional] 
-**ObjectiveType** | Pointer to [**[]ObjectiveType**](ObjectiveType.md) | Objective for engagement audience filter. | [optional] 
-**AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
 
 ## Methods
 
@@ -43,6 +43,81 @@ will change when the set of required properties is changed
 NewAudienceRuleWithDefaults instantiates a new AudienceRule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAdAccountId
+
+`func (o *AudienceRule) GetAdAccountId() string`
+
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
+
+### GetAdAccountIdOk
+
+`func (o *AudienceRule) GetAdAccountIdOk() (*string, bool)`
+
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdAccountId
+
+`func (o *AudienceRule) SetAdAccountId(v string)`
+
+SetAdAccountId sets AdAccountId field to given value.
+
+### HasAdAccountId
+
+`func (o *AudienceRule) HasAdAccountId() bool`
+
+HasAdAccountId returns a boolean if a field has been set.
+
+### GetAdId
+
+`func (o *AudienceRule) GetAdId() []string`
+
+GetAdId returns the AdId field if non-nil, zero value otherwise.
+
+### GetAdIdOk
+
+`func (o *AudienceRule) GetAdIdOk() (*[]string, bool)`
+
+GetAdIdOk returns a tuple with the AdId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdId
+
+`func (o *AudienceRule) SetAdId(v []string)`
+
+SetAdId sets AdId field to given value.
+
+### HasAdId
+
+`func (o *AudienceRule) HasAdId() bool`
+
+HasAdId returns a boolean if a field has been set.
+
+### GetCampaignId
+
+`func (o *AudienceRule) GetCampaignId() []string`
+
+GetCampaignId returns the CampaignId field if non-nil, zero value otherwise.
+
+### GetCampaignIdOk
+
+`func (o *AudienceRule) GetCampaignIdOk() (*[]string, bool)`
+
+GetCampaignIdOk returns a tuple with the CampaignId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCampaignId
+
+`func (o *AudienceRule) SetCampaignId(v []string)`
+
+SetCampaignId sets CampaignId field to given value.
+
+### HasCampaignId
+
+`func (o *AudienceRule) HasCampaignId() bool`
+
+HasCampaignId returns a boolean if a field has been set.
 
 ### GetCountry
 
@@ -144,6 +219,31 @@ SetEngagementType sets EngagementType field to given value.
 
 HasEngagementType returns a boolean if a field has been set.
 
+### GetEngagerType
+
+`func (o *AudienceRule) GetEngagerType() int32`
+
+GetEngagerType returns the EngagerType field if non-nil, zero value otherwise.
+
+### GetEngagerTypeOk
+
+`func (o *AudienceRule) GetEngagerTypeOk() (*int32, bool)`
+
+GetEngagerTypeOk returns a tuple with the EngagerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEngagerType
+
+`func (o *AudienceRule) SetEngagerType(v int32)`
+
+SetEngagerType sets EngagerType field to given value.
+
+### HasEngagerType
+
+`func (o *AudienceRule) HasEngagerType() bool`
+
+HasEngagerType returns a boolean if a field has been set.
+
 ### GetEvent
 
 `func (o *AudienceRule) GetEvent() string`
@@ -171,20 +271,20 @@ HasEvent returns a boolean if a field has been set.
 
 ### GetEventData
 
-`func (o *AudienceRule) GetEventData() PinterestTagEventData`
+`func (o *AudienceRule) GetEventData() EventData`
 
 GetEventData returns the EventData field if non-nil, zero value otherwise.
 
 ### GetEventDataOk
 
-`func (o *AudienceRule) GetEventDataOk() (*PinterestTagEventData, bool)`
+`func (o *AudienceRule) GetEventDataOk() (*EventData, bool)`
 
 GetEventDataOk returns a tuple with the EventData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEventData
 
-`func (o *AudienceRule) SetEventData(v PinterestTagEventData)`
+`func (o *AudienceRule) SetEventData(v EventData)`
 
 SetEventData sets EventData field to given value.
 
@@ -193,6 +293,81 @@ SetEventData sets EventData field to given value.
 `func (o *AudienceRule) HasEventData() bool`
 
 HasEventData returns a boolean if a field has been set.
+
+### GetEventSource
+
+`func (o *AudienceRule) GetEventSource() map[string]interface{}`
+
+GetEventSource returns the EventSource field if non-nil, zero value otherwise.
+
+### GetEventSourceOk
+
+`func (o *AudienceRule) GetEventSourceOk() (*map[string]interface{}, bool)`
+
+GetEventSourceOk returns a tuple with the EventSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventSource
+
+`func (o *AudienceRule) SetEventSource(v map[string]interface{})`
+
+SetEventSource sets EventSource field to given value.
+
+### HasEventSource
+
+`func (o *AudienceRule) HasEventSource() bool`
+
+HasEventSource returns a boolean if a field has been set.
+
+### GetIngestionSource
+
+`func (o *AudienceRule) GetIngestionSource() map[string]interface{}`
+
+GetIngestionSource returns the IngestionSource field if non-nil, zero value otherwise.
+
+### GetIngestionSourceOk
+
+`func (o *AudienceRule) GetIngestionSourceOk() (*map[string]interface{}, bool)`
+
+GetIngestionSourceOk returns a tuple with the IngestionSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIngestionSource
+
+`func (o *AudienceRule) SetIngestionSource(v map[string]interface{})`
+
+SetIngestionSource sets IngestionSource field to given value.
+
+### HasIngestionSource
+
+`func (o *AudienceRule) HasIngestionSource() bool`
+
+HasIngestionSource returns a boolean if a field has been set.
+
+### GetObjectiveType
+
+`func (o *AudienceRule) GetObjectiveType() []ObjectiveType`
+
+GetObjectiveType returns the ObjectiveType field if non-nil, zero value otherwise.
+
+### GetObjectiveTypeOk
+
+`func (o *AudienceRule) GetObjectiveTypeOk() (*[]ObjectiveType, bool)`
+
+GetObjectiveTypeOk returns a tuple with the ObjectiveType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectiveType
+
+`func (o *AudienceRule) SetObjectiveType(v []ObjectiveType)`
+
+SetObjectiveType sets ObjectiveType field to given value.
+
+### HasObjectiveType
+
+`func (o *AudienceRule) HasObjectiveType() bool`
+
+HasObjectiveType returns a boolean if a field has been set.
 
 ### GetPercentage
 
@@ -368,181 +543,6 @@ SetVisitorSourceId sets VisitorSourceId field to given value.
 `func (o *AudienceRule) HasVisitorSourceId() bool`
 
 HasVisitorSourceId returns a boolean if a field has been set.
-
-### GetEventSource
-
-`func (o *AudienceRule) GetEventSource() map[string]interface{}`
-
-GetEventSource returns the EventSource field if non-nil, zero value otherwise.
-
-### GetEventSourceOk
-
-`func (o *AudienceRule) GetEventSourceOk() (*map[string]interface{}, bool)`
-
-GetEventSourceOk returns a tuple with the EventSource field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventSource
-
-`func (o *AudienceRule) SetEventSource(v map[string]interface{})`
-
-SetEventSource sets EventSource field to given value.
-
-### HasEventSource
-
-`func (o *AudienceRule) HasEventSource() bool`
-
-HasEventSource returns a boolean if a field has been set.
-
-### GetIngestionSource
-
-`func (o *AudienceRule) GetIngestionSource() map[string]interface{}`
-
-GetIngestionSource returns the IngestionSource field if non-nil, zero value otherwise.
-
-### GetIngestionSourceOk
-
-`func (o *AudienceRule) GetIngestionSourceOk() (*map[string]interface{}, bool)`
-
-GetIngestionSourceOk returns a tuple with the IngestionSource field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIngestionSource
-
-`func (o *AudienceRule) SetIngestionSource(v map[string]interface{})`
-
-SetIngestionSource sets IngestionSource field to given value.
-
-### HasIngestionSource
-
-`func (o *AudienceRule) HasIngestionSource() bool`
-
-HasIngestionSource returns a boolean if a field has been set.
-
-### GetEngagerType
-
-`func (o *AudienceRule) GetEngagerType() int32`
-
-GetEngagerType returns the EngagerType field if non-nil, zero value otherwise.
-
-### GetEngagerTypeOk
-
-`func (o *AudienceRule) GetEngagerTypeOk() (*int32, bool)`
-
-GetEngagerTypeOk returns a tuple with the EngagerType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEngagerType
-
-`func (o *AudienceRule) SetEngagerType(v int32)`
-
-SetEngagerType sets EngagerType field to given value.
-
-### HasEngagerType
-
-`func (o *AudienceRule) HasEngagerType() bool`
-
-HasEngagerType returns a boolean if a field has been set.
-
-### GetCampaignId
-
-`func (o *AudienceRule) GetCampaignId() []string`
-
-GetCampaignId returns the CampaignId field if non-nil, zero value otherwise.
-
-### GetCampaignIdOk
-
-`func (o *AudienceRule) GetCampaignIdOk() (*[]string, bool)`
-
-GetCampaignIdOk returns a tuple with the CampaignId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCampaignId
-
-`func (o *AudienceRule) SetCampaignId(v []string)`
-
-SetCampaignId sets CampaignId field to given value.
-
-### HasCampaignId
-
-`func (o *AudienceRule) HasCampaignId() bool`
-
-HasCampaignId returns a boolean if a field has been set.
-
-### GetAdId
-
-`func (o *AudienceRule) GetAdId() []string`
-
-GetAdId returns the AdId field if non-nil, zero value otherwise.
-
-### GetAdIdOk
-
-`func (o *AudienceRule) GetAdIdOk() (*[]string, bool)`
-
-GetAdIdOk returns a tuple with the AdId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdId
-
-`func (o *AudienceRule) SetAdId(v []string)`
-
-SetAdId sets AdId field to given value.
-
-### HasAdId
-
-`func (o *AudienceRule) HasAdId() bool`
-
-HasAdId returns a boolean if a field has been set.
-
-### GetObjectiveType
-
-`func (o *AudienceRule) GetObjectiveType() []ObjectiveType`
-
-GetObjectiveType returns the ObjectiveType field if non-nil, zero value otherwise.
-
-### GetObjectiveTypeOk
-
-`func (o *AudienceRule) GetObjectiveTypeOk() (*[]ObjectiveType, bool)`
-
-GetObjectiveTypeOk returns a tuple with the ObjectiveType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetObjectiveType
-
-`func (o *AudienceRule) SetObjectiveType(v []ObjectiveType)`
-
-SetObjectiveType sets ObjectiveType field to given value.
-
-### HasObjectiveType
-
-`func (o *AudienceRule) HasObjectiveType() bool`
-
-HasObjectiveType returns a boolean if a field has been set.
-
-### GetAdAccountId
-
-`func (o *AudienceRule) GetAdAccountId() string`
-
-GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
-
-### GetAdAccountIdOk
-
-`func (o *AudienceRule) GetAdAccountIdOk() (*string, bool)`
-
-GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAccountId
-
-`func (o *AudienceRule) SetAdAccountId(v string)`
-
-SetAdAccountId sets AdAccountId field to given value.
-
-### HasAdAccountId
-
-`func (o *AudienceRule) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

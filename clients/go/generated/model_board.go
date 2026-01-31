@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,25 +21,29 @@ import (
 // checks if the Board type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Board{}
 
-// Board Board
+// Board struct for Board
 type Board struct {
-	Id *string `json:"id,omitempty"`
-	// Date and time of board creation.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Date and time of last board pins modified.
 	BoardPinsModifiedAt *time.Time `json:"board_pins_modified_at,omitempty"`
-	Name string `json:"name"`
-	Description NullableString `json:"description,omitempty"`
 	// Count of collaborators on the board.
 	CollaboratorCount *int32 `json:"collaborator_count,omitempty"`
-	// Count of pins on the board.
-	PinCount *int32 `json:"pin_count,omitempty"`
+	// Date and time of board creation.
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// Board follower count.
 	FollowerCount *int32 `json:"follower_count,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	// If set to `true`, the board will be ad-only and can store ad-only Pins.
+	IsAdsOnly *bool `json:"is_ads_only,omitempty"`
+	// Board media.
 	Media *BoardMedia `json:"media,omitempty"`
+	//      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	Name string `json:"name"`
 	Owner *BoardOwner `json:"owner,omitempty"`
-	// Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
-	Privacy *string `json:"privacy,omitempty"`
+	// Count of Pins on the board.
+	PinCount *int32 `json:"pin_count,omitempty"`
+	//     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
+	Privacy *BoardPrivacy `json:"privacy,omitempty"`
 }
 
 type _Board Board
@@ -48,10 +52,13 @@ type _Board Board
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBoard(name string) *Board {
+func NewBoard(id string, name string) *Board {
 	this := Board{}
+	this.Id = id
+	var isAdsOnly bool = false
+	this.IsAdsOnly = &isAdsOnly
 	this.Name = name
-	var privacy string = "PUBLIC"
+	var privacy BoardPrivacy = PUBLIC
 	this.Privacy = &privacy
 	return &this
 }
@@ -61,73 +68,11 @@ func NewBoard(name string) *Board {
 // but it doesn't guarantee that properties required by API are set
 func NewBoardWithDefaults() *Board {
 	this := Board{}
-	var privacy string = "PUBLIC"
+	var isAdsOnly bool = false
+	this.IsAdsOnly = &isAdsOnly
+	var privacy BoardPrivacy = PUBLIC
 	this.Privacy = &privacy
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Board) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Board) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Board) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Board) SetId(v string) {
-	o.Id = &v
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Board) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Board) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *Board) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *Board) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
 }
 
 // GetBoardPinsModifiedAt returns the BoardPinsModifiedAt field value if set, zero value otherwise.
@@ -162,28 +107,68 @@ func (o *Board) SetBoardPinsModifiedAt(v time.Time) {
 	o.BoardPinsModifiedAt = &v
 }
 
-// GetName returns the Name field value
-func (o *Board) GetName() string {
-	if o == nil {
-		var ret string
+// GetCollaboratorCount returns the CollaboratorCount field value if set, zero value otherwise.
+func (o *Board) GetCollaboratorCount() int32 {
+	if o == nil || IsNil(o.CollaboratorCount) {
+		var ret int32
 		return ret
 	}
-
-	return o.Name
+	return *o.CollaboratorCount
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetCollaboratorCountOk returns a tuple with the CollaboratorCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Board) GetNameOk() (*string, bool) {
-	if o == nil {
+func (o *Board) GetCollaboratorCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.CollaboratorCount) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.CollaboratorCount, true
 }
 
-// SetName sets field value
-func (o *Board) SetName(v string) {
-	o.Name = v
+// HasCollaboratorCount returns a boolean if a field has been set.
+func (o *Board) HasCollaboratorCount() bool {
+	if o != nil && !IsNil(o.CollaboratorCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollaboratorCount gets a reference to the given int32 and assigns it to the CollaboratorCount field.
+func (o *Board) SetCollaboratorCount(v int32) {
+	o.CollaboratorCount = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *Board) GetCreatedAt() time.Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Board) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *Board) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Board) SetCreatedAt(v time.Time) {
+	o.CreatedAt = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -228,70 +213,6 @@ func (o *Board) UnsetDescription() {
 	o.Description.Unset()
 }
 
-// GetCollaboratorCount returns the CollaboratorCount field value if set, zero value otherwise.
-func (o *Board) GetCollaboratorCount() int32 {
-	if o == nil || IsNil(o.CollaboratorCount) {
-		var ret int32
-		return ret
-	}
-	return *o.CollaboratorCount
-}
-
-// GetCollaboratorCountOk returns a tuple with the CollaboratorCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Board) GetCollaboratorCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.CollaboratorCount) {
-		return nil, false
-	}
-	return o.CollaboratorCount, true
-}
-
-// HasCollaboratorCount returns a boolean if a field has been set.
-func (o *Board) HasCollaboratorCount() bool {
-	if o != nil && !IsNil(o.CollaboratorCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetCollaboratorCount gets a reference to the given int32 and assigns it to the CollaboratorCount field.
-func (o *Board) SetCollaboratorCount(v int32) {
-	o.CollaboratorCount = &v
-}
-
-// GetPinCount returns the PinCount field value if set, zero value otherwise.
-func (o *Board) GetPinCount() int32 {
-	if o == nil || IsNil(o.PinCount) {
-		var ret int32
-		return ret
-	}
-	return *o.PinCount
-}
-
-// GetPinCountOk returns a tuple with the PinCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Board) GetPinCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.PinCount) {
-		return nil, false
-	}
-	return o.PinCount, true
-}
-
-// HasPinCount returns a boolean if a field has been set.
-func (o *Board) HasPinCount() bool {
-	if o != nil && !IsNil(o.PinCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetPinCount gets a reference to the given int32 and assigns it to the PinCount field.
-func (o *Board) SetPinCount(v int32) {
-	o.PinCount = &v
-}
-
 // GetFollowerCount returns the FollowerCount field value if set, zero value otherwise.
 func (o *Board) GetFollowerCount() int32 {
 	if o == nil || IsNil(o.FollowerCount) {
@@ -322,6 +243,62 @@ func (o *Board) HasFollowerCount() bool {
 // SetFollowerCount gets a reference to the given int32 and assigns it to the FollowerCount field.
 func (o *Board) SetFollowerCount(v int32) {
 	o.FollowerCount = &v
+}
+
+// GetId returns the Id field value
+func (o *Board) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *Board) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *Board) SetId(v string) {
+	o.Id = v
+}
+
+// GetIsAdsOnly returns the IsAdsOnly field value if set, zero value otherwise.
+func (o *Board) GetIsAdsOnly() bool {
+	if o == nil || IsNil(o.IsAdsOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAdsOnly
+}
+
+// GetIsAdsOnlyOk returns a tuple with the IsAdsOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Board) GetIsAdsOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAdsOnly) {
+		return nil, false
+	}
+	return o.IsAdsOnly, true
+}
+
+// HasIsAdsOnly returns a boolean if a field has been set.
+func (o *Board) HasIsAdsOnly() bool {
+	if o != nil && !IsNil(o.IsAdsOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAdsOnly gets a reference to the given bool and assigns it to the IsAdsOnly field.
+func (o *Board) SetIsAdsOnly(v bool) {
+	o.IsAdsOnly = &v
 }
 
 // GetMedia returns the Media field value if set, zero value otherwise.
@@ -356,6 +333,30 @@ func (o *Board) SetMedia(v BoardMedia) {
 	o.Media = &v
 }
 
+// GetName returns the Name field value
+func (o *Board) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *Board) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *Board) SetName(v string) {
+	o.Name = v
+}
+
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *Board) GetOwner() BoardOwner {
 	if o == nil || IsNil(o.Owner) {
@@ -388,10 +389,42 @@ func (o *Board) SetOwner(v BoardOwner) {
 	o.Owner = &v
 }
 
+// GetPinCount returns the PinCount field value if set, zero value otherwise.
+func (o *Board) GetPinCount() int32 {
+	if o == nil || IsNil(o.PinCount) {
+		var ret int32
+		return ret
+	}
+	return *o.PinCount
+}
+
+// GetPinCountOk returns a tuple with the PinCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Board) GetPinCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.PinCount) {
+		return nil, false
+	}
+	return o.PinCount, true
+}
+
+// HasPinCount returns a boolean if a field has been set.
+func (o *Board) HasPinCount() bool {
+	if o != nil && !IsNil(o.PinCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetPinCount gets a reference to the given int32 and assigns it to the PinCount field.
+func (o *Board) SetPinCount(v int32) {
+	o.PinCount = &v
+}
+
 // GetPrivacy returns the Privacy field value if set, zero value otherwise.
-func (o *Board) GetPrivacy() string {
+func (o *Board) GetPrivacy() BoardPrivacy {
 	if o == nil || IsNil(o.Privacy) {
-		var ret string
+		var ret BoardPrivacy
 		return ret
 	}
 	return *o.Privacy
@@ -399,7 +432,7 @@ func (o *Board) GetPrivacy() string {
 
 // GetPrivacyOk returns a tuple with the Privacy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Board) GetPrivacyOk() (*string, bool) {
+func (o *Board) GetPrivacyOk() (*BoardPrivacy, bool) {
 	if o == nil || IsNil(o.Privacy) {
 		return nil, false
 	}
@@ -415,8 +448,8 @@ func (o *Board) HasPrivacy() bool {
 	return false
 }
 
-// SetPrivacy gets a reference to the given string and assigns it to the Privacy field.
-func (o *Board) SetPrivacy(v string) {
+// SetPrivacy gets a reference to the given BoardPrivacy and assigns it to the Privacy field.
+func (o *Board) SetPrivacy(v BoardPrivacy) {
 	o.Privacy = &v
 }
 
@@ -430,33 +463,34 @@ func (o Board) MarshalJSON() ([]byte, error) {
 
 func (o Board) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
 	if !IsNil(o.BoardPinsModifiedAt) {
 		toSerialize["board_pins_modified_at"] = o.BoardPinsModifiedAt
-	}
-	toSerialize["name"] = o.Name
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.CollaboratorCount) {
 		toSerialize["collaborator_count"] = o.CollaboratorCount
 	}
-	if !IsNil(o.PinCount) {
-		toSerialize["pin_count"] = o.PinCount
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.FollowerCount) {
 		toSerialize["follower_count"] = o.FollowerCount
 	}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.IsAdsOnly) {
+		toSerialize["is_ads_only"] = o.IsAdsOnly
+	}
 	if !IsNil(o.Media) {
 		toSerialize["media"] = o.Media
 	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
+	}
+	if !IsNil(o.PinCount) {
+		toSerialize["pin_count"] = o.PinCount
 	}
 	if !IsNil(o.Privacy) {
 		toSerialize["privacy"] = o.Privacy
@@ -469,6 +503,7 @@ func (o *Board) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"id",
 		"name",
 	}
 

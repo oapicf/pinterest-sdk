@@ -4,7 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner
+import org.openapitools.model.PinMediaSourceImagesURLItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -17,9 +17,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  * @param items Array with image objects.
- * @param sourceType 
+ * @param sourceType The source type of the media.
  * @param index 
  */
 data class PinMediaSourceImagesURL(
@@ -27,10 +27,10 @@ data class PinMediaSourceImagesURL(
     @field:Valid
     @get:Size(min=2,max=5) 
     @Schema(example = "null", required = true, description = "Array with image objects.")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<PinMediaSourceImagesURLItemsInner>,
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<PinMediaSourceImagesURLItem>,
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("source_type") val sourceType: PinMediaSourceImagesURL.SourceType? = null,
+    @Schema(example = "null", required = true, description = "The source type of the media.")
+    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceImagesURL.SourceType,
 
     @get:Min(value=0)
     @Schema(example = "null", description = "")
@@ -38,7 +38,7 @@ data class PinMediaSourceImagesURL(
 ) {
 
     /**
-    * 
+    * The source type of the media.
     * Values: multiple_image_urls
     */
     enum class SourceType(@get:JsonValue val value: kotlin.String) {

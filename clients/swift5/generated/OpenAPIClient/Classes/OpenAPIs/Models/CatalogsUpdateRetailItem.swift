@@ -16,24 +16,24 @@ public struct CatalogsUpdateRetailItem: Codable, JSONEncodable, Hashable {
     public enum Operation: String, Codable, CaseIterable {
         case update = "UPDATE"
     }
+    public var attributes: UpdatableItemAttributes
     /** The catalog item id in the merchant namespace */
     public var itemId: String
     public var operation: Operation
-    public var attributes: UpdatableItemAttributes
     /** The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     public var updateMask: [UpdateMaskFieldType]?
 
-    public init(itemId: String, operation: Operation, attributes: UpdatableItemAttributes, updateMask: [UpdateMaskFieldType]? = nil) {
+    public init(attributes: UpdatableItemAttributes, itemId: String, operation: Operation, updateMask: [UpdateMaskFieldType]? = nil) {
+        self.attributes = attributes
         self.itemId = itemId
         self.operation = operation
-        self.attributes = attributes
         self.updateMask = updateMask
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case attributes
         case itemId = "item_id"
         case operation
-        case attributes
         case updateMask = "update_mask"
     }
 
@@ -41,9 +41,9 @@ public struct CatalogsUpdateRetailItem: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(attributes, forKey: .attributes)
         try container.encode(itemId, forKey: .itemId)
         try container.encode(operation, forKey: .operation)
-        try container.encode(attributes, forKey: .attributes)
         try container.encodeIfPresent(updateMask, forKey: .updateMask)
     }
 }

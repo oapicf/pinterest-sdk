@@ -353,14 +353,14 @@ Name | Type | Description  | Notes
 
 # **boardsCreate**
 ```objc
--(NSURLSessionTask*) boardsCreateWithBoard: (OAIBoard*) board
+-(NSURLSessionTask*) boardsCreateWithBoardCreate: (OAIBoardCreate*) boardCreate
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAIBoard* output, NSError* error)) handler;
 ```
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```objc
@@ -369,14 +369,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
-OAIBoard* board = [[OAIBoard alloc] init]; // Create a board using a single board json object.
+
+OAIBoardCreate* boardCreate = [[OAIBoardCreate alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 // Create board
-[apiInstance boardsCreateWithBoard:board
+[apiInstance boardsCreateWithBoardCreate:boardCreate
               adAccountId:adAccountId
           completionHandler: ^(OAIBoard* output, NSError* error) {
                         if (output) {
@@ -392,7 +395,7 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**OAIBoard***](OAIBoard.md)| Create a board using a single board json object. | 
+ **boardCreate** | [**OAIBoardCreate***](OAIBoardCreate.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -401,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -419,7 +422,7 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```objc
@@ -429,7 +432,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* boardId = @"boardId_example"; // Unique identifier of a board.
+NSString* boardId = @"boardId_example"; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
@@ -448,7 +451,7 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **NSString***| Unique identifier of a board. | 
+ **boardId** | **NSString***|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -475,7 +478,7 @@ void (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```objc
@@ -488,7 +491,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* boardId = @"boardId_example"; // Unique identifier of a board.
+NSString* boardId = @"boardId_example"; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
@@ -510,7 +513,7 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **NSString***| Unique identifier of a board. | 
+ **boardId** | **NSString***|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -531,15 +534,15 @@ Name | Type | Description  | Notes
 # **boardsList**
 ```objc
 -(NSURLSessionTask*) boardsListWithAdAccountId: (NSString*) adAccountId
+    privacy: (OAIBoardPrivacyFilter) privacy
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    privacy: (NSString*) privacy
         completionHandler: (void (^)(OAIBoardsList200Response* output, NSError* error)) handler;
 ```
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 ```objc
@@ -553,17 +556,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+OAIBoardPrivacyFilter privacy = [[OAIBoardPrivacyFilter alloc] init]; // The privacy level of the board (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* privacy = @"privacy_example"; // Privacy setting for a board. (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 // List boards
 [apiInstance boardsListWithAdAccountId:adAccountId
+              privacy:privacy
               bookmark:bookmark
               pageSize:pageSize
-              privacy:privacy
           completionHandler: ^(OAIBoardsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -579,9 +582,9 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **privacy** | [**OAIBoardPrivacyFilter**](.md)| The privacy level of the board | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **privacy** | **NSString***| Privacy setting for a board. | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -603,7 +606,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) boardsListPinsWithBoardId: (NSString*) boardId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    creativeTypes: (NSArray<NSString*>*) creativeTypes
+    creativeTypes: (NSArray<OAICreativeType>*) creativeTypes
     adAccountId: (NSString*) adAccountId
     pinMetrics: (NSNumber*) pinMetrics
         completionHandler: (void (^)(OAIBoardsListPins200Response* output, NSError* error)) handler;
@@ -627,9 +630,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
 NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSArray<NSString*>* creativeTypes = @[@"creativeTypes_example"]; // Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+NSArray<OAICreativeType>* creativeTypes = @[[[OAICreativeType alloc] init]]; // Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
-NSNumber* pinMetrics = @(NO); // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to @(NO))
+NSNumber* pinMetrics = @(NO); // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to @(NO))
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
@@ -657,9 +660,9 @@ Name | Type | Description  | Notes
  **boardId** | **NSString***| Unique identifier of a board. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
  **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **creativeTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
+ **creativeTypes** | [**NSArray&lt;OAICreativeType&gt;***](OAICreativeType*.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
- **pinMetrics** | **NSNumber***| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to @(NO)]
+ **pinMetrics** | **NSNumber***| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -679,14 +682,14 @@ Name | Type | Description  | Notes
 # **boardsUpdate**
 ```objc
 -(NSURLSessionTask*) boardsUpdateWithBoardId: (NSString*) boardId
-    boardUpdate: (OAIBoardUpdate*) boardUpdate
+    boardWithUpdatePrivacyUpdate: (OAIBoardWithUpdatePrivacyUpdate*) boardWithUpdatePrivacyUpdate
     adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAIBoard* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIBoardWithUpdatePrivacy* output, NSError* error)) handler;
 ```
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```objc
@@ -695,18 +698,21 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
-NSString* boardId = @"boardId_example"; // Unique identifier of a board.
-OAIBoardUpdate* boardUpdate = [[OAIBoardUpdate alloc] init]; // Update a board.
+
+NSString* boardId = @"boardId_example"; // 
+OAIBoardWithUpdatePrivacyUpdate* boardWithUpdatePrivacyUpdate = [[OAIBoardWithUpdatePrivacyUpdate alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 // Update board
 [apiInstance boardsUpdateWithBoardId:boardId
-              boardUpdate:boardUpdate
+              boardWithUpdatePrivacyUpdate:boardWithUpdatePrivacyUpdate
               adAccountId:adAccountId
-          completionHandler: ^(OAIBoard* output, NSError* error) {
+          completionHandler: ^(OAIBoardWithUpdatePrivacy* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -720,17 +726,17 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **NSString***| Unique identifier of a board. | 
- **boardUpdate** | [**OAIBoardUpdate***](OAIBoardUpdate.md)| Update a board. | 
+ **boardId** | **NSString***|  | 
+ **boardWithUpdatePrivacyUpdate** | [**OAIBoardWithUpdatePrivacyUpdate***](OAIBoardWithUpdatePrivacyUpdate.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**OAIBoard***](OAIBoard.md)
+[**OAIBoardWithUpdatePrivacy***](OAIBoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

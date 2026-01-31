@@ -8,8 +8,8 @@ The class is defined in **[CatalogsProductGroupsList200Response.java](../../src/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CatalogsVerticalProductGroup&gt;`](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;CatalogsVerticalProductGroup&gt;`](CatalogsVerticalProductGroup.md) |  | 
 
 
 

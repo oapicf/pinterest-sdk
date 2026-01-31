@@ -14,10 +14,10 @@ module CatalogsRetailItemErrorResponse =
   type CatalogsRetailItemErrorResponse = {
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : ItemValidationEvent[];
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
   }
 
   //#endregion

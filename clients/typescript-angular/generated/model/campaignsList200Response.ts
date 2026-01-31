@@ -11,7 +11,7 @@ import { CampaignResponse } from './campaignResponse';
 
 
 export interface CampaignsList200Response { 
-    items: Array<CampaignResponse>;
     bookmark?: string | null;
+    items: Array<CampaignResponse>;
 }
 

@@ -18,18 +18,18 @@ public class CreativeAssetsProcessingRecord   {
   
   private String creativeAssetsId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
-  private List<ItemValidationEvent> warnings = new ArrayList<>();
   private ItemProcessingStatus status;
+  private List<ItemValidationEvent> warnings = new ArrayList<>();
 
   public CreativeAssetsProcessingRecord () {
 
   }
 
-  public CreativeAssetsProcessingRecord (String creativeAssetsId, List<ItemValidationEvent> errors, List<ItemValidationEvent> warnings, ItemProcessingStatus status) {
+  public CreativeAssetsProcessingRecord (String creativeAssetsId, List<ItemValidationEvent> errors, ItemProcessingStatus status, List<ItemValidationEvent> warnings) {
     this.creativeAssetsId = creativeAssetsId;
     this.errors = errors;
-    this.warnings = warnings;
     this.status = status;
+    this.warnings = warnings;
   }
 
     
@@ -51,21 +51,21 @@ public class CreativeAssetsProcessingRecord   {
   }
 
     
-  @JsonProperty("warnings")
-  public List<ItemValidationEvent> getWarnings() {
-    return warnings;
-  }
-  public void setWarnings(List<ItemValidationEvent> warnings) {
-    this.warnings = warnings;
-  }
-
-    
   @JsonProperty("status")
   public ItemProcessingStatus getStatus() {
     return status;
   }
   public void setStatus(ItemProcessingStatus status) {
     this.status = status;
+  }
+
+    
+  @JsonProperty("warnings")
+  public List<ItemValidationEvent> getWarnings() {
+    return warnings;
+  }
+  public void setWarnings(List<ItemValidationEvent> warnings) {
+    this.warnings = warnings;
   }
 
 
@@ -80,13 +80,13 @@ public class CreativeAssetsProcessingRecord   {
     CreativeAssetsProcessingRecord creativeAssetsProcessingRecord = (CreativeAssetsProcessingRecord) o;
     return Objects.equals(creativeAssetsId, creativeAssetsProcessingRecord.creativeAssetsId) &&
         Objects.equals(errors, creativeAssetsProcessingRecord.errors) &&
-        Objects.equals(warnings, creativeAssetsProcessingRecord.warnings) &&
-        Objects.equals(status, creativeAssetsProcessingRecord.status);
+        Objects.equals(status, creativeAssetsProcessingRecord.status) &&
+        Objects.equals(warnings, creativeAssetsProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, errors, warnings, status);
+    return Objects.hash(creativeAssetsId, errors, status, warnings);
   }
 
   @Override
@@ -96,8 +96,8 @@ public class CreativeAssetsProcessingRecord   {
     
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

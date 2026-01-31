@@ -13,11 +13,11 @@ import { AdvancedAuctionBidOptions } from './advancedAuctionBidOptions';
 
 
 export interface AdvancedAuctionItem { 
+    country: Country;
     /**
      * The catalog retail item id in the merchant namespace
      */
     item_id: string;
-    country: Country;
     language: Language;
     bid_options: AdvancedAuctionBidOptions;
 }

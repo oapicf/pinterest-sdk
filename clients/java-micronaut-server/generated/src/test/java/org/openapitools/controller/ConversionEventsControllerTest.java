@@ -89,7 +89,7 @@ public class ConversionEventsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@35af2487");
+            .accept("[Ljava.lang.String;@3712d592");
         request.getParameters()
             .add("test", String.valueOf(false)); // The query parameter format should be 
 

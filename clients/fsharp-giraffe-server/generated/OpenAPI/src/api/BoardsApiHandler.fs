@@ -8,12 +8,17 @@ open BoardsApiHandlerParams
 open BoardsApiServiceInterface
 open BoardsApiServiceImplementation
 open OpenAPI.Model.Board
+open OpenAPI.Model.BoardCreate
+open OpenAPI.Model.BoardPrivacyFilter
 open OpenAPI.Model.BoardSection
 open OpenAPI.Model.BoardSectionsList200Response
-open OpenAPI.Model.BoardUpdate
+open OpenAPI.Model.BoardWithUpdatePrivacy
+open OpenAPI.Model.BoardWithUpdatePrivacyUpdate
 open OpenAPI.Model.BoardsList200Response
 open OpenAPI.Model.BoardsListPins200Response
+open OpenAPI.Model.CreativeType
 open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module BoardsApiHandler =
 
@@ -165,10 +170,20 @@ module BoardsApiHandler =
           let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : BoardsCreateArgs
           let result = BoardsApiService.BoardsCreate ctx serviceArgs
           return! (match result with
+                      | BoardsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | BoardsCreateStatusCode201 resolved ->
                             setStatusCode 201 >=> json resolved.content
                       | BoardsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BoardsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BoardsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BoardsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BoardsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -189,12 +204,14 @@ module BoardsApiHandler =
           return! (match result with
                       | BoardsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
+                      | BoardsDeleteStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardsDeleteStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | BoardsDeleteStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | BoardsDeleteStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | BoardsDeleteStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
                       | BoardsDeleteStatusCode429 resolved ->
                             setStatusCode 429 >=> json resolved.content
                       | BoardsDeleteDefaultStatusCode resolved ->
@@ -217,8 +234,16 @@ module BoardsApiHandler =
           return! (match result with
                       | BoardsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BoardsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BoardsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | BoardsGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | BoardsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -239,6 +264,16 @@ module BoardsApiHandler =
           return! (match result with
                       | BoardsListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BoardsListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BoardsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BoardsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BoardsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -285,8 +320,12 @@ module BoardsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | BoardsUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BoardsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | BoardsUpdateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | BoardsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
                       | BoardsUpdateStatusCode429 resolved ->
                             setStatusCode 429 >=> json resolved.content
                       | BoardsUpdateDefaultStatusCode resolved ->

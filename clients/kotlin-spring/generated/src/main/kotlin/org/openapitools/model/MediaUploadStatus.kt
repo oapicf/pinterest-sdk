@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Media upload status
+* 
 * Values: registered,processing,succeeded,failed
 */
 enum class MediaUploadStatus(@get:JsonValue val value: kotlin.String) {

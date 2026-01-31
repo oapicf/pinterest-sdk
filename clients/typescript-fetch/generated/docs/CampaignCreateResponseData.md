@@ -7,24 +7,26 @@
 Name | Type
 ------------ | -------------
 `adAccountId` | string
-`name` | string
-`status` | [EntityStatus](EntityStatus.md)
-`lifetimeSpendCap` | number
 `dailySpendCap` | number
-`orderLineId` | string
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`startTime` | number
 `endTime` | number
-`isFlexibleDailyBudgets` | boolean
-`defaultAdGroupBudgetInMicroCurrency` | number
 `isAutomatedCampaign` | boolean
-`id` | string
-`objectiveType` | [ObjectiveType](ObjectiveType.md)
-`createdTime` | number
-`updatedTime` | number
-`type` | string
+`isFlexibleDailyBudgets` | boolean
+`lifetimeSpendCap` | number
+`name` | string
+`orderLineId` | string
+`startTime` | number
+`status` | [EntityStatus](EntityStatus.md)
+`trackingUrls` | [TrackingUrls](TrackingUrls.md)
+`defaultAdGroupBudgetInMicroCurrency` | number
 `isCampaignBudgetOptimization` | boolean
+`id` | string
+`bidOptions` | [CampaignBidOptions](CampaignBidOptions.md)
+`createdTime` | number
+`isPerformancePlus` | boolean
+`objectiveType` | [ObjectiveType](ObjectiveType.md)
 `summaryStatus` | [CampaignSummaryStatus](CampaignSummaryStatus.md)
+`type` | string
+`updatedTime` | number
 
 ## Example
 
@@ -34,24 +36,26 @@ import type { CampaignCreateResponseData } from ''
 // TODO: Update the object below with actual values
 const example = {
   "adAccountId": 549755885175,
-  "name": ACME Tools,
-  "status": null,
-  "lifetimeSpendCap": 1432744744,
   "dailySpendCap": 1432744744,
-  "orderLineId": 549755885175,
-  "trackingUrls": null,
-  "startTime": 1580865126,
   "endTime": 1644023526,
-  "isFlexibleDailyBudgets": true,
-  "defaultAdGroupBudgetInMicroCurrency": 0,
   "isAutomatedCampaign": true,
-  "id": 549755885175,
-  "objectiveType": null,
-  "createdTime": 1432744744,
-  "updatedTime": 1432744744,
-  "type": campaign,
+  "isFlexibleDailyBudgets": true,
+  "lifetimeSpendCap": 1432744744,
+  "name": ACME Tools,
+  "orderLineId": 549755885175,
+  "startTime": 1580865126,
+  "status": null,
+  "trackingUrls": null,
+  "defaultAdGroupBudgetInMicroCurrency": 0,
   "isCampaignBudgetOptimization": true,
+  "id": 549755885175,
+  "bidOptions": null,
+  "createdTime": 1432744744,
+  "isPerformancePlus": true,
+  "objectiveType": null,
   "summaryStatus": null,
+  "type": campaign,
+  "updatedTime": 1432744744,
 } satisfies CampaignCreateResponseData
 
 console.log(example)

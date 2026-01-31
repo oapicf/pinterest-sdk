@@ -7,11 +7,11 @@ Request object for updating a catalog based product group.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **string** |  | [optional] [default to undefined]
-**name** | **string** |  | [optional] [default to undefined]
+**country** | [**Country**](Country.md) |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] [default to undefined]
-**country** | [**Country**](Country.md) |  | [optional] [default to undefined]
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] [default to undefined]
+**name** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,11 +20,11 @@ import { CatalogsVerticalProductGroupUpdateRequest } from './api';
 
 const instance: CatalogsVerticalProductGroupUpdateRequest = {
     catalog_type,
-    name,
+    country,
     description,
     filters,
-    country,
     locale,
+    name,
 };
 ```
 

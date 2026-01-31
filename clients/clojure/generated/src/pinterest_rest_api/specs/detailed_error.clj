@@ -9,8 +9,8 @@
 (def detailed-error-data
   {
    (ds/req :code) int?
-   (ds/req :message) string?
    (ds/req :details) any?
+   (ds/req :message) string?
    })
 
 (def detailed-error-spec

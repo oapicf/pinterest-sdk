@@ -12,22 +12,22 @@ import org.joda.time.DateTime
 import IntegrationRecord._
 
 case class IntegrationRecord (
-  id: Option[String],
-externalBusinessId: Option[String],
-connectedMerchantId: Option[String],
-connectedUserId: Option[String],
+  additionalId1: Option[String],
 connectedAdvertiserId: Option[String],
 connectedLbaId: Option[String],
+connectedMerchantId: Option[String],
 connectedTagId: Option[String],
+connectedUserId: Option[String],
+createdTime: Option[Integer],
+externalBusinessId: Option[String],
+id: Option[String],
 partnerAccessToken: Option[String],
-partnerRefreshToken: Option[String],
-partnerPrimaryEmail: Option[String],
 partnerAccessTokenExpiry: Option[Integer],
+partnerMetadata: Option[String],
+partnerPrimaryEmail: Option[String],
+partnerRefreshToken: Option[String],
 partnerRefreshTokenExpiry: Option[Integer],
 scopes: Option[String],
-partnerMetadata: Option[String],
-additionalId1: Option[String],
-createdTime: Option[Integer],
 updatedTime: Option[Integer])
 
 object IntegrationRecord {

@@ -22,7 +22,7 @@ import model.UserWebsitesGet200Response
 /**
   * Provides a default implementation for [[UserAccountApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class UserAccountApiImpl extends UserAccountApi {
   /**
     * @inheritdoc
@@ -30,7 +30,7 @@ class UserAccountApiImpl extends UserAccountApi {
   override def boardsUserFollowsList(bookmark: Option[String], pageSize: Option[Int], explicitFollowing: Option[Boolean], adAccountId: Option[String]): BoardsUserFollowsList200Response = {
     // TODO: Implement better logic
 
-    BoardsUserFollowsList200Response(List.empty[Board], None)
+    BoardsUserFollowsList200Response(None, List.empty[Board])
   }
 
   /**
@@ -48,7 +48,7 @@ class UserAccountApiImpl extends UserAccountApi {
   override def followersList(bookmark: Option[String], pageSize: Option[Int]): FollowersList200Response = {
     // TODO: Implement better logic
 
-    FollowersList200Response(List.empty[UserSummary], None)
+    FollowersList200Response(None, List.empty[UserSummary])
   }
 
   /**
@@ -102,7 +102,7 @@ class UserAccountApiImpl extends UserAccountApi {
   override def userAccountFollowedInterests(username: String, bookmark: Option[String], pageSize: Option[Int]): UserAccountFollowedInterests200Response = {
     // TODO: Implement better logic
 
-    UserAccountFollowedInterests200Response(List.empty[Interest], None)
+    UserAccountFollowedInterests200Response(None, List.empty[Interest])
   }
 
   /**
@@ -120,7 +120,7 @@ class UserAccountApiImpl extends UserAccountApi {
   override def userFollowingGet(bookmark: Option[String], pageSize: Option[Int], feedType: Option[UserFollowingFeedType], explicitFollowing: Option[Boolean], adAccountId: Option[String]): UserFollowingGet200Response = {
     // TODO: Implement better logic
 
-    UserFollowingGet200Response(List.empty[UserSummary], None)
+    UserFollowingGet200Response(None, List.empty[UserSummary])
   }
 
   /**
@@ -129,7 +129,7 @@ class UserAccountApiImpl extends UserAccountApi {
   override def userWebsitesGet(bookmark: Option[String], pageSize: Option[Int]): UserWebsitesGet200Response = {
     // TODO: Implement better logic
 
-    UserWebsitesGet200Response(List.empty[UserWebsiteSummary], None)
+    UserWebsitesGet200Response(None, List.empty[UserWebsiteSummary])
   }
 
   /**

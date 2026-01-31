@@ -6,7 +6,7 @@ Used for including extra details to a base error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **integer** |  | 
-**message** | **character** |  | 
 **details** | **object** |  | 
+**message** | **character** |  | 
 
 

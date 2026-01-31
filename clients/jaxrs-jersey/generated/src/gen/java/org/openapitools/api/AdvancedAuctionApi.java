@@ -33,7 +33,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the advanced_auction API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-31T04:54:42.155723473Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionApi  {
    private final AdvancedAuctionApiService delegate;
 
@@ -92,6 +92,7 @@ public class AdvancedAuctionApi  {
     }, tags={ "advanced_auction", })
     @io.swagger.annotations.ApiResponses(value = {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Response containing the results of the item bid options operations", response = AdvancedAuctionProcessedItems.class),
+        @io.swagger.annotations.ApiResponse(code = 206, message = "Response containing the results of the item bid options operations (where some/all operation results have errors)", response = AdvancedAuctionProcessedItems.class),
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid request parameters.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 401, message = "Not authenticated to post item bid options", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to post item bid options", response = Error.class),

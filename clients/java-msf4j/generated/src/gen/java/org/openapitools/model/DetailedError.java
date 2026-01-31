@@ -10,16 +10,16 @@ import io.swagger.annotations.ApiModelProperty;
  * Used for including extra details to a base error
  */
 @ApiModel(description = "Used for including extra details to a base error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DetailedError   {
   @JsonProperty("code")
   private Integer code;
 
-  @JsonProperty("message")
-  private String message;
-
   @JsonProperty("details")
   private Object details;
+
+  @JsonProperty("message")
+  private String message;
 
   public DetailedError code(Integer code) {
     this.code = code;
@@ -37,24 +37,6 @@ public class DetailedError   {
 
   public void setCode(Integer code) {
     this.code = code;
-  }
-
-  public DetailedError message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Get message
-   * @return message
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
   }
 
   public DetailedError details(Object details) {
@@ -75,6 +57,24 @@ public class DetailedError   {
     this.details = details;
   }
 
+  public DetailedError message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,13 +86,13 @@ public class DetailedError   {
     }
     DetailedError detailedError = (DetailedError) o;
     return Objects.equals(this.code, detailedError.code) &&
-        Objects.equals(this.message, detailedError.message) &&
-        Objects.equals(this.details, detailedError.details);
+        Objects.equals(this.details, detailedError.details) &&
+        Objects.equals(this.message, detailedError.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, details);
+    return Objects.hash(code, details, message);
   }
 
   @Override
@@ -101,8 +101,8 @@ public class DetailedError   {
     sb.append("class DetailedError {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

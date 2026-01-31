@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`assetGroupId` | string
 `code` | number
 `message` | string
-`assetGroupId` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { DeleteAssetGroupResponseExceptionsInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "assetGroupId": 666791336903426391,
   "code": 29,
   "message": You are not permitted to access that resource.,
-  "assetGroupId": 666791336903426391,
 } satisfies DeleteAssetGroupResponseExceptionsInner
 
 console.log(example)

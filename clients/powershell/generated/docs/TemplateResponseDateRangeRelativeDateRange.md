@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **String** | The date range type | [optional] 
-**StartDaysInPast** | **Decimal** | The start date of the date range | [optional] 
 **EndDaysInPast** | **Decimal** | The end date of the date range | [optional] 
+**StartDaysInPast** | **Decimal** | The start date of the date range | [optional] 
+**Type** | **String** | The date range type | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TemplateResponseDateRangeRelativeDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRangeRelativeDateRange  -Type relative `
+$TemplateResponseDateRangeRelativeDateRange = Initialize-PSOpenAPIToolsTemplateResponseDateRangeRelativeDateRange  -EndDaysInPast 7 `
  -StartDaysInPast 14 `
- -EndDaysInPast 7
+ -Type relative
 ```
 
 - Convert the resource to JSON

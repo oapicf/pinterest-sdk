@@ -3,6 +3,14 @@ Protected Class CreateAssetInvitesRequestItem
 
 	#tag Property, Flags = &h0
 		#tag Note
+			An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+		#tag EndNote
+		asset_id_to_permissions As Dictionary
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Unique identifier of an invite.
 		#tag EndNote
 		invite_id As String
@@ -11,14 +19,6 @@ Protected Class CreateAssetInvitesRequestItem
 
 	#tag Property, Flags = &h0
 		invite_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-		#tag EndNote
-		asset_id_to_permissions As Dictionary
 	#tag EndProperty
 
 
@@ -59,6 +59,14 @@ Protected Class CreateAssetInvitesRequestItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="asset_id_to_permissions"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Dictionary"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="invite_id"
 			Visible=false
 			Group="Behavior"
@@ -72,14 +80,6 @@ Protected Class CreateAssetInvitesRequestItem
 			Group="Behavior"
 			InitialValue=""
 			Type="InviteType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="asset_id_to_permissions"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Dictionary"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

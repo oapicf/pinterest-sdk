@@ -46,19 +46,19 @@ public class CatalogTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'catalogType'
      */
     @Test
     public void catalogTypeTest() {
         // TODO: test catalogType
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
 }

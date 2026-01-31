@@ -9,9 +9,11 @@ import org.openapitools._
 /**
  * An item to be deleted
  * @param itemUnderscoreid The catalog item id in the merchant namespace
+ * @param lastUnderscoreupdatedUnderscoretime The millisecond timestamp when the item was lastly modified by the merchant.
  * @param operation 
  */
 case class CatalogsDeleteRetailItem(itemUnderscoreid: String,
+                lastUnderscoreupdatedUnderscoretime: Option[Long],
                 operation: String
                 )
 

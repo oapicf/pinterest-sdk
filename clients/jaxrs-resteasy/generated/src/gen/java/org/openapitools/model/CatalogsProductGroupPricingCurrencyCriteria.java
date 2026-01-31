@@ -14,9 +14,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupPricingCurrencyCriteria   {
   
+  private NonNullableCatalogsCurrency currency;
+  private Boolean negated = false;
 
   /**
    * Gets or Sets operator
@@ -44,8 +46,32 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
 
   private OperatorEnum operator;
   private BigDecimal value;
-  private NonNullableCatalogsCurrency currency;
-  private Boolean negated = false;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("currency")
+  @NotNull
+  @Valid
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
 
   /**
    **/
@@ -75,32 +101,6 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     this.value = value;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("currency")
-  @NotNull
-  @Valid
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -111,15 +111,15 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupPricingCurrencyCriteria catalogsProductGroupPricingCurrencyCriteria = (CatalogsProductGroupPricingCurrencyCriteria) o;
-    return Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
-        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value) &&
-        Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
-        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated);
+    return Objects.equals(this.currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
+        Objects.equals(this.negated, catalogsProductGroupPricingCurrencyCriteria.negated) &&
+        Objects.equals(this.operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
+        Objects.equals(this.value, catalogsProductGroupPricingCurrencyCriteria.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operator, value, currency, negated);
+    return Objects.hash(currency, negated, operator, value);
   }
 
   @Override
@@ -127,10 +127,10 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupPricingCurrencyCriteria {\n");
     
-    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

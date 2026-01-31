@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsProductGroupFilterOperatorTypeCriteria.h"
 #include "CatalogsProductGroupMultipleMediaTypesCriteria.h"
 #include "CatalogsProductGroupMultipleStringCriteria.h"
 #include "CatalogsProductGroupMultipleStringListCriteria.h"
@@ -26,6 +27,7 @@
 #include "GoogleProductCategory5Filter.h"
 #include "GoogleProductCategory6Filter.h"
 #include "MediaTypeFilter.h"
+#include "TitleKeywordsFilter.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -71,39 +73,39 @@ public:
 	void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria  cREATIVE_ASSETS_ID);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL0();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_0);
+	void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_0);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL1();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_1);
+	void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_2);
+	void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL3();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_3);
+	void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL4();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_4);
+	void setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_4);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY6();
@@ -160,14 +162,21 @@ public:
 	/*! \brief Set 
 	 */
 	void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria  mEDIA_TYPE);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupMultipleStringCriteria getTITLEKEYWORDS();
+
+	/*! \brief Set 
+	 */
+	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS);
 
 private:
 	CatalogsProductGroupMultipleStringCriteria cREATIVE_ASSETS_ID;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_0;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_1;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_2;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_3;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_4;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_0;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_1;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_2;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_3;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_4;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_6;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_5;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_4;
@@ -176,6 +185,7 @@ private:
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_1;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_0;
 	CatalogsProductGroupMultipleMediaTypesCriteria mEDIA_TYPE;
+	CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS;
 	void __init();
 	void __cleanup();
 

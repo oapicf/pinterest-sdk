@@ -10,6 +10,8 @@ import org.openapitools.model.Country;
 class CatalogsItemsRequest {
     
     Country country
+    
+    CatalogsItemsPostFilters filters
 
     enum LanguageEnum {
     
@@ -245,6 +247,4 @@ class CatalogsItemsRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
-    
-    CatalogsItemsPostFilters filters
 }

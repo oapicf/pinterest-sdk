@@ -78,7 +78,7 @@ bool boardsUserFollowsListAsync(char * accessToken,
 
 /*! \brief Follow user. *Synchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+ * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
  * \param username A valid username *Required*
  * \param followUserRequest Follow a user. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -92,7 +92,7 @@ bool followUserUpdateSync(char * accessToken,
 
 /*! \brief Follow user. *Asynchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+ * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
  * \param username A valid username *Required*
  * \param followUserRequest Follow a user. *Required*
  * \param handler The callback function to be invoked on completion. *Required*

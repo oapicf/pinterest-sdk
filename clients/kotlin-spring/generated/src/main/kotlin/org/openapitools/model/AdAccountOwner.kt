@@ -15,16 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param username Public username for the user account
  * @param id The owning account's user ID.
+ * @param username Public username for the user account
  */
 data class AdAccountOwner(
 
-    @Schema(example = "null", description = "Public username for the user account")
-    @get:JsonProperty("username") val username: kotlin.String? = null,
-
     @Schema(example = "null", description = "The owning account's user ID.")
-    @get:JsonProperty("id") val id: kotlin.String? = null
+    @get:JsonProperty("id") val id: kotlin.String? = null,
+
+    @Schema(example = "null", description = "Public username for the user account")
+    @get:JsonProperty("username") val username: kotlin.String? = null
 ) {
 
 }

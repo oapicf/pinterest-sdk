@@ -11,24 +11,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Paginated   {
   
-  private List<Object> items = new ArrayList<>();
   private String bookmark;
+  private List<Object> items = new ArrayList<>();
 
   public Paginated () {
 
   }
 
-  public Paginated (List<Object> items, String bookmark) {
-    this.items = items;
+  public Paginated (String bookmark, List<Object> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<Object> getItems() {
-    return items;
-  }
-  public void setItems(List<Object> items) {
     this.items = items;
   }
 
@@ -41,6 +32,15 @@ public class Paginated   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<Object> getItems() {
+    return items;
+  }
+  public void setItems(List<Object> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -51,13 +51,13 @@ public class Paginated   {
       return false;
     }
     Paginated paginated = (Paginated) o;
-    return Objects.equals(items, paginated.items) &&
-        Objects.equals(bookmark, paginated.bookmark);
+    return Objects.equals(bookmark, paginated.bookmark) &&
+        Objects.equals(items, paginated.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -65,8 +65,8 @@ public class Paginated   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Paginated {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

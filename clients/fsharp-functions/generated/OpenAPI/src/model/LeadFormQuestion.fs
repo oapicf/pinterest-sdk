@@ -13,14 +13,14 @@ module LeadFormQuestion =
 
   [<CLIMutable>]
   type LeadFormQuestion = {
-    [<JsonProperty(PropertyName = "question_type")>]
-    QuestionType : LeadFormQuestionType;
     [<JsonProperty(PropertyName = "custom_question_field_type")>]
     CustomQuestionFieldType : LeadFormQuestionFieldType;
     [<JsonProperty(PropertyName = "custom_question_label")>]
     CustomQuestionLabel : string option;
     [<JsonProperty(PropertyName = "custom_question_options")>]
     CustomQuestionOptions : string[];
+    [<JsonProperty(PropertyName = "question_type")>]
+    QuestionType : LeadFormQuestionType;
   }
 
   //#endregion

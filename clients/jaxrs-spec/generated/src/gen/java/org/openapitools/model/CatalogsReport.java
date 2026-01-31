@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsReport")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReport   {
   public enum ReportStatusEnum {
 
@@ -68,8 +68,8 @@ public class CatalogsReport   {
 }
 
   private ReportStatusEnum reportStatus;
-  private String url;
   private BigDecimal size;
+  private String url;
 
   public CatalogsReport() {
   }
@@ -94,26 +94,6 @@ public class CatalogsReport   {
   }
 
   /**
-   * URL to download the report
-   **/
-  public CatalogsReport url(String url) {
-    this.url = url;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "URL to download the report")
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-
-  @JsonProperty("url")
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  /**
    * Size of the report in bytes
    **/
   public CatalogsReport size(BigDecimal size) {
@@ -133,6 +113,26 @@ public class CatalogsReport   {
     this.size = size;
   }
 
+  /**
+   * URL to download the report
+   **/
+  public CatalogsReport url(String url) {
+    this.url = url;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "URL to download the report")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+
+  @JsonProperty("url")
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,13 +144,13 @@ public class CatalogsReport   {
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(this.reportStatus, catalogsReport.reportStatus) &&
-        Objects.equals(this.url, catalogsReport.url) &&
-        Objects.equals(this.size, catalogsReport.size);
+        Objects.equals(this.size, catalogsReport.size) &&
+        Objects.equals(this.url, catalogsReport.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -159,8 +159,8 @@ public class CatalogsReport   {
     sb.append("class CatalogsReport {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

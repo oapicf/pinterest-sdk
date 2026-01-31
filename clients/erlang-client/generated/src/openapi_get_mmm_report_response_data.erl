@@ -6,15 +6,15 @@
 
 -type openapi_get_mmm_report_response_data() ::
     #{ 'report_status' => binary(),
-       'url' => binary(),
-       'size' => integer()
+       'size' => integer(),
+       'url' => binary()
      }.
 
 encode(#{ 'report_status' := ReportStatus,
-          'url' := Url,
-          'size' := Size
+          'size' := Size,
+          'url' := Url
         }) ->
     #{ 'report_status' => ReportStatus,
-       'url' => Url,
-       'size' => Size
+       'size' => Size,
+       'url' => Url
      }.

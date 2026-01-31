@@ -16,7 +16,8 @@ export const GetBusinessAssetTypeResponse = {
     AdAccount: 'AD_ACCOUNT',
     Profile: 'PROFILE',
     AssetGroup: 'ASSET_GROUP',
-    ConversionTag: 'CONVERSION_TAG'
+    ConversionTag: 'CONVERSION_TAG',
+    Catalog: 'CATALOG'
 } as const;
 export type GetBusinessAssetTypeResponse = typeof GetBusinessAssetTypeResponse[keyof typeof GetBusinessAssetTypeResponse];
 

@@ -23,62 +23,22 @@ import javax.annotation.Generated;
  * SSIOAccountResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountResponse {
-
-  private Boolean eligible;
-
-  private Boolean canEdit;
 
   @Valid
   private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
+  private Boolean canEdit;
+
   private String currency;
 
-  @Valid
-  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
+  private Boolean eligible;
 
   private String error;
 
-  public SSIOAccountResponse eligible(Boolean eligible) {
-    this.eligible = eligible;
-    return this;
-  }
-
-  /**
-   * Advertiser eligible to create order lines
-   * @return eligible
-   */
-  
-  @Schema(name = "eligible", example = "true", description = "Advertiser eligible to create order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("eligible")
-  public Boolean getEligible() {
-    return eligible;
-  }
-
-  public void setEligible(Boolean eligible) {
-    this.eligible = eligible;
-  }
-
-  public SSIOAccountResponse canEdit(Boolean canEdit) {
-    this.canEdit = canEdit;
-    return this;
-  }
-
-  /**
-   * Advertiser eligible to update order lines
-   * @return canEdit
-   */
-  
-  @Schema(name = "can_edit", example = "true", description = "Advertiser eligible to update order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("can_edit")
-  public Boolean getCanEdit() {
-    return canEdit;
-  }
-
-  public void setCanEdit(Boolean canEdit) {
-    this.canEdit = canEdit;
-  }
+  @Valid
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   public SSIOAccountResponse billtoInfos(List<@Valid SSIOAccountItem> billtoInfos) {
     this.billtoInfos = billtoInfos;
@@ -108,6 +68,26 @@ public class SSIOAccountResponse {
     this.billtoInfos = billtoInfos;
   }
 
+  public SSIOAccountResponse canEdit(Boolean canEdit) {
+    this.canEdit = canEdit;
+    return this;
+  }
+
+  /**
+   * Advertiser eligible to update order lines
+   * @return canEdit
+   */
+  
+  @Schema(name = "can_edit", example = "true", description = "Advertiser eligible to update order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("can_edit")
+  public Boolean getCanEdit() {
+    return canEdit;
+  }
+
+  public void setCanEdit(Boolean canEdit) {
+    this.canEdit = canEdit;
+  }
+
   public SSIOAccountResponse currency(String currency) {
     this.currency = currency;
     return this;
@@ -126,6 +106,46 @@ public class SSIOAccountResponse {
 
   public void setCurrency(String currency) {
     this.currency = currency;
+  }
+
+  public SSIOAccountResponse eligible(Boolean eligible) {
+    this.eligible = eligible;
+    return this;
+  }
+
+  /**
+   * Advertiser eligible to create order lines
+   * @return eligible
+   */
+  
+  @Schema(name = "eligible", example = "true", description = "Advertiser eligible to create order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("eligible")
+  public Boolean getEligible() {
+    return eligible;
+  }
+
+  public void setEligible(Boolean eligible) {
+    this.eligible = eligible;
+  }
+
+  public SSIOAccountResponse error(String error) {
+    this.error = error;
+    return this;
+  }
+
+  /**
+   * Error indicator from Salesforce which could be \"No Error\"
+   * @return error
+   */
+  
+  @Schema(name = "error", example = "No Error", description = "Error indicator from Salesforce which could be \"No Error\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("error")
+  public String getError() {
+    return error;
+  }
+
+  public void setError(String error) {
+    this.error = error;
   }
 
   public SSIOAccountResponse pmpNames(List<@Valid SSIOAccountPMPName> pmpNames) {
@@ -156,26 +176,6 @@ public class SSIOAccountResponse {
     this.pmpNames = pmpNames;
   }
 
-  public SSIOAccountResponse error(String error) {
-    this.error = error;
-    return this;
-  }
-
-  /**
-   * Error indicator from Salesforce which could be \"No Error\"
-   * @return error
-   */
-  
-  @Schema(name = "error", example = "No Error", description = "Error indicator from Salesforce which could be \"No Error\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("error")
-  public String getError() {
-    return error;
-  }
-
-  public void setError(String error) {
-    this.error = error;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -185,29 +185,29 @@ public class SSIOAccountResponse {
       return false;
     }
     SSIOAccountResponse ssIOAccountResponse = (SSIOAccountResponse) o;
-    return Objects.equals(this.eligible, ssIOAccountResponse.eligible) &&
+    return Objects.equals(this.billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(this.canEdit, ssIOAccountResponse.canEdit) &&
-        Objects.equals(this.billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(this.currency, ssIOAccountResponse.currency) &&
-        Objects.equals(this.pmpNames, ssIOAccountResponse.pmpNames) &&
-        Objects.equals(this.error, ssIOAccountResponse.error);
+        Objects.equals(this.eligible, ssIOAccountResponse.eligible) &&
+        Objects.equals(this.error, ssIOAccountResponse.error) &&
+        Objects.equals(this.pmpNames, ssIOAccountResponse.pmpNames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eligible, canEdit, billtoInfos, currency, pmpNames, error);
+    return Objects.hash(billtoInfos, canEdit, currency, eligible, error, pmpNames);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountResponse {\n");
-    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
-    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    billtoInfos: ").append(toIndentedString(billtoInfos)).append("\n");
+    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
+    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

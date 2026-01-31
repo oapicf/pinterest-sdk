@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,16 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IntegrationRequest  {
   
- /**
-  * External business ID for the integration.
-  */
-  @ApiModelProperty(value = "External business ID for the integration.")
-
-  private String externalBusinessId;
-
   @ApiModelProperty(value = "")
 
-  private String connectedMerchantId;
+  private String additionalId1;
 
   @ApiModelProperty(value = "")
 
@@ -37,7 +29,18 @@ public class IntegrationRequest  {
 
   @ApiModelProperty(value = "")
 
+  private String connectedMerchantId;
+
+  @ApiModelProperty(value = "")
+
   private String connectedTagId;
+
+ /**
+  * External business ID for the integration.
+  */
+  @ApiModelProperty(value = "External business ID for the integration.")
+
+  private String externalBusinessId;
 
   @ApiModelProperty(value = "")
 
@@ -45,7 +48,11 @@ public class IntegrationRequest  {
 
   @ApiModelProperty(value = "")
 
-  private String partnerRefreshToken;
+  private Integer partnerAccessTokenExpiry;
+
+  @ApiModelProperty(value = "")
+
+  private String partnerMetadata;
 
   @ApiModelProperty(value = "")
 
@@ -53,7 +60,7 @@ public class IntegrationRequest  {
 
   @ApiModelProperty(value = "")
 
-  private Integer partnerAccessTokenExpiry;
+  private String partnerRefreshToken;
 
   @ApiModelProperty(value = "")
 
@@ -62,47 +69,21 @@ public class IntegrationRequest  {
   @ApiModelProperty(value = "")
 
   private String scopes;
-
-  @ApiModelProperty(value = "")
-
-  private String additionalId1;
-
-  @ApiModelProperty(value = "")
-
-  private String partnerMetadata;
  /**
-   * External business ID for the integration.
-   * @return externalBusinessId
+   * Get additionalId1
+   * @return additionalId1
   **/
-  @JsonProperty("external_business_id")
-  public String getExternalBusinessId() {
-    return externalBusinessId;
+  @JsonProperty("additional_id_1")
+  public String getAdditionalId1() {
+    return additionalId1;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
+  public void setAdditionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
   }
 
-  public IntegrationRequest externalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-    return this;
-  }
-
- /**
-   * Get connectedMerchantId
-   * @return connectedMerchantId
-  **/
-  @JsonProperty("connected_merchant_id")
-  public String getConnectedMerchantId() {
-    return connectedMerchantId;
-  }
-
-  public void setConnectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-  }
-
-  public IntegrationRequest connectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
+  public IntegrationRequest additionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
     return this;
   }
 
@@ -143,6 +124,24 @@ public class IntegrationRequest  {
   }
 
  /**
+   * Get connectedMerchantId
+   * @return connectedMerchantId
+  **/
+  @JsonProperty("connected_merchant_id")
+  public String getConnectedMerchantId() {
+    return connectedMerchantId;
+  }
+
+  public void setConnectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+  }
+
+  public IntegrationRequest connectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+    return this;
+  }
+
+ /**
    * Get connectedTagId
    * @return connectedTagId
   **/
@@ -157,6 +156,24 @@ public class IntegrationRequest  {
 
   public IntegrationRequest connectedTagId(String connectedTagId) {
     this.connectedTagId = connectedTagId;
+    return this;
+  }
+
+ /**
+   * External business ID for the integration.
+   * @return externalBusinessId
+  **/
+  @JsonProperty("external_business_id")
+  public String getExternalBusinessId() {
+    return externalBusinessId;
+  }
+
+  public void setExternalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+  }
+
+  public IntegrationRequest externalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
     return this;
   }
 
@@ -179,20 +196,38 @@ public class IntegrationRequest  {
   }
 
  /**
-   * Get partnerRefreshToken
-   * @return partnerRefreshToken
+   * Get partnerAccessTokenExpiry
+   * @return partnerAccessTokenExpiry
   **/
-  @JsonProperty("partner_refresh_token")
-  public String getPartnerRefreshToken() {
-    return partnerRefreshToken;
+  @JsonProperty("partner_access_token_expiry")
+  public Integer getPartnerAccessTokenExpiry() {
+    return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
+  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
-  public IntegrationRequest partnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
+  public IntegrationRequest partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+    return this;
+  }
+
+ /**
+   * Get partnerMetadata
+   * @return partnerMetadata
+  **/
+  @JsonProperty("partner_metadata")
+  public String getPartnerMetadata() {
+    return partnerMetadata;
+  }
+
+  public void setPartnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+  }
+
+  public IntegrationRequest partnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
     return this;
   }
 
@@ -215,20 +250,20 @@ public class IntegrationRequest  {
   }
 
  /**
-   * Get partnerAccessTokenExpiry
-   * @return partnerAccessTokenExpiry
+   * Get partnerRefreshToken
+   * @return partnerRefreshToken
   **/
-  @JsonProperty("partner_access_token_expiry")
-  public Integer getPartnerAccessTokenExpiry() {
-    return partnerAccessTokenExpiry;
+  @JsonProperty("partner_refresh_token")
+  public String getPartnerRefreshToken() {
+    return partnerRefreshToken;
   }
 
-  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
-    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  public void setPartnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
   }
 
-  public IntegrationRequest partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
-    this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  public IntegrationRequest partnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
 
@@ -268,42 +303,6 @@ public class IntegrationRequest  {
     return this;
   }
 
- /**
-   * Get additionalId1
-   * @return additionalId1
-  **/
-  @JsonProperty("additional_id_1")
-  public String getAdditionalId1() {
-    return additionalId1;
-  }
-
-  public void setAdditionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-  }
-
-  public IntegrationRequest additionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-    return this;
-  }
-
- /**
-   * Get partnerMetadata
-   * @return partnerMetadata
-  **/
-  @JsonProperty("partner_metadata")
-  public String getPartnerMetadata() {
-    return partnerMetadata;
-  }
-
-  public void setPartnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-  }
-
-  public IntegrationRequest partnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -313,24 +312,24 @@ public class IntegrationRequest  {
       return false;
     }
     IntegrationRequest integrationRequest = (IntegrationRequest) o;
-    return Objects.equals(this.externalBusinessId, integrationRequest.externalBusinessId) &&
-        Objects.equals(this.connectedMerchantId, integrationRequest.connectedMerchantId) &&
+    return Objects.equals(this.additionalId1, integrationRequest.additionalId1) &&
         Objects.equals(this.connectedAdvertiserId, integrationRequest.connectedAdvertiserId) &&
         Objects.equals(this.connectedLbaId, integrationRequest.connectedLbaId) &&
+        Objects.equals(this.connectedMerchantId, integrationRequest.connectedMerchantId) &&
         Objects.equals(this.connectedTagId, integrationRequest.connectedTagId) &&
+        Objects.equals(this.externalBusinessId, integrationRequest.externalBusinessId) &&
         Objects.equals(this.partnerAccessToken, integrationRequest.partnerAccessToken) &&
-        Objects.equals(this.partnerRefreshToken, integrationRequest.partnerRefreshToken) &&
-        Objects.equals(this.partnerPrimaryEmail, integrationRequest.partnerPrimaryEmail) &&
         Objects.equals(this.partnerAccessTokenExpiry, integrationRequest.partnerAccessTokenExpiry) &&
+        Objects.equals(this.partnerMetadata, integrationRequest.partnerMetadata) &&
+        Objects.equals(this.partnerPrimaryEmail, integrationRequest.partnerPrimaryEmail) &&
+        Objects.equals(this.partnerRefreshToken, integrationRequest.partnerRefreshToken) &&
         Objects.equals(this.partnerRefreshTokenExpiry, integrationRequest.partnerRefreshTokenExpiry) &&
-        Objects.equals(this.scopes, integrationRequest.scopes) &&
-        Objects.equals(this.additionalId1, integrationRequest.additionalId1) &&
-        Objects.equals(this.partnerMetadata, integrationRequest.partnerMetadata);
+        Objects.equals(this.scopes, integrationRequest.scopes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalBusinessId, connectedMerchantId, connectedAdvertiserId, connectedLbaId, connectedTagId, partnerAccessToken, partnerRefreshToken, partnerPrimaryEmail, partnerAccessTokenExpiry, partnerRefreshTokenExpiry, scopes, additionalId1, partnerMetadata);
+    return Objects.hash(additionalId1, connectedAdvertiserId, connectedLbaId, connectedMerchantId, connectedTagId, externalBusinessId, partnerAccessToken, partnerAccessTokenExpiry, partnerMetadata, partnerPrimaryEmail, partnerRefreshToken, partnerRefreshTokenExpiry, scopes);
   }
 
   @Override
@@ -338,19 +337,19 @@ public class IntegrationRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationRequest {\n");
     
-    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
-    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
+    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
     sb.append("    connectedAdvertiserId: ").append(toIndentedString(connectedAdvertiserId)).append("\n");
     sb.append("    connectedLbaId: ").append(toIndentedString(connectedLbaId)).append("\n");
+    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
     sb.append("    connectedTagId: ").append(toIndentedString(connectedTagId)).append("\n");
+    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
-    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
-    sb.append("    partnerPrimaryEmail: ").append(toIndentedString(partnerPrimaryEmail)).append("\n");
     sb.append("    partnerAccessTokenExpiry: ").append(toIndentedString(partnerAccessTokenExpiry)).append("\n");
+    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
+    sb.append("    partnerPrimaryEmail: ").append(toIndentedString(partnerPrimaryEmail)).append("\n");
+    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
     sb.append("    partnerRefreshTokenExpiry: ").append(toIndentedString(partnerRefreshTokenExpiry)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
-    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
-    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

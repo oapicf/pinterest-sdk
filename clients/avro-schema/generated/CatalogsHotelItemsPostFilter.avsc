@@ -5,6 +5,12 @@
   "name": "CatalogsHotelItemsPostFilter",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog",
+      "default": null
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -22,12 +28,6 @@
         "items": "string"
       },
       "doc": ""
-    },
-    {
-      "name": "catalog_id",
-      "type": ["null", "string"],
-      "doc": "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog",
-      "default": null
     }
   ]
 

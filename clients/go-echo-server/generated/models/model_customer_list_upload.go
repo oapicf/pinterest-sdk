@@ -1,0 +1,29 @@
+package models
+
+type CustomerListUpload struct {
+
+	// Advertiser ID.
+	AdAccountId string `json:"ad_account_id" validate:"regexp=^\\\\d+$"`
+
+	// Customer List Upload creation_time. Epoch (seconds).
+	CreationTime int32 `json:"creation_time"`
+
+	// ID of the customer list associated with this upload.
+	CustomerListId string `json:"customer_list_id" validate:"regexp=^\\\\d+$"`
+
+	// Error counts by error code
+	ErrorCounts *[]ErrorDetail `json:"error_counts,omitempty"`
+
+	// Customer List Upload ID.
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+
+	Operation UserListOperationType `json:"operation"`
+
+	RecordCounts *RecordCounts `json:"record_counts,omitempty"`
+
+	// Workload processing state
+	State string `json:"state"`
+
+	// Customer List Upload updated_time. Epoch (seconds).
+	UpdatedTime int32 `json:"updated_time"`
+}

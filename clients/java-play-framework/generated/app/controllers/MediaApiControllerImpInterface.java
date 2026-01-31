@@ -1,10 +1,10 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.Media;
 import apimodels.MediaList200Response;
 import apimodels.MediaUpload;
-import apimodels.MediaUploadDetails;
-import apimodels.MediaUploadRequest;
+import apimodels.MediaUploadCreate;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -31,12 +31,12 @@ public abstract class MediaApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result mediaCreateHttp(Http.Request request, MediaUploadRequest mediaUploadRequest) throws Exception {
+    public Result mediaCreateHttp(Http.Request request, MediaUploadCreate mediaUploadCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        MediaUpload obj = mediaCreate(request, mediaUploadRequest);
+        MediaUpload obj = mediaCreate(request, mediaUploadCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -48,14 +48,14 @@ public abstract class MediaApiControllerImpInterface {
 
     }
 
-    public abstract MediaUpload mediaCreate(Http.Request request, MediaUploadRequest mediaUploadRequest) throws Exception;
+    public abstract MediaUpload mediaCreate(Http.Request request, MediaUploadCreate mediaUploadCreate) throws Exception;
 
     public Result mediaGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String mediaId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        MediaUploadDetails obj = mediaGet(request, mediaId);
+        Media obj = mediaGet(request, mediaId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -67,7 +67,7 @@ public abstract class MediaApiControllerImpInterface {
 
     }
 
-    public abstract MediaUploadDetails mediaGet(Http.Request request,  @Pattern(regexp="^\\d+$")String mediaId) throws Exception;
+    public abstract Media mediaGet(Http.Request request,  @Pattern(regexp="^\\d+$")String mediaId) throws Exception;
 
     public Result mediaListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

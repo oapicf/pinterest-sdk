@@ -23,8 +23,8 @@ AdvancedAuctionItem::~AdvancedAuctionItem()
 void
 AdvancedAuctionItem::__init()
 {
-	//item_id = std::string();
 	//country = new Country();
+	//item_id = std::string();
 	//language = new Language();
 	//bid_options = new AdvancedAuctionBidOptions();
 }
@@ -32,15 +32,15 @@ AdvancedAuctionItem::__init()
 void
 AdvancedAuctionItem::__cleanup()
 {
-	//if(item_id != NULL) {
-	//
-	//delete item_id;
-	//item_id = NULL;
-	//}
 	//if(country != NULL) {
 	//
 	//delete country;
 	//country = NULL;
+	//}
+	//if(item_id != NULL) {
+	//
+	//delete item_id;
+	//item_id = NULL;
 	//}
 	//if(language != NULL) {
 	//
@@ -60,17 +60,6 @@ AdvancedAuctionItem::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *item_idKey = "item_id";
-	node = json_object_get_member(pJsonObject, item_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&item_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *countryKey = "country";
 	node = json_object_get_member(pJsonObject, countryKey);
 	if (node !=NULL) {
@@ -82,6 +71,17 @@ AdvancedAuctionItem::fromJson(char* jsonStr)
 			
 			Country* obj = static_cast<Country*> (&country);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *item_idKey = "item_id";
+	node = json_object_get_member(pJsonObject, item_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&item_id, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -125,15 +125,6 @@ AdvancedAuctionItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getItemId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_idKey = "item_id";
-	json_object_set_member(pJsonObject, item_idKey, node);
 	if (isprimitive("Country")) {
 		Country obj = getCountry();
 		node = converttoJson(&obj, "Country", "");
@@ -148,6 +139,15 @@ AdvancedAuctionItem::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_idKey = "item_id";
+	json_object_set_member(pJsonObject, item_idKey, node);
 	if (isprimitive("Language")) {
 		Language obj = getLanguage();
 		node = converttoJson(&obj, "Language", "");
@@ -184,18 +184,6 @@ AdvancedAuctionItem::toJson()
 	return ret;
 }
 
-std::string
-AdvancedAuctionItem::getItemId()
-{
-	return item_id;
-}
-
-void
-AdvancedAuctionItem::setItemId(std::string  item_id)
-{
-	this->item_id = item_id;
-}
-
 Country
 AdvancedAuctionItem::getCountry()
 {
@@ -206,6 +194,18 @@ void
 AdvancedAuctionItem::setCountry(Country  country)
 {
 	this->country = country;
+}
+
+std::string
+AdvancedAuctionItem::getItemId()
+{
+	return item_id;
+}
+
+void
+AdvancedAuctionItem::setItemId(std::string  item_id)
+{
+	this->item_id = item_id;
 }
 
 Language

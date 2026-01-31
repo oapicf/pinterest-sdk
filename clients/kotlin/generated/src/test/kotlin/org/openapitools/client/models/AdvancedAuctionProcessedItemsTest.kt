@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdvancedAuctionProcessedItems
-import org.openapitools.client.models.AdvancedAuctionProcessedItem
+import org.openapitools.client.models.AdvancedAuctionItemsSubmitRecord
 
 class AdvancedAuctionProcessedItemsTest : ShouldSpec() {
     init {

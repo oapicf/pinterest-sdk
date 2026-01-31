@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | `CatalogsType` |  | 
 **creativeAssetsId** | `String` | The catalog creative assets id in the merchant namespace |  [optional property]
-**errors** | [`List&lt;ItemValidationEvent&gt;`](ItemValidationEvent.md) | Array with the errors for the item id requested |  [optional property]
+**errors** | [`List&lt;ItemValidationEvent&gt;`](ItemValidationEvent.md) | Array with the errors for the item id requested | 
 
 
 

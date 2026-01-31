@@ -8,24 +8,15 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TopPinsAnalyticsResponseDateAvailability   {
   
-  private BigDecimal latestAvailableTimestamp;
   private Boolean isRealtime;
+  private BigDecimal latestAvailableTimestamp;
 
   public TopPinsAnalyticsResponseDateAvailability () {
 
   }
 
-  public TopPinsAnalyticsResponseDateAvailability (BigDecimal latestAvailableTimestamp, Boolean isRealtime) {
-    this.latestAvailableTimestamp = latestAvailableTimestamp;
+  public TopPinsAnalyticsResponseDateAvailability (Boolean isRealtime, BigDecimal latestAvailableTimestamp) {
     this.isRealtime = isRealtime;
-  }
-
-    
-  @JsonProperty("latest_available_timestamp")
-  public BigDecimal getLatestAvailableTimestamp() {
-    return latestAvailableTimestamp;
-  }
-  public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
     this.latestAvailableTimestamp = latestAvailableTimestamp;
   }
 
@@ -38,6 +29,15 @@ public class TopPinsAnalyticsResponseDateAvailability   {
     this.isRealtime = isRealtime;
   }
 
+    
+  @JsonProperty("latest_available_timestamp")
+  public BigDecimal getLatestAvailableTimestamp() {
+    return latestAvailableTimestamp;
+  }
+  public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+    this.latestAvailableTimestamp = latestAvailableTimestamp;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -48,13 +48,13 @@ public class TopPinsAnalyticsResponseDateAvailability   {
       return false;
     }
     TopPinsAnalyticsResponseDateAvailability topPinsAnalyticsResponseDateAvailability = (TopPinsAnalyticsResponseDateAvailability) o;
-    return Objects.equals(latestAvailableTimestamp, topPinsAnalyticsResponseDateAvailability.latestAvailableTimestamp) &&
-        Objects.equals(isRealtime, topPinsAnalyticsResponseDateAvailability.isRealtime);
+    return Objects.equals(isRealtime, topPinsAnalyticsResponseDateAvailability.isRealtime) &&
+        Objects.equals(latestAvailableTimestamp, topPinsAnalyticsResponseDateAvailability.latestAvailableTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(latestAvailableTimestamp, isRealtime);
+    return Objects.hash(isRealtime, latestAvailableTimestamp);
   }
 
   @Override
@@ -62,8 +62,8 @@ public class TopPinsAnalyticsResponseDateAvailability   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponseDateAvailability {\n");
     
-    sb.append("    latestAvailableTimestamp: ").append(toIndentedString(latestAvailableTimestamp)).append("\n");
     sb.append("    isRealtime: ").append(toIndentedString(isRealtime)).append("\n");
+    sb.append("    latestAvailableTimestamp: ").append(toIndentedString(latestAvailableTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

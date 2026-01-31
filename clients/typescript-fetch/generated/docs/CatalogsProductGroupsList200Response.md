@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;CatalogsVerticalProductGroup&gt;](CatalogsVerticalProductGroup.md)
 `bookmark` | string
+`items` | [Array&lt;CatalogsVerticalProductGroup&gt;](CatalogsVerticalProductGroup.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsProductGroupsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies CatalogsProductGroupsList200Response
 
 console.log(example)

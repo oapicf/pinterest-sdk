@@ -11,7 +11,7 @@ import { SharedAudienceAccount } from './sharedAudienceAccount';
 
 
 export interface AdAccountsAudiencesSharedAccountsList200Response { 
-    items: Array<SharedAudienceAccount>;
     bookmark?: string | null;
+    items: Array<SharedAudienceAccount>;
 }
 

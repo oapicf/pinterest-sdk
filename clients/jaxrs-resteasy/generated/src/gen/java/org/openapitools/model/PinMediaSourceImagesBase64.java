@@ -10,17 +10,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesBase64ItemsInner;
+import org.openapitools.model.PinMediaSourceImagesBase64Item;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Multiple Base64-encoded images media source")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Multiple Base64-based images media source")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesBase64   {
   
+  private Integer index;
+  private List<@Valid PinMediaSourceImagesBase64Item> items = new ArrayList<>();
 
   /**
-   * Gets or Sets sourceType
+   * The source type of the media.
    */
   public enum SourceTypeEnum {
     MULTIPLE_IMAGE_BASE64("multiple_image_base64");
@@ -38,35 +40,6 @@ public class PinMediaSourceImagesBase64   {
   }
 
   private SourceTypeEnum sourceType;
-  private List<@Valid PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
-  private Integer index;
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  /**
-   * Array with image objects.
-   **/
-  
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  @JsonProperty("items")
-  @NotNull
- @Size(min=2,max=5)  @Valid
-  public List<@Valid PinMediaSourceImagesBase64ItemsInner> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid PinMediaSourceImagesBase64ItemsInner> items) {
-    this.items = items;
-  }
 
   /**
    * minimum: 0
@@ -81,6 +54,35 @@ public class PinMediaSourceImagesBase64   {
     this.index = index;
   }
 
+  /**
+   * Array with image objects.
+   **/
+  
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+  @JsonProperty("items")
+  @NotNull
+ @Size(min=2,max=5)  @Valid
+  public List<@Valid PinMediaSourceImagesBase64Item> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid PinMediaSourceImagesBase64Item> items) {
+    this.items = items;
+  }
+
+  /**
+   * The source type of the media.
+   **/
+  
+  @ApiModelProperty(required = true, value = "The source type of the media.")
+  @JsonProperty("source_type")
+  @NotNull
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -91,14 +93,14 @@ public class PinMediaSourceImagesBase64   {
       return false;
     }
     PinMediaSourceImagesBase64 pinMediaSourceImagesBase64 = (PinMediaSourceImagesBase64) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImagesBase64.sourceType) &&
+    return Objects.equals(this.index, pinMediaSourceImagesBase64.index) &&
         Objects.equals(this.items, pinMediaSourceImagesBase64.items) &&
-        Objects.equals(this.index, pinMediaSourceImagesBase64.index);
+        Objects.equals(this.sourceType, pinMediaSourceImagesBase64.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
@@ -106,9 +108,9 @@ public class PinMediaSourceImagesBase64   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesBase64 {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

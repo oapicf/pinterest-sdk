@@ -2,12 +2,12 @@
 Protected Class CatalogsProductGroupCurrencyCriteria
 
 	#tag Property, Flags = &h0
-		values As String
+		negated As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		negated As Xoson.O.OptionalBoolean
+		values As String
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class CatalogsProductGroupCurrencyCriteria
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="values"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="NonNullableCatalogsCurrency"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="negated"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="values"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NonNullableCatalogsCurrency"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

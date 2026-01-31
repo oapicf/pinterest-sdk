@@ -12,12 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeywordUpdate  {
   
  /**
-  * Keyword ID.
-  */
-  @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
-  private String id;
-
- /**
   * Is keyword archived?
   */
   @ApiModelProperty(example = "false", value = "Is keyword archived?")
@@ -28,31 +22,12 @@ public class KeywordUpdate  {
   */
   @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
   private Integer bid;
+
  /**
   * Keyword ID.
-  * @return id
   */
-  @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
- public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
-  public KeywordUpdate id(String id) {
-    this.id = id;
-    return this;
-  }
-
+  @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
+  private String id;
  /**
   * Is keyword archived?
   * @return archived
@@ -101,6 +76,31 @@ public class KeywordUpdate  {
     return this;
   }
 
+ /**
+  * Keyword ID.
+  * @return id
+  */
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public KeywordUpdate id(String id) {
+    this.id = id;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -111,14 +111,14 @@ public class KeywordUpdate  {
       return false;
     }
     KeywordUpdate keywordUpdate = (KeywordUpdate) o;
-    return Objects.equals(this.id, keywordUpdate.id) &&
-        Objects.equals(this.archived, keywordUpdate.archived) &&
-        Objects.equals(this.bid, keywordUpdate.bid);
+    return Objects.equals(this.archived, keywordUpdate.archived) &&
+        Objects.equals(this.bid, keywordUpdate.bid) &&
+        Objects.equals(this.id, keywordUpdate.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, archived, bid);
+    return Objects.hash(archived, bid, id);
   }
 
   @Override
@@ -126,9 +126,9 @@ public class KeywordUpdate  {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordUpdate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

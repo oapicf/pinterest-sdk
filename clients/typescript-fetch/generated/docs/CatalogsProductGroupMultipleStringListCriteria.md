@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`values` | Array&lt;Array&lt;string&gt;&gt;
 `negated` | boolean
+`values` | Array&lt;Array&lt;string&gt;&gt;
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsProductGroupMultipleStringListCriteria } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "values": null,
   "negated": null,
+  "values": null,
 } satisfies CatalogsProductGroupMultipleStringListCriteria
 
 console.log(example)

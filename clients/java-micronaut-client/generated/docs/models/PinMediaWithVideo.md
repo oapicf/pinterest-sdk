@@ -10,16 +10,23 @@ The class is defined in **[PinMediaWithVideo.java](../../src/main/java/org/opena
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [`PinMediaWithImageAllOfImages`](PinMediaWithImageAllOfImages.md) |  |  [optional property]
 **coverImageUrl** | `String` |  |  [optional property]
-**videoUrl** | `String` | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. |  [optional property]
-**duration** | `BigDecimal` | Duration (in milliseconds) |  [optional property]
-**height** | `Integer` | Height (in pixels) |  [optional property]
-**width** | `Integer` | Width (in pixels) |  [optional property]
+**duration** | `BigDecimal` | Duration (in miliseconds). Field maybe null after creation due to video processing time. |  [optional property]
+**height** | `Integer` | Height (in pixels). Field maybe null after creation due to video processing time. |  [optional property]
+**images** | [`ImageSize`](ImageSize.md) |  |  [optional property]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  | 
+**videoUrl** | `String` | Video url (720p).  **Note:** This field is limited and not available to all apps. |  [optional property]
+**width** | `Integer` | Width (in pixels). Field maybe null after creation due to video processing time. |  [optional property]
 
 
 
 
+
+## MediaTypeEnum
+
+Name | Value
+---- | -----
+VIDEO | `"video"`
 
 
 

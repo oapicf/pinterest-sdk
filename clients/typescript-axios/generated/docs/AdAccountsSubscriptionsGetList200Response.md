@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;AdAccountGetSubscriptionResponse&gt;**](AdAccountGetSubscriptionResponse.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;LeadSubscription&gt;**](LeadSubscription.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AdAccountsSubscriptionsGetList200Response } from './api';
 
 const instance: AdAccountsSubscriptionsGetList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

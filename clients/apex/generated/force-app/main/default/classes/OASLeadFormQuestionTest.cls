@@ -73,18 +73,18 @@ private class OASLeadFormQuestionTest {
     private static void maintainRenamedProperties() {
         OASLeadFormQuestion leadFormQuestion = new OASLeadFormQuestion();
         Map<String, String> x-property-mappings = leadFormQuestion.getx-property-mappings();
-        System.assertEquals('questionType', x-property-mappings.get('question_type'));
         System.assertEquals('customQuestionFieldType', x-property-mappings.get('custom_question_field_type'));
         System.assertEquals('customQuestionLabel', x-property-mappings.get('custom_question_label'));
         System.assertEquals('customQuestionOptions', x-property-mappings.get('custom_question_options'));
+        System.assertEquals('questionType', x-property-mappings.get('question_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASLeadFormQuestion leadFormQuestion = new OASLeadFormQuestion();
         System.assertEquals(new List<String>(), leadFormQuestion.customQuestionOptions);
-        System.assertEquals(null, leadFormQuestion.questionType);
         System.assertEquals(null, leadFormQuestion.customQuestionFieldType);
         System.assertEquals(null, leadFormQuestion.customQuestionLabel);
+        System.assertEquals(null, leadFormQuestion.questionType);
     }
 }

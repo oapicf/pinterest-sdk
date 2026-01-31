@@ -22,13 +22,13 @@ product_group_analytics_response_inner_t* instantiate_product_group_analytics_re
   product_group_analytics_response_inner_t* product_group_analytics_response_inner = NULL;
   if (include_optional) {
     product_group_analytics_response_inner = product_group_analytics_response_inner_create(
-      "a",
-      "2013-10-20"
+      "2013-10-20",
+      "a"
     );
   } else {
     product_group_analytics_response_inner = product_group_analytics_response_inner_create(
-      "a",
-      "2013-10-20"
+      "2013-10-20",
+      "a"
     );
   }
 

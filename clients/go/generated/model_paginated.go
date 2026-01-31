@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &Paginated{}
 
 // Paginated struct for Paginated
 type Paginated struct {
-	Items []map[string]interface{} `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []map[string]interface{} `json:"items"`
 }
 
 type _Paginated Paginated
@@ -44,30 +44,6 @@ func NewPaginated(items []map[string]interface{}) *Paginated {
 func NewPaginatedWithDefaults() *Paginated {
 	this := Paginated{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *Paginated) GetItems() []map[string]interface{} {
-	if o == nil {
-		var ret []map[string]interface{}
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *Paginated) GetItemsOk() ([]map[string]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *Paginated) SetItems(v []map[string]interface{}) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *Paginated) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *Paginated) GetItems() []map[string]interface{} {
+	if o == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *Paginated) GetItemsOk() ([]map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *Paginated) SetItems(v []map[string]interface{}) {
+	o.Items = v
+}
+
 func (o Paginated) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o Paginated) MarshalJSON() ([]byte, error) {
 
 func (o Paginated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

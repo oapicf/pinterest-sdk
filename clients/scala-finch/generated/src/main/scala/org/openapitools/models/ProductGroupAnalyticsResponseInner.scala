@@ -11,11 +11,11 @@ import scala.collection.immutable.HashMap
 
 /**
  * 
- * @param PRODUCTUnderscoreGROUPUnderscoreID The ID of the product group that this metrics belongs to.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
+ * @param PRODUCTUnderscoreGROUPUnderscoreID The ID of the product group that this metrics belongs to.
  */
-case class ProductGroupAnalyticsResponseInner(PRODUCTUnderscoreGROUPUnderscoreID: String,
-                DATE: Option[LocalDateTime]
+case class ProductGroupAnalyticsResponseInner(DATE: Option[LocalDateTime],
+                PRODUCTUnderscoreGROUPUnderscoreID: String
                 )
 
 object ProductGroupAnalyticsResponseInner {

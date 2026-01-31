@@ -3,23 +3,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Eligible** | **Boolean** | Advertiser eligible to create order lines | [optional] 
-**CanEdit** | **Boolean** | Advertiser eligible to update order lines | [optional] 
 **BilltoInfos** | [**SSIOAccountItem[]**](SSIOAccountItem.md) | An array of Salesforce account information that includes address, io terms, etc. | [optional] 
+**CanEdit** | **Boolean** | Advertiser eligible to update order lines | [optional] 
 **Currency** | **String** |  | [optional] 
-**PmpNames** | [**SSIOAccountPMPName[]**](SSIOAccountPMPName.md) |  | [optional] 
+**Eligible** | **Boolean** | Advertiser eligible to create order lines | [optional] 
 **VarError** | **String** | Error indicator from Salesforce which could be &quot;&quot;No Error&quot;&quot; | [optional] 
+**PmpNames** | [**SSIOAccountPMPName[]**](SSIOAccountPMPName.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SSIOAccountResponse = Initialize-PSOpenAPIToolsSSIOAccountResponse  -Eligible true `
+$SSIOAccountResponse = Initialize-PSOpenAPIToolsSSIOAccountResponse  -BilltoInfos null `
  -CanEdit true `
- -BilltoInfos null `
  -Currency USD `
- -PmpNames null `
- -VarError No Error
+ -Eligible true `
+ -VarError No Error `
+ -PmpNames null
 ```
 
 - Convert the resource to JSON

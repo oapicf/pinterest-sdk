@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_patch**
-> integrations_commerce_patch (external_business_id: STRING_32 ; integration_request_patch:  detachable INTEGRATION_REQUEST_PATCH ): detachable INTEGRATION_METADATA
+> integrations_commerce_patch (external_business_id: STRING_32 ; integration_request_patch: INTEGRATION_REQUEST_PATCH ): detachable INTEGRATION_METADATA
 
 
 Update commerce integration
@@ -87,7 +87,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_business_id** | **STRING_32**| External business ID for the integration. | [default to null]
- **integration_request_patch** | [**INTEGRATION_REQUEST_PATCH**](INTEGRATION_REQUEST_PATCH.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integration_request_patch** | [**INTEGRATION_REQUEST_PATCH**](INTEGRATION_REQUEST_PATCH.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_post**
-> integrations_commerce_post (integration_request:  detachable INTEGRATION_REQUEST ): detachable INTEGRATION_METADATA
+> integrations_commerce_post (integration_request: INTEGRATION_REQUEST ): detachable INTEGRATION_METADATA
 
 
 Create commerce integration
@@ -117,7 +117,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_request** | [**INTEGRATION_REQUEST**](INTEGRATION_REQUEST.md)| Parameters to get create/update the Integration Metadata | [optional] 
+ **integration_request** | [**INTEGRATION_REQUEST**](INTEGRATION_REQUEST.md)| Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 

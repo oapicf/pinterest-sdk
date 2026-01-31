@@ -19,6 +19,11 @@ module.exports = {
                     'custom_label_2',
                     'custom_label_3',
                     'custom_label_4',
+                    'custom_number_0',
+                    'custom_number_1',
+                    'custom_number_2',
+                    'custom_number_3',
+                    'custom_number_4',
                     'description',
                     'free_shipping_label',
                     'free_shipping_limit',
@@ -48,6 +53,7 @@ module.exports = {
                     'title',
                     'variant_names',
                     'variant_values',
+                    'promotion_id',
                 ],
             }
         )

@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionApiResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionApiResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionApiResponseEventsInner = openapi_server.resourceTypes.ConversionApiResponseEventsInner
+}
+resourceTypes {
+
+  ConversionApiResponse {
+    title = ConversionApiResponse
+    description = ConversionApiResponse
+    derivedFrom = Root
+    properties {
+        events {
+          type = array
+          items.type = ConversionApiResponseEventsInner
+          description = "Specific messages for each event received. The order will match the order in which the events were received in the request."
+          optional = true
+        }
+        num_events_processed {
+          type =  integer
+          description = "Number of events that were successfully processed from the events."
+          optional = true
+        }
+        num_events_received {
+          type =  integer
+          description = "Total number of events received in the request."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionApiResponse {
+    title = ConversionApiResponse
+    description = ConversionApiResponse
+    implements = openapi_server.resourceTypes.ConversionApiResponse
+
+  }
+}

@@ -20,23 +20,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param reportName Name of the Marketing Mix Modeling (MMM) report
- * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
+ * @param columns Metric and entity columns
  * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD
  * @param granularity DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
  * @param level Level of the report
+ * @param reportName Name of the Marketing Mix Modeling (MMM) report
+ * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
  * @param targetingTypes List of targeting types
- * @param columns Metric and entity columns
  * @param countries A List of countries for filtering
  */
 data class CreateMMMReportRequest(
 
-    @Schema(example = "null", required = true, description = "Name of the Marketing Mix Modeling (MMM) report")
-    @get:JsonProperty("report_name", required = true) val reportName: kotlin.String,
-
-    @get:Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")
-    @Schema(example = "2020-12-20", required = true, description = "Metric report start date (UTC). Format: YYYY-MM-DD")
-    @get:JsonProperty("start_date", required = true) val startDate: kotlin.String,
+    @field:Valid
+    @Schema(example = "null", required = true, description = "Metric and entity columns")
+    @get:JsonProperty("columns", required = true) val columns: kotlin.collections.List<MMMReportingColumn>,
 
     @get:Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")
     @Schema(example = "2020-12-20", required = true, description = "Metric report end date (UTC). Format: YYYY-MM-DD")
@@ -48,14 +45,17 @@ data class CreateMMMReportRequest(
     @Schema(example = "null", required = true, description = "Level of the report")
     @get:JsonProperty("level", required = true) val level: CreateMMMReportRequest.Level,
 
+    @Schema(example = "null", required = true, description = "Name of the Marketing Mix Modeling (MMM) report")
+    @get:JsonProperty("report_name", required = true) val reportName: kotlin.String,
+
+    @get:Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")
+    @Schema(example = "2020-12-20", required = true, description = "Metric report start date (UTC). Format: YYYY-MM-DD")
+    @get:JsonProperty("start_date", required = true) val startDate: kotlin.String,
+
     @field:Valid
     @get:Size(min=1,max=5) 
     @Schema(example = "[\"GENDER\"]", required = true, description = "List of targeting types")
     @get:JsonProperty("targeting_types", required = true) val targetingTypes: kotlin.collections.List<MMMReportingTargetingType>,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "Metric and entity columns")
-    @get:JsonProperty("columns", required = true) val columns: kotlin.collections.List<MMMReportingColumn>,
 
     @field:Valid
     @Schema(example = "null", description = "A List of countries for filtering")

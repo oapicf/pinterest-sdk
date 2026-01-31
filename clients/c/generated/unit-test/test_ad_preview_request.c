@@ -24,13 +24,33 @@ ad_preview_request_t* instantiate_ad_preview_request(int include_optional) {
     ad_preview_request = ad_preview_request_create(
       "https://somewebsite.com/someimage.jpg",
       "My Preview Image",
-      "7389479023"
+      "7389479023",
+      "123456789",
+      pinterest_rest_api_ad_preview_request_CREATIVETYPE_"SHOPPING",
+      "LEARN_MORE",
+      "My Preview Image",
+      "https://somewebsite.com/someimage.jpg",
+      "987654321",
+      "Christmas Sale",
+      "111111111",
+      pinterest_rest_api_ad_preview_request_PREFERREDMEDIATYPE_"IMAGE",
+      "Black Friday Sale"
     );
   } else {
     ad_preview_request = ad_preview_request_create(
       "https://somewebsite.com/someimage.jpg",
       "My Preview Image",
-      "7389479023"
+      "7389479023",
+      "123456789",
+      pinterest_rest_api_ad_preview_request_CREATIVETYPE_"SHOPPING",
+      "LEARN_MORE",
+      "My Preview Image",
+      "https://somewebsite.com/someimage.jpg",
+      "987654321",
+      "Christmas Sale",
+      "111111111",
+      pinterest_rest_api_ad_preview_request_PREFERREDMEDIATYPE_"IMAGE",
+      "Black Friday Sale"
     );
   }
 

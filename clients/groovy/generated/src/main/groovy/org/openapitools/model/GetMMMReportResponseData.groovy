@@ -42,7 +42,7 @@ class GetMMMReportResponseData {
     
     ReportStatusEnum reportStatus
     
-    String url
-    
     BigDecimal size
+    
+    String url
 }

@@ -11,19 +11,19 @@ import org.openapitools.models.BigDecimal
  * 
  * @param active True if the offer code is currently active.
  * @param advertiserUnderscoreid Advertiser ID the offer was applied to.
- * @param discountType The type of discount of this credit
- * @param discountInMicroCurrency The discount applied in the offer’s currency value.
  * @param discountCurrency Currency value for the discount.
- * @param title Human readable title of the offer code.
+ * @param discountInMicroCurrency The discount applied in the offer’s currency value.
+ * @param discountType The type of discount of this credit
  * @param remainingDiscountInMicroCurrency The credits left to spend.
+ * @param title Human readable title of the offer code.
  */
 case class AdsCreditDiscountsResponse(active: Option[Boolean],
                 advertiserUnderscoreid: Option[String],
-                discountType: Option[String],
-                discountInMicroCurrency: Option[BigDecimal],
                 discountCurrency: Option[String],
-                title: Option[String],
-                remainingDiscountInMicroCurrency: Option[BigDecimal]
+                discountInMicroCurrency: Option[BigDecimal],
+                discountType: Option[String],
+                remainingDiscountInMicroCurrency: Option[BigDecimal],
+                title: Option[String]
                 )
 
 object AdsCreditDiscountsResponse {

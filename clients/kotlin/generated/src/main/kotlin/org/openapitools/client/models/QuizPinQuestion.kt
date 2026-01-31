@@ -23,22 +23,22 @@ import com.squareup.moshi.JsonClass
 /**
  * A specific quiz inquiry.
  *
+ * @param options 
  * @param questionId 
  * @param questionText 
- * @param options 
  */
 
 
 data class QuizPinQuestion (
 
+    @Json(name = "options")
+    val options: kotlin.collections.List<QuizPinOption>? = null,
+
     @Json(name = "question_id")
     val questionId: java.math.BigDecimal? = null,
 
     @Json(name = "question_text")
-    val questionText: kotlin.String? = null,
-
-    @Json(name = "options")
-    val options: kotlin.collections.List<QuizPinOption>? = null
+    val questionText: kotlin.String? = null
 
 ) {
 

@@ -4,17 +4,17 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for DeliveryMetricsResponse_items_inner.
-  * @param name Metric's name.
   * @param category Category name
   * @param definition How the metric is defined.
   * @param displayName Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+  * @param name Metric's name.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class DeliveryMetricsResponseItemsInner(
-  name: Option[String],
   category: Option[DeliveryMetricsResponseItemsInner.Category.Value],
   definition: Option[String],
-  displayName: Option[String]
+  displayName: Option[String],
+  name: Option[String]
 )
 
 object DeliveryMetricsResponseItemsInner {

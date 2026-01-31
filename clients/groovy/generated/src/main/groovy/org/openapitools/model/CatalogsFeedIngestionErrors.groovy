@@ -6,8 +6,20 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class CatalogsFeedIngestionErrors {
-    /* We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. */
-    Integer LINE_LEVEL_INTERNAL_ERROR
+    /* We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information. */
+    Integer ACCOUNT_FLAGGED
+    /* Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file. */
+    Integer FETCH_GOOGLE_SHEET_NOT_SHARED
+    /* Image files are unreadable. Please upload new files to continue. */
+    Integer IMAGE_FILE_NOT_ACCESSIBLE
+    /* Image files are unreadable. Please upload new files to continue. */
+    Integer IMAGE_FILE_NOT_FOUND
+    /* Image files are unreadable. Please upload new files to continue. */
+    Integer IMAGE_INVALID_FILE
+    /* We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours. */
+    Integer IMAGE_LEVEL_INTERNAL_ERROR
+    /* Image files are unreadable. Please check your link and upload new files to continue. */
+    Integer IMAGE_MALFORMED_URL
 
     enum LARGEPRODUCTCOUNTDECREASEEnum {
     
@@ -31,16 +43,6 @@ class CatalogsFeedIngestionErrors {
 
     /* The product count has decreased by more than 99% compared to the last successful ingestion. */
     LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE
-    /* We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information. */
-    Integer ACCOUNT_FLAGGED
-    /* We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours. */
-    Integer IMAGE_LEVEL_INTERNAL_ERROR
-    /* Image files are unreadable. Please upload new files to continue. */
-    Integer IMAGE_FILE_NOT_ACCESSIBLE
-    /* Image files are unreadable. Please check your link and upload new files to continue. */
-    Integer IMAGE_MALFORMED_URL
-    /* Image files are unreadable. Please upload new files to continue. */
-    Integer IMAGE_FILE_NOT_FOUND
-    /* Image files are unreadable. Please upload new files to continue. */
-    Integer IMAGE_INVALID_FILE
+    /* We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. */
+    Integer LINE_LEVEL_INTERNAL_ERROR
 }

@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```R
@@ -741,7 +741,7 @@ library(openapi)
 # Verify website
 #
 # prepare function argument(s)
-var_user_website_verify_request <- UserWebsiteVerifyRequest$new("website_example", "FILENAME") # UserWebsiteVerifyRequest | Verify a website.
+var_user_website_verify_request <- UserWebsiteVerifyRequest$new("FILENAME", "website_example") # UserWebsiteVerifyRequest | Verify a website.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()

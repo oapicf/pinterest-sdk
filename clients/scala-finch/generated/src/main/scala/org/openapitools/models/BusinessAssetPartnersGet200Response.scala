@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items List of partners with permissions to the asset.
  * @param bookmark 
+ * @param items List of partners with permissions to the asset.
  */
-case class BusinessAssetPartnersGet200Response(items: Seq[UserSingleAssetBinding],
-                bookmark: Option[String]
+case class BusinessAssetPartnersGet200Response(bookmark: Option[String],
+                items: Seq[UserSingleAssetBinding]
                 )
 
 object BusinessAssetPartnersGet200Response {

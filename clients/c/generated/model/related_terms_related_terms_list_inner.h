@@ -19,15 +19,15 @@ typedef struct related_terms_related_terms_list_inner_t related_terms_related_te
 
 
 typedef struct related_terms_related_terms_list_inner_t {
-    char *term; // string
     list_t *related_terms; //primitive container
+    char *term; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } related_terms_related_terms_list_inner_t;
 
 __attribute__((deprecated)) related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_create(
-    char *term,
-    list_t *related_terms
+    list_t *related_terms,
+    char *term
 );
 
 void related_terms_related_terms_list_inner_free(related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner);

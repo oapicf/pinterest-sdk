@@ -16,12 +16,12 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MediaTypeFilter", "MinPriceFilter", "ProductGroupReferenceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter"),
+    any_of = list("AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "CustomNumber0Filter", "CustomNumber1Filter", "CustomNumber2Filter", "CustomNumber3Filter", "CustomNumber4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MediaTypeFilter", "MinPriceFilter", "ProductGroupReferenceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter", "TitleKeywordsFilter"),
 
     #' @description
     #' Initialize a new CatalogsProductGroupFilterKeys.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MediaTypeFilter", "MinPriceFilter", "ProductGroupReferenceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter"
+    #' @param instance an instance of the object defined in the anyOf schemas: "AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "CustomNumber0Filter", "CustomNumber1Filter", "CustomNumber2Filter", "CustomNumber3Filter", "CustomNumber4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MediaTypeFilter", "MinPriceFilter", "ProductGroupReferenceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter", "TitleKeywordsFilter"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -52,6 +52,21 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CustomLabel4Filter") {
         self$actual_instance <- instance
         self$actual_type <- "CustomLabel4Filter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CustomNumber0Filter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CustomNumber0Filter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CustomNumber1Filter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CustomNumber1Filter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CustomNumber2Filter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CustomNumber2Filter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CustomNumber3Filter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CustomNumber3Filter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CustomNumber4Filter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CustomNumber4Filter"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "GenderFilter") {
         self$actual_instance <- instance
         self$actual_type <- "GenderFilter"
@@ -109,8 +124,11 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ProductType4Filter") {
         self$actual_instance <- instance
         self$actual_type <- "ProductType4Filter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TitleKeywordsFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "TitleKeywordsFilter"
       } else {
-        stop(paste("Failed to initialize CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, CustomNumber0Filter, CustomNumber1Filter, CustomNumber2Filter, CustomNumber3Filter, CustomNumber4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter, TitleKeywordsFilter. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -527,8 +545,92 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
         error_messages <- append(error_messages, `ProductGroupReferenceFilter_result`["message"])
       }
 
+      `CustomNumber0Filter_result` <- tryCatch({
+          `CustomNumber0Filter`$public_methods$validateJSON(input)
+          `CustomNumber0Filter_instance` <- `CustomNumber0Filter`$new()
+          self$actual_instance <- `CustomNumber0Filter_instance`$fromJSON(input)
+          self$actual_type <- "CustomNumber0Filter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CustomNumber0Filter_result`["error"])) {
+        error_messages <- append(error_messages, `CustomNumber0Filter_result`["message"])
+      }
+
+      `CustomNumber1Filter_result` <- tryCatch({
+          `CustomNumber1Filter`$public_methods$validateJSON(input)
+          `CustomNumber1Filter_instance` <- `CustomNumber1Filter`$new()
+          self$actual_instance <- `CustomNumber1Filter_instance`$fromJSON(input)
+          self$actual_type <- "CustomNumber1Filter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CustomNumber1Filter_result`["error"])) {
+        error_messages <- append(error_messages, `CustomNumber1Filter_result`["message"])
+      }
+
+      `CustomNumber2Filter_result` <- tryCatch({
+          `CustomNumber2Filter`$public_methods$validateJSON(input)
+          `CustomNumber2Filter_instance` <- `CustomNumber2Filter`$new()
+          self$actual_instance <- `CustomNumber2Filter_instance`$fromJSON(input)
+          self$actual_type <- "CustomNumber2Filter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CustomNumber2Filter_result`["error"])) {
+        error_messages <- append(error_messages, `CustomNumber2Filter_result`["message"])
+      }
+
+      `CustomNumber3Filter_result` <- tryCatch({
+          `CustomNumber3Filter`$public_methods$validateJSON(input)
+          `CustomNumber3Filter_instance` <- `CustomNumber3Filter`$new()
+          self$actual_instance <- `CustomNumber3Filter_instance`$fromJSON(input)
+          self$actual_type <- "CustomNumber3Filter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CustomNumber3Filter_result`["error"])) {
+        error_messages <- append(error_messages, `CustomNumber3Filter_result`["message"])
+      }
+
+      `CustomNumber4Filter_result` <- tryCatch({
+          `CustomNumber4Filter`$public_methods$validateJSON(input)
+          `CustomNumber4Filter_instance` <- `CustomNumber4Filter`$new()
+          self$actual_instance <- `CustomNumber4Filter_instance`$fromJSON(input)
+          self$actual_type <- "CustomNumber4Filter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CustomNumber4Filter_result`["error"])) {
+        error_messages <- append(error_messages, `CustomNumber4Filter_result`["message"])
+      }
+
+      `TitleKeywordsFilter_result` <- tryCatch({
+          `TitleKeywordsFilter`$public_methods$validateJSON(input)
+          `TitleKeywordsFilter_instance` <- `TitleKeywordsFilter`$new()
+          self$actual_instance <- `TitleKeywordsFilter_instance`$fromJSON(input)
+          self$actual_type <- "TitleKeywordsFilter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`TitleKeywordsFilter_result`["error"])) {
+        error_messages <- append(error_messages, `TitleKeywordsFilter_result`["message"])
+      }
+
       # no match
-      stop(paste("No match found when deserializing the input into CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. Details: >>",
+      stop(paste("No match found when deserializing the input into CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, CustomNumber0Filter, CustomNumber1Filter, CustomNumber2Filter, CustomNumber3Filter, CustomNumber4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter, TitleKeywordsFilter. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

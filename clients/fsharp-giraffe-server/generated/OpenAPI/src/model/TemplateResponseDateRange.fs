@@ -12,8 +12,8 @@ module TemplateResponseDateRange =
 
 
   type TemplateResponse_date_range = {
+    AbsoluteDateRange : TemplateResponseDateRangeAbsoluteDateRange;
     DynamicDateRange : TemplateResponseDateRangeDynamicDateRange;
     RelativeDateRange : TemplateResponseDateRangeRelativeDateRange;
-    AbsoluteDateRange : TemplateResponseDateRangeAbsoluteDateRange;
   }
   //#endregion

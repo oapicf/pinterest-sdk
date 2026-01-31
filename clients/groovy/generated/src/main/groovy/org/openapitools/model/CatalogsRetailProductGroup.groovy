@@ -10,6 +10,8 @@ import org.openapitools.model.CatalogsProductGroupType;
 
 @Canonical
 class CatalogsRetailProductGroup {
+    /* Catalog id pertaining to the retail product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -33,30 +35,28 @@ class CatalogsRetailProductGroup {
 
     
     CatalogTypeEnum catalogType
-    /* ID of the catalog product group. */
-    String id
-    /* Name of catalog product group */
-    String name
     
-    String description
-    
-    CatalogsProductGroupFilters filters
-    /* boolean indicator of whether the product group is being featured or not */
-    Boolean isFeatured
-    
-    CatalogsProductGroupType type
-    
-    CatalogsProductGroupStatus status
+    String country
     /* Unix timestamp in seconds of when catalog product group was created. */
     Integer createdAt
-    /* Unix timestamp in seconds of last time catalog product group was updated. */
-    Integer updatedAt
-    /* Catalog id pertaining to the retail product group. */
-    String catalogId
+    
+    String description
     /* id of the catalogs feed belonging to this catalog product group */
     String feedId
     
-    String country
+    CatalogsProductGroupFilters filters
+    /* ID of the catalog product group. */
+    String id
+    /* boolean indicator of whether the product group is being featured or not */
+    Boolean isFeatured
     
     String locale
+    /* Name of catalog product group */
+    String name
+    
+    CatalogsProductGroupStatus status
+    
+    CatalogsProductGroupType type
+    /* Unix timestamp in seconds of last time catalog product group was updated. */
+    Integer updatedAt
 }

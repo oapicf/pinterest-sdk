@@ -5,12 +5,6 @@
   "name": "TemplateResponseDateRangeDynamicDateRange",
   "fields": [
     {
-      "name": "type",
-      "type": ["null", "string"],
-      "doc": "The date range type",
-      "default": null
-    },
-    {
       "name": "range",
       "type": ["null", {
         "type": "enum",
@@ -19,10 +13,17 @@
           "YEAR_TO_DATE",
           "QUARTER_TO_DATE",
           "MONTH_TO_DATE",
-          "LAST_MONTH"
+          "LAST_MONTH",
+          "LAST_QUARTER"
         ]
       }],
       "doc": "The dynamic range type",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "The date range type",
       "default": null
     }
   ]

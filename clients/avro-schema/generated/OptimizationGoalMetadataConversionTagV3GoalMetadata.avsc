@@ -46,7 +46,7 @@
     {
       "name": "is_roas_optimized",
       "type": ["null", "boolean"],
-      "doc": "ROAS optimization is not supported",
+      "doc": "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.",
       "default": null
     },
     {
@@ -60,6 +60,12 @@
         ]
       }],
       "doc": "Conversion learning model type",
+      "default": null
+    },
+    {
+      "name": "reporting_event",
+      "type": ["null", "string"],
+      "doc": "Event name for custom or standard events mapped to an oCPM model",
       "default": null
     }
   ]

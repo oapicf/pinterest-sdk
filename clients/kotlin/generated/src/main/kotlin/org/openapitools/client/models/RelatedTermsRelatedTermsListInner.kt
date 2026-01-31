@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param term 
  * @param relatedTerms 
+ * @param term 
  */
 
 
 data class RelatedTermsRelatedTermsListInner (
 
-    @Json(name = "term")
-    val term: kotlin.String? = null,
-
     @Json(name = "related_terms")
-    val relatedTerms: kotlin.collections.List<kotlin.String>? = null
+    val relatedTerms: kotlin.collections.List<kotlin.String>? = null,
+
+    @Json(name = "term")
+    val term: kotlin.String? = null
 
 ) {
 

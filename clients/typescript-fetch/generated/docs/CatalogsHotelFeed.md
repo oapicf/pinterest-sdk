@@ -10,16 +10,16 @@ Name | Type
 `createdAt` | Date
 `id` | string
 `updatedAt` | Date
-`name` | string
-`format` | [CatalogsFormat](CatalogsFormat.md)
+`catalogId` | string
 `catalogType` | [CatalogsType](CatalogsType.md)
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
-`location` | string
-`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
-`status` | [CatalogsStatus](CatalogsStatus.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
 `defaultLocale` | string
-`catalogId` | string
+`format` | [CatalogsFormat](CatalogsFormat.md)
+`location` | string
+`name` | string
+`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
+`status` | [CatalogsStatus](CatalogsStatus.md)
 
 ## Example
 
@@ -31,16 +31,16 @@ const example = {
   "createdAt": 2022-03-14T15:15:22Z,
   "id": null,
   "updatedAt": 2022-03-14T15:16:34Z,
-  "name": null,
-  "format": null,
+  "catalogId": null,
   "catalogType": null,
   "credentials": null,
-  "location": null,
-  "preferredProcessingSchedule": null,
-  "status": null,
   "defaultCurrency": null,
   "defaultLocale": en-US,
-  "catalogId": null,
+  "format": null,
+  "location": null,
+  "name": null,
+  "preferredProcessingSchedule": null,
+  "status": null,
 } satisfies CatalogsHotelFeed
 
 console.log(example)

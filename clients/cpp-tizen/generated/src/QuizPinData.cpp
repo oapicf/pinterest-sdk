@@ -25,8 +25,8 @@ QuizPinData::__init()
 {
 	//new std::list()std::list> questions;
 	//new std::list()std::list> results;
-	//tie_breaker_type = std::string();
 	//tie_breaker_custom_result = new QuizPinResult();
+	//tie_breaker_type = std::string();
 }
 
 void
@@ -42,15 +42,15 @@ QuizPinData::__cleanup()
 	//delete results;
 	//results = NULL;
 	//}
-	//if(tie_breaker_type != NULL) {
-	//
-	//delete tie_breaker_type;
-	//tie_breaker_type = NULL;
-	//}
 	//if(tie_breaker_custom_result != NULL) {
 	//
 	//delete tie_breaker_custom_result;
 	//tie_breaker_custom_result = NULL;
+	//}
+	//if(tie_breaker_type != NULL) {
+	//
+	//delete tie_breaker_type;
+	//tie_breaker_type = NULL;
 	//}
 	//
 }
@@ -108,17 +108,6 @@ QuizPinData::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *tie_breaker_typeKey = "tie_breaker_type";
-	node = json_object_get_member(pJsonObject, tie_breaker_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&tie_breaker_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *tie_breaker_custom_resultKey = "tie_breaker_custom_result";
 	node = json_object_get_member(pJsonObject, tie_breaker_custom_resultKey);
 	if (node !=NULL) {
@@ -130,6 +119,17 @@ QuizPinData::fromJson(char* jsonStr)
 			
 			QuizPinResult* obj = static_cast<QuizPinResult*> (&tie_breaker_custom_result);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *tie_breaker_typeKey = "tie_breaker_type";
+	node = json_object_get_member(pJsonObject, tie_breaker_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&tie_breaker_type, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -195,15 +195,6 @@ QuizPinData::toJson()
 	
 	const gchar *resultsKey = "results";
 	json_object_set_member(pJsonObject, resultsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getTieBreakerType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *tie_breaker_typeKey = "tie_breaker_type";
-	json_object_set_member(pJsonObject, tie_breaker_typeKey, node);
 	if (isprimitive("QuizPinResult")) {
 		QuizPinResult obj = getTieBreakerCustomResult();
 		node = converttoJson(&obj, "QuizPinResult", "");
@@ -218,6 +209,15 @@ QuizPinData::toJson()
 	}
 	const gchar *tie_breaker_custom_resultKey = "tie_breaker_custom_result";
 	json_object_set_member(pJsonObject, tie_breaker_custom_resultKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getTieBreakerType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *tie_breaker_typeKey = "tie_breaker_type";
+	json_object_set_member(pJsonObject, tie_breaker_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -250,18 +250,6 @@ QuizPinData::setResults(std::list <QuizPinResult> results)
 	this->results = results;
 }
 
-std::string
-QuizPinData::getTieBreakerType()
-{
-	return tie_breaker_type;
-}
-
-void
-QuizPinData::setTieBreakerType(std::string  tie_breaker_type)
-{
-	this->tie_breaker_type = tie_breaker_type;
-}
-
 QuizPinResult
 QuizPinData::getTieBreakerCustomResult()
 {
@@ -272,6 +260,18 @@ void
 QuizPinData::setTieBreakerCustomResult(QuizPinResult  tie_breaker_custom_result)
 {
 	this->tie_breaker_custom_result = tie_breaker_custom_result;
+}
+
+std::string
+QuizPinData::getTieBreakerType()
+{
+	return tie_breaker_type;
+}
+
+void
+QuizPinData::setTieBreakerType(std::string  tie_breaker_type)
+{
+	this->tie_breaker_type = tie_breaker_type;
 }
 
 

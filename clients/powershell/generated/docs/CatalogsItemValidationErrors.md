@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **IMAGELINKLENGTHTOOLONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **IMAGELINKMISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **INVALIDDOMAIN** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
-**ITEMIDMISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **ITEMMAINIMAGEDOWNLOADFAILURE** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
+**ITEMIDMISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **LINKFORMATINVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **LINKLENGTHTOOLONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
 **LISTPRICEINVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] 
@@ -41,8 +41,8 @@ $CatalogsItemValidationErrors = Initialize-PSOpenAPIToolsCatalogsItemValidationE
  -IMAGELINKLENGTHTOOLONG null `
  -IMAGELINKMISSING null `
  -INVALIDDOMAIN null `
- -ITEMIDMISSING null `
  -ITEMMAINIMAGEDOWNLOADFAILURE null `
+ -ITEMIDMISSING null `
  -LINKFORMATINVALID null `
  -LINKLENGTHTOOLONG null `
  -LISTPRICEINVALID null `

@@ -16,9 +16,9 @@ void main() {
   // final instance = CatalogsHotelGuestRatings();
 
   group('test CatalogsHotelGuestRatings', () {
-    // Your hotel's rating.
-    // num score
-    test('to test the property `score`', () async {
+    // Max value for the hotel rating score.
+    // num maxScore
+    test('to test the property `maxScore`', () async {
       // TODO
     });
 
@@ -28,15 +28,15 @@ void main() {
       // TODO
     });
 
-    // Max value for the hotel rating score.
-    // num maxScore
-    test('to test the property `maxScore`', () async {
-      // TODO
-    });
-
     // System you use for guest reviews.
     // String ratingSystem
     test('to test the property `ratingSystem`', () async {
+      // TODO
+    });
+
+    // Your hotel's rating.
+    // num score
+    test('to test the property `score`', () async {
       // TODO
     });
 

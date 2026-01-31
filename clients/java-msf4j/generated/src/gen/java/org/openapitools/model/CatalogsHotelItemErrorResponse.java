@@ -16,16 +16,16 @@ import org.openapitools.model.ItemValidationEvent;
  * Object describing a hotel item error
  */
 @ApiModel(description = "Object describing a hotel item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
+  @JsonProperty("errors")
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
   @JsonProperty("hotel_id")
   private String hotelId;
-
-  @JsonProperty("errors")
-  private List<@Valid ItemValidationEvent> errors = null;
 
   public CatalogsHotelItemErrorResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -43,6 +43,29 @@ public class CatalogsHotelItemErrorResponse   {
 
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsHotelItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CatalogsHotelItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+   /**
+   * Array with the errors for the item id requested
+   * @return errors
+  **/
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
   }
 
   public CatalogsHotelItemErrorResponse hotelId(String hotelId) {
@@ -63,32 +86,6 @@ public class CatalogsHotelItemErrorResponse   {
     this.hotelId = hotelId;
   }
 
-  public CatalogsHotelItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CatalogsHotelItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-   /**
-   * Array with the errors for the item id requested
-   * @return errors
-  **/
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -100,13 +97,13 @@ public class CatalogsHotelItemErrorResponse   {
     }
     CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse = (CatalogsHotelItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsHotelItemErrorResponse.catalogType) &&
-        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId) &&
-        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors) &&
+        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, errors);
+    return Objects.hash(catalogType, errors, hotelId);
   }
 
   @Override
@@ -115,8 +112,8 @@ public class CatalogsHotelItemErrorResponse   {
     sb.append("class CatalogsHotelItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -15,28 +15,9 @@ import java.util.Objects;
 
 public class UserSummary   {
   
-  private String username;
-
   private String type;
 
-  /**
-   * Username
-   **/
-  public UserSummary username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "username", value = "Username")
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
+  private String username;
 
   /**
    * Always \&quot;user\&quot;
@@ -57,6 +38,25 @@ public class UserSummary   {
   }
 
 
+  /**
+   * Username
+   **/
+  public UserSummary username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "username", value = "Username")
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -67,13 +67,13 @@ public class UserSummary   {
       return false;
     }
     UserSummary userSummary = (UserSummary) o;
-    return Objects.equals(this.username, userSummary.username) &&
-        Objects.equals(this.type, userSummary.type);
+    return Objects.equals(this.type, userSummary.type) &&
+        Objects.equals(this.username, userSummary.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, type);
+    return Objects.hash(type, username);
   }
 
   @Override
@@ -81,8 +81,8 @@ public class UserSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserSummary {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

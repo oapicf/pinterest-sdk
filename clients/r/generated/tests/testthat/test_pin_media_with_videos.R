@@ -5,16 +5,16 @@ context("Test PinMediaWithVideos")
 
 model_instance <- PinMediaWithVideos$new()
 
+test_that("items", {
+  # tests for the property `items` (array[VideoMetadataWithItemType])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
+})
+
 test_that("media_type", {
   # tests for the property `media_type` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`media_type`, "EXPECTED_RESULT")
-})
-
-test_that("items", {
-  # tests for the property `items` (array[VideoMetadata])
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
 })

@@ -20,14 +20,6 @@ public class UserWebsiteSummaryTest {
     }
 
     /**
-     * Test the property 'website'
-     */
-    @Test
-    public void websiteTest() {
-        // TODO: test website
-    }
-
-    /**
      * Test the property 'status'
      */
     @Test
@@ -41,6 +33,14 @@ public class UserWebsiteSummaryTest {
     @Test
     public void verifiedAtTest() {
         // TODO: test verifiedAt
+    }
+
+    /**
+     * Test the property 'website'
+     */
+    @Test
+    public void websiteTest() {
+        // TODO: test website
     }
 
 }

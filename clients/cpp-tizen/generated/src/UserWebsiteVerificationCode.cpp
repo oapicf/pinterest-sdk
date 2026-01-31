@@ -23,40 +23,40 @@ UserWebsiteVerificationCode::~UserWebsiteVerificationCode()
 void
 UserWebsiteVerificationCode::__init()
 {
-	//verification_code = std::string();
 	//dns_txt_record = std::string();
-	//metatag = std::string();
-	//filename = std::string();
 	//file_content = std::string();
+	//filename = std::string();
+	//metatag = std::string();
+	//verification_code = std::string();
 }
 
 void
 UserWebsiteVerificationCode::__cleanup()
 {
-	//if(verification_code != NULL) {
-	//
-	//delete verification_code;
-	//verification_code = NULL;
-	//}
 	//if(dns_txt_record != NULL) {
 	//
 	//delete dns_txt_record;
 	//dns_txt_record = NULL;
 	//}
-	//if(metatag != NULL) {
+	//if(file_content != NULL) {
 	//
-	//delete metatag;
-	//metatag = NULL;
+	//delete file_content;
+	//file_content = NULL;
 	//}
 	//if(filename != NULL) {
 	//
 	//delete filename;
 	//filename = NULL;
 	//}
-	//if(file_content != NULL) {
+	//if(metatag != NULL) {
 	//
-	//delete file_content;
-	//file_content = NULL;
+	//delete metatag;
+	//metatag = NULL;
+	//}
+	//if(verification_code != NULL) {
+	//
+	//delete verification_code;
+	//verification_code = NULL;
 	//}
 	//
 }
@@ -66,17 +66,6 @@ UserWebsiteVerificationCode::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *verification_codeKey = "verification_code";
-	node = json_object_get_member(pJsonObject, verification_codeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&verification_code, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *dns_txt_recordKey = "dns_txt_record";
 	node = json_object_get_member(pJsonObject, dns_txt_recordKey);
 	if (node !=NULL) {
@@ -88,13 +77,13 @@ UserWebsiteVerificationCode::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *metatagKey = "metatag";
-	node = json_object_get_member(pJsonObject, metatagKey);
+	const gchar *file_contentKey = "file_content";
+	node = json_object_get_member(pJsonObject, file_contentKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&metatag, node, "std::string", "");
+			jsonToValue(&file_content, node, "std::string", "");
 		} else {
 			
 		}
@@ -110,13 +99,24 @@ UserWebsiteVerificationCode::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *file_contentKey = "file_content";
-	node = json_object_get_member(pJsonObject, file_contentKey);
+	const gchar *metatagKey = "metatag";
+	node = json_object_get_member(pJsonObject, metatagKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&file_content, node, "std::string", "");
+			jsonToValue(&metatag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *verification_codeKey = "verification_code";
+	node = json_object_get_member(pJsonObject, verification_codeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&verification_code, node, "std::string", "");
 		} else {
 			
 		}
@@ -134,15 +134,6 @@ UserWebsiteVerificationCode::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getVerificationCode();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *verification_codeKey = "verification_code";
-	json_object_set_member(pJsonObject, verification_codeKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getDnsTxtRecord();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -152,14 +143,14 @@ UserWebsiteVerificationCode::toJson()
 	const gchar *dns_txt_recordKey = "dns_txt_record";
 	json_object_set_member(pJsonObject, dns_txt_recordKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getMetatag();
+		std::string obj = getFileContent();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *metatagKey = "metatag";
-	json_object_set_member(pJsonObject, metatagKey, node);
+	const gchar *file_contentKey = "file_content";
+	json_object_set_member(pJsonObject, file_contentKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getFilename();
 		node = converttoJson(&obj, "std::string", "");
@@ -170,32 +161,29 @@ UserWebsiteVerificationCode::toJson()
 	const gchar *filenameKey = "filename";
 	json_object_set_member(pJsonObject, filenameKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getFileContent();
+		std::string obj = getMetatag();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *file_contentKey = "file_content";
-	json_object_set_member(pJsonObject, file_contentKey, node);
+	const gchar *metatagKey = "metatag";
+	json_object_set_member(pJsonObject, metatagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getVerificationCode();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *verification_codeKey = "verification_code";
+	json_object_set_member(pJsonObject, verification_codeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-UserWebsiteVerificationCode::getVerificationCode()
-{
-	return verification_code;
-}
-
-void
-UserWebsiteVerificationCode::setVerificationCode(std::string  verification_code)
-{
-	this->verification_code = verification_code;
 }
 
 std::string
@@ -211,15 +199,15 @@ UserWebsiteVerificationCode::setDnsTxtRecord(std::string  dns_txt_record)
 }
 
 std::string
-UserWebsiteVerificationCode::getMetatag()
+UserWebsiteVerificationCode::getFileContent()
 {
-	return metatag;
+	return file_content;
 }
 
 void
-UserWebsiteVerificationCode::setMetatag(std::string  metatag)
+UserWebsiteVerificationCode::setFileContent(std::string  file_content)
 {
-	this->metatag = metatag;
+	this->file_content = file_content;
 }
 
 std::string
@@ -235,15 +223,27 @@ UserWebsiteVerificationCode::setFilename(std::string  filename)
 }
 
 std::string
-UserWebsiteVerificationCode::getFileContent()
+UserWebsiteVerificationCode::getMetatag()
 {
-	return file_content;
+	return metatag;
 }
 
 void
-UserWebsiteVerificationCode::setFileContent(std::string  file_content)
+UserWebsiteVerificationCode::setMetatag(std::string  metatag)
 {
-	this->file_content = file_content;
+	this->metatag = metatag;
+}
+
+std::string
+UserWebsiteVerificationCode::getVerificationCode()
+{
+	return verification_code;
+}
+
+void
+UserWebsiteVerificationCode::setVerificationCode(std::string  verification_code)
+{
+	this->verification_code = verification_code;
 }
 
 

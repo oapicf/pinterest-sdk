@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsHotelItemsPostFilter{}
 
 // CatalogsHotelItemsPostFilter struct for CatalogsHotelItemsPostFilter
 type CatalogsHotelItemsPostFilter struct {
-	CatalogType string `json:"catalog_type"`
-	HotelIds []string `json:"hotel_ids"`
 	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
+	HotelIds []string `json:"hotel_ids"`
 }
 
 type _CatalogsHotelItemsPostFilter CatalogsHotelItemsPostFilter
@@ -47,6 +47,38 @@ func NewCatalogsHotelItemsPostFilter(catalogType string, hotelIds []string) *Cat
 func NewCatalogsHotelItemsPostFilterWithDefaults() *CatalogsHotelItemsPostFilter {
 	this := CatalogsHotelItemsPostFilter{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
+func (o *CatalogsHotelItemsPostFilter) GetCatalogId() string {
+	if o == nil || IsNil(o.CatalogId) {
+		var ret string
+		return ret
+	}
+	return *o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelItemsPostFilter) GetCatalogIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogId) {
+		return nil, false
+	}
+	return o.CatalogId, true
+}
+
+// HasCatalogId returns a boolean if a field has been set.
+func (o *CatalogsHotelItemsPostFilter) HasCatalogId() bool {
+	if o != nil && !IsNil(o.CatalogId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
+func (o *CatalogsHotelItemsPostFilter) SetCatalogId(v string) {
+	o.CatalogId = &v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -97,38 +129,6 @@ func (o *CatalogsHotelItemsPostFilter) SetHotelIds(v []string) {
 	o.HotelIds = v
 }
 
-// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
-func (o *CatalogsHotelItemsPostFilter) GetCatalogId() string {
-	if o == nil || IsNil(o.CatalogId) {
-		var ret string
-		return ret
-	}
-	return *o.CatalogId
-}
-
-// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelItemsPostFilter) GetCatalogIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CatalogId) {
-		return nil, false
-	}
-	return o.CatalogId, true
-}
-
-// HasCatalogId returns a boolean if a field has been set.
-func (o *CatalogsHotelItemsPostFilter) HasCatalogId() bool {
-	if o != nil && !IsNil(o.CatalogId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
-func (o *CatalogsHotelItemsPostFilter) SetCatalogId(v string) {
-	o.CatalogId = &v
-}
-
 func (o CatalogsHotelItemsPostFilter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -139,11 +139,11 @@ func (o CatalogsHotelItemsPostFilter) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelItemsPostFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["hotel_ids"] = o.HotelIds
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
+	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["hotel_ids"] = o.HotelIds
 	return toSerialize, nil
 }
 

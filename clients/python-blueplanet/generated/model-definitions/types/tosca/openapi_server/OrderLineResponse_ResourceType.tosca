@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OrderLineResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OrderLineResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OrderLine = openapi_server.resourceTypes.OrderLine
+  OrderLineError = openapi_server.resourceTypes.OrderLineError
+}
+resourceTypes {
+
+  OrderLineResponse {
+    title = OrderLineResponse
+    description = OrderLineResponse
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = OrderLineError
+          description = "Error list if update(s) fail."
+          optional = false
+        }
+        order_line {
+          type = array
+          items.type = OrderLine
+          description = "Order Line object array."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OrderLineResponse {
+    title = OrderLineResponse
+    description = OrderLineResponse
+    implements = openapi_server.resourceTypes.OrderLineResponse
+
+  }
+}

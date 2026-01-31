@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**member_id** | **string** | Unique identifier of the member | [default to undefined]
 **business_role** | [**BusinessRoleForMembers**](BusinessRoleForMembers.md) |  | [default to undefined]
+**member_id** | **string** | Unique identifier of the member | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { MembersToDeleteBodyMembersInner } from './api';
 
 const instance: MembersToDeleteBodyMembersInner = {
-    member_id,
     business_role,
+    member_id,
 };
 ```
 

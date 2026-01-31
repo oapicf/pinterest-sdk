@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * AdAccountGetSubscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdAccountGetSubscriptionResponse   {
   @JsonProperty("lead_form_id")
@@ -22,16 +22,6 @@ public class AdAccountGetSubscriptionResponse   {
   
   private String webhookUrl;
 
-  @JsonProperty("id")
-  @Pattern(regexp="^\\d+$")
-
-  private String id;
-
-  @JsonProperty("user_account_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String userAccountId;
-
   @JsonProperty("ad_account_id")
   @Pattern(regexp="^\\d+$")
 
@@ -41,17 +31,27 @@ public class AdAccountGetSubscriptionResponse   {
   
   private String apiVersion;
 
-  @JsonProperty("cryptographic_key")
+  @JsonProperty("created_time")
   
-  private String cryptographicKey;
+  private Integer createdTime;
 
   @JsonProperty("cryptographic_algorithm")
   
   private String cryptographicAlgorithm;
 
-  @JsonProperty("created_time")
+  @JsonProperty("cryptographic_key")
   
-  private Integer createdTime;
+  private String cryptographicKey;
+
+  @JsonProperty("id")
+  @Pattern(regexp="^\\d+$")
+
+  private String id;
+
+  @JsonProperty("user_account_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String userAccountId;
 
   public AdAccountGetSubscriptionResponse leadFormId(String leadFormId) {
     this.leadFormId = leadFormId;
@@ -85,40 +85,6 @@ public class AdAccountGetSubscriptionResponse   {
 
   public void setWebhookUrl(String webhookUrl) {
     this.webhookUrl = webhookUrl;
-  }
-
-  public AdAccountGetSubscriptionResponse id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Subscription ID.
-   * @return id
-  **/
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AdAccountGetSubscriptionResponse userAccountId(String userAccountId) {
-    this.userAccountId = userAccountId;
-    return this;
-  }
-
-   /**
-   * User account used to subscribe lead data.
-   * @return userAccountId
-  **/
-  public String getUserAccountId() {
-    return userAccountId;
-  }
-
-  public void setUserAccountId(String userAccountId) {
-    this.userAccountId = userAccountId;
   }
 
   public AdAccountGetSubscriptionResponse adAccountId(String adAccountId) {
@@ -155,21 +121,21 @@ public class AdAccountGetSubscriptionResponse   {
     this.apiVersion = apiVersion;
   }
 
-  public AdAccountGetSubscriptionResponse cryptographicKey(String cryptographicKey) {
-    this.cryptographicKey = cryptographicKey;
+  public AdAccountGetSubscriptionResponse createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
    /**
-   * Base64 encoded key for client to decrypt lead data.
-   * @return cryptographicKey
+   * Lead subscription creation time. Unix timestamp in milliseconds.
+   * @return createdTime
   **/
-  public String getCryptographicKey() {
-    return cryptographicKey;
+  public Integer getCreatedTime() {
+    return createdTime;
   }
 
-  public void setCryptographicKey(String cryptographicKey) {
-    this.cryptographicKey = cryptographicKey;
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
   }
 
   public AdAccountGetSubscriptionResponse cryptographicAlgorithm(String cryptographicAlgorithm) {
@@ -189,21 +155,55 @@ public class AdAccountGetSubscriptionResponse   {
     this.cryptographicAlgorithm = cryptographicAlgorithm;
   }
 
-  public AdAccountGetSubscriptionResponse createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
+  public AdAccountGetSubscriptionResponse cryptographicKey(String cryptographicKey) {
+    this.cryptographicKey = cryptographicKey;
     return this;
   }
 
    /**
-   * Lead form creation time. Unix timestamp in milliseconds.
-   * @return createdTime
+   * Base64 encoded key for client to decrypt lead data.
+   * @return cryptographicKey
   **/
-  public Integer getCreatedTime() {
-    return createdTime;
+  public String getCryptographicKey() {
+    return cryptographicKey;
   }
 
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
+  public void setCryptographicKey(String cryptographicKey) {
+    this.cryptographicKey = cryptographicKey;
+  }
+
+  public AdAccountGetSubscriptionResponse id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Subscription ID.
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AdAccountGetSubscriptionResponse userAccountId(String userAccountId) {
+    this.userAccountId = userAccountId;
+    return this;
+  }
+
+   /**
+   * User account used to subscribe lead data.
+   * @return userAccountId
+  **/
+  public String getUserAccountId() {
+    return userAccountId;
+  }
+
+  public void setUserAccountId(String userAccountId) {
+    this.userAccountId = userAccountId;
   }
 
 
@@ -218,18 +218,18 @@ public class AdAccountGetSubscriptionResponse   {
     AdAccountGetSubscriptionResponse adAccountGetSubscriptionResponse = (AdAccountGetSubscriptionResponse) o;
     return Objects.equals(leadFormId, adAccountGetSubscriptionResponse.leadFormId) &&
         Objects.equals(webhookUrl, adAccountGetSubscriptionResponse.webhookUrl) &&
-        Objects.equals(id, adAccountGetSubscriptionResponse.id) &&
-        Objects.equals(userAccountId, adAccountGetSubscriptionResponse.userAccountId) &&
         Objects.equals(adAccountId, adAccountGetSubscriptionResponse.adAccountId) &&
         Objects.equals(apiVersion, adAccountGetSubscriptionResponse.apiVersion) &&
-        Objects.equals(cryptographicKey, adAccountGetSubscriptionResponse.cryptographicKey) &&
+        Objects.equals(createdTime, adAccountGetSubscriptionResponse.createdTime) &&
         Objects.equals(cryptographicAlgorithm, adAccountGetSubscriptionResponse.cryptographicAlgorithm) &&
-        Objects.equals(createdTime, adAccountGetSubscriptionResponse.createdTime);
+        Objects.equals(cryptographicKey, adAccountGetSubscriptionResponse.cryptographicKey) &&
+        Objects.equals(id, adAccountGetSubscriptionResponse.id) &&
+        Objects.equals(userAccountId, adAccountGetSubscriptionResponse.userAccountId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(leadFormId, webhookUrl, id, userAccountId, adAccountId, apiVersion, cryptographicKey, cryptographicAlgorithm, createdTime);
+    return Objects.hash(leadFormId, webhookUrl, adAccountId, apiVersion, createdTime, cryptographicAlgorithm, cryptographicKey, id, userAccountId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -240,13 +240,13 @@ public class AdAccountGetSubscriptionResponse   {
     
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    userAccountId: ").append(toIndentedString(userAccountId)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
-    sb.append("    cryptographicKey: ").append(toIndentedString(cryptographicKey)).append("\n");
-    sb.append("    cryptographicAlgorithm: ").append(toIndentedString(cryptographicAlgorithm)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    cryptographicAlgorithm: ").append(toIndentedString(cryptographicAlgorithm)).append("\n");
+    sb.append("    cryptographicKey: ").append(toIndentedString(cryptographicKey)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    userAccountId: ").append(toIndentedString(userAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

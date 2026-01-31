@@ -7,7 +7,7 @@ model_instance <- CampaignsAnalyticsResponseInner$new()
 
 test_that("CAMPAIGN_ID", {
   # tests for the property `CAMPAIGN_ID` (character)
-  # The ID of the campaing that this metrics belongs to.
+  # The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`CAMPAIGN_ID`, "EXPECTED_RESULT")

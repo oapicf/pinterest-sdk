@@ -33,24 +33,24 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpdateRequest {
 
-  private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
-
-  private @Nullable String name;
-
-  private @Nullable CatalogsFormat format;
+  private CatalogsType catalogType;
 
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
+  private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
+
+  private @Nullable CatalogsFormat format;
+
   private @Nullable String location;
+
+  private @Nullable String name;
 
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
   private @Nullable CatalogsStatus status;
-
-  private CatalogsType catalogType;
 
   public CatalogsHotelFeedsUpdateRequest() {
     super();
@@ -63,64 +63,24 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = JsonNullable.of(defaultCurrency);
+  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
   /**
-   * Get defaultCurrency
-   * @return defaultCurrency
+   * Get catalogType
+   * @return catalogType
    */
-  @Valid 
-  @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("default_currency")
-  public JsonNullable<NullableCurrency> getDefaultCurrency() {
-    return defaultCurrency;
+  @NotNull @Valid 
+  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setDefaultCurrency(JsonNullable<NullableCurrency> defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  public CatalogsHotelFeedsUpdateRequest name(@Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-   */
-  
-  @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public @Nullable String getName() {
-    return name;
-  }
-
-  public void setName(@Nullable String name) {
-    this.name = name;
-  }
-
-  public CatalogsHotelFeedsUpdateRequest format(@Nullable CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * Get format
-   * @return format
-   */
-  @Valid 
-  @Schema(name = "format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("format")
-  public @Nullable CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(@Nullable CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsHotelFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
@@ -143,6 +103,46 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
     this.credentials = credentials;
   }
 
+  public CatalogsHotelFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = JsonNullable.of(defaultCurrency);
+    return this;
+  }
+
+  /**
+   * Get defaultCurrency
+   * @return defaultCurrency
+   */
+  @Valid 
+  @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("default_currency")
+  public JsonNullable<NullableCurrency> getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  public void setDefaultCurrency(JsonNullable<NullableCurrency> defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  public CatalogsHotelFeedsUpdateRequest format(@Nullable CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+  /**
+   * Get format
+   * @return format
+   */
+  @Valid 
+  @Schema(name = "format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("format")
+  public @Nullable CatalogsFormat getFormat() {
+    return format;
+  }
+
+  public void setFormat(@Nullable CatalogsFormat format) {
+    this.format = format;
+  }
+
   public CatalogsHotelFeedsUpdateRequest location(@Nullable String location) {
     this.location = location;
     return this;
@@ -161,6 +161,26 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
 
   public void setLocation(@Nullable String location) {
     this.location = location;
+  }
+
+  public CatalogsHotelFeedsUpdateRequest name(@Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+   */
+  
+  @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
+  }
+
+  public void setName(@Nullable String name) {
+    this.name = name;
   }
 
   public CatalogsHotelFeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -203,26 +223,6 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
     this.status = status;
   }
 
-  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  /**
-   * Get catalogType
-   * @return catalogType
-   */
-  @NotNull @Valid 
-  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -232,14 +232,14 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
       return false;
     }
     CatalogsHotelFeedsUpdateRequest catalogsHotelFeedsUpdateRequest = (CatalogsHotelFeedsUpdateRequest) o;
-    return equalsNullable(this.defaultCurrency, catalogsHotelFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsHotelFeedsUpdateRequest.name) &&
-        Objects.equals(this.format, catalogsHotelFeedsUpdateRequest.format) &&
+    return Objects.equals(this.catalogType, catalogsHotelFeedsUpdateRequest.catalogType) &&
         equalsNullable(this.credentials, catalogsHotelFeedsUpdateRequest.credentials) &&
+        equalsNullable(this.defaultCurrency, catalogsHotelFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(this.format, catalogsHotelFeedsUpdateRequest.format) &&
         Objects.equals(this.location, catalogsHotelFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsHotelFeedsUpdateRequest.name) &&
         equalsNullable(this.preferredProcessingSchedule, catalogsHotelFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsHotelFeedsUpdateRequest.status) &&
-        Objects.equals(this.catalogType, catalogsHotelFeedsUpdateRequest.catalogType);
+        Objects.equals(this.status, catalogsHotelFeedsUpdateRequest.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -248,7 +248,7 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(defaultCurrency), name, format, hashCodeNullable(credentials), location, hashCodeNullable(preferredProcessingSchedule), status, catalogType);
+    return Objects.hash(catalogType, hashCodeNullable(credentials), hashCodeNullable(defaultCurrency), format, location, name, hashCodeNullable(preferredProcessingSchedule), status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,14 +262,14 @@ public class CatalogsHotelFeedsUpdateRequest implements CatalogsVerticalFeedsUpd
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelFeedsUpdateRequest {\n");
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

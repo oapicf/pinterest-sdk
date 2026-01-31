@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
+open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 
 module CustomLabel2Filter =
 
@@ -12,7 +12,7 @@ module CustomLabel2Filter =
   [<CLIMutable>]
   type CustomLabel2Filter = {
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_2")>]
-    CUSTOMLABEL2 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL2 : CatalogsProductGroupFilterOperatorTypeCriteria;
   }
 
   //#endregion

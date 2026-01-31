@@ -23,39 +23,39 @@ pinterest_rest_api_catalogs_creative_assets_product_group_create_request_CATALOG
 }
 
 static catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request_create_internal(
+    char *catalog_id,
     pinterest_rest_api_catalogs_creative_assets_product_group_create_request_CATALOGTYPE_e catalog_type,
-    char *name,
     char *description,
     catalogs_creative_assets_product_group_filters_t *filters,
-    char *catalog_id
+    char *name
     ) {
     catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request_local_var = malloc(sizeof(catalogs_creative_assets_product_group_create_request_t));
     if (!catalogs_creative_assets_product_group_create_request_local_var) {
         return NULL;
     }
+    catalogs_creative_assets_product_group_create_request_local_var->catalog_id = catalog_id;
     catalogs_creative_assets_product_group_create_request_local_var->catalog_type = catalog_type;
-    catalogs_creative_assets_product_group_create_request_local_var->name = name;
     catalogs_creative_assets_product_group_create_request_local_var->description = description;
     catalogs_creative_assets_product_group_create_request_local_var->filters = filters;
-    catalogs_creative_assets_product_group_create_request_local_var->catalog_id = catalog_id;
+    catalogs_creative_assets_product_group_create_request_local_var->name = name;
 
     catalogs_creative_assets_product_group_create_request_local_var->_library_owned = 1;
     return catalogs_creative_assets_product_group_create_request_local_var;
 }
 
 __attribute__((deprecated)) catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_creative_assets_product_group_create_request_CATALOGTYPE_e catalog_type,
-    char *name,
     char *description,
     catalogs_creative_assets_product_group_filters_t *filters,
-    char *catalog_id
+    char *name
     ) {
     return catalogs_creative_assets_product_group_create_request_create_internal (
+        catalog_id,
         catalog_type,
-        name,
         description,
         filters,
-        catalog_id
+        name
         );
 }
 
@@ -68,9 +68,9 @@ void catalogs_creative_assets_product_group_create_request_free(catalogs_creativ
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_creative_assets_product_group_create_request->name) {
-        free(catalogs_creative_assets_product_group_create_request->name);
-        catalogs_creative_assets_product_group_create_request->name = NULL;
+    if (catalogs_creative_assets_product_group_create_request->catalog_id) {
+        free(catalogs_creative_assets_product_group_create_request->catalog_id);
+        catalogs_creative_assets_product_group_create_request->catalog_id = NULL;
     }
     if (catalogs_creative_assets_product_group_create_request->description) {
         free(catalogs_creative_assets_product_group_create_request->description);
@@ -80,15 +80,24 @@ void catalogs_creative_assets_product_group_create_request_free(catalogs_creativ
         catalogs_creative_assets_product_group_filters_free(catalogs_creative_assets_product_group_create_request->filters);
         catalogs_creative_assets_product_group_create_request->filters = NULL;
     }
-    if (catalogs_creative_assets_product_group_create_request->catalog_id) {
-        free(catalogs_creative_assets_product_group_create_request->catalog_id);
-        catalogs_creative_assets_product_group_create_request->catalog_id = NULL;
+    if (catalogs_creative_assets_product_group_create_request->name) {
+        free(catalogs_creative_assets_product_group_create_request->name);
+        catalogs_creative_assets_product_group_create_request->name = NULL;
     }
     free(catalogs_creative_assets_product_group_create_request);
 }
 
 cJSON *catalogs_creative_assets_product_group_create_request_convertToJSON(catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_creative_assets_product_group_create_request->catalog_id
+    if (!catalogs_creative_assets_product_group_create_request->catalog_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_creative_assets_product_group_create_request->catalog_id) == NULL) {
+    goto fail; //String
+    }
+
 
     // catalogs_creative_assets_product_group_create_request->catalog_type
     if (pinterest_rest_api_catalogs_creative_assets_product_group_create_request_CATALOGTYPE_NULL == catalogs_creative_assets_product_group_create_request->catalog_type) {
@@ -97,15 +106,6 @@ cJSON *catalogs_creative_assets_product_group_create_request_convertToJSON(catal
     if(cJSON_AddStringToObject(item, "catalog_type", catalogs_creative_assets_product_group_create_request_catalog_type_ToString(catalogs_creative_assets_product_group_create_request->catalog_type)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // catalogs_creative_assets_product_group_create_request->name
-    if (!catalogs_creative_assets_product_group_create_request->name) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "name", catalogs_creative_assets_product_group_create_request->name) == NULL) {
-    goto fail; //String
     }
 
 
@@ -131,11 +131,11 @@ cJSON *catalogs_creative_assets_product_group_create_request_convertToJSON(catal
     }
 
 
-    // catalogs_creative_assets_product_group_create_request->catalog_id
-    if (!catalogs_creative_assets_product_group_create_request->catalog_id) {
+    // catalogs_creative_assets_product_group_create_request->name
+    if (!catalogs_creative_assets_product_group_create_request->name) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_creative_assets_product_group_create_request->catalog_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "name", catalogs_creative_assets_product_group_create_request->name) == NULL) {
     goto fail; //String
     }
 
@@ -154,6 +154,21 @@ catalogs_creative_assets_product_group_create_request_t *catalogs_creative_asset
     // define the local variable for catalogs_creative_assets_product_group_create_request->filters
     catalogs_creative_assets_product_group_filters_t *filters_local_nonprim = NULL;
 
+    // catalogs_creative_assets_product_group_create_request->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (!catalog_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(catalog_id))
+    {
+    goto end; //String
+    }
+
     // catalogs_creative_assets_product_group_create_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "catalog_type");
     if (cJSON_IsNull(catalog_type)) {
@@ -170,21 +185,6 @@ catalogs_creative_assets_product_group_create_request_t *catalogs_creative_asset
     goto end; //Enum
     }
     catalog_typeVariable = catalogs_creative_assets_product_group_create_request_catalog_type_FromString(catalog_type->valuestring);
-
-    // catalogs_creative_assets_product_group_create_request->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (!name) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(name))
-    {
-    goto end; //String
-    }
 
     // catalogs_creative_assets_product_group_create_request->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "description");
@@ -210,28 +210,28 @@ catalogs_creative_assets_product_group_create_request_t *catalogs_creative_asset
     
     filters_local_nonprim = catalogs_creative_assets_product_group_filters_parseFromJSON(filters); //nonprimitive
 
-    // catalogs_creative_assets_product_group_create_request->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
+    // catalogs_creative_assets_product_group_create_request->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
     }
-    if (!catalog_id) {
+    if (!name) {
         goto end;
     }
 
     
-    if(!cJSON_IsString(catalog_id))
+    if(!cJSON_IsString(name))
     {
     goto end; //String
     }
 
 
     catalogs_creative_assets_product_group_create_request_local_var = catalogs_creative_assets_product_group_create_request_create_internal (
+        strdup(catalog_id->valuestring),
         catalog_typeVariable,
-        strdup(name->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         filters_local_nonprim,
-        strdup(catalog_id->valuestring)
+        strdup(name->valuestring)
         );
 
     return catalogs_creative_assets_product_group_create_request_local_var;

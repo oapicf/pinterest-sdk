@@ -7,14 +7,174 @@
 #' @title CatalogsItemValidationWarnings
 #' @description CatalogsItemValidationWarnings Class
 #' @format An \code{R6Class} generator object
+#' @field AD_IMAGE_0_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_0_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_0_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_0_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_0_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_0_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_0_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_10_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_11_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_12_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_13_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_14_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_15_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_16_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_17_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_18_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_19_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_1_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_2_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_3_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_4_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_5_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_6_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_7_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_8_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_IMAGE_9_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
 #' @field AD_LINK_FORMAT_WARNING  \link{CatalogsItemValidationDetails} [optional]
 #' @field AD_LINK_SAME_AS_LINK  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_0_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_1_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_LINK_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_LINK_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_TAG_DUPLICATED  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_TAG_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
+#' @field AD_VIDEO_2_TAG_REQUIRED  \link{CatalogsItemValidationDetails} [optional]
 #' @field ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
 #' @field ADDITIONAL_IMAGE_LINK_WARNING  \link{CatalogsItemValidationDetails} [optional]
 #' @field ADWORDS_FORMAT_WARNING  \link{CatalogsItemValidationDetails} [optional]
 #' @field ADWORDS_SAME_AS_LINK  \link{CatalogsItemValidationDetails} [optional]
 #' @field AGE_GROUP_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field SIZE_SYSTEM_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field ANDROID_DEEP_LINK_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field AVAILABILITY_DATE_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field COUNTRY_DOES_NOT_MAP_TO_CURRENCY  \link{CatalogsItemValidationDetails} [optional]
@@ -37,19 +197,21 @@
 #' @field OPTIONAL_PRODUCT_CATEGORY_MISSING  \link{CatalogsItemValidationDetails} [optional]
 #' @field PRODUCT_CATEGORY_DEPTH_WARNING  \link{CatalogsItemValidationDetails} [optional]
 #' @field PRODUCT_TYPE_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
-#' @field SALES_PRICE_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field SALES_PRICE_TOO_LOW  \link{CatalogsItemValidationDetails} [optional]
-#' @field SALES_PRICE_TOO_HIGH  \link{CatalogsItemValidationDetails} [optional]
 #' @field SALE_DATE_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field SHIPPING_INVALID  \link{CatalogsItemValidationDetails} [optional]
+#' @field SALES_PRICE_INVALID  \link{CatalogsItemValidationDetails} [optional]
+#' @field SALES_PRICE_TOO_HIGH  \link{CatalogsItemValidationDetails} [optional]
+#' @field SALES_PRICE_TOO_LOW  \link{CatalogsItemValidationDetails} [optional]
 #' @field SHIPPING_HEIGHT_INVALID  \link{CatalogsItemValidationDetails} [optional]
+#' @field SHIPPING_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field SHIPPING_WEIGHT_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field SHIPPING_WIDTH_INVALID  \link{CatalogsItemValidationDetails} [optional]
+#' @field SIZE_SYSTEM_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field SIZE_TYPE_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field TAX_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field TITLE_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
 #' @field TOO_MANY_ADDITIONAL_IMAGE_LINKS  \link{CatalogsItemValidationDetails} [optional]
 #' @field UTM_SOURCE_AUTO_CORRECTED  \link{CatalogsItemValidationDetails} [optional]
+#' @field VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED  \link{CatalogsItemValidationDetails} [optional]
 #' @field WEIGHT_UNIT_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -57,14 +219,174 @@
 CatalogsItemValidationWarnings <- R6::R6Class(
   "CatalogsItemValidationWarnings",
   public = list(
+    `AD_IMAGE_0_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_0_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_0_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_0_LINK_WARNING` = NULL,
+    `AD_IMAGE_0_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_0_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_0_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_10_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_10_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_10_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_10_LINK_WARNING` = NULL,
+    `AD_IMAGE_10_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_10_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_10_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_11_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_11_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_11_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_11_LINK_WARNING` = NULL,
+    `AD_IMAGE_11_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_11_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_11_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_12_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_12_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_12_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_12_LINK_WARNING` = NULL,
+    `AD_IMAGE_12_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_12_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_12_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_13_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_13_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_13_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_13_LINK_WARNING` = NULL,
+    `AD_IMAGE_13_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_13_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_13_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_14_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_14_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_14_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_14_LINK_WARNING` = NULL,
+    `AD_IMAGE_14_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_14_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_14_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_15_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_15_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_15_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_15_LINK_WARNING` = NULL,
+    `AD_IMAGE_15_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_15_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_15_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_16_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_16_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_16_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_16_LINK_WARNING` = NULL,
+    `AD_IMAGE_16_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_16_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_16_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_17_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_17_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_17_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_17_LINK_WARNING` = NULL,
+    `AD_IMAGE_17_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_17_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_17_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_18_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_18_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_18_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_18_LINK_WARNING` = NULL,
+    `AD_IMAGE_18_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_18_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_18_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_19_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_19_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_19_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_19_LINK_WARNING` = NULL,
+    `AD_IMAGE_19_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_19_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_19_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_1_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_1_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_1_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_1_LINK_WARNING` = NULL,
+    `AD_IMAGE_1_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_1_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_1_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_2_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_2_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_2_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_2_LINK_WARNING` = NULL,
+    `AD_IMAGE_2_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_2_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_2_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_3_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_3_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_3_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_3_LINK_WARNING` = NULL,
+    `AD_IMAGE_3_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_3_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_3_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_4_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_4_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_4_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_4_LINK_WARNING` = NULL,
+    `AD_IMAGE_4_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_4_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_4_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_5_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_5_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_5_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_5_LINK_WARNING` = NULL,
+    `AD_IMAGE_5_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_5_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_5_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_6_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_6_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_6_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_6_LINK_WARNING` = NULL,
+    `AD_IMAGE_6_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_6_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_6_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_7_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_7_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_7_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_7_LINK_WARNING` = NULL,
+    `AD_IMAGE_7_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_7_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_7_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_8_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_8_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_8_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_8_LINK_WARNING` = NULL,
+    `AD_IMAGE_8_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_8_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_8_TAG_REQUIRED` = NULL,
+    `AD_IMAGE_9_LINK_DUPLICATED` = NULL,
+    `AD_IMAGE_9_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_9_LINK_REQUIRED` = NULL,
+    `AD_IMAGE_9_LINK_WARNING` = NULL,
+    `AD_IMAGE_9_TAG_DUPLICATED` = NULL,
+    `AD_IMAGE_9_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_IMAGE_9_TAG_REQUIRED` = NULL,
     `AD_LINK_FORMAT_WARNING` = NULL,
     `AD_LINK_SAME_AS_LINK` = NULL,
+    `AD_VIDEO_0_LINK_DUPLICATED` = NULL,
+    `AD_VIDEO_0_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_VIDEO_0_LINK_REQUIRED` = NULL,
+    `AD_VIDEO_0_LINK_WARNING` = NULL,
+    `AD_VIDEO_0_TAG_DUPLICATED` = NULL,
+    `AD_VIDEO_0_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_VIDEO_0_TAG_REQUIRED` = NULL,
+    `AD_VIDEO_1_LINK_DUPLICATED` = NULL,
+    `AD_VIDEO_1_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_VIDEO_1_LINK_REQUIRED` = NULL,
+    `AD_VIDEO_1_LINK_WARNING` = NULL,
+    `AD_VIDEO_1_TAG_DUPLICATED` = NULL,
+    `AD_VIDEO_1_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_VIDEO_1_TAG_REQUIRED` = NULL,
+    `AD_VIDEO_2_LINK_DUPLICATED` = NULL,
+    `AD_VIDEO_2_LINK_LENGTH_TOO_LONG` = NULL,
+    `AD_VIDEO_2_LINK_REQUIRED` = NULL,
+    `AD_VIDEO_2_LINK_WARNING` = NULL,
+    `AD_VIDEO_2_TAG_DUPLICATED` = NULL,
+    `AD_VIDEO_2_TAG_LENGTH_TOO_LONG` = NULL,
+    `AD_VIDEO_2_TAG_REQUIRED` = NULL,
     `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` = NULL,
     `ADDITIONAL_IMAGE_LINK_WARNING` = NULL,
     `ADWORDS_FORMAT_WARNING` = NULL,
     `ADWORDS_SAME_AS_LINK` = NULL,
     `AGE_GROUP_INVALID` = NULL,
-    `SIZE_SYSTEM_INVALID` = NULL,
     `ANDROID_DEEP_LINK_INVALID` = NULL,
     `AVAILABILITY_DATE_INVALID` = NULL,
     `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` = NULL,
@@ -87,32 +409,194 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     `OPTIONAL_PRODUCT_CATEGORY_MISSING` = NULL,
     `PRODUCT_CATEGORY_DEPTH_WARNING` = NULL,
     `PRODUCT_TYPE_LENGTH_TOO_LONG` = NULL,
-    `SALES_PRICE_INVALID` = NULL,
-    `SALES_PRICE_TOO_LOW` = NULL,
-    `SALES_PRICE_TOO_HIGH` = NULL,
     `SALE_DATE_INVALID` = NULL,
-    `SHIPPING_INVALID` = NULL,
+    `SALES_PRICE_INVALID` = NULL,
+    `SALES_PRICE_TOO_HIGH` = NULL,
+    `SALES_PRICE_TOO_LOW` = NULL,
     `SHIPPING_HEIGHT_INVALID` = NULL,
+    `SHIPPING_INVALID` = NULL,
     `SHIPPING_WEIGHT_INVALID` = NULL,
     `SHIPPING_WIDTH_INVALID` = NULL,
+    `SIZE_SYSTEM_INVALID` = NULL,
     `SIZE_TYPE_INVALID` = NULL,
     `TAX_INVALID` = NULL,
     `TITLE_LENGTH_TOO_LONG` = NULL,
     `TOO_MANY_ADDITIONAL_IMAGE_LINKS` = NULL,
     `UTM_SOURCE_AUTO_CORRECTED` = NULL,
+    `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` = NULL,
     `WEIGHT_UNIT_INVALID` = NULL,
 
     #' @description
     #' Initialize a new CatalogsItemValidationWarnings class.
     #'
+    #' @param AD_IMAGE_0_LINK_DUPLICATED AD_IMAGE_0_LINK_DUPLICATED
+    #' @param AD_IMAGE_0_LINK_LENGTH_TOO_LONG AD_IMAGE_0_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_0_LINK_REQUIRED AD_IMAGE_0_LINK_REQUIRED
+    #' @param AD_IMAGE_0_LINK_WARNING AD_IMAGE_0_LINK_WARNING
+    #' @param AD_IMAGE_0_TAG_DUPLICATED AD_IMAGE_0_TAG_DUPLICATED
+    #' @param AD_IMAGE_0_TAG_LENGTH_TOO_LONG AD_IMAGE_0_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_0_TAG_REQUIRED AD_IMAGE_0_TAG_REQUIRED
+    #' @param AD_IMAGE_10_LINK_DUPLICATED AD_IMAGE_10_LINK_DUPLICATED
+    #' @param AD_IMAGE_10_LINK_LENGTH_TOO_LONG AD_IMAGE_10_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_10_LINK_REQUIRED AD_IMAGE_10_LINK_REQUIRED
+    #' @param AD_IMAGE_10_LINK_WARNING AD_IMAGE_10_LINK_WARNING
+    #' @param AD_IMAGE_10_TAG_DUPLICATED AD_IMAGE_10_TAG_DUPLICATED
+    #' @param AD_IMAGE_10_TAG_LENGTH_TOO_LONG AD_IMAGE_10_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_10_TAG_REQUIRED AD_IMAGE_10_TAG_REQUIRED
+    #' @param AD_IMAGE_11_LINK_DUPLICATED AD_IMAGE_11_LINK_DUPLICATED
+    #' @param AD_IMAGE_11_LINK_LENGTH_TOO_LONG AD_IMAGE_11_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_11_LINK_REQUIRED AD_IMAGE_11_LINK_REQUIRED
+    #' @param AD_IMAGE_11_LINK_WARNING AD_IMAGE_11_LINK_WARNING
+    #' @param AD_IMAGE_11_TAG_DUPLICATED AD_IMAGE_11_TAG_DUPLICATED
+    #' @param AD_IMAGE_11_TAG_LENGTH_TOO_LONG AD_IMAGE_11_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_11_TAG_REQUIRED AD_IMAGE_11_TAG_REQUIRED
+    #' @param AD_IMAGE_12_LINK_DUPLICATED AD_IMAGE_12_LINK_DUPLICATED
+    #' @param AD_IMAGE_12_LINK_LENGTH_TOO_LONG AD_IMAGE_12_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_12_LINK_REQUIRED AD_IMAGE_12_LINK_REQUIRED
+    #' @param AD_IMAGE_12_LINK_WARNING AD_IMAGE_12_LINK_WARNING
+    #' @param AD_IMAGE_12_TAG_DUPLICATED AD_IMAGE_12_TAG_DUPLICATED
+    #' @param AD_IMAGE_12_TAG_LENGTH_TOO_LONG AD_IMAGE_12_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_12_TAG_REQUIRED AD_IMAGE_12_TAG_REQUIRED
+    #' @param AD_IMAGE_13_LINK_DUPLICATED AD_IMAGE_13_LINK_DUPLICATED
+    #' @param AD_IMAGE_13_LINK_LENGTH_TOO_LONG AD_IMAGE_13_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_13_LINK_REQUIRED AD_IMAGE_13_LINK_REQUIRED
+    #' @param AD_IMAGE_13_LINK_WARNING AD_IMAGE_13_LINK_WARNING
+    #' @param AD_IMAGE_13_TAG_DUPLICATED AD_IMAGE_13_TAG_DUPLICATED
+    #' @param AD_IMAGE_13_TAG_LENGTH_TOO_LONG AD_IMAGE_13_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_13_TAG_REQUIRED AD_IMAGE_13_TAG_REQUIRED
+    #' @param AD_IMAGE_14_LINK_DUPLICATED AD_IMAGE_14_LINK_DUPLICATED
+    #' @param AD_IMAGE_14_LINK_LENGTH_TOO_LONG AD_IMAGE_14_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_14_LINK_REQUIRED AD_IMAGE_14_LINK_REQUIRED
+    #' @param AD_IMAGE_14_LINK_WARNING AD_IMAGE_14_LINK_WARNING
+    #' @param AD_IMAGE_14_TAG_DUPLICATED AD_IMAGE_14_TAG_DUPLICATED
+    #' @param AD_IMAGE_14_TAG_LENGTH_TOO_LONG AD_IMAGE_14_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_14_TAG_REQUIRED AD_IMAGE_14_TAG_REQUIRED
+    #' @param AD_IMAGE_15_LINK_DUPLICATED AD_IMAGE_15_LINK_DUPLICATED
+    #' @param AD_IMAGE_15_LINK_LENGTH_TOO_LONG AD_IMAGE_15_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_15_LINK_REQUIRED AD_IMAGE_15_LINK_REQUIRED
+    #' @param AD_IMAGE_15_LINK_WARNING AD_IMAGE_15_LINK_WARNING
+    #' @param AD_IMAGE_15_TAG_DUPLICATED AD_IMAGE_15_TAG_DUPLICATED
+    #' @param AD_IMAGE_15_TAG_LENGTH_TOO_LONG AD_IMAGE_15_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_15_TAG_REQUIRED AD_IMAGE_15_TAG_REQUIRED
+    #' @param AD_IMAGE_16_LINK_DUPLICATED AD_IMAGE_16_LINK_DUPLICATED
+    #' @param AD_IMAGE_16_LINK_LENGTH_TOO_LONG AD_IMAGE_16_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_16_LINK_REQUIRED AD_IMAGE_16_LINK_REQUIRED
+    #' @param AD_IMAGE_16_LINK_WARNING AD_IMAGE_16_LINK_WARNING
+    #' @param AD_IMAGE_16_TAG_DUPLICATED AD_IMAGE_16_TAG_DUPLICATED
+    #' @param AD_IMAGE_16_TAG_LENGTH_TOO_LONG AD_IMAGE_16_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_16_TAG_REQUIRED AD_IMAGE_16_TAG_REQUIRED
+    #' @param AD_IMAGE_17_LINK_DUPLICATED AD_IMAGE_17_LINK_DUPLICATED
+    #' @param AD_IMAGE_17_LINK_LENGTH_TOO_LONG AD_IMAGE_17_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_17_LINK_REQUIRED AD_IMAGE_17_LINK_REQUIRED
+    #' @param AD_IMAGE_17_LINK_WARNING AD_IMAGE_17_LINK_WARNING
+    #' @param AD_IMAGE_17_TAG_DUPLICATED AD_IMAGE_17_TAG_DUPLICATED
+    #' @param AD_IMAGE_17_TAG_LENGTH_TOO_LONG AD_IMAGE_17_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_17_TAG_REQUIRED AD_IMAGE_17_TAG_REQUIRED
+    #' @param AD_IMAGE_18_LINK_DUPLICATED AD_IMAGE_18_LINK_DUPLICATED
+    #' @param AD_IMAGE_18_LINK_LENGTH_TOO_LONG AD_IMAGE_18_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_18_LINK_REQUIRED AD_IMAGE_18_LINK_REQUIRED
+    #' @param AD_IMAGE_18_LINK_WARNING AD_IMAGE_18_LINK_WARNING
+    #' @param AD_IMAGE_18_TAG_DUPLICATED AD_IMAGE_18_TAG_DUPLICATED
+    #' @param AD_IMAGE_18_TAG_LENGTH_TOO_LONG AD_IMAGE_18_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_18_TAG_REQUIRED AD_IMAGE_18_TAG_REQUIRED
+    #' @param AD_IMAGE_19_LINK_DUPLICATED AD_IMAGE_19_LINK_DUPLICATED
+    #' @param AD_IMAGE_19_LINK_LENGTH_TOO_LONG AD_IMAGE_19_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_19_LINK_REQUIRED AD_IMAGE_19_LINK_REQUIRED
+    #' @param AD_IMAGE_19_LINK_WARNING AD_IMAGE_19_LINK_WARNING
+    #' @param AD_IMAGE_19_TAG_DUPLICATED AD_IMAGE_19_TAG_DUPLICATED
+    #' @param AD_IMAGE_19_TAG_LENGTH_TOO_LONG AD_IMAGE_19_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_19_TAG_REQUIRED AD_IMAGE_19_TAG_REQUIRED
+    #' @param AD_IMAGE_1_LINK_DUPLICATED AD_IMAGE_1_LINK_DUPLICATED
+    #' @param AD_IMAGE_1_LINK_LENGTH_TOO_LONG AD_IMAGE_1_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_1_LINK_REQUIRED AD_IMAGE_1_LINK_REQUIRED
+    #' @param AD_IMAGE_1_LINK_WARNING AD_IMAGE_1_LINK_WARNING
+    #' @param AD_IMAGE_1_TAG_DUPLICATED AD_IMAGE_1_TAG_DUPLICATED
+    #' @param AD_IMAGE_1_TAG_LENGTH_TOO_LONG AD_IMAGE_1_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_1_TAG_REQUIRED AD_IMAGE_1_TAG_REQUIRED
+    #' @param AD_IMAGE_2_LINK_DUPLICATED AD_IMAGE_2_LINK_DUPLICATED
+    #' @param AD_IMAGE_2_LINK_LENGTH_TOO_LONG AD_IMAGE_2_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_2_LINK_REQUIRED AD_IMAGE_2_LINK_REQUIRED
+    #' @param AD_IMAGE_2_LINK_WARNING AD_IMAGE_2_LINK_WARNING
+    #' @param AD_IMAGE_2_TAG_DUPLICATED AD_IMAGE_2_TAG_DUPLICATED
+    #' @param AD_IMAGE_2_TAG_LENGTH_TOO_LONG AD_IMAGE_2_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_2_TAG_REQUIRED AD_IMAGE_2_TAG_REQUIRED
+    #' @param AD_IMAGE_3_LINK_DUPLICATED AD_IMAGE_3_LINK_DUPLICATED
+    #' @param AD_IMAGE_3_LINK_LENGTH_TOO_LONG AD_IMAGE_3_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_3_LINK_REQUIRED AD_IMAGE_3_LINK_REQUIRED
+    #' @param AD_IMAGE_3_LINK_WARNING AD_IMAGE_3_LINK_WARNING
+    #' @param AD_IMAGE_3_TAG_DUPLICATED AD_IMAGE_3_TAG_DUPLICATED
+    #' @param AD_IMAGE_3_TAG_LENGTH_TOO_LONG AD_IMAGE_3_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_3_TAG_REQUIRED AD_IMAGE_3_TAG_REQUIRED
+    #' @param AD_IMAGE_4_LINK_DUPLICATED AD_IMAGE_4_LINK_DUPLICATED
+    #' @param AD_IMAGE_4_LINK_LENGTH_TOO_LONG AD_IMAGE_4_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_4_LINK_REQUIRED AD_IMAGE_4_LINK_REQUIRED
+    #' @param AD_IMAGE_4_LINK_WARNING AD_IMAGE_4_LINK_WARNING
+    #' @param AD_IMAGE_4_TAG_DUPLICATED AD_IMAGE_4_TAG_DUPLICATED
+    #' @param AD_IMAGE_4_TAG_LENGTH_TOO_LONG AD_IMAGE_4_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_4_TAG_REQUIRED AD_IMAGE_4_TAG_REQUIRED
+    #' @param AD_IMAGE_5_LINK_DUPLICATED AD_IMAGE_5_LINK_DUPLICATED
+    #' @param AD_IMAGE_5_LINK_LENGTH_TOO_LONG AD_IMAGE_5_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_5_LINK_REQUIRED AD_IMAGE_5_LINK_REQUIRED
+    #' @param AD_IMAGE_5_LINK_WARNING AD_IMAGE_5_LINK_WARNING
+    #' @param AD_IMAGE_5_TAG_DUPLICATED AD_IMAGE_5_TAG_DUPLICATED
+    #' @param AD_IMAGE_5_TAG_LENGTH_TOO_LONG AD_IMAGE_5_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_5_TAG_REQUIRED AD_IMAGE_5_TAG_REQUIRED
+    #' @param AD_IMAGE_6_LINK_DUPLICATED AD_IMAGE_6_LINK_DUPLICATED
+    #' @param AD_IMAGE_6_LINK_LENGTH_TOO_LONG AD_IMAGE_6_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_6_LINK_REQUIRED AD_IMAGE_6_LINK_REQUIRED
+    #' @param AD_IMAGE_6_LINK_WARNING AD_IMAGE_6_LINK_WARNING
+    #' @param AD_IMAGE_6_TAG_DUPLICATED AD_IMAGE_6_TAG_DUPLICATED
+    #' @param AD_IMAGE_6_TAG_LENGTH_TOO_LONG AD_IMAGE_6_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_6_TAG_REQUIRED AD_IMAGE_6_TAG_REQUIRED
+    #' @param AD_IMAGE_7_LINK_DUPLICATED AD_IMAGE_7_LINK_DUPLICATED
+    #' @param AD_IMAGE_7_LINK_LENGTH_TOO_LONG AD_IMAGE_7_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_7_LINK_REQUIRED AD_IMAGE_7_LINK_REQUIRED
+    #' @param AD_IMAGE_7_LINK_WARNING AD_IMAGE_7_LINK_WARNING
+    #' @param AD_IMAGE_7_TAG_DUPLICATED AD_IMAGE_7_TAG_DUPLICATED
+    #' @param AD_IMAGE_7_TAG_LENGTH_TOO_LONG AD_IMAGE_7_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_7_TAG_REQUIRED AD_IMAGE_7_TAG_REQUIRED
+    #' @param AD_IMAGE_8_LINK_DUPLICATED AD_IMAGE_8_LINK_DUPLICATED
+    #' @param AD_IMAGE_8_LINK_LENGTH_TOO_LONG AD_IMAGE_8_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_8_LINK_REQUIRED AD_IMAGE_8_LINK_REQUIRED
+    #' @param AD_IMAGE_8_LINK_WARNING AD_IMAGE_8_LINK_WARNING
+    #' @param AD_IMAGE_8_TAG_DUPLICATED AD_IMAGE_8_TAG_DUPLICATED
+    #' @param AD_IMAGE_8_TAG_LENGTH_TOO_LONG AD_IMAGE_8_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_8_TAG_REQUIRED AD_IMAGE_8_TAG_REQUIRED
+    #' @param AD_IMAGE_9_LINK_DUPLICATED AD_IMAGE_9_LINK_DUPLICATED
+    #' @param AD_IMAGE_9_LINK_LENGTH_TOO_LONG AD_IMAGE_9_LINK_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_9_LINK_REQUIRED AD_IMAGE_9_LINK_REQUIRED
+    #' @param AD_IMAGE_9_LINK_WARNING AD_IMAGE_9_LINK_WARNING
+    #' @param AD_IMAGE_9_TAG_DUPLICATED AD_IMAGE_9_TAG_DUPLICATED
+    #' @param AD_IMAGE_9_TAG_LENGTH_TOO_LONG AD_IMAGE_9_TAG_LENGTH_TOO_LONG
+    #' @param AD_IMAGE_9_TAG_REQUIRED AD_IMAGE_9_TAG_REQUIRED
     #' @param AD_LINK_FORMAT_WARNING AD_LINK_FORMAT_WARNING
     #' @param AD_LINK_SAME_AS_LINK AD_LINK_SAME_AS_LINK
+    #' @param AD_VIDEO_0_LINK_DUPLICATED AD_VIDEO_0_LINK_DUPLICATED
+    #' @param AD_VIDEO_0_LINK_LENGTH_TOO_LONG AD_VIDEO_0_LINK_LENGTH_TOO_LONG
+    #' @param AD_VIDEO_0_LINK_REQUIRED AD_VIDEO_0_LINK_REQUIRED
+    #' @param AD_VIDEO_0_LINK_WARNING AD_VIDEO_0_LINK_WARNING
+    #' @param AD_VIDEO_0_TAG_DUPLICATED AD_VIDEO_0_TAG_DUPLICATED
+    #' @param AD_VIDEO_0_TAG_LENGTH_TOO_LONG AD_VIDEO_0_TAG_LENGTH_TOO_LONG
+    #' @param AD_VIDEO_0_TAG_REQUIRED AD_VIDEO_0_TAG_REQUIRED
+    #' @param AD_VIDEO_1_LINK_DUPLICATED AD_VIDEO_1_LINK_DUPLICATED
+    #' @param AD_VIDEO_1_LINK_LENGTH_TOO_LONG AD_VIDEO_1_LINK_LENGTH_TOO_LONG
+    #' @param AD_VIDEO_1_LINK_REQUIRED AD_VIDEO_1_LINK_REQUIRED
+    #' @param AD_VIDEO_1_LINK_WARNING AD_VIDEO_1_LINK_WARNING
+    #' @param AD_VIDEO_1_TAG_DUPLICATED AD_VIDEO_1_TAG_DUPLICATED
+    #' @param AD_VIDEO_1_TAG_LENGTH_TOO_LONG AD_VIDEO_1_TAG_LENGTH_TOO_LONG
+    #' @param AD_VIDEO_1_TAG_REQUIRED AD_VIDEO_1_TAG_REQUIRED
+    #' @param AD_VIDEO_2_LINK_DUPLICATED AD_VIDEO_2_LINK_DUPLICATED
+    #' @param AD_VIDEO_2_LINK_LENGTH_TOO_LONG AD_VIDEO_2_LINK_LENGTH_TOO_LONG
+    #' @param AD_VIDEO_2_LINK_REQUIRED AD_VIDEO_2_LINK_REQUIRED
+    #' @param AD_VIDEO_2_LINK_WARNING AD_VIDEO_2_LINK_WARNING
+    #' @param AD_VIDEO_2_TAG_DUPLICATED AD_VIDEO_2_TAG_DUPLICATED
+    #' @param AD_VIDEO_2_TAG_LENGTH_TOO_LONG AD_VIDEO_2_TAG_LENGTH_TOO_LONG
+    #' @param AD_VIDEO_2_TAG_REQUIRED AD_VIDEO_2_TAG_REQUIRED
     #' @param ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
     #' @param ADDITIONAL_IMAGE_LINK_WARNING ADDITIONAL_IMAGE_LINK_WARNING
     #' @param ADWORDS_FORMAT_WARNING ADWORDS_FORMAT_WARNING
     #' @param ADWORDS_SAME_AS_LINK ADWORDS_SAME_AS_LINK
     #' @param AGE_GROUP_INVALID AGE_GROUP_INVALID
-    #' @param SIZE_SYSTEM_INVALID SIZE_SYSTEM_INVALID
     #' @param ANDROID_DEEP_LINK_INVALID ANDROID_DEEP_LINK_INVALID
     #' @param AVAILABILITY_DATE_INVALID AVAILABILITY_DATE_INVALID
     #' @param COUNTRY_DOES_NOT_MAP_TO_CURRENCY COUNTRY_DOES_NOT_MAP_TO_CURRENCY
@@ -135,22 +619,584 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     #' @param OPTIONAL_PRODUCT_CATEGORY_MISSING OPTIONAL_PRODUCT_CATEGORY_MISSING
     #' @param PRODUCT_CATEGORY_DEPTH_WARNING PRODUCT_CATEGORY_DEPTH_WARNING
     #' @param PRODUCT_TYPE_LENGTH_TOO_LONG PRODUCT_TYPE_LENGTH_TOO_LONG
-    #' @param SALES_PRICE_INVALID SALES_PRICE_INVALID
-    #' @param SALES_PRICE_TOO_LOW SALES_PRICE_TOO_LOW
-    #' @param SALES_PRICE_TOO_HIGH SALES_PRICE_TOO_HIGH
     #' @param SALE_DATE_INVALID SALE_DATE_INVALID
-    #' @param SHIPPING_INVALID SHIPPING_INVALID
+    #' @param SALES_PRICE_INVALID SALES_PRICE_INVALID
+    #' @param SALES_PRICE_TOO_HIGH SALES_PRICE_TOO_HIGH
+    #' @param SALES_PRICE_TOO_LOW SALES_PRICE_TOO_LOW
     #' @param SHIPPING_HEIGHT_INVALID SHIPPING_HEIGHT_INVALID
+    #' @param SHIPPING_INVALID SHIPPING_INVALID
     #' @param SHIPPING_WEIGHT_INVALID SHIPPING_WEIGHT_INVALID
     #' @param SHIPPING_WIDTH_INVALID SHIPPING_WIDTH_INVALID
+    #' @param SIZE_SYSTEM_INVALID SIZE_SYSTEM_INVALID
     #' @param SIZE_TYPE_INVALID SIZE_TYPE_INVALID
     #' @param TAX_INVALID TAX_INVALID
     #' @param TITLE_LENGTH_TOO_LONG TITLE_LENGTH_TOO_LONG
     #' @param TOO_MANY_ADDITIONAL_IMAGE_LINKS TOO_MANY_ADDITIONAL_IMAGE_LINKS
     #' @param UTM_SOURCE_AUTO_CORRECTED UTM_SOURCE_AUTO_CORRECTED
+    #' @param VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
     #' @param WEIGHT_UNIT_INVALID WEIGHT_UNIT_INVALID
     #' @param ... Other optional arguments.
-    initialize = function(`AD_LINK_FORMAT_WARNING` = NULL, `AD_LINK_SAME_AS_LINK` = NULL, `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `ADDITIONAL_IMAGE_LINK_WARNING` = NULL, `ADWORDS_FORMAT_WARNING` = NULL, `ADWORDS_SAME_AS_LINK` = NULL, `AGE_GROUP_INVALID` = NULL, `SIZE_SYSTEM_INVALID` = NULL, `ANDROID_DEEP_LINK_INVALID` = NULL, `AVAILABILITY_DATE_INVALID` = NULL, `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` = NULL, `CUSTOM_LABEL_LENGTH_TOO_LONG` = NULL, `DESCRIPTION_LENGTH_TOO_LONG` = NULL, `EXPIRATION_DATE_INVALID` = NULL, `GENDER_INVALID` = NULL, `GTIN_INVALID` = NULL, `IMAGE_LINK_WARNING` = NULL, `IOS_DEEP_LINK_INVALID` = NULL, `IS_BUNDLE_INVALID` = NULL, `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` = NULL, `LINK_FORMAT_WARNING` = NULL, `MIN_AD_PRICE_INVALID` = NULL, `MPN_INVALID` = NULL, `MULTIPACK_INVALID` = NULL, `OPTIONAL_CONDITION_INVALID` = NULL, `OPTIONAL_CONDITION_MISSING` = NULL, `OPTIONAL_PRODUCT_CATEGORY_INVALID` = NULL, `OPTIONAL_PRODUCT_CATEGORY_MISSING` = NULL, `PRODUCT_CATEGORY_DEPTH_WARNING` = NULL, `PRODUCT_TYPE_LENGTH_TOO_LONG` = NULL, `SALES_PRICE_INVALID` = NULL, `SALES_PRICE_TOO_LOW` = NULL, `SALES_PRICE_TOO_HIGH` = NULL, `SALE_DATE_INVALID` = NULL, `SHIPPING_INVALID` = NULL, `SHIPPING_HEIGHT_INVALID` = NULL, `SHIPPING_WEIGHT_INVALID` = NULL, `SHIPPING_WIDTH_INVALID` = NULL, `SIZE_TYPE_INVALID` = NULL, `TAX_INVALID` = NULL, `TITLE_LENGTH_TOO_LONG` = NULL, `TOO_MANY_ADDITIONAL_IMAGE_LINKS` = NULL, `UTM_SOURCE_AUTO_CORRECTED` = NULL, `WEIGHT_UNIT_INVALID` = NULL, ...) {
+    initialize = function(`AD_IMAGE_0_LINK_DUPLICATED` = NULL, `AD_IMAGE_0_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_0_LINK_REQUIRED` = NULL, `AD_IMAGE_0_LINK_WARNING` = NULL, `AD_IMAGE_0_TAG_DUPLICATED` = NULL, `AD_IMAGE_0_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_0_TAG_REQUIRED` = NULL, `AD_IMAGE_10_LINK_DUPLICATED` = NULL, `AD_IMAGE_10_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_10_LINK_REQUIRED` = NULL, `AD_IMAGE_10_LINK_WARNING` = NULL, `AD_IMAGE_10_TAG_DUPLICATED` = NULL, `AD_IMAGE_10_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_10_TAG_REQUIRED` = NULL, `AD_IMAGE_11_LINK_DUPLICATED` = NULL, `AD_IMAGE_11_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_11_LINK_REQUIRED` = NULL, `AD_IMAGE_11_LINK_WARNING` = NULL, `AD_IMAGE_11_TAG_DUPLICATED` = NULL, `AD_IMAGE_11_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_11_TAG_REQUIRED` = NULL, `AD_IMAGE_12_LINK_DUPLICATED` = NULL, `AD_IMAGE_12_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_12_LINK_REQUIRED` = NULL, `AD_IMAGE_12_LINK_WARNING` = NULL, `AD_IMAGE_12_TAG_DUPLICATED` = NULL, `AD_IMAGE_12_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_12_TAG_REQUIRED` = NULL, `AD_IMAGE_13_LINK_DUPLICATED` = NULL, `AD_IMAGE_13_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_13_LINK_REQUIRED` = NULL, `AD_IMAGE_13_LINK_WARNING` = NULL, `AD_IMAGE_13_TAG_DUPLICATED` = NULL, `AD_IMAGE_13_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_13_TAG_REQUIRED` = NULL, `AD_IMAGE_14_LINK_DUPLICATED` = NULL, `AD_IMAGE_14_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_14_LINK_REQUIRED` = NULL, `AD_IMAGE_14_LINK_WARNING` = NULL, `AD_IMAGE_14_TAG_DUPLICATED` = NULL, `AD_IMAGE_14_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_14_TAG_REQUIRED` = NULL, `AD_IMAGE_15_LINK_DUPLICATED` = NULL, `AD_IMAGE_15_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_15_LINK_REQUIRED` = NULL, `AD_IMAGE_15_LINK_WARNING` = NULL, `AD_IMAGE_15_TAG_DUPLICATED` = NULL, `AD_IMAGE_15_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_15_TAG_REQUIRED` = NULL, `AD_IMAGE_16_LINK_DUPLICATED` = NULL, `AD_IMAGE_16_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_16_LINK_REQUIRED` = NULL, `AD_IMAGE_16_LINK_WARNING` = NULL, `AD_IMAGE_16_TAG_DUPLICATED` = NULL, `AD_IMAGE_16_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_16_TAG_REQUIRED` = NULL, `AD_IMAGE_17_LINK_DUPLICATED` = NULL, `AD_IMAGE_17_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_17_LINK_REQUIRED` = NULL, `AD_IMAGE_17_LINK_WARNING` = NULL, `AD_IMAGE_17_TAG_DUPLICATED` = NULL, `AD_IMAGE_17_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_17_TAG_REQUIRED` = NULL, `AD_IMAGE_18_LINK_DUPLICATED` = NULL, `AD_IMAGE_18_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_18_LINK_REQUIRED` = NULL, `AD_IMAGE_18_LINK_WARNING` = NULL, `AD_IMAGE_18_TAG_DUPLICATED` = NULL, `AD_IMAGE_18_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_18_TAG_REQUIRED` = NULL, `AD_IMAGE_19_LINK_DUPLICATED` = NULL, `AD_IMAGE_19_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_19_LINK_REQUIRED` = NULL, `AD_IMAGE_19_LINK_WARNING` = NULL, `AD_IMAGE_19_TAG_DUPLICATED` = NULL, `AD_IMAGE_19_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_19_TAG_REQUIRED` = NULL, `AD_IMAGE_1_LINK_DUPLICATED` = NULL, `AD_IMAGE_1_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_1_LINK_REQUIRED` = NULL, `AD_IMAGE_1_LINK_WARNING` = NULL, `AD_IMAGE_1_TAG_DUPLICATED` = NULL, `AD_IMAGE_1_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_1_TAG_REQUIRED` = NULL, `AD_IMAGE_2_LINK_DUPLICATED` = NULL, `AD_IMAGE_2_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_2_LINK_REQUIRED` = NULL, `AD_IMAGE_2_LINK_WARNING` = NULL, `AD_IMAGE_2_TAG_DUPLICATED` = NULL, `AD_IMAGE_2_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_2_TAG_REQUIRED` = NULL, `AD_IMAGE_3_LINK_DUPLICATED` = NULL, `AD_IMAGE_3_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_3_LINK_REQUIRED` = NULL, `AD_IMAGE_3_LINK_WARNING` = NULL, `AD_IMAGE_3_TAG_DUPLICATED` = NULL, `AD_IMAGE_3_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_3_TAG_REQUIRED` = NULL, `AD_IMAGE_4_LINK_DUPLICATED` = NULL, `AD_IMAGE_4_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_4_LINK_REQUIRED` = NULL, `AD_IMAGE_4_LINK_WARNING` = NULL, `AD_IMAGE_4_TAG_DUPLICATED` = NULL, `AD_IMAGE_4_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_4_TAG_REQUIRED` = NULL, `AD_IMAGE_5_LINK_DUPLICATED` = NULL, `AD_IMAGE_5_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_5_LINK_REQUIRED` = NULL, `AD_IMAGE_5_LINK_WARNING` = NULL, `AD_IMAGE_5_TAG_DUPLICATED` = NULL, `AD_IMAGE_5_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_5_TAG_REQUIRED` = NULL, `AD_IMAGE_6_LINK_DUPLICATED` = NULL, `AD_IMAGE_6_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_6_LINK_REQUIRED` = NULL, `AD_IMAGE_6_LINK_WARNING` = NULL, `AD_IMAGE_6_TAG_DUPLICATED` = NULL, `AD_IMAGE_6_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_6_TAG_REQUIRED` = NULL, `AD_IMAGE_7_LINK_DUPLICATED` = NULL, `AD_IMAGE_7_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_7_LINK_REQUIRED` = NULL, `AD_IMAGE_7_LINK_WARNING` = NULL, `AD_IMAGE_7_TAG_DUPLICATED` = NULL, `AD_IMAGE_7_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_7_TAG_REQUIRED` = NULL, `AD_IMAGE_8_LINK_DUPLICATED` = NULL, `AD_IMAGE_8_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_8_LINK_REQUIRED` = NULL, `AD_IMAGE_8_LINK_WARNING` = NULL, `AD_IMAGE_8_TAG_DUPLICATED` = NULL, `AD_IMAGE_8_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_8_TAG_REQUIRED` = NULL, `AD_IMAGE_9_LINK_DUPLICATED` = NULL, `AD_IMAGE_9_LINK_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_9_LINK_REQUIRED` = NULL, `AD_IMAGE_9_LINK_WARNING` = NULL, `AD_IMAGE_9_TAG_DUPLICATED` = NULL, `AD_IMAGE_9_TAG_LENGTH_TOO_LONG` = NULL, `AD_IMAGE_9_TAG_REQUIRED` = NULL, `AD_LINK_FORMAT_WARNING` = NULL, `AD_LINK_SAME_AS_LINK` = NULL, `AD_VIDEO_0_LINK_DUPLICATED` = NULL, `AD_VIDEO_0_LINK_LENGTH_TOO_LONG` = NULL, `AD_VIDEO_0_LINK_REQUIRED` = NULL, `AD_VIDEO_0_LINK_WARNING` = NULL, `AD_VIDEO_0_TAG_DUPLICATED` = NULL, `AD_VIDEO_0_TAG_LENGTH_TOO_LONG` = NULL, `AD_VIDEO_0_TAG_REQUIRED` = NULL, `AD_VIDEO_1_LINK_DUPLICATED` = NULL, `AD_VIDEO_1_LINK_LENGTH_TOO_LONG` = NULL, `AD_VIDEO_1_LINK_REQUIRED` = NULL, `AD_VIDEO_1_LINK_WARNING` = NULL, `AD_VIDEO_1_TAG_DUPLICATED` = NULL, `AD_VIDEO_1_TAG_LENGTH_TOO_LONG` = NULL, `AD_VIDEO_1_TAG_REQUIRED` = NULL, `AD_VIDEO_2_LINK_DUPLICATED` = NULL, `AD_VIDEO_2_LINK_LENGTH_TOO_LONG` = NULL, `AD_VIDEO_2_LINK_REQUIRED` = NULL, `AD_VIDEO_2_LINK_WARNING` = NULL, `AD_VIDEO_2_TAG_DUPLICATED` = NULL, `AD_VIDEO_2_TAG_LENGTH_TOO_LONG` = NULL, `AD_VIDEO_2_TAG_REQUIRED` = NULL, `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `ADDITIONAL_IMAGE_LINK_WARNING` = NULL, `ADWORDS_FORMAT_WARNING` = NULL, `ADWORDS_SAME_AS_LINK` = NULL, `AGE_GROUP_INVALID` = NULL, `ANDROID_DEEP_LINK_INVALID` = NULL, `AVAILABILITY_DATE_INVALID` = NULL, `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` = NULL, `CUSTOM_LABEL_LENGTH_TOO_LONG` = NULL, `DESCRIPTION_LENGTH_TOO_LONG` = NULL, `EXPIRATION_DATE_INVALID` = NULL, `GENDER_INVALID` = NULL, `GTIN_INVALID` = NULL, `IMAGE_LINK_WARNING` = NULL, `IOS_DEEP_LINK_INVALID` = NULL, `IS_BUNDLE_INVALID` = NULL, `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` = NULL, `LINK_FORMAT_WARNING` = NULL, `MIN_AD_PRICE_INVALID` = NULL, `MPN_INVALID` = NULL, `MULTIPACK_INVALID` = NULL, `OPTIONAL_CONDITION_INVALID` = NULL, `OPTIONAL_CONDITION_MISSING` = NULL, `OPTIONAL_PRODUCT_CATEGORY_INVALID` = NULL, `OPTIONAL_PRODUCT_CATEGORY_MISSING` = NULL, `PRODUCT_CATEGORY_DEPTH_WARNING` = NULL, `PRODUCT_TYPE_LENGTH_TOO_LONG` = NULL, `SALE_DATE_INVALID` = NULL, `SALES_PRICE_INVALID` = NULL, `SALES_PRICE_TOO_HIGH` = NULL, `SALES_PRICE_TOO_LOW` = NULL, `SHIPPING_HEIGHT_INVALID` = NULL, `SHIPPING_INVALID` = NULL, `SHIPPING_WEIGHT_INVALID` = NULL, `SHIPPING_WIDTH_INVALID` = NULL, `SIZE_SYSTEM_INVALID` = NULL, `SIZE_TYPE_INVALID` = NULL, `TAX_INVALID` = NULL, `TITLE_LENGTH_TOO_LONG` = NULL, `TOO_MANY_ADDITIONAL_IMAGE_LINKS` = NULL, `UTM_SOURCE_AUTO_CORRECTED` = NULL, `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` = NULL, `WEIGHT_UNIT_INVALID` = NULL, ...) {
+      if (!is.null(`AD_IMAGE_0_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_LINK_DUPLICATED`))
+        self$`AD_IMAGE_0_LINK_DUPLICATED` <- `AD_IMAGE_0_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_0_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_0_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_LINK_REQUIRED`))
+        self$`AD_IMAGE_0_LINK_REQUIRED` <- `AD_IMAGE_0_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_0_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_LINK_WARNING`))
+        self$`AD_IMAGE_0_LINK_WARNING` <- `AD_IMAGE_0_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_0_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_TAG_DUPLICATED`))
+        self$`AD_IMAGE_0_TAG_DUPLICATED` <- `AD_IMAGE_0_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_0_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_0_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_0_TAG_REQUIRED`))
+        self$`AD_IMAGE_0_TAG_REQUIRED` <- `AD_IMAGE_0_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_10_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_LINK_DUPLICATED`))
+        self$`AD_IMAGE_10_LINK_DUPLICATED` <- `AD_IMAGE_10_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_10_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_10_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_LINK_REQUIRED`))
+        self$`AD_IMAGE_10_LINK_REQUIRED` <- `AD_IMAGE_10_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_10_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_LINK_WARNING`))
+        self$`AD_IMAGE_10_LINK_WARNING` <- `AD_IMAGE_10_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_10_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_TAG_DUPLICATED`))
+        self$`AD_IMAGE_10_TAG_DUPLICATED` <- `AD_IMAGE_10_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_10_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_10_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_10_TAG_REQUIRED`))
+        self$`AD_IMAGE_10_TAG_REQUIRED` <- `AD_IMAGE_10_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_11_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_LINK_DUPLICATED`))
+        self$`AD_IMAGE_11_LINK_DUPLICATED` <- `AD_IMAGE_11_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_11_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_11_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_LINK_REQUIRED`))
+        self$`AD_IMAGE_11_LINK_REQUIRED` <- `AD_IMAGE_11_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_11_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_LINK_WARNING`))
+        self$`AD_IMAGE_11_LINK_WARNING` <- `AD_IMAGE_11_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_11_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_TAG_DUPLICATED`))
+        self$`AD_IMAGE_11_TAG_DUPLICATED` <- `AD_IMAGE_11_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_11_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_11_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_11_TAG_REQUIRED`))
+        self$`AD_IMAGE_11_TAG_REQUIRED` <- `AD_IMAGE_11_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_12_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_LINK_DUPLICATED`))
+        self$`AD_IMAGE_12_LINK_DUPLICATED` <- `AD_IMAGE_12_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_12_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_12_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_LINK_REQUIRED`))
+        self$`AD_IMAGE_12_LINK_REQUIRED` <- `AD_IMAGE_12_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_12_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_LINK_WARNING`))
+        self$`AD_IMAGE_12_LINK_WARNING` <- `AD_IMAGE_12_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_12_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_TAG_DUPLICATED`))
+        self$`AD_IMAGE_12_TAG_DUPLICATED` <- `AD_IMAGE_12_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_12_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_12_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_12_TAG_REQUIRED`))
+        self$`AD_IMAGE_12_TAG_REQUIRED` <- `AD_IMAGE_12_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_13_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_LINK_DUPLICATED`))
+        self$`AD_IMAGE_13_LINK_DUPLICATED` <- `AD_IMAGE_13_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_13_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_13_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_LINK_REQUIRED`))
+        self$`AD_IMAGE_13_LINK_REQUIRED` <- `AD_IMAGE_13_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_13_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_LINK_WARNING`))
+        self$`AD_IMAGE_13_LINK_WARNING` <- `AD_IMAGE_13_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_13_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_TAG_DUPLICATED`))
+        self$`AD_IMAGE_13_TAG_DUPLICATED` <- `AD_IMAGE_13_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_13_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_13_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_13_TAG_REQUIRED`))
+        self$`AD_IMAGE_13_TAG_REQUIRED` <- `AD_IMAGE_13_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_14_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_LINK_DUPLICATED`))
+        self$`AD_IMAGE_14_LINK_DUPLICATED` <- `AD_IMAGE_14_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_14_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_14_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_LINK_REQUIRED`))
+        self$`AD_IMAGE_14_LINK_REQUIRED` <- `AD_IMAGE_14_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_14_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_LINK_WARNING`))
+        self$`AD_IMAGE_14_LINK_WARNING` <- `AD_IMAGE_14_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_14_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_TAG_DUPLICATED`))
+        self$`AD_IMAGE_14_TAG_DUPLICATED` <- `AD_IMAGE_14_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_14_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_14_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_14_TAG_REQUIRED`))
+        self$`AD_IMAGE_14_TAG_REQUIRED` <- `AD_IMAGE_14_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_15_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_LINK_DUPLICATED`))
+        self$`AD_IMAGE_15_LINK_DUPLICATED` <- `AD_IMAGE_15_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_15_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_15_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_LINK_REQUIRED`))
+        self$`AD_IMAGE_15_LINK_REQUIRED` <- `AD_IMAGE_15_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_15_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_LINK_WARNING`))
+        self$`AD_IMAGE_15_LINK_WARNING` <- `AD_IMAGE_15_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_15_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_TAG_DUPLICATED`))
+        self$`AD_IMAGE_15_TAG_DUPLICATED` <- `AD_IMAGE_15_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_15_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_15_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_15_TAG_REQUIRED`))
+        self$`AD_IMAGE_15_TAG_REQUIRED` <- `AD_IMAGE_15_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_16_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_LINK_DUPLICATED`))
+        self$`AD_IMAGE_16_LINK_DUPLICATED` <- `AD_IMAGE_16_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_16_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_16_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_LINK_REQUIRED`))
+        self$`AD_IMAGE_16_LINK_REQUIRED` <- `AD_IMAGE_16_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_16_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_LINK_WARNING`))
+        self$`AD_IMAGE_16_LINK_WARNING` <- `AD_IMAGE_16_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_16_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_TAG_DUPLICATED`))
+        self$`AD_IMAGE_16_TAG_DUPLICATED` <- `AD_IMAGE_16_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_16_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_16_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_16_TAG_REQUIRED`))
+        self$`AD_IMAGE_16_TAG_REQUIRED` <- `AD_IMAGE_16_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_17_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_LINK_DUPLICATED`))
+        self$`AD_IMAGE_17_LINK_DUPLICATED` <- `AD_IMAGE_17_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_17_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_17_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_LINK_REQUIRED`))
+        self$`AD_IMAGE_17_LINK_REQUIRED` <- `AD_IMAGE_17_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_17_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_LINK_WARNING`))
+        self$`AD_IMAGE_17_LINK_WARNING` <- `AD_IMAGE_17_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_17_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_TAG_DUPLICATED`))
+        self$`AD_IMAGE_17_TAG_DUPLICATED` <- `AD_IMAGE_17_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_17_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_17_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_17_TAG_REQUIRED`))
+        self$`AD_IMAGE_17_TAG_REQUIRED` <- `AD_IMAGE_17_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_18_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_LINK_DUPLICATED`))
+        self$`AD_IMAGE_18_LINK_DUPLICATED` <- `AD_IMAGE_18_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_18_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_18_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_LINK_REQUIRED`))
+        self$`AD_IMAGE_18_LINK_REQUIRED` <- `AD_IMAGE_18_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_18_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_LINK_WARNING`))
+        self$`AD_IMAGE_18_LINK_WARNING` <- `AD_IMAGE_18_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_18_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_TAG_DUPLICATED`))
+        self$`AD_IMAGE_18_TAG_DUPLICATED` <- `AD_IMAGE_18_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_18_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_18_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_18_TAG_REQUIRED`))
+        self$`AD_IMAGE_18_TAG_REQUIRED` <- `AD_IMAGE_18_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_19_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_LINK_DUPLICATED`))
+        self$`AD_IMAGE_19_LINK_DUPLICATED` <- `AD_IMAGE_19_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_19_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_19_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_LINK_REQUIRED`))
+        self$`AD_IMAGE_19_LINK_REQUIRED` <- `AD_IMAGE_19_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_19_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_LINK_WARNING`))
+        self$`AD_IMAGE_19_LINK_WARNING` <- `AD_IMAGE_19_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_19_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_TAG_DUPLICATED`))
+        self$`AD_IMAGE_19_TAG_DUPLICATED` <- `AD_IMAGE_19_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_19_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_19_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_19_TAG_REQUIRED`))
+        self$`AD_IMAGE_19_TAG_REQUIRED` <- `AD_IMAGE_19_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_1_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_LINK_DUPLICATED`))
+        self$`AD_IMAGE_1_LINK_DUPLICATED` <- `AD_IMAGE_1_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_1_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_1_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_LINK_REQUIRED`))
+        self$`AD_IMAGE_1_LINK_REQUIRED` <- `AD_IMAGE_1_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_1_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_LINK_WARNING`))
+        self$`AD_IMAGE_1_LINK_WARNING` <- `AD_IMAGE_1_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_1_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_TAG_DUPLICATED`))
+        self$`AD_IMAGE_1_TAG_DUPLICATED` <- `AD_IMAGE_1_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_1_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_1_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_1_TAG_REQUIRED`))
+        self$`AD_IMAGE_1_TAG_REQUIRED` <- `AD_IMAGE_1_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_2_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_LINK_DUPLICATED`))
+        self$`AD_IMAGE_2_LINK_DUPLICATED` <- `AD_IMAGE_2_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_2_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_2_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_LINK_REQUIRED`))
+        self$`AD_IMAGE_2_LINK_REQUIRED` <- `AD_IMAGE_2_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_2_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_LINK_WARNING`))
+        self$`AD_IMAGE_2_LINK_WARNING` <- `AD_IMAGE_2_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_2_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_TAG_DUPLICATED`))
+        self$`AD_IMAGE_2_TAG_DUPLICATED` <- `AD_IMAGE_2_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_2_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_2_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_2_TAG_REQUIRED`))
+        self$`AD_IMAGE_2_TAG_REQUIRED` <- `AD_IMAGE_2_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_3_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_LINK_DUPLICATED`))
+        self$`AD_IMAGE_3_LINK_DUPLICATED` <- `AD_IMAGE_3_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_3_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_3_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_LINK_REQUIRED`))
+        self$`AD_IMAGE_3_LINK_REQUIRED` <- `AD_IMAGE_3_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_3_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_LINK_WARNING`))
+        self$`AD_IMAGE_3_LINK_WARNING` <- `AD_IMAGE_3_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_3_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_TAG_DUPLICATED`))
+        self$`AD_IMAGE_3_TAG_DUPLICATED` <- `AD_IMAGE_3_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_3_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_3_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_3_TAG_REQUIRED`))
+        self$`AD_IMAGE_3_TAG_REQUIRED` <- `AD_IMAGE_3_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_4_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_LINK_DUPLICATED`))
+        self$`AD_IMAGE_4_LINK_DUPLICATED` <- `AD_IMAGE_4_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_4_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_4_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_LINK_REQUIRED`))
+        self$`AD_IMAGE_4_LINK_REQUIRED` <- `AD_IMAGE_4_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_4_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_LINK_WARNING`))
+        self$`AD_IMAGE_4_LINK_WARNING` <- `AD_IMAGE_4_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_4_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_TAG_DUPLICATED`))
+        self$`AD_IMAGE_4_TAG_DUPLICATED` <- `AD_IMAGE_4_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_4_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_4_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_4_TAG_REQUIRED`))
+        self$`AD_IMAGE_4_TAG_REQUIRED` <- `AD_IMAGE_4_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_5_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_LINK_DUPLICATED`))
+        self$`AD_IMAGE_5_LINK_DUPLICATED` <- `AD_IMAGE_5_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_5_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_5_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_LINK_REQUIRED`))
+        self$`AD_IMAGE_5_LINK_REQUIRED` <- `AD_IMAGE_5_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_5_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_LINK_WARNING`))
+        self$`AD_IMAGE_5_LINK_WARNING` <- `AD_IMAGE_5_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_5_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_TAG_DUPLICATED`))
+        self$`AD_IMAGE_5_TAG_DUPLICATED` <- `AD_IMAGE_5_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_5_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_5_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_5_TAG_REQUIRED`))
+        self$`AD_IMAGE_5_TAG_REQUIRED` <- `AD_IMAGE_5_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_6_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_LINK_DUPLICATED`))
+        self$`AD_IMAGE_6_LINK_DUPLICATED` <- `AD_IMAGE_6_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_6_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_6_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_LINK_REQUIRED`))
+        self$`AD_IMAGE_6_LINK_REQUIRED` <- `AD_IMAGE_6_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_6_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_LINK_WARNING`))
+        self$`AD_IMAGE_6_LINK_WARNING` <- `AD_IMAGE_6_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_6_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_TAG_DUPLICATED`))
+        self$`AD_IMAGE_6_TAG_DUPLICATED` <- `AD_IMAGE_6_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_6_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_6_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_6_TAG_REQUIRED`))
+        self$`AD_IMAGE_6_TAG_REQUIRED` <- `AD_IMAGE_6_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_7_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_LINK_DUPLICATED`))
+        self$`AD_IMAGE_7_LINK_DUPLICATED` <- `AD_IMAGE_7_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_7_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_7_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_LINK_REQUIRED`))
+        self$`AD_IMAGE_7_LINK_REQUIRED` <- `AD_IMAGE_7_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_7_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_LINK_WARNING`))
+        self$`AD_IMAGE_7_LINK_WARNING` <- `AD_IMAGE_7_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_7_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_TAG_DUPLICATED`))
+        self$`AD_IMAGE_7_TAG_DUPLICATED` <- `AD_IMAGE_7_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_7_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_7_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_7_TAG_REQUIRED`))
+        self$`AD_IMAGE_7_TAG_REQUIRED` <- `AD_IMAGE_7_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_8_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_LINK_DUPLICATED`))
+        self$`AD_IMAGE_8_LINK_DUPLICATED` <- `AD_IMAGE_8_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_8_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_8_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_LINK_REQUIRED`))
+        self$`AD_IMAGE_8_LINK_REQUIRED` <- `AD_IMAGE_8_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_8_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_LINK_WARNING`))
+        self$`AD_IMAGE_8_LINK_WARNING` <- `AD_IMAGE_8_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_8_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_TAG_DUPLICATED`))
+        self$`AD_IMAGE_8_TAG_DUPLICATED` <- `AD_IMAGE_8_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_8_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_8_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_8_TAG_REQUIRED`))
+        self$`AD_IMAGE_8_TAG_REQUIRED` <- `AD_IMAGE_8_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_9_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_LINK_DUPLICATED`))
+        self$`AD_IMAGE_9_LINK_DUPLICATED` <- `AD_IMAGE_9_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG` <- `AD_IMAGE_9_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_9_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_LINK_REQUIRED`))
+        self$`AD_IMAGE_9_LINK_REQUIRED` <- `AD_IMAGE_9_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_IMAGE_9_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_LINK_WARNING`))
+        self$`AD_IMAGE_9_LINK_WARNING` <- `AD_IMAGE_9_LINK_WARNING`
+      }
+      if (!is.null(`AD_IMAGE_9_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_TAG_DUPLICATED`))
+        self$`AD_IMAGE_9_TAG_DUPLICATED` <- `AD_IMAGE_9_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`))
+        self$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG` <- `AD_IMAGE_9_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_IMAGE_9_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_IMAGE_9_TAG_REQUIRED`))
+        self$`AD_IMAGE_9_TAG_REQUIRED` <- `AD_IMAGE_9_TAG_REQUIRED`
+      }
       if (!is.null(`AD_LINK_FORMAT_WARNING`)) {
         stopifnot(R6::is.R6(`AD_LINK_FORMAT_WARNING`))
         self$`AD_LINK_FORMAT_WARNING` <- `AD_LINK_FORMAT_WARNING`
@@ -158,6 +1204,90 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(`AD_LINK_SAME_AS_LINK`)) {
         stopifnot(R6::is.R6(`AD_LINK_SAME_AS_LINK`))
         self$`AD_LINK_SAME_AS_LINK` <- `AD_LINK_SAME_AS_LINK`
+      }
+      if (!is.null(`AD_VIDEO_0_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_LINK_DUPLICATED`))
+        self$`AD_VIDEO_0_LINK_DUPLICATED` <- `AD_VIDEO_0_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`))
+        self$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG` <- `AD_VIDEO_0_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_VIDEO_0_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_LINK_REQUIRED`))
+        self$`AD_VIDEO_0_LINK_REQUIRED` <- `AD_VIDEO_0_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_VIDEO_0_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_LINK_WARNING`))
+        self$`AD_VIDEO_0_LINK_WARNING` <- `AD_VIDEO_0_LINK_WARNING`
+      }
+      if (!is.null(`AD_VIDEO_0_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_TAG_DUPLICATED`))
+        self$`AD_VIDEO_0_TAG_DUPLICATED` <- `AD_VIDEO_0_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`))
+        self$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG` <- `AD_VIDEO_0_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_VIDEO_0_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_0_TAG_REQUIRED`))
+        self$`AD_VIDEO_0_TAG_REQUIRED` <- `AD_VIDEO_0_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_VIDEO_1_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_LINK_DUPLICATED`))
+        self$`AD_VIDEO_1_LINK_DUPLICATED` <- `AD_VIDEO_1_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`))
+        self$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG` <- `AD_VIDEO_1_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_VIDEO_1_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_LINK_REQUIRED`))
+        self$`AD_VIDEO_1_LINK_REQUIRED` <- `AD_VIDEO_1_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_VIDEO_1_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_LINK_WARNING`))
+        self$`AD_VIDEO_1_LINK_WARNING` <- `AD_VIDEO_1_LINK_WARNING`
+      }
+      if (!is.null(`AD_VIDEO_1_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_TAG_DUPLICATED`))
+        self$`AD_VIDEO_1_TAG_DUPLICATED` <- `AD_VIDEO_1_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`))
+        self$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG` <- `AD_VIDEO_1_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_VIDEO_1_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_1_TAG_REQUIRED`))
+        self$`AD_VIDEO_1_TAG_REQUIRED` <- `AD_VIDEO_1_TAG_REQUIRED`
+      }
+      if (!is.null(`AD_VIDEO_2_LINK_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_LINK_DUPLICATED`))
+        self$`AD_VIDEO_2_LINK_DUPLICATED` <- `AD_VIDEO_2_LINK_DUPLICATED`
+      }
+      if (!is.null(`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`))
+        self$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG` <- `AD_VIDEO_2_LINK_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_VIDEO_2_LINK_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_LINK_REQUIRED`))
+        self$`AD_VIDEO_2_LINK_REQUIRED` <- `AD_VIDEO_2_LINK_REQUIRED`
+      }
+      if (!is.null(`AD_VIDEO_2_LINK_WARNING`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_LINK_WARNING`))
+        self$`AD_VIDEO_2_LINK_WARNING` <- `AD_VIDEO_2_LINK_WARNING`
+      }
+      if (!is.null(`AD_VIDEO_2_TAG_DUPLICATED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_TAG_DUPLICATED`))
+        self$`AD_VIDEO_2_TAG_DUPLICATED` <- `AD_VIDEO_2_TAG_DUPLICATED`
+      }
+      if (!is.null(`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`))
+        self$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG` <- `AD_VIDEO_2_TAG_LENGTH_TOO_LONG`
+      }
+      if (!is.null(`AD_VIDEO_2_TAG_REQUIRED`)) {
+        stopifnot(R6::is.R6(`AD_VIDEO_2_TAG_REQUIRED`))
+        self$`AD_VIDEO_2_TAG_REQUIRED` <- `AD_VIDEO_2_TAG_REQUIRED`
       }
       if (!is.null(`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`)) {
         stopifnot(R6::is.R6(`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`))
@@ -178,10 +1308,6 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(`AGE_GROUP_INVALID`)) {
         stopifnot(R6::is.R6(`AGE_GROUP_INVALID`))
         self$`AGE_GROUP_INVALID` <- `AGE_GROUP_INVALID`
-      }
-      if (!is.null(`SIZE_SYSTEM_INVALID`)) {
-        stopifnot(R6::is.R6(`SIZE_SYSTEM_INVALID`))
-        self$`SIZE_SYSTEM_INVALID` <- `SIZE_SYSTEM_INVALID`
       }
       if (!is.null(`ANDROID_DEEP_LINK_INVALID`)) {
         stopifnot(R6::is.R6(`ANDROID_DEEP_LINK_INVALID`))
@@ -271,29 +1397,29 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         stopifnot(R6::is.R6(`PRODUCT_TYPE_LENGTH_TOO_LONG`))
         self$`PRODUCT_TYPE_LENGTH_TOO_LONG` <- `PRODUCT_TYPE_LENGTH_TOO_LONG`
       }
+      if (!is.null(`SALE_DATE_INVALID`)) {
+        stopifnot(R6::is.R6(`SALE_DATE_INVALID`))
+        self$`SALE_DATE_INVALID` <- `SALE_DATE_INVALID`
+      }
       if (!is.null(`SALES_PRICE_INVALID`)) {
         stopifnot(R6::is.R6(`SALES_PRICE_INVALID`))
         self$`SALES_PRICE_INVALID` <- `SALES_PRICE_INVALID`
-      }
-      if (!is.null(`SALES_PRICE_TOO_LOW`)) {
-        stopifnot(R6::is.R6(`SALES_PRICE_TOO_LOW`))
-        self$`SALES_PRICE_TOO_LOW` <- `SALES_PRICE_TOO_LOW`
       }
       if (!is.null(`SALES_PRICE_TOO_HIGH`)) {
         stopifnot(R6::is.R6(`SALES_PRICE_TOO_HIGH`))
         self$`SALES_PRICE_TOO_HIGH` <- `SALES_PRICE_TOO_HIGH`
       }
-      if (!is.null(`SALE_DATE_INVALID`)) {
-        stopifnot(R6::is.R6(`SALE_DATE_INVALID`))
-        self$`SALE_DATE_INVALID` <- `SALE_DATE_INVALID`
-      }
-      if (!is.null(`SHIPPING_INVALID`)) {
-        stopifnot(R6::is.R6(`SHIPPING_INVALID`))
-        self$`SHIPPING_INVALID` <- `SHIPPING_INVALID`
+      if (!is.null(`SALES_PRICE_TOO_LOW`)) {
+        stopifnot(R6::is.R6(`SALES_PRICE_TOO_LOW`))
+        self$`SALES_PRICE_TOO_LOW` <- `SALES_PRICE_TOO_LOW`
       }
       if (!is.null(`SHIPPING_HEIGHT_INVALID`)) {
         stopifnot(R6::is.R6(`SHIPPING_HEIGHT_INVALID`))
         self$`SHIPPING_HEIGHT_INVALID` <- `SHIPPING_HEIGHT_INVALID`
+      }
+      if (!is.null(`SHIPPING_INVALID`)) {
+        stopifnot(R6::is.R6(`SHIPPING_INVALID`))
+        self$`SHIPPING_INVALID` <- `SHIPPING_INVALID`
       }
       if (!is.null(`SHIPPING_WEIGHT_INVALID`)) {
         stopifnot(R6::is.R6(`SHIPPING_WEIGHT_INVALID`))
@@ -302,6 +1428,10 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(`SHIPPING_WIDTH_INVALID`)) {
         stopifnot(R6::is.R6(`SHIPPING_WIDTH_INVALID`))
         self$`SHIPPING_WIDTH_INVALID` <- `SHIPPING_WIDTH_INVALID`
+      }
+      if (!is.null(`SIZE_SYSTEM_INVALID`)) {
+        stopifnot(R6::is.R6(`SIZE_SYSTEM_INVALID`))
+        self$`SIZE_SYSTEM_INVALID` <- `SIZE_SYSTEM_INVALID`
       }
       if (!is.null(`SIZE_TYPE_INVALID`)) {
         stopifnot(R6::is.R6(`SIZE_TYPE_INVALID`))
@@ -322,6 +1452,10 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(`UTM_SOURCE_AUTO_CORRECTED`)) {
         stopifnot(R6::is.R6(`UTM_SOURCE_AUTO_CORRECTED`))
         self$`UTM_SOURCE_AUTO_CORRECTED` <- `UTM_SOURCE_AUTO_CORRECTED`
+      }
+      if (!is.null(`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`)) {
+        stopifnot(R6::is.R6(`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`))
+        self$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` <- `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`
       }
       if (!is.null(`WEIGHT_UNIT_INVALID`)) {
         stopifnot(R6::is.R6(`WEIGHT_UNIT_INVALID`))
@@ -360,6 +1494,566 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsItemValidationWarningsObject <- list()
+      if (!is.null(self$`AD_IMAGE_0_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_0_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_0_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_0_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_0_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_LINK_WARNING"]] <-
+          self$`AD_IMAGE_0_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_0_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_0_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_0_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_0_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_0_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_10_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_10_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_LINK_WARNING"]] <-
+          self$`AD_IMAGE_10_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_10_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_10_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_10_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_10_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_11_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_11_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_LINK_WARNING"]] <-
+          self$`AD_IMAGE_11_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_11_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_11_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_11_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_11_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_12_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_12_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_LINK_WARNING"]] <-
+          self$`AD_IMAGE_12_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_12_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_12_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_12_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_12_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_13_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_13_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_LINK_WARNING"]] <-
+          self$`AD_IMAGE_13_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_13_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_13_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_13_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_13_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_14_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_14_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_LINK_WARNING"]] <-
+          self$`AD_IMAGE_14_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_14_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_14_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_14_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_14_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_15_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_15_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_LINK_WARNING"]] <-
+          self$`AD_IMAGE_15_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_15_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_15_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_15_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_15_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_16_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_16_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_LINK_WARNING"]] <-
+          self$`AD_IMAGE_16_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_16_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_16_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_16_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_16_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_17_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_17_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_LINK_WARNING"]] <-
+          self$`AD_IMAGE_17_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_17_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_17_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_17_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_17_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_18_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_18_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_LINK_WARNING"]] <-
+          self$`AD_IMAGE_18_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_18_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_18_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_18_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_18_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_19_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_19_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_LINK_WARNING"]] <-
+          self$`AD_IMAGE_19_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_19_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_19_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_19_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_19_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_1_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_1_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_LINK_WARNING"]] <-
+          self$`AD_IMAGE_1_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_1_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_1_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_1_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_1_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_2_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_2_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_LINK_WARNING"]] <-
+          self$`AD_IMAGE_2_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_2_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_2_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_2_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_2_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_3_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_3_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_LINK_WARNING"]] <-
+          self$`AD_IMAGE_3_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_3_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_3_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_3_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_3_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_4_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_4_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_LINK_WARNING"]] <-
+          self$`AD_IMAGE_4_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_4_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_4_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_4_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_4_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_5_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_5_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_LINK_WARNING"]] <-
+          self$`AD_IMAGE_5_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_5_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_5_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_5_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_5_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_6_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_6_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_LINK_WARNING"]] <-
+          self$`AD_IMAGE_6_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_6_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_6_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_6_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_6_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_7_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_7_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_LINK_WARNING"]] <-
+          self$`AD_IMAGE_7_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_7_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_7_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_7_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_7_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_8_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_8_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_LINK_WARNING"]] <-
+          self$`AD_IMAGE_8_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_8_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_8_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_8_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_8_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_LINK_DUPLICATED"]] <-
+          self$`AD_IMAGE_9_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_LINK_REQUIRED"]] <-
+          self$`AD_IMAGE_9_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_LINK_WARNING"]] <-
+          self$`AD_IMAGE_9_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_TAG_DUPLICATED"]] <-
+          self$`AD_IMAGE_9_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_IMAGE_9_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_IMAGE_9_TAG_REQUIRED"]] <-
+          self$`AD_IMAGE_9_TAG_REQUIRED`$toSimpleType()
+      }
       if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
         CatalogsItemValidationWarningsObject[["AD_LINK_FORMAT_WARNING"]] <-
           self$`AD_LINK_FORMAT_WARNING`$toSimpleType()
@@ -367,6 +2061,90 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(self$`AD_LINK_SAME_AS_LINK`)) {
         CatalogsItemValidationWarningsObject[["AD_LINK_SAME_AS_LINK"]] <-
           self$`AD_LINK_SAME_AS_LINK`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_LINK_DUPLICATED"]] <-
+          self$`AD_VIDEO_0_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_LINK_REQUIRED"]] <-
+          self$`AD_VIDEO_0_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_LINK_WARNING"]] <-
+          self$`AD_VIDEO_0_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_TAG_DUPLICATED"]] <-
+          self$`AD_VIDEO_0_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_0_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_0_TAG_REQUIRED"]] <-
+          self$`AD_VIDEO_0_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_LINK_DUPLICATED"]] <-
+          self$`AD_VIDEO_1_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_LINK_REQUIRED"]] <-
+          self$`AD_VIDEO_1_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_LINK_WARNING"]] <-
+          self$`AD_VIDEO_1_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_TAG_DUPLICATED"]] <-
+          self$`AD_VIDEO_1_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_1_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_1_TAG_REQUIRED"]] <-
+          self$`AD_VIDEO_1_TAG_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_LINK_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_LINK_DUPLICATED"]] <-
+          self$`AD_VIDEO_2_LINK_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_LINK_LENGTH_TOO_LONG"]] <-
+          self$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_LINK_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_LINK_REQUIRED"]] <-
+          self$`AD_VIDEO_2_LINK_REQUIRED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_LINK_WARNING`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_LINK_WARNING"]] <-
+          self$`AD_VIDEO_2_LINK_WARNING`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_TAG_DUPLICATED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_TAG_DUPLICATED"]] <-
+          self$`AD_VIDEO_2_TAG_DUPLICATED`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_TAG_LENGTH_TOO_LONG"]] <-
+          self$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`$toSimpleType()
+      }
+      if (!is.null(self$`AD_VIDEO_2_TAG_REQUIRED`)) {
+        CatalogsItemValidationWarningsObject[["AD_VIDEO_2_TAG_REQUIRED"]] <-
+          self$`AD_VIDEO_2_TAG_REQUIRED`$toSimpleType()
       }
       if (!is.null(self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationWarningsObject[["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"]] <-
@@ -387,10 +2165,6 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(self$`AGE_GROUP_INVALID`)) {
         CatalogsItemValidationWarningsObject[["AGE_GROUP_INVALID"]] <-
           self$`AGE_GROUP_INVALID`$toSimpleType()
-      }
-      if (!is.null(self$`SIZE_SYSTEM_INVALID`)) {
-        CatalogsItemValidationWarningsObject[["SIZE_SYSTEM_INVALID"]] <-
-          self$`SIZE_SYSTEM_INVALID`$toSimpleType()
       }
       if (!is.null(self$`ANDROID_DEEP_LINK_INVALID`)) {
         CatalogsItemValidationWarningsObject[["ANDROID_DEEP_LINK_INVALID"]] <-
@@ -480,29 +2254,29 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         CatalogsItemValidationWarningsObject[["PRODUCT_TYPE_LENGTH_TOO_LONG"]] <-
           self$`PRODUCT_TYPE_LENGTH_TOO_LONG`$toSimpleType()
       }
+      if (!is.null(self$`SALE_DATE_INVALID`)) {
+        CatalogsItemValidationWarningsObject[["SALE_DATE_INVALID"]] <-
+          self$`SALE_DATE_INVALID`$toSimpleType()
+      }
       if (!is.null(self$`SALES_PRICE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SALES_PRICE_INVALID"]] <-
           self$`SALES_PRICE_INVALID`$toSimpleType()
-      }
-      if (!is.null(self$`SALES_PRICE_TOO_LOW`)) {
-        CatalogsItemValidationWarningsObject[["SALES_PRICE_TOO_LOW"]] <-
-          self$`SALES_PRICE_TOO_LOW`$toSimpleType()
       }
       if (!is.null(self$`SALES_PRICE_TOO_HIGH`)) {
         CatalogsItemValidationWarningsObject[["SALES_PRICE_TOO_HIGH"]] <-
           self$`SALES_PRICE_TOO_HIGH`$toSimpleType()
       }
-      if (!is.null(self$`SALE_DATE_INVALID`)) {
-        CatalogsItemValidationWarningsObject[["SALE_DATE_INVALID"]] <-
-          self$`SALE_DATE_INVALID`$toSimpleType()
-      }
-      if (!is.null(self$`SHIPPING_INVALID`)) {
-        CatalogsItemValidationWarningsObject[["SHIPPING_INVALID"]] <-
-          self$`SHIPPING_INVALID`$toSimpleType()
+      if (!is.null(self$`SALES_PRICE_TOO_LOW`)) {
+        CatalogsItemValidationWarningsObject[["SALES_PRICE_TOO_LOW"]] <-
+          self$`SALES_PRICE_TOO_LOW`$toSimpleType()
       }
       if (!is.null(self$`SHIPPING_HEIGHT_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_HEIGHT_INVALID"]] <-
           self$`SHIPPING_HEIGHT_INVALID`$toSimpleType()
+      }
+      if (!is.null(self$`SHIPPING_INVALID`)) {
+        CatalogsItemValidationWarningsObject[["SHIPPING_INVALID"]] <-
+          self$`SHIPPING_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SHIPPING_WEIGHT_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_WEIGHT_INVALID"]] <-
@@ -511,6 +2285,10 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       if (!is.null(self$`SHIPPING_WIDTH_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_WIDTH_INVALID"]] <-
           self$`SHIPPING_WIDTH_INVALID`$toSimpleType()
+      }
+      if (!is.null(self$`SIZE_SYSTEM_INVALID`)) {
+        CatalogsItemValidationWarningsObject[["SIZE_SYSTEM_INVALID"]] <-
+          self$`SIZE_SYSTEM_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SIZE_TYPE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SIZE_TYPE_INVALID"]] <-
@@ -532,6 +2310,10 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         CatalogsItemValidationWarningsObject[["UTM_SOURCE_AUTO_CORRECTED"]] <-
           self$`UTM_SOURCE_AUTO_CORRECTED`$toSimpleType()
       }
+      if (!is.null(self$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`)) {
+        CatalogsItemValidationWarningsObject[["VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED"]] <-
+          self$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`$toSimpleType()
+      }
       if (!is.null(self$`WEIGHT_UNIT_INVALID`)) {
         CatalogsItemValidationWarningsObject[["WEIGHT_UNIT_INVALID"]] <-
           self$`WEIGHT_UNIT_INVALID`$toSimpleType()
@@ -546,6 +2328,706 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     #' @return the instance of CatalogsItemValidationWarnings
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`AD_IMAGE_0_LINK_DUPLICATED`)) {
+        `ad_image_0_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_LINK_DUPLICATED` <- `ad_image_0_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_0_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG` <- `ad_image_0_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_0_LINK_REQUIRED`)) {
+        `ad_image_0_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_LINK_REQUIRED` <- `ad_image_0_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_0_LINK_WARNING`)) {
+        `ad_image_0_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_LINK_WARNING` <- `ad_image_0_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_0_TAG_DUPLICATED`)) {
+        `ad_image_0_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_TAG_DUPLICATED` <- `ad_image_0_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_0_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG` <- `ad_image_0_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_0_TAG_REQUIRED`)) {
+        `ad_image_0_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_0_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_0_TAG_REQUIRED` <- `ad_image_0_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_LINK_DUPLICATED`)) {
+        `ad_image_10_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_LINK_DUPLICATED` <- `ad_image_10_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_10_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG` <- `ad_image_10_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_LINK_REQUIRED`)) {
+        `ad_image_10_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_LINK_REQUIRED` <- `ad_image_10_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_LINK_WARNING`)) {
+        `ad_image_10_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_LINK_WARNING` <- `ad_image_10_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_TAG_DUPLICATED`)) {
+        `ad_image_10_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_TAG_DUPLICATED` <- `ad_image_10_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_10_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG` <- `ad_image_10_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_10_TAG_REQUIRED`)) {
+        `ad_image_10_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_10_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_10_TAG_REQUIRED` <- `ad_image_10_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_LINK_DUPLICATED`)) {
+        `ad_image_11_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_LINK_DUPLICATED` <- `ad_image_11_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_11_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG` <- `ad_image_11_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_LINK_REQUIRED`)) {
+        `ad_image_11_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_LINK_REQUIRED` <- `ad_image_11_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_LINK_WARNING`)) {
+        `ad_image_11_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_LINK_WARNING` <- `ad_image_11_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_TAG_DUPLICATED`)) {
+        `ad_image_11_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_TAG_DUPLICATED` <- `ad_image_11_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_11_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG` <- `ad_image_11_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_11_TAG_REQUIRED`)) {
+        `ad_image_11_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_11_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_11_TAG_REQUIRED` <- `ad_image_11_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_LINK_DUPLICATED`)) {
+        `ad_image_12_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_LINK_DUPLICATED` <- `ad_image_12_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_12_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG` <- `ad_image_12_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_LINK_REQUIRED`)) {
+        `ad_image_12_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_LINK_REQUIRED` <- `ad_image_12_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_LINK_WARNING`)) {
+        `ad_image_12_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_LINK_WARNING` <- `ad_image_12_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_TAG_DUPLICATED`)) {
+        `ad_image_12_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_TAG_DUPLICATED` <- `ad_image_12_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_12_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG` <- `ad_image_12_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_12_TAG_REQUIRED`)) {
+        `ad_image_12_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_12_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_12_TAG_REQUIRED` <- `ad_image_12_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_LINK_DUPLICATED`)) {
+        `ad_image_13_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_LINK_DUPLICATED` <- `ad_image_13_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_13_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG` <- `ad_image_13_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_LINK_REQUIRED`)) {
+        `ad_image_13_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_LINK_REQUIRED` <- `ad_image_13_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_LINK_WARNING`)) {
+        `ad_image_13_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_LINK_WARNING` <- `ad_image_13_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_TAG_DUPLICATED`)) {
+        `ad_image_13_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_TAG_DUPLICATED` <- `ad_image_13_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_13_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG` <- `ad_image_13_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_13_TAG_REQUIRED`)) {
+        `ad_image_13_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_13_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_13_TAG_REQUIRED` <- `ad_image_13_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_LINK_DUPLICATED`)) {
+        `ad_image_14_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_LINK_DUPLICATED` <- `ad_image_14_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_14_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG` <- `ad_image_14_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_LINK_REQUIRED`)) {
+        `ad_image_14_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_LINK_REQUIRED` <- `ad_image_14_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_LINK_WARNING`)) {
+        `ad_image_14_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_LINK_WARNING` <- `ad_image_14_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_TAG_DUPLICATED`)) {
+        `ad_image_14_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_TAG_DUPLICATED` <- `ad_image_14_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_14_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG` <- `ad_image_14_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_14_TAG_REQUIRED`)) {
+        `ad_image_14_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_14_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_14_TAG_REQUIRED` <- `ad_image_14_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_LINK_DUPLICATED`)) {
+        `ad_image_15_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_LINK_DUPLICATED` <- `ad_image_15_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_15_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG` <- `ad_image_15_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_LINK_REQUIRED`)) {
+        `ad_image_15_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_LINK_REQUIRED` <- `ad_image_15_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_LINK_WARNING`)) {
+        `ad_image_15_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_LINK_WARNING` <- `ad_image_15_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_TAG_DUPLICATED`)) {
+        `ad_image_15_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_TAG_DUPLICATED` <- `ad_image_15_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_15_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG` <- `ad_image_15_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_15_TAG_REQUIRED`)) {
+        `ad_image_15_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_15_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_15_TAG_REQUIRED` <- `ad_image_15_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_LINK_DUPLICATED`)) {
+        `ad_image_16_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_LINK_DUPLICATED` <- `ad_image_16_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_16_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG` <- `ad_image_16_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_LINK_REQUIRED`)) {
+        `ad_image_16_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_LINK_REQUIRED` <- `ad_image_16_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_LINK_WARNING`)) {
+        `ad_image_16_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_LINK_WARNING` <- `ad_image_16_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_TAG_DUPLICATED`)) {
+        `ad_image_16_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_TAG_DUPLICATED` <- `ad_image_16_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_16_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG` <- `ad_image_16_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_16_TAG_REQUIRED`)) {
+        `ad_image_16_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_16_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_16_TAG_REQUIRED` <- `ad_image_16_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_LINK_DUPLICATED`)) {
+        `ad_image_17_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_LINK_DUPLICATED` <- `ad_image_17_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_17_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG` <- `ad_image_17_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_LINK_REQUIRED`)) {
+        `ad_image_17_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_LINK_REQUIRED` <- `ad_image_17_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_LINK_WARNING`)) {
+        `ad_image_17_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_LINK_WARNING` <- `ad_image_17_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_TAG_DUPLICATED`)) {
+        `ad_image_17_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_TAG_DUPLICATED` <- `ad_image_17_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_17_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG` <- `ad_image_17_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_17_TAG_REQUIRED`)) {
+        `ad_image_17_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_17_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_17_TAG_REQUIRED` <- `ad_image_17_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_LINK_DUPLICATED`)) {
+        `ad_image_18_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_LINK_DUPLICATED` <- `ad_image_18_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_18_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG` <- `ad_image_18_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_LINK_REQUIRED`)) {
+        `ad_image_18_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_LINK_REQUIRED` <- `ad_image_18_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_LINK_WARNING`)) {
+        `ad_image_18_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_LINK_WARNING` <- `ad_image_18_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_TAG_DUPLICATED`)) {
+        `ad_image_18_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_TAG_DUPLICATED` <- `ad_image_18_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_18_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG` <- `ad_image_18_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_18_TAG_REQUIRED`)) {
+        `ad_image_18_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_18_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_18_TAG_REQUIRED` <- `ad_image_18_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_LINK_DUPLICATED`)) {
+        `ad_image_19_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_LINK_DUPLICATED` <- `ad_image_19_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_19_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG` <- `ad_image_19_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_LINK_REQUIRED`)) {
+        `ad_image_19_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_LINK_REQUIRED` <- `ad_image_19_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_LINK_WARNING`)) {
+        `ad_image_19_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_LINK_WARNING` <- `ad_image_19_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_TAG_DUPLICATED`)) {
+        `ad_image_19_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_TAG_DUPLICATED` <- `ad_image_19_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_19_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG` <- `ad_image_19_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_19_TAG_REQUIRED`)) {
+        `ad_image_19_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_19_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_19_TAG_REQUIRED` <- `ad_image_19_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_LINK_DUPLICATED`)) {
+        `ad_image_1_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_LINK_DUPLICATED` <- `ad_image_1_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_1_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG` <- `ad_image_1_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_LINK_REQUIRED`)) {
+        `ad_image_1_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_LINK_REQUIRED` <- `ad_image_1_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_LINK_WARNING`)) {
+        `ad_image_1_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_LINK_WARNING` <- `ad_image_1_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_TAG_DUPLICATED`)) {
+        `ad_image_1_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_TAG_DUPLICATED` <- `ad_image_1_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_1_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG` <- `ad_image_1_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_1_TAG_REQUIRED`)) {
+        `ad_image_1_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_1_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_1_TAG_REQUIRED` <- `ad_image_1_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_LINK_DUPLICATED`)) {
+        `ad_image_2_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_LINK_DUPLICATED` <- `ad_image_2_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_2_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG` <- `ad_image_2_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_LINK_REQUIRED`)) {
+        `ad_image_2_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_LINK_REQUIRED` <- `ad_image_2_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_LINK_WARNING`)) {
+        `ad_image_2_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_LINK_WARNING` <- `ad_image_2_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_TAG_DUPLICATED`)) {
+        `ad_image_2_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_TAG_DUPLICATED` <- `ad_image_2_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_2_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG` <- `ad_image_2_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_2_TAG_REQUIRED`)) {
+        `ad_image_2_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_2_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_2_TAG_REQUIRED` <- `ad_image_2_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_LINK_DUPLICATED`)) {
+        `ad_image_3_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_LINK_DUPLICATED` <- `ad_image_3_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_3_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG` <- `ad_image_3_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_LINK_REQUIRED`)) {
+        `ad_image_3_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_LINK_REQUIRED` <- `ad_image_3_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_LINK_WARNING`)) {
+        `ad_image_3_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_LINK_WARNING` <- `ad_image_3_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_TAG_DUPLICATED`)) {
+        `ad_image_3_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_TAG_DUPLICATED` <- `ad_image_3_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_3_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG` <- `ad_image_3_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_3_TAG_REQUIRED`)) {
+        `ad_image_3_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_3_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_3_TAG_REQUIRED` <- `ad_image_3_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_LINK_DUPLICATED`)) {
+        `ad_image_4_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_LINK_DUPLICATED` <- `ad_image_4_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_4_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG` <- `ad_image_4_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_LINK_REQUIRED`)) {
+        `ad_image_4_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_LINK_REQUIRED` <- `ad_image_4_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_LINK_WARNING`)) {
+        `ad_image_4_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_LINK_WARNING` <- `ad_image_4_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_TAG_DUPLICATED`)) {
+        `ad_image_4_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_TAG_DUPLICATED` <- `ad_image_4_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_4_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG` <- `ad_image_4_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_4_TAG_REQUIRED`)) {
+        `ad_image_4_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_4_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_4_TAG_REQUIRED` <- `ad_image_4_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_LINK_DUPLICATED`)) {
+        `ad_image_5_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_LINK_DUPLICATED` <- `ad_image_5_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_5_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG` <- `ad_image_5_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_LINK_REQUIRED`)) {
+        `ad_image_5_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_LINK_REQUIRED` <- `ad_image_5_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_LINK_WARNING`)) {
+        `ad_image_5_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_LINK_WARNING` <- `ad_image_5_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_TAG_DUPLICATED`)) {
+        `ad_image_5_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_TAG_DUPLICATED` <- `ad_image_5_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_5_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG` <- `ad_image_5_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_5_TAG_REQUIRED`)) {
+        `ad_image_5_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_5_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_5_TAG_REQUIRED` <- `ad_image_5_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_LINK_DUPLICATED`)) {
+        `ad_image_6_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_LINK_DUPLICATED` <- `ad_image_6_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_6_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG` <- `ad_image_6_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_LINK_REQUIRED`)) {
+        `ad_image_6_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_LINK_REQUIRED` <- `ad_image_6_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_LINK_WARNING`)) {
+        `ad_image_6_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_LINK_WARNING` <- `ad_image_6_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_TAG_DUPLICATED`)) {
+        `ad_image_6_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_TAG_DUPLICATED` <- `ad_image_6_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_6_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG` <- `ad_image_6_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_6_TAG_REQUIRED`)) {
+        `ad_image_6_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_6_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_6_TAG_REQUIRED` <- `ad_image_6_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_LINK_DUPLICATED`)) {
+        `ad_image_7_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_LINK_DUPLICATED` <- `ad_image_7_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_7_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG` <- `ad_image_7_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_LINK_REQUIRED`)) {
+        `ad_image_7_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_LINK_REQUIRED` <- `ad_image_7_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_LINK_WARNING`)) {
+        `ad_image_7_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_LINK_WARNING` <- `ad_image_7_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_TAG_DUPLICATED`)) {
+        `ad_image_7_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_TAG_DUPLICATED` <- `ad_image_7_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_7_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG` <- `ad_image_7_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_7_TAG_REQUIRED`)) {
+        `ad_image_7_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_7_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_7_TAG_REQUIRED` <- `ad_image_7_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_LINK_DUPLICATED`)) {
+        `ad_image_8_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_LINK_DUPLICATED` <- `ad_image_8_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_8_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG` <- `ad_image_8_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_LINK_REQUIRED`)) {
+        `ad_image_8_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_LINK_REQUIRED` <- `ad_image_8_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_LINK_WARNING`)) {
+        `ad_image_8_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_LINK_WARNING` <- `ad_image_8_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_TAG_DUPLICATED`)) {
+        `ad_image_8_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_TAG_DUPLICATED` <- `ad_image_8_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_8_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG` <- `ad_image_8_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_8_TAG_REQUIRED`)) {
+        `ad_image_8_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_8_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_8_TAG_REQUIRED` <- `ad_image_8_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_LINK_DUPLICATED`)) {
+        `ad_image_9_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_LINK_DUPLICATED` <- `ad_image_9_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`)) {
+        `ad_image_9_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG` <- `ad_image_9_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_LINK_REQUIRED`)) {
+        `ad_image_9_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_LINK_REQUIRED` <- `ad_image_9_link_required_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_LINK_WARNING`)) {
+        `ad_image_9_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_LINK_WARNING` <- `ad_image_9_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_TAG_DUPLICATED`)) {
+        `ad_image_9_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_TAG_DUPLICATED` <- `ad_image_9_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`)) {
+        `ad_image_9_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG` <- `ad_image_9_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_IMAGE_9_TAG_REQUIRED`)) {
+        `ad_image_9_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_image_9_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_IMAGE_9_TAG_REQUIRED` <- `ad_image_9_tag_required_object`
+      }
       if (!is.null(this_object$`AD_LINK_FORMAT_WARNING`)) {
         `ad_link_format_warning_object` <- CatalogsItemValidationDetails$new()
         `ad_link_format_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_LINK_FORMAT_WARNING`, auto_unbox = TRUE, digits = NA))
@@ -555,6 +3037,111 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         `ad_link_same_as_link_object` <- CatalogsItemValidationDetails$new()
         `ad_link_same_as_link_object`$fromJSON(jsonlite::toJSON(this_object$`AD_LINK_SAME_AS_LINK`, auto_unbox = TRUE, digits = NA))
         self$`AD_LINK_SAME_AS_LINK` <- `ad_link_same_as_link_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_LINK_DUPLICATED`)) {
+        `ad_video_0_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_LINK_DUPLICATED` <- `ad_video_0_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`)) {
+        `ad_video_0_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG` <- `ad_video_0_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_LINK_REQUIRED`)) {
+        `ad_video_0_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_LINK_REQUIRED` <- `ad_video_0_link_required_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_LINK_WARNING`)) {
+        `ad_video_0_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_LINK_WARNING` <- `ad_video_0_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_TAG_DUPLICATED`)) {
+        `ad_video_0_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_TAG_DUPLICATED` <- `ad_video_0_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`)) {
+        `ad_video_0_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG` <- `ad_video_0_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_0_TAG_REQUIRED`)) {
+        `ad_video_0_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_0_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_0_TAG_REQUIRED` <- `ad_video_0_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_LINK_DUPLICATED`)) {
+        `ad_video_1_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_LINK_DUPLICATED` <- `ad_video_1_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`)) {
+        `ad_video_1_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG` <- `ad_video_1_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_LINK_REQUIRED`)) {
+        `ad_video_1_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_LINK_REQUIRED` <- `ad_video_1_link_required_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_LINK_WARNING`)) {
+        `ad_video_1_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_LINK_WARNING` <- `ad_video_1_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_TAG_DUPLICATED`)) {
+        `ad_video_1_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_TAG_DUPLICATED` <- `ad_video_1_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`)) {
+        `ad_video_1_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG` <- `ad_video_1_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_1_TAG_REQUIRED`)) {
+        `ad_video_1_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_1_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_1_TAG_REQUIRED` <- `ad_video_1_tag_required_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_LINK_DUPLICATED`)) {
+        `ad_video_2_link_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_link_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_LINK_DUPLICATED` <- `ad_video_2_link_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`)) {
+        `ad_video_2_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_link_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG` <- `ad_video_2_link_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_LINK_REQUIRED`)) {
+        `ad_video_2_link_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_link_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_LINK_REQUIRED` <- `ad_video_2_link_required_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_LINK_WARNING`)) {
+        `ad_video_2_link_warning_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_link_warning_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_LINK_WARNING` <- `ad_video_2_link_warning_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_TAG_DUPLICATED`)) {
+        `ad_video_2_tag_duplicated_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_tag_duplicated_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_TAG_DUPLICATED` <- `ad_video_2_tag_duplicated_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`)) {
+        `ad_video_2_tag_length_too_long_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_tag_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG` <- `ad_video_2_tag_length_too_long_object`
+      }
+      if (!is.null(this_object$`AD_VIDEO_2_TAG_REQUIRED`)) {
+        `ad_video_2_tag_required_object` <- CatalogsItemValidationDetails$new()
+        `ad_video_2_tag_required_object`$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+        self$`AD_VIDEO_2_TAG_REQUIRED` <- `ad_video_2_tag_required_object`
       }
       if (!is.null(this_object$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`)) {
         `additional_image_link_length_too_long_object` <- CatalogsItemValidationDetails$new()
@@ -580,11 +3167,6 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         `age_group_invalid_object` <- CatalogsItemValidationDetails$new()
         `age_group_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`AGE_GROUP_INVALID`, auto_unbox = TRUE, digits = NA))
         self$`AGE_GROUP_INVALID` <- `age_group_invalid_object`
-      }
-      if (!is.null(this_object$`SIZE_SYSTEM_INVALID`)) {
-        `size_system_invalid_object` <- CatalogsItemValidationDetails$new()
-        `size_system_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SIZE_SYSTEM_INVALID`, auto_unbox = TRUE, digits = NA))
-        self$`SIZE_SYSTEM_INVALID` <- `size_system_invalid_object`
       }
       if (!is.null(this_object$`ANDROID_DEEP_LINK_INVALID`)) {
         `android_deep_link_invalid_object` <- CatalogsItemValidationDetails$new()
@@ -696,35 +3278,35 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         `product_type_length_too_long_object`$fromJSON(jsonlite::toJSON(this_object$`PRODUCT_TYPE_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
         self$`PRODUCT_TYPE_LENGTH_TOO_LONG` <- `product_type_length_too_long_object`
       }
+      if (!is.null(this_object$`SALE_DATE_INVALID`)) {
+        `sale_date_invalid_object` <- CatalogsItemValidationDetails$new()
+        `sale_date_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SALE_DATE_INVALID`, auto_unbox = TRUE, digits = NA))
+        self$`SALE_DATE_INVALID` <- `sale_date_invalid_object`
+      }
       if (!is.null(this_object$`SALES_PRICE_INVALID`)) {
         `sales_price_invalid_object` <- CatalogsItemValidationDetails$new()
         `sales_price_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_INVALID`, auto_unbox = TRUE, digits = NA))
         self$`SALES_PRICE_INVALID` <- `sales_price_invalid_object`
-      }
-      if (!is.null(this_object$`SALES_PRICE_TOO_LOW`)) {
-        `sales_price_too_low_object` <- CatalogsItemValidationDetails$new()
-        `sales_price_too_low_object`$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_LOW`, auto_unbox = TRUE, digits = NA))
-        self$`SALES_PRICE_TOO_LOW` <- `sales_price_too_low_object`
       }
       if (!is.null(this_object$`SALES_PRICE_TOO_HIGH`)) {
         `sales_price_too_high_object` <- CatalogsItemValidationDetails$new()
         `sales_price_too_high_object`$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_HIGH`, auto_unbox = TRUE, digits = NA))
         self$`SALES_PRICE_TOO_HIGH` <- `sales_price_too_high_object`
       }
-      if (!is.null(this_object$`SALE_DATE_INVALID`)) {
-        `sale_date_invalid_object` <- CatalogsItemValidationDetails$new()
-        `sale_date_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SALE_DATE_INVALID`, auto_unbox = TRUE, digits = NA))
-        self$`SALE_DATE_INVALID` <- `sale_date_invalid_object`
-      }
-      if (!is.null(this_object$`SHIPPING_INVALID`)) {
-        `shipping_invalid_object` <- CatalogsItemValidationDetails$new()
-        `shipping_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_INVALID`, auto_unbox = TRUE, digits = NA))
-        self$`SHIPPING_INVALID` <- `shipping_invalid_object`
+      if (!is.null(this_object$`SALES_PRICE_TOO_LOW`)) {
+        `sales_price_too_low_object` <- CatalogsItemValidationDetails$new()
+        `sales_price_too_low_object`$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_LOW`, auto_unbox = TRUE, digits = NA))
+        self$`SALES_PRICE_TOO_LOW` <- `sales_price_too_low_object`
       }
       if (!is.null(this_object$`SHIPPING_HEIGHT_INVALID`)) {
         `shipping_height_invalid_object` <- CatalogsItemValidationDetails$new()
         `shipping_height_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_HEIGHT_INVALID`, auto_unbox = TRUE, digits = NA))
         self$`SHIPPING_HEIGHT_INVALID` <- `shipping_height_invalid_object`
+      }
+      if (!is.null(this_object$`SHIPPING_INVALID`)) {
+        `shipping_invalid_object` <- CatalogsItemValidationDetails$new()
+        `shipping_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_INVALID`, auto_unbox = TRUE, digits = NA))
+        self$`SHIPPING_INVALID` <- `shipping_invalid_object`
       }
       if (!is.null(this_object$`SHIPPING_WEIGHT_INVALID`)) {
         `shipping_weight_invalid_object` <- CatalogsItemValidationDetails$new()
@@ -735,6 +3317,11 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         `shipping_width_invalid_object` <- CatalogsItemValidationDetails$new()
         `shipping_width_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_WIDTH_INVALID`, auto_unbox = TRUE, digits = NA))
         self$`SHIPPING_WIDTH_INVALID` <- `shipping_width_invalid_object`
+      }
+      if (!is.null(this_object$`SIZE_SYSTEM_INVALID`)) {
+        `size_system_invalid_object` <- CatalogsItemValidationDetails$new()
+        `size_system_invalid_object`$fromJSON(jsonlite::toJSON(this_object$`SIZE_SYSTEM_INVALID`, auto_unbox = TRUE, digits = NA))
+        self$`SIZE_SYSTEM_INVALID` <- `size_system_invalid_object`
       }
       if (!is.null(this_object$`SIZE_TYPE_INVALID`)) {
         `size_type_invalid_object` <- CatalogsItemValidationDetails$new()
@@ -760,6 +3347,11 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         `utm_source_auto_corrected_object` <- CatalogsItemValidationDetails$new()
         `utm_source_auto_corrected_object`$fromJSON(jsonlite::toJSON(this_object$`UTM_SOURCE_AUTO_CORRECTED`, auto_unbox = TRUE, digits = NA))
         self$`UTM_SOURCE_AUTO_CORRECTED` <- `utm_source_auto_corrected_object`
+      }
+      if (!is.null(this_object$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`)) {
+        `video_required_when_ad_video_provided_object` <- CatalogsItemValidationDetails$new()
+        `video_required_when_ad_video_provided_object`$fromJSON(jsonlite::toJSON(this_object$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`, auto_unbox = TRUE, digits = NA))
+        self$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` <- `video_required_when_ad_video_provided_object`
       }
       if (!is.null(this_object$`WEIGHT_UNIT_INVALID`)) {
         `weight_unit_invalid_object` <- CatalogsItemValidationDetails$new()
@@ -787,14 +3379,174 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     #' @return the instance of CatalogsItemValidationWarnings
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`AD_IMAGE_0_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_0_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_0_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_0_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_0_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_0_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_10_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_10_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_11_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_11_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_12_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_12_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_13_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_13_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_14_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_14_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_15_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_15_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_16_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_16_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_17_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_17_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_18_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_18_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_19_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_19_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_1_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_1_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_2_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_2_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_3_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_3_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_4_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_4_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_5_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_5_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_6_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_6_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_7_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_7_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_8_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_8_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_IMAGE_9_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_IMAGE_9_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
       self$`AD_LINK_FORMAT_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_LINK_FORMAT_WARNING`, auto_unbox = TRUE, digits = NA))
       self$`AD_LINK_SAME_AS_LINK` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_LINK_SAME_AS_LINK`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_0_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_0_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_1_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_1_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_LINK_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_LINK_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_REQUIRED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_TAG_DUPLICATED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_TAG_DUPLICATED`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
+      self$`AD_VIDEO_2_TAG_REQUIRED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_VIDEO_2_TAG_REQUIRED`, auto_unbox = TRUE, digits = NA))
       self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
       self$`ADDITIONAL_IMAGE_LINK_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ADDITIONAL_IMAGE_LINK_WARNING`, auto_unbox = TRUE, digits = NA))
       self$`ADWORDS_FORMAT_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ADWORDS_FORMAT_WARNING`, auto_unbox = TRUE, digits = NA))
       self$`ADWORDS_SAME_AS_LINK` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ADWORDS_SAME_AS_LINK`, auto_unbox = TRUE, digits = NA))
       self$`AGE_GROUP_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AGE_GROUP_INVALID`, auto_unbox = TRUE, digits = NA))
-      self$`SIZE_SYSTEM_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SIZE_SYSTEM_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`ANDROID_DEEP_LINK_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ANDROID_DEEP_LINK_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`AVAILABILITY_DATE_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AVAILABILITY_DATE_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`, auto_unbox = TRUE, digits = NA))
@@ -817,19 +3569,21 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       self$`OPTIONAL_PRODUCT_CATEGORY_MISSING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`OPTIONAL_PRODUCT_CATEGORY_MISSING`, auto_unbox = TRUE, digits = NA))
       self$`PRODUCT_CATEGORY_DEPTH_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`PRODUCT_CATEGORY_DEPTH_WARNING`, auto_unbox = TRUE, digits = NA))
       self$`PRODUCT_TYPE_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`PRODUCT_TYPE_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
-      self$`SALES_PRICE_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_INVALID`, auto_unbox = TRUE, digits = NA))
-      self$`SALES_PRICE_TOO_LOW` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_LOW`, auto_unbox = TRUE, digits = NA))
-      self$`SALES_PRICE_TOO_HIGH` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_HIGH`, auto_unbox = TRUE, digits = NA))
       self$`SALE_DATE_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALE_DATE_INVALID`, auto_unbox = TRUE, digits = NA))
-      self$`SHIPPING_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_INVALID`, auto_unbox = TRUE, digits = NA))
+      self$`SALES_PRICE_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_INVALID`, auto_unbox = TRUE, digits = NA))
+      self$`SALES_PRICE_TOO_HIGH` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_HIGH`, auto_unbox = TRUE, digits = NA))
+      self$`SALES_PRICE_TOO_LOW` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SALES_PRICE_TOO_LOW`, auto_unbox = TRUE, digits = NA))
       self$`SHIPPING_HEIGHT_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_HEIGHT_INVALID`, auto_unbox = TRUE, digits = NA))
+      self$`SHIPPING_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`SHIPPING_WEIGHT_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_WEIGHT_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`SHIPPING_WIDTH_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SHIPPING_WIDTH_INVALID`, auto_unbox = TRUE, digits = NA))
+      self$`SIZE_SYSTEM_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SIZE_SYSTEM_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`SIZE_TYPE_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`SIZE_TYPE_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`TAX_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`TAX_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`TITLE_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`TITLE_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
       self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`, auto_unbox = TRUE, digits = NA))
       self$`UTM_SOURCE_AUTO_CORRECTED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`UTM_SOURCE_AUTO_CORRECTED`, auto_unbox = TRUE, digits = NA))
+      self$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`, auto_unbox = TRUE, digits = NA))
       self$`WEIGHT_UNIT_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`WEIGHT_UNIT_INVALID`, auto_unbox = TRUE, digits = NA))
       self
     },

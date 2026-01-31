@@ -11,29 +11,29 @@ import org.openapitools.models.OrderLineStatus
 
 /**
  * Order Line
- * @param id Order line ID.
- * @param _type Always \"orderline\".
  * @param adUnderscoreaccountUnderscoreid Ad account ID.
+ * @param budget Order line budget in micro currency.
+ * @param endUnderscoretime End time. Unix timestamp.
+ * @param id Order line ID.
+ * @param name Order line name.
+ * @param paidUnderscorebudget Order line paid budget in micro currency.
+ * @param paidUnderscoretype Order line paid type.
  * @param purchaseUnderscoreorderUnderscoreid Purchase order ID.
  * @param startUnderscoretime Start time. Unix timestamp.
- * @param endUnderscoretime End time. Unix timestamp.
- * @param budget Order line budget in micro currency.
- * @param paidUnderscorebudget Order line paid budget in micro currency.
  * @param status Order line status.
- * @param name Order line name.
- * @param paidUnderscoretype Order line paid type.
+ * @param _type Always \"orderline\".
  */
-case class OrderLines(id: Option[String],
-                _type: Option[String],
-                adUnderscoreaccountUnderscoreid: Option[String],
+case class OrderLines(adUnderscoreaccountUnderscoreid: Option[String],
+                budget: Option[BigDecimal],
+                endUnderscoretime: Option[BigDecimal],
+                id: Option[String],
+                name: Option[String],
+                paidUnderscorebudget: Option[BigDecimal],
+                paidUnderscoretype: Option[OrderLinePaidType],
                 purchaseUnderscoreorderUnderscoreid: Option[String],
                 startUnderscoretime: Option[BigDecimal],
-                endUnderscoretime: Option[BigDecimal],
-                budget: Option[BigDecimal],
-                paidUnderscorebudget: Option[BigDecimal],
                 status: Option[OrderLineStatus],
-                name: Option[String],
-                paidUnderscoretype: Option[OrderLinePaidType]
+                _type: Option[String]
                 )
 
 object OrderLines {

@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.AdGroupSummaryStatus
+open OpenAPI.Model.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
 open OpenAPI.Model.AdsAnalyticsMetricsFilter
-open OpenAPI.Model.AdsAnalyticsTargetingType
 open OpenAPI.Model.CampaignSummaryStatus
 open OpenAPI.Model.ConversionAttributionWindowDays
 open OpenAPI.Model.ConversionReportAttributionType
@@ -16,27 +16,32 @@ open OpenAPI.Model.ObjectiveType
 open OpenAPI.Model.PinPromotionSummaryStatus
 open OpenAPI.Model.ProductGroupSummaryStatus
 open OpenAPI.Model.ReportingColumnAsync
+open OpenAPI.Model.ReportingTimeZone
 
 module AdsAnalyticsCreateAsyncRequest =
 
   //#region AdsAnalyticsCreateAsyncRequest
 
   //#region enums
+  type TargetingTypesEnum[] = KEYWORDEnum of string[]  |  APPTYPEEnum of string[]  |  GENDEREnum of string[]  |  LOCATIONEnum of string[]  |  PLACEMENTEnum of string[]  |  COUNTRYEnum of string[]  |  TARGETEDINTERESTEnum of string[]  |  PINNERINTERESTEnum of string[]  |  AUDIENCEINCLUDEEnum of string[]  |  GEOEnum of string[]  |  AGEBUCKETEnum of string[]  |  REGIONEnum of string[]  |  MEDIATYPEEnum of string[]  |  AGEBUCKETANDGENDEREnum of string[]  |  AUDIENCEMULTIPLIEREnum of string[]  |  CREATIVEENHANCEMENTSEnum of string[]  |  LOCALADSSTORECODEEnum of string[]  
+  //#endregion
+  //#region enums
   type PrimarySortEnum = BYIDEnum of string  |  BYDATEEnum of string  
   //#endregion
 
   type AdsAnalyticsCreateAsyncRequest = {
-    StartDate : string;
-    EndDate : string;
-    Granularity : Granularity;
-    ClickWindowDays : ConversionAttributionWindowDays;
-    EngagementWindowDays : ConversionAttributionWindowDays;
-    ViewWindowDays : ConversionAttributionWindowDays;
-    ConversionReportTime : ConversionReportTimeType;
     AttributionTypes : ConversionReportAttributionType[];
+    ClickWindowDays : ConversionAttributionWindowDays;
+    ConversionReportTime : ConversionReportTimeType;
+    EndDate : string;
+    EngagementWindowDays : ConversionAttributionWindowDays;
+    Granularity : Granularity;
+    StartDate : string;
+    ViewWindowDays : ConversionAttributionWindowDays;
     CampaignIds : string[];
     CampaignStatuses : CampaignSummaryStatus[];
     CampaignObjectiveTypes : ObjectiveType[];
+    CampaignBrandLabel : string;
     AdGroupIds : string[];
     AdGroupStatuses : AdGroupSummaryStatus[];
     AdIds : string[];
@@ -44,13 +49,16 @@ module AdsAnalyticsCreateAsyncRequest =
     ProductGroupIds : string[];
     ProductGroupStatuses : ProductGroupSummaryStatus[];
     ProductItemIds : string[];
-    TargetingTypes : AdsAnalyticsTargetingType[];
+    TargetingTypes : TargetingTypesEnum[];
     MetricsFilters : AdsAnalyticsMetricsFilter[];
     Columns : ReportingColumnAsync[];
-    Level : MetricsReportingLevel;
-    ReportFormat : DataOutputFormat;
-    PrimarySort : PrimarySortEnum;
-    StartHour : int;
+    CombineTargetingTypes : bool;
+    CustomConversionEventMetrics : AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics[];
     EndHour : int;
+    Level : MetricsReportingLevel;
+    PrimarySort : PrimarySortEnum;
+    ReportFormat : DataOutputFormat;
+    ReportingTimezone : ReportingTimeZone;
+    StartHour : int;
   }
   //#endregion

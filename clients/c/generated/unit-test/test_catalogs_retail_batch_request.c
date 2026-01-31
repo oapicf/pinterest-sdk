@@ -24,17 +24,19 @@ catalogs_retail_batch_request_t* instantiate_catalogs_retail_batch_request(int i
   catalogs_retail_batch_request_t* catalogs_retail_batch_request = NULL;
   if (include_optional) {
     catalogs_retail_batch_request = catalogs_retail_batch_request_create(
+      "2680059592705",
       pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_RETAIL,
-      pinterest_rest_api_catalogs_retail_batch_request__"US",
-      pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_af-ZA,
-      list_createList()
+      pinterest_rest_api_catalogs_retail_batch_request__AD,
+      list_createList(),
+      pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_af-ZA
     );
   } else {
     catalogs_retail_batch_request = catalogs_retail_batch_request_create(
+      "2680059592705",
       pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_RETAIL,
-      pinterest_rest_api_catalogs_retail_batch_request__"US",
-      pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_af-ZA,
-      list_createList()
+      pinterest_rest_api_catalogs_retail_batch_request__AD,
+      list_createList(),
+      pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_af-ZA
     );
   }
 

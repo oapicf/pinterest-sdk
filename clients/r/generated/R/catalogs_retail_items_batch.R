@@ -8,11 +8,11 @@
 #' @description CatalogsRetailItemsBatch Class
 #' @format An \code{R6Class} generator object
 #' @field batch_id Id of the catalogs items batch character [optional]
-#' @field created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss character [optional]
-#' @field completed_time Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss character [optional]
-#' @field status  \link{BatchOperationStatus} [optional]
 #' @field catalog_type  \link{CatalogsType}
+#' @field completed_time Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss character [optional]
+#' @field created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion. character
 #' @field items Array with the catalogs items processing records part of the catalogs items batch list(\link{ItemProcessingRecord}) [optional]
+#' @field status  \link{BatchOperationStatus} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,23 +20,23 @@ CatalogsRetailItemsBatch <- R6::R6Class(
   "CatalogsRetailItemsBatch",
   public = list(
     `batch_id` = NULL,
-    `created_time` = NULL,
-    `completed_time` = NULL,
-    `status` = NULL,
     `catalog_type` = NULL,
+    `completed_time` = NULL,
+    `created_time` = NULL,
     `items` = NULL,
+    `status` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailItemsBatch class.
     #'
     #' @param catalog_type catalog_type
+    #' @param created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
     #' @param batch_id Id of the catalogs items batch
-    #' @param created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
     #' @param completed_time Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-    #' @param status status
     #' @param items Array with the catalogs items processing records part of the catalogs items batch
+    #' @param status status
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `batch_id` = NULL, `created_time` = NULL, `completed_time` = NULL, `status` = NULL, `items` = NULL, ...) {
+    initialize = function(`catalog_type`, `created_time`, `batch_id` = NULL, `completed_time` = NULL, `items` = NULL, `status` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
@@ -44,17 +44,17 @@ CatalogsRetailItemsBatch <- R6::R6Class(
         stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
       }
+      if (!missing(`created_time`)) {
+        if (!(is.character(`created_time`) && length(`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be a string:", `created_time`))
+        }
+        self$`created_time` <- `created_time`
+      }
       if (!is.null(`batch_id`)) {
         if (!(is.character(`batch_id`) && length(`batch_id`) == 1)) {
           stop(paste("Error! Invalid data for `batch_id`. Must be a string:", `batch_id`))
         }
         self$`batch_id` <- `batch_id`
-      }
-      if (!is.null(`created_time`)) {
-        if (!is.character(`created_time`)) {
-          stop(paste("Error! Invalid data for `created_time`. Must be a string:", `created_time`))
-        }
-        self$`created_time` <- `created_time`
       }
       if (!is.null(`completed_time`)) {
         if (!is.character(`completed_time`)) {
@@ -62,17 +62,17 @@ CatalogsRetailItemsBatch <- R6::R6Class(
         }
         self$`completed_time` <- `completed_time`
       }
+      if (!is.null(`items`)) {
+        stopifnot(is.vector(`items`), length(`items`) != 0)
+        sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
+        self$`items` <- `items`
+      }
       if (!is.null(`status`)) {
         if (!(`status` %in% c())) {
           stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
-      }
-      if (!is.null(`items`)) {
-        stopifnot(is.vector(`items`), length(`items`) != 0)
-        sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
-        self$`items` <- `items`
       }
     },
 
@@ -111,25 +111,25 @@ CatalogsRetailItemsBatch <- R6::R6Class(
         CatalogsRetailItemsBatchObject[["batch_id"]] <-
           self$`batch_id`
       }
-      if (!is.null(self$`created_time`)) {
-        CatalogsRetailItemsBatchObject[["created_time"]] <-
-          self$`created_time`
+      if (!is.null(self$`catalog_type`)) {
+        CatalogsRetailItemsBatchObject[["catalog_type"]] <-
+          self$`catalog_type`$toSimpleType()
       }
       if (!is.null(self$`completed_time`)) {
         CatalogsRetailItemsBatchObject[["completed_time"]] <-
           self$`completed_time`
       }
-      if (!is.null(self$`status`)) {
-        CatalogsRetailItemsBatchObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
-      if (!is.null(self$`catalog_type`)) {
-        CatalogsRetailItemsBatchObject[["catalog_type"]] <-
-          self$`catalog_type`$toSimpleType()
+      if (!is.null(self$`created_time`)) {
+        CatalogsRetailItemsBatchObject[["created_time"]] <-
+          self$`created_time`
       }
       if (!is.null(self$`items`)) {
         CatalogsRetailItemsBatchObject[["items"]] <-
           lapply(self$`items`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`status`)) {
+        CatalogsRetailItemsBatchObject[["status"]] <-
+          self$`status`$toSimpleType()
       }
       return(CatalogsRetailItemsBatchObject)
     },
@@ -144,24 +144,24 @@ CatalogsRetailItemsBatch <- R6::R6Class(
       if (!is.null(this_object$`batch_id`)) {
         self$`batch_id` <- this_object$`batch_id`
       }
-      if (!is.null(this_object$`created_time`)) {
-        self$`created_time` <- this_object$`created_time`
-      }
-      if (!is.null(this_object$`completed_time`)) {
-        self$`completed_time` <- this_object$`completed_time`
-      }
-      if (!is.null(this_object$`status`)) {
-        `status_object` <- BatchOperationStatus$new()
-        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-        self$`status` <- `status_object`
-      }
       if (!is.null(this_object$`catalog_type`)) {
         `catalog_type_object` <- CatalogsType$new()
         `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
         self$`catalog_type` <- `catalog_type_object`
       }
+      if (!is.null(this_object$`completed_time`)) {
+        self$`completed_time` <- this_object$`completed_time`
+      }
+      if (!is.null(this_object$`created_time`)) {
+        self$`created_time` <- this_object$`created_time`
+      }
       if (!is.null(this_object$`items`)) {
         self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemProcessingRecord]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`status`)) {
+        `status_object` <- BatchOperationStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
       }
       self
     },
@@ -185,11 +185,11 @@ CatalogsRetailItemsBatch <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`batch_id` <- this_object$`batch_id`
-      self$`created_time` <- this_object$`created_time`
-      self$`completed_time` <- this_object$`completed_time`
-      self$`status` <- BatchOperationStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      self$`completed_time` <- this_object$`completed_time`
+      self$`created_time` <- this_object$`created_time`
       self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemProcessingRecord]", loadNamespace("openapi"))
+      self$`status` <- BatchOperationStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -204,6 +204,14 @@ CatalogsRetailItemsBatch <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`catalog_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailItemsBatch: the required field `catalog_type` is missing."))
+      }
+      # check the required field `created_time`
+      if (!is.null(input_json$`created_time`)) {
+        if (!(is.character(input_json$`created_time`) && length(input_json$`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be a string:", input_json$`created_time`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailItemsBatch: the required field `created_time` is missing."))
       }
     },
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Score** | Pointer to **float32** | Your hotel&#39;s rating. | [optional] 
-**NumberOfReviewers** | Pointer to **int32** | Total number of people who have rated this hotel. | [optional] 
-**MaxScore** | Pointer to **float32** | Max value for the hotel rating score. | [optional] 
-**RatingSystem** | Pointer to **string** | System you use for guest reviews. | [optional] 
+**MaxScore** | Pointer to **NullableFloat32** | Max value for the hotel rating score. | [optional] 
+**NumberOfReviewers** | Pointer to **NullableInt32** | Total number of people who have rated this hotel. | [optional] 
+**RatingSystem** | Pointer to **NullableString** | System you use for guest reviews. | [optional] 
+**Score** | Pointer to **NullableFloat32** | Your hotel&#39;s rating. | [optional] 
 
 ## Methods
 
@@ -27,56 +27,6 @@ will change when the set of required properties is changed
 NewCatalogsHotelGuestRatingsWithDefaults instantiates a new CatalogsHotelGuestRatings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetScore
-
-`func (o *CatalogsHotelGuestRatings) GetScore() float32`
-
-GetScore returns the Score field if non-nil, zero value otherwise.
-
-### GetScoreOk
-
-`func (o *CatalogsHotelGuestRatings) GetScoreOk() (*float32, bool)`
-
-GetScoreOk returns a tuple with the Score field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScore
-
-`func (o *CatalogsHotelGuestRatings) SetScore(v float32)`
-
-SetScore sets Score field to given value.
-
-### HasScore
-
-`func (o *CatalogsHotelGuestRatings) HasScore() bool`
-
-HasScore returns a boolean if a field has been set.
-
-### GetNumberOfReviewers
-
-`func (o *CatalogsHotelGuestRatings) GetNumberOfReviewers() int32`
-
-GetNumberOfReviewers returns the NumberOfReviewers field if non-nil, zero value otherwise.
-
-### GetNumberOfReviewersOk
-
-`func (o *CatalogsHotelGuestRatings) GetNumberOfReviewersOk() (*int32, bool)`
-
-GetNumberOfReviewersOk returns a tuple with the NumberOfReviewers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNumberOfReviewers
-
-`func (o *CatalogsHotelGuestRatings) SetNumberOfReviewers(v int32)`
-
-SetNumberOfReviewers sets NumberOfReviewers field to given value.
-
-### HasNumberOfReviewers
-
-`func (o *CatalogsHotelGuestRatings) HasNumberOfReviewers() bool`
-
-HasNumberOfReviewers returns a boolean if a field has been set.
 
 ### GetMaxScore
 
@@ -103,6 +53,51 @@ SetMaxScore sets MaxScore field to given value.
 
 HasMaxScore returns a boolean if a field has been set.
 
+### SetMaxScoreNil
+
+`func (o *CatalogsHotelGuestRatings) SetMaxScoreNil(b bool)`
+
+ SetMaxScoreNil sets the value for MaxScore to be an explicit nil
+
+### UnsetMaxScore
+`func (o *CatalogsHotelGuestRatings) UnsetMaxScore()`
+
+UnsetMaxScore ensures that no value is present for MaxScore, not even an explicit nil
+### GetNumberOfReviewers
+
+`func (o *CatalogsHotelGuestRatings) GetNumberOfReviewers() int32`
+
+GetNumberOfReviewers returns the NumberOfReviewers field if non-nil, zero value otherwise.
+
+### GetNumberOfReviewersOk
+
+`func (o *CatalogsHotelGuestRatings) GetNumberOfReviewersOk() (*int32, bool)`
+
+GetNumberOfReviewersOk returns a tuple with the NumberOfReviewers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumberOfReviewers
+
+`func (o *CatalogsHotelGuestRatings) SetNumberOfReviewers(v int32)`
+
+SetNumberOfReviewers sets NumberOfReviewers field to given value.
+
+### HasNumberOfReviewers
+
+`func (o *CatalogsHotelGuestRatings) HasNumberOfReviewers() bool`
+
+HasNumberOfReviewers returns a boolean if a field has been set.
+
+### SetNumberOfReviewersNil
+
+`func (o *CatalogsHotelGuestRatings) SetNumberOfReviewersNil(b bool)`
+
+ SetNumberOfReviewersNil sets the value for NumberOfReviewers to be an explicit nil
+
+### UnsetNumberOfReviewers
+`func (o *CatalogsHotelGuestRatings) UnsetNumberOfReviewers()`
+
+UnsetNumberOfReviewers ensures that no value is present for NumberOfReviewers, not even an explicit nil
 ### GetRatingSystem
 
 `func (o *CatalogsHotelGuestRatings) GetRatingSystem() string`
@@ -128,6 +123,51 @@ SetRatingSystem sets RatingSystem field to given value.
 
 HasRatingSystem returns a boolean if a field has been set.
 
+### SetRatingSystemNil
+
+`func (o *CatalogsHotelGuestRatings) SetRatingSystemNil(b bool)`
+
+ SetRatingSystemNil sets the value for RatingSystem to be an explicit nil
+
+### UnsetRatingSystem
+`func (o *CatalogsHotelGuestRatings) UnsetRatingSystem()`
+
+UnsetRatingSystem ensures that no value is present for RatingSystem, not even an explicit nil
+### GetScore
+
+`func (o *CatalogsHotelGuestRatings) GetScore() float32`
+
+GetScore returns the Score field if non-nil, zero value otherwise.
+
+### GetScoreOk
+
+`func (o *CatalogsHotelGuestRatings) GetScoreOk() (*float32, bool)`
+
+GetScoreOk returns a tuple with the Score field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScore
+
+`func (o *CatalogsHotelGuestRatings) SetScore(v float32)`
+
+SetScore sets Score field to given value.
+
+### HasScore
+
+`func (o *CatalogsHotelGuestRatings) HasScore() bool`
+
+HasScore returns a boolean if a field has been set.
+
+### SetScoreNil
+
+`func (o *CatalogsHotelGuestRatings) SetScoreNil(b bool)`
+
+ SetScoreNil sets the value for Score to be an explicit nil
+
+### UnsetScore
+`func (o *CatalogsHotelGuestRatings) UnsetScore()`
+
+UnsetScore ensures that no value is present for Score, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

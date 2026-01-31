@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class ProductGroupPromotionResponseItem (
-    _data: Option[ProductGroupPromotionResponseElement],
+    _data: Option[ProductGroupPromotion],
     _exceptions: Option[List[Exception]]
 )
 object ProductGroupPromotionResponseItem {

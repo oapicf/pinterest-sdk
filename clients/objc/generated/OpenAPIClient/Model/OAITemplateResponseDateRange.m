@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"dynamicDateRange": @"dynamic_date_range", @"relativeDateRange": @"relative_date_range", @"absoluteDateRange": @"absolute_date_range" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"absoluteDateRange": @"absolute_date_range", @"dynamicDateRange": @"dynamic_date_range", @"relativeDateRange": @"relative_date_range" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"dynamicDateRange", @"relativeDateRange", @"absoluteDateRange"];
+  NSArray *optionalProperties = @[@"absoluteDateRange", @"dynamicDateRange", @"relativeDateRange"];
   return [optionalProperties containsObject:propertyName];
 }
 

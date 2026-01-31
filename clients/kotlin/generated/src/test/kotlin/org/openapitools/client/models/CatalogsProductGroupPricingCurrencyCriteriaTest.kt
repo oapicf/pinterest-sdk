@@ -26,6 +26,12 @@ class CatalogsProductGroupPricingCurrencyCriteriaTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsProductGroupPricingCurrencyCriteria
         //val modelInstance = CatalogsProductGroupPricingCurrencyCriteria()
 
+        // to test the property `currency`
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
+        }
+
         // to test the property ``operator``
         should("test `operator`") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class CatalogsProductGroupPricingCurrencyCriteriaTest : ShouldSpec() {
         should("test `value`") {
             // uncomment below to test the property
             //modelInstance.`value` shouldBe ("TODO")
-        }
-
-        // to test the property `currency`
-        should("test currency") {
-            // uncomment below to test the property
-            //modelInstance.currency shouldBe ("TODO")
         }
 
         // to test the property `negated`

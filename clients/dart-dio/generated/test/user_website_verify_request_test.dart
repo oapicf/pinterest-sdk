@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(UserWebsiteVerifyRequest, () {
-    // String website
-    test('to test the property `website`', () async {
+    // String verificationMethod (default value: 'METATAG')
+    test('to test the property `verificationMethod`', () async {
       // TODO
     });
 
-    // String verificationMethod (default value: 'METATAG')
-    test('to test the property `verificationMethod`', () async {
+    // String website
+    test('to test the property `website`', () async {
       // TODO
     });
 

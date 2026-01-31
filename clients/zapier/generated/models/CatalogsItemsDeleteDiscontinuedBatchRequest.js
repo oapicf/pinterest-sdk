@@ -12,6 +12,11 @@ module.exports = {
                 ...Country.fields(`${keyPrefix}country`, isInput),
             },
             {
+                key: `${keyPrefix}items`,
+                label: `[${labelPrefix}items]`,
+                children: ItemDeleteDiscontinuedBatchRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
                 key: `${keyPrefix}language`,
                 label: `We recommend using the CatalogsLocale values. - [${labelPrefix}language]`,
                 required: true,
@@ -130,20 +135,15 @@ module.exports = {
                 key: `${keyPrefix}operation`,
                 ...BatchOperation.fields(`${keyPrefix}operation`, isInput),
             },
-            {
-                key: `${keyPrefix}items`,
-                label: `[${labelPrefix}items]`,
-                children: ItemDeleteDiscontinuedBatchRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'country': bundle.inputData?.[`${keyPrefix}country`],
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, ItemDeleteDiscontinuedBatchRecord),
             'language': bundle.inputData?.[`${keyPrefix}language`],
             'operation': bundle.inputData?.[`${keyPrefix}operation`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, ItemDeleteDiscontinuedBatchRecord),
         }
     },
 }

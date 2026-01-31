@@ -13,6 +13,13 @@ API.Client.CatalogsItemsCreateBatchRequest = function() {}
 API.Client.CatalogsItemsCreateBatchRequest.prototype.country;
 
 /**
+ * Array with catalogs items
+ * @type {!Array<!API.Client.ItemCreateBatchRecord>}
+ * @export
+ */
+API.Client.CatalogsItemsCreateBatchRequest.prototype.items;
+
+/**
  * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
@@ -24,13 +31,6 @@ API.Client.CatalogsItemsCreateBatchRequest.prototype.language;
  * @export
  */
 API.Client.CatalogsItemsCreateBatchRequest.prototype.operation;
-
-/**
- * Array with catalogs items
- * @type {!Array<!API.Client.ItemCreateBatchRecord>}
- * @export
- */
-API.Client.CatalogsItemsCreateBatchRequest.prototype.items;
 
 /** @enum {string} */
 API.Client.CatalogsItemsCreateBatchRequest.LanguageEnum = { 

@@ -22,83 +22,83 @@ public struct IntegrationLog: Codable, JSONEncodable, Hashable {
         case warn = "WARN"
         case error = "ERROR"
     }
-    public static let externalBusinessIdRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public static let advertiserIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    public static let merchantIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    public static let tagIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    public static let feedProfileIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    public static let messageRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public static let appVersionNumberRule = StringRule(minLength: nil, maxLength: 20, pattern: nil)
+    public static let externalBusinessIdRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
+    public static let feedProfileIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
+    public static let merchantIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
+    public static let messageRule = StringRule(minLength: nil, maxLength: 8192, pattern: nil)
     public static let platformVersionNumberRule = StringRule(minLength: nil, maxLength: 20, pattern: nil)
-    /** Timestamp in milliseconds of when the log was executed at the client. */
-    public var clientTimestamp: Int
-    /** Log event type */
-    public var eventType: EventType
-    /** Log level type */
-    public var logLevel: LogLevel
-    public var externalBusinessId: String?
+    public static let tagIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
     public var advertiserId: String?
-    public var merchantId: String?
-    public var tagId: String?
-    public var feedProfileId: String?
-    /** Explanation of the event that occured. */
-    public var message: String?
     /** Version number of the integration application. */
     public var appVersionNumber: String?
+    /** Timestamp in milliseconds of when the log was executed at the client. */
+    public var clientTimestamp: Int
+    public var error: IntegrationLogClientError?
+    /** Log event type */
+    public var eventType: EventType
+    public var externalBusinessId: String?
+    public var feedProfileId: String?
+    /** Log level type */
+    public var logLevel: LogLevel
+    public var merchantId: String?
+    /** Explanation of the event that occured. */
+    public var message: String?
     /** Version number of the platform the integration application is running on. */
     public var platformVersionNumber: String?
-    public var error: IntegrationLogClientError?
     public var request: IntegrationLogClientRequest?
+    public var tagId: String?
 
-    public init(clientTimestamp: Int, eventType: EventType, logLevel: LogLevel, externalBusinessId: String? = nil, advertiserId: String? = nil, merchantId: String? = nil, tagId: String? = nil, feedProfileId: String? = nil, message: String? = nil, appVersionNumber: String? = nil, platformVersionNumber: String? = nil, error: IntegrationLogClientError? = nil, request: IntegrationLogClientRequest? = nil) {
-        self.clientTimestamp = clientTimestamp
-        self.eventType = eventType
-        self.logLevel = logLevel
-        self.externalBusinessId = externalBusinessId
+    public init(advertiserId: String? = nil, appVersionNumber: String? = nil, clientTimestamp: Int, error: IntegrationLogClientError? = nil, eventType: EventType, externalBusinessId: String? = nil, feedProfileId: String? = nil, logLevel: LogLevel, merchantId: String? = nil, message: String? = nil, platformVersionNumber: String? = nil, request: IntegrationLogClientRequest? = nil, tagId: String? = nil) {
         self.advertiserId = advertiserId
-        self.merchantId = merchantId
-        self.tagId = tagId
-        self.feedProfileId = feedProfileId
-        self.message = message
         self.appVersionNumber = appVersionNumber
-        self.platformVersionNumber = platformVersionNumber
+        self.clientTimestamp = clientTimestamp
         self.error = error
+        self.eventType = eventType
+        self.externalBusinessId = externalBusinessId
+        self.feedProfileId = feedProfileId
+        self.logLevel = logLevel
+        self.merchantId = merchantId
+        self.message = message
+        self.platformVersionNumber = platformVersionNumber
         self.request = request
+        self.tagId = tagId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case clientTimestamp = "client_timestamp"
-        case eventType = "event_type"
-        case logLevel = "log_level"
-        case externalBusinessId = "external_business_id"
         case advertiserId = "advertiser_id"
-        case merchantId = "merchant_id"
-        case tagId = "tag_id"
-        case feedProfileId = "feed_profile_id"
-        case message
         case appVersionNumber = "app_version_number"
-        case platformVersionNumber = "platform_version_number"
+        case clientTimestamp = "client_timestamp"
         case error
+        case eventType = "event_type"
+        case externalBusinessId = "external_business_id"
+        case feedProfileId = "feed_profile_id"
+        case logLevel = "log_level"
+        case merchantId = "merchant_id"
+        case message
+        case platformVersionNumber = "platform_version_number"
         case request
+        case tagId = "tag_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(clientTimestamp, forKey: .clientTimestamp)
-        try container.encode(eventType, forKey: .eventType)
-        try container.encode(logLevel, forKey: .logLevel)
-        try container.encodeIfPresent(externalBusinessId, forKey: .externalBusinessId)
         try container.encodeIfPresent(advertiserId, forKey: .advertiserId)
-        try container.encodeIfPresent(merchantId, forKey: .merchantId)
-        try container.encodeIfPresent(tagId, forKey: .tagId)
-        try container.encodeIfPresent(feedProfileId, forKey: .feedProfileId)
-        try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(appVersionNumber, forKey: .appVersionNumber)
-        try container.encodeIfPresent(platformVersionNumber, forKey: .platformVersionNumber)
+        try container.encode(clientTimestamp, forKey: .clientTimestamp)
         try container.encodeIfPresent(error, forKey: .error)
+        try container.encode(eventType, forKey: .eventType)
+        try container.encodeIfPresent(externalBusinessId, forKey: .externalBusinessId)
+        try container.encodeIfPresent(feedProfileId, forKey: .feedProfileId)
+        try container.encode(logLevel, forKey: .logLevel)
+        try container.encodeIfPresent(merchantId, forKey: .merchantId)
+        try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(platformVersionNumber, forKey: .platformVersionNumber)
         try container.encodeIfPresent(request, forKey: .request)
+        try container.encodeIfPresent(tagId, forKey: .tagId)
     }
 }
 

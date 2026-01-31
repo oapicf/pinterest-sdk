@@ -1,5 +1,5 @@
 package models
-// EnhancedMatchStatusType : The enhanced match status of the tag
+
 type EnhancedMatchStatusType string
 
 // List of EnhancedMatchStatusType

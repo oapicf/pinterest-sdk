@@ -16,12 +16,6 @@ void main() {
   // final instance = DeliveryMetricsResponseItemsInner();
 
   group('test DeliveryMetricsResponseItemsInner', () {
-    // Metric's name.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
     // Category name
     // String category
     test('to test the property `category`', () async {
@@ -37,6 +31,12 @@ void main() {
     // Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
     // String displayName
     test('to test the property `displayName`', () async {
+      // TODO
+    });
+
+    // Metric's name.
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

@@ -17,31 +17,19 @@ import org.openapitools.model.CatalogsHotelGuestRatings;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdatableHotelAttributes   {
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("address")
+  private CatalogsHotelAddress address;
 
-  @JsonProperty("link")
-  private String link;
-
-  @JsonProperty("description")
-  private String description;
+  @JsonProperty("base_price")
+  private String basePrice;
 
   @JsonProperty("brand")
   private String brand;
 
-  @JsonProperty("latitude")
-  private BigDecimal latitude;
-
-  @JsonProperty("longitude")
-  private BigDecimal longitude;
-
-  @JsonProperty("neighborhood")
-  private List<String> neighborhood = null;
-
-  @JsonProperty("address")
-  private CatalogsHotelAddress address;
+  @JsonProperty("category")
+  private String category;
 
   @JsonProperty("custom_label_0")
   private String customLabel0;
@@ -58,70 +46,63 @@ public class CatalogsUpdatableHotelAttributes   {
   @JsonProperty("custom_label_4")
   private String customLabel4;
 
-  @JsonProperty("category")
-  private String category;
-
-  @JsonProperty("base_price")
-  private String basePrice;
-
-  @JsonProperty("sale_price")
-  private String salePrice;
+  @JsonProperty("description")
+  private String description;
 
   @JsonProperty("guest_ratings")
   private CatalogsHotelGuestRatings guestRatings;
 
-  /**
-   * The hotel's name.
-   **/
-  public CatalogsUpdatableHotelAttributes name(String name) {
-    this.name = name;
-    return this;
-  }
+  @JsonProperty("latitude")
+  private BigDecimal latitude;
 
-  
-  @ApiModelProperty(value = "The hotel's name.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Link to the product page
-   **/
-  public CatalogsUpdatableHotelAttributes link(String link) {
-    this.link = link;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Link to the product page")
   @JsonProperty("link")
-  public String getLink() {
-    return link;
-  }
-  public void setLink(String link) {
-    this.link = link;
-  }
+  private String link;
+
+  @JsonProperty("longitude")
+  private BigDecimal longitude;
+
+  @JsonProperty("name")
+  private String name;
+
+  @JsonProperty("neighborhood")
+  private List<String> neighborhood = null;
+
+  @JsonProperty("sale_price")
+  private String salePrice;
 
   /**
-   * Brief description of the hotel.
    **/
-  public CatalogsUpdatableHotelAttributes description(String description) {
-    this.description = description;
+  public CatalogsUpdatableHotelAttributes address(CatalogsHotelAddress address) {
+    this.address = address;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Brief description of the hotel.")
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
+  @ApiModelProperty(value = "")
+  @JsonProperty("address")
+  public CatalogsHotelAddress getAddress() {
+    return address;
   }
-  public void setDescription(String description) {
-    this.description = description;
+  public void setAddress(CatalogsHotelAddress address) {
+    this.address = address;
+  }
+
+  /**
+   * Base price of the hotel room per night followed by the ISO currency code
+   **/
+  public CatalogsUpdatableHotelAttributes basePrice(String basePrice) {
+    this.basePrice = basePrice;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
+  @JsonProperty("base_price")
+  public String getBasePrice() {
+    return basePrice;
+  }
+  public void setBasePrice(String basePrice) {
+    this.basePrice = basePrice;
   }
 
   /**
@@ -143,74 +124,21 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   /**
-   * Latitude of the hotel.
+   * The type of property. The category can be any type of internal description desired.
    **/
-  public CatalogsUpdatableHotelAttributes latitude(BigDecimal latitude) {
-    this.latitude = latitude;
+  public CatalogsUpdatableHotelAttributes category(String category) {
+    this.category = category;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Latitude of the hotel.")
-  @JsonProperty("latitude")
-  public BigDecimal getLatitude() {
-    return latitude;
+  @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
+  @JsonProperty("category")
+  public String getCategory() {
+    return category;
   }
-  public void setLatitude(BigDecimal latitude) {
-    this.latitude = latitude;
-  }
-
-  /**
-   * Longitude of the hotel.
-   **/
-  public CatalogsUpdatableHotelAttributes longitude(BigDecimal longitude) {
-    this.longitude = longitude;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Longitude of the hotel.")
-  @JsonProperty("longitude")
-  public BigDecimal getLongitude() {
-    return longitude;
-  }
-  public void setLongitude(BigDecimal longitude) {
-    this.longitude = longitude;
-  }
-
-  /**
-   * A list of neighborhoods where the hotel is located
-   **/
-  public CatalogsUpdatableHotelAttributes neighborhood(List<String> neighborhood) {
-    this.neighborhood = neighborhood;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
-  @JsonProperty("neighborhood")
-  public List<String> getNeighborhood() {
-    return neighborhood;
-  }
-  public void setNeighborhood(List<String> neighborhood) {
-    this.neighborhood = neighborhood;
-  }
-
-  /**
-   **/
-  public CatalogsUpdatableHotelAttributes address(CatalogsHotelAddress address) {
-    this.address = address;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("address")
-  public CatalogsHotelAddress getAddress() {
-    return address;
-  }
-  public void setAddress(CatalogsHotelAddress address) {
-    this.address = address;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
   /**
@@ -304,39 +232,128 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   /**
-   * The type of property. The category can be any type of internal description desired.
+   * Brief description of the hotel.
    **/
-  public CatalogsUpdatableHotelAttributes category(String category) {
-    this.category = category;
+  public CatalogsUpdatableHotelAttributes description(String description) {
+    this.description = description;
     return this;
   }
 
   
-  @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
-  @JsonProperty("category")
-  public String getCategory() {
-    return category;
+  @ApiModelProperty(value = "Brief description of the hotel.")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
   }
-  public void setCategory(String category) {
-    this.category = category;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   /**
-   * Base price of the hotel room per night followed by the ISO currency code
    **/
-  public CatalogsUpdatableHotelAttributes basePrice(String basePrice) {
-    this.basePrice = basePrice;
+  public CatalogsUpdatableHotelAttributes guestRatings(CatalogsHotelGuestRatings guestRatings) {
+    this.guestRatings = guestRatings;
     return this;
   }
 
   
-  @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
-  @JsonProperty("base_price")
-  public String getBasePrice() {
-    return basePrice;
+  @ApiModelProperty(value = "")
+  @JsonProperty("guest_ratings")
+  public CatalogsHotelGuestRatings getGuestRatings() {
+    return guestRatings;
   }
-  public void setBasePrice(String basePrice) {
-    this.basePrice = basePrice;
+  public void setGuestRatings(CatalogsHotelGuestRatings guestRatings) {
+    this.guestRatings = guestRatings;
+  }
+
+  /**
+   * Latitude of the hotel.
+   **/
+  public CatalogsUpdatableHotelAttributes latitude(BigDecimal latitude) {
+    this.latitude = latitude;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Latitude of the hotel.")
+  @JsonProperty("latitude")
+  public BigDecimal getLatitude() {
+    return latitude;
+  }
+  public void setLatitude(BigDecimal latitude) {
+    this.latitude = latitude;
+  }
+
+  /**
+   * Link to the product page
+   **/
+  public CatalogsUpdatableHotelAttributes link(String link) {
+    this.link = link;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Link to the product page")
+  @JsonProperty("link")
+  public String getLink() {
+    return link;
+  }
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+  /**
+   * Longitude of the hotel.
+   **/
+  public CatalogsUpdatableHotelAttributes longitude(BigDecimal longitude) {
+    this.longitude = longitude;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Longitude of the hotel.")
+  @JsonProperty("longitude")
+  public BigDecimal getLongitude() {
+    return longitude;
+  }
+  public void setLongitude(BigDecimal longitude) {
+    this.longitude = longitude;
+  }
+
+  /**
+   * The hotel's name.
+   **/
+  public CatalogsUpdatableHotelAttributes name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The hotel's name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * A list of neighborhoods where the hotel is located
+   **/
+  public CatalogsUpdatableHotelAttributes neighborhood(List<String> neighborhood) {
+    this.neighborhood = neighborhood;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
+  @JsonProperty("neighborhood")
+  public List<String> getNeighborhood() {
+    return neighborhood;
+  }
+  public void setNeighborhood(List<String> neighborhood) {
+    this.neighborhood = neighborhood;
   }
 
   /**
@@ -357,23 +374,6 @@ public class CatalogsUpdatableHotelAttributes   {
     this.salePrice = salePrice;
   }
 
-  /**
-   **/
-  public CatalogsUpdatableHotelAttributes guestRatings(CatalogsHotelGuestRatings guestRatings) {
-    this.guestRatings = guestRatings;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("guest_ratings")
-  public CatalogsHotelGuestRatings getGuestRatings() {
-    return guestRatings;
-  }
-  public void setGuestRatings(CatalogsHotelGuestRatings guestRatings) {
-    this.guestRatings = guestRatings;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -384,28 +384,28 @@ public class CatalogsUpdatableHotelAttributes   {
       return false;
     }
     CatalogsUpdatableHotelAttributes catalogsUpdatableHotelAttributes = (CatalogsUpdatableHotelAttributes) o;
-    return Objects.equals(name, catalogsUpdatableHotelAttributes.name) &&
-        Objects.equals(link, catalogsUpdatableHotelAttributes.link) &&
-        Objects.equals(description, catalogsUpdatableHotelAttributes.description) &&
+    return Objects.equals(address, catalogsUpdatableHotelAttributes.address) &&
+        Objects.equals(basePrice, catalogsUpdatableHotelAttributes.basePrice) &&
         Objects.equals(brand, catalogsUpdatableHotelAttributes.brand) &&
-        Objects.equals(latitude, catalogsUpdatableHotelAttributes.latitude) &&
-        Objects.equals(longitude, catalogsUpdatableHotelAttributes.longitude) &&
-        Objects.equals(neighborhood, catalogsUpdatableHotelAttributes.neighborhood) &&
-        Objects.equals(address, catalogsUpdatableHotelAttributes.address) &&
+        Objects.equals(category, catalogsUpdatableHotelAttributes.category) &&
         Objects.equals(customLabel0, catalogsUpdatableHotelAttributes.customLabel0) &&
         Objects.equals(customLabel1, catalogsUpdatableHotelAttributes.customLabel1) &&
         Objects.equals(customLabel2, catalogsUpdatableHotelAttributes.customLabel2) &&
         Objects.equals(customLabel3, catalogsUpdatableHotelAttributes.customLabel3) &&
         Objects.equals(customLabel4, catalogsUpdatableHotelAttributes.customLabel4) &&
-        Objects.equals(category, catalogsUpdatableHotelAttributes.category) &&
-        Objects.equals(basePrice, catalogsUpdatableHotelAttributes.basePrice) &&
-        Objects.equals(salePrice, catalogsUpdatableHotelAttributes.salePrice) &&
-        Objects.equals(guestRatings, catalogsUpdatableHotelAttributes.guestRatings);
+        Objects.equals(description, catalogsUpdatableHotelAttributes.description) &&
+        Objects.equals(guestRatings, catalogsUpdatableHotelAttributes.guestRatings) &&
+        Objects.equals(latitude, catalogsUpdatableHotelAttributes.latitude) &&
+        Objects.equals(link, catalogsUpdatableHotelAttributes.link) &&
+        Objects.equals(longitude, catalogsUpdatableHotelAttributes.longitude) &&
+        Objects.equals(name, catalogsUpdatableHotelAttributes.name) &&
+        Objects.equals(neighborhood, catalogsUpdatableHotelAttributes.neighborhood) &&
+        Objects.equals(salePrice, catalogsUpdatableHotelAttributes.salePrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, link, description, brand, latitude, longitude, neighborhood, address, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, category, basePrice, salePrice, guestRatings);
+    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice);
   }
 
   @Override
@@ -413,23 +413,23 @@ public class CatalogsUpdatableHotelAttributes   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdatableHotelAttributes {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
-    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
-    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
-    sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    basePrice: ").append(toIndentedString(basePrice)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    customLabel0: ").append(toIndentedString(customLabel0)).append("\n");
     sb.append("    customLabel1: ").append(toIndentedString(customLabel1)).append("\n");
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
-    sb.append("    category: ").append(toIndentedString(category)).append("\n");
-    sb.append("    basePrice: ").append(toIndentedString(basePrice)).append("\n");
-    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    guestRatings: ").append(toIndentedString(guestRatings)).append("\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
+    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Inclusion** | **Boolean** |  | [optional] [default to $true]
-**Values** | **Decimal** |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Values** | **Decimal** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsProductGroupPricingCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupPricingCriteria  -Inclusion null `
- -Values null `
- -Negated null
+ -Negated null `
+ -Values null
 ```
 
 - Convert the resource to JSON

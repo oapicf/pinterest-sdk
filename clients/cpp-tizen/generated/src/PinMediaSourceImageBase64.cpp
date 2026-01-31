@@ -23,20 +23,15 @@ PinMediaSourceImageBase64::~PinMediaSourceImageBase64()
 void
 PinMediaSourceImageBase64::__init()
 {
-	//source_type = std::string();
-	//content_type = std::string();
+	//content_type = new ContentType();
 	//data = std::string();
 	//is_standard = bool(false);
+	//source_type = std::string();
 }
 
 void
 PinMediaSourceImageBase64::__cleanup()
 {
-	//if(source_type != NULL) {
-	//
-	//delete source_type;
-	//source_type = NULL;
-	//}
 	//if(content_type != NULL) {
 	//
 	//delete content_type;
@@ -52,6 +47,11 @@ PinMediaSourceImageBase64::__cleanup()
 	//delete is_standard;
 	//is_standard = NULL;
 	//}
+	//if(source_type != NULL) {
+	//
+	//delete source_type;
+	//source_type = NULL;
+	//}
 	//
 }
 
@@ -60,25 +60,17 @@ PinMediaSourceImageBase64::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *source_typeKey = "source_type";
-	node = json_object_get_member(pJsonObject, source_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&source_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *content_typeKey = "content_type";
 	node = json_object_get_member(pJsonObject, content_typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&content_type, node, "std::string", "");
+		if (isprimitive("ContentType")) {
+			jsonToValue(&content_type, node, "ContentType", "ContentType");
 		} else {
+			
+			ContentType* obj = static_cast<ContentType*> (&content_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -104,6 +96,17 @@ PinMediaSourceImageBase64::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *source_typeKey = "source_type";
+	node = json_object_get_member(pJsonObject, source_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&source_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 PinMediaSourceImageBase64::PinMediaSourceImageBase64(char* json)
@@ -116,20 +119,16 @@ PinMediaSourceImageBase64::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getSourceType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("ContentType")) {
+		ContentType obj = getContentType();
+		node = converttoJson(&obj, "ContentType", "");
 	}
 	else {
 		
-	}
-	const gchar *source_typeKey = "source_type";
-	json_object_set_member(pJsonObject, source_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getContentType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
+		ContentType obj = static_cast<ContentType> (getContentType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *content_typeKey = "content_type";
@@ -152,6 +151,15 @@ PinMediaSourceImageBase64::toJson()
 	}
 	const gchar *is_standardKey = "is_standard";
 	json_object_set_member(pJsonObject, is_standardKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getSourceType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *source_typeKey = "source_type";
+	json_object_set_member(pJsonObject, source_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -160,26 +168,14 @@ PinMediaSourceImageBase64::toJson()
 	return ret;
 }
 
-std::string
-PinMediaSourceImageBase64::getSourceType()
-{
-	return source_type;
-}
-
-void
-PinMediaSourceImageBase64::setSourceType(std::string  source_type)
-{
-	this->source_type = source_type;
-}
-
-std::string
+ContentType
 PinMediaSourceImageBase64::getContentType()
 {
 	return content_type;
 }
 
 void
-PinMediaSourceImageBase64::setContentType(std::string  content_type)
+PinMediaSourceImageBase64::setContentType(ContentType  content_type)
 {
 	this->content_type = content_type;
 }
@@ -206,6 +202,18 @@ void
 PinMediaSourceImageBase64::setIsStandard(bool  is_standard)
 {
 	this->is_standard = is_standard;
+}
+
+std::string
+PinMediaSourceImageBase64::getSourceType()
+{
+	return source_type;
+}
+
+void
+PinMediaSourceImageBase64::setSourceType(std::string  source_type)
+{
+	this->source_type = source_type;
 }
 
 

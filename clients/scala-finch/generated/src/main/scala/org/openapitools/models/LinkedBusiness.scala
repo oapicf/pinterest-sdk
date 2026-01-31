@@ -8,17 +8,17 @@ import org.openapitools._
 
 /**
  * 
- * @param username Username
- * @param imageUnderscoresmallUnderscoreurl image_small_url
- * @param imageUnderscoremediumUnderscoreurl image_medium_url
  * @param imageUnderscorelargeUnderscoreurl image_large_url
+ * @param imageUnderscoremediumUnderscoreurl image_medium_url
+ * @param imageUnderscoresmallUnderscoreurl image_small_url
  * @param imageUnderscorexlargeUnderscoreurl image_xlarge_url
+ * @param username Username
  */
-case class LinkedBusiness(username: Option[String],
-                imageUnderscoresmallUnderscoreurl: Option[String],
+case class LinkedBusiness(imageUnderscorelargeUnderscoreurl: Option[String],
                 imageUnderscoremediumUnderscoreurl: Option[String],
-                imageUnderscorelargeUnderscoreurl: Option[String],
-                imageUnderscorexlargeUnderscoreurl: Option[String]
+                imageUnderscoresmallUnderscoreurl: Option[String],
+                imageUnderscorexlargeUnderscoreurl: Option[String],
+                username: Option[String]
                 )
 
 object LinkedBusiness {

@@ -9,7 +9,7 @@ test_that("SearchPartnerPins", {
   # tests for SearchPartnerPins
   # base path: https://api.pinterest.com/v5
   # Search pins by a given search term
-  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
   # @param term character Search term to look up pins.
   # @param country_code character Two letter country code (ISO 3166-1 alpha-2)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
@@ -44,7 +44,7 @@ test_that("SearchUserPinsList", {
   # @param query character Search query. Can contain pin description keywords or comma-separated pin IDs.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @return [PinsList200Response]
+  # @return [SearchUserPinsList200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

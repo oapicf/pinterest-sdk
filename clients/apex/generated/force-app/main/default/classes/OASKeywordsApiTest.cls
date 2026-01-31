@@ -41,6 +41,23 @@ private class OASKeywordsApiTest {
         expectedResponse = OASKeywordsMetricsArrayResponse.getExample();
         response = (OASKeywordsMetricsArrayResponse) api.countryKeywordsMetricsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASKeywordsApi(client);
+
+        js = JSON.serialize(OASKeywordsMetricsArrayResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASKeywordsMetricsArrayResponse.getExample();
+        response = (OASKeywordsMetricsArrayResponse) api.countryKeywordsMetricsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASKeywordsMetricsArrayResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASKeywordsMetricsArrayResponse.getExample();
+        response = (OASKeywordsMetricsArrayResponse) api.countryKeywordsMetricsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -101,6 +118,7 @@ private class OASKeywordsApiTest {
             'adAccountId' => 'null',
             'campaignId' => 'null',
             'adGroupId' => 123123123,
+            'adGroupIds' => new List<String>{''},
             'matchTypes' => new List<OASMatchType>{OASMatchType.getExample()},
             'pageSize' => '',
             'bookmark' => 'null'
@@ -112,6 +130,23 @@ private class OASKeywordsApiTest {
         OASKeywordsGet200Response expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASKeywordsApi(client);
+
+        js = JSON.serialize(OASKeywordsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASKeywordsGet200Response.getExample();
+        response = (OASKeywordsGet200Response) api.keywordsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASKeywordsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASKeywordsGet200Response.getExample();
+        response = (OASKeywordsGet200Response) api.keywordsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASKeywordsApi(client);
 
@@ -193,7 +228,9 @@ private class OASKeywordsApiTest {
             'ages' => ["35-44","50-54"],
             'includeKeywords' => ["recipes","dessert"],
             'normalizeAgainstGroup' => true,
-            'r_limit' => 25
+            'r_limit' => 25,
+            'includePrediction' => true,
+            'includeDemographics' => true
         };
 
         OASClient client;

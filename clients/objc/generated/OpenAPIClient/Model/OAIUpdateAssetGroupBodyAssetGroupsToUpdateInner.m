@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"assetGroupId": @"asset_group_id", @"name": @"name", @"_description": @"description", @"assetGroupTypes": @"asset_group_types", @"assetsToAdd": @"assets_to_add", @"assetsToRemove": @"assets_to_remove" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"assetGroupId": @"asset_group_id", @"assetGroupTypes": @"asset_group_types", @"assetsToAdd": @"assets_to_add", @"assetsToRemove": @"assets_to_remove", @"_description": @"description", @"name": @"name" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"_description", @"assetGroupTypes", @"assetsToAdd", @"assetsToRemove"];
+  NSArray *optionalProperties = @[@"assetGroupTypes", @"assetsToAdd", @"assetsToRemove", @"_description", @"name"];
   return [optionalProperties containsObject:propertyName];
 }
 

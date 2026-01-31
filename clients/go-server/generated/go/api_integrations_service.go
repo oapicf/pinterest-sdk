@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -110,8 +110,8 @@ func (s *IntegrationsAPIService) IntegrationsLogsPost(ctx context.Context, integ
 	// TODO: Uncomment the next line to return response Response(200, IntegrationLogsSuccessResponse{}) or use other options such as http.Ok ...
 	// return Response(200, IntegrationLogsSuccessResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, DetailedError{}) or use other options such as http.Ok ...
-	// return Response(400, DetailedError{}), nil
+	// TODO: Uncomment the next line to return response Response(400, IntegrationsLogsPost400Response{}) or use other options such as http.Ok ...
+	// return Response(400, IntegrationsLogsPost400Response{}), nil
 
 	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
 	// return Response(0, Error{}), nil

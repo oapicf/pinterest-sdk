@@ -13,26 +13,19 @@ test_that("categories", {
   #expect_equal(model.instance$`categories`, "EXPECTED_RESULT")
 })
 
-test_that("demographics", {
-  # tests for the property `demographics` (AudienceDemographics)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`demographics`, "EXPECTED_RESULT")
-})
-
-test_that("type", {
-  # tests for the property `type` (AudienceInsightType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
-})
-
 test_that("date", {
   # tests for the property `date` (character)
   # Generation date
 
   # uncomment below to test the property
   #expect_equal(model.instance$`date`, "EXPECTED_RESULT")
+})
+
+test_that("demographics", {
+  # tests for the property `demographics` (AudienceDemographics)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`demographics`, "EXPECTED_RESULT")
 })
 
 test_that("size", {
@@ -49,4 +42,11 @@ test_that("size_is_upper_bound", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`size_is_upper_bound`, "EXPECTED_RESULT")
+})
+
+test_that("type", {
+  # tests for the property `type` (AudienceInsightType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

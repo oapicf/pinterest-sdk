@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;MediaUploadDetails&gt;**](MediaUploadDetails.md) | Media | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;Media&gt;**](Media.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { MediaList200Response } from './api';
 
 const instance: MediaList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

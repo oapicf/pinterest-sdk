@@ -10,8 +10,8 @@ The class is defined in **[BulkUpsertStatusResponse.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | `BulkUpsertStatus` |  |  [optional property]
 **resultUrl** | `String` |  |  [optional property]
+**status** | `BulkUpsertStatus` |  |  [optional property]
 
 
 

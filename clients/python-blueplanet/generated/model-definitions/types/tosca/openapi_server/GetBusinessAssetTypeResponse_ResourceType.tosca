@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GetBusinessAssetTypeResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GetBusinessAssetTypeResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  GetBusinessAssetTypeResponse {
+    title = GetBusinessAssetTypeResponse
+    description = GetBusinessAssetTypeResponse
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  GetBusinessAssetTypeResponse {
+    title = GetBusinessAssetTypeResponse
+    description = GetBusinessAssetTypeResponse
+    implements = openapi_server.resourceTypes.GetBusinessAssetTypeResponse
+
+  }
+}

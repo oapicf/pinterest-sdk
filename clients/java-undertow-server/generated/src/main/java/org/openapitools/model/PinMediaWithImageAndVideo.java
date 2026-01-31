@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -13,12 +13,12 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaMetadata;
 
 
@@ -28,10 +28,29 @@ import org.openapitools.model.PinMediaMetadata;
  */
 
 @ApiModel(description = "Pin with a mix of images and videos.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class PinMediaWithImageAndVideo extends PinMedia  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class PinMediaWithImageAndVideo   {
   
   private List<PinMediaMetadata> items = new ArrayList<>();
+
+
+  public enum MediaTypeEnum {
+    MULTIPLE_MIXED("multiple_mixed");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private MediaTypeEnum mediaType;
 
   /**
    */
@@ -50,6 +69,23 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
     this.items = items;
   }
 
+  /**
+   */
+  public PinMediaWithImageAndVideo mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("media_type")
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -60,20 +96,22 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
       return false;
     }
     PinMediaWithImageAndVideo pinMediaWithImageAndVideo = (PinMediaWithImageAndVideo) o;
-    return Objects.equals(items, pinMediaWithImageAndVideo.items);
+    return Objects.equals(items, pinMediaWithImageAndVideo.items) &&
+        Objects.equals(mediaType, pinMediaWithImageAndVideo.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(items, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImageAndVideo {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

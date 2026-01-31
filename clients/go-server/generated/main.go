@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -63,14 +63,35 @@ func main() {
 	CampaignsAPIService := openapi.NewCampaignsAPIService()
 	CampaignsAPIController := openapi.NewCampaignsAPIController(CampaignsAPIService)
 
+	CatalogFeedsAPIService := openapi.NewCatalogFeedsAPIService()
+	CatalogFeedsAPIController := openapi.NewCatalogFeedsAPIController(CatalogFeedsAPIService)
+
+	CatalogItemsAPIService := openapi.NewCatalogItemsAPIService()
+	CatalogItemsAPIController := openapi.NewCatalogItemsAPIController(CatalogItemsAPIService)
+
+	CatalogProductGroupsAPIService := openapi.NewCatalogProductGroupsAPIService()
+	CatalogProductGroupsAPIController := openapi.NewCatalogProductGroupsAPIController(CatalogProductGroupsAPIService)
+
+	CatalogReportsAPIService := openapi.NewCatalogReportsAPIService()
+	CatalogReportsAPIController := openapi.NewCatalogReportsAPIController(CatalogReportsAPIService)
+
 	CatalogsAPIService := openapi.NewCatalogsAPIService()
 	CatalogsAPIController := openapi.NewCatalogsAPIController(CatalogsAPIService)
+
+	ConversionEqsAPIService := openapi.NewConversionEqsAPIService()
+	ConversionEqsAPIController := openapi.NewConversionEqsAPIController(ConversionEqsAPIService)
 
 	ConversionEventsAPIService := openapi.NewConversionEventsAPIService()
 	ConversionEventsAPIController := openapi.NewConversionEventsAPIController(ConversionEventsAPIService)
 
 	ConversionTagsAPIService := openapi.NewConversionTagsAPIService()
 	ConversionTagsAPIController := openapi.NewConversionTagsAPIController(ConversionTagsAPIService)
+
+	ConversionsAPIService := openapi.NewConversionsAPIService()
+	ConversionsAPIController := openapi.NewConversionsAPIController(ConversionsAPIService)
+
+	CustomerListUploadsAPIService := openapi.NewCustomerListUploadsAPIService()
+	CustomerListUploadsAPIController := openapi.NewCustomerListUploadsAPIController(CustomerListUploadsAPIService)
 
 	CustomerListsAPIService := openapi.NewCustomerListsAPIService()
 	CustomerListsAPIController := openapi.NewCustomerListsAPIController(CustomerListsAPIService)
@@ -80,6 +101,9 @@ func main() {
 
 	KeywordsAPIService := openapi.NewKeywordsAPIService()
 	KeywordsAPIController := openapi.NewKeywordsAPIController(KeywordsAPIService)
+
+	LabelsAPIService := openapi.NewLabelsAPIService()
+	LabelsAPIController := openapi.NewLabelsAPIController(LabelsAPIService)
 
 	LeadAdsAPIService := openapi.NewLeadAdsAPIService()
 	LeadAdsAPIController := openapi.NewLeadAdsAPIController(LeadAdsAPIService)
@@ -93,6 +117,12 @@ func main() {
 	MediaAPIService := openapi.NewMediaAPIService()
 	MediaAPIController := openapi.NewMediaAPIController(MediaAPIService)
 
+	MsotEventsAPIService := openapi.NewMsotEventsAPIService()
+	MsotEventsAPIController := openapi.NewMsotEventsAPIController(MsotEventsAPIService)
+
+	NotificationAPIService := openapi.NewNotificationAPIService()
+	NotificationAPIController := openapi.NewNotificationAPIController(NotificationAPIService)
+
 	OauthAPIService := openapi.NewOauthAPIService()
 	OauthAPIController := openapi.NewOauthAPIController(OauthAPIService)
 
@@ -102,8 +132,14 @@ func main() {
 	PinsAPIService := openapi.NewPinsAPIService()
 	PinsAPIController := openapi.NewPinsAPIController(PinsAPIService)
 
+	ProductCategoriesAPIService := openapi.NewProductCategoriesAPIService()
+	ProductCategoriesAPIController := openapi.NewProductCategoriesAPIController(ProductCategoriesAPIService)
+
 	ProductGroupPromotionsAPIService := openapi.NewProductGroupPromotionsAPIService()
 	ProductGroupPromotionsAPIController := openapi.NewProductGroupPromotionsAPIController(ProductGroupPromotionsAPIService)
+
+	PromotionsAPIService := openapi.NewPromotionsAPIService()
+	PromotionsAPIController := openapi.NewPromotionsAPIController(PromotionsAPIService)
 
 	ResourcesAPIService := openapi.NewResourcesAPIService()
 	ResourcesAPIController := openapi.NewResourcesAPIController(ResourcesAPIService)
@@ -123,7 +159,7 @@ func main() {
 	UserAccountAPIService := openapi.NewUserAccountAPIService()
 	UserAccountAPIController := openapi.NewUserAccountAPIController(UserAccountAPIService)
 
-	router := openapi.NewRouter(AdAccountsAPIController, AdGroupsAPIController, AdsAPIController, AdvancedAuctionAPIController, AudienceInsightsAPIController, AudienceSharingAPIController, AudiencesAPIController, BillingAPIController, BoardsAPIController, BulkAPIController, BusinessAccessAssetsAPIController, BusinessAccessInviteAPIController, BusinessAccessRelationshipsAPIController, CampaignsAPIController, CatalogsAPIController, ConversionEventsAPIController, ConversionTagsAPIController, CustomerListsAPIController, IntegrationsAPIController, KeywordsAPIController, LeadAdsAPIController, LeadFormsAPIController, LeadsExportAPIController, MediaAPIController, OauthAPIController, OrderLinesAPIController, PinsAPIController, ProductGroupPromotionsAPIController, ResourcesAPIController, SearchAPIController, TargetingTemplateAPIController, TermsAPIController, TermsOfServiceAPIController, UserAccountAPIController)
+	router := openapi.NewRouter(AdAccountsAPIController, AdGroupsAPIController, AdsAPIController, AdvancedAuctionAPIController, AudienceInsightsAPIController, AudienceSharingAPIController, AudiencesAPIController, BillingAPIController, BoardsAPIController, BulkAPIController, BusinessAccessAssetsAPIController, BusinessAccessInviteAPIController, BusinessAccessRelationshipsAPIController, CampaignsAPIController, CatalogFeedsAPIController, CatalogItemsAPIController, CatalogProductGroupsAPIController, CatalogReportsAPIController, CatalogsAPIController, ConversionEqsAPIController, ConversionEventsAPIController, ConversionTagsAPIController, ConversionsAPIController, CustomerListUploadsAPIController, CustomerListsAPIController, IntegrationsAPIController, KeywordsAPIController, LabelsAPIController, LeadAdsAPIController, LeadFormsAPIController, LeadsExportAPIController, MediaAPIController, MsotEventsAPIController, NotificationAPIController, OauthAPIController, OrderLinesAPIController, PinsAPIController, ProductCategoriesAPIController, ProductGroupPromotionsAPIController, PromotionsAPIController, ResourcesAPIController, SearchAPIController, TargetingTemplateAPIController, TermsAPIController, TermsOfServiceAPIController, UserAccountAPIController)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

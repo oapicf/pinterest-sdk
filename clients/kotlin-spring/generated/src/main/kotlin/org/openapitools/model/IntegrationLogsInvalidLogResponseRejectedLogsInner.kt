@@ -16,8 +16,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param &#x60;field&#x60; The field name containing an invalid value.
- * @param &#x60;value&#x60; The value that is invalid.
  * @param reason The reason the value is invalid.
+ * @param &#x60;value&#x60; The value that is invalid.
  * @param logIndex Index of the log in the batch.
  */
 data class IntegrationLogsInvalidLogResponseRejectedLogsInner(
@@ -25,11 +25,11 @@ data class IntegrationLogsInvalidLogResponseRejectedLogsInner(
     @Schema(example = "null", required = true, description = "The field name containing an invalid value.")
     @get:JsonProperty("field", required = true) val `field`: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "The value that is invalid.")
-    @get:JsonProperty("value", required = true) val `value`: kotlin.String,
-
     @Schema(example = "null", required = true, description = "The reason the value is invalid.")
     @get:JsonProperty("reason", required = true) val reason: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "The value that is invalid.")
+    @get:JsonProperty("value", required = true) val `value`: kotlin.String,
 
     @Schema(example = "null", description = "Index of the log in the batch.")
     @get:JsonProperty("log_index") val logIndex: kotlin.Int? = null

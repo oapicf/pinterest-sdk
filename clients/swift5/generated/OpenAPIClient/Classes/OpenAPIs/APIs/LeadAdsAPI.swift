@@ -35,7 +35,7 @@ open class LeadAdsAPI {
     /**
      Delete lead ads subscription
      - DELETE /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
-     - Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -68,7 +68,7 @@ open class LeadAdsAPI {
     }
 
     /**
-     Get lead ads subscription
+     Get lead ads subscription by ID
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter subscriptionId: (path) Unique identifier of a subscription. 
@@ -76,7 +76,7 @@ open class LeadAdsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AdAccountGetSubscriptionResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LeadSubscription?, _ error: Error?) -> Void)) -> RequestTask {
         return adAccountsSubscriptionsGetByIdWithRequestBuilder(adAccountId: adAccountId, subscriptionId: subscriptionId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -88,17 +88,20 @@ open class LeadAdsAPI {
     }
 
     /**
-     Get lead ads subscription
+     Get lead ads subscription by ID
      - GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
-     - Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter subscriptionId: (path) Unique identifier of a subscription. 
-     - returns: RequestBuilder<AdAccountGetSubscriptionResponse> 
+     - returns: RequestBuilder<LeadSubscription> 
      */
-    open class func adAccountsSubscriptionsGetByIdWithRequestBuilder(adAccountId: String, subscriptionId: String) -> RequestBuilder<AdAccountGetSubscriptionResponse> {
+    open class func adAccountsSubscriptionsGetByIdWithRequestBuilder(adAccountId: String, subscriptionId: String) -> RequestBuilder<LeadSubscription> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -117,7 +120,7 @@ open class LeadAdsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AdAccountGetSubscriptionResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<LeadSubscription>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -126,14 +129,14 @@ open class LeadAdsAPI {
      Get lead ads subscriptions
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func adAccountsSubscriptionsGetList(adAccountId: String, pageSize: Int? = nil, bookmark: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AdAccountsSubscriptionsGetList200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return adAccountsSubscriptionsGetListWithRequestBuilder(adAccountId: adAccountId, pageSize: pageSize, bookmark: bookmark).execute(apiResponseQueue) { result in
+    open class func adAccountsSubscriptionsGetList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AdAccountsSubscriptionsGetList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return adAccountsSubscriptionsGetListWithRequestBuilder(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -146,16 +149,16 @@ open class LeadAdsAPI {
     /**
      Get lead ads subscriptions
      - GET /ad_accounts/{ad_account_id}/leads/subscriptions
-     - Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - returns: RequestBuilder<AdAccountsSubscriptionsGetList200Response> 
      */
-    open class func adAccountsSubscriptionsGetListWithRequestBuilder(adAccountId: String, pageSize: Int? = nil, bookmark: String? = nil) -> RequestBuilder<AdAccountsSubscriptionsGetList200Response> {
+    open class func adAccountsSubscriptionsGetListWithRequestBuilder(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<AdAccountsSubscriptionsGetList200Response> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/leads/subscriptions"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -165,8 +168,8 @@ open class LeadAdsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
+            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -184,13 +187,13 @@ open class LeadAdsAPI {
      Create lead ads subscription
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter adAccountCreateSubscriptionRequest: (body) Subscription to create. 
+     - parameter leadSubscriptionPostParamsCreate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func adAccountsSubscriptionsPost(adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AdAccountCreateSubscriptionResponse?, _ error: Error?) -> Void)) -> RequestTask {
-        return adAccountsSubscriptionsPostWithRequestBuilder(adAccountId: adAccountId, adAccountCreateSubscriptionRequest: adAccountCreateSubscriptionRequest).execute(apiResponseQueue) { result in
+    open class func adAccountsSubscriptionsPost(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LeadSubscription?, _ error: Error?) -> Void)) -> RequestTask {
+        return adAccountsSubscriptionsPostWithRequestBuilder(adAccountId: adAccountId, leadSubscriptionPostParamsCreate: leadSubscriptionPostParamsCreate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -203,21 +206,21 @@ open class LeadAdsAPI {
     /**
      Create lead ads subscription
      - POST /ad_accounts/{ad_account_id}/leads/subscriptions
-     - Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter adAccountCreateSubscriptionRequest: (body) Subscription to create. 
-     - returns: RequestBuilder<AdAccountCreateSubscriptionResponse> 
+     - parameter leadSubscriptionPostParamsCreate: (body)  
+     - returns: RequestBuilder<LeadSubscription> 
      */
-    open class func adAccountsSubscriptionsPostWithRequestBuilder(adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest) -> RequestBuilder<AdAccountCreateSubscriptionResponse> {
+    open class func adAccountsSubscriptionsPostWithRequestBuilder(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate) -> RequestBuilder<LeadSubscription> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/leads/subscriptions"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: adAccountCreateSubscriptionRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: leadSubscriptionPostParamsCreate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -227,7 +230,7 @@ open class LeadAdsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AdAccountCreateSubscriptionResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<LeadSubscription>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

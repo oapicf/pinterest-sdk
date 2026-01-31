@@ -23,7 +23,7 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "AdvancedAuction", description = "the AdvancedAuction API")
 public interface AdvancedAuctionApi {
 
@@ -55,6 +55,7 @@ public interface AdvancedAuctionApi {
          }, tags={ "advanced_auction", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Response containing the results of the item bid options operations", response = AdvancedAuctionProcessedItems.class),
+        @ApiResponse(code = 206, message = "Response containing the results of the item bid options operations (where some/all operation results have errors)", response = AdvancedAuctionProcessedItems.class),
         @ApiResponse(code = 400, message = "Invalid request parameters.", response = Error.class),
         @ApiResponse(code = 401, message = "Not authenticated to post item bid options", response = Error.class),
         @ApiResponse(code = 403, message = "Not authorized to post item bid options", response = Error.class),

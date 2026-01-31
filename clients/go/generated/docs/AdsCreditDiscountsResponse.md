@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | Pointer to **bool** | True if the offer code is currently active. | [optional] 
 **AdvertiserId** | Pointer to **string** | Advertiser ID the offer was applied to. | [optional] 
-**DiscountType** | Pointer to **NullableString** | The type of discount of this credit | [optional] 
-**DiscountInMicroCurrency** | Pointer to **NullableFloat32** | The discount applied in the offer’s currency value. | [optional] 
 **DiscountCurrency** | Pointer to **NullableString** | Currency value for the discount. | [optional] 
-**Title** | Pointer to **NullableString** | Human readable title of the offer code. | [optional] 
+**DiscountInMicroCurrency** | Pointer to **NullableFloat32** | The discount applied in the offer’s currency value. | [optional] 
+**DiscountType** | Pointer to **NullableString** | The type of discount of this credit | [optional] 
 **RemainingDiscountInMicroCurrency** | Pointer to **NullableFloat32** | The credits left to spend. | [optional] 
+**Title** | Pointer to **NullableString** | Human readable title of the offer code. | [optional] 
 
 ## Methods
 
@@ -81,76 +81,6 @@ SetAdvertiserId sets AdvertiserId field to given value.
 
 HasAdvertiserId returns a boolean if a field has been set.
 
-### GetDiscountType
-
-`func (o *AdsCreditDiscountsResponse) GetDiscountType() string`
-
-GetDiscountType returns the DiscountType field if non-nil, zero value otherwise.
-
-### GetDiscountTypeOk
-
-`func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*string, bool)`
-
-GetDiscountTypeOk returns a tuple with the DiscountType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDiscountType
-
-`func (o *AdsCreditDiscountsResponse) SetDiscountType(v string)`
-
-SetDiscountType sets DiscountType field to given value.
-
-### HasDiscountType
-
-`func (o *AdsCreditDiscountsResponse) HasDiscountType() bool`
-
-HasDiscountType returns a boolean if a field has been set.
-
-### SetDiscountTypeNil
-
-`func (o *AdsCreditDiscountsResponse) SetDiscountTypeNil(b bool)`
-
- SetDiscountTypeNil sets the value for DiscountType to be an explicit nil
-
-### UnsetDiscountType
-`func (o *AdsCreditDiscountsResponse) UnsetDiscountType()`
-
-UnsetDiscountType ensures that no value is present for DiscountType, not even an explicit nil
-### GetDiscountInMicroCurrency
-
-`func (o *AdsCreditDiscountsResponse) GetDiscountInMicroCurrency() float32`
-
-GetDiscountInMicroCurrency returns the DiscountInMicroCurrency field if non-nil, zero value otherwise.
-
-### GetDiscountInMicroCurrencyOk
-
-`func (o *AdsCreditDiscountsResponse) GetDiscountInMicroCurrencyOk() (*float32, bool)`
-
-GetDiscountInMicroCurrencyOk returns a tuple with the DiscountInMicroCurrency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDiscountInMicroCurrency
-
-`func (o *AdsCreditDiscountsResponse) SetDiscountInMicroCurrency(v float32)`
-
-SetDiscountInMicroCurrency sets DiscountInMicroCurrency field to given value.
-
-### HasDiscountInMicroCurrency
-
-`func (o *AdsCreditDiscountsResponse) HasDiscountInMicroCurrency() bool`
-
-HasDiscountInMicroCurrency returns a boolean if a field has been set.
-
-### SetDiscountInMicroCurrencyNil
-
-`func (o *AdsCreditDiscountsResponse) SetDiscountInMicroCurrencyNil(b bool)`
-
- SetDiscountInMicroCurrencyNil sets the value for DiscountInMicroCurrency to be an explicit nil
-
-### UnsetDiscountInMicroCurrency
-`func (o *AdsCreditDiscountsResponse) UnsetDiscountInMicroCurrency()`
-
-UnsetDiscountInMicroCurrency ensures that no value is present for DiscountInMicroCurrency, not even an explicit nil
 ### GetDiscountCurrency
 
 `func (o *AdsCreditDiscountsResponse) GetDiscountCurrency() string`
@@ -186,41 +116,76 @@ HasDiscountCurrency returns a boolean if a field has been set.
 `func (o *AdsCreditDiscountsResponse) UnsetDiscountCurrency()`
 
 UnsetDiscountCurrency ensures that no value is present for DiscountCurrency, not even an explicit nil
-### GetTitle
+### GetDiscountInMicroCurrency
 
-`func (o *AdsCreditDiscountsResponse) GetTitle() string`
+`func (o *AdsCreditDiscountsResponse) GetDiscountInMicroCurrency() float32`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetDiscountInMicroCurrency returns the DiscountInMicroCurrency field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetDiscountInMicroCurrencyOk
 
-`func (o *AdsCreditDiscountsResponse) GetTitleOk() (*string, bool)`
+`func (o *AdsCreditDiscountsResponse) GetDiscountInMicroCurrencyOk() (*float32, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetDiscountInMicroCurrencyOk returns a tuple with the DiscountInMicroCurrency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetDiscountInMicroCurrency
 
-`func (o *AdsCreditDiscountsResponse) SetTitle(v string)`
+`func (o *AdsCreditDiscountsResponse) SetDiscountInMicroCurrency(v float32)`
 
-SetTitle sets Title field to given value.
+SetDiscountInMicroCurrency sets DiscountInMicroCurrency field to given value.
 
-### HasTitle
+### HasDiscountInMicroCurrency
 
-`func (o *AdsCreditDiscountsResponse) HasTitle() bool`
+`func (o *AdsCreditDiscountsResponse) HasDiscountInMicroCurrency() bool`
 
-HasTitle returns a boolean if a field has been set.
+HasDiscountInMicroCurrency returns a boolean if a field has been set.
 
-### SetTitleNil
+### SetDiscountInMicroCurrencyNil
 
-`func (o *AdsCreditDiscountsResponse) SetTitleNil(b bool)`
+`func (o *AdsCreditDiscountsResponse) SetDiscountInMicroCurrencyNil(b bool)`
 
- SetTitleNil sets the value for Title to be an explicit nil
+ SetDiscountInMicroCurrencyNil sets the value for DiscountInMicroCurrency to be an explicit nil
 
-### UnsetTitle
-`func (o *AdsCreditDiscountsResponse) UnsetTitle()`
+### UnsetDiscountInMicroCurrency
+`func (o *AdsCreditDiscountsResponse) UnsetDiscountInMicroCurrency()`
 
-UnsetTitle ensures that no value is present for Title, not even an explicit nil
+UnsetDiscountInMicroCurrency ensures that no value is present for DiscountInMicroCurrency, not even an explicit nil
+### GetDiscountType
+
+`func (o *AdsCreditDiscountsResponse) GetDiscountType() string`
+
+GetDiscountType returns the DiscountType field if non-nil, zero value otherwise.
+
+### GetDiscountTypeOk
+
+`func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*string, bool)`
+
+GetDiscountTypeOk returns a tuple with the DiscountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscountType
+
+`func (o *AdsCreditDiscountsResponse) SetDiscountType(v string)`
+
+SetDiscountType sets DiscountType field to given value.
+
+### HasDiscountType
+
+`func (o *AdsCreditDiscountsResponse) HasDiscountType() bool`
+
+HasDiscountType returns a boolean if a field has been set.
+
+### SetDiscountTypeNil
+
+`func (o *AdsCreditDiscountsResponse) SetDiscountTypeNil(b bool)`
+
+ SetDiscountTypeNil sets the value for DiscountType to be an explicit nil
+
+### UnsetDiscountType
+`func (o *AdsCreditDiscountsResponse) UnsetDiscountType()`
+
+UnsetDiscountType ensures that no value is present for DiscountType, not even an explicit nil
 ### GetRemainingDiscountInMicroCurrency
 
 `func (o *AdsCreditDiscountsResponse) GetRemainingDiscountInMicroCurrency() float32`
@@ -256,6 +221,41 @@ HasRemainingDiscountInMicroCurrency returns a boolean if a field has been set.
 `func (o *AdsCreditDiscountsResponse) UnsetRemainingDiscountInMicroCurrency()`
 
 UnsetRemainingDiscountInMicroCurrency ensures that no value is present for RemainingDiscountInMicroCurrency, not even an explicit nil
+### GetTitle
+
+`func (o *AdsCreditDiscountsResponse) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *AdsCreditDiscountsResponse) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *AdsCreditDiscountsResponse) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *AdsCreditDiscountsResponse) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
+### SetTitleNil
+
+`func (o *AdsCreditDiscountsResponse) SetTitleNil(b bool)`
+
+ SetTitleNil sets the value for Title to be an explicit nil
+
+### UnsetTitle
+`func (o *AdsCreditDiscountsResponse) UnsetTitle()`
+
+UnsetTitle ensures that no value is present for Title, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

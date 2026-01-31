@@ -12,10 +12,10 @@ module PageVisitConversionTagsGet200Response =
 
   [<CLIMutable>]
   type PageVisitConversionTagsGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : ConversionEventResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : ConversionEventResponse[];
   }
 
   //#endregion

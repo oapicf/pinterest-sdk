@@ -18,14 +18,14 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}url`,
-                label: `[${labelPrefix}url]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}size`,
                 label: `[${labelPrefix}size]`,
                 type: 'number',
+            },
+            {
+                key: `${keyPrefix}url`,
+                label: `[${labelPrefix}url]`,
+                type: 'string',
             },
         ]
     },
@@ -33,8 +33,8 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'report_status': bundle.inputData?.[`${keyPrefix}report_status`],
-            'url': bundle.inputData?.[`${keyPrefix}url`],
             'size': bundle.inputData?.[`${keyPrefix}size`],
+            'url': bundle.inputData?.[`${keyPrefix}url`],
         }
     },
 }

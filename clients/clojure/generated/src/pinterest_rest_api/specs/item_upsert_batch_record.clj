@@ -8,8 +8,8 @@
 
 (def item-upsert-batch-record-data
   {
-   (ds/opt :item_id) string?
    (ds/opt :attributes) item-attributes-request-spec
+   (ds/opt :item_id) string?
    })
 
 (def item-upsert-batch-record-spec

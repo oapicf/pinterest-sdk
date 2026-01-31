@@ -6,8 +6,8 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
+                key: `${keyPrefix}created_at`,
+                label: `[${labelPrefix}created_at]`,
                 required: true,
                 type: 'string',
             },
@@ -18,8 +18,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}created_at`,
-                label: `[${labelPrefix}created_at]`,
+                key: `${keyPrefix}id`,
+                label: `[${labelPrefix}id]`,
                 required: true,
                 type: 'string',
             },
@@ -32,9 +32,9 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'id': bundle.inputData?.[`${keyPrefix}id`],
-            'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
+            'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
+            'id': bundle.inputData?.[`${keyPrefix}id`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
         }
     },

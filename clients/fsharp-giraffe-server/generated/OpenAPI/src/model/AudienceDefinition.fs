@@ -11,7 +11,7 @@ module AudienceDefinition =
 
   type AudienceDefinition = {
     Date : string option;
-    Type : string;
     Scope : string;
+    Type : string;
   }
   //#endregion

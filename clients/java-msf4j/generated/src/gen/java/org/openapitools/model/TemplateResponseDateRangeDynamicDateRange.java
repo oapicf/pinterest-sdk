@@ -12,11 +12,8 @@ import io.swagger.annotations.ApiModelProperty;
  * The dynamic date range of the template
  */
 @ApiModel(description = "The dynamic date range of the template")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeDynamicDateRange   {
-  @JsonProperty("type")
-  private String type;
-
   /**
    * The dynamic range type
    */
@@ -27,7 +24,9 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     
     MONTH_TO_DATE("MONTH_TO_DATE"),
     
-    LAST_MONTH("LAST_MONTH");
+    LAST_MONTH("LAST_MONTH"),
+    
+    LAST_QUARTER("LAST_QUARTER");
 
     private String value;
 
@@ -55,23 +54,8 @@ public class TemplateResponseDateRangeDynamicDateRange   {
   @JsonProperty("range")
   private RangeEnum range;
 
-  public TemplateResponseDateRangeDynamicDateRange type(String type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * The date range type
-   * @return type
-  **/
-  @ApiModelProperty(example = "dynamic", value = "The date range type")
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
+  @JsonProperty("type")
+  private String type;
 
   public TemplateResponseDateRangeDynamicDateRange range(RangeEnum range) {
     this.range = range;
@@ -91,6 +75,24 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     this.range = range;
   }
 
+  public TemplateResponseDateRangeDynamicDateRange type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The date range type
+   * @return type
+  **/
+  @ApiModelProperty(example = "dynamic", value = "The date range type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -101,13 +103,13 @@ public class TemplateResponseDateRangeDynamicDateRange   {
       return false;
     }
     TemplateResponseDateRangeDynamicDateRange templateResponseDateRangeDynamicDateRange = (TemplateResponseDateRangeDynamicDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type) &&
-        Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range);
+    return Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range) &&
+        Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, range);
+    return Objects.hash(range, type);
   }
 
   @Override
@@ -115,8 +117,8 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeDynamicDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

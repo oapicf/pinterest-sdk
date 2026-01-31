@@ -74,7 +74,7 @@ private class OASCatalogsListProductsByFilterRequeTest {
         OASCatalogsListProductsByFilterReque catalogsListProductsByFilterRequest = new OASCatalogsListProductsByFilterReque();
         Map<String, String> x-property-mappings = catalogsListProductsByFilterRequest.getx-property-mappings();
         System.assertEquals('feedId', x-property-mappings.get('feed_id'));
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 }

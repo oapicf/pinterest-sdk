@@ -1,0 +1,7 @@
+package models
+
+// PinterestLibStatus204 - The resource was successfully deleted.
+type PinterestLibStatus204 struct {
+
+	StatusCode float32 `json:"statusCode"`
+}

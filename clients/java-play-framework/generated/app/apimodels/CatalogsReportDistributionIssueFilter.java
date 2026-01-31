@@ -9,9 +9,14 @@ import javax.validation.Valid;
 /**
  * CatalogsReportDistributionIssueFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsReportDistributionIssueFilter   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets reportType
    */
@@ -46,10 +51,22 @@ public class CatalogsReportDistributionIssueFilter   {
 
   private ReportTypeEnum reportType;
 
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
+  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
 
-  private String catalogId;
+   /**
+   * Unique identifier of a catalog. If not given, oldest catalog will be used
+   * @return catalogId
+  **/
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
@@ -68,23 +85,6 @@ public class CatalogsReportDistributionIssueFilter   {
     this.reportType = reportType;
   }
 
-  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of a catalog. If not given, oldest catalog will be used
-   * @return catalogId
-  **/
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -95,13 +95,13 @@ public class CatalogsReportDistributionIssueFilter   {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -110,8 +110,8 @@ public class CatalogsReportDistributionIssueFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

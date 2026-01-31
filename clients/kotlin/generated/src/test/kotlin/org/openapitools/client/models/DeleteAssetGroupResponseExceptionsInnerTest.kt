@@ -25,6 +25,12 @@ class DeleteAssetGroupResponseExceptionsInnerTest : ShouldSpec() {
         // uncomment below to create an instance of DeleteAssetGroupResponseExceptionsInner
         //val modelInstance = DeleteAssetGroupResponseExceptionsInner()
 
+        // to test the property `assetGroupId` - Asset group id of the exception.
+        should("test assetGroupId") {
+            // uncomment below to test the property
+            //modelInstance.assetGroupId shouldBe ("TODO")
+        }
+
         // to test the property `code` - Error code associated with the error deleting asset group.
         should("test code") {
             // uncomment below to test the property
@@ -35,12 +41,6 @@ class DeleteAssetGroupResponseExceptionsInnerTest : ShouldSpec() {
         should("test message") {
             // uncomment below to test the property
             //modelInstance.message shouldBe ("TODO")
-        }
-
-        // to test the property `assetGroupId` - Asset group id of the exception.
-        should("test assetGroupId") {
-            // uncomment below to test the property
-            //modelInstance.assetGroupId shouldBe ("TODO")
         }
 
     }

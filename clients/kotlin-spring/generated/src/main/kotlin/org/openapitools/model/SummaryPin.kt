@@ -16,31 +16,35 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Summarized pin information
- * @param media 
  * @param altText 
- * @param link 
- * @param title 
  * @param description 
+ * @param id 
+ * @param link 
+ * @param media 
+ * @param title 
  */
 data class SummaryPin(
-
-    @field:Valid
-    @Schema(example = "null", readOnly = true, description = "")
-    @get:JsonProperty("media") val media: PinMedia? = null,
 
     @get:Size(max=500)
     @Schema(example = "null", description = "")
     @get:JsonProperty("alt_text") val altText: kotlin.String? = null,
 
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("description") val description: kotlin.String? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("id") val id: kotlin.String? = null,
+
     @get:Size(max=2048)
     @Schema(example = "https://www.pinterest.com/", description = "")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("title") val title: kotlin.String? = null,
+    @field:Valid
+    @Schema(example = "null", readOnly = true, description = "")
+    @get:JsonProperty("media") val media: PinMedia? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("description") val description: kotlin.String? = null
+    @get:JsonProperty("title") val title: kotlin.String? = null
 ) {
 
 }

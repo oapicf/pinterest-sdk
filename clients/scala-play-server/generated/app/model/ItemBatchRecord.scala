@@ -8,10 +8,10 @@ import play.api.libs.json._
   * @param updateMask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class ItemBatchRecord(
-  itemId: Option[String],
   attributes: Option[ItemAttributesRequest],
+  itemId: Option[String],
   updateMask: Option[List[UpdateMaskFieldType]]
   additionalProperties: 
 )
@@ -19,7 +19,7 @@ case class ItemBatchRecord(
 object ItemBatchRecord {
   implicit lazy val itemBatchRecordJsonFormat: Format[ItemBatchRecord] = {
     val realJsonFormat = Json.format[ItemBatchRecord]
-    val declaredPropNames = Set("itemId", "attributes", "updateMask")
+    val declaredPropNames = Set("attributes", "itemId", "updateMask")
     
     Format(
       Reads {

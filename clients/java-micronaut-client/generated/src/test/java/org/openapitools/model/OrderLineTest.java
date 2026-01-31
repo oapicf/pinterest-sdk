@@ -27,6 +27,30 @@ public class OrderLineTest {
     }
 
     /**
+     * Test the property 'adAccountId'
+     */
+    @Test
+    public void adAccountIdTest() {
+        // TODO: test adAccountId
+    }
+
+    /**
+     * Test the property 'budget'
+     */
+    @Test
+    public void budgetTest() {
+        // TODO: test budget
+    }
+
+    /**
+     * Test the property 'endTime'
+     */
+    @Test
+    public void endTimeTest() {
+        // TODO: test endTime
+    }
+
+    /**
      * Test the property 'id'
      */
     @Test
@@ -35,19 +59,27 @@ public class OrderLineTest {
     }
 
     /**
-     * Test the property 'type'
+     * Test the property 'name'
      */
     @Test
-    public void typeTest() {
-        // TODO: test type
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'adAccountId'
+     * Test the property 'paidBudget'
      */
     @Test
-    public void adAccountIdTest() {
-        // TODO: test adAccountId
+    public void paidBudgetTest() {
+        // TODO: test paidBudget
+    }
+
+    /**
+     * Test the property 'paidType'
+     */
+    @Test
+    public void paidTypeTest() {
+        // TODO: test paidType
     }
 
     /**
@@ -67,30 +99,6 @@ public class OrderLineTest {
     }
 
     /**
-     * Test the property 'endTime'
-     */
-    @Test
-    public void endTimeTest() {
-        // TODO: test endTime
-    }
-
-    /**
-     * Test the property 'budget'
-     */
-    @Test
-    public void budgetTest() {
-        // TODO: test budget
-    }
-
-    /**
-     * Test the property 'paidBudget'
-     */
-    @Test
-    public void paidBudgetTest() {
-        // TODO: test paidBudget
-    }
-
-    /**
      * Test the property 'status'
      */
     @Test
@@ -99,19 +107,11 @@ public class OrderLineTest {
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'type'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'paidType'
-     */
-    @Test
-    public void paidTypeTest() {
-        // TODO: test paidType
+    public void typeTest() {
+        // TODO: test type
     }
 
     /**

@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import UserSummary._
 
 case class UserSummary (
-  /* Username */
-  username: Option[String],
-/* Always \"user\" */
-  `type`: Option[String])
+  /* Always \"user\" */
+  `type`: Option[String],
+/* Username */
+  username: Option[String])
 
 object UserSummary {
   import DateTimeCodecs._

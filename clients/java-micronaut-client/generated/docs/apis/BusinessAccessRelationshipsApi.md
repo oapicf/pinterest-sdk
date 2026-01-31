@@ -4,11 +4,14 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
+| [**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
 | [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
 | [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
 | [**getBusinessEmployers**](BusinessAccessRelationshipsApi.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user |
 | [**getBusinessMembers**](BusinessAccessRelationshipsApi.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members |
 | [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners |
+| [**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
 | [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role |
 
 
@@ -39,6 +42,61 @@ class MyClass {
 Note that the class needs to be annotated with one of Micronaut's [scope annotations](https://docs.micronaut.io/latest/guide/#scopes) like `Singleton` in order to be processed.
 
 More information can be found inside [Inversion of Control guide section](https://docs.micronaut.io/latest/guide/#ioc).
+
+<a id="brandAccountsCreate"></a>
+# **brandAccountsCreate**
+```java
+Mono<BrandAccountsCreate200Response> BusinessAccessRelationshipsApi.brandAccountsCreate(businessHierarchyIdbrandAccountsCreateRequest)
+```
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Parameters
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **businessHierarchyId** | `String`| business hierarchy node id | |
+| **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | |
+
+
+### Return type
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+* **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `biz_access:read`, `biz_access:write`
+
+### HTTP request headers
+ - **Content-Type**: `application/json`
+ - **Accept**: `application/json`
+
+<a id="brandAccountsUpdate"></a>
+# **brandAccountsUpdate**
+```java
+Mono<BrandAccountsCreate200Response> BusinessAccessRelationshipsApi.brandAccountsUpdate(businessHierarchyIdbrandAccountIdbrandAccountsUpdateRequest)
+```
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Parameters
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **businessHierarchyId** | `String`| business hierarchy node id | |
+| **brandAccountId** | `String`| Unique identifier of a brand account. | |
+| **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | |
+
+
+### Return type
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+* **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `biz_access:read`, `biz_access:write`
+
+### HTTP request headers
+ - **Content-Type**: `application/json`
+ - **Accept**: `application/json`
 
 <a id="deleteBusinessMembership"></a>
 # **deleteBusinessMembership**
@@ -124,7 +182,7 @@ Get all of the viewing user&#39;s business employers.
 <a id="getBusinessMembers"></a>
 # **getBusinessMembers**
 ```java
-Mono<GetBusinessMembers200Response> BusinessAccessRelationshipsApi.getBusinessMembers(businessIdassetsSummarybusinessRolesmemberIdsstartIndexbookmarkpageSize)
+Mono<GetBusinessMembers200Response> BusinessAccessRelationshipsApi.getBusinessMembers(businessIdfetchSystemUsersassetsSummarybusinessRolesmemberIdsstartIndexbookmarkpageSize)
 ```
 
 Get business members
@@ -135,6 +193,7 @@ Get all members of the specified business. The return response will include the 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `String`| Unique identifier of the requesting business. | |
+| **fetchSystemUsers** | `Boolean`| Fetches system users if True. Fetches regular user employees if False. | [optional parameter] [default to `false`] |
 | **assetsSummary** | `Boolean`| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional parameter] [default to `false`] |
 | **businessRoles** | [**List&lt;MemberBusinessRole&gt;**](MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional parameter] |
 | **memberIds** | `String`| A list of business members ids separated by comma. | [optional parameter] |
@@ -183,6 +242,33 @@ Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and
 
 ### HTTP request headers
  - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+<a id="systemUserUpdate"></a>
+# **systemUserUpdate**
+```java
+Mono<Void> BusinessAccessRelationshipsApi.systemUserUpdate(businessIdsystemUserIdsystemUserUpdateRequest)
+```
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Parameters
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **businessId** | `String`| Unique identifier of the requesting business. | |
+| **systemUserId** | `String`| Unique identifier of a system user. | |
+| **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | |
+
+
+
+
+### Authorization
+* **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `biz_access:read`, `biz_access:write`
+
+### HTTP request headers
+ - **Content-Type**: `application/json`
  - **Accept**: `application/json`
 
 <a id="updateBusinessMemberships"></a>

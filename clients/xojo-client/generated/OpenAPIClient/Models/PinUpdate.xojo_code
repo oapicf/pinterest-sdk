@@ -2,16 +2,13 @@
 Protected Class PinUpdate
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Pin's alternative text.
-		#tag EndNote
 		alt_text As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The id of the board to move the Pin onto.
+			The board to which this Pin belongs.
 		#tag EndNote
 		board_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -19,7 +16,7 @@ Protected Class PinUpdate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			<a href="https://help.pinterest.com/en/article/create-a-board-section">Board section</a> ID.
+			The board section to which this Pin belongs.
 		#tag EndNote
 		board_section_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -27,41 +24,24 @@ Protected Class PinUpdate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Pin description - 800 characters maximum.
+			Carousel Pin slots data.
 		#tag EndNote
+		carousel_slots() As OpenAPIClient.Models.CarouselSlot
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			URL viewer is taken to when they click pin.
-		#tag EndNote
 		link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The native pin title that creators explicitly prefer to display.
-		#tag EndNote
 		title As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Carousel Pin slots data.
-		#tag EndNote
-		carousel_slots() As OpenAPIClient.Models.PinUpdateCarouselSlotsInner
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Private note for this Pin. <a href="https://help.pinterest.com/en/article/add-notes-to-your-pins">Learn more</a>.
-		#tag EndNote
-		note As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -126,6 +106,14 @@ Protected Class PinUpdate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="carousel_slots"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CarouselSlot"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="description"
 			Visible=false
 			Group="Behavior"
@@ -143,22 +131,6 @@ Protected Class PinUpdate
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="title"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="carousel_slots"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="PinUpdateCarouselSlotsInner"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="note"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -5,10 +5,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 
 @Canonical
 class PinMediaSourceImagesURL {
+    
+    Integer index
+    /* Array with image objects. */
+    List<PinMediaSourceImagesURLItem> items = new ArrayList<>()
 
     enum SourceTypeEnum {
     
@@ -30,10 +34,6 @@ class PinMediaSourceImagesURL {
         }
     }
 
-    
+    /* The source type of the media. */
     SourceTypeEnum sourceType
-    /* Array with image objects. */
-    List<PinMediaSourceImagesURLItemsInner> items = new ArrayList<>()
-    
-    Integer index
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &LeadFormsList200Response{}
 
 // LeadFormsList200Response struct for LeadFormsList200Response
 type LeadFormsList200Response struct {
-	Items []LeadFormResponse `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []LeadFormResponse `json:"items"`
 }
 
 type _LeadFormsList200Response LeadFormsList200Response
@@ -44,30 +44,6 @@ func NewLeadFormsList200Response(items []LeadFormResponse) *LeadFormsList200Resp
 func NewLeadFormsList200ResponseWithDefaults() *LeadFormsList200Response {
 	this := LeadFormsList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *LeadFormsList200Response) GetItems() []LeadFormResponse {
-	if o == nil {
-		var ret []LeadFormResponse
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *LeadFormsList200Response) GetItemsOk() ([]LeadFormResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *LeadFormsList200Response) SetItems(v []LeadFormResponse) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *LeadFormsList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *LeadFormsList200Response) GetItems() []LeadFormResponse {
+	if o == nil {
+		var ret []LeadFormResponse
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *LeadFormsList200Response) GetItemsOk() ([]LeadFormResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *LeadFormsList200Response) SetItems(v []LeadFormResponse) {
+	o.Items = v
+}
+
 func (o LeadFormsList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o LeadFormsList200Response) MarshalJSON() ([]byte, error) {
 
 func (o LeadFormsList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

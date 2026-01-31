@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailFeed", description = "Catalogs Retail Feed object")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailFeed implements CatalogsFeed {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -44,27 +44,27 @@ public class CatalogsRetailFeed implements CatalogsFeed {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date updatedAt;
 
-  private JsonNullable<String> name = JsonNullable.<String>undefined();
-
-  private CatalogsFormat format;
-
   private CatalogsType catalogType;
 
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
-  private String location;
+  private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
-  private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
-
-  private CatalogsStatus status;
+  private Country defaultCountry;
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
   private String defaultLocale;
 
-  private Country defaultCountry;
+  private CatalogsFormat format;
 
-  private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
+  private String location;
+
+  private JsonNullable<String> name = JsonNullable.<String>undefined();
+
+  private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
+
+  private CatalogsStatus status;
 
   public CatalogsRetailFeed() {
     super();
@@ -73,21 +73,21 @@ public class CatalogsRetailFeed implements CatalogsFeed {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailFeed(Date createdAt, String id, Date updatedAt, String name, CatalogsFormat format, CatalogsType catalogType, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status, NullableCurrency defaultCurrency, String defaultLocale, Country defaultCountry, ProductAvailabilityType defaultAvailability) {
+  public CatalogsRetailFeed(Date createdAt, String id, Date updatedAt, CatalogsType catalogType, CatalogsFeedCredentials credentials, ProductAvailabilityType defaultAvailability, Country defaultCountry, NullableCurrency defaultCurrency, String defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.createdAt = createdAt;
     this.id = id;
     this.updatedAt = updatedAt;
-    this.name = JsonNullable.of(name);
-    this.format = format;
     this.catalogType = catalogType;
     this.credentials = JsonNullable.of(credentials);
-    this.location = location;
-    this.preferredProcessingSchedule = JsonNullable.of(preferredProcessingSchedule);
-    this.status = status;
+    this.defaultAvailability = JsonNullable.of(defaultAvailability);
+    this.defaultCountry = defaultCountry;
     this.defaultCurrency = JsonNullable.of(defaultCurrency);
     this.defaultLocale = defaultLocale;
-    this.defaultCountry = defaultCountry;
-    this.defaultAvailability = JsonNullable.of(defaultAvailability);
+    this.format = format;
+    this.location = location;
+    this.name = JsonNullable.of(name);
+    this.preferredProcessingSchedule = JsonNullable.of(preferredProcessingSchedule);
+    this.status = status;
   }
 
   public CatalogsRetailFeed createdAt(Date createdAt) {
@@ -150,46 +150,6 @@ public class CatalogsRetailFeed implements CatalogsFeed {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsRetailFeed name(String name) {
-    this.name = JsonNullable.of(name);
-    return this;
-  }
-
-  /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public JsonNullable<String> getName() {
-    return name;
-  }
-
-  public void setName(JsonNullable<String> name) {
-    this.name = name;
-  }
-
-  public CatalogsRetailFeed format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * Get format
-   * @return format
-   */
-  @NotNull @Valid 
-  @Schema(name = "format", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
   public CatalogsRetailFeed catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
@@ -230,64 +190,44 @@ public class CatalogsRetailFeed implements CatalogsFeed {
     this.credentials = credentials;
   }
 
-  public CatalogsRetailFeed location(String location) {
-    this.location = location;
+  public CatalogsRetailFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = JsonNullable.of(defaultAvailability);
     return this;
   }
 
   /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-   * @return location
-   */
-  @NotNull 
-  @Schema(name = "location", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("location")
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public CatalogsRetailFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = JsonNullable.of(preferredProcessingSchedule);
-    return this;
-  }
-
-  /**
-   * Get preferredProcessingSchedule
-   * @return preferredProcessingSchedule
+   * Get defaultAvailability
+   * @return defaultAvailability
    */
   @NotNull @Valid 
-  @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("preferred_processing_schedule")
-  public JsonNullable<CatalogsFeedProcessingSchedule> getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
+  @Schema(name = "default_availability", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("default_availability")
+  public JsonNullable<ProductAvailabilityType> getDefaultAvailability() {
+    return defaultAvailability;
   }
 
-  public void setPreferredProcessingSchedule(JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  public void setDefaultAvailability(JsonNullable<ProductAvailabilityType> defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
   }
 
-  public CatalogsRetailFeed status(CatalogsStatus status) {
-    this.status = status;
+  public CatalogsRetailFeed defaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
     return this;
   }
 
   /**
-   * Get status
-   * @return status
+   * Get defaultCountry
+   * @return defaultCountry
    */
   @NotNull @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("status")
-  public CatalogsStatus getStatus() {
-    return status;
+  @Schema(name = "default_country", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("default_country")
+  public Country getDefaultCountry() {
+    return defaultCountry;
   }
 
-  public void setStatus(CatalogsStatus status) {
-    this.status = status;
+  public void setDefaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
   }
 
   public CatalogsRetailFeed defaultCurrency(NullableCurrency defaultCurrency) {
@@ -330,44 +270,104 @@ public class CatalogsRetailFeed implements CatalogsFeed {
     this.defaultLocale = defaultLocale;
   }
 
-  public CatalogsRetailFeed defaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public CatalogsRetailFeed format(CatalogsFormat format) {
+    this.format = format;
     return this;
   }
 
   /**
-   * Get defaultCountry
-   * @return defaultCountry
+   * Get format
+   * @return format
    */
   @NotNull @Valid 
-  @Schema(name = "default_country", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("default_country")
-  public Country getDefaultCountry() {
-    return defaultCountry;
+  @Schema(name = "format", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
   }
 
-  public void setDefaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
   }
 
-  public CatalogsRetailFeed defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = JsonNullable.of(defaultAvailability);
+  public CatalogsRetailFeed location(String location) {
+    this.location = location;
     return this;
   }
 
   /**
-   * Get defaultAvailability
-   * @return defaultAvailability
+   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+   * @return location
    */
-  @NotNull @Valid 
-  @Schema(name = "default_availability", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("default_availability")
-  public JsonNullable<ProductAvailabilityType> getDefaultAvailability() {
-    return defaultAvailability;
+  @NotNull 
+  @Schema(name = "location", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("location")
+  public String getLocation() {
+    return location;
   }
 
-  public void setDefaultAvailability(JsonNullable<ProductAvailabilityType> defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public CatalogsRetailFeed name(String name) {
+    this.name = JsonNullable.of(name);
+    return this;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+   * @return name
+   */
+  @NotNull 
+  @Schema(name = "name", description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public JsonNullable<String> getName() {
+    return name;
+  }
+
+  public void setName(JsonNullable<String> name) {
+    this.name = name;
+  }
+
+  public CatalogsRetailFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = JsonNullable.of(preferredProcessingSchedule);
+    return this;
+  }
+
+  /**
+   * Get preferredProcessingSchedule
+   * @return preferredProcessingSchedule
+   */
+  @NotNull @Valid 
+  @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("preferred_processing_schedule")
+  public JsonNullable<CatalogsFeedProcessingSchedule> getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
+  }
+
+  public void setPreferredProcessingSchedule(JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  }
+
+  public CatalogsRetailFeed status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @NotNull @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
   @Override
@@ -382,22 +382,22 @@ public class CatalogsRetailFeed implements CatalogsFeed {
     return Objects.equals(this.createdAt, catalogsRetailFeed.createdAt) &&
         Objects.equals(this.id, catalogsRetailFeed.id) &&
         Objects.equals(this.updatedAt, catalogsRetailFeed.updatedAt) &&
-        Objects.equals(this.name, catalogsRetailFeed.name) &&
-        Objects.equals(this.format, catalogsRetailFeed.format) &&
         Objects.equals(this.catalogType, catalogsRetailFeed.catalogType) &&
         Objects.equals(this.credentials, catalogsRetailFeed.credentials) &&
-        Objects.equals(this.location, catalogsRetailFeed.location) &&
-        Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeed.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsRetailFeed.status) &&
+        Objects.equals(this.defaultAvailability, catalogsRetailFeed.defaultAvailability) &&
+        Objects.equals(this.defaultCountry, catalogsRetailFeed.defaultCountry) &&
         Objects.equals(this.defaultCurrency, catalogsRetailFeed.defaultCurrency) &&
         Objects.equals(this.defaultLocale, catalogsRetailFeed.defaultLocale) &&
-        Objects.equals(this.defaultCountry, catalogsRetailFeed.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsRetailFeed.defaultAvailability);
+        Objects.equals(this.format, catalogsRetailFeed.format) &&
+        Objects.equals(this.location, catalogsRetailFeed.location) &&
+        Objects.equals(this.name, catalogsRetailFeed.name) &&
+        Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeed.preferredProcessingSchedule) &&
+        Objects.equals(this.status, catalogsRetailFeed.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, format, catalogType, credentials, location, preferredProcessingSchedule, status, defaultCurrency, defaultLocale, defaultCountry, defaultAvailability);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, credentials, defaultAvailability, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -407,17 +407,17 @@ public class CatalogsRetailFeed implements CatalogsFeed {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

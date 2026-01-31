@@ -18,6 +18,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest  {
   
+ /**
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 HOTEL(String.valueOf("HOTEL"));
@@ -54,18 +61,30 @@ HOTEL(String.valueOf("HOTEL"));
 
   private CatalogTypeEnum catalogType;
 
- /**
-  * Catalog id pertaining to the hotel product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-
-  private String catalogId;
-
   @ApiModelProperty(required = true, value = "")
 
   @Valid
 
   private CatalogsHotelProductGroupFilters filters;
+ /**
+   * Catalog id pertaining to the hotel product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Get catalogType
    * @return catalogType
@@ -85,25 +104,6 @@ HOTEL(String.valueOf("HOTEL"));
 
   public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-   * Catalog id pertaining to the hotel product group.
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
     return this;
   }
 
@@ -135,14 +135,14 @@ HOTEL(String.valueOf("HOTEL"));
       return false;
     }
     CatalogsHotelListProductsByCatalogBasedFilterRequest catalogsHotelListProductsByCatalogBasedFilterRequest = (CatalogsHotelListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.filters, catalogsHotelListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -150,8 +150,8 @@ HOTEL(String.valueOf("HOTEL"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

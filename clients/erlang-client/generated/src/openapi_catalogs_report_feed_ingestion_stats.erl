@@ -5,28 +5,28 @@
 -export_type([openapi_catalogs_report_feed_ingestion_stats/0]).
 
 -type openapi_catalogs_report_feed_ingestion_stats() ::
-    #{ 'report_type' => binary(),
-       'catalog_id' => binary(),
+    #{ 'catalog_id' => binary(),
        'code' => integer(),
        'code_label' => binary(),
        'message' => binary(),
        'occurrences' => integer(),
+       'report_type' => binary(),
        'severity' => binary()
      }.
 
-encode(#{ 'report_type' := ReportType,
-          'catalog_id' := CatalogId,
+encode(#{ 'catalog_id' := CatalogId,
           'code' := Code,
           'code_label' := CodeLabel,
           'message' := Message,
           'occurrences' := Occurrences,
+          'report_type' := ReportType,
           'severity' := Severity
         }) ->
-    #{ 'report_type' => ReportType,
-       'catalog_id' => CatalogId,
+    #{ 'catalog_id' => CatalogId,
        'code' => Code,
        'code_label' => CodeLabel,
        'message' => Message,
        'occurrences' => Occurrences,
+       'report_type' => ReportType,
        'severity' => Severity
      }.

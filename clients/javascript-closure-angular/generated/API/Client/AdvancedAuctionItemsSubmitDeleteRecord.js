@@ -7,6 +7,12 @@ goog.provide('API.Client.AdvancedAuctionItemsSubmitDeleteRecord');
 API.Client.AdvancedAuctionItemsSubmitDeleteRecord = function() {}
 
 /**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.country;
+
+/**
  * The catalog retail item id in the merchant namespace
  * @type {!string}
  * @export
@@ -14,14 +20,15 @@ API.Client.AdvancedAuctionItemsSubmitDeleteRecord = function() {}
 API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.itemId;
 
 /**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.country;
-
-/**
  * @type {!API.Client.Language}
  * @export
  */
 API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.language;
+
+/**
+ * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+ * @type {!Array<!API.Client.AdvancedAuctionOperationError>}
+ * @export
+ */
+API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.errors;
 

@@ -10,8 +10,8 @@ The class is defined in **[TopVideoPinsAnalyticsResponsePinsInner.java](../../sr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metrics** | `Map&lt;String, BigDecimal&gt;` | The metric name and daily value for each requested metric |  [optional property]
 **dataStatus** | `Map&lt;String, DataStatus&gt;` |  |  [optional property]
+**metrics** | `Map&lt;String, BigDecimal&gt;` | The metric name and daily value for each requested metric |  [optional property]
 **pinId** | `String` | The pin id |  [optional property]
 
 

@@ -7,12 +7,12 @@
 #' @title CatalogsReportFeedIngestionStats
 #' @description CatalogsReportFeedIngestionStats Class
 #' @format An \code{R6Class} generator object
-#' @field report_type  character [optional]
 #' @field catalog_id ID of the catalog entity. character [optional]
 #' @field code The event code that a diagnostics aggregated number references integer [optional]
 #' @field code_label A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID') character [optional]
 #' @field message Title message describing the diagnostic issue character [optional]
 #' @field occurrences Number of occurrences of the issue integer [optional]
+#' @field report_type  character [optional]
 #' @field severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,35 +20,26 @@
 CatalogsReportFeedIngestionStats <- R6::R6Class(
   "CatalogsReportFeedIngestionStats",
   public = list(
-    `report_type` = NULL,
     `catalog_id` = NULL,
     `code` = NULL,
     `code_label` = NULL,
     `message` = NULL,
     `occurrences` = NULL,
+    `report_type` = NULL,
     `severity` = NULL,
 
     #' @description
     #' Initialize a new CatalogsReportFeedIngestionStats class.
     #'
-    #' @param report_type report_type
     #' @param catalog_id ID of the catalog entity.
     #' @param code The event code that a diagnostics aggregated number references
     #' @param code_label A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
     #' @param message Title message describing the diagnostic issue
     #' @param occurrences Number of occurrences of the issue
+    #' @param report_type report_type
     #' @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
     #' @param ... Other optional arguments.
-    initialize = function(`report_type` = NULL, `catalog_id` = NULL, `code` = NULL, `code_label` = NULL, `message` = NULL, `occurrences` = NULL, `severity` = NULL, ...) {
-      if (!is.null(`report_type`)) {
-        if (!(`report_type` %in% c("FEED_INGESTION_ISSUES"))) {
-          stop(paste("Error! \"", `report_type`, "\" cannot be assigned to `report_type`. Must be \"FEED_INGESTION_ISSUES\".", sep = ""))
-        }
-        if (!(is.character(`report_type`) && length(`report_type`) == 1)) {
-          stop(paste("Error! Invalid data for `report_type`. Must be a string:", `report_type`))
-        }
-        self$`report_type` <- `report_type`
-      }
+    initialize = function(`catalog_id` = NULL, `code` = NULL, `code_label` = NULL, `message` = NULL, `occurrences` = NULL, `report_type` = NULL, `severity` = NULL, ...) {
       if (!is.null(`catalog_id`)) {
         if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
           stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
@@ -78,6 +69,15 @@ CatalogsReportFeedIngestionStats <- R6::R6Class(
           stop(paste("Error! Invalid data for `occurrences`. Must be an integer:", `occurrences`))
         }
         self$`occurrences` <- `occurrences`
+      }
+      if (!is.null(`report_type`)) {
+        if (!(`report_type` %in% c("FEED_INGESTION_ISSUES"))) {
+          stop(paste("Error! \"", `report_type`, "\" cannot be assigned to `report_type`. Must be \"FEED_INGESTION_ISSUES\".", sep = ""))
+        }
+        if (!(is.character(`report_type`) && length(`report_type`) == 1)) {
+          stop(paste("Error! Invalid data for `report_type`. Must be a string:", `report_type`))
+        }
+        self$`report_type` <- `report_type`
       }
       if (!is.null(`severity`)) {
         if (!(`severity` %in% c("WARN", "ERROR"))) {
@@ -121,10 +121,6 @@ CatalogsReportFeedIngestionStats <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsReportFeedIngestionStatsObject <- list()
-      if (!is.null(self$`report_type`)) {
-        CatalogsReportFeedIngestionStatsObject[["report_type"]] <-
-          self$`report_type`
-      }
       if (!is.null(self$`catalog_id`)) {
         CatalogsReportFeedIngestionStatsObject[["catalog_id"]] <-
           self$`catalog_id`
@@ -145,6 +141,10 @@ CatalogsReportFeedIngestionStats <- R6::R6Class(
         CatalogsReportFeedIngestionStatsObject[["occurrences"]] <-
           self$`occurrences`
       }
+      if (!is.null(self$`report_type`)) {
+        CatalogsReportFeedIngestionStatsObject[["report_type"]] <-
+          self$`report_type`
+      }
       if (!is.null(self$`severity`)) {
         CatalogsReportFeedIngestionStatsObject[["severity"]] <-
           self$`severity`
@@ -159,12 +159,6 @@ CatalogsReportFeedIngestionStats <- R6::R6Class(
     #' @return the instance of CatalogsReportFeedIngestionStats
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`report_type`)) {
-        if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("FEED_INGESTION_ISSUES"))) {
-          stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"FEED_INGESTION_ISSUES\".", sep = ""))
-        }
-        self$`report_type` <- this_object$`report_type`
-      }
       if (!is.null(this_object$`catalog_id`)) {
         self$`catalog_id` <- this_object$`catalog_id`
       }
@@ -179,6 +173,12 @@ CatalogsReportFeedIngestionStats <- R6::R6Class(
       }
       if (!is.null(this_object$`occurrences`)) {
         self$`occurrences` <- this_object$`occurrences`
+      }
+      if (!is.null(this_object$`report_type`)) {
+        if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("FEED_INGESTION_ISSUES"))) {
+          stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"FEED_INGESTION_ISSUES\".", sep = ""))
+        }
+        self$`report_type` <- this_object$`report_type`
       }
       if (!is.null(this_object$`severity`)) {
         if (!is.null(this_object$`severity`) && !(this_object$`severity` %in% c("WARN", "ERROR"))) {
@@ -207,15 +207,15 @@ CatalogsReportFeedIngestionStats <- R6::R6Class(
     #' @return the instance of CatalogsReportFeedIngestionStats
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("FEED_INGESTION_ISSUES"))) {
-        stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"FEED_INGESTION_ISSUES\".", sep = ""))
-      }
-      self$`report_type` <- this_object$`report_type`
       self$`catalog_id` <- this_object$`catalog_id`
       self$`code` <- this_object$`code`
       self$`code_label` <- this_object$`code_label`
       self$`message` <- this_object$`message`
       self$`occurrences` <- this_object$`occurrences`
+      if (!is.null(this_object$`report_type`) && !(this_object$`report_type` %in% c("FEED_INGESTION_ISSUES"))) {
+        stop(paste("Error! \"", this_object$`report_type`, "\" cannot be assigned to `report_type`. Must be \"FEED_INGESTION_ISSUES\".", sep = ""))
+      }
+      self$`report_type` <- this_object$`report_type`
       if (!is.null(this_object$`severity`) && !(this_object$`severity` %in% c("WARN", "ERROR"))) {
         stop(paste("Error! \"", this_object$`severity`, "\" cannot be assigned to `severity`. Must be \"WARN\", \"ERROR\".", sep = ""))
       }

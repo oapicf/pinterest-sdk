@@ -10,12 +10,13 @@ The class is defined in **[IntegrationLogClientRequest.java](../../src/main/java
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | [**MethodEnum**](#MethodEnum) |  | 
 **host** | `String` | HTTP request host from host header. | 
+**method** | [**MethodEnum**](#MethodEnum) |  | 
 **path** | `String` | HTTP request path. | 
 **requestHeaders** | `Map&lt;String, String&gt;` | HTTP request headers as key-value pairs. |  [optional property]
 **responseHeaders** | `Map&lt;String, String&gt;` | HTTP response headers as key-value pairs. |  [optional property]
 **responseStatusCode** | `Integer` |  |  [optional property]
+
 
 ## MethodEnum
 
@@ -30,7 +31,6 @@ CONNECT | `"CONNECT"`
 OPTIONS | `"OPTIONS"`
 TRACE | `"TRACE"`
 PATCH | `"PATCH"`
-
 
 
 

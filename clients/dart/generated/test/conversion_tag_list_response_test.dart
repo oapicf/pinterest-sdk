@@ -16,7 +16,7 @@ void main() {
   // final instance = ConversionTagListResponse();
 
   group('test ConversionTagListResponse', () {
-    // List<ConversionTagResponse> items (default value: const [])
+    // List<ConversionTag> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });

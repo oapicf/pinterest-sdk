@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **string** | The user-created unique ID that represents the product. | 
-**ItemGroupId** | **NullableString** | The parent ID of the product. | 
 **Availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | 
+**Currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
+**ItemGroupId** | **NullableString** | The parent ID of the product. | 
+**ItemId** | **string** | The user-created unique ID that represents the product. | 
 **Price** | **float32** | The price of the product. | 
 **SalePrice** | **NullableFloat32** | The discounted price of the product. | 
-**Currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 
 ## Methods
 
 ### NewCatalogsRetailProductMetadata
 
-`func NewCatalogsRetailProductMetadata(itemId string, itemGroupId NullableString, availability NonNullableProductAvailabilityType, price float32, salePrice NullableFloat32, currency NonNullableCatalogsCurrency, ) *CatalogsRetailProductMetadata`
+`func NewCatalogsRetailProductMetadata(availability NonNullableProductAvailabilityType, currency NonNullableCatalogsCurrency, itemGroupId NullableString, itemId string, price float32, salePrice NullableFloat32, ) *CatalogsRetailProductMetadata`
 
 NewCatalogsRetailProductMetadata instantiates a new CatalogsRetailProductMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -30,24 +30,44 @@ NewCatalogsRetailProductMetadataWithDefaults instantiates a new CatalogsRetailPr
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetItemId
+### GetAvailability
 
-`func (o *CatalogsRetailProductMetadata) GetItemId() string`
+`func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvailabilityType`
 
-GetItemId returns the ItemId field if non-nil, zero value otherwise.
+GetAvailability returns the Availability field if non-nil, zero value otherwise.
 
-### GetItemIdOk
+### GetAvailabilityOk
 
-`func (o *CatalogsRetailProductMetadata) GetItemIdOk() (*string, bool)`
+`func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProductAvailabilityType, bool)`
 
-GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+GetAvailabilityOk returns a tuple with the Availability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetItemId
+### SetAvailability
 
-`func (o *CatalogsRetailProductMetadata) SetItemId(v string)`
+`func (o *CatalogsRetailProductMetadata) SetAvailability(v NonNullableProductAvailabilityType)`
 
-SetItemId sets ItemId field to given value.
+SetAvailability sets Availability field to given value.
+
+
+### GetCurrency
+
+`func (o *CatalogsRetailProductMetadata) GetCurrency() NonNullableCatalogsCurrency`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *CatalogsRetailProductMetadata) GetCurrencyOk() (*NonNullableCatalogsCurrency, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *CatalogsRetailProductMetadata) SetCurrency(v NonNullableCatalogsCurrency)`
+
+SetCurrency sets Currency field to given value.
 
 
 ### GetItemGroupId
@@ -80,24 +100,24 @@ SetItemGroupId sets ItemGroupId field to given value.
 `func (o *CatalogsRetailProductMetadata) UnsetItemGroupId()`
 
 UnsetItemGroupId ensures that no value is present for ItemGroupId, not even an explicit nil
-### GetAvailability
+### GetItemId
 
-`func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvailabilityType`
+`func (o *CatalogsRetailProductMetadata) GetItemId() string`
 
-GetAvailability returns the Availability field if non-nil, zero value otherwise.
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
 
-### GetAvailabilityOk
+### GetItemIdOk
 
-`func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProductAvailabilityType, bool)`
+`func (o *CatalogsRetailProductMetadata) GetItemIdOk() (*string, bool)`
 
-GetAvailabilityOk returns a tuple with the Availability field if it's non-nil, zero value otherwise
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAvailability
+### SetItemId
 
-`func (o *CatalogsRetailProductMetadata) SetAvailability(v NonNullableProductAvailabilityType)`
+`func (o *CatalogsRetailProductMetadata) SetItemId(v string)`
 
-SetAvailability sets Availability field to given value.
+SetItemId sets ItemId field to given value.
 
 
 ### GetPrice
@@ -150,26 +170,6 @@ SetSalePrice sets SalePrice field to given value.
 `func (o *CatalogsRetailProductMetadata) UnsetSalePrice()`
 
 UnsetSalePrice ensures that no value is present for SalePrice, not even an explicit nil
-### GetCurrency
-
-`func (o *CatalogsRetailProductMetadata) GetCurrency() NonNullableCatalogsCurrency`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *CatalogsRetailProductMetadata) GetCurrencyOk() (*NonNullableCatalogsCurrency, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *CatalogsRetailProductMetadata) SetCurrency(v NonNullableCatalogsCurrency)`
-
-SetCurrency sets Currency field to given value.
-
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

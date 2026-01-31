@@ -23,75 +23,21 @@ import java.util.Objects;
 
 public class AdAccount   {
   
+  private Country country;
+
+  private Integer createdTime;
+
+  private Currency currency;
+
   private String id;
 
   private String name;
 
   private AdAccountOwner owner;
 
-  private Country country;
-
-  private Currency currency;
-
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
-  private Integer createdTime;
-
   private Integer updatedTime;
-
-  /**
-   **/
-  public AdAccount id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  /**
-   **/
-  public AdAccount name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  /**
-   **/
-  public AdAccount owner(AdAccountOwner owner) {
-    this.owner = owner;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("owner")
-  public AdAccountOwner getOwner() {
-    return owner;
-  }
-  public void setOwner(AdAccountOwner owner) {
-    this.owner = owner;
-  }
-
 
   /**
    **/
@@ -112,6 +58,25 @@ public class AdAccount   {
 
 
   /**
+   *  Creation time. Unix timestamp in seconds.
+   **/
+  public AdAccount createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = " Creation time. Unix timestamp in seconds.")
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+
+  /**
    **/
   public AdAccount currency(Currency currency) {
     this.currency = currency;
@@ -126,6 +91,63 @@ public class AdAccount   {
   }
   public void setCurrency(Currency currency) {
     this.currency = currency;
+  }
+
+
+  /**
+   **/
+  public AdAccount id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=18)  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Ad account name.
+   **/
+  public AdAccount name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Ad account name.")
+  @JsonProperty("name")
+ @Size(max=256)  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  /**
+   * Ad account owner
+   **/
+  public AdAccount owner(AdAccountOwner owner) {
+    this.owner = owner;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Ad account owner")
+  @JsonProperty("owner")
+  public AdAccountOwner getOwner() {
+    return owner;
+  }
+  public void setOwner(AdAccountOwner owner) {
+    this.owner = owner;
   }
 
 
@@ -156,26 +178,6 @@ public class AdAccount   {
 
 
   /**
-   * Creation time. Unix timestamp in seconds.
-   **/
-  public AdAccount createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-
-  /**
-   * Last update time. Unix timestamp in seconds.
    **/
   public AdAccount updatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
@@ -183,7 +185,7 @@ public class AdAccount   {
   }
 
   
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+  @ApiModelProperty(value = "")
   @JsonProperty("updated_time")
   public Integer getUpdatedTime() {
     return updatedTime;
@@ -203,19 +205,19 @@ public class AdAccount   {
       return false;
     }
     AdAccount adAccount = (AdAccount) o;
-    return Objects.equals(this.id, adAccount.id) &&
+    return Objects.equals(this.country, adAccount.country) &&
+        Objects.equals(this.createdTime, adAccount.createdTime) &&
+        Objects.equals(this.currency, adAccount.currency) &&
+        Objects.equals(this.id, adAccount.id) &&
         Objects.equals(this.name, adAccount.name) &&
         Objects.equals(this.owner, adAccount.owner) &&
-        Objects.equals(this.country, adAccount.country) &&
-        Objects.equals(this.currency, adAccount.currency) &&
         Objects.equals(this.permissions, adAccount.permissions) &&
-        Objects.equals(this.createdTime, adAccount.createdTime) &&
         Objects.equals(this.updatedTime, adAccount.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, owner, country, currency, permissions, createdTime, updatedTime);
+    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, updatedTime);
   }
 
   @Override
@@ -223,13 +225,13 @@ public class AdAccount   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccount {\n");
     
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

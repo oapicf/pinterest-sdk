@@ -10,7 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-/** The enhanced match status of the tag */
 public enum EnhancedMatchStatusType: String, Codable, CaseIterable {
     case unknown = "UNKNOWN"
     case notValidated = "NOT_VALIDATED"

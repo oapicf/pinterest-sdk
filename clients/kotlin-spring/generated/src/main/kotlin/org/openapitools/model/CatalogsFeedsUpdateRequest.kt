@@ -23,16 +23,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object for updating a feed.
+ * @param credentials 
  * @param defaultAvailability 
  * @param defaultCurrency 
- * @param name A human-friendly name associated to a given feed.
  * @param format 
- * @param credentials 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
  * @param preferredProcessingSchedule 
  * @param status 
  */
 data class CatalogsFeedsUpdateRequest(
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("credentials") val credentials: CatalogsFeedCredentials? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -42,20 +46,16 @@ data class CatalogsFeedsUpdateRequest(
     @Schema(example = "null", description = "")
     @get:JsonProperty("default_currency") val defaultCurrency: NullableCurrency? = null,
 
-    @Schema(example = "null", description = "A human-friendly name associated to a given feed.")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("format") val format: CatalogsFormat? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("credentials") val credentials: CatalogsFeedCredentials? = null,
-
     @get:Pattern(regexp="^(http|https|ftp|sftp)://")
     @Schema(example = "null", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
     @get:JsonProperty("location") val location: kotlin.String? = null,
+
+    @Schema(example = "null", description = "A human-friendly name associated to a given feed.")
+    @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")

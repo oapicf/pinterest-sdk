@@ -12,13 +12,26 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventResponse   {
   
+  private String adAccountId;
   private ConversionTagType conversionEvent;
   private String conversionTagId;
-  private String adAccountId;
   private Integer createdTime;
+
+  /**
+   * Id of the ad account.
+   **/
+  
+  @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
+  @JsonProperty("ad_account_id")
+ @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
 
   /**
    **/
@@ -46,19 +59,6 @@ public class ConversionEventResponse   {
   }
 
   /**
-   * Id of the ad account.
-   **/
-  
-  @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
-  @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
-    return adAccountId;
-  }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
-  /**
    * Creation date in epoch format.
    **/
   
@@ -81,15 +81,15 @@ public class ConversionEventResponse   {
       return false;
     }
     ConversionEventResponse conversionEventResponse = (ConversionEventResponse) o;
-    return Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
+    return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
+        Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.createdTime, conversionEventResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversionEvent, conversionTagId, adAccountId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
   }
 
   @Override
@@ -97,9 +97,9 @@ public class ConversionEventResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventResponse {\n");
     
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -82,6 +82,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 This endpoint is not available to all users.""",
         responses = [
             ApiResponse(responseCode = "200", description = "Response containing the results of the item bid options operations", content = [Content(schema = Schema(implementation = AdvancedAuctionProcessedItems::class))]),
+            ApiResponse(responseCode = "206", description = "Response containing the results of the item bid options operations (where some/all operation results have errors)", content = [Content(schema = Schema(implementation = AdvancedAuctionProcessedItems::class))]),
             ApiResponse(responseCode = "400", description = "Invalid request parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "401", description = "Not authenticated to post item bid options", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "403", description = "Not authorized to post item bid options", content = [Content(schema = Schema(implementation = Error::class))]),

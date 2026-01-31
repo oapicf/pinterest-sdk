@@ -5,9 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Addr1** | **String** | Primary street address of hotel. | [optional] 
 **City** | **String** | City where the hotel is located. | [optional] 
-**Region** | **String** | State, county, province, where the hotel is located. | [optional] 
 **Country** | **String** | Country where the hotel is located. | [optional] 
 **PostalCode** | **String** | Required for countries with a postal code system. Postal or zip code of the hotel. | [optional] 
+**Region** | **String** | State, county, province, where the hotel is located. | [optional] 
 
 ## Examples
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 ```powershell
 $CatalogsHotelAddress = Initialize-PSOpenAPIToolsCatalogsHotelAddress  -Addr1 null `
  -City null `
- -Region null `
  -Country null `
- -PostalCode null
+ -PostalCode null `
+ -Region null
 ```
 
 - Convert the resource to JSON

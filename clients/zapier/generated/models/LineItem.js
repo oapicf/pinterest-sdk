@@ -6,12 +6,12 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}product_brand`,
-                label: `Product brand. For example, \"Parker\". - [${labelPrefix}product_brand]`,
+                label: `Product brand. For example, 'Parker'. - [${labelPrefix}product_brand]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}product_category`,
-                label: `Product category. For example, \"Shoes\". - [${labelPrefix}product_category]`,
+                label: `Product category. For example, 'Shoes'. - [${labelPrefix}product_category]`,
                 type: 'string',
             },
             {
@@ -21,12 +21,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}product_name`,
-                label: `Product name. For example, \"Parker Boots\". - [${labelPrefix}product_name]`,
+                label: `Product name. For example, 'Parker Boots'. - [${labelPrefix}product_name]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}product_price`,
-                label: `Product price. For example, \"99.99\". - [${labelPrefix}product_price]`,
+                label: `Product price. For example, '99.99'. - [${labelPrefix}product_price]`,
                 type: 'string',
             },
             {
@@ -36,12 +36,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}product_variant`,
-                label: `Product variant. For example, \"Red\". - [${labelPrefix}product_variant]`,
+                label: `Product variant. For example, 'Red'. - [${labelPrefix}product_variant]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}product_variant_id`,
-                label: `Product variant ID. For example, \"1414-34832\". - [${labelPrefix}product_variant_id]`,
+                label: `Product variant ID. For example, '1414-34832'. - [${labelPrefix}product_variant_id]`,
                 type: 'string',
             },
         ]

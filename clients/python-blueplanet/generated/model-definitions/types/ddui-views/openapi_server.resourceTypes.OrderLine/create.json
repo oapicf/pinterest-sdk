@@ -1,0 +1,28 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "budget" },
+      {"model": "end_time" },
+      {"model": "id" },
+      {"model": "name" },
+      {"model": "paid_budget" },
+      {"model": "paid_type" },
+      {"model": "purchase_order_id" },
+      {"model": "start_time" },
+      {"model": "status" },
+      {"model": "type" },
+      {"model": "campaign_ids" },
+    ]
+  }]
+}

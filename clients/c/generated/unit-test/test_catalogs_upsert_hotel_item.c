@@ -23,16 +23,16 @@ catalogs_upsert_hotel_item_t* instantiate_catalogs_upsert_hotel_item(int include
   catalogs_upsert_hotel_item_t* catalogs_upsert_hotel_item = NULL;
   if (include_optional) {
     catalogs_upsert_hotel_item = catalogs_upsert_hotel_item_create(
-      "DS0294-M",
-      pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_UPSERT,
        // false, not to have infinite recursion
-      instantiate_catalogs_hotel_attributes(0)
+      instantiate_catalogs_hotel_attributes(0),
+      "DS0294-M",
+      pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_UPSERT
     );
   } else {
     catalogs_upsert_hotel_item = catalogs_upsert_hotel_item_create(
+      NULL,
       "DS0294-M",
-      pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_UPSERT,
-      NULL
+      pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_UPSERT
     );
   }
 

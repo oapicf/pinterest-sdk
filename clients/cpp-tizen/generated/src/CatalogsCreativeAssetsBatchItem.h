@@ -50,6 +50,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	CatalogsUpdatableCreativeAssetsAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsUpdatableCreativeAssetsAttributes  attributes);
 	/*! \brief Get The catalog creative assets id in the merchant namespace
 	 */
 	std::string getCreativeAssetsId();
@@ -64,18 +71,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setOperation(std::string  operation);
-	/*! \brief Get 
-	 */
-	CatalogsUpdatableCreativeAssetsAttributes getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(CatalogsUpdatableCreativeAssetsAttributes  attributes);
 
 private:
+	CatalogsUpdatableCreativeAssetsAttributes attributes;
 	std::string creative_assets_id;
 	std::string operation;
-	CatalogsUpdatableCreativeAssetsAttributes attributes;
 	void __init();
 	void __cleanup();
 

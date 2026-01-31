@@ -8,72 +8,54 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOInsertionOrderCommon   {
   
-  private String startDate;
-  private String endDate;
-  private String poNumber;
-  private BigDecimal budgetAmount;
+  private String agencyLink;
+  private String billingContactEmail;
   private String billingContactFirstname;
   private String billingContactLastname;
-  private String billingContactEmail;
+  private BigDecimal budgetAmount;
+  private String endDate;
+  private String mediaContactEmail;
   private String mediaContactFirstname;
   private String mediaContactLastname;
-  private String mediaContactEmail;
-  private String agencyLink;
+  private String poNumber;
+  private String startDate;
   private String userEmail;
 
   public SSIOInsertionOrderCommon () {
 
   }
 
-  public SSIOInsertionOrderCommon (String startDate, String endDate, String poNumber, BigDecimal budgetAmount, String billingContactFirstname, String billingContactLastname, String billingContactEmail, String mediaContactFirstname, String mediaContactLastname, String mediaContactEmail, String agencyLink, String userEmail) {
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.poNumber = poNumber;
-    this.budgetAmount = budgetAmount;
+  public SSIOInsertionOrderCommon (String agencyLink, String billingContactEmail, String billingContactFirstname, String billingContactLastname, BigDecimal budgetAmount, String endDate, String mediaContactEmail, String mediaContactFirstname, String mediaContactLastname, String poNumber, String startDate, String userEmail) {
+    this.agencyLink = agencyLink;
+    this.billingContactEmail = billingContactEmail;
     this.billingContactFirstname = billingContactFirstname;
     this.billingContactLastname = billingContactLastname;
-    this.billingContactEmail = billingContactEmail;
+    this.budgetAmount = budgetAmount;
+    this.endDate = endDate;
+    this.mediaContactEmail = mediaContactEmail;
     this.mediaContactFirstname = mediaContactFirstname;
     this.mediaContactLastname = mediaContactLastname;
-    this.mediaContactEmail = mediaContactEmail;
-    this.agencyLink = agencyLink;
+    this.poNumber = poNumber;
+    this.startDate = startDate;
     this.userEmail = userEmail;
   }
 
     
-  @JsonProperty("start_date")
-  public String getStartDate() {
-    return startDate;
+  @JsonProperty("agency_link")
+  public String getAgencyLink() {
+    return agencyLink;
   }
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
-    
-  @JsonProperty("end_date")
-  public String getEndDate() {
-    return endDate;
-  }
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
+  public void setAgencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
   }
 
     
-  @JsonProperty("po_number")
-  public String getPoNumber() {
-    return poNumber;
+  @JsonProperty("billing_contact_email")
+  public String getBillingContactEmail() {
+    return billingContactEmail;
   }
-  public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
-  }
-
-    
-  @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
-    return budgetAmount;
-  }
-  public void setBudgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public void setBillingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
   }
 
     
@@ -95,12 +77,30 @@ public class SSIOInsertionOrderCommon   {
   }
 
     
-  @JsonProperty("billing_contact_email")
-  public String getBillingContactEmail() {
-    return billingContactEmail;
+  @JsonProperty("budget_amount")
+  public BigDecimal getBudgetAmount() {
+    return budgetAmount;
   }
-  public void setBillingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public void setBudgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
+  }
+
+    
+  @JsonProperty("end_date")
+  public String getEndDate() {
+    return endDate;
+  }
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+    
+  @JsonProperty("media_contact_email")
+  public String getMediaContactEmail() {
+    return mediaContactEmail;
+  }
+  public void setMediaContactEmail(String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
   }
 
     
@@ -122,21 +122,21 @@ public class SSIOInsertionOrderCommon   {
   }
 
     
-  @JsonProperty("media_contact_email")
-  public String getMediaContactEmail() {
-    return mediaContactEmail;
+  @JsonProperty("po_number")
+  public String getPoNumber() {
+    return poNumber;
   }
-  public void setMediaContactEmail(String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+  public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
   }
 
     
-  @JsonProperty("agency_link")
-  public String getAgencyLink() {
-    return agencyLink;
+  @JsonProperty("start_date")
+  public String getStartDate() {
+    return startDate;
   }
-  public void setAgencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
     
@@ -158,23 +158,23 @@ public class SSIOInsertionOrderCommon   {
       return false;
     }
     SSIOInsertionOrderCommon ssIOInsertionOrderCommon = (SSIOInsertionOrderCommon) o;
-    return Objects.equals(startDate, ssIOInsertionOrderCommon.startDate) &&
-        Objects.equals(endDate, ssIOInsertionOrderCommon.endDate) &&
-        Objects.equals(poNumber, ssIOInsertionOrderCommon.poNumber) &&
-        Objects.equals(budgetAmount, ssIOInsertionOrderCommon.budgetAmount) &&
+    return Objects.equals(agencyLink, ssIOInsertionOrderCommon.agencyLink) &&
+        Objects.equals(billingContactEmail, ssIOInsertionOrderCommon.billingContactEmail) &&
         Objects.equals(billingContactFirstname, ssIOInsertionOrderCommon.billingContactFirstname) &&
         Objects.equals(billingContactLastname, ssIOInsertionOrderCommon.billingContactLastname) &&
-        Objects.equals(billingContactEmail, ssIOInsertionOrderCommon.billingContactEmail) &&
+        Objects.equals(budgetAmount, ssIOInsertionOrderCommon.budgetAmount) &&
+        Objects.equals(endDate, ssIOInsertionOrderCommon.endDate) &&
+        Objects.equals(mediaContactEmail, ssIOInsertionOrderCommon.mediaContactEmail) &&
         Objects.equals(mediaContactFirstname, ssIOInsertionOrderCommon.mediaContactFirstname) &&
         Objects.equals(mediaContactLastname, ssIOInsertionOrderCommon.mediaContactLastname) &&
-        Objects.equals(mediaContactEmail, ssIOInsertionOrderCommon.mediaContactEmail) &&
-        Objects.equals(agencyLink, ssIOInsertionOrderCommon.agencyLink) &&
+        Objects.equals(poNumber, ssIOInsertionOrderCommon.poNumber) &&
+        Objects.equals(startDate, ssIOInsertionOrderCommon.startDate) &&
         Objects.equals(userEmail, ssIOInsertionOrderCommon.userEmail);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, poNumber, budgetAmount, billingContactFirstname, billingContactLastname, billingContactEmail, mediaContactFirstname, mediaContactLastname, mediaContactEmail, agencyLink, userEmail);
+    return Objects.hash(agencyLink, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, endDate, mediaContactEmail, mediaContactFirstname, mediaContactLastname, poNumber, startDate, userEmail);
   }
 
   @Override
@@ -182,17 +182,17 @@ public class SSIOInsertionOrderCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderCommon {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
     sb.append("    billingContactFirstname: ").append(toIndentedString(billingContactFirstname)).append("\n");
     sb.append("    billingContactLastname: ").append(toIndentedString(billingContactLastname)).append("\n");
-    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
     sb.append("    mediaContactFirstname: ").append(toIndentedString(mediaContactFirstname)).append("\n");
     sb.append("    mediaContactLastname: ").append(toIndentedString(mediaContactLastname)).append("\n");
-    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
-    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    userEmail: ").append(toIndentedString(userEmail)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -5,9 +5,9 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
+**attributes** | attributes | long NOT NULL |  | [**UpdatableItemAttributes**](UpdatableItemAttributes.md) |  |  [foreignkey]
 **itemId** | item_id | text NOT NULL |  | **kotlin.String** | The catalog item id in the merchant namespace | 
 **operation** | operation | text NOT NULL |  | [**operation**](#Operation) |  | 
-**attributes** | attributes | long NOT NULL |  | [**UpdatableItemAttributes**](UpdatableItemAttributes.md) |  |  [foreignkey]
 **updateMask** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;UpdateMaskFieldType&gt;**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. |  [optional]
 
 

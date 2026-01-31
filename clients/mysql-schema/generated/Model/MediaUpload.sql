@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `MediaUpload`
 --
-SELECT `media_id`, `media_type`, `upload_url`, `upload_parameters` FROM `MediaUpload` WHERE 1;
+SELECT `media_id`, `media_type`, `upload_parameters`, `upload_url` FROM `MediaUpload` WHERE 1;
 
 --
 -- INSERT template for table `MediaUpload`
 --
-INSERT INTO `MediaUpload`(`media_id`, `media_type`, `upload_url`, `upload_parameters`) VALUES (?, ?, ?, ?);
+INSERT INTO `MediaUpload`(`media_id`, `media_type`, `upload_parameters`, `upload_url`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `MediaUpload`
 --
-UPDATE `MediaUpload` SET `media_id` = ?, `media_type` = ?, `upload_url` = ?, `upload_parameters` = ? WHERE 1;
+UPDATE `MediaUpload` SET `media_id` = ?, `media_type` = ?, `upload_parameters` = ?, `upload_url` = ? WHERE 1;
 
 --
 -- DELETE template for table `MediaUpload`

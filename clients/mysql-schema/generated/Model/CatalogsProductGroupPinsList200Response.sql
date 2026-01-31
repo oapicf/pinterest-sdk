@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `catalogs_product_group_pins_list_200_response`
 --
-SELECT `items`, `bookmark` FROM `catalogs_product_group_pins_list_200_response` WHERE 1;
+SELECT `bookmark`, `items` FROM `catalogs_product_group_pins_list_200_response` WHERE 1;
 
 --
 -- INSERT template for table `catalogs_product_group_pins_list_200_response`
 --
-INSERT INTO `catalogs_product_group_pins_list_200_response`(`items`, `bookmark`) VALUES (?, ?);
+INSERT INTO `catalogs_product_group_pins_list_200_response`(`bookmark`, `items`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `catalogs_product_group_pins_list_200_response`
 --
-UPDATE `catalogs_product_group_pins_list_200_response` SET `items` = ?, `bookmark` = ? WHERE 1;
+UPDATE `catalogs_product_group_pins_list_200_response` SET `bookmark` = ?, `items` = ? WHERE 1;
 
 --
 -- DELETE template for table `catalogs_product_group_pins_list_200_response`

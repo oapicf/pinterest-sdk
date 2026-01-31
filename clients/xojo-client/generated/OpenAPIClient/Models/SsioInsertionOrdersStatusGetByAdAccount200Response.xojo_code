@@ -2,15 +2,15 @@
 Protected Class SsioInsertionOrdersStatusGetByAdAccount200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Insertion orders status by ad acount id
-		#tag EndNote
-		items() As OpenAPIClient.Models.SSIOInsertionOrderStatus
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		#tag Note
+			Insertion orders status by ad acount id
+		#tag EndNote
+		items() As OpenAPIClient.Models.SSIOInsertionOrderStatus
 	#tag EndProperty
 
 
@@ -51,19 +51,19 @@ Protected Class SsioInsertionOrdersStatusGetByAdAccount200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="SSIOInsertionOrderStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="SSIOInsertionOrderStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

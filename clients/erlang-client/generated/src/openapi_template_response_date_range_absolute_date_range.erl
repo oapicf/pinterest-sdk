@@ -5,16 +5,16 @@
 -export_type([openapi_template_response_date_range_absolute_date_range/0]).
 
 -type openapi_template_response_date_range_absolute_date_range() ::
-    #{ 'type' => binary(),
+    #{ 'end_date' => integer(),
        'start_date' => integer(),
-       'end_date' => integer()
+       'type' => binary()
      }.
 
-encode(#{ 'type' := Type,
+encode(#{ 'end_date' := EndDate,
           'start_date' := StartDate,
-          'end_date' := EndDate
+          'type' := Type
         }) ->
-    #{ 'type' => Type,
+    #{ 'end_date' => EndDate,
        'start_date' => StartDate,
-       'end_date' => EndDate
+       'type' => Type
      }.

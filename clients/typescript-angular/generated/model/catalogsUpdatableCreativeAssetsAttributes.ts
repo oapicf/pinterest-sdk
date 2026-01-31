@@ -11,29 +11,9 @@
 
 export interface CatalogsUpdatableCreativeAssetsAttributes { 
     /**
-     * The name of the creative assets.
-     */
-    title?: string;
-    /**
-     * Brief description of the creative assets.
-     */
-    description?: string;
-    /**
-     * Link to the creative assets page.
-     */
-    link?: string;
-    /**
-     * IOS deep link to the creative assets page.
-     */
-    ios_deep_link?: string | null;
-    /**
      * Link to the creative assets page.
      */
     android_deep_link?: string | null;
-    /**
-     * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-     */
-    google_product_category?: string | null;
     /**
      * Custom grouping of creative assets.
      */
@@ -54,6 +34,26 @@ export interface CatalogsUpdatableCreativeAssetsAttributes {
      * Custom grouping of creative assets.
      */
     custom_label_4?: string | null;
+    /**
+     * Brief description of the creative assets.
+     */
+    description?: string;
+    /**
+     * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+     */
+    google_product_category?: string | null;
+    /**
+     * IOS deep link to the creative assets page.
+     */
+    ios_deep_link?: string | null;
+    /**
+     * Link to the creative assets page.
+     */
+    link?: string;
+    /**
+     * The name of the creative assets.
+     */
+    title?: string;
     /**
      * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
      */

@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("OptimizationGoalMetadata_frequency_goal_metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   private Integer frequency;
   public enum TimerangeEnum {
@@ -73,6 +73,9 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   }
 
   /**
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    **/
   public OptimizationGoalMetadataFrequencyGoalMetadata frequency(Integer frequency) {
     this.frequency = frequency;
@@ -80,9 +83,9 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
   @JsonProperty("frequency")
-  public Integer getFrequency() {
+   @Min(2) @Max(20)public Integer getFrequency() {
     return frequency;
   }
 

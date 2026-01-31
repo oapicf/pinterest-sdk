@@ -9,8 +9,8 @@
 -export_type([openapi_ad_accounts_list_200_response/0]).
 
 -type openapi_ad_accounts_list_200_response() ::
-  [ {'items', list(openapi_ad_account:openapi_ad_account()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_ad_account:openapi_ad_account()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_ad_accounts_list_200_response() ->
     openapi_ad_accounts_list_200_response([]).
 
 openapi_ad_accounts_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_ad_account:openapi_ad_account()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_ad_account:openapi_ad_account()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

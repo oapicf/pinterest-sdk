@@ -12,9 +12,14 @@ import javax.validation.Valid;
 /**
  * CatalogsRetailItemsFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailItemsFilter   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -55,10 +60,22 @@ public class CatalogsRetailItemsFilter   {
 
   private List<String> itemIds = new ArrayList<>();
 
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
+  public CatalogsRetailItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
 
-  private String catalogId;
+   /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   * @return catalogId
+  **/
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsRetailItemsFilter catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -102,23 +119,6 @@ public class CatalogsRetailItemsFilter   {
     this.itemIds = itemIds;
   }
 
-  public CatalogsRetailItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-   * @return catalogId
-  **/
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -129,14 +129,14 @@ public class CatalogsRetailItemsFilter   {
       return false;
     }
     CatalogsRetailItemsFilter catalogsRetailItemsFilter = (CatalogsRetailItemsFilter) o;
-    return Objects.equals(catalogType, catalogsRetailItemsFilter.catalogType) &&
-        Objects.equals(itemIds, catalogsRetailItemsFilter.itemIds) &&
-        Objects.equals(catalogId, catalogsRetailItemsFilter.catalogId);
+    return Objects.equals(catalogId, catalogsRetailItemsFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsRetailItemsFilter.catalogType) &&
+        Objects.equals(itemIds, catalogsRetailItemsFilter.itemIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId);
+    return Objects.hash(catalogId, catalogType, itemIds);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -145,9 +145,9 @@ public class CatalogsRetailItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Ad_account_owner.h"
+#include "AdAccountOwner.h"
 #include "BusinessAccessRole.h"
 #include "Country.h"
 #include "Currency.h"
@@ -52,32 +52,18 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getId();
-
-	/*! \brief Set 
-	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getName();
-
-	/*! \brief Set 
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
-	Ad_account_owner getOwner();
-
-	/*! \brief Set 
-	 */
-	void setOwner(Ad_account_owner  owner);
-	/*! \brief Get 
-	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
+	/*! \brief Get  Creation time. Unix timestamp in seconds.
+	 */
+	int getCreatedTime();
+
+	/*! \brief Set  Creation time. Unix timestamp in seconds.
+	 */
+	void setCreatedTime(int  created_time);
 	/*! \brief Get 
 	 */
 	Currency getCurrency();
@@ -87,34 +73,48 @@ public:
 	void setCurrency(Currency  currency);
 	/*! \brief Get 
 	 */
+	std::string getId();
+
+	/*! \brief Set 
+	 */
+	void setId(std::string  id);
+	/*! \brief Get Ad account name.
+	 */
+	std::string getName();
+
+	/*! \brief Set Ad account name.
+	 */
+	void setName(std::string  name);
+	/*! \brief Get Ad account owner
+	 */
+	AdAccountOwner getOwner();
+
+	/*! \brief Set Ad account owner
+	 */
+	void setOwner(AdAccountOwner  owner);
+	/*! \brief Get 
+	 */
 	std::list<BusinessAccessRole> getPermissions();
 
 	/*! \brief Set 
 	 */
 	void setPermissions(std::list <BusinessAccessRole> permissions);
-	/*! \brief Get Creation time. Unix timestamp in seconds.
-	 */
-	int getCreatedTime();
-
-	/*! \brief Set Creation time. Unix timestamp in seconds.
-	 */
-	void setCreatedTime(int  created_time);
-	/*! \brief Get Last update time. Unix timestamp in seconds.
+	/*! \brief Get 
 	 */
 	int getUpdatedTime();
 
-	/*! \brief Set Last update time. Unix timestamp in seconds.
+	/*! \brief Set 
 	 */
 	void setUpdatedTime(int  updated_time);
 
 private:
+	Country country;
+	int created_time;
+	Currency currency;
 	std::string id;
 	std::string name;
-	Ad_account_owner owner;
-	Country country;
-	Currency currency;
+	AdAccountOwner owner;
 	std::list <BusinessAccessRole>permissions;
-	int created_time;
 	int updated_time;
 	void __init();
 	void __cleanup();

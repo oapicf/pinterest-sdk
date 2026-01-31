@@ -12,24 +12,30 @@ import javax.validation.Valid;
 /**
  * Retail product metadata entity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailProductMetadata   {
-  @JsonProperty("item_id")
+  @JsonProperty("availability")
   @NotNull
+@Valid
 
-  private String itemId;
+  private NonNullableProductAvailabilityType availability;
+
+  @JsonProperty("currency")
+  @NotNull
+@Valid
+
+  private NonNullableCatalogsCurrency currency;
 
   @JsonProperty("item_group_id")
   @NotNull
 
   private String itemGroupId;
 
-  @JsonProperty("availability")
+  @JsonProperty("item_id")
   @NotNull
-@Valid
 
-  private NonNullableProductAvailabilityType availability;
+  private String itemId;
 
   @JsonProperty("price")
   @NotNull
@@ -43,27 +49,38 @@ public class CatalogsRetailProductMetadata   {
 
   private BigDecimal salePrice;
 
-  @JsonProperty("currency")
-  @NotNull
-@Valid
-
-  private NonNullableCatalogsCurrency currency;
-
-  public CatalogsRetailProductMetadata itemId(String itemId) {
-    this.itemId = itemId;
+  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
     return this;
   }
 
    /**
-   * The user-created unique ID that represents the product.
-   * @return itemId
+   * Get availability
+   * @return availability
   **/
-  public String getItemId() {
-    return itemId;
+  public NonNullableProductAvailabilityType getAvailability() {
+    return availability;
   }
 
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
+  public void setAvailability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
+  }
+
+  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+    return this;
+  }
+
+   /**
+   * Get currency
+   * @return currency
+  **/
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
+
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
   }
 
   public CatalogsRetailProductMetadata itemGroupId(String itemGroupId) {
@@ -83,21 +100,21 @@ public class CatalogsRetailProductMetadata   {
     this.itemGroupId = itemGroupId;
   }
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public CatalogsRetailProductMetadata itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
    /**
-   * Get availability
-   * @return availability
+   * The user-created unique ID that represents the product.
+   * @return itemId
   **/
-  public NonNullableProductAvailabilityType getAvailability() {
-    return availability;
+  public String getItemId() {
+    return itemId;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public CatalogsRetailProductMetadata price(BigDecimal price) {
@@ -134,23 +151,6 @@ public class CatalogsRetailProductMetadata   {
     this.salePrice = salePrice;
   }
 
-  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * Get currency
-   * @return currency
-  **/
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -161,17 +161,17 @@ public class CatalogsRetailProductMetadata   {
       return false;
     }
     CatalogsRetailProductMetadata catalogsRetailProductMetadata = (CatalogsRetailProductMetadata) o;
-    return Objects.equals(itemId, catalogsRetailProductMetadata.itemId) &&
+    return Objects.equals(availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(currency, catalogsRetailProductMetadata.currency) &&
         Objects.equals(itemGroupId, catalogsRetailProductMetadata.itemGroupId) &&
-        Objects.equals(availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(itemId, catalogsRetailProductMetadata.itemId) &&
         Objects.equals(price, catalogsRetailProductMetadata.price) &&
-        Objects.equals(salePrice, catalogsRetailProductMetadata.salePrice) &&
-        Objects.equals(currency, catalogsRetailProductMetadata.currency);
+        Objects.equals(salePrice, catalogsRetailProductMetadata.salePrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, itemGroupId, availability, price, salePrice, currency);
+    return Objects.hash(availability, currency, itemGroupId, itemId, price, salePrice);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -180,12 +180,12 @@ public class CatalogsRetailProductMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductMetadata {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * 
- * @param username Username
  * @param _type Always \"user\"
+ * @param username Username
  */
-case class UserSummary(username: Option[String],
-                _type: Option[String]
+case class UserSummary(_type: Option[String],
+                username: Option[String]
                 )
 
 object UserSummary {

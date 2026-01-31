@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server NotificationResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a NotificationResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  NotificationResponse {
+    title = NotificationResponse
+    description = NotificationResponse
+    derivedFrom = Root
+    properties {
+        success {
+          type =  boolean
+          description = "Returns true if the notification accepted."
+          optional = false
+        }
+        received_at {
+          type =  integer
+          description = "Received time. Unix timestamp in seconds."
+          optional = false
+        }
+        error_msg {
+          type =  string
+          description = "error message when success is false"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  NotificationResponse {
+    title = NotificationResponse
+    description = NotificationResponse
+    implements = openapi_server.resourceTypes.NotificationResponse
+
+  }
+}

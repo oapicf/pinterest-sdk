@@ -7,10 +7,10 @@
 
 (def terms-of-service-data
   {
-   (ds/opt :id) string?
-   (ds/opt :html) string?
-   (ds/opt :has_accepted) boolean?
    (ds/opt :ad_account_id) string?
+   (ds/opt :has_accepted) boolean?
+   (ds/opt :html) string?
+   (ds/opt :id) string?
    })
 
 (def terms-of-service-spec

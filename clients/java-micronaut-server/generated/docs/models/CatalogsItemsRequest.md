@@ -11,8 +11,9 @@ The class is defined in **[CatalogsItemsRequest.java](../../src/main/java/org/op
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | `Country` |  | 
-**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **filters** | [`CatalogsItemsPostFilters`](CatalogsItemsPostFilters.md) |  | 
+**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
+
 
 
 ## LanguageEnum
@@ -126,6 +127,5 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
 
 

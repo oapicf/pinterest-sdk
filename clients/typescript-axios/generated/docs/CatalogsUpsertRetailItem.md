@@ -6,9 +6,9 @@ An item to be upserted
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [default to undefined]
 **item_id** | **string** | The catalog item id in the merchant namespace | [default to undefined]
 **operation** | **string** |  | [default to undefined]
-**attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { CatalogsUpsertRetailItem } from './api';
 
 const instance: CatalogsUpsertRetailItem = {
+    attributes,
     item_id,
     operation,
-    attributes,
 };
 ```
 

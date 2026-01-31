@@ -11,10 +11,10 @@ module IntegrationLogClientRequest =
 
   [<CLIMutable>]
   type IntegrationLogClientRequest = {
-    [<JsonProperty(PropertyName = "method")>]
-    Method : string;
     [<JsonProperty(PropertyName = "host")>]
     Host : string;
+    [<JsonProperty(PropertyName = "method")>]
+    Method : string;
     [<JsonProperty(PropertyName = "path")>]
     Path : string;
     [<JsonProperty(PropertyName = "request_headers")>]

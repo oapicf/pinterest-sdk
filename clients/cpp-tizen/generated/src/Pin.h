@@ -1,7 +1,7 @@
 /*
  * Pin.h
  *
- * Pin
+ * Pin model containing properties related to a Pinterest Pin.
  */
 
 #ifndef _Pin_H_
@@ -12,7 +12,6 @@
 #include "BoardOwner.h"
 #include "CreativeType.h"
 #include "PinMedia.h"
-#include "PinMediaSource.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -24,7 +23,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin
+/*! \brief Pin model containing properties related to a Pinterest Pin.
  *
  *  \ingroup Models
  *
@@ -51,60 +50,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getId();
-
-	/*! \brief Set 
-	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getCreatedAt();
-
-	/*! \brief Set 
-	 */
-	void setCreatedAt(std::string  created_at);
-	/*! \brief Get 
-	 */
-	std::string getLink();
-
-	/*! \brief Set 
-	 */
-	void setLink(std::string  link);
-	/*! \brief Get 
-	 */
-	std::string getTitle();
-
-	/*! \brief Set 
-	 */
-	void setTitle(std::string  title);
-	/*! \brief Get 
-	 */
-	std::string getDescription();
-
-	/*! \brief Set 
-	 */
-	void setDescription(std::string  description);
-	/*! \brief Get Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-	 */
-	std::string getDominantColor();
-
-	/*! \brief Set Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-	 */
-	void setDominantColor(std::string  dominant_color);
-	/*! \brief Get 
-	 */
 	std::string getAltText();
 
 	/*! \brief Set 
 	 */
 	void setAltText(std::string  alt_text);
-	/*! \brief Get 
-	 */
-	CreativeType getCreativeType();
-
-	/*! \brief Set 
-	 */
-	void setCreativeType(CreativeType  creative_type);
 	/*! \brief Get The board to which this Pin belongs.
 	 */
 	std::string getBoardId();
@@ -112,6 +62,13 @@ public:
 	/*! \brief Set The board to which this Pin belongs.
 	 */
 	void setBoardId(std::string  board_id);
+	/*! \brief Get 
+	 */
+	BoardOwner getBoardOwner();
+
+	/*! \brief Set 
+	 */
+	void setBoardOwner(BoardOwner  board_owner);
 	/*! \brief Get The board section to which this Pin belongs.
 	 */
 	std::string getBoardSectionId();
@@ -121,46 +78,32 @@ public:
 	void setBoardSectionId(std::string  board_section_id);
 	/*! \brief Get 
 	 */
-	BoardOwner getBoardOwner();
+	std::string getCreatedAt();
 
 	/*! \brief Set 
 	 */
-	void setBoardOwner(BoardOwner  board_owner);
-	/*! \brief Get Whether the \"operation user_account\" is the Pin owner.
-	 */
-	bool getIsOwner();
-
-	/*! \brief Set Whether the \"operation user_account\" is the Pin owner.
-	 */
-	void setIsOwner(bool  is_owner);
+	void setCreatedAt(std::string  created_at);
 	/*! \brief Get 
 	 */
-	PinMedia getMedia();
+	CreativeType getCreativeType();
 
 	/*! \brief Set 
 	 */
-	void setMedia(PinMedia  media);
+	void setCreativeType(CreativeType  creative_type);
 	/*! \brief Get 
 	 */
-	PinMediaSource getMediaSource();
+	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setMediaSource(PinMediaSource  media_source);
-	/*! \brief Get The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+	void setDescription(std::string  description);
+	/*! \brief Get Dominant pin color. Hex number, e.g. `#6E7874`.
 	 */
-	std::string getParentPinId();
+	std::string getDominantColor();
 
-	/*! \brief Set The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+	/*! \brief Set Dominant pin color. Hex number, e.g. `#6E7874`.
 	 */
-	void setParentPinId(std::string  parent_pin_id);
-	/*! \brief Get Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
-	 */
-	bool getIsStandard();
-
-	/*! \brief Set Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
-	 */
-	void setIsStandard(bool  is_standard);
+	void setDominantColor(std::string  dominant_color);
 	/*! \brief Get Whether the Pin has been promoted or not.
 	 */
 	bool getHasBeenPromoted();
@@ -168,13 +111,48 @@ public:
 	/*! \brief Set Whether the Pin has been promoted or not.
 	 */
 	void setHasBeenPromoted(bool  has_been_promoted);
-	/*! \brief Get Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	/*! \brief Get 
 	 */
-	std::string getNote();
+	std::string getId();
 
-	/*! \brief Set Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	/*! \brief Set 
 	 */
-	void setNote(std::string  note);
+	void setId(std::string  id);
+	/*! \brief Get Whether the \"operation user_account\" is the Pin owner.
+	 */
+	bool getIsOwner();
+
+	/*! \brief Set Whether the \"operation user_account\" is the Pin owner.
+	 */
+	void setIsOwner(bool  is_owner);
+	/*! \brief Get Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+	 */
+	bool getIsStandard();
+
+	/*! \brief Set Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+	 */
+	void setIsStandard(bool  is_standard);
+	/*! \brief Get 
+	 */
+	std::string getLink();
+
+	/*! \brief Set 
+	 */
+	void setLink(std::string  link);
+	/*! \brief Get 
+	 */
+	PinMedia getMedia();
+
+	/*! \brief Set 
+	 */
+	void setMedia(PinMedia  media);
+	/*! \brief Get The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
+	 */
+	std::string getParentPinId();
+
+	/*! \brief Set The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
+	 */
+	void setParentPinId(std::string  parent_pin_id);
 	/*! \brief Get Pin metrics with associated time intervals if any.
 	 */
 	std::string getPinMetrics();
@@ -182,27 +160,32 @@ public:
 	/*! \brief Set Pin metrics with associated time intervals if any.
 	 */
 	void setPinMetrics(std::string  pin_metrics);
+	/*! \brief Get 
+	 */
+	std::string getTitle();
+
+	/*! \brief Set 
+	 */
+	void setTitle(std::string  title);
 
 private:
-	std::string id;
+	std::string alt_text;
+	std::string board_id;
+	BoardOwner board_owner;
+	std::string board_section_id;
 	std::string created_at;
-	std::string link;
-	std::string title;
+	CreativeType creative_type;
 	std::string description;
 	std::string dominant_color;
-	std::string alt_text;
-	CreativeType creative_type;
-	std::string board_id;
-	std::string board_section_id;
-	BoardOwner board_owner;
-	bool is_owner;
-	PinMedia media;
-	PinMediaSource media_source;
-	std::string parent_pin_id;
-	bool is_standard;
 	bool has_been_promoted;
-	std::string note;
+	std::string id;
+	bool is_owner;
+	bool is_standard;
+	std::string link;
+	PinMedia media;
+	std::string parent_pin_id;
 	std::string pin_metrics;
+	std::string title;
 	void __init();
 	void __cleanup();
 

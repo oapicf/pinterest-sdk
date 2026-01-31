@@ -1,0 +1,30 @@
+package models
+
+// QualityComponents - Set of quality components, with each component containing a event coverage and details.
+type QualityComponents struct {
+
+	AdvertiserExternalId map[string]QualityComponentDetails `json:"advertiser_external_id,omitempty"`
+
+	ClickIdEpik map[string]QualityComponentDetails `json:"click_id_epik,omitempty"`
+
+	// Dedup components.
+	ExternalEventId map[string]QualityComponentDetails `json:"external_event_id,omitempty"`
+
+	// User matching identifiers.
+	HashedEmail map[string]QualityComponentDetails `json:"hashed_email,omitempty"`
+
+	HashedMaid map[string]QualityComponentDetails `json:"hashed_maid,omitempty"`
+
+	IpAddress map[string]QualityComponentDetails `json:"ip_address,omitempty"`
+
+	OrderId map[string]QualityComponentDetails `json:"order_id,omitempty"`
+
+	OrderValue map[string]QualityComponentDetails `json:"order_value,omitempty"`
+
+	// Product/event metadata.
+	ProductId map[string]QualityComponentDetails `json:"product_id,omitempty"`
+
+	SourceUrl map[string]QualityComponentDetails `json:"source_url,omitempty"`
+
+	UserAgent map[string]QualityComponentDetails `json:"user_agent,omitempty"`
+}

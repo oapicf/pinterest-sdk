@@ -26,32 +26,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemCreateBatchRecord", description = "Object describing an item batch record to create items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemCreateBatchRecord implements ItemBatchRecord {
-
-  private @Nullable String itemId;
 
   private @Nullable ItemAttributesRequest attributes;
 
-  public ItemCreateBatchRecord itemId(@Nullable String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-   */
-  
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("item_id")
-  public @Nullable String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(@Nullable String itemId) {
-    this.itemId = itemId;
-  }
+  private @Nullable String itemId;
 
   public ItemCreateBatchRecord attributes(@Nullable ItemAttributesRequest attributes) {
     this.attributes = attributes;
@@ -73,6 +53,26 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
     this.attributes = attributes;
   }
 
+  public ItemCreateBatchRecord itemId(@Nullable String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+   */
+  
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("item_id")
+  public @Nullable String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(@Nullable String itemId) {
+    this.itemId = itemId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -82,21 +82,21 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
       return false;
     }
     ItemCreateBatchRecord itemCreateBatchRecord = (ItemCreateBatchRecord) o;
-    return Objects.equals(this.itemId, itemCreateBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemCreateBatchRecord.attributes);
+    return Objects.equals(this.attributes, itemCreateBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemCreateBatchRecord.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes);
+    return Objects.hash(attributes, itemId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemCreateBatchRecord {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

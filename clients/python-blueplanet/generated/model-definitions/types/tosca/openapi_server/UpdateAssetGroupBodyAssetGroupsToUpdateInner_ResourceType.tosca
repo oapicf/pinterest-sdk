@@ -1,0 +1,64 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateAssetGroupBodyAssetGroupsToUpdateInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateAssetGroupBodyAssetGroupsToUpdateInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupType = openapi_server.resourceTypes.AssetGroupType
+}
+resourceTypes {
+
+  UpdateAssetGroupBodyAssetGroupsToUpdateInner {
+    title = UpdateAssetGroupBodyAssetGroupsToUpdateInner
+    description = UpdateAssetGroupBodyAssetGroupsToUpdateInner
+    derivedFrom = Root
+    properties {
+        asset_group_id {
+          type =  string
+          description = "Unique identifier of the asset group to update."
+          optional = true
+        }
+        asset_group_types {
+          type = array
+          items.type = AssetGroupType
+          description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group."
+          optional = false
+        }
+        assets_to_add {
+          type = array
+          items.type =  string
+          description = "A list of asset ids to add to the asset group."
+          optional = false
+        }
+        assets_to_remove {
+          type = array
+          items.type =  string
+          description = "A list of asset ids to remove from the asset group."
+          optional = false
+        }
+        description {
+          type =  string
+          description = "Asset group description"
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Asset Group name"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateAssetGroupBodyAssetGroupsToUpdateInner {
+    title = UpdateAssetGroupBodyAssetGroupsToUpdateInner
+    description = UpdateAssetGroupBodyAssetGroupsToUpdateInner
+    implements = openapi_server.resourceTypes.UpdateAssetGroupBodyAssetGroupsToUpdateInner
+
+  }
+}

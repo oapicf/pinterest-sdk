@@ -1,24 +1,27 @@
 const utils = require('../utils/utils');
-const PinMedia = require('../models/PinMedia');
-const PinMediaWithImage_allOf_images = require('../models/PinMediaWithImage_allOf_images');
+const ImageSize = require('../models/ImageSize');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...ImageSize.fields(`${keyPrefix}images`, isInput),
             {
                 key: `${keyPrefix}media_type`,
                 label: `[${labelPrefix}media_type]`,
+                required: true,
                 type: 'string',
+                choices: [
+                    'image',
+                ],
             },
-            ...PinMediaWithImage_allOf_images.fields(`${keyPrefix}images`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'images': utils.removeIfEmpty(ImageSize.mapping(bundle, `${keyPrefix}images`)),
             'media_type': bundle.inputData?.[`${keyPrefix}media_type`],
-            'images': utils.removeIfEmpty(PinMediaWithImage_allOf_images.mapping(bundle, `${keyPrefix}images`)),
         }
     },
 }

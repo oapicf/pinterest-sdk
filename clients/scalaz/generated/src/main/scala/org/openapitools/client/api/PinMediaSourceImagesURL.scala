@@ -12,10 +12,11 @@ import org.joda.time.DateTime
 import PinMediaSourceImagesURL._
 
 case class PinMediaSourceImagesURL (
-  sourceType: Option[SourceType],
+  index: Option[Integer],
 /* Array with image objects. */
-  items: List[PinMediaSourceImagesURLItemsInner],
-index: Option[Integer])
+  items: List[PinMediaSourceImagesURLItem],
+/* The source type of the media. */
+  sourceType: SourceType)
 
 object PinMediaSourceImagesURL {
   import DateTimeCodecs._

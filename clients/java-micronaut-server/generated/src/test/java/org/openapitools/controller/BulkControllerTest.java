@@ -56,7 +56,7 @@ public class BulkControllerTest {
      *
      * The method should: Get advertiser entities in bulk
      *
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -90,7 +90,7 @@ public class BulkControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@70b456cf");
+            .accept("[Ljava.lang.String;@a0af2ac");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BulkDownloadResponse.class);
@@ -139,7 +139,7 @@ public class BulkControllerTest {
             put("bulk_request_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@75004ee2");
+            .accept("[Ljava.lang.String;@730ca420");
         request.getParameters()
             .add("include_details", String.valueOf(false)); // The query parameter format should be 
 
@@ -155,7 +155,7 @@ public class BulkControllerTest {
      *
      * The method should: Create/update ad entities in bulk
      *
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -189,7 +189,7 @@ public class BulkControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7974417e");
+            .accept("[Ljava.lang.String;@71a62ac6");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BulkUpsertResponse.class);

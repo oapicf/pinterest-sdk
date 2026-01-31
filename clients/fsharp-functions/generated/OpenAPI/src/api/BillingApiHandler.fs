@@ -69,6 +69,54 @@ module BillingApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
 
+    //#region BillingInvoiceDownloadGet
+    /// <summary>
+    /// Get download url for a billing invoice
+    /// </summary>
+   [<FunctionName("BillingInvoiceDownloadGet")>]
+    let BillingInvoiceDownloadGet
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download")>]
+        req:HttpRequest ) =
+
+      let result = BillingApiService.BillingInvoiceDownloadGet ()
+      match result with
+      | BillingInvoiceDownloadGetStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BillingInvoiceDownloadGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BillingInvoiceDownloadGetDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region BillingInvoicesGet
+    /// <summary>
+    /// Get billing invoices
+    /// </summary>
+   [<FunctionName("BillingInvoicesGet")>]
+    let BillingInvoicesGet
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/ad_accounts/{ad_account_id}/billing_invoices")>]
+        req:HttpRequest ) =
+
+      let result = BillingApiService.BillingInvoicesGet ()
+      match result with
+      | BillingInvoicesGetStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BillingInvoicesGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BillingInvoicesGetDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region BillingProfilesGet
     /// <summary>
     /// Get billing profiles

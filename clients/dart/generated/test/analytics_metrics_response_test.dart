@@ -16,15 +16,15 @@ void main() {
   // final instance = AnalyticsMetricsResponse();
 
   group('test AnalyticsMetricsResponse', () {
-    // The metric name and value over the requested period for each requested metric
-    // Map<String, num> summaryMetrics (default value: const {})
-    test('to test the property `summaryMetrics`', () async {
-      // TODO
-    });
-
     // Array with the requested daily metric records
     // List<AnalyticsDailyMetrics> dailyMetrics (default value: const [])
     test('to test the property `dailyMetrics`', () async {
+      // TODO
+    });
+
+    // The metric name and value over the requested period for each requested metric
+    // Map<String, num> summaryMetrics (default value: const {})
+    test('to test the property `summaryMetrics`', () async {
       // TODO
     });
 

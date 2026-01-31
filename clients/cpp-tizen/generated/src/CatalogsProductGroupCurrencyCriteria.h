@@ -48,22 +48,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	NonNullableCatalogsCurrency getValues();
-
-	/*! \brief Set 
-	 */
-	void setValues(NonNullableCatalogsCurrency  values);
-	/*! \brief Get 
-	 */
 	bool getNegated();
 
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	NonNullableCatalogsCurrency getValues();
+
+	/*! \brief Set 
+	 */
+	void setValues(NonNullableCatalogsCurrency  values);
 
 private:
-	NonNullableCatalogsCurrency values;
 	bool negated;
+	NonNullableCatalogsCurrency values;
 	void __init();
 	void __cleanup();
 

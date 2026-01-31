@@ -26,11 +26,11 @@ public class BulkDownloadRequestTest {
     }
 
     /**
-     * Test the property 'entityTypes'
+     * Test the property 'campaignFilter'
      */
     @Test
-    public void entityTypesTest() {
-        // TODO: test entityTypes
+    public void campaignFilterTest() {
+        // TODO: test campaignFilter
     }
 
     /**
@@ -42,19 +42,11 @@ public class BulkDownloadRequestTest {
     }
 
     /**
-     * Test the property 'updatedSince'
+     * Test the property 'entityTypes'
      */
     @Test
-    public void updatedSinceTest() {
-        // TODO: test updatedSince
-    }
-
-    /**
-     * Test the property 'campaignFilter'
-     */
-    @Test
-    public void campaignFilterTest() {
-        // TODO: test campaignFilter
+    public void entityTypesTest() {
+        // TODO: test entityTypes
     }
 
     /**
@@ -63,6 +55,14 @@ public class BulkDownloadRequestTest {
     @Test
     public void outputFormatTest() {
         // TODO: test outputFormat
+    }
+
+    /**
+     * Test the property 'updatedSince'
+     */
+    @Test
+    public void updatedSinceTest() {
+        // TODO: test updatedSince
     }
 
 }

@@ -92,7 +92,7 @@ BulkEntityType <- R6::R6Class(
 
 # add to utils.R
 .parse_BulkEntityType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[CAMPAIGN, AD_GROUP, PRODUCT_GROUP, AD, KEYWORD]")
+  res <- gsub("^\\[|\\]$", "", "[CAMPAIGN, AD_GROUP, PRODUCT_GROUP, AD, KEYWORD, LABEL, SCHEDULE]")
   unlist(strsplit(res, ", "))
 }
 

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `Pin`
 --
-SELECT `id`, `created_at`, `link`, `title`, `description`, `dominant_color`, `alt_text`, `creative_type`, `board_id`, `board_section_id`, `board_owner`, `is_owner`, `media`, `media_source`, `parent_pin_id`, `is_standard`, `has_been_promoted`, `note`, `pin_metrics` FROM `Pin` WHERE 1;
+SELECT `alt_text`, `board_id`, `board_owner`, `board_section_id`, `created_at`, `creative_type`, `description`, `dominant_color`, `has_been_promoted`, `id`, `is_owner`, `is_standard`, `link`, `media`, `parent_pin_id`, `pin_metrics`, `title` FROM `Pin` WHERE 1;
 
 --
 -- INSERT template for table `Pin`
 --
-INSERT INTO `Pin`(`id`, `created_at`, `link`, `title`, `description`, `dominant_color`, `alt_text`, `creative_type`, `board_id`, `board_section_id`, `board_owner`, `is_owner`, `media`, `media_source`, `parent_pin_id`, `is_standard`, `has_been_promoted`, `note`, `pin_metrics`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `Pin`(`alt_text`, `board_id`, `board_owner`, `board_section_id`, `created_at`, `creative_type`, `description`, `dominant_color`, `has_been_promoted`, `id`, `is_owner`, `is_standard`, `link`, `media`, `parent_pin_id`, `pin_metrics`, `title`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `Pin`
 --
-UPDATE `Pin` SET `id` = ?, `created_at` = ?, `link` = ?, `title` = ?, `description` = ?, `dominant_color` = ?, `alt_text` = ?, `creative_type` = ?, `board_id` = ?, `board_section_id` = ?, `board_owner` = ?, `is_owner` = ?, `media` = ?, `media_source` = ?, `parent_pin_id` = ?, `is_standard` = ?, `has_been_promoted` = ?, `note` = ?, `pin_metrics` = ? WHERE 1;
+UPDATE `Pin` SET `alt_text` = ?, `board_id` = ?, `board_owner` = ?, `board_section_id` = ?, `created_at` = ?, `creative_type` = ?, `description` = ?, `dominant_color` = ?, `has_been_promoted` = ?, `id` = ?, `is_owner` = ?, `is_standard` = ?, `link` = ?, `media` = ?, `parent_pin_id` = ?, `pin_metrics` = ?, `title` = ? WHERE 1;
 
 --
 -- DELETE template for table `Pin`

@@ -2,17 +2,17 @@
 Protected Class ImageMetadata
 
 	#tag Property, Flags = &h0
-		item_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		title As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		images As OpenAPIClient.Models.ImageSize
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		item_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -22,7 +22,7 @@ Protected Class ImageMetadata
 
 
 	#tag Property, Flags = &h0
-		images As OpenAPIClient.Models.ImageMetadataImages
+		title As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -63,23 +63,23 @@ Protected Class ImageMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="title"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="images"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ImageSize"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -95,11 +95,11 @@ Protected Class ImageMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="images"
+			Name="title"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ImageMetadataImages"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

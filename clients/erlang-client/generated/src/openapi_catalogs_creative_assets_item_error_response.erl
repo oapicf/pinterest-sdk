@@ -7,7 +7,7 @@
 -type openapi_catalogs_creative_assets_item_error_response() ::
     #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'creative_assets_id' => binary(),
-       'errors' => list()
+       'errors' := list()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,

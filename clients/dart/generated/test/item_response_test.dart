@@ -21,6 +21,11 @@ void main() {
       // TODO
     });
 
+    // CatalogsCreativeAssetsAttributes attributes
+    test('to test the property `attributes`', () async {
+      // TODO
+    });
+
     // The catalog item id in the merchant namespace
     // String itemId
     test('to test the property `itemId`', () async {
@@ -30,11 +35,6 @@ void main() {
     // The pins mapped to the item
     // List<Pin> pins (default value: const [])
     test('to test the property `pins`', () async {
-      // TODO
-    });
-
-    // CatalogsCreativeAssetsAttributes attributes
-    test('to test the property `attributes`', () async {
       // TODO
     });
 

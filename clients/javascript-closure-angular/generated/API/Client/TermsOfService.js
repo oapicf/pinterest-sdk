@@ -6,18 +6,11 @@ goog.provide('API.Client.TermsOfService');
 API.Client.TermsOfService = function() {}
 
 /**
- * The ID of the terms of service
+ * The ID of the ad account.
  * @type {!string}
  * @export
  */
-API.Client.TermsOfService.prototype.id;
-
-/**
- * The terms of service content
- * @type {!string}
- * @export
- */
-API.Client.TermsOfService.prototype.html;
+API.Client.TermsOfService.prototype.adAccountId;
 
 /**
  * Whether the ad account has accepted terms of service.
@@ -27,9 +20,16 @@ API.Client.TermsOfService.prototype.html;
 API.Client.TermsOfService.prototype.hasAccepted;
 
 /**
- * The ID of the ad account.
+ * The terms of service content
  * @type {!string}
  * @export
  */
-API.Client.TermsOfService.prototype.adAccountId;
+API.Client.TermsOfService.prototype.html;
+
+/**
+ * The ID of the terms of service
+ * @type {!string}
+ * @export
+ */
+API.Client.TermsOfService.prototype.id;
 

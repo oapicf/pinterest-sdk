@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UpdatedAssetGroups** | [**AssetGroupBinding[]**](AssetGroupBinding.md) | A list of successfully edited asset groups. | [optional] 
 **Exceptions** | [**UpdateAssetGroupResponseExceptionsInner[]**](UpdateAssetGroupResponseExceptionsInner.md) | A list of errors associated with the asset groups. Will be returned if there is an error. | [optional] 
+**UpdatedAssetGroups** | [**AssetGroupBinding[]**](AssetGroupBinding.md) | A list of successfully edited asset groups. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UpdateAssetGroupResponse = Initialize-PSOpenAPIToolsUpdateAssetGroupResponse  -UpdatedAssetGroups null `
- -Exceptions null
+$UpdateAssetGroupResponse = Initialize-PSOpenAPIToolsUpdateAssetGroupResponse  -Exceptions null `
+ -UpdatedAssetGroups null
 ```
 
 - Convert the resource to JSON

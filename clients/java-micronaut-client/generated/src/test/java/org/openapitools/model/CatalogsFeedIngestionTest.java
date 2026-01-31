@@ -22,11 +22,11 @@ public class CatalogsFeedIngestionTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'createdAt'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
@@ -38,11 +38,11 @@ public class CatalogsFeedIngestionTest {
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'id'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+    public void idTest() {
+        // TODO: test id
     }
 
     /**

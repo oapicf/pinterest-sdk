@@ -13,32 +13,32 @@ import AnyCodable
 public struct KeywordUpdate: Codable, JSONEncodable, Hashable {
 
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Keyword ID. */
-    public var id: String
     /** Is keyword archived? */
     public var archived: Bool?
     /** </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     public var bid: Int?
+    /** Keyword ID. */
+    public var id: String
 
-    public init(id: String, archived: Bool? = nil, bid: Int? = nil) {
-        self.id = id
+    public init(archived: Bool? = nil, bid: Int? = nil, id: String) {
         self.archived = archived
         self.bid = bid
+        self.id = id
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
         case archived
         case bid
+        case id
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(archived, forKey: .archived)
         try container.encodeIfPresent(bid, forKey: .bid)
+        try container.encode(id, forKey: .id)
     }
 }
 

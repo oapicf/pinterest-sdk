@@ -6,15 +6,15 @@
 
 -type openapi_catalogs_hotel_item_error_response() ::
     #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
-       'hotel_id' => binary(),
-       'errors' => list()
+       'errors' := list(),
+       'hotel_id' => binary()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
-          'hotel_id' := HotelId,
-          'errors' := Errors
+          'errors' := Errors,
+          'hotel_id' := HotelId
         }) ->
     #{ 'catalog_type' => CatalogType,
-       'hotel_id' => HotelId,
-       'errors' => Errors
+       'errors' => Errors,
+       'hotel_id' => HotelId
      }.

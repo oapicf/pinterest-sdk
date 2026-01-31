@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **options** | [**Array&lt;QuizPinOption&gt;**](QuizPinOption.md) |  | [optional] |
 | **question_id** | **Float** |  | [optional] |
 | **question_text** | **String** |  | [optional] |
-| **options** | [**Array&lt;QuizPinOption&gt;**](QuizPinOption.md) |  | [optional] |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::QuizPinQuestion.new(
+  options: null,
   question_id: null,
-  question_text: null,
-  options: null
+  question_text: null
 )
 ```
 

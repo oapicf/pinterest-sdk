@@ -2,11 +2,6 @@
 Protected Class CatalogsReportDistributionStats
 
 	#tag Property, Flags = &h0
-		report_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			ID of the catalog entity.
 		#tag EndNote
@@ -32,6 +27,22 @@ Protected Class CatalogsReportDistributionStats
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Indicates if issue makes items ineligible for ads distribution
+		#tag EndNote
+		ineligible_for_ads As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Indicates if issue makes items ineligible for organic distribution
+		#tag EndNote
+		ineligible_for_organic As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Title message describing the diagnostic issue
 		#tag EndNote
 		message As Xoson.O.OptionalString
@@ -47,18 +58,7 @@ Protected Class CatalogsReportDistributionStats
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Indicates if issue makes items ineligible for ads distribution
-		#tag EndNote
-		ineligible_for_ads As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Indicates if issue makes items ineligible for organic distribution
-		#tag EndNote
-		ineligible_for_organic As Xoson.O.OptionalBoolean
+		report_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -140,22 +140,6 @@ Protected Class CatalogsReportDistributionStats
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="message"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="occurrences"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ineligible_for_ads"
 			Visible=false
 			Group="Behavior"
@@ -169,6 +153,22 @@ Protected Class CatalogsReportDistributionStats
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="message"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="occurrences"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -82,7 +82,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Business id
+let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
 let cancelInvitesBody = new PinterestSdk.CancelInvitesBody(); // CancelInvitesBody | A list with invite ids
 apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody, (error, data, response) => {
   if (error) {
@@ -98,7 +98,7 @@ apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody, (error, data,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String**| Business id | 
+ **businessId** | **String**| Unique identifier of the requesting business. | 
  **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
 
 ### Return type
@@ -184,7 +184,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Business id
+let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
 let createMembershipOrPartnershipInvitesBody = new PinterestSdk.CreateMembershipOrPartnershipInvitesBody(); // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody, (error, data, response) => {
   if (error) {
@@ -200,7 +200,7 @@ apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrP
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String**| Business id | 
+ **businessId** | **String**| Unique identifier of the requesting business. | 
  **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

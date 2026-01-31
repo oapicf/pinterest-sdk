@@ -1,5 +1,6 @@
 namespace OpenAPI
 
+open OpenAPI.Model.CreativeType
 open OpenAPI.Model.Error
 open System.Collections.Generic
 open OpenAPI.Model.Pin
@@ -8,6 +9,7 @@ open OpenAPI.Model.PinCreate
 open OpenAPI.Model.PinUpdate
 open OpenAPI.Model.PinsList200Response
 open OpenAPI.Model.PinsSaveRequest
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -148,36 +150,46 @@ module PinsApiHandlerParams =
     //#endregion
 
 
+    type PinsCreateStatusCode200Response = {
+      content:Pin;
+      
+    }
+
     type PinsCreateStatusCode201Response = {
       content:Pin;
       
     }
 
     type PinsCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PinsCreateStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type PinsCreateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsCreateStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsCreateStatusCode429Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PinsCreateResult = PinsCreateStatusCode201 of PinsCreateStatusCode201Response|PinsCreateStatusCode400 of PinsCreateStatusCode400Response|PinsCreateStatusCode403 of PinsCreateStatusCode403Response|PinsCreateStatusCode404 of PinsCreateStatusCode404Response|PinsCreateStatusCode429 of PinsCreateStatusCode429Response|PinsCreateDefaultStatusCode of PinsCreateDefaultStatusCodeResponse
+    type PinsCreateResult = PinsCreateStatusCode200 of PinsCreateStatusCode200Response|PinsCreateStatusCode201 of PinsCreateStatusCode201Response|PinsCreateStatusCode400 of PinsCreateStatusCode400Response|PinsCreateStatusCode401 of PinsCreateStatusCode401Response|PinsCreateStatusCode403 of PinsCreateStatusCode403Response|PinsCreateStatusCode404 of PinsCreateStatusCode404Response|PinsCreateStatusCode429 of PinsCreateStatusCode429Response|PinsCreateDefaultStatusCode of PinsCreateDefaultStatusCodeResponse
 
     type PinsCreateArgs = {
       queryParams:Result<PinsCreateQueryParams,string>;
@@ -204,21 +216,36 @@ module PinsApiHandlerParams =
       
     }
 
+    type PinsDeleteStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PinsDeleteStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
     type PinsDeleteStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsDeleteStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PinsDeleteStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PinsDeleteDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PinsDeleteResult = PinsDeleteStatusCode204 of PinsDeleteStatusCode204Response|PinsDeleteStatusCode403 of PinsDeleteStatusCode403Response|PinsDeleteStatusCode404 of PinsDeleteStatusCode404Response|PinsDeleteDefaultStatusCode of PinsDeleteDefaultStatusCodeResponse
+    type PinsDeleteResult = PinsDeleteStatusCode204 of PinsDeleteStatusCode204Response|PinsDeleteStatusCode400 of PinsDeleteStatusCode400Response|PinsDeleteStatusCode401 of PinsDeleteStatusCode401Response|PinsDeleteStatusCode403 of PinsDeleteStatusCode403Response|PinsDeleteStatusCode404 of PinsDeleteStatusCode404Response|PinsDeleteStatusCode429 of PinsDeleteStatusCode429Response|PinsDeleteDefaultStatusCode of PinsDeleteDefaultStatusCodeResponse
 
     type PinsDeleteArgs = {
       pathParams:PinsDeletePathParams;
@@ -234,10 +261,10 @@ module PinsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type PinsGetQueryParams = {
-      pinMetrics : bool option;
-
-
       adAccountId : string option;
+
+
+      pinMetrics : bool option;
 
     }
     //#endregion
@@ -248,21 +275,36 @@ module PinsApiHandlerParams =
       
     }
 
+    type PinsGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PinsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
     type PinsGetStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsGetStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PinsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PinsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PinsGetResult = PinsGetStatusCode200 of PinsGetStatusCode200Response|PinsGetStatusCode403 of PinsGetStatusCode403Response|PinsGetStatusCode404 of PinsGetStatusCode404Response|PinsGetDefaultStatusCode of PinsGetDefaultStatusCodeResponse
+    type PinsGetResult = PinsGetStatusCode200 of PinsGetStatusCode200Response|PinsGetStatusCode400 of PinsGetStatusCode400Response|PinsGetStatusCode401 of PinsGetStatusCode401Response|PinsGetStatusCode403 of PinsGetStatusCode403Response|PinsGetStatusCode404 of PinsGetStatusCode404Response|PinsGetStatusCode429 of PinsGetStatusCode429Response|PinsGetDefaultStatusCode of PinsGetDefaultStatusCodeResponse
 
     type PinsGetArgs = {
       pathParams:PinsGetPathParams;
@@ -272,13 +314,10 @@ module PinsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type PinsListQueryParams = {
-      bookmark : string option;
-
-
-      pageSize : int option;
-
-
       pinFilter : string option;
+
+
+      pinMetrics : bool option;
 
 
       includeProtectedPins : bool option;
@@ -287,13 +326,16 @@ module PinsApiHandlerParams =
       pinType : string option;
 
 
-      creativeTypes : string[] option;
+      creativeTypes : CreativeType[] option;
 
 
       adAccountId : string option;
 
 
-      pinMetrics : bool option;
+      bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -305,15 +347,35 @@ module PinsApiHandlerParams =
     }
 
     type PinsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PinsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PinsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PinsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PinsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PinsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PinsListResult = PinsListStatusCode200 of PinsListStatusCode200Response|PinsListStatusCode400 of PinsListStatusCode400Response|PinsListDefaultStatusCode of PinsListDefaultStatusCodeResponse
+    type PinsListResult = PinsListStatusCode200 of PinsListStatusCode200Response|PinsListStatusCode400 of PinsListStatusCode400Response|PinsListStatusCode401 of PinsListStatusCode401Response|PinsListStatusCode403 of PinsListStatusCode403Response|PinsListStatusCode404 of PinsListStatusCode404Response|PinsListStatusCode429 of PinsListStatusCode429Response|PinsListDefaultStatusCode of PinsListDefaultStatusCodeResponse
 
     type PinsListArgs = {
       queryParams:Result<PinsListQueryParams,string>;
@@ -391,26 +453,36 @@ module PinsApiHandlerParams =
       
     }
 
+    type PinsUpdateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PinsUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
     type PinsUpdateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsUpdateStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsUpdateStatusCode429Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type PinsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PinsUpdateResult = PinsUpdateStatusCode200 of PinsUpdateStatusCode200Response|PinsUpdateStatusCode403 of PinsUpdateStatusCode403Response|PinsUpdateStatusCode404 of PinsUpdateStatusCode404Response|PinsUpdateStatusCode429 of PinsUpdateStatusCode429Response|PinsUpdateDefaultStatusCode of PinsUpdateDefaultStatusCodeResponse
+    type PinsUpdateResult = PinsUpdateStatusCode200 of PinsUpdateStatusCode200Response|PinsUpdateStatusCode400 of PinsUpdateStatusCode400Response|PinsUpdateStatusCode401 of PinsUpdateStatusCode401Response|PinsUpdateStatusCode403 of PinsUpdateStatusCode403Response|PinsUpdateStatusCode404 of PinsUpdateStatusCode404Response|PinsUpdateStatusCode429 of PinsUpdateStatusCode429Response|PinsUpdateDefaultStatusCode of PinsUpdateDefaultStatusCodeResponse
 
     type PinsUpdateArgs = {
       pathParams:PinsUpdatePathParams;

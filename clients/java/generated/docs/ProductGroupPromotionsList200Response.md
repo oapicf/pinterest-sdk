@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;ProductGroupPromotionResponseItem&gt;**](ProductGroupPromotionResponseItem.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  |  |
 
 
 

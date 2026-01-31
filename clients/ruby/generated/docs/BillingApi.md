@@ -6,6 +6,8 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | ------ | ------------ | ----------- |
 | [**ads_credit_redeem**](BillingApi.md#ads_credit_redeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 | [**ads_credits_discounts_get**](BillingApi.md#ads_credits_discounts_get) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+| [**billing_invoice_download_get**](BillingApi.md#billing_invoice_download_get) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
+| [**billing_invoices_get**](BillingApi.md#billing_invoices_get) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
 | [**billing_profiles_get**](BillingApi.md#billing_profiles_get) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
 | [**ssio_accounts_get**](BillingApi.md#ssio_accounts_get) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
 | [**ssio_insertion_order_create**](BillingApi.md#ssio_insertion_order_create) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
@@ -21,7 +23,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -92,7 +94,7 @@ end
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -161,13 +163,171 @@ end
 - **Accept**: application/json
 
 
+## billing_invoice_download_get
+
+> <BillingInvoiceDownloadResponse> billing_invoice_download_get(ad_account_id, billing_invoice_id)
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pinterest_sdk'
+# setup authorization
+PinterestSdkClient.configure do |config|
+  # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = PinterestSdkClient::BillingApi.new
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
+billing_invoice_id = 'billing_invoice_id_example' # String | Unique identifier of a billing invoice.
+
+begin
+  # Get download url for a billing invoice
+  result = api_instance.billing_invoice_download_get(ad_account_id, billing_invoice_id)
+  p result
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BillingApi->billing_invoice_download_get: #{e}"
+end
+```
+
+#### Using the billing_invoice_download_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BillingInvoiceDownloadResponse>, Integer, Hash)> billing_invoice_download_get_with_http_info(ad_account_id, billing_invoice_id)
+
+```ruby
+begin
+  # Get download url for a billing invoice
+  data, status_code, headers = api_instance.billing_invoice_download_get_with_http_info(ad_account_id, billing_invoice_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BillingInvoiceDownloadResponse>
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BillingApi->billing_invoice_download_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **billing_invoice_id** | **String** | Unique identifier of a billing invoice. |  |
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## billing_invoices_get
+
+> <BillingInvoicesGet200Response> billing_invoices_get(ad_account_id, opts)
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pinterest_sdk'
+# setup authorization
+PinterestSdkClient.configure do |config|
+  # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = PinterestSdkClient::BillingApi.new
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
+opts = {
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  sort: 'DUE_DATE', # String | Field of which to sort billing invoices
+  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+  status: 'OPEN', # String | Status of billing invoices to filter by
+  document_type: 'INVOICE', # String | Document type of billing invoices to filter by
+  start_due_date: Date.parse('Sun Jan 01 00:00:00 UTC 2023'), # Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+  end_due_date: Date.parse('Mon Jan 01 00:00:00 UTC 2024') # Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+}
+
+begin
+  # Get billing invoices
+  result = api_instance.billing_invoices_get(ad_account_id, opts)
+  p result
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BillingApi->billing_invoices_get: #{e}"
+end
+```
+
+#### Using the billing_invoices_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BillingInvoicesGet200Response>, Integer, Hash)> billing_invoices_get_with_http_info(ad_account_id, opts)
+
+```ruby
+begin
+  # Get billing invoices
+  data, status_code, headers = api_instance.billing_invoices_get_with_http_info(ad_account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BillingInvoicesGet200Response>
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BillingApi->billing_invoices_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **sort** | **String** | Field of which to sort billing invoices | [optional][default to &#39;DUE_DATE&#39;] |
+| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **status** | **String** | Status of billing invoices to filter by | [optional] |
+| **document_type** | **String** | Document type of billing invoices to filter by | [optional] |
+| **start_due_date** | **Date** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+| **end_due_date** | **Date** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+
+### Return type
+
+[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## billing_profiles_get
 
 > <BillingProfilesGet200Response> billing_profiles_get(ad_account_id, is_active, opts)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -328,7 +488,7 @@ end
 
 api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-ssio_create_insertion_order_request = PinterestSdkClient::SSIOCreateInsertionOrderRequest.new({start_date: '2020-12-20', po_number: 'po_number_example', billing_contact_firstname: 'billing_contact_firstname_example', billing_contact_lastname: 'billing_contact_lastname_example', billing_contact_email: 'test@example', media_contact_firstname: 'media_contact_firstname_example', media_contact_lastname: 'media_contact_lastname_example', media_contact_email: 'test@example', pmp_id: 'pmp_id_example', order_name: 'order_name_example', order_line_type: 'BUDGET', accepted_terms_id: 'accepted_terms_id_example', billto_company_id: 'billto_company_id_example', billto_business_address_id: 'billto_business_address_id_example', billto_billing_address_id: 'billto_billing_address_id_example', currency_info: PinterestSdkClient::Currency::UNK}) # SSIOCreateInsertionOrderRequest | Order line to create.
+ssio_create_insertion_order_request = PinterestSdkClient::SSIOCreateInsertionOrderRequest.new({billing_contact_email: 'test@example', billing_contact_firstname: 'billing_contact_firstname_example', billing_contact_lastname: 'billing_contact_lastname_example', media_contact_email: 'test@example', media_contact_firstname: 'media_contact_firstname_example', media_contact_lastname: 'media_contact_lastname_example', po_number: 'po_number_example', start_date: '2020-12-20', accepted_terms_id: 'accepted_terms_id_example', billto_billing_address_id: 'billto_billing_address_id_example', billto_business_address_id: 'billto_business_address_id_example', billto_company_id: 'billto_company_id_example', currency_info: PinterestSdkClient::Currency::UNK, order_line_type: 'BUDGET', order_name: 'order_name_example', pmp_id: 'pmp_id_example'}) # SSIOCreateInsertionOrderRequest | Order line to create.
 
 begin
   # Create insertion order through SSIO.

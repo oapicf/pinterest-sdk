@@ -25,7 +25,7 @@ import java.util.List;
  * CatalogsItemsPostFilters
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsPostFilter.class, name = "CREATIVE_ASSETS"),
@@ -37,12 +37,12 @@ public class CatalogsItemsPostFilters   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   @JsonProperty("item_ids")
   
   private List<String> itemIds = new ArrayList<>();
-
-  @JsonProperty("catalog_id")
-  private String catalogId;
 
   @JsonProperty("hotel_ids")
   
@@ -70,6 +70,24 @@ public class CatalogsItemsPostFilters   {
     this.catalogType = catalogType;
   }
 
+  public CatalogsItemsPostFilters catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * @return catalogId
+   */
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
   public CatalogsItemsPostFilters itemIds(List<String> itemIds) {
     this.itemIds = itemIds;
     return this;
@@ -94,24 +112,6 @@ public class CatalogsItemsPostFilters   {
 
   public void setItemIds(List<String> itemIds) {
     this.itemIds = itemIds;
-  }
-
-  public CatalogsItemsPostFilters catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   * @return catalogId
-   */
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
   }
 
   public CatalogsItemsPostFilters hotelIds(List<String> hotelIds) {
@@ -177,15 +177,15 @@ public class CatalogsItemsPostFilters   {
     }
     CatalogsItemsPostFilters catalogsItemsPostFilters = (CatalogsItemsPostFilters) o;
     return Objects.equals(this.catalogType, catalogsItemsPostFilters.catalogType) &&
-        Objects.equals(this.itemIds, catalogsItemsPostFilters.itemIds) &&
         Objects.equals(this.catalogId, catalogsItemsPostFilters.catalogId) &&
+        Objects.equals(this.itemIds, catalogsItemsPostFilters.itemIds) &&
         Objects.equals(this.hotelIds, catalogsItemsPostFilters.hotelIds) &&
         Objects.equals(this.creativeAssetsIds, catalogsItemsPostFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -194,8 +194,8 @@ public class CatalogsItemsPostFilters   {
     sb.append("class CatalogsItemsPostFilters {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");

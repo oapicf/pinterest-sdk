@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "Exception.h"
 #include "UserListOperationType.h"
 #include "Object.h"
 
@@ -47,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-	 */
-	std::string getRecords();
-
-	/*! \brief Set Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-	 */
-	void setRecords(std::string  records);
 	/*! \brief Get 
 	 */
 	UserListOperationType getOperationType();
@@ -61,18 +53,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setOperationType(UserListOperationType  operation_type);
-	/*! \brief Get 
+	/*! \brief Get Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
 	 */
-	Exception getExceptions();
+	std::string getRecords();
 
-	/*! \brief Set 
+	/*! \brief Set Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
 	 */
-	void setExceptions(Exception  exceptions);
+	void setRecords(std::string  records);
 
 private:
-	std::string records;
 	UserListOperationType operation_type;
-	Exception exceptions;
+	std::string records;
 	void __init();
 	void __cleanup();
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ad_account_id** | **string** | Associated ad account ID. | [optional] [default to undefined]
 **created_time** | **number** | Creation time. Unix timestamp in seconds. | [optional] [default to undefined]
+**exceptions** | **object** | Customer list errors | [optional] [default to undefined]
 **id** | **string** | Customer list ID. | [optional] [default to undefined]
 **name** | **string** | Customer list name. | [optional] [default to undefined]
 **num_batches** | **number** | Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. | [optional] [default to undefined]
@@ -15,7 +16,6 @@ Name | Type | Description | Notes
 **status** | **string** | Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. | [optional] [default to undefined]
 **type** | **string** | Always \&quot;customerlist\&quot;. | [optional] [default to undefined]
 **updated_time** | **number** | Last update time. Unix timestamp in seconds. | [optional] [default to undefined]
-**exceptions** | **object** | Customer list errors | [optional] [default to undefined]
 
 ## Example
 
@@ -25,6 +25,7 @@ import { CustomerList } from './api';
 const instance: CustomerList = {
     ad_account_id,
     created_time,
+    exceptions,
     id,
     name,
     num_batches,
@@ -33,7 +34,6 @@ const instance: CustomerList = {
     status,
     type,
     updated_time,
-    exceptions,
 };
 ```
 

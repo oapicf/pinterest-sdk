@@ -10,10 +10,10 @@
 
 
 export interface AudienceInsightCategoryCommon { 
+    id?: string;
+    index?: number;
     key?: string;
     name?: string;
     ratio?: number;
-    index?: number;
-    id?: string;
 }
 

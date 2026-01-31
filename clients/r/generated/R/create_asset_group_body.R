@@ -7,8 +7,8 @@
 #' @title CreateAssetGroupBody
 #' @description CreateAssetGroupBody Class
 #' @format An \code{R6Class} generator object
-#' @field asset_group_name Asset Group name character
 #' @field asset_group_description Asset group description character
+#' @field asset_group_name Asset Group name character
 #' @field asset_group_types Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. list(\link{AssetGroupType})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,29 +16,29 @@
 CreateAssetGroupBody <- R6::R6Class(
   "CreateAssetGroupBody",
   public = list(
-    `asset_group_name` = NULL,
     `asset_group_description` = NULL,
+    `asset_group_name` = NULL,
     `asset_group_types` = NULL,
 
     #' @description
     #' Initialize a new CreateAssetGroupBody class.
     #'
-    #' @param asset_group_name Asset Group name
     #' @param asset_group_description Asset group description
+    #' @param asset_group_name Asset Group name
     #' @param asset_group_types Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
     #' @param ... Other optional arguments.
-    initialize = function(`asset_group_name`, `asset_group_description`, `asset_group_types`, ...) {
-      if (!missing(`asset_group_name`)) {
-        if (!(is.character(`asset_group_name`) && length(`asset_group_name`) == 1)) {
-          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", `asset_group_name`))
-        }
-        self$`asset_group_name` <- `asset_group_name`
-      }
+    initialize = function(`asset_group_description`, `asset_group_name`, `asset_group_types`, ...) {
       if (!missing(`asset_group_description`)) {
         if (!(is.character(`asset_group_description`) && length(`asset_group_description`) == 1)) {
           stop(paste("Error! Invalid data for `asset_group_description`. Must be a string:", `asset_group_description`))
         }
         self$`asset_group_description` <- `asset_group_description`
+      }
+      if (!missing(`asset_group_name`)) {
+        if (!(is.character(`asset_group_name`) && length(`asset_group_name`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", `asset_group_name`))
+        }
+        self$`asset_group_name` <- `asset_group_name`
       }
       if (!missing(`asset_group_types`)) {
         stopifnot(is.vector(`asset_group_types`), length(`asset_group_types`) != 0)
@@ -78,13 +78,13 @@ CreateAssetGroupBody <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CreateAssetGroupBodyObject <- list()
-      if (!is.null(self$`asset_group_name`)) {
-        CreateAssetGroupBodyObject[["asset_group_name"]] <-
-          self$`asset_group_name`
-      }
       if (!is.null(self$`asset_group_description`)) {
         CreateAssetGroupBodyObject[["asset_group_description"]] <-
           self$`asset_group_description`
+      }
+      if (!is.null(self$`asset_group_name`)) {
+        CreateAssetGroupBodyObject[["asset_group_name"]] <-
+          self$`asset_group_name`
       }
       if (!is.null(self$`asset_group_types`)) {
         CreateAssetGroupBodyObject[["asset_group_types"]] <-
@@ -100,11 +100,11 @@ CreateAssetGroupBody <- R6::R6Class(
     #' @return the instance of CreateAssetGroupBody
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`asset_group_name`)) {
-        self$`asset_group_name` <- this_object$`asset_group_name`
-      }
       if (!is.null(this_object$`asset_group_description`)) {
         self$`asset_group_description` <- this_object$`asset_group_description`
+      }
+      if (!is.null(this_object$`asset_group_name`)) {
+        self$`asset_group_name` <- this_object$`asset_group_name`
       }
       if (!is.null(this_object$`asset_group_types`)) {
         self$`asset_group_types` <- ApiClient$new()$deserializeObj(this_object$`asset_group_types`, "array[AssetGroupType]", loadNamespace("openapi"))
@@ -130,8 +130,8 @@ CreateAssetGroupBody <- R6::R6Class(
     #' @return the instance of CreateAssetGroupBody
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`asset_group_name` <- this_object$`asset_group_name`
       self$`asset_group_description` <- this_object$`asset_group_description`
+      self$`asset_group_name` <- this_object$`asset_group_name`
       self$`asset_group_types` <- ApiClient$new()$deserializeObj(this_object$`asset_group_types`, "array[AssetGroupType]", loadNamespace("openapi"))
       self
     },
@@ -142,14 +142,6 @@ CreateAssetGroupBody <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `asset_group_name`
-      if (!is.null(input_json$`asset_group_name`)) {
-        if (!(is.character(input_json$`asset_group_name`) && length(input_json$`asset_group_name`) == 1)) {
-          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", input_json$`asset_group_name`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateAssetGroupBody: the required field `asset_group_name` is missing."))
-      }
       # check the required field `asset_group_description`
       if (!is.null(input_json$`asset_group_description`)) {
         if (!(is.character(input_json$`asset_group_description`) && length(input_json$`asset_group_description`) == 1)) {
@@ -157,6 +149,14 @@ CreateAssetGroupBody <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateAssetGroupBody: the required field `asset_group_description` is missing."))
+      }
+      # check the required field `asset_group_name`
+      if (!is.null(input_json$`asset_group_name`)) {
+        if (!(is.character(input_json$`asset_group_name`) && length(input_json$`asset_group_name`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", input_json$`asset_group_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateAssetGroupBody: the required field `asset_group_name` is missing."))
       }
       # check the required field `asset_group_types`
       if (!is.null(input_json$`asset_group_types`)) {
@@ -180,13 +180,13 @@ CreateAssetGroupBody <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `asset_group_name` is null
-      if (is.null(self$`asset_group_name`)) {
+      # check if the required `asset_group_description` is null
+      if (is.null(self$`asset_group_description`)) {
         return(FALSE)
       }
 
-      # check if the required `asset_group_description` is null
-      if (is.null(self$`asset_group_description`)) {
+      # check if the required `asset_group_name` is null
+      if (is.null(self$`asset_group_name`)) {
         return(FALSE)
       }
 
@@ -204,14 +204,14 @@ CreateAssetGroupBody <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `asset_group_name` is null
-      if (is.null(self$`asset_group_name`)) {
-        invalid_fields["asset_group_name"] <- "Non-nullable required field `asset_group_name` cannot be null."
-      }
-
       # check if the required `asset_group_description` is null
       if (is.null(self$`asset_group_description`)) {
         invalid_fields["asset_group_description"] <- "Non-nullable required field `asset_group_description` cannot be null."
+      }
+
+      # check if the required `asset_group_name` is null
+      if (is.null(self$`asset_group_name`)) {
+        invalid_fields["asset_group_name"] <- "Non-nullable required field `asset_group_name` cannot be null."
       }
 
       # check if the required `asset_group_types` is null

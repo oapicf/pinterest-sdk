@@ -10,5 +10,5 @@
   binary().
 
 openapi_bulk_entity_type() ->
-  elements([<<"CAMPAIGN">>, <<"AD_GROUP">>, <<"PRODUCT_GROUP">>, <<"AD">>, <<"KEYWORD">>]).
+  elements([<<"CAMPAIGN">>, <<"AD_GROUP">>, <<"PRODUCT_GROUP">>, <<"AD">>, <<"KEYWORD">>, <<"LABEL">>, <<"SCHEDULE">>]).
 

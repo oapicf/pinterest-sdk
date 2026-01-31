@@ -12,9 +12,8 @@ import org.joda.time.DateTime
 import BoardsList200Response._
 
 case class BoardsList200Response (
-  /* Boards */
-  items: List[Board],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[Board])
 
 object BoardsList200Response {
   import DateTimeCodecs._

@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**product_brand** | **string** | Product brand. For example, \&quot;Parker\&quot;. | [optional] [default to undefined]
-**product_category** | **string** | Product category. For example, \&quot;Shoes\&quot;. | [optional] [default to undefined]
+**product_brand** | **string** | Product brand. For example, \&#39;Parker\&#39;. | [optional] [default to undefined]
+**product_category** | **string** | Product category. For example, \&#39;Shoes\&#39;. | [optional] [default to undefined]
 **product_id** | **number** | Product ID. For example, 1414. | [optional] [default to undefined]
-**product_name** | **string** | Product name. For example, \&quot;Parker Boots\&quot;. | [optional] [default to undefined]
-**product_price** | **string** | Product price. For example, \&quot;99.99\&quot;. | [optional] [default to undefined]
+**product_name** | **string** | Product name. For example, \&#39;Parker Boots\&#39;. | [optional] [default to undefined]
+**product_price** | **string** | Product price. For example, \&#39;99.99\&#39;. | [optional] [default to undefined]
 **product_quantity** | **number** | Product quantity. For example, 2. | [optional] [default to undefined]
-**product_variant** | **string** | Product variant. For example, \&quot;Red\&quot;. | [optional] [default to undefined]
-**product_variant_id** | **string** | Product variant ID. For example, \&quot;1414-34832\&quot;. | [optional] [default to undefined]
+**product_variant** | **string** | Product variant. For example, \&#39;Red\&#39;. | [optional] [default to undefined]
+**product_variant_id** | **string** | Product variant ID. For example, \&#39;1414-34832\&#39;. | [optional] [default to undefined]
 
 ## Example
 

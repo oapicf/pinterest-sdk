@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingSpecShoppingRetargeting"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingSpecShoppingRetargeting"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TargetingSpecShoppingRetargeting {
+    title = TargetingSpecShoppingRetargeting
+    description = TargetingSpecShoppingRetargeting
+    derivedFrom = Root
+    properties {
+        exclusion_window {
+          type =  integer
+          description = "Number of days ago to stop lookback timeframe for dynamic retargeting"
+          optional = false
+        }
+        lookback_window {
+          type =  integer
+          description = "Number of days ago to start lookback timeframe for dynamic retargeting"
+          optional = false
+        }
+        tag_types {
+          type = array
+          items.type =  integer
+          description = "Event types to target for dynamic retargeting"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingSpecShoppingRetargeting {
+    title = TargetingSpecShoppingRetargeting
+    description = TargetingSpecShoppingRetargeting
+    implements = openapi_server.resourceTypes.TargetingSpecShoppingRetargeting
+
+  }
+}

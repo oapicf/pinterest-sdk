@@ -35,22 +35,16 @@ class AdAccountTest : ShouldSpec() {
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `name`
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `owner`
-        should("test owner") {
-            // uncomment below to test the property
-            //modelInstance.owner shouldBe ("TODO")
-        }
-
         // to test the property `country`
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `createdTime` -  Creation time. Unix timestamp in seconds.
+        should("test createdTime") {
+            // uncomment below to test the property
+            //modelInstance.createdTime shouldBe ("TODO")
         }
 
         // to test the property `currency`
@@ -59,19 +53,25 @@ class AdAccountTest : ShouldSpec() {
             //modelInstance.currency shouldBe ("TODO")
         }
 
+        // to test the property `name` - Ad account name.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `owner` - Ad account owner
+        should("test owner") {
+            // uncomment below to test the property
+            //modelInstance.owner shouldBe ("TODO")
+        }
+
         // to test the property `permissions`
         should("test permissions") {
             // uncomment below to test the property
             //modelInstance.permissions shouldBe ("TODO")
         }
 
-        // to test the property `createdTime` - Creation time. Unix timestamp in seconds.
-        should("test createdTime") {
-            // uncomment below to test the property
-            //modelInstance.createdTime shouldBe ("TODO")
-        }
-
-        // to test the property `updatedTime` - Last update time. Unix timestamp in seconds.
+        // to test the property `updatedTime`
         should("test updatedTime") {
             // uncomment below to test the property
             //modelInstance.updatedTime shouldBe ("TODO")

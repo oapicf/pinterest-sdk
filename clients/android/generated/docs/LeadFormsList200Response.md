@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  | 
 
 
 

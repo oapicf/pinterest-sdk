@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ProductGroupPromotionResponseItem, () {
-    // ProductGroupPromotionResponseElement data
+    // ProductGroupPromotion data
     test('to test the property `data`', () async {
       // TODO
     });

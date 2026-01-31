@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **accessToken** | **kotlin.String** |  |  |
-| **tokenType** | **kotlin.String** |  |  |
 | **expiresIn** | **kotlin.Int** |  |  |
 | **scope** | **kotlin.String** |  |  |
+| **tokenType** | **kotlin.String** |  |  |
 | **responseType** | [**inline**](#ResponseType) |  |  [optional] |
 
 

@@ -12,65 +12,74 @@ import org.openapitools.vertxweb.server.model.Currency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOOrderLine   {
   
-  private String salesforceOrderLineId;
+  private String acceptedTermsId;
+  private String acceptedTermsTime;
   private String adsManagerOrderLineId;
-  private String pinOrderId;
-  private String lastModifiedDateTime;
-  private LocalDate startDate;
-  private LocalDate endDate;
+  private String agencyLink;
   private String billToCompanyName;
+  private String billingContactEmail;
   private String billingContactFirstname;
   private String billingContactLastname;
-  private String billingContactEmail;
+  private BigDecimal budgetAmount;
+  private Currency currencyInfo;
+  private LocalDate endDate;
+  private BigDecimal estimatedMonthlySpend;
+  private String lastModifiedDateTime;
   private String mediaContactEmail;
   private String mediaContactFirstname;
   private String mediaContactLastname;
-  private Currency currencyInfo;
-  private String agencyLink;
-  private String poNumber;
   private String orderName;
+  private String pinOrderId;
   private String pmpName;
-  private String acceptedTermsId;
-  private String acceptedTermsTime;
-  private BigDecimal budgetAmount;
-  private BigDecimal estimatedMonthlySpend;
+  private String poNumber;
+  private String salesforceOrderLineId;
+  private LocalDate startDate;
 
   public SSIOOrderLine () {
 
   }
 
-  public SSIOOrderLine (String salesforceOrderLineId, String adsManagerOrderLineId, String pinOrderId, String lastModifiedDateTime, LocalDate startDate, LocalDate endDate, String billToCompanyName, String billingContactFirstname, String billingContactLastname, String billingContactEmail, String mediaContactEmail, String mediaContactFirstname, String mediaContactLastname, Currency currencyInfo, String agencyLink, String poNumber, String orderName, String pmpName, String acceptedTermsId, String acceptedTermsTime, BigDecimal budgetAmount, BigDecimal estimatedMonthlySpend) {
-    this.salesforceOrderLineId = salesforceOrderLineId;
+  public SSIOOrderLine (String acceptedTermsId, String acceptedTermsTime, String adsManagerOrderLineId, String agencyLink, String billToCompanyName, String billingContactEmail, String billingContactFirstname, String billingContactLastname, BigDecimal budgetAmount, Currency currencyInfo, LocalDate endDate, BigDecimal estimatedMonthlySpend, String lastModifiedDateTime, String mediaContactEmail, String mediaContactFirstname, String mediaContactLastname, String orderName, String pinOrderId, String pmpName, String poNumber, String salesforceOrderLineId, LocalDate startDate) {
+    this.acceptedTermsId = acceptedTermsId;
+    this.acceptedTermsTime = acceptedTermsTime;
     this.adsManagerOrderLineId = adsManagerOrderLineId;
-    this.pinOrderId = pinOrderId;
-    this.lastModifiedDateTime = lastModifiedDateTime;
-    this.startDate = startDate;
-    this.endDate = endDate;
+    this.agencyLink = agencyLink;
     this.billToCompanyName = billToCompanyName;
+    this.billingContactEmail = billingContactEmail;
     this.billingContactFirstname = billingContactFirstname;
     this.billingContactLastname = billingContactLastname;
-    this.billingContactEmail = billingContactEmail;
+    this.budgetAmount = budgetAmount;
+    this.currencyInfo = currencyInfo;
+    this.endDate = endDate;
+    this.estimatedMonthlySpend = estimatedMonthlySpend;
+    this.lastModifiedDateTime = lastModifiedDateTime;
     this.mediaContactEmail = mediaContactEmail;
     this.mediaContactFirstname = mediaContactFirstname;
     this.mediaContactLastname = mediaContactLastname;
-    this.currencyInfo = currencyInfo;
-    this.agencyLink = agencyLink;
-    this.poNumber = poNumber;
     this.orderName = orderName;
+    this.pinOrderId = pinOrderId;
     this.pmpName = pmpName;
-    this.acceptedTermsId = acceptedTermsId;
-    this.acceptedTermsTime = acceptedTermsTime;
-    this.budgetAmount = budgetAmount;
-    this.estimatedMonthlySpend = estimatedMonthlySpend;
+    this.poNumber = poNumber;
+    this.salesforceOrderLineId = salesforceOrderLineId;
+    this.startDate = startDate;
   }
 
     
-  @JsonProperty("salesforce_order_line_id")
-  public String getSalesforceOrderLineId() {
-    return salesforceOrderLineId;
+  @JsonProperty("accepted_terms_id")
+  public String getAcceptedTermsId() {
+    return acceptedTermsId;
   }
-  public void setSalesforceOrderLineId(String salesforceOrderLineId) {
-    this.salesforceOrderLineId = salesforceOrderLineId;
+  public void setAcceptedTermsId(String acceptedTermsId) {
+    this.acceptedTermsId = acceptedTermsId;
+  }
+
+    
+  @JsonProperty("accepted_terms_time")
+  public String getAcceptedTermsTime() {
+    return acceptedTermsTime;
+  }
+  public void setAcceptedTermsTime(String acceptedTermsTime) {
+    this.acceptedTermsTime = acceptedTermsTime;
   }
 
     
@@ -83,39 +92,12 @@ public class SSIOOrderLine   {
   }
 
     
-  @JsonProperty("pin_order_id")
-  public String getPinOrderId() {
-    return pinOrderId;
+  @JsonProperty("agency_link")
+  public String getAgencyLink() {
+    return agencyLink;
   }
-  public void setPinOrderId(String pinOrderId) {
-    this.pinOrderId = pinOrderId;
-  }
-
-    
-  @JsonProperty("last_modified_date_time")
-  public String getLastModifiedDateTime() {
-    return lastModifiedDateTime;
-  }
-  public void setLastModifiedDateTime(String lastModifiedDateTime) {
-    this.lastModifiedDateTime = lastModifiedDateTime;
-  }
-
-    
-  @JsonProperty("start_date")
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-    
-  @JsonProperty("end_date")
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
+  public void setAgencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
   }
 
     
@@ -125,6 +107,15 @@ public class SSIOOrderLine   {
   }
   public void setBillToCompanyName(String billToCompanyName) {
     this.billToCompanyName = billToCompanyName;
+  }
+
+    
+  @JsonProperty("billing_contact_email")
+  public String getBillingContactEmail() {
+    return billingContactEmail;
+  }
+  public void setBillingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
   }
 
     
@@ -146,12 +137,48 @@ public class SSIOOrderLine   {
   }
 
     
-  @JsonProperty("billing_contact_email")
-  public String getBillingContactEmail() {
-    return billingContactEmail;
+  @JsonProperty("budget_amount")
+  public BigDecimal getBudgetAmount() {
+    return budgetAmount;
   }
-  public void setBillingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public void setBudgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
+  }
+
+    
+  @JsonProperty("currency_info")
+  public Currency getCurrencyInfo() {
+    return currencyInfo;
+  }
+  public void setCurrencyInfo(Currency currencyInfo) {
+    this.currencyInfo = currencyInfo;
+  }
+
+    
+  @JsonProperty("end_date")
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+    
+  @JsonProperty("estimated_monthly_spend")
+  public BigDecimal getEstimatedMonthlySpend() {
+    return estimatedMonthlySpend;
+  }
+  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  }
+
+    
+  @JsonProperty("last_modified_date_time")
+  public String getLastModifiedDateTime() {
+    return lastModifiedDateTime;
+  }
+  public void setLastModifiedDateTime(String lastModifiedDateTime) {
+    this.lastModifiedDateTime = lastModifiedDateTime;
   }
 
     
@@ -182,39 +209,21 @@ public class SSIOOrderLine   {
   }
 
     
-  @JsonProperty("currency_info")
-  public Currency getCurrencyInfo() {
-    return currencyInfo;
-  }
-  public void setCurrencyInfo(Currency currencyInfo) {
-    this.currencyInfo = currencyInfo;
-  }
-
-    
-  @JsonProperty("agency_link")
-  public String getAgencyLink() {
-    return agencyLink;
-  }
-  public void setAgencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
-  }
-
-    
-  @JsonProperty("po_number")
-  public String getPoNumber() {
-    return poNumber;
-  }
-  public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
-  }
-
-    
   @JsonProperty("order_name")
   public String getOrderName() {
     return orderName;
   }
   public void setOrderName(String orderName) {
     this.orderName = orderName;
+  }
+
+    
+  @JsonProperty("pin_order_id")
+  public String getPinOrderId() {
+    return pinOrderId;
+  }
+  public void setPinOrderId(String pinOrderId) {
+    this.pinOrderId = pinOrderId;
   }
 
     
@@ -227,39 +236,30 @@ public class SSIOOrderLine   {
   }
 
     
-  @JsonProperty("accepted_terms_id")
-  public String getAcceptedTermsId() {
-    return acceptedTermsId;
+  @JsonProperty("po_number")
+  public String getPoNumber() {
+    return poNumber;
   }
-  public void setAcceptedTermsId(String acceptedTermsId) {
-    this.acceptedTermsId = acceptedTermsId;
-  }
-
-    
-  @JsonProperty("accepted_terms_time")
-  public String getAcceptedTermsTime() {
-    return acceptedTermsTime;
-  }
-  public void setAcceptedTermsTime(String acceptedTermsTime) {
-    this.acceptedTermsTime = acceptedTermsTime;
+  public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
   }
 
     
-  @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
-    return budgetAmount;
+  @JsonProperty("salesforce_order_line_id")
+  public String getSalesforceOrderLineId() {
+    return salesforceOrderLineId;
   }
-  public void setBudgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public void setSalesforceOrderLineId(String salesforceOrderLineId) {
+    this.salesforceOrderLineId = salesforceOrderLineId;
   }
 
     
-  @JsonProperty("estimated_monthly_spend")
-  public BigDecimal getEstimatedMonthlySpend() {
-    return estimatedMonthlySpend;
+  @JsonProperty("start_date")
+  public LocalDate getStartDate() {
+    return startDate;
   }
-  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
-    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -272,33 +272,33 @@ public class SSIOOrderLine   {
       return false;
     }
     SSIOOrderLine ssIOOrderLine = (SSIOOrderLine) o;
-    return Objects.equals(salesforceOrderLineId, ssIOOrderLine.salesforceOrderLineId) &&
+    return Objects.equals(acceptedTermsId, ssIOOrderLine.acceptedTermsId) &&
+        Objects.equals(acceptedTermsTime, ssIOOrderLine.acceptedTermsTime) &&
         Objects.equals(adsManagerOrderLineId, ssIOOrderLine.adsManagerOrderLineId) &&
-        Objects.equals(pinOrderId, ssIOOrderLine.pinOrderId) &&
-        Objects.equals(lastModifiedDateTime, ssIOOrderLine.lastModifiedDateTime) &&
-        Objects.equals(startDate, ssIOOrderLine.startDate) &&
-        Objects.equals(endDate, ssIOOrderLine.endDate) &&
+        Objects.equals(agencyLink, ssIOOrderLine.agencyLink) &&
         Objects.equals(billToCompanyName, ssIOOrderLine.billToCompanyName) &&
+        Objects.equals(billingContactEmail, ssIOOrderLine.billingContactEmail) &&
         Objects.equals(billingContactFirstname, ssIOOrderLine.billingContactFirstname) &&
         Objects.equals(billingContactLastname, ssIOOrderLine.billingContactLastname) &&
-        Objects.equals(billingContactEmail, ssIOOrderLine.billingContactEmail) &&
+        Objects.equals(budgetAmount, ssIOOrderLine.budgetAmount) &&
+        Objects.equals(currencyInfo, ssIOOrderLine.currencyInfo) &&
+        Objects.equals(endDate, ssIOOrderLine.endDate) &&
+        Objects.equals(estimatedMonthlySpend, ssIOOrderLine.estimatedMonthlySpend) &&
+        Objects.equals(lastModifiedDateTime, ssIOOrderLine.lastModifiedDateTime) &&
         Objects.equals(mediaContactEmail, ssIOOrderLine.mediaContactEmail) &&
         Objects.equals(mediaContactFirstname, ssIOOrderLine.mediaContactFirstname) &&
         Objects.equals(mediaContactLastname, ssIOOrderLine.mediaContactLastname) &&
-        Objects.equals(currencyInfo, ssIOOrderLine.currencyInfo) &&
-        Objects.equals(agencyLink, ssIOOrderLine.agencyLink) &&
-        Objects.equals(poNumber, ssIOOrderLine.poNumber) &&
         Objects.equals(orderName, ssIOOrderLine.orderName) &&
+        Objects.equals(pinOrderId, ssIOOrderLine.pinOrderId) &&
         Objects.equals(pmpName, ssIOOrderLine.pmpName) &&
-        Objects.equals(acceptedTermsId, ssIOOrderLine.acceptedTermsId) &&
-        Objects.equals(acceptedTermsTime, ssIOOrderLine.acceptedTermsTime) &&
-        Objects.equals(budgetAmount, ssIOOrderLine.budgetAmount) &&
-        Objects.equals(estimatedMonthlySpend, ssIOOrderLine.estimatedMonthlySpend);
+        Objects.equals(poNumber, ssIOOrderLine.poNumber) &&
+        Objects.equals(salesforceOrderLineId, ssIOOrderLine.salesforceOrderLineId) &&
+        Objects.equals(startDate, ssIOOrderLine.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(salesforceOrderLineId, adsManagerOrderLineId, pinOrderId, lastModifiedDateTime, startDate, endDate, billToCompanyName, billingContactFirstname, billingContactLastname, billingContactEmail, mediaContactEmail, mediaContactFirstname, mediaContactLastname, currencyInfo, agencyLink, poNumber, orderName, pmpName, acceptedTermsId, acceptedTermsTime, budgetAmount, estimatedMonthlySpend);
+    return Objects.hash(acceptedTermsId, acceptedTermsTime, adsManagerOrderLineId, agencyLink, billToCompanyName, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, currencyInfo, endDate, estimatedMonthlySpend, lastModifiedDateTime, mediaContactEmail, mediaContactFirstname, mediaContactLastname, orderName, pinOrderId, pmpName, poNumber, salesforceOrderLineId, startDate);
   }
 
   @Override
@@ -306,28 +306,28 @@ public class SSIOOrderLine   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOOrderLine {\n");
     
-    sb.append("    salesforceOrderLineId: ").append(toIndentedString(salesforceOrderLineId)).append("\n");
+    sb.append("    acceptedTermsId: ").append(toIndentedString(acceptedTermsId)).append("\n");
+    sb.append("    acceptedTermsTime: ").append(toIndentedString(acceptedTermsTime)).append("\n");
     sb.append("    adsManagerOrderLineId: ").append(toIndentedString(adsManagerOrderLineId)).append("\n");
-    sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
-    sb.append("    lastModifiedDateTime: ").append(toIndentedString(lastModifiedDateTime)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
     sb.append("    billToCompanyName: ").append(toIndentedString(billToCompanyName)).append("\n");
+    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
     sb.append("    billingContactFirstname: ").append(toIndentedString(billingContactFirstname)).append("\n");
     sb.append("    billingContactLastname: ").append(toIndentedString(billingContactLastname)).append("\n");
-    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    currencyInfo: ").append(toIndentedString(currencyInfo)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    estimatedMonthlySpend: ").append(toIndentedString(estimatedMonthlySpend)).append("\n");
+    sb.append("    lastModifiedDateTime: ").append(toIndentedString(lastModifiedDateTime)).append("\n");
     sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
     sb.append("    mediaContactFirstname: ").append(toIndentedString(mediaContactFirstname)).append("\n");
     sb.append("    mediaContactLastname: ").append(toIndentedString(mediaContactLastname)).append("\n");
-    sb.append("    currencyInfo: ").append(toIndentedString(currencyInfo)).append("\n");
-    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
     sb.append("    orderName: ").append(toIndentedString(orderName)).append("\n");
+    sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    pmpName: ").append(toIndentedString(pmpName)).append("\n");
-    sb.append("    acceptedTermsId: ").append(toIndentedString(acceptedTermsId)).append("\n");
-    sb.append("    acceptedTermsTime: ").append(toIndentedString(acceptedTermsTime)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
-    sb.append("    estimatedMonthlySpend: ").append(toIndentedString(estimatedMonthlySpend)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    salesforceOrderLineId: ").append(toIndentedString(salesforceOrderLineId)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,9 +12,7 @@ import org.joda.time.DateTime
 import KeywordMetrics._
 
 case class KeywordMetrics (
-  /* Average cost per click */
-  avgCpcInMicroCurrency: Option[BigDecimal],
-/* Keyword's search frequency. This value is based on keyword frequency in pepsi client response */
+  /* Keyword's search frequency. This value is based on keyword frequency in pepsi client response */
   keywordQueryVolume: Option[String])
 
 object KeywordMetrics {

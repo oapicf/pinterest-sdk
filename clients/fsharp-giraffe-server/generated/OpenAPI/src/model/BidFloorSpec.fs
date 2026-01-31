@@ -15,11 +15,11 @@ module BidFloorSpec =
 
 
   type BidFloorSpec = {
+    BillableEvent : ActionType;
     Countries : Country[];
+    CreativeType : CreativeType;
     Currency : Currency;
     ObjectiveType : ObjectiveType;
-    BillableEvent : ActionType;
     OptimizationGoalMetadata : OptimizationGoalMetadata;
-    CreativeType : CreativeType;
   }
   //#endregion

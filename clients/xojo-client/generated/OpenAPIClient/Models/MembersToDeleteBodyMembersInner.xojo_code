@@ -2,15 +2,15 @@
 Protected Class MembersToDeleteBodyMembersInner
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Unique identifier of the member
-		#tag EndNote
-		member_id As String
+		business_role As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		business_role As String
+		#tag Note
+			Unique identifier of the member
+		#tag EndNote
+		member_id As String
 	#tag EndProperty
 
 
@@ -51,19 +51,19 @@ Protected Class MembersToDeleteBodyMembersInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="member_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="business_role"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="BusinessRoleForMembers"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="member_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

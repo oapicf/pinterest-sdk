@@ -12,8 +12,11 @@ import org.openapitools.model.ItemAttributesRequest;
  * An item to be created
  */
 @ApiModel(description = "An item to be created")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateRetailItem   {
+  @JsonProperty("attributes")
+  private ItemAttributesRequest attributes;
+
   @JsonProperty("item_id")
   private String itemId;
 
@@ -49,8 +52,23 @@ public class CatalogsCreateRetailItem   {
   @JsonProperty("operation")
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  private ItemAttributesRequest attributes;
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsCreateRetailItem itemId(String itemId) {
     this.itemId = itemId;
@@ -88,24 +106,6 @@ public class CatalogsCreateRetailItem   {
     this.operation = operation;
   }
 
-  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +116,14 @@ public class CatalogsCreateRetailItem   {
       return false;
     }
     CatalogsCreateRetailItem catalogsCreateRetailItem = (CatalogsCreateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
-        Objects.equals(this.operation, catalogsCreateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateRetailItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
+        Objects.equals(this.operation, catalogsCreateRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -131,9 +131,9 @@ public class CatalogsCreateRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

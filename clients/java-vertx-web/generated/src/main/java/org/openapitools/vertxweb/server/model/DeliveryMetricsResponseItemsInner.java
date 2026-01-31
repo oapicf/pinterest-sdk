@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeliveryMetricsResponseItemsInner   {
   
-  private String name;
 
 
   public enum CategoryEnum {
@@ -31,24 +30,16 @@ public class DeliveryMetricsResponseItemsInner   {
   private CategoryEnum category;
   private String definition;
   private String displayName;
+  private String name;
 
   public DeliveryMetricsResponseItemsInner () {
 
   }
 
-  public DeliveryMetricsResponseItemsInner (String name, CategoryEnum category, String definition, String displayName) {
-    this.name = name;
+  public DeliveryMetricsResponseItemsInner (CategoryEnum category, String definition, String displayName, String name) {
     this.category = category;
     this.definition = definition;
     this.displayName = displayName;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
     this.name = name;
   }
 
@@ -79,6 +70,15 @@ public class DeliveryMetricsResponseItemsInner   {
     this.displayName = displayName;
   }
 
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -89,15 +89,15 @@ public class DeliveryMetricsResponseItemsInner   {
       return false;
     }
     DeliveryMetricsResponseItemsInner deliveryMetricsResponseItemsInner = (DeliveryMetricsResponseItemsInner) o;
-    return Objects.equals(name, deliveryMetricsResponseItemsInner.name) &&
-        Objects.equals(category, deliveryMetricsResponseItemsInner.category) &&
+    return Objects.equals(category, deliveryMetricsResponseItemsInner.category) &&
         Objects.equals(definition, deliveryMetricsResponseItemsInner.definition) &&
-        Objects.equals(displayName, deliveryMetricsResponseItemsInner.displayName);
+        Objects.equals(displayName, deliveryMetricsResponseItemsInner.displayName) &&
+        Objects.equals(name, deliveryMetricsResponseItemsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, category, definition, displayName);
+    return Objects.hash(category, definition, displayName, name);
   }
 
   @Override
@@ -105,10 +105,10 @@ public class DeliveryMetricsResponseItemsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeliveryMetricsResponseItemsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    definition: ").append(toIndentedString(definition)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

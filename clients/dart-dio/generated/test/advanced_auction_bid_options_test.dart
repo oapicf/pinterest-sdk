@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AdvancedAuctionBidOptions, () {
-    // Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
-    // int bidInMicroCurrency
-    test('to test the property `bidInMicroCurrency`', () async {
+    // AppTypeMultipliers appTypeMultipliers
+    test('to test the property `appTypeMultipliers`', () async {
       // TODO
     });
 
-    // AppTypeMultipliers appTypeMultipliers
-    test('to test the property `appTypeMultipliers`', () async {
+    // Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
+    // int bidInMicroCurrency
+    test('to test the property `bidInMicroCurrency`', () async {
       // TODO
     });
 

@@ -29,50 +29,50 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  *
- * @param name A human-friendly name associated to a given feed.
- * @param format 
- * @param defaultLocale 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @param catalogType 
- * @param defaultCurrency 
- * @param credentials 
- * @param preferredProcessingSchedule 
+ * @param defaultLocale 
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param credentials 
+ * @param defaultCurrency 
+ * @param preferredProcessingSchedule 
  * @param status 
  */
 
 
 data class CatalogsHotelFeedsCreateRequest (
 
-    /* A human-friendly name associated to a given feed. */
-    @Json(name = "name")
-    val name: kotlin.String,
-
-    @Json(name = "format")
-    val format: CatalogsFormat,
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsType,
 
     @Json(name = "default_locale")
     val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+
+    @Json(name = "format")
+    val format: CatalogsFormat,
 
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     @Json(name = "location")
     val location: kotlin.String,
 
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
-
-    @Json(name = "default_currency")
-    val defaultCurrency: NullableCurrency? = null,
-
-    @Json(name = "credentials")
-    val credentials: CatalogsFeedCredentials? = null,
-
-    @Json(name = "preferred_processing_schedule")
-    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
+    /* A human-friendly name associated to a given feed. */
+    @Json(name = "name")
+    val name: kotlin.String,
 
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String? = null,
+
+    @Json(name = "credentials")
+    val credentials: CatalogsFeedCredentials? = null,
+
+    @Json(name = "default_currency")
+    val defaultCurrency: NullableCurrency? = null,
+
+    @Json(name = "preferred_processing_schedule")
+    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
 
     @Json(name = "status")
     val status: CatalogsStatus? = "ACTIVE"

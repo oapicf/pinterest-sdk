@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **items** | [**Array&lt;PinMediaMetadata&gt;**](PinMediaMetadata.md) |  | [optional] |
+| **media_type** | **String** |  |  |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::PinMediaWithImageAndVideo.new(
-  items: null
+  items: null,
+  media_type: null
 )
 ```
 

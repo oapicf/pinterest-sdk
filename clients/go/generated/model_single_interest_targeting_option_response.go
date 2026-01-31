@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &SingleInterestTargetingOptionResponse{}
 
 // SingleInterestTargetingOptionResponse struct for SingleInterestTargetingOptionResponse
 type SingleInterestTargetingOptionResponse struct {
-	Id *string `json:"id,omitempty" validate:"regexp=\\\\d+"`
-	Name *string `json:"name,omitempty"`
 	ChildInterests []string `json:"child_interests,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=\\\\d+"`
 	Level *int32 `json:"level,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewSingleInterestTargetingOptionResponse instantiates a new SingleInterestTargetingOptionResponse object
@@ -41,70 +41,6 @@ func NewSingleInterestTargetingOptionResponse() *SingleInterestTargetingOptionRe
 func NewSingleInterestTargetingOptionResponseWithDefaults() *SingleInterestTargetingOptionResponse {
 	this := SingleInterestTargetingOptionResponse{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *SingleInterestTargetingOptionResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SingleInterestTargetingOptionResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *SingleInterestTargetingOptionResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SingleInterestTargetingOptionResponse) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *SingleInterestTargetingOptionResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SingleInterestTargetingOptionResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *SingleInterestTargetingOptionResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SingleInterestTargetingOptionResponse) SetName(v string) {
-	o.Name = &v
 }
 
 // GetChildInterests returns the ChildInterests field value if set, zero value otherwise.
@@ -139,6 +75,38 @@ func (o *SingleInterestTargetingOptionResponse) SetChildInterests(v []string) {
 	o.ChildInterests = v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *SingleInterestTargetingOptionResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SingleInterestTargetingOptionResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *SingleInterestTargetingOptionResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *SingleInterestTargetingOptionResponse) SetId(v string) {
+	o.Id = &v
+}
+
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *SingleInterestTargetingOptionResponse) GetLevel() int32 {
 	if o == nil || IsNil(o.Level) {
@@ -171,6 +139,38 @@ func (o *SingleInterestTargetingOptionResponse) SetLevel(v int32) {
 	o.Level = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *SingleInterestTargetingOptionResponse) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SingleInterestTargetingOptionResponse) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *SingleInterestTargetingOptionResponse) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *SingleInterestTargetingOptionResponse) SetName(v string) {
+	o.Name = &v
+}
+
 func (o SingleInterestTargetingOptionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -181,17 +181,17 @@ func (o SingleInterestTargetingOptionResponse) MarshalJSON() ([]byte, error) {
 
 func (o SingleInterestTargetingOptionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.ChildInterests) {
 		toSerialize["child_interests"] = o.ChildInterests
 	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Level) {
 		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.ConversionEventAppInfo;
+import org.openapitools.model.ConversionEventDeviceInfo;
 import org.openapitools.model.ConversionEventsDataInnerCustomData;
 import org.openapitools.model.ConversionEventsUserData;
 
@@ -14,37 +16,16 @@ import org.openapitools.model.ConversionEventsUserData;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInner   {
-  @JsonProperty("event_name")
-  private String eventName;
-
   @JsonProperty("action_source")
   private String actionSource;
 
-  @JsonProperty("event_time")
-  private Long eventTime;
-
-  @JsonProperty("event_id")
-  private String eventId;
-
-  @JsonProperty("event_source_url")
-  private String eventSourceUrl;
-
-  @JsonProperty("opt_out")
-  private Boolean optOut;
-
-  @JsonProperty("partner_name")
-  private String partnerName;
-
-  @JsonProperty("user_data")
-  private ConversionEventsUserData userData;
-
-  @JsonProperty("custom_data")
-  private ConversionEventsDataInnerCustomData customData;
-
   @JsonProperty("app_id")
   private String appId;
+
+  @JsonProperty("app_info")
+  private ConversionEventAppInfo appInfo;
 
   @JsonProperty("app_name")
   private String appName;
@@ -52,11 +33,17 @@ public class ConversionEventsDataInner   {
   @JsonProperty("app_version")
   private String appVersion;
 
+  @JsonProperty("custom_data")
+  private ConversionEventsDataInnerCustomData customData;
+
   @JsonProperty("device_brand")
   private String deviceBrand;
 
   @JsonProperty("device_carrier")
   private String deviceCarrier;
+
+  @JsonProperty("device_info")
+  private ConversionEventDeviceInfo deviceInfo;
 
   @JsonProperty("device_model")
   private String deviceModel;
@@ -64,35 +51,38 @@ public class ConversionEventsDataInner   {
   @JsonProperty("device_type")
   private String deviceType;
 
-  @JsonProperty("os_version")
-  private String osVersion;
+  @JsonProperty("event_id")
+  private String eventId;
 
-  @JsonProperty("wifi")
-  private Boolean wifi;
+  @JsonProperty("event_name")
+  private String eventName;
+
+  @JsonProperty("event_source_url")
+  private String eventSourceUrl;
+
+  @JsonProperty("event_time")
+  private Long eventTime;
 
   @JsonProperty("language")
   private String language;
 
-  /**
-   * <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-   **/
-  public ConversionEventsDataInner eventName(String eventName) {
-    this.eventName = eventName;
-    return this;
-  }
+  @JsonProperty("opt_out")
+  private Boolean optOut;
 
-  
-  @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
-  @JsonProperty("event_name")
-  public String getEventName() {
-    return eventName;
-  }
-  public void setEventName(String eventName) {
-    this.eventName = eventName;
-  }
+  @JsonProperty("os_version")
+  private String osVersion;
+
+  @JsonProperty("partner_name")
+  private String partnerName;
+
+  @JsonProperty("user_data")
+  private ConversionEventsUserData userData;
+
+  @JsonProperty("wifi")
+  private Boolean wifi;
 
   /**
-   * <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+   * <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
    **/
   public ConversionEventsDataInner actionSource(String actionSource) {
     this.actionSource = actionSource;
@@ -100,137 +90,13 @@ public class ConversionEventsDataInner   {
   }
 
   
-  @ApiModelProperty(example = "app_ios", required = true, value = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
+  @ApiModelProperty(example = "app_ios", required = true, value = "<p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`")
   @JsonProperty("action_source")
   public String getActionSource() {
     return actionSource;
   }
   public void setActionSource(String actionSource) {
     this.actionSource = actionSource;
-  }
-
-  /**
-   * The time when the event happened. Unix timestamp in seconds.
-   **/
-  public ConversionEventsDataInner eventTime(Long eventTime) {
-    this.eventTime = eventTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
-  @JsonProperty("event_time")
-  public Long getEventTime() {
-    return eventTime;
-  }
-  public void setEventTime(Long eventTime) {
-    this.eventTime = eventTime;
-  }
-
-  /**
-   * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-   **/
-  public ConversionEventsDataInner eventId(String eventId) {
-    this.eventId = eventId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
-  @JsonProperty("event_id")
-  public String getEventId() {
-    return eventId;
-  }
-  public void setEventId(String eventId) {
-    this.eventId = eventId;
-  }
-
-  /**
-   * URL of the web conversion event.
-   **/
-  public ConversionEventsDataInner eventSourceUrl(String eventSourceUrl) {
-    this.eventSourceUrl = eventSourceUrl;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "https://www.my-clothing-shop.org/", value = "URL of the web conversion event.")
-  @JsonProperty("event_source_url")
-  public String getEventSourceUrl() {
-    return eventSourceUrl;
-  }
-  public void setEventSourceUrl(String eventSourceUrl) {
-    this.eventSourceUrl = eventSourceUrl;
-  }
-
-  /**
-   * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-   **/
-  public ConversionEventsDataInner optOut(Boolean optOut) {
-    this.optOut = optOut;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "false", value = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.")
-  @JsonProperty("opt_out")
-  public Boolean getOptOut() {
-    return optOut;
-  }
-  public void setOptOut(Boolean optOut) {
-    this.optOut = optOut;
-  }
-
-  /**
-   * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
-   **/
-  public ConversionEventsDataInner partnerName(String partnerName) {
-    this.partnerName = partnerName;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "ss-partnername", value = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’")
-  @JsonProperty("partner_name")
-  public String getPartnerName() {
-    return partnerName;
-  }
-  public void setPartnerName(String partnerName) {
-    this.partnerName = partnerName;
-  }
-
-  /**
-   **/
-  public ConversionEventsDataInner userData(ConversionEventsUserData userData) {
-    this.userData = userData;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("user_data")
-  public ConversionEventsUserData getUserData() {
-    return userData;
-  }
-  public void setUserData(ConversionEventsUserData userData) {
-    this.userData = userData;
-  }
-
-  /**
-   **/
-  public ConversionEventsDataInner customData(ConversionEventsDataInnerCustomData customData) {
-    this.customData = customData;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("custom_data")
-  public ConversionEventsDataInnerCustomData getCustomData() {
-    return customData;
-  }
-  public void setCustomData(ConversionEventsDataInnerCustomData customData) {
-    this.customData = customData;
   }
 
   /**
@@ -249,6 +115,23 @@ public class ConversionEventsDataInner   {
   }
   public void setAppId(String appId) {
     this.appId = appId;
+  }
+
+  /**
+   **/
+  public ConversionEventsDataInner appInfo(ConversionEventAppInfo appInfo) {
+    this.appInfo = appInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("app_info")
+  public ConversionEventAppInfo getAppInfo() {
+    return appInfo;
+  }
+  public void setAppInfo(ConversionEventAppInfo appInfo) {
+    this.appInfo = appInfo;
   }
 
   /**
@@ -288,6 +171,23 @@ public class ConversionEventsDataInner   {
   }
 
   /**
+   **/
+  public ConversionEventsDataInner customData(ConversionEventsDataInnerCustomData customData) {
+    this.customData = customData;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("custom_data")
+  public ConversionEventsDataInnerCustomData getCustomData() {
+    return customData;
+  }
+  public void setCustomData(ConversionEventsDataInnerCustomData customData) {
+    this.customData = customData;
+  }
+
+  /**
    * Brand of the user device.
    **/
   public ConversionEventsDataInner deviceBrand(String deviceBrand) {
@@ -321,6 +221,23 @@ public class ConversionEventsDataInner   {
   }
   public void setDeviceCarrier(String deviceCarrier) {
     this.deviceCarrier = deviceCarrier;
+  }
+
+  /**
+   **/
+  public ConversionEventsDataInner deviceInfo(ConversionEventDeviceInfo deviceInfo) {
+    this.deviceInfo = deviceInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("device_info")
+  public ConversionEventDeviceInfo getDeviceInfo() {
+    return deviceInfo;
+  }
+  public void setDeviceInfo(ConversionEventDeviceInfo deviceInfo) {
+    this.deviceInfo = deviceInfo;
   }
 
   /**
@@ -360,39 +277,75 @@ public class ConversionEventsDataInner   {
   }
 
   /**
-   * Version of the device operating system.
+   * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
    **/
-  public ConversionEventsDataInner osVersion(String osVersion) {
-    this.osVersion = osVersion;
+  public ConversionEventsDataInner eventId(String eventId) {
+    this.eventId = eventId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "12.1.4", value = "Version of the device operating system.")
-  @JsonProperty("os_version")
-  public String getOsVersion() {
-    return osVersion;
+  @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
+  @JsonProperty("event_id")
+  public String getEventId() {
+    return eventId;
   }
-  public void setOsVersion(String osVersion) {
-    this.osVersion = osVersion;
+  public void setEventId(String eventId) {
+    this.eventId = eventId;
   }
 
   /**
-   * Whether the event occurred when the user device was connected to wifi.
+   * <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
    **/
-  public ConversionEventsDataInner wifi(Boolean wifi) {
-    this.wifi = wifi;
+  public ConversionEventsDataInner eventName(String eventName) {
+    this.eventName = eventName;
     return this;
   }
 
   
-  @ApiModelProperty(example = "false", value = "Whether the event occurred when the user device was connected to wifi.")
-  @JsonProperty("wifi")
-  public Boolean getWifi() {
-    return wifi;
+  @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`")
+  @JsonProperty("event_name")
+  public String getEventName() {
+    return eventName;
   }
-  public void setWifi(Boolean wifi) {
-    this.wifi = wifi;
+  public void setEventName(String eventName) {
+    this.eventName = eventName;
+  }
+
+  /**
+   * URL of the web conversion event.
+   **/
+  public ConversionEventsDataInner eventSourceUrl(String eventSourceUrl) {
+    this.eventSourceUrl = eventSourceUrl;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.my-clothing-shop.org/", value = "URL of the web conversion event.")
+  @JsonProperty("event_source_url")
+  public String getEventSourceUrl() {
+    return eventSourceUrl;
+  }
+  public void setEventSourceUrl(String eventSourceUrl) {
+    this.eventSourceUrl = eventSourceUrl;
+  }
+
+  /**
+   * The time when the event happened. Unix timestamp in seconds.
+   **/
+  public ConversionEventsDataInner eventTime(Long eventTime) {
+    this.eventTime = eventTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
+  @JsonProperty("event_time")
+  public Long getEventTime() {
+    return eventTime;
+  }
+  public void setEventTime(Long eventTime) {
+    this.eventTime = eventTime;
   }
 
   /**
@@ -413,6 +366,95 @@ public class ConversionEventsDataInner   {
     this.language = language;
   }
 
+  /**
+   * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+   **/
+  public ConversionEventsDataInner optOut(Boolean optOut) {
+    this.optOut = optOut;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "false", value = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.")
+  @JsonProperty("opt_out")
+  public Boolean getOptOut() {
+    return optOut;
+  }
+  public void setOptOut(Boolean optOut) {
+    this.optOut = optOut;
+  }
+
+  /**
+   * Version of the device operating system.
+   **/
+  public ConversionEventsDataInner osVersion(String osVersion) {
+    this.osVersion = osVersion;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "12.1.4", value = "Version of the device operating system.")
+  @JsonProperty("os_version")
+  public String getOsVersion() {
+    return osVersion;
+  }
+  public void setOsVersion(String osVersion) {
+    this.osVersion = osVersion;
+  }
+
+  /**
+   * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+   **/
+  public ConversionEventsDataInner partnerName(String partnerName) {
+    this.partnerName = partnerName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "ss-partnername", value = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’")
+  @JsonProperty("partner_name")
+  public String getPartnerName() {
+    return partnerName;
+  }
+  public void setPartnerName(String partnerName) {
+    this.partnerName = partnerName;
+  }
+
+  /**
+   **/
+  public ConversionEventsDataInner userData(ConversionEventsUserData userData) {
+    this.userData = userData;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("user_data")
+  public ConversionEventsUserData getUserData() {
+    return userData;
+  }
+  public void setUserData(ConversionEventsUserData userData) {
+    this.userData = userData;
+  }
+
+  /**
+   * Whether the event occurred when the user device was connected to wifi.
+   **/
+  public ConversionEventsDataInner wifi(Boolean wifi) {
+    this.wifi = wifi;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "false", value = "Whether the event occurred when the user device was connected to wifi.")
+  @JsonProperty("wifi")
+  public Boolean getWifi() {
+    return wifi;
+  }
+  public void setWifi(Boolean wifi) {
+    this.wifi = wifi;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -423,30 +465,32 @@ public class ConversionEventsDataInner   {
       return false;
     }
     ConversionEventsDataInner conversionEventsDataInner = (ConversionEventsDataInner) o;
-    return Objects.equals(eventName, conversionEventsDataInner.eventName) &&
-        Objects.equals(actionSource, conversionEventsDataInner.actionSource) &&
-        Objects.equals(eventTime, conversionEventsDataInner.eventTime) &&
-        Objects.equals(eventId, conversionEventsDataInner.eventId) &&
-        Objects.equals(eventSourceUrl, conversionEventsDataInner.eventSourceUrl) &&
-        Objects.equals(optOut, conversionEventsDataInner.optOut) &&
-        Objects.equals(partnerName, conversionEventsDataInner.partnerName) &&
-        Objects.equals(userData, conversionEventsDataInner.userData) &&
-        Objects.equals(customData, conversionEventsDataInner.customData) &&
+    return Objects.equals(actionSource, conversionEventsDataInner.actionSource) &&
         Objects.equals(appId, conversionEventsDataInner.appId) &&
+        Objects.equals(appInfo, conversionEventsDataInner.appInfo) &&
         Objects.equals(appName, conversionEventsDataInner.appName) &&
         Objects.equals(appVersion, conversionEventsDataInner.appVersion) &&
+        Objects.equals(customData, conversionEventsDataInner.customData) &&
         Objects.equals(deviceBrand, conversionEventsDataInner.deviceBrand) &&
         Objects.equals(deviceCarrier, conversionEventsDataInner.deviceCarrier) &&
+        Objects.equals(deviceInfo, conversionEventsDataInner.deviceInfo) &&
         Objects.equals(deviceModel, conversionEventsDataInner.deviceModel) &&
         Objects.equals(deviceType, conversionEventsDataInner.deviceType) &&
+        Objects.equals(eventId, conversionEventsDataInner.eventId) &&
+        Objects.equals(eventName, conversionEventsDataInner.eventName) &&
+        Objects.equals(eventSourceUrl, conversionEventsDataInner.eventSourceUrl) &&
+        Objects.equals(eventTime, conversionEventsDataInner.eventTime) &&
+        Objects.equals(language, conversionEventsDataInner.language) &&
+        Objects.equals(optOut, conversionEventsDataInner.optOut) &&
         Objects.equals(osVersion, conversionEventsDataInner.osVersion) &&
-        Objects.equals(wifi, conversionEventsDataInner.wifi) &&
-        Objects.equals(language, conversionEventsDataInner.language);
+        Objects.equals(partnerName, conversionEventsDataInner.partnerName) &&
+        Objects.equals(userData, conversionEventsDataInner.userData) &&
+        Objects.equals(wifi, conversionEventsDataInner.wifi);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventName, actionSource, eventTime, eventId, eventSourceUrl, optOut, partnerName, userData, customData, appId, appName, appVersion, deviceBrand, deviceCarrier, deviceModel, deviceType, osVersion, wifi, language);
+    return Objects.hash(actionSource, appId, appInfo, appName, appVersion, customData, deviceBrand, deviceCarrier, deviceInfo, deviceModel, deviceType, eventId, eventName, eventSourceUrl, eventTime, language, optOut, osVersion, partnerName, userData, wifi);
   }
 
   @Override
@@ -454,25 +498,27 @@ public class ConversionEventsDataInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventsDataInner {\n");
     
-    sb.append("    eventName: ").append(toIndentedString(eventName)).append("\n");
     sb.append("    actionSource: ").append(toIndentedString(actionSource)).append("\n");
-    sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
-    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
-    sb.append("    eventSourceUrl: ").append(toIndentedString(eventSourceUrl)).append("\n");
-    sb.append("    optOut: ").append(toIndentedString(optOut)).append("\n");
-    sb.append("    partnerName: ").append(toIndentedString(partnerName)).append("\n");
-    sb.append("    userData: ").append(toIndentedString(userData)).append("\n");
-    sb.append("    customData: ").append(toIndentedString(customData)).append("\n");
     sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
+    sb.append("    appInfo: ").append(toIndentedString(appInfo)).append("\n");
     sb.append("    appName: ").append(toIndentedString(appName)).append("\n");
     sb.append("    appVersion: ").append(toIndentedString(appVersion)).append("\n");
+    sb.append("    customData: ").append(toIndentedString(customData)).append("\n");
     sb.append("    deviceBrand: ").append(toIndentedString(deviceBrand)).append("\n");
     sb.append("    deviceCarrier: ").append(toIndentedString(deviceCarrier)).append("\n");
+    sb.append("    deviceInfo: ").append(toIndentedString(deviceInfo)).append("\n");
     sb.append("    deviceModel: ").append(toIndentedString(deviceModel)).append("\n");
     sb.append("    deviceType: ").append(toIndentedString(deviceType)).append("\n");
-    sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
-    sb.append("    wifi: ").append(toIndentedString(wifi)).append("\n");
+    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
+    sb.append("    eventName: ").append(toIndentedString(eventName)).append("\n");
+    sb.append("    eventSourceUrl: ").append(toIndentedString(eventSourceUrl)).append("\n");
+    sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
+    sb.append("    optOut: ").append(toIndentedString(optOut)).append("\n");
+    sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
+    sb.append("    partnerName: ").append(toIndentedString(partnerName)).append("\n");
+    sb.append("    userData: ").append(toIndentedString(userData)).append("\n");
+    sb.append("    wifi: ").append(toIndentedString(wifi)).append("\n");
     sb.append("}");
     return sb.toString();
   }

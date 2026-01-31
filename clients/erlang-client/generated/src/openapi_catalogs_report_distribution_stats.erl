@@ -5,31 +5,31 @@
 -export_type([openapi_catalogs_report_distribution_stats/0]).
 
 -type openapi_catalogs_report_distribution_stats() ::
-    #{ 'report_type' => binary(),
-       'catalog_id' => binary(),
+    #{ 'catalog_id' => binary(),
        'code' => integer(),
        'code_label' => binary(),
+       'ineligible_for_ads' => boolean(),
+       'ineligible_for_organic' => boolean(),
        'message' => binary(),
        'occurrences' => integer(),
-       'ineligible_for_ads' => boolean(),
-       'ineligible_for_organic' => boolean()
+       'report_type' => binary()
      }.
 
-encode(#{ 'report_type' := ReportType,
-          'catalog_id' := CatalogId,
+encode(#{ 'catalog_id' := CatalogId,
           'code' := Code,
           'code_label' := CodeLabel,
+          'ineligible_for_ads' := IneligibleForAds,
+          'ineligible_for_organic' := IneligibleForOrganic,
           'message' := Message,
           'occurrences' := Occurrences,
-          'ineligible_for_ads' := IneligibleForAds,
-          'ineligible_for_organic' := IneligibleForOrganic
+          'report_type' := ReportType
         }) ->
-    #{ 'report_type' => ReportType,
-       'catalog_id' => CatalogId,
+    #{ 'catalog_id' => CatalogId,
        'code' => Code,
        'code_label' => CodeLabel,
+       'ineligible_for_ads' => IneligibleForAds,
+       'ineligible_for_organic' => IneligibleForOrganic,
        'message' => Message,
        'occurrences' => Occurrences,
-       'ineligible_for_ads' => IneligibleForAds,
-       'ineligible_for_organic' => IneligibleForOrganic
+       'report_type' => ReportType
      }.

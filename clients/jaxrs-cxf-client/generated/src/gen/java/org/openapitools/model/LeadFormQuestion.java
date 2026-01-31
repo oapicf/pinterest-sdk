@@ -16,10 +16,6 @@ public class LeadFormQuestion  {
   
   @ApiModelProperty(value = "")
 
-  private LeadFormQuestionType questionType;
-
-  @ApiModelProperty(value = "")
-
   private LeadFormQuestionFieldType customQuestionFieldType;
 
  /**
@@ -35,24 +31,10 @@ public class LeadFormQuestion  {
   @ApiModelProperty(value = "Question options for a custom question.")
 
   private List<String> customQuestionOptions;
- /**
-   * Get questionType
-   * @return questionType
-  **/
-  @JsonProperty("question_type")
-  public LeadFormQuestionType getQuestionType() {
-    return questionType;
-  }
 
-  public void setQuestionType(LeadFormQuestionType questionType) {
-    this.questionType = questionType;
-  }
+  @ApiModelProperty(value = "")
 
-  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
-    this.questionType = questionType;
-    return this;
-  }
-
+  private LeadFormQuestionType questionType;
  /**
    * Get customQuestionFieldType
    * @return customQuestionFieldType
@@ -112,6 +94,24 @@ public class LeadFormQuestion  {
     return this;
   }
 
+ /**
+   * Get questionType
+   * @return questionType
+  **/
+  @JsonProperty("question_type")
+  public LeadFormQuestionType getQuestionType() {
+    return questionType;
+  }
+
+  public void setQuestionType(LeadFormQuestionType questionType) {
+    this.questionType = questionType;
+  }
+
+  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
+    this.questionType = questionType;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -121,15 +121,15 @@ public class LeadFormQuestion  {
       return false;
     }
     LeadFormQuestion leadFormQuestion = (LeadFormQuestion) o;
-    return Objects.equals(this.questionType, leadFormQuestion.questionType) &&
-        Objects.equals(this.customQuestionFieldType, leadFormQuestion.customQuestionFieldType) &&
+    return Objects.equals(this.customQuestionFieldType, leadFormQuestion.customQuestionFieldType) &&
         Objects.equals(this.customQuestionLabel, leadFormQuestion.customQuestionLabel) &&
-        Objects.equals(this.customQuestionOptions, leadFormQuestion.customQuestionOptions);
+        Objects.equals(this.customQuestionOptions, leadFormQuestion.customQuestionOptions) &&
+        Objects.equals(this.questionType, leadFormQuestion.questionType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionType, customQuestionFieldType, customQuestionLabel, customQuestionOptions);
+    return Objects.hash(customQuestionFieldType, customQuestionLabel, customQuestionOptions, questionType);
   }
 
   @Override
@@ -137,10 +137,10 @@ public class LeadFormQuestion  {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormQuestion {\n");
     
-    sb.append("    questionType: ").append(toIndentedString(questionType)).append("\n");
     sb.append("    customQuestionFieldType: ").append(toIndentedString(customQuestionFieldType)).append("\n");
     sb.append("    customQuestionLabel: ").append(toIndentedString(customQuestionLabel)).append("\n");
     sb.append("    customQuestionOptions: ").append(toIndentedString(customQuestionOptions)).append("\n");
+    sb.append("    questionType: ").append(toIndentedString(questionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

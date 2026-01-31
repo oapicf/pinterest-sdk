@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsReportFeedIngestionFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsReportFeedIngestionFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsReportFeedIngestionFilter {
+    title = CatalogsReportFeedIngestionFilter
+    description = CatalogsReportFeedIngestionFilter
+    derivedFrom = Root
+    properties {
+        feed_id {
+          type =  string
+          description = "ID of the feed entity."
+          optional = true
+        }
+        processing_result_id {
+          type =  string
+          description = "Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result."
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["FEED_INGESTION_ISSUES"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsReportFeedIngestionFilter {
+    title = CatalogsReportFeedIngestionFilter
+    description = CatalogsReportFeedIngestionFilter
+    implements = openapi_server.resourceTypes.CatalogsReportFeedIngestionFilter
+
+  }
+}

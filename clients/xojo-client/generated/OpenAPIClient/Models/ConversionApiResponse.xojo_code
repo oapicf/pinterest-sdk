@@ -3,9 +3,9 @@ Protected Class ConversionApiResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Total number of events received in the request.
+			Specific messages for each event received. The order will match the order in which the events were received in the request.
 		#tag EndNote
-		num_events_received As Integer
+		events() As OpenAPIClient.Models.ConversionApiResponseEventsInner
 	#tag EndProperty
 
 
@@ -19,9 +19,9 @@ Protected Class ConversionApiResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Specific messages for each event received. The order will match the order in which the events were received in the request.
+			Total number of events received in the request.
 		#tag EndNote
-		events() As OpenAPIClient.Models.ConversionApiResponseEventsInner
+		num_events_received As Integer
 	#tag EndProperty
 
 
@@ -62,11 +62,11 @@ Protected Class ConversionApiResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="num_events_received"
+			Name="events"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="ConversionApiResponseEventsInner"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -78,11 +78,11 @@ Protected Class ConversionApiResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="events"
+			Name="num_events_received"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ConversionApiResponseEventsInner"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -23,32 +23,12 @@ import javax.annotation.Generated;
  * LeadsExportResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData {
-
-  private LeadsExportStatus exportStatus;
 
   private JsonNullable<String> downloadUrl = JsonNullable.<String>undefined();
 
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-    return this;
-  }
-
-  /**
-   * Get exportStatus
-   * @return exportStatus
-   */
-  @Valid 
-  @Schema(name = "export_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("export_status")
-  public LeadsExportStatus getExportStatus() {
-    return exportStatus;
-  }
-
-  public void setExportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-  }
+  private LeadsExportStatus exportStatus;
 
   public LeadsExportResponseData downloadUrl(String downloadUrl) {
     this.downloadUrl = JsonNullable.of(downloadUrl);
@@ -70,6 +50,26 @@ public class LeadsExportResponseData {
     this.downloadUrl = downloadUrl;
   }
 
+  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+    return this;
+  }
+
+  /**
+   * Get exportStatus
+   * @return exportStatus
+   */
+  @Valid 
+  @Schema(name = "export_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("export_status")
+  public LeadsExportStatus getExportStatus() {
+    return exportStatus;
+  }
+
+  public void setExportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -79,8 +79,8 @@ public class LeadsExportResponseData {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus) &&
-        equalsNullable(this.downloadUrl, leadsExportResponseData.downloadUrl);
+    return equalsNullable(this.downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -89,7 +89,7 @@ public class LeadsExportResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, hashCodeNullable(downloadUrl));
+    return Objects.hash(hashCodeNullable(downloadUrl), exportStatus);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -103,8 +103,8 @@ public class LeadsExportResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

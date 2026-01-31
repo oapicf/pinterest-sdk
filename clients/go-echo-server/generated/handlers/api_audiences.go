@@ -13,14 +13,6 @@ func (c *Container) AudiencesCreate(ctx echo.Context) error {
 }
 
 
-// AudiencesCreateCustom - Create custom audience
-func (c *Container) AudiencesCreateCustom(ctx echo.Context) error {
-	return ctx.JSON(http.StatusOK, models.HelloWorld {
-		Message: "Hello World",
-	})
-}
-
-
 // AudiencesGet - Get audience
 func (c *Container) AudiencesGet(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {

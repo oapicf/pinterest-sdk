@@ -22,13 +22,13 @@ targeting_template_list_200_response_t* instantiate_targeting_template_list_200_
   targeting_template_list_200_response_t* targeting_template_list_200_response = NULL;
   if (include_optional) {
     targeting_template_list_200_response = targeting_template_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     targeting_template_list_200_response = targeting_template_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

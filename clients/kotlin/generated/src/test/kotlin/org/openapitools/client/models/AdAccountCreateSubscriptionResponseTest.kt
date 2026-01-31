@@ -25,16 +25,22 @@ class AdAccountCreateSubscriptionResponseTest : ShouldSpec() {
         // uncomment below to create an instance of AdAccountCreateSubscriptionResponse
         //val modelInstance = AdAccountCreateSubscriptionResponse()
 
-        // to test the property `id` - Subscription ID.
-        should("test id") {
+        // to test the property `adAccountId` - The Ad Account ID that this lead form belongs to.
+        should("test adAccountId") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
+            //modelInstance.adAccountId shouldBe ("TODO")
         }
 
-        // to test the property `cryptographicKey` - Base64 encoded key for client to decrypt lead data.
-        should("test cryptographicKey") {
+        // to test the property `apiVersion` - API version.
+        should("test apiVersion") {
             // uncomment below to test the property
-            //modelInstance.cryptographicKey shouldBe ("TODO")
+            //modelInstance.apiVersion shouldBe ("TODO")
+        }
+
+        // to test the property `createdTime` - Subscription creation time. Unix timestamp in milliseconds.
+        should("test createdTime") {
+            // uncomment below to test the property
+            //modelInstance.createdTime shouldBe ("TODO")
         }
 
         // to test the property `cryptographicAlgorithm` - Lead data encryption algorithm.
@@ -43,10 +49,34 @@ class AdAccountCreateSubscriptionResponseTest : ShouldSpec() {
             //modelInstance.cryptographicAlgorithm shouldBe ("TODO")
         }
 
-        // to test the property `createdTime` - Subscription creation time. Unix timestamp in milliseconds.
-        should("test createdTime") {
+        // to test the property `cryptographicKey` - Base64 encoded key for client to decrypt lead data.
+        should("test cryptographicKey") {
             // uncomment below to test the property
-            //modelInstance.createdTime shouldBe ("TODO")
+            //modelInstance.cryptographicKey shouldBe ("TODO")
+        }
+
+        // to test the property `id` - Subscription ID.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `leadFormId` - Lead form ID.
+        should("test leadFormId") {
+            // uncomment below to test the property
+            //modelInstance.leadFormId shouldBe ("TODO")
+        }
+
+        // to test the property `userAccountId` - User account used to subscribe lead data.
+        should("test userAccountId") {
+            // uncomment below to test the property
+            //modelInstance.userAccountId shouldBe ("TODO")
+        }
+
+        // to test the property `webhookUrl` - Standard HTTPS webhook URL.
+        should("test webhookUrl") {
+            // uncomment below to test the property
+            //modelInstance.webhookUrl shouldBe ("TODO")
         }
 
     }

@@ -1,8 +1,8 @@
 package apimodels;
 
+import apimodels.AllOf;
+import apimodels.AnyOf;
 import apimodels.CatalogsProductGroupFilterKeys;
-import apimodels.CatalogsProductGroupFiltersRequestAnyOf;
-import apimodels.CatalogsProductGroupFiltersRequestAnyOf1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupFiltersRequest   {
   @JsonProperty("any_of")

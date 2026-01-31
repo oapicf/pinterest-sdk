@@ -12,25 +12,25 @@ import org.joda.time.DateTime
 import TargetingTemplateResponseData._
 
 case class TargetingTemplateResponseData (
-  /* targeting template name */
-  name: Option[String],
-/* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+  /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
   autoTargetingEnabled: Option[Boolean],
-targetingAttributes: Option[TargetingSpec],
-placementGroup: Option[PlacementGroupType],
 keywords: Option[List[TargetingTemplateKeyword]],
+/* targeting template name */
+  name: Option[String],
+placementGroup: Option[PlacementGroupType],
+targetingAttributes: Option[TargetingSpec],
 trackingUrls: Option[TrackingUrls],
-/* Targeting template ID. */
-  id: Option[String],
-/* Targeting template created time. Unix timestamp in seconds. */
-  createdTime: Option[Integer],
-/* Targeting template updated time.Unix timestamp in seconds. */
-  updatedTime: Option[Integer],
 /* The ID of the advertiser that this targeting template belongs to. */
   adAccountId: Option[String],
+/* Targeting template created time. Unix timestamp in seconds. */
+  createdTime: Option[Integer],
+/* Targeting template ID. */
+  id: Option[String],
+sizing: Option[TargetingTemplateAudienceSizing],
 /* Indicate targeting template is active or Deleted */
   status: Option[Status],
-sizing: Option[TargetingTemplateAudienceSizing])
+/* Targeting template updated time.Unix timestamp in seconds. */
+  updatedTime: Option[Integer])
 
 object TargetingTemplateResponseData {
   import DateTimeCodecs._

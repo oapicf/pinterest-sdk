@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,11 +23,11 @@ var _ MappedNullable = &CatalogsItemsUpdateBatchRequest{}
 // CatalogsItemsUpdateBatchRequest Request object to update catalogs items
 type CatalogsItemsUpdateBatchRequest struct {
 	Country Country `json:"country"`
+	// Array with catalogs items
+	Items []ItemUpdateBatchRecord `json:"items"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
 	Operation BatchOperation `json:"operation"`
-	// Array with catalogs items
-	Items []ItemUpdateBatchRecord `json:"items"`
 }
 
 type _CatalogsItemsUpdateBatchRequest CatalogsItemsUpdateBatchRequest
@@ -36,12 +36,12 @@ type _CatalogsItemsUpdateBatchRequest CatalogsItemsUpdateBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsUpdateBatchRequest(country Country, language string, operation BatchOperation, items []ItemUpdateBatchRecord) *CatalogsItemsUpdateBatchRequest {
+func NewCatalogsItemsUpdateBatchRequest(country Country, items []ItemUpdateBatchRecord, language string, operation BatchOperation) *CatalogsItemsUpdateBatchRequest {
 	this := CatalogsItemsUpdateBatchRequest{}
 	this.Country = country
+	this.Items = items
 	this.Language = language
 	this.Operation = operation
-	this.Items = items
 	return &this
 }
 
@@ -75,6 +75,30 @@ func (o *CatalogsItemsUpdateBatchRequest) GetCountryOk() (*Country, bool) {
 // SetCountry sets field value
 func (o *CatalogsItemsUpdateBatchRequest) SetCountry(v Country) {
 	o.Country = v
+}
+
+// GetItems returns the Items field value
+func (o *CatalogsItemsUpdateBatchRequest) GetItems() []ItemUpdateBatchRecord {
+	if o == nil {
+		var ret []ItemUpdateBatchRecord
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsItemsUpdateBatchRequest) GetItemsOk() ([]ItemUpdateBatchRecord, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *CatalogsItemsUpdateBatchRequest) SetItems(v []ItemUpdateBatchRecord) {
+	o.Items = v
 }
 
 // GetLanguage returns the Language field value
@@ -125,30 +149,6 @@ func (o *CatalogsItemsUpdateBatchRequest) SetOperation(v BatchOperation) {
 	o.Operation = v
 }
 
-// GetItems returns the Items field value
-func (o *CatalogsItemsUpdateBatchRequest) GetItems() []ItemUpdateBatchRecord {
-	if o == nil {
-		var ret []ItemUpdateBatchRecord
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsItemsUpdateBatchRequest) GetItemsOk() ([]ItemUpdateBatchRecord, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *CatalogsItemsUpdateBatchRequest) SetItems(v []ItemUpdateBatchRecord) {
-	o.Items = v
-}
-
 func (o CatalogsItemsUpdateBatchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,9 +160,9 @@ func (o CatalogsItemsUpdateBatchRequest) MarshalJSON() ([]byte, error) {
 func (o CatalogsItemsUpdateBatchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
+	toSerialize["items"] = o.Items
 	toSerialize["language"] = o.Language
 	toSerialize["operation"] = o.Operation
-	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 
@@ -172,9 +172,9 @@ func (o *CatalogsItemsUpdateBatchRequest) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"country",
+		"items",
 		"language",
 		"operation",
-		"items",
 	}
 
 	allProperties := make(map[string]interface{})

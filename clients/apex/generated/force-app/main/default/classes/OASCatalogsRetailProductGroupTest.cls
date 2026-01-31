@@ -73,11 +73,11 @@ private class OASCatalogsRetailProductGroupTest {
     private static void maintainRenamedProperties() {
         OASCatalogsRetailProductGroup catalogsRetailProductGroup = new OASCatalogsRetailProductGroup();
         Map<String, String> x-property-mappings = catalogsRetailProductGroup.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
-        System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
-        System.assertEquals('createdAt', x-property-mappings.get('created_at'));
-        System.assertEquals('updatedAt', x-property-mappings.get('updated_at'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+        System.assertEquals('createdAt', x-property-mappings.get('created_at'));
         System.assertEquals('feedId', x-property-mappings.get('feed_id'));
+        System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
+        System.assertEquals('updatedAt', x-property-mappings.get('updated_at'));
     }
 }

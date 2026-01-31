@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **string** | Public username for the user account | [optional] [default to undefined]
 **id** | **string** | The owning account\&#39;s user ID. | [optional] [default to undefined]
+**username** | **string** | Public username for the user account | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AdAccountOwner } from './api';
 
 const instance: AdAccountOwner = {
-    username,
     id,
+    username,
 };
 ```
 

@@ -7,22 +7,22 @@
 #' @title AdAccountCreateSubscriptionRequest
 #' @description AdAccountCreateSubscriptionRequest Class
 #' @format An \code{R6Class} generator object
-#' @field webhook_url Standard HTTPS webhook URL. character
 #' @field lead_form_id Lead form ID. character [optional]
 #' @field partner_access_token Partner access token. Only for clients that requires authentication. We recommend to avoid this param. character [optional]
-#' @field partner_refresh_token Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. character [optional]
 #' @field partner_metadata  \link{AdAccountCreateSubscriptionRequestPartnerMetadata} [optional]
+#' @field partner_refresh_token Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. character [optional]
+#' @field webhook_url Standard HTTPS webhook URL. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdAccountCreateSubscriptionRequest <- R6::R6Class(
   "AdAccountCreateSubscriptionRequest",
   public = list(
-    `webhook_url` = NULL,
     `lead_form_id` = NULL,
     `partner_access_token` = NULL,
-    `partner_refresh_token` = NULL,
     `partner_metadata` = NULL,
+    `partner_refresh_token` = NULL,
+    `webhook_url` = NULL,
 
     #' @description
     #' Initialize a new AdAccountCreateSubscriptionRequest class.
@@ -30,10 +30,10 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     #' @param webhook_url Standard HTTPS webhook URL.
     #' @param lead_form_id Lead form ID.
     #' @param partner_access_token Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-    #' @param partner_refresh_token Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
     #' @param partner_metadata partner_metadata
+    #' @param partner_refresh_token Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
     #' @param ... Other optional arguments.
-    initialize = function(`webhook_url`, `lead_form_id` = NULL, `partner_access_token` = NULL, `partner_refresh_token` = NULL, `partner_metadata` = NULL, ...) {
+    initialize = function(`webhook_url`, `lead_form_id` = NULL, `partner_access_token` = NULL, `partner_metadata` = NULL, `partner_refresh_token` = NULL, ...) {
       if (!missing(`webhook_url`)) {
         if (!(is.character(`webhook_url`) && length(`webhook_url`) == 1)) {
           stop(paste("Error! Invalid data for `webhook_url`. Must be a string:", `webhook_url`))
@@ -52,15 +52,15 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
         }
         self$`partner_access_token` <- `partner_access_token`
       }
+      if (!is.null(`partner_metadata`)) {
+        stopifnot(R6::is.R6(`partner_metadata`))
+        self$`partner_metadata` <- `partner_metadata`
+      }
       if (!is.null(`partner_refresh_token`)) {
         if (!(is.character(`partner_refresh_token`) && length(`partner_refresh_token`) == 1)) {
           stop(paste("Error! Invalid data for `partner_refresh_token`. Must be a string:", `partner_refresh_token`))
         }
         self$`partner_refresh_token` <- `partner_refresh_token`
-      }
-      if (!is.null(`partner_metadata`)) {
-        stopifnot(R6::is.R6(`partner_metadata`))
-        self$`partner_metadata` <- `partner_metadata`
       }
     },
 
@@ -95,10 +95,6 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdAccountCreateSubscriptionRequestObject <- list()
-      if (!is.null(self$`webhook_url`)) {
-        AdAccountCreateSubscriptionRequestObject[["webhook_url"]] <-
-          self$`webhook_url`
-      }
       if (!is.null(self$`lead_form_id`)) {
         AdAccountCreateSubscriptionRequestObject[["lead_form_id"]] <-
           self$`lead_form_id`
@@ -107,13 +103,17 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
         AdAccountCreateSubscriptionRequestObject[["partner_access_token"]] <-
           self$`partner_access_token`
       }
+      if (!is.null(self$`partner_metadata`)) {
+        AdAccountCreateSubscriptionRequestObject[["partner_metadata"]] <-
+          self$`partner_metadata`$toSimpleType()
+      }
       if (!is.null(self$`partner_refresh_token`)) {
         AdAccountCreateSubscriptionRequestObject[["partner_refresh_token"]] <-
           self$`partner_refresh_token`
       }
-      if (!is.null(self$`partner_metadata`)) {
-        AdAccountCreateSubscriptionRequestObject[["partner_metadata"]] <-
-          self$`partner_metadata`$toSimpleType()
+      if (!is.null(self$`webhook_url`)) {
+        AdAccountCreateSubscriptionRequestObject[["webhook_url"]] <-
+          self$`webhook_url`
       }
       return(AdAccountCreateSubscriptionRequestObject)
     },
@@ -125,22 +125,22 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     #' @return the instance of AdAccountCreateSubscriptionRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`webhook_url`)) {
-        self$`webhook_url` <- this_object$`webhook_url`
-      }
       if (!is.null(this_object$`lead_form_id`)) {
         self$`lead_form_id` <- this_object$`lead_form_id`
       }
       if (!is.null(this_object$`partner_access_token`)) {
         self$`partner_access_token` <- this_object$`partner_access_token`
       }
-      if (!is.null(this_object$`partner_refresh_token`)) {
-        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
-      }
       if (!is.null(this_object$`partner_metadata`)) {
         `partner_metadata_object` <- AdAccountCreateSubscriptionRequestPartnerMetadata$new()
         `partner_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`partner_metadata`, auto_unbox = TRUE, digits = NA))
         self$`partner_metadata` <- `partner_metadata_object`
+      }
+      if (!is.null(this_object$`partner_refresh_token`)) {
+        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
+      }
+      if (!is.null(this_object$`webhook_url`)) {
+        self$`webhook_url` <- this_object$`webhook_url`
       }
       self
     },
@@ -163,11 +163,11 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     #' @return the instance of AdAccountCreateSubscriptionRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`webhook_url` <- this_object$`webhook_url`
       self$`lead_form_id` <- this_object$`lead_form_id`
       self$`partner_access_token` <- this_object$`partner_access_token`
-      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
       self$`partner_metadata` <- AdAccountCreateSubscriptionRequestPartnerMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`partner_metadata`, auto_unbox = TRUE, digits = NA))
+      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
+      self$`webhook_url` <- this_object$`webhook_url`
       self
     },
 
@@ -200,12 +200,12 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `webhook_url` is null
-      if (is.null(self$`webhook_url`)) {
+      if (!str_detect(self$`lead_form_id`, "^\\d+$")) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`lead_form_id`, "^\\d+$")) {
+      # check if the required `webhook_url` is null
+      if (is.null(self$`webhook_url`)) {
         return(FALSE)
       }
 
@@ -218,13 +218,13 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`lead_form_id`, "^\\d+$")) {
+        invalid_fields["lead_form_id"] <- "Invalid value for `lead_form_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `webhook_url` is null
       if (is.null(self$`webhook_url`)) {
         invalid_fields["webhook_url"] <- "Non-nullable required field `webhook_url` cannot be null."
-      }
-
-      if (!str_detect(self$`lead_form_id`, "^\\d+$")) {
-        invalid_fields["lead_form_id"] <- "Invalid value for `lead_form_id`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

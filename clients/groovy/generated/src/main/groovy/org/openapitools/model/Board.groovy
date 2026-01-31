@@ -6,54 +6,32 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardMedia;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.BoardPrivacy;
 
 @Canonical
 class Board {
-    
-    String id
-    /* Date and time of board creation. */
-    Date createdAt
     /* Date and time of last board pins modified. */
     Date boardPinsModifiedAt
-    
-    String name
-    
-    String description
     /* Count of collaborators on the board. */
     Integer collaboratorCount
-    /* Count of pins on the board. */
-    Integer pinCount
+    /* Date and time of board creation. */
+    Date createdAt
+    
+    String description
     /* Board follower count. */
     Integer followerCount
     
+    String id
+    /* If set to `true`, the board will be ad-only and can store ad-only Pins. */
+    Boolean isAdsOnly = false
+    /* Board media. */
     BoardMedia media
+    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    String name
     
     BoardOwner owner
-
-    enum PrivacyEnum {
-    
-        PUBLIC("PUBLIC"),
-        
-        PROTECTED("PROTECTED"),
-        
-        SECRET("SECRET")
-    
-        private final String value
-    
-        PrivacyEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    /* Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a> */
-    PrivacyEnum privacy = PrivacyEnum.PUBLIC
+    /* Count of Pins on the board. */
+    Integer pinCount
+    /*     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`.  */
+    BoardPrivacy privacy = BoardPrivacy.PUBLIC
 }

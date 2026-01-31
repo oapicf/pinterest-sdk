@@ -9,8 +9,8 @@ module TemplateResponseDateRangeRelativeDateRange =
 
 
   type TemplateResponse_date_range_relative_date_range = {
-    Type : string;
-    StartDaysInPast : decimal;
     EndDaysInPast : decimal;
+    StartDaysInPast : decimal;
+    Type : string;
   }
   //#endregion

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &PinAnalyticsMetricsResponse{}
 
 // PinAnalyticsMetricsResponse struct for PinAnalyticsMetricsResponse
 type PinAnalyticsMetricsResponse struct {
-	// The lifetime metric name and value.
-	LifetimeMetrics *map[string]int32 `json:"lifetime_metrics,omitempty"`
 	// Array with the requested daily metric records
 	DailyMetrics []PinAnalyticsMetricsResponseDailyMetricsInner `json:"daily_metrics,omitempty"`
+	// The lifetime metric name and value.
+	LifetimeMetrics *map[string]int32 `json:"lifetime_metrics,omitempty"`
 	// The metric name and value over the requested period for each requested metric
 	SummaryMetrics *map[string]float32 `json:"summary_metrics,omitempty"`
 }
@@ -43,38 +43,6 @@ func NewPinAnalyticsMetricsResponse() *PinAnalyticsMetricsResponse {
 func NewPinAnalyticsMetricsResponseWithDefaults() *PinAnalyticsMetricsResponse {
 	this := PinAnalyticsMetricsResponse{}
 	return &this
-}
-
-// GetLifetimeMetrics returns the LifetimeMetrics field value if set, zero value otherwise.
-func (o *PinAnalyticsMetricsResponse) GetLifetimeMetrics() map[string]int32 {
-	if o == nil || IsNil(o.LifetimeMetrics) {
-		var ret map[string]int32
-		return ret
-	}
-	return *o.LifetimeMetrics
-}
-
-// GetLifetimeMetricsOk returns a tuple with the LifetimeMetrics field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinAnalyticsMetricsResponse) GetLifetimeMetricsOk() (*map[string]int32, bool) {
-	if o == nil || IsNil(o.LifetimeMetrics) {
-		return nil, false
-	}
-	return o.LifetimeMetrics, true
-}
-
-// HasLifetimeMetrics returns a boolean if a field has been set.
-func (o *PinAnalyticsMetricsResponse) HasLifetimeMetrics() bool {
-	if o != nil && !IsNil(o.LifetimeMetrics) {
-		return true
-	}
-
-	return false
-}
-
-// SetLifetimeMetrics gets a reference to the given map[string]int32 and assigns it to the LifetimeMetrics field.
-func (o *PinAnalyticsMetricsResponse) SetLifetimeMetrics(v map[string]int32) {
-	o.LifetimeMetrics = &v
 }
 
 // GetDailyMetrics returns the DailyMetrics field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *PinAnalyticsMetricsResponse) HasDailyMetrics() bool {
 // SetDailyMetrics gets a reference to the given []PinAnalyticsMetricsResponseDailyMetricsInner and assigns it to the DailyMetrics field.
 func (o *PinAnalyticsMetricsResponse) SetDailyMetrics(v []PinAnalyticsMetricsResponseDailyMetricsInner) {
 	o.DailyMetrics = v
+}
+
+// GetLifetimeMetrics returns the LifetimeMetrics field value if set, zero value otherwise.
+func (o *PinAnalyticsMetricsResponse) GetLifetimeMetrics() map[string]int32 {
+	if o == nil || IsNil(o.LifetimeMetrics) {
+		var ret map[string]int32
+		return ret
+	}
+	return *o.LifetimeMetrics
+}
+
+// GetLifetimeMetricsOk returns a tuple with the LifetimeMetrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PinAnalyticsMetricsResponse) GetLifetimeMetricsOk() (*map[string]int32, bool) {
+	if o == nil || IsNil(o.LifetimeMetrics) {
+		return nil, false
+	}
+	return o.LifetimeMetrics, true
+}
+
+// HasLifetimeMetrics returns a boolean if a field has been set.
+func (o *PinAnalyticsMetricsResponse) HasLifetimeMetrics() bool {
+	if o != nil && !IsNil(o.LifetimeMetrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifetimeMetrics gets a reference to the given map[string]int32 and assigns it to the LifetimeMetrics field.
+func (o *PinAnalyticsMetricsResponse) SetLifetimeMetrics(v map[string]int32) {
+	o.LifetimeMetrics = &v
 }
 
 // GetSummaryMetrics returns the SummaryMetrics field value if set, zero value otherwise.
@@ -151,11 +151,11 @@ func (o PinAnalyticsMetricsResponse) MarshalJSON() ([]byte, error) {
 
 func (o PinAnalyticsMetricsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LifetimeMetrics) {
-		toSerialize["lifetime_metrics"] = o.LifetimeMetrics
-	}
 	if !IsNil(o.DailyMetrics) {
 		toSerialize["daily_metrics"] = o.DailyMetrics
+	}
+	if !IsNil(o.LifetimeMetrics) {
+		toSerialize["lifetime_metrics"] = o.LifetimeMetrics
 	}
 	if !IsNil(o.SummaryMetrics) {
 		toSerialize["summary_metrics"] = o.SummaryMetrics

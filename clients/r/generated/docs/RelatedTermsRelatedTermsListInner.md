@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**term** | **character** |  | [optional] 
 **related_terms** | **array[character]** |  | [optional] 
+**term** | **character** |  | [optional] 
 
 

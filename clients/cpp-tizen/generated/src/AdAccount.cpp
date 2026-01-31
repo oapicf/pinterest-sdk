@@ -23,19 +23,34 @@ AdAccount::~AdAccount()
 void
 AdAccount::__init()
 {
+	//country = new Country();
+	//created_time = int(0);
+	//currency = new Currency();
 	//id = std::string();
 	//name = std::string();
-	//owner = new Ad_account_owner();
-	//country = new Country();
-	//currency = new Currency();
+	//owner = null;
 	//new std::list()std::list> permissions;
-	//created_time = int(0);
 	//updated_time = int(0);
 }
 
 void
 AdAccount::__cleanup()
 {
+	//if(country != NULL) {
+	//
+	//delete country;
+	//country = NULL;
+	//}
+	//if(created_time != NULL) {
+	//
+	//delete created_time;
+	//created_time = NULL;
+	//}
+	//if(currency != NULL) {
+	//
+	//delete currency;
+	//currency = NULL;
+	//}
 	//if(id != NULL) {
 	//
 	//delete id;
@@ -51,25 +66,10 @@ AdAccount::__cleanup()
 	//delete owner;
 	//owner = NULL;
 	//}
-	//if(country != NULL) {
-	//
-	//delete country;
-	//country = NULL;
-	//}
-	//if(currency != NULL) {
-	//
-	//delete currency;
-	//currency = NULL;
-	//}
 	//if(permissions != NULL) {
 	//permissions.RemoveAll(true);
 	//delete permissions;
 	//permissions = NULL;
-	//}
-	//if(created_time != NULL) {
-	//
-	//delete created_time;
-	//created_time = NULL;
 	//}
 	//if(updated_time != NULL) {
 	//
@@ -84,6 +84,45 @@ AdAccount::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *countryKey = "country";
+	node = json_object_get_member(pJsonObject, countryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Country")) {
+			jsonToValue(&country, node, "Country", "Country");
+		} else {
+			
+			Country* obj = static_cast<Country*> (&country);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&created_time, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *currencyKey = "currency";
+	node = json_object_get_member(pJsonObject, currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Currency")) {
+			jsonToValue(&currency, node, "Currency", "Currency");
+		} else {
+			
+			Currency* obj = static_cast<Currency*> (&currency);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -111,39 +150,11 @@ AdAccount::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Ad_account_owner")) {
-			jsonToValue(&owner, node, "Ad_account_owner", "Ad_account_owner");
+		if (isprimitive("AdAccountOwner")) {
+			jsonToValue(&owner, node, "AdAccountOwner", "AdAccountOwner");
 		} else {
 			
-			Ad_account_owner* obj = static_cast<Ad_account_owner*> (&owner);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *countryKey = "country";
-	node = json_object_get_member(pJsonObject, countryKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Country")) {
-			jsonToValue(&country, node, "Country", "Country");
-		} else {
-			
-			Country* obj = static_cast<Country*> (&country);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *currencyKey = "currency";
-	node = json_object_get_member(pJsonObject, currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Currency")) {
-			jsonToValue(&currency, node, "Currency", "Currency");
-		} else {
-			
-			Currency* obj = static_cast<Currency*> (&currency);
+			AdAccountOwner* obj = static_cast<AdAccountOwner*> (&owner);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -172,17 +183,6 @@ AdAccount::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *created_timeKey = "created_time";
-	node = json_object_get_member(pJsonObject, created_timeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&created_time, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *updated_timeKey = "updated_time";
 	node = json_object_get_member(pJsonObject, updated_timeKey);
 	if (node !=NULL) {
@@ -206,6 +206,43 @@ AdAccount::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("Country")) {
+		Country obj = getCountry();
+		node = converttoJson(&obj, "Country", "");
+	}
+	else {
+		
+		Country obj = static_cast<Country> (getCountry());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *countryKey = "country";
+	json_object_set_member(pJsonObject, countryKey, node);
+	if (isprimitive("int")) {
+		int obj = getCreatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("Currency")) {
+		Currency obj = getCurrency();
+		node = converttoJson(&obj, "Currency", "");
+	}
+	else {
+		
+		Currency obj = static_cast<Currency> (getCurrency());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *currencyKey = "currency";
+	json_object_set_member(pJsonObject, currencyKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
@@ -224,13 +261,13 @@ AdAccount::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("Ad_account_owner")) {
-		Ad_account_owner obj = getOwner();
-		node = converttoJson(&obj, "Ad_account_owner", "");
+	if (isprimitive("AdAccountOwner")) {
+		AdAccountOwner obj = getOwner();
+		node = converttoJson(&obj, "AdAccountOwner", "");
 	}
 	else {
 		
-		Ad_account_owner obj = static_cast<Ad_account_owner> (getOwner());
+		AdAccountOwner obj = static_cast<AdAccountOwner> (getOwner());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -238,34 +275,6 @@ AdAccount::toJson()
 	}
 	const gchar *ownerKey = "owner";
 	json_object_set_member(pJsonObject, ownerKey, node);
-	if (isprimitive("Country")) {
-		Country obj = getCountry();
-		node = converttoJson(&obj, "Country", "");
-	}
-	else {
-		
-		Country obj = static_cast<Country> (getCountry());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *countryKey = "country";
-	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("Currency")) {
-		Currency obj = getCurrency();
-		node = converttoJson(&obj, "Currency", "");
-	}
-	else {
-		
-		Currency obj = static_cast<Currency> (getCurrency());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *currencyKey = "currency";
-	json_object_set_member(pJsonObject, currencyKey, node);
 	if (isprimitive("BusinessAccessRole")) {
 		list<BusinessAccessRole> new_list = static_cast<list <BusinessAccessRole> > (getPermissions());
 		node = converttoJson(&new_list, "BusinessAccessRole", "array");
@@ -292,15 +301,6 @@ AdAccount::toJson()
 	const gchar *permissionsKey = "permissions";
 	json_object_set_member(pJsonObject, permissionsKey, node);
 	if (isprimitive("int")) {
-		int obj = getCreatedTime();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *created_timeKey = "created_time";
-	json_object_set_member(pJsonObject, created_timeKey, node);
-	if (isprimitive("int")) {
 		int obj = getUpdatedTime();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -315,6 +315,42 @@ AdAccount::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+Country
+AdAccount::getCountry()
+{
+	return country;
+}
+
+void
+AdAccount::setCountry(Country  country)
+{
+	this->country = country;
+}
+
+int
+AdAccount::getCreatedTime()
+{
+	return created_time;
+}
+
+void
+AdAccount::setCreatedTime(int  created_time)
+{
+	this->created_time = created_time;
+}
+
+Currency
+AdAccount::getCurrency()
+{
+	return currency;
+}
+
+void
+AdAccount::setCurrency(Currency  currency)
+{
+	this->currency = currency;
 }
 
 std::string
@@ -341,40 +377,16 @@ AdAccount::setName(std::string  name)
 	this->name = name;
 }
 
-Ad_account_owner
+AdAccountOwner
 AdAccount::getOwner()
 {
 	return owner;
 }
 
 void
-AdAccount::setOwner(Ad_account_owner  owner)
+AdAccount::setOwner(AdAccountOwner  owner)
 {
 	this->owner = owner;
-}
-
-Country
-AdAccount::getCountry()
-{
-	return country;
-}
-
-void
-AdAccount::setCountry(Country  country)
-{
-	this->country = country;
-}
-
-Currency
-AdAccount::getCurrency()
-{
-	return currency;
-}
-
-void
-AdAccount::setCurrency(Currency  currency)
-{
-	this->currency = currency;
 }
 
 std::list<BusinessAccessRole>
@@ -387,18 +399,6 @@ void
 AdAccount::setPermissions(std::list <BusinessAccessRole> permissions)
 {
 	this->permissions = permissions;
-}
-
-int
-AdAccount::getCreatedTime()
-{
-	return created_time;
-}
-
-void
-AdAccount::setCreatedTime(int  created_time)
-{
-	this->created_time = created_time;
 }
 
 int

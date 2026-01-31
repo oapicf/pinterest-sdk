@@ -16,8 +16,8 @@ module CatalogsItemsUpdateBatchRequest =
 
   type CatalogsItemsUpdateBatchRequest = {
     Country : Country;
+    Items : ItemUpdateBatchRecord[];
     Language : LanguageEnum;
     Operation : BatchOperation;
-    Items : ItemUpdateBatchRecord[];
   }
   //#endregion

@@ -9,11 +9,11 @@ Request object for updating a catalog based product group.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional] |
-|**name** | **String** |  |  [optional] |
+|**country** | **Country** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional] |
-|**country** | **Country** |  |  [optional] |
 |**locale** | **CatalogsLocale** |  |  [optional] |
+|**name** | **String** |  |  [optional] |
 
 
 

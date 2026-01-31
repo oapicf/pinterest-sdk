@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,9 +27,9 @@ type Catalog struct {
 	// ID of the catalog entity.
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 	UpdatedAt time.Time `json:"updated_at"`
+	CatalogType CatalogsType `json:"catalog_type"`
 	// A human-friendly name associated to a catalog entity.
 	Name NullableString `json:"name"`
-	CatalogType CatalogsType `json:"catalog_type"`
 }
 
 type _Catalog Catalog
@@ -38,13 +38,13 @@ type _Catalog Catalog
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, name NullableString, catalogType CatalogsType) *Catalog {
+func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, catalogType CatalogsType, name NullableString) *Catalog {
 	this := Catalog{}
 	this.CreatedAt = createdAt
 	this.Id = id
 	this.UpdatedAt = updatedAt
-	this.Name = name
 	this.CatalogType = catalogType
+	this.Name = name
 	return &this
 }
 
@@ -128,6 +128,30 @@ func (o *Catalog) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetCatalogType returns the CatalogType field value
+func (o *Catalog) GetCatalogType() CatalogsType {
+	if o == nil {
+		var ret CatalogsType
+		return ret
+	}
+
+	return o.CatalogType
+}
+
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
+// and a boolean to check if the value has been set.
+func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogType, true
+}
+
+// SetCatalogType sets field value
+func (o *Catalog) SetCatalogType(v CatalogsType) {
+	o.CatalogType = v
+}
+
 // GetName returns the Name field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *Catalog) GetName() string {
@@ -154,30 +178,6 @@ func (o *Catalog) SetName(v string) {
 	o.Name.Set(&v)
 }
 
-// GetCatalogType returns the CatalogType field value
-func (o *Catalog) GetCatalogType() CatalogsType {
-	if o == nil {
-		var ret CatalogsType
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *Catalog) SetCatalogType(v CatalogsType) {
-	o.CatalogType = v
-}
-
 func (o Catalog) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,8 +191,8 @@ func (o Catalog) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
 	toSerialize["updated_at"] = o.UpdatedAt
-	toSerialize["name"] = o.Name.Get()
 	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["name"] = o.Name.Get()
 	return toSerialize, nil
 }
 
@@ -204,8 +204,8 @@ func (o *Catalog) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"id",
 		"updated_at",
-		"name",
 		"catalog_type",
+		"name",
 	}
 
 	allProperties := make(map[string]interface{})

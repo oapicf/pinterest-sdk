@@ -53,11 +53,11 @@ public enum CatalogTypeEnum {
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
-
   private String description;
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
+
+  private String name;
 
   /**
    **/
@@ -74,24 +74,6 @@ public enum CatalogTypeEnum {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-
-  /**
-   **/
-  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
 
@@ -131,6 +113,24 @@ public enum CatalogTypeEnum {
   }
 
 
+  /**
+   **/
+  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,14 +142,14 @@ public enum CatalogTypeEnum {
     }
     CatalogsCreativeAssetsProductGroupUpdateRequest catalogsCreativeAssetsProductGroupUpdateRequest = (CatalogsCreativeAssetsProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsCreativeAssetsProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, description, filters, name);
   }
 
   @Override
@@ -158,9 +158,9 @@ public enum CatalogTypeEnum {
     sb.append("class CatalogsCreativeAssetsProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

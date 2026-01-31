@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,9 +17,9 @@ package openapi
 // BulkUpsertStatusResponse - ID of the bulk request.
 type BulkUpsertStatusResponse struct {
 
-	Status BulkUpsertStatus `json:"status,omitempty"`
-
 	ResultUrl string `json:"result_url,omitempty"`
+
+	Status BulkUpsertStatus `json:"status,omitempty"`
 }
 
 // AssertBulkUpsertStatusResponseRequired checks if the required fields are not zero-ed

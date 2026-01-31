@@ -21,14 +21,6 @@ public class KeywordUpdateTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
      * Test the property 'archived'
      */
     @Test
@@ -42,6 +34,14 @@ public class KeywordUpdateTest {
     @Test
     public void bidTest() {
         // TODO: test bid
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
 }

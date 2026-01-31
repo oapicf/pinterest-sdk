@@ -10,8 +10,8 @@
 
 -type openapi_catalogs_hotel_item_error_response() ::
   [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
-  | {'hotel_id', binary() }
   | {'errors', list(openapi_item_validation_event:openapi_item_validation_event()) }
+  | {'hotel_id', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_catalogs_hotel_item_error_response() ->
 
 openapi_catalogs_hotel_item_error_response(Fields) ->
   Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
-            , {'hotel_id', binary() }
             , {'errors', list(openapi_item_validation_event:openapi_item_validation_event()) }
+            , {'hotel_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

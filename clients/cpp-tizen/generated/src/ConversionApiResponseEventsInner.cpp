@@ -23,23 +23,23 @@ ConversionApiResponse_events_inner::~ConversionApiResponse_events_inner()
 void
 ConversionApiResponse_events_inner::__init()
 {
-	//status = std::string();
 	//error_message = std::string();
+	//status = std::string();
 	//warning_message = std::string();
 }
 
 void
 ConversionApiResponse_events_inner::__cleanup()
 {
-	//if(status != NULL) {
-	//
-	//delete status;
-	//status = NULL;
-	//}
 	//if(error_message != NULL) {
 	//
 	//delete error_message;
 	//error_message = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//if(warning_message != NULL) {
 	//
@@ -54,17 +54,6 @@ ConversionApiResponse_events_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&status, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *error_messageKey = "error_message";
 	node = json_object_get_member(pJsonObject, error_messageKey);
 	if (node !=NULL) {
@@ -72,6 +61,17 @@ ConversionApiResponse_events_inner::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&error_message, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&status, node, "std::string", "");
 		} else {
 			
 		}
@@ -100,15 +100,6 @@ ConversionApiResponse_events_inner::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getStatus();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getErrorMessage();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -117,6 +108,15 @@ ConversionApiResponse_events_inner::toJson()
 	}
 	const gchar *error_messageKey = "error_message";
 	json_object_set_member(pJsonObject, error_messageKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getStatus();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getWarningMessage();
 		node = converttoJson(&obj, "std::string", "");
@@ -135,18 +135,6 @@ ConversionApiResponse_events_inner::toJson()
 }
 
 std::string
-ConversionApiResponse_events_inner::getStatus()
-{
-	return status;
-}
-
-void
-ConversionApiResponse_events_inner::setStatus(std::string  status)
-{
-	this->status = status;
-}
-
-std::string
 ConversionApiResponse_events_inner::getErrorMessage()
 {
 	return error_message;
@@ -156,6 +144,18 @@ void
 ConversionApiResponse_events_inner::setErrorMessage(std::string  error_message)
 {
 	this->error_message = error_message;
+}
+
+std::string
+ConversionApiResponse_events_inner::getStatus()
+{
+	return status;
+}
+
+void
+ConversionApiResponse_events_inner::setStatus(std::string  status)
+{
+	this->status = status;
 }
 
 std::string

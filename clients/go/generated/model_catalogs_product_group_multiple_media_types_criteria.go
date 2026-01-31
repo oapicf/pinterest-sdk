@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CatalogsProductGroupMultipleMediaTypesCriteria{}
 
 // CatalogsProductGroupMultipleMediaTypesCriteria struct for CatalogsProductGroupMultipleMediaTypesCriteria
 type CatalogsProductGroupMultipleMediaTypesCriteria struct {
-	Values []MediaType `json:"values"`
 	Negated *bool `json:"negated,omitempty"`
+	Values []MediaType `json:"values"`
 }
 
 type _CatalogsProductGroupMultipleMediaTypesCriteria CatalogsProductGroupMultipleMediaTypesCriteria
@@ -34,9 +34,9 @@ type _CatalogsProductGroupMultipleMediaTypesCriteria CatalogsProductGroupMultipl
 // will change when the set of required properties is changed
 func NewCatalogsProductGroupMultipleMediaTypesCriteria(values []MediaType) *CatalogsProductGroupMultipleMediaTypesCriteria {
 	this := CatalogsProductGroupMultipleMediaTypesCriteria{}
-	this.Values = values
 	var negated bool = false
 	this.Negated = &negated
+	this.Values = values
 	return &this
 }
 
@@ -48,30 +48,6 @@ func NewCatalogsProductGroupMultipleMediaTypesCriteriaWithDefaults() *CatalogsPr
 	var negated bool = false
 	this.Negated = &negated
 	return &this
-}
-
-// GetValues returns the Values field value
-func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValues() []MediaType {
-	if o == nil {
-		var ret []MediaType
-		return ret
-	}
-
-	return o.Values
-}
-
-// GetValuesOk returns a tuple with the Values field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValuesOk() ([]MediaType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Values, true
-}
-
-// SetValues sets field value
-func (o *CatalogsProductGroupMultipleMediaTypesCriteria) SetValues(v []MediaType) {
-	o.Values = v
 }
 
 // GetNegated returns the Negated field value if set, zero value otherwise.
@@ -106,6 +82,30 @@ func (o *CatalogsProductGroupMultipleMediaTypesCriteria) SetNegated(v bool) {
 	o.Negated = &v
 }
 
+// GetValues returns the Values field value
+func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValues() []MediaType {
+	if o == nil {
+		var ret []MediaType
+		return ret
+	}
+
+	return o.Values
+}
+
+// GetValuesOk returns a tuple with the Values field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValuesOk() ([]MediaType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Values, true
+}
+
+// SetValues sets field value
+func (o *CatalogsProductGroupMultipleMediaTypesCriteria) SetValues(v []MediaType) {
+	o.Values = v
+}
+
 func (o CatalogsProductGroupMultipleMediaTypesCriteria) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,10 +116,10 @@ func (o CatalogsProductGroupMultipleMediaTypesCriteria) MarshalJSON() ([]byte, e
 
 func (o CatalogsProductGroupMultipleMediaTypesCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["values"] = o.Values
 	if !IsNil(o.Negated) {
 		toSerialize["negated"] = o.Negated
 	}
+	toSerialize["values"] = o.Values
 	return toSerialize, nil
 }
 

@@ -7,7 +7,7 @@ Protected Interface ProductGroupPromotionsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ProductGroupPromotionsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ProductGroupPromotionResponse)
+		Sub ProductGroupPromotionsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ProductGroupPromotion)
 		  
 		End Sub
 	#tag EndMethod

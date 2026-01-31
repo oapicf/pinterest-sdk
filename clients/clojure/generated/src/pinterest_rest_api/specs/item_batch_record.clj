@@ -9,8 +9,8 @@
 
 (def item-batch-record-data
   {
-   (ds/opt :item_id) string?
    (ds/opt :attributes) item-attributes-request-spec
+   (ds/opt :item_id) string?
    (ds/opt :update_mask) (s/coll-of update-mask-field-type-spec)
    })
 

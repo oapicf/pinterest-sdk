@@ -7,7 +7,7 @@
 #' @title AdGroupsAnalyticsResponseInner
 #' @description AdGroupsAnalyticsResponseInner Class
 #' @format An \code{R6Class} generator object
-#' @field AD_GROUP_ID The ID of the ad group that this metrics belongs to. character
+#' @field AD_GROUP_ID The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true. character [optional]
 #' @field DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) character [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
@@ -26,12 +26,12 @@ AdGroupsAnalyticsResponseInner <- R6::R6Class(
     #' @description
     #' Initialize a new AdGroupsAnalyticsResponseInner class.
     #'
-    #' @param AD_GROUP_ID The ID of the ad group that this metrics belongs to.
+    #' @param AD_GROUP_ID The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
     #' @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
-    initialize = function(`AD_GROUP_ID`, `DATE` = NULL, additional_properties = NULL, ...) {
-      if (!missing(`AD_GROUP_ID`)) {
+    initialize = function(`AD_GROUP_ID` = NULL, `DATE` = NULL, additional_properties = NULL, ...) {
+      if (!is.null(`AD_GROUP_ID`)) {
         if (!(is.character(`AD_GROUP_ID`) && length(`AD_GROUP_ID`) == 1)) {
           stop(paste("Error! Invalid data for `AD_GROUP_ID`. Must be a string:", `AD_GROUP_ID`))
         }
@@ -158,14 +158,6 @@ AdGroupsAnalyticsResponseInner <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `AD_GROUP_ID`
-      if (!is.null(input_json$`AD_GROUP_ID`)) {
-        if (!(is.character(input_json$`AD_GROUP_ID`) && length(input_json$`AD_GROUP_ID`) == 1)) {
-          stop(paste("Error! Invalid data for `AD_GROUP_ID`. Must be a string:", input_json$`AD_GROUP_ID`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for AdGroupsAnalyticsResponseInner: the required field `AD_GROUP_ID` is missing."))
-      }
     },
 
     #' @description
@@ -181,11 +173,6 @@ AdGroupsAnalyticsResponseInner <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `AD_GROUP_ID` is null
-      if (is.null(self$`AD_GROUP_ID`)) {
-        return(FALSE)
-      }
-
       if (!str_detect(self$`AD_GROUP_ID`, "^\\d+$")) {
         return(FALSE)
       }
@@ -199,11 +186,6 @@ AdGroupsAnalyticsResponseInner <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `AD_GROUP_ID` is null
-      if (is.null(self$`AD_GROUP_ID`)) {
-        invalid_fields["AD_GROUP_ID"] <- "Non-nullable required field `AD_GROUP_ID` cannot be null."
-      }
-
       if (!str_detect(self$`AD_GROUP_ID`, "^\\d+$")) {
         invalid_fields["AD_GROUP_ID"] <- "Invalid value for `AD_GROUP_ID`, must conform to the pattern ^\\d+$."
       }

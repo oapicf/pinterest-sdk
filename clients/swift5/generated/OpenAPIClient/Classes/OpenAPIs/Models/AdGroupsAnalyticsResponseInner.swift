@@ -13,12 +13,12 @@ import AnyCodable
 public struct AdGroupsAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
 
     public static let AD_GROUP_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** The ID of the ad group that this metrics belongs to. */
-    public var AD_GROUP_ID: String
+    /** The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true. */
+    public var AD_GROUP_ID: String?
     /** Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     public var DATE: Date?
 
-    public init(AD_GROUP_ID: String, DATE: Date? = nil) {
+    public init(AD_GROUP_ID: String? = nil, DATE: Date? = nil) {
         self.AD_GROUP_ID = AD_GROUP_ID
         self.DATE = DATE
     }
@@ -47,7 +47,7 @@ public struct AdGroupsAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(AD_GROUP_ID, forKey: .AD_GROUP_ID)
+        try container.encodeIfPresent(AD_GROUP_ID, forKey: .AD_GROUP_ID)
         try container.encodeIfPresent(DATE, forKey: .DATE)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
@@ -58,7 +58,7 @@ public struct AdGroupsAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        AD_GROUP_ID = try container.decode(String.self, forKey: .AD_GROUP_ID)
+        AD_GROUP_ID = try container.decodeIfPresent(String.self, forKey: .AD_GROUP_ID)
         DATE = try container.decodeIfPresent(Date.self, forKey: .DATE)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("AD_GROUP_ID")

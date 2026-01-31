@@ -36,14 +36,6 @@ public class CatalogsHotelAddressTest {
     }
 
     /**
-     * Test the property 'region'
-     */
-    @Test
-    public void regionTest() {
-        // TODO: test region
-    }
-
-    /**
      * Test the property 'country'
      */
     @Test
@@ -57,6 +49,14 @@ public class CatalogsHotelAddressTest {
     @Test
     public void postalCodeTest() {
         // TODO: test postalCode
+    }
+
+    /**
+     * Test the property 'region'
+     */
+    @Test
+    public void regionTest() {
+        // TODO: test region
     }
 
 }

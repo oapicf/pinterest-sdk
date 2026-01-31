@@ -21,8 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * Request object to update catalogs creative assets items
  * @param catalogType 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with creative assets item operations
+ * @param language We recommend using the CatalogsLocale values.
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 data class CatalogsCreativeAssetsBatchRequest(
@@ -34,13 +34,13 @@ data class CatalogsCreativeAssetsBatchRequest(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
 
-    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
-    @get:JsonProperty("language", required = true) val language: CatalogsCreativeAssetsBatchRequest.Language,
-
     @field:Valid
     @get:Size(min=1,max=1000) 
     @Schema(example = "null", required = true, description = "Array with creative assets item operations")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<CatalogsCreativeAssetsBatchItem>,
+
+    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
+    @get:JsonProperty("language", required = true) val language: CatalogsCreativeAssetsBatchRequest.Language,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")

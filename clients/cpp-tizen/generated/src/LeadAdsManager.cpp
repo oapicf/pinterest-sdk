@@ -187,14 +187,14 @@ bool LeadAdsManager::adAccountsSubscriptionsDelByIdSync(char * accessToken,
 static bool adAccountsSubscriptionsGetByIdProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AdAccountGetSubscriptionResponse, Error, void* )
-	= reinterpret_cast<void(*)(AdAccountGetSubscriptionResponse, Error, void* )> (voidHandler);
+	void(* handler)(LeadSubscription, Error, void* )
+	= reinterpret_cast<void(*)(LeadSubscription, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AdAccountGetSubscriptionResponse out;
+	LeadSubscription out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -202,18 +202,28 @@ static bool adAccountsSubscriptionsGetByIdProcessor(MemoryStruct_s p_chunk, long
 
 
 
-		if (isprimitive("AdAccountGetSubscriptionResponse")) {
+		if (isprimitive("LeadSubscription")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AdAccountGetSubscriptionResponse", "AdAccountGetSubscriptionResponse");
+			jsonToValue(&out, pJson, "LeadSubscription", "LeadSubscription");
 			json_node_free(pJson);
 
-			if ("AdAccountGetSubscriptionResponse" == "std::string") {
+			if ("LeadSubscription" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -261,7 +271,7 @@ static bool adAccountsSubscriptionsGetByIdProcessor(MemoryStruct_s p_chunk, long
 
 static bool adAccountsSubscriptionsGetByIdHelper(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	void(* handler)(AdAccountGetSubscriptionResponse, Error, void* )
+	void(* handler)(LeadSubscription, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -344,7 +354,7 @@ static bool adAccountsSubscriptionsGetByIdHelper(char * accessToken,
 
 bool LeadAdsManager::adAccountsSubscriptionsGetByIdAsync(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	void(* handler)(AdAccountGetSubscriptionResponse, Error, void* )
+	void(* handler)(LeadSubscription, Error, void* )
 	, void* userData)
 {
 	return adAccountsSubscriptionsGetByIdHelper(accessToken,
@@ -354,7 +364,7 @@ bool LeadAdsManager::adAccountsSubscriptionsGetByIdAsync(char * accessToken,
 
 bool LeadAdsManager::adAccountsSubscriptionsGetByIdSync(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	void(* handler)(AdAccountGetSubscriptionResponse, Error, void* )
+	void(* handler)(LeadSubscription, Error, void* )
 	, void* userData)
 {
 	return adAccountsSubscriptionsGetByIdHelper(accessToken,
@@ -408,6 +418,26 @@ static bool adAccountsSubscriptionsGetListProcessor(MemoryStruct_s p_chunk, long
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -428,7 +458,7 @@ static bool adAccountsSubscriptionsGetListProcessor(MemoryStruct_s p_chunk, long
 }
 
 static bool adAccountsSubscriptionsGetListHelper(char * accessToken,
-	std::string adAccountId, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_subscriptions_get_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -446,17 +476,17 @@ static bool adAccountsSubscriptionsGetListHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -519,36 +549,36 @@ static bool adAccountsSubscriptionsGetListHelper(char * accessToken,
 
 
 bool LeadAdsManager::adAccountsSubscriptionsGetListAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_subscriptions_get_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsSubscriptionsGetListHelper(accessToken,
-	adAccountId, pageSize, bookmark, 
+	adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool LeadAdsManager::adAccountsSubscriptionsGetListSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_subscriptions_get_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsSubscriptionsGetListHelper(accessToken,
-	adAccountId, pageSize, bookmark, 
+	adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool adAccountsSubscriptionsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AdAccountCreateSubscriptionResponse, Error, void* )
-	= reinterpret_cast<void(*)(AdAccountCreateSubscriptionResponse, Error, void* )> (voidHandler);
+	void(* handler)(LeadSubscription, Error, void* )
+	= reinterpret_cast<void(*)(LeadSubscription, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AdAccountCreateSubscriptionResponse out;
+	LeadSubscription out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -556,12 +586,12 @@ static bool adAccountsSubscriptionsPostProcessor(MemoryStruct_s p_chunk, long co
 
 
 
-		if (isprimitive("AdAccountCreateSubscriptionResponse")) {
+		if (isprimitive("LeadSubscription")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AdAccountCreateSubscriptionResponse", "AdAccountCreateSubscriptionResponse");
+			jsonToValue(&out, pJson, "LeadSubscription", "LeadSubscription");
 			json_node_free(pJson);
 
-			if ("AdAccountCreateSubscriptionResponse" == "std::string") {
+			if ("LeadSubscription" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -609,8 +639,8 @@ static bool adAccountsSubscriptionsPostProcessor(MemoryStruct_s p_chunk, long co
 }
 
 static bool adAccountsSubscriptionsPostHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AdAccountCreateSubscriptionRequest> adAccountCreateSubscriptionRequest, 
-	void(* handler)(AdAccountCreateSubscriptionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<LeadSubscriptionPostParamsCreate> leadSubscriptionPostParamsCreate, 
+	void(* handler)(LeadSubscription, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -630,11 +660,11 @@ static bool adAccountsSubscriptionsPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("AdAccountCreateSubscriptionRequest")) {
-		node = converttoJson(&adAccountCreateSubscriptionRequest, "AdAccountCreateSubscriptionRequest", "");
+	if (isprimitive("LeadSubscriptionPostParamsCreate")) {
+		node = converttoJson(&leadSubscriptionPostParamsCreate, "LeadSubscriptionPostParamsCreate", "");
 	}
 	
-	char *jsonStr =  adAccountCreateSubscriptionRequest.toJson();
+	char *jsonStr =  leadSubscriptionPostParamsCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -699,22 +729,22 @@ static bool adAccountsSubscriptionsPostHelper(char * accessToken,
 
 
 bool LeadAdsManager::adAccountsSubscriptionsPostAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AdAccountCreateSubscriptionRequest> adAccountCreateSubscriptionRequest, 
-	void(* handler)(AdAccountCreateSubscriptionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<LeadSubscriptionPostParamsCreate> leadSubscriptionPostParamsCreate, 
+	void(* handler)(LeadSubscription, Error, void* )
 	, void* userData)
 {
 	return adAccountsSubscriptionsPostHelper(accessToken,
-	adAccountId, adAccountCreateSubscriptionRequest, 
+	adAccountId, leadSubscriptionPostParamsCreate, 
 	handler, userData, true);
 }
 
 bool LeadAdsManager::adAccountsSubscriptionsPostSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AdAccountCreateSubscriptionRequest> adAccountCreateSubscriptionRequest, 
-	void(* handler)(AdAccountCreateSubscriptionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<LeadSubscriptionPostParamsCreate> leadSubscriptionPostParamsCreate, 
+	void(* handler)(LeadSubscription, Error, void* )
 	, void* userData)
 {
 	return adAccountsSubscriptionsPostHelper(accessToken,
-	adAccountId, adAccountCreateSubscriptionRequest, 
+	adAccountId, leadSubscriptionPostParamsCreate, 
 	handler, userData, false);
 }
 

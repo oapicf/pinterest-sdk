@@ -16,14 +16,14 @@ void main() {
   // final instance = CatalogsReportDistributionIssueFilter();
 
   group('test CatalogsReportDistributionIssueFilter', () {
-    // String reportType
-    test('to test the property `reportType`', () async {
-      // TODO
-    });
-
     // Unique identifier of a catalog. If not given, oldest catalog will be used
     // String catalogId
     test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // String reportType
+    test('to test the property `reportType`', () async {
       // TODO
     });
 

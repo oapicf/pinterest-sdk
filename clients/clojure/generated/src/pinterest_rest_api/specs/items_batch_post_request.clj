@@ -10,11 +10,11 @@
 
 (def items-batch-post-request-data
   {
+   (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :country) country-spec
-   (ds/req :language) string?
    (ds/req :items) (s/coll-of item-delete-batch-record-spec)
-   (ds/opt :catalog_id) string?
+   (ds/req :language) string?
    (ds/req :operation) batch-operation-spec
    })
 

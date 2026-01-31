@@ -26,16 +26,16 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param createdAt 
  * @param id 
  * @param updatedAt 
- * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
- * @param format 
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @param catalogType 
  * @param credentials 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param preferredProcessingSchedule 
- * @param status 
  * @param defaultCurrency 
  * @param defaultLocale The locale used within a feed for product descriptions.
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @param preferredProcessingSchedule 
+ * @param status 
  */
 data class CatalogsHotelFeed(
 
@@ -48,12 +48,9 @@ data class CatalogsHotelFeed(
     @Schema(example = "2022-03-14T15:16:34Z", required = true, description = "")
     @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime,
 
-    @Schema(example = "null", required = true, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
-    @get:JsonProperty("name", required = true) val name: kotlin.String?,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("format", required = true) val format: CatalogsFormat,
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "null", required = true, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
+    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String?,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -63,17 +60,6 @@ data class CatalogsHotelFeed(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("credentials", required = true) val credentials: CatalogsFeedCredentials?,
 
-    @Schema(example = "null", required = true, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-    @get:JsonProperty("location", required = true) val location: kotlin.String,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("preferred_processing_schedule", required = true) val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("status", required = true) val status: CatalogsStatus,
-
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("default_currency", required = true) val defaultCurrency: NullableCurrency?,
@@ -81,9 +67,23 @@ data class CatalogsHotelFeed(
     @Schema(example = "en-US", required = true, description = "The locale used within a feed for product descriptions.")
     @get:JsonProperty("default_locale", required = true) val defaultLocale: kotlin.String,
 
-    @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
-    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String?
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("format", required = true) val format: CatalogsFormat,
+
+    @Schema(example = "null", required = true, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+    @get:JsonProperty("location", required = true) val location: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
+    @get:JsonProperty("name", required = true) val name: kotlin.String?,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("preferred_processing_schedule", required = true) val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("status", required = true) val status: CatalogsStatus
 ) {
 
 }

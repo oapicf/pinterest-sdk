@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<Country> getValues();
-
-	/*! \brief Set 
-	 */
-	void setValues(std::list <Country> values);
-	/*! \brief Get 
-	 */
 	bool getNegated();
 
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	std::list<Country> getValues();
+
+	/*! \brief Set 
+	 */
+	void setValues(std::list <Country> values);
 
 private:
-	std::list <Country>values;
 	bool negated;
+	std::list <Country>values;
 	void __init();
 	void __cleanup();
 

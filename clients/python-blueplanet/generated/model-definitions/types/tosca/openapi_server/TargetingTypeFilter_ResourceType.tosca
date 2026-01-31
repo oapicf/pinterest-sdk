@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingTypeFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingTypeFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TargetingTypeFilter {
+    title = TargetingTypeFilter
+    description = TargetingTypeFilter
+    derivedFrom = Root
+    properties {
+        targeting_types {
+          type = array
+          items.type =  string
+          description = "List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users."
+          enum = ["KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION", "MEDIA_TYPE", "AGE_BUCKET_AND_GENDER", "AUDIENCE_MULTIPLIER", "CREATIVE_ENHANCEMENTS", "LOCAL_ADS_STORE_CODE"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingTypeFilter {
+    title = TargetingTypeFilter
+    description = TargetingTypeFilter
+    implements = openapi_server.resourceTypes.TargetingTypeFilter
+
+  }
+}

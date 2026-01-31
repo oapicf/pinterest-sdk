@@ -9,5 +9,5 @@ type CatalogsCreativeAssetsItemErrorResponse struct {
 	CreativeAssetsId string `json:"creative_assets_id,omitempty"`
 
 	// Array with the errors for the item id requested
-	Errors []ItemValidationEvent `json:"errors,omitempty"`
+	Errors []ItemValidationEvent `json:"errors"`
 }

@@ -10,22 +10,22 @@ The class is defined in **[IntegrationRecord.java](../../src/main/java/org/opena
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | `String` |  |  [optional property]
-**externalBusinessId** | `String` |  |  [optional property]
-**connectedMerchantId** | `String` |  |  [optional property]
-**connectedUserId** | `String` |  |  [optional property] [readonly property]
+**additionalId1** | `String` |  |  [optional property]
 **connectedAdvertiserId** | `String` |  |  [optional property] [readonly property]
 **connectedLbaId** | `String` |  |  [optional property]
+**connectedMerchantId** | `String` |  |  [optional property]
 **connectedTagId** | `String` |  |  [optional property]
+**connectedUserId** | `String` |  |  [optional property] [readonly property]
+**createdTime** | `Integer` |  |  [optional property]
+**externalBusinessId** | `String` |  |  [optional property]
+**id** | `String` |  |  [optional property]
 **partnerAccessToken** | `String` |  |  [optional property]
-**partnerRefreshToken** | `String` |  |  [optional property]
-**partnerPrimaryEmail** | `String` |  |  [optional property]
 **partnerAccessTokenExpiry** | `Integer` |  |  [optional property]
+**partnerMetadata** | `String` |  |  [optional property]
+**partnerPrimaryEmail** | `String` |  |  [optional property]
+**partnerRefreshToken** | `String` |  |  [optional property]
 **partnerRefreshTokenExpiry** | `Integer` |  |  [optional property]
 **scopes** | `String` |  |  [optional property]
-**partnerMetadata** | `String` |  |  [optional property]
-**additionalId1** | `String` |  |  [optional property]
-**createdTime** | `Integer` |  |  [optional property]
 **updatedTime** | `Integer` |  |  [optional property]
 
 

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
 **Name** | **string** | Audience name. | 
 **Rule** | [**AudienceRule**](AudienceRule.md) |  | 
-**Description** | Pointer to **string** | Audience description. | [optional] 
 **AudienceType** | [**AudienceType**](AudienceType.md) | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. | 
+**Description** | Pointer to **string** | Audience description. | [optional] 
 
 ## Methods
 
@@ -94,6 +94,26 @@ and a boolean to check if the value has been set.
 SetRule sets Rule field to given value.
 
 
+### GetAudienceType
+
+`func (o *AudienceCreateRequest) GetAudienceType() AudienceType`
+
+GetAudienceType returns the AudienceType field if non-nil, zero value otherwise.
+
+### GetAudienceTypeOk
+
+`func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceType, bool)`
+
+GetAudienceTypeOk returns a tuple with the AudienceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudienceType
+
+`func (o *AudienceCreateRequest) SetAudienceType(v AudienceType)`
+
+SetAudienceType sets AudienceType field to given value.
+
+
 ### GetDescription
 
 `func (o *AudienceCreateRequest) GetDescription() string`
@@ -118,26 +138,6 @@ SetDescription sets Description field to given value.
 `func (o *AudienceCreateRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetAudienceType
-
-`func (o *AudienceCreateRequest) GetAudienceType() AudienceType`
-
-GetAudienceType returns the AudienceType field if non-nil, zero value otherwise.
-
-### GetAudienceTypeOk
-
-`func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceType, bool)`
-
-GetAudienceTypeOk returns a tuple with the AudienceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAudienceType
-
-`func (o *AudienceCreateRequest) SetAudienceType(v AudienceType)`
-
-SetAudienceType sets AudienceType field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

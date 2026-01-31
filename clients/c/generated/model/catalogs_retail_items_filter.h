@@ -27,17 +27,17 @@ pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_e catalogs_retail_it
 
 
 typedef struct catalogs_retail_items_filter_t {
+    char *catalog_id; // string
     pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_e catalog_type; //enum
     list_t *item_ids; //primitive container
-    char *catalog_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_items_filter_t;
 
 __attribute__((deprecated)) catalogs_retail_items_filter_t *catalogs_retail_items_filter_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_e catalog_type,
-    list_t *item_ids,
-    char *catalog_id
+    list_t *item_ids
 );
 
 void catalogs_retail_items_filter_free(catalogs_retail_items_filter_t *catalogs_retail_items_filter);

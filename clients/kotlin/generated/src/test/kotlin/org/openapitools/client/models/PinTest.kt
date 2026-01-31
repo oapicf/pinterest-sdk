@@ -22,7 +22,6 @@ import org.openapitools.client.models.Pin
 import org.openapitools.client.models.BoardOwner
 import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.PinMedia
-import org.openapitools.client.models.PinMediaSource
 
 class PinTest : ShouldSpec() {
     init {
@@ -35,46 +34,10 @@ class PinTest : ShouldSpec() {
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `createdAt`
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
-        // to test the property `link`
-        should("test link") {
-            // uncomment below to test the property
-            //modelInstance.link shouldBe ("TODO")
-        }
-
-        // to test the property `title`
-        should("test title") {
-            // uncomment below to test the property
-            //modelInstance.title shouldBe ("TODO")
-        }
-
-        // to test the property `description`
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
-        }
-
-        // to test the property `dominantColor` - Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-        should("test dominantColor") {
-            // uncomment below to test the property
-            //modelInstance.dominantColor shouldBe ("TODO")
-        }
-
         // to test the property `altText`
         should("test altText") {
             // uncomment below to test the property
             //modelInstance.altText shouldBe ("TODO")
-        }
-
-        // to test the property `creativeType`
-        should("test creativeType") {
-            // uncomment below to test the property
-            //modelInstance.creativeType shouldBe ("TODO")
         }
 
         // to test the property `boardId` - The board to which this Pin belongs.
@@ -83,46 +46,40 @@ class PinTest : ShouldSpec() {
             //modelInstance.boardId shouldBe ("TODO")
         }
 
-        // to test the property `boardSectionId` - The board section to which this Pin belongs.
-        should("test boardSectionId") {
-            // uncomment below to test the property
-            //modelInstance.boardSectionId shouldBe ("TODO")
-        }
-
         // to test the property `boardOwner`
         should("test boardOwner") {
             // uncomment below to test the property
             //modelInstance.boardOwner shouldBe ("TODO")
         }
 
-        // to test the property `isOwner` - Whether the \"operation user_account\" is the Pin owner.
-        should("test isOwner") {
+        // to test the property `boardSectionId` - The board section to which this Pin belongs.
+        should("test boardSectionId") {
             // uncomment below to test the property
-            //modelInstance.isOwner shouldBe ("TODO")
+            //modelInstance.boardSectionId shouldBe ("TODO")
         }
 
-        // to test the property `media`
-        should("test media") {
+        // to test the property `createdAt`
+        should("test createdAt") {
             // uncomment below to test the property
-            //modelInstance.media shouldBe ("TODO")
+            //modelInstance.createdAt shouldBe ("TODO")
         }
 
-        // to test the property `mediaSource`
-        should("test mediaSource") {
+        // to test the property `creativeType`
+        should("test creativeType") {
             // uncomment below to test the property
-            //modelInstance.mediaSource shouldBe ("TODO")
+            //modelInstance.creativeType shouldBe ("TODO")
         }
 
-        // to test the property `parentPinId` - The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-        should("test parentPinId") {
+        // to test the property `description`
+        should("test description") {
             // uncomment below to test the property
-            //modelInstance.parentPinId shouldBe ("TODO")
+            //modelInstance.description shouldBe ("TODO")
         }
 
-        // to test the property `isStandard` - Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
-        should("test isStandard") {
+        // to test the property `dominantColor` - Dominant pin color. Hex number, e.g. `#6E7874`.
+        should("test dominantColor") {
             // uncomment below to test the property
-            //modelInstance.isStandard shouldBe ("TODO")
+            //modelInstance.dominantColor shouldBe ("TODO")
         }
 
         // to test the property `hasBeenPromoted` - Whether the Pin has been promoted or not.
@@ -131,16 +88,46 @@ class PinTest : ShouldSpec() {
             //modelInstance.hasBeenPromoted shouldBe ("TODO")
         }
 
-        // to test the property `note` - Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-        should("test note") {
+        // to test the property `isOwner` - Whether the \"operation user_account\" is the Pin owner.
+        should("test isOwner") {
             // uncomment below to test the property
-            //modelInstance.note shouldBe ("TODO")
+            //modelInstance.isOwner shouldBe ("TODO")
+        }
+
+        // to test the property `isStandard` - Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+        should("test isStandard") {
+            // uncomment below to test the property
+            //modelInstance.isStandard shouldBe ("TODO")
+        }
+
+        // to test the property `link`
+        should("test link") {
+            // uncomment below to test the property
+            //modelInstance.link shouldBe ("TODO")
+        }
+
+        // to test the property `media`
+        should("test media") {
+            // uncomment below to test the property
+            //modelInstance.media shouldBe ("TODO")
+        }
+
+        // to test the property `parentPinId` - The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
+        should("test parentPinId") {
+            // uncomment below to test the property
+            //modelInstance.parentPinId shouldBe ("TODO")
         }
 
         // to test the property `pinMetrics` - Pin metrics with associated time intervals if any.
         should("test pinMetrics") {
             // uncomment below to test the property
             //modelInstance.pinMetrics shouldBe ("TODO")
+        }
+
+        // to test the property `title`
+        should("test title") {
+            // uncomment below to test the property
+            //modelInstance.title shouldBe ("TODO")
         }
 
     }

@@ -23,6 +23,7 @@ import org.openapitools.client.models.CatalogsFeedIngestionDetails
 import org.openapitools.client.models.CatalogsFeedProcessingStatus
 import org.openapitools.client.models.CatalogsFeedProductCounts
 import org.openapitools.client.models.CatalogsFeedValidationDetails
+import org.openapitools.client.models.CatalogsFeedVideoCounts
 
 class CatalogsFeedProcessingResultTest : ShouldSpec() {
     init {
@@ -53,22 +54,28 @@ class CatalogsFeedProcessingResultTest : ShouldSpec() {
             //modelInstance.ingestionDetails shouldBe ("TODO")
         }
 
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
         // to test the property `productCounts`
         should("test productCounts") {
             // uncomment below to test the property
             //modelInstance.productCounts shouldBe ("TODO")
         }
 
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
         // to test the property `validationDetails`
         should("test validationDetails") {
             // uncomment below to test the property
             //modelInstance.validationDetails shouldBe ("TODO")
+        }
+
+        // to test the property `videoCounts`
+        should("test videoCounts") {
+            // uncomment below to test the property
+            //modelInstance.videoCounts shouldBe ("TODO")
         }
 
     }

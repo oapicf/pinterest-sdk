@@ -26,8 +26,10 @@ import javax.annotation.Generated;
  * CatalogsRetailItemsPostFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
+
+  private @Nullable String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -67,8 +69,6 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
   @Valid
   private List<String> itemIds = new ArrayList<>();
 
-  private @Nullable String catalogId;
-
   public CatalogsRetailItemsPostFilter() {
     super();
   }
@@ -79,6 +79,26 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
   public CatalogsRetailItemsPostFilter(CatalogTypeEnum catalogType, List<String> itemIds) {
     this.catalogType = catalogType;
     this.itemIds = itemIds;
+  }
+
+  public CatalogsRetailItemsPostFilter catalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public @Nullable String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsRetailItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
@@ -129,26 +149,6 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
     this.itemIds = itemIds;
   }
 
-  public CatalogsRetailItemsPostFilter catalogId(@Nullable String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-   * @return catalogId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("catalog_id")
-  public @Nullable String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(@Nullable String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -158,23 +158,23 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
       return false;
     }
     CatalogsRetailItemsPostFilter catalogsRetailItemsPostFilter = (CatalogsRetailItemsPostFilter) o;
-    return Objects.equals(this.catalogType, catalogsRetailItemsPostFilter.catalogType) &&
-        Objects.equals(this.itemIds, catalogsRetailItemsPostFilter.itemIds) &&
-        Objects.equals(this.catalogId, catalogsRetailItemsPostFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsRetailItemsPostFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailItemsPostFilter.catalogType) &&
+        Objects.equals(this.itemIds, catalogsRetailItemsPostFilter.itemIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId);
+    return Objects.hash(catalogId, catalogType, itemIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemsPostFilter {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

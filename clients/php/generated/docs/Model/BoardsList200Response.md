@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**\OpenAPI\Client\Model\Board[]**](Board.md) | Boards |
 **bookmark** | **string** |  | [optional]
+**items** | [**\OpenAPI\Client\Model\Board[]**](Board.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

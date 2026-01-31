@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,11 +17,11 @@ package openapi
 // QuizPinQuestion - A specific quiz inquiry.
 type QuizPinQuestion struct {
 
+	Options []QuizPinOption `json:"options,omitempty"`
+
 	QuestionId float32 `json:"question_id,omitempty"`
 
 	QuestionText string `json:"question_text,omitempty"`
-
-	Options []QuizPinOption `json:"options,omitempty"`
 }
 
 // AssertQuizPinQuestionRequired checks if the required fields are not zero-ed

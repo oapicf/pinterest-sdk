@@ -19,29 +19,15 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateCreate   {
   
-  private String name;
   private Boolean autoTargetingEnabled = true;
-  private TargetingSpec targetingAttributes;
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
   private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
+  private String name;
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+  private TargetingSpec targetingAttributes;
   private TrackingUrls trackingUrls;
-
-  /**
-   * Name of targeting template.
-   **/
-  
-  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
 
   /**
    * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
@@ -59,15 +45,28 @@ public class TargetingTemplateCreate   {
   /**
    **/
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("targeting_attributes")
-  @NotNull
+  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+  @JsonProperty("keywords")
   @Valid
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
+  public List<@Valid TargetingTemplateKeyword> getKeywords() {
+    return keywords;
   }
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
+  public void setKeywords(List<@Valid TargetingTemplateKeyword> keywords) {
+    this.keywords = keywords;
+  }
+
+  /**
+   * Name of targeting template.
+   **/
+  
+  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
+  @JsonProperty("name")
+  @NotNull
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -86,14 +85,15 @@ public class TargetingTemplateCreate   {
   /**
    **/
   
-  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
-  @JsonProperty("keywords")
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("targeting_attributes")
+  @NotNull
   @Valid
-  public List<@Valid TargetingTemplateKeyword> getKeywords() {
-    return keywords;
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
   }
-  public void setKeywords(List<@Valid TargetingTemplateKeyword> keywords) {
-    this.keywords = keywords;
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
   /**
@@ -119,17 +119,17 @@ public class TargetingTemplateCreate   {
       return false;
     }
     TargetingTemplateCreate targetingTemplateCreate = (TargetingTemplateCreate) o;
-    return Objects.equals(this.name, targetingTemplateCreate.name) &&
-        Objects.equals(this.autoTargetingEnabled, targetingTemplateCreate.autoTargetingEnabled) &&
-        Objects.equals(this.targetingAttributes, targetingTemplateCreate.targetingAttributes) &&
-        Objects.equals(this.placementGroup, targetingTemplateCreate.placementGroup) &&
+    return Objects.equals(this.autoTargetingEnabled, targetingTemplateCreate.autoTargetingEnabled) &&
         Objects.equals(this.keywords, targetingTemplateCreate.keywords) &&
+        Objects.equals(this.name, targetingTemplateCreate.name) &&
+        Objects.equals(this.placementGroup, targetingTemplateCreate.placementGroup) &&
+        Objects.equals(this.targetingAttributes, targetingTemplateCreate.targetingAttributes) &&
         Objects.equals(this.trackingUrls, targetingTemplateCreate.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, trackingUrls);
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, trackingUrls);
   }
 
   @Override
@@ -137,11 +137,11 @@ public class TargetingTemplateCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateCreate {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("}");
     return sb.toString();

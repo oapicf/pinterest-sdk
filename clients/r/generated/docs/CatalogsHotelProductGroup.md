@@ -4,13 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalog_id** | **character** | Catalog id pertaining to the hotel product group. | [Pattern: ^\\d+$] 
 **catalog_type** | **character** |  | [Enum: [HOTEL]] 
-**id** | **character** | ID of the hotel product group. | [Pattern: ^\\d+$] 
-**name** | **character** | Name of hotel product group | [optional] 
+**created_at** | **integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **description** | **character** |  | [optional] 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**created_at** | **integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**id** | **character** | ID of the hotel product group. | [Pattern: ^\\d+$] 
+**name** | **character** | Name of hotel product group | [optional] 
+**type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | [Enum: ] 
 **updated_at** | **integer** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**catalog_id** | **character** | Catalog id pertaining to the hotel product group. | [Pattern: ^\\d+$] 
 
 

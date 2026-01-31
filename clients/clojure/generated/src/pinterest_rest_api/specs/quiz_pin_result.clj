@@ -7,10 +7,10 @@
 
 (def quiz-pin-result-data
   {
-   (ds/opt :organic_pin_id) string?
    (ds/opt :android_deep_link) string?
-   (ds/opt :ios_deep_link) string?
    (ds/opt :destination_url) string?
+   (ds/opt :ios_deep_link) string?
+   (ds/opt :organic_pin_id) string?
    (ds/opt :result_id) float?
    })
 

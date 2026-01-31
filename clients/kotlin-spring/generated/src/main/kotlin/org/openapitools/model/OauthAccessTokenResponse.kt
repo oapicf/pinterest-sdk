@@ -21,9 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * A successful OAuth access token response.
  * @param accessToken 
- * @param tokenType 
  * @param expiresIn 
  * @param scope 
+ * @param tokenType 
  * @param responseType 
  */
 @JsonIgnoreProperties(
@@ -34,7 +34,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 @JsonSubTypes(
       JsonSubTypes.Type(value = OauthAccessTokenResponseCode::class, name = "authorization_code"),
       JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials::class, name = "client_credentials"),
-      JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh::class, name = "everlasting_refresh"),
       JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh::class, name = "integration_refresh"),
       JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh::class, name = "refresh_token")
 )
@@ -44,13 +43,13 @@ interface OauthAccessTokenResponse {
         val accessToken: kotlin.String
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val tokenType: kotlin.String
-
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val expiresIn: kotlin.Int
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val scope: kotlin.String
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val tokenType: kotlin.String
 
                 @get:Schema(example = "null", description = "")
         val responseType: OauthAccessTokenResponse.ResponseType? 

@@ -5,6 +5,14 @@ context("Test CatalogsHotelItemsFilter")
 
 model_instance <- CatalogsHotelItemsFilter$new()
 
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
 test_that("catalog_type", {
   # tests for the property `catalog_type` (character)
 
@@ -17,12 +25,4 @@ test_that("hotel_ids", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`hotel_ids`, "EXPECTED_RESULT")
-})
-
-test_that("catalog_id", {
-  # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
 })

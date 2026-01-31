@@ -221,14 +221,14 @@ bool ProductGroupPromotionsManager::productGroupPromotionsCreateSync(char * acce
 static bool productGroupPromotionsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
-	= reinterpret_cast<void(*)(ProductGroupPromotionResponse, Error, void* )> (voidHandler);
+	void(* handler)(ProductGroupPromotion, Error, void* )
+	= reinterpret_cast<void(*)(ProductGroupPromotion, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ProductGroupPromotionResponse out;
+	ProductGroupPromotion out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -236,12 +236,12 @@ static bool productGroupPromotionsGetProcessor(MemoryStruct_s p_chunk, long code
 
 
 
-		if (isprimitive("ProductGroupPromotionResponse")) {
+		if (isprimitive("ProductGroupPromotion")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ProductGroupPromotionResponse", "ProductGroupPromotionResponse");
+			jsonToValue(&out, pJson, "ProductGroupPromotion", "ProductGroupPromotion");
 			json_node_free(pJson);
 
-			if ("ProductGroupPromotionResponse" == "std::string") {
+			if ("ProductGroupPromotion" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -280,7 +280,7 @@ static bool productGroupPromotionsGetProcessor(MemoryStruct_s p_chunk, long code
 
 static bool productGroupPromotionsGetHelper(char * accessToken,
 	std::string adAccountId, std::string productGroupPromotionId, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	void(* handler)(ProductGroupPromotion, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -363,7 +363,7 @@ static bool productGroupPromotionsGetHelper(char * accessToken,
 
 bool ProductGroupPromotionsManager::productGroupPromotionsGetAsync(char * accessToken,
 	std::string adAccountId, std::string productGroupPromotionId, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	void(* handler)(ProductGroupPromotion, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsGetHelper(accessToken,
@@ -373,7 +373,7 @@ bool ProductGroupPromotionsManager::productGroupPromotionsGetAsync(char * access
 
 bool ProductGroupPromotionsManager::productGroupPromotionsGetSync(char * accessToken,
 	std::string adAccountId, std::string productGroupPromotionId, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	void(* handler)(ProductGroupPromotion, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsGetHelper(accessToken,
@@ -802,7 +802,7 @@ static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, c
 }
 
 static bool productGroupsAnalyticsHelper(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -871,6 +871,13 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 		queryParams.erase("conversion_report_time");
 	}
 
+
+	itemAtq = stringify(&reportingTimezone, "ReportingTimeZone");
+	queryParams.insert(pair<string, string>("reporting_timezone", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("reporting_timezone");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -931,22 +938,22 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 
 
 bool ProductGroupPromotionsManager::productGroupsAnalyticsAsync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return productGroupsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool ProductGroupPromotionsManager::productGroupsAnalyticsSync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return productGroupsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
 	handler, userData, false);
 }
 

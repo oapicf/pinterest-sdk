@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,8 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"errors"
-	"io"
 	"net/http"
 	"strings"
 	"reflect"
@@ -412,7 +410,30 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	result, err := c.service.AdGroupsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, adGroupIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
+	var aggregateReportRowsParam bool
+	if query.Has("aggregate_report_rows") {
+		param, err := parseBoolParameter(
+			query.Get("aggregate_report_rows"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "aggregate_report_rows", Err: err}, nil)
+			return
+		}
+
+		aggregateReportRowsParam = param
+	} else {
+		var param bool = false
+		aggregateReportRowsParam = param
+	}
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
+
+		reportingTimezoneParam = param
+	} else {
+	}
+	result, err := c.service.AdGroupsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, adGroupIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, aggregateReportRowsParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -457,12 +478,12 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var targetingTypesParam []AdsAnalyticsTargetingType
+	var targetingTypesParam []AdsAnalyticsAdGroupTargetingType
 	if query.Has("targeting_types") {
 		paramSplits := strings.Split(query.Get("targeting_types"), ",")
-		targetingTypesParam = make([]AdsAnalyticsTargetingType, 0, len(paramSplits))
+		targetingTypesParam = make([]AdsAnalyticsAdGroupTargetingType, 0, len(paramSplits))
 		for _, param := range paramSplits {
-			paramEnum, err := NewAdsAnalyticsTargetingTypeFromValue(param)
+			paramEnum, err := NewAdsAnalyticsAdGroupTargetingTypeFromValue(param)
 			if err != nil {
 				c.errorHandler(w, r, &ParsingError{Param: "targeting_types", Err: err}, nil)
 				return
@@ -540,14 +561,27 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	var attributionTypesParam ConversionReportAttributionType
+	var attributionTypesParam []ConversionReportAttributionType
 	if query.Has("attribution_types") {
-		param := ConversionReportAttributionType(query.Get("attribution_types"))
+		paramSplits := strings.Split(query.Get("attribution_types"), ",")
+		attributionTypesParam = make([]ConversionReportAttributionType, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewConversionReportAttributionTypeFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "attribution_types", Err: err}, nil)
+				return
+			}
+			attributionTypesParam = append(attributionTypesParam, paramEnum)
+		}
+	}
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
 
-		attributionTypesParam = param
+		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.AdGroupsTargetingAnalyticsGet(r.Context(), adAccountIdParam, adGroupIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam)
+	result, err := c.service.AdGroupsTargetingAnalyticsGet(r.Context(), adAccountIdParam, adGroupIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -568,7 +602,7 @@ func (c *AdGroupsAPIController) AdGroupsAudienceSizing(w http.ResponseWriter, r 
 	var adGroupAudienceSizingRequestParam AdGroupAudienceSizingRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&adGroupAudienceSizingRequestParam); err != nil && !errors.Is(err, io.EOF) {
+	if err := d.Decode(&adGroupAudienceSizingRequestParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}

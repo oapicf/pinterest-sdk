@@ -9,12 +9,19 @@
 -export_type([openapi_audience_rule/0]).
 
 -type openapi_audience_rule() ::
-  [ {'country', binary() }
+  [ {'ad_account_id', binary() }
+  | {'ad_id', list(binary()) }
+  | {'campaign_id', list(binary()) }
+  | {'country', binary() }
   | {'customer_list_id', binary() }
   | {'engagement_domain', list(binary()) }
   | {'engagement_type', binary() }
+  | {'engager_type', integer() }
   | {'event', binary() }
-  | {'event_data', openapi_pinterest_tag_event_data:openapi_pinterest_tag_event_data() }
+  | {'event_data', openapi_event_data:openapi_event_data() }
+  | {'event_source', map() }
+  | {'ingestion_source', map() }
+  | {'objective_type', list(openapi_objective_type:openapi_objective_type()) }
   | {'percentage', integer() }
   | {'pin_id', list(binary()) }
   | {'prefill', boolean() }
@@ -22,13 +29,6 @@
   | {'seed_id', list(binary()) }
   | {'url', list(binary()) }
   | {'visitor_source_id', binary() }
-  | {'event_source', map() }
-  | {'ingestion_source', map() }
-  | {'engager_type', integer() }
-  | {'campaign_id', list(binary()) }
-  | {'ad_id', list(binary()) }
-  | {'objective_type', list(openapi_objective_type:openapi_objective_type()) }
-  | {'ad_account_id', binary() }
   ].
 
 
@@ -36,12 +36,19 @@ openapi_audience_rule() ->
     openapi_audience_rule([]).
 
 openapi_audience_rule(Fields) ->
-  Default = [ {'country', binary() }
+  Default = [ {'ad_account_id', binary() }
+            , {'ad_id', list(binary()) }
+            , {'campaign_id', list(binary()) }
+            , {'country', binary() }
             , {'customer_list_id', binary() }
             , {'engagement_domain', list(binary()) }
             , {'engagement_type', binary() }
+            , {'engager_type', integer() }
             , {'event', binary() }
-            , {'event_data', openapi_pinterest_tag_event_data:openapi_pinterest_tag_event_data() }
+            , {'event_data', openapi_event_data:openapi_event_data() }
+            , {'event_source', map() }
+            , {'ingestion_source', map() }
+            , {'objective_type', list(openapi_objective_type:openapi_objective_type()) }
             , {'percentage', integer() }
             , {'pin_id', list(binary()) }
             , {'prefill', boolean() }
@@ -49,13 +56,6 @@ openapi_audience_rule(Fields) ->
             , {'seed_id', list(binary()) }
             , {'url', list(binary()) }
             , {'visitor_source_id', binary() }
-            , {'event_source', map() }
-            , {'ingestion_source', map() }
-            , {'engager_type', integer() }
-            , {'campaign_id', list(binary()) }
-            , {'ad_id', list(binary()) }
-            , {'objective_type', list(openapi_objective_type:openapi_objective_type()) }
-            , {'ad_account_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

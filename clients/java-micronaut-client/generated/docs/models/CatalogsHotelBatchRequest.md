@@ -10,17 +10,19 @@ The class is defined in **[CatalogsHotelBatchRequest.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional property]
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 **items** | [`List&lt;CatalogsHotelBatchItem&gt;`](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**catalogId** | `String` | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional property]
+**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 HOTEL | `"HOTEL"`
+
 
 
 ## LanguageEnum
@@ -134,7 +136,5 @@ TH | `"TH"`
 TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
-
-
 
 

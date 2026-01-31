@@ -439,11 +439,11 @@ example().catch(console.error);
 
 ## boardsCreate
 
-> Board boardsCreate(board, adAccountId)
+> Board boardsCreate(boardCreate, adAccountId)
 
 Create board
 
-Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -459,12 +459,14 @@ async function example() {
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
     accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
+    accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new BoardsApi(config);
 
   const body = {
-    // Board | Create a board using a single board json object.
-    board: ...,
+    // BoardCreate
+    boardCreate: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies BoardsCreateRequest;
@@ -486,7 +488,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **board** | [Board](Board.md) | Create a board using a single board json object. | |
+| **boardCreate** | [BoardCreate](BoardCreate.md) |  | |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -495,7 +497,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -506,9 +508,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | The board name is invalid or duplicated. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -519,7 +526,7 @@ example().catch(console.error);
 
 Delete board
 
-Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -539,7 +546,7 @@ async function example() {
   const api = new BoardsApi(config);
 
   const body = {
-    // string | Unique identifier of a board.
+    // string
     boardId: boardId_example,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
@@ -562,7 +569,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
+| **boardId** | `string` |  | [Defaults to `undefined`] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -582,12 +589,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board deleted successfully |  -  |
-| **403** | Not authorized to delete the board. |  -  |
-| **404** | Board not found. |  -  |
-| **409** | Could not get exclusive access to delete the board. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -598,7 +606,7 @@ example().catch(console.error);
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -620,7 +628,7 @@ async function example() {
   const api = new BoardsApi(config);
 
   const body = {
-    // string | Unique identifier of a board.
+    // string
     boardId: boardId_example,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
@@ -643,7 +651,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
+| **boardId** | `string` |  | [Defaults to `undefined`] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -663,20 +671,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## boardsList
 
-> BoardsList200Response boardsList(adAccountId, bookmark, pageSize, privacy)
+> BoardsList200Response boardsList(adAccountId, privacy, bookmark, pageSize)
 
 List boards
 
-Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 
@@ -700,12 +712,12 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
+    // BoardPrivacyFilter | The privacy level of the board (optional)
+    privacy: ...,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
-    // 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET' | Privacy setting for a board. (optional)
-    privacy: privacy_example,
   } satisfies BoardsListRequest;
 
   try {
@@ -726,9 +738,9 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
+| **privacy** | `BoardPrivacyFilter` | The privacy level of the board | [Optional] [Defaults to `undefined`] [Enum: ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **privacy** | `ALL`, `PROTECTED`, `PUBLIC`, `SECRET`, `PUBLIC_AND_SECRET` | Privacy setting for a board. | [Optional] [Defaults to `undefined`] [Enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -747,8 +759,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -787,11 +804,11 @@ async function example() {
     bookmark: bookmark_example,
     // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
     pageSize: 56,
-    // Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+    // Array<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
     creativeTypes: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
-    // boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
+    // boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
     pinMetrics: true,
   } satisfies BoardsListPinsRequest;
 
@@ -815,9 +832,9 @@ example().catch(console.error);
 | **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
 | **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **creativeTypes** | `REGULAR`, `VIDEO`, `SHOPPING`, `CAROUSEL`, `MAX_VIDEO`, `SHOP_THE_PIN`, `COLLECTION`, `IDEA` | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [Optional] [Enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] |
+| **creativeTypes** | `Array<CreativeType>` | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [Optional] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
-| **pinMetrics** | `boolean` | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [Optional] [Defaults to `false`] |
+| **pinMetrics** | `boolean` | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [Optional] [Defaults to `false`] |
 
 ### Return type
 
@@ -845,11 +862,11 @@ example().catch(console.error);
 
 ## boardsUpdate
 
-> Board boardsUpdate(boardId, boardUpdate, adAccountId)
+> BoardWithUpdatePrivacy boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
 
 Update board
 
-Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -865,14 +882,16 @@ async function example() {
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
     accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
+    accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new BoardsApi(config);
 
   const body = {
-    // string | Unique identifier of a board.
+    // string
     boardId: boardId_example,
-    // BoardUpdate | Update a board.
-    boardUpdate: ...,
+    // BoardWithUpdatePrivacyUpdate
+    boardWithUpdatePrivacyUpdate: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies BoardsUpdateRequest;
@@ -894,17 +913,17 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
-| **boardUpdate** | [BoardUpdate](BoardUpdate.md) | Update a board. | |
+| **boardId** | `string` |  | [Defaults to `undefined`] |
+| **boardWithUpdatePrivacyUpdate** | [BoardWithUpdatePrivacyUpdate](BoardWithUpdatePrivacyUpdate.md) |  | |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 
@@ -915,11 +934,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board parameters. |  -  |
-| **403** | Not authorized to update the board. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

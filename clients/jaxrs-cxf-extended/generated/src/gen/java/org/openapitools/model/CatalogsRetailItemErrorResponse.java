@@ -27,17 +27,17 @@ public class CatalogsRetailItemErrorResponse  {
   private CatalogsType catalogType;
 
  /**
+  * Array with the errors for the item id requested
+  */
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  @Valid
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
+ /**
   * The catalog item id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   private String itemId;
-
- /**
-  * Array with the errors for the item id requested
-  */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @Valid
-  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**
   * Get catalogType
   * @return catalogType
@@ -64,34 +64,11 @@ public class CatalogsRetailItemErrorResponse  {
   }
 
  /**
-  * The catalog item id in the merchant namespace
-  * @return itemId
-  */
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  /**
-   * Sets the <code>itemId</code> property.
-   */
- public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  /**
-   * Sets the <code>itemId</code> property.
-   */
-  public CatalogsRetailItemErrorResponse itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
- /**
   * Array with the errors for the item id requested
   * @return errors
   */
   @JsonProperty("errors")
+  @NotNull
   public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
@@ -119,6 +96,30 @@ public class CatalogsRetailItemErrorResponse  {
     return this;
   }
 
+ /**
+  * The catalog item id in the merchant namespace
+  * @return itemId
+  */
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  /**
+   * Sets the <code>itemId</code> property.
+   */
+ public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  /**
+   * Sets the <code>itemId</code> property.
+   */
+  public CatalogsRetailItemErrorResponse itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,13 +131,13 @@ public class CatalogsRetailItemErrorResponse  {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -145,8 +146,8 @@ public class CatalogsRetailItemErrorResponse  {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

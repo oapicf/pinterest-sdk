@@ -18,12 +18,12 @@ import { CatalogsUpdatableCreativeAssetsAttributes } from './catalogsUpdatableCr
  * Creative assets batch item
  */
 export interface CatalogsCreativeAssetsBatchItem { 
+    attributes: CatalogsUpdatableCreativeAssetsAttributes;
     /**
      * The catalog creative assets id in the merchant namespace
      */
     creative_assets_id: string;
     operation: CatalogsCreativeAssetsBatchItem.OperationEnum;
-    attributes: CatalogsUpdatableCreativeAssetsAttributes;
 }
 export namespace CatalogsCreativeAssetsBatchItem {
     export const OperationEnum = {

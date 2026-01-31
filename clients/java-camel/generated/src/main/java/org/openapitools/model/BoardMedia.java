@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,12 +20,10 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Board media.
+ * BoardMedia
  */
 
-@Schema(name = "Board_media", description = "Board media.")
-@JsonTypeName("Board_media")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardMedia {
 
   private JsonNullable<String> imageCoverUrl = JsonNullable.<String>undefined();
@@ -40,11 +37,11 @@ public class BoardMedia {
   }
 
   /**
-   * Board cover image.
+   * Board cover image
    * @return imageCoverUrl
    */
   
-  @Schema(name = "image_cover_url", example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", description = "Board cover image.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "image_cover_url", example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", description = "Board cover image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_cover_url")
   public JsonNullable<String> getImageCoverUrl() {
     return imageCoverUrl;

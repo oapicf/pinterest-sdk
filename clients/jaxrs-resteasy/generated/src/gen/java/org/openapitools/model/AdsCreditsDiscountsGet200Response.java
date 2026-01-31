@@ -16,11 +16,23 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditsDiscountsGet200Response   {
   
-  private List<@Valid AdsCreditDiscountsResponse> items = new ArrayList<>();
   private String bookmark;
+  private List<@Valid AdsCreditDiscountsResponse> items = new ArrayList<>();
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   /**
    **/
@@ -36,18 +48,6 @@ public class AdsCreditsDiscountsGet200Response   {
     this.items = items;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -58,13 +58,13 @@ public class AdsCreditsDiscountsGet200Response   {
       return false;
     }
     AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet200Response = (AdsCreditsDiscountsGet200Response) o;
-    return Objects.equals(this.items, adsCreditsDiscountsGet200Response.items) &&
-        Objects.equals(this.bookmark, adsCreditsDiscountsGet200Response.bookmark);
+    return Objects.equals(this.bookmark, adsCreditsDiscountsGet200Response.bookmark) &&
+        Objects.equals(this.items, adsCreditsDiscountsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -72,8 +72,8 @@ public class AdsCreditsDiscountsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditsDiscountsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

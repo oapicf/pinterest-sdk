@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsBatchItem`
 --
-SELECT `creative_assets_id`, `operation`, `attributes` FROM `CatalogsCreativeAssetsBatchItem` WHERE 1;
+SELECT `attributes`, `creative_assets_id`, `operation` FROM `CatalogsCreativeAssetsBatchItem` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsBatchItem`
 --
-INSERT INTO `CatalogsCreativeAssetsBatchItem`(`creative_assets_id`, `operation`, `attributes`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsBatchItem`(`attributes`, `creative_assets_id`, `operation`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsBatchItem`
 --
-UPDATE `CatalogsCreativeAssetsBatchItem` SET `creative_assets_id` = ?, `operation` = ?, `attributes` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsBatchItem` SET `attributes` = ?, `creative_assets_id` = ?, `operation` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsBatchItem`

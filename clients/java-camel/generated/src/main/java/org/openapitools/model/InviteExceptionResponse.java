@@ -24,37 +24,17 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InviteExceptionResponse", description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteExceptionResponse {
 
-  private JsonNullable<@Pattern(regexp = "^\\d+$") String> inviteOrRequestId = JsonNullable.<String>undefined();
-
   private Integer code;
+
+  private JsonNullable<@Pattern(regexp = "^\\d+$") String> inviteOrRequestId = JsonNullable.<String>undefined();
 
   private String message;
 
   @Valid
   private JsonNullable<List<String>> usersOrPartnerIds = JsonNullable.<List<String>>undefined();
-
-  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = JsonNullable.of(inviteOrRequestId);
-    return this;
-  }
-
-  /**
-   * Unique identifier of the invite/request.
-   * @return inviteOrRequestId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "invite_or_request_id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("invite_or_request_id")
-  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getInviteOrRequestId() {
-    return inviteOrRequestId;
-  }
-
-  public void setInviteOrRequestId(JsonNullable<String> inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-  }
 
   public InviteExceptionResponse code(Integer code) {
     this.code = code;
@@ -74,6 +54,26 @@ public class InviteExceptionResponse {
 
   public void setCode(Integer code) {
     this.code = code;
+  }
+
+  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = JsonNullable.of(inviteOrRequestId);
+    return this;
+  }
+
+  /**
+   * Unique identifier of the invite/request.
+   * @return inviteOrRequestId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "invite_or_request_id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("invite_or_request_id")
+  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getInviteOrRequestId() {
+    return inviteOrRequestId;
+  }
+
+  public void setInviteOrRequestId(JsonNullable<String> inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
   }
 
   public InviteExceptionResponse message(String message) {
@@ -133,8 +133,8 @@ public class InviteExceptionResponse {
       return false;
     }
     InviteExceptionResponse inviteExceptionResponse = (InviteExceptionResponse) o;
-    return equalsNullable(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
-        Objects.equals(this.code, inviteExceptionResponse.code) &&
+    return Objects.equals(this.code, inviteExceptionResponse.code) &&
+        equalsNullable(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
         Objects.equals(this.message, inviteExceptionResponse.message) &&
         equalsNullable(this.usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
   }
@@ -145,7 +145,7 @@ public class InviteExceptionResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(inviteOrRequestId), code, message, hashCodeNullable(usersOrPartnerIds));
+    return Objects.hash(code, hashCodeNullable(inviteOrRequestId), message, hashCodeNullable(usersOrPartnerIds));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -159,8 +159,8 @@ public class InviteExceptionResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteExceptionResponse {\n");
-    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    usersOrPartnerIds: ").append(toIndentedString(usersOrPartnerIds)).append("\n");
     sb.append("}");

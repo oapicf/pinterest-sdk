@@ -8,6 +8,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adsCreditRedeem**](#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**adsCreditsDiscountsGet**](#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billingInvoiceDownloadGet**](#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoicesGet**](#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billingProfilesGet**](#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssioAccountsGet**](#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**ssioInsertionOrderCreate**](#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -24,7 +26,7 @@ Mono<AdsCreditRedeemResponse> BillingController.adsCreditRedeem(adAccountIdadsCr
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -50,7 +52,7 @@ Mono<AdsCreditsDiscountsGet200Response> BillingController.adsCreditsDiscountsGet
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -69,6 +71,65 @@ Name | Type | Description  | Notes
  - **Accepts Content-Type**: Not defined
  - **Produces Content-Type**: `application/json`
 
+<a id="billingInvoiceDownloadGet"></a>
+# **billingInvoiceDownloadGet**
+```java
+Mono<BillingInvoiceDownloadResponse> BillingController.billingInvoiceDownloadGet(adAccountIdbillingInvoiceId)
+```
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**adAccountId** | `String` | Unique identifier of an ad account. |
+**billingInvoiceId** | `String` | Unique identifier of a billing invoice. |
+
+### Return type
+[**BillingInvoiceDownloadResponse**](../../docs/models/BillingInvoiceDownloadResponse.md)
+
+### Authorization
+* **pinterest_oauth2**, scopes: `ads:read`, `billing:read`
+
+### HTTP request headers
+ - **Accepts Content-Type**: Not defined
+ - **Produces Content-Type**: `application/json`
+
+<a id="billingInvoicesGet"></a>
+# **billingInvoicesGet**
+```java
+Mono<BillingInvoicesGet200Response> BillingController.billingInvoicesGet(adAccountIdbookmarkpageSizesortorderstatusdocumentTypestartDueDateendDueDate)
+```
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**adAccountId** | `String` | Unique identifier of an ad account. |
+**bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**sort** | `String` | Field of which to sort billing invoices | [optional parameter] [default to `DUE_DATE`] [enum: `DUE_DATE`, `BILLING_PERIOD`, `DOCUMENT_TYPE`, `TOTAL_AMOUNT`, `INVOICE_NUMBER`]
+**order** | `String` | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`]
+**status** | `String` | Status of billing invoices to filter by | [optional parameter] [enum: `OPEN`, `CLOSED`]
+**documentType** | `String` | Document type of billing invoices to filter by | [optional parameter] [enum: `INVOICE`, `CREDIT_MEMO`]
+**startDueDate** | `LocalDate` | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional parameter]
+**endDueDate** | `LocalDate` | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional parameter]
+
+### Return type
+[**BillingInvoicesGet200Response**](../../docs/models/BillingInvoicesGet200Response.md)
+
+### Authorization
+* **pinterest_oauth2**, scopes: `ads:read`, `billing:read`
+
+### HTTP request headers
+ - **Accepts Content-Type**: Not defined
+ - **Produces Content-Type**: `application/json`
+
 <a id="billingProfilesGet"></a>
 # **billingProfilesGet**
 ```java
@@ -77,7 +138,7 @@ Mono<BillingProfilesGet200Response> BillingController.billingProfilesGet(adAccou
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 Name | Type | Description  | Notes

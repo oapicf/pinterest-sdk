@@ -33,8 +33,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemResponse", description = "Object describing a retail item record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsRetailItemResponse implements ItemResponseOneOf {
+
+  private @Nullable ItemAttributes attributes;
 
   private CatalogsType catalogType;
 
@@ -42,8 +44,6 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
 
   @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
-
-  private @Nullable ItemAttributes attributes;
 
   public CatalogsRetailItemResponse() {
     super();
@@ -54,6 +54,26 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
    */
   public CatalogsRetailItemResponse(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsRetailItemResponse attributes(@Nullable ItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("attributes")
+  public @Nullable ItemAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(@Nullable ItemAttributes attributes) {
+    this.attributes = attributes;
   }
 
   public CatalogsRetailItemResponse catalogType(CatalogsType catalogType) {
@@ -124,26 +144,6 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
     this.pins = pins;
   }
 
-  public CatalogsRetailItemResponse attributes(@Nullable ItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("attributes")
-  public @Nullable ItemAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(@Nullable ItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -153,10 +153,10 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
       return false;
     }
     CatalogsRetailItemResponse catalogsRetailItemResponse = (CatalogsRetailItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsRetailItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(this.itemId, catalogsRetailItemResponse.itemId) &&
-        equalsNullable(this.pins, catalogsRetailItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsRetailItemResponse.attributes);
+        equalsNullable(this.pins, catalogsRetailItemResponse.pins);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -165,7 +165,7 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, hashCodeNullable(pins), attributes);
+    return Objects.hash(attributes, catalogType, itemId, hashCodeNullable(pins));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -179,10 +179,10 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemResponse {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

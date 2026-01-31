@@ -7,32 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(LeadFormResponse, () {
-    // Internal name of the lead form.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-    // String privacyPolicyLink
-    test('to test the property `privacyPolicyLink`', () async {
-      // TODO
-    });
-
-    // Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-    // bool hasAcceptedTerms
-    test('to test the property `hasAcceptedTerms`', () async {
-      // TODO
-    });
-
     // A message for people who complete the form to let them know what happens next.
     // String completionMessage
     test('to test the property `completionMessage`', () async {
-      // TODO
-    });
-
-    // LeadFormStatus status
-    test('to test the property `status`', () async {
       // TODO
     });
 
@@ -42,9 +19,15 @@ void main() {
       // TODO
     });
 
-    // List of questions to be displayed on the lead form.
-    // BuiltList<LeadFormQuestion> questions
-    test('to test the property `questions`', () async {
+    // Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+    // bool hasAcceptedTerms
+    test('to test the property `hasAcceptedTerms`', () async {
+      // TODO
+    });
+
+    // Internal name of the lead form.
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 
@@ -54,9 +37,20 @@ void main() {
       // TODO
     });
 
-    // The ID of this lead form
-    // String id
-    test('to test the property `id`', () async {
+    // A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+    // String privacyPolicyLink
+    test('to test the property `privacyPolicyLink`', () async {
+      // TODO
+    });
+
+    // List of questions to be displayed on the lead form.
+    // BuiltList<LeadFormQuestion> questions
+    test('to test the property `questions`', () async {
+      // TODO
+    });
+
+    // LeadFormStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 
@@ -69,6 +63,12 @@ void main() {
     // Lead form creation time. Unix timestamp in seconds.
     // int createdTime
     test('to test the property `createdTime`', () async {
+      // TODO
+    });
+
+    // The ID of this lead form
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 

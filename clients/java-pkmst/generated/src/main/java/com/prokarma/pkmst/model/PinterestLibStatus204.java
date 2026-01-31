@@ -1,0 +1,112 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * The resource was successfully deleted.
+ */
+@ApiModel(description = "The resource was successfully deleted.")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class PinterestLibStatus204   {
+  /**
+   * Gets or Sets statusCode
+   */
+  public enum StatusCodeEnum {
+    NUMBER_204(new BigDecimal("204"));
+
+    private BigDecimal value;
+
+    StatusCodeEnum(BigDecimal value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusCodeEnum fromValue(String text) {
+      for (StatusCodeEnum b : StatusCodeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("statusCode")
+  private StatusCodeEnum statusCode;
+
+  public PinterestLibStatus204 statusCode(StatusCodeEnum statusCode) {
+    this.statusCode = statusCode;
+    return this;
+  }
+
+  /**
+   * Get statusCode
+   * @return statusCode
+   */
+  @ApiModelProperty(required = true, value = "")
+  public StatusCodeEnum getStatusCode() {
+    return statusCode;
+  }
+
+  public void setStatusCode(StatusCodeEnum statusCode) {
+    this.statusCode = statusCode;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PinterestLibStatus204 pinterestLibStatus204 = (PinterestLibStatus204) o;
+    return Objects.equals(this.statusCode, pinterestLibStatus204.statusCode);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(statusCode);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PinterestLibStatus204 {\n");
+    
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

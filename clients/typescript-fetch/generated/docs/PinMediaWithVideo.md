@@ -7,11 +7,12 @@ Pin with video.
 
 Name | Type
 ------------ | -------------
-`images` | [PinMediaWithImageAllOfImages](PinMediaWithImageAllOfImages.md)
 `coverImageUrl` | string
-`videoUrl` | string
 `duration` | number
 `height` | number
+`images` | [ImageSize](ImageSize.md)
+`mediaType` | string
+`videoUrl` | string
 `width` | number
 
 ## Example
@@ -21,11 +22,12 @@ import type { PinMediaWithVideo } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "images": null,
   "coverImageUrl": null,
-  "videoUrl": null,
   "duration": null,
   "height": null,
+  "images": null,
+  "mediaType": null,
+  "videoUrl": null,
   "width": null,
 } satisfies PinMediaWithVideo
 

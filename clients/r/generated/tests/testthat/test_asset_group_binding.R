@@ -5,20 +5,12 @@ context("Test AssetGroupBinding")
 
 model_instance <- AssetGroupBinding$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # Asset Group ID.
+test_that("ad_accounts_ids", {
+  # tests for the property `ad_accounts_ids` (array[character])
+  # A list of ad account IDs under the asset group
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("asset_group_name", {
-  # tests for the property `asset_group_name` (character)
-  # Asset Group name
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset_group_name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ad_accounts_ids`, "EXPECTED_RESULT")
 })
 
 test_that("asset_group_description", {
@@ -29,6 +21,14 @@ test_that("asset_group_description", {
   #expect_equal(model.instance$`asset_group_description`, "EXPECTED_RESULT")
 })
 
+test_that("asset_group_name", {
+  # tests for the property `asset_group_name` (character)
+  # Asset Group name
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset_group_name`, "EXPECTED_RESULT")
+})
+
 test_that("asset_group_types", {
   # tests for the property `asset_group_types` (array[character])
   # Asset group types
@@ -37,20 +37,20 @@ test_that("asset_group_types", {
   #expect_equal(model.instance$`asset_group_types`, "EXPECTED_RESULT")
 })
 
-test_that("ad_accounts_ids", {
-  # tests for the property `ad_accounts_ids` (array[character])
-  # A list of ad account IDs under the asset group
+test_that("catalogs_ids", {
+  # tests for the property `catalogs_ids` (array[character])
+  # A list of catalog IDs under asset group
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ad_accounts_ids`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`catalogs_ids`, "EXPECTED_RESULT")
 })
 
-test_that("profiles_ids", {
-  # tests for the property `profiles_ids` (array[character])
-  # A list of profile IDs under asset group
+test_that("created_by", {
+  # tests for the property `created_by` (BusinessAccessUserSummary)
+  # The data of the user that created the asset group.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`profiles_ids`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`created_by`, "EXPECTED_RESULT")
 })
 
 test_that("created_time", {
@@ -61,12 +61,12 @@ test_that("created_time", {
   #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
 })
 
-test_that("updated_time", {
-  # tests for the property `updated_time` (integer)
-  # The last update time of the asset group
+test_that("id", {
+  # tests for the property `id` (character)
+  # Asset Group ID.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`updated_time`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("owner", {
@@ -77,10 +77,18 @@ test_that("owner", {
   #expect_equal(model.instance$`owner`, "EXPECTED_RESULT")
 })
 
-test_that("created_by", {
-  # tests for the property `created_by` (BusinessAccessUserSummary)
-  # The data of the user that created the asset group.
+test_that("profiles_ids", {
+  # tests for the property `profiles_ids` (array[character])
+  # A list of profile IDs under asset group
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_by`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`profiles_ids`, "EXPECTED_RESULT")
+})
+
+test_that("updated_time", {
+  # tests for the property `updated_time` (integer)
+  # The last update time of the asset group
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`updated_time`, "EXPECTED_RESULT")
 })

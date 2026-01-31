@@ -8,6 +8,8 @@ module.exports = {
                     'ADMIN',
                     'ANALYST',
                     'FINANCE_MANAGER',
+                    'FINANCE_EDIT',
+                    'FINANCE_VIEW',
                     'AUDIENCE_MANAGER',
                     'CAMPAIGN_MANAGER',
                     'CATALOGS_MANAGER',

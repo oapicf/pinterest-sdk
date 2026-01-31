@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOInsertionOrderStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOInsertionOrderStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SSIOInsertionOrderStatus {
+    title = SSIOInsertionOrderStatus
+    description = SSIOInsertionOrderStatus
+    derivedFrom = Root
+    properties {
+        creation_time {
+          type =  string
+          description = "Salesforce insertion order creation time"
+          optional = false
+        }
+        pin_order_id {
+          type =  string
+          description = "Salesforce order id"
+          optional = false
+        }
+        status {
+          type =  string
+          description = "Salesforce insertion order status"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOInsertionOrderStatus {
+    title = SSIOInsertionOrderStatus
+    description = SSIOInsertionOrderStatus
+    implements = openapi_server.resourceTypes.SSIOInsertionOrderStatus
+
+  }
+}

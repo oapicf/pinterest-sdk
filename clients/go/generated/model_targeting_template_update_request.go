@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,10 @@ var _ MappedNullable = &TargetingTemplateUpdateRequest{}
 
 // TargetingTemplateUpdateRequest struct for TargetingTemplateUpdateRequest
 type TargetingTemplateUpdateRequest struct {
-	OperationType string `json:"operation_type"`
 	// Targeting template ID
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	OperationType string `json:"operation_type"`
+	TargetingAttributes *TargetingSpec `json:"targeting_attributes,omitempty"`
 }
 
 type _TargetingTemplateUpdateRequest TargetingTemplateUpdateRequest
@@ -33,10 +34,10 @@ type _TargetingTemplateUpdateRequest TargetingTemplateUpdateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetingTemplateUpdateRequest(operationType string, id string) *TargetingTemplateUpdateRequest {
+func NewTargetingTemplateUpdateRequest(id string, operationType string) *TargetingTemplateUpdateRequest {
 	this := TargetingTemplateUpdateRequest{}
-	this.OperationType = operationType
 	this.Id = id
+	this.OperationType = operationType
 	return &this
 }
 
@@ -46,30 +47,6 @@ func NewTargetingTemplateUpdateRequest(operationType string, id string) *Targeti
 func NewTargetingTemplateUpdateRequestWithDefaults() *TargetingTemplateUpdateRequest {
 	this := TargetingTemplateUpdateRequest{}
 	return &this
-}
-
-// GetOperationType returns the OperationType field value
-func (o *TargetingTemplateUpdateRequest) GetOperationType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OperationType
-}
-
-// GetOperationTypeOk returns a tuple with the OperationType field value
-// and a boolean to check if the value has been set.
-func (o *TargetingTemplateUpdateRequest) GetOperationTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OperationType, true
-}
-
-// SetOperationType sets field value
-func (o *TargetingTemplateUpdateRequest) SetOperationType(v string) {
-	o.OperationType = v
 }
 
 // GetId returns the Id field value
@@ -96,6 +73,62 @@ func (o *TargetingTemplateUpdateRequest) SetId(v string) {
 	o.Id = v
 }
 
+// GetOperationType returns the OperationType field value
+func (o *TargetingTemplateUpdateRequest) GetOperationType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.OperationType
+}
+
+// GetOperationTypeOk returns a tuple with the OperationType field value
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateUpdateRequest) GetOperationTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OperationType, true
+}
+
+// SetOperationType sets field value
+func (o *TargetingTemplateUpdateRequest) SetOperationType(v string) {
+	o.OperationType = v
+}
+
+// GetTargetingAttributes returns the TargetingAttributes field value if set, zero value otherwise.
+func (o *TargetingTemplateUpdateRequest) GetTargetingAttributes() TargetingSpec {
+	if o == nil || IsNil(o.TargetingAttributes) {
+		var ret TargetingSpec
+		return ret
+	}
+	return *o.TargetingAttributes
+}
+
+// GetTargetingAttributesOk returns a tuple with the TargetingAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateUpdateRequest) GetTargetingAttributesOk() (*TargetingSpec, bool) {
+	if o == nil || IsNil(o.TargetingAttributes) {
+		return nil, false
+	}
+	return o.TargetingAttributes, true
+}
+
+// HasTargetingAttributes returns a boolean if a field has been set.
+func (o *TargetingTemplateUpdateRequest) HasTargetingAttributes() bool {
+	if o != nil && !IsNil(o.TargetingAttributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetingAttributes gets a reference to the given TargetingSpec and assigns it to the TargetingAttributes field.
+func (o *TargetingTemplateUpdateRequest) SetTargetingAttributes(v TargetingSpec) {
+	o.TargetingAttributes = &v
+}
+
 func (o TargetingTemplateUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -106,8 +139,11 @@ func (o TargetingTemplateUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o TargetingTemplateUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["operation_type"] = o.OperationType
 	toSerialize["id"] = o.Id
+	toSerialize["operation_type"] = o.OperationType
+	if !IsNil(o.TargetingAttributes) {
+		toSerialize["targeting_attributes"] = o.TargetingAttributes
+	}
 	return toSerialize, nil
 }
 
@@ -116,8 +152,8 @@ func (o *TargetingTemplateUpdateRequest) UnmarshalJSON(data []byte) (err error) 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"operation_type",
 		"id",
+		"operation_type",
 	}
 
 	allProperties := make(map[string]interface{})

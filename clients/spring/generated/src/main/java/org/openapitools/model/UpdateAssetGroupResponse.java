@@ -26,42 +26,14 @@ import javax.annotation.Generated;
  * UpdateAssetGroupResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupResponse {
-
-  @Valid
-  private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   @Valid
   private JsonNullable<List<@Valid UpdateAssetGroupResponseExceptionsInner>> exceptions = JsonNullable.<List<@Valid UpdateAssetGroupResponseExceptionsInner>>undefined();
 
-  public UpdateAssetGroupResponse updatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
-    this.updatedAssetGroups = updatedAssetGroups;
-    return this;
-  }
-
-  public UpdateAssetGroupResponse addUpdatedAssetGroupsItem(AssetGroupBinding updatedAssetGroupsItem) {
-    if (this.updatedAssetGroups == null) {
-      this.updatedAssetGroups = new ArrayList<>();
-    }
-    this.updatedAssetGroups.add(updatedAssetGroupsItem);
-    return this;
-  }
-
-  /**
-   * A list of successfully edited asset groups.
-   * @return updatedAssetGroups
-   */
-  @Valid 
-  @Schema(name = "updated_asset_groups", description = "A list of successfully edited asset groups.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("updated_asset_groups")
-  public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
-    return updatedAssetGroups;
-  }
-
-  public void setUpdatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
-    this.updatedAssetGroups = updatedAssetGroups;
-  }
+  @Valid
+  private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   public UpdateAssetGroupResponse exceptions(List<@Valid UpdateAssetGroupResponseExceptionsInner> exceptions) {
     this.exceptions = JsonNullable.of(exceptions);
@@ -91,6 +63,34 @@ public class UpdateAssetGroupResponse {
     this.exceptions = exceptions;
   }
 
+  public UpdateAssetGroupResponse updatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+    return this;
+  }
+
+  public UpdateAssetGroupResponse addUpdatedAssetGroupsItem(AssetGroupBinding updatedAssetGroupsItem) {
+    if (this.updatedAssetGroups == null) {
+      this.updatedAssetGroups = new ArrayList<>();
+    }
+    this.updatedAssetGroups.add(updatedAssetGroupsItem);
+    return this;
+  }
+
+  /**
+   * A list of successfully edited asset groups.
+   * @return updatedAssetGroups
+   */
+  @Valid 
+  @Schema(name = "updated_asset_groups", description = "A list of successfully edited asset groups.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updated_asset_groups")
+  public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
+    return updatedAssetGroups;
+  }
+
+  public void setUpdatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -100,8 +100,8 @@ public class UpdateAssetGroupResponse {
       return false;
     }
     UpdateAssetGroupResponse updateAssetGroupResponse = (UpdateAssetGroupResponse) o;
-    return Objects.equals(this.updatedAssetGroups, updateAssetGroupResponse.updatedAssetGroups) &&
-        equalsNullable(this.exceptions, updateAssetGroupResponse.exceptions);
+    return equalsNullable(this.exceptions, updateAssetGroupResponse.exceptions) &&
+        Objects.equals(this.updatedAssetGroups, updateAssetGroupResponse.updatedAssetGroups);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -110,7 +110,7 @@ public class UpdateAssetGroupResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(updatedAssetGroups, hashCodeNullable(exceptions));
+    return Objects.hash(hashCodeNullable(exceptions), updatedAssetGroups);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -124,8 +124,8 @@ public class UpdateAssetGroupResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponse {\n");
-    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

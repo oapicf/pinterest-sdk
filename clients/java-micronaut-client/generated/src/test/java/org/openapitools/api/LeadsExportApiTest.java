@@ -36,7 +36,7 @@ public class LeadsExportApiTest {
     public void leadsExportCreateTest() {
         // given
         String adAccountId = "example";
-        LeadsExportCreateRequest leadsExportCreateRequest = new LeadsExportCreateRequest("2020-12-20", "2020-12-20", "687201361754");
+        LeadsExportCreateRequest leadsExportCreateRequest = new LeadsExportCreateRequest("687201361754", "2020-12-20", "2020-12-20");
 
         // when
         LeadsExportCreateResponse body = api.leadsExportCreate(adAccountId, leadsExportCreateRequest).block();

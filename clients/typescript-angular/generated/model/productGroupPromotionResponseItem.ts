@@ -7,12 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ProductGroupPromotionResponseElement } from './productGroupPromotionResponseElement';
+import { ProductGroupPromotion } from './productGroupPromotion';
 import { Exception } from './exception';
 
 
 export interface ProductGroupPromotionResponseItem { 
-    data?: ProductGroupPromotionResponseElement;
+    data?: ProductGroupPromotion;
     exceptions?: Array<Exception> | null;
 }
 

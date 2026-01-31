@@ -12,6 +12,7 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 open AdsApiHandlerParams
 open AdsApiServiceInterface
 open System.Collections.Generic

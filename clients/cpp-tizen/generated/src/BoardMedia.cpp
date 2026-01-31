@@ -5,30 +5,30 @@
 #include "Helpers.h"
 
 
-#include "Board_media.h"
+#include "BoardMedia.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-Board_media::Board_media()
+BoardMedia::BoardMedia()
 {
 	//__init();
 }
 
-Board_media::~Board_media()
+BoardMedia::~BoardMedia()
 {
 	//__cleanup();
 }
 
 void
-Board_media::__init()
+BoardMedia::__init()
 {
 	//image_cover_url = std::string();
 	//new std::list()std::list> pin_thumbnail_urls;
 }
 
 void
-Board_media::__cleanup()
+BoardMedia::__cleanup()
 {
 	//if(image_cover_url != NULL) {
 	//
@@ -44,7 +44,7 @@ Board_media::__cleanup()
 }
 
 void
-Board_media::fromJson(char* jsonStr)
+BoardMedia::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -83,13 +83,13 @@ Board_media::fromJson(char* jsonStr)
 	}
 }
 
-Board_media::Board_media(char* json)
+BoardMedia::BoardMedia(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-Board_media::toJson()
+BoardMedia::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
@@ -126,25 +126,25 @@ Board_media::toJson()
 }
 
 std::string
-Board_media::getImageCoverUrl()
+BoardMedia::getImageCoverUrl()
 {
 	return image_cover_url;
 }
 
 void
-Board_media::setImageCoverUrl(std::string  image_cover_url)
+BoardMedia::setImageCoverUrl(std::string  image_cover_url)
 {
 	this->image_cover_url = image_cover_url;
 }
 
 std::list<std::string>
-Board_media::getPinThumbnailUrls()
+BoardMedia::getPinThumbnailUrls()
 {
 	return pin_thumbnail_urls;
 }
 
 void
-Board_media::setPinThumbnailUrls(std::list <std::string> pin_thumbnail_urls)
+BoardMedia::setPinThumbnailUrls(std::list <std::string> pin_thumbnail_urls)
 {
 	this->pin_thumbnail_urls = pin_thumbnail_urls;
 }

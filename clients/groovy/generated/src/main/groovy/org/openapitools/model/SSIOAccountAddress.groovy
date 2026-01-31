@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class SSIOAccountAddress {
-    /* Address display */
-    String display
-    /* Purpose for which the address is used, usually Billing or Businness */
-    String purpose
     /* Salesforce id for address */
     String addressId
+    /* Address display */
+    String display
     /* Legal entity for this insertion order */
     String orderLegalEntity
+    /* Purpose for which the address is used, usually Billing or Businness */
+    String purpose
 }

@@ -1,7 +1,6 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.Audience
-import org.openapitools.server.api.model.AudienceCreateCustomRequest
 import org.openapitools.server.api.model.AudienceCreateRequest
 import org.openapitools.server.api.model.AudienceUpdateRequest
 import org.openapitools.server.api.model.AudiencesList200Response
@@ -25,9 +24,6 @@ interface AudiencesApi  {
     /* audiencesCreate
      * Create audience */
     suspend fun audiencesCreate(adAccountId:kotlin.String?,audienceCreateRequest:AudienceCreateRequest?,context:OperationRequest):Response<Audience>
-    /* audiencesCreateCustom
-     * Create custom audience */
-    suspend fun audiencesCreateCustom(adAccountId:kotlin.String?,audienceCreateCustomRequest:AudienceCreateCustomRequest?,context:OperationRequest):Response<Audience>
     /* audiencesGet
      * Get audience */
     suspend fun audiencesGet(adAccountId:kotlin.String?,audienceId:kotlin.String?,context:OperationRequest):Response<Audience>

@@ -1,0 +1,14 @@
+package models
+
+// QualityComponentDetails - Metrics for a specific event type within a quality component.
+type QualityComponentDetails struct {
+
+	// Coverage percentage for this event type.
+	Coverage float32 `json:"coverage"`
+
+	// List of issues detected for this event type, if any.
+	Issues []QualityComponentIssue `json:"issues,omitempty"`
+
+	// Overlap percentage for this event type. Only populated for external_event_id
+	Overlap float32 `json:"overlap,omitempty"`
+}

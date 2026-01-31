@@ -33,20 +33,32 @@ import org.openapitools.server.apis.BusinessAccessAssetsApi
 import org.openapitools.server.apis.BusinessAccessInviteApi
 import org.openapitools.server.apis.BusinessAccessRelationshipsApi
 import org.openapitools.server.apis.CampaignsApi
+import org.openapitools.server.apis.CatalogFeedsApi
+import org.openapitools.server.apis.CatalogItemsApi
+import org.openapitools.server.apis.CatalogProductGroupsApi
+import org.openapitools.server.apis.CatalogReportsApi
 import org.openapitools.server.apis.CatalogsApi
+import org.openapitools.server.apis.ConversionEqsApi
 import org.openapitools.server.apis.ConversionEventsApi
 import org.openapitools.server.apis.ConversionTagsApi
+import org.openapitools.server.apis.ConversionsApi
+import org.openapitools.server.apis.CustomerListUploadsApi
 import org.openapitools.server.apis.CustomerListsApi
 import org.openapitools.server.apis.IntegrationsApi
 import org.openapitools.server.apis.KeywordsApi
+import org.openapitools.server.apis.LabelsApi
 import org.openapitools.server.apis.LeadAdsApi
 import org.openapitools.server.apis.LeadFormsApi
 import org.openapitools.server.apis.LeadsExportApi
 import org.openapitools.server.apis.MediaApi
+import org.openapitools.server.apis.MsotEventsApi
+import org.openapitools.server.apis.NotificationApi
 import org.openapitools.server.apis.OauthApi
 import org.openapitools.server.apis.OrderLinesApi
 import org.openapitools.server.apis.PinsApi
+import org.openapitools.server.apis.ProductCategoriesApi
 import org.openapitools.server.apis.ProductGroupPromotionsApi
+import org.openapitools.server.apis.PromotionsApi
 import org.openapitools.server.apis.ResourcesApi
 import org.openapitools.server.apis.SearchApi
 import org.openapitools.server.apis.TargetingTemplateApi
@@ -115,20 +127,32 @@ fun Application.main() {
         BusinessAccessInviteApi()
         BusinessAccessRelationshipsApi()
         CampaignsApi()
+        CatalogFeedsApi()
+        CatalogItemsApi()
+        CatalogProductGroupsApi()
+        CatalogReportsApi()
         CatalogsApi()
+        ConversionEqsApi()
         ConversionEventsApi()
         ConversionTagsApi()
+        ConversionsApi()
+        CustomerListUploadsApi()
         CustomerListsApi()
         IntegrationsApi()
         KeywordsApi()
+        LabelsApi()
         LeadAdsApi()
         LeadFormsApi()
         LeadsExportApi()
         MediaApi()
+        MsotEventsApi()
+        NotificationApi()
         OauthApi()
         OrderLinesApi()
         PinsApi()
+        ProductCategoriesApi()
         ProductGroupPromotionsApi()
+        PromotionsApi()
         ResourcesApi()
         SearchApi()
         TargetingTemplateApi()

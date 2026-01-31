@@ -8,13 +8,13 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}name`,
-                label: `Internal name of the lead form. - [${labelPrefix}name]`,
+                key: `${keyPrefix}completion_message`,
+                label: `A message for people who complete the form to let them know what happens next. - [${labelPrefix}completion_message]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}privacy_policy_link`,
-                label: `A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. - [${labelPrefix}privacy_policy_link]`,
+                key: `${keyPrefix}disclosure_language`,
+                label: `Additional disclosure language to be included in the lead form. - [${labelPrefix}disclosure_language]`,
                 type: 'string',
             },
             {
@@ -23,17 +23,18 @@ module.exports = {
                 type: 'boolean',
             },
             {
-                key: `${keyPrefix}completion_message`,
-                label: `A message for people who complete the form to let them know what happens next. - [${labelPrefix}completion_message]`,
+                key: `${keyPrefix}name`,
+                label: `Internal name of the lead form. - [${labelPrefix}name]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}status`,
-                ...LeadFormStatus.fields(`${keyPrefix}status`, isInput),
+                key: `${keyPrefix}policy_links`,
+                label: `[${labelPrefix}policy_links]`,
+                children: LeadFormCommon_policy_links_inner.fields(`${keyPrefix}policy_links${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
-                key: `${keyPrefix}disclosure_language`,
-                label: `Additional disclosure language to be included in the lead form. - [${labelPrefix}disclosure_language]`,
+                key: `${keyPrefix}privacy_policy_link`,
+                label: `A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. - [${labelPrefix}privacy_policy_link]`,
                 type: 'string',
             },
             {
@@ -42,9 +43,8 @@ module.exports = {
                 children: LeadFormQuestion.fields(`${keyPrefix}questions${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
-                key: `${keyPrefix}policy_links`,
-                label: `[${labelPrefix}policy_links]`,
-                children: LeadFormCommon_policy_links_inner.fields(`${keyPrefix}policy_links${!isInput ? '[]' : ''}`, isInput, true), 
+                key: `${keyPrefix}status`,
+                ...LeadFormStatus.fields(`${keyPrefix}status`, isInput),
             },
             {
                 key: `${keyPrefix}id`,
@@ -57,14 +57,14 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'name': bundle.inputData?.[`${keyPrefix}name`],
-            'privacy_policy_link': bundle.inputData?.[`${keyPrefix}privacy_policy_link`],
-            'has_accepted_terms': bundle.inputData?.[`${keyPrefix}has_accepted_terms`],
             'completion_message': bundle.inputData?.[`${keyPrefix}completion_message`],
-            'status': bundle.inputData?.[`${keyPrefix}status`],
             'disclosure_language': bundle.inputData?.[`${keyPrefix}disclosure_language`],
-            'questions': utils.childMapping(bundle.inputData?.[`${keyPrefix}questions`], `${keyPrefix}questions`, LeadFormQuestion),
+            'has_accepted_terms': bundle.inputData?.[`${keyPrefix}has_accepted_terms`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
             'policy_links': utils.childMapping(bundle.inputData?.[`${keyPrefix}policy_links`], `${keyPrefix}policy_links`, LeadFormCommon_policy_links_inner),
+            'privacy_policy_link': bundle.inputData?.[`${keyPrefix}privacy_policy_link`],
+            'questions': utils.childMapping(bundle.inputData?.[`${keyPrefix}questions`], `${keyPrefix}questions`, LeadFormQuestion),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
         }
     },

@@ -12,6 +12,7 @@ import org.openapitools.vertxweb.server.model.CatalogsHotelProductGroupFilters;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -31,26 +32,16 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String catalogId;
   private CatalogsHotelProductGroupFilters filters;
 
   public CatalogsHotelListProductsByCatalogBasedFilterRequest () {
 
   }
 
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest (CatalogTypeEnum catalogType, String catalogId, CatalogsHotelProductGroupFilters filters) {
-    this.catalogType = catalogType;
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest (String catalogId, CatalogTypeEnum catalogType, CatalogsHotelProductGroupFilters filters) {
     this.catalogId = catalogId;
-    this.filters = filters;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+    this.filters = filters;
   }
 
     
@@ -60,6 +51,15 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -81,14 +81,14 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsHotelListProductsByCatalogBasedFilterRequest catalogsHotelListProductsByCatalogBasedFilterRequest = (CatalogsHotelListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+    return Objects.equals(catalogId, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsHotelListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(filters, catalogsHotelListProductsByCatalogBasedFilterRequest.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters);
+    return Objects.hash(catalogId, catalogType, filters);
   }
 
   @Override
@@ -96,8 +96,8 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();

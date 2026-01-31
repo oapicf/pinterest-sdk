@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | [**[]MediaType**](MediaType.md) |  | 
 **Negated** | Pointer to **bool** |  | [optional] [default to false]
+**Values** | [**[]MediaType**](MediaType.md) |  | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewCatalogsProductGroupMultipleMediaTypesCriteriaWithDefaults instantiates a new CatalogsProductGroupMultipleMediaTypesCriteria object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetValues
-
-`func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValues() []MediaType`
-
-GetValues returns the Values field if non-nil, zero value otherwise.
-
-### GetValuesOk
-
-`func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValuesOk() (*[]MediaType, bool)`
-
-GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValues
-
-`func (o *CatalogsProductGroupMultipleMediaTypesCriteria) SetValues(v []MediaType)`
-
-SetValues sets Values field to given value.
-
 
 ### GetNegated
 
@@ -70,6 +50,26 @@ SetNegated sets Negated field to given value.
 `func (o *CatalogsProductGroupMultipleMediaTypesCriteria) HasNegated() bool`
 
 HasNegated returns a boolean if a field has been set.
+
+### GetValues
+
+`func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValues() []MediaType`
+
+GetValues returns the Values field if non-nil, zero value otherwise.
+
+### GetValuesOk
+
+`func (o *CatalogsProductGroupMultipleMediaTypesCriteria) GetValuesOk() (*[]MediaType, bool)`
+
+GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValues
+
+`func (o *CatalogsProductGroupMultipleMediaTypesCriteria) SetValues(v []MediaType)`
+
+SetValues sets Values field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

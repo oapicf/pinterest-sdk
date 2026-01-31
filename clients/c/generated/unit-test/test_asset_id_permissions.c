@@ -23,18 +23,18 @@ asset_id_permissions_t* instantiate_asset_id_permissions(int include_optional) {
   asset_id_permissions_t* asset_id_permissions = NULL;
   if (include_optional) {
     asset_id_permissions = asset_id_permissions_create(
+       // false, not to have infinite recursion
+      instantiate_asset_group_binding(0),
       "549755885175",
       "AD_ACCOUNT",
-      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
-       // false, not to have infinite recursion
-      instantiate_asset_group_binding(0)
+      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"]
     );
   } else {
     asset_id_permissions = asset_id_permissions_create(
+      NULL,
       "549755885175",
       "AD_ACCOUNT",
-      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
-      NULL
+      ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"]
     );
   }
 

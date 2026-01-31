@@ -85,7 +85,7 @@ export class BusinessAccessInviteApiRequestFactory extends BaseAPIRequestFactory
     /**
      * Cancel membership/partnership invites and/or requests.
      * Cancel invites/requests
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param cancelInvitesBody A list with invite ids
      */
     public async cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, _options?: Configuration): Promise<RequestContext> {
@@ -197,7 +197,7 @@ export class BusinessAccessInviteApiRequestFactory extends BaseAPIRequestFactory
     /**
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type=\"MEMBER_INVITE\"     - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type=\"PARTNER_INVITE\"     - business_role=\"PARTNER\"     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type=\"PARTNER_REQUEST\"     - business_role=\"PARTNER\"     - partners
      * Create invites or requests
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      */
     public async createMembershipOrPartnershipInvites(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, _options?: Configuration): Promise<RequestContext> {

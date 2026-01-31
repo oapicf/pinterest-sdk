@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;UserWebsiteSummary&gt;](UserWebsiteSummary.md)
 `bookmark` | string
+`items` | [Array&lt;UserWebsiteSummary&gt;](UserWebsiteSummary.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { UserWebsitesGet200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies UserWebsitesGet200Response
 
 console.log(example)

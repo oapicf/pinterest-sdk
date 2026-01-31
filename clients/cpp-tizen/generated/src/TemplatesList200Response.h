@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<TemplateResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <TemplateResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<TemplateResponse> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <TemplateResponse> items);
 
 private:
-	std::list <TemplateResponse>items;
 	std::string bookmark;
+	std::list <TemplateResponse>items;
 	void __init();
 	void __cleanup();
 

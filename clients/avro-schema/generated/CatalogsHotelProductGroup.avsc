@@ -5,6 +5,11 @@
   "name": "CatalogsHotelProductGroup",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the hotel product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -16,14 +21,9 @@
       "doc": ""
     },
     {
-      "name": "id",
-      "type": "string",
-      "doc": "ID of the hotel product group."
-    },
-    {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "Name of hotel product group",
+      "name": "created_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of when catalog product group was created.",
       "default": null
     },
     {
@@ -38,21 +38,26 @@
       "doc": ""
     },
     {
-      "name": "created_at",
-      "type": ["null", "int"],
-      "doc": "Unix timestamp in seconds of when catalog product group was created.",
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the hotel product group."
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of hotel product group",
       "default": null
+    },
+    {
+      "name": "type",
+      "type": "model.CatalogsHotelProductGroupType",
+      "doc": ""
     },
     {
       "name": "updated_at",
       "type": ["null", "int"],
       "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
       "default": null
-    },
-    {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the hotel product group."
     }
   ]
 

@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BulkUpsertRequestUpdate, () {
-    // BuiltList<CampaignUpdateRequest> campaigns
-    test('to test the property `campaigns`', () async {
-      // TODO
-    });
-
     // BuiltList<AdGroupUpdateRequest> adGroups
     test('to test the property `adGroups`', () async {
       // TODO
@@ -22,13 +17,28 @@ void main() {
       // TODO
     });
 
-    // BuiltList<ProductGroupPromotionUpdateRequest> productGroups
-    test('to test the property `productGroups`', () async {
+    // BuiltList<CampaignUpdateRequest> campaigns
+    test('to test the property `campaigns`', () async {
+      // TODO
+    });
+
+    // BuiltList<CatalogsProductGroupsUpdateRequest> catalogProductGroups
+    test('to test the property `catalogProductGroups`', () async {
       // TODO
     });
 
     // BuiltList<KeywordUpdate> keywords
     test('to test the property `keywords`', () async {
+      // TODO
+    });
+
+    // BuiltList<LabelBulkUpdateRequest> labels
+    test('to test the property `labels`', () async {
+      // TODO
+    });
+
+    // BuiltList<ProductGroupPromotionUpdateRequest> productGroups
+    test('to test the property `productGroups`', () async {
       // TODO
     });
 

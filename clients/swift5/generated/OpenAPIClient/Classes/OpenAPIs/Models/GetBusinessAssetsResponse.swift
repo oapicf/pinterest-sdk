@@ -14,31 +14,35 @@ import AnyCodable
 public struct GetBusinessAssetsResponse: Codable, JSONEncodable, Hashable {
 
     public static let assetIdRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
+    public var assetGroupInfo: AssetGroupBinding?
     /** Unique identifier of a business asset. */
     public var assetId: String?
-    /** Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /** Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     public var assetType: String?
-    public var assetGroupInfo: AssetGroupBinding?
+    public var catalogInfo: GetBusinessAssetsResponseCatalogInfo?
 
-    public init(assetId: String? = nil, assetType: String? = nil, assetGroupInfo: AssetGroupBinding? = nil) {
+    public init(assetGroupInfo: AssetGroupBinding? = nil, assetId: String? = nil, assetType: String? = nil, catalogInfo: GetBusinessAssetsResponseCatalogInfo? = nil) {
+        self.assetGroupInfo = assetGroupInfo
         self.assetId = assetId
         self.assetType = assetType
-        self.assetGroupInfo = assetGroupInfo
+        self.catalogInfo = catalogInfo
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case assetGroupInfo = "asset_group_info"
         case assetId = "asset_id"
         case assetType = "asset_type"
-        case assetGroupInfo = "asset_group_info"
+        case catalogInfo = "catalog_info"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(assetGroupInfo, forKey: .assetGroupInfo)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetType, forKey: .assetType)
-        try container.encodeIfPresent(assetGroupInfo, forKey: .assetGroupInfo)
+        try container.encodeIfPresent(catalogInfo, forKey: .catalogInfo)
     }
 }
 

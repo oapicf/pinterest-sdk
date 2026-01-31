@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsCreditRedeemResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsCreditRedeemResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdsCreditRedeemResponse {
+    title = AdsCreditRedeemResponse
+    description = AdsCreditRedeemResponse
+    derivedFrom = Root
+    properties {
+        error_code {
+          type =  integer
+          description = "Error code type if error occurs"
+          optional = false
+        }
+        error_message {
+          type =  string
+          description = "Reason for failure"
+          optional = false
+        }
+        success {
+          type =  boolean
+          description = "Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true)."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsCreditRedeemResponse {
+    title = AdsCreditRedeemResponse
+    description = AdsCreditRedeemResponse
+    implements = openapi_server.resourceTypes.AdsCreditRedeemResponse
+
+  }
+}

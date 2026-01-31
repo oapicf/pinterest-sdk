@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionTagConfigs;
 import org.openapitools.model.EnhancedMatchStatusType;
-import org.openapitools.model.EntityStatus;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -25,19 +24,19 @@ public class ConversionTagCommonTest {
     }
 
     /**
-     * Test the property 'adAccountId'
-     */
-    @Test
-    public void adAccountIdTest() {
-        // TODO: test adAccountId
-    }
-
-    /**
      * Test the property 'codeSnippet'
      */
     @Test
     public void codeSnippetTest() {
         // TODO: test codeSnippet
+    }
+
+    /**
+     * Test the property 'configs'
+     */
+    @Test
+    public void configsTest() {
+        // TODO: test configs
     }
 
     /**
@@ -73,27 +72,11 @@ public class ConversionTagCommonTest {
     }
 
     /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
      * Test the property 'version'
      */
     @Test
     public void versionTest() {
         // TODO: test version
-    }
-
-    /**
-     * Test the property 'configs'
-     */
-    @Test
-    public void configsTest() {
-        // TODO: test configs
     }
 
 }

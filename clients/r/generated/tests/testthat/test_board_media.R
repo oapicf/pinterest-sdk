@@ -7,7 +7,7 @@ model_instance <- BoardMedia$new()
 
 test_that("image_cover_url", {
   # tests for the property `image_cover_url` (character)
-  # Board cover image.
+  # Board cover image
 
   # uncomment below to test the property
   #expect_equal(model.instance$`image_cover_url`, "EXPECTED_RESULT")

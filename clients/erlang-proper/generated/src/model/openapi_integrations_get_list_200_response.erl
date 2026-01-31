@@ -9,8 +9,8 @@
 -export_type([openapi_integrations_get_list_200_response/0]).
 
 -type openapi_integrations_get_list_200_response() ::
-  [ {'items', list(openapi_integration_record:openapi_integration_record()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_integration_record:openapi_integration_record()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_integrations_get_list_200_response() ->
     openapi_integrations_get_list_200_response([]).
 
 openapi_integrations_get_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_integration_record:openapi_integration_record()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_integration_record:openapi_integration_record()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

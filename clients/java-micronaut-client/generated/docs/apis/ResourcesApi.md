@@ -57,6 +57,7 @@ Get Ad Accounts countries
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -83,6 +84,7 @@ Get the definitions for ads and organic metrics available across both synchronou
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`, `pins:read`, `user_accounts:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`, `pins:read`, `user_accounts:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -109,6 +111,7 @@ Get interest details
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -122,7 +125,7 @@ Mono<Void> ResourcesApi.leadFormQuestionsGet()
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 
 
@@ -186,6 +189,7 @@ Get targeting options
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined

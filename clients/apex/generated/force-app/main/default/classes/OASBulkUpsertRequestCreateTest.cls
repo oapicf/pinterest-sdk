@@ -74,16 +74,19 @@ private class OASBulkUpsertRequestCreateTest {
         OASBulkUpsertRequestCreate bulkUpsertRequestCreate = new OASBulkUpsertRequestCreate();
         Map<String, String> x-property-mappings = bulkUpsertRequestCreate.getx-property-mappings();
         System.assertEquals('adGroups', x-property-mappings.get('ad_groups'));
+        System.assertEquals('catalogProductGroups', x-property-mappings.get('catalog_product_groups'));
         System.assertEquals('productGroups', x-property-mappings.get('product_groups'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASBulkUpsertRequestCreate bulkUpsertRequestCreate = new OASBulkUpsertRequestCreate();
-        System.assertEquals(new List<OASCampaignCreateRequest>(), bulkUpsertRequestCreate.campaigns);
         System.assertEquals(new List<OASAdGroupCreateRequest>(), bulkUpsertRequestCreate.adGroups);
         System.assertEquals(new List<OASAdCreateRequest>(), bulkUpsertRequestCreate.ads);
-        System.assertEquals(new List<OASProductGroupPromotionCreateReques>(), bulkUpsertRequestCreate.productGroups);
+        System.assertEquals(new List<OASCampaignCreateRequest>(), bulkUpsertRequestCreate.campaigns);
+        System.assertEquals(new List<OASMultipleProductGroupsInner>(), bulkUpsertRequestCreate.catalogProductGroups);
         System.assertEquals(new List<OASKeywordsRequest>(), bulkUpsertRequestCreate.keywords);
+        System.assertEquals(new List<OASLabelCreateRequest>(), bulkUpsertRequestCreate.labels);
+        System.assertEquals(new List<OASProductGroupPromotionCreateReques>(), bulkUpsertRequestCreate.productGroups);
     }
 }

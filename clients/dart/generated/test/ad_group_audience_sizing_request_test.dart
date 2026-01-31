@@ -16,15 +16,9 @@ void main() {
   // final instance = AdGroupAudienceSizingRequest();
 
   group('test AdGroupAudienceSizingRequest', () {
-    // Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+    // Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
     // bool autoTargetingEnabled (default value: true)
     test('to test the property `autoTargetingEnabled`', () async {
-      // TODO
-    });
-
-    // <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-    // PlacementGroupType placementGroup (default value: 'ALL')
-    test('to test the property `placementGroup`', () async {
       // TODO
     });
 
@@ -34,8 +28,15 @@ void main() {
       // TODO
     });
 
-    // TargetingSpec targetingSpec
-    test('to test the property `targetingSpec`', () async {
+    // Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+    // List<AdGroupAudienceSizingRequestKeywordsInner> keywords (default value: const [])
+    test('to test the property `keywords`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+    // PlacementGroupType placementGroup (default value: 'ALL')
+    test('to test the property `placementGroup`', () async {
       // TODO
     });
 
@@ -45,9 +46,8 @@ void main() {
       // TODO
     });
 
-    // Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
-    // List<AdGroupAudienceSizingRequestKeywordsInner> keywords (default value: const [])
-    test('to test the property `keywords`', () async {
+    // TargetingSpec targetingSpec
+    test('to test the property `targetingSpec`', () async {
       // TODO
     });
 

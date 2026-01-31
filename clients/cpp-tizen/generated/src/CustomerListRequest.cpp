@@ -23,15 +23,19 @@ CustomerListRequest::~CustomerListRequest()
 void
 CustomerListRequest::__init()
 {
+	//list_type = std::string();
 	//name = std::string();
 	//records = std::string();
-	//list_type = std::string();
-	//exceptions = null;
 }
 
 void
 CustomerListRequest::__cleanup()
 {
+	//if(list_type != NULL) {
+	//
+	//delete list_type;
+	//list_type = NULL;
+	//}
 	//if(name != NULL) {
 	//
 	//delete name;
@@ -42,16 +46,6 @@ CustomerListRequest::__cleanup()
 	//delete records;
 	//records = NULL;
 	//}
-	//if(list_type != NULL) {
-	//
-	//delete list_type;
-	//list_type = NULL;
-	//}
-	//if(exceptions != NULL) {
-	//
-	//delete exceptions;
-	//exceptions = NULL;
-	//}
 	//
 }
 
@@ -60,6 +54,20 @@ CustomerListRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *list_typeKey = "list_type";
+	node = json_object_get_member(pJsonObject, list_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("UserListType")) {
+			jsonToValue(&list_type, node, "UserListType", "UserListType");
+		} else {
+			
+			UserListType* obj = static_cast<UserListType*> (&list_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *nameKey = "name";
 	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
@@ -82,34 +90,6 @@ CustomerListRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *list_typeKey = "list_type";
-	node = json_object_get_member(pJsonObject, list_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("UserListType")) {
-			jsonToValue(&list_type, node, "UserListType", "UserListType");
-		} else {
-			
-			UserListType* obj = static_cast<UserListType*> (&list_type);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *exceptionsKey = "exceptions";
-	node = json_object_get_member(pJsonObject, exceptionsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&exceptions, node, "std::string", "");
-		} else {
-			
-			std::string* obj = static_cast<std::string*> (&exceptions);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CustomerListRequest::CustomerListRequest(char* json)
@@ -122,6 +102,20 @@ CustomerListRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("UserListType")) {
+		UserListType obj = getListType();
+		node = converttoJson(&obj, "UserListType", "");
+	}
+	else {
+		
+		UserListType obj = static_cast<UserListType> (getListType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *list_typeKey = "list_type";
+	json_object_set_member(pJsonObject, list_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
@@ -140,40 +134,24 @@ CustomerListRequest::toJson()
 	}
 	const gchar *recordsKey = "records";
 	json_object_set_member(pJsonObject, recordsKey, node);
-	if (isprimitive("UserListType")) {
-		UserListType obj = getListType();
-		node = converttoJson(&obj, "UserListType", "");
-	}
-	else {
-		
-		UserListType obj = static_cast<UserListType> (getListType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *list_typeKey = "list_type";
-	json_object_set_member(pJsonObject, list_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getExceptions();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-		std::string obj = static_cast<std::string> (getExceptions());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *exceptionsKey = "exceptions";
-	json_object_set_member(pJsonObject, exceptionsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+UserListType
+CustomerListRequest::getListType()
+{
+	return list_type;
+}
+
+void
+CustomerListRequest::setListType(UserListType  list_type)
+{
+	this->list_type = list_type;
 }
 
 std::string
@@ -198,30 +176,6 @@ void
 CustomerListRequest::setRecords(std::string  records)
 {
 	this->records = records;
-}
-
-UserListType
-CustomerListRequest::getListType()
-{
-	return list_type;
-}
-
-void
-CustomerListRequest::setListType(UserListType  list_type)
-{
-	this->list_type = list_type;
-}
-
-std::string
-CustomerListRequest::getExceptions()
-{
-	return exceptions;
-}
-
-void
-CustomerListRequest::setExceptions(std::string  exceptions)
-{
-	this->exceptions = exceptions;
 }
 
 

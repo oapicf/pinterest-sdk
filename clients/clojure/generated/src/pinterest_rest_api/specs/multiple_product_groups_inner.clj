@@ -10,15 +10,15 @@
 
 (def multiple-product-groups-inner-data
   {
-   (ds/req :name) string?
    (ds/opt :description) string?
-   (ds/opt :is_featured) boolean?
-   (ds/req :filters) catalogs-creative-assets-product-group-filters-spec
    (ds/req :feed_id) string?
-   (ds/req :catalog_type) string?
+   (ds/req :filters) catalogs-creative-assets-product-group-filters-spec
+   (ds/opt :is_featured) boolean?
+   (ds/req :name) string?
    (ds/req :catalog_id) string?
-   (ds/req :country) country-spec
-   (ds/req :locale) catalogs-locale-spec
+   (ds/req :catalog_type) string?
+   (ds/opt :country) country-spec
+   (ds/opt :locale) catalogs-locale-spec
    })
 
 (def multiple-product-groups-inner-spec

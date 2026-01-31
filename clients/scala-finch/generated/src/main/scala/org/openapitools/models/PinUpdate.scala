@@ -5,28 +5,26 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.PinUpdateCarouselSlotsInner
+import org.openapitools.models.CarouselSlot
 import scala.collection.immutable.Seq
 
 /**
- * Pin fields for updates
- * @param altUnderscoretext Pin's alternative text.
- * @param boardUnderscoreid The id of the board to move the Pin onto.
- * @param boardUnderscoresectionUnderscoreid <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
- * @param description Pin description - 800 characters maximum.
- * @param link URL viewer is taken to when they click pin.
- * @param title The native pin title that creators explicitly prefer to display.
+ * Resource create or update operation model.
+ * @param altUnderscoretext 
+ * @param boardUnderscoreid The board to which this Pin belongs.
+ * @param boardUnderscoresectionUnderscoreid The board section to which this Pin belongs.
  * @param carouselUnderscoreslots Carousel Pin slots data.
- * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+ * @param description 
+ * @param link 
+ * @param title 
  */
 case class PinUpdate(altUnderscoretext: Option[String],
                 boardUnderscoreid: Option[String],
                 boardUnderscoresectionUnderscoreid: Option[String],
+                carouselUnderscoreslots: Option[Seq[CarouselSlot]],
                 description: Option[String],
                 link: Option[String],
-                title: Option[String],
-                carouselUnderscoreslots: Option[Seq[PinUpdateCarouselSlotsInner]],
-                note: Option[String]
+                title: Option[String]
                 )
 
 object PinUpdate {

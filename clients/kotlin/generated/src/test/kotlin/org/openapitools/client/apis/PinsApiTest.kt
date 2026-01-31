@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.PinsApi
+import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.Pin
 import org.openapitools.client.models.PinAnalyticsMetricsResponse
@@ -26,6 +27,7 @@ import org.openapitools.client.models.PinCreate
 import org.openapitools.client.models.PinUpdate
 import org.openapitools.client.models.PinsList200Response
 import org.openapitools.client.models.PinsSaveRequest
+import org.openapitools.client.models.PinterestLibError
 
 class PinsApiTest : ShouldSpec() {
     init {
@@ -62,7 +64,7 @@ class PinsApiTest : ShouldSpec() {
         // to test pinsCreate
         should("test pinsCreate") {
             // uncomment below to test pinsCreate
-            //val pinCreate : PinCreate =  // PinCreate | Create a new Pin.
+            //val pinCreate : PinCreate =  // PinCreate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : Pin = apiInstance.pinsCreate(pinCreate, adAccountId)
             //result shouldBe ("TODO")
@@ -71,7 +73,7 @@ class PinsApiTest : ShouldSpec() {
         // to test pinsDelete
         should("test pinsDelete") {
             // uncomment below to test pinsDelete
-            //val pinId : kotlin.String = pinId_example // kotlin.String | Unique identifier of a Pin.
+            //val pinId : kotlin.String = pinId_example // kotlin.String | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //apiInstance.pinsDelete(pinId, adAccountId)
         }
@@ -79,25 +81,25 @@ class PinsApiTest : ShouldSpec() {
         // to test pinsGet
         should("test pinsGet") {
             // uncomment below to test pinsGet
-            //val pinId : kotlin.String = pinId_example // kotlin.String | Unique identifier of a Pin.
-            //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+            //val pinId : kotlin.String = pinId_example // kotlin.String | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : Pin = apiInstance.pinsGet(pinId, pinMetrics, adAccountId)
+            //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+            //val result : Pin = apiInstance.pinsGet(pinId, adAccountId, pinMetrics)
             //result shouldBe ("TODO")
         }
 
         // to test pinsList
         should("test pinsList") {
             // uncomment below to test pinsList
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val pinFilter : kotlin.String = pinFilter_example // kotlin.String | Pin filter.
-            //val includeProtectedPins : kotlin.Boolean = true // kotlin.Boolean | Specify if return pins from protected boards
+            //val pinFilter : kotlin.String = pinFilter_example // kotlin.String | The filter to apply to the pins
+            //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+            //val includeProtectedPins : kotlin.Boolean = true // kotlin.Boolean | Whether to include protected pins in the results
             //val pinType : kotlin.String = pinType_example // kotlin.String | The type of pins to return, currently only enabled for private pins
-            //val creativeTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+            //val creativeTypes : kotlin.collections.List<CreativeType> =  // kotlin.collections.List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-            //val result : PinsList200Response = apiInstance.pinsList(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : PinsList200Response = apiInstance.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -114,7 +116,7 @@ class PinsApiTest : ShouldSpec() {
         // to test pinsUpdate
         should("test pinsUpdate") {
             // uncomment below to test pinsUpdate
-            //val pinId : kotlin.String = pinId_example // kotlin.String | Unique identifier of a Pin.
+            //val pinId : kotlin.String = pinId_example // kotlin.String | 
             //val pinUpdate : PinUpdate =  // PinUpdate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : Pin = apiInstance.pinsUpdate(pinId, pinUpdate, adAccountId)

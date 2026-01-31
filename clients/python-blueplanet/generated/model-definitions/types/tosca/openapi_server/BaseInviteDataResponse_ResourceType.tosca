@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BaseInviteDataResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BaseInviteDataResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BaseInviteDataResponseInviteData = openapi_server.resourceTypes.BaseInviteDataResponseInviteData
+  BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BaseInviteDataResponse {
+    title = BaseInviteDataResponse
+    description = BaseInviteDataResponse
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier of the invite/request."
+          optional = false
+        }
+        invite_data {
+          type = BaseInviteDataResponseInviteData
+          description = ""
+          optional = false
+        }
+        is_received_invite {
+          type =  boolean
+          description = "Indicates whether the invite/request was received."
+          optional = false
+        }
+        user {
+          type = BusinessAccessUserSummary
+          description = "Metadata for the member/partner that was sent the invite/request."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BaseInviteDataResponse {
+    title = BaseInviteDataResponse
+    description = BaseInviteDataResponse
+    implements = openapi_server.resourceTypes.BaseInviteDataResponse
+
+  }
+}

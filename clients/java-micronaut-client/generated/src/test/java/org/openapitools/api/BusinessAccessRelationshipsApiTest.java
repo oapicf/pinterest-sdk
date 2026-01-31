@@ -1,5 +1,8 @@
 package org.openapitools.api;
 
+import org.openapitools.model.BrandAccountsCreate200Response;
+import org.openapitools.model.BrandAccountsCreateRequest;
+import org.openapitools.model.BrandAccountsUpdateRequest;
 import org.openapitools.model.DeletePartnersRequest;
 import org.openapitools.model.DeletePartnersResponse;
 import org.openapitools.model.DeletedMembersResponse;
@@ -10,6 +13,7 @@ import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.MemberBusinessRole;
 import org.openapitools.model.MembersToDeleteBody;
 import org.openapitools.model.PartnerType;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateMemberBusinessRoleBody;
 import org.openapitools.model.UpdateMemberResultsResponseArray;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -32,6 +36,47 @@ public class BusinessAccessRelationshipsApiTest {
 
     @Inject
     BusinessAccessRelationshipsApi api;
+
+    
+    /**
+     * Create a Brand Account
+     *
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void brandAccountsCreateTest() {
+        // given
+        String businessHierarchyId = "7009386637860";
+        BrandAccountsCreateRequest brandAccountsCreateRequest = new BrandAccountsCreateRequest("Canada Stores", "canada_stores", org.openapitools.model.Country.fromValue("AD"));
+
+        // when
+        BrandAccountsCreate200Response body = api.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest).block();
+
+        // then
+        // TODO implement the brandAccountsCreateTest()
+    }
+
+    
+    /**
+     * Update a Brand Account
+     *
+     * Update an existing Brand Account
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void brandAccountsUpdateTest() {
+        // given
+        String businessHierarchyId = "7009386637860";
+        String brandAccountId = "729090764583391194";
+        BrandAccountsUpdateRequest brandAccountsUpdateRequest = new BrandAccountsUpdateRequest();
+
+        // when
+        BrandAccountsCreate200Response body = api.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest).block();
+
+        // then
+        // TODO implement the brandAccountsUpdateTest()
+    }
 
     
     /**
@@ -104,6 +149,7 @@ public class BusinessAccessRelationshipsApiTest {
     public void getBusinessMembersTest() {
         // given
         String businessId = "729090764583391194";
+        Boolean fetchSystemUsers = false;
         Boolean assetsSummary = false;
         List<MemberBusinessRole> businessRoles = Arrays.asList();
         String memberIds = "00101010101,2222220101";
@@ -112,7 +158,7 @@ public class BusinessAccessRelationshipsApiTest {
         Integer pageSize = 25;
 
         // when
-        GetBusinessMembers200Response body = api.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize).block();
+        GetBusinessMembers200Response body = api.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize).block();
 
         // then
         // TODO implement the getBusinessMembersTest()
@@ -141,6 +187,27 @@ public class BusinessAccessRelationshipsApiTest {
 
         // then
         // TODO implement the getBusinessPartnersTest()
+    }
+
+    
+    /**
+     * Update a system user information.
+     *
+     * Update a system user information such as name.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void systemUserUpdateTest() {
+        // given
+        String businessId = "729090764583391194";
+        String systemUserId = "729090764583391194";
+        SystemUserUpdateRequest systemUserUpdateRequest = new SystemUserUpdateRequest("Billing API");
+
+        // when
+        api.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest).block();
+
+        // then
+        // TODO implement the systemUserUpdateTest()
     }
 
     

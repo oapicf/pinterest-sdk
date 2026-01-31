@@ -68,13 +68,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setRule(AudienceRule  rule);
-	/*! \brief Get Audience description.
-	 */
-	std::string getDescription();
-
-	/*! \brief Set Audience description.
-	 */
-	void setDescription(std::string  description);
 	/*! \brief Get <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 	 */
 	AudienceType getAudienceType();
@@ -82,13 +75,20 @@ public:
 	/*! \brief Set <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 	 */
 	void setAudienceType(AudienceType  audience_type);
+	/*! \brief Get Audience description.
+	 */
+	std::string getDescription();
+
+	/*! \brief Set Audience description.
+	 */
+	void setDescription(std::string  description);
 
 private:
 	std::string ad_account_id;
 	std::string name;
 	AudienceRule rule;
-	std::string description;
 	AudienceType audience_type;
+	std::string description;
 	void __init();
 	void __cleanup();
 

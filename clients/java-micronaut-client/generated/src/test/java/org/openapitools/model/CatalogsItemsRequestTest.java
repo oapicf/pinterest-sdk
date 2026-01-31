@@ -30,19 +30,19 @@ public class CatalogsItemsRequestTest {
     }
 
     /**
-     * Test the property 'language'
-     */
-    @Test
-    public void languageTest() {
-        // TODO: test language
-    }
-
-    /**
      * Test the property 'filters'
      */
     @Test
     public void filtersTest() {
         // TODO: test filters
+    }
+
+    /**
+     * Test the property 'language'
+     */
+    @Test
+    public void languageTest() {
+        // TODO: test language
     }
 
 }

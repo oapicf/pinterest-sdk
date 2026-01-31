@@ -25,7 +25,7 @@ class AdGroupsAnalyticsResponseInnerTest : ShouldSpec() {
         // uncomment below to create an instance of AdGroupsAnalyticsResponseInner
         //val modelInstance = AdGroupsAnalyticsResponseInner()
 
-        // to test the property `AD_GROUP_ID` - The ID of the ad group that this metrics belongs to.
+        // to test the property `AD_GROUP_ID` - The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
         should("test AD_GROUP_ID") {
             // uncomment below to test the property
             //modelInstance.AD_GROUP_ID shouldBe ("TODO")

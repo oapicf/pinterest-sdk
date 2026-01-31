@@ -36,12 +36,13 @@ data class PlacementMultipliers (
     /**
      * 
      *
-     * Values: SEARCH,BROWSE
+     * Values: SEARCH,BROWSE,RELATED_PINS
      */
     @JsonClass(generateAdapter = false)
     enum class PLACEMENT(val value: kotlin.String) {
         @Json(name = "SEARCH") SEARCH("SEARCH"),
-        @Json(name = "BROWSE") BROWSE("BROWSE");
+        @Json(name = "BROWSE") BROWSE("BROWSE"),
+        @Json(name = "RELATED_PINS") RELATED_PINS("RELATED_PINS");
     }
 
 }

@@ -11,13 +11,13 @@ import scala.collection.immutable.Seq
 
 /**
  * A specific quiz inquiry.
+ * @param options 
  * @param questionUnderscoreid 
  * @param questionUnderscoretext 
- * @param options 
  */
-case class QuizPinQuestion(questionUnderscoreid: Option[BigDecimal],
-                questionUnderscoretext: Option[String],
-                options: Option[Seq[QuizPinOption]]
+case class QuizPinQuestion(options: Option[Seq[QuizPinOption]],
+                questionUnderscoreid: Option[BigDecimal],
+                questionUnderscoretext: Option[String]
                 )
 
 object QuizPinQuestion {

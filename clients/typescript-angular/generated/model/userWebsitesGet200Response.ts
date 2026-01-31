@@ -11,7 +11,7 @@ import { UserWebsiteSummary } from './userWebsiteSummary';
 
 
 export interface UserWebsitesGet200Response { 
-    items: Array<UserWebsiteSummary>;
     bookmark?: string | null;
+    items: Array<UserWebsiteSummary>;
 }
 

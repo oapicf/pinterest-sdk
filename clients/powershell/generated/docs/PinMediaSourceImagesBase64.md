@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **String** |  | [optional] 
-**Items** | [**PinMediaSourceImagesBase64ItemsInner[]**](PinMediaSourceImagesBase64ItemsInner.md) | Array with image objects. | 
 **Index** | **Int32** |  | [optional] 
+**Items** | [**PinMediaSourceImagesBase64Item[]**](PinMediaSourceImagesBase64Item.md) | Array with image objects. | 
+**SourceType** | **String** | The source type of the media. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaSourceImagesBase64 = Initialize-PSOpenAPIToolsPinMediaSourceImagesBase64  -SourceType null `
+$PinMediaSourceImagesBase64 = Initialize-PSOpenAPIToolsPinMediaSourceImagesBase64  -Index null `
  -Items null `
- -Index null
+ -SourceType null
 ```
 
 - Convert the resource to JSON

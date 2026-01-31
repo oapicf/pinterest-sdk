@@ -22,15 +22,15 @@ advanced_auction_bid_options_t* instantiate_advanced_auction_bid_options(int inc
   advanced_auction_bid_options_t* advanced_auction_bid_options = NULL;
   if (include_optional) {
     advanced_auction_bid_options = advanced_auction_bid_options_create(
-      5000000,
       {"android_mobile":1.1,"android_tablet":1.1,"ipad":1.2,"iphone":1.2,"web":0.9,"web_mobile":0.8},
-      {"browse":0.9,"search":1.2}
+      5000000,
+      {"browse":0.9,"search":1.2,"related_pins":1.1}
     );
   } else {
     advanced_auction_bid_options = advanced_auction_bid_options_create(
-      5000000,
       {"android_mobile":1.1,"android_tablet":1.1,"ipad":1.2,"iphone":1.2,"web":0.9,"web_mobile":0.8},
-      {"browse":0.9,"search":1.2}
+      5000000,
+      {"browse":0.9,"search":1.2,"related_pins":1.1}
     );
   }
 

@@ -6,16 +6,19 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.AssetGroupBinding
+import org.openapitools.models.GetBusinessAssetsResponseCatalogInfo
 
 /**
  * An object containing the permissions a business has on the asset.
- * @param assetUnderscoreid Unique identifier of a business asset.
- * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
  * @param assetUnderscoregroupUnderscoreinfo 
+ * @param assetUnderscoreid Unique identifier of a business asset.
+ * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param catalogUnderscoreinfo 
  */
-case class GetBusinessAssetsResponse(assetUnderscoreid: Option[String],
+case class GetBusinessAssetsResponse(assetUnderscoregroupUnderscoreinfo: Option[AssetGroupBinding],
+                assetUnderscoreid: Option[String],
                 assetUnderscoretype: Option[String],
-                assetUnderscoregroupUnderscoreinfo: Option[AssetGroupBinding]
+                catalogUnderscoreinfo: Option[GetBusinessAssetsResponseCatalogInfo]
                 )
 
 object GetBusinessAssetsResponse {

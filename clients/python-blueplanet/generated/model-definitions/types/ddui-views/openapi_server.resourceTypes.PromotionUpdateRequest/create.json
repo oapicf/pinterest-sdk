@@ -1,0 +1,28 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "discount_status" },
+      {"model": "end_time" },
+      {"model": "external_id" },
+      {"model": "platform_type" },
+      {"model": "promotion_code" },
+      {"model": "promotion_custom_id" },
+      {"model": "promotion_title" },
+      {"model": "promotion_type" },
+      {"model": "start_time" },
+      {"model": "template_values" },
+      {"model": "id" },
+      {"model": "status" },
+    ]
+  }]
+}

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;CatalogsItemValidationIssues&gt;**](CatalogsItemValidationIssues.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;CatalogsItemValidationIssues&gt;**](CatalogsItemValidationIssues.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { ItemsIssuesList200Response } from './api';
 
 const instance: ItemsIssuesList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

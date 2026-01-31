@@ -5,18 +5,18 @@
 --
 
 CREATE TABLE IF NOT EXISTS `Account` (
-  `account_type` text /*Type of account*/,
-  `id` text PRIMARY KEY /*User account ID.*/,
-  `profile_image` text,
-  `website_url` text,
-  `username` text,
   `about` text /*Profile about description.*/,
-  `business_name` text,
+  `account_type` text /*Type of account*/,
   `board_count` int /*User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.*/,
-  `pin_count` int /*User account pin count. This includes both created and saved pins.*/,
+  `business_name` text,
   `follower_count` int /*User account follower count.*/,
   `following_count` int /*User account following count.*/,
-  `monthly_views` int /*User account monthly views.*/
+  `id` text PRIMARY KEY /*User account ID.*/,
+  `monthly_views` int /*User account monthly views.*/,
+  `pin_count` int /*User account pin count. This includes both created and saved pins.*/,
+  `profile_image` text,
+  `username` text,
+  `website_url` text
 ); 
 
 
@@ -25,13 +25,13 @@ CREATE TABLE IF NOT EXISTS `Account` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdAccount` (
-  `id` text PRIMARY KEY,
-  `name` text,
-  `owner` long,
+  `id` text NOT NULL PRIMARY KEY,
   `country` long,
+  `created_time` int /* Creation time. Unix timestamp in seconds.*/,
   `currency` long,
-  `created_time` int /*Creation time. Unix timestamp in seconds.*/,
-  `updated_time` int /*Last update time. Unix timestamp in seconds.*/
+  `name` text /*Ad account name.*/,
+  `owner` long /*Ad account owner*/,
+  `updated_time` int
 ); 
 
 -- --------------------------------------------------------------------------
@@ -54,14 +54,16 @@ CREATE TABLE IF NOT EXISTS `AdAccountAnalyticsResponse_inner` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdAccountCreateRequest` generated from model 'adAccountCreateRequest'
+-- Table structure for table `AdAccountCreate` generated from model 'adAccountCreate'
+-- Resource create operation model.
 --
 
-CREATE TABLE IF NOT EXISTS `AdAccountCreateRequest` (
+CREATE TABLE IF NOT EXISTS `AdAccountCreate` (
   `country` long,
-  `name` text /*Ad Account name.*/,
+  `currency` long,
+  `name` text /*Ad account name.*/,
   `owner_user_id` text /*Advertiser&#39;s owning user ID.*/
-); 
+);  /*Resource create operation model.*/
 
 
 -- --------------------------------------------------------------------------
@@ -72,8 +74,8 @@ CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionRequest` (
   `webhook_url` text NOT NULL /*Standard HTTPS webhook URL.*/,
   `lead_form_id` text /*Lead form ID.*/,
   `partner_access_token` text /*Partner access token. Only for clients that requires authentication. We recommend to avoid this param.*/,
-  `partner_refresh_token` text /*Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.*/,
-  `partner_metadata` long
+  `partner_metadata` long,
+  `partner_refresh_token` text /*Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.*/
 ); 
 
 
@@ -92,10 +94,15 @@ CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionRequest_partner_metadata`
 --
 
 CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionResponse` (
-  `id` text PRIMARY KEY /*Subscription ID.*/,
-  `cryptographic_key` text /*Base64 encoded key for client to decrypt lead data.*/,
+  `ad_account_id` text /*The Ad Account ID that this lead form belongs to.*/,
+  `api_version` text /*API version.*/,
+  `created_time` int /*Subscription creation time. Unix timestamp in milliseconds.*/,
   `cryptographic_algorithm` text /*Lead data encryption algorithm.*/,
-  `created_time` int /*Subscription creation time. Unix timestamp in milliseconds.*/
+  `cryptographic_key` text /*Base64 encoded key for client to decrypt lead data.*/,
+  `id` text PRIMARY KEY /*Subscription ID.*/,
+  `lead_form_id` text /*Lead form ID.*/,
+  `user_account_id` text /*User account used to subscribe lead data.*/,
+  `webhook_url` text /*Standard HTTPS webhook URL.*/
 ); 
 
 
@@ -106,23 +113,23 @@ CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionResponse` (
 CREATE TABLE IF NOT EXISTS `AdAccountGetSubscriptionResponse` (
   `lead_form_id` text /*Lead form ID.*/,
   `webhook_url` text /*Standard HTTPS webhook URL.*/,
-  `id` text PRIMARY KEY /*Subscription ID.*/,
-  `user_account_id` text /*User account used to subscribe lead data.*/,
   `ad_account_id` text /*The Ad Account ID that this lead form belongs to.*/,
   `api_version` text /*API version.*/,
-  `cryptographic_key` text /*Base64 encoded key for client to decrypt lead data.*/,
+  `created_time` int /*Lead subscription creation time. Unix timestamp in milliseconds.*/,
   `cryptographic_algorithm` text /*Lead data encryption algorithm.*/,
-  `created_time` int /*Lead form creation time. Unix timestamp in milliseconds.*/
+  `cryptographic_key` text /*Base64 encoded key for client to decrypt lead data.*/,
+  `id` text PRIMARY KEY /*Subscription ID.*/,
+  `user_account_id` text /*User account used to subscribe lead data.*/
 ); 
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `Ad_account_owner` generated from model 'adAccountOwner'
+-- Table structure for table `AdAccountOwner` generated from model 'adAccountOwner'
 --
 
-CREATE TABLE IF NOT EXISTS `Ad_account_owner` (
-  `username` text /*Public username for the user account*/,
-  `id` text PRIMARY KEY /*The owning account&#39;s user ID.*/
+CREATE TABLE IF NOT EXISTS `AdAccountOwner` (
+  `id` text PRIMARY KEY /*The owning account&#39;s user ID.*/,
+  `username` text /*Public username for the user account*/
 ); 
 
 
@@ -197,11 +204,11 @@ CREATE TABLE IF NOT EXISTS `ad_accounts_subscriptions_get_list_200_response` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdAccountsSubscriptionsGetList200ResponseAdAccountGetSubscriptionResponse` generated from model 'AdAccountsSubscriptionsGetList200ResponseAdAccountGetSubscriptionResponse'
+-- Table structure for table `AdAccountsSubscriptionsGetList200ResponseLeadSubscription` generated from model 'AdAccountsSubscriptionsGetList200ResponseLeadSubscription'
 
-CREATE TABLE IF NOT EXISTS `AdAccountsSubscriptionsGetList200ResponseAdAccountGetSubscriptionResponse` (
+CREATE TABLE IF NOT EXISTS `AdAccountsSubscriptionsGetList200ResponseLeadSubscription` (
   `adAccountsSubscriptionsGetList200Response` long NOT NULL
-  `adAccountGetSubscriptionResponse` long NOT NULL
+  `leadSubscription` long NOT NULL
 );
 
 
@@ -241,18 +248,20 @@ CREATE TABLE IF NOT EXISTS `AdCommon` (
   `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `creative_type` long,
+  `customizable_cta_type` long,
   `destination_url` text /*Destination URL.*/,
+  `disclosure_type` long,
+  `disclosure_url` text /*URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.*/,
+  `grid_click_type` long,
   `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
+  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `name` text /*Name of the ad - 255 chars max.*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `status` long,
   `tracking_urls` long,
-  `view_tracking_url` text /*Tracking URL for ad impressions.*/,
-  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
-  `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/
+  `view_tracking_url` text /*Tracking URL for ad impressions.*/
 );  /*Creation fields*/
 
 -- --------------------------------------------------------------------------
@@ -290,18 +299,20 @@ CREATE TABLE IF NOT EXISTS `AdCreateRequest` (
   `pin_id` text NOT NULL /*Pin ID.*/,
   `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
+  `customizable_cta_type` long,
   `destination_url` text /*Destination URL.*/,
+  `disclosure_type` long,
+  `disclosure_url` text /*URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.*/,
+  `grid_click_type` long,
   `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
+  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `name` text /*Name of the ad - 255 chars max.*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `status` long,
   `tracking_urls` long,
-  `view_tracking_url` text /*Tracking URL for ad impressions.*/,
-  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
-  `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/
+  `view_tracking_url` text /*Tracking URL for ad impressions.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -367,9 +378,9 @@ CREATE TABLE IF NOT EXISTS `AdGroupArrayResponseElementException` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdGroupAudienceSizingRequest` (
-  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.*/,
   `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
-  `targeting_spec` long,
+  `targeting_spec` long
 ); 
 
 -- --------------------------------------------------------------------------
@@ -381,19 +392,19 @@ CREATE TABLE IF NOT EXISTS `AdGroupAudienceSizingRequestCreativeTypes` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdGroupAudienceSizingRequestProductGroupIds` generated from model 'AdGroupAudienceSizingRequestProductGroupIds'
-
-CREATE TABLE IF NOT EXISTS `AdGroupAudienceSizingRequestProductGroupIds` (
-  `adGroupAudienceSizingRequest` long NOT NULL
-  `productGroupIds` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
 -- Table structure for table `AdGroupAudienceSizingRequestAdGroupAudienceSizingRequestKeywordsInner` generated from model 'AdGroupAudienceSizingRequestAdGroupAudienceSizingRequestKeywordsInner'
 
 CREATE TABLE IF NOT EXISTS `AdGroupAudienceSizingRequestAdGroupAudienceSizingRequestKeywordsInner` (
   `adGroupAudienceSizingRequest` long NOT NULL
   `adGroupAudienceSizingRequestKeywordsInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdGroupAudienceSizingRequestProductGroupIds` generated from model 'AdGroupAudienceSizingRequestProductGroupIds'
+
+CREATE TABLE IF NOT EXISTS `AdGroupAudienceSizingRequestProductGroupIds` (
+  `adGroupAudienceSizingRequest` long NOT NULL
+  `productGroupIds` text NOT NULL
 );
 
 
@@ -422,23 +433,26 @@ CREATE TABLE IF NOT EXISTS `AdGroupAudienceSizingResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdGroupCommon` (
-  `name` text /*Ad group name.*/,
-  `status` long /*Ad group/entity status.*/,
-  `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
-  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
-  `budget_type` long,
-  `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
-  `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
-  `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
-  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
-  `pacing_delivery_type` long,
-  `campaign_id` text /*Campaign ID of the ad group.*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.*/,
+  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.*/,
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.*/,
   `billable_event` long,
-  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
+  `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
+  `budget_type` long,
+  `campaign_id` text /*Campaign ID of the ad group.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `is_creative_optimization` boolean /*Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.*/,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `name` text /*Ad group name.*/,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
+  `pacing_delivery_type` long,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `promotion_application_level` text /*Specify if the promotion is applied at ad group or item level*/,
+  `promotion_id` text /*Promotion ID. To clear this field, set to null.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `status` long /*Ad group/entity status.*/,
+  `targeting_spec` long,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -455,23 +469,27 @@ CREATE TABLE IF NOT EXISTS `AdGroupCommonTargetingTemplateIds` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdGroupCreateRequest` (
-  `name` text NOT NULL /*Ad group name.*/,
-  `campaign_id` text NOT NULL /*Campaign ID of the ad group.*/,
   `billable_event` long NOT NULL,
-  `status` long /*Ad group/entity status.*/,
+  `campaign_id` text NOT NULL /*Campaign ID of the ad group.*/,
+  `name` text NOT NULL /*Ad group name.*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.*/,
+  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.*/,
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.*/,
   `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
-  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
   `budget_type` long,
-  `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
-  `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
-  `targeting_spec` long,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `is_creative_optimization` boolean /*Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.*/,
   `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
-  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group.Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
   `pacing_delivery_type` long,
-  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `promotion_application_level` text /*Specify if the promotion is applied at ad group or item level*/,
+  `promotion_id` text /*Promotion ID. To clear this field, set to null.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `status` long /*Ad group/entity status.*/,
+  `targeting_spec` long,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
+  `bid_multiplier` decimal /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -484,36 +502,56 @@ CREATE TABLE IF NOT EXISTS `AdGroupCreateRequestTargetingTemplateIds` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `AdGroupIdFilter` generated from model 'adGroupIdFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `AdGroupIdFilter` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdGroupIdFilterAdGroupIds` generated from model 'AdGroupIdFilterAdGroupIds'
+
+CREATE TABLE IF NOT EXISTS `AdGroupIdFilterAdGroupIds` (
+  `adGroupIdFilter` long NOT NULL
+  `adGroupIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `AdGroupResponse` generated from model 'adGroupResponse'
 --
 
 CREATE TABLE IF NOT EXISTS `AdGroupResponse` (
-  `name` text /*Ad group name.*/,
-  `status` long /*Ad group/entity status.*/,
-  `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
-  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
-  `budget_type` long,
-  `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
-  `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
-  `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
-  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
-  `pacing_delivery_type` long,
-  `campaign_id` text /*Campaign ID of the ad group.*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.*/,
+  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.*/,
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.*/,
   `billable_event` long,
-  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
-  `id` text PRIMARY KEY /*Ad group ID.*/,
+  `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
+  `budget_type` long,
+  `campaign_id` text /*Campaign ID of the ad group.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `is_creative_optimization` boolean /*Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.*/,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `name` text /*Ad group name.*/,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
+  `pacing_delivery_type` long,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `promotion_application_level` text /*Specify if the promotion is applied at ad group or item level*/,
+  `promotion_id` text /*Promotion ID. To clear this field, set to null.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `status` long /*Ad group/entity status.*/,
+  `targeting_spec` long,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
   `ad_account_id` text /*Advertiser ID.*/,
-  `created_time` int /*Ad group creation time. Unix timestamp in seconds.*/,
-  `updated_time` int /*Ad group last update time. Unix timestamp in seconds.*/,
-  `type` text /*Always \&quot;adgroup\&quot;.*/,
+  `bid_multiplier` decimal /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.*/,
   `conversion_learning_mode_type` text /*oCPM learn mode*/,
-  `summary_status` long /*Ad group summary status.*/,
+  `created_time` int /*Ad group creation time. Unix timestamp in seconds.*/,
+  `dca_assets` blob /*[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.*/,
   `feed_profile_id` text /*Feed Profile ID associated to the adgroup.*/,
-  `dca_assets` blob /*[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.*/
+  `id` text PRIMARY KEY /*Ad group ID.*/,
+  `summary_status` long /*Ad group summary status.*/,
+  `type` text /*Always \&quot;adgroup\&quot;.*/,
+  `updated_time` int /*Ad group last update time. Unix timestamp in seconds.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -531,23 +569,27 @@ CREATE TABLE IF NOT EXISTS `AdGroupResponseTargetingTemplateIds` (
 
 CREATE TABLE IF NOT EXISTS `AdGroupUpdateRequest` (
   `id` text NOT NULL PRIMARY KEY /*Ad group ID.*/,
-  `name` text /*Ad group name.*/,
-  `status` long /*Ad group/entity status.*/,
-  `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
-  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
-  `budget_type` long,
-  `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
-  `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
-  `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
-  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
-  `pacing_delivery_type` long,
-  `campaign_id` text /*Campaign ID of the ad group.*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.*/,
+  `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.*/,
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.*/,
   `billable_event` long,
-  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
+  `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
+  `budget_type` long,
+  `campaign_id` text /*Campaign ID of the ad group.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `is_creative_optimization` boolean /*Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.*/,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `name` text /*Ad group name.*/,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
+  `pacing_delivery_type` long,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `promotion_application_level` text /*Specify if the promotion is applied at ad group or item level*/,
+  `promotion_id` text /*Promotion ID. To clear this field, set to null.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.*/,
+  `status` long /*Ad group/entity status.*/,
+  `targeting_spec` long,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
+  `bid_multiplier` decimal /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -564,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `AdGroupUpdateRequestTargetingTemplateIds` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdGroupsAnalyticsResponse_inner` (
-  `AD_GROUP_ID` text NOT NULL /*The ID of the ad group that this metrics belongs to.*/,
+  `AD_GROUP_ID` text /*The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.*/,
   `DATE` date /*Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)*/
 ); 
 
@@ -584,6 +626,16 @@ CREATE TABLE IF NOT EXISTS `AdGroupsList200ResponseAdGroupResponse` (
   `adGroupsList200Response` long NOT NULL
   `adGroupResponse` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdPinAnalytics` generated from model 'adPinAnalytics'
+--
+
+CREATE TABLE IF NOT EXISTS `AdPinAnalytics` (
+  `PIN_ID` text NOT NULL /*The ID of the pin that the metric belongs to.*/,
+  `DATE` date /*Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)*/
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -621,7 +673,35 @@ CREATE TABLE IF NOT EXISTS `AdPreviewCreateFromPin` (
 CREATE TABLE IF NOT EXISTS `AdPreviewRequest` (
   `image_url` text NOT NULL /*Image URL.*/,
   `title` text NOT NULL /*Title displayed below ad.*/,
-  `pin_id` text NOT NULL /*Pin ID.*/
+  `pin_id` text NOT NULL /*Pin ID.*/,
+  `catalog_product_group_id` text NOT NULL /*Catalog Product Group Id.*/,
+  `creative_type` text NOT NULL /*Ad format of the shopping ad preview.*/,
+  `customizable_cta_type` long /*Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60;*/,
+  `hero_image_title` text /*Title displayed below ad.*/,
+  `hero_image_url` text /*Hero image URL.*/,
+  `hero_pin_id` text /*Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.*/,
+  `image_tag` text /*Multi image template tag.*/,
+  `item_id` text /*Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.*/,
+  `preferred_media_type` text /*Preferred media type.*/,
+  `video_tag` text /*Multi video template tag, image_tag and video_tag are mutual exclusive.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdPreviewShopping` generated from model 'adPreviewShopping'
+--
+
+CREATE TABLE IF NOT EXISTS `AdPreviewShopping` (
+  `catalog_product_group_id` text NOT NULL /*Catalog Product Group Id.*/,
+  `creative_type` text NOT NULL /*Ad format of the shopping ad preview.*/,
+  `customizable_cta_type` long /*Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60;*/,
+  `hero_image_title` text /*Title displayed below ad.*/,
+  `hero_image_url` text /*Hero image URL.*/,
+  `hero_pin_id` text /*Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.*/,
+  `image_tag` text /*Multi image template tag.*/,
+  `item_id` text /*Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.*/,
+  `preferred_media_type` text /*Preferred media type.*/,
+  `video_tag` text /*Multi video template tag, image_tag and video_tag are mutual exclusive.*/
 ); 
 
 
@@ -643,18 +723,20 @@ CREATE TABLE IF NOT EXISTS `AdResponse` (
   `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `creative_type` long,
+  `customizable_cta_type` long,
   `destination_url` text /*Destination URL.*/,
+  `disclosure_type` long,
+  `disclosure_url` text /*URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.*/,
+  `grid_click_type` long,
   `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
+  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `name` text /*Name of the ad - 255 chars max.*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `status` long,
   `tracking_urls` long,
   `view_tracking_url` text /*Tracking URL for ad impressions.*/,
-  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
-  `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `pin_id` text /*Pin ID.*/,
   `ad_account_id` text /*The ID of the advertiser that this ad belongs to.*/,
   `campaign_id` text /*ID of the ad campaign that contains this ad.*/,
@@ -662,9 +744,9 @@ CREATE TABLE IF NOT EXISTS `AdResponse` (
   `created_time` int /*Pin creation time. Unix timestamp in seconds.*/,
   `id` text PRIMARY KEY /*The ID of this ad.*/,
   `review_status` text /*Ad review status*/,
+  `summary_status` long /*Ad summary status*/,
   `type` text /*Always \&quot;ad\&quot;.*/,
-  `updated_time` int /*Last update time. Unix timestamp in seconds.*/,
-  `summary_status` long /*Ad summary status*/
+  `updated_time` int /*Last update time. Unix timestamp in seconds.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -718,18 +800,20 @@ CREATE TABLE IF NOT EXISTS `AdUpdateRequest` (
   `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `creative_type` long,
+  `customizable_cta_type` long,
   `destination_url` text /*Destination URL.*/,
+  `disclosure_type` long,
+  `disclosure_url` text /*URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.*/,
+  `grid_click_type` long,
   `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
+  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `name` text /*Name of the ad - 255 chars max.*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `status` long,
   `tracking_urls` long,
   `view_tracking_url` text /*Tracking URL for ad impressions.*/,
-  `lead_form_id` text /*Lead form ID for lead ad generation.*/,
-  `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `pin_id` text /*Pin ID. This field may only be updated for draft ads.*/
 ); 
 
@@ -763,18 +847,21 @@ CREATE TABLE IF NOT EXISTS `AdUpdateRequestCarouselIosDeepLinks` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequest` (
-  `start_date` text NOT NULL /*Metric report start date (UTC). Format: YYYY-MM-DD*/,
   `end_date` text NOT NULL /*Metric report end date (UTC). Format: YYYY-MM-DD*/,
   `granularity` long NOT NULL /*TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly*/,
+  `start_date` text NOT NULL /*Metric report start date (UTC). Format: YYYY-MM-DD*/,
   `level` long NOT NULL /*Level of the report*/,
   `click_window_days` long /*Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.*/,
+  `conversion_report_time` long /*The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.*/,
   `engagement_window_days` long /*Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.*/,
   `view_window_days` long /*Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.*/,
-  `conversion_report_time` long /*The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.*/,
-  `report_format` long /*Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.*/,
+  `campaign_brand_label` text /*Campaign brand label for filtering.*/,
+  `combine_targeting_types` boolean /*Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&amp;US. This feature is currently in BETA and is not available to all users.*/,
+  `end_hour` int UNSIGNED /*Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.*/,
   `primary_sort` text /*Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.*/,
-  `start_hour` int UNSIGNED /*Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.*/,
-  `end_hour` int UNSIGNED /*Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.*/
+  `report_format` long /*Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.*/,
+  `reporting_timezone` long /*Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.*/,
+  `start_hour` int UNSIGNED /*Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -874,11 +961,11 @@ CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequestProductItemIds` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdsAnalyticsCreateAsyncRequestAdsAnalyticsTargetingType` generated from model 'AdsAnalyticsCreateAsyncRequestAdsAnalyticsTargetingType'
+-- Table structure for table `AdsAnalyticsCreateAsyncRequestTargetingTypes` generated from model 'AdsAnalyticsCreateAsyncRequestTargetingTypes'
 
-CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequestAdsAnalyticsTargetingType` (
+CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequestTargetingTypes` (
   `adsAnalyticsCreateAsyncRequest` long NOT NULL
-  `adsAnalyticsTargetingType` long NOT NULL
+  `targetingTypes` text NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -889,15 +976,33 @@ CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequestAdsAnalyticsMetricsFil
   `adsAnalyticsMetricsFilter` long NOT NULL
 );
 
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdsAnalyticsCreateAsyncRequestAdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics` generated from model 'AdsAnalyticsCreateAsyncRequestAdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics'
+
+CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequestAdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics` (
+  `adsAnalyticsCreateAsyncRequest` long NOT NULL
+  `adsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics` generated from model 'adsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics'
+--
+
+CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics` (
+  `custom_event_metrics_type` text NOT NULL /*Metrics for custom defined conversion event.*/,
+  `custom_event_name` text NOT NULL /*Name of the advertiser-defined custom conversion event*/
+); 
+
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AdsAnalyticsCreateAsyncResponse` generated from model 'adsAnalyticsCreateAsyncResponse'
 --
 
 CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncResponse` (
+  `message` text,
   `report_status` long,
-  `token` text,
-  `message` text
+  `token` text
 ); 
 
 
@@ -907,8 +1012,8 @@ CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncResponse` (
 
 CREATE TABLE IF NOT EXISTS `AdsAnalyticsGetAsyncResponse` (
   `report_status` long,
-  `url` text,
-  `size` decimal
+  `size` decimal,
+  `url` text
 ); 
 
 
@@ -947,11 +1052,11 @@ CREATE TABLE IF NOT EXISTS `AdsAnalyticsResponse_inner` (
 CREATE TABLE IF NOT EXISTS `AdsCreditDiscountsResponse` (
   `active` boolean /*True if the offer code is currently active.*/,
   `advertiser_id` text /*Advertiser ID the offer was applied to.*/,
-  `discountType` text /*The type of discount of this credit*/,
-  `discountInMicroCurrency` decimal /*The discount applied in the offer’s currency value.*/,
   `discountCurrency` text /*Currency value for the discount.*/,
-  `title` text /*Human readable title of the offer code.*/,
-  `remainingDiscountInMicroCurrency` decimal /*The credits left to spend.*/
+  `discountInMicroCurrency` decimal /*The discount applied in the offer’s currency value.*/,
+  `discountType` text /*The type of discount of this credit*/,
+  `remainingDiscountInMicroCurrency` decimal /*The credits left to spend.*/,
+  `title` text /*Human readable title of the offer code.*/
 ); 
 
 
@@ -970,9 +1075,9 @@ CREATE TABLE IF NOT EXISTS `AdsCreditRedeemRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdsCreditRedeemResponse` (
-  `success` boolean /*Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).*/,
   `errorCode` int /*Error code type if error occurs*/,
-  `errorMessage` text /*Reason for failure*/
+  `errorMessage` text /*Reason for failure*/,
+  `success` boolean /*Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).*/
 ); 
 
 
@@ -1016,8 +1121,8 @@ CREATE TABLE IF NOT EXISTS `AdsList200ResponseAdResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionBidOptions` (
-  `bid_in_micro_currency` long /*Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.*/,
   `app_type_multipliers` long,
+  `bid_in_micro_currency` long /*Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.*/,
   `placement_multipliers` long
 );  /*Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).*/
 
@@ -1027,8 +1132,8 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionBidOptions` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionItem` (
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `country` long NOT NULL,
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `language` long NOT NULL,
   `bid_options` long NOT NULL
 ); 
@@ -1058,8 +1163,8 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsAdvancedAuctionItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRecord` (
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `country` long NOT NULL,
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `language` long NOT NULL
 );  /*Object uniquely identifying a retail catalog item*/
 
@@ -1088,10 +1193,18 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRequestAdvancedAuctionItemsGe
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitDeleteRecord` (
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `country` long NOT NULL,
-  `language` long NOT NULL
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `language` long NOT NULL,
 );  /*Object describing an item bid option deletion operation*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitDeleteRecordAdvancedAuctionOperationError` generated from model 'AdvancedAuctionItemsSubmitDeleteRecordAdvancedAuctionOperationError'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitDeleteRecordAdvancedAuctionOperationError` (
+  `advancedAuctionItemsSubmitDeleteRecord` long NOT NULL
+  `advancedAuctionOperationError` long NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -1100,8 +1213,8 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitDeleteRecord` (
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecord` (
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `country` long NOT NULL,
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `language` long NOT NULL,
   `bid_options` long NOT NULL,
 );  /*Object describing an item bid option operation*/
@@ -1112,6 +1225,14 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecord` (
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecordUpdateMaskBidOptionField` (
   `advancedAuctionItemsSubmitRecord` long NOT NULL
   `updateMaskBidOptionField` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitRecordAdvancedAuctionOperationError` generated from model 'AdvancedAuctionItemsSubmitRecordAdvancedAuctionOperationError'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecordAdvancedAuctionOperationError` (
+  `advancedAuctionItemsSubmitRecord` long NOT NULL
+  `advancedAuctionOperationError` long NOT NULL
 );
 
 
@@ -1139,8 +1260,8 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRequestAdvancedAuctionItem
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecord` (
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `country` long NOT NULL,
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `language` long NOT NULL,
   `bid_options` long NOT NULL,
 );  /*Object describing an item bid option upsert operation*/
@@ -1153,6 +1274,14 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecordUpdateMaskBidO
   `updateMaskBidOptionField` long NOT NULL
 );
 
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitUpsertRecordAdvancedAuctionOperationError` generated from model 'AdvancedAuctionItemsSubmitUpsertRecordAdvancedAuctionOperationError'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecordAdvancedAuctionOperationError` (
+  `advancedAuctionItemsSubmitUpsertRecord` long NOT NULL
+  `advancedAuctionOperationError` long NOT NULL
+);
+
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AdvancedAuctionKey` generated from model 'advancedAuctionKey'
@@ -1160,8 +1289,8 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecordUpdateMaskBidO
 --
 
 CREATE TABLE IF NOT EXISTS `AdvancedAuctionKey` (
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `country` long NOT NULL,
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
   `language` long NOT NULL
 );  /*Object uniquely identifying a retail catalog item*/
 
@@ -1178,36 +1307,6 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionOperationError` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdvancedAuctionProcessedItem` generated from model 'advancedAuctionProcessedItem'
--- Object describing the result of an operation on an item bid option
---
-
-CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItem` (
-  `operation` long NOT NULL,
-  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
-  `country` long NOT NULL,
-  `language` long NOT NULL,
-  `bid_options` long NOT NULL,
-);  /*Object describing the result of an operation on an item bid option*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdvancedAuctionProcessedItemUpdateMaskBidOptionField` generated from model 'AdvancedAuctionProcessedItemUpdateMaskBidOptionField'
-
-CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemUpdateMaskBidOptionField` (
-  `advancedAuctionProcessedItem` long NOT NULL
-  `updateMaskBidOptionField` long NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdvancedAuctionProcessedItemAdvancedAuctionOperationError` generated from model 'AdvancedAuctionProcessedItemAdvancedAuctionOperationError'
-
-CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemAdvancedAuctionOperationError` (
-  `advancedAuctionProcessedItem` long NOT NULL
-  `advancedAuctionOperationError` long NOT NULL
-);
-
-
--- --------------------------------------------------------------------------
 -- Table structure for table `AdvancedAuctionProcessedItems` generated from model 'advancedAuctionProcessedItems'
 -- Response object containing the results of an operation on an item bid option
 --
@@ -1217,12 +1316,70 @@ CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItems` (
 );  /*Response object containing the results of an operation on an item bid option*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdvancedAuctionProcessedItemsAdvancedAuctionProcessedItem` generated from model 'AdvancedAuctionProcessedItemsAdvancedAuctionProcessedItem'
+-- Table structure for table `AdvancedAuctionProcessedItemsAdvancedAuctionItemsSubmitRecord` generated from model 'AdvancedAuctionProcessedItemsAdvancedAuctionItemsSubmitRecord'
 
-CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemsAdvancedAuctionProcessedItem` (
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemsAdvancedAuctionItemsSubmitRecord` (
   `advancedAuctionProcessedItems` long NOT NULL
-  `advancedAuctionProcessedItem` long NOT NULL
+  `advancedAuctionItemsSubmitRecord` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvertiserDefinedEvent` generated from model 'advertiserDefinedEvent'
+--
+
+CREATE TABLE IF NOT EXISTS `AdvertiserDefinedEvent` (
+  `name` text /*raw string name of the event, usually logged as raw_event_name in our dataset*/,
+  `mapped_conversion_type` text /*standard type mapped to ADE for optimization*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvertiserDefinedEventsResponse` generated from model 'advertiserDefinedEventsResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `AdvertiserDefinedEventsResponse` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvertiserDefinedEventsResponseAdvertiserDefinedEvent` generated from model 'AdvertiserDefinedEventsResponseAdvertiserDefinedEvent'
+
+CREATE TABLE IF NOT EXISTS `AdvertiserDefinedEventsResponseAdvertiserDefinedEvent` (
+  `advertiserDefinedEventsResponse` long NOT NULL
+  `advertiserDefinedEvent` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `all_of` generated from model 'allOf'
+--
+
+CREATE TABLE IF NOT EXISTS `all_of` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AllOfCatalogsProductGroupFilterKeys` generated from model 'AllOfCatalogsProductGroupFilterKeys'
+
+CREATE TABLE IF NOT EXISTS `AllOfCatalogsProductGroupFilterKeys` (
+  `allOf` long NOT NULL
+  `catalogsProductGroupFilterKeys` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AmazonConnectRequest` generated from model 'amazonConnectRequest'
+-- Request containing OTP and Amazon storefront info called by Amazon
+--
+
+CREATE TABLE IF NOT EXISTS `AmazonConnectRequest` (
+  `amazon_storefront_name` text NOT NULL /*The Amazon storefront name*/,
+  `amazon_storefront_url` text NOT NULL /*The Amazon storefront url*/,
+  `is_amazon_account_linked` boolean NOT NULL /*The Amazon account linking status*/,
+  `amazon_storefront_id` text /*The Amazon storefront id*/,
+  `amazon_user_id` text /*The Amazon user id*/,
+  `one_time_passcode` text /*The one time passcode for Pinterest-initiated linking requests*/,
+  `pinterest_user_id` text /*The Pinterest user id for Amazon-initiated linking requests*/
+);  /*Request containing OTP and Amazon storefront info called by Amazon*/
 
 
 -- --------------------------------------------------------------------------
@@ -1241,7 +1398,7 @@ CREATE TABLE IF NOT EXISTS `AnalyticsDailyMetrics` (
 --
 
 CREATE TABLE IF NOT EXISTS `AnalyticsMetricsResponse` (
-  `summary_metrics` blob /*The metric name and value over the requested period for each requested metric*/,
+  `summary_metrics` blob /*The metric name and value over the requested period for each requested metric*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -1254,12 +1411,28 @@ CREATE TABLE IF NOT EXISTS `AnalyticsMetricsResponseAnalyticsDailyMetrics` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `any_of` generated from model 'anyOf'
+--
+
+CREATE TABLE IF NOT EXISTS `any_of` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AnyOfCatalogsProductGroupFilterKeys` generated from model 'AnyOfCatalogsProductGroupFilterKeys'
+
+CREATE TABLE IF NOT EXISTS `AnyOfCatalogsProductGroupFilterKeys` (
+  `anyOf` long NOT NULL
+  `catalogsProductGroupFilterKeys` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `AppTypeMultipliers` generated from model 'appTypeMultipliers'
 -- This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
 --
 
 CREATE TABLE IF NOT EXISTS `AppTypeMultipliers` (
-  `APP_TYPE` long
+  `APP_TYPE` text
 );  /*This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).*/
 
 
@@ -1268,14 +1441,22 @@ CREATE TABLE IF NOT EXISTS `AppTypeMultipliers` (
 --
 
 CREATE TABLE IF NOT EXISTS `AssetGroupBinding` (
-  `id` text PRIMARY KEY /*Asset Group ID.*/,
-  `asset_group_name` text /*Asset Group name*/,
   `asset_group_description` text /*Asset group description*/,
+  `asset_group_name` text /*Asset Group name*/,
+  `created_by` long /*The data of the user that created the asset group.*/,
   `created_time` int /*The creation time of the asset group*/,
-  `updated_time` int /*The last update time of the asset group*/,
+  `id` text PRIMARY KEY /*Asset Group ID.*/,
   `owner` long /*The data of the business that owns the asset group.*/,
-  `created_by` long /*The data of the user that created the asset group.*/
+  `updated_time` int /*The last update time of the asset group*/
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetGroupBindingAdAccountsIds` generated from model 'AssetGroupBindingAdAccountsIds'
+
+CREATE TABLE IF NOT EXISTS `AssetGroupBindingAdAccountsIds` (
+  `assetGroupBinding` long NOT NULL
+  `adAccountsIds` text NOT NULL
+);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AssetGroupBindingAssetGroupTypes` generated from model 'AssetGroupBindingAssetGroupTypes'
@@ -1286,11 +1467,11 @@ CREATE TABLE IF NOT EXISTS `AssetGroupBindingAssetGroupTypes` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AssetGroupBindingAdAccountsIds` generated from model 'AssetGroupBindingAdAccountsIds'
+-- Table structure for table `AssetGroupBindingCatalogsIds` generated from model 'AssetGroupBindingCatalogsIds'
 
-CREATE TABLE IF NOT EXISTS `AssetGroupBindingAdAccountsIds` (
+CREATE TABLE IF NOT EXISTS `AssetGroupBindingCatalogsIds` (
   `assetGroupBinding` long NOT NULL
-  `adAccountsIds` text NOT NULL
+  `catalogsIds` text NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -1308,9 +1489,9 @@ CREATE TABLE IF NOT EXISTS `AssetGroupBindingProfilesIds` (
 --
 
 CREATE TABLE IF NOT EXISTS `AssetIdPermissions` (
+  `asset_group_info` long,
   `asset_id` text /*Unique identifier of a business asset.*/,
-  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
-  `asset_group_info` long
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.*/,
 );  /*An object containing the permissions a business member has on the asset.*/
 
 -- --------------------------------------------------------------------------
@@ -1328,15 +1509,16 @@ CREATE TABLE IF NOT EXISTS `AssetIdPermissionsPermissions` (
 
 CREATE TABLE IF NOT EXISTS `Audience` (
   `ad_account_id` text /*Ad account ID.*/,
+  `audience_type` text /*&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR*/,
+  `created_by_company_name` text /*The company that created this audience.*/,
+  `created_timestamp` int /*Creation time. Unix timestamp in seconds.*/,
+  `description` text /*Audience description.*/,
   `id` text PRIMARY KEY /*Audience ID.*/,
   `name` text /*Audience name.*/,
-  `audience_type` text /*&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR*/,
-  `description` text /*Audience description.*/,
   `rule` long,
   `size` int /*Audience size.*/,
   `status` text /*Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.*/,
   `type` text /*Always \&quot;audience\&quot;.*/,
-  `created_timestamp` int /*Creation time. Unix timestamp in seconds.*/,
   `updated_timestamp` int /*Last update time. Unix timestamp in seconds.*/
 ); 
 
@@ -1346,11 +1528,11 @@ CREATE TABLE IF NOT EXISTS `Audience` (
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceCategory` (
+  `id` text PRIMARY KEY /*Interest ID.*/,
+  `index` decimal /*Interest affinity index.*/,
   `key` text /*Interest unique key (same as ID).*/,
   `name` text /*Interest name.*/,
   `ratio` decimal /*Interest&#39;s percent of category&#39;s total audience.*/,
-  `index` decimal /*Interest affinity index.*/,
-  `id` text PRIMARY KEY /*Interest ID.*/,
 ); 
 
 -- --------------------------------------------------------------------------
@@ -1374,20 +1556,6 @@ CREATE TABLE IF NOT EXISTS `AudienceCommon` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AudienceCreateCustomRequest` generated from model 'audienceCreateCustomRequest'
---
-
-CREATE TABLE IF NOT EXISTS `AudienceCreateCustomRequest` (
-  `name` text NOT NULL /*Audience name.*/,
-  `rule` long NOT NULL,
-  `sharing_type` long NOT NULL,
-  `data_party` long NOT NULL,
-  `ad_account_id` text /*Ad account ID.*/,
-  `category` text
-); 
-
-
--- --------------------------------------------------------------------------
 -- Table structure for table `AudienceCreateRequest` generated from model 'audienceCreateRequest'
 --
 
@@ -1407,8 +1575,8 @@ CREATE TABLE IF NOT EXISTS `AudienceCreateRequest` (
 
 CREATE TABLE IF NOT EXISTS `AudienceDefinition` (
   `date` text /*Generation date*/,
-  `type` text /*Generated audience type to request.*/,
-  `scope` text /*Generated audience scope to request.*/
+  `scope` text,
+  `type` text
 );  /*Queryable audience representation.*/
 
 
@@ -1426,6 +1594,26 @@ CREATE TABLE IF NOT EXISTS `AudienceDefinitionResponseAudienceDefinition` (
   `audienceDefinitionResponse` long NOT NULL
   `audienceDefinition` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AudienceDefinitionScope` generated from model 'audienceDefinitionScope'
+-- Generated audience scope to request.
+--
+
+CREATE TABLE IF NOT EXISTS `AudienceDefinitionScope` (
+  `scope` text
+);  /*Generated audience scope to request.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AudienceDefinitionType` generated from model 'audienceDefinitionType'
+-- Generated audience type to request.
+--
+
+CREATE TABLE IF NOT EXISTS `AudienceDefinitionType` (
+  `scope` text
+);  /*Generated audience type to request.*/
 
 
 -- --------------------------------------------------------------------------
@@ -1510,11 +1698,11 @@ CREATE TABLE IF NOT EXISTS `AudienceInsightCategoryArrayResponseAudienceInsightC
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceInsightCategoryCommon` (
+  `id` text PRIMARY KEY,
+  `index` decimal,
   `key` text,
   `name` text,
-  `ratio` decimal,
-  `index` decimal,
-  `id` text PRIMARY KEY
+  `ratio` decimal
 ); 
 
 
@@ -1524,11 +1712,11 @@ CREATE TABLE IF NOT EXISTS `AudienceInsightCategoryCommon` (
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceInsightsResponse` (
-  `demographics` long,
-  `type` long,
   `date` text /*Generation date*/,
+  `demographics` long,
   `size` int /*Population count.*/,
-  `size_is_upper_bound` boolean /*Indicates whether the audience size has been rounded up to the next highest upper boundary.*/
+  `size_is_upper_bound` boolean /*Indicates whether the audience size has been rounded up to the next highest upper boundary.*/,
+  `type` long
 );  /*Audience interests and demographics.*/
 
 -- --------------------------------------------------------------------------
@@ -1542,24 +1730,40 @@ CREATE TABLE IF NOT EXISTS `AudienceInsightsResponseAudienceCategory` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AudienceRule` generated from model 'audienceRule'
--- JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
+-- JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;Learn more about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\&quot; target&#x3D;\&quot;_blank\&quot;&gt;engagement audiences&lt;/a&gt;.
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceRule` (
+  `ad_account_id` text /*Ad account ID.*/,
   `country` text /*Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;.*/,
   `customer_list_id` text /*Customer list ID. For CUSTOMER_LIST &#x60;audience_type&#x60;.*/,
   `engagement_type` text /*Engagement type enum. Optional for ENGAGEMENT &#x60;audience_type&#x60;. Supported values are &#x60;click&#x60;, &#x60;save&#x60;, &#x60;closeup&#x60;, &#x60;comment&#x60; and &#x60;like&#x60;. All engagements are included if this field is not set. */,
+  `engager_type` int /*Optional for ENGAGEMENT. Engager type value should be 1-2.*/,
   `event` text /*A Pinterest tag event. Optional for VISITOR &#x60;audience_type&#x60;. Possible values are &#x60;pagevisit&#x60;, &#x60;signup&#x60;, &#x60;checkout&#x60;, &#x60;viewcategory&#x60;, &#x60;search&#x60;, &#x60;addtocart&#x60;, &#x60;watchvideo&#x60;, &#x60;lead&#x60;, and &#x60;custom&#x60;. This field also accepts a partner-defined Pinterest tag event.*/,
   `event_data` long,
+  `event_source` blob /*Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline*/,
+  `ingestion_source` blob /*Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api*/,
   `percentage` int /*Percentage should be 1-10. The targeted audience should be this % size across Pinterest.*/,
   `prefill` boolean /*Optional for VISITOR &#x60;audience_type&#x60;. If &#x60;true&#x60;, the specified rule on existing engagement data is applied to pre-populate the audience. If &#x60;false&#x60;, the audience is empty at creation time. The default is &#x60;true&#x60;.*/,
   `retention_days` int /*Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR &#x60;audience_type&#x60;. Accepted range is 1-540. Defaults to 180 if not specified.*/,
-  `visitor_source_id` text /*The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR &#x60;audience_type&#x60;.*/,
-  `event_source` blob /*Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline*/,
-  `ingestion_source` blob /*Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api*/,
-  `engager_type` int /*Optional for ENGAGEMENT. Engager type value should be 1-2.*/,
-  `ad_account_id` text /*Ad account ID.*/
-);  /*JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.*/
+  `visitor_source_id` text /*The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR &#x60;audience_type&#x60;.*/
+);  /*JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;Learn more about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\&quot; target&#x3D;\&quot;_blank\&quot;&gt;engagement audiences&lt;/a&gt;.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AudienceRuleAdId` generated from model 'AudienceRuleAdId'
+
+CREATE TABLE IF NOT EXISTS `AudienceRuleAdId` (
+  `audienceRule` long NOT NULL
+  `adId` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AudienceRuleCampaignId` generated from model 'AudienceRuleCampaignId'
+
+CREATE TABLE IF NOT EXISTS `AudienceRuleCampaignId` (
+  `audienceRule` long NOT NULL
+  `campaignId` text NOT NULL
+);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AudienceRuleEngagementDomain` generated from model 'AudienceRuleEngagementDomain'
@@ -1567,6 +1771,14 @@ CREATE TABLE IF NOT EXISTS `AudienceRule` (
 CREATE TABLE IF NOT EXISTS `AudienceRuleEngagementDomain` (
   `audienceRule` long NOT NULL
   `engagementDomain` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AudienceRuleObjectiveType` generated from model 'AudienceRuleObjectiveType'
+
+CREATE TABLE IF NOT EXISTS `AudienceRuleObjectiveType` (
+  `audienceRule` long NOT NULL
+  `objectiveType` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -1593,41 +1805,17 @@ CREATE TABLE IF NOT EXISTS `AudienceRuleUrl` (
   `url` text NOT NULL
 );
 
--- --------------------------------------------------------------------------
--- Table structure for table `AudienceRuleCampaignId` generated from model 'AudienceRuleCampaignId'
-
-CREATE TABLE IF NOT EXISTS `AudienceRuleCampaignId` (
-  `audienceRule` long NOT NULL
-  `campaignId` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AudienceRuleAdId` generated from model 'AudienceRuleAdId'
-
-CREATE TABLE IF NOT EXISTS `AudienceRuleAdId` (
-  `audienceRule` long NOT NULL
-  `adId` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AudienceRuleObjectiveType` generated from model 'AudienceRuleObjectiveType'
-
-CREATE TABLE IF NOT EXISTS `AudienceRuleObjectiveType` (
-  `audienceRule` long NOT NULL
-  `objectiveType` long NOT NULL
-);
-
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AudienceSubcategory` generated from model 'audienceSubcategory'
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceSubcategory` (
+  `id` text PRIMARY KEY /*Subinterest ID.*/,
+  `index` decimal /*Subinterest affinity index.*/,
   `key` text /*Interest unique key (same as ID).*/,
   `name` text /*Subinterest name.*/,
-  `ratio` decimal /*Subinterest&#39;s percent of category&#39;s total audience.*/,
-  `index` decimal /*Subinterest affinity index.*/,
-  `id` text PRIMARY KEY /*Subinterest ID.*/
+  `ratio` decimal /*Subinterest&#39;s percent of category&#39;s total audience.*/
 ); 
 
 
@@ -1772,11 +1960,11 @@ CREATE TABLE IF NOT EXISTS `BidFloorRequestBidFloorSpec` (
 --
 
 CREATE TABLE IF NOT EXISTS `BidFloorSpec` (
-  `currency` long NOT NULL,
   `billable_event` long NOT NULL,
+  `currency` long NOT NULL,
+  `creative_type` long,
   `objective_type` long,
-  `optimization_goal_metadata` long,
-  `creative_type` long
+  `optimization_goal_metadata` long
 ); 
 
 -- --------------------------------------------------------------------------
@@ -1785,6 +1973,56 @@ CREATE TABLE IF NOT EXISTS `BidFloorSpec` (
 CREATE TABLE IF NOT EXISTS `BidFloorSpecCountry` (
   `bidFloorSpec` long NOT NULL
   `country` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BillingInvoiceDownloadResponse` generated from model 'billingInvoiceDownloadResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `BillingInvoiceDownloadResponse` (
+  `download_url` text /*The download url for the billing invoice*/,
+  `id` text PRIMARY KEY /*The billing invoice id*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BillingInvoiceResponse` generated from model 'billingInvoiceResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `BillingInvoiceResponse` (
+  `ad_account_id` text /*The ID of the ad account this invoice belongs to*/,
+  `ad_account_name` text /*The name of the ad account this invoice belongs to*/,
+  `amount_billed_micro_currency` int /*The amount billed in this invoice. Denoted in micro currency*/,
+  `amount_discount_micro_currency` int /*The discount in this invoice. Denoted in micro currency*/,
+  `amount_net_micro_currency` int /*The net amount in this invoice. Denoted in micro currency*/,
+  `amount_tax_micro_currency` int /*The tax in this invoice. Denoted in micro currency*/,
+  `bill_to_country` text /*The country of the bill to address*/,
+  `billing_period_end_date` date /*The end date of the billing period. Format: YYYY-MM-DD*/,
+  `billing_period_start_date` date /*The start date of the billing period. Format: YYYY-MM-DD*/,
+  `currency` long,
+  `document_type` text /*The type of the document*/,
+  `id` text PRIMARY KEY /*Unique identifier for the billing invoice*/,
+  `invoice_due_date` date /*The date the invoice is due. Format: YYYY-MM-DD*/,
+  `payment_terms` text /*The payment terms of the invoice*/,
+  `status` text /*The status of the invoice*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `billing_invoices_get_200_response` generated from model 'billingInvoicesGet200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `billing_invoices_get_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BillingInvoicesGet200ResponseBillingInvoiceResponse` generated from model 'BillingInvoicesGet200ResponseBillingInvoiceResponse'
+
+CREATE TABLE IF NOT EXISTS `BillingInvoicesGet200ResponseBillingInvoiceResponse` (
+  `billingInvoicesGet200Response` long NOT NULL
+  `billingInvoiceResponse` long NOT NULL
 );
 
 
@@ -1810,42 +2048,74 @@ CREATE TABLE IF NOT EXISTS `BillingProfilesGet200ResponseBillingProfilesResponse
 --
 
 CREATE TABLE IF NOT EXISTS `BillingProfilesResponse` (
-  `id` text PRIMARY KEY /*Billing ID.*/,
-  `card_type` text /*Type of the card.*/,
-  `status` text /*Status of the billing.*/,
   `advertiser_id` text /*Advertiser ID of the billing.*/,
-  `payment_method_brand` text /*Brand of the payment method.*/
+  `billing_type` text /*Billing type of the advertiser*/,
+  `card_type` text /*Type of the card.*/,
+  `id` text PRIMARY KEY /*Billing ID.*/,
+  `payment_method_brand` text /*Brand of the payment method.*/,
+  `status` text /*Status of the billing.*/
 ); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `Board` generated from model 'board'
--- Board
 --
 
 CREATE TABLE IF NOT EXISTS `Board` (
-  `name` text NOT NULL,
-  `id` text PRIMARY KEY,
-  `created_at` datetime /*Date and time of board creation.*/,
+  `id` text NOT NULL PRIMARY KEY,
+  `name` text NOT NULL /*     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.*/,
   `board_pins_modified_at` datetime /*Date and time of last board pins modified.*/,
-  `description` text,
   `collaborator_count` int UNSIGNED /*Count of collaborators on the board.*/,
-  `pin_count` int UNSIGNED /*Count of pins on the board.*/,
+  `created_at` datetime /*Date and time of board creation.*/,
+  `description` text,
   `follower_count` int UNSIGNED /*Board follower count.*/,
-  `media` long,
+  `is_ads_only` boolean /*If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins.*/,
+  `media` long /*Board media.*/,
   `owner` long,
-  `privacy` text /*Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt;*/
-);  /*Board*/
+  `pin_count` int UNSIGNED /*Count of Pins on the board.*/,
+  `privacy` long /*    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;. */
+); 
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `Board_media` generated from model 'boardMedia'
--- Board media.
+-- Table structure for table `BoardBase` generated from model 'boardBase'
 --
 
-CREATE TABLE IF NOT EXISTS `Board_media` (
-  `image_cover_url` text /*Board cover image.*/,
-);  /*Board media.*/
+CREATE TABLE IF NOT EXISTS `BoardBase` (
+  `id` text NOT NULL PRIMARY KEY,
+  `name` text NOT NULL /*     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.*/,
+  `board_pins_modified_at` datetime /*Date and time of last board pins modified.*/,
+  `collaborator_count` int UNSIGNED /*Count of collaborators on the board.*/,
+  `created_at` datetime /*Date and time of board creation.*/,
+  `description` text,
+  `follower_count` int UNSIGNED /*Board follower count.*/,
+  `is_ads_only` boolean /*If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins.*/,
+  `media` long /*Board media.*/,
+  `owner` long,
+  `pin_count` int UNSIGNED /*Count of Pins on the board.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BoardCreate` generated from model 'boardCreate'
+-- Resource create operation model.
+--
+
+CREATE TABLE IF NOT EXISTS `BoardCreate` (
+  `name` text NOT NULL /*     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.*/,
+  `description` text,
+  `is_ads_only` boolean /*If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins.*/,
+  `privacy` long /*    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;. */
+);  /*Resource create operation model.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BoardMedia` generated from model 'boardMedia'
+--
+
+CREATE TABLE IF NOT EXISTS `BoardMedia` (
+  `image_cover_url` text /*Board cover image*/,
+); 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `BoardMediaPinThumbnailUrls` generated from model 'BoardMediaPinThumbnailUrls'
@@ -1894,15 +2164,35 @@ CREATE TABLE IF NOT EXISTS `BoardSectionsList200ResponseBoardSection` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `BoardUpdate` generated from model 'boardUpdate'
--- Board fields for updates
+-- Table structure for table `BoardWithUpdatePrivacy` generated from model 'boardWithUpdatePrivacy'
 --
 
-CREATE TABLE IF NOT EXISTS `BoardUpdate` (
-  `name` text,
+CREATE TABLE IF NOT EXISTS `BoardWithUpdatePrivacy` (
+  `id` text NOT NULL PRIMARY KEY,
+  `name` text NOT NULL /*     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.*/,
+  `board_pins_modified_at` datetime /*Date and time of last board pins modified.*/,
+  `collaborator_count` int UNSIGNED /*Count of collaborators on the board.*/,
+  `created_at` datetime /*Date and time of board creation.*/,
   `description` text,
-  `privacy` text
-);  /*Board fields for updates*/
+  `follower_count` int UNSIGNED /*Board follower count.*/,
+  `is_ads_only` boolean /*If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins.*/,
+  `media` long /*Board media.*/,
+  `owner` long,
+  `pin_count` int UNSIGNED /*Count of Pins on the board.*/,
+  `privacy` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BoardWithUpdatePrivacyUpdate` generated from model 'boardWithUpdatePrivacyUpdate'
+-- Resource create or update operation model.
+--
+
+CREATE TABLE IF NOT EXISTS `BoardWithUpdatePrivacyUpdate` (
+  `description` text,
+  `name` text /*     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.*/,
+  `privacy` long
+);  /*Resource create or update operation model.*/
 
 
 -- --------------------------------------------------------------------------
@@ -1968,6 +2258,43 @@ CREATE TABLE IF NOT EXISTS `BookClosedResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `brand_accounts_create_200_response` generated from model 'brandAccountsCreate200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `brand_accounts_create_200_response` (
+  `brand_account_id` text /*id of the newly created brand account*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `brand_accounts_create_request` generated from model 'brandAccountsCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `brand_accounts_create_request` (
+  `name` text NOT NULL /*Brand Account name*/,
+  `username` text NOT NULL /*Brand Account username*/,
+  `country` long NOT NULL,
+  `about` text /*Brand Account about information*/,
+  `website` text /*Brand Account website*/,
+  `profile_image` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `brand_accounts_update_request` generated from model 'brandAccountsUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `brand_accounts_update_request` (
+  `name` text /*Brand Account name*/,
+  `username` text /*Brand Account username*/,
+  `country` long,
+  `about` text /*Brand Account about information*/,
+  `website` text /*Brand Account website*/,
+  `profile_image` long
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `BrandFilter` generated from model 'brandFilter'
 --
 
@@ -1982,18 +2309,10 @@ CREATE TABLE IF NOT EXISTS `BrandFilter` (
 --
 
 CREATE TABLE IF NOT EXISTS `BulkDownloadRequest` (
-  `updated_since` text /*Unix UTC timestamp to retrieve all entities that have changed since this time.*/,
   `campaign_filter` long,
-  `output_format` long
+  `output_format` long,
+  `updated_since` text /*Unix UTC timestamp to retrieve all entities that have changed since this time.*/
 );  /*Ad entities to get in bulk request.*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `BulkDownloadRequestBulkEntityType` generated from model 'BulkDownloadRequestBulkEntityType'
-
-CREATE TABLE IF NOT EXISTS `BulkDownloadRequestBulkEntityType` (
-  `bulkDownloadRequest` long NOT NULL
-  `bulkEntityType` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `BulkDownloadRequestEntityIds` generated from model 'BulkDownloadRequestEntityIds'
@@ -2003,15 +2322,23 @@ CREATE TABLE IF NOT EXISTS `BulkDownloadRequestEntityIds` (
   `entityIds` text NOT NULL
 );
 
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkDownloadRequestBulkEntityType` generated from model 'BulkDownloadRequestBulkEntityType'
+
+CREATE TABLE IF NOT EXISTS `BulkDownloadRequestBulkEntityType` (
+  `bulkDownloadRequest` long NOT NULL
+  `bulkEntityType` long NOT NULL
+);
+
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `BulkDownloadRequest_campaign_filter` generated from model 'bulkDownloadRequestCampaignFilter'
 --
 
 CREATE TABLE IF NOT EXISTS `BulkDownloadRequest_campaign_filter` (
-  `start_time` text /*Unix UTC timestamp.*/,
   `end_time` text /*Unix UTC timestamp.*/,
   `name` text /*Campaign name*/,
+  `start_time` text /*Unix UTC timestamp.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -2060,14 +2387,6 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreate` (
 );  /*Request for creation of entities in bulk.*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `BulkUpsertRequestCreateCampaignCreateRequest` generated from model 'BulkUpsertRequestCreateCampaignCreateRequest'
-
-CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateCampaignCreateRequest` (
-  `bulkUpsertRequestCreate` long NOT NULL
-  `campaignCreateRequest` long NOT NULL
-);
-
--- --------------------------------------------------------------------------
 -- Table structure for table `BulkUpsertRequestCreateAdGroupCreateRequest` generated from model 'BulkUpsertRequestCreateAdGroupCreateRequest'
 
 CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateAdGroupCreateRequest` (
@@ -2084,11 +2403,19 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateAdCreateRequest` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `BulkUpsertRequestCreateProductGroupPromotionCreateRequest` generated from model 'BulkUpsertRequestCreateProductGroupPromotionCreateRequest'
+-- Table structure for table `BulkUpsertRequestCreateCampaignCreateRequest` generated from model 'BulkUpsertRequestCreateCampaignCreateRequest'
 
-CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateProductGroupPromotionCreateRequest` (
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateCampaignCreateRequest` (
   `bulkUpsertRequestCreate` long NOT NULL
-  `productGroupPromotionCreateRequest` long NOT NULL
+  `campaignCreateRequest` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkUpsertRequestCreateMultipleProductGroupsInner` generated from model 'BulkUpsertRequestCreateMultipleProductGroupsInner'
+
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateMultipleProductGroupsInner` (
+  `bulkUpsertRequestCreate` long NOT NULL
+  `multipleProductGroupsInner` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -2099,6 +2426,22 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateKeywordsRequest` (
   `keywordsRequest` long NOT NULL
 );
 
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkUpsertRequestCreateLabelCreateRequest` generated from model 'BulkUpsertRequestCreateLabelCreateRequest'
+
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateLabelCreateRequest` (
+  `bulkUpsertRequestCreate` long NOT NULL
+  `labelCreateRequest` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkUpsertRequestCreateProductGroupPromotionCreateRequest` generated from model 'BulkUpsertRequestCreateProductGroupPromotionCreateRequest'
+
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateProductGroupPromotionCreateRequest` (
+  `bulkUpsertRequestCreate` long NOT NULL
+  `productGroupPromotionCreateRequest` long NOT NULL
+);
+
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `BulkUpsertRequestUpdate` generated from model 'bulkUpsertRequestUpdate'
@@ -2107,14 +2450,6 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertRequestCreateKeywordsRequest` (
 
 CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdate` (
 );  /*Request for creation of entities in bulk.*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `BulkUpsertRequestUpdateCampaignUpdateRequest` generated from model 'BulkUpsertRequestUpdateCampaignUpdateRequest'
-
-CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateCampaignUpdateRequest` (
-  `bulkUpsertRequestUpdate` long NOT NULL
-  `campaignUpdateRequest` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `BulkUpsertRequestUpdateAdGroupUpdateRequest` generated from model 'BulkUpsertRequestUpdateAdGroupUpdateRequest'
@@ -2133,11 +2468,19 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateAdUpdateRequest` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `BulkUpsertRequestUpdateProductGroupPromotionUpdateRequest` generated from model 'BulkUpsertRequestUpdateProductGroupPromotionUpdateRequest'
+-- Table structure for table `BulkUpsertRequestUpdateCampaignUpdateRequest` generated from model 'BulkUpsertRequestUpdateCampaignUpdateRequest'
 
-CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateProductGroupPromotionUpdateRequest` (
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateCampaignUpdateRequest` (
   `bulkUpsertRequestUpdate` long NOT NULL
-  `productGroupPromotionUpdateRequest` long NOT NULL
+  `campaignUpdateRequest` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkUpsertRequestUpdateCatalogsProductGroupsUpdateRequest` generated from model 'BulkUpsertRequestUpdateCatalogsProductGroupsUpdateRequest'
+
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateCatalogsProductGroupsUpdateRequest` (
+  `bulkUpsertRequestUpdate` long NOT NULL
+  `catalogsProductGroupsUpdateRequest` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -2146,6 +2489,22 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateProductGroupPromotionUpdateRe
 CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateKeywordUpdate` (
   `bulkUpsertRequestUpdate` long NOT NULL
   `keywordUpdate` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkUpsertRequestUpdateLabelBulkUpdateRequest` generated from model 'BulkUpsertRequestUpdateLabelBulkUpdateRequest'
+
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateLabelBulkUpdateRequest` (
+  `bulkUpsertRequestUpdate` long NOT NULL
+  `labelBulkUpdateRequest` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BulkUpsertRequestUpdateProductGroupPromotionUpdateRequest` generated from model 'BulkUpsertRequestUpdateProductGroupPromotionUpdateRequest'
+
+CREATE TABLE IF NOT EXISTS `BulkUpsertRequestUpdateProductGroupPromotionUpdateRequest` (
+  `bulkUpsertRequestUpdate` long NOT NULL
+  `productGroupPromotionUpdateRequest` long NOT NULL
 );
 
 
@@ -2165,8 +2524,8 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `BulkUpsertStatusResponse` (
-  `status` long,
-  `result_url` text
+  `result_url` text,
+  `status` long
 );  /*ID of the bulk request.*/
 
 
@@ -2406,21 +2765,76 @@ CREATE TABLE IF NOT EXISTS `BusinessSharedAudienceResponseRecipientBusinessIds` 
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CampaignAudienceMultipliers` generated from model 'campaignAudienceMultipliers'
+-- This represents a mapping from Audience ID to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified audience in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All audience multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+--
+
+CREATE TABLE IF NOT EXISTS `CampaignAudienceMultipliers` (
+  `AUDIENCE_ID` text
+);  /*This represents a mapping from Audience ID to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified audience in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All audience multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignBidOptions` generated from model 'campaignBidOptions'
+-- Object describing the campaign level bid multipliers.
+--
+
+CREATE TABLE IF NOT EXISTS `CampaignBidOptions` (
+  `app_type_multipliers` long,
+  `audience_multipliers` long,
+  `placement_multipliers` long
+);  /*Object describing the campaign level bid multipliers.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignBidOptionsCreate` generated from model 'campaignBidOptionsCreate'
+-- Object describing the campaign level bid multipliers.
+--
+
+CREATE TABLE IF NOT EXISTS `CampaignBidOptionsCreate` (
+  `app_type_multipliers` long,
+  `audience_multipliers` long,
+  `placement_multipliers` long
+);  /*Object describing the campaign level bid multipliers.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignBidOptionsUpdate` generated from model 'campaignBidOptionsUpdate'
+-- Object describing an update to the campaign level bid multipliers.
+--
+
+CREATE TABLE IF NOT EXISTS `CampaignBidOptionsUpdate` (
+  `app_type_multipliers` long,
+  `audience_multipliers` long,
+  `placement_multipliers` long
+);  /*Object describing an update to the campaign level bid multipliers.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignBidOptionsUpdateUpdateMask` generated from model 'CampaignBidOptionsUpdateUpdateMask'
+
+CREATE TABLE IF NOT EXISTS `CampaignBidOptionsUpdateUpdateMask` (
+  `campaignBidOptionsUpdate` long NOT NULL
+  `updateMask` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CampaignCommon` generated from model 'campaignCommon'
 -- Campaign Data
 --
 
 CREATE TABLE IF NOT EXISTS `CampaignCommon` (
   `ad_account_id` text /*Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.*/,
-  `name` text /*Campaign name.*/,
-  `status` long,
-  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `daily_spend_cap` int /*Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.*/,
+  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
+  `name` text /*Campaign name.*/,
   `order_line_id` text /*Order line ID that appears on the invoice.*/,
-  `tracking_urls` long,
-  `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `status` long,
+  `tracking_urls` long
 );  /*Campaign Data*/
 
 
@@ -2430,17 +2844,18 @@ CREATE TABLE IF NOT EXISTS `CampaignCommon` (
 
 CREATE TABLE IF NOT EXISTS `CampaignCreateCommon` (
   `ad_account_id` text /*Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.*/,
-  `name` text /*Campaign name.*/,
-  `status` long,
-  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `daily_spend_cap` int /*Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.*/,
+  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
+  `name` text /*Campaign name.*/,
   `order_line_id` text /*Order line ID that appears on the invoice.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `status` long,
   `tracking_urls` long,
-  `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
-  `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/
+  `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/
 ); 
 
 
@@ -2452,16 +2867,19 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateRequest` (
   `ad_account_id` text NOT NULL /*Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.*/,
   `name` text NOT NULL /*Campaign name.*/,
   `objective_type` long NOT NULL,
-  `status` long,
-  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `daily_spend_cap` int /*Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.*/,
+  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `order_line_id` text /*Order line ID that appears on the invoice.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `status` long,
   `tracking_urls` long,
-  `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
-  `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/
+  `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/,
+  `bid_options` long,
+  `is_performance_plus` boolean /*Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;.*/
 ); 
 
 
@@ -2487,24 +2905,26 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateResponseCampaignCreateResponseItem` (
 
 CREATE TABLE IF NOT EXISTS `CampaignCreateResponseData` (
   `ad_account_id` text /*Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.*/,
-  `name` text /*Campaign name.*/,
-  `status` long,
-  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `daily_spend_cap` int /*Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.*/,
-  `order_line_id` text /*Order line ID that appears on the invoice.*/,
-  `tracking_urls` long,
-  `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
-  `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
   `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
-  `id` text PRIMARY KEY /*Campaign ID.*/,
-  `objective_type` long,
-  `created_time` int /*Campaign creation time. Unix timestamp in seconds.*/,
-  `updated_time` int /*UTC timestamp. Last update time.*/,
-  `type` text /*Always \&quot;campaign\&quot;.*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.*/,
+  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
+  `name` text /*Campaign name.*/,
+  `order_line_id` text /*Order line ID that appears on the invoice.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `status` long,
+  `tracking_urls` long,
+  `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
   `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/,
-  `summary_status` long
+  `id` text PRIMARY KEY /*Campaign ID.*/,
+  `bid_options` long,
+  `created_time` int /*Campaign creation time. Unix timestamp in seconds.*/,
+  `is_performance_plus` boolean /*Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;.*/,
+  `objective_type` long,
+  `summary_status` long,
+  `type` text /*Always \&quot;campaign\&quot;.*/,
+  `updated_time` int /*UTC timestamp. Last update time.*/
 ); 
 
 
@@ -2535,27 +2955,62 @@ CREATE TABLE IF NOT EXISTS `CampaignId` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CampaignIdFilter` generated from model 'campaignIdFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CampaignIdFilter` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignIdFilterCampaignIds` generated from model 'CampaignIdFilterCampaignIds'
+
+CREATE TABLE IF NOT EXISTS `CampaignIdFilterCampaignIds` (
+  `campaignIdFilter` long NOT NULL
+  `campaignIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignObjectivesFilter` generated from model 'campaignObjectivesFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CampaignObjectivesFilter` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CampaignObjectivesFilterObjectiveType` generated from model 'CampaignObjectivesFilterObjectiveType'
+
+CREATE TABLE IF NOT EXISTS `CampaignObjectivesFilterObjectiveType` (
+  `campaignObjectivesFilter` long NOT NULL
+  `objectiveType` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CampaignResponse` generated from model 'campaignResponse'
 --
 
 CREATE TABLE IF NOT EXISTS `CampaignResponse` (
   `id` text PRIMARY KEY /*Campaign ID.*/,
   `ad_account_id` text /*Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.*/,
-  `name` text /*Campaign name.*/,
-  `status` long,
-  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `daily_spend_cap` int /*Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.*/,
+  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
+  `name` text /*Campaign name.*/,
   `order_line_id` text /*Order line ID that appears on the invoice.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `status` long,
   `tracking_urls` long,
-  `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
-  `objective_type` long,
+  `bid_options` long,
   `created_time` int /*Campaign creation time. Unix timestamp in seconds.*/,
-  `updated_time` int /*UTC timestamp. Last update time.*/,
-  `type` text /*Always \&quot;campaign\&quot;.*/,
   `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/,
-  `summary_status` long
+  `is_performance_plus` boolean /*Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;.*/,
+  `objective_type` long,
+  `summary_status` long,
+  `type` text /*Always \&quot;campaign\&quot;.*/,
+  `updated_time` int /*UTC timestamp. Last update time.*/
 ); 
 
 
@@ -2566,18 +3021,20 @@ CREATE TABLE IF NOT EXISTS `CampaignResponse` (
 CREATE TABLE IF NOT EXISTS `CampaignUpdateRequest` (
   `id` text NOT NULL PRIMARY KEY /*Campaign ID.*/,
   `ad_account_id` text NOT NULL /*Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.*/,
-  `name` text /*Campaign name.*/,
-  `status` long,
-  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
   `daily_spend_cap` int /*Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.*/,
-  `order_line_id` text /*Order line ID that appears on the invoice.*/,
-  `tracking_urls` long,
-  `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
-  `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
+  `end_time` int /*Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
   `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.*/,
+  `lifetime_spend_cap` int /*Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.*/,
+  `name` text /*Campaign name.*/,
+  `order_line_id` text /*Order line ID that appears on the invoice.*/,
+  `start_time` int /*Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.*/,
+  `status` long,
+  `tracking_urls` long,
+  `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
   `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/,
+  `bid_options` long,
+  `is_performance_plus` boolean /*Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;. This field is immutable, except only for campaigns in draft status which may update this field.*/,
   `objective_type` long
 ); 
 
@@ -2603,7 +3060,7 @@ CREATE TABLE IF NOT EXISTS `CampaignUpdateResponseCampaignCreateResponseItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CampaignsAnalyticsResponse_inner` (
-  `CAMPAIGN_ID` text NOT NULL /*The ID of the campaing that this metrics belongs to.*/,
+  `CAMPAIGN_ID` text /*The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.*/,
   `DATE` date /*Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)*/
 ); 
 
@@ -2643,6 +3100,17 @@ CREATE TABLE IF NOT EXISTS `CancelInvitesBodyInviteIds` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CarouselSlot` generated from model 'carouselSlot'
+--
+
+CREATE TABLE IF NOT EXISTS `CarouselSlot` (
+  `description` text /*Carousel Pin slot description.*/,
+  `link` text /*Carousel Pin slot link.*/,
+  `title` text /*Carousel Pin slot title.*/
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `Catalog` generated from model 'catalog'
 -- Catalog entity
 --
@@ -2651,9 +3119,20 @@ CREATE TABLE IF NOT EXISTS `Catalog` (
   `created_at` datetime NOT NULL,
   `id` text NOT NULL PRIMARY KEY /*ID of the catalog entity.*/,
   `updated_at` datetime NOT NULL,
-  `name` text NOT NULL /*A human-friendly name associated to a catalog entity.*/,
-  `catalog_type` long NOT NULL
+  `catalog_type` long NOT NULL,
+  `name` text NOT NULL /*A human-friendly name associated to a catalog entity.*/
 );  /*Catalog entity*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsAvailableFilterValues` generated from model 'catalogsAvailableFilterValues'
+-- Object holding available filter values for each filter key
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsAvailableFilterValues` (
+  `catalog_type` text NOT NULL,
+  `filter_values` long NOT NULL
+);  /*Object holding available filter values for each filter key*/
 
 
 -- --------------------------------------------------------------------------
@@ -2662,9 +3141,9 @@ CREATE TABLE IF NOT EXISTS `Catalog` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreateCreativeAssetsItem` (
+  `attributes` long NOT NULL,
   `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*A creative assets item to be created.*/
 
 
@@ -2674,9 +3153,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateCreativeAssetsItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreateHotelItem` (
+  `attributes` long NOT NULL,
   `hotel_id` text NOT NULL /*The catalog hotel id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*A hotel item to be created.*/
 
 
@@ -2695,7 +3174,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateReportResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreateRequest` (
-  `catalog_type` text NOT NULL /*Type of the catalog entity.*/,
+  `catalog_type` long NOT NULL,
   `name` text NOT NULL /*A human-friendly name associated to a given catalog.*/
 );  /*Request object for creating a catalog.*/
 
@@ -2706,9 +3185,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreateRetailItem` (
+  `attributes` long NOT NULL,
   `item_id` text NOT NULL /*The catalog item id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*An item to be created*/
 
 
@@ -2717,20 +3196,30 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateRetailItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsAttributes` (
-  `title` text /*The name of the creative assets.*/,
-  `description` text /*Brief description of the creative assets.*/,
-  `link` text /*Link to the creative assets page.*/,
-  `ios_deep_link` text /*IOS deep link to the creative assets page.*/,
   `android_deep_link` text /*Link to the creative assets page.*/,
-  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
   `custom_label_0` text /*Custom grouping of creative assets.*/,
   `custom_label_1` text /*Custom grouping of creative assets.*/,
   `custom_label_2` text /*Custom grouping of creative assets.*/,
   `custom_label_3` text /*Custom grouping of creative assets.*/,
   `custom_label_4` text /*Custom grouping of creative assets.*/,
+  `description` text /*Brief description of the creative assets.*/,
+  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
+  `ios_deep_link` text /*IOS deep link to the creative assets page.*/,
+  `link` text /*Link to the creative assets page.*/,
+  `title` text /*The name of the creative assets.*/,
   `visibility` text /*Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.*/,
   `image_link` text /*The creative assets image.*/,
   `video_link` text /*The creative assets video.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsAvailableFilterValues` generated from model 'catalogsCreativeAssetsAvailableFilterValues'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsAvailableFilterValues` (
+  `catalog_type` text NOT NULL,
+  `filter_values` long NOT NULL
 ); 
 
 
@@ -2740,9 +3229,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsAttributes` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchItem` (
+  `attributes` long NOT NULL,
   `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*Creative assets batch item*/
 
 
@@ -2776,17 +3265,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeed` (
   `created_at` datetime NOT NULL,
   `id` text NOT NULL PRIMARY KEY,
   `updated_at` datetime NOT NULL,
-  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
-  `format` long NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/,
   `catalog_type` long NOT NULL,
   `credentials` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
-  `preferred_processing_schedule` long NOT NULL,
-  `status` long NOT NULL,
+  `default_country` long NOT NULL,
   `default_currency` long NOT NULL,
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
-  `default_country` long NOT NULL,
-  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
+  `preferred_processing_schedule` long NOT NULL,
+  `status` long NOT NULL
 );  /*Catalogs Creative Asset Feed object*/
 
 
@@ -2796,16 +3285,16 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeed` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsCreateRequest` (
-  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
-  `format` long NOT NULL,
-  `default_locale` long NOT NULL,
-  `default_country` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `credentials` long,
-  `preferred_processing_schedule` long,
+  `default_country` long NOT NULL,
+  `default_locale` long NOT NULL,
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
   `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/,
+  `credentials` long,
+  `default_currency` long,
+  `preferred_processing_schedule` long,
   `status` long
 );  /*Request object for creating a feed.*/
 
@@ -2817,14 +3306,127 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsCreateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsUpdateRequest` (
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `name` text /*A human-friendly name associated to a given feed.*/,
-  `format` long,
   `credentials` long,
+  `default_currency` long,
+  `format` long,
   `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text /*A human-friendly name associated to a given feed.*/,
   `preferred_processing_schedule` long,
   `status` long
 );  /*Request object for updating a feed.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `catalogs_creative_assets_filter_values_map` generated from model 'catalogsCreativeAssetsFilterValuesMap'
+-- A map of filter attributes to their available values.
+--
+
+CREATE TABLE IF NOT EXISTS `catalogs_creative_assets_filter_values_map` (
+);  /*A map of filter attributes to their available values.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapCustomLabel0` generated from model 'CatalogsCreativeAssetsFilterValuesMapCustomLabel0'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapCustomLabel0` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `customLabel0` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapCustomLabel1` generated from model 'CatalogsCreativeAssetsFilterValuesMapCustomLabel1'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapCustomLabel1` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `customLabel1` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapCustomLabel2` generated from model 'CatalogsCreativeAssetsFilterValuesMapCustomLabel2'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapCustomLabel2` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `customLabel2` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapCustomLabel3` generated from model 'CatalogsCreativeAssetsFilterValuesMapCustomLabel3'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapCustomLabel3` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `customLabel3` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapCustomLabel4` generated from model 'CatalogsCreativeAssetsFilterValuesMapCustomLabel4'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapCustomLabel4` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `customLabel4` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory0` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory0'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory0` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory0` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory1` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory1'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory1` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory1` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory2` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory2'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory2` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory2` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory3` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory3'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory3` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory3` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory4` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory4'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory4` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory4` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory5` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory5'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory5` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory5` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory6` generated from model 'CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory6'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapGoogleProductCategory6` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `googleProductCategory6` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFilterValuesMapMediaType` generated from model 'CatalogsCreativeAssetsFilterValuesMapMediaType'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFilterValuesMapMediaType` (
+  `catalogsCreativeAssetsFilterValuesMap` long NOT NULL
+  `mediaType` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -2834,7 +3436,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsUpdateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemErrorResponse` (
   `catalog_type` long NOT NULL,
-  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
 );  /*Object describing a creative assets item error*/
 
 -- --------------------------------------------------------------------------
@@ -2853,8 +3455,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemErrorResponseItemValidatio
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemResponse` (
   `catalog_type` long NOT NULL,
+  `attributes` long,
   `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
-  `attributes` long
 );  /*Object describing a hotel record*/
 
 -- --------------------------------------------------------------------------
@@ -2874,9 +3476,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemResponsePin` (
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsBatch` (
   `catalog_type` long NOT NULL,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
-  `status` long,
+  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `status` long
 );  /*Object describing the catalogs creative assets items batch*/
 
 -- --------------------------------------------------------------------------
@@ -2930,8 +3532,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsPostFilterCreativeAssetsI
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` (
-  `catalog_type` text NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `catalog_type` text NOT NULL,
   `filters` long NOT NULL
 );  /*Request object to list products for a given creative assets catalog_id and product group filter.*/
 
@@ -2952,13 +3554,13 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProduct` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroup` (
-  `catalog_type` text NOT NULL,
-  `id` text NOT NULL PRIMARY KEY /*ID of the creative assets product group.*/,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
-  `name` text /*Name of creative assets product group*/,
-  `description` text,
+  `catalog_type` text NOT NULL,
+  `filters` long NOT NULL,
+  `id` text NOT NULL PRIMARY KEY /*ID of the creative assets product group.*/,
   `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
+  `description` text,
+  `name` text /*Name of creative assets product group*/,
   `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/
 ); 
 
@@ -2969,10 +3571,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroup` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupCreateRequest` (
-  `catalog_type` text NOT NULL,
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `catalog_type` text NOT NULL,
+  `filters` long NOT NULL,
+  `name` text NOT NULL,
   `description` text
 );  /*Request object for creating a creative assets product group.*/
 
@@ -2995,7 +3597,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFilterKeys` (
   `GOOGLE_PRODUCT_CATEGORY_2` long NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_1` long NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_0` long NOT NULL,
-  `MEDIA_TYPE` long NOT NULL
+  `MEDIA_TYPE` long NOT NULL,
+  `TITLE_KEYWORDS` long NOT NULL
 ); 
 
 
@@ -3075,9 +3678,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupProductCounts` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupUpdateRequest` (
   `catalog_type` text,
-  `name` text,
   `description` text,
-  `filters` long
+  `filters` long,
+  `name` text
 );  /*Request object for updating a creative assets product group.*/
 
 
@@ -3132,7 +3735,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsDeleteHotelItem` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsDeleteRetailItem` (
   `item_id` text NOT NULL /*The catalog item id in the merchant namespace*/,
-  `operation` text NOT NULL
+  `operation` text NOT NULL,
+  `last_updated_time` long /*The millisecond timestamp when the item was lastly modified by the merchant.*/
 );  /*An item to be deleted*/
 
 
@@ -3145,17 +3749,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeed` (
   `created_at` datetime NOT NULL,
   `id` text NOT NULL PRIMARY KEY,
   `updated_at` datetime NOT NULL,
-  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
-  `format` long NOT NULL,
   `catalog_type` long NOT NULL,
   `credentials` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
-  `preferred_processing_schedule` long NOT NULL,
-  `status` long NOT NULL,
+  `default_availability` long NOT NULL,
+  `default_country` long NOT NULL,
   `default_currency` long NOT NULL,
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
-  `default_country` long NOT NULL,
-  `default_availability` long NOT NULL,
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
+  `preferred_processing_schedule` long NOT NULL,
+  `status` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/
 );  /*Catalogs Feed object*/
 
@@ -3176,9 +3780,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedCredentials` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestion` (
-  `id` text NOT NULL PRIMARY KEY,
-  `feed_id` text NOT NULL,
   `created_at` datetime NOT NULL,
+  `feed_id` text NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
   `status` long NOT NULL
 ); 
 
@@ -3199,14 +3803,15 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestionDetails` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestionErrors` (
-  `LINE_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.*/,
-  `LARGE_PRODUCT_COUNT_DECREASE` int /*The product count has decreased by more than 99% compared to the last successful ingestion.*/,
   `ACCOUNT_FLAGGED` int /*We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.*/,
-  `IMAGE_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.*/,
+  `FETCH_GOOGLE_SHEET_NOT_SHARED` int /*Update your Google Sheets sharing settings to &#39;Anyone with link&#39; as a Viewer so that Pinterest can access your file.*/,
   `IMAGE_FILE_NOT_ACCESSIBLE` int /*Image files are unreadable. Please upload new files to continue.*/,
-  `IMAGE_MALFORMED_URL` int /*Image files are unreadable. Please check your link and upload new files to continue.*/,
   `IMAGE_FILE_NOT_FOUND` int /*Image files are unreadable. Please upload new files to continue.*/,
-  `IMAGE_INVALID_FILE` int /*Image files are unreadable. Please upload new files to continue.*/
+  `IMAGE_INVALID_FILE` int /*Image files are unreadable. Please upload new files to continue.*/,
+  `IMAGE_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.*/,
+  `IMAGE_MALFORMED_URL` int /*Image files are unreadable. Please check your link and upload new files to continue.*/,
+  `LARGE_PRODUCT_COUNT_DECREASE` int /*The product count has decreased by more than 99% compared to the last successful ingestion.*/,
+  `LINE_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.*/
 ); 
 
 
@@ -3226,12 +3831,92 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestionInfo` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestionWarnings` (
-  `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_400` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_403` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_404` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_405` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_410` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_429` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_500` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_502` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_503` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_504` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_507` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_508` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_520` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_521` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_522` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_HTTP_STATUS_525` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_IMAGE_DOWNLOAD_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_IMAGE_DOWNLOAD_INVALID_FILE` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_SITE_ERROR` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_SITE_TIMEOUT` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_SSL_ERROR` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_PROCESSING_EMPTY_FILE` int /*Ad image files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL` int /*Ad images must have a height larger than 75 pixels*/,
+  `AD_IMAGE_PROCESSING_TOO_MANY_PIXELS` int /*Ad images must have a maximum area (width x height) of less than 89478485 pixels*/,
+  `AD_IMAGE_PROCESSING_TYPE_MISMATCH` int /*Some ad images could not be processed due to a file type mismatch.*/,
+  `AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL` int /*Ad images must have a width larger than 75 pixels*/,
+  `AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_400` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_403` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_404` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_405` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_410` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_429` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_500` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_502` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_503` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_504` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_507` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_508` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_520` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_521` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_522` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_HTTP_STATUS_525` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_VIDEO_DOWNLOAD_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `AD_VIDEO_DOWNLOAD_INVALID_FILE` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_SITE_ERROR` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_SITE_TIMEOUT` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_SSL_ERROR` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_LENGTH_TOO_SHORT` int /*Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.*/,
+  `AD_VIDEO_PROCESSING_EMPTY_FILE` int /*Ad video files are unreadable. Please check your link and upload new files to continue.*/,
+  `AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL` int /*Ad videos must have a height larger than 75 pixels*/,
+  `AD_VIDEO_PROCESSING_TOO_MANY_PIXELS` int /*Ad videos must have a maximum area (width x height) of less than 89478485 pixels*/,
+  `AD_VIDEO_PROCESSING_TYPE_MISMATCH` int /*Some ad videos could not be processed due to a file type mismatch.*/,
+  `AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL` int /*Ad videos must have a width larger than 75 pixels*/,
   `ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE` int /*Additional image files are unreadable. Please upload new files to continue.*/,
-  `ADDITIONAL_IMAGE_MALFORMED_URL` int /*Additional image files are unreadable. Please check your link and upload new files to continue.*/,
   `ADDITIONAL_IMAGE_FILE_NOT_FOUND` int /*Additional image files are unreadable. Please upload new files to continue.*/,
   `ADDITIONAL_IMAGE_INVALID_FILE` int /*Additional image files are unreadable. Please upload new files to continue.*/,
-  `HOTEL_PRICE_HEADER_IS_PRESENT` int /*price is not a supported column. Use base_price and sale_price instead.*/
+  `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.*/,
+  `ADDITIONAL_IMAGE_MALFORMED_URL` int /*Additional image files are unreadable. Please check your link and upload new files to continue.*/,
+  `FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT` int /*Update your Google Sheets sharing settings from &#39;Editor&#39; to &#39;Viewer&#39;.*/,
+  `HOTEL_PRICE_HEADER_IS_PRESENT` int /*Price is not a supported column. Use base_price and sale_price instead.*/,
+  `VIDEO_DOWNLOAD_VIDEO_TOO_SHORT` int /*Video length is too short. Please ensure that the main video is at least 4 seconds long.*/,
+  `VIDEO_FILE_NOT_ACCESSIBLE` int /*Video files are unreadable. Please upload new files to continue.*/,
+  `VIDEO_FILE_NOT_FOUND` int /*Video files are unreadable. Please upload new files to continue.*/,
+  `VIDEO_INVALID_FILE` int /*Video files are unreadable. Please upload new files to continue.*/,
+  `VIDEO_LEVEL_INTERNAL_ERROR` int /*We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.*/,
+  `VIDEO_MALFORMED_URL` int /*Video files are unreadable. Please check your link and upload new files to continue.*/
 ); 
 
 
@@ -3244,9 +3929,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedProcessingResult` (
   `id` text NOT NULL PRIMARY KEY,
   `updated_at` datetime NOT NULL,
   `ingestion_details` long NOT NULL,
-  `status` long NOT NULL,
   `product_counts` long NOT NULL,
-  `validation_details` long NOT NULL
+  `status` long NOT NULL,
+  `validation_details` long NOT NULL,
+  `video_counts` long
 ); 
 
 
@@ -3267,8 +3953,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedProcessingSchedule` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedProductCounts` (
-  `original` int /*The number of products in the feed file.*/,
-  `ingested` int /*The number of products successfully ingested from the feed file.*/
+  `ingested` int /*The number of products successfully ingested from the feed file.*/,
+  `original` int /*The number of products in the feed file.*/
 );  /*The counts can be null early in the process.*/
 
 
@@ -3287,39 +3973,39 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedValidationDetails` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedValidationErrors` (
+  `ADULT_INVALID` int /*Some items have invalid adult values.*/,
+  `ADWORDS_FORMAT_INVALID` int /*Some adwords links contain too many characters.*/,
+  `AVAILABILITY_INVALID` int /*Some items are missing an availability value in their product metadata, those items will not be published.*/,
+  `BLOCKLISTED_IMAGE_SIGNATURE` int /*Some items were not published because they don&#39;t meet Pinterest&#39;s Merchant Guidelines.*/,
+  `DELIMITER_ERROR` int /*Your feed includes data with formatting errors.*/,
+  `DESCRIPTION_MISSING` int /*Some items are missing a description in their product metadata, those items will not be published.*/,
+  `DUPLICATE_PRODUCTS` int /*Some products are duplicated.*/,
+  `ENCODING_ERROR` int /*Your feed includes data with an unsupported encoding format.*/,
+  `FEED_LENGTH_TOO_LONG` int /*Your feed contains too many items, some items will not be published.*/,
+  `FEED_TOO_SMALL` int /*Your feed couldn&#39;t be validated because the file doesn&#39;t contain the minimum number of lines required.*/,
   `FETCH_ERROR` int /*Pinterest couldn&#39;t download your feed.*/,
   `FETCH_INACTIVE_FEED_ERROR` int /*Your feed wasn&#39;t ingested because it hasn’t changed in the previous 90 days.*/,
-  `ENCODING_ERROR` int /*Your feed includes data with an unsupported encoding format.*/,
-  `DELIMITER_ERROR` int /*Your feed includes data with formatting errors.*/,
-  `REQUIRED_COLUMNS_MISSING` int /*Your feed is missing some required column headers.*/,
-  `DUPLICATE_PRODUCTS` int /*Some products are duplicated.*/,
   `IMAGE_LINK_INVALID` int /*Some image links are formatted incorrectly.*/,
-  `ITEMID_MISSING` int /*Some items are missing an item id in their product metadata, those items will not be published.*/,
-  `TITLE_MISSING` int /*Some items are missing a title in their product metadata, those items will not be published.*/,
-  `DESCRIPTION_MISSING` int /*Some items are missing a description in their product metadata, those items will not be published.*/,
-  `PRODUCT_LINK_MISSING` int /*Some items are missing a link URL in their product metadata, those items will not be published.*/,
-  `IMAGE_LINK_MISSING` int /*Some items are missing an image link URL in their product metadata, those items will not be published.*/,
-  `AVAILABILITY_INVALID` int /*Some items are missing an availability value in their product metadata, those items will not be published.*/,
-  `PRODUCT_PRICE_INVALID` int /*Some items have price formatting errors in their product metadata, those items will not be published.*/,
-  `LINK_FORMAT_INVALID` int /*Some link values are formatted incorrectly.*/,
-  `PARSE_LINE_ERROR` int /*Your feed contains formatting errors for some items.*/,
-  `ADWORDS_FORMAT_INVALID` int /*Some adwords links contain too many characters.*/,
-  `INTERNAL_SERVICE_ERROR` int /*We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.*/,
-  `NO_VERIFIED_DOMAIN` int /*Your merchant domain needs to be claimed.*/,
-  `ADULT_INVALID` int /*Some items have invalid adult values.*/,
   `IMAGE_LINK_LENGTH_TOO_LONG` int /*Some items have image_link URLs that contain too many characters, so those items will not be published.*/,
+  `IMAGE_LINK_MISSING` int /*Some items are missing an image link URL in their product metadata, those items will not be published.*/,
+  `INTERNAL_SERVICE_ERROR` int /*We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.*/,
   `INVALID_DOMAIN` int /*Some of your product link values don&#39;t match the verified domain associated with this account.*/,
-  `FEED_LENGTH_TOO_LONG` int /*Your feed contains too many items, some items will not be published.*/,
-  `LINK_LENGTH_TOO_LONG` int /*Some product links contain too many characters, those items will not be published.*/,
-  `MALFORMED_XML` int /*Your feed couldn&#39;t be validated because the xml file is formatted incorrectly.*/,
-  `PRICE_MISSING` int /*Some products are missing a price, those items will not be published.*/,
-  `FEED_TOO_SMALL` int /*Your feed couldn&#39;t be validated because the file doesn&#39;t contain the minimum number of lines required.*/,
-  `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` int /*Some items exceed the maximum number of items per item group, those items will not be published.*/,
   `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` int /*Some items&#39; main images can&#39;t be found.*/,
-  `PINJOIN_CONTENT_UNSAFE` int /*Some items were not published because they don&#39;t meet Pinterest&#39;s Merchant Guidelines.*/,
-  `BLOCKLISTED_IMAGE_SIGNATURE` int /*Some items were not published because they don&#39;t meet Pinterest&#39;s Merchant Guidelines.*/,
+  `ITEMID_MISSING` int /*Some items are missing an item id in their product metadata, those items will not be published.*/,
+  `LINK_FORMAT_INVALID` int /*Some link values are formatted incorrectly.*/,
+  `LINK_LENGTH_TOO_LONG` int /*Some product links contain too many characters, those items will not be published.*/,
   `LIST_PRICE_INVALID` int /*Some items have list price formatting errors in their product metadata, those items will not be published.*/,
-  `PRICE_CANNOT_BE_DETERMINED` int /*Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.*/
+  `MALFORMED_XML` int /*Your feed couldn&#39;t be validated because the xml file is formatted incorrectly.*/,
+  `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` int /*Some items exceed the maximum number of items per item group, those items will not be published.*/,
+  `NO_VERIFIED_DOMAIN` int /*Your merchant domain needs to be claimed.*/,
+  `PARSE_LINE_ERROR` int /*Your feed contains formatting errors for some items.*/,
+  `PINJOIN_CONTENT_UNSAFE` int /*Some items were not published because they don&#39;t meet Pinterest&#39;s Merchant Guidelines.*/,
+  `PRICE_CANNOT_BE_DETERMINED` int /*Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.*/,
+  `PRICE_MISSING` int /*Some products are missing a price, those items will not be published.*/,
+  `PRODUCT_LINK_MISSING` int /*Some items are missing a link URL in their product metadata, those items will not be published.*/,
+  `PRODUCT_PRICE_INVALID` int /*Some items have price formatting errors in their product metadata, those items will not be published.*/,
+  `REQUIRED_COLUMNS_MISSING` int /*Your feed is missing some required column headers.*/,
+  `TITLE_MISSING` int /*Some items are missing a title in their product metadata, those items will not be published.*/
 ); 
 
 
@@ -3328,56 +4014,230 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedValidationErrors` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedValidationWarnings` (
+  `AD_IMAGE_0_LINK_DUPLICATED` int /*ad_image_0_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_0_LINK_LENGTH_TOO_LONG` int /*Ad image link 0 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_0_LINK_REQUIRED` int /*Ad image link 0 is required because an image tag was provided.*/,
+  `AD_IMAGE_0_LINK_WARNING` int /*Ad image link 0 format is unsupported.*/,
+  `AD_IMAGE_0_TAG_DUPLICATED` int /*ad_image_0_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_0_TAG_LENGTH_TOO_LONG` int /*Ad image tag 0 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_0_TAG_REQUIRED` int /*Ad image tag 0 is required because an image link was provided.*/,
+  `AD_IMAGE_10_LINK_DUPLICATED` int /*ad_image_10_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_10_LINK_LENGTH_TOO_LONG` int /*Ad image link 10 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_10_LINK_REQUIRED` int /*Ad image link 10 is required because an image tag was provided.*/,
+  `AD_IMAGE_10_LINK_WARNING` int /*Ad image link 10 format is unsupported.*/,
+  `AD_IMAGE_10_TAG_DUPLICATED` int /*ad_image_10_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_10_TAG_LENGTH_TOO_LONG` int /*Ad image tag 10 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_10_TAG_REQUIRED` int /*Ad image tag 10 is required because an image link was provided.*/,
+  `AD_IMAGE_11_LINK_DUPLICATED` int /*ad_image_11_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_11_LINK_LENGTH_TOO_LONG` int /*Ad image link 11 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_11_LINK_REQUIRED` int /*Ad image link 11 is required because an image tag was provided.*/,
+  `AD_IMAGE_11_LINK_WARNING` int /*Ad image link 11 format is unsupported.*/,
+  `AD_IMAGE_11_TAG_DUPLICATED` int /*ad_image_11_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_11_TAG_LENGTH_TOO_LONG` int /*Ad image tag 11 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_11_TAG_REQUIRED` int /*Ad image tag 11 is required because an image link was provided.*/,
+  `AD_IMAGE_12_LINK_DUPLICATED` int /*ad_image_12_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_12_LINK_LENGTH_TOO_LONG` int /*Ad image link 12 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_12_LINK_REQUIRED` int /*Ad image link 12 is required because an image tag was provided.*/,
+  `AD_IMAGE_12_LINK_WARNING` int /*Ad image link 12 format is unsupported.*/,
+  `AD_IMAGE_12_TAG_DUPLICATED` int /*ad_image_12_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_12_TAG_LENGTH_TOO_LONG` int /*Ad image tag 12 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_12_TAG_REQUIRED` int /*Ad image tag 12 is required because an image link was provided.*/,
+  `AD_IMAGE_13_LINK_DUPLICATED` int /*ad_image_13_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_13_LINK_LENGTH_TOO_LONG` int /*Ad image link 13 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_13_LINK_REQUIRED` int /*Ad image link 13 is required because an image tag was provided.*/,
+  `AD_IMAGE_13_LINK_WARNING` int /*Ad image link 13 format is unsupported.*/,
+  `AD_IMAGE_13_TAG_DUPLICATED` int /*ad_image_13_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_13_TAG_LENGTH_TOO_LONG` int /*Ad image tag 13 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_13_TAG_REQUIRED` int /*Ad image tag 13 is required because an image link was provided.*/,
+  `AD_IMAGE_14_LINK_DUPLICATED` int /*ad_image_14_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_14_LINK_LENGTH_TOO_LONG` int /*Ad image link 14 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_14_LINK_REQUIRED` int /*Ad image link 14 is required because an image tag was provided.*/,
+  `AD_IMAGE_14_LINK_WARNING` int /*Ad image link 14 format is unsupported.*/,
+  `AD_IMAGE_14_TAG_DUPLICATED` int /*ad_image_14_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_14_TAG_LENGTH_TOO_LONG` int /*Ad image tag 14 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_14_TAG_REQUIRED` int /*Ad image tag 14 is required because an image link was provided.*/,
+  `AD_IMAGE_15_LINK_DUPLICATED` int /*ad_image_15_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_15_LINK_LENGTH_TOO_LONG` int /*Ad image link 15 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_15_LINK_REQUIRED` int /*Ad image link 15 is required because an image tag was provided.*/,
+  `AD_IMAGE_15_LINK_WARNING` int /*Ad image link 15 format is unsupported.*/,
+  `AD_IMAGE_15_TAG_DUPLICATED` int /*ad_image_15_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_15_TAG_LENGTH_TOO_LONG` int /*Ad image tag 15 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_15_TAG_REQUIRED` int /*Ad image tag 15 is required because an image link was provided.*/,
+  `AD_IMAGE_16_LINK_DUPLICATED` int /*ad_image_16_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_16_LINK_LENGTH_TOO_LONG` int /*Ad image link 16 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_16_LINK_REQUIRED` int /*Ad image link 16 is required because an image tag was provided.*/,
+  `AD_IMAGE_16_LINK_WARNING` int /*Ad image link 16 format is unsupported.*/,
+  `AD_IMAGE_16_TAG_DUPLICATED` int /*ad_image_16_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_16_TAG_LENGTH_TOO_LONG` int /*Ad image tag 16 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_16_TAG_REQUIRED` int /*Ad image tag 16 is required because an image link was provided.*/,
+  `AD_IMAGE_17_LINK_DUPLICATED` int /*ad_image_17_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_17_LINK_LENGTH_TOO_LONG` int /*Ad image link 17 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_17_LINK_REQUIRED` int /*Ad image link 17 is required because an image tag was provided.*/,
+  `AD_IMAGE_17_LINK_WARNING` int /*Ad image link 17 format is unsupported.*/,
+  `AD_IMAGE_17_TAG_DUPLICATED` int /*ad_image_17_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_17_TAG_LENGTH_TOO_LONG` int /*Ad image tag 17 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_17_TAG_REQUIRED` int /*Ad image tag 17 is required because an image link was provided.*/,
+  `AD_IMAGE_18_LINK_DUPLICATED` int /*ad_image_18_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_18_LINK_LENGTH_TOO_LONG` int /*Ad image link 18 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_18_LINK_REQUIRED` int /*Ad image link 18 is required because an image tag was provided.*/,
+  `AD_IMAGE_18_LINK_WARNING` int /*Ad image link 18 format is unsupported.*/,
+  `AD_IMAGE_18_TAG_DUPLICATED` int /*ad_image_18_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_18_TAG_LENGTH_TOO_LONG` int /*Ad image tag 18 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_18_TAG_REQUIRED` int /*Ad image tag 18 is required because an image link was provided.*/,
+  `AD_IMAGE_19_LINK_DUPLICATED` int /*ad_image_19_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_19_LINK_LENGTH_TOO_LONG` int /*Ad image link 19 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_19_LINK_REQUIRED` int /*Ad image link 19 is required because an image tag was provided.*/,
+  `AD_IMAGE_19_LINK_WARNING` int /*Ad image link 19 format is unsupported.*/,
+  `AD_IMAGE_19_TAG_DUPLICATED` int /*ad_image_19_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_19_TAG_LENGTH_TOO_LONG` int /*Ad image tag 19 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_19_TAG_REQUIRED` int /*Ad image tag 19 is required because an image link was provided.*/,
+  `AD_IMAGE_1_LINK_DUPLICATED` int /*ad_image_1_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_1_LINK_LENGTH_TOO_LONG` int /*Ad image link 1 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_1_LINK_REQUIRED` int /*Ad image link 1 is required because an image tag was provided.*/,
+  `AD_IMAGE_1_LINK_WARNING` int /*Ad image link 1 format is unsupported.*/,
+  `AD_IMAGE_1_TAG_DUPLICATED` int /*ad_image_1_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_1_TAG_LENGTH_TOO_LONG` int /*Ad image tag 1 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_1_TAG_REQUIRED` int /*Ad image tag 1 is required because an image link was provided.*/,
+  `AD_IMAGE_2_LINK_DUPLICATED` int /*ad_image_2_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_2_LINK_LENGTH_TOO_LONG` int /*Ad image link 2 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_2_LINK_REQUIRED` int /*Ad image link 2 is required because an image tag was provided.*/,
+  `AD_IMAGE_2_LINK_WARNING` int /*Ad image link 2 format is unsupported.*/,
+  `AD_IMAGE_2_TAG_DUPLICATED` int /*ad_image_2_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_2_TAG_LENGTH_TOO_LONG` int /*Ad image tag 2 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_2_TAG_REQUIRED` int /*Ad image tag 2 is required because an image link was provided.*/,
+  `AD_IMAGE_3_LINK_DUPLICATED` int /*ad_image_3_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_3_LINK_LENGTH_TOO_LONG` int /*Ad image link 3 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_3_LINK_REQUIRED` int /*Ad image link 3 is required because an image tag was provided.*/,
+  `AD_IMAGE_3_LINK_WARNING` int /*Ad image link 3 format is unsupported.*/,
+  `AD_IMAGE_3_TAG_DUPLICATED` int /*ad_image_3_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_3_TAG_LENGTH_TOO_LONG` int /*Ad image tag 3 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_3_TAG_REQUIRED` int /*Ad image tag 3 is required because an image link was provided.*/,
+  `AD_IMAGE_4_LINK_DUPLICATED` int /*ad_image_4_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_4_LINK_LENGTH_TOO_LONG` int /*Ad image link 4 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_4_LINK_REQUIRED` int /*Ad image link 4 is required because an image tag was provided.*/,
+  `AD_IMAGE_4_LINK_WARNING` int /*Ad image link 4 format is unsupported.*/,
+  `AD_IMAGE_4_TAG_DUPLICATED` int /*ad_image_4_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_4_TAG_LENGTH_TOO_LONG` int /*Ad image tag 4 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_4_TAG_REQUIRED` int /*Ad image tag 4 is required because an image link was provided.*/,
+  `AD_IMAGE_5_LINK_DUPLICATED` int /*ad_image_5_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_5_LINK_LENGTH_TOO_LONG` int /*Ad image link 5 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_5_LINK_REQUIRED` int /*Ad image link 5 is required because an image tag was provided.*/,
+  `AD_IMAGE_5_LINK_WARNING` int /*Ad image link 5 format is unsupported.*/,
+  `AD_IMAGE_5_TAG_DUPLICATED` int /*ad_image_5_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_5_TAG_LENGTH_TOO_LONG` int /*Ad image tag 5 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_5_TAG_REQUIRED` int /*Ad image tag 5 is required because an image link was provided.*/,
+  `AD_IMAGE_6_LINK_DUPLICATED` int /*ad_image_6_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_6_LINK_LENGTH_TOO_LONG` int /*Ad image link 6 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_6_LINK_REQUIRED` int /*Ad image link 6 is required because an image tag was provided.*/,
+  `AD_IMAGE_6_LINK_WARNING` int /*Ad image link 6 format is unsupported.*/,
+  `AD_IMAGE_6_TAG_DUPLICATED` int /*ad_image_6_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_6_TAG_LENGTH_TOO_LONG` int /*Ad image tag 6 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_6_TAG_REQUIRED` int /*Ad image tag 6 is required because an image link was provided.*/,
+  `AD_IMAGE_7_LINK_DUPLICATED` int /*ad_image_7_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_7_LINK_LENGTH_TOO_LONG` int /*Ad image link 7 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_7_LINK_REQUIRED` int /*Ad image link 7 is required because an image tag was provided.*/,
+  `AD_IMAGE_7_LINK_WARNING` int /*Ad image link 7 format is unsupported.*/,
+  `AD_IMAGE_7_TAG_DUPLICATED` int /*ad_image_7_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_7_TAG_LENGTH_TOO_LONG` int /*Ad image tag 7 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_7_TAG_REQUIRED` int /*Ad image tag 7 is required because an image link was provided.*/,
+  `AD_IMAGE_8_LINK_DUPLICATED` int /*ad_image_8_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_8_LINK_LENGTH_TOO_LONG` int /*Ad image link 8 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_8_LINK_REQUIRED` int /*Ad image link 8 is required because an image tag was provided.*/,
+  `AD_IMAGE_8_LINK_WARNING` int /*Ad image link 8 format is unsupported.*/,
+  `AD_IMAGE_8_TAG_DUPLICATED` int /*ad_image_8_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_8_TAG_LENGTH_TOO_LONG` int /*Ad image tag 8 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_8_TAG_REQUIRED` int /*Ad image tag 8 is required because an image link was provided.*/,
+  `AD_IMAGE_9_LINK_DUPLICATED` int /*ad_image_9_link is duplicated with another ad image link.*/,
+  `AD_IMAGE_9_LINK_LENGTH_TOO_LONG` int /*Ad image link 9 length is too long. The maximum length is 2047 characters.*/,
+  `AD_IMAGE_9_LINK_REQUIRED` int /*Ad image link 9 is required because an image tag was provided.*/,
+  `AD_IMAGE_9_LINK_WARNING` int /*Ad image link 9 format is unsupported.*/,
+  `AD_IMAGE_9_TAG_DUPLICATED` int /*ad_image_9_tag is duplicated with another ad image tag.*/,
+  `AD_IMAGE_9_TAG_LENGTH_TOO_LONG` int /*Ad image tag 9 length is too long. The maximum length is 511 characters.*/,
+  `AD_IMAGE_9_TAG_REQUIRED` int /*Ad image tag 9 is required because an image link was provided.*/,
   `AD_LINK_FORMAT_WARNING` int /*Some items have ad links that are formatted incorrectly.*/,
   `AD_LINK_SAME_AS_LINK` int /*Some items have ad link URLs that are duplicates of the link URLs for those items.*/,
-  `TITLE_LENGTH_TOO_LONG` int /*The title for some items were truncated because they contain too many characters.*/,
-  `DESCRIPTION_LENGTH_TOO_LONG` int /*The description for some items were truncated because they contain too many characters.*/,
-  `GENDER_INVALID` int /*Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
-  `AGE_GROUP_INVALID` int /*Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
-  `SIZE_TYPE_INVALID` int /*Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
-  `SIZE_SYSTEM_INVALID` int /*Some items have size system values which are not one of the supported size systems.*/,
-  `LINK_FORMAT_WARNING` int /*Some items have an invalid product link which contains invalid UTM tracking paramaters.*/,
-  `SALES_PRICE_INVALID` int /*Some items have sale price values that are higher than the original price of the item.*/,
-  `PRODUCT_CATEGORY_DEPTH_WARNING` int /*Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.*/,
-  `ADWORDS_FORMAT_WARNING` int /*Some items have adwords_redirect links that are formatted incorrectly.*/,
-  `ADWORDS_SAME_AS_LINK` int /*Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.*/,
-  `DUPLICATE_HEADERS` int /*Your feed contains duplicate headers.*/,
-  `FETCH_SAME_SIGNATURE` int /*Ingestion completed early because there are no changes to your feed since the last successful update.*/,
+  `AD_VIDEO_0_LINK_DUPLICATED` int /*ad_video_0_link is duplicated with another ad video link.*/,
+  `AD_VIDEO_0_LINK_LENGTH_TOO_LONG` int /*ad_video_0_link length is too long. The maximum length is 511 characters.*/,
+  `AD_VIDEO_0_LINK_REQUIRED` int /*ad_video_0_link is required for this item because ad_video_0_tag was provided.*/,
+  `AD_VIDEO_0_LINK_WARNING` int /*ad_video_0_link is formatted incorrectly and will not be published with your items.*/,
+  `AD_VIDEO_0_TAG_DUPLICATED` int /*ad_video_0_tag is duplicated with another ad video tag.*/,
+  `AD_VIDEO_0_TAG_LENGTH_TOO_LONG` int /*ad_video_0_tag length is too long. The maximum length is 511 characters.*/,
+  `AD_VIDEO_0_TAG_REQUIRED` int /*ad_video_0_tag is required because ad_video_0_link was provided.*/,
+  `AD_VIDEO_1_LINK_DUPLICATED` int /*ad_video_1_link is duplicated with another ad video link.*/,
+  `AD_VIDEO_1_LINK_LENGTH_TOO_LONG` int /*ad_video_1_link length is too long. The maximum length is 511 characters.*/,
+  `AD_VIDEO_1_LINK_REQUIRED` int /*ad_video_1_link is required for this item because ad_video_1_tag was provided.*/,
+  `AD_VIDEO_1_LINK_WARNING` int /*ad_video_1_link is formatted incorrectly and will not be published with your items.*/,
+  `AD_VIDEO_1_TAG_DUPLICATED` int /*ad_video_1_tag is duplicated with another ad video tag.*/,
+  `AD_VIDEO_1_TAG_LENGTH_TOO_LONG` int /*ad_video_1_tag length is too long. The maximum length is 511 characters.*/,
+  `AD_VIDEO_1_TAG_REQUIRED` int /*ad_video_1_tag is required because ad_video_1_link was provided.*/,
+  `AD_VIDEO_2_LINK_DUPLICATED` int /*ad_video_2_link is duplicated with another ad video link.*/,
+  `AD_VIDEO_2_LINK_LENGTH_TOO_LONG` int /*ad_video_2_link length is too long. The maximum length is 511 characters.*/,
+  `AD_VIDEO_2_LINK_REQUIRED` int /*ad_video_2_link is required for this item because ad_video_2_tag was provided.*/,
+  `AD_VIDEO_2_LINK_WARNING` int /*ad_video_2_link is formatted incorrectly and will not be published with your items.*/,
+  `AD_VIDEO_2_TAG_DUPLICATED` int /*ad_video_2_tag is duplicated with another ad video tag.*/,
+  `AD_VIDEO_2_TAG_LENGTH_TOO_LONG` int /*ad_video_2_tag length is too long. The maximum length is 511 characters.*/,
+  `AD_VIDEO_2_TAG_REQUIRED` int /*ad_video_2_tag is required because ad_video_2_link was provided.*/,
   `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` int /*Some items have additional_image_link URLs that contain too many characters, so those items will not be published.*/,
   `ADDITIONAL_IMAGE_LINK_WARNING` int /*Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.*/,
-  `IMAGE_LINK_WARNING` int /*Some items have image_link URLs that are formatted incorrectly and will not be published with those items.*/,
-  `SHIPPING_INVALID` int /*Some items have shipping values that are formatted incorrectly.*/,
-  `TAX_INVALID` int /*Some items have tax values that are formatted incorrectly.*/,
-  `SHIPPING_WEIGHT_INVALID` int /*Some items have invalid shipping_weight values.*/,
-  `EXPIRATION_DATE_INVALID` int /*Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.*/,
-  `AVAILABILITY_DATE_INVALID` int /*Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.*/,
-  `SALE_DATE_INVALID` int /*Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.*/,
-  `WEIGHT_UNIT_INVALID` int /*Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.*/,
-  `IS_BUNDLE_INVALID` int /*Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.*/,
-  `UPDATED_TIME_INVALID` int /*Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.*/,
-  `CUSTOM_LABEL_LENGTH_TOO_LONG` int /*Some items have custom_label values that are too long, those items will be published without that custom label.*/,
-  `PRODUCT_TYPE_LENGTH_TOO_LONG` int /*Some items have product_type values that are too long, those items will be published without that product type.*/,
-  `TOO_MANY_ADDITIONAL_IMAGE_LINKS` int /*Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.*/,
-  `MULTIPACK_INVALID` int /*Some items have invalid multipack values.*/,
-  `INDEXED_PRODUCT_COUNT_LARGE_DELTA` int /*The product count has increased or decreased significantly compared to the last successful ingestion.*/,
-  `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` int /*Some items include additional_image_links that can&#39;t be found.*/,
-  `OPTIONAL_PRODUCT_CATEGORY_MISSING` int /*Some items are missing a google_product_category.*/,
-  `OPTIONAL_PRODUCT_CATEGORY_INVALID` int /*Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.*/,
-  `OPTIONAL_CONDITION_MISSING` int /*Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.*/,
-  `OPTIONAL_CONDITION_INVALID` int /*Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
-  `IOS_DEEP_LINK_INVALID` int /*Some items include invalid ios_deep_link values.*/,
+  `ADWORDS_FORMAT_WARNING` int /*Some items have adwords_redirect links that are formatted incorrectly.*/,
+  `ADWORDS_SAME_AS_LINK` int /*Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.*/,
+  `AGE_GROUP_INVALID` int /*Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
   `ANDROID_DEEP_LINK_INVALID` int /*Some items include invalid android_deep_link.*/,
-  `UTM_SOURCE_AUTO_CORRECTED` int /*Some items include utm_source values that are formatted incorrectly and have been automatically corrected.*/,
+  `AVAILABILITY_DATE_INVALID` int /*Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.*/,
   `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` int /*Some items include a currency that doesn&#39;t match the usual currency for the location where that product is sold or shipped.*/,
-  `MIN_AD_PRICE_INVALID` int /*Some items include min_ad_price values that are formatted incorrectly.*/,
+  `CUSTOM_LABEL_LENGTH_TOO_LONG` int /*Some items have custom_label values that are too long, those items will be published without that custom label.*/,
+  `DESCRIPTION_LENGTH_TOO_LONG` int /*The description for some items were truncated because they contain too many characters.*/,
+  `DUPLICATE_HEADERS` int /*Your feed contains duplicate headers.*/,
+  `EXPIRATION_DATE_INVALID` int /*Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.*/,
+  `FETCH_SAME_SIGNATURE` int /*Ingestion completed early because there are no changes to your feed since the last successful update.*/,
+  `GENDER_INVALID` int /*Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
   `GTIN_INVALID` int /*Some items include incorrectly formatted GTINs.*/,
+  `IMAGE_LINK_WARNING` int /*Some items have image_link URLs that are formatted incorrectly and will not be published with those items.*/,
   `INCONSISTENT_CURRENCY_VALUES` int /*Some items include inconsistent currencies in price fields.*/,
-  `SALES_PRICE_TOO_LOW` int /*Some items include sales price that is much lower than the list price.*/,
-  `SHIPPING_WIDTH_INVALID` int /*Some items include incorrectly formatted shipping_width.*/,
-  `SHIPPING_HEIGHT_INVALID` int /*Some items include incorrectly formatted shipping_height.*/,
+  `INDEXED_PRODUCT_COUNT_LARGE_DELTA` int /*The product count has increased or decreased significantly compared to the last successful ingestion.*/,
+  `IOS_DEEP_LINK_INVALID` int /*Some items include invalid ios_deep_link values.*/,
+  `IS_BUNDLE_INVALID` int /*Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.*/,
+  `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` int /*Some items include additional_image_links that can&#39;t be found.*/,
+  `LINK_FORMAT_WARNING` int /*Some items have an invalid product link which contains invalid UTM tracking paramaters.*/,
+  `MIN_AD_PRICE_INVALID` int /*Some items include min_ad_price values that are formatted incorrectly.*/,
+  `MPN_INVALID` int /*Some items include incorrectly formatted MPNs.*/,
+  `MULTIPACK_INVALID` int /*Some items have invalid multipack values.*/,
+  `OPTIONAL_CONDITION_INVALID` int /*Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
+  `OPTIONAL_CONDITION_MISSING` int /*Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.*/,
+  `OPTIONAL_PRODUCT_CATEGORY_INVALID` int /*Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.*/,
+  `OPTIONAL_PRODUCT_CATEGORY_MISSING` int /*Some items are missing a google_product_category.*/,
+  `PRODUCT_CATEGORY_DEPTH_WARNING` int /*Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.*/,
+  `PRODUCT_TYPE_LENGTH_TOO_LONG` int /*Some items have product_type values that are too long, those items will be published without that product type.*/,
+  `SALE_DATE_INVALID` int /*Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.*/,
+  `SALES_PRICE_INVALID` int /*Some items have sale price values that are higher than the original price of the item.*/,
   `SALES_PRICE_TOO_HIGH` int /*Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.*/,
-  `MPN_INVALID` int /*Some items include incorrectly formatted MPNs.*/
+  `SALES_PRICE_TOO_LOW` int /*Some items include sales price that is much lower than the list price.*/,
+  `SHIPPING_HEIGHT_INVALID` int /*Some items include incorrectly formatted shipping_height.*/,
+  `SHIPPING_INVALID` int /*Some items have shipping values that are formatted incorrectly.*/,
+  `SHIPPING_WEIGHT_INVALID` int /*Some items have invalid shipping_weight values.*/,
+  `SHIPPING_WIDTH_INVALID` int /*Some items include incorrectly formatted shipping_width.*/,
+  `SIZE_SYSTEM_INVALID` int /*Some items have size system values which are not one of the supported size systems.*/,
+  `SIZE_TYPE_INVALID` int /*Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.*/,
+  `TAX_INVALID` int /*Some items have tax values that are formatted incorrectly.*/,
+  `TITLE_LENGTH_TOO_LONG` int /*The title for some items were truncated because they contain too many characters.*/,
+  `TOO_MANY_ADDITIONAL_IMAGE_LINKS` int /*Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.*/,
+  `UPDATED_TIME_INVALID` int /*Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.*/,
+  `UTM_SOURCE_AUTO_CORRECTED` int /*Some items include utm_source values that are formatted incorrectly and have been automatically corrected.*/,
+  `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` int /*A video is required in the item when ad_video fields are provided.*/,
+  `WEIGHT_UNIT_INVALID` int /*Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.*/
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsFeedVideoCounts` generated from model 'catalogsFeedVideoCounts'
+-- Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsFeedVideoCounts` (
+  `ingested_videos` int /*The number of videos successfully ingested from the feed file.*/,
+  `not_ingested_videos` int /*The number of videos that were not ingested from the feed file.*/,
+  `total_videos` int /*The number of videos in the feed file.*/
+);  /*Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.*/
 
 
 -- --------------------------------------------------------------------------
@@ -3386,15 +4246,15 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedValidationWarnings` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedsCreateRequest` (
-  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
   `format` long NOT NULL,
   `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
+  `credentials` long,
+  `default_availability` long,
+  `default_country` long,
   `default_currency` long,
   `default_locale` long,
-  `credentials` long,
   `preferred_processing_schedule` long,
-  `default_country` long,
-  `default_availability` long,
   `status` long
 );  /*Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.*/
 
@@ -3405,12 +4265,12 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedsCreateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedsUpdateRequest` (
+  `credentials` long,
   `default_availability` long,
   `default_currency` long,
-  `name` text /*A human-friendly name associated to a given feed.*/,
   `format` long,
-  `credentials` long,
   `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text /*A human-friendly name associated to a given feed.*/,
   `preferred_processing_schedule` long,
   `status` long
 );  /*Request object for updating a feed.*/
@@ -3423,9 +4283,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedsUpdateRequest` (
 CREATE TABLE IF NOT EXISTS `CatalogsHotelAddress` (
   `addr1` text /*Primary street address of hotel.*/,
   `city` text /*City where the hotel is located.*/,
-  `region` text /*State, county, province, where the hotel is located.*/,
   `country` text /*Country where the hotel is located.*/,
-  `postal_code` text /*Required for countries with a postal code system. Postal or zip code of the hotel.*/
+  `postal_code` text /*Required for countries with a postal code system. Postal or zip code of the hotel.*/,
+  `region` text /*State, county, province, where the hotel is located.*/
 ); 
 
 
@@ -3434,23 +4294,23 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelAddress` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelAttributes` (
-  `name` text /*The hotel&#39;s name.*/,
-  `link` text /*Link to the product page*/,
-  `description` text /*Brief description of the hotel.*/,
-  `brand` text /*The brand to which this hotel belongs to.*/,
-  `latitude` decimal /*Latitude of the hotel.*/,
-  `longitude` decimal /*Longitude of the hotel.*/,
   `address` long,
+  `base_price` text /*Base price of the hotel room per night followed by the ISO currency code*/,
+  `brand` text /*The brand to which this hotel belongs to.*/,
+  `category` text /*The type of property. The category can be any type of internal description desired.*/,
   `custom_label_0` text /*Custom grouping of hotels*/,
   `custom_label_1` text /*Custom grouping of hotels*/,
   `custom_label_2` text /*Custom grouping of hotels*/,
   `custom_label_3` text /*Custom grouping of hotels*/,
   `custom_label_4` text /*Custom grouping of hotels*/,
-  `category` text /*The type of property. The category can be any type of internal description desired.*/,
-  `base_price` text /*Base price of the hotel room per night followed by the ISO currency code*/,
-  `sale_price` text /*Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.*/,
+  `description` text /*Brief description of the hotel.*/,
   `guest_ratings` long,
-  `main_image` long,
+  `latitude` decimal /*Latitude of the hotel.*/,
+  `link` text /*Link to the product page*/,
+  `longitude` decimal /*Longitude of the hotel.*/,
+  `name` text /*The hotel&#39;s name.*/,
+  `sale_price` text /*Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.*/,
+  `main_image` long
 ); 
 
 -- --------------------------------------------------------------------------
@@ -3489,14 +4349,24 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelAttributesAllOfMainImageTag` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelAvailableFilterValues` generated from model 'catalogsHotelAvailableFilterValues'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelAvailableFilterValues` (
+  `catalog_type` text NOT NULL,
+  `filter_values` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsHotelBatchItem` generated from model 'catalogsHotelBatchItem'
 -- Hotel batch item
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchItem` (
+  `attributes` long NOT NULL,
   `hotel_id` text NOT NULL /*The catalog hotel id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*Hotel batch item*/
 
 
@@ -3530,16 +4400,16 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeed` (
   `created_at` datetime NOT NULL,
   `id` text NOT NULL PRIMARY KEY,
   `updated_at` datetime NOT NULL,
-  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
-  `format` long NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/,
   `catalog_type` long NOT NULL,
   `credentials` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
-  `preferred_processing_schedule` long NOT NULL,
-  `status` long NOT NULL,
   `default_currency` long NOT NULL,
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
-  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
+  `preferred_processing_schedule` long NOT NULL,
+  `status` long NOT NULL
 );  /*Catalogs Hotel Feed object*/
 
 
@@ -3549,15 +4419,15 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeed` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsCreateRequest` (
-  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
-  `format` long NOT NULL,
-  `default_locale` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `credentials` long,
-  `preferred_processing_schedule` long,
+  `default_locale` long NOT NULL,
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
   `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.*/,
+  `credentials` long,
+  `default_currency` long,
+  `preferred_processing_schedule` long,
   `status` long
 );  /*Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.*/
 
@@ -3569,14 +4439,71 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsCreateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsUpdateRequest` (
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `name` text /*A human-friendly name associated to a given feed.*/,
-  `format` long,
   `credentials` long,
+  `default_currency` long,
+  `format` long,
   `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text /*A human-friendly name associated to a given feed.*/,
   `preferred_processing_schedule` long,
   `status` long
 );  /*Request object for updating a feed.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `catalogs_hotel_filter_values_map` generated from model 'catalogsHotelFilterValuesMap'
+-- A map of filter attributes to their available values.
+--
+
+CREATE TABLE IF NOT EXISTS `catalogs_hotel_filter_values_map` (
+);  /*A map of filter attributes to their available values.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelFilterValuesMapBrand` generated from model 'CatalogsHotelFilterValuesMapBrand'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelFilterValuesMapBrand` (
+  `catalogsHotelFilterValuesMap` long NOT NULL
+  `brand` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelFilterValuesMapCustomLabel0` generated from model 'CatalogsHotelFilterValuesMapCustomLabel0'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelFilterValuesMapCustomLabel0` (
+  `catalogsHotelFilterValuesMap` long NOT NULL
+  `customLabel0` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelFilterValuesMapCustomLabel1` generated from model 'CatalogsHotelFilterValuesMapCustomLabel1'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelFilterValuesMapCustomLabel1` (
+  `catalogsHotelFilterValuesMap` long NOT NULL
+  `customLabel1` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelFilterValuesMapCustomLabel2` generated from model 'CatalogsHotelFilterValuesMapCustomLabel2'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelFilterValuesMapCustomLabel2` (
+  `catalogsHotelFilterValuesMap` long NOT NULL
+  `customLabel2` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelFilterValuesMapCustomLabel3` generated from model 'CatalogsHotelFilterValuesMapCustomLabel3'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelFilterValuesMapCustomLabel3` (
+  `catalogsHotelFilterValuesMap` long NOT NULL
+  `customLabel3` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelFilterValuesMapCustomLabel4` generated from model 'CatalogsHotelFilterValuesMapCustomLabel4'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelFilterValuesMapCustomLabel4` (
+  `catalogsHotelFilterValuesMap` long NOT NULL
+  `customLabel4` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -3585,10 +4512,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsUpdateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelGuestRatings` (
-  `score` decimal /*Your hotel&#39;s rating.*/,
-  `number_of_reviewers` int /*Total number of people who have rated this hotel.*/,
   `max_score` decimal /*Max value for the hotel rating score.*/,
-  `rating_system` text /*System you use for guest reviews.*/
+  `number_of_reviewers` int /*Total number of people who have rated this hotel.*/,
+  `rating_system` text /*System you use for guest reviews.*/,
+  `score` decimal /*Your hotel&#39;s rating.*/
 );  /*If specified, you must provide all properties*/
 
 
@@ -3599,7 +4526,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelGuestRatings` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelItemErrorResponse` (
   `catalog_type` long NOT NULL,
-  `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
+  `hotel_id` text /*The catalog hotel id in the merchant namespace*/
 );  /*Object describing a hotel item error*/
 
 -- --------------------------------------------------------------------------
@@ -3618,8 +4545,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemErrorResponseItemValidationEvent` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelItemResponse` (
   `catalog_type` long NOT NULL,
+  `attributes` long,
   `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
-  `attributes` long
 );  /*Object describing a hotel record*/
 
 -- --------------------------------------------------------------------------
@@ -3639,9 +4566,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemResponsePin` (
 CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsBatch` (
   `catalog_type` long NOT NULL,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
-  `status` long,
+  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `status` long
 );  /*Object describing the catalogs hotel items batch*/
 
 -- --------------------------------------------------------------------------
@@ -3695,8 +4622,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsPostFilterHotelIds` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelListProductsByCatalogBasedFilterRequest` (
-  `catalog_type` text NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
+  `catalog_type` text NOT NULL,
   `filters` long NOT NULL
 );  /*Request object to list products for a given hotel catalog_id and product group filter.*/
 
@@ -3717,13 +4644,14 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProduct` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroup` (
-  `catalog_type` text NOT NULL,
-  `id` text NOT NULL PRIMARY KEY /*ID of the hotel product group.*/,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
-  `name` text /*Name of hotel product group*/,
-  `description` text,
+  `catalog_type` text NOT NULL,
+  `filters` long NOT NULL,
+  `id` text NOT NULL PRIMARY KEY /*ID of the hotel product group.*/,
+  `type` long NOT NULL,
   `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
+  `description` text,
+  `name` text /*Name of hotel product group*/,
   `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/
 ); 
 
@@ -3734,10 +4662,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroup` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupCreateRequest` (
-  `catalog_type` text NOT NULL,
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
+  `catalog_type` text NOT NULL,
+  `filters` long NOT NULL,
+  `name` text NOT NULL,
   `description` text
 );  /*Request object for creating a hotel product group.*/
 
@@ -3755,7 +4683,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupFilterKeys` (
   `CUSTOM_LABEL_2` long NOT NULL,
   `CUSTOM_LABEL_3` long NOT NULL,
   `CUSTOM_LABEL_4` long NOT NULL,
-  `COUNTRY` long NOT NULL
+  `COUNTRY` long NOT NULL,
+  `TITLE_KEYWORDS` long NOT NULL
 ); 
 
 
@@ -3834,9 +4763,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupProductCounts` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupUpdateRequest` (
   `catalog_type` text,
-  `name` text,
   `description` text,
-  `filters` long
+  `filters` long,
+  `name` text
 );  /*Request object for updating a hotel product group.*/
 
 
@@ -3866,8 +4795,31 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelReportParameters` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelReportParameters_report` (
-  `report_type` text NOT NULL,
   `feed_id` text NOT NULL /*ID of the feed entity.*/,
+  `report_type` text NOT NULL,
+  `processing_result_id` text /*Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.*/,
+  `catalog_id` text /*Unique identifier of a catalog. If not given, oldest catalog will be used*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelReportStatsParameters` generated from model 'catalogsHotelReportStatsParameters'
+-- Parameters for hotel report
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelReportStatsParameters` (
+  `catalog_type` text NOT NULL,
+  `report` long NOT NULL
+);  /*Parameters for hotel report*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelReportStatsParameters_report` generated from model 'catalogsHotelReportStatsParametersReport'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelReportStatsParameters_report` (
+  `feed_id` text NOT NULL /*ID of the feed entity.*/,
+  `report_type` text NOT NULL,
   `processing_result_id` text /*Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.*/,
   `catalog_id` text /*Unique identifier of a catalog. If not given, oldest catalog will be used*/
 ); 
@@ -3898,8 +4850,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemValidationErrors` (
   `IMAGE_LINK_LENGTH_TOO_LONG` long,
   `IMAGE_LINK_MISSING` long,
   `INVALID_DOMAIN` long,
-  `ITEMID_MISSING` long,
   `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` long,
+  `ITEMID_MISSING` long,
   `LINK_FORMAT_INVALID` long,
   `LINK_LENGTH_TOO_LONG` long,
   `LIST_PRICE_INVALID` long,
@@ -3919,9 +4871,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemValidationErrors` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemValidationIssues` (
-  `item_number` int NOT NULL /*Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.*/,
-  `item_id` text NOT NULL /*The merchant-created unique ID that represents the product.*/,
   `errors` long NOT NULL,
+  `item_id` text NOT NULL /*The merchant-created unique ID that represents the product.*/,
+  `item_number` int NOT NULL /*Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.*/,
   `warnings` long NOT NULL
 ); 
 
@@ -3931,14 +4883,174 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemValidationIssues` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemValidationWarnings` (
+  `AD_IMAGE_0_LINK_DUPLICATED` long,
+  `AD_IMAGE_0_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_0_LINK_REQUIRED` long,
+  `AD_IMAGE_0_LINK_WARNING` long,
+  `AD_IMAGE_0_TAG_DUPLICATED` long,
+  `AD_IMAGE_0_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_0_TAG_REQUIRED` long,
+  `AD_IMAGE_10_LINK_DUPLICATED` long,
+  `AD_IMAGE_10_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_10_LINK_REQUIRED` long,
+  `AD_IMAGE_10_LINK_WARNING` long,
+  `AD_IMAGE_10_TAG_DUPLICATED` long,
+  `AD_IMAGE_10_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_10_TAG_REQUIRED` long,
+  `AD_IMAGE_11_LINK_DUPLICATED` long,
+  `AD_IMAGE_11_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_11_LINK_REQUIRED` long,
+  `AD_IMAGE_11_LINK_WARNING` long,
+  `AD_IMAGE_11_TAG_DUPLICATED` long,
+  `AD_IMAGE_11_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_11_TAG_REQUIRED` long,
+  `AD_IMAGE_12_LINK_DUPLICATED` long,
+  `AD_IMAGE_12_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_12_LINK_REQUIRED` long,
+  `AD_IMAGE_12_LINK_WARNING` long,
+  `AD_IMAGE_12_TAG_DUPLICATED` long,
+  `AD_IMAGE_12_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_12_TAG_REQUIRED` long,
+  `AD_IMAGE_13_LINK_DUPLICATED` long,
+  `AD_IMAGE_13_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_13_LINK_REQUIRED` long,
+  `AD_IMAGE_13_LINK_WARNING` long,
+  `AD_IMAGE_13_TAG_DUPLICATED` long,
+  `AD_IMAGE_13_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_13_TAG_REQUIRED` long,
+  `AD_IMAGE_14_LINK_DUPLICATED` long,
+  `AD_IMAGE_14_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_14_LINK_REQUIRED` long,
+  `AD_IMAGE_14_LINK_WARNING` long,
+  `AD_IMAGE_14_TAG_DUPLICATED` long,
+  `AD_IMAGE_14_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_14_TAG_REQUIRED` long,
+  `AD_IMAGE_15_LINK_DUPLICATED` long,
+  `AD_IMAGE_15_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_15_LINK_REQUIRED` long,
+  `AD_IMAGE_15_LINK_WARNING` long,
+  `AD_IMAGE_15_TAG_DUPLICATED` long,
+  `AD_IMAGE_15_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_15_TAG_REQUIRED` long,
+  `AD_IMAGE_16_LINK_DUPLICATED` long,
+  `AD_IMAGE_16_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_16_LINK_REQUIRED` long,
+  `AD_IMAGE_16_LINK_WARNING` long,
+  `AD_IMAGE_16_TAG_DUPLICATED` long,
+  `AD_IMAGE_16_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_16_TAG_REQUIRED` long,
+  `AD_IMAGE_17_LINK_DUPLICATED` long,
+  `AD_IMAGE_17_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_17_LINK_REQUIRED` long,
+  `AD_IMAGE_17_LINK_WARNING` long,
+  `AD_IMAGE_17_TAG_DUPLICATED` long,
+  `AD_IMAGE_17_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_17_TAG_REQUIRED` long,
+  `AD_IMAGE_18_LINK_DUPLICATED` long,
+  `AD_IMAGE_18_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_18_LINK_REQUIRED` long,
+  `AD_IMAGE_18_LINK_WARNING` long,
+  `AD_IMAGE_18_TAG_DUPLICATED` long,
+  `AD_IMAGE_18_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_18_TAG_REQUIRED` long,
+  `AD_IMAGE_19_LINK_DUPLICATED` long,
+  `AD_IMAGE_19_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_19_LINK_REQUIRED` long,
+  `AD_IMAGE_19_LINK_WARNING` long,
+  `AD_IMAGE_19_TAG_DUPLICATED` long,
+  `AD_IMAGE_19_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_19_TAG_REQUIRED` long,
+  `AD_IMAGE_1_LINK_DUPLICATED` long,
+  `AD_IMAGE_1_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_1_LINK_REQUIRED` long,
+  `AD_IMAGE_1_LINK_WARNING` long,
+  `AD_IMAGE_1_TAG_DUPLICATED` long,
+  `AD_IMAGE_1_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_1_TAG_REQUIRED` long,
+  `AD_IMAGE_2_LINK_DUPLICATED` long,
+  `AD_IMAGE_2_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_2_LINK_REQUIRED` long,
+  `AD_IMAGE_2_LINK_WARNING` long,
+  `AD_IMAGE_2_TAG_DUPLICATED` long,
+  `AD_IMAGE_2_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_2_TAG_REQUIRED` long,
+  `AD_IMAGE_3_LINK_DUPLICATED` long,
+  `AD_IMAGE_3_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_3_LINK_REQUIRED` long,
+  `AD_IMAGE_3_LINK_WARNING` long,
+  `AD_IMAGE_3_TAG_DUPLICATED` long,
+  `AD_IMAGE_3_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_3_TAG_REQUIRED` long,
+  `AD_IMAGE_4_LINK_DUPLICATED` long,
+  `AD_IMAGE_4_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_4_LINK_REQUIRED` long,
+  `AD_IMAGE_4_LINK_WARNING` long,
+  `AD_IMAGE_4_TAG_DUPLICATED` long,
+  `AD_IMAGE_4_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_4_TAG_REQUIRED` long,
+  `AD_IMAGE_5_LINK_DUPLICATED` long,
+  `AD_IMAGE_5_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_5_LINK_REQUIRED` long,
+  `AD_IMAGE_5_LINK_WARNING` long,
+  `AD_IMAGE_5_TAG_DUPLICATED` long,
+  `AD_IMAGE_5_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_5_TAG_REQUIRED` long,
+  `AD_IMAGE_6_LINK_DUPLICATED` long,
+  `AD_IMAGE_6_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_6_LINK_REQUIRED` long,
+  `AD_IMAGE_6_LINK_WARNING` long,
+  `AD_IMAGE_6_TAG_DUPLICATED` long,
+  `AD_IMAGE_6_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_6_TAG_REQUIRED` long,
+  `AD_IMAGE_7_LINK_DUPLICATED` long,
+  `AD_IMAGE_7_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_7_LINK_REQUIRED` long,
+  `AD_IMAGE_7_LINK_WARNING` long,
+  `AD_IMAGE_7_TAG_DUPLICATED` long,
+  `AD_IMAGE_7_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_7_TAG_REQUIRED` long,
+  `AD_IMAGE_8_LINK_DUPLICATED` long,
+  `AD_IMAGE_8_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_8_LINK_REQUIRED` long,
+  `AD_IMAGE_8_LINK_WARNING` long,
+  `AD_IMAGE_8_TAG_DUPLICATED` long,
+  `AD_IMAGE_8_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_8_TAG_REQUIRED` long,
+  `AD_IMAGE_9_LINK_DUPLICATED` long,
+  `AD_IMAGE_9_LINK_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_9_LINK_REQUIRED` long,
+  `AD_IMAGE_9_LINK_WARNING` long,
+  `AD_IMAGE_9_TAG_DUPLICATED` long,
+  `AD_IMAGE_9_TAG_LENGTH_TOO_LONG` long,
+  `AD_IMAGE_9_TAG_REQUIRED` long,
   `AD_LINK_FORMAT_WARNING` long,
   `AD_LINK_SAME_AS_LINK` long,
+  `AD_VIDEO_0_LINK_DUPLICATED` long,
+  `AD_VIDEO_0_LINK_LENGTH_TOO_LONG` long,
+  `AD_VIDEO_0_LINK_REQUIRED` long,
+  `AD_VIDEO_0_LINK_WARNING` long,
+  `AD_VIDEO_0_TAG_DUPLICATED` long,
+  `AD_VIDEO_0_TAG_LENGTH_TOO_LONG` long,
+  `AD_VIDEO_0_TAG_REQUIRED` long,
+  `AD_VIDEO_1_LINK_DUPLICATED` long,
+  `AD_VIDEO_1_LINK_LENGTH_TOO_LONG` long,
+  `AD_VIDEO_1_LINK_REQUIRED` long,
+  `AD_VIDEO_1_LINK_WARNING` long,
+  `AD_VIDEO_1_TAG_DUPLICATED` long,
+  `AD_VIDEO_1_TAG_LENGTH_TOO_LONG` long,
+  `AD_VIDEO_1_TAG_REQUIRED` long,
+  `AD_VIDEO_2_LINK_DUPLICATED` long,
+  `AD_VIDEO_2_LINK_LENGTH_TOO_LONG` long,
+  `AD_VIDEO_2_LINK_REQUIRED` long,
+  `AD_VIDEO_2_LINK_WARNING` long,
+  `AD_VIDEO_2_TAG_DUPLICATED` long,
+  `AD_VIDEO_2_TAG_LENGTH_TOO_LONG` long,
+  `AD_VIDEO_2_TAG_REQUIRED` long,
   `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` long,
   `ADDITIONAL_IMAGE_LINK_WARNING` long,
   `ADWORDS_FORMAT_WARNING` long,
   `ADWORDS_SAME_AS_LINK` long,
   `AGE_GROUP_INVALID` long,
-  `SIZE_SYSTEM_INVALID` long,
   `ANDROID_DEEP_LINK_INVALID` long,
   `AVAILABILITY_DATE_INVALID` long,
   `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` long,
@@ -3961,19 +5073,21 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemValidationWarnings` (
   `OPTIONAL_PRODUCT_CATEGORY_MISSING` long,
   `PRODUCT_CATEGORY_DEPTH_WARNING` long,
   `PRODUCT_TYPE_LENGTH_TOO_LONG` long,
-  `SALES_PRICE_INVALID` long,
-  `SALES_PRICE_TOO_LOW` long,
-  `SALES_PRICE_TOO_HIGH` long,
   `SALE_DATE_INVALID` long,
-  `SHIPPING_INVALID` long,
+  `SALES_PRICE_INVALID` long,
+  `SALES_PRICE_TOO_HIGH` long,
+  `SALES_PRICE_TOO_LOW` long,
   `SHIPPING_HEIGHT_INVALID` long,
+  `SHIPPING_INVALID` long,
   `SHIPPING_WEIGHT_INVALID` long,
   `SHIPPING_WIDTH_INVALID` long,
+  `SIZE_SYSTEM_INVALID` long,
   `SIZE_TYPE_INVALID` long,
   `TAX_INVALID` long,
   `TITLE_LENGTH_TOO_LONG` long,
   `TOO_MANY_ADDITIONAL_IMAGE_LINKS` long,
   `UTM_SOURCE_AUTO_CORRECTED` long,
+  `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` long,
   `WEIGHT_UNIT_INVALID` long
 ); 
 
@@ -4002,10 +5116,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsItemResponse` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsBatch` (
   `catalog_type` long NOT NULL,
+  `created_time` datetime NOT NULL /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
-  `status` long,
+  `status` long
 );  /*Object describing the catalogs items batch*/
 
 -- --------------------------------------------------------------------------
@@ -4025,7 +5139,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchCreativeAssetsProcessingRecord` (
 CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchRequest` (
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `operation` long NOT NULL,
+  `operation` long NOT NULL
 );  /*Request object of catalogs items batch*/
 
 -- --------------------------------------------------------------------------
@@ -4045,7 +5159,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchRequestItemDeleteBatchRecord` (
 CREATE TABLE IF NOT EXISTS `CatalogsItemsCreateBatchRequest` (
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `operation` long NOT NULL,
+  `operation` long NOT NULL
 );  /*Request object to create catalogs items*/
 
 -- --------------------------------------------------------------------------
@@ -4065,7 +5179,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsCreateBatchRequestItemCreateBatchRecord
 CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteBatchRequest` (
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `operation` long NOT NULL,
+  `operation` long NOT NULL
 );  /*Request object to delete catalogs items*/
 
 -- --------------------------------------------------------------------------
@@ -4085,7 +5199,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteBatchRequestItemDeleteBatchRecord
 CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteDiscontinuedBatchRequest` (
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `operation` long NOT NULL,
+  `operation` long NOT NULL
 );  /*Request object to discontinue catalogs items*/
 
 -- --------------------------------------------------------------------------
@@ -4172,8 +5286,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFiltersCreativeAssetsIds` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
   `country` long NOT NULL,
-  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `filters` long NOT NULL
+  `filters` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/
 );  /*Request object of catalogs items*/
 
 
@@ -4185,7 +5299,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
 CREATE TABLE IF NOT EXISTS `CatalogsItemsUpdateBatchRequest` (
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `operation` long NOT NULL,
+  `operation` long NOT NULL
 );  /*Request object to update catalogs items*/
 
 -- --------------------------------------------------------------------------
@@ -4205,7 +5319,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsUpdateBatchRequestItemUpdateBatchRecord
 CREATE TABLE IF NOT EXISTS `CatalogsItemsUpsertBatchRequest` (
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
-  `operation` long NOT NULL,
+  `operation` long NOT NULL
 );  /*Request object to upsert catalogs items*/
 
 -- --------------------------------------------------------------------------
@@ -4253,8 +5367,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFeedBasedFilter` (
 CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFilterRequest` (
   `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group filter.*/,
   `filters` long NOT NULL,
-  `catalog_type` text NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `catalog_type` text NOT NULL,
   `country` long NOT NULL,
   `locale` long NOT NULL
 );  /*Request object to list products for a given product group filter.*/
@@ -4278,9 +5392,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsProduct` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsProductGroupCreateRequest` (
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
   `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group.*/,
+  `filters` long NOT NULL,
+  `name` text NOT NULL,
   `description` text,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/
 );  /*Request object for creating a product group.*/
@@ -4329,8 +5443,32 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterKeys` (
   `GOOGLE_PRODUCT_CATEGORY_2` long NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_1` long NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_0` long NOT NULL,
-  `PRODUCT_GROUP` long NOT NULL
+  `PRODUCT_GROUP` long NOT NULL,
+  `CUSTOM_NUMBER_0` long NOT NULL,
+  `CUSTOM_NUMBER_1` long NOT NULL,
+  `CUSTOM_NUMBER_2` long NOT NULL,
+  `CUSTOM_NUMBER_3` long NOT NULL,
+  `CUSTOM_NUMBER_4` long NOT NULL,
+  `TITLE_KEYWORDS` long NOT NULL
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsProductGroupFilterOperatorTypeCriteria` generated from model 'catalogsProductGroupFilterOperatorTypeCriteria'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterOperatorTypeCriteria` (
+  `filter_operator_type` text,
+  `negated` boolean
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsProductGroupFilterOperatorTypeCriteriaPropertyValues` generated from model 'CatalogsProductGroupFilterOperatorTypeCriteriaPropertyValues'
+
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterOperatorTypeCriteriaPropertyValues` (
+  `catalogsProductGroupFilterOperatorTypeCriteria` long NOT NULL
+  `propertyValues` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -4411,38 +5549,6 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFiltersRequestCatalogsProductGro
 
 CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFiltersRequestCatalogsProductGroupFilterKeys` (
   `catalogsProductGroupFiltersRequest` long NOT NULL
-  `catalogsProductGroupFilterKeys` long NOT NULL
-);
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroupFiltersRequest_anyOf` generated from model 'catalogsProductGroupFiltersRequestAnyOf'
---
-
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFiltersRequest_anyOf` (
-); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroupFiltersRequestAnyOfCatalogsProductGroupFilterKeys` generated from model 'CatalogsProductGroupFiltersRequestAnyOfCatalogsProductGroupFilterKeys'
-
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFiltersRequestAnyOfCatalogsProductGroupFilterKeys` (
-  `catalogsProductGroupFiltersRequestAnyOf` long NOT NULL
-  `catalogsProductGroupFilterKeys` long NOT NULL
-);
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroupFiltersRequest_anyOf_1` generated from model 'catalogsProductGroupFiltersRequestAnyOf1'
---
-
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFiltersRequest_anyOf_1` (
-); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroupFiltersRequestAnyOf1CatalogsProductGroupFilterKeys` generated from model 'CatalogsProductGroupFiltersRequestAnyOf1CatalogsProductGroupFilterKeys'
-
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFiltersRequestAnyOf1CatalogsProductGroupFilterKeys` (
-  `catalogsProductGroupFiltersRequestAnyOf1` long NOT NULL
   `catalogsProductGroupFilterKeys` long NOT NULL
 );
 
@@ -4565,9 +5671,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupPricingCriteria` (
 --
 
 CREATE TABLE IF NOT EXISTS `catalogs_product_group_pricing_currency_criteria` (
+  `currency` long NOT NULL,
   `operator` text NOT NULL,
   `value` decimal NOT NULL,
-  `currency` long NOT NULL,
   `negated` boolean
 ); 
 
@@ -4588,15 +5694,26 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupProductCountsVertical` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsProductGroupUint32Criteria` generated from model 'catalogsProductGroupUint32Criteria'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupUint32Criteria` (
+  `operator` text NOT NULL,
+  `value` int UNSIGNED NOT NULL,
+  `negated` boolean
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsProductGroupUpdateRequest` generated from model 'catalogsProductGroupUpdateRequest'
 -- Request object for updating a product group.
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsProductGroupUpdateRequest` (
-  `name` text,
   `description` text,
+  `filters` long,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
-  `filters` long
+  `name` text
 );  /*Request object for updating a product group.*/
 
 
@@ -4622,10 +5739,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupsList200ResponseCatalogsVertical
 --
 
 CREATE TABLE IF NOT EXISTS `catalogs_product_groups_update_request` (
-  `name` text,
   `description` text,
-  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
   `filters` long,
+  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
+  `name` text,
   `catalog_type` text,
   `country` long,
   `locale` long
@@ -4638,8 +5755,18 @@ CREATE TABLE IF NOT EXISTS `catalogs_product_groups_update_request` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsReport` (
   `report_status` text,
-  `url` text /*URL to download the report*/,
-  `size` decimal /*Size of the report in bytes*/
+  `size` decimal /*Size of the report in bytes*/,
+  `url` text /*URL to download the report*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportAllItemsFilter` generated from model 'catalogsReportAllItemsFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportAllItemsFilter` (
+  `report_type` text NOT NULL,
+  `catalog_id` text /*Unique identifier of a catalog. If not given, oldest catalog will be used*/
 ); 
 
 
@@ -4658,14 +5785,14 @@ CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionIssueFilter` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionStats` (
-  `report_type` text,
   `catalog_id` text /*ID of the catalog entity.*/,
   `code` int /*The event code that a diagnostics aggregated number references*/,
   `code_label` text /*A human-friendly label for the event code (e.g, &#39;SPAM&#39;)*/,
+  `ineligible_for_ads` boolean /*Indicates if issue makes items ineligible for ads distribution*/,
+  `ineligible_for_organic` boolean /*Indicates if issue makes items ineligible for organic distribution*/,
   `message` text /*Title message describing the diagnostic issue*/,
   `occurrences` int /*Number of occurrences of the issue*/,
-  `ineligible_for_ads` boolean /*Indicates if issue makes items ineligible for ads distribution*/,
-  `ineligible_for_organic` boolean /*Indicates if issue makes items ineligible for organic distribution*/
+  `report_type` text
 ); 
 
 
@@ -4674,8 +5801,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionStats` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionFilter` (
-  `report_type` text NOT NULL,
   `feed_id` text NOT NULL /*ID of the feed entity.*/,
+  `report_type` text NOT NULL,
   `processing_result_id` text /*Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.*/
 ); 
 
@@ -4685,12 +5812,12 @@ CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionFilter` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionStats` (
-  `report_type` text,
   `catalog_id` text /*ID of the catalog entity.*/,
   `code` int /*The event code that a diagnostics aggregated number references*/,
   `code_label` text /*A human-friendly label for the event code (e.g, &#39;AVAILABILITY_INVALID&#39;)*/,
   `message` text /*Title message describing the diagnostic issue*/,
   `occurrences` int /*Number of occurrences of the issue*/,
+  `report_type` text,
   `severity` text /*An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue*/
 ); 
 
@@ -4725,6 +5852,16 @@ CREATE TABLE IF NOT EXISTS `CatalogsReportStats` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailAvailableFilterValues` generated from model 'catalogsRetailAvailableFilterValues'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailAvailableFilterValues` (
+  `catalog_type` text NOT NULL,
+  `filter_values` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsRetailBatchRequest` generated from model 'catalogsRetailBatchRequest'
 -- A request object that can have multiple operations on a single retail batch
 --
@@ -4733,6 +5870,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest` (
   `catalog_type` text NOT NULL,
   `country` long NOT NULL,
   `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
+  `catalog_id` text /*Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog*/
 );  /*A request object that can have multiple operations on a single retail batch*/
 
 -- --------------------------------------------------------------------------
@@ -4749,9 +5887,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequestCatalogsRetailBatchRequest
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest_items_inner` (
+  `attributes` long NOT NULL,
   `item_id` text NOT NULL /*The catalog item id in the merchant namespace*/,
   `operation` text NOT NULL,
-  `attributes` long NOT NULL,
+  `last_updated_time` long /*The millisecond timestamp when the item was lastly modified by the merchant.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -4772,17 +5911,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeed` (
   `created_at` datetime NOT NULL,
   `id` text NOT NULL PRIMARY KEY,
   `updated_at` datetime NOT NULL,
-  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
-  `format` long NOT NULL,
   `catalog_type` long NOT NULL,
   `credentials` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
-  `preferred_processing_schedule` long NOT NULL,
-  `status` long NOT NULL,
+  `default_availability` long NOT NULL,
+  `default_country` long NOT NULL,
   `default_currency` long NOT NULL,
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
-  `default_country` long NOT NULL,
-  `default_availability` long NOT NULL
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
+  `preferred_processing_schedule` long NOT NULL,
+  `status` long NOT NULL
 );  /*Catalogs Retail Feed object*/
 
 
@@ -4792,16 +5931,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeed` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsCreateRequest` (
-  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
-  `format` long NOT NULL,
-  `default_locale` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
   `catalog_type` long NOT NULL,
   `default_country` long NOT NULL,
-  `default_currency` long,
+  `default_locale` long NOT NULL,
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.*/,
   `credentials` long,
-  `preferred_processing_schedule` long,
   `default_availability` long,
+  `default_currency` long,
+  `preferred_processing_schedule` long,
   `status` long
 );  /*Request object for creating a retail feed.*/
 
@@ -4813,15 +5953,216 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsCreateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsUpdateRequest` (
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `name` text /*A human-friendly name associated to a given feed.*/,
-  `format` long,
   `credentials` long,
+  `default_availability` long,
+  `default_currency` long,
+  `format` long,
   `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text /*A human-friendly name associated to a given feed.*/,
   `preferred_processing_schedule` long,
-  `status` long,
-  `default_availability` long
+  `status` long
 );  /*Request object for updating a feed.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `catalogs_retail_filter_values_map` generated from model 'catalogsRetailFilterValuesMap'
+-- A map of filter attributes to their available values.
+--
+
+CREATE TABLE IF NOT EXISTS `catalogs_retail_filter_values_map` (
+);  /*A map of filter attributes to their available values.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapAdImageTags` generated from model 'CatalogsRetailFilterValuesMapAdImageTags'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapAdImageTags` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `adImageTags` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapAdVideoTags` generated from model 'CatalogsRetailFilterValuesMapAdVideoTags'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapAdVideoTags` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `adVideoTags` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapAvailability` generated from model 'CatalogsRetailFilterValuesMapAvailability'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapAvailability` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `availability` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapBrand` generated from model 'CatalogsRetailFilterValuesMapBrand'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapBrand` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `brand` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapCondition` generated from model 'CatalogsRetailFilterValuesMapCondition'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapCondition` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `condition` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapCustomLabel0` generated from model 'CatalogsRetailFilterValuesMapCustomLabel0'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapCustomLabel0` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `customLabel0` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapCustomLabel1` generated from model 'CatalogsRetailFilterValuesMapCustomLabel1'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapCustomLabel1` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `customLabel1` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapCustomLabel2` generated from model 'CatalogsRetailFilterValuesMapCustomLabel2'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapCustomLabel2` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `customLabel2` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapCustomLabel3` generated from model 'CatalogsRetailFilterValuesMapCustomLabel3'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapCustomLabel3` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `customLabel3` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapCustomLabel4` generated from model 'CatalogsRetailFilterValuesMapCustomLabel4'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapCustomLabel4` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `customLabel4` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGender` generated from model 'CatalogsRetailFilterValuesMapGender'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGender` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `gender` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory0` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory0'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory0` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory0` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory1` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory1'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory1` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory1` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory2` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory2'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory2` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory2` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory3` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory3'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory3` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory3` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory4` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory4'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory4` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory4` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory5` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory5'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory5` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory5` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapGoogleProductCategory6` generated from model 'CatalogsRetailFilterValuesMapGoogleProductCategory6'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapGoogleProductCategory6` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `googleProductCategory6` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapMediaType` generated from model 'CatalogsRetailFilterValuesMapMediaType'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapMediaType` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `mediaType` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapProductType0` generated from model 'CatalogsRetailFilterValuesMapProductType0'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapProductType0` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `productType0` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapProductType1` generated from model 'CatalogsRetailFilterValuesMapProductType1'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapProductType1` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `productType1` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapProductType2` generated from model 'CatalogsRetailFilterValuesMapProductType2'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapProductType2` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `productType2` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapProductType3` generated from model 'CatalogsRetailFilterValuesMapProductType3'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapProductType3` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `productType3` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailFilterValuesMapProductType4` generated from model 'CatalogsRetailFilterValuesMapProductType4'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailFilterValuesMapProductType4` (
+  `catalogsRetailFilterValuesMap` long NOT NULL
+  `productType4` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -4831,7 +6172,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsUpdateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailItemErrorResponse` (
   `catalog_type` long NOT NULL,
-  `item_id` text /*The catalog item id in the merchant namespace*/,
+  `item_id` text /*The catalog item id in the merchant namespace*/
 );  /*Object describing a retail item error*/
 
 -- --------------------------------------------------------------------------
@@ -4850,8 +6191,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemErrorResponseItemValidationEvent` 
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailItemResponse` (
   `catalog_type` long NOT NULL,
+  `attributes` long,
   `item_id` text /*The catalog retail item id in the merchant namespace*/,
-  `attributes` long
 );  /*Object describing a retail item record*/
 
 -- --------------------------------------------------------------------------
@@ -4870,10 +6211,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemResponsePin` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsBatch` (
   `catalog_type` long NOT NULL,
+  `created_time` datetime NOT NULL /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.*/,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
-  `status` long,
+  `status` long
 );  /*Object describing the catalogs retail items batch*/
 
 -- --------------------------------------------------------------------------
@@ -4927,10 +6268,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsPostFilterItemIds` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailListProductsByCatalogBasedFilterRequest` (
-  `catalog_type` text NOT NULL /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the retail product group.*/,
-  `filters` long NOT NULL,
+  `catalog_type` text NOT NULL /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
   `country` long NOT NULL,
+  `filters` long NOT NULL,
   `locale` long NOT NULL
 );  /*Request object to list products for a given retail catalog_id and product group filter.*/
 
@@ -4951,20 +6292,20 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailProduct` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroup` (
-  `catalog_type` text NOT NULL,
-  `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the retail product group.*/,
+  `catalog_type` text NOT NULL,
   `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
-  `name` text /*Name of catalog product group*/,
+  `filters` long NOT NULL,
+  `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
+  `type` long NOT NULL,
+  `country` text,
+  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
   `description` text,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
-  `type` long,
+  `locale` text,
+  `name` text /*Name of catalog product group*/,
   `status` long,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
-  `country` text,
-  `locale` text
+  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/
 ); 
 
 
@@ -4974,13 +6315,13 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroup` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupCreateRequest` (
-  `catalog_type` text NOT NULL /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the retail product group.*/,
-  `country` long NOT NULL,
-  `locale` long NOT NULL,
-  `description` text
+  `catalog_type` text NOT NULL /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
+  `filters` long NOT NULL,
+  `name` text NOT NULL,
+  `country` long,
+  `description` text,
+  `locale` long
 );  /*Request object for creating a product group.*/
 
 
@@ -5006,11 +6347,11 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupProductCounts` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupUpdateRequest` (
   `catalog_type` text /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
-  `name` text,
+  `country` long,
   `description` text,
   `filters` long,
-  `country` long,
-  `locale` long
+  `locale` long,
+  `name` text
 );  /*Request object for updating a retail product group.*/
 
 
@@ -5020,12 +6361,12 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupUpdateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailProductMetadata` (
-  `item_id` text NOT NULL /*The user-created unique ID that represents the product.*/,
-  `item_group_id` text NOT NULL /*The parent ID of the product.*/,
   `availability` long NOT NULL,
+  `currency` long NOT NULL,
+  `item_group_id` text NOT NULL /*The parent ID of the product.*/,
+  `item_id` text NOT NULL /*The user-created unique ID that represents the product.*/,
   `price` decimal NOT NULL /*The price of the product.*/,
-  `sale_price` decimal NOT NULL /*The discounted price of the product.*/,
-  `currency` long NOT NULL
+  `sale_price` decimal NOT NULL /*The discounted price of the product.*/
 );  /*Retail product metadata entity*/
 
 
@@ -5041,21 +6382,32 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailReportParameters` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailReportStatsParameters` generated from model 'catalogsRetailReportStatsParameters'
+-- Parameters for retail report
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailReportStatsParameters` (
+  `catalog_type` text NOT NULL,
+  `report` long NOT NULL
+);  /*Parameters for retail report*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsUpdatableCreativeAssetsAttributes` generated from model 'catalogsUpdatableCreativeAssetsAttributes'
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpdatableCreativeAssetsAttributes` (
-  `title` text /*The name of the creative assets.*/,
-  `description` text /*Brief description of the creative assets.*/,
-  `link` text /*Link to the creative assets page.*/,
-  `ios_deep_link` text /*IOS deep link to the creative assets page.*/,
   `android_deep_link` text /*Link to the creative assets page.*/,
-  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
   `custom_label_0` text /*Custom grouping of creative assets.*/,
   `custom_label_1` text /*Custom grouping of creative assets.*/,
   `custom_label_2` text /*Custom grouping of creative assets.*/,
   `custom_label_3` text /*Custom grouping of creative assets.*/,
   `custom_label_4` text /*Custom grouping of creative assets.*/,
+  `description` text /*Brief description of the creative assets.*/,
+  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
+  `ios_deep_link` text /*IOS deep link to the creative assets page.*/,
+  `link` text /*Link to the creative assets page.*/,
+  `title` text /*The name of the creative assets.*/,
   `visibility` text /*Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.*/
 ); 
 
@@ -5065,22 +6417,22 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdatableCreativeAssetsAttributes` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpdatableHotelAttributes` (
-  `name` text /*The hotel&#39;s name.*/,
-  `link` text /*Link to the product page*/,
-  `description` text /*Brief description of the hotel.*/,
-  `brand` text /*The brand to which this hotel belongs to.*/,
-  `latitude` decimal /*Latitude of the hotel.*/,
-  `longitude` decimal /*Longitude of the hotel.*/,
   `address` long,
+  `base_price` text /*Base price of the hotel room per night followed by the ISO currency code*/,
+  `brand` text /*The brand to which this hotel belongs to.*/,
+  `category` text /*The type of property. The category can be any type of internal description desired.*/,
   `custom_label_0` text /*Custom grouping of hotels*/,
   `custom_label_1` text /*Custom grouping of hotels*/,
   `custom_label_2` text /*Custom grouping of hotels*/,
   `custom_label_3` text /*Custom grouping of hotels*/,
   `custom_label_4` text /*Custom grouping of hotels*/,
-  `category` text /*The type of property. The category can be any type of internal description desired.*/,
-  `base_price` text /*Base price of the hotel room per night followed by the ISO currency code*/,
-  `sale_price` text /*Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.*/,
-  `guest_ratings` long
+  `description` text /*Brief description of the hotel.*/,
+  `guest_ratings` long,
+  `latitude` decimal /*Latitude of the hotel.*/,
+  `link` text /*Link to the product page*/,
+  `longitude` decimal /*Longitude of the hotel.*/,
+  `name` text /*The hotel&#39;s name.*/,
+  `sale_price` text /*Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -5098,9 +6450,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdatableHotelAttributesNeighborhood` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpdateCreativeAssetsItem` (
+  `attributes` long NOT NULL,
   `creative_assets_id` text NOT NULL /*The catalog creative assets item id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*A creative assets item to be updated.*/
 
 
@@ -5110,9 +6462,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdateCreativeAssetsItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpdateHotelItem` (
+  `attributes` long NOT NULL,
   `hotel_id` text NOT NULL /*The catalog hotel item id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*Object describing an hotel item batch record*/
 
 
@@ -5122,9 +6474,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdateHotelItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpdateRetailItem` (
+  `attributes` long NOT NULL,
   `item_id` text NOT NULL /*The catalog item id in the merchant namespace*/,
   `operation` text NOT NULL,
-  `attributes` long NOT NULL,
 );  /*An item to be updated*/
 
 -- --------------------------------------------------------------------------
@@ -5142,9 +6494,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdateRetailItemUpdateMaskFieldType` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpsertCreativeAssetsItem` (
+  `attributes` long NOT NULL,
   `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*A creative assets item to be upserted.*/
 
 
@@ -5154,9 +6506,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertCreativeAssetsItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpsertHotelItem` (
+  `attributes` long NOT NULL,
   `hotel_id` text NOT NULL /*The catalog hotel id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*A hotel item to be upserted.*/
 
 
@@ -5166,9 +6518,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertHotelItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpsertRetailItem` (
+  `attributes` long NOT NULL,
   `item_id` text NOT NULL /*The catalog item id in the merchant namespace*/,
-  `operation` text NOT NULL,
-  `attributes` long NOT NULL
+  `operation` text NOT NULL
 );  /*An item to be upserted*/
 
 
@@ -5199,18 +6551,18 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequestCatalogsCreativeAssetsBa
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsCreateRequest` (
-  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
-  `format` long NOT NULL,
-  `default_locale` long NOT NULL,
-  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
   `catalog_type` long NOT NULL,
   `default_country` long NOT NULL,
-  `default_currency` long,
+  `default_locale` long NOT NULL,
+  `format` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/,
   `credentials` long,
-  `preferred_processing_schedule` long,
   `default_availability` long,
-  `status` long,
-  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/
+  `default_currency` long,
+  `preferred_processing_schedule` long,
+  `status` long
 );  /*Request object for creating a feed.*/
 
 
@@ -5221,14 +6573,14 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsCreateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsUpdateRequest` (
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `name` text /*A human-friendly name associated to a given feed.*/,
-  `format` long,
   `credentials` long,
+  `default_availability` long,
+  `default_currency` long,
+  `format` long,
   `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text /*A human-friendly name associated to a given feed.*/,
   `preferred_processing_schedule` long,
-  `status` long,
-  `default_availability` long
+  `status` long
 );  /*Request object for updating a feed.*/
 
 
@@ -5237,20 +6589,20 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsUpdateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroup` (
-  `catalog_type` text NOT NULL,
-  `id` text NOT NULL PRIMARY KEY /*ID of the creative assets product group.*/,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `catalog_type` text NOT NULL,
   `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
-  `name` text /*Name of creative assets product group*/,
+  `filters` long NOT NULL,
+  `id` text NOT NULL PRIMARY KEY /*ID of the creative assets product group.*/,
+  `type` long NOT NULL,
+  `country` text,
+  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
   `description` text,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
-  `type` long,
+  `locale` text,
+  `name` text /*Name of creative assets product group*/,
   `status` long,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
-  `country` text,
-  `locale` text
+  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/
 ); 
 
 
@@ -5260,13 +6612,13 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroup` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupCreateRequest` (
-  `catalog_type` text NOT NULL,
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
-  `country` long NOT NULL,
-  `locale` long NOT NULL,
-  `description` text
+  `catalog_type` text NOT NULL,
+  `filters` long NOT NULL,
+  `name` text NOT NULL,
+  `country` long,
+  `description` text,
+  `locale` long
 );  /*Request object for creating a catalog based product group.*/
 
 
@@ -5277,11 +6629,11 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupCreateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupUpdateRequest` (
   `catalog_type` text,
-  `name` text,
+  `country` long,
   `description` text,
   `filters` long,
-  `country` long,
-  `locale` long
+  `locale` long,
+  `name` text
 );  /*Request object for updating a catalog based product group.*/
 
 
@@ -5291,10 +6643,10 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupUpdateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalsListProductsByCatalogBasedFilterRequest` (
-  `catalog_type` text NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
-  `filters` long NOT NULL,
+  `catalog_type` text NOT NULL,
   `country` long NOT NULL,
+  `filters` long NOT NULL,
   `locale` long NOT NULL
 );  /*Request object to list products for a given catalog_id and product group filter.*/
 
@@ -5309,13 +6661,24 @@ CREATE TABLE IF NOT EXISTS `ConditionFilter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `ConversionAccessTokenResponse` generated from model 'conversionAccessTokenResponse'
+-- A successful conversion access token response.
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionAccessTokenResponse` (
+  `access_token` text NOT NULL,
+  `token_type` text
+);  /*A successful conversion access token response.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `ConversionApiResponse` generated from model 'conversionApiResponse'
 -- Schema describing the object in the response, which contains information about the events that were received and processed.
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionApiResponse` (
-  `num_events_received` int NOT NULL /*Total number of events received in the request.*/,
   `num_events_processed` int NOT NULL /*Number of events that were successfully processed from the events.*/,
+  `num_events_received` int NOT NULL /*Total number of events received in the request.*/
 );  /*Schema describing the object in the response, which contains information about the events that were received and processed.*/
 
 -- --------------------------------------------------------------------------
@@ -5339,13 +6702,71 @@ CREATE TABLE IF NOT EXISTS `ConversionApiResponse_events_inner` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventAppInfo` generated from model 'conversionEventAppInfo'
+-- Object containing information about the application where event occurred.
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventAppInfo` (
+  `app_id` text /*App ID in Google Play Store, AppStore or other stores.*/,
+  `app_name` text /*Name of the app. Primarily used for Mobile Apps.*/,
+  `app_package_name` text /*App package name*/,
+  `app_store` text /*The name of the app distributor or store from which the app was installed. Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps*/,
+  `app_version` text /*App version. Primarily used for mobile apps*/,
+  `install_time` int UNSIGNED /*App install time. Unix timestamp in seconds*/,
+  `user_agent` text /*User Agent request header. Primarily used for Web events*/,
+  `window_height` int UNSIGNED /*Inner height of the window or viewport.*/,
+  `window_width` int UNSIGNED /*Inner width of the window or viewport.*/
+);  /*Object containing information about the application where event occurred.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventDeviceInfo` generated from model 'conversionEventDeviceInfo'
+-- Object containing information about the device where event occurred.
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventDeviceInfo` (
+  `battery_level` int UNSIGNED /*Battery charge level percentage*/,
+  `brand` text /*Device brand*/,
+  `carrier` text /*User device&#39;s mobile carrier.*/,
+  `cpu_cores` int UNSIGNED /*Number of CPU cores*/,
+  `external_storage_free_space` int UNSIGNED /*External storage size in GB*/,
+  `external_storage_size` int UNSIGNED /*External storage size in GB*/,
+  `form_factor` text /*Device form factor*/,
+  `kernel_version` text /*Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release*/,
+  `locale` text /*Device locale BCP-47 format*/,
+  `model` text /*Device model name*/,
+  `network_type` text /*Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()*/,
+  `os_family` text /*OS Family*/,
+  `os_name` text /*Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch*/,
+  `os_release_name` text /*Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin*/,
+  `os_version` text /*Full name of the version. Examples: iOS: 18.3 Android: 16.1 MacOS: 15.5 Windows: 24H2 Ubuntu Linux: 25.04*/,
+  `screen_density` int UNSIGNED /*Screen density, PPI*/,
+  `screen_height` int UNSIGNED /*Screen height in pixels*/,
+  `screen_width` int UNSIGNED /*Screen width in pixels*/,
+  `storage_free_space` int UNSIGNED /*Internal storage size in GB*/,
+  `storage_size` int UNSIGNED /*Internal storage size in GB*/,
+  `timezone` text /*Device timezone*/,
+  `timezone_abbr` text /*Timezone abbreviation*/,
+  `type` text /*Device type*/
+);  /*Object containing information about the device where event occurred.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventDeviceInfoLanguages` generated from model 'ConversionEventDeviceInfoLanguages'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventDeviceInfoLanguages` (
+  `conversionEventDeviceInfo` long NOT NULL
+  `languages` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `ConversionEventResponse` generated from model 'conversionEventResponse'
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEventResponse` (
+  `ad_account_id` text /*Id of the ad account.*/,
   `conversion_event` long,
   `conversion_tag_id` text /*Id of the tag.*/,
-  `ad_account_id` text /*Id of the ad account.*/,
   `created_time` int /*Creation date in epoch format.*/
 ); 
 
@@ -5372,25 +6793,27 @@ CREATE TABLE IF NOT EXISTS `ConversionEventsConversionEventsDataInner` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner` (
-  `event_name` text NOT NULL /*&lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; */,
-  `action_source` text NOT NULL /*&lt;p&gt;   The source indicating where the conversion event occurred.   &lt;ul&gt;     &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;web&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; */,
-  `event_time` long NOT NULL /*The time when the event happened. Unix timestamp in seconds.*/,
+  `action_source` text NOT NULL /*&lt;p&gt;The source indicating where the conversion event occurred.&lt;/p&gt; - &#x60;app_android&#x60; - &#x60;app_ios&#x60; - &#x60;web&#x60; - &#x60;offline&#x60;*/,
   `event_id` text NOT NULL /*A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.*/,
+  `event_name` text NOT NULL /*&lt;p&gt;The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.&lt;/p&gt;  - &#x60;add_payment_info&#x60; - &#x60;add_to_cart&#x60; - &#x60;add_to_wishlist&#x60; - &#x60;app_install&#x60; - &#x60;checkout&#x60; - &#x60;custom&#x60; - &#x60;initiate_checkout&#x60; - &#x60;lead&#x60; - &#x60;page_visit&#x60; - &#x60;search&#x60; - &#x60;signup&#x60; - &#x60;subscribe&#x60; - &#x60;view_category&#x60; - &#x60;view_content&#x60; - &#x60;watch_video&#x60;*/,
+  `event_time` long NOT NULL /*The time when the event happened. Unix timestamp in seconds.*/,
   `user_data` long NOT NULL,
-  `event_source_url` text /*URL of the web conversion event.*/,
-  `opt_out` boolean /*When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.*/,
-  `partner_name` text /*The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’*/,
-  `custom_data` long,
   `app_id` text /*The app store app ID.*/,
+  `app_info` long,
   `app_name` text /*Name of the app.*/,
   `app_version` text /*Version of the app.*/,
+  `custom_data` long,
   `device_brand` text /*Brand of the user device.*/,
   `device_carrier` text /*User device&#39;s mobile carrier.*/,
+  `device_info` long,
   `device_model` text /*Model of the user device.*/,
   `device_type` text /*Type of the user device.*/,
+  `event_source_url` text /*URL of the web conversion event.*/,
+  `language` text /*Two-character ISO-639-1 language code indicating the user&#39;s language.*/,
+  `opt_out` boolean /*When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.*/,
   `os_version` text /*Version of the device operating system.*/,
-  `wifi` boolean /*Whether the event occurred when the user device was connected to wifi.*/,
-  `language` text /*Two-character ISO-639-1 language code indicating the user&#39;s language.*/
+  `partner_name` text /*The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’*/,
+  `wifi` boolean /*Whether the event occurred when the user device was connected to wifi.*/
 ); 
 
 
@@ -5400,16 +6823,19 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data` (
-  `currency` text /*The ISO-4217 currency code. If not provided, we will default to the advertiser&#39;s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.*/,
-  `value` text /*Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.*/,
-  `content_name` text /*The name of the page or product associated with the event.*/,
-  `content_category` text /*The category of the content associated with the event.*/,
   `content_brand` text /*The brand of the content associated with the event.*/,
+  `content_category` text /*The category of the content associated with the event.*/,
+  `content_name` text /*The name of the page or product associated with the event.*/,
+  `currency` text /*The ISO-4217 currency code. If not provided, we will default to the advertiser&#39;s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.*/,
+  `external_measurement_id` text /*Only use when instructed.*/,
+  `external_measurement_vendor_id` int /*Only use when instructed.*/,
+  `np` text /*Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.*/,
   `num_items` long /*Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/,
+  `opt_out_type` text /*Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;limited data processing&lt;/a&gt; and the developer&#39;s guide for &lt;a href&#x3D;\&quot;/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\&quot; target&#x3D;\&quot;_blank\&quot;&gt;tracking conversion events&lt;/a&gt; for help with using this parameter.*/,
   `order_id` text /*The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.*/,
+  `predicted_ltv` text /*Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.*/,
   `search_string` text /*The search string related to the user conversion event.*/,
-  `opt_out_type` text /*Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.*/,
-  `np` text /*Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.*/
+  `value` text /*Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.*/
 );  /*Object containing other custom data.*/
 
 -- --------------------------------------------------------------------------
@@ -5435,11 +6861,11 @@ CREATE TABLE IF NOT EXISTS `ConversionEventsDataInnerCustomDataConversionEventsD
 
 CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data_contents_inner` (
   `id` text PRIMARY KEY /*The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/,
-  `item_price` text /*The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/,
-  `quantity` long /*The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/,
-  `item_name` text /*The name of a product.*/,
+  `item_brand` text /*The brand of a product.*/,
   `item_category` text /*The category of a product.*/,
-  `item_brand` text /*The brand of a product.*/
+  `item_name` text /*The name of a product.*/,
+  `item_price` text /*The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/,
+  `quantity` long /*The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/
 ); 
 
 
@@ -5449,9 +6875,35 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data_contents_inn
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEventsUserData` (
-  `client_ip_address` text NOT NULL /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
-  `client_user_agent` text NOT NULL /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/
+  `click_id` text /*The unique identifier stored in _epik cookie on your domain or &amp;epik&#x3D; query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.*/,
+  `client_ip_address` text /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `client_user_agent` text /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `partner_id` text /*A unique identifier of visitors&#39; information defined by third party partners. e.g RampID*/,
 );  /*Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataCountry` generated from model 'ConversionEventsUserDataCountry'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataCountry` (
+  `conversionEventsUserData` long NOT NULL
+  `country` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataCt` generated from model 'ConversionEventsUserDataCt'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataCt` (
+  `conversionEventsUserData` long NOT NULL
+  `ct` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataDb` generated from model 'ConversionEventsUserDataDb'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataDb` (
+  `conversionEventsUserData` long NOT NULL
+  `db` text NOT NULL
+);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `ConversionEventsUserDataEm` generated from model 'ConversionEventsUserDataEm'
@@ -5462,6 +6914,30 @@ CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataEm` (
 );
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataExternalId` generated from model 'ConversionEventsUserDataExternalId'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataExternalId` (
+  `conversionEventsUserData` long NOT NULL
+  `externalId` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataFn` generated from model 'ConversionEventsUserDataFn'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataFn` (
+  `conversionEventsUserData` long NOT NULL
+  `fn` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataGe` generated from model 'ConversionEventsUserDataGe'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataGe` (
+  `conversionEventsUserData` long NOT NULL
+  `ge` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `ConversionEventsUserDataHashedMaids` generated from model 'ConversionEventsUserDataHashedMaids'
 
 CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataHashedMaids` (
@@ -5469,83 +6945,263 @@ CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataHashedMaids` (
   `hashedMaids` text NOT NULL
 );
 
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataLn` generated from model 'ConversionEventsUserDataLn'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataLn` (
+  `conversionEventsUserData` long NOT NULL
+  `ln` text NOT NULL
+);
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserData_anyOf` generated from model 'conversionEventsUserDataAnyOf'
+-- Table structure for table `ConversionEventsUserDataPh` generated from model 'ConversionEventsUserDataPh'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPh` (
+  `conversionEventsUserData` long NOT NULL
+  `ph` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataSt` generated from model 'ConversionEventsUserDataSt'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataSt` (
+  `conversionEventsUserData` long NOT NULL
+  `st` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataZp` generated from model 'ConversionEventsUserDataZp'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataZp` (
+  `conversionEventsUserData` long NOT NULL
+  `zp` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataProperties` generated from model 'conversionEventsUserDataProperties'
 --
 
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf` (
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataProperties` (
+  `click_id` text /*The unique identifier stored in _epik cookie on your domain or &amp;epik&#x3D; query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.*/,
   `client_ip_address` text /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
-  `client_user_agent` text /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/
+  `client_user_agent` text /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `partner_id` text /*A unique identifier of visitors&#39; information defined by third party partners. e.g RampID*/,
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserDataAnyOfEm` generated from model 'ConversionEventsUserDataAnyOfEm'
+-- Table structure for table `ConversionEventsUserDataPropertiesCountry` generated from model 'ConversionEventsUserDataPropertiesCountry'
 
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOfEm` (
-  `conversionEventsUserDataAnyOf` long NOT NULL
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesCountry` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `country` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesCt` generated from model 'ConversionEventsUserDataPropertiesCt'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesCt` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `ct` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesDb` generated from model 'ConversionEventsUserDataPropertiesDb'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesDb` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `db` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesEm` generated from model 'ConversionEventsUserDataPropertiesEm'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesEm` (
+  `conversionEventsUserDataProperties` long NOT NULL
   `em` text NOT NULL
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserDataAnyOfHashedMaids` generated from model 'ConversionEventsUserDataAnyOfHashedMaids'
+-- Table structure for table `ConversionEventsUserDataPropertiesExternalId` generated from model 'ConversionEventsUserDataPropertiesExternalId'
 
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOfHashedMaids` (
-  `conversionEventsUserDataAnyOf` long NOT NULL
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesExternalId` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `externalId` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesFn` generated from model 'ConversionEventsUserDataPropertiesFn'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesFn` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `fn` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesGe` generated from model 'ConversionEventsUserDataPropertiesGe'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesGe` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `ge` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesHashedMaids` generated from model 'ConversionEventsUserDataPropertiesHashedMaids'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesHashedMaids` (
+  `conversionEventsUserDataProperties` long NOT NULL
   `hashedMaids` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesLn` generated from model 'ConversionEventsUserDataPropertiesLn'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesLn` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `ln` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesPh` generated from model 'ConversionEventsUserDataPropertiesPh'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesPh` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `ph` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesSt` generated from model 'ConversionEventsUserDataPropertiesSt'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesSt` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `st` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataPropertiesZp` generated from model 'ConversionEventsUserDataPropertiesZp'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataPropertiesZp` (
+  `conversionEventsUserDataProperties` long NOT NULL
+  `zp` text NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserData_anyOf_1` generated from model 'conversionEventsUserDataAnyOf1'
+-- Table structure for table `ConversionHealthSelectionItem` generated from model 'conversionHealthSelectionItem'
+-- User selection of conversion health criteria for a single feature
 --
 
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf_1` (
-  `client_ip_address` text /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
-  `client_user_agent` text /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/
-); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserDataAnyOf1HashedMaids` generated from model 'ConversionEventsUserDataAnyOf1HashedMaids'
-
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf1HashedMaids` (
-  `conversionEventsUserDataAnyOf1` long NOT NULL
-  `hashedMaids` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserDataAnyOf1Em` generated from model 'ConversionEventsUserDataAnyOf1Em'
-
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf1Em` (
-  `conversionEventsUserDataAnyOf1` long NOT NULL
-  `em` text NOT NULL
-);
+CREATE TABLE IF NOT EXISTS `ConversionHealthSelectionItem` (
+  `status` blob NOT NULL /*Overall status for this selection item*/,
+  `conversionType` blob /*Status for conversion types*/,
+  `criteria` blob /*Status for criteria*/,
+  `ingestionSource` blob /*Status for ingestion sources*/
+);  /*User selection of conversion health criteria for a single feature*/
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserData_anyOf_2` generated from model 'conversionEventsUserDataAnyOf2'
+-- Table structure for table `ConversionMSOTEvents` generated from model 'conversionMSOTEvents'
+-- Object containing the MSOT conversion events.
 --
 
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf_2` (
-  `client_ip_address` text NOT NULL /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
-  `client_user_agent` text NOT NULL /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+CREATE TABLE IF NOT EXISTS `ConversionMSOTEvents` (
+  `ad_group_id` text NOT NULL /*The ID of the ad group that was attributed to the conversion event.*/,
+  `attribution_scope` text NOT NULL /*Ad event type.*/,
+  `event_id` text NOT NULL /*A unique id string that identifies this event. If you are already sending us events through Conversions API, then this id should match the event_id sent through Conversions API.*/,
+  `event_name` text NOT NULL /*Type of user event.*/,
+  `event_timestamp` long NOT NULL /*The time when the event occurred. Unix timestamp in seconds.*/,
+  `attribution_model` text /*The attribution model used to attribute the conversion event.*/,
+  `attribution_score` double /*Credit given to the attributed ad actions. Allowed values are &gt; 0 and &lt;&#x3D; 1.*/,
+  `campaign_id` text /*The ID of the campaign that was attributed to the conversion event.*/,
+  `currency` long,
+  `total_event_touchpoints` int UNSIGNED /*Total number of ad events including other non-Pinterest ad platforms.*/,
+  `total_events` int UNSIGNED /*Total number of conversion events that are reported in one API call. &lt;p&gt;If you are sending one API request for one attributed conversion event then this value should be 1.&lt;/p&gt; &lt;p&gt;If you are sending multiple attributed conversion events in one API request then this value should be the total number of attributed conversion events in the request.&lt;/p&gt;*/,
+  `value` double /*Order value of the conversion event. Required if &lt;code&gt;event_name&lt;/code&gt; is &#39;add_to_cart&#39; or &#39;checkout&#39;.*/
+);  /*Object containing the MSOT conversion events.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionMSOTEventsActionTimestamps` generated from model 'ConversionMSOTEventsActionTimestamps'
+
+CREATE TABLE IF NOT EXISTS `ConversionMSOTEventsActionTimestamps` (
+  `conversionMSOTEvents` long NOT NULL
+  `actionTimestamps` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionProductReportRequest` generated from model 'conversionProductReportRequest'
+-- Request for a brand, category, SKU report
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionProductReportRequest` (
+  `end_date` text NOT NULL /*Metric report end date (UTC). Format: YYYY-MM-DD.&lt;br&gt; A max of 1 year is allowed between the start and end date for reports.*/,
+  `granularity` text NOT NULL /*TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; WEEK - metrics are broken down weekly.&lt;br&gt; MONTH - metrics are broken down monthly.*/,
+  `level` text NOT NULL /*Level of the report*/,
+  `report_name` text NOT NULL /*Name of the conversion product report.*/,
+  `start_date` text NOT NULL /*Metric report start date (UTC). Format: YYYY-MM-DD.&lt;br&gt; Start date must be after 2024-03-16. 7 day minimum time window for report is required.*/,
+  `click_window_days` long /*Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.*/,
+  `conversion_product_attribution_type` text,
+  `conversion_product_breakdown` text,
+  `conversion_report_time` long /*The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.*/,
+  `view_window_days` long /*Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; day.*/
+);  /*Request for a brand, category, SKU report*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionProductReportRequestConversionProductReportingColumn` generated from model 'ConversionProductReportRequestConversionProductReportingColumn'
+
+CREATE TABLE IF NOT EXISTS `ConversionProductReportRequestConversionProductReportingColumn` (
+  `conversionProductReportRequest` long NOT NULL
+  `conversionProductReportingColumn` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionProductReportRequestAdGroupIds` generated from model 'ConversionProductReportRequestAdGroupIds'
+
+CREATE TABLE IF NOT EXISTS `ConversionProductReportRequestAdGroupIds` (
+  `conversionProductReportRequest` long NOT NULL
+  `adGroupIds` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionProductReportRequestCampaignIds` generated from model 'ConversionProductReportRequestCampaignIds'
+
+CREATE TABLE IF NOT EXISTS `ConversionProductReportRequestCampaignIds` (
+  `conversionProductReportRequest` long NOT NULL
+  `campaignIds` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionProductReportRequestObjectiveType` generated from model 'ConversionProductReportRequestObjectiveType'
+
+CREATE TABLE IF NOT EXISTS `ConversionProductReportRequestObjectiveType` (
+  `conversionProductReportRequest` long NOT NULL
+  `objectiveType` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionProductReportRequestProductSkuIds` generated from model 'ConversionProductReportRequestProductSkuIds'
+
+CREATE TABLE IF NOT EXISTS `ConversionProductReportRequestProductSkuIds` (
+  `conversionProductReportRequest` long NOT NULL
+  `productSkuIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionTag` generated from model 'conversionTag'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionTag` (
+  `name` text NOT NULL /*Conversion tag name.*/,
+  `ad_account_id` text NOT NULL /*Ad account ID.*/,
+  `code_snippet` text /*Tag code snippet.*/,
+  `configs` long,
+  `enhanced_match_status` long /*The enhanced match status of the tag*/,
+  `id` text PRIMARY KEY /*Tag ID.*/,
+  `last_fired_time_ms` decimal /*Time for the last event fired.*/,
+  `version` text /*Version number.*/,
+  `status` long
 ); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserDataAnyOf2Em` generated from model 'ConversionEventsUserDataAnyOf2Em'
-
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf2Em` (
-  `conversionEventsUserDataAnyOf2` long NOT NULL
-  `em` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `ConversionEventsUserDataAnyOf2HashedMaids` generated from model 'ConversionEventsUserDataAnyOf2HashedMaids'
-
-CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf2HashedMaids` (
-  `conversionEventsUserDataAnyOf2` long NOT NULL
-  `hashedMaids` text NOT NULL
-);
 
 
 -- --------------------------------------------------------------------------
@@ -5553,15 +7209,13 @@ CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf2HashedMaids` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionTagCommon` (
-  `ad_account_id` text /*Ad account ID.*/,
+  `name` text NOT NULL /*Conversion tag name.*/,
   `code_snippet` text /*Tag code snippet.*/,
-  `enhanced_match_status` long,
+  `configs` long,
+  `enhanced_match_status` long /*The enhanced match status of the tag*/,
   `id` text PRIMARY KEY /*Tag ID.*/,
   `last_fired_time_ms` decimal /*Time for the last event fired.*/,
-  `name` text /*Conversion tag name.*/,
-  `status` long,
-  `version` text /*Version number.*/,
-  `configs` long
+  `version` text /*Version number.*/
 ); 
 
 
@@ -5570,30 +7224,41 @@ CREATE TABLE IF NOT EXISTS `ConversionTagCommon` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionTagConfigs` (
-  `aem_enabled` boolean /*Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
+  `aem_db_enabled` boolean /*Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_enabled` boolean /*Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_external_id_enabled` boolean /*Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_fnln_enabled` boolean /*Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_ge_enabled` boolean /*Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_loc_enabled` boolean /*Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_ph_enabled` boolean /*Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
   `md_frequency` decimal /*Metadata ingestion frequency.*/,
-  `aem_fnln_enabled` boolean /*Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_ph_enabled` boolean /*Whether Automatic Enhanced Match phone is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_ge_enabled` boolean /*Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_db_enabled` boolean /*Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_loc_enabled` boolean /*Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionTagConfigsNoCodeCapiDomains` generated from model 'ConversionTagConfigsNoCodeCapiDomains'
+
+CREATE TABLE IF NOT EXISTS `ConversionTagConfigsNoCodeCapiDomains` (
+  `conversionTagConfigs` long NOT NULL
+  `noCodeCapiDomains` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `ConversionTagCreate` generated from model 'conversionTagCreate'
+-- Resource create operation model.
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionTagCreate` (
   `name` text NOT NULL /*Conversion tag name.*/,
-  `aem_enabled` boolean /*Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `md_frequency` decimal /*Metadata ingestion frequency.*/,
-  `aem_fnln_enabled` boolean /*Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_ph_enabled` boolean /*Whether Automatic Enhanced Match phone is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_ge_enabled` boolean /*Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_db_enabled` boolean /*Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
-  `aem_loc_enabled` boolean /*Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/
-); 
+  `aem_db_enabled` boolean /*Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_enabled` boolean /*Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_external_id_enabled` boolean /*Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_fnln_enabled` boolean /*Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_ge_enabled` boolean /*Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_loc_enabled` boolean /*Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `aem_ph_enabled` boolean /*Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.*/,
+  `md_frequency` decimal /*Metadata ingestion frequency.*/
+);  /*Resource create operation model.*/
 
 
 -- --------------------------------------------------------------------------
@@ -5604,11 +7269,11 @@ CREATE TABLE IF NOT EXISTS `ConversionTagListResponse` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ConversionTagListResponseConversionTagResponse` generated from model 'ConversionTagListResponseConversionTagResponse'
+-- Table structure for table `ConversionTagListResponseConversionTag` generated from model 'ConversionTagListResponseConversionTag'
 
-CREATE TABLE IF NOT EXISTS `ConversionTagListResponseConversionTagResponse` (
+CREATE TABLE IF NOT EXISTS `ConversionTagListResponseConversionTag` (
   `conversionTagListResponse` long NOT NULL
-  `conversionTagResponse` long NOT NULL
+  `conversionTag` long NOT NULL
 );
 
 
@@ -5617,16 +7282,32 @@ CREATE TABLE IF NOT EXISTS `ConversionTagListResponseConversionTagResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionTagResponse` (
-  `ad_account_id` text /*Ad account ID.*/,
+  `name` text NOT NULL /*Conversion tag name.*/,
+  `ad_account_id` text NOT NULL /*Ad account ID.*/,
   `code_snippet` text /*Tag code snippet.*/,
-  `enhanced_match_status` long,
+  `configs` long,
+  `enhanced_match_status` long /*The enhanced match status of the tag*/,
   `id` text PRIMARY KEY /*Tag ID.*/,
   `last_fired_time_ms` decimal /*Time for the last event fired.*/,
-  `name` text /*Conversion tag name.*/,
-  `status` long,
   `version` text /*Version number.*/,
-  `configs` long
+  `status` long
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `conversion_tags_list_200_response` generated from model 'conversionTagsList200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `conversion_tags_list_200_response` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionTagsList200ResponseConversionTag` generated from model 'ConversionTagsList200ResponseConversionTag'
+
+CREATE TABLE IF NOT EXISTS `ConversionTagsList200ResponseConversionTag` (
+  `conversionTagsList200Response` long NOT NULL
+  `conversionTag` long NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -5660,8 +7341,8 @@ CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBodyCreateAssetAccessRequest
 --
 
 CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBody_asset_requests_inner` (
-  `partner_id` text NOT NULL /*Unique identifier of a business partner to request asset access to.*/,
-  `asset_id_to_permissions` blob NOT NULL /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
+  `asset_id_to_permissions` blob NOT NULL /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */,
+  `partner_id` text NOT NULL /*Unique identifier of a business partner to request asset access to.*/
 ); 
 
 
@@ -5704,8 +7385,8 @@ CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestResponseCreateAssetAccessReq
 --
 
 CREATE TABLE IF NOT EXISTS `CreateAssetGroupBody` (
-  `asset_group_name` text NOT NULL /*Asset Group name*/,
   `asset_group_description` text NOT NULL /*Asset group description*/,
+  `asset_group_name` text NOT NULL /*Asset Group name*/,
 ); 
 
 -- --------------------------------------------------------------------------
@@ -5749,9 +7430,9 @@ CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequestCreateAssetInvitesRequestIt
 --
 
 CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequestItem` (
+  `asset_id_to_permissions` blob NOT NULL /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */,
   `invite_id` text NOT NULL /*Unique identifier of an invite.*/,
-  `invite_type` long NOT NULL,
-  `asset_id_to_permissions` blob NOT NULL /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
+  `invite_type` long NOT NULL
 );  /*Object declaring an asset role update to an invite.*/
 
 
@@ -5797,20 +7478,12 @@ CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner_invite
 --
 
 CREATE TABLE IF NOT EXISTS `CreateMMMReportRequest` (
-  `report_name` text NOT NULL /*Name of the Marketing Mix Modeling (MMM) report*/,
-  `start_date` text NOT NULL /*Metric report start date (UTC). Format: YYYY-MM-DD*/,
   `end_date` text NOT NULL /*Metric report end date (UTC). Format: YYYY-MM-DD*/,
   `granularity` text NOT NULL /*DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly.*/,
   `level` text NOT NULL /*Level of the report*/,
+  `report_name` text NOT NULL /*Name of the Marketing Mix Modeling (MMM) report*/,
+  `start_date` text NOT NULL /*Metric report start date (UTC). Format: YYYY-MM-DD*/,
 ); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `CreateMMMReportRequestMMMReportingTargetingType` generated from model 'CreateMMMReportRequestMMMReportingTargetingType'
-
-CREATE TABLE IF NOT EXISTS `CreateMMMReportRequestMMMReportingTargetingType` (
-  `createMMMReportRequest` long NOT NULL
-  `mMMReportingTargetingType` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `CreateMMMReportRequestMMMReportingColumn` generated from model 'CreateMMMReportRequestMMMReportingColumn'
@@ -5818,6 +7491,14 @@ CREATE TABLE IF NOT EXISTS `CreateMMMReportRequestMMMReportingTargetingType` (
 CREATE TABLE IF NOT EXISTS `CreateMMMReportRequestMMMReportingColumn` (
   `createMMMReportRequest` long NOT NULL
   `mMMReportingColumn` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateMMMReportRequestMMMReportingTargetingType` generated from model 'CreateMMMReportRequestMMMReportingTargetingType'
+
+CREATE TABLE IF NOT EXISTS `CreateMMMReportRequestMMMReportingTargetingType` (
+  `createMMMReportRequest` long NOT NULL
+  `mMMReportingTargetingType` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -5844,10 +7525,10 @@ CREATE TABLE IF NOT EXISTS `CreateMMMReportResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `CreateMMMReportResponseData` (
-  `report_status` long,
-  `token` text,
   `message` text,
-  `status` text
+  `report_status` long,
+  `status` text,
+  `token` text
 ); 
 
 
@@ -5894,7 +7575,7 @@ CREATE TABLE IF NOT EXISTS `CreativeAssetsIdFilter` (
 
 CREATE TABLE IF NOT EXISTS `CreativeAssetsProcessingRecord` (
   `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
-  `status` long
+  `status` long,
 );  /*Object describing an item processing record*/
 
 -- --------------------------------------------------------------------------
@@ -5969,12 +7650,58 @@ CREATE TABLE IF NOT EXISTS `CustomLabel4Filter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CustomNumber0Filter` generated from model 'customNumber0Filter'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomNumber0Filter` (
+  `CUSTOM_NUMBER_0` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomNumber1Filter` generated from model 'customNumber1Filter'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomNumber1Filter` (
+  `CUSTOM_NUMBER_1` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomNumber2Filter` generated from model 'customNumber2Filter'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomNumber2Filter` (
+  `CUSTOM_NUMBER_2` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomNumber3Filter` generated from model 'customNumber3Filter'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomNumber3Filter` (
+  `CUSTOM_NUMBER_3` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomNumber4Filter` generated from model 'customNumber4Filter'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomNumber4Filter` (
+  `CUSTOM_NUMBER_4` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CustomerList` generated from model 'customerList'
 --
 
 CREATE TABLE IF NOT EXISTS `CustomerList` (
   `ad_account_id` text /*Associated ad account ID.*/,
   `created_time` decimal /*Creation time. Unix timestamp in seconds.*/,
+  `exceptions` blob /*Customer list errors*/,
   `id` text PRIMARY KEY /*Customer list ID.*/,
   `name` text /*Customer list name.*/,
   `num_batches` decimal /*Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.*/,
@@ -5982,8 +7709,7 @@ CREATE TABLE IF NOT EXISTS `CustomerList` (
   `num_uploaded_user_records` decimal /*Number of uploaded user records. In an &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append API&lt;/a&gt; call, this counter increases even if the uploaded user is already in the list.*/,
   `status` text /*Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.*/,
   `type` text /*Always \&quot;customerlist\&quot;.*/,
-  `updated_time` decimal /*Last update time. Unix timestamp in seconds.*/,
-  `exceptions` blob /*Customer list errors*/
+  `updated_time` decimal /*Last update time. Unix timestamp in seconds.*/
 ); 
 
 
@@ -5994,8 +7720,7 @@ CREATE TABLE IF NOT EXISTS `CustomerList` (
 CREATE TABLE IF NOT EXISTS `CustomerListRequest` (
   `name` text NOT NULL /*Customer list name.*/,
   `records` text NOT NULL /*Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.*/,
-  `list_type` long,
-  `exceptions` blob /*Customer list errors.*/
+  `list_type` long
 ); 
 
 
@@ -6004,10 +7729,77 @@ CREATE TABLE IF NOT EXISTS `CustomerListRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CustomerListUpdateRequest` (
-  `records` text NOT NULL /*Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.*/,
   `operation_type` long NOT NULL,
-  `exceptions` long
+  `records` text NOT NULL /*Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.*/
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomerListUpload` generated from model 'customerListUpload'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomerListUpload` (
+  `ad_account_id` text NOT NULL /*Advertiser ID.*/,
+  `creation_time` int NOT NULL /*Customer List Upload creation_time. Epoch (seconds).*/,
+  `customer_list_id` text NOT NULL /*ID of the customer list associated with this upload.*/,
+  `id` text NOT NULL PRIMARY KEY /*Customer List Upload ID.*/,
+  `operation` long NOT NULL,
+  `state` text NOT NULL /*Workload processing state*/,
+  `updated_time` int NOT NULL /*Customer List Upload updated_time. Epoch (seconds).*/,
+  `record_counts` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomerListUploadErrorDetail` generated from model 'CustomerListUploadErrorDetail'
+
+CREATE TABLE IF NOT EXISTS `CustomerListUploadErrorDetail` (
+  `customerListUpload` long NOT NULL
+  `errorDetail` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomerListUploadCreateRequest` generated from model 'customerListUploadCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomerListUploadCreateRequest` (
+  `operation` long NOT NULL,
+  `total_parts` int UNSIGNED NOT NULL /*Number of parts to upload the file in.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomerListUploadCreateResponse` generated from model 'customerListUploadCreateResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomerListUploadCreateResponse` (
+  `customer_list_upload` long NOT NULL,
+  `s3_multipart_upload_data` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomerListUploadResponse` generated from model 'customerListUploadResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CustomerListUploadResponse` (
+  `ad_account_id` text NOT NULL /*Advertiser ID.*/,
+  `creation_time` int NOT NULL /*Customer List Upload creation_time. Epoch (seconds).*/,
+  `customer_list_id` text NOT NULL /*ID of the customer list associated with this upload.*/,
+  `id` text NOT NULL PRIMARY KEY /*Customer List Upload ID.*/,
+  `operation` long NOT NULL,
+  `state` text NOT NULL /*Workload processing state*/,
+  `updated_time` int NOT NULL /*Customer List Upload updated_time. Epoch (seconds).*/,
+  `record_counts` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CustomerListUploadResponseErrorDetail` generated from model 'CustomerListUploadResponseErrorDetail'
+
+CREATE TABLE IF NOT EXISTS `CustomerListUploadResponseErrorDetail` (
+  `customerListUploadResponse` long NOT NULL
+  `errorDetail` long NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -6073,9 +7865,9 @@ CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponseDeleteAssetGroupResponseExce
 --
 
 CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponse_exceptions_inner` (
+  `asset_group_id` text /*Asset group id of the exception.*/,
   `code` int /*Error code associated with the error deleting asset group.*/,
-  `message` text /*Error message associated with the error deleting asset group.*/,
-  `asset_group_id` text /*Asset group id of the exception.*/
+  `message` text /*Error message associated with the error deleting asset group.*/
 ); 
 
 
@@ -6165,8 +7957,8 @@ CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBodyDeletePartnerAssetAccess
 --
 
 CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBody_accesses_inner` (
-  `partner_id` text NOT NULL /*Unique identifier of a business partner to update asset access to.*/,
   `asset_id` text NOT NULL /*Unique identifier of the business asset.*/,
+  `partner_id` text NOT NULL /*Unique identifier of a business partner to update asset access to.*/,
   `partner_type` text /*If partner_type&#x3D;INTERNAL, the deleted asset access is for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the deleted asset access is for the access you have to the partner&#39;s business asset.*/
 ); 
 
@@ -6178,9 +7970,9 @@ CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBody_accesses_inner` (
 
 CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResult` (
   `asset_id` text /*Unique identifier of a business asset.*/,
-  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.*/,
   `is_shared_partner` boolean /*If is_shared_partner&#x3D;FALSE, you terminated a partner&#39;s asset access to your business asset.&lt;br&gt; If is_shared_partner&#x3D;TRUE, you terminated your asset access to your partner&#39;s business asset.*/,
-  `partner_id` text /*Unique identifier of a business partner.*/
+  `partner_id` text /*Unique identifier of a business partner.*/,
 );  /*The terminated asset access.*/
 
 -- --------------------------------------------------------------------------
@@ -6280,10 +8072,10 @@ CREATE TABLE IF NOT EXISTS `DeliveryMetricsResponseDeliveryMetricsResponseItemsI
 --
 
 CREATE TABLE IF NOT EXISTS `DeliveryMetricsResponse_items_inner` (
-  `name` text /*Metric&#39;s name.*/,
   `category` text /*Category name*/,
   `definition` text /*How the metric is defined.*/,
-  `display_name` text /*Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.*/
+  `display_name` text /*Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.*/,
+  `name` text /*Metric&#39;s name.*/
 ); 
 
 
@@ -6294,8 +8086,8 @@ CREATE TABLE IF NOT EXISTS `DeliveryMetricsResponse_items_inner` (
 
 CREATE TABLE IF NOT EXISTS `DetailedError` (
   `code` int NOT NULL,
-  `message` text NOT NULL,
-  `details` blob NOT NULL
+  `details` blob NOT NULL,
+  `message` text NOT NULL
 );  /*Used for including extra details to a base error*/
 
 
@@ -6310,6 +8102,51 @@ CREATE TABLE IF NOT EXISTS `Error` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `ErrorDetail` generated from model 'errorDetail'
+--
+
+CREATE TABLE IF NOT EXISTS `ErrorDetail` (
+  `count` int NOT NULL /*Number of records with this error*/,
+  `error_code` int NOT NULL /*Numeric error code*/,
+  `message` text NOT NULL /*Error message description*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `EventData` generated from model 'eventData'
+--     Optional for VISITOR &#x60;audience_type&#x60;.     With the Pinterest tag, you can use event data to capture event details from your website.     This object lists all the available predefined event data fields in the Pinterest tag.     You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated.     Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs.     However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.     Examples per &#x60;event&#x60; type:     &#x60;pagevisit&#x60;     \&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }     &#x60;signup&#x60;     \&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }     &#x60;checkout&#x60;     \&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }     &#x60;addtocart&#x60;     \&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}     &#x60;watchvideo&#x60;     \&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }     &#x60;lead&#x60;     \&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
+--
+
+CREATE TABLE IF NOT EXISTS `EventData` (
+  `currency` long /*Currency. For example, &#39;USD&#39;.*/,
+  `lead_type` text /*Promotion code. For example, &#39;Newsletter&#39;.*/,
+  `line_items` long,
+  `order_id` text /*Order ID. For example, &#39;X-151481&#39;.*/,
+  `order_quantity` int /*Order quantity. For example, 1.*/,
+  `page_name` text /*Page name. For example, &#39;Our Favorite Pins on Pinterest&#39;.*/,
+  `promo_code` text /*Promotion code. For example, &#39;WINTER10&#39;.*/,
+  `property` text /*Property. For example, &#39;Athleta&#39;.*/,
+  `search_query` text /*Search query string. For example, &#39;boots&#39;.*/,
+  `value` text /*Product value. For example, &#39;199.98&#39;.*/,
+  `video_title` text /*Video title. For example, &#39;How to style your Parker Boots&#39;.*/
+);  /*    Optional for VISITOR &#x60;audience_type&#x60;.     With the Pinterest tag, you can use event data to capture event details from your website.     This object lists all the available predefined event data fields in the Pinterest tag.     You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated.     Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs.     However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.     Examples per &#x60;event&#x60; type:     &#x60;pagevisit&#x60;     \&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }     &#x60;signup&#x60;     \&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }     &#x60;checkout&#x60;     \&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }     &#x60;addtocart&#x60;     \&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}     &#x60;watchvideo&#x60;     \&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }     &#x60;lead&#x60;     \&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `EventQualityScore` generated from model 'eventQualityScore'
+-- Schema for GET Conversion EQS response.
+--
+
+CREATE TABLE IF NOT EXISTS `EventQualityScore` (
+  `ingestion_source` long NOT NULL,
+  `lookback_period` long NOT NULL,
+  `overall_status` long NOT NULL,
+  `quality_components` long NOT NULL,
+  `source_platform` long NOT NULL
+);  /*Schema for GET Conversion EQS response.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `Exception` generated from model 'exception'
 --
 
@@ -6317,6 +8154,25 @@ CREATE TABLE IF NOT EXISTS `Exception` (
   `code` int /*Exception error code.*/,
   `message` text /*Exception message.*/
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `FeaturedTrend` generated from model 'featuredTrend'
+-- Featured trending topics for a specific interest and market
+--
+
+CREATE TABLE IF NOT EXISTS `FeaturedTrend` (
+  `interest` long NOT NULL /*The main interest category*/,
+  `market` long /*Market code (e.g., &#39;US&#39;, &#39;UK&#39;, etc.)*/,
+);  /*Featured trending topics for a specific interest and market*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `FeaturedTrendTrendingTopic` generated from model 'FeaturedTrendTrendingTopic'
+
+CREATE TABLE IF NOT EXISTS `FeaturedTrendTrendingTopic` (
+  `featuredTrend` long NOT NULL
+  `trendingTopic` long NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -6341,18 +8197,18 @@ CREATE TABLE IF NOT EXISTS `FeedProcessingResultsList200ResponseCatalogsFeedProc
 --
 
 CREATE TABLE IF NOT EXISTS `feeds_create_request` (
-  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
+  `catalog_type` long NOT NULL,
   `format` long NOT NULL,
   `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
-  `catalog_type` long NOT NULL,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/,
+  `credentials` long,
+  `default_availability` long,
+  `default_country` long,
   `default_currency` long,
   `default_locale` long,
-  `credentials` long,
   `preferred_processing_schedule` long,
-  `default_country` long,
-  `default_availability` long,
-  `status` long,
-  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/
+  `status` long
 ); 
 
 
@@ -6379,14 +8235,14 @@ CREATE TABLE IF NOT EXISTS `FeedsList200ResponseCatalogsFeed` (
 
 CREATE TABLE IF NOT EXISTS `feeds_update_request` (
   `catalog_type` long NOT NULL,
-  `default_currency` long,
-  `name` text /*A human-friendly name associated to a given feed.*/,
-  `format` long,
   `credentials` long,
+  `default_availability` long,
+  `default_currency` long,
+  `format` long,
   `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `name` text /*A human-friendly name associated to a given feed.*/,
   `preferred_processing_schedule` long,
-  `status` long,
-  `default_availability` long
+  `status` long
 ); 
 
 
@@ -6417,6 +8273,18 @@ CREATE TABLE IF NOT EXISTS `FollowersList200ResponseUserSummary` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `GenderDemographics` generated from model 'genderDemographics'
+-- Gender demographic distribution
+--
+
+CREATE TABLE IF NOT EXISTS `GenderDemographics` (
+  `female` decimal NOT NULL /*Percentage of female users*/,
+  `male` decimal NOT NULL /*Percentage of male users*/,
+  `unspecified` decimal NOT NULL /*Percentage of users with unspecified gender*/
+);  /*Gender demographic distribution*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `GenderFilter` generated from model 'genderFilter'
 --
 
@@ -6431,10 +8299,23 @@ CREATE TABLE IF NOT EXISTS `GenderFilter` (
 --
 
 CREATE TABLE IF NOT EXISTS `GetBusinessAssetsResponse` (
+  `asset_group_info` long,
   `asset_id` text /*Unique identifier of a business asset.*/,
-  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
-  `asset_group_info` long
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.*/,
+  `catalog_info` long
 );  /*An object containing the permissions a business has on the asset.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetBusinessAssetsResponse_catalog_info` generated from model 'getBusinessAssetsResponseCatalogInfo'
+-- An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals &#39;CATALOG&#39;.
+--
+
+CREATE TABLE IF NOT EXISTS `GetBusinessAssetsResponse_catalog_info` (
+  `catalog_type` text /*Catalog type*/,
+  `id` text PRIMARY KEY /*Catalog ID.*/,
+  `name` text /*Catalog name*/
+);  /*An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals &#39;CATALOG&#39;.*/
 
 
 -- --------------------------------------------------------------------------
@@ -6523,8 +8404,8 @@ CREATE TABLE IF NOT EXISTS `GetMMMReportResponse` (
 
 CREATE TABLE IF NOT EXISTS `GetMMMReportResponseData` (
   `report_status` text,
-  `url` text,
-  `size` decimal
+  `size` decimal,
+  `url` text
 ); 
 
 
@@ -6534,9 +8415,9 @@ CREATE TABLE IF NOT EXISTS `GetMMMReportResponseData` (
 --
 
 CREATE TABLE IF NOT EXISTS `GetPartnerAssetsResponse` (
+  `asset_group_info` long,
   `asset_id` text /*Unique identifier of a business asset.*/,
-  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
-  `asset_group_info` long
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.*/,
 );  /*An object containing the permissions a you/your business partner has on the asset.*/
 
 -- --------------------------------------------------------------------------
@@ -6627,7 +8508,7 @@ CREATE TABLE IF NOT EXISTS `HotelIdFilter` (
 
 CREATE TABLE IF NOT EXISTS `HotelProcessingRecord` (
   `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
-  `status` long
+  `status` long,
 );  /*Object describing an item processing record*/
 
 -- --------------------------------------------------------------------------
@@ -6648,13 +8529,24 @@ CREATE TABLE IF NOT EXISTS `HotelProcessingRecordItemValidationEvent` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `Image_Base64` generated from model 'imageBase64'
+-- Base64-encoded image media source
+--
+
+CREATE TABLE IF NOT EXISTS `Image_Base64` (
+  `content_type` text NOT NULL,
+  `data` text NOT NULL
+);  /*Base64-encoded image media source*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `ImageDetails` generated from model 'imageDetails'
 --
 
 CREATE TABLE IF NOT EXISTS `ImageDetails` (
-  `width` int UNSIGNED NOT NULL,
-  `height` int UNSIGNED NOT NULL,
-  `url` text NOT NULL
+  `height` int NOT NULL,
+  `url` text NOT NULL,
+  `width` int NOT NULL
 ); 
 
 
@@ -6663,23 +8555,32 @@ CREATE TABLE IF NOT EXISTS `ImageDetails` (
 --
 
 CREATE TABLE IF NOT EXISTS `ImageMetadata` (
-  `item_type` text,
-  `title` text,
   `description` text,
+  `images` long,
+  `item_type` text,
   `link` text,
-  `images` long
+  `title` text
 ); 
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ImageMetadata_images` generated from model 'imageMetadataImages'
+-- Table structure for table `ImageSize` generated from model 'imageSize'
 --
 
-CREATE TABLE IF NOT EXISTS `ImageMetadata_images` (
+CREATE TABLE IF NOT EXISTS `ImageSize` (
+  `1200x` long,
   `150x150` long,
   `400x300` long,
-  `600x` long,
-  `1200x` long
+  `600x` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InnerProductCategoriesMetricsHighlights` generated from model 'innerProductCategoriesMetricsHighlights'
+--
+
+CREATE TABLE IF NOT EXISTS `InnerProductCategoriesMetricsHighlights` (
+  `pct_change_mom` decimal NOT NULL /*Month-over-month percentage change*/
 ); 
 
 
@@ -6692,16 +8593,16 @@ CREATE TABLE IF NOT EXISTS `IntegrationLog` (
   `client_timestamp` int NOT NULL /*Timestamp in milliseconds of when the log was executed at the client.*/,
   `event_type` text NOT NULL /*Log event type*/,
   `log_level` text NOT NULL /*Log level type*/,
-  `external_business_id` text,
   `advertiser_id` text,
-  `merchant_id` text,
-  `tag_id` text,
-  `feed_profile_id` text,
-  `message` text /*Explanation of the event that occured.*/,
   `app_version_number` text /*Version number of the integration application.*/,
-  `platform_version_number` text /*Version number of the platform the integration application is running on.*/,
   `error` long,
-  `request` long
+  `external_business_id` text,
+  `feed_profile_id` text,
+  `merchant_id` text,
+  `message` text /*Explanation of the event that occured.*/,
+  `platform_version_number` text /*Version number of the platform the integration application is running on.*/,
+  `request` long,
+  `tag_id` text
 );  /*Schema for log sent from an integration application.*/
 
 
@@ -6729,8 +8630,8 @@ CREATE TABLE IF NOT EXISTS `IntegrationLogClientError` (
 --
 
 CREATE TABLE IF NOT EXISTS `IntegrationLogClientRequest` (
-  `method` text NOT NULL,
   `host` text NOT NULL /*HTTP request host from host header.*/,
+  `method` text NOT NULL,
   `path` text NOT NULL /*HTTP request path.*/,
   `request_headers` blob /*HTTP request headers as key-value pairs.*/,
   `response_headers` blob /*HTTP response headers as key-value pairs.*/,
@@ -6761,8 +8662,8 @@ CREATE TABLE IF NOT EXISTS `IntegrationLogsInvalidLogResponseIntegrationLogsInva
 
 CREATE TABLE IF NOT EXISTS `IntegrationLogsInvalidLogResponse_rejected_logs_inner` (
   `field` text NOT NULL /*The field name containing an invalid value.*/,
-  `value` text NOT NULL /*The value that is invalid.*/,
   `reason` text NOT NULL /*The reason the value is invalid.*/,
+  `value` text NOT NULL /*The value that is invalid.*/,
   `log_index` int /*Index of the log in the batch.*/
 ); 
 
@@ -6800,20 +8701,20 @@ CREATE TABLE IF NOT EXISTS `IntegrationLogsSuccessResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `IntegrationMetadata` (
-  `id` text PRIMARY KEY,
-  `external_business_id` text,
-  `connected_merchant_id` text,
-  `connected_user_id` text,
+  `additional_id_1` text,
   `connected_advertiser_id` text,
   `connected_lba_id` text,
+  `connected_merchant_id` text,
   `connected_tag_id` text,
+  `connected_user_id` text,
+  `created_timestamp` decimal,
+  `external_business_id` text,
+  `id` text PRIMARY KEY,
   `partner_access_token_expiry` decimal,
+  `partner_metadata` text,
   `partner_refresh_token_expiry` decimal,
   `scopes` text,
-  `created_timestamp` decimal,
-  `updated_timestamp` decimal,
-  `additional_id_1` text,
-  `partner_metadata` text
+  `updated_timestamp` decimal
 );  /*Integration metadata*/
 
 
@@ -6823,22 +8724,22 @@ CREATE TABLE IF NOT EXISTS `IntegrationMetadata` (
 --
 
 CREATE TABLE IF NOT EXISTS `IntegrationRecord` (
-  `id` text PRIMARY KEY,
-  `external_business_id` text,
-  `connected_merchant_id` text,
-  `connected_user_id` text,
+  `additional_id_1` text,
   `connected_advertiser_id` text,
   `connected_lba_id` text,
+  `connected_merchant_id` text,
   `connected_tag_id` text,
+  `connected_user_id` text,
+  `created_time` int,
+  `external_business_id` text,
+  `id` text PRIMARY KEY,
   `partner_access_token` text,
-  `partner_refresh_token` text,
-  `partner_primary_email` text,
   `partner_access_token_expiry` int,
+  `partner_metadata` text,
+  `partner_primary_email` text,
+  `partner_refresh_token` text,
   `partner_refresh_token_expiry` int,
   `scopes` text,
-  `partner_metadata` text,
-  `additional_id_1` text,
-  `created_time` int,
   `updated_time` int
 );  /*Integration record*/
 
@@ -6849,19 +8750,19 @@ CREATE TABLE IF NOT EXISTS `IntegrationRecord` (
 --
 
 CREATE TABLE IF NOT EXISTS `IntegrationRequest` (
-  `external_business_id` text /*External business ID for the integration.*/,
-  `connected_merchant_id` text,
+  `additional_id_1` text,
   `connected_advertiser_id` text,
   `connected_lba_id` text,
+  `connected_merchant_id` text,
   `connected_tag_id` text,
+  `external_business_id` text /*External business ID for the integration.*/,
   `partner_access_token` text,
-  `partner_refresh_token` text,
-  `partner_primary_email` text,
   `partner_access_token_expiry` int,
+  `partner_metadata` text,
+  `partner_primary_email` text,
+  `partner_refresh_token` text,
   `partner_refresh_token_expiry` int,
-  `scopes` text,
-  `additional_id_1` text,
-  `partner_metadata` text
+  `scopes` text
 );  /*Schema used for creating the integration metadata.*/
 
 
@@ -6871,18 +8772,18 @@ CREATE TABLE IF NOT EXISTS `IntegrationRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `IntegrationRequestPatch` (
-  `connected_merchant_id` text,
+  `additional_id_1` text,
   `connected_advertiser_id` text,
   `connected_lba_id` text,
+  `connected_merchant_id` text,
   `connected_tag_id` text,
   `partner_access_token` text,
-  `partner_refresh_token` text,
-  `partner_primary_email` text,
   `partner_access_token_expiry` decimal,
+  `partner_metadata` text,
+  `partner_primary_email` text,
+  `partner_refresh_token` text,
   `partner_refresh_token_expiry` decimal,
-  `scopes` text,
-  `additional_id_1` text,
-  `partner_metadata` text
+  `scopes` text
 );  /*Schema used for updating the integration metadata.*/
 
 
@@ -6901,6 +8802,17 @@ CREATE TABLE IF NOT EXISTS `IntegrationsGetList200ResponseIntegrationRecord` (
   `integrationsGetList200Response` long NOT NULL
   `integrationRecord` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `integrations_logs_post_400_response` generated from model 'integrationsLogsPost400Response'
+--
+
+CREATE TABLE IF NOT EXISTS `integrations_logs_post_400_response` (
+  `code` int NOT NULL,
+  `message` text NOT NULL,
+  `details` blob NOT NULL
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -6994,8 +8906,8 @@ CREATE TABLE IF NOT EXISTS `InviteBusinessRoleBinding` (
 --
 
 CREATE TABLE IF NOT EXISTS `InviteExceptionResponse` (
-  `invite_or_request_id` text /*Unique identifier of the invite/request.*/,
   `code` int /*Error code associated with the error in performing the action on the invite/request.*/,
+  `invite_or_request_id` text /*Unique identifier of the invite/request.*/,
   `message` text /*Error message associated with the error in performing the action on the invite/request.*/,
 );  /*An exception object if there is an error performing the action. Will only be provided if there is an error.*/
 
@@ -7037,27 +8949,81 @@ CREATE TABLE IF NOT EXISTS `InviteResponseBusinessRoles` (
 --
 
 CREATE TABLE IF NOT EXISTS `ItemAttributes` (
+  `ad_image_0_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_0_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_10_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_10_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_11_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_11_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_12_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_12_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_13_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_13_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_14_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_14_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_15_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_15_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_16_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_16_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_17_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_17_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_18_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_18_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_19_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_19_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_1_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_1_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_2_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_2_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_3_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_3_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_4_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_4_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_5_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_5_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_6_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_6_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_7_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_7_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_8_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_8_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_9_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_9_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
   `ad_link` text /*Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.*/,
+  `ad_video_0_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_0_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
+  `ad_video_1_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_1_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
+  `ad_video_2_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_2_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
   `adult` boolean /*Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.*/,
-  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
-  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.*/,
+  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
+  `android_deep_link` text /*The deep link to the product on the Android app.*/,
+  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.*/,
   `average_review_rating` decimal /*Average reviews for the item. Can be a number from 1-5.*/,
   `brand` text /*The brand of the product.*/,
   `checkout_enabled` boolean /*This attribute is not supported anymore.*/,
   `color` text /*The primary color of the product.*/,
   `condition` text /*The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.*/,
-  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_number_0` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_1` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_2` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_3` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_4` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
   `description` text /*&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;*/,
   `free_shipping_label` boolean /*The item is free to ship.*/,
   `free_shipping_limit` text /*The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.*/,
-  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.*/,
+  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.*/,
   `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
-  `gtin` int /*The unique universal product identifier.*/,
+  `gtin` long,
   `id` text PRIMARY KEY /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;*/,
+  `installment_price` text /*Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;payment_count&gt;:&lt;payment_amount&gt; &lt;currency&gt;*/,
+  `ios_deep_link` text /*The deep link to the product on the iOS app.*/,
   `item_group_id` text /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The parent ID of the product.&lt;/p&gt;*/,
   `last_updated_time` long /*The millisecond timestamp when the item was lastly modified by the merchant.*/,
   `link` text /*&lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;The landing page for the product.&lt;/p&gt;*/,
@@ -7070,16 +9036,20 @@ CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `pattern` text /*The description of the pattern used for the product.*/,
   `price` text /*The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.*/,
   `product_type` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.&lt;/p&gt;*/,
+  `promotion_id` text /*A unique identifier referencing the promotion associated with this catalog item.*/,
   `sale_price` text /*The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.*/,
+  `sale_price_effective_date` text /*Sale price effective date. Expected format: &lt;start_date&gt;/&lt;end_date&gt; (ISO 8601 format)*/,
   `shipping` text /*Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.*/,
   `shipping_height` text /*The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_weight` text /*The weight of the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_width` text /*The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `size` text /*The size of the product.*/,
-  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.*/,
-  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
+  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.*/,
+  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
   `tax` text /*Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.*/,
   `title` text /*&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;*/,
+  `unit_pricing_base_measure` text /*Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;base_measure&gt; &lt;unit_type&gt;*/,
+  `unit_pricing_measure` text /*Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;total_units&gt; &lt;unit_type&gt;*/,
   `video_link` text /*&lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;*/
 ); 
 
@@ -7121,27 +9091,81 @@ CREATE TABLE IF NOT EXISTS `ItemAttributesImageLink` (
 --
 
 CREATE TABLE IF NOT EXISTS `ItemAttributesRequest` (
+  `ad_image_0_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_0_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_10_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_10_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_11_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_11_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_12_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_12_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_13_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_13_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_14_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_14_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_15_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_15_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_16_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_16_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_17_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_17_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_18_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_18_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_19_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_19_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_1_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_1_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_2_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_2_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_3_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_3_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_4_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_4_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_5_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_5_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_6_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_6_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_7_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_7_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_8_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_8_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_9_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_9_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
   `ad_link` text /*Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.*/,
+  `ad_video_0_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_0_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
+  `ad_video_1_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_1_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
+  `ad_video_2_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_2_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
   `adult` boolean /*Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.*/,
-  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
-  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.*/,
+  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
+  `android_deep_link` text /*The deep link to the product on the Android app.*/,
+  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.*/,
   `average_review_rating` decimal /*Average reviews for the item. Can be a number from 1-5.*/,
   `brand` text /*The brand of the product.*/,
   `checkout_enabled` boolean /*This attribute is not supported anymore.*/,
   `color` text /*The primary color of the product.*/,
   `condition` text /*The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.*/,
-  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_number_0` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_1` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_2` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_3` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_4` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
   `description` text /*&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;*/,
   `free_shipping_label` boolean /*The item is free to ship.*/,
   `free_shipping_limit` text /*The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.*/,
-  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.*/,
+  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.*/,
   `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
-  `gtin` int /*The unique universal product identifier.*/,
+  `gtin` long,
   `id` text PRIMARY KEY /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;*/,
+  `installment_price` text /*Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;payment_count&gt;:&lt;payment_amount&gt; &lt;currency&gt;*/,
+  `ios_deep_link` text /*The deep link to the product on the iOS app.*/,
   `item_group_id` text /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The parent ID of the product.&lt;/p&gt;*/,
   `last_updated_time` long /*The millisecond timestamp when the item was lastly modified by the merchant.*/,
   `link` text /*&lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;The landing page for the product.&lt;/p&gt;*/,
@@ -7154,17 +9178,22 @@ CREATE TABLE IF NOT EXISTS `ItemAttributesRequest` (
   `pattern` text /*The description of the pattern used for the product.*/,
   `price` text /*The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.*/,
   `product_type` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.&lt;/p&gt;*/,
+  `promotion_id` text /*A unique identifier referencing the promotion associated with this catalog item.*/,
   `sale_price` text /*The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.*/,
+  `sale_price_effective_date` text /*Sale price effective date. Expected format: &lt;start_date&gt;/&lt;end_date&gt; (ISO 8601 format)*/,
   `shipping` text /*Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.*/,
   `shipping_height` text /*The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_weight` text /*The weight of the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_width` text /*The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `size` text /*The size of the product.*/,
-  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.*/,
-  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
+  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.*/,
+  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
   `tax` text /*Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.*/,
   `title` text /*&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;*/,
+  `unit_pricing_base_measure` text /*Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;base_measure&gt; &lt;unit_type&gt;*/,
+  `unit_pricing_measure` text /*Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;total_units&gt; &lt;unit_type&gt;*/,
   `image_link` long,
+  `save_pin_disabled` boolean /*By default, product pins created from a catalog are able to be saved by Pinners. If you want to disable the save pin feature, set this attribute to true. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.*/,
   `video_link` text /*&lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;*/
 ); 
 
@@ -7199,8 +9228,8 @@ CREATE TABLE IF NOT EXISTS `ItemAttributesRequestAdditionalImageLink` (
 --
 
 CREATE TABLE IF NOT EXISTS `ItemBatchRecord` (
-  `item_id` text /*The catalog item id in the merchant namespace*/,
   `attributes` long,
+  `item_id` text /*The catalog item id in the merchant namespace*/,
 );  /*Object describing an item batch record*/
 
 -- --------------------------------------------------------------------------
@@ -7218,8 +9247,8 @@ CREATE TABLE IF NOT EXISTS `ItemBatchRecordUpdateMaskFieldType` (
 --
 
 CREATE TABLE IF NOT EXISTS `ItemCreateBatchRecord` (
-  `item_id` text /*The catalog item id in the merchant namespace*/,
-  `attributes` long
+  `attributes` long,
+  `item_id` text /*The catalog item id in the merchant namespace*/
 );  /*Object describing an item batch record to create items*/
 
 
@@ -7268,7 +9297,7 @@ CREATE TABLE IF NOT EXISTS `ItemIdFilter` (
 
 CREATE TABLE IF NOT EXISTS `ItemProcessingRecord` (
   `item_id` text /*The catalog item id in the merchant namespace*/,
-  `status` long
+  `status` long,
 );  /*Object describing an item processing record*/
 
 -- --------------------------------------------------------------------------
@@ -7290,24 +9319,16 @@ CREATE TABLE IF NOT EXISTS `ItemProcessingRecordItemValidationEvent` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `ItemResponse` generated from model 'itemResponse'
--- Object describing an item record
+-- Object describing an item record or error
 --
 
 CREATE TABLE IF NOT EXISTS `ItemResponse` (
   `catalog_type` long NOT NULL,
-  `item_id` text /*The catalog item id in the merchant namespace*/,
   `attributes` long,
+  `item_id` text /*The catalog item id in the merchant namespace*/,
   `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
-  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
-);  /*Object describing an item record*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `ItemResponsePin` generated from model 'ItemResponsePin'
-
-CREATE TABLE IF NOT EXISTS `ItemResponsePin` (
-  `itemResponse` long NOT NULL
-  `pin` long NOT NULL
-);
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
+);  /*Object describing an item record or error*/
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `ItemResponseItemValidationEvent` generated from model 'ItemResponseItemValidationEvent'
@@ -7317,44 +9338,54 @@ CREATE TABLE IF NOT EXISTS `ItemResponseItemValidationEvent` (
   `itemValidationEvent` long NOT NULL
 );
 
-
 -- --------------------------------------------------------------------------
--- Table structure for table `ItemResponse_anyOf` generated from model 'itemResponseAnyOf'
---
+-- Table structure for table `ItemResponsePin` generated from model 'ItemResponsePin'
 
-CREATE TABLE IF NOT EXISTS `ItemResponse_anyOf` (
-  `catalog_type` long NOT NULL,
-  `item_id` text /*The catalog retail item id in the merchant namespace*/,
-  `attributes` long,
-  `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
-  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
-); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `ItemResponseAnyOfPin` generated from model 'ItemResponseAnyOfPin'
-
-CREATE TABLE IF NOT EXISTS `ItemResponseAnyOfPin` (
-  `itemResponseAnyOf` long NOT NULL
+CREATE TABLE IF NOT EXISTS `ItemResponsePin` (
+  `itemResponse` long NOT NULL
   `pin` long NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ItemResponse_anyOf_1` generated from model 'itemResponseAnyOf1'
+-- Table structure for table `ItemResponse_oneOf` generated from model 'itemResponseOneOf'
+-- Successful item response
 --
 
-CREATE TABLE IF NOT EXISTS `ItemResponse_anyOf_1` (
+CREATE TABLE IF NOT EXISTS `ItemResponse_oneOf` (
+  `catalog_type` long NOT NULL,
+  `attributes` long,
+  `item_id` text /*The catalog retail item id in the merchant namespace*/,
+  `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
+);  /*Successful item response*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ItemResponseOneOfPin` generated from model 'ItemResponseOneOfPin'
+
+CREATE TABLE IF NOT EXISTS `ItemResponseOneOfPin` (
+  `itemResponseOneOf` long NOT NULL
+  `pin` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ItemResponse_oneOf_1` generated from model 'itemResponseOneOf1'
+-- Error item response
+--
+
+CREATE TABLE IF NOT EXISTS `ItemResponse_oneOf_1` (
   `catalog_type` long NOT NULL,
   `item_id` text /*The catalog item id in the merchant namespace*/,
   `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
   `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
-); 
+);  /*Error item response*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ItemResponseAnyOf1ItemValidationEvent` generated from model 'ItemResponseAnyOf1ItemValidationEvent'
+-- Table structure for table `ItemResponseOneOf1ItemValidationEvent` generated from model 'ItemResponseOneOf1ItemValidationEvent'
 
-CREATE TABLE IF NOT EXISTS `ItemResponseAnyOf1ItemValidationEvent` (
-  `itemResponseAnyOf1` long NOT NULL
+CREATE TABLE IF NOT EXISTS `ItemResponseOneOf1ItemValidationEvent` (
+  `itemResponseOneOf1` long NOT NULL
   `itemValidationEvent` long NOT NULL
 );
 
@@ -7365,8 +9396,8 @@ CREATE TABLE IF NOT EXISTS `ItemResponseAnyOf1ItemValidationEvent` (
 --
 
 CREATE TABLE IF NOT EXISTS `ItemUpdateBatchRecord` (
-  `item_id` text /*The catalog item id in the merchant namespace*/,
   `attributes` long,
+  `item_id` text /*The catalog item id in the merchant namespace*/,
 );  /*Object describing an item batch record to update items*/
 
 -- --------------------------------------------------------------------------
@@ -7384,8 +9415,8 @@ CREATE TABLE IF NOT EXISTS `ItemUpdateBatchRecordUpdateMaskFieldType` (
 --
 
 CREATE TABLE IF NOT EXISTS `ItemUpsertBatchRecord` (
-  `item_id` text /*The catalog item id in the merchant namespace*/,
-  `attributes` long
+  `attributes` long,
+  `item_id` text /*The catalog item id in the merchant namespace*/
 );  /*Object describing an item batch record to upsert items*/
 
 
@@ -7478,7 +9509,6 @@ CREATE TABLE IF NOT EXISTS `KeywordErrorErrorMessages` (
 --
 
 CREATE TABLE IF NOT EXISTS `KeywordMetrics` (
-  `avg_cpc_in_micro_currency` decimal /*Average cost per click*/,
   `keyword_query_volume` text /*Keyword&#39;s search frequency. This value is based on keyword frequency in pepsi client response*/
 );  /*Keyword metrics JSON*/
 
@@ -7606,6 +9636,143 @@ CREATE TABLE IF NOT EXISTS `KeywordsResponseKeyword` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `Label` generated from model 'label'
+--
+
+CREATE TABLE IF NOT EXISTS `Label` (
+  `id` text PRIMARY KEY /*Label ID.*/,
+  `label_type` long,
+  `parent_id` text /*Label parent entity ID.*/,
+  `parent_type` text /*Label parent entity type.*/,
+  `status` long,
+  `value` text /*Label name.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelBulkUpdateRequest` generated from model 'labelBulkUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelBulkUpdateRequest` (
+  `id` text NOT NULL PRIMARY KEY /*Label ID.*/,
+  `status` text /*Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity.*/,
+  `value` text /*&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelCreateRequest` generated from model 'labelCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelCreateRequest` (
+  `parent_id` text NOT NULL /*Unique identifier of the asset you are labelling. Currently, you can only label campaigns.*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelCreateRequestLabelCreateRequestLabelsInner` generated from model 'LabelCreateRequestLabelCreateRequestLabelsInner'
+
+CREATE TABLE IF NOT EXISTS `LabelCreateRequestLabelCreateRequestLabelsInner` (
+  `labelCreateRequest` long NOT NULL
+  `labelCreateRequestLabelsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelCreateRequest_labels_inner` generated from model 'labelCreateRequestLabelsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelCreateRequest_labels_inner` (
+  `label_type` long NOT NULL,
+  `value` text NOT NULL /*Label name. 100-character limit.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelError` generated from model 'labelError'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelError` (
+  `data` long,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelErrorErrorMessages` generated from model 'LabelErrorErrorMessages'
+
+CREATE TABLE IF NOT EXISTS `LabelErrorErrorMessages` (
+  `labelError` long NOT NULL
+  `errorMessages` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelUpdateRequest` generated from model 'labelUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelUpdateRequest` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelUpdateRequestLabelUpdateRequestLabelsInner` generated from model 'LabelUpdateRequestLabelUpdateRequestLabelsInner'
+
+CREATE TABLE IF NOT EXISTS `LabelUpdateRequestLabelUpdateRequestLabelsInner` (
+  `labelUpdateRequest` long NOT NULL
+  `labelUpdateRequestLabelsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelUpdateRequest_labels_inner` generated from model 'labelUpdateRequestLabelsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelUpdateRequest_labels_inner` (
+  `id` text NOT NULL PRIMARY KEY /*Label ID.*/,
+  `status` long,
+  `value` text /*Label name. 100-character limit.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `labels_list_200_response` generated from model 'labelsList200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `labels_list_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelsList200ResponseLabelsResponse` generated from model 'LabelsList200ResponseLabelsResponse'
+
+CREATE TABLE IF NOT EXISTS `LabelsList200ResponseLabelsResponse` (
+  `labelsList200Response` long NOT NULL
+  `labelsResponse` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelsResponse` generated from model 'labelsResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `LabelsResponse` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelsResponseLabelError` generated from model 'LabelsResponseLabelError'
+
+CREATE TABLE IF NOT EXISTS `LabelsResponseLabelError` (
+  `labelsResponse` long NOT NULL
+  `labelError` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LabelsResponseLabel` generated from model 'LabelsResponseLabel'
+
+CREATE TABLE IF NOT EXISTS `LabelsResponseLabel` (
+  `labelsResponse` long NOT NULL
+  `label` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormArrayResponse` generated from model 'leadFormArrayResponse'
 --
 
@@ -7644,21 +9811,13 @@ CREATE TABLE IF NOT EXISTS `LeadFormArrayResponseItemsInnerException` (
 --
 
 CREATE TABLE IF NOT EXISTS `LeadFormCommon` (
+  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
+  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
   `name` text /*Internal name of the lead form.*/,
   `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
-  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
-  `status` long,
-  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `status` long
 );  /*Creation fields*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `LeadFormCommonLeadFormQuestion` generated from model 'LeadFormCommonLeadFormQuestion'
-
-CREATE TABLE IF NOT EXISTS `LeadFormCommonLeadFormQuestion` (
-  `leadFormCommon` long NOT NULL
-  `leadFormQuestion` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormCommonLeadFormCommonPolicyLinksInner` generated from model 'LeadFormCommonLeadFormCommonPolicyLinksInner'
@@ -7666,6 +9825,14 @@ CREATE TABLE IF NOT EXISTS `LeadFormCommonLeadFormQuestion` (
 CREATE TABLE IF NOT EXISTS `LeadFormCommonLeadFormCommonPolicyLinksInner` (
   `leadFormCommon` long NOT NULL
   `leadFormCommonPolicyLinksInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCommonLeadFormQuestion` generated from model 'LeadFormCommonLeadFormQuestion'
+
+CREATE TABLE IF NOT EXISTS `LeadFormCommonLeadFormQuestion` (
+  `leadFormCommon` long NOT NULL
+  `leadFormQuestion` long NOT NULL
 );
 
 
@@ -7684,21 +9851,13 @@ CREATE TABLE IF NOT EXISTS `LeadFormCommon_policy_links_inner` (
 --
 
 CREATE TABLE IF NOT EXISTS `LeadFormCreateRequest` (
+  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
+  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
   `name` text /*Internal name of the lead form.*/,
   `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
-  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
-  `status` long,
-  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `status` long
 ); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `LeadFormCreateRequestLeadFormQuestion` generated from model 'LeadFormCreateRequestLeadFormQuestion'
-
-CREATE TABLE IF NOT EXISTS `LeadFormCreateRequestLeadFormQuestion` (
-  `leadFormCreateRequest` long NOT NULL
-  `leadFormQuestion` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormCreateRequestLeadFormCommonPolicyLinksInner` generated from model 'LeadFormCreateRequestLeadFormCommonPolicyLinksInner'
@@ -7708,15 +9867,23 @@ CREATE TABLE IF NOT EXISTS `LeadFormCreateRequestLeadFormCommonPolicyLinksInner`
   `leadFormCommonPolicyLinksInner` long NOT NULL
 );
 
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCreateRequestLeadFormQuestion` generated from model 'LeadFormCreateRequestLeadFormQuestion'
+
+CREATE TABLE IF NOT EXISTS `LeadFormCreateRequestLeadFormQuestion` (
+  `leadFormCreateRequest` long NOT NULL
+  `leadFormQuestion` long NOT NULL
+);
+
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormQuestion` generated from model 'leadFormQuestion'
 --
 
 CREATE TABLE IF NOT EXISTS `LeadFormQuestion` (
-  `question_type` long,
   `custom_question_field_type` long,
   `custom_question_label` text /*Question label for a custom question.*/,
+  `question_type` long
 ); 
 
 -- --------------------------------------------------------------------------
@@ -7733,25 +9900,17 @@ CREATE TABLE IF NOT EXISTS `LeadFormQuestionCustomQuestionOptions` (
 --
 
 CREATE TABLE IF NOT EXISTS `LeadFormResponse` (
+  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
+  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
   `name` text /*Internal name of the lead form.*/,
   `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
-  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
   `status` long,
-  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
-  `id` text PRIMARY KEY /*The ID of this lead form*/,
   `ad_account_id` text /*The Ad Account ID that this lead form belongs to.*/,
   `created_time` int /*Lead form creation time. Unix timestamp in seconds.*/,
+  `id` text PRIMARY KEY /*The ID of this lead form*/,
   `updated_time` int /*Last update time. Unix timestamp in seconds.*/
 ); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `LeadFormResponseLeadFormQuestion` generated from model 'LeadFormResponseLeadFormQuestion'
-
-CREATE TABLE IF NOT EXISTS `LeadFormResponseLeadFormQuestion` (
-  `leadFormResponse` long NOT NULL
-  `leadFormQuestion` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormResponseLeadFormCommonPolicyLinksInner` generated from model 'LeadFormResponseLeadFormCommonPolicyLinksInner'
@@ -7759,6 +9918,14 @@ CREATE TABLE IF NOT EXISTS `LeadFormResponseLeadFormQuestion` (
 CREATE TABLE IF NOT EXISTS `LeadFormResponseLeadFormCommonPolicyLinksInner` (
   `leadFormResponse` long NOT NULL
   `leadFormCommonPolicyLinksInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormResponseLeadFormQuestion` generated from model 'LeadFormResponseLeadFormQuestion'
+
+CREATE TABLE IF NOT EXISTS `LeadFormResponseLeadFormQuestion` (
+  `leadFormResponse` long NOT NULL
+  `leadFormQuestion` long NOT NULL
 );
 
 
@@ -7795,21 +9962,13 @@ CREATE TABLE IF NOT EXISTS `LeadFormTestResponse` (
 
 CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequest` (
   `id` text NOT NULL PRIMARY KEY /*The ID of this lead form to be updated*/,
+  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
+  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
   `name` text /*Internal name of the lead form.*/,
   `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
-  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
-  `status` long,
-  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+  `status` long
 ); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `LeadFormUpdateRequestLeadFormQuestion` generated from model 'LeadFormUpdateRequestLeadFormQuestion'
-
-CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequestLeadFormQuestion` (
-  `leadFormUpdateRequest` long NOT NULL
-  `leadFormQuestion` long NOT NULL
-);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormUpdateRequestLeadFormCommonPolicyLinksInner` generated from model 'LeadFormUpdateRequestLeadFormCommonPolicyLinksInner'
@@ -7817,6 +9976,14 @@ CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequestLeadFormQuestion` (
 CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequestLeadFormCommonPolicyLinksInner` (
   `leadFormUpdateRequest` long NOT NULL
   `leadFormCommonPolicyLinksInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormUpdateRequestLeadFormQuestion` generated from model 'LeadFormUpdateRequestLeadFormQuestion'
+
+CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequestLeadFormQuestion` (
+  `leadFormUpdateRequest` long NOT NULL
+  `leadFormQuestion` long NOT NULL
 );
 
 
@@ -7838,13 +10005,53 @@ CREATE TABLE IF NOT EXISTS `LeadFormsList200ResponseLeadFormResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `LeadSubscription` generated from model 'leadSubscription'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadSubscription` (
+  `ad_account_id` text /*The Ad Account ID that this lead form belongs to.*/,
+  `api_version` text /*API version.*/,
+  `created_time` int /*Subscription creation time. Unix timestamp in milliseconds.*/,
+  `cryptographic_algorithm` text /*Lead data encryption algorithm.*/,
+  `cryptographic_key` text /*Base64 encoded key for client to decrypt lead data.*/,
+  `id` text PRIMARY KEY /*Subscription ID.*/,
+  `lead_form_id` text /*Lead form ID.*/,
+  `user_account_id` text /*User account used to subscribe lead data.*/,
+  `webhook_url` text /*Standard HTTPS webhook URL.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadSubscriptionPostParamsCreate` generated from model 'leadSubscriptionPostParamsCreate'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadSubscriptionPostParamsCreate` (
+  `webhook_url` text NOT NULL /*Standard HTTPS webhook URL.*/,
+  `lead_form_id` text /*Lead form ID.*/,
+  `partner_access_token` text /*Partner access token. Only for clients that requires authentication. We recommend to avoid this param.*/,
+  `partner_metadata` long,
+  `partner_refresh_token` text /*Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadSubscriptionPostParamsCreate_allOf_partner_metadata` generated from model 'leadSubscriptionPostParamsCreateAllOfPartnerMetadata'
+-- Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+--
+
+CREATE TABLE IF NOT EXISTS `LeadSubscriptionPostParamsCreate_allOf_partner_metadata` (
+  `subscriber_key` text /*Text field value that uniquely identifies a subscriber.*/
+);  /*Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `LeadsExportCreateRequest` generated from model 'leadsExportCreateRequest'
 --
 
 CREATE TABLE IF NOT EXISTS `LeadsExportCreateRequest` (
-  `start_date` text NOT NULL /*Export leads collected on and after start date (UTC). Format: YYYY-MM-DD*/,
+  `ad_id` text NOT NULL /*ID for the ad collecting leads*/,
   `end_date` text NOT NULL /*Export leads collected on and before end date (UTC). Format: YYYY-MM-DD*/,
-  `ad_id` text NOT NULL /*ID for the ad collecting leads*/
+  `start_date` text NOT NULL /*Export leads collected on and after start date (UTC). Format: YYYY-MM-DD*/
 ); 
 
 
@@ -7862,8 +10069,8 @@ CREATE TABLE IF NOT EXISTS `LeadsExportCreateResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `LeadsExportResponseData` (
-  `export_status` long,
-  `download_url` text
+  `download_url` text,
+  `export_status` long
 ); 
 
 
@@ -7872,14 +10079,14 @@ CREATE TABLE IF NOT EXISTS `LeadsExportResponseData` (
 --
 
 CREATE TABLE IF NOT EXISTS `LineItem` (
-  `product_brand` text /*Product brand. For example, \&quot;Parker\&quot;.*/,
-  `product_category` text /*Product category. For example, \&quot;Shoes\&quot;.*/,
+  `product_brand` text /*Product brand. For example, &#39;Parker&#39;.*/,
+  `product_category` text /*Product category. For example, &#39;Shoes&#39;.*/,
   `product_id` int /*Product ID. For example, 1414.*/,
-  `product_name` text /*Product name. For example, \&quot;Parker Boots\&quot;.*/,
-  `product_price` text /*Product price. For example, \&quot;99.99\&quot;.*/,
+  `product_name` text /*Product name. For example, &#39;Parker Boots&#39;.*/,
+  `product_price` text /*Product price. For example, &#39;99.99&#39;.*/,
   `product_quantity` int /*Product quantity. For example, 2.*/,
-  `product_variant` text /*Product variant. For example, \&quot;Red\&quot;.*/,
-  `product_variant_id` text /*Product variant ID. For example, \&quot;1414-34832\&quot;.*/
+  `product_variant` text /*Product variant. For example, &#39;Red&#39;.*/,
+  `product_variant_id` text /*Product variant ID. For example, &#39;1414-34832&#39;.*/
 ); 
 
 
@@ -7888,11 +10095,30 @@ CREATE TABLE IF NOT EXISTS `LineItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `LinkedBusiness` (
-  `username` text /*Username*/,
-  `image_small_url` text /*image_small_url*/,
-  `image_medium_url` text /*image_medium_url*/,
   `image_large_url` text /*image_large_url*/,
-  `image_xlarge_url` text /*image_xlarge_url*/
+  `image_medium_url` text /*image_medium_url*/,
+  `image_small_url` text /*image_small_url*/,
+  `image_xlarge_url` text /*image_xlarge_url*/,
+  `username` text /*Username*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LocalStoreUpdate` generated from model 'localStoreUpdate'
+--
+
+CREATE TABLE IF NOT EXISTS `LocalStoreUpdate` (
+  `id` text NOT NULL PRIMARY KEY /*The ID of the local store.*/,
+  `address_primary` text /*Primary address line of the store.*/,
+  `address_secondary` text /*Secondary address line of the store.*/,
+  `city` text /*City where the store is located.*/,
+  `country` long /*Country code where the store is located.*/,
+  `latitude` float /*Geographic latitude coordinate of the store.*/,
+  `longitude` float /*Geographic longitude coordinate of the store.*/,
+  `name` text /*The name of the local store.*/,
+  `postal_code` text /*Postal or ZIP code of the store.*/,
+  `region` text /*State or region code where the store is located.*/,
+  `store_code` text /*Merchant provided code for the local store. Unique within the merchant&#39;s catalog.*/
 ); 
 
 
@@ -7906,6 +10132,17 @@ CREATE TABLE IF NOT EXISTS `MaxPriceFilter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `Media` generated from model 'media'
+--
+
+CREATE TABLE IF NOT EXISTS `Media` (
+  `media_id` text NOT NULL /*Unique identifier for this media upload. Used to track status and for attaching during Pin creation.*/,
+  `media_type` long NOT NULL,
+  `status` long
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `media_list_200_response` generated from model 'mediaList200Response'
 --
 
@@ -7914,11 +10151,11 @@ CREATE TABLE IF NOT EXISTS `media_list_200_response` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `MediaList200ResponseMediaUploadDetails` generated from model 'MediaList200ResponseMediaUploadDetails'
+-- Table structure for table `MediaList200ResponseMedia` generated from model 'MediaList200ResponseMedia'
 
-CREATE TABLE IF NOT EXISTS `MediaList200ResponseMediaUploadDetails` (
+CREATE TABLE IF NOT EXISTS `MediaList200ResponseMedia` (
   `mediaList200Response` long NOT NULL
-  `mediaUploadDetails` long NOT NULL
+  `media` long NOT NULL
 );
 
 
@@ -7937,50 +10174,37 @@ CREATE TABLE IF NOT EXISTS `MediaTypeFilter` (
 --
 
 CREATE TABLE IF NOT EXISTS `MediaUpload` (
-  `media_id` text /*Unique identifier for this media upload. Used to track status and for attaching during Pin creation.*/,
-  `media_type` long,
-  `upload_url` text /*The URL where you will POST your media file.*/,
-  `upload_parameters` long
+  `media_id` text NOT NULL /*Unique identifier for this media upload. Used to track status and for attaching during Pin creation.*/,
+  `media_type` long NOT NULL,
+  `upload_parameters` long /*The list of parameter key/value pairs you will need to send with your POST request to upload your media file.*/,
+  `upload_url` text /*The URL where you will POST your media file.*/
 );  /*Media upload that has been registered but not uploaded/processed yet.*/
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `MediaUpload_allOf_upload_parameters` generated from model 'mediaUploadAllOfUploadParameters'
--- The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+-- Table structure for table `MediaUploadCreate` generated from model 'mediaUploadCreate'
+-- Resource create operation model.
 --
 
-CREATE TABLE IF NOT EXISTS `MediaUpload_allOf_upload_parameters` (
-  `xamzdate` text,
-  `xamzsignature` text,
-  `xamzsecuritytoken` text,
-  `xamzalgorithm` text,
+CREATE TABLE IF NOT EXISTS `MediaUploadCreate` (
+  `media_type` long NOT NULL
+);  /*Resource create operation model.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `MediaUploadParameters` generated from model 'mediaUploadParameters'
+--
+
+CREATE TABLE IF NOT EXISTS `MediaUploadParameters` (
+  `ContentType` text,
   `key` text,
   `policy` text,
+  `xamzalgorithm` text,
   `xamzcredential` text,
-  `ContentType` text
-);  /*The list of parameter key/value pairs you will need to send with your POST request to upload your media file.*/
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `MediaUploadDetails` generated from model 'mediaUploadDetails'
--- Media upload details
---
-
-CREATE TABLE IF NOT EXISTS `MediaUploadDetails` (
-  `media_id` text,
-  `media_type` long,
-  `status` long
-);  /*Media upload details*/
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `MediaUploadRequest` generated from model 'mediaUploadRequest'
--- Media upload request
---
-
-CREATE TABLE IF NOT EXISTS `MediaUploadRequest` (
-  `media_type` long NOT NULL
-);  /*Media upload request*/
+  `xamzdate` text,
+  `xamzsecuritytoken` text,
+  `xamzsignature` text
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -8004,8 +10228,8 @@ CREATE TABLE IF NOT EXISTS `MembersToDeleteBodyMembersToDeleteBodyMembersInner` 
 --
 
 CREATE TABLE IF NOT EXISTS `MembersToDeleteBody_members_inner` (
-  `member_id` text NOT NULL /*Unique identifier of the member*/,
-  `business_role` long NOT NULL
+  `business_role` long NOT NULL,
+  `member_id` text NOT NULL /*Unique identifier of the member*/
 ); 
 
 
@@ -8039,15 +10263,26 @@ CREATE TABLE IF NOT EXISTS `MinPriceFilter` (
 --
 
 CREATE TABLE IF NOT EXISTS `multiple_product_groups_inner` (
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
   `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group.*/,
-  `catalog_type` text NOT NULL,
+  `filters` long NOT NULL,
+  `name` text NOT NULL,
   `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
-  `country` long NOT NULL,
-  `locale` long NOT NULL,
+  `catalog_type` text NOT NULL,
   `description` text,
-  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/
+  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
+  `country` long,
+  `locale` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `NotificationResponse` generated from model 'notificationResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `NotificationResponse` (
+  `success` boolean /*Returns true if the notification accepted.*/,
+  `received_at` int /*Received time. Unix timestamp in seconds.*/,
+  `error_msg` text /*error message when success is false*/
 ); 
 
 
@@ -8079,8 +10314,7 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
   `refresh_token` text NOT NULL,
   `grant_type` text NOT NULL,
-  `scope` text,
-  `refresh_on` boolean /*Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.*/
+  `scope` text
 ); 
 
 
@@ -8091,9 +10325,9 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponse` (
   `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
   `expires_in` int NOT NULL,
   `scope` text NOT NULL,
+  `token_type` text NOT NULL,
   `response_type` text
 );  /*A successful OAuth access token response.*/
 
@@ -8105,9 +10339,9 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponse` (
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseClientCredentials` (
   `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
   `expires_in` int NOT NULL,
   `scope` text NOT NULL,
+  `token_type` text NOT NULL,
   `response_type` text
 );  /*A successful OAuth client token response for the client token flow.*/
 
@@ -8117,28 +10351,13 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseClientCredentials` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
-  `refresh_token` text NOT NULL,
-  `refresh_token_expires_in` int NOT NULL,
   `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
   `expires_in` int NOT NULL,
   `scope` text NOT NULL,
-  `response_type` text
-); 
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `OauthAccessTokenResponseEverlastingRefresh` generated from model 'oauthAccessTokenResponseEverlastingRefresh'
---
-
-CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
-  `refresh_token` text NOT NULL,
-  `refresh_token_expires_in` int NOT NULL,
-  `refresh_token_expires_at` int NOT NULL,
-  `access_token` text NOT NULL,
   `token_type` text NOT NULL,
-  `expires_in` int NOT NULL,
-  `scope` text NOT NULL,
+  `refresh_token` text,
+  `refresh_token_expires_at` int,
+  `refresh_token_expires_in` int,
   `response_type` text
 ); 
 
@@ -8151,9 +10370,9 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
   `refresh_token` text NOT NULL,
   `refresh_token_expires_in` int NOT NULL,
   `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
   `expires_in` int NOT NULL,
   `scope` text NOT NULL,
+  `token_type` text NOT NULL,
   `response_type` text
 ); 
 
@@ -8165,9 +10384,12 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseRefresh` (
   `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
   `expires_in` int NOT NULL,
   `scope` text NOT NULL,
+  `token_type` text NOT NULL,
+  `refresh_token` text NOT NULL,
+  `refresh_token_expires_at` int NOT NULL,
+  `refresh_token_expires_in` int NOT NULL,
   `response_type` text
 );  /*A successful OAuth access token response for the refresh token flow.*/
 
@@ -8192,8 +10414,9 @@ CREATE TABLE IF NOT EXISTS `OptimizationGoalMetadata_conversion_tag_v3_goal_meta
   `conversion_event` text,
   `conversion_tag_id` text,
   `cpa_goal_value_in_micro_currency` text,
-  `is_roas_optimized` boolean /*ROAS optimization is not supported*/,
-  `learning_mode_type` text /*Conversion learning model type*/
+  `is_roas_optimized` boolean /*Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when &#x60;conversion_event&#x60; is set to &#x60;\&quot;CHECKOUT\&quot;&#x60; and &#x60;bid_strategy_type&#x60; is set to &#x60;\&quot;AUTOMATIC_BID\&quot;&#x60;. &lt;br&gt;This parameter is not enabled for all advertisers. &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\&quot;&gt;Learn more&lt;/a&gt;.*/,
+  `learning_mode_type` text /*Conversion learning model type*/,
+  `reporting_event` text /*Event name for custom or standard events mapped to an oCPM model*/
 ); 
 
 
@@ -8213,7 +10436,7 @@ CREATE TABLE IF NOT EXISTS `OptimizationGoalMetadata_conversion_tag_v3_goal_meta
 --
 
 CREATE TABLE IF NOT EXISTS `OptimizationGoalMetadata_frequency_goal_metadata` (
-  `frequency` int,
+  `frequency` int UNSIGNED /*Frequency target can only be between 2 and 20*/,
   `timerange` text /*User entity counts time range*/
 ); 
 
@@ -8232,17 +10455,17 @@ CREATE TABLE IF NOT EXISTS `OptimizationGoalMetadata_scrollup_goal_metadata` (
 --
 
 CREATE TABLE IF NOT EXISTS `OrderLine` (
-  `id` text PRIMARY KEY /*Order line ID.*/,
-  `type` text /*Always \&quot;orderline\&quot;.*/,
   `ad_account_id` text /*Ad account ID.*/,
+  `budget` decimal /*Order line budget in micro currency.*/,
+  `end_time` decimal /*End time. Unix timestamp.*/,
+  `id` text PRIMARY KEY /*Order line ID.*/,
+  `name` text /*Order line name.*/,
+  `paid_budget` decimal /*Order line paid budget in micro currency.*/,
+  `paid_type` long /*Order line paid type.*/,
   `purchase_order_id` text /*Purchase order ID.*/,
   `start_time` decimal /*Start time. Unix timestamp.*/,
-  `end_time` decimal /*End time. Unix timestamp.*/,
-  `budget` decimal /*Order line budget in micro currency.*/,
-  `paid_budget` decimal /*Order line paid budget in micro currency.*/,
   `status` long /*Order line status.*/,
-  `name` text /*Order line name.*/,
-  `paid_type` long /*Order line paid type.*/
+  `type` text /*Always \&quot;orderline\&quot;.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -8310,17 +10533,17 @@ CREATE TABLE IF NOT EXISTS `OrderLineSingleResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `OrderLines` (
-  `id` text PRIMARY KEY /*Order line ID.*/,
-  `type` text /*Always \&quot;orderline\&quot;.*/,
   `ad_account_id` text /*Ad account ID.*/,
+  `budget` decimal /*Order line budget in micro currency.*/,
+  `end_time` decimal /*End time. Unix timestamp.*/,
+  `id` text PRIMARY KEY /*Order line ID.*/,
+  `name` text /*Order line name.*/,
+  `paid_budget` decimal /*Order line paid budget in micro currency.*/,
+  `paid_type` long /*Order line paid type.*/,
   `purchase_order_id` text /*Purchase order ID.*/,
   `start_time` decimal /*Start time. Unix timestamp.*/,
-  `end_time` decimal /*End time. Unix timestamp.*/,
-  `budget` decimal /*Order line budget in micro currency.*/,
-  `paid_budget` decimal /*Order line paid budget in micro currency.*/,
   `status` long /*Order line status.*/,
-  `name` text /*Order line name.*/,
-  `paid_type` long /*Order line paid type.*/
+  `type` text /*Always \&quot;orderline\&quot;.*/
 );  /*Order Line*/
 
 
@@ -8393,30 +10616,28 @@ CREATE TABLE IF NOT EXISTS `PaginatedItems` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `Pin` generated from model 'pin'
--- Pin
+-- Pin model containing properties related to a Pinterest Pin.
 --
 
 CREATE TABLE IF NOT EXISTS `Pin` (
-  `id` text PRIMARY KEY,
-  `created_at` datetime,
-  `link` text,
-  `title` text,
-  `description` text,
-  `dominant_color` text /*Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;.*/,
+  `id` text NOT NULL PRIMARY KEY,
   `alt_text` text,
-  `creative_type` long,
   `board_id` text /*The board to which this Pin belongs.*/,
-  `board_section_id` text /*The board section to which this Pin belongs.*/,
   `board_owner` long,
-  `is_owner` boolean /*Whether the \&quot;operation user_account\&quot; is the Pin owner.*/,
-  `media` long,
-  `media_source` long,
-  `parent_pin_id` text /*The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;.*/,
-  `is_standard` boolean /*Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.*/,
+  `board_section_id` text /*The board section to which this Pin belongs.*/,
+  `created_at` datetime,
+  `creative_type` long,
+  `description` text,
+  `dominant_color` text /*Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;.*/,
   `has_been_promoted` boolean /*Whether the Pin has been promoted or not.*/,
-  `note` text /*Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.*/,
-  `pin_metrics` blob /*Pin metrics with associated time intervals if any.*/
-);  /*Pin*/
+  `is_owner` boolean /*Whether the \&quot;operation user_account\&quot; is the Pin owner.*/,
+  `is_standard` boolean /*Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.*/,
+  `link` text,
+  `media` long,
+  `parent_pin_id` text /*The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).*/,
+  `pin_metrics` blob /*Pin metrics with associated time intervals if any.*/,
+  `title` text
+);  /*Pin model containing properties related to a Pinterest Pin.*/
 
 
 -- --------------------------------------------------------------------------
@@ -8450,35 +10671,45 @@ CREATE TABLE IF NOT EXISTS `PinAnalyticsMetricsResponse_daily_metrics_inner` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinCreate` generated from model 'pinCreate'
--- Pin
+-- Resource create operation model.
 --
 
 CREATE TABLE IF NOT EXISTS `PinCreate` (
-  `id` text PRIMARY KEY,
-  `created_at` datetime,
-  `link` text,
-  `title` text,
-  `description` text,
-  `dominant_color` text /*Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;.*/,
   `alt_text` text,
   `board_id` text /*The board to which this Pin belongs.*/,
   `board_section_id` text /*The board section to which this Pin belongs.*/,
-  `board_owner` long,
-  `media` long,
+  `description` text,
+  `dominant_color` text /*Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;.*/,
+  `link` text,
   `media_source` long,
-  `parent_pin_id` text /*The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;.*/,
-  `note` text /*Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.*/
-);  /*Pin*/
+  `parent_pin_id` text /*The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).*/,
+  `sponsor_id` text /*The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.*/,
+  `title` text
+);  /*Resource create operation model.*/
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMedia` generated from model 'pinMedia'
--- Pin media objects.
+-- Pin media that can be an image, video, or a mix of both.
 --
 
 CREATE TABLE IF NOT EXISTS `PinMedia` (
-  `media_type` text
-);  /*Pin media objects.*/
+  `media_type` text NOT NULL,
+  `images` long,
+  `cover_image_url` text,
+  `duration` decimal /*Duration (in miliseconds). Field maybe null after creation due to video processing time.*/,
+  `height` int /*Height (in pixels). Field maybe null after creation due to video processing time.*/,
+  `video_url` text /*Video url (720p).  **Note:** This field is limited and not available to all apps.*/,
+  `width` int /*Width (in pixels). Field maybe null after creation due to video processing time.*/,
+);  /*Pin media that can be an image, video, or a mix of both.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PinMediaPinMediaMetadata` generated from model 'PinMediaPinMediaMetadata'
+
+CREATE TABLE IF NOT EXISTS `PinMediaPinMediaMetadata` (
+  `pinMedia` long NOT NULL
+  `pinMediaMetadata` long NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -8486,132 +10717,133 @@ CREATE TABLE IF NOT EXISTS `PinMedia` (
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaMetadata` (
-  `item_type` text,
-  `title` text,
   `description` text,
-  `link` text,
   `images` long,
+  `item_type` text,
+  `link` text,
+  `title` text,
   `cover_image_url` text,
-  `video_url` text /*Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps.*/,
-  `duration` decimal /*Duration (in milliseconds)*/,
-  `height` int /*Height (in pixels)*/,
-  `width` int /*Width (in pixels)*/
+  `duration` decimal /*Duration (in miliseconds). Field maybe null after creation due to video processing time.*/,
+  `height` int /*Height (in pixels). Field maybe null after creation due to video processing time.*/,
+  `video_url` text /*Video url (720p).  **Note:** This field is limited and not available to all apps.*/,
+  `width` int /*Width (in pixels). Field maybe null after creation due to video processing time.*/
 ); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaSource` generated from model 'pinMediaSource'
--- Pin media source.
+-- Pin media source that can be an image, video, or a mix of both passed in as a request.
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaSource` (
-  `source_type` text NOT NULL,
-  `content_type` text NOT NULL,
+  `content_type` long NOT NULL,
   `data` text NOT NULL,
+  `source_type` text NOT NULL,
   `url` text NOT NULL,
   `media_id` text NOT NULL,
   `is_standard` boolean /*Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.*/,
-  `cover_image_url` text /*Cover image url.*/,
-  `cover_image_content_type` text /*Content type for cover image Base64.*/,
+  `cover_image_content_type` long /*Content type for cover image Base64.*/,
   `cover_image_data` text /*Cover image Base64.*/,
+  `cover_image_key_frame_time` int UNSIGNED /*Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.*/,
+  `cover_image_url` text /*Cover image URL.*/,
   `index` int UNSIGNED,
   `is_affiliate_link` boolean /*This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.*/
-);  /*Pin media source.*/
+);  /*Pin media source that can be an image, video, or a mix of both passed in as a request.*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinMediaSourcePinMediaSourceImagesURLItemsInner` generated from model 'PinMediaSourcePinMediaSourceImagesURLItemsInner'
+-- Table structure for table `PinMediaSourcePinMediaSourceImagesURLItem` generated from model 'PinMediaSourcePinMediaSourceImagesURLItem'
 
-CREATE TABLE IF NOT EXISTS `PinMediaSourcePinMediaSourceImagesURLItemsInner` (
+CREATE TABLE IF NOT EXISTS `PinMediaSourcePinMediaSourceImagesURLItem` (
   `pinMediaSource` long NOT NULL
-  `pinMediaSourceImagesURLItemsInner` long NOT NULL
+  `pinMediaSourceImagesURLItem` long NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaSourceImageBase64` generated from model 'pinMediaSourceImageBase64'
--- Base64-encoded image media source
+-- Image Base64-based media source.
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaSourceImageBase64` (
-  `source_type` text NOT NULL,
-  `content_type` text NOT NULL,
+  `content_type` long NOT NULL,
   `data` text NOT NULL,
+  `source_type` text NOT NULL /*The source type of the media.*/,
   `is_standard` boolean /*Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.*/
-);  /*Base64-encoded image media source*/
+);  /*Image Base64-based media source.*/
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaSourceImageURL` generated from model 'pinMediaSourceImageURL'
--- Image URL-based media source
+-- Image URL-based media source.
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaSourceImageURL` (
-  `source_type` text NOT NULL,
+  `source_type` text NOT NULL /*The source type of the media.*/,
   `url` text NOT NULL,
   `is_standard` boolean /*Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.*/
-);  /*Image URL-based media source*/
+);  /*Image URL-based media source.*/
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaSourceImagesBase64` generated from model 'pinMediaSourceImagesBase64'
--- Multiple Base64-encoded images media source
+-- Multiple Base64-based images media source
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesBase64` (
-  `source_type` text,
+  `source_type` text NOT NULL /*The source type of the media.*/,
   `index` int UNSIGNED
-);  /*Multiple Base64-encoded images media source*/
+);  /*Multiple Base64-based images media source*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinMediaSourceImagesBase64PinMediaSourceImagesBase64ItemsInner` generated from model 'PinMediaSourceImagesBase64PinMediaSourceImagesBase64ItemsInner'
+-- Table structure for table `PinMediaSourceImagesBase64PinMediaSourceImagesBase64Item` generated from model 'PinMediaSourceImagesBase64PinMediaSourceImagesBase64Item'
 
-CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesBase64PinMediaSourceImagesBase64ItemsInner` (
+CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesBase64PinMediaSourceImagesBase64Item` (
   `pinMediaSourceImagesBase64` long NOT NULL
-  `pinMediaSourceImagesBase64ItemsInner` long NOT NULL
+  `pinMediaSourceImagesBase64Item` long NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinMediaSourceImagesBase64_items_inner` generated from model 'pinMediaSourceImagesBase64ItemsInner'
+-- Table structure for table `PinMediaSourceImagesBase64Item` generated from model 'pinMediaSourceImagesBase64Item'
 --
 
-CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesBase64_items_inner` (
-  `content_type` text NOT NULL,
-  `data` text NOT NULL /*Image to upload as base64 string.*/,
-  `title` text,
+CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesBase64Item` (
+  `content_type` long NOT NULL,
+  `data` text NOT NULL,
   `description` text,
-  `link` text /*Destination link for the image.*/
+  `link` text,
+  `title` text
 ); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaSourceImagesURL` generated from model 'pinMediaSourceImagesURL'
--- Multiple images urls-based media source
+-- Multiple URL-based images media source
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesURL` (
-  `source_type` text,
+  `source_type` text NOT NULL /*The source type of the media.*/,
   `index` int UNSIGNED
-);  /*Multiple images urls-based media source*/
+);  /*Multiple URL-based images media source*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinMediaSourceImagesURLPinMediaSourceImagesURLItemsInner` generated from model 'PinMediaSourceImagesURLPinMediaSourceImagesURLItemsInner'
+-- Table structure for table `PinMediaSourceImagesURLPinMediaSourceImagesURLItem` generated from model 'PinMediaSourceImagesURLPinMediaSourceImagesURLItem'
 
-CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesURLPinMediaSourceImagesURLItemsInner` (
+CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesURLPinMediaSourceImagesURLItem` (
   `pinMediaSourceImagesURL` long NOT NULL
-  `pinMediaSourceImagesURLItemsInner` long NOT NULL
+  `pinMediaSourceImagesURLItem` long NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinMediaSourceImagesURL_items_inner` generated from model 'pinMediaSourceImagesURLItemsInner'
+-- Table structure for table `PinMediaSourceImagesURLItem` generated from model 'pinMediaSourceImagesURLItem'
 --
 
-CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesURL_items_inner` (
-  `url` text NOT NULL /*URL of image to upload.*/,
-  `title` text,
+CREATE TABLE IF NOT EXISTS `PinMediaSourceImagesURLItem` (
+  `url` text NOT NULL,
   `description` text,
-  `link` text /*Destination link for the image.*/
+  `link` text,
+  `title` text
 ); 
 
 
@@ -8628,17 +10860,18 @@ CREATE TABLE IF NOT EXISTS `PinMediaSourcePinURL` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaSourceVideoID` generated from model 'pinMediaSourceVideoID'
--- Video ID-based media source
+-- Video ID-based media source.
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaSourceVideoID` (
-  `source_type` text NOT NULL,
   `media_id` text NOT NULL,
-  `cover_image_url` text /*Cover image url.*/,
-  `cover_image_content_type` text /*Content type for cover image Base64.*/,
+  `source_type` text NOT NULL,
+  `cover_image_content_type` long /*Content type for cover image Base64.*/,
   `cover_image_data` text /*Cover image Base64.*/,
+  `cover_image_key_frame_time` int UNSIGNED /*Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.*/,
+  `cover_image_url` text /*Cover image URL.*/,
   `is_standard` boolean /*Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.*/
-);  /*Video ID-based media source*/
+);  /*Video ID-based media source.*/
 
 
 -- --------------------------------------------------------------------------
@@ -8647,21 +10880,9 @@ CREATE TABLE IF NOT EXISTS `PinMediaSourceVideoID` (
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaWithImage` (
-  `media_type` text,
+  `media_type` text NOT NULL,
   `images` long
 );  /*Pin with image.*/
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `PinMediaWithImage_allOf_images` generated from model 'pinMediaWithImageAllOfImages'
---
-
-CREATE TABLE IF NOT EXISTS `PinMediaWithImage_allOf_images` (
-  `150x150` blob,
-  `400x300` blob,
-  `600x` blob,
-  `1200x` blob
-); 
 
 
 -- --------------------------------------------------------------------------
@@ -8670,7 +10891,7 @@ CREATE TABLE IF NOT EXISTS `PinMediaWithImage_allOf_images` (
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaWithImageAndVideo` (
-  `media_type` text,
+  `media_type` text NOT NULL,
 );  /*Pin with a mix of images and videos.*/
 
 -- --------------------------------------------------------------------------
@@ -8688,7 +10909,7 @@ CREATE TABLE IF NOT EXISTS `PinMediaWithImageAndVideoPinMediaMetadata` (
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaWithImages` (
-  `media_type` text,
+  `media_type` text NOT NULL,
 );  /*Pin with multiple images.*/
 
 -- --------------------------------------------------------------------------
@@ -8706,13 +10927,13 @@ CREATE TABLE IF NOT EXISTS `PinMediaWithImagesImageMetadata` (
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaWithVideo` (
-  `media_type` text,
-  `images` long,
+  `media_type` text NOT NULL,
   `cover_image_url` text,
-  `video_url` text /*Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps.*/,
-  `duration` decimal /*Duration (in milliseconds)*/,
-  `height` int /*Height (in pixels)*/,
-  `width` int /*Width (in pixels)*/
+  `duration` decimal /*Duration (in miliseconds). Field maybe null after creation due to video processing time.*/,
+  `height` int /*Height (in pixels). Field maybe null after creation due to video processing time.*/,
+  `images` long,
+  `video_url` text /*Video url (720p).  **Note:** This field is limited and not available to all apps.*/,
+  `width` int /*Width (in pixels). Field maybe null after creation due to video processing time.*/
 );  /*Pin with video.*/
 
 
@@ -8722,51 +10943,39 @@ CREATE TABLE IF NOT EXISTS `PinMediaWithVideo` (
 --
 
 CREATE TABLE IF NOT EXISTS `PinMediaWithVideos` (
-  `media_type` text,
+  `media_type` text NOT NULL,
 );  /*Pin with multiple videos.*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinMediaWithVideosVideoMetadata` generated from model 'PinMediaWithVideosVideoMetadata'
+-- Table structure for table `PinMediaWithVideosVideoMetadataWithItemType` generated from model 'PinMediaWithVideosVideoMetadataWithItemType'
 
-CREATE TABLE IF NOT EXISTS `PinMediaWithVideosVideoMetadata` (
+CREATE TABLE IF NOT EXISTS `PinMediaWithVideosVideoMetadataWithItemType` (
   `pinMediaWithVideos` long NOT NULL
-  `videoMetadata` long NOT NULL
+  `videoMetadataWithItemType` long NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinUpdate` generated from model 'pinUpdate'
--- Pin fields for updates
+-- Resource create or update operation model.
 --
 
 CREATE TABLE IF NOT EXISTS `PinUpdate` (
-  `alt_text` text /*Pin&#39;s alternative text.*/,
-  `board_id` text /*The id of the board to move the Pin onto.*/,
-  `board_section_id` text /*&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/create-a-board-section\&quot;&gt;Board section&lt;/a&gt; ID.*/,
-  `description` text /*Pin description - 800 characters maximum.*/,
-  `link` text /*URL viewer is taken to when they click pin.*/,
-  `title` text /*The native pin title that creators explicitly prefer to display.*/,
-  `note` text /*Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.*/
-);  /*Pin fields for updates*/
+  `alt_text` text,
+  `board_id` text /*The board to which this Pin belongs.*/,
+  `board_section_id` text /*The board section to which this Pin belongs.*/,
+  `description` text,
+  `link` text,
+  `title` text
+);  /*Resource create or update operation model.*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinUpdatePinUpdateCarouselSlotsInner` generated from model 'PinUpdatePinUpdateCarouselSlotsInner'
+-- Table structure for table `PinUpdateCarouselSlot` generated from model 'PinUpdateCarouselSlot'
 
-CREATE TABLE IF NOT EXISTS `PinUpdatePinUpdateCarouselSlotsInner` (
+CREATE TABLE IF NOT EXISTS `PinUpdateCarouselSlot` (
   `pinUpdate` long NOT NULL
-  `pinUpdateCarouselSlotsInner` long NOT NULL
+  `carouselSlot` long NOT NULL
 );
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `PinUpdate_carousel_slots_inner` generated from model 'pinUpdateCarouselSlotsInner'
---
-
-CREATE TABLE IF NOT EXISTS `PinUpdate_carousel_slots_inner` (
-  `title` text /*Carousel Pin slot title.*/,
-  `description` text /*Carousel Pin slot description.*/,
-  `link` text /*Carousel Pin slot link.*/
-); 
 
 
 -- --------------------------------------------------------------------------
@@ -8797,23 +11006,24 @@ CREATE TABLE IF NOT EXISTS `pins_save_request` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `PinterestTagEventData` generated from model 'pinterestTagEventData'
--- Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
+-- Table structure for table `PinterestLibError` generated from model 'pinterestLibError'
+-- Default error response
 --
 
-CREATE TABLE IF NOT EXISTS `PinterestTagEventData` (
-  `currency` long,
-  `lead_type` text /*Promotion code. For example, \&quot;Newsletter\&quot;.*/,
-  `line_items` long,
-  `order_id` text /*Order ID. For example, \&quot;X-151481\&quot;.*/,
-  `order_quantity` int /*Order quantity. For example, 1.*/,
-  `page_name` text /*Page name. For example, \&quot;Our Favorite Pins on Pinterest\&quot;.*/,
-  `promo_code` text /*Promotion code. For example, \&quot;WINTER10\&quot;.*/,
-  `property` text /*Property. For example, \&quot;Athleta\&quot;.*/,
-  `search_query` text /*Search query string. For example, \&quot;boots\&quot;.*/,
-  `value` text /*Product value. For example, \&quot;199.98\&quot;*/,
-  `video_title` text /*Video title. For example, \&quot;How to style your Parker Boots\&quot;.*/
-);  /*Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }*/
+CREATE TABLE IF NOT EXISTS `PinterestLibError` (
+  `code` int NOT NULL,
+  `message` text NOT NULL
+);  /*Default error response*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PinterestLibStatus204` generated from model 'pinterestLibStatus204'
+-- The resource was successfully deleted.
+--
+
+CREATE TABLE IF NOT EXISTS `PinterestLibStatus204` (
+  `statusCode` decimal NOT NULL
+);  /*The resource was successfully deleted.*/
 
 
 -- --------------------------------------------------------------------------
@@ -8827,12 +11037,68 @@ CREATE TABLE IF NOT EXISTS `PlacementMultipliers` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `PredictedTimeSeries` generated from model 'predictedTimeSeries'
+-- A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword. Similar to the historical &#x60;time_series&#x60;, normalization is applied independently to the predicted time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative predicted volume between keywords.&lt;br /&gt; **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of &#x60;2024-01-07&#x60; would include predicted searches for the week ending on &#x60;2024-01-07&#x60;.
+--
+
+CREATE TABLE IF NOT EXISTS `PredictedTimeSeries` (
+  `date` date
+);  /*A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword. Similar to the historical &#x60;time_series&#x60;, normalization is applied independently to the predicted time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative predicted volume between keywords.&lt;br /&gt; **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of &#x60;2024-01-07&#x60; would include predicted searches for the week ending on &#x60;2024-01-07&#x60;.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `PriceFilter` generated from model 'priceFilter'
 --
 
 CREATE TABLE IF NOT EXISTS `PriceFilter` (
   `PRICE` long NOT NULL
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ProductCategoriesDemographic` generated from model 'productCategoriesDemographic'
+-- Age and gender distribution who engaged with this product category in the past 3 months
+--
+
+CREATE TABLE IF NOT EXISTS `ProductCategoriesDemographic` (
+  `age` blob NOT NULL /*Age demographic distribution*/,
+  `gender` long NOT NULL
+);  /*Age and gender distribution who engaged with this product category in the past 3 months*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ProductCategoriesMetricsHighlights` generated from model 'productCategoriesMetricsHighlights'
+-- Key performance metrics highlights for this product category
+--
+
+CREATE TABLE IF NOT EXISTS `ProductCategoriesMetricsHighlights` (
+  `engagement` long /*Engagement metric value*/,
+  `outbound_clicks` long /*Number of outbound clicks*/,
+  `pin_saves` long /*Number of pin saves*/
+);  /*Key performance metrics highlights for this product category*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ProductCategoryDetails` generated from model 'productCategoryDetails'
+-- Product category details
+--
+
+CREATE TABLE IF NOT EXISTS `ProductCategoryDetails` (
+  `has_prediction` boolean NOT NULL /*     Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.*/,
+  `product_category` long NOT NULL,
+  `demographics` long,
+  `metrics_highlights` long,
+  `predicted_time_series` blob /*     A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.*/,
+  `time_series` blob /*Time series data showing trend values over time, indexed between 0 and 100*/
+);  /*Product category details*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ProductCategoryDetailsRelatedSearches` generated from model 'ProductCategoryDetailsRelatedSearches'
+
+CREATE TABLE IF NOT EXISTS `ProductCategoryDetailsRelatedSearches` (
+  `productCategoryDetails` long NOT NULL
+  `relatedSearches` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -8850,23 +11116,30 @@ CREATE TABLE IF NOT EXISTS `ProductGroupAnalyticsResponse_inner` (
 --
 
 CREATE TABLE IF NOT EXISTS `ProductGroupPromotion` (
-  `id` text PRIMARY KEY /*ID of the product group promotion.*/,
   `ad_group_id` text /*ID of the ad group the product group belongs to.*/,
   `bid_in_micro_currency` int /*The bid in micro currency.*/,
-  `included` boolean /*True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.*/,
-  `definition` text /*The full product group definition path*/,
-  `relative_definition` text /*The definition of the product group, relative to its parent - an attribute name/value pair*/,
-  `parent_id` text /*The parent Product Group ID of this Product Group*/,
-  `slideshow_collections_title` text /*Slideshow Collections Title*/,
-  `slideshow_collections_description` text /*Slideshow Collections Description*/,
-  `is_mdl` boolean /*If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog*/,
-  `status` long,
-  `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/,
   `catalog_product_group_id` text /*ID of the catalogs product group that this product group promotion references*/,
   `catalog_product_group_name` text /*Catalogs product group name*/,
-  `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
+  `collections_header_type` text /*Collections ad header type*/,
   `collections_hero_destination_url` text /*Collections Hero Destination Url*/,
-  `grid_click_type` long
+  `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
+  `creative_type` long,
+  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE*/,
+  `definition` text /*The full product group definition path*/,
+  `grid_click_type` long,
+  `id` text PRIMARY KEY /*ID of the product group promotion.*/,
+  `included` boolean /*True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.*/,
+  `is_generate_background` boolean /*Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.*/,
+  `is_mdl` boolean /*If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog*/,
+  `parent_id` text /*The parent Product Group ID of this Product Group*/,
+  `preferred_media_type` text /*Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.*/,
+  `relative_definition` text /*The definition of the product group, relative to its parent - an attribute name/value pair*/,
+  `selected_image_tag` text /*The ad image tag selected for the product group promotion.*/,
+  `selected_video_tag` text /*The ad video tag selected for the product group promotion.*/,
+  `slideshow_collections_description` text /*Slideshow Collections Description*/,
+  `slideshow_collections_title` text /*Slideshow Collections Title*/,
+  `status` long,
+  `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/
 ); 
 
 
@@ -8879,38 +11152,12 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequest` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement` generated from model 'ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement'
+-- Table structure for table `ProductGroupPromotionCreateRequestProductGroupPromotion` generated from model 'ProductGroupPromotionCreateRequestProductGroupPromotion'
 
-CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement` (
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestProductGroupPromotion` (
   `productGroupPromotionCreateRequest` long NOT NULL
-  `productGroupPromotionCreateRequestElement` long NOT NULL
+  `productGroupPromotion` long NOT NULL
 );
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `ProductGroupPromotionCreateRequestElement` generated from model 'productGroupPromotionCreateRequestElement'
---
-
-CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestElement` (
-  `id` text PRIMARY KEY /*ID of the product group promotion.*/,
-  `ad_group_id` text /*ID of the ad group the product group belongs to.*/,
-  `bid_in_micro_currency` int /*The bid in micro currency.*/,
-  `included` boolean /*True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.*/,
-  `definition` text /*The full product group definition path*/,
-  `relative_definition` text /*The definition of the product group, relative to its parent - an attribute name/value pair*/,
-  `parent_id` text /*The parent Product Group ID of this Product Group*/,
-  `slideshow_collections_title` text /*Slideshow Collections Title*/,
-  `slideshow_collections_description` text /*Slideshow Collections Description*/,
-  `is_mdl` boolean /*If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog*/,
-  `status` long,
-  `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/,
-  `catalog_product_group_id` text /*ID of the catalogs product group that this product group promotion references*/,
-  `catalog_product_group_name` text /*Catalogs product group name*/,
-  `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
-  `collections_hero_destination_url` text /*Collections Hero Destination Url*/,
-  `grid_click_type` long,
-  `creative_type` long
-); 
 
 
 -- --------------------------------------------------------------------------
@@ -8927,32 +11174,6 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionResponseProductGroupPromotionRe
   `productGroupPromotionResponse` long NOT NULL
   `productGroupPromotionResponseItem` long NOT NULL
 );
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `ProductGroupPromotionResponseElement` generated from model 'productGroupPromotionResponseElement'
---
-
-CREATE TABLE IF NOT EXISTS `ProductGroupPromotionResponseElement` (
-  `id` text PRIMARY KEY /*ID of the product group promotion.*/,
-  `ad_group_id` text /*ID of the ad group the product group belongs to.*/,
-  `bid_in_micro_currency` int /*The bid in micro currency.*/,
-  `included` boolean /*True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.*/,
-  `definition` text /*The full product group definition path*/,
-  `relative_definition` text /*The definition of the product group, relative to its parent - an attribute name/value pair*/,
-  `parent_id` text /*The parent Product Group ID of this Product Group*/,
-  `slideshow_collections_title` text /*Slideshow Collections Title*/,
-  `slideshow_collections_description` text /*Slideshow Collections Description*/,
-  `is_mdl` boolean /*If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog*/,
-  `status` long,
-  `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/,
-  `catalog_product_group_id` text /*ID of the catalogs product group that this product group promotion references*/,
-  `catalog_product_group_name` text /*Catalogs product group name*/,
-  `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
-  `collections_hero_destination_url` text /*Collections Hero Destination Url*/,
-  `grid_click_type` long,
-  `creative_type` long
-); 
 
 
 -- --------------------------------------------------------------------------
@@ -8998,11 +11219,11 @@ CREATE TABLE IF NOT EXISTS `product_group_promotions_list_200_response` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ProductGroupPromotionsList200ResponseProductGroupPromotionResponseItem` generated from model 'ProductGroupPromotionsList200ResponseProductGroupPromotionResponseItem'
+-- Table structure for table `ProductGroupPromotionsList200ResponseProductGroupPromotion` generated from model 'ProductGroupPromotionsList200ResponseProductGroupPromotion'
 
-CREATE TABLE IF NOT EXISTS `ProductGroupPromotionsList200ResponseProductGroupPromotionResponseItem` (
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionsList200ResponseProductGroupPromotion` (
   `productGroupPromotionsList200Response` long NOT NULL
-  `productGroupPromotionResponseItem` long NOT NULL
+  `productGroupPromotion` long NOT NULL
 );
 
 
@@ -9061,13 +11282,224 @@ CREATE TABLE IF NOT EXISTS `ProductType4Filter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `PromotionArrayElement` generated from model 'promotionArrayElement'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionArrayElement` (
+  `data` long,
+  `exception` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionCommon` generated from model 'promotionCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionCommon` (
+  `discount_status` text /*Discount status based on the current time and start and end time of discount*/,
+  `end_time` int /*Promotion end time. Unix timestamp in seconds. Independent of campaign end time.*/,
+  `external_id` text /*Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.*/,
+  `platform_type` text /*The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;.*/,
+  `promotion_code` text /*Code that can be used to redeem a promotion.*/,
+  `promotion_custom_id` text /*An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.*/,
+  `promotion_title` text /*Internal name for the promotion.*/,
+  `promotion_type` long,
+  `start_time` int /*Promotion start time. Unix timestamp in seconds. Independent of campaign start time.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionCommonPromotionTemplateValue` generated from model 'PromotionCommonPromotionTemplateValue'
+
+CREATE TABLE IF NOT EXISTS `PromotionCommonPromotionTemplateValue` (
+  `promotionCommon` long NOT NULL
+  `promotionTemplateValue` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionCreateRequest` generated from model 'promotionCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionCreateRequest` (
+  `promotion_title` text NOT NULL /*Internal name for the promotion.*/,
+  `promotion_type` long NOT NULL,
+  `discount_status` text /*Discount status based on the current time and start and end time of discount*/,
+  `end_time` int /*Promotion end time. Unix timestamp in seconds. Independent of campaign end time.*/,
+  `external_id` text /*Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.*/,
+  `platform_type` text /*The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;.*/,
+  `promotion_code` text /*Code that can be used to redeem a promotion.*/,
+  `promotion_custom_id` text /*An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.*/,
+  `start_time` int /*Promotion start time. Unix timestamp in seconds. Independent of campaign start time.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionCreateRequestPromotionTemplateValue` generated from model 'PromotionCreateRequestPromotionTemplateValue'
+
+CREATE TABLE IF NOT EXISTS `PromotionCreateRequestPromotionTemplateValue` (
+  `promotionCreateRequest` long NOT NULL
+  `promotionTemplateValue` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionResponse` generated from model 'promotionResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionResponse` (
+  `discount_status` text /*Discount status based on the current time and start and end time of discount*/,
+  `end_time` int /*Promotion end time. Unix timestamp in seconds. Independent of campaign end time.*/,
+  `external_id` text /*Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.*/,
+  `platform_type` text /*The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;.*/,
+  `promotion_code` text /*Code that can be used to redeem a promotion.*/,
+  `promotion_custom_id` text /*An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.*/,
+  `promotion_title` text /*Internal name for the promotion.*/,
+  `promotion_type` long,
+  `start_time` int /*Promotion start time. Unix timestamp in seconds. Independent of campaign start time.*/,
+  `ad_account_id` text /*The Ad Account ID that this promotion belongs to.*/,
+  `id` text PRIMARY KEY /*Promotion ID*/,
+  `status` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionResponsePromotionTemplateValue` generated from model 'PromotionResponsePromotionTemplateValue'
+
+CREATE TABLE IF NOT EXISTS `PromotionResponsePromotionTemplateValue` (
+  `promotionResponse` long NOT NULL
+  `promotionTemplateValue` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionTemplateValue` generated from model 'promotionTemplateValue'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionTemplateValue` (
+  `amount` decimal /*Numeric value.*/,
+  `currency_code` long,
+  `custom_text` text /*Custom text.*/,
+  `percent` decimal /*Percent value.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionUpdateRequest` generated from model 'promotionUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionUpdateRequest` (
+  `id` text NOT NULL PRIMARY KEY /*Promotion ID*/,
+  `discount_status` text /*Discount status based on the current time and start and end time of discount*/,
+  `end_time` int /*Promotion end time. Unix timestamp in seconds. Independent of campaign end time.*/,
+  `external_id` text /*Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.*/,
+  `platform_type` text /*The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;.*/,
+  `promotion_code` text /*Code that can be used to redeem a promotion.*/,
+  `promotion_custom_id` text /*An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.*/,
+  `promotion_title` text /*Internal name for the promotion.*/,
+  `promotion_type` long,
+  `start_time` int /*Promotion start time. Unix timestamp in seconds. Independent of campaign start time.*/,
+  `status` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionUpdateRequestPromotionTemplateValue` generated from model 'PromotionUpdateRequestPromotionTemplateValue'
+
+CREATE TABLE IF NOT EXISTS `PromotionUpdateRequestPromotionTemplateValue` (
+  `promotionUpdateRequest` long NOT NULL
+  `promotionTemplateValue` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `promotions_list_200_response` generated from model 'promotionsList200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `promotions_list_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionsList200ResponsePromotionResponse` generated from model 'PromotionsList200ResponsePromotionResponse'
+
+CREATE TABLE IF NOT EXISTS `PromotionsList200ResponsePromotionResponse` (
+  `promotionsList200Response` long NOT NULL
+  `promotionResponse` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionsResponse` generated from model 'promotionsResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `PromotionsResponse` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PromotionsResponsePromotionArrayElement` generated from model 'PromotionsResponsePromotionArrayElement'
+
+CREATE TABLE IF NOT EXISTS `PromotionsResponsePromotionArrayElement` (
+  `promotionsResponse` long NOT NULL
+  `promotionArrayElement` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `QualityComponentDetails` generated from model 'qualityComponentDetails'
+-- Metrics for a specific event type within a quality component.
+--
+
+CREATE TABLE IF NOT EXISTS `QualityComponentDetails` (
+  `coverage` decimal NOT NULL /*Coverage percentage for this event type.*/,
+  `overlap` decimal /*Overlap percentage for this event type. Only populated for external_event_id*/
+);  /*Metrics for a specific event type within a quality component.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `QualityComponentDetailsQualityComponentIssue` generated from model 'QualityComponentDetailsQualityComponentIssue'
+
+CREATE TABLE IF NOT EXISTS `QualityComponentDetailsQualityComponentIssue` (
+  `qualityComponentDetails` long NOT NULL
+  `qualityComponentIssue` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `QualityComponentIssue` generated from model 'qualityComponentIssue'
+-- Details of an issue with a quality component.
+--
+
+CREATE TABLE IF NOT EXISTS `QualityComponentIssue` (
+  `id` text NOT NULL PRIMARY KEY /*Unique identifier for the issue check.*/,
+  `name` text NOT NULL /*Human-readable name of the issue.*/,
+  `reason` text NOT NULL /*Detailed reason for the issue.*/
+);  /*Details of an issue with a quality component.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `QualityComponents` generated from model 'qualityComponents'
+-- Set of quality components, with each component containing a event coverage and details.
+--
+
+CREATE TABLE IF NOT EXISTS `QualityComponents` (
+  `advertiser_external_id` blob,
+  `click_id_epik` blob,
+  `external_event_id` blob /*Dedup components.*/,
+  `hashed_email` blob /*User matching identifiers.*/,
+  `hashed_maid` blob,
+  `ip_address` blob,
+  `order_id` blob,
+  `order_value` blob,
+  `product_id` blob /*Product/event metadata.*/,
+  `source_url` blob,
+  `user_agent` blob
+);  /*Set of quality components, with each component containing a event coverage and details.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `QuizPinData` generated from model 'quizPinData'
 -- This field includes all quiz data including questions, options, and results.
 --
 
 CREATE TABLE IF NOT EXISTS `QuizPinData` (
-  `tie_breaker_type` text /*Quiz ad tie breaker type, default is RANDOM*/,
-  `tie_breaker_custom_result` long
+  `tie_breaker_custom_result` long,
+  `tie_breaker_type` text /*Quiz ad tie breaker type, default is RANDOM*/
 );  /*This field includes all quiz data including questions, options, and results.*/
 
 -- --------------------------------------------------------------------------
@@ -9105,7 +11537,7 @@ CREATE TABLE IF NOT EXISTS `QuizPinOption` (
 
 CREATE TABLE IF NOT EXISTS `QuizPinQuestion` (
   `question_id` decimal,
-  `question_text` text,
+  `question_text` text
 );  /*A specific quiz inquiry.*/
 
 -- --------------------------------------------------------------------------
@@ -9123,12 +11555,24 @@ CREATE TABLE IF NOT EXISTS `QuizPinQuestionQuizPinOption` (
 --
 
 CREATE TABLE IF NOT EXISTS `QuizPinResult` (
-  `organic_pin_id` text,
   `android_deep_link` text,
-  `ios_deep_link` text,
   `destination_url` text,
+  `ios_deep_link` text,
+  `organic_pin_id` text,
   `result_id` decimal
 );  /*The result, and link out, based on the user’s choice.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `RecordCounts` generated from model 'recordCounts'
+-- Record processing counts
+--
+
+CREATE TABLE IF NOT EXISTS `RecordCounts` (
+  `invalid` int NOT NULL /*Number of invalid records processed*/,
+  `processed` int NOT NULL /*Number of records processed*/,
+  `valid` int NOT NULL /*Number of valid records processed*/
+);  /*Record processing counts*/
 
 
 -- --------------------------------------------------------------------------
@@ -9154,7 +11598,7 @@ CREATE TABLE IF NOT EXISTS `RelatedTermsRelatedTermsRelatedTermsListInner` (
 --
 
 CREATE TABLE IF NOT EXISTS `RelatedTerms_related_terms_list_inner` (
-  `term` text,
+  `term` text
 ); 
 
 -- --------------------------------------------------------------------------
@@ -9184,6 +11628,17 @@ CREATE TABLE IF NOT EXISTS `ReportsStats200ResponseCatalogsReportStats` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `reports_stats_parameters_parameter` generated from model 'reportsStatsParametersParameter'
+-- Report stats parameters
+--
+
+CREATE TABLE IF NOT EXISTS `reports_stats_parameters_parameter` (
+  `catalog_type` text NOT NULL,
+  `report` long NOT NULL
+);  /*Report stats parameters*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `RespondToInvitesResponseArray` generated from model 'respondToInvitesResponseArray'
 --
 
@@ -9210,14 +11665,40 @@ CREATE TABLE IF NOT EXISTS `RespondToInvitesResponseArray_items_inner` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `S3FilePart` generated from model 's3FilePart'
+--
+
+CREATE TABLE IF NOT EXISTS `S3FilePart` (
+  `part_number` int NOT NULL /*Part number for upload.*/,
+  `presigned_url` text NOT NULL /*Pre-signed URL.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `S3MultipartUploadData` generated from model 's3MultipartUploadData'
+--
+
+CREATE TABLE IF NOT EXISTS `S3MultipartUploadData` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `S3MultipartUploadDataS3FilePart` generated from model 'S3MultipartUploadDataS3FilePart'
+
+CREATE TABLE IF NOT EXISTS `S3MultipartUploadDataS3FilePart` (
+  `s3MultipartUploadData` long NOT NULL
+  `s3FilePart` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `SSIOAccountAddress` generated from model 'ssIOAccountAddress'
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOAccountAddress` (
-  `display` text /*Address display*/,
-  `purpose` text /*Purpose for which the address is used, usually Billing or Businness*/,
   `address_id` text /*Salesforce id for address*/,
-  `order_legal_entity` text /*Legal entity for this insertion order*/
+  `display` text /*Address display*/,
+  `order_legal_entity` text /*Legal entity for this insertion order*/,
+  `purpose` text /*Purpose for which the address is used, usually Billing or Businness*/
 ); 
 
 
@@ -9227,13 +11708,13 @@ CREATE TABLE IF NOT EXISTS `SSIOAccountAddress` (
 
 CREATE TABLE IF NOT EXISTS `SSIOAccountItem` (
   `id` text PRIMARY KEY /*Salesforce id for billto_info*/,
-  `io_terms_id` text /*Salesforce id for IO Terms and Conditions*/,
   `io_terms` text /*Salesforce text for IO Terms and Conditions*/,
-  `us_terms_id` text /*Salesforce id for US Terms and Conditions*/,
-  `us_terms` text /*Salesforce text for US Terms and Conditions*/,
-  `row_terms_id` text /*Salesforce id for Rest of the World Terms and Conditions*/,
-  `row_terms` text /*Salesforce text for Rest of the World Terms and Conditions*/,
+  `io_terms_id` text /*Salesforce id for IO Terms and Conditions*/,
   `io_type` text /*Insertion Order Type - Pinterest Paper or Agency Paper*/,
+  `row_terms` text /*Salesforce text for Rest of the World Terms and Conditions*/,
+  `row_terms_id` text /*Salesforce id for Rest of the World Terms and Conditions*/,
+  `us_terms` text /*Salesforce text for US Terms and Conditions*/,
+  `us_terms_id` text /*Salesforce id for US Terms and Conditions*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -9250,8 +11731,8 @@ CREATE TABLE IF NOT EXISTS `SSIOAccountItemSSIOAccountAddress` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOAccountPMPName` (
-  `name` text /*Display name*/,
-  `id` text PRIMARY KEY /*Salesforce id for PMP*/
+  `id` text PRIMARY KEY /*Salesforce id for PMP*/,
+  `name` text /*Display name*/
 ); 
 
 
@@ -9260,10 +11741,10 @@ CREATE TABLE IF NOT EXISTS `SSIOAccountPMPName` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOAccountResponse` (
-  `eligible` boolean /*Advertiser eligible to create order lines*/,
   `can_edit` boolean /*Advertiser eligible to update order lines*/,
   `currency` text,
-  `error` text /*Error indicator from Salesforce which could be \&quot;No Error\&quot;*/
+  `eligible` boolean /*Advertiser eligible to create order lines*/,
+  `error` text /*Error indicator from Salesforce which could be \&quot;No Error\&quot;*/,
 ); 
 
 -- --------------------------------------------------------------------------
@@ -9288,25 +11769,25 @@ CREATE TABLE IF NOT EXISTS `SSIOAccountResponseSSIOAccountPMPName` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOCreateInsertionOrderRequest` (
-  `start_date` text NOT NULL /*Starting date of time period. Format: YYYY-MM-DD*/,
-  `po_number` text NOT NULL /*The po number*/,
+  `billing_contact_email` text NOT NULL /*The billing contact email*/,
   `billing_contact_firstname` text NOT NULL /*The billing contact first name*/,
   `billing_contact_lastname` text NOT NULL /*The billing contact last name*/,
-  `billing_contact_email` text NOT NULL /*The billing contact email*/,
+  `media_contact_email` text NOT NULL /*The media contact email*/,
   `media_contact_firstname` text NOT NULL /*The media contact first name*/,
   `media_contact_lastname` text NOT NULL /*The media contact last name*/,
-  `media_contact_email` text NOT NULL /*The media contact email*/,
-  `pmp_id` text NOT NULL /*The pmp id*/,
-  `order_name` text NOT NULL /*The order name*/,
-  `order_line_type` text NOT NULL /*Type can be Budget or Perpetual*/,
+  `po_number` text NOT NULL /*The po number*/,
+  `start_date` text NOT NULL /*Starting date of time period. Format: YYYY-MM-DD*/,
   `accepted_terms_id` text NOT NULL /*The SFDC id for the terms*/,
-  `billto_company_id` text NOT NULL /*The bill-to company id*/,
-  `billto_business_address_id` text NOT NULL /*The bill-to business address id*/,
   `billto_billing_address_id` text NOT NULL /*The bill-to billing address id*/,
+  `billto_business_address_id` text NOT NULL /*The bill-to business address id*/,
+  `billto_company_id` text NOT NULL /*The bill-to company id*/,
   `currency_info` long NOT NULL,
-  `end_date` text /*End date of time period. Format: YYYY-MM-DD*/,
-  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `order_line_type` text NOT NULL /*Type can be Budget or Perpetual*/,
+  `order_name` text NOT NULL /*The order name*/,
+  `pmp_id` text NOT NULL /*The pmp id*/,
   `agency_link` text /*URL link for agency*/,
+  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `end_date` text /*End date of time period. Format: YYYY-MM-DD*/,
   `user_email` text /*The email of user submitting the insertion order*/,
   `accepted_terms_time` int /*The UTC timestamp (to the nearest sec) of when terms were accepted*/,
   `estimated_monthly_spend` decimal /*If Ongoing (perpetual) order line, the estimated monthly spend*/
@@ -9327,22 +11808,22 @@ CREATE TABLE IF NOT EXISTS `SSIOCreateInsertionOrderResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOEditInsertionOrderRequest` (
-  `start_date` text /*Starting date of time period. Format: YYYY-MM-DD*/,
-  `end_date` text /*End date of time period. Format: YYYY-MM-DD*/,
-  `po_number` text /*The po number*/,
-  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `agency_link` text /*URL link for agency*/,
+  `billing_contact_email` text /*The billing contact email*/,
   `billing_contact_firstname` text /*The billing contact first name*/,
   `billing_contact_lastname` text /*The billing contact last name*/,
-  `billing_contact_email` text /*The billing contact email*/,
+  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `end_date` text /*End date of time period. Format: YYYY-MM-DD*/,
+  `media_contact_email` text /*The media contact email*/,
   `media_contact_firstname` text /*The media contact first name*/,
   `media_contact_lastname` text /*The media contact last name*/,
-  `media_contact_email` text /*The media contact email*/,
-  `agency_link` text /*URL link for agency*/,
+  `po_number` text /*The po number*/,
+  `start_date` text /*Starting date of time period. Format: YYYY-MM-DD*/,
   `user_email` text /*The email of user submitting the insertion order*/,
+  `ads_manager_order_line_id` text /*Ads manager OrderLineId*/,
   `oracle_line_id` text /*LineId in the Oracle DB*/,
   `salesforce_order_id` text /*OrderId in SFDC*/,
-  `salesforce_order_line_id` text /*OrderLineId in SFDC*/,
-  `ads_manager_order_line_id` text /*Ads manager OrderLineId*/
+  `salesforce_order_line_id` text /*OrderLineId in SFDC*/
 ); 
 
 
@@ -9360,17 +11841,17 @@ CREATE TABLE IF NOT EXISTS `SSIOEditInsertionOrderResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOInsertionOrderCommon` (
-  `start_date` text /*Starting date of time period. Format: YYYY-MM-DD*/,
-  `end_date` text /*End date of time period. Format: YYYY-MM-DD*/,
-  `po_number` text /*The po number*/,
-  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `agency_link` text /*URL link for agency*/,
+  `billing_contact_email` text /*The billing contact email*/,
   `billing_contact_firstname` text /*The billing contact first name*/,
   `billing_contact_lastname` text /*The billing contact last name*/,
-  `billing_contact_email` text /*The billing contact email*/,
+  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `end_date` text /*End date of time period. Format: YYYY-MM-DD*/,
+  `media_contact_email` text /*The media contact email*/,
   `media_contact_firstname` text /*The media contact first name*/,
   `media_contact_lastname` text /*The media contact last name*/,
-  `media_contact_email` text /*The media contact email*/,
-  `agency_link` text /*URL link for agency*/,
+  `po_number` text /*The po number*/,
+  `start_date` text /*Starting date of time period. Format: YYYY-MM-DD*/,
   `user_email` text /*The email of user submitting the insertion order*/
 ); 
 
@@ -9380,9 +11861,9 @@ CREATE TABLE IF NOT EXISTS `SSIOInsertionOrderCommon` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOInsertionOrderStatus` (
+  `creation_time` text /*Salesforce insertion order creation time*/,
   `pin_order_id` text /*Salesforce order id*/,
-  `status` text /*Salesforce insertion order status*/,
-  `creation_time` text /*Salesforce insertion order creation time*/
+  `status` text /*Salesforce insertion order status*/
 ); 
 
 
@@ -9391,9 +11872,9 @@ CREATE TABLE IF NOT EXISTS `SSIOInsertionOrderStatus` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOInsertionOrderStatusResponse` (
+  `creation_time` text /*Salesforce insertion order creation time*/,
   `pin_order_id` text /*Salesforce order id*/,
-  `status` text /*Salesforce insertion order status*/,
-  `creation_time` text /*Salesforce insertion order creation time*/
+  `status` text /*Salesforce insertion order status*/
 ); 
 
 
@@ -9402,28 +11883,28 @@ CREATE TABLE IF NOT EXISTS `SSIOInsertionOrderStatusResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `SSIOOrderLine` (
-  `salesforce_order_line_id` text /*OrderLineId in SFDC*/,
+  `accepted_terms_id` text /*The SFDC id for the terms*/,
+  `accepted_terms_time` text /*The UTC timestamp (to the nearest sec) of when terms were accepted*/,
   `ads_manager_order_line_id` text /*Ads manager OrderLineId*/,
-  `pin_order_id` text /*The pin order id associated with the order line in SFDC*/,
-  `last_modified_date_time` text /*Last modified date.*/,
-  `start_date` date /*Start date of the order line.*/,
-  `end_date` date /*End date of the order line.*/,
+  `agency_link` text /*Agency link*/,
   `bill_to_company_name` text /*Bill To Company name*/,
+  `billing_contact_email` text /*Billing contact email*/,
   `billing_contact_firstname` text /*Billing contact first name*/,
   `billing_contact_lastname` text /*Billing contact last name*/,
-  `billing_contact_email` text /*Billing contact email*/,
+  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
+  `currency_info` long,
+  `end_date` date /*End date of the order line.*/,
+  `estimated_monthly_spend` decimal /*If Ongoing (perpetual) order line, the estimated monthly spend*/,
+  `last_modified_date_time` text /*Last modified date.*/,
   `media_contact_email` text /*Billing media email*/,
   `media_contact_firstname` text /*Billing contact first name*/,
   `media_contact_lastname` text /*Billing contact first name*/,
-  `currency_info` long,
-  `agency_link` text /*Agency link*/,
-  `po_number` text /*The po number*/,
   `order_name` text /*The order name*/,
+  `pin_order_id` text /*The pin order id associated with the order line in SFDC*/,
   `pmp_name` text /*The Pinterest marketing partner name*/,
-  `accepted_terms_id` text /*The SFDC id for the terms*/,
-  `accepted_terms_time` text /*The UTC timestamp (to the nearest sec) of when terms were accepted*/,
-  `budget_amount` decimal /*If Budget order line, the budget amount.*/,
-  `estimated_monthly_spend` decimal /*If Ongoing (perpetual) order line, the estimated monthly spend*/
+  `po_number` text /*The po number*/,
+  `salesforce_order_line_id` text /*OrderLineId in SFDC*/,
+  `start_date` date /*Start date of the order line.*/
 ); 
 
 
@@ -9458,6 +11939,23 @@ CREATE TABLE IF NOT EXISTS `search_user_boards_get_200_response` (
 CREATE TABLE IF NOT EXISTS `SearchUserBoardsGet200ResponseBoard` (
   `searchUserBoardsGet200Response` long NOT NULL
   `board` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `search_user_pins_list_200_response` generated from model 'searchUserPinsList200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `search_user_pins_list_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SearchUserPinsList200ResponsePin` generated from model 'SearchUserPinsList200ResponsePin'
+
+CREATE TABLE IF NOT EXISTS `SearchUserPinsList200ResponsePin` (
+  `searchUserPinsList200Response` long NOT NULL
+  `pin` long NOT NULL
 );
 
 
@@ -9549,8 +12047,8 @@ CREATE TABLE IF NOT EXISTS `SharedAudienceResponseCommonRole` (
 
 CREATE TABLE IF NOT EXISTS `SingleInterestTargetingOptionResponse` (
   `id` text PRIMARY KEY,
-  `name` text,
-  `level` int
+  `level` int,
+  `name` text
 ); 
 
 -- --------------------------------------------------------------------------
@@ -9602,36 +12100,48 @@ CREATE TABLE IF NOT EXISTS `SsioOrderLinesGetByAdAccount200ResponseSSIOOrderLine
 --
 
 CREATE TABLE IF NOT EXISTS `SummaryPin` (
-  `media` long,
   `alt_text` text,
+  `description` text,
+  `id` text PRIMARY KEY,
   `link` text,
-  `title` text,
-  `description` text
+  `media` long,
+  `title` text
 );  /*Summarized pin information*/
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `system_user_update_request` generated from model 'systemUserUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `system_user_update_request` (
+  `name` text NOT NULL /*New system user name*/
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `TargetingSpec` generated from model 'targetingSpec'
--- Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
+-- Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60;
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingSpec` (
-);  /*Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;*/
+  `MAXIMUM_AGE` text /*Maximum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;, \&quot;65+\&quot;. Must be used together with &#x60;MINIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted.*/,
+  `MINIMUM_AGE` text /*Minimum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;. Note: 65+ is not allowed for minimum age. Must be used together with &#x60;MAXIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted.*/,
+);  /*Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60;*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpecAGEBUCKET` generated from model 'TargetingSpecAGEBUCKET'
+-- Table structure for table `TargetingSpecTargetingSpecAgeBucket` generated from model 'TargetingSpecTargetingSpecAgeBucket'
 
-CREATE TABLE IF NOT EXISTS `TargetingSpecAGEBUCKET` (
+CREATE TABLE IF NOT EXISTS `TargetingSpecTargetingSpecAgeBucket` (
   `targetingSpec` long NOT NULL
-  `aGEBUCKET` text NOT NULL
+  `targetingSpecAgeBucket` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpecAPPTYPE` generated from model 'TargetingSpecAPPTYPE'
+-- Table structure for table `TargetingSpecTargetingSpecAppType` generated from model 'TargetingSpecTargetingSpecAppType'
 
-CREATE TABLE IF NOT EXISTS `TargetingSpecAPPTYPE` (
+CREATE TABLE IF NOT EXISTS `TargetingSpecTargetingSpecAppType` (
   `targetingSpec` long NOT NULL
-  `aPPTYPE` text NOT NULL
+  `targetingSpecAppType` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -9651,11 +12161,11 @@ CREATE TABLE IF NOT EXISTS `TargetingSpecAUDIENCEINCLUDE` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpecGENDER` generated from model 'TargetingSpecGENDER'
+-- Table structure for table `TargetingSpecTargetingSpecGender` generated from model 'TargetingSpecTargetingSpecGender'
 
-CREATE TABLE IF NOT EXISTS `TargetingSpecGENDER` (
+CREATE TABLE IF NOT EXISTS `TargetingSpecTargetingSpecGender` (
   `targetingSpec` long NOT NULL
-  `gENDER` text NOT NULL
+  `targetingSpecGender` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -9691,11 +12201,11 @@ CREATE TABLE IF NOT EXISTS `TargetingSpecLOCATION` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpecTargetingSpecSHOPPINGRETARGETING` generated from model 'TargetingSpecTargetingSpecSHOPPINGRETARGETING'
+-- Table structure for table `TargetingSpecTargetingSpecShoppingRetargeting` generated from model 'TargetingSpecTargetingSpecShoppingRetargeting'
 
-CREATE TABLE IF NOT EXISTS `TargetingSpecTargetingSpecSHOPPINGRETARGETING` (
+CREATE TABLE IF NOT EXISTS `TargetingSpecTargetingSpecShoppingRetargeting` (
   `targetingSpec` long NOT NULL
-  `targetingSpecSHOPPINGRETARGETING` long NOT NULL
+  `targetingSpecShoppingRetargeting` long NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -9708,19 +12218,131 @@ CREATE TABLE IF NOT EXISTS `TargetingSpecTARGETINGSTRATEGY` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpec_SHOPPING_RETARGETING` generated from model 'targetingSpecSHOPPINGRETARGETING'
+-- Table structure for table `TargetingSpecOperationAgeBucket` generated from model 'targetingSpecOperationAgeBucket'
 --
 
-CREATE TABLE IF NOT EXISTS `TargetingSpec_SHOPPING_RETARGETING` (
-  `lookback_window` int /*Number of days ago to start lookback timeframe for dynamic retargeting*/,
-  `exclusion_window` int /*Number of days ago to stop lookback timeframe for dynamic retargeting*/
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationAgeBucket` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpecSHOPPINGRETARGETINGTagTypes` generated from model 'TargetingSpecSHOPPINGRETARGETINGTagTypes'
+-- Table structure for table `TargetingSpecOperationAgeBucketTargetingSpecAgeBucket` generated from model 'TargetingSpecOperationAgeBucketTargetingSpecAgeBucket'
 
-CREATE TABLE IF NOT EXISTS `TargetingSpecSHOPPINGRETARGETINGTagTypes` (
-  `targetingSpecSHOPPINGRETARGETING` long NOT NULL
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationAgeBucketTargetingSpecAgeBucket` (
+  `targetingSpecOperationAgeBucket` long NOT NULL
+  `targetingSpecAgeBucket` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationAppType` generated from model 'targetingSpecOperationAppType'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationAppType` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationAppTypeTargetingSpecAppType` generated from model 'TargetingSpecOperationAppTypeTargetingSpecAppType'
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationAppTypeTargetingSpecAppType` (
+  `targetingSpecOperationAppType` long NOT NULL
+  `targetingSpecAppType` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationGender` generated from model 'targetingSpecOperationGender'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationGender` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationGenderTargetingSpecGender` generated from model 'TargetingSpecOperationGenderTargetingSpecGender'
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationGenderTargetingSpecGender` (
+  `targetingSpecOperationGender` long NOT NULL
+  `targetingSpecGender` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationList` generated from model 'targetingSpecOperationList'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationList` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationListPropertyValues` generated from model 'TargetingSpecOperationListPropertyValues'
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationListPropertyValues` (
+  `targetingSpecOperationList` long NOT NULL
+  `propertyValues` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationMinMaxAge` generated from model 'targetingSpecOperationMinMaxAge'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationMinMaxAge` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
+  `value` text NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationShoppingRetargeting` generated from model 'targetingSpecOperationShoppingRetargeting'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationShoppingRetargeting` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationShoppingRetargetingTargetingSpecShoppingRetargeting` generated from model 'TargetingSpecOperationShoppingRetargetingTargetingSpecShoppingRetargeting'
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationShoppingRetargetingTargetingSpecShoppingRetargeting` (
+  `targetingSpecOperationShoppingRetargeting` long NOT NULL
+  `targetingSpecShoppingRetargeting` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecOperationString` generated from model 'targetingSpecOperationString'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecOperationString` (
+  `field` text NOT NULL,
+  `operation` text NOT NULL,
+  `value` text NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecShoppingRetargeting` generated from model 'targetingSpecShoppingRetargeting'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecShoppingRetargeting` (
+  `exclusion_window` int /*Number of days ago to stop lookback timeframe for dynamic retargeting*/,
+  `lookback_window` int /*Number of days ago to start lookback timeframe for dynamic retargeting*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingSpecShoppingRetargetingTagTypes` generated from model 'TargetingSpecShoppingRetargetingTagTypes'
+
+CREATE TABLE IF NOT EXISTS `TargetingSpecShoppingRetargetingTagTypes` (
+  `targetingSpecShoppingRetargeting` long NOT NULL
   `tagTypes` int NOT NULL
 );
 
@@ -9751,10 +12373,10 @@ CREATE TABLE IF NOT EXISTS `TargetingTemplateAudienceSizing_reach_estimate` (
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingTemplateCommon` (
-  `name` text /*targeting template name*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `targeting_attributes` long,
+  `name` text /*targeting template name*/,
   `placement_group` long,
+  `targeting_attributes` long,
   `tracking_urls` long
 ); 
 
@@ -9793,17 +12415,17 @@ CREATE TABLE IF NOT EXISTS `TargetingTemplateCreateTargetingTemplateKeyword` (
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingTemplateGetResponseData` (
-  `name` text /*targeting template name*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `targeting_attributes` long,
+  `name` text /*targeting template name*/,
   `placement_group` long,
+  `targeting_attributes` long,
   `tracking_urls` long,
-  `id` text PRIMARY KEY /*Targeting template ID.*/,
-  `created_time` int /*Targeting template created time. Unix timestamp in seconds.*/,
-  `updated_time` int /*Targeting template updated time.Unix timestamp in seconds.*/,
   `ad_account_id` text /*The ID of the advertiser that this targeting template belongs to.*/,
-  `status` text /*Indicate targeting template is active or Deleted*/,
+  `created_time` int /*Targeting template created time. Unix timestamp in seconds.*/,
+  `id` text PRIMARY KEY /*Targeting template ID.*/,
   `sizing` long,
+  `status` text /*Indicate targeting template is active or Deleted*/,
+  `updated_time` int /*Targeting template updated time.Unix timestamp in seconds.*/,
   `valid` boolean /*Inform if the targeting template is valid (ex. would be false if has revoked audience)*/
 ); 
 
@@ -9835,11 +12457,11 @@ CREATE TABLE IF NOT EXISTS `targeting_template_list_200_response` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingTemplateList200ResponseTargetingTemplateResponseData` generated from model 'TargetingTemplateList200ResponseTargetingTemplateResponseData'
+-- Table structure for table `TargetingTemplateList200ResponseTargetingTemplateGetResponseData` generated from model 'TargetingTemplateList200ResponseTargetingTemplateGetResponseData'
 
-CREATE TABLE IF NOT EXISTS `TargetingTemplateList200ResponseTargetingTemplateResponseData` (
+CREATE TABLE IF NOT EXISTS `TargetingTemplateList200ResponseTargetingTemplateGetResponseData` (
   `targetingTemplateList200Response` long NOT NULL
-  `targetingTemplateResponseData` long NOT NULL
+  `targetingTemplateGetResponseData` long NOT NULL
 );
 
 
@@ -9848,17 +12470,17 @@ CREATE TABLE IF NOT EXISTS `TargetingTemplateList200ResponseTargetingTemplateRes
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingTemplateResponseData` (
-  `name` text /*targeting template name*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `targeting_attributes` long,
+  `name` text /*targeting template name*/,
   `placement_group` long,
+  `targeting_attributes` long,
   `tracking_urls` long,
-  `id` text PRIMARY KEY /*Targeting template ID.*/,
-  `created_time` int /*Targeting template created time. Unix timestamp in seconds.*/,
-  `updated_time` int /*Targeting template updated time.Unix timestamp in seconds.*/,
   `ad_account_id` text /*The ID of the advertiser that this targeting template belongs to.*/,
+  `created_time` int /*Targeting template created time. Unix timestamp in seconds.*/,
+  `id` text PRIMARY KEY /*Targeting template ID.*/,
+  `sizing` long,
   `status` text /*Indicate targeting template is active or Deleted*/,
-  `sizing` long
+  `updated_time` int /*Targeting template updated time.Unix timestamp in seconds.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -9875,8 +12497,9 @@ CREATE TABLE IF NOT EXISTS `TargetingTemplateResponseDataTargetingTemplateKeywor
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingTemplateUpdateRequest` (
+  `id` text NOT NULL PRIMARY KEY /*Targeting template ID*/,
   `operation_type` text NOT NULL,
-  `id` text NOT NULL PRIMARY KEY /*Targeting template ID*/
+  `targeting_attributes` long
 ); 
 
 
@@ -9888,12 +12511,24 @@ CREATE TABLE IF NOT EXISTS `TargetingTypeFilter` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingTypeFilterAdsAnalyticsTargetingType` generated from model 'TargetingTypeFilterAdsAnalyticsTargetingType'
+-- Table structure for table `TargetingTypeFilterTargetingTypes` generated from model 'TargetingTypeFilterTargetingTypes'
 
-CREATE TABLE IF NOT EXISTS `TargetingTypeFilterAdsAnalyticsTargetingType` (
+CREATE TABLE IF NOT EXISTS `TargetingTypeFilterTargetingTypes` (
   `targetingTypeFilter` long NOT NULL
-  `adsAnalyticsTargetingType` long NOT NULL
+  `targetingTypes` text NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TemplateBasedReport` generated from model 'templateBasedReport'
+--
+
+CREATE TABLE IF NOT EXISTS `TemplateBasedReport` (
+  `report_status` long NOT NULL,
+  `template_id` text NOT NULL /*Unique identifier of a template.*/,
+  `message` text,
+  `token` text
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -9902,27 +12537,27 @@ CREATE TABLE IF NOT EXISTS `TargetingTypeFilterAdsAnalyticsTargetingType` (
 --
 
 CREATE TABLE IF NOT EXISTS `TemplateResponse` (
-  `id` text PRIMARY KEY /*Template ID*/,
   `ad_account_id` text /*ID of the Ad Account that owns the template*/,
-  `user_id` text /*ID of the user who created the template*/,
-  `name` text /*Template Name*/,
-  `report_start_relative_days_in_past` decimal /*The number of days prior to the day the report will be delivered at which the report will start*/,
-  `report_end_relative_days_in_past` decimal /*The number of days prior to the day the report will be delivered at which the report will end*/,
-  `date_range` long,
-  `report_level` long,
-  `report_format` long,
-  `granularity` long,
-  `view_window_days` decimal /*The length of the sliding window over which view conversions will be attributed*/,
   `click_window_days` decimal /*The length of the sliding window over which click conversions will be attributed*/,
-  `engagement_window_days` decimal /*The length of the sliding window over which engagement conversions will be attributed*/,
   `conversion_report_time_type` text /*Conversion report time type*/,
+  `creation_source` text /*The surface used to create this template*/,
+  `date_range` long,
+  `engagement_window_days` decimal /*The length of the sliding window over which engagement conversions will be attributed*/,
   `filters_json` text /*A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:&lt;br&gt; \&quot;field\&quot;: The column name&lt;br&gt; \&quot;operator\&quot;: The operator. Allowed operators: [\&quot;&#x3D;\&quot;, \&quot;!&#x3D;\&quot;, \&quot;in\&quot;, \&quot;not_in\&quot;, \&quot;~\&quot;, \&quot;&gt;\&quot;, \&quot;&lt;\&quot;, \&quot;contains_substring\&quot;]&lt;br&gt; \&quot;value\&quot;: A single value or a list of values*/,
+  `granularity` long,
+  `id` text PRIMARY KEY /*Template ID*/,
+  `is_deleted` boolean /*A boolean that indicates if the template has been deleted*/,
   `is_owned_by_user` boolean /*A boolean value that indicates if the user owns the template*/,
   `is_scheduled` boolean /*A boolean value that indicates if this template has been used to create a scheduled report*/,
-  `creation_source` text /*The surface used to create this template*/,
-  `is_deleted` boolean /*A boolean that indicates if the template has been deleted*/,
-  `updated_time` decimal /*Time of last update in seconds since Unix epoch*/,
+  `name` text /*Template Name*/,
+  `report_end_relative_days_in_past` decimal /*The number of days prior to the day the report will be delivered at which the report will end*/,
+  `report_format` long,
+  `report_level` long,
+  `report_start_relative_days_in_past` decimal /*The number of days prior to the day the report will be delivered at which the report will start*/,
   `type` text /*Reporting template type*/,
+  `updated_time` decimal /*Time of last update in seconds since Unix epoch*/,
+  `user_id` text /*ID of the user who created the template*/,
+  `view_window_days` decimal /*The length of the sliding window over which view conversions will be attributed*/
 );  /*Template fields*/
 
 -- --------------------------------------------------------------------------
@@ -9963,9 +12598,9 @@ CREATE TABLE IF NOT EXISTS `TemplateResponseIngestionSources` (
 --
 
 CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range` (
+  `absolute_date_range` long,
   `dynamic_date_range` long,
-  `relative_date_range` long,
-  `absolute_date_range` long
+  `relative_date_range` long
 ); 
 
 
@@ -9975,9 +12610,9 @@ CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range` (
 --
 
 CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range_absolute_date_range` (
-  `type` text /*The date range type*/,
+  `end_date` decimal /*The end date of the date range*/,
   `start_date` decimal /*The start date of the date range*/,
-  `end_date` decimal /*The end date of the date range*/
+  `type` text /*The date range type*/
 );  /*The absolute date range of the template*/
 
 
@@ -9987,8 +12622,8 @@ CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range_absolute_date_range` (
 --
 
 CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range_dynamic_date_range` (
-  `type` text /*The date range type*/,
-  `range` text /*The dynamic range type*/
+  `range` text /*The dynamic range type*/,
+  `type` text /*The date range type*/
 );  /*The dynamic date range of the template*/
 
 
@@ -9998,9 +12633,9 @@ CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range_dynamic_date_range` (
 --
 
 CREATE TABLE IF NOT EXISTS `TemplateResponse_date_range_relative_date_range` (
-  `type` text /*The date range type*/,
+  `end_days_in_past` decimal /*The end date of the date range*/,
   `start_days_in_past` decimal /*The start date of the date range*/,
-  `end_days_in_past` decimal /*The end date of the date range*/
+  `type` text /*The date range type*/
 );  /*The relative date range of the template*/
 
 
@@ -10026,10 +12661,29 @@ CREATE TABLE IF NOT EXISTS `TemplatesList200ResponseTemplateResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `TermsOfService` (
-  `id` text PRIMARY KEY /*The ID of the terms of service*/,
-  `html` text /*The terms of service content*/,
+  `ad_account_id` text /*The ID of the ad account.*/,
   `has_accepted` boolean /*Whether the ad account has accepted terms of service.*/,
-  `ad_account_id` text /*The ID of the ad account.*/
+  `html` text /*The terms of service content*/,
+  `id` text PRIMARY KEY /*The ID of the terms of service*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TimeSeries` generated from model 'timeSeries'
+-- A sequence of weekly observations of the relative search volume for this keyword over the past year.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative volume between keywords.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of &#x60;2023-10-31&#x60; would include searches that happened between &#x60;2023-10-25&#x60; and &#x60;2023-10-31&#x60;.
+--
+
+CREATE TABLE IF NOT EXISTS `TimeSeries` (
+  `date` date
+);  /*A sequence of weekly observations of the relative search volume for this keyword over the past year.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative volume between keywords.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of &#x60;2023-10-31&#x60; would include searches that happened between &#x60;2023-10-25&#x60; and &#x60;2023-10-31&#x60;.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TitleKeywordsFilter` generated from model 'titleKeywordsFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `TitleKeywordsFilter` (
+  `TITLE_KEYWORDS` long NOT NULL
 ); 
 
 
@@ -10056,8 +12710,8 @@ CREATE TABLE IF NOT EXISTS `TopPinsAnalyticsResponseTopPinsAnalyticsResponsePins
 --
 
 CREATE TABLE IF NOT EXISTS `TopPinsAnalyticsResponse_date_availability` (
-  `latest_available_timestamp` decimal,
-  `is_realtime` boolean
+  `is_realtime` boolean,
+  `latest_available_timestamp` decimal
 ); 
 
 
@@ -10067,8 +12721,8 @@ CREATE TABLE IF NOT EXISTS `TopPinsAnalyticsResponse_date_availability` (
 --
 
 CREATE TABLE IF NOT EXISTS `TopPinsAnalyticsResponse_pins_inner` (
-  `metrics` blob /*The metric name and daily value for each requested metric*/,
   `data_status` blob,
+  `metrics` blob /*The metric name and daily value for each requested metric*/,
   `pin_id` text /*The pin id*/
 );  /*Array with metrics, status, and pin id for the requested metric*/
 
@@ -10097,8 +12751,8 @@ CREATE TABLE IF NOT EXISTS `TopVideoPinsAnalyticsResponseTopVideoPinsAnalyticsRe
 --
 
 CREATE TABLE IF NOT EXISTS `TopVideoPinsAnalyticsResponse_pins_inner` (
-  `metrics` blob /*The metric name and daily value for each requested metric*/,
   `data_status` blob,
+  `metrics` blob /*The metric name and daily value for each requested metric*/,
   `pin_id` text /*The pin id*/
 );  /*Array with metrics, status, and pin id for the requested metric*/
 
@@ -10112,11 +12766,19 @@ CREATE TABLE IF NOT EXISTS `TrackingUrls` (
 );  /*Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TrackingUrlsImpression` generated from model 'TrackingUrlsImpression'
+-- Table structure for table `TrackingUrlsAudienceVerification` generated from model 'TrackingUrlsAudienceVerification'
 
-CREATE TABLE IF NOT EXISTS `TrackingUrlsImpression` (
+CREATE TABLE IF NOT EXISTS `TrackingUrlsAudienceVerification` (
   `trackingUrls` long NOT NULL
-  `impression` text NOT NULL
+  `audienceVerification` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrackingUrlsBuyableButton` generated from model 'TrackingUrlsBuyableButton'
+
+CREATE TABLE IF NOT EXISTS `TrackingUrlsBuyableButton` (
+  `trackingUrls` long NOT NULL
+  `buyableButton` text NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -10136,20 +12798,59 @@ CREATE TABLE IF NOT EXISTS `TrackingUrlsEngagement` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TrackingUrlsBuyableButton` generated from model 'TrackingUrlsBuyableButton'
+-- Table structure for table `TrackingUrlsImpression` generated from model 'TrackingUrlsImpression'
 
-CREATE TABLE IF NOT EXISTS `TrackingUrlsBuyableButton` (
+CREATE TABLE IF NOT EXISTS `TrackingUrlsImpression` (
   `trackingUrls` long NOT NULL
-  `buyableButton` text NOT NULL
+  `impression` text NOT NULL
 );
+
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TrackingUrlsAudienceVerification` generated from model 'TrackingUrlsAudienceVerification'
+-- Table structure for table `TrendingKeyword` generated from model 'trendingKeyword'
+--
 
-CREATE TABLE IF NOT EXISTS `TrackingUrlsAudienceVerification` (
-  `trackingUrls` long NOT NULL
-  `audienceVerification` text NOT NULL
-);
+CREATE TABLE IF NOT EXISTS `TrendingKeyword` (
+  `demographics` long,
+  `has_prediction` boolean /*Indicates whether the keyword has a prediction available for the next 90 days.&lt;br /&gt; This field is only applicable when &#x60;include_prediction&#x60; query parameter is set to &#x60;true&#x60;. &lt;br /&gt; By default, the value is &#x60;false&#x60; and no prediction data is included in the response.*/,
+  `keyword` text /*The keyword that is trending.*/,
+  `pct_growth_mom` int /*The month-over-month percent change in search volume for this keyword.&lt;br /&gt; For example, a value of \&quot;400\&quot; would represent a 400% increase in searches in the last 30 days compared to the month prior.&lt;br /&gt; **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced &gt; 10000% month-over-month growth.*/,
+  `pct_growth_wow` int /*The week-over-week percent change in search volume for this keyword.&lt;br /&gt; For example, a value of \&quot;50\&quot; would represent a 50% increase in searches in the last seven days compared to the week prior.&lt;br /&gt; **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced &gt; 10000% week-over-week growth.*/,
+  `pct_growth_yoy` int /*The year-over-year percent change in search volume for this keyword.&lt;br /&gt; For example, a value of \&quot;-5\&quot; would represent a 5% decrease in searches in the last 365 days compared to the month prior.&lt;br /&gt; **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced &gt; 10000% year-over-year growth.*/,
+  `predicted_time_series` long,
+  `time_series` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingKeyword_demographics` generated from model 'trendingKeywordDemographics'
+-- A mapping of demographic dimensions (e.g. \&quot;gender\&quot;, \&quot;age\&quot;) to their category distributions. &lt;br /&gt; For each dimension: &lt;br /&gt;   - Key: The category (e.g., \&quot;female\&quot;, \&quot;18-24\&quot;). &lt;br /&gt;   - Value: The proportion of search volume (e.g., 0.12 for 12%). &lt;br /&gt;     Values less than 0.05 are set to 0.04 for privacy. &lt;br /&gt;     The sum for all categories in a dimension will approximately equal 1. &lt;br /&gt;     Only applicable when &#x60;include_demographics&#x60; query parameter is set to &#x60;true&#x60;.
+--
+
+CREATE TABLE IF NOT EXISTS `TrendingKeyword_demographics` (
+  `age_distribution` long,
+  `gender_distribution` long
+);  /*A mapping of demographic dimensions (e.g. \&quot;gender\&quot;, \&quot;age\&quot;) to their category distributions. &lt;br /&gt; For each dimension: &lt;br /&gt;   - Key: The category (e.g., \&quot;female\&quot;, \&quot;18-24\&quot;). &lt;br /&gt;   - Value: The proportion of search volume (e.g., 0.12 for 12%). &lt;br /&gt;     Values less than 0.05 are set to 0.04 for privacy. &lt;br /&gt;     The sum for all categories in a dimension will approximately equal 1. &lt;br /&gt;     Only applicable when &#x60;include_demographics&#x60; query parameter is set to &#x60;true&#x60;.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingKeyword_demographics_age_distribution` generated from model 'trendingKeywordDemographicsAgeDistribution'
+-- This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
+--
+
+CREATE TABLE IF NOT EXISTS `TrendingKeyword_demographics_age_distribution` (
+  `age_distribution` text
+);  /*This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingKeyword_demographics_gender_distribution` generated from model 'trendingKeywordDemographicsGenderDistribution'
+-- This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
+--
+
+CREATE TABLE IF NOT EXISTS `TrendingKeyword_demographics_gender_distribution` (
+  `gender_distribution` text
+);  /*This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.*/
 
 
 -- --------------------------------------------------------------------------
@@ -10160,35 +12861,83 @@ CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponse` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TrendingKeywordsResponseTrendingKeywordsResponseTrendsInner` generated from model 'TrendingKeywordsResponseTrendingKeywordsResponseTrendsInner'
+-- Table structure for table `TrendingKeywordsResponseTrendingKeyword` generated from model 'TrendingKeywordsResponseTrendingKeyword'
 
-CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponseTrendingKeywordsResponseTrendsInner` (
+CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponseTrendingKeyword` (
   `trendingKeywordsResponse` long NOT NULL
-  `trendingKeywordsResponseTrendsInner` long NOT NULL
+  `trendingKeyword` long NOT NULL
 );
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TrendingKeywordsResponse_trends_inner` generated from model 'trendingKeywordsResponseTrendsInner'
+-- Table structure for table `TrendingPin` generated from model 'trendingPin'
+-- Pin image data for trending topics
 --
 
-CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponse_trends_inner` (
-  `keyword` text /*The keyword that is trending.*/,
-  `pct_growth_wow` int /*The week-over-week percent change in search volume for this keyword.&lt;br /&gt; For example, a value of \&quot;50\&quot; would represent a 50% increase in searches in the last seven days compared to the week prior.&lt;br /&gt; **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced &gt; 10000% week-over-week growth.*/,
-  `pct_growth_mom` int /*The month-over-month percent change in search volume for this keyword.&lt;br /&gt; For example, a value of \&quot;400\&quot; would represent a 400% increase in searches in the last 30 days compared to the month prior.&lt;br /&gt; **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced &gt; 10000% month-over-month growth.*/,
-  `pct_growth_yoy` int /*The year-over-year percent change in search volume for this keyword.&lt;br /&gt; For example, a value of \&quot;-5\&quot; would represent a 5% decrease in searches in the last 365 days compared to the month prior.&lt;br /&gt; **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced &gt; 10000% year-over-year growth.*/,
-  `time_series` long
-); 
+CREATE TABLE IF NOT EXISTS `TrendingPin` (
+  `height` int NOT NULL /*Height of the pin image in pixels*/,
+  `id` text NOT NULL PRIMARY KEY /*Unique identifier for the pin*/,
+  `src` text NOT NULL /*URL of the pin image*/,
+  `width` int NOT NULL /*Width of the pin image in pixels*/
+);  /*Pin image data for trending topics*/
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TrendingKeywordsResponse_trends_inner_time_series` generated from model 'trendingKeywordsResponseTrendsInnerTimeSeries'
--- A sequence of weekly observations of the relative search volume for this keyword over the past year.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative volume between keywords.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of &#x60;2023-10-31&#x60; would include searches that happened between &#x60;2023-10-25&#x60; and &#x60;2023-10-31&#x60;.
+-- Table structure for table `TrendingProductCategory` generated from model 'trendingProductCategory'
+-- Trending shopping product category
 --
 
-CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponse_trends_inner_time_series` (
-  `date` date
-);  /*A sequence of weekly observations of the relative search volume for this keyword over the past year.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative volume between keywords.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of &#x60;2023-10-31&#x60; would include searches that happened between &#x60;2023-10-25&#x60; and &#x60;2023-10-31&#x60;.*/
+CREATE TABLE IF NOT EXISTS `TrendingProductCategory` (
+  `engagement_type` long NOT NULL /*Engagement type*/,
+  `pct_change_mom` int NOT NULL /*Month-over-month change percentage*/,
+  `percent_relative_volume` int NOT NULL /*Relative volume percentage*/,
+  `product_category` text NOT NULL /*Product Category Name*/,
+);  /*Trending shopping product category*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingProductCategoryVerticalProductCategory` generated from model 'TrendingProductCategoryVerticalProductCategory'
+
+CREATE TABLE IF NOT EXISTS `TrendingProductCategoryVerticalProductCategory` (
+  `trendingProductCategory` long NOT NULL
+  `verticalProductCategory` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingTopic` generated from model 'trendingTopic'
+-- Individual trending topic within an interest category
+--
+
+CREATE TABLE IF NOT EXISTS `TrendingTopic` (
+  `description` text NOT NULL /*Description of the trending topic*/,
+  `percent_growth_mom` int NOT NULL /*Month-over-month growth percentage*/,
+  `time_series` blob NOT NULL /*Time series data showing trend values over time, with dates as keys and values as numeric*/,
+  `title` text NOT NULL /*Title of the trending topic*/
+);  /*Individual trending topic within an interest category*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingTopicTrendingPin` generated from model 'TrendingTopicTrendingPin'
+
+CREATE TABLE IF NOT EXISTS `TrendingTopicTrendingPin` (
+  `trendingTopic` long NOT NULL
+  `trendingPin` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingTopicRelatedInterests` generated from model 'TrendingTopicRelatedInterests'
+
+CREATE TABLE IF NOT EXISTS `TrendingTopicRelatedInterests` (
+  `trendingTopic` long NOT NULL
+  `relatedInterests` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TrendingTopicRelatedSearches` generated from model 'TrendingTopicRelatedSearches'
+
+CREATE TABLE IF NOT EXISTS `TrendingTopicRelatedSearches` (
+  `trendingTopic` long NOT NULL
+  `relatedSearches` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -10196,27 +12945,81 @@ CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponse_trends_inner_time_series` (
 --
 
 CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
+  `ad_image_0_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_0_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_10_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_10_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_11_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_11_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_12_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_12_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_13_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_13_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_14_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_14_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_15_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_15_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_16_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_16_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_17_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_17_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_18_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_18_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_19_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_19_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_1_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_1_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_2_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_2_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_3_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_3_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_4_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_4_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_5_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_5_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_6_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_6_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_7_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_7_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_8_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_8_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
+  `ad_image_9_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_image_9_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;*/,
   `ad_link` text /*Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.*/,
+  `ad_video_0_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_0_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
+  `ad_video_1_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_1_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
+  `ad_video_2_link` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;*/,
+  `ad_video_2_tag` text /*&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;*/,
   `adult` boolean /*Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.*/,
-  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
-  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.*/,
+  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
+  `android_deep_link` text /*The deep link to the product on the Android app.*/,
+  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.*/,
   `average_review_rating` decimal /*Average reviews for the item. Can be a number from 1-5.*/,
   `brand` text /*The brand of the product.*/,
   `checkout_enabled` boolean /*This attribute is not supported anymore.*/,
   `color` text /*The primary color of the product.*/,
   `condition` text /*The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.*/,
-  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
-  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_number_0` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_1` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_2` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_3` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
+  `custom_number_4` int /*an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.*/,
   `description` text /*&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;*/,
   `free_shipping_label` boolean /*The item is free to ship.*/,
   `free_shipping_limit` text /*The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.*/,
-  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.*/,
+  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.*/,
   `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
-  `gtin` int /*The unique universal product identifier.*/,
+  `gtin` long,
   `id` text PRIMARY KEY /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;*/,
+  `installment_price` text /*Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;payment_count&gt;:&lt;payment_amount&gt; &lt;currency&gt;*/,
+  `ios_deep_link` text /*The deep link to the product on the iOS app.*/,
   `item_group_id` text /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The parent ID of the product.&lt;/p&gt;*/,
   `last_updated_time` long /*The millisecond timestamp when the item was lastly modified by the merchant.*/,
   `link` text /*&lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;The landing page for the product.&lt;/p&gt;*/,
@@ -10229,16 +13032,20 @@ CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `pattern` text /*The description of the pattern used for the product.*/,
   `price` text /*The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.*/,
   `product_type` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.&lt;/p&gt;*/,
+  `promotion_id` text /*A unique identifier referencing the promotion associated with this catalog item.*/,
   `sale_price` text /*The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.*/,
+  `sale_price_effective_date` text /*Sale price effective date. Expected format: &lt;start_date&gt;/&lt;end_date&gt; (ISO 8601 format)*/,
   `shipping` text /*Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.*/,
   `shipping_height` text /*The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_weight` text /*The weight of the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_width` text /*The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `size` text /*The size of the product.*/,
-  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.*/,
-  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
+  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.*/,
+  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
   `tax` text /*Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.*/,
   `title` text /*&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;*/,
+  `unit_pricing_base_measure` text /*Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;base_measure&gt; &lt;unit_type&gt;*/,
+  `unit_pricing_measure` text /*Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;total_units&gt; &lt;unit_type&gt;*/,
 ); 
 
 -- --------------------------------------------------------------------------
@@ -10280,8 +13087,8 @@ CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBodyUpdateAssetGroupBodyAssetGroupsT
 
 CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBody_asset_groups_to_update_inner` (
   `asset_group_id` text NOT NULL /*Unique identifier of the asset group to update.*/,
-  `name` text /*Asset Group name*/,
   `description` text /*Asset group description*/,
+  `name` text /*Asset Group name*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -10317,19 +13124,19 @@ CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponse` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `UpdateAssetGroupResponseAssetGroupBinding` generated from model 'UpdateAssetGroupResponseAssetGroupBinding'
-
-CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponseAssetGroupBinding` (
-  `updateAssetGroupResponse` long NOT NULL
-  `assetGroupBinding` long NOT NULL
-);
-
--- --------------------------------------------------------------------------
 -- Table structure for table `UpdateAssetGroupResponseUpdateAssetGroupResponseExceptionsInner` generated from model 'UpdateAssetGroupResponseUpdateAssetGroupResponseExceptionsInner'
 
 CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponseUpdateAssetGroupResponseExceptionsInner` (
   `updateAssetGroupResponse` long NOT NULL
   `updateAssetGroupResponseExceptionsInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupResponseAssetGroupBinding` generated from model 'UpdateAssetGroupResponseAssetGroupBinding'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponseAssetGroupBinding` (
+  `updateAssetGroupResponse` long NOT NULL
+  `assetGroupBinding` long NOT NULL
 );
 
 
@@ -10338,9 +13145,9 @@ CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponseUpdateAssetGroupResponseExce
 --
 
 CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponse_exceptions_inner` (
+  `asset_group_id` text /*Asset group id of the exception.*/,
   `code` int /*Error code associated with the error editing asset group.*/,
-  `message` text /*Error message associated with the error editing asset group.*/,
-  `asset_group_id` text /*Asset group id of the exception.*/
+  `message` text /*Error message associated with the error editing asset group.*/
 ); 
 
 
@@ -10488,8 +13295,8 @@ CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccess
 --
 
 CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBody_accesses_inner` (
-  `partner_id` text NOT NULL /*Unique identifier of a business partner to update asset access to.*/,
   `asset_id` text NOT NULL /*Unique identifier of the business asset.*/,
+  `partner_id` text NOT NULL /*Unique identifier of a business partner to update asset access to.*/,
 ); 
 
 -- --------------------------------------------------------------------------
@@ -10508,7 +13315,7 @@ CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBodyAccessesInnerPermissions
 
 CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResult` (
   `asset_id` text /*Unique identifier of a business asset.*/,
-  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.*/,
   `partner_id` text /*Unique identifier of a business partner.*/,
 );  /*An object containing the permissions a business partner has on the asset.*/
 
@@ -10643,8 +13450,8 @@ CREATE TABLE IF NOT EXISTS `UserSingleAssetBindingPermissions` (
 --
 
 CREATE TABLE IF NOT EXISTS `UserSummary` (
-  `username` text /*Username*/,
-  `type` text /*Always \&quot;user\&quot;*/
+  `type` text /*Always \&quot;user\&quot;*/,
+  `username` text /*Username*/
 ); 
 
 
@@ -10653,9 +13460,9 @@ CREATE TABLE IF NOT EXISTS `UserSummary` (
 --
 
 CREATE TABLE IF NOT EXISTS `UserWebsiteSummary` (
-  `website` text /*Website with path or domain only*/,
   `status` text /*Status of the verification process*/,
-  `verified_at` text /*UTC timestamp when the verification happened - sometimes missing*/
+  `verified_at` text /*UTC timestamp when the verification happened - sometimes missing*/,
+  `website` text /*Website with path or domain only*/
 ); 
 
 
@@ -10664,11 +13471,11 @@ CREATE TABLE IF NOT EXISTS `UserWebsiteSummary` (
 --
 
 CREATE TABLE IF NOT EXISTS `UserWebsiteVerificationCode` (
-  `verification_code` text /*Code to check against the user claiming the website*/,
   `dns_txt_record` text /*DNS TXT record to check against for the website to be claimed*/,
-  `metatag` text /*Metatag the verification process searchs for the website to be claimed*/,
+  `file_content` text /*A full html file to upload to the website in order for it to be claimed*/,
   `filename` text /*File expected to find on the website being claimed*/,
-  `file_content` text /*A full html file to upload to the website in order for it to be claimed*/
+  `metatag` text /*Metatag the verification process searchs for the website to be claimed*/,
+  `verification_code` text /*Code to check against the user claiming the website*/
 ); 
 
 
@@ -10678,8 +13485,8 @@ CREATE TABLE IF NOT EXISTS `UserWebsiteVerificationCode` (
 --
 
 CREATE TABLE IF NOT EXISTS `UserWebsiteVerifyRequest` (
-  `website` text,
-  `verification_method` text
+  `verification_method` text,
+  `website` text
 );  /*User website verification request*/
 
 
@@ -10720,16 +13527,16 @@ CREATE TABLE IF NOT EXISTS `UsersForIndividualAssetResponsePermissions` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `VideoMetadata` generated from model 'videoMetadata'
+-- Table structure for table `VideoMetadataWithItemType` generated from model 'videoMetadataWithItemType'
 --
 
-CREATE TABLE IF NOT EXISTS `VideoMetadata` (
-  `item_type` text,
+CREATE TABLE IF NOT EXISTS `VideoMetadataWithItemType` (
   `cover_image_url` text,
-  `video_url` text /*Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps.*/,
-  `duration` decimal /*Duration (in milliseconds)*/,
-  `height` int /*Height (in pixels)*/,
-  `width` int /*Width (in pixels)*/
+  `duration` decimal /*Duration (in miliseconds). Field maybe null after creation due to video processing time.*/,
+  `height` int /*Height (in pixels). Field maybe null after creation due to video processing time.*/,
+  `item_type` text,
+  `video_url` text /*Video url (720p).  **Note:** This field is limited and not available to all apps.*/,
+  `width` int /*Width (in pixels). Field maybe null after creation due to video processing time.*/
 ); 
 
 

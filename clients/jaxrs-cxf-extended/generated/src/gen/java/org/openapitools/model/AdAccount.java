@@ -21,110 +21,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccount  {
   
   @ApiModelProperty(value = "")
-  private String id;
-
-  @ApiModelProperty(value = "")
-  private String name;
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private AdAccountOwner owner;
-
-  @ApiModelProperty(value = "")
   @Valid
   private Country country;
+
+ /**
+  *  Creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(value = " Creation time. Unix timestamp in seconds.")
+  private Integer createdTime;
 
   @ApiModelProperty(value = "")
   @Valid
   private Currency currency;
 
+  @ApiModelProperty(required = true, value = "")
+  private String id;
+
+ /**
+  * Ad account name.
+  */
+  @ApiModelProperty(value = "Ad account name.")
+  private String name;
+
+ /**
+  * Ad account owner
+  */
+  @ApiModelProperty(value = "Ad account owner")
+  @Valid
+  private AdAccountOwner owner;
+
   @ApiModelProperty(value = "")
   @Valid
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
- /**
-  * Creation time. Unix timestamp in seconds.
-  */
-  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
-  private Integer createdTime;
-
- /**
-  * Last update time. Unix timestamp in seconds.
-  */
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+  @ApiModelProperty(value = "")
   private Integer updatedTime;
- /**
-  * Get id
-  * @return id
-  */
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
- public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
-  public AdAccount id(String id) {
-    this.id = id;
-    return this;
-  }
-
- /**
-  * Get name
-  * @return name
-  */
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public AdAccount name(String name) {
-    this.name = name;
-    return this;
-  }
-
- /**
-  * Get owner
-  * @return owner
-  */
-  @JsonProperty("owner")
-  public AdAccountOwner getOwner() {
-    return owner;
-  }
-
-  /**
-   * Sets the <code>owner</code> property.
-   */
- public void setOwner(AdAccountOwner owner) {
-    this.owner = owner;
-  }
-
-  /**
-   * Sets the <code>owner</code> property.
-   */
-  public AdAccount owner(AdAccountOwner owner) {
-    this.owner = owner;
-    return this;
-  }
-
  /**
   * Get country
   * @return country
@@ -146,6 +77,32 @@ public class AdAccount  {
    */
   public AdAccount country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+  *  Creation time. Unix timestamp in seconds.
+  * @return createdTime
+  */
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+
+  /**
+   * Sets the <code>createdTime</code> property.
+   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+ public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  /**
+   * Sets the <code>createdTime</code> property.
+   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+  public AdAccount createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
@@ -174,6 +131,81 @@ public class AdAccount  {
   }
 
  /**
+  * Get id
+  * @return id
+  */
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=18)  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public AdAccount id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+  * Ad account name.
+  * @return name
+  */
+  @JsonProperty("name")
+ @Size(max=256)  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+ public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+  public AdAccount name(String name) {
+    this.name = name;
+    return this;
+  }
+
+ /**
+  * Ad account owner
+  * @return owner
+  */
+  @JsonProperty("owner")
+  public AdAccountOwner getOwner() {
+    return owner;
+  }
+
+  /**
+   * Sets the <code>owner</code> property.
+   * <br><em>N.B. <code>owner</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+ public void setOwner(AdAccountOwner owner) {
+    this.owner = owner;
+  }
+
+  /**
+   * Sets the <code>owner</code> property.
+   * <br><em>N.B. <code>owner</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+  public AdAccount owner(AdAccountOwner owner) {
+    this.owner = owner;
+    return this;
+  }
+
+ /**
   * Get permissions
   * @return permissions
   */
@@ -184,6 +216,7 @@ public class AdAccount  {
 
   /**
    * Sets the <code>permissions</code> property.
+   * <br><em>N.B. <code>permissions</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setPermissions(List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
@@ -191,6 +224,7 @@ public class AdAccount  {
 
   /**
    * Sets the <code>permissions</code> property.
+   * <br><em>N.B. <code>permissions</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public AdAccount permissions(List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
@@ -199,6 +233,7 @@ public class AdAccount  {
 
   /**
    * Adds a new item to the <code>permissions</code> list.
+   * <br><em>N.B. <code>permissions</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public AdAccount addPermissionsItem(BusinessAccessRole permissionsItem) {
     this.permissions.add(permissionsItem);
@@ -206,31 +241,7 @@ public class AdAccount  {
   }
 
  /**
-  * Creation time. Unix timestamp in seconds.
-  * @return createdTime
-  */
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  /**
-   * Sets the <code>createdTime</code> property.
-   */
- public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
-   * Sets the <code>createdTime</code> property.
-   */
-  public AdAccount createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
- /**
-  * Last update time. Unix timestamp in seconds.
+  * Get updatedTime
   * @return updatedTime
   */
   @JsonProperty("updated_time")
@@ -240,6 +251,7 @@ public class AdAccount  {
 
   /**
    * Sets the <code>updatedTime</code> property.
+   * <br><em>N.B. <code>updatedTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setUpdatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
@@ -247,6 +259,7 @@ public class AdAccount  {
 
   /**
    * Sets the <code>updatedTime</code> property.
+   * <br><em>N.B. <code>updatedTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public AdAccount updatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
@@ -263,19 +276,19 @@ public class AdAccount  {
       return false;
     }
     AdAccount adAccount = (AdAccount) o;
-    return Objects.equals(this.id, adAccount.id) &&
+    return Objects.equals(this.country, adAccount.country) &&
+        Objects.equals(this.createdTime, adAccount.createdTime) &&
+        Objects.equals(this.currency, adAccount.currency) &&
+        Objects.equals(this.id, adAccount.id) &&
         Objects.equals(this.name, adAccount.name) &&
         Objects.equals(this.owner, adAccount.owner) &&
-        Objects.equals(this.country, adAccount.country) &&
-        Objects.equals(this.currency, adAccount.currency) &&
         Objects.equals(this.permissions, adAccount.permissions) &&
-        Objects.equals(this.createdTime, adAccount.createdTime) &&
         Objects.equals(this.updatedTime, adAccount.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, owner, country, currency, permissions, createdTime, updatedTime);
+    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, updatedTime);
   }
 
   @Override
@@ -283,13 +296,13 @@ public class AdAccount  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccount {\n");
     
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

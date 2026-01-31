@@ -9,8 +9,9 @@
 -export_type([openapi_targeting_template_update_request/0]).
 
 -type openapi_targeting_template_update_request() ::
-  [ {'operation_type', binary() }
-  | {'id', binary() }
+  [ {'id', binary() }
+  | {'operation_type', binary() }
+  | {'targeting_attributes', openapi_targeting_spec:openapi_targeting_spec() }
   ].
 
 
@@ -18,8 +19,9 @@ openapi_targeting_template_update_request() ->
     openapi_targeting_template_update_request([]).
 
 openapi_targeting_template_update_request(Fields) ->
-  Default = [ {'operation_type', elements([<<"REMOVE">>]) }
-            , {'id', binary() }
+  Default = [ {'id', binary() }
+            , {'operation_type', elements([<<"REMOVE">>, <<"UPDATE">>]) }
+            , {'targeting_attributes', openapi_targeting_spec:openapi_targeting_spec() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -11,7 +11,7 @@ Protected Class BulkApi
 		  // Invokes BulkApiCallbackHandler.BulkDownloadCreateCallback(BulkDownloadResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/bulk/download
-		  // - Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+		  // - Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -151,6 +151,9 @@ Protected Class BulkApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -160,6 +163,7 @@ Protected Class BulkApi
 		  If includeDetails <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("include_details") + "=" + EncodeURLComponent(includeDetails.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -284,7 +288,7 @@ Protected Class BulkApi
 		  // Invokes BulkApiCallbackHandler.BulkUpsertCreateCallback(BulkUpsertResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/bulk/upsert
-		  // - Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+		  // - Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

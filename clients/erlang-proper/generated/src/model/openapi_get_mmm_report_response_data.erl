@@ -10,8 +10,8 @@
 
 -type openapi_get_mmm_report_response_data() ::
   [ {'report_status', binary() }
-  | {'url', binary() }
   | {'size', integer() }
+  | {'url', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_get_mmm_report_response_data() ->
 
 openapi_get_mmm_report_response_data(Fields) ->
   Default = [ {'report_status', elements([<<"DOES_NOT_EXIST">>, <<"FINISHED">>, <<"IN_PROGRESS">>, <<"EXPIRED">>, <<"FAILED">>, <<"CANCELLED">>]) }
-            , {'url', binary() }
             , {'size', integer() }
+            , {'url', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

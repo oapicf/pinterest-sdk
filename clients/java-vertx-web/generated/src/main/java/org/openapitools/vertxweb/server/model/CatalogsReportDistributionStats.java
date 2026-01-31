@@ -8,6 +8,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsReportDistributionStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private Boolean ineligibleForAds;
+  private Boolean ineligibleForOrganic;
+  private String message;
+  private Integer occurrences;
 
 
   public enum ReportTypeEnum {
@@ -27,35 +34,19 @@ public class CatalogsReportDistributionStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
-  private Boolean ineligibleForAds;
-  private Boolean ineligibleForOrganic;
 
   public CatalogsReportDistributionStats () {
 
   }
 
-  public CatalogsReportDistributionStats (ReportTypeEnum reportType, String catalogId, Integer code, String codeLabel, String message, Integer occurrences, Boolean ineligibleForAds, Boolean ineligibleForOrganic) {
-    this.reportType = reportType;
+  public CatalogsReportDistributionStats (String catalogId, Integer code, String codeLabel, Boolean ineligibleForAds, Boolean ineligibleForOrganic, String message, Integer occurrences, ReportTypeEnum reportType) {
     this.catalogId = catalogId;
     this.code = code;
     this.codeLabel = codeLabel;
-    this.message = message;
-    this.occurrences = occurrences;
     this.ineligibleForAds = ineligibleForAds;
     this.ineligibleForOrganic = ineligibleForOrganic;
-  }
-
-    
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
+    this.message = message;
+    this.occurrences = occurrences;
     this.reportType = reportType;
   }
 
@@ -87,6 +78,24 @@ public class CatalogsReportDistributionStats   {
   }
 
     
+  @JsonProperty("ineligible_for_ads")
+  public Boolean getIneligibleForAds() {
+    return ineligibleForAds;
+  }
+  public void setIneligibleForAds(Boolean ineligibleForAds) {
+    this.ineligibleForAds = ineligibleForAds;
+  }
+
+    
+  @JsonProperty("ineligible_for_organic")
+  public Boolean getIneligibleForOrganic() {
+    return ineligibleForOrganic;
+  }
+  public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
+    this.ineligibleForOrganic = ineligibleForOrganic;
+  }
+
+    
   @JsonProperty("message")
   public String getMessage() {
     return message;
@@ -105,21 +114,12 @@ public class CatalogsReportDistributionStats   {
   }
 
     
-  @JsonProperty("ineligible_for_ads")
-  public Boolean getIneligibleForAds() {
-    return ineligibleForAds;
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
   }
-  public void setIneligibleForAds(Boolean ineligibleForAds) {
-    this.ineligibleForAds = ineligibleForAds;
-  }
-
-    
-  @JsonProperty("ineligible_for_organic")
-  public Boolean getIneligibleForOrganic() {
-    return ineligibleForOrganic;
-  }
-  public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
-    this.ineligibleForOrganic = ineligibleForOrganic;
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
   }
 
 
@@ -132,19 +132,19 @@ public class CatalogsReportDistributionStats   {
       return false;
     }
     CatalogsReportDistributionStats catalogsReportDistributionStats = (CatalogsReportDistributionStats) o;
-    return Objects.equals(reportType, catalogsReportDistributionStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportDistributionStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportDistributionStats.catalogId) &&
         Objects.equals(code, catalogsReportDistributionStats.code) &&
         Objects.equals(codeLabel, catalogsReportDistributionStats.codeLabel) &&
+        Objects.equals(ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
+        Objects.equals(ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic) &&
         Objects.equals(message, catalogsReportDistributionStats.message) &&
         Objects.equals(occurrences, catalogsReportDistributionStats.occurrences) &&
-        Objects.equals(ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
-        Objects.equals(ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic);
+        Objects.equals(reportType, catalogsReportDistributionStats.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
   }
 
   @Override
@@ -152,14 +152,14 @@ public class CatalogsReportDistributionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

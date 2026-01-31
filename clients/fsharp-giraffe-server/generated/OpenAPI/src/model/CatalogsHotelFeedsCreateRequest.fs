@@ -9,7 +9,6 @@ open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.NullableCurrency
-open OpenAPI.Model.string option
 
 module CatalogsHotelFeedsCreateRequest =
 
@@ -17,15 +16,15 @@ module CatalogsHotelFeedsCreateRequest =
 
 
   type CatalogsHotelFeedsCreateRequest = {
-    DefaultCurrency : NullableCurrency;
-    Name : string;
-    Format : CatalogsFormat;
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
-    Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    CatalogId : string;
     CatalogType : CatalogsType;
-    CatalogId : string option;
+    Credentials : CatalogsFeedCredentials;
+    DefaultCurrency : NullableCurrency;
+    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
   }
   //#endregion

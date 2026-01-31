@@ -1,10 +1,10 @@
 package org.openapitools.api
 
-import org.openapitools.model.Error
+import org.openapitools.model.Media
 import org.openapitools.model.MediaList200Response
 import org.openapitools.model.MediaUpload
-import org.openapitools.model.MediaUploadDetails
-import org.openapitools.model.MediaUploadRequest
+import org.openapitools.model.MediaUploadCreate
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -20,9 +20,9 @@ class MediaApiTest {
      */
     @Test
     fun mediaCreateTest() {
-        val mediaUploadRequest: MediaUploadRequest = TODO()
+        val mediaUploadCreate: MediaUploadCreate = TODO()
         
-        val response: ResponseEntity<MediaUpload> = api.mediaCreate(mediaUploadRequest)
+        val response: ResponseEntity<MediaUpload> = api.mediaCreate(mediaUploadCreate)
 
         // TODO: test validations
     }
@@ -37,7 +37,7 @@ class MediaApiTest {
     fun mediaGetTest() {
         val mediaId: kotlin.String = TODO()
         
-        val response: ResponseEntity<MediaUploadDetails> = api.mediaGet(mediaId)
+        val response: ResponseEntity<Media> = api.mediaGet(mediaId)
 
         // TODO: test validations
     }

@@ -9,13 +9,120 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brand_accounts_create**](BusinessAccessRelationshipsApi.md#brand_accounts_create) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brand_accounts_update**](BusinessAccessRelationshipsApi.md#brand_accounts_update) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**delete_business_membership**](BusinessAccessRelationshipsApi.md#delete_business_membership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**delete_business_partners**](BusinessAccessRelationshipsApi.md#delete_business_partners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**get_business_employers**](BusinessAccessRelationshipsApi.md#get_business_employers) | **GET** /businesses/employers | List business employers for user
 [**get_business_members**](BusinessAccessRelationshipsApi.md#get_business_members) | **GET** /businesses/{business_id}/members | Get business members
 [**get_business_partners**](BusinessAccessRelationshipsApi.md#get_business_partners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**system_user_update**](BusinessAccessRelationshipsApi.md#system_user_update) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**update_business_memberships**](BusinessAccessRelationshipsApi.md#update_business_memberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+# **brand_accounts_create**
+> BrandAccountsCreate200Response brand_accounts_create(business_hierarchy_id => $business_hierarchy_id, brand_accounts_create_request => $brand_accounts_create_request)
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::BusinessAccessRelationshipsApi;
+my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
+
+    # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+my $business_hierarchy_id = 7009386637860; # string | business hierarchy node id
+my $brand_accounts_create_request = WWW::OpenAPIClient::Object::BrandAccountsCreateRequest->new(); # BrandAccountsCreateRequest | 
+
+eval {
+    my $result = $api_instance->brand_accounts_create(business_hierarchy_id => $business_hierarchy_id, brand_accounts_create_request => $brand_accounts_create_request);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling BusinessAccessRelationshipsApi->brand_accounts_create: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_hierarchy_id** | **string**| business hierarchy node id | 
+ **brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **brand_accounts_update**
+> BrandAccountsCreate200Response brand_accounts_update(business_hierarchy_id => $business_hierarchy_id, brand_account_id => $brand_account_id, brand_accounts_update_request => $brand_accounts_update_request)
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::BusinessAccessRelationshipsApi;
+my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
+
+    # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+my $business_hierarchy_id = 7009386637860; # string | business hierarchy node id
+my $brand_account_id = 729090764583391194; # string | Unique identifier of a brand account.
+my $brand_accounts_update_request = WWW::OpenAPIClient::Object::BrandAccountsUpdateRequest->new(); # BrandAccountsUpdateRequest | 
+
+eval {
+    my $result = $api_instance->brand_accounts_update(business_hierarchy_id => $business_hierarchy_id, brand_account_id => $brand_account_id, brand_accounts_update_request => $brand_accounts_update_request);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling BusinessAccessRelationshipsApi->brand_accounts_update: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_hierarchy_id** | **string**| business hierarchy node id | 
+ **brand_account_id** | **string**| Unique identifier of a brand account. | 
+ **brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_business_membership**
 > DeletedMembersResponse delete_business_membership(business_id => $business_id, members_to_delete_body => $members_to_delete_body)
@@ -171,7 +278,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_business_members**
-> GetBusinessMembers200Response get_business_members(business_id => $business_id, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size)
+> GetBusinessMembers200Response get_business_members(business_id => $business_id, fetch_system_users => $fetch_system_users, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size)
 
 Get business members
 
@@ -188,6 +295,7 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
 );
 
 my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $fetch_system_users = false; # boolean | Fetches system users if True. Fetches regular user employees if False.
 my $assets_summary = false; # boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 my $business_roles = [(new WWW::OpenAPIClient.MemberBusinessRole())]; # ARRAY[MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
 my $member_ids = 00101010101,2222220101; # string | A list of business members ids separated by comma.
@@ -196,7 +304,7 @@ my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page
 my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
-    my $result = $api_instance->get_business_members(business_id => $business_id, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size);
+    my $result = $api_instance->get_business_members(business_id => $business_id, fetch_system_users => $fetch_system_users, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -209,6 +317,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
+ **fetch_system_users** | **boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **assets_summary** | **boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
  **business_roles** | [**ARRAY[MemberBusinessRole]**](MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
  **member_ids** | **string**| A list of business members ids separated by comma. | [optional] 
@@ -288,6 +397,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **system_user_update**
+> system_user_update(business_id => $business_id, system_user_id => $system_user_id, system_user_update_request => $system_user_update_request)
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::BusinessAccessRelationshipsApi;
+my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
+
+    # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $system_user_id = 729090764583391194; # string | Unique identifier of a system user.
+my $system_user_update_request = WWW::OpenAPIClient::Object::SystemUserUpdateRequest->new(); # SystemUserUpdateRequest | 
+
+eval {
+    $api_instance->system_user_update(business_id => $business_id, system_user_id => $system_user_id, system_user_update_request => $system_user_update_request);
+};
+if ($@) {
+    warn "Exception when calling BusinessAccessRelationshipsApi->system_user_update: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_id** | **string**| Unique identifier of the requesting business. | 
+ **system_user_id** | **string**| Unique identifier of a system user. | 
+ **system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

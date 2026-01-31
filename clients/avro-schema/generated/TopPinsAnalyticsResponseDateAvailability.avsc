@@ -5,14 +5,14 @@
   "name": "TopPinsAnalyticsResponseDateAvailability",
   "fields": [
     {
-      "name": "latest_available_timestamp",
-      "type": ["null", "double"],
+      "name": "is_realtime",
+      "type": ["null", "boolean"],
       "doc": "",
       "default": null
     },
     {
-      "name": "is_realtime",
-      "type": ["null", "boolean"],
+      "name": "latest_available_timestamp",
+      "type": ["null", "double"],
       "doc": "",
       "default": null
     }

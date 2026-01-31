@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **availability** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
 **brand** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
 **condition** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
-**custom_label_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
-**custom_label_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
-**custom_label_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
-**custom_label_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
-**custom_label_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
+**custom_label_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |
+**custom_label_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |
+**custom_label_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |
+**custom_label_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |
+**custom_label_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |
 **item_group_id** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
 **gender** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleGenderCriteria**](.md) |  |
 **media_type** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  |
@@ -32,5 +32,11 @@ Name | Type | Description | Notes
 **google_product_category_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](.md) |  |
 **google_product_category_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](.md) |  |
 **product_group** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
+**custom_number_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](.md) |  |
+**custom_number_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](.md) |  |
+**custom_number_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](.md) |  |
+**custom_number_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](.md) |  |
+**custom_number_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](.md) |  |
+**title_keywords** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

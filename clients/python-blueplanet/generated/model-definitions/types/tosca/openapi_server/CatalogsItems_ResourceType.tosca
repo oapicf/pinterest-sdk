@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemResponse = openapi_server.resourceTypes.ItemResponse
+}
+resourceTypes {
+
+  CatalogsItems {
+    title = CatalogsItems
+    description = CatalogsItems
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = ItemResponse
+          description = "Array with catalogs items"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsItems {
+    title = CatalogsItems
+    description = CatalogsItems
+    implements = openapi_server.resourceTypes.CatalogsItems
+
+  }
+}

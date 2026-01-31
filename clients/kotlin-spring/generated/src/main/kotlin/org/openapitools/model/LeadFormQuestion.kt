@@ -19,16 +19,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param questionType 
  * @param customQuestionFieldType 
  * @param customQuestionLabel Question label for a custom question.
  * @param customQuestionOptions Question options for a custom question.
+ * @param questionType 
  */
 data class LeadFormQuestion(
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("question_type") val questionType: LeadFormQuestionType? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -39,7 +35,11 @@ data class LeadFormQuestion(
 
     @get:Size(min=0,max=5) 
     @Schema(example = "null", description = "Question options for a custom question.")
-    @get:JsonProperty("custom_question_options") val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null
+    @get:JsonProperty("custom_question_options") val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("question_type") val questionType: LeadFormQuestionType? = null
 ) {
 
 }

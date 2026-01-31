@@ -16,6 +16,13 @@ void main() {
   // final instance = PinMediaSourceImageURL();
 
   group('test PinMediaSourceImageURL', () {
+    // Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+    // bool isStandard (default value: true)
+    test('to test the property `isStandard`', () async {
+      // TODO
+    });
+
+    // The source type of the media.
     // String sourceType
     test('to test the property `sourceType`', () async {
       // TODO
@@ -23,12 +30,6 @@ void main() {
 
     // String url
     test('to test the property `url`', () async {
-      // TODO
-    });
-
-    // Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-    // bool isStandard (default value: true)
-    test('to test the property `isStandard`', () async {
       // TODO
     });
 

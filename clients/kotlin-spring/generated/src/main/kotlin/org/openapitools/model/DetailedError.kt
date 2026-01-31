@@ -16,20 +16,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Used for including extra details to a base error
  * @param code 
- * @param message 
  * @param details 
+ * @param message 
  */
 data class DetailedError(
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("code", required = true) val code: kotlin.Int,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("message", required = true) val message: kotlin.String,
-
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("details", required = true) val details: kotlin.Any
+    @get:JsonProperty("details", required = true) val details: kotlin.Any,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("message", required = true) val message: kotlin.String
 ) {
 
 }

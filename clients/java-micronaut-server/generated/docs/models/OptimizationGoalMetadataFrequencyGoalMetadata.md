@@ -8,7 +8,7 @@ The class is defined in **[OptimizationGoalMetadataFrequencyGoalMetadata.java](.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**frequency** | `Integer` |  |  [optional property]
+**frequency** | `Integer` | Frequency target can only be between 2 and 20 |  [optional property]
 **timerange** | [**TimerangeEnum**](#TimerangeEnum) | User entity counts time range |  [optional property]
 
 

@@ -24,8 +24,7 @@ module CustomerListsApiHandlerTestsHelper =
   CustomerListsCreateBody <- WebUtility.HtmlDecode "{
   &quot;list_type&quot; : &quot;EMAIL&quot;,
   &quot;records&quot; : &quot;email1@pinterest.com,email2@pinterest.com,..&lt;more records&gt;&quot;,
-  &quot;name&quot; : &quot;The Glengarry Glen Ross leads&quot;,
-  &quot;exceptions&quot; : &quot;{}&quot;
+  &quot;name&quot; : &quot;The Glengarry Glen Ross leads&quot;
 }"
   CustomerListsCreateExamples <- CustomerListsCreateExamples.Add("application/json", CustomerListsCreateBody)
 
@@ -42,11 +41,7 @@ module CustomerListsApiHandlerTestsHelper =
 
   CustomerListsUpdateBody <- WebUtility.HtmlDecode "{
   &quot;operation_type&quot; : &quot;operation_type&quot;,
-  &quot;records&quot; : &quot;email2@pinterest.com,email6@pinterest.com,&quot;,
-  &quot;exceptions&quot; : {
-    &quot;code&quot; : 2,
-    &quot;message&quot; : &quot;Advertiser not found.&quot;
-  }
+  &quot;records&quot; : &quot;email2@pinterest.com,email6@pinterest.com,&quot;
 }"
   CustomerListsUpdateExamples <- CustomerListsUpdateExamples.Add("application/json", CustomerListsUpdateBody)
 

@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import RelatedTermsRelatedTermsListInner._
 
 case class RelatedTermsRelatedTermsListInner (
-  term: Option[String],
-relatedTerms: Option[List[String]])
+  relatedTerms: Option[List[String]],
+term: Option[String])
 
 object RelatedTermsRelatedTermsListInner {
   import DateTimeCodecs._

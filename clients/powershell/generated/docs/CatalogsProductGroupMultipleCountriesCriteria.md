@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | [**Country[]**](Country.md) |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Values** | [**Country[]**](Country.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupMultipleCountriesCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleCountriesCriteria  -Values null `
- -Negated null
+$CatalogsProductGroupMultipleCountriesCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleCountriesCriteria  -Negated null `
+ -Values null
 ```
 
 - Convert the resource to JSON

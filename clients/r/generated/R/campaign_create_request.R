@@ -8,17 +8,20 @@
 #' @description CampaignCreateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field ad_account_id Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. character
-#' @field name Campaign name. character
-#' @field status  \link{EntityStatus} [optional]
-#' @field lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. integer [optional]
 #' @field daily_spend_cap Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time. integer [optional]
-#' @field order_line_id Order line ID that appears on the invoice. character [optional]
-#' @field tracking_urls  \link{TrackingUrls} [optional]
-#' @field start_time Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. integer [optional]
-#' @field end_time Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. integer [optional]
-#' @field is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup. character [optional]
-#' @field default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. integer [optional]
+#' @field end_time Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. integer [optional]
 #' @field is_automated_campaign Specifies whether the campaign was created in the automated campaign flow character [optional]
+#' @field is_flexible_daily_budgets Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". character [optional]
+#' @field lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. integer [optional]
+#' @field name Campaign name. character
+#' @field order_line_id Order line ID that appears on the invoice. character [optional]
+#' @field start_time Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. integer [optional]
+#' @field status  \link{EntityStatus} [optional]
+#' @field tracking_urls  \link{TrackingUrls} [optional]
+#' @field default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. integer [optional]
+#' @field is_campaign_budget_optimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. character [optional]
+#' @field bid_options  \link{CampaignBidOptionsCreate} [optional]
+#' @field is_performance_plus Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. character [optional]
 #' @field objective_type  \link{ObjectiveType}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -27,17 +30,20 @@ CampaignCreateRequest <- R6::R6Class(
   "CampaignCreateRequest",
   public = list(
     `ad_account_id` = NULL,
-    `name` = NULL,
-    `status` = NULL,
-    `lifetime_spend_cap` = NULL,
     `daily_spend_cap` = NULL,
-    `order_line_id` = NULL,
-    `tracking_urls` = NULL,
-    `start_time` = NULL,
     `end_time` = NULL,
-    `is_flexible_daily_budgets` = NULL,
-    `default_ad_group_budget_in_micro_currency` = NULL,
     `is_automated_campaign` = NULL,
+    `is_flexible_daily_budgets` = NULL,
+    `lifetime_spend_cap` = NULL,
+    `name` = NULL,
+    `order_line_id` = NULL,
+    `start_time` = NULL,
+    `status` = NULL,
+    `tracking_urls` = NULL,
+    `default_ad_group_budget_in_micro_currency` = NULL,
+    `is_campaign_budget_optimization` = NULL,
+    `bid_options` = NULL,
+    `is_performance_plus` = NULL,
     `objective_type` = NULL,
 
     #' @description
@@ -46,18 +52,21 @@ CampaignCreateRequest <- R6::R6Class(
     #' @param ad_account_id Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
     #' @param name Campaign name.
     #' @param objective_type objective_type
-    #' @param status status. Default to "ACTIVE".
-    #' @param lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
     #' @param daily_spend_cap Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-    #' @param order_line_id Order line ID that appears on the invoice.
-    #' @param tracking_urls tracking_urls
-    #' @param start_time Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-    #' @param end_time Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-    #' @param is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup.. Default to FALSE.
-    #' @param default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+    #' @param end_time Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
     #' @param is_automated_campaign Specifies whether the campaign was created in the automated campaign flow. Default to FALSE.
+    #' @param is_flexible_daily_budgets Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".. Default to FALSE.
+    #' @param lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+    #' @param order_line_id Order line ID that appears on the invoice.
+    #' @param start_time Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+    #' @param status status. Default to "ACTIVE".
+    #' @param tracking_urls tracking_urls
+    #' @param default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+    #' @param is_campaign_budget_optimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+    #' @param bid_options bid_options
+    #' @param is_performance_plus Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.. Default to FALSE.
     #' @param ... Other optional arguments.
-    initialize = function(`ad_account_id`, `name`, `objective_type`, `status` = "ACTIVE", `lifetime_spend_cap` = NULL, `daily_spend_cap` = NULL, `order_line_id` = NULL, `tracking_urls` = NULL, `start_time` = NULL, `end_time` = NULL, `is_flexible_daily_budgets` = FALSE, `default_ad_group_budget_in_micro_currency` = NULL, `is_automated_campaign` = FALSE, ...) {
+    initialize = function(`ad_account_id`, `name`, `objective_type`, `daily_spend_cap` = NULL, `end_time` = NULL, `is_automated_campaign` = FALSE, `is_flexible_daily_budgets` = FALSE, `lifetime_spend_cap` = NULL, `order_line_id` = NULL, `start_time` = NULL, `status` = "ACTIVE", `tracking_urls` = NULL, `default_ad_group_budget_in_micro_currency` = NULL, `is_campaign_budget_optimization` = NULL, `bid_options` = NULL, `is_performance_plus` = FALSE, ...) {
       if (!missing(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -77,40 +86,11 @@ CampaignCreateRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`objective_type`))
         self$`objective_type` <- `objective_type`
       }
-      if (!is.null(`status`)) {
-        if (!(`status` %in% c())) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`status`))
-        self$`status` <- `status`
-      }
-      if (!is.null(`lifetime_spend_cap`)) {
-        if (!(is.numeric(`lifetime_spend_cap`) && length(`lifetime_spend_cap`) == 1)) {
-          stop(paste("Error! Invalid data for `lifetime_spend_cap`. Must be an integer:", `lifetime_spend_cap`))
-        }
-        self$`lifetime_spend_cap` <- `lifetime_spend_cap`
-      }
       if (!is.null(`daily_spend_cap`)) {
         if (!(is.numeric(`daily_spend_cap`) && length(`daily_spend_cap`) == 1)) {
           stop(paste("Error! Invalid data for `daily_spend_cap`. Must be an integer:", `daily_spend_cap`))
         }
         self$`daily_spend_cap` <- `daily_spend_cap`
-      }
-      if (!is.null(`order_line_id`)) {
-        if (!(is.character(`order_line_id`) && length(`order_line_id`) == 1)) {
-          stop(paste("Error! Invalid data for `order_line_id`. Must be a string:", `order_line_id`))
-        }
-        self$`order_line_id` <- `order_line_id`
-      }
-      if (!is.null(`tracking_urls`)) {
-        stopifnot(R6::is.R6(`tracking_urls`))
-        self$`tracking_urls` <- `tracking_urls`
-      }
-      if (!is.null(`start_time`)) {
-        if (!(is.numeric(`start_time`) && length(`start_time`) == 1)) {
-          stop(paste("Error! Invalid data for `start_time`. Must be an integer:", `start_time`))
-        }
-        self$`start_time` <- `start_time`
       }
       if (!is.null(`end_time`)) {
         if (!(is.numeric(`end_time`) && length(`end_time`) == 1)) {
@@ -118,11 +98,46 @@ CampaignCreateRequest <- R6::R6Class(
         }
         self$`end_time` <- `end_time`
       }
+      if (!is.null(`is_automated_campaign`)) {
+        if (!(is.logical(`is_automated_campaign`) && length(`is_automated_campaign`) == 1)) {
+          stop(paste("Error! Invalid data for `is_automated_campaign`. Must be a boolean:", `is_automated_campaign`))
+        }
+        self$`is_automated_campaign` <- `is_automated_campaign`
+      }
       if (!is.null(`is_flexible_daily_budgets`)) {
         if (!(is.logical(`is_flexible_daily_budgets`) && length(`is_flexible_daily_budgets`) == 1)) {
           stop(paste("Error! Invalid data for `is_flexible_daily_budgets`. Must be a boolean:", `is_flexible_daily_budgets`))
         }
         self$`is_flexible_daily_budgets` <- `is_flexible_daily_budgets`
+      }
+      if (!is.null(`lifetime_spend_cap`)) {
+        if (!(is.numeric(`lifetime_spend_cap`) && length(`lifetime_spend_cap`) == 1)) {
+          stop(paste("Error! Invalid data for `lifetime_spend_cap`. Must be an integer:", `lifetime_spend_cap`))
+        }
+        self$`lifetime_spend_cap` <- `lifetime_spend_cap`
+      }
+      if (!is.null(`order_line_id`)) {
+        if (!(is.character(`order_line_id`) && length(`order_line_id`) == 1)) {
+          stop(paste("Error! Invalid data for `order_line_id`. Must be a string:", `order_line_id`))
+        }
+        self$`order_line_id` <- `order_line_id`
+      }
+      if (!is.null(`start_time`)) {
+        if (!(is.numeric(`start_time`) && length(`start_time`) == 1)) {
+          stop(paste("Error! Invalid data for `start_time`. Must be an integer:", `start_time`))
+        }
+        self$`start_time` <- `start_time`
+      }
+      if (!is.null(`status`)) {
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`status`))
+        self$`status` <- `status`
+      }
+      if (!is.null(`tracking_urls`)) {
+        stopifnot(R6::is.R6(`tracking_urls`))
+        self$`tracking_urls` <- `tracking_urls`
       }
       if (!is.null(`default_ad_group_budget_in_micro_currency`)) {
         if (!(is.numeric(`default_ad_group_budget_in_micro_currency`) && length(`default_ad_group_budget_in_micro_currency`) == 1)) {
@@ -130,11 +145,21 @@ CampaignCreateRequest <- R6::R6Class(
         }
         self$`default_ad_group_budget_in_micro_currency` <- `default_ad_group_budget_in_micro_currency`
       }
-      if (!is.null(`is_automated_campaign`)) {
-        if (!(is.logical(`is_automated_campaign`) && length(`is_automated_campaign`) == 1)) {
-          stop(paste("Error! Invalid data for `is_automated_campaign`. Must be a boolean:", `is_automated_campaign`))
+      if (!is.null(`is_campaign_budget_optimization`)) {
+        if (!(is.logical(`is_campaign_budget_optimization`) && length(`is_campaign_budget_optimization`) == 1)) {
+          stop(paste("Error! Invalid data for `is_campaign_budget_optimization`. Must be a boolean:", `is_campaign_budget_optimization`))
         }
-        self$`is_automated_campaign` <- `is_automated_campaign`
+        self$`is_campaign_budget_optimization` <- `is_campaign_budget_optimization`
+      }
+      if (!is.null(`bid_options`)) {
+        stopifnot(R6::is.R6(`bid_options`))
+        self$`bid_options` <- `bid_options`
+      }
+      if (!is.null(`is_performance_plus`)) {
+        if (!(is.logical(`is_performance_plus`) && length(`is_performance_plus`) == 1)) {
+          stop(paste("Error! Invalid data for `is_performance_plus`. Must be a boolean:", `is_performance_plus`))
+        }
+        self$`is_performance_plus` <- `is_performance_plus`
       }
     },
 
@@ -173,49 +198,61 @@ CampaignCreateRequest <- R6::R6Class(
         CampaignCreateRequestObject[["ad_account_id"]] <-
           self$`ad_account_id`
       }
-      if (!is.null(self$`name`)) {
-        CampaignCreateRequestObject[["name"]] <-
-          self$`name`
-      }
-      if (!is.null(self$`status`)) {
-        CampaignCreateRequestObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
-      if (!is.null(self$`lifetime_spend_cap`)) {
-        CampaignCreateRequestObject[["lifetime_spend_cap"]] <-
-          self$`lifetime_spend_cap`
-      }
       if (!is.null(self$`daily_spend_cap`)) {
         CampaignCreateRequestObject[["daily_spend_cap"]] <-
           self$`daily_spend_cap`
-      }
-      if (!is.null(self$`order_line_id`)) {
-        CampaignCreateRequestObject[["order_line_id"]] <-
-          self$`order_line_id`
-      }
-      if (!is.null(self$`tracking_urls`)) {
-        CampaignCreateRequestObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toSimpleType()
-      }
-      if (!is.null(self$`start_time`)) {
-        CampaignCreateRequestObject[["start_time"]] <-
-          self$`start_time`
       }
       if (!is.null(self$`end_time`)) {
         CampaignCreateRequestObject[["end_time"]] <-
           self$`end_time`
       }
+      if (!is.null(self$`is_automated_campaign`)) {
+        CampaignCreateRequestObject[["is_automated_campaign"]] <-
+          self$`is_automated_campaign`
+      }
       if (!is.null(self$`is_flexible_daily_budgets`)) {
         CampaignCreateRequestObject[["is_flexible_daily_budgets"]] <-
           self$`is_flexible_daily_budgets`
+      }
+      if (!is.null(self$`lifetime_spend_cap`)) {
+        CampaignCreateRequestObject[["lifetime_spend_cap"]] <-
+          self$`lifetime_spend_cap`
+      }
+      if (!is.null(self$`name`)) {
+        CampaignCreateRequestObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`order_line_id`)) {
+        CampaignCreateRequestObject[["order_line_id"]] <-
+          self$`order_line_id`
+      }
+      if (!is.null(self$`start_time`)) {
+        CampaignCreateRequestObject[["start_time"]] <-
+          self$`start_time`
+      }
+      if (!is.null(self$`status`)) {
+        CampaignCreateRequestObject[["status"]] <-
+          self$`status`$toSimpleType()
+      }
+      if (!is.null(self$`tracking_urls`)) {
+        CampaignCreateRequestObject[["tracking_urls"]] <-
+          self$`tracking_urls`$toSimpleType()
       }
       if (!is.null(self$`default_ad_group_budget_in_micro_currency`)) {
         CampaignCreateRequestObject[["default_ad_group_budget_in_micro_currency"]] <-
           self$`default_ad_group_budget_in_micro_currency`
       }
-      if (!is.null(self$`is_automated_campaign`)) {
-        CampaignCreateRequestObject[["is_automated_campaign"]] <-
-          self$`is_automated_campaign`
+      if (!is.null(self$`is_campaign_budget_optimization`)) {
+        CampaignCreateRequestObject[["is_campaign_budget_optimization"]] <-
+          self$`is_campaign_budget_optimization`
+      }
+      if (!is.null(self$`bid_options`)) {
+        CampaignCreateRequestObject[["bid_options"]] <-
+          self$`bid_options`$toSimpleType()
+      }
+      if (!is.null(self$`is_performance_plus`)) {
+        CampaignCreateRequestObject[["is_performance_plus"]] <-
+          self$`is_performance_plus`
       }
       if (!is.null(self$`objective_type`)) {
         CampaignCreateRequestObject[["objective_type"]] <-
@@ -234,42 +271,53 @@ CampaignCreateRequest <- R6::R6Class(
       if (!is.null(this_object$`ad_account_id`)) {
         self$`ad_account_id` <- this_object$`ad_account_id`
       }
+      if (!is.null(this_object$`daily_spend_cap`)) {
+        self$`daily_spend_cap` <- this_object$`daily_spend_cap`
+      }
+      if (!is.null(this_object$`end_time`)) {
+        self$`end_time` <- this_object$`end_time`
+      }
+      if (!is.null(this_object$`is_automated_campaign`)) {
+        self$`is_automated_campaign` <- this_object$`is_automated_campaign`
+      }
+      if (!is.null(this_object$`is_flexible_daily_budgets`)) {
+        self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
+      }
+      if (!is.null(this_object$`lifetime_spend_cap`)) {
+        self$`lifetime_spend_cap` <- this_object$`lifetime_spend_cap`
+      }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`order_line_id`)) {
+        self$`order_line_id` <- this_object$`order_line_id`
+      }
+      if (!is.null(this_object$`start_time`)) {
+        self$`start_time` <- this_object$`start_time`
       }
       if (!is.null(this_object$`status`)) {
         `status_object` <- EntityStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
       }
-      if (!is.null(this_object$`lifetime_spend_cap`)) {
-        self$`lifetime_spend_cap` <- this_object$`lifetime_spend_cap`
-      }
-      if (!is.null(this_object$`daily_spend_cap`)) {
-        self$`daily_spend_cap` <- this_object$`daily_spend_cap`
-      }
-      if (!is.null(this_object$`order_line_id`)) {
-        self$`order_line_id` <- this_object$`order_line_id`
-      }
       if (!is.null(this_object$`tracking_urls`)) {
         `tracking_urls_object` <- TrackingUrls$new()
         `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
         self$`tracking_urls` <- `tracking_urls_object`
       }
-      if (!is.null(this_object$`start_time`)) {
-        self$`start_time` <- this_object$`start_time`
-      }
-      if (!is.null(this_object$`end_time`)) {
-        self$`end_time` <- this_object$`end_time`
-      }
-      if (!is.null(this_object$`is_flexible_daily_budgets`)) {
-        self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
-      }
       if (!is.null(this_object$`default_ad_group_budget_in_micro_currency`)) {
         self$`default_ad_group_budget_in_micro_currency` <- this_object$`default_ad_group_budget_in_micro_currency`
       }
-      if (!is.null(this_object$`is_automated_campaign`)) {
-        self$`is_automated_campaign` <- this_object$`is_automated_campaign`
+      if (!is.null(this_object$`is_campaign_budget_optimization`)) {
+        self$`is_campaign_budget_optimization` <- this_object$`is_campaign_budget_optimization`
+      }
+      if (!is.null(this_object$`bid_options`)) {
+        `bid_options_object` <- CampaignBidOptionsCreate$new()
+        `bid_options_object`$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
+        self$`bid_options` <- `bid_options_object`
+      }
+      if (!is.null(this_object$`is_performance_plus`)) {
+        self$`is_performance_plus` <- this_object$`is_performance_plus`
       }
       if (!is.null(this_object$`objective_type`)) {
         `objective_type_object` <- ObjectiveType$new()
@@ -298,17 +346,20 @@ CampaignCreateRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
-      self$`name` <- this_object$`name`
-      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-      self$`lifetime_spend_cap` <- this_object$`lifetime_spend_cap`
       self$`daily_spend_cap` <- this_object$`daily_spend_cap`
-      self$`order_line_id` <- this_object$`order_line_id`
-      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
-      self$`start_time` <- this_object$`start_time`
       self$`end_time` <- this_object$`end_time`
-      self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
-      self$`default_ad_group_budget_in_micro_currency` <- this_object$`default_ad_group_budget_in_micro_currency`
       self$`is_automated_campaign` <- this_object$`is_automated_campaign`
+      self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
+      self$`lifetime_spend_cap` <- this_object$`lifetime_spend_cap`
+      self$`name` <- this_object$`name`
+      self$`order_line_id` <- this_object$`order_line_id`
+      self$`start_time` <- this_object$`start_time`
+      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
+      self$`default_ad_group_budget_in_micro_currency` <- this_object$`default_ad_group_budget_in_micro_currency`
+      self$`is_campaign_budget_optimization` <- this_object$`is_campaign_budget_optimization`
+      self$`bid_options` <- CampaignBidOptionsCreate$new()$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
+      self$`is_performance_plus` <- this_object$`is_performance_plus`
       self$`objective_type` <- ObjectiveType$new()$fromJSON(jsonlite::toJSON(this_object$`objective_type`, auto_unbox = TRUE, digits = NA))
       self
     },

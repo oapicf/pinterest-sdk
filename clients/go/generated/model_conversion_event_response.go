@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,11 @@ var _ MappedNullable = &ConversionEventResponse{}
 
 // ConversionEventResponse struct for ConversionEventResponse
 type ConversionEventResponse struct {
+	// Id of the ad account.
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 	ConversionEvent *ConversionTagType `json:"conversion_event,omitempty"`
 	// Id of the tag.
 	ConversionTagId *string `json:"conversion_tag_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Id of the ad account.
-	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Creation date in epoch format.
 	CreatedTime *int32 `json:"created_time,omitempty"`
 }
@@ -44,6 +44,38 @@ func NewConversionEventResponse() *ConversionEventResponse {
 func NewConversionEventResponseWithDefaults() *ConversionEventResponse {
 	this := ConversionEventResponse{}
 	return &this
+}
+
+// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
+func (o *ConversionEventResponse) GetAdAccountId() string {
+	if o == nil || IsNil(o.AdAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AdAccountId
+}
+
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventResponse) GetAdAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AdAccountId) {
+		return nil, false
+	}
+	return o.AdAccountId, true
+}
+
+// HasAdAccountId returns a boolean if a field has been set.
+func (o *ConversionEventResponse) HasAdAccountId() bool {
+	if o != nil && !IsNil(o.AdAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
+func (o *ConversionEventResponse) SetAdAccountId(v string) {
+	o.AdAccountId = &v
 }
 
 // GetConversionEvent returns the ConversionEvent field value if set, zero value otherwise.
@@ -110,38 +142,6 @@ func (o *ConversionEventResponse) SetConversionTagId(v string) {
 	o.ConversionTagId = &v
 }
 
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
-func (o *ConversionEventResponse) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
-		var ret string
-		return ret
-	}
-	return *o.AdAccountId
-}
-
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventResponse) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
-		return nil, false
-	}
-	return o.AdAccountId, true
-}
-
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *ConversionEventResponse) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
-func (o *ConversionEventResponse) SetAdAccountId(v string) {
-	o.AdAccountId = &v
-}
-
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
 func (o *ConversionEventResponse) GetCreatedTime() int32 {
 	if o == nil || IsNil(o.CreatedTime) {
@@ -184,14 +184,14 @@ func (o ConversionEventResponse) MarshalJSON() ([]byte, error) {
 
 func (o ConversionEventResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AdAccountId) {
+		toSerialize["ad_account_id"] = o.AdAccountId
+	}
 	if !IsNil(o.ConversionEvent) {
 		toSerialize["conversion_event"] = o.ConversionEvent
 	}
 	if !IsNil(o.ConversionTagId) {
 		toSerialize["conversion_tag_id"] = o.ConversionTagId
-	}
-	if !IsNil(o.AdAccountId) {
-		toSerialize["ad_account_id"] = o.AdAccountId
 	}
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime

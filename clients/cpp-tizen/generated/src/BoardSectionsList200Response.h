@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Board sections
-	 */
-	std::list<BoardSection> getItems();
-
-	/*! \brief Set Board sections
-	 */
-	void setItems(std::list <BoardSection> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get Board sections
+	 */
+	std::list<BoardSection> getItems();
+
+	/*! \brief Set Board sections
+	 */
+	void setItems(std::list <BoardSection> items);
 
 private:
-	std::list <BoardSection>items;
 	std::string bookmark;
+	std::list <BoardSection>items;
 	void __init();
 	void __cleanup();
 

@@ -22,27 +22,27 @@ import com.squareup.moshi.JsonClass
 /**
  * The result, and link out, based on the user’s choice.
  *
- * @param organicPinId 
  * @param androidDeepLink 
- * @param iosDeepLink 
  * @param destinationUrl 
+ * @param iosDeepLink 
+ * @param organicPinId 
  * @param resultId 
  */
 
 
 data class QuizPinResult (
 
-    @Json(name = "organic_pin_id")
-    val organicPinId: kotlin.String? = null,
-
     @Json(name = "android_deep_link")
     val androidDeepLink: kotlin.String? = null,
+
+    @Json(name = "destination_url")
+    val destinationUrl: kotlin.String? = null,
 
     @Json(name = "ios_deep_link")
     val iosDeepLink: kotlin.String? = null,
 
-    @Json(name = "destination_url")
-    val destinationUrl: kotlin.String? = null,
+    @Json(name = "organic_pin_id")
+    val organicPinId: kotlin.String? = null,
 
     @Json(name = "result_id")
     val resultId: java.math.BigDecimal? = null

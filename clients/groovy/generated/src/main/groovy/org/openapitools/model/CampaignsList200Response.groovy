@@ -11,7 +11,7 @@ import org.openapitools.model.CampaignResponse;
 @Canonical
 class CampaignsList200Response {
     
-    List<CampaignResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CampaignResponse> items = new ArrayList<>()
 }

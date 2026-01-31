@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Number** |  | 
-**message** | **String** |  | 
 **details** | **Object** |  | 
+**message** | **String** |  | 
 
 

@@ -8,7 +8,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 | ------------- | ------------- | ------------- |
 | [**conversionTagsCreate()**](ConversionTagsApi.md#conversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 | [**conversionTagsGet()**](ConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-| [**conversionTagsList()**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+| [**conversionTagsList()**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 | [**ocpmEligibleConversionTagsGet()**](ConversionTagsApi.md#ocpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 | [**pageVisitConversionTagsGet()**](ConversionTagsApi.md#pageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
 
@@ -16,12 +16,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `conversionTagsCreate()`
 
 ```php
-conversionTagsCreate($ad_account_id, $conversion_tag_create): \OpenAPI\Client\Model\ConversionTagResponse
+conversionTagsCreate($ad_account_id, $conversion_tag_create): \OpenAPI\Client\Model\ConversionTag
 ```
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 
@@ -41,7 +41,7 @@ $apiInstance = new OpenAPI\Client\Api\ConversionTagsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$conversion_tag_create = new \OpenAPI\Client\Model\ConversionTagCreate(); // \OpenAPI\Client\Model\ConversionTagCreate | Conversion Tag to create
+$conversion_tag_create = new \OpenAPI\Client\Model\ConversionTagCreate(); // \OpenAPI\Client\Model\ConversionTagCreate
 
 try {
     $result = $apiInstance->conversionTagsCreate($ad_account_id, $conversion_tag_create);
@@ -56,11 +56,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **conversion_tag_create** | [**\OpenAPI\Client\Model\ConversionTagCreate**](../Model/ConversionTagCreate.md)| Conversion Tag to create | |
+| **conversion_tag_create** | [**\OpenAPI\Client\Model\ConversionTagCreate**](../Model/ConversionTagCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ConversionTagResponse**](../Model/ConversionTagResponse.md)
+[**\OpenAPI\Client\Model\ConversionTag**](../Model/ConversionTag.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `conversionTagsGet()`
 
 ```php
-conversionTagsGet($ad_account_id, $conversion_tag_id): \OpenAPI\Client\Model\ConversionTagResponse
+conversionTagsGet($ad_account_id, $conversion_tag_id): \OpenAPI\Client\Model\ConversionTag
 ```
 
 Get conversion tag
@@ -93,6 +93,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -122,11 +125,11 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ConversionTagResponse**](../Model/ConversionTagResponse.md)
+[**\OpenAPI\Client\Model\ConversionTag**](../Model/ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -140,10 +143,10 @@ try {
 ## `conversionTagsList()`
 
 ```php
-conversionTagsList($ad_account_id, $filter_deleted): \OpenAPI\Client\Model\ConversionTagListResponse
+conversionTagsList($ad_account_id, $filter_deleted): \OpenAPI\Client\Model\ConversionTagsList200Response
 ```
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -157,6 +160,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\ConversionTagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -165,7 +171,7 @@ $apiInstance = new OpenAPI\Client\Api\ConversionTagsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$filter_deleted = true; // bool | Filter out deleted tags.
+$filter_deleted = false; // bool | Filter by deleted status
 
 try {
     $result = $apiInstance->conversionTagsList($ad_account_id, $filter_deleted);
@@ -180,15 +186,15 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **filter_deleted** | **bool**| Filter out deleted tags. | [optional] [default to false] |
+| **filter_deleted** | **bool**| Filter by deleted status | [optional] [default to false] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ConversionTagListResponse**](../Model/ConversionTagListResponse.md)
+[**\OpenAPI\Client\Model\ConversionTagsList200Response**](../Model/ConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -217,6 +223,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -248,7 +257,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -277,6 +286,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -314,7 +326,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

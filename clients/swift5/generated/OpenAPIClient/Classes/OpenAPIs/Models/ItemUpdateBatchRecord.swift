@@ -13,21 +13,21 @@ import AnyCodable
 /** Object describing an item batch record to update items */
 public struct ItemUpdateBatchRecord: Codable, JSONEncodable, Hashable {
 
+    public var attributes: UpdatableItemAttributes?
     /** The catalog item id in the merchant namespace */
     public var itemId: String?
-    public var attributes: UpdatableItemAttributes?
     /** The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     public var updateMask: [UpdateMaskFieldType]?
 
-    public init(itemId: String? = nil, attributes: UpdatableItemAttributes? = nil, updateMask: [UpdateMaskFieldType]? = nil) {
-        self.itemId = itemId
+    public init(attributes: UpdatableItemAttributes? = nil, itemId: String? = nil, updateMask: [UpdateMaskFieldType]? = nil) {
         self.attributes = attributes
+        self.itemId = itemId
         self.updateMask = updateMask
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
         case attributes
+        case itemId = "item_id"
         case updateMask = "update_mask"
     }
 
@@ -35,8 +35,8 @@ public struct ItemUpdateBatchRecord: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(updateMask, forKey: .updateMask)
     }
 }

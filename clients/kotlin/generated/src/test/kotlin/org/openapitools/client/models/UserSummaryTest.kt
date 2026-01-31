@@ -25,16 +25,16 @@ class UserSummaryTest : ShouldSpec() {
         // uncomment below to create an instance of UserSummary
         //val modelInstance = UserSummary()
 
-        // to test the property `username` - Username
-        should("test username") {
-            // uncomment below to test the property
-            //modelInstance.username shouldBe ("TODO")
-        }
-
         // to test the property `type` - Always \"user\"
         should("test type") {
             // uncomment below to test the property
             //modelInstance.type shouldBe ("TODO")
+        }
+
+        // to test the property `username` - Username
+        should("test username") {
+            // uncomment below to test the property
+            //modelInstance.username shouldBe ("TODO")
         }
 
     }

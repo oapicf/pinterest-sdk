@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import CatalogsProductGroupMultipleStringCriteria._
 
 case class CatalogsProductGroupMultipleStringCriteria (
-  values: List[String],
-negated: Option[Boolean])
+  negated: Option[Boolean],
+values: List[String])
 
 object CatalogsProductGroupMultipleStringCriteria {
   import DateTimeCodecs._

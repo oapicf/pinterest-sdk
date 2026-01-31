@@ -9,49 +9,44 @@ import java.time.ZonedDateTime
 import org.openapitools.models.BoardOwner
 import org.openapitools.models.CreativeType
 import org.openapitools.models.PinMedia
-import org.openapitools.models.PinMediaSource
 
 /**
- * Pin
- * @param id 
- * @param createdUnderscoreat 
- * @param link 
- * @param title 
- * @param description 
- * @param dominantUnderscorecolor Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
+ * Pin model containing properties related to a Pinterest Pin.
  * @param altUnderscoretext 
- * @param creativeUnderscoretype 
  * @param boardUnderscoreid The board to which this Pin belongs.
- * @param boardUnderscoresectionUnderscoreid The board section to which this Pin belongs.
  * @param boardUnderscoreowner 
- * @param isUnderscoreowner Whether the \"operation user_account\" is the Pin owner.
- * @param media 
- * @param mediaUnderscoresource 
- * @param parentUnderscorepinUnderscoreid The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
- * @param isUnderscorestandard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
+ * @param boardUnderscoresectionUnderscoreid The board section to which this Pin belongs.
+ * @param createdUnderscoreat 
+ * @param creativeUnderscoretype 
+ * @param description 
+ * @param dominantUnderscorecolor Dominant pin color. Hex number, e.g. `#6E7874`.
  * @param hasUnderscorebeenUnderscorepromoted Whether the Pin has been promoted or not.
- * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+ * @param id 
+ * @param isUnderscoreowner Whether the \"operation user_account\" is the Pin owner.
+ * @param isUnderscorestandard Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+ * @param link 
+ * @param media 
+ * @param parentUnderscorepinUnderscoreid The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
  * @param pinUnderscoremetrics Pin metrics with associated time intervals if any.
+ * @param title 
  */
-case class Pin(id: Option[String],
+case class Pin(altUnderscoretext: Option[String],
+                boardUnderscoreid: Option[String],
+                boardUnderscoreowner: Option[BoardOwner],
+                boardUnderscoresectionUnderscoreid: Option[String],
                 createdUnderscoreat: Option[ZonedDateTime],
-                link: Option[String],
-                title: Option[String],
+                creativeUnderscoretype: Option[CreativeType],
                 description: Option[String],
                 dominantUnderscorecolor: Option[String],
-                altUnderscoretext: Option[String],
-                creativeUnderscoretype: Option[CreativeType],
-                boardUnderscoreid: Option[String],
-                boardUnderscoresectionUnderscoreid: Option[String],
-                boardUnderscoreowner: Option[BoardOwner],
-                isUnderscoreowner: Option[Boolean],
-                media: Option[PinMedia],
-                mediaUnderscoresource: Option[PinMediaSource],
-                parentUnderscorepinUnderscoreid: Option[String],
-                isUnderscorestandard: Option[Boolean],
                 hasUnderscorebeenUnderscorepromoted: Option[Boolean],
-                note: Option[String],
-                pinUnderscoremetrics: Option[Object]
+                id: String,
+                isUnderscoreowner: Option[Boolean],
+                isUnderscorestandard: Option[Boolean],
+                link: Option[String],
+                media: Option[PinMedia],
+                parentUnderscorepinUnderscoreid: Option[String],
+                pinUnderscoremetrics: Option[Object],
+                title: Option[String]
                 )
 
 object Pin {

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"method": @"method", @"host": @"host", @"path": @"path", @"requestHeaders": @"request_headers", @"responseHeaders": @"response_headers", @"responseStatusCode": @"response_status_code" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"host": @"host", @"method": @"method", @"path": @"path", @"requestHeaders": @"request_headers", @"responseHeaders": @"response_headers", @"responseStatusCode": @"response_status_code" }];
 }
 
 /**

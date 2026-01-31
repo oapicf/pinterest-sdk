@@ -22,11 +22,11 @@ public class CatalogsItemValidationIssuesTest {
     }
 
     /**
-     * Test the property 'itemNumber'
+     * Test the property 'errors'
      */
     @Test
-    public void itemNumberTest() {
-        // TODO: test itemNumber
+    public void errorsTest() {
+        // TODO: test errors
     }
 
     /**
@@ -38,11 +38,11 @@ public class CatalogsItemValidationIssuesTest {
     }
 
     /**
-     * Test the property 'errors'
+     * Test the property 'itemNumber'
      */
     @Test
-    public void errorsTest() {
-        // TODO: test errors
+    public void itemNumberTest() {
+        // TODO: test itemNumber
     }
 
     /**

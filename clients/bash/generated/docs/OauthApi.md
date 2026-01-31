@@ -4,23 +4,57 @@ All URIs are relative to */v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**oauthConversionToken**](OauthApi.md#oauthConversionToken) | **POST** /oauth/conversion_token | Generate OAuth access token for conversion API
 [**oauthToken**](OauthApi.md#oauthToken) | **POST** /oauth/token | Generate OAuth access token
+[**tokenRevoke**](OauthApi.md#tokenRevoke) | **POST** /oauth/token/revoke | Revoke a token
 
+
+
+## oauthConversionToken
+
+Generate OAuth access token for conversion API
+
+Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+
+### Example
+
+```bash
+ oauthConversionToken
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not Applicable
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## oauthToken
 
 Generate OAuth access token
 
-Generate an OAuth access token by using an authorization code or a refresh token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.
 
-IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).
+Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.
 
-See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.
+<strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).
 
-<strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.
 
-<strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
+Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
 
 ### Example
 
@@ -38,6 +72,42 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+- **Content-Type**: application/x-www-form-urlencoded
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## tokenRevoke
+
+Revoke a token
+
+Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+
+### Example
+
+```bash
+ tokenRevoke
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **string** | The token to revoke. | [default to null]
+ **tokenTypeHint** | **string** | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [default to null]
+
+### Return type
+
+(empty response body)
 
 ### Authorization
 

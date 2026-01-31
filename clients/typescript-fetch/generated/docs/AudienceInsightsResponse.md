@@ -8,11 +8,11 @@ Audience interests and demographics.
 Name | Type
 ------------ | -------------
 `categories` | [Array&lt;AudienceCategory&gt;](AudienceCategory.md)
-`demographics` | [AudienceDemographics](AudienceDemographics.md)
-`type` | [AudienceInsightType](AudienceInsightType.md)
 `date` | string
+`demographics` | [AudienceDemographics](AudienceDemographics.md)
 `size` | number
 `sizeIsUpperBound` | boolean
+`type` | [AudienceInsightType](AudienceInsightType.md)
 
 ## Example
 
@@ -22,11 +22,11 @@ import type { AudienceInsightsResponse } from ''
 // TODO: Update the object below with actual values
 const example = {
   "categories": null,
-  "demographics": null,
-  "type": null,
   "date": 2022-10-09,
+  "demographics": null,
   "size": 10000,
   "sizeIsUpperBound": true,
+  "type": null,
 } satisfies AudienceInsightsResponse
 
 console.log(example)

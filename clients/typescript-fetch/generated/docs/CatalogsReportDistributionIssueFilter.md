@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`reportType` | string
 `catalogId` | string
+`reportType` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsReportDistributionIssueFilter } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportType": null,
   "catalogId": null,
+  "reportType": null,
 } satisfies CatalogsReportDistributionIssueFilter
 
 console.log(example)

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,18 +19,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesBase64ItemsInner;
+import org.openapitools.model.PinMediaSourceImagesBase64Item;
 
 
 
 /**
- * Multiple Base64-encoded images media source
+ * Multiple Base64-based images media source
  */
 
-@ApiModel(description = "Multiple Base64-encoded images media source")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Multiple Base64-based images media source")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesBase64   {
   
+  private Integer index;
+  private List<PinMediaSourceImagesBase64Item> items = new ArrayList<>();
 
 
   public enum SourceTypeEnum {
@@ -50,43 +52,6 @@ public class PinMediaSourceImagesBase64   {
   }
 
   private SourceTypeEnum sourceType;
-  private List<PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
-  private Integer index;
-
-  /**
-   */
-  public PinMediaSourceImagesBase64 sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  /**
-   * Array with image objects.
-   */
-  public PinMediaSourceImagesBase64 items(List<PinMediaSourceImagesBase64ItemsInner> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  @JsonProperty("items")
-  public List<PinMediaSourceImagesBase64ItemsInner> getItems() {
-    return items;
-  }
-  public void setItems(List<PinMediaSourceImagesBase64ItemsInner> items) {
-    this.items = items;
-  }
 
   /**
    * minimum: 0
@@ -106,6 +71,42 @@ public class PinMediaSourceImagesBase64   {
     this.index = index;
   }
 
+  /**
+   * Array with image objects.
+   */
+  public PinMediaSourceImagesBase64 items(List<PinMediaSourceImagesBase64Item> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+  @JsonProperty("items")
+  public List<PinMediaSourceImagesBase64Item> getItems() {
+    return items;
+  }
+  public void setItems(List<PinMediaSourceImagesBase64Item> items) {
+    this.items = items;
+  }
+
+  /**
+   * The source type of the media.
+   */
+  public PinMediaSourceImagesBase64 sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The source type of the media.")
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +117,14 @@ public class PinMediaSourceImagesBase64   {
       return false;
     }
     PinMediaSourceImagesBase64 pinMediaSourceImagesBase64 = (PinMediaSourceImagesBase64) o;
-    return Objects.equals(sourceType, pinMediaSourceImagesBase64.sourceType) &&
+    return Objects.equals(index, pinMediaSourceImagesBase64.index) &&
         Objects.equals(items, pinMediaSourceImagesBase64.items) &&
-        Objects.equals(index, pinMediaSourceImagesBase64.index);
+        Objects.equals(sourceType, pinMediaSourceImagesBase64.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
@@ -131,9 +132,9 @@ public class PinMediaSourceImagesBase64   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesBase64 {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

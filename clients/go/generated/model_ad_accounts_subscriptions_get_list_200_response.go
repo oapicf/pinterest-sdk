@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &AdAccountsSubscriptionsGetList200Response{}
 
 // AdAccountsSubscriptionsGetList200Response struct for AdAccountsSubscriptionsGetList200Response
 type AdAccountsSubscriptionsGetList200Response struct {
-	Items []AdAccountGetSubscriptionResponse `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []LeadSubscription `json:"items"`
 }
 
 type _AdAccountsSubscriptionsGetList200Response AdAccountsSubscriptionsGetList200Response
@@ -32,7 +32,7 @@ type _AdAccountsSubscriptionsGetList200Response AdAccountsSubscriptionsGetList20
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdAccountsSubscriptionsGetList200Response(items []AdAccountGetSubscriptionResponse) *AdAccountsSubscriptionsGetList200Response {
+func NewAdAccountsSubscriptionsGetList200Response(items []LeadSubscription) *AdAccountsSubscriptionsGetList200Response {
 	this := AdAccountsSubscriptionsGetList200Response{}
 	this.Items = items
 	return &this
@@ -44,30 +44,6 @@ func NewAdAccountsSubscriptionsGetList200Response(items []AdAccountGetSubscripti
 func NewAdAccountsSubscriptionsGetList200ResponseWithDefaults() *AdAccountsSubscriptionsGetList200Response {
 	this := AdAccountsSubscriptionsGetList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *AdAccountsSubscriptionsGetList200Response) GetItems() []AdAccountGetSubscriptionResponse {
-	if o == nil {
-		var ret []AdAccountGetSubscriptionResponse
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *AdAccountsSubscriptionsGetList200Response) GetItemsOk() ([]AdAccountGetSubscriptionResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *AdAccountsSubscriptionsGetList200Response) SetItems(v []AdAccountGetSubscriptionResponse) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *AdAccountsSubscriptionsGetList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *AdAccountsSubscriptionsGetList200Response) GetItems() []LeadSubscription {
+	if o == nil {
+		var ret []LeadSubscription
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *AdAccountsSubscriptionsGetList200Response) GetItemsOk() ([]LeadSubscription, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *AdAccountsSubscriptionsGetList200Response) SetItems(v []LeadSubscription) {
+	o.Items = v
+}
+
 func (o AdAccountsSubscriptionsGetList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o AdAccountsSubscriptionsGetList200Response) MarshalJSON() ([]byte, error)
 
 func (o AdAccountsSubscriptionsGetList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

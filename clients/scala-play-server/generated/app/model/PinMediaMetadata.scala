@@ -4,51 +4,26 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for PinMediaMetadata.
-  * @param videoUrl Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-  * @param duration Duration (in milliseconds)
-  * @param height Height (in pixels)
-  * @param width Width (in pixels)
-  * @param additionalProperties Any additional properties this model may have.
+  * @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
+  * @param height Height (in pixels). Field maybe null after creation due to video processing time.
+  * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps.
+  * @param width Width (in pixels). Field maybe null after creation due to video processing time.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinMediaMetadata(
-  itemType: Option[String],
-  title: Option[String],
   description: Option[String],
+  images: Option[ImageSize],
+  itemType: Option[String],
   link: Option[String],
-  images: Option[ImageMetadataImages],
+  title: Option[String],
   coverImageUrl: Option[String],
-  videoUrl: Option[String],
   duration: Option[BigDecimal],
   height: Option[Int],
+  videoUrl: Option[String],
   width: Option[Int]
-  additionalProperties: 
 )
 
 object PinMediaMetadata {
-  implicit lazy val pinMediaMetadataJsonFormat: Format[PinMediaMetadata] = {
-    val realJsonFormat = Json.format[PinMediaMetadata]
-    val declaredPropNames = Set("itemType", "title", "description", "link", "images", "coverImageUrl", "videoUrl", "duration", "height", "width")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { pinMediaMetadata =>
-        val jsObj = realJsonFormat.writes(pinMediaMetadata)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
-  }
+  implicit lazy val pinMediaMetadataJsonFormat: Format[PinMediaMetadata] = Json.format[PinMediaMetadata]
 }
 

@@ -18,9 +18,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * A successful OAuth client token response for the client token flow.
  * @param accessToken 
- * @param tokenType 
  * @param expiresIn 
  * @param scope 
+ * @param tokenType 
  * @param responseType 
  */
 data class OauthAccessTokenResponseClientCredentials(
@@ -29,13 +29,13 @@ data class OauthAccessTokenResponseClientCredentials(
     @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
-
-    @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("expires_in", required = true) val expiresIn: kotlin.Int,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("scope", required = true) val scope: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseClientCredentials.ResponseType? = null

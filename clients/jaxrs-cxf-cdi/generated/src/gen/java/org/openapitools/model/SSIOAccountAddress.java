@@ -15,51 +15,13 @@ import java.util.Objects;
 
 public class SSIOAccountAddress   {
   
-  private String display;
-
-  private String purpose;
-
   private String addressId;
+
+  private String display;
 
   private String orderLegalEntity;
 
-  /**
-   * Address display
-   **/
-  public SSIOAccountAddress display(String display) {
-    this.display = display;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
-  @JsonProperty("display")
-  public String getDisplay() {
-    return display;
-  }
-  public void setDisplay(String display) {
-    this.display = display;
-  }
-
-
-  /**
-   * Purpose for which the address is used, usually Billing or Businness
-   **/
-  public SSIOAccountAddress purpose(String purpose) {
-    this.purpose = purpose;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
-  @JsonProperty("purpose")
-  public String getPurpose() {
-    return purpose;
-  }
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
-
+  private String purpose;
 
   /**
    * Salesforce id for address
@@ -77,6 +39,25 @@ public class SSIOAccountAddress   {
   }
   public void setAddressId(String addressId) {
     this.addressId = addressId;
+  }
+
+
+  /**
+   * Address display
+   **/
+  public SSIOAccountAddress display(String display) {
+    this.display = display;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
+  @JsonProperty("display")
+  public String getDisplay() {
+    return display;
+  }
+  public void setDisplay(String display) {
+    this.display = display;
   }
 
 
@@ -99,6 +80,25 @@ public class SSIOAccountAddress   {
   }
 
 
+  /**
+   * Purpose for which the address is used, usually Billing or Businness
+   **/
+  public SSIOAccountAddress purpose(String purpose) {
+    this.purpose = purpose;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
+  @JsonProperty("purpose")
+  public String getPurpose() {
+    return purpose;
+  }
+  public void setPurpose(String purpose) {
+    this.purpose = purpose;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,15 +109,15 @@ public class SSIOAccountAddress   {
       return false;
     }
     SSIOAccountAddress ssIOAccountAddress = (SSIOAccountAddress) o;
-    return Objects.equals(this.display, ssIOAccountAddress.display) &&
-        Objects.equals(this.purpose, ssIOAccountAddress.purpose) &&
-        Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
-        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity);
+    return Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
+        Objects.equals(this.display, ssIOAccountAddress.display) &&
+        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity) &&
+        Objects.equals(this.purpose, ssIOAccountAddress.purpose);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, purpose, addressId, orderLegalEntity);
+    return Objects.hash(addressId, display, orderLegalEntity, purpose);
   }
 
   @Override
@@ -125,10 +125,10 @@ public class SSIOAccountAddress   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountAddress {\n");
     
-    sb.append("    display: ").append(toIndentedString(display)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("    orderLegalEntity: ").append(toIndentedString(orderLegalEntity)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("}");
     return sb.toString();
   }

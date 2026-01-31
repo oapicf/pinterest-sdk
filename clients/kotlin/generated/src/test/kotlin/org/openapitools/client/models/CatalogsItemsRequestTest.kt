@@ -33,16 +33,16 @@ class CatalogsItemsRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language` - We recommend using the CatalogsLocale values.
-        should("test language") {
-            // uncomment below to test the property
-            //modelInstance.language shouldBe ("TODO")
-        }
-
         // to test the property `filters`
         should("test filters") {
             // uncomment below to test the property
             //modelInstance.filters shouldBe ("TODO")
+        }
+
+        // to test the property `language` - We recommend using the CatalogsLocale values.
+        should("test language") {
+            // uncomment below to test the property
+            //modelInstance.language shouldBe ("TODO")
         }
 
     }

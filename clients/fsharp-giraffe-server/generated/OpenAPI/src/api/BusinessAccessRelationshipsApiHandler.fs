@@ -7,6 +7,9 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open BusinessAccessRelationshipsApiHandlerParams
 open BusinessAccessRelationshipsApiServiceInterface
 open BusinessAccessRelationshipsApiServiceImplementation
+open OpenAPI.Model.BrandAccountsCreate200Response
+open OpenAPI.Model.BrandAccountsCreateRequest
+open OpenAPI.Model.BrandAccountsUpdateRequest
 open OpenAPI.Model.DeletePartnersRequest
 open OpenAPI.Model.DeletePartnersResponse
 open OpenAPI.Model.DeletedMembersResponse
@@ -17,6 +20,7 @@ open OpenAPI.Model.GetBusinessPartners200Response
 open OpenAPI.Model.MemberBusinessRole
 open OpenAPI.Model.MembersToDeleteBody
 open OpenAPI.Model.PartnerType
+open OpenAPI.Model.SystemUserUpdateRequest
 open OpenAPI.Model.UpdateMemberBusinessRoleBody
 open OpenAPI.Model.UpdateMemberResultsResponseArray
 
@@ -25,6 +29,62 @@ module BusinessAccessRelationshipsApiHandler =
     /// <summary>
     /// 
     /// </summary>
+
+    //#region BrandAccountsCreate
+    /// <summary>
+    /// Create a Brand Account
+    /// </summary>
+
+    let BrandAccountsCreate (pathParams:BrandAccountsCreatePathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let! bodyParams =
+            ctx.BindJsonAsync<BrandAccountsCreateBodyParams>()
+          let serviceArgs = {    pathParams=pathParams; bodyParams=bodyParams } : BrandAccountsCreateArgs
+          let result = BusinessAccessRelationshipsApiService.BrandAccountsCreate ctx serviceArgs
+          return! (match result with
+                      | BrandAccountsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | BrandAccountsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BrandAccountsCreateDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region BrandAccountsUpdate
+    /// <summary>
+    /// Update a Brand Account
+    /// </summary>
+
+    let BrandAccountsUpdate (pathParams:BrandAccountsUpdatePathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let! bodyParams =
+            ctx.BindJsonAsync<BrandAccountsUpdateBodyParams>()
+          let serviceArgs = {    pathParams=pathParams; bodyParams=bodyParams } : BrandAccountsUpdateArgs
+          let result = BusinessAccessRelationshipsApiService.BrandAccountsUpdate ctx serviceArgs
+          return! (match result with
+                      | BrandAccountsUpdateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | BrandAccountsUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BrandAccountsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BrandAccountsUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BrandAccountsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BrandAccountsUpdateStatusCode409 resolved ->
+                            setStatusCode 409 >=> json resolved.content
+                      | BrandAccountsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
+                      | BrandAccountsUpdateDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
 
     //#region DeleteBusinessMembership
     /// <summary>
@@ -125,6 +185,29 @@ module BusinessAccessRelationshipsApiHandler =
                       | GetBusinessPartnersStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
                       | GetBusinessPartnersDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region SystemUserUpdate
+    /// <summary>
+    /// Update a system user information.
+    /// </summary>
+
+    let SystemUserUpdate (pathParams:SystemUserUpdatePathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let! bodyParams =
+            ctx.BindJsonAsync<SystemUserUpdateBodyParams>()
+          let serviceArgs = {    pathParams=pathParams; bodyParams=bodyParams } : SystemUserUpdateArgs
+          let result = BusinessAccessRelationshipsApiService.SystemUserUpdate ctx serviceArgs
+          return! (match result with
+                      | SystemUserUpdateStatusCode200 resolved ->
+                            setStatusCode 200 >=> text resolved.content
+                      | SystemUserUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | SystemUserUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }

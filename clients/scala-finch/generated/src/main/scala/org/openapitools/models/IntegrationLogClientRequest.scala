@@ -8,15 +8,15 @@ import org.openapitools._
 
 /**
  * HTTP request details included in the log sent by the client.
- * @param method 
  * @param host HTTP request host from host header.
+ * @param method 
  * @param path HTTP request path.
  * @param requestUnderscoreheaders HTTP request headers as key-value pairs.
  * @param responseUnderscoreheaders HTTP response headers as key-value pairs.
  * @param responseUnderscorestatusUnderscorecode 
  */
-case class IntegrationLogClientRequest(method: String,
-                host: String,
+case class IntegrationLogClientRequest(host: String,
+                method: String,
                 path: String,
                 requestUnderscoreheaders: Option[Map[String, String]],
                 responseUnderscoreheaders: Option[Map[String, String]],

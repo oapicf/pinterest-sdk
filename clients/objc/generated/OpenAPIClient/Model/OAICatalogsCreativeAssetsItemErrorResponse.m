@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"creativeAssetsId", @"errors"];
+  NSArray *optionalProperties = @[@"creativeAssetsId", ];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -16,6 +16,9 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import org.openapitools.server.api.model.BrandAccountsCreate200Response
+import org.openapitools.server.api.model.BrandAccountsCreateRequest
+import org.openapitools.server.api.model.BrandAccountsUpdateRequest
 import org.openapitools.server.api.model.DeletePartnersRequest
 import org.openapitools.server.api.model.DeletePartnersResponse
 import org.openapitools.server.api.model.DeletedMembersResponse
@@ -26,6 +29,7 @@ import org.openapitools.server.api.model.GetBusinessPartners200Response
 import org.openapitools.server.api.model.MemberBusinessRole
 import org.openapitools.server.api.model.MembersToDeleteBody
 import org.openapitools.server.api.model.PartnerType
+import org.openapitools.server.api.model.SystemUserUpdateRequest
 import org.openapitools.server.api.model.UpdateMemberBusinessRoleBody
 import org.openapitools.server.api.model.UpdateMemberResultsResponseArray
 
@@ -74,6 +78,52 @@ class BusinessAccessRelationshipsApiVertxProxyHandler(private val vertx: Vertx, 
             val contextSerialized = json.getJsonObject("context") ?: throw IllegalStateException("Received action $action without OperationRequest \"context\"")
             val context = OperationRequest(contextSerialized)
             when (action) {
+        
+                "brandAccountsCreate" -> {
+                    val params = context.params
+                    val businessHierarchyId = ApiHandlerUtils.searchStringInJson(params,"business_hierarchy_id")
+                    if(businessHierarchyId == null){
+                        throw IllegalArgumentException("businessHierarchyId is required")
+                    }
+                    val brandAccountsCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (brandAccountsCreateRequestParam == null) {
+                        throw IllegalArgumentException("brandAccountsCreateRequest is required")
+                    }
+                    val brandAccountsCreateRequest = Gson().fromJson(brandAccountsCreateRequestParam.encode(), BrandAccountsCreateRequest::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.brandAccountsCreate(businessHierarchyId,brandAccountsCreateRequest,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "brandAccountsUpdate" -> {
+                    val params = context.params
+                    val businessHierarchyId = ApiHandlerUtils.searchStringInJson(params,"business_hierarchy_id")
+                    if(businessHierarchyId == null){
+                        throw IllegalArgumentException("businessHierarchyId is required")
+                    }
+                    val brandAccountId = ApiHandlerUtils.searchStringInJson(params,"brand_account_id")
+                    if(brandAccountId == null){
+                        throw IllegalArgumentException("brandAccountId is required")
+                    }
+                    val brandAccountsUpdateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (brandAccountsUpdateRequestParam == null) {
+                        throw IllegalArgumentException("brandAccountsUpdateRequest is required")
+                    }
+                    val brandAccountsUpdateRequest = Gson().fromJson(brandAccountsUpdateRequestParam.encode(), BrandAccountsUpdateRequest::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.brandAccountsUpdate(businessHierarchyId,brandAccountId,brandAccountsUpdateRequest,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
         
                 "deleteBusinessMembership" -> {
                     val params = context.params
@@ -137,6 +187,7 @@ class BusinessAccessRelationshipsApiVertxProxyHandler(private val vertx: Vertx, 
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
+                    val fetchSystemUsers = ApiHandlerUtils.searchStringInJson(params,"fetch_system_users")?.toBoolean()
                     val assetsSummary = ApiHandlerUtils.searchStringInJson(params,"assets_summary")?.toBoolean()
                     val businessRolesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"business_roles")
                     val businessRoles:kotlin.Array<MemberBusinessRole>? = if(businessRolesParam == null) null
@@ -147,7 +198,7 @@ class BusinessAccessRelationshipsApiVertxProxyHandler(private val vertx: Vertx, 
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.getBusinessMembers(businessId,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize,context)
+                        val result = service.getBusinessMembers(businessId,fetchSystemUsers,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -171,6 +222,31 @@ class BusinessAccessRelationshipsApiVertxProxyHandler(private val vertx: Vertx, 
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.getBusinessPartners(businessId,assetsSummary,partnerType,partnerIds,startIndex,pageSize,bookmark,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "systemUserUpdate" -> {
+                    val params = context.params
+                    val businessId = ApiHandlerUtils.searchStringInJson(params,"business_id")
+                    if(businessId == null){
+                        throw IllegalArgumentException("businessId is required")
+                    }
+                    val systemUserId = ApiHandlerUtils.searchStringInJson(params,"system_user_id")
+                    if(systemUserId == null){
+                        throw IllegalArgumentException("systemUserId is required")
+                    }
+                    val systemUserUpdateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (systemUserUpdateRequestParam == null) {
+                        throw IllegalArgumentException("systemUserUpdateRequest is required")
+                    }
+                    val systemUserUpdateRequest = Gson().fromJson(systemUserUpdateRequestParam.encode(), SystemUserUpdateRequest::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.systemUserUpdate(businessId,systemUserId,systemUserUpdateRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

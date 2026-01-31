@@ -7,22 +7,22 @@
 
 (def ssio-edit-insertion-order-request-data
   {
-   (ds/opt :start_date) string?
-   (ds/opt :end_date) string?
-   (ds/opt :po_number) string?
-   (ds/opt :budget_amount) float?
+   (ds/opt :agency_link) string?
+   (ds/opt :billing_contact_email) string?
    (ds/opt :billing_contact_firstname) string?
    (ds/opt :billing_contact_lastname) string?
-   (ds/opt :billing_contact_email) string?
+   (ds/opt :budget_amount) float?
+   (ds/opt :end_date) string?
+   (ds/opt :media_contact_email) string?
    (ds/opt :media_contact_firstname) string?
    (ds/opt :media_contact_lastname) string?
-   (ds/opt :media_contact_email) string?
-   (ds/opt :agency_link) string?
+   (ds/opt :po_number) string?
+   (ds/opt :start_date) string?
    (ds/opt :user_email) string?
+   (ds/opt :ads_manager_order_line_id) string?
    (ds/opt :oracle_line_id) string?
    (ds/opt :salesforce_order_id) string?
    (ds/opt :salesforce_order_line_id) string?
-   (ds/opt :ads_manager_order_line_id) string?
    })
 
 (def ssio-edit-insertion-order-request-spec

@@ -22,21 +22,23 @@ pin_media_source_video_id_t* instantiate_pin_media_source_video_id(int include_o
   pin_media_source_video_id_t* pin_media_source_video_id = NULL;
   if (include_optional) {
     pin_media_source_video_id = pin_media_source_video_id_create(
-      pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_video_id,
+      image/jpeg,
       "0",
-      pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_image/jpeg,
+      0,
       "0",
+      1,
       "a",
-      1
+      pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_video_id
     );
   } else {
     pin_media_source_video_id = pin_media_source_video_id_create(
-      pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_video_id,
+      image/jpeg,
       "0",
-      pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_image/jpeg,
+      0,
       "0",
+      1,
       "a",
-      1
+      pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_video_id
     );
   }
 

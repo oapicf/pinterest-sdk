@@ -6,27 +6,27 @@
 
 
 static item_create_batch_record_t *item_create_batch_record_create_internal(
-    char *item_id,
-    item_attributes_request_t *attributes
+    item_attributes_request_t *attributes,
+    char *item_id
     ) {
     item_create_batch_record_t *item_create_batch_record_local_var = malloc(sizeof(item_create_batch_record_t));
     if (!item_create_batch_record_local_var) {
         return NULL;
     }
-    item_create_batch_record_local_var->item_id = item_id;
     item_create_batch_record_local_var->attributes = attributes;
+    item_create_batch_record_local_var->item_id = item_id;
 
     item_create_batch_record_local_var->_library_owned = 1;
     return item_create_batch_record_local_var;
 }
 
 __attribute__((deprecated)) item_create_batch_record_t *item_create_batch_record_create(
-    char *item_id,
-    item_attributes_request_t *attributes
+    item_attributes_request_t *attributes,
+    char *item_id
     ) {
     return item_create_batch_record_create_internal (
-        item_id,
-        attributes
+        attributes,
+        item_id
         );
 }
 
@@ -39,27 +39,19 @@ void item_create_batch_record_free(item_create_batch_record_t *item_create_batch
         return ;
     }
     listEntry_t *listEntry;
-    if (item_create_batch_record->item_id) {
-        free(item_create_batch_record->item_id);
-        item_create_batch_record->item_id = NULL;
-    }
     if (item_create_batch_record->attributes) {
         item_attributes_request_free(item_create_batch_record->attributes);
         item_create_batch_record->attributes = NULL;
+    }
+    if (item_create_batch_record->item_id) {
+        free(item_create_batch_record->item_id);
+        item_create_batch_record->item_id = NULL;
     }
     free(item_create_batch_record);
 }
 
 cJSON *item_create_batch_record_convertToJSON(item_create_batch_record_t *item_create_batch_record) {
     cJSON *item = cJSON_CreateObject();
-
-    // item_create_batch_record->item_id
-    if(item_create_batch_record->item_id) {
-    if(cJSON_AddStringToObject(item, "item_id", item_create_batch_record->item_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // item_create_batch_record->attributes
     if(item_create_batch_record->attributes) {
@@ -70,6 +62,14 @@ cJSON *item_create_batch_record_convertToJSON(item_create_batch_record_t *item_c
     cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
     if(item->child == NULL) {
     goto fail;
+    }
+    }
+
+
+    // item_create_batch_record->item_id
+    if(item_create_batch_record->item_id) {
+    if(cJSON_AddStringToObject(item, "item_id", item_create_batch_record->item_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -88,6 +88,15 @@ item_create_batch_record_t *item_create_batch_record_parseFromJSON(cJSON *item_c
     // define the local variable for item_create_batch_record->attributes
     item_attributes_request_t *attributes_local_nonprim = NULL;
 
+    // item_create_batch_record->attributes
+    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_create_batch_recordJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
+    if (attributes) { 
+    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
+    }
+
     // item_create_batch_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_create_batch_recordJSON, "item_id");
     if (cJSON_IsNull(item_id)) {
@@ -100,19 +109,10 @@ item_create_batch_record_t *item_create_batch_record_parseFromJSON(cJSON *item_c
     }
     }
 
-    // item_create_batch_record->attributes
-    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_create_batch_recordJSON, "attributes");
-    if (cJSON_IsNull(attributes)) {
-        attributes = NULL;
-    }
-    if (attributes) { 
-    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
-    }
-
 
     item_create_batch_record_local_var = item_create_batch_record_create_internal (
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
-        attributes ? attributes_local_nonprim : NULL
+        attributes ? attributes_local_nonprim : NULL,
+        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
         );
 
     return item_create_batch_record_local_var;

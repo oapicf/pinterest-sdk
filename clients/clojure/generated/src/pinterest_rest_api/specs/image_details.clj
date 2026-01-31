@@ -7,9 +7,9 @@
 
 (def image-details-data
   {
-   (ds/req :width) int?
    (ds/req :height) int?
    (ds/req :url) string?
+   (ds/req :width) int?
    })
 
 (def image-details-spec

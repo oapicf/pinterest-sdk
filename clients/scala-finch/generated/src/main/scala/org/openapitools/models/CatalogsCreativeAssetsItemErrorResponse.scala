@@ -17,7 +17,7 @@ import scala.collection.immutable.Seq
  */
 case class CatalogsCreativeAssetsItemErrorResponse(catalogUnderscoretype: CatalogsType,
                 creativeUnderscoreassetsUnderscoreid: Option[String],
-                errors: Option[Seq[ItemValidationEvent]]
+                errors: Seq[ItemValidationEvent]
                 )
 
 object CatalogsCreativeAssetsItemErrorResponse {

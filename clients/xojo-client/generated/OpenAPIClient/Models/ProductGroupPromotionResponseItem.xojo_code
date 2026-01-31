@@ -2,7 +2,7 @@
 Protected Class ProductGroupPromotionResponseItem
 
 	#tag Property, Flags = &h0
-		data As OpenAPIClient.Models.ProductGroupPromotionResponseElement
+		data As OpenAPIClient.Models.ProductGroupPromotion
 	#tag EndProperty
 
 
@@ -52,7 +52,7 @@ Protected Class ProductGroupPromotionResponseItem
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ProductGroupPromotionResponseElement"
+			Type="ProductGroupPromotion"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

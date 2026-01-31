@@ -29,7 +29,7 @@ end
 
 api_instance = PinterestSdkClient::LeadsExportApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-leads_export_create_request = PinterestSdkClient::LeadsExportCreateRequest.new({start_date: '2020-12-20', end_date: '2020-12-20', ad_id: '687201361754'}) # LeadsExportCreateRequest | 
+leads_export_create_request = PinterestSdkClient::LeadsExportCreateRequest.new({ad_id: '687201361754', end_date: '2020-12-20', start_date: '2020-12-20'}) # LeadsExportCreateRequest | 
 
 begin
   # Create a request to export leads collected from a lead ad

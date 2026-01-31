@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsReportStats[]**](CatalogsReportStats.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CatalogsReportStats[]**](CatalogsReportStats.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ReportsStats200Response = Initialize-PSOpenAPIToolsReportsStats200Response  -Items null `
- -Bookmark null
+$ReportsStats200Response = Initialize-PSOpenAPIToolsReportsStats200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

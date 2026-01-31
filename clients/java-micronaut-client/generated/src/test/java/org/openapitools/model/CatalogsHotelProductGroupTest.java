@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsHotelProductGroupType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +23,14 @@ public class CatalogsHotelProductGroupTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'catalogType'
      */
     @Test
@@ -30,19 +39,11 @@ public class CatalogsHotelProductGroupTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'createdAt'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
@@ -62,11 +63,27 @@ public class CatalogsHotelProductGroupTest {
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'id'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
 
     /**
@@ -75,14 +92,6 @@ public class CatalogsHotelProductGroupTest {
     @Test
     public void updatedAtTest() {
         // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'catalogId'
-     */
-    @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
     }
 
 }

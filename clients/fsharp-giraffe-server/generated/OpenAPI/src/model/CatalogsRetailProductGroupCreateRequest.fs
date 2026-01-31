@@ -16,12 +16,12 @@ module CatalogsRetailProductGroupCreateRequest =
   //#endregion
 
   type CatalogsRetailProductGroupCreateRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
-    Name : string;
+    Country : Country;
     Description : string option;
     Filters : CatalogsProductGroupFiltersRequest;
-    CatalogId : string;
-    Country : Country;
     Locale : CatalogsLocale;
+    Name : string;
   }
   //#endregion

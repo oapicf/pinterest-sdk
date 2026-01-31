@@ -4,8 +4,8 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **website** | **kotlin.String** |  |  [optional] |
 | **verificationMethod** | [**inline**](#VerificationMethod) |  |  [optional] |
+| **website** | **kotlin.String** |  |  [optional] |
 
 
 <a id="VerificationMethod"></a>

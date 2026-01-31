@@ -24,13 +24,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TargetingTemplateCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateCreate   {
-  private String name;
   private Boolean autoTargetingEnabled = true;
-  private TargetingSpec targetingAttributes;
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
   private @Valid List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
+  private String name;
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+  private TargetingSpec targetingAttributes;
   private TrackingUrls trackingUrls;
 
   public TargetingTemplateCreate() {
@@ -43,26 +43,6 @@ public class TargetingTemplateCreate   {
   ) {
     this.name = name;
     this.targetingAttributes = targetingAttributes;
-  }
-
-  /**
-   * Name of targeting template.
-   **/
-  public TargetingTemplateCreate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
-  @JsonProperty(required = true, value = "name")
-  @NotNull public String getName() {
-    return name;
-  }
-
-  @JsonProperty(required = true, value = "name")
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -83,44 +63,6 @@ public class TargetingTemplateCreate   {
   @JsonProperty("auto_targeting_enabled")
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-  /**
-   **/
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "targeting_attributes")
-  @NotNull @Valid public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
-  }
-
-  @JsonProperty(required = true, value = "targeting_attributes")
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-  }
-
-  /**
-   **/
-  public TargetingTemplateCreate placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-
-  @JsonProperty("placement_group")
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
   /**
@@ -159,6 +101,64 @@ public class TargetingTemplateCreate   {
     return this;
   }
   /**
+   * Name of targeting template.
+   **/
+  public TargetingTemplateCreate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
+  @JsonProperty(required = true, value = "name")
+  @NotNull public String getName() {
+    return name;
+  }
+
+  @JsonProperty(required = true, value = "name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   **/
+  public TargetingTemplateCreate placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+
+  @JsonProperty("placement_group")
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+  }
+
+  /**
+   **/
+  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "targeting_attributes")
+  @NotNull @Valid public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
+  }
+
+  @JsonProperty(required = true, value = "targeting_attributes")
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+  }
+
+  /**
    **/
   public TargetingTemplateCreate trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
@@ -187,17 +187,17 @@ public class TargetingTemplateCreate   {
       return false;
     }
     TargetingTemplateCreate targetingTemplateCreate = (TargetingTemplateCreate) o;
-    return Objects.equals(this.name, targetingTemplateCreate.name) &&
-        Objects.equals(this.autoTargetingEnabled, targetingTemplateCreate.autoTargetingEnabled) &&
-        Objects.equals(this.targetingAttributes, targetingTemplateCreate.targetingAttributes) &&
-        Objects.equals(this.placementGroup, targetingTemplateCreate.placementGroup) &&
+    return Objects.equals(this.autoTargetingEnabled, targetingTemplateCreate.autoTargetingEnabled) &&
         Objects.equals(this.keywords, targetingTemplateCreate.keywords) &&
+        Objects.equals(this.name, targetingTemplateCreate.name) &&
+        Objects.equals(this.placementGroup, targetingTemplateCreate.placementGroup) &&
+        Objects.equals(this.targetingAttributes, targetingTemplateCreate.targetingAttributes) &&
         Objects.equals(this.trackingUrls, targetingTemplateCreate.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, trackingUrls);
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, trackingUrls);
   }
 
   @Override
@@ -205,11 +205,11 @@ public class TargetingTemplateCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateCreate {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("}");
     return sb.toString();

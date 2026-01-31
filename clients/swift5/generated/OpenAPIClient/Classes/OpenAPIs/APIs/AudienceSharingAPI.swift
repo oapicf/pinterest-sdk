@@ -42,6 +42,9 @@ open class AudienceSharingAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter audienceId: (query) Unique identifier of the audience to use to filter the results. 
      - parameter accountType: (query) Filter accounts by account type. 
@@ -232,7 +235,7 @@ open class AudienceSharingAPI {
     /**
      Update audience sharing between ad accounts
      - PATCH /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
-     - From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+     - From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -284,7 +287,7 @@ open class AudienceSharingAPI {
     /**
      Update audience sharing from an ad account to businesses
      - PATCH /ad_accounts/{ad_account_id}/audiences/businesses/shared
-     - From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+     - From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -336,7 +339,7 @@ open class AudienceSharingAPI {
     /**
      Update audience sharing from a business to ad accounts
      - PATCH /businesses/{business_id}/audiences/ad_accounts/shared
-     - From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+     - From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -388,7 +391,7 @@ open class AudienceSharingAPI {
     /**
      Update audience sharing between businesses
      - PATCH /businesses/{business_id}/audiences/businesses/shared
-     - From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+     - From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2

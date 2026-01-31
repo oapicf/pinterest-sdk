@@ -7,27 +7,32 @@
 #' @title CreateAssetInvitesRequestItem
 #' @description CreateAssetInvitesRequestItem Class
 #' @format An \code{R6Class} generator object
+#' @field asset_id_to_permissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. named list(list(\link{Permissions}))
 #' @field invite_id Unique identifier of an invite. character
 #' @field invite_type  \link{InviteType}
-#' @field asset_id_to_permissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. named list(list(\link{Permissions}))
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CreateAssetInvitesRequestItem <- R6::R6Class(
   "CreateAssetInvitesRequestItem",
   public = list(
+    `asset_id_to_permissions` = NULL,
     `invite_id` = NULL,
     `invite_type` = NULL,
-    `asset_id_to_permissions` = NULL,
 
     #' @description
     #' Initialize a new CreateAssetInvitesRequestItem class.
     #'
+    #' @param asset_id_to_permissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
     #' @param invite_id Unique identifier of an invite.
     #' @param invite_type invite_type
-    #' @param asset_id_to_permissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
     #' @param ... Other optional arguments.
-    initialize = function(`invite_id`, `invite_type`, `asset_id_to_permissions`, ...) {
+    initialize = function(`asset_id_to_permissions`, `invite_id`, `invite_type`, ...) {
+      if (!missing(`asset_id_to_permissions`)) {
+        stopifnot(is.vector(`asset_id_to_permissions`), length(`asset_id_to_permissions`) != 0)
+        sapply(`asset_id_to_permissions`, function(x) stopifnot(R6::is.R6(x)))
+        self$`asset_id_to_permissions` <- `asset_id_to_permissions`
+      }
       if (!missing(`invite_id`)) {
         if (!(is.character(`invite_id`) && length(`invite_id`) == 1)) {
           stop(paste("Error! Invalid data for `invite_id`. Must be a string:", `invite_id`))
@@ -40,11 +45,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`invite_type`))
         self$`invite_type` <- `invite_type`
-      }
-      if (!missing(`asset_id_to_permissions`)) {
-        stopifnot(is.vector(`asset_id_to_permissions`), length(`asset_id_to_permissions`) != 0)
-        sapply(`asset_id_to_permissions`, function(x) stopifnot(R6::is.R6(x)))
-        self$`asset_id_to_permissions` <- `asset_id_to_permissions`
       }
     },
 
@@ -79,6 +79,10 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CreateAssetInvitesRequestItemObject <- list()
+      if (!is.null(self$`asset_id_to_permissions`)) {
+        CreateAssetInvitesRequestItemObject[["asset_id_to_permissions"]] <-
+          lapply(self$`asset_id_to_permissions`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`invite_id`)) {
         CreateAssetInvitesRequestItemObject[["invite_id"]] <-
           self$`invite_id`
@@ -86,10 +90,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
       if (!is.null(self$`invite_type`)) {
         CreateAssetInvitesRequestItemObject[["invite_type"]] <-
           self$`invite_type`$toSimpleType()
-      }
-      if (!is.null(self$`asset_id_to_permissions`)) {
-        CreateAssetInvitesRequestItemObject[["asset_id_to_permissions"]] <-
-          lapply(self$`asset_id_to_permissions`, function(x) x$toSimpleType())
       }
       return(CreateAssetInvitesRequestItemObject)
     },
@@ -101,6 +101,9 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #' @return the instance of CreateAssetInvitesRequestItem
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`asset_id_to_permissions`)) {
+        self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(array[Permissions])", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`invite_id`)) {
         self$`invite_id` <- this_object$`invite_id`
       }
@@ -108,9 +111,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
         `invite_type_object` <- InviteType$new()
         `invite_type_object`$fromJSON(jsonlite::toJSON(this_object$`invite_type`, auto_unbox = TRUE, digits = NA))
         self$`invite_type` <- `invite_type_object`
-      }
-      if (!is.null(this_object$`asset_id_to_permissions`)) {
-        self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(array[Permissions])", loadNamespace("openapi"))
       }
       self
     },
@@ -133,9 +133,9 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #' @return the instance of CreateAssetInvitesRequestItem
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(array[Permissions])", loadNamespace("openapi"))
       self$`invite_id` <- this_object$`invite_id`
       self$`invite_type` <- InviteType$new()$fromJSON(jsonlite::toJSON(this_object$`invite_type`, auto_unbox = TRUE, digits = NA))
-      self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(array[Permissions])", loadNamespace("openapi"))
       self
     },
 
@@ -145,6 +145,13 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `asset_id_to_permissions`
+      if (!is.null(input_json$`asset_id_to_permissions`)) {
+        stopifnot(is.vector(input_json$`asset_id_to_permissions`), length(input_json$`asset_id_to_permissions`) != 0)
+        tmp <- sapply(input_json$`asset_id_to_permissions`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateAssetInvitesRequestItem: the required field `asset_id_to_permissions` is missing."))
+      }
       # check the required field `invite_id`
       if (!is.null(input_json$`invite_id`)) {
         if (!(is.character(input_json$`invite_id`) && length(input_json$`invite_id`) == 1)) {
@@ -158,13 +165,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`invite_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateAssetInvitesRequestItem: the required field `invite_type` is missing."))
-      }
-      # check the required field `asset_id_to_permissions`
-      if (!is.null(input_json$`asset_id_to_permissions`)) {
-        stopifnot(is.vector(input_json$`asset_id_to_permissions`), length(input_json$`asset_id_to_permissions`) != 0)
-        tmp <- sapply(input_json$`asset_id_to_permissions`, function(x) stopifnot(R6::is.R6(x)))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateAssetInvitesRequestItem: the required field `asset_id_to_permissions` is missing."))
       }
     },
 
@@ -181,6 +181,15 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `asset_id_to_permissions` is null
+      if (is.null(self$`asset_id_to_permissions`)) {
+        return(FALSE)
+      }
+
+      if (length(self$`asset_id_to_permissions`) < 1) {
+        return(FALSE)
+      }
+
       # check if the required `invite_id` is null
       if (is.null(self$`invite_id`)) {
         return(FALSE)
@@ -192,15 +201,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
 
       # check if the required `invite_type` is null
       if (is.null(self$`invite_type`)) {
-        return(FALSE)
-      }
-
-      # check if the required `asset_id_to_permissions` is null
-      if (is.null(self$`asset_id_to_permissions`)) {
-        return(FALSE)
-      }
-
-      if (length(self$`asset_id_to_permissions`) < 1) {
         return(FALSE)
       }
 
@@ -213,6 +213,15 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `asset_id_to_permissions` is null
+      if (is.null(self$`asset_id_to_permissions`)) {
+        invalid_fields["asset_id_to_permissions"] <- "Non-nullable required field `asset_id_to_permissions` cannot be null."
+      }
+
+      if (length(self$`asset_id_to_permissions`) < 1) {
+        invalid_fields["asset_id_to_permissions"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
       # check if the required `invite_id` is null
       if (is.null(self$`invite_id`)) {
         invalid_fields["invite_id"] <- "Non-nullable required field `invite_id` cannot be null."
@@ -225,15 +234,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
       # check if the required `invite_type` is null
       if (is.null(self$`invite_type`)) {
         invalid_fields["invite_type"] <- "Non-nullable required field `invite_type` cannot be null."
-      }
-
-      # check if the required `asset_id_to_permissions` is null
-      if (is.null(self$`asset_id_to_permissions`)) {
-        invalid_fields["asset_id_to_permissions"] <- "Non-nullable required field `asset_id_to_permissions` cannot be null."
-      }
-
-      if (length(self$`asset_id_to_permissions`) < 1) {
-        invalid_fields["asset_id_to_permissions"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

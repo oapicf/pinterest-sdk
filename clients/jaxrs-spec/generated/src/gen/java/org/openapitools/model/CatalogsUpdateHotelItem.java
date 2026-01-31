@@ -19,8 +19,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an hotel item batch record")
 @JsonTypeName("CatalogsUpdateHotelItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdateHotelItem   {
+  private CatalogsUpdatableHotelAttributes attributes;
   private String hotelId;
   public enum OperationEnum {
 
@@ -70,19 +71,37 @@ public class CatalogsUpdateHotelItem   {
 }
 
   private OperationEnum operation;
-  private CatalogsUpdatableHotelAttributes attributes;
 
   public CatalogsUpdateHotelItem() {
   }
 
   @JsonCreator
   public CatalogsUpdateHotelItem(
+    @JsonProperty(required = true, value = "attributes") CatalogsUpdatableHotelAttributes attributes,
     @JsonProperty(required = true, value = "hotel_id") String hotelId,
-    @JsonProperty(required = true, value = "operation") OperationEnum operation,
-    @JsonProperty(required = true, value = "attributes") CatalogsUpdatableHotelAttributes attributes
+    @JsonProperty(required = true, value = "operation") OperationEnum operation
   ) {
+    this.attributes = attributes;
     this.hotelId = hotelId;
     this.operation = operation;
+  }
+
+  /**
+   **/
+  public CatalogsUpdateHotelItem attributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "attributes")
+  @NotNull @Valid public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty(required = true, value = "attributes")
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -125,25 +144,6 @@ public class CatalogsUpdateHotelItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  public CatalogsUpdateHotelItem attributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "attributes")
-  @NotNull @Valid public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  @JsonProperty(required = true, value = "attributes")
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,14 +154,14 @@ public class CatalogsUpdateHotelItem   {
       return false;
     }
     CatalogsUpdateHotelItem catalogsUpdateHotelItem = (CatalogsUpdateHotelItem) o;
-    return Objects.equals(this.hotelId, catalogsUpdateHotelItem.hotelId) &&
-        Objects.equals(this.operation, catalogsUpdateHotelItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpdateHotelItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpdateHotelItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsUpdateHotelItem.hotelId) &&
+        Objects.equals(this.operation, catalogsUpdateHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -169,9 +169,9 @@ public class CatalogsUpdateHotelItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

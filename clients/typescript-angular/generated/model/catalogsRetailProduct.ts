@@ -14,7 +14,7 @@ import { CatalogsRetailProductMetadata } from './catalogsRetailProductMetadata';
 export interface CatalogsRetailProduct { 
     catalog_type: CatalogsRetailProduct.CatalogTypeEnum;
     metadata: CatalogsRetailProductMetadata;
-    pin: Pin | null;
+    pin: Pin;
 }
 export namespace CatalogsRetailProduct {
     export const CatalogTypeEnum = {

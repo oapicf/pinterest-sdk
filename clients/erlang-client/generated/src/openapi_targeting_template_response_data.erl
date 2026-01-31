@@ -5,43 +5,43 @@
 -export_type([openapi_targeting_template_response_data/0]).
 
 -type openapi_targeting_template_response_data() ::
-    #{ 'name' => binary(),
-       'auto_targeting_enabled' => boolean(),
-       'targeting_attributes' => openapi_targeting_spec:openapi_targeting_spec(),
-       'placement_group' => openapi_placement_group_type:openapi_placement_group_type(),
+    #{ 'auto_targeting_enabled' => boolean(),
        'keywords' => list(),
+       'name' => binary(),
+       'placement_group' => openapi_placement_group_type:openapi_placement_group_type(),
+       'targeting_attributes' => openapi_targeting_spec:openapi_targeting_spec(),
        'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls(),
-       'id' => binary(),
-       'created_time' => integer(),
-       'updated_time' => integer(),
        'ad_account_id' => binary(),
+       'created_time' => integer(),
+       'id' => binary(),
+       'sizing' => openapi_targeting_template_audience_sizing:openapi_targeting_template_audience_sizing(),
        'status' => binary(),
-       'sizing' => openapi_targeting_template_audience_sizing:openapi_targeting_template_audience_sizing()
+       'updated_time' => integer()
      }.
 
-encode(#{ 'name' := Name,
-          'auto_targeting_enabled' := AutoTargetingEnabled,
-          'targeting_attributes' := TargetingAttributes,
-          'placement_group' := PlacementGroup,
+encode(#{ 'auto_targeting_enabled' := AutoTargetingEnabled,
           'keywords' := Keywords,
+          'name' := Name,
+          'placement_group' := PlacementGroup,
+          'targeting_attributes' := TargetingAttributes,
           'tracking_urls' := TrackingUrls,
-          'id' := Id,
-          'created_time' := CreatedTime,
-          'updated_time' := UpdatedTime,
           'ad_account_id' := AdAccountId,
+          'created_time' := CreatedTime,
+          'id' := Id,
+          'sizing' := Sizing,
           'status' := Status,
-          'sizing' := Sizing
+          'updated_time' := UpdatedTime
         }) ->
-    #{ 'name' => Name,
-       'auto_targeting_enabled' => AutoTargetingEnabled,
-       'targeting_attributes' => TargetingAttributes,
-       'placement_group' => PlacementGroup,
+    #{ 'auto_targeting_enabled' => AutoTargetingEnabled,
        'keywords' => Keywords,
+       'name' => Name,
+       'placement_group' => PlacementGroup,
+       'targeting_attributes' => TargetingAttributes,
        'tracking_urls' => TrackingUrls,
-       'id' => Id,
-       'created_time' => CreatedTime,
-       'updated_time' => UpdatedTime,
        'ad_account_id' => AdAccountId,
+       'created_time' => CreatedTime,
+       'id' => Id,
+       'sizing' => Sizing,
        'status' => Status,
-       'sizing' => Sizing
+       'updated_time' => UpdatedTime
      }.

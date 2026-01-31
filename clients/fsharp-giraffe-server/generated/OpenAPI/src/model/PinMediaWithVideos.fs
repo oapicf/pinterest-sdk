@@ -2,15 +2,18 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.PinMedia
-open OpenAPI.Model.VideoMetadata
+open OpenAPI.Model.VideoMetadataWithItemType
 
 module PinMediaWithVideos =
 
   //#region PinMediaWithVideos
 
+  //#region enums
+  type MediaTypeEnum = MultipleVideosEnum of string  
+  //#endregion
 
   type PinMediaWithVideos = {
-    Items : VideoMetadata[];
+    Items : VideoMetadataWithItemType[];
+    MediaType : MediaTypeEnum;
   }
   //#endregion
